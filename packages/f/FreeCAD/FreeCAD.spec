@@ -27,7 +27,7 @@
 %bcond_without smesh
 
 Name:           FreeCAD
-Version:        0.20.2
+Version:        0.21.0
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -39,19 +39,7 @@ Patch0:         0001-Gui-Quarter-Add-missing-OpenGL-includes.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Avoid-catching-SIGSEGV-defer-to-system-services.patch
 # PATCH-FIX-UPSTREAM
-Patch2:         0001-Fix-build-with-NG-6.2.2201-include-BRepMesh_Incremen.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-Part-OCCError.h-remove-unneeded-includes.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-Drawing-add-missing-include.patch
-# PATCH-FIX-UPSTREAM
-Patch5:         0001-FEM-add-missing-include.patch
-# PATCH-FIX-UPSTREAM
-Patch6:         0001-Revert-unused-parameter-warning-change.patch
-# PATCH-FIX-UPSTREAM
-Patch7:         0001-FEM-femmesh-fix-AttributeError-module-numpy-has-no-a.patch
-# PATCH-FIX-OPENSUSE submitted upstream here: https://github.com/FreeCAD/FreeCAD/pull/9077
-Patch8:         0001-Fix-build-with-gcc13.patch
+Patch9:         0001-Fix-variable-name-for-OpenGL-library.patch
 
 # Test suite fails on 32bit and I don't want to debug that anymore
 ExcludeArch:    %ix86 %arm ppc s390 s390x
@@ -71,6 +59,7 @@ BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
+BuildRequires:  fmt-devel
 BuildRequires:  glew-devel
 BuildRequires:  hdf5-devel
 BuildRequires:  hicolor-icon-theme
@@ -92,13 +81,14 @@ BuildRequires:  sqlite3-devel
 # Qt5 & python3
 BuildRequires:  python3-devel >= 3.6.9
 BuildRequires:  python3-matplotlib
-BuildRequires:  python3-pivy
+BuildRequires:  python3-pivy >= 0.6.8
 BuildRequires:  python3-ply
 BuildRequires:  python3-pybind11-devel
 BuildRequires:  python3-pycxx-devel
 BuildRequires:  python3-pyside2-devel
 BuildRequires:  python3-vtk
 BuildRequires:  python3-xml
+BuildRequires:  cmake(GTest)
 BuildRequires:  cmake(coin)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5OpenGL)
@@ -109,6 +99,7 @@ BuildRequires:  pkgconfig(Qt5UiTools)
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  pkgconfig(liblzma)
 Requires:       python3-numpy
 Requires:       python3-pyside2
 Requires:       python3-vtk
@@ -146,9 +137,20 @@ This package contains the files needed for development with FreeCAD.
 %prep
 %setup -q
 %autopatch -p1
+# Use system gtest - https://github.com/FreeCAD/FreeCAD/issues/10126
+sed -i -e 's/add_subdirectory(lib)/find_package(GTest)/' \
+       -e 's/ gtest_main / GTest::gtest_main /' \
+  tests/CMakeLists.txt
+# Lower Python minimum version for Leap
+sed -i -e 's/3.8/3.6/' cMake/FreeCAD_Helpers/SetupPython.cmake
+# Use boost::filesystem - https://github.com/FreeCAD/FreeCAD/issues/10127
+sed -i -e 's/std::filesystem/boost::filesystem/' \
+       -e '/include/ s@<filesystem>@<boost/filesystem.hpp>@' \
+       -e '/std::.fstream/ s@_tempFile@_tempFile.string()@' \
+  tests/src/Base/Reader.cpp
 
 # fix env-script-interpreter
-sed -i '1c#!%{__python3}' \
+sed -i '1 s@#!.*@#!%{__python3}@' \
         src/Mod/AddonManager/AddonManager.py \
         src/Mod/Mesh/App/MeshTestsApp.py \
         src/Mod/Robot/KukaExporter.py \
@@ -170,6 +172,9 @@ sed -i 's/\r$//' src/Mod/Test/unittestgui.py
 # Remove 3rd party libs
 rm src/3rdparty/Pivy -fr
 rm src/3rdparty/Pivy-0.5 -fr
+
+# Remove bundled gtest
+rm tests/lib -fr
 
 # Resources are looked up relative to the binaries location,
 # so all these need the same prefix, see src/App/Application.cpp
@@ -194,8 +199,9 @@ rm src/3rdparty/Pivy-0.5 -fr
   -DPYBIND11_FINDPYTHON:BOOL=ON \
   -DFREECAD_USE_PYBIND11:BOOL=ON \
   -DBUILD_ENABLE_CXX_STD:STRING="C++17" \
-  -DBUILD_QT5=ON \
+  -DFREECAD_QT_MAJOR_VERSION=5 \
   -DFREECAD_USE_QT_DIALOG:BOOL=OFF \
+  -DFREECAD_USE_EXTERNAL_FMT:BOOL=TRUE \
   -DFREECAD_USE_EXTERNAL_PIVY:BOOL=TRUE \
   -DBUILD_OPENSCAD:BOOL=ON \
   -DBUILD_FLAT_MESH:BOOL=ON \
@@ -237,6 +243,11 @@ ln -s -t %{buildroot}/usr/bin %{x_prefix}/bin/FreeCADCmd
 
 %fdupes %{buildroot}/%{_libdir}
 %fdupes %{buildroot}/%{_datadir}
+
+%check
+%ctest --test-dir tests/src/Qt
+./build/tests/Tests_run
+./build/tests/Sketcher_tests_run
 
 %post -p /sbin/ldconfig
 

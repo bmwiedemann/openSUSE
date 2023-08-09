@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug  8 15:49:02 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.21.0:
+  * Lots of bugfixes and new features, for details see
+    https://wiki.freecad.org/Release_notes_0.21 and
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.21
+- Drop upstream patches:
+  * 0001-Fix-build-with-NG-6.2.2201-include-BRepMesh_Incremen.patch
+  * 0001-Part-OCCError.h-remove-unneeded-includes.patch
+  * 0001-Drawing-add-missing-include.patch
+  * 0001-FEM-add-missing-include.patch
+  * 0001-Revert-unused-parameter-warning-change.patch
+  * 0001-FEM-femmesh-fix-AttributeError-module-numpy-has-no-a.patch
+  * 0001-Fix-build-with-gcc13.patch
+
+-------------------------------------------------------------------
+Tue Aug  8 12:01:48 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build on aarch64, correctly link OpenGL, add
+  0001-Fix-variable-name-for-OpenGL-library.patch
+
+-------------------------------------------------------------------
 Mon Mar 27 09:49:49 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - Fix build with gcc 13
