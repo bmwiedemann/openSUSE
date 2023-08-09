@@ -1,7 +1,7 @@
 #
 # spec file for package usnic_tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ URL:            https://www.cisco.com/
 Source0:        https://github.com/cisco/usnic_tools/releases/download/v%{version}/usnic-tools-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  infinipath-psm-devel
 BuildRequires:  libfabric-devel
 ExclusiveArch:  x86_64
 

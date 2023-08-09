@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  7 17:07:17 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop infinipath-psm dependency
+
+-------------------------------------------------------------------
 Tue May  3 12:58:09 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.1.2.1
