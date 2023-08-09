@@ -18,7 +18,7 @@
 
 %bcond_without python2
 Name:           python-oci-sdk
-Version:        2.106.0
+Version:        2.110.0
 Release:        0
 Summary:        Oracle Cloud Infrastructure Python SDK
 License:        Apache-2.0 OR UPL-1.0
@@ -28,6 +28,8 @@ Source:         %{url}/archive/v%{version}.tar.gz#/oci-python-sdk-%{version}.tar
 Source99:       python-oci-sdk.rpmlintrc
 Patch0:         ops_relax-python-depends.patch
 Patch1:         ops_fixture-order.patch
+# PATCH-FIX-OPENSUSE pytest-740.patch gh#oracle/oci-python-sdk#566
+Patch2:         pytest-740.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -76,9 +78,7 @@ Provides:       python-oci = %{version}-%{release}
 Python SDK for Oracle Cloud Infrastructure. Python 2.7+ and 3.5+ are supported.
 
 %prep
-%setup -q -n oci-python-sdk-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n oci-python-sdk-%{version}
 # Remove vendored packages
 rm -rf src/oci/_vendor/
 # Fix includes

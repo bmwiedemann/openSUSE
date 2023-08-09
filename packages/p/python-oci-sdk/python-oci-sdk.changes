@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Wed Aug  9 10:20:30 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add pytest-740.patch to fix compatibility issues with pytest 7.4.0
+  gh#oracle/oci-python-sdk#566
+- Update to version 2.110.0
+  - Support for backup retention on autonomous database create operations in the Database service
+  - Support for exclude tables for replication in the Database Migration service
+  - Support for adding and updating auto failover maximum data loss limits for local autonomous data guards in the Database service
+  - Support for limiting networking diagram ingestion in the Networking Monitoring service
+  - Support for new operations for deployment upgrades in the GoldenGate service
+  - Support for getting model type information and base model versions while creating language custom models in the AI Language service
+  - Support for support field in class metric in the AI Language service
+  - Support for Compute Cloud at Customer resource type in the Operator Access Control service
+  - Support for managing account management info, account recovery settings, app roles, apps, app status changers, grants, identity propagation trusts and settings, request-able groups, requests, security questions, OAuth tokens, and user attribute settings in the Identity Domains service
+  - Property ipv6_cidr_block is removed from models Vcn and CreateVcnDetails in the Networking Monitoring service
+  - Property ipv6_public_cidr_block is removed from models Vcn and Subnet in the Networking Monitoring service
+  - Property is_internet_access_allowed is removed from models UpdateIpv6Details, Ipv6 and CreateIpv6Details in the Networking Monitoring service
+  - Property public_ip_address is removed from model Ipv6 in the Networking Monitoring service
+  - Support for retries by default on operations of the Operator Access Control service
+- 2.109.0
+  - Support for the Exadata Fleet Update service
+  - Support for REST-based log collection, multi-conditional labels,
+    and collection properties in the Logging Analytics service
+  - Support for Kubernetes cluster credential rotation in the
+    Container Engine for Kubernetes service
+  - Support for zero-downtime features in the Fusion Apps as a Service
+    service
+  - Support for news reports in the Operations Insights service
+  - Allowed value ACCELERATION_MAINTENANCE was removed from the
+    property task_type in the models StandardTask,
+    ScheduledTaskSummary and ScheduledTask in the Logging Analytics
+    service
+  - Allowed value ACCELERATION_MAINTENANCE was removed from the
+    parameter task_type in operation list_scheduled_tasks in the
+    Logging Analytics service
+- 2.108.0
+  - Support for composing multiple document service custom key value
+    models into one single model in Document Understanding Service
+  - Support for custom hostname in the Compute service
+  - Support for cloud subscription in the Organizations service
+  - Support for automatic backup download in the GoldenGate service
+  - Support for creating single use (non-recurring) budgets in the
+    Budgets service
+  - Support for retries by default on operations of the Budgets
+    service
+  - Properties is_classic_subscription, payment_model,
+    region_assignment, lifecycle_state, start_date, end_date,
+    classic_subscription_id, time_created are deleted from model
+    SubscriptionSummary in the Organizations service
+  - Properties classic_subscription_id, is_classic_subscription,
+    payment_model, region_assignment, lifecycle_state, skus,
+    program_type, customer_country_code, cloud_amount_currency,
+    csi_number, subscription_tier, is_government_subscription,
+    promotion, purchase_entitlement_id, start_date, end_date are
+    deleted from models Subscription and AssignedSubscription in the
+    Organizations service
+  - Properties classic_subscription_id, is_classic_subscription,
+    payment_model, region_assignment, lifecycle_state, start_date,
+    end_date, csi_number are deleted from model
+    AssignedSubscriptionSummary in the Organizations service
+- 2.107.0
+  - Support for calling Oracle Cloud Infrastructure services in the
+    mx-monterrey-1 region
+  - Support for Kerberos and LDAP with NFSv3 in the File Storage
+    service
+  - Support for capacity reservation checks for movable compute
+    instances in the Disaster Recovery service
+  - Support for Oracle MFT monitoring in the Stack Monitoring service
+  - Support for OS patching in the Big Data service
+  - Support for master and utility nodes in the Big Data service
+  - Support for connectivity testing in the GoldenGate service
+  - The type of property size_in_bytes was changed from float to int
+    for the DeploymentBackup, DeploymentBackupSummary,
+    TrailFileSummary, and TrailSequenceSummary in the GoldenGate
+    service
+  - The property function_id was made required in the model
+    UpdateInvokeFunctionUserDefinedStepDetails in the Disaster
+    Recovery service
+  - The properties run_on_instance_id and script_command were made
+    required in the model UpdateRunLocalScriptUserDefinedStepDetails
+    in the Disaster Recovery service
+  - The properties run_on_instance_id and
+    object_storage_script_location were made required in the model
+    UpdateRunObjectStoreScriptUserDefinedStepDetails in the Disaster
+    Recovery service
+  - The property additional_capabilities was removed from models
+    CreateContainerDetails and Container in the Container Instances
+    service
+
+-------------------------------------------------------------------
 Wed Jul 12 07:37:06 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.106.0
