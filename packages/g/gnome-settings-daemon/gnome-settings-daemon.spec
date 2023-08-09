@@ -48,10 +48,8 @@ Patch3:         gnome-settings-daemon-bgo793253.patch
 ## SLE/LEAP-only patches start at 1000
 # PATCH-FEATURE-OPENSUSE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
 Patch1000:      gnome-settings-daemon-notify-idle-resumed.patch
-# PATCH-FIX-OPENSUSE gnome-settings-daemon-bnc873545-hide-warnings.patch bnc#873545 fezhang@suse.com -- hide the warnings when g-s-d cannot find colord running, which is expected on SLES
-Patch1001:      gnome-settings-daemon-bnc873545-hide-warnings.patch
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-more-power-button-actions.patch bsc#996342 fezhang@suse.com -- Bring back the "shutdown" and "interactive" power button actions.
-Patch1002:      gnome-settings-daemon-more-power-button-actions.patch
+Patch1001:      gnome-settings-daemon-more-power-button-actions.patch
 
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
@@ -142,11 +140,19 @@ contact the settings daemon via its DBus interface.
 
 %prep
 %autosetup -N
+
+%if ! 0%{?sle_version}
 %autopatch -p1 -M 999
+%else
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%endif
 
 # Enable the patches for both Leap 15 and SLE 15, please find the clarification at bsc#1158476.
 %if 0%{?sle_version} >= 150000
-%autopatch -p1 -m 1000
+%patch1000 -p1
+%patch1001 -p1
 %endif
 
 %build

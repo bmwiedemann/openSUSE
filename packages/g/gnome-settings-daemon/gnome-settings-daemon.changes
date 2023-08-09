@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  4 09:04:02 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Do not use %autopatch to build on SLE where rpm version is not
+  ready for the macro.
+- Drop patch gnome-settings-daemon-bnc873545-hide-warnings.patch:
+  the relevant color management has been moved to mutter.
+
+-------------------------------------------------------------------
 Tue Apr 18 14:40:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:
