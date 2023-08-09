@@ -59,4 +59,12 @@ Required to allow builds to complete.</comment>
   * Python bindings were updated</comment>
     <requestid>1098273</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>159e2f2e6b80ea198661d705e3e54dda</srcmd5>
+    <version>20230711</version>
+    <time>1691594713</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1102994</requestid>
+  </revision>
 </revisionlist>
