@@ -124,7 +124,8 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(nss) >= 3.26
 BuildRequires:  pkgconfig(opus) >= 1.3.1
-BuildRequires:  pkgconfig(re2)
+# Build fails with newer re2 versions (https://bugreports.qt.io/browse/QTBUG-115931)
+BuildRequires:  pkgconfig(re2) <= 10.0.0
 BuildRequires:  pkgconfig(vpx) >= 1.10.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
