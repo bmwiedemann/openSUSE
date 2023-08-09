@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Aug  9 05:58:57 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20230614a
+ * configure:
+  * better tests for zlib, libbz2, and liblzma that check for both
+    libraries and headers.
+  * change --with-sc_uptime, --with-sc_hoiho, and --with-tests to be
+    --enable-sc_uptime, --enable-sc_hoiho, and --enable-tests
+  * disable maintainer mode, pass foreign to AM_INIT_AUTOMAKE
+ * scamper:
+  * remove reading regular files from poll/select/epoll/kqueue path,
+    which fixes reading regular input files (-f option to scamper) using
+    epoll or kqueue
+  * fix reading stdin as input (-f option to scamper) when using
+    epoll (catch EPOLLHUP)
+  * add DNS server to host signature, add host path for scamper_task_find
+  * rework scamper_osinfo to work with malformed release names (uname -r)
+  * dealias: do not crash on malformed prefixscan and bump commands
+  * dealias: fix memory leak of probedefs on malformed commands
+  * sting: fix memory leak of recorded packets
+  * remove tsps input method (-O tsps option to scamper)
+  * update manual page
+ * libscamperctrl:
+  * link against list.o and splaytree.o so that the library is self-contained
+  * fix memory leak when task is not accepted
+  * API improvements
+ * libscamperfile:
+  * fix memory leak when reading SOA/MX from warts file
+  * fix memory leak when reading PMTUD traceroute structures from warts file
+  * sting: fix memory leak of recorded packets
+ * sc_analysis_dump, sc_warts2pcap, sc_wartscat, sc_wartsfilter:
+  * link against list.o/utils.o so that these utilities are not reliant on
+    those symbols being exported from libscamperfile
+ * sc_prefixprober:
+  * allow compression type to be specified using -O
+  * free scamper_addr_t as each are removed from the list to probe
+ * sc_remoted:
+  * catch EPOLLHUP with epoll
+ * sc_warts2text:
+  * fix memory leaks
+ * sc_wartsdump:
+  * fix memory leaks
+  * link against utils.o so that sc_wartsdump is not reliant on those
+    symbols being exported from libscamperfile
+
+-------------------------------------------------------------------
 Tue Jun 13 06:20:24 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20230605:
