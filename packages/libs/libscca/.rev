@@ -106,4 +106,12 @@
     <comment>- Update to release 20230716</comment>
     <requestid>1099127</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>dfb1a983bf343c995187dbf42a480804</srcmd5>
+    <version>20230716</version>
+    <time>1691594720</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103001</requestid>
+  </revision>
 </revisionlist>
