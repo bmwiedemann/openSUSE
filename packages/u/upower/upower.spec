@@ -23,13 +23,15 @@
 %endif
 
 Name:           upower
-Version:        1.90.1
+Version:        1.90.2
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://upower.freedesktop.org/
 Source:         https://gitlab.freedesktop.org/upower/upower/-/archive/v%{version}/upower-v%{version}.tar.bz2
+# PATCH-FIX-OPENSUSE: Skip installation of test-only dependencies
+Patch1:         skip-tests-install.patch
 BuildRequires:  gobject-introspection-devel >= 0.9.9
 BuildRequires:  gtk-doc >= 1.11
 BuildRequires:  intltool
@@ -103,7 +105,7 @@ system) are restricted using PolicyKit.
 %lang_package
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 %meson \

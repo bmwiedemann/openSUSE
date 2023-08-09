@@ -740,4 +740,24 @@
     <comment></comment>
     <requestid>1096972</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>8236ea4158c03b493ae575a5f60caeab</srcmd5>
+    <version>1.90.2</version>
+    <time>1691594639</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.90.2:
+  * Note that this is the last release of UPower with lid
+    handling. OS components that rely on the lid status
+    should get it from logind instead.
+  * Fix wireless devices not disappearing from Settings when
+    disconnected
+  * Require a newer libgudev to avoid bugs related to newline
+    stripping when reading sysfs attributes
+  * Add installed-tests files for use with gnome-desktop-testing
+  * Fix integration test to work with system installed upower
+    binary and under jhbuild
+- add skip-tests-install.patch to skip installation of test-only 
+  assets</comment>
+    <requestid>1102812</requestid>
+  </revision>
 </revisionlist>
