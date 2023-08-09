@@ -136,4 +136,12 @@
   * No changelog was provided</comment>
     <requestid>1098272</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>a8c5e5e525a305477303d4e667f22970</srcmd5>
+    <version>20230710</version>
+    <time>1691594714</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1102995</requestid>
+  </revision>
 </revisionlist>
