@@ -7,7 +7,6 @@
  <overwrite>
     <conditions>
       <arch>s390x</arch>
-      <arch>riscv64</arch>
     </conditions>
     <hardware>
       <physicalmemory>

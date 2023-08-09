@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  2 10:29:03 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Reduce memory constraints for riscv64
+
+-------------------------------------------------------------------
 Thu Mar 30 17:05:43 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
