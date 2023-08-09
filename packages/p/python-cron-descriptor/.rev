@@ -31,4 +31,41 @@
     <comment></comment>
     <requestid>1039741</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9d4b777e17601a1612441503fbcadaf4</srcmd5>
+    <version>1.4</version>
+    <time>1691594769</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4:
+  * support Vietnamese
+  * Possible BC - Parsing call was moved from
+    `ExpressionDescriptor.get_description` to
+    `ExpressionDescriptor.__init__`  that means parsing
+    exceptions are thrown when calling `ExpressionDescriptor`
+    constructor and not when calling
+    `ExpressionDescriptor.get_description`  modify your exception
+    handling accordingly...
+  * Possible BC - Option `throw_exception_on_parse_error`
+    (boolean) was removed, code now works as if
+    `throw_exception_on_parse_error=True` (default - always throw
+    exceptions). Remove `throw_exception_on_parse_error` option
+    from your code if you were using it.
+  * Added missing spanish translation string
+  * Add possibility to use custom .mo files, locally
+  * Slovak translation
+  * Fixes #31
+  * Fixes #36
+  * Added Korean support by @hanqyu
+  * Added Persian support by @Davoodeh
+  * Added Tamil support by @sankarhari
+  * Added Japanese support by @tho-asterist
+  * fixes unclosed open translation file by Rafael Reuber
+  * various fixes around
+  * Fix CI Build/Deploy on new version
+  * Fixes some issues ( #14 #17 ) and some small code refactoring
+  * Fixes #13
+  * Fixes #10
+  * Relase fixing issue #6</comment>
+    <requestid>1103084</requestid>
+  </revision>
 </revisionlist>
