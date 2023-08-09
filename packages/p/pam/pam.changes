@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug  7 09:41:27 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- pam_access backports from upstream:
+  - pam_access-doc-IPv6-link-local.patch:
+    Document only partial supported IPv6 link local addresses
+  - pam_access-hostname-debug.patch:
+    Don't print error if we cannot resolve a hostname, does not
+    need to be a hostname
+  - pam_shells-fix-econf-memory-leak.patch:
+    Free econf keys variable
+  - disable-examples.patch:
+    Don't build examples
+
+-------------------------------------------------------------------
 Tue May  9 12:14:48 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to final 1.5.3 release:

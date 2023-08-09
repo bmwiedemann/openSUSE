@@ -96,6 +96,14 @@ Source22:       postlogin-account.pamd
 Source23:       postlogin-password.pamd
 Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
+# https://github.com/linux-pam/linux-pam/pull/594
+Patch2:         pam_access-doc-IPv6-link-local.patch
+# https://github.com/linux-pam/linux-pam/pull/596
+Patch3:         pam_access-hostname-debug.patch
+# https://github.com/linux-pam/linux-pam/pull/581
+Patch4:         pam_shells-fix-econf-memory-leak.patch
+# https://github.com/linux-pam/linux-pam/pull/574
+Patch5:         disable-examples.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex
@@ -206,6 +214,10 @@ building both PAM-aware applications and modules for use with PAM.
 %setup -q -n Linux-PAM-%{version}
 cp -a %{SOURCE12} .
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 bash ./pam-login_defs-check.sh
@@ -216,6 +228,7 @@ CFLAGS="$CFLAGS -DNDEBUG"
 %if %{livepatchable}
 CFLAGS="$CFLAGS -fpatchable-function-entry=16,14 -fdump-ipa-clones"
 %endif
+autoreconf
 %configure \
 	--includedir=%{_includedir}/security \
 	--docdir=%{_docdir}/pam \
@@ -225,6 +238,7 @@ CFLAGS="$CFLAGS -fpatchable-function-entry=16,14 -fdump-ipa-clones"
 	--enable-securedir=%{_pam_moduledir} \
 	--enable-vendordir=%{_prefix}/etc \
 	--enable-logind \
+        --disable-examples \
 	--disable-nis \
 %if %{with debug}
 	--enable-debug
