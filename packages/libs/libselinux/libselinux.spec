@@ -32,8 +32,13 @@ Source4:        baselibs.conf
 # PATCH-FIX-UPSTREAM Include <sys/uio.h> for readv prototype
 Patch4:         readv-proto.patch
 Patch5:         skip_cycles.patch
+# PATCH-FIX-UPSTREAM python3.8-compat.patch mcepl@suse.com
+# Make linking working even when default pkg-config doesn’t provide -lpython<ver>
+Patch6:         python3.8-compat.patch
+Patch7:         swig4_moduleimport.patch
 BuildRequires:  fdupes
 BuildRequires:  libsepol-devel >= %{libsepol_ver}
+BuildRequires:  libsepol-devel-static >= %{libsepol_ver}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpcre2-8)
 
@@ -57,8 +62,8 @@ Security.)
 %package -n selinux-tools
 Summary:        SELinux command-line utilities
 Group:          System/Base
-Provides:       libselinux-utils = %{version}-%{release}
 Requires:       libselinux1 = %{version}
+Provides:       libselinux-utils = %{version}-%{release}
 
 %description -n selinux-tools
 Security-enhanced Linux is a feature of the kernel and some
@@ -98,19 +103,21 @@ This package contains the static development files, which are
 necessary to develop your own software using libselinux.
 
 %prep
-%setup -q -n libselinux-%{version}
-%patch4 -p1
-%patch5 -p1
+%autosetup -p1 -n libselinux-%{version}
 
 %build
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CC="gcc" CFLAGS="%{optflags} -fno-semantic-interposition -ffat-lto-objects" USE_PCRE2=y
+%make_build LIBDIR="%{_libdir}" CC="gcc" \
+    CFLAGS="%{optflags} -fno-semantic-interposition -ffat-lto-objects" \
+    USE_PCRE2=y
 
 %install
 mkdir -p %{buildroot}/%{_lib}
 mkdir -p %{buildroot}%{_libdir}
 mkdir -p %{buildroot}%{_includedir}
 mkdir -p %{buildroot}%{_sbindir}
-make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="%{_libdir}" BINDIR="%{_sbindir}" install
+make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="%{_libdir}" \
+    BINDIR="%{_sbindir}" install
+
 mv %{buildroot}%{_sbindir}/getdefaultcon %{buildroot}%{_sbindir}/selinuxdefcon
 mv %{buildroot}%{_sbindir}/getconlist %{buildroot}%{_sbindir}/selinuxconlist
 install -m 0755 %{SOURCE3} %{buildroot}%{_sbindir}/selinux-ready

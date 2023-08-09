@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug  4 13:14:19 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- (bsc#1212618) Divide libselinux and libselinux-bindings again.
+  libselinux itself is in Ring0 so it has to have absolutely
+  minimal dependencies, so it is better to separate
+  libselinux-bindings into a separate pacakge.
+
+-------------------------------------------------------------------
+Tue Jun 20 13:34:39 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Add explicit BuildRequires for python3-pip and python3-wheel on
+  15.5, currently the macros don't do the right thing
+
+-------------------------------------------------------------------
 Thu Jun  1 11:50:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - allow building this with different python versions, to make this

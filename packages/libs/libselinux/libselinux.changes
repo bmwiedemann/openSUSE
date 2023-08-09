@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Aug  8 06:59:16 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not BuildRequire swig and ruby-devel in the main build phase:
+  those are only needed for the bindings.
+
+-------------------------------------------------------------------
+Fri Aug  4 13:14:14 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- (bsc#1212618) Divide libselinux and libselinux-bindings again.
+  libselinux itself is in Ring0 so it has to have absolutely
+  minimal dependencies, so it is better to separate
+  libselinux-bindings into a separate pacakge.
+
+-------------------------------------------------------------------
+Tue Jul  4 08:32:49 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Fix python packaging by setting the name to a fixed value
+
+-------------------------------------------------------------------
+Fri Jun 23 14:50:33 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Remove separate libselinux-bindings SPEC file (bsc#1212618).
+
+-------------------------------------------------------------------
+Tue Jun 20 13:34:39 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Add explicit BuildRequires for python3-pip and python3-wheel on
+  15.5, currently the macros don't do the right thing
+
+-------------------------------------------------------------------
+Thu Jun  1 11:50:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- allow building this with different python versions, to make this
+  usable for the new sle15 macro (using python3.11)
+
+-------------------------------------------------------------------
+Fri May  5 12:35:31 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add python-wheel build dependency to build correctly with latest
+  python-pip version.
+
+-------------------------------------------------------------------
 Thu May  4 14:04:04 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add _multibuild to define additional spec files as additional
@@ -29,6 +71,7 @@ Fri Feb 24 07:42:25 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
   * fix memory leaks on the audit2why module init
   * ignore invalid class name lookup
 - Drop restorecon_pin_file.patch, is upstream
+- Refreshed python3.8-compat.patch
 - Added additional developer key (Jason Zaman)
 
 -------------------------------------------------------------------
@@ -126,6 +169,7 @@ Tue Jul 14 08:24:20 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
   * Support for new policy capability genfs_seclabel_symlinks
   * selinuxfs is mounted with noexec and nosuid
   * `security_compute_user()` was deprecated
+  * Refreshed python3.8-compat.patch
 
 -------------------------------------------------------------------
 Thu Mar 26 15:43:41 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
@@ -147,11 +191,23 @@ Tue Mar  3 11:13:12 UTC 2020 - Johannes Segitz <jsegitz@suse.de>
   upstream
 
 -------------------------------------------------------------------
+Mon Dec 16 16:04:41 UTC 2019 - Johannes Segitz <jsegitz@suse.de>
+
+- Added swig4_moduleimport.patch to prevent import errors due to
+  SWIG 4
+
+-------------------------------------------------------------------
 Wed Nov 13 08:03:39 UTC 2019 - Johannes Segitz <jsegitz@suse.de>
 
 - Added Use-Python-distutils-to-install-SELinux.patch to use 
   Python's distutils instead of building and installing python 
   bindings manually
+
+-------------------------------------------------------------------
+Wed Oct 30 17:21:00 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add python3.8-compat.patch which makes build possible even with
+  Python 3.8, which doesn’t automatically adds -lpython<ver>
 
 -------------------------------------------------------------------
 Mon Jun  3 09:34:17 UTC 2019 -  <jsegitz@suse.com>
@@ -160,6 +216,10 @@ Mon Jun  3 09:34:17 UTC 2019 -  <jsegitz@suse.com>
   * Removed check for selinux-policy package as we don't ship one
     (bsc#1136845)
   * Add check that restorecond is installed and enabled 
+-------------------------------------------------------------------
+Tue May 28 08:28:03 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Disable LTO (boo#1133244).
 
 -------------------------------------------------------------------
 Fri May 24 11:22:19 UTC 2019 -  <jsegitz@suse.com>
@@ -210,6 +270,12 @@ Mon May 14 22:45:54 UTC 2018 - mcepl@cepl.eu
     * Based expressly on python3, not just python
   For changes please see
   https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20170804/RELEASE-20170804.txt
+
+-------------------------------------------------------------------
+Fri Mar 16 15:25:10 UTC 2018 - jsegitz@suse.com
+
+- Updated spec file to use python3. Added python3.patch to fix
+  build
 
 -------------------------------------------------------------------
 Fri Nov 24 09:09:02 UTC 2017 - jsegitz@suse.com
@@ -341,6 +407,12 @@ Thu Jul 30 12:00:27 UTC 2015 - jsegitz@novell.com
 - fixed selinux-ready to work with initrd files created by dracut (bsc#940006)
 
 -------------------------------------------------------------------
+Wed May 27 11:53:54 UTC 2015 - dimstar@opensuse.org
+
+- Update libselinux-2.2-ruby.patch: use RbConfig instead of
+  deprecated Config.
+
+-------------------------------------------------------------------
 Mon Sep  8 08:25:11 UTC 2014 - jsegitz@suse.com
 
 - updated selinux-ready script to handle initrd files compressed with xz
@@ -447,6 +519,7 @@ Fri Mar 29 15:12:50 UTC 2013 - vcizek@suse.com
 Wed Jan 30 11:44:45 UTC 2013 - vcizek@suse.com
 
 - update to 2.1.12
+- added BuildRequires: pcre-devel
   - added the recent libselinux-rhat.patch
   * Add support for lxc_contexts_path
   * utils: add service to getdefaultcon
@@ -541,6 +614,7 @@ Fri Jun  1 18:34:04 CEST 2012 - mls@suse.de
   * selinux_status interfaces
   * simple interface for access checks
   * multiple bug fixes
+- fix build for ruby-1.9
 
 -------------------------------------------------------------------
 Wed Oct  5 15:09:25 UTC 2011 - uli@suse.com

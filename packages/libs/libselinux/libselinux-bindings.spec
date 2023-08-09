@@ -17,74 +17,59 @@
 
 
 %{?sle15_python_module_pythons}
-%if 0%{?suse_version} < 1699
-# Leap15, SLES15
-# have some safe defaults
-%define python_subpackage_name python3-selinux
-%define python_base_requirement python3
-%if "%pythons" == "python36"
-%define python_subpackage_name python36-selinux
-%define python_base_requirement python36
-%endif
-%if "%pythons" == "python310"
-%define python_subpackage_name python310-selinux
-%define python_base_requirement python310
-%endif
-%if "%pythons" == "python311"
-%define python_subpackage_name python311-selinux
-%define python_base_requirement python311
-%endif
-%else
-# Tumbleweed
-%define python_subpackage_name python3-selinux
-%define python_base_requirement python3
-%endif
-
+%define python_subpackage_only 1
 %define libsepol_ver 3.5
+%define upname libselinux
 Name:           libselinux-bindings
 Version:        3.5
 Release:        0
-Summary:        SELinux runtime library and simple utilities
+Summary:        SELinux runtime library and utilities
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
-Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/libselinux-%{version}.tar.gz
-Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/libselinux-%{version}.tar.gz.asc
+Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{upname}-%{version}.tar.gz
+Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{upname}-%{version}.tar.gz.asc
 Source2:        libselinux.keyring
 Source3:        selinux-ready
 Source4:        baselibs.conf
 # PATCH-FIX-UPSTREAM Include <sys/uio.h> for readv prototype
 Patch4:         readv-proto.patch
+Patch5:         skip_cycles.patch
 # PATCH-FIX-UPSTREAM python3.8-compat.patch mcepl@suse.com
 # Make linking working even when default pkg-config doesn’t provide -lpython<ver>
-Patch5:         python3.8-compat.patch
-Patch6:         swig4_moduleimport.patch
+Patch6:         python3.8-compat.patch
+Patch7:         swig4_moduleimport.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  libselinux-devel = %{version}
+BuildRequires:  libsepol-devel >= %{libsepol_ver}
 BuildRequires:  libsepol-devel-static >= %{libsepol_ver}
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel
 BuildRequires:  ruby-devel
 BuildRequires:  swig
 BuildRequires:  pkgconfig(libpcre2-8)
+%python_subpackages
 
 %description
 libselinux provides an interface to get and set process and file
 security contexts and to obtain security policy decisions.
 
-%package -n %{python_subpackage_name}
+%package -n python-selinux
 %define oldpython python
 Summary:        Python bindings for the SELinux runtime library
 Group:          Development/Libraries/Python
-Requires:       %{python_base_requirement}
 Requires:       libselinux1 = %{version}
+Obsoletes:      python-selinux < %{version}
+Provides:       python-selinux = %{version}
 %ifpython2
 Obsoletes:      %{oldpython}-selinux < %{version}
 Provides:       %{oldpython}-selinux = %{version}
 %endif
 
-%description -n %{python_subpackage_name}
+%description -n python-selinux
 libselinux provides an interface to get and set process and file
 security contexts and to obtain security policy decisions.
 
@@ -105,21 +90,32 @@ This subpackage contains Ruby extensions to use SELinux from that
 language.
 
 %prep
-%setup -q -n libselinux-%{version}
-%autopatch -p1
+%autosetup -p1 -n %{upname}-%{version}
 
 %build
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" swigify V=1 USE_PCRE2=y
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" pywrap V=1 USE_PCRE2=y
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" rubywrap V=1 USE_PCRE2=y
+%{python_expand :
+%make_build LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" swigify USE_PCRE2=y PYTHON=$python
+%make_build LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" pywrap USE_PCRE2=y PYTHON=$python
+%make_build LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" rubywrap USE_PCRE2=y PYTHON=$python
+}
 
 %install
-make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a install-pywrap V=1
-make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a install-rubywrap V=1
-rm -rf %{buildroot}/%{_lib} %{buildroot}%{_libdir}/libselinux.* %{buildroot}%{_libdir}/pkgconfig
+mkdir -p %{buildroot}/%{_lib}
+mkdir -p %{buildroot}%{_libdir}
+mkdir -p %{buildroot}%{_includedir}
+mkdir -p %{buildroot}%{_sbindir}
+%{python_expand :
+make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" PYTHON=$python LIBSEPOLA=%{_libdir}/libsepol.a install-pywrap V=1
+make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" PYTHON=$python LIBSEPOLA=%{_libdir}/libsepol.a install-rubywrap V=1
+}
 
-%files -n %{python_subpackage_name}
-%{python3_sitearch}/*selinux*
+# Remove duplicate files
+%fdupes -s %{buildroot}%{_mandir}
+
+%files %{python_files selinux}
+%{python_sitearch}/selinux
+%{python_sitearch}/selinux-%{version}*-info
+%{python_sitearch}/_selinux*
 
 %files -n ruby-selinux
 %{_libdir}/ruby/vendor_ruby/%{rb_ver}/%{rb_arch}/selinux.so

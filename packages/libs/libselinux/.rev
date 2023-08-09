@@ -637,4 +637,12 @@
   usable for the new sle15 macro (using python3.11)</comment>
     <requestid>1090941</requestid>
   </revision>
+  <revision rev="75" vrev="4">
+    <srcmd5>e39af2e24557f14782ece0c0548e872d</srcmd5>
+    <version>3.5</version>
+    <time>1691594663</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102846</requestid>
+  </revision>
 </revisionlist>
