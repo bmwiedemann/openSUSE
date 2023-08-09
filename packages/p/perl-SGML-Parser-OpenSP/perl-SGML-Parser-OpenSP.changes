@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  9 12:31:40 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add perl538.patch: Fix build with Perl 5.38.
+
+-------------------------------------------------------------------
 Fri Nov 18 08:44:44 UTC 2011 - coolo@suse.com
 
 - use original tar.gz

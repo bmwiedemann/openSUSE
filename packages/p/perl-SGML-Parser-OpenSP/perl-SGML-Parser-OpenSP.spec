@@ -1,7 +1,7 @@
 #
 # spec file for package perl-SGML-Parser-OpenSP
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           perl-SGML-Parser-OpenSP
 %define cpan_name SGML-Parser-OpenSP
 Summary:        Perl interface to the OpenSP SGML and XML parser
-License:        Artistic-1.0 or GPL-2.0+
+License:        Artistic-1.0 OR GPL-2.0-or-later
 Group:          Development/Libraries/Perl
 Version:        0.994
 Release:        0
-Url:            http://search.cpan.org/dist/SGML-Parser-OpenSP
+URL:            http://search.cpan.org/dist/SGML-Parser-OpenSP
 Source0:        %{cpan_name}-%{version}.tar.gz
+Patch0:         perl538.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{perl_requires}
 BuildRequires:  dos2unix
@@ -45,7 +46,7 @@ and XS, to the OpenSP SGML and XML parser.
  Authors:	Bjoern Hoehrmann, <bjoern@hoehrmann.de>
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 find -type f -exec chmod 0644 {} \;
 find -type d -exec chmod 0755 {} \;
 for i in Changes README lib/SGML/Parser/OpenSP/Tools.pm lib/SGML/Parser/OpenSP.pm; do
