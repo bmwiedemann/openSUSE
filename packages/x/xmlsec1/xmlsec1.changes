@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  8 15:41:15 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * xmlsec1-ui_null.patch
+    + fix build with older versions of openssl that don't have
+      UI_null() method
+
+-------------------------------------------------------------------
 Wed Feb  1 09:23:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - switch to pkgconfig(zlib) to allow alternative providers as well

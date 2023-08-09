@@ -32,6 +32,7 @@ Source0:        https://www.aleksey.com/xmlsec/download/xmlsec1-%{version}.tar.g
 Source1:        https://www.aleksey.com/xmlsec/download/xmlsec1-%{version}.sig#/xmlsec1-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source99:       xmlsec1-rpmlintrc
+Patch0:         xmlsec1-ui_null.patch
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool
 # Needed certutil for tests
@@ -140,16 +141,18 @@ Requires:       mozilla-nss-devel >= 3.2
 Libraries, includes, etc. for developing XML Security applications with NSS.
 
 %prep
-%autosetup -p1
+%setup -q
+%if 0%{?suse_version} < 1500
+%patch0 -p1
+%endif
 
 %build
 # Allow for deprecations
-export CFLAGS="-Wno-error=deprecated-declarations"
+export CFLAGS="-Wno-error=deprecated-declarations -std=c99"
 export CXXFLAGS="-Wno-error=deprecated-declarations"
 %configure \
     --disable-static \
     --disable-silent-rules \
-    --enable-werror \
     --disable-md5
 %make_build
 

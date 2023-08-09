@@ -210,4 +210,12 @@
     <comment></comment>
     <requestid>1067089</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>0f258f8c139a96960e5bae2b42ea3d7d</srcmd5>
+    <version>1.2.37</version>
+    <time>1691594669</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with older openssl</comment>
+    <requestid>1102976</requestid>
+  </revision>
 </revisionlist>

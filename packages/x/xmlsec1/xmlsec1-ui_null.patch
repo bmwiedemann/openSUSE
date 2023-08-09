@@ -1,0 +1,20 @@
+--- xmlsec1-1.2.33/src/openssl/app.c	2022-01-28 07:47:11.922603482 +0100
++++ xmlsec1-1.2.33/src/openssl/app.c	2022-01-28 08:18:12.786240295 +0100
+@@ -437,7 +437,7 @@
+         }
+     }
+ 
+-    if(ENGINE_ctrl_cmd(engine, "SET_USER_INTERFACE", 0, (void *)UI_null(), 0, 1) < 0) {
++    if(ENGINE_ctrl_cmd(engine, "SET_USER_INTERFACE", 0, (void *)0, 0, 1) < 0) {
+         xmlSecOpenSSLError("ENGINE_ctrl_cmd_string(SET_USER_INTERFACE)", NULL);
+         goto done;
+     }
+@@ -453,7 +453,7 @@
+ 
+     /* load private key */
+     pKey = ENGINE_load_private_key(engine, engineKeyId,
+-                                   (UI_METHOD *)UI_null(),
++                                   (UI_METHOD *)0,
+                                    NULL);
+     if(pKey == NULL) {
+         xmlSecOpenSSLError("ENGINE_load_private_key", NULL);
