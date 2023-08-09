@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-importlib-resources
-Version:        5.12.0
+Version:        6.0.1
 Release:        0
 Summary:        Read resources from Python packages
 License:        Apache-2.0
 URL:            https://importlib-resources.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/i/importlib_resources/importlib_resources-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
