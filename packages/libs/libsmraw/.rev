@@ -175,4 +175,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Update to release 20230320</comment>
     <requestid>1074090</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>9ec997a6091501c795e867db598e68db</srcmd5>
+    <version>20230320</version>
+    <time>1691594740</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103025</requestid>
+  </revision>
 </revisionlist>

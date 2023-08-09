@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%{?sle15_python_module_pythons}
 
 Name:           libsmraw
 %define lname	libsmraw1
