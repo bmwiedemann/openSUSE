@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug 06 07:54:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.30.2:
+  * Document why a number of private objects are documented.
+  * Build docs with 3.11 in ReadTheDocs
+
+-------------------------------------------------------------------
+Sun Aug 06 07:52:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.30.1:
+  * Ensure submodules are checked out when building a release.
+  * Enable another ruff ruleset.
+  * One fewer thing in the README (which is likely less confusing).
+  * Bump suite from `6e126a9` to `b094fe5`
+  * [pre-commit.ci] pre-commit autoupdate
+  * Add a few additional interlinks to the JSON Schema
+    specification.
+  * Make the noxfile support passing a less temporary directory for
+    building docs.
+  * Update requirements.
+  * More correct listing of nox envs for the GitHub actions
+    workflow
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
 Tue Jul 18 18:55:57 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.30.0:
