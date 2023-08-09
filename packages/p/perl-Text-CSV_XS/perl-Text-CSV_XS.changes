@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  8 03:10:51 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.51
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.51	- 2023-08-07, H.Merijn Brand
+      * Contact e-mail update
+      * Attribute skip_empty_rows extended
+      * Fix comments (PR#45)
+      * Fix help (x12340, PR#46)
+      * Update to Devel::PPPort-3.71
+      * Fix HTML on Windows
+      * Fix double header-interpretation on bom + headers => "auto" (issue 47)
+
+-------------------------------------------------------------------
 Thu Mar  2 03:08:38 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.50
