@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  7 17:02:04 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for TrueScale (bsc#1212146)
+
+-------------------------------------------------------------------
 Tue Jul 25 13:04:21 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to 4.1.5:
