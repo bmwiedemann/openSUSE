@@ -24,17 +24,21 @@ License:        MIT
 URL:            https://github.com/PetteriAimonen/libfixmath
 Group:          Development/Libraries/C and C++
 Source0:        %{url}/archive/refs/heads/master.tar.gz#:/%{name}-%{version}.tar.gz
+Source1000:     %{name}-rpmlintrc
 # PATCH-FIX-SUSE build shared lib instead of static one
 Patch0:         build-shared-library.patch
 # PATCH-FIX-SUSE use cmake for installation
 Patch1:         cmake-install.patch
-BuildRequires:  gcc-c++
-# Use cmake3 package on SLE12 because cmake is too old (version 3.5)
-%if !0%{?is_opensuse} && 0%{?sle_version} < 150000
-BuildRequires:  cmake3-full >= 3.13
-# Requires C++17
+%if 0%{?suse_version} < 1500
+# PATCH-FIX-SUSE allow building with lower cmake version
+Patch2:         cmake-tests-old-cmake.patch
+BuildRequires:  cmake >= 3.5
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
 %else
 BuildRequires:  cmake >= 3.13
+BuildRequires:  gcc >= 7
+BuildRequires:  gcc-c++ >= 7
 %endif
 
 %description
@@ -57,6 +61,10 @@ This package contains the headers.
 %autosetup -n lib%{name}-master -p1
 
 %build
+%if 0%{?suse_version} < 1500
+export CC="gcc-7"
+export CXX="g++-7"
+%endif
 # Fix lto-no-text-in-archive rpmlint error
 export CFLAGS="%{optflags} -ffat-lto-objects"
 export CXXFLAGS="%{optflags} -ffat-lto-objects"

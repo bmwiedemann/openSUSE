@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  8 21:14:42 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with g++ >= 7 in order to be able to use C++17 features
+- Added patch:
+  * cmake-tests-old-cmake.patch
+    + allow building with cmake >= 3.5
+    + conditionally applied on SLE12-SP5 whose cmake is old
+
+-------------------------------------------------------------------
 Tue Mar 21 14:54:01 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Properly use optflags when building, bsc#1209201
