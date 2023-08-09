@@ -523,4 +523,13 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
  * PosthogAnalytics unwatch settings on logout ([\#11207](https://github.com/matrix-org/matrix-react-sdk/pull/11207)). Fixes vector-im/element-web#25703.</comment>
     <requestid>1099308</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ec4f6c9cac45fc3b47fc804a38bfef04</srcmd5>
+    <version>1.11.38</version>
+    <time>1691594788</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.11.38
+</comment>
+    <requestid>1103125</requestid>
+  </revision>
 </revisionlist>
