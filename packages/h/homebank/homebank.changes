@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug  8 05:15:14 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.6.6:
+  * bugfix: lp#2027201 when ordering the transaction list by
+    category, split ones are not ordered
+  * bugfix: lp#2026641 anonymise does not deal with account notes,
+    start balance, overdraft and automatic assignment notes
+  * bugfix: lp#2026626 anonymise feature doesn't fully anonymise
+    accounts name
+  * bugfix: lp#2026594 changing currency account with xfer faulty
+    change target account currency
+  * bugfix: lp#2026184 statistics report doesn't always show total
+    for parent category
+  * bugfix: lp#2024940 statistics faulty hide items with data when
+    result is 0.0
+  * bugfix: lp#2024389 filter Status always show section should
+    always be visible
+  * bugfix: lp#2019312 status column included in export detail txn
+    from report break re-import 
+
+-------------------------------------------------------------------
 Tue Jun 27 15:51:36 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.6.5:
