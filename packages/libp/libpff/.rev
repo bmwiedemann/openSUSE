@@ -108,4 +108,12 @@ Part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Update to snapshot 20230225</comment>
     <requestid>1074453</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>22df90ce171f8e45f485dab1814f2c89</srcmd5>
+    <version>20230325</version>
+    <time>1691594718</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1102999</requestid>
+  </revision>
 </revisionlist>
