@@ -4247,4 +4247,12 @@ The toolset consists of a variety of stand-alone scripts, review bots, osc plugi
     <comment>automatic update</comment>
     <requestid>1102321</requestid>
   </revision>
+  <revision rev="493" vrev="1">
+    <srcmd5>5cafda6d15cd47dd44c9a86180773130</srcmd5>
+    <version>20230809.3232664</version>
+    <time>1691594794</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>1103147</requestid>
+  </revision>
 </revisionlist>
