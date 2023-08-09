@@ -56,8 +56,8 @@
 %define debugbuild 0
 
 # Define the version of python3 that blender is going to build against.
-%define py3ver 3.10
-%define py3pkg python310
+%define py3ver 3.11
+%define py3pkg python311
 
 # Blender version: source/blender/blenkernel/BKE_blender_version.h
 # blender has versions like x.xxy which have x.xx (notice the missing

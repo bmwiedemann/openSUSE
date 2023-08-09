@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  8 14:01:25 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Switch to python 3.11
+
+-------------------------------------------------------------------
 Tue May 30 21:39:50 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 3.5.1:
@@ -3863,4 +3868,3 @@ Wed Nov 20 17:47:39 CET 2002 - sbrabec@suse.cz
 Tue Nov 05 15:37:48 CET 2002 - sbrabec@suse.cz
 
 - Added first public GPL release with unofficial automake support.
-
