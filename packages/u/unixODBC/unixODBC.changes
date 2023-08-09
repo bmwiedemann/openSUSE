@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug  8 11:29:18 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.12:
+  * Makefile.am: Do not install config.h #108
+  * DriverManager/drivermanager.h: fix build without threads #112
+  * DriverManager/_info.c: Get locale encoding on Windows. #115
+  * Fixed Connection String #127
+  * Allow diagnostics to be retrieved on SQL_NO_DATA #137
+  * Avoid implicit function declarations, for C99 compatibility #138
+  * Remove self-reference #140
+  * isql.1: Add information about handling passwords containing semicolons #126
+- Remove unixODBC-gccwarnings.patch, unixODBC-2.3.6-declarations.patch:
+  Changes have been done in https://github.com/lurcher/unixODBC/pull/138
+- Update unixODC-etc-location.patch
+
+-------------------------------------------------------------------
 Wed Jul 12 10:17:40 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - Add missing requires for glibc-locale-base, required for utf16 codec

@@ -392,4 +392,23 @@
     <comment></comment>
     <requestid>1098343</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>d3eb0515fc842232ac79c79dc7733a67</srcmd5>
+    <version>2.3.12</version>
+    <time>1691594646</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.12:
+  * Makefile.am: Do not install config.h #108
+  * DriverManager/drivermanager.h: fix build without threads #112
+  * DriverManager/_info.c: Get locale encoding on Windows. #115
+  * Fixed Connection String #127
+  * Allow diagnostics to be retrieved on SQL_NO_DATA #137
+  * Avoid implicit function declarations, for C99 compatibility #138
+  * Remove self-reference #140
+  * isql.1: Add information about handling passwords containing semicolons #126
+- Remove unixODBC-gccwarnings.patch, unixODBC-2.3.6-declarations.patch:
+  Changes have been done in https://github.com/lurcher/unixODBC/pull/138
+- Update unixODC-etc-location.patch</comment>
+    <requestid>1102884</requestid>
+  </revision>
 </revisionlist>
