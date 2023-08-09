@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 08 14:09:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.59.0:
+  * [jrpc] Add support for optional custom allowed http status
+    codes and custom TLS options (#817)
+  * Bump golang.org/x/net from 0.13.0 to 0.14.0 (#816)
+
+-------------------------------------------------------------------
 Sun Aug 06 07:52:20 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.58.0:
