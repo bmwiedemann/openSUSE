@@ -25,4 +25,12 @@ removed description from cpanspec.yml</comment>
     <comment></comment>
     <requestid>912689</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e4fcd1cf7ad32d31558dde0f60823280</srcmd5>
+    <version>1.42</version>
+    <time>1691594798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103153</requestid>
+  </revision>
 </revisionlist>

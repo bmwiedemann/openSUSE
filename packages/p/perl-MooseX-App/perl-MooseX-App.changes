@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  9 12:24:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 70.patch: Remove given, when, and smartmatch operators; fix
+  build with Perl 5.38.
+
+-------------------------------------------------------------------
 Tue Aug 17 10:56:35 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
 
 - updated to 1.42

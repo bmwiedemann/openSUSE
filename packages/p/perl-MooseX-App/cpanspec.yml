@@ -7,7 +7,8 @@ description_paragraphs: 1
 #sources:
 #  - source1
 #  - source2
-#patches:
+patches:
+  https://patch-diff.githubusercontent.com/raw/maros/MooseX-App/pull/70.patch: -p1
 #  bar.patch:
 preamble: |-
   BuildRequires: perl(Config::Any)

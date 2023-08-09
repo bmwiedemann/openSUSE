@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MooseX-App
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Summary:        Write user-friendly command line apps with even less suffering
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        MooseX-App-1.42.tar.gz
 Source1:        cpanspec.yml
+Patch0:         https://patch-diff.githubusercontent.com/raw/maros/MooseX-App/pull/70.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -55,8 +56,9 @@ be defined as simple Moose accessors using the 'option' and 'parameter'
 keywords respectively.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
