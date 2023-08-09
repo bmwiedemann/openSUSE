@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  8 11:22:18 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Move loading the Pkg module to fix a failing unit test (bsc#1214069)
+- 4.6.2
+
+-------------------------------------------------------------------
 Thu Apr  6 10:17:23 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
 
 - Adapt test to changes in ruby-bindings when detecting Yast
