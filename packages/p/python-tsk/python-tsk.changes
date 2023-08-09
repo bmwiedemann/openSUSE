@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  1 18:49:10 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- use %{?sle15_python_module_pythons} for opensuse15.5 compatibility
+
+-------------------------------------------------------------------
 Mon May 23 22:13:40 UTC 2022 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - update to v0~20210419 

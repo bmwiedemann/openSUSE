@@ -15,10 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%{?sle15_python_module_pythons}
 
 %define timestamp 	20210419
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+
 Name:           python-tsk
 Version:        0~%{timestamp}
 Release:        0
