@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug  8 11:07:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.7:
+  * Handle newlines when parsing metadata.
+  * Use version comparison logic for python_full_version.
+  * Simplify code with a set comprehension.
+  * Fix shebang computation for source builds of Python.
+  * Extract tarfiles more safely by incorporating tarfile
+    filters.
+  * Check for 'has_cert' attribute before using it.
+  * Fix #203: Handle parsing of export entries to allow script
+    names such as "," or ",foo".
+  * Fix #200: Improve conformance to PEP440.
+  * In addition to the above, an SPDX license identifier is now
+    used.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
