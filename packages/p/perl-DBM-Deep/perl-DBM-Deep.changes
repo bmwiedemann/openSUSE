@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  9 10:39:24 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Add package-separator-perl5.38.patch, see
+  https://rt.cpan.org/Public/Bug/Display.html?id=148417
+
+-------------------------------------------------------------------
 Tue May 22 05:12:36 UTC 2018 - coolo@suse.com
 
 - updated to 2.0016
