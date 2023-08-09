@@ -1,7 +1,7 @@
-Index: squid-4.0.22/src/acl/external/kerberos_ldap_group/Makefile.am
+Index: squid-6.2/src/acl/external/kerberos_ldap_group/Makefile.am
 ===================================================================
---- squid-4.0.22.orig/src/acl/external/kerberos_ldap_group/Makefile.am
-+++ squid-4.0.22/src/acl/external/kerberos_ldap_group/Makefile.am
+--- squid-6.2.orig/src/acl/external/kerberos_ldap_group/Makefile.am
++++ squid-6.2/src/acl/external/kerberos_ldap_group/Makefile.am
 @@ -15,9 +15,11 @@ EXTRA_DIST= \
  
  AM_CPPFLAGS += -I$(srcdir)

@@ -1142,4 +1142,12 @@ and CVE references,
   * fix gcc13 warning</comment>
     <requestid>1085760</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>bbc35d81245b2c3ea05caa48e895a3fe</srcmd5>
+    <version>6.2</version>
+    <time>1691594777</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103106</requestid>
+  </revision>
 </revisionlist>

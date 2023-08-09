@@ -24,14 +24,14 @@
 %define         squidhelperdir %{_sbindir}
 %endif
 Name:           squid
-Version:        5.9
+Version:        6.2
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Proxy
 URL:            http://www.squid-cache.org
-Source0:        http://www.squid-cache.org/Versions/v5/squid-%{version}.tar.xz
-Source1:        http://www.squid-cache.org/Versions/v5/squid-%{version}.tar.xz.asc
+Source0:        http://www.squid-cache.org/Versions/v6/squid-%{version}.tar.xz
+Source1:        http://www.squid-cache.org/Versions/v6/squid-%{version}.tar.xz.asc
 Source5:        pam.squid
 Source6:        unsquid.pl
 Source7:        %{name}.logrotate
@@ -50,7 +50,11 @@ Patch3:         harden_squid.service.patch
 BuildRequires:  cppunit-devel
 BuildRequires:  expat
 BuildRequires:  fdupes
+%if 0%{?suse_version} < 1590
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libcap-devel
 BuildRequires:  libtool
 BuildRequires:  openldap2-devel
@@ -113,6 +117,10 @@ cd libltdl; autoreconf -fi; cd ..
 export CFLAGS="%{optflags} -fPIE -fPIC -DOPENSSL_LOAD_CONF"
 export CXXFLAGS="%{optflags} -fPIE -fPIC -DOPENSSL_LOAD_CONF"
 export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,relro,-z,now -pie"
+%if 0%{?suse_version} < 1590
+export CC=gcc-11
+export CXX=g++-11
+%endif
 %configure \
 	--disable-strict-error-checking \
 	--sysconfdir=%{squidconfdir} \

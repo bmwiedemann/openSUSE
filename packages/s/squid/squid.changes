@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Aug  9 07:48:25 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 6.2:
+  * Major UI changes:
+    - Remove 8K limit for single access.log line
+    - Add tls_key_log to report TLS communication secrets
+  * Minor UI changes:
+    - Add %transport::>connection_id logformat code
+    - Add paranoid_hit_validation directive
+    - Report SMP store queues state (mgr:store_queues)
+    - Addcache_log_message directive
+  * Developer Interest changes:
+    - Replaced X-Cache and X-Cache-Lookup headers with Cache-Status
+    - Reject HTTP/1.0 requests with unusual framing
+    - codespell check added to source maintenance enforcement
+    - Streamlined ./configure handling of optional libraries
+    - Add –progress option to test-builds.sh
+    - Remove layer-00-bootstrap from test script
+    - Convert LRU map into a CLP map
+    - Remove legacy context-based debugging in favor of CodeContext
+  * Removed features:
+    - Remove unused cache_diff binary
+    - Remove obsolete membanger test
+    - Remove deprecated leakfinder (–enable-leakfinder)
+
+-------------------------------------------------------------------
 Tue May  9 14:32:34 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - update to 5.9:
