@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  8 03:06:17 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.34
+   see /usr/share/doc/packages/perl-Convert-ASN1/ChangeLog
+
+  0.34 -- Mon Aug 07 19:46:22 ADT 2023
+
+  Bug Fixes
+
+  Thanks to chrisridd and fschlich for these bug fixes
+    * Fixes: #47 2nd - Debug output using print instead of printf
+    * Fixes #47 Debug output using print instead of printf
+    * ASN1.pod: fix minor typo
+
+-------------------------------------------------------------------
 Wed Sep 29 21:21:45 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Fix perl-Convert-ASN1-0.31-test.patch and add -p0
