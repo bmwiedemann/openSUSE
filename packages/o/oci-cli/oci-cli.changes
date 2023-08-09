@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Jul 28 11:23:51 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.30.0
+  * Goldengate Service
+    * Support for Automatic Backup Download
+      * ``oci golden-gate deployment-backup copy --bucket-name --namespace-name``
+  * Budgets Service
+    * Support for creating single use (non-recurring) budgets
+      * ``oci budgets budget create``
+      * ``oci budgets budget update``
+  * AI Document Service
+    * Support for composing two or more Document Service custom
+      key value models into one single model.
+      * ``oci ai-document model create``
+  * Core Service
+    * Support for Custom hostname
+      * ``oci compute-management instance-pool create``
+      * ``oci compute-management instance-pool update``
+  * [BREAKING] Subscriptions and AssignedSubscription resources
+    are now polymorphic in Organizations service
+      * ``oci organizations subscription list --entity-version``
+      * ``oci organizations assigned-subscription list --entity-version``
+- from version 3.29.4
+  * Support for no-browser authentication
+    * oci session authenticate --no-browser
+  * Big Data service
+    * Support for new commands
+      * ``oci bds instance get-os-patch-details``
+      * ``oci bds instance install-os-patch``
+      * ``oci bds instance list-os-patches``
+      * ``oci bds instance master-nodes add``
+      * ``oci bds instance utility-nodes add``
+    * Support for new optional parameter
+      * ``oci bds instance list-patch-histories --patch-type``
+  * File Storage service
+    * Support for new commands
+      * ``oci fs mount-target validate-key-tabs``
+      * ``oci fs outbound-connector``
+    * Support for new optional parameters for Kerberos and LDAP with NFSv3
+      * ``oci fs export create --is-idmap-groups-for-sys-auth``
+      * ``oci fs export update --is-idmap-groups-for-sys-auth``
+      * ``oci fs mount-target create --idmap-type --kerberos --ldap-idmap``
+      * ``oci fs mount-target update --idmap-type --kerberos --ldap-idmap``
+  * Support for new optional parameter in the Disaster Recovery service
+    * ``oci disaster-recovery dr-protection-group list --role``
+  * Support for test connectivity for connections associated
+    with deployments in the Goldengate service
+    * ``oci goldengate connection-assignment test``
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Jul 14 07:23:13 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.29.3
