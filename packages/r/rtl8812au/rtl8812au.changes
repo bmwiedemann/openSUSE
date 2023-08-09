@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  1 12:04:41 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 5.13.6+git20230722.b5f4e6e
+  * Update wifi_regd.c
+  * support for kernel 6.4.4 due to a backport from kernel 6.5
+  * update docs
+  * support for kernel 6.5
+  * revert ping fixes
+  * fix delay that showed with ping
+
+-------------------------------------------------------------------
 Thu May 18 10:03:31 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 5.13.6+git20230511.765d4e4
