@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  9 07:48:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.1:
+  * use reconstructor function for pickling
+  * simplify implementation of ``.reverse()``
+  * allow `integer sequence indexing <indexing.rst>`__ by list of
+    indices,
+  * add `masked indexing <indexing.rst>`__ by bitarray masks,
+  * improve ``.bytereverse()`` docstring, see issue
+
+-------------------------------------------------------------------
 Sun Jun 25 19:01:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.6:
