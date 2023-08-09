@@ -1,7 +1,7 @@
 #
 # spec file for package dragonbox
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,16 +27,16 @@ URL:            https://github.com/jk-jeon/dragonbox/
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-SUSE install the header in a sane path
 Patch0:         fix-install-path.patch
+Patch1:         cmake.patch
 BuildRequires:  pkgconfig
 # Use cmake3 package on SLE12 because cmake is too old (version 3.5)
 %if !0%{?is_opensuse} && 0%{?sle_version} < 150000
-BuildRequires:  cmake3-full >= 3.14
 # Requires C++17
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc7-c++
 %else
-BuildRequires:  cmake >= 3.14
-BuildRequires:  gcc-c++
+BuildRequires:  gcc-c++ >= 7
 %endif
+BuildRequires:  cmake >= 3.5
 
 %description
 This library is a reference implementation of Dragonbox in C++.
@@ -62,13 +62,12 @@ This package contains the headers.
 %autosetup -p1
 
 %build
-# Use g++-11 to build a C++17 codebase
-%cmake \
-    -DDRAGONBOX_INSTALL_TO_CHARS=OFF \
-%if !0%{?is_opensuse} && 0%{?sle_version} < 150000
-    -DCMAKE_CXX_COMPILER=/usr/bin/g++-11 \
+%if 0%{?suse_version} < 1500
+export CC="gcc-7"
+export CXX="g++-7"
 %endif
- ;
+export CXXFLAGS="-std=c++17"
+%cmake -DDRAGONBOX_INSTALL_TO_CHARS=OFF
 %cmake_build
 
 %install

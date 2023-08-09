@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1005132</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1f86ec5f01ea0fd5e64abfb3e5a96b04</srcmd5>
+    <version>1.1.3</version>
+    <time>1691594670</time>
+    <user>dimstar_suse</user>
+    <comment>simplify and fix sle12sp5</comment>
+    <requestid>1103048</requestid>
+  </revision>
 </revisionlist>
