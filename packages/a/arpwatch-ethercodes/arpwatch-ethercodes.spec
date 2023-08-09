@@ -18,7 +18,7 @@
 
 
 Name:           arpwatch-ethercodes
-Version:        20230420
+Version:        20230808
 Release:        0
 Summary:        Ethercodes Data for arpwatch
 License:        BSD-3-Clause
