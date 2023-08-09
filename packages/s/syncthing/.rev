@@ -1313,4 +1313,26 @@
 </comment>
     <requestid>1096702</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>8702f37ea18bb2432025de9a6c179829</srcmd5>
+    <version>1.23.7</version>
+    <time>1691594792</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.13.7
+  * Bugfixes:
+    #6597: setLowPriority should not increase process priority when already lower (in Windows)
+    #7698: ursrv: unrealistic uptime data, likely due to unset RTC (1970-01-01)
+    #8958: Extended attribute filter editor should be enabled when &quot;send extended attributes&quot; is checked
+    #8967: Shared With list ends with comma on 1 device
+    #9001: relaysrv crash after some weeks of operation
+  * Enhancements:
+    #8890: Do not autoexpand tilde sign (~) to an absolute home directory path
+    #8957: Add environment variables for --home, --conf, and --data
+    #8968: Error for Windows invalid file names should indicate the invalid character or name part
+  * Other issues:
+    #8973: 1.23.6 docker image no longer available for linux/arm/v7
+    #8983: Integrate govulncheck
+</comment>
+    <requestid>1103112</requestid>
+  </revision>
 </revisionlist>
