@@ -734,4 +734,17 @@
 New upstream release</comment>
     <requestid>1091207</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>0b569eb2f2587053fce9e2a2e9ad3723</srcmd5>
+    <version>4.10.5</version>
+    <time>1691594656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.10.5:
+  + Fix ordering problems with filter model signals
+  + Avoid lingering resize cursors
+  + Fix alignment issues on sparc
+  + Fix a problem with CSS corner values
+  + Updated translations. (forwarded request 1102464 from iznogood)</comment>
+    <requestid>1102936</requestid>
+  </revision>
 </revisionlist>

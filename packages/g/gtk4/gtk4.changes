@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug  5 10:16:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.10.5:
+  + Fix ordering problems with filter model signals
+  + Avoid lingering resize cursors
+  + Fix alignment issues on sparc
+  + Fix a problem with CSS corner values
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jun  5 18:58:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.10.4:
