@@ -18,7 +18,7 @@
 
 # Only fontbox and jempbox are built as pdfbox itself depends on Adobe's pcif.
 Name:           apache-pdfbox
-Version:        2.0.28
+Version:        2.0.29
 Release:        0
 Summary:        Java PDF Library
 License:        Apache-2.0 AND OFL-1.1
@@ -35,9 +35,9 @@ BuildRequires:  bouncycastle-mail
 BuildRequires:  bouncycastle-pkix
 BuildRequires:  bouncycastle-util
 BuildRequires:  fdupes
+BuildRequires:  glassfish-jaxb-api
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
 Requires:       apache-commons-logging
 BuildArch:      noarch
@@ -67,19 +67,17 @@ find -name '*.jar' -delete
 
 %build
 mkdir -p lib
-build-jar-repository -s lib bcmail bcpkix bcprov bcutil commons-logging
-%ant -Dproject.version=%{version} -Dtest.skip=true package javadoc
+build-jar-repository -s lib bcmail bcpkix bcprov bcutil commons-logging glassfish-jaxb-api
+%{ant} -Dproject.version=%{version} -Dtest.skip=true package javadoc
 
 %install
 # Code
 install -d -m 0755 %{buildroot}%{_javadir}/pdfbox
 install -d -m 0755 %{buildroot}%{_mavenpomdir}/pdfbox
 install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
-for jar in fontbox pdfbox debugger tools; do
+for jar in fontbox pdfbox xmpbox debugger tools; do
     install -p -m 0644 ${jar}/target/*-%{version}.jar %{buildroot}%{_javadir}/pdfbox/${jar}.jar
-	%pom_remove_parent ${jar}
-	%pom_xpath_inject pom:project "<groupId>org.apache.pdfbox</groupId><version>%{version}</version>" ${jar}
-	install -p -m 0644 ${jar}/pom.xml %{buildroot}%{_mavenpomdir}/pdfbox/${jar}.pom
+	%mvn_install_pom ${jar}/pom.xml %{buildroot}%{_mavenpomdir}/pdfbox/${jar}.pom
 	%add_maven_depmap pdfbox/${jar}.pom pdfbox/${jar}.jar
 	cp -pr ${jar}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${jar}
 done

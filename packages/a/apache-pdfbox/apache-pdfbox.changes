@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Aug  7 07:12:31 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to 2.0.29
+  * Bug
+    - A (rotated) barcode is missing from a pdf when printed
+    - NullPointerException in PDTrueTypeFont.java getPath( )
+    - Parsing of XMP metadata without optional xmpmeta element
+    - Avoid division by 0 in shading function interpolation
+    - MyPageDrawer#getPaint may produce
+      UnsupportedOperationException
+    - Barcode corrupted when printing document
+    - The text in some fonts is lost when converting pdf to image
+    - PDFTextStripper runs out of memory in 2.0.28 but not in
+      2.0.27 same code
+    - all values in the signature dictionary shall be direct
+      objects
+    - Glyphs not rendered
+    - PDF with mangled font rendering in some environments
+    - RadioButtons disappear when printing PDF
+    - BitsPerComponent 16 not allowed in PDF/A-1b
+    - NullPointerException in PDFStreamEngine.showText
+    - Infinte loop when parsing Type1 font
+  * Improvement
+    - Add duplex and tray parameters to PrintPDF
+    - Create command line utility to extract XMP data
+    - Improve Opaque PDFRenderer example
+  * Task
+    - Implement /RunLengthDecode encoder
+    - Slight regression on corrupt bug tracker file
+    - move and update bc from jdk15on to jdk15to18
+- Build and package forgotten artifact org.apache.pdfbox:xmpbox
+- Add build dependency on mvn(javax.xml.bind:jaxb-api), needed for
+  xmpbox.
+
+-------------------------------------------------------------------
 Fri Apr 14 08:10:09 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to 2.0.28
