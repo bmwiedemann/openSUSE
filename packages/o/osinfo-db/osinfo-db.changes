@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug  7 10:53:32 MDT 2023 - carnold@suse.com
+
+- Update to database version 20230719
+  osinfo-db-20230719.tar.xz
+- Add support for SLE 15-SP6
+  add-sle15sp6-support.patch
+- Add support for SLE Micro 5.5
+  add-slem5.5-support.patch
+- Drop patches contained in new tarball
+  add-opensuse-leap-15.5-support.patch
+  add-sle15sp5-support.patch
+  add-slem5.3-support.patch
+  add-slem5.4-support.patch
+
+-------------------------------------------------------------------
 Wed May 31 12:50:42 MDT 2023 - carnold@suse.com
 
 - Update to database version 20230518
