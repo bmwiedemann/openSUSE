@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __builder ninja
-%define sover 9.4.2
+%define sover 9.5.1
 %define shlibver %(echo %{sover} | tr "." "_")
 %define srcname dealii
 
@@ -84,13 +84,12 @@
 %endif
 
 Name:           %{pname}
-Version:        9.4.2
+Version:        9.5.1
 Release:        0
 Summary:        A Finite Element Differential Equations Analysis Library
 License:        LGPL-2.1-or-later
 URL:            https://www.dealii.org/
-Source0:        https://github.com/dealii/dealii/releases/download/v%{version}/%{srcname}-%{version}.tar.gz
-Source1:        %{srcname}-rpmlintrc
+Source:         https://github.com/dealii/dealii/releases/download/v%{version}/%{srcname}-%{version}.tar.gz
 # NOTE: serial arpack-ng even if parpack is available (see gh#dealii/dealii#10197)
 BuildRequires:  arpack-ng-devel
 BuildRequires:  blas-devel
@@ -100,6 +99,7 @@ BuildRequires:  gcc-fortran
 BuildRequires:  gmsh
 BuildRequires:  gmsh-devel
 BuildRequires:  hdf5%{?my_suffix}-devel
+BuildRequires:  kokkos-devel >= 4
 BuildRequires:  lapack-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_serialization-devel
@@ -230,7 +230,6 @@ sed -i "1{/\/usr\/bin\/env/d}" %{buildroot}%{my_datadir}/deal.II/scripts/indent.
 %{my_libdir}/*.so
 %{my_datadir}/deal.II/
 %{my_libdir}/cmake/
-%{my_libdir}/pkgconfig/*.pc
 
 %if %{with python}
 %files -n python3-PyDealII
