@@ -77,4 +77,12 @@
   + Fixed: Use the proper link fragment for interface prerequisite (forwarded request 1073122 from iznogood)</comment>
     <requestid>1073243</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a524d8a5c36177570bf3cec2491ec34e</srcmd5>
+    <version>2023.1</version>
+    <time>1691594651</time>
+    <user>dimstar_suse</user>
+    <comment>Simplify spec file by dropping update-alternatives and many unneeded Python single spec macros; and amend Licenses tag, among other things (forwarded request 1101271 from luc14n0)</comment>
+    <requestid>1102932</requestid>
+  </revision>
 </revisionlist>
