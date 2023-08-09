@@ -30,7 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %python_version_nodots < 38
-Requires:       python-importlib_metadata
+Requires:       python-importlib-metadata
 %endif
 %python_subpackages
 

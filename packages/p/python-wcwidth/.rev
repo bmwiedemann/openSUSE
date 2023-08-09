@@ -161,4 +161,12 @@ add explicit Requires for python-importlib_metadata for Python &lt; 3.8</comment
     <comment></comment>
     <requestid>1081728</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>811c1b20ee0d168268d8106851ff56e1</srcmd5>
+    <version>0.2.6</version>
+    <time>1691594641</time>
+    <user>dimstar_suse</user>
+    <comment>- use actual package name for importlib-metadata requires</comment>
+    <requestid>1102818</requestid>
+  </revision>
 </revisionlist>
