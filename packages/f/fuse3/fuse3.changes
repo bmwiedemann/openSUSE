@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  8 10:37:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.16.1
+  * Readdir kernel cache can be enabled from high-level API.
+
+-------------------------------------------------------------------
 Wed Jul  5 10:29:12 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.15.1
