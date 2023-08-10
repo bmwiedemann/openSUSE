@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug  9 07:54:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.7.22:
+  Added certs:
+  # CN=Sectigo Public Server Authentication Root E46 O=Sectigo Limited
+  # CN=Sectigo Public Server Authentication Root R46 O=Sectigo Limited
+  # CN=SSL.com TLS RSA Root CA 2022 O=SSL Corporation
+  # CN=SSL.com TLS ECC Root CA 2022 O=SSL Corporation
+  # CN=Atos TrustedRoot Root CA ECC TLS 2021 O=Atos
+  # CN=Atos TrustedRoot Root CA RSA TLS 2021 O=Atos
+  Removed certs:
+  # CN=Hongkong Post Root CA 1 O=Hongkong Post
+  # CN=E-Tugra Certification Authority O=E-Tu\u011fra EBG Bili\u015fim
+    Teknolojileri ve Hizmetleri A.\u015e. OU=E-Tugra Sertifikasyon Merkezi
+  # CN=E-Tugra Global Root CA RSA v3 O=E-Tugra EBG A.S. OU=E-Tugra Trust Center
+  # CN=E-Tugra Global Root CA ECC v3 O=E-Tugra EBG A.S. OU=E-Tugra Trust Center
+
+-------------------------------------------------------------------
 Mon May  8 18:01:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.5.7:
