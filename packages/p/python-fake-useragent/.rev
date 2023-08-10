@@ -66,4 +66,20 @@
   * Update deps</comment>
     <requestid>1080290</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>40e4b2aee5ccc2e616c2a21c1d984675</srcmd5>
+    <version>1.2.1</version>
+    <time>1691674397</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * Still using the new dataset of course!
+  * Small improvements in the min_percentage check
+  * Update all Pip package dependencies
+  * Updated browser useragent data 🚀
+  * Allow filters on browser, OS and usage percentage 🚀
+  * Update the cache scraper to scape the new data source for
+    user-agent strings
+  * Adapted the code to work with the new JSON data format</comment>
+    <requestid>1102873</requestid>
+  </revision>
 </revisionlist>
