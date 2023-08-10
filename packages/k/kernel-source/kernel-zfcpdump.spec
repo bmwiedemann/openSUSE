@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.4
-%define patchversion 6.4.8
+%define patchversion 6.4.9
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -112,9 +112,9 @@ Name:           kernel-zfcpdump
 Summary:        The IBM System Z zfcpdump Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.4.8
+Version:        6.4.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gc24ac79
+Release:        <RELEASE>.g5b9ad20
 %else
 Release:        0
 %endif
@@ -242,10 +242,10 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-c24ac79a6017521cded9f256f78ac3407cb3e579
-Provides:       kernel-srchash-c24ac79a6017521cded9f256f78ac3407cb3e579
+Provides:       kernel-%build_flavor-base-srchash-5b9ad204d9b588ce9f24cf685a1bb1e46b48ac2b
+Provides:       kernel-srchash-5b9ad204d9b588ce9f24cf685a1bb1e46b48ac2b
 # END COMMON DEPS
-Provides:       %name-srchash-c24ac79a6017521cded9f256f78ac3407cb3e579
+Provides:       %name-srchash-5b9ad204d9b588ce9f24cf685a1bb1e46b48ac2b
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -1343,8 +1343,8 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-c24ac79a6017521cded9f256f78ac3407cb3e579
-Provides:       kernel-srchash-c24ac79a6017521cded9f256f78ac3407cb3e579
+Provides:       kernel-%build_flavor-base-srchash-5b9ad204d9b588ce9f24cf685a1bb1e46b48ac2b
+Provides:       kernel-srchash-5b9ad204d9b588ce9f24cf685a1bb1e46b48ac2b
 
 %obsolete_rebuilds %name-base
 %ifarch %ix86

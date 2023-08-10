@@ -6354,4 +6354,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.4.8 &amp; 6.4.7 and other fixes</comment>
     <requestid>1102261</requestid>
   </revision>
+  <revision rev="700" vrev="1">
+    <srcmd5>6fe7d37717df22666044164778e6e243</srcmd5>
+    <version>6.4.9</version>
+    <time>1691674390</time>
+    <user>dimstar_suse</user>
+    <comment>6.4.9 -- SRSO &amp; GDS CVEs</comment>
+    <requestid>1103061</requestid>
+  </revision>
 </revisionlist>

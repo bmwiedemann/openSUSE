@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.4
-%define patchversion 6.4.8
+%define patchversion 6.4.9
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -30,9 +30,9 @@
 %endif
 
 Name:           kernel-source
-Version:        6.4.8
+Version:        6.4.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gc24ac79
+Release:        <RELEASE>.g5b9ad20
 %else
 Release:        0
 %endif
@@ -49,7 +49,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-c24ac79a6017521cded9f256f78ac3407cb3e579
+Provides:       %name-srchash-5b9ad204d9b588ce9f24cf685a1bb1e46b48ac2b
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
