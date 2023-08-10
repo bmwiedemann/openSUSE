@@ -54,4 +54,13 @@
   - Fix typo in `pipx upgrade-all` output</comment>
     <requestid>1092063</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>746b0a682d605a1638b93ee49a958f0c</srcmd5>
+    <version>1.2.0</version>
+    <time>1691674484</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68, jsc#PED-5573)
+</comment>
+    <requestid>1103273</requestid>
+  </revision>
 </revisionlist>
