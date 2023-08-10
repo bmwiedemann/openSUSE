@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           typst
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        A new markup-based typesetting system that is powerful and easy to learn
 License:        Apache-2.0
@@ -57,15 +57,11 @@ Fish command-line completion support for %{name}.
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 
-# Build-process needs the whole git-repo in order to parse out the
-# build-hash. We download the tarballs from github, which doesn't
-# contain it. So we have to manually set the hash for now.
-sed -i "s/_TYPST_HASH_/%{build_hash}/" cli/build.rs
-
 %build
+export TYPST_VERSION=%{version}
 export GEN_ARTIFACTS=%{_builddir}/%{name}-%{version}/artifacts
 mkdir -p $GEN_ARTIFACTS
-cd cli
+cd crates/typst-cli
 RUSTFLAGS=%{rustflags} %{cargo_build}
 
 %check
