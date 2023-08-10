@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  9 01:02:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.57
+  * EventEngine: Change GetDNSResolver to return
+    absl::StatusOr<std::unique_ptr<DNSResolver>>.
+  * Improve server handling of file descriptor exhaustion.
+  * Add a channel argument to set DSCP on streams.
+
+-------------------------------------------------------------------
 Thu Aug  3 15:25:03 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Don't include non-deterministic CMakeConfigureLog.yaml in sources

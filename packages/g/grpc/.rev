@@ -484,4 +484,12 @@ Note: In my home project this only builds on Factory/Tumbleweed. (forwarded requ
     <comment></comment>
     <requestid>1102469</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>ff10143e043f5913f2ed95ada4a2edc2</srcmd5>
+    <version>1.57.0</version>
+    <time>1691674361</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.57</comment>
+    <requestid>1103055</requestid>
+  </revision>
 </revisionlist>
