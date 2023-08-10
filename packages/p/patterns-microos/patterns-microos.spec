@@ -211,6 +211,10 @@ Requires:       ethtool
 %ifnarch s390x
 Requires:       irqbalance
 %endif
+%ifarch %ix86 x86_64
+Requires:       ucode-amd
+Requires:       ucode-intel
+%endif
 Requires:       fcoe-utils
 Requires:       hwinfo
 
@@ -697,10 +701,6 @@ Requires:       policycoreutils-python-utils
 Requires:       qemu-guest-agent
 Requires:       spice-vdagent
 Requires:       tftpboot-installation-openSUSE-MicroOS-%{_target_cpu}
-%ifarch %ix86 x86_64
-Requires:       ucode-amd
-Requires:       ucode-intel
-%endif
 Requires:       wpa_supplicant
 Requires:       xfsprogs
 Provides:       pattern() = microos_onlyDVD

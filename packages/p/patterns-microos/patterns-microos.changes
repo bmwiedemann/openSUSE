@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  9 08:42:09 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add ucode-{amd,intel} to the hardware pattern
+
+-------------------------------------------------------------------
 Mon Jul  3 01:02:33 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add KDE partition manager to the default plasma install (boo#1212925) 
@@ -6,8 +11,8 @@ Mon Jul  3 01:02:33 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 -------------------------------------------------------------------
 Mon Jun 19 09:03:38 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- Add bootlader dependency to the onlyDVD pattern: we still shoult
-  ensure this ens up at least on the DVD.
+- Add bootlader dependency to the onlyDVD pattern: we still should
+  ensure this ends up at least on the DVD.
 
 -------------------------------------------------------------------
 Wed May 24 17:02:35 UTC 2023 - Stefan Schubert <schubi@suse.com>
