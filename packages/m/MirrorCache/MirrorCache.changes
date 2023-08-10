@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 03 08:42:06 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.062:
+  * Add GEOIP config (#399)
+  * Add url parameter LIMIT fir number of mirrors in metalink (#399)
+  * Improve download report for multigroups (#398)
+
+-------------------------------------------------------------------
 Thu Jul 20 07:08:51 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.061:
