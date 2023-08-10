@@ -1,6 +1,11 @@
+---
+ man/procmail.man |    3 ---
+ src/fields.c     |   13 +++++++++++--
+ 2 files changed, 11 insertions(+), 5 deletions(-)
+
 --- man/procmail.man
 +++ man/procmail.man	2004-05-09 22:17:37.000000000 +0000
-@@ -604,9 +604,6 @@ it to the filter itself, not to any of t
+@@ -605,9 +605,6 @@ it to the filter itself, not to any of t
  A continued
  .B Content-Length:
  field is not handled correctly.

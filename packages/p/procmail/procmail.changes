@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Wed Aug  9 09:09:55 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to procmail 3.24 (New Upstream)
+  - Don't coredump in comsat code if interrupted early
+  - Correctly handle COMSAT=on
+  - Once used, the 'H' and 'r' flags would never be cleared
+  - Fix possible buffer overflow in variable-capture actions
+  - Fix up the parsing of variable-capture actions
+  - LMTP code assumed sizeof(long)==sizeof(int)
+  - SHELL is now always preset to /bin/sh.  USER_SHELL contains
+    the shell from the user's passwd entry
+  - When HOST is mismatched, reset it for the next rcfile
+  - Always read in a new, global rcfile (/etc/procmail.conf)
+    to allow runtime configuration of variables like DEFAULT.
+    This rcfile cannot deliver or filter messages
+  - Mismatched HOST in /etc/procmailrc didn't discard the message
+  - backquote expansion in a condition disabled header
+    concatenation for that condition
+  - LMTP didn't correctly handle quoted localparts
+  - Removed SIZE extension from LMTP (unsupportable semantics)
+  - Don't coredump if unable to exec /bin/sh
+  - Enable "+detail" processing in LMTP mode by passing the
+    delimiter (e.g., "+") as an optional argument after -z
+  - In LMTP mode, save the domain of the recipient in
+    PROCMAIL_DOMAIN
+  - Set PROCMAIL_MODE to one of "d", "m", "z", or "" to reflect
+    the mode option it was invoked with, if any
+  - Fixed all bugs collected by Debian and others
+    during the past 21 years.  See the git commit history
+    for detailed descriptions.
+- Port patches
+  * procmail-3.22-autoconf.dif
+  * procmail-3.22-headerconcat.dif
+  * procmail-3.22-ipv6.patch
+  * procmail-3.22-mailstat.patch
+  * procmail-3.22-owl-truncate.dif
+  * procmail-3.22.dif
+  * procmail-cflags.dif
+- Remove former Debian and SUSE patches from procmail-3.22-patches.tar.bz2
+  * 04
+  * 06
+  * 10
+  * 11
+  * 12
+  * 13
+  * 14
+  * 15
+  * 16
+  * 17
+  * 18
+  * 19
+  * 22
+  * 23
+  * 24
+  * 25
+  * 26
+  * 27
+  * 28
+  * 29
+  * 30
+- Collect and port our patches from old procmail-3.22-patches.tar.bz2
+  into new procmail-3.24-patches.tar.bz2
+  * 01
+  * 02
+  * 03
+  * 05
+  * 07
+  * 08
+  * 09
+  * 20
+  * 21
+
+-------------------------------------------------------------------
 Sun May  2 17:30:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir) 

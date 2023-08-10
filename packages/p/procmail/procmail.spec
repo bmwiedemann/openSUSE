@@ -1,7 +1,7 @@
 #
 # spec file for package procmail
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 Name:           procmail
-Version:        3.22
+Version:        3.24
 Release:        0
 Summary:        A program for local e-mail delivery
 License:        Artistic-1.0 OR GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Clients
-URL:            https://www.procmail.org/
-Source0:        ftp://ftp.informatik.rwth-aachen.de/pub/packages/procmail/procmail-%{version}.tar.gz
+URL:            https://github.com/BuGlessRB/procmail/
+Source0:        https://github.com/BuGlessRB/procmail/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        procmail-%{version}-patches.tar.bz2
-Patch0:         procmail-%{version}-mailstat.patch
-Patch1:         procmail-%{version}.dif
+Patch0:         procmail-3.22-mailstat.patch
+Patch1:         procmail-3.22.dif
 Patch2:         procmail-cflags.dif
-Patch3:         procmail-%{version}-headerconcat.dif
-Patch4:         procmail-%{version}-owl-truncate.dif
-Patch5:         procmail-%{version}-autoconf.dif
-Patch6:         procmail-%{version}-ipv6.patch
+Patch3:         procmail-3.22-headerconcat.dif
+Patch4:         procmail-3.22-owl-truncate.dif
+Patch5:         procmail-3.22-autoconf.dif
+Patch6:         procmail-3.22-ipv6.patch
 # PATCH-FIX-SUSE bmwiedemann -- make build reproducible
 Patch8:         reproducible.patch
 Patch10:        procmail-fix-Werror=return-type.patch
@@ -58,7 +58,7 @@ done
 %patch3
 %patch4
 %patch5
-%patch6 -p1
+%patch6
 %patch8 -p1
 %patch10 -p1
 %patch11 -p1
@@ -80,13 +80,14 @@ sed -ri '\@^#.*[[:blank:]]+/\*[^/]*$@M,\@\*/$@{ s@(^[[:blank:]]+)/\*@\1  @;}' sr
 	if type ld.gold > /dev/null 2>&1 ; then
 	    gold=-Wl,-fuse-ld=gold
 	fi
-	set -o noclobber
 	case "$flag" in
 	-Wl,*)
+	    set -o noclobber
 	    if echo 'int main () { return 0; }' | \
 		${CC:-gcc} %{optflags} -Werror $gold $flag -o /dev/null -xc - > /dev/null 2>&1 ; then
 		eval $var=\${$var:+\$$var\ }$flag
 	    fi
+	    set +o noclobber
 	    rm -f ldtest.c
 	    ;;
 	*)
@@ -97,7 +98,6 @@ sed -ri '\@^#.*[[:blank:]]+/\*[^/]*$@M,\@\*/$@{ s@(^[[:blank:]]+)/\*@\1  @;}' sr
 		eval $var=\${$var:+\$$var\ }$flag
 	    fi
 	esac
-	set +o noclobber
     }
     RPM_OPT_FLAGS="%{optflags}"
     XCFLAGS="$(getconf LFS_CFLAGS)"

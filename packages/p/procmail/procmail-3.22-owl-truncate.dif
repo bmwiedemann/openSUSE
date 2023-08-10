@@ -1,6 +1,10 @@
---- -	2006-01-13 17:16:54.740414000 +0000
+---
+ src/mailfold.c |   10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+--- src/mailfold.c
 +++ src/mailfold.c	2006-01-13 17:15:39.000000000 +0000
-@@ -120,13 +120,19 @@
+@@ -120,13 +120,19 @@ jin:	while(part&&(i=rwrite(s,source,BLKS
        }
  writefin:
       i=type!=ft_PIPE&&fsync(s)&&errno!=EINVAL;	  /* EINVAL => wasn't a file */
@@ -21,7 +25,7 @@
     }			   /* return an error even if nothing was to be sent */
    return i&&!len?-1:len;
  }
-@@ -237,7 +243,7 @@
+@@ -237,7 +243,7 @@ dumpf:	 { switch(errno)
  #endif
  	      default:writeerr(buf);
  	    }

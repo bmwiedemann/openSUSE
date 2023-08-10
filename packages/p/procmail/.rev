@@ -268,4 +268,41 @@
     <comment></comment>
     <requestid>890395</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>a78eea846767dba79a5b57540d1ec9a4</srcmd5>
+    <version>3.24</version>
+    <time>1691674379</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to procmail 3.24 (New Upstream)
+  - Don't coredump in comsat code if interrupted early
+  - Correctly handle COMSAT=on
+  - Once used, the 'H' and 'r' flags would never be cleared
+  - Fix possible buffer overflow in variable-capture actions
+  - Fix up the parsing of variable-capture actions
+  - LMTP code assumed sizeof(long)==sizeof(int)
+  - SHELL is now always preset to /bin/sh.  USER_SHELL contains
+    the shell from the user's passwd entry
+  - When HOST is mismatched, reset it for the next rcfile
+  - Always read in a new, global rcfile (/etc/procmail.conf)
+    to allow runtime configuration of variables like DEFAULT.
+    This rcfile cannot deliver or filter messages
+  - Mismatched HOST in /etc/procmailrc didn't discard the message
+  - backquote expansion in a condition disabled header
+    concatenation for that condition
+  - LMTP didn't correctly handle quoted localparts
+  - Removed SIZE extension from LMTP (unsupportable semantics)
+  - Don't coredump if unable to exec /bin/sh
+  - Enable &quot;+detail&quot; processing in LMTP mode by passing the
+    delimiter (e.g., &quot;+&quot;) as an optional argument after -z
+  - In LMTP mode, save the domain of the recipient in
+    PROCMAIL_DOMAIN
+  - Set PROCMAIL_MODE to one of &quot;d&quot;, &quot;m&quot;, &quot;z&quot;, or &quot;&quot; to reflect
+    the mode option it was invoked with, if any
+  - Fixed all bugs collected by Debian and others
+    during the past 21 years.  See the git commit history
+    for detailed descriptions.
+- Port patches
+  * procmail-3.22-autoconf.dif</comment>
+    <requestid>1103149</requestid>
+  </revision>
 </revisionlist>

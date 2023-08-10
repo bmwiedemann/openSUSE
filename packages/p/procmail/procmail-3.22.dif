@@ -1,6 +1,11 @@
+---
+ Makefile |   12 +++++++-----
+ config.h |    8 ++++----
+ 2 files changed, 11 insertions(+), 9 deletions(-)
+
 --- Makefile
-+++ Makefile	Mon Feb 23 14:01:47 2004
-@@ -53,7 +53,7 @@
++++ Makefile	2004-02-23 14:01:47.000000000 +0000
+@@ -53,7 +53,7 @@ MAN5DIR		= $(MANDIR)/man$(MAN5SUFFIX)
  
  # Makefile.0 - mark, don't (re)move this, a sed script needs it
  
@@ -9,7 +14,7 @@
  
  #LOCKINGTEST=/tmp .	# Uncomment and add any directories you see fit.
  #			If LOCKINGTEST is defined, autoconf will NOT
-@@ -74,19 +75,20 @@
+@@ -74,19 +74,20 @@ LOCKINGTEST=100	# Uncomment (and change)
  #			Or them together to get the desired combination.
  
  # Optional system libraries we search for
@@ -21,8 +26,7 @@
  #			-lresolv	# not really needed, is it?
  
  # Informal list of directories where we look for the libraries in SEARCHLIBS
--LIBPATHS=/lib64 /usr/lib64 /lib /usr/lib
-+LIBPATHS=/lib64 /usr/lib64 /lib /usr/lib
+ LIBPATHS=/lib64 /usr/lib64 /lib /usr/lib
  
 -GCC_WARNINGS = -O2 -pedantic -Wreturn-type -Wunused -Wformat -Wtraditional \
 +GCC_WARNINGS = -pedantic -Wreturn-type -Wunused -Wformat -Wtraditional \
@@ -35,7 +39,7 @@
  LDFLAGS0= -s
  # Read my libs :-)
  LIBS=
-@@ -95,6 +97,7 @@
+@@ -95,6 +96,7 @@ CFLAGS1 = $(CFLAGS0) #-posix -Xp
  LDFLAGS1= $(LDFLAGS0) $(LIBS) #-lcposix
  
  ####CC	= cc # gcc
@@ -43,15 +47,6 @@
  # object file extension
  O	= o
  RM	= /bin/rm -f
-@@ -108,7 +111,7 @@
- 
- SUBDIRS = src man
- BINSS	= procmail lockfile formail mailstat
--MANS1S	= procmail formail lockfile
-+MANS1S	= procmail formail lockfile mailstat
- MANS5S	= procmailrc procmailsc procmailex
- 
- # Possible locations for the sendmail.cf file
 --- config.h
 +++ config.h	2011-11-14 13:45:23.579146109 +0000
 @@ -34,7 +34,7 @@

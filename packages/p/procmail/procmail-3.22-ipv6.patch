@@ -1,5 +1,11 @@
---- procmail-3.22/src/autoconf
-+++ procmail-3.22/src/autoconf	2006-10-24 12:51:01.000000000 +0000
+---
+ src/autoconf  |   55 +++++++++-----------------------------------------
+ src/comsat.c  |   63 ++++++++++++++++++----------------------------------------
+ src/network.h |   10 +--------
+ 3 files changed, 32 insertions(+), 96 deletions(-)
+
+--- src/autoconf
++++ src/autoconf	2006-10-24 12:51:01.000000000 +0000
 @@ -68,8 +68,6 @@
  #	#define NOfsync
  #Ok	#define endpwent()
@@ -9,7 +15,7 @@
  #Ok	#define endprotoent()
  #	#define h_0addr_list h_addr
  #Ok	#define NOpw_passwd
-@@ -897,7 +895,7 @@
+@@ -897,7 +895,7 @@ int main(){int i=0;
   {uid_t vuid_t;i+=vuid_t=1;}
   {gid_t vgid_t;i+=vgid_t=1;}
  #ifndef NO_COMSAT
@@ -18,7 +24,7 @@
  #endif
  #ifndef NOuname
   {struct utsname vutsname;i+=!(*vutsname.nodename='\0');}
-@@ -918,8 +916,6 @@
+@@ -918,8 +916,6 @@ do
    test -z "$i3" && grepfor mode_t 'typedef int mode_t;' && i3=I
    test -z "$i4" && grepfor uid_t 'typedef int uid_t;' && i4=I
    test -z "$i5" && grepfor gid_t 'typedef int gid_t;' && i5=I
@@ -27,7 +33,7 @@
    test -z "$i6" && grepfor member '#define h_0addr_list h_addr' && i6=I
    test -z "$i7" && grepfor utsname "#define NOuname			      \
  /* <sys/utsname.h> is there, but empty */" && i7=I
-@@ -1073,8 +1069,12 @@
+@@ -1073,8 +1069,12 @@ int main(){char a[2];
   {struct utsname b;uname(&b);}
  #endif
  #ifndef NO_COMSAT
@@ -42,7 +48,7 @@
  #endif
   _exit(0);
   return 0;}
-@@ -1128,14 +1128,9 @@
+@@ -1128,14 +1128,9 @@ grepfor uname "\
  /* <sys/utsname.h> defines it, the libraries don't */"
  grepfor endpwent '#define endpwent()'
  grepfor endgrent '#define endgrent()'
@@ -58,7 +64,7 @@
  fi
  grepfor strstr '#define SLOWstrstr' ||
   grepfor clock '#define SLOWstrstr'
-@@ -1264,39 +1259,9 @@
+@@ -1264,39 +1259,9 @@ int main(argc,argv)int argc;const char*a
  	printf("/* Insufficient memory to perform the benchmark! */\n");
  #endif /* SLOWstrstr */
  #ifndef NO_COMSAT
@@ -100,33 +106,9 @@
  #endif /* NO_COMSAT */
       ;{ unsigned long s=(size_t)~0;int bits;
  	for(bits=1;s>>=1;bits++);
---- procmail-3.22/src/network.h.ipv6	1999-04-17 08:18:45.000000000 +0200
-+++ procmail-3.22/src/network.h	2006-10-24 14:46:44.000000000 +0200
-@@ -1,19 +1,13 @@
- /*$Id: network.h,v 1.7 1997/04/02 03:15:41 srb Exp $*/
- 
--#include <sys/socket.h>			/* socket() sendto() AF_INET
-+#include <sys/socket.h>			/* socket() sendto() */
- 					/* SOCK_DGRAM */
--#include <netdb.h>			/* gethostbyname() getservbyname()
--					/* getprotobyname() */
--#include <netinet/in.h>			/* htons() struct sockaddr_in */
-+#include <netdb.h>			/* getaddrinfo() */
- 
- #ifndef BIFF_serviceport
- #define BIFF_serviceport	COMSATservice
- #endif
- 
--#ifndef h_0addr_list
--#define h_0addr_list	h_addr_list[0]		      /* POSIX struct member */
--#endif
--
- #ifndef NO_const      /* since network.h is outside the autoconf const check */
- #ifdef const		    /* loop, we need this backcheck for some systems */
- #undef const
---- procmail-3.22/src/comsat.c.ipv6	2006-10-24 14:46:44.000000000 +0200
-+++ procmail-3.22/src/comsat.c	2006-10-24 14:46:44.000000000 +0200
-@@ -27,7 +27,8 @@
+--- src/comsat.c
++++ src/comsat.c	2006-10-24 12:46:44.000000000 +0000
+@@ -27,7 +27,8 @@ static /*const*/char rcsid[]=
  #include "comsat.h"
  
  static int csvalid;		     /* is it turned on with a good address? */
@@ -136,7 +118,7 @@
  static char*cslastf,*cslgname;
  
  void setlfcs(folder)const char*folder;		/* set lastfolder for comsat */
-@@ -62,56 +63,32 @@
+@@ -62,56 +63,32 @@ void setlgcs(name)const char*name;		   /
  }
  
  int setcomsat(chp)const char*chp;
@@ -209,7 +191,7 @@
    offguard();
    return newvalid;
  }
-@@ -132,8 +109,8 @@
+@@ -132,8 +109,8 @@ void sendcomsat(folder)const char*folder
     }
    strlcat(buf,COMSATxtrsep,linebuf);			 /* custom seperator */
    strlcat(buf,p,linebuf);			  /* where was it delivered? */
@@ -220,3 +202,27 @@
       rclose(s);
       yell("Notified comsat:",buf);
     }
+--- src/network.h
++++ src/network.h	2006-10-24 12:46:44.000000000 +0000
+@@ -1,19 +1,13 @@
+ /*$Id$*/
+ 
+-#include <sys/socket.h>			/* socket() sendto() AF_INET
++#include <sys/socket.h>			/* socket() sendto() */
+ 					/* SOCK_DGRAM */
+-#include <netdb.h>			/* gethostbyname() getservbyname()
+-					/* getprotobyname() */
+-#include <netinet/in.h>			/* htons() struct sockaddr_in */
++#include <netdb.h>			/* getaddrinfo() */
+ 
+ #ifndef BIFF_serviceport
+ #define BIFF_serviceport	COMSATservice
+ #endif
+ 
+-#ifndef h_0addr_list
+-#define h_0addr_list	h_addr_list[0]		      /* POSIX struct member */
+-#endif
+-
+ #ifndef NO_const      /* since network.h is outside the autoconf const check */
+ #ifdef const		    /* loop, we need this backcheck for some systems */
+ #undef const

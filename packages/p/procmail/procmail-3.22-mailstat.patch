@@ -1,6 +1,16 @@
+---
+ man/mailstat.man |   40 ++++++++++++++++++++++++++++++++++++++++
+ src/exopen.h     |    2 +-
+ 2 files changed, 41 insertions(+), 1 deletion(-)
+
 --- man/mailstat.man
-+++ man/mailstat.man	Mon Feb 23 13:53:50 2004
-@@ -0,0 +1,40 @@
++++ man/mailstat.man	2004-02-23 13:53:50.000000000 +0000
+@@ -36,5 +36,45 @@ silent in case of no mail
+ Customise to your heart's content, this program is only provided as a
+ guideline.
+ .SH AUTHOR
++This manual page was written by Santiago Vila <sanvila@ctv.es>
++for the Debian GNU/Linux distribution (but may be used by others).
 +.TH MAILSTAT 1
 +.SH NAME
 +mailstat \- shows mail-arrival statistics
@@ -39,11 +49,11 @@
 +Customise to your heart's content, this program is only provided as a
 +guideline.
 +.SH AUTHOR
-+This manual page was written by Santiago Vila <sanvila@ctv.es>
-+for the Debian GNU/Linux distribution (but may be used by others).
+ This manual page was written by Santiago Vila <sanvila@debian.org>
+ for the Debian GNU/Linux distribution (but may be used by others).
 --- src/exopen.h
-+++ src/exopen.h	Mon Feb 23 13:54:04 2004
-@@ -7,7 +7,7 @@
++++ src/exopen.h	2004-02-23 13:54:04.000000000 +0000
+@@ -7,7 +7,7 @@ int
   rlink P((const char*const old,const char*const newn,struct stat*st)),
   hlink P((const char*const old,const char*const newn));
  
