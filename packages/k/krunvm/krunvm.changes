@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 10 07:25:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use build_rustflags instead of deprecated __rustflags.
+
+-------------------------------------------------------------------
 Tue Jan 03 10:36:08 UTC 2023 - fcrozat@suse.com
 
 - Update to version 0.2.3+git12dac81:

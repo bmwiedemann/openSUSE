@@ -47,11 +47,11 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-export RUSTFLAGS="%{__rustflags}"
+export RUSTFLAGS="%{build_rustflags}"
 %make_build
 
 %install
-export RUSTFLAGS="%{__rustflags}"
+export RUSTFLAGS="%{build_rustflags}"
 %make_install PREFIX=%{_prefix}
 
 %changelog
