@@ -728,6 +728,7 @@
         <archive name="onie.tar.gz"/>
     </packages>
     <packages type="image" profiles="SelfInstall">
+        <package name="patterns-microos-hardware"/>
         <package name="dracut-kiwi-oem-repart"/>
         <package name="dracut-kiwi-oem-dump"/>
         <package name="kernel-firmware-all"/> <!-- Fix choice between kernel-firmware and kernel-firmware-all -->

@@ -590,4 +590,12 @@
   packages if other bootloaders are used.</comment>
     <requestid>1093904</requestid>
   </revision>
+  <revision rev="62" vrev="62">
+    <srcmd5>21e09935f9e0b19edad21eb153b21c8c</srcmd5>
+    <version>16.0.0</version>
+    <time>1691674372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103099</requestid>
+  </revision>
 </revisionlist>

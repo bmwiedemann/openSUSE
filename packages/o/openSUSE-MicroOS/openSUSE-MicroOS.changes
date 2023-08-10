@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  9 08:43:26 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- The SelfInstall flavor is targeted at physical hardware, so add
+  patterns-microos-hardware
+
+-------------------------------------------------------------------
 Thu Jun 15 08:23:12 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add patterns-base-bootloader explicitly
