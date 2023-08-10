@@ -15,4 +15,20 @@
     <comment></comment>
     <requestid>1097956</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a576844031083c20c846879f0ffab858</srcmd5>
+    <version>3.0.0</version>
+    <time>1691674489</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * copy() (breaking change): remove the option to pass keyword
+    arguments (which were present as key/value pairs in the copy).
+    Now the method doesn't take any arguments (it behaves the same
+    as a normal dict).
+  * Python versions: drop Python 3.7 support
+  * Typing: fixes
+    - Make the key covariant. Thanks to @spacether for the PR #244
+    - Fix key/value typing missing for ImmutableOrderedDict</comment>
+    <requestid>1103297</requestid>
+  </revision>
 </revisionlist>

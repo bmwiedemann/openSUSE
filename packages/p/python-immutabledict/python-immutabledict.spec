@@ -24,18 +24,17 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define         github_user corenting
 %define         short_name immutabledict
 %{?sle15_python_module_pythons}
 Name:           python-%{short_name}%{psuffix}
-Version:        2.2.5
+Version:        3.0.0
 Release:        0
 Summary:        Immutable wrapper around dictionaries (a fork of frozendict)
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/corenting/immutabledict
 Source:         https://files.pythonhosted.org/packages/source/i/immutabledict/immutabledict-%{version}.tar.gz
-BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module setuptools}
@@ -48,7 +47,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module %{short_name}}
+BuildRequires:  %{python_module %{short_name} = %version}
 %endif
 %python_subpackages
 

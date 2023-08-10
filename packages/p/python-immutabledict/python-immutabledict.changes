@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 10 09:28:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * copy() (breaking change): remove the option to pass keyword
+    arguments (which were present as key/value pairs in the copy).
+    Now the method doesn't take any arguments (it behaves the same
+    as a normal dict).
+  * Python versions: drop Python 3.7 support
+  * Typing: fixes
+    - Make the key covariant. Thanks to @spacether for the PR #244
+    - Fix key/value typing missing for ImmutableOrderedDict   
+
+-------------------------------------------------------------------
 Mon Jul 10 12:18:42 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
