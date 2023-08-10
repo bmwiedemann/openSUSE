@@ -409,4 +409,12 @@
     <comment></comment>
     <requestid>1087722</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>2dcaa82f965e3c57d2539bc7de36995e</srcmd5>
+    <version>3.5.2</version>
+    <time>1691674393</time>
+    <user>dimstar_suse</user>
+    <comment>Rebase tracker-miners-drop-syscalls-in-seccomp.patch</comment>
+    <requestid>1103246</requestid>
+  </revision>
 </revisionlist>
