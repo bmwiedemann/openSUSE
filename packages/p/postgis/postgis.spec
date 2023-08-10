@@ -19,10 +19,10 @@
 %define         pg_name  @BUILD_FLAVOR@%{nil}
 %define         ext_name postgis
 %{pg_version_from_name}
-%define         main_version 3.2
+%define         main_version 3.3
 
 Name:           %{pg_name}-%{ext_name}
-Version:        3.2.5
+Version:        3.3.4
 Release:        0
 Summary:        Geographic Information Systems Extensions to PostgreSQL
 License:        GPL-2.0-or-later
@@ -52,12 +52,11 @@ BuildRequires:  libxml2-tools
 # building doc but would add 350 texlive packages
 # BuildRequires:  dblatex
 # BuildRequires:  ImageMagick
-BuildRequires:  protobuf-c >= 1.1.0
 %ifarch %{ix86}
 %define with_sfcgal 0
 %else
 %define with_sfcgal 1
-BuildRequires:  sfcgal-devel > 1.3.1
+BuildRequires:  sfcgal-devel >= 1.4.1
 %endif
 BuildRequires:  update-alternatives
 %pg_server_requires
@@ -123,8 +122,6 @@ install -m 644 doc/man/shp2pgsql.1 %{buildroot}%{_mandir}/man1/shp2pgsql.1pg%{pg
 # fix shebang and install utils
 sed -i 's,^#!/usr/bin/env perl,#!/usr/bin/perl,g' utils/*.pl regress/*.pl
 install -m 755 utils/*.pl %{buildroot}%{pg_config_bindir}
-# Wrong location (this is new on 2.2.x) automatically installed we already place it to pgbindir
-rm %{buildroot}%{pg_config_sharedir}/contrib/%{ext_name}-%{main_version}/postgis_restore.pl
 # remove .a and .la files
 rm -f %{buildroot}/%{_libdir}/*.la
 rm -f %{buildroot}/%{_libdir}/*.a
@@ -200,7 +197,10 @@ pg_ctl -D "${PGDATA}" --mode="fast" stop
 %files utils
 %license COPYING
 %{pg_config_bindir}/create_undef.pl
-%{pg_config_bindir}/postgis_proc_upgrade.pl
+%{pg_config_bindir}/create_or_replace_to_create.pl
+%{pg_config_bindir}/create_upgrade.pl
+%{pg_config_bindir}/pgtopo_export
+%{pg_config_bindir}/pgtopo_import
 %{pg_config_bindir}/postgis_restore.pl
 %{pg_config_bindir}/profile_intersects.pl
 %{pg_config_bindir}/read_scripts_version.pl
@@ -208,7 +208,6 @@ pg_ctl -D "${PGDATA}" --mode="fast" stop
 %{pg_config_bindir}/create_extension_unpackage.pl
 %{pg_config_bindir}/create_unpackaged.pl
 %{pg_config_bindir}/create_spatial_ref_sys_config_dump.pl
-%{pg_config_bindir}/postgis_proc_upgrade.pl
 %{pg_config_bindir}/test_estimation.pl
 %{pg_config_bindir}/test_joinestimation.pl
 %{pg_config_bindir}/test_geography_estimation.pl

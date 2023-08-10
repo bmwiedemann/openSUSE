@@ -60,4 +60,46 @@ I welcome any suggestion of improvement of this beast ;-)</comment>
 </comment>
     <requestid>1100862</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>de919aca94073ec960a954ada0599e92</srcmd5>
+    <version>3.3.4</version>
+    <time>1691674409</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.4
+  * Bug Fixes and Enhancements *
+  - #5450, Fix macro expansion recursion on powerpc architectures.
+           (Bas Couwenberg)
+  - #5395, [postgis_topology] Allow unprivileged user dump
+           of database with topology enabled
+  - #5394, [postgis_topology] Improve robustness of finding
+           distinct vertices in topology edges (Sandro Santilli)
+  - #5403, [postgis_topology] Fix ValidateTopology(bbox) without
+           topology in search_path (Sandro Santilli)
+  - #5410, [postgis_raster] ST_Value bilinear resample,
+           don't throw an error if Band has no NODATA value
+           (Regina Obe)
+  - #5385, Postgres malloc assertion fail when
+           using pg_cancel_backend with ST_AsMVT
+           (Regina Obe, Paul Ramsey)
+  - #5452, Updated README.postgis for apt-based systems
+           (Jelte Fennema)
+  * Breaking Changes *
+    - #5385, Take out interruptability of ST_AsMVT
+             as it causes backend crash under intense conditions
+            (Regina Obe, Paul Ramsey)
+  PostGIS 3.3.3
+  * Bug Fixes and Enhancements *
+  - #5303, Don't try removing closed edges endpoint from
+           RemoveUnusedPrimitives (Sandro Santilli)
+  - #5289, Fix misleading message in RemoveUnusedPrimitives about
+           doubly connected edges healing (Sandro Santilli)
+  - #5298, Fix CopyTopology exception with hierarchical layers (Sandro Santilli)
+  - #5299, Corrections to address_standardizer_data_us lex (Regina Obe)
+  - #5332, Keep proj errors from percolating into PgSQL log (Paul Ramsey)
+ This is a higher version upgrade, see
+ https://git.osgeo.org/gitea/postgis/postgis/raw/tag/3.3.4/NEWS
+ for the full log since 3.2 release.
+</comment>
+    <requestid>1103214</requestid>
+  </revision>
 </revisionlist>
