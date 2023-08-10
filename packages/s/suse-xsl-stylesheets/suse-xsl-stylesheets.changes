@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Aug  3 07:31:00 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.92.3
+
+- Update 2.92.3
+  JSON-LD:
+  - Remove "role" property for authors
+  - Introduce json-ld-use-individual-authors parameter
+    => 0=don't use individual authors, use fallback author
+       1=use authors which are in <authorgroup> or <author>s
+
+-------------------------------------------------------------------
+Wed Aug  2 09:20:39 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.92.2
+
+- Update 2.92.2
+  - Correct metadata
+    - Rename "abstract" -> "description" and refactor code
+    - Introduce "sameAs" property
+    - Disable json-ld-version and json-ld-keywords
+    - Use "Corporation" instead of "Organization" for default author and publisher
+
+  - JSON-LD: Rewrite author + authorgroup code
+    - Simplify code and create a two set approach
+        If no (author/editor/corpauthor/contributor)s or authorgroup is
+        found, fallback to a default corporation author
+    - Add new parameters:
+      - json-ld-fallback-author-name: The author's name
+      - json-ld-fallback-author-url: the author's URL
+      - json-ld-fallback-author-type: "Corporation" by default
+        (but can also be a "Person")
+      - json-ld-fallback-author-logo: the URL pointing to the logo
+
+-------------------------------------------------------------------
 Mon Jul 31 11:47:45 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.92.1
 
 - Update 2.92.1
