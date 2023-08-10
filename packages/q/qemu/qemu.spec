@@ -82,7 +82,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        8.0.3
+Version:        8.0.4
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -190,11 +190,11 @@ BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(zlib)
 %{?systemd_ordering}
+BuildRequires:  discount
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja >= 1.7
-BuildRequires:  perl-Text-Markdown
 BuildRequires:  python3-base >= 3.6
 BuildRequires:  python3-setuptools
 %if %{kvm_available}
@@ -781,7 +781,7 @@ for f in *.md
 do
   b="${f%.md}"
   # Ensure the correct media type
-  Markdown.pl "${f}" >"${b}.html"
+  markdown "${f}" >"${b}.html"
   # Links to b.md will be rendered as to b
   ln -Ts "${b}.html" "${b}"
 done

@@ -3415,4 +3415,23 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1101031</requestid>
   </revision>
+  <revision rev="258" vrev="1">
+    <srcmd5>cf24273e6dd28fa83883118d684460bd</srcmd5>
+    <version>8.0.4</version>
+    <time>1691674363</time>
+    <user>dimstar_suse</user>
+    <comment>- perl-Text-Markdown is not available in all distros and for all   arch-es. Use discount instead
+
+- Patches added:
+  * [openSUSE][spec] Use discount instead of perl-Text-Markdown
+- Update to version 8.0.4:
+  * Official changelog not released on the mailing list yet
+  * Security issues fixed:
+    - bsc#1212850 (CVE-2023-3354)
+    - bsc#1213001 (CVE-2023-3255)
+    - bsc#1213925 (CVE-2023-3180)
+    - bsc#1207205 (CVE-2023-0330)
+</comment>
+    <requestid>1103082</requestid>
+  </revision>
 </revisionlist>

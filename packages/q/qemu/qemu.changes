@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 07 23:01:35 UTC 2023 - dfaggioli@suse.com
+
+- perl-Text-Markdown is not available in all distros and for all
+  arch-es. Use discount instead
+- Patches added:
+  * [openSUSE][spec] Use discount instead of perl-Text-Markdown
+
+-------------------------------------------------------------------
+Mon Aug 07 16:49:01 UTC 2023 - dfaggioli@suse.com
+
+- Update to version 8.0.4:
+  * Official changelog not released on the mailing list yet
+  * Security issues fixed:
+    - bsc#1212850 (CVE-2023-3354)
+    - bsc#1213001 (CVE-2023-3255)
+    - bsc#1213925 (CVE-2023-3180)
+    - bsc#1207205 (CVE-2023-0330)
+
+-------------------------------------------------------------------
 Thu Jul 27 08:14:49 UTC 2023 - dfaggioli@suse.com
 
 - Fix bsc#1179993, bsc#1181740, bsc#1213001
