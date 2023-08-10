@@ -48,4 +48,12 @@
   * gfs2_edit: Fix remaining endianness sparse warnings</comment>
     <requestid>933570</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c1fb42a0da76dc897c25a2ca03285c14</srcmd5>
+    <version>3.5.0</version>
+    <time>1691674402</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103175</requestid>
+  </revision>
 </revisionlist>

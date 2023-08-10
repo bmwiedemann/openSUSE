@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar  6 15:28:16 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.5.0:
+  * Update translation template
+  * Fix uninitialized memory coverity warnings
+  * gfs2_grow: Don't free rgs when it's NULL
+  * libgfs2: Fix potential NULL deref in lgfs2_lookupi()
+  * libgfs2: Add lgfs2_bfree(), lgfs2_inode_free()
+  * Free per_node in build_per_node error paths
+  * fsck.gfs2: Fix wrong entry used in dentry comparison 
+  * added unit tests
+  * Remove lgfs2_breadm()
+  * libgfs2: Make sure block_alloc() fails when out of space
+  * Remove dependency on linux/limits.h
+  * mkfs.gfs2: Improve journal write error reporting
+  * mkfs.gfs2: Add -U UUID option
+
+-------------------------------------------------------------------
 Wed Nov 24 16:23:38 UTC 2021 - varkoly@suse.com
 
 - Update to version 3.4.1+git.87.c0ea1bc4:
