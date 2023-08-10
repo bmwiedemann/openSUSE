@@ -50,4 +50,15 @@
     <comment></comment>
     <requestid>1097971</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0b12293223a77804a434b62e25bb4866</srcmd5>
+    <version>0.8.0</version>
+    <time>1691674380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.0
+  - wtmpdb boottime: print boot time
+
+- Update to version 0.7.1</comment>
+    <requestid>1103168</requestid>
+  </revision>
 </revisionlist>

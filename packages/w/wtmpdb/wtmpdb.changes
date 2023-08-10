@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  9 14:13:17 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.8.0
+  - wtmpdb boottime: print boot time
+
+-------------------------------------------------------------------
 Sat Jul  1 23:43:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - https://en.opensuse.org/SourceUrls
@@ -8,7 +14,7 @@ Sat Jul  1 23:43:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Thu Jun 29 12:09:19 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
-- Update to ersion 0.7.1
+- Update to version 0.7.1
   - wtmpdb last: Support "YYYY-MM-DD", "today" and "yesterday" as
     time option
 
