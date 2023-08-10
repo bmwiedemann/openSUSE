@@ -67,4 +67,21 @@
   * Pull request 265: upd-specs (forwarded request 1099324 from VaiTon)</comment>
     <requestid>1099326</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>632590533042dc9f190a1bda71784d25</srcmd5>
+    <version>0.53.1</version>
+    <time>1691674407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.53.1:
+  * Pull request 276: Sort hotfix
+  * Pull request 275: Upd Go
+  * Fix review comments
+  * Update Dockerfile: fix wrong path
+  * Update Dockerfile: fix wrong path
+  * Update Docker README.md
+  * Update Dockerfile
+  * Pull request 272: AG-24087-global-root-cas
+  * Pull request 271: Fix 208 (forwarded request 1103169 from VaiTon)</comment>
+    <requestid>1103194</requestid>
+  </revision>
 </revisionlist>
