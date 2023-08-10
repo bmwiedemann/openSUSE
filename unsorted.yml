@@ -12049,6 +12049,7 @@ unsorted:
   - libgdruntime4-32bit 
   - libgeany0 
   - libgecode51 
+  - libgedit-gtksourceview-devel 
   - libgee-devel 
   - libgee06-devel 
   - libgee2 
@@ -12216,9 +12217,9 @@ unsorted:
   - libgravatar-devel 
   - libgromacs8 
   - libgromacs_mpi8 
-  - libgrpc++1_56 
-  - libgrpc1_56 
-  - libgrpc33 
+  - libgrpc++1_57 
+  - libgrpc1_57 
+  - libgrpc34 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -15347,7 +15348,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
-  - libupb33 
+  - libupb34 
   - libupm1 
   - libupnp-devel 
   - libupnpp-devel 
@@ -21918,7 +21919,6 @@ unsorted:
   - postgresql11-pgagent 
   - postgresql11-pgaudit 
   - postgresql11-pgsql-ogr-fdw 
-  - postgresql11-pgsql-ogr-fdw-llvmjit 
   - postgresql11-plperl 
   - postgresql11-plpython 
   - postgresql11-plr 
@@ -21940,7 +21940,6 @@ unsorted:
   - postgresql12-pgagent 
   - postgresql12-pgaudit 
   - postgresql12-pgsql-ogr-fdw 
-  - postgresql12-pgsql-ogr-fdw-llvmjit 
   - postgresql12-plperl 
   - postgresql12-plpython 
   - postgresql12-plr 
@@ -21962,6 +21961,7 @@ unsorted:
   - postgresql13-pg_cron 
   - postgresql13-pgagent 
   - postgresql13-pgaudit 
+  - postgresql13-pgsql-ogr-fdw 
   - postgresql13-plperl 
   - postgresql13-plpython 
   - postgresql13-plr 
@@ -21983,6 +21983,7 @@ unsorted:
   - postgresql14-pg_cron 
   - postgresql14-pgagent 
   - postgresql14-pgaudit 
+  - postgresql14-pgsql-ogr-fdw 
   - postgresql14-plperl 
   - postgresql14-plpython 
   - postgresql14-plr 
@@ -22003,6 +22004,7 @@ unsorted:
   - postgresql15-pg_cron 
   - postgresql15-pgagent 
   - postgresql15-pgaudit 
+  - postgresql15-pgsql-ogr-fdw 
   - postgresql15-plperl 
   - postgresql15-plpython 
   - postgresql15-plr 
@@ -44809,6 +44811,7 @@ unsorted:
   - typelib-1_0-GstWebRTC-1_0 
   - typelib-1_0-Gtk-2_0 
   - typelib-1_0-GtkLayerShell-0_1 
+  - typelib-1_0-GtkSource-5 
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-Gucharmap-2_90 
   - typelib-1_0-Hex-4 
@@ -44952,6 +44955,7 @@ unsorted:
   - uget-integrator 
   - uget-lang 
   - ugrep 
+  - ugrep-indexer 
   - uhd-devel 
   - uhd-doc 
   - uhd-firmware 
