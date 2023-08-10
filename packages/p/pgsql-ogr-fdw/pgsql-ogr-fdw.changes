@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  8 13:44:22 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 1.1.4, refresh spec file to newer build approach
+
+- Update to version 1.1.4
+  + Support for PostgreSQL 16
+  1.1.3:
+  + Support PgSQL 15 regression testing changes.
+  1.1.2:
+  + Fixes for PgSQL 14 support of UPDATE/DELETE modes
+  + More logging information available when debugging levels enabled
+  1.1.1:
+  + Support PostgreSQL 14
+
+-------------------------------------------------------------------
 Wed Apr 19 14:03:29 UTC 2023 - Reinhard Max <max@suse.com>
 
 - PostgreSQL 10 and older are EOL. 
@@ -57,4 +72,3 @@ Thu Jun 14 11:39:17 UTC 2018 - guillaume.gardet@opensuse.org
 Tue May 29 12:39:35 UTC 2018 - guillaume.gardet@opensuse.org
 
 - Inital version 1.0.5
-
