@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1095770</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3bdf5789eb3fba5d6ec90da4af624efe</srcmd5>
+    <version>0.10.1</version>
+    <time>1691674491</time>
+    <user>dimstar_suse</user>
+    <comment>- Add numpy-1.25.patch, upstream patch gh#nilearn/nilearn#3746
+- Add warning-based-sklearn-version.patch, upstream patch gh#nilearn/nilearn#3763
+</comment>
+    <requestid>1103307</requestid>
+  </revision>
 </revisionlist>

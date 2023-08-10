@@ -24,6 +24,10 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/nilearn/nilearn
 Source:         https://files.pythonhosted.org/packages/source/n/nilearn/nilearn-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM numpy-1.25.patch gh#nilearn/nilearn#3746
+Patch0:         numpy-1.25.patch
+# PATCH-FIX-UPSTREAM warning-based-sklearn-version.patch gh#nilearn/nilearn#3763
+Patch1:         warning-based-sklearn-version.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
@@ -59,7 +63,7 @@ Nilearn is a Python module for statistical learning on
 NeuroImaging data.
 
 %prep
-%setup -n nilearn-%{version}
+%autosetup -p1 -n nilearn-%{version}
 chmod -x nilearn/datasets/tests/data/localizer_index.json
 sed -i '1{/env python/d}' nilearn/glm/tests/test_utils.py nilearn/plotting/glass_brain_files/plot_align_svg.py
 

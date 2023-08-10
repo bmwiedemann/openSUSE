@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 10 09:12:46 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add numpy-1.25.patch, upstream patch gh#nilearn/nilearn#3746
+- Add warning-based-sklearn-version.patch, upstream patch gh#nilearn/nilearn#3763
+
+-------------------------------------------------------------------
 Tue Jun 27 10:58:39 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.10.1
