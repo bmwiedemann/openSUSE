@@ -1656,4 +1656,20 @@ Changes:
 - minor fixes</comment>
     <requestid>1095759</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>98d87d1ed765c0ac695cfc2b94ef04cb</srcmd5>
+    <version>20230808</version>
+    <time>1691674384</time>
+    <user>dimstar_suse</user>
+    <comment>- pbuild:
+  * fix dependency expansion for build types other than spec
+  * Reworked cycle handling code
+  * add --extra-packs option
+  * add debugflags option
+- Pass-through --buildtool-opt
+- Parse Patch and Source lines more accurately
+- fix tunefs functionality
+- minor bugfixes</comment>
+    <requestid>1102975</requestid>
+  </revision>
 </revisionlist>
