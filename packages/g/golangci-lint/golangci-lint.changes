@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Wed Aug 09 20:16:24 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 1.54.0:
+  * fix: trim Go version (#3995)
+  * go1.21 support (#3922)
+  * build(deps): bump github.com/daixiang0/gci from 0.10.1 to 0.11.0 (#3994)
+  * build(deps): bump golang.org/x/tools from 0.11.1 to 0.12.0 (#3992)
+  * build(deps): bump golang.org/x/oauth2 from 0.10.0 to 0.11.0 in /scripts/gen_github_action_config (#3991)
+  * build(deps): bump github.com/ultraware/funlen from 0.0.3 to 0.1.0 (#3988)
+  * build(deps): bump github.com/shirou/gopsutil/v3 from 3.23.6 to 3.23.7 (#3989)
+  * build(deps): bump github.com/kunwardeep/paralleltest from 1.0.7 to 1.0.8 (#3985)
+  * build(deps): bump github.com/4meepo/tagalign from 1.3.1 to 1.3.2 (#3980)
+  * build(deps): bump github.com/4meepo/tagalign from 1.2.2 to 1.3.1 (#3979)
+  * build(deps): bump github.com/go-critic/go-critic from 0.8.1 to 0.8.2 (#3978)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.13.0 to 0.13.3 (#3972)
+  * dev: add tests for the new ginkgolinter's configuration (#3970)
+  * build(deps): bump github.com/GaijinEntertainment/go-exhaustruct/v3 from 2.3.0 to 3.1.0 (#3963)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.12.2 to 0.13.0 (#3962)
+  * build(deps): bump github.com/uudashr/gocognit from 1.0.6 to 1.0.7 (#3961)
+  * build(deps): bump gitlab.com/bosi/decorder from 0.2.3 to 0.4.0 (#3959)
+  * build(deps): bump word-wrap from 1.2.3 to 1.2.4 in /docs (#3956)
+  * docs: add linters description (#3945)
+  * build(deps): bump semver from 6.3.0 to 6.3.1 in /.github/peril (#3949)
+  * build(deps): bump semver from 5.7.1 to 5.7.2 in /docs (#3950)
+  * build(deps): bump semver from 5.7.0 to 5.7.2 in /tools (#3948)
+  * build(deps): bump semver from 5.7.1 to 5.7.2 in /.github/contributors (#3947)
+  * build(deps): bump golang.org/x/oauth2 from 0.9.0 to 0.10.0 in /scripts/gen_github_action_config (#3946)
+  * build(deps): bump github.com/Abirdcfly/dupword from 0.0.11 to 0.0.12 (#3944)
+  * build(deps): bump github.com/ashanbrown/forbidigo from 1.5.3 to 1.6.0 (#3942)
+  * build(deps): bump golang.org/x/tools from 0.10.0 to 0.11.0 (#3943)
+  * dev: improve bug report template (#3930)
+  * build(deps): bump github.com/polyfloyd/go-errorlint from 1.4.2 to 1.4.3 (#3935)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.12.1 to 0.12.2 (#3937)
+  * build(deps): bump github.com/shirou/gopsutil/v3 from 3.23.5 to 3.23.6 (#3936)
+  * feat: explain typecheck and remove it from the linter list (#3929)
+  * build(deps): bump go.tmz.dev/musttag from 0.7.0 to 0.7.1 (#3924)
+  * build(deps): bump github.com/ykadowak/zerologlint from 0.1.2 to 0.1.3 (#3923)
+  * chore: fix nancy
+  * build(deps): bump golang.org/x/oauth2 from 0.8.0 to 0.9.0 in /scripts/gen_github_action_config (#3920)
+  * build(deps): bump github.com/golangci/misspell 0.4.0 to 0.4.1 (#3918)
+  * gofmt: autofix missing newline at EOF (#3917)
+  * build(deps): bump golang.org/x/tools from 0.9.3 to 0.10.0 (#3914)
+  * fix: include custom linters in `enable-all` (#3911)
+  * docs: Update documentation and assets (#3909)
+  * plugin: allow to use settings for plugins (#3887)
+- Packaging: Update LICENSE to %license from %doc
+
+-------------------------------------------------------------------
+Wed Aug 09 20:15:31 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 1.53.3:
+  * Add support for generating illumos/amd64 targeted builds (#3907)
+  * build(deps): bump github.com/alexkohler/nakedret/v2 from 2.0.1 to 2.0.2 (#3905)
+  * build(deps): bump github.com/ashanbrown/forbidigo from 1.5.1 to 1.5.3 (#3904)
+  * dev: simplify GetAllSupportedLinterConfigs method (#3901)
+  * build(deps): bump golangci/golangci-lint-action from 3.5.0 to 3.6.0 (#3903)
+  * build(deps): bump actions/setup-go from 3 to 4 (#3902)
+  * build(deps): bump github.com/BurntSushi/toml from 1.3.0 to 1.3.2 (#3899)
+  * build(deps): bump github.com/nishanths/exhaustive from 0.10.0 to 0.11.0 (#3900)
+  * ineffassign: bump to HEAD (#3898)
+  * build(deps): bump gatsby from 4.25.0 to 4.25.7 in /docs (#3896)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.12.2 to 0.12.1 (#3892)
+  * build(deps): bump golangci/golangci-lint-action from 3.4.0 to 3.5.0 (#3890)
+  * dev: use to GitHub Pages (#3884)
+  * build(deps): bump github.com/ykadowak/zerologlint from 0.1.1 to 0.1.2 (#3889)
+  * build(deps): bump github.com/bkielbasa/cyclop from 1.2.0 to 1.2.1 (#3888)
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.2 to 1.9.3 (#3886)
+  * dev: tidy go deps (#3885)
+  * codeclimate: less memory allocation (#3882)
+  * docs: Update documentation and assets
+
+-------------------------------------------------------------------
 Sat Jun 03 15:36:49 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 1.53.2:

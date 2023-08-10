@@ -21,7 +21,7 @@
 # timemstap can be obtained by doing an rpm query
 
 Name:           golangci-lint
-Version:        1.53.2
+Version:        1.54.0
 Release:        0
 Summary:        A fast Go linters runner
 License:        GPL-3.0-only
@@ -65,7 +65,7 @@ install -D -m 0644 %{name}.1 "%{buildroot}/%{_mandir}/man1"
 %files
 %doc README.md
 %if 0%{?suse_version} < 1500
-%doc LICENSE
+%license LICENSE
 %else
 %license LICENSE
 %endif

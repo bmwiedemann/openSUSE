@@ -34,4 +34,13 @@
     <comment>- Update to version 1.53.2: (forwarded request 1090661 from jfkw)</comment>
     <requestid>1090662</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c72ee52704697d9c2cbd8ae2c140e675</srcmd5>
+    <version>1.54.0</version>
+    <time>1691674469</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.54.0:
+- Packaging: Update LICENSE to %license from %doc (forwarded request 1103227 from jfkw)</comment>
+    <requestid>1103228</requestid>
+  </revision>
 </revisionlist>
