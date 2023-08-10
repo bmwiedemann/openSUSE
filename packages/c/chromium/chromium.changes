@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  9 17:24:31 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix crash with extensions (boo#1214003)
+  chromium-115-dont-pass-nullptr-to-construct-re2-StringPiece.patch
+
+-------------------------------------------------------------------
 Thu Aug  3 06:00:39 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 115.0.5790.170 (boo#1213920)

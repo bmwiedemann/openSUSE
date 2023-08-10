@@ -135,6 +135,7 @@ Patch222:       chromium-115-Qt-moc-version.patch
 Patch223:       chromium-115-emplace_back_on_vector-c++20.patch
 Patch224:       chromium-115-compiler-SkColor4f.patch
 Patch225:       chromium-115-add_BoundSessionRefreshCookieFetcher::Result.patch
+Patch226:       chromium-115-dont-pass-nullptr-to-construct-re2-StringPiece.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
