@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 09 12:50:41 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1691585432.1459599:
+  * Sync testsuite name validation in YAML schema for template and scenario
+  * Limit number of running jobs per webui instance
+  * openqa-bootstrap: Align Leap repo priorities with documentation
+  * Add timezone to SQL query
+
+-------------------------------------------------------------------
 Wed Aug 02 21:46:38 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1690904243.43514d5:
