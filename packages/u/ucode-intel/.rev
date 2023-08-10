@@ -1060,4 +1060,16 @@
   * | ICL-U/Y        | D1       | 06-7e-05/80 | 000000b8 | 000000ba | Core Gen10 Mobile</comment>
     <requestid>1094240</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>a4075499abe099086ce4c69396aa1555</srcmd5>
+    <version>20230808</version>
+    <time>1691674371</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to Intel CPU Microcode 20230808 release. (bsc#1214099)
+  Security issues fixed:
+  - CVE-2022-40982: Security updates for [INTEL-SA-00828](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00828.html) (bsc#1206418)
+  - CVE-2023-23908: Security updates for [INTEL-SA-00836](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00836.html)
+  - CVE-2022-41804: Security updates for [INTEL-SA-00837](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00837.html) (forwarded request 1103090 from abergmann)</comment>
+    <requestid>1103094</requestid>
+  </revision>
 </revisionlist>
