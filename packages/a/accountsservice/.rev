@@ -1150,4 +1150,15 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
     <comment></comment>
     <requestid>1096940</requestid>
   </revision>
+  <revision rev="85" vrev="4">
+    <srcmd5>a01117452cc22ac04b74229f51524160</srcmd5>
+    <version>23.13.9</version>
+    <time>1691674394</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1103101 from mgorse
+
+- Rebase as-fate318433-prevent-same-account-multi-logins.patch:
+  (bsc#1213884).</comment>
+    <requestid>1103247</requestid>
+  </revision>
 </revisionlist>
