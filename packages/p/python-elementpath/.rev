@@ -230,4 +230,13 @@
   * Fix zero length *xs:base64Binary*</comment>
     <requestid>1096318</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>075883d554b1378fb6cb7bba654e80dc</srcmd5>
+    <version>4.1.5</version>
+    <time>1691674369</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.5:
+  * Fix typed value of ElementNode() if self.elem.text is None</comment>
+    <requestid>1103086</requestid>
+  </revision>
 </revisionlist>
