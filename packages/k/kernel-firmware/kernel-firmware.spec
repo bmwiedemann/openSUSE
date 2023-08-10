@@ -45,6 +45,8 @@ Source10:       ql8300_fw.bin
 Source99:       kernel-firmware-rpmlintrc
 # temporary revert (bsc#1202152): taken from upstream commit 06acb465d80b
 Source100:      rtw8822c_fw.bin
+# updated amd-ucode (bsc#1213287, CVE-2023-20569)
+Source300:      microcode_amd_fam19h.bin
 # install / build infrastructure
 Source1001:     install-split.sh
 Source1002:     list-license.sh
@@ -63,6 +65,8 @@ Source1014:     README.build
 # workarounds
 Source1100:     qcom-post
 Source1101:     uncompressed-post
+# updated amd-ucode (bsc#1213287, CVE-2023-20569)
+Patch2:         amd-ucode-CVE-2023-20569.patch
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
@@ -6383,6 +6387,10 @@ various USB WiFi / Ethernet drivers.
 
 %prep
 %setup -q -n kernel-firmware-%{version}
+# updated amd-ucode (bsc#1213287, CVE-2023-20569)
+cp %{SOURCE300} amd-ucode/
+%patch2 -p1
+
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
