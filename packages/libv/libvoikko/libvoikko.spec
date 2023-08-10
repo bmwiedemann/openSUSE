@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           libvoikko
 Version:        4.3.2
 Release:        0
@@ -27,11 +28,17 @@ Source0:        https://www.puimula.org/voikko-sources/%{name}/%{name}-%{version
 Source1:        https://www.puimula.org/voikko-sources/%{name}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source99:       baselibs.conf
-BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-xml
 BuildRequires:  pkgconfig(hfstospell) >= 0.5
+%if 0%{?suse_version} < 1500
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
+%else
+BuildRequires:  gcc >= 7
+BuildRequires:  gcc-c++ >= 7
+%endif
 
 %description
 Libvoikko is a library of free natural language processing tools. It
@@ -118,6 +125,10 @@ can be used to perform various natural language analysis tasks on text.
 %setup -q
 
 %build
+%if 0%{?suse_version} < 1500
+export CC="gcc-7"
+export CXX="g++-7"
+%endif
 %configure \
 	--disable-silent_rules \
 	--disable-static \
