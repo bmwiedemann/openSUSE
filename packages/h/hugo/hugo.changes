@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Aug 09 19:38:59 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.117.0:
+  * build(deps): bump golang.org/x/net from 0.13.0 to 0.14.0
+  * Add all config to docshelper.json
+  * build(deps): bump golang.org/x/image from 0.10.0 to 0.11.0
+  * Try to make test more stable
+  * deps: Sync go-i18n with upstream
+  * Return original error on resources.GetRemote retry timeouts
+  * testing: Write test caches to /tmp
+  * Add retry in resources.GetRemote for temporary HTTP errors
+  * build(deps): bump gocloud.dev from 0.24.0 to 0.33.0
+  * build(deps): bump golang.org/x/net from 0.11.0 to 0.13.0
+  * build(deps): bump github.com/marekm4/color-extractor from 1.2.0 to 1.2.1
+  * build(deps): bump github.com/frankban/quicktest from 1.14.5 to 1.14.6
+  * build(deps): bump golang.org/x/image from 0.9.0 to 0.10.0
+  * build(deps): bump github.com/clbanning/mxj/v2 from 2.5.7 to 2.7.0
+  * build(deps): bump golang.org/x/tools from 0.9.3 to 0.11.1
+  * build(deps): bump go.uber.org/automaxprocs from 1.5.2 to 1.5.3
+  * build(deps): bump github.com/hairyhenderson/go-codeowners
+  * Add Page.RenderShortcodes
+  * Update GitHub issue template
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.8 to 2.0.9
+
+-------------------------------------------------------------------
 Tue Aug 01 14:42:06 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.116.1:
