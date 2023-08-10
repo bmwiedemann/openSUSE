@@ -31,4 +31,19 @@
     <comment></comment>
     <requestid>961706</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c1d69cd4183048f0d61c8ded7d1b5030</srcmd5>
+    <version>1.9.0</version>
+    <time>1691674483</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68, jsc#PED-5573)
+- update to 1.9.0
+  * Ignore the current directory for path detection on Windows
+  * On non-Windows systems only modify login shells
+- v1.8.0
+  * Broadcast WM_SETTINGCHANGE on Windows
+  * Drop Python 2.7 &amp; 3.6
+</comment>
+    <requestid>1103272</requestid>
+  </revision>
 </revisionlist>

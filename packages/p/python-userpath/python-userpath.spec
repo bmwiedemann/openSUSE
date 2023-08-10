@@ -1,7 +1,7 @@
 #
 # spec file for package python-userpath
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-userpath
-Version:        1.7.0
+Version:        1.9.0
 Release:        0
 Summary:        Tool for adding locations to the user PATH
-License:        Apache-2.0 OR MIT
+License:        MIT
 URL:            https://github.com/ofek/userpath
 Source:         https://files.pythonhosted.org/packages/source/u/userpath/userpath-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
@@ -42,13 +44,13 @@ Cross-platform tool for adding locations to the user PATH,
 with no elevated privileges required.
 
 %prep
-%setup -q -n userpath-%{version}
+%autosetup -p1 -n userpath-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/userpath
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -63,9 +65,10 @@ export LC_ALL=C.UTF-8
 %python_uninstall_alternative userpath
 
 %files %{python_files}
-%doc README.rst
-%license LICENSE-APACHE LICENSE-MIT
+%doc README.md
+%license LICENSE.txt
 %python_alternative %{_bindir}/userpath
-%{python_sitelib}/*
+%{python_sitelib}/userpath
+%{python_sitelib}/userpath-%{version}*-info
 
 %changelog

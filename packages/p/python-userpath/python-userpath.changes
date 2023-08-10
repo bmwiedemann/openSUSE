@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 10 07:10:31 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68, jsc#PED-5573)
+- update to 1.9.0
+  * Ignore the current directory for path detection on Windows
+  * On non-Windows systems only modify login shells
+- v1.8.0
+  * Broadcast WM_SETTINGCHANGE on Windows
+  * Drop Python 2.7 & 3.6
+
+-------------------------------------------------------------------
 Mon Mar 14 10:06:06 UTC 2022 - PragmaticLinux <info@pragmaticlinux.com>
 
 - update to 1.7.0
