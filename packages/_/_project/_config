@@ -1750,6 +1750,7 @@ BuildFlags: onlybuild:devscripts
 BuildFlags: onlybuild:dialog
 BuildFlags: onlybuild:diffutils
 BuildFlags: onlybuild:dirac
+BuildFlags: onlybuild:discount
 BuildFlags: onlybuild:djvulibre
 BuildFlags: onlybuild:dnsmasq
 BuildFlags: onlybuild:docbook-xsl
