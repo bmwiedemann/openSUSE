@@ -4,14 +4,4 @@
       <size unit="G">4</size>
     </physicalmemory>
   </hardware>
-  <overwrite>
-    <conditions>
-      <arch>riscv64</arch>
-    </conditions>
-    <hardware>
-      <memory>
-        <size unit="G">14</size>
-      </memory>
-    </hardware>
-  </overwrite>
 </constraints>
