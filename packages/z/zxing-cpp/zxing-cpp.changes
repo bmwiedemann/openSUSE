@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  9 15:07:38 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Restore support for building on SLE12
+- Build with gcc7-c++ or gcc-c++ >= 7 because of C++17 requirements
+- Added patch:
+  * cmake.patch
+    + allow building with cmake 3.5 on SLE12SP5
+
+-------------------------------------------------------------------
 Tue Apr 25 08:56:24 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Drop support for building on SLE12.

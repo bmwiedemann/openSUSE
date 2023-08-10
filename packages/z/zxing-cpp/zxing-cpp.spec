@@ -26,10 +26,16 @@ Group:          Development/Languages/C and C++
 URL:            https://github.com/nu-book/zxing-cpp/
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-
-BuildRequires:  cmake >= 3.10
-BuildRequires:  gcc-c++
+Patch1:         cmake.patch
+BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} < 1500
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
+%else
+BuildRequires:  gcc >= 7
+BuildRequires:  gcc-c++ >= 7
+%endif
 # only TW has fmt
 %if 0%{?suse_version} > 1500
 # For blackbox tests
@@ -65,6 +71,11 @@ other applications.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} < 1500
+export CC="gcc-7"
+export CXX="g++-7"
+%endif
+export CXXFLAGS="-std=c++17"
 # Examples require QT5-base/multimedia, but doing so creates a cycle
 # Blackbox tests require fmt
 %cmake \
@@ -84,7 +95,8 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %endif
 %ctest
 
-%ldconfig_scriptlets -n libZXing%{sover}
+%post -n libZXing%{sover} -p /sbin/ldconfig
+%postun -n libZXing%{sover} -p /sbin/ldconfig
 
 %files -n libZXing%{sover}
 %doc README.md
