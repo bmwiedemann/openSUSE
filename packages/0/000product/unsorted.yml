@@ -13246,6 +13246,7 @@ unsorted:
   - libmovit8 
   - libmowgli-2-0 
   - libmowgli2-devel 
+  - libmozjs-115-0 
   - libmozjs-78-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit 
@@ -17552,6 +17553,8 @@ unsorted:
   - mozilla-zilla-slab-fonts 
   - mozjs102 
   - mozjs102-devel 
+  - mozjs115 
+  - mozjs115-devel 
   - mozjs78 
   - mozjs78-devel 
   - mozldap-devel 
@@ -25310,6 +25313,7 @@ unsorted:
   - python310-pynamodb 
   - python310-pynetbox 
   - python310-pyngus 
+  - python310-pynput 
   - python310-pynxos 
   - python310-pyo 
   - python310-pyocr 
@@ -32126,6 +32130,7 @@ unsorted:
   - python39-pynamodb 
   - python39-pynetbox 
   - python39-pyngus 
+  - python39-pynput 
   - python39-pynxos 
   - python39-pyo 
   - python39-pyocr 
