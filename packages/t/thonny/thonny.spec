@@ -21,7 +21,7 @@
 %define desktop_file_name thonny
 
 Name:           thonny
-Version:        4.0.2
+Version:        4.1.1
 Release:        0
 Summary:        Python IDE for beginners
 License:        MIT
@@ -119,7 +119,7 @@ exit 0
 
 %files
 %exclude %{python3_sitelib}/thonny/locale/
-%doc CHANGELOG.rst CONTRIBUTING.rst CREDITS.rst
+%doc CHANGELOG.rst CREDITS.rst
 %license LICENSE.txt
 %{_bindir}/thonny
 %{python3_sitelib}/thonny

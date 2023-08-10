@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Aug  9 20:36:58 UTC 2023 - Dominik George <nik@naturalnet.de>
+
+- Drop CONTRIBUTING.rst (removed from upstream tarball)
+- update to 4.1.1
+  * Fix warning for the cases where Thonny avoids user module shadowing a library module (#384)
+  * Fix installing from local file in ESP flashing dialog (#2811)
+  * Use a tilde to separate pre-release versions in the AppData (#2807), by @jwillikers
+  * Use bigger initial width in simple mode
+  * Big progress with Italian translation, by mapi68, Ribezzz and sailslack
+  * Updated Chinese (TW) and English (UK) translations
+- update to 4.1.0
+  * Fix MicroPython config page regression introduced in 4.1.0b1 (#2724, #2763)
+  * Fix remote Python 3 (SSH) connection error (regression introduced in 4.1.0b1)
+  * Fix code completion shortcut displayed in macOS menu
+  * Add command "Show esptool version" for ESP flasher
+  * Don't disconnect for ESP flasher commands which don't touch the device
+  * Close tab on middle click (#2767) by @mrexodia
+  * Make package manager support new micropython-lib index (#2777)
+  * Report macOS version instead of Darwin version in the About box
+  * Implement more flexible Raspberry Pi detection
+  * Enable thonny to open and save files with zenity 3.91+ (#2786) by @befeleme
+  * Make dbus_next dependency optional (#2771)
+  * Recognize ESP32 as possible CircuitPython device
+  * Add menu indicator for back-end switcher
+  * Allow WebREPL for RP2040 backend (experimental)
+  * Use correct MicroPython start address (0x0 instead of 0x1000) when flashing ESP32-S3
+  * Recognize ESP32 devices by VID 0x303A
+  * Don't show irrelevant ports in port selector (e.g. /dev/cu.Bluetooth-Incoming-Port)
+  * Allow setting --flash-size in ESP flasher, #2801
+  * Rename "Raspberry Pi" initial settings to "Raspberry Pi (simple)"
+  * Update several translations
+  * Add en_GB translation
+  * Attempt to overcome "window was deleted before its visibility changed" error
+  * Fix pipkin directory creation in paste mode (e.g. package installation via WebREPL)
+  * Upgrade bundled websockets, paramiko, docutils, mypy, Send2Trash, esptool to latest versions 
+
+-------------------------------------------------------------------
 Sun Jan 22 21:35:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.2:
