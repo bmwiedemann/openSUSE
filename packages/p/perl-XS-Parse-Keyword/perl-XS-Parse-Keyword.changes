@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug  9 03:08:06 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.37
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.37    2023-08-08
+          [CHANGES]
+           * Added `XPK_WARNING()` and several conditional variants
+
+-------------------------------------------------------------------
 Fri Jul 21 03:11:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.36
