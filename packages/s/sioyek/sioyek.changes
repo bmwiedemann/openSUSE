@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 10 08:13:41 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Attempt to fix sioyek build. Resolves bsc#1209453.
+
+-------------------------------------------------------------------
 Tue Mar  7 18:01:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add no-link-gumbo.patch and drop dependency on gumbo.

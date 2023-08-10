@@ -47,6 +47,7 @@ Sioyek is a PDF viewer designed for reading research papers and technical books.
 
 %prep
 %autosetup -p1
+sed -i '/#define LINUX_STANDARD_PATHS/s/\/\///' pdf_viewer/main.cpp
 
 %build
 # We really cannot use the qt5 macros here because the builds fail
