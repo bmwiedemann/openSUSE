@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  9 16:10:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add util-linux dependency for getopt to avoid:
+  /usr/bin/lsb_release: line 123: getopt: command not found
+
+-------------------------------------------------------------------
 Fri Mar 25 13:39:05 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 3.2

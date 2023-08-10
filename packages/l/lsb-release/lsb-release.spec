@@ -1,7 +1,7 @@
 #
 # spec file for package lsb-release
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          System/Fhs
 URL:            https://github.com/thkukuk/lsb-release_os-release
 Source:         https://github.com/thkukuk/lsb-release_os-release/archive/refs/tags/v%{version}.tar.gz#/lsb-release-%{version}.tar.gz
+# for getopt(1)
+Requires:       util-linux
 BuildArch:      noarch
 
 %description
@@ -33,7 +35,7 @@ Tools from the Linux Standard Base project to determine the used distribution
 %setup -q -n lsb-release_os-release-%{version}
 
 %build
-make
+%make_build
 
 %install
 make install INSTALL_ROOT=%{buildroot}%{_prefix}
