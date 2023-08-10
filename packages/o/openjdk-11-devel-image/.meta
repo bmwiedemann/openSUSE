@@ -1,0 +1,5 @@
+<package name="openjdk-11-devel-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed BCI OpenJDK 11 Development Container Image</title>
+  <description>Java 11 Development environment based on the SLE Base Container Image.</description>
+  <devel project="devel:BCI:Tumbleweed" package="openjdk-11-devel-image"/>
+</package>
