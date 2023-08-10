@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-gettext
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,9 +39,8 @@ URL:            https://opam.ocaml.org/packages/gettext
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20230101
 %if 1
-BuildRequires:  ocamlfind(camomile)
 BuildRequires:  ocamlfind(compiler-libs.common)
 BuildRequires:  ocamlfind(cppo)
 BuildRequires:  ocamlfind(dune.configurator)
@@ -55,9 +54,8 @@ BuildRequires:  ocamlfind(oUnit)
 BuildRequires:  ocamlfind(str)
 %endif
 
-# ocaml-gettext program needs camomile data files
-Requires:       ocaml-camomile-data
 #
+# camomile was used in old versions of this pkg.
 Obsoletes:      ocaml-gettext-camomile < %version-%release
 Obsoletes:      ocaml-gettext-stub < %version-%release
 Obsoletes:      ocaml-gettext-stub-debuginfo < %version-%release
@@ -93,7 +91,7 @@ developing applications that use %name.
 %autosetup -p1 -n %pkg-%version
 
 %build
-dune_release_pkgs='gettext,gettext-camomile,gettext-stub'
+dune_release_pkgs='gettext,gettext-stub'
 %ocaml_dune_setup
 %if "%build_flavor" == ""
 %ocaml_dune_build

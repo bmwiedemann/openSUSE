@@ -60,4 +60,13 @@
     <comment>- add bcond ocaml_gettext_testsuite to disable failing testsuite</comment>
     <requestid>967055</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>febe9ee3bb1dcbe0697f3a3d6fe69259</srcmd5>
+    <version>0.4.2</version>
+    <time>1691674495</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove dependency to Camomile
+  The only consumer of this pkg (virt-top) does not need it</comment>
+    <requestid>1103330</requestid>
+  </revision>
 </revisionlist>

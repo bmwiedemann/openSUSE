@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  8 08:08:08 UTC 2023 - ohering@suse.de
+
+- Remove dependency to Camomile
+  The only consumer of this pkg (virt-top) does not need it
+
+-------------------------------------------------------------------
 Mon Apr  4 04:04:04 UTC 2022 - ohering@suse.de
 
 - add bcond ocaml_gettext_testsuite to disable failing testsuite
