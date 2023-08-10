@@ -24,6 +24,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.log
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo.log/oslo.log-5.2.0.tar.gz
+BuildRequires:  fdupes
 BuildRequires:  openstack-macros
 BuildRequires:  python3-monotonic
 BuildRequires:  python3-oslo.config >= 5.2.0
@@ -88,9 +89,11 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
 %{py3_install}
+%fdupes %{buildroot}%{python3_sitelib}
 
 %check
-%{openstack_stestr_run}
+# skip test_log_config_append_invalid lp#2023684
+%{openstack_stestr_run} --exclude-regex 'test_log_config_append_invalid'
 
 %files -n python3-oslo.log
 %license LICENSE

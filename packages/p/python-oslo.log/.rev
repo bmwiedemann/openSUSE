@@ -419,4 +419,12 @@
   - Add 'revert bugfix #1983863' release note</comment>
     <requestid>1084311</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>2223a898401a09218becbc3d7f1a0280</srcmd5>
+    <version>5.2.0</version>
+    <time>1691674497</time>
+    <user>dimstar_suse</user>
+    <comment>- skip failing tests, run fdupes</comment>
+    <requestid>1103323</requestid>
+  </revision>
 </revisionlist>
