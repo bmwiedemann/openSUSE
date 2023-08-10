@@ -5,6 +5,6 @@ discovers your books automatically, and sorts them by categories, genres and
 authors.
 
 </description>
-  <devel project="KDE:Extra" package="arianna"/>
+  <devel project="KDE:Applications" package="arianna"/>
   <url>https://apps.kde.org/arianna/</url>
 </package>
