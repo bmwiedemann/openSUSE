@@ -52,9 +52,9 @@ for libdir in LIBDIRS:
                 # we have to be sure it is not owned by anything else
                 # doing in 2nd run to ensure avoiding collisions
                 if link.is_dir() and not any(link.iterdir()):
-                    r = subprocess.run(f'rpm -qf {file}', shell=True,
-                                       stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
-                    if not r.stdout:
+                    r = subprocess.call("rpm -qf {}".format(file), shell=True,
+                                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                    if r != 0:
                         link.rmdir()
     else:
         for file in files:
@@ -76,8 +76,8 @@ for libdir in LIBDIRS:
         if leftover.is_dir() and not any(leftover.iterdir()):
             leftover.rmdir()
 
-    # remove dangling links as they might happen when migratin from older
+    # remove dangling links as they might happen when migrating from older
     # libreoffice versions
     # Run find directly as it's faster than os.walk run and a os.path.islink!
-    subprocess.run(f'find {str(lodir)} -type l -xtype l -delete',
+    subprocess.call("find {} -type l -xtype l -delete".format(str(lodir)),
                    shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

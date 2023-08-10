@@ -49,4 +49,12 @@
     <comment></comment>
     <requestid>1073833</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>dbe060725bf5b0df2d7e50a1a0077940</srcmd5>
+    <version>1</version>
+    <time>1691674381</time>
+    <user>dimstar_suse</user>
+    <comment>python 3.4 fixes again and again</comment>
+    <requestid>1103178</requestid>
+  </revision>
 </revisionlist>
