@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 10 11:09:11 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.5.1
+
+  * A bunch of improvements to Python 3.12 compatibility
+  * repoview: fix the filter created by `extrafilter`
+  * Improve portability of the test suite
+  * fncache: fix a bug that corrupts the fncache after transaction rollback
+  * revlog: fix the naming scheme use by split temporary file
+  * perf: fix perf::tags
+
+-------------------------------------------------------------------
 Fri Jul 28 12:20:30 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.5 

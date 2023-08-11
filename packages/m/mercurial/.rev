@@ -1635,4 +1635,18 @@ As usual, a lot of patches don't make it to this list since they're more interna
       SSH peers (forwarded request 1101192 from develop7)</comment>
     <requestid>1101193</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>416deb498a34fb602415168f686f7949</srcmd5>
+    <version>6.5.1</version>
+    <time>1691762111</time>
+    <user>dimstar_suse</user>
+    <comment>- Mercurial 6.5.1
+  * A bunch of improvements to Python 3.12 compatibility
+  * repoview: fix the filter created by `extrafilter`
+  * Improve portability of the test suite
+  * fncache: fix a bug that corrupts the fncache after transaction rollback
+  * revlog: fix the naming scheme use by split temporary file
+  * perf: fix perf::tags (forwarded request 1103333 from develop7)</comment>
+    <requestid>1103334</requestid>
+  </revision>
 </revisionlist>
