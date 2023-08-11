@@ -220,4 +220,27 @@
   * Update Czech translation</comment>
     <requestid>1006462</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>983a2cfe26d6795801e7e3b0a30fdd35</srcmd5>
+    <version>1.2.3</version>
+    <time>1691762176</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.3:
+  * Fix short freeze on startup
+  * Fix game information not showing in list view
+  * Hide A Plague Tale Digital Goodies Pack
+  * Remove round corners from top of the &quot;play&quot; button
+  * Move the Gametile menu button alongside the Play button
+  * Update Spanish translation
+  * Capitalize first letter of the &quot;play/download/...&quot; button
+  * Update Traditional Chinese translation
+  * Added additional tooltips to buttons, labels, menu items and radio buttons
+  * Hide CDPR Goodie Pack Content
+  * Add notifications on successful download and installation of games
+  * Add category filtering dialog for game library
+  * Parallelize api.can_connect function with threads, futures
+  * Fix available disk space being checked in parent directory
+  * Create new config if reading it fails</comment>
+    <requestid>1103469</requestid>
+  </revision>
 </revisionlist>

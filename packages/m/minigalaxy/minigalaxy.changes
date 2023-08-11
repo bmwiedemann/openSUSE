@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 11 10:13:45 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.3:
+  * Fix short freeze on startup
+  * Fix game information not showing in list view
+  * Hide A Plague Tale Digital Goodies Pack
+  * Remove round corners from top of the "play" button
+  * Move the Gametile menu button alongside the Play button
+  * Update Spanish translation
+  * Capitalize first letter of the "play/download/..." button
+  * Update Traditional Chinese translation
+  * Added additional tooltips to buttons, labels, menu items and radio buttons
+  * Hide CDPR Goodie Pack Content
+  * Add notifications on successful download and installation of games
+  * Add category filtering dialog for game library
+  * Parallelize api.can_connect function with threads, futures
+  * Fix available disk space being checked in parent directory
+  * Create new config if reading it fails
+
+-------------------------------------------------------------------
 Tue Sep 27 15:55:58 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.2:
