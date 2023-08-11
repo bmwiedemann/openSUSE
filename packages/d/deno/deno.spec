@@ -19,7 +19,7 @@
 
 
 Name:           deno
-Version:        1.36.0
+Version:        1.36.1
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -34,6 +34,9 @@ Patch1:         deno-rm-upgrade-cmd.patch
 BuildRequires:  cargo-packaging
 # gcc-c++ needed to build SPIRV-Cross
 BuildRequires:  clang
+# needed by `libz-ng-sys` after 1.36.1
+# see: https://build.opensuse.org/package/show/devel:languages:javascript/deno#comment-1808174
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gn
 BuildRequires:  lld
@@ -68,6 +71,8 @@ updated with the --reload flag.
 cp %{SOURCE2} .cargo/config
 # Drop lock file due to revendor_source.sh breaking check
 rm Cargo.lock
+# drop checksum for ICU 72 -> 73
+echo '{"files":{},"package":""}' > vendor/deno_core/.cargo-checksum.json
 
 %build
 export V8_FROM_SOURCE=1
