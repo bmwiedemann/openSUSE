@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug  9 14:24:49 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 3.1:
+  * new options --leftmost-captures option and re2c:leftmost-captures on capturing groups
+  * new syntax (! ...) for non-capturing groups
+  * It is also possible to flip defaults with --invert-captures option or re2c:invert_captures configuration, 
+    so that (...) is a capturing group and (! ...) is a non-capturing one
+  * TDFA paper and removal of experimental algorithms
+  * internal codebase , build system and CI improvements
+  
+  see details at https://re2c.org/releases/release_notes.html#release-3-1
+
+-------------------------------------------------------------------
 Thu Apr 28 19:03:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0:
