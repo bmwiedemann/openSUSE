@@ -2161,6 +2161,7 @@ BuildFlags: onlybuild:libsecret
 BuildFlags: onlybuild:libselinux
 BuildFlags: onlybuild:libselinux:libselinux-bindings
 BuildFlags: onlybuild:libsemanage
+BuildFlags: onlybuild:libsemanage:python-semanage
 BuildFlags: onlybuild:libsepol
 BuildFlags: onlybuild:libserf
 BuildFlags: onlybuild:libshout
@@ -2828,7 +2829,6 @@ BuildFlags: onlybuild:python-rpm-packaging
 BuildFlags: onlybuild:python-rtslib-fb
 BuildFlags: onlybuild:python-scandir
 BuildFlags: onlybuild:python-scipy
-BuildFlags: onlybuild:python-semanage
 BuildFlags: onlybuild:python-semantic_version
 BuildFlags: onlybuild:python-service_identity
 BuildFlags: onlybuild:python-setuptools
