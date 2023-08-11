@@ -72,7 +72,7 @@ export PATH=$PWD/build/testbin/:$PATH
 # test_invalid_classifier requires internet
 # https://github.com/takluyver/flit/blob/96751efce651f8bae8ccb9e7f144dac460b3f013/flit/validate.py#L126
 # "The error you get on a train, going through Oregon, without wifi"
-%pytest -k "not test_invalid_classifier"
+%pytest -k "not (test_invalid_classifier or InstallTests)"
 
 %post
 %python_install_alternative flit

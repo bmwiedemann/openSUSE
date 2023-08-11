@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 10 09:01:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- skip install tests for better interoperability with PEP 668 
+
+-------------------------------------------------------------------
 Wed May 10 06:11:46 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - Remove BuildRequire for PyYAML again. This was needed by the
