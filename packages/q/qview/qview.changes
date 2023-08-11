@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug 11 04:53:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.0:
+  New features:
+  * Support color profiles (Requires Qt >=5.14 if you're building yourself).
+  * Support dragging and dropping a folder.
+  * Add sorting by creation date
+  Bugfixes:
+  * Fix image switching being much slower than expected on folders with a lot of files.
+  * Fix slowness when opening files from a network share.
+  * Fix GIFs not moving from the center of the viewport.
+  * Fix crash when switching images on Linux.
+  * Fix application menu becoming empty on macOS when all windows are closed.
+  Distribution changes:
+  * kimageformats is now included in an even more automated fashion.
+  * HEIF and AVIF are now from kimageformats.
+  * raw image format support now included.
+
+-------------------------------------------------------------------
 Sun Jan 16 09:05:27 UTC 2022 - Andrey Karepin <egdfree@opensuse.org>
 
 - add libqt5-qtimageformats to recommends

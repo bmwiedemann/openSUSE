@@ -102,4 +102,26 @@
 </comment>
     <requestid>946760</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a2dbb518252547dde7f627f24ea1c1b8</srcmd5>
+    <version>6.0</version>
+    <time>1691762166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0:
+  New features:
+  * Support color profiles (Requires Qt &gt;=5.14 if you're building yourself).
+  * Support dragging and dropping a folder.
+  * Add sorting by creation date
+  Bugfixes:
+  * Fix image switching being much slower than expected on folders with a lot of files.
+  * Fix slowness when opening files from a network share.
+  * Fix GIFs not moving from the center of the viewport.
+  * Fix crash when switching images on Linux.
+  * Fix application menu becoming empty on macOS when all windows are closed.
+  Distribution changes:
+  * kimageformats is now included in an even more automated fashion.
+  * HEIF and AVIF are now from kimageformats.
+  * raw image format support now included.</comment>
+    <requestid>1103428</requestid>
+  </revision>
 </revisionlist>
