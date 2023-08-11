@@ -1,6 +1,6 @@
 name:           polyparse
 version:        1.13
-x-revision:     7
+x-revision:     8
 license:        LGPL
 license-files:   COPYRIGHT, LICENCE-LGPL, LICENCE-commercial
 copyright:      (c) 2006-2016 Malcolm Wallace
@@ -43,17 +43,13 @@ tested-with:
    || ==7.0.4
 
 source-repository head
-  type:     darcs
-  location: http://code.haskell.org/polyparse
-
-source-repository this
   type:      git
   location:  https://github.com/hackage-trustees/malcolm-wallace-universe.git
-  tag:       1.12.1
+  subdir:    polyparse-1.12
 
 library
   hs-source-dirs:       src
-  build-depends:        base >= 4.3.1.0 && < 4.19
+  build-depends:        base >= 4.3.1.0 && < 4.20
 
   if !impl(ghc >= 8.0)
      build-depends: fail == 4.9.*
