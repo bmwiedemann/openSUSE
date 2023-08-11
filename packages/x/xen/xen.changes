@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Aug 10 11:10:00 CEST 2023 - jbeulich@suse.com
+
+- bsc#1212684 - xentop fails with long interface name
+  64d33a57-libxenstat-Linux-nul-terminate-string.patch
+
+-------------------------------------------------------------------
+Tue Aug  8 11:36:00 MDT 2023 - carnold@suse.com
+
+- Update to Xen 4.17.2 bug fix release (bsc#1027519)
+  xen-4.17.2-testing-src.tar.bz2
+  * No upstream changelog found in sources or webpage
+- bsc#1214082 - VUL-0: CVE-2023-20569: xen: x86/AMD: Speculative
+  Return Stack Overflow (XSA-434)
+- bsc#1214083 - VUL-0: CVE-2022-40982: xen: x86/Intel: Gather Data
+  Sampling (XSA-435)
+- Dropped patches contained in new tarball
+  64525c61-tools-libs-guest-assist-gcc13s-realloc-analyzer.patch
+  645dec48-AMD-IOMMU-assert-boolean-enum.patch
+  64639e84-amd-fix-legacy-setting-of-SSBD-on-AMD-Family-17h.patch
+  646b782b-PCI-pci_get_pdev-respect-segment.patch
+  647dfb0e-x86-missing-unlock-in-microcode_update_helper.patch
+  648863fc-AMD-IOMMU-Invalidate-All-check.patch
+  64bea1b2-x86-AMD-Zenbleed.patch
+
+-------------------------------------------------------------------
+Tue Aug  1 11:11:11 UTC 2023 - ohering@suse.de
+
+- Handle potential off-by-one errors in libxc-sr-xg_sr_bitmap.patch
+  A bit is an index in bitmap, while bits is the allocated size
+  of the bitmap.
+
+-------------------------------------------------------------------
 Fri Jul 28 15:15:15 UTC 2023 - ohering@suse.de
 
 - Add more debug to libxc-sr-track-migration-time.patch

@@ -52,7 +52,7 @@ Reviewed-by: Jan Beulich <jbeulich@suse.com>
  	rm -f cppcheck-misra.* xen-cppcheck.xml
 --- a/xen/arch/x86/Makefile
 +++ b/xen/arch/x86/Makefile
-@@ -224,6 +224,9 @@ endif
+@@ -225,6 +225,9 @@ endif
  	      $(@D)/.$(@F).1r.o $(@D)/.$(@F).1s.o $(orphan-handling-y) $(note_file_option) -o $@
  	$(NM) -pa --format=sysv $(@D)/$(@F) \
  		| $(objtree)/tools/symbols --all-symbols --xensyms --sysv --sort >$(@D)/$(@F).map

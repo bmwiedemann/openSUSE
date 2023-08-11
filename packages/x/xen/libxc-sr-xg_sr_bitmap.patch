@@ -92,7 +92,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +
 +static inline bool sr_set_bit(unsigned long bit, struct sr_bitmap *bm)
 +{
-+    if (sr_bitmap_expand(bm, bit) == false)
++    if (sr_bitmap_expand(bm, bit + 1) == false)
 +        return false;
 +
 +    set_bit(bit, bm->p);
@@ -101,7 +101,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +
 +static inline bool sr_test_bit(unsigned long bit, struct sr_bitmap *bm)
 +{
-+    if (bit > bm->bits)
++    if (bit + 1 > bm->bits)
 +        return false;
 +    return !!test_bit(bit, bm->p);
 +}
@@ -114,7 +114,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +
 +static inline bool sr_test_and_clear_bit(unsigned long bit, struct sr_bitmap *bm)
 +{
-+    if (bit > bm->bits)
++    if (bit + 1 > bm->bits)
 +        return false;
 +    return !!test_and_clear_bit(bit, bm->p);
 +}
@@ -122,14 +122,14 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +/* No way to report potential allocation error, bitmap must be expanded prior usage */
 +static inline bool sr_test_and_set_bit(unsigned long bit, struct sr_bitmap *bm)
 +{
-+    if (bit > bm->bits)
++    if (bit + 1 > bm->bits)
 +        return false;
 +    return !!test_and_set_bit(bit, bm->p);
 +}
 +
 +static inline bool sr_set_long_bit(unsigned long base_bit, struct sr_bitmap *bm)
 +{
-+    if (sr_bitmap_expand(bm, base_bit + BITS_PER_LONG) == false)
++    if (sr_bitmap_expand(bm, base_bit + BITS_PER_LONG + 1) == false)
 +        return false;
 +
 +    set_bit_long(base_bit, bm->p);

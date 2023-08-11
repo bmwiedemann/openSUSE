@@ -28,7 +28,7 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define xen_build_dir xen-4.17.1-testing
+%define xen_build_dir xen-4.17.2-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -119,12 +119,12 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.17.1_06
+Version:        4.17.2_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.17.1-testing-src.tar.bz2
+Source0:        xen-4.17.2-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        mini-os.tar.bz2
 Source3:        xen-utils-0.1.tar.bz2
@@ -159,13 +159,7 @@ Patch1:         63e4da00-dont-log-errors-when-trying-to-load-PVH-xenstore-stubdo
 Patch2:         643e3810-CONFIG_DEBUG_INFO-no-EXPERT.patch
 Patch3:         643e387f-xen-update-CONFIG_DEBUG_INFO-help-text.patch
 Patch4:         6447a8fd-x86-EFI-permit-crash-dump-analysis.patch
-Patch5:         64525c61-tools-libs-guest-assist-gcc13s-realloc-analyzer.patch
-Patch6:         645dec48-AMD-IOMMU-assert-boolean-enum.patch
-Patch7:         64639e84-amd-fix-legacy-setting-of-SSBD-on-AMD-Family-17h.patch
-Patch8:         646b782b-PCI-pci_get_pdev-respect-segment.patch
-Patch9:         647dfb0e-x86-missing-unlock-in-microcode_update_helper.patch
-Patch10:        648863fc-AMD-IOMMU-Invalidate-All-check.patch
-Patch11:        64bea1b2-x86-AMD-Zenbleed.patch
+Patch5:         64d33a57-libxenstat-Linux-nul-terminate-string.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch
