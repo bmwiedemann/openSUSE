@@ -1,0 +1,253 @@
+From c25c8081ded775f3574b0bc999d809ce14701ba5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Thu, 3 Aug 2023 10:07:28 +0100
+Subject: [PATCH] Fix regression: multiple values for keyword argument
+ 'saltenv' (bsc#1212844) (#590)
+
+* fix passing wrong keyword arguments to cp.cache_file in pkg.installed with sources
+
+* Drop `**kwargs` usage and be explicit about the supported keyword arguments.
+
+Signed-off-by: Pedro Algarvio <palgarvio@vmware.com>
+
+* Add regression test for https://github.com/saltstack/salt/issues/64118
+
+Signed-off-by: Pedro Algarvio <palgarvio@vmware.com>
+
+* Add changelog file
+
+Signed-off-by: Pedro Algarvio <palgarvio@vmware.com>
+
+---------
+
+Signed-off-by: Pedro Algarvio <palgarvio@vmware.com>
+Co-authored-by: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+Co-authored-by: Pedro Algarvio <palgarvio@vmware.com>
+---
+ changelog/64118.fixed.md                   |  1 +
+ salt/modules/win_pkg.py                    | 25 +++++++-----
+ salt/states/pkg.py                         |  4 +-
+ tests/pytests/unit/modules/test_win_pkg.py |  2 +-
+ tests/pytests/unit/states/test_pkg.py      | 46 +++++++++++++++++++---
+ 5 files changed, 62 insertions(+), 16 deletions(-)
+ create mode 100644 changelog/64118.fixed.md
+
+diff --git a/changelog/64118.fixed.md b/changelog/64118.fixed.md
+new file mode 100644
+index 0000000000..e7251827e9
+--- /dev/null
++++ b/changelog/64118.fixed.md
+@@ -0,0 +1 @@
++Stop passing `**kwargs` and be explicit about the keyword arguments to pass, namely, to `cp.cache_file` call in `salt.states.pkg`
+diff --git a/salt/modules/win_pkg.py b/salt/modules/win_pkg.py
+index 3aa7c7919a..e80dd19322 100644
+--- a/salt/modules/win_pkg.py
++++ b/salt/modules/win_pkg.py
+@@ -1298,7 +1298,7 @@ def _repo_process_pkg_sls(filename, short_path_name, ret, successful_verbose):
+         successful_verbose[short_path_name] = []
+ 
+ 
+-def _get_source_sum(source_hash, file_path, saltenv, **kwargs):
++def _get_source_sum(source_hash, file_path, saltenv, verify_ssl=True):
+     """
+     Extract the hash sum, whether it is in a remote hash file, or just a string.
+     """
+@@ -1315,7 +1315,7 @@ def _get_source_sum(source_hash, file_path, saltenv, **kwargs):
+         # The source_hash is a file on a server
+         try:
+             cached_hash_file = __salt__["cp.cache_file"](
+-                source_hash, saltenv, verify_ssl=kwargs.get("verify_ssl", True)
++                source_hash, saltenv=saltenv, verify_ssl=verify_ssl
+             )
+         except MinionError as exc:
+             log.exception("Failed to cache %s", source_hash, exc_info=exc)
+@@ -1671,7 +1671,7 @@ def install(name=None, refresh=False, pkgs=None, **kwargs):
+                     try:
+                         cached_file = __salt__["cp.cache_file"](
+                             cache_file,
+-                            saltenv,
++                            saltenv=saltenv,
+                             verify_ssl=kwargs.get("verify_ssl", True),
+                         )
+                     except MinionError as exc:
+@@ -1686,7 +1686,7 @@ def install(name=None, refresh=False, pkgs=None, **kwargs):
+                     try:
+                         cached_file = __salt__["cp.cache_file"](
+                             cache_file,
+-                            saltenv,
++                            saltenv=saltenv,
+                             verify_ssl=kwargs.get("verify_ssl", True),
+                         )
+                     except MinionError as exc:
+@@ -1706,7 +1706,9 @@ def install(name=None, refresh=False, pkgs=None, **kwargs):
+                 # It's not cached. Cache it, mate.
+                 try:
+                     cached_pkg = __salt__["cp.cache_file"](
+-                        installer, saltenv, verify_ssl=kwargs.get("verify_ssl", True)
++                        installer,
++                        saltenv=saltenv,
++                        verify_ssl=kwargs.get("verify_ssl", True),
+                     )
+                 except MinionError as exc:
+                     msg = "Failed to cache {}".format(installer)
+@@ -1730,7 +1732,7 @@ def install(name=None, refresh=False, pkgs=None, **kwargs):
+                     try:
+                         cached_pkg = __salt__["cp.cache_file"](
+                             installer,
+-                            saltenv,
++                            saltenv=saltenv,
+                             verify_ssl=kwargs.get("verify_ssl", True),
+                         )
+                     except MinionError as exc:
+@@ -1754,7 +1756,12 @@ def install(name=None, refresh=False, pkgs=None, **kwargs):
+         # Compare the hash sums
+         source_hash = pkginfo[version_num].get("source_hash", False)
+         if source_hash:
+-            source_sum = _get_source_sum(source_hash, cached_pkg, saltenv, **kwargs)
++            source_sum = _get_source_sum(
++                source_hash,
++                cached_pkg,
++                saltenv=saltenv,
++                verify_ssl=kwargs.get("verify_ssl", True),
++            )
+             log.debug(
+                 "pkg.install: Source %s hash: %s",
+                 source_sum["hash_type"],
+@@ -2126,7 +2133,7 @@ def remove(name=None, pkgs=None, **kwargs):
+                     try:
+                         cached_pkg = __salt__["cp.cache_file"](
+                             uninstaller,
+-                            saltenv,
++                            saltenv=saltenv,
+                             verify_ssl=kwargs.get("verify_ssl", True),
+                         )
+                     except MinionError as exc:
+@@ -2150,7 +2157,7 @@ def remove(name=None, pkgs=None, **kwargs):
+                         try:
+                             cached_pkg = __salt__["cp.cache_file"](
+                                 uninstaller,
+-                                saltenv,
++                                saltenv=saltenv,
+                                 verify_ssl=kwargs.get("verify_ssl", True),
+                             )
+                         except MinionError as exc:
+diff --git a/salt/states/pkg.py b/salt/states/pkg.py
+index 12fbc87a1a..a605b23107 100644
+--- a/salt/states/pkg.py
++++ b/salt/states/pkg.py
+@@ -760,7 +760,9 @@ def _find_install_targets(
+             err = "Unable to cache {0}: {1}"
+             try:
+                 cached_path = __salt__["cp.cache_file"](
+-                    version_string, saltenv=kwargs["saltenv"], **kwargs
++                    version_string,
++                    saltenv=kwargs["saltenv"],
++                    verify_ssl=kwargs.get("verify_ssl", True),
+                 )
+             except CommandExecutionError as exc:
+                 problems.append(err.format(version_string, exc))
+diff --git a/tests/pytests/unit/modules/test_win_pkg.py b/tests/pytests/unit/modules/test_win_pkg.py
+index 76234fb77e..6d435f00a5 100644
+--- a/tests/pytests/unit/modules/test_win_pkg.py
++++ b/tests/pytests/unit/modules/test_win_pkg.py
+@@ -262,7 +262,7 @@ def test_pkg_install_verify_ssl_false():
+         result = win_pkg.install(name="nsis", version="3.02", verify_ssl=False)
+         mock_cp.assert_called_once_with(
+             "http://download.sourceforge.net/project/nsis/NSIS%203/3.02/nsis-3.02-setup.exe",
+-            "base",
++            saltenv="base",
+             verify_ssl=False,
+         )
+         assert expected == result
+diff --git a/tests/pytests/unit/states/test_pkg.py b/tests/pytests/unit/states/test_pkg.py
+index b852f27b00..f58be11011 100644
+--- a/tests/pytests/unit/states/test_pkg.py
++++ b/tests/pytests/unit/states/test_pkg.py
+@@ -3,6 +3,7 @@ import logging
+ import pytest
+ 
+ import salt.modules.beacons as beaconmod
++import salt.modules.cp as cp
+ import salt.modules.pkg_resource as pkg_resource
+ import salt.modules.yumpkg as yumpkg
+ import salt.states.beacon as beaconstate
+@@ -15,19 +16,28 @@ log = logging.getLogger(__name__)
+ 
+ 
+ @pytest.fixture
+-def configure_loader_modules():
++def configure_loader_modules(minion_opts):
+     return {
++        cp: {
++            "__opts__": minion_opts,
++        },
+         pkg: {
+             "__env__": "base",
+             "__salt__": {},
+             "__grains__": {"os": "CentOS", "os_family": "RedHat"},
+-            "__opts__": {"test": False, "cachedir": ""},
++            "__opts__": minion_opts,
+             "__instance_id__": "",
+             "__low__": {},
+             "__utils__": {"state.gen_tag": state_utils.gen_tag},
+         },
+-        beaconstate: {"__salt__": {}, "__opts__": {}},
+-        beaconmod: {"__salt__": {}, "__opts__": {}},
++        beaconstate: {
++            "__salt__": {},
++            "__opts__": minion_opts,
++        },
++        beaconmod: {
++            "__salt__": {},
++            "__opts__": minion_opts,
++        },
+         pkg_resource: {
+             "__salt__": {},
+             "__grains__": {"os": "CentOS", "os_family": "RedHat"},
+@@ -35,7 +45,7 @@ def configure_loader_modules():
+         yumpkg: {
+             "__salt__": {},
+             "__grains__": {"osarch": "x86_64", "osmajorrelease": 7},
+-            "__opts__": {},
++            "__opts__": minion_opts,
+         },
+     }
+ 
+@@ -563,6 +573,32 @@ def test_installed_with_changes_test_true(list_pkgs):
+             assert ret["changes"] == expected
+ 
+ 
++def test_installed_with_sources(list_pkgs, tmp_path):
++    """
++    Test pkg.installed with passing `sources`
++    """
++
++    list_pkgs = MagicMock(return_value=list_pkgs)
++    pkg_source = tmp_path / "pkga-package-0.3.0.deb"
++
++    with patch.dict(
++        pkg.__salt__,
++        {
++            "cp.cache_file": cp.cache_file,
++            "pkg.list_pkgs": list_pkgs,
++            "pkg_resource.pack_sources": pkg_resource.pack_sources,
++            "lowpkg.bin_pkg_info": MagicMock(),
++        },
++    ), patch("salt.fileclient.get_file_client", return_value=MagicMock()):
++        try:
++            ret = pkg.installed("install-pkgd", sources=[{"pkga": str(pkg_source)}])
++            assert ret["result"] is False
++        except TypeError as exc:
++            if "got multiple values for keyword argument 'saltenv'" in str(exc):
++                pytest.fail(f"TypeError should have not been raised: {exc}")
++            raise exc from None
++
++
+ @pytest.mark.parametrize("action", ["removed", "purged"])
+ def test_removed_purged_with_changes_test_true(list_pkgs, action):
+     """
+-- 
+2.41.0
+
+

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Aug  9 15:13:50 UTC 2023 - Alexander Graul <alexander.graul@suse.com>
+
+- Create minion_id with reproducible mtime
+- Fix detection of Salt codename by "salt_version" execution module
+- Fix regression: multiple values for keyword argument 'saltenv' (bsc#1212844)
+- Fix the regression of user.present state when group is unset (bsc#1212855)
+- Fix zypper repositories always being reconfigured
+- Fix utf8 handling in 'pass' renderer and make it more robust
+- Prevent _pygit2.GitError: error loading known_hosts when $HOME is not set (bsc#1210994)
+- Fix ModuleNotFoundError and other issues raised by salt-support module (bsc#1211591)
+- tornado: Fix an open redirect in StaticFileHandler (CVE-2023-28370, bsc#1211741)
+- Make master_tops compatible with Salt 3000 and older minions (bsc#1212516) (bsc#1212517)
+- Avoid failures due transactional_update module not available in Salt 3006.0 (bsc#1211754)
+- Avoid conflicts with Salt dependencies versions (bsc#1211612)
+
+- Added:
+  * fix-utf8-handling-in-pass-renderer-and-make-it-more-.patch
+  * fix-the-regression-of-user.present-state-when-group-.patch
+  * make-master_tops-compatible-with-salt-3000-and-older.patch
+  * avoid-conflicts-with-dependencies-versions-bsc-12116.patch
+  * tornado-fix-an-open-redirect-in-staticfilehandler-cv.patch
+  * fix-regression-multiple-values-for-keyword-argument-.patch
+  * zypper-pkgrepo-alreadyconfigured-585.patch
+  * mark-salt-3006-as-released-586.patch
+  * fix-some-issues-detected-in-salt-support-cli-module-.patch
+  * define-__virtualname__-for-transactional_update-modu.patch
+  * 3006.0-prevent-_pygit2.giterror-error-loading-known_.patch
+
+-------------------------------------------------------------------
 Fri May  5 08:29:26 UTC 2023 - Alexander Graul <alexander.graul@suse.com>
 
 - Update to Salt release version 3006.0 (jsc#PED-3139)

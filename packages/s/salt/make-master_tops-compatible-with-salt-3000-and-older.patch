@@ -1,0 +1,37 @@
+From 53a5a62191b81c6838c3041cf95ffeb12fbab5b5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Mon, 19 Jun 2023 15:35:41 +0100
+Subject: [PATCH] Make master_tops compatible with Salt 3000 and older
+ minions (bsc#1212516) (bsc#1212517) (#587)
+
+---
+ salt/master.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/salt/master.py b/salt/master.py
+index da1eb8cef5..fc243ef674 100644
+--- a/salt/master.py
++++ b/salt/master.py
+@@ -1213,6 +1213,7 @@ class AESFuncs(TransportMethods):
+         "_dir_list",
+         "_symlink_list",
+         "_file_envs",
++        "_ext_nodes", # To keep compatibility with old Salt minion versions
+     )
+ 
+     def __init__(self, opts, context=None):
+@@ -1412,6 +1413,9 @@ class AESFuncs(TransportMethods):
+             return {}
+         return self.masterapi._master_tops(load, skip_verify=True)
+ 
++    # Needed so older minions can request master_tops
++    _ext_nodes = _master_tops
++
+     def _master_opts(self, load):
+         """
+         Return the master options to the minion
+-- 
+2.41.0
+
+

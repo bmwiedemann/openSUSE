@@ -1,0 +1,154 @@
+From 502354be32fcff9b0607f6e435ca8825a4c2cd56 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Thu, 3 Aug 2023 11:07:03 +0200
+Subject: [PATCH] Fix the regression of user.present state when group is
+ unset (#589)
+
+* Fix user.present state when group is unset
+
+* Fix user unit test
+
+---------
+
+Co-authored-by: Megan Wilhite <mwilhite@vmware.com>
+---
+ changelog/64211.fixed.md                     |  1 +
+ salt/states/user.py                          |  2 +-
+ tests/pytests/functional/states/test_user.py | 74 +++++++++++++++++++-
+ tests/pytests/unit/states/test_user.py       |  2 +
+ 4 files changed, 76 insertions(+), 3 deletions(-)
+ create mode 100644 changelog/64211.fixed.md
+
+diff --git a/changelog/64211.fixed.md b/changelog/64211.fixed.md
+new file mode 100644
+index 0000000000..26b39acf02
+--- /dev/null
++++ b/changelog/64211.fixed.md
+@@ -0,0 +1 @@
++Fix user.present state when groups is unset to ensure the groups are unchanged, as documented.
+diff --git a/salt/states/user.py b/salt/states/user.py
+index ed2d5a05f4..929afb2cd1 100644
+--- a/salt/states/user.py
++++ b/salt/states/user.py
+@@ -100,7 +100,7 @@ def _changes(
+ 
+     change = {}
+     wanted_groups = sorted(set((groups or []) + (optional_groups or [])))
+-    if not remove_groups:
++    if not remove_groups or groups is None and not optional_groups:
+         wanted_groups = sorted(set(wanted_groups + lusr["groups"]))
+     if uid and lusr["uid"] != uid:
+         change["uid"] = uid
+diff --git a/tests/pytests/functional/states/test_user.py b/tests/pytests/functional/states/test_user.py
+index 09d34da168..96b1ec55c8 100644
+--- a/tests/pytests/functional/states/test_user.py
++++ b/tests/pytests/functional/states/test_user.py
+@@ -117,7 +117,6 @@ def test_user_present_when_home_dir_does_not_18843(states, existing_account):
+     ret = states.user.present(
+         name=existing_account.username,
+         home=existing_account.info.home,
+-        remove_groups=False,
+     )
+     assert ret.result is True
+     assert pathlib.Path(existing_account.info.home).is_dir()
+@@ -228,7 +227,6 @@ def test_user_present_unicode(states, username, subtests):
+             roomnumber="①②③",
+             workphone="١٢٣٤",
+             homephone="६७८",
+-            remove_groups=False,
+         )
+         assert ret.result is True
+ 
+@@ -429,3 +427,75 @@ def test_user_present_change_optional_groups(
+     user_info = modules.user.info(username)
+     assert user_info
+     assert user_info["groups"] == [group_1.name]
++
++
++@pytest.mark.skip_unless_on_linux(reason="underlying functionality only runs on Linux")
++def test_user_present_no_groups(modules, states, username):
++    """
++    test user.present when groups arg is not
++    included by the group is created in another
++    state. Re-run the states to ensure there are
++    not changes and it is idempotent.
++    """
++    groups = ["testgroup1", "testgroup2"]
++    try:
++        ret = states.group.present(name=username, gid=61121)
++        assert ret.result is True
++
++        ret = states.user.present(
++            name=username,
++            uid=61121,
++            gid=61121,
++        )
++        assert ret.result is True
++        assert ret.changes["groups"] == [username]
++        assert ret.changes["name"] == username
++
++        ret = states.group.present(
++            name=groups[0],
++            members=[username],
++        )
++        assert ret.changes["members"] == [username]
++
++        ret = states.group.present(
++            name=groups[1],
++            members=[username],
++        )
++        assert ret.changes["members"] == [username]
++
++        user_info = modules.user.info(username)
++        assert user_info
++        assert user_info["groups"] == [username, groups[0], groups[1]]
++
++        # run again, expecting no changes
++        ret = states.group.present(name=username)
++        assert ret.result is True
++        assert ret.changes == {}
++
++        ret = states.user.present(
++            name=username,
++        )
++        assert ret.result is True
++        assert ret.changes == {}
++
++        ret = states.group.present(
++            name=groups[0],
++            members=[username],
++        )
++        assert ret.result is True
++        assert ret.changes == {}
++
++        ret = states.group.present(
++            name=groups[1],
++            members=[username],
++        )
++        assert ret.result is True
++        assert ret.changes == {}
++
++        user_info = modules.user.info(username)
++        assert user_info
++        assert user_info["groups"] == [username, groups[0], groups[1]]
++    finally:
++        for group in groups:
++            ret = states.group.absent(name=group)
++            assert ret.result is True
+diff --git a/tests/pytests/unit/states/test_user.py b/tests/pytests/unit/states/test_user.py
+index 94e69d70ed..d50d16e3be 100644
+--- a/tests/pytests/unit/states/test_user.py
++++ b/tests/pytests/unit/states/test_user.py
+@@ -189,6 +189,8 @@ def test_present_uid_gid_change():
+         "user.chgid": Mock(),
+         "file.group_to_gid": mock_group_to_gid,
+         "file.gid_to_group": mock_gid_to_group,
++        "group.info": MagicMock(return_value=after),
++        "user.chgroups": MagicMock(return_value=True),
+     }
+     with patch.dict(user.__grains__, {"kernel": "Linux"}), patch.dict(
+         user.__salt__, dunder_salt
+-- 
+2.41.0
+
+

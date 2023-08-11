@@ -2224,4 +2224,12 @@ let build start it or we will get libvirt errors.
 - Fix version detection and avoid building and testing failures</comment>
     <requestid>1085020</requestid>
   </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>0b1afc1e964a36ed903e6d957fd39ee5</srcmd5>
+    <version>3006.0</version>
+    <time>1691762110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103320</requestid>
+  </revision>
 </revisionlist>

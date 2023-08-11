@@ -267,6 +267,28 @@ Patch60:       skip-package-names-without-colon-bsc-1208691-578.patch
 Patch61:       fix-version-detection-and-avoid-building-and-testing.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64113
 Patch62:       make-sure-the-file-client-is-destroyed-upon-used.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/581
+Patch63:       avoid-conflicts-with-dependencies-versions-bsc-12116.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64369
+Patch64:       define-__virtualname__-for-transactional_update-modu.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/587
+Patch65:       make-master_tops-compatible-with-salt-3000-and-older.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/583
+Patch66:       tornado-fix-an-open-redirect-in-staticfilehandler-cv.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/580
+Patch67:       fix-some-issues-detected-in-salt-support-cli-module-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64510
+Patch68:       3006.0-prevent-_pygit2.giterror-error-loading-known_.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64300
+Patch69:       fix-utf8-handling-in-pass-renderer-and-make-it-more-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/63403
+Patch70:       zypper-pkgrepo-alreadyconfigured-585.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64530
+Patch71:       fix-the-regression-of-user.present-state-when-group-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64179
+Patch72:       fix-regression-multiple-values-for-keyword-argument-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64554
+Patch73:       mark-salt-3006-as-released-586.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
@@ -844,7 +866,7 @@ install -Dpm 0755 scripts/suse/watchdog/salt-daemon-watcher %{buildroot}%{_bindi
 #
 ## install config files
 install -Dpm 0640 conf/minion %{buildroot}%{_sysconfdir}/salt/minion
-install -Dpm 0640 /dev/null   %{buildroot}%{_sysconfdir}/salt/minion_id
+touch  -m 0640 -r conf/minion %{buildroot}%{_sysconfdir}/salt/minion_id # ghost file
 install -Dpm 0640 conf/master %{buildroot}%{_sysconfdir}/salt/master
 install -Dpm 0640 conf/roster %{buildroot}%{_sysconfdir}/salt/roster
 install -Dpm 0640 conf/cloud %{buildroot}%{_sysconfdir}/salt/cloud

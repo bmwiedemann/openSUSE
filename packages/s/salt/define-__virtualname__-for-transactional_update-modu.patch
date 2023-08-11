@@ -1,0 +1,39 @@
+From f02e97df14e4927efbb5ddd3a2bbc5a650330b9e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Fri, 26 May 2023 16:50:51 +0100
+Subject: [PATCH] Define __virtualname__ for transactional_update module
+ (#582)
+
+This prevent problems with LazyLoader when importing this module,
+which was wrongly exposing functions for this module under "state.*"
+---
+ salt/modules/transactional_update.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/salt/modules/transactional_update.py b/salt/modules/transactional_update.py
+index 6493966782..658ebccc6b 100644
+--- a/salt/modules/transactional_update.py
++++ b/salt/modules/transactional_update.py
+@@ -285,6 +285,8 @@ from salt.modules.state import _check_queue, _prior_running_states, _wait, runni
+ 
+ __func_alias__ = {"apply_": "apply"}
+ 
++__virtualname__ = "transactional_update"
++
+ log = logging.getLogger(__name__)
+ 
+ 
+@@ -300,7 +302,7 @@ def __virtual__():
+             _prior_running_states, globals()
+         )
+         running = salt.utils.functools.namespaced_function(running, globals())
+-        return True
++        return __virtualname__
+     else:
+         return (False, "Module transactional_update requires a transactional system")
+ 
+-- 
+2.39.2
+
+
