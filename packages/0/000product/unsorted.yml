@@ -11092,7 +11092,7 @@ unsorted:
   - libcairo2-32bit 
   - libcaja-extension1 
   - libcal3d12 
-  - libcalc2_14_3_0 
+  - libcalc2_14_3_4 
   - libcalcium0 
   - libcallaudio0_1-0 
   - libcallback1 
@@ -23297,6 +23297,7 @@ unsorted:
   - python310-azure-communication-chat 
   - python310-azure-communication-email 
   - python310-azure-communication-identity 
+  - python310-azure-communication-jobrouter 
   - python310-azure-communication-networktraversal 
   - python310-azure-communication-nspkg 
   - python310-azure-communication-phonenumbers 
@@ -23425,6 +23426,7 @@ unsorted:
   - python310-azure-mgmt-hybridnetwork 
   - python310-azure-mgmt-imagebuilder 
   - python310-azure-mgmt-iotcentral 
+  - python310-azure-mgmt-iotfirmwaredefense 
   - python310-azure-mgmt-iothub 
   - python310-azure-mgmt-iothubprovisioningservices 
   - python310-azure-mgmt-keyvault 
@@ -23500,6 +23502,7 @@ unsorted:
   - python310-azure-mgmt-servicelinker 
   - python310-azure-mgmt-servicenetworking 
   - python310-azure-mgmt-signalr 
+  - python310-azure-mgmt-sphere 
   - python310-azure-mgmt-sql 
   - python310-azure-mgmt-sqlvirtualmachine 
   - python310-azure-mgmt-storage 
@@ -26753,6 +26756,7 @@ unsorted:
   - python311-azure-communication-chat 
   - python311-azure-communication-email 
   - python311-azure-communication-identity 
+  - python311-azure-communication-jobrouter 
   - python311-azure-communication-networktraversal 
   - python311-azure-communication-nspkg 
   - python311-azure-communication-phonenumbers 
@@ -26881,6 +26885,7 @@ unsorted:
   - python311-azure-mgmt-hybridnetwork 
   - python311-azure-mgmt-imagebuilder 
   - python311-azure-mgmt-iotcentral 
+  - python311-azure-mgmt-iotfirmwaredefense 
   - python311-azure-mgmt-iothub 
   - python311-azure-mgmt-iothubprovisioningservices 
   - python311-azure-mgmt-keyvault 
@@ -26956,6 +26961,7 @@ unsorted:
   - python311-azure-mgmt-servicelinker 
   - python311-azure-mgmt-servicenetworking 
   - python311-azure-mgmt-signalr 
+  - python311-azure-mgmt-sphere 
   - python311-azure-mgmt-sql 
   - python311-azure-mgmt-sqlvirtualmachine 
   - python311-azure-mgmt-storage 
@@ -30115,6 +30121,7 @@ unsorted:
   - python39-azure-communication-chat 
   - python39-azure-communication-email 
   - python39-azure-communication-identity 
+  - python39-azure-communication-jobrouter 
   - python39-azure-communication-networktraversal 
   - python39-azure-communication-nspkg 
   - python39-azure-communication-phonenumbers 
@@ -30243,6 +30250,7 @@ unsorted:
   - python39-azure-mgmt-hybridnetwork 
   - python39-azure-mgmt-imagebuilder 
   - python39-azure-mgmt-iotcentral 
+  - python39-azure-mgmt-iotfirmwaredefense 
   - python39-azure-mgmt-iothub 
   - python39-azure-mgmt-iothubprovisioningservices 
   - python39-azure-mgmt-keyvault 
@@ -30318,6 +30326,7 @@ unsorted:
   - python39-azure-mgmt-servicelinker 
   - python39-azure-mgmt-servicenetworking 
   - python39-azure-mgmt-signalr 
+  - python39-azure-mgmt-sphere 
   - python39-azure-mgmt-sql 
   - python39-azure-mgmt-sqlvirtualmachine 
   - python39-azure-mgmt-storage 
