@@ -91,9 +91,6 @@ major systems.
 
 %prep
 %setup -q -n qTox
-# rpmlint: datetime
-sed -i -e 's|__TIME__ + " " + __DATE__|"%(date +"%%H:%%M") %(date +"%%Y-%%m-%%d")"|g' src/main.cpp
-sed -i -e 's|__TIME__ << __DATE__|"%(date +"%%H:%%M") %(date +"%%Y-%%m-%%d")"|g' src/main.cpp
 
 %build
 CFLAGS="%{optflags} -Wno-error=parentheses"
