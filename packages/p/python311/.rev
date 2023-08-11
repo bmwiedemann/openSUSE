@@ -925,4 +925,12 @@ C API
   revert it).</comment>
     <requestid>1102237</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>90b7ab1a09d3bfe2e3e22dbb06eb43ba</srcmd5>
+    <version>3.11.4</version>
+    <time>1691762102</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103332</requestid>
+  </revision>
 </revisionlist>
