@@ -18,14 +18,12 @@
 
 %define sover 1
 Name:           qtkeychain-qt6
-Version:        0.13.2
+Version:        0.14.1
 Release:        0
 Summary:        Platform-independent Qt API for storing passwords securely
 License:        BSD-2-Clause
 URL:            https://github.com/frankosterfeld/qtkeychain
-Source:         https://github.com/frankosterfeld/qtkeychain/archive/v%{version}.tar.gz#/qtkeychain-qt5-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Define-a-poper-exported-CMake-target-instead-of-intr.patch
+Source:         https://github.com/frankosterfeld/qtkeychain/archive/refs/tags/%{version}.tar.gz#/qtkeychain-qt5-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
@@ -45,6 +43,8 @@ The Qt 6 keychain library.
 %package devel
 Summary:        Development files for libqt6keychain
 Requires:       libqt6keychain%{sover} = %{version}
+Requires:       cmake(Qt6Core)
+Requires:       cmake(Qt6DBus)
 
 %description devel
 This package contains development files for using the Qt6 keychain API.
@@ -73,8 +73,7 @@ Provides translations for the "qtkeychain-qt6" package.
 
 %find_lang qtkeychain --with-qt
 
-%post -n libqt6keychain%{sover} -p /sbin/ldconfig
-%postun -n libqt6keychain%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libqt6keychain%{sover}
 
 %files -n libqt6keychain%{sover}
 %license COPYING

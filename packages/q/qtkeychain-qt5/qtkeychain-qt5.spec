@@ -18,15 +18,13 @@
 
 %define sover 1
 Name:           qtkeychain-qt5
-Version:        0.13.2
+Version:        0.14.1
 Release:        0
 Summary:        A password store library
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/frankosterfeld/qtkeychain
-Source:         https://github.com/frankosterfeld/qtkeychain/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Define-a-poper-exported-CMake-target-instead-of-intr.patch
+Source:         https://github.com/frankosterfeld/qtkeychain/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core)
@@ -49,6 +47,8 @@ qtkeychain can be used to store passwords.
 Summary:        Development files for the qtkeychain library
 Group:          Development/Libraries/C and C++
 Requires:       libqt5keychain%{sover} = %{version}
+Requires:       cmake(Qt5Core)
+Requires:       cmake(Qt5DBus)
 
 %description devel
 qtkeychain can be used to store passwords.
@@ -68,8 +68,7 @@ This package contains development files for libqtkeychain.
 %cmake_install
 %find_lang qtkeychain --with-qt
 
-%post -n libqt5keychain%{sover} -p /sbin/ldconfig
-%postun -n libqt5keychain%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libqt5keychain%{sover}
 
 %files -n libqt5keychain%{sover}
 %license COPYING

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug  9 17:41:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.14.1:
+  * Many build system fixes and build fixes for recent Qt 6
+    releases
+  * Add QtQuick client example
+  * Added Dutch translation
+  * Add API to check whether a secure backend is available
+    at all
+  * Export QKeychain::isAvailable() to make it usable in a
+    shared build
+  * Protect against creating the QtKeychain::QtKeychain alias
+    target twice
+- Drop patch, merged upstream:
+  * 0001-Define-a-poper-exported-CMake-target-instead-of-intr.patch
+- Add missing dependency to the -devel packages
+
+-------------------------------------------------------------------
 Thu May  4 11:43:01 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
