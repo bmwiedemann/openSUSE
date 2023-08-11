@@ -368,4 +368,22 @@
 </comment>
     <requestid>1086078</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7d2779abf6b57e123ec3e1cb1418159f</srcmd5>
+    <version>0.19.0</version>
+    <time>1691762128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update requirements
+- specfile:
+  * remove patch supported_pythons_310_311.patch, included upstream
+  * remove patch support-python-311-typing.patch, included upstreamx
+- update to version 0.19.0:
+  * Python 3.11 support
+  * Massive improvements in performance for Interpreter (e.g. IPython)
+    users. This especially affects pandas users with large datasets.
+  * Add jedi.settings.allow_unsafe_interpreter_executions to make it
+    easier for IPython users to avoid unsafe executions.
+</comment>
+    <requestid>1103417</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 10 22:27:43 UTC 2023 - Benjamin Greiner <code@bnavigator.de>
+
+- Update requirements
+
+-------------------------------------------------------------------
+Thu Aug 10 21:59:38 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * remove patch supported_pythons_310_311.patch, included upstream
+  * remove patch support-python-311-typing.patch, included upstreamx
+
+- update to version 0.19.0:
+  * Python 3.11 support
+  * Massive improvements in performance for Interpreter (e.g. IPython)
+    users. This especially affects pandas users with large datasets.
+  * Add jedi.settings.allow_unsafe_interpreter_executions to make it
+    easier for IPython users to avoid unsafe executions.
+
+-------------------------------------------------------------------
 Wed May 10 12:13:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip a test failing with attrs 23.1

@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-jedi
-Version:        0.18.2
+Version:        0.19.0
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
@@ -27,13 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/davidhalter/jedi
 Source0:        https://files.pythonhosted.org/packages/source/j/jedi/jedi-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM gh#davidhalter/jedi#1903
-Patch0:         support-python-311-typing.patch
-# PATCH-FIX-UPSTREAM supported_pythons_310_311.patch gh#davidhalter/jedi#1914 mcepl@suse.com
-# Add '3.11' among _SUPPORTED_PYTHONS
-Patch2:         supported_pythons_310_311.patch
 # The author of jedi and parso takes pinning very seriously, adhere to it!
-BuildRequires:  %{python_module parso >= 0.8.0 with %python-parso < 0.9}
+BuildRequires:  %{python_module parso >= 0.8.3 with %python-parso < 0.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  %{python_module setuptools}
@@ -42,7 +37,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # See pinning note above
-Requires:       (python-parso >= 0.8.0 with python-parso < 0.9)
+Requires:       (python-parso >= 0.8.3 with python-parso < 0.9)
 BuildArch:      noarch
 %python_subpackages
 
