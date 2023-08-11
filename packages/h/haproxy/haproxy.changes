@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Aug 09 12:31:26 UTC 2023 - mrueckert@suse.de
 
-- Update to version 2.8.2+git0.61a0f576a: (boo#1214102)
+- Update to version 2.8.2+git0.61a0f576a: (boo#1214102) CVE-2023-40225
   * [RELEASE] Released version 2.8.2
   * BUG/MINOR: http: skip leading zeroes in content-length values
   * DOC: clarify the handling of URL fragments in requests
