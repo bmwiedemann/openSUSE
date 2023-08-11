@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 10 10:00:35 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Allow changing date to a later year than 2032 (bsc#1214144)
+- 4.6.3
+
+-------------------------------------------------------------------
 Thu Apr 20 14:10:19 UTC 2023 - Martin Vidner <mvidner@suse.com>
 
 - Cleanup: use "ru" keymap for Russian, not "ruwin_alt-UTF-8"
