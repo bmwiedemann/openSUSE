@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 11 03:15:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Ignore test failure due to new unicode handling in the stack
+
+-------------------------------------------------------------------
 Mon Oct 17 20:15:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add nbsmoke-pr63-remove-id.patch -- gh#pyviz-dev/nbsmoke#63

@@ -115,4 +115,12 @@
     <comment>- Add nbsmoke-pr63-remove-id.patch -- gh#pyviz-dev/nbsmoke#63</comment>
     <requestid>1029607</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>06ebe34449c760510c79f2d2217de979</srcmd5>
+    <version>0.6.0</version>
+    <time>1691762164</time>
+    <user>dimstar_suse</user>
+    <comment>- Ignore test failure due to new unicode handling in the stack (forwarded request 1103425 from bnavigator)</comment>
+    <requestid>1103426</requestid>
+  </revision>
 </revisionlist>

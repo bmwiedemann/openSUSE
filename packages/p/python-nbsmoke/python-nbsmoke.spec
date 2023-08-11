@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbsmoke
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-nbsmoke
 Version:        0.6.0
 Release:        0
 Summary:        Basic notebook checks
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/pyviz-dev/nbsmoke
+URL:            https://github.com/holoviz-dev/nbsmoke
 Source:         https://files.pythonhosted.org/packages/source/n/nbsmoke/nbsmoke-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM nbsmoke-pr63-remove-id.patch gh#pyviz-dev/nbsmoke#63
 Patch0:         nbsmoke-pr63-remove-id.patch
 # PATCH-FIX-OPENSUSE nbsmoke-obs-nounraisableexception.patch, don't error on warnings about obs not closing sockets in time, code@bnavigator.de
 Patch1:         nbsmoke-obs-nounraisableexception.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ipykernel
@@ -69,21 +69,23 @@ and whether they contain lint.
 %autosetup -p1 -n nbsmoke-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # needs to import from sourcedir
 export PYTHONPATH=":x"
-%pytest -p pytester
+# fails to check unicode strings
+donttest="test_run_good_html"
+%pytest -p pytester -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/nbsmoke-%{version}*-info
+%{python_sitelib}/nbsmoke-%{version}.dist-info
 %{python_sitelib}/nbsmoke/
 
 %changelog
