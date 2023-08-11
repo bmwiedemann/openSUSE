@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 10 19:41:31 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- update to 20230531
+   - add APM support [Apple Partition Map]
+- add BuildRequires pyvsapm
+- remove BuildRequires python-pbr
+
+-------------------------------------------------------------------
+Sat Aug  5 03:24:52 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- add conditional to only run python tests for factory.  15.4 and 15.5 are both failing for APFS filesystem checks 
+
+-------------------------------------------------------------------
 Fri Jul 28 22:11:04 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - use %{?sle15_python_module_pythons} to select python versions 

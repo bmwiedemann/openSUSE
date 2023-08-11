@@ -14,9 +14,11 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %{?sle15_python_module_pythons}
 
-%define timestamp 20221224
+%define timestamp 20230531
 Name:           python-dfVFS
 Version:        0~%{timestamp}
 Release:        0
@@ -53,10 +55,10 @@ BuildRequires:  %{python_module libsmdev}
 BuildRequires:  %{python_module libsmraw}
 BuildRequires:  %{python_module libvhdi}
 BuildRequires:  %{python_module libvmdk}
+BuildRequires:  %{python_module libvsapm}
 BuildRequires:  %{python_module libvsgpt}
 BuildRequires:  %{python_module libvshadow}
 BuildRequires:  %{python_module libvslvm}
-BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tsk}
 BuildRequires:  fdupes
@@ -86,6 +88,7 @@ Requires:       python-libsmdev
 Requires:       python-libsmraw
 Requires:       python-libvhdi
 Requires:       python-libvmdk
+Requires:       python-libvsapm
 Requires:       python-libvsgpt
 Requires:       python-libvshadow >= 0~20170902
 Requires:       python-libvslvm
@@ -127,9 +130,11 @@ chmod -x run_tests.py
 %fdupes %{buildroot}
 
 %check
+%if 0%{?suse_version} && 0%{?suse_version} > 1550
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python ./run_tests.py
 }
+%endif
 
 %files %{python_files}
 %license LICENSE
