@@ -1,14 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug  3 12:11:07 UTC 2023 - tschmidt@suse.com
+
+- Update to version 1.3.0
+  * Track .changes file in git
+
+-------------------------------------------------------------------
 Mon Jul 10 09:51:29 UTC 2023 - tschmidt@suse.com
 
 - Update to version 1.2.0~git0.abd0fec:
   * enhance docs for package testing
-  * fix provides to be compatible with yast2-registration on SLE15SP3 and lower
-
--------------------------------------------------------------------
-Fri Jul 07 12:28:43 UTC 2023 - tschmidt@suse.com
-
-- Update to version 1.1.0~git4.9156496:
   * Fixed `provides` to work with yast2-registration on SLE15 < SP4 (bsc#1212799)
   * Improve error message if product set more than once
 
