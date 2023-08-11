@@ -1,7 +1,0 @@
-<package name="lite-xl-widgets" project="openSUSE:Factory">
-  <title></title>
-  <description>* A widgets plugin that can be used by plugin writers to more easily implement interactive UI elements.
-* The plugin leverages lite-xl View system and provides ready to use components to reduce code duplication for stuff that most of the time is the same and simplify the process of writing your own GUI controls.</description>
-  <devel project="editors" package="lite-xl-widgets"/>
-  <url>https://github.com/lite-xl/lite-xl-widgets</url>
-</package>
