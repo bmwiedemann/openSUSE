@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 10 22:27:27 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.3.5:
+  * Prevent allow_unsafe_werkzeug option from being passed to web
+    servers #2001 (commit)
+
+-------------------------------------------------------------------
 Wed Jun 21 21:36:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file, make rpmlint happy.
