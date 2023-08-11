@@ -178,4 +178,13 @@
     <comment></comment>
     <requestid>1102750</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b2ea9cd48db2120ace70ad51d1c005b9</srcmd5>
+    <version>3.12.0rc1</version>
+    <time>1691762158</time>
+    <user>dimstar_suse</user>
+    <comment>- restrict PEP668 to ALP/Tumbleweed 
+</comment>
+    <requestid>1103380</requestid>
+  </revision>
 </revisionlist>
