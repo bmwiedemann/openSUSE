@@ -549,4 +549,14 @@ See changelog in:
   * chore(deps): bump oras.land/oras-go from 1.2.2 to 1.2.3</comment>
     <requestid>1098565</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>d1d449cd130a2840e8c7d01d059dc68e</srcmd5>
+    <version>3.12.3</version>
+    <time>1691762167</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.12.3:
+  * bump kubernetes modules to v0.27.3
+  * Add priority class to kind sorter</comment>
+    <requestid>1103448</requestid>
+  </revision>
 </revisionlist>
