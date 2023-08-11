@@ -339,4 +339,24 @@ Upgrade to version 12.6:
   * https://www.postgresql.org/docs/12/release-12-15.html</comment>
     <requestid>1086557</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d2d27e5a6bdf68a7efa2af408cb05616</srcmd5>
+    <version>12.16</version>
+    <time>1691762142</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 12.16:
+  * bsc#1214059, CVE-2023-39417: Disallow substituting a schema or
+    owner name into an extension script if the name contains a
+    quote, backslash, or dollar sign.
+  * https://www.postgresql.org/docs/12/release-12-16.html
+
+- Restore the independence of mini builds from the main build after
+  the -mini name change from April 4, 2023.
+- Adjust icu handling to prepare for PostgreSQL 16.
+
+- Overhaul postgresql-README.SUSE and move it from the binary
+  package to the noarch wrapper package.
+- Change the unix domain socket location from /var/run to /run.</comment>
+    <requestid>1103350</requestid>
+  </revision>
 </revisionlist>
