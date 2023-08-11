@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  8 14:35:16 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.1:
+  + Fix lint errors revealed by pycodestyle 2.11.
+  + modules/pkgconfig: Don't insert None into devenv list.
+  + interpreter: stop setting member out of initializer that isn't
+    even used.
+  + Error when an installed static library links to internal custom
+    target.
+  + packaging: fix regression that prevented pyinstaller from
+    getting custom deps.
+  + treewide: internally avoid deprecated machine file uses of
+    "pkgconfig".
+
+-------------------------------------------------------------------
 Mon Jul 17 00:10:47 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 1.2.0:
