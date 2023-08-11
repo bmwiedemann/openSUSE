@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May  4 14:20:40 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Fri Mar 24 13:54:12 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Add -ffat-lto-objects to CFLAGS to prevent rpmlint errors because
+  of LTO
+
+-------------------------------------------------------------------
+Thu Mar 23 13:06:51 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO now (boo#1138812).
+
+-------------------------------------------------------------------
 Fri Feb 24 07:48:05 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.5

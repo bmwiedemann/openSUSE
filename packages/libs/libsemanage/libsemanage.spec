@@ -111,10 +111,9 @@ stores must be migrated before any commands that modify or use the store
 grep /usr/libexec . -rl | xargs sed -i "s|/usr/libexec|%{_libexecdir}|g"
 
 %build
-%define _lto_cflags %{nil}
 %make_build clean
-%make_build CFLAGS="%{optflags} -fno-semantic-interposition" CC="gcc"
-%make_build CFLAGS="%{optflags} -fno-semantic-interposition" LIBDIR="%{_libdir}" LIBEXECDIR="%{_libexecdir}" SHLIBDIR="%{_lib}" CC="gcc" all
+%make_build CFLAGS="%{optflags} -fno-semantic-interposition -ffat-lto-objects" CC="gcc"
+%make_build CFLAGS="%{optflags} -fno-semantic-interposition -ffat-lto-objects" LIBDIR="%{_libdir}" LIBEXECDIR="%{_libexecdir}" SHLIBDIR="%{_lib}" CC="gcc" all
 
 %install
 mkdir -p %{buildroot}/%{_lib}

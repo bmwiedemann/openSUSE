@@ -473,4 +473,28 @@ Could not find any LGPL-2.1 &quot;only&quot; licensed files in the pacakge (forw
     <comment>SELinux 3.5 toolchain</comment>
     <requestid>1068397</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>0636755f8175bb473f373431c3aeeeba</srcmd5>
+    <version>3.5</version>
+    <time>1691762120</time>
+    <user>dimstar_suse</user>
+    <comment>- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.
+
+- Add -ffat-lto-objects to CFLAGS to prevent rpmlint errors because
+  of LTO
+
+- Enable LTO now (boo#1138812).
+
+- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.
+
+- Add -ffat-lto-objects to CFLAGS to prevent rpmlint errors because
+  of LTO
+
+- Enable LTO now (boo#1138812).</comment>
+    <requestid>1103132</requestid>
+  </revision>
 </revisionlist>

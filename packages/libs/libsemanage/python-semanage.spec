@@ -60,11 +60,10 @@ SELinux policy management applications.
 grep /usr/libexec . -rl | xargs sed -i "s|/usr/libexec|%{_libexecdir}|g"
 
 %build
-%define _lto_cflags %{nil}
 %make_build clean
 %{python_expand # loop over possible pythons
-%make_build PYTHON=$python CFLAGS="%{optflags} -fno-semantic-interposition" swigify
-%make_build PYTHON=$python CFLAGS="%{optflags} -fno-semantic-interposition" \
+%make_build PYTHON=$python CFLAGS="%{optflags} -fno-semantic-interposition -ffat-lto-objects" swigify
+%make_build PYTHON=$python CFLAGS="%{optflags} -fno-semantic-interposition -ffat-lto-objects" \
          LIBDIR="%{_libdir}" \
          LIBEXECDIR="%{_libexecdir}" \
          SHLIBDIR="%{_lib}" \
