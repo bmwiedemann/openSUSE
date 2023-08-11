@@ -3569,8 +3569,6 @@ unsorted:
   - epplet-base 
   - epub2txt2 
   - epy 
-  - epymc 
-  - epymc-lang 
   - equalx 
   - erdtree 
   - eremaea 
@@ -7685,8 +7683,6 @@ unsorted:
   - hfst-ospell 
   - hfst-ospell-devel 
   - hhdate-devel 
-  - hiawatha 
-  - hiawatha-letsencrypt 
   - hibiscus 
   - hidviz 
   - highlight 
@@ -16099,9 +16095,6 @@ unsorted:
   - lirc-tools-gui 
   - listres 
   - lite-xl 
-  - lite-xl-colors 
-  - lite-xl-plugins 
-  - lite-xl-widgets 
   - litetran 
   - littleb-devel 
   - littleb-examples 
@@ -18792,9 +18785,6 @@ unsorted:
   - ocaml-camlp-streams-devel 
   - ocaml-camlp5 
   - ocaml-camlp5-devel 
-  - ocaml-camomile 
-  - ocaml-camomile-data 
-  - ocaml-camomile-devel 
   - ocaml-cmdliner 
   - ocaml-cmdliner-devel 
   - ocaml-compiler-libs 
@@ -24724,6 +24714,7 @@ unsorted:
   - python310-matplotlib-tk 
   - python310-matplotlib-web 
   - python310-matplotlib-wx 
+  - python310-matrix-client 
   - python310-matrix-nio 
   - python310-matrix_common 
   - python310-maturin 
@@ -25216,7 +25207,6 @@ unsorted:
   - python310-pycparser 
   - python310-pycryptodome 
   - python310-pycryptodomex 
-  - python310-pycsw 
   - python310-pyct 
   - python310-pycups 
   - python310-pycurl 
@@ -28111,6 +28101,7 @@ unsorted:
   - python311-matplotlib-tk 
   - python311-matplotlib-web 
   - python311-matplotlib-wx 
+  - python311-matrix-client 
   - python311-matrix-nio 
   - python311-matrix_common 
   - python311-maturin 
@@ -28574,7 +28565,6 @@ unsorted:
   - python311-pycodestyle 
   - python311-pycountry 
   - python311-pycryptodomex 
-  - python311-pycsw 
   - python311-pyct 
   - python311-pycxx 
   - python311-pycxx-devel 
@@ -31541,6 +31531,7 @@ unsorted:
   - python39-matplotlib-tk 
   - python39-matplotlib-web 
   - python39-matplotlib-wx 
+  - python39-matrix-client 
   - python39-matrix-nio 
   - python39-maturin 
   - python39-mautrix 
@@ -32031,7 +32022,6 @@ unsorted:
   - python39-pycparser 
   - python39-pycryptodome 
   - python39-pycryptodomex 
-  - python39-pycsw 
   - python39-pyct 
   - python39-pycups 
   - python39-pycurl 
