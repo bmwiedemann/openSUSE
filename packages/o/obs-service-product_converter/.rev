@@ -215,4 +215,13 @@
     by default in product-builder</comment>
     <requestid>1101102</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5bd5084ab26f81f653079ef9a2952d08</srcmd5>
+    <version>1.5.6</version>
+    <time>1691762171</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.5.6
+  * create BcntSyncTag comments by default</comment>
+    <requestid>1103467</requestid>
+  </revision>
 </revisionlist>
