@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Jun  9 16:23:30 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
-- Add boo1209830-endless-loop.patch (boo1209830) avoid endless
+- Add boo1209830-endless-loop.patch (boo#1209830) avoid endless
   loop on processing some mandoc files.
 
 -------------------------------------------------------------------
