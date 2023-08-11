@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 10 13:51:57 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.92.4
+
+- Update 2.92.4
+  - Update Qualtrics JS script (#560)
+  - TRD/FO: Process `d:meta[@name="platform"]` in book (#566)
+  - XHTML: Trim text for twitter:* metadata (#565)
+  - Change param socialmedia.description.length=125 (83b4557)
+
+-------------------------------------------------------------------
 Thu Aug  3 07:31:00 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.92.3
 
 - Update 2.92.3
