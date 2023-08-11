@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 10 14:06:15 UTC 2023 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v5.5.3 improved resampling. Implemented MIDI CI
+  version 1.2 util.
+
+-------------------------------------------------------------------
+Fri Aug  4 11:42:29 UTC 2023 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v5.4.3 minor improvements
+
+-------------------------------------------------------------------
 Sat Jul  1 07:31:13 UTC 2023 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v5.4.0 improved automation editor.
