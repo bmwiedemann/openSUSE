@@ -27,13 +27,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asdf%{psuffix}
-Version:        2.15.0
+Version:        2.15.1
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-2-Clause AND BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf
 Source0:        https://files.pythonhosted.org/packages/source/a/asdf/asdf-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 60}
 BuildRequires:  %{python_module setuptools_scm >= 3.4}
@@ -44,15 +44,13 @@ Requires:       python-PyYAML >= 5.4.1
 Requires:       python-asdf-standard >= 1.0.1
 Requires:       python-asdf-transform-schemas >= 0.3
 Requires:       python-asdf-unit-schemas >= 0.1
+Requires:       python-attrs >= 20.1
 Requires:       python-importlib-metadata >= 4.11.4
 Requires:       python-jmespath >= 0.6.2
-Requires:       python-numpy >= 1.20
+Requires:       python-jsonschema >= 4.8
+Requires:       python-numpy >= 1.22
 Requires:       python-packaging >= 19
 Requires:       python-semantic_version >= 2.8
-Requires:       (python-jsonschema >= 4.0.1 with python-jsonschema < 4.18)
-%if 0%{?python_version_nodots} < 39
-Requires:       python-importlib-resources >= 3
-%endif
 Recommends:     python-lz4 >= 0.10
 Requires(post): update-alternatives
 Requires(postun):update-alternatives

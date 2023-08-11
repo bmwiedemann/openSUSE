@@ -202,4 +202,12 @@
   * Add AsdfDeprecationWarning to asdf.types [#1401] (forwarded request 1087849 from bnavigator)</comment>
     <requestid>1087850</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>db8f1610eaaa48220d72dca52a07932e</srcmd5>
+    <version>2.15.1</version>
+    <time>1691762165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103427</requestid>
+  </revision>
 </revisionlist>
