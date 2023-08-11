@@ -26,6 +26,7 @@ ExclusiveArch:  do_not_build
 # Each openSUSE release package has a suggests for openSUSE-repos-$flavor.
 %global flavor @BUILD_FLAVOR@%nil
 
+%define with_nvidia 1
 %if 0%{?is_opensuse} && 0%{?suse_version} >= 1550
 # Tumbleweed
 %if "%flavor" == "openSUSE-repos-Tumbleweed"
@@ -49,6 +50,9 @@ ExclusiveArch:  do_not_build
 %if "%flavor" == "openSUSE-repos-LeapMicro"
 %define theme LeapMicro
 %define branding leap-micro
+# Do not build for LeapMicro as per SLEM Product Management
+# They expect NVIDIA related drivers and libs to be present inside the container
+%define with_nvidia 0
 %endif
 %else
 %if "%flavor" == "openSUSE-repos-Leap"
@@ -67,7 +71,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20230804.41e41a9
+Version:        20230810.a7534f6
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
@@ -79,7 +83,9 @@ BuildRequires:  -post-build-checks
 Requires:       zypper
 # Ensure we install matching packages on given distribution
 # openSUSE-release has suggest on particular theme based on distribution
+%if 0%{?with_nvidia}
 Suggests:       openSUSE-repos-%{theme}-NVIDIA
+%endif
 Conflicts:      otherproviders(openSUSE-repos)
 Provides:       openSUSE-repos
 %if "%{?theme}" == "Tumbleweed"
@@ -98,6 +104,7 @@ Obsoletes:      openSUSE-repos-LeapMicro
 %description
 Definitions for openSUSE repository management via zypp-services
 
+%if 0%{?with_nvidia}
 %package NVIDIA
 Summary:        openSUSE NVIDIA repository definitions
 Requires:       openSUSE-repos
@@ -118,6 +125,7 @@ Obsoletes:      openSUSE-repos-LeapMicro-NVIDIA
 
 %description NVIDIA
 Definitions for NVIDIA repository management via zypp-services
+%endif
 
 %files
 
@@ -165,7 +173,7 @@ Definitions for NVIDIA repository management via zypp-services
 %endif
 %endif
 
-%if "0%{?with_nvidia}"
+%if 0%{?with_nvidia}
 %files NVIDIA
 %dir %{_datadir}/zypp/local/service/NVIDIA
 %dir %{_datadir}/zypp/local/service/NVIDIA/repo
@@ -216,7 +224,7 @@ install opensuse-%{branding}-ports-repoindex.xml -pm 0644 %{buildroot}%{_datadir
 %endif
 %endif
 
-%if "0%{?with_nvidia}"
+%if 0%{?with_nvidia}
 install nvidia-%{branding}-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/NVIDIA/repo
 %endif
 
@@ -300,7 +308,7 @@ done
 # We hereby declare that running this will not influence existing transaction
 ZYPP_READONLY_HACK=1 zypper addservice %{_datadir}/zypp/local/service/openSUSE openSUSE
 
-%if "0%{?with_nvidia}"
+%if 0%{?with_nvidia}
 %post NVIDIA
 ln -sf nvidia-%{branding}-repoindex.xml %{_datadir}/zypp/local/service/NVIDIA/repo/repoindex.xml
 
@@ -327,6 +335,7 @@ if [ "$1" = 0 ] ; then
   fi
 fi
 
+%if 0%{?with_nvidia}
 %postun NVIDIA
 if [ "$1" = 0 ] ; then
   # We hereby declare that running this will not influence existing transaction
@@ -335,5 +344,6 @@ if [ "$1" = 0 ] ; then
     rm -f %{_datadir}/zypp/local/service/NVIDIA/repo/repoindex.xml
   fi
 fi
+%endif
 
 %changelog

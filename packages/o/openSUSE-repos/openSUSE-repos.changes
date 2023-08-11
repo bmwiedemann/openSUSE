@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 10 16:10:29 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230810.a7534f6:
+  * Disable NVIDIA pkg building on LeapMicro. Fixes #34
+    PM confirmed that NVIDIA related deployments are expected
+    to have all drivers/tools inside of container.
+
+  * Fix incorrect with_nvidia usage
+
+-------------------------------------------------------------------
 Fri Aug 04 09:12:36 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230804.41e41a9:
