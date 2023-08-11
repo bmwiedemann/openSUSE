@@ -16,15 +16,19 @@
 #
 
 
+%{?sle15_python_module_pythons}
+
 Name:           libvsapm
 %define lname	libvsapm1
-Version:        20210626
+Version:        20230506
 Release:        0
 Summary:        Library and tools to access the Apple Partition Map volume system format
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/libyal/libvsapm
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libvsapm/releases/download/%version/libvsapm-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libvsapm/releases/download/%version/libvsapm-experimental-%version.tar.gz.asc
+Source3:        %name.keyring
 Patch1:         system-libs.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  c_compiler
@@ -52,6 +56,18 @@ libvsapm is a library to access the Apple Partition Map (APM) volume
 system format.
 
 Part of the libyal family of libraries.
+
+The Apple Partition Map (APM) is used on Motorola based Macintosh computers. On Intel based Macintosh computers the GUID Partition Table (GPT) is used.
+
+The APM is supported by:
+    Apple Unix (A/UX)
+    Mac OS
+    Mac OS X
+
+The APM consists of:
+    the drive descriptor
+    partition map entry of type Apple_partition_map
+    zero partition map entries
 
 %package -n %lname
 Summary:        Library for accessing the GUID partition table format
