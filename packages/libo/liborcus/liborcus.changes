@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug 10 16:06:48 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Clean up the spec file and require gcc-c++ >= 7, since that is the
+  first version that supports C++17
+- Run tests on all distributions and architectures
+  * Allow disabling them on command line by specifying
+    "--without tests"
+- Changed patch:
+  * no-std-filesystem.patch -> liborcus-filesystem.patch
+    + rework the patch to detect std::filesystem,
+      std::experimental::filesystem and boost::filesystem (in that
+      order, and use them if found)
+- Added patch:
+  * liborcus-tests.patch
+    + fix tests on all platforms
+    + do not use C++20 features with the
+      boost::filesystem::directory_iterator
+    + do not assume that pathlib integrates seamlessly with open
+      and do not use f-string formating, both being python 3.6+
+      features
+
+-------------------------------------------------------------------
 Thu Jun 29 09:12:39 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 0.18.1:

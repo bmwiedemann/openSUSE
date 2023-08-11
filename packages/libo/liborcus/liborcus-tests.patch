@@ -1,0 +1,83 @@
+--- liborcus-0.18.1/src/liborcus/format_detection_test.cpp	2023-08-10 18:52:04.943042344 +0200
++++ liborcus-0.18.1/src/liborcus/format_detection_test.cpp	2023-08-10 22:30:15.386832157 +0200
+@@ -48,8 +48,9 @@
+         // Bail out silently.
+         return;
+ 
+-    for (const fs::path& p : fs::directory_iterator(root_dir))
++    for (fs::directory_iterator itr(root_dir); itr!=fs::directory_iterator(); ++itr)
+     {
++        const fs::path& p = itr->path();
+         orcus::file_content content(p.string());
+         assert(!content.empty());
+ 
+--- liborcus-0.18.1/src/liborcus/json_structure_tree_test.cpp	2023-08-10 18:52:04.949709056 +0200
++++ liborcus-0.18.1/src/liborcus/json_structure_tree_test.cpp	2023-08-10 22:30:07.156775419 +0200
+@@ -39,8 +39,9 @@
+ {
+     fs::path base_dir(SRCDIR"/test/json-structure/no-value-nodes");
+ 
+-    for (const fs::path& p : fs::directory_iterator(base_dir))
++    for (fs::directory_iterator itr(base_dir); itr!=fs::directory_iterator(); ++itr)
+     {
++        const fs::path& p = itr->path();
+         if (!fs::is_regular_file(p))
+             continue;
+ 
+--- liborcus-0.18.1/test/python/file_load_common.py	2023-08-10 18:52:04.896375355 +0200
++++ liborcus-0.18.1/test/python/file_load_common.py	2023-08-10 23:17:23.482954627 +0200
+@@ -202,14 +202,14 @@
+     """
+ 
+     print("test directory: {}".format(test_dir))
+-    expected = ExpectedDocument(os.path.join(test_dir, "check.txt"))
++    expected = ExpectedDocument(os.path.join(str(test_dir), "check.txt"))
+ 
+     # Find the input file to load.
+     input_file = None
+-    for file_name in os.listdir(test_dir):
++    for file_name in os.listdir(str(test_dir)):
+         name, ext = os.path.splitext(file_name)
+         if name == "input":
+-            input_file = os.path.join(test_dir, file_name)
++            input_file = os.path.join(str(test_dir), file_name)
+             break
+ 
+     print("input file: {}".format(input_file))
+--- liborcus-0.18.1/test/python/test_module.py	2023-08-10 18:52:04.896375355 +0200
++++ liborcus-0.18.1/test/python/test_module.py	2023-08-10 23:02:29.916816068 +0200
+@@ -20,12 +20,12 @@
+     @classmethod
+     def setUpClass(cls):
+         top_builddir = Path(os.environ["BUILDDIR"])
+-        with open(top_builddir / "test" / "python" / "env.json", "r") as f:
++        with open(str(top_builddir / "test" / "python" / "env.json"), "r") as f:
+             cls.env = json.load(f)
+ 
+     def test_version(self):
+         s = orcus.__version__
+-        expected = f"{self.env['version-major']}.{self.env['version-minor']}.{self.env['version-micro']}"
++        expected = "{}.{}.{}".format(self.env['version-major'], self.env['version-minor'], self.env['version-micro'])
+         self.assertEqual(expected, s)
+ 
+     def test_detect_format(self):
+--- liborcus-0.18.1/test/python/test_ods.py	2023-08-10 18:52:04.896375355 +0200
++++ liborcus-0.18.1/test/python/test_ods.py	2023-08-10 23:03:08.390414252 +0200
+@@ -31,7 +31,7 @@
+ 
+     def test_formula_tokens_1(self):
+         filepath = self.basedir / "formula-1" / "input.ods"
+-        with open(filepath, "rb") as f:
++        with open(str(filepath), "rb") as f:
+             doc = ods.read(f, recalc=False)
+ 
+         self.assertEqual(len(doc.sheets), 1)
+@@ -82,7 +82,7 @@
+ 
+     def test_formula_tokens_2(self):
+         filepath = self.basedir / "formula-2" / "input.ods"
+-        with open(filepath, "rb") as f:
++        with open(str(filepath), "rb") as f:
+             doc = ods.read(f, recalc=False)
+ 
+         self.assertEqual(len(doc.sheets), 1)

@@ -17,6 +17,7 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
+%bcond_without tests
 %define libname liborcus-0_18-0
 Name:           liborcus
 Version:        0.18.1
@@ -25,7 +26,8 @@ Summary:        Spreadsheet file processing library
 License:        MPL-2.0
 URL:            https://gitlab.com/orcus/orcus/
 Source:         http://kohei.us/files/orcus/src/%{name}-%{version}.tar.xz
-Patch0:         no-std-filesystem.patch
+Patch0:         liborcus-filesystem.patch
+Patch1:         liborcus-tests.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  coreutils
@@ -38,12 +40,8 @@ BuildRequires:  pkgconfig(mdds-2.1) >= 2.0.99
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1500
-BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc8
-BuildRequires:  gcc8-c++
-%endif
-%if 0%{?suse_version} >= 1500
+BuildRequires:  gcc >= 7
+BuildRequires:  gcc-c++ >= 7
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
@@ -51,6 +49,8 @@ BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 %else
 BuildRequires:  boost-devel
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
 %endif
 
 %package -n %{libname}
@@ -90,14 +90,15 @@ Python 3 bindings for %{name}.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
-%global optflags %optflags -fexcess-precision=fast
+%global optflags %{optflags} -fexcess-precision=fast
 libtoolize --force --copy
 autoreconf -fi
 %if 0%{?suse_version} < 1500
-export CC=gcc-8
-export CXX=g++-8
+export CC=gcc-7
+export CXX=g++-7
 %endif
 %configure \
 	--disable-silent-rules \
@@ -107,8 +108,8 @@ export CXX=g++-8
 	--docdir=%{_docdir}/%{name}
 %make_build
 
+%if %{with tests}
 %check
-%if 0%{?suse_version} >= 1500
 %make_build check
 %endif
 

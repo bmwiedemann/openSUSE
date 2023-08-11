@@ -1,0 +1,271 @@
+--- liborcus-0.18.1/configure.ac	2023-08-11 00:01:13.087681555 +0200
++++ liborcus-0.18.1/configure.ac	2023-08-11 00:01:22.964416039 +0200
+@@ -26,7 +26,7 @@
+ AM_INIT_AUTOMAKE([1.11 foreign dist-bzip2 dist-xz])
+ AM_SILENT_RULES([yes])
+ AC_LANG([C++])
+-AX_CXX_COMPILE_STDCXX_17([noext], [mandatory])
++AX_CXX_COMPILE_STDCXX_17([ext], [optional])
+ CXXFLAGS="-fvisibility=hidden $CXXFLAGS -Wall -pthread -Wshadow"
+ 
+ # ===========================
+@@ -44,6 +44,17 @@
+ # =====================
+ AC_CHECK_HEADERS([stdlib.h sys/time.h unistd.h])
+ 
++AC_CHECK_HEADER([filesystem], [ 
++    AC_DEFINE(HAVE_FILESYSTEM, 1, [Define if <filesystem> is present])
++    std_filesystem=yes], [std_filesystem=no], [])
++
++AC_CHECK_HEADER([experimental/filesystem], [
++    AC_DEFINE(HAVE_EXPERIMENTAL_FILESYSTEM, 1, [Define if <experimental/filesystem> is present])
++    experimental_filesystem=yes], [experimental_filesystem=no], [])
++
++AM_CONDITIONAL([STD_FILESYSTEM], [test "x$std_filesystem" = "xyes"])
++AM_CONDITIONAL([EXPERIMENTAL_FILESYSTEM], [test "x$experimental_filesystem" = "xyes"])
++
+ # =============================================================
+ # Checks for typedefs, structures, and compiler characteristics
+ # =============================================================
+--- liborcus-0.18.1/doc_example/Makefile.am	2023-08-11 00:01:13.101014980 +0200
++++ liborcus-0.18.1/doc_example/Makefile.am	2023-08-11 00:02:00.191338354 +0200
+@@ -91,6 +91,24 @@
+ 	../src/parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	../src/liborcus/liborcus-@ORCUS_API_VERSION@.la
+ 
++if !STD_FILESYSTEM
++if EXPERIMENTAL_FILESYSTEM
++spreadsheet_doc_1_LDADD += -lstdc++fs
++spreadsheet_doc_1_num_and_formula_LDADD += -lstdc++fs
++spreadsheet_doc_2_LDADD += -lstdc++fs
++spreadsheet_doc_2_sheets_no_string_pool_LDADD += -lstdc++fs
++spreadsheet_doc_2_sheets_with_string_pool_LDADD += -lstdc++fs
++spreadsheet_doc_2_sheets_with_formula_LDADD += -lstdc++fs
++else
++spreadsheet_doc_1_LDADD += $(BOOST_FILESYSTEM_LIBS)
++spreadsheet_doc_1_num_and_formula_LDADD += $(BOOST_FILESYSTEM_LIBS)
++spreadsheet_doc_2_LDADD += $(BOOST_FILESYSTEM_LIBS)
++spreadsheet_doc_2_sheets_no_string_pool_LDADD += $(BOOST_FILESYSTEM_LIBS)
++spreadsheet_doc_2_sheets_with_string_pool_LDADD += $(BOOST_FILESYSTEM_LIBS)
++spreadsheet_doc_2_sheets_with_formula_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ AM_TESTS_ENVIRONMENT = \
+ 	INPUTDIR=$(srcdir)/files; export INPUTDIR;
+ 
+--- liborcus-0.18.1/doc_example/spreadsheet_doc_1.cpp	2023-08-11 00:01:13.101014980 +0200
++++ liborcus-0.18.1/doc_example/spreadsheet_doc_1.cpp	2023-08-11 00:01:22.964416039 +0200
+@@ -1,3 +1,6 @@
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
+ 
+ #include <orcus/spreadsheet/document.hpp>
+ #include <orcus/spreadsheet/factory.hpp>
+@@ -8,13 +11,24 @@
+ 
+ #include <iostream>
+ #include <cstdlib>
++#ifdef HAVE_FILESYSTEM
+ #include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ using namespace orcus;
+ 
+ int main()
+ {
+-    std::filesystem::path input_dir = std::getenv("INPUTDIR");
++    fs::path input_dir = std::getenv("INPUTDIR");
+ 
+     //!code-start: instantiate
+     spreadsheet::range_size_t ss{1048576, 16384};
+--- liborcus-0.18.1/doc_example/spreadsheet_doc_1_num_and_formula.cpp	2023-08-11 00:01:13.101014980 +0200
++++ liborcus-0.18.1/doc_example/spreadsheet_doc_1_num_and_formula.cpp	2023-08-11 00:01:22.964416039 +0200
+@@ -1,3 +1,6 @@
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
+ 
+ #include <orcus/spreadsheet/document.hpp>
+ #include <orcus/spreadsheet/factory.hpp>
+@@ -9,13 +12,24 @@
+ #include <ixion/cell.hpp>
+ 
+ #include <iostream>
++#ifdef HAVE_FILESYSTEM
+ #include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ using namespace orcus;
+ 
+ int main()
+ {
+-    std::filesystem::path input_dir = std::getenv("INPUTDIR");
++    fs::path input_dir = std::getenv("INPUTDIR");
+ 
+     // Instantiate a document, and wrap it with a factory.
+     spreadsheet::range_size_t ss{1048576, 16384};
+--- liborcus-0.18.1/doc_example/spreadsheet_doc_2.cpp	2023-08-11 00:01:13.101014980 +0200
++++ liborcus-0.18.1/doc_example/spreadsheet_doc_2.cpp	2023-08-11 00:01:22.964416039 +0200
+@@ -1,8 +1,22 @@
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
+ 
+ #include <orcus/spreadsheet/import_interface.hpp>
+ #include <orcus/orcus_ods.hpp>
+ 
++#ifdef HAVE_FILESYSTEM
+ #include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ #include <iostream>
+ 
+ namespace ss = orcus::spreadsheet;
+@@ -33,7 +47,7 @@
+ 
+ int main()
+ {
+-    std::filesystem::path input_dir = std::getenv("INPUTDIR");
++    fs::path input_dir = std::getenv("INPUTDIR");
+     auto filepath = input_dir / "multi-sheets.ods";
+ 
+     my_empty_import_factory factory;
+--- liborcus-0.18.1/doc_example/spreadsheet_doc_2_sheets_no_string_pool.cpp	2023-08-11 00:01:13.097681623 +0200
++++ liborcus-0.18.1/doc_example/spreadsheet_doc_2_sheets_no_string_pool.cpp	2023-08-11 00:01:22.964416039 +0200
+@@ -1,10 +1,24 @@
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
+ 
+ #include <orcus/spreadsheet/import_interface.hpp>
+ #include <orcus/orcus_ods.hpp>
+ 
+ #include <iostream>
+ #include <memory>
++#ifdef HAVE_FILESYSTEM
+ #include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ //!code-start: cell_value
+ namespace ss = orcus::spreadsheet;
+@@ -112,7 +126,7 @@
+ 
+ int main()
+ {
+-    std::filesystem::path input_dir = std::getenv("INPUTDIR");
++    fs::path input_dir = std::getenv("INPUTDIR");
+     auto filepath = input_dir / "multi-sheets.ods";
+ 
+     my_import_factory factory;
+--- liborcus-0.18.1/doc_example/spreadsheet_doc_2_sheets_with_formula.cpp	2023-08-11 00:01:13.101014980 +0200
++++ liborcus-0.18.1/doc_example/spreadsheet_doc_2_sheets_with_formula.cpp	2023-08-11 00:01:22.964416039 +0200
+@@ -1,3 +1,6 @@
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
+ 
+ #include <orcus/spreadsheet/import_interface.hpp>
+ #include <orcus/orcus_ods.hpp>
+@@ -6,7 +9,18 @@
+ #include <memory>
+ #include <unordered_map>
+ #include <deque>
++#ifdef HAVE_FILESYSTEM
+ #include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ namespace ss = orcus::spreadsheet;
+ 
+@@ -279,7 +293,7 @@
+ 
+ int main()
+ {
+-    std::filesystem::path input_dir = std::getenv("INPUTDIR");
++    fs::path input_dir = std::getenv("INPUTDIR");
+     auto filepath = input_dir / "multi-sheets.ods";
+ 
+     my_import_factory factory;
+--- liborcus-0.18.1/doc_example/spreadsheet_doc_2_sheets_with_string_pool.cpp	2023-08-11 00:01:13.101014980 +0200
++++ liborcus-0.18.1/doc_example/spreadsheet_doc_2_sheets_with_string_pool.cpp	2023-08-11 00:01:22.964416039 +0200
+@@ -1,3 +1,6 @@
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
+ 
+ #include <orcus/spreadsheet/import_interface.hpp>
+ #include <orcus/orcus_ods.hpp>
+@@ -6,7 +9,18 @@
+ #include <memory>
+ #include <unordered_map>
+ #include <deque>
++#ifdef HAVE_FILESYSTEM
+ #include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ namespace ss = orcus::spreadsheet;
+ 
+@@ -193,7 +207,7 @@
+ 
+ int main()
+ {
+-    std::filesystem::path input_dir = std::getenv("INPUTDIR");
++    fs::path input_dir = std::getenv("INPUTDIR");
+     auto filepath = input_dir / "multi-sheets.ods";
+ 
+     my_import_factory factory;
+Only in liborcus-0.18.1: liborcus-filesystem.patch
