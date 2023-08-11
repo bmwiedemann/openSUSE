@@ -96,4 +96,37 @@ https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.3.0<
     generate keys after setting a private key (Medium)</comment>
     <requestid>1094364</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>27c61f41532b076f08bc61385938370e</srcmd5>
+    <version>20.5.1</version>
+    <time>1691762115</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.5.1:
+  * (CVE-2023-32002, bsc#1214150): Policies can be bypassed
+     via Module._load (High)
+  * (CVE-2023-32558, bsc#1214155): process.binding() can bypass
+     the permission model through path traversal (High)
+  * (CVE-2023-32004, bsc#1214152): Permission model can be bypassed
+     by specifying a path traversal sequence in a Buffer (High)
+  * (CVE-2023-32006, bsc#1214156): Policies can be bypassed
+     by module.constructor.createRequire (Medium)
+  * (CVE-2023-32559, bsc#1214154): Policies can be bypassed
+     via process.binding (Medium)
+  * (CVE-2023-32005, bsc#1214153): fs.statfs can bypass
+     the permission model (Low)
+  * (CVE-2023-32003, bsc#1214151): fs.mkdtemp() and fs.mkdtempSync()
+     can bypass the permission model (Low)
+- Changes in 20.5.0:
+  * events: allow safely adding listener to abortSignal
+  * fs: add a fast-path for readFileSync utf-8
+  * test_runner: add shards support
+- Changes in 20.4.0:
+  * tls: add ALPNCallback server option for dynamic ALPN negotiation
+  * adds support for ECMAScript Explicit Resource Management
+  * adds Mock Timer support to test module
+For details see,
+https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.5.1
+versioned.patch: refreshed</comment>
+    <requestid>1103349</requestid>
+  </revision>
 </revisionlist>
