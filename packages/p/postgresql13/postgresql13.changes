@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Aug  9 09:55:59 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to 13.12:
+  * bsc#1214059, CVE-2023-39417: Disallow substituting a schema or
+    owner name into an extension script if the name contains a
+    quote, backslash, or dollar sign.
+  * https://www.postgresql.org/docs/13/release-13-12.html
+
+-------------------------------------------------------------------
+Fri May 26 11:48:38 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Restore the independence of mini builds from the main build after
+  the -mini name change from April 4, 2023.
+- Adjust icu handling to prepare for PostgreSQL 16.
+
+-------------------------------------------------------------------
+Mon May 15 14:22:10 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Overhaul postgresql-README.SUSE and move it from the binary
+  package to the noarch wrapper package.
+- Change the unix domain socket location from /var/run to /run.
+
+-------------------------------------------------------------------
 Wed May 10 13:02:46 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Update to 13.11:
