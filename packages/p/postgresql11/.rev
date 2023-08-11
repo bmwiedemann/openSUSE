@@ -371,4 +371,24 @@ Upgrade to version 11.11:
   * https://www.postgresql.org/docs/11/release-11-20.html</comment>
     <requestid>1086558</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e3fcd24982d73a0b66ecc5cde5f857a8</srcmd5>
+    <version>11.21</version>
+    <time>1691762141</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 11.21:
+  * bsc#1214059, CVE-2023-39417: Disallow substituting a schema or
+    owner name into an extension script if the name contains a
+    quote, backslash, or dollar sign.
+  * https://www.postgresql.org/docs/11/release-11-21.html
+
+- Restore the independence of mini builds from the main build after
+  the -mini name change from April 4, 2023.
+- Adjust icu handling to prepare for PostgreSQL 16.
+
+- Overhaul postgresql-README.SUSE and move it from the binary
+  package to the noarch wrapper package.
+- Change the unix domain socket location from /var/run to /run.</comment>
+    <requestid>1103348</requestid>
+  </revision>
 </revisionlist>

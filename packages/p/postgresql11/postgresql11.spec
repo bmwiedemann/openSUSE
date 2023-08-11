@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 11.20
+%define pgversion 11.21
 %define pgmajor 11
 %define buildlibs 0
 %define tarversion %{pgversion}
@@ -69,7 +69,11 @@ Name:           %pgname
 
 %if %mini
 %bcond_with  selinux
+%if %pgmajor >= 16
+%bcond_without icu
+%else
 %bcond_with  icu
+%endif
 %else
 BuildRequires:  %{python}-devel
 BuildRequires:  docbook_4
@@ -143,11 +147,18 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
-#!BuildIgnore:  postgresql-implementation
-#!BuildIgnore:  postgresql-server-implementation
-#!BuildIgnore:  postgresql-devel-noarch
-#!BuildIgnore:  postgresql-llvmjit-devel-noarch
-#!BuildIgnore:  postgresql-server-devel-noarch
+#!BuildIgnore:  %pgname
+#!BuildIgnore:  %pgname-server
+#!BuildIgnore:  %pgname-devel
+#!BuildIgnore:  %pgname-server-devel
+#!BuildIgnore:  %pgname-llvmjit
+#!BuildIgnore:  %pgname-llvmjit-devel
+#!BuildIgnore:  %pgname-contrib
+#!BuildIgnore:  %pgname-docs
+#!BuildIgnore:  %pgname-test
+#!BuildIgnore:  %pgname-pltcl
+#!BuildIgnore:  %pgname-plperl
+#!BuildIgnore:  %pgname-plpython
 Summary:        Basic Clients and Utilities for PostgreSQL
 License:        PostgreSQL
 Group:          Productivity/Databases/Tools
@@ -156,7 +167,6 @@ Release:        0
 Source0:        https://ftp.postgresql.org/pub/source/v%{tarversion}/postgresql-%{tarversion}.tar.bz2
 Source1:        https://ftp.postgresql.org/pub/source/v%{tarversion}/postgresql-%{tarversion}.tar.bz2.sha256
 Source2:        baselibs.conf
-Source3:        postgresql-README.SUSE
 Source17:       postgresql-rpmlintrc
 Patch1:         postgresql-conf.patch
 # PL/Perl needs to be linked with rpath (bsc#578053)
@@ -630,7 +640,6 @@ install -d -m 750 %buildroot/var/lib/pgsql
 install -d -m755 %buildroot%pgdocdir
 cp doc/KNOWN_BUGS doc/MISSING_FEATURES COPYRIGHT \
    README HISTORY  %buildroot%pgdocdir
-cp -a %SOURCE3 %buildroot%pgdocdir/README.SUSE
 # Use versioned names for the man pages:
 for f in %buildroot%pgmandir/man*/*; do
         mv $f ${f}pg%pgmajor
