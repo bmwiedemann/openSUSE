@@ -562,4 +562,12 @@
     <comment></comment>
     <requestid>1099909</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>fe747120f20db3f64de93facb40b100a</srcmd5>
+    <version>1.31.2</version>
+    <time>1691762170</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.31.2 (forwarded request 1103431 from danishprakash)</comment>
+    <requestid>1103461</requestid>
+  </revision>
 </revisionlist>

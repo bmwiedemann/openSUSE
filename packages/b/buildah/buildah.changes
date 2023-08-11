@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 11 05:43:19 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.31.2:
+  * [release-1.31] Bump to v1.31.2
+  * [release-1.31] Bump to v1.31.2-dev
+  * [release-1.31] Bump to v1.31.1
+  * [release-1.31] Remove zstd:chunked from man, bump c/common to v0.55.3
+  * [CI:BUILD] Packit: add fedora-eln targets
+  * [CI:BUILD] RPM: build docs with vendored go-md2man
+  * packit: Build PRs into default packit COPRs
+  * [CI:BUILD] Packit: remove pre-sync action
+  * CI:BUILD] RPM: define gobuild macro for rhel/centos stream
+
+-------------------------------------------------------------------
 Thu Jul 20 15:49:31 UTC 2023 - dcermak@suse.com
 
 - Update to version 1.31.1:
