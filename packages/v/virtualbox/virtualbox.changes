@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug  9 19:44:14 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix build for kernel 6.5
+  Add file "fixes_for_6.5.patch"
+  Reworked patches for various Leap versions:
+    Added file "fixes_for_leap.patch"
+    Deleted file "fixes_for_leap15.2.patch"
+    Deleted file "fixes_for_leap15.3.patch"
+    Deleted file "fixes_for_leap15.4.patch"
+    Deleted file "fixes_for_leap15.5.patch"
+
+-------------------------------------------------------------------
 Thu July 19 15:24:39 UTC 2023 - Larry Rainey <llrainey15@gmail.com>
 
 -  VirtualBox 7.0.10 (released July 18 2023)

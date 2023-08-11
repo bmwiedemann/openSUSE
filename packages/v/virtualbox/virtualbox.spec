@@ -144,20 +144,12 @@ Patch26:        VirtualBox-5.2.10-xclient.patch
 Patch27:        fixes_for_sle12.patch
 # Fixes for Qt5.13 on 32-bit systems
 Patch28:        fixes_for_qt5.13.patch
-# Fixes for openSUSE Leap 15.2
-Patch29:        fixes_for_leap15.2.patch
 # Fixes for kernel modules Makefile used at boot time
 Patch30:        fixes_for_makefile.patch
 # Fix build for Qt 5.15
 Patch31:        fix-missing-includes-with-qt-5.15.patch
 # Fix for changes in GSOAP 2.8.103
 Patch32:        handle_gsoap_208103.patch
-# Fix for struct file_operations backport in 15.3
-Patch33:        fixes_for_leap15.3.patch
-# Fix for build for 15.4
-Patch34:        fixes_for_leap15.4.patch
-# Fix for backports to 15.5
-Patch35:        fixes_for_leap15.5.patch
 # Fix for GCC13
 Patch36:        fixes_for_gcc13.patch
 # Fix locking problem in 7.0.6
@@ -165,6 +157,10 @@ Patch37:        fix_7.0.6_locking_problems.patch
 # Support python 3.11
 Patch38:        python311.patch
 Patch39:        fix_sdl_build.patch
+# Fixes for openSUSE Leap 15.X
+Patch40:        fixes_for_leap.patch
+# Fixes for kernel 6.5
+Patch41:        fixes_for_6.5.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -465,28 +461,17 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %ifarch %{ix86} && 0%{?qt5ver} >= 51300
 %patch28 -p1
 %endif
-%patch29 -p1
 %patch30 -p1
 %patch31 -p1
 %patch32 -p1
-%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
-# Patch for Leap 15.3
-%patch33 -p1
-%endif
-%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
-# Patch for Leap 15.4
-%patch34 -p1
-%endif
-%if 0%{?sle_version} == 150500 && 0%{?is_opensuse}
-# Patch for Leap 15.5
-%patch35 -p1
-%endif
 %if 0%{gcc_version} >= 13
 %patch36 -p1
 %endif
 %patch37 -p1
 %patch38 -p1
 %patch39 -p1
+%patch40 -p1
+%patch41 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}

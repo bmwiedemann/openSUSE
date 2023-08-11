@@ -1,0 +1,18 @@
+Index: VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_fb.c
+===================================================================
+--- VirtualBox-7.0.10.orig/src/VBox/Additions/linux/drm/vbox_fb.c
++++ VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_fb.c
+@@ -197,9 +197,13 @@ static struct fb_ops vboxfb_ops = {
+ 	.owner = THIS_MODULE,
+ 	.fb_check_var = drm_fb_helper_check_var,
+ 	.fb_set_par = drm_fb_helper_set_par,
++#if RTLNX_VER_MIN(6, 5, 0)
++	FB_DEFAULT_SYS_OPS,
++#else
+ 	.fb_fillrect = drm_fb_helper_sys_fillrect,
+ 	.fb_copyarea = drm_fb_helper_sys_copyarea,
+ 	.fb_imageblit = drm_fb_helper_sys_imageblit,
++#endif
+ 	.fb_pan_display = drm_fb_helper_pan_display,
+ 	.fb_blank = drm_fb_helper_blank,
+ 	.fb_setcmap = drm_fb_helper_setcmap,
