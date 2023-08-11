@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Aug  3 21:34:15 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.6
+  - [WebUI] Migrate to Bootstrap v5.2 by @moisseev in #4444
+  - fix: avoid double-dip of nrcpt when calculating ratelimit
+    condition by @simbuerg in #4448
+  - [WebUI] Fix "Clean history" button enabling/disabling in the
+    Scan tab by @moisseev in #4453
+  - [Minor] Use a scalar variable as a dir handle by @moisseev in
+    #4457
+  - Fix arc by @jendis in #4449
+  - [Minor] Fix pagination control border radius by @moisseev in
+    #4461
+  - [Fix] remove obsolete rspamd-redirector files by @a16bitsysop
+    in #4422
+  - Add fasttext language detector to Rspamd by @vstakhov in #4473
+  - [Minor] Fix rows background coloring by @moisseev in #4490
+  - [WebUI] Add ability to compute fuzzy hashes by @moisseev in
+    #4499
+  - [Fix] rbl: fix dependency registration when symbols_prefixes is
+    used by @fatalbanana in #4498
+  - [Enhancement] Add composite rule for messages only containing a
+    redirector URL by @twesterhever in #4496
+  - [WebUI] Show validation feedback inside login modal by
+    @moisseev in #4504
+  - [Minor] Improve HACKED_WP_PHISHING coverage by @twesterhever in
+    #4506
+  - [Minor] Add additional bad extensions by @twesterhever in #4508
+  - [Minor] Assorted cleanup and housekeeping of configuration
+    files, take 2 by @twesterhever in #4505
+  - [Rules] Add thread hijacking composite rule by @twesterhever in
+    #4507
+  - [Minor] Move HAS_ONION_URI from "experimental" to "url" group
+    by @twesterhever in #4495
+  - [Enhancement] Make Google Firebase rule productive by
+    @twesterhever in #4494
+  - Use the correct mime format for 7z by @JasonStephenson in #4517
+  - [Minor] Increase score for .chm attachments by @twesterhever in
+    #4518
+  - [Enhancement] Improve detection of Google redirection URLs by
+    @twesterhever in #4497
+  - if elasticsearch_version >= 7 we should not send the _type to
+    elastic… by @mariojansen in #4520
+  - [Enhancement] Treat HTML attachments as (slightly) bad by
+    @twesterhever in #4519
+  - Dockerfile: Switch to bookworm by @mrueg in #4532
+  - [Feature] external_relay: add ip_map strategy by @moesoha in
+    #4537
+  - [Feature] Detect Apple Mail and remove scores for their known
+    common behavior by @dragoangel in #4538
+  - [Minor] A bit better apple_x_mailer regex by @dragoangel in
+    #4539
+  - replace ECDSA_sign_setup/ECDSA_sign_ex with ECDSA_sign by
+    @sthen in #4541
+  - [Fix] dmarc gramar - allow spaces before ";" by @rheoli in
+    #4547
+  - [Minor] Minor fixes for previous ratelimit changes by
+    @fatalbanana in #4549
+  - [Minor] Improve catch rates of FREEMAIL_AFF by @twesterhever in
+    #4556
+  - [Minor] Test & fix has_only_html_part regression by
+    @fatalbanana in #4559
+  - [Minor] Tweak HAS_GOOGLE_REDIR to detect Google AMP URLs as
+    well by @twesterhever in #4558
+
+-------------------------------------------------------------------
 Fri Mar 17 21:53:38 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Enable more features

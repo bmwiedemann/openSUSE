@@ -56,7 +56,7 @@
 %endif
 
 Name:           rspamd
-Version:        3.5
+Version:        3.6
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -355,6 +355,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config %{_sysconfdir}/rspamd/worker-fuzzy.inc
 %config %{_sysconfdir}/rspamd/worker-normal.inc
 %config %{_sysconfdir}/rspamd/worker-proxy.inc
+%config %{_sysconfdir}/rspamd/lang_detection.inc
 
 %dir %{_sysconfdir}/rspamd/local.d
 %config(noreplace) %{_sysconfdir}/rspamd/local.d/worker-controller.inc
@@ -597,11 +598,21 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/rspamadm/template.lua
 %{_datadir}/rspamd/lualib/rspamadm/vault.lua
 %{_datadir}/rspamd/lualib/rspamadm/neural_test.lua
+%{_datadir}/rspamd/lualib/rspamadm/dkim_keygen.lua
 
 %dir %{_datadir}/rspamd/lualib/plugins
 %{_datadir}/rspamd/lualib/plugins/dmarc.lua
 %{_datadir}/rspamd/lualib/plugins/neural.lua
 %{_datadir}/rspamd/lualib/plugins/rbl.lua
+
+%dir %{_datadir}/rspamd/lualib/redis_scripts/
+%{_datadir}/rspamd/lualib/redis_scripts/neural_maybe_invalidate.lua
+%{_datadir}/rspamd/lualib/redis_scripts/neural_maybe_lock.lua
+%{_datadir}/rspamd/lualib/redis_scripts/neural_save_unlock.lua
+%{_datadir}/rspamd/lualib/redis_scripts/neural_train_size.lua
+%{_datadir}/rspamd/lualib/redis_scripts/ratelimit_check.lua
+%{_datadir}/rspamd/lualib/redis_scripts/ratelimit_cleanup_pending.lua
+%{_datadir}/rspamd/lualib/redis_scripts/ratelimit_update.lua
 
 %dir %{_datadir}/rspamd/rules
 %{_datadir}/rspamd/rules/bitcoin.lua
