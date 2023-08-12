@@ -218,4 +218,15 @@
     <comment></comment>
     <requestid>1084105</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a2821e9f1c394fc5b9d8a030cdf4f777</srcmd5>
+    <version>1.12.2</version>
+    <time>1691845550</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1103296 from iznogood
+
+- Update to version 1.12.2:
+  + Small code maintenance: don't use g_slice_*().</comment>
+    <requestid>1103423</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 10 09:28:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.2:
+  + Small code maintenance: don't use g_slice_*().
+
+-------------------------------------------------------------------
 Mon May  1 07:54:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.1:
