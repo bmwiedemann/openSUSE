@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Aug  6 09:10:18 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.0
+  * Filters: Add Archives, Other, update Apps
+  * Use Gio to open files, fix "no default app" issue
+  * Add symlink emblem to thumbnails in thumbnail mode
+  * config: Prefer plocate over mlocate if available
+  * window: Avoid IndexError on right click when selection is empty
+  * Create shared filetype lists for searching and filtering
+  * Ensure site-packages directory is prepended to sys.path
+  * Fix double border between sidebar and results area
+  * window: Fix and refactor new_column()
+  * window: Fix markup warnings in thumbnail view
+  * Fix GtkBuilder warnings
+  * Revert "Suppress the various GTK warnings GtkBuilder outputs"
+  * Fix crash and translations when install prefix != /usr
+  * Update `.gitignore`
+  * Remove generated file po/catfish.pot
+  * Performance improvements (fix #79)
+  * Translation Updates
+- Refresh 0001-Force-disable-Zeitgeist-support.patch
+- Remove _service file
+
+-------------------------------------------------------------------
 Sun Jul 17 21:37:42 UTC 2022 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.16.4

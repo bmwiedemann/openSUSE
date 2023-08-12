@@ -290,4 +290,31 @@
   * Translation Updates (forwarded request 989753 from tux93)</comment>
     <requestid>990114</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7c7d9055312eb8f32e69e71fbbb00f8b</srcmd5>
+    <version>4.18.0</version>
+    <time>1691845599</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.18.0
+  * Filters: Add Archives, Other, update Apps
+  * Use Gio to open files, fix &quot;no default app&quot; issue
+  * Add symlink emblem to thumbnails in thumbnail mode
+  * config: Prefer plocate over mlocate if available
+  * window: Avoid IndexError on right click when selection is empty
+  * Create shared filetype lists for searching and filtering
+  * Ensure site-packages directory is prepended to sys.path
+  * Fix double border between sidebar and results area
+  * window: Fix and refactor new_column()
+  * window: Fix markup warnings in thumbnail view
+  * Fix GtkBuilder warnings
+  * Revert &quot;Suppress the various GTK warnings GtkBuilder outputs&quot;
+  * Fix crash and translations when install prefix != /usr
+  * Update `.gitignore`
+  * Remove generated file po/catfish.pot
+  * Performance improvements (fix #79)
+  * Translation Updates
+- Refresh 0001-Force-disable-Zeitgeist-support.patch
+- Remove _service file (forwarded request 1102555 from manfred-h)</comment>
+    <requestid>1103494</requestid>
+  </revision>
 </revisionlist>
