@@ -84,6 +84,7 @@ Suggests:       perl(DBD::mysql)
 Suggests:       perl(DBI)
 BuildArch:      noarch
 %{?systemd_ordering}
+%{perl_requires}
 
 %description
 Amavisd-new is a high-performance interface between mailer (MTA) and
