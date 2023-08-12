@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.31.g2dac0aff9c
+%define archive_version +suse.32.gfcdb2dd2c9
 
 %define _testsuitedir %{_systemd_util_dir}/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -75,7 +75,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        253.7
+Version:        253.8
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -352,11 +352,23 @@ Provides:       udev = %{version}-%{release}
 %endif
 
 %description -n udev%{?mini}
-Udev creates and removes device nodes in /dev for devices discovered or
-removed from the system. It receives events via kernel netlink messages
-and dispatches them according to rules in %{_udevrulesdir}/. Matching
-rules may name a device node, create additional symlinks to the node,
-call tools to initialize a device, or load needed kernel modules.
+This package provides systemd-udevd. The udev daemon receives device uevents
+directly from the kernel whenever it adds or removes a device from the system in
+/dev, or it changes its state. When udev receives a device event, it matches its
+configured set of rules, located in %{_udevrulesdir}/, against various device
+attributes to identify the device. Rules that match may adjust device node
+permissions, create meaningful symlink names or provide additional device
+information to be stored in the udev database.
+
+The udev daemon may also rename network interfaces and perform various network
+device configurations, see systemd.link(5) for more details.
+
+This package also provides various tools and services that operate on devices
+exclusively. For example it contains systemd-cryptsetup to manage encrypted
+block devices as well as systemd-growfs to instruct the kernel to grow the
+mounted filesystem to full size of the underlying block device.
+
+This package shouldn't be necessary in containers.
 
 %package -n libudev%{?mini}1
 Summary:        Dynamic library to access udev device information
@@ -614,6 +626,9 @@ Requires:       systemd-coredump
 %endif
 %if %{with experimental}
 Requires:       systemd-experimental
+%endif
+%if %{with homed}
+Requires:       systemd-homed
 %endif
 %if %{with journal_remote}
 Requires:       systemd-journal-remote

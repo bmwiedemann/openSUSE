@@ -6739,4 +6739,14 @@ handle manual pages that consist only of a .so directive such as
     - upstream commit 3a3b022d2cc112803ea7b9beea98bbcad110368a (bsc#1212434 bsc#1213575)</comment>
     <requestid>1101213</requestid>
   </revision>
+  <revision rev="399" vrev="1">
+    <srcmd5>9b10e18ac440c36b49e6120477d06422</srcmd5>
+    <version>253.8</version>
+    <time>1691845555</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit fcdb2dd2c921db3c6b7c28465dbda314f4469d17 (merge of v253.8)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/2dac0aff9ced1eca0cd11c24e264b33095ee5a5e...fcdb2dd2c921db3c6b7c28465dbda314f4469d17</comment>
+    <requestid>1103458</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 11 08:31:12 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit fcdb2dd2c921db3c6b7c28465dbda314f4469d17 (merge of v253.8)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/2dac0aff9ced1eca0cd11c24e264b33095ee5a5e...fcdb2dd2c921db3c6b7c28465dbda314f4469d17
+
+-------------------------------------------------------------------
 Fri Jul 28 14:40:48 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Drop 0003-strip-the-domain-part-from-etc-hostname-when-setting.patch
