@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  8 08:23:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add strlcpy-wrong-sizing.patch: fix incorrect usages of
+  strlcpy and strlcat detected by glibc 2.38's fortify
+
+-------------------------------------------------------------------
 Thu Mar  2 13:45:30 UTC 2023 - pgajdos@suse.com
 
 - clean up old conditionals
