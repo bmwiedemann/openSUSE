@@ -1,4 +1,4 @@
-From 17a5177cbb228f22ef3e00d4bb66af71724a6d07 Mon Sep 17 00:00:00 2001
+From 65bb10c34ff3734373a8b4be4e707f0494449f17 Mon Sep 17 00:00:00 2001
 From: Giuliano Belinassi <gbelinassi@suse.de>
 Date: Wed, 24 May 2023 18:03:15 -0300
 Subject: [PATCH] Add Userspace Livepatch prologue into ASM functions
@@ -15,22 +15,22 @@ Signed-off-by: Giuliano Belinassi <gbelinassi@suse.de>
  Makeconfig                               |  5 +++++
  config.h.in                              |  3 +++
  config.make.in                           |  1 +
- configure                                | 20 ++++++++++++++++++++
+ configure                                | 21 +++++++++++++++++++++
  configure.ac                             | 13 +++++++++++++
  sysdeps/x86/sysdep.h                     | 22 ++++++++++++++++++----
  sysdeps/x86_64/multiarch/strcmp-avx2.S   |  5 +----
  sysdeps/x86_64/multiarch/strcmp-evex.S   |  5 +----
  sysdeps/x86_64/multiarch/strcmp-sse4_2.S |  5 +----
  sysdeps/x86_64/sysdep.h                  | 13 +++++++++++++
- 10 files changed, 76 insertions(+), 16 deletions(-)
+ 10 files changed, 77 insertions(+), 16 deletions(-)
 
 diff --git a/Makeconfig b/Makeconfig
-index 2fda4af5f7..52a79bc0c0 100644
+index 77d7fd14df..765d72bcf5 100644
 --- a/Makeconfig
 +++ b/Makeconfig
-@@ -961,6 +961,11 @@ endif	# $(+cflags) == ""
- 	   $(+stack-protector) -fno-common
- +gcc-nowarn := -w
+@@ -984,6 +984,11 @@ else
+ +cflags += $(no-fortify-source)
+ endif
  
 +# Add flags for Userspace Livepatching support.
 +ifeq (yes,$(enable-userspace-livepatch))
@@ -41,10 +41,10 @@ index 2fda4af5f7..52a79bc0c0 100644
  # used to compile and will be installed.  Each can also contain an
  # include/ subdirectory, whose header files will be used to compile
 diff --git a/config.h.in b/config.h.in
-index 43d32518ab..32fc79a357 100644
+index 0dedc124f7..08b1868002 100644
 --- a/config.h.in
 +++ b/config.h.in
-@@ -199,6 +199,9 @@
+@@ -204,6 +204,9 @@
  /* Define to 1 if libpthread actually resides in libc.  */
  #define PTHREAD_IN_LIBC 0
  
@@ -55,10 +55,10 @@ index 43d32518ab..32fc79a357 100644
  #define TIMEOUTFACTOR 1
  
 diff --git a/config.make.in b/config.make.in
-index d7c416cbea..c6f6909d68 100644
+index d487a4f4e9..e48351c59a 100644
 --- a/config.make.in
 +++ b/config.make.in
-@@ -86,6 +86,7 @@ nss-crypt = @libc_cv_nss_crypt@
+@@ -85,6 +85,7 @@ nss-crypt = @libc_cv_nss_crypt@
  static-nss-crypt = @libc_cv_static_nss_crypt@
  
  # Configuration options.
@@ -67,10 +67,10 @@ index d7c416cbea..c6f6909d68 100644
  build-profile = @profile@
  build-static-nss = @static_nss@
 diff --git a/configure b/configure
-index efb891456a..4030ccf701 100755
+index c02c0b5825..e2000fdc4a 100755
 --- a/configure
 +++ b/configure
-@@ -591,6 +591,7 @@ LIBOBJS
+@@ -622,6 +622,7 @@ LIBOBJS
  pthread_in_libc
  RELEASE
  VERSION
@@ -78,31 +78,32 @@ index efb891456a..4030ccf701 100755
  mach_interface_list
  DEFINES
  static_nss
-@@ -789,6 +790,7 @@ enable_mathvec
- enable_cet
+@@ -819,6 +820,7 @@ enable_cet
  enable_scv
+ enable_fortify_source
  with_cpu
 +enable_userspace_livepatch
  '
        ac_precious_vars='build_alias
  host_alias
-@@ -1462,6 +1464,8 @@ Optional Features:
-                           (CET), x86 only
-   --disable-scv           syscalls will not use scv instruction, even if the
-                           kernel supports it, powerpc only
+@@ -1501,6 +1503,8 @@ Optional Features:
+                           Use -D_FORTIFY_SOURCE=[1|2|3] to control code
+                           hardening, defaults to highest possible value
+                           supported by the build compiler.
 +  --enable-userspace-livepatch
 +                          build with userspace livepatch support [default=no]
  
  Optional Packages:
    --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
-@@ -6751,6 +6755,22 @@ libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
+@@ -8004,6 +8008,23 @@ libc_cv_multidir=`${CC-cc} $CFLAGS $CPPFLAGS -print-multi-directory`
  
  
  
 +# Check whether --enable-userspace-livepatch was given.
-+if test "${enable_userspace_livepatch+set}" = set; then :
++if test ${enable_userspace_livepatch+y}
++then :
 +  enableval=$enable_userspace_livepatch; enable_userspace_livepatch=$enableval
-+else
++else $as_nop
 +  enable_userspace_livepatch=no
 +fi
 +
@@ -110,7 +111,7 @@ index efb891456a..4030ccf701 100755
 +# Libpulp uses -fpatchable-function-entry to add padding NOPS to the
 +# prologue of all functions.
 +if test "x$enable_userspace_livepatch" = xyes; then
-+  $as_echo "#define ENABLE_USERSPACE_LIVEPATCH 1" >>confdefs.h
++  printf "%s\n" "#define ENABLE_USERSPACE_LIVEPATCH 1" >>confdefs.h
 +
 +fi
 +
@@ -119,7 +120,7 @@ index efb891456a..4030ccf701 100755
  RELEASE=`sed -n -e 's/^#define RELEASE "\([^"]*\)"/\1/p' < $srcdir/version.h`
  
 diff --git a/configure.ac b/configure.ac
-index 011844a3d4..26c1a78009 100644
+index 09553541fb..a07e3d6284 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -1827,6 +1827,19 @@ AC_SUBST(DEFINES)
@@ -181,7 +182,7 @@ index 0b3483a77a..329c16306e 100644
  /* Common entry 16 byte aligns.  */
  #define ENTRY(name) ENTRY_P2ALIGN (name, 4)
 diff --git a/sysdeps/x86_64/multiarch/strcmp-avx2.S b/sysdeps/x86_64/multiarch/strcmp-avx2.S
-index 07f8ec54c6..b22d59b5cf 100644
+index 8804338d75..d3584b2c5d 100644
 --- a/sysdeps/x86_64/multiarch/strcmp-avx2.S
 +++ b/sysdeps/x86_64/multiarch/strcmp-avx2.S
 @@ -201,10 +201,7 @@ END (STRCASECMP)
@@ -197,7 +198,7 @@ index 07f8ec54c6..b22d59b5cf 100644
  # if defined USE_AS_STRCASECMP_L
  	/* We have to fall back on the C implementation for locales with
 diff --git a/sysdeps/x86_64/multiarch/strcmp-evex.S b/sysdeps/x86_64/multiarch/strcmp-evex.S
-index a8bd5cd786..809ba10447 100644
+index ae39cdf217..44a8d4cee7 100644
 --- a/sysdeps/x86_64/multiarch/strcmp-evex.S
 +++ b/sysdeps/x86_64/multiarch/strcmp-evex.S
 @@ -224,10 +224,7 @@ END (STRCASECMP)
@@ -213,7 +214,7 @@ index a8bd5cd786..809ba10447 100644
  # if defined USE_AS_STRCASECMP_L
  	/* We have to fall back on the C implementation for locales with
 diff --git a/sysdeps/x86_64/multiarch/strcmp-sse4_2.S b/sysdeps/x86_64/multiarch/strcmp-sse4_2.S
-index f93c34465e..f96f66d54c 100644
+index cbb22884eb..327377daa6 100644
 --- a/sysdeps/x86_64/multiarch/strcmp-sse4_2.S
 +++ b/sysdeps/x86_64/multiarch/strcmp-sse4_2.S
 @@ -103,10 +103,7 @@ END (STRCASECMP)
@@ -253,5 +254,5 @@ index 6ca169573d..c18f0ef914 100644
  
  /* This macro is for setting proper CFI with DW_CFA_expression describing
 -- 
-2.40.1
+2.41.0
 

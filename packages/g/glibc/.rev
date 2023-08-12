@@ -2831,4 +2831,41 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
 - fix-locking-in-_IO_cleanup.patch: Update to final version (forwarded request 1098077 from Andreas_Schwab)</comment>
     <requestid>1098078</requestid>
   </revision>
+  <revision rev="277" vrev="1">
+    <srcmd5>95b7eded7fe808a27b2ebe03ae3ab583</srcmd5>
+    <version>2.38</version>
+    <time>1691845535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to glibc 2.38
+  * When C2X features are enabled and the base argument is 0 or 2, the
+    following functions support binary integers prefixed by 0b or 0B as
+    input
+  * PRIb*, PRIB* and SCNb* macros from C2X have been added to
+    &lt;inttypes.h&gt;.
+  * printf-family functions now support the wN format length modifiers for
+    arguments of type intN_t, int_leastN_t, uintN_t or uint_leastN_t
+    and the wfN format
+    length modifiers for arguments of type int_fastN_t or uint_fastN_t, as
+    specified in draft ISO C2X
+  * A new tunable, glibc.pthread.stack_hugetlb, can be used to disable
+    Transparent Huge Pages (THP) in stack allocation at pthread_create
+  * Vector math library libmvec support has been added to AArch64
+  * The strlcpy and strlcat functions have been added
+  * CVE-2023-25139: When the printf family of functions is called with a
+    format specifier that uses an &lt;apostrophe&gt; (enable grouping) and a
+    minimum width specifier, the resulting output could be larger than
+    reasonably expected by a caller that computed a tight bound on the
+    buffer size
+- Enable build with _FORTIFY_SOURCE
+- glibc-2.3.90-langpackdir.diff: avoid reference to __strcpy_chk
+- iconv-error-verbosity.patch: iconv: restore verbosity with unrecognized
+  encoding names (BZ #30694)
+- printf-grouping.patch, strftime-time64.patch,
+  getlogin-no-loginuid.patch, fix-locking-in-_IO_cleanup.patch,
+  gshadow-erange-rhandling.patch, system-sigchld-block.patch,
+  gmon-buffer-alloc.patch, check-pf-cancel-handler.patch,
+  powerpc64-fcntl-lock.patch, realloc-limit-chunk-reuse.patch,
+  dl-find-object-return.patch; Removed (forwarded request 1102127 from Andreas_Schwab)</comment>
+    <requestid>1102128</requestid>
+  </revision>
 </revisionlist>
