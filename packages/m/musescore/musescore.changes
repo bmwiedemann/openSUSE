@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Aug 11 21:27:30 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- Update tp 4.1.1
+  New features in 4.1:
+  * New engraving and playback support for ornaments, including the
+    ability to set custom alterations for trills, turns and mordents
+  * A major improvement to the app's performance, allowing larger
+    scores to play back up to 60% more efficiently
+  * A dedicated new default reverb, which can be adjusted for each
+    instrument track as well as globally across the entire mix
+  * New auxiliary sends in the mixer, allowing instrument tracks to
+    be routed to dedicated auxiliary channel strips for applying
+    audio effects
+  * New engraving and playback support for capos on guitar staves
+  * New feature for displaying harp pedal diagrams
+  * Dynamics and expression text now automatically combine, plus new
+    controls for scaling and positioning dynamics
+  * New live Braille module, including a panel that displays
+    selected measures as Braille music notation (enabling more
+    efficient score reading on Braille displays)
+  * Upload audio directly to audio.com, allowing you to build a 
+    portfolio of your audio content to share with the world 
+  * View and open your online scores from musescore.com directly
+    from the desktop app 
+  Other updates:
+  * Save to cloud: option to make a score "unlisted"
+  * Publish to musescore.com: option to either replace the existing
+    published score, or publish the score as a new file
+  * New loading screen when opening multiple instances of the app on
+    macOS 
+  * Fixed syllable-based pasting of lyrics
+  * A more reliable VST scanning process
+  * Around 100 engraving fixes and improvements (Read this article on
+    musescore.org for a complete list)
+  * Numerous bug fixes
+- Removed patches:
+  * 0dde64eef84.patch
+  * fix-for-latest-qt-declarative.patch
+  * musescore-4.0.2-return.patch
+
+-------------------------------------------------------------------
 Fri Apr 28 08:39:34 UTC 2023 - Cor Blom <cornelis@solcon.nl>
 
 - Add fix-for-latest-qt-declarative.patch to fix boo#1210932

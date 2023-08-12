@@ -21,12 +21,12 @@
 # Workaround boo#1189991
 %define _lto_cflags %{nil}
 %define rname   mscore
-%define version_lesser 4.0
+%define version_lesser 4.1
 %define revision 5485621
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        4.0.2
+Version:        4.1.1
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Licenses in MuseScore are a mess. To help other maintainers I give the following overview:
@@ -63,12 +63,6 @@ Source4:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General
 Source5:        README.SUSE
 # PATCH-FIX-OPENSUSE: openSUSE has qmake-qt5 qmake was reserved for qt4, which is no longer present
 Patch0:         use-qtmake-qt5.patch
-# PATCH-FIX-UPSTREAM: fix build with jack on linux.
-Patch1:         0dde64eef84.patch
-# PATCH-FIX-UPSTREAM: make compiler happy by adding returns
-Patch2:         musescore-4.0.2-return.patch
-# PATCH-FIX-UPSTREAM: change in qt-declaratives breaks musescore
-Patch3:         fix-for-latest-qt-declarative.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -153,8 +147,10 @@ sed 's/\r$//' thirdparty/rtf2html/README.ru > tmpfile
 touch -r thirdparty/rtf2html/README.ru tmpfile
 mv -f tmpfile thirdparty/rtf2html/README.ru
 
-# fix missing -ldl for Leaps
-sed -i 's/\(target_link_libraries(mscore ${LINK_LIB}\)/\1 ${CMAKE_DL_LIBS}/' src/main/CMakeLists.txt
+## fix missing -ldl for Leaps
+# comment out because error
+#TODO: check if still needed
+#sed -i 's/\(target_link_libraries(mscore ${LINK_LIB}\)/\1 ${CMAKE_DL_LIBS}/' src/main/CMakeLists.txt
 
 %build
 # Limit memory / threads on PowerPC to avoid memory issues
@@ -170,23 +166,19 @@ sed -i 's/\(target_link_libraries(mscore ${LINK_LIB}\)/\1 ${CMAKE_DL_LIBS}/' src
 # BUILD_VST:BOOL=ON
 # -DBUILD_UPDATE_MODULE:BOOL=OFF triggers bug  https://github.com/musescore/MuseScore/issues/15617
 %cmake \
-       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+       -DMUSESCORE_BUILD_CONFIGURATION=app \
        -DMUSESCORE_BUILD_CONFIG=release \
        -DBUILD_UNIT_TESTS=OFF \
        -DUSE_SYSTEM_FREETYPE=ON \
        -DBUILD_JACK:BOOL=ON \
        -DBUILD_UPDATE_MODULE:BOOL=ON \
        -DBUILD_CRASHPAD_CLIENT=OFF \
-       -DMUSESCORE_REVISION=%{revision}
+       -DMUSESCORE_REVISION=%{revision} \
+       -Wno-dev
 %cmake_build
 
 %install
 %cmake_install
-
-# don't package kddockwidgets. It should not be installed
-rm %{buildroot}%{_libdir}/*.a
-rm -r %{buildroot}%{_includedir}/kddockwidgets
-rm -r %{buildroot}%{_libdir}/cmake/KDDockWidgets
 
 # install fonts
 mkdir -p %{buildroot}%{fontdir}
@@ -210,8 +202,9 @@ mv fonts/leland/LICENSE.txt      fonts/leland/LICENSE.txt.leland
 mkdir -p %{buildroot}%{_datadir}/%{rname}-%{version_lesser}/demos
 install -p -m 644 demos/*.mscz %{buildroot}%{_datadir}/%{rname}-%{version_lesser}/demos
 
-# Remove opus devel files, they are provided by system
-rm -r %{buildroot}%{_includedir}/opus
+# Remove all devel files
+rm -r %{buildroot}%{_includedir}
+rm -r %{buildroot}%{_libdir}
 # Delete crashpad binary
 rm %{buildroot}%{_bindir}/crashpad_handler
 
@@ -228,10 +221,6 @@ install -p -m 644 thirdparty/rtf2html/COPYING.LESSER  %{buildroot}%docdir/COPYIN
 install -p -m 644 thirdparty/rtf2html/README          %{buildroot}%docdir/README.rtf2html
 install -p -m 644 thirdparty/rtf2html/README.mscore   %{buildroot}%docdir/README.mscore.rtf2html
 install -p -m 644 thirdparty/rtf2html/README.ru       %{buildroot}%docdir/README.ru.rtf2html
-install -p -m 644 thirdparty/singleapp/LGPL_EXCEPTION.txt %{buildroot}%docdir/LGPL_EXCEPTION.txt.singleapp
-install -p -m 644 thirdparty/singleapp/LICENSE.GPL3   %{buildroot}%docdir/LICENSE.GPL3.singleapp
-install -p -m 644 thirdparty/singleapp/LICENSE.LGPL   %{buildroot}%docdir/LICENSE.LGPL.singleapp
-install -p -m 644 thirdparty/singleapp/README.TXT     %{buildroot}%docdir/README.TXT.singleapp
 
 install -p -m 644 tools/bww2mxml/COPYING              %{buildroot}%docdir/COPYING.bww2mxml
 install -p -m 644 tools/bww2mxml/README               %{buildroot}%docdir/README.bww2mxml
