@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  2 17:23:04 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- riscv64-unbounded-delays.patch: Don't depend on unbounded-delays for
+  riscv64
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:30 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
