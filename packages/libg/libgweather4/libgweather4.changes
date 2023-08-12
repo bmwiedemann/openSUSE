@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  7 14:52:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.3.2:
+  + Fix fallback metric unit detection logic
+  + Documentation fixes
+  + Performance improvements for nearest location lookups
+  + Location database changes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Feb 26 20:26:03 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Replace python3-gi-docgen build requirement with the more
