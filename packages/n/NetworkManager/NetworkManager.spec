@@ -64,13 +64,13 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.42.8
+Version:        1.44.0
 Release:        0
 Summary:        Standard Linux network configuration tool suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://networkmanager.dev/
-Source0:        https://download.gnome.org/sources/NetworkManager/1.42/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/NetworkManager/1.44/%{name}-%{version}.tar.xz
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
@@ -452,6 +452,7 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d/no-wait.d
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d/pre-up.d
+%{_prefix}/lib/NetworkManager/dispatcher.d/pre-up.d/90-nm-cloud-setup.sh
 %dir %{_prefix}/lib/NetworkManager/dispatcher.d/pre-down.d
 %dir %{_prefix}/lib/NetworkManager/VPN
 %dir %{_prefix}/lib/firewalld

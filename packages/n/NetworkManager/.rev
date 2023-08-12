@@ -2178,4 +2178,60 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
 New stable release</comment>
     <requestid>1096189</requestid>
   </revision>
+  <revision rev="260" vrev="1">
+    <srcmd5>92152b7fa41a6f223dfdfe77368c2fb0</srcmd5>
+    <version>1.44.0</version>
+    <time>1691845544</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1103285 from iznogood
+
+- Update to version 1.44.0:
+  + Introduce a new &quot;link&quot; setting that holds properties related to
+    the kernel link such as &quot;tx-queue-length&quot;, &quot;gso-max-size&quot;,
+    &quot;gso-max-segments&quot;, &quot;gro-max-size&quot;.
+  + Support sending a DHCPv6 prefix delegation hint via the
+    &quot;ipv6.dhcp-pd-hint&quot; connection property.
+  + Support new bond options: &quot;arp_missed_max&quot;, &quot;lacp_active&quot;,
+    &quot;ns_ip6_target&quot;.
+  + Add new &quot;initial-eps-bearer-configure&quot; and
+    &quot;initial-eps-bearer-apn&quot; properties in the GSM setting.
+  + Setting &quot;connection.stable-id=default${CONNECTION}&quot; changed
+    behavior to be identical to the built-in default value when the
+    stable-id is not set.
+  + Add a &quot;[keyfile].rename&quot; option to NetworkManager.conf to force
+    renaming profiles on disk when their name changes.
+  + The ifcfg-rh plugin is deprecated; it will only receive
+    bugfixes and no new features. A warning is emitted the log when
+    a connection in ifcfg-rh format is found.
+  + To automatically migrate existing ifcfg-rh connections to the
+    keyfile format, a new configuration option
+    &quot;main.migrate-ifcfg-rh&quot; is provided. Migration is disabled by
+    default, but the default value can be changed at build time via
+    &quot;--with-config-migrate-ifcfg-rh-default=yes&quot;.
+  + When configuring hostnames in non-public TLD (like
+    &quot;example.local&quot;), use the TLD as default search domain instead
+    of the full hostname.
+  + Always apply DNS options from the [global-dns] configuration
+    section
+  + The NetworkManager daemon now acquires the D-Bus name only
+    after populating the D-Bus tree. This can add a delay during
+    startup but it is required to avoid race conditions with other
+    services depending on NM.
+  + Add a &quot;version-id&quot; argument to the Update2() D-Bus call to
+    guard against concurrent modifications of profiles.
+  + Don't use tentative IPv6 addresses to resolve the system
+    hostname via DNS.
+  + Track the number of autoconnect retries left for each device
+    and connection. Previously it was tracked only per connection
+    and this lead to unexpected behaviors in case of multiconnect
+    profiles.
+  + Set VLAN filtering options on bridge via netlink instead of
+    sysfs.
+  + nm-cloud-setup now supports IMDSv2 on Amazon EC2.
+  + nmtui now allows to enable or disable Wi-Fi and WWAN radios.
+  + Honor ignore-carrier=no for bond/bridge/team devices.
+  + Add version mismatch warning when running nmcli commands.
+- Rebase patches with quilt.</comment>
+    <requestid>1103419</requestid>
+  </revision>
 </revisionlist>
