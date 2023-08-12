@@ -218,6 +218,8 @@ Patch19:        fips.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
+Patch21:        reproducible-javadoc-timestamp.patch
+#
 Patch30:        JDK-8208602.patch
 #
 # OpenJDK specific patches
@@ -499,6 +501,8 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch19 -p1
 
 %patch20 -p1
+
+%patch21 -p1
 
 %patch30 -p1
 

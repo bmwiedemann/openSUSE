@@ -503,4 +503,12 @@
     <comment>July 2023 CPU</comment>
     <requestid>1100545</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>48b6be445a13b13b2acf6fd158ea7d84</srcmd5>
+    <version>11.0.20.0</version>
+    <time>1691845564</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103522</requestid>
+  </revision>
 </revisionlist>
