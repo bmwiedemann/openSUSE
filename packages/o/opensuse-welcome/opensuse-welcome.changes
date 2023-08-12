@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 11 11:16:33 UTC 2023 - dimstar@opensuse.org
+
+- Update to version 0.1.9+git.35.4b9444a:
+  * panellayouter: use QTemporaryFile for applyLayout()
+    (bsc#1213708, CVE-2023-32184).
+  * Translation updates.
+
+-------------------------------------------------------------------
 Mon Sep 19 10:35:51 UTC 2022 - tux93@opensuse.org
 
 - Update to version 0.1.9+git.0.66be0d8:

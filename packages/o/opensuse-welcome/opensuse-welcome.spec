@@ -1,7 +1,7 @@
 #
 # spec file for package opensuse-welcome
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _name openSUSE-welcome
 
 Name:           opensuse-welcome
-Version:        0.1.9+git.0.66be0d8
+Version:        0.1.9+git.35.4b9444a
 Release:        0
 Summary:        Welcome utility for openSUSE
 License:        GPL-3.0-or-later AND MIT
@@ -68,8 +68,10 @@ A welcome utility built to welcome new users to openSUSE.
 %{_datadir}/icons/hicolor/scalable/apps/org.opensuse.opensuse_welcome.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.opensuse.opensuse_welcome-symbolic.svg
 %{_datadir}/metainfo/org.opensuse.opensuse_welcome.appdata.xml
+%dir %{_datadir}/openSUSE-Welcome
+%{_datadir}/openSUSE-Welcome/xfce-apply-layout.py
 
 %files lang
-%{_datadir}/openSUSE-Welcome/
+%{_datadir}/openSUSE-Welcome/i18n/
 
 %changelog
