@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 10 08:11:33 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 22.3.20
+  * Security fixes for ipcz (CVE-2023-3732) and WebRTC (CVE-2023-3728).
+
+-------------------------------------------------------------------
 Mon Jul 31 18:00:30 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Add backported re2-11-StringPiece.patch to fix FTBFS.
