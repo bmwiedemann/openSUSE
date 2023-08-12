@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 11 08:32:42 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.491.g87f19c22:
+  * fix(dracut-install): protect against broken links pointing to themselves
+  * fix(dracut.sh): exit if resolving executable dependencies fails (bsc#1214081)
+
+-------------------------------------------------------------------
 Wed Aug 02 06:32:08 UTC 2023 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.488.g81715832:
