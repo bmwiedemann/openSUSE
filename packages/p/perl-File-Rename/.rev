@@ -19,4 +19,16 @@
 </comment>
     <requestid>976129</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>97f4d232f3b35d4a5601bedd5d251523</srcmd5>
+    <version>2.10.0</version>
+    <time>1691845606</time>
+    <user>dimstar_suse</user>
+    <comment>- new version format, see https://github.com/openSUSE/cpanspec/issues/47
+- updated to 2.01
+   see /usr/share/doc/packages/perl-File-Rename/Changes
+- Update change-command-name.patch
+</comment>
+    <requestid>1103547</requestid>
+  </revision>
 </revisionlist>

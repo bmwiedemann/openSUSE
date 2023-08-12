@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Rename
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,46 +18,42 @@
 
 %define cpan_name File-Rename
 Name:           perl-File-Rename
-Version:        1.31
+Version:        2.10.0
 Release:        0
+%define cpan_version 2.01
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension for renaming multiple files
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RM/RMBARKER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RM/RMBARKER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 # PATCH-FIX-OPENSUSE
 Patch0:         change-command-name.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.400000
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.36
+Provides:       perl(File::Rename) = 2.10.0
+Provides:       perl(File::Rename::Options) = 2.10.0
+Provides:       perl(File::Rename::Unicode) = 1.30
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
-* 'rename( FILES, CODE [, VERBOSE])'
-
-rename FILES using CODE, if FILES is empty read list of files from stdin
-
-* 'rename_files( CODE, VERBOSE, FILES)'
-
-rename FILES using CODE
-
-* 'rename_list( CODE, VERBOSE, HANDLE [, FILENAME])'
-
-rename a list of file read from HANDLE, using CODE
+Perl extension for renaming multiple files
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-./Build test
+%make_build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+%perl_make_install
+%perl_process_packlist
 %perl_gen_filelist
 
 %files -f %{name}.files
