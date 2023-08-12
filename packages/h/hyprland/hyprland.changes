@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Aug 11 14:37:54 UTC 2023 - Florian <packaging@sp1rit.anonaddy.me>
+
+- Updated to version 0.28.0:
+  + Ayo new Hyprland update!
+    The biggest performance update in Hyprland's history!
+    - CPU idle reduced by half.
+    - GPU usage reduced around 2-4 times.
+  + Breaking Changes:
+    -  All blur values have been moved to decoration:blur:.
+  + New features:
+    - Added git tag in json version command (#2821)
+    - add config option to enable/disable new intuitive resizing
+      (#2774)
+    - background: add option to force hypr chan
+    - backgrounds: add hypr chan var 2
+    - groups: add use_current_group_pos (#2759)
+    - init: Request SCHED_RR using CAP_SYS_NICE (#2690)
+    - input: add support for cursor-shape-v1
+    - keybinds: add toggle to dpms
+    - renderer: add canSkipBackBufferClear
+    - renderer: add occlusion for back layers
+    - renderer: Various Blur Improvements (#2877)
+    - socket1: add a timeout for requests
+    - tracy: add more opengl zones
+    - windowrules: add workspace param
+    - xwayland: Add temporary fix for #2808 by adding nullptr check.
+      (#2829)
+  + Fixes:
+    - Fix background occlusion ignoring monitor position (#2771)
+    - init: Fix for issue #2797 (#2799)
+    - input: Fix #2376 mouse movement bug in XWayland (#2776)
+    - input: fix styling
+    - opengl: fix warn
+    - render: Border fixes (#2781)
+    - renderer: fix rounding in renderSurface
+    - toplevelexport: support dmabuf + various fixes
+    - window: fix segfault in boundingbox
+    - windowrules: fix opacity override
+    - xwayland: Add temporary fix for #2808 by adding nullptr check.
+      (#2829)
+  + Other:
+    - animationmanager: optimize avar state
+    - animationmgr: avoid looping over all avars in favor of only
+      active ones
+    - assets/meson.build: install new wallpapers
+    - config: schedule frame for mons on reload
+    - config: update default config for new blur changes
+    - debug: add tracy
+    - deps: update wlroots
+    - forms: bring back auto labels
+    - hyprctl: rerender on cursor_zoom_factor dynamic calls
+    - internal: Wrap regions (#2750)
+    - internal: Removed Herobrine
+    - keybinds: Make moveintogroup locking check configurable
+      (#2796)
+    - layout: no_border_when_only-improvements (#2791)
+    - layout: use warp() instead of setValue()
+    - opengl: adjust blend and reduce the usage of clear
+    - props: bump version to 0.28.0
+    - region: allow ctor from pixman_box32_t
+    - render: avoid allocating mirrorfb for no reason
+    - render: use primitive end() only when no screen shader is
+      present
+    - renderer: adjust distribution of backgrounds
+    - renderer: cleanup back buffer skip checks
+    - renderer: cleanup old redundancies in CFramebuffer
+    - renderer: disable init anim on disabled animations
+    - renderer: don't occlude when pre-blur is queued
+    - renderer: remove unused var
+    - renderer: reset scissor after renderTexturePrimitive
+    - renderer: scale box for occlusion
+    - renderer: take workspace offset into account for occlusion
+    - renderer: use primitive rendering for copying buffers
+    - shaders: short-circuit rounding if radius <= 0
+    - windowrules: implements nomaximizerequest (#2785)
+    - windowrules: improve opacity
+
+-------------------------------------------------------------------
 Wed Jul 19 13:12:44 UTC 2023 - Florian <packaging@sp1rit.anonaddy.me>
 
 - Updated to version 0.27.2:
