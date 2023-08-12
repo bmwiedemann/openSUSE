@@ -1,7 +1,7 @@
 #
 # spec file for package dcraw
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,7 @@ Patch3:         dcraw-CVE-2018-19655.patch
 Patch4:         dcraw-CVE-2018-5801.patch
 Patch5:         iowrappers.patch
 Patch6:         dcraw-CVE-2021-3624.patch
+Patch7:         dcraw-glibc-2.38.patch
 BuildRequires:  gettext-runtime
 BuildRequires:  libjasper-devel
 BuildRequires:  libjpeg-devel
@@ -68,6 +69,7 @@ cp -a %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} .
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing -fstack-protector-all"
