@@ -20,6 +20,10 @@ jdupes -1 -L -r /usr/share/licenses
 add-yast-repos
 zypper --non-interactive rm -u live-add-yast-repos jdupes
 
+# Not needed, but neither rpm nor libzypp handle rpmlib(X-CheckUnifiedSystemdir) yet
+# which would avoid it being installed by filesystem packge
+rpm -e compat-usrmerge-tools
+
 #======================================
 # Disable recommends
 #--------------------------------------
