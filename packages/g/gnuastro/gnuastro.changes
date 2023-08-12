@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug  6 14:49:38 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU Astronomy Utilities 0.20 (library 18.0.0)
+  * New program: astscript-zeropoint for calibrating the pixel
+    values in one image (finding its "zero point") based on a reference
+    catalog or (any number of) reference image(s)
+  * documentation updates
+  * A number of added options, operators and functions to multiple
+    commands, along with bug fixes
+
+-------------------------------------------------------------------
 Tue Oct 25 14:20:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Astronomy Utilities 0.19 (library 17.0.0)

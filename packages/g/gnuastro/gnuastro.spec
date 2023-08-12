@@ -1,7 +1,7 @@
 #
 # spec file for package gnuastro
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover 17
+%define sover 18
 %bcond_with     tests
 Name:           gnuastro
-Version:        0.19
+Version:        0.20
 Release:        0
 Summary:        GNU Astronomy Utilities
 License:        GPL-3.0-or-later
