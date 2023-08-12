@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Aug 11 07:11:10 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- 0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch be
+  removed by Timo Jyrinki when updating to 5.68. I saw some reasons:
+    - Upstream didn't take this patch:
+      https://www.spinics.net/lists/linux-bluetooth/msg40136.html
+    - Fedora also marked this patch in bluez.spec since bluez-5.68-2.fc39
+      https://src.fedoraproject.org/rpms/bluez/blob/2b133d795f4f823c8b22ef5a07569792ad7ce6aa/f/bluez.spec
+  We didn't put any bug number of this patch when it be introduced
+  to bluez.spec since Nov 23, 2021. So, let's remove this patch unless
+  upstream or Fedora add it back.
+
+-------------------------------------------------------------------
+Thu Aug 10 10:14:31 UTC 2023 - Timo Jyrinki <tjyrinki@suse.com>
+
+- update to 5.68
+  * Fix issue with A2DP and handling of Transport.Acquire.
+  * Fix issue with BAP and initiating QoS and Enable procedures.
+  * Fix issue with BAP and detaching streams when PAC is removed.
+  * Fix issue with BAP and reading all instances of PAC.
+  * Fix issue with BAP and not being able to reconfigure.
+  * Fix issue with BAP and transport configuration changes.
+  * Fix issue with BAP and handling unexpected disconnect.
+  * Fix issue with GATT and not removing pending services.
+  * Fix issue with GATT and client ready handling.
+  * Fix issue with handling fallback to transient hostname.
+  * Add support for SecureConnections configuration option.
+  * Add support for Mesh Remove Provisioning.
+  * Add support for Mesh Private Beacons.
+- Remove patches that are not needed with the new upstream.
+
+-------------------------------------------------------------------
 Wed Nov 16 12:41:37 UTC 2022 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to 5.66:
