@@ -1,0 +1,1742 @@
+From 2f7b865d7305b4cdfabaf4f218171928dd560811 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Fri, 11 Aug 2023 12:14:45 +0200
+Subject: [PATCH 1/3] Possibility to build against a host of filesystem
+ implementations
+
+---
+ configure.ac                                  |  14 +-
+ doc_example/Makefile.am                       |  26 +++
+ doc_example/spreadsheet_doc_1.cpp             |  13 +-
+ .../spreadsheet_doc_1_num_and_formula.cpp     |  13 +-
+ doc_example/spreadsheet_doc_2.cpp             |  13 +-
+ ...preadsheet_doc_2_sheets_no_string_pool.cpp |  13 +-
+ .../spreadsheet_doc_2_sheets_with_formula.cpp |  13 +-
+ ...eadsheet_doc_2_sheets_with_string_pool.cpp |  13 +-
+ src/Makefile.am                               | 172 +++++++++++++++---
+ src/cli_global.cpp                            |  12 +-
+ src/liborcus/Makefile.am                      |  80 +++++++-
+ src/liborcus/css_document_tree_test.cpp       |  15 +-
+ src/liborcus/format_detection_test.cpp        |  11 +-
+ src/liborcus/json_document_tree.cpp           |  12 +-
+ src/liborcus/json_document_tree_test.cpp      |  13 +-
+ src/liborcus/json_structure_tree_test.cpp     |  14 +-
+ src/liborcus/xml_structure_tree_test.cpp      |  13 +-
+ src/liborcus/yaml_document_tree_test.cpp      |  15 +-
+ src/orcus_filter_global.cpp                   |  15 +-
+ src/orcus_json_cli.cpp                        |  13 +-
+ src/orcus_test_import_ods.cpp                 |  12 +-
+ src/orcus_test_json_mapped.cpp                |  13 +-
+ src/orcus_test_ods.cpp                        |  13 +-
+ src/orcus_test_xlsx.cpp                       |  12 +-
+ src/orcus_test_xml_mapped.cpp                 |  12 +-
+ src/orcus_xml_main.cpp                        |  15 +-
+ src/orcus_yaml_main.cpp                       |  13 +-
+ src/parser/Makefile.am                        |  62 +++++--
+ src/parser/parser_test_xml_validation.cpp     |  12 +-
+ src/parser/stream.cpp                         |  13 +-
+ src/parser/zip_archive_test.cpp               |  12 +-
+ src/spreadsheet/Makefile.am                   |  17 +-
+ src/spreadsheet/debug_state_dumper.cpp        |   2 -
+ src/spreadsheet/debug_state_dumper.hpp        |  28 ++-
+ src/spreadsheet/document.cpp                  |   1 -
+ src/spreadsheet/document_impl.hpp             |   1 -
+ src/spreadsheet/sheet.cpp                     |  12 +-
+ 37 files changed, 651 insertions(+), 102 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 772fc3b3..4484336f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -44,6 +44,16 @@ PKG_PROG_PKG_CONFIG([0.20])
+ # =====================
+ AC_CHECK_HEADERS([stdlib.h sys/time.h unistd.h])
+ 
++# ===================================
++# Check for filesystem implementation
++# ===================================
++AC_CHECK_HEADER([filesystem], [have_filesystem=yes], [have_filesystem=no], [])
++
++AC_CHECK_HEADER([experimental/filesystem], [have_experimental_filesystem=yes], [have_experimental_filesystem=no], [])
++
++AM_CONDITIONAL([HAVE_FILESYSTEM], [test "x$have_filesystem" = "xyes"])
++AM_CONDITIONAL([HAVE_EXPERIMENTAL_FILESYSTEM], [test "x$have_experimental_filesystem" = "xyes"])
++
+ # =============================================================
+ # Checks for typedefs, structures, and compiler characteristics
+ # =============================================================
+@@ -82,8 +92,10 @@ AC_SUBST(ORCUS_MINOR_VERSION)
+ AC_SUBST(ORCUS_MICRO_VERSION)
+ 
+ BOOST_REQUIRE([1.36])
+-BOOST_FILESYSTEM
+ BOOST_SYSTEM
++AS_IF([test "x$have_filesystem" != "xyes" -a "x$have_experimental_filesystem" != "xyes"], [
++    BOOST_FILESYSTEM
++])
+ 
+ # =========================================================
+ # Determine if we are going to build static lib (for MinGW)
+diff --git a/doc_example/Makefile.am b/doc_example/Makefile.am
+index 0f097b27..94312442 100644
+--- a/doc_example/Makefile.am
++++ b/doc_example/Makefile.am
+@@ -4,6 +4,14 @@ AM_CPPFLAGS = \
+ 	$(LIBIXION_CFLAGS) \
+ 	-DSRCDIR=\""$(top_srcdir)"\"
+ 
++if HAVE_FILESYSTEM
++AM_CPPFLAGS += -DHAVE_FILESYSTEM=1
++endif
++
++if HAVE_EXPERIMENTAL_FILESYSTEM
++AM_CPPFLAGS += -DHAVE_EXPERIMENTAL_FILESYSTEM=1
++endif
++
+ bin_PROGRAMS =
+ 
+ EXTRA_PROGRAMS = \
+@@ -91,6 +99,24 @@ spreadsheet_doc_2_sheets_with_formula_LDADD = \
+ 	../src/parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	../src/liborcus/liborcus-@ORCUS_API_VERSION@.la
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++spreadsheet_doc_1_LDADD += -lstdc++fs
++spreadsheet_doc_1_num_and_formula_LDADD += -lstdc++fs
++spreadsheet_doc_2_LDADD += -lstdc++fs
++spreadsheet_doc_2_sheets_no_string_pool_LDADD += -lstdc++fs
++spreadsheet_doc_2_sheets_with_string_pool_LDADD += -lstdc++fs
++spreadsheet_doc_2_sheets_with_formula_LDADD += -lstdc++fs
++else
++spreadsheet_doc_1_LDADD += $(BOOST_FILESYSTEM_LIBS) $(BOOST_SYSTEM_LIBS)
++spreadsheet_doc_1_num_and_formula_LDADD += $(BOOST_FILESYSTEM_LIBS) $(BOOST_SYSTEM_LIBS)
++spreadsheet_doc_2_LDADD += $(BOOST_FILESYSTEM_LIBS) $(BOOST_SYSTEM_LIBS)
++spreadsheet_doc_2_sheets_no_string_pool_LDADD += $(BOOST_FILESYSTEM_LIBS) $(BOOST_SYSTEM_LIBS)
++spreadsheet_doc_2_sheets_with_string_pool_LDADD += $(BOOST_FILESYSTEM_LIBS) $(BOOST_SYSTEM_LIBS)
++spreadsheet_doc_2_sheets_with_formula_LDADD += $(BOOST_FILESYSTEM_LIBS) $(BOOST_SYSTEM_LIBS)
++endif
++endif
++
+ AM_TESTS_ENVIRONMENT = \
+ 	INPUTDIR=$(srcdir)/files; export INPUTDIR;
+ 
+diff --git a/doc_example/spreadsheet_doc_1.cpp b/doc_example/spreadsheet_doc_1.cpp
+index 00bbba43..293076cd 100644
+--- a/doc_example/spreadsheet_doc_1.cpp
++++ b/doc_example/spreadsheet_doc_1.cpp
+@@ -8,13 +8,24 @@
+ 
+ #include <iostream>
+ #include <cstdlib>
++#ifdef HAVE_FILESYSTEM
+ #include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ using namespace orcus;
+ 
+ int main()
+ {
+-    std::filesystem::path input_dir = std::getenv("INPUTDIR");
++    fs::path input_dir = std::getenv("INPUTDIR");
+ 
+     //!code-start: instantiate
+     spreadsheet::range_size_t ss{1048576, 16384};
+diff --git a/doc_example/spreadsheet_doc_1_num_and_formula.cpp b/doc_example/spreadsheet_doc_1_num_and_formula.cpp
+index 88c405c7..fddfc268 100644
+--- a/doc_example/spreadsheet_doc_1_num_and_formula.cpp
++++ b/doc_example/spreadsheet_doc_1_num_and_formula.cpp
+@@ -9,13 +9,24 @@
+ #include <ixion/cell.hpp>
+ 
+ #include <iostream>
++#ifdef HAVE_FILESYSTEM
+ #include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ using namespace orcus;
+ 
+ int main()
+ {
+-    std::filesystem::path input_dir = std::getenv("INPUTDIR");
++    fs::path input_dir = std::getenv("INPUTDIR");
+ 
+     // Instantiate a document, and wrap it with a factory.
+     spreadsheet::range_size_t ss{1048576, 16384};
+diff --git a/doc_example/spreadsheet_doc_2.cpp b/doc_example/spreadsheet_doc_2.cpp
+index 614b50b8..47e376f4 100644
+--- a/doc_example/spreadsheet_doc_2.cpp
++++ b/doc_example/spreadsheet_doc_2.cpp
+@@ -2,7 +2,18 @@
+ #include <orcus/spreadsheet/import_interface.hpp>
+ #include <orcus/orcus_ods.hpp>
+ 
++#ifdef HAVE_FILESYSTEM
+ #include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ #include <iostream>
+ 
+ namespace ss = orcus::spreadsheet;
+@@ -33,7 +44,7 @@ public:
+ 
+ int main()
+ {
+-    std::filesystem::path input_dir = std::getenv("INPUTDIR");
++    fs::path input_dir = std::getenv("INPUTDIR");
+     auto filepath = input_dir / "multi-sheets.ods";
+ 
+     my_empty_import_factory factory;
+diff --git a/doc_example/spreadsheet_doc_2_sheets_no_string_pool.cpp b/doc_example/spreadsheet_doc_2_sheets_no_string_pool.cpp
+index ea58d5e1..ee862fdd 100644
+--- a/doc_example/spreadsheet_doc_2_sheets_no_string_pool.cpp
++++ b/doc_example/spreadsheet_doc_2_sheets_no_string_pool.cpp
+@@ -4,7 +4,18 @@
+ 
+ #include <iostream>
+ #include <memory>
++#ifdef HAVE_FILESYSTEM
+ #include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ //!code-start: cell_value
+ namespace ss = orcus::spreadsheet;
+@@ -112,7 +123,7 @@ public:
+ 
+ int main()
+ {
+-    std::filesystem::path input_dir = std::getenv("INPUTDIR");
++    fs::path input_dir = std::getenv("INPUTDIR");
+     auto filepath = input_dir / "multi-sheets.ods";
+ 
+     my_import_factory factory;
+diff --git a/doc_example/spreadsheet_doc_2_sheets_with_formula.cpp b/doc_example/spreadsheet_doc_2_sheets_with_formula.cpp
+index 29511e47..01093353 100644
+--- a/doc_example/spreadsheet_doc_2_sheets_with_formula.cpp
++++ b/doc_example/spreadsheet_doc_2_sheets_with_formula.cpp
+@@ -6,7 +6,18 @@
+ #include <memory>
+ #include <unordered_map>
+ #include <deque>
++#ifdef HAVE_FILESYSTEM
+ #include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ namespace ss = orcus::spreadsheet;
+ 
+@@ -279,7 +290,7 @@ public:
+ 
+ int main()
+ {
+-    std::filesystem::path input_dir = std::getenv("INPUTDIR");
++    fs::path input_dir = std::getenv("INPUTDIR");
+     auto filepath = input_dir / "multi-sheets.ods";
+ 
+     my_import_factory factory;
+diff --git a/doc_example/spreadsheet_doc_2_sheets_with_string_pool.cpp b/doc_example/spreadsheet_doc_2_sheets_with_string_pool.cpp
+index 76fcf807..19929f88 100644
+--- a/doc_example/spreadsheet_doc_2_sheets_with_string_pool.cpp
++++ b/doc_example/spreadsheet_doc_2_sheets_with_string_pool.cpp
+@@ -6,7 +6,18 @@
+ #include <memory>
+ #include <unordered_map>
+ #include <deque>
++#ifdef HAVE_FILESYSTEM
+ #include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ namespace ss = orcus::spreadsheet;
+ 
+@@ -193,7 +204,7 @@ public:
+ 
+ int main()
+ {
+-    std::filesystem::path input_dir = std::getenv("INPUTDIR");
++    fs::path input_dir = std::getenv("INPUTDIR");
+     auto filepath = input_dir / "multi-sheets.ods";
+ 
+     my_import_factory factory;
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 1006194f..8839ab42 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -16,6 +16,14 @@ EXTRA_PROGRAMS = \
+ 
+ AM_CPPFLAGS += $(BOOST_CPPFLAGS) $(LIBIXION_CFLAGS)
+ 
++if HAVE_FILESYSTEM
++AM_CPPFLAGS += "-DHAVE_FILESYSTEM=1"
++endif
++
++if HAVE_EXPERIMENTAL_FILESYSTEM
++AM_CPPFLAGS += "-DHAVE_EXPERIMENTAL_FILESYSTEM=1"
++endif
++
+ if HAVE_STATIC_LIB
+ AM_CPPFLAGS += -D__ORCUS_STATIC_LIB=1
+ endif
+@@ -83,16 +91,23 @@ orcus_json_SOURCES = \
+ 
+ orcus_json_LDFLAGS = \
+ 	$(BOOST_PROGRAM_OPTIONS_LDFLAGS) \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ 
+ orcus_json_LDADD = \
+ 	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	liborcus/liborcus-@ORCUS_API_VERSION@.la \
+ 	$(BOOST_PROGRAM_OPTIONS_LIBS) \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_json_LDADD += -lstdc++fs
++else
++orcus_json_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_json_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ orcus_json_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS)
+ 
+ # orcus-yaml
+@@ -102,16 +117,23 @@ orcus_yaml_SOURCES = \
+ 
+ orcus_yaml_LDFLAGS = \
+ 	$(BOOST_PROGRAM_OPTIONS_LDFLAGS) \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ 
+ orcus_yaml_LDADD = \
+ 	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	liborcus/liborcus-@ORCUS_API_VERSION@.la \
+ 	$(BOOST_PROGRAM_OPTIONS_LIBS) \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_yaml_LDADD += -lstdc++fs
++else
++orcus_yaml_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_yaml_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ orcus_yaml_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS)
+ 
+ #----------------------------------------------------------------------------
+@@ -134,15 +156,22 @@ orcus_mso_encryption_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_
+ orcus_detect_SOURCES = orcus_detect_main.cpp
+ orcus_detect_LDFLAGS = \
+ 	$(BOOST_PROGRAM_OPTIONS_LDFLAGS) \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ orcus_detect_LDADD = \
+ 	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	liborcus/liborcus-@ORCUS_API_VERSION@.la \
+ 	$(BOOST_PROGRAM_OPTIONS_LIBS) \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_detect_LDADD += -lstdc++fs
++else
++orcus_detect_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_detect_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ orcus_detect_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS)
+ 
+ #----------------------------------------------------------------------------
+@@ -164,16 +193,23 @@ orcus_csv_SOURCES = \
+ 
+ orcus_csv_LDFLAGS = \
+ 	$(BOOST_PROGRAM_OPTIONS_LDFLAGS) \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ orcus_csv_LDADD = \
+ 	liborcus/liborcus-@ORCUS_API_VERSION@.la \
+ 	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	spreadsheet/liborcus-spreadsheet-model-@ORCUS_API_VERSION@.la \
+ 	$(BOOST_PROGRAM_OPTIONS_LIBS) \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_csv_LDADD += -lstdc++fs
++else
++orcus_csv_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_csv_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ orcus_csv_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS)
+ 
+ # orcus-xml
+@@ -186,16 +222,23 @@ orcus_xml_SOURCES = \
+ 
+ orcus_xml_LDFLAGS = \
+ 	$(BOOST_PROGRAM_OPTIONS_LDFLAGS) \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ orcus_xml_LDADD = \
+ 	liborcus/liborcus-@ORCUS_API_VERSION@.la \
+ 	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	spreadsheet/liborcus-spreadsheet-model-@ORCUS_API_VERSION@.la \
+ 	$(BOOST_PROGRAM_OPTIONS_LIBS) \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_xml_LDADD += -lstdc++fs
++else
++orcus_xml_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_xml_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ orcus_xml_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS)
+ 
+ if WITH_ODS_FILTER
+@@ -213,16 +256,22 @@ orcus_ods_SOURCES = \
+ 
+ orcus_ods_LDFLAGS = \
+ 	$(BOOST_PROGRAM_OPTIONS_LDFLAGS) \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ orcus_ods_LDADD = \
+ 	liborcus/liborcus-@ORCUS_API_VERSION@.la \
+ 	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	spreadsheet/liborcus-spreadsheet-model-@ORCUS_API_VERSION@.la \
+ 	$(BOOST_PROGRAM_OPTIONS_LIBS) \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_ods_LDADD += -lstdc++fs
++else
++orcus_ods_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_ods_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
+ 
+ orcus_ods_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS)
+ 
+@@ -235,7 +284,6 @@ orcus_styles_ods_SOURCES = \
+ 
+ orcus_styles_ods_LDFLAGS = \
+ 	$(BOOST_PROGRAM_OPTIONS_LDFLAGS) \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ 
+ orcus_styles_ods_LDADD = \
+@@ -243,9 +291,17 @@ orcus_styles_ods_LDADD = \
+ 	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	spreadsheet/liborcus-spreadsheet-model-@ORCUS_API_VERSION@.la \
+ 	$(BOOST_PROGRAM_OPTIONS_LIBS) \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_styles_ods_LDADD += -lstdc++fs
++else
++orcus_styles_ods_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_styles_ods_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ orcus_styles_ods_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS)
+ 
+ endif # WITH_ODS_FILTER
+@@ -264,16 +320,23 @@ orcus_xlsx_SOURCES = \
+ 
+ orcus_xlsx_LDFLAGS = \
+ 	$(BOOST_PROGRAM_OPTIONS_LDFLAGS) \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ orcus_xlsx_LDADD = \
+ 	liborcus/liborcus-@ORCUS_API_VERSION@.la \
+ 	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	spreadsheet/liborcus-spreadsheet-model-@ORCUS_API_VERSION@.la \
+ 	$(BOOST_PROGRAM_OPTIONS_LIBS) \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_xlsx_LDADD += -lstdc++fs
++else
++orcus_xlsx_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_xlsx_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ orcus_xlsx_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS)
+ 
+ endif # WITH_XLSX_FILTER
+@@ -292,16 +355,23 @@ orcus_xls_xml_SOURCES = \
+ 
+ orcus_xls_xml_LDFLAGS = \
+ 	$(BOOST_PROGRAM_OPTIONS_LDFLAGS) \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ orcus_xls_xml_LDADD = \
+ 	liborcus/liborcus-@ORCUS_API_VERSION@.la \
+ 	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	spreadsheet/liborcus-spreadsheet-model-@ORCUS_API_VERSION@.la \
+ 	$(BOOST_PROGRAM_OPTIONS_LIBS) \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_xls_xml_LDADD += -lstdc++fs
++else
++orcus_xls_xml_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_xls_xml_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ orcus_xls_xml_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS)
+ 
+ endif # WITH_XLS_XML_FILTER
+@@ -320,16 +390,23 @@ orcus_gnumeric_SOURCES = \
+ 
+ orcus_gnumeric_LDFLAGS = \
+ 	$(BOOST_PROGRAM_OPTIONS_LDFLAGS) \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ orcus_gnumeric_LDADD = \
+ 	liborcus/liborcus-@ORCUS_API_VERSION@.la \
+ 	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	spreadsheet/liborcus-spreadsheet-model-@ORCUS_API_VERSION@.la \
+ 	$(BOOST_PROGRAM_OPTIONS_LIBS) \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_gnumeric_LDADD += -lstdc++fs
++else
++orcus_gnumeric_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_gnumeric_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ orcus_gnumeric_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS)
+ 
+ endif # WITH_GNUMERIC_FILTER
+@@ -372,7 +449,6 @@ orcus_test_xml_mapped_SOURCES = \
+ 	orcus_test_global.cpp
+ 
+ orcus_test_xml_mapped_LDFLAGS = \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ 
+ orcus_test_xml_mapped_LDADD = \
+@@ -380,9 +456,17 @@ orcus_test_xml_mapped_LDADD = \
+ 	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	./test/liborcus-test.a \
+ 	spreadsheet/liborcus-spreadsheet-model-@ORCUS_API_VERSION@.la \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_test_xml_mapped_LDADD += -lstdc++fs
++else
++orcus_test_xml_mapped_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_test_xml_mapped_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ orcus_test_xml_mapped_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS) -DSRCDIR=\""$(top_srcdir)"\"
+ 
+ # orcus-test-json-mapped
+@@ -391,16 +475,23 @@ orcus_test_json_mapped_SOURCES = \
+ 	orcus_test_json_mapped.cpp
+ 
+ orcus_test_json_mapped_LDFLAGS = \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ 
+ orcus_test_json_mapped_LDADD = \
+ 	liborcus/liborcus-@ORCUS_API_VERSION@.la \
+ 	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	spreadsheet/liborcus-spreadsheet-model-@ORCUS_API_VERSION@.la \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_test_json_mapped_LDADD += -lstdc++fs
++else
++orcus_test_json_mapped_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_test_json_mapped_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ orcus_test_json_mapped_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS) -DSRCDIR=\""$(top_srcdir)"\"
+ 
+ TESTS += \
+@@ -422,13 +513,20 @@ orcus_test_ods_LDADD = \
+ 	liborcus/liborcus-@ORCUS_API_VERSION@.la \
+ 	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	spreadsheet/liborcus-spreadsheet-model-@ORCUS_API_VERSION@.la \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
+ orcus_test_ods_LDFLAGS = \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_test_ods_LDADD += -lstdc++fs
++else
++orcus_test_ods_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_test_ods_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ orcus_test_ods_CPPFLAGS = $(AM_CPPFLAGS) \
+ 	-I$(top_builddir)/lib/liborcus/liborcus.la -DSRCDIR=\""$(top_srcdir)"\"
+ 
+@@ -447,13 +545,20 @@ orcus_test_import_ods_LDADD = \
+ 	parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	spreadsheet/liborcus-spreadsheet-model-@ORCUS_API_VERSION@.la \
+ 	./test/liborcus-test.a \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
+ orcus_test_import_ods_LDFLAGS = \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_test_import_ods_LDADD += -lstdc++fs
++else
++orcus_test_import_ods_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_test_import_ods_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ orcus_test_import_ods_CPPFLAGS = $(AM_CPPFLAGS) \
+ 	-I$(top_builddir)/lib/liborcus/liborcus.la -DSRCDIR=\""$(top_srcdir)"\"
+ 
+@@ -473,7 +578,6 @@ orcus_test_xlsx_SOURCES = \
+ 	orcus_test_xlsx.cpp
+ 
+ orcus_test_xlsx_LDFLAGS = \
+-	$(BOOST_FILESYSTEM_LDFLAGS) \
+ 	$(BOOST_SYSTEM_LDFLAGS)
+ 
+ orcus_test_xlsx_LDADD = \
+@@ -482,9 +586,17 @@ orcus_test_xlsx_LDADD = \
+ 	test/liborcus-test.a \
+ 	spreadsheet/liborcus-spreadsheet-model-@ORCUS_API_VERSION@.la \
+ 	@LIBIXION_LIBS@ \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++orcus_test_xlsx_LDADD += -lstdc++fs
++else
++orcus_test_xlsx_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++orcus_test_xlsx_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ orcus_test_xlsx_CPPFLAGS = \
+ 	@LIBIXION_CFLAGS@  $(AM_CPPFLAGS) \
+ 	-I$(top_builddir)/lib/liborcus/liborcus.la -DSRCDIR=\""$(top_srcdir)"\"
+diff --git a/src/cli_global.cpp b/src/cli_global.cpp
+index aa3455de..876d7519 100644
+--- a/src/cli_global.cpp
++++ b/src/cli_global.cpp
+@@ -10,10 +10,20 @@
+ #include <iostream>
+ #include <fstream>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ namespace po = boost::program_options;
+-namespace fs = boost::filesystem;
+ 
+ namespace orcus {
+ 
+diff --git a/src/liborcus/Makefile.am b/src/liborcus/Makefile.am
+index 6ff24676..32842e9a 100644
+--- a/src/liborcus/Makefile.am
++++ b/src/liborcus/Makefile.am
+@@ -28,15 +28,32 @@ else
+ AM_CPPFLAGS += -D__ORCUS_BUILDING_DLL=1
+ endif
+ 
++if HAVE_FILESYSTEM
++AM_CPPFLAGS += "-DHAVE_FILESYSTEM=1"
++endif
++
++if HAVE_EXPERIMENTAL_FILESYSTEM
++AM_CPPFLAGS += "-DHAVE_EXPERIMENTAL_FILESYSTEM=1"
++endif
++
+ liborcus_@ORCUS_API_VERSION@_la_CXXFLAGS = \
+ 	$(ZLIB_CFLAGS)
+ 
+ liborcus_@ORCUS_API_VERSION@_la_LDFLAGS = \
+-	-no-undefined $(BOOST_SYSTEM_LDFLAGS) $(BOOST_FILESYSTEM_LDFLAGS)
++	-no-undefined $(BOOST_SYSTEM_LDFLAGS)
+ 
+ liborcus_@ORCUS_API_VERSION@_la_LIBADD = \
+ 	../parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+-	 $(BOOST_SYSTEM_LIBS) $(ZLIB_LIBS) $(BOOST_FILESYSTEM_LIBS)
++	 $(BOOST_SYSTEM_LIBS) $(ZLIB_LIBS)
++
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++liborcus_@ORCUS_API_VERSION@_la_LDFLAGS += -lstdc++fs
++else
++liborcus_@ORCUS_API_VERSION@_la_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++liborcus_@ORCUS_API_VERSION@_la_LIBADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
+ 
+ AM_CPPFLAGS += -DSRCDIR=\""$(top_srcdir)"\"
+ 
+@@ -389,7 +406,15 @@ css_document_tree_test_SOURCES = \
+ css_document_tree_test_LDADD = \
+ 	liborcus-@ORCUS_API_VERSION@.la \
+ 	../parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+-	$(BOOST_FILESYSTEM_LIBS) $(BOOST_SYSTEM_LIBS)
++	$(BOOST_SYSTEM_LIBS)
++
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++css_document_tree_test_LDADD += -lstdc++fs
++else
++css_document_tree_test_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
+ 
+ # json-document-tree-test
+ 
+@@ -402,7 +427,15 @@ json_document_tree_test_LDADD = \
+ 	liborcus-@ORCUS_API_VERSION@.la \
+ 	../parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	../test/liborcus-test.a \
+-	$(BOOST_FILESYSTEM_LIBS) $(BOOST_SYSTEM_LIBS)
++	$(BOOST_SYSTEM_LIBS)
++
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++json_document_tree_test_LDADD += -lstdc++fs
++else
++json_document_tree_test_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
+ 
+ json_document_tree_test_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS)
+ 
+@@ -416,7 +449,15 @@ yaml_document_tree_test_SOURCES = \
+ yaml_document_tree_test_LDADD = \
+ 	liborcus-@ORCUS_API_VERSION@.la \
+ 	../parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+-	$(BOOST_FILESYSTEM_LIBS) $(BOOST_SYSTEM_LIBS)
++	$(BOOST_SYSTEM_LIBS)
++
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++yaml_document_tree_test_LDADD += -lstdc++fs
++else
++yaml_document_tree_test_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
+ 
+ yaml_document_tree_test_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(AM_CPPFLAGS)
+ 
+@@ -434,7 +475,8 @@ xml_map_tree_test_SOURCES = \
+ xml_map_tree_test_LDADD = \
+ 	liborcus-@ORCUS_API_VERSION@.la \
+ 	../parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+-	../test/liborcus-test.a
++	../test/liborcus-test.a \
++    $(BOOST_SYSTEM_LIBS)
+ 
+ # xml-structure-tree-test
+ 
+@@ -449,7 +491,15 @@ xml_structure_tree_test_CPPFLAGS = -I$(top_builddir)/lib/liborcus/liborcus.la $(
+ xml_structure_tree_test_LDADD = \
+ 	liborcus-@ORCUS_API_VERSION@.la \
+ 	../parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+-	$(BOOST_FILESYSTEM_LIBS) $(BOOST_SYSTEM_LIBS)
++	$(BOOST_SYSTEM_LIBS)
++
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++xml_structure_tree_test_LDADD += -lstdc++fs
++else
++xml_structure_tree_test_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
+ 
+ # common-test
+ 
+@@ -483,7 +533,15 @@ json_structure_tree_test_SOURCES = json_structure_tree_test.cpp
+ json_structure_tree_test_LDADD = \
+ 	liborcus-@ORCUS_API_VERSION@.la \
+ 	../parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+-	$(BOOST_SYSTEM_LIBS) $(BOOST_FILESYSTEM_LIBS)
++	$(BOOST_SYSTEM_LIBS)
++
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++json_structure_tree_test_LDADD += -lstdc++fs
++else
++json_structure_tree_test_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
+ 
+ # json-map-tree-test
+ 
+@@ -492,7 +550,8 @@ json_map_tree_test_SOURCES = json_map_tree_test.cpp \
+ 	spreadsheet_impl_types.cpp
+ json_map_tree_test_LDADD = \
+ 	liborcus-@ORCUS_API_VERSION@.la \
+-	../parser/liborcus-parser-@ORCUS_API_VERSION@.la
++	../parser/liborcus-parser-@ORCUS_API_VERSION@.la \
++	$(BOOST_SYSTEM_LIBS)
+ 
+ # xpath-parser-test
+ 
+@@ -501,7 +560,8 @@ xpath_parser_test_SOURCES = \
+ 	xpath_parser.cpp
+ xpath_parser_test_LDADD = \
+ 	liborcus-@ORCUS_API_VERSION@.la \
+-	../parser/liborcus-parser-@ORCUS_API_VERSION@.la
++	../parser/liborcus-parser-@ORCUS_API_VERSION@.la \
++	$(BOOST_SYSTEM_LIBS)
+ 
+ TESTS += \
+ 	css-document-tree-test \
+diff --git a/src/liborcus/css_document_tree_test.cpp b/src/liborcus/css_document_tree_test.cpp
+index 09b98d2f..bb367a33 100644
+--- a/src/liborcus/css_document_tree_test.cpp
++++ b/src/liborcus/css_document_tree_test.cpp
+@@ -16,12 +16,21 @@
+ #include <sstream>
+ #include <iterator>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ using namespace orcus;
+ 
+-namespace fs = boost::filesystem;
+-
+ bool check_prop(const css_properties_t& props, std::string_view key, std::string_view val)
+ {
+     css_properties_t::const_iterator it = props.find(key);
+@@ -93,7 +102,7 @@ void test_css_invalids()
+         if (!fs::is_regular_file(path))
+             continue;
+ 
+-        if (fs::extension(path) != ".css")
++        if (path.extension().string() != ".css")
+             continue;
+ 
+         std::cout << "parsing invalid file " << path.filename().string() << "..." << std::endl;
+diff --git a/src/liborcus/format_detection_test.cpp b/src/liborcus/format_detection_test.cpp
+index 74b4e51e..c62ec8a2 100644
+--- a/src/liborcus/format_detection_test.cpp
++++ b/src/liborcus/format_detection_test.cpp
+@@ -12,9 +12,18 @@
+ #include <iostream>
+ #include <string>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
+-
+ namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ fs::path base_test_dir = fs::path{SRCDIR} / "test";
+ 
+diff --git a/src/liborcus/json_document_tree.cpp b/src/liborcus/json_document_tree.cpp
+index 071198b5..680b2bc2 100644
+--- a/src/liborcus/json_document_tree.cpp
++++ b/src/liborcus/json_document_tree.cpp
+@@ -23,10 +23,20 @@
+ #include <deque>
+ 
+ #include <boost/current_function.hpp>
+-#include <boost/filesystem.hpp>
+ #include <boost/pool/object_pool.hpp>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
+ namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ namespace orcus { namespace json {
+ 
+diff --git a/src/liborcus/json_document_tree_test.cpp b/src/liborcus/json_document_tree_test.cpp
+index 018702c0..98632209 100644
+--- a/src/liborcus/json_document_tree_test.cpp
++++ b/src/liborcus/json_document_tree_test.cpp
+@@ -14,7 +14,18 @@
+ #include <orcus/xml_namespace.hpp>
+ #include <orcus/dom_tree.hpp>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ #include <cassert>
+ #include <cstdlib>
+@@ -22,8 +33,6 @@
+ #include <cmath>
+ #include <cstring>
+ 
+-namespace fs = boost::filesystem;
+-
+ using namespace orcus;
+ 
+ fs::path json_test_dirs[] = {
+diff --git a/src/liborcus/json_structure_tree_test.cpp b/src/liborcus/json_structure_tree_test.cpp
+index d41f8467..d71bb214 100644
+--- a/src/liborcus/json_structure_tree_test.cpp
++++ b/src/liborcus/json_structure_tree_test.cpp
+@@ -14,10 +14,20 @@
+ #include <cassert>
+ #include <unordered_set>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ using namespace orcus;
+-namespace fs = boost::filesystem;
+ 
+ std::vector<const char*> base_dirs = {
+     SRCDIR"/test/json-structure/arrays-in-object/",
+@@ -44,7 +54,7 @@ void test_no_value_nodes()
+         if (!fs::is_regular_file(p))
+             continue;
+ 
+-        if (fs::extension(p) != ".json")
++        if (p.extension().string() != ".json")
+             continue;
+ 
+         file_content strm(p.string().data());
+diff --git a/src/liborcus/xml_structure_tree_test.cpp b/src/liborcus/xml_structure_tree_test.cpp
+index 3942d85d..596c7e44 100644
+--- a/src/liborcus/xml_structure_tree_test.cpp
++++ b/src/liborcus/xml_structure_tree_test.cpp
+@@ -15,11 +15,22 @@
+ #include <iostream>
+ #include <sstream>
+ #include <vector>
++
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ using namespace std;
+ using namespace orcus;
+-namespace fs = boost::filesystem;
+ 
+ const fs::path test_base_dir(SRCDIR"/test/xml-structure");
+ 
+diff --git a/src/liborcus/yaml_document_tree_test.cpp b/src/liborcus/yaml_document_tree_test.cpp
+index 7a732ac5..8f9895cc 100644
+--- a/src/liborcus/yaml_document_tree_test.cpp
++++ b/src/liborcus/yaml_document_tree_test.cpp
+@@ -14,13 +14,22 @@
+ #include <iostream>
+ #include <cmath>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ using namespace orcus;
+ using namespace std;
+ 
+-namespace fs = boost::filesystem;
+-
+ bool string_expected(const yaml::const_node& node, const char* expected)
+ {
+     if (node.type() != yaml::node_t::string)
+@@ -83,7 +92,7 @@ void test_yaml_invalids()
+         if (!fs::is_regular_file(path))
+             continue;
+ 
+-        if (fs::extension(path) != ".yaml")
++        if (path.extension().string() != ".yaml")
+             continue;
+ 
+         ++file_count;
+diff --git a/src/orcus_filter_global.cpp b/src/orcus_filter_global.cpp
+index fa6ce44f..6c3c7479 100644
+--- a/src/orcus_filter_global.cpp
++++ b/src/orcus_filter_global.cpp
+@@ -11,16 +11,27 @@
+ #include "orcus/spreadsheet/factory.hpp"
+ 
+ #include <mdds/sorted_string_map.hpp>
+-#include <boost/filesystem.hpp>
+ #include <vector>
+ #include <iostream>
+ #include <fstream>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
++
+ using namespace std;
+ using namespace orcus;
+ 
+ namespace po = boost::program_options;
+-namespace fs = boost::filesystem;
+ 
+ namespace orcus {
+ 
+diff --git a/src/orcus_json_cli.cpp b/src/orcus_json_cli.cpp
+index 5818612c..c0fd7bd0 100644
+--- a/src/orcus_json_cli.cpp
++++ b/src/orcus_json_cli.cpp
+@@ -22,12 +22,23 @@
+ 
+ #include <mdds/sorted_string_map.hpp>
+ #include <boost/program_options.hpp>
++
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ using namespace std;
+ using namespace orcus;
+ namespace po = boost::program_options;
+-namespace fs = boost::filesystem;
+ 
+ namespace orcus { namespace detail {
+ 
+diff --git a/src/orcus_test_import_ods.cpp b/src/orcus_test_import_ods.cpp
+index a6308adb..09be6306 100644
+--- a/src/orcus_test_import_ods.cpp
++++ b/src/orcus_test_import_ods.cpp
+@@ -19,9 +19,19 @@
+ #include <iostream>
+ #include <sstream>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
+-
+ namespace fs = boost::filesystem;
++#endif
++#endif
++
+ namespace ss = orcus::spreadsheet;
+ 
+ using orcus::test::stack_printer;
+diff --git a/src/orcus_test_json_mapped.cpp b/src/orcus_test_json_mapped.cpp
+index bdd665c0..65d3abe3 100644
+--- a/src/orcus_test_json_mapped.cpp
++++ b/src/orcus_test_json_mapped.cpp
+@@ -16,11 +16,22 @@
+ #include <vector>
+ #include <cassert>
+ #include <sstream>
++
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ using namespace std;
+ using namespace orcus;
+-namespace fs = boost::filesystem;
+ 
+ namespace {
+ 
+diff --git a/src/orcus_test_ods.cpp b/src/orcus_test_ods.cpp
+index c170534b..f8d38a24 100644
+--- a/src/orcus_test_ods.cpp
++++ b/src/orcus_test_ods.cpp
+@@ -22,7 +22,19 @@
+ #include <sstream>
+ #include <vector>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
++
+ #include <mdds/flat_segment_tree.hpp>
+ 
+ using namespace orcus;
+@@ -30,7 +42,6 @@ using namespace orcus::spreadsheet;
+ 
+ namespace ss = orcus::spreadsheet;
+ 
+-namespace fs = boost::filesystem;
+ 
+ typedef mdds::flat_segment_tree<std::size_t, bool> bool_segment_type;
+ 
+diff --git a/src/orcus_test_xlsx.cpp b/src/orcus_test_xlsx.cpp
+index 4c55f46f..013edfff 100644
+--- a/src/orcus_test_xlsx.cpp
++++ b/src/orcus_test_xlsx.cpp
+@@ -31,11 +31,21 @@
+ #include <ixion/address.hpp>
+ #include <ixion/formula_name_resolver.hpp>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ using namespace orcus;
+ namespace ss = orcus::spreadsheet;
+-namespace fs = boost::filesystem;
+ 
+ namespace {
+ 
+diff --git a/src/orcus_test_xml_mapped.cpp b/src/orcus_test_xml_mapped.cpp
+index 005241b3..34f6bbe2 100644
+--- a/src/orcus_test_xml_mapped.cpp
++++ b/src/orcus_test_xml_mapped.cpp
+@@ -24,10 +24,20 @@
+ #include <fstream>
+ #include <vector>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ using namespace orcus;
+-namespace fs = boost::filesystem;
+ 
+ const fs::path test_base_dir(SRCDIR"/test/xml-mapped");
+ 
+diff --git a/src/orcus_xml_main.cpp b/src/orcus_xml_main.cpp
+index 617dc658..a0feea12 100644
+--- a/src/orcus_xml_main.cpp
++++ b/src/orcus_xml_main.cpp
+@@ -22,13 +22,24 @@
+ #include <iostream>
+ #include <fstream>
+ #include <boost/program_options.hpp>
+-#include <boost/filesystem.hpp>
+ #include <mdds/sorted_string_map.hpp>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
++
+ using namespace orcus;
+ using namespace std;
+ namespace po = boost::program_options;
+-namespace fs = boost::filesystem;
+ 
+ namespace {
+ 
+diff --git a/src/orcus_yaml_main.cpp b/src/orcus_yaml_main.cpp
+index 09dc48bc..2ae75c92 100644
+--- a/src/orcus_yaml_main.cpp
++++ b/src/orcus_yaml_main.cpp
+@@ -15,13 +15,24 @@
+ #include <string>
+ 
+ #include <boost/program_options.hpp>
++
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ using namespace std;
+ using namespace orcus;
+ 
+ namespace po = boost::program_options;
+-namespace fs = boost::filesystem;
+ 
+ const char* help_program = "The FILE must specify a path to an existing file.";
+ const char* err_no_input_file = "No input file.";
+diff --git a/src/parser/Makefile.am b/src/parser/Makefile.am
+index c99d316c..5039dc53 100644
+--- a/src/parser/Makefile.am
++++ b/src/parser/Makefile.am
+@@ -6,6 +6,14 @@ AM_CPPFLAGS = \
+ 	$(BOOST_CPPFLAGS) \
+ 	-D__ORCUS_PSR_BUILDING_DLL
+ 
++if HAVE_FILESYSTEM
++AM_CPPFLAGS += "-DHAVE_FILESYSTEM=1"
++endif
++
++if HAVE_EXPERIMENTAL_FILESYSTEM
++AM_CPPFLAGS += "-DHAVE_EXPERIMENTAL_FILESYSTEM=1"
++endif
++
+ lib_LTLIBRARIES = liborcus-parser-@ORCUS_API_VERSION@.la
+ liborcus_parser_@ORCUS_API_VERSION@_la_SOURCES = \
+ 	win_stdint.h \
+@@ -39,14 +47,21 @@ liborcus_parser_@ORCUS_API_VERSION@_la_SOURCES = \
+ 
+ liborcus_parser_@ORCUS_API_VERSION@_la_LDFLAGS = \
+ 	-no-undefined \
+-	$(BOOST_SYSTEM_LDFLAGS) \
+-	$(BOOST_FILESYSTEM_LDFLAGS)
++	$(BOOST_SYSTEM_LDFLAGS)
+ 
+ liborcus_parser_@ORCUS_API_VERSION@_la_LIBADD = \
+ 	$(BOOST_SYSTEM_LIBS) \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(ZLIB_LIBS)
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++liborcus_parser_@ORCUS_API_VERSION@_la_LDFLAGS += -lstdc++fs
++else
++liborcus_parser_@ORCUS_API_VERSION@_la_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++liborcus_parser_@ORCUS_API_VERSION@_la_LIBADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ EXTRA_PROGRAMS = \
+ 	css-parser-test \
+ 	csv-parser-test \
+@@ -77,7 +92,10 @@ parser_test_string_pool_SOURCES = \
+ 	string_pool.cpp \
+ 	string_pool_test.cpp
+ 
+-parser_test_string_pool_LDADD = liborcus-parser-@ORCUS_API_VERSION@.la
++parser_test_string_pool_LDADD = \
++    liborcus-parser-@ORCUS_API_VERSION@.la \
++	$(BOOST_SYSTEM_LIBS)
++    
+ parser_test_string_pool_CPPFLAGS = $(AM_CPPFLAGS)
+ 
+ # parser-test-xml-namespace
+@@ -88,7 +106,9 @@ parser_test_xml_namespace_SOURCES = \
+ 
+ parser_test_xml_namespace_LDADD = \
+ 	liborcus-parser-@ORCUS_API_VERSION@.la \
+-	../test/liborcus-test.a
++	../test/liborcus-test.a \
++	$(BOOST_SYSTEM_LIBS)
++
+ parser_test_xml_namespace_CPPFLAGS = $(AM_CPPFLAGS)
+ 
+ # parser-test-xml-validation
+@@ -98,13 +118,20 @@ parser_test_xml_validation_SOURCES = \
+ 
+ parser_test_xml_validation_CPPFLAGS = $(AM_CPPFLAGS)
+ parser_test_xml_validation_LDFLAGS = \
+-	$(BOOST_SYSTEM_LDFLAGS) \
+-	$(BOOST_FILESYSTEM_LDFLAGS)
++	$(BOOST_SYSTEM_LDFLAGS)
+ parser_test_xml_validation_LDADD = \
+ 	liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	../test/liborcus-test.a \
+-	$(BOOST_SYSTEM_LIBS) \
+-	$(BOOST_FILESYSTEM_LIBS)
++	$(BOOST_SYSTEM_LIBS)
++
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++parser_test_xml_validation_LDFLAGS += -lstdc++fs
++else
++parser_test_xml_validation_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++parser_test_xml_validation_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
+ 
+ # parser-test-base64
+ 
+@@ -207,11 +234,20 @@ parser_test_zip_archive_CPPFLAGS = $(AM_CPPFLAGS)
+ parser_test_zip_archive_LDADD = \
+ 	liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	../test/liborcus-test.a \
+-	$(BOOST_SYSTEM_LIBS) \
+-	$(BOOST_FILESYSTEM_LIBS)
++	$(BOOST_SYSTEM_LIBS)
+ parser_test_zip_archive_LDFLAGS = \
+-	$(BOOST_SYSTEM_LDFLAGS) \
+-	$(BOOST_FILESYSTEM_LDFLAGS)
++	$(BOOST_SYSTEM_LDFLAGS)
++
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++parser_test_zip_archive_LDFLAGS += -lstdc++fs
++else
++parser_test_zip_archive_LDFLAGS += $(BOOST_FILESYSTEM_LDFLAGS)
++parser_test_zip_archive_LDADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
++
+ 
+ # parser-test-base
+ 
+diff --git a/src/parser/parser_test_xml_validation.cpp b/src/parser/parser_test_xml_validation.cpp
+index bf831224..aa602651 100644
+--- a/src/parser/parser_test_xml_validation.cpp
++++ b/src/parser/parser_test_xml_validation.cpp
+@@ -10,10 +10,20 @@
+ #include <orcus/stream.hpp>
+ 
+ #include <iostream>
+-#include <boost/filesystem.hpp>
+ #include <boost/range/iterator_range.hpp>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
++#include <boost/filesystem.hpp>
+ namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ void test_valid()
+ {
+diff --git a/src/parser/stream.cpp b/src/parser/stream.cpp
+index 3964e4b5..593123ab 100644
+--- a/src/parser/stream.cpp
++++ b/src/parser/stream.cpp
+@@ -19,11 +19,22 @@
+ #include <codecvt>
+ #include <iostream>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
++
+ #include <boost/interprocess/file_mapping.hpp>
+ #include <boost/interprocess/mapped_region.hpp>
+ 
+-namespace fs = boost::filesystem;
+ namespace bip = boost::interprocess;
+ 
+ namespace orcus {
+diff --git a/src/parser/zip_archive_test.cpp b/src/parser/zip_archive_test.cpp
+index 5f6fea86..387507fe 100644
+--- a/src/parser/zip_archive_test.cpp
++++ b/src/parser/zip_archive_test.cpp
+@@ -13,7 +13,18 @@
+ #include <orcus/zip_archive_stream.hpp>
+ #include <orcus/zip_archive.hpp>
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ #define ASSERT_THROW(expr) \
+ try \
+@@ -26,7 +37,6 @@ catch (...) \
+ }
+ 
+ using namespace orcus;
+-namespace fs = boost::filesystem;
+ 
+ void test_zip_archive_stream(zip_archive_stream* const strm, const unsigned char* const data, std::size_t const length)
+ {
+diff --git a/src/spreadsheet/Makefile.am b/src/spreadsheet/Makefile.am
+index 17e731e6..8f1e0fb7 100644
+--- a/src/spreadsheet/Makefile.am
++++ b/src/spreadsheet/Makefile.am
+@@ -7,6 +7,14 @@ AM_CPPFLAGS = \
+ 
+ AM_CPPFLAGS += $(BOOST_CPPFLAGS) $(LIBIXION_CFLAGS)
+ 
++if HAVE_FILESYSTEM
++AM_CPPFLAGS += "-DHAVE_FILESYSTEM=1"
++endif
++
++if HAVE_EXPERIMENTAL_FILESYSTEM
++AM_CPPFLAGS += "-DHAVE_EXPERIMENTAL_FILESYSTEM=1"
++endif
++
+ COMMON_CPPFLAGS = $(AM_CPPFLAGS)
+ 
+ if HAVE_STATIC_LIB
+@@ -67,9 +75,16 @@ liborcus_spreadsheet_model_@ORCUS_API_VERSION@_la_LDFLAGS = -no-undefined
+ liborcus_spreadsheet_model_@ORCUS_API_VERSION@_la_LIBADD = \
+ 	$(LIBIXION_LIBS) \
+ 	$(BOOST_DATE_TIME_LIBS) \
+-	$(BOOST_FILESYSTEM_LIBS) \
+ 	$(BOOST_SYSTEM_LIBS) \
+ 	../parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	../liborcus/liborcus-@ORCUS_API_VERSION@.la
+ 
++if !HAVE_FILESYSTEM
++if HAVE_EXPERIMENTAL_FILESYSTEM
++liborcus_spreadsheet_model_@ORCUS_API_VERSION@_la_LIBADD += -lstdc++fs
++else
++liborcus_spreadsheet_model_@ORCUS_API_VERSION@_la_LIBADD += $(BOOST_FILESYSTEM_LIBS)
++endif
++endif
++
+ endif
+diff --git a/src/spreadsheet/debug_state_dumper.cpp b/src/spreadsheet/debug_state_dumper.cpp
+index 5d1d25b8..133bf7d2 100644
+--- a/src/spreadsheet/debug_state_dumper.cpp
++++ b/src/spreadsheet/debug_state_dumper.cpp
+@@ -14,8 +14,6 @@
+ #include <fstream>
+ #include <algorithm>
+ 
+-namespace fs = boost::filesystem;
+-
+ namespace orcus { namespace spreadsheet { namespace detail {
+ 
+ doc_debug_state_dumper::doc_debug_state_dumper(const document_impl& doc) : m_doc(doc)
+diff --git a/src/spreadsheet/debug_state_dumper.hpp b/src/spreadsheet/debug_state_dumper.hpp
+index 93af45cf..d755a492 100644
+--- a/src/spreadsheet/debug_state_dumper.hpp
++++ b/src/spreadsheet/debug_state_dumper.hpp
+@@ -7,7 +7,19 @@
+ 
+ #pragma once
+ 
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
++
+ #include <string_view>
+ 
+ namespace orcus { namespace spreadsheet {
+@@ -26,11 +38,11 @@ class doc_debug_state_dumper
+ public:
+     doc_debug_state_dumper(const document_impl& doc);
+ 
+-    void dump(const boost::filesystem::path& outdir) const;
++    void dump(const fs::path& outdir) const;
+ 
+ private:
+-    void dump_properties(const boost::filesystem::path& outdir) const;
+-    void dump_styles(const boost::filesystem::path& outdir) const;
++    void dump_properties(const fs::path& outdir) const;
++    void dump_styles(const fs::path& outdir) const;
+ };
+ 
+ class sheet_debug_state_dumper
+@@ -41,13 +53,13 @@ class sheet_debug_state_dumper
+ public:
+     sheet_debug_state_dumper(const sheet_impl& sheet, std::string_view sheet_name);
+ 
+-    void dump(const boost::filesystem::path& outdir) const;
++    void dump(const fs::path& outdir) const;
+ 
+ private:
+-    void dump_cell_values(const boost::filesystem::path& outdir) const;
+-    void dump_cell_formats(const boost::filesystem::path& outdir) const;
+-    void dump_column_formats(const boost::filesystem::path& outdir) const;
+-    void dump_row_formats(const boost::filesystem::path& outdir) const;
++    void dump_cell_values(const fs::path& outdir) const;
++    void dump_cell_formats(const fs::path& outdir) const;
++    void dump_column_formats(const fs::path& outdir) const;
++    void dump_row_formats(const fs::path& outdir) const;
+ };
+ 
+ }}}
+diff --git a/src/spreadsheet/document.cpp b/src/spreadsheet/document.cpp
+index 56739248..92c16081 100644
+--- a/src/spreadsheet/document.cpp
++++ b/src/spreadsheet/document.cpp
+@@ -15,7 +15,6 @@
+ #include <algorithm>
+ 
+ using namespace std;
+-namespace fs = boost::filesystem;
+ 
+ namespace orcus { namespace spreadsheet {
+ 
+diff --git a/src/spreadsheet/document_impl.hpp b/src/spreadsheet/document_impl.hpp
+index 3541e9eb..44ee91f8 100644
+--- a/src/spreadsheet/document_impl.hpp
++++ b/src/spreadsheet/document_impl.hpp
+@@ -17,7 +17,6 @@
+ #include <orcus/string_pool.hpp>
+ #include <orcus/types.hpp>
+ 
+-#include <boost/filesystem.hpp>
+ #include <ixion/config.hpp>
+ #include <ixion/formula.hpp>
+ #include <ixion/formula_name_resolver.hpp>
+diff --git a/src/spreadsheet/sheet.cpp b/src/spreadsheet/sheet.cpp
+index 8dbd9ae8..47921a97 100644
+--- a/src/spreadsheet/sheet.cpp
++++ b/src/spreadsheet/sheet.cpp
+@@ -29,12 +29,22 @@
+ 
+ #include <boost/date_time/posix_time/posix_time.hpp>
+ #include <boost/date_time/gregorian/greg_date.hpp>
++#ifdef HAVE_FILESYSTEM
++#include <filesystem>
++namespace fs = std::filesystem;
++#else
++#ifdef HAVE_EXPERIMENTAL_FILESYSTEM
++#include <experimental/filesystem>
++namespace fs = std::experimental::filesystem;
++#else
+ #include <boost/filesystem.hpp>
++namespace fs = boost::filesystem;
++#endif
++#endif
+ 
+ #define ORCUS_DEBUG_SHEET 0
+ 
+ using namespace std;
+-namespace fs = boost::filesystem;
+ namespace gregorian = boost::gregorian;
+ namespace posix_time = boost::posix_time;
+ 
+-- 
+2.41.0
+

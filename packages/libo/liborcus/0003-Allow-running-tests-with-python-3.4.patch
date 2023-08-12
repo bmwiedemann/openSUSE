@@ -1,32 +1,19 @@
---- liborcus-0.18.1/src/liborcus/format_detection_test.cpp	2023-08-10 18:52:04.943042344 +0200
-+++ liborcus-0.18.1/src/liborcus/format_detection_test.cpp	2023-08-10 22:30:15.386832157 +0200
-@@ -48,8 +48,9 @@
-         // Bail out silently.
-         return;
- 
--    for (const fs::path& p : fs::directory_iterator(root_dir))
-+    for (fs::directory_iterator itr(root_dir); itr!=fs::directory_iterator(); ++itr)
-     {
-+        const fs::path& p = itr->path();
-         orcus::file_content content(p.string());
-         assert(!content.empty());
- 
---- liborcus-0.18.1/src/liborcus/json_structure_tree_test.cpp	2023-08-10 18:52:04.949709056 +0200
-+++ liborcus-0.18.1/src/liborcus/json_structure_tree_test.cpp	2023-08-10 22:30:07.156775419 +0200
-@@ -39,8 +39,9 @@
- {
-     fs::path base_dir(SRCDIR"/test/json-structure/no-value-nodes");
- 
--    for (const fs::path& p : fs::directory_iterator(base_dir))
-+    for (fs::directory_iterator itr(base_dir); itr!=fs::directory_iterator(); ++itr)
-     {
-+        const fs::path& p = itr->path();
-         if (!fs::is_regular_file(p))
-             continue;
- 
---- liborcus-0.18.1/test/python/file_load_common.py	2023-08-10 18:52:04.896375355 +0200
-+++ liborcus-0.18.1/test/python/file_load_common.py	2023-08-10 23:17:23.482954627 +0200
-@@ -202,14 +202,14 @@
+From a083266479ac7b3023cb4dd2d19e27e5ac4b565c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Fri, 11 Aug 2023 12:25:10 +0200
+Subject: [PATCH 3/3] Allow running tests with python 3.4
+
+---
+ test/python/file_load_common.py | 6 +++---
+ test/python/test_module.py      | 4 ++--
+ test/python/test_ods.py         | 4 ++--
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/test/python/file_load_common.py b/test/python/file_load_common.py
+index 55874050..934ce2a8 100644
+--- a/test/python/file_load_common.py
++++ b/test/python/file_load_common.py
+@@ -202,14 +202,14 @@ def run_test_dir(self, test_dir, doc_loader):
      """
  
      print("test directory: {}".format(test_dir))
@@ -44,9 +31,11 @@
              break
  
      print("input file: {}".format(input_file))
---- liborcus-0.18.1/test/python/test_module.py	2023-08-10 18:52:04.896375355 +0200
-+++ liborcus-0.18.1/test/python/test_module.py	2023-08-10 23:02:29.916816068 +0200
-@@ -20,12 +20,12 @@
+diff --git a/test/python/test_module.py b/test/python/test_module.py
+index 2d6ca4be..ccfbb6c6 100755
+--- a/test/python/test_module.py
++++ b/test/python/test_module.py
+@@ -20,12 +20,12 @@ class ModuleTest(unittest.TestCase):
      @classmethod
      def setUpClass(cls):
          top_builddir = Path(os.environ["BUILDDIR"])
@@ -61,9 +50,11 @@
          self.assertEqual(expected, s)
  
      def test_detect_format(self):
---- liborcus-0.18.1/test/python/test_ods.py	2023-08-10 18:52:04.896375355 +0200
-+++ liborcus-0.18.1/test/python/test_ods.py	2023-08-10 23:03:08.390414252 +0200
-@@ -31,7 +31,7 @@
+diff --git a/test/python/test_ods.py b/test/python/test_ods.py
+index e4c0dc97..29ab10a8 100755
+--- a/test/python/test_ods.py
++++ b/test/python/test_ods.py
+@@ -31,7 +31,7 @@ class TestCase(unittest.TestCase):
  
      def test_formula_tokens_1(self):
          filepath = self.basedir / "formula-1" / "input.ods"
@@ -72,7 +63,7 @@
              doc = ods.read(f, recalc=False)
  
          self.assertEqual(len(doc.sheets), 1)
-@@ -82,7 +82,7 @@
+@@ -82,7 +82,7 @@ class TestCase(unittest.TestCase):
  
      def test_formula_tokens_2(self):
          filepath = self.basedir / "formula-2" / "input.ods"
@@ -81,3 +72,6 @@
              doc = ods.read(f, recalc=False)
  
          self.assertEqual(len(doc.sheets), 1)
+-- 
+2.41.0
+

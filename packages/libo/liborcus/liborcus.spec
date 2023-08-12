@@ -26,8 +26,9 @@ Summary:        Spreadsheet file processing library
 License:        MPL-2.0
 URL:            https://gitlab.com/orcus/orcus/
 Source:         http://kohei.us/files/orcus/src/%{name}-%{version}.tar.xz
-Patch0:         liborcus-filesystem.patch
-Patch1:         liborcus-tests.patch
+Patch0:         0001-Possibility-to-build-against-a-host-of-filesystem-im.patch
+Patch1:         0002-Allow-using-older-boost-filesystem.patch
+Patch2:         0003-Allow-running-tests-with-python-3.4.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  coreutils
@@ -43,7 +44,6 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  gcc >= 7
 BuildRequires:  gcc-c++ >= 7
 BuildRequires:  libboost_date_time-devel
-BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
@@ -91,11 +91,11 @@ Python 3 bindings for %{name}.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %global optflags %{optflags} -fexcess-precision=fast
-libtoolize --force --copy
-autoreconf -fi
+NOCONFIGURE=indeed ./autogen.sh
 %if 0%{?suse_version} < 1500
 export CC=gcc-7
 export CXX=g++-7

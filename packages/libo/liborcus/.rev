@@ -401,4 +401,12 @@
     <comment>Clean up, fix tests on all platforms, allow building with different filesystem implementations</comment>
     <requestid>1103405</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>42ca8da94bdd32f63767124813dcd42a</srcmd5>
+    <version>0.18.1</version>
+    <time>1691845561</time>
+    <user>dimstar_suse</user>
+    <comment>Rework to work with -no-undefined with different linkers and compilers and different filesystem</comment>
+    <requestid>1103506</requestid>
+  </revision>
 </revisionlist>
