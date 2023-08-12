@@ -75,4 +75,15 @@
     <comment></comment>
     <requestid>1043973</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>664e6eb82701906a07aaa7f1ad2aea35</srcmd5>
+    <version>0.3.2</version>
+    <time>1691845548</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1103294 from iznogood
+
+- Update to version 0.3.2:
+  + No upstream changes provided.</comment>
+    <requestid>1103421</requestid>
+  </revision>
 </revisionlist>
