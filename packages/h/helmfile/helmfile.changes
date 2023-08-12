@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Aug 12 09:05:31 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.155.1:
+  What's Changed
+  * feat: add --insecure-skip-tls-verify support for helmfile
+    template by @yxxhero in #916
+  * feat: Allow to skip diff output on release base by @jkroepke
+    in #906
+  * build(deps): bump golang.org/x/term from 0.9.0 to 0.10.0 by
+    @dependabot in #918
+  * build(deps): bump helm.sh/helm/v3 from 3.12.1 to 3.12.2 by
+    @dependabot in #930
+  * build(deps): bump github.com/docker/docker from
+    23.0.1+incompatible to 23.0.3+incompatible by @dependabot in #932
+  * bump helm to v3.12.2 by @yxxhero in #933
+  * build(deps): bump k8s.io/apimachinery from 0.27.3 to 0.27.4
+    by @dependabot in #936
+  * build(deps): bump github.com/helmfile/vals from 0.25.0 to
+    0.26.0 by @dependabot in #938
+  * Cancel rendering helmfile parts once the missing env is
+    detected in the previous part by @mumoshu in #941
+  * fix typo by @lucasfcnunes in #940
+  * fix: oci pull directory conflict when download twice by
+    @yxxhero in #914
+  * feat: add insecure support for oci repo by @yxxhero in #921
+  * add bug to exempt labels on git stale.yml by @lucasfcnunes
+    in #942
+  * build(deps): bump github.com/helmfile/vals from 0.26.0 to
+    0.26.1 by @dependabot in #944
+
+-------------------------------------------------------------------
 Thu Jul  6 06:43:51 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.155.0:
