@@ -1,7 +1,7 @@
 #
 # spec file for package signon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,17 @@
 
 %define _soname 1
 %define _tarbasename signond
-%define _version VERSION_8.60
+%define _version VERSION_8.61
 Name:           signon
-Version:        8.60
+Version:        8.61
 Release:        0
 Summary:        Single Sign On Framework
 License:        LGPL-2.0-only
 Group:          System/Libraries
 URL:            https://gitlab.com/accounts-sso/signond
 Source:         https://gitlab.com/accounts-sso/%{_tarbasename}/-/archive/VERSION_%{version}/%{_tarbasename}-%{_version}.tar.bz2
-Source99:       baselibs.conf
+# PATCH-FIX-OPENSUSE
 Patch0:         0001_Multilib.patch
-# PATCH-FIX-UPSTREAM https://gitlab.com/accounts-sso/signond/-/merge_requests/27
-Patch1:         0001-Don-t-use-fno-rtti.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  graphviz
@@ -172,12 +170,9 @@ find %{buildroot} -type f -name '*tests*' -delete
 
 %fdupes -s %{buildroot}
 
-%post -n libsignon-qt5-%{_soname} -p /sbin/ldconfig
-%postun -n libsignon-qt5-%{_soname} -p /sbin/ldconfig
-%post -n signond-libs -p /sbin/ldconfig
-%postun -n signond-libs -p /sbin/ldconfig
-%post -n signon-plugins -p /sbin/ldconfig
-%postun -n signon-plugins -p /sbin/ldconfig
+%ldconfig_scriptlets -n libsignon-qt5-%{_soname}
+%ldconfig_scriptlets -n signond-libs
+%ldconfig_scriptlets -n signon-plugins
 
 %files -n libsignon-qt5-%{_soname}
 %{_libdir}/libsignon-qt5.so.*

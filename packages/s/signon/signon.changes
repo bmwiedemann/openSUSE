@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Aug 10 15:24:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.61
+  * Port away from QHash::unite
+  * Don't emit QObject::destroyed() within Identity::destroy()
+  * Build: remove unnecessary qmake options
+  * Don't use -fno-rtti
+  * Run test script with Busybox compatible mktemp
+  * Fix typos in logs
+  * Tests: add missing parameter to mkdir command
+  * Fix deprecation warning
+  * signond: register the adaptors in SignonDaemonAdaptor
+  * signond: get appId of peer in SignonIdentityAdapter
+  * signond: add Error class
+  * signond: add ErrorAdaptor class
+  * signond: use ErrorAdaptor in SignonSessionCore
+  * signond: reduce usage of D-Bus in SignonIdentity class
+  * signond: introduce PeerContext class
+  * signond: reduce D-Bus usage in SignonAuthSession
+  * signond: register the adaptors, not the object itself
+  * signond: destroy adapter when Identity gets unregistered
+  * Fix Unicode $HOME dir
+- Drop patch, merged upstream:
+  * 0001-Don-t-use-fno-rtti.patch
+- Drop the unneeded baselibs.conf
+
+-------------------------------------------------------------------
 Thu Jun 18 08:12:03 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix crash (boo#1172904):
