@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          115
-%define mainver        %major.0.3
-%define orig_version   115.0.3
+%define major          116
+%define mainver        %major.0.2
+%define orig_version   116.0.2
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -58,7 +58,7 @@ ExclusiveArch:  aarch64 ppc64le x86_64 s390x
 %ifarch %ix86
 ExclusiveArch:  i586 i686
 BuildArch:      i686
-%{expand:%%global optflags %(echo "%optflags"|sed -e s/i586/i686/) -march=i686 -mtune=generic -msse2}
+%{expand:%%global optflags %(echo "%optflags"|sed -e s/i586/i686/) -Os -march=i686 -mtune=generic -msse2}
 %endif
 %endif
 %{expand:%%global optflags %(echo "%optflags"|sed -e s/-flto=auto//) }
@@ -114,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.90
+BuildRequires:  mozilla-nss-devel >= 3.91
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -219,7 +219,6 @@ Patch8:         mozilla-reduce-rust-debuginfo.patch
 Patch10:        mozilla-bmo1504834-part1.patch
 Patch11:        mozilla-bmo1504834-part3.patch
 Patch12:        mozilla-bmo1512162.patch
-Patch13:        mozilla-fix-top-level-asm.patch
 Patch14:        mozilla-bmo849632.patch
 Patch15:        mozilla-bmo998749.patch
 Patch17:        mozilla-libavcodec58_91.patch
@@ -228,8 +227,7 @@ Patch19:        mozilla-bmo531915.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
 Patch22:        mozilla-partial-revert-1768632.patch
-Patch23:        mozilla-bmo1775202.patch
-Patch24:        mozilla-rust-disable-future-incompat.patch
+Patch23:        mozilla-rust-disable-future-incompat.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -248,7 +246,7 @@ Obsoletes:      tracker-miner-firefox < 0.15
 %if 0%{?devpkg} == 0
 Obsoletes:      %{name}-devel < %{version}
 %endif
-ExcludeArch:    armv6l armv6hl ppc ppc64 ppc64le
+ExcludeArch:    armv6l armv6hl ppc ppc64
 
 %description
 Mozilla Firefox is a standalone web browser, designed for standards
@@ -382,26 +380,20 @@ export CXX=g++-12
 %if 0%{?clang_build} == 0
 export CC=gcc
 export CXX=g++
-%if 0%{?gcc_version:%{gcc_version}} >= 12
-export CFLAGS="\$CFLAGS -fimplicit-constexpr"
-%endif
 %endif
 %endif
 %ifarch %arm %ix86
 # Limit RAM usage during link
-export LDFLAGS="\$LDFLAGS -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+export LDFLAGS="\$LDFLAGS -Wl,--no-keep-memory -Wl,--reduce-memory-overheads -Wl,--no-map-whole-files -Wl,--hash-size=31"
 # A lie to prevent -Wl,--gc-sections being set which requires more memory than 32bit can offer
 export GC_SECTIONS_BREAKS_DEBUG_RANGES=yes
 %endif
 export LDFLAGS="\$LDFLAGS -fPIC -Wl,-z,relro,-z,now"
 %ifarch ppc64 ppc64le
-%if 0%{?clang_build} == 0
-#export CFLAGS="\$CFLAGS -mminimal-toc"
-%endif
 %endif
 %ifarch %ix86
-# Not enough memory on 32-bit systems, reduce debug info.
-export CFLAGS="\$CFLAGS -g1"
+# Not enough memory on 32-bit systems, remove debug info.
+export CFLAGS="\$CFLAGS -g0"
 %endif
 export CXXFLAGS="\$CFLAGS"
 export MOZCONFIG=$RPM_BUILD_DIR/mozconfig
@@ -434,15 +426,13 @@ ac_add_options --enable-default-toolkit=cairo-gtk3
 %ifarch %ix86 %arm
 ac_add_options --disable-debug-symbols
 %else
-ac_add_options --enable-debug-symbols=-g1
+ac_add_options --enable-debug-symbols=-g0
 %endif
 ac_add_options --disable-install-strip
-# building with elf-hack started to fail everywhere with FF73
-#%%if 0%%{?suse_version} > 1549
-%ifarch %arm %ix86 x86_64
-ac_add_options --disable-elf-hack
+%ifarch %ix86 %arm
+# OOM on 32-bit when ld passed -Wl,-z,pack-relative-relocs
+ac_add_options --enable-elf-hack
 %endif
-#%%endif
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 %if 0%{useccache} != 0
@@ -493,7 +483,7 @@ ac_add_options --enable-optimize="-O1"
 %ifarch x86_64
 # LTO needs newer toolchain stack only (at least GCC 8.2.1 (r268506)
 %if 0%{?suse_version} > 1500
-#ac_add_options --enable-lto
+ac_add_options --enable-lto
 %if 0%{?do_profiling}
 ac_add_options MOZ_PGO=1
 %endif
@@ -727,7 +717,12 @@ exit 0
 %{progdir}/*.so
 %{progdir}/glxtest
 %if 0%{wayland_supported}
+%ifarch %{arm} aarch64 %{ix86} x86_64
 %{progdir}/vaapitest
+%endif
+%endif
+%ifarch aarch64 riscv64 %arm
+%{progdir}/v4l2test
 %endif
 %{progdir}/omni.ja
 %{progdir}/fonts/

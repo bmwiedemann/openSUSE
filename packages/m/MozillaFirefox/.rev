@@ -6311,4 +6311,41 @@
     <comment></comment>
     <requestid>1101322</requestid>
   </revision>
+  <revision rev="406" vrev="1">
+    <srcmd5>894bc03aaa03fabefea269cf1bbf95ba</srcmd5>
+    <version>116.0.2</version>
+    <time>1691845574</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 116.0.2
+  * fixes for other platforms
+
+- Fix OOM when linking on 32-bit
+
+- Mozilla Firefox 116.0.1
+  * fixes for other platforms
+
+- ship vaapitest binary for supported archs
+
+- re-enable ppc64le
+- ship v4l2test binary for supported archs
+- drop obsolete mozilla-bmo1775202.patch
+
+- Mozilla Firefox 116.0
+  * https://www.mozilla.org/en-US/firefox/116.0/releasenotes/
+  MFSA 2023-29 (bsc#1213746)
+  * CVE-2023-4045 (bmo#1833876)
+    Offscreen Canvas could have bypassed cross-origin restrictions
+  * CVE-2023-4046 (bmo#1837686)
+    Incorrect value used during WASM compilation
+  * CVE-2023-4047 (bmo#1839073)
+    Potential permissions request bypass via clickjacking
+  * CVE-2023-4048 (bmo#1841368)
+    Crash in DOMParser due to out-of-memory conditions
+  * CVE-2023-4049 (bmo#1842658)
+    Fix potential race conditions when releasing platform objects
+  * CVE-2023-4050 (bmo#1843038)
+    Stack buffer overflow in StorageManager
+  * CVE-2023-4051 (bmo#1821884)</comment>
+    <requestid>1103536</requestid>
+  </revision>
 </revisionlist>
