@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug 11 05:42:19 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 4.6.1:
+  * Bump to v4.6.1
+  * Release notes for v4.6.1
+  * Vendor buildah v1.31.2
+  * [4.6] vendor c/common v0.55.3
+  * [v4.6] Remove zstd:chunked reference
+  * [v4.6] bump golang.org/x/net to v0.13.0
+  * do not redefine gobuild for eln
+  * [CI:BUILD] RPM: define gobuild macro for rhel/centos stream
+  * [v4.6] [CI:BUILD] RPM: separate out gvproxy for copr and fedora >= 38
+  * System tests: add test tags
+  * API: kill: return 409 on invalid state
+  * Mention TimeoutStartSec in quadlet man page
+  * If quadlets have same name, only use first
+  * Bump to v4.6.1-dev
+
+-------------------------------------------------------------------
 Thu Aug  3 13:05:43 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Discard outdated README.SUSE.SLES
