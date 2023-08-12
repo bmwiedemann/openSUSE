@@ -170,6 +170,8 @@ Patch17:        nss-security-provider.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
+Patch21:        reproducible-javadoc-timestamp.patch
+#
 # OpenJDK specific patches
 #
 Patch200:       ppc_stack_overflow_fix.patch
@@ -412,6 +414,8 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch17 -p1
 
 %patch20 -p1
+
+%patch21 -p1
 
 %patch200 -p1
 

@@ -191,4 +191,12 @@
     <comment>July 2023 CPU</comment>
     <requestid>1100540</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>8b12d925a6345975b6c84abb2be0042a</srcmd5>
+    <version>17.0.8.0</version>
+    <time>1691845568</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103533</requestid>
+  </revision>
 </revisionlist>

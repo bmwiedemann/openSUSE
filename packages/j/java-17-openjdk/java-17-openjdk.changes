@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  4 15:49:22 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-javadoc-timestamp.patch
+    + use SOURCE_DATE_EPOCH in javadoc and make the javadoc
+      generation more reproducible
+
+-------------------------------------------------------------------
 Tue Jul 25 06:21:18 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-17.0.8+7 (July 2023 CPU)
