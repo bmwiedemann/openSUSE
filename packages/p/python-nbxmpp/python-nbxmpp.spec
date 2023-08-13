@@ -24,7 +24,7 @@
 %endif
 %define _name   nbxmpp
 Name:           python-nbxmpp
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        XMPP library by Gajim team
 License:        GPL-3.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module precis-i18n}
+BuildRequires:  %{python_module sqlite3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  typelib(Soup) = 3.0
 Recommends:     python-gssapi

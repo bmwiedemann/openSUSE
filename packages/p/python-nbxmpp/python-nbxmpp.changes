@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug  7 23:17:29 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.3.2:
+  * SecurityLabels: Add get_label_hash().
+  * JID: Add sqlite3 adapter magic method.
+  * MessageProperties: Add origin_id attribute.
+  * MessageProperties: Add remote_jid attribute.
+  * Client: Return only copy of ignored errors.
+  * CommonError: Add "by" attribute.
+  * Moderation: Parse more data.
+  * HTTP: Add set_accept_certificate().
+
+-------------------------------------------------------------------
 Sun May 28 21:40:08 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.3.1:
