@@ -272,4 +272,18 @@
 </comment>
     <requestid>1103080</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c82d6eff42b20961090459087c448b7b</srcmd5>
+    <version>20230614b</version>
+    <time>1691947080</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 20230614b:
+ - scamper:
+  * fix handling of EPOLLHUP on client disconnection -- Linux-specific
+    (scamper -U /path/to/socket)
+ - libscamperctrl:
+  * fix handling of disconnected instances
+</comment>
+    <requestid>1103654</requestid>
+  </revision>
 </revisionlist>

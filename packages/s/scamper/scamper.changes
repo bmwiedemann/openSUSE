@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 13 06:05:08 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20230614b:
+ - scamper:
+  * fix handling of EPOLLHUP on client disconnection -- Linux-specific
+    (scamper -U /path/to/socket)
+ - libscamperctrl:
+  * fix handling of disconnected instances
+
+-------------------------------------------------------------------
 Wed Aug  9 05:58:57 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20230614a
