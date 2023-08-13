@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 13 13:24:32 CEST 2023 - tumic@cbox.cz
+
+- Update to version 13.6
+  * Fixed Garmin GPI parser rejecting some valid files.
+  * Improved Mapsforge and Garmin IMG maps rendering.
+  * Added option to suppress file open errors.
+
+-------------------------------------------------------------------
 Sun Jul 30 11:40:20 CEST 2023 - tumic@cbox.cz
 
 - Update to version 13.5

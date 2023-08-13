@@ -1,3 +1,11 @@
+gpxsee (13.6) stable; urgency=low
+
+  * Fixed Garmin GPI parser rejecting some valid files.
+  * Improved Mapsforge and Garmin IMG maps rendering.
+  * Added option to suppress file open errors.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 13 Aug 2023 13:31:04 +0200
+
 gpxsee (13.5) stable; urgency=low
 
   * Added graph pinch zooming.
