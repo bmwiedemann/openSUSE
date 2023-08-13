@@ -18,17 +18,16 @@
 
 %define skip_python36 1
 Name:           python-pygame
-Version:        2.1.3
+Version:        2.5.0
 Release:        0
 Summary:        A Python Module for Interfacing with the SDL Multimedia Library
 License:        LGPL-2.1-or-later
 URL:            https://github.com/pygame/pygame
 Source0:        https://files.pythonhosted.org/packages/source/p/pygame/pygame-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM adjust-surface-mask.patch gh#pygame/pygame#3577
-Patch0:         adjust-surface-mask.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  bitstream-vera-fonts
 BuildRequires:  fdupes
 BuildRequires:  fontconfig
@@ -53,7 +52,6 @@ BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(sdl2)
-BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11)
 Requires:       fontconfig
 Requires:       python-numpy
@@ -102,11 +100,11 @@ chmod a-x docs/licenses/LICENSE.sdl_gfx.txt
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export PORTMIDI_INC_PORTTIME=1
-%python_build
+%pyproject_wheel
 
 %install
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_install
+%pyproject_install
 %{python_expand pushd %{buildroot}%{$python_sitearch}
 sed -i "s|^#!.*env python.*$|#!%{_bindir}/$python|" pygame/tests/test_utils/png.py
 chmod a+x pygame/tests/test_utils/png.py
