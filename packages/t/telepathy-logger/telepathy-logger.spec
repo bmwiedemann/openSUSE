@@ -1,7 +1,7 @@
 #
 # spec file for package telepathy-logger
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.28
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(telepathy-glib) >= 0.19.2
-%glib2_gsettings_schema_requires
 
 %description
 tp-logger is a headless Observer client that logs information received by the
@@ -51,6 +50,23 @@ tp-logger features a Telepathy-style D-Bus API to expose logs and interesting
 information related to logging (most frequent contacts, etc.). It also provides
 a GLib-compatible client API for making bulk log requests (e.g. for display
 logs in applications without having to provide lots of information over D-Bus).
+
+%package schema
+Summary:        Required schema for the Telepathy Framework Centralized Logging
+Group:          System/Libraries
+BuildArch:      noarch
+
+%description schema
+tp-logger is a headless Observer client that logs information received by the
+Telepathy framework. It features pluggable backends to log different sorts of
+messages, in different formats.
+
+tp-logger features a Telepathy-style D-Bus API to expose logs and interesting
+information related to logging (most frequent contacts, etc.). It also provides
+a GLib-compatible client API for making bulk log requests (e.g. for display
+logs in applications without having to provide lots of information over D-Bus).
+
+This package provides required GSettings schemas for the tp-logger library.
 
 %package devel
 Summary:        Development files for the Telepathy Framework Centralized Logging
@@ -72,6 +88,7 @@ logs in applications without having to provide lots of information over D-Bus).
 %package -n libtelepathy-logger3
 Summary:        Centralized Logging for the Telepathy Framework
 Group:          System/Libraries
+Requires:       telepathy-logger-schema >= %{version}
 
 %description -n libtelepathy-logger3
 tp-logger is a headless Observer client that logs information received by the
@@ -135,7 +152,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libexecdir}/telepathy-logger
 %{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.Logger.service
 %{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Logger.service
-%{_datadir}/glib-2.0/schemas/org.freedesktop.Telepathy.Logger.gschema.xml
 %dir %{_datadir}/telepathy
 %dir %{_datadir}/telepathy/clients
 %{_datadir}/telepathy/clients/Logger.client
@@ -148,6 +164,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libtpl-extensions3
 %{_libdir}/libtpl-extensions.so.*
+
+%files schema
+%{_datadir}/glib-2.0/schemas/org.freedesktop.Telepathy.Logger.gschema.xml
 
 %files devel
 %{_includedir}/telepathy-logger-0.2/

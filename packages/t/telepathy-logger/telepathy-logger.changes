@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 10 11:12:26 UTC 2023 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Split the gsettings schema to a separate package
+  + The telepathy-logger library has an hard dependency on the schema, and if
+    it's missing (before this change it has been part of the telepathy-logger
+    daemon) it will cause the loading application to crash.
+  + The library does now require the schema package
+- Drop dangling %glib2_gsettings_schema_requires macro.
+
+-------------------------------------------------------------------
 Tue May 18 08:23:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Normalize patch tag line.
