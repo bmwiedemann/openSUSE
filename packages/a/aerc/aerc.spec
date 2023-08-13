@@ -31,6 +31,8 @@ BuildRequires:  go
 BuildRequires:  make
 BuildRequires:  notmuch-devel
 BuildRequires:  scdoc
+Recommends:     dante
+Recommends:     w3m
 
 %description
 aerc is an email client that runs in terminals.
