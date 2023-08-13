@@ -109,4 +109,14 @@ now with fixed empty debuginfo extraction</comment>
     <comment></comment>
     <requestid>1101065</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>9dfd3b385b65337e5ab665cb5d7bc00f</srcmd5>
+    <version>0.13.1</version>
+    <time>1691947057</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1102981 from ecsos
+
+- Fix build error in Leap, because it must not be two &quot;Patch:&quot; lines.</comment>
+    <requestid>1103601</requestid>
+  </revision>
 </revisionlist>

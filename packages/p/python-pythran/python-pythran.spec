@@ -55,7 +55,7 @@ Source99:       python-pythran-rpmlintrc
 #PATCH-FIX-UPSTREAM https://github.com/serge-sans-paille/pythran/commit/339fb5dcdf28f40311b5051925fd8a2c86286ac6 Introduce pythran/pythonic/include/types/longdouble.hpp et cie
 Patch:          numpy-longdouble.patch
 #PATCH-FIX-UPSTREAM https://github.com/serge-sans-paille/pythran/commit/a49dc44076f7068205c22f532975c50cc4c03958 Use npy_creal/npy_cimag from npy_math in from_python::convert
-Patch:          numpy-complex.patch
+Patch1:         numpy-complex.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
