@@ -25,7 +25,7 @@
 %bcond_with     tests
 %endif
 Name:           python-pyzmq
-Version:        25.0.2
+Version:        25.1.1
 Release:        0
 Summary:        Python bindings for 0MQ
 License:        BSD-3-Clause AND LGPL-3.0-or-later
@@ -47,9 +47,6 @@ Recommends:     python-simplejson
 Recommends:     python-tornado
 Suggests:       python-paramiko
 # SECTION Test requirements
-%if 0%{?suse_version} >= 1550
-BuildRequires:  %{python_module numpy}
-%endif
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-rerunfailures}
@@ -57,6 +54,9 @@ BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module simplejson}
 BuildRequires:  %{python_module tornado}
+%if 0%{?suse_version} >= 1550
+BuildRequires:  %{python_module numpy}
+%endif
 %if 0%{?suse_version} >= 1550
 # SLE/Leap <= 15.4 has incompatible gevent API # https://www.gevent.org/api/gevent.timeout.html#gevent.Timeout.close
 BuildRequires:  %{python_module gevent >= 1.3a1}

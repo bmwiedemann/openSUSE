@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Aug 10 21:58:06 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 25.1.1:
+  * Changes:
+    + Allow Cython 0.29.35 to build Python 3.12 wheels (no longer
+      require Cython 3)
+  * Bugs fixed:
+    + Fix builds on Solaris by including generated platform.hpp
+    + Cleanup futures in Socket.poll() that are cancelled and never
+      return
+    + Fix builds with -j when numpy is present in the build env
+
+-------------------------------------------------------------------
+Wed Jul 12 22:51:57 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 25.1.0:
+  * Enhancements:
+    + Include address in error message when bind/connect fail.
+  * Packaging changes:
+    + Fix inclusion of some test files in source distributions.
+    + Add Cython as a build-time dependency in build-system.requires
+      metadata, following current recommendations of the Cython
+      maintainers. We still ship generated Cython sources in source
+      distributions, so it is not a strict dependency for packagers
+      using --no-build-isolation, but pip will install Cython as part
+      of building pyzmq from source. This makes it more likely that
+      past pyzmq releases will install on future Python releases,
+      which often require an update to Cython but not pyzmq
+      itself. For Python 3.12, Cython >=3.0.0b3 is required.
+
+-------------------------------------------------------------------
 Fri May 12 11:09:45 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 25.0.2
