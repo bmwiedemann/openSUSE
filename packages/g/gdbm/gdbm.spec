@@ -1,7 +1,7 @@
 #
 # spec file for package gdbm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,9 @@ Source2:        baselibs.conf
 Source4:        %{name}.keyring
 # PATCH-FIX-SUSE: remove the build date from src/version.c
 Patch4:         gdbm-no-build-date.patch
+# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1209583
+# gdbm_load and gdbm_dump receive a SEGFAULT if run without arguments
+Patch5:         bsc1209583.patch
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  readline-devel
@@ -101,8 +104,7 @@ This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
 %prep
-%setup -q
-%patch4 -p1
+%autosetup -p1
 
 %build
 

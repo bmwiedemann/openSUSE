@@ -400,4 +400,12 @@ See the COPYING file (forwarded request 151441 from babelworx)</comment>
     <comment>gdbm 1.23 (forwarded request 951944 from AndreasStieger)</comment>
     <requestid>952034</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>98e7e49a12eb2163baf84e2480c33e82</srcmd5>
+    <version>1.23</version>
+    <time>1691947053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103594</requestid>
+  </revision>
 </revisionlist>
