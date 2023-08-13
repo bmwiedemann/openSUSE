@@ -28,6 +28,7 @@ Patch0:         no-python-binary.patch
 # Newer asyncio / python 3.11 support
 Patch1:         https://github.com/pexpect/pexpect/pull/715.patch
 Patch2:         https://github.com/pexpect/pexpect/pull/684.patch
+Patch3:         fix-fail-no-alias.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ptyprocess}
 BuildRequires:  %{python_module pytest}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 10 12:27:03 UTC 2023 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Fix failing test when no alias in bash is defined
+  * add fix-fail-no-alias.patch
+
+-------------------------------------------------------------------
 Mon Jul 31 07:03:10 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file

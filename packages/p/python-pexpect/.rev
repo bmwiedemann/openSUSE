@@ -361,4 +361,15 @@
 </comment>
     <requestid>1101543</requestid>
   </revision>
+  <revision rev="43" vrev="12">
+    <srcmd5>ebd4d68b63cbbe3748e5ebe13d744e1b</srcmd5>
+    <version>4.8.0</version>
+    <time>1691947058</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1103329 from buschmann23
+
+- Fix failing test when no alias in bash is defined
+    * add fix-fail-no-alias.patch</comment>
+    <requestid>1103603</requestid>
+  </revision>
 </revisionlist>
