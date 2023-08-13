@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Aug 10 22:00:16 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * removed fix-tests.patch, included upstream
+
+- update to version 7.2.7:
+  * Fix: reverted a change from 6.4.3 that helped Cython, but also
+    increased the size of data files when using dynamic contexts, as
+    described in the now-fixed issue 1586. The problem is now avoided
+    due to a recent change (issue 1538). Thanks to Anders Kaseorg and
+    David Szotten for persisting with problem reports and detailed
+    diagnoses.
+  * Wheels are now provided for CPython 3.12.
+
+- changes from version 7.2.6:
+  * Fix: the lcov command could raise an IndexError exception if a
+    file is translated to Python but then executed under its own
+    name. Jinja2 does this when rendering templates. Fixes issue 1553.
+  * Python 3.12 beta 1 now inlines comprehensions. Previously they
+    were compiled as invisible functions and coverage.py would warn
+    you if they weren’t completely executed. This no longer happens
+    under Python 3.12.
+  * Fix: the coverage debug sys command includes some environment
+    variables in its output. This could have included sensitive
+    data. Those values are now hidden with asterisks, closing issue
+    1628.
+
+-------------------------------------------------------------------
 Wed May 10 08:06:33 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-tests.patch gh#nedbat/coveragepy@3fdda7d017ff

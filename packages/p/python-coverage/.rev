@@ -629,4 +629,14 @@ __init__.py is the only file with a definitive license statement (BSD-2-Clause).
 </comment>
     <requestid>1086006</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>c40de5bdd0a89f3ff9e70718bf7a79c4</srcmd5>
+    <version>7.2.7</version>
+    <time>1691947061</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1103414 from apersaud
+
+update to latest version</comment>
+    <requestid>1103606</requestid>
+  </revision>
 </revisionlist>
