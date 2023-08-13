@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Aug 12 19:01:23 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.6.0:
+  * Variables and substitutions are implemented. See docs. #1473
+  * Configure timeout value with D2_TIMEOUT env var #1392
+  * Scale renders and disable fit to screen with --scale flag #1413
+  * null keyword can be used to un-declare. See docs #1446
+  * Develop multi-board diagrams in watch mode (links to layers/scenarios/steps work in --watch) #1503
+  * Glob patterns have been implemented. See docs. #1479
+  * Display version on CLI help invocation #1400
+  * Improved readability of connection labels when they overlap another connection #447
+  * Error message when shape is given a composite #1415
+  * Improved rendering and text measurement for code shapes #1425
+  * The autoformatter moves board declarations to the bottom of its scope #1424
+  * All font styles in sketch mode use a consistent font-family #1463
+  * Tooltip and link icons are positioned on shape border #1466
+  * Tooltip and link icons are always rendered over shapes #1467
+  * Boards with no objects are considered folders #1504
+  * DEBUG environment variable ignored if set incorrectly #1505
+  * Fixes edge case in compiler using dots in quotes #1401
+  * Fixes grid label font size for TALA #1412
+  * Fixes person shape label positioning with multiple or 3d #1478
+- _service tar_scm disable changesgenerate. Upstream uses small
+  incremental commits and the automated changelog is overly long.
+  Use GitHub release summary instead.
+
+-------------------------------------------------------------------
 Sat Jun 10 14:38:45 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.5.1:
