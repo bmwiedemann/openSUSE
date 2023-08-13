@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Aug 10 21:55:13 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * switched to pyproject.toml build
+
+- update to version 4.66.1:
+  * fix utils.envwrap types (#1493 <- #1491, #1320 <- #966, #1319)
+    e.g. cloudwatch & kubernetes workaround: export TQDM_POSITION=-1
+  * drop mentions of unsupported Python versions
+
+- changes from version 4.66.0:
+  * environment variables to override defaults (TQDM_*) (#1491 <-
+    #1061, #950 <- #614, #1318, #619, #612, #370) e.g. in CI jobs,
+    export TQDM_MININTERVAL=5 to avoid log spam add tests & docs for
+    tqdm.utils.envwrap
+  * fix & update CLI completion
+  * fix & update API docs
+  * minor code tidy: replace os.path => pathlib.Path
+  * fix docs image hosting
+  * release with CI bot account again (cli/cli#6680)
+
+- changes from version 4.65.2:
+  * exclude examples from distributed wheel (#1492)
+
+- changes from version 4.65.1:
+  * add Python 3.11 and drop Python 3.6 support (#1439, #1419, #502 <-
+    #720, #620)
+  * misc code & docs tidy
+  * fix & update CI workflows & tests
+
+-------------------------------------------------------------------
 Fri May  5 09:18:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.65.0:

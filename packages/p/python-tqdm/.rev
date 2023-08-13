@@ -458,4 +458,14 @@ See https://build.opensuse.org/package/live_build_log/openSUSE:Factory:Staging:N
   * fix &amp; update CI workflows &amp; tests</comment>
     <requestid>1085002</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>033abc324b48a8389905de00a73132c3</srcmd5>
+    <version>4.66.1</version>
+    <time>1691947059</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1103412 from apersaud
+
+update to latest version</comment>
+    <requestid>1103604</requestid>
+  </revision>
 </revisionlist>

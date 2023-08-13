@@ -26,24 +26,26 @@
 %define pkg_suffix %{nil}
 %bcond_with test
 %endif
-%{?sle15_python_module_pythons}
 Name:           python-tqdm%{pkg_suffix}
-Version:        4.65.0
+Version:        4.66.1
 Release:        0
 Summary:        An extensible progress meter
 License:        MIT AND MPL-2.0
 URL:            https://github.com/tqdm/tqdm
 Source:         https://files.pythonhosted.org/packages/source/t/tqdm/tqdm-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Enhances:       python-ipython
 BuildArch:      noarch
+%{?sle15_python_module_pythons}
 %if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module numpy if (python-base without python36-base)}
@@ -86,11 +88,11 @@ sed -i '1 s/^#!.*/# bash completion for tqdm       -*- shell-script -*-/' tqdm/c
 chmod a-x tqdm/completion.sh
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/tqdm
 install -m 644 -D tqdm/completion.sh %{buildroot}%{_datadir}/bash-completion/completions/tqdm
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
