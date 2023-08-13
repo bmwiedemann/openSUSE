@@ -7,4 +7,12 @@
     <comment>Indexing tool, works with ugrep</comment>
     <requestid>1103251</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0cc6d534c340ea12c5adb76310d02bf0</srcmd5>
+    <version>0.9.1</version>
+    <time>1691947073</time>
+    <user>dimstar_suse</user>
+    <comment>ugrep-indexer 0.9.1</comment>
+    <requestid>1103626</requestid>
+  </revision>
 </revisionlist>
