@@ -1,7 +1,7 @@
 #
-# spec file for package sc-im
+# spec file for package lf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           lf
-Version:        30
+Version:        30+dd82949
 Release:        0
 Summary:        Terminal file manager (with sixel support)
 License:        MIT
 Group:          Productivity/File utilities
-Url:            https://github.com/horriblename/lf
+URL:            https://github.com/gokcehan/lf
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
@@ -72,13 +72,13 @@ go build -v -buildmode=pie -ldflags="-s -w \
 %install
 install -Dm755 -t "%{buildroot}%{_bindir}" lf
 install -Dm644 -t "%{buildroot}%{_mandir}/man1" lf.1
-install -Dm644 -t "%{buildroot}/%{_docdir}/%{name}" README.md etc/lfrc.example
-install -Dm644 -t "%{buildroot}/%{_datadir}/applications" lf.desktop
-install -Dm644 -t "%{buildroot}/%{_datadir}/bash-completion/completions/lf" etc/lf.bash 
-install -Dm644 -t "%{buildroot}/%{_datadir}/fish/vendor_functions.d" etc/lfcd.fish
-install -Dm644 -t "%{buildroot}/%{_datadir}/fish/vendor_completions.d/lf.fish" etc/lf.fish
-install -Dm644 -t "%{buildroot}/%{_datadir}/zsh/site-functions/_lf" etc/lf.zsh 
-install -Dm644 -t "%{buildroot}/%{_licensedir}/lf" LICENSE
+install -Dm644 -t "%{buildroot}%{_docdir}/%{name}" README.md etc/lfrc.example
+install -Dm644 -t "%{buildroot}%{_datadir}/applications" lf.desktop
+install -Dm644 -t "%{buildroot}%{_datadir}/bash-completion/completions/lf" etc/lf.bash
+install -Dm644 -t "%{buildroot}%{_datadir}/fish/vendor_functions.d" etc/lfcd.fish
+install -Dm644 -t "%{buildroot}%{_datadir}/fish/vendor_completions.d/lf.fish" etc/lf.fish
+install -Dm644 -t "%{buildroot}%{_datadir}/zsh/site-functions/_lf" etc/lf.zsh
+install -Dm644 -t "%{buildroot}%{_licensedir}/lf" LICENSE
 
 %files
 %doc README.md lfrc.example

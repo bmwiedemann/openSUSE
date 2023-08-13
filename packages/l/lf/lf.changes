@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 13 09:00:51 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Switch upstream repo as upstream is shipping sixel now
+- Specfile cleanup
+- Update to version 30+dd82949:
+  * Sixel preview (#1211)
+  * Fix cursor location when printing statline (#1348)
+  * Remove environment exports from preview thread (#1354)
+  * Clean image preview on `set preview!` (#1350)
+  * Support optional fields for `statfmt` option (#1337)
+  * Call `load` after shell-async commands (#1345)
+
+-------------------------------------------------------------------
 Mon May 29 00:34:07 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 30:
