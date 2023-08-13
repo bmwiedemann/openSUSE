@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Aug 12 18:04:49 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 1.10.1:
+  * Add test for accepting GODEBUG output
+  * Quote test names before they are used within the regex to rerun
+  * move TEAMCITY_VERSION version checkout outside of CI check
+  * Don't treat debug messages as errors
+  * Add support for zOS
+  * update fixture
+  * fix lint
+  * extract TEAMCITY_VERSION check because they don't set CI
+  * Detect CI environments by name
+  * Revert "Enable color support by default on Drone CI"
+  * Enable color support by default on Drone CI
+  * Update README.md
+  * Fix coverage detection for go1.20
+  * ci: update goreleaser 1.7.0 to 1.17.0 for windows/arm64
+  * Add prometheus to readme links
+  * Add list of projects that use gotestsum
+
+-------------------------------------------------------------------
 Thu Jun 08 04:08:55 UTC 2023 - jkowalczyk@suse.com
 
 - Initial package version 1.10.0:
