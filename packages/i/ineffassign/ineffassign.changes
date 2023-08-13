@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 12 23:32:56 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.0.0+git20230610.0e73809:
+  * A function is not deferred until after it and its args have been evaluated.
+  * Update issue templates
+  * Check length of builder.defers as maybePanic may be called outside of a function scope.
+  * Do not mark named function results as used if an operation might panic but will not be recovered (i.e., when there is no defer statement).
+  * Don't type-check the code being analyzed.
+  * Missed a spot.
+  * Don't treat nil initialization as assignment.
+  * doc:  clarify meaning of ineffectual assignment
+- Use _service mode manual as better alias name than disabled
+
+-------------------------------------------------------------------
 Tue Mar 16 01:17:11 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.0.0+git20210225.2e10b26:
