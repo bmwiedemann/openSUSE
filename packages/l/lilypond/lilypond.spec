@@ -19,11 +19,18 @@
 %define fontdir %{_datadir}/fonts
 %define ttfdir  %{fontdir}/truetype
 %define ver %(echo %{version} | cut -d . -f 1,2)
+
+%if 0%{?sle_version} >= 150400
+%bcond_with Guile3
+%else
+%bcond_without Guile3
+%endif
+
 #Unsatisfied dependency for Factory i586
 ExcludeArch:    i586
 
 Name:           lilypond
-Version:        2.24.1
+Version:        2.24.2
 Release:        0
 Summary:        A typesetting system for music notation
 License:        GPL-3.0-or-later
@@ -60,7 +67,11 @@ BuildRequires:  potrace-devel
 BuildRequires:  t1utils
 BuildRequires:  texlive-fontinst-bin
 BuildRequires:  texlive-fontware-bin
+%if %{with Guile3}
 BuildRequires:  pkgconfig(guile-3.0)
+%else
+BuildRequires:  pkgconfig(guile-2.2)
+%endif
 # Needed for pngtopnm
 BuildRequires:  netpbm
 BuildRequires:  pkgconfig
@@ -224,10 +235,14 @@ for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s@^#!.*@#!/usr/bin/python3
 
 %build
 export LIBS="$LIBS  -lglib-2.0 -lgobject-2.0"
+%if %{with Guile3}
 export GUILE_FLAVOR=guile-3.0
+%endif
 ./autogen.sh --noconfigure
 %configure \
+%if %{with Guile3}
     GUILE_FLAVOR=guile-3.0 \
+%endif
 	--disable-checking
 # Build sometimes fails with multiple threads.
 make --trace %{_smp_mflags} bytecode
@@ -295,7 +310,7 @@ done
 for d in '.usr.share' '.usr.share.doc' '.usr.share.info' '.usr.share.doc.packages'; do
   sed -i "/^%%dir $d$/d" files-en
 done
-%fdupes -s share/doc/lilypond/html/Documentation
+%fdupes -s %{buildroot}%{_docdir}/%{name}
 # End of Documentation section
 
 %files -f %{name}.lang

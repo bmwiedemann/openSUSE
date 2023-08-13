@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Aug 13 08:20:21 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Update to release 2.24.1
+- Upstream changes:
+  *This version contains a number of fixes since the release of the
+   previous stable version in February 2023. This includes an
+   update of the library for garbage collection.
+   Scores converted to or written for 2.24.0 will continue to work
+   with this release. A list of added features and other
+   user-visible changes for 2.24 can be found at:
+   https://lilypond.org/doc/v2.24/Documentation/changes/.
+   Among others, version 2.24.0 switched to Guile 2.2 and features
+   a completely rewritten infrastructure for creating the official
+   packages.
+
+-------------------------------------------------------------------
+Tue May 16 11:21:55 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Add conditionals to enable two different versions of Guile to be
+  used in the build. (boo#1210502)
+  
+-------------------------------------------------------------------
 Mon Feb 13 12:03:27 UTC 2023 - Dave Plater <davejplater@gmail.com>
 
 - Remove linked lilypond-doc package and use one spec file
