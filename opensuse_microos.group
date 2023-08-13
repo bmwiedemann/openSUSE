@@ -153,7 +153,6 @@
     <package name="bubblewrap" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="busybox" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-sssd_ldap -->
-    <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: opensuse_microos:docker -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="busybox-hostname" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -2599,6 +2598,7 @@
     <package name="tar-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="tar-rmt" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="tcl" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="telepathy-logger-schema" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="terminfo" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="terminfo-base" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="terminfo-iterm" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:expansion -->
