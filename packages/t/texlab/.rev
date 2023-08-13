@@ -139,4 +139,30 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1098964</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3ff8d8308e1a734787d8ddc460fcb20e</srcmd5>
+    <version>5.9.1</version>
+    <time>1691947082</time>
+    <user>dimstar_suse</user>
+    <comment>- Reenable cargo test in %check.
+- Update to version 5.9.1:
+  * fixed: improved performance when completing BibTeX entries
+  * fixed: don't report unused entries for very large bibliographies
+  * fixed: avoid redundant reparses after saving documents
+- Changes from before 5.9.1 and after 5.7.0:
+  * Use bibliographies found in BIBINPUTS environment variable
+  * Add texlab.build.pdfDirectory setting
+  * Fix search path for aux files when using \include instead of \input
+  * Report diagnostics for unused and undefined labels
+  * Report diagnostics for unused BibTeX entries and undefined citations
+  * Report diagnostics for duplicate BibTeX entries
+  * Report diagnostics for duplicate labels
+  * Add texlab.build.auxDirectory and texlab.build.logDirectory settings
+  * Deprecate texlab.auxDirectory in favor of texlab.build.auxDirectory
+  * Fix parsing paths with |
+  * Fix parsing LaTeX identifiers with =
+  
+</comment>
+    <requestid>1103656</requestid>
+  </revision>
 </revisionlist>

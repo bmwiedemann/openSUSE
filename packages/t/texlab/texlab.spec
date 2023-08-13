@@ -17,7 +17,7 @@
 
 
 Name:           texlab
-Version:        5.7.0
+Version:        5.9.1
 Release:        0
 Summary:        Implementation of the Language Server Protocol for LaTeX
 License:        ( 0BSD OR MIT OR Apache-2.0 ) AND ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Artistic-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( MIT OR Zlib OR Apache-2.0 ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-3-Clause AND GPL-3.0 AND GPL-3.0+ AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+ AND GPL-3.0
@@ -50,8 +50,8 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildro
 # They deleted it.
 # install -Dm644 texlab.1 -t %%{buildroot}%%{_mandir}/man1/
 
-# %%check
-# %%{cargo_test} --all-features
+%check
+%{cargo_test} --all-features
 
 %files
 %{_bindir}/texlab

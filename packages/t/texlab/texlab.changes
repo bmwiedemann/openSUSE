@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug 13 07:05:02 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Reenable cargo test in %check.
+
+-------------------------------------------------------------------
+Sun Aug 13 06:20:11 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 5.9.1:
+  * fixed: improved performance when completing BibTeX entries
+  * fixed: don't report unused entries for very large bibliographies
+  * fixed: avoid redundant reparses after saving documents
+- Changes from before 5.9.1 and after 5.7.0:
+  * Use bibliographies found in BIBINPUTS environment variable
+  * Add texlab.build.pdfDirectory setting
+  * Fix search path for aux files when using \include instead of \input
+  * Report diagnostics for unused and undefined labels
+  * Report diagnostics for unused BibTeX entries and undefined citations
+  * Report diagnostics for duplicate BibTeX entries
+  * Report diagnostics for duplicate labels
+  * Add texlab.build.auxDirectory and texlab.build.logDirectory settings
+  * Deprecate texlab.auxDirectory in favor of texlab.build.auxDirectory
+  * Fix parsing paths with |
+  * Fix parsing LaTeX identifiers with =
+  
+-------------------------------------------------------------------
 Sun Jul  9 13:55:55 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Disable checks temporarily until a patched version comes
