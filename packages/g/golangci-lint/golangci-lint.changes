@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 12 22:13:00 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 1.54.1:
+  * plugin: temporarily hide warning about using plugins using the old API (#4002)
+  * build(deps): bump github.com/go-critic/go-critic from 0.8.2 to 0.9.0 (#4000)
+  * build(deps): bump github.com/quasilyte/go-ruleguard from v0.3.19 to v0.4.0 (#3999)
+  * docs: Update documentation and assets (#3997)
+
+-------------------------------------------------------------------
 Wed Aug 09 20:16:24 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 1.54.0:

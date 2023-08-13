@@ -43,4 +43,16 @@
 - Packaging: Update LICENSE to %license from %doc (forwarded request 1103227 from jfkw)</comment>
     <requestid>1103228</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cad985635f1df80f643b81351f490b58</srcmd5>
+    <version>1.54.1</version>
+    <time>1691947077</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.54.1:
+  * plugin: temporarily hide warning about using plugins using the old API (#4002)
+  * build(deps): bump github.com/go-critic/go-critic from 0.8.2 to 0.9.0 (#4000)
+  * build(deps): bump github.com/quasilyte/go-ruleguard from v0.3.19 to v0.4.0 (#3999)
+  * docs: Update documentation and assets (#3997) (forwarded request 1103634 from jfkw)</comment>
+    <requestid>1103635</requestid>
+  </revision>
 </revisionlist>
