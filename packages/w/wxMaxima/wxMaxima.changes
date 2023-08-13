@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Aug  2 22:59:55 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 23.7.0:
+  * Printing:
+    * Made the page margins configurable
+      (gh#wxMaxima-developers/wxmaxima#1787).
+    * We no more print page headers
+      (gh#wxMaxima-developers/wxmaxima#1791).
+    * Printing no more omits labels
+      (gh#wxMaxima-developers/wxmaxima#1507).
+    * A better pagebreak algorithm.
+    * No more ghost lines around text cells.
+  * Less ugly integral signs.
+  * Many stability fixes.
+  * More Consistent worksheet scaling and sizes
+    (gh#wxMaxima-developers/wxmaxima#1780).
+  * Correctly save the color settings
+    (gh#wxMaxima-developers/wxmaxima#1789).
+  * Correctly check the numeric and other menu items.
+  * The cursor no more disappears
+    (gh#wxMaxima-developers/wxmaxima#1788).
+  * Updated translations.
+
+-------------------------------------------------------------------
 Sat Jun 10 16:11:29 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 23.5.1:
