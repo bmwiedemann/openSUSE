@@ -15,4 +15,20 @@
     <comment>- Update to version 0.13.0: (forwarded request 1101555 from jfkw)</comment>
     <requestid>1101561</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>20ad9087c4caf4cd82bb899bd38abd56</srcmd5>
+    <version>0.13.1</version>
+    <time>1691947069</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.13.1:
+  * gopls: update go.mod for v0.13.1-pre.2
+  * gopls/internal/hooks: clean language version before passing to gofumpt
+  * gopls/internal/lsp/analysis: fix stubmethods with variadic parameters
+  * gopls: update go.mod for v0.13.1-pre.1
+  * gopls/internal/lsp/source: reinstate equalOrigin for references check
+  * gopls/internal/lsp/source: fix incorrect 'origin' logic for named types
+  * gopls/internal/lsp/source: fix renaming of type parameters
+  * gopls/internal/lsp/source: refresh embeddirective analyzer docs (forwarded request 1103614 from jfkw)</comment>
+    <requestid>1103616</requestid>
+  </revision>
 </revisionlist>
