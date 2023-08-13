@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 12 15:27:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.7
+  * The parser callback for the original-envelope option used the
+    wrong return type, which could prevent the database mode from
+    activating.
+
+-------------------------------------------------------------------
 Sat Jul 15 20:33:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.6
