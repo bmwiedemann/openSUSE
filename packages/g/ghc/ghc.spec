@@ -16,8 +16,8 @@
 #
 
 
-%define full_version 9.4.5
-%define short_version 9.4.5
+%define full_version 9.4.6
+%define short_version 9.4.6
 
 %ifnarch s390x
 %define with_libnuma 1
@@ -66,7 +66,7 @@
 %global ghc_llvm_archs s390x riscv64
 %global ghc_unregisterized_arches noarch
 
-%global base_ver 4.17.1.0
+%global base_ver 4.17.2.0
 %global ghc_compact_ver 0.1.0.0
 %global hpc_ver 0.6.1.0
 %global hsc2hs_ver 0.68.8
@@ -93,7 +93,7 @@ Patch3:         Disable-unboxed-arrays.patch
 # PATCH-FIX-UPSTREAM execstack.patch -- RTS: Add stack marker to StgCRunAsm.S
 Patch7:         execstack.patch
 # Work around a bug in Sphinx 6.1.x to fix the documentation build. Remove this patch ASAP.
-Patch8:         fix_extlinks.patch
+Patch8:         bytestring.patch
 # PATCH-FIX-UPSTREAM ghc-pie.patch - set linux as default PIE platform
 Patch35:        ghc-pie.patch
 Patch200:       ghc-hadrian-s390x-rts--qg.patch
@@ -239,7 +239,7 @@ This package provides the User Guide and Haddock manual.
 %ghc_lib_subpackage -d array-0.5.4.0
 %ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-%{base_ver}
 %ghc_lib_subpackage -d binary-0.8.9.1
-%ghc_lib_subpackage -d bytestring-0.11.4.0
+%ghc_lib_subpackage -d bytestring-0.11.5.1
 %ghc_lib_subpackage -d containers-0.6.7
 %ghc_lib_subpackage -d deepseq-1.4.8.0
 %ghc_lib_subpackage -d directory-1.3.7.1
@@ -257,7 +257,7 @@ This package provides the User Guide and Haddock manual.
 %ghc_lib_subpackage -d mtl-2.2.2
 %ghc_lib_subpackage -d parsec-3.1.16.1
 %ghc_lib_subpackage -d pretty-1.1.3.6
-%ghc_lib_subpackage -d process-1.6.16.0
+%ghc_lib_subpackage -d process-1.6.17.0
 %ghc_lib_subpackage -d stm-2.5.1.0
 %ghc_lib_subpackage -d template-haskell-2.19.0.0
 %ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.5
@@ -398,7 +398,7 @@ echo "%%dir %{ghclibdir}" >> %{name}-base%{?_ghcdynlibdir:-devel}.files
 %ghc_gen_filelists libiserv %{ghc_version_override}
 
 %ghc_gen_filelists ghc-bignum 1.3
-%ghc_gen_filelists ghc-prim 0.9.0
+%ghc_gen_filelists ghc-prim 0.9.1
 %ghc_gen_filelists integer-gmp 1.1
 %ghc_gen_filelists rts 1.0.2
 

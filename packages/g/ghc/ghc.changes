@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Aug 11 09:33:00 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.4.6
+- remove fix_extlinks.patch and add bytestring.patch
+ * Fix a bug where certain dictionaries for undecidable
+    instances could end up looping at runtime
+ * Fix a compiler panic involving newtype family instances
+ * Fix a bug preventing using the command line
+    to compile .cmm files to assembly
+ * Fix compiler panics with certain RULE pragmas
+ * Fix a loop in the simplifier due to a bug in
+    the representation of certain fields in interface files
+ * Make type equality (~) checks in the presence
+    of quantified contrains more robust to argument ordering
+ * Fix some segfaults when using UnliftedDataTypes
+ * Improve bounds checking with -fcheck-prim-bounds
+ * Fix a bug in the simplifier leading to core lint errors
+ * Ensure array read operations have proper memory barries
+ * Fix a spurious -dcore-lint failure with certain kinds of type family instances
+ * Fix a bug with .hie files containing spurious references
+    to generated functions in files with partial field selectors
+ * With the aarch64 backend, fix a bug arising from lack
+    of zero-extension for 8/16 bit add/sub with immediate
+ * Fix a number of bugs having to do with default
+    representation polymorphic type variables
+ * Add support for top-level Addr# literals
+ * Fix some tag inference bugs when using the bytecode interpreter
+ * Support the foreign import prim calling convention in the bytecode interpreter
+ * Support sized literals in the bytecode interpreter
+ * Fix a bug with the handling of unboxed tuples in the bytecode interpreter
+ * Make the bytecode interpreter more robust when run on optimised code
+ * Accurately account for mutator allocations when using the non-moving GC
+ * Prevent some segfaults by ensuring that pinned allocations respect block size
+ * Fix warnings with clang 14.0.3
+ * Allow building documentation with sphinx 6.0.0
+ * Fix some dependency tracking bugs with hadrian
+
+-------------------------------------------------------------------
 Sun Aug  6 16:34:18 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - remove post/postun base as is now handled in macros.ghc-extra 
