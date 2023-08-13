@@ -53,8 +53,6 @@ BuildRequires:  pkgconfig(zlib)
 Provides:       rpminst
 Requires(post): %fillup_prereq
 Requires:       rpm-config-SUSE
-# awk is needed for rpm --last
-Requires:       /usr/bin/awk
 Summary:        The RPM Package Manager
 License:        GPL-2.0-or-later
 Group:          System/Packages
@@ -113,6 +111,7 @@ Patch135:       selinux_transactional_update.patch
 Patch136:       x86_64-microarchitectures.patch
 Patch137:       cpuid_lzcnt.patch
 Patch138:       libmagic-exceptions.patch
+Patch139:       remove-awk-dependency.patch
 # touches a generated file
 Patch180:       whatrequires-doc.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
@@ -224,7 +223,8 @@ rm -rf sqlite
 %patch -P 100        -P 102 -P 103
 %patch                                                  -P 117
 %patch -P 122 -P 123
-%patch -P 131          -P 133 -P 134 -P 135 -P 136 -P 137 -P 138 -P 180
+%patch -P 131          -P 133 -P 134 -P 135 -P 136 -P 137 -P 138 -P 139
+%patch -P 180
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464

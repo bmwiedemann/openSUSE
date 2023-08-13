@@ -2440,4 +2440,13 @@ See bugzilla 1167537 for the gory details.</comment>
 - add _multibuild for multiple .spec-files (forwarded request 1089942 from jsrain)</comment>
     <requestid>1090000</requestid>
   </revision>
+  <revision rev="309" vrev="6">
+    <srcmd5>0fba2a0dd71a42316083bcbdabf043ac</srcmd5>
+    <version>4.18.0</version>
+    <time>1691947052</time>
+    <user>dimstar_suse</user>
+    <comment>- add remove-awk-dependency.patch to be able to drop awk dependency
+  from containers</comment>
+    <requestid>1103306</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  8 12:39:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add remove-awk-dependency.patch to be able to drop awk dependency
+  from containers
+
+-------------------------------------------------------------------
 Tue May 30 09:07:28 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - add _multibuild for multiple .spec-files
