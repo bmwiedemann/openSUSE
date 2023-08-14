@@ -825,6 +825,7 @@ Prefer: -gcr3-ssh-agent -gcr3-viewer
 
 # have choice for python3-Cython: python310-Cython python310-Cython3
 Prefer: -python310-Cython3 python39-Cython3 -python311-Cython3
+Prefer: -python310-Cython0 python39-Cython0 -python311-Cython0
 
 # have choice for ntp-daemon: chrony ntp ntpsec
 Prefer: chrony
