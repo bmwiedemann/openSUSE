@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 13 19:34:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.1:
+  * Fix single category reductions
+  * Ensure categorical column order is the same across dask partitions
+  * see https://github.com/holoviz/datashader/releases/tag/v0.15.1
+
+-------------------------------------------------------------------
 Fri Jun  2 11:49:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Mention dropped patches:

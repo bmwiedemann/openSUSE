@@ -243,4 +243,15 @@
     <comment></comment>
     <requestid>1090542</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f9bd8e37cd908baf0fd4ae05bfbc7624</srcmd5>
+    <version>0.15.1</version>
+    <time>1692045323</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.1:
+  * Fix single category reductions
+  * Ensure categorical column order is the same across dask partitions
+  * see https://github.com/holoviz/datashader/releases/tag/v0.15.1</comment>
+    <requestid>1103720</requestid>
+  </revision>
 </revisionlist>

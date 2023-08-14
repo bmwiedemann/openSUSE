@@ -28,7 +28,7 @@ BuildArch:      noarch
 %endif
 
 Name:           python-datashader%{psuffix}
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        Data visualization toolchain based on aggregating into a grid
 License:        BSD-3-Clause
