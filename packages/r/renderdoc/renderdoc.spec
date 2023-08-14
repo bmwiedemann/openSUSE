@@ -17,7 +17,7 @@
 
 
 Name:           renderdoc
-Version:        1.27
+Version:        1.28
 Release:        0
 Summary:        A frame-capture based graphics debugger
 License:        MIT
