@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymssql
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymssql
-Version:        2.1.5
+Version:        2.2.8
 Release:        0
 Summary:        A simple database interface to MS-SQL for Python
 License:        LGPL-2.1-only
@@ -26,10 +26,13 @@ Group:          Development/Languages/Python
 URL:            https://pymssql.org
 Source:         https://files.pythonhosted.org/packages/source/p/pymssql/pymssql-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module setuptools-git}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  freetds-devel
+BuildRequires:  krb5-devel
+BuildRequires:  openssl-devel
 BuildRequires:  python-rpm-macros
 %python_subpackages
 
@@ -42,10 +45,10 @@ DB-API 2.0 Specification and works on most popular operating systems.
 %setup -q -n pymssql-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 ### Tests need access to a MSSQL-server
@@ -54,7 +57,7 @@ DB-API 2.0 Specification and works on most popular operating systems.
 
 %files %{python_files}
 %license LICENSE
-%doc ChangeLog ChangeLog_highlights.rst README.rst
+%doc ChangeLog.rst README.rst
 %{python_sitearch}/*
 
 %changelog
