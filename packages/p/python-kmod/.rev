@@ -24,4 +24,12 @@
 </comment>
     <requestid>826097</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2a7eb7124e62e29b9674192803463005</srcmd5>
+    <version>0.9.1</version>
+    <time>1692045339</time>
+    <user>dimstar_suse</user>
+    <comment>- limit to older Cython versions</comment>
+    <requestid>1103751</requestid>
+  </revision>
 </revisionlist>

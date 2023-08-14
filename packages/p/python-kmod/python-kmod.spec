@@ -1,7 +1,7 @@
 #
 # spec file for package python-kmod
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/k/kmod/kmod-%{ver
 # PATCH-FIX-OPENSUSE fix-build.patch
 Patch0:         fix-build.patch
 Patch1:         fix-build-kmod-17.patch
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython < 3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  kmod

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 13 21:45:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- limit to older Cython versions 
+
+-------------------------------------------------------------------
 Wed Aug 12 17:28:31 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Run SPEC file through spec-cleaner
