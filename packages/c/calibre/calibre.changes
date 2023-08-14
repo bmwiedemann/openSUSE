@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri Aug  4 11:30:54 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.24.0
+  * New Features
+    - Easily manage the extra data files associated with a book by
+      right clicking the edit metadata button and choose
+      "Manage data files"
+    - Content server: Full text search: Allow searching
+      a restricted subset of books
+    - E-book viewer: Allow clicking on calibre:// URLs
+    - Support fuzzier searching in the Tag browser find allowing
+      unaccented characters to match accented ones
+  * Bug Fixes
+    - DOCX conversion: Preserve underline style and color
+    - Fix incorrect sorting of device view after some operations
+    - Fix visit content server in browser not working when the
+      content server is configured to listen on an IPv6 interface
+    - Fix one hour offset in some timezones on Windows for dates
+      before 1970
+    - Windows: HTML Input: Fix error when trying to add HTML files
+      with links to other files that are invalid pathnames
+    - Get books: Update various Polish language book stores for
+      website changes
+- Changes from 6.23.0
+  * New Features
+    - PDF Output: Add an option to discard the book cover instead
+      of inserting it as the first page of the PDF
+    - Content server: Allow opening the Book details page for
+      a matched book from the Full text search results page
+  * Bug Fixes
+    - Windows: Fix empty data folder getting created in the
+      directory calibre is launched from when changing title/author
+      for a book with an existing data folder
+    - LIT Output: Fix error converting anything to LIT on Windows
+    - Ignore failures to expire old trash during startup
+    - Amazon metadata download: Fix retrieval of publisher
+      information from amazon.fr
+- Comment out building of additional "submodules": iso639, iso3166,
+  translations because it needs now external source:
+  https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/main/iso-codes-main.zip
+  and don't know where to install. 
+  Also it rise up an error sometime when run "osc service ra".
+
+-------------------------------------------------------------------
+Mon Jul 17 09:01:21 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Build with %{optflags}
+
+-------------------------------------------------------------------
+Fri Jun 30 06:54:16 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.22.0
+  * New Features
+    - Kobo driver: Add support for newest firmware
+    - Trash bin: Allow setting removed books to be permanently
+      deleted on library close
+    - Windows: Nicer error message when file/folder is locked in
+      another program
+  * Bug Fixes
+    - PDF Output: Fix regression that caused large slowdowns when
+      converting books with lots of internal HTML files to PDF
+    - CHM Input: Fix ToC entries that use fragments not supported
+    - E-book viewer: Fix searching for text next to hidden text not
+      scrolling to the match
+    - E-book viewer: Fix selection popup not showing for some books
+      on some platforms when the selection is in the top line
+    - DOCX Output: Fix multiple SVG images in the input document
+      causing all the SVG images in the output to be just one of
+      the input images
+    - MOBI Input: Ignore another form of corruption in trailing bytes
+- Drop calibre-revert-new-podofo.patch because now podofo 0.10.1
+  is needed and can no longer patch to use old podofo version.
+
+-------------------------------------------------------------------
 Thu Jun 29 13:06:20 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 6.21.0

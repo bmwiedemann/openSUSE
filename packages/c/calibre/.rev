@@ -2737,4 +2737,17 @@ Fix regression in Kobo driver that caused the on device column to not be updated
 </comment>
     <requestid>1096286</requestid>
   </revision>
+  <revision rev="302" vrev="1">
+    <srcmd5>72da1213bf0727b69f38072a9e6b72d5</srcmd5>
+    <version>6.24.0</version>
+    <time>1692045309</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.24.0
+
+Change Source6 again, because Source URLs are valid!!
+Try with wget.
+Think &quot;osc service runall download_files&quot; are buggy!
+</comment>
+    <requestid>1103850</requestid>
+  </revision>
 </revisionlist>

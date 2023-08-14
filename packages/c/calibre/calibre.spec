@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        6.21.0
+Version:        6.24.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -30,17 +30,19 @@ Source2:        https://calibre-ebook.com/signatures/kovid.gpg#/%{name}.keyring
 Source3:        %{name}.desktop
 Source4:        https://github.com/mathjax/MathJax/archive/3.1.4/mathjax-3.1.4.tar.gz
 Source5:        https://github.com/LibreOffice/dictionaries/archive/master/hyphenation-dictionaries.tar.gz
+# Source6-URL: https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/main/iso-codes-main.zip
+# Must be comment out because obs/osc can not download it altought it is valid, and obs rise up an error when it enable.
+# Source6 is backup if upstream change something again.
+Source6:        iso-codes-main.zip
 # Missing user-agent-data.json since 6.12.0.
 # Fix: FileNotFoundError: [Errno 2] No such file or directory: '/usr/share/calibre/user-agent-data.json'
 # Use from inside https://github.com/kovidgoyal/calibre/releases/download/v6.14.0/calibre-6.14.0-x86_64.txz
-Source6:        user-agent-data.json
+Source7:        user-agent-data.json
 Source100:      %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE: install locale files the openSUSE way
 Patch2:         %{name}-setup.install.py.diff
 # PATCH-FIX-OPENSUSE: disabling Autoupdate Searcher
 Patch3:         %{name}-no-update.diff
-# PATCH-FIX-OPENSUSE: revert new podofo
-Patch4:         %{name}-revert-new-podofo.patch
 ExclusiveArch:  aarch64 x86_64 riscv64
 BuildRequires:  fdupes
 BuildRequires:  help2man
@@ -68,34 +70,34 @@ BuildRequires:  hyphen-devel >= 2.8.8
 BuildRequires:  liberation-fonts
 BuildRequires:  libmtp-devel >= 1.1.20
 BuildRequires:  libopenssl-devel >= 1.1.1l
-BuildRequires:  libpodofo-devel >= 0.9.7
+BuildRequires:  libpodofo-devel >= 0.10.1
 BuildRequires:  libpoppler-devel >= 21.11.0
 # upstream use: libstemmer-devel >= 2.2.0
 BuildRequires:  libstemmer-devel >= 2.1.0
 BuildRequires:  libwmf-devel >= 0.2.8
 # upstream use: mozjpeg >= 4.0.3
 BuildRequires:  optipng >= 0.7.7
-BuildRequires:  podofo >= 0.9.7
+BuildRequires:  podofo >= 0.10.1
 BuildRequires:  poppler-tools >= 21.11.0
-BuildRequires:  qt6-core-private-devel >= 6.3.1
-BuildRequires:  qt6-declarative-devel >= 6.3.1
-BuildRequires:  qt6-gui-private-devel >= 6.3.1
-BuildRequires:  qt6-imageformats-devel >= 6.3.1
-BuildRequires:  qt6-platformsupport-private-devel  >= 6.3.1
-BuildRequires:  qt6-wayland-devel >= 6.3.1
+BuildRequires:  qt6-core-private-devel >= 6.4.0
+BuildRequires:  qt6-declarative-devel >= 6.4.0
+BuildRequires:  qt6-gui-private-devel >= 6.4.0
+BuildRequires:  qt6-imageformats-devel >= 6.4.0
+BuildRequires:  qt6-platformsupport-private-devel  >= 6.4.0
+BuildRequires:  qt6-wayland-devel >= 6.4.0
 #BuildRequires:  python311-dbus-python
 BuildRequires:  xdg-utils >= 1.0.2
-BuildRequires:  pkgconfig(Qt6Core) >= 6.3.1
-BuildRequires:  pkgconfig(Qt6Gui) >= 6.3.1
-BuildRequires:  pkgconfig(Qt6Network) >= 6.3.1
-BuildRequires:  pkgconfig(Qt6Positioning) >= 6.3.1
-BuildRequires:  pkgconfig(Qt6Sensors) >= 6.3.1
-BuildRequires:  pkgconfig(Qt6ShaderTools) >= 6.3.1
-BuildRequires:  pkgconfig(Qt6Svg) >= 6.3.1
-BuildRequires:  pkgconfig(Qt6WebChannel) >= 6.3.1
-BuildRequires:  pkgconfig(Qt6WebEngineCore) >= 6.3.1
-BuildRequires:  pkgconfig(Qt6WebEngineWidgets) >= 6.3.1
-BuildRequires:  pkgconfig(Qt6Widgets) >= 6.3.1
+BuildRequires:  pkgconfig(Qt6Core) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6Gui) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6Network) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6Positioning) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6Sensors) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6ShaderTools) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6Svg) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6WebChannel) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6WebEngineCore) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6WebEngineWidgets) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6Widgets) >= 6.4.0
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.112
 BuildRequires:  pkgconfig(espeak-ng)
 BuildRequires:  pkgconfig(fontconfig) >= 2.13.94
@@ -111,10 +113,8 @@ BuildRequires:  pkgconfig(libpng16) >= 1.6.37
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.24
 # upstream use BuildRequires:  pkgconfig(ncurses) >= 6.3
 BuildRequires:  pkgconfig(ncurses) >= 6.1
-# upstream use pkgconfig(python311) >= 3.10.1
-BuildRequires:  python311-devel >= 3.10
 BuildRequires:  pkgconfig(readline) >= 8.1
-BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(sqlite3) >= 3.42.0
 BuildRequires:  pkgconfig(uchardet) >= 0.0.7
 # calibre no longer depends on ImageMagick
 # but keept BuildRequires to convert icon to serveral sizes
@@ -134,6 +134,7 @@ BuildRequires:  python311-cchardet >= 2.1.7
 BuildRequires:  python311-chardet >= 4.0.0
 BuildRequires:  python311-css-parser >= 1.0.8
 BuildRequires:  python311-dateutil >= 2.8.2
+BuildRequires:  python311-devel >= 3.10
 BuildRequires:  python311-dnspython >= 2.1.0
 BuildRequires:  python311-dukpy-kovidgoyal >= 0.3
 BuildRequires:  python311-feedparser >= 6.0.8
@@ -152,10 +153,9 @@ BuildRequires:  python311-psutil >= 5.8.0
 BuildRequires:  python311-pychm >= 0.8.6
 BuildRequires:  python311-pycryptodome >= 3.11.0
 BuildRequires:  python311-pyparsing >= 3.0.6
+BuildRequires:  python311-pyqt-builder >= 1.14.0
 BuildRequires:  python311-pyzstd >= 0.15.6
-# upstream use: BuildRequires:  python311-pyqt-builder >= 1.13.0
-BuildRequires:  python311-pyqt-builder >= 1.12.2
-BuildRequires:  python311-qt6-devel >= 6.3.1
+BuildRequires:  python311-qt6-devel >= 6.4.0
 BuildRequires:  python311-regex >= 2021.11.10
 BuildRequires:  python311-setuptools >= 57.4.0
 BuildRequires:  python311-sgmllib3k >= 1.0.0
@@ -167,12 +167,11 @@ BuildRequires:  pkgconfig(libwebp) >= 1.2.1
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.14
 BuildRequires:  pkgconfig(libxslt) >= 1.1.35
 # Need at buildtime too, to produce the bash completion
-BuildRequires:  python311-qtwebengine-qt6 >= 6.3.1
+BuildRequires:  python311-qtwebengine-qt6 >= 6.4.0
 BuildRequires:  python311-six >= 1.16.0
 BuildRequires:  python311-soupsieve >= 2.3.1
 #BuildRequires:  python-unrardll >= 0.1.5
-# upstream use: BuildRequires:  python311-py7zr >= 0.15.0
-BuildRequires:  python311-py7zr >= 0.11.1
+BuildRequires:  python311-py7zr >= 0.16.3
 %if 0%{?suse_version} > 1500
 BuildRequires:  python3-speechd >= 0.11.1
 %else
@@ -188,7 +187,7 @@ Requires:       libmtp9 >= 1.1.20
 Requires:       libpng16-16 >= 1.6.37
 Requires:       libwmf >= 0.2.8
 Requires:       optipng >= 0.7.5
-Requires:       podofo >= 0.9.7
+Requires:       podofo >= 0.10.1
 Requires:       poppler-tools >= 21.11.0
 Requires:       python311 >= 3.10
 Requires:       python311-Brotli >= 1.0.9
@@ -221,8 +220,8 @@ Requires:       python311-psutil >= 5.8.0
 Requires:       python311-pychm >= 0.8.6
 Requires:       python311-pycryptodome >= 3.11.0
 Requires:       python311-pyzstd >= 0.15.6
-Requires:       python311-qt6 >= 6.3.1
-Requires:       python311-qtwebengine-qt6 >= 6.3.1
+Requires:       python311-qt6 >= 6.4.0
+Requires:       python311-qtwebengine-qt6 >= 6.4.0
 Requires:       python311-regex >= 2021.11.10
 Requires:       python311-sgmllib3k >= 1.0.0
 Requires:       python311-six >= 1.16.0
@@ -238,9 +237,10 @@ Requires:       python311-speechd >= 0.11.1
 Requires:       python311-webencodings >= 0.5.1
 Requires:       python311-zeroconf >= 0.37.0
 #
-Requires:       sqlite3
+Requires:       sqlite3 >= 3.42.0
 Requires:       bzip2 >= 1.0.8
 Requires:       expat >= 2.4.1
+Requires:       libsqlite3-0 >= 3.42.0
 Requires:       unrar >= 6.1.2
 Requires:       xdg-utils >= 1.0.2
 Requires:       xz >= 5.2.3
@@ -261,7 +261,6 @@ into ebooks for convenient reading.
 %setup -q -a4 -a5
 %patch2 -p1
 %patch3 -p1 -b .no-update
-%patch4 -p1
 
 # dos2unix newline conversion
 sed -i 's/\r//' src/calibre/web/feeds/recipes/*
@@ -282,7 +281,7 @@ find src/calibre -name "*.py" -type f -exec chmod -x {} +
 chmod -x recipes/*.recipe
 
 # rpmlint: wrong-script-interpreter /usr/bin/env python3
-find setup -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3:g'
+##find setup -type f  | xargs sed -i -e 's|#!/usr/bin/env python|#!/usr/bin/python3|g'
 
 # use system mspack (mga#15218)
 rm -f src/calibre/utils/lzx/mspack.h
@@ -291,17 +290,17 @@ sed -i 's| calibre/utils/lzx/mspack.h||' setup/extensions.json
 cp -v %{SOURCE3}  .
 
 %build
+export \
 LANG="en_US.UTF8" \
 CFLAGS="%{optflags}" \
-CXXFLAGS="%{optflags}" \
-OVERRIDE_CFLAGS="%{optflags}" \
+CXXFLAGS="%{optflags}"
 
 ###python setup.py build
 CALIBRE_PY3_PORT=1 python3.11 setup.py build
 
-python3.11 setup.py iso639
-python3.11 setup.py iso3166
-python3.11 setup.py translations
+#python3.11 setup.py iso639
+#python3.11 setup.py iso3166
+#python3.11 setup.py translations
 python3.11 setup.py gui
 
 #%%{__python3} setup.py resources \
@@ -309,7 +308,6 @@ python3.11 setup.py gui
 #	--system-liberation_fonts \
 #	--path-to-hyphenation `pwd`/dictionaries-master \
 #	--path-to-mathjax `pwd`/MathJax-3.1.4
-
 #%%{__python311} setup.py man_pages
 
 %install
@@ -334,8 +332,8 @@ done
 %suse_update_desktop_file -i -n calibre Office Viewer
 
 # rpmlint: wrong-script-interpreter /usr/bin/env python3
-find %{buildroot}%{_bindir} -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3:g'
-find %{buildroot}%{_libdir}/calibre -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3:g'
+find %{buildroot}%{_bindir} -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3.11:g'
+find %{buildroot}%{_libdir}/calibre -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3.11:g'
 
 # these are provided as separate packages
 rm -r %{buildroot}%{_libdir}/%{name}/odf
@@ -359,7 +357,7 @@ rm %{buildroot}%{_datadir}/applications/calibre-lrfviewer.desktop
 
 # Fix missing user-agent-data.json
 # With version 6.15.0 it is available again. So we use it again from source but let the code in.
-#install -Dm 0644 %%{SOURCE6} %%{buildroot}%%{_datadir}/%%{name}/user-agent-data.json
+#install -Dm 0644 %%{SOURCE7} %%{buildroot}%%{_datadir}/%%{name}/user-agent-data.json
 
 %fdupes %{buildroot}%{_prefix}
 
