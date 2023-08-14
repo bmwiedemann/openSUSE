@@ -20,7 +20,7 @@
 %bcond_without libmpeg2
 %bcond_without mad
 Name:           scummvm
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        Interpreter for several adventure games
 License:        GPL-3.0-or-later
@@ -31,7 +31,9 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  discord-rpc-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+%if 0%{?suse_version} > 1500
 BuildRequires:  libieee1284-devel
+%endif
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa) >= 0.9
