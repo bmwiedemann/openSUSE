@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 13 19:26:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- restrict to older cython 
+
+-------------------------------------------------------------------
 Mon Feb 20 10:09:40 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove .c and .h devel files from python package distribution.

@@ -25,7 +25,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Thriftpy/thriftpy2
 Source0:        https://github.com/Thriftpy/thriftpy2/archive/v%{version}.tar.gz
 Source1:        new_certs.tar.xz
-BuildRequires:  %{python_module Cython >= 0.28.4}
+BuildRequires:  %{python_module Cython >= 0.28.4 with %python-Cython < 3}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module ply >= 3.4}

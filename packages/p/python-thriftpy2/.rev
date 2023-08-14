@@ -75,4 +75,12 @@
 </comment>
     <requestid>1067913</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d8cdbaad83910b3a66ea2727ec31e5e5</srcmd5>
+    <version>0.4.16</version>
+    <time>1692045322</time>
+    <user>dimstar_suse</user>
+    <comment>- restrict to older cython</comment>
+    <requestid>1103716</requestid>
+  </revision>
 </revisionlist>
