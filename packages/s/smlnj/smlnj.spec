@@ -17,7 +17,7 @@
 
 
 Name:           smlnj
-Version:        110.99.3
+Version:        110.99.4
 Release:        0
 Summary:        Standard ML of New Jersey
 License:        BSD-3-Clause
@@ -28,7 +28,6 @@ Source1:        pack_new_version.sh
 Source2:        urlgetter.sh
 Source3:        smlnj-rpmlintrc
 Patch1:         MLRISC.diff
-Patch2:         smlnj-kernel-6.x.patch
 BuildRequires:  gcc-c++
 ExclusiveArch:  %{ix86} x86_64 ppc
 
@@ -41,7 +40,6 @@ Language (1997 Revision).
 tar -xzf config.tgz
 # place urlgetter
 cp %{SOURCE2} .
-%patch2 -p1
 
 mkdir base
 cd base
