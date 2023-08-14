@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 13 21:37:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- restrict to older Cython release 
+
+-------------------------------------------------------------------
 Sun Mar 26 19:55:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.3:

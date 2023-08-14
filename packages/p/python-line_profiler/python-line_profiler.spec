@@ -23,7 +23,7 @@ Summary:        Line-by-line profiler
 License:        BSD-3-Clause
 URL:            https://github.com/pyutils/line_profiler
 Source:         https://files.pythonhosted.org/packages/source/l/line_profiler/line_profiler-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython with %python-Cython < 3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module pytest}
