@@ -1,0 +1,10 @@
+<package name="mozjs115" project="openSUSE:Factory">
+  <title>SpiderMonkey JavaScript library</title>
+  <description>SpiderMonkey is the code-name for Mozilla Firefox's C++ implementation of
+JavaScript. It is intended to be embedded in other applications
+that provide host environments for JavaScript.
+
+</description>
+  <devel project="GNOME:Factory" package="mozjs115"/>
+  <url>https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey</url>
+</package>
