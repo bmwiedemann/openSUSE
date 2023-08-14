@@ -409,4 +409,22 @@ It is a dependency of the spyder python graphical environment, besides by a usef
     <comment></comment>
     <requestid>1098327</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>593ce5611fe906935cff8e2add0f4ae8</srcmd5>
+    <version>3.1.0</version>
+    <time>1692045301</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * Drop support for EOL python 3.6 / 3.7
+  * Remove ``ContinueInFinally`` check (only relevant in python &lt; 3.8)
+  * Fix forward annotations inside a nested scope
+  * Produce an error when a definition shadows an unused variable
+  * Fix accessed global annotation being redefined in a local scope
+  * Allow redefinition of functions across ``match`` arms
+  * Fix potential ``None`` for ``lineno`` during tokenization errors
+  * Add support for PEP 695 and python 3.12
+- Switch to pyproject macros.
+- Drop patch py3114.patch, included now.</comment>
+    <requestid>1102806</requestid>
+  </revision>
 </revisionlist>

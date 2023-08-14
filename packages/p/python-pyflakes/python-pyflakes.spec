@@ -18,17 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyflakes
-Version:        3.0.1
+Version:        3.1.0
 Release:        0
 Summary:        Passive checker of Python programs
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/PyCQA/pyflakes
 Source:         https://files.pythonhosted.org/packages/source/p/pyflakes/pyflakes-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM https://github.com/PyCQA/pyflakes/commit/836631f2f73d45baa4021453d89fc9fd6f52be58 fix error reporter and testsuite in 3.11.4+
-Patch:          py3114.patch
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # the pkg_resources module is required at runtime
@@ -47,10 +46,10 @@ modules with side effects. It's also much faster.
 %autosetup -p1 -n pyflakes-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/pyflakes/
 %python_clone -a %{buildroot}%{_bindir}/pyflakes
 
@@ -68,6 +67,6 @@ modules with side effects. It's also much faster.
 %doc NEWS.rst README.rst AUTHORS
 %python_alternative %{_bindir}/pyflakes
 %{python_sitelib}/pyflakes/
-%{python_sitelib}/pyflakes-%{version}-py*.egg-info
+%{python_sitelib}/pyflakes-%{version}.dist-info
 
 %changelog
