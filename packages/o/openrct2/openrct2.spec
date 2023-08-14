@@ -35,6 +35,8 @@ Source1:        https://github.com/OpenRCT2/title-sequences/archive/v%{title_ver
 Source2:        https://github.com/OpenRCT2/objects/archive/v%{objects_version}.tar.gz#/objects-%{objects_version}.tar.gz
 #PATCH-FIX-UPSTREAM Included in next release: https://github.com/OpenRCT2/OpenRCT2/pull/19519
 Patch1:         0001-GCC-13-fixes-19519.patch
+# PATCH-FIX-UPSTREAM 19283.patch - fix memleak and Replace deprecated functions in zip
+Patch2:         https://patch-diff.githubusercontent.com/raw/OpenRCT2/OpenRCT2/pull/19283.patch
 BuildRequires:  cmake >= 3.9
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

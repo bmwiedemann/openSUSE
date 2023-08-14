@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 10 10:16:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 19283.patch: Fix build with new zip where zip_replace is
+  deprecated.
+
+-------------------------------------------------------------------
 Sun Mar 19 16:32:53 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Fix loading of title sequences, adjust path.
