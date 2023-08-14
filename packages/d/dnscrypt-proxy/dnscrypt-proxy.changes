@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 13 12:00:00 UTC 2023 - cunix@mail.de - 2.1.5
+
+- Update to version 2.1.5
+  * Responses to blocked queries now include extended error codes
+  * Reliability of connections using HTTP/3 has been improved
+  * New configuration directive: "tls_key_log_file"
+      to dump TLS secret keys
+
+-------------------------------------------------------------------
 Sat Feb 11 12:00:00 UTC 2023 - cunix@mail.de - 2.1.4
 
 - Update to version 2.1.4

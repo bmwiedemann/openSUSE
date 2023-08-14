@@ -24,7 +24,7 @@
 %define services    %{name}.socket %{name}.service %{name}-resolvconf.service
 
 Name:           dnscrypt-proxy
-Version:        2.1.4
+Version:        2.1.5
 Release:        0
 Summary:        A tool for securing communications between a client and a DNS resolver
 License:        ISC
@@ -44,7 +44,7 @@ BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.20
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  vendored_licenses_packager
 # For systemd pidfile solution.
