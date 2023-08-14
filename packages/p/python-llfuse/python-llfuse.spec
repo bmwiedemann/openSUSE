@@ -1,7 +1,7 @@
 #
 # spec file for package python-llfuse
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-llfuse
-Version:        1.4.2
+Version:        1.5.0
 Release:        0
 Summary:        Python Bindings for the low-level FUSE API
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/python-llfuse/python-llfuse
 Source:         https://github.com/python-llfuse/python-llfuse/archive/release-%{version}.tar.gz#/python-llfuse-release-%{version}.tar.gz
-Patch0:         fix-test-for-fusermount.patch
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sqlite3}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  fuse-devel >= 2.8.0
@@ -54,8 +53,7 @@ LLFUSE was originally part of S3QL, but has been factored out so that it can be
 used by other projects as well.
 
 %prep
-%setup -q -n python-llfuse-release-%{version}
-%patch0 -p1
+%autosetup -p1 -n python-llfuse-release-%{version}
 dos2unix README.rst
 
 %build

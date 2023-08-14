@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 13 19:56:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * Note: this is first pyfuse3 release supporting the Cython
+    3.0.0 release.
+  * Cythonized using Cython 3.0.0 release.
+  * Drop Python 3.5, 3.6, 3.7 support, see #69.
+  * Minimum requirement is Python 3.8 now.
+  * Get rid of PyEval_InitThreads, #55.
+  * CI: also test on python 3.12 / cython 3.0 release
+  * Tell Cython that callbacks may raise exceptions, #90.
+  * Misc. CI, testing, build related fixes/improvements.
+- drop fix-test-for-fusermount.patch (upstream)
+
+-------------------------------------------------------------------
 Sun Jul 24 09:03:43 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.2:
