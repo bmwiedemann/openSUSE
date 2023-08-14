@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 13 21:02:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.1.2:
+  * Make user/vendor data sensitive and remove log permissions
+  * source: Force OpenStack when it is only option (#2045)
+  * sources/azure: fix regressions in IMDS behavior
+- drop 
+  cloud-init-cve-2023-1786-redact-instance-data-json-main.patch (upstream)
+- spec-file cleanups, including dropping flake8 (as build fails
+  with newer flake8 versions)
+
+-------------------------------------------------------------------
 Thu Jul  6 12:06:22 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
 
 - Update cloud-init-write-routes.patch (bsc#1212879)

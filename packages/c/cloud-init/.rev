@@ -1089,4 +1089,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1098540</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>4b347854cf49c9947a55619883d99614</srcmd5>
+    <version>23.1.2</version>
+    <time>1692045306</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.1.2:
+  * Make user/vendor data sensitive and remove log permissions
+  * source: Force OpenStack when it is only option (#2045)
+  * sources/azure: fix regressions in IMDS behavior
+- drop 
+  cloud-init-cve-2023-1786-redact-instance-data-json-main.patch (upstream)
+- spec-file cleanups, including dropping flake8 (as build fails
+  with newer flake8 versions)</comment>
+    <requestid>1103818</requestid>
+  </revision>
 </revisionlist>
