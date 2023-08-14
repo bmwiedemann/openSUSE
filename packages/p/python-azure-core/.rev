@@ -403,4 +403,15 @@
     <comment></comment>
     <requestid>1098672</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>78cbb1c493b2e83a824b8471f0d752e5</srcmd5>
+    <version>1.29.1</version>
+    <time>1692045363</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.29.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1103825 from glaubitz)</comment>
+    <requestid>1103872</requestid>
+  </revision>
 </revisionlist>
