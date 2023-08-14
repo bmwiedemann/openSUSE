@@ -16,18 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-pyjnius
-Version:        1.4.2
+Version:        1.5.0
 Release:        0
 Summary:        Access Java classes from Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kivy/pyjnius
 Source:         https://github.com/kivy/pyjnius/archive/%{version}.tar.gz#/pyjnius-%{version}.tar.gz
-# https://github.com/kivy/pyjnius/commit/ee4e9c224c4a3dda1f15a6f161cd0dfb268eb0e3
-Patch0:         python-pyjnius-no-python2.patch
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython with %python-Cython < 3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  ant
 BuildRequires:  fdupes
@@ -45,7 +43,6 @@ Access Java classes from Python.
 
 %prep
 %setup -q -n pyjnius-%{version}
-%patch0 -p1
 sed -i 's:python:python3:' tests/test_jvm_options.py
 
 %build
