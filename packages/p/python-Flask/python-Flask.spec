@@ -23,32 +23,33 @@
 %endif
 
 %define oldpython python
-%define skip_python2 1
-%define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-Flask
-Version:        2.2.5
+Version:        2.3.2
 Release:        0
 Summary:        A microframework based on Werkzeug, Jinja2 and good intentions
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://flask.palletsprojects.com
 Source0:        https://files.pythonhosted.org/packages/source/F/Flask/Flask-%{version}.tar.gz
 Source1:        python-Flask-rpmlintrc
-BuildRequires:  %{python_module Jinja2 >= 3.0}
-BuildRequires:  %{python_module Werkzeug >= 2.2.2}
-BuildRequires:  %{python_module click >= 8.0.0}
+BuildRequires:  %{python_module Jinja2 >= 3.1.2}
+BuildRequires:  %{python_module Werkzeug >= 2.3.3}
+BuildRequires:  %{python_module blinker >= 1.6.2}
+BuildRequires:  %{python_module click >= 8.1.3}
 BuildRequires:  %{python_module contextvars}
 BuildRequires:  %{python_module importlib-metadata >= 3.6.0 if %python-base < 3.10}
-BuildRequires:  %{python_module itsdangerous >= 2.0}
+BuildRequires:  %{python_module itsdangerous >= 2.1.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.2.4}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python-Jinja2 >= 3.0
-Requires:       python-Werkzeug >= 2.0
-Requires:       python-click >= 8.0.0
-Requires:       python-itsdangerous >= 2.0
+Requires:       python-Jinja2 >= 3.1.2
+Requires:       python-Werkzeug >= 2.3.3
+Requires:       python-blinker >= 1.6.2
+Requires:       python-click >= 8.1.3
+Requires:       python-itsdangerous >= 2.1.2
 %if 0%{?python_version_nodots} < 310
 Requires:       python-importlib-metadata >= 3.6.0
 %endif
@@ -72,7 +73,6 @@ intentions. And before you ask: It's BSD licensed!
 
 %package doc
 Summary:        Documentation for python-Flask
-Group:          Documentation/Other
 Requires:       %{name} = %{version}
 
 %description doc
@@ -81,13 +81,14 @@ reference for python-Flask.
 
 %prep
 %autosetup -p1 -n Flask-%{version}
+find . -name '.gitignore' -delete
 
 %build
-%python_build
+%pyproject_wheel
 # cd docs && make html
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/flask
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -110,10 +111,8 @@ export LANG=en_US.UTF-8
 %doc CHANGES.rst README.rst
 %python_alternative %{_bindir}/flask
 %{_bindir}/flask-%{python_bin_suffix}
-%dir %{python_sitelib}/flask
-%{python_sitelib}/flask/*
-%dir %{python_sitelib}/Flask-%{version}-py*.egg-info
-%{python_sitelib}/Flask-%{version}-py*.egg-info
+%{python_sitelib}/flask
+%{python_sitelib}/Flask-%{version}.dist-info
 
 %files %{python_files doc}
 %doc docs/

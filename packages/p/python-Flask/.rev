@@ -399,4 +399,35 @@
     :issue:`4777`</comment>
     <requestid>1086038</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e90dc4bda26f04a9371ac871c3f41226</srcmd5>
+    <version>2.3.2</version>
+    <time>1692045297</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.2:
+  * Set ``Vary: Cookie`` header when the session is accessed, modified, or
+    refreshed.
+  * Update Werkzeug requirement to &gt;=2.3.3 to apply recent bug fixes.
+  * Restore deprecated ``from flask import Markup``.
+  * Drop support for Python 3.7.
+  * Update minimum requirements to the latest versions.
+  * Remove previously deprecated code.
+  * Importing ``escape`` and ``Markup`` from ``flask`` is deprecated.
+  * The ``app.got_first_request`` property is deprecated.
+  * The ``locked_cached_property`` decorator is deprecated.
+  * Signals are always available. ``blinker&gt;=1.6.2`` is a required dependency.
+  * Signals support ``async`` subscriber functions.
+  * Remove uses of locks that could cause requests to block each other very
+    briefly.
+  * Use modern packaging metadata with ``pyproject.toml``.
+  * Ensure subdomains are applied with nested blueprints.
+  * If a blueprint is created with an empty name it raises a ``ValueError``.
+  * ``SESSION_COOKIE_DOMAIN`` does not fall back to ``SERVER_NAME``.
+  * The ``routes`` command shows each rule's ``subdomain`` or ``host``
+    when domain matching is in use.
+  * Use postponed evaluation of annotations.
+- Switch to pyproject macros.
+- Delete unneeded .gitignore files, update rpmlintrc</comment>
+    <requestid>1101890</requestid>
+  </revision>
 </revisionlist>
