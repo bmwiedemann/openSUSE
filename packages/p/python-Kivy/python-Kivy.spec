@@ -16,19 +16,19 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-Kivy
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Hardware-accelerated multitouch application library
 License:        Apache-2.0 AND MIT AND LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-3.0-only AND BSD-3-Clause
 URL:            https://kivy.org/
 Source:         https://github.com/kivy/kivy/archive/%{version}.tar.gz#/kivy-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython with %python-Cython < 3}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module dbus-python}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pyenchant}
 BuildRequires:  %{python_module pygments}
@@ -76,6 +76,7 @@ This package contains the headers and source files for extending kivy
 
 %package     -n %{name}-doc
 Summary:        Documentation for Kivy, a multitouch application library
+BuildRequires:  %{python_module sphinxcontrib-jquery}
 Provides:       %{python_module Kivy-doc = %{version}}
 
 %description -n %{name}-doc
