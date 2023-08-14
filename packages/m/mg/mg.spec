@@ -13,7 +13,7 @@
 # published by the Open Source Initiative.
 
 Name:           mg
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        Micro GNU Emacs clone
 License:        Unlicense

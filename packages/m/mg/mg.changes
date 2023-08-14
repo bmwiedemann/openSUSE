@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Aug 13 14:52:59 UTC 2023 - Tomasz Hołubowicz <services@alternateved.com> - 3.7
+
+- Update to version 3.7:
+  * New command display-help-toggle, ensures the quick-help text is
+  always shown in the status area, enabled by default
+  * New command apply-macro-to-region-lines by Ben Scuron 
+  * New command end-or-call-last-kbd-macro, used in key bindings
+  * Map function keys F1-F4 + F10 to common functions:
+  F1: Toggle quick help
+  F2: Save current buffer
+  F3: Start keyboard macro
+  F4: End keyboard macro, or call latest macro from mark
+  * Sync with OpenBSD as of April 21, 2023:
+  Add command set-tab-width to change per-buffer tab width
+  Sync manual changes: grammar, visual improvements
+  * Drop support for disabling no-tab-mode when calling configure
+  script. Simplifies code greatly and not needed anymore since it is
+  enabled by default upstream
+  * Fix Home/End key for builds both with and without curses
+  * Fix bug where the current markline is not reset after being
+  cleared, by Ben Scuron
+  * Sync with OpenBSD as of April 21, 2023:
+  Fixes to no-tab-mode. OpenBSD had previously removed this mode,
+  relevant change in this fork: indent next line with spaces
+  Fix buffer overflow when no match is found for a search
+
+
+-------------------------------------------------------------------
 Mon Apr 10 09:38:27 UTC 2023 - Tomasz Hołubowicz <services@alternateved.com> - 3.6
 
 - Update to version 3.6:
