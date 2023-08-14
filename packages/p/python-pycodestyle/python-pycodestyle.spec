@@ -18,23 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pycodestyle
-Version:        2.10.0
+Version:        2.11.0
 Release:        0
 Summary:        Python style guide checker
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pycodestyle.readthedocs.io/
-Source:         https://files.pythonhosted.org/packages/source/p/pycodestyle/pycodestyle-%{version}.tar.gz
-Patch01:        testsuite_fixes.patch
+Source:         https://github.com/PyCQA/pycodestyle/archive/refs/tags/%{version}.tar.gz#/pycodestyle-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
-Provides:       python-pep8 = %{version}
-Obsoletes:      python-pep8 < %{version}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Provides:       python-pep8 = %{version}
+Obsoletes:      python-pep8 < %{version}
+BuildArch:      noarch
 %python_subpackages
 
 %description

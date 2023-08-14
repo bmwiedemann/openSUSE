@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug  8 15:10:24 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- %{?sle15_python_module_pythons} must at beginning of spec to work.
+
+-------------------------------------------------------------------
+Thu Aug  3 14:59:59 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 2.11.0
+  * Drop EOL python 3.6 / 3.7.
+  * Add support for python 3.12.
+  * E721: adjust handling of type comparison.
+    Allowed forms are now isinstance(x, t) or type(x) is t.
+  * Remove handling of python 2 <> operator.
+  * W606: removed. async / await are always keywords.
+  * Internal: move tests to pytest.
+  * Remove handling of python 2 ur'' strings.
+- Remove testsuite_fixes.patch as it's no longer required
+- Replaced spec file "Source" to pull from GitHub due to this issue:
+  https://github.com/PyCQA/pycodestyle/issues/1183
+- Apply spec-cleaner to spec file.
+
+-------------------------------------------------------------------
 Tue Jul 18 11:27:38 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Add patch to fix testsuite with python 3.11.4 and 3.12
