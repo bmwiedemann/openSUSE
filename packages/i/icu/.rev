@@ -721,4 +721,12 @@ Jan added the patch name of all changed patches.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1094248</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>2e479fecd2c312f3f52df69acc4a534e</srcmd5>
+    <version>73.2</version>
+    <time>1692045327</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103639</requestid>
+  </revision>
 </revisionlist>
