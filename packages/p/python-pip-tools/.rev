@@ -66,4 +66,41 @@
     <comment></comment>
     <requestid>1094707</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>354646410203fb17a361a5ba28c955ac</srcmd5>
+    <version>7.3.0</version>
+    <time>1692045334</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.3.0:
+  * Add `--no-strip-extras` and warn about strip extras by
+    default
+  * Fix revealed default config in header if requirements in
+    subfolder
+  * Direct references show extra requirements in .txt files
+  * Document how to run under `pipx run`
+  * Document that the backtracking resolver is the current
+    default
+  * Add `-c/--constraint` option to `pip-compile`
+  * Allow options in config from both `pip-compile` and `pip-
+    sync`
+  * Fix rejection of negating CLI boolean flags in config
+  * Validate parsed config against CLI options
+  * Fix a bug where pip-sync would unexpectedly uninstall some
+    packages
+  * Backwards Incompatible Changes:
+  * Default to `--resolver=backtracking`
+  * Drop support for Python 3.7
+  * Add support for `pip==23.2` where refactored out `DEV_PKGS`
+  * Add `--no-config` option (#1896).
+  * Sync direct references with hashes
+  * Fix missing `via`s when more than two input files are used
+  * Support config defaults using `.pip-tools.toml` or
+    `pyproject.toml`
+  * Log a warning if the user specifies `-P` and the output file
+    is present but empty
+  * Improve warning for `pip-compile` if no `--allow-unsafe` was
+    passed
+  * Correct in README `pre-commit` hook to run off</comment>
+    <requestid>1103737</requestid>
+  </revision>
 </revisionlist>

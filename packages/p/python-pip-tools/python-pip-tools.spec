@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-pip-tools
-Version:        6.13.0
+Version:        7.3.0
 Release:        0
 Summary:        Tool to keep pinned dependencies up to date
 License:        BSD-3-Clause
@@ -28,6 +28,7 @@ BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module pip >= 22.2}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tomli-w}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,6 +36,7 @@ Requires:       python-build
 Requires:       python-click >= 8
 Requires:       python-pip >= 22.2
 Requires:       python-setuptools
+Requires:       python-tomli-w
 Requires:       python-wheel
 Recommends:     git-core
 BuildArch:      noarch
@@ -82,7 +84,7 @@ donttest+=" or test_compile_recursive_extras"
 %pytest -k "not ($donttest)"
 
 %files %{python_files}
-%doc CHANGELOG.md README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE
 %python_alternative %{_bindir}/pip-compile
 %python_alternative %{_bindir}/pip-sync
