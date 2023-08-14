@@ -18,9 +18,7 @@
 
 %define skip_python2 1
 %define plainpython python
-# upper bound is exclusive: min-numpy_ver <= numpy < max_numpy_ver
 %define min_numpy_ver 1.21
-%define max_numpy_ver 1.25
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
@@ -47,7 +45,7 @@
 %endif
 
 Name:           python-numba%{?psuffix}
-Version:        0.57.0
+Version:        0.57.1
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
@@ -57,7 +55,7 @@ Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{v
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
 Patch3:         skip-failing-tests.patch
 BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver} with %python-numpy-devel < %{max_numpy_ver}}
+BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -65,8 +63,8 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  (tbb-devel >= 2021)
+Requires:       python-numpy >= %{min_numpy_ver}
 Requires:       (python-llvmlite >= 0.40 with python-llvmlite < 0.41)
-Requires:       (python-numpy >= %{min_numpy_ver} with python-numpy < %{max_numpy_ver})
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-Jinja2
@@ -114,8 +112,8 @@ data structures such as those that exist in NumPy.
 Summary:        Development files for numba applications
 Requires:       %{name} = %{version}
 Requires:       python-devel
+Requires:       python-numpy-devel >= %{min_numpy_ver}
 Requires:       %{plainpython}(abi) = %{python_version}
-Requires:       (python-numpy-devel >= %{min_numpy_ver} with python-numpy-devel < %{max_numpy_ver})
 
 %description    devel
 This package contains files for developing applications using numba.
