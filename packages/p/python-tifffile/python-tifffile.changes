@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug  3 13:13:00 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2023.7.18
+  * Add option to return selection from imread
+  * Fix reading OME series with missing trailing frames
+  * Drop support for Python 3.8 and numpy < 1.21 (NEP29).
+  * Increase default strip size to 256 KB when writing with compression.
+  * Fix ZarrTiffStore with non-default chunkmode.
+  * Pass 4993 tests.
+  * Limit threading via TIFFFILE_NUM_THREADS environment variable
+  * Remove maxworkers parameter from tiff2fsspec (breaking).
+
+-------------------------------------------------------------------
 Wed May 31 08:27:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.4.12:

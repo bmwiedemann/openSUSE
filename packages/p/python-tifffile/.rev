@@ -123,4 +123,21 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
   * Fix reading MMstack with missing data (#187).</comment>
     <requestid>1090095</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4a69517178049c2423a6be75fc7fb7c2</srcmd5>
+    <version>2023.7.18</version>
+    <time>1692045358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2023.7.18
+  * Add option to return selection from imread
+  * Fix reading OME series with missing trailing frames
+  * Drop support for Python 3.8 and numpy &lt; 1.21 (NEP29).
+  * Increase default strip size to 256 KB when writing with compression.
+  * Fix ZarrTiffStore with non-default chunkmode.
+  * Pass 4993 tests.
+  * Limit threading via TIFFFILE_NUM_THREADS environment variable
+  * Remove maxworkers parameter from tiff2fsspec (breaking).
+</comment>
+    <requestid>1103855</requestid>
+  </revision>
 </revisionlist>

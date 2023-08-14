@@ -25,14 +25,14 @@
 %bcond_with test
 %endif
 Name:           python-tifffile%{psuffix}
-Version:        2023.4.12
+Version:        2023.7.18
 Release:        0
 Summary:        Read and write TIFF files
 License:        BSD-2-Clause
 URL:            https://github.com/cgohlke/tifffile/
 Source:         https://github.com/cgohlke/tifffile/archive/v%{version}.tar.gz#/tifffile-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module numpy >= 1.21}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -62,7 +62,7 @@ BuildRequires:  %{python_module oiffile}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module roifile}
-BuildRequires:  %{python_module xarray if %python-base >= 3.9}
+BuildRequires:  %{python_module xarray}
 BuildRequires:  %{python_module zarr}
 %endif
 # /SECTION
@@ -113,16 +113,9 @@ sed -i '1{/env python/d}' tifffile/{lsm2bin,tiff2fsspec,tiffcomment}.py
 %check
 %if %{with test}
 # Crashes Out-Of-Memory
-donttest="test_write_ome"
-donttest="$donttest or test_write_imagej_raw"
-donttest="$donttest or test_write_bigtiff"
-donttest="$donttest or test_write_5GB_bigtiff"
-# can't connect to localhost
-donttest="$donttest or test_write_fsspec"
+donttest="test_write_5GB_bigtiff"
 # no lerc support in imagecodecs
 donttest="$donttest or test_write_compression_lerc"
-# can't connect to external server
-donttest="$donttest or test_class_omexml"
 # flaky write errors
 donttest="$donttest or test_write_extrasamples_planar"
 donttest="$donttest or test_write_extrasamples_contig_rgb"
