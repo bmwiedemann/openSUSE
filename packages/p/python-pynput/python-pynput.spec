@@ -1,7 +1,7 @@
 #
 # spec file for package python-pynput
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,52 +15,54 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global skip_python2 1
-%global pythons %{primary_python}
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
+
 Name:           python-pynput
 Version:        1.7.6
 Release:        0
-License:        LGPL-3.0
 Summary:        Monitor and control user input devices
-Url:            https://github.com/moses-palmer/pynput
+License:        LGPL-3.0-only
+URL:            https://github.com/moses-palmer/pynput
 Source:         https://files.pythonhosted.org/packages/source/p/pynput/pynput-%{version}.tar.gz
-Patch0:         unicode.patch
-Patch1:         no-setuptools-lint.patch
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module Sphinx >= 1.3.1}
+BuildRequires:  %{python_module pip}
+# this is part of the auto generated spec file, but opensuse
+# BuildRequires:  %%{python_module setuptools-lint >= 0.5}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module evdev}
+BuildRequires:  %{python_module python-xlib}
 BuildRequires:  %{python_module six}
-BuildRequires:  python3-Sphinx >= 1.3.1
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module six}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-six
-Suggests:       python-evdev >= 1.3
-Suggests:       python-python-xlib >= 0.17
-Suggests:       python-pyobjc-framework-Quartz >= 7.0
+Requires:       %{python_module evdev >= 1.3}
+Requires:       %{python_module six}
+Suggests:       %{python_module enum34}
+Suggests:       %{python_module pyobjc-framework-ApplicationServices >= 8.0}
+Suggests:       %{python_module pyobjc-framework-Quartz >= 8.0}
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
 Monitor and control user input devices
 
 %prep
-%setup -q -n pynput-%{version}
-%autopatch -p1
+%autosetup -p1 -n pynput-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%license COPYING.LGPL
 %doc README.rst
-%{python_sitelib}/*
+%license COPYING.LGPL
+%{python_sitelib}/pynput
+%{python_sitelib}/pynput-%{version}.dist-info
 
 %changelog
