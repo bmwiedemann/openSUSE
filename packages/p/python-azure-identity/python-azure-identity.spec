@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-identity
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Azure Identity client library for Python
 License:        MIT
@@ -42,7 +42,6 @@ Requires:       python-msal < 2.0.0
 Requires:       python-msal >= 1.20.0
 Requires:       python-msal-extensions < 2.0.0
 Requires:       python-msal-extensions >= 0.3.0
-Requires:       python-six >= 1.12.0
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
