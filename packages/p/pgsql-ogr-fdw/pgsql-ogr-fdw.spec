@@ -74,7 +74,9 @@ make V=1 USE_PGXS=1 install DESTDIR=%{buildroot}
 %doc README.md FAQ.md
 %{pg_config_bindir}/ogr_fdw_info
 %{pg_config_pkglibdir}/ogr_fdw.so
+%if %{postgresql_has_llvm}
 %{pg_config_pkglibdir}/bitcode/*
+%endif
 %dir %{pg_config_sharedir}/extension/
 %{pg_config_sharedir}/extension/ogr_fdw--1.0--1.1.sql
 %{pg_config_sharedir}/extension/ogr_fdw--1.1.sql
