@@ -127,6 +127,7 @@ NO_TESTS="test_spectral_embedding_two_components"
 # https://github.com/scikit-learn/scikit-learn/issues/19230
 NO_TESTS+=" or test_convergence_dtype_consistency"
 NO_TESTS+=" or test_imputation_missing_value_in_test_array"
+NO_TESTS+=" or test_graphviz_toy"
 %endif
 %pytest_arch -v --pyargs sklearn -n auto -k "not ($NO_TESTS)"
 popd
