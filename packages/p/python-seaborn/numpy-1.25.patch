@@ -1,0 +1,69 @@
+Index: seaborn-0.12.2/seaborn/_core/rules.py
+===================================================================
+--- seaborn-0.12.2.orig/seaborn/_core/rules.py
++++ seaborn-0.12.2/seaborn/_core/rules.py
+@@ -96,7 +96,7 @@ def variable_type(
+                 boolean_dtypes = ["bool", "boolean"]
+             boolean_vector = vector.dtype in boolean_dtypes
+         else:
+-            boolean_vector = bool(np.isin(vector, [0, 1, np.nan]).all())
++            boolean_vector = bool(np.isin(vector.dropna(), [0, 1]).all())
+         if boolean_vector:
+             return VarType(boolean_type)
+ 
+Index: seaborn-0.12.2/seaborn/_oldcore.py
+===================================================================
+--- seaborn-0.12.2.orig/seaborn/_oldcore.py
++++ seaborn-0.12.2/seaborn/_oldcore.py
+@@ -1493,9 +1493,10 @@ def variable_type(vector, boolean_type="
+     var_type : 'numeric', 'categorical', or 'datetime'
+         Name identifying the type of data in the vector.
+     """
++    vector = pd.Series(vector)
+ 
+     # If a categorical dtype is set, infer categorical
+-    if pd.api.types.is_categorical_dtype(vector):
++    if isinstance(vector.dtype, pd.CategoricalDtype):
+         return VariableType("categorical")
+ 
+     # Special-case all-na data, which is always "numeric"
+@@ -1514,7 +1515,7 @@ def variable_type(vector, boolean_type="
+         warnings.simplefilter(
+             action='ignore', category=(FutureWarning, DeprecationWarning)
+         )
+-        if np.isin(vector, [0, 1, np.nan]).all():
++        if np.isin(vector.dropna(), [0, 1]).all():
+             return VariableType(boolean_type)
+ 
+     # Defer to positive pandas tests
+Index: seaborn-0.12.2/tests/_core/test_rules.py
+===================================================================
+--- seaborn-0.12.2.orig/tests/_core/test_rules.py
++++ seaborn-0.12.2/tests/_core/test_rules.py
+@@ -29,8 +29,6 @@ def test_variable_type():
+     assert variable_type(s) == "numeric"
+     assert variable_type(s.astype(int)) == "numeric"
+     assert variable_type(s.astype(object)) == "numeric"
+-    assert variable_type(s.to_numpy()) == "numeric"
+-    assert variable_type(s.to_list()) == "numeric"
+ 
+     s = pd.Series([1, 2, 3, np.nan], dtype=object)
+     assert variable_type(s) == "numeric"
+@@ -44,8 +42,6 @@ def test_variable_type():
+ 
+     s = pd.Series(["1", "2", "3"])
+     assert variable_type(s) == "categorical"
+-    assert variable_type(s.to_numpy()) == "categorical"
+-    assert variable_type(s.to_list()) == "categorical"
+ 
+     s = pd.Series([True, False, False])
+     assert variable_type(s) == "numeric"
+@@ -64,8 +60,6 @@ def test_variable_type():
+     s = pd.Series([pd.Timestamp(1), pd.Timestamp(2)])
+     assert variable_type(s) == "datetime"
+     assert variable_type(s.astype(object)) == "datetime"
+-    assert variable_type(s.to_numpy()) == "datetime"
+-    assert variable_type(s.to_list()) == "datetime"
+ 
+ 
+ def test_categorical_order():

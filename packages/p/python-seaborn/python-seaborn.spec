@@ -24,6 +24,10 @@ License:        BSD-2-Clause AND BSD-3-Clause AND MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mwaskom/seaborn
 Source:         https://files.pythonhosted.org/packages/source/s/seaborn/seaborn-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM numpy-1.25.patch gh#mwaskom/seaborn#3391
+Patch0:         numpy-1.25.patch
+# PATCH-FIX-UPSTREAM statsmodels-0.14.patch gh#mwaskom/seaborn#3356
+Patch1:         statsmodels-0.14.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module matplotlib >= 3.1}
@@ -89,7 +93,9 @@ sed -i '1{/env python/d}' seaborn/external/appdirs.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -n auto -rfEs
+# This fails in i586 because of int size
+donttest="test_index_alignment_between_series"
+%pytest -n auto -rfEs -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE.md licences/*

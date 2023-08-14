@@ -182,4 +182,15 @@
     <comment></comment>
     <requestid>1057877</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>25890d497a7232bb57bd214193bf382f</srcmd5>
+    <version>0.12.2</version>
+    <time>1692045353</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip broken tests in i586
+- Add numpy-1.25.patch gh#mwaskom/seaborn#3391
+- Add statsmodels-0.14.patch gh#mwaskom/seaborn#3356
+</comment>
+    <requestid>1103842</requestid>
+  </revision>
 </revisionlist>

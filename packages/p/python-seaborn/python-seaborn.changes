@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  8 10:53:03 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip broken tests in i586
+
+-------------------------------------------------------------------
+Tue Aug  8 10:32:06 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add numpy-1.25.patch gh#mwaskom/seaborn#3391
+- Add statsmodels-0.14.patch gh#mwaskom/seaborn#3356
+
+-------------------------------------------------------------------
 Wed Jan 11 11:52:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.12.2
