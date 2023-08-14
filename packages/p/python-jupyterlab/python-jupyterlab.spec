@@ -18,7 +18,7 @@
 
 %define plainpython3dist python3dist
 Name:           python-jupyterlab
-Version:        4.0.4
+Version:        4.0.5
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause

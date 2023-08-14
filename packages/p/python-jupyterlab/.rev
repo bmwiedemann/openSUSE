@@ -495,4 +495,27 @@
     <comment></comment>
     <requestid>1102510</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>254ea0e8912cbd06e5bb7d4e97982c5b</srcmd5>
+    <version>4.0.5</version>
+    <time>1692045375</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.0.5:
+  * Check backward dep (#14956)
+  * Ensure not breaking backward compatibility (#14952)
+  * Bump lumino packages (#14951)
+  * Fix View Menu &quot;Show line number&quot; does not show its corresponding
+    shortcut (#14950)
+  * Make the browser check default_url configurable (#14949)
+  * Allow opening links in new tabs when HTML is trusted (#14943)
+  * Remove docker ignore file (#14938)
+  * Fix broken link (#14940)
+  * Make the DOM structure of linked output views more similar to
+    outputs (#14941)
+  * Custom script to upgrade staging/yarn.lock (#14935)
+  * Rename readthedoc config (#14930)
+  * Fix incorrect indentation browser_check.py (#14923)
+</comment>
+    <requestid>1103904</requestid>
+  </revision>
 </revisionlist>

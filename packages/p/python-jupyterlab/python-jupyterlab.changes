@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 14 05:47:53 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.0.5:
+  * Check backward dep (#14956)
+  * Ensure not breaking backward compatibility (#14952)
+  * Bump lumino packages (#14951)
+  * Fix View Menu "Show line number" does not show its corresponding
+    shortcut (#14950)
+  * Make the browser check default_url configurable (#14949)
+  * Allow opening links in new tabs when HTML is trusted (#14943)
+  * Remove docker ignore file (#14938)
+  * Fix broken link (#14940)
+  * Make the DOM structure of linked output views more similar to
+    outputs (#14941)
+  * Custom script to upgrade staging/yarn.lock (#14935)
+  * Rename readthedoc config (#14930)
+  * Fix incorrect indentation browser_check.py (#14923)
+
+-------------------------------------------------------------------
 Sat Aug  5 16:10:43 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.0.4:
