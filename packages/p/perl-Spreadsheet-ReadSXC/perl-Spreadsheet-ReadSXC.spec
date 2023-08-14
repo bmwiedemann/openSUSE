@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Spreadsheet-ReadSXC
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name Spreadsheet-ReadSXC
 Name:           perl-Spreadsheet-ReadSXC
-Version:        0.37
+Version:        0.380.0
 Release:        0
-Summary:        Extract OpenOffice 1.x spreadsheet data
+%define cpan_version 0.38
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Extract OpenOffice 1.x spreadsheet data
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/C/CO/CORION/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/C/CO/CORION/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 # PATCH-FIX-OPENSUSE Do not requires Filter::signatures, as we have perl > 5.20
 Patch0:         remove_filter_signatures.diff
@@ -48,6 +49,14 @@ Requires:       perl(XML::Twig) >= 3.50
 Requires:       perl(XML::Twig::XPath)
 Requires:       perl(XML::XPath)
 Requires:       perl(XML::XPathEngine)
+Provides:       perl(Spreadsheet::ParseODS) = 0.380.0
+Provides:       perl(Spreadsheet::ParseODS::Cell) = 0.380.0
+Provides:       perl(Spreadsheet::ParseODS::Settings) = 0.380.0
+Provides:       perl(Spreadsheet::ParseODS::Styles) = 0.380.0
+Provides:       perl(Spreadsheet::ParseODS::Workbook) = 0.380.0
+Provides:       perl(Spreadsheet::ParseODS::Worksheet) = 0.380.0
+Provides:       perl(Spreadsheet::ReadSXC) = 0.380.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -126,8 +135,9 @@ data referenced by the original return value, so you had to derefence it
 before making another call. Thanks to H. Merijn Brand for fixing this.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

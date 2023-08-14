@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 11 15:07:35 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Update remove_filter_signatures.diff
+
+-------------------------------------------------------------------
+Sat Jul 22 03:08:02 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.38
+   see /usr/share/doc/packages/perl-Spreadsheet-ReadSXC/Changes
+
+  0.38  2023-07-21
+      * Various test suite updates, no code changes, no need to upgrade
+
+-------------------------------------------------------------------
 Mon Nov 22 18:02:43 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Update patch remove_filter_signatures.diff
