@@ -27,13 +27,13 @@
 %endif
 
 Name:           afl
-Version:        4.07c
+Version:        4.08c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 #URL:            https://lcamtuf.coredump.cx/afl/
 License:        Apache-2.0
 URL:            https://github.com/AFLplusplus/AFLplusplus
-Source:         https://github.com/AFLplusplus/AFLplusplus/archive/%{version}.tar.gz
+Source:         https://github.com/AFLplusplus/AFLplusplus/archive/v%{version}.tar.gz
 Source1:        afl-rpmlintrc
 Patch1:         afl-3.0c-fix-paths.patch
 BuildRequires:  gcc-c++
