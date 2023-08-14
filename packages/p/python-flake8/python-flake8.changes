@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  8 06:18:12 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.1.0:
+  * Pyflakes has been updated to >= 3.1.0, < 3.2.0 (See also #1847).
+  * pycodestyle has been updated to >= 2.11.0, < 2.12.0 (See also #1848).
+  * Deprecate --include-in-doctest, --exclude-from-doctest
+   (See also #1747, #1768).
+  * Add support for python 3.12 (See also #1832, #1849, #1850).
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Mon May  8 13:55:59 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

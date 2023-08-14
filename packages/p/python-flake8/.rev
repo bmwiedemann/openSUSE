@@ -420,4 +420,18 @@
     <comment></comment>
     <requestid>1085627</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0fec7f08f83ecc5cf77fe8430ab742ee</srcmd5>
+    <version>6.1.0</version>
+    <time>1692045302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.1.0:
+  * Pyflakes has been updated to &gt;= 3.1.0, &lt; 3.2.0 (See also #1847).
+  * pycodestyle has been updated to &gt;= 2.11.0, &lt; 2.12.0 (See also #1848).
+  * Deprecate --include-in-doctest, --exclude-from-doctest
+   (See also #1747, #1768).
+  * Add support for python 3.12 (See also #1832, #1849, #1850).
+- Switch to pyproject macros.</comment>
+    <requestid>1102807</requestid>
+  </revision>
 </revisionlist>
