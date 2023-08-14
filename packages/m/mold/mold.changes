@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Aug 13 19:37:35 UTC 2023 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.1.0
+  * Loongson's LoongArch CPU has been supported. (03b1a1c)
+  * -z nosectionheader has been added to eliminate section headers from the output
+    file. (084ca55)
+  * Previously, linking with the -z pack-relative-relocs option produces an
+    executable that glibc 2.38 refuses to run with DT_RELR without GLIBC_ABI_DT_RELR
+    dependency error. Now, mold produces binaries compatible with glibc 2.38.
+    (f467ad1)
+  * [ARM64] R_AARCH64_ADR_PREL_PG_HI21_NC relocation type has been supported.
+    (17a5c3e)
+  * [ARM64] R_AARCH64_MOVW_UABS_G3 relocation type has now been handled as a
+    PLT-generating relocation to fix an issue when main is not defined in the main
+    executable but rather in a .so file. (e764557)
+  * [RISC-V] We now merge input .riscv.attributes contents. Previously, we just
+    concatenated them. (aa64491)
+
+-------------------------------------------------------------------
 Wed Jul 26 13:07:20 UTC 2023 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.0.0
