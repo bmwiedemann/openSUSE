@@ -23,7 +23,7 @@
 %global descriptor An implementation of the Double Ratchet cryptographic ratchet \
 in C and C++, including an implementation of the Megolm cryptographic ratchet
 Name:           %{origname}
-Version:        3.2.14
+Version:        3.2.15
 Release:        0
 Summary:        Double Ratchet cryptographic library
 License:        Apache-2.0
@@ -43,7 +43,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       %{libname} = %{version}
 Requires:       python-cffi >= 1.0.0
-Requires:       python-future
 %ifpython2
 Requires:       python-typing
 %endif
