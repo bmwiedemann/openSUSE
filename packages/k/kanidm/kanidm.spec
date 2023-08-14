@@ -26,29 +26,35 @@ Source:         kanidm-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 
-BuildRequires:  cargo-packaging
+BuildRequires:  cargo >= 1.69.0
 BuildRequires:  libselinux-devel
 BuildRequires:  libudev-devel
-BuildRequires:  llvm-clang >= 13
 BuildRequires:  pam-devel
-BuildRequires:  rust >= 1.69.0
 BuildRequires:  sqlite-devel
-BuildRequires:  tpm2-0-tss-devel
-# BuildRequires:  tpm2-openssl
 BuildRequires:  zstd
 
 %if 0%{?rhel} > 7 || 0%{?fedora}
+BuildRequires:  clang
 BuildRequires:  openssl-devel
 BuildRequires:  systemd
 %{?systemd_requires}
 %else
+# We have to special case this because rhel/fedora will never get cargo-packaging.
+BuildRequires:  cargo-packaging
 BuildRequires:  libopenssl-3-devel
+BuildRequires:  llvm-clang >= 13
+BuildRequires:  tpm2-0-tss-devel
+# BuildRequires:  tpm2-openssl
 %endif
 
 Requires:       %{name}-clients
 Requires:       %{name}-unixd-clients
 
+%if 0%{?rhel} > 7 || 0%{?fedora}
+ExclusiveArch:  x86_64 aarch64
+%else
 ExclusiveArch:  %{rust_tier1_arches}
+%endif
 
 %description
 An identity management platform written in rust that supports RADIUS, SSH Key management
@@ -106,10 +112,15 @@ export KANIDM_BUILD_PROFILE=release_suse_generic
 # export RUSTC_LOG='rustc_codegen_ssa::back::link=info'
 # Dump the target features of this cpu.
 rustc --print target-cpus
+
+%if 0%{?rhel} > 7 || 0%{?fedora}
+# Do a basic build on fedora/rhel
+cargo build --offline --release --features=kanidm_unix_int/selinux
+%else
 # Override buildflags, we want to use clang + lld here. It's much better/faster than bfd.
 %define build_rustflags -C linker=clang -C link-arg=-fuse-ld=/usr/lib/rustlib/%{_arch}-unknown-linux-gnu/bin/gcc-ld/ld.lld -C debuginfo=2 -C incremental=false
-
 %{cargo_build} --features=kanidm_unix_int/tpm,kanidm_unix_int/selinux
+%endif
 
 %install
 install -D -d -m 0755 %{buildroot}%{_sysconfdir}
@@ -120,6 +131,7 @@ install -D -d -m 0755 %{buildroot}%{_unitdir}
 install -D -d -m 0755 %{buildroot}%{_sbindir}
 install -D -d -m 0755 %{buildroot}%{_bindir}
 install -D -d -m 0755 %{buildroot}%{_libdir}
+
 %if 0%{?suse_version} > 1549
 install -D -d -m 0755 %{buildroot}/%{_pam_moduledir}
 %else
@@ -137,6 +149,7 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_ssh_author
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_unixd %{buildroot}%{_sbindir}/kanidm_unixd
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm_unixd_tasks %{buildroot}%{_sbindir}/kanidm_unixd_tasks
 install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libnss_kanidm.so %{buildroot}%{_libdir}/libnss_kanidm.so.2
+
 %if 0%{?suse_version} > 1549
 install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libpam_kanidm.so %{buildroot}/%{_pam_moduledir}/pam_kanidm.so
 %else
