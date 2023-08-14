@@ -193,4 +193,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1098498 from glaubitz)</comment>
     <requestid>1098513</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9a358cc6472bc77a023c5c82e864e4f7</srcmd5>
+    <version>5.11.4</version>
+    <time>1692045366</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 5.11.4
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1103843 from glaubitz)</comment>
+    <requestid>1103877</requestid>
+  </revision>
 </revisionlist>
