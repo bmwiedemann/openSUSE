@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 13 12:21:57 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Fix SPACK_ROOT setting in /etc/profile.d/spack.[c]sh (bsc#1214222).
+- Don't source /etc/os-release directly, use a subshell.
+
+-------------------------------------------------------------------
 Mon Jun 26 12:26:10 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Add hwloc-devel and sqlite3 to the packages that trigger a

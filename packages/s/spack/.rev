@@ -354,4 +354,13 @@
   spack is installed. (forwarded request 1095549 from eeich)</comment>
     <requestid>1095551</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>9472365c27e04f2d7dbc0ae4e5d5daca</srcmd5>
+    <version>0.20.0</version>
+    <time>1692045347</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SPACK_ROOT setting in /etc/profile.d/spack.[c]sh (bsc#1214222).
+- Don't source /etc/os-release directly, use a subshell.</comment>
+    <requestid>1103772</requestid>
+  </revision>
 </revisionlist>

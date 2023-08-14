@@ -366,13 +366,13 @@ EOF
 # This file properly sets MODULEPATH so lua-lmod can find the modules created by spack
 mkdir -p %{buildroot}/%{_sysconfdir}/profile.d
 cat > %{buildroot}/%{_sysconfdir}/profile.d/spack.sh <<EOF
-source /etc/os-release
+ID=\$(source /etc/os-release; echo \${ID})
 if [ "\${ID}" = "opensuse-tumbleweed" ] ; then
   SPACK_NAME="\${ID/-/}"
 else
   SPACK_NAME="\${ID/-/_}\${VERSION_ID/.*/}"
 fi
-export SPACK_ROOT=%{spack_dir}
+export SPACK_ROOT=%{_prefix}
 export MODULEPATH=~/spack/modules/linux-\${SPACK_NAME}-\${CPU}:%{_prefix}/share/spack/modules/linux-\${SPACK_NAME}-\${CPU}:\${MODULEPATH}
 # copy local configuration, if its not there
 if [ ! -e ~/.spack/config.yaml ] ; then
@@ -398,7 +398,7 @@ if ( \$ID == "opensuse_tumbleweed" ) then
 else
   set SPACK_NAME="\${ID}\${VERSION_ID}"
 endif
-set SPACK_ROOT="%{spack_dir}"
+set SPACK_ROOT="%{_prefix}"
 set MODULEPATH="~/spack/modules/linux-\${SPACK_NAME}-\${CPU}:%{_prefix}/share/spack/modules/linux-\${SPACK_NAME}-\${CPU}:\${MODULEPATH}"
 if ( ! -e ~/.spack/config.yaml )  then
   # test if user is in spack group by touching database
