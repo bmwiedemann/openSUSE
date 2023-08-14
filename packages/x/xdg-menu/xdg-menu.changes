@@ -3,7 +3,7 @@ Wed Dec 17 20:38:49 UTC 2014 - dimstar@opensuse.org
 
 - On openSUSE > 13.2, xterm has been split into xterm-bin for the
   program and xterm for the app launcher. We only need the program,
-  so conditionall Require xterm-bin.
+  so conditionally require xterm-bin.
 
 -------------------------------------------------------------------
 Wed Feb 27 19:30:25 UTC 2013 - asterios.dramis@gmail.com
