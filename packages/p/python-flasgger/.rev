@@ -43,4 +43,36 @@
     <comment></comment>
     <requestid>1081923</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cacc40e286c28f3852cde18ab41b6abc</srcmd5>
+    <version>0.9.7.1</version>
+    <time>1692045299</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.7.1:
+  * fix: flask &gt;== 2.3 json encoder change
+  * removed usage of safe_str_cmp of werkzeug. using hmac.compare_digest
+    instead (#532)
+  * Fix openapi3 request parse validation (#505)
+  * Fix required body if one parameter is required (#476)
+  * Implemented the SwaggerUI urls config parameter which displays a
+    dropdown of API specs instead of an editable textbox (#473)
+  * Fix indentation in readme example (#480)
+  * fix path parameter bug for integers (#485)
+  * Wrapping APISpecsView get response in a try except (#420)
+  * Trivial flake issue resolved for docker build of flasgger (#452)
+  * Deprecate imp [Breaks py2.7 compatibility] (#413) Resolves #434
+  * Remove python2
+  * Fix error format and add regression tests
+  * Extract is_openapi3 in utils and test it
+  * Add flask_mongorest
+  * Set displayOperationId to true
+  * Add use func validate from utils
+  * add test case for post request
+  * Change test for swag_schema
+  * Add Swagger UI auth config to ui.inioauth
+  * Make available oauth2 redirect html
+- Switch to pyproject macros.
+- Stop using globs in %files</comment>
+    <requestid>1102797</requestid>
+  </revision>
 </revisionlist>

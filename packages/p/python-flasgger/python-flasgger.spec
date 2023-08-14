@@ -27,20 +27,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flasgger%{psuffix}
-Version:        0.9.5
+Version:        0.9.7.1
 Release:        0
 Summary:        Tool to extract swagger specs from Flask projects
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/rochacbruno/flasgger/
 Source:         https://files.pythonhosted.org/packages/source/f/flasgger/flasgger-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 0.10
 Requires:       python-PyYAML >= 3.0
 Requires:       python-jsonschema >= 3.0.1
 Requires:       python-mistune
+Requires:       python-packaging
 Requires:       python-six >= 1.10
 BuildArch:      noarch
 
@@ -73,10 +75,10 @@ find . -name .DS_Store -print -delete
 
 %if !%{with test}
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand chmod -x %{buildroot}%{$python_sitelib}/flasgger/ui2/static/lang/*.js
 %fdupes %{buildroot}%{$python_sitelib}
 }
@@ -91,7 +93,8 @@ find . -name .DS_Store -print -delete
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/flasgger*/
+%{python_sitelib}/flasgger
+%{python_sitelib}/flasgger-%{version}.dist-info
 %endif
 
 %changelog
