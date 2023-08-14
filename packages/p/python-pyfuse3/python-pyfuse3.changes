@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 13 21:20:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * Cythonized with latest Cython 3.0.0.
+  * Drop Python 3.6 and 3.7 support and testing, #71.
+  * CI: also test python 3.12. test on cython 0.29 and cython
+    3.0.
+  * Tell Cython that callbacks may raise exceptions, #80.
+  * Fix lookup in examples/hello.py, similar to #16.
+  * Misc. CI, testing, build and sphinx related fixes.
+
+-------------------------------------------------------------------
 Thu Jun  1 08:45:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.3:
