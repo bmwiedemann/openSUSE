@@ -61,4 +61,14 @@
   * Support typeguard 4+.</comment>
     <requestid>1087190</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>3c9471021b4952fa8822de742eace02d</srcmd5>
+    <version>0.6.2</version>
+    <time>1692045308</time>
+    <user>dimstar_suse</user>
+    <comment>- skip more tests for newer pygments version
+
+- restrict to older Cython</comment>
+    <requestid>1103867</requestid>
+  </revision>
 </revisionlist>
