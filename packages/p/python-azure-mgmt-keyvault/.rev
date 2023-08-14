@@ -192,4 +192,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1089721 from glaubitz)</comment>
     <requestid>1089800</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cf639e6a9ed315514d3e10744cda5a39</srcmd5>
+    <version>10.2.3</version>
+    <time>1692045368</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 10.2.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1103847 from glaubitz)</comment>
+    <requestid>1103879</requestid>
+  </revision>
 </revisionlist>
