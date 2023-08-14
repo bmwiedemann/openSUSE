@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Aug 11 03:06:58 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.53
+   see /usr/share/doc/packages/perl-Graphics-Toolkit-Color/Changes
+
+  1.53     2023-08-11    lichtkind
+  -------
+      * = maintenance
+      * ? more doc fixes to new API
+      * ! fix rounding error under -Duselongdouble
+  1.52    2023-08-11    lichtkind
+  -------
+      * = maintenance + third phase toward 2.0
+      * + added gradient method with new API
+      * ? more doc fixes to new API
+      * & more tests
+  1.51    2023-08-10    lichtkind
+  -------
+      * = a few documentation fixes
+  1.50    2023-08-09    lichtkind
+  -------
+      * = first + second phase of of 2.0 rewrite
+      * + add CMY, CMYK and HSV support
+      * + new universal getter method: values
+      * + new modifier method: set, blend
+      * ~ enhanced and strictened modifier method: add
+      * \ deprecate all other numeric getter: rgb, red, green, blue, rgb_hex,
+                           rgb_hash, hsl, hue, saturation, lightnss, hsl_hash
+      * \ till 2.0 will be also deprecated: rgb_gradient_to, hsl_gradient_to,
+                                            gradient_to, distance_to, blend_with
+      * & new getter API
+      * & keep complex names like 'SVG:green' to be returned by getter: ->name
+      * ? rewritten large part of documentation
+
+-------------------------------------------------------------------
 Mon Jul 17 03:08:26 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.09
