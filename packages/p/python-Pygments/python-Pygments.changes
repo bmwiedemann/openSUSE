@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Aug  7 13:10:31 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 2.16.1:
+  * Fix native style missing from style list (#2484)
+- additional changes from version 2.16.0:
+  * New lexers:
+    + ASN.1 (#2462)
+    + Blueprint (#2434)
+    + BQN (#2472)
+    + DNS zone files (#2464)
+    + GraphQL (#2428)
+    + Linux desktop files (following the specification of the
+      Freedesktop group, formerly known as XDG) (#2470)
+    + NVIDIA PTX (#2432)
+    + OpenSCAD (#2449)
+    + systemd (#2470)
+    + TLS presentation language (#2455)
+    + Verifpal (#2430)
+    + YARA (#2453)
+  * Updated lexers:
+    + ASC: Add application/pem-certificate-chain mimetype (#2471)
+    + C/C++: Refine keyword lists (#2421, #2422)
+    + Carbon: Fix long processing times on invalid input, fix
+      number lexing (#2454, #2456)
+    + Elpi: Handle quotations (#2419)
+    + Go: Support additional built-ins (#2481)
+    + HTTP: Support empty headers (#2461), support more general
+      methods (#2460), also recognize responses in analyse_text
+      implementation (#2460), and highlight URL encoded data
+      (#2465, #1620)
+    + Igor Pro: Update to Igor Pro 9 (#2482)
+    + lean: Recognize expressions nested within attributes (#1817)
+    + Macaulay2: Update builtins (#2457)
+    + Markdown: Allow extra characters after language name in code
+      blocks (#2437)
+    + NestedText: Update to version 3 (#2459)
+    + scdoc: Improve language guessing implementation (#2402)
+    + Spice: Update to latest version (#2476)
+    + Transact SQL: Add Pre-sorted Group keyword (#2417)
+    + Uxntal: Update for current runes (#2424)
+    + Wikitext: Fix templates in wiki links; fix a language
+      converter false positive; add bold italic markup (#2447)
+  * Add Generic.EmphStrong token for bold italic markup (#2444)
+  * Add Lightbulb style (#2474)
+  * Improve contrast in Monokai style (#2448)
+  * Add documentation how to create terminal code highlighting
+    commands (#2131, #2425)
+  * Add support for loading TrueType fonts to the ImageFormatter
+    (#1960)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:21:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

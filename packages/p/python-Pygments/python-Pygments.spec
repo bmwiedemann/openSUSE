@@ -25,7 +25,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pygments
-Version:        2.15.1
+Version:        2.16.1
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause
