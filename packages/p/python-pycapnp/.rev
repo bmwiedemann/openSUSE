@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>1041238</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>242538ace7f8788569517cf4d61d4ee5</srcmd5>
+    <version>1.3.0</version>
+    <time>1692045330</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.0:
+  * Update to bundled capnproto-0.10.3
+  * Add Python 3.11
+  * Prevent race condition in example code (#305)</comment>
+    <requestid>1103726</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycapnp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pycapnp
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        Cython wrapping of the C++ Cap'n Proto library
 License:        BSD-2-Clause
 URL:            https://github.com/capnproto/pycapnp
 Source:         https://github.com/capnproto/pycapnp/archive/refs/tags/v%{version}.tar.gz#/pycapnp-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython with %python-Cython < 3}
 BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
