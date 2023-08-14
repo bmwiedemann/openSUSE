@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 13 21:19:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- restrict to older Cython version 
+
+-------------------------------------------------------------------
 Wed Jun 28 03:27:42 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch deal-with-missing-socket.patch

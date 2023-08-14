@@ -27,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/L/Logbook/Logbook
 Patch1:         https://github.com/getlogbook/logbook/pull/316.patch#/logbook-pr316-sqlalchemy-count.patch
 Patch2:         deal-with-missing-socket.patch
 BuildRequires:  %{python_module Brotli}
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython with %python-Cython < 3}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module SQLAlchemy < 2}
 BuildRequires:  %{python_module devel}

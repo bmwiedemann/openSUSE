@@ -81,4 +81,12 @@
 - Refresh patch from GitHub, the short shas gained one character.</comment>
     <requestid>1095703</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>afaad7df2a55e280ad5efae861739fb1</srcmd5>
+    <version>1.5.3</version>
+    <time>1692045333</time>
+    <user>dimstar_suse</user>
+    <comment>- restrict to older Cython version</comment>
+    <requestid>1103736</requestid>
+  </revision>
 </revisionlist>
