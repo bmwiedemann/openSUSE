@@ -230,4 +230,14 @@
     ini not supporting floats</comment>
     <requestid>1102598</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1886f6498f05fa5d86fe34a79a6f2fb7</srcmd5>
+    <version>0.9.1</version>
+    <time>1692045320</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.1:
+  * hardcoded pipewire include flags #519
+  * default input wrongly set to alsa instead of pulseaudio/pipewire #518</comment>
+    <requestid>1103709</requestid>
+  </revision>
 </revisionlist>
