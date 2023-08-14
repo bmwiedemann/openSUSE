@@ -34,7 +34,6 @@ Source:         screenplain-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix_entry_point.patch mcepl@suse.com
 # entry point lead to incorrect function.
 Patch0:         fix_entry_point.patch
-BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module reportlab}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -78,7 +77,6 @@ sed -i '1{/^#!.*env python/d}' screenplain/main.py
 %check
 %pyunittest discover -v -p '*test*.py'
 %python_exec -mdoctest -v screenplain/*.py
-%python_exec -mpycodestyle -v screenplain tests
 
 %post
 %python_install_alternative screenplain

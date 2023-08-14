@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 13 19:46:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- skip pycodestyle check - fails with newer versions and isn't
+  a good check to begin with 
+
+-------------------------------------------------------------------
 Mon Mar 20 13:44:17 UTC 2023 - mcepl@cepl.eu
 
 - Update to version 0.9.0+git.1679319196.353e6c9:

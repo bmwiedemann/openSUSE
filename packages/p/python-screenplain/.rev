@@ -48,4 +48,13 @@
 </comment>
     <requestid>1073282</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a4ca336c9f45dd2b262b023e99937069</srcmd5>
+    <version>0.9.0+git.1679319196.353e6c9</version>
+    <time>1692045328</time>
+    <user>dimstar_suse</user>
+    <comment>- skip pycodestyle check - fails with newer versions and isn't
+  a good check to begin with</comment>
+    <requestid>1103725</requestid>
+  </revision>
 </revisionlist>
