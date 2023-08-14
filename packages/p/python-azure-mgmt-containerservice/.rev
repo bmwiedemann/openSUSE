@@ -413,4 +413,15 @@
     <comment></comment>
     <requestid>1094777</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4ddb1ca41d40742858ba4357582d73e2</srcmd5>
+    <version>25.0.0</version>
+    <time>1692045387</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 25.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1103905 from glaubitz)</comment>
+    <requestid>1103922</requestid>
+  </revision>
 </revisionlist>
