@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 14 13:08:03 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.11.0
+  * Declare support for Python 3.11 and drop support for Python 3.7 (#275)
+  * Stop converting argument's `bool` default value to `DefaultInt` (#273)
+
+-------------------------------------------------------------------
 Tue Dec  6 08:22:09 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.10.1
