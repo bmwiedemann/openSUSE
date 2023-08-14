@@ -24,7 +24,7 @@ Summary:        Python bindings for FFmpeg's libraries
 License:        BSD-3-Clause
 URL:            https://github.com/PyAV-Org/PyAV
 Source:         https://files.pythonhosted.org/packages/source/a/av/av-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython with %python-Cython < 3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}

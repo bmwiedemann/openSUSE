@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 13 19:36:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- restrict to older Cython bindings version 
+
+-------------------------------------------------------------------
 Wed Mar 29 04:51:43 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Require FFmpeg < 5 for now since tests are failing with recent
