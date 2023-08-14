@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 14 07:22:40 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Recursively search for firmware information in sysfs (jsc#PED-3539)
+  + lsvpd-Fill-firmware-information-by-recursively-looki.patch
+
+-------------------------------------------------------------------
 Mon Apr  3 16:18:32 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix NVMe information parsing with newer firmware (bsc#1208122 ltc#200118)
