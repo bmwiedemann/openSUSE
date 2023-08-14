@@ -24,14 +24,15 @@ Summary:        An expressive ORM that supports multiple SQL backends
 License:        BSD-3-Clause
 URL:            https://github.com/coleifer/peewee
 Source:         https://github.com/coleifer/peewee/archive/refs/tags/%{version}.tar.gz#/peewee-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython < 3.0.0}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module PyMySQL}
 BuildRequires:  %{python_module apsw}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psycopg2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -49,10 +50,10 @@ An expressive ORM that supports PostgreSQL, MySQL and SQLite.
 %setup -q -n peewee-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pwiz.py
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 

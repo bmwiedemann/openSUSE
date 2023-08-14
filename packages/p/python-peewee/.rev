@@ -245,4 +245,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1091730</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>ee18d2d8f5fb22d5e50f966026160df1</srcmd5>
+    <version>3.16.2</version>
+    <time>1692045331</time>
+    <user>dimstar_suse</user>
+    <comment>- bind to cython &lt; 3</comment>
+    <requestid>1103730</requestid>
+  </revision>
 </revisionlist>
