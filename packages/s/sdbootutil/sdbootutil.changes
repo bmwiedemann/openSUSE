@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 14 13:24:43 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20230814.38973c7:
+  * Support purge-kernels
+  * Fix postun
+  * Remove debug logging
+
+-------------------------------------------------------------------
 Mon Aug  7 07:38:45 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Only install the snapper plugin if sdbootutil is requested

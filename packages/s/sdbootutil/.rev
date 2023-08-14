@@ -25,4 +25,15 @@
     <comment></comment>
     <requestid>1102648</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3bc2348a94ee9353cfe3f78f8684dfe4</srcmd5>
+    <version>1+git20230814.38973c7</version>
+    <time>1692045369</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1+git20230814.38973c7:
+  * Support purge-kernels
+  * Fix postun
+  * Remove debug logging (forwarded request 1103881 from lnussel)</comment>
+    <requestid>1103882</requestid>
+  </revision>
 </revisionlist>
