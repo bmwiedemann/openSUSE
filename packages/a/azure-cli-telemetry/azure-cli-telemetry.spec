@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli-telemetry
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-telemetry
-Version:        1.0.8
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Azure CLI Telemetry Package
 License:        MIT

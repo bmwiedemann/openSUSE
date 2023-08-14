@@ -67,4 +67,15 @@
     <comment></comment>
     <requestid>1004116</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b525a17305a08c3f5696bf7ffe03b044</srcmd5>
+    <version>1.1.0</version>
+    <time>1692045359</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package (forwarded request 1103880 from glaubitz)</comment>
+    <requestid>1103884</requestid>
+  </revision>
 </revisionlist>
