@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 13 21:40:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- use generic Cython dependency >= 3.0 
+
+-------------------------------------------------------------------
 Mon Mar 20 06:44:40 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Enable python 3.11 build again, now is supported
