@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 14 13:29:06 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.24.0b1
+  + Experimental: Surface MSAL telemetry as a long opaque string (#575).
+    This behavior is useful if your app has your own telemetry mechanism
+    and wants to also collect MSAL's telemetry.
+- from version 1.23.0
+  + acquire_token_for_client() will automatically look up tokens from cache (#577)
+- Override upstream version with 1.24.0~b1
+
+-------------------------------------------------------------------
 Wed Apr 19 08:58:01 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.22.0

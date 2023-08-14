@@ -190,4 +190,18 @@
     form of &quot;tenant.ciamlogin.com/*&quot; (#520) (forwarded request 1080273 from glaubitz)</comment>
     <requestid>1080298</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fd56968aad00ddf9c5dfa749bfc7c43d</srcmd5>
+    <version>1.24.0~b1</version>
+    <time>1692045371</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.24.0b1
+  + Experimental: Surface MSAL telemetry as a long opaque string (#575).
+    This behavior is useful if your app has your own telemetry mechanism
+    and wants to also collect MSAL's telemetry.
+- from version 1.23.0
+  + acquire_token_for_client() will automatically look up tokens from cache (#577)
+- Override upstream version with 1.24.0~b1 (forwarded request 1103883 from glaubitz)</comment>
+    <requestid>1103887</requestid>
+  </revision>
 </revisionlist>
