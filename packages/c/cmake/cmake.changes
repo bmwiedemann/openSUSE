@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 12 12:38:42 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- update to 3.27.2
+  * Tests: Remove redundant condition in RunCMake.GeneratorPlatform
+    test
+  * file(GENERATE): Restore INPUT|CONTENT parse checking
+  * cmList: Fix performance regression in append/prepend
+
+-------------------------------------------------------------------
 Fri Jul 28 18:41:34 UTC 2023 - Christoph G <foss@grueninger.de>
 
 - Update to 3.27.1
