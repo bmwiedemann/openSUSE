@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  8 00:36:01 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 2.9.0:
+  * opengl support for X11 and wayland
+  * add support for MacOS 11 Big Sur
+  * add support for wayfire (plugin required)
+  * fix memory leak when using wayland and tmux
+  * performance improvements for wayland
+  * use `XDG_CACHE_HOME` when available
+
+-------------------------------------------------------------------
 Tue Jul 18 14:04:10 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 2.8.9:
