@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Aug 11 10:54:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.14.0:
+  + Various security fixes and other quality improvements.
+  + CVE-2023-4045: Offscreen Canvas could have bypassed
+    cross-origin restrictions.
+  + CVE-2023-4046: Incorrect value used during WASM compilation.
+  + CVE-2023-4047: Potential permissions request bypass via
+    clickjacking.
+  + CVE-2023-4048: Crash in DOMParser due to out-of-memory
+    conditions.
+  + CVE-2023-4049: Fix potential race conditions when releasing
+    platform objects.
+  + CVE-2023-4050: Stack buffer overflow in StorageManager.
+  + CVE-2023-4054: Lack of warning when opening appref-ms files.
+  + CVE-2023-4055: Cookie jar overflow caused unexpected cookie jar
+    state.
+  + CVE-2023-4056: Memory safety bugs fixed in Firefox 116, Firefox
+    ESR 115.1, Firefox ESR 102.14, Thunderbird 115.1, and
+    Thunderbird 102.14.
+- Changes from version 102.13.0:
+  + Various security fixes and other quality improvements.
+  + CVE-2023-37201: Use-after-free in WebRTC certificate generation
+  + CVE-2023-37202: Potential use-after-free from compartment
+    mismatch in SpiderMonkey
+  + CVE-2023-37207: Fullscreen notification obscured
+  + CVE-2023-37208: Lack of warning when opening Diagcab files
+  + CVE-2023-37211: Memory safety bugs fixed in Firefox 115,
+    Firefox ESR 102.13, and Thunderbird 102.13
+
+-------------------------------------------------------------------
 Mon Jun 26 12:32:11 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 102.12.0:
