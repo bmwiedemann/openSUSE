@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 14 19:42:50 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 1.11.1.1386:
+  * Release artifacts are now published to GitHub, and the download
+    archive is used only as a mirror
+  * Download and mirroring wip
+  * With -X or -T accept `-` as a trailing argument to read the
+    remainder of args from stdin
+  * On windows installer, hide progress bar on download
+  * Update to tools.deps 0.18.1354
+  * Update to tools.tools 0.3.1
+
+-------------------------------------------------------------------
 Sun May 28 14:03:49 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.11.1.1342:
