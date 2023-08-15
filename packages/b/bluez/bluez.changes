@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 15 07:40:10 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- For pushing bluez 5.68 to 15-SP6 (bluez-5.65), sync change log:
+   (jsc#PED-5599)
+    - The avrcp-Fix-crash-while-handling-unsupported-events.patch
+      be merged to bluez-5.67 since 2023. (bsc#1210398)(CVE-2023-27349)
+
+-------------------------------------------------------------------
 Fri Aug 11 07:11:10 UTC 2023 - Joey Lee <jlee@suse.com>
 
 - 0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch be
