@@ -9,9 +9,9 @@ diff -urEbwB openj9-openjdk-jdk17.orig/omr/compiler/optimizer/OMRSimplifierHandl
 +#pragma GCC diagnostic ignored "-Wstringop-overflow"
 +
  #include "optimizer/OMRSimplifierHelpers.hpp"
- #include "optimizer/OMRSimplifierHandlers.hpp"
+ #include "optimizer/SimplifierHandlers.hpp"
  
-@@ -17404,5 +17407,6 @@
+@@ -17353,5 +17356,6 @@
     return node;
     }
  

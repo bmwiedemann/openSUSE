@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 15 07:06:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 8u382 build 05 with OpenJ9 0.40.0 virtual
+  machine
+- Including Oracle July 2023 CPU changes
+  * CVE-2023-22045 (bsc#1213481), CVE-2023-22049 (bsc#1213482)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.40
+- Modified patch:
+  * stringop-overflow.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Mon Aug  7 14:11:01 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 8u372 build 07 with OpenJ9 0.38.0 virtual
