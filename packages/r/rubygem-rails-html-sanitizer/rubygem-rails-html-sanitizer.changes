@@ -13,22 +13,22 @@ Wed Feb 22 16:23:02 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
     ## 1.4.4 / 2022-12-13
 
 	* Address inefficient regular expression complexity with certain configurations of Rails::Html::Sanitizer.
-	Fixes CVE-2022-23517. See GHSA-5x79-w82f-gw8w for more information.
+	Fixes CVE-2022-23517 (bsc#1206433). See GHSA-5x79-w82f-gw8w for more information.
 
 	_Mike Dalessio_
 
 	* Address improper sanitization of data URIs.
-	Fixes CVE-2022-23518 and #135. See GHSA-mcvf-2q2m-x72m for more information.
+	Fixes CVE-2022-23518 (bsc#1206434) and #135. See GHSA-mcvf-2q2m-x72m for more information.
 
 	_Mike Dalessio_
 
 	* Address possible XSS vulnerability with certain configurations of Rails::Html::Sanitizer.
-	Fixes CVE-2022-23520. See GHSA-rrfc-7g8p-99q8 for more information.
+	Fixes CVE-2022-23520 (bsc#1206436). See GHSA-rrfc-7g8p-99q8 for more information.
 
 	_Mike Dalessio_
 
 	* Address possible XSS vulnerability with certain configurations of Rails::Html::Sanitizer.
-	Fixes CVE-2022-23519. See GHSA-9h9g-93gc-623h for more information.
+	Fixes CVE-2022-23519 (bsc#1206435). See GHSA-9h9g-93gc-623h for more information.
 
 	_Mike Dalessio_
 
@@ -41,7 +41,7 @@ Mon Jun 13 17:09:28 UTC 2022 - Manuel Schnitzer <mschnitzer@suse.com>
 
     Prevent the combination of `select` and `style` as allowed tags in SafeListSanitizer.
 
-    Fixes CVE-2022-32209
+    Fixes CVE-2022-32209: bsc#1201183. File 0001_CVE-2022-32209.patch no longer required.
 
     *Mike Dalessio*
 

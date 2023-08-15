@@ -79,4 +79,12 @@
     <comment></comment>
     <requestid>1067311</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>2816615b11f4a852fc3a093d5106c82a</srcmd5>
+    <version>1.5.0</version>
+    <time>1692110440</time>
+    <user>dimstar_suse</user>
+    <comment>Added bugzilla references to fixed CVEs (forwarded request 1102388 from pperego)</comment>
+    <requestid>1104046</requestid>
+  </revision>
 </revisionlist>
