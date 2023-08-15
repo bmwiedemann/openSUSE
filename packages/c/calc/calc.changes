@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 15 06:32:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.3.4:
+  * Fix typo in the make debug Makefile rule.
+  * Fix install of statically linked calc under macOS 
+  * Update comments in Makefile.local about using -fsanitize
+  * Add Makefile.local comments for macOS reduce dependency chains 
+  * Fix calc when CUSTOM is undefined, remove PASSDOWN values 
+  * Fix use of -dead_strip_dylibs for macOS linker
+
+-------------------------------------------------------------------
 Thu Aug  3 06:31:46 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.14.3.0:
