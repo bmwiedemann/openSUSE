@@ -260,4 +260,12 @@
   * Add Cinder 3.10 and Cinder configure patches</comment>
     <requestid>1098932</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>683ffc1c682c7047850ca9f65c809d9c</srcmd5>
+    <version>2.3.24</version>
+    <time>1692110434</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1104033</requestid>
+  </revision>
 </revisionlist>
