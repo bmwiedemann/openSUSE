@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug 14 16:00:52 UTC 2023 - Matthias Fehring <buschmann23@opensuse.org>
+
+- specfile
+  * fix build on Leap 15 by moving sle15_python_module_pythons macro
+    to the top
+
+-------------------------------------------------------------------
+Mon Aug 14 06:05:34 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require python 3.8
+
+- update to version 7.3.0:
+  * Added a Coverage.collect() context manager to start and stop
+    coverage data collection.
+  * Dropped support for Python 3.7.
+  * Fix: in unusual circumstances, SQLite cannot be set to
+    asynchronous mode. Coverage.py would fail with the error Safety
+    level may not be changed inside a transaction. This is now
+    avoided, closing issue 1646. Thanks to Michael Bell for the
+    detailed bug report.
+  * Docs: examples of configuration files now include separate
+    examples for the different syntaxes: .coveragerc, pyproject.toml,
+    setup.cfg, and tox.ini.
+  * Fix: added nosemgrep comments to our JavaScript code so that
+    semgrep-based SAST security checks won’t raise false alarms about
+    security problems that aren’t problems.
+  * Added a CITATION.cff file, thanks to Ken Schackart.
+
+-------------------------------------------------------------------
 Thu Aug 10 22:00:16 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - specfile:

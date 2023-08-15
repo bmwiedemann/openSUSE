@@ -16,14 +16,15 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-coverage
-Version:        7.2.7
+Version:        7.3.0
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0
 URL:            https://github.com/nedbat/coveragepy
 Source:         https://files.pythonhosted.org/packages/source/c/coverage/coverage-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -34,7 +35,6 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # coverage[toml]
 Recommends:     python-tomli
-%{?sle15_python_module_pythons}
 # SECTION test requirements
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis >= 6}

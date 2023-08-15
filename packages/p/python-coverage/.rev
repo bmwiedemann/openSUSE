@@ -639,4 +639,12 @@ __init__.py is the only file with a definitive license statement (BSD-2-Clause).
 update to latest version</comment>
     <requestid>1103606</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>42880160c54035c9db9dcdeaa431c5a1</srcmd5>
+    <version>7.3.0</version>
+    <time>1692110390</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103928</requestid>
+  </revision>
 </revisionlist>
