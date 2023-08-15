@@ -383,10 +383,19 @@ This package contains the API documentation for GTK+ 3.x.
 %autosetup -N -n %{_name}-%{version}
 %if "%{_lib}" == "lib64"
 cp -a %{SOURCE1} .
+%if !0%{?sle_version}
 %autopatch -p1 0
+%else
+%patch0 -p1
 %endif
+%endif
+
+%if !0%{?sle_version}
 # Apply patches 1 to 999 (1 >= 999)
 %autopatch -p1 -m 1 -M 999
+%else
+%patch1 -p1
+%endif
 
 %build
 %meson \
