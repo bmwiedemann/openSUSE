@@ -63,7 +63,6 @@ export CXXFLAGS='%{optflags} -mno-altivec'
 %cmake \
 	-DSC_PATH=%{_includedir}/SuperCollider \
 	%{cmakearch} \
-	-DQUARKS=ON \
 	%{?cmakesupernova}
 %make_build clean
 %make_build
@@ -77,8 +76,9 @@ cd build
 %license license.txt
 %doc README.md
 %dir %{_datadir}/SuperCollider
-%dir %{_datadir}/SuperCollider/SC3plugins
-%{_datadir}/SuperCollider/SC3plugins
+%dir %{_datadir}/SuperCollider/Extensions
+%dir %{_datadir}/SuperCollider/Extensions/SC3plugins
+%{_datadir}/SuperCollider/Extensions/SC3plugins
 %dir %{_libdir}/SuperCollider
 %dir %{_libdir}/SuperCollider/plugins
 %{_libdir}/SuperCollider/plugins

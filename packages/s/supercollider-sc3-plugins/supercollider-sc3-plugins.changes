@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  1 07:02:13 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Disable QUARKS=ON as it gives no effect and installs plugins in 
+  to wrong path (boo#1213615).
+
+-------------------------------------------------------------------
 Mon Feb 27 21:33:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.13.0:
