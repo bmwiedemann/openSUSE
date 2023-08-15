@@ -82,4 +82,28 @@
   * https://www.postgresql.org/docs/15/release-15-3.html</comment>
     <requestid>1086554</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5886245924633592a8ac3f6b162812ab</srcmd5>
+    <version>15.4</version>
+    <time>1692110362</time>
+    <user>dimstar_suse</user>
+    <comment>Restore _multibuild
+
+- Update to 15.4:
+  * bsc#1214059, CVE-2023-39417: Disallow substituting a schema or
+    owner name into an extension script if the name contains a
+    quote, backslash, or dollar sign.
+  * bsc#1214061, CVE-2023-39418: Fix MERGE to enforce row security
+    policies properly.
+  * https://www.postgresql.org/docs/15/release-15-4.html
+
+- Restore the independence of mini builds from the main build after
+  the -mini name change from April 4, 2023.
+- Adjust icu handling to prepare for PostgreSQL 16.
+
+- Overhaul postgresql-README.SUSE and move it from the binary
+  package to the noarch wrapper package.
+- Change the unix domain socket location from /var/run to /run.</comment>
+    <requestid>1103837</requestid>
+  </revision>
 </revisionlist>
