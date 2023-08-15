@@ -20,14 +20,14 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-PyYAML
-Version:        6.0
+Version:        6.0.1
 Release:        0
 Summary:        YAML parser and emitter for Python
 License:        MIT
 URL:            https://github.com/yaml/pyyaml
 Source:         https://files.pythonhosted.org/packages/source/P/PyYAML/PyYAML-%{version}.tar.gz
 Patch0:         setuptools.patch
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython with %python-Cython < 3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  libyaml-devel
