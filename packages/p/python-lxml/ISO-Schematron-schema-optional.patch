@@ -12,13 +12,13 @@ See https://bugs.launchpad.net/lxml/+bug/2024343
  src/lxml/isoschematron/__init__.py |   24 +++++++++++++++++++-----
  3 files changed, 36 insertions(+), 5 deletions(-)
 
-Index: lxml-4.9.2/CHANGES.txt
+Index: lxml-4.9.3/CHANGES.txt
 ===================================================================
---- lxml-4.9.2.orig/CHANGES.txt
-+++ lxml-4.9.2/CHANGES.txt
-@@ -2,6 +2,14 @@
- lxml changelog
- ==============
+--- lxml-4.9.3.orig/CHANGES.txt
++++ lxml-4.9.3/CHANGES.txt
+@@ -27,6 +27,14 @@ Other changes
+ * Built with Cython 0.29.36 to adapt to changes in Python 3.12.
+ 
  
 +* LP#2024343: The validation of the schema file itself is now optional in the
 +  ISO-Schematron implementation.  This was done because some lxml distributions
@@ -31,10 +31,10 @@ Index: lxml-4.9.2/CHANGES.txt
  4.9.2 (2022-12-13)
  ==================
  
-Index: lxml-4.9.2/doc/validation.txt
+Index: lxml-4.9.3/doc/validation.txt
 ===================================================================
---- lxml-4.9.2.orig/doc/validation.txt
-+++ lxml-4.9.2/doc/validation.txt
+--- lxml-4.9.3.orig/doc/validation.txt
++++ lxml-4.9.3/doc/validation.txt
 @@ -615,6 +615,15 @@ The usage of validation phases is a uniq
  a very powerful tool e.g. for establishing validation stages or to provide 
  different validators for different "validation audiences".
@@ -51,10 +51,10 @@ Index: lxml-4.9.2/doc/validation.txt
  (Pre-ISO-Schematron)
  --------------------
  
-Index: lxml-4.9.2/src/lxml/isoschematron/__init__.py
+Index: lxml-4.9.3/src/lxml/isoschematron/__init__.py
 ===================================================================
---- lxml-4.9.2.orig/src/lxml/isoschematron/__init__.py
-+++ lxml-4.9.2/src/lxml/isoschematron/__init__.py
+--- lxml-4.9.3.orig/src/lxml/isoschematron/__init__.py
++++ lxml-4.9.3/src/lxml/isoschematron/__init__.py
 @@ -61,10 +61,16 @@ iso_svrl_for_xslt1 = _etree.XSLT(_etree.
  svrl_validation_errors = _etree.XPath(
      '//svrl:failed-assert', namespaces={'svrl': SVRL_NS})

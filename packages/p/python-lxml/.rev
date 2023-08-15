@@ -980,4 +980,20 @@ Send to Staging:E.
 </comment>
     <requestid>1098714</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>654c1918bf9670bc0e44c1388e0ae0f7</srcmd5>
+    <version>4.9.3</version>
+    <time>1692110339</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.9.3:
+  * ``lxml.objectify`` accepted non-decimal numbers like ``²²²``
+    as integers.
+  * A memory leak in ``lxml.html.clean`` was resolved by
+    switching to Cython 0.29.34+.
+  * GH#348: URL checking in the HTML cleaner was improved.
+  * GH#371, GH#373: Some regex strings were changed to raw
+    strings to fix Python warnings.
+  * Built with Cython 0.29.36 to adapt to changes in Python 3.12.</comment>
+    <requestid>1103711</requestid>
+  </revision>
 </revisionlist>
