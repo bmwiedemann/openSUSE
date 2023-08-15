@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-cmarkgfm
 Version:        2022.10.27
@@ -26,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jonparrott/cmarkgfm
 Source:         https://files.pythonhosted.org/packages/source/c/cmarkgfm/cmarkgfm-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM cmark-gfm-13.patch gh#theacodes/cmarkgfm#63
+Patch0:         cmark-gfm-13.patch
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}

@@ -61,4 +61,14 @@
     <comment></comment>
     <requestid>1082054</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>da55ddd86a2caae93108bfe86cc2c855</srcmd5>
+    <version>2022.10.27</version>
+    <time>1692110358</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cmark-gfm-13.patch to update cmark to 0.29.0.gfm.13
+  (gh#theacodes/cmarkgfm#63, bsc#1213317, CVE-2023-37463)
+</comment>
+    <requestid>1103806</requestid>
+  </revision>
 </revisionlist>

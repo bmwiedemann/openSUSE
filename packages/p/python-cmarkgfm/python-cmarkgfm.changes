@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 14 07:36:03 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add cmark-gfm-13.patch to update cmark to 0.29.0.gfm.13
+  (gh#theacodes/cmarkgfm#63, bsc#1213317, CVE-2023-37463)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:23:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
