@@ -1591,4 +1591,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1102506</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>052e6f606b767cc1d069fc6e8dbdcebc</srcmd5>
+    <version>1.11.2</version>
+    <time>1692110342</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11.2:
+  * Added typing to the default script mako templates.
+  * Added support in autogenerate for NULLS NOT DISTINCT in
+  * the PostgreSQL dialect.
+  * Fixed format string logged when running a post write hook
+  * Added parameters if_exists and if_not_exists for index
+    operations.</comment>
+    <requestid>1103719</requestid>
+  </revision>
 </revisionlist>

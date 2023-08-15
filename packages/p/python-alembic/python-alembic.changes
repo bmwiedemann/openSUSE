@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 13 19:32:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.2:
+  * Added typing to the default script mako templates.
+  * Added support in autogenerate for NULLS NOT DISTINCT in
+  * the PostgreSQL dialect.
+  * Fixed format string logged when running a post write hook
+  * Added parameters if_exists and if_not_exists for index
+    operations.
+
+-------------------------------------------------------------------
 Sat Jul 29 21:17:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.1:
