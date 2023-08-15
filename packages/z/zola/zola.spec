@@ -25,6 +25,7 @@ URL:            https://github.com/getzola/zola
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
+Patch1:         https://github.com/getzola/zola/pull/2258.patch#/0001-fix-life-in-zola-serve.patch
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
@@ -40,7 +41,7 @@ Jinja2, Django templates, Liquid, and Twig. Content is written in CommonMark,
 a strongly defined, highly compatible specification of Markdown.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 

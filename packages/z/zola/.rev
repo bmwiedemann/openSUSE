@@ -172,4 +172,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1081286</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>ec281ef3764770a8a67f56a16f617092</srcmd5>
+    <version>0.17.2</version>
+    <time>1692110409</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-fix-life-in-zola-serve.patch to address bsc#1214237
+- Replace obsoleted `disabled` option with `manual`
+</comment>
+    <requestid>1103952</requestid>
+  </revision>
 </revisionlist>
