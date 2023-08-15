@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Aug 14 07:27:59 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- New release 20230814
+- bump c/storage to 1.48.0
+  * Bump to v1.47.0
+  * Fix error if continueWrite/continueRead pipe open fails
+  * pkg/regexp: make sure that &Regexp implements the interfaces
+  * Remove use of fillGo18FileTypeBits
+- bump c/image to 5.27.0
+  * fix(deps): update module github.com/docker/docker to v23.0.3+incompatible
+  * fix(deps): update module golang.org/x/term to v0.7.0
+  * fix(deps): update module github.com/klauspost/compress to v1.16.4
+  * fix(deps): update module github.com/sigstore/sigstore to v1.6.1
+  * chore(deps): update dependency containers/automation_images to v20230405
+  * fix(deps): update module golang.org/x/crypto to v0.8.0
+  * fix(deps): update module golang.org/x/oauth2 to v0.7.0
+  * fix(deps): update module github.com/containers/storage to v1.46.1
+  * fix(deps): update module github.com/sigstore/sigstore to v1.6.2
+  * Don't completely silently ignore non-OCI manifests in OCI layouts
+  * fix(deps): update module github.com/klauspost/compress to v1.16.5
+  * fix(deps): update module github.com/vbauerster/mpb/v8 to v8.4.0
+  * fix(deps): update module github.com/docker/docker to v23.0.4+incompatible
+- bump c/common to 0.55.3
+  * Change default image volume mode to "nullfs" on FreeBSD
+  * [v0.55][CI-DOCS] remove zstd:chunked from docs
+  * libimage: harden lookup by digest
+  * libimage: HasDifferentDigest: add InsecureSkipTLSVerify option
+
+-------------------------------------------------------------------
 Mon Jul 31 06:17:22 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Disable CNI related configs on ALP (bsc#1213556)

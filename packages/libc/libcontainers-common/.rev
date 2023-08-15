@@ -538,4 +538,12 @@
     <comment></comment>
     <requestid>1101485</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>e9ed89ae485543780a03466ce1b70b54</srcmd5>
+    <version>20230814</version>
+    <time>1692110365</time>
+    <user>dimstar_suse</user>
+    <comment>Update changelog, follows sr#1103807 (forwarded request 1103849 from danishprakash)</comment>
+    <requestid>1103859</requestid>
+  </revision>
 </revisionlist>
