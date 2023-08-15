@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Aug 15 07:49:40 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Update to version 1.6.4
+  * history-dialog: Fix memory leak
+  * history-dialog: Keep paste-on-activate in sync with the settings
+  * history-dialog: Remove useless creation/destruction of menu
+  * Simplify main app creation
+  * history-dialog: Better fit with the way GApplication works
+  * settings: Remove wrong signal handler
+  * settings: Better fit with the way GApplication works
+  * popup-clipman: Enable translations
+  * popup-clipman: Properly use GApplication
+  * Move default clipboard restoration from manager to collector
+  * gsd-clipboard: Add missing sanity check
+  * Remove dead code
+  * menu: Add some icons
+  * history: Clear history when it's disabled
+  * menu: Shift entries in reverse order
+  * Revert "Enable reverse-order option"
+  * menu: Improve management of clear history entries
+  * menu: Improve management of primary clipboard entry
+  * history: Refactor item_to_restore into image_to_restore
+  * settings: Align paste-on-activate combo like other widgets
+  * collector: Properly sync primary clipboard when default is empty
+  * collector: Fix primary timeout management
+  * collector: Remove unused function
+  * Make 'add-primary-clipboard' management internal to the collector
+  * Make 'add-primary-clipboard' imply 'persistent-primary-clipboard'
+  * settings: Fix 'skip-action-on-key-down' sync and improve strings
+  * collector: Make actions work again for selections
+  * collector: Fix memory leak
+  * collector: Properly disconnect signal handlers
+  * gsd-clipboard: Properly reset source id
+  * menu: Fix crash when selecting QR code
+  * Remove XfcePluggable from settings desktop file
+  * build: tests: Fix compiler warnings
+  * Translation Updates 
+
+-------------------------------------------------------------------
 Tue Mar 21 09:01:25 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.6.3

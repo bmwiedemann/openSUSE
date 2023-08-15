@@ -20,7 +20,7 @@
 %define plugin clipman
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        Clipboard Manager Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
