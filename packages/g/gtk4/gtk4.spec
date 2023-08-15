@@ -29,14 +29,14 @@
 %endif
 
 Name:           gtk4
-Version:        4.10.5
+Version:        4.12.0
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.gtk.org/
 
-Source:         https://download.gnome.org/sources/gtk/4.10/%{_name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gtk/4.12/%{_name}-%{version}.tar.xz
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source99:       gtk4-rpmlintrc
@@ -262,7 +262,7 @@ This package enhances gettext with an International Tag Set for GTK+ 4
 
 %build
 %meson \
-	-Dgtk_doc=true \
+	-Ddocumentation=true \
 	-Dbroadway-backend=true \
 	-Dcloudproviders=enabled \
 	-Dcolord=enabled \
@@ -372,6 +372,7 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_bindir}/gtk4-icon-browser
 %{_bindir}/gtk4-node-editor
 %{_bindir}/gtk4-print-editor
+%{_bindir}/gtk4-rendernode-tool
 %{_bindir}/gtk4-widget-factory
 %{_datadir}/applications/org.gtk.Demo4.desktop
 %{_datadir}/applications/org.gtk.IconBrowser4.desktop
@@ -405,6 +406,7 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_mandir}/man1/gtk4-encode-symbolic-svg.1%{?ext_man}
 %{_mandir}/man1/gtk4-icon-browser.1%{?ext_man}
 %{_mandir}/man1/gtk4-node-editor.1%{?ext_man}
+%{_mandir}/man1/gtk4-rendernode-tool.1%{?ext_man}
 %{_mandir}/man1/gtk4-widget-factory.1%{?ext_man}
 
 %files schema

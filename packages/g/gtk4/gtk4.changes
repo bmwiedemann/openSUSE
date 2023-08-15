@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Mon Aug  7 09:55:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.12.0:
+  + List widgets: Add scroll_to APIs
+  + GtkFileLauncher: Add an always-ask property
+  + GtkTextView: Make backspace behavior match GtkEntry
+  + gsk: Fix handling of luminance in mask nodes
+  + Text rendering: Automate the setting of gtk-hint-font-metrics
+    from the scale factor. This improves font rendering in flatpaks
+  + Wayland:
+    - Fix behavior of stylus buttons
+    - Support suspended window state
+  + Vulkan: Many improvements
+  + Tools: Add gtk4-rendernode-tool
+  + Debugging: Drop the GTK_DEBUG_TOUCHSCREEN flag
+  + Build: Some build options have been renamed:
+    - gtk_doc -> documentation
+    - update_screenshots -> screenshots
+    - The old names still work
+  + Updated translations.
+- Update option passed to meson following upstream changes.
+
+-------------------------------------------------------------------
+Sun Aug  6 15:38:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.11.4:
+  + GtkFileChooser:
+    - Default to sorting folders first
+    - Fix a crash when visiting recent files
+  + GtkTextView: Fix corner cases in word navigation
+  + GtkMenuButton: Normalize label layout
+  + GtkDropDown: Add support for sections
+  + GtkVideo: Make the overlay icon clickable
+  + GtkWindow: Clear the resize cursors to avoid artifacts
+  + GtkFileDialog: Always set initial-folder
+  + GtkDropDown: Update on expression changes
+  + GtkMapListModel: Implement GtkSectionModel
+  + Accessibility:
+    - Improvements all over the place: GtkButton, GtkPasswordEntry,
+      GtkFontChooserDialog, GtkColorChooserDialog,
+      GtkShortcutsWindow, GtkMenuButton, GtkAboutDialog,
+      GtkFileChooserDialog, GtkStackSidebar, GtkStackSwitcher,
+      GtkMediaControls, GtkColorDialogButton, GtkDropDown,
+      GtkInfoBar, GtkNotebook, GtkPrintUnixDialog, GtkModelButton
+    - Make name computation follow the ARIA spec more closely
+    - Adapt name computation for the common 'nested button'
+      scenario
+    - Change many containers to use `generic` instead of `group`
+    - Use `generic` as the default role
+    - Use `application` instead of `window` for windows
+    - Add properties for accessible names of not directly exposed
+      widgets in GtkListView, GtkGridView and GtkColumnView
+  + DND: Fix criticals when drops are rejected
+  + X11: Fix regressions in GLX setup
+  + Windows: Center newly created transient windows
+  + Vulkan:
+    - Add antialising for gradients
+    - Do less work on clipped away nodes
+    - Redo image uploading
+    - Support different image depths and formats
+    - Add a pipeline cache
+  + Demos:
+    - gtk4-demo: Improve window sizing
+    - gtk4-demo: Improve focus behavior
+    - gtk4-demo: Add many missing a11y properties
+  + Tools: gtk4-builder-tool: Make render an alias screenshot
+  + Inspector:
+    - Show more information in the a11y tab
+    - Add an accessibility overlay with warnings and
+      recommendations
+    - Limit the width of the a11y tab
+  + Build:
+    - Require GLib 2.76
+    - Make asan builds work again
+    - Fix the build if ld is not ld.bdf
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Aug  5 10:16:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.10.5:

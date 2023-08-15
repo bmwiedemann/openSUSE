@@ -747,4 +747,12 @@ New upstream release</comment>
   + Updated translations. (forwarded request 1102464 from iznogood)</comment>
     <requestid>1102936</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>eff53c93b489d7bce9a683fc9c94fcb1</srcmd5>
+    <version>4.12.0</version>
+    <time>1692110372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103891</requestid>
+  </revision>
 </revisionlist>
