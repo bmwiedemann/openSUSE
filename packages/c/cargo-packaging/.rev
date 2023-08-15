@@ -91,4 +91,12 @@ provides from elf metadata of vendored deps
     <comment></comment>
     <requestid>1093844</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bb5cc8f2cffa03dd40bdaeea7ba981f3</srcmd5>
+    <version>1.2.0+4</version>
+    <time>1692110356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1103769</requestid>
+  </revision>
 </revisionlist>
