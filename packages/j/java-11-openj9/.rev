@@ -135,4 +135,12 @@
     <comment>fix build in Factory</comment>
     <requestid>1074972</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>af6f16a26f33a7fbebe584bc99252e4b</srcmd5>
+    <version>11.0.20.0</version>
+    <time>1692110423</time>
+    <user>dimstar_suse</user>
+    <comment>Security updates</comment>
+    <requestid>1104011</requestid>
+  </revision>
 </revisionlist>

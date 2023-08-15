@@ -33,19 +33,19 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       18
+%global updatever       20
 %global patchver        0
-%global buildver        10
+%global buildver        8
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
-%global root_revision   4e060ceb0bbbbf5fa0432db08e0b38292cbbe1ba
-%global root_branch     v0.36.1-release
+%global root_revision   f53b1321923ffd17ba1e4a88f1ec3a8d75f6df23
+%global root_branch     v0.40.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    f491bbf6f6f3f87bfd38a65055589125c13de555
-%global omr_branch      v0.36.1-release
+%global omr_revision    e80bff83b7fda8875071d89de7c73184d847085d
+%global omr_branch      v0.40.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 0592661e480dd108a708689dc56bf1a427677645
-%global openj9_branch   v0.36.1-release
-%global openj9_tag      openj9-0.36.1
+%global openj9_revision d12d10c9ea2de2cf363095e609536ffe451bd25f
+%global openj9_branch   v0.40.0-release
+%global openj9_tag      openj9-0.40.0
 # JavaEE modules
 %global java_activation_repository activation
 %global java_activation_tag JAF-1_2_0
@@ -987,6 +987,9 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/OMRTraceFormat.dat
 %{_jvmdir}/%{sdkdir}/lib/default/j9ddr.dat
 %{_jvmdir}/%{sdkdir}/lib/default/libcuda4j29.so
+%ifnarch ppc64 ppc64le
+%{_jvmdir}/%{sdkdir}/lib/default/libj9criu29.so
+%endif
 %{_jvmdir}/%{sdkdir}/lib/default/libj9dmp29.so
 %{_jvmdir}/%{sdkdir}/lib/default/libj9gc29.so
 %{_jvmdir}/%{sdkdir}/lib/default/libj9gcchk29.so

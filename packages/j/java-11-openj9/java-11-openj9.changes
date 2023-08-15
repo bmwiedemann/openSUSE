@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Aug 15 07:28:40 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 11.0.20 with OpenJ9 0.40.0 virtual machine
+- Including Oracle April 2023 CPU changes
+  * CVE-2023-22006 (bsc#1213473), CVE-2023-22036 (bsc#1213474),
+    CVE-2023-22041 (bsc#1213475), CVE-2023-22045 (bsc#1213481),
+    CVE-2023-22049 (bsc#1213482), CVE-2023-25193 (bsc#1207922)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.40
+- Modified patch:
+  * stringop-overflow.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
+Mon Aug 14 19:53:33 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 11.0.19 with OpenJ9 0.38.0 virtual machine
+- Including Oracle April 2023 CPU changes
+  * CVE-2023-21930 (bsc#1210628), CVE-2023-21937 (bsc#1210631),
+    CVE-2023-21938 (bsc#1210632), CVE-2023-21939 (bsc#1210634),
+    CVE-2023-21954 (bsc#1210635), CVE-2023-21967 (bsc#1210636),
+    CVE-2023-21968 (bsc#1210637)
+  * OpenJ9 specific vulnerability: CVE-2023-2597 (bsc#1211615)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.38
+
+-------------------------------------------------------------------
 Tue Mar 28 10:02:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
