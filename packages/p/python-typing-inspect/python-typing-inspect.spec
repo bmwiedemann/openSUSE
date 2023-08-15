@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-typing-inspect
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Python runtime inspection utilities for typing
 License:        MIT

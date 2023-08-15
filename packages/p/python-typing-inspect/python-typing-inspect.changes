@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 13 21:39:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.0:
+  * Fix with new version of typing_extensions
+  * Handle non-indexed generics 
+
+-------------------------------------------------------------------
 Fri Apr 21 12:38:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

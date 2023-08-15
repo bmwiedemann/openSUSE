@@ -37,4 +37,14 @@
     <comment></comment>
     <requestid>1081800</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>771bac96b8e9cc272839217fff400d14</srcmd5>
+    <version>0.9.0</version>
+    <time>1692110351</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.0:
+  * Fix with new version of typing_extensions
+  * Handle non-indexed generics</comment>
+    <requestid>1103744</requestid>
+  </revision>
 </revisionlist>
