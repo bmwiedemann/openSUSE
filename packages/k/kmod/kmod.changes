@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 24 12:50:23 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Remove compatibility patches, add README.usrmerge (boo#1212835).
+  * Delete Provide-fallback-for-successfully-running-make-modules_install.patch
+  * Delete compat-module_directory-module_prefix.patch
+
+-------------------------------------------------------------------
 Mon Jul 17 17:54:54 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Use pkgconfig for kmod configuration.

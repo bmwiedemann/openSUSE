@@ -709,4 +709,14 @@ Kernel:stable/kernel-source#kernel-default succeeds with this</comment>
     <comment>Update our patchstack with the latest upstream submission attempts</comment>
     <requestid>1100406</requestid>
   </revision>
+  <revision rev="78" vrev="8">
+    <srcmd5>fa91191a830deddcaf33da84069edd01</srcmd5>
+    <version>30</version>
+    <time>1692110350</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove compatibility patches, add README.usrmerge (boo#1212835).
+  * Delete Provide-fallback-for-successfully-running-make-modules_install.patch
+  * Delete compat-module_directory-module_prefix.patch (forwarded request 1103710 from michals)</comment>
+    <requestid>1103741</requestid>
+  </revision>
 </revisionlist>
