@@ -829,4 +829,35 @@
 </comment>
     <requestid>1100748</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>db095d2329e2e544769c07a22aad9a37</srcmd5>
+    <version>0.9.21</version>
+    <time>1692110399</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.21:
+  * sway/window: app_id on unfocused workspaces #2234
+  * cava bump #2328
+  * cava man page #2333
+  * [sway/workspaces] feat: add high-priority-named optiion #2336
+  * Mediaplayer improvements #2323
+  * time conversion between time zones #2340
+  * Use C++20 #2322
+  * hyprland/workspaces improvements #2316
+  * Clock. Narrow seconds precision #2345
+  * hyprland/workspaces fix typo #2347
+  * hyprland/window start behavior fix #2352
+  * tooltip-format spaces breaks pango format #2360
+  * Manpage fixes #2365
+  * Fixed sway IPC compile warnings #2366
+  * man: Fix several whitespace formatting issues #2367
+  * Persistent workspaces in hyprland/workspaces #2341
+  * Fix logical errors, formatting error #2373
+  * flake: fix infrec in package overlay #2370
+  * Change default workspace format #2377
+  * Updated hyprland-workspaces manpage #2401
+  * Button release action #2399
+  * Hyprland/workspaces: use named icons instead of searching #2393
+  * docs: fix Arch repository name #2402</comment>
+    <requestid>1103978</requestid>
+  </revision>
 </revisionlist>
