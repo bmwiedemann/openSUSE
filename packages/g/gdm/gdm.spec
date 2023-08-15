@@ -243,7 +243,18 @@ running display manager.
 %autosetup -N
 ### NON-SLE patches start from 0 to 999
 ## Use "autopatch -m 0 -M 999" when there's no need to skip patches.
+%if !0%{?sle_version}
 %autopatch -p1 -m 1 -M 999
+%else
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%endif
 
 %ifarch s390 s390x
 %patch0 -p1
@@ -252,7 +263,9 @@ running display manager.
 ### SLE and Leap only patches start at 1000
 %if 0%{?sle_version}
 ## Use this when there's no need to skip patches.
-%autopatch -p1 -m 1000
+%patch1000 -p1
+%patch1001 -p1
+%patch1002 -p1
 %endif
 
 %build
