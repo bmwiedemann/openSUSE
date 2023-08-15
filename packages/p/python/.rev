@@ -3974,4 +3974,36 @@ However, upstream development now focuses on 3.x series.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1093166</requestid>
   </revision>
+  <revision rev="186" vrev="37">
+    <srcmd5>768cb69328ecc6ba91c61283f6c59ca5</srcmd5>
+    <version>2.7.18</version>
+    <time>1692110335</time>
+    <user>dimstar_suse</user>
+    <comment>- IT MEANS THAT bsc#1210638 STILL HAS NOT BEEN FIXED!
+- Add Revert-gh105127-left-tests.patch (gh#python/cpython!106941)
+  partially reverting CVE-2023-27043-email-parsing-errors.patch,
+  because of the regression in gh#python/cpython#106669.
+- (bsc#1210638, CVE-2023-27043) Add
+  CVE-2023-27043-email-parsing-errors.patch, which detects email
+  address parsing errors and returns empty tuple to indicate the
+  parsing error (old API).
+- IT MEANS THAT bsc#1210638 STILL HAS NOT BEEN FIXED!
+- Add Revert-gh105127-left-tests.patch (gh#python/cpython!106941)
+  partially reverting CVE-2023-27043-email-parsing-errors.patch,
+  because of the regression in gh#python/cpython#106669.
+- (bsc#1210638, CVE-2023-27043) Add
+  CVE-2023-27043-email-parsing-errors.patch, which detects email
+  address parsing errors and returns empty tuple to indicate the
+  parsing error (old API).
+- IT MEANS THAT bsc#1210638 STILL HAS NOT BEEN FIXED!
+- Add Revert-gh105127-left-tests.patch (gh#python/cpython!106941)
+  partially reverting CVE-2023-27043-email-parsing-errors.patch,
+  because of the regression in gh#python/cpython#106669.
+- (bsc#1210638, CVE-2023-27043) Add
+  CVE-2023-27043-email-parsing-errors.patch, which detects email
+  address parsing errors and returns empty tuple to indicate the
+  parsing error (old API).
+</comment>
+    <requestid>1103620</requestid>
+  </revision>
 </revisionlist>

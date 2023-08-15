@@ -148,6 +148,13 @@ Patch75:        CVE-2023-24329-blank-URL-bypass.patch
 # PATCH-FIX-OPENSUSE PygmentsBridge-trime_doctest_flags.patch mcepl@suse.com
 # Build documentation even without PygmentsBridge.trim_doctest_flags
 Patch76:        PygmentsBridge-trime_doctest_flags.patch
+# PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
+# Detect email address parsing errors and return empty tuple to
+# indicate the parsing error (old API)
+Patch77:        CVE-2023-27043-email-parsing-errors.patch
+# PATCH-FIX-UPSTREAM Revert-gh105127-left-tests.patch bsc#1210638 mcepl@suse.com
+# Partially revert previous patch
+Patch78:        Revert-gh105127-left-tests.patch
 # COMMON-PATCH-END
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -355,6 +362,8 @@ that rely on earlier non-verification behavior.
 %endif
 %patch75 -p1
 %patch76 -p1
+%patch77 -p1
+%patch78 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar
