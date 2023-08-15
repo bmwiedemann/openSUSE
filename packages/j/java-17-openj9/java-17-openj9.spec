@@ -29,18 +29,18 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      17
 %global interimver      0
-%global updatever       6
-%global buildver        10
+%global updatever       8
+%global buildver        7
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk17/archive
-%global root_revision   927b34f84c8c5ff380df16f2df8dd84a44b8c79e
-%global root_branch     v0.36.0-release
+%global root_revision   77b0f75480594444eb7fb47bf37d3aae6d8135ef
+%global root_branch     v0.40.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    f491bbf6f6f3f87bfd38a65055589125c13de555
-%global omr_branch      v0.36.1-release
+%global omr_revision    e80bff83b7fda8875071d89de7c73184d847085d
+%global omr_branch      v0.40.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 0592661e480dd108a708689dc56bf1a427677645
-%global openj9_branch   v0.36.1-release
-%global openj9_tag      openj9-0.36.1
+%global openj9_revision d12d10c9ea2de2cf363095e609536ffe451bd25f
+%global openj9_branch   v0.40.0-release
+%global openj9_tag      openj9-0.40.0
 # priority must be 6 digits in total
 %if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
 %global priority        2701
@@ -790,6 +790,9 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/OMRTraceFormat.dat
 %{_jvmdir}/%{sdkdir}/lib/default/j9ddr.dat
 %{_jvmdir}/%{sdkdir}/lib/default/libcuda4j29.so
+%ifnarch ppc64 ppc64le
+%{_jvmdir}/%{sdkdir}/lib/default/libj9criu29.so
+%endif
 %{_jvmdir}/%{sdkdir}/lib/default/libj9dmp29.so
 %{_jvmdir}/%{sdkdir}/lib/default/libj9gc29.so
 %{_jvmdir}/%{sdkdir}/lib/default/libj9gcchk29.so
