@@ -15,4 +15,12 @@
     <comment>Upgrade + fix build with jdk17</comment>
     <requestid>963926</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e6e6376157dcd98e499586265c50f1aa</srcmd5>
+    <version>3.1.10</version>
+    <time>1692110396</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1211923</comment>
+    <requestid>1103981</requestid>
+  </revision>
 </revisionlist>
