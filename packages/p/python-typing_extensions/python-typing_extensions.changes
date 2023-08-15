@@ -1,4 +1,177 @@
 -------------------------------------------------------------------
+Sun Aug 13 12:53:12 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 4.7.1:
+ - Fix support for `TypedDict`, `NamedTuple` and `is_protocol` on PyPy-3.7 and
+   PyPy-3.8. Patch by Alex Waygood. Note that PyPy-3.7 and PyPy-3.8 are unsupported
+   by the PyPy project. The next feature release of typing-extensions will
+   drop support for PyPy-3.7 and may also drop support for PyPy-3.8.
+- update to version 4.7.0:
+ - This is expected to be the last feature release supporting Python 3.7,
+   which reaches its end of life on June 27, 2023. Version 4.8.0 will support
+   only Python 3.8.0 and up.
+ - Fix bug where a `typing_extensions.Protocol` class that had one or more
+   non-callable members would raise `TypeError` when `issubclass()`
+   was called against it, even if it defined a custom `__subclasshook__`
+   method. The correct behaviour -- which has now been restored -- is not to
+   raise `TypeError` in these situations if a custom `__subclasshook__` method
+   is defined. Patch by Alex Waygood (backporting
+   https://github.com/python/cpython/pull/105976).
+- update to version 4.7.0rc1:
+ - Add `typing_extensions.get_protocol_members` and
+   `typing_extensions.is_protocol` (backport of CPython PR #104878).
+   Patch by Jelle Zijlstra.
+ - `typing_extensions` now re-exports all names in the standard library's
+   `typing` module, except the deprecated `ByteString`. Patch by Jelle
+   Zijlstra.
+ - Due to changes in the implementation of `typing_extensions.Protocol`,
+   `typing.runtime_checkable` can now be used on `typing_extensions.Protocol`
+   (previously, users had to use `typing_extensions.runtime_checkable` if they
+   were using `typing_extensions.Protocol`).
+ - Align the implementation of `TypedDict` with the implementation in the
+   standard library on Python 3.9 and higher.
+   `typing_extensions.TypedDict` is now a function instead of a class. The
+   private functions `_check_fails`, `_dict_new`, and `_typeddict_new`
+   have been removed. `is_typeddict` now returns `False` when called with
+   `TypedDict` itself as the argument. Patch by Jelle Zijlstra.
+ - Declare support for Python 3.12. Patch by Jelle Zijlstra.
+ - Fix tests on Python 3.13, which removes support for creating
+   `TypedDict` classes through the keyword-argument syntax. Patch by
+   Jelle Zijlstra.
+ - Fix a regression introduced in v4.6.3 that meant that
+   ``issubclass(object, typing_extensions.Protocol)`` would erroneously raise
+   ``TypeError``. Patch by Alex Waygood (backporting the CPython PR
+   https://github.com/python/cpython/pull/105239).
+ - Allow `Protocol` classes to inherit from `typing_extensions.Buffer` or
+   `collections.abc.Buffer`. Patch by Alex Waygood (backporting
+   https://github.com/python/cpython/pull/104827, by Jelle Zijlstra).
+ - Allow classes to inherit from both `typing.Protocol` and `typing_extensions.Protocol`
+   simultaneously. Since v4.6.0, this caused `TypeError` to be raised due to a
+   metaclass conflict. Patch by Alex Waygood.
+ - Backport several deprecations from CPython relating to unusual ways to
+   create `TypedDict`s and `NamedTuple`s. CPython PRs #105609 and #105780
+   by Alex Waygood; `typing_extensions` backport by Jelle Zijlstra.
+   - Creating a `NamedTuple` using the functional syntax with keyword arguments
+     (`NT = NamedTuple("NT", a=int)`) is now deprecated.
+   - Creating a `NamedTuple` with zero fields using the syntax `NT = NamedTuple("NT")`
+     or `NT = NamedTuple("NT", None)` is now deprecated.
+   - Creating a `TypedDict` with zero fields using the syntax `TD = TypedDict("TD")`
+     or `TD = TypedDict("TD", None)` is now deprecated.
+ - Fix bug on Python 3.7 where a protocol `X` that had a member `a` would not be
+   considered an implicit subclass of an unrelated protocol `Y` that only has a
+   member `a`. Where the members of `X` are a superset of the members of `Y`,
+   `X` should always be considered a subclass of `Y` iff `Y` is a
+   runtime-checkable protocol that only has callable members. Patch by Alex
+   Waygood (backporting CPython PR
+   https://github.com/python/cpython/pull/105835).
+- update to version 4.6.3 (June 1, 2023)
+ - Fix a regression introduced in v4.6.0 in the implementation of
+   runtime-checkable protocols. The regression meant
+   that doing `class Foo(X, typing_extensions.Protocol)`, where `X` was a class that
+   had `abc.ABCMeta` as its metaclass, would then cause subsequent
+   `isinstance(1, X)` calls to erroneously raise `TypeError`. Patch by
+   Alex Waygood (backporting the CPython PR
+   https://github.com/python/cpython/pull/105152).
+ - Sync the repository's LICENSE file with that of CPython.
+   `typing_extensions` is distributed under the same license as
+   CPython itself.
+ - Skip a problematic test on Python 3.12.0b1. The test fails on 3.12.0b1 due to
+   a bug in CPython, which will be fixed in 3.12.0b2. The
+   `typing_extensions` test suite now passes on 3.12.0b1.
+- update to version 4.6.2:
+ - Fix use of `@deprecated` on classes with `__new__` but no `__init__`.
+   Patch by Jelle Zijlstra.
+ - Fix regression in version 4.6.1 where comparing a generic class against a
+   runtime-checkable protocol using `isinstance()` would cause `AttributeError`
+   to be raised if using Python 3.7.
+- update to version 4.6.1:
+ - Change deprecated `@runtime` to formal API `@runtime_checkable` in the error
+   message. Patch by Xuehai Pan.
+ - Fix regression in 4.6.0 where attempting to define a `Protocol` that was
+   generic over a `ParamSpec` or a `TypeVarTuple` would cause `TypeError` to be
+   raised. Patch by Alex Waygood.
+- update to version 4.6.0:
+ - `typing_extensions` is now documented at
+   https://typing-extensions.readthedocs.io/en/latest/. Patch by Jelle Zijlstra.
+ - Add `typing_extensions.Buffer`, a marker class for buffer types, as proposed
+   by PEP 688. Equivalent to `collections.abc.Buffer` in Python 3.12. Patch by
+   Jelle Zijlstra.
+ - Backport two CPython PRs fixing various issues with `typing.Literal`:
+   https://github.com/python/cpython/pull/23294 and
+   https://github.com/python/cpython/pull/23383. Both CPython PRs were
+   originally by Yurii Karabas, and both were backported to Python >=3.9.1, but
+   no earlier. Patch by Alex Waygood.
+   A side effect of one of the changes is that equality comparisons of `Literal`
+   objects will now raise a `TypeError` if one of the `Literal` objects being
+   compared has a mutable parameter. (Using mutable parameters with `Literal` is
+   not supported by PEP 586 or by any major static type checkers.)
+ - `Literal` is now reimplemented on all Python versions <= 3.10.0. The
+   `typing_extensions` version does not suffer from the bug that was fixed in
+   https://github.com/python/cpython/pull/29334. (The CPython bugfix was
+   backported to CPython 3.10.1 and 3.9.8, but no earlier.)
+ - Backport [CPython PR 26067](https://github.com/python/cpython/pull/26067)
+   (originally by Yurii Karabas), ensuring that `isinstance()` calls on
+   protocols raise `TypeError` when the protocol is not decorated with
+   `@runtime_checkable`. Patch by Alex Waygood.
+ - Backport several significant performance improvements to runtime-checkable
+   protocols that have been made in Python 3.12 (see
+   https://github.com/python/cpython/issues/74690 for details). Patch by Alex
+   Waygood.
+   A side effect of one of the performance improvements is that the members of
+   a runtime-checkable protocol are now considered “frozen” at runtime as soon
+   as the class has been created. Monkey-patching attributes onto a
+   runtime-checkable protocol will still work, but will have no impact on
+   `isinstance()` checks comparing objects to the protocol. See
+   ["What's New in Python 3.12"](https://docs.python.org/3.12/whatsnew/3.12.html#typing)
+   for more details.
+ - `isinstance()` checks against runtime-checkable protocols now use
+   `inspect.getattr_static()` rather than `hasattr()` to lookup whether
+   attributes exist (backporting https://github.com/python/cpython/pull/103034).
+   This means that descriptors and `__getattr__` methods are no longer
+   unexpectedly evaluated during `isinstance()` checks against runtime-checkable
+   protocols. However, it may also mean that some objects which used to be
+   considered instances of a runtime-checkable protocol on older versions of
+   `typing_extensions` may no longer be considered instances of that protocol
+   using the new release, and vice versa. Most users are unlikely to be affected
+   by this change. Patch by Alex Waygood.
+ - Backport the ability to define `__init__` methods on Protocol classes, a
+   change made in Python 3.11 (originally implemented in
+   https://github.com/python/cpython/pull/31628 by Adrian Garcia Badaracco).
+   Patch by Alex Waygood.
+ - Speedup `isinstance(3, typing_extensions.SupportsIndex)` by >10x on Python
+   <3.12. Patch by Alex Waygood.
+ - Add `typing_extensions` versions of `SupportsInt`, `SupportsFloat`,
+   `SupportsComplex`, `SupportsBytes`, `SupportsAbs` and `SupportsRound`. These
+   have the same semantics as the versions from the `typing` module, but
+   `isinstance()` checks against the `typing_extensions` versions are >10x faster
+   at runtime on Python <3.12. Patch by Alex Waygood.
+ - Add `__orig_bases__` to non-generic TypedDicts, call-based TypedDicts, and
+   call-based NamedTuples. Other TypedDicts and NamedTuples already had the attribute.
+   Patch by Adrian Garcia Badaracco.
+ - Add `typing_extensions.get_original_bases`, a backport of
+   [`types.get_original_bases`](https://docs.python.org/3.12/library/types.html#types.get_original_bases),
+   introduced in Python 3.12 (CPython PR
+   https://github.com/python/cpython/pull/101827, originally by James
+   Hilton-Balfe). Patch by Alex Waygood.
+   This function should always produce correct results when called on classes
+   constructed using features from `typing_extensions`. However, it may
+   produce incorrect results when called on some `NamedTuple` or `TypedDict`
+   classes that use `typing.{NamedTuple,TypedDict}` on Python <=3.11.
+ - Constructing a call-based `TypedDict` using keyword arguments for the fields
+   now causes a `DeprecationWarning` to be emitted. This matches the behaviour
+   of `typing.TypedDict` on 3.11 and 3.12.
+ - Backport the implementation of `NewType` from 3.10 (where it is implemented
+   as a class rather than a function). This allows user-defined `NewType`s to be
+   pickled. Patch by Alex Waygood.
+ - Fix tests and import on Python 3.12, where `typing.TypeVar` can no longer be
+   subclassed. Patch by Jelle Zijlstra.
+ - Add `typing_extensions.TypeAliasType`, a backport of `typing.TypeAliasType`
+   from PEP 695. Patch by Jelle Zijlstra.
+ - Backport changes to the repr of `typing.Unpack` that were made in order to
+   implement [PEP 692](https://peps.python.org/pep-0692/) (backport of
+   https://github.com/python/cpython/pull/104048). Patch by Alex Waygood.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:38:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
