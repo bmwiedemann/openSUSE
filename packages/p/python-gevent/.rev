@@ -659,4 +659,35 @@
 </comment>
     <requestid>1091775</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c4b115feadab0ef03ac6f244f0023d12</srcmd5>
+    <version>23.7.0</version>
+    <time>1692110354</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.7.0:
+  * Add preliminary support for Python 3.12, using greenlet
+    3.0a1. 
+  * Update the bundled c-ares version to 1.19.1.
+  * Fix an edge case connecting a non-blocking ``SSLSocket`` that
+    could result in an AttributeError. In a change to match
+    the standard library, calling ``sock.connect_ex()`` on a
+    subclass of ``socket`` no longer calls the subclass's
+    ``connect`` method.
+  * Make gevent's ``FileObjectThread`` (mostly used on Windows)
+    implement ``readinto`` cooperatively.
+  * Work around an ``AttributeError`` during cyclic garbage
+    collection when Python finalizers (``__del__`` and the like)
+    attempt to use gevent APIs. This is not a recommended practice,
+    and it is unclear if catching this ``AttributeError`` will fix
+    any problems or just shift them.
+  * Remove support for obsolete Python versions. This is
+    everything prior to 3.8.
+  * Stop using ``pkg_resources`` to find entry points (plugins).
+    Instead, use ``importlib.metadata``.
+  * Honor ``sys.unraisablehook`` when a callback function
+    produces an exception, and handling the exception in the hub
+    *also* produces an exception.
+- drop skip-tests-in-leap.patch handle-python-ssl-changes.patch (obsolete)</comment>
+    <requestid>1103820</requestid>
+  </revision>
 </revisionlist>

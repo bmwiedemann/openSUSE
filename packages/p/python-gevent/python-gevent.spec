@@ -25,30 +25,28 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-gevent
-Version:        22.10.2
+Version:        23.7.0
 Release:        0
 Summary:        Python network library that uses greenlet and libevent
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://www.gevent.org/
-# Source:         https://files.pythonhosted.org/packages/source/g/gevent/gevent-%%{version}.tar.gz
 Source0:        https://github.com/gevent/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 Source100:      %{name}-rpmlintrc
 # gcc7 for 15.1 produces no-return-in-nonvoid-function, but the same compiler for 15.2 not
 # usually, as long as no return value is used, this shouldn't be treated as an error
 # let's selectively disable the warning around the offending code
 Patch0:         fix-no-return-in-nonvoid-function.patch
-Patch1:         skip-tests-in-leap.patch
-Patch2:         handle-python-ssl-changes.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module cffi}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module dnspython}
 BuildRequires:  %{python_module greenlet >= 2.0.0}
 BuildRequires:  %{python_module objgraph}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.event}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
@@ -62,6 +60,7 @@ BuildRequires:  pkgconfig(libuv)
 Requires:       python-cffi
 Requires:       python-dnspython
 Requires:       python-greenlet >= 2.0.0
+Requires:       python-importlib-metadata
 Requires:       python-requests
 Requires:       python-zope.event
 Requires:       python-zope.interface
@@ -108,11 +107,6 @@ Documentation and examples for %{name}.
 %if 0%{?sle_version} <= 150100 && 0%{?is_opensuse}
 %patch0 -p1
 %endif
-
-%if 0%{?sle_version} <= 150300
-%patch1 -p1
-%endif
-%patch2 -p1
 sed -i -e '1s!bin/env python!bin/python!' examples/*.py
 sed -i -e '1{/bin.*python/d}' src/gevent/tests/*.py
 
@@ -120,12 +114,12 @@ sed -i -e '1{/bin.*python/d}' src/gevent/tests/*.py
 export LIBEV_EMBED=%{use_bundled_libev}
 export CARES_EMBED=0
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
 export LIBEV_EMBED=%{use_bundled_libev}
 export CARES_EMBED=0
-%python_install
+%pyproject_install
 %{python_expand # fix script interpreter-line and exec bit
 sed -i '1{s|^#!.*bin.*python.*$|#!%{__$python}|}' %{buildroot}%{$python_sitearch}/gevent/testing/testrunner.py
 chmod +x %{buildroot}%{$python_sitearch}/gevent/testing/testrunner.py
