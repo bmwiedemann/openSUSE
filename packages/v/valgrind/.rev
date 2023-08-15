@@ -1394,4 +1394,12 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
          original pointer. Return NULL if the</comment>
     <requestid>1087804</requestid>
   </revision>
+  <revision rev="144" vrev="2">
+    <srcmd5>0a9b93e9908e504e14a303515a26df8a</srcmd5>
+    <version>3.21.0</version>
+    <time>1692110359</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103815</requestid>
+  </revision>
 </revisionlist>

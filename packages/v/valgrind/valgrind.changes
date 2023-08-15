@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  7 08:27:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- use boolean / extended requires for glibc requires
+
+-------------------------------------------------------------------
 Thu May 18 12:19:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.21.0:
