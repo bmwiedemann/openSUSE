@@ -729,4 +729,34 @@
   Eliminates the need for source package links in OBS. (forwarded request 1084749 from dimstar)</comment>
     <requestid>1084757</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>6372b135879eea403f2eb9ed377f1538</srcmd5>
+    <version>2.62</version>
+    <time>1692110364</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 2.62 state of Mozilla SSL root CAs (bsc#1214248)
+  Added:
+  - Atos TrustedRoot Root CA ECC G2 2020
+  - Atos TrustedRoot Root CA ECC TLS 2021
+  - Atos TrustedRoot Root CA RSA G2 2020
+  - Atos TrustedRoot Root CA RSA TLS 2021
+  - BJCA Global Root CA1
+  - BJCA Global Root CA2
+  - LAWtrust Root CA2 (4096)
+  - Sectigo Public Email Protection Root E46
+  - Sectigo Public Email Protection Root R46
+  - Sectigo Public Server Authentication Root E46
+  - Sectigo Public Server Authentication Root R46
+  - SSL.com Client ECC Root CA 2022
+  - SSL.com Client RSA Root CA 2022
+  - SSL.com TLS ECC Root CA 2022
+  - SSL.com TLS RSA Root CA 2022
+  Removed CAs:
+  - Chambers of Commerce Root
+  - E-Tugra Certification Authority
+  - E-Tugra Global Root CA ECC v3
+  - E-Tugra Global Root CA RSA v3
+  - Hongkong Post Root CA 1 (forwarded request 1103853 from msmeissn)</comment>
+    <requestid>1103854</requestid>
+  </revision>
 </revisionlist>

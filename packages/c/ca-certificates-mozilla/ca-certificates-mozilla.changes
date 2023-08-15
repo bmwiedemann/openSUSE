@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug 14 10:43:08 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 2.62 state of Mozilla SSL root CAs (bsc#1214248)
+  Added:
+  - Atos TrustedRoot Root CA ECC G2 2020
+  - Atos TrustedRoot Root CA ECC TLS 2021
+  - Atos TrustedRoot Root CA RSA G2 2020
+  - Atos TrustedRoot Root CA RSA TLS 2021
+  - BJCA Global Root CA1
+  - BJCA Global Root CA2
+  - LAWtrust Root CA2 (4096)
+  - Sectigo Public Email Protection Root E46
+  - Sectigo Public Email Protection Root R46
+  - Sectigo Public Server Authentication Root E46
+  - Sectigo Public Server Authentication Root R46
+  - SSL.com Client ECC Root CA 2022
+  - SSL.com Client RSA Root CA 2022
+  - SSL.com TLS ECC Root CA 2022
+  - SSL.com TLS RSA Root CA 2022
+
+  Removed CAs:
+  - Chambers of Commerce Root
+  - E-Tugra Certification Authority
+  - E-Tugra Global Root CA ECC v3
+  - E-Tugra Global Root CA RSA v3
+  - Hongkong Post Root CA 1
+
+-------------------------------------------------------------------
 Thu May  4 14:34:19 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
