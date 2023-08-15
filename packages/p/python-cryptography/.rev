@@ -951,4 +951,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1100618</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>c673821ab7c7c76a11348de823fbfde7</srcmd5>
+    <version>41.0.3</version>
+    <time>1692110326</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 41.0.3:
+  * Fixed performance regression loading DH public keys.
+  * Fixed a memory leak when using
+  * :class:`~cryptography.hazmat.primitives.ciphers.aead.ChaCha20
+    Poly1305`.</comment>
+    <requestid>1102868</requestid>
+  </revision>
 </revisionlist>
