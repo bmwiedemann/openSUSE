@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 25 14:31:42 UTC 2023 - Thomas Blume <thomas.blume@suse.com>
+
+- CVE-2023-38253: out-of-bounds read in growbuf_to_Str() at w3m/indep.c
+  (bsc#1213323)
+- CVE-2023-38252 out-of-bounds read in Strnew_size() at w3m/Str.c 
+  (bsc#1213324)
+- add 0001-Fix-OOB-access-due-to-multiple-backspaces.patch
+
+-------------------------------------------------------------------
 Fri Apr 28 09:05:26 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - update to version 0.5.3+git20230121

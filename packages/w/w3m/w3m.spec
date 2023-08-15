@@ -25,7 +25,8 @@ License:        ISC
 Group:          Productivity/Networking/Web/Browsers
 
 Source0:        https://salsa.debian.org/debian/w3m/-/archive/v%{version}/w3m-v%{version}.tar.bz2
-patch0:         0001-Update-German-message-catalogue.patch
+Patch0:         0001-Update-German-message-catalogue.patch
+Patch1:         0001-Fix-OOB-access-due-to-multiple-backspaces.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gc-devel
