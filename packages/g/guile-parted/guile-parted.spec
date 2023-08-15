@@ -44,7 +44,8 @@ This package provides Guile bindings to GNU Parted.
 %build
 ./bootstrap
 %configure
-make %{?_smp_mflags}
+# building in parallel makes build results nondeterministic (boo#1170378)
+make
 
 %install
 %make_install
