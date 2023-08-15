@@ -754,4 +754,12 @@ Update to 0.36.0:
 </comment>
     <requestid>1096850</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>11ae690f562c9fb7b1941abaa34dbf51</srcmd5>
+    <version>0.39.0</version>
+    <time>1692110388</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103895</requestid>
+  </revision>
 </revisionlist>

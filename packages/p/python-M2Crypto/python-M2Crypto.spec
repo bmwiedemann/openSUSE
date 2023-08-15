@@ -90,7 +90,7 @@ export CFLAGS="%{optflags}"
 %check
 %python_expand ls -l %{buildroot}%{$python_sitearch}/M2Crypto/*.so*
 export PYTEST_ADDOPTS="--import-mode=append"
-%pyunittest_arch tests
+%pyunittest_arch discover -v tests
 
 %files %{python_files}
 %doc CHANGES LICENCE README.rst
