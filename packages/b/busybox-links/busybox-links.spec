@@ -25,58 +25,65 @@ Source:         busybox-links-rpmlintrc
 Source1:        zless
 Source2:        zmore
 Source3:        zgrep
-BuildRequires:  attr
-BuildRequires:  bc
-BuildRequires:  bind-utils
-BuildRequires:  busybox
-BuildRequires:  bzip2
-BuildRequires:  coreutils
-BuildRequires:  cpio
-BuildRequires:  diffutils
-BuildRequires:  dos2unix
-BuildRequires:  ed
-BuildRequires:  findutils
-BuildRequires:  gawk
-BuildRequires:  grep
-BuildRequires:  gzip
-BuildRequires:  hexedit
-BuildRequires:  hostname
-BuildRequires:  iproute2
-BuildRequires:  iputils
-BuildRequires:  kbd
-BuildRequires:  kmod
-BuildRequires:  less
-BuildRequires:  man
-BuildRequires:  ncurses-utils
-BuildRequires:  net-tools
-BuildRequires:  net-tools-deprecated
-BuildRequires:  netcat-openbsd
-BuildRequires:  patch
-BuildRequires:  policycoreutils
-BuildRequires:  procps
-BuildRequires:  psmisc
-BuildRequires:  sed
-BuildRequires:  selinux-tools
-BuildRequires:  sendmail
-BuildRequires:  sha3sum
-BuildRequires:  shadow
-BuildRequires:  sharutils
-BuildRequires:  sysvinit-tools
-BuildRequires:  tar
-BuildRequires:  telnet
-BuildRequires:  tftp
-BuildRequires:  time
-BuildRequires:  traceroute
-BuildRequires:  tunctl
-BuildRequires:  unzip
-BuildRequires:  util-linux
-BuildRequires:  util-linux-systemd
-BuildRequires:  vim
-BuildRequires:  vlan
-BuildRequires:  wget
-BuildRequires:  which
-BuildRequires:  whois
-BuildRequires:  xz
+Source4:        busybox.install
+Source5:        filelist-attr.txt
+Source6:        filelist-bc.txt
+Source7:        filelist-bind-utils.txt
+Source8:        filelist-bzip2.txt
+Source9:        filelist-coreutils.txt
+Source10:       filelist-cpio.txt
+Source11:       filelist-diffutils.txt
+Source12:       filelist-dos2unix.txt
+Source13:       filelist-ed.txt
+Source14:       filelist-findutils.txt
+Source15:       filelist-gawk.txt
+Source16:       filelist-grep.txt
+Source17:       filelist-gzip.txt
+Source18:       filelist-hexedit.txt
+Source19:       filelist-hostname.txt
+Source20:       filelist-iproute2.txt
+Source21:       filelist-iputils.txt
+Source22:       filelist-kbd.txt
+Source23:       filelist-kmod.txt
+Source24:       filelist-less.txt
+Source25:       filelist-man.txt
+Source26:       filelist-misc.txt
+Source27:       filelist-ncurses-utils.txt
+Source28:       filelist-net-tools.txt
+Source29:       filelist-netcat-openbsd.txt
+Source30:       filelist-patch.txt
+Source31:       filelist-policycoreutils.txt
+Source32:       filelist-procps.txt
+Source33:       filelist-psmisc.txt
+Source34:       filelist-sed.txt
+Source35:       filelist-selinux-tools.txt
+Source36:       filelist-sendmail.txt
+Source37:       filelist-sh.txt
+Source38:       filelist-sha3sum.txt
+Source39:       filelist-shadow.txt
+Source40:       filelist-sharutils.txt
+Source41:       filelist-syslogd.txt
+Source42:       filelist-sysvinit-tools.txt
+Source43:       filelist-tar.txt
+Source44:       filelist-telnet.txt
+Source45:       filelist-tftp.txt
+Source46:       filelist-time.txt
+Source47:       filelist-traceroute.txt
+Source48:       filelist-tunctl.txt
+Source49:       filelist-unzip.txt
+Source50:       filelist-util-linux-systemd.txt
+Source51:       filelist-util-linux.txt
+Source52:       filelist-vim.txt
+Source53:       filelist-vlan.txt
+Source54:       filelist-wget.txt
+Source55:       filelist-which.txt
+Source56:       filelist-whois.txt
+Source57:       filelist-xz.txt
+# used for creating the above filelists and busybox.install:
+# build the container locally and then copy filelist-*txt and busybox.install
+# out ouf WORKDIR into the package directory
+Source98:       create-filelists.sh
+Source99:       Dockerfile
 Requires:       busybox = %{version}
 Requires:       busybox-adduser = %{version}
 Requires:       busybox-attr = %{version}
@@ -586,86 +593,19 @@ This package contains the symlinks to provide policycoreutils with busybox.
 
 %prep
 %setup -q -c -T
+cp %{_sourcedir}/filelist*.txt .
 
 %build
-mkdir apps
-mkdir used
-mkdir missing
-for i in `cat %{_datadir}/busybox/busybox.links` ; do touch apps/`basename $i`; done
-# No rpm/rpm2cpio, will break build service
-rm -f apps/rpm apps/rpm2cpio
-# No /linuxrc
-rm -f apps/linuxrc
-# Does not really fit
-rm apps/[[
-for package in coreutils diffutils findutils grep util-linux util-linux-systemd iputils iproute2 gzip sed cpio procps xz bzip2 psmisc kbd sharutils hexedit hostname net-tools net-tools-deprecated traceroute ncurses-utils kmod tar gawk patch attr which bind-utils man sendmail sha3sum shadow less whois unzip vim wget ed bc netcat-openbsd dos2unix telnet tftp time tunctl vlan sysvinit-tools selinux-tools policycoreutils; do
-    for i in `rpm -ql $package |grep "bin/"` ; do
-	prog=`basename $i`
-	if [ -f apps/$prog ]; then
-	    touch used/$prog
-	    echo $i >> filelist-$package.txt
-	else
-	    touch missing/$prog
-	fi
-    done
-done
-# Merge net-tools sub-packages
-cat filelist-net-tools-deprecated.txt >> filelist-net-tools.txt
-rm filelist-net-tools-deprecated.txt
-# Create some extra sub-packages
-echo -e "%{_bindir}/ash" > filelist-sh.txt
-touch used/ash
-echo -e "%{_bindir}/hush" >> filelist-sh.txt
-touch used/hush
 %if 0%{?suse_version} < 1550
 echo "/bin/sh" >> filelist-sh.txt
-%endif
-echo -e "%{_bindir}/sh" >> filelist-sh.txt
-touch used/sh
-%if 0%{?suse_version} < 1550
 echo -e "/sbin/loadkmap" >> filelist-kbd.txt
 %endif
-echo -e "%{_sbindir}/loadfont" >> filelist-kbd.txt
-touch used/loadkmap used/loadfont
-
-echo -e "/usr/sbin/addgroup\n/usr/sbin/adduser\n/usr/sbin/delgroup\n/usr/sbin/deluser" >> filelist-shadow.txt
-touch used/addgroup used/adduser used/delgroup used/deluser
-
-echo -e "/usr/sbin/syslogd" > filelist-syslogd.txt
-touch used/syslogd
-
-# Some iproute2 commands are named sligthly different
-echo -e "/usr/sbin/ifdown\n/usr/sbin/ifenslave\n/usr/sbin/ifup\n/usr/sbin/ipaddr\n/usr/sbin/iplink\n/usr/sbin/ipneigh\n/usr/sbin/iproute\n/usr/sbin/iprule\n/usr/sbin/brctl" >> filelist-iproute2.txt
-touch used/ifdown used/ifenslave used/ifup used/ipaddr used/iplink used/ipneigh used/iproute used/iprule used/brctl
-
-for i in `/bin/ls used/` ; do
-    rm apps/$i
-done
-
-# /usr/bin/last is now in wtmpdb, but should stay in busybox-util-linux
-if [ -e apps/last ]; then
-    echo -e "/usr/bin/last" >> filelist-util-linux.txt
-    touch used/last
-    rm -f apps/last
-fi
-
-for i in `cat %{_datadir}/busybox/busybox.links` ; do
-    prog=`basename $i`
-    if [ -f apps/$prog ]; then
-	echo $i >> filelist-misc.txt
-    fi
-done
-
-cp  %{_datadir}/licenses/busybox/LICENSE .
-sed -e 's|$prefix/bin/busybox|$prefix/usr/bin/busybox|g' -e 's|"bin/busybox"|"..%{_bindir}/busybox"|g' -e 's|"busybox"|"..%{_bindir}/busybox"|g' -e 's|"../bin/busybox"|"..%{_bindir}/busybox"|g' -e 's|"../../bin/busybox"|"../bin/busybox"|g' -e 's|%{_datadir}/busybox/busybox.links|filelist.txt|g' %{_bindir}/busybox.install > busybox.install
 
 cat filelist-*.txt | sort -u > filelist.txt
 
-/bin/ls missing/
-
 %install
 mkdir -p %{buildroot}%{_bindir}
-bash ./busybox.install %{buildroot} --symlinks
+bash %{_sourcedir}/busybox.install %{buildroot} --symlinks
 rm %{buildroot}%{_bindir}/busybox
 ln -sf %{_bindir}/busybox %{buildroot}%{_bindir}/sh
 %if 0%{?suse_version} < 1550

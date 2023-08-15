@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 14 11:56:07 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Check in filelists instead of buildrequiring all non-busybox utils
+
+-------------------------------------------------------------------
 Thu Jun 29 13:34:39 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Make sure last stays in busybox-util-linux, even if we moved
