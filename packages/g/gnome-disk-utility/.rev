@@ -648,4 +648,14 @@
     <comment>New stable release (forwarded request 1072605 from iznogood)</comment>
     <requestid>1073153</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>bc9ee5ce95a15e2fe1a60acbb8d4c8b8</srcmd5>
+    <version>44.0</version>
+    <time>1692110391</time>
+    <user>dimstar_suse</user>
+    <comment>- Support build environments like SLE 15 SP5 and Leap 15.5 which
+  had %{_distconfdir) not defined yet.
+</comment>
+    <requestid>1103931</requestid>
+  </revision>
 </revisionlist>

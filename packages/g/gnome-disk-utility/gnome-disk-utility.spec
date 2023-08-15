@@ -56,7 +56,9 @@ dealing with storage devices.
 
 %build
 %meson \
+%if !0%{?sle_version}
 	--sysconfdir=%{_distconfdir} \
+%endif
 	-Dlogind=libsystemd \
 	-Dgsd_plugin=true \
 	-Dman=true \
@@ -86,7 +88,11 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.gnome.DiskUtility.service
 # The session / settings daemon plugin:
 %{_libexecdir}/gsd-disk-utility-notify
+%if !0%{?sle_version}
 %{_distconfdir}/xdg/autostart/org.gnome.SettingsDaemon.DiskUtilityNotify.desktop
+%else
+%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.DiskUtilityNotify.desktop
+%endif
 
 %files lang -f %{name}.lang
 
