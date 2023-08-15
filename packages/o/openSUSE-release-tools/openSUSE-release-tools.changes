@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 15 10:57:20 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230815.03a7aaa:
+  * version_calculate: chdir to the osclib dir
+
+-------------------------------------------------------------------
 Fri Aug 11 17:33:02 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230811.65a86bd:
