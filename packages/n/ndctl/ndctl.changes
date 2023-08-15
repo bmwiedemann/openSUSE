@@ -1,13 +1,43 @@
 -------------------------------------------------------------------
+Mon Aug 14 09:50:13 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 78
+  * Improved CXL support (jsc#PED-5804, jsc#PED-6162)
+  - Remove upstreamed patches
+    - cxl-monitor-fix-include-paths-for-tracefs-and-tracee.patch
+    - cxl-event-trace-use-the-wrapped-util_json_new_u64.patch
+
+-------------------------------------------------------------------
 Thu Feb 23 09:40:09 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 76
   * daxctl-online-memory: fix a memblock enumeration off-by-one
   * daxctl-online-memory: tolerate non-memblock sysfs attrs that start with 'memory_'
   * cxl-monitor: new command to monitor CXL events
+    * Refresh harden_ndctl-monitor.service.patch: Apply to cxl-monitor as well
+- Remove upstreamed patches
+  - daxctl-Fix-memblock-enumeration-off-by-one.patch
+  - daxctl-Skip-over-memory-failure-node-status.patch
+  - meson.build-fix-version-for-v75.patch
+  - libndctl-msft-Remove-NDN_MSFT_SMART_-_VALID-defines.patch
+  - libndctl-msft-Replace-nonsense-NDN_MSFT_CMD_SMART-co.patch
+  - libndctl-msft-Add-custom-cmd_is_supported-method.patch
+  - libndctl-msft-Improve-smart-state-reporting.patch
 - Add build fixes for TW and Leap
   + cxl-monitor-fix-include-paths-for-tracefs-and-tracee.patch
   + cxl-event-trace-use-the-wrapped-util_json_new_u64.patch
+
+-------------------------------------------------------------------
+Wed Feb 22 14:09:11 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Merge fixes since v75
+  +  daxctl-Fix-memblock-enumeration-off-by-one.patch
+  +  daxctl-Skip-over-memory-failure-node-status.patch
+  +  meson.build-fix-version-for-v75.patch
+  +  libndctl-msft-Remove-NDN_MSFT_SMART_-_VALID-defines.patch
+  +  libndctl-msft-Replace-nonsense-NDN_MSFT_CMD_SMART-co.patch
+  +  libndctl-msft-Add-custom-cmd_is_supported-method.patch
+  +  libndctl-msft-Improve-smart-state-reporting.patch
 
 -------------------------------------------------------------------
 Fri Jan 13 11:54:13 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
