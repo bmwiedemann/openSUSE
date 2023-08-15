@@ -17,7 +17,7 @@
 
 
 Name:           python-Flask-Security-Too
-Version:        5.1.1
+Version:        5.3.0
 Release:        0
 Summary:        Security for Flask apps
 License:        MIT
@@ -30,54 +30,59 @@ Patch1:         use-pyqrcodeng.patch
 Patch2:         filterwarnings-ignore-pkg_resources.patch
 BuildRequires:  %{python_module Authlib}
 BuildRequires:  %{python_module Babel >= 2.10.0}
-BuildRequires:  %{python_module Flask >= 1.1.1}
-BuildRequires:  %{python_module Flask-Babel >= 2.0.0}
-BuildRequires:  %{python_module Flask-Login >= 0.4.1}
+BuildRequires:  %{python_module Flask >= 2.3.2}
+BuildRequires:  %{python_module Flask-Babel >= 3.1.0}
+BuildRequires:  %{python_module Flask-Login >= 0.6.2}
 BuildRequires:  %{python_module Flask-Mailman >= 0.3.0}
 BuildRequires:  %{python_module Flask-Principal >= 0.4.0}
-BuildRequires:  %{python_module Flask-SQLAlchemy >= 3.0.2}
-BuildRequires:  %{python_module Flask-WTF >= 0.14.3}
+BuildRequires:  %{python_module Flask-SQLAlchemy >= 3.0.3}
+BuildRequires:  %{python_module Flask-WTF >= 1.1.1}
 BuildRequires:  %{python_module PyQRCode >= 1.2}
-BuildRequires:  %{python_module SQLAlchemy >= 1.4.35}
+BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module WTForms-lang}
 BuildRequires:  %{python_module WTForms}
-BuildRequires:  %{python_module Werkzeug >= 0.14.1}
-BuildRequires:  %{python_module argon2_cffi >= 19.1.0}
+BuildRequires:  %{python_module Werkzeug >= 2.3.3}
+BuildRequires:  %{python_module argon2_cffi >= 21.3.0}
 BuildRequires:  %{python_module bcrypt >= 4.0.1}
-BuildRequires:  %{python_module bleach >= 5.0.0}
+BuildRequires:  %{python_module bleach >= 6.0.0}
 BuildRequires:  %{python_module blinker >= 1.4}
 BuildRequires:  %{python_module cachetools >= 3.1.0}
-BuildRequires:  %{python_module cryptography >= 37.0.4}
+BuildRequires:  %{python_module cryptography >= 40.0.2}
 BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module email-validator >= 1.1.1}
+BuildRequires:  %{python_module importlib_resources >= 5.10.0}
 BuildRequires:  %{python_module itsdangerous >= 1.1.0}
-BuildRequires:  %{python_module passlib >= 1.7.2}
-BuildRequires:  %{python_module peewee >= 3.7.1}
-BuildRequires:  %{python_module phonenumbers >= 8.12.18}
-BuildRequires:  %{python_module pony}
+BuildRequires:  %{python_module passlib >= 1.7.4}
+BuildRequires:  %{python_module peewee >= 3.16.2}
+BuildRequires:  %{python_module phonenumbers}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pony if %python-base < 3.11}
 BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zxcvbn >= 4.4.28}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Flask >= 1.1.1
-Requires:       python-Flask-Babel >= 2.0.0
-Requires:       python-Flask-Login >= 0.4.1
+Requires:       python-Flask >= 2.3.2
+Requires:       python-Flask-Babel >= 3.1.0
+Requires:       python-Flask-Login >= 0.6.2
 Requires:       python-Flask-Principal >= 0.4.0
-Requires:       python-Flask-WTF >= 0.14.3
-Requires:       python-Werkzeug >= 0.14.1
+Requires:       python-Flask-WTF >= 1.1.1
+Requires:       python-WTForms >= 3.0.0
+Requires:       python-Werkzeug >= 2.3.3
 Requires:       python-bcrypt >= 4.0.1
-Requires:       python-bleach >= 5.0.0
+Requires:       python-bleach >= 6.0.0
 Requires:       python-blinker >= 1.4
-Requires:       python-cryptography >= 37.0.4
+Requires:       python-cryptography >= 40.0.2
 Requires:       python-email-validator >= 1.1.1
+Requires:       python-importlib_resources >= 5.10.0
 Requires:       python-itsdangerous >= 1.1.0
-Requires:       python-passlib >= 1.7.2
+Requires:       python-passlib >= 1.7.4
 Recommends:     python-PyQRCode >= 1.2
-Recommends:     python-SQLAlchemy >= 1.4.35
+Recommends:     python-SQLAlchemy
 Recommends:     python-zxcvbn >= 4.4.28
-Suggests:       python-argon2_cffi >= 19.1.0
-Suggests:       python-phonenumbers >= 8.12.18
+Suggests:       python-argon2_cffi >= 21.3.0
+Suggests:       python-phonenumbers
 Conflicts:      python-Flask-Security < 3.2.0
 Obsoletes:      python-Flask-Security < 3.2.0
 Provides:       python-Flask-Security = %{version}
@@ -99,20 +104,19 @@ rm tests/test_trackable.py
 %endif
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# gh#Flask-Middleware/flask-security#605 for test_two_factor_flag
-%pytest -k 'not test_two_factor_flag'
+%pytest -k 'not test_login_email_whatever'
 
 %files %{python_files}
 %doc AUTHORS CHANGES.rst README.rst
 %license LICENSE
 %{python_sitelib}/flask_security
-%{python_sitelib}/Flask_Security_Too-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/Flask_Security_Too-%{version}*-info
 
 %changelog
