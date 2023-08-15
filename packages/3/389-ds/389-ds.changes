@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 14 06:27:12 UTC 2023 - william.brown@suse.com
+
+- Update to version 2.4.0~git74.4297d88:
+  * issue 5890 part 2 - Need a tester for testing multiple listening thread feature (#5897)
+  * Issue i5846 - Crash when lmdb import is aborted (#5881)
+  * Issue 5894 - lmdb import error fails with Could not store the entry (#5895)
+  * Issue 5890 - Need a tester for testing multiple listening thread feature (#5891)
+  * Issue 5082 - slugify: ModuleNotFoundError when running test cases
+
+-------------------------------------------------------------------
+Thu Aug 10 06:46:04 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.4.0~git69.89c2de5:
+  * Issue 4551 - Part 2 - Fix build warning of previous PR (#5888)
+  * Issue 5834 - AccountPolicyPlugin erroring for some users (#5866)
+  * Issue 5872 - part 2 - fix is_dbi regression (#5887)
+  * Issue 4758 - Add tests for WebUI
+  * Issue 5848 - dsconf should prevent setting the replicaID for hub and consumer roles (#5849)
+  * Issue 5883 - Remove connection mutex contention risk on autobind (#5886)
+  * Issue 5872 - `dbscan()` in lib389 can return bytes
+  * Bump version to 2.4.3
+  * Issue 5729 - Memory leak in factory_create_extension (#5814)
+  * Issue 5870 - ns-slapd crashes at startup if a backend has no suffix (#5871)
+
+-------------------------------------------------------------------
 Wed May 24 03:05:55 UTC 2023 - william.brown@suse.com
 
 - Update to version 2.4.0~git18.37ec5cd:
