@@ -46,6 +46,7 @@ non-executable stack.
 
 %install
 %meson_install
+sed -i -e '1s/env python/python3/' %{buildroot}%{_bindir}/lddtree
 
 %files
 %defattr(-,root,root)
