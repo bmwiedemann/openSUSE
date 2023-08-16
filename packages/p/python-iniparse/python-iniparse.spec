@@ -1,7 +1,7 @@
 #
 # spec file for package python-iniparse
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,8 @@ Patch0:         iniparse-insert-after-commented-option.patch
 Patch1:         python-iniparse-no-python2.patch
 # https://github.com/candlepin/python-iniparse/commit/b3684a45d02af784d3d8f6ea680a351b38a865dc
 Patch2:         python-iniparse-no-six.patch
+# from https://github.com/candlepin/python-iniparse/pull/24
+Patch3:         python311-compat.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,6 +54,7 @@ are preserved when data is updated), and is more convenient to use.
 %patch0
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 chmod 644 html/index.html
 sed -i "/.*test_multiprocessing.*/d" tests/__init__.py # NOTE(saschpe): Doesn't work and I'm lazy
