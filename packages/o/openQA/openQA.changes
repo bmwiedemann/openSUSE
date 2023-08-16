@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 15 14:24:14 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1692077260.5fbe296:
+  * Make the number of asset upload attempts configurable
+  * Log number of remaining retry attempts for asset uploads
+  * Display max_running_jobs on /tests page
+  * Set max_running_jobs to -1 by default
+  * Remove max_conns setting again from Nginx config
+
+-------------------------------------------------------------------
 Wed Aug 09 12:50:41 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1691585432.1459599:
