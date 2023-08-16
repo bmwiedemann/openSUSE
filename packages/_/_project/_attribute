@@ -127,6 +127,7 @@
   poo#133529: '20230815'
   poo#134078: '20230815'
   poo#134285: '20230815'
+  poo#134330: '20230815'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -176,7 +177,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20230815</value>
+    <value>20230816</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -543,9 +544,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20230815'
-published: '20230814'
-publishing: '20230814'
+    <value>failed: ''
+published: '20230815'
+publishing: '20230815'
 testing: '20230815'
 </value>
   </attribute>
