@@ -23,7 +23,7 @@
 %define types_psutil_version 5.9.5.15
 %define types_setuptools_version 68.0.0.2
 Name:           mypy
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT

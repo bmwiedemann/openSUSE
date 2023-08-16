@@ -558,4 +558,75 @@
 </comment>
     <requestid>1099368</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d893303c84669c84da33b1ccd94b6a1a</srcmd5>
+    <version>1.5.0</version>
+    <time>1692188199</time>
+    <user>anag+factory</user>
+    <comment>- update to version 1.5.0:
+ - Drop Support for Python 3.7
+  - Mypy no longer supports running with Python 3.7, which has reached end-of-life. This was contributed by Shantanu (PR 15566).
+ - Optional Check to Require Explicit @override
+  - If you enable the explicit-override error code, mypy will generate an error if a method override doesn’t use the @typing.override decorator (as discussed in PEP 698). This way mypy will detect accidentally introduced overrides.
+  - You can enable the error code via --enable-error-code=explicit-override on the mypy command line or enable_error_code = explicit-override in the mypy config file.
+  - The override decorator will be available in typing in Python 3.12, but you can also use the backport from a recent version of typing_extensions on all supported Python versions.
+ - More Flexible TypedDict Creation and Update
+  - Mypy was previously overly strict when type checking TypedDict creation and update operations. Though these checks were often technically correct, they sometimes triggered for apparently valid code. These checks have now been relaxed by default. You can enable stricter checking by using the new --extra-checks flag.
+ - Deprecated Flag: --strict-concatenate
+  - The behavior of --strict-concatenate is now included in the new --extra-checks flag, and the old flag is deprecated.
+  - Optionally Show Links to Error Code Documentation
+  - If you use --show-error-code-links, mypy will add documentation links to (many) reported errors. The links are not shown for error messages that are sufficiently obvious, and they are shown once per error code only.
+ - Consistently Avoid Type Checking Unreachable Code
+  - If a module top level has unreachable code, mypy won’t type check the unreachable statements. This is consistent with how functions behave. The behavior of --warn-unreachable is also more consistent now.
+ - Experimental Improved Type Inference for Generic Functions
+  - You can use --new-type-inference to opt into an experimental new type inference algorithm. It fixes issues when calling a generic functions with an argument that is also a generic function, in particular. This current implementation is still incomplete, but we encourage trying it out and reporting bugs if you encounter regressions. We are planning to enable the new algorithm by default in a future mypy release.
+ - Partial Support for Python 3.12
+  - Mypy and mypyc now support running on recent Python 3.12 development versions. Not all new Python 3.12 features are supported, and we don’t ship compiled wheels for Python 3.12 yet.
+ - Improvements to Dataclasses
+  - Improve signature of dataclasses.replace (Ilya Priven, PR 14849)
+  - Fix dataclass/protocol crash on joining types (Ilya Priven, PR 15629)
+  - Fix strict optional handling in dataclasses (Ivan Levkivskyi, PR 15571)
+  - Support optional types for custom dataclass descriptors (Marc Mueller, PR 15628)
+  - Add __slots__ attribute to dataclasses (Nikita Sobolev, PR 15649)
+  - Support better __post_init__ method signature for dataclasses (Nikita Sobolev, PR 15503) 
+ - Mypyc Improvements
+  - Support unsigned 8-bit native integer type: mypy_extensions.u8 (Jukka Lehtosalo, PR 15564)
+  - Support signed 16-bit native integer type: mypy_extensions.i16 (Jukka Lehtosalo, PR 15464)
+  - Define mypy_extensions.i16 in stubs (Jukka Lehtosalo, PR 15562)
+  - Document more unsupported features and update supported features (Richard Si, PR 15524)
+  - Fix final NamedTuple classes (Richard Si, PR 15513)
+  - Use C99 compound literals for undefined tuple values (Jukka Lehtosalo, PR 15453)
+  - Don't explicitly assign NULL values in setup functions (Logan Hunt, PR 15379) 
+ - Stubgen Improvements
+  - Teach stubgen to work with complex and unary expressions (Nikita Sobolev, PR 15661)
+  - Support ParamSpec and TypeVarTuple (Ali Hamdan, PR 15626)
+  - Fix crash on non-str docstring (Ali Hamdan, PR 15623) 
+ - Documentation Updates
+  - Add documentation for additional error codes (Ivan Levkivskyi, PR 15539)
+  - Improve documentation of type narrowing (Ilya Priven, PR 15652)
+  - Small improvements to protocol documentation (Shantanu, PR 15460)
+  - Remove confusing instance variable example in cheat sheet (Adel Atallah, PR 15441) 
+ - Other Notable Fixes and Improvements
+  - Constant fold additional unary and binary expressions (Richard Si, PR 15202)
+  - Exclude the same special attributes from Protocol as CPython (Kyle Benesch, PR 15490)
+  - Change the default value of the slots argument of attrs.define to True, to match runtime behavior (Ilya Priven, PR 15642)
+  - Fix type of class attribute if attribute is defined in both class and metaclass (Alex Waygood, PR 14988)
+  - Handle type the same as typing.Type in the first argument of classmethods (Erik Kemperman, PR 15297)
+  - Fix --find-occurrences flag (Shantanu, PR 15528)
+  - Fix error location for class patterns (Nikita Sobolev, PR 15506)
+  - Fix re-added file with errors in mypy daemon (Ivan Levkivskyi, PR 15440)
+  - Fix dmypy run on Windows (Ivan Levkivskyi, PR 15429)
+  - Fix abstract and non-abstract variant error for property deleter (Shantanu, PR 15395)
+  - Remove special casing for &quot;cannot&quot; in error messages (Ilya Priven, PR 15428)
+  - Add runtime __slots__ attribute to attrs classes (Nikita Sobolev, PR 15651)
+  - Add get_expression_type to CheckerPluginInterface (Ilya Priven, PR 15369)
+  - Remove parameters that no longer exist from NamedTuple._make() (Alex Waygood, PR 15578)
+  - Allow using typing.Self in __new__ with an explicit @staticmethod decorator (Erik Kemperman, PR 15353)
+  - Fix self types in subclass methods without Self annotation (Ivan Levkivskyi, PR 15541)
+  - Check for abstract class objects in tuples (Nikita Sobolev, PR 15366) 
+ - Typeshed Updates
+  - Typeshed is now modular and distributed as separate PyPI packages for everything except the standard library stubs. Please see git log for full list of typeshed changes.
+</comment>
+    <requestid>1103792</requestid>
+  </revision>
 </revisionlist>
