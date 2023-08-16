@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycups
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/OpenPrinting/pycups
 Source:         https://files.pythonhosted.org/packages/source/p/pycups/pycups-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -56,10 +58,10 @@ driver RPMs.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 make install-rpmhook DESTDIR=%{buildroot}
 
@@ -67,7 +69,7 @@ make install-rpmhook DESTDIR=%{buildroot}
 %doc NEWS README TODO
 %license COPYING
 %{python_sitearch}/cups*.so
-%{python_sitearch}/pycups-%{version}-py*.egg-info
+%{python_sitearch}/pycups-%{version}.dist-info
 
 %files -n cups-rpm-helper
 %{_rpmconfigdir}/fileattrs/psdriver.attr
