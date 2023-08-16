@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug 11 16:36:32 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Remove CVE-2014-3230.patch, upstream was fixed. CVE-2014-3230, Debian #746576
+
+-------------------------------------------------------------------
+Fri Aug 11 16:30:24 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Update LWP-Protocol-https-6.09-systemca.diff
+
+-------------------------------------------------------------------
+Mon Jul 10 03:06:48 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.11
+   see /usr/share/doc/packages/perl-LWP-Protocol-https/Changes
+
+  6.11      2023-07-09 15:10:30Z
+      - Remove Authority section from dist.ini (GH#64) (Olaf Alders)
+      - Add very basic diagnostic information via test (GH#73) (Olaf Alders)
+      - CVE-2014-3230 - don't disable verification if only hostnames should not
+        (GH#14) (Steffen Ullrich)
+      - Make explicit requirement of Mozilla::CA obsolete (GH#72) (Steffen
+        Ullrich and Olaf Alders)
+      - Remove _in_san and _cn_match. Empty out the _check_sock hook (GH#71)
+        (Chase Whitener)
+      - Use warnings (GH#69) (Pete Houston)
+
+-------------------------------------------------------------------
 Fri Dec 18 03:07:41 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.10
