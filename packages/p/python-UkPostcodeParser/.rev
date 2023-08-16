@@ -32,4 +32,12 @@
     <comment></comment>
     <requestid>1082018</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c4c2a07f9bfb6512d1aaeec306b26cfc</srcmd5>
+    <version>1.1.2</version>
+    <time>1692188191</time>
+    <user>anag+factory</user>
+    <comment>- add python312.patch to fix build with python 3.12</comment>
+    <requestid>1103988</requestid>
+  </revision>
 </revisionlist>

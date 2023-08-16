@@ -26,6 +26,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hamstah/ukpostcodeparser
 Source:         https://files.pythonhosted.org/packages/source/U/UkPostcodeParser/UkPostcodeParser-%{version}.tar.gz
+Patch1:         python312.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,7 +38,7 @@ BuildArch:      noarch
 United Kingdom Postcode parser.
 
 %prep
-%setup -q -n UkPostcodeParser-%{version}
+%autosetup -p1 -n UkPostcodeParser-%{version}
 
 %build
 %python_build
@@ -55,6 +56,7 @@ sed -i 's/test_\(091\|097\|098\|125\|131\)/_test_\1/' ukpostcodeparser/test/pars
 %files %{python_files}
 %license LICENSE
 %doc README
-%{python_sitelib}/*
+%{python_sitelib}/ukpostcodeparser
+%{python_sitelib}/UkPostcodeParser-%{version}*-info
 
 %changelog
