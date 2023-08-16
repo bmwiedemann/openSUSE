@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-google-auth
-Version:        2.21.0
+Version:        2.22.0
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
@@ -42,7 +42,6 @@ BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module rsa >= 3.1.4}
 BuildRequires:  %{python_module setuptools >= 40.3.0}
 BuildRequires:  %{python_module six >= 1.9.0}
-BuildRequires:  %{python_module urllib3 < 2.0}
 # END TESTING SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -56,6 +55,7 @@ Recommends:     python-aiohttp >= 3.6.2
 Recommends:     python-pyOpenSSL >= 20.0.0
 Recommends:     python-pyu2f >= 0.1.5
 Recommends:     python-requests >= 2.20.0
+Recommends:     python-urllib3
 BuildArch:      noarch
 %python_subpackages
 
@@ -83,6 +83,5 @@ This library simplifies using Google’s various server-to-server authentication
 %{python_sitelib}/google/auth
 %{python_sitelib}/google/oauth2
 %{python_sitelib}/google_auth-%{version}*-info
-%{python_sitelib}/google_auth-%{version}*-nspkg.pth
 
 %changelog

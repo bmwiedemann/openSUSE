@@ -366,4 +366,24 @@
     <comment></comment>
     <requestid>1095589</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fb33daa0425abf7abb3dfe9b706a8a53</srcmd5>
+    <version>2.22.0</version>
+    <time>1692188189</time>
+    <user>anag+factory</user>
+    <comment>- unpin urllib3 to resolve conflict with python-kubernetes 
+
+- Fix not installable error
+
+- Update to 2.22.0
+  * Adding meta header for trust boundary (#1334)
+  * Introduce compatibility with native namespace packages (#1205)
+  * Deprecate UserAccessTokenCredentials (#1344)
+- Update file list in %files section
+
+- Require python-urllib3 &lt; 2.0 if python-urllib3: urllib3 seems not
+  strictly required, but when it's there, we need it to be older
+  than version 2.0.</comment>
+    <requestid>1103816</requestid>
+  </revision>
 </revisionlist>

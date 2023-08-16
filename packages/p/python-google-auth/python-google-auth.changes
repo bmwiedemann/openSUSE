@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug 14 09:05:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- unpin urllib3 to resolve conflict with python-kubernetes 
+
+-------------------------------------------------------------------
+Tue Jul 25 13:44:24 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Fix not installable error
+
+-------------------------------------------------------------------
+Tue Jul 18 10:56:40 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.22.0
+  * Adding meta header for trust boundary (#1334)
+  * Introduce compatibility with native namespace packages (#1205)
+  * Deprecate UserAccessTokenCredentials (#1344)
+- Update file list in %files section
+
+-------------------------------------------------------------------
+Mon Jul 10 08:18:34 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require python-urllib3 < 2.0 if python-urllib3: urllib3 seems not
+  strictly required, but when it's there, we need it to be older
+  than version 2.0.
+
+-------------------------------------------------------------------
 Tue Jun 27 10:51:30 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.21.0
