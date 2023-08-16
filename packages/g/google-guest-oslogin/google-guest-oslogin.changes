@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 15 13:53:44 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230808.00
+  * byoid: extract and apply the ca fingerprint to policy call (#106)
+
+-------------------------------------------------------------------
 Tue May  9 08:10:07 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230502.00

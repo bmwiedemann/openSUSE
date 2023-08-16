@@ -181,4 +181,13 @@
   * Add anandadalton to the owners list (#96) (forwarded request 1085655 from glaubitz)</comment>
     <requestid>1085769</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>622d65ea397d431818ed681f489551ca</srcmd5>
+    <version>20230808.00</version>
+    <time>1692188265</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20230808.00
+  * byoid: extract and apply the ca fingerprint to policy call (#106) (forwarded request 1104059 from glaubitz)</comment>
+    <requestid>1104089</requestid>
+  </revision>
 </revisionlist>
