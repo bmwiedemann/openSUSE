@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 14 20:12:09 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.11.5:
+  * Update CLDR to version 43 and symbols from NVDA.
+  * Fix parsing and emitting space character.
+  * Reduce espeak buffer size to avoid ssml issues.
+  * Add --disable-doc.
+  * Fix spd-conf not being able to set the default module.
+  * Fix pausing without index.
+
+-------------------------------------------------------------------
 Wed Jun 28 14:19:26 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Use always python3.11 to build, so Leap use also python3.11 to

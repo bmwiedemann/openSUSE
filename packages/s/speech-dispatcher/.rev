@@ -339,4 +339,18 @@
 Now as requested only for Leap (forwarded request 1096175 from ecsos)</comment>
     <requestid>1096178</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>0240dccc59674c0b53e90a4d03c295a8</srcmd5>
+    <version>0.11.5</version>
+    <time>1692188184</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.11.5:
+  * Update CLDR to version 43 and symbols from NVDA.
+  * Fix parsing and emitting space character.
+  * Reduce espeak buffer size to avoid ssml issues.
+  * Add --disable-doc.
+  * Fix spd-conf not being able to set the default module.
+  * Fix pausing without index. (forwarded request 1103935 from mgorse)</comment>
+    <requestid>1103936</requestid>
+  </revision>
 </revisionlist>
