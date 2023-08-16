@@ -2192,4 +2192,34 @@
 </comment>
     <requestid>1088796</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>d61972f309ef8115e5d34639036e9ba1</srcmd5>
+    <version>9.25.12</version>
+    <time>1692188190</time>
+    <user>anag+factory</user>
+    <comment>- Bump version: 9.25.11 → 9.25.12
+
+- Fix double grub entries in hybrid ISO images
+  As consequence of using the &quot;source&quot; grub command instead
+  of the &quot;configfile&quot; command to load the grub config we now
+  see double loading of the same file on ISO media. The reason
+  here is that kiwi ISO media is always hybrid which means it
+  embeds an MBR into the ISO for which the &quot;source&quot; command now
+  can read the same file through two different device paths.
+  This does not happen with the &quot;configfile&quot; grub command.
+  Thus this patch uses &quot;configfile&quot; if we produce an ISO image
+  and &quot;source&quot; for all other image types. The commit also fixes
+  the custom grub template used for ISO images in a way that
+  we only set the &quot;serial&quot; command if there is a serial
+  configuration provided along with the image description.
+
+- Update x86/tumbleweed/test-image-systemd-boot
+  systemd package has been splitted and provides
+  systemd-boot in an extra package now
+
+- Limit scope of grub _fix method
+  Only apply _fix_grub_to_support_dynamic_efi_and_bios_boot for
+  the x86_64 or ix86 architectures. This Fixes #2343</comment>
+    <requestid>1103984</requestid>
+  </revision>
 </revisionlist>

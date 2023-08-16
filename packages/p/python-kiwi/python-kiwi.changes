@@ -1,4 +1,692 @@
 -------------------------------------------------------------------
+Wed Aug 09 22:39:20 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.11 → 9.25.12
+
+-------------------------------------------------------------------
+Wed Aug 09 16:07:34 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix double grub entries in hybrid ISO images
+
+  As consequence of using the "source" grub command instead
+  of the "configfile" command to load the grub config we now
+  see double loading of the same file on ISO media. The reason
+  here is that kiwi ISO media is always hybrid which means it
+  embeds an MBR into the ISO for which the "source" command now
+  can read the same file through two different device paths.
+  This does not happen with the "configfile" grub command.
+  Thus this patch uses "configfile" if we produce an ISO image
+  and "source" for all other image types. The commit also fixes
+  the custom grub template used for ISO images in a way that
+  we only set the "serial" command if there is a serial
+  configuration provided along with the image description.
+
+-------------------------------------------------------------------
+Thu Aug 03 16:29:46 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update x86/tumbleweed/test-image-systemd-boot
+
+  systemd package has been splitted and provides
+  systemd-boot in an extra package now
+
+-------------------------------------------------------------------
+Thu Aug 03 11:31:04 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Limit scope of grub _fix method
+
+  Only apply _fix_grub_to_support_dynamic_efi_and_bios_boot for
+  the x86_64 or ix86 architectures. This Fixes #2343
+
+-------------------------------------------------------------------
+Tue Aug 01 14:30:07 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.10 → 9.25.11
+
+-------------------------------------------------------------------
+Tue Aug 01 13:53:01 CEST 2023 - Leif Liddy <leif.liddy@gmail.com>
+
+- remove trailing whitespace
+
+-------------------------------------------------------------------
+Tue Aug 01 09:58:44 CEST 2023 - Dan Čermák <dcermak@suse.com>
+
+- rpm spec: add missing requires of typing_extensions for python < 3.8
+
+-------------------------------------------------------------------
+Tue Aug 01 09:58:26 CEST 2023 - Dan Čermák <dcermak@suse.com>
+
+- rpm spec: bump copyright year
+
+-------------------------------------------------------------------
+Tue Aug 01 09:25:59 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed linter errors
+
+  Latest changes regarding type hints introduced linter errors.
+  Also adapt the workflow run which is expected to detect them
+
+-------------------------------------------------------------------
+Tue Aug 01 04:30:23 CEST 2023 - Leif Liddy <leif.liddy@gmail.com>
+
+- add GRUB_TIMEOUT_STYLE menu option
+
+  revert trailing space removal
+
+-------------------------------------------------------------------
+Mon Jul 31 21:30:10 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.9 → 9.25.10
+
+-------------------------------------------------------------------
+Mon Jul 31 21:29:42 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed python interpreter for Release target
+
+-------------------------------------------------------------------
+Mon Jul 31 21:22:58 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.8 → 9.25.9
+
+-------------------------------------------------------------------
+Mon Jul 31 21:21:48 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed workflow interpreter name
+
+  Specifying py 3.10 has to be quoted
+
+-------------------------------------------------------------------
+Mon Jul 31 21:18:03 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.7 → 9.25.8
+
+-------------------------------------------------------------------
+Mon Jul 31 21:16:41 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed doc publishing
+
+  The github action to do this was still based on py3.6
+  but the latest changes on tox.ini requires a newer version
+  of tox which doesn't exist for py3.6. Thus run the workflow
+  on a newer python version
+
+-------------------------------------------------------------------
+Mon Jul 31 17:44:06 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.6 → 9.25.7
+
+-------------------------------------------------------------------
+Mon Jul 31 17:39:04 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix linter check, whitespace after :
+
+-------------------------------------------------------------------
+Mon Jul 31 17:32:50 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.5 → 9.25.6
+
+-------------------------------------------------------------------
+Mon Jul 31 12:53:33 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Pass rootflags if no default volume is set
+
+  In case of btrfs and if btrfs_set_default_volume is explicitly
+  switched off, we create the correct rootflags= kernel cmdline
+  entry to tell the system about the root volume for booting
+
+-------------------------------------------------------------------
+Thu Jul 27 17:09:36 CEST 2023 - slowpeek <slowpeek@users.noreply.github.com>
+
+- Use 'source' instead of 'configfile' in generated grub.cfg
+
+  Details are outlined in issue #2320
+
+-------------------------------------------------------------------
+Thu Jul 27 12:08:35 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure btrfs root volume is used when needed
+
+  With the possibility to switch off setting the default volume
+  an issue at other parts in the kiwi code which mounted the
+  btrfs based system were uncovered. Without any default volume
+  set it's required to transport the root volume if different
+  from / and pass the respective subvol= option to the mount.
+  This commit fixes it at the places where kiwi trusted btrfs
+  to have a correct default volume set
+
+-------------------------------------------------------------------
+Thu Jul 27 09:18:54 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- update Fedora integration test
+
+  The setting of a default volume is unwanted here
+
+-------------------------------------------------------------------
+Thu Jul 27 09:18:33 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- add btrfs_set_default_volume attribute
+
+  By default kiwi runs btrfs set-default on the volume that is
+  considered the default volume according to the btrfs settings
+  and defaults. btrfs_set_default_volume="false" allows
+  to deactivate this action. Along with the change also the
+  misleading name of the btrfs_create_toplevel_subvolume has
+  been changed to root_is_subvolume
+
+-------------------------------------------------------------------
+Tue Jul 25 17:24:36 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed check for extended attributes
+
+  Only if libc reports errno 95 Operation not supported the method
+  should return that extended attributes are not supported. Also
+  add a debug information about the result of the call to get further
+  information in the log file
+
+-------------------------------------------------------------------
+Tue Jul 25 13:38:50 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed call of tox for xdist
+
+  Passing arguments to modules called by tox has changed
+  its syntax
+
+-------------------------------------------------------------------
+Tue Jul 25 13:05:35 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Take subvol mount option for root into account
+
+  If the rootfs is btrfs based make sure the fstab entry for
+  it takes the name of the root subvolume into account
+
+-------------------------------------------------------------------
+Tue Jul 25 12:43:31 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix fallback secure boot setup
+
+  Don't copy the same file. This case happens when rebuilding
+  an image using --allow-existing-root when the fallback setup
+  has done its job already in the first run
+
+-------------------------------------------------------------------
+Mon Jul 24 21:02:48 CEST 2023 - Dan Čermák <dcermak@suse.com>
+
+- Fix type hints of IsoToolXorrIso.init_iso_creation_parameters
+
+-------------------------------------------------------------------
+Mon Jul 24 21:02:28 CEST 2023 - Dan Čermák <dcermak@suse.com>
+
+- xorriso: handle case when isohdpfx.bin not found
+
+-------------------------------------------------------------------
+Mon Jul 24 20:30:49 CEST 2023 - Dan Čermák <dcermak@suse.com>
+
+- Fix type hints for the Pacman package manager
+
+-------------------------------------------------------------------
+Mon Jul 24 20:30:38 CEST 2023 - Dan Čermák <dcermak@suse.com>
+
+- Type hint the Path module
+
+-------------------------------------------------------------------
+Mon Jul 24 20:06:03 CEST 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add better type hints to ContainerImageOCI and ContainerImageAppx
+
+-------------------------------------------------------------------
+Mon Jul 24 20:02:32 CEST 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add ContainerImageBase abstract base class for OCI & Appx
+
+-------------------------------------------------------------------
+Mon Jul 24 18:35:56 CEST 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add type hints to the Compress module
+
+-------------------------------------------------------------------
+Mon Jul 24 18:02:47 CEST 2023 - Dan Čermák <dcermak@suse.com>
+
+- Import modules in OCI.new() explicitly
+
+  Also, add a type hint to the return type of OCI.new() so that this can now be
+  verified with mypy
+
+-------------------------------------------------------------------
+Mon Jul 24 17:56:09 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update contributing chapter
+
+  Fix and update the information how to contribute. Due to
+  the latest changes in tox.ini some requirements regarding
+  the tox and python versions came up. This commit updates
+  the docs in this regard
+
+-------------------------------------------------------------------
+Mon Jul 24 17:32:04 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added py3.11 tox target
+
+-------------------------------------------------------------------
+Mon Jul 24 17:28:28 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed writing correct keyfile path to etc/crypttab
+
+  The keyfile path was not correctly set in etc/crypttab which
+  caused systemd not being able to read the keyfile, consequently
+  asking for a passphrase. This commit fixes the writing of the
+  crypttab and also fixes a python name clash with the "os"
+  namespace.
+
+-------------------------------------------------------------------
+Mon Jul 24 16:02:23 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Cleanup condition for SECURE_BOOT=yes|no
+
+  The statement serves the purpose for an if/else construction
+  to become a better read. In addition delete the probably
+  left-over print statement from the test
+
+-------------------------------------------------------------------
+Mon Jul 24 14:54:50 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete pyxattr from setup.py
+
+  Followup on Issue #2330. Forgot to delete pyxattr requirement
+  from setup.py
+
+-------------------------------------------------------------------
+Mon Jul 24 14:45:01 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add volid to profile for all ISO based image types
+
+  Add provided volume id (or the default value) to the profile
+  environment file for all ISO based image types. So far this
+  was only done for installation ISO media but not for simple
+  live ISO images.
+
+-------------------------------------------------------------------
+Mon Jul 24 09:09:51 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed mail address in spec file
+
+-------------------------------------------------------------------
+Thu Jul 20 16:41:29 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete (py)xattr module requirement
+
+  The required functionality is provided by the core os library
+
+-------------------------------------------------------------------
+Thu Jul 20 15:02:09 CEST 2023 - Paul Gardiner <github@glidos.net>
+
+- Fix failure when booting KIS via NBD
+
+  In the NBD booting case, the function initGlobalDevices in
+  kiwi-overlay-root.sh runs the command ndb-client to connect the remote NBD
+  share to the device /dev/nbd0. The script parse-kiwi-overlay.sh, on the
+  other hand, incorrectly parses overlay:nbd=ip:export to /dev/ip/export,
+  leading to the system waiting for /dev/ip/export to appear. This commit
+  corrects the problem.
+
+  With this change NDB booting of KIS images now succeeds, although only if
+  the ndb package is added to the appliance description.
+
+-------------------------------------------------------------------
+Wed Jul 19 16:06:09 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use bootpartition for Fedora integration test
+
+  When using btrfs with the proposed layout for testing the
+  delivered grub bios module for the Fedora system used to build
+  the integration test (FC37) is not capable to find the grub
+  config file. A manual call for configfile in the grub shell
+  fixes this with the existing kiwi created grub early-boot
+  script. However, it is expected that the delivered grub image
+  works and kiwi only creates its own one if no distro delivered
+  grub image was found. To make the integration test functional
+  for both BIOS and EFI the simple solution is to use an extra
+  not btrfs based boot partition. This still allows to test
+  the desired btrfs layout in terms of volumes and sub-volumes
+  and does not break on any of the boot methods.
+
+-------------------------------------------------------------------
+Wed Jul 19 15:24:04 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed apply_attributes_on_volume
+
+  Make the function call more robust in terms of path separation
+
+-------------------------------------------------------------------
+Wed Jul 19 11:49:31 CEST 2023 - Dan Čermák <dcermak@suse.com>
+
+- Use tox isolated_build instead of hardcoding the envdir
+
+-------------------------------------------------------------------
+Tue Jul 18 16:59:36 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add parent attribute to volume setup
+
+  For the btrfs volume management, allow to put a volume into a specific
+  parent volume. If not specified the volume is below the default volume
+  This Fixes #2316
+
+-------------------------------------------------------------------
+Tue Jul 18 15:45:23 CEST 2023 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Add SECURE_BOOT no when the firmware is efi
+
+  This Fixes bsc#1211102
+
+-------------------------------------------------------------------
+Sun Jul 16 21:24:30 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use btrfs for fedora/test-image-live-disk test
+
+  Change the Virtual profile to build a btrfs based image
+  for testing respective btrfs layouts
+
+-------------------------------------------------------------------
+Sun Jul 16 20:32:12 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add btrfs_create_toplevel_subvolume attribute
+
+  Allow to explicitly select if a toplevel subvolume should
+  be created or not. To avoid a behavior change, kiwi will
+  create a toplevel based btrfs structure if this attribute
+  is not specified. However, a deprecation message to inform
+  about future behavior change will be printed. This is
+  related to Issue #2316
+
+-------------------------------------------------------------------
+Wed Jul 12 17:58:41 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Evaluate the @root volume name also for btrfs
+
+  In a volume setup the special volume declaration
+  <volume name="@root=identifier"/> was only evaluated for the
+  LVM volume manager. In case of btrfs a hardcoded root volume
+  name '@' was used. This commit allows to specify a custom
+  name for the root volume for btrfs as well and also allows
+  to specify that there should be no such root volume.
+  Example:
+
+  <volume name="@root=@"/>
+
+  Name the root volume '@'. If not specified this stays as
+  the default to stay compatible
+
+  <volume name="@root=/"/>
+
+  Indicate no root volume is wanted. All subvolumes resides
+  below root (/)
+
+  <volume name="@root=foo"/>
+
+  Name the root volume 'foo'
+
+  This is related to Issue #2316 and a first patch to
+  address the requested changes
+
+-------------------------------------------------------------------
+Mon Jul 10 16:56:35 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.4 → 9.25.5
+
+-------------------------------------------------------------------
+Mon Jul 10 16:37:21 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed regression in bootloader config attr access
+
+  use_disk_password is not an attribute that exists in all
+  BootLoaderConfig instances. Thus it's a mistake to access
+  the attribute in the disk builder
+
+-------------------------------------------------------------------
+Mon Jul 10 15:41:35 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.3 → 9.25.4
+
+-------------------------------------------------------------------
+Mon Jul 10 11:22:09 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Load isoschematron module on demand
+
+  Due to a license issue the isoschematron code might not be
+  available in the lxml package from the distributor. This commit
+  uses isoschematron on demand. If present on the system it gets
+  loaded and used, if not a warning that the schematron validation
+  will be skipped is provided. This Fixes #2314
+
+-------------------------------------------------------------------
+Sat Jul 08 14:14:49 CEST 2023 - slowpeek <slowpeek@users.noreply.github.com>
+
+- Improve loopback.cfg example
+
+  submenu+source should be preferred over menuentry+configfile:
+
+  - submenu creates a new context, menuentry does not. As a result, changes made
+  to vars inside menuentry's braces pollute the current scope. In this particular
+  case what is notably wrong is root=loop happens in the current scope. If we
+  activate the "Boot from openSUSE ISO" menu entry and then press Esc to return
+  back to explore other menu entries, $root would still be set to 'loop'. Instead
+  of manually saving and restoring $root value it is better to wrap the whole
+  thing in a new context with submenu
+
+  - configfile is not just 'source in a new context', it has as least one side
+  effect. For details look for grub_err_printed_errors usage in [1] and [2] in
+  grub sources
+
+  [1] grub-core/normal/menu.c
+  [2] grub-core/normal/menu_entry.c
+
+-------------------------------------------------------------------
+Fri Jul 07 08:49:47 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.2 → 9.25.3
+
+-------------------------------------------------------------------
+Wed Jul 05 12:29:51 CEST 2023 - Olaf Kirch <okir@suse.com>
+
+- Add improvements for fully encrypted disk images
+
+  This commit adds more flexibility when using LUKS
+  encrypted images. In addition support for key derivation
+  on user provided passwords has been added. The following
+  new attributes were added to the schema:
+
+  type.luks_randomize
+  allow to enable/disable the data randomizing if luks
+  encryption is used
+
+  type.luks_pbkdf
+  When LUKS unlocks a key slot using a user provided
+  password, it uses a so-called key derivation function
+  to derive a symmetric encryption key from the password.
+  Not all boot loaders support all KDF algorithms, hence
+  this attribute can be used to select a specific algorithm
+
+  bootloader.use_disk_password
+  When /boot is encrypted, make the boot loader store the
+  password in its configuration file (in cleartext). This
+  is useful for full disk encryption images
+
+  Signed-off-by: Olaf Kirch <okir@suse.com>
+
+-------------------------------------------------------------------
+Wed Jul 05 12:19:45 CEST 2023 - Olaf Kirch <okir@suse.com>
+
+- Change location of LUKS keyfile to /root/.root.keyfile
+
+  In some configuration (eg on a transactional system), the root
+  file system is read-only, which means we will not be able to remove
+  the stale .root.keyfile after firstboot.
+
+  This patch changes the location of the keyfile and places it in
+  /root/.root.keyfile instead, because root's home directory is much
+  more likely to be read/write.
+
+  Also fixed the associated unit test (thanks to schaefi).
+
+  Signed-off-by: Olaf Kirch <okir@suse.com>
+
+-------------------------------------------------------------------
+Tue Jul 04 13:00:02 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add alternative re-reading of the partition table
+
+  To inform the kernel about disk geometry changes, kiwi uses
+  partprobe as a primary tool. However it is provided by parted
+  and not necessarily available due to the package requirements
+  on the dracut module. A second attempt via blockdev which
+  is expected to exist is therefore made by this commit
+
+-------------------------------------------------------------------
+Tue Jul 04 01:04:19 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor the luks_device class data transport
+
+  Also add missing unit tests
+
+-------------------------------------------------------------------
+Mon Jul 03 23:05:34 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- test_get_build_type_bootloader_use_disk_password
+
+  Add missing unit test for use_disk_password attribute
+
+-------------------------------------------------------------------
+Fri Jun 16 18:31:03 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.1 → 9.25.2
+
+-------------------------------------------------------------------
+Fri Jun 16 18:27:07 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix repository setup for microdnf
+
+  An instance of the Repository class for microdnf has
+  to use RepositoryDnf4
+
+-------------------------------------------------------------------
+Fri Jun 16 08:48:14 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.25.0 → 9.25.1
+
+-------------------------------------------------------------------
+Wed Jun 14 19:34:29 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed image install of dnf package manager
+
+  If the package manager is set to 'dnf4', this name is
+  taken also as package name to install this package manager
+  into the image. Problem is 'dnf4' is not a valid package
+  name. The correct name for 'dnf4' is 'dnf'. This commit
+  fixes the name bug introduced with the changes for
+  Issue #2262
+
+-------------------------------------------------------------------
+Wed Jun 14 19:00:47 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.61 → 9.25.0
+
+-------------------------------------------------------------------
+Wed Jun 14 09:55:29 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add more details about used grub image(s)
+
+-------------------------------------------------------------------
+Sat Jun 10 16:22:47 CEST 2023 - glaubway <me@lvfrfn.in.ua>
+
+- make alias unique in any cases
+
+-------------------------------------------------------------------
+Thu Jun 01 17:00:47 CEST 2023 - Steffen Winterfeldt <wfeldt@opensuse.org>
+
+- The actual padding is 0. And switch to sha256.
+
+-------------------------------------------------------------------
+Mon May 29 10:17:08 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Change package manager dnf to dnf4
+
+  With dnf5 there is a successor for dnf but there will also
+  be a transition period where there will be both, the former
+  dnf and the new dnf5 available. For a clear distinction
+  between the two we got the recommendation from the RedHat
+  team to support both in different namespaces. This commit
+  now implements a backward compatible change for kiwi which
+  includes the following modifications:
+
+  * XSL stylesheet for automatic schema transformation from
+
+  <packagemanager>dnf</packagemanager> to
+  <packagemanager>dnf4</packagemanager>
+
+  * Code copy of dnf API interface from
+
+  PackageManagerDnf -> PackageManagerDnf4
+  RepositoryDnf -> RepositoryDnf4
+
+  * Deprecation of former Dnf API interface
+
+  The code change here will force developers to adapt
+  their code if they used RepositoryDnf / PackageManagerDnf
+  classes in their python code. After this change developers
+  will be dropped into a raise condition which exits kiwi
+  at the time of the call. Related to Issue #2300
+  and Issue #2262
+
+-------------------------------------------------------------------
+Thu May 25 16:42:38 CEST 2023 - Hans-Peter Jansen <hp@urpla.net>
+
+- Documentation: clearify dnf based collection selectors
+
+  With 89b5a6f5269, the selection of collections was changed to allow
+  group IDs only for dnf based package installers.
+
+-------------------------------------------------------------------
+Thu May 25 11:10:40 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update rawhide integration tests
+
+  Use dnf5 for rawhide. It's hard to differentiate between old and
+  new dnf version on Fedora Rawhide. Thus let's make the move to
+  dnf5. Since microdnf is also wrapped into dnf5 the integration
+  test for microdnf got renamed to dnf5
+
+-------------------------------------------------------------------
+Wed May 24 16:00:11 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for dnf5 package manager
+
+  dnf5 is the next generation of the dnf package manager.
+  dnf5 is not a drop in replacement to dnf which is the reason
+  why this commit adds a new interface class for package and
+  repository management under a new name: dnf5. Beginning with
+  Fedora >= 39 dnf5 will be the standard. Thus the requirements
+  on the packaging level were adapted too.
+  This Fixes #2300
+  This Fixes #2262
+
+-------------------------------------------------------------------
+Wed May 24 10:20:40 CEST 2023 - Isaac True <isaac.true@canonical.com>
+
+- dracut: modules.d: 90kiwi-overlay: add support for device mapper targets
+
+  Allow specifying a device mapper target for the root of the overlayfs.
+  This adds support for features like adding a dm-verity or dm-crypt
+  backend to the overlayfs.
+
+  A device mapper target can be specified using the following syntax on
+  the kernel command line:
+
+  root=overlay:MAPPER=verityRoot
+
+  This translates to using the path `/dev/mapper/verityRoot` as the base
+  of the overlayfs.
+
+  Signed-off-by: Isaac True <isaac.true@canonical.com>
+
+-------------------------------------------------------------------
 Wed May 24 09:38:40 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.60 → 9.24.61
@@ -42,6 +730,36 @@ Tue May 16 10:00:11 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
 - Add cpio to core systemdeps requires list
 
 -------------------------------------------------------------------
+Thu May 11 10:08:18 CEST 2023 - Jan Löser <loeser@atix.de>
+
+- Find correct `shimx64.efi` binary for EL derivatives
+
+  Sort globbing result by length and look for `shim[a-z]*.efi` pattern
+  first before falling back to `shim.efi`. This allows us to match
+  correct shim binary for SecureBoot enabled systems.
+
+  The following example shows the content of recent shim package from
+  AlmaLinux 9:
+
+  $ ls -1 ~/Downloads/shim-almalinux-x64/boot/efi/EFI/almalinux
+  BOOTX64.CSV
+  mmx64.efi
+  shim.efi
+  shimx64-almalinux.efi
+  shimx64.efi
+
+  Sorted globbing result is:
+
+  shimx64.efi
+  shimx64-almalinux.efi
+
+  First match wins (here `shimx64.efi`) which is the correct binary to be
+  used as it is signed by M$.
+
+  Was tested with shim packages for CentOS (x64, ia32, aarch64), Fedora 36
+  (x64), AlmaLinux 9 (x64, aarch64).
+
+-------------------------------------------------------------------
 Sat May 06 20:40:11 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.59 → 9.24.60
@@ -73,6 +791,15 @@ Fri Apr 28 09:44:59 CEST 2023 - David Cassany <dcassany@suse.com>
   code to compile for ix86.
 
   Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Tue Apr 25 07:57:42 CEST 2023 - Jan Löser <loeser@atix.de>
+
+- Look for specific `shimx64.efi` binary first
+
+  In CentOS, `/boot/efi/EFI/*/shim*.efi` extends to
+  `/boot/efi/EFI/centos/shimx64-centos.efi` which is not signed by M$ but
+  CentOS itself. This in turn does not boot on SecureBoot enabled systems.
 
 -------------------------------------------------------------------
 Mon Apr 24 23:48:34 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
@@ -138,6 +865,21 @@ Thu Apr 20 10:28:09 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
   Special characters in a URL e.g the @ sign needs to be encoded
   as part of a remote URL.
+
+-------------------------------------------------------------------
+Tue Apr 18 20:30:43 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix workflow run
+
+-------------------------------------------------------------------
+Tue Apr 18 19:48:01 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed Fedora prebuild EFI binary lookup
+
+  When creating CentOS/Fedora live media, kiwi does not install the
+  right signed grub2 EFI binary. This was caused by kiwi not being
+  aware of the gcdx64.efi(x86_64), gcdaa64.efi(aarch64) binaries
+  for CD/ISO boot. This Fixes #2270
 
 -------------------------------------------------------------------
 Thu Apr 13 18:33:10 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>

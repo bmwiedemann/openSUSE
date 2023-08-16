@@ -1,7 +1,7 @@
 #
 # spec file for package kiwi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.24.61
+Version:        9.25.12
 Provides:       kiwi-schema = 7.5
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -51,7 +51,7 @@ Summary:        KIWI - Appliance Builder Next Generation
 License:        GPL-3.0-or-later
 %if "%{_vendor}" == "debbuild"
 # Needed to set Maintainer in output debs
-Packager:       Marcus Schaefer <ms@suse.de>
+Packager:       Marcus Schaefer <marcus.schaefer@suse.com>
 %endif
 Group:          %{pygroup}
 Source:         %{name}.tar.gz
@@ -91,19 +91,28 @@ Recommends:     dpkg
 %endif
 %if 0%{?suse_version}
 Recommends:     gpg2
-Recommends:     dnf
 Recommends:     debootstrap
 Recommends:     dpkg
+%if 0%{?suse_version} >= 1650
+Recommends:     dnf
+%endif
 %endif
 # package managers required by distro
 %if 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?suse_version} >= 1650
 Provides:       kiwi-packagemanager:microdnf
 Requires:       microdnf
 %endif
+%if 0%{?fedora} >= 39
+Requires:       dnf5
+Requires:       dnf5-plugins
+Provides:       kiwi-packagemanager:dnf5
+%else
 %if 0%{?fedora} || 0%{?rhel} || 0%{?suse_version} >= 1650
 Requires:       dnf
 Provides:       kiwi-packagemanager:dnf
+Provides:       kiwi-packagemanager:dnf4
 Provides:       kiwi-packagemanager:yum
+%endif
 %endif
 %if 0%{?fedora} >= 26 || 0%{?suse_version}
 Requires:       zypper
@@ -357,6 +366,7 @@ Requires:       screen
 Requires:       python%{python3_pkgversion} >= 3.6
 %if 0%{?ubuntu} || 0%{?debian}
 Requires:       python%{python3_pkgversion}-yaml
+Requires:       python%{python3_pkgversion}-typing-extensions
 %else
 Requires:       python%{python3_pkgversion}-PyYAML
 %endif
@@ -365,10 +375,11 @@ Requires:       python%{python3_pkgversion}-docopt
 Requires:       python%{python3_pkgversion}-lxml
 Requires:       python%{python3_pkgversion}-requests
 Requires:       python%{python3_pkgversion}-setuptools
-%if (0%{?suse_version} && 0%{?suse_version} < 1550)
-Requires:       python%{python3_pkgversion}-xattr
-%else
-Requires:       python%{python3_pkgversion}-pyxattr
+%if 0%{?rhel} || 0%{?fedora}
+Requires:       (python%{python3_pkgversion}-typing-extensions if python%{python3_pkgversion} < 3.8)
+%endif
+%if 0%{?suse_version}
+Requires:       (python%{python3_pkgversion}-typing_extensions if python%{python3_pkgversion} < 3.8)
 %endif
 %if ! (0%{?rhel} && 0%{?rhel} < 8)
 Recommends:     kiwi-man-pages
@@ -610,11 +621,6 @@ Provides manual pages to describe the kiwi commands
 # Drop shebang for kiwi/xml_parse.py, as we don't intend to use it
 # as an independent script
 sed -e "s|#!/usr/bin/env python||" -i kiwi/xml_parse.py
-
-%if 0%{?suse_version} && 0%{?suse_version} < 1550
-# For older SUSE distributions, use the other xattr Python module
-sed -e "s|pyxattr|xattr|" -i setup.py
-%endif
 
 %build
 # Build C-Tools
