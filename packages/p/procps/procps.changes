@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 15 12:24:00 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch CVE-2023-4016.patch
+  * CVE-2023-4016: ps buffer overflow (bsc#1214290)
+
+-------------------------------------------------------------------
 Tue Dec 27 13:14:52 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

@@ -1349,4 +1349,13 @@ There are also man pages translations but they doesn't get installed automatical
     <comment>Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1055723 from lnussel)</comment>
     <requestid>1057027</requestid>
   </revision>
+  <revision rev="132" vrev="13">
+    <srcmd5>5f532ab4b9f1ab674f33158c366302f5</srcmd5>
+    <version>3.3.17</version>
+    <time>1692188196</time>
+    <user>anag+factory</user>
+    <comment>- Add patch CVE-2023-4016.patch
+  * CVE-2023-4016: ps buffer overflow (bsc#1214290)</comment>
+    <requestid>1104044</requestid>
+  </revision>
 </revisionlist>

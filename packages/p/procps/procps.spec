@@ -1,7 +1,7 @@
 #
 # spec file for package procps
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,8 @@ Patch33:        procps-ng-3.3.11-pmap4suse.patch
 Patch34:        procps-3.3.17-bsc1181976.patch
 # PATCH-FIX-UPSTREAM -- bsc#1195468
 Patch35:        bsc1195468-23da4f40.patch
+# PATCH-FIX-UPSTREAM -- bsc#1214290
+Patch36:        CVE-2023-4016.patch
 # PATCH-BACKPORT-FROM-UPSTREAM -- bsc#1181475: 'free' command reports misleading "used" value
 Patch42:        procps-3.3.17-library-bsc1181475.patch
 Patch43:        procps-3.3.17-top-bsc1181475.patch
@@ -149,6 +151,7 @@ the process information pseudo-file system.
 %patch33 -b .pmap4us
 %patch34
 %patch35 -p1
+%patch36 -p0
 %patch42
 %patch43
 
