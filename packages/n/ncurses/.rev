@@ -4220,4 +4220,31 @@
 - Port the patch ncurses-6.4.dif</comment>
     <requestid>1099048</requestid>
   </revision>
+  <revision rev="245" vrev="18">
+    <srcmd5>7eae30a76e07d84b61f5296347529c3d</srcmd5>
+    <version>unknown</version>
+    <time>1692188179</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20230812
+  + add/use putty+cursor to reflect amending of modified cursor-keys
+    in 2021 -TD
+  + add ecma+strikeout to putty -TD
+  + add functions to query tty-flags in SCREEN (request by Bill Gray).
+
+- Add ncurses patch 20230805
+  + fix a few manpages needing tbl marker, seen by lintian warning.
+  + fixes for compiler-warnings.
+  + minor grammatical fix for manpages (Branden Robinson).
+
+- Add ncurses patch 20230729
+  + improve manpages for wgetnstr() and wget_wnstr().
+  + modify MinGW configuration to provide for running in MSYS/MSYS2
+    shells, assuming ConPTY support (patch by Pavel Fedin).
+  + add assignment in CF_MAN_PAGES to fill in value for TERMINFO_DIRS in
+    ncurses, terminfo and tic manpages (patch by Sven Joachim).
+
+- Add ncurses patch 20230722
+  + add &quot;auto&quot; default for --with-xterm-kbs configure option.</comment>
+    <requestid>1103809</requestid>
+  </revision>
 </revisionlist>
