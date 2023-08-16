@@ -22,7 +22,7 @@
  .B %man%
 --- src/man.c
 +++ src/man.c	2022-08-17 13:10:07.436205495 +0000
-@@ -3615,12 +3615,141 @@ static int locate_page (const char *manp
+@@ -3641,12 +3641,141 @@ static int locate_page (const char *manp
  	return found;
  }
  
@@ -164,7 +164,7 @@
  		global_manpath = is_global_mandir (candp->path);
  		if (!global_manpath)
  			drop_effective_privs ();
-@@ -3642,9 +3771,56 @@ static int display_pages (struct candida
+@@ -3668,9 +3797,56 @@ static int display_pages (struct candida
  			regain_effective_privs ();
  
  		if (found && !findall)

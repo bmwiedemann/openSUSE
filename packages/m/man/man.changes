@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Aug 15 09:31:32 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 2.11.2:
+  * Fix compile and test failures when `troff` is not `groff`.
+  * Fix segfault in typical uses of `man` when `nroff` is not installed.
+  * Fix crash in `mandb` when processing stray cats.
+  * SECURITY: Replace `$` characters in page names with `?` when constructing
+    `less` prompts.
+  * Silence error message when processing an empty manual page hierarchy with
+    a nonexistent cache directory.
+  * `man(1)` now sorts whatis references below real pages, even if the whatis
+    references are from a section with higher priority.
+  * `mandb` now correctly records filters in the database if it uses cached
+    whatis information.
+  * Upgrade Gnulib, fixing syntax error on glibc systems with GCC 11.
+  * The `CATWIDTH` configuration file directive now overrides `MINCATWIDTH`
+    and `MAXCATWIDTH`.
+  * Database entries for links were often incorrectly stored as if they were
+    entries for the ultimate source of the page.  They are now stored with
+    the correct type.
+  * Store links in the database using the section and extension of the link
+    rather than of the ultimate source file.
+  * Consider pages for adding to the database even if they seem to already
+    exist; this performance optimization is no longer needed due to caching,
+    and it produced inconsistent results in some unusual cases.
+  * `man` now runs any required preprocessors in the same order that `groff`
+    does, rather than trusting the order of filters in a page's preprocessor
+    string.
+  * Fix building on MinGW.  (I haven't been able to test this; help from
+    MinGW experts would be welcome.)
+  Improvements:
+  * Check for stray cats even if no manual pages in a given manpath were
+    changed.
+  * Add section `3type` to the default section list just after `2`.  This is
+    used by the Linux man-pages package.
+  * Recognize more Hungarian translations of the `NAME` section.
+  * Add more recognized case variants for localized versions of the `NAME`
+    section.
+  * Maintain multi keys in sorted order, improving database reproducibility.
+  * Pick a more consistent name for the target of a whatis entry in the
+    database.
+  * Extend rules for when to replace one database entry with another,
+    producing more stable behaviour.
+  * Fully reorganize databases after writing them, allowing the reproduction
+    of bitwise-identical databases regardless of scan order (at least with
+    GDBM).
+- Port patches
+  * man-db-2.6.3-chinese.dif
+  * man-db-2.6.3-listall.dif
+  * man-db-2.7.1-zio.dif
+  * man-db-2.9.4-alternitive.dif
+  * man-db-2.9.4-no-chown.patch
+  * man-db-2.9.4.patch
+  * man-propose-online.patch
+
+-------------------------------------------------------------------
 Thu May 25 06:37:13 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Remove harden_man-db.service.patch as already done upstream 

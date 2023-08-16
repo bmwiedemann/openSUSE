@@ -34,7 +34,7 @@
   */
  const char *get_source_encoding (const char *lang)
  {
-@@ -619,7 +628,7 @@ static int compatible_encodings (const c
+@@ -620,7 +629,7 @@ static int compatible_encodings (const c
  	 */
  	if ((STREQ (input, "BIG5") || STREQ (input, "BIG5HKSCS") ||
  	     STREQ (input, "EUC-JP") ||
@@ -43,7 +43,7 @@
  	     STREQ (input, "EUC-KR") ||
  	     STREQ (input, "EUC-TW")) &&
  	    STREQ (output, "UTF-8"))
-@@ -723,7 +732,7 @@ const char *get_roff_encoding (const cha
+@@ -724,7 +733,7 @@ const char *get_roff_encoding (const cha
  		    STRNEQ (ctype, "zh_HK", 5) ||
  		    STRNEQ (ctype, "zh_SG", 5) ||
  		    STRNEQ (ctype, "zh_TW", 5))

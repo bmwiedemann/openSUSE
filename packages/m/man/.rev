@@ -951,4 +951,41 @@
   be found.</comment>
     <requestid>1100562</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>43ac3aeb89c3d26f294db300ed9f0e9b</srcmd5>
+    <version>2.11.2</version>
+    <time>1692188194</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.11.2:
+  * Fix compile and test failures when `troff` is not `groff`.
+  * Fix segfault in typical uses of `man` when `nroff` is not installed.
+  * Fix crash in `mandb` when processing stray cats.
+  * SECURITY: Replace `$` characters in page names with `?` when constructing
+    `less` prompts.
+  * Silence error message when processing an empty manual page hierarchy with
+    a nonexistent cache directory.
+  * `man(1)` now sorts whatis references below real pages, even if the whatis
+    references are from a section with higher priority.
+  * `mandb` now correctly records filters in the database if it uses cached
+    whatis information.
+  * Upgrade Gnulib, fixing syntax error on glibc systems with GCC 11.
+  * The `CATWIDTH` configuration file directive now overrides `MINCATWIDTH`
+    and `MAXCATWIDTH`.
+  * Database entries for links were often incorrectly stored as if they were
+    entries for the ultimate source of the page.  They are now stored with
+    the correct type.
+  * Store links in the database using the section and extension of the link
+    rather than of the ultimate source file.
+  * Consider pages for adding to the database even if they seem to already
+    exist; this performance optimization is no longer needed due to caching,
+    and it produced inconsistent results in some unusual cases.
+  * `man` now runs any required preprocessors in the same order that `groff`
+    does, rather than trusting the order of filters in a page's preprocessor
+    string.
+  * Fix building on MinGW.  (I haven't been able to test this; help from
+    MinGW experts would be welcome.)
+  Improvements:
+  * Check for stray cats even if no manual pages in a given manpath were</comment>
+    <requestid>1104015</requestid>
+  </revision>
 </revisionlist>

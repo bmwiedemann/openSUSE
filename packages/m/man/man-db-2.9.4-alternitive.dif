@@ -12,7 +12,7 @@
  
  #include "argp.h"
  #include "attribute.h"
-@@ -4123,9 +4124,25 @@ static void locate_page_in_manpath (cons
+@@ -4171,9 +4172,25 @@ static void locate_page_in_manpath (cons
  {
  	char *mp;
  

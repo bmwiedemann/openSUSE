@@ -26,7 +26,7 @@
 %global optflags %{optflags} %{**}
 %bcond_without  sdtimer
 Name:           man
-Version:        2.10.2
+Version:        2.11.2
 Release:        0
 Summary:        A Program for Displaying man Pages
 License:        GPL-2.0-or-later

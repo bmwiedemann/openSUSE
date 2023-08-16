@@ -1,14 +1,12 @@
 ---
- config.h.in      |    3 ++
- configure.ac     |   52 ++++++++++++++++++++++++++++++++++++++++
- src/decompress.c |   70 ++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ config.h.in      |    3 +
+ configure.ac     |   52 ++++++++++++++++++++++++++++++
+ src/decompress.c |   70 ++++++++++++++++++++++++++++++++++++++++-
  3 files changed, 124 insertions(+), 1 deletion(-)
 
-Index: config.h.in
-===================================================================
---- config.h.in.orig
-+++ config.h.in
-@@ -1009,6 +1009,9 @@
+--- config.h.in
++++ config.h.in	2023-08-15 08:21:20.473974597 +0000
+@@ -1015,6 +1015,9 @@
  /* Define to 1 if you have the `z' library (-lz). */
  #undef HAVE_LIBZ
  
@@ -18,10 +16,8 @@ Index: config.h.in
  /* Define to 1 if the bcrypt library is guaranteed to be present. */
  #undef HAVE_LIB_BCRYPT
  
-Index: configure.ac
-===================================================================
---- configure.ac.orig
-+++ configure.ac
+--- configure.ac
++++ configure.ac	2023-08-15 08:21:20.473974597 +0000
 @@ -35,6 +35,18 @@ MAN_ARG_DEVICE
  MAN_ARG_DB
  MAN_ARG_CONFIG_FILE
@@ -41,7 +37,7 @@ Index: configure.ac
  MAN_ARG_AUTOMATIC_CREATE
  MAN_ARG_AUTOMATIC_UPDATE
  MAN_ARG_CATS
-@@ -400,6 +412,46 @@ AC_DEFINE_UNQUOTED([PROG_UNXZ], ["$unxz"
+@@ -401,6 +413,46 @@ AC_DEFINE_UNQUOTED([PROG_UNXZ], ["$unxz"
  AC_DEFINE_UNQUOTED([PROG_UNLZIP], ["$unlzip"], [Program to use as unlzip.])
  AC_DEFINE_UNQUOTED([PROG_UNZSTD], ["$unzstd"], [Program to use as unzstd.])
  MAN_COMPRESS_LIB([z], [gzopen])
@@ -88,13 +84,11 @@ Index: configure.ac
  dnl To add more decompressors just follow the scheme above.
  
  # Check for various header files and associated libraries.
-Index: src/decompress.c
-===================================================================
---- src/decompress.c.orig
-+++ src/decompress.c
-@@ -38,12 +38,17 @@
- #  include "zlib.h"
- #endif /* HAVE_LIBZ */
+--- src/decompress.c
++++ src/decompress.c	2023-08-15 08:23:12.947968440 +0000
+@@ -40,12 +40,17 @@
+ 
+ #include "pipeline.h"
  
 +#include "appendstr.h"
  #include "attribute.h"
@@ -108,9 +102,9 @@ Index: src/decompress.c
 +#endif /* HAVE_ZIO */
 +
  #include "manconfig.h"
- #include "comp_src.h"
- #include "pipeline.h"
-@@ -186,6 +191,33 @@ static decompress *decompress_try_zlib (
+ 
+ #include "compression.h"
+@@ -189,6 +194,33 @@ static decompress *decompress_try_zlib (
  #define OPEN_FLAGS_UNUSED MAYBE_UNUSED
  #endif /* HAVE_LIBZ */
  
@@ -144,7 +138,7 @@ Index: src/decompress.c
  extern man_sandbox *sandbox;
  
  decompress *decompress_open (const char *filename, int flags OPEN_FLAGS_UNUSED)
-@@ -202,6 +234,38 @@ decompress *decompress_open (const char
+@@ -205,6 +237,38 @@ decompress *decompress_open (const char
  	if (stat (filename, &st) < 0 || S_ISDIR (st.st_mode))
  		return NULL;
  
@@ -183,7 +177,7 @@ Index: src/decompress.c
  #ifdef HAVE_LIBZ
  	filename_len = strlen (filename);
  	if (filename_len > 3 && STREQ (filename + filename_len - 3, ".gz")) {
-@@ -219,7 +283,11 @@ decompress *decompress_open (const char
+@@ -222,7 +286,11 @@ decompress *decompress_open (const char
  	}
  #endif /* HAVE_LIBZ */
  
@@ -195,7 +189,7 @@ Index: src/decompress.c
  	if (ext) {
  		++ext;
  
-@@ -312,7 +380,7 @@ void decompress_inprocess_replace (decom
+@@ -315,7 +383,7 @@ void decompress_inprocess_replace (decom
  
  void decompress_start (decompress *d)
  {
