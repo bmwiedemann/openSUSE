@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-BibTeX
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,31 +18,55 @@
 
 %define cpan_name Text-BibTeX
 Name:           perl-Text-BibTeX
-Version:        0.88
+Version:        0.890.0
 Release:        0
-Summary:        Interface to Read and Parse BibTeX Files
+%define cpan_version 0.89
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-URL:            https://metacpan.org/release/Text-BibTeX
-Source0:        https://cpan.metacpan.org/authors/id/A/AM/AMBS/%{cpan_name}-%{version}.tar.gz
+Summary:        Interface to read and parse BibTeX files
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/A/AM/AMBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         manual-pages-for-libbtparse.patch
-BuildRequires:  glibc-devel
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny) >= 0.06
-BuildRequires:  perl(Config::AutoConf) >= 0.16
-BuildRequires:  perl(Cwd)
+BuildRequires:  perl(Config::AutoConf) >= 0.320
 BuildRequires:  perl(ExtUtils::CBuilder) >= 0.27
 BuildRequires:  perl(ExtUtils::LibBuilder) >= 0.02
-BuildRequires:  perl(File::Copy)
-BuildRequires:  perl(Module::Build) >= 0.360300
+BuildRequires:  perl(Module::Build) >= 0.3603
 BuildRequires:  perl(Scalar::Util) >= 1.42
-Requires:       perl(Encode)
 Requires:       perl(Scalar::Util) >= 1.42
-Requires:       perl(Unicode::Normalize)
+Provides:       perl(Text::BibTeX) = 0.890.0
+Provides:       perl(Text::BibTeX::BibEntry) = 0.88
+Provides:       perl(Text::BibTeX::BibFormat) = 0.88
+Provides:       perl(Text::BibTeX::BibSort) = 0.88
+Provides:       perl(Text::BibTeX::BibStructure) = 0.88
+Provides:       perl(Text::BibTeX::Entry) = 0.88
+Provides:       perl(Text::BibTeX::File) = 0.88
+Provides:       perl(Text::BibTeX::Name) = 0.88
+Provides:       perl(Text::BibTeX::NameFormat) = 0.88
+Provides:       perl(Text::BibTeX::SimpleValue) = 0.88
+Provides:       perl(Text::BibTeX::Structure) = 0.88
+Provides:       perl(Text::BibTeX::StructuredEntry) = 0.88
+Provides:       perl(Text::BibTeX::Value) = 0.88
+%define         __perllib_provides /bin/true
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  glibc-devel
 
+%package        devel
+Summary:        C library for parsing and processing BibTeX files
+Group:          Development/Libraries/Other
+Provides:       %{name}:%{_libdir}/libbtparse.so
+
+%description    devel
+The libbtparse is a C library for parsing and processing BibTeX files.
+Note that the interface provided by libbtparse, while complete, is fairly
+low-level.  If you have more sophisticated needs, you might be interested
+the "Text::BibTeX" module for Perl.
+
+
+# MANUAL END
 %description
 The 'Text::BibTeX' module serves mainly as a high-level introduction to the
 'Text::BibTeX' library, for both code and documentation purposes. The code
@@ -65,40 +89,24 @@ prefix. For brevity, I have dropped this prefix from most class and module
 names in the rest of this manual page (and in most of the other manual
 pages in the library).
 
-%package        devel
-Summary:        C library for parsing and processing BibTeX files
-Group:          Development/Libraries/Other
-Provides:       %{name}:%{_libdir}/libbtparse.so
-
-%description    devel
-The libbtparse is a C library for parsing and processing BibTeX files.
-Note that the interface provided by libbtparse, while complete, is fairly
-low-level.  If you have more sophisticated needs, you might be interested
-the "Text::BibTeX" module for Perl.
-
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-perl Build.PL installdirs=vendor optimize="%{optflags}"
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor optimize="%{optflags}"
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
-chmod -R u+rw %{buildroot}
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
-%post devel -p /sbin/ldconfig
-%postun devel -p /sbin/ldconfig
-
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes examples README README.OLD scripts THANKS
+%doc Changes examples README README.OLD THANKS
 %exclude %{_mandir}/man3/*.3.gz
 
 %files devel
@@ -106,5 +114,8 @@ chmod -R u+rw %{buildroot}
 %{_libdir}/libbtparse.so
 %{_mandir}/man3/*.3%{?ext_man}
 %{_includedir}/btparse.h
+
+%post devel -p /sbin/ldconfig
+%postun devel -p /sbin/ldconfig
 
 %changelog

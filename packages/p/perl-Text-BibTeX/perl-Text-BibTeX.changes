@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jan 25 03:08:44 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.89
+   see /usr/share/doc/packages/perl-Text-BibTeX/Changes
+
+  0.89 2023-01-24
+   * Fix Config::AutoConf dependency version
+
+-------------------------------------------------------------------
 Mon Jun 17 15:04:25 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - update to 0.88
