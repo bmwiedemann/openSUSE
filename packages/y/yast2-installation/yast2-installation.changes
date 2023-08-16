@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 15 08:42:50 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Require awk for use in startup scripts (bsc#1214277)
+- 4.6.7
+
+-------------------------------------------------------------------
 Fri Aug  4 07:09:13 UTC 2023 - Michal Filka <mfilka@suse.com>
 
 - bsc#1213959
