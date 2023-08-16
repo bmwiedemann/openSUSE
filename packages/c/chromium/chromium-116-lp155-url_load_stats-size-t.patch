@@ -1,0 +1,12 @@
+Index: chromium-116.0.5845.50/components/bookmarks/common/url_load_stats.h
+===================================================================
+--- chromium-116.0.5845.50.orig/components/bookmarks/common/url_load_stats.h
++++ chromium-116.0.5845.50/components/bookmarks/common/url_load_stats.h
+@@ -7,6 +7,7 @@
+ 
+ #include <cstdint>
+ #include <vector>
++#include <cstddef>
+ 
+ namespace bookmarks {
+ 

@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package chromium
 #
 # Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2023 Callum Farmer <gmbr3@opensuse.org>
@@ -53,6 +53,11 @@
 %define llvm_version 15
 # GCC version
 %define gcc_version 12
+%if 0%{?suse_version} < 1699
+%bcond_with system_re2
+%else
+%bcond_without system_re2
+%endif
 %bcond_with is_beta # CHANNEL SWITCH
 %bcond_with system_avif
 # Compiler
@@ -78,7 +83,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        115.0.5790.170
+Version:        116.0.5845.96
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -116,7 +121,6 @@ Patch68:        chromium-94-ffmpeg-roll.patch
 Patch87:        chromium-98-gtk4-build.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
 Patch98:        chromium-102-regex_pattern-array.patch
-Patch201:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
 Patch203:       chromium-106-ffmpeg-duration.patch
@@ -128,14 +132,18 @@ Patch214:       chromium-113-webview-namespace.patch
 Patch215:       chromium-113-webauth-include-variant.patch
 Patch217:       chromium-115-workaround_clang_bug-structured_binding.patch
 Patch218:       chromium-114-lld-argument.patch
-Patch219:       chromium-115-skia-include.patch
-Patch220:       chromium-115-verify_name_match-include.patch
 Patch221:       chromium-115-lp155-typename.patch
 Patch222:       chromium-115-Qt-moc-version.patch
 Patch223:       chromium-115-emplace_back_on_vector-c++20.patch
 Patch224:       chromium-115-compiler-SkColor4f.patch
-Patch225:       chromium-115-add_BoundSessionRefreshCookieFetcher::Result.patch
-Patch226:       chromium-115-dont-pass-nullptr-to-construct-re2-StringPiece.patch
+Patch227:       chromium-116-profile-view-utils-vector-include.patch
+Patch228:       chromium-116-blink-variant-include.patch
+Patch229:       chromium-116-lp155-url_load_stats-size-t.patch
+Patch231:       chromium-116-abseil-limits-include.patch
+Patch232:       chromium-116-lp155-typenames.patch
+Patch237:       chromium-116-lp155-constuctors.patch
+BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
+BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -145,11 +153,9 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  git
 BuildRequires:  gn >= 0.1807
+BuildRequires:  golang(API)
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
-BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
-BuildRequires:  golang(API)
 # Java used during build
 BuildRequires:  java-openjdk-headless
 BuildRequires:  libdc1394
@@ -223,7 +229,6 @@ BuildRequires:  pkgconfig(opus) >= 1.3.1
 BuildRequires:  pkgconfig(panel)
 BuildRequires:  pkgconfig(panelw)
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(schroedinger-1.0)
 BuildRequires:  pkgconfig(slang)
 BuildRequires:  pkgconfig(sqlite3)
@@ -321,6 +326,9 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Widgets)
 %endif
+%if %{with system_re2}
+BuildRequires:  pkgconfig(re2) >= 11
+%endif
 %if %{with clang}
 %if 0%{?suse_version} < 1550
 BuildRequires:  clang%{llvm_version}
@@ -345,9 +353,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc%{gcc_version}
 BuildRequires:  gcc%{gcc_version}-c++
 %endif
-%endif
-%if 0%{?suse_version} < 1699
-BuildRequires:  pkgconfig(re2) = 10.0.0
 %endif
 
 %description
@@ -473,6 +478,7 @@ keeplibs=(
     third_party/crashpad/crashpad/third_party/zlib
     third_party/crc32c
     third_party/cros_system_api
+    third_party/d3
     third_party/dav1d
     third_party/dawn
     third_party/dawn/third_party
@@ -675,6 +681,9 @@ keeplibs+=(
     third_party/usb_ids
     third_party/xdg-utils
 )
+%if !%{with system_re2}
+keeplibs+=( third_party/re2 )
+%endif
 build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 
 # GN sets lto on its own and we need just ldflag options, not cflags
@@ -756,12 +765,11 @@ gn_system_libraries=(
     libevent
     libjpeg
     libpng
-    libxslt
     libusb
     libwebp
     libxml
+    libxslt
     opus
-    re2
     snappy
     zlib
 )
@@ -787,6 +795,9 @@ gn_system_libraries+=( ffmpeg )
 %if %{with system_avif}
 gn_system_libraries+=( libyuv )
 gn_system_libraries+=( libavif )
+%endif
+%if %{with system_re2}
+gn_system_libraries+=( re2 )
 %endif
 build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries[@]}
 

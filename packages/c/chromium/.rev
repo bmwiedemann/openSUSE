@@ -4663,4 +4663,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>boo#1214003</comment>
     <requestid>1103210</requestid>
   </revision>
+  <revision rev="392" vrev="1">
+    <srcmd5>7141e0bed41d6bbad88673807ec89b34</srcmd5>
+    <version>116.0.5845.96</version>
+    <time>1692188204</time>
+    <user>anag+factory</user>
+    <comment>chromium 116.0.5845.96 boo#1214301</comment>
+    <requestid>1104075</requestid>
+  </revision>
 </revisionlist>
