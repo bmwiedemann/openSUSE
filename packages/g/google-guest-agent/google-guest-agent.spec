@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-guest-agent
-Version:        20230601.00
+Version:        20230811.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -36,7 +36,7 @@ Source2:        rpmlintrc
 Patch0:         disable_google_dhclient_script.patch
 Patch1:         dont_overwrite_ifcfg.patch
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.18
+BuildRequires:  golang(API) = 1.20
 Requires:       google-guest-configs
 Provides:       google-compute-engine-init = %{version}
 Obsoletes:      google-compute-engine-init < %{version}

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Aug 15 13:44:27 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230811.00
+  * sshca: move the event handler to its own package (#247)
+- from version 20230809.02
+  * Move scheduler package to google_guest_agent (#249)
+- from version 20230809.01
+  * Add scheduler utility to run jobs at interval (#244)
+- from version 20230809.00
+  * sshca: transform the format from json to openssh (#246)
+- from version 20230803.00
+  * Add support for reading UEFI variables on windows (#243)
+- from version 20230801.03
+  * sshtrustedca watcher: fix concurrency error (#242)
+- from version 20230801.02
+  * metadata: add a delta between http client timeout and hang (#241)
+- from version 20230801.00
+  * metadata: properly set request config (#240)
+  * main: bring back the mds client initialization (#239)
+  * metadata: don't try to use metadata before agentInit() is done (#238)
+  * Add (disabled) telemetry logic to GuestAgent (#219)
+  * metadata event handler: updates and bug fixes (#235)
+  * Verify client credentials are signed by root CA before writing on disk (#236)
+  * metadata: properly handle context cancelation (#234)
+  * metadata: fix context cancelation error check (#233)
+  * metadata: remove the sleep around metadata in instance setup (#232)
+  * metadata: implement backoff strategy (#231)
+  * Decrypt and store client credentials on disk (#230)
+  * Upgrade Go version 1.20 (#228)
+  * Fetch guest credentials and add MDS response proto (#226)
+  * metadata: pass main context to WriteGuestAttributes() (#227)
+  * Support for reading & writing Root CA cert from UEFI variable (#225)
+  * ssh_trusted_ca: enable the feature (#224)
+  * sshTrustedCA: add pipe event handler (#222)
+  * events: start using events layer (#223)
+- from version 20230726.00
+  * events: introducing a events handling subsystem (#221)
+- from version 20230725.00
+  * metadata: add metadata client interface (#220)
+- from version 20230711.00
+  * metadata: moving to its own package (#218)
+- from version 20230707.00
+  * snapshot: fix request handling error (#217)
+- Bump Go API version to 1.20
+
+-------------------------------------------------------------------
 Tue Jun  6 08:44:31 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230601.00 (bsc#1212418, bsc#1212759)
