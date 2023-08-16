@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 15 14:10:43 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.92.5
+
+- Update 2.92.5
+  - Qualtrics script correction by @GGayathri3 in #568
+  - JSON-LD: Remove quotes in headlines & descriptions by @tomschr in #569
+  - DOCTEAM-1018: Feedback from reported SLE 15 SP5 translations by @tomschr in #549 
+
+-------------------------------------------------------------------
 Thu Aug 10 13:51:57 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.92.4
 
 - Update 2.92.4
