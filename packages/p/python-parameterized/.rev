@@ -138,4 +138,13 @@
 - Remove upstreamed parameterized-pr116-pytest4.patch</comment>
     <requestid>1086781</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>772f62ebbf90b9dd7edde165a3e4b43c</srcmd5>
+    <version>0.9.0</version>
+    <time>1692188192</time>
+    <user>anag+factory</user>
+    <comment>- Add patch fix-assert-method.patch:
+  * Use correct assertion method.</comment>
+    <requestid>1104007</requestid>
+  </revision>
 </revisionlist>

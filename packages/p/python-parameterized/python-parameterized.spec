@@ -38,6 +38,8 @@ Patch1:         remove_nose.patch
 # PATCH-FIX-UPSTREAM skip_failing_teardown.patch gh#wolever/parameterized#167 mcepl@suse.com
 # skip failing assert in tearDownModule [sic]
 Patch2:         skip_failing_teardown.patch
+# PATCH-FIX-UPSTREAM gh#wolever/parameterized#169
+Patch3:         fix-assert-method.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
@@ -80,6 +82,6 @@ skip_tests="test_with_docstring_1_v_l_ or test_with_docstring_0_value1"
 # %%doc CHANGELOG.txt
 %license LICENSE.txt
 %{python_sitelib}/parameterized
-%{python_sitelib}/parameterized-%{version}*-info
+%{python_sitelib}/parameterized-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 15 09:02:40 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch fix-assert-method.patch:
+  * Use correct assertion method.
+
+-------------------------------------------------------------------
 Fri May 12 09:54:40 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.9.0:
