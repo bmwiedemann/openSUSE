@@ -16,20 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-frozenlist
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 Summary:        Python list-like structure which implements MutableSequence
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/frozenlist
 Source:         https://files.pythonhosted.org/packages/source/f/frozenlist/frozenlist-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.29.24}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -42,10 +41,10 @@ Python list-like structure which implements collections.abc.MutableSequence.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
