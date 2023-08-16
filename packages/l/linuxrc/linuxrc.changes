@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Mon Aug 14 17:11:28 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#325
+- use extended shell pattern matching for 'descr' and 'url' parameters
+- don't crash if 'quiet' url parameter has no value
+- add 'auto' query parameter to 'slp' url scheme (bsc#1213531)
+- 9.1
+
+--------------------------------------------------------------------
+Mon Aug 14 13:11:56 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#324
+- fix length of service type list field in SLP request (bsc#1213683)
+
+--------------------------------------------------------------------
+Wed Aug 9 13:41:24 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#229
+- Fix syntax inconsistency filename::key
+
+--------------------------------------------------------------------
 Wed Jul 5 14:15:18 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#321
