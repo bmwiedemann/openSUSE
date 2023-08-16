@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 14 21:52:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add python312.patch to build with python 3.12 
+
+-------------------------------------------------------------------
 Fri Jun  9 12:35:32 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

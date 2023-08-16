@@ -25,6 +25,7 @@ Summary:        Translucent persistent objects
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/persistent
 Source:         https://files.pythonhosted.org/packages/source/p/persistent/persistent-%{version}.tar.gz
+Patch1:         python312.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module manuel}
@@ -51,7 +52,7 @@ Requires:       python-devel
 This package contains the files needed for binding the %{name} C module.
 
 %prep
-%setup -q -n persistent-%{version}
+%autosetup -p1 -n persistent-%{version}
 rm -rf persistent.egg-info
 # this two tests fail persistently (pun intended): disable them here allows to build with 15.4 as well
 sed -i 's|test__p_repr_exception|tst__p_repr_exception|' src/persistent/tests/test_persistence.py
