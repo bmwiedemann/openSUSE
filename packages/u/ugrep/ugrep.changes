@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 15 18:20:54 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.12.7:
+  * compatibility improvement with one of GNU grep's idiosyncrasies:
+    unpaired ) in regex are matched literally. This behavior is
+    automatically in effect when the grep and egrep aliases of
+    ugrep are used or explicitly with option -Y.
+
+-------------------------------------------------------------------
 Mon Aug  7 05:23:38 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.12.6:
