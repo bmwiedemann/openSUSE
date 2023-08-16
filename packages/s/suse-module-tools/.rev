@@ -667,4 +667,17 @@ source service setup which messed up my spec file.
     (boo#1212957) (forwarded request 1096641 from mwilck)</comment>
     <requestid>1096642</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>8ec69be989cd447bf10770ef5d2a6f6c</srcmd5>
+    <version>16.0.33</version>
+    <time>1692188198</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.33:
+  * change wording in filesystem blacklist files
+    (gh#openSUSE/suse-module-tools#71)
+  * rpm-script: update bootloader after creating initramfs
+    (boo#1213822)
+  * usrmerge: Drop support for non-usrmerged (boo#1206798) (forwarded request 1104072 from mwilck)</comment>
+    <requestid>1104074</requestid>
+  </revision>
 </revisionlist>

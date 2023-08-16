@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 15 16:12:13 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.33:
+  * change wording in filesystem blacklist files
+    (gh#openSUSE/suse-module-tools#71)
+  * rpm-script: update bootloader after creating initramfs
+    (boo#1213822)
+  * usrmerge: Drop support for non-usrmerged (boo#1206798)
+
+-------------------------------------------------------------------
 Mon Jul  3 19:37:53 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.32:
