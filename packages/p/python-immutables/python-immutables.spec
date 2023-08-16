@@ -24,6 +24,8 @@ Summary:        Immutable collections for Python
 License:        Apache-2.0
 URL:            https://github.com/MagicStack/immutables
 Source:         https://files.pythonhosted.org/packages/source/i/immutables/immutables-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: https://github.com/MagicStack/immutables/commit/f7978225ea562e128b07cae936acd7926d9e64e7
+Patch1:         python312.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

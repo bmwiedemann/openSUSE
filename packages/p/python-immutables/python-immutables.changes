@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 14 20:48:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add python312.patch to fix build with python 3.12 
+
+-------------------------------------------------------------------
 Thu Jun 22 15:25:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - limit to newer python versions, older are no longer needed

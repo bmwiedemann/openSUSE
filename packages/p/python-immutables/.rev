@@ -124,4 +124,12 @@
 - Add the package to SUSE Linux Enterprise 15 (jsc#SLE-24404)</comment>
     <requestid>1094837</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>73836fbc387e64e669de409ba902de34</srcmd5>
+    <version>0.19</version>
+    <time>1692188186</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1103940</requestid>
+  </revision>
 </revisionlist>
