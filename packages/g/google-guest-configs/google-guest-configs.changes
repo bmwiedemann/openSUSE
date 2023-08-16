@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 15 13:49:04 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230808.00
+  * 64-gce-disk-removal.rules: delete (#51)
+- from version 20230801.00
+  * Replace xxd with dd for google_nvme_id (#56)
+- from version 20230729.00
+  * Setup irq binding for a3 8g vm (#57)
+- from version 20230724.00
+  * Debian packaging: add xxd dependency (#55)
+
+-------------------------------------------------------------------
 Tue Jun 27 11:54:42 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230626.00 (bsc#1212418, bsc#1212759)

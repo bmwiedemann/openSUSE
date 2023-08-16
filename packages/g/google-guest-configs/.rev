@@ -150,4 +150,19 @@
   * Revert &quot;Replace `xxd` to `cut` for google_nvme_id (#49)&quot; (#54) (forwarded request 1095598 from glaubitz)</comment>
     <requestid>1095625</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3b3c08875207960752efa4961cb9de0b</srcmd5>
+    <version>20230808.00</version>
+    <time>1692188245</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20230808.00
+  * 64-gce-disk-removal.rules: delete (#51)
+- from version 20230801.00
+  * Replace xxd with dd for google_nvme_id (#56)
+- from version 20230729.00
+  * Setup irq binding for a3 8g vm (#57)
+- from version 20230724.00
+  * Debian packaging: add xxd dependency (#55) (forwarded request 1104055 from glaubitz)</comment>
+    <requestid>1104058</requestid>
+  </revision>
 </revisionlist>
