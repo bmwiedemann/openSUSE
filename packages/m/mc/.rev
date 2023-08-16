@@ -820,4 +820,12 @@ SLE* needs fixing anyway (forwarded request 206981 from dnh)</comment>
     <comment></comment>
     <requestid>1084576</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>b72211d533d8f934ecde6db84b7f51b5</srcmd5>
+    <version>4.8.30</version>
+    <time>1692188197</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104051</requestid>
+  </revision>
 </revisionlist>
