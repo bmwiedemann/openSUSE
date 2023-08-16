@@ -164,14 +164,14 @@ mv -f tmpfile thirdparty/rtf2html/README.ru
 # BUILD_VIDEOEXPORT_MODULE:BOOL=ON
 # find out how to enable this
 # BUILD_VST:BOOL=ON
-# -DBUILD_UPDATE_MODULE:BOOL=OFF triggers bug  https://github.com/musescore/MuseScore/issues/15617
 %cmake \
+       -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DMUSESCORE_BUILD_CONFIGURATION=app \
        -DMUSESCORE_BUILD_CONFIG=release \
        -DBUILD_UNIT_TESTS=OFF \
        -DUSE_SYSTEM_FREETYPE=ON \
        -DBUILD_JACK:BOOL=ON \
-       -DBUILD_UPDATE_MODULE:BOOL=ON \
+       -DBUILD_UPDATE_MODULE:BOOL=OFF \
        -DBUILD_CRASHPAD_CLIENT=OFF \
        -DMUSESCORE_REVISION=%{revision} \
        -Wno-dev
