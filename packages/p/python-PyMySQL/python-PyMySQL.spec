@@ -23,7 +23,7 @@
 %bcond_with tests
 %endif
 
-%global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-PyMySQL
 Version:        1.1.0
 Release:        0

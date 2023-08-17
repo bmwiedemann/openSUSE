@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 16 14:43:37 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Aug  2 11:42:46 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - disable test_json broken with latest mariadb (11.0)
