@@ -34,7 +34,7 @@ Source12:       builder.conf
 Source13:       scheduler.conf
 Source14:       client.example
 BuildRequires:  cargo-packaging
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(openssl) >= 3
 Requires:       bubblewrap
 
 %description
