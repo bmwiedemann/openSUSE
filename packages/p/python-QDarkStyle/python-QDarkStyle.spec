@@ -24,8 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 %define         X_display         ":98"
 Name:           python-QDarkStyle%{psuffix}
 Version:        3.0.2
