@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Jul 28 14:39:14 UTC 2023 - Jiri Bohac <jbohac@suse.com>
 
-upgrade to version 1.9.5
+- upgrade to version 1.9.5
   * SELinux: temporary hack for bsc#1213721
 
 -------------------------------------------------------------------

@@ -1233,4 +1233,12 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
   * mkdumprd: don't call update-bootloader</comment>
     <requestid>1101210</requestid>
   </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>37bff022cc076ff631d07a4a06b2fc9e</srcmd5>
+    <version>1.9.5</version>
+    <time>1692294186</time>
+    <user>anag+factory</user>
+    <comment>- upgrade to version 1.9.5</comment>
+    <requestid>1104196</requestid>
+  </revision>
 </revisionlist>
