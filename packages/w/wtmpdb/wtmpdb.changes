@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 14 15:04:26 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.9.0
+  - Try to detect systemctl soft-reboot
+  - Many conversation warning/error fixes
+
+-------------------------------------------------------------------
 Wed Aug  9 14:13:17 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.8.0
