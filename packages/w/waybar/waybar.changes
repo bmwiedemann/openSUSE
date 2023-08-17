@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 17 07:14:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.22:
+  * Explicitly cast ustring to string when passing to fmt #2409
+  * fix: typo in taskbar.cpp #2404
+
+-------------------------------------------------------------------
 Tue Aug 15 06:29:44 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.21:

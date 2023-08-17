@@ -860,4 +860,14 @@
   * docs: fix Arch repository name #2402</comment>
     <requestid>1103978</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>736dceedbc352418234a7e105057615f</srcmd5>
+    <version>0.9.22</version>
+    <time>1692294269</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.9.22:
+  * Explicitly cast ustring to string when passing to fmt #2409
+  * fix: typo in taskbar.cpp #2404</comment>
+    <requestid>1104309</requestid>
+  </revision>
 </revisionlist>
