@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 17 09:10:31 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Bump client-go (fix possible panic in discovery)
+  0011-Fix-Aggregated-Discovery.patch
+- Wait for new hotplug attachment pod to be ready
+  0012-Wait-for-new-hotplug-attachment-pod-to-be-ready.patch
+- Adapt the storage tests to the new populators flow
+  0013-Adapt-e2e-tests-to-CDI-1.57.0.patch
+- Create export VM datavolumes compatible with populators
+  0014-Export-create-populator-compatible-datavolumes-from-.patch
+
+-------------------------------------------------------------------
 Tue Aug  8 06:02:05 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Run helper pod as qemu user
