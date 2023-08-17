@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 16 12:59:31 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- readd _multibuild
+
+-------------------------------------------------------------------
 Mon Aug 14 10:43:08 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 2.62 state of Mozilla SSL root CAs (bsc#1214248)

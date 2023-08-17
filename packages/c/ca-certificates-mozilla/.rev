@@ -759,4 +759,12 @@
   - Hongkong Post Root CA 1 (forwarded request 1103853 from msmeissn)</comment>
     <requestid>1103854</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>aa1675b3abdb5091197727fe4c8f86bb</srcmd5>
+    <version>2.62</version>
+    <time>1692294165</time>
+    <user>anag+factory</user>
+    <comment>- readd _multibuild</comment>
+    <requestid>1104176</requestid>
+  </revision>
 </revisionlist>
