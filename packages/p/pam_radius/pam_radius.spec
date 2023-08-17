@@ -1,7 +1,7 @@
 #
 # spec file for package pam_radius
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           pam_radius
 Version:        2.0.0
 Release:        0
 Summary:        A PAM Module for User Authentication using a Radius Server
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            http://freeradius.org/pam_radius_auth/
 Source0:        https://github.com/FreeRADIUS/pam_radius/archive/release_2_0_0.tar.gz#/%{name}-release_2_0_0.tar.gz
@@ -43,8 +43,8 @@ export CFLAGS="%{optflags} -fPIC"
 %make_build
 
 %install
-install -d -m 755 %{buildroot}/%{_lib}/security/
-install -m 755 pam_radius_auth.so %{buildroot}/%{_lib}/security/
+install -d -m 755 %{buildroot}%{_pam_moduledir}
+install -m 755 pam_radius_auth.so %{buildroot}%{_pam_moduledir}
 install -d -m 750 %{buildroot}%{_sysconfdir}/raddb/
 install -m 600 pam_radius_auth.conf %{buildroot}%{_sysconfdir}/raddb/server
 
@@ -53,6 +53,6 @@ install -m 600 pam_radius_auth.conf %{buildroot}%{_sysconfdir}/raddb/server
 %doc Changelog README.rst TODO USAGE index.html pam_radius_auth.conf
 %attr(750,root,radiusd) %dir %{_sysconfdir}/raddb/
 %config(noreplace) %{_sysconfdir}/raddb/server
-/%{_lib}/security/pam_radius_auth.so
+%{_pam_moduledir}/pam_radius_auth.so
 
 %changelog
