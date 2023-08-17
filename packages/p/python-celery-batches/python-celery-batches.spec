@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define _pkgname celery-batches
 Name:           python-%{_pkgname}
-Version:        0.7
+Version:        0.8.1
 Release:        0
 Summary:        Django module to process multiple Celery task requests together
 License:        BSD-3-Clause
@@ -28,8 +28,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/percipient/celery-batches
 Source:         https://github.com/percipient/%{_pkgname}/archive/v%{version}.tar.gz#/%{_pkgname}-%{version}.tar.gz
 Patch0:         celery-fixtures.patch
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module celery >= 4.4}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module celery >= 5.0}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

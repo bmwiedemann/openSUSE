@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug  9 07:34:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * Fix installing celery-batches with Celery 5.3.
+  * Support passing through the `request_dict` from the original
+    Celery request.
+  * Support Celery 5.3.
+  * Drop support for Celery < 5.0.
+  * Support Python 3.11.
+  * Drop support for Python 3.7.
+
+-------------------------------------------------------------------
 Thu Mar 30 08:18:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7:
