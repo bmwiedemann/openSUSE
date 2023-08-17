@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  8 09:38:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add apache2-mod_perl-perl-5.38.patch: Fix build with Perl 5.38.
+  Usptream rev 1910623.
+
+-------------------------------------------------------------------
 Thu Apr 21 15:15:11 UTC 2022 - David Anes <david.anes@suse.com>
 
 - update to 2.0.12:

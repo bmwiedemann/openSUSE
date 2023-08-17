@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_perl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source2:        https://www.apache.org/dist/perl/KEYS#/%{name}.keyring
 Patch1:         avoid-broken-provides.diff
 # bsc#1091625, workaround, according to mls it should be solved in perl
 Patch2:         apache2-mod_perl-prctl-short-name.patch
+Patch3:         apache2-mod_perl-perl-5.38.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  db-devel
@@ -81,9 +82,7 @@ This package contains the include files useful for developing new
 software depending on apache2-mod_perl.
 
 %prep
-%setup -q -n %{srcname}-%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -n %{srcname}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor MP_APXS=%{apache_apxs} MP_APR_CONFIG=%{_bindir}/apr-1-config MP_CCOPTS="%{apache_cflags} -fgnu89-inline"
