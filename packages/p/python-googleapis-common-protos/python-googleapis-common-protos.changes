@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 17 10:35:01 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.60.0
+  * Add `google/api/policy.proto` (b2cb5c2)
+  * Add `method_policies` to `Control` (b2cb5c2)
+
+-------------------------------------------------------------------
 Sun Jul  2 12:30:42 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
