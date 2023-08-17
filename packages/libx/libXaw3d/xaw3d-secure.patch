@@ -1,20 +1,20 @@
 ---
- libXaw3d-1.6.3/include/X11/Xaw3d/AsciiSrcP.h |    6 +-
- libXaw3d-1.6.3/include/X11/Xaw3d/MultiSrcP.h |    6 +-
- libXaw3d-1.6.3/src/Layout.c                  |   18 +++++-
- libXaw3d-1.6.3/src/MenuButton.c              |   15 ++++-
- libXaw3d-1.6.3/src/Simple.c                  |   18 ++++--
- libXaw3d-1.6.3/src/SimpleMenu.c              |   16 ++++--
- libXaw3d-1.6.3/src/SmeBSB.c                  |   51 ++++++++++++-------
- libXaw3d-1.6.3/src/Text.c                    |   50 ++++++++++++++-----
- libXaw3d-1.6.3/src/TextPop.c                 |   71 ++++++++++++++++++++++-----
- libXaw3d-1.6.3/src/XawAlloc.h                |   10 +++
- libXaw3d-1.6.3/src/XawI18n.h                 |    2 
- libXaw3d-1.6.3/src/XawIm.c                   |    4 -
- 12 files changed, 205 insertions(+), 62 deletions(-)
+ libXaw3d-1.6.5/include/X11/Xaw3d/AsciiSrcP.h |    6 +-
+ libXaw3d-1.6.5/include/X11/Xaw3d/MultiSrcP.h |    6 +-
+ libXaw3d-1.6.5/src/Layout.c                  |   18 +++++-
+ libXaw3d-1.6.5/src/MenuButton.c              |   15 ++++-
+ libXaw3d-1.6.5/src/Simple.c                  |   18 ++++--
+ libXaw3d-1.6.5/src/SimpleMenu.c              |   16 ++++--
+ libXaw3d-1.6.5/src/SmeBSB.c                  |   51 ++++++++++++-------
+ libXaw3d-1.6.5/src/Text.c                    |   50 ++++++++++++++-----
+ libXaw3d-1.6.5/src/TextPop.c                 |   71 ++++++++++++++++++++++-----
+ libXaw3d-1.6.5/src/XawAlloc.h                |   10 +++
+ libXaw3d-1.6.5/src/XawI18n.h                 |    2 
+ libXaw3d-1.6.5/src/XawIm.c                   |    4 -
+ 12 files changed, 206 insertions(+), 61 deletions(-)
 
---- libXaw3d-1.6.3/include/X11/Xaw3d/AsciiSrcP.h
-+++ libXaw3d-1.6.3/include/X11/Xaw3d/AsciiSrcP.h	2018-06-19 10:20:38.328453668 +0000
+--- libXaw3d-1.6.5/include/X11/Xaw3d/AsciiSrcP.h
++++ libXaw3d-1.6.5/include/X11/Xaw3d/AsciiSrcP.h	2023-08-16 12:29:23.549080277 +0000
 @@ -80,7 +80,11 @@ SOFTWARE.
  #ifdef L_tmpnam
  #define TMPSIZ L_tmpnam
@@ -28,8 +28,8 @@
  #endif
  
  #define MAGIC_VALUE ((XawTextPosition) -1) /* Magic value. */
---- libXaw3d-1.6.3/include/X11/Xaw3d/MultiSrcP.h
-+++ libXaw3d-1.6.3/include/X11/Xaw3d/MultiSrcP.h	2018-06-19 10:20:38.328453668 +0000
+--- libXaw3d-1.6.5/include/X11/Xaw3d/MultiSrcP.h
++++ libXaw3d-1.6.5/include/X11/Xaw3d/MultiSrcP.h	2023-08-16 12:29:23.549080277 +0000
 @@ -111,7 +111,11 @@ SOFTWARE.
  #ifdef L_tmpnam
  #define TMPSIZ L_tmpnam
@@ -43,8 +43,8 @@
  #endif
  
  #define MAGIC_VALUE ((XawTextPosition) -1) /* Magic value. */
---- libXaw3d-1.6.3/src/Layout.c
-+++ libXaw3d-1.6.3/src/Layout.c	2018-06-19 10:20:38.328453668 +0000
+--- libXaw3d-1.6.5/src/Layout.c
++++ libXaw3d-1.6.5/src/Layout.c	2023-08-16 12:29:23.549080277 +0000
 @@ -40,6 +40,8 @@
  # include <X11/Xaw3d/LayoutP.h>
  #endif
@@ -77,8 +77,8 @@
  	    return 0.0;
  	    }
  	return Evaluate (l, box, nexpr, natural);
---- libXaw3d-1.6.3/src/MenuButton.c
-+++ libXaw3d-1.6.3/src/MenuButton.c	2018-06-19 10:20:38.328453668 +0000
+--- libXaw3d-1.6.5/src/MenuButton.c
++++ libXaw3d-1.6.5/src/MenuButton.c	2023-08-16 12:29:23.549080277 +0000
 @@ -54,6 +54,8 @@ in this Software without prior written a
  #include <X11/Xaw3d/XawInit.h>
  #include <X11/Xaw3d/MenuButtoP.h>
@@ -108,8 +108,8 @@
      return;
    }
    if (!XtIsRealized(menu))
---- libXaw3d-1.6.3/src/Simple.c
-+++ libXaw3d-1.6.3/src/Simple.c	2018-06-19 10:20:38.328453668 +0000
+--- libXaw3d-1.6.5/src/Simple.c
++++ libXaw3d-1.6.5/src/Simple.c	2023-08-16 12:29:23.553080205 +0000
 @@ -57,6 +57,8 @@ SOFTWARE.
  #include <X11/Xaw3d/SimpleP.h>
  #include <X11/Xmu/Drawing.h>
@@ -142,8 +142,8 @@
  	c->simple_class.change_sensitive = ChangeSensitive;
      }
  
---- libXaw3d-1.6.3/src/SimpleMenu.c
-+++ libXaw3d-1.6.3/src/SimpleMenu.c	2018-06-19 10:20:38.328453668 +0000
+--- libXaw3d-1.6.5/src/SimpleMenu.c
++++ libXaw3d-1.6.5/src/SimpleMenu.c	2023-08-16 12:29:23.553080205 +0000
 @@ -52,6 +52,8 @@ in this Software without prior written a
  #include <X11/Xmu/Initer.h>
  #include <X11/Xmu/CharSet.h>
@@ -174,8 +174,8 @@
      return;
    }
  
---- libXaw3d-1.6.3/src/SmeBSB.c
-+++ libXaw3d-1.6.3/src/SmeBSB.c	2018-06-19 10:21:23.555635775 +0000
+--- libXaw3d-1.6.5/src/SmeBSB.c
++++ libXaw3d-1.6.5/src/SmeBSB.c	2023-08-16 12:29:23.553080205 +0000
 @@ -52,6 +52,7 @@ in this Software without prior written a
  #include <X11/Xaw3d/SmeBSBP.h>
  #include <X11/Xaw3d/Cardinals.h>
@@ -261,8 +261,8 @@
  	    }
  #endif
  	}
---- libXaw3d-1.6.3/src/Text.c
-+++ libXaw3d-1.6.3/src/Text.c	2018-06-19 10:20:38.332453596 +0000
+--- libXaw3d-1.6.5/src/Text.c
++++ libXaw3d-1.6.5/src/Text.c	2023-08-16 12:29:23.553080205 +0000
 @@ -78,6 +78,8 @@ SOFTWARE.
  #include <X11/Xfuncs.h>
  #include <ctype.h>		/* for isprint() */
@@ -345,18 +345,18 @@
        ctx->text.scroll_horiz = XawtextScrollNever;
      }
      else if (ctx->text.scroll_horiz == XawtextScrollAlways)
---- libXaw3d-1.6.3/src/TextPop.c
-+++ libXaw3d-1.6.3/src/TextPop.c	2018-06-19 10:21:11.395855679 +0000
-@@ -67,7 +67,7 @@ in this Software without prior written a
- #include <stdio.h>
+--- libXaw3d-1.6.5/src/TextPop.c
++++ libXaw3d-1.6.5/src/TextPop.c	2023-08-16 12:30:21.840038444 +0000
+@@ -68,6 +68,8 @@ in this Software without prior written a
  #include <X11/Xos.h>		/* for O_RDONLY */
  #include <errno.h>
--
+ 
 +#include "XawAlloc.h"
- 
- #define INSERT_FILE ("Enter Filename:")
- 
-@@ -786,6 +786,8 @@ static Boolean
++
+ #ifdef O_CLOEXEC
+ #define FOPEN_CLOEXEC "e"
+ #else
+@@ -791,6 +793,8 @@ static Boolean
  DoSearch(struct SearchAndReplace * search)
  {
    char msg[BUFSIZ];
@@ -365,7 +365,7 @@
    Widget tw = XtParent(search->search_popup);
    XawTextPosition pos;
    XawTextScanDirection dir;
-@@ -812,9 +814,20 @@ DoSearch(struct SearchAndReplace * searc
+@@ -817,9 +821,20 @@ DoSearch(struct SearchAndReplace * searc
     /* The Raw string in find.ptr may be WC I can't use here, so I re - call
     GetString to get a tame version. */
  
@@ -389,7 +389,7 @@
      if (dir == XawsdRight)
        XawTextSetInsertionPoint( tw, pos + text.length);
      else
-@@ -826,7 +839,8 @@ DoSearch(struct SearchAndReplace * searc
+@@ -831,7 +846,8 @@ DoSearch(struct SearchAndReplace * searc
    }
  
    XawTextUnsetSelection(tw);
@@ -399,7 +399,7 @@
    return(FALSE);
  }
  
-@@ -947,13 +961,26 @@ Replace(struct SearchAndReplace *search,
+@@ -952,13 +968,26 @@ Replace(struct SearchAndReplace *search,
        if (new_pos == XawTextSearchError) {
  	if (count == 0) {
  	  char msg[BUFSIZ];
@@ -429,7 +429,7 @@
  	  return(FALSE);
  	}
  	else
-@@ -976,9 +1003,22 @@ Replace(struct SearchAndReplace *search,
+@@ -981,9 +1010,22 @@ Replace(struct SearchAndReplace *search,
  
      if (XawTextReplace(tw, pos, end_pos, &replace) != XawEditDone) {
        char msg[BUFSIZ];
@@ -454,7 +454,7 @@
        return(FALSE);
      }
  
-@@ -1119,13 +1159,20 @@ SetResourceByName(Widget shell, char *na
+@@ -1124,13 +1166,20 @@ SetResourceByName(Widget shell, char *na
  {
    Widget temp_widget;
    char buf[BUFSIZ];
@@ -477,8 +477,8 @@
    return(FALSE);
  }
  
---- libXaw3d-1.6.3/src/XawAlloc.h
-+++ libXaw3d-1.6.3/src/XawAlloc.h	2018-06-19 10:20:38.332453596 +0000
+--- libXaw3d-1.6.5/src/XawAlloc.h
++++ libXaw3d-1.6.5/src/XawAlloc.h	2023-08-16 12:29:23.553080205 +0000
 @@ -0,0 +1,10 @@
 +/* $XFree86: xc/lib/Xaw/XawAlloc.h,v 1.1.2.1 1998/05/16 09:05:23 dawes Exp $ */
 +
@@ -490,8 +490,8 @@
 +#define XtStackFree(pointer, stack_cache_array) \
 +    if ((pointer) != ((XtPointer)(stack_cache_array))) XtFree(pointer); else
 +
---- libXaw3d-1.6.3/src/XawI18n.h
-+++ libXaw3d-1.6.3/src/XawI18n.h	2018-06-19 10:20:38.332453596 +0000
+--- libXaw3d-1.6.5/src/XawI18n.h
++++ libXaw3d-1.6.5/src/XawI18n.h	2023-08-16 12:29:23.553080205 +0000
 @@ -28,12 +28,14 @@ in this Software without prior written a
  #ifdef HAVE_WCTYPE_H
  #include <wctype.h>
@@ -507,9 +507,9 @@
  
  #ifdef HAVE_WCHAR_H
  #include <wchar.h>
---- libXaw3d-1.6.3/src/XawIm.c
-+++ libXaw3d-1.6.3/src/XawIm.c	2018-06-19 10:20:38.332453596 +0000
-@@ -1519,10 +1519,10 @@ _XawImWcLookupString(
+--- libXaw3d-1.6.5/src/XawIm.c
++++ libXaw3d-1.6.5/src/XawIm.c	2023-08-16 12:29:23.553080205 +0000
+@@ -1524,10 +1524,10 @@ _XawImWcLookupString(
  
      if ((vw = SearchVendorShell(inwidg)) && (ve = GetExtPart(vw)) &&
  	ve->im.xim && (p = GetIcTableShared(inwidg, ve)) && p->xic) {

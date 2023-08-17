@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Aug 16 12:33:24 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to libXaw3d 1.6.5:
+  * Set close-on-exec when opening files
+  * configure: pass noyywrap to AC_PROG_LEX if using autoconf 2.70 or later
+  * Raises minimum autoconf version from 2.60 to 2.64 for m4_version_prereq
+  * Clears autoconf warning:
+    configure.ac:29: warning: AC_PROG_LEX without either yywrap or noyywrap is obsolete
+    ./lib/autoconf/programs.m4:716: _AC_PROG_LEX is expanded from...
+    ./lib/autoconf/programs.m4:709: AC_PROG_LEX is expanded from...
+    configure.ac:29: the top level
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * AC_PROG_LIBTOOL was replaced by LT_INIT in libtool 2 in 2008,
+    so it's time to rely on it.
+  * Clears autoconf warnings:
+    configure.ac:13: warning: The macro `AC_PROG_LIBTOOL' is obsolete.
+    configure.ac:13: You should run autoupdate.
+    aclocal.m4:3465: AC_PROG_LIBTOOL is expanded from...
+    configure.ac:13: the top level
+  * libtoolize: Consider adding 'AC_CONFIG_MACRO_DIRS([m4])' to configure.ac,
+    libtoolize: and rerunning libtoolize and aclocal.
+  * Issue #5: incompatible function pointer passed in _XawImRealize()
+  * Import wrapper function with expected arguments from libXaw,
+    where it appears to have been originally fixed in XFree86 3.9Nb
+    by Paulo Cesar Pereira de Andrade.
+- Port patch xaw3d-secure.patch
+
+-------------------------------------------------------------------
 Tue Sep 13 12:21:28 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Move https to https even for URLs in comments

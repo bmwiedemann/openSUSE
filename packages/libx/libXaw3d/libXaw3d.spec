@@ -1,7 +1,7 @@
 #
 # spec file for package libXaw3d
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libXaw3d
-Version:        1.6.4
+Version:        1.6.5
 Release:        0
 Summary:        The 3D Athena Widget Set
 License:        MIT
