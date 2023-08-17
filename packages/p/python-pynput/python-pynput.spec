@@ -38,11 +38,11 @@ BuildRequires:  python-rpm-macros
 # SECTION test requirements
 # /SECTION
 BuildRequires:  fdupes
-Requires:       %{python_module evdev >= 1.3}
-Requires:       %{python_module six}
-Suggests:       %{python_module enum34}
-Suggests:       %{python_module pyobjc-framework-ApplicationServices >= 8.0}
-Suggests:       %{python_module pyobjc-framework-Quartz >= 8.0}
+Requires:       python-evdev >= 1.3
+Requires:       python-six
+Suggests:       python-enum34
+Suggests:       python-pyobjc-framework-ApplicationServices >= 8.0
+Suggests:       python-pyobjc-framework-Quartz >= 8.0
 BuildArch:      noarch
 %python_subpackages
 

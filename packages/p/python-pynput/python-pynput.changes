@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 16 09:51:47 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dependencies: do not ever use python_module in requires, as
+  it expands to all python flavors.
+
+-------------------------------------------------------------------
 Sun Aug 13 01:48:04 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - boo#1214205 shows the spec file has some serious issues
