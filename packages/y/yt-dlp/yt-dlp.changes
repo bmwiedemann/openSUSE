@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul  7 04:49:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.07.06
+  * Prevent Cookie leaks on HTTP redirect [boo#1213124] [CVE-2023-35934]
+  * yt: Avoid false DRM detection
+  * yt: Process post_live over 2 hours
+  * yt: Support shorts-only playlists
+
+-------------------------------------------------------------------
 Thu Jun 22 11:57:58 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.06.22
