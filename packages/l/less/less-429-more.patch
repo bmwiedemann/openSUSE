@@ -1,7 +1,7 @@
-Index: less-632/option.c
+Index: less-643/option.c
 ===================================================================
---- less-632.orig/option.c
-+++ less-632/option.c
+--- less-643.orig/option.c
++++ less-643/option.c
 @@ -165,6 +165,10 @@ public void scan_option(char *s)
  			s--;
  			optc = 'z';

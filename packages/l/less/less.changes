@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 14 07:04:29 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 643:
+  * Fix problem when a program piping into less reads from the tty,
+    like sudo asking for password (github #368).
+  * Fix search modifier ^E after ^W.
+  * Fix bug using negated (^N) search (github #374).
+  * Fix bug setting colors with -D on Windows build (github #386).
+  * Fix reading special chars like PageDown on Windows (github #378).
+  * Fix mouse wheel scrolling on Windows (github #379).
+  * Fix erroneous EOF when terminal window size changes (github #372).
+  * Fix compile error with some definitions of ECHONL (github #395).
+  * Fix crash on Windows when writing logfile (github #405).
+  * Fix regression in exit code when stdin is /dev/null and
+    output is a file (github #373).
+  * Add lesstest test suite to production release (github #344).
+  * Change lesstest output to conform with
+    automake Simple Test Format (github #399).
+
+-------------------------------------------------------------------
 Thu May  4 08:12:21 UTC 2023 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 633
