@@ -188,4 +188,15 @@
   * Updated translations.</comment>
     <requestid>961136</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>18822f64636fd4af21fec6a0a124c1df</srcmd5>
+    <version>0.16.3</version>
+    <time>1692294268</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.16.3:
+ * Added missing copyright info.
+ * Bumped the minimum required version of cmake to 3.5.0 (to silence a compilation warning).
+ * Translation updates.</comment>
+    <requestid>1104317</requestid>
+  </revision>
 </revisionlist>

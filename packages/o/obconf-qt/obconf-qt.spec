@@ -1,7 +1,7 @@
 #
 # spec file for package obconf-qt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           obconf-qt
-Version:        0.16.2
+Version:        0.16.3
 Release:        0
 Summary:        OpenBox window manager configuration tool
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/LXQt
 URL:            http://www.lxqt.org
 Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.1.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  lxqt-build-tools-devel >= 0.8.0
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(obrender-3.5)
 BuildRequires:  pkgconfig(obt-3.5)
 Requires(post): desktop-file-utils
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Requires(pre):  desktop-file-utils
 Recommends:     %{name}-lang
 Conflicts:      obconf
@@ -92,7 +92,7 @@ fi
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g
 %ghost %{_sysconfdir}/alternatives/obconf
 
-%files lang -f %{name}.lang 
+%files lang -f %{name}.lang
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/translations
 %{_datadir}/%{name}/translations/*

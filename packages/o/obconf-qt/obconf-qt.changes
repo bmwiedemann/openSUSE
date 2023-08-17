@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 17 07:30:58 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.3:
+ * Added missing copyright info.
+ * Bumped the minimum required version of cmake to 3.5.0 (to silence a compilation warning).
+ * Translation updates.
+
+-------------------------------------------------------------------
 Fri Mar 11 19:51:57 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.2:
