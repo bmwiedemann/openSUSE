@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Aug 10 10:51:52 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.44.1:
+  * fix(report): return severity colors in table format (#4969)
+  * build: maximize available disk space for release (#4937)
+  * test(cli): Fix assertion helptext (#4966)
+  * chore(deps): Bump defsec to v0.91.1 (#4965)
+  * test: validate CycloneDX with the JSON schema (#4956)
+  * fix(server): add licenses to the Result message (#4955)
+  * fix(aws): resolve endpoint if endpoint is passed (#4925)
+  * fix(sbom): move licenses to `name` field in Cyclonedx format (#4941)
+  * add only uniq deps in dependsOn (#4943)
+  * use testify instead of gotest.tools (#4946)
+  * fix(nodejs): do not detect lock file in node_modules as an app (#4949)
+  * bump go-dep-parser (#4936)
+  * chore(deps): bump github.com/openvex/go-vex from 0.2.0 to 0.2.1 (#4914)
+  * chore(deps): bump helm/kind-action from 1.7.0 to 1.8.0 (#4909)
+  * chore(deps): bump github.com/Azure/azure-sdk-for-go/sdk/azcore (#4912)
+  * test(aws): move part of unit tests to integration (#4884)
+  * docs(cli): update help string for file and dir skipping (#4872)
+  * chore(deps): bump sigstore/cosign-installer (#4910)
+  * chore(deps): bump github.com/sosedoff/gitkit from 0.3.0 to 0.4.0 (#4916)
+  * chore(deps): bump k8s.io/api from 0.27.3 to 0.27.4 (#4918)
+  * chore(deps): bump github.com/secure-systems-lab/go-securesystemslib (#4919)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/sts (#4913)
+  * chore(deps): bump github.com/magefile/mage from 1.14.0 to 1.15.0 (#4915)
+  * docs: update the discussion template (#4928)
+
+-------------------------------------------------------------------
 Thu Aug 03 11:21:12 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.44.0:
