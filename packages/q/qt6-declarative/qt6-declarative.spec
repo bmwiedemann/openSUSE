@@ -30,12 +30,12 @@ Name:           qt6-declarative%{?pkg_suffix}
 Version:        6.5.2
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 URL:            https://www.qt.io
 Source:         https://www.nic.funet.fi/pub/mirrors/download.qt-project.org/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-declarative-rpmlintrc
 # PATCH-FIX-DOWNSTREAM
-Patch0:          0001-qmlimportscanner-Include-module-versions-again.patch
+Patch0:         0001-qmlimportscanner-Include-module-versions-again.patch
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  qt6-core-private-devel
@@ -160,14 +160,14 @@ Additional tools for inspecting, testing, viewing QML imports and files.
 
 %package -n libQt6LabsAnimation6
 Summary:        Qt 6 LabsAnimation library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6LabsAnimation6
 The Qt 6 LabsAnimation library.
 
 %package -n qt6-labsanimation-devel
 Summary:        Qt 6 LabsAnimation library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6LabsAnimation6 = %{version}
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       qt6-quick-private-devel = %{version}
@@ -177,7 +177,7 @@ Development files for the Qt 6 LabsAnimation library.
 
 %package -n qt6-labsanimation-private-devel
 Summary:        Non-ABI stable API for the Qt 6 LabsAnimation library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       cmake(Qt6LabsAnimation) = %{real_version}
 
 %description -n qt6-labsanimation-private-devel
@@ -186,14 +186,14 @@ ABI or API guarantees.
 
 %package -n libQt6LabsFolderListModel6
 Summary:        Qt 6 LabsFolderListModel library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6LabsFolderListModel6
 The Qt 6 LabsFolderListModel library.
 
 %package -n qt6-labsfolderlistmodel-devel
 Summary:        Qt 6 LabsFolderListModel library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6LabsFolderListModel6 = %{version}
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       qt6-qmlmodels-private-devel = %{version}
@@ -204,7 +204,7 @@ Development files for the Qt 6 LabsFolderListModel library.
 
 %package -n qt6-labsfolderlistmodel-private-devel
 Summary:        Non-ABI stable API for the Qt 6 LabsFolderListModel library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       cmake(Qt6LabsFolderListModel) = %{real_version}
 
 %description -n qt6-labsfolderlistmodel-private-devel
@@ -213,14 +213,14 @@ ABI or API guarantees.
 
 %package -n libQt6LabsQmlModels6
 Summary:        Qt 6 LabsQmlModels library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6LabsQmlModels6
 The Qt 6 LabsQmlModels library.
 
 %package -n qt6-labsqmlmodels-devel
 Summary:        Qt 6 LabsQmlModels library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6LabsQmlModels6 = %{version}
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       qt6-qmlmodels-private-devel = %{version}
@@ -230,7 +230,7 @@ Development files for the Qt 6 LabsQmlModels library.
 
 %package -n qt6-labsqmlmodels-private-devel
 Summary:        Non-ABI stable API for the Qt 6 LabsQmlModels library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       cmake(Qt6LabsQmlModels) = %{real_version}
 
 %description -n qt6-labsqmlmodels-private-devel
@@ -239,14 +239,14 @@ ABI or API guarantees.
 
 %package -n libQt6LabsSettings6
 Summary:        Qt 6 LabsSettings library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6LabsSettings6
 The Qt 6 LabsSettings library.
 
 %package -n qt6-labssettings-devel
 Summary:        Qt 6 LabsSettings library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6LabsSettings6 = %{version}
 Requires:       cmake(Qt6Core) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
@@ -256,7 +256,7 @@ Development files for the Qt 6 LabsSettings library.
 
 %package -n qt6-labssettings-private-devel
 Summary:        Non-ABI stable API for the Qt 6 LabsSettings library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       cmake(Qt6LabsSettings) = %{real_version}
 
 %description -n qt6-labssettings-private-devel
@@ -265,14 +265,14 @@ ABI or API guarantees.
 
 %package -n libQt6LabsSharedImage6
 Summary:        Qt 6 LabsSharedImage library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6LabsSharedImage6
 The Qt 6 LabsSharedImage library.
 
 %package -n qt6-labssharedimage-devel
 Summary:        Qt 6 LabsSharedImage library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6LabsSharedImage6 = %{version}
 Requires:       qt6-quick-private-devel = %{version}
 %requires_eq    qt6-core-private-devel
@@ -283,7 +283,7 @@ Development files for the Qt 6 LabsSharedImage library.
 
 %package -n qt6-labssharedimage-private-devel
 Summary:        Non-ABI stable API for the Qt 6 LabsSharedImage library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       cmake(Qt6LabsSharedImage) = %{real_version}
 
 %description -n qt6-labssharedimage-private-devel
@@ -292,14 +292,14 @@ ABI or API guarantees.
 
 %package -n libQt6LabsWavefrontMesh6
 Summary:        Qt 6 LabsWavefrontMesh library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6LabsWavefrontMesh6
 The Qt 6 LabsWavefrontMesh library.
 
 %package -n qt6-labswavefrontmesh-devel
 Summary:        Qt 6 LabsWavefrontMesh library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6LabsWavefrontMesh6 = %{version}
 Requires:       qt6-quick-private-devel = %{version}
 %requires_eq    qt6-core-private-devel
@@ -310,7 +310,7 @@ Development files for the Qt 6 LabsWavefrontMesh library.
 
 %package -n qt6-labswavefrontmesh-private-devel
 Summary:        Non-ABI stable API for the Qt 6 LabsWavefrontMesh library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       cmake(Qt6LabsWavefrontMesh) = %{real_version}
 
 %description -n qt6-labswavefrontmesh-private-devel
@@ -319,16 +319,16 @@ ABI or API guarantees.
 
 %package -n libQt6Qml6
 Summary:        Qt 6 Qml library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
-Requires:       (qml-autoreqprov if rpm-build)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       qt6-declarative-imports
+Requires:       (qml-autoreqprov if rpm-build)
 
 %description -n libQt6Qml6
 The Qt 6 Qml library.
 
 %package -n qt6-qml-devel
 Summary:        Qt 6 Qml library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6Qml6 = %{version}
 # Executables are required
 Requires:       qt6-declarative-tools = %{version}
@@ -342,7 +342,7 @@ Development files for the Qt 6 Qml library.
 
 %package -n qt6-qml-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Qml library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       cmake(Qt6Qml) = %{real_version}
 %requires_eq    qt6-core-private-devel
 
@@ -352,7 +352,7 @@ ABI or API guarantees.
 
 %package -n libQt6QmlCore6
 Summary:        Qt 6 QmlCore library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       qt6-declarative-imports
 
 %description -n libQt6QmlCore6
@@ -360,7 +360,7 @@ The Qt 6 QmlCore library.
 
 %package -n qt6-qmlcore-devel
 Summary:        Qt 6 QmlCore library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6QmlCore6 = %{version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 
@@ -369,7 +369,7 @@ Development files for the Qt 6 QmlCore library.
 
 %package -n qt6-qmlcore-private-devel
 Summary:        Non-ABI stable API for the Qt 6 QmlCore library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       cmake(Qt6QmlCore) = %{real_version}
 
 %description -n qt6-qmlcore-private-devel
@@ -378,14 +378,14 @@ ABI or API guarantees.
 
 %package -n libQt6QmlLocalStorage6
 Summary:        Qt 6 QmlLocalStorage library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6QmlLocalStorage6
 The Qt 6 QmlLocalStorage library.
 
 %package -n qt6-qmllocalstorage-devel
 Summary:        Qt 6 QmlLocalStorage library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6QmlLocalStorage6 = %{version}
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       cmake(Qt6Sql) = %{real_version}
@@ -396,7 +396,7 @@ Development files for the Qt 6 QmlLocalStorage library.
 
 %package -n qt6-qmllocalstorage-private-devel
 Summary:        Non-ABI stable API for the Qt 6 QmlLocalStorage library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       cmake(Qt6QmlLocalStorage) = %{real_version}
 %requires_eq    qt6-core-private-devel
@@ -407,14 +407,14 @@ ABI or API guarantees.
 
 %package -n libQt6QmlModels6
 Summary:        Qt 6 QmlModels library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6QmlModels6
 The Qt 6 QmlModels library.
 
 %package -n qt6-qmlmodels-devel
 Summary:        Qt 6 QmlModels library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6QmlModels6 = %{version}
 Requires:       cmake(Qt6Core) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
@@ -424,7 +424,7 @@ Development files for the Qt 6 QmlModels library.
 
 %package -n qt6-qmlmodels-private-devel
 Summary:        Non-ABI stable API for the Qt 6 QmlModels library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       cmake(Qt6QmlModels) = %{real_version}
 %requires_eq    qt6-core-private-devel
@@ -435,14 +435,14 @@ ABI or API guarantees.
 
 %package -n libQt6QmlWorkerScript6
 Summary:        Qt 6 QmlWorkScript library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6QmlWorkerScript6
 The Qt 6 QmlModels library.
 
 %package -n qt6-qmlworkerscript-devel
 Summary:        Qt 6 QmlModels library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6QmlWorkerScript6 = %{version}
 Requires:       cmake(Qt6Core) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
@@ -452,7 +452,7 @@ Development files for the Qt 6 QmlModels library.
 
 %package -n qt6-qmlworkerscript-private-devel
 Summary:        Non-ABI stable API for the Qt 6 QmlWorkerScript library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       cmake(Qt6QmlWorkerScript) = %{real_version}
 %requires_eq    qt6-core-private-devel
@@ -469,7 +469,7 @@ The Qt 6 QmlXmlListModel library.
 
 %package -n qt6-qmlxmllistmodel-devel
 Summary:        Qt 6 QmlXmlListModel library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6QmlXmlListModel6 = %{version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6QmlModels) = %{real_version}
@@ -479,7 +479,7 @@ Development files for the Qt 6 QmlXmlListModel library.
 
 %package -n qt6-qmlxmllistmodel-private-devel
 Summary:        Non-ABI stable API for the Qt 6 QmlXmlListModel library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       cmake(Qt6QmlXmlListModel) = %{real_version}
 %requires_eq    qt6-core-private-devel
 
@@ -489,14 +489,14 @@ any ABI or API guarantees.
 
 %package -n libQt6Quick6
 Summary:        Qt 6 Quick library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6Quick6
 The Qt 6 Quick library.
 
 %package -n qt6-quick-devel
 Summary:        Qt 6 Quick library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6Quick6 = %{version}
 Requires:       cmake(Qt6Core) = %{real_version}
 Requires:       cmake(Qt6Gui) = %{real_version}
@@ -510,7 +510,7 @@ Development files for the Qt 6 Quick library.
 
 %package -n qt6-quick-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Quick library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       qt6-qmlmodels-private-devel = %{version}
 Requires:       cmake(Qt6Quick) = %{real_version}
@@ -651,14 +651,14 @@ any ABI or API guarantees.
 
 %package -n libQt6QuickLayouts6
 Summary:        Qt 6 QuickLayouts library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6QuickLayouts6
 The Qt 6 QuickLayouts library.
 
 %package -n qt6-quicklayouts-devel
 Summary:        Qt 6 QuickLayouts library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6QuickLayouts6 = %{version}
 Requires:       qt6-quick-private-devel = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
@@ -670,7 +670,7 @@ Development files for the Qt 6 QuickLayouts library.
 
 %package -n qt6-quicklayouts-private-devel
 Summary:        Non-ABI stable API for the Qt 6 QuickLayouts library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       cmake(Qt6QuickLayouts) = %{real_version}
 
 %description -n qt6-quicklayouts-private-devel
@@ -705,14 +705,14 @@ any ABI or API guarantees.
 
 %package -n libQt6QuickTest6
 Summary:        Qt 6 QuickTest library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6QuickTest6
 The Qt 6 QuickTest library.
 
 %package -n qt6-quicktest-devel
 Summary:        Qt 6 QuickTest library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6QuickTest6 = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
@@ -724,7 +724,7 @@ Development files for the Qt 6 QuickTest library.
 
 %package -n qt6-quicktest-private-devel
 Summary:        Non-ABI stable API for the Qt 6 QuickTest library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       cmake(Qt6QuickTest) = %{real_version}
 %requires_eq    qt6-test-private-devel
 
@@ -734,14 +734,14 @@ ABI or API guarantees.
 
 %package -n libQt6QuickWidgets6
 Summary:        Qt 6 QuickWidgets library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6QuickWidgets6
 The Qt 6 QuickWidgets library.
 
 %package -n qt6-quickwidgets-devel
 Summary:        Qt 6 QuickWidgets library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6QuickWidgets6 = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
@@ -753,7 +753,7 @@ Development files for the Qt 6 QuickWidgets library.
 
 %package -n qt6-quickwidgets-private-devel
 Summary:        Non-ABI stable API for the Qt 6 QuickWidgets library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       qt6-quick-private-devel = %{version}
 Requires:       cmake(Qt6QuickWidgets) = %{real_version}
@@ -769,7 +769,7 @@ ABI or API guarantees.
 
 %package -n libQt6QmlCompiler6
 Summary:        Qt6 QmlCompiler library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6QmlCompiler6
 The Qt 6 QmlCompiler library.
@@ -790,7 +790,7 @@ This library does not have any ABI or API guarantees.
 
 %package -n libQt6QuickEffects6
 Summary:        Qt 6 QuickEffects library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6QuickEffects6
 The Qt 6 QuickEffects library.
@@ -798,7 +798,7 @@ This library does not have any ABI or API guarantees.
 
 %package -n qt6-quickeffects-private-devel
 Summary:        Qt 6 QuickEffects library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6QuickEffects6 = %{version}
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       qt6-quick-private-devel = %{version}
@@ -810,7 +810,7 @@ This library does not have any ABI or API guarantees.
 
 %package -n libQt6QuickParticles6
 Summary:        Qt 6 QuickParticles library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6QuickParticles6
 The Qt 6 QuickParticles library.
@@ -818,7 +818,7 @@ This library does not have any ABI or API guarantees.
 
 %package -n qt6-quickparticles-private-devel
 Summary:        Qt 6 QuickParticles library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6QuickParticles6 = %{version}
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       qt6-quick-private-devel = %{version}
@@ -834,7 +834,7 @@ This library does not have any ABI or API guarantees.
 
 %package -n libQt6QuickShapes6
 Summary:        Qt 6 QuickShapes library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 
 %description -n libQt6QuickShapes6
 The Qt 6 QuickShapes library.
@@ -842,7 +842,7 @@ This library does not have any ABI or API guarantees.
 
 %package -n qt6-quickshapes-private-devel
 Summary:        Qt 6 QuickShapes library - Development files
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       libQt6QuickShapes6 = %{version}
 Requires:       qt6-quick-private-devel = %{version}
 Requires:       cmake(Qt6Qml) = %{real_version}
@@ -855,10 +855,11 @@ Obsoletes:      qt6-quickshapes-devel < 6.2.0
 Development files for the Qt 6 QuickShapes library.
 This library does not have any ABI or API guarantees.
 
+
 ### Static libraries ###
 %package -n qt6-packetprotocol-devel-static
 Summary:        Qt6 PacketProtocol static library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 %requires_eq    qt6-core-private-devel
 # Renamed in 6.2.0
 Provides:       qt6-packetprotocol-private-devel = 6.2.0
@@ -870,7 +871,7 @@ This library does not have any ABI or API guarantees.
 
 %package -n qt6-qmldebug-devel-static
 Summary:        Qt6 QmlDebug static library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       qt6-packetprotocol-devel-static = %{version}
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       cmake(Qt6Network)
@@ -885,7 +886,7 @@ This library does not have any ABI or API guarantees.
 
 %package -n qt6-qmldom-devel-static
 Summary:        Qt6 QmlDom static library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       cmake(Qt6QmlCompilerPrivate) = %{real_version}
 # Renamed in 6.2.0
@@ -907,7 +908,7 @@ This library does not have any ABI or API guarantees.
 
 %package -n qt6-quickcontrolstestutils-devel-static
 Summary:        Qt6 QuickControlsTestUtils static library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       qt6-quick-private-devel = %{version}
 Requires:       qt6-quickdialogs2quickimpl-private-devel = %{version}
 Requires:       qt6-quicktemplates2-private-devel = %{version}
@@ -921,7 +922,7 @@ The Qt6 QuickControlsTestUtils static library.
 
 %package -n qt6-quicktestutils-devel-static
 Summary:        Qt6 QuickTestUtils static library
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       qt6-qml-private-devel = %{version}
 Requires:       cmake(Qt6Network) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}

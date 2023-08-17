@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  3 11:10:58 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Reduce memory constraints for riscv64
+- Sort license tags
+
+-------------------------------------------------------------------
 Thu Jul 20 08:48:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.2
