@@ -137,4 +137,60 @@
 </comment>
     <requestid>1102416</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>98568853f8772778b4d332e3567689bc</srcmd5>
+    <version>116.0.5845.96</version>
+    <time>1692294181</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 116.0.5845.96
+  * New CSS features: Motion Path, and &quot;display&quot; and
+    &quot;content-visibility&quot; animations
+  * Web APIs: AbortSignal.any(), BYOB support for Fetch, Back/
+    forward cache NotRestoredReason API, Document Picture-in-
+    Picture, Expanded Wildcards in Permissions Policy Origins,
+    FedCM bundle: Login Hint API, User Info API, and RP Context API,
+    Non-composed Mouse and Pointer enter/leave events, 
+    Remove document.open sandbox inheritance, 
+    Report Critical-CH caused restart in NavigationTiming
+- fix a number of security issues (boo#1214301):
+  * CVE-2023-2312: Use after free in Offline
+  * CVE-2023-4349: Use after free in Device Trust Connectors
+  * CVE-2023-4350: Inappropriate implementation in Fullscreen
+  * CVE-2023-4351: Use after free in Network
+  * CVE-2023-4352: Type Confusion in V8
+  * CVE-2023-4353: Heap buffer overflow in ANGLE
+  * CVE-2023-4354: Heap buffer overflow in Skia
+  * CVE-2023-4355: Out of bounds memory access in V8
+  * CVE-2023-4356: Use after free in Audio
+  * CVE-2023-4357: Insufficient validation of untrusted input in XML
+  * CVE-2023-4358: Use after free in DNS
+  * CVE-2023-4359: Inappropriate implementation in App Launcher
+  * CVE-2023-4360: Inappropriate implementation in Color
+  * CVE-2023-4361: Inappropriate implementation in Autofill
+  * CVE-2023-4362: Heap buffer overflow in Mojom IDL
+  * CVE-2023-4363: Inappropriate implementation in WebShare
+  * CVE-2023-4364: Inappropriate implementation in Permission Prompts
+  * CVE-2023-4365: Inappropriate implementation in Fullscreen
+  * CVE-2023-4366: Use after free in Extensions
+  * CVE-2023-4367: Insufficient policy enforcement in Extensions API
+  * CVE-2023-4368: Insufficient policy enforcement in Extensions API
+- drop patches:
+  * chromium-115-add_BoundSessionRefreshCookieFetcher::Result.patch
+  * chromium-115-verify_name_match-include.patch
+  * chromium-86-fix-vaapi-on-intel.patch
+  * chromium-115-skia-include.patch
+  * chromium-115-dont-pass-nullptr-to-construct-re2-StringPiece.patch
+- add patches:
+  * chromium-116-profile-view-utils-vector-include.patch
+  * chromium-116-blink-variant-include.patch
+  * chromium-116-lp155-url_load_stats-size-t.patch
+  * chromium-116-abseil-limits-include.patch
+  * chromium-116-lp155-typenames.patch
+  * chromium-116-lp155-constuctors.patch
+- Build with bundled re2 on Leap
+- Fix crash with extensions (boo#1214003)
+  chromium-115-dont-pass-nullptr-to-construct-re2-StringPiece.patch
+</comment>
+    <requestid>1104146</requestid>
+  </revision>
 </revisionlist>

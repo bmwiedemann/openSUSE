@@ -53,6 +53,11 @@
 %define llvm_version 15
 # GCC version
 %define gcc_version 12
+%if 0%{?suse_version} < 1699
+%bcond_with system_re2
+%else
+%bcond_without system_re2
+%endif
 %bcond_with is_beta # CHANNEL SWITCH
 %bcond_with system_avif
 # Compiler
@@ -78,7 +83,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           ungoogled-chromium%{n_suffix}
-Version:        115.0.5790.170
+Version:        116.0.5845.96
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -116,7 +121,6 @@ Patch68:        chromium-94-ffmpeg-roll.patch
 Patch87:        chromium-98-gtk4-build.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
 Patch98:        chromium-102-regex_pattern-array.patch
-Patch201:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
 Patch203:       chromium-106-ffmpeg-duration.patch
@@ -128,13 +132,16 @@ Patch214:       chromium-113-webview-namespace.patch
 Patch215:       chromium-113-webauth-include-variant.patch
 Patch217:       chromium-115-workaround_clang_bug-structured_binding.patch
 Patch218:       chromium-114-lld-argument.patch
-Patch219:       chromium-115-skia-include.patch
-Patch220:       chromium-115-verify_name_match-include.patch
 Patch221:       chromium-115-lp155-typename.patch
 Patch222:       chromium-115-Qt-moc-version.patch
 Patch223:       chromium-115-emplace_back_on_vector-c++20.patch
 Patch224:       chromium-115-compiler-SkColor4f.patch
-Patch225:       chromium-115-add_BoundSessionRefreshCookieFetcher::Result.patch
+Patch227:       chromium-116-profile-view-utils-vector-include.patch
+Patch228:       chromium-116-blink-variant-include.patch
+Patch229:       chromium-116-lp155-url_load_stats-size-t.patch
+Patch231:       chromium-116-abseil-limits-include.patch
+Patch232:       chromium-116-lp155-typenames.patch
+Patch237:       chromium-116-lp155-constuctors.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -222,7 +229,6 @@ BuildRequires:  pkgconfig(opus) >= 1.3.1
 BuildRequires:  pkgconfig(panel)
 BuildRequires:  pkgconfig(panelw)
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(schroedinger-1.0)
 BuildRequires:  pkgconfig(slang)
 BuildRequires:  pkgconfig(sqlite3)
@@ -321,6 +327,9 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Widgets)
 %endif
+%if %{with system_re2}
+BuildRequires:  pkgconfig(re2) >= 11
+%endif
 %if %{with clang}
 %if 0%{?suse_version} < 1550
 BuildRequires:  clang%{llvm_version}
@@ -345,9 +354,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc%{gcc_version}
 BuildRequires:  gcc%{gcc_version}-c++
 %endif
-%endif
-%if 0%{?suse_version} < 1699
-BuildRequires:  pkgconfig(re2) = 10.0.0
 %endif
 
 %description
@@ -384,8 +390,6 @@ patch -R -p1 < %{SOURCE4}
 
 %build
 # esbuild
-# ungoogled-chromium patches remove it
-#rm third_party/devtools-frontend/src/third_party/esbuild/esbuild
 tar -xf %{SOURCE1}
 pushd esbuild
 gflags="-mod=vendor"
@@ -400,8 +404,6 @@ popd
 mkdir -p third_party/node/linux/node-linux-x64/bin
 ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
 
-# ungoogled-chromium patches remove it
-#rm buildtools/third_party/eu-strip/bin/eu-strip
 ln -s %{_bindir}/eu-strip buildtools/third_party/eu-strip/bin/eu-strip
 
 # python3
@@ -414,10 +416,6 @@ export PATH="$HOME/bin/:$PATH"
 %if %{with qt6}
 ln -s %{?_qt6_libexecdir}/moc $HOME/bin/moc-qt6
 %endif
-
-# use our wrapper (disabled)
-#rm chrome/installer/linux/common/wrapper
-#cp %{SOURCE106} chrome/installer/linux/common/wrapper
 
 # Remove bundled libs
 keeplibs=(
@@ -482,6 +480,7 @@ keeplibs=(
     third_party/crashpad/crashpad/third_party/zlib
     third_party/crc32c
     third_party/cros_system_api
+    third_party/d3
     third_party/dav1d
     third_party/dawn
     third_party/dawn/third_party
@@ -684,6 +683,9 @@ keeplibs+=(
     third_party/usb_ids
     third_party/xdg-utils
 )
+%if !%{with system_re2}
+keeplibs+=( third_party/re2 )
+%endif
 build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 
 # GN sets lto on its own and we need just ldflag options, not cflags
@@ -765,12 +767,11 @@ gn_system_libraries=(
     libevent
     libjpeg
     libpng
-    libxslt
     libusb
     libwebp
     libxml
+    libxslt
     opus
-    re2
     snappy
     zlib
 )
@@ -796,6 +797,9 @@ gn_system_libraries+=( ffmpeg )
 %if %{with system_avif}
 gn_system_libraries+=( libyuv )
 gn_system_libraries+=( libavif )
+%endif
+%if %{with system_re2}
+gn_system_libraries+=( re2 )
 %endif
 build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries[@]}
 
@@ -901,12 +905,6 @@ myconf_gn+=" arm_control_flow_integrity=\"none\""
 %endif
 %endif
 
-# Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys
-# Note: these are for the openSUSE Chromium builds ONLY. For your own distribution,
-# please get your own set of keys.
-#google_api_key="AIzaSyD1hTe85_a14kr1Ks8T3Ce75rvbR1_Dx7Q"
-#myconf_gn+=" google_api_key=\"${google_api_key}\""
-
 # ungoogled-chromium flags
 myconf_gn+=$(cat ../ungoogled-chromium-%{version}-1/flags.gn)
 
@@ -916,7 +914,10 @@ gn gen --args="${myconf_gn}" %{outputdir}
 
 ../ungoogled-chromium-%{version}-1/utils/domain_substitution.py apply -r ../ungoogled-chromium-%{version}-1/domain_regex.list -f ../ungoogled-chromium-%{version}-1//domain_substitution.list -c %{outputdir}/domsubcache.tar.gz .
 
-ninja -v %{?_smp_mflags} -C %{outputdir} chrome chromedriver
+ninja -v %{?_smp_mflags} -C %{outputdir} \
+	chrome \
+	chromedriver \
+	%{nil}
 
 %install
 bash %{SOURCE105} -s %{buildroot} -l %{_libdir} %{!?with_system_icu:-i true} -o %{outputdir}
