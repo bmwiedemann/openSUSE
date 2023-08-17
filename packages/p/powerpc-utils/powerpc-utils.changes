@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 15 13:07:50 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Tell kernel about the SMT value set by ppc64_cpu (bsc#1214285 bsc#1205462 ltc#200161 ltc#200588).
+  + ppc64_cpu-Support-partial-SMT-level-through-SYS-FS-s.patch
+
+-------------------------------------------------------------------
 Mon Jun  5 16:20:56 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix negative utilization value reported by lparstat -E (bsc#1212031)

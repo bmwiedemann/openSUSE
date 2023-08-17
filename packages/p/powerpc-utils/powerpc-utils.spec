@@ -32,6 +32,7 @@ Patch4:         libvirt-service-dep.patch
 Patch5:         lparstat-Fix-negative-values-seen-while-running-lpar.patch
 Patch6:         lparstat-report-mixed-SMT-state.patch
 Patch7:         lparstat-Fix-offline-threads-uninitialized-entries.patch
+Patch8:         ppc64_cpu-Support-partial-SMT-level-through-SYS-FS-s.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel
