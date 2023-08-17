@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 17 07:21:21 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.1:
+  * Fix segfaults on Linux under Wayland.
+  * Fix jxl files not being shown in the file picker properly.
+  * Fix issue where png files did not use embedded color profiles.
+  * Fix incorrect cache cost value.
+
+-------------------------------------------------------------------
 Fri Aug 11 04:53:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
-- Update to 5.0:
+- Update to 6.0:
   New features:
   * Support color profiles (Requires Qt >=5.14 if you're building yourself).
   * Support dragging and dropping a folder.
