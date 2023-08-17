@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 17 02:45:01 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.5.0:
+   * pw: guard output in transform checks
+   * toplevelexport: remove _done call from _buffer
+   * screencast: correct array size
+
+-------------------------------------------------------------------
 Tue May 30 11:15:39 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.4.0:

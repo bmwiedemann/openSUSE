@@ -18,4 +18,16 @@
 </comment>
     <requestid>1089888</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>77754dc26a8f9a8d9ba603fe1900bf1d</srcmd5>
+    <version>unknown</version>
+    <time>1692294253</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.5.0:
+   * pw: guard output in transform checks
+   * toplevelexport: remove _done call from _buffer
+   * screencast: correct array size
+</comment>
+    <requestid>1104275</requestid>
+  </revision>
 </revisionlist>
