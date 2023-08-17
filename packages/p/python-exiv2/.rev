@@ -78,4 +78,17 @@
     <comment></comment>
     <requestid>1010601</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>20e185353e83bf9907a460b43f11bdf4</srcmd5>
+    <version>0.12.3</version>
+    <time>1692294284</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.12.3:
+  - upstream doesn't release proper changelog
+- Remove the exiv2_0-28-0.patch patch again.
+- Add exiv2_0-28-0.patch making the package compatible with the
+  latest exiv2 0.28 (lp#2027823).
+</comment>
+    <requestid>1104337</requestid>
+  </revision>
 </revisionlist>

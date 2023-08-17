@@ -1,7 +1,7 @@
 #
 # spec file for package python-exiv2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# This is a python3 only package
-%define         skip_python2 1
-
 Name:           python-exiv2
-Version:        0.11.0
+Version:        0.12.3
 Release:        0
 Summary:        Python3 bindings for the exiv2 library
 License:        GPL-3.0-only
@@ -31,7 +27,6 @@ URL:            https://launchpad.net/py3exiv2
 Source0:        https://files.pythonhosted.org/packages/source/p/py3exiv2/py3exiv2-%{version}.tar.gz
 #
 Patch0:         py3exiv2-link-boost.patch
-#
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -60,9 +55,11 @@ easy manipulation of image metadata.
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
-%{python_sitearch}/*
+%{python_sitearch}/libexiv2python.*.so
+%{python_sitearch}/pyexiv2
+%{python_sitearch}/py3exiv2-%{version}*-info
 
 %changelog

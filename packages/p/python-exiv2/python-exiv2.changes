@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 10 21:33:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.12.3:
+  - upstream doesn't release proper changelog
+- Remove the exiv2_0-28-0.patch patch again.
+
+-------------------------------------------------------------------
+Fri Aug  4 23:06:13 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add exiv2_0-28-0.patch making the package compatible with the
+  latest exiv2 0.28 (lp#2027823).
+
+-------------------------------------------------------------------
 Thu Oct 13 17:56:29 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - version 0.11.0
