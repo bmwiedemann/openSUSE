@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.50.0
+Version:        2.51.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -58,7 +58,7 @@ Requires:       python3-PyNaCl >= 1.5.0
 Requires:       python3-PyYAML >= 5.1
 Requires:       python3-antlr4-python3-runtime >= 4.9.3
 Requires:       python3-azure-appconfiguration >= 1.1.1
-Requires:       python3-azure-batch >= 13.0.0
+Requires:       python3-azure-batch >= 14.0.0
 Requires:       python3-azure-cosmos >= 3.0.2
 Requires:       python3-azure-data-tables >= 12.4.0
 Requires:       python3-azure-datalake-store >= 0.0.49
@@ -80,12 +80,12 @@ Requires:       python3-azure-mgmt-batchai >= 7.0.0b1
 Requires:       python3-azure-mgmt-billing >= 6.0.0
 Requires:       python3-azure-mgmt-botservice >= 2.0.0b3
 Requires:       python3-azure-mgmt-cdn >= 12.0.0
-Requires:       python3-azure-mgmt-cognitiveservices >= 13.3.0
-Requires:       python3-azure-mgmt-compute >= 29.1.0
+Requires:       python3-azure-mgmt-cognitiveservices >= 13.5.0
+Requires:       python3-azure-mgmt-compute >= 30.0.0
 Requires:       python3-azure-mgmt-consumption >= 2.0
 Requires:       python3-azure-mgmt-containerinstance >= 10.1.0
 Requires:       python3-azure-mgmt-containerregistry >= 10.1.0
-Requires:       python3-azure-mgmt-containerservice >= 24.0.0
+Requires:       python3-azure-mgmt-containerservice >= 25.0.0
 Requires:       python3-azure-mgmt-cosmosdb >= 9.2.0
 Requires:       python3-azure-mgmt-databoxedge >= 1.0.0
 Requires:       python3-azure-mgmt-datalake-analytics >= 0.2.1
@@ -112,7 +112,7 @@ Requires:       python3-azure-mgmt-media >= 9.0
 Requires:       python3-azure-mgmt-monitor >= 5.0.0
 Requires:       python3-azure-mgmt-msi >= 7.0.0
 Requires:       python3-azure-mgmt-netapp >= 10.0.0
-Requires:       python3-azure-mgmt-policyinsights >= 1.1.0b2
+Requires:       python3-azure-mgmt-policyinsights >= 1.1.0b4
 Requires:       python3-azure-mgmt-privatedns >= 1.0.0
 Requires:       python3-azure-mgmt-rdbms >= 10.2.0b10
 Requires:       python3-azure-mgmt-recoveryservices >= 2.4.0
@@ -123,7 +123,7 @@ Requires:       python3-azure-mgmt-relay >= 0.1.0
 Requires:       python3-azure-mgmt-reservations >= 2.0.0
 Requires:       python3-azure-mgmt-resource >= 23.1.0~b2
 Requires:       python3-azure-mgmt-search >= 9.0
-Requires:       python3-azure-mgmt-security >= 3.0.0
+Requires:       python3-azure-mgmt-security >= 5.0.0
 Requires:       python3-azure-mgmt-servicebus >= 8.2.0
 Requires:       python3-azure-mgmt-servicefabric >= 1.0.0
 Requires:       python3-azure-mgmt-servicefabricmanagedclusters >= 1.0.0
