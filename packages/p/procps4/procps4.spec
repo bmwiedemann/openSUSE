@@ -58,6 +58,8 @@ Patch32:        procps-ng-3.3.10-errno.patch
 Patch33:        procps-ng-3.3.11-pmap4suse.patch
 # PATCH-FIX-SUSE -- Avoid float errors on 32bit architectures
 Patch37:        procps-ng-4.0.0-floats.dif
+# PATCH-FIX-UPSTREAM -- bsc#1214290
+Patch38:        CVE-2023-4016.patch
 BuildRequires:  automake
 BuildRequires:  dejagnu
 BuildRequires:  diffutils
@@ -146,6 +148,7 @@ the process information pseudo-file system.
 %patch32
 %patch33 -b .pmap4us
 %patch37
+%patch38
 
 %build
 test -s .tarball-version || echo %{version} > .tarball-version

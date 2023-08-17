@@ -52,4 +52,13 @@
   * procps-ng-3.3.8-vmstat-terabyte.dif</comment>
     <requestid>1066826</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>b1d56c7cf998ab16e263e84675d2d97a</srcmd5>
+    <version>4.0.3</version>
+    <time>1692294282</time>
+    <user>anag+factory</user>
+    <comment>- Add patch CVE-2023-4016.patch
+  * CVE-2023-4016: ps buffer overflow (bsc#1214290)</comment>
+    <requestid>1104338</requestid>
+  </revision>
 </revisionlist>
