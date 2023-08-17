@@ -92,7 +92,8 @@ Patch21:        %{name}-allow-use-of-sadump-captured-KASLR-kernel.patch
 Patch23:        %{name}-SLE15-SP1-With-Linux-4.19-rc1-up-MAX_PHYSMEM_BITS-to-128TB.patch
 Patch24:        %{name}-SLE15-SP1-Fix-for-PPC64-kernel-virtual-address-translation-in.patch
 Patch30:        %{name}-enable-zstd-support.patch
-Patch31:        %{name}-extensions-rule-for-defs.patch
+Patch31:        %{name}-fix-glibc-redefs.patch
+Patch32:        %{name}-extensions-rule-for-defs.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 Patch99:        %{name}-usrmerge.patch
 BuildRequires:  bison
@@ -256,6 +257,7 @@ for f in %{S:100} %{S:101}; do
 done
 
 %patch31 -p1
+%patch32 -p1
 
 ## SIAL patches
 cd sial-scripts-%{scripts_version}

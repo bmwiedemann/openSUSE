@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 15 18:47:26 UTC 2023 - David Mair <dmair@suse.com>
+
+- crash has it's own definitions of some glibc functions, including
+  strlcpy(), length limited string copy. In glibc 2.38 the second
+  argument is const char *, in crash it is char *. The argument is
+  the source string to copy from and shouldn't be modified.  crash
+  uses the glibc version in some places, it's own in others and the
+  declarations are incompatible resulting in build errors. Added
+  * crash-fix-glibc-redefs.patch
+  to make the crash declaration of strlcpy() match the glibc 2.38
+  version. It may also need to be made product version conditional
+  but it should fix Factory.
+
+-------------------------------------------------------------------
 Thu May  4 13:33:22 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - Fix build on SLE12:
