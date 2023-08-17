@@ -1,7 +1,7 @@
 #
 # spec file for package chrony
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %bcond_without testsuite
 
 %define _systemdutildir %(pkg-config --variable systemdutildir systemd)
-%global clknetsim_ver f00531b
+%global clknetsim_ver ef2a7a9
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -41,7 +41,7 @@
 %define chrony_helper %{_libexecdir}/chrony/helper
 %define chrony_rundir %{_rundir}/%{name}
 Name:           chrony
-Version:        4.3
+Version:        4.4
 Release:        0
 Summary:        System Clock Synchronization Client and Server
 License:        GPL-2.0-only
