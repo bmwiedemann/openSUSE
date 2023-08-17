@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Jul 27 13:32:07 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2023-07-R1
+  * New dark mode in the web UI.
+  * New page-based device list in the web UI.
+  * The old device list was always slightly odd & could get in
+    states where the JS did not update as expected. The new pager
+    UI addresses this & brings a big performance boost.
+  * Fixes to channel listing.
+  * Fixes to remote capture in some situations.
+  * Optimizations to the field tracking system.
+  * Improvements and fixes to WiFi 6e channel processing and
+    numbering.
+  * Fixes and general improvements to the order of operations when
+    configuring WiFi interfaces on Linux for monitor mode.
+  * Inclusion of the Hak5 WiFi Coconut userspace drivers and
+    capture.
+  * Transition to using emphemeral JWT signing for login management
+    instead of a state file.
+  * Increased live censorship in the Web UI when ?censor=1 is
+    passed.
+  * Fixes to Python-based websockets not loading SSL contexts.
+    Upgrade a number of internal libraries for the Web UI and
+    internals.
+  * New graphing libraries.
+  * New datatables version.
+  * New robinhood hash.
+  * Upgraded font-awesome.
+  * Upgraded libfmt.
+  * New moodycamel queue.
+  * Fix long-standing bugs with field selection and summary in the
+    API requests.
+  * Add new display of thermal state on supported systems (linux).
+  * Revamp how rtl433 devices are mapped, split into
+    sensors/meters/etc.
+  * Handle power meter via rtl433.
+  * Revamp sensor/meter UI to carry much more informaiton.
+  * Revamp IO system loops and locking patterns entirely to address
+    hangs in some situations.
+  * Add packet id and checksumming to pcap-ng exports.
+  * Fix linux-capture-wifi following symlinks in /tmp.
+  * Better NMEA handling.
+  * Support libpcre2 now that pcre1 is deprecated.
+  * Massive speed improvements in packet processing due to removal
+    of dissection chain chokepoints.
+  * Revamp of packet de-duplicaton system.
+  * Add tx/rx packet counts per device.
+
+-------------------------------------------------------------------
+Wed Mar  1 09:07:58 UTC 2023 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Packaging: 
+  * Move systemd-sysusers config to a common subpackage.
+  * Separate %post and %verify sections for each package.
+  * Set %noarch for a number of subpackages.
+
+-------------------------------------------------------------------
 Thu Jan 26 18:55:19 UTC 2023 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Drop unnecessary root privileges in the systemd unit (bsc#1207654).

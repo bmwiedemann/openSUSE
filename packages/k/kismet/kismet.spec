@@ -20,9 +20,9 @@
 %bcond_with ubertooth
 %endif
 
-%define realver 2022-08-R1
+%define realver 2023-07-R1
 Name:           kismet
-Version:        2022_08_R1
+Version:        2023_07_R1
 Release:        0
 Summary:        An 802.11 Wireless Network Sniffer
 License:        GPL-2.0-or-later
@@ -72,15 +72,13 @@ Recommends:     kismet-capture-sdr-rtladsb
 Recommends:     kismet-capture-sdr-rtlamr
 Recommends:     kismet-capture-ti-cc2540
 Recommends:     kismet-logtools
+Requires(pre):  %{name}-common = %{version}
 Requires(pre):  permissions
 Requires(pre):  shadow
-Provides:       group(kismet)
-Provides:       user(kismet)
 %if 0%{with ubertooth}
 Recommends:     kismet-capture-ubertooth-one
 %endif
 %{?systemd_ordering}
-%{?sysusers_requires}
 
 %global homedir %{_localstatedir}/lib/%{name}
 
@@ -91,6 +89,20 @@ tool, and WIDS (wireless intrusion detection) framework.
 Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some
 SDR (software defined radio) hardware like the RTLSDR, and other
 specialized capture hardware.
+
+%package common
+Summary:        Shared data for Kismet and its plug-ins
+Group:          Productivity/Networking/Diagnostic
+BuildArch:      noarch
+Provides:       group(kismet)
+Provides:       user(kismet)
+%{?sysusers_requires}
+
+%description common
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage sets up the system user/group for the rest of Kismet.
 
 %package logtools
 Summary:        Kismet logtools
@@ -111,6 +123,10 @@ This subpackage contains several kismetdb log tools
 %package capture-linux-bluetooth
 Summary:        Kismet Linux Bluetooth capture helper
 Group:          Productivity/Networking/Diagnostic
+BuildRequires:  group(kismet)
+Requires(pre):  group(kismet)
+Requires(pre):  %{name}-common = %{version}
+Requires(pre):  permissions
 
 %description capture-linux-bluetooth
 Kismet is a wireless network and device detector, sniffer, wardriving
@@ -121,6 +137,10 @@ This subpackage contains Kismet Linux Bluetooth capture helper.
 %package capture-linux-wifi
 Summary:        Kismet Linux WiFi capture helper
 Group:          Productivity/Networking/Diagnostic
+BuildRequires:  group(kismet)
+Requires(pre):  group(kismet)
+Requires(pre):  %{name}-common = %{version}
+Requires(pre):  permissions
 
 %description capture-linux-wifi
 Kismet is a wireless network and device detector, sniffer, wardriving
@@ -134,6 +154,7 @@ Group:          Productivity/Networking/Diagnostic
 Requires:       python3-protobuf >= 3.0.0
 Requires:       python3-websockets
 Requires:       rtl_433
+BuildArch:      noarch
 
 %description capture-sdr-rtl433
 Kismet is a wireless network and device detector, sniffer, wardriving
@@ -149,6 +170,7 @@ Requires:       python3-numpy
 Requires:       python3-protobuf >= 3.0.0
 Requires:       python3-websockets
 Recommends:     rtl_amr
+BuildArch:      noarch
 
 %description capture-sdr-rtlamr
 Kismet is a wireless network and device detector, sniffer, wardriving
@@ -164,6 +186,7 @@ Requires:       python3-numpy
 Requires:       python3-protobuf >= 3.0.0
 Requires:       python3-websockets
 Requires:       rtl-sdr
+BuildArch:      noarch
 
 %description capture-sdr-rtladsb
 Kismet is a wireless network and device detector, sniffer, wardriving
@@ -200,6 +223,7 @@ Summary:        Kismet Freaklabs Zigbee capture helper
 Group:          Productivity/Networking/Diagnostic
 Requires:       python3-protobuf >= 3.0.0
 Requires:       python3-pyserial
+BuildArch:      noarch
 
 %description capture-freaklabs-zigbee
 Kismet is a wireless network and device detector, sniffer, wardriving
@@ -263,6 +287,7 @@ helper.
 %package capture-bt-geiger
 Summary:        Kismet BTLE geiger counter capture helper
 Group:          Productivity/Networking/Diagnostic
+BuildArch:      noarch
 
 %description capture-bt-geiger
 Kismet is a wireless network and device detector, sniffer, wardriving
@@ -310,6 +335,7 @@ chmod a-x http_data/css/*.css
 %configure \
     --sysconfdir=%{_sysconfdir}/kismet \
     --enable-btgeiger \
+    --disable-wifi-coconut \
     --disable-optimization
 make %{?_smp_mflags} all
 make %{?_smp_mflags} plugins
@@ -338,20 +364,26 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 %pre -f %{name}.pre
 %service_add_pre %{name}.service
 
-%verifyscript
-%verify_permissions -e %{_bindir}/kismet_cap_linux_bluetooth
-%verify_permissions -e %{_bindir}/kismet_cap_linux_wifi
-
 %preun
 %service_del_preun %{name}.service
 
 %post
 %service_add_post %{name}.service
+
+%post capture-linux-bluetooth
 %set_permissions %{_bindir}/kismet_cap_linux_bluetooth
+
+%post capture-linux-wifi
 %set_permissions %{_bindir}/kismet_cap_linux_wifi
 
 %postun
 %service_del_postun %{name}.service
+
+%verifyscript capture-linux-bluetooth
+%verify_permissions -e %{_bindir}/kismet_cap_linux_bluetooth
+
+%verifyscript capture-linux-wifi
+%verify_permissions -e %{_bindir}/kismet_cap_linux_wifi
 
 %files
 %license LICENSE
@@ -379,9 +411,12 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 %{_sbindir}/rc%{name}
 %dir %{_libdir}/kismet/
 %{_libdir}/kismet/alertsyslog.so
-%{_sysusersdir}/%{name}.conf
 #
 %attr(750,%{name},%{name}) %dir %{homedir}
+#
+
+%files common
+%{_sysusersdir}/%{name}.conf
 
 %files logtools
 %{_bindir}/kismetdb_clean

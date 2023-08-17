@@ -596,4 +596,12 @@ better packaging for distros, and various other quirks.
     <comment></comment>
     <requestid>1064256</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>d3cdd344ea6d7a002ba13baed00986a7</srcmd5>
+    <version>2023_07_R1</version>
+    <time>1692294230</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104173</requestid>
+  </revision>
 </revisionlist>
