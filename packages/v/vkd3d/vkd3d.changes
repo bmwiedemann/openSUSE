@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Aug  6 14:53:19 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Update to version 1.8:
+  - Performance improvements have been made to the code that handles descriptor
+    updates. In some applications the improvement can be quite significant.
+  - Host-visible descriptor heaps are persistently mapped on creation. Some
+    applications access resource data from the CPU after calling Unmap(), and
+    that's supposed to work in practice.
+  - 1-dimensional texture unordered-access views and shader resource views are
+    implemented.
+  - Shader resource view, unordered access view, and constant buffer view root
+    descriptors with NULL GPU addresses are supported.
+  - Direct3D 12 descriptor heap destruction is delayed until all contained
+    resources are destroyed.
+  - libvkd3d-shader
+    - New features for the HLSL source type:
+      - Support for the ternary conditional operator "?:".
+      - Support for "discard" statements.
+      - Support for the "packoffset" keyword.
+      - Support for semantics on array types.
+      - Support for RWBuffer loads and stores.
+      - Register allocation for arrays and structures of resources and samplers
+        is implemented.
+      - Support for the SV_IsFrontFace pixel shader system-value semantics.
+      - Support for using constant expressions as array sizes and indices.
+      - Support for dynamic selection of vector components.
+      - Support for the following intrinsic functions: D3DCOLORtoUBYTE4(),
+        any(), asfloat(), ddx(), ddy(), fmod(), log(), log2(), log10(), sign()
+        and trunc().
+      - The SampleBias(), SampleCmp(), SampleCmpLevelZero(), and SampleGrad()
+        texture object methods are implemented.
+      - Support for the case-insensitive variants of the "vector" and "matrix"
+        data types.
+      - Parser support for the "unroll" loop attribute. A warning is output for
+        "unroll" without iteration count, and an error is output when an
+        iteration count is specified. Actual unrolling is not implemented yet.
+      - Parser support for RWStructuredBuffer resources.
+      - Parser support for SamplerComparisonState objects. Note that outputting
+        compiled effects is not supported yet, but parsing these allows shaders
+        containing SamplerComparisonState state objects to be compiled.
+    - More improvements to HLSL support for the Direct3D shader model 1/2/3
+      profiles.
+    - The section alignment of DXBC blobs produced by
+      vkd3d_shader_serialize_dxbc() matches those produced by d3dcompiler more
+      closely.
+    - The "main" function for shaders produced by the SPIR-V target is always
+      terminated, even when the source was a TPF shader without explicit "ret"
+      instruction.
+    - Relative addressing of shader input registers is supported by SPIR-V
+     targets.
+
+-------------------------------------------------------------------
 Wed May 17 17:06:32 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>
 
 - Update to version 1.7.1:
