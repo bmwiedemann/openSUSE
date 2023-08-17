@@ -289,4 +289,17 @@
 </comment>
     <requestid>1095773</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>55a012984ed8e500ce9f4a32c5e6f55d</srcmd5>
+    <version>1.11.15</version>
+    <time>1692294256</time>
+    <user>anag+factory</user>
+    <comment>- Fix specfile %files section.
+- Replace obsoleted `disabled` option with `manual`
+- Update to version 1.11.15:
+  * CHANGELOG is irrelevant. Mostly Windows related. *
+- Update vendored deps.
+</comment>
+    <requestid>1104307</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Aug 13 13:48:33 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix specfile %files section.
+
+-------------------------------------------------------------------
+Sun Aug 13 13:26:50 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace obsoleted `disabled` option with `manual`
+
+-------------------------------------------------------------------
+Thu Jul 06 02:57:26 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1.11.15:
+  * CHANGELOG is irrelevant. Mostly Windows related. *
+- Update vendored deps.
+
+-------------------------------------------------------------------
 Wed Jun 28 08:19:48 UTC 2023 - socvirnyl.estela@gmail.com
 
 - Update to version 1.11.0:
