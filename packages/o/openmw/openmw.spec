@@ -18,7 +18,7 @@
 
 
 Name:           openmw
-Version:        0.48.0~rc9
+Version:        0.48.0
 Release:        0
 Summary:        Reimplementation of The Elder Scrolls III: Morrowind
 License:        GPL-3.0-only AND MIT
@@ -30,8 +30,6 @@ BuildRequires:  MyGUI-devel >= 3.2.1
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_program_options-devel
@@ -62,6 +60,12 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(yaml-cpp)
 Requires:       OpenSceneGraph-plugins
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 Requires(post): desktop-file-utils
 Requires(postun):desktop-file-utils
 
@@ -110,8 +114,10 @@ for file in tables.tex main.tex recordtypes.tex filters.tex creating_file.tex fi
 done
 
 %build
-export CC="gcc-12"
-export CXX="g++-12"
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CC="gcc-11"
+export CXX="g++-11"
+%endif
 # -DBT_USE_DOUBLE_PRECISION should be discovered by cmake from bullet config, but it's not.
 %cmake \
        -DCMAKE_C_FLAGS="%{optflags} -DBT_USE_DOUBLE_PRECISION" \

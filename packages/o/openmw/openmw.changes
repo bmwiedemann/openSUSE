@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Aug 10 18:30:45 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.48.0:
+  * Set openmwluadocumentor version for luadoc generation in 0.48
+  * Share the dump directory for crash and freeze dumps
+  * Merge branch 'macos_target_non_eol_version' into 'master'
+  * Update Windows crash dump path once we know where we're logging
+  * Stupid Win32 macro stuff
+  * Don't put crash dumps in Temp on Windows
+  * Merge branch 'font_changelog' into 'master'
+  * Merge branch '0.48-changelog' into 'master'
+  * Merge branch 'particles_fix' into 'master'
+  * Allow OpenMW 0.48 to parse save headers from 0.49
+  * backport CLAMP_TO_EDGE fix to 0.48
+  * Use most recent OSG dependency to match 0.48 RC builds
+  * Fix logging and config for portable setup
+  * Fix build with GCC 13.1.1
+  * fix for macos intel for CI
+  * Merge branch 'fix_element_destroy' into 'master'
+  * Use different object id for avoid shape
+  * Fix integration tests job deps
+  * Update cell local map on different neighbour cells
+  * Use LuaUtil::cast for casting sol::object to prevent crashing
+    on type mismatch in Lua scripts.
+  * Add function LuaUtil::cast
+  * fix macos issue
+
+-------------------------------------------------------------------
 Sun Apr 23 09:03:32 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 0.48.0~rc9:

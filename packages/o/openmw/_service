@@ -2,8 +2,8 @@
 	<service mode="disabled" name="tar_scm">
 		<param name="url">https://gitlab.com/OpenMW/openmw.git</param>
 		<param name="scm">git</param>
-		<param name="revision">ed528c5d7004c3a499b842dfd3ec11fd57abfddd</param>
-		<param name="version">0.48.0~rc9</param>
+		<param name="revision">81ab0feb2ec2fda488eec043f6fa3d9b020f1521</param>
+		<param name="version">0.48.0</param>
         <param name="changesgenerate">enable</param>
         <param name="filename">openmw</param>
 	</service>
