@@ -1,7 +1,7 @@
 #
 # spec file for package blobwars
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,15 +20,17 @@ Name:           blobwars
 Version:        2.00
 Release:        0
 Summary:        Mission and Objective based 2D Platform Game
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-Url:            http://sourceforge.net/projects/blobwars/
+URL:            http://sourceforge.net/projects/blobwars/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
 # PATCH-FIX-OPENSUSE - blobwars-icons_blobwars.desktop.patch -- Add GenericName and Category
 Patch0:         %{name}-icons_blobwars.desktop.patch
 # PATCH-FIX-UPSTREAM https://sourceforge.net/p/blobwars/patches/8/
 Patch1:         reproducible.patch
+# PATCH-FIX-UPSTREAM blobwars-glibc-2.38.patch dimstar@opensuse.org -- Do nog conflict with glibc 2.38
+Patch2:         blobwars-glibc-2.38.patch
 %if 0%{?suse_version}
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
@@ -59,6 +61,7 @@ contend with environmental hazards, alien invaders and assimilated Blobs.
 %setup -q
 %patch0
 %patch1 -p1
+%patch2 -p1
 
 # Correct Permissions
 chmod 0644 Makefile*
