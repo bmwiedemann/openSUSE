@@ -1,7 +1,7 @@
 #
 # spec file for package wl-clipboard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 Name:           wl-clipboard
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 License:        GPL-3.0-only
 Summary:        Wayland Clipboard Utilities
 URL:            https://github.com/bugaevc/wl-clipboard
 Group:          Productivity/Graphics/Other
 Source:         https://github.com/bugaevc/%{name}/archive/v%{version}.tar.gz
-BuildRequires:  meson >= 0.44.0
+BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
-BuildRequires:  wayland-devel
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.17
-BuildRequires:  pkgconfig(wayland-server) >= 1.16
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
+BuildRequires:  pkgconfig(wayland-server) >= 1.22
 Recommends:     mailcap
 Recommends:     xdg-utils
 
