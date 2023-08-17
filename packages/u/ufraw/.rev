@@ -402,4 +402,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>976253</requestid>
   </revision>
+  <revision rev="54" vrev="12">
+    <srcmd5>bd1700f8b1009bacea51201dee3ab657</srcmd5>
+    <version>0.22</version>
+    <time>1692294254</time>
+    <user>anag+factory</user>
+    <comment>- Add ufraw-0.22-exiv2-0.28.patch to fix build with exiv 0.28.
+  (https://cgit.freebsd.org/ports/tree/graphics/ufraw/files/patch-ufraw__exiv2.cc)</comment>
+    <requestid>1104305</requestid>
+  </revision>
 </revisionlist>

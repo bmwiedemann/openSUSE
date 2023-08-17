@@ -1,7 +1,7 @@
 #
 # spec file for package ufraw
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,8 @@ Patch10:        05_CVE-2018-19655.patch
 Patch11:        06_lensfun_destroy_cleanup.patch
 Patch12:        Fix-build-with-GCC9.patch
 Patch13:        ufraw-fix-c++.patch
-
+# PATCH-FIX-FREEBSD: ufraw-0.22-exiv2-0.28.patch https://cgit.freebsd.org/ports/diff/graphics/ufraw/files/patch-ufraw__exiv2.cc?id=0e4d3e69d22d89c1e0972f90bab859473c3935ca
+Patch14:        ufraw-0.22-exiv2-0.28.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
