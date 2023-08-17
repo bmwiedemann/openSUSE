@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug  5 11:44:23 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Enable building of mod_md
+
+-------------------------------------------------------------------
 Fri Apr  7 13:17:47 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 2.4.57:
@@ -7237,4 +7242,3 @@ Wed May 29 18:16:00 CEST 2002 - poeml@suse.de
 - RPM can be built as user now
 - SuSEconfig.apache: understand relative and absolute pathnames
 - disable experimental auth_digest_module 
-

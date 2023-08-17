@@ -214,6 +214,8 @@ BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
+BuildRequires:  pkgconfig(jansson)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
