@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 11 13:26:18 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.1.6:
+  * See https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-1.html
+    and https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html
+
+  * Breaking change:
+  TypeScript 5.1 now ships JavaScript functionality that was introduced in ECMAScript 2020. 
+  As a result, at minimum TypeScript must be run in a reasonably modern runtime. 
+  For most users, this means TypeScript now only runs on Node.js 14.17 and later.
+
+-------------------------------------------------------------------
 Sat Feb 25 01:23:54 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 4.9.5.
