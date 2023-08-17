@@ -25,7 +25,7 @@ Group:          Amusements/Games/Strategy/Real Time
 URL:            https://andrettin.github.io/
 Source:         https://github.com/Andrettin/Wyrmgus/archive/v%{version}/Wyrmgus-%{version}.tar.gz
 Patch:          wyrmgus-gl-includes.patch
-BuildRequires:  boost-devel >= 1.69.0
+BuildRequires:  libboost_date_time-devel >= 1.69.0
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libqt5-qtlocation-private-headers-devel

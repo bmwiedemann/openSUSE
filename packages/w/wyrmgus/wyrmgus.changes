@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 16 21:19:55 UTC 2023 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Precise boost dependency sub package.
+
+-------------------------------------------------------------------
 Sat Jan 28 23:27:41 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Add wyrmgus-gl-includes.patch to enable successful build for aarch64
