@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug  9 17:14:10 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.22.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.22.0
+  * Gateway: support for order= and dups= parameters (IPIP-412)
+  * ipfs name publish now supports V2 only IPNS records
+  * IPNS name resolution has been fixed
+  * go-libp2p v0.29.0 update with smart dialing
+
+-------------------------------------------------------------------
 Fri Jul 21 11:02:24 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Rename from go-ipfs to kubo to follow upsteam git repo rename

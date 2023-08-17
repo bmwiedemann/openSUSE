@@ -11,4 +11,12 @@ Allows to access the InterPlanetary FileSystem (IPFS) from Linux
 now with fixed build</comment>
     <requestid>1099919</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>70b225c693e748f72c0190573f868b40</srcmd5>
+    <version>0.22.0</version>
+    <time>1692294240</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104228</requestid>
+  </revision>
 </revisionlist>
