@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Aug 16 13:44:22 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.18
+  Feature Changes:
+  * When a primary server for a zone responds to an SOA query, but
+    the subsequent TCP connection required to transfer the zone is
+    refused, that server is marked as temporarily unreachable. This
+    now also happens if the TCP connection attempt times out,
+    preventing too many zones from queuing up on an unreachable
+    server and allowing the refresh process to move on to the next
+    configured primary more quickly.
+  * The dialup and heartbeat-interval options have been deprecated
+    and will be removed in a future BIND 9 release.
+
+  Bug Fixes:
+  * Processing already-queued queries received over TCP could cause
+    an assertion failure, when the server was reconfigured at the
+    same time or the cache was being flushed. This has been fixed.
+  * Setting dnssec-policy to insecure prevented zones containing
+    resource records with a TTL value larger than 86400 seconds (1
+    day) from being loaded. This has been fixed by ignoring the TTL
+    values in the zone and using a value of 604800 seconds (1 week)
+    as the maximum zone TTL in key rollover timing calculations.
+
+-------------------------------------------------------------------
 Wed Jul 19 10:34:30 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.18.17
