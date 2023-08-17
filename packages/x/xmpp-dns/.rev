@@ -61,4 +61,15 @@
     (via xmppsrv UNRELEASED).</comment>
     <requestid>1074883</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>081a2f55dbb820f57c01e644935acdf2</srcmd5>
+    <version>0.3.7</version>
+    <time>1692294281</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.3.7:
+  * Show reason for denied s2s due to policy-violation.
+  * Apply timeout to TLS handshake as well instead of only for the
+    tcp connection.</comment>
+    <requestid>1104315</requestid>
+  </revision>
 </revisionlist>

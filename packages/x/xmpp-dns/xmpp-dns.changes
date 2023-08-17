@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 17 07:25:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.7:
+  * Show reason for denied s2s due to policy-violation.
+  * Apply timeout to TLS handshake as well instead of only for the
+    tcp connection.
+
+-------------------------------------------------------------------
 Tue Mar 28 06:50:51 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.3.6:
