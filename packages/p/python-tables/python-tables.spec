@@ -59,6 +59,8 @@ URL:            https://github.com/PyTables/PyTables
 Source0:        https://files.pythonhosted.org/packages/source/t/tables/tables-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM tables-pr1000-debundled-blosc2.patch gh#PyTables/PyTables#1000
 Patch0:         tables-pr1000-debundled-blosc2.patch
+# PATCH-FIX-UPSTREAM numpy-1.25.patch gh#PyTables/PyTables@337792561e59
+Patch1:         numpy-1.25.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  python-rpm-macros
 %if ! %{with test}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 18 10:11:42 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add numpy-1.25.patch upstream patch
+  gh#PyTables/PyTables@337792561e59
+
+-------------------------------------------------------------------
 Tue Apr 11 08:30:57 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove test-py38 flavor from multibuild: python 3.8 is no longer
