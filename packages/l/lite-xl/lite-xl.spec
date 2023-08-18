@@ -1,7 +1,7 @@
 #
 # spec file for package lite-xl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lite-xl
-Version:        2.1.1+git20221230.4e272c3
+Version:        2.1.1+git20230805.3979730
 Release:        0
 Summary:        A lightweight text editor written in Lua
 Group:          Productivity/Text/Editors
@@ -31,12 +31,22 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(lua) >= 5.4
 BuildRequires:  pkgconfig(sdl2)
-Suggests:       %{name}-colors
-Suggests:       %{name}-plugins
-Suggests:       %{name}-widgets
+# These can be managed by 'lite-xl-plugin-manager' (lpm)
+#Suggests:       %%{name}-colors
+#Suggests:       %%{name}-plugins
+#Suggests:       %%{name}-widgets
+Requires:       %{name}-plugin-manager
+Obsoletes:      %{name}-colors
+Obsoletes:      %{name}-plugins
+Obsoletes:      %{name}-widgets
 
 %description
-Lite XL is derived from lite. It is a lightweight text editor written mostly in Lua — it aims to provide something practical, pretty, small and fast easy to modify and extend, or to use without doing either. The aim of Lite XL compared to lite is to be more user friendly, improve the quality of font rendering, and reduce CPU usage.
+Lite XL is derived from lite.
+It is a lightweight text editor written mostly in Lua.
+It aims to provide something practical, pretty, small and fast easy to modify
+and extend, or to use without doing either. The aim of Lite XL compared to
+lite is to be more user friendly, improve the quality of font rendering, and
+reduce CPU usage.
 
 %prep
 %autosetup
@@ -47,20 +57,21 @@ Lite XL is derived from lite. It is a lightweight text editor written mostly in 
 
 %install
 %meson_install
-install -D -m644 docs/README.md %{buildroot}%{_datadir}/doc/%{name}/README.md
+rm -rfv %{buildroot}%{_datadir}/doc/%{name}
 
 %files
-%dir %{_datadir}/doc/%{name}
+%doc README.md
+%license licenses/licenses.md
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/scalable
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %dir %{_datadir}/%{name}
 %{_bindir}/%{name}
-%{_datadir}/applications/org.lite_xl.lite_xl.desktop
-%{_datadir}/doc/%{name}/README.md
-%{_datadir}/doc/%{name}/licenses.md
+#%%{_datadir}/applications/org.lite_xl.lite_xl.desktop
+%{_datadir}/applications/com.lite_xl.LiteXL.desktop
 %{_datadir}/icons/hicolor/scalable/apps/lite-xl.svg
 %{_datadir}/%{name}/*
-%{_datadir}/metainfo/org.lite_xl.lite_xl.appdata.xml
+#%%{_datadir}/metainfo/org.lite_xl.lite_xl.appdata.xml
+%{_datadir}/metainfo/com.lite_xl.LiteXL.appdata.xml
 
 %changelog

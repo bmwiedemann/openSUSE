@@ -2,6 +2,17 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/lite-xl/lite-xl</param>
     <param name="scm">git</param>
+    <!-- LAST KNOWN GOOD:  older,  newer
+    <param name="revision">4e272c3</param>
+    <param name="revision">9d7a9ac</param>
+    <param name="revision">aad52fc</param>
+    -->
+    <!-- EXHIBITS SLOWDOWN:  older,  newer
+    <param name="revision">86fa90a</param>
+    -->
+    <!-- TESTING
+    <param name="revision">4e272c3</param>
+    -->
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <!--
     <param name="parent-tag">v2.0.5</param>
