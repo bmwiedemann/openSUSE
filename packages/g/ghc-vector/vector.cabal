@@ -1,6 +1,6 @@
 Name:           vector
 Version:        0.13.0.0
-x-revision: 4
+x-revision: 5
 -- don't forget to update the changelog file!
 License:        BSD3
 License-File:   LICENSE
@@ -140,7 +140,7 @@ Library
   Install-Includes:
         vector.h
 
-  Build-Depends: base >= 4.9 && < 4.19
+  Build-Depends: base >= 4.9 && < 4.20
                , primitive >= 0.6.4.0 && < 0.9
                , deepseq >= 1.1 && < 1.6
                , vector-stream >= 0.1 && < 0.2

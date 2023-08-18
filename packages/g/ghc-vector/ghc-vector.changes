@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 10 22:02:05 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update vector to version 0.13.0.0 revision 5.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Jul 27 21:03:32 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update vector to version 0.13.0.0 revision 4.
