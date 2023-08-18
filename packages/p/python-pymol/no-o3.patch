@@ -6,6 +6,6 @@
      '-Wno-char-subscripts',
 -    # optimizations
 -    "-Og" if DEBUG else "-O3",
- ]
+ ] if not WIN else []
  ext_link_args = []
  ext_objects = []
