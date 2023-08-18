@@ -16,10 +16,8 @@
 #
 
 
-# Tests require internet connection
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rt
-Version:        3.0.6
+Version:        3.0.7
 Release:        0
 Summary:        Python interface to Request Tracker API
 License:        GPL-3.0-only
@@ -27,11 +25,14 @@ Group:          Development/Languages/Python
 URL:            https://github.com/CZ-NIC/python-rt
 Source:         https://files.pythonhosted.org/packages/source/r/rt/rt-%{version}.tar.gz
 Source1:        setup.cfg
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
-Requires:       python-six
+Requires:       python-requests-toolbelt
 BuildArch:      noarch
 
 %python_subpackages
@@ -42,17 +43,22 @@ Python implementation of Request Tracker (a ticketing system) REST API described
 %prep
 %setup -q -n rt-%{version}
 cp %{SOURCE1} setup.cfg
+sed -i 's/^dynamic = \["version"]/version = "%{version}"/' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# Tests require internet connection
 
 %files %{python_files}
 %doc AUTHORS CHANGELOG.md README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/rt-%{version}*-info*
+%{python_sitelib}/rt/
 
 %changelog
