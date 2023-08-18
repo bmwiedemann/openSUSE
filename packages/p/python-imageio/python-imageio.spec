@@ -16,8 +16,9 @@
 #
 
 
-%define skip_python2 1
+
 %bcond_with test_extras
+%{?sle15_python_module_pythons}
 Name:           python-imageio
 Version:        2.31.1
 Release:        0
