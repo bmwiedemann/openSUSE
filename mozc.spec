@@ -314,7 +314,7 @@ bazel build package \
 	--config oss_linux \
 	-c opt \
 	--force_pic \
-	--jobs %{?jobs} \
+	%{?jobs:--jobs %{jobs}} \
 	--strip=never \
 	--sandbox_debug \
 	--verbose_failures \
