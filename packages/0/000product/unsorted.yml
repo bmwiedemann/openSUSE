@@ -6426,7 +6426,6 @@ unsorted:
   - gimp-plugins-python 
   - gimp-save-for-web 
   - gimp-save-for-web-lang 
-  - gimp-ufraw 
   - ginac 
   - ginac-devel 
   - ginac-doc-html 
@@ -9121,6 +9120,7 @@ unsorted:
   - kismet-capture-sdr-rtlamr 
   - kismet-capture-ti-cc-2531 
   - kismet-capture-ti-cc2540 
+  - kismet-common 
   - kismet-devel 
   - kismet-logtools 
   - kissfft 
@@ -12291,7 +12291,6 @@ unsorted:
   - libgtkhotkey1 
   - libgtkhtml-4_0-0 
   - libgtkhtml-editor-4_0-0 
-  - libgtkimageview0 
   - libgtkmm-2_4-1 
   - libgtkpod1 
   - libgtksourceview-2_0-0 
@@ -44953,8 +44952,6 @@ unsorted:
   - udunits2-devel 
   - ueberzugpp 
   - ufiformat 
-  - ufraw 
-  - ufraw-lang 
   - uftpd 
   - uget 
   - uget-integrator 
