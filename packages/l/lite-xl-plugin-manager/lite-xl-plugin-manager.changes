@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Thu Aug 17 17:52:09 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.8+git20230817.6bcc10e:
+  * Made things clearer.
+  * Added in futureproofing.
+  * Add in preprocessor guard for older libgit2 implementations.
+- Fixing up 'suse_version' check(s)
+
+-------------------------------------------------------------------
+Thu Aug 17 12:43:07 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Group has been deprecated for a while now, but 15.5 and possibly 15.6
+  will complain about it missing
+  * https://fedoraproject.org/wiki/RPMGroups
+
+-------------------------------------------------------------------
+Wed Aug 16 20:59:41 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- .spec updates
+  * Adding 'Group' designation
+  * Adding 'suse_version' check for mbedtls[-2] BuildRequires
+
+-------------------------------------------------------------------
+Wed Aug 16 13:00:52 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Incorporating @suntorytimed's i586 install check
+
+-------------------------------------------------------------------
+Thu Aug 10 19:22:11 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing 'Requires: lite-xl-widgets' as that's a plugin that can be installed
+  via lpm (or pulled in by other plugins which require it)
+
+-------------------------------------------------------------------
+Thu Aug 10 15:36:28 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.8+git20230810.627caff:
+  * Should fix issue 36.
+  * Updated CHANGELOG.md.
+  * Fixed capitalization.
+  * Normalized paths to backslashes.
+  * Made it so we autoflush stderr, because windows doesn't do this.
+  * Added in quick way to just grab and install orphan plugins.
+  * Fixed typo.
+  * Made -g flag signal whether or not we move to debug builds for cmake.
+  * Made sure size comparaisons only occur with files.
+  * Moved USERDIR creation down a bit.
+
+-------------------------------------------------------------------
+Thu Aug 10 15:32:02 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Initial version from upstream
+  * See https://github.com/lite-xl/lite-xl-plugins/issues/144
