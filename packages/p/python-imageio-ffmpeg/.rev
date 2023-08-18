@@ -35,4 +35,12 @@
   * Avoid warning about invalid escape sequence in regex</comment>
     <requestid>1074510</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e2b6591ae1897fa9f5d8506f8810fd42</srcmd5>
+    <version>0.4.8</version>
+    <time>1692379740</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104635</requestid>
+  </revision>
 </revisionlist>
