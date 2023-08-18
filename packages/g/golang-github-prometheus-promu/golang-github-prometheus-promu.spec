@@ -25,15 +25,18 @@ Group:          System/Management
 URL:            https://github.com/prometheus/promu
 Source:         promu-%{version}.tar.gz
 Source1:        vendor.tar.gz
+# PATCH-FIX-UPSTREAM Fix setting reproducible user and host during the build
+# https://github.com/prometheus/promu/pull/267
+Patch1:         0001-do_not_discover_user_host_for_reproducible_builds.patch
 BuildRequires:  golang-packaging
 ExcludeArch:    s390
 %{go_provides}
 %if 0%{?rhel}
 # Fix ERROR: No build ID note found in
 %undefine _missing_build_ids_terminate_build
-BuildRequires:  golang >= 1.17
+BuildRequires:  golang >= 1.18
 %else
-BuildRequires:  golang(API) = 1.18
+BuildRequires:  golang(API) >= 1.19
 %endif
 
 %description

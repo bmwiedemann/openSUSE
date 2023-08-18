@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug  6 15:59:00 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update invariant to version 0.6.2.
+  # 0.6.2 [2023.08.06]
+  * The Template Haskell machinery now uses `TemplateHaskellQuotes` when
+    building with GHC 8.0+ instead of manually constructing each Template Haskell
+    `Name`. A consequence of this is that `invariant` will now build with GHC
+    9.8, as `TemplateHaskellQuotes` abstracts over some internal Template Haskell
+    changes introduced in 9.8.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:17 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

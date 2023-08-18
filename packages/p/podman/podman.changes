@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 16 05:27:24 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Fix build error on SLE due to dangling files clause
+  on a discarded file, README.SLE.SUSE
+- Fix unexpanded RPM macro error
+
+-------------------------------------------------------------------
 Fri Aug 11 05:42:19 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 4.6.1:

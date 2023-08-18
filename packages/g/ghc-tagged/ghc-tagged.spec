@@ -19,7 +19,7 @@
 %global pkg_name tagged
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.8.7
+Version:        0.8.8
 Release:        0
 Summary:        Haskell 98 phantom types to avoid unsafely passing dummy arguments
 License:        BSD-3-Clause

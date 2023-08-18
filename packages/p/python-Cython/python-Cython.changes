@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 19 12:23:38 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to the official release of 3.0.0:
+  - The complete list is seriously long, so I would relegate you
+    to https://github.com/cython/cython/blob/master/CHANGES.rst
+  - The implemented PEPs are:
+    - PEP-3131: Supporting Non-ASCII Identifiers
+    - PEP-479: generator_stop (enabled by default for language_level=3)
+    - PEP-487: Simpler customisation of class creation
+    - PEP-563: Postponed Evaluation of Annotations
+    - PEP-570: Positional-Only Parameters
+    - PEP-572: Assignment Expressions (a.k.a. the walrus operator :=)
+    - PEP-590: Vectorcall protocol
+    - PEP-614: Relaxing Grammar Restrictions On Decorators
+  - Cython supports all released versions of Python from 2.7 to
+    3.11 (and some experimental parts of 3.12) inclusive.
+
+-------------------------------------------------------------------
 Mon Jul 10 19:03:16 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file.

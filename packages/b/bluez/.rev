@@ -1573,4 +1573,12 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment></comment>
     <requestid>1103991</requestid>
   </revision>
+  <revision rev="196" vrev="3">
+    <srcmd5>7c2bb463fe5b1516e9d614d0bcce0ccb</srcmd5>
+    <version>5.68</version>
+    <time>1692379667</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104098</requestid>
+  </revision>
 </revisionlist>

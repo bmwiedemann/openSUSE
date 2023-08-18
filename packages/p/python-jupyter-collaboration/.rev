@@ -28,4 +28,12 @@
 </comment>
     <requestid>1092786</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ae1ddc9f76fdc8afb0572527a6fb7c2e</srcmd5>
+    <version>1.0.0</version>
+    <time>1692379703</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104442</requestid>
+  </revision>
 </revisionlist>

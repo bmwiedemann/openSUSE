@@ -21,7 +21,7 @@
 %define lib_x509   libmbedx509-1
 %define _rname     mbedtls
 Name:           mbedtls-2
-Version:        2.28.3
+Version:        2.28.4
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0

@@ -1,7 +1,7 @@
 cabal-version:  1.12
 name:           network-bsd
 version:        2.8.1.0
-x-revision: 4
+x-revision:     5
 license:        BSD3
 license-file:   LICENSE
 maintainer:     Kazu Yamamoto, Herbert Valerio Riedel
@@ -49,12 +49,21 @@ category:       Network
 build-type:     Simple
 homepage:       https://github.com/haskell/network-bsd
 bug-reports:    https://github.com/haskell/network-bsd/issues
-tested-with:   GHC == 7.8.4
-             , GHC == 7.10.3
-             , GHC == 8.0.2
-             , GHC == 8.2.2
-             , GHC == 8.4.4
-             , GHC == 8.6.3
+
+tested-with:
+  GHC == 9.6.2
+  GHC == 9.4.5
+  GHC == 9.2.8
+  GHC == 9.0.2
+  GHC == 8.10.7
+  GHC == 8.8.4
+  GHC == 8.6.5
+  GHC == 8.4.4
+  GHC == 8.2.2
+  GHC == 8.0.2
+  GHC == 7.10.3
+  GHC == 7.8.4
+
 extra-source-files: CHANGELOG.md
 
 library
@@ -62,7 +71,7 @@ library
   other-extensions: CPP, NondecreasingIndentation
   exposed-modules: Network.BSD
   build-depends: base    >= 4.7 && < 5
-               , deepseq >= 1.3.0.0 && < 1.5
+               , deepseq >= 1.3.0.0 && < 1.6
                -- NOTES on `network` depdendency
                --
                -- `network-bsd` heavily relies on `network`'s
@@ -76,7 +85,7 @@ library
                -- with the bounds to avoid leaking through API
                -- changes that aren't reflected in `network-bsd`'s
                -- API version.
-               , network (>= 3.0.0.0 && < 3.0.2) 
+               , network (>= 3.0.0.0 && < 3.0.2)
                       || (>= 3.1.0.0 && < 3.2)
   build-tools: hsc2hs >= 0.67 && < 0.69
   ghc-options: -Wall
@@ -87,4 +96,4 @@ library
 
 source-repository head
   type:     git
-  location: git://github.com/haskell/network-bsd.git
+  location: https://github.com/haskell/network-bsd.git

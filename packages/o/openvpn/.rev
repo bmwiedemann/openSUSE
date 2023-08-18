@@ -939,4 +939,12 @@ behaviour fixing bsc#941569</comment>
     <comment></comment>
     <requestid>1093056</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>dc6f51d9782242b64afcdfeb49c8322c</srcmd5>
+    <version>2.6.6</version>
+    <time>1692379670</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104121</requestid>
+  </revision>
 </revisionlist>

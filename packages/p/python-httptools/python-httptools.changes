@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 13 19:15:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- restrict to older Cython 
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

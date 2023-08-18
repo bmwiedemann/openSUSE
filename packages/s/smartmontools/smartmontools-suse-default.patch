@@ -1,8 +1,10 @@
+Index: smartd.conf
+===================================================================
 --- smartd.conf
 +++ smartd.conf
-@@ -14,6 +14,15 @@
- # You can usually identify which hard disks are on your system by
- # looking in /proc/ide and in /proc/scsi.
+@@ -9,6 +9,15 @@
+ # device per line. Text after a hash (#) is ignored, and you may use
+ # spaces and tabs for white space. You may use '\' to continue lines.
  
 +# SUSE default:
 +#   -d removable: Prevent error messages after disconnecting of

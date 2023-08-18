@@ -16,7 +16,6 @@
 #
 
 
-%define anypython3dist python3dist
 Name:           python-ipyvuetify
 Version:        1.8.10
 Release:        0
@@ -50,7 +49,9 @@ Jupyter widgets based on vuetify UI components
 %package     -n jupyter-ipyvuetify-nbextension
 Summary:        Jupyter widgets based on vuetify UI components - nbextension
 Requires:       jupyter-notebook
-Requires:       %{anypython3dist}(ipyvuetify) = %{version}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(ipyvuetify) = %{version}
+Suggests:       python3-ipyvuetify
 
 %description -n jupyter-ipyvuetify-nbextension
 Jupyter widgets based on vuetify UI components
@@ -60,7 +61,9 @@ This package provides the jupyter notebook extension.
 %package     -n jupyter-jupyterlab-ipyvuetify
 Summary:        Jupyter widgets based on vuetify UI components - labextension
 Requires:       jupyter-jupyterlab
-Requires:       %{anypython3dist}(ipyvuetify) = %{version}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(ipyvuetify) = %{version}
+Suggests:       python3-ipyvuetify
 
 %description -n jupyter-jupyterlab-ipyvuetify
 Jupyter widgets based on vuetify UI components

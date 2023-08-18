@@ -22,7 +22,7 @@
   %define no_config 1
 %endif
 Name:           shadow
-Version:        4.13
+Version:        4.14.0
 Release:        0
 Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -46,16 +46,8 @@ Patch2:         shadow-util-linux.patch
 Patch3:         shadow-login_defs-comments.patch
 # PATCH-FEATURE-SUSE shadow-login_defs-suse.patch kukuk@suse.com -- Customize login.defs.
 Patch4:         shadow-login_defs-suse.patch
-# PATCH-FEATURE-SUSE Copy also skeleton files from /usr/etc/skel (boo#1173321) (gh/shadow-maint/shadow#591)
-Patch5:         useradd-userkeleton.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
-Patch6:         disable_new_audit_function.patch
-# PATCH-FIX-UPSTREAM shadow-audit-no-id.patch mvetter@suse.com -- Fix useradd audit event logging of ID field (bsc#1205502) (gh/shadow-maint/shadow#606)
-Patch7:         shadow-audit-no-id.patch
-# PATCH-FIX-UPSTREAM shadow-fix-print-login-timeout.patch mvetter@suse.com -- Fix print full login timeout message (gh/shadow-maint/shadow#621)
-Patch8:         shadow-fix-print-login-timeout.patch
-# PATCH-FIX-UPSTREAM shadow-CVE-2023-29383.patch mvetter@suse.com -- Check control chracters in chfn (bsc#1210507)
-Patch9:         shadow-CVE-2023-29383.patch
+Patch5:         disable_new_audit_function.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -66,6 +58,8 @@ BuildRequires:  libsemanage-devel
 BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRequires:  xz
+# we depend on libbsd or glibc >= 2.38 for the strlcpy() (and readpassphrase()) functions
+BuildRequires:  glibc-devel >= 2.38
 Requires:       login_defs >= %{version}
 Requires(pre):  group(root)
 Requires(pre):  group(shadow)
@@ -119,13 +113,9 @@ Development files for libsubid4.
 %patch2
 %patch3
 %patch4
-%patch5
 %if 0%{?suse_version} < 1330
-%patch6 -p1
+%patch5 -p1
 %endif
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO
@@ -146,6 +136,7 @@ autoreconf -fvi
   --with-nscd \
   --with-selinux \
   --without-libcrack \
+  --without-libbsd \
   --with-group-name-max-length=32 \
   --enable-vendordir=%{_distconfdir}
 %make_build
@@ -229,12 +220,6 @@ if [ ! -d %{buildroot}%{_distconfdir} ]; then
     mv %{buildroot}%{_sysconfdir}/pam.d/* %{buildroot}%{_pam_vendordir}/
 fi
 mkdir -p %{buildroot}%{_sysconfdir}/login.defs.d
-
-%if 0%{?suse_version} >= 1599
-# Rename lastlog to lastlog.legacy, as it got replaced by lastlog2
-mv %{buildroot}/%{_bindir}/lastlog %{buildroot}/%{_bindir}/lastlog.legacy
-mv %{buildroot}/%{_mandir}/man8/lastlog.8 %{buildroot}/%{_mandir}/man8/lastlog.legacy.8
-%endif
 
 %find_lang shadow
 
@@ -335,11 +320,6 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/passwd
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/newgidmap
 %verify(not mode) %attr(4755,root,shadow) %{_bindir}/newuidmap
-%if 0%{?suse_version} >= 1599
-%{_bindir}/lastlog.legacy
-%else
-%{_bindir}/lastlog
-%endif
 %{_bindir}/sg
 %{_bindir}/getsubids
 %attr(0755,root,root) %{_sbindir}/groupadd
@@ -371,11 +351,6 @@ test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpm
 %{_mandir}/man8/groupdel.8%{?ext_man}
 %{_mandir}/man8/groupmod.8%{?ext_man}
 %{_mandir}/man8/grpck.8%{?ext_man}
-%if 0%{?suse_version} >= 1599
-%{_mandir}/man8/lastlog.legacy.8%{?ext_man}
-%else
-%{_mandir}/man8/lastlog.8%{?ext_man}
-%endif
 %{_mandir}/man8/newusers.8%{?ext_man}
 %{_mandir}/man8/pwck.8%{?ext_man}
 %{_mandir}/man8/pwconv.8%{?ext_man}

@@ -309,7 +309,7 @@ BuildRequires:  openldap2-devel
 #BuildRequires:  krb5-devel
 BuildRequires:  cunit-devel
 BuildRequires:	python%{python3_pkgversion}-setuptools
-BuildRequires:	python%{python3_pkgversion}-Cython
+BuildRequires:	%{python_module Cython >= 0.29.24 with %python-Cython < 3}
 BuildRequires:	python%{python3_pkgversion}-PrettyTable
 BuildRequires:	python%{python3_pkgversion}-Sphinx
 BuildRequires:  rdma-core-devel
@@ -331,7 +331,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  CUnit-devel
 BuildRequires:	python%{python3_pkgversion}-devel
 BuildRequires:	python%{python3_pkgversion}-setuptools
-BuildRequires:	python%{python3_pkgversion}-Cython
+BuildRequires:	%{python_module Cython >= 0.29.24 with %python-Cython < 3}
 BuildRequires:	python%{python3_pkgversion}-prettytable
 BuildRequires:	python%{python3_pkgversion}-sphinx
 BuildRequires:	lz4-devel >= 1.7

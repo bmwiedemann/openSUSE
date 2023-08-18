@@ -49,7 +49,9 @@ Jupyter widgets base for Vue libraries
 %package     -n jupyter-ipyvue-nbextension
 Summary:        Jupyter widgets base for Vue libraries - nbextension
 Requires:       jupyter-notebook
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
 Requires:       python3dist(ipyvue) = %{python3dist_version}
+Suggests:       python3-ipyvue
 
 %description -n jupyter-ipyvue-nbextension
 Jupyter widgets base for Vue libraries
@@ -59,7 +61,9 @@ This package provides the jupyter notebook extension.
 %package     -n jupyter-jupyterlab-ipyvue
 Summary:        Jupyter widgets base for Vue libraries - labextension
 Requires:       jupyter-jupyterlab
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
 Requires:       python3dist(ipyvue) = %{python3dist_version}
+Suggests:       python3-ipyvue
 
 %description -n jupyter-jupyterlab-ipyvue
 Jupyter widgets base for Vue libraries

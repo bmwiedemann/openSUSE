@@ -16,7 +16,6 @@
 #
 
 
-%define anypython python3dist
 Name:           python-ipytablewidgets
 Version:        0.3.1
 Release:        0
@@ -63,7 +62,9 @@ The major parts of ipytablewidgets are:
 
 %package -n jupyter-ipytablewidgets
 Summary:        Jupyter Notebook extension for python-ipytablewidgets
-Requires:       %{anypython}(ipytablewidgets) = %{version}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(ipytablewidgets) = %{version}
+Suggests:       python3-ipytablewidgets
 
 %description -n jupyter-ipytablewidgets
 Traitlets and widgets to efficiently data tables (e.g. Pandas DataFrame) using the jupyter notebook
@@ -72,7 +73,9 @@ This package provides the jupyter notebook extension
 
 %package -n jupyter-ipytablewidgets-jupyterlab
 Summary:        Jupyterlab extension for python-ipytablewidgets
-Requires:       %{anypython}(ipytablewidgets) = %{version}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(ipytablewidgets) = %{version}
+Suggests:       python3-ipytablewidgets
 
 %description -n jupyter-ipytablewidgets-jupyterlab
 Traitlets and widgets to efficiently data tables (e.g. Pandas DataFrame) using the jupyter notebook

@@ -16,7 +16,6 @@
 #
 
 
-%define python3dist python3dist
 Name:           python-ipyleaflet
 Version:        0.17.3
 Release:        0
@@ -54,9 +53,11 @@ This package provides the python interface.
 
 %package     -n jupyter-ipyleaflet
 Summary:        A Jupyter widget for dynamic Leaflet maps - Jupyter files
-Requires:       %python3dist(ipyleaflet) = %{version}
 Requires:       (jupyter-ipywidgets >= 7.6.0 with jupyter-ipywidgets < 9)
 Requires:       (jupyter-jupyterlab or jupyter-notebook)
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(ipyleaflet) = %{version}
+Suggests:       python3-ipyleaflet
 Provides:       jupyter-leaflet = %{version}-%{release}
 
 %description -n jupyter-ipyleaflet

@@ -310,4 +310,16 @@
   * refactor: validate `scope` (forwarded request 1100516 from jfkw)</comment>
     <requestid>1100517</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cc9b6d0c396049fc398cf1d3e3cfc9d7</srcmd5>
+    <version>2.28.2</version>
+    <time>1692379693</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.28.2:
+  * test: add case for pkg 404
+  * fix: improve error message for non-existant pkgs
+  * docs: add 'Appwrite' to vocab
+  * docs: add Appwrite (forwarded request 1104423 from jfkw)</comment>
+    <requestid>1104426</requestid>
+  </revision>
 </revisionlist>

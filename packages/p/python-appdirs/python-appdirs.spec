@@ -28,6 +28,7 @@ License:        MIT
 URL:            https://github.com/ActiveState/appdirs
 Source:         https://files.pythonhosted.org/packages/source/a/appdirs/appdirs-%{version}.tar.gz
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -58,12 +59,7 @@ sed -r -i '1s/^#!.*$//' appdirs.py
 
 %install
 %python_install
-# fix up egg-info because distutils is bad and should feel bad
-%{python_expand rm %{buildroot}%{$python_sitelib}/*.egg-info
-cp -r appdirs.egg-info \
-    %{buildroot}%{$python_sitelib}/appdirs-%{version}-py%{$python_version}.egg-info
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pyunittest

@@ -1,7 +1,7 @@
 #
-# spec file for package bash
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,6 +72,8 @@ Patch13:        boo1190929-9af4afd0.patch
 Patch14:        bsc1199724-modules.patch
 # PATCH-FIX-UPSTREAM bsc#1200791
 Patch15:        fix-curl-help-completion-bsc1200791.patch
+# PATCH-FIX-SUSE -- avoid broken quotes ands escapes
+Patch16:        fix_quote_readline_by_ref.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildArch:      noarch

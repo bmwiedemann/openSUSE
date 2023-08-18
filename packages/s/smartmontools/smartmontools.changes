@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  9 18:37:28 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 7.4:
+  * See NEWS and ChangeLog files for full details
+- Drop smartmontools-smartctl-NVMe-big-endian.patch (upstreamed)
+- Refresh smartmontools-suse-default.patch
+
+-------------------------------------------------------------------
 Thu Jul 13 20:39:37 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - smartmontools.generate_smartd_opts.in: Fix generated options when

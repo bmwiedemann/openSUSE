@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.23.0.1
+Version:        1.23.1
 Release:        0
 Summary:        Types for representing a structured document
 License:        GPL-2.0-only

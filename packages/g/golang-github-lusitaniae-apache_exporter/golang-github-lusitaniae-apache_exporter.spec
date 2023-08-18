@@ -25,7 +25,11 @@
 %undefine _missing_build_ids_terminate_build
 %endif
 
-%bcond_without  apparmor
+%if 0%{?suse_version} >= 1500
+%bcond_without apparmor
+%else
+%bcond_with apparmor
+%endif
 
 # Templating vars to simplify and standardize Prometheus exporters spec files
 %define	githubrepo    github.com/lusitaniae/apache_exporter
@@ -43,9 +47,7 @@ URL:            http://%{githubrepo}
 Source:         %{upstreamname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        %{targetname}.service
-%if 0%{?suse_version} && %{with apparmor}
 Source3:        apparmor-usr.bin.%{targetname}
-%endif
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
@@ -80,7 +82,7 @@ install -d -m 0755 %{buildroot}%{_unitdir}
 install -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}
 install -d -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{targetname}
-%if 0%{?suse_version} && %{with apparmor}
+%if %{with apparmor}
 # AppArmor profile
 mkdir -p %{buildroot}%{_sysconfdir}/apparmor.d
 install -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.%{targetname}
@@ -130,7 +132,7 @@ getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceus
 %{_bindir}/%{targetname}
 %{_unitdir}/%{targetname}.service
 %{_sbindir}/rc%{targetname}
-%if 0%{?suse_version} && %{with apparmor}
+%if %{with apparmor}
 %dir %{_sysconfdir}/apparmor.d
 %config %{_sysconfdir}/apparmor.d/usr.bin.%{targetname}
 %endif

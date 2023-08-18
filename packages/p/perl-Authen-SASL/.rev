@@ -192,4 +192,12 @@
     <comment>- add perl526.path to build with perl 5.26</comment>
     <requestid>529834</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>63d03e678dbccb3396b7a78fb08f1caa</srcmd5>
+    <version>2.170.0</version>
+    <time>1692379665</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1103918</requestid>
+  </revision>
 </revisionlist>

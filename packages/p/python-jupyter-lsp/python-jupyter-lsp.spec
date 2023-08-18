@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define python3dist python3dist
+
 %define shortversion 2.2
 Name:           python-jupyter-lsp
 Version:        2.2.0
@@ -24,20 +24,20 @@ Summary:        LSP for Jupyter Notebook/Lab server
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter-lsp/jupyterlab-lsp/tree/master/python_packages/jupyter_lsp
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter-lsp/jupyter-lsp-%{version}.tar.gz
-BuildRequires:  jupyter-rpm-macros
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  jupyter-rpm-macros
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module jupyter_server >= 1.1.2}
 BuildRequires:  %{python_module importlib_metadata >= 4.8.3 if %python-base < 3.10}
+BuildRequires:  %{python_module jupyter_server >= 1.1.2}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       jupyter-lsp = %{version}
 Requires:       python-jupyter_server >= 1.1.2
 Requires:       (python-importlib_metadata >= 4.8.3 if python-base < 3.10)
-Requires:       jupyter-lsp = %{version}
 Provides:       python-jupyter_lsp = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages
@@ -46,8 +46,10 @@ BuildArch:      noarch
 Multi-Language Server WebSocket proxy for Jupyter Notebook/Lab server
 
 %package -n jupyter-lsp
-Summary: LSP for Jupyter Notebook/Lab server - Config
-Requires: %python3dist(jupyter-lsp) = %{shortversion}
+Summary:        LSP for Jupyter Notebook/Lab server - Config
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(jupyter-lsp) = %{shortversion}
+Suggests:       python3-jupyter-lsp
 
 %description -n jupyter-lsp
 Multi-Language Server WebSocket proxy for Jupyter Notebook/Lab server

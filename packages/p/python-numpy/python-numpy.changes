@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Wed Aug 16 11:31:28 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use %pyproject_wheel and %pyproject_install macros
+- Disable broken tests in armv7l (bsc#1212710)
+
+-------------------------------------------------------------------
+Mon Aug 14 11:41:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- limit to Cython < 3 
+
+-------------------------------------------------------------------
+Mon Aug 14 07:07:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.25.2:
+  * Upgrade various build dependencies.
+  * use ``-ftrapping-math`` with Clang on macOS
+  * properly handle negative indexes in ufunc_at fast path
+  * PyObject_IsTrue and PyObject_Not error handling in setflags
+  * histogram small range robust
+  * Update meson.build files from main branch
+  * exclude min, max and round from ``np.__all__``
+  * Dependabot updates
+  * Fix the signature for np.array_api.take
+  * update OpenBLAS to an intermeidate commit
+  * Fix reference count leak in str(scalar).
+  * fix invalid function pointer conversion error
+  * Factor out slow ``getenv`` call used for memory policy warning
+  * correct URL in cirrus.star [skip cirrus]
+  * Fix C types in scalartypes
+  * do not modify the input to ufunc_at
+  * Further fixes to indexing loop and added tests
+
+-------------------------------------------------------------------
+Thu Jul 20 13:21:25 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.25.1:
+  * NumPy 1.25.1 is a maintenance release that fixes bugs and regressions
+    discovered after the 1.25.0 release. The Python versions supported by
+    this release are 3.9-3.11.
+  * #23968: MAINT: prepare 1.25.x for further development
+  * #24036: BLD: Port long double identification to C for meson
+  * #24037: BUG: Fix reduction return NULL to be goto fail
+  * #24038: BUG: Avoid undefined behavior in array.astype()
+  * #24039: BUG: Ensure __array_ufunc__ works without any kwargs passed
+  * #24117: MAINT: Pin urllib3 to avoid anaconda-client bug.
+  * #24118: TST: Pin pydantic<2 in Pyodide workflow
+  * #24119: MAINT: Bump pypa/cibuildwheel from 2.13.0 to 2.13.1
+  * #24120: MAINT: Bump actions/checkout from 3.5.2 to 3.5.3
+  * #24122: BUG: Multiply or Divides using SIMD without a full vector can...
+  * #24127: MAINT: testing for IS_MUSL closes #24074
+  * #24128: BUG: Only replace dtype temporarily if dimensions changed
+  * #24129: MAINT: Bump actions/setup-node from 3.6.0 to 3.7.0
+  * #24134: BUG: Fix private procedures in f2py modules
+- Skipped 1.25.0:
+  * The NumPy 1.25.0 release continues the ongoing work to improve the
+    handling and promotion of dtypes, increase the execution speed, and
+    clarify the documentation. There has also been work to prepare for the
+    future NumPy 2.0.0 release, resulting in a large number of new and
+    expired deprecation. Highlights are:
+    - Support for MUSL, there are now MUSL wheels.
+    - Support the Fujitsu C/C++ compiler.
+    - Object arrays are now supported in einsum
+    - Support for inplace matrix multiplication (@=).
+  * Full changelog: https://github.com/numpy/numpy/releases/tag/v1.25.0
+The Python versions supported in this release are 3.9-3.11.
+- Remove upstream patch:
+  * remove-deprecated-hypothesis-funcs.patch
+
+-------------------------------------------------------------------
 Fri Jun 23 12:23:14 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Adapt test exceptions for PPC64 etc., TestFReturnCharacter

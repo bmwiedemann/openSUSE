@@ -42,4 +42,12 @@
     <comment>- Unpin jupyterlab build requirement (forwarded request 1092991 from bnavigator)</comment>
     <requestid>1092992</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>9bc6167bee94bd3df29391f1c74bef42</srcmd5>
+    <version>1.8.10</version>
+    <time>1692379701</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104440</requestid>
+  </revision>
 </revisionlist>

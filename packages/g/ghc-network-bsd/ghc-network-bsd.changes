@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug  6 09:54:49 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update network-bsd to version 2.8.1.0 revision 5.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:40 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

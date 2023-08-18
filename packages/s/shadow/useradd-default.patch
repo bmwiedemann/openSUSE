@@ -2,12 +2,12 @@ Index: src/useradd.c
 ===================================================================
 --- src/useradd.c.orig
 +++ src/useradd.c
-@@ -101,7 +101,7 @@ FILE *shadow_logfd = NULL;
+@@ -87,7 +87,7 @@ const char *Prog;
  /*
   * These defaults are used if there is no defaults file.
   */
 -static gid_t def_group = 1000;
 +static gid_t def_group = 100;
+ static const char *def_groups = "";
  static const char *def_gname = "other";
  static const char *def_home = "/home";
- static const char *def_shell = "/bin/bash";

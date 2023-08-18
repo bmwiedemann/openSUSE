@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 17 12:28:28 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patches
+  * ls-completion-boo889319.patch
+  * rm-completion-smart-boo958462.patch
+  to avoid skipping spaces after last word on command line (boo#1210974)
+- Add patch fix_quote_readline_by_ref.patch
+  * Do not escape leading ~ nor backslash and avoid empty quoting
+
+-------------------------------------------------------------------
 Sun Apr  2 10:26:09 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move cmake config files to devel

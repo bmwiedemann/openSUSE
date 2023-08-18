@@ -880,4 +880,41 @@
 - Add shadow-CVE-2023-29383.patch</comment>
     <requestid>1080172</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a4f3d21f86d65255ac831887e66dc599</srcmd5>
+    <version>4.14.0</version>
+    <time>1692379618</time>
+    <user>anag+factory</user>
+    <comment>- Remove dependency on libbsd:
+  On Tumbleweed we have glibc 2.38 already thus string functions
+  like strlcpy will be present and won't be needed from libbsd.
+  `readpassphrase()` is then the only function from libbsd not present.
+  Upstream shadow has an in tree copy of it, that is used when the
+  `--without-libbsd` flag is passed along.
+  By relying on glibc 2.38 we don't need to add libbsd and libmd
+  to our ring0 but can't easily upgrade on SLE.
+
+- Update to 4.14.0:
+  * configure: add with-libbsd option
+  * Code cleanup
+  * Replace utmp interface #757 
+  * new option enable-logind #674
+  * shadow userdel: add the adaptation to the busybox ps in 01-kill_user_procs.sh
+  * chsh: warn if root sets a shell not listed in /etc/shells #535
+  * newgrp: fix potential string injection
+  * lastlog: fix alignment of Latest header
+  * Fix yescrypt support #748
+  * chgpasswd: Fix segfault in command-line options
+  * gpasswd: Fix password leak
+  * Add --prefix to passwd, chpasswd and chage #714 (bsc#1206627)
+  * usermod: fix off-by-one issues #701
+  * ch(g)passwd: Check selinux permissions upon startup #675
+  * sub_[ug]id_{add,remove}: fix return values
+  * chsh: Verify that login shell path is absolute #730
+  * process_prefix_flag: Drop privileges
+  * run_parts for groupadd and groupdel #706
+  * newgrp/useradd: always set SIGCHLD to default
+  * useradd/usermod: add --selinux-range argument #698</comment>
+    <requestid>1104351</requestid>
+  </revision>
 </revisionlist>

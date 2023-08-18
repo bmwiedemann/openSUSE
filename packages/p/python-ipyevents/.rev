@@ -41,4 +41,12 @@
   * jupyterlab 3 compatibility</comment>
     <requestid>1060276</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>7e9ee51f55e7d629e49219c134266bc2</srcmd5>
+    <version>2.0.1</version>
+    <time>1692379696</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104434</requestid>
+  </revision>
 </revisionlist>

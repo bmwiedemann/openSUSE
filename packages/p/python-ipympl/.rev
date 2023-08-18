@@ -150,4 +150,13 @@
 - Fix jsversion: 11.3 (forwarded request 1079310 from bnavigator)</comment>
     <requestid>1079316</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>0016c832309f88a9a9c6f1100546f1a0</srcmd5>
+    <version>unknown</version>
+    <time>1692379717</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354
+</comment>
+    <requestid>1104458</requestid>
+  </revision>
 </revisionlist>

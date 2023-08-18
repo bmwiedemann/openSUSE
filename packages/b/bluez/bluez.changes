@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 16 01:56:45 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- For pushing bluez 5.68 to 15-SP6 (bluez-5.65), sync change log:
+   (jsc#PED-5599)
+    - RPi-Move-the-43xx-firmware-into-lib-firmware.patch be removed
+      by Stefan Seyfried since updating to bluez-5.66. (bsc#995059)(bsc#1094902)
+
+      Because the header file has "#ifndef FIRMWARE_DIR...#define FIRMWARE_DIR /etc/firmare"
+      instead of patching. So we just supply FIRMWARE_DIR on compiler's
+      command line in bluez.spec:
+      export CPPFLAGS="$CPPFLAGS -DFIRMWARE_DIR='\"/lib/firmware\"'
+
+-------------------------------------------------------------------
 Tue Aug 15 07:40:10 UTC 2023 - Joey Lee <jlee@suse.com>
 
 - For pushing bluez 5.68 to 15-SP6 (bluez-5.65), sync change log:

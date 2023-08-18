@@ -25,7 +25,6 @@
 %bcond_with test
 %endif
 
-%define plainpython3dist python3dist
 %define python3distversion 1
 Name:           python-jupyter-collaboration%{psuffix}
 Version:        1.0.0
@@ -68,7 +67,9 @@ A Jupyter Server Extension Providing Y Documents.
 
 %package -n jupyter-collaboration
 Summary:        A Jupyter Server Extension Providing Y Documents. -- Jupyter configuration
-Requires:       %{plainpython3dist}(jupyter-collaboration) = %{python3distversion}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(jupyter-collaboration) = %{python3distversion}
+Suggests:       python3-jupyter-collaboration
 Provides:       jupyter_collaboration = %{version}-%{release}
 Obsoletes:      jupyter-server-ydoc < 1
 Obsoletes:      jupyterlab-rtc < 1

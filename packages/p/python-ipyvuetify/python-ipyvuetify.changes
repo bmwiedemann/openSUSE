@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 17 15:49:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Suggest primary python package -- boo#1214354
+
+-------------------------------------------------------------------
 Tue Jun 13 21:07:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Unpin jupyterlab build requirement

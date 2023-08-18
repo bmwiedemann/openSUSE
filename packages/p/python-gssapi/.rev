@@ -113,4 +113,13 @@
     <comment></comment>
     <requestid>1081492</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>7bb3f6b62bce068ea95de39eb2b375a8</srcmd5>
+    <version>1.8.2</version>
+    <time>1692379651</time>
+    <user>anag+factory</user>
+    <comment>- add d9200d1018ac916b30433da23898c8c5fbde0f28.patch to
+  improve cython 3.x interoperability</comment>
+    <requestid>1103791</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 17 14:25:22 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Demote primary flavor recommendation to suggestion
+- Move entrypoints to python alternatives
+
+-------------------------------------------------------------------
+Thu Aug 17 10:22:27 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Recommend the primary python flavor -- boo#1214354
+
+-------------------------------------------------------------------
 Mon Aug 14 05:47:53 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.0.5:

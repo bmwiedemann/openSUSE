@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 13 07:03:41 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- Add avrcp-Fix-crash-while-handling-unsupported-events.patch
+  avrcp: Fix crash while handling unsupported events
+  (bsc#1210398)(CVE-2023-27349)
+
+-------------------------------------------------------------------
 Wed Oct 26 07:18:39 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - This bluez.changes.sle be copied from SLE15-SP5/bluez.changes and

@@ -16,7 +16,6 @@
 #
 
 
-%define plainpython3dist python3dist
 Name:           python-ipyevents
 Version:        2.0.1
 Release:        0
@@ -54,8 +53,9 @@ This package provides the python interface.
 Summary:        A custom ipython widget for returning mouse and keyboard events
 Group:          Development/Languages/Python
 Requires:       jupyter-notebook
-# any flavor is okay
-Requires:       %{plainpython3dist}(ipyevents) = %{version}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(ipyevents) = %{version}
+Suggests:       python3-ipyevents
 
 %description -n jupyter-ipyevents
 ipyevents provides a custom widget for returning mouse and keyboard
@@ -73,7 +73,9 @@ Release:        0
 Summary:        A custom ipython widget for returning mouse and keyboard events
 Group:          Development/Languages/Python
 Requires:       jupyter-jupyterlab
-Requires:       %{plainpython3dist}(ipyevents) = %{version}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(ipyevents) = %{version}
+Suggests:       python3-ipyevents
 
 %description -n jupyter-ipyevents-jupyterlab
 ipyevents provides a custom widget for returning mouse and keyboard

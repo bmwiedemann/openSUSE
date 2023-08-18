@@ -18,7 +18,6 @@
 
 %define pyver   0.9.3
 %define jsver   0.11.3
-%define pydist  python3dist
 %bcond_with     test
 Name:           python-ipympl
 Version:        %{pyver}
@@ -69,7 +68,9 @@ Version:        %{jsver}
 Summary:        Matplotlib Jupyter Extension
 Group:          Development/Languages/Python
 Requires:       jupyter-notebook
-Requires:       %pydist(ipympl) = %{pyver}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(ipympl) = %{pyver}
+Suggests:       python3-ipympl
 Provides:       jupyter-ipympl = %{jsver}
 Obsoletes:      jupyter-ipympl < %{jsver}
 
@@ -84,7 +85,9 @@ Release:        0
 Summary:        Matplotlib JupyterLab Extension
 Group:          Development/Languages/Python
 Requires:       jupyter-jupyterlab
-Requires:       %pydist(ipympl) = %{pyver}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(ipympl) = %{pyver}
+Suggests:       python3-ipympl
 Provides:       jupyter-ipympl-jupyterlab = %{jsver}
 Obsoletes:      jupyter-ipympl-jupyterlab < %{jsver}
 
@@ -119,7 +122,7 @@ cp %{buildroot}%{python3_sitelib}/ipympl-%{pyver}.dist-info/LICENSE .
 %files -n jupyter-matplotlib
 %license LICENSE
 %{_jupyter_nbextension_dir}/jupyter-matplotlib
-%{?!_jupyter_distconfig:%config} %{_jupyter_nb_notebook_confdir}/jupyter-matplotlib.json
+%{_jupyter_config} %{_jupyter_nb_notebook_confdir}/jupyter-matplotlib.json
 
 %files -n jupyter-matplotlib-jupyterlab
 %license LICENSE

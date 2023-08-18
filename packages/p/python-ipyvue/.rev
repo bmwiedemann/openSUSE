@@ -45,4 +45,12 @@
   * fixes an encoding error</comment>
     <requestid>1096302</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>025e73cc8ab0df0d79e4fef36282c9bf</srcmd5>
+    <version>1.9.2</version>
+    <time>1692379700</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104439</requestid>
+  </revision>
 </revisionlist>

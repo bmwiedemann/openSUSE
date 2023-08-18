@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 1.24.2
-%define _ver 1_24_2
+%define ver 1.25.2
+%define _ver 1_25_2
 %define pname python-numpy
 %define plainpython python
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
@@ -88,12 +88,12 @@ Patch0:         numpy-buildfix.patch
 Patch1:         numpy-1.9.0-remove-__declspec.patch
 # PATCH-FIX-OPENSUSE Ignore DeprecationWarnings when importing pkg_resources
 Patch2:         ignore-pkg_resources-deprecation.patch
-# PATCH-FIX-OPENSUSE Do not call a deprecated hypothesis health check function
-Patch3:         remove-deprecated-hypothesis-funcs.patch
-BuildRequires:  %{python_module Cython >= 0.29.30}
+BuildRequires:  %{python_module Cython >= 0.29.30 with %python-Cython < 3}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 60.0.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros >= 20210929
 BuildConflicts: gcc11 < 11.2
@@ -101,8 +101,8 @@ BuildConflicts: gcc11 < 11.2
 BuildRequires:  fdupes
 %endif
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 6.2.5}
-BuildRequires:  %{python_module hypothesis >= 6.24.1}
+BuildRequires:  %{python_module pytest >= 7.4.0}
+BuildRequires:  %{python_module hypothesis >= 6.75.0}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module typing-extensions >= 4.2.0}
@@ -136,7 +136,9 @@ Requires(postun):update-alternatives
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
+%ifnarch %ix86 %arm
 BuildRequires:  lua-lmod
+%endif
 BuildRequires:  suse-hpc
 Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
 %endif
@@ -184,7 +186,7 @@ This package contains files for developing applications using numpy.
 %prep
 %autosetup -p1 -n numpy-%{version}
 # Fix non-executable scripts
-sed -i '1s/^#!.*$//' numpy/{compat/setup,random/_examples/cython/setup,distutils/{conv_template,cpuinfo,exec_command,from_template,setup,system_info},f2py/{__init__,auxfuncs,capi_maps,cb_rules,cfuncs,common_rules,crackfortran,diagnose,f2py2e,f90mod_rules,func2subr,rules,setup,use_rules},ma/{setup,bench},matrixlib/setup,setup,testing/{print_coercion_tables,setup}}.py
+sed -i '1s/^#!.*$//' numpy/{compat/setup,random/_examples/cython/setup,distutils/{conv_template,cpuinfo,exec_command,from_template,setup,system_info},f2py/{__init__,auxfuncs,capi_maps,cb_rules,cfuncs,common_rules,crackfortran,diagnose,f2py2e,f90mod_rules,func2subr,rules,setup,use_rules},matrixlib/setup,setup,testing/{print_coercion_tables,setup}}.py
 sed -i '1s/^#!.*$//' numpy/random/_examples/cython/*.pyx
 
 # force cythonization
@@ -206,13 +208,13 @@ EOF
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %endif
 
-%python_build
+%pyproject_wheel
 
 %install
 %{?with_hpc:%hpc_setup}
 %{?with_hpc:module load openblas}
 
-%python_exec setup.py install --prefix=%{p_prefix} --root=%{buildroot}
+%pyproject_install --prefix %{p_prefix} --root %{buildroot}
 
 %if !%{with hpc}
 %python_clone -a %{buildroot}%{_bindir}/f2py
@@ -314,7 +316,16 @@ test_failok+=" or test_float_remainder_overflow"
 test_failok+=" or test_identityless_reduction_huge_array"
 test_failok+=" or test_huge_vectordot"
 # invalid int type for 32bit
-test_failok+=" or (test_kind and test_all)"
+test_failok+=" or (test_kind and test_quad_precision)"
+test_failok+=" or (test_kind and test_int)"
+test_failok+=" or (test_kind and test_real)"
+test_failok+=" or (test_multinomial_pvals_float32)"
+%endif
+%ifarch %{arm}
+# https://github.com/numpy/numpy/issues/24001
+test_failok+=" or (test_cpu_features and test_impossible_feature_enable)"
+test_failok+=" or (test_cpu_features and test_features)"
+test_failok+=" or (test_umath and test_unary_spurious_fpexception)"
 %endif
 %ifarch riscv64
 # These tests fail due to non-portable assumptions about the signbit of NaN
@@ -365,7 +376,7 @@ popd
 %endif
 %{_bindir}/f2py%{python_bin_suffix}
 %{python_sitearch}/numpy/
-%{python_sitearch}/numpy-%{version}-py*.egg-info
+%{python_sitearch}/numpy-%{version}*-info
 %license %{python_sitearch}/numpy/LICENSE.txt
 %exclude %{python_sitearch}/numpy/core/include/
 %exclude %{python_sitearch}/numpy/distutils/mingw/*.c
@@ -383,7 +394,7 @@ popd
 %endif
 %{p_bindir}/f2py%{python_bin_suffix}
 %{p_python_sitearch}/numpy/
-%{p_python_sitearch}/numpy-%{version}-py*.egg-info
+%{p_python_sitearch}/numpy-%{version}*-info
 %license %{p_python_sitearch}/numpy/LICENSE.txt
 %exclude %{p_python_sitearch}/numpy/core/include/
 %exclude %{p_python_sitearch}/numpy/core/lib/libnpymath.a

@@ -1137,4 +1137,12 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
   https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.19</comment>
     <requestid>1100693</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>cbb01fb5f9aa15a82e778d1e9c4c1169</srcmd5>
+    <version>2.0.19</version>
+    <time>1692379649</time>
+    <user>anag+factory</user>
+    <comment>- use generic Cython &gt;= 3 buildrequires</comment>
+    <requestid>1103749</requestid>
+  </revision>
 </revisionlist>

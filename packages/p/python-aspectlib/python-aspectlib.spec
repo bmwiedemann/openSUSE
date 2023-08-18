@@ -66,7 +66,8 @@ rm tests/test_integrations.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest --ignore=src
+# ignore deprecation warnings because of signature of throw() is deprecated
+%pytest --ignore=src -W ignore::DeprecationWarning
 
 %files %{python_files}
 %license LICENSE

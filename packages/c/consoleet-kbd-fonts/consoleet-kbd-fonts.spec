@@ -17,10 +17,10 @@
 
 
 Name:           consoleet-kbd-fonts
-Version:        1.2
+Version:        1.3
 Release:        0
-Summary:        Vector/OTF versions of openSUSE's "kbd" fonts
-License:        GPL-2.0-only
+Summary:        Vector/OTF versions of some classic kbd fonts
+License:        CC-BY-SA-4.0
 Group:          System/X11/Fonts
 URL:            https://inai.de/projects/consoleet/
 Source:         https://inai.de/files/consoleet/consoleet-kbd-%version.tar.zst

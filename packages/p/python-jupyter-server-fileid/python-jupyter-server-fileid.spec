@@ -16,7 +16,6 @@
 #
 
 
-%define plainpython3dist python3dist
 %define pyversion 0.9.0
 %define distversion 0.9
 %if 0%{?suse_version} > 1500
@@ -63,7 +62,9 @@ A Jupyter Server extension providing an implementation of the File ID service.
 
 %package -n jupyter-server-fileid
 Summary:        File IDs for documents in a running Jupyter Server -- Jupyter configuration
-Requires:       %{plainpython3dist}(jupyter-server-fileid) = %{distversion}
+Requires:       python3dist(jupyter-server-fileid) = %{distversion}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Suggests:       python3-jupyter-server-fileid
 Provides:       jupyter_server_fileid = %{version}-%{release}
 
 %description -n jupyter-server-fileid

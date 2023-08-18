@@ -61,7 +61,9 @@ This package provides the python interface.
 Summary:        Spreadsheet widget for the Jupyter notebook - Jupyterfiles
 Requires:       (jupyter-ipywidgets >= 7.5.0 with jupyter-ipywidgets < 9)
 Requires:       (jupyter-jupyterlab or jupyter-notebook)
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
 Requires:       python3dist(ipysheet) = %{distversion}
+Suggests:       python3-ipysheet
 Provides:       jupyter-ipysheet = %{version}-%{release}
 
 %description -n jupyter-ipysheet

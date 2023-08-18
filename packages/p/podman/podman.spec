@@ -110,7 +110,7 @@ pages and %{name}.
 %package -n %{name}sh
 Summary: Confined login and user shell using %{name}
 Requires: %{name} = %{version}
-Provides: %{name}-shell = {version}
+Provides: %{name}-shell = %{version}
 Provides: %{name}-%{name}sh = %{version}
 
 %description -n %{name}sh
@@ -148,9 +148,6 @@ install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
 %fdupes %{buildroot}/%{_systemd_util_dir}
 
 %files
-%if !0%{?is_opensuse}
-%doc %{_docdir}/%{name}
-%endif
 # Binaries
 %{_bindir}/podman
 # Manpages

@@ -131,4 +131,12 @@
   * Fix in tab by @maartenbreddels in #1099 (forwarded request 1092695 from bnavigator)</comment>
     <requestid>1092696</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>337653fbb59e2bc0ea68c3dd6ed67682</srcmd5>
+    <version>0.17.3</version>
+    <time>1692379695</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104433</requestid>
+  </revision>
 </revisionlist>

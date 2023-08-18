@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 17 15:50:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Suggest primary python package -- boo#1214354
+
+-------------------------------------------------------------------
 Tue Jun 13 17:19:49 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - BuildRequire notebook: no longer transitive, but we need it

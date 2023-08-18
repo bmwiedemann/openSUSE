@@ -18,7 +18,7 @@
 
 %define libname libimobiledevice-1_0-6
 Name:           libimobiledevice
-Version:        1.3.0+179git.20230430
+Version:        1.3.0+190git.20230705
 Release:        0
 Summary:        Native protocols library for iOS devices
 License:        LGPL-2.1-or-later
@@ -31,7 +31,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Cython >= 0.17
+BuildRequires:  (python3-Cython >= 0.17 with python3-Cython < 3)
 BuildRequires:  python3-plist
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(libimobiledevice-glue-1.0) >= 1.0.0

@@ -16,7 +16,6 @@
 #
 
 
-%define plainpython3dist python3dist
 Name:           python-jupyterlab
 Version:        4.0.5
 Release:        0
@@ -49,6 +48,8 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Requires:       jupyter-jupyterlab = %{version}
 Requires:       python-Jinja2 >= 3.0.3
 Requires:       python-async_lru >= 1.0.0
@@ -95,7 +96,9 @@ Group:          Development/Languages/Python
 Requires:       jupyter-jupyterlab-filesystem
 Requires:       nodejs >= 10
 Requires:       npm >= 10
-Requires:       %{plainpython3dist}(jupyterlab) = %{version}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(jupyterlab) = %{version}
+Suggests:       python3-jupyterlab
 Provides:       jupyter-jupyterlab-discovery = 6
 Obsoletes:      jupyter-jupyterlab-discovery < 6
 
@@ -130,6 +133,10 @@ cp %{SOURCE1} %{buildroot}%{$python_sitelib}/jupyterlab/conftest.py
 %fdupes %{buildroot}%{_jupyter_prefix}
 # Find any one installed LICENSE and get if for the rpm tagged file
 find %{buildroot}%{_prefix}/lib/python3.* -path '*/jupyterlab-%{version}.dist-info/licenses/LICENSE' -exec cp {} . ';' -quit
+%python_clone -a %{buildroot}%{_bindir}/jupyter-lab
+%python_clone -a %{buildroot}%{_bindir}/jupyter-labextension
+%python_clone -a %{buildroot}%{_bindir}/jupyter-labhub
+%python_clone -a %{buildroot}%{_bindir}/jlpm
 %suse_update_desktop_file jupyterlab
 
 %check
@@ -154,17 +161,23 @@ donttest="$donttest or (TestBuildAPI and test_build)"
 # can't use --pyargs because of conftest.py collection problems: https://github.com/pytest-dev/pytest/issues/1596
 %pytest %{buildroot}%{$python_sitelib}/jupyterlab -k "not (${donttest:4} ${$python_donttest})"
 
+%post
+%python_install_alternative jupyter-lab jupyter-labextension jupyter-labhub jlpm
+
+%postun
+%python_uninstall_alternative jupyter-lab
+
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/jupyterlab/
 %{python_sitelib}/jupyterlab-%{version}.dist-info/
+%python_alternative %{_bindir}/jupyter-lab
+%python_alternative %{_bindir}/jupyter-labextension
+%python_alternative %{_bindir}/jupyter-labhub
+%python_alternative %{_bindir}/jlpm
 
 %files -n jupyter-jupyterlab
 %license LICENSE
-%{_bindir}/jlpm
-%{_bindir}/jupyter-lab
-%{_bindir}/jupyter-labextension
-%{_bindir}/jupyter-labhub
 %{_jupyter_config} %{_jupyter_servextension_confdir}/jupyterlab.json
 %{_jupyter_config} %{_jupyter_server_confdir}/jupyterlab.json
 %{_jupyter_lab_dir}

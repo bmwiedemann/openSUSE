@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug 17 18:20:18 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 116.0.3
+  * Fixed an issue for OPFS users that broke access to files that
+    were locally cached in a previous version
+    (bmo#1847989, bmo#1847619)
+  * Fixed an issue that was breaking screensharing for some users
+    on Wayland (bmo#1841851)
+  * Fixed an issue where a fullscreen notification was persistently
+    being shown to a user, even after disabling it (bmo#1847901)
+  * Fixed an issue where Firefox would hang when doing a Google
+    search (bmo#1847066)
+
+-------------------------------------------------------------------
+Tue Aug 15 09:51:15 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- After further testing on memory consumption during linking, it's
+  safe to remove most of the memory reducing options for ix86 linker.
+  A combination of these actually resulted in the OOM condition.
+  It's even possible to add basic debugging info while keeping
+  linker memory consumption at about 2GB
+
+-------------------------------------------------------------------
 Thu Aug 10 16:32:02 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 116.0.2
@@ -7,7 +30,10 @@ Thu Aug 10 16:32:02 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Wed Aug  9 09:52:36 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
-- Fix OOM when linking on 32-bit
+- Workarold ld bug causing OOM when linking on 32-bit
+- Remove -j1 limit on x86. The build runs on 64-bit kernel with a
+  32-bit userland. This means there is plenty of memory available
+  but userland is limited to just under 4GB per process.
 
 -------------------------------------------------------------------
 Sat Aug  5 17:46:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>

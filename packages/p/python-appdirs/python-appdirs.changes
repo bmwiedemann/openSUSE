@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 17 11:02:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add setuptools build requirement for building, distutils is not
+  available anymore since python 3.12
+
+-------------------------------------------------------------------
 Fri Apr 21 12:21:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

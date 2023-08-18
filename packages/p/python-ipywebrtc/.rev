@@ -32,4 +32,12 @@
   for checking the extension</comment>
     <requestid>1092959</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>879c0b2bd74a252c8b5dfc55e1119995</srcmd5>
+    <version>0.6.0</version>
+    <time>1692379702</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104441</requestid>
+  </revision>
 </revisionlist>

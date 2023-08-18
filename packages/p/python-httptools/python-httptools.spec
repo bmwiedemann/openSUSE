@@ -29,7 +29,7 @@ URL:            https://github.com/MagicStack/httptools
 Source0:        https://github.com/MagicStack/httptools/archive/v%{version}.tar.gz#/httptools-%{version}.tar.gz
 Source1:        https://github.com/nodejs/llhttp/archive/refs/tags/release/v6.0.6.tar.gz#/llhttp-release-v6.0.6.tar.gz
 Source2:        https://github.com/nodejs/http-parser/archive/refs/tags/v2.9.4.tar.gz#/http-parser-2.9.4.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29.24}
+BuildRequires:  %{python_module Cython >= 0.29.24 with %python-Cython < 3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

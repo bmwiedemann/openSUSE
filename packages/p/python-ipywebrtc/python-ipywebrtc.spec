@@ -51,7 +51,9 @@ Summary:        WebRTC for Jupyter notebook/lab
 Requires:       jupyter-ipywidgets >= 7.4.0
 Requires:       jupyter-jupyterlab
 Requires:       jupyter-notebook
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
 Requires:       python3dist(ipywebrtc) = %{distversion}
+Suggests:       python3-ipywebrtc
 
 %description -n jupyter-ipywebrtc
 WebRTC and MediaStream API exposed in the Jupyter notebook.

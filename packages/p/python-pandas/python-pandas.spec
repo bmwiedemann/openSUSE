@@ -51,7 +51,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pandas%{psuffix}
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -60,8 +60,6 @@ URL:            https://pandas.pydata.org/
 # Use GitHub Archive: Test-data
 Source0:        https://github.com/pandas-dev/pandas/archive/refs/tags/v%{version}.tar.gz#/pandas-%{version}-gh.tar.gz
 # SourceRepository: https://github.com/pandas-dev/pandas
-# https://github.com/pandas-dev/pandas/issues/53791#issuecomment-1602320315
-Patch1:         pandas-fix-tests.patch
 BuildRequires:  %{python_module Cython >= 0.29.33 with %python-Cython < 3}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.20.3}

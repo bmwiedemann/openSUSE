@@ -166,4 +166,24 @@
 * Update release build script (forwarded request 1088575 from ph03nix)</comment>
     <requestid>1088705</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3e4cbcf63877147c4be14ebc489d3360</srcmd5>
+    <version>2.17.0</version>
+    <time>1692379691</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.17.0:
+  * Update cosign to version v2.1.1 (#1000)
+  * Enable go 1.21.0 in the CI build (#998)
+  * chore(deps): update all dependencies (#997)
+  * Update to go version 1.20.7 and 1.19.12 (#993)
+  * chore(deps): update all dependencies (#992)
+  * chore(deps): update module github.com/onsi/gomega to v1.27.10 (#991)
+  * fix: correctly identify infixed concats as potential SQL injections (#987)
+  * chore(deps): update all dependencies (#989)
+  * Add a new flag terse to show only the results and summary (#986)
+  * Switch to a maintained fork of zxcvbn module (#984)
+
+- Require go 1.20 (forwarded request 1104395 from ph03nix)</comment>
+    <requestid>1104424</requestid>
+  </revision>
 </revisionlist>

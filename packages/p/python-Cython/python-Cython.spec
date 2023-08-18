@@ -16,25 +16,27 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %bcond_with test
+%{?sle15_python_module_pythons}
 Name:           python-Cython
-Version:        0.29.36
+Version:        3.0.0
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0
 URL:            https://cython.org/
+# SourceRepository: https://github.com/cython/cython
 Source:         https://files.pythonhosted.org/packages/source/C/Cython/Cython-%{version}.tar.gz
 Source1:        python-Cython-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
+Conflicts:      python-Cython < 3
+Provides:       python-Cython3 = 3.0.0
+Obsoletes:      python-Cython3 <= 3.0.0
 Requires:       python-devel
-Requires:       python-xml
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %python_subpackages
@@ -91,7 +93,7 @@ $python runtests.py -v
 %python_alternative %{_bindir}/cython
 %python_alternative %{_bindir}/cythonize
 %{python_sitearch}/Cython/
-%{python_sitearch}/Cython-%{version}*-info
+%{python_sitearch}/Cython-%{version}.dist-info
 %{python_sitearch}/cython.py*
 %pycache_only %{python_sitearch}/__pycache__/cython*.py*
 %{python_sitearch}/pyximport/

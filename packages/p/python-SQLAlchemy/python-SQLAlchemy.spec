@@ -26,7 +26,7 @@ URL:            https://www.sqlalchemy.org
 Source:         https://files.pythonhosted.org/packages/source/S/SQLAlchemy/SQLAlchemy-%{version}.tar.gz
 Source1:        SQLAlchemy.keyring
 # devel is needed for optional C extensions cprocessors.so, cresultproxy.so and cutils.so
-BuildRequires:  %{python_module Cython3}
+BuildRequires:  %{python_module Cython >= 3}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 16 15:25:39 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- restrict to older Cython
+
+-------------------------------------------------------------------
 Tue Jun 27 01:08:52 UTC 2023 - Tim Serong <tserong@suse.com>
 
 - Remove _constraints file, add README-constraints.txt and pre_checkin.env

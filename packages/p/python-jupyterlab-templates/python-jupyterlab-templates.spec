@@ -16,7 +16,6 @@
 #
 
 
-%define anypython python3dist
 %define pyver 0.5.0
 %define distver 0.5
 Name:           python-jupyterlab-templates
@@ -50,7 +49,9 @@ Support for jupyter notebook templates in jupyterlab.
 %package     -n jupyter-jupyterlab-templates
 Summary:        Templates for notebooks in JupyterLab
 Requires:       jupyter-jupyterlab >= 4.0.0
-Requires:       %anypython(jupyterlab-templates) = %{distver}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(jupyterlab-templates) = %{distver}
+Suggests:       python3-jupyterlab-templates
 Provides:       jupyter-jupyterlab_templates = %{version}
 Obsoletes:      jupyter-jupyterlab_templates < %{version}
 

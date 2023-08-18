@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  8 11:53:00 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Add 0001-do_not_discover_user_host_for_reproducible_builds.patch
+- Require Go >= 1.19 for building
+- Require Go >= 1.18 for building Red Hat packages
+
+-------------------------------------------------------------------
 Tue Jul 04 10:41:07 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.0:

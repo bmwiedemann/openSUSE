@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>1083888</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0dcd6ea2b40c64f523653260ea42c5a7</srcmd5>
+    <version>0.2.3</version>
+    <time>1692379715</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104451</requestid>
+  </revision>
 </revisionlist>

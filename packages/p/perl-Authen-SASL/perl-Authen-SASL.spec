@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Authen-SASL
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,40 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Authen-SASL
-Version:        2.16
-Release:        0
 %define cpan_name Authen-SASL
+Name:           perl-Authen-SASL
+Version:        2.170.0
+Release:        0
+%define cpan_version 2.1700
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        SASL Authentication framework
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Authen-SASL/
-Source0:        https://cpan.metacpan.org/authors/id/G/GB/GBARR/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/E/EH/EHUELS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-Patch0:         perl526.path
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Digest::HMAC_MD5)
+BuildRequires:  perl(Pod::Coverage::TrustPod)
+BuildRequires:  perl(Test::Pod)
+BuildRequires:  perl(Test::Pod::Coverage)
 Requires:       perl(Digest::HMAC_MD5)
+Provides:       perl(Authen::SASL) = 2.170.0
+Provides:       perl(Authen::SASL::CRAM_MD5) = 2.170.0
+Provides:       perl(Authen::SASL::EXTERNAL) = 2.170.0
+Provides:       perl(Authen::SASL::Perl) = 2.170.0
+Provides:       perl(Authen::SASL::Perl::ANONYMOUS) = 2.170.0
+Provides:       perl(Authen::SASL::Perl::CRAM_MD5) = 2.170.0
+Provides:       perl(Authen::SASL::Perl::DIGEST_MD5) = 2.170.0
+Provides:       perl(Authen::SASL::Perl::EXTERNAL) = 2.170.0
+Provides:       perl(Authen::SASL::Perl::GSSAPI) = 2.170.0
+Provides:       perl(Authen::SASL::Perl::LOGIN) = 2.170.0
+Provides:       perl(Authen::SASL::Perl::PLAIN) = 2.170.0
+%define         __perllib_provides /bin/true
 Recommends:     perl(GSSAPI)
 %{perl_requires}
 
@@ -56,14 +69,14 @@ supported).
 
 * Authen::SASL::Cyrus
 
-This module is the predecessor to Authen::SASL::XS. It is reccomended to
-use Authen::SASL::XS
+This module is the predecessor to Authen::SASL::XS.
 
-By default the order in which these plugins are selected is
-Authen::SASL::XS, Authen::SASL::Cyrus and then Authen::SASL::Perl.
+Until version 2.16, Authen::SASL::Cyrus was loaded as an alternative to
+Authen::SASL::XS.
 
-If you want to change it or want to specifically use one implementation
-only simply do
+By default Authen::SASL tries to load Authen::SASL::XS first, followed by
+Authen::SASL::Perl on failure. If you want to change the order or want to
+specifically use one implementation only simply do
 
  use Authen::SASL qw(Perl);
 
@@ -72,15 +85,14 @@ or if you have another plugin module that supports the Authen::SASL API
  use Authen::SASL qw(My::SASL::Plugin);
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -88,7 +100,7 @@ or if you have another plugin module that supports the Authen::SASL API
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc api.txt Changes compat_pl example_pl
+%doc api.txt Changes compat_pl example_pl README
+%license LICENSE
 
 %changelog

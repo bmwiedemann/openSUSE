@@ -862,4 +862,25 @@
 </comment>
     <requestid>1098027</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>e25ac458948f83fb18fd265185c1c603</srcmd5>
+    <version>3.0.0</version>
+    <time>1692379647</time>
+    <user>anag+factory</user>
+    <comment>- Update to the official release of 3.0.0:
+  - The complete list is seriously long, so I would relegate you
+    to https://github.com/cython/cython/blob/master/CHANGES.rst
+  - The implemented PEPs are:
+    - PEP-3131: Supporting Non-ASCII Identifiers
+    - PEP-479: generator_stop (enabled by default for language_level=3)
+    - PEP-487: Simpler customisation of class creation
+    - PEP-563: Postponed Evaluation of Annotations
+    - PEP-570: Positional-Only Parameters
+    - PEP-572: Assignment Expressions (a.k.a. the walrus operator :=)
+    - PEP-590: Vectorcall protocol
+    - PEP-614: Relaxing Grammar Restrictions On Decorators
+  - Cython supports all released versions of Python from 2.7 to
+    3.11 (and some experimental parts of 3.12) inclusive.</comment>
+    <requestid>1103745</requestid>
+  </revision>
 </revisionlist>

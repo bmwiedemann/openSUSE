@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  8 11:17:53 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update criterion to version 1.6.3.0.
+  1.6.3.0
+
+  * Remove a use of the partial `head` function within `criterion`.
+
+-------------------------------------------------------------------
 Tue Jun 27 23:09:10 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update criterion to version 1.6.2.0 revision 1.

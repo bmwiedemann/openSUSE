@@ -1,7 +1,7 @@
 #
 # spec file for package python-pathtools
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,11 @@ Summary:        File system general utilities
 License:        MIT
 URL:            https://github.com/gorakhargosh/pathtools
 Source:         https://files.pythonhosted.org/packages/source/p/pathtools/pathtools-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Stop using imp module
+Patch0:         stop-using-imp.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
@@ -35,22 +39,22 @@ BuildArch:      noarch
 Pattern matching and various utilities for file systems paths.
 
 %prep
-%setup -q -n pathtools-%{version}
+%autosetup -p1 -n pathtools-%{version}
 sed -i "1d" pathtools/path.py pathtools/patterns.py
 sed -i "s/^html_theme.*/#html_theme/" docs/source/conf.py
 
 %build
-%python_build
+%pyproject_wheel
 cd docs && make html && rm -r build/html/.buildinfo # Build HTML docs
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README docs/build/html
 %{python_sitelib}/pathtools
-%{python_sitelib}/pathtools-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/pathtools-%{version}.dist-info
 
 %changelog

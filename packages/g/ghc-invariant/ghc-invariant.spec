@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Haskell98 invariant functors
 License:        BSD-2-Clause

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 17 13:11:48 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.28.2:
+  * test: add case for pkg 404
+  * fix: improve error message for non-existant pkgs
+  * docs: add 'Appwrite' to vocab
+  * docs: add Appwrite
+
+-------------------------------------------------------------------
 Tue Jul 25 03:25:45 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 2.28.1:

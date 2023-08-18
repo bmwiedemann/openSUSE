@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 11 12:55:45 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Do not build with apparmor profile for SLE 12
+
+-------------------------------------------------------------------
 Tue Jul 11 11:18:57 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Upgrade to version 1.0.0 (jsc#PED-5405)

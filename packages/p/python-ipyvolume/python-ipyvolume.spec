@@ -16,7 +16,6 @@
 #
 
 
-%define anypython3dist python3dist
 Name:           python-ipyvolume
 Version:        0.6.3
 Release:        0
@@ -89,7 +88,9 @@ Requires:       jupyter-ipywebrtc
 Requires:       jupyter-ipywidgets >= 7.0.0
 Requires:       jupyter-notebook
 Requires:       jupyter-pythreejs >= 2.0.0
-Requires:       %{anypython3dist}(ipyvolume) = %{version}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(ipyvolume) = %{version}
+Suggests:       python3-ipyvolume
 
 %description -n jupyter-ipyvolume
 3d plotting for Python in the Jupyter notebook based on IPython widgets using WebGL.
@@ -102,7 +103,9 @@ Requires:       jupyter-ipywebrtc
 Requires:       jupyter-ipywidgets >= 7.0.0
 Requires:       jupyter-jupyterlab
 Requires:       jupyter-pythreejs >= 2.0.0
-Requires:       %{anypython3dist}(ipyvolume) = %{version}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(ipyvolume) = %{version}
+Suggests:       python3-ipyvolume
 
 %description -n jupyter-jupyterlab-ipyvolume
 3d plotting for Python in the Jupyter notebook based on IPython widgets using WebGL.

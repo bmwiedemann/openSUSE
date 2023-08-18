@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 17 16:04:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Suggest primary python package -- boo#1214354
+
+-------------------------------------------------------------------
 Wed Jul 19 20:53:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Unpin jsonschema: nbformat has been fixed, jupyter-events could

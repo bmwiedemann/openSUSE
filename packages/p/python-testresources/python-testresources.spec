@@ -25,11 +25,15 @@ License:        (Apache-2.0 OR BSD-3-Clause) AND GPL-2.0-or-later
 URL:            https://github.com/testing-cabal/testresources
 Source:         https://files.pythonhosted.org/packages/source/t/testresources/testresources-%{version}.tar.gz
 Patch0:         testresources-flaky-tests.patch
+# PATCH-FIX-UPSTREAM gh#testing-cabal/testresources#15
+Patch1:         use-correct-assertions.patch
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pbr
@@ -41,14 +45,13 @@ testresources: extensions to python unittest to allow declarative use
 of resources by test cases.
 
 %prep
-%setup -q -n testresources-%{version}
-%patch0 -p1
+%autosetup -p1 -n testresources-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +61,6 @@ of resources by test cases.
 %license BSD Apache-2.0 COPYING
 %doc README.rst
 %{python_sitelib}/testresources
-%{python_sitelib}/testresources-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/testresources-%{version}.dist-info
 
 %changelog

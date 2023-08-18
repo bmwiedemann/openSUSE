@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Aug 13 21:50:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.3:
+  * Bug in Timestamp.weekday`() was returning incorrect results
+    before '0000-02-29'
+  * Fixed performance regression in merging on datetime-like columns
+  * Fixed regression when DataFrame.to_string() creates extra space
+    for string dtypes
+  * Bug in DataFrame.convert_dtype() and Series.convert_dtype()
+    when trying to convert ArrowDtype with dtype_backend="nullable_numpy"
+  * Bug in RangeIndex.union() when using sort=True with another
+    RangeIndex 
+  * Bug in Series.reindex() when expanding a non-nanosecond datetime
+    or timedelta
+  * Bug in read_csv() when defining dtype with bool[pyarrow] for
+    the "c" and "python" engines 
+  * Bug in Series.str.split() and Series.str.rsplit() with expand=True 
+  * Bug in indexing methods (e.g. DataFrame.__getitem__()) where
+    taking the entire DataFrame/Series would raise an OverflowError
+    when Copy on Write was enabled the length of the array was over
+    the maximum size a 32-bit integer can hold
+  * Bug when constructing a DataFrame with columns of an ArrowDtype
+    with a pyarrow.dictionary type that reindexes the data
+  * Bug when indexing a DataFrame or Series with an Index with a
+    timestamp ArrowDtype would raise an AttributeError
+- drop pandas-fix-tests.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Jun 22 09:36:06 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix tests on aarch64:

@@ -83,4 +83,12 @@
     <comment></comment>
     <requestid>1092989</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>61880645a739e83dd715a84a490c3c8b</srcmd5>
+    <version>0.7.0</version>
+    <time>1692379697</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104436</requestid>
+  </revision>
 </revisionlist>

@@ -106,4 +106,14 @@
     <comment></comment>
     <requestid>1081678</requestid>
   </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>6174c3a3498736766c907a0fe951e2f0</srcmd5>
+    <version>2.0.1</version>
+    <time>1692379666</time>
+    <user>anag+factory</user>
+    <comment>- Add patch use-correct-assertions.patch:
+  * Use current and correct method names.
+- Switch to pyproject macros.</comment>
+    <requestid>1104096</requestid>
+  </revision>
 </revisionlist>

@@ -216,4 +216,12 @@
   * only documentation changes despite the big version bump (forwarded request 1092360 from bnavigator)</comment>
     <requestid>1092361</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>bb3276c3389b84b274757bfc2e6f47d1</srcmd5>
+    <version>1.0.0</version>
+    <time>1692379707</time>
+    <user>anag+factory</user>
+    <comment>- Suggest primary python package -- boo#1214354</comment>
+    <requestid>1104446</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 16 18:56:40 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+
+- update to 2.6.6:
+  * configure.ac: fix typ0 in LIBCAPNG_CFALGS
+  * Avoid unused function warning/error on FreeBSD (and potientially others)
+  * fix warning with gcc 12.2.0 (compiler bug?)
+  * Fix CR_RESPONSE mangaement message using wrong key_id
+  * Print a more user-friendly error when tls-crypt-v2 client auth fails
+  * Ignore Ipv6 route delete request on Android and set ipv4 verbosity to 7
+  * Revert commit 423ced962d
+  * Implement using --peer-fingerprint without CA certificates
+  * show extra info for OpenSSL errors
+  * dist: add more missing files only used in the MSVC build
+  * dist: Include all documentation in distribution
+  * unit_tests: Add missing cert_data.h to source list for unit tests
+  * test_tls_crypt: Improve mock() usage to be more portable
+  * Remove old Travis CI related files
+  * options: Do not hide variables from parent scope
+  * pkcs11_openssl: Disable unused code
+  * route: Fix overriding return value of add_route3
+
+-------------------------------------------------------------------
 Wed Jun 14 06:42:58 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
 - update to 2.6.5:

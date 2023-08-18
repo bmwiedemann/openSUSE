@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Aug 11 14:49:53 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Remove perl526.path (not needed anymore)
+
+-------------------------------------------------------------------
+Fri Aug 11 03:06:02 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.1700
+   see /usr/share/doc/packages/perl-Authen-SASL/Changes
+
+  2.1700  2023-08-09
+    [Fixed]
+      - Version numbering (released as 2.1700,
+        because 2.17 < 2.1401)
+      - POD errors
+      - Typos
+      - Minimum Perl version 5.005 -> 5.6.0
+      - Kwalitee errors
+        * Accidentally packaged MYMETA.*
+        * 'use warnings;' added in all modules
+        * Synchronized versions in all modules
+      - Out of bounds substr() (RT 85294)
+    [Added]
+      - README
+      - More tests
+    [Changed]
+      - Release switched from EUMM to D::Z
+    [Removed]
+      - Authen::SASL::Cyrus is no longer loaded as
+        an implementation; Authen::SASL::XS has been
+        the successor for more than a decade
+
+-------------------------------------------------------------------
 Fri Sep 29 05:01:55 UTC 2017 - coolo@suse.com
 
 - add perl526.path to build with perl 5.26

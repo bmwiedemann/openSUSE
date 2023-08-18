@@ -20,14 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.0.1.0
+Version:        2.0.1.2
 Release:        0
 Summary:        Pure and impure Bloom Filter implementations
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
-Patch1:         0001-Adapt-FastShift-instances-for-Word32-to-ghc-9.4.x.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-array-prof
@@ -80,9 +78,7 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup -p1 -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
-cabal-tweak-dep-ver base '>= 4.4 && < 4.16' '< 5'
+%autosetup -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build
@@ -103,7 +99,7 @@ cabal-tweak-dep-ver base '>= 4.4 && < 4.16' '< 5'
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc README.markdown examples
+%doc CHANGELOG.md README.markdown examples
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE

@@ -140,6 +140,8 @@ Wed Apr  5 11:28:56 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 Wed Mar 22 06:00:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.43.0:
+  * [SECURITY BUGFIX]: Fix uncontrolled resource consumption by
+    updating Go to version 1.20.1 (bsc#1208298, CVE-2022-41723)
   * [FEATURE] Promtool: Add HTTP client configuration to query
     commands. #11487
   * [FEATURE] Scrape: Add `include_scrape_configs` to include

@@ -1,7 +1,7 @@
 #
 # spec file for package python-uvloop
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Group:          Development/Languages/Python
 URL:            http://github.com/MagicStack/uvloop
 Source:         https://files.pythonhosted.org/packages/source/u/uvloop/uvloop-%{version}.tar.gz
 Source1:        python-uvloop.rpmlintrc
-BuildRequires:  %{python_module Cython >= 0.28}
+BuildRequires:  %{python_module Cython >= 0.28 with %python-Cython < 3}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module psutil}

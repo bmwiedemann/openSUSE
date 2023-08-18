@@ -25,7 +25,6 @@
 %define pyver 3.2.1
 %define labver 2.2.0
 %define jupver  6.2.0
-%define anypythondist python3dist
 # always cut trailing .0
 %define pyverdist 3.2.1
 %define mainbins nbdime nbshow nbdiff nbdiff-web nbmerge nbmerge-web
@@ -98,7 +97,9 @@ This package provides the python interface.
 %package     -n jupyter-nbdime
 Version:        %{jupver}
 Summary:        A JupyterLab extension for showing Notebook diffs
-Requires:       %{anypythondist}(nbdime) = %{pyverdist}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(nbdime) = %{pyverdist}
+Suggests:       python3-nbdime
 Conflicts:      python3-jupyter_nbdime < 1.0.5
 
 %description -n jupyter-nbdime
@@ -112,7 +113,9 @@ Version:        %{labver}
 Release:        0
 Summary:        A JupyterLab extension for showing Notebook diffs
 Requires:       jupyter-jupyterlab
-Requires:       %{anypythondist}(nbdime) = %{pyverdist}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(nbdime) = %{pyverdist}
+Suggests:       python3-nbdime
 
 %description -n jupyter-nbdime-jupyterlab
 The nbdime package provides tools for diffing and merging of

@@ -557,4 +557,17 @@
     <comment>- Move cmake config files to devel (forwarded request 1076726 from gmbr3)</comment>
     <requestid>1079846</requestid>
   </revision>
+  <revision rev="57" vrev="8">
+    <srcmd5>1be84d368aa547a3688462127ad213ed</srcmd5>
+    <version>2.11</version>
+    <time>1692379626</time>
+    <user>anag+factory</user>
+    <comment>- Modify patches
+  * ls-completion-boo889319.patch
+  * rm-completion-smart-boo958462.patch
+  to avoid skipping spaces after last word on command line (boo#1210974)
+- Add patch fix_quote_readline_by_ref.patch
+  * Do not escape leading ~ nor backslash and avoid empty quoting</comment>
+    <requestid>1104392</requestid>
+  </revision>
 </revisionlist>

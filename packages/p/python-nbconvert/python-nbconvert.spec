@@ -29,7 +29,7 @@
 %else
 %bcond_with libalternatives
 %endif
-# 7.6.0 gets abbreviated by pythondistdeps
+# X.X.0 gets abbreviated by pythondistdeps
 %define shortversion 7.7.3
 Name:           python-nbconvert%{psuffix}
 Version:        7.7.3
@@ -96,7 +96,9 @@ This package provides the python interface.
 Summary:        Conversion of Jupyter Notebooks
 Requires:       jupyter-ipykernel
 Requires:       jupyter-jupyter-core
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
 Requires:       python3dist(nbconvert) = %{shortversion}
+Suggests:       python3-nbconvert
 Conflicts:      python3-jupyter_nbconvert < 5.5.0
 
 %description -n jupyter-nbconvert

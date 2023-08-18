@@ -16,7 +16,7 @@ Index: bash-completion-2.11/bash_completion
      sed sha{,1,224,256,384,512}sum shar sort split strip sum tac tail tee \
      texindex touch tr unexpand uniq vdir wc who
  complete -F _longopt -o default env netstat seq uname units
-+complete -F _longopt -o bashdefault -o default -o filenames -o nospace ls ll la l ls-l lf
++complete -F _longopt -o bashdefault -o default -o filenames ls ll la l ls-l lf
  
  declare -Ag _xspecs
  

@@ -83,4 +83,14 @@
     <comment></comment>
     <requestid>1092238</requestid>
   </revision>
+  <revision rev="12" vrev="16">
+    <srcmd5>d0f70ec4a3dbded7c90b67f07a392aa7</srcmd5>
+    <version>0.1.2</version>
+    <time>1692379668</time>
+    <user>anag+factory</user>
+    <comment>- Add patch stop-using-imp.patch:
+  * Stop using imp module, switch to importlib.*
+- Use pyproject macros.</comment>
+    <requestid>1104099</requestid>
+  </revision>
 </revisionlist>

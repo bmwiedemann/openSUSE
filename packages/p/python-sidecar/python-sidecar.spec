@@ -16,7 +16,6 @@
 #
 
 
-%define python3dist python3dist
 Name:           python-sidecar
 %define mainver 0.5.2
 %define labver  0.6.2
@@ -53,7 +52,9 @@ Group:          Development/Languages/Python
 Version:        %{labver}
 Release:        0
 Requires:       jupyter-jupyterlab >= 3.0.0
-Requires:       %{python3dist}(sidecar) = %{mainver}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(sidecar) = %{mainver}
+Suggests:       python3-sidecar
 
 %description -n jupyter-sidecar-jupyterlab
 A sidecar output widget for JupyterLab.

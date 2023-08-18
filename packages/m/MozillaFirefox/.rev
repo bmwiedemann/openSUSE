@@ -6348,4 +6348,12 @@
   * CVE-2023-4051 (bmo#1821884)</comment>
     <requestid>1103536</requestid>
   </revision>
+  <revision rev="407" vrev="1">
+    <srcmd5>ffe04187895a1d195949f6e6bb22341b</srcmd5>
+    <version>116.0.3</version>
+    <time>1692379630</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104464</requestid>
+  </revision>
 </revisionlist>

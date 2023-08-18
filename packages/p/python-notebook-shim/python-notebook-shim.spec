@@ -16,7 +16,6 @@
 #
 
 
-%define anypython python3dist
 Name:           python-notebook-shim
 Version:        0.2.3
 Release:        0
@@ -48,7 +47,9 @@ Jupyter Server for their Python Web application backend.
 %package -n jupyter-notebook-shim
 Summary:        The configuration file for python-notebook-shim
 Provides:       juypter-notebook_shim = %{version}-%{release}
-Requires:       %anypython(notebook-shim) = %{version}
+# Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
+Requires:       python3dist(notebook-shim) = %{version}
+Suggests:       python3-notebook-shim
 
 %description -n jupyter-notebook-shim
 This project provides a way for JupyterLab and other frontends to switch to

@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          116
-%define mainver        %major.0.2
-%define orig_version   116.0.2
+%define mainver        %major.0.3
+%define orig_version   116.0.3
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -383,17 +383,20 @@ export CXX=g++
 %endif
 %endif
 %ifarch %arm %ix86
+### NOTE: these sections are not required anymore. Alson --no-keep-memory + -Wl,-z,pack-relative-relocs causes
+### ld to go OOM (https://sourceware.org/bugzilla/show_bug.cgi?id=30756)
 # Limit RAM usage during link
-export LDFLAGS="\$LDFLAGS -Wl,--no-keep-memory -Wl,--reduce-memory-overheads -Wl,--no-map-whole-files -Wl,--hash-size=31"
+# export LDFLAGS="\$LDFLAGS -Wl,--no-keep-memory -Wl,--reduce-memory-overheads -Wl,--no-map-whole-files -Wl,--hash-size=31"
+#
 # A lie to prevent -Wl,--gc-sections being set which requires more memory than 32bit can offer
-export GC_SECTIONS_BREAKS_DEBUG_RANGES=yes
+#export GC_SECTIONS_BREAKS_DEBUG_RANGES=yes
 %endif
 export LDFLAGS="\$LDFLAGS -fPIC -Wl,-z,relro,-z,now"
 %ifarch ppc64 ppc64le
 %endif
 %ifarch %ix86
-# Not enough memory on 32-bit systems, remove debug info.
-export CFLAGS="\$CFLAGS -g0"
+# Not enough memory on 32-bit systems, reduce debug info.
+export CFLAGS="\$CFLAGS -g1"
 %endif
 export CXXFLAGS="\$CFLAGS"
 export MOZCONFIG=$RPM_BUILD_DIR/mozconfig
@@ -431,7 +434,7 @@ ac_add_options --enable-debug-symbols=-g0
 ac_add_options --disable-install-strip
 %ifarch %ix86 %arm
 # OOM on 32-bit when ld passed -Wl,-z,pack-relative-relocs
-ac_add_options --enable-elf-hack
+# ac_add_options --enable-elf-hack
 %endif
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
@@ -527,11 +530,7 @@ ac_add_options --enable-official-branding
 %endif
 EOF
 
-%ifarch %ix86
-%define njobs 1
-%else
 %define njobs 0%{?jobs:%jobs}
-%endif
 mkdir -p $RPM_BUILD_DIR/langpacks_artifacts/
 sed -r '/^(ja-JP-mac|ga-IE|en-US|)$/d;s/ .*$//' $RPM_BUILD_DIR/%{srcname}-%{orig_version}/browser/locales/shipped-locales \
     | xargs -n 1 %{?njobs:-P %njobs} -I {} /bin/sh -c '

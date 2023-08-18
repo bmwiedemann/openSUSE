@@ -1,7 +1,7 @@
 #
 # spec file for package sac
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,23 +22,21 @@ Release:        0
 Summary:        Java standard interface for CSS parser
 License:        W3C
 Group:          Development/Libraries/Java
-URL:            http://www.w3.org/Style/CSS/SAC/
+URL:            https://www.w3.org/Style/CSS/SAC/
 #Original source: http://www.w3.org/2002/06/%{name}java-%{version}.zip
 #unzip, find . -name "*.jar" -exec rm {} \;
 #to simplify the licensing
 Source0:        %{name}java-%{version}-jarsdeleted.zip
 Source1:        %{name}-build.xml
 Source2:        %{name}-MANIFEST.MF
-Source3:        http://mirrors.ibiblio.org/pub/mirrors/maven2/org/w3c/css/sac/1.3/sac-1.3.pom
+Source3:        https://repo1.maven.org/maven2/org/w3c/css/sac/%{version}/%{name}-%{version}.pom
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
 BuildRequires:  unzip
 BuildRequires:  zip
 Requires:       java
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -84,19 +82,10 @@ install -pm 644 %{SOURCE3} \
 %add_maven_depmap JPP-%{name}.pom %{name}.jar
 %fdupes %{buildroot}%{_javadocdir}/%{name}
 
-%files
-%defattr(-,root,root)
+%files -f .mfiles
 %doc COPYRIGHT.html
-%{_javadir}/%{name}.jar
-%{_mavenpomdir}/*
-%if 0%{?suse_version} > 1320
-%{_datadir}/maven-metadata/%{name}.xml*
-%else
-%{_mavendepmapfragdir}/*
-%endif
 
 %files javadoc
-%defattr(-,root,root)
 %doc COPYRIGHT.html
 %{_javadocdir}/%{name}
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 17 11:43:21 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Run tests ignoring DeprecationWarning to make it work with
+  python3.12. The DeprecationWarning thrown is "signature of
+  throw() is deprecated"
+
+-------------------------------------------------------------------
 Mon May  8 09:22:00 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Delete fix_two_tests_py310.patch

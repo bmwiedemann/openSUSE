@@ -121,4 +121,12 @@
     <comment></comment>
     <requestid>1096812</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c6005341521b22f99f75cced6e2c987d</srcmd5>
+    <version>0.17.0</version>
+    <time>1692379652</time>
+    <user>anag+factory</user>
+    <comment>- limit to Cython &lt; 3</comment>
+    <requestid>1103795</requestid>
+  </revision>
 </revisionlist>

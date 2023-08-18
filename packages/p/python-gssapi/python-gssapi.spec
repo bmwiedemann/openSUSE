@@ -24,8 +24,9 @@ Version:        1.8.2
 Release:        0
 Summary:        A Python interface to RFC 2743/2744 (plus common extensions)
 License:        ISC
-URL:            https://pythongssapi.github.io/python-gssapi/stable/
+URL:            https://github.com/pythongssapi/python-gssapi
 Source:         https://files.pythonhosted.org/packages/source/g/gssapi/gssapi-%{version}.tar.gz
+Patch1:         https://github.com/pythongssapi/python-gssapi/commit/d9200d1018ac916b30433da23898c8c5fbde0f28.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module devel}
@@ -47,7 +48,7 @@ C libraries. While it focuses on the Kerberos mechanism, it should also be
 usable with other GSSAPI mechanisms.
 
 %prep
-%setup -q -n gssapi-%{version}
+%autosetup -p1 -n gssapi-%{version}
 sed -i "s/'gssapi.tests'//" setup.py
 
 mv gssapi/tests .

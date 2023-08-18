@@ -959,4 +959,12 @@ Bugfixes
     <comment>Update to version 4.6.1 (forwarded request 1103432 from danishprakash)</comment>
     <requestid>1103462</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>7e6c0890e475034342c659978f23f248</srcmd5>
+    <version>4.6.1</version>
+    <time>1692379669</time>
+    <user>anag+factory</user>
+    <comment>Fix build error on SLE due to dangling files clause (forwarded request 1104103 from danishprakash)</comment>
+    <requestid>1104111</requestid>
+  </revision>
 </revisionlist>

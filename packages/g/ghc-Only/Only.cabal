@@ -1,12 +1,12 @@
 name:                Only
 version:             0.1
-x-revision: 1
+x-revision:          2
 synopsis:            The 1-tuple type or single-value "collection"
 license:             BSD3
 license-file:        LICENSE
 author:              Herbert Valerio Riedel
 maintainer:          hvr@gnu.org
-bug-reports:         https://github.com/hvr/Only/issues
+bug-reports:         https://github.com/haskell-hvr/Only/issues
 category:            Data
 build-type:          Simple
 cabal-version:       >=1.10
@@ -23,7 +23,7 @@ description:
 
 Source-Repository head
   Type:              git
-  Location:          https://github.com/hvr/Only.git
+  Location:          https://github.com/haskell-hvr/Only.git
 
 library
   hs-source-dirs:    src
@@ -36,7 +36,7 @@ library
                    , Safe
 
   build-depends:     base    >= 4.5 && <5
-                   , deepseq >= 1.1 && <1.5
+                   , deepseq >= 1.1 && <1.6
 
   if impl(ghc == 7.4.*)
      build-depends: ghc-prim
