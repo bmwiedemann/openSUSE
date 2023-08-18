@@ -284,4 +284,28 @@
   * fileserver: browse: Render SVG images in grid (forwarded request 1102520 from jfkw)</comment>
     <requestid>1102521</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e687cf7db96637398c27fe81e370a7ea</srcmd5>
+    <version>2.7.4</version>
+    <time>1692379732</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.7.4:
+  * go.mod: Upgrade CertMagic and quic-go
+  * reverseproxy: Always return new upstreams (fix #5736) (#5752)
+  * ci: use gci linter (#5708)
+  * fileserver: Slightly more fitting icons
+  * cmd: Require config for caddy validate (fix #5612) (#5614)
+  * Fix tests
+  * caddytls: Update docs for on-demand config
+  * fileserver: Don't repeat error for invalid method inside error context (#5705)
+  * ci: Update to Go 1.21 (#5719)
+  * ci: Add riscv64 (64-bit RISC-V) to goreleaser (#5720)
+  * go.mod: Upgrade golang.org/x/net to 0.14.0 (#5718)
+  * ci: Use gofumpt to format code (#5707)
+  * templates: Fix httpInclude (fix #5698)
+
+- Use _service mode manual as better alias name than disabled
+  * osc reports service mode disabled as obsolete (forwarded request 1104490 from jfkw)</comment>
+    <requestid>1104492</requestid>
+  </revision>
 </revisionlist>
