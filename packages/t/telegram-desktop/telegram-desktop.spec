@@ -24,7 +24,7 @@
 %define __builder ninja
 
 # gcc10 or higher is required
-%if 0%{?suse_version} && ( 0%{?suse_version} < 1500 || ( 0%{?is_opensuse} && 0%{?suse_version} == 1500 && 0%{?sle_version} && 0%{?sle_version} <= 150500 ) )
+%if 0%{?suse_version} && ( 0%{?suse_version} < 1500 || ( 0%{?is_opensuse} && 0%{?suse_version} == 1500 && 0%{?sle_version} && 0%{?sle_version} <= 150600 ) )
 %bcond_without  compiler_upgrade
 %else
 %if 0%{?suse_version} > 01500
@@ -132,6 +132,7 @@ BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-qtwayland-private-headers-devel
 BuildRequires:  pkgconfig(dbusmenu-qt%{qt_major_version})
 %endif
+BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fmt)
@@ -169,7 +170,6 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(mtdev)
 BuildRequires:  pkgconfig(openal)
-BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(opusurl)
@@ -297,7 +297,7 @@ cd %{_builddir}/tdesktop-%{version}-full
       -DDESKTOP_APP_DISABLE_WAYLAND_INTEGRATION=ON \
       -DDESKTOP_APP_USE_ENCHANT=ON \
 %endif
-%if 0%{?suse_version} && ( 0%{?suse_version} < 1500 || ( 0%{?is_opensuse} && 0%{?suse_version} == 1500 && 0%{?sle_version} && 0%{?sle_version} <= 150500 ) )
+%if 0%{?suse_version} && ( 0%{?suse_version} < 1500 || ( 0%{?is_opensuse} && 0%{?suse_version} == 1500 && 0%{?sle_version} && 0%{?sle_version} <= 150600 ) )
       -DDESKTOP_APP_DISABLE_DBUS_INTEGRATION=ON \
 %endif
       -DTDESKTOP_API_ID=611335 \
