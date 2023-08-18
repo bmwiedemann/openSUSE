@@ -1,7 +1,7 @@
 cabal-version:       2.4
 name:                ilist
 version:             0.4.0.1
-x-revision: 2
+x-revision: 3
 synopsis:            Optimised list functions for doing index-related things
 description:
   Optimised list functions for doing index-related things. They're
@@ -33,7 +33,7 @@ source-repository head
   location:            https://github.com/kowainik/ilist.git
 
 common common-options
-  build-depends:       base >= 4.10 && < 4.17
+  build-depends:       base >= 4.10 && < 4.20
 
   ghc-options:         -Wall
                        -Wcompat
