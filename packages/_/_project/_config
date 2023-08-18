@@ -2503,6 +2503,11 @@ BuildFlags: onlybuild:perl-Parse-Yapp
 BuildFlags: onlybuild:perl-Path-Tiny
 BuildFlags: onlybuild:perl-PerlIO-utf8_strict
 BuildFlags: onlybuild:perl-Pod-Coverage
+BuildFlags: onlybuild:perl-Data-OptList
+BuildFlags: onlybuild:perl-Sub-Exporter
+BuildFlags: onlybuild:perl-Mixin-Linewise
+BuildFlags: onlybuild:perl-Pod-Eventual
+BuildFlags: onlybuild:perl-Pod-Coverage-TrustPod
 BuildFlags: onlybuild:perl-Pod-Parser
 BuildFlags: onlybuild:perl-Readonly
 BuildFlags: onlybuild:perl-Readonly-XS
@@ -2656,6 +2661,7 @@ BuildFlags: onlybuild:python-Automat
 BuildFlags: onlybuild:python-Babel
 BuildFlags: onlybuild:python-Cycler
 BuildFlags: onlybuild:python-Cython
+BuildFlags: onlybuild:python-Cython0
 BuildFlags: onlybuild:python-FontTools
 BuildFlags: onlybuild:python-Genshi
 BuildFlags: onlybuild:python-GitPython
