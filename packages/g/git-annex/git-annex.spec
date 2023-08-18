@@ -17,7 +17,7 @@
 
 
 Name:           git-annex
-Version:        10.20230626
+Version:        10.20230802
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
@@ -65,8 +65,6 @@ BuildRequires:  ghc-concurrent-output-devel
 BuildRequires:  ghc-concurrent-output-prof
 BuildRequires:  ghc-conduit-devel
 BuildRequires:  ghc-conduit-prof
-BuildRequires:  ghc-connection-devel
-BuildRequires:  ghc-connection-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-criterion-devel
@@ -275,7 +273,7 @@ Optional dependency offering bash completion for git-annex
 
 %install
 %ghc_bin_install
-make DESTDIR=%{buildroot} BUILDER=./Setup install-mans install-completions install-desktop
+make DESTDIR=%{buildroot} BUILDER=./Setup install-bins install-mans install-completions install-desktop
 rm %{buildroot}%{_datadir}/fish/vendor_completions.d/git-annex.fish
 rm %{buildroot}%{_datadir}/zsh/site-functions/_git-annex
 
