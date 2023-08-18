@@ -1,7 +1,7 @@
 #
 # spec file for package python-tokenize-rt
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tokenize-rt
-Version:        4.2.1
+Version:        5.1.0
 Release:        0
 Summary:        A wrapper around the stdlib `tokenize` which roundtrips
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/asottile/tokenize-rt
 Source:         https://github.com/asottile/tokenize-rt/archive/refs/tags/v{%{version}}.tar.gz#/tokenize-rt-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,6 +61,8 @@ A wrapper around the stdlib `tokenize` which roundtrips.
 %license LICENSE
 %doc README.md
 %python_alternative %{_bindir}/tokenize-rt
-%{python_sitelib}/*
+%{python_sitelib}/tokenize_rt*
+%{python_sitelib}/__pycache__/tokenize_rt*
+%{python_sitelib}/tokenize_rt-%{version}*-info
 
 %changelog

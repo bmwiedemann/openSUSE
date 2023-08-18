@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 11 07:54:56 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 5.1.0:
+ - drop support for python 3.7
+ - remove no_implicit_optional
+   this is the default in mypy 0.990
+- update to version 5.0.0:
+ - remove python 2 compatible parsing
+ - convert pip install comand to a block
+   github will produce a copy-paste button
+ - remove unused type: ignore
+ - Update default branch to main
+ - upgrade flake8-typing-imports
+ - drop python3.6 support
+   python 3.6 reached end of life on 2021-12-23
+ - remove --fail-under from tox (covdefaults handles this)
+ - improve coverage pragmas with covdefaults 2.1
+ - replace exit(main()) with raise SystemExit(main())
+
+-------------------------------------------------------------------
 Sun Dec 26 20:33:05 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Use GitHub tarball to activate tests
