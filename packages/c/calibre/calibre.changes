@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Aug 18 06:05:27 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.25.0
+  * New Features
+    - Book details panel: De-emphasize titles making the actual
+      data stand out more
+    - Allow using the new manage data files dialog from within the
+      edit metadata dialog
+    - Trash dialog: Allow right clicking on an entry to save it to
+      disk
+    - When merging books by drag-and-drop add an option to use the
+      dragged cover instead of the cover in the target book
+    - Create catalog: Add buttons to easily select all/non/visible
+      fields when creating CSV/XML catalogs
+    - Preferences->Add your own columns: Add buttons to show/hide
+      all columns
+  * Bug Fixes
+    - Fix a regression in the previous release that broke parsing
+      of some ISO-8601 timestamps
+    - E-book viewer: Mouse wheel horizontal events should jump
+      sections not internal file boundaries
+    - Fix Preferences->Add your own columns changing check state on
+      moving columns
+    - Get books: update various Polish e-book stores for website
+      changes
+    - E-book viewer: Fix CFI parsing of numbers with trailing zeros
+      causing some bookmarks to not work
+    - E-book viewer: Show an error when creating a bookmark if the
+      bookmark position is not found
+    - CBR Input: Fix comics with extremely long internal filenames
+      not working on Windows
+    - Edit book: Saved searches: Fix incorrect import in generated
+      source code for some builtin functions
+    - Data file manager: Fix errors on systems with larger font
+      sizes
+- Now use all calibre upstream desktop files and not the calibre
+  desktop files from downstream. Only Name and GenericName entry in
+  desktop files are changed.
+      
+-------------------------------------------------------------------
 Fri Aug  4 11:30:54 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 6.24.0

@@ -2750,4 +2750,12 @@ Think &quot;osc service runall download_files&quot; are buggy!
 </comment>
     <requestid>1103850</requestid>
   </revision>
+  <revision rev="303" vrev="1">
+    <srcmd5>a7f454cf0e62c7f4ee17c3492031acf9</srcmd5>
+    <version>6.25.0</version>
+    <time>1692379750</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104664</requestid>
+  </revision>
 </revisionlist>

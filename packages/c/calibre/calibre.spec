@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        6.24.0
+Version:        6.25.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -27,17 +27,16 @@ URL:            https://calibre-ebook.com
 Source0:        https://download.calibre-ebook.com/%{version}/calibre-%{version}.tar.xz
 Source1:        https://calibre-ebook.com/signatures/calibre-%{version}.tar.xz.sig
 Source2:        https://calibre-ebook.com/signatures/kovid.gpg#/%{name}.keyring
-Source3:        %{name}.desktop
-Source4:        https://github.com/mathjax/MathJax/archive/3.1.4/mathjax-3.1.4.tar.gz
-Source5:        https://github.com/LibreOffice/dictionaries/archive/master/hyphenation-dictionaries.tar.gz
-# Source6-URL: https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/main/iso-codes-main.zip
+Source5:        https://github.com/mathjax/MathJax/archive/3.1.4/mathjax-3.1.4.tar.gz
+Source6:        https://github.com/LibreOffice/dictionaries/archive/master/hyphenation-dictionaries.tar.gz
+# Source7-URL: https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/main/iso-codes-main.zip
 # Must be comment out because obs/osc can not download it altought it is valid, and obs rise up an error when it enable.
-# Source6 is backup if upstream change something again.
-Source6:        iso-codes-main.zip
+# Source7 is backup if upstream change something again.
+Source7:        iso-codes-main.zip
 # Missing user-agent-data.json since 6.12.0.
 # Fix: FileNotFoundError: [Errno 2] No such file or directory: '/usr/share/calibre/user-agent-data.json'
 # Use from inside https://github.com/kovidgoyal/calibre/releases/download/v6.14.0/calibre-6.14.0-x86_64.txz
-Source7:        user-agent-data.json
+Source8:        user-agent-data.json
 Source100:      %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE: install locale files the openSUSE way
 Patch2:         %{name}-setup.install.py.diff
@@ -258,7 +257,7 @@ metadata for books. It can download newspapers and convert them
 into ebooks for convenient reading.
 
 %prep
-%setup -q -a4 -a5
+%setup -q -a5 -a6
 %patch2 -p1
 %patch3 -p1 -b .no-update
 
@@ -286,8 +285,6 @@ chmod -x recipes/*.recipe
 # use system mspack (mga#15218)
 rm -f src/calibre/utils/lzx/mspack.h
 sed -i 's| calibre/utils/lzx/mspack.h||' setup/extensions.json
-
-cp -v %{SOURCE3}  .
 
 %build
 export \
@@ -329,7 +326,10 @@ do
           -resize ${i}x${i} %{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/%{name}.png
 done
 
-%suse_update_desktop_file -i -n calibre Office Viewer
+%suse_update_desktop_file -i -n -N "Calibre E-Book Management" -G "Calibre E-Book library management" calibre-gui
+%suse_update_desktop_file -i -n -N "Calibre E-Book Editor" -G "Calibre Editor for E-Books" calibre-ebook-edit
+%suse_update_desktop_file -i -n -N "Calibre E-Book Viewer" -G "Calibre Viewer for E-Books" calibre-ebook-viewer
+%suse_update_desktop_file -i -n -N "Calibre LRF Viewer" -G "Calibre Viewer for LRF files" calibre-lrfviewer
 
 # rpmlint: wrong-script-interpreter /usr/bin/env python3
 find %{buildroot}%{_bindir} -type f  | xargs sed -i -e 's:#!/usr/bin/env python3:#!/usr/bin/python3.11:g'
@@ -346,18 +346,9 @@ do
     ln -s %{_datadir}/fonts/truetype/$(basename ${font}) %{buildroot}%{_datadir}/%{name}/fonts/liberation/
 done
 
-# appdata file references calibre-gui.desktop, and .appdata.xml file should necessarily have matching name with .desktop file in order for the app to show up in Software Centres
-mv %{buildroot}%{_datadir}/applications/calibre.desktop %{buildroot}%{_datadir}/applications/calibre-gui.desktop
-
-# Remove all metainfo.xml files but the main one, we do not install the corresponding .desktop files
-rm %{buildroot}%{_datadir}/metainfo/calibre-ebook-{edit,viewer}.metainfo.xml
-# Remove unneeded desktop files
-rm %{buildroot}%{_datadir}/applications/calibre-ebook-{edit,viewer}.desktop
-rm %{buildroot}%{_datadir}/applications/calibre-lrfviewer.desktop
-
 # Fix missing user-agent-data.json
 # With version 6.15.0 it is available again. So we use it again from source but let the code in.
-#install -Dm 0644 %%{SOURCE7} %%{buildroot}%%{_datadir}/%%{name}/user-agent-data.json
+#install -Dm 0644 %%{SOURCE8} %%{buildroot}%%{_datadir}/%%{name}/user-agent-data.json
 
 %fdupes %{buildroot}%{_prefix}
 
@@ -366,6 +357,7 @@ rm %{buildroot}%{_datadir}/applications/calibre-lrfviewer.desktop
 # Later, liberation became a directory again.
 # This scriptlet supports both upgrade scenarios.  Sort of.
 # When converting from a link into a directory, it will complain about conflicting files with liberation-fonts.
+
 %pretrans -p <lua>
 path = "%{_datadir}/%{name}/fonts/liberation"
 st = posix.stat(path)
@@ -403,6 +395,9 @@ CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python3.11 setup.py test "${TEST_EXCLUDE
 %license COPYRIGHT LICENSE LICENSE.rtf
 %{_bindir}/*
 %{_datadir}/applications/%{name}-gui.desktop
+%{_datadir}/applications/%{name}-ebook-edit.desktop
+%{_datadir}/applications/%{name}-ebook-viewer.desktop
+%{_datadir}/applications/%{name}-lrfviewer.desktop
 %dir %{_datadir}/icons/hicolor/512x512
 %dir %{_datadir}/icons/hicolor/512x512/apps
 %{_datadir}/icons/hicolor/*/apps/*.png
@@ -413,6 +408,8 @@ CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python3.11 setup.py test "${TEST_EXCLUDE
 %{_libdir}/%{name}/
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/%{name}-gui.metainfo.xml
+%{_datadir}/metainfo/%{name}-ebook-edit.metainfo.xml
+%{_datadir}/metainfo/%{name}-ebook-viewer.metainfo.xml
 %{_datadir}/bash-completion/completions/%{name}*
 %{_datadir}/bash-completion/completions/*ebook*
 %{_datadir}/bash-completion/completions/lrf*
