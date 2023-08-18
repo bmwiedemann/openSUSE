@@ -31,4 +31,14 @@
   * gopls/internal/lsp/source: refresh embeddirective analyzer docs (forwarded request 1103614 from jfkw)</comment>
     <requestid>1103616</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>65796686a5def47ba3147e78a8a0924d</srcmd5>
+    <version>0.13.2</version>
+    <time>1692379718</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.13.2:
+  * gopls: update go.mod for v0.13.2-pre.1
+  * [gopls-release-branch.0.13] refactor/satisfy: (re)allow composite lits of pointer type (forwarded request 1104476 from jfkw)</comment>
+    <requestid>1104477</requestid>
+  </revision>
 </revisionlist>

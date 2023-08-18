@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 17 20:11:29 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.13.2:
+  * gopls: update go.mod for v0.13.2-pre.1
+  * [gopls-release-branch.0.13] refactor/satisfy: (re)allow composite lits of pointer type
+
+-------------------------------------------------------------------
 Sat Aug 12 13:48:30 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.13.1:

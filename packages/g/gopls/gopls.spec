@@ -17,7 +17,7 @@
 
 
 Name:           gopls
-Version:        0.13.1
+Version:        0.13.2
 Release:        0
 Summary:        Go LSP protocol language server
 License:        BSD-3-Clause
