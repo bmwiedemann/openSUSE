@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 16 11:03:53 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1692183824.664c432:
+  * docs: Update currently supported test log formats
+  * Add unit test for save_storage
+  * Add full-stack test for `save_storage`
+  * Add 'NAME' to QEMU backend blocklist in check_vars_docu
+  * Document `save_storage` and 'SAVE_STORAGE_TIMEOUT'
+  * Add support for saving storage during test
+  * consoles: Mention VNC keyboard layout in errors
+
+-------------------------------------------------------------------
 Sat Aug 05 05:47:40 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1691146636.a00cbb0:
