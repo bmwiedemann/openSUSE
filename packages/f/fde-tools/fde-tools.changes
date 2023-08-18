@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 18 07:51:12 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.6.7
+  + Check failure of authorized policy creation
+  + Additional check for recovery password
+- Drop upstreamed patch
+  + fde-tools-handle-authorized-policy-failure.patch
+
+-------------------------------------------------------------------
 Thu Jul 27 06:23:22 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools-handle-authorized-policy-failure.patch handle the

@@ -17,7 +17,7 @@
 
 
 Name:           fde-tools
-Version:        0.6.6
+Version:        0.6.7
 Release:        0
 Summary:        Tools required for Full Disk Encryption
 License:        GPL-2.0-only
@@ -26,7 +26,6 @@ URL:            https://github.com/openSUSE/fde-tools
 Source:         https://github.com/openSUSE/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        fde-tools.service
 Patch:          fde-tools-firstboot-alp-snapshot.patch
-Patch1:         fde-tools-handle-authorized-policy-failure.patch
 BuildRequires:  help2man
 BuildRequires:  openssl >= 0.9.8
 BuildRequires:  tpm2-0-tss-devel
