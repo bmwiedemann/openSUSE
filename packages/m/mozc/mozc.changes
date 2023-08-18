@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 16 17:37:50 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build without %jobs
+
+-------------------------------------------------------------------
 Sat Jun 10 13:33:02 UTC 2023 - Fuminobu Takeyama <ftake@geeko.jp> - 2.29.5111.102
 
 - Upstream update to 2.29.5111.102
