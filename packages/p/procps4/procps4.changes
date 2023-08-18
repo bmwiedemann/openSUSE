@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 18 11:10:05 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch procps-ng-3.3.9-w-notruncate.diff
+  to real to not truncate output of w with option -n
+
+-------------------------------------------------------------------
+Thu Aug 17 12:49:41 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- procps-ng-4.0.3-logind.patch: Backport from 4.x git, prefer 
+  logind over utmp (jsc#PED-3144)
+- procps-ng-3.3.9-w-notruncate.diff: Rebase
+
+-------------------------------------------------------------------
 Tue Aug 15 12:24:00 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch CVE-2023-4016.patch

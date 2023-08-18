@@ -60,6 +60,7 @@ Patch33:        procps-ng-3.3.11-pmap4suse.patch
 Patch37:        procps-ng-4.0.0-floats.dif
 # PATCH-FIX-UPSTREAM -- bsc#1214290
 Patch38:        CVE-2023-4016.patch
+Patch39:        procps-ng-4.0.3-logind.patch
 BuildRequires:  automake
 BuildRequires:  dejagnu
 BuildRequires:  diffutils
@@ -133,7 +134,8 @@ the process information pseudo-file system.
 %prep
 %setup -q -n procps-ng-%{version}
 %patch1
-%patch3 -b .trcate
+%patch39 -p1
+%patch3 -p1 -b .trcate
 %patch7 -b .rof
 %patch8 -b .cache
 %patch11

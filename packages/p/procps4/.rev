@@ -61,4 +61,17 @@
   * CVE-2023-4016: ps buffer overflow (bsc#1214290)</comment>
     <requestid>1104338</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3122c601706fa2d609a92339676ec750</srcmd5>
+    <version>4.0.3</version>
+    <time>1692379748</time>
+    <user>anag+factory</user>
+    <comment>- Modify patch procps-ng-3.3.9-w-notruncate.diff
+  to real to not truncate output of w with option -n
+
+- procps-ng-4.0.3-logind.patch: Backport from 4.x git, prefer 
+  logind over utmp (jsc#PED-3144)
+- procps-ng-3.3.9-w-notruncate.diff: Rebase</comment>
+    <requestid>1104662</requestid>
+  </revision>
 </revisionlist>
