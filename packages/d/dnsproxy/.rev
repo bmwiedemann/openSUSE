@@ -84,4 +84,18 @@
   * Pull request 271: Fix 208 (forwarded request 1103169 from VaiTon)</comment>
     <requestid>1103194</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>08dbf5abd5e117dd0612be8d59ddde77</srcmd5>
+    <version>0.54.0</version>
+    <time>1692379721</time>
+    <user>anag+factory</user>
+    <comment>- Revert Use make for building as specified in the upstream
+  README.md. Go applications typically need only a few lines for
+  their go build command. Keeping that listing in the .spec makes
+  it easier for mainainers to review relevant changes and normalize
+  to our build conventions. Makefiles for Go applications are often
+  building docker images and other steps not relevant to distro
+  packaging, or that may not work inside OBS e.g. network access. (forwarded request 1104486 from jfkw)</comment>
+    <requestid>1104487</requestid>
+  </revision>
 </revisionlist>

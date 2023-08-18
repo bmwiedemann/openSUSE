@@ -1,3 +1,22 @@
+-------------------------------------------------------------------
+Thu Aug 17 22:06:06 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Revert Use make for building as specified in the upstream
+  README.md. Go applications typically need only a few lines for
+  their go build command. Keeping that listing in the .spec makes
+  it easier for mainainers to review relevant changes and normalize
+  to our build conventions. Makefiles for Go applications are often
+  building docker images and other steps not relevant to distro
+  packaging, or that may not work inside OBS e.g. network access.
+
+-------------------------------------------------------------------
+Thu Aug 17 21:24:05 UTC 2023 - eyadlorenzo@gmail.com
+
+- Update to version 0.54.0:
+  * all: update quic-go with version compatible with go1.21
+- Use make for building, as specified in the upstream README.md
+
+-------------------------------------------------------------------
 Wed Aug 09 14:08:09 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.53.1:
