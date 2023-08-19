@@ -361,4 +361,12 @@ Another accidental omission in the KDE Frameworks update...</comment>
     <comment>KDE Frameworks 5.108.0 (forwarded request 1097055 from krop)</comment>
     <requestid>1097721</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>fbea248585777dac705245d11c5a0e31</srcmd5>
+    <version>5.109.0</version>
+    <time>1692483068</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.109.0 (forwarded request 1104028 from krop)</comment>
+    <requestid>1104599</requestid>
+  </revision>
 </revisionlist>
