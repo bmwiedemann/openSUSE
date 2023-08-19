@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 17 07:49:29 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.11.0
+  * Moved Kirigami.CategorizedSettings and Kirigami.SettingAction
+    from Kirigami to Kirigami Addons
+  * Two new components: FloatingButton and DoubleFloatingButton
+  * Renamed MobileForm to FormCard
+  * New About Pages
+
+-------------------------------------------------------------------
 Fri Jul 28 13:19:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.10.0. No changelog.
