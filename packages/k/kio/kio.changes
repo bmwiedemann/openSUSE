@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug  8 17:42:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.109.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.109.0
+- Changes since 5.108.0:
+  * Use switcheroo-control to find discrete GPUs (kde#449106)
+  * file: preserve mode on put (kde#471539)
+  * KFileWidget: Use targetUrl to extract urls, better handle absolute urls cases (kde#459485)
+  * Add explicit moc includes to sources for moc-covered headers
+  * KFileWidget: better exclude string that may look like Urls (kde#473228)
+
+-------------------------------------------------------------------
 Mon Jul  3 07:01:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.108.0

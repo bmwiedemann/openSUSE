@@ -23,7 +23,7 @@
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio
-Version:        5.108.0
+Version:        5.109.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -86,6 +86,8 @@ Requires:       %{name}-core = %{version}
 Requires:       kded >= %{_kf5_bugfix_version}
 # KIO/FileDialog uses klauncher directly, but we can't add Requires, as that would introduce dep cycle
 Recommends:     kinit
+# Only useful for laptops with hybrid GPU
+Recommends:     switcheroo-control
 
 %description
 This framework implements almost all the file management functions you
