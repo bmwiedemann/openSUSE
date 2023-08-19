@@ -16096,6 +16096,7 @@ unsorted:
   - lirc-tools-gui 
   - listres 
   - lite-xl 
+  - lite-xl-plugin-manager 
   - litetran 
   - littleb-devel 
   - littleb-examples 
@@ -22854,7 +22855,7 @@ unsorted:
   - python310-ConfigUpdater 
   - python310-Cycler 
   - python310-Cython 
-  - python310-Cython3 
+  - python310-Cython0 
   - python310-DataProperty 
   - python310-DataShape 
   - python310-DateTime 
@@ -24439,6 +24440,7 @@ unsorted:
   - python310-jaraco.classes 
   - python310-jaraco.collections 
   - python310-jaraco.context 
+  - python310-jaraco.develop 
   - python310-jaraco.envs 
   - python310-jaraco.functools 
   - python310-jaraco.itertools 
@@ -24449,6 +24451,9 @@ unsorted:
   - python310-jaraco.test 
   - python310-jaraco.text 
   - python310-jaraco.tidelift 
+  - python310-jaraco.ui 
+  - python310-jaraco.vcs 
+  - python310-jaraco.versioning 
   - python310-javapackages 
   - python310-javaproperties 
   - python310-jdatetime 
@@ -24887,8 +24892,8 @@ unsorted:
   - python310-numpy-devel 
   - python310-numpy-gnu-hpc 
   - python310-numpy-gnu-hpc-devel 
-  - python310-numpy_1_24_2-gnu-hpc 
-  - python310-numpy_1_24_2-gnu-hpc-devel 
+  - python310-numpy_1_25_2-gnu-hpc 
+  - python310-numpy_1_25_2-gnu-hpc-devel 
   - python310-numpydoc 
   - python310-nwdiag 
   - python310-nxapi-plumbing 
@@ -26344,7 +26349,7 @@ unsorted:
   - python311-ConfigUpdater 
   - python311-Cycler 
   - python311-Cython 
-  - python311-Cython3 
+  - python311-Cython0 
   - python311-DataProperty 
   - python311-DataShape 
   - python311-DateTime 
@@ -27845,6 +27850,7 @@ unsorted:
   - python311-jaraco.classes 
   - python311-jaraco.collections 
   - python311-jaraco.context 
+  - python311-jaraco.develop 
   - python311-jaraco.envs 
   - python311-jaraco.functools 
   - python311-jaraco.itertools 
@@ -27855,6 +27861,9 @@ unsorted:
   - python311-jaraco.test 
   - python311-jaraco.text 
   - python311-jaraco.tidelift 
+  - python311-jaraco.ui 
+  - python311-jaraco.vcs 
+  - python311-jaraco.versioning 
   - python311-javapackages 
   - python311-javaproperties 
   - python311-jdatetime 
@@ -28270,8 +28279,8 @@ unsorted:
   - python311-numpy-devel 
   - python311-numpy-gnu-hpc 
   - python311-numpy-gnu-hpc-devel 
-  - python311-numpy_1_24_2-gnu-hpc 
-  - python311-numpy_1_24_2-gnu-hpc-devel 
+  - python311-numpy_1_25_2-gnu-hpc 
+  - python311-numpy_1_25_2-gnu-hpc-devel 
   - python311-numpydoc 
   - python311-nwdiag 
   - python311-nxapi-plumbing 
@@ -29678,7 +29687,7 @@ unsorted:
   - python39-ConfigUpdater 
   - python39-Cycler 
   - python39-Cython 
-  - python39-Cython3 
+  - python39-Cython0 
   - python39-DataProperty 
   - python39-DataShape 
   - python39-DateTime 
@@ -31263,6 +31272,7 @@ unsorted:
   - python39-jaraco.classes 
   - python39-jaraco.collections 
   - python39-jaraco.context 
+  - python39-jaraco.develop 
   - python39-jaraco.envs 
   - python39-jaraco.functools 
   - python39-jaraco.itertools 
@@ -31273,6 +31283,9 @@ unsorted:
   - python39-jaraco.test 
   - python39-jaraco.text 
   - python39-jaraco.tidelift 
+  - python39-jaraco.ui 
+  - python39-jaraco.vcs 
+  - python39-jaraco.versioning 
   - python39-javapackages 
   - python39-javaproperties 
   - python39-jdatetime 
@@ -31709,8 +31722,8 @@ unsorted:
   - python39-numpy-devel 
   - python39-numpy-gnu-hpc 
   - python39-numpy-gnu-hpc-devel 
-  - python39-numpy_1_24_2-gnu-hpc 
-  - python39-numpy_1_24_2-gnu-hpc-devel 
+  - python39-numpy_1_25_2-gnu-hpc 
+  - python39-numpy_1_25_2-gnu-hpc-devel 
   - python39-numpydoc 
   - python39-nwdiag 
   - python39-nxapi-plumbing 
@@ -44951,6 +44964,7 @@ unsorted:
   - udunits2 
   - udunits2-devel 
   - ueberzugpp 
+  - uefi_mbr 
   - ufiformat 
   - uftpd 
   - uget 
