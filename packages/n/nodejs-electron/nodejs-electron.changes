@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 17 16:28:17 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 22.3.21
+  * Fixed unnecessary package.json check on built-in modules. 
+- Disabled video hardware acceleration (vaapi) and use system libvpx everywhere.
+  This is not a web browser where users regularly watch 4K videos,
+  and i think the need to vendor dependencies and increased buildtime is not worth it.
+- Use system dav1d and libjxl on Leap 15.5 as they're available now.
+- Fix unreasolvabe build and use llhttp 8 on Fedora 37.
+
+-------------------------------------------------------------------
 Thu Aug 10 08:11:33 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 22.3.20

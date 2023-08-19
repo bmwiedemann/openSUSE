@@ -54,7 +54,7 @@ BuildArch:      i686
 #the QT ui is currently borderline unusable (too small fonts in menu and wrong colors)
 %bcond_with qt
 
-%bcond_without vaapi
+%bcond_with vaapi
 
 %if %{with vaapi}
 #vaapi still requires bundled libvpx
@@ -107,24 +107,28 @@ BuildArch:      i686
 
 %bcond_without system_nghttp2
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500 || 0%{?fedora} >= 37
+%bcond_without system_jxl
+%bcond_without system_dav1d
+%else
+%bcond_with system_jxl
+%bcond_with system_dav1d
+%endif
+
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 37
 %bcond_without harfbuzz_5
 %bcond_without system_aom
 %bcond_without system_avif
-%bcond_without system_jxl
 %bcond_without icu_71
 %bcond_without ffmpeg_5
-%bcond_without system_dav1d
 %bcond_without system_spirv
 %else
 %bcond_with harfbuzz_5
 %bcond_with system_aom
 %bcond_with system_avif
-%bcond_with system_jxl
 %bcond_with icu_71
 %bcond_with ffmpeg_5
-%bcond_with system_dav1d
 %bcond_with system_spirv
 %endif
 
@@ -166,7 +170,7 @@ BuildArch:      i686
 %bcond_with system_histogram
 %endif
 
-%if 0%{?fedora} >= 38
+%if 0%{?fedora} >= 37
 %bcond_without llhttp_8
 %else
 %bcond_with llhttp_8
@@ -208,7 +212,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        22.3.20
+Version:        22.3.21
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -418,7 +422,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  flatbuffers-compiler
 %endif
 BuildRequires:  flatbuffers-devel
-BuildRequires:  git-core
 BuildRequires:  gn >= 0.1807
 BuildRequires:  gperf
 %if %{with system_histogram}
@@ -455,7 +458,9 @@ BuildRequires:  memory-constraints
 BuildRequires:  mold
 %endif
 %ifarch %ix86 x86_64 %x86_64
+%if %{without system_aom} || %{without system_vpx}
 BuildRequires:  nasm
+%endif
 %endif
 %if 0%{?suse_version}
 BuildRequires:  ninja >= 1.7.2
@@ -556,7 +561,6 @@ BuildRequires:  icu.691-devel
 
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(krb5)
-BuildRequires:  pkgconfig(lcms2)
 %if %{with ffmpeg_5}
 BuildRequires:  pkgconfig(libavcodec) >= 59
 BuildRequires:  pkgconfig(libavformat) >= 59
@@ -586,11 +590,12 @@ BuildRequires:  pkgconfig(libmd)
 BuildRequires:  pkgconfig(libnghttp2)
 %endif
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsecret-1)
+%if %{with vaapi}
 BuildRequires:  pkgconfig(libva)
+%endif
 BuildRequires:  pkgconfig(libwebp) >= 0.4.0
 BuildRequires:  pkgconfig(libwoff2dec)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
@@ -1122,6 +1127,10 @@ myconf_gn+=" enable_pdf=false"
 myconf_gn+=" enable_pdf_viewer=false"
 myconf_gn+=" enable_print_preview=false"
 myconf_gn+=" enable_basic_printing=false"
+#we don't build PDF support, so disabling the below:
+#myconf_gn+=" use_system_lcms2=true"
+#myconf_gn+=" use_system_libopenjpeg2=true"
+
 
 #do not build chrome pepper plugins support
 myconf_gn+=" enable_plugins=false"
@@ -1217,23 +1226,28 @@ myconf_gn+=" disable_fieldtrial_testing_config=true"
 myconf_gn+=" use_gnome_keyring=false"
 myconf_gn+=" use_unofficial_version_number=false"
 myconf_gn+=" use_lld=false"
+
 %if %{with vaapi}
-myconf_gn+=" use_vaapi=true"
+myconf_gn+=' use_vaapi=true'
+myconf_gn+=' use_vaapi_x11=true'
+myconf_gn+=' use_libgav1_parser=true'
+%else
+myconf_gn+=' use_vaapi=false'
+myconf_gn+=' use_vaapi_x11=false'
+myconf_gn+=' use_libgav1_parser=false'
 %endif
+
 myconf_gn+=" treat_warnings_as_errors=false"
 myconf_gn+=" use_dbus=true"
 myconf_gn+=" enable_vulkan=true"
 myconf_gn+=" icu_use_data_file=false"
 myconf_gn+=" media_use_openh264=false"
-myconf_gn+=" use_libgav1_parser=true"
 myconf_gn+=" rtc_use_h264=false"
 myconf_gn+=" use_v8_context_snapshot=true"
 myconf_gn+=" v8_use_external_startup_data=true"
 myconf_gn+=" use_system_zlib=true"
 myconf_gn+=" use_system_libjpeg=true"
 myconf_gn+=" use_system_libpng=true"
-myconf_gn+=" use_system_lcms2=true"
-myconf_gn+=" use_system_libopenjpeg2=true"
 myconf_gn+=" use_system_wayland_scanner=true"
 myconf_gn+=" use_system_libwayland=true"
 myconf_gn+=" use_system_harfbuzz=true"
