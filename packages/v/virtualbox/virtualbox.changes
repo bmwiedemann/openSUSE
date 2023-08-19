@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 18 18:18:19 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- An additional fix was needed to handle flexible arrays in kernel 6.5+.
+  A fix was made for breakage of kernels 6.4.10+ boo#1212761 and boo#1214391.
+  Note that the change in 6.4 missed an internal include that is present
+  in kernel 6.5.
+
+-------------------------------------------------------------------
 Wed Aug  9 19:44:14 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 
 - Fix build for kernel 6.5
