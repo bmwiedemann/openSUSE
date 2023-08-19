@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kactivities-stats
-Version:        5.108.0
+Version:        5.109.0
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        LGPL-2.0-or-later
