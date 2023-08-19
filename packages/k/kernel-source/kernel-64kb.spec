@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.4
-%define patchversion 6.4.9
+%define patchversion 6.4.11
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -112,9 +112,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.4.9
+Version:        6.4.11
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5b9ad20
+Release:        <RELEASE>.g2a5b3f6
 %else
 Release:        0
 %endif
@@ -242,10 +242,10 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-5b9ad204d9b588ce9f24cf685a1bb1e46b48ac2b
-Provides:       kernel-srchash-5b9ad204d9b588ce9f24cf685a1bb1e46b48ac2b
+Provides:       kernel-%build_flavor-base-srchash-2a5b3f66898e9ecfa282f4399923c9546d3bc54d
+Provides:       kernel-srchash-2a5b3f66898e9ecfa282f4399923c9546d3bc54d
 # END COMMON DEPS
-Provides:       %name-srchash-5b9ad204d9b588ce9f24cf685a1bb1e46b48ac2b
+Provides:       %name-srchash-2a5b3f66898e9ecfa282f4399923c9546d3bc54d
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -1343,8 +1343,8 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-5b9ad204d9b588ce9f24cf685a1bb1e46b48ac2b
-Provides:       kernel-srchash-5b9ad204d9b588ce9f24cf685a1bb1e46b48ac2b
+Provides:       kernel-%build_flavor-base-srchash-2a5b3f66898e9ecfa282f4399923c9546d3bc54d
+Provides:       kernel-srchash-2a5b3f66898e9ecfa282f4399923c9546d3bc54d
 
 %obsolete_rebuilds %name-base
 %ifarch %ix86
