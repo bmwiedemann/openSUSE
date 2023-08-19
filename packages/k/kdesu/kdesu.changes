@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  8 17:42:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.109.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.109.0
+- Changes since 5.108.0:
+  * SuProcess: Disable echo in the PTY before starting sudo (kde#452532)
+  * PtyProcess: Allow calling enableLocalEcho before PTY creation
+
+-------------------------------------------------------------------
 Mon Jul  3 07:01:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.108.0
