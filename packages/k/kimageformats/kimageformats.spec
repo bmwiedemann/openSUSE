@@ -33,7 +33,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kimageformats
-Version:        5.108.0
+Version:        5.109.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
