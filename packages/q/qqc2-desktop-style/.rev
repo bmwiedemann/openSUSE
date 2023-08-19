@@ -576,4 +576,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>KDE Frameworks 5.108.0 (forwarded request 1097055 from krop)</comment>
     <requestid>1097740</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>7409ecf14e70fe90c7f7f9b16af9b08d</srcmd5>
+    <version>5.109.0</version>
+    <time>1692483091</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.109.0 (forwarded request 1104028 from krop)</comment>
+    <requestid>1104618</requestid>
+  </revision>
 </revisionlist>
