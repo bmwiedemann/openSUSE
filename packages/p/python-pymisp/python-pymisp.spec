@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define misp_objects_revision 66a9b8eee70ce3ac7ff5f2225cd7f78fe4630143
+%define misp_objects_revision 45bb7539a0067e23b709d082c18dcba56c34bfce
 Name:           python-pymisp
-Version:        2.4.166
+Version:        2.4.170.2
 Release:        0
 Summary:        Python API for MISP
 License:        BSD-2-Clause
@@ -34,37 +33,48 @@ Source1:        https://github.com/MISP/misp-objects/archive/%{misp_objects_revi
 # packaging tool
 Source2:        update-misp-objects.sh
 Source3:        python-pymisp-doc-rpmlintrc
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-jsonschema
-Requires:       python-oletools
-Requires:       python-python-dateutil
-Requires:       python-requests
+Requires:       python-jsonschema >= 4.18.4
+Recommends:     python-oletools
+Requires:       python-Deprecated >= 1.2.14
+Requires:       python-python-dateutil >= 2.8.2
+Requires:       python-requests >= 2.31.0
 Recommends:     %{name}-doc
 Recommends:     python-extract-msg >= 0.28.0
-Recommends:     python-magic
+Recommends:     python-magic >= 0.4.27
 Recommends:     python-reportlab
+Recommends:     python3-beautifulsoup4 >= 4.12.2
+Recommends:     python3-publicsuffixlist
+Recommends:     python3-urllib3
+Recommends:     python3-validators >= 0.20.0
 Suggests:       python-pydeep
+# Other optional requirements which are unavailable in Tumbleweed
+#extract_msg = {version = "^0.42.1", optional = true}
+#RTFDE = {version = "^0.1.0", optional = true}
+#pydeep2 = {version = "^0.5.1", optional = true}
+#lief = {version = "^0.13.2", optional = true}
+#pyfaup = {version = "^1.2", optional = true}
 BuildArch:      noarch
 # SECTION tests
-BuildRequires:  %{python_module Deprecated}
-BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module Deprecated >= 1.2.14}
+BuildRequires:  %{python_module jsonschema >= 4.18.4}
 BuildRequires:  %{python_module oletools}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module python-magic}
+BuildRequires:  %{python_module python-dateutil >= 2.8.2}
+BuildRequires:  %{python_module python-magic >= 0.4.27}
 BuildRequires:  %{python_module reportlab}
+BuildRequires:  %{python_module requests >= 2.31.0}
 BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module requests}
 # /SECTION
 # SECTION docs
 BuildRequires:  python3-CommonMark
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-recommonmark
+BuildRequires:  python3-recommonmark >= 0.7.1
 BuildRequires:  python3-sphinx-autodoc-typehints
 # /SECTION
-Requires:       python-Deprecated
 %python_subpackages
 
 %package -n %{name}-doc
@@ -107,7 +117,8 @@ rm tests/test_emailobject.py
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pymisp/
+%{python_sitelib}/pymisp-%{version}*-info
 
 %files -n %{name}-doc
 %doc examples docs/build/html
