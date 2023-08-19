@@ -60,6 +60,11 @@
     %define with_libxl     0
 %endif
 
+# Don't build Xen for ALP-based products
+%if 0%{?suse_version} == 1600
+    %define with_libxl     0
+%endif
+
 # Enable numactl for most architectures. Handle aarch64 separately
 %ifarch s390 s390x %arm %ix86
     %define with_numactl   0

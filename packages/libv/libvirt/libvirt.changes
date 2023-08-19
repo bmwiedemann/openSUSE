@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 17 20:04:23 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- spec: Disable Xen driver in ALP-based products
+
+-------------------------------------------------------------------
 Fri Aug  4 16:34:38 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - Add upstream commit 3d2f3fb72b to fix max file limits in systemd
