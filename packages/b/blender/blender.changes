@@ -1,4 +1,212 @@
 -------------------------------------------------------------------
+Thu Aug 17 08:33:31 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.6.2 LTS:
+  + UILayout.template_node_view() doesn’t render UI properly.
+    #99569
+  + Accent Grave / Tilde key on Apple macOS not working. #109630
+  + Regression: Using Grease Pencil Sculpt Grab Tool on a Stroke
+    affected by Subdivide Modifier will Crash Blender. #109986
+  + Blender 3.6 immediately crashes loading a GN hair model created
+    in 3.5. #110107
+  + Mesh Deform Modifier Vertex Count Error. #110021
+  + Graphics Tablet Lag when in Texture Paint mode in Blender 3.0.
+    #93796
+  + LibOverride: Fix RNA handling of object parent-related
+    properties. 8362d4aa3d5b072de801dccdd32d223c6fe81c88
+  + LibOverride: Reset object-parenting related properties in
+    resync process. cb31546c03b32b39f3a9e21f6eeebd8afc2bb48f
+  + LibOverride: Cleanup: Split log into dedicated output for
+    resync code. db2d14823952d11bda12b783fda425275c1ec92d
+  + LibOverride: Fix ‘resync enforce’ not working on RNA
+    collections of IDs. 11c57f30166e0be116030353cba3d4d1fc5a0c6c
+  + LibOverride: RNA Apply code: Work around potential duplicates
+    in names of RNA collections of IDs.
+    8736b6cc83012069f8f91f8a8e51e379be078764
+  + Fix (unreported) missing ‘need resync’ detection in overrides
+    of overrides. a6df00020630d42147cb7e341d4652ade5385611
+  + LibOverride: Extend unittest to cover more advanced/complex
+    cases. 30943d710f2e447de5831410a9e9e6fcba1f6826
+  + LibOverride: Remove an override property when it has no
+    operations. cc325ad1ba5b39d89f2211063b2f4577b835a8c3
+  + LibOverride: Fix persistent override property in some RNA
+    pointer cases. f63ca4f7a82cf472cf1db59f18b810ddac2629cb
+  + LibOverride: Fix RNA API to access liboverride operation’s
+    flag. 8c81327b84b545370631d96e37f8632d0d6c24f9
+  + Fix (unreported) incorrect behavior of liboverride hierarchy
+    fixing code. 4bc512bc9d62e75151660c7cc6e4069bfa0cade3
+  + Window autofocus misbehaves. #109886
+  + Regression: Pressing multiple modifier keys at the same time
+    locks mouse click. #109525
+  + Switching open windows ignores held modifiers on WIN32. #40059
+  + Docs: Fix layout of bpy.types.Object Python API documents.
+    d47755f3c6e
+  + Spreadsheet does not update during/after playing animation.
+    #110164
+  + Windows + Intel Arc A770: Crashes if modifying the object after
+    rendering image in rendered view mode. #109771
+  + Animation: Fcurve Channel color band alignment. 0c4a3577469
+  + Geometry Nodes: Float Curve input limits are not working unless
+    “reset view” is used. #106139
+  + Appended text looses user (even if used in the Text Editor)
+    after reload. #110341
+  + deps_builder: Update USD repo and hash. dca1dbbc6c3
+  + Regression: Speaker ignoring of the starting position in NLA
+    track. #110336
+  + `use spatial splits` does not display point cloud correctly on
+    video card. #110170
+  + Regression: Deadlock on render start. #110426
+  + Fix #109417: Cycles HIP RT crash with multi device rendering.
+    #110512
+  + Snaping in solid mode (Xray 1.0) doesnt snap to “occluded”
+    geometry. #110259
+  + bpy.app.driver_namespace: no way to properly initialize for
+    driver in material. #109720
+  + How to Handle Forward Compatibility. #109151
+  + Fix (unreported) minor bug in RNA/Liboverride apply code.
+    fbcaf7bf6f8
+  + blender 3.6.1 crashes on start with wayland. #110627
+  + Regression: Gizmo stuck in place when I playback my animation.
+    #110041
+  + Fix #110615: missing GL dev packages in
+    install_linux_packages.py. #110609
+  + Regression: Loading a VSE .blend file created in older version
+    into 3.6.0 loses information about video/audio clip cut
+    lengths. #110333
+  + vse separate image after import not working. #110205
+  + Keyframes on values of linked data. #109781
+  + Fix (unreported) missing handling of ViewLayer IDProperties in
+    foreach_id code. c426d5b084b
+  + Fix (unreported) collection ‘readfile’ expand incorrect
+    assertion. 455683c838b
+  + Export_3ds: Fixed camera & spotlight target calculation.
+    c94cc788
+  + glTF exporter: fix missing animation hook parameter. 18d26d61
+  + Export_3ds: Fixed mismatched sign in target calculation.
+    82ce03ac
+  + Import_3ds: Fixed mismatched sign in target calculation.
+    90a7110b
+  + (Sun Position) – “North” indicator will not hide. #104781
+  + Extra objects: Fix TypeError when torus knot added. 973e85bd
+  + Regression: Normal Edit modifier screws up UVs. #110471
+  + Vertex weight slider not functional in a smooth way
+    (weightpaint mode, editmode is fine). #109460
+  + Make Line Tool Crashes Blender When Object Has Subdivision
+    Surface Modifier. #110601
+  + Keyframes on values of linked data. #109781
+  + new gaussian smooth creates jagged keys. #109799
+  + Graphic glitches while editing curves – Apple M2. #110372
+
+- Update to 3.6.1 LTS:
+  + Operator bpy.ops.uv.pack_islands call leads to Blender crash.
+    #108171
+  + Append: in `localize All` case, LibOverrides does not behave
+    properly and will leave Main data in invalid state. #109004
+  + Frame change handler no longer entered when playback stops.
+    #109218
+  + Fix (studio-reported) crash when using ‘Clear’ on a liboverride
+    hierarchy in the Outliner. 6adfd2ae393
+  + Fix property tags dummy enum value holding a reference to stack
+    memory. 45bf61f131e
+  + Fix dropping files onto the window under Wayland in some cases.
+    f825a346fcf
+  + Enum properties don’t display text in Dope Sheet sliders.
+    #109198
+  + Baking in multi-Tiles textures (Udim) from MultiRes only use
+    the height of the last tile as reference. #109302
+  + Orbit Around Selection in Edit Mode is not working after
+    3.6.0 update. #109519
+  + How to add credit to non-committers authors. #109438
+  + Regression: Vertex Weight Mix crash on apply/undo when mesh has
+    shape keys. #109523
+  + Regression: Wireframe overlay on mesh Merge by Distance omits
+    some edges. #109577
+  + NLA editor tracks checkbox overlapping names when left side
+    panel is too small. #109455
+  + Regression: Outliner: Assert in
+    outliner_collect_objects_to_delete. #109590
+  + Fix (unreported) missing viewlayer sync call in Outliner
+    liboverride tool. 9f6a4d0c065
+  + Fix toggling of liboverrides between editable and non-edtiable
+    with “Make” tool in the Outliner. 7880ae7c787
+  + Regression: Cycles: Optix not able to render without cuda
+    toolkit. #109550
+  + Blender 3.6 > .dds image /texture issue. #109442
+  + Error when collection visibility property is used in driver
+    expression (fixed in main, backport request). #109570
+  + Mesh.polygon_normals0.value reports incorrect normal. #109745
+  + Regression: Edge Crease behaves differently between Complex and
+    Simple Solidify. #109691
+  + Fix (unreported) potential crash in ‘make override’ Outliner
+    tool. 8bbd05e76f
+  + LibOverride: Add debug util to print out liboverride data.
+    34965bfcca
+  + LibOverride: Expose ‘match reference’ status flag in RNA API.
+    737c941eca
+  + LibOverride: Fix potential minor issues in RNA liboverride
+    handling code. 1b76b95886
+  + Node Wrangler: No matching images found. #104573
+  + FBX: Materials missing from linked duplicates. #104737
+  + Import_3ds: Fixed target calculation. 8e348cb5
+  + Blender HIP library `libamdhip64.so` loading issue in linux.
+    #109562
+  + Fix use-after free while transforming sequence strips.
+    fa2a28e96d0
+  + Fix sequencer image cache holding references to freed keys.
+    59ab70b594f
+  + Cycles: Embree: Resolve padding-related issue during buffer
+    creations. ab457ae62e3
+  + Cycles: Fix Out-Of-Bounds issues during Embree BVH building.
+    a81dccceaf9
+  + Applying a Bevel modifer on a object with UVs pins the uv
+    islands. #109471
+  + Weird rendering of points with velocity attribute. #103918
+  + Regression: Blender creates unexpected selection areas when
+    using Select Box or Select Lasso which can lead to crashes.
+    #109532
+  + Fix memory leak when there are unexpectedly more than MAXSEQ
+    strips. 8142195f290
+  + Fix invalid address-of operator (hidden by a cast).
+    aef44c2d503
+  + Using python to add a driver to rigid body properties causes a
+    crash. #109887
+  + UI: Grey out ShapeKey list entry on mute. be09111784d
+  + Unknown engine warning only shown when loading from a popup.
+    #109952
+  + Unable to start Blender 3.5 on MacOS 10.15. #106905
+  + Viewport glitches when using Metal backend. #109389
+  + Incorrect behavior when moving/linking objects to
+    non-overridden linked collection. #109898
+  + Geometry Nodes: Simulation crash. #109885
+  + Faces use retopology overlay color even when retopology overlay
+    is disabled. #109662
+  + Overlay: Edit Mesh wireframe incorrect bias. #109040
+  + Crash when calculating rigid body mass. #109928
+  + Regression: Average Brush in Vertex Paint Mode is broken.
+    #109822
+  + Can’t delete scene using context menu in “Blender File” view in
+    outliner. #109802
+  + LibOverride: Fix diffing code not always cleaning unused
+    operations. 3d2bae8a5daae92
+  + Regression: Cycles render crash using F12 render after running
+    script that uses bpy.ops.render. #109718
+  + Keyframes on values of linked data. #109781
+  + Snapping no longer works behind faces/objects in
+    wireframe/x-ray mode. #109433
+  + Regression: Array modifier change a merged Root vertex of Skin
+    modifier. #109565
+  + vertex slide is broken when using shortcut double GG with face
+    projection snap. #109633
+  + new gaussian smooth creates jagged keys. #109799
+  + Cycles HIP RT glass BSDF artifacts. #109418
+  + Regression: Geometry Nodes: Edge Split node crash. #110005
+
+- Update to 3.6.0 LTS:
+  + Too many to be listed here, check:
+    https://wiki.blender.org/wiki/Reference/Release_Notes/3.6
+    https://www.blender.org/download/releases/3-6/
+  
+-------------------------------------------------------------------
 Tue Aug  8 14:01:25 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Switch to python 3.11

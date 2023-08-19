@@ -77,7 +77,7 @@
 %bcond_with openxr
 
 Name:           blender
-Version:        3.5.1
+Version:        3.6.2
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
