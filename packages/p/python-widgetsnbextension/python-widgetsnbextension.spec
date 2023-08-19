@@ -18,7 +18,7 @@
 
 %define jupver 8.0.5
 Name:           python-widgetsnbextension
-Version:        4.0.7
+Version:        4.0.8
 Release:        0
 Summary:        Jupyter interactive widgets for Jupyter Notebook
 License:        BSD-3-Clause AND MIT
@@ -46,7 +46,8 @@ IPython users would install ipywidgets into their kernel.
 
 %package -n jupyter-widgetsnbextension
 Summary:        Jupyter interactive widgets for Jupyter Notebook - Jupyter Files
-Requires:       python3-widgetsnbextension = %{version}
+Requires:       python3dist(widgetsnbextension) = %{version}
+Suggests:       python3-widgetsnbextension
 Provides:       jupyter-jupyter-js-widgets = %{jupver}
 Provides:       jupyter-jupyter-jupyter-widgets-notebook-manager = %{jupver}
 

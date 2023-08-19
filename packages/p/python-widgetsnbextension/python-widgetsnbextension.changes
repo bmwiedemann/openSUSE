@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 18 18:24:34 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.8
+  * no own release notes, see ipywidgets 8.1:
+    - Allow CSS variables to be used as values in the Color trait
+      by @nurbo in #3796
+- Update requirements of python for js files to work: any python
+  is okay
+
+-------------------------------------------------------------------
 Tue Apr  4 15:36:02 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.0.7
