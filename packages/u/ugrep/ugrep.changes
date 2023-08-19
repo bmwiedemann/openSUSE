@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 18 16:20:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.0.0:
+  * faster async output, speeds up ugrep 3x when outputting many
+    matching lines
+  * removed "rest line" buffering, speeds up ugrep up to 2x,
+    depending on the output-related options used
+  * removed redundant "binary file" checking, speed-up 10%~20%
+  * double size input buffer, speeds up searching 5%~20% when
+    searching very large files (GB) with none/infrequent pattern
+    matches
+  * faster empty pattern matching, i.e. pattern '' matches all
+    lines faster, as much as 10x faster
+  * removed redundant color escape codes from the output
+  * option -Q with an optional argument is now -Q=DELAY instead of
+    -QDELAY, so -Q2 is -Q -2 (simple options should be composable/
+    separable) which searches 2 directory levels deep with the
+    query TUI
+
+-------------------------------------------------------------------
 Tue Aug 15 18:20:54 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.12.7:
