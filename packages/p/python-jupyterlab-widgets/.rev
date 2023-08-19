@@ -63,4 +63,16 @@
   * Fix: deprecation warning when using interact #3669</comment>
     <requestid>1077244</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dde6db223a2fde82e402e797ea72460a</srcmd5>
+    <version>3.0.8</version>
+    <time>1692483117</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.8
+  * no own release notes, see ipywidgets 8.1:
+    - Allow CSS variables to be used as values in the Color trait
+      by @nurbo in #3796
+- Require python for js files to work (forwarded request 1104763 from bnavigator)</comment>
+    <requestid>1104766</requestid>
+  </revision>
 </revisionlist>
