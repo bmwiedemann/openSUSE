@@ -26,7 +26,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kitemmodels
-Version:        5.108.0
+Version:        5.109.0
 Release:        0
 Summary:        Set of item models extending the Qt model-view framework
 License:        LGPL-2.1-or-later
