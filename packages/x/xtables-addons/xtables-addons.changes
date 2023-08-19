@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 18 21:02:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.25
+  * xt_ipp2p: change text-search algo to KMP
+    (fix some false negative matches)
+
+-------------------------------------------------------------------
 Mon May 15 14:10:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.24

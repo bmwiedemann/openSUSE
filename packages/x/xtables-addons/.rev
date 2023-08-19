@@ -668,4 +668,12 @@
     <comment>- Update to release 3.24</comment>
     <requestid>1087257</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>fceaf3e056e2f5572cc607e625f37329</srcmd5>
+    <version>3.25</version>
+    <time>1692483113</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.25</comment>
+    <requestid>1104717</requestid>
+  </revision>
 </revisionlist>
