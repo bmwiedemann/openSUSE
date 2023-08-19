@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug  8 17:42:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.109.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.109.0
+- Changes since 5.108.0:
+  * Document uses and abuses of Baloo::IndexerConfig
+  * [BalooSearch] Add sort order option
+  * [Codecs] Make encode/decode methods static, cleanup
+  * [QueryTest] Add full stack test
+  * [TermGeneratorTest] Extend phrase coverage
+  * [AdvancedQueryParserTest] Extend phrase coverage
+  * [SearchStore] Move private helpers to anonymous namespace
+  * [BasicIndexingJob] Ignore filename based mimetype for empty files
+  * Reduce filesystem dependencies in more tests
+  * [DocumentUrlDbTest] Remove file system dependencies from test
+  * [DocumentUrlDb] Split document addition and file tree creation
+  * [DocumentUrlDbTest] Use explicit recursion when walking directory tree
+  * [Transaction] Use DocumentUrlDB::contains
+  * [DocumentUrlDB] Add `contains` method
+  * Remove proxy for obsolete org.kde.baloo interface
+  * [Transaction] Remove Transaction::exec convenience method
+  * Add explicit moc includes to sources for moc-covered headers
+
+-------------------------------------------------------------------
 Mon Jul  3 07:01:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.108.0
