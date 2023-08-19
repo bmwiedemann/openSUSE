@@ -17,7 +17,7 @@
 
 
 Name:           python-ipywidgets
-Version:        8.0.6
+Version:        8.1.0
 Release:        0
 Summary:        IPython HTML widgets for Jupyter
 License:        BSD-3-Clause
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-ipykernel >= 4.5.1
+Requires:       python-comm >= 0.1.3
 Requires:       python-ipython >= 6.1.0
 Requires:       python-traitlets >= 4.3.1
 Requires:       (python-jupyterlab_widgets >= 3.0.7 with python-jupyterlab_widgets < 4)
@@ -40,7 +40,8 @@ Provides:       python-jupyter_ipywidgets = %{version}
 Obsoletes:      python-jupyter_ipywidgets < %{version}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module ipykernel >= 4.5.1}
+BuildRequires:  %{python_module comm >= 0.1.3}
+BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython >= 6.1.0}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module jupyterlab_widgets >= 3.0.7 with %python-jupyterlab_widgets < 4}
@@ -59,8 +60,6 @@ Interactive HTML widgets for Jupyter notebooks and the IPython kernel.
 
 %prep
 %autosetup -p1 -n ipywidgets-%{version}
-# remove shebangs from test modules. Those are not standalone scripts.
-sed -i '1{/env python/d}' ipywidgets/widgets/tests/*.py
 
 %build
 %pyproject_wheel

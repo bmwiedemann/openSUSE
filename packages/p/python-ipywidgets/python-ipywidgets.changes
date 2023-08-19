@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 18 18:01:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.1.0
+  * Allow CSS variables to be used as values in the Color trait by
+    @nurbo in #3796
+  * Replace ipykernel dependency by the comm dependency by
+    @martinRenou in #3811
+- Release 8.0.6
+  * Fix tab widget with JupyterLab 4 by @martinRenou in #3787
+
+-------------------------------------------------------------------
 Tue Apr  4 15:32:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.0.6

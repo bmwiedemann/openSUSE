@@ -159,4 +159,18 @@ The failing packages have been resolved</comment>
   * Fix: deprecation warning when using interact #3669</comment>
     <requestid>1077249</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ede6407eebf06bd34c65c48fee1150f1</srcmd5>
+    <version>8.1.0</version>
+    <time>1692483116</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.1.0
+  * Allow CSS variables to be used as values in the Color trait by
+    @nurbo in #3796
+  * Replace ipykernel dependency by the comm dependency by
+    @martinRenou in #3811
+- Release 8.0.6
+  * Fix tab widget with JupyterLab 4 by @martinRenou in #3787 (forwarded request 1104761 from bnavigator)</comment>
+    <requestid>1104764</requestid>
+  </revision>
 </revisionlist>
