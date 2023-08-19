@@ -1,7 +1,7 @@
 #
 # spec file for package python-Cerberus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,19 @@
 %define	skip_python2	1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Cerberus
-Version:        1.3.2
+Version:        1.3.5
 Release:        0
 Summary:        Extensible schema and data validation tool for Python dictionaries
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/nicolaiarocci/cerberus
-Source:         https://files.pythonhosted.org/packages/source/C/Cerberus/Cerberus-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source:         https://github.com/pyeve/cerberus/archive/refs/tags/%{version}.tar.gz#/cerberus-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION tests
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-benchmark}
 # /SECTION
 BuildRequires:  fdupes
 BuildArch:      noarch
@@ -42,13 +44,13 @@ is designed to be non-blocking and extensible, allowing for custom
 validation.
 
 %prep
-%setup -q -n Cerberus-%{version}
+%setup -q -n cerberus-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
