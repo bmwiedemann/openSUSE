@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 18 09:31:56 UTC 2023 - matthias.gerstner@suse.com
+
+- Update to version 2.4.0+git20230818.5cdd21d0:
+  * dbus-services: keep old deepin names around until rename is complete (bsc#1214101)
+  * BinariesCheck: Allow ELF prefix in magic string
+  * README: added test coverage badge
+  * pkg_resource is deprecated, importlib and packaging are standard now
+  * Change setuptools dependency version and license
+  * Add 'rpmlint.descriptions' to packages on pyproject.toml
+  * Move metadata from setup.py to pyproject.toml
+
+-------------------------------------------------------------------
 Thu Jul 27 14:51:53 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 2.4.0+git20230727.0fd5122:
