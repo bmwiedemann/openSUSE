@@ -1,7 +1,7 @@
 #
 # spec file for package pam_mount
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           pam_mount
 %define lname   libcryptmount0
-Version:        2.19
+Version:        2.20
 Release:        0
 Summary:        A PAM Module that can Mount Volumes for a User Session
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -113,7 +113,7 @@ b="%buildroot"
 rm -f $b%{_pam_moduledir}/*.{a,la} "$b/%_libdir"/*.la
 #install the docs
 mkdir -p "$b/%_docdir/%name/examples"
-cp -a doc/bugs.txt doc/news.rst LICENSE* doc/faq.txt doc/todo.txt doc/options.txt "$b/%_docdir/%name/"
+cp -a doc/bugs.rst doc/news.rst LICENSE* doc/faq.txt doc/todo.txt doc/options.txt "$b/%_docdir/%name/"
 install -m 755 %SOURCE1 "$b/%_docdir/%name/examples/"
 install -m 755 %SOURCE2 "$b/%_docdir/%name/examples/"
 %if 0%{?suse_version} < 1550
@@ -150,7 +150,7 @@ fi
 
 %files
 %_docdir/%name
-%{_pam_moduledir}/pam_mount*.so
+%_pam_moduledir/pam_mount*.so
 %_tmpfilesdir/%name.conf
 %_sbindir/mount.*
 %_sbindir/umount.*

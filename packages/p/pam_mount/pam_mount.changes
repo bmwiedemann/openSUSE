@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 17 14:04:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.20
+  * Tokenization support for user principal names
+    (usernames in the form of foo@bar.de)
+  * Added a volume option to control empty password behavior
+
+-------------------------------------------------------------------
 Tue Dec 27 13:14:00 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
