@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 20 03:48:00 UTC 2023 - heming.zhao@suse.com
+
+- blkdeactivate calls wrong mountpoint cmd (bsc#1214071)
+  + bug-1214071-blkdeactivate_calls_wrong_mountpoint.patch
+
+-------------------------------------------------------------------
 Fri Jun 23 06:38:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
 
 - multipath_component_detection = 0 in lvm.conf does not have any effect (bsc#1212613)

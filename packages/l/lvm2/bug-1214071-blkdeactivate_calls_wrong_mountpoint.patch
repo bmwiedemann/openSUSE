@@ -1,0 +1,20 @@
+From: Heming Zhao <heming.zhao@suse.com>
+Date: Sun, 20 Aug 2023 11:41:00 +0800
+
+This patch is for 'bsc#1214071 - blkdeactivate calls wrong mountpoint cmd'.
+Current 12sp5, 15sp2, 15sp3, 15sp4 & 15sp5 need to fix.
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+
+diff -Nupr a/scripts/blkdeactivate.sh.in b/scripts/blkdeactivate.sh.in
+--- a/scripts/blkdeactivate.sh.in	2023-08-20 10:23:36.744082346 +0800
++++ b/scripts/blkdeactivate.sh.in	2023-08-20 10:23:59.544161133 +0800
+@@ -35,7 +35,7 @@ DEV_DIR="/dev"
+ SYS_BLK_DIR="/sys/block"
+ 
+ MDADM="/sbin/mdadm"
+-MOUNTPOINT="/bin/mountpoint"
++MOUNTPOINT="/usr/bin/mountpoint"
+ MPATHD="/sbin/multipathd"
+ UMOUNT="/bin/umount"
+ VDO="/bin/vdo"

@@ -1294,4 +1294,14 @@
     <comment></comment>
     <requestid>1095569</requestid>
   </revision>
+  <revision rev="161" vrev="8">
+    <srcmd5>dd8d5adfec092adc71f1d52e54d3f8a4</srcmd5>
+    <version>2.03.16</version>
+    <time>1692610968</time>
+    <user>anag+factory</user>
+    <comment>- blkdeactivate calls wrong mountpoint cmd (bsc#1214071)
+  + bug-1214071-blkdeactivate_calls_wrong_mountpoint.patch
+</comment>
+    <requestid>1104870</requestid>
+  </revision>
 </revisionlist>
