@@ -26,9 +26,10 @@ URL:            https://dolphin-emu.org
 # n=dolphin-emu && v=5.0.17995 && c=8bad821019721b9b72701b495da95656ace5fea5 && cd /tmp && git clone https://github.com/$n/dolphin.git $n && cd $n && git checkout $c && rm -rf .??* && cd .. && n=dolphin-emu && d=$n-$v && mv $n $d && f=$d.tar.xz && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         %{name}-not-discord-presence.patch
-Patch1:         dolphin-emu-gcc13.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Gui-private-headers-devel >= 5.9
 BuildRequires:  mbedtls-devel < 3
@@ -66,9 +67,6 @@ BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(soundtouch)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr)
-%if 0%{?suse_version} <= 1500
-BuildRequires:  gcc10-c++
-%endif
 Requires:       nintendo-gamecube-wiimote-udev-rules
 ExclusiveArch:  x86_64 aarch64
 
@@ -98,27 +96,21 @@ sed -i '/CMAKE_C.*_FLAGS/d' CMakeLists.txt
 sed -i 's/minizip>=2.0.0/minizip/' CMakeLists.txt
 
 %build
-%if 0%{?suse_version} <= 1500
-export CXX=g++-10
-%endif
-
 # FIXME: you should use the %%cmake macros
 cmake . \
     -LA \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-%ifarch x86_64
+    -DCMAKE_C_COMPILER=gcc-12 \
+    -DCMAKE_CXX_COMPILER=g++-12 \
     -DCMAKE_C_FLAGS="%{optflags}" \
     -DCMAKE_CXX_FLAGS="%{optflags}" \
-%endif
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DDISTRIBUTOR=openSUSE \
     -DDOLPHIN_WC_BRANCH=beta \
     -DDOLPHIN_WC_DESCRIBE=%{version} \
     -DDOLPHIN_WC_REVISION=%{commit} \
     -DENABLE_ANALYTICS=OFF \
-%if 0%{?suse_version} >= 1550
     -DENABLE_LTO=ON \
-%endif
     -DENCODE_FRAMEDUMPS=OFF \
     -DUSE_DISCORD_PRESENCE=OFF \
     -DUSE_MGBA=OFF \

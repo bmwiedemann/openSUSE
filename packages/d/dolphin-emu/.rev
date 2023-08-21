@@ -72,4 +72,13 @@
     <comment>- Limit build to mbedtls &lt; 3.</comment>
     <requestid>1085113</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>587864300a2af2b82c16e92bd24b39b5</srcmd5>
+    <version>5.0.17995</version>
+    <time>1692611151</time>
+    <user>anag+factory</user>
+    <comment>- Switched to gcc12 (boo#1210477).
+- Removed file dolphin-emu-gcc13.patch.</comment>
+    <requestid>1104938</requestid>
+  </revision>
 </revisionlist>
