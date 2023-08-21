@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 20 05:47:37 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 1.1.0
+  * new language model
+  * fix full pinyin shuangpin preedit to use the pinyin of first candidate
+  * fuzzy pinyin now allows jqxy with van
+  * libime_pinyindict now skips invalid lines when building dictionary file
+  * improve partial match flag for chaizi  
+
+-------------------------------------------------------------------
 Thu Apr 27 22:18:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.17:
