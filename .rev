@@ -264,4 +264,12 @@ This fixes the file conflict in factory (forwarded request 171294 from TheBlackC
     errors.</comment>
     <requestid>1094122</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>b910ad891c5df8ffe7f1fa08ec11ffa5</srcmd5>
+    <version>2.7.1</version>
+    <time>1692611148</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104928</requestid>
+  </revision>
 </revisionlist>
