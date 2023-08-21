@@ -24,6 +24,8 @@ Summary:        i18n and l10n support for Flask
 License:        BSD-3-Clause
 URL:            https://github.com/python-babel/flask-babel
 Source:         https://github.com/python-babel/flask-babel/archive/refs/tags/v%{version}.tar.gz#/Flask-Babel-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#python-babel/flask-babel#230
+Patch0:         support-flask-2.4.patch
 BuildRequires:  %{python_module Babel >= 2.12}
 BuildRequires:  %{python_module Flask >= 2.0}
 BuildRequires:  %{python_module Jinja2 >= 3.1}
