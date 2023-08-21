@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 13 13:26:51 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace obsoleted `disabled` option with `manual`
+
+-------------------------------------------------------------------
 Sun Aug 13 07:05:02 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Reenable cargo test in %check.
