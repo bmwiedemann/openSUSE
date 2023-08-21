@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 20 05:44:46 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.1.0
+  * new virtualkeyboard api and service
+  * fix a cairo usage in classicui when X11 connection ends
+  * avoid sending empty preedit updates when not necessary
+  * fix plasma theme when plasma generator is installed but can't be used.
+  * fix some bug in charutils/stringutils API
+  * integrate im module probing to fcitx5-diagnose
+  * allow text icons to be forcibly used with kimpanel
+  * dark mode support
+  * quick phrase emoji update  
+- drop FTBFS-fcitx5-5.0.23-fmt.patch
+
+-------------------------------------------------------------------
 Mon May 22 09:45:48 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - Update to 5.0.23

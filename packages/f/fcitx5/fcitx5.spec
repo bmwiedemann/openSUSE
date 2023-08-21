@@ -23,7 +23,7 @@
 %define _environmentdir %{_prefix}/lib/environment.d
 %endif
 Name:           fcitx5
-Version:        5.0.23
+Version:        5.1.0
 Release:        0
 Summary:        Next generation of fcitx
 License:        LGPL-2.1-or-later
@@ -36,7 +36,6 @@ Source4:        macros.fcitx5
 Source102:      fcitx5.service
 Patch1:         fcitx5-gcc7.patch
 Patch2:         fcitx5-5.0.13-memfd.patch
-Patch3:         FTBFS-fcitx5-5.0.23-fmt.patch
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  extra-cmake-modules
