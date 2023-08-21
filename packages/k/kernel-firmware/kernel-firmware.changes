@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 18 14:04:53 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230814 (git commit 0e048b061bde):
+  * amdgpu: DMCUB updates for various AMDGPU asics
+  * Revert "amdgpu: partially revert firmware for GC 11.0.0 and GC 11.0.2"
+  * amdgpu: partially revert firmware for GC 11.0.0 and GC 11.0.2
+  * cirrus: Add CS35L41 firmware for HP G11 models
+  * linux-firmware: Update AMD cpu microcode
+  * rtl_bt: Add firmware v2 file for RTL8852C
+  * Revert "rtl_bt: Update RTL8852C BT USB firmware to 0x040D_7225"
+  * amdgpu: DMCUB updates for various AMDGPU asics
+  * cxgb4: Update firmware to revision 1.27.4.0
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2012.1012
+  * linux-firmware: Add URL for latest FW binaries for NXP BT chipsets
+  * rtw89: 8851b: update firmware to v0.29.41.1
+  * qcom: sdm845: add RB3 sensors DSP firmware
+- Drop the obsoleted patch
+  amd-ucode-CVE-2023-20569.patch
+
+-------------------------------------------------------------------
 Wed Aug  9 08:29:37 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Update AMD 19h ucode for "Inception" (bsc#1213287, CVE-2023-20569)
