@@ -10318,7 +10318,9 @@ unsorted:
   - libQtOlm3_0 
   - libQtQuick5-32bit 
   - libQuotient-devel 
-  - libQuotient0_6 
+  - libQuotient-qt6-devel 
+  - libQuotient0_8 
+  - libQuotientQt6-0_8 
   - libRaTools0 
   - libRecast1 
   - libRivet-3_1_8 
@@ -11938,7 +11940,7 @@ unsorted:
   - libftxf1 
   - libftxr-devel 
   - libftxr1 
-  - libftxui4_1_0 
+  - libftxui5_0_0 
   - libfunambol-9_0_1 
   - libfunambol-devel 
   - libfuse2-32bit 
