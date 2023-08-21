@@ -1,7 +1,7 @@
 #
 # spec file for package rebootmgr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           rebootmgr
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        Automatic controlled reboot during a maintenance window
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(libeconf)
 %description
 RebootManager is a dbus service to execute a controlled reboot after updates in a defined maintenance window.
 
-If you updated a system with e.g. transactional updates or a kernel update was applied, you can tell rebootmgrd with rebootmgrctl, that the machine should be reboot at the next possible time. This can either be immeaditly or during a defined maintenance window.
+If you updated a system with e.g. transactional updates or a kernel update was applied, you can tell rebootmgrd with rebootmgrctl, that the machine should be reboot at the next possible time. This can either be immediately or during a defined maintenance window.
 
 %prep
 %setup -q

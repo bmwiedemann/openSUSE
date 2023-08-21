@@ -210,4 +210,15 @@
     Reboots happen at the first moment of the maintenance window (forwarded request 1031336 from kukuk)</comment>
     <requestid>1031337</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cdee3c3c6c883e2f5df28ba30b83151f</srcmd5>
+    <version>2.1</version>
+    <time>1692610979</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.1
+  - Support systemctl soft-reboot (systemd &gt;= v254)
+
+- Typo fix in spec description</comment>
+    <requestid>1104682</requestid>
+  </revision>
 </revisionlist>

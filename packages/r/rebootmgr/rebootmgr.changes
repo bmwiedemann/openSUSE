@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 18 13:46:41 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.1
+  - Support systemctl soft-reboot (systemd >= v254)
+
+-------------------------------------------------------------------
+Fri Aug 11 08:30:08 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Typo fix in spec description 
+
+-------------------------------------------------------------------
 Wed Oct 26 12:25:06 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.0
