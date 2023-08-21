@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 12 21:30:14 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Define make_build for distributions which do not define them in
+  system macros
+
+-------------------------------------------------------------------
 Mon Dec 12 21:29:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add reproducible.patch to avoid timestamp patching in the build

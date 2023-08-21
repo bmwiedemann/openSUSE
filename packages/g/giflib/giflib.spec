@@ -1,7 +1,7 @@
 #
 # spec file for package giflib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %define lname   libgif7
 Name:           giflib
 Version:        5.2.1
