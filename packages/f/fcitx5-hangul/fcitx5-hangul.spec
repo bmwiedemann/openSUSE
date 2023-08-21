@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-hangul
-Version:        5.0.11
+Version:        5.1.0
 Release:        0
 Summary:        Hangul Wrapper for Fcitx5
 License:        LGPL-2.1-only
