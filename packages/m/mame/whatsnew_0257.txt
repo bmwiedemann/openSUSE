@@ -1,0 +1,2016 @@
+0.257 2023-07-28
+----------------
+
+
+MAME Testers bugs fixed
+-----------------------
+- 02005: [Misc.] (taito/changela.cpp) changela: Service mode I/O tests do not work. (hap)
+- 08685: [Sound] (midway/astrocde.cpp) wow: Astrocade sound only plays through left speaker. (hap)
+- 08687: [Crash/Freeze] (sony/taitogn.cpp) zooo: Emulator crashes during game boot process. (Vas Crabb)
+- 08689: [Sound] (exidy/exidy.cpp) hardhat, pepper2, venture: Background music stops unexpectedly during gameplay. (hap)
+- 08691: [Graphics] (seta/downtown.cpp) metafox: Graphics are offset horizontally. (AJR)
+- 08694: [Crash/Freeze] (midway/vegas.cpp) warfa and clones, sf2049 and clones: Games fail to boot. (Patrick Mackinlay)
+- 08698: [Sound] (konami/nemesis.cpp) nemesis: Instrument samples are out of tune. (hap)
+- 08699: [Sound] (konami/nemesis.cpp) twinbee: Voice samples are incorrectly truncated. (hap)
+- 08702: [Misc.] (taito/qix.cpp) Many sets in qix.cpp: Coin counters are incremented on boot. (AJR)
+- 08705: [Misc.] (sega/system1.cpp) Many sets on system1.cpp: Coin counters are incremented on boot. (hap)
+- 08707: [Sound] (msx/msx1.cpp) msx systems: Konami SCC sample address does not reset when it should. (hap)
+- 08709: [Misc.] (sega/segag80r.cpp) sindbadm: Coin counters are incremented on boot. (hap)
+- 08714: [Gameplay] (taito/changela.cpp) changela: Accelerator pedal is not not read correctly. (hap)
+- 08715: [Speed] (handheld/hh_tms1k.cpp) vclock3: [possible] Emulated clock runs slower than expected. (hap)
+- 08722: [Sound] (vidbrain/vidbrain.cpp) vidbrain: Music does not play. (hap)
+- 08729: [DIP/Input] (taito/asuka.cpp) bonzeadv and clones: Joystick left switch for second player doesn’t work. (Balthier)
+- 08730: [Graphics] (taito/invqix.cpp) invqix: Visible area is one pixel too large horizontally and vertically (Balthier)
+- 08734: [Sound] (misc/beezer.cpp) beezer: Game sometimes runs with no sound output. (hap)
+
+
+New working systems
+-------------------
+Apple Computer Macintosh LC 550 [R. Belmont]
+Apple Computer Macintosh Quadra 800 [R. Belmont]
+
+
+New working clones
+------------------
+Apple Computer Macintosh Centris 610 [R. Belmont]
+Apple Computer Macintosh Centris 650 [R. Belmont]
+Apple Computer Macintosh LC III+ [R. Belmont]
+Apple Computer Macintosh Quadra 610 [R. Belmont]
+Apple Computer Macintosh Quadra 650 [R. Belmont]
+Counter Run (bootleg set 3) [trol]
+Fidelity Electronics Elite Avant Garde (model 6117-7, set 2) [ProteusArts]
+Fire Truck / Smokey Joe (ROM version) [Michael Aberle, H is Nice]
+Frogger - New Serie 92 (bootleg) [Domenico Cervini]
+Fruit Star Bonus (Ver 8.17BGL-3, Burgenland, set 1) [TeamEurope, f205v, Roberto Fresca]
+Fruit Star Bonus (Ver 8.17BGL-3, Burgenland, set 2) [TeamEurope, f205v, Roberto Fresca]
+Fruit Star Bonus (Ver 8.23PSTK, Steiermark) [TeamEurope, f205v, Roberto Fresca]
+Hatris (show version) [twistedsymphony]
+Mortal Kombat (Victor bootleg of rev 3.0 08/31/92) [Funny_Dyzieks]
+Nemo (Japan 901120, 89625B-1 ROM board) [Corrado Tomaselli, Brian Troha]
+New Zero Team (V33 SYSTEM TYPE_B hardware, Zhongguo Shantou Yihuang license) [twistedsymphony]
+Scorpion, Ltd. Scorpion ZS-256 TURBO+ [holub]
+Terra Force (US, alternate sound) [caius]
+
+
+Systems promoted to working
+---------------------------
+Apple Computer Macintosh Quadra 700 [R. Belmont]
+Psion Series 3 [Nigel Barnes]
+Psion Series 3a [Nigel Barnes]
+Psion Series 3c [Nigel Barnes]
+Psion Series 3mx [Nigel Barnes]
+Psion Siena [Nigel Barnes]
+Psion Workabout [Nigel Barnes]
+Psion Workabout mx [Nigel Barnes]
+
+
+Clones promoted to working
+--------------------------
+Acorn Computers Pocket Book [Nigel Barnes]
+Acorn Computers Pocket Book II [Nigel Barnes]
+Arkanoid (Phoenix Electronics Co. license) [Darran, Sean Riddle, Brian Troha, The Dumping Union]
+Psion Series 3a (2M) [Nigel Barnes]
+Psion Series 3a (2M) (German) [Nigel Barnes]
+Psion Series 3a (2M) (Russian) [Nigel Barnes]
+Psion Series 3s [Nigel Barnes]
+
+
+New systems marked not working
+------------------------------
+21 Up (Bellfruit) (Black Box) (5p Stake, £1 Jackpot) [SomeRandomGuyIdk]
+ASUS CUBX [The Retro Web]
+Bell Star Plus [TeamEurope, f205v, Roberto Fresca]
+Bell-Star+ (Vip2 v.25.02.02) [TeamEurope, f205v, Roberto Fresca]
+Bell-Star+ (Vip2 v.30.1.02) [TeamEurope, f205v, Roberto Fresca]
+Bell-Star+ 5 (Vip2 v.3.6.02) [TeamEurope, f205v, Roberto Fresca]
+Bell Trail (Bellfruit) (Black Box) (5p Stake, £1 Jackpot) [SomeRandomGuyIdk]
+Bingo Roll (209 / 19-1-95) [TeamEurope, f205v, Roberto Fresca]
+Bingo Roll (Vip2 v26.02.02) [TeamEurope, f205v, Roberto Fresca]
+Bingo Roll 2001 (v22.1) [TeamEurope, f205v, Roberto Fresca]
+Dora Neco BanBan [buffi]
+Doraemon (Power Link) [hammy]
+Double It (Bellfruit) (Black Box) (10p Stake, £2 Jackpot) [SomeRandomGuyIdk]
+Fire Cracker (Bellfruit) (Black Box) (10p Stake, £2 Jackpot) [SomeRandomGuyIdk]
+Galileo Factory (main) [Darksoft, MetalliC, rtw]
+Golden Spin (BWB) (Black Box) (MK1.5, 5p Stake, £50 Jackpot) [SomeRandomGuyIdk]
+Love Pi Chan (Power Link) [Recreativos Piscis]
+Mitsubishi Trium Eclipse [archive.org]
+Motorola M8120 [Xolod]
+Name Club Ver.4 (J 971202 V1.000) [TeamEurope]
+Nudge Climber (Bellfruit) (Black Box) (5p Stake, £1 Jackpot, all cash) [SomeRandomGuyIdk]
+The Nudge Machine (ADMC) (Black Box) (5p Stake, £1/£2 Jackpot) [SomeRandomGuyIdk]
+Oranges And Lemons (Bellfruit) (Black Box) (10p Stake, £2 Jackpot) [SomeRandomGuyIdk]
+Quick & Crash (V2.200) [CoolFox, DragonMinded, The Dumping Union]
+Rolling Joker [TeamEurope, f205v, Roberto Fresca]
+Rolling Joker (v.99.7) [TeamEurope, f205v, Roberto Fresca]
+Rolling Joker (v23.11.91) [TeamEurope, f205v, Roberto Fresca]
+unknown 'VIP 2000' game (set 2) [TeamEurope, f205v, Roberto Fresca]
+unknown 'VIP 2000' game (set 3) [TeamEurope, f205v, Roberto Fresca]
+unknown golf game [hammy]
+Upstairs 'N' Downstairs (Bellfruit) (Black Box) (5p Stake, £1 Jackpot) [SomeRandomGuyIdk]
+
+
+New clones marked not working
+-----------------------------
+21 Up (Bellfruit) (Black Box) (10p Stake, £2 Jackpot) [SomeRandomGuyIdk]
+AUVA VIP 800 [fdiskitup]
+Bare Knuckle III (bootleg of Mega Drive version, protected) [H4M573R, hammy]
+Crackerjack (Bellfruit) (Black Box) (5p Stake, £2 Jackpot) [SomeRandomGuyIdk]
+Cue Ball Wizard (older display rev.) [PinMAME]
+Daioh (prototype, earliest) [Recreativos Piscis]
+Elvis (CPU 1.00, display A1.00) [inkochnito, PinMAME]
+Fiesta (Associated Leisure) (Black Box) (2p Stake, £1/£2 Jackpot) [SomeRandomGuyIdk]
+Hyundai Super 16 T [sequoia]
+Hyundai Super 16 TE [sequoia]
+Magic Bomb (Ver. A3.6A) [Ioannis Bampoulas]
+Magic Bomb (Ver. A4.0A) [Ioannis Bampoulas]
+Mr. and Mrs. PacMan (set 2) [caius]
+NCR PC6 [eggimac]
+Nixdorf 8810/20 [MajorMaxdom]
+Octec XT-286 motherboard [ozzyrules]
+Odin (prototype) [Stephan Semmler, PinMAME]
+Player's Edge (PK0846-PC098) Standard Draw Poker [Brian Troha]
+Player's Edge (PK1017-PC041) Standard Draw Poker [Brian Troha]
+Reel Gambler (Bellfruit) (Black Box) (10p Stake, £2 Jackpot) [SomeRandomGuyIdk]
+Spin Up (CTL) (Black Box) (10p Stake, £3 Jackpot) [SomeRandomGuyIdk]
+Upstairs 'N' Downstairs (Bellfruit) (Black Box) (5p Stake, £1 Jackpot, all cash) [SomeRandomGuyIdk]
+
+
+New working software list items
+-------------------------------
+apple2_flop_orig:
+  Addition Logician (Version 1.0), Addition Logician (Version 1.0) (800K 3.5"), Adventures with Fractions (Version 1.0),
+  Alphabet Fun: Big and Little Letters, Alternate Reality: The City, Animal Homes and Stories, Animal Stories IV, Apple Puck Man,
+  Arcade Boot Camp, Arithmetic Critters (Version 1.0), Arizona Mix (Version 1.0),
+  Automotive Technician Mathematics Volume 1: Whole Numbers and Fractions (Version 1.0),
+  Automotive Technician Mathematics Volume 2: Decimals and Percents (Version 1.0), Bandits, The Banking Simulation, Bezman, Bez-MX,
+  Bezoff, Bezwars, Birds, Brain Machine, Brainteaser Boulevard, Building Better Language Skills: Adjectives and Adverbs,
+  Building Better Language Skills: Nouns, Calendar, Capitalization, Categorizing: Detective Games, Cats and Kittens,
+  Chemistry: Balancing Equations (Version 1.0), Chemistry: The Periodic Table (Version 1.0), Circus Math (Version 1.0),
+  Clock Works (Version 1.0), CommuniKeys (Version 1.0),
+  Computer Generated Mathematics Materials Volume 1: Problem Solving (Version 1.1),
+  Computer Generated Mathematics Materials Volume 1: Problem Solving (Version 1.3), Computer Inspector (Version 1.0),
+  Computers in Government (Version 1.0), Conquering Math Worksheet Generator (Version 1.0), Conquering Percents (Version 1.0),
+  Conquering Ratios and Proportions (Version 1.1), Coordinate Math (Version 1.0), Coordinate Math (Version 1.1) (800K 3.5"),
+  Copy II Plus (Version 9.0 Beta 1), Cotton Tales (800K 3.5"), Counting Coins, Counting Critters (Version 1.0),
+  Create-A-Base (Version 1.0), Creatures of the Night, Cyclod, Dataquest: Sampler (Version 1.0), Deadline (Release 18 / 820311),
+  Desktop Zoo, Destiny, Dog Sled Ambassadors (Version 1.0), Double Trouble, Dragons of Hong Kong, Early Addition (Version 1.3),
+  Elementary Volume 3: Social Studies (Version 4.8), Elementary Volume 5: Language Arts (Prefixes) (Version 1.5),
+  Elementary Volume 8: Geometry (Points and Angles) (Version 1.0),
+  Elementary Volume 9: Geometry (Lines and Triangles) (Version 2.1),
+  Elementary Volume 10: Geometry (Quadrilaterals: Area and Perimeter) (Version 1.0),
+  Elementary Volume 10: Geometry (Quadrilaterals: Area and Perimeter) (Version 1.1),
+  Elementary Volume 12: Language Arts (SIMS) (Version 1.0), Enchanter (Release 10 / 830810), Enchanter (Release 29 / 860820-K),
+  English Parts of Speech (Version 1.5), Equation Math (Version 1.0), Estimation: Quick Solve II (Version 1.0),
+  Estimation (Version 1.0), Experiencing Procedures (Version 1.0), Exploring Sorting Routines (Version 1.0),
+  Extensions to Applesoft BASIC (Version 1.0), Extensions to Applesoft BASIC (Version 1.2), First Encounter,
+  First-Start Writing Program, Fly Wars, Fraction Concepts, Inc. (Version 1.2), Fraction Practice Unlimited (Version 1.0),
+  Fraction Practice Unlimited (Version 1.2) (800K 3.5"), Fun from A to Z (Version 1.0), Fun from A to Z (Version 1.0) (800K 3.5"),
+  Games From Around The World #1: Wari, Games From Around The World #2: Kono, Games From Around The World #3: Fox & Geese,
+  Games From Around The World #4: Seega, Games From Around The World #5: Nine Men's Morris,
+  Games From Around The World #6: Mu Torere, Genetics (Version 1.1), Getting Ready to Read and Add, Ghost Writer (Version 1.0),
+  Granny Applebee's Cookie Factory, Graphing (Version 1.0), Growgins' Fractions (Version 1.0), Guardian,
+  Hugo Hound's Vowel Sounds: Long Vowels, Inferential Anne: Level II, Instant Survey (Version 1.0), It's About Time, Jellyfish,
+  Jenny's Journeys (Version 1.0), Keyboarding Master (Version 1.0), Kinder Critters: Address and Phone Number,
+  Kinder Critters: Letters and Patterns, LabelMaker (Version 1.0), Leather Goddesses of Phobos (Release 4 / 880405-2H),
+  Leather Goddesses of Phobos (Release 59 / 860730-K), Lemmings, Let's Learn About Money, Logic Gates (Version 1.0), Lunar Explorer,
+  The Lurking Horror (Release 203 / 870506-M), The Magic String, The Market Place (Version 1.0),
+  The Market Place (Version 1.0) (800K 3.5"), Marty's Family Reader, Marty's Reading Workout, Master Spell (Version 1.3),
+  Mathematics Volume 1: Graphing, Logic, and Equations (Version 3.2), Mathematics Volume 2: Measurement (Version 1.2),
+  Mathematics Volume 3: Formulas, Shapes, and Skills (Version 1.3),
+  Mathematics Volume 3: Formulas, Shapes, and Skills (Version 1.3) (limited boot backup), Mathosaurus: Computation,
+  Math Word Problems Volume 1: Careers (800K 3.5"), Math Word Problems Volume 2: Money (800K 3.5"),
+  Math Word Problems Volume 3: Sports (800K 3.5"), Math Word Problems Volume 4: Travel (800K 3.5"),
+  Math Word Problems Volume 6: Our Nation's Capital Washington DC (800K 3.5"), MECC Apple Demonstration (Version 1.1),
+  MECC Dataquest: Europe and the Soviet Union (Version 1.0), MECC Dataquest: Latin America (Version 1.0),
+  MECC Dataquest: Middle East and North Africa (Version 1.0), MECC Dataquest: North American Mammals (Version 1.1),
+  MECC Dataquest: The Presidents (Version 1.1), MECC Dataquest: The Presidents (Version 1.2),
+  MECC Dataquest: The World Community (Version 1.1), MECC Editor (Version 1.0), MECC Graphing Primer (Version 1.0),
+  MECC Graph (Version 1.1), MECC Hi-Res Toolkit (Version 1.0), MECC Outliner (Version 1.0), MECC Stuff and Fetch (Version 1.0),
+  MECC Writer (Version 1.2), MECC Write Start (Version 1.2), Memory Building Blocks, Microzine 32, Microzine 40, Microzine Jr. 1,
+  Microzine Jr. 2, Microzine Jr. 3, Microzine Jr. 4, Microzine Jr. 5, Microzine Jr. 6, Microzine Jr. 7, Microzine Jr. 8,
+  Microzine Jr. 9, Microzine Jr. 10, Minotaur, Modeling (Version 1.0), Moonmist (Release 4 / 860918-K),
+  Multiplication Puzzles (Version 1.0), Muppet Word Book, Mystery Matter (Version 1.0), Mystery Objects (Version 1.0),
+  Nightmare Gallery, Now You See It, Now You Don't: Pick The Part, Numberball, Odell Lake (Version 1.0), Odell Lake (Version 1.2),
+  Oliver's Crosswords, The Oregon Trail (Version 1.4), Patterns (Version 1.0), Pecos Bill,
+  Phonics Prime Time: Blends and Digraphs (Version 1.0) (800K 3.5"), Planetfall (Release 20 / 830708),
+  Planetfall (Release 26 / 831014), Planetfall (Release 37 / 851003-H), Polls and Politics (Version 1.0), Probability (Version 1.0),
+  Problem-Solving Strategies (Version 1.0), Problem-Solving with Nim (Version 1.0) (800K 3.5"), Quilting Bee (Version 1.0),
+  Quotient Quest (Version 1.0), Reader's Treasure Chest, Reading Comprehension Volume 2: Sports (800K 3.5"),
+  Reading Comprehension Volume 3: Geography (800K 3.5"), Reading Comprehension Volume 4: History in the Making (800K 3.5"),
+  Reading Comprehension Volume 5: Famous People (800K 3.5"), Reading Comprehension Volume 6: The Olympics (800K 3.5"),
+  Reading Comprehension Volume 7: United States Presidents (800K 3.5"), Reading for Understanding: Native Americans,
+  Real Math: Level I, Real Math: Level II, Real Math: Level III, The Right Turn: Strategies in Problem Solving, Rock 'N Scroll,
+  The Royal Rules, Seastalker (Release 15 / 840501-B), Seastalker (Release 16 / 850515-M), Shapes and Patterns,
+  Sherlock (Release 21 / 871214-2F), Shop Right!, Show Time (Version 1.1), Snack Attack and Friends,
+  Sorcerer (Release 4 / 840131-A), Sorcerer (Release 6 / 840508-F), Sorcerer (Release 18 / 860904-K),
+  Space Station Freedom (Version 1.0), Space Subtraction (Version 1.0), Spellbreaker (Release 63 / 850916-H),
+  Spelling Press (Version 1.1), Spelling Volume 2: Secondary (Version 2.0), Sports Stats (Version 1.0),
+  Starcross (Release 15 / 820901), The Stickybear ABC, Stickybear BASIC, Stickybear Basket Bounce, Stickybear Basket Bounce Demo,
+  Stickybear Bop, Stickybear Drawing, Stickybear Math, Stickybear Math 2, Stickybear Music, Stickybear Numbers,
+  Stickybear Opposites, Stickybear Opposites Demo, Stickybear Parts of Speech, Stickybear Printer (Version 1),
+  Stickybear Printer (Version 2), Stickybear Reading, Stickybear Reading Comprehension, Stickybear Shapes (800K 3.5"),
+  Stickybear Shapes (Version 1), Stickybear Shapes (Version 2), Stickybear Spellgrabber, Stickybear Spellgrabber (800K 3.5"),
+  Stickybear Town Builder, Stickybear Typing, Stickybear Word Problems, Stickybear Word Problems (800K 3.5"),
+  Study Guide (Version 1.5), Subtraction Puzzles (Version 1.0), Suspended (Release 5 / 830222), Tank Command,
+  Teacher Option Organizer (Version 1.1), Teaching Scientific Inquiry (Version 1.0), The Three Rs of Microcomputing (Version 1.1),
+  Thunder and Lightning, Time Navigator Leaps Back (Version 1.0), Time Navigator (Version 1.0),
+  Time Navigator (Version 1.0) (800K 3.5"), TimeOut DeskTools II (Version 1.1) (800K 3.5"),
+  TimeOut DeskTools II (Version 1.2) (800K 3.5"), TimeOut DeskTools (Version 1.2) (800K 3.5"),
+  TimeOut DeskTools (Version 1.3) (800K 3.5"), TimeOut DeskTools (Version 3.1) (800K 3.5"),
+  TimeOut FileMaster (Version 1.0) (800K 3.5"), TimeOut FileMaster (Version 1.3) (800K 3.5"),
+  TimeOut Grammar (Version 1.0) (800K 3.5"), TimeOut Graph (Version 1.0) (800K 3.5"), TimeOut Graph (Version 1.2) (800K 3.5"),
+  TimeOut MacroEase (Version 1.0) (800K 3.5"), TimeOut PowerPack (Version 1.2) (800K 3.5"),
+  TimeOut QuickSpell (Version 1.6) (800K 3.5"), TimeOut QuickSpell (Version 2.0) (800K 3.5"),
+  TimeOut ReportWriter (Version 1.0) (800K 3.5"), TimeOut ReportWriter (Version 2.2) (800K 3.5"),
+  TimeOut ReportWriter (Version 2.52) (800K 3.5"), TimeOut SideSpread (Version 1.2) (800K 3.5"),
+  TimeOut SpreadTools (Version 1.0) (800K 3.5"), TimeOut SpreadTools (Version 1.1) (800K 3.5"),
+  TimeOut SuperFonts (Version 1.0) (800K 3.5"), TimeOut SuperFonts (Version 1.1) (800K 3.5"),
+  TimeOut SuperFonts (Version 3.0) (800K 3.5"), TimeOut SuperFonts (Version 3.1) (800K 3.5"),
+  TimeOut SuperForms (Version 1.04) (800K 3.5"), TimeOut TeleComm (Version 1.1) (800K 3.5"),
+  TimeOut TeleComm (Version 1.2) (800K 3.5"), TimeOut Thesaurus (Version 1.0) (800K 3.5"),
+  TimeOut Thesaurus (Version 2.0) (800K 3.5"), TimeOut UltraMacros (Version 1.2) (800K 3.5"),
+  TimeOut UltraMacros (Version 1.7) (800K 3.5"), TimeOut UltraMacros (Version 3.0) (800K 3.5"),
+  TimeOut UltraMacros (Version 3.1) (800K 3.5"), Top Readers' Club: Grade 2, Top Readers' Club: Grade 3, Top Readers' Club: Grade 4,
+  Top Readers' Club: Grade 5, Troll First-Start Biographies, Troll Math Class Level 1: I Can Add And Subtract,
+  Troll Math Class Level 2: I Can Carry and Borrow, Troll Math Class Level 6: Ratio, Proportion, and Percent,
+  Troll Math Class Level K: I Can Count, Troll Printmaker: Holiday Fun, Troll Sports Math: Math Word Problems for Grades 4-6,
+  Uncle Clyde's Consonant Slides: Beginning Consonants, Uncle Clyde's Consonant Slides: Blends and Digraphs,
+  Uncle Clyde's Consonant Slides: Ending Consonants, Vacation Nation Travel (Version 1.0), Vocabulary Development (800K 3.5"),
+  Weights and Treasure, Witness (Release 13 / 830524), Witness (Release 18 / 830910), Wood Car Rally (Version 1.0),
+  Woolly Bounce (Version 1.0), Word-a-Mation: Exploring Word Relationships, Word Processing on the Apple (Version 2.0),
+  Zork I (Release 15 / UG3AU5), Zork I (Release 26 / 820803), Zork I (Release 52 / 871125-2-E), Zork I (Release 75 / 830929),
+  Zork I (Release 75 / 830929-A), Zork I (Release 88 / 840726-B), Zork I (Release 88 / 840726-F), Zork I (Release 88 / 840726-K),
+  Zork II (Release 22 / 830331), Zork II (Release 48 / 840904-B), Zork III (Release 10 / 820818), Zork III (Release 15 / 830331),
+  Zork III (Release 16 / 830410-A), Zork III (Release 17 / 840727-B), Zork III (Release 17 / 840727-K), Zoyon Patrol (Version 1.0)
+  [4am, A-Noid]
+apple2gs_flop_orig:
+  Geometry, Magical Myths, Mancala, Math Wizard, Rocket Ranger, Sinbad and the Throne of the Falcon, Strip Poker II [4am, A-Noid]
+cdi: The Cranberries: Doors and Windows (USA) [redump.org]
+gbcolor: Grimace’s Birthday (V1.6), Grimace’s Birthday (V1.7) [nickisarchivinget]
+ibm5170_cdrom: The Cranberries: Doors and Windows (USA) [redump.org]
+kim1_cass: KIM-Venture [hap, Bob Leedom, Mark Bush]
+msx1_cart:
+  G-Monkey [2KBOS]
+  Happy Square Christmas [303bcn]
+  Happy Halloween, Melody Party EX [Clube MSX]
+  How Many Are The Dumbbells You Lift?, LR, MayQ Buster, MayQ II, MayQ Keeper, MayQ Slayer, MayQ Slayer (alt), MayQ Slayer (alt 2)
+  [cobinee]
+  Flappy Bird (Crunchworks, rev F), Flappy Bird (Crunchworks, rev F, alt) [Crunchworks]
+  D-Day (Korea, alt), Deep Core Raider, Deep Dungeon Adventure, Deep Dungeon Adventure (cartridge, alt),
+  Deep Dungeon II - Yuushi no Monshou (Japan, alt), Defence (v1.0), Defence (v1.1), Defence (v1.2), Destroyer (older),
+  DICED Tournament (v1.0), Dip Dip (Spain), Dip Dip (Spain, alt), Dodgin' Raven, Dot Attack (alt), Do The Same (v1.0),
+  Double Face (Arab, alt), Draconic Throne (alt), Draconic Throne (alt 2), Dr. Hello (Korea), Dr. Pill (alt),
+  Droids En el Planeta Ingo (Spain), Droids the White Witch (Spain), Dunoegyosil Omok (Korea), Eat Blue! 2004 (alt),
+  E.I. - Exa Innova (Japan, Compile), E.I. - Exa Innova (Japan, Compile, alt), Está en el Pantano, Está en la Caja (v1.0),
+  Está en la Caja (v1.1), Ewoks and the Dandelion Warriors (Spain), Ewoks (Spain), Farty Pig (beta), Fighting Rider (Spain),
+  Final Justice (Japan, alt 3), Flappy Bird (Crunchworks, rev B), Flappy Bird (SCS), Foryster (v00.2), Foryster (v00.3),
+  Freedom Fighter (v1.0), Freedom Fighter (v1.1), Freedom Fighter (v1.3), Freedom Fighter (v1.4), Freedom Fighter (v1.5),
+  Freedom Fighter (v1.6), Freedom Fighter (v1.7), Freedom Fighter (v1.8), Freedom Fighter (v1.8a), Freedom Fighter (v1.9),
+  Game World - 64 Games (Korea, alt), Gangcheol Robocop (Korea), Gangcheol Robocop (Korea, alt), Gangcheol Robocop (Korea, alt 2),
+  Genesis Dawn of a New Day (alt), Goal (alt), El Gnomo Fedor en la Caverna Perdida (Spain), Gokiburi Daisakusen (Japan, alt),
+  Gommy - Medieval Defender - Cartridge Edition, Gorgeous Gemma in Escape from the Space Disposal Planet (older),
+  Graphic Artist (Japan, Europe), Graphic Artist (Japan, Europe, alt), Graphic Master Lab (Japan, Europe),
+  Graphic Master Lab (Japan, Europe, alt), Green Beret (Europe, alt 2), Griel's Quest for the Sangraal (extended edition, older),
+  Griel's Quest for the Sangraal (older), Guru Logic, Guru Logic (alt), Gyro Adventure (Japan),
+  Hole in One Professional (Japan, alt 2), Hole in One Professional (Japan, alt 3), Hopper (Arab), Hot-Asm (Brazil),
+  Hot-Plan (Brazil), Hydlide II - Shine of Darkness (Korea), I Need Speed (MSX Cartridge Shop), Inq & Suq vs Nightmare,
+  Invasion of the Zombie Monsters, J.E.T.P.A.C., JumpinG - The Tutorial Game (Spanish, demo), Jungle Hunt, Juno First (Japan, alt),
+  Keystone Kapers (Japan, alt), Kobashi, Konami's Baseball (Japan, alt), Kralizec Tetris, Kralizec Tetris (alt), L.3.W (Korea),
+  La Corona Encantada (English, alt), La Corona Encantada (Spanish, alt), La Corona Encantada (Spanish, final, alt), Landing,
+  Lawn Mower, Leila K, Lightly Roller (Japan), Linez, Linez (2 levels broken), Linez (3 levels broken), Lizard Willy, Lock'n Chase,
+  Lotus F3, Magnet, Mag the Magician, Majikazo, Majikazo (alt), M.A.Z.E., Mazes Unlimited (Arab), Mecha 8 (Matra), Mecha 9,
+  Mega Assembler (Brazil), Menace (alt), Merlin (Spain), Merlin (Spain, alt), Meteoros, Meteoros (alt), Mission2Mir (v1.0),
+  Mission2Mir (v1.2), Monkey Academy (Japan, alt 4), Moon Rider, Motkonqe (older), Mr. Chef & the Sausages (alt),
+  MSX Basic-kun Plus 2.0 (Japan, alt), MSX Rugby (Korea), MSX Swimming Game (Japan), MSX Swimming Game (Japan, alt),
+  MSX Wars Scorched Battles, Multitext (France, v1.4), Nemesis 2 (Europe) ~ Gradius 2 (Japan) (demo, alt),
+  Ninja Kopimaru Kun (Japan), Penguin Land (Korea), Pesadelo (Brazil), The Police Story (Japan, alt 2), Soukoban (Korea, Zemina),
+  Yamaha Graphic Card [file-hunter]
+  Guntus, Impetus, Lift, Mazy [Inufuto]
+  Maze Chase [JLTurSan]
+  DICED Tournament (v1.12/v1.2) [MI-CHI]
+  Mars Lander [msxblue]
+  La Corona Encantada (English), La Corona Encantada (Spanish), Daedalian Opus, Danger Tower, DAQ Lord of Idar,
+  DAQ Lord of Idar (flashrom version), Deep Dungeon, Defence (v1.3), Destroyer, DICED Tournament (v1.01), Dot Attack,
+  Do The Same (v1.1), Draconic Throne, Dr. Pill, Eat Blue! 2004, ExChess, Factory Infection, Fantastic Football, Find It!, FlyGuy,
+  Formula Dice, Freedom Fighter (v1.2a), Gniffel, Goal, Gommy - Medieval Defender (English), Gommy - Medieval Defender (Spanish),
+  Gorgeous Gemma in Escape from the Space Disposal Planet, GRAVITICA, Grid Wars, Griel's Quest for the Sangraal,
+  Griel's Quest for the Sangraal (extended edition), Hans' Adventure (v1.0), Hans' Adventure (v1.1), Heart Stealer 2, Heroes Arena,
+  Hose Diogo Martinez: The Bussas Quest, I Need Speed (contest), I Need Speed (final), I.N.E.R.T.I.A., Italian Stallion,
+  Los Jardines de Zee Wang Zu, Los Jardines de Zee Wang Zu (SCC), Jawbreaker II, Jinj 2 - Belmonte's Revenge (v1.0),
+  Jinj 2 - Belmonte's Revenge (v2.0), JumpinG - The Tutorial Game (English), JumpinG - The Tutorial Game (Spanish), Jäästä,
+  Kill Mice, Klondike Solitaire, Kralizec 8K Tetris, Kralizec Battle Tetris, Libreway, Limaribu, Linez (1 level broken), Litter Box,
+  Lode Run, Logic Remastered (16KB RAM), Logic Remastered (32KB RAM), Lotus F3 (alt), Magical Stones (16KB), Magical Stones (8KB),
+  Mahjong Solitaire, Make Them Fall, Make Them Jump, Malaika - Prehistoric Quest (rev 0), Malaika - Prehistoric Quest (rev 1),
+  Malaika - Prehistoric Quest (rev 2), Malaika - Prehistoric Quest (rev 3), Malaika (v1.0), Malaika (v1.1), Malaika (v1.2),
+  Manicomio, Market Master, Mazogs, Mecha 8 (MSXDev), Mecha Taisen on Planet Oldskool, Mecha Taisen on Planet Oldskool+, Menace,
+  Mine Finder (v1.1), Mine Finder (v1.2), Mission2Mir (v1.1), Mix (v1.0), Mix (v1.1), Mix (v1.2), Monster Hunter (English),
+  Monster Hunter (Spanish), Mr. Chef & the Sausages, Mr. Cracksman, Mr. Mole, Mr. Mole (SCC), M-Tanks, My Sacred Place [MSXDev]
+  Doopm Community, Eruka Fan Book, Farm, Green Cat Chronicles, Isitar 7, Motkonqe [n.i]
+  La Corona Encantada (Spanish, final) [Relevo]
+  l'Abbaye des Morts (v0.1), l'Abbaye des Morts (v1.1), l'Abbaye des Morts (v1.2) [Retro DeLuxe]
+  Genesis Dawn of a New Day, Jinj 2 - Belmonte's Revenge (final), Mutants from the Deep, Mutants from the Deep (alt) [Retroworks]
+  Foryster (v00.9) [Siudym]
+  Earth Attack, Freedom Fighter (final) [TheGeps]
+  Deep Dungeon Adventure (cartridge) [Trilobyte]
+  Duckstroma (v1.00), Duckstroma (v1.02) [UltraNarwhal]
+  MiniMagos [unepic fran]
+oric1_cass:
+  Impossible Mission (Atmos 50Hz), Impossible Mission (Atmos 60Hz), Oricium, Stormlord [Defence Force]
+  4K Kong, Cobra, Le Fer d'Amnukor, Invaders (Program Factory), The Pits, Rush Hour 4K, Skool Daze, Stormlord (Atmos), Transat One,
+  Le Yi-King [The Oric Site]
+psion_ssd:
+  Plotter, Schedule, Spell [anonymous]
+  Hugh Johnson's Wine Guide [The Last Psion]
+  Widget Games 3a [zedstarr]
+specpls3_flop:
+  Bonnie and Clyde, Crystal Kingdom Dizzy, Drift! [Spectrum Computing]
+  Crazy Cars II (Proein), La Guerra de las Vajillas, The Ultimate Disc Copier [El Trastero del Spectrum]
+spectrum_betadisc_flop:
+  DreamWalker: Alter Ego 2 (v1.0), Gluf [RetroSouls]
+  Sun Bucket [Spectrum Computing]
+spectrum_cass:
+  Lobo Solitário [João Cruz, Planeta Sinclair]
+  Bingo Parlante!, Fun Golf [Luís Rato, Planeta Sinclair]
+  Casanova (Pizza e Pasta), Em Busca do Mortadela (Portuguese), En Busca de Mortadelo (Spanish), Gremlins 2: A Nova Geração,
+  Lorna (Portuguese), Mad Mix 2: No Castelo dos Fantasmas (Portuguese), R.A.M. (Portuguese), Searching for Mort (English),
+  Topo Mix Game (Portuguese), Zona 0 (Portuguese) [Planeta Sinclair]
+  Los Amores de Brunilda (v1.4, Basque), Los Amores de Brunilda (v1.4, Catalan), Los Amores de Brunilda (v1.4, Catalan, alt),
+  Los Amores de Brunilda (v1.4, English), Los Amores de Brunilda (v1.4, Galician), Los Amores de Brunilda (v1.4, Italian),
+  Los Amores de Brunilda (v1.4, Russian), Los Amores de Brunilda (v1.4, Spanish), The Sword of Ianna,
+  Los Tesoros Perdidos de Tulum (v1.1, Spanish) [Retroworks]
+  Chess - The Turk (ABC Soft), Freez' Bees (Aackosoft), The Lost Treasures of Tulum (v1.0, English), Masterfile (Plansoft),
+  Masterfile v08 (Logiciels), Schach, Shadow Warriors (Musical), Software Magazine №9A - Gold Mine,
+  Software Magazine №11B - Patin-Man, Software Magazine №12B - Pincel-3D, Software Magazine №13A - The Guardian,
+  Software Magazine №13B - Ghost Hunt (alt), Los Tesoros Perdidos de Tulum (v1.0, Spanish), Zip-Zap (PRISM), Zynaps (IBSA)
+  [Spectrum Computing]
+  Firebirds (Tronk), Slippery Sid (pirate), Super Scacchi (pirate), Time-Gate (pirate), Toad Runner (Dro Soft),
+  Uccidi Gli Spiriti (pirate), Zip-Zap (pirate), Yatzy [Steven Brown, Planeta Sinclair]
+  Wonderful Dizzy (v1.0), Wonderful Dizzy (v1.5) [Team Yolkfolk]
+  Journey to the Centre of the Earth - Extended Version (10 Anniversary, English),
+  Viagem ao Centro da Terra - Versão Estendida (10 Aniversário, Portuguese) [Topo Siglo XXI]
+vidbrain: The Computational Language [hap, Sean Riddle, Ianoid]
+
+
+Software list items promoted to working
+---------------------------------------
+msx1_cart: MSX Basic-kun Plus 2.0 (Japan) [Wilbert Pol]
+snes: Toy Story (Europe) [ArcadeShadow]
+spectrum_cass: Booty - The Remake (v1.2, TZX tape image) [ArcadeShadow]
+vidbrain: Money Minder [hap]
+
+
+New software list items marked not working
+------------------------------------------
+a800: Akhtabar Dhakayik, al-Taaqa, Bank al-Maelumat, Kayf Yaemal al-Computer, Qamus Najm [archive.org]
+msx1_cart:
+  Expert TM-2 Multi Modem (Brazil), Gyruss, Light Pen Graphic (Japan), Miller Graph (Spain), MT-Telcom II (Netherlands),
+  MT-Viditel (Netherlands), Yamaha DX7 Voicing Program II YRM-304 (Japan, alt) [file-hunter]
+  Dream Puzzle, Duck Hunt [MSXDev]
+oric1_cass: Arsène Lapin, Composer, Detective Story [The Oric Site]
+specpls3_flop: La Espada Sagrada [El Trastero del Spectrum]
+
+
+Merged pull requests
+--------------------
+- 10417: bfm/bfm_blackbox.cpp: Added driver for Bellfruit Black Box electromechanical fruit machines. [SomeRandomGuyIdk]
+- 10599: cdi.xml, ibm5170_cdrom.xml: Added The Cranberries: Doors and Windows. [redump.org, einstein95]
+- 11282: plugins/hiscore: Fixed detection of software item lines, and added support for Mega Drive Sonic Spinball. [GregWeil]
+- 11315: video/pc_vga.cpp: Refactored various components to use address spaces. [Angelo Salese]
+- 11352: machine/mm5740.cpp: Added repeat input; heathkit/tlb.cpp: Added Repeat key and fixed interrupts. [Mark Garlanger]
+- 11356: astropc.cpp: Added notes and corrected release years. [einstein95]
+- 11360: apple2_flop_orig.xml, apple2gs_flop_orig.xml: Added latest original disk dumps and improved metadata. [4am, A-Noid]
+- 11368: sega/segaufo.cpp: Filled in newufo DIP switch settings from manual. [negunma]
+- 11369: a800.xml: Added five aDawilah Arabic releases (not working). [archive.org, Angelo Salese]
+- 11370: edevices/stlforce.cpp: Corrected sound clock frequency, and added placeholders for Mortal Race PLDs. [ClawGrip]
+- 11371: cpu/mb88xx/mb88xx.cpp: Don’t automatically disable interrupts on servicing external interrupt. [hackbar]
+- 11372: msx1_cart.xml: Added 77 items (73 working). [Wilbert Pol]
+- 11374: heathkit/z37_fdc.cpp: Fixed some minor issues and cleaned up code. [Mark Garlanger]
+- 11375: machine/wd_fdc.cpp: Simplified code for conditionally complementing values read or written. [Mark Garlanger]
+- 11377: msx1_cart.xml: Added 33 items (32 working), and marked pwnd310 as a clone of pwnd3. [Wilbert Pol]
+- 11378: cpu/i960: Corrected disassembly of dcinva instruction. [Joshua Scoggins]
+- 11384: bus/a2bus/romcard.cpp: Fixed extra closing parenthesis in device description. [Kelvin Sherlock]
+- 11385: leapfrog/leappad.cpp: Added placeholders for undumped microcontroller ROM. [Sean Riddle, ClawGrip]
+- 11386: pc/at.cpp, pc/pc.cpp, pc/genpc.cpp: Added drivers to hold more BIOS dumps, and added GLaBIOS to generic PCs. [rfka01]
+- 11389: misc/cave.cpp: Corrected YMZ280B clock frequency for Gaia Crusaders and Thunder Heroes. [Sergio Galiano]
+- 11390: pc/pc.cpp: Marked mc1702 BIOS ROMs as bad dumps (font area shows visibly corrupt characters). [einstein95]
+- 11391: oric1_cass.xml: Added seventeen items (fourteen working), and replaced five items with better dumps. [ArcadeShadow]
+- 11396: heathkit/tlb.cpp: Clear screen lines when DE is not asserted. [Mark Garlanger]
+- 11400: capcom/cps1.cpp: Added DIP switch settings for daimakair. [Abadede]
+- 11402: pinball/recel.cpp: Re-dumped ‘Mr. Evil’. [Strpinball, Recreativas.org, ClawGrip]
+- 11403: msx1_cart.xml: Added thirty working items, and replaced J.P. Winkle (Korea) with a better dump. [Wilbert Pol]
+- 11405: pc/at.cpp, pc/pcipc_sis.cpp: Moved systems using SiS 82C496 486-VIP chipset to a separate source file. [rfka01]
+- 11406: heathkit/tlb.cpp: Implemented Break key interrupt (requires additional INS8250 functionality to work). [Mark Garlanger]
+- 11408: capcom/cps1.cpp: Corrected DIP switch settings for qadjr. [Abadede]
+- 11409: misc/microdar.cpp: Updated list of known games on the platform in comment. [ClawGrip]
+- 11410: bus/isa/svga_cirrus.cpp, video/clgd546x_laguna.cpp: Added various Cirrus Logic VGA BIOS ROMs. [rfka01]
+- 11412: msx1_cart.xml: Added fourteen working items, and removed a tape-to-cartridge hack. [Wilbert Pol]
+- 11413: Allow building against Qt 6 on Linux. [Jindřich Makovička]
+- 11415: msx1_cart.xml: Added 37 items (36 working). [Wilbert Pol]
+- 11416: spectrum_cass.xml: Added fifty working items, and improved metadata. [ArcadeShadow]
+- 11418: sinclair/scorpion.cpp: Added Scorpion ZS-256 TURBO+; bus/spectrum: Added ZXBUS SMUC storage controller. [holub]
+- 11419: osd/modules.lua: Fixed Qt MOC tool path detection. [Jindřich Makovička]
+- 11420: specpls3_flop.xml, spectrum_betadisc_flop.xml: Added ten items (nine working). [ArcadeShadow]
+- 11421: msx1_cart.xml: Added 28 working items. [Wilbert Pol]
+- 11422: gbcolor.xml: Added two additional versions of Grimace’s Birthday. [nickisarchivinget, ArcadeShadow]
+- 11423: msx1_cart.xml: Added twelve working items. [Wilbert Pol]
+- 11426: machine/nscsi_bus.h: Aligned SCSI command constants with the SCSI-2 draft specification. [Miëtek Bak]
+- 11429: snes.xml: Improved descriptions of Val d'Isère Championship games, and promoted toystory to working. [ArcadeShadow]
+- 11431: msx1_cart.xml: Added 46 items (43 working), and replaced Decathlon (Japan) with a better dump. [Wilbert Pol]
+
+
+Source changes
+--------------
+-hash/a800.xml: Added aDawilah Arabic software. (#11369) [Angelo Salese]
+
+New software list items marked not working
+------------------------------------------
+a800.xml: Akhtabar Dhakayik, Altaaqa, Bank Almaelumat, Qamus Najm, Kayf Yaemal Alkumbiutar [archive.org]
+
+-edevices/stlforce.cpp: Fixed sound clock frequency, and add placeholders for Mortal Race PLDs. (#11370) [ClawGrip]
+
+-cpu/mb88xx/mb88xx.cpp: Don't automatically disable interrupts on servicing external interrupt. (#11371) [Mike]
+
+-namco/namco54.cpp: Fixed apparently bad bit in program ROM. [Mike]
+
+-chore: misc cleanups in PCI world [angelosa]
+
+-pc/pcipc.cpp: add base PCI for Cirrus Logic CL-GD5465 Laguna 3D [angelosa]
+
+-Add nVidia Riva TNT (NV4) misc/ez2d.cpp: repair ez2d2m BIOS from OEM image inside HDD [angelosa]
+
+New systems marked not working
+------------------------------
+Asus CUBX [The Retro Web]
+
+-Super Card driver: [Roberto Fresca]
+ * Added inputs for Super Stars v839 & v834.
+ * Added inputs for Red Line.
+ * Added instructions to boot these games.
+
+-Super Card driver: Added DIP switches for Super Stars v839 [Roberto Fresca]
+
+-Super Card driver: Completed DIP switches for Super Stars v834. [Roberto Fresca]
+
+-Super Card driver: Completed DIP switches for Red Line. [Roberto Fresca]
+
+-Fix clang build [angelosa]
+
+New working clones
+------------------
+Fruit Star Bonus (Ver 8.23PSTK, Steiermark) [TeamEurope, f205v, Roberto Fresca]
+
+-Fruit Star Bonus (Ver 8.23PSTK, Steiermark): Added default NVRAM. [Roberto Fresca]
+
+-Set Fruit Star Bonus (Ver 8.23PSTK, Steiermark) temporarily as clone. [Roberto Fresca]
+
+New working clones
+------------------
+Fruit Star Bonus (Ver 8.17BGL-3, Burgenland, set 1) [TeamEurope, f205v, Roberto Fresca]
+Fruit Star Bonus (Ver 8.17BGL-3, Burgenland, set 2) [TeamEurope, f205v, Roberto Fresca]
+
+-Added default NVRAM to both Fruit Star Bonus (Ver 8.17BGL-3, Burgenland) sets. [Roberto Fresca]
+
+New working clones
+------------------
+Elite Avant Garde (model 6117) [ProteusArts]
+
+-cdimono: fix cdrom regions [Olivier Galibert]
+
+-cdimono: reorder things a little [Olivier Galibert]
+
+New systems marked not working
+------------------------------
+Bell Star Plus [TeamEurope, f205v, Roberto Fresca]
+
+-funworld/supercrd.cpp: minor XOR tables tweaks [Ivan Vangelista]
+
+-astrocde: fix stereo sound regression in wow [hap]
+
+-gorf: improve internal artwork lamps [hap]
+
+-champbas: merge driver files [hap]
+
+-namco54: change rom back to how it was (missing sound effects) [hap]
+
+-mb88xx: revert irq change too (bosco shot sound broken) [hap]
+
+-video/rivatnt.cpp: add nVidia Riva TNT2/TNT2 Ultra/Vanta/TNT2 Model 64 [angelosa]
+
+-Add nVidia Geforce 256/Geforce 256 DDR/Quadro [angelosa]
+
+-msx1_cart.xml: Added 77 items, 73 working (#11372) [wilbertpol]
+
+New working software list items (msx1_cart.xml)
+-----------------------------------------------
+Mega Assembler (Brazil) [file-hunter]
+Merlin (Spain) [file-hunter]
+Merlin (Spain, alt) [file-hunter]
+Monkey Academy (Japan, alt 4) [file-hunter]
+MSX Rugby (Korea) [file-hunter]
+Multitext (France, v1.4) [file-hunter]
+Ninja Kopimaru Kun (Japan) [file-hunter]
+Mazes Unlimited (Arab) [file-hunter]
+Moon Rider (Arab) [file-hunter]
+M-Tanks [MSXDev]
+M.A.Z.E. [file-hunter]
+Mag the Magician [file-hunter]
+Magical Stones (16KB) [MSXDev]
+Magical Stones (8KB) [MSXDev]
+Magnet [file-hunter]
+Mahjong Solitaire [MSXDev]
+Majikazo [file-hunter]
+Majikazo (alt) [file-hunter]
+Make Them Fall [MSXDev]
+Make Them Jump [MSXDev]
+Malaika - Prehistoric Quest (rev 3) [MSXDev]
+Malaika - Prehistoric Quest (rev 2) [MSXDev]
+Malaika - Prehistoric Quest (rev 1) [MSXDev]
+Malaika - Prehistoric Quest (rev 0) [MSXDev]
+Malaika (v1.2) [MSXDev]
+Malaika (v1.1) [MSXDev]
+Malaika (v1.0) [MSXDev]
+Manicomio [MSXDev]
+Market Master [MSXDev]
+Mars Lander [msxblue]
+MayQ Buster [cobinee]
+MayQ II [cobinee]
+MayQ Keeper [cobinee]
+MayQ Slayer [cobinee]
+MayQ Slayer (alt) [cobinee]
+MayQ Slayer (alt 2) [cobinee]
+Maze Chase [jltursan]
+Mazogs [MSXDev]
+Mazy [inufuto]
+Mecha 8 (Matra) [file-hunter]
+Mecha 8 (MSXDev) [MSXDev]
+Mecha 9 [file-hunter]
+Mecha Taisen on Planet Oldskool+ [MSXDev]
+Mecha Taisen on Planet Oldskool [MSXDev]
+Melody Party EX [Clube MSX]
+Menace [MSXDev]
+Menace (alt) [file-hunter]
+Meteoros [file-hunter]
+Meteoros (alt) [file-hunter]
+Mine Finder (v1.2) [MSXDev]
+Mine Finder (v1.1) [MSXDev]
+Minimagos [unepicfran]
+Mission2Mir (v1.2) [file-hunter]
+Mission2Mir (v1.1) [MSXDev]
+Mission2Mir (v1.0) [file-hunter]
+Mix (v1.2) [MSXDev]
+Mix (v1.1) [MSXDev]
+Mix (v1.0) [MSXDev]
+Monster Hunter (English) [MSXDev]
+Monster Hunter (Spanish) [MSXDev]
+Motkonqe [n.i]
+Motkonqe (older) [file-hunter]
+Mr. Chef & the Sausages [MSXDev]
+Mr. Chef & the Sausages (alt) [file-hunter]
+Mr. Cracksman [MSXDev]
+Mr. Mole (SCC) [MSXDev]
+Mr. Mole [MSXDev]
+MSX Swimming Game (Japan) [file-hunter]
+MSX Swimming Game (Japan, alt) [file-hunter]
+MSX Wars Scorched Battles [file-hunter]
+Mutants from the Deep [retroworks]
+Mutants from the Deep (alt) [retroworks]
+My Sacred Place [MSXDev]
+
+New NOT_WORKING software list additions (msx1_cart.xml)
+-------------------------------------------------------
+Miller Graph (Spain) [file-hunter]
+Expert TM-2 Multi Modem (Brazil) [file-hunter]
+MT-Telcom II (Netherlands) [file-hunter]
+MT-Viditel (Netherlands) [file-hunter]
+
+-Tidy up some stuff, combine sunelectronics/markham.cpp source files. [Vas Crabb]
+
+-video/riva128.cpp: add Riva 128ZX variant [angelosa]
+
+-sunelectronics/markham.cpp: Removed unused class member. [Vas Crabb]
+
+-machine/w83977tf.cpp: implement keyboard port PnPs [angelosa]
+
+-Added complete DIP switches to Fruit Star T10S & v810. [Roberto Fresca]
+
+New systems marked not working
+------------------------------
+Rolling Joker (3 sets)  [TeamEurope, f205v, Roberto Fresca]
+
+-giclassic: fix array oob accesses [hap]
+
+-tmnt.cpp: Driver overhaul [AJR]
+ * Split all games except cuebrick, mia, tmnt & clones to a separate driver (tmnt2.cpp); consolidate driver emulation within one
+    file each
+ * Eliminate runtime tag lookups for memory banks and I/O ports
+ * Only allow CPU access to one byte at a time from the 052109
+ * Modernize VBLANK interrupts, sourcing them from 052109 except for remaining tmnt.cpp games and Sunset Riders bootlegs
+ * Remove now-superfluous methods from 052109 device emulation
+
+-Update mame.lst for 53aabfcc8e096b682914ac31c560cd646fca0fe1 [AJR]
+
+-tmntucbl: Fix configuration (and unused function error) [AJR]
+
+-tmnt2: get rid of unused k053251_glfgreat_w [hap]
+
+-machine/sis85c496.cpp: add DRAM boundary regs, hookup ISA bus pc/pcipc_sis.cpp: fix host PCI mapping (at 05.0), hookup ISA slots
+ [angelosa]
+
+-machine/sis950_lpc.cpp: convert to use PS/2 HLE version [angelosa]
+
+-chore: start moving sis85c496 BIOSes from pc/at.cpp to pc/pcipc_sis.cpp [angelosa]
+
+-machine/pc87306.cpp: should use KBDC8042_DOUBLE for set_interrupt_type [angelosa]
+
+-machine/sis950_lpc.cpp: doesn't have a BIOS anymore [skip ci]
+
+New clones marked as NOT_WORKING
+--------------------------------
+Bingo Roll (209 / 19-1-95) [TeamEurope, f205v, Roberto Fresca]
+
+New systems marked not working
+------------------------------
+Bingo Roll 2001 (v22.1) [TeamEurope, f205v, Roberto Fresca]
+
+New clones marked as NOT_WORKING
+--------------------------------
+Bingo Roll (Vip2 v26.02.02) [TeamEurope, f205v, Roberto Fresca]
+
+-sony/taitogn.cpp: avoid outright crash, booting still stops with 'system error' [Ivan Vangelista]
+
+-sony/taitogn.cpp: modified as per review, booting problem stands [Ivan Vangelista]
+
+-machine/ataflash.cpp: Untangle from the parallel ATA interface. [Vas Crabb]
+ * This isolates the ATA disk drive interface implementation from the physical parallel ATA device interface. The ATA Flash PC Card
+    is no longer a kind of parallel ATA device.
+
+-sony/taitogn.cpp: Fixed Flash card image tags. [Vas Crabb]
+
+-docs: Remove link to Gaming-History/Arcade-History since the front page is covered in dodgy gambling links. [Vas Crabb]
+
+-cpu/i960: Corrected disassembly of dcinva instruction. (#11378) [Joshua Scoggins]
+ * 0xad should be disassembled as dcinva, not 0xac.
+
+-pc/pcipc_sis.cpp: fix irq ack [angelosa]
+ * machine/sis85c496.cpp: perform some cleanups
+
+-bus/a2bus/romcard.cpp - fix typo in description (#11384) [ksherlock]
+
+-machine/sis85c496.cpp: add preliminary IDE support [angelosa]
+
+-pc/pc_sis.cpp: hookup Voodoo 1 to sis85c496 driver [angelosa]
+
+New systems marked not working
+------------------------------
+Name Club Ver.4 (J 971202 V1.000) [TeamEurope]
+
+-machine/atastorage.cpp: Made the CF Card behave more like a CF card. [Vas Crabb]
+ * machine/ataflash.cpp: Derive from CF card base rather than hard disk base.
+ * konami/konamigs.cpp: Use ATA CF card device (true IDE mode 4).
+
+-exidy: increase number of collision detection timers (like how it was before the timer_set refactor) [hap]
+
+-victory,exidy440: similar collision timer fix as exidy.cpp, exidysound: add todo note, PIA irq is from pin 38, not pin 37 [hap]
+
+-6532riot: remove use of devcb pointers [hap]
+
+new NOT_WORKING machine
+-----------------------
+Galileo Factory (main) [Darksoft, MetalliC, rtw]
+
+-heathkit/z37_fdc.cpp: Fixed some minor issues and cleaned up code. (#11374) [Mark Garlanger]
+ * Updated port read values for the non-existent ports.
+ * Clear interrupt block on reset.
+ * Removed redundant member variables.
+ * Added logging options.
+
+-6532riot: update irqstate when en/disabling a7 irq [hap]
+
+New clones marked not working
+-----------------------------
+Cue Ball Wizard (older display rev.) [PinMAME]
+Bare Knuckle III (bootleg of Mega Drive version, protected) [H4M573R , Hammy]
+
+New systems marked not working
+------------------------------
+Quick & Crash (V2.200) [CoolFox, DragonMinded, The Dumping Union]
+
+-funworld/supercrd.cpp: last bunch of XOR tables tweaks for now [Ivan Vangelista]
+
+-casloopy.xml: Redumped ltlromance [TeamEurope]
+
+New systems marked not working
+------------------------------
+Motorola M8120 [Xolod]
+
+-lastfght: Modernize VBLANK interrupt [AJR]
+
+-misc/cave.cpp: Corrected YMZ280B clock frequency for Gaia Crusaders and Thunder Heroes. (#11389) [Sergio G]
+
+-cave.cpp: simplify prev commit [hap]
+
+New systems marked not working
+------------------------------
+Bell-Star+ 5 (Vip2 v.3.6.02) [TeamEurope, f205v, Roberto Fresca]
+
+-machine/sis85c496.cpp: revert IDE to standard mapping for now (works slightly better for CD-ROM) [angelosa]
+
+New clones marked as NOT_WORKING
+--------------------------------
+Bell-Star+ (Vip2 v.25.02.02) [TeamEurope, f205v, Roberto Fresca]
+
+-Documented the serial of Bell-Star+ 5 (Vip2 v.3.6.02). [Roberto Fresca]
+
+New clones marked as NOT_WORKING
+--------------------------------
+Bell-Star+ (Vip2 v.30.1.02) [TeamEurope, f205v, Roberto Fresca]
+
+-unknown 'VIP 2000' game: Changed year to 2004. [Roberto Fresca]
+
+-pc/pc.cpp: Marked mc1702 BIOS as a bad dump. (#11390) [eientei95]
+
+-leapfrog/leappad.cpp: Added placeholders undumped microcontroller ROM. (#11385) [Sean Riddle]
+
+-metafox: Revert screen raw parameterization that caused graphics regression [AJR]
+
+-pc/at.cpp, pc/pc.cpp, pc/genpc.cpp: Added more BIOS dumps. (#11386) [rfka01]
+ * at.cpp: Added JUKO Baby XT BXM/12 BIOS for pc and GLaBIOS 0.24 for pcv20. [eggimac]
+
+New clones marked not working
+-----------------------------
+AUVA VIP 800 [fdiskitup]
+Hyundai Super 16 T [sequoia]
+Hyundai Super 16 TE [sequoia]
+Nixdorf 8810/20 [MajorMaxdom]
+Octek XT-286 motherboard [ozzyrules]
+
+-misc/jackpot.cpp: fix gfxdecoding, add NMI, CRTC and basic input hooks [angelosa]
+ * allows to enter in gameplay (assuming pre-initialized EEPROM)
+
+-misc/jackpot.cpp: set with unmap_value_high, makes it to initialize EEPROM to a sane default [angelosa]
+
+-jackpot.cpp: Add UART and some interrupts [AJR]
+
+-misc/jackpot.cpp: correct title to Jackpot Bowling [angelosa]
+
+Clones promoted to working
+--------------------------
+Arkanoid (Phoenix Electronics Co. license) [Darran, Sean Riddle, Brian Troha, The Dumping Union]
+
+-taito/arkanoid.cpp: Dumped arkanoidpe set’s actual A75 15 MCU code [Darran, Sean Riddle, Brian Troha, The Dumping Union]
+
+-namco/quickncrash.cpp: dumped and documented LCD PCB [CoolFox, DragonMinded, The Dumping Union]
+
+New working clones
+------------------
+Frogger - New Serie 92 (bootleg) [Domenico Cervini]
+
+-unkeinv: identified game as Mego Invasion From Space [Sly DC]
+
+-eag68k: shuffle around some feag sets [hap]
+
+-msx1_cart.xml: Added 33 items, 32 working. (#11377) [wilbertpol]
+ * Also marked pwnd310 as a clone of pnwd3.
+
+New working software list items (msx1_cart.xml)
+-----------------------------------------------
+l'Abbaye des Morts (v1.2) [retrodeluxe]
+l'Abbaye des Morts (v1.1) [retrodeluxe]
+l'Abbaye des Morts (v0.1) [retrodeluxe]
+L.3.W (Korea) [file-hunter]
+Lightly Roller (Japan) [file-hunter]
+La Corona Encantada (English) [MSXDev]
+La Corona Encantada (English, alt) [file-hunter]
+La Corona Encantada (Spanish) [MSXDev]
+La Corona Encantada (Spanish, alt) [file-hunter]
+La Corona Encantada (Spanish, final) [relevovideogames]
+La Corona Encantada (Spanish, final, alt) [file-hunter]
+Landing [file-hunter]
+Lawn Mower [file-hunter]
+Leila K [file-hunter]
+Libreway [MSXDev]
+Lift [inufuto]
+Limaribu [MSXDev]
+Linez [file-hunter]
+Linez (1 level broken) [MSXDev]
+Linez (2 levels broken) [file-hunter]
+Linez (3 levels broken) [file-hunter]
+Litter Box [MSXDev]
+Lizard Willy [file-hunter]
+Lock'n Chase [file-hunter]
+Lode Run [MSXDev]
+Logic Remastered (32KB RAM) [MSXDev]
+Logic Remastered (16KB RAM) [MSXDev]
+Los Jardines de Zee Wang Zu [MSXDev]
+Los Jardines de Zee Wang Zu (SCC) [MSXDev]
+Lotus F3 [file-hunter]
+Lotus F3 (alt) [MSXDev]
+LR [cobinee]
+
+New NOT_WORKING software list additions (msx1_cart.xml)
+-------------------------------------------------------
+Light Pen Graphic (Japan) [file-hunter]
+
+-oric1_cass.xml: Added sixteen items (thirteen working), and replaced five items with better dumps. (#11391) [ArcadeShadow]
+ * Also combined several items that were multiple parts of the same software package.
+
+New working software list additions (oric1_cass.xml)
+----------------------------------------------------
+4K Kong [The Oric Site]
+Cobra [The Oric Site]
+Impossible Mission (Atmos 50Hz) [Defence Force]
+Impossible Mission (Atmos 60Hz) [Defence Force]
+Invaders (Program Factory) [The Oric Site]
+Le Fer d'Amnukor [The Oric Site]
+Oricium [Defence Force]
+Rush Hour 4K [The Oric Site]
+Skool Daze [The Oric Site]
+Stormlord [Defence Force]
+Stormlord (alt) [The Oric Site]
+The Pits [The Oric Site]
+Transat One [The Oric Site]
+
+New NOT working software list additions (oric1_cass.xml)
+--------------------------------------------------------
+Arsène Lapin [The Oric Site]
+Detective Story [The Oric Site]
+Composer [The Oric Site]
+
+Redump software (oric1_cass.xml)
+--------------------------------
+Le Secret du Tombeau [The Oric Site]
+Le Tour du Monde en 80 Jours [The Oric Site]
+Mission Impossible [The Oric Site]
+The Ultra [The Oric Site]
+Contract Bridge [The Oric Site]
+
+-wd_fdc.cpp: simplify/optimize how bus inverting is handled (#11375) [Mark Garlanger]
+
+-avengers: Replace protection simulation with hookup of emulated MCU; add wait states to main CPU to keep it in sync while
+ downloading the palette from the MCU [AJR, David Haywood]
+ * lwings.cpp: Merge driver files; avoid runtime memory bank tag lookups
+
+New clones marked as NOT_WORKING
+--------------------------------
+unknown 'VIP 2000' game (set 2) [TeamEurope, f205v, Roberto Fresca]
+unknown 'VIP 2000' game (set 3) [TeamEurope, f205v, Roberto Fresca]
+
+-cps1.cpp: Add daimakair DIP switches (#11400) [Abadede]
+ * Added missing 'Starting Level' and 'Stop' switches.
+
+-heathkit/tlb.cpp: Clear screen lines when DE is deasserted. (#11396) [Mark Garlanger]
+
+-apple2gs_flop_orig.xml, apple2_flop_orig.xml: Update to woz-a-day 6/27/2023 (added 330 items). (#11360) [A-Noid33]
+ * Also cleaned up formatting, and moved appropriate information to info elements (particularly system requirements, developers and
+    programmers).
+
+New working software list items
+-------------------------------
+apple2gs_flop_orig.xml: [A-Noid33]
+Geometry [4AM, Anoid]
+Magical Myths [4AM, Anoid]
+Mancala [4AM, Anoid]
+Math Wizard [4AM, Anoid]
+Rocket Ranger [4AM, Anoid]
+Sinbad and the Throne of the Falcon [4AM, Anoid]
+Strip Poker II [4AM, Anoid]
+
+New working software list items
+-------------------------------
+apple2_flop_orig.xml: [A-Noid33]
+Addition Logician (Version 1.0) (800K 3.5") [4AM, Anoid]
+Addition Logician (Version 1.0) [4AM, Anoid]
+Adventures with Fractions (Version 1.0) [4AM, Anoid]
+Alphabet Fun: Big and Little Letters [4AM, Anoid]
+Alternate Reality: The City [4AM, Anoid]
+Animal Homes and Stories [4AM, Anoid]
+Animal Stories IV [4AM, Anoid]
+Apple Puck Man [4AM, Anoid]
+Arcade Boot Camp [4AM, Anoid]
+Arithmetic Critters (Version 1.0) [4AM, Anoid]
+Arizona Mix (Version 1.0) [4AM, Anoid]
+Automotive Technician Mathematics Volume 1: Whole Numbers and Fractions (Version 1.0) [4AM, Anoid]
+Automotive Technician Mathematics Volume 2: Decimals and Percents (Version 1.0) [4AM, Anoid]
+Bandits [4AM, Anoid]
+Bez-MX [4AM, Anoid]
+Bezman [4AM, Anoid]
+Bezoff [4AM, Anoid]
+Bezwars [4AM, Anoid]
+Birds [4AM, Anoid]
+Brain Machine [4AM, Anoid]
+Brainteaser Boulevard [4AM, Anoid]
+Building Better Language Skills: Adjectives and Adverbs [4AM, Anoid]
+Building Better Language Skills: Nouns [4AM, Anoid]
+Calendar [4AM, Anoid]
+Capitalization [4AM, Anoid]
+Categorizing: Detective Games [4AM, Anoid]
+Cats and Kittens [4AM, Anoid]
+Chemistry: Balancing Equations (Version 1.0) [4AM, Anoid]
+Chemistry: The Periodic Table (Version 1.0) [4AM, Anoid]
+Circus Math (Version 1.0) [4AM, Anoid]
+Clock Works (Version 1.0) [4AM, Anoid]
+CommuniKeys (Version 1.0) [4AM, Anoid]
+Computer Generated Mathematics Materials Volume 1: Problem Solving (Version 1.1) [4AM, Anoid]
+Computer Generated Mathematics Materials Volume 1: Problem Solving (Version 1.3) [4AM, Anoid]
+Computer Inspector (Version 1.0) [4AM, Anoid]
+Computers in Government (Version 1.0) [4AM, Anoid]
+Conquering Math Worksheet Generator (Version 1.0) [4AM, Anoid]
+Conquering Percents (Version 1.0) [4AM, Anoid]
+Conquering Ratios and Proportions (Version 1.1) [4AM, Anoid]
+Coordinate Math (Version 1.0) [4AM, Anoid]
+Coordinate Math (Version 1.1) (800K 3.5") [4AM, Anoid]
+Copy II Plus (version 9.0 beta 1) [4AM, Anoid]
+Cotton Tales (800K 3.5") [4AM, Anoid]
+Counting Coins [4AM, Anoid]
+Counting Critters (Version 1.0) [4AM, Anoid]
+Create-A-Base (Version 1.0) [4AM, Anoid]
+Creatures of the Night [4AM, Anoid]
+Cyclod [4AM, Anoid]
+Dataquest: Sampler (Version 1.0) [4AM, Anoid]
+Deadline r18-820311 [4AM, Anoid]
+Desktop Zoo [4AM, Anoid]
+Destiny [4AM, Anoid]
+Dog Sled Ambassadors (Version 1.0) [4AM, Anoid]
+Double Trouble [4AM, Anoid]
+Dragons of Hong Kong [4AM, Anoid]
+Early Addition (Version 1.3) [4AM, Anoid]
+Elementary Volume 10: Geometry (Quadrilaterals: Area and Perimeter) (Version 1.0) [4AM, Anoid]
+Elementary Volume 10: Geometry (Quadrilaterals: Area and Perimeter) (Version 1.1) [4AM, Anoid]
+Elementary Volume 12: Language Arts (SIMS) (Version 1.0) [4AM, Anoid]
+Elementary Volume 3: Social Studies (Version 4.8) [4AM, Anoid]
+Elementary Volume 5: Language Arts (Prefixes) (Version 1.5) [4AM, Anoid]
+Elementary Volume 8: Geometry (Points and Angles) (Version 1.0) [4AM, Anoid]
+Elementary Volume 9: Geometry (Lines and Triangles) (Version 2.1) [4AM, Anoid]
+Enchanter r10-830810 [4AM, Anoid]
+Enchanter r29-860820-K [4AM, Anoid]
+English Parts of Speech (Version 1.5) [4AM, Anoid]
+Equation Math (Version 1.0) [4AM, Anoid]
+Estimation (Version 1.0) [4AM, Anoid]
+Estimation: Quick Solve II (Version 1.0) [4AM, Anoid]
+Experiencing Procedures (Version 1.0) [4AM, Anoid]
+Exploring Sorting Routines (Version 1.0) [4AM, Anoid]
+Extensions to Applesoft BASIC (Version 1.0) [4AM, Anoid]
+Extensions to Applesoft BASIC (Version 1.2) [4AM, Anoid]
+First Encounter [4AM, Anoid]
+First-Start Writing Program [4AM, Anoid]
+Fly Wars [4AM, Anoid]
+Fraction Concepts, Inc. (Version 1.2) [4AM, Anoid]
+Fraction Practice Unlimited (Version 1.0) [4AM, Anoid]
+Fraction Practice Unlimited (Version 1.2) (800K 3.5") [4AM, Anoid]
+Fun from A to Z (Version 1.0) (800K 3.5") [4AM, Anoid]
+Fun from A to Z (Version 1.0) [4AM, Anoid]
+Games From Around The World #1: Wari [4AM, Anoid]
+Games From Around The World #2: Kono [4AM, Anoid]
+Games From Around The World #3: Fox & Geese [4AM, Anoid]
+Games From Around The World #4: Seega [4AM, Anoid]
+Games From Around The World #5: Nine Men's Morris [4AM, Anoid]
+Games From Around The World #6: Mu Torere [4AM, Anoid]
+Genetics (Version 1.1) [4AM, Anoid]
+Getting Ready to Read and Add [4AM, Anoid]
+Ghost Writer (Version 1.0) [4AM, Anoid]
+Granny Applebee's Cookie Factory [4AM, Anoid]
+Graphing (Version 1.0) [4AM, Anoid]
+Growgins' Fractions (Version 1.0) [4AM, Anoid]
+Guardian [4AM, Anoid]
+Hugo Hound's Vowel Sounds: Long Vowels [4AM, Anoid]
+Inferential Anne: Level II [4AM, Anoid]
+Instant Survey (Version 1.0) [4AM, Anoid]
+It's About Time [4AM, Anoid]
+Jellyfish [4AM, Anoid]
+Jenny's Journeys (Version 1.0) [4AM, Anoid]
+Keyboarding Master (Version 1.0) [4AM, Anoid]
+Kinder Critters: Address and Phone Number [4AM, Anoid]
+Kinder Critters: Letters and Patterns [4AM, Anoid]
+LabelMaker (Version 1.0) [4AM, Anoid]
+Leather Goddesses of Phobos r4-880405-2H [4AM, Anoid]
+Leather Goddesses of Phobos r59-860730-K [4AM, Anoid]
+Lemmings [4AM, Anoid]
+Let's Learn About Money [4AM, Anoid]
+Logic Gates (Version 1.0) [4AM, Anoid]
+Lunar Explorer [4AM, Anoid]
+MECC Apple Demonstration (Version 1.1) [4AM, Anoid]
+MECC Dataquest: Europe and the Soviet Union (Version 1.0) [4AM, Anoid]
+MECC Dataquest: Latin America (Version 1.0) [4AM, Anoid]
+MECC Dataquest: Middle East and North Africa (Version 1.0) [4AM, Anoid]
+MECC Dataquest: North American Mammals (Version 1.1) [4AM, Anoid]
+MECC Dataquest: The Presidents (Version 1.1) [4AM, Anoid]
+MECC Dataquest: The Presidents (Version 1.2) [4AM, Anoid]
+MECC Dataquest: The World Community (Version 1.1) [4AM, Anoid]
+MECC Editor (Version 1.0) [4AM, Anoid]
+MECC Graph (Version 1.1) [4AM, Anoid]
+MECC Graphing Primer (Version 1.0) [4AM, Anoid]
+MECC Hi-Res Toolkit (Version 1.0) [4AM, Anoid]
+MECC Outliner (Version 1.0) [4AM, Anoid]
+MECC Stuff and Fetch (Version 1.0) [4AM, Anoid]
+MECC Write Start (Version 1.2) [4AM, Anoid]
+MECC Writer (Version 1.2) [4AM, Anoid]
+Marty's Family Reader [4AM, Anoid]
+Marty's Reading Workout [4AM, Anoid]
+Master Spell (Version 1.3) [4AM, Anoid]
+Math Word Problems Volume 1: Careers (800K 3.5") [4AM, Anoid]
+Math Word Problems Volume 2: Money (800K 3.5") [4AM, Anoid]
+Math Word Problems Volume 3: Sports (800K 3.5") [4AM, Anoid]
+Math Word Problems Volume 4: Travel (800K 3.5") [4AM, Anoid]
+Math Word Problems Volume 6: Our Nation's Capital Washington DC (800K 3.5") [4AM, Anoid]
+Mathematics Volume 1: Graphing, Logic, and Equations (Version 3.2) [4AM, Anoid]
+Mathematics Volume 2: Measurement (Version 1.2) [4AM, Anoid]
+Mathematics Volume 3: Formulas, Shapes, and Skills (Version 1.3) (limited boot backup) [4AM, Anoid]
+Mathematics Volume 3: Formulas, Shapes, and Skills (Version 1.3) [4AM, Anoid]
+Mathosaurus: Computation [4AM, Anoid]
+Memory Building Blocks [4AM, Anoid]
+Microzine 32 [4AM, Anoid]
+Microzine 40 [4AM, Anoid]
+Microzine Jr. 1 [4AM, Anoid]
+Microzine Jr. 10 [4AM, Anoid]
+Microzine Jr. 2 [4AM, Anoid]
+Microzine Jr. 3 [4AM, Anoid]
+Microzine Jr. 4 [4AM, Anoid]
+Microzine Jr. 5 [4AM, Anoid]
+Microzine Jr. 6 [4AM, Anoid]
+Microzine Jr. 7 [4AM, Anoid]
+Microzine Jr. 8 [4AM, Anoid]
+Microzine Jr. 9 [4AM, Anoid]
+Minotaur [4AM, Anoid]
+Modeling (Version 1.0) [4AM, Anoid]
+Moonmist r4-860918-K [4AM, Anoid]
+Multiplication Puzzles (Version 1.0) [4AM, Anoid]
+Muppet Word Book [4AM, Anoid]
+Mystery Matter (Version 1.0) [4AM, Anoid]
+Mystery Objects (Version 1.0) [4AM, Anoid]
+Nightmare Gallery [4AM, Anoid]
+Now You See It, Now You Don't: Pick The Part [4AM, Anoid]
+Numberball [4AM, Anoid]
+Odell Lake (Version 1.0) [4AM, Anoid]
+Odell Lake (Version 1.2) [4AM, Anoid]
+Oliver's Crosswords [4AM, Anoid]
+Patterns (Version 1.0) [4AM, Anoid]
+Pecos Bill [4AM, Anoid]
+Phonics Prime Time: Blends and Digraphs (Version 1.0) (800K 3.5") [4AM, Anoid]
+Planetfall r20-830708 [4AM, Anoid]
+Planetfall r26-831014 [4AM, Anoid]
+Planetfall r37-851003-H [4AM, Anoid]
+Polls and Politics (Version 1.0) [4AM, Anoid]
+Probability (Version 1.0) [4AM, Anoid]
+Problem-Solving Strategies (Version 1.0) [4AM, Anoid]
+Problem-Solving with Nim (Version 1.0) (800K 3.5") [4AM, Anoid]
+Quilting Bee (Version 1.0) [4AM, Anoid]
+Quotient Quest (Version 1.0) [4AM, Anoid]
+Reader's Treasure Chest [4AM, Anoid]
+Reading Comprehension Volume 2: Sports (800K 3.5") [4AM, Anoid]
+Reading Comprehension Volume 3: Geography (800K 3.5") [4AM, Anoid]
+Reading Comprehension Volume 4: History in the Making (800K 3.5") [4AM, Anoid]
+Reading Comprehension Volume 5: Famous People (800K 3.5") [4AM, Anoid]
+Reading Comprehension Volume 6: The Olympics (800K 3.5") [4AM, Anoid]
+Reading Comprehension Volume 7: United States Presidents (800K 3.5") [4AM, Anoid]
+Reading for Understanding: Native Americans [4AM, Anoid]
+Real Math: Level I [4AM, Anoid]
+Real Math: Level II [4AM, Anoid]
+Real Math: Level III [4AM, Anoid]
+Rock 'N Scroll [4AM, Anoid]
+Seastalker r15-840501-B [4AM, Anoid]
+Seastalker r16-850515-M [4AM, Anoid]
+Shapes and Patterns [4AM, Anoid]
+Sherlock r21-871214-2F [4AM, Anoid]
+Shop Right! [4AM, Anoid]
+Show Time (Version 1.1) [4AM, Anoid]
+Snack Attack and Friends [4AM, Anoid]
+Sorcerer r18-860904-K [4AM, Anoid]
+Sorcerer r4-840131-A [4AM, Anoid]
+Sorcerer r6-840508-F [4AM, Anoid]
+Space Station Freedom (Version 1.0) [4AM, Anoid]
+Space Subtraction (Version 1.0) [4AM, Anoid]
+Spellbreaker r63-850916-H [4AM, Anoid]
+Spelling Press (Version 1.1) [4AM, Anoid]
+Spelling Volume 2: Secondary (Version 2.0) [4AM, Anoid]
+Sports Stats (Version 1.0) [4AM, Anoid]
+Starcross r15-820901 [4AM, Anoid]
+Stickybear BASIC [4AM, Anoid]
+Stickybear Basket Bounce Demo [4AM, Anoid]
+Stickybear Basket Bounce [4AM, Anoid]
+Stickybear Bop [4AM, Anoid]
+Stickybear Drawing [4AM, Anoid]
+Stickybear Math 2 [4AM, Anoid]
+Stickybear Math [4AM, Anoid]
+Stickybear Music [4AM, Anoid]
+Stickybear Numbers [4AM, Anoid]
+Stickybear Opposites Demo [4AM, Anoid]
+Stickybear Opposites [4AM, Anoid]
+Stickybear Parts of Speech [4AM, Anoid]
+Stickybear Printer (Version 1) [4AM, Anoid]
+Stickybear Printer (Version 2) [4AM, Anoid]
+Stickybear Reading Comprehension [4AM, Anoid]
+Stickybear Reading [4AM, Anoid]
+Stickybear Shapes (800K 3.5") [4AM, Anoid]
+Stickybear Shapes (Version 1) [4AM, Anoid]
+Stickybear Shapes (Version 2) [4AM, Anoid]
+Stickybear Spellgrabber (800K 3.5") [4AM, Anoid]
+Stickybear Spellgrabber [4AM, Anoid]
+Stickybear Town Builder [4AM, Anoid]
+Stickybear Typing [4AM, Anoid]
+Stickybear Word Problems (800K 3.5") [4AM, Anoid]
+Stickybear Word Problems [4AM, Anoid]
+Study Guide (Version 1.5) [4AM, Anoid]
+Subtraction Puzzles (Version 1.0) [4AM, Anoid]
+Suspended r5-830222 [4AM, Anoid]
+Tank Command [4AM, Anoid]
+Teacher Option Organizer (Version 1.1) [4AM, Anoid]
+Teaching Scientific Inquiry (Version 1.0) [4AM, Anoid]
+The Banking Simulation [4AM, Anoid]
+The Lurking Horror r203-870506-M [4AM, Anoid]
+The Magic String [4AM, Anoid]
+The Market Place (Version 1.0) (800K 3.5") [4AM, Anoid]
+The Market Place (Version 1.0) [4AM, Anoid]
+The Oregon Trail (Version 1.4) [4AM, Anoid]
+The Right Turn: Strategies in Problem Solving [4AM, Anoid]
+The Royal Rules [4AM, Anoid]
+The Stickybear ABC [4AM, Anoid]
+The Three Rs of Microcomputing (Version 1.1) [4AM, Anoid]
+Thunder and Lightning [4AM, Anoid]
+Time Navigator (Version 1.0) (800K 3.5") [4AM, Anoid]
+Time Navigator (Version 1.0) [4AM, Anoid]
+Time Navigator Leaps Back (Version 1.0) [4AM, Anoid]
+TimeOut DeskTools (Version 1.2) (800K 3.5") [4AM, Anoid]
+TimeOut DeskTools (Version 1.3) (800K 3.5") [4AM, Anoid]
+TimeOut DeskTools (Version 3.1) (800K 3.5") [4AM, Anoid]
+TimeOut DeskTools II (Version 1.1) (800K 3.5") [4AM, Anoid]
+TimeOut DeskTools II (Version 1.2) (800K 3.5") [4AM, Anoid]
+TimeOut FileMaster (Version 1.0) (800K 3.5") [4AM, Anoid]
+TimeOut FileMaster (Version 1.3) (800K 3.5") [4AM, Anoid]
+TimeOut Grammar (Version 1.0) (800K 3.5") [4AM, Anoid]
+TimeOut Graph (Version 1.0) (800K 3.5") [4AM, Anoid]
+TimeOut Graph (Version 1.2) (800K 3.5") [4AM, Anoid]
+TimeOut MacroEase (Version 1.0) (800K 3.5") [4AM, Anoid]
+TimeOut PowerPack (Version 1.2) (800K 3.5") [4AM, Anoid]
+TimeOut QuickSpell (Version 1.6) (800K 3.5") [4AM, Anoid]
+TimeOut QuickSpell (Version 2.0) (800K 3.5") [4AM, Anoid]
+TimeOut ReportWriter (Version 1.0) (800K 3.5") [4AM, Anoid]
+TimeOut ReportWriter (Version 2.2) (800K 3.5") [4AM, Anoid]
+TimeOut ReportWriter (Version 2.52) (800K 3.5") [4AM, Anoid]
+TimeOut SideSpread (Version 1.2) (800K 3.5") [4AM, Anoid]
+TimeOut SpreadTools (Version 1.0) (800K 3.5") [4AM, Anoid]
+TimeOut SpreadTools (Version 1.1) (800K 3.5") [4AM, Anoid]
+TimeOut SuperFonts (Version 1.0) (800K 3.5") [4AM, Anoid]
+TimeOut SuperFonts (Version 1.1) (800K 3.5") [4AM, Anoid]
+TimeOut SuperFonts (Version 3.0) (800K 3.5") [4AM, Anoid]
+TimeOut SuperFonts (Version 3.1) (800K 3.5") [4AM, Anoid]
+TimeOut SuperForms (Version 1.04) (800K 3.5") [4AM, Anoid]
+TimeOut TeleComm (Version 1.1) (800K 3.5") [4AM, Anoid]
+TimeOut TeleComm (Version 1.2) (800K 3.5") [4AM, Anoid]
+TimeOut Thesaurus (Version 1.0) (800K 3.5") [4AM, Anoid]
+TimeOut Thesaurus (Version 2.0) (800K 3.5") [4AM, Anoid]
+TimeOut UltraMacros (Version 1.2) (800K 3.5") [4AM, Anoid]
+TimeOut UltraMacros (Version 1.7) (800K 3.5") [4AM, Anoid]
+TimeOut UltraMacros (Version 3.0) (800K 3.5") [4AM, Anoid]
+TimeOut UltraMacros (Version 3.1) (800K 3.5") [4AM, Anoid]
+Top Readers' Club: Grade 2 [4AM, Anoid]
+Top Readers' Club: Grade 3 [4AM, Anoid]
+Top Readers' Club: Grade 4 [4AM, Anoid]
+Top Readers' Club: Grade 5 [4AM, Anoid]
+Troll First-Start Biographies [4AM, Anoid]
+Troll Math Class Level 1: I Can Add And Subtract [4AM, Anoid]
+Troll Math Class Level 2: I Can Carry and Borrow [4AM, Anoid]
+Troll Math Class Level 6: Ratio, Proportion, and Percent [4AM, Anoid]
+Troll Math Class Level K: I Can Count [4AM, Anoid]
+Troll Printmaker: Holiday Fun [4AM, Anoid]
+Troll Sports Math: Math Word Problems for Grades 4-6 [4AM, Anoid]
+Uncle Clyde's Consonant Slides: Beginning Consonants [4AM, Anoid]
+Uncle Clyde's Consonant Slides: Blends and Digraphs [4AM, Anoid]
+Uncle Clyde's Consonant Slides: Ending Consonants [4AM, Anoid]
+Vacation Nation Travel (Version 1.0) [4AM, Anoid]
+Vocabulary Development (800K 3.5") [4AM, Anoid]
+Weights and Treasure [4AM, Anoid]
+Witness r13-830524 [4AM, Anoid]
+Witness r18-830910 [4AM, Anoid]
+Wood Car Rally (Version 1.0) [4AM, Anoid]
+Woolly Bounce (Version 1.0) [4AM, Anoid]
+Word Processing on the Apple (Version 2.0) [4AM, Anoid]
+Word-a-Mation: Exploring Word Relationships [4AM, Anoid]
+Zork I r15-UG3AU5 [4AM, Anoid]
+Zork I r26-820803 [4AM, Anoid]
+Zork I r52-871125-2-E [4AM, Anoid]
+Zork I r75-830929 [4AM, Anoid]
+Zork I r75-830929-A [4AM, Anoid]
+Zork I r88-840726-B [4AM, Anoid]
+Zork I r88-840726-F [4AM, Anoid]
+Zork I r88-840726-K [4AM, Anoid]
+Zork II r22-830331 [4AM, Anoid]
+Zork II r48-840904-B [4AM, Anoid]
+Zork III r10-820818 [4AM, Anoid]
+Zork III r15-830331 [4AM, Anoid]
+Zork III r16-830410-A [4AM, Anoid]
+Zork III r17-840727-B [4AM, Anoid]
+Zork III r17-840727-K [4AM, Anoid]
+Zoyon Patrol (Version 1.0) [4AM, Anoid]
+
+-i386: tzcnt fall back to bsf for 386 and 486 too [cracyc]
+
+-Miscellaneous cleanup. [Vas Crabb]
+
+-a800.xml: Reconsidered Arabic transliteration a little. [Vas Crabb]
+ * Hyphenate "al-" article prefix in transliterations.
+ * Use English spelling for loanwords.
+
+-amstrad/pda600_copro.cpp: Guard against malformed frame. [Sandro Ronco]
+ * namco/wacky_gator.cpp: Initialise a couple of variables.
+
+-capcom/1943.cpp: measured MCU clock [Guru]
+
+-taito/pkspirit.cpp: confirmed on a second PCB that the Oki ROM socket isn't populated [hammy]
+
+-astropc.cpp: Add notes, correct release years (#11356) [eientei95]
+
+-video/pc_vga.cpp: part 2 of interface modernization (#11315) [Angelo Salese]
+ * video/pc_vga.cpp: update QA, move SVGA related function to bottom of file
+ * chore: rename clgd542x.cpp -> pc_vga_cirrus.cpp
+ * chore: move SiS630 SVGA portion to pc_vga_sis.cpp
+ * chore: intermediate step to convert crtc/seq/attribute/gc_reg_read/write to maps from violating parties
+ * video/pc_vga_cirrus.cpp: preliminary implementation of hidden DAC mode
+ * misc/gambl186.cpp: fix compile
+ * pc_vga_cirrus.cpp: fix gambl186 regression
+ * chore: convert pc_vga sequencer regs to space memory
+ * chore: make sure that address_space_config is preserved when inheriting
+ * trs/vis.cpp: convert VGA to sequencer_map
+ * chore: move s3virge out of bus/isa
+ * pc_vga.cpp: convert ATC to attribute_map
+ * pc_vga.cpp: convert GC to gc_map
+ * pc_vga.cpp: convert CRTC to crtc_map
+ * fixes trs/vis.cpp refresh rate by chain reaction (40 Hz -> 61 Hz)
+ * video/s3virge.cpp: fix regression
+ * video/pc_vga.cpp: reorder functions
+ * chore: modernize VGA main I/O interfaces
+ * video/clgd546x_laguna.cpp: update to latest
+ * konami/konmedal020.cpp: fix -validate
+ * video/pc_vga.cpp: use yet another custom address_map_constructor in place of the non-working memory_view pattern
+ * video/ibm8514a.cpp: address self review [skip ci]
+
+-msx1_cart.xml: Added thirty working items. (#11403) [wilbertpol]
+ * Also replaced J.P. Winkle (Korea) with a better dump. [file-hunter]
+
+New working software list items (msx1_cart.xml)
+-----------------------------------------------
+Soukoban (Korea, Zemina) [file-hunter]
+The Police Story (Japan, alt 2) [file-hunter]
+Juno First (Japan, alt) [file-hunter]
+Keystone Kapers (Japan, alt) [file-hunter]
+Pesadelo (Brazil) [file-hunter]
+Konami's Baseball (Japan, alt) [file-hunter]
+MSX Basic-kun Plus 2.0 (Japan, alt) [file-hunter]
+I Need Speed (MSX Cartridge Shop) [file-hunter]
+I Need Speed (Final) [MSXDev]
+I Need Speed (MSXDev) [MSXDev]
+I.N.E.R.T.I.A. [MSXDev]
+Impetus [inufuto]
+Inq & Suq vs Nightmare [file-hunter]
+Invasion of the Zombie Monsters [file-hunter]
+Isitar 7 [n.i]
+Italian Stallion [MSXDev]
+J.E.T.P.A.C. [file-hunter]
+Jäästä [MSXDev]
+Jawbreaker II [MSXDev]
+JumpinG - The Tutorial Game (English) [MSXDev]
+JumpinG - The Tutorial Game (Spanish) [MSXDev]
+JumpinG - The Tutorial Game (Spanish, demo) [file-hunter]
+Jungle Hunt [file-hunter]
+Kill Mice [MSXDev]
+Klondike Solitaire [MSXDev]
+Kobashi [file-hunter]
+Kralizec 8K Tetris [MSXDev]
+Kralizec Battle Tetris [MSXDev]
+Kralizec Tetris [file-hunter]
+Kralizec Tetris (alt) [file-hunter]
+
+Software list items promoted to working (msx1_cart.xml)
+-------------------------------------------------------
+MSX Basic-kun Plus 2.0 (Japan) [wilbertpol]
+
+-isa/isa_cards.cpp: add Paradise Systems PVGA1 ISA16 card [angelosa]
+
+-sega/segaufo.cpp: Filled in newufo DIP switch settings from manual. (#11368) [negunma]
+
+-pinball/recel.cpp: Redumped 'Mr. Evil'. (#11402) [Strpinball, Recreativas.org]
+ * Also fixed some game names and reformatted single line comments.
+
+-machine/mm5740.cpp: Added repeat input. (#11352) [Mark Garlanger]
+
+-heathkit/tlb.cpp: Hooked up repeat key and fixed interrupt state calculation. [Mark Garlanger]
+
+-Fixed some #include guards. [Vas Crabb]
+
+-Moved 86c496 chipset boards from at.cpp to pspc_sis.cpp at Kale's req… (#11405) [rfka01]
+
+-devices/ncr53c90.cpp: Don't subtract FIFO contents from transfer count when DMA is started. [R. Belmont]
+ * The 5390/5394/5396 manuals all agree transfer count only decrements on DACK in DMA write mode, and 68040 Macs require it.
+ * Also tested on sun4_60, Solaris boots fine.  P-Mac will investigate other uses.
+
+-cpu/m68000: Allow drivers and devices to use the instruction restart capability on the 020/030/040. [R. Belmont]
+
+-apple/dafb.cpp: New DAFB device for the Quadra 700/900/950, including video and "turbo SCSI". [R. Belmont]
+
+-nemesis: break up LN style comments, vlm5030: update stream before changing st/rst pin, small cleanup [hap]
+
+-cpu/m68k: Revert unwise cleanup. [R. Belmont]
+
+-video/pc_vga_paradise.cpp: add 90C26 note for macpb180c [Angelo Salese]
+
+-cpu/m68k: Try again for GCC [R. Belmont]
+
+New clones marked not working
+-----------------------------
+Mr. and Mrs. PacMan (set 2) [caius]
+
+-dataeast/compgolf.cpp, dataeast/dassault.cpp: consolidated drivers in single files [Ivan Vangelista]
+
+-sega/segasp.cpp: huhimage security PIC dumped [Darksoft, MetalliC, rtw]
+
+-capcom/cps1.cpp: Updated qadjr DIP switch settings (#11408) [Abadede]
+ * Set default difficulty recommended in manual.
+ * Corrected demo sounds settings.
+ * Also fixed inconsistent capitalization daimakair level select settings.
+
+-apple/macpb180c: Switch to 8-bit handler to make the VGA-ness more obvious. [R. Belmont]
+
+-apple/dafb.cpp: Minor cleanups. [R. Belmont]
+
+-nemesis: improve gx400 hw speech start, vlm5030: fix overflow problem on unvoiced samples [hap]
+
+-nemesis: hook up salamand speech busy pin [NRS]
+
+-k005289: fix off by 1 error [hap]
+
+-apple/macquadra700.cpp: Adjusted CPU interleave so PIC1654S ADB modem works correctly. [R. Belmont]
+
+Systems promoted to working
+---------------------------
+Apple Macintosh Quadra 700 [R. Belmont]
+
+-ncr53c90: Improve logging [AJR]
+
+-isa/svga_paradise.cpp: add PVGA1A-JK and WD90C90-JK variants [angelosa]
+
+-docs: Moved Lua API reference to its own section - the page was far too long. [Vas Crabb]
+
+New working clones
+------------------
+Apple Macintosh LC III+ [R. Belmont]
+Apple Macintosh LC 550 [R. Belmont]
+
+-k005289,k051649: pre instead of postincrement voice counter to prevent confusion, k051649: fix possible array overflow when reading
+ voice counter, msx scc: fix test register offset [hap]
+
+-k051649: more logical channel halt [hap]
+
+-misc/microdar.cpp: Update notes (#11409) [ClawGrip]
+
+-plugins/hiscore: Fixed detection of software item lines, and added high score support for Mega Drive Sonic Spinball. (#11282)
+ [GregWeil]
+
+-cdi.xml, ibm5170_cdrom.xml: Added The Cranberries: Doors and Windows. (#10599) [eientei95]
+
+New working software list additions
+-----------------------------------
+cdi.xml: The Cranberries: Doors and Windows [redump.org]
+ibm5170_cdrom.xml: The Cranberries: Doors and Windows [redump.org]
+
+New working clones
+------------------
+Hatris (show version) [twistedsymphony]
+
+New clones marked not working
+-----------------------------
+Player's Edge (PK0846-PC098) Standard Draw Poker [Brian Troha]
+Player's Edge (PK1017-PC041) Standard Draw Poker [Brian Troha]
+
+-dataeast/dec8.cpp: dumped PROM for csilver [Domenico Cervini]
+
+-video/pc_vga_paradise.cpp: add basic extended GC interface [angelosa]
+
+-konami/konendev.cpp: hooked up sound, removed need for ROM patches [Ivan Vangelista]
+
+-minspacep: rename to minspace, k051649: fix issue with sample reload [hap]
+
+-system1: set most ppi tristate to 0 [hap]
+
+-video/pc_vga_paradise.cpp: preliminary WD90C00 implementation [angelosa]
+
+-konmedal: add scc enable register [hap]
+
+-vclock3: increase cpu clock to match better with real time [hap]
+
+-isa/svga_paradise.cpp: add more (not working) wd90c00 dump, add new ISA option for WD90C11 [angelosa]
+
+-svga_cirrus.cpp: A collection of BIOS ROMs for different Cirrus Logic chipsets (#11410) [rfka01]
+ * CL-GD510/520 [rfka01],[Vlask] CL-GD610/620-C [Vlask] CL-GD5320 [Vlask] CL-GD5401 [jvernet, chukaev.ru54, Vlask] CL-GD5402 [Vlask]
+    CL-GD542x [rfka01, Vlask, douglar, SomeGuy, chukaev.ru54, Palcal] CL-GD54M30 [Vlask] CL-GD543x, [rfka01, BeginnerGuy, Vlask,
+    Pirx] CL-GD5440 [Vlask] Diamond Speedstar PRO [Vlask] Diamond Speedstar 64, STB Nitro 64 [kixs] Octek VL-Combo [hasat, aitotat]
+
+-qix.cpp: Driver overhaul [AJR]
+ * Set three-state callbacks for B ports on PIAs
+ * Prevent coin counter from automatically incrementing at startup for games using 68705 MCU
+ * slither: Separate driver state class; make SN76489 interface more accurate
+
+-Fix SHA1 for doorswin in ibm570_cdrom.xml and cdi.xml [skip ci]
+
+New working clones
+------------------
+Terra Force (US), alternate sound [caius]
+
+-changela: screen raw params, fixed gas pedal sensitivity, small cleanups [hap]
+
+-sindbadm: fixed coincounters [hap]
+
+New machines marked as NOT_WORKING
+----------------------------------
+Mitsubishi Trium Eclipse [The Internet Archive]
+
+-changela: break up m_memory_devices arrary [hap]
+
+-changela: shorthand variable types [hap]
+
+-video/pc_vga_paradise.cpp: preliminary implementation of WD90C11A, add basic Extended CRTC to WD90C00 [angelosa]
+ * Can setup VESA modes 100h to 104h
+
+-osd/mac: Make compile again.  Does not yet start up because BGFX tries to force OpenGL. [R. Belmont]
+
+-video/pc_vga_paradise.cpp: bank bit 7 is actually used by Win 95 in 800x600 res [angelosa]
+
+-mips3: revert mistaken change, fix MT#8694 [Patrick Mackinlay]
+
+-msx1_cart.xml: Added fourteen working items. (#11412) [wilbertpol]
+ * Removed Hopper (Europe) tape-to-cartridge hack.
+ * Demoted The Holy Quran (v1.00) to not working.
+
+New working software list items (msx1_cart.xml)
+-----------------------------------------------
+Hole in One Professional (Japan, alt 2) [file-hunter]
+Hole in One Professional (Japan, alt 3) [file-hunter]
+Hot-Asm (Brazil) [file-hunter]
+Hot-Plan (Brazil) [file-hunter]
+Hydlide II - Shine of Darkness (Korea) [file-hunter]
+Hopper (Arab) [file-hunter]
+Hans' Adventure (v1.1) [MSXDev]
+Hans' Adventure (v1.0) [MSXDev]
+Happy Halloween [Clube MSX]
+Happy Square Christmas [303bcn]
+Heart Stealer 2 [MSXDev]
+Heroes Arena [MSXDev]
+Hose Diogo Martinez: The Bussas Quest [MSXDev]
+How Many Are The Dumbbells You Lift? [cobinee]
+
+-changela: fix tree priorities, tweak layer offsets, merge driver [hap]
+
+-funworld/supercrd.cpp: some more XOR tables tweaks for supercrd and the gampo sets [Ivan Vangelista]
+
+-nichibutsu/terracre.cpp, taito/topspeed.cpp: consolidated drivers in single files [Ivan Vangelista]
+
+-video/pc_vga_paradise.cpp: add WD90C30 [angelosa]
+ * video/pc_vga.cpp: preliminary implementation of an interlace_mode virtual getter
+
+-mn1610: disassembler fixes [Patrick Mackinlay]
+
+-changela: remove duplicated code [hap]
+
+-changela: small correction to prev commit [hap]
+
+-zac2650.cpp: Rename driver to zac1b1120.cpp; add XTAL-derived timings and some notes; eliminate spurious 3x scaling of Y-axis [AJR]
+
+-mame.lst: Update for acd59988cd80988d30109ff2b55a1b9039464ccf [AJR]
+
+-zac1b1120.cpp: More notes [AJR]
+
+-changela: add note [hap]
+
+-isa/svga_paradise.cpp: add WD90C31-LR, WD90C31A_LR, WD90C31A_ZS, W90C33_ZZ ISA cards [angelosa]
+
+-Clean up the Votrax SC-01[-A] class names and device names. [Lord Nightmare]
+
+-Echo Plus board uses a TSP5220C (aka TMS5220C), not a straight TMS5220 [Lord Nightmare]
+
+-Revert "Clean up the Votrax SC-01[-A] class names and device names. [Lord Nightmare]" [Vas Crabb]
+ * Names in the global namespace need to be specific.  Making them overly generic is a very bad idea, and leads to confusion and
+    conflicts. Device type names must always be in the global namespace, and most device classes are in the global namespace.
+ * Changing members like m_votrax to m_sc01 doesn't help understand the code.  If there's only one Votrax speech module in the
+    system, it's obvious what it is.
+ * This reverts commit c6f0e83ecfb97c298ffcf16e136496054a88b1ca.
+
+-Various spelling fixes, comment updates, etc in several Votrax and SC-01 related source files. [skip ci]
+
+-bus/a2bus/a2mockingboard.cpp: Reduced gross copy/pasta in PSG control code and unnecessarily virtual member functions. [Vas Crabb]
+
+-sgi: rename mc device files [Patrick Mackinlay]
+
+-video/pc_vga_paradise.cpp: fix boot regression with PVGA1A [angelosa]
+
+-exidysound: replace riot6532_device with mos6532_new_device, untangle exidy_sh8253_sound_device a bit, mos6530n: use loops for
+ repeated i/o callbacks, edge_w bits are on address, not data, add live timer status to savestate [hap]
+
+-fix tiny compile, probably [hap]
+
+-video/pc_vga_paradise.cpp: remove m_ext_gc_view and use custom handlers in place [angelosa]
+
+-video/pc_vga_paradise.cpp: add device stubs for WD90C31 and WD90C33 [angelosa]
+
+-Corona.cpp driver... [Roberto Fresca]
+ * Fixed colors to Le Grandchamps.
+ * Cleaned up the driver.
+ * Added technical notes.
+
+New working clones
+------------------
+Counter Run (bootleg set 3) [trol]
+Mortal Kombat (Victor bootleg of rev 3.0 08/31/92) [Funny_Dyzieks]
+
+-seabattla: Updates [AJR]
+ * Add dumps of the missing program and sound ROMs [Paul Swan]
+ * Identify game title as Armada and rename set accordingly [AJR]
+
+-seabattl.cpp: Minor cleanup [AJR]
+
+-armada: More IC locations [AJR]
+
+-heathkit/tlb.cpp Implement interrupt handling for break key (#11406) [Mark Garlanger]
+
+-Allow the use of either Qt5 or Qt6 on Linux (#11413) [Jindřich Makovička]
+ * Look for MOC in QT_HOME/libexec if not found in QT_HOME/bin
+ * Use the Qt6* libraries if the Qt version is >= 6
+ * Switch the include paths for QAction & QActionGroup for Qt >= 6
+ * Replace the deprecated + operator for keys with |
+
+New clones marked not working
+-----------------------------
+Magic Bomb (Ver. A3.6A) [Ioannis Bampoulas]
+Magic Bomb (Ver. A4.0A) [Ioannis Bampoulas]
+
+-flower: remove unneeded vblank irq trampoline, vidbrain: fix regression with ext interrupt, invert joystick select pins,
+ bus/vidbrain: unmap_r/w shouldn't lower cs2 pin [hap]
+
+Software list items promoted to working
+---------------------------------------
+vidbrain: Money Minder [hap]
+
+New software list items marked not working
+------------------------------------------
+vidbrain: The Computational Language [Sean Riddle, Ianoid]
+
+-msx1_cart.xml: Added 37 items (36 working). (#11415) [wilbertpol]
+
+New working software list items (msx1_cart.xml)
+-----------------------------------------------
+Game World - 64 Games (Korea, alt) [file-hunter]
+Gangjeol Robocop (Korea) [file-hunter]
+Gangjeol Robocop (Korea, alt) [file-hunter]
+Gangjeol Robocop (Korea, alt 2) [file-hunter]
+El Gnomo Fedor en la Caverna Perdida (Spain) [file-hunter]
+Gokiburi Daisakusen (Japan, alt) [file-hunter]
+Dunoegyosil Omog (Korea) [file-hunter]
+Graphic Artist (Japan, Europe) [file-hunter]
+Graphic Artist (Japan, Europe, alt) [file-hunter]
+Yamaha Graphic Card [file-hunter]
+Graphic Master Lab (Japan, Europe) [file-hunter]
+Graphic Master Lab (Japan, Europe, alt) [file-hunter]
+Green Beret (Europe, alt 2) [file-hunter]
+Gyro Adventure (Japan) [file-hunter]
+Nemesis 2 (Europe) ~ Gradius 2 (Japan) (demo, alt) [file-hunter]
+G-Monkey [2KBOS]
+Genesis Dawn of a New Day [Retroworks]
+Genesis Dawn of a New Day (alt) [file-hunter]
+Gniffel [MSXDev]
+Goal [MSXDev]
+Goal (alt) [file-hunter]
+Gommy - Medieval Defender - Cartridge Edition [file-hunter]
+Gommy - Medieval Defender (English) [MSXDev]
+Gommy - Medieval Defender (Spanish) [MSXDev]
+Gorgeous Gemma in Escape from the Space Disposal Planet [MSXDev]
+Gorgeous Gemma in Escape from the Space Disposal Planet (older) [file-hunter]
+GRAVITICA [MSXDev]
+Green Cat Chronicles [N.I]
+Grid Wars [MSXDev]
+Griel's Quest for the Sangraal (extended edition) [MSXDev]
+Griel's Quest for the Sangraal (extended edition, older) [file-hunter]
+Griel's Quest for the Sangraal [MSXDev]
+Griel's Quest for the Sangraal (older) [file-hunter]
+Guntus [Inufuto]
+Guru Logic [file-hunter]
+Guru Logic (alt) [file-hunter]
+
+New NOT_WORKING software list additions (msx1_cart.xml)
+-------------------------------------------------------
+Gyruss [file-hunter]
+
+-apple/macpwrbk030.cpp: convert macpb180c to use a WD90C26 VGA device [angelosa]
+
+-seabattl: add pcb locations to parent set, bus/vidbrain: add info_manager and comp_language cartridge types [hap]
+
+Software list items promoted to working
+---------------------------------------
+vidbrain: The Computational Language [hap, Sean Riddle, Ianoid]
+
+New working clones
+------------------
+New Zero Team (V33 SYSTEM TYPE_B hardware, China) [twistedsymphony]
+
+-seibu/r2dx_v33.cpp: changed full name for nzeroteama and nzeroteamb as suggested [Ivan Vangelista]
+
+-zaccaria.cpp: Use raw parameters for screen [AJR]
+
+-changela: 1 scanline is 63.6us, vidbrain: remove unneeded header file [hap]
+
+-taitosj.cpp: Use raw parameters for screen [AJR]
+
+-rbisland: fix p2 left input not working [hap]
+
+-gbcolor.xml: Added two more versions of Grimace’s Birthday. (#11422) [ArcadeShadow]
+ * Also changed some descriptive text to lowercase in descriptions.
+
+New working software list additions (gbcolor.xml)
+-------------------------------------------------
+Grimace’s Birthday (V1.7) [nickisarchivinget]
+Grimace’s Birthday (V1.6) [nickisarchivinget]
+
+-msx1_cart.xml: Added 28 working items. (#11421) [wilbertpol]
+
+New working software list items (msx1_cart.xml)
+-----------------------------------------------
+Fighting Rider (Spain) [file-hunter]
+Final Justice (Japan, alt 3) [file-hunter]
+Factory Infection [MSXDev]
+Fantastic Football [MSXDev]
+Farm [N.I]
+Farty Pig (beta) [file-hunter]
+Find It! [MSXDev]
+Flappy Bird (Crunchworks, rev F) [Crunchworks]
+Flappy Bird (Crunchworks, rev F, alt) [Crunchworks]
+Flappy Bird (Crunchworks, rev B) [file-hunter]
+Flappy Bird (SCS) [file-hunter]
+FlyGuy [MSXDev]
+Formula Dice [MSXDev]
+Foryster (v00.9) [Siudym]
+Foryster (v00.3) [file-hunter]
+Foryster (v00.2) [file-hunter]
+Freedom Fighter (final) [TheGeps]
+Freedom Fighter (v1.9) [file-hunter]
+Freedom Fighter (v1.8a) [file-hunter]
+Freedom Fighter (v1.8) [file-hunter]
+Freedom Fighter (v1.7) [file-hunter]
+Freedom Fighter (v1.6) [file-hunter]
+Freedom Fighter (v1.5) [file-hunter]
+Freedom Fighter (v1.4) [file-hunter]
+Freedom Fighter (v1.3) [file-hunter]
+Freedom Fighter (v1.2a) [MSXDev]
+Freedom Fighter (v1.1) [file-hunter]
+Freedom Fighter (v1.0) [file-hunter]
+
+-mos6530n: replace convoluted timer implementation with one mostly copy pasted from Aaron's 6532riot [hap]
+
+-mos6530n: 6530 irq pin (shared with PB7) is active low, chessmate: use mos6530_new_device [hap]
+
+-bonzeadv: fix p2 left input not working [hap]
+
+-sgi/mc: memory controller ram configuration improvements [Patrick Mackinlay]
+
+-sgi/vc1: new device [Patrick Mackinlay]
+
+-sgi/light: pass power-on diagnostics [Patrick Mackinlay]
+
+-mos6530n: 6530 irq pin output is enabled when PB7 ddr is set to input, kim1: move driver to commodore folder, invqix: fix
+ screensize off-by-1 error [hap]
+
+-kim1: use mos6530_new_device [hap]
+
+-modules.lua: Remove stray MOC setting after the Qt6 Linux support change (#11419) [Jindřich Makovička]
+
+-sinclair/scorpion.cpp: Added Scorpion ZS-256 TURBO+. (#11418) [holub]
+ * bus/spectrum: Added ZXBUS SMUC storage controller.
+
+New working clones
+------------------
+Scorpion, Ltd. Scorpion ZS-256 TURBO+ [holub]
+
+-bfm/bfm_blackbox.cpp: Added driver for Bellfruit Black Box electromechanical fruit machines. (#10417) [SomeRandomGuyIdk]
+ * machine/em_reel.cpp: Encapsulated electromechanical reel simulation.
+ * barcrest/mpu1.cpp: Refactored to use new electromechanical reel device.
+
+New systems marked not working
+------------------------------
+Nudge Climber (Bellfruit) (Black Box) (5p Stake, £1 Jackpot, all cash) [SomeRandomGuyIdk]
+21 Up (Bellfruit) (Black Box) (5p Stake, £1 Jackpot) [SomeRandomGuyIdk]
+Bell Trail (Bellfruit) (Black Box) (5p Stake, £1 Jackpot) [SomeRandomGuyIdk]
+The Nudge Machine (ADMC) (Black Box) (5p Stake, £1/£2 Jackpot) [SomeRandomGuyIdk]
+Upstairs 'N' Downstairs (Bellfruit) (Black Box) (5p Stake, £1 Jackpot) [SomeRandomGuyIdk]
+Double It (Bellfruit) (Black Box) (10p Stake, £2 Jackpot) [SomeRandomGuyIdk]
+Fire Cracker (Bellfruit) (Black Box) (10p Stake, £2 Jackpot) [SomeRandomGuyIdk]
+Oranges And Lemons (Bellfruit) (Black Box) (10p Stake, £2 Jackpot) [SomeRandomGuyIdk]
+Golden Spin (BWB) (Black Box) (MK1.5, 5p Stake, £50 Jackpot) [SomeRandomGuyIdk]
+
+New clones marked not working
+-----------------------------
+21 Up (Bellfruit) (Black Box) (10p Stake, £2 Jackpot) [SomeRandomGuyIdk]
+Reel Gambler (Bellfruit) (Black Box) (10p Stake, £2 Jackpot) [SomeRandomGuyIdk]
+Upstairs 'N' Downstairs (Bellfruit) (Black Box) (5p Stake, £1 Jackpot, all cash) [SomeRandomGuyIdk]
+Spin Up (CTL) (Black Box) (10p Stake, £3 Jackpot) [SomeRandomGuyIdk]
+Crackerjack (Bellfruit) (Black Box) (5p Stake, £2 Jackpot) [SomeRandomGuyIdk]
+Fiesta (Associated Leisure) (Black Box) (2p Stake, £1/£2 Jackpot) [SomeRandomGuyIdk]
+
+-msx1_cart.xml: Added twelve working items. (#11423) [wilbertpol]
+
+New working software list items (msx1_cart.xml)
+-----------------------------------------------
+E.I. - Exa Innova (Japan, Compile) [file-hunter]
+E.I. - Exa Innova (Japan, Compile, alt) [file-hunter]
+Ewoks (Spain) [file-hunter]
+Ewoks and the Dandelion Warriors (Spain) [file-hunter]
+Earth Attack [TheGeps]
+Eat Blue! 2004 [MSXDev]
+Eat Blue! 2004 (alt) [file-hunter]
+Eruka Fan Book [N.I]
+Está en el Pantano [file-hunter]
+Está en la Caja (v1.1) [file-hunter]
+Está en la Caja (v1.0) [file-hunter]
+ExChess [MSXDev]
+
+New systems marked not working
+------------------------------
+Doreamon (Power Link) [hammy]
+Love Pi Chan (Power Link) [Recreativos Piscis]
+unknown golf game [hammy]
+
+-dataeast/dec8.cpp: redumped meikyuha, confirmed it's a bootleg, added correct PROMs [Guru]
+
+New working clones
+------------------
+Nemo (Japan 901120, 89625B-1 ROM board) [Corrado Tomaselli, Brian Troha]
+
+-specpls3_flop.xml; spectrum_betadisc_flop.xml: Software list additions (#11420) [ArcadeShadow]
+ * specpls3_flop.xml: Software list additions
+
+New working software list additions
+-----------------------------------
+Bonnie and Clyde [Spectrum Computing]
+Crazy Cars II (Proein) [El Trastero del Spectrum]
+Drift! [Spectrum Computing]
+The Ultimate Disc Copier [El Trastero del Spectrum]
+Wonderful Dizzy [Spectrum Computing]
+
+New NOT working software list addition
+--------------------------------------
+La Espada Sagrada [El Trastero del Spectrum]
+
+-spectrum_betadisc_flop.xml: Software list additions [ArcadeShadow]
+
+New working software list additions
+-----------------------------------
+DreamWalker: Alter Ego 2 (v1.0) [RetroSouls]
+Gluf [RetroSouls]
+Sun Bucket [Spectrum Computing]
+
+-misc/unkgolf.cpp:  added missing XTAL value [hammy]
+
+-nmk/nmkmedal.cpp: corrected typo in Doraemon [Heihachi_73]
+
+-mips1: emulate instruction and data caches [Patrick Mackinlay]
+
+-kim1: small cleanup to input ports, replace microchess cassette and add kim-venture [hap]
+
+New working software list items
+-------------------------------
+kim1_cass: KIM-Venture [hap, Bob Leedom, Mark Bush]
+
+New clones marked not working
+-----------------------------
+Daioh (prototype, earliest) [Recreativos Piscis]
+
+-v25: Add address translation for IDB window [AJR]
+
+-c64_nl10: Identify and add CPU [AJR]
+
+-kim1: add single step switch [hap]
+
+-starwars, tomcat: use mos6530_new_device [hap]
+
+-apple/maciifx.cpp, apple/macpdm.cpp: Use the new 8530 SCC device instead of the old legacy device. [R. Belmont]
+
+-Odin (prototype) [Stephan Semmler (Flippermuseum Seligenstadt), PinMAME]
+
+-watchdog: make watchdog_enable compatible with writeline, add a watchdog reset writeline, add debugger side effect checks for
+ watchdog reset_r, supertnk: fix reset caused by watchdog on titlescreen, mos6530n: remove a7800 workaround, tourtabl: use
+ mos6532_new_device, small cleanups [hap]
+
+New working systems
+-------------------
+Apple Macintosh Centris 610 [R. Belmont]
+Apple Macintosh Centris 650 [R. Belmont]
+Apple Macintosh Quadra 610 [R. Belmont]
+Apple Macintosh Quadra 650 [R. Belmont]
+Apple Macintosh Quadra 800 [R. Belmont]
+
+-apple/dafb.cpp: Added a child device to handle the differences in the djMEMC integrated version of DAFB. [R. Belmont]
+ * apple/iosb.cpp: Apple I/O Subsystem Buffer device, which handles I/O for second-generation 68040 machines. [R. Belmont]
+ * apple/djmemc.cpp: Apple memory controller with integrated DAFB video for second-generation 68040 systems. [R. Belmont]
+
+-Unkgolf.cpp driver: Hooked all the used PPI 8255 devices. Also documented the PPI's offsets, modes, used ports, and mapped the OKI
+ M6376 sound device. [Roberto Fresca]
+
+-dp8573: add dp8572a variant [Patrick Mackinlay]
+
+-fix the build [Patrick Mackinlay]
+
+-a2bus: Add emulation of ADS Noisemaker II board [AJR]
+
+-a2bus: Typo fixes [AJR]
+
+-apple/dafb.cpp: Fix color depth selection on the MEMC integrated version of DAFB. [R. Belmont]
+
+New clones marked not working
+-----------------------------
+Elvis (CPU 1.00, display A1.00) [inkochnito, PinMAME]
+
+-nscsi: Correct SCSI command names (#11426) [Miëtek Bak]
+
+-mips1: fix swl/swr cache logic [Patrick Mackinlay]
+
+-a2bus: Add Fourth Dimension Parallel Printer Interface [AJR, Apple II Documentation Project]
+
+-a2bus/a2parprn.cpp: Minor correction [AJR]
+
+New systems marked not working
+------------------------------
+Dora Neco BanBan [buffi]
+
+New working clones
+------------------
+Fire Truck / Smokey Joe (ROM version) [Michael Aberle, H is Nice]
+
+New working software list additions
+-----------------------------------
+psion_ssd: Widget Games 3a [zedstarr]
+Hugh Johnson's Wine Guide [The Last Psion]
+Plotter, Schedule, Spell [anonymous]
+
+-machine/psion_asic2.cpp: Added indexed control registers. [Nigel Barnes]
+ * machine/psion_asic3.cpp: Re-implemented as two variants, ASIC3 and earlier ASIC5 based PSU devices.
+ * machine/psion_asic5.cpp: Implemented UART and interrupts.
+ * machine/psion_asic9.cpp: Added PCM sound I/O.
+
+-machine/psion_ssd.cpp: Can now create new SSD, default to be 128K RAM. [Nigel Barnes]
+ * Flash SSD's are write-protected, RAM SSD's are not.
+ * RAM SSD's from softlist will write to nvram, non-softlist will write back to file.
+
+-psion/psion3.cpp: Added non-volatile RAM for Series 3 machines, and batteries are now good. [Nigel Barnes]
+ * psion/psion3a.cpp: Added non-volatile RAM for Series 3a/3c/3mx machines, and CODEC sound device.
+ * psion/psionhc.cpp: Added non-volatile RAM for Series HC machines.
+ * psion/siena.cpp: Added non-volatile RAM.
+ * psion/workabout.cpp: Added non-volatile RAM for Workabout machines.
+
+Systems promoted to working
+---------------------------
+Series 3 [Nigel Barnes]
+Series 3a [Nigel Barnes]
+Series 3c [Nigel Barnes]
+Series 3mx [Nigel Barnes]
+Siena [Nigel Barnes]
+Workabout [Nigel Barnes]
+Workabout mx [Nigel Barnes]
+
+Clones promoted to working
+--------------------------
+Pocket Book [Nigel Barnes]
+Pocket Book II [Nigel Barnes]
+Series 3a (2M) [Nigel Barnes]
+Series 3a (2M) (German) [Nigel Barnes]
+Series 3a (2M) (Russian) [Nigel Barnes]
+Series 3s [Nigel Barnes]
+
+-bus/psion/sibo/3link.cpp: Implemented RS232 interface. [Nigel Barnes]
+
+-msx1_cart.xml: Added 46 items (43 working), and replaced one item with a better dump. (#11431) [wilbertpol]
+ * Replaced Decathlon (Japan) with a better dump. [file-hunter]
+
+New working software list items (msx1_cart.xml)
+-----------------------------------------------
+D-Day (Korea, alt) [file-hunter]
+Deep Dungeon II - Yuushi no Monshou (Japan, alt) [file-hunter]
+Dip Dip (Spain) [file-hunter]
+Dip Dip (Spain, alt) [file-hunter]
+Penguin Land (Korea) [file-hunter]
+Dr. Hello (Korea) [file-hunter]
+Droids En el Planeta Ingo (Spain) [file-hunter]
+Droids the White Witch (Spain) [file-hunter]
+Double Face (Arab, alt) [file-hunter]
+Daedalian Opus [MSXDev]
+Danger Tower [MSXDev]
+DAQ Lord of Idar [MSXDev]
+DAQ Lord of Idar (flashrom version) [MSXDev]
+Deep Core Raider [file-hunter]
+Deep Dungeon Adventure (cartridge) [Trilobyte]
+Deep Dungeon Adventure (cartridge, alt) [file-hunter]
+Deep Dungeon Adventure [file-hunter]
+Deep Dungeon [MSXDev]
+Defence (v1.3) [MSXDev]
+Defence (v1.2) [file-hunter]
+Defence (v1.1) [file-hunter]
+Defence (v1.0) [file-hunter]
+Destroyer [MSXDev]
+Destroyer (older) [file-hunter]
+DICED Tournament (v1.12/v1.2) [MI-CHI]
+DICED Tournament (v1.01) [MSXDev]
+DICED Tournament (v1.0) [file-hunter]
+Jinj 2 - Belmonte's Revenge (final) [RetroWorks]
+Jinj 2 - Belmonte's Revenge (v2.0) [MSXDev]
+Jinj 2 - Belmonte's Revenge (v1.0) [MSXDev]
+Do The Same (v1.1) [MSXDev]
+Do The Same (v1.0) [file-hunter]
+Dodgin' Raven [file-hunter]
+Doopm Community [N.I]
+Dot Attack [MSXDev]
+Dot Attack (alt) [file-hunter]
+Dr. Pill [MSXDev]
+Dr. Pill (alt) [file-hunter]
+Draconic Throne [MSXDev]
+Draconic Throne (alt) [file-hunter]
+Draconic Throne (alt 2) [file-hunter]
+Duckstroma (v1.02) [UltraNarwhal]
+Duckstroma (v1.00) [UltraNarwhal]
+
+New NOT_WORKING software list additions (msx1_cart.xml)
+-------------------------------------------------------
+Dream Puzzle [MSXDev]
+Duck Hunt [MSXDev]
+Yamaha DX7 Voicing Program II YRM-304 (Japan, alt) [file-hunter]
+
+-snes.xml: Improved descriptions of Val d'Isère Championship games, and promoted Toy Story (Europe) to working. (#11429)
+ [ArcadeShadow]
+ * Toy Story (Europe) works as well as the clones.
+
+Software list items promoted to working (snes.xml)
+--------------------------------------------------
+Toy Story (Europe) [ArcadeShadow]
+
+-spectrum_cass.xml: Added fifty working items. (#11416) [ArcadeShadow]
+ * Also corrected metadata based on information from Spectrum Computing.
+
+New working software list additions (spectrum_cass.xml)
+-------------------------------------------------------
+Bingo Parlante! [Luís Rato, Planeta Sinclair]
+Casanova (Pizza e Pasta) [Planeta Sinclair]
+Chess - The Turk (AABC Soft) [Spectrum Computing]
+Em Busca do Mortadela (Portuguese) [Planeta Sinclair]
+En Busca de Mortadelo (Spanish) [Planeta Sinclair]
+Firebirds (Tronk) [Steven Brown, Planeta Sinclair]
+Freez' Bees (Aackosoft) [Spectrum Computing]
+Fun Golf [Luís Rato, Planeta Sinclair]
+Gremlins 2: A Nova Geração [Planeta Sinclair]
+Journey to the Centre of the Earth - Extended Version (10 Anniversary, English) [Topo Siglo XXI]
+Lobo Solitário [João Cruz, Planeta Sinclair]
+Lorna (Portuguese) [Planeta Sinclair]
+Los Tesoros Perdidos de Tulum (v1.0, Spanish) [Spectrum Computing]
+Los Tesoros Perdidos de Tulum (v1.1, Spanish) [RetroWorks]
+Los Amores de Brunilda (v1.4, English) [RetroWorks]
+Los Amores de Brunilda (v1.4, Spanish) [RetroWorks]
+Los Amores de Brunilda (v1.4, Galician) [RetroWorks]
+Los Amores de Brunilda (v1.4, Catalan) [RetroWorks]
+Los Amores de Brunilda (v1.4, Catalan, alt) [RetroWorks]
+Los Amores de Brunilda (v1.4, Basque) [RetroWorks]
+Los Amores de Brunilda (v1.4, Italian) [RetroWorks]
+Los Amores de Brunilda (v1.4, Russian) [RetroWorks]
+Mad Mix 2: No Castelo dos Fantasmas (Portuguese) [Planeta Sinclair]
+Masterfile v08 (Logiciels) [Spectrum Computing]
+Masterfile (Plansoft) [Spectrum Computing]
+R.A.M. (Portuguese) [ArcadeShadow]
+Schach [Spectrum Computing]
+Searching for Mort (English) [Planeta Sinclair]
+Shadow Warriors (Musical) [Spectrum Computing]
+Slippery Sid (pirate) [Steven Brown, Planeta Sinclair]
+Software Magazine №9A - Gold Mine [Spectrum Computing]
+Software Magazine №11B - Patin-Man [Spectrum Computing]
+Software Magazine №12B - Pincel-3D [Spectrum Computing]
+Software Magazine №13A - The Guardian [Spectrum Computing]
+Software Magazine №13B - Ghost Hunt (alt) [Spectrum Computing]
+Super Scacchi (pirate) [Steven Brown, Planeta Sinclair]
+The Lost Treasures of Tulum (v1.0, English) [Spectrum Computing]
+The Sword of Ianna [RetroWorks]
+Time-Gate (pirate) [Steven Brown, Planeta Sinclair]
+Topo Mix Game (Portuguese) [Planeta Sinclair]
+Toad Runner (Dro Soft) [Steven Brown, Planeta Sinclair]
+Uccidi Gli Spiriti (pirate) [Steven Brown, Planeta Sinclair]
+Viagem ao Centro da Terra - Versão Estendida (10 Aniversário, Portuguese) [Topo Siglo XXI]
+Wonderful Dizzy (v1.5) [Team Yolkfolk]
+Wonderful Dizzy (v1.0) [Team Yolkfolk]
+Yatzy [Steven Brown, Planeta Sinclair]
+Zip-Zap (pirate) [Steven Brown, Planeta Sinclair]
+Zip-Zap (PRISM) [Spectrum Computing]
+Zona 0 (Portuguese) [Planeta Sinclair]
+Zynaps (IBSA) [Spectrum Computing]
+
+-srcclean and fix up some bits [Vas Crabb]
+
+-beezer: swap ptm/via at mcfg, so via doesn't write to ptm before ptm is reset [hap]
+ * (cherry picked from commit b0550296595047a9bc20d81df6b6aec662518b19)
+
+-trs/vis.cpp: fix black screen regression [angelosa]
+
+-apple/dafb.cpp: Handle debugger reads better. [Vas Crabb]
+
+-taito/taitosj.cpp: Reverted raw screen parameters and VBL interrupt. [Vas Crabb]
+ * This partially reverts 7d9d020529e2e1a3b533f3d37ff10177ac66486e until a proper solution can be found that doesn't break graphics.
+
+-apple2_flop_orig.xml, msx1_cart.xml: Fixed a couple of descriptions. [Vas Crabb]
