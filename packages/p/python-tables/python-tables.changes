@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 21 00:59:03 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Pin Cython to < 3. 
+
+-------------------------------------------------------------------
 Fri Aug 18 10:11:42 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add numpy-1.25.patch upstream patch

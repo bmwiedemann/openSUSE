@@ -64,7 +64,7 @@ Patch1:         numpy-1.25.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  python-rpm-macros
 %if ! %{with test}
-BuildRequires:  %{python_module Cython >= 0.29.21}
+BuildRequires:  %{python_module Cython < 3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numexpr >= 2.6.2}
 BuildRequires:  %{python_module numpy-devel >= 1.19}

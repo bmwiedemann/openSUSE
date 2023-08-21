@@ -168,4 +168,12 @@
 </comment>
     <requestid>1104660</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>96bcdf50e59f0eebd6a22787d5be4c58</srcmd5>
+    <version>3.8.0</version>
+    <time>1692611154</time>
+    <user>anag+factory</user>
+    <comment>- Pin Cython to &lt; 3.</comment>
+    <requestid>1104946</requestid>
+  </revision>
 </revisionlist>
