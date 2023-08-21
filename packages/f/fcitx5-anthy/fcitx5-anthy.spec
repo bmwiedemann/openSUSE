@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-anthy
-Version:        5.0.14
+Version:        5.1.0
 Release:        0
 Summary:        Anthy Wrapper for Fcitx5
 License:        GPL-2.0-or-later
@@ -55,7 +55,7 @@ Anthy Wrapper for Fcitx5.
 %files -f %{name}.lang
 %license LICENSES
 %doc README.md
-%{_fcitx5_libdir}/anthy.so
+%{_fcitx5_libdir}/libanthy.so
 %{_fcitx5_addondir}/anthy.conf
 %{_fcitx5_imconfdir}/anthy.conf
 %{_fcitx5_datadir}/anthy

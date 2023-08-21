@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 20 06:14:45 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.0
+  * bug fix on input mode and now input mode correctly
+    follows global shared state option
+
+-------------------------------------------------------------------
 Mon May 22 11:39:12 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - Update to 5.0.14
