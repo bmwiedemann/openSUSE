@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 13 13:51:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Revert update of vendored dependencies.
+
+-------------------------------------------------------------------
+Sun Aug 13 13:26:52 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace obsoleted `disabled` option with `manual` from _service.
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
 Mon Aug  7 14:19:49 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Fix build feature flags. Only use default + distro-defaults.

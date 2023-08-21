@@ -1,9 +1,9 @@
 <services>
-  <service mode="disabled" name="download_files" />
-  <service name="cargo_vendor" mode="disabled">
+  <service mode="manual" name="download_files" />
+  <service name="cargo_vendor" mode="manual">
      <param name="srctar">wezterm-20230712.072601.f4abf8fd.tar.gz</param>
      <param name="compression">zst</param>
-     <param name="update">true</param>
+     <param name="update">false</param>
 	 <param name="cargotoml">wezterm/Cargo.toml</param>
 	 <param name="cargotoml">wezterm-blob-leases/Cargo.toml</param>
 	 <param name="cargotoml">wezterm-client/Cargo.toml</param>
@@ -19,7 +19,7 @@
 	 <param name="cargotoml">wezterm-ssh/Cargo.toml</param>
 	 <param name="cargotoml">wezterm-toast-notification/Cargo.toml</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
+  <service name="cargo_audit" mode="manual">
      <param name="srcdir">wezterm-20230712-072601-f4abf8fd</param>
   </service>
 </services>
