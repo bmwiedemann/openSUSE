@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Aug 17 18:02:04 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to 1.12.0:
+  * test_load2: make error messages more descriptive
+  * Y4M loader: fix support for 420 colorspaces
+  * Y4M loader: add support for images with unexpected aspects
+  * imlib2_view: Avoid potential use of uninitialized data
+  * GIF loader: Enable showing animated images even if truncated
+  * Introduce __imlib_perror() to produce error messages
+  * loaders: Use common function to print error messages
+  * imlib2_load: Move time_us() to separate file
+  * imlib2_conv: Add option to time save operations
+  * test: Fix pr_info() when not printing to stdout
+  * loading: Enable calling function on loader load/unload
+  * HEIF loader: Call heif_[de]init() on loader load/unload
+  * autofoo: Don't check for freetype if we are building without text
+  * QOI loader: Add progress calback, indent, cosmetics
+  * Loaders: Static constify some data that may as well be
+  * TGA loader: Fix TGA v2.0 signature check
+  * test: Add basic qoi checks
+  * test_scale: Test scaling some more
+  * scaling: Unifdef OLD_SCALE_DOWN
+  * scaling: Correct scaleinfo array length
+  * scaling: Move scaling function call sequence into common __imlib_Scale()
+  * scaling: Cosmetics (comments)
+  * scaling: Simplify scaling points calculation (eliminate j)
+  * scaling: Change ypoints[] from pointers to indices
+  * scaling: Cosmetics
+  * scaling: Minor refactoring
+  * scaling: Correct scaling up
+  * test_scale: Update for new scaling
+  * image: Fix missing munmap() when using imlib_load_image_fd()
+  * image: Fix potentially using incorrect file size
+  * file: Remove a couple of unused functions
+  * image: Fix potentially using incorrect file size - fixup
+  * test: Bypass wrappers when running tests
+  * test_load: Minor fix in debug message
+  * Add new raw loader
+  * TIFF loader: Slightly more strict signature check
+  * image: Use sub-second time info when available
+  * image: Fix preservation of alpha chanel flag in imlib_clone_image()
+  * image cache: Avoid negative refcounts
+  * image cache: Drop redundant cleanup
+  * image cache: Rework cleanup
+  * Revert "scaling: Correct scaling up"
+  * Revert "test_scale: Update for new scaling"
+  * scaling: Various trivial changes
+  * scaling: Improve non-AA scale-up case
+  * scaling: Correct scaling up - take 2
+  * test_scale: Update for new scaling (re-applied)
+  * test_scale: Exercise non-AA path too
+  * WEBP saver: allow lossless and respect compression tag
+  * add a new QOI decoder
+  * QOI loader: fix build on non-gnu compilers
+  * QOI loader: use memcmp for magic and endmarker check
+  * Y4M loader: check file size before magic check
+  * loading: add some debug logs
+  * loading: check for alloc failure
+  * Y4M loader: use custom y4m parser
+  * test_load: allow y4m memory loading
+  * file: Remove unused functions some more
+  * introduce imlib_image_decache_file()
+
+-------------------------------------------------------------------
 Mon Jun 19 10:28:47 UTC 2023 - Simon Lees <sflees@suse.de>
 
 - Changelog update only
