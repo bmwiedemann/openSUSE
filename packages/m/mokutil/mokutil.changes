@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 18 07:07:08 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Remove modhash (bsc#1214358)
+  + The modhash script is rarely used and it's impractical to block
+    a kernel module with the hash.
+
+-------------------------------------------------------------------
 Mon Jun 27 05:00:25 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Update to 0.6.0

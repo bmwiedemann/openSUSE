@@ -1,7 +1,7 @@
 #
 # spec file for package mokutil
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,6 @@ License:        GPL-3.0-only
 Group:          Productivity/Security
 URL:            https://github.com/lcp/mokutil
 Source:         https://github.com/lcp/%{name}/archive/%{version}.tar.gz
-Source1:        modhash
 # PATCH-FIX-SUSE mokutil-remove-libkeyutils-check.patch glin@suse.com -- Disable the check of libkeyutils version
 Patch1:         mokutil-remove-libkeyutils-check.patch
 BuildRequires:  autoconf
@@ -53,12 +52,10 @@ keys (MOK) stored in the database of shim.
 
 %install
 %make_install
-install -m 755 -D %{SOURCE1} %{buildroot}/%{_bindir}/modhash
 
 %files
 %license COPYING
 %{_bindir}/mokutil
-%{_bindir}/modhash
 %{_mandir}/man?/*
 %dir %{_datadir}/bash-completion/completions/
 %{_datadir}/bash-completion/completions/mokutil
