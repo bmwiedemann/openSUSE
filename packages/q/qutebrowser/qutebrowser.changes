@@ -1,4 +1,204 @@
 -------------------------------------------------------------------
+Sun Aug 20 19:07:25 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to version 3.0.0
+Major Changes:
+  * qutebrowser now supports Qt 6 and uses it by default.
+    Qt 5.15 is used as a fallback if Qt 6 is unavailable.
+    This behavior can be customized in three ways (in order of
+    precedence):
+    + Via `--qt-wrapper PyQt5` or `--qt-wrapper PyQt6`
+      command-line arguments.
+    + Via the `QUTE_QT_WRAPPER` environment variable, set to
+      `PyQt6` or `PyQt5`.
+    + For packagers wanting to provide packages specific to a Qt
+      version, patch `qutebrowser/qt/machinery.py` and set
+      `_WRAPPER_OVERRIDE`.
+  * Various commands were renamed to better group related commands:
+    + `set-cmd-text` -> `cmd-set-text`
+    + `repeat` -> `cmd-repeat`
+    + `repeat*command` -> `cmd-repeat-last`
+    + `later` -> `cmd-later`
+    + `edit-command` -> `cmd-edit`
+    + `run-with-count` -> `cmd-run-with-count`
+    The old names continue to work for the time being, but are
+    deprecated and show a warning.
+
+Added:
+  * On invalid commands/settings with a similarly spelled match,
+    qutebrowser now suggests the correct name in its error
+    messages.
+  * New `:prompt-fileselect-external` command which can be used to
+    spawn an external file selector (`fileselect.folder.command`)
+    from download filename prompts (bound to `<Alt+e>` by default).
+  * New `qute://start` built-in start page (not set as the default
+    start page yet).
+  * New `content.javascript.log_message.levels` setting, allowing
+    to surface JS log messages as qutebrowser messages (rather than
+    only logging them). By default, errors in internal `qute:`
+    pages and userscripts are shown to the user.
+  * New `content.javascript.log_message.excludes` setting, which
+    allows to exclude certain messages from the
+    `content.javascript.log_message.levels` setting described
+    above.
+  * New `tabs.title.elide` setting to configure where text should
+    be elided (replaced by `…`) in tab titles when space runs out.
+  * New `**quiet` switch for `:back` and `:forward`, to suppress
+    the error message about already being at beginning/end of
+    history.
+  * New `qute-1pass` userscript using the 1password commandline to
+    fill passwords.
+  * New features in userscripts:
+    + `qutedmenu` gained new `window` and `private` options.
+    + `qute-keepassxc` now supports unlock-on-demand, multiple
+      account selection via rofi, and inserting TOTP-codes
+      (experimental).
+    + `qute-pass` will now try looking up candidate pass entries
+      based on the calling tab's verbatim netloc (hostname
+      including port and username) if it can't find a match with
+      an earlier candidate (FQDN, IPv4 etc).
+  * New `qt.chromium.experimental_web_platform_features` setting,
+    which is enabled on Qt 5 by default, to maximize compatibility
+    with websites despite an aging Chromium backend.
+  * New `colors.webpage.darkmode.increase_text_contrast` setting
+    for Qt 6.3+
+  * New `fonts.tooltip`, `colors.tooltip.bg` and
+    `colors.tooltip.fg` settings.
+  * New `log-qt-events` debug flag for `-D`
+  * New `--all` flags for `:bookmark-del` and `:quickmark-del` to
+    delete all quickmarks/bookmarks.
+
+Removed:
+  * Python 3.8.0 or newer is now required.
+  * Support for Qt/PyQt before 5.15.0 and QtWebEngine before 5.15.2
+    are now dropped, as older Qt versions are end-of-life upstream
+    since mid/late 2020 (5.13/5.14) and late 2021 (5.12 LTS).
+  * The `--enable-webengine-inspector` flag is now dropped. It used
+    to be ignored but still accepted, to allow doing a `:restart`
+    from versions older than v2.0.0. Thus, switching from v1.x.x
+    directly to v3.0.0 via `:restart` will not be possible.
+
+Changed:
+  * The `content.javascript.can_access_clipboard` setting got
+    renamed to `content.javascript.clipboard` and now understands
+    three different values rather than being a boolean: `none`
+    (formerly `false`), `access` (formerly `true`) and
+    `access-paste` (additionally allows pasting content, needed for
+    websites like Photopea or GitHub Codespaces).
+  * The default `hints.selectors` now also match the `treeitem`
+    ARIA roles.
+  * The `:click-element` command now can also click elements based
+    on its ID (`id`), a CSS selector (`css`), a position
+    (`position`), or click the currently focused element
+    (`focused`).
+  * The `:click-element` command now can select the first found
+    element via `--select-first`.
+  * New `search.wrap_messages` setting, making it possible to
+    disable search wrapping messages.
+  * The `:session-save` command now has a new `--no-history` flag,
+    to exclude tab history.
+  * New widgets for `statusbar.widgets`:
+    +  `clock`, showing the current time
+    + `search_match`, showing the current match and total count
+      when finding text on a page
+  * Messages shown by qutebrowser now don't automatically get
+    interpreted as rich text anymore. Thus, e.g.
+    `:message-info <h1>test` now shows the given text. To show rich
+    text with `:message-*` commands, use their new `--rich` flag.
+    Note this is NOT a security issue, as only a small subset of
+    HTML is interpreted as rich text by Qt, independently from the
+    website.
+  * Improved output when loading Greasemonkey scripts.
+  * The "... called unimplemented GM_..." messages are now logged
+    as info JS messages instead of errors.
+  * For QtNetwork downloads (e.g. `:adblock-update`), various
+    changes were done for how redirects work:
+    * Insecure redirects (HTTPS -> HTTP) now fail the download.
+    * 20 redirects are now allowed before the download fails rather
+      than only 10.
+    * A redirect to the same URL will now fail the download with
+      too many redirects instead of being ignored.
+  * When a download fails in a way it'd leave an empty file around,
+    the empty file is now deleted.
+  * With Qt 6, setting `content.headers.referer` to `always` will
+    act as if it was set to `same*domain`. The documentation is now
+    updated to point that out.
+  * With QtWebEngine 5.15.5+, the load finished workaround was
+    dropped, which should make certain operations happen when the
+    page has started loading rather when it fully finished.
+  * When `QUTE_QTWEBENGINE_VERSION_OVERRIDE` is set, it now always
+    wins, no matter how the version would otherwise have been
+    determined. Note setting this value can break things (if set to
+    a wrong value), and usually isn't needed.
+  * When qutebrowser is run with an older QtWebEngine version as on
+    the previous launch, it now prints an error before starting
+    (which causes the underlying Chromium to remove all browsing
+    data such as cookies).
+  * The keys "<To Do List>" and "<Contrast adjust>" are now named
+    "<To-do list>" and "<Adjust contrast>", respectively.
+  * `:config*diff` now has an `--include-hidden` flag, which also
+    shows internally-set settings.
+  * Improved error messages when `:spawn` can't find an executable.
+  * When a process fails, the error message now suggests using
+    `:process PID` with the correct PID (rather than always showing
+    the latest process, which might not be the failing one)
+  * When a process got killed with `SIGTERM`, no error message is
+    now displayed anymore (unless started with `:spawn --verbose`).
+  * When a process got killed by a signal, the signal name is now
+    displayed in the message.
+  * The `js-string-replaceall` quirk is now removed from the
+    default `content.site_specific_quirks.skip`, so that
+    `String.replaceAll` is now polyfilled on QtWebEngine < 5.15.3,
+    hopefully improving website compaitibility.
+  * Hints are now displayed for elements setting an `aria-haspopup`
+    attribute.
+  * qutebrowser now uses SPDX license identiiers in its files.
+    Full support for the REUSE specification (license provided in a
+    machine-readable way for every single file) is not done yet,
+    but planned for a future release.
+
+Fixed:
+  * When the devtools are clicked but
+    `input.insert_mode.auto_enter` is set to `false`, insert mode
+    now isn't entered anymore.
+  * The search wrapping messages are now correctly displayed in
+    (hopefully) all cases with QtWebEngine.
+  * When a message with the same text as a currently already
+    displayed one gets shown, qutebrowser used to only show one
+    message. This is now only done when the two messages are
+    completely equivalent (text, level, etc.) instead of doing so
+    when only the text matches.
+  * The `progress` and `backforward` statusbar widgets now stay
+    removed if you choose to remove them. Previously they would
+    appear again on navigation.
+  * Rare crash when running userscripts with crashed renderer
+    processes.
+  * Multiple rare crashes when quitting qutebrowser.
+  * ResourceWarning when using `:restart`.
+  * Crash when shutting down before fully initialized.
+  * Crash with some notification servers when the server is
+    quitting.
+  * Crash when using QtWebKit with PAC and the file has an invalid
+    encoding.
+  * Crash with the "tiramisu" notification server.
+  * Crash when the "herbe" notification presenter doesn't start
+    correctly.
+  * Crash when no notification server is installed/available.
+  * Warning with recent versions of the "deadd"
+    (aka "linux notification center") notification server.
+  * Crash when using `:print --pdf` with a directory where its
+    parent directory did not exist.
+  * The `PyQt{5,6}.sip` version is now shown correctly in the
+    `:version`/`--version` output. Previously that showed the
+    version from the standalone `sip` module which was only set
+    for PyQt5.
+  * When a `config.py` calls `.redirect()` via a request
+    interceptor (which is unsupported) and supplies an invalid
+    redirect target URL, an exception is now raised for the
+    `.redirect()` call instead of later inside qutebrowser.
+  * Crash when loading invalid history items from a session file.
+
+-------------------------------------------------------------------
 Sun May 14 09:09:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.4:

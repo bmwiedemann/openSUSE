@@ -1894,4 +1894,41 @@ Fixed
     option turned off.</comment>
     <requestid>1087076</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>4fa3d816256fd6e62730a669d145740a</srcmd5>
+    <version>3.0.0</version>
+    <time>1692611153</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.0
+Major Changes:
+  * qutebrowser now supports Qt 6 and uses it by default.
+    Qt 5.15 is used as a fallback if Qt 6 is unavailable.
+    This behavior can be customized in three ways (in order of
+    precedence):
+    + Via `--qt-wrapper PyQt5` or `--qt-wrapper PyQt6`
+      command-line arguments.
+    + Via the `QUTE_QT_WRAPPER` environment variable, set to
+      `PyQt6` or `PyQt5`.
+    + For packagers wanting to provide packages specific to a Qt
+      version, patch `qutebrowser/qt/machinery.py` and set
+      `_WRAPPER_OVERRIDE`.
+  * Various commands were renamed to better group related commands:
+    + `set-cmd-text` -&gt; `cmd-set-text`
+    + `repeat` -&gt; `cmd-repeat`
+    + `repeat*command` -&gt; `cmd-repeat-last`
+    + `later` -&gt; `cmd-later`
+    + `edit-command` -&gt; `cmd-edit`
+    + `run-with-count` -&gt; `cmd-run-with-count`
+    The old names continue to work for the time being, but are
+    deprecated and show a warning.
+Added:
+  * On invalid commands/settings with a similarly spelled match,
+    qutebrowser now suggests the correct name in its error
+    messages.
+  * New `:prompt-fileselect-external` command which can be used to
+    spawn an external file selector (`fileselect.folder.command`)
+    from download filename prompts (bound to `&lt;Alt+e&gt;` by default).
+  * New `qute://start` built-in start page (not set as the default</comment>
+    <requestid>1104940</requestid>
+  </revision>
 </revisionlist>
