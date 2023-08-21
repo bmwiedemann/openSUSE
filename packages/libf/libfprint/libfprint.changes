@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug 20 01:34:08 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- update to 1.94.6+tod1:
+  * goodixmoc: New PIDs 0x60A4, 0x60BC, 0x6092, 0x633C and 0x6304.
+  * goodixmoc: Fix missing "enroll create" state.
+  * elanmoc: New PID 0x0C99.
+  * upektc: Improve compatibility with sensors 147e:2016.
+  * aes4000: Actually support 08FF:5501 devices.
+  * virtual-device-listener: Fix failing tests with GLib 2.76
+  * tests: Add installed tests
+  * Added installed TOD tests
+  * #526 libfprint: fpcmoc: use after free if enrollment or
+    identification is cancelled (Vasily Khoruzhick)
+- New installed-tests is set to disabled
+
+-------------------------------------------------------------------
 Sun Nov  6 10:42:36 UTC 2022 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
 
 - Move to libfprint-tod fork:

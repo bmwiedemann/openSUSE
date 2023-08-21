@@ -1,7 +1,7 @@
 #
 # spec file for package libfprint
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Mariusz Fik <fisiu@opensuse.org>.
 # Copyright (c) 2021/22 Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
 #
@@ -31,7 +31,7 @@
 %endif
 
 Name:           libfprint
-Version:        1.94.5+%{todapiver}
+Version:        1.94.6+%{todapiver}
 Release:        0
 Summary:        Library for fingerprint reader support
 License:        LGPL-2.1-or-later
@@ -134,6 +134,7 @@ This package contains the introspection bindings for the libfprint.
 %build
 %meson \
 	-Dgtk-examples=false \
+	-Dinstalled-tests=false \
 %if %{install_fp_udev_hwdb}
 	-Dudev_hwdb=enabled \
 %else
