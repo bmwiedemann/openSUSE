@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 20 05:59:02 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.0
+  * add im module probing program
+  * skip gtk im module probing for only plugin option
+  * implement new PageButtonAlignment for gtk client side ui
+  * gdk_layout is not happy with width or height 0 rect anymore
+
+-------------------------------------------------------------------
 Mon May 22 10:43:37 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - Update to 5.0.23
