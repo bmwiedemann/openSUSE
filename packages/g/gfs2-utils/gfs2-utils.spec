@@ -17,19 +17,13 @@
 
 
 Name:           gfs2-utils
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        Utilities for managing the global file system (GFS2)
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://pagure.io/gfs2-utils
-# The source for this package was pulled from the upstream git tree.
-# Use the following commands to generate the tarball:
-# git clone git://git.fedorahosted.org/gfs2-utils.git
-# cd gfs2-utils
-# ./make-tarball.sh
-#
-Source:         https://releases.pagure.org/%{name}/%{name}-%{version}.tar.xz
+Source:         https://pagure.io/gfs2-utils/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -47,6 +41,11 @@ BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  zlib-devel
 
+# Upstream patches
+Patch1:         0001-fsck.gfs2-Tighten-offset-check-in-check_eattr_entrie.patch
+Patch2:         0002-fsck.gfs2-Fix-max-xattr-record-length-check.patch
+Patch3:         0003-fsck.gfs2-Fix-xattr-offset-checks-in-p1_check_eattr_.patch
+
 %description
 The gfs2-utils package contains a number of utilities for creating,
 checking, modifying, and correcting any inconsistencies in GFS2
@@ -54,6 +53,10 @@ file systems.
 
 %prep
 %setup -q
+
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 #NOCONFIGURE=1

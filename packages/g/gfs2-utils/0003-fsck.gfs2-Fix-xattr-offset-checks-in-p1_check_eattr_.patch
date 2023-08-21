@@ -1,0 +1,53 @@
+From d85e19e45f1df1cc4a933c84b8e7ff25df1959d4 Mon Sep 17 00:00:00 2001
+From: Andrew Price <anprice@redhat.com>
+Date: Mon, 22 May 2023 11:24:26 +0100
+Subject: [PATCH] fsck.gfs2: Fix xattr offset checks in p1_check_eattr_entries
+
+Valid ea_header offsets fall within the block, at the block boundary,
+but not in the final 15 bytes of the block as that would result in a
+partial ea_header. Make sure these cases are all taken into account in
+the ea_rec_len checks in p1_check_eattr_entries(). Also improve logging
+of erroneous values.
+
+Signed-off-by: Andrew Price <anprice@redhat.com>
+---
+ gfs2/fsck/pass1.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/gfs2/fsck/pass1.c b/gfs2/fsck/pass1.c
+index ebd66e2c9bc5..df2d8c4e59e9 100644
+--- a/gfs2/fsck/pass1.c
++++ b/gfs2/fsck/pass1.c
+@@ -879,9 +879,10 @@ static int p1_check_eattr_entries(struct fsck_cx *cx, struct lgfs2_inode *ip,
+ {
+ 	struct lgfs2_sbd *sdp = ip->i_sbd;
+ 	char ea_name[256];
++	uint32_t offset_limit = sdp->sd_bsize - sizeof(struct gfs2_ea_header);
+ 	uint32_t offset = (uint32_t)(((unsigned long)ea_hdr) -
+ 				     ((unsigned long)leaf_bh->b_data));
+-	uint32_t max_size = sdp->sd_bsize - sizeof(struct gfs2_meta_header);
++	uint32_t rec_len = be32_to_cpu(ea_hdr->ea_rec_len);
+ 	uint32_t avail_size;
+ 	int max_ptrs;
+ 
+@@ -890,12 +891,14 @@ static int p1_check_eattr_entries(struct fsck_cx *cx, struct lgfs2_inode *ip,
+ 		return ask_remove_eattr_entry(cx, leaf_bh, ea_hdr,
+ 					      ea_hdr_prev, 1, 1);
+ 	}
+-	if (offset + be32_to_cpu(ea_hdr->ea_rec_len) > max_size){
+-		log_err( _("EA rec length too long\n"));
++	if (offset + rec_len > offset_limit &&
++	    offset + rec_len != sdp->sd_bsize) {
++		log_err( _("EA record length too long (%"PRIu32"+%"PRIu32")\n"),
++		        offset, rec_len);
+ 		return ask_remove_eattr_entry(cx, leaf_bh, ea_hdr,
+ 					      ea_hdr_prev, 1, 1);
+ 	}
+-	if (offset + be32_to_cpu(ea_hdr->ea_rec_len) == max_size &&
++	if (offset + rec_len == sdp->sd_bsize &&
+ 	   (ea_hdr->ea_flags & GFS2_EAFLAG_LAST) == 0){
+ 		log_err( _("last EA has no last entry flag\n"));
+ 		return ask_remove_eattr_entry(cx, leaf_bh, ea_hdr,
+-- 
+2.35.3
+
