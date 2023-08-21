@@ -1,0 +1,54 @@
+From 31f91ce9f4302cea55244ab741022e40bbd4e716 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Mon, 7 Aug 2023 19:57:01 +0200
+Subject: [PATCH] jack: ports become visible when the registration is queued
+
+As soon as the port registration is queued (but not yet emited) the port
+becomes visible.
+
+See #3416
+---
+ pipewire-jack/src/pipewire-jack.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/pipewire-jack/src/pipewire-jack.c b/pipewire-jack/src/pipewire-jack.c
+index 3d71f67be..7547d6ffb 100644
+--- a/pipewire-jack/src/pipewire-jack.c
++++ b/pipewire-jack/src/pipewire-jack.c
+@@ -171,6 +171,7 @@ struct object {
+ 	struct spa_hook proxy_listener;
+ 	struct spa_hook object_listener;
+ 	int registered;
++	unsigned int visible;
+ 	unsigned int removing:1;
+ 	unsigned int removed:1;
+ };
+@@ -723,7 +724,7 @@ static struct object *find_port_by_name(struct client *c, const char *name)
+ 	struct object *o;
+ 
+ 	spa_list_for_each(o, &c->context.objects, link) {
+-		if (o->type != INTERFACE_Port || o->removed)
++		if (o->type != INTERFACE_Port || o->removed || !o->visible)
+ 			continue;
+ 		if (spa_streq(o->port.name, name) ||
+ 		    spa_streq(o->port.alias1, name) ||
+@@ -1056,6 +1057,7 @@ static int queue_notify(struct client *c, int type, struct object *o, int arg1,
+ 		break;
+ 	case NOTIFY_TYPE_PORTREGISTRATION:
+ 		emit = c->portregistration_callback != NULL && o != NULL;
++		o->visible = arg1;
+ 		break;
+ 	case NOTIFY_TYPE_CONNECT:
+ 		emit = c->connect_callback != NULL && o != NULL;
+@@ -5989,7 +5991,7 @@ const char ** jack_get_ports (jack_client_t *client,
+ 	count = 0;
+ 
+ 	spa_list_for_each(o, &c->context.objects, link) {
+-		if (o->type != INTERFACE_Port || o->removed)
++		if (o->type != INTERFACE_Port || o->removed || !o->visible)
+ 			continue;
+ 		pw_log_debug("%p: check port type:%d flags:%08lx name:\"%s\"", c,
+ 				o->port.type_id, o->port.flags, o->port.name);
+-- 
+GitLab
+

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug 18 12:01:36 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix from upstream to ensure effect and sink nodes are set to
+  running:
+  * 0001-context-Dont-stop-setting-runnable-when-meeting-the-driving.patch
+
+- Fix from upstream to prevent a crash when stopping a device
+  provider:
+  * 0001-gst-Prevent-a-crash-when-stopping-device-provider.patch
+
+- Fix from upstream to fix a regression that makes plugins/effects
+  disappear in Carla Patchbay when there's no playback:
+  * 0001-jack-ports-become-visible-when-the-registration-is-queued.patch
+  * 0002-jack-handle-node.always-process-=-false-jack-nodes.patch
+
+- Fix from upstream to fix pavucontrol and plasma-pa showing
+  duplicated sinks after resume or switching audio device profiles
+  (boo#1214374):
+  * 0001-pulse-server-set-all-change_mask-flags-when-removing.patch
+
+-------------------------------------------------------------------
 Sat Aug  5 12:23:12 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.3.77:

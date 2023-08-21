@@ -832,4 +832,12 @@ Build tested.
       and lock contention in the fsnotify subsystem on some</comment>
     <requestid>1102630</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>c076e4cb0276b89a9345bdfa7ecd0911</srcmd5>
+    <version>0.3.77</version>
+    <time>1692610977</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104672</requestid>
+  </revision>
 </revisionlist>

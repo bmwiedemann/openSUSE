@@ -1,0 +1,117 @@
+From 1daae4c369f464c8677696890e2eeb431c0f72a1 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Fri, 4 Aug 2023 17:42:04 +0200
+Subject: [PATCH] context: Don't stop setting runnable when meeting the driving
+ node
+
+Start scanning from a non-driving runnable node in one direction and set
+all linked intermedia nodes runnable as well.
+
+This ensure that play -> driving_sink -> effect -> sink also sets the
+effect and sink nodes to running.
+
+Fixes  #3405
+---
+ src/pipewire/context.c | 60 ++++++++++++++++++++++--------------------
+ 1 file changed, 31 insertions(+), 29 deletions(-)
+
+diff --git a/src/pipewire/context.c b/src/pipewire/context.c
+index 8f9745b3f..9d9b629ae 100644
+--- a/src/pipewire/context.c
++++ b/src/pipewire/context.c
+@@ -787,44 +787,44 @@ static int ensure_state(struct pw_impl_node *node, bool running)
+ 	return pw_impl_node_set_state(node, state);
+ }
+ 
+-/* From a node (that is runnable) follow all prepared links and groups to
+- * active nodes up to the driver and make them recursively runnable as well.
+- *
+- * We stop at driver nodes so that other paths linked to the driver will stay
+- * unrunnable when no other runnable path exists.
++/* From a node (that is runnable) follow all prepared links in the given direction
++ * and groups to active nodes and make them recursively runnable as well.
+  */
+-static inline int run_nodes(struct pw_context *context, struct pw_impl_node *node, struct spa_list *nodes)
++static inline int run_nodes(struct pw_context *context, struct pw_impl_node *node,
++		struct spa_list *nodes, enum pw_direction direction)
+ {
+ 	struct pw_impl_node *t;
+ 	struct pw_impl_port *p;
+ 	struct pw_impl_link *l;
+ 
+-	pw_log_debug("node %p: '%s'", node, node->name);
++	pw_log_debug("node %p: '%s' direction:%s", node, node->name,
++			pw_direction_as_string(direction));
+ 
+-	spa_list_for_each(p, &node->input_ports, link) {
+-		spa_list_for_each(l, &p->links, input_link) {
+-			t = l->output->node;
++	if (direction == PW_DIRECTION_INPUT) {
++		spa_list_for_each(p, &node->input_ports, link) {
++			spa_list_for_each(l, &p->links, input_link) {
++				t = l->output->node;
+ 
+-			if (!t->active || !l->prepared || t->runnable)
+-				continue;
++				if (!t->active || !l->prepared || (!t->driving && t->runnable))
++					continue;
+ 
+-			pw_log_debug("  peer %p: '%s'", t, t->name);
+-			t->runnable = true;
+-			if (!t->driving)
+-				run_nodes(context, t, nodes);
++				pw_log_debug("  peer %p: '%s'", t, t->name);
++				t->runnable = true;
++				run_nodes(context, t, nodes, direction);
++			}
+ 		}
+-	}
+-	spa_list_for_each(p, &node->output_ports, link) {
+-		spa_list_for_each(l, &p->links, output_link) {
+-			t = l->input->node;
++	} else {
++		spa_list_for_each(p, &node->output_ports, link) {
++			spa_list_for_each(l, &p->links, output_link) {
++				t = l->input->node;
+ 
+-			if (!t->active || !l->prepared || t->runnable)
+-				continue;
++				if (!t->active || !l->prepared || (!t->driving && t->runnable))
++					continue;
+ 
+-			pw_log_debug("  peer %p: '%s'", t, t->name);
+-			t->runnable = true;
+-			if (!t->driving)
+-				run_nodes(context, t, nodes);
++				pw_log_debug("  peer %p: '%s'", t, t->name);
++				t->runnable = true;
++				run_nodes(context, t, nodes, direction);
++			}
+ 		}
+ 	}
+ 	/* now go through all the nodes that have the same link group and
+@@ -842,7 +842,7 @@ static inline int run_nodes(struct pw_context *context, struct pw_impl_node *nod
+ 			pw_log_debug("  group %p: '%s'", t, t->name);
+ 			t->runnable = true;
+ 			if (!t->driving)
+-				run_nodes(context, t, nodes);
++				run_nodes(context, t, nodes, direction);
+ 		}
+ 	}
+ 	return 0;
+@@ -944,8 +944,10 @@ static int collect_nodes(struct pw_context *context, struct pw_impl_node *node,
+ 		pw_log_debug(" next node %p: '%s' runnable:%u", n, n->name, n->runnable);
+ 	}
+ 	spa_list_for_each(n, collect, sort_link)
+-		if (!n->driving && n->runnable)
+-			run_nodes(context, n, collect);
++		if (!n->driving && n->runnable) {
++			run_nodes(context, n, collect, PW_DIRECTION_OUTPUT);
++			run_nodes(context, n, collect, PW_DIRECTION_INPUT);
++		}
+ 
+ 	return 0;
+ }
+-- 
+GitLab
+

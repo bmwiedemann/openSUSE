@@ -70,6 +70,12 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
+Patch1:         0001-context-Dont-stop-setting-runnable-when-meeting-the-driving.patch
+Patch2:         0001-gst-Prevent-a-crash-when-stopping-device-provider.patch
+Patch3:         0001-jack-ports-become-visible-when-the-registration-is-queued.patch
+Patch4:         0002-jack-handle-node.always-process-=-false-jack-nodes.patch
+Patch5:         0001-pulse-server-set-all-change_mask-flags-when-removing.patch
+
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -382,6 +388,11 @@ JACK libraries.
 sed -ie "s/version : '0.3.72'/version : '%{version}'/" %{P:0}
 %patch0 -p1
 %endif
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
