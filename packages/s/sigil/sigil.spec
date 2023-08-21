@@ -18,7 +18,7 @@
 
 %define sigil_doc_version 2022.05.17
 Name:           sigil
-Version:        1.9.30
+Version:        2.0.0
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
@@ -35,9 +35,8 @@ BuildRequires:  cmake >= 3.0
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-# upstream use Qt 5.12.3
-BuildRequires:  libqt5-qtbase-devel >= 5.4.2
-BuildRequires:  libqt5-qtlocation-devel >= 5.4.2
+BuildRequires:  libqt5-qtbase-devel >= 5.12.0
+BuildRequires:  libqt5-qtlocation-devel >= 5.12.0
 BuildRequires:  libstdc++-devel
 BuildRequires:  libxerces-c-devel
 BuildRequires:  libxml2-devel
@@ -57,8 +56,8 @@ BuildRequires:  python3-css-parser >= 1.0.4
 BuildRequires:  python3-cssselect >= 1.0.3
 # upstream use python3-cssutils ?
 BuildRequires:  python3-cssutils >= 1.0.2
-# upstream use 3.7.2
-BuildRequires:  python3-devel >= 3.4
+# upstream use 3.6.0
+BuildRequires:  python3-devel >= 3.6
 # upstream use python3-dulwich 0.20.5
 BuildRequires:  python3-dulwich >= 0.20.2
 # upstream use python3-html5lib >= 1.1
