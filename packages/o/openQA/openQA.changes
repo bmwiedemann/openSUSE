@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 20 06:24:08 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1692349627.5bfccc7:
+  * Remove defaults, should be ensured by OpenQA::Setup already
+  * Add usleep_backoff function and use it for asset uploads
+
+-------------------------------------------------------------------
 Thu Aug 17 22:24:14 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1692303781.9dd2c86:
