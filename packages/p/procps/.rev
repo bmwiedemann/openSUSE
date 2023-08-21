@@ -1358,4 +1358,18 @@ There are also man pages translations but they doesn't get installed automatical
   * CVE-2023-4016: ps buffer overflow (bsc#1214290)</comment>
     <requestid>1104044</requestid>
   </revision>
+  <revision rev="133" vrev="14">
+    <srcmd5>d58854138b0a84a304ffcde7c3665b3c</srcmd5>
+    <version>3.3.17</version>
+    <time>1692610973</time>
+    <user>anag+factory</user>
+    <comment>- Modify patches
+  * procps-ng-3.3.9-w-notruncate.diff
+  * procps-ng-3.3.17-logind.patch 
+  to real to not truncate output of w with option -n
+
+- procps-ng-3.3.17-logind.patch: Backport from 4.x git, prefer 
+  logind over utmp (jsc#PED-3144)</comment>
+    <requestid>1104653</requestid>
+  </revision>
 </revisionlist>
