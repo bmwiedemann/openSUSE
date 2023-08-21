@@ -466,4 +466,15 @@
     <comment></comment>
     <requestid>1090683</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>727a7dcbd8aaee94828fc39557e22483</srcmd5>
+    <version>7.0.6</version>
+    <time>1692611040</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.0.6:
+  See https://www.kicad.org/blog/2023/07/KiCad-7.0.6-Release/ for details.
+- Ignore minor test failures on i586
+</comment>
+    <requestid>1104799</requestid>
+  </revision>
 </revisionlist>

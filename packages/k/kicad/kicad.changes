@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 14 11:49:28 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 7.0.6:
+  See https://www.kicad.org/blog/2023/07/KiCad-7.0.6-Release/ for details.
+- Ignore minor test failures on i586
+
+-------------------------------------------------------------------
 Sat Jun  3 14:48:29 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 7.0.5:
