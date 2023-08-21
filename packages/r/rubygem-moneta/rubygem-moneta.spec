@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-moneta
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-moneta
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 %define mod_name moneta
 %define mod_full_name %{mod_name}-%{version}
@@ -35,12 +35,12 @@ BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/moneta-rb/moneta
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-Summary:        A unified interface to key/value stores, including Redis, Memcached,
+Summary:        A unified interface to key/value stores
 License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-A unified interface to key/value stores.
+A unified interface to key/value stores, including Redis, Memcached, CouchDB, MongoDB
 
 %prep
 
