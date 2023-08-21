@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 20 16:10:31 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 1.25.2
+  * https://nginx.org/en/CHANGES
+  * Changed: uses appname "nginx" when loading OpenSSL configuration.
+  * Changed: does not try to load OpenSSL configuration if the
+    --with-openssl option was used to built OpenSSL and the OPENSSL_CONF
+    environment variable is not set.
+
+-------------------------------------------------------------------
 Wed Jun 14 05:03:46 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 1.25.1

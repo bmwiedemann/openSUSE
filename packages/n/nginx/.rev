@@ -1007,4 +1007,17 @@
   * Deprecated &quot;ssl&quot; directive is not supported anymore. </comment>
     <requestid>1093008</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>beb43d1c6f8522b653dfe458f3505eaf</srcmd5>
+    <version>1.25.2</version>
+    <time>1692610969</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 1.25.2
+  * https://nginx.org/en/CHANGES
+  * Changed: uses appname &quot;nginx&quot; when loading OpenSSL configuration.
+  * Changed: does not try to load OpenSSL configuration if the
+    --with-openssl option was used to built OpenSSL and the OPENSSL_CONF
+    environment variable is not set.</comment>
+    <requestid>1104919</requestid>
+  </revision>
 </revisionlist>
