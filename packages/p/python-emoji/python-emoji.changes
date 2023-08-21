@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 17 15:59:47 UTC 2023 - Matthias Bach <marix@marix.org> - 2.8.0
+
+- Update to 2.8.0
+  * Update translations to unicode release-43-1
+  * Include "derived annotations"-translations from unicode CLDR
+  * Fix translations for emoji that have multiple forms with/out \uFE0F
+  * Remove multiple underscores __, ___, ____ and - from translations
+
+-------------------------------------------------------------------
 Tue Jul 25 19:12:49 UTC 2023 - Matthias Bach <marix@marix.org> - 2.7.0
 
 - Update to 2.7.0
