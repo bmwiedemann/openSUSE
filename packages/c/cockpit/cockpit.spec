@@ -231,7 +231,10 @@ BuildRequires:  python3-tox-current-env
 # SLE Micro specific patches
 %if 0%{?is_smo}
 %patch101 -p1
+# Patches for versions lower then SLE Micro 5.5
+%if 0%{?sle_version} < 150500
 %patch102 -p1
+%endif
 %endif
 # For anything based on SLES 15 codebase (including Leap, SLEM)
 %if 0%{?suse_version} == 1500
@@ -774,8 +777,8 @@ Summary: Cockpit SELinux package
 Requires: cockpit-bridge >= %{required_base}
 Requires: cockpit-shell >= %{required_base}
 Requires:       policycoreutils-python-utils >= 3.1
-# setroubleshoot not yet in SLE Micro
-%if !0%{?is_smo}
+# setroubleshoot is available on SLE Micro starting with 5.5)
+%if !0%{?is_smo}  || ( 0%{?is_smo} && 0%{?sle_version} >= 150500 )
 Requires:       setroubleshoot-server >= 3.3.3
 %endif
 BuildArch:      noarch

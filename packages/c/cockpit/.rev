@@ -311,4 +311,16 @@
 - hide-docs.patch: refreshed</comment>
     <requestid>1102341</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>1bb1d0e3ec0ae799ad8337bfa1a89a0c</srcmd5>
+    <version>297</version>
+    <time>1692610981</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1104348 from djz88
+
+- set setroubleshoot-server dependency and do not apply 
+  0002-selinux-temporary-remove-setroubleshoot-section-patch for 
+  cockpit-selinux when build for SLE Micro 5.5</comment>
+    <requestid>1104670</requestid>
+  </revision>
 </revisionlist>

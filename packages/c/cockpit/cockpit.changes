@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 15 13:53:14 UTC 2023 - Zdenek Kubala <zkubala@suse.cz>
+
+- set setroubleshoot-server dependency and do not apply 
+  0002-selinux-temporary-remove-setroubleshoot-section-patch for 
+  cockpit-selinux when build for SLE Micro 5.5
+
+-------------------------------------------------------------------
 Thu Aug  3 11:35:47 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - new version 297:
