@@ -1,16 +1,17 @@
-Index: fcitx5-rime-5.0.6/CMakeLists.txt
+Index: fcitx5-rime-5.1.1/CMakeLists.txt
 ===================================================================
---- fcitx5-rime-5.0.6.orig/CMakeLists.txt
-+++ fcitx5-rime-5.0.6/CMakeLists.txt
-@@ -17,6 +17,11 @@ pkg_check_modules(Rime REQUIRED IMPORTED
- if ("${Rime_VERSION}" VERSION_LESS "1.7.0")
-     add_definitions(-DFCITX_RIME_LOAD_PLUGIN)
+--- fcitx5-rime-5.1.1.orig/CMakeLists.txt
++++ fcitx5-rime-5.1.1/CMakeLists.txt
+@@ -21,6 +21,12 @@ if ("${Rime_VERSION}" VERSION_LESS "1.6.
+     add_definitions(-DFCITX_RIME_NO_LOG_LEVEL)
  endif()
+ 
 +if(${CMAKE_VERSION} VERSION_LESS "3.11.0")
 +add_library(PkgConfig::Rime INTERFACE IMPORTED GLOBAL)
 +set_property(TARGET PkgConfig::Rime PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${Rime_INCLUDE_DIR}")
 +set_property(TARGET PkgConfig::Rime PROPERTY INTERFACE_LINK_LIBRARIES "${LIB_INSTALL_DIR}/lib${Rime_LIBRARIES}.so")
 +endif()
- 
++
  if(NOT DEFINED RIME_DATA_DIR)
    find_package(RimeData REQUIRED)
+ endif(NOT DEFINED RIME_DATA_DIR)

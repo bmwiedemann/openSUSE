@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 20 06:23:58 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.1
+  * recreate all rime sessions when auto saving data
+  * rime session now follows the global shared state option. 
+
+-------------------------------------------------------------------
 Mon May 22 11:22:43 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - Update to 5.0.16
