@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 20 17:52:48 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.0.1:
+  * speed up option -l to search compressed files
+  * enable an important search optimization that was no longer
+    enabled
+
+-------------------------------------------------------------------
 Fri Aug 18 16:20:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.0.0:
