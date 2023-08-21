@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 20 06:28:28 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.0
+  * some table's matching key is updated to * instead of old ?,
+    to solve the full width ? are not able to be used. 
+
+-------------------------------------------------------------------
 Mon May 22 11:51:16 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - Update to 5.0.13
