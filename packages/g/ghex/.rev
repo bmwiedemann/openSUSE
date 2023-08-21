@@ -527,4 +527,20 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment></comment>
     <requestid>1083288</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>d7cb443ca96f7f0cea3da36e5f54a6c9</srcmd5>
+    <version>44.2</version>
+    <time>1692611165</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 44.2:
+  + Mark three strings translatable.
+  + ui:
+    - Add tooltip to the main menu to comply with GNOME HIG.
+    - Add shortcut for preferences and fix help shortcut
+      description.
+  + appwin: Ensure HexStatusbar is registered before initting
+    template.
+  + Updated translations. (forwarded request 1104468 from iznogood)</comment>
+    <requestid>1105008</requestid>
+  </revision>
 </revisionlist>

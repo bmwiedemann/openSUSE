@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 17 19:43:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.2:
+  + Mark three strings translatable.
+  + ui:
+    - Add tooltip to the main menu to comply with GNOME HIG.
+    - Add shortcut for preferences and fix help shortcut
+      description.
+  + appwin: Ensure HexStatusbar is registered before initting
+    template.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Apr 27 07:31:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:
