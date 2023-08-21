@@ -1518,4 +1518,14 @@ So just for consistency. (forwarded request 875922 from lnussel)</comment>
   * Remove reliance on linux/fs.h as it conflicts with glibc 2.36.</comment>
     <requestid>1087334</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>7de859abb26043b2023640c96b87101b</srcmd5>
+    <version>3.08</version>
+    <time>1692610978</time>
+    <user>anag+factory</user>
+    <comment>- Update to sysvinit 3.08
+  * For OpenSUSE only cosmetic change which is support of kexec
+    for SysVinit reboot (not installed at all)</comment>
+    <requestid>1104680</requestid>
+  </revision>
 </revisionlist>

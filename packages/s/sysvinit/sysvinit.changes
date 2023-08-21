@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 18 13:03:53 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to sysvinit 3.08
+  * For OpenSUSE only cosmetic change which is support of kexec
+    for SysVinit reboot (not installed at all) 
+
+-------------------------------------------------------------------
 Fri May 12 12:08:37 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Update to sysvinit 3.07
