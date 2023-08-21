@@ -1825,4 +1825,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
     argument is simply named &quot;emacs&quot; (slack message, boo#1214008)</comment>
     <requestid>1102651</requestid>
   </revision>
+  <revision rev="176" vrev="3">
+    <srcmd5>9826ebddf46855c098fda81733c8322a</srcmd5>
+    <version>29.1</version>
+    <time>1692610974</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1104659</requestid>
+  </revision>
 </revisionlist>

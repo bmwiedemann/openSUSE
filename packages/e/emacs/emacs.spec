@@ -29,8 +29,12 @@
 # to be stored in emacs-<version>-pdf.tar.xz only once
 %bcond_with     tex4pdf
 %bcond_with     memmmap
+%bcond_with     checks
 
 Name:           emacs
+%if %{with checks}
+BuildRequires:  bubblewrap
+%endif
 %if %{with autoconf}
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -81,9 +85,12 @@ BuildRequires:  texlive-collection-langczechslovak
 BuildRequires:  texlive-collection-langpolish
 BuildRequires:  texlive-lh
 %endif
+#BuildRequires:  i3
 BuildRequires:  procps
 BuildRequires:  update-alternatives
 BuildRequires:  update-desktop-files
+#BuildRequires:  xdotool
+#BuildRequires:  xorg-x11-Xvfb
 BuildRequires:  xz
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(ImageMagick)
@@ -732,6 +739,11 @@ do
    fi
    break
 done
+%endif
+
+%if %{with checks}
+%check
+make check
 %endif
 
 %pre

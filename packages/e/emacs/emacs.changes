@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 11 10:33:54 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Require bwrap at build time as some tools requires it if checks
+  are enabled
+
+-------------------------------------------------------------------
+Thu Aug 10 07:17:09 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch emacs-29.1.dif
+  * Avoid in ispell.el unused lexical variable `load-dict'
+
+-------------------------------------------------------------------
 Mon Aug  7 07:37:16 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Extend patch pdump.patch
