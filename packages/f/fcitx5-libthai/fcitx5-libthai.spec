@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-libthai
-Version:        5.0.11
+Version:        5.1.0
 Release:        0
 Summary:        Libthai input method engine for Fcitx5
 License:        GPL-2.0-or-later
