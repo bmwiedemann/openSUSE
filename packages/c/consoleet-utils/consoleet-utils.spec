@@ -17,7 +17,7 @@
 
 
 Name:           consoleet-utils
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Utilities for manipulating terminal fonts and colors
 License:        GPL-3.0-or-later AND MIT
@@ -66,5 +66,6 @@ autoreconf -fi
 %license LICENSE*
 %_bindir/*
 %_mandir/man1/*.1*
+%_datadir/consol*
 
 %changelog
