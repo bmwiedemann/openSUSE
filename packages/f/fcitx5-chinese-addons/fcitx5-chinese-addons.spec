@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-chinese-addons
-Version:        5.0.17
+Version:        5.1.0
 Release:        0
 Summary:        Pinyin and Table IM support for fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -123,6 +123,7 @@ This package provides development files for fcitx5-chinese-addons.
 %dir %{_fcitx5_datadir}/lua/imeapi/extensions
 %dir %{_fcitx5_datadir}/pinyin
 %dir %{_fcitx5_datadir}/chttrans
+%dir %{_fcitx5_libdir}/qt5
 %{_bindir}/scel2org5
 %{_fcitx5_libdir}/libchttrans.so
 %{_fcitx5_libdir}/libcloudpinyin.so
@@ -131,6 +132,7 @@ This package provides development files for fcitx5-chinese-addons.
 %{_fcitx5_libdir}/libpinyinhelper.so
 %{_fcitx5_libdir}/libpunctuation.so
 %{_fcitx5_libdir}/libtable.so
+%{_fcitx5_libdir}/qt5/libcustomphraseeditor.so
 %{_fcitx5_addondir}/chttrans.conf
 %{_fcitx5_addondir}/cloudpinyin.conf
 %{_fcitx5_addondir}/fullwidth.conf
