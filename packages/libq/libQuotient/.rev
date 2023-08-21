@@ -87,4 +87,12 @@
     <comment>Rollback to version 0.6, because version 0.7 is not compatible yet with quaternion and breaks his build and use.</comment>
     <requestid>1045705</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a1c77c94401caf9506da620888ba6d45</srcmd5>
+    <version>0.8.1.1</version>
+    <time>1692611140</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104921</requestid>
+  </revision>
 </revisionlist>

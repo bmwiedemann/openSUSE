@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sat Aug 19 21:37:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.8.1.1
+  * Got rid of deprecated RoomPinnedEvent name
+    (gh#quotient-im/libQuotient#680)
+  * Fixed session verification (gh#quotient-im/libQuotient#682)
+  * Constified Room::userIdsAtEvent()
+    (gh#quotient-im/libQuotient#686)
+  * Enhanced logging around key verification
+    (gh#quotient-im/libQuotient#690)
+  * Made it possible to use the key backup client-server API
+    in the backend (gh#quotient-im/libQuotient#693)
+  * Constrained the e-mail logic in linkifyUrl() so that it
+    doesn't trigger in the middle of another URL
+    (gh#quotient-im/libQuotient#698)
+
+-------------------------------------------------------------------
+Wed Aug  9 17:21:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.8.0. Check
+  https://github.com/quotient-im/libQuotient/releases for older
+  changes list.
+  * Fixed AccountRegistry::invokeLogin() to still add Connection
+    objects after successfully connecting them to the homeserver
+    (gh#quotient-im/libQuotient#675)
+  * pinned events actually follow the specification (and
+    therefore, interoperable) (gh#quotient-im/libQuotient#677)
+- Add a Qt6 flavor. Needed by the KDE CI
+- Enable E2EE by default. This will be required by neochat soon.
+
+-------------------------------------------------------------------
+Wed Dec 21 04:58:08 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.0:
+  * E2EE is the biggest part of this release,
+    + The following parts of E2EE are known to work:
+      - foundations additional contributions and refactoring.
+      - Olm/Megolm signalling with our parties/devices.
+      - managing device and one-time keys.
+      - sending and receiving (monstrous new encrypted messages.
+      - encrypting/decrypting attachment.
+      - retrieval and decryption of historical messages keys
+        for which are already in the database.
+      - device verification.
+    + What is not there yet:
+      - historical Megolm sessions are not requested from other
+        devices/parties, so you will see quite a few undecryptable
+        messages in rooms with past communication - this might be
+        fixed (if possible without breaking the API) in further
+        0.7.x releases.
+      - secure server-side storage (SSSS) is not supported at
+        all for now, and will likely require API breakage so
+        will come in 0.8.
+      - soft logout is not supported; this is also a subject of 0.8.
+    + Because there's no soft logout the database for a given account
+      is completely reset upon a successful login attempt. This may
+      come as a very unpleasant surprise if you don't keep your
+      login session between client restarts; but this is a necessary
+      trade-off for the current feature set (see #546 for the
+      discussion). Together with the rest of the above not-there-yet
+      list, this means that you MUST NOT use E2EE with
+      libQuotient-backed clients as your only device(s) on
+      the account - there's quite a risk of losing encrypted
+      conversations if anything happens to the database libQuotient
+      keeps key material in, or if you lose your session and have
+      to log in again. Did I mention the whole E2EE functionality
+      is still in beta? Client authors are strongly recommended
+      to show big scary warnings against E2EE for now.
+  * Read markers -> read receipts + fully read markers.
+
+-------------------------------------------------------------------
 Thu Oct  7 08:37:12 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.6.11:
