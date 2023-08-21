@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 20 06:01:42 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.0
+  * add program to display actual Qt im module information
+  * implement new page button alignment option
+  * change the default behavior of virtual keyboard visibility
+  * add a funtion to get the full im group information
+  * add new layout field to FullInputMehtodGroupInfo
+  * add support of virtualkeyboard show and hide
+  * add new inputContextCreationFailed signal
+  * add old fcitx4 dbus service support but always prefer fcitx5
+
+-------------------------------------------------------------------
 Mon May 22 09:52:06 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - Update to 5.0.17

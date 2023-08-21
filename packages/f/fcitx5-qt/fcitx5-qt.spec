@@ -27,7 +27,7 @@
 %define build_qt6 0
 %endif
 Name:           fcitx5-qt
-Version:        5.0.17
+Version:        5.1.0
 Release:        0
 Summary:        Qt library and IM module for fcitx5
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -171,6 +171,7 @@ ARGS="$ARGS -DENABLE_QT6=ON"
 %files -n fcitx5-qt5 -f %{name}.lang
 %doc README.md
 %license LICENSES
+%{_bindir}/fcitx5-qt5-immodule-probing
 %{_libexecdir}/fcitx5-qt5-gui-wrapper
 %{_datadir}/applications/org.fcitx.fcitx5-qt5-gui-wrapper.desktop
 %{_fcitx5_qt5dir}/libfcitx-quickphrase-editor5.so
@@ -178,6 +179,7 @@ ARGS="$ARGS -DENABLE_QT6=ON"
 
 %if %{build_qt6}
 %files -n fcitx5-qt6
+%{_bindir}/fcitx5-qt6-immodule-probing
 %{_libdir}/qt6/plugins/platforminputcontexts/libfcitx5platforminputcontextplugin.so
 
 %files -n libFcitx5Qt6DBusAddons1
