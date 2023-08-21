@@ -16,9 +16,9 @@
 #
 
 
-%define         c_lib libftxui4_1_0
+%define         c_lib libftxui5_0_0
 Name:           ftxui
-Version:        4.1.1
+Version:        5.0.0
 Release:        0
 Summary:        A C++ library for terminal based user interfaces
 License:        MIT
@@ -65,9 +65,9 @@ Development files for ftxui.
 %files -n %{c_lib}
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{_libdir}/libftxui-component.so.4.1.0
-%{_libdir}/libftxui-dom.so.4.1.0
-%{_libdir}/libftxui-screen.so.4.1.0
+%{_libdir}/libftxui-component.so.5.0.0
+%{_libdir}/libftxui-dom.so.5.0.0
+%{_libdir}/libftxui-screen.so.5.0.0
 
 %files devel
 %license LICENSE
@@ -77,6 +77,6 @@ Development files for ftxui.
 %{_libdir}/libftxui-component.so
 %{_libdir}/libftxui-dom.so
 %{_libdir}/libftxui-screen.so
-%{_libdir}/ftxui.pc
+%{_libdir}/pkgconfig/ftxui.pc
 
 %changelog
