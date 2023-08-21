@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 21 00:42:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4
+  * Document -S option in the manpage
+  * glibc>=2.38 support
+
+-------------------------------------------------------------------
 Thu Sep 20 09:13:54 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.3

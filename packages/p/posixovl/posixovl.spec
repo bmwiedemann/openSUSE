@@ -1,7 +1,7 @@
 #
 # spec file for package posixovl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 Name:           posixovl
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        POSIX overlay filesystem
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Url:            http://posixovl.sf.net/
+URL:            http://posixovl.sf.net/
 
-Source:         http://downloads.sf.net/posixovl/%name-%version.tar.xz
-Source2:        http://downloads.sf.net/posixovl/%name-%version.tar.asc
+Source:         https://inai.de/files/posixovl/%name-%version.tar.xz
+Source2:        https://inai.de/files/posixovl/%name-%version.tar.asc
 Source3:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  autoconf >= 2.61
-BuildRequires:  automake >= 1.9
+BuildRequires:  c_compiler
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(fuse) >= 2.6.5
@@ -40,14 +39,11 @@ ownership, special files - for filesystems that do not have such, e.g. vfat. It
 can be seen as a contemporary equivalent of the UMSDOS fs.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-if [ ! -e configure ]; then
-	autoreconf -fiv
-fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 b="%buildroot"
@@ -56,7 +52,6 @@ mkdir -p "$b/%_mandir/man8"
 ln -s ../man1/posixovl.1 "$b/%_mandir/man8/mount.posixovl.8"
 
 %files
-%defattr(-,root,root)
 %_sbindir/*
 %_mandir/man*/*
 
