@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 18 06:35:37 UTC 2023 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gnome-calendar-check-for-null-child.patch: views/week-header:
+  Check for NULL child(glgo#GNOME/gnome-calendar/commit/b9d4405e6,
+  bsc#1214188).
+
+-------------------------------------------------------------------
 Sat Apr 22 19:23:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:
