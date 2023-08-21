@@ -17,14 +17,13 @@
 
 
 Name:           fcitx5-kkc
-Version:        5.0.12
+Version:        5.1.0
 Release:        0
 Summary:        Libkkc input method support for Fcitx5
 License:        GPL-3.0-or-later
 Group:          System/I18n/Japanese
 URL:            https://github.com/fcitx/fcitx5-kkc
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
-Patch0:         0000-remove-cpp11.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -48,7 +47,6 @@ This package provides libkkc input method support for Fcitx5.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake

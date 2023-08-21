@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 20 06:19:06 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.0
+  * remove the unintended c++11 flag
+- drop 0000-remove-cpp11.patch
+
+-------------------------------------------------------------------
 Thu May 11 23:10:11 UTC 2023 - Xu Zhao <i@xuzhao.net>
 
 - Use the .tar.xz source downloaded from fcitx-im.org
