@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 18 17:20:43 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to 0.3.13:
+  * Use indexes when binding value
+  * Correctly tokenize when using a bound text value
+  * Ensure tokens are all NULL when using xb_opcode_init()
+  * Avoid building errors and debug strings when possible to make
+    XbQuery faster
+  * Fix content type detection on macOS
+  * Inline a number of machine internals to make queries faster
+  * Make zstd support optional
+  * Setup various release build options
+
+-------------------------------------------------------------------
 Thu Apr 27 22:24:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.11:
