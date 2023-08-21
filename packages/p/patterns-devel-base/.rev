@@ -90,4 +90,14 @@
 - suggests php8 instead of php7</comment>
     <requestid>1039128</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>1f1f84494a791882bdaac868dd653a6e</srcmd5>
+    <version>20170319</version>
+    <time>1692610972</time>
+    <user>anag+factory</user>
+    <comment>- Require awk by devel_basis: the usage of awk inside
+  configure.ac/Makefile.am is quite common and we should provide
+  this basic tool together with autoconf/automake (boo#1214365).</comment>
+    <requestid>1104642</requestid>
+  </revision>
 </revisionlist>
