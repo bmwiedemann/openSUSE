@@ -1,13 +1,13 @@
 <services>
-  <service name="download_files" mode="disabled" />
-  <service name="cargo_vendor" mode="disabled">
-     <param name="srctar">xplr-0.21.2.tar.gz</param>
+  <service name="download_files" mode="manual" />
+  <service name="cargo_vendor" mode="manual">
+     <param name="srctar">xplr-0.21.3.tar.gz</param>
      <param name="compression">zst</param>
-     <param name="update">false</param>
+     <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">xplr-0.21.2</param>
+  <service name="cargo_audit" mode="manual">
+     <param name="srcdir">xplr-0.21.3</param>
   </service>
-  <service name="source_validator" mode="disabled" />
+  <service name="source_validator" mode="manual" />
 </services>
 

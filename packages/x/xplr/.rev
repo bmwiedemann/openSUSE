@@ -70,4 +70,24 @@
 </comment>
     <requestid>1090465</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5fe60afd5ba8585f0f685f703c81b45a</srcmd5>
+    <version>0.21.3</version>
+    <time>1692611076</time>
+    <user>anag+factory</user>
+    <comment>- Replace obsoleted `disabled` option with `manual`
+- Update vendored dependencies.
+- Always update vendored deps in _service.
+- Add signature xplr-0.21.3.tar.gz.asc
+- Update to version 0.21.3:
+  * Fixed &quot;Illegal format character q&quot; error seen on non GNU (including macOS and BSD) systems
+  * Fixed a UI issue causing lower priority styles being fully ignored
+  * Press f1 to see the global help menu from any mode, without leaving the mode.
+  * Current mode help menu will be displayed on top of the global help menu.
+  * Added hook: on_selection_change.
+  * Documentation improvements.
+  
+</comment>
+    <requestid>1104876</requestid>
+  </revision>
 </revisionlist>
