@@ -44,8 +44,6 @@ Patch1000:      mutter-SLE-bell.patch
 Patch1001:      mutter-SLE-relax-some-constraints-on-CSD-windows.patch
 # PATCH-FIX-SLE mutter-SLE-bsc984738-grab-display.patch bsc#984738 bgo#769387 hpj@suse.com -- Revert a upstream commit to avoid X11 race condition that results in wrong dialog sizes.
 Patch1002:      mutter-SLE-bsc984738-grab-display.patch
-# PATCH-NEEDS-REBASE mutter-Lower-HIDPI_LIMIT-to-144.patch fate#326682, bsc#1125467 qkzhu@suse.com -- Lower HIDPI_LIMIT to 144 WAS
-Patch1003:      mutter-Lower-HIDPI_LIMIT-to-144.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
@@ -142,10 +140,18 @@ applications that want to make use of the mutter library.
 
 %prep
 %autosetup -N
+%if !0%{?sle_version}
 %autopatch -p1 -M 999
+%else
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%endif
 # SLE-only patches and translations.
 %if 0%{?sle_version}
-%autopatch -p1 -m 1000
+%patch1000 -p1
+%patch1001 -p1
+%patch1002 -p1
 %endif
 
 %build
