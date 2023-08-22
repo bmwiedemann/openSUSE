@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-machines
-Version:        295
+Version:        296
 Release:        0
 Summary:        Cockpit user interface for virtual machines
 License:        LGPL-2.1-or-later AND MIT
@@ -28,6 +28,7 @@ Source:         https://github.com/cockpit-project/cockpit-machines/archive/refs
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 %include %_sourcedir/node_modules.spec.inc
+Patch1:         deps.patch
 Patch10:        hide-docs.patch
 Patch11:        load-css-overrides.patch
 BuildArch:      noarch

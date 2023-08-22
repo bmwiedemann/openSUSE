@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 21 11:57:18 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Update to 296:
+  * Update to PatternFly 5
+- deps.patch: fix esbuild dependency
+
+-------------------------------------------------------------------
 Thu Aug  3 13:07:06 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Update to 295

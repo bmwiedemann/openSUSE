@@ -115,4 +115,14 @@
 - 1088.patch: upstreamed and removed</comment>
     <requestid>1102176</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>59986308d56dbddb3ab9a32814cda276</srcmd5>
+    <version>296</version>
+    <time>1692687385</time>
+    <user>anag+factory</user>
+    <comment>- Update to 296:
+  * Update to PatternFly 5
+- deps.patch: fix esbuild dependency</comment>
+    <requestid>1105065</requestid>
+  </revision>
 </revisionlist>
