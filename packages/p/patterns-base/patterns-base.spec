@@ -430,8 +430,6 @@ Recommends:     sudo
 Recommends:     systemd-coredump
 Recommends:     time
 Recommends:     timezone
-# autoconfig new printers - bnc#808014
-Recommends:     udev-configure-printer
 #SUSE hardware tunings
 Recommends:     udev-extra-rules
 # lsusb is good for debugging USB devices - #401593
@@ -863,6 +861,8 @@ Recommends:     numlockx
 Recommends:     opensuse-welcome
 # #353229 - drag in empty replacements
 Recommends:     translation-update
+# autoconfig new printers - bnc#808014
+Recommends:     udev-configure-printer
 # make it possible to install firefox or chromium
 Recommends:     web_browser
 Recommends:     xauth

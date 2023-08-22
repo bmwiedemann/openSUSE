@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 18 02:33:18 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- move udev-configure-printer from enhanced_base to x11_enhanced
+  Currently it pulls in Cups and Mesa dependencies the first is 
+  probably not really needed by default on servers and the second
+  is certainly not desired there. Originally it was included for
+  livecd's
+
+-------------------------------------------------------------------
 Tue May  9 07:02:17 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - base: Add wtmpdb as Y2038 safe wtmp replacement
