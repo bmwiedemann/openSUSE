@@ -129,4 +129,15 @@
 - 1299.patch: included in release and deleted here</comment>
     <requestid>1102175</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>846921f5372cbc5eff40e511d1929c72</srcmd5>
+    <version>74</version>
+    <time>1692687325</time>
+    <user>anag+factory</user>
+    <comment>- New version 74:
+  * Bug fixes and translation updates
+  * fixes for PatternFly 5
+- deps.patch: fix dependencies</comment>
+    <requestid>1105060</requestid>
+  </revision>
 </revisionlist>

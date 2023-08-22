@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-podman
-Version:        73
+Version:        74
 Release:        0
 Summary:        Cockpit component for Podman containers
 License:        LGPL-2.1-or-later
@@ -26,6 +26,7 @@ Source:         https://github.com/cockpit-project/cockpit-podman/archive/%{vers
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 %include %_sourcedir/node_modules.spec.inc
+Patch1:         deps.patch
 Patch10:        load-css-overrides.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
@@ -33,7 +34,7 @@ Requires:       cockpit-bridge >= 138
 Requires:       cockpit-shell >= 138
 Requires:       podman >= 2.0.4
 #
-BuildRequires:  cockpit-devel >= 293
+BuildRequires:  cockpit-devel >= 298
 BuildRequires:  local-npm-registry
 BuildRequires:  sassc
 
