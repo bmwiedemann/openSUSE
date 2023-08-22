@@ -3394,7 +3394,6 @@ unsorted:
   - eclipse-swt 
   - eclipse-swt-bootstrap 
   - eclipse-swtchart 
-  - econnman 
   - ecore_imf-module-scim 
   - ecpint-common 
   - ecryptfs-utils 
@@ -8645,6 +8644,7 @@ unsorted:
   - jpegoptim 
   - jpnevulator 
   - jq 
+  - jrnl 
   - jrosetta 
   - jrtplib-devel 
   - js-technology-fonts 
@@ -23455,6 +23455,7 @@ unsorted:
   - python310-azure-mgmt-msi 
   - python310-azure-mgmt-netapp 
   - python310-azure-mgmt-network 
+  - python310-azure-mgmt-networkcloud 
   - python310-azure-mgmt-networkfunction 
   - python310-azure-mgmt-newrelicobservability 
   - python310-azure-mgmt-nginx 
@@ -26918,6 +26919,7 @@ unsorted:
   - python311-azure-mgmt-msi 
   - python311-azure-mgmt-netapp 
   - python311-azure-mgmt-network 
+  - python311-azure-mgmt-networkcloud 
   - python311-azure-mgmt-networkfunction 
   - python311-azure-mgmt-newrelicobservability 
   - python311-azure-mgmt-nginx 
@@ -30287,6 +30289,7 @@ unsorted:
   - python39-azure-mgmt-msi 
   - python39-azure-mgmt-netapp 
   - python39-azure-mgmt-network 
+  - python39-azure-mgmt-networkcloud 
   - python39-azure-mgmt-networkfunction 
   - python39-azure-mgmt-newrelicobservability 
   - python39-azure-mgmt-nginx 
@@ -34322,23 +34325,11 @@ unsorted:
   - sat4j 
   - saweri-fonts 
   - sax3 
-  - saxon6 
-  - saxon6-aelfred 
-  - saxon6-demo 
-  - saxon6-javadoc 
-  - saxon6-jdom 
-  - saxon6-manual 
-  - saxon6-scripts 
-  - saxon8 
-  - saxon8-demo 
-  - saxon8-dom 
-  - saxon8-javadoc 
-  - saxon8-jdom 
-  - saxon8-manual 
-  - saxon8-scripts 
-  - saxon8-sql 
-  - saxon8-xom 
-  - saxon8-xpath 
+  - saxon10 
+  - saxon10-demo 
+  - saxon10-javadoc 
+  - saxon10-manual 
+  - saxon10-scripts 
   - saxon9 
   - saxon9-demo 
   - saxon9-javadoc 
@@ -34702,9 +34693,6 @@ unsorted:
   - skelcd-openSUSE 
   - skelcd-openSUSE-non-OSS 
   - ski 
-  - skinlf 
-  - skinlf-demo 
-  - skinlf-javadoc 
   - skkdic-extra 
   - skopeo 
   - skopeo-bash-completion 

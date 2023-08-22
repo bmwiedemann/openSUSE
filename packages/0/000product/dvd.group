@@ -2889,7 +2889,7 @@
     <package name="libxxhash0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libyajl2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libyaml-0-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libyaml-cpp0_7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libyaml-cpp0_8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libyelp0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libyui-ncurses-pkg16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libyui-ncurses16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
