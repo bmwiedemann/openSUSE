@@ -24,8 +24,12 @@ Summary:        Python ctypes wrapper around SDL2
 License:        SUSE-Public-Domain
 URL:            https://github.com/py-sdl/py-sdl2
 Source:         https://files.pythonhosted.org/packages/source/P/PySDL2/PySDL2-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE fix-tests.patch to make test work in chroot env without access to /dev/input
-Patch0:         fix-tests.patch
+# PATCH-FIX-UPSTREAM fix-tests-SDL_GetError.patch -- based on commit 1c865e3
+Patch0:         https://github.com/py-sdl/py-sdl2/commit/1c865e3f751e678f3ad2d8f3fca17a0755fbeaf7.patch#/fix-tests-SDL_GetError.patch
+# PATCH-FIX-UPSTREAM fix-test-SDL_hid_enumerate.patch -- based on commit d7c0604
+Patch1:         https://github.com/py-sdl/py-sdl2/commit/d7c0604381f6cbefa2c8b51c84b879e2f927e91e.patch#/fix-test-SDL_hid_enumerate.patch
+# PATCH-FIX-UPSTREAM fix-partially-resolve-video_test.patch -- based on commit ed28ea6
+Patch2:         https://github.com/py-sdl/py-sdl2/commit/ed28ea6305dede1b6ba046e36ddae9ba2016b62e.patch#/fix-partially-resolve-video_test.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 20 11:55:43 UTC 2023 - munix9@googlemail.com
+
+- Remove fix-tests.patch in favor of upstream patches
+- Add upstream patches to resolve test failures:
+  fix-partially-resolve-video_test.patch
+  fix-test-SDL_hid_enumerate.patch
+  fix-tests-SDL_GetError.patch
+
+-------------------------------------------------------------------
 Sun Jul 16 06:08:53 UTC 2023 - munix9@googlemail.com
 
 - Update to 0.9.16:
