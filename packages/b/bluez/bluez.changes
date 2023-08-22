@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 19 13:42:08 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %_firmwaredir
+
+-------------------------------------------------------------------
 Wed Aug 16 01:56:45 UTC 2023 - Joey Lee <jlee@suse.com>
 
 - For pushing bluez 5.68 to 15-SP6 (bluez-5.65), sync change log:

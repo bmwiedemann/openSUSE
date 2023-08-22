@@ -30,6 +30,10 @@
 %endif
 %global modprobe_d_files 50-bluetooth.conf
 
+%if %{undefined _firmwaredir}
+%define _firmwaredir /lib/firmware
+%endif
+
 Name:           bluez
 Version:        5.68
 Release:        0
@@ -235,7 +239,7 @@ export CC=gcc-8
 %endif
 # header file has "#ifndef FIRMWARE_DIR...#define FIRMWARE_DIR /etc/firmare"
 # instead of patching, just supply FIRMWARE_DIR on compiler's command line
-export CPPFLAGS="$CPPFLAGS -DFIRMWARE_DIR='\"/lib/firmware\"'"
+export CPPFLAGS="$CPPFLAGS -DFIRMWARE_DIR='\"%{_firmwaredir}\"'"
 # because of patch4...
 autoreconf -fi
 # --enable-experimental is needed or btattach does not build (bug?)
