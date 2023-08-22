@@ -5,6 +5,8 @@ Thu Jul 20 08:34:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
   servers are very slow since a couple weeks.
 - Update to 6.5.2
   * https://www.qt.io/blog/qt-6.5.2-released-1
+  * Includes fix for a buffer overflow in QXmlStreamReader
+    (boo#1214327, CVE-2023-37369).
 - Drop patches, merged upstream:
   * 0001-Schannel-Reject-certificate-not-signed-by-a-configur.patch
   * 0001-Ssl-Copy-the-on-demand-cert-loading-bool-from-defaul.patch
@@ -40,6 +42,8 @@ Wed May 24 07:45:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.1
   * https://www.qt.io/blog/qt-6.5.1-released
+  * Includes fix for a buffer overflow in QTextLayout (boo#1211798,
+    CVE-2023-32763).
 - Drop patches, merged upstream:
   * 0001-QApplication-Fix-DEPRECATED_VERSION-for-setActiveWin.patch
   * 0001-QVariant-Fix-support-for-metatypes-created-by-Qt-6.5.patch
