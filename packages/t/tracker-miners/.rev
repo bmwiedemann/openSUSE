@@ -417,4 +417,12 @@
     <comment>Rebase tracker-miners-drop-syscalls-in-seccomp.patch</comment>
     <requestid>1103246</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>c32bb553a3dadf599b53ef26e217a980</srcmd5>
+    <version>3.5.2</version>
+    <time>1692687322</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105039</requestid>
+  </revision>
 </revisionlist>
