@@ -46,6 +46,8 @@ Source99:       gtk4-rpmlintrc
 # https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4756
 # PATCH-FIX-OPENSUSE 0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch -- Revert "Meson: Simplify pkgconfig file generator"
 Patch0:         0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch
+# PATCH-FIX-UPSTREAM 6af9dc86.patch -- print: Revert "Start sorting apart includes" change for gtkprinteroptionprivate.h
+Patch1:         https://gitlab.gnome.org/GNOME/gtk/-/commit/6af9dc86.patch
 
 BuildRequires:  cups-devel >= 2.0
 # We do not support building against cups 2.3 betas
