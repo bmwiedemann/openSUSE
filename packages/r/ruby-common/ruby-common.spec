@@ -124,7 +124,6 @@ install -D -m 0755 %{S:19} %{buildroot}%{_bindir}/bundler-dumpdeps
 install -D -m 0644 %{S:17} %{buildroot}/usr/lib/rpm/fileattrs/rubygems_bundled.attr
 
 %files
-%defattr(-,root,root)
 %if %{with ship_gemrc}
 %config /etc/gemrc
 %endif
@@ -141,12 +140,10 @@ install -D -m 0644 %{S:17} %{buildroot}/usr/lib/rpm/fileattrs/rubygems_bundled.a
 %{_bindir}/g2r
 
 %files -n ruby-packaging-helpers
-%defattr(-,root,root)
 %{_bindir}/irp
 %{_bindir}/bundler-dumpdeps
 
 %files rails
-%defattr(-,root,root)
 %{_rpmmacrodir}/macros.rails
 /usr/lib/rpm/fileattrs/gemfile.attr
 /usr/lib/rpm/gemfile.rb

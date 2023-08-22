@@ -22,6 +22,11 @@ Fri May 12 14:21:14 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
   the current ruby version.
 
 -------------------------------------------------------------------
+Sun May  7 10:28:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old specfile constructs
+
+-------------------------------------------------------------------
 Sun May  7 00:35:06 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - cleanup irp code
