@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 21 14:49:36 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * javapackages-6.1.0-maven-depmap.patch
+    + try to make the list of aliases more reproducible
+
+-------------------------------------------------------------------
 Sun May 28 19:15:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Enable the tests also for older distributions

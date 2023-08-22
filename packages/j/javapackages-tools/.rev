@@ -351,4 +351,12 @@
     <comment>enable tests for older distros and require python-xml module</comment>
     <requestid>1089671</requestid>
   </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>59c821fd8688d62c764f540dd9528a4c</srcmd5>
+    <version>6.1.0</version>
+    <time>1692687301</time>
+    <user>anag+factory</user>
+    <comment>reproducible build+</comment>
+    <requestid>1105109</requestid>
+  </revision>
 </revisionlist>
