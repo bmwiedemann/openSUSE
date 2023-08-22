@@ -21,7 +21,7 @@
 %bcond_with webextensions
 
 Name:           nyxt
-Version:        3.5.0
+Version:        3.6.0
 Release:        0
 Summary:        Keyboard-oriented, Common Lisp extensible web-browser
 License:        BSD-3-Clause
@@ -32,8 +32,6 @@ Patch0:         so_ver_fix.patch
 Requires:       enchant-tools
 Requires:       glib-networking
 Requires:       gsettings-desktop-schemas
-Requires:       libfixposix4
-Requires:       libwebkit2gtk-4_1-0
 Requires:       xclip
 BuildRequires:  gcc-c++
 BuildRequires:  git
