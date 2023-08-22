@@ -1,3 +1,63 @@
+------------------------------------------------------------------
+Mon Aug 14 07:03:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.82.4:
+  * This patch ensures that we always close the download
+    connection in :class:`~hypothesis.database.GitHubArtifactDatabase`.
+  * We can now pretty-print combinations of *zero*
+    :class:`enum.Flag` values, like ``SomeFlag(0)``,
+    which has never worked before.
+  * This patch fixes pretty-printing of combinations of
+    :class:`enum.Flag` values, which was previously an error
+    (:issue:`3709`).
+  * Improve shrinking of floats in narrow regions that don't
+    cross an integer boundary. Closes :issue:`3357`.
+  * :func:`~hypothesis.strategies.from_regex` now supports the
+    atomic grouping (``(?>...)``) and possessive quantifier
+    (``*+``, ``++``, ``?+``, ``{m,n}+``) syntax `added in Python 3.11
+  * If the :envvar:`HYPOTHESIS_NO_PLUGINS` environment variable
+    is set, we'll avoid :ref:`loading plugins <entry-points>`
+    such as `the old Pydantic integration
+  * Fixes some lingering issues with inference of recursive types
+  * in `~hypothesis.strategies.from_type`. Closes :issue:`3525`.
+  * This release drops support for Python 3.7, `which reached end
+    of life on 2023-06-27
+  * Fixes occasional recursion-limit-exceeded errors when
+    validating deeply nested strategies. Closes: :issue:`3671`
+  * Improve the type rendered in
+    :func:`~hypothesis.strategies.from_type`, which improves the
+    coverage of Ghostwriter.
+  * This patch improves Ghostwriter's use of qualified names for
+    re-exported functions and classes, and avoids importing useless
+    :obj:`~typing.TypeVar`\ s.
+  * This patch updates our vendored `list of top-level domains
+    will raise an error rather than hanging indefinitely if
+    passed invalid ``max_leaves=`` arguments.
+  * Warn in :func:`~hypothesis.strategies.from_type` if the
+    inferred strategy has no variation (always returning default
+    instances). Also handles numpy data types by calling
+    :func:`~hypothesis.extra.numpy.from_dtype` on the
+    corresponding dtype, thus ensuring proper variation for these
+    types.
+  * :func:`~hypothesis.strategies.from_type` now works in cases
+    where we use :func:`~hypothesis.strategies.builds` to create
+    an instance and the constructor has an argument which would lead
+    to recursion.  Previously, this would raise an error if the
+    argument had a default value.
+  * In preparation for supporting JAX in
+    :ref:`hypothesis.extra.array_api <array-api>`,
+    this release supports immutable arrays being generated via
+    :func:`xps.arrays`.
+  * and adds automatic support for writing
+    ``@hypothesis.example()`` or ``@example()``
+    depending on the current style in your test file - defaulting
+    to the latter.
+  * This patch updates our linter stack to use :pypi:`ruff`, and
+    fixes some previously-ignored lints.
+  * Hypothesis will now record an event for more cases where data
+    is marked invalid, including for exceeding the internal depth
+    limit.
+
 -------------------------------------------------------------------
 Sun May 14 15:30:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 

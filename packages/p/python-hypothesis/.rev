@@ -704,4 +704,12 @@ This version fixes the license naming issue.</comment>
     mistake in Hypothesis 6.72.4 (issue #3625).</comment>
     <requestid>1087109</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>084b19d8c059ed201bef251ce8e64f62</srcmd5>
+    <version>6.82.4</version>
+    <time>1692687321</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1105013</requestid>
+  </revision>
 </revisionlist>
