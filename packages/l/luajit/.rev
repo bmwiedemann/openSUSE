@@ -184,4 +184,14 @@
 - Opencode %make_build to prevent build failure when not defined.</comment>
     <requestid>1061036</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>5103c3c5dfe7fb9f32e5bc70b052bc9c</srcmd5>
+    <version>2.1.0~beta3+git.1669107176.46aa45d</version>
+    <time>1692687300</time>
+    <user>anag+factory</user>
+    <comment>- Update luajit-s390x.patch from gh#LuaJIT/LuaJIT#631 to the
+  current form.
+</comment>
+    <requestid>1105084</requestid>
+  </revision>
 </revisionlist>

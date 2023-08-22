@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 21 13:04:40 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update luajit-s390x.patch from gh#LuaJIT/LuaJIT#631 to the
+  current form.
+
+-------------------------------------------------------------------
 Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Opencode %make_build to prevent build failure when not defined.
