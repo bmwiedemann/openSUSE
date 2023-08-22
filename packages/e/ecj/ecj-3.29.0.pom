@@ -16,7 +16,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.eclipse.jdt</groupId>
   <artifactId>ecj</artifactId>
-  <version>3.24.0</version>
+  <version>3.29.0</version>
   <description>Eclipse Compiler for Java(TM)</description>
   <name>Eclipse Compiler for Java(TM)</name>
   <url>http://www.eclipse.org/jdt</url>
@@ -36,7 +36,7 @@
     <url>https://bugs.eclipse.org/</url>
   </issueManagement>
   <scm>
-    <connection>scm:git:git://git.eclipse.org/gitroot/jdt/eclipse.jdt.core.git</connection>
+    <connection>scm:git:https://git.eclipse.org/r/jdt/eclipse.jdt.core.git</connection>
     <url>https://git.eclipse.org/c/jdt/eclipse.jdt.core.git</url>
   </scm>
   <developers>

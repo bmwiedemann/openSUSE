@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 21 11:46:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to eclipse 4.23 ecj
+  * No changelog was made available.
+- Use the bundled javax17api.jar stubs, but don't distribute
+  them
+- Removed patches:
+  * encoding.patch
+    + handled by a simple sed run
+  * javaAPI.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Sun Mar 20 13:35:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
@@ -14,6 +27,7 @@ Sun Mar 20 13:35:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 Mon Oct 18 21:28:05 UTC 2021 - Marcel Witte <wittemar@googlemail.com>
 
 - Upgrade to eclipse 4.18 ecj
+  * No changelog was made available.
 - Switch java14api to java15api to be compatible to JDK 15
 
 -------------------------------------------------------------------
