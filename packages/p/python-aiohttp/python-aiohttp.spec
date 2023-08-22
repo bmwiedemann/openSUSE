@@ -21,16 +21,28 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.8.4
+Version:        3.8.5
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE py3109-compat.patch
-Patch1:         py3109-compat.patch
 # PATCH-FIX-UPSTREAM Update-update_query-calls-to-work-with-latest-yarl.patch gh#aio-libs/aiohttp#7260
-Patch2:         Update-update_query-calls-to-work-with-latest-yarl.patch
+Patch1:         Update-update_query-calls-to-work-with-latest-yarl.patch
+Requires:       python-aiosignal >= 1.1.2
+Requires:       python-attrs >= 17.3.0
+Requires:       python-frozenlist >= 1.1.1
+Requires:       (python-async_timeout >= 4.0 with python-async_timeout < 5)
+Requires:       (python-asynctest = 0.13.0 if python-base < 3.8)
+Requires:       (python-charset-normalizer >= 2.0 with python-charset-normalizer < 4)
+Requires:       (python-idna_ssl >= 1.0 if python-base < 3.7)
+Requires:       (python-multidict >= 4.5 with python-multidict < 7)
+Requires:       (python-typing_extensions >= 3.7.4 if python-base < 3.8)
+Requires:       (python-yarl >= 1.0 with python-yarl < 2)
+Recommends:     python-aiodns
+Recommends:     python-brotlipy
+Recommends:     python-cChardet
+Suggests:       %{name}-doc
 # SECTION build requirements
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.6}
@@ -53,20 +65,6 @@ BuildRequires:  %{python_module multidict >= 4.5 with %python-multidict < 7}
 BuildRequires:  %{python_module typing_extensions >= 3.7.4 if %python-base < 3.8}
 BuildRequires:  %{python_module yarl >= 1.0 with %python-yarl < 2}
 # /SECTION
-Requires:       python-aiosignal >= 1.1.2
-Requires:       python-attrs >= 17.3.0
-Requires:       python-frozenlist >= 1.1.1
-Requires:       (python-async_timeout >= 4.0 with python-async_timeout < 5)
-Requires:       (python-asynctest = 0.13.0 if python-base < 3.8)
-Requires:       (python-charset-normalizer >= 2.0 with python-charset-normalizer < 4)
-Requires:       (python-idna_ssl >= 1.0 if python-base < 3.7)
-Requires:       (python-multidict >= 4.5 with python-multidict < 7)
-Requires:       (python-typing_extensions >= 3.7.4 if python-base < 3.8)
-Requires:       (python-yarl >= 1.0 with python-yarl < 2)
-Recommends:     python-aiodns
-Recommends:     python-brotlipy
-Recommends:     python-cChardet
-Suggests:       %{name}-doc
 # SECTION test requirements
 BuildRequires:  %{python_module aiodns}
 BuildRequires:  %{python_module brotlipy}

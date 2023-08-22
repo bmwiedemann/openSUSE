@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 18 15:42:27 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Remove py3109-compat.patch, no longer required. The current spec
+  builds successfully on Python 3.9, 3.10 and 3.11.
+- Update to 3.8.5:
+  * Upgraded the vendored copy of llhttp to v8.1.1.
+    More information here:
+    https://github.com/aio-libs/aiohttp/security/advisories/GHSA-45c4-8wx5-qw6w
+  * Added information to C parser exceptions to show which character
+    caused the error.
+  * Fixed a transport is None error.
+
+-------------------------------------------------------------------
 Wed Apr 26 07:35:37 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add Update-update_query-calls-to-work-with-latest-yarl.patch to fix

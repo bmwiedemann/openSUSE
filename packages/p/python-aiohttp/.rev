@@ -328,4 +328,12 @@
 - Move documentation into the main package for SLE15</comment>
     <requestid>1083129</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>fb4ef3c5a91db3a7386d0cae3fa735e9</srcmd5>
+    <version>3.8.5</version>
+    <time>1692687307</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1104927</requestid>
+  </revision>
 </revisionlist>
