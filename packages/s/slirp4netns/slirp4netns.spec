@@ -1,7 +1,7 @@
 #
 # spec file for package slirp4netns
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           slirp4netns
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        User-mode networking for unprivileged network namespaces
-License:        GPL-2.0-only AND MIT AND BSD-2-Clause
+License:        BSD-2-Clause AND GPL-2.0-only AND MIT
 Group:          System/Management
 URL:            https://github.com/rootless-containers/slirp4netns
 Source0:        %{name}-%{version}.tar.xz
