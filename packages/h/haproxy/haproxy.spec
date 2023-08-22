@@ -99,6 +99,7 @@ Source5:        haproxy-user.conf
 Patch1:         haproxy-1.6.0_config_haproxy_user.patch
 Patch2:         haproxy-1.6.0-makefile_lib.patch
 Patch3:         haproxy-1.6.0-sec-options.patch
+Patch4:         fix-invalid-parameter-combination-for-AltiVec-intrinsic-__builtin_vec_ld.patch
 #
 Source98:       series
 Source99:       haproxy-rpmlintrc

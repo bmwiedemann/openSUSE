@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 21 14:38:51 UTC 2023 - Peter Varkoly <varkoly@suse.com>
+
+- Build error on ppc64le: include/import/xxhash.h:4148:9: error: invalid parameter combination for AltiVec intrinsic __builtin_vec_ld
+  Add patch:
+  fix-invalid-parameter-combination-for-AltiVec-intrinsic-__builtin_vec_ld.patch
+
+-------------------------------------------------------------------
 Wed Aug 09 12:31:26 UTC 2023 - mrueckert@suse.de
 
 - Update to version 2.8.2+git0.61a0f576a: (boo#1214102) CVE-2023-40225

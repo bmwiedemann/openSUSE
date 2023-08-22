@@ -1,0 +1,12 @@
+--- haproxy-2.8.2+git0.61a0f576a/include/import/xxhash.h.orig	2023-08-18 07:12:28.464256077 +0200
++++ haproxy-2.8.2+git0.61a0f576a/include/import/xxhash.h	2023-08-18 07:18:38.142879532 +0200
+@@ -4129,7 +4129,8 @@
+                     const void* XXH_RESTRICT secret)
+ {
+     /* presumed aligned */
+-    unsigned long long* const xacc = (unsigned long long*) acc;
++    /* unsigned long long* const xacc = (unsigned long long*) acc; */
++    xxh_u64x2 const* const xacc = (xxh_u64x2 *) acc;
+     xxh_u64x2 const* const xinput   = (xxh_u64x2 const*) input;   /* no alignment restriction */
+     xxh_u64x2 const* const xsecret  = (xxh_u64x2 const*) secret;    /* no alignment restriction */
+     xxh_u64x2 const v32 = { 32, 32 };

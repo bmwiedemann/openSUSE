@@ -1373,4 +1373,14 @@
     <comment>- Add CVE</comment>
     <requestid>1103460</requestid>
   </revision>
+  <revision rev="135" vrev="3">
+    <srcmd5>b101168e9fe3336f420f679d9e75d11f</srcmd5>
+    <version>2.8.2+git0.61a0f576a</version>
+    <time>1692687401</time>
+    <user>anag+factory</user>
+    <comment>- Build error on ppc64le: include/import/xxhash.h:4148:9: error: invalid parameter combination for AltiVec intrinsic __builtin_vec_ld
+  Add patch:
+  fix-invalid-parameter-combination-for-AltiVec-intrinsic-__builtin_vec_ld.patch</comment>
+    <requestid>1105108</requestid>
+  </revision>
 </revisionlist>
