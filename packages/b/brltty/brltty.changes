@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 16 12:35:59 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add e6707d5e.patch: brlapi: Fix python crash on connection error.
+  Cython 3.0 started using the new Python object finalization APIs
+  from PEP 442.
+
+-------------------------------------------------------------------
+Thu Jul 27 21:09:09 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 6.6:
+  + Too many changes; please read ChangeLog
+- Update api_version.
+- Rebase brltty-udev-dir.patch.
+
+-------------------------------------------------------------------
 Thu Jun 20 20:20:20 UTC 2023 - olaf@aepfle.de
 
 - Use conditionals for sysusers_requires to allow quilt setup

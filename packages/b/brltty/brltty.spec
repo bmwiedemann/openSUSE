@@ -16,11 +16,11 @@
 #
 
 
-%define api_version 0.8.4
+%define api_version 0.8.5
 %define sover 0_8
 %define soname libbrlapi%{sover}
 Name:           brltty
-Version:        6.5
+Version:        6.6
 Release:        0
 # FIXME libbraille driver when libbraille is in factory
 Summary:        Braille display driver for Linux/Unix
@@ -31,6 +31,7 @@ URL:            https://brltty.app/
 Source0:        https://brltty.app/archive/%name-%version.tar.xz
 Source1:        README.SUSE
 Patch0:         brltty-udev-dir.patch
+Patch1:         https://github.com/brltty/brltty/commit/e6707d5e.patch
 
 Requires(pre):  system-user-brltty = %version-%release
 
@@ -446,6 +447,7 @@ rm -f %_localstatedir/adm/update-messages/%name-%version-%release-something
 %_bindir/brltty-prologue.tcl
 %_bindir/brltty-prologue.sh
 %_bindir/brltty-setcaps
+%_bindir/brltty-term
 %_bindir/brltty-trtxt
 %_bindir/brltty-ttb
 %_bindir/brltty-ttysize

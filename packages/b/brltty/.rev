@@ -579,4 +579,19 @@
   doesn't seem to be the case for brltty.</comment>
     <requestid>1094353</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>1f6baad9f97dcc28e65d42cf6e840f9b</srcmd5>
+    <version>6.6</version>
+    <time>1692687305</time>
+    <user>anag+factory</user>
+    <comment>- Add e6707d5e.patch: brlapi: Fix python crash on connection error.
+  Cython 3.0 started using the new Python object finalization APIs
+  from PEP 442.
+
+- Update to version 6.6:
+  + Too many changes; please read ChangeLog
+- Update api_version.
+- Rebase brltty-udev-dir.patch.</comment>
+    <requestid>1105121</requestid>
+  </revision>
 </revisionlist>
