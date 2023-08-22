@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 21 10:05:18 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- add anthy-set-face-underline-p.patch
+  * set-face-underline-p is an alias for set-face-underline
+    and was dreprecated since emacs 24.3 
+
+-------------------------------------------------------------------
 Mon Jun  7 11:23:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop --with-pic (no effect with --disable-static)

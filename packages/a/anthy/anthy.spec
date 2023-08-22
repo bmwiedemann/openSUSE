@@ -1,7 +1,7 @@
 #
 # spec file for package anthy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,7 @@ Patch3:         bugzilla-224463-comparison-with-string-literal.patch
 # PATCH-FIX-OPENSUSE anthy-use-last-command-event.diff bnc#849211 tiwai@suse.de
 Patch4:         anthy-use-last-command-event.diff
 Patch5:         bugzilla-1175274-emacs-27.1.patch
+Patch6:         anthy-set-face-underline-p.patch
 BuildRequires:  emacs-x11
 BuildRequires:  fdupes
 BuildRequires:  libtool
