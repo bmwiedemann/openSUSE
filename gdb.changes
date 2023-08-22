@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 20 00:41:09 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Drop libdebuginfod1 BuildRequires/Recommends. The former isn't
+  needed because there's a build requirement on libdebuginfod-devel
+  already, which will pull the shared library. And the latter,
+  because it's bogus since RPM auto generated dependency will take
+  care of that requirement.
+
+-------------------------------------------------------------------
 Wed Jun 14 06:23:42 UTC 2023 - Tom de Vries <tdevries@suse.com>
 
 - Patches added (master backports):

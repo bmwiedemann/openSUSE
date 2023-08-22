@@ -412,8 +412,6 @@ BuildRequires:  %{python}-devel
 %endif
 %if 0%{have_libdebuginfod}
 BuildRequires:  libdebuginfod-devel
-BuildRequires:  libdebuginfod1
-Recommends:     libdebuginfod1
 %endif
 %global have_libipt 0
 %if 0%{suse_version} > 1110
