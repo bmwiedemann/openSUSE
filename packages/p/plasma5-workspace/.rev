@@ -2129,4 +2129,14 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment></comment>
     <requestid>1102566</requestid>
   </revision>
+  <revision rev="218" vrev="3">
+    <srcmd5>56aad0e671aa9f8520825104cd574541</srcmd5>
+    <version>5.27.7</version>
+    <time>1692687315</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix crash when opening windows (kde#473432)
+  * 0001-TriangleMouseFilter-check-intercepted-item-still-exi.patch
+  * 0002-TriangleMouseFilter-also-check-optional-position-has.patch (forwarded request 1104688 from fusionfuture)</comment>
+    <requestid>1104995</requestid>
+  </revision>
 </revisionlist>

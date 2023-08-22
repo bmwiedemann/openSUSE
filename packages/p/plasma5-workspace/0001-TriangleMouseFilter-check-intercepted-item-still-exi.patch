@@ -1,0 +1,48 @@
+From dc146e7164a5dcb3a6ed4829398db69378111f0e Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Fri, 18 Aug 2023 12:20:50 +0800
+Subject: [PATCH 1/2] TriangleMouseFilter: check intercepted item still exists
+ in reset timer
+
+m_interceptedHoverItem.item can be deleted before m_interceptedHoverItem
+is reset, so checking interceptedHoverEnterPosition is not enough.
+
+BUG: 473432
+FIXED-IN: 5.27.8
+
+
+(cherry picked from commit 1e8a8d6e6c338bcc66c781863222a038d7136618)
+---
+ components/trianglemousefilter/trianglemousefilter.cpp | 2 +-
+ components/trianglemousefilter/trianglemousefilter.h   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/components/trianglemousefilter/trianglemousefilter.cpp b/components/trianglemousefilter/trianglemousefilter.cpp
+index 9395f8479..8b414588b 100644
+--- a/components/trianglemousefilter/trianglemousefilter.cpp
++++ b/components/trianglemousefilter/trianglemousefilter.cpp
+@@ -26,7 +26,7 @@ TriangleMouseFilter::TriangleMouseFilter(QQuickItem *parent)
+ 
+         update();
+ 
+-        if (m_interceptedHoverItem.interceptedHoverEnterPosition.has_value()) {
++        if (m_interceptedHoverItem) {
+             resendHoverEvents(m_interceptedHoverItem.interceptedHoverEnterPosition.value());
+         }
+ 
+diff --git a/components/trianglemousefilter/trianglemousefilter.h b/components/trianglemousefilter/trianglemousefilter.h
+index a18556b90..086c1d62b 100644
+--- a/components/trianglemousefilter/trianglemousefilter.h
++++ b/components/trianglemousefilter/trianglemousefilter.h
+@@ -29,7 +29,7 @@ struct InterceptedQuickItemData {
+ 
+     explicit operator bool() const
+     {
+-        return item != nullptr;
++        return !item.isNull();
+     }
+ };
+ 
+-- 
+2.41.0
+
