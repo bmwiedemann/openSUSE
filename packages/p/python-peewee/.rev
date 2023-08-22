@@ -253,4 +253,12 @@
     <comment>- bind to cython &lt; 3</comment>
     <requestid>1103730</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>6d87bd4af59167e04d9230e1265848c5</srcmd5>
+    <version>3.16.3</version>
+    <time>1692687377</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105035</requestid>
+  </revision>
 </revisionlist>
