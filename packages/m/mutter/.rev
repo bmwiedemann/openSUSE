@@ -1836,4 +1836,12 @@ New stable rel</comment>
   (boo#1210744, glgo#GNOME/mutter#2771).</comment>
     <requestid>1105218</requestid>
   </revision>
+  <revision rev="209" vrev="4">
+    <srcmd5>0d4cf1f993d5146d63767e5035b124d1</srcmd5>
+    <version>44.3</version>
+    <time>1693383532</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107964</requestid>
+  </revision>
 </revisionlist>

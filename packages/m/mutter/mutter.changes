@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 29 09:50:53 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add mutter-fix-clipped-redraw.patch: Previous refactor forget
+  to check has_buffer_age, which leads into force full redraw and
+  causes redraw issue with xterm on qemu. This patch fixes it.
+  (bsc#1210744, glgo#GNOME/mutter!3221)
+- Drop mutter-revert-window_draw_issues.patch: Proper fix is added.
+
+-------------------------------------------------------------------
 Tue Aug 22 09:24:36 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add mutter-revert-window_draw_issues.patch: Revert commit
