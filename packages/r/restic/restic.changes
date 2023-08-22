@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 11 21:03:16 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Add missing vendor.tar.gz
+
+-------------------------------------------------------------------
+Mon Jul 31 18:54:11 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.16.0
+  A very long list of improvements for all the details see
+  https://github.com/restic/restic/releases/tag/v0.16.0
+
+-------------------------------------------------------------------
 Wed Apr 26 15:19:22 UTC 2023 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Update to version 0.15.2
