@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Aug 17 09:51:17 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.2.1478.0
+  * Added fix to propagate exit code properly when command fails to start
+  * Added control channel acknowledgement functionalities
+  * Added flag to specify go version used for gosec and
+    govulncheck in static analysis script
+  * Added support for RHEL 8.7, 8.8, 9.1, 9.2
+  * Added support for Rocky Linux 8.7, 9.0, 9.1, 9.2
+  * Added support for Oracle Linux 8.7, 9.1, 9.2
+  * Update go version to 1.20.7
+- from version 3.2.1377.0
+  * Stopped saving instance profile credentials to disk
+  * Added static agent security scans to makefile
+  * Updated Greengrass component minor version
+- from version 3.2.1297.0
+  * Added retries to snap uninstall call in setupcli
+  * Fix for windows shutdown executable not found when compiled with golang1.19+
+  * Fix to return correct Agent Job ID for ack after AgentJobParseError
+  * Pass golang contexts for network calls in agent core to terminate cleanly
+  * Remove credential file dependency in agent workers implemented in 3.2.x.x versions
+  * Report MGS Connection Channel status to Health table
+  * Update Dockerfile to use Golang image from ECR repository
+- from version 3.2.1241.0
+  * Get bucket region using signed HeadBucket request
+  * Updated golang.org/x/net version to 0.10.0 and
+    golang.org/x/crypto version to 0.9.0
+  * Update go version to 1.19.10
+- from version 3.2.1041.0
+  * Add retry to handle stream data acknowledge messages
+  * Support latest as a version in configurePackage plugin
+  * Updated AWS GO SDK to v1.44.261 and disabled IMDSv1 fallback logic
+  * Use IP address to connect to destination server in port session
+- from version 3.2.985.0
+  * Add Domain Join support for RHEL 8.7 and AL2022
+  * Add Support to send aws:updateSSMAgent replies through MGS
+  * Retrieve and set interface name dynamically in
+    aws:domainJoin plugin for Ubuntu
+
+-------------------------------------------------------------------
 Mon May 22 11:49:08 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.2.923.0

@@ -272,4 +272,41 @@
   * Add e2e tag to session shell tests (forwarded request 1088358 from glaubitz)</comment>
     <requestid>1088513</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f638f8fb0641b286903f665557cfdd05</srcmd5>
+    <version>3.2.1478.0</version>
+    <time>1692687391</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.2.1478.0
+  * Added fix to propagate exit code properly when command fails to start
+  * Added control channel acknowledgement functionalities
+  * Added flag to specify go version used for gosec and
+    govulncheck in static analysis script
+  * Added support for RHEL 8.7, 8.8, 9.1, 9.2
+  * Added support for Rocky Linux 8.7, 9.0, 9.1, 9.2
+  * Added support for Oracle Linux 8.7, 9.1, 9.2
+  * Update go version to 1.20.7
+- from version 3.2.1377.0
+  * Stopped saving instance profile credentials to disk
+  * Added static agent security scans to makefile
+  * Updated Greengrass component minor version
+- from version 3.2.1297.0
+  * Added retries to snap uninstall call in setupcli
+  * Fix for windows shutdown executable not found when compiled with golang1.19+
+  * Fix to return correct Agent Job ID for ack after AgentJobParseError
+  * Pass golang contexts for network calls in agent core to terminate cleanly
+  * Remove credential file dependency in agent workers implemented in 3.2.x.x versions
+  * Report MGS Connection Channel status to Health table
+  * Update Dockerfile to use Golang image from ECR repository
+- from version 3.2.1241.0
+  * Get bucket region using signed HeadBucket request
+  * Updated golang.org/x/net version to 0.10.0 and
+    golang.org/x/crypto version to 0.9.0
+  * Update go version to 1.19.10
+- from version 3.2.1041.0
+  * Add retry to handle stream data acknowledge messages
+  * Support latest as a version in configurePackage plugin
+  * Updated AWS GO SDK to v1.44.261 and disabled IMDSv1 fallback logic (forwarded request 1105056 from glaubitz)</comment>
+    <requestid>1105074</requestid>
+  </revision>
 </revisionlist>
