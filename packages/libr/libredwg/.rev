@@ -142,4 +142,12 @@
     CVE-2023-36273 [boo#1212706], CVE-2023-36274 [boo#1212705]</comment>
     <requestid>1098839</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c5611c15da4d41425cb6b9d77586c4ac</srcmd5>
+    <version>0.12.5.5907</version>
+    <time>1692687378</time>
+    <user>anag+factory</user>
+    <comment>- Set -D_GNU_SOURCE to work around strcasestr being undeclared</comment>
+    <requestid>1105038</requestid>
+  </revision>
 </revisionlist>

@@ -77,6 +77,7 @@ OpenDWG libraries. DWG is the native file format of AutoCAD.
 # No management of SO version despite ABI breaking changes:
 # Force-add some symvers so RPM can produce meaningful deps.
 echo 'V_%version { global: *; };' >src/sv.sym
+export CFLAGS="%optflags -D_GNU_SOURCE=1"
 %configure --disable-static
 %make_build libredwg_la_LDFLAGS=-Wl,-version-script,sv.sym libredwg_la_LIBADD=-lm
 

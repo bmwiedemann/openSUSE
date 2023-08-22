@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 21 09:42:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Set -D_GNU_SOURCE to work around strcasestr being undeclared
+
+-------------------------------------------------------------------
 Sat Jul 15 17:21:54 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag 0.12.5.5907
