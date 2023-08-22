@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 21 04:41:21 UTC 2023 - william.brown@suse.com
+
+- Update to version 1.1.0~beta13~git7.1fb34a9:
+  * Resolve incorrect time units on timeout (#2014)
+  * Update cargo lock, docker fixes
+  * 1982 service account access (#1985)
+  * fixed serialization of oauth2 token scope (#1930)
+  * added compression layer for the pkg route (#1928)
+
+-------------------------------------------------------------------
 Mon Aug 14 04:31:37 UTC 2023 - William Brown <william.brown@suse.com>
 
 - Resolve issues with fedora/centos build
