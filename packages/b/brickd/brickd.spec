@@ -30,6 +30,7 @@ Source2:        brickd-rpmlintrc
 Patch0:         harden_brickd-resume.service.patch
 Patch1:         harden_brickd.service.patch
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libusb)
 BuildRequires:  pkgconfig(systemd)
 Suggests:       logrotate
@@ -45,7 +46,7 @@ mv daemonlib-%{name}-%{version} src/daemonlib
 
 %build
 pushd src/brickd
-%make_build WITH_SYSTEMD=yes
+%make_build WITH_SYSTEMD=yes RPM_OPT_FLAGS+=-D_GNU_SOURCE
 popd
 
 %install

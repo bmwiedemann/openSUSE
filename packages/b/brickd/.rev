@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>1061346</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e00823cd2f86590080bd68059b9ce5a7</srcmd5>
+    <version>2.4.4</version>
+    <time>1692687373</time>
+    <user>anag+factory</user>
+    <comment>Fix build error with conflicting strcasestr definition, update to fix dropping RPM_OPT_FLAGS defaults.
+</comment>
+    <requestid>1105040</requestid>
+  </revision>
 </revisionlist>

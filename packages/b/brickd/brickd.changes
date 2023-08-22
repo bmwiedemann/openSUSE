@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 21 08:30:28 UTC 2023 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Fix build error with conflicting strcasestr definition
+
+-------------------------------------------------------------------
 Thu Jan 26 14:55:35 UTC 2023 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Fixed brickd-rpmlintrc source reference in spec file
