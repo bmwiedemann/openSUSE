@@ -1236,4 +1236,23 @@
     <comment>New stable rel (forwarded request 1102461 from iznogood)</comment>
     <requestid>1102934</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>0825bb44d5ac7f9be40ecd562176ed8a</srcmd5>
+    <version>0.56.12</version>
+    <time>1692687320</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.56.12:
+  + Regression fix: vala: Only transform default initializers of
+    parameters.
+  + Bindings: gtk4: Preserve compatibility with &lt;= 4.8.x.
+
+- Update to version 0.56.11:
+  + Various improvements and bug fixes:
+    - vala: Infer generic type from typeof() initializer of
+      parameters
+    - girparser: Support glib:ref-func, glib:unref-func,
+      copy-function and free-function
+  + Bindings: gtk4: Update to 4.12.0 (forwarded request 1104772 from iznogood)</comment>
+    <requestid>1105009</requestid>
+  </revision>
 </revisionlist>

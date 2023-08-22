@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug 19 12:14:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.56.12:
+  + Regression fix: vala: Only transform default initializers of
+    parameters.
+  + Bindings: gtk4: Preserve compatibility with <= 4.8.x.
+
+-------------------------------------------------------------------
+Sun Aug 13 12:08:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.56.11:
+  + Various improvements and bug fixes:
+    - vala: Infer generic type from typeof() initializer of
+      parameters
+    - girparser: Support glib:ref-func, glib:unref-func,
+      copy-function and free-function
+  + Bindings: gtk4: Update to 4.12.0
+
+-------------------------------------------------------------------
 Sat Aug  5 10:44:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.56.10:
