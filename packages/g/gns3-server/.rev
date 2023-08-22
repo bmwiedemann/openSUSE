@@ -208,4 +208,12 @@
     <comment></comment>
     <requestid>1079925</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>4309f5178008a10e18790e6b5282533e</srcmd5>
+    <version>2.2.42</version>
+    <time>1692687398</time>
+    <user>anag+factory</user>
+    <comment>Update to 2.2.42 (forwarded request 1105093 from worldcitizen)</comment>
+    <requestid>1105094</requestid>
+  </revision>
 </revisionlist>

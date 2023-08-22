@@ -23,7 +23,7 @@
 %define gns3_group _gns3
 %define gns3_home %{_sharedstatedir}/gns3
 Name:           gns3-server
-Version:        2.2.38
+Version:        2.2.42
 Release:        0
 Summary:        A graphical network simulator
 License:        GPL-3.0-or-later
