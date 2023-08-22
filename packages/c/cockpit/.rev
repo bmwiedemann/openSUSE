@@ -323,4 +323,13 @@
   cockpit-selinux when build for SLE Micro 5.5</comment>
     <requestid>1104670</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>eff1490046d2e097c4d5f233cb109817</srcmd5>
+    <version>298</version>
+    <time>1692687328</time>
+    <user>anag+factory</user>
+    <comment>- new version 298:
+  https://cockpit-project.org/blog/cockpit-298.html</comment>
+    <requestid>1105066</requestid>
+  </revision>
 </revisionlist>
