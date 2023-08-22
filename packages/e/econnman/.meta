@@ -1,5 +1,0 @@
-<package name="econnman" project="openSUSE:Factory">
-  <title>econnman</title>
-  <description>Enlightenment user interface for connman.</description>
-  <devel project="X11:Enlightenment:Factory" package="econnman"/>
-</package>
