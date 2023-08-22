@@ -3439,4 +3439,12 @@ Petr</comment>
     <comment>7.6.0.2</comment>
     <requestid>1103064</requestid>
   </revision>
+  <revision rev="281" vrev="1">
+    <srcmd5>7af9aeda0a5aac1be26dd1b79ee68537</srcmd5>
+    <version>7.6.0.3</version>
+    <time>1692687344</time>
+    <user>anag+factory</user>
+    <comment>Official 7.6.0 release</comment>
+    <requestid>1105069</requestid>
+  </revision>
 </revisionlist>

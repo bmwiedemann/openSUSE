@@ -1,9 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 21 12:15:02 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 7.6.0.3 (official 7.6.0 release):
+  https://wiki.documentfoundation.org/ReleaseNotes/7.6
+  https://wiki.documentfoundation.org/Releases/7.6.0/RC3
+
+-------------------------------------------------------------------
 Tue Aug  8 21:34:27 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 7.6.0.2:
   https://wiki.documentfoundation.org/ReleaseNotes/7.6
-  https://wiki.documentfoundation.org/Releases/7.6.0/RC1
+  https://wiki.documentfoundation.org/Releases/7.6.0/RC2
 - Update bundled dependencies:
   * boost_1_80_0.tar.xz - > boost_1_82_0.tar.xz
   * curl-8.0.1.tar.xz -> curl-8.1.2.tar.xz
