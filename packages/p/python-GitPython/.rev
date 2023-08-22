@@ -816,4 +816,22 @@
 </comment>
     <requestid>1086614</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>60cf3a8a9621e4f567d7022fae5114b9</srcmd5>
+    <version>3.1.32.1689011721.5d45ce2</version>
+    <time>1692687309</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.1.32.1689011721.5d45ce2:
+  * Block insecure non-multi options in clone/clone_from Follow-up to #1521
+    (bsc#1214174, CVE-2023-40267)
+  * Name top-level exceptions as private variables
+  * Revert the removal of Commit.trailers property.
+  * Specify encoding in Commit.trailer_list.
+  * Update Commit.trailer_list to return tuples.
+  * Deprecate Commit.trailers.
+  * Add trailers_list and trailers_list methods to fix the commit trailers
+    functionality.
+- Switch to pyproject macros.</comment>
+    <requestid>1104972</requestid>
+  </revision>
 </revisionlist>

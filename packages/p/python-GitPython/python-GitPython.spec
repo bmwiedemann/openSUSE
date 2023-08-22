@@ -17,9 +17,10 @@
 
 
 %define skip_python2 1
+%define simple_ver 3.1.32
 %{?sle15_python_module_pythons}
 Name:           python-GitPython
-Version:        3.1.31.1676565040.f253335
+Version:        3.1.32.1689011721.5d45ce2
 Release:        0
 Summary:        Python Git Library
 License:        BSD-3-Clause
@@ -29,9 +30,11 @@ Patch0:         test-skips.patch
 Patch1:         test_blocking_lock_file-extra-time.patch
 BuildRequires:  %{python_module ddt >= 1.1.1}
 BuildRequires:  %{python_module gitdb >= 4.0.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module smmap >= 3.0.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
@@ -58,10 +61,10 @@ sed -i -e '/tox/d' -e '/flake8/d' -e '/coverage/d' test-requirements.txt
 sed -i  -e '/addopts/d' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -84,8 +87,7 @@ git config --global user.name "Your Name"
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS CHANGES README.md doc/source/*.rst
-%dir %{python_sitelib}/git
-%{python_sitelib}/git/*
-%{python_sitelib}/GitPython*
+%{python_sitelib}/git
+%{python_sitelib}/GitPython-%{simple_ver}.dist-info
 
 %changelog
