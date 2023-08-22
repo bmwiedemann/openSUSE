@@ -570,4 +570,12 @@
   * Fix splitting long lines in input fields</comment>
     <requestid>1101520</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>b79efeb88eae7e50a1df3762a80904b5</srcmd5>
+    <version>1.16.7</version>
+    <time>1692687400</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105114</requestid>
+  </revision>
 </revisionlist>
