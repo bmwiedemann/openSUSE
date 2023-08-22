@@ -16,16 +16,15 @@
 #
 
 
-%define library_name libyaml-cpp0_7
+%define library_name libyaml-cpp0_8
 Name:           yaml-cpp
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        YAML parser and emitter in C++
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/jbeder/yaml-cpp/
-Source:         https://github.com/jbeder/yaml-cpp/archive/%{name}-%{version}.tar.gz
-Patch1:         https://github.com/jbeder/yaml-cpp/pull/1077.patch
+Source:         https://github.com/jbeder/yaml-cpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  sed
@@ -56,7 +55,7 @@ Requires:       %{library_name} = %{version}
 Development files for %{name} library.
 
 %prep
-%autosetup -n %{name}-%{name}-%{version} -p1
+%autosetup -n %{name}-%{version} -p1
 
 %build
 export CC=gcc
@@ -84,8 +83,8 @@ make %{?_smp_mflags}
 %{_libdir}/libyaml-cpp.so.*
 
 %files devel
-%{_datadir}/pkgconfig/yaml-cpp.pc
-%{_datadir}/cmake/%{name}/
+%{_libdir}/pkgconfig/yaml-cpp.pc
+%{_libdir}/cmake/%{name}/
 %{_includedir}/yaml-cpp/
 %{_libdir}/libyaml-cpp.so
 

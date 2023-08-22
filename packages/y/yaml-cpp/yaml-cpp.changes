@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 17 13:13:20 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 0.8.0:
+  * Significant CMake changes, especially to Windows builds
+  * Support for std::unordered_map, std::valarray, and std::string_view
+  * Updated gtest dependency
+  * Assorted bug fixes
+- Drop 1077.patch, which is included in version 0.8.0
+
+-------------------------------------------------------------------
 Thu May 11 15:57:44 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Drop patches fix-cmake-export.patch  untabify-cmakelists.patch
