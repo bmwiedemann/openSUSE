@@ -57,7 +57,7 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.2.8
+Version:        8.2.9
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        MIT AND PHP-3.01
@@ -69,10 +69,8 @@ Source2:        %{php_name}-fpm.conf
 Source5:        README.macros
 Source6:        macros.php
 # temporarily repacked tarball https://github.com/php/php-src/issues/11300
-#Source8:        https://secure.php.net/distributions/php-%{version}.tar.xz.asc
-Source7:        repack.sh
-Source8:        php-unicode-allow-redistribution.patch
-#Source9:       https://www.php.net/distributions/php-keyring.gpg#/%%{php_name}.keyring
+Source8:        https://secure.php.net/distributions/php-%{version}.tar.xz.asc
+# Source9:       https://www.php.net/distributions/php-keyring.gpg#/%%{php_name}.keyring
 Source9:        %{php_name}.keyring
 Source11:       %{php_name}.rpmlintrc
 Source12:       php-fpm.tmpfiles.d
@@ -981,13 +979,6 @@ if test "x${vzend}" != "x%{zendver}"; then
     : Error: Upstream Zend ABI version is now ${vzend}, expecting %{zendver}.
     : Update the zendver macro and rebuild.
     exit 1
-fi
-
-if grep -r 'specifically excludes the right'; then
-  echo
-  echo "https://github.com/php/php-src/issues/11300"
-  echo "please run repack.sh"
-  exit 1
 fi
 
 %build

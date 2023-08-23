@@ -557,4 +557,19 @@
   % php-sort-filelist-phar.patch (refreshed)</comment>
     <requestid>1099444</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>405d4ae570072148e2e78c0d5299164b</srcmd5>
+    <version>8.2.9</version>
+    <time>1692795406</time>
+    <user>anag+factory</user>
+    <comment>- version update to 8.2.9
+  * This is a security release.
+  * Fixes CVE-2023-3824 [bsc#1214103] and CVE-2023-3823 [bsc#1214106]
+  * https://www.php.net/ChangeLog-8.php#8.2.9
+- deleted patches
+  - php-unicode-allow-redistribution.patch (upstreamed)
+- deleted sources
+  - repack.sh (not needed)</comment>
+    <requestid>1105258</requestid>
+  </revision>
 </revisionlist>
