@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-jaxrs-providers
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%bcond_without jp_minimal
 Name:           jackson-jaxrs-providers
-Version:        2.13.3
+Version:        2.15.2
 Release:        0
 Summary:        Jackson JAX-RS providers
 License:        Apache-2.0
@@ -26,28 +25,20 @@ URL:            https://github.com/FasterXML/jackson-jaxrs-providers
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.13
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.13
-BuildRequires:  mvn(com.fasterxml.jackson.module:jackson-module-jaxb-annotations)
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.13
-BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
-BuildRequires:  mvn(javax.ws.rs:javax.ws.rs-api)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildArch:      noarch
-%if %{without jp_minimal}
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
 BuildRequires:  mvn(com.fasterxml.jackson.dataformat:jackson-dataformat-cbor)
 BuildRequires:  mvn(com.fasterxml.jackson.dataformat:jackson-dataformat-smile)
 BuildRequires:  mvn(com.fasterxml.jackson.dataformat:jackson-dataformat-xml)
 BuildRequires:  mvn(com.fasterxml.jackson.dataformat:jackson-dataformat-yaml)
-BuildRequires:  mvn(org.glassfish.jersey.containers:jersey-container-servlet)
-BuildRequires:  mvn(org.glassfish.jersey.core:jersey-server)
-BuildRequires:  mvn(org.jboss.resteasy:resteasy-jaxrs)
-%else
-Obsoletes:      jackson-jaxrs-cbor-provider < 2.10.0-1
-Obsoletes:      jackson-jaxrs-smile-provider < 2.10.0-1
-Obsoletes:      jackson-jaxrs-xml-provider < 2.10.0-1
-Obsoletes:      jackson-jaxrs-yaml-provider < 2.10.0-1
-%endif
+BuildRequires:  mvn(com.fasterxml.jackson.module:jackson-module-jaxb-annotations)
+BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:)
+BuildRequires:  mvn(com.fasterxml.woodstox:woodstox-core)
+BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
+BuildRequires:  mvn(javax.ws.rs:javax.ws.rs-api)
+BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.codehaus.woodstox:stax2-api)
+BuildArch:      noarch
 
 %description
 This is a multi-module project that contains Jackson-based JAX-RS providers for
@@ -135,13 +126,6 @@ rm json/src/test/java/com/fasterxml/jackson/jaxrs/json/resteasy/RestEasyProvider
 # Disable extra test deps
 %pom_remove_dep org.glassfish.jersey.core:
 %pom_remove_dep org.glassfish.jersey.containers:
-%if %{with jp_minimal}
-# Disable extra providers
-%pom_disable_module cbor
-%pom_disable_module smile
-%pom_disable_module xml
-%pom_disable_module yaml
-%endif
 
 %build
 %{mvn_build} -s -f
@@ -155,7 +139,7 @@ rm json/src/test/java/com/fasterxml/jackson/jaxrs/json/resteasy/RestEasyProvider
 %license LICENSE NOTICE
 
 %files -n jackson-jaxrs-json-provider -f .mfiles-jackson-jaxrs-json-provider
-%if %{without jp_minimal}
+
 %files -n jackson-jaxrs-cbor-provider -f .mfiles-jackson-jaxrs-cbor-provider
 
 %files -n jackson-jaxrs-smile-provider -f .mfiles-jackson-jaxrs-smile-provider
@@ -163,7 +147,6 @@ rm json/src/test/java/com/fasterxml/jackson/jaxrs/json/resteasy/RestEasyProvider
 %files -n jackson-jaxrs-xml-provider -f .mfiles-jackson-jaxrs-xml-provider
 
 %files -n jackson-jaxrs-yaml-provider -f .mfiles-jackson-jaxrs-yaml-provider
-%endif
 
 %files datatypes -f .mfiles-jackson-datatype-jaxrs
 %license LICENSE NOTICE

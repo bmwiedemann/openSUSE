@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 21 14:38:33 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Version upgrade to 2.15.2
+  * No changes since 2.15.0
+  * 2.15.0 (23-Apr-2023)
+    + #170: Add 'JaxRsFeature.READ_FULL_STREAM' to consume all
+      content, on by default
+    + Woodstox dependency now 6.5.1
+  * 2.14.2 (28-Jan-2023)
+    + #166: 'ProviderBase' class shows contention on synchronized
+      block using 'LRUMap' _writers instance
+    + Upgrade Woodstox to 6.4.0 for a fix to OSGi metadata
+  * 2.14.0 (05-Nov-2022)
+    + (xml) Woodstox dependency -> 6.4.0
+  * 2.13.5 (not yet released)
+    + (xml) Woodstox dependency -> 6.4.0
+  * 2.13.4 (03-Sep-2022)
+    + (xml) Woodstox dependency -> 6.3.1
+
+-------------------------------------------------------------------
 Wed Jun 15 07:32:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Version upgrade to 2.13.3
