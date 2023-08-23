@@ -35,6 +35,7 @@ Patch3:         no-javarebel.patch
 Patch4:         enable-jdom.patch
 # Fix compatibility with javacc 7
 Patch5:         javacc-7.patch
+Patch6:         no-doctype.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-logging
 BuildRequires:  apache-parent
@@ -90,6 +91,7 @@ find -type f -name "*.class" -delete
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 # Use system ivy settings
 rm ivysettings.xml

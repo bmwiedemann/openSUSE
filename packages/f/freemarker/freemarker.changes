@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 21 23:36:08 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * no-doctype.patch
+    + avoid superfluous declaration of versions as entities
+    + DOCTYPE processing is by default disabled in apache-ivy 2.5.2+
+
+-------------------------------------------------------------------
 Tue Jun 27 16:27:43 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

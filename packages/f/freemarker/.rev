@@ -39,4 +39,12 @@
     <comment>fix build with jython 2.7.3</comment>
     <requestid>1095811</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>9d13230bb5767fbcdf83a6d21a9c9a5e</srcmd5>
+    <version>2.3.31</version>
+    <time>1692795454</time>
+    <user>anag+factory</user>
+    <comment>fix build with ivy 2.5.2</comment>
+    <requestid>1105157</requestid>
+  </revision>
 </revisionlist>
