@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jul 17 05:16:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.6.5:
+  * Fix a bad crash bug when the GssapiUseS4U2Proxy option is set
+    but no GssapiCredStore directives are provided at all.
+    - crash bug when s4u2proxy is configured by @simo5 in #272
+- rebased patch apache2-mod_auth_gssapi-test.patch
+
+-------------------------------------------------------------------
+Mon Jul 17 05:11:38 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change upstream URL to https://github.com/gssapi/mod_auth_gssapi,
+  because https://github.com/modauthgssapi/mod_auth_gssapi has no
+  releases, no activity and looks fishy
+- upgrade to 1.6.4:
+  * tests: Catch errors during tests setup by @stanislavlevin in
+    #225
+  * tests: Don't override the specific environment by the global
+    one by @stanislavlevin in #227
+  * Emit error in logs if keytab files can't be opened by @simo5 in
+    #229
+  * Add warnings if s4u2proxy options are inconsistent by @simo5 in
+    #232
+  * Move to python3 by default by @frozencemetery in #235
+  * Fix type/token distinction in parser.y by @frozencemetery in
+    #237
+  * Special ccache handling for {HOSTNAME} acceptor by @simo5 in
+    #238
+  * crypto: Handle EVP changes in OpenSSL 3 by @frozencemetery in
+    #256
+
+-------------------------------------------------------------------
 Thu Feb  3 08:48:37 UTC 2022 - pgajdos@suse.com
 
 - test only when test requirements are fulfilled

@@ -23,4 +23,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>953109</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5ee826a6ebfac9eae167da81c4f6afdd</srcmd5>
+    <version>1.6.5</version>
+    <time>1692795483</time>
+    <user>anag+factory</user>
+    <comment>update to 1.6.5; changed upstream to https://github.com/gssapi/mod_auth_gssapi, as https://github.com/modauthgssapi/mod_auth_gssapi has no releases, no activity and looks fishy (forwarded request 1099032 from ojkastl_buildservice)</comment>
+    <requestid>1105260</requestid>
+  </revision>
 </revisionlist>

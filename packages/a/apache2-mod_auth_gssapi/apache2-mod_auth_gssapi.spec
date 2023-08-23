@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_auth_gssapi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2004, 2005 NOVELL (All rights reserved)
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,12 +23,12 @@
 %define test 0
 %endif
 Name:           apache2-mod_auth_gssapi
-Version:        1.6.3
+Version:        1.6.5
 Release:        0
 Summary:        GSSAPI Module for Apache
 License:        MIT
-URL:            https://github.com/modauthgssapi/mod_auth_gssapi/
-Source0:        https://github.com/modauthgssapi/mod_auth_gssapi/releases/download/v%{version}/mod_auth_gssapi-%{version}.tar.gz
+URL:            https://github.com/gssapi/mod_auth_gssapi/
+Source0:        https://github.com/gssapi/mod_auth_gssapi/releases/download/v%{version}/mod_auth_gssapi-%{version}.tar.gz
 # python3 and other testsuite fixes
 Patch0:         apache2-mod_auth_gssapi-test.patch
 BuildRequires:  apache-rpm-macros
@@ -73,7 +73,7 @@ rm %{buildroot}%{apache_libexecdir}/*.la
 
 %check
 %if %{test} == 1
-sed -i 's/env python/python3/' tests/*.py
+sed -i 's/env python3/python3/' tests/*.py
 export PATH="$PATH:%{_sbindir}"
 make check
 %endif
