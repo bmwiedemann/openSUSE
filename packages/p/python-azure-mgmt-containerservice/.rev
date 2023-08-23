@@ -424,4 +424,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1103905 from glaubitz)</comment>
     <requestid>1103922</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>bd774032a7078935a8b81d6a8f4a4bc8</srcmd5>
+    <version>26.0.0</version>
+    <time>1692795461</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 26.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1105203 from glaubitz)</comment>
+    <requestid>1105206</requestid>
+  </revision>
 </revisionlist>
