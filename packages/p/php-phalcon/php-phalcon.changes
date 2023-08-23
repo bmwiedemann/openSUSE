@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Aug 17 20:14:30 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.3.0
+  * Added `Phalcon\Mvc\Model::appendMessagedFrom` for code consistency
+    and to add messages from another model [#16391]
+  * Added `Phalcon\Autoload\Loader::isRegistered` for debugging purposes
+    [#16391]
+  * Added `Phalcon\Mvc\Model\Metadata::initializeMetadata` [#16393]
+  * Added `Phalcon\Mvc\Model\Metadata::getMetaDataUniqueKey` [#16393]
+  * Added `Phalcon\Mvc\Model\Metadata::getColumnMapUniqueKey` [#16393]
+  * Added `Phalcon\Encryption\Security\JWT\Builder::addHeader()` to allow
+    adding custom headers [#16396]
+  * Refactored `Phalcon\Mvc\Model::doLowUpdate` and
+    `Phalcon\Mvc\Model::postSaveRelatedRecords` for better code logic and
+    a clearer separation of behaviour, although it lead to partially
+    repeated code. [#16391]
+  * Cleaned `Phalcon\Mvc\Model\Metadata::initialize` [#16393]
+  * Parse multipart/form-data from PUT request [#16271]
+  * Set Dynamic Update by default system-wide [#16343]
+  * Fixed memory leak in Micro application [#16404]
+
+- update to 5.2.3
+  * Tried to reproduce the behavior described in #16244 but had no
+    success. [#16244]
+  * Extended `Phalcon\Di\Injectable` from `stdClass` to remove the
+    deprecation warning (dynamic properties) for PHP 8.2 [#16308]
+  * Corrected the return type of `Phalcon\Mvc\View::getVar()` so that
+    stubs can be accurate. [#16276]
+  * Changed all the `encode`/`decode` methods for JSON to use the
+    `Phalcon\Support\Helper\Json\*` classes. [#15608]
+  * Changed the `Phalcon\Support\Helper\Json\*` classes to clear up
+    `json_last_error()` before doing any conversions. [#15608]
+  * Fixed `Phalcon\Http\Request::getJsonRawBody` to protect from empty
+    body [#16373]
+  * Added `getAdapter()` in `Phalcon\Mvc\Model\Metadata` to retrieve the
+    internal cache adapter if necessary. [#16244]
+  * Added `Phalcon\Storage\Adapter\Weak` implemented with WeakReference
+    has a cache/retrieval solution for objects not yet collected by the
+    Garbage Collection. [#16372]
+
+-------------------------------------------------------------------
 Wed Jun 21 18:23:15 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.2.2
