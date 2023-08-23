@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-bom
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-bom
-Version:        2.13.3
+Version:        2.15.2
 Release:        0
 Summary:        Bill of materials POM for Jackson projects
 License:        Apache-2.0
