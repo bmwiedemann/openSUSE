@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun 26 06:39:27 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.8.1
+  * Define WP_CLI_ROOT if needed 
+  * Extract Requests out of Composer 
+
+- Update to version 2.8.0
+  * Ignore Requests deprecations in error handling for now 
+  * Fallback to hardcoded folder when WPINC not defined 
+  * Conditionally adapt to Core Requests library 
+  * Add bootstrap step to extract default CA certificate 
+  * Use wp_cache_flush_runtime if supported. 
+  * Extract cacert from Phar for cURL 
+  * Fix some PHP 8.2 depreciation notices in behat tests 
+  * Upgrade WP-CLI to Requests v2 
+  * Added "wp cli alias is-group" subcommand. 
+  * Use -R instead of -r for fallback pager command 
+  * Fix autocompletion notice with PHP 8.2 
+  * fix PHP Deprecation for 8.1 
+  * Add composer phpcbf 
+  * Use WP_CLI_FORCE_USER_LOGIN=1 to force --user=<login>
+  * Fix --skip-themes for themes with block patterns 
+  * Fix deprecation notice triggered in WpOrgApi class in PHP 8.1 
+  * Improve support for cases with empty --path provided to wp-cli commands 
+  * PHP 8.2: explicitly declare CompositeCommand::$longdesc to fix deprecation warning 
+  * Detect Object Cache Pro 
+  * Ensure WP_CLI_ROOT is defined before accessing it 
+
+-------------------------------------------------------------------
 Tue Nov  8 14:41:07 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.7.1

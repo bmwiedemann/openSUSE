@@ -1,7 +1,7 @@
 #
 # spec file for package wp-cli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           wp-cli
-Version:        2.7.1
+Version:        2.8.1
 Release:        0
 Summary:        WordPress command-line interface
 License:        MIT
 URL:            https://wp-cli.org/
 Source0:        https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.phar
 Source1:        https://raw.githubusercontent.com/%{name}/%{name}/v%{version}/utils/wp-completion.bash
-Requires:       php >= 5.4
+Requires:       php >= 5.6
 Requires:       php-json
 Requires:       php-openssl
 Requires:       php-phar
