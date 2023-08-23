@@ -185,4 +185,17 @@
 - Update Requires from setup.py (forwarded request 1084578 from glaubitz)</comment>
     <requestid>1084594</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8d8ade3dfe5ec91c04347ffc851851d6</srcmd5>
+    <version>6.0.2</version>
+    <time>1692795536</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 6.0.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1105449 from glaubitz)</comment>
+    <requestid>1105475</requestid>
+  </revision>
 </revisionlist>
