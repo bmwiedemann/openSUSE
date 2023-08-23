@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 21 13:40:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.11
+  * exmdb: attachment storage with hash-based filenames
+  * exmdb_local: persistent (on-disk) last-autoreply time tracking
+  * imap: allow large literals with APPEND
+  * imap: add RFC 7888 support
+  * oxdisco: allow AutoDiscover information retrieval from
+    secondary mailboxes even if the scndstore_hints table does not
+    have an entry.
+  * emsmdb: "Mark all as read" in OL (Online mode) now works
+
+-------------------------------------------------------------------
 Thu Jun 15 15:24:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.10

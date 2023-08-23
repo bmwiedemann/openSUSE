@@ -1,7 +1,7 @@
 Format: 1.0
 Source: gromox
 Architecture: any
-Version: 2.9
+Version: 2.11
 DEBTRANSFORM-RELEASE: 1
 Maintainer: Gromox <null@gromox.com>
 Homepage: https://gromox.com
@@ -34,6 +34,7 @@ Build-Depends:
  libtool-bin (>= 2) | libtool (>= 2),
  libvmime-dev (>= 0.9.2),
  libxml2-dev,
+ libxxhash-dev,
  libzstd-dev,
  lsb-release,
  make,

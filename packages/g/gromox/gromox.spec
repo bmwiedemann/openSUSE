@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.10
+Version:        2.11
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -58,6 +58,7 @@ BuildRequires:  pkgconfig(libolecf)
 BuildRequires:  pkgconfig(libpff)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tinyxml2) >= 8
@@ -96,6 +97,7 @@ Requires(pre):  user(gromox)
 Requires(pre):  group(gromox)
 Provides:       php-mapi-gromox = %version-%release
 Provides:       bundled(tzcode) = 2022c
+Conflicts:      grommunio-admin-api < 1.10.7
 %{?systemd_ordering}
 %if !0%{?_pamdir:1}
 %define _pamdir /%_lib/security
@@ -160,7 +162,6 @@ cp -a "$b/usr/share/gromox/fpm-gromox.conf.sample" "$b/etc/php-fpm.d/gromox.conf
 %endif
 perl -i -lpe 's{Type=simple}{Type=simple\nRestart=on-failure}' "$b/%_unitdir"/*.service
 %fdupes %buildroot/%_prefix
-echo hi >%buildroot/usr/libexec/gromox/x.xml
 
 %global services gromox-delivery.service gromox-delivery-queue.service gromox-event.service gromox-http.service gromox-imap.service gromox-midb.service gromox-pop3.service gromox-snapshot.service gromox-snapshot.timer gromox-timer.service gromox-zcore.service
 
