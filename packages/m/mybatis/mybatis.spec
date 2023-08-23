@@ -83,6 +83,12 @@ sed -i 's/\r//' LICENSE NOTICE
 %{mvn_file} :%{name} %{name}
 
 %build
+
+# Build despite duplicate log4j availability (v1 and v2)
+%if 0%{?rhel}
+%{mvn_config} resolverSettings/ignoreDuplicateMetadata false
+%endif
+
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
 	-Dmaven.compiler.release=8 \

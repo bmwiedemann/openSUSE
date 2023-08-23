@@ -55,4 +55,12 @@
     <comment>help build system to chose the right provider</comment>
     <requestid>1001718</requestid>
   </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>7860153e6f8a1459c2c58df02049a117</srcmd5>
+    <version>3.5.6</version>
+    <time>1692795434</time>
+    <user>anag+factory</user>
+    <comment>RHEL fixes</comment>
+    <requestid>1105111</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 25 10:56:16 UTC 2023 - Stefan Bluhm <stefan.bluhm@clacee.eu>
+
+- Fix for Enterprise Linux to allow building with log4j v1 and v2
+  dependencies.
+
+-------------------------------------------------------------------
 Wed Sep  7 10:59:38 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Help the build to chose slf4j-reload4j if it exists
