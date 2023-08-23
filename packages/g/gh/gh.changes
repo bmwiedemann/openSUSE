@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Aug 22 08:29:55 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.33.0:
+  * codespace: Handle HTTP request retry interruption (#7846)
+  * linter appeasement
+  * delete prompt package
+  * prompter for milestone
+  * prompter for projects
+  * use prompter for labels
+  * prompter for assignees
+  * prompter for reviewers
+  * use MultiSelect for metadata survey in pr, issue create
+  * use prompter in shared editable code
+  * linter appeasement
+  * linter appeasement
+  * prompter for milestone
+  * prompter for projects
+  * use prompter for labels
+  * prompter for assignees
+  * prompter for reviewers
+  * use MultiSelect for metadata survey in pr, issue create
+  * use prompter in shared editable code
+  * use prompter in issue delete
+  * use prompter in secret set
+  * fix RegisterPassword
+  * use new prompter in repo fork
+  * switch to prompter in workflow commands
+  * Upgrade to Go 1.21 (#7843)
+  * Remove GHE handling for `workflow` scope (#7841)
+  * Add clobber flag to `alias set` (#7787)
+  * pass prompter around instead of opts
+  * Add missing "ls" aliases to list commands (#7818)
+  * Allow --org parameter in lieu of a repo context for rulesets, add current_user_can_bypass to rs view (#7747)
+  * test for forking in org
+  * strip more dead code
+  * port more prompts and cover with new tests
+  * remove dead code
+  * finish porting existing tests
+  * Codespaces: Use the host name from the logged in server for commands (#7795)
+  * Update CONTRIBUTING.md
+  * WIP porting repo edit to opts.Prompter
+  * name MultiSelect parameters in interface
+  * switch to Prompter.MultiSelect
+  * Use filepath.Base to sanitize path for archive downloads (#7805)
+  * `release create`: Trim spaces on interactive tag name input (#7759)
+  * Do not allow issue and pr templates to be symlinks (#7756)
+  * Allow deleting of local branch after merging cross repo PRs (#7709)
+
+-------------------------------------------------------------------
 Tue Jul 25 06:00:17 UTC 2023 - pdostal@suse.com
 
 - Update to version 2.32.1:
