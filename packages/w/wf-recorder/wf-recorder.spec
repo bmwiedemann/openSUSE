@@ -18,7 +18,7 @@
 
 
 Name:           wf-recorder
-Version:        0.3.0+git19
+Version:        0.4.0+git0
 Release:        0%{?dist}
 Summary:        Utility program for screen recording of wlroots-based compositors
 License:        MIT
@@ -27,10 +27,12 @@ URL:            https://github.com/ammen99/wf-recorder
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libpulse-simple)
