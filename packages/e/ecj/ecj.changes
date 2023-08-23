@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Aug 21 11:46:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
-- Upgrade to eclipse 4.23 ecj
+- Upgrade to eclipse 4.23 ecj (jsc#PED-2979)
   * No changelog was made available.
 - Use the bundled javax17api.jar stubs, but don't distribute
   them
