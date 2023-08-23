@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Aug 22 18:22:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.9.0
+  * This version of h5py requires Python 3.8 or above.
+  ## New features
+  * New out argument to read_direct_chunk() to allow passing the
+    output buffer (PR 2232).
+  * The objects from Dataset.asstr() and Dataset.astype() now
+    implement the __array__() method (PR 2269). This speeds up
+    access for functions that support it, such as np.asarray().
+  * Validate key types when creating groups and attributes, giving
+    better error messages when invalid types are used (PR 2266).
+  ## Deprecations & removals
+  * Using Dataset.astype() as a context manager has been removed,
+    after being deprecated in h5py 3.6. Read data by slicing the
+    returned object instead: dset.astype('f4')[:].
+  * Exposing HDF5 functions
+  * H5Pget_elink_acc_flags & H5Pset_elink_acc_flags as
+    h5py.h5p.PropLAID.get_elink_acc_flags() &
+    h5py.h5p.PropLAID.set_elink_acc_flags(): access the external
+    link file access traversal flags in a link access property list
+    (PR 2244).
+  * H5Zregister as h5py.h5z.register_filter(): register an HDF5
+    filter (PR 2229).
+  ## Bug fixes
+  * Group.__contains__ and Group.get now use the default link
+    access property list systematically (PR 2244).
+  * Removed various calls to the deprecated numpy.product function
+    (PR 2242 & PR 2273).
+  * Fix the IPython tab-completion integration in IPython 8.12 (PR
+    2256).
+  * Replacing attributes with AttributeManager.create() now deletes
+    the old attributes before creating the new one, rather than
+    using a temporary name and renaming the new attribute (PR
+    2274). This should avoid some confusing bugs affecting
+    attributes. However, failures creating an attribute are less
+    likely to leave an existing attribute of the same name in
+    place. To change an attribute value without changing its shape
+    or dtype, use modify() instead.
+  ## Building h5py
+  * When building with Parallel HDF5 support, the version of mpi4py
+    used on various Python versions is increased to 3.1.1, fixing
+    building with a newer setuptools (PR 2225).
+  * Some fixes towards compatibility with the upcoming Cython 3 (PR
+    2247).
+
+-------------------------------------------------------------------
 Thu Feb 16 10:05:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Clean up build and runtime requirements

@@ -60,16 +60,16 @@
 %endif
 # /SECTION MPI DEFINITIONS
 Name:           %{pname}%{?my_suffix}
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        Python interface to the Hierarchical Data Format library
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/h5py/h5py
 Source:         https://files.pythonhosted.org/packages/source/h/h5py/h5py-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29}
-BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module numpy-devel >= 1.14.5}
+BuildRequires:  %{python_module Cython >= 0.29 with %python-Cython < 1}
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module numpy-devel >= 1.17.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module pytest}
@@ -80,12 +80,13 @@ BuildRequires:  hdf5%{?my_suffix}-devel
 BuildRequires:  python-rpm-macros
 %requires_eq    hdf5%{?my_suffix}
 %requires_eq    libhdf5%{?my_suffix}
-Requires:       python-numpy >= 1.14.5
+Requires:       python-numpy >= 1.17.3
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{mpi_vers}-devel
-BuildRequires:  %{python_module mpi4py >= 3.0.2}
+BuildRequires:  %{python_module mpi4py >= 3.1.1 if %python-base < 3.11}
+BuildRequires:  %{python_module mpi4py >= 3.1.4 if %python-base >= 3.11}
 BuildRequires:  %{python_module pytest-mpi}
-Requires:       python-mpi4py >= 3.0.2
+Requires:       python-mpi4py >= 3.1.1
 %endif
 %python_subpackages
 
@@ -119,7 +120,12 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{my_sitearch_in_expand}/h5py/
 
 %check
-%{python_expand # Offset test fails on 32-bit
+donttest="dummytest"
+%ifarch %{ix86} %{arm}
+# overflow
+donttest="test_float_round_tripping or test_register_filter"
+%endif
+%{python_expand #
 %if %{with mpi}
 source %{my_bindir}/mpivars.sh
 %endif
@@ -127,11 +133,7 @@ export LD_LIBRARY_PATH=%{my_libdir}
 export PYTHONPATH=%{buildroot}%{my_sitearch_in_expand}
 export PYTHONDONTWRITEBYTECODE=1
 pytest-%{$python_bin_suffix} %{buildroot}%{my_sitearch_in_expand}/h5py/ \
-%ifarch %{ix86}
-        %{?with_mpi:-k 'not test_float_round_tripping' -m 'not mpi_skip'}%{!?with_mpi:-k 'not (TestMPI or test_float_round_tripping)'}
-%else
-        %{?with_mpi:-m 'not mpi_skip'}%{!?with_mpi:-k 'not TestMPI'}
-%endif
+%{?with_mpi:-k "not ($donttest)" -m 'not mpi_skip'}%{!?with_mpi:-k "not (TestMPI or $donttest)"}
 }
 
 %files %{python_files}
