@@ -17,7 +17,7 @@
 
 
 Name:           crun
-Version:        1.8.5
+Version:        1.8.6
 Release:        0
 Summary:        OCI runtime written in C
 License:        GPL-2.0-or-later
