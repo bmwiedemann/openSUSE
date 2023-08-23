@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package ghc-aeson
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -132,7 +132,7 @@ Summary:        Haskell %{pkg_name} library development files
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
-Requires(postun):ghc-compiler = %{ghc_version}
+Requires(postun): ghc-compiler = %{ghc_version}
 
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
