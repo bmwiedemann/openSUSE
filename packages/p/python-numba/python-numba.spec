@@ -16,9 +16,10 @@
 #
 
 
-%define skip_python2 1
 %define plainpython python
+# upper bound is exclusive: min-numpy_ver <= numpy < max_numpy_ve
 %define min_numpy_ver 1.21
+%define max_numpy_ver 1.26
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
@@ -52,10 +53,12 @@ License:        BSD-2-Clause
 URL:            https://numba.pydata.org/
 # SourceRepository: https://github.com/numba/numba
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM numba-pr9105-np1.25.patch gh#numba/numba#9105
+Patch0:         numba-pr9105-np1.25.patch
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
 Patch3:         skip-failing-tests.patch
 BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver}}
+BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver} with %python-numpy-devel < %{max_numpy_ver}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -63,8 +66,8 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  (tbb-devel >= 2021)
-Requires:       python-numpy >= %{min_numpy_ver}
 Requires:       (python-llvmlite >= 0.40 with python-llvmlite < 0.41)
+Requires:       (python-numpy >= %{min_numpy_ver} with python-numpy < %{max_numpy_ver})
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-Jinja2

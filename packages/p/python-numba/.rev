@@ -359,4 +359,12 @@ Python2 support was turned off by accident.  I don't go out of my way to support
 - remove upper bound on numpy - upstream does not have it either</comment>
     <requestid>1103793</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>717a55daf5b59b530b104e1e65888d99</srcmd5>
+    <version>0.57.1</version>
+    <time>1692795463</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105200</requestid>
+  </revision>
 </revisionlist>
