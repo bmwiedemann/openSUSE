@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 21 13:25:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.15
+  * 2.15 (23-Apr-2023)
+    + Upgrade to oss-parent 50 (many plugin version updates)
+    + Remove settings for 'org.eclipse.m2e:lifecycle-mapping'
+  * 2.14 (05-Nov-2022)
+    + Upgrade to oss-parent 48 (Reproducible Builds, many plugin
+      version updates)
+
+-------------------------------------------------------------------
 Wed Oct 20 05:21:13 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.13.0
