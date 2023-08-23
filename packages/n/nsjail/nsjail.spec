@@ -17,7 +17,7 @@
 
 
 Name:           nsjail
-Version:        3.3+git1.5b48117
+Version:        3.3+git14.8308b91
 Release:        0
 Summary:        A light-weight process isolation tool
 License:        Apache-2.0
@@ -33,7 +33,11 @@ BuildRequires:  glibc-devel
 BuildRequires:  libnl3-devel
 BuildRequires:  make
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} < 1550
 BuildRequires:  protobuf-devel
+%else
+BuildRequires:  protobuf21-devel
+%endif
 ExclusiveArch:  x86_64
 
 %description

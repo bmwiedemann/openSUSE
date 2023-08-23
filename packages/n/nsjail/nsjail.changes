@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 23 08:54:02 UTC 2023 - wolfgang.frisch@suse.com
+
+- Fixed Tumbleweed build error caused by an incompatible libprotobuf.
+- Update to version 3.3+git14.8308b91:
+  * subproc: mark cloneFunc as [[noreturn]]
+  * subproc: support CLONE_CLEAR_SIGHAND
+  * subproc: display additional clone3 flags
+  * configs/: formatting
+  * configs/telegram: telegram is 64 bit only
+  * configs/telegram: a new config for the telegram-desktop
+  * formatting fix
+  * Better output formatting for --help
+  * cgroup2.cc: improve note about using Docker
+  * logs: respect getenv(NO_COLOR)
+  * configs/hexchat: new config based on xchat
+  * Mount read-only directly if mounting rw fails
+
+-------------------------------------------------------------------
 Fri Jan  6 16:17:58 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - drop obscpio file upon request

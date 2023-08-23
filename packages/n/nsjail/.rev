@@ -71,4 +71,26 @@
     <comment></comment>
     <requestid>1056979</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>20674d8c0907a4b11648870e657bb66d</srcmd5>
+    <version>3.3+git14.8308b91</version>
+    <time>1692795528</time>
+    <user>anag+factory</user>
+    <comment>- Fixed Tumbleweed build error caused by an incompatible libprotobuf.
+- Restore build on Leap 15.4 and older.
+- Update to version 3.3+git14.8308b91:
+  * subproc: mark cloneFunc as [[noreturn]]
+  * subproc: support CLONE_CLEAR_SIGHAND
+  * subproc: display additional clone3 flags
+  * configs/: formatting
+  * configs/telegram: telegram is 64 bit only
+  * configs/telegram: a new config for the telegram-desktop
+  * formatting fix
+  * Better output formatting for --help
+  * cgroup2.cc: improve note about using Docker
+  * logs: respect getenv(NO_COLOR)
+  * configs/hexchat: new config based on xchat
+  * Mount read-only directly if mounting rw fails (forwarded request 1105443 from wfrisch)</comment>
+    <requestid>1105446</requestid>
+  </revision>
 </revisionlist>
