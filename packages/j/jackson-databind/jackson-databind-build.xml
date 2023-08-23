@@ -11,7 +11,7 @@
   <property name="project.groupId" value="com.fasterxml.jackson.core"/>
   <property name="project.artifactId" value="jackson-databind"/>
   <property name="project.name" value="jackson-databind"/>
-  <property name="project.version" value="2.13.4.2"/>
+  <property name="project.version" value="2.15.2"/>
   <property name="project.vendor" value="FasterXML"/>
   <property name="project.description" value="General data-binding functionality for Jackson: works on core streaming API"/>
   <property name="bundle.version" value="${project.version}"/>
@@ -246,7 +246,7 @@
 		<attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
 		<attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
 		<attribute name="JavaPackages-Version" value="${project.version}"/>
-		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=1.6))&quot;"/>
+		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
 		<attribute name="Specification-Title" value="${project.name}"/>
 		<attribute name="Specification-Vendor" value="${project.vendor}"/>
 		<attribute name="Specification-Version" value="${project.version}"/>

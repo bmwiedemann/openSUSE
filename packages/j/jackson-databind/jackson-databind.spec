@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-databind
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-databind
-Version:        2.13.4.2
+Version:        2.15.2
 Release:        0
 Summary:        General data-binding package for Jackson (2.x)
 License:        Apache-2.0 AND LGPL-2.1-or-later
@@ -29,9 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  jackson-annotations
 BuildRequires:  jackson-core
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-Requires:       mvn(com.fasterxml.jackson.core:jackson-annotations)
-Requires:       mvn(com.fasterxml.jackson.core:jackson-core)
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -50,12 +48,6 @@ This package contains API documentation for %{name}.
 cp %{SOURCE1} build.xml
 mkdir -p lib
 
-# Remove section unnecessary for ant build
-%pom_remove_parent
-%pom_remove_dep :::test
-%pom_xpath_remove pom:project/pom:build
-%pom_xpath_remove pom:project/pom:profiles
-
 cp -p src/main/resources/META-INF/NOTICE .
 sed -i 's/\r//' LICENSE NOTICE
 
@@ -68,7 +60,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 
 install -dm 0755 %{buildroot}%{_javadocdir}
