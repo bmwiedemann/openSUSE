@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-dataformat-xml
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-dataformat-xml
-Version:        2.13.3
+Version:        2.15.2
 Release:        0
 Summary:        Jackson extension component for reading and writing XML encoded data
 License:        Apache-2.0
