@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep  2 18:31:13 UTC 2023 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 4.3.2
+- Usability, bells and whistles
+  * The minimum font size can now be set lower, which is helpful for Hi-DPI displays.
+    https://github.com/git-cola/git-cola/pull/1342
+- Fixes
+  * `git dag` was not displaying history when refspecs were specified.
+    https://github.com/git-cola/git-cola/issues/1334
+- Development
+  * Compatibility with Sphinx 7.2.0 was added to the `sphinxtogithub`
+    sphinx documentation plugin.
+    https://github.com/git-cola/git-cola/pull/1336
+
+-------------------------------------------------------------------
 Tue Aug 22 11:43:37 UTC 2023 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Update to 4.3.1
