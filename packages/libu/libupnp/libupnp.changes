@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 22 08:54:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.18
+  * miniserver: fix busy loop on socket error
+
+-------------------------------------------------------------------
 Mon May  1 07:55:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.14.17
