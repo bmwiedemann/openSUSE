@@ -26,6 +26,9 @@ URL:            https://www.gnu.org/software/indent
 Source0:        ftp://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source1:        ftp://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=94096#/%{name}.keyring
+# PATCH-FIX-SECURITY fix-out-of-buffer-read-CVE-2023-40305.patch fix-heap-buffer-overwrite-search_brace-CVE-2023-40305 bsc#1214243 CVE-2023-40305 antonio.teixeira@suse.com -- indent: heap-based buffer overflow in search_brace() in indent.c via a crafted file
+Patch0:         fix-out-of-buffer-read-CVE-2023-40305.patch
+Patch1:         fix-heap-buffer-overwrite-search_brace-CVE-2023-40305.patch
 BuildRequires:  makeinfo
 BuildRequires:  texi2html
 
@@ -38,7 +41,7 @@ incomplete and malformed syntax.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure \
