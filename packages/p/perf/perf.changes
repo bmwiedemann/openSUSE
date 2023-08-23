@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 16 14:04:01 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Disable debuginfod integration (boo#1213785)
+
+-------------------------------------------------------------------
 Thu May 11 08:17:28 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - add gcc and gcc-c++ to BuildRequires. gcc is needed but not

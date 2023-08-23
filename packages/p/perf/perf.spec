@@ -48,7 +48,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
 BuildRequires:  kernel-source >= 2.6.31
 BuildRequires:  libcap-devel
-BuildRequires:  libdebuginfod-devel
+# Debuginfod integration has major issues: boo#1213785
+#BuildRequires:  libdebuginfod-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libtraceevent-devel

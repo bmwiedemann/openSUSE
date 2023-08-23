@@ -622,4 +622,12 @@
   listed. c++ is not installed by default and is needed since 6.4.</comment>
     <requestid>1086192</requestid>
   </revision>
+  <revision rev="72" vrev="81">
+    <srcmd5>1611361326540b072d38bfe9a3707087</srcmd5>
+    <version>MACRO</version>
+    <time>1692795457</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105196</requestid>
+  </revision>
 </revisionlist>
