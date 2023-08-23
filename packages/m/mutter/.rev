@@ -1826,4 +1826,14 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1105001</requestid>
   </revision>
+  <revision rev="208" vrev="3">
+    <srcmd5>7c4925ec30a5751f94c7791685257072</srcmd5>
+    <version>44.3</version>
+    <time>1692795402</time>
+    <user>anag+factory</user>
+    <comment>- Add mutter-revert-window_draw_issues.patch: Revert commit
+  43cee4b6:  Do clipped redraws when drawing offscreen
+  (boo#1210744, glgo#GNOME/mutter#2771).</comment>
+    <requestid>1105218</requestid>
+  </revision>
 </revisionlist>

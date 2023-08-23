@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 22 09:24:36 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add mutter-revert-window_draw_issues.patch: Revert commit
+  43cee4b6:  Do clipped redraws when drawing offscreen
+  (boo#1210744, glgo#GNOME/mutter#2771).
+
+-------------------------------------------------------------------
 Thu Aug 17 09:36:34 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Disable %autopatch on SLE which has not the macro ready.
