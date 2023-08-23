@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 21 14:13:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update http-client to version 0.7.14.
+  ## 0.7.14
+
+  * Allow customizing max header length [#514](https://github.com/snoyberg/http-client/pull/514)
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:09 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
