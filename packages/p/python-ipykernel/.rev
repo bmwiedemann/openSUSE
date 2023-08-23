@@ -469,4 +469,13 @@
     <comment></comment>
     <requestid>1102796</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>28c3883979491601d680ecd03cb171c1</srcmd5>
+    <version>6.25.1</version>
+    <time>1692795518</time>
+    <user>anag+factory</user>
+    <comment>- Fix spec-cleaner: The stupid sle15 python reset macro needs to
+  be before python_module calls</comment>
+    <requestid>1105430</requestid>
+  </revision>
 </revisionlist>

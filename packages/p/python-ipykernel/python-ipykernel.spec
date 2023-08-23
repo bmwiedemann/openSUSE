@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-ipykernel
 Version:        6.25.1
 Release:        0
@@ -33,7 +34,6 @@ Obsoletes:      %{python_module jupyter_ipykernel-doc < %{version}}
 Provides:       %{python_module jupyter-ipykernel-doc = %{version}}
 Obsoletes:      %{python_module jupyter-ipykernel-doc < %{version}}
 BuildArch:      noarch
-%{?sle15_python_module_pythons}
 # SECTION build-system
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 1.4}

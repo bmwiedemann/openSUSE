@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 23 08:18:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix spec-cleaner: The stupid sle15 python reset macro needs to
+  be before python_module calls
+
+-------------------------------------------------------------------
 Mon Aug  7 17:17:39 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - update to version 6.25.1:
