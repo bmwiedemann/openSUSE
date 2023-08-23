@@ -21,4 +21,19 @@
 - Update Requires from setup.py (forwarded request 1004628 from glaubitz)</comment>
     <requestid>1006520</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>32fa5f7b70195ef667156d51da5e135b</srcmd5>
+    <version>2.0.0</version>
+    <time>1692795478</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1105224 from glaubitz)</comment>
+    <requestid>1105241</requestid>
+  </revision>
 </revisionlist>
