@@ -55,4 +55,29 @@
   * docs: Update documentation and assets (#3997) (forwarded request 1103634 from jfkw)</comment>
     <requestid>1103635</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>22ab3ace1ab9f35d5a04e62c6e40f67e</srcmd5>
+    <version>1.54.2</version>
+    <time>1692795439</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.54.2:
+  * fix: add all directories as safe git directories inside the Docker image (#4034)
+  * build(deps): bump github.com/polyfloyd/go-errorlint from 1.4.3 to 1.4.4 (#4030)
+  * govet: add directive and slog passes (#4028)
+  * build(deps): bump github.com/tetafro/godot from 1.4.11 to 1.4.14 (#4029)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.16.0 to 2.17.0 (#4015)
+  * build(deps): bump github.com/sashamelentyev/usestdlibvars from 1.23.0 to 1.24.0 (#4016)
+  * build(deps): bump github.com/Antonboom/errname from 0.1.10 to 0.1.12 (#4026)
+  * build(deps): bump github.com/Antonboom/nilnil from 0.1.5 to 0.1.7 (#4024)
+  * build(deps): bump honnef.co/go/tools from 0.4.4 to 0.4.5 (#4022)
+  * dev: remove netlify (#4014)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.13.3 to 0.13.5 (#4019)
+  * build(deps): bump honnef.co/go/tools from 0.4.3 to 0.4.4 (#4018)
+  * build(deps): bump go.tmz.dev/musttag from 0.7.1 to 0.7.2 (#4017)
+  * dev: packaging improvements (#4009)
+  * dev: CI cleanups (#4008)
+  * dev: improve issue form (#4005)
+  * docs: Update documentation and assets (#4006) (forwarded request 1105141 from jfkw)</comment>
+    <requestid>1105145</requestid>
+  </revision>
 </revisionlist>
