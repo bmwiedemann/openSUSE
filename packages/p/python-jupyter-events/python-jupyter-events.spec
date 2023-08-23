@@ -21,15 +21,15 @@
 %else
 %bcond_with libalternatives
 %endif
+
+%{?sle15_python_module_pythons}
 Name:           python-jupyter-events
-Version:        0.6.3
+Version:        0.7.0
 Release:        0
 Summary:        Jupyter Event System library
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/jupyter_events
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_events/jupyter_events-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM jupyter_events-pr80-jsonschema-referencing.patch gh#jupyter/jupyter_events#80
-Patch0:         jupyter_events-pr80-jsonschema-referencing.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
@@ -46,6 +46,13 @@ Requires:       python-rfc3986-validator >= 0.1.1
 Requires:       python-traitlets >= 5.3
 Provides:       python-jupyter_events = %{version}-%{release}
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module rfc3339-validator}
 BuildRequires:  %{python_module PyYAML >= 5.3}
@@ -98,6 +105,7 @@ which jupyter-events || ln -s %{buildroot}%{_bindir}/jupyter-events-%{$python_bi
 %python_uninstall_alternative jupyter-events
 
 %files %{python_files}
+%license LICENSE
 %python_alternative %{_bindir}/jupyter-events
 %{python_sitelib}/jupyter_events
 %{python_sitelib}/jupyter_events-%{version}.dist-info

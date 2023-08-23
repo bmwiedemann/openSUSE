@@ -61,4 +61,19 @@
 - Remove workaround for rpmlint parser crash (forwarded request 1101393 from bnavigator)</comment>
     <requestid>1101394</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>385f96a5039a30c3c48a7ff75868272c</srcmd5>
+    <version>0.7.0</version>
+    <time>1692795519</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.0
+  * allow a 'message' field in an event schema #72 (@Zsailer)
+  * Improve usability of jp_read_emitted_events fixture #74
+    (@kevin-bates)
+- Fix libalternatives/update-alternatives
+- Drop jupyter_events-pr80-jsonschema-referencing.patch
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1105431</requestid>
+  </revision>
 </revisionlist>

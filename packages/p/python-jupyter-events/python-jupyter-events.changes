@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 23 08:11:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.0
+  * allow a 'message' field in an event schema #72 (@Zsailer)
+  * Improve usability of jp_read_emitted_events fixture #74
+    (@kevin-bates)
+- Fix libalternatives/update-alternatives
+- Drop jupyter_events-pr80-jsonschema-referencing.patch
+
+-------------------------------------------------------------------
+Wed Aug 23 07:36:24 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sun Jul 30 15:30:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add jupyter_events-pr80-jsonschema-referencing.patch
