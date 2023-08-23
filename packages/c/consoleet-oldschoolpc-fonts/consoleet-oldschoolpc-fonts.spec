@@ -1,7 +1,7 @@
 #
 # spec file for package consoleet-oldschoolpc-fonts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           consoleet-oldschoolpc-fonts
-Version:        2.2
+Version:        2.2.1
 Release:        0
 Summary:        Smooth-edge versions of int10h's IBM/PC fonts
 License:        CC-BY-SA-4.0
 Group:          System/X11/Fonts
 URL:            https://inai.de/projects/consoleet/
 Source:         https://inai.de/files/consoleet/consoleet-oldschoolpc-%version.tar.zst
-Source2:        https://inai.de/files/consoleet/consoleet-oldschoolpc-%version.tar.zst.asc
+Source2:        https://inai.de/files/consoleet/consoleet-oldschoolpc-%version.tar.asc
+Source9:        %name.keyring
 BuildRequires:  fontpackages-devel
 BuildRequires:  zstd
 BuildArch:      noarch
