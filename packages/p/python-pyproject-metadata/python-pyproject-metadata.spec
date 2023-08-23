@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyproject-metadata
-Version:        0.6.1
+Version:        0.7.1
 Release:        0
 Summary:        PEP 621 metadata parsing
 License:        MIT
@@ -35,7 +35,9 @@ Requires:       python-packaging >= 19
 BuildArch:      noarch
 # SECTION test
 BuildRequires:  %{python_module pytest}
+%if 0%{python_version_nodots} < 311
 BuildRequires:  %{python_module tomli >= 1.0.0}
+%endif
 # /SECTION
 %python_subpackages
 
@@ -60,9 +62,7 @@ file (e.g. `PKG-INFO`).
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/FFY00/python-pyproject-metadata/issues/41
-donttest="(test_load and PEP and 508 and definitely)"
-%pytest -k "not ($donttest)"
+%pytest
 
 %files %{python_files}
 %license LICENSE
