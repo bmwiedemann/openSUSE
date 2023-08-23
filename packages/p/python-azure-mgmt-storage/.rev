@@ -218,4 +218,18 @@
 - Update Requires from setup.py (forwarded request 1036412 from glaubitz)</comment>
     <requestid>1036513</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6db4bbbe00186000c5170ac6f852fbc9</srcmd5>
+    <version>21.1.0</version>
+    <time>1692795476</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 21.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1105209 from glaubitz)</comment>
+    <requestid>1105239</requestid>
+  </revision>
 </revisionlist>
