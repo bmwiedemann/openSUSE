@@ -65,4 +65,18 @@
 - Update Requires from setup.py (forwarded request 1055768 from glaubitz)</comment>
     <requestid>1055785</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7e1ef13ac490627f1582c56dca9d0ba2</srcmd5>
+    <version>1.0.0b7</version>
+    <time>1692795462</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0b7
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1105201 from glaubitz)</comment>
+    <requestid>1105207</requestid>
+  </revision>
 </revisionlist>
