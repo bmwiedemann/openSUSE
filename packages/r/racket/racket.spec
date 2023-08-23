@@ -18,7 +18,7 @@
 
 
 Name:           racket
-Version:        8.9
+Version:        8.10
 Release:        0
 Summary:        Scheme implementation with teaching tools
 License:        Apache-2.0 OR MIT
@@ -27,7 +27,6 @@ URL:            http://racket-lang.org
 Source0:        http://download.racket-lang.org/installers/%{version}/%{name}-%{version}-src.tgz
 Source2:        racket-completion.bash
 Source3:        racket-rpmlintrc
-Source4:        config.sub
 Patch0:         racket-doc.patch
 BuildRequires:  ImageMagick
 BuildRequires:  ca-certificates
@@ -125,8 +124,6 @@ compile and link programs which use Racket.
 %patch0 -p0
 
 cp -p %{SOURCE2} src/
-# gh#4520
-cp -p %{SOURCE4} src/lt
 
 %build
 cd src/

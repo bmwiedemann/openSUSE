@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Aug 18 20:18:56 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 8.10:
+  * syntax/parse no longer always compiles its patterns; this release
+    includes an interpreter which is used to reduce code size
+  * Racket includes primitives [im]mutable-string?, [im]mutable-bytes?,
+    [im]mutable-vector?, [im]mutable-box?, and [im]mutable-hash?
+    (cf.
+    https://docs.racket-lang.org/reference/booleans.html#%28mod-path._racket%2Fmutability%29)
+  * Redex adds judgment-form->rule-names (cf.
+    https://docs.racket-lang.org/redex/reference.html#%28def._%28%28lib._redex%2Freduction-semantics..rkt%29._judgment-form-~3erule-names%29%29)
+  * Fasl and compiled code allow fxvectors and flvectors
+  * DrRacket allows #lang-specific customization of the definition
+    navigation popdown (cf.
+    https://docs.racket-lang.org/tools/drracket_language.html#%28idx._%28gentag._55._%28lib._scribblings%2Ftools%2Ftools..scrbl%29%29%29)
+  * Racket and DrRacket include Finnish internationalization
+  * Check Syntax binding arrows are drawn for names bound with
+    define-local-member-name
+  * Many other improvements and bug fixes are included, including to
+    the scribble and plot packages
+- Remove config.sub since the fix is now included in upstream release
+
+-------------------------------------------------------------------
 Sun May 13 15:17:43 UTC 2023 - Fred Fu <moonsolo@gmail.com>
 - Update to 8.9:
  * The HtDP student languages come with checked signatures. Programmers can
