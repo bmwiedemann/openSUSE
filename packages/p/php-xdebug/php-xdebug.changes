@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 17 20:22:02 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to version 3.2.2
+  * Fixed issue #2175: Crash with EXC_BAD_ACCESS in xdebug_str_create
+  * Fixed issue #2180: Crash on extended SplFixedArray
+  * Fixed issue #2182: Segfault with ArrayObject on stack
+  * Fixed issue #2186: Segfault with trampoline functions and debugger
+    activation
+
+-------------------------------------------------------------------
 Mon Apr  3 15:55:28 UTC 2023 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Updated to version 3.2.1
