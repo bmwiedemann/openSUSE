@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Aug 23 08:11:59 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to 4.1.0
+  Improvements
+  ============
+
+  Improve get_bgp_config behavior across platforms.
+  EOS and Salt add optional_arg force_cfg_session_invalid that allows the config session to be invalidated on failure.
+  Improve EOS VRF parsing
+
+  Bug and doc fixes
+  =================
+
+  Minor doc fixes
+  CI-CD fixes
+  Properly close Netmiko SSH connections for EOS-SSH
+  Improve EOS get_bgp_neighbors()
+  Increase default commit_config timeout on IOS/IOS-XE
+  NX-OS pull full configuration for merge operation diff
+  Improve NX-OS SSH Netmiko behavior (for Netmiko V4)
+
+- Add pending upstream patch to resolve an exception while reading XML output from Junos
+  napalm-gh-pr1796-xmlgetparent.patch: https://github.com/napalm-automation/napalm/pull/1796
+
+-------------------------------------------------------------------
 Mon Jan  2 12:53:17 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add missing requirements

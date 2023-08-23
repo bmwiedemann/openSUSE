@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-napalm
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Network Automation and Programmability Abstraction Layer
 License:        Apache-2.0
@@ -28,6 +28,8 @@ URL:            https://github.com/napalm-automation/napalm
 Source:         https://github.com/napalm-automation/napalm/archive/%{version}.tar.gz#/napalm-%{version}.tar.gz
 # https://github.com/napalm-automation/napalm/issues/1594
 Patch0:         python-napalm-no-mock.patch
+# https://github.com/napalm-automation/napalm/pull/1796
+Patch1:         napalm-gh-pr1796-xmlgetparent.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,8 +50,8 @@ Requires:       python-requests >= 2.7.0
 Requires:       python-scp
 Requires:       python-setuptools >= 38.4.0
 Requires:       python-textfsm
-Requires:       python-ttp-templates
 Requires:       python-ttp
+Requires:       python-ttp-templates
 Requires:       python-typing_extensions
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
