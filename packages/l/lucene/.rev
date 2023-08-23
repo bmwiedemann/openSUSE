@@ -251,4 +251,12 @@
     <comment>Don't depend on jtidy</comment>
     <requestid>1100554</requestid>
   </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>9963dcd982a655af9ae12c7a3f2e72fd</srcmd5>
+    <version>8.5.0</version>
+    <time>1692795452</time>
+    <user>anag+factory</user>
+    <comment>Avoid xerces-j2 on classpath</comment>
+    <requestid>1105155</requestid>
+  </revision>
 </revisionlist>

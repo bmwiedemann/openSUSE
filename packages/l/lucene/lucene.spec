@@ -64,6 +64,7 @@ BuildRequires:  javapackages-local
 BuildRequires:  junit
 BuildRequires:  regexp
 BuildRequires:  zip
+#!BuildIgnore:  xerces-j2
 
 %description
 Apache Lucene is a full-text search engine written entirely in Java.
