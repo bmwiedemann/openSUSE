@@ -372,4 +372,12 @@
     * add fix-fail-no-alias.patch</comment>
     <requestid>1103603</requestid>
   </revision>
+  <revision rev="44" vrev="13">
+    <srcmd5>a5a246cabc89a6fc3ffc7305dbbdf5c7</srcmd5>
+    <version>4.8.0</version>
+    <time>1692795401</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1105210</requestid>
+  </revision>
 </revisionlist>

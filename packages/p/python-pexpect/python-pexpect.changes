@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 15 08:29:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add 31fab7b0edbe9b3401507b5dfa4db6aaf3fabca5.patch
+  dae602d37493bae239e0e8db5b3dabafebfd59db.patch: python 3.12 compat
+
+-------------------------------------------------------------------
 Thu Aug 10 12:27:03 UTC 2023 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Fix failing test when no alias in bash is defined
