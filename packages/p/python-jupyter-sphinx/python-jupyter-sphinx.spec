@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-sphinx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         oldpython python
 Name:           python-jupyter-sphinx
 Version:        0.4.0
 Release:        0
@@ -26,11 +23,16 @@ Summary:        Jupyter Sphinx Extensions
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter-widgets/jupyter-sphinx
 Source:         https://github.com/jupyter/jupyter-sphinx/archive/v%{version}.tar.gz#/jupyter-sphinx-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM jupyter-sphinx-pr226-ipykernel.patch gh#upyter-widgets/jupyter-sphinx#226
+Patch0:         jupyter-sphinx-pr226-ipykernel.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-IPython
 Requires:       python-Sphinx >= 2
+Requires:       python-ipykernel >= 4.5.1
 Requires:       python-ipywidgets >= 7.0.0
 Requires:       python-nbconvert >= 5.5
 Requires:       python-nbformat
@@ -41,6 +43,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module IPython}
 BuildRequires:  %{python_module Sphinx >= 2}
 BuildRequires:  %{python_module Sphinx-latex}
+BuildRequires:  %{python_module ipykernel >= 4.5.1}
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
 BuildRequires:  %{python_module nbconvert >= 5.5}
 BuildRequires:  %{python_module nbformat}
@@ -49,23 +52,19 @@ BuildRequires:  %{python_module pytest}
 %if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-jupyter-sphinx = %{version}
 %endif
-%ifpython2
-Provides:       %{oldpython}-jupyter_sphinx = %{version}
-Obsoletes:      %{oldpython}-jupyter_sphinx < %{version}
-%endif
 %python_subpackages
 
 %description
 Jupyter Sphinx extensions enable jupyter-specific features in sphinx.
 
 %prep
-%setup -q -n jupyter-sphinx-%{version}
+%autosetup -p1 -n jupyter-sphinx-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -74,7 +73,7 @@ Jupyter Sphinx extensions enable jupyter-specific features in sphinx.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/jupyter_sphinx-%{version}-py*.egg-info
+%{python_sitelib}/jupyter_sphinx-%{version}.dist-info
 %{python_sitelib}/jupyter_sphinx/
 
 %changelog

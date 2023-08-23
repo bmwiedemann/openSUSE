@@ -50,4 +50,15 @@
     <comment></comment>
     <requestid>988898</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f9f9dd8723681ddd7bab45a9ad8e0edb</srcmd5>
+    <version>0.4.0</version>
+    <time>1692795519</time>
+    <user>anag+factory</user>
+    <comment>- Add ipykernel to requirements
+  * jupyter-sphinx-pr226-ipykernel.patch
+  * gh#jupyter/jupyter-sphinx#226
+- PEP517</comment>
+    <requestid>1105444</requestid>
+  </revision>
 </revisionlist>

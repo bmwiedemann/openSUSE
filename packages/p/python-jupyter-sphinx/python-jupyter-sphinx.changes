@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 23 08:50:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add ipykernel to requirements
+  * jupyter-sphinx-pr226-ipykernel.patch
+  * gh#jupyter/jupyter-sphinx#226
+- PEP517
+
+-------------------------------------------------------------------
 Wed Jul 13 00:34:46 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
