@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-annotations
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-annotations
-Version:        2.13.3
+Version:        2.15.2
 Release:        0
 Summary:        Core annotations for Jackson data processor
 License:        Apache-2.0
@@ -27,7 +27,7 @@ Source0:        https://github.com/FasterXML/jackson-annotations/archive/%{name}
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -46,10 +46,6 @@ This package contains API documentation for %{name}.
 cp %{SOURCE1} build.xml
 mkdir -p lib
 
-%pom_remove_parent
-#test scope
-%pom_remove_dep junit:junit
-
 %pom_remove_plugin "org.moditect:moditect-maven-plugin"
 %pom_remove_plugin "org.sonatype.plugins:nexus-staging-maven-plugin"
 
@@ -63,7 +59,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 
 install -dm 0755 %{buildroot}%{_javadocdir}
