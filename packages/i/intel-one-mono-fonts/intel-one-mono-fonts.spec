@@ -17,7 +17,7 @@
 
 
 Name:           intel-one-mono-fonts
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        An expressive monospaced font family
 License:        OFL-1.1
@@ -51,7 +51,7 @@ cp %{S:100} .
 install -d %{buildroot}%{_ttfontsdir} %{buildroot}%{_docdir}/%{name} %{buildroot}%{_licensedir}/%{name}
 install -m644 ttf/*.ttf %{buildroot}%{_ttfontsdir}
 install -m644 %{S:100} %{buildroot}%{_docdir}/%{name}
-install -m644 ttf/license %{buildroot}%{_licensedir}/%{name}/LICENSE.md
+install -m644 ttf/OFL.txt %{buildroot}%{_licensedir}/%{name}/LICENSE.md
 
 %reconfigure_fonts_scriptlets
 
