@@ -83,7 +83,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now -pie"
 %configure \
   --with-pic \
   --docdir=%{_docdir}/%{name} \
-  --disable-static
+  --disable-static CONFIG_SHELL=/bin/sh
 %if 0%{?do_profiling}
   %make_build CFLAGS="${CFLAGS} %{cflags_profile_generate}"
   %make_build

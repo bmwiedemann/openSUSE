@@ -52,7 +52,7 @@ if test -z "$cpmod" && ${TOUCH-touch} -r $tmp/1 $tmp/2 2>/dev/null; then
 fi
 
 # check about xz extension
-xz $tmp/1 &> /dev/null
+xz $tmp/1 > /dev/null 2>&1
 ext=`echo $tmp/1* | sed "s|$tmp/1||"`
 rm -rf $tmp/
 trap - 0 1 2 3 6 13 15

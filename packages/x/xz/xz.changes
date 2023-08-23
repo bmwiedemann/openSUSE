@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 16 13:58:09 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- xznew: Remove bashsism.
+- build: pass CONFIG_SHELL=/bin/sh to configure: the posix tools
+  are setting the current SHELL as the shebang, which is overkill:
+  any posix compliant shell, aka /bin/sh, is sufficient.
+
+-------------------------------------------------------------------
 Thu Aug  3 07:01:39 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 5.4.4:
