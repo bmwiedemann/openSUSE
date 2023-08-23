@@ -425,4 +425,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1104316 from glaubitz)</comment>
     <requestid>1104363</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>076a1517821f8dd23cf21fb46af168b5</srcmd5>
+    <version>1.29.3</version>
+    <time>1692795532</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.29.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1105451 from glaubitz)</comment>
+    <requestid>1105470</requestid>
+  </revision>
 </revisionlist>
