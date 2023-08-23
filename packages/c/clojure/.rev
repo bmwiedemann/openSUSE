@@ -191,4 +191,13 @@
     <comment></comment>
     <requestid>1103980</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2b154cd4ae73aa49950d7f10168eb302</srcmd5>
+    <version>1.11.1.1405</version>
+    <time>1692795513</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.11.1.1405:
+  * GitHub releases now contain .sha256 files for binaries</comment>
+    <requestid>1105338</requestid>
+  </revision>
 </revisionlist>
