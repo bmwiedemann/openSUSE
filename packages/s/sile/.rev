@@ -150,4 +150,17 @@
   - packages: Correct chord line height and chord font use (forwarded request 1098263 from Pi-Cla)</comment>
     <requestid>1098264</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ccdcf3083cd797ce233e2c97e1603abf</srcmd5>
+    <version>0.14.11</version>
+    <time>1692795515</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.11
+ * Bug Fixes:
+  - core: Leave legacy masterFilename alone but use first input filename internally
+  - core: Make masterFilename actually a filename
+  - packages: Avoid mix-and-matching indents in fixed-width specimin blocks
+  - utilities: Use real semver parser for deprecation warnings</comment>
+    <requestid>1105339</requestid>
+  </revision>
 </revisionlist>
