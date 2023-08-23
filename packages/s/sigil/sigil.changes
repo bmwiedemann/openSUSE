@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 23 05:32:42 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.0.1
+  * Bug Fixes
+    - fix crash when right click on Misc folder in BookBrowser
+    - Allow user to revert CodeView drag_and_drop change via
+      environment variable: SIGIL_ALLOW_CODEVIEW_DROP=1
+      Note: Using DragnDrop in CodeView is still NOT officially supported.
+    - add inadvertantly missed updated Serbian translation (ts) file
+
+-------------------------------------------------------------------
 Sat Aug 19 19:53:16 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.0.0
