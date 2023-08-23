@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 21 23:30:17 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.5.2 (bsc#1214422)
+  * Fixes:
+    + ivy:retrieve could fail because of a 'NullPointerException' 
+      (jira:IVY-1641[])
+    + reading POMs may loose dependencies when multiple Maven
+      dependencies only differ in 'classifier' (jira:IVY-1642[])
+    + CVE-2022-46751: Apache Ivy Is Vulnerable to XML External
+      Entity Injections
+
+-------------------------------------------------------------------
 Mon Nov  7 08:10:54 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Upgrade to version 2.5.1 (bsc#1205142, bsc#1205138)

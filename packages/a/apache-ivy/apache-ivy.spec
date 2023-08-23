@@ -1,7 +1,7 @@
 #
 # spec file for package apache-ivy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %bcond_without  sftp
 %bcond_without  vfs
 Name:           apache-ivy
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        Java-based dependency manager
 License:        Apache-2.0

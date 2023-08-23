@@ -197,4 +197,12 @@
 </comment>
     <requestid>1035296</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f755513b242840039b9448d0a77a346c</srcmd5>
+    <version>2.5.2</version>
+    <time>1692795397</time>
+    <user>anag+factory</user>
+    <comment>2.5.2 - CVE-2022-46751 - bsc#1214422</comment>
+    <requestid>1105156</requestid>
+  </revision>
 </revisionlist>
