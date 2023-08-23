@@ -39,4 +39,19 @@
     <comment></comment>
     <requestid>1083629</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>28d17afd3ba96cff833b52c40c9a4995</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1692795441</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b4
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1105137 from glaubitz)</comment>
+    <requestid>1105138</requestid>
+  </revision>
 </revisionlist>
