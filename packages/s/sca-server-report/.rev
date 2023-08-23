@@ -55,4 +55,12 @@
     <comment>Factory Ready (forwarded request 960266 from jrecord)</comment>
     <requestid>960267</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2bfe6bb124f902e11281a7b73520f262</srcmd5>
+    <version>1.5.2</version>
+    <time>1692795444</time>
+    <user>anag+factory</user>
+    <comment>bsc#119315 (forwarded request 1105142 from jrecord)</comment>
+    <requestid>1105143</requestid>
+  </revision>
 </revisionlist>

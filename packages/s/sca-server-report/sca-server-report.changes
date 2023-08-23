@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 21 19:01:59 UTC 2023 - jason.record@suse.com
+
+- Changes in version 1.5.2
+  + Fixed scatool email failure with python3 (bsc#1192315)
+  + Allow batch mode that does not have progress bar issue#13 (pr#14)
+  + Added quiet and debug modes issue#11
+
+-------------------------------------------------------------------
 Mon Mar  7 19:18:39 UTC 2022 - Jason Record <jason.record@suse.com>
 
 - Changes to updated version 1.5.1
