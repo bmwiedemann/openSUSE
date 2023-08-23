@@ -26,7 +26,7 @@ Name:           monitoring-plugins-zypper
 Summary:        Check for software updates via zypper
 License:        BSD-3-Clause
 Group:          System/Monitoring
-Version:        1.98.10
+Version:        1.98.11
 Release:        0
 URL:            https://github.com/lrupp/monitoring-plugins-zypper
 Source0:        %{name}-%{version}.tar.xz

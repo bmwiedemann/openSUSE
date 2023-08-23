@@ -196,4 +196,12 @@ Package might get out as maintenance update for 13.2 (see bnc#904170) after acce
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1099081</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1a1800f763ea6802780a3248415c83bb</srcmd5>
+    <version>1.98.11</version>
+    <time>1692795521</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1105442</requestid>
+  </revision>
 </revisionlist>

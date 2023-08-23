@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 16 08:05:02 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 1.98.11
+  + Update AppArmor profile to work with Tumbleweed
+
+-------------------------------------------------------------------
 Mon Jul 10 10:12:41 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 1.98.10
