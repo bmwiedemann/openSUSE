@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 15 14:20:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.5:
+  * terraform init: Fix crash when using invalid configuration in
+    backend blocks. (#33628)
+
+-------------------------------------------------------------------
 Thu Jul 27 04:29:59 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.5.4:
