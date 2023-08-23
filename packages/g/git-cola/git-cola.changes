@@ -1,34 +1,42 @@
 -------------------------------------------------------------------
+Tue Aug 22 11:43:37 UTC 2023 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 4.3.1
+- Fixes
+  * The pypi wheel was fixed to include entry_points.txt.
+  * The "Revert" command was throwing an exception after succesfully completing.
+
+-------------------------------------------------------------------
 Sun Aug 13 23:26:22 UTC 2023 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Update to 4.3.0
 - Usability, bells and whistles
-* `git dag` now displays commit metadata more similarly to `git log`.
-  The commit date is now displayed and the subject field is displayed
-  directly above the extended description.
-* `git dag` now supports a `cola.logdate` configuration for controlling
-  the date format. The configured value is passed to `git log --date=<format>`.
-  https://github.com/git-cola/git-cola/pull/1319
-  https://github.com/git-cola/git-cola/issues/1312
-* The default `patches` directory that is used when exporting patches
-  is now configurable using the `cola.patchesdirectory` configuration
-  variable and the Preferences dialog.
-* The Diff Editor can now export the diff selection, or the current
-  diff hunk, to a `*.patch` file from the `Patches` context menu action.
-* Existing patches can be appended to by choosing a patch file from
-  the `Append Patch` sub-menu in the `Patches` context menu action.
-* Patches can now be applied by dragging and dropping patches files from
-  a file browser onto the diff editor. The "Apply Patches" dialog is
-  launched with the drag-and-dropped patch files.
-* Shell completions for zsh are now provided in the source distribution.
-  See the `contrib/_git-cola` zsh completion file for more details
+  * `git dag` now displays commit metadata more similarly to `git log`.
+    The commit date is now displayed and the subject field is displayed
+    directly above the extended description.
+  * `git dag` now supports a `cola.logdate` configuration for controlling
+    the date format. The configured value is passed to `git log --date=<format>`.
+    https://github.com/git-cola/git-cola/pull/1319
+    https://github.com/git-cola/git-cola/issues/1312
+  * The default `patches` directory that is used when exporting patches
+    is now configurable using the `cola.patchesdirectory` configuration
+    variable and the Preferences dialog.
+  * The Diff Editor can now export the diff selection, or the current
+    diff hunk, to a `*.patch` file from the `Patches` context menu action.
+  * Existing patches can be appended to by choosing a patch file from
+    the `Append Patch` sub-menu in the `Patches` context menu action.
+  * Patches can now be applied by dragging and dropping patches files from
+    a file browser onto the diff editor. The "Apply Patches" dialog is
+    launched with the drag-and-dropped patch files.
+  * Shell completions for zsh are now provided in the source distribution.
+    See the `contrib/_git-cola` zsh completion file for more details
 - Fixes
-* ``QApplication::desktop()`` is no longer available on PyQt6.
-  Git Cola no longer relies on this method.
+  * ``QApplication::desktop()`` is no longer available on PyQt6.
+    Git Cola no longer relies on this method.
 - Packaging
-* Git Cola can now be installed on Windows using `winget`.
-  See the ``README.md`` file for more details.
-  https://github.com/git-cola/git-cola/pull/1318
+  * Git Cola can now be installed on Windows using `winget`.
+    See the ``README.md`` file for more details.
+    https://github.com/git-cola/git-cola/pull/1318
 
 -------------------------------------------------------------------
 Mon Apr  3 13:38:36 UTC 2023 - Marcin Bajor <marcin.bajor@gmail.com>
