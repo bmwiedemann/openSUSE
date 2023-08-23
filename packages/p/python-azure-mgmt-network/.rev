@@ -304,4 +304,17 @@
     <comment></comment>
     <requestid>1103903</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f8b323ae9acd05c48f527c32c7827b33</srcmd5>
+    <version>25.0.0</version>
+    <time>1692795479</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 25.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1105225 from glaubitz)</comment>
+    <requestid>1105242</requestid>
+  </revision>
 </revisionlist>
