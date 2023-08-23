@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul 27 10:13:04 UTC 2023 - Ish Sookun <ish@hacklog.in>
+
+- Update to version 2.5.8
+  * Fixed regression in edge cases where root package gets added to a repository already during the install process (#11495)
+  * Fixed EventDispatcher on windows picking bat files when using "@php binary" (#11490)
+  * Fixed ICU CLDR version parsing failing the whole process when ICU cannot initialize the resource bundle (#11492)
+  * Fixed type declarations on ClassLoader (#11500)
+- Update to version 2.5.7
+  * Fixed regression preventing autoloading the dependencies of metapackages when running --no-dev (#11481)
+- Update to version 2.5.6
+  * BC Warning: Installers and InstallationManager::getInstallPath will now return null instead of an empty string for metapackages' paths. This may have adverse effects on plugin code using this expecting always a string but it is unlikely (#11455)
+  * Fixed metapackages showing their install path as the root package's path instead of empty (#11455)
+  * Fixed lock file verification on install to deal better with replace/provide (#11475)
+  * Fixed lock file having a more recent modification time than the vendor dir when require guesses the constraint after resolution (#11405)
+  * Fixed numeric default branches with a v prefix being treated as non-numeric ones and receiving an alias like e.g. dev-main would (e51d755a08)
+  * Fixed binary proxies not being transparent when included by another PHP process and returning a value (#11454)
+  * Fixed support for plugin classes being marked as readonly (#11404)
+  * Fixed getmypid being required as it is not always available (#11401)
+  * Fixed authentication issue when downloading several files from private Bitbucket in parallel (#11464)
+
+-------------------------------------------------------------------
 Tue Mar 21 11:38:06 UTC 2023 - Yunhe Guo <i@guoyunhe.me>
 
 - Update to version 2.5.5
