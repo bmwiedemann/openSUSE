@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 21 10:32:37 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.2.2
+  * add create_params function
+  * add ModelResult.summary() to return many resulting fit statistics 
+    and attributes into a JSON-able dict.
+  * update tests for latest versions of NumPy and SciPy.
+  * Coercing of user input data and independent data for Model to 
+    float64 ndarrays is somewhat less aggressive and will not increase 
+    the precision of numpy ndarrays
+  * improve Model.make_params and create_params to take optional dict 
+    of Parameter attributes
+  * Outputs of residual functions, including Model._residual, are more
+    explicitly coerced to 1d-arrays of datatype Float64. This decreases the
+    expectation for the user-supplied code to return ndarrays, and increases
+    the tolerance for more “array-like” objects or ndarrays that are not
+    Float64 or 1-dimensional.
+
+-------------------------------------------------------------------
 Fri Jan 13 15:42:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to v1.1.0

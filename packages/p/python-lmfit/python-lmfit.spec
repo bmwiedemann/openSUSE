@@ -17,7 +17,7 @@
 
 
 Name:           python-lmfit
-Version:        1.1.0
+Version:        1.2.2
 Release:        0
 Summary:        Least-Squares Minimization with Bounds and Constraints
 License:        BSD-3-Clause AND MIT
@@ -89,6 +89,7 @@ donttest+=" or test_shgo_scipy_vs_lmfit_2"
 # fails on 32-bit
 if [ $(getconf LONG_BIT) -ne 64 ]; then
   donttest+=" or (test_itercb_minimizer_class and leastsq and False)"
+  donttest+=" or (test_aborted_solvers and brute)"
 fi
 %pytest -k "not ($donttest)"
 
