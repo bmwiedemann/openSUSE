@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Aug 22 07:44:39 UTC 2023 - pdostal@suse.com
+
+- Update to version 1.32.0:
+  * feat: handle response from VertexAI instead of OpenAI
+  * feat: add support for child pipelines in ci view
+  * fix: Don't add glab-resolved when it already exists in a remote
+  * feat(ci): add Pipeline IID to `ci list`
+  * fix(deps): upgrade go-gitlab to v0.88.0
+  * fix(issue): fix using issue commands from non-git dir
+  * test: Fix test Test_repoArchive_Integration integration test
+  * chore: use latest tview version
+  * chore: downgrade tview
+  * fix: Handle trailing slash in remote URL
+  * fix(ci run): use correct default branch
+  * release: fix assets-links suggestion/help
+  * fix: use basereporemote.name as argument to GetDefaultBranch
+  * chore: enable better debugging for flaky test
+  * docs: clarify possible options for parameters for "ci list"
+  * chore(ci): save test log as an artifact
+  * chore: bumping go-gitlab to 0.86.0
+  * chore(ci): remove ssh key from build
+  * fix: goreleaser deprecated replacements, fixing the filename templates
+  * fix: Preventing a panic when not using a sub command
+  * feat: add incident note command
+  * chore: use new test repo for clone integration tests
+  * fixup! set error context in mrBody
+  * fixup! no index trickery, compare values
+  * feat(mr): populate description from commit messages
+  * refactor(mr): split mrBody out of mrBodyAndTitle
+
+-------------------------------------------------------------------
 Wed Jun 28 06:37:40 UTC 2023 - pdostal@suse.com
 
 - Update to version 1.31.0:
