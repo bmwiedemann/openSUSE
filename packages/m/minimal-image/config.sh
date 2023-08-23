@@ -17,6 +17,13 @@ if command -v rpm > /dev/null; then
 fi
 
 
+#==========================================
+# Remove compat-usrmerge-tools if installed
+#------------------------------------------
+if rpm -q compat-usrmerge-tools; then
+    rpm -e compat-usrmerge-tools
+fi
+
 
 #=======================================
 # Clean up after zypper if it is present

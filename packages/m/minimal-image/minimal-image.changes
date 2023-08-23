@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  9 14:54:19 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Remove unnecessary usrmerge compat package
+
+-------------------------------------------------------------------
 Wed Jul 12 12:52:48 UTC 2023 - Dirk Mueller <dmueller@suse.com>
 
 - Replace distribution-release with openSUSE-release and openSUSE-release-appliance-docker
