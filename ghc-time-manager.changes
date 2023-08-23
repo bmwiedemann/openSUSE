@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 17 06:05:42 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update time-manager to version 0.0.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:39 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
