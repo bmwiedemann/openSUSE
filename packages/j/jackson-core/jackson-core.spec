@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-core
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-core
-Version:        2.13.3
+Version:        2.15.2
 Release:        0
 Summary:        Core part of Jackson
 License:        Apache-2.0
@@ -25,10 +25,11 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/FasterXML/jackson-core/
 Source0:        https://github.com/FasterXML/jackson-core/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-build.xml
+Patch0:         0001-Remove-ch.randelshofer.fastdoubleparser.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.6
-BuildRequires:  javapackages-local
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -45,16 +46,11 @@ This package contains API documentation for %{name}.
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 cp %{SOURCE1} build.xml
-mkdir -p lib
-
-# Remove section unnecessary for ant build
-%pom_remove_parent
-%pom_xpath_remove pom:project/pom:build
-
-cp -p src/main/resources/META-INF/NOTICE .
-sed -i 's/\r//' LICENSE NOTICE
+%patch0 -p1
+%pom_remove_dep "ch.randelshofer:fastdoubleparser"
 
 %build
+mkdir -p lib
 %{ant} -Dtest.skip=true package javadoc
 
 %install
@@ -62,7 +58,7 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 
 install -dm 0755 %{buildroot}%{_javadocdir}

@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Mon Aug 21 13:05:24 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.15.2
+  * 2.15.2 (30-May-2023)
+    + #1019: Allow override of 'StreamReadContraints' default with
+      'overrideDefaultStreamReadConstraints()'
+    + #1027: Extra module-info.class in 2.15.1
+    + #1028: Wrong checksums in 'module.json' (2.15.0, 2.15.1)
+    + #1032: 'LICENSE' missing from 2.15.1 jar
+  * 2.15.1 (16-May-2023))
+    + #999: Gradle metadata for 'jackson-core' '2.15.0' adds
+      dependency on 'ch.randelshofer:fastdoubleparser'
+    + #1003: Add FastDoubleParser section to 'NOTICE'
+    + #1014: Increase default max allowed String value length from
+      5 megs to 20 megs
+    + #1023: Problem with 'FilteringGeneratorDelegate' wrt
+      'TokenFilter.Inclusion.INCLUDE_NON_NULL'
+  * 2.15.0 (23-Apr-2023)
+    + #827: Add numeric value size limits via
+      'StreamReadConstraints' (fixes 'sonatype-2022-6438')
+    + #844: Add SLSA provenance via build script
+    + #851: Add 'StreamReadFeature.USE_FAST_BIG_DECIMAL_PARSER' to
+      enable faster 'BigDecimal', 'BigInteger' parsing
+    + #863: Add 'StreamReadConstraints' limit for longest textual
+      value to allow (default: 5M)
+    + #865: Optimize parsing 19 digit longs
+    + #898: Possible flaw in 'TokenFilterContext#skipParentChecks()'
+    + #902: Add 'Object JsonParser.getNumberValueDeferred()' method
+      to allow for deferred decoding in some cases
+    + #921: Add 'JsonFactory.Feature.CHARSET_DETECTION' to disable
+      charset detection
+    + #948: Use 'StreamConstraintsException' in name canonicalizers
+    + #962: Offer a way to directly set 'StreamReadConstraints' via
+     'JsonFactory' (not just Builder)
+    + #965: 2.15.0-rc1 missing Gradle module metadata marker in
+      pom.xml
+    + #968: Prevent inefficient internal conversion from
+      'BigDecimal' to 'BigInteger' wrt ultra-large scale
+    + #984: Add 'JsonGenerator.copyCurrentEventExact' as alternative
+      to 'copyCurrentEvent()'
+  * 2.14.3 (05-May-2023)
+    + #909: Revert schubfach changes in #854
+    + #912: Optional padding Base64Variant still throws exception on
+      missing padding character
+    + #967: Address performance issue with 'BigDecimalParser'
+    + #990: Backport removal of BigDecimal to BigInt conversion
+      (#987)
+    + #1004: FastDoubleParser license
+    + #1012: Got 'NegativeArraySizeException' when calling
+      'writeValueAsString()'
+  * 2.14.2 (28-Jan-2023)
+    + #854: Backport schubfach changes from v2.15#8
+    + #882: Allow TokenFIlter to skip last elements in arrays
+    + #886: Avoid instance creations in fast parser code
+    + #890: 'FilteringGeneratorDelegate' does not create new
+      'filterContext' if 'tokenFilter' is null
+  * 2.14.0 (05-Nov-2022)
+    + #478: Provide implementation of async JSON parser fed by
+      'ByteBufferFeeder'
+    + #577: Allow use of faster floating-point number parsing with
+      'StreamReadFeature.USE_FAST_DOUBLE_PARSER'
+    + #684: Add "JsonPointer#appendProperty" and
+      "JsonPointer#appendIndex"
+    + #715: Allow TokenFilters to keep empty arrays and objects
+    + #717: Hex capitalization for JsonWriter should be configurable
+      (add 'JsonWriteFeature.WRITE_HEX_UPPER_CASE')
+    + #733: Add 'StreamReadCapability.EXACT_FLOATS' to indicate
+      whether parser reports exact floating-point values or not
+    + #736: 'JsonPointer' quadratic memory use: OOME on deep inputs
+    + #745: Change minimum Java version to 8
+    + #749: Allow use of faster floating-point number serialization
+      ('StreamWriteFeature.USE_FAST_DOUBLE_WRITER')
+    + #751: Remove workaround for old issue with a particular double
+    + #753: Add 'NumberInput.parseFloat()'
+    + #757: Update ParserBase to support floats directly
+    + #759: JsonGenerator to provide current value to the context
+      before starting objects
+    + #762: Make 'JsonPointer' 'java.io.Serializable'
+    + #763: 'JsonFactory.createParser()' with 'File' may leak
+      'InputStream's
+    + #764: 'JsonFactory.createGenerator()' with 'File' may leak
+      'OutputStream's
+    + #773: Add option to accept non-standard trailing decimal point
+      ('JsonReadFeature.ALLOW_TRAILING_DECIMAL_POINT_FOR_NUMBERS')
+    + #774: Add a feature to allow leading plus sign
+      ('JsonReadFeature.ALLOW_LEADING_PLUS_SIGN_FOR_NUMBERS')
+    + #788: 'JsonPointer.empty()' should NOT indicate match of a
+      property with key of ""
+    + #798: Avoid copy when parsing 'BigDecimal'
+    + #811: Add explicit bounds checks for 'JsonGenerator' methods
+      that take 'byte[]'/'char[]'/String-with-offsets input
+    + #812: Add explicit bounds checks for
+      'JsonFactory.createParser()' methods that take
+      'byte[]'/'char[]'-with-offsets input
+    + #814: Use 'BigDecimalParser' for BigInteger parsing very long
+      numbers
+    + #818: Calling 'JsonPointer.compile(...)' on very deeply nested
+      expression throws 'StackOverflowError'
+    + #828: Make 'BigInteger' parsing lazy
+    + #830: Make 'BigDecimal' parsing lazy
+    + #834: ReaderBaseJsonParser._verifyRootSpace() can cause buffer
+      boundary failure
+- Added patch:
+  * 0001-Remove-ch.randelshofer.fastdoubleparser.patch
+    + we don't have 'ch.randelshofer:fastdoubleparser'
+
+-------------------------------------------------------------------
 Wed Jun 15 06:37:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.13.3
@@ -6,7 +113,7 @@ Wed Jun 15 06:37:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
     + #744: Limit size of exception message in BigDecimalParser
   * 2.13.2 (06-Mar-2022)
     + #732: Update Maven wrapper
-    + #739: `JsonLocation` in 2.13 only uses identity comparison
+    + #739: 'JsonLocation' in 2.13 only uses identity comparison
       for "content reference"
   * 2.13.1 (19-Dec-2021)
     + #713: Incorrect parsing of single-quoted surrounded String
