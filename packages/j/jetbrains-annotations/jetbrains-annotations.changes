@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 21 17:28:40 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Avoid unnecessary use of xmvn-tools for build
+
+-------------------------------------------------------------------
 Mon Dec  5 16:11:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 23.0.0

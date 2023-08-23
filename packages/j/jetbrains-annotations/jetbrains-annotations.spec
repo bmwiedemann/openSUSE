@@ -1,7 +1,7 @@
 #
 # spec file for package jetbrains-annotations
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%global oname annotations
 Name:           jetbrains-annotations
 Version:        23.0.0
 Release:        0
@@ -29,9 +28,7 @@ Source1:        https://repo1.maven.org/maven2/org/jetbrains/annotations/%{versi
 Source2:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -48,23 +45,27 @@ This package contains javadoc for %{name}.
 %setup -q
 cp -p %{SOURCE2} build.xml
 
-%{mvn_file} org.jetbrains:%{oname} %{name}
-%{mvn_alias} org.jetbrains:%{oname} com.intellij:
-
-%{mvn_artifact} %{SOURCE1} target/annotations-%{version}.jar
-
 %build
 %{ant} jar javadoc
 
 %install
-%mvn_install
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 target/annotations-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar -a com.intellij:annotations
+
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -r target/site/apidocs %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE.txt
 %doc README.md
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE.txt
 
 %changelog

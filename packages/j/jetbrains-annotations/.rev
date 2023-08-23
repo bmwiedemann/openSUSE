@@ -15,4 +15,12 @@
     <comment>23.0.0</comment>
     <requestid>1040363</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>53f02218f6f5929b38250ccafd90ed5e</srcmd5>
+    <version>23.0.0</version>
+    <time>1692795438</time>
+    <user>anag+factory</user>
+    <comment>avoid use of xmvn-tools for build</comment>
+    <requestid>1105128</requestid>
+  </revision>
 </revisionlist>
