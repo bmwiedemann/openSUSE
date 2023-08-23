@@ -1,0 +1,5 @@
+<package name="rmt-server-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed RMT Server Container Image</title>
+  <description>SUSE RMT Server based on the SLE Base Container Image.</description>
+  <devel project="devel:BCI:Tumbleweed" package="rmt-server-image"/>
+</package>
