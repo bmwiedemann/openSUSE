@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-modules-base
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           jackson-modules-base
-Version:        2.13.3
+Version:        2.15.2
 Release:        0
 Summary:        Jackson modules: Base
 License:        Apache-2.0
 URL:            https://github.com/FasterXML/jackson-modules-base
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  maven-local
-BuildRequires:  mvn(cglib:cglib)
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.13
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.13
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= %{version}
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.13
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.15
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.15
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.15
+BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.15
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(com.google.inject:guice)
 BuildRequires:  mvn(com.thoughtworks.paranamer:paranamer)
@@ -128,6 +127,7 @@ This package contains API documentation for %{name}.
 
 # no need for gradle metadata
 %pom_remove_plugin -r :gradle-module-metadata-maven-plugin
+%pom_remove_plugin -r :find-and-replace-maven-plugin
 
 # move to "old" glassfish-jaxb-api artifactId
 %pom_change_dep -r jakarta.xml.bind:jakarta.xml.bind-api javax.xml.bind:jaxb-api
@@ -135,7 +135,6 @@ This package contains API documentation for %{name}.
 
 # Disable bundling of asm
 %pom_remove_plugin ":maven-shade-plugin" afterburner mrbean paranamer
-%pom_xpath_remove "pom:properties/pom:osgi.private" mrbean paranamer
 
 sed -i 's/\r//' mrbean/src/main/resources/META-INF/{LICENSE,NOTICE}
 cp -p mrbean/src/main/resources/META-INF/{LICENSE,NOTICE} .

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Aug 21 14:26:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Version upgrade to 2.15.2
+  * 2.15.2 (30-May-2023)
+    + #207: Mr Bean exposing 'Asm' as Maven dependency despite
+      shading
+    + (afterburner, mrbean) 'org.ow2.asm:asm' updated to 9.5
+      (from 9.4)
+  * 2.15.1 (16-May-2023)
+    + #204: (afterburner, mrbean) Gradle metadata for
+     'jackson-core' '2.15.0' adds dependency on shaded
+     'org.ow2.asm:asm'
+  * 2.15.0 (23-Apr-2023)
+    + #190: Filter annotated by JsonInclude.Include.CUSTOM does not
+      get called if property is null with Afterburner/Blackbird
+      module registered
+  * 2.14.3 (05-May-2023)
+    + #198: fix failing tests in java17 CI run
+    + #199: jaxb and jakarta-xmlbind put module-info in versions/11
+    + Fix Gradle Module Metadata for Afterburner, Blackbird
+  * 2.14.0 (05-Nov-2022)
+    + #138: (blackbird) Blackbird doesn't work on Java 15+
+    + #187: Remove stack trace from Blackbirds warnings wrt missing
+     'MethodHandles.lookup()' (on Java 8)
+    + Asm version from 9.0 to 9.4
+
+-------------------------------------------------------------------
 Wed Jun 15 09:32:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Version upgrade to 2.13.3
