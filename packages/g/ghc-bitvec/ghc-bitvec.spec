@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.4.0
+Version:        1.1.5.0
 Release:        0
 Summary:        Space-efficient bit vectors
 License:        BSD-3-Clause
@@ -52,7 +52,7 @@ BuildRequires:  ghc-tasty-quickcheck-prof
 
 %description
 A newtype over 'Bool' with a better 'Vector' instance: 8x less memory, up to
-1000x faster.
+3500x faster.
 
 The <https://hackage.haskell.org/package/vector vector> package represents
 unboxed arrays of 'Bool's spending 1 byte (8 bits) per boolean. This library
@@ -60,14 +60,19 @@ provides a newtype wrapper 'Bit' and a custom instance of an unboxed 'Vector',
 which packs bits densely, achieving an __8x smaller memory footprint.__ The
 performance stays mostly the same; the most significant degradation happens for
 random writes (up to 10% slower). On the other hand, for certain bulk bit
-operations 'Vector' 'Bit' is up to 1000x faster than 'Vector' 'Bool'.
+operations 'Vector' 'Bit' is up to 3500x faster than 'Vector' 'Bool'.
 
 === Thread safety
 
-* "Data.Bit" is faster, but writes and flips are thread-unsafe. This is because
-naive updates are not atomic: they read the whole word from memory, then modify
-a bit, then write the whole word back. * "Data.Bit.ThreadSafe" is slower
-(usually 10-20%), but writes and flips are thread-safe.
+* "Data.Bit" is faster, but writes and flips are not thread-safe. This is
+because naive updates are not atomic: they read the whole word from memory,
+then modify a bit, then write the whole word back. Concurrently modifying
+non-intersecting slices of the same underlying array may also lead to
+unexpected results, since they can share a word in memory. *
+"Data.Bit.ThreadSafe" is slower (usually 10-20%), but writes and flips are
+thread-safe. Additionally, concurrently modifying non-intersecting slices of
+the same underlying array works as expected. However, operations that affect
+multiple elements are not guaranteed to be atomic.
 
 === Similar packages
 
