@@ -8265,11 +8265,15 @@ unsorted:
   - jackson-datatype-hppc 
   - jackson-datatypes-collections 
   - jackson-datatypes-collections-javadoc 
+  - jackson-jaxrs-cbor-provider 
   - jackson-jaxrs-json-provider 
   - jackson-jaxrs-providers 
   - jackson-jaxrs-providers-datatypes 
   - jackson-jaxrs-providers-javadoc 
   - jackson-jaxrs-providers-parent 
+  - jackson-jaxrs-smile-provider 
+  - jackson-jaxrs-xml-provider 
+  - jackson-jaxrs-yaml-provider 
   - jackson-module-afterburner 
   - jackson-module-blackbird 
   - jackson-module-guice 
@@ -9599,8 +9603,6 @@ unsorted:
   - ladspa-vlevel 
   - ladspa-vocoder 
   - ladspa-zam-plugins 
-  - laf-plugin 
-  - laf-plugin-javadoc 
   - lagrange 
   - lal-devel 
   - lalapps 
@@ -10566,7 +10568,7 @@ unsorted:
   - libagdb-devel 
   - libagdb-tools 
   - libagdb1 
-  - libags5 
+  - libags6 
   - libaio-devel 
   - libaio-devel-32bit 
   - libaio1-32bit 
@@ -44831,7 +44833,7 @@ unsorted:
   - typelib-1_0-Keybinder-0_0 
   - typelib-1_0-Keybinder-3_0 
   - typelib-1_0-Lfb-0_0 
-  - typelib-1_0-Libags-5_0 
+  - typelib-1_0-Libags-6_0 
   - typelib-1_0-Libinsane-1_0 
   - typelib-1_0-Libmsi-1_0 
   - typelib-1_0-LibvirtGConfig-1_0 
@@ -46389,6 +46391,7 @@ unsorted:
   - zoxide 
   - zp 
   - zpaq 
+  - zpaqfranz 
   - zps 
   - zram-generator 
   - zsh-htmldoc 
