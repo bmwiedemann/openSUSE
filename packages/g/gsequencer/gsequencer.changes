@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 22 01:47:01 UTC 2023 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v6.0.1 implemented MIDI UMP utility functions.
+- refactored ags_midi_smf_util.[ch]
+- refactored ags_midi_util.[ch]
+- refactored ags_osc_buffer_util.[ch]
+
+-------------------------------------------------------------------
 Thu Aug 10 14:06:15 UTC 2023 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v5.5.3 improved resampling. Implemented MIDI CI
