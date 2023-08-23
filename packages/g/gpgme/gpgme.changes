@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Aug 22 08:31:50 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix builds with qt and qt6 [T6673]:
+  * qt,tests: Fix build in source directory. Include Qt binding
+    sources before C++ binding sources and C sources. This fixes
+    the problem that the debug.h in the C sources was found before
+    the one in the Qt bindings.
+  * build: Suggest out-of-source build. Suggest to run configure
+    from a build subdirectory.
+  * Add patches:
+    - gpgme-qt-tests-Fix-build-in-source-directory.patch
+    - gpgme-build-Suggest-out-of-source-build.patch
+
+-------------------------------------------------------------------
+Tue Aug 22 08:16:40 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.22.0:
+  * Prevent wrong plaintext when verifying clearsigned signature.
+  * Return bad data error instead of general error on unexpected data.
+  * Take care of offline mode for all operations of gpgsm engine.
+  * Prepare the use of the forthcoming libassuan version 3.
+  * New configure option --with-libtool-modification.
+  * cpp: Expose gpgme_decrypt_result_t.is_mime.
+  * qt: Clean up after failure or cancel of sign/encrypt archive operation.
+  * qt: Add setInputEncoding to QGpgMe::EncryptJob.
+  * qt: Make toLogString helper public.
+  * Interface changes relative to the 1.21.0 release:
+    - qt: EncryptJob::setInputEncoding           NEW.
+    - qt: DecryptionResult::isMime               NEW.
+    - qt: toLogString                            NEW.
+
+-------------------------------------------------------------------
 Thu Aug  3 11:27:50 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Run testsuite in qemu build
