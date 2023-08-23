@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-meson-python
-Version:        0.12.1
+Version:        0.13.2
 Release:        0
 Summary:        Meson Python build backend (PEP 517)
 License:        MIT
@@ -26,7 +26,7 @@ URL:            https://github.com/mesonbuild/meson-python
 Source0:        https://files.pythonhosted.org/packages/source/m/meson_python/meson_python-%{version}.tar.gz
 # for the test suite
 Source1:        https://files.pythonhosted.org/packages/py3/t/tomli/tomli-2.0.1-py3-none-any.whl
-Source2:        https://files.pythonhosted.org/packages/py3/p/pyproject_metadata/pyproject_metadata-0.6.1-py3-none-any.whl
+Source2:        https://files.pythonhosted.org/packages/py3/p/pyproject_metadata/pyproject_metadata-0.7.1-py3-none-any.whl
 Source3:        https://files.pythonhosted.org/packages/py3/p/packaging/packaging-23.0-py3-none-any.whl
 Source4:        https://files.pythonhosted.org/packages/py3/t/typing_extensions/typing_extensions-4.4.0-py3-none-any.whl
 # PATCH-FEATURE-OPENSUSE mesonpy-trim-deps.patch code@bnavigator.de
@@ -35,7 +35,7 @@ Patch11:        mesonpy-trim-deps.patch
 Patch12:        mesonpy-no-wheel-rebuild.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyproject-metadata >= 0.6.1}
+BuildRequires:  %{python_module pyproject-metadata >= 0.7.1}
 BuildRequires:  %{python_module tomli >= 1.0.0 if %python-base < 3.11}
 BuildRequires:  %{python_module typing-extensions >= 3.7.4 if %python-base < 3.10}
 BuildRequires:  fdupes
@@ -43,7 +43,7 @@ BuildRequires:  meson >= 0.63.3
 BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
 Requires:       meson >= 0.63.3
-Requires:       python-pyproject-metadata >= 0.6.1
+Requires:       python-pyproject-metadata >= 0.7.1
 %if 0%{python_version_nodots} < 311
 Requires:       python-tomli >= 1.0.0
 %endif
@@ -83,7 +83,7 @@ export MESONPY_FORCE_LOCAL_LIB=1
 
 %files %{python_files}
 %license LICENSE
-%doc README.md
+%doc README.rst
 %{python_sitelib}/mesonpy
 %{python_sitelib}/meson_python-%{version}*-info
 
