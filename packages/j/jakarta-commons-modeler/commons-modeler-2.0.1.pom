@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?><project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>commons-modeler</groupId>
+  <artifactId>commons-modeler</artifactId>
+  <name>Commons Modeler</name>
+  <version>2.0.1</version>
+  <description>Commons Modeler</description>
+  <url>http://jakarta.apache.org/commons/${pom.artifactId.substring(8)}/</url>
+  <issueManagement>
+    <url>http://issues.apache.org/jira/browse/${pom.artifactId.substring(8).toUpperCase()}</url>
+  </issueManagement>
+  <ciManagement>
+    <notifiers>
+      <notifier>
+        <configuration>
+          <address>commons-dev@jakarta.apache.org</address>
+        </configuration>
+      </notifier>
+    </notifiers>
+  </ciManagement>
+  <inceptionYear>2002</inceptionYear>
+  <mailingLists>
+    <mailingList>
+      <name>Commons Dev List</name>
+      <subscribe>commons-dev-subscribe@jakarta.apache.org</subscribe>
+      <unsubscribe>commons-dev-unsubscribe@jakarta.apache.org</unsubscribe>
+      <archive>http://mail-archives.apache.org/mod_mbox/jakarta-commons-dev/</archive>
+    </mailingList>
+    <mailingList>
+      <name>Commons User List</name>
+      <subscribe>commons-user-subscribe@jakarta.apache.org</subscribe>
+      <unsubscribe>commons-user-unsubscribe@jakarta.apache.org</unsubscribe>
+      <archive>http://mail-archives.apache.org/mod_mbox/jakarta-commons-user/</archive>
+    </mailingList>
+  </mailingLists>
+  <developers>
+    <developer>
+      <id>craigmcc</id>
+      <name>Craig McClanahan</name>
+      <email>craigmcc@apache.org</email>
+      <organization>Apache</organization>
+    </developer>
+    <developer>
+      <id>yoavs</id>
+      <name>Yoav Shapira</name>
+      <email>yoavs@apache.org</email>
+      <organization>Apache</organization>
+    </developer>
+    <developer>
+      <id>billbarker</id>
+      <name>Bill Barker</name>
+      <email>billbarker@apache.org</email>
+      <organization>Apache</organization>
+    </developer>
+    <developer>
+      <id>dims</id>
+      <name>Davanum Srinivas</name>
+      <email>dims@apache.org</email>
+      <organization>Apache</organization>
+    </developer>
+  </developers>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>/LICENSE.txt</url>
+    </license>
+  </licenses>
+  <scm>
+    <connection>scm:svn:http://svn.apache.org/repos/asf/jakarta/commons/proper/${pom.artifactId.substring(8)}/trunk</connection>
+    <url>http://svn.apache.org/repos/asf/jakarta/commons/proper/${pom.artifactId.substring(8)}/trunk</url>
+  </scm>
+  <organization>
+    <name>The Apache Software Foundation</name>
+    <url>http://jakarta.apache.org</url>
+  </organization>
+  <build>
+    <sourceDirectory>src/java</sourceDirectory>
+    <testSourceDirectory>src/test</testSourceDirectory>
+    <resources>
+      <resource>
+        <targetPath>META-INF</targetPath>
+        <directory>.</directory>
+        <includes>
+          <include>NOTICE.txt</include>
+        </includes>
+      </resource>
+      <resource>
+        <targetPath>META-INF</targetPath>
+        <directory>src/java/org/apache/commons/modeler/ant</directory>
+        <includes>
+          <include>ant.properties</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>src/java</directory>
+        <includes>
+          <include>**/ant.properties</include>
+          <include>**/mbeans-descriptors.dtd</include>
+        </includes>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>${pom.build.unitTestSourceDirectory}</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+      </testResource>
+    </testResources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <includes>
+            <include>**/*TestCase.java</include>
+          </includes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <version>1.9.1</version>
+        <configuration>
+          <comment>&lt;strong>Site Only&lt;/strong> - v1.9.1 (minimum)
+              required for building the Site documentation.</comment>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-xdoc-plugin</artifactId>
+        <version>1.9.2</version>
+        <configuration>
+          <comment>&lt;strong>Site Only&lt;/strong> - v1.9.2 (minimum)
+              required for building the Site documentation.</comment>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>commons-digester</groupId>
+      <artifactId>commons-digester</artifactId>
+      <version>1.4.1</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging-api</artifactId>
+      <version>1.0.4</version>
+    </dependency>
+    <dependency>
+      <groupId>mx4j</groupId>
+      <artifactId>mx4j-jmx</artifactId>
+      <version>2.1.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>xml-apis</groupId>
+      <artifactId>xml-apis</artifactId>
+      <version>2.0.2</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.7</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>ant</groupId>
+      <artifactId>ant</artifactId>
+      <version>1.5</version>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+  <distributionManagement>
+    <repository>
+      <id>default</id>
+      <name>Default Repository</name>
+      <url>file:///www/jakarta.apache.org/builds/jakarta-commons/${pom.artifactId.substring(8)}/</url>
+    </repository>
+    <site>
+      <id>default</id>
+      <name>Default Site</name>
+      <url>scp://people.apache.org//www/jakarta.apache.org/commons/${pom.artifactId.substring(8)}/</url>
+    </site>
+    <status>converted</status>
+  </distributionManagement>
+</project>

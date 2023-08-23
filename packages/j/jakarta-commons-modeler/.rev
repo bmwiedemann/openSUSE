@@ -143,4 +143,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>964412</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>c0ebed5dfa4592d9c5dc929dd63640d4</srcmd5>
+    <version>2.0.1</version>
+    <time>1692795437</time>
+    <user>anag+factory</user>
+    <comment>Clean up and distribute with maven metadata</comment>
+    <requestid>1105126</requestid>
+  </revision>
 </revisionlist>

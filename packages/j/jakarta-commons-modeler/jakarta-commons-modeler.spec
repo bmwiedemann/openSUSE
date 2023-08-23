@@ -1,7 +1,7 @@
 #
 # spec file for package jakarta-commons-modeler
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,25 +27,21 @@ Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/dormant/commons-modeler/
 Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Source1:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
+Source10:       https://repo1.maven.org/maven2/%{short_name}/%{short_name}/%{version}/%{short_name}-%{version}.pom
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  jakarta-commons-digester
+BuildRequires:  jakarta-commons-logging
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-tools
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
 BuildRequires:  mx4j
 BuildRequires:  xalan-j2
+BuildRequires:  xerces-j2
 BuildRequires:  xml-commons-apis
-Requires:       jakarta-commons-beanutils >= 1.3
-Requires:       jakarta-commons-collections >= 2.0
-Requires:       jakarta-commons-digester >= 1.2
-Requires:       jakarta-commons-logging >= 1.0
-Requires:       jaxp_parser_impl
-Requires:       jaxp_transform_impl
-Requires:       mx4j
-Requires:       xml-commons-apis
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
+Provides:       apache-%{short_name} = %{version}-%{release}
 BuildArch:      noarch
 
 %description
@@ -69,14 +65,18 @@ Modeler Package.
 
 %prep
 %setup -q -n %{short_name}-%{version}-src
-# remove all binary libs
-find . -name "*.jar" -exec rm -f {} \;
+
+# convert DOS lineenedings to unix
+sed -i 's/\r$//' NOTICE.txt
+sed -i 's/\r$//' RELEASE-NOTES.txt
+sed -i 's/\r$//' xdocs/*.xml
+sed -i 's/\r$//' xdocs/style/*.css
 
 %build
-ant \
+%{ant} \
     -Dant.jar=$(build-classpath ant) \
-    -Djaxp.parser.jar=$(build-classpath jaxp_parser_impl) \
-    -Djaxp.xalan.jar=$(build-classpath jaxp_trasform_impl) \
+    -Djaxp.parser.jar=$(build-classpath xerces-j2) \
+    -Djaxp.xalan.jar=$(build-classpath xalan-j2) \
     -Djmx.jar=$(build-classpath mx4j/mx4j-jmx) \
     -Djunit.jar=$(build-classpath junit) \
     -Dcommons-digester.jar=$(build-classpath commons-digester) \
@@ -85,26 +85,26 @@ ant \
     dist
 
 %install
-# jars
-mkdir -p %{buildroot}%{_javadir}
-cp -a dist/%{short_name}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -s ${jar} `echo $jar| sed  "s|jakarta-||g"`; done)
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -s ${jar} `echo $jar| sed  "s|-%{version}||g"`; done)
+
+# jar
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 dist/%{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
+ln -sf %{name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
+
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} %{SOURCE10} %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
+
 # javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -a dist/docs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-# convert DOS lineenedings to unix
-sed -i 's/\r$//' NOTICE.txt
-sed -i 's/\r$//' RELEASE-NOTES.txt
-sed -i 's/\r$//' xdocs/*.xml
-sed -i 's/\r$//' xdocs/style/*.css
-
-%files
+%files -f .mfiles
 %doc NOTICE.txt RELEASE-NOTES.txt xdocs
 %license LICENSE.txt
-%{_javadir}/*
+%{_javadir}/%{short_name}.jar
 
 %files javadoc
 %{_javadocdir}/%{name}
