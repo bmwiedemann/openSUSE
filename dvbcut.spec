@@ -1,7 +1,7 @@
 #
 # spec file for package dvbcut
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,11 @@ URL:            https://github.com/bernhardu/dvbcut-deb
 Source0:        https://github.com/bernhardu/dvbcut-deb/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE dvbcut-use_pkgconfig.patch aloisio@gmx.com -- use pkgconfig for ffmpeg libraries
 Patch1:         dvbcut-use_pkgconfig.patch
-# PATCH-FIX-OPENSUSE dvbcut-a52.patch aloisio@gmx.com -- Support new version of liba52
-Patch2:         dvbcut-a52.patch
 # PATCH-FIX-OPENSUSE dvbcut-appicon-patch aloisio@gmx.com -- install icon in the proper path
 Patch3:         dvbcut-appicon.patch
 # PATCH-FIX-OPENSUSE dvbcut-locale.patch aloisio@gmx.com -- also install .qm locale files
 Patch4:         dvbcut-locale.patch
-BuildRequires:  automake
+BuildRequires:  autoconf >= 2.71
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
@@ -66,11 +64,7 @@ only very few frames at the beginning and/or end of the selected range are re-
 encoded in order to obtain a valid MPEG file.
 
 %prep
-%setup -q -n %{name}-deb-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1 -n %{name}-deb-%{version}
 
 %build
 export CXXFLAGS="-std=c++11 %{optflags}"
