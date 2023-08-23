@@ -85,7 +85,10 @@ popd
 
 %build
 pushd code
-%{mvn_build} -f -- -Dsource=8
+%if 0%{?rhel}
+MVN_OPTIONS=-j
+%endif
+%{mvn_build} -f $MVN_OPTIONS -- -Dsource=8
 popd
 
 %install
@@ -97,7 +100,9 @@ popd
 %files -f code/.mfiles
 %license code/copyright.txt LICENSE
 
+%if !0%{?rhel}
 %files javadoc -f code/.mfiles-javadoc
 %license code/copyright.txt LICENSE
+%endif
 
 %changelog
