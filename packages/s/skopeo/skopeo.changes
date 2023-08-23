@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 11 05:45:02 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.13.2:
+  * [release-1.13] Bump to v1.13.2
+  * [release-1.31] Bump c/common v0.55.3
+  * Packit: remove pre-sync action
+  * [release-1.13] Bump to v1.13.2-dev
+
+-------------------------------------------------------------------
+Tue Jul 25 06:20:43 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.13.1:
+  * [release-1.13] Bump to v1.13.1
+  * [release-1.13] Bump c/common to v0.55.2
+  * [release-1.13 backport] [CI:BUILD] Packit: install golist before updating downstream spec
+  * [release-1.13] Bump to v1.13.1-dev
+
+-------------------------------------------------------------------
 Mon Jul 10 09:00:07 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.13.0:
