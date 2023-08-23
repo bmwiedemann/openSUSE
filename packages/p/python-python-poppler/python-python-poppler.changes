@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 23 04:20:18 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build with newer rpm
+
+-------------------------------------------------------------------
 Fri Aug 27 20:15:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - remove dangling series file

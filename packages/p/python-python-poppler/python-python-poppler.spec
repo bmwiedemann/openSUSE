@@ -58,7 +58,7 @@ to:
 
 %prep
 %autosetup -p1 -n python-poppler-%version
-sed -i -e 's/-j2/%{?_smp_mflags}/' setup.py
+sed -i -e "s/-j2/%{?_smp_mflags}/" setup.py
 
 %build
 export CXXFLAGS="%{optflags}"
