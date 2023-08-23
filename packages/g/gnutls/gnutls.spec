@@ -40,7 +40,7 @@
 %endif
 %bcond_with tpm
 Name:           gnutls
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -56,17 +56,18 @@ Source4:        gnutls.rpmlintrc
 Patch0:         gnutls-3.5.11-skip-trust-store-tests.patch
 Patch1:         gnutls-FIPS-TLS_KDF_selftest.patch
 Patch2:         gnutls-disable-flaky-test-dtls-resume.patch
+# PATCH-FIX-OPENSUSE The srp test fails with SIGPIPE
+Patch3:         gnutls-srp-test-SIGPIPE.patch
+# PATCH-FIX-OPENSUSE Fix missing GNUTLS_NO_EXTENSIONS compatibility
+Patch4:         gnutls-GNUTLS_NO_EXTENSIONS-compatibility.patch
 # FIPS 140-3 patches:
-#PATCH-FIX-SUSE bsc#1207183 FIPS: DH/ECDH PCT public key regeneration
-Patch100:       gnutls-FIPS-PCT-DH.patch
-Patch101:       gnutls-FIPS-PCT-ECDH.patch
 #PATCH-FIX-SUSE bsc#1207346 FIPS: Change FIPS 140-2 references to FIPS 140-3
-Patch102:       gnutls-FIPS-140-3-references.patch
+Patch100:       gnutls-FIPS-140-3-references.patch
 #PATCH-FIX-SUSE bsc#1211476 FIPS: Skip fixed HMAC verification for nettle, hogweed and gmp
-Patch103:       gnutls-FIPS-HMAC-nettle-hogweed-gmp.patch
+Patch101:       gnutls-FIPS-HMAC-nettle-hogweed-gmp.patch
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 #PATCH-FIX-SUSE bsc#1202146 FIPS: Port gnutls to use jitterentropy
-Patch104:       gnutls-FIPS-jitterentropy.patch
+Patch102:       gnutls-FIPS-jitterentropy.patch
 %endif
 BuildRequires:  autogen
 BuildRequires:  automake

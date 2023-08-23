@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Aug 22 15:00:57 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix missing GNUTLS_NO_EXTENSIONS compatibility.
+  * Upstream: gitlab.com/gnutls/gnutls/commit/abfa8634
+  * Add gnutls-GNUTLS_NO_EXTENSIONS-compatibility.patch
+
+-------------------------------------------------------------------
+Mon Aug 21 09:33:40 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- tests: Fix the SRP test that fails with SIGPIPE signal return due
+  to a socket being closed before using it.
+  * Add gnutls-srp-test-SIGPIPE.patch
+
+-------------------------------------------------------------------
+Mon Aug 7 07:51:59 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 3.8.1:
+  * libgnutls: ClientHello extensions are randomized by default
+    To make fingerprinting harder, TLS extensions in ClientHello
+    messages are shuffled. As this behavior may cause compatibility
+    issue with legacy applications that do not accept the last
+    extension without payload, the behavior can be reverted with the
+    %NO_SHUFFLE_EXTENSIONS priority keyword.
+  * libgnutls: Add support for RFC 9258 external PSK importer.
+    This enables to deploy the same PSK across multiple TLS versions
+    (TLS 1.2 and TLS 1.3) in a secure manner. To use, the application
+    needs to set up a callback that formats the PSK identity using
+    gnutls_psk_format_imported_identity().
+  * libgnutls: %GNUTLS_NO_EXTENSIONS has been renamed to
+    %GNUTLS_NO_DEFAULT_EXTENSIONS.
+  * libgnutls: Add additional PBKDF limit checks in FIPS mode as
+    defined in SP 800-132. Minimum salt length is 128 bits and
+    minimum iterations bound is 1000 for PBKDF in FIPS mode.
+  * libgnutls: Add a mechanism to control whether to enforce extended
+    master secret (RFC 7627). FIPS 140-3 mandates the use of TLS
+    session hash (extended master secret, EMS) in TLS 1.2. To enforce
+    this, a new priority keyword %FORCE_SESSION_HASH is added and if
+    it is set and EMS is not set, the peer aborts the connection. This
+    behavior is the default in FIPS mode, though it can be overridden
+    through the configuration file with the "tls-session-hash" option.
+    In either case non-EMS PRF is reported as a non-approved operation
+    through the FIPS service indicator.
+  * New option --attime to specify current time.
+    To make testing with different timestamp to the system easier, the
+    tools doing certificate verification now provide a new option
+    --attime, which takes an arbitrary time.
+  * API and ABI modifications:
+    gnutls_psk_client_credentials_function3: New typedef
+    gnutls_psk_server_credentials_function3: New typedef
+    gnutls_psk_set_server_credentials_function3: New function
+    gnutls_psk_set_client_credentials_function3: New function
+    gnutls_psk_format_imported_identity: New function
+    GNUTLS_PSK_KEY_EXT: New enum member of gnutls_psk_key_flags
+  * Rebase patches:
+    - gnutls-FIPS-140-3-references.patch
+    - gnutls-FIPS-jitterentropy.patch
+  * Remove patches merged/fixed upstream:
+    - gnutls-FIPS-PCT-DH.patch
+    - gnutls-FIPS-PCT-ECDH.patch
+
+-------------------------------------------------------------------
 Mon May 29 07:27:23 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Fix baselibs.conf to mention libgnutls30-hmac [bsc#1211476]

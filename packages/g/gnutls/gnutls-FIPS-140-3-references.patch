@@ -1,8 +1,8 @@
-Index: gnutls-3.8.0/configure.ac
+Index: gnutls-3.8.1/configure.ac
 ===================================================================
---- gnutls-3.8.0.orig/configure.ac
-+++ gnutls-3.8.0/configure.ac
-@@ -586,19 +586,19 @@ LT_INIT([disable-static,win32-dll,shared
+--- gnutls-3.8.1.orig/configure.ac
++++ gnutls-3.8.1/configure.ac
+@@ -623,19 +623,19 @@ LT_INIT([disable-static,win32-dll,shared
  AC_LIB_HAVE_LINKFLAGS(dl,, [#include <dlfcn.h>], [dladdr (0, 0);])
  
  AC_ARG_ENABLE(fips140-mode,
@@ -25,10 +25,10 @@ Index: gnutls-3.8.0/configure.ac
  
      AC_ARG_WITH(fips140-module-name, AS_HELP_STRING([--with-fips140-module-name],
                                   [specify the FIPS140 module name]),
-Index: gnutls-3.8.0/doc/cha-gtls-app.texi
+Index: gnutls-3.8.1/doc/cha-gtls-app.texi
 ===================================================================
---- gnutls-3.8.0.orig/doc/cha-gtls-app.texi
-+++ gnutls-3.8.0/doc/cha-gtls-app.texi
+--- gnutls-3.8.1.orig/doc/cha-gtls-app.texi
++++ gnutls-3.8.1/doc/cha-gtls-app.texi
 @@ -222,7 +222,7 @@ CPU. The currently available options are
  @end itemize
  
@@ -38,10 +38,10 @@ Index: gnutls-3.8.0/doc/cha-gtls-app.texi
  if set to one it will force the FIPS mode enablement.
  
  @end multitable
-Index: gnutls-3.8.0/doc/cha-internals.texi
+Index: gnutls-3.8.1/doc/cha-internals.texi
 ===================================================================
---- gnutls-3.8.0.orig/doc/cha-internals.texi
-+++ gnutls-3.8.0/doc/cha-internals.texi
+--- gnutls-3.8.1.orig/doc/cha-internals.texi
++++ gnutls-3.8.1/doc/cha-internals.texi
 @@ -14,7 +14,7 @@ happens inside the black box.
  * TLS Hello Extension Handling::
  * Cryptographic Backend::
@@ -162,11 +162,11 @@ Index: gnutls-3.8.0/doc/cha-internals.texi
  operation.  It can be attached to the current execution thread with
  @funcref{gnutls_fips140_push_context} and its internal state will be
  updated until it is detached with
-Index: gnutls-3.8.0/doc/enums.texi
+Index: gnutls-3.8.1/doc/enums.texi
 ===================================================================
---- gnutls-3.8.0.orig/doc/enums.texi
-+++ gnutls-3.8.0/doc/enums.texi
-@@ -1176,7 +1176,7 @@ application traffic secret is installed
+--- gnutls-3.8.1.orig/doc/enums.texi
++++ gnutls-3.8.1/doc/enums.texi
+@@ -1184,7 +1184,7 @@ application traffic secret is installed
  @c gnutls_fips_mode_t
  @table @code
  @item GNUTLS_@-FIPS140_@-DISABLED
@@ -175,7 +175,7 @@ Index: gnutls-3.8.0/doc/enums.texi
  @item GNUTLS_@-FIPS140_@-STRICT
  The default mode; all forbidden operations will cause an
  operation failure via error code.
-@@ -1184,8 +1184,8 @@ operation failure via error code.
+@@ -1192,8 +1192,8 @@ operation failure via error code.
  A transient state during library initialization. That state
  cannot be set or seen by applications.
  @item GNUTLS_@-FIPS140_@-LAX
@@ -186,10 +186,10 @@ Index: gnutls-3.8.0/doc/enums.texi
  application is aware of the followed security policy, and needs
  to utilize disallowed operations for other reasons (e.g., compatibility).
  @item GNUTLS_@-FIPS140_@-LOG
-Index: gnutls-3.8.0/doc/functions/gnutls_fips140_set_mode
+Index: gnutls-3.8.1/doc/functions/gnutls_fips140_set_mode
 ===================================================================
---- gnutls-3.8.0.orig/doc/functions/gnutls_fips140_set_mode
-+++ gnutls-3.8.0/doc/functions/gnutls_fips140_set_mode
+--- gnutls-3.8.1.orig/doc/functions/gnutls_fips140_set_mode
++++ gnutls-3.8.1/doc/functions/gnutls_fips140_set_mode
 @@ -3,7 +3,7 @@
  
  
@@ -215,11 +215,11 @@ Index: gnutls-3.8.0/doc/functions/gnutls_fips140_set_mode
  values for  @code{mode} or to @code{GNUTLS_FIPS140_SELFTESTS}  mode, the library
  switches to @code{GNUTLS_FIPS140_STRICT}  mode.
  
-Index: gnutls-3.8.0/doc/gnutls.html
+Index: gnutls-3.8.1/doc/gnutls.html
 ===================================================================
---- gnutls-3.8.0.orig/doc/gnutls.html
-+++ gnutls-3.8.0/doc/gnutls.html
-@@ -486,7 +486,7 @@ Documentation License&rdquo;.
+--- gnutls-3.8.1.orig/doc/gnutls.html
++++ gnutls-3.8.1/doc/gnutls.html
+@@ -484,7 +484,7 @@ Documentation License&rdquo;.
      <li><a id="toc-TLS-Extension-Handling" href="#TLS-Hello-Extension-Handling">11.4 TLS Extension Handling</a></li>
      <li><a id="toc-Cryptographic-Backend-1" href="#Cryptographic-Backend">11.5 Cryptographic Backend</a></li>
      <li><a id="toc-Random-Number-Generators" href="#Random-Number-Generators_002dinternals">11.6 Random Number Generators</a></li>
@@ -228,16 +228,16 @@ Index: gnutls-3.8.0/doc/gnutls.html
    </ul></li>
    <li><a id="toc-Upgrading-from-previous-versions-1" href="#Upgrading-from-previous-versions">Appendix A Upgrading from previous versions</a></li>
    <li><a id="toc-Support-1" href="#Support">Appendix B Support</a>
-@@ -9009,7 +9009,7 @@ CPU. The currently available options are
- </li><li> 0x200000: Enable VIA PHE
- </li><li> 0x400000: Enable VIA PHE SHA512
+@@ -9035,7 +9035,7 @@ CPU. The currently available options are
+ </li><li>0x200000: Enable VIA PHE
+ </li><li>0x400000: Enable VIA PHE SHA512
  </li></ul></td></tr>
--<tr><td width="30%"><code>GNUTLS_FORCE_FIPS_MODE</code></td><td width="70%">In setups where GnuTLS is compiled with support for FIPS140-2 (see <a href="#FIPS140_002d2-mode">FIPS140-2 mode</a>)
-+<tr><td width="30%"><code>GNUTLS_FORCE_FIPS_MODE</code></td><td width="70%">In setups where GnuTLS is compiled with support for FIPS140-3 (see <a href="#FIPS140_002d2-mode">FIPS140-3 mode</a>)
+-<tr><td width="30%"><code class="code">GNUTLS_FORCE_FIPS_MODE</code></td><td width="70%">In setups where GnuTLS is compiled with support for FIPS140-2 (see <a class="ref" href="#FIPS140_002d2-mode">FIPS140-2 mode</a>)
++<tr><td width="30%"><code class="code">GNUTLS_FORCE_FIPS_MODE</code></td><td width="70%">In setups where GnuTLS is compiled with support for FIPS140-3 (see <a class="ref" href="#FIPS140_002d2-mode">FIPS140-3 mode</a>)
  if set to one it will force the FIPS mode enablement.</td></tr>
+ </tbody>
  </table>
- 
-@@ -18459,7 +18459,7 @@ None:
+@@ -18437,7 +18437,7 @@ None:
         --inline-commands-prefix=str Change the default delimiter for inline commands
         --provider=file        Specify the PKCS #11 provider library
  				- file must pre-exist
@@ -246,7 +246,7 @@ Index: gnutls-3.8.0/doc/gnutls.html
         --list-config          Reports the configuration of the library
         --logfile=str          Redirect informational messages to a specific file
         --keymatexport=str     Label used for exporting keying material
-@@ -19436,7 +19436,7 @@ happens inside the black box.
+@@ -19445,7 +19445,7 @@ happens inside the black box.
  <li><a href="#TLS-Hello-Extension-Handling" accesskey="4">TLS Extension Handling</a></li>
  <li><a href="#Cryptographic-Backend" accesskey="5">Cryptographic Backend</a></li>
  <li><a href="#Random-Number-Generators_002dinternals" accesskey="6">Random Number Generators</a></li>
@@ -254,31 +254,31 @@ Index: gnutls-3.8.0/doc/gnutls.html
 +<li><a href="#FIPS140_002d2-mode" accesskey="7">FIPS140-3 mode</a></li>
  </ul>
  <hr>
- <div class="section" id="The-TLS-Protocol">
-@@ -19965,7 +19965,7 @@ For more information see <a href="#Hardw
- <div class="section" id="Random-Number-Generators_002dinternals">
- <div class="header">
+ <div class="section-level-extent" id="The-TLS-Protocol">
+@@ -19974,7 +19974,7 @@ For more information see <a class="ref"
+ <div class="section-level-extent" id="Random-Number-Generators_002dinternals">
+ <div class="nav-panel">
  <p>
 -Next: <a href="#FIPS140_002d2-mode" accesskey="n" rel="next">FIPS140-2 mode</a>, Previous: <a href="#Cryptographic-Backend" accesskey="p" rel="prev">Cryptographic Backend</a>, Up: <a href="#Internal-architecture-of-GnuTLS" accesskey="u" rel="up">Internal Architecture of GnuTLS</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
 +Next: <a href="#FIPS140_002d2-mode" accesskey="n" rel="next">FIPS140-3 mode</a>, Previous: <a href="#Cryptographic-Backend" accesskey="p" rel="prev">Cryptographic Backend</a>, Up: <a href="#Internal-architecture-of-GnuTLS" accesskey="u" rel="up">Internal Architecture of GnuTLS</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
  </div>
- <span id="Random-Number-Generators"></span><h3 class="section">11.6 Random Number Generators</h3>
+ <h3 class="section" id="Random-Number-Generators">11.6 Random Number Generators</h3>
  
-@@ -19973,7 +19973,7 @@ Next: <a href="#FIPS140_002d2-mode" acce
+@@ -19982,7 +19982,7 @@ Next: <a href="#FIPS140_002d2-mode" acce
  
  <p>GnuTLS provides two random generators. The default, and the AES-DRBG random
  generator which is only used when the library is compiled with support for
 -FIPS140-2 and the system is in FIPS140-2 mode.
 +FIPS140-3 and the system is in FIPS140-3 mode.
  </p>
- <span id="The-default-generator-_002d-inner-workings"></span><h4 class="subheading">The default generator - inner workings</h4>
+ <h4 class="subheading" id="The-default-generator-_002d-inner-workings">The default generator - inner workings</h4>
  
-@@ -20110,22 +20110,22 @@ on the above paragraph, all levels are i
+@@ -20119,22 +20119,22 @@ on the above paragraph, all levels are i
  <p>
  Previous: <a href="#Random-Number-Generators_002dinternals" accesskey="p" rel="prev">Random Number Generators</a>, Up: <a href="#Internal-architecture-of-GnuTLS" accesskey="u" rel="up">Internal Architecture of GnuTLS</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Function-and-Data-Index" title="Index" rel="index">Index</a>]</p>
  </div>
--<span id="FIPS140_002d2-mode-1"></span><h3 class="section">11.7 FIPS140-2 mode</h3>
-+<span id="FIPS140_002d2-mode-1"></span><h3 class="section">11.7 FIPS140-3 mode</h3>
+-<h3 class="section" id="FIPS140_002d2-mode-1">11.7 FIPS140-2 mode</h3>
++<h3 class="section" id="FIPS140_002d2-mode-1">11.7 FIPS140-3 mode</h3>
  
 -<p>GnuTLS can operate in a special mode for FIPS140-2. That mode of operation
 -is for the conformance to NIST&rsquo;s FIPS140-2 publication, which consists of policies
@@ -291,9 +291,9 @@ Index: gnutls-3.8.0/doc/gnutls.html
  </p>
 -<p>There are two distinct library states with regard to FIPS140-2: the FIPS140-2
 +<p>There are two distinct library states with regard to FIPS140-3: the FIPS140-3
- mode is <em>installed</em> if <code>/etc/system-fips</code> is present, and the
--FIPS140-2 mode is <em>enabled</em> if <code>/proc/sys/crypto/fips_enabled</code>
-+FIPS140-3 mode is <em>enabled</em> if <code>/proc/sys/crypto/fips_enabled</code>
+ mode is <em class="emph">installed</em> if <code class="code">/etc/system-fips</code> is present, and the
+-FIPS140-2 mode is <em class="emph">enabled</em> if <code class="code">/proc/sys/crypto/fips_enabled</code>
++FIPS140-3 mode is <em class="emph">enabled</em> if <code class="code">/proc/sys/crypto/fips_enabled</code>
  contains &rsquo;1&rsquo;, which is typically set with the &ldquo;fips=1&rdquo; kernel command line
  option.
  </p>
@@ -301,62 +301,62 @@ Index: gnutls-3.8.0/doc/gnutls.html
 +<p>When the FIPS140-3 mode is installed, the operation of the library is modified
  as follows.
  </p>
- <ul>
-@@ -20134,12 +20134,12 @@ as follows.
- </li><li> Algorithm self-tests are run on library load
+ <ul class="itemize mark-bullet">
+@@ -20143,12 +20143,12 @@ as follows.
+ </li><li>Algorithm self-tests are run on library load
  </li></ul>
  
 -<p>When the FIPS140-2 mode is enabled, The operation of the library is in addition
 +<p>When the FIPS140-3 mode is enabled, The operation of the library is in addition
  modified as follows.
  </p>
- <ul>
--<li> Only approved by FIPS140-2 algorithms are enabled
--</li><li> Only approved by FIPS140-2 key lengths are allowed for key generation
-+<li> Only approved by FIPS140-3 algorithms are enabled
-+</li><li> Only approved by FIPS140-3 key lengths are allowed for key generation
- </li><li> Any cryptographic operation will be refused if any of the self-tests failed
+ <ul class="itemize mark-bullet">
+-<li>Only approved by FIPS140-2 algorithms are enabled
+-</li><li>Only approved by FIPS140-2 key lengths are allowed for key generation
++<li>Only approved by FIPS140-3 algorithms are enabled
++</li><li>Only approved by FIPS140-3 key lengths are allowed for key generation
+ </li><li>Any cryptographic operation will be refused if any of the self-tests failed
  </li></ul>
  
-@@ -20148,7 +20148,7 @@ modified as follows.
- environment variable <code>GNUTLS_SKIP_FIPS_INTEGRITY_CHECKS</code> will disable
+@@ -20157,7 +20157,7 @@ modified as follows.
+ environment variable <code class="code">GNUTLS_SKIP_FIPS_INTEGRITY_CHECKS</code> will disable
  the library integrity tests on startup, and the variable
- <code>GNUTLS_FORCE_FIPS_MODE</code> can be set to force a value from
--<a href="#gnutls_005ffips_005fmode_005ft">Figure 11.5</a>, i.e., &rsquo;1&rsquo; will enable the FIPS140-2
-+<a href="#gnutls_005ffips_005fmode_005ft">Figure 11.5</a>, i.e., &rsquo;1&rsquo; will enable the FIPS140-3
+ <code class="code">GNUTLS_FORCE_FIPS_MODE</code> can be set to force a value from
+-<a class="ref" href="#gnutls_005ffips_005fmode_005ft">Figure 11.5</a>, i.e., &rsquo;1&rsquo; will enable the FIPS140-2
++<a class="ref" href="#gnutls_005ffips_005fmode_005ft">Figure 11.5</a>, i.e., &rsquo;1&rsquo; will enable the FIPS140-3
  mode, while &rsquo;0&rsquo; will disable it.
  </p>
  <p>The integrity checks for the dependent libraries and GnuTLS are performed
-@@ -20156,13 +20156,13 @@ using &rsquo;.hmac&rsquo; files which ar
+@@ -20165,13 +20165,13 @@ using &rsquo;.hmac&rsquo; files which ar
  key for the operations can be provided on compile-time with the configure
  option &rsquo;&ndash;with-fips140-key&rsquo;. The MAC algorithm used is HMAC-SHA256.
  </p>
 -<p>On runtime an application can verify whether the library is in FIPS140-2
 +<p>On runtime an application can verify whether the library is in FIPS140-3
- mode using the <a href="#gnutls_005ffips140_005fmode_005fenabled">gnutls_fips140_mode_enabled</a> function.
+ mode using the <a class="ref" href="#gnutls_005ffips140_005fmode_005fenabled">gnutls_fips140_mode_enabled</a> function.
  </p>
--<span id="Relaxing-FIPS140_002d2-requirements"></span><h4 class="subheading">Relaxing FIPS140-2 requirements</h4>
-+<span id="Relaxing-FIPS140_002d2-requirements"></span><h4 class="subheading">Relaxing FIPS140-3 requirements</h4>
+-<h4 class="subheading" id="Relaxing-FIPS140_002d2-requirements">Relaxing FIPS140-2 requirements</h4>
++<h4 class="subheading" id="Relaxing-FIPS140_002d2-requirements">Relaxing FIPS140-3 requirements</h4>
  
  <p>The library by default operates in a strict enforcing mode, ensuring that
 -all constraints imposed by the FIPS140-2 specification are enforced. However
 +all constraints imposed by the FIPS140-3 specification are enforced. However
- the application can relax these requirements via <a href="#gnutls_005ffips140_005fset_005fmode">gnutls_fips140_set_mode</a>
- which can switch to alternative modes as in <a href="#gnutls_005ffips_005fmode_005ft">Figure 11.5</a>.
+ the application can relax these requirements via <a class="ref" href="#gnutls_005ffips140_005fset_005fmode">gnutls_fips140_set_mode</a>
+ which can switch to alternative modes as in <a class="ref" href="#gnutls_005ffips_005fmode_005ft">Figure 11.5</a>.
  </p>
-@@ -20171,7 +20171,7 @@ which can switch to alternative modes as
+@@ -20180,7 +20180,7 @@ which can switch to alternative modes as
  
- <dl compact="compact">
- <dt><span><code>GNUTLS_FIPS140_DISABLED</code></span></dt>
+ <dl class="table">
+ <dt><code class="code">GNUTLS_FIPS140_DISABLED</code></dt>
 -<dd><p>The FIPS140-2 mode is disabled.
 +<dd><p>The FIPS140-3 mode is disabled.
  </p></dd>
- <dt><span><code>GNUTLS_FIPS140_STRICT</code></span></dt>
+ <dt><code class="code">GNUTLS_FIPS140_STRICT</code></dt>
  <dd><p>The default mode; all forbidden operations will cause an
-@@ -20182,8 +20182,8 @@ operation failure via error code.
+@@ -20191,8 +20191,8 @@ operation failure via error code.
  cannot be set or seen by applications.
  </p></dd>
- <dt><span><code>GNUTLS_FIPS140_LAX</code></span></dt>
+ <dt><code class="code">GNUTLS_FIPS140_LAX</code></dt>
 -<dd><p>The library still uses the FIPS140-2 relevant algorithms but all
 -forbidden by FIPS140-2 operations are allowed; this is useful when the
 +<dd><p>The library still uses the FIPS140-3 relevant algorithms but all
@@ -364,17 +364,17 @@ Index: gnutls-3.8.0/doc/gnutls.html
  application is aware of the followed security policy, and needs
  to utilize disallowed operations for other reasons (e.g., compatibility).
  </p></dd>
-@@ -20195,7 +20195,7 @@ to a message to the audit callback funct
+@@ -20204,7 +20204,7 @@ to a message to the audit callback funct
  
- <div class="float-caption"><p><strong>Figure 11.5: </strong>The <code>gnutls_fips_mode_t</code> enumeration.</p></div></div>
+ <div class="caption"><p><strong class="strong">Figure 11.5: </strong>The <code class="code">gnutls_fips_mode_t</code> enumeration.</p></div></div>
  <p>The intention of this API is to be used by applications which may run in
 -FIPS140-2 mode, while they utilize few algorithms not in the allowed set,
 +FIPS140-3 mode, while they utilize few algorithms not in the allowed set,
  e.g., for non-security related purposes. In these cases applications should
  wrap the non-compliant code within blocks like the following.
  </p>
-@@ -20224,9 +20224,9 @@ if (gnutls_fips140_mode_enabled())
- <p>The reason of the <code>GNUTLS_FIPS140_SET_MODE_THREAD</code> flag in the
+@@ -20233,9 +20233,9 @@ if (gnutls_fips140_mode_enabled())
+ <p>The reason of the <code class="code">GNUTLS_FIPS140_SET_MODE_THREAD</code> flag in the
  previous calls is to localize the change in the mode. Note also, that
  such a block has no effect when the library is not operating
 -under FIPS140-2 mode, and thus it can be considered a no-op.
@@ -383,41 +383,41 @@ Index: gnutls-3.8.0/doc/gnutls.html
 -<p>Applications could also switch FIPS140-2 mode explicitly off, by calling
 +<p>Applications could also switch FIPS140-3 mode explicitly off, by calling
  </p><div class="example">
- <pre class="example">gnutls_fips140_set_mode(GNUTLS_FIPS140_LAX, 0);
+ <pre class="example-preformatted">gnutls_fips140_set_mode(GNUTLS_FIPS140_LAX, 0);
  </pre></div>
-@@ -20249,7 +20249,7 @@ performed within a given context.
- <dt><span><code><var>int</var> <a href="#gnutls_005ffips140_005fpop_005fcontext">gnutls_fips140_pop_context</a> ( <var>void</var>)</code></span></dt>
+@@ -20258,7 +20258,7 @@ performed within a given context.
+ <dt><code class="code"><var class="var">int</var> <a class="ref" href="#gnutls_005ffips140_005fpop_005fcontext">gnutls_fips140_pop_context</a> ( <var class="var">void</var>)</code></dt>
  </dl>
  
--<p>The <code>gnutls_fips140_context_t</code> represents the FIPS140-2 mode of
-+<p>The <code>gnutls_fips140_context_t</code> represents the FIPS140-3 mode of
+-<p>The <code class="code">gnutls_fips140_context_t</code> represents the FIPS140-2 mode of
++<p>The <code class="code">gnutls_fips140_context_t</code> represents the FIPS140-3 mode of
  operation.  It can be attached to the current execution thread with
- <a href="#gnutls_005ffips140_005fpush_005fcontext">gnutls_fips140_push_context</a> and its internal state will be
+ <a class="ref" href="#gnutls_005ffips140_005fpush_005fcontext">gnutls_fips140_push_context</a> and its internal state will be
  updated until it is detached with
-@@ -20615,8 +20615,8 @@ Previous: <a href="#Contributing" access
+@@ -20631,8 +20631,8 @@ Previous: <a href="#Contributing" access
  to an auditor that the crypto component follows some best practices, such
  as unit testing and reliance on well known crypto primitives.
  </p>
 -<p>GnuTLS has support for the FIPS 140-2 certification under Red Hat Enterprise Linux.
--See <a href="#FIPS140_002d2-mode">FIPS140-2 mode</a> for more information.
+-See <a class="ref" href="#FIPS140_002d2-mode">FIPS140-2 mode</a> for more information.
 +<p>GnuTLS has support for the FIPS 140-3 certification under Red Hat Enterprise Linux.
-+See <a href="#FIPS140_002d2-mode">FIPS140-3 mode</a> for more information.
++See <a class="ref" href="#FIPS140_002d2-mode">FIPS140-3 mode</a> for more information.
  </p>
  <hr>
  </div>
-@@ -24526,7 +24526,7 @@ unusable.  This function is not thread-s
- <span id="gnutls_005ffips140_005fset_005fmode-1"></span><h4 class="subheading">gnutls_fips140_set_mode</h4>
- <span id="gnutls_005ffips140_005fset_005fmode"></span><dl class="def">
- <dt id="index-gnutls_005ffips140_005fset_005fmode"><span class="category">Function: </span><span><em>void</em> <strong>gnutls_fips140_set_mode</strong> <em>(gnutls_fips_mode_t <var>mode</var>, unsigned <var>flags</var>)</em><a href='#index-gnutls_005ffips140_005fset_005fmode' class='copiable-anchor'> &para;</a></span></dt>
--<dd><p><var>mode</var>: the FIPS140-2 mode to switch to
-+<dd><p><var>mode</var>: the FIPS140-3 mode to switch to
+@@ -24544,7 +24544,7 @@ unusable.  This function is not thread-s
+ <h4 class="subheading" id="gnutls_005ffips140_005fset_005fmode-1">gnutls_fips140_set_mode</h4>
+ <a class="anchor" id="gnutls_005ffips140_005fset_005fmode"></a><dl class="first-deftypefn first-deftypefun-alias-first-deftypefn">
+ <dt class="deftypefn deftypefun-alias-deftypefn" id="index-gnutls_005ffips140_005fset_005fmode"><span class="category-def">Function: </span><span><code class="def-type">void</code> <strong class="def-name">gnutls_fips140_set_mode</strong> <code class="def-code-arguments">(gnutls_fips_mode_t <var class="var">mode</var>, unsigned <var class="var">flags</var>)</code><a class="copiable-link" href='#index-gnutls_005ffips140_005fset_005fmode'> &para;</a></span></dt>
+-<dd><p><var class="var">mode</var>: the FIPS140-2 mode to switch to
++<dd><p><var class="var">mode</var>: the FIPS140-3 mode to switch to
  </p>
- <p><var>flags</var>: should be zero or <code>GNUTLS_FIPS140_SET_MODE_THREAD</code> 
+ <p><var class="var">flags</var>: should be zero or <code class="code">GNUTLS_FIPS140_SET_MODE_THREAD</code> 
  </p>
-@@ -24535,13 +24535,13 @@ unusable.  This function is not thread-s
+@@ -24553,13 +24553,13 @@ unusable.  This function is not thread-s
  behavior with no flags after threads are created is undefined.
  </p>
- <p>When the flag <code>GNUTLS_FIPS140_SET_MODE_THREAD</code>  is specified
+ <p>When the flag <code class="code">GNUTLS_FIPS140_SET_MODE_THREAD</code>  is specified
 -then this call will change the FIPS140-2 mode for this particular
 +then this call will change the FIPS140-3 mode for this particular
  thread and not for the whole process. That way an application
@@ -427,23 +427,23 @@ Index: gnutls-3.8.0/doc/gnutls.html
  <p>This function never fails but will be a no-op if used when
 -the library is not in FIPS140-2 mode. When asked to switch to unknown
 +the library is not in FIPS140-3 mode. When asked to switch to unknown
- values for  <code>mode</code> or to <code>GNUTLS_FIPS140_SELFTESTS</code>  mode, the library
- switches to <code>GNUTLS_FIPS140_STRICT</code>  mode.
+ values for  <code class="code">mode</code> or to <code class="code">GNUTLS_FIPS140_SELFTESTS</code>  mode, the library
+ switches to <code class="code">GNUTLS_FIPS140_STRICT</code>  mode.
  </p>
-@@ -46662,7 +46662,7 @@ Next: <a href="#Concept-Index" accesskey
- <tr><td></td><td valign="top"><a href="#index-gnutls_005ffingerprint"><code>gnutls_fingerprint</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
- <tr><td></td><td valign="top"><a href="#index-gnutls_005ffips140_005fcontext_005fdeinit"><code>gnutls_fips140_context_deinit</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
- <tr><td></td><td valign="top"><a href="#index-gnutls_005ffips140_005fcontext_005finit"><code>gnutls_fips140_context_init</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
--<tr><td></td><td valign="top"><a href="#index-gnutls_005ffips140_005fget_005foperation_005fstate"><code>gnutls_fips140_get_operation_state</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#FIPS140_002d2-mode">FIPS140-2 mode</a></td></tr>
-+<tr><td></td><td valign="top"><a href="#index-gnutls_005ffips140_005fget_005foperation_005fstate"><code>gnutls_fips140_get_operation_state</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#FIPS140_002d2-mode">FIPS140-3 mode</a></td></tr>
- <tr><td></td><td valign="top"><a href="#index-gnutls_005ffips140_005fget_005foperation_005fstate-1"><code>gnutls_fips140_get_operation_state</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
- <tr><td></td><td valign="top"><a href="#index-gnutls_005ffips140_005fmode_005fenabled"><code>gnutls_fips140_mode_enabled</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
- <tr><td></td><td valign="top"><a href="#index-gnutls_005ffips140_005fpop_005fcontext"><code>gnutls_fips140_pop_context</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
-Index: gnutls-3.8.0/doc/gnutls.info-3
+@@ -46765,7 +46765,7 @@ Next: <a href="#Concept-Index" accesskey
+ <tr><td></td><td class="printindex-index-entry"><a href="#index-gnutls_005ffingerprint"><code>gnutls_fingerprint</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+ <tr><td></td><td class="printindex-index-entry"><a href="#index-gnutls_005ffips140_005fcontext_005fdeinit"><code>gnutls_fips140_context_deinit</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+ <tr><td></td><td class="printindex-index-entry"><a href="#index-gnutls_005ffips140_005fcontext_005finit"><code>gnutls_fips140_context_init</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+-<tr><td></td><td class="printindex-index-entry"><a href="#index-gnutls_005ffips140_005fget_005foperation_005fstate"><code>gnutls_fips140_get_operation_state</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#FIPS140_002d2-mode">FIPS140-2 mode</a></td></tr>
++<tr><td></td><td class="printindex-index-entry"><a href="#index-gnutls_005ffips140_005fget_005foperation_005fstate"><code>gnutls_fips140_get_operation_state</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#FIPS140_002d2-mode">FIPS140-3 mode</a></td></tr>
+ <tr><td></td><td class="printindex-index-entry"><a href="#index-gnutls_005ffips140_005fget_005foperation_005fstate-1"><code>gnutls_fips140_get_operation_state</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+ <tr><td></td><td class="printindex-index-entry"><a href="#index-gnutls_005ffips140_005fmode_005fenabled"><code>gnutls_fips140_mode_enabled</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+ <tr><td></td><td class="printindex-index-entry"><a href="#index-gnutls_005ffips140_005fpop_005fcontext"><code>gnutls_fips140_pop_context</code></a>:</td><td>&nbsp;</td><td class="printindex-index-section"><a href="#Core-TLS-API">Core TLS API</a></td></tr>
+Index: gnutls-3.8.1/doc/gnutls.info-3
 ===================================================================
---- gnutls-3.8.0.orig/doc/gnutls.info-3
-+++ gnutls-3.8.0/doc/gnutls.info-3
-@@ -1631,7 +1631,7 @@ to 'more'.  Both will exit with a status
+--- gnutls-3.8.1.orig/doc/gnutls.info-3
++++ gnutls-3.8.1/doc/gnutls.info-3
+@@ -2241,7 +2241,7 @@ to ‘more’.  Both will exit with a st
              --inline-commands-prefix=str Change the default delimiter for inline commands
              --provider=file        Specify the PKCS #11 provider library
       				- file must pre-exist
@@ -452,7 +452,7 @@ Index: gnutls-3.8.0/doc/gnutls.info-3
              --list-config          Reports the configuration of the library
              --logfile=str          Redirect informational messages to a specific file
              --keymatexport=str     Label used for exporting keying material
-@@ -2732,7 +2732,7 @@ to know what happens inside the black bo
+@@ -3379,7 +3379,7 @@ to know what happens inside the black bo
  * TLS Hello Extension Handling::
  * Cryptographic Backend::
  * Random Number Generators-internals::
@@ -461,8 +461,8 @@ Index: gnutls-3.8.0/doc/gnutls.info-3
  
  
  File: gnutls.info,  Node: The TLS Protocol,  Next: TLS Handshake Protocol,  Up: Internal architecture of GnuTLS
-@@ -3264,7 +3264,7 @@ and abstract key types::.
- kernel implementation of '/dev/crypto'.
+@@ -3911,7 +3911,7 @@ and abstract key types::.
+ kernel implementation of ‘/dev/crypto’.
  
  
 -File: gnutls.info,  Node: Random Number Generators-internals,  Next: FIPS140-2 mode,  Prev: Cryptographic Backend,  Up: Internal architecture of GnuTLS
@@ -470,7 +470,7 @@ Index: gnutls-3.8.0/doc/gnutls.info-3
  
  11.6 Random Number Generators
  =============================
-@@ -3274,7 +3274,7 @@ About the generators
+@@ -3921,7 +3921,7 @@ About the generators
  
  GnuTLS provides two random generators.  The default, and the AES-DRBG
  random generator which is only used when the library is compiled with
@@ -479,102 +479,8 @@ Index: gnutls-3.8.0/doc/gnutls.info-3
  
  The default generator - inner workings
  --------------------------------------
-@@ -3423,25 +3423,25 @@ after observing the output of the PRNG.
- the above paragraph, all levels are immune to such attack.
- 
- 
--File: gnutls.info,  Node: FIPS140-2 mode,  Prev: Random Number Generators-internals,  Up: Internal architecture of GnuTLS
-+File: gnutls.info,  Node: FIPS140-3 mode,  Prev: Random Number Generators-internals,  Up: Internal architecture of GnuTLS
- 
--11.7 FIPS140-2 mode
-+11.7 FIPS140-3 mode
- ===================
- 
--GnuTLS can operate in a special mode for FIPS140-2.  That mode of
--operation is for the conformance to NIST's FIPS140-2 publication, which
-+GnuTLS can operate in a special mode for FIPS140-3.  That mode of
-+operation is for the conformance to NIST's FIPS140-3 publication, which
- consists of policies for cryptographic modules (such as software
- libraries).  Its implementation in GnuTLS is designed for Red Hat
- Enterprise Linux, and can only be enabled when the library is explicitly
- compiled with the '-enable-fips140-mode' configure option.
- 
--There are two distinct library states with regard to FIPS140-2: the
--FIPS140-2 mode is _installed_ if '/etc/system-fips' is present, and the
--FIPS140-2 mode is _enabled_ if '/proc/sys/crypto/fips_enabled' contains
-+There are two distinct library states with regard to FIPS140-3: the
-+FIPS140-3 mode is _installed_ if '/etc/system-fips' is present, and the
-+FIPS140-3 mode is _enabled_ if '/proc/sys/crypto/fips_enabled' contains
- '1', which is typically set with the "fips=1" kernel command line
- option.
- 
--When the FIPS140-2 mode is installed, the operation of the library is
-+When the FIPS140-3 mode is installed, the operation of the library is
- modified as follows.
- 
-    * The random generator used switches to DRBG-AES
-@@ -3449,11 +3449,11 @@ modified as follows.
-      startup
-    * Algorithm self-tests are run on library load
- 
--When the FIPS140-2 mode is enabled, The operation of the library is in
-+When the FIPS140-3 mode is enabled, The operation of the library is in
- addition modified as follows.
- 
--   * Only approved by FIPS140-2 algorithms are enabled
--   * Only approved by FIPS140-2 key lengths are allowed for key
-+   * Only approved by FIPS140-3 algorithms are enabled
-+   * Only approved by FIPS140-3 key lengths are allowed for key
-      generation
-    * Any cryptographic operation will be refused if any of the
-      self-tests failed
-@@ -3462,7 +3462,7 @@ There are also few environment variables
- The environment variable 'GNUTLS_SKIP_FIPS_INTEGRITY_CHECKS' will
- disable the library integrity tests on startup, and the variable
- 'GNUTLS_FORCE_FIPS_MODE' can be set to force a value from *note Figure
--11.5: gnutls_fips_mode_t, i.e., '1' will enable the FIPS140-2 mode,
-+11.5: gnutls_fips_mode_t, i.e., '1' will enable the FIPS140-3 mode,
- while '0' will disable it.
- 
- The integrity checks for the dependent libraries and GnuTLS are
-@@ -3471,20 +3471,20 @@ library.  The key for the operations can
- with the configure option '-with-fips140-key'.  The MAC algorithm used
- is HMAC-SHA256.
- 
--On runtime an application can verify whether the library is in FIPS140-2
-+On runtime an application can verify whether the library is in FIPS140-3
- mode using the *note gnutls_fips140_mode_enabled:: function.
- 
--Relaxing FIPS140-2 requirements
-+Relaxing FIPS140-3 requirements
- -------------------------------
- 
- The library by default operates in a strict enforcing mode, ensuring
--that all constraints imposed by the FIPS140-2 specification are
-+that all constraints imposed by the FIPS140-3 specification are
- enforced.  However the application can relax these requirements via
- *note gnutls_fips140_set_mode:: which can switch to alternative modes as
- in *note Figure 11.5: gnutls_fips_mode_t.
- 
- 'GNUTLS_FIPS140_DISABLED'
--     The FIPS140-2 mode is disabled.
-+     The FIPS140-3 mode is disabled.
- 'GNUTLS_FIPS140_STRICT'
-      The default mode; all forbidden operations will cause an operation
-      failure via error code.
-@@ -3492,8 +3492,8 @@ in *note Figure 11.5: gnutls_fips_mode_t
-      A transient state during library initialization.  That state cannot
-      be set or seen by applications.
- 'GNUTLS_FIPS140_LAX'
--     The library still uses the FIPS140-2 relevant algorithms but all
--     forbidden by FIPS140-2 operations are allowed; this is useful when
-+     The library still uses the FIPS140-3 relevant algorithms but all
-+     forbidden by FIPS140-3 operations are allowed; this is useful when
-      the application is aware of the followed security policy, and needs
-      to utilize disallowed operations for other reasons (e.g.,
-      compatibility).
-@@ -3506,7 +3506,7 @@ in *note Figure 11.5: gnutls_fips_mode_t
- Figure 11.5: The 'gnutls_fips_mode_t' enumeration.
+@@ -4153,7 +4153,7 @@ in *note Figure 11.5: gnutls_fips_mode_t
+ Figure 11.5: The ‘gnutls_fips_mode_t’ enumeration.
  
  The intention of this API is to be used by applications which may run in
 -FIPS140-2 mode, while they utilize few algorithms not in the allowed
@@ -582,9 +488,9 @@ Index: gnutls-3.8.0/doc/gnutls.info-3
  set, e.g., for non-security related purposes.  In these cases
  applications should wrap the non-compliant code within blocks like the
  following.
-@@ -3530,10 +3530,10 @@ are macros to simplify the following seq
+@@ -4177,10 +4177,10 @@ are macros to simplify the following seq
  
- The reason of the 'GNUTLS_FIPS140_SET_MODE_THREAD' flag in the previous
+ The reason of the ‘GNUTLS_FIPS140_SET_MODE_THREAD’ flag in the previous
  calls is to localize the change in the mode.  Note also, that such a
 -block has no effect when the library is not operating under FIPS140-2
 +block has no effect when the library is not operating under FIPS140-3
@@ -595,16 +501,7 @@ Index: gnutls-3.8.0/doc/gnutls.info-3
       gnutls_fips140_set_mode(GNUTLS_FIPS140_LAX, 0);
  
  Service indicator
-@@ -3552,7 +3552,7 @@ within a given context.
- 'INT *note gnutls_fips140_push_context:: (gnutls_fips140_context_t CONTEXT)'
- 'INT *note gnutls_fips140_pop_context:: ( VOID)'
- 
--The 'gnutls_fips140_context_t' represents the FIPS140-2 mode of
-+The 'gnutls_fips140_context_t' represents the FIPS140-3 mode of
- operation.  It can be attached to the current execution thread with
- *note gnutls_fips140_push_context:: and its internal state will be
- updated until it is detached with *note gnutls_fips140_pop_context::.
-@@ -4010,8 +4010,8 @@ There are certifications from national o
+@@ -4662,8 +4662,8 @@ There are certifications from national o
  practices, such as unit testing and reliance on well known crypto
  primitives.
  
@@ -615,34 +512,19 @@ Index: gnutls-3.8.0/doc/gnutls.info-3
  
  
  File: gnutls.info,  Node: Error codes,  Next: Supported ciphersuites,  Prev: Support,  Up: Top
-@@ -8476,7 +8476,7 @@ gnutls_fips140_set_mode
+@@ -9128,7 +9128,7 @@ gnutls_fips140_set_mode
  
   -- Function: void gnutls_fips140_set_mode (gnutls_fips_mode_t MODE,
            unsigned FLAGS)
 -     MODE: the FIPS140-2 mode to switch to
 +     MODE: the FIPS140-3 mode to switch to
  
-      FLAGS: should be zero or 'GNUTLS_FIPS140_SET_MODE_THREAD'
+      FLAGS: should be zero or ‘GNUTLS_FIPS140_SET_MODE_THREAD’
  
-@@ -8486,12 +8486,12 @@ gnutls_fips140_set_mode
-      undefined.
- 
-      When the flag 'GNUTLS_FIPS140_SET_MODE_THREAD' is specified then
--     this call will change the FIPS140-2 mode for this particular thread
-+     this call will change the FIPS140-3 mode for this particular thread
-      and not for the whole process.  That way an application can utilize
-      this function to set and reset mode for specific operations.
- 
-      This function never fails but will be a no-op if used when the
--     library is not in FIPS140-2 mode.  When asked to switch to unknown
-+     library is not in FIPS140-3 mode.  When asked to switch to unknown
-      values for 'mode' or to 'GNUTLS_FIPS140_SELFTESTS' mode, the
-      library switches to 'GNUTLS_FIPS140_STRICT' mode.
- 
-Index: gnutls-3.8.0/doc/invoke-gnutls-cli.texi
+Index: gnutls-3.8.1/doc/invoke-gnutls-cli.texi
 ===================================================================
---- gnutls-3.8.0.orig/doc/invoke-gnutls-cli.texi
-+++ gnutls-3.8.0/doc/invoke-gnutls-cli.texi
+--- gnutls-3.8.1.orig/doc/invoke-gnutls-cli.texi
++++ gnutls-3.8.1/doc/invoke-gnutls-cli.texi
 @@ -99,7 +99,7 @@ None:
         --inline-commands-prefix=str Change the default delimiter for inline commands
         --provider=file        Specify the PKCS #11 provider library
@@ -652,10 +534,10 @@ Index: gnutls-3.8.0/doc/invoke-gnutls-cli.texi
         --list-config          Reports the configuration of the library
         --logfile=str          Redirect informational messages to a specific file
         --keymatexport=str     Label used for exporting keying material
-Index: gnutls-3.8.0/doc/manpages/gnutls-cli.1
+Index: gnutls-3.8.1/doc/manpages/gnutls-cli.1
 ===================================================================
---- gnutls-3.8.0.orig/doc/manpages/gnutls-cli.1
-+++ gnutls-3.8.0/doc/manpages/gnutls-cli.1
+--- gnutls-3.8.1.orig/doc/manpages/gnutls-cli.1
++++ gnutls-3.8.1/doc/manpages/gnutls-cli.1
 @@ -389,7 +389,7 @@ Specify the PKCS #11 provider library.
  This will override the default options in /etc/gnutls/pkcs11.conf
  .TP
@@ -665,11 +547,11 @@ Index: gnutls-3.8.0/doc/manpages/gnutls-cli.1
  .sp
  .TP
  .NOP \f\*[B-Font]\-\-list\-config\f[]
-Index: gnutls-3.8.0/doc/reference/html/gnutls-gnutls.html
+Index: gnutls-3.8.1/doc/reference/html/gnutls-gnutls.html
 ===================================================================
---- gnutls-3.8.0.orig/doc/reference/html/gnutls-gnutls.html
-+++ gnutls-3.8.0/doc/reference/html/gnutls-gnutls.html
-@@ -20580,12 +20580,12 @@ gnutls_fips140_set_mode (<em class="para
+--- gnutls-3.8.1.orig/doc/reference/html/gnutls-gnutls.html
++++ gnutls-3.8.1/doc/reference/html/gnutls-gnutls.html
+@@ -20862,12 +20862,12 @@ gnutls_fips140_set_mode (<em class="para
  (globally), and should be called prior to creating any threads. Its
  behavior with no flags after threads are created is undefined.</p>
  <p>When the flag <a class="link" href="gnutls-gnutls.html#GNUTLS-FIPS140-SET-MODE-THREAD:CAPS" title="GNUTLS_FIPS140_SET_MODE_THREAD"><code class="literal">GNUTLS_FIPS140_SET_MODE_THREAD</code></a> is specified
@@ -684,7 +566,7 @@ Index: gnutls-3.8.0/doc/reference/html/gnutls-gnutls.html
  values for <em class="parameter"><code>mode</code></em>
   or to <a class="link" href="gnutls-gnutls.html#GNUTLS-FIPS140-SELFTESTS:CAPS"><code class="literal">GNUTLS_FIPS140_SELFTESTS</code></a> mode, the library
  switches to <a class="link" href="gnutls-gnutls.html#GNUTLS-FIPS140-STRICT:CAPS"><code class="literal">GNUTLS_FIPS140_STRICT</code></a> mode.</p>
-@@ -20600,7 +20600,7 @@ switches to <a class="link" href="gnutls
+@@ -20882,7 +20882,7 @@ switches to <a class="link" href="gnutls
  <tbody>
  <tr>
  <td class="parameter_name"><p>mode</p></td>
@@ -693,7 +575,7 @@ Index: gnutls-3.8.0/doc/reference/html/gnutls-gnutls.html
  <td class="parameter_annotations"> </td>
  </tr>
  <tr>
-@@ -25568,7 +25568,7 @@ encryption</p>
+@@ -25880,7 +25880,7 @@ encryption</p>
  <hr>
  <div class="refsect2">
  <a name="gnutls-fips-mode-t"></a><h3>enum gnutls_fips_mode_t</h3>
@@ -702,7 +584,7 @@ Index: gnutls-3.8.0/doc/reference/html/gnutls-gnutls.html
  <div class="refsect3">
  <a name="gnutls-fips-mode-t.members"></a><h4>Members</h4>
  <div class="informaltable"><table class="informaltable" width="100%" border="0">
-@@ -25581,7 +25581,7 @@ encryption</p>
+@@ -25893,7 +25893,7 @@ encryption</p>
  <tr>
  <td class="enum_member_name"><p><a name="GNUTLS-FIPS140-DISABLED:CAPS"></a>GNUTLS_FIPS140_DISABLED</p></td>
  <td class="enum_member_description">
@@ -711,7 +593,7 @@ Index: gnutls-3.8.0/doc/reference/html/gnutls-gnutls.html
  </td>
  <td class="enum_member_annotations"> </td>
  </tr>
-@@ -25604,8 +25604,8 @@ operation failure via error code.</p>
+@@ -25916,8 +25916,8 @@ operation failure via error code.</p>
  <tr>
  <td class="enum_member_name"><p><a name="GNUTLS-FIPS140-LAX:CAPS"></a>GNUTLS_FIPS140_LAX</p></td>
  <td class="enum_member_description">
@@ -722,17 +604,17 @@ Index: gnutls-3.8.0/doc/reference/html/gnutls-gnutls.html
  application is aware of the followed security policy, and needs
  to utilize disallowed operations for other reasons (e.g., compatibility).</p>
  </td>
-@@ -27241,4 +27241,4 @@ This is used by <a class="link" href="gn
+@@ -27552,4 +27552,4 @@ This is used by <a class="link" href="gn
  <div class="footer">
  <hr>Generated by GTK-Doc V1.33.1</div>
  </body>
 -</html>
 \ No newline at end of file
 +</html>
-Index: gnutls-3.8.0/lib/fips.c
+Index: gnutls-3.8.1/lib/fips.c
 ===================================================================
---- gnutls-3.8.0.orig/lib/fips.c
-+++ gnutls-3.8.0/lib/fips.c
+--- gnutls-3.8.1.orig/lib/fips.c
++++ gnutls-3.8.1/lib/fips.c
 @@ -121,7 +121,7 @@ unsigned _gnutls_fips_mode_enabled(void)
  	}
  
@@ -751,7 +633,7 @@ Index: gnutls-3.8.0/lib/fips.c
  		ret = GNUTLS_FIPS140_SELFTESTS;
  		goto exit;
  	}
-@@ -694,7 +694,7 @@ unsigned gnutls_fips140_mode_enabled(voi
+@@ -692,7 +692,7 @@ unsigned gnutls_fips140_mode_enabled(voi
  
  /**
   * gnutls_fips140_set_mode:
@@ -760,7 +642,7 @@ Index: gnutls-3.8.0/lib/fips.c
   * @flags: should be zero or %GNUTLS_FIPS140_SET_MODE_THREAD
   *
   * That function is not thread-safe when changing the mode with no flags
-@@ -702,13 +702,13 @@ unsigned gnutls_fips140_mode_enabled(voi
+@@ -700,13 +700,13 @@ unsigned gnutls_fips140_mode_enabled(voi
   * behavior with no flags after threads are created is undefined.
   *
   * When the flag %GNUTLS_FIPS140_SET_MODE_THREAD is specified
@@ -776,28 +658,29 @@ Index: gnutls-3.8.0/lib/fips.c
   * values for @mode or to %GNUTLS_FIPS140_SELFTESTS mode, the library
   * switches to %GNUTLS_FIPS140_STRICT mode.
   *
-@@ -719,9 +719,9 @@ void gnutls_fips140_set_mode(gnutls_fips
- #ifdef ENABLE_FIPS140
+@@ -718,10 +718,10 @@ void gnutls_fips140_set_mode(gnutls_fips
  	gnutls_fips_mode_t prev = _gnutls_fips_mode_enabled();
- 	if (prev == GNUTLS_FIPS140_DISABLED || prev == GNUTLS_FIPS140_SELFTESTS) {
+ 	if (prev == GNUTLS_FIPS140_DISABLED ||
+ 	    prev == GNUTLS_FIPS140_SELFTESTS) {
 -		/* we need to run self-tests first to be in FIPS140-2 mode */
 +		/* we need to run self-tests first to be in FIPS140-3 mode */
- 		_gnutls_audit_log(NULL,
--				  "The library should be initialized in FIPS140-2 mode to do that operation\n");
-+				  "The library should be initialized in FIPS140-3 mode to do that operation\n");
+ 		_gnutls_audit_log(
+ 			NULL,
+-			"The library should be initialized in FIPS140-2 mode to do that operation\n");
++			"The library should be initialized in FIPS140-3 mode to do that operation\n");
  		return;
  	}
  
-@@ -733,7 +733,7 @@ void gnutls_fips140_set_mode(gnutls_fips
- 		break;
+@@ -734,7 +734,7 @@ void gnutls_fips140_set_mode(gnutls_fips
  	case GNUTLS_FIPS140_SELFTESTS:
- 		_gnutls_audit_log(NULL,
--				  "Cannot switch library to FIPS140-2 self-tests mode; defaulting to strict\n");
-+				  "Cannot switch library to FIPS140-3 self-tests mode; defaulting to strict\n");
+ 		_gnutls_audit_log(
+ 			NULL,
+-			"Cannot switch library to FIPS140-2 self-tests mode; defaulting to strict\n");
++			"Cannot switch library to FIPS140-3 self-tests mode; defaulting to strict\n");
  		mode = GNUTLS_FIPS140_STRICT;
  		break;
  	default:
-@@ -908,7 +908,7 @@ void _gnutls_switch_fips_state(gnutls_fi
+@@ -910,7 +910,7 @@ void _gnutls_switch_fips_state(gnutls_fi
  	}
  
  	if (!_tfips_context) {
@@ -806,35 +689,35 @@ Index: gnutls-3.8.0/lib/fips.c
  		return;
  	}
  
-@@ -921,7 +921,7 @@ void _gnutls_switch_fips_state(gnutls_fi
- 		/* initial can be transitioned to any state */
+@@ -924,7 +924,7 @@ void _gnutls_switch_fips_state(gnutls_fi
  		if (mode != GNUTLS_FIPS140_LAX) {
- 			_gnutls_audit_log(NULL,
--					  "FIPS140-2 operation mode switched from initial to %s\n",
-+					  "FIPS140-3 operation mode switched from initial to %s\n",
- 					  operation_state_to_string(state));
+ 			_gnutls_audit_log(
+ 				NULL,
+-				"FIPS140-2 operation mode switched from initial to %s\n",
++				"FIPS140-3 operation mode switched from initial to %s\n",
+ 				operation_state_to_string(state));
  		}
  		_tfips_context->state = state;
-@@ -931,7 +931,7 @@ void _gnutls_switch_fips_state(gnutls_fi
- 		if (likely(state == GNUTLS_FIPS140_OP_NOT_APPROVED)) {
+@@ -935,7 +935,7 @@ void _gnutls_switch_fips_state(gnutls_fi
  			if (mode != GNUTLS_FIPS140_LAX) {
- 				_gnutls_audit_log(NULL,
--						  "FIPS140-2 operation mode switched from approved to %s\n",
-+						  "FIPS140-3 operation mode switched from approved to %s\n",
- 						  operation_state_to_string
- 						  (state));
+ 				_gnutls_audit_log(
+ 					NULL,
+-					"FIPS140-2 operation mode switched from approved to %s\n",
++					"FIPS140-3 operation mode switched from approved to %s\n",
+ 					operation_state_to_string(state));
  			}
-@@ -943,7 +943,7 @@ void _gnutls_switch_fips_state(gnutls_fi
- 		/* other transitions are prohibited */
+ 			_tfips_context->state = state;
+@@ -947,7 +947,7 @@ void _gnutls_switch_fips_state(gnutls_fi
  		if (mode != GNUTLS_FIPS140_LAX) {
- 			_gnutls_audit_log(NULL,
--					  "FIPS140-2 operation mode cannot be switched from %s to %s\n",
-+					  "FIPS140-3 operation mode cannot be switched from %s to %s\n",
- 					  operation_state_to_string
- 					  (_tfips_context->state),
- 					  operation_state_to_string(state));
-@@ -1004,7 +1004,7 @@ int gnutls_fips140_run_self_tests(void)
- 	if (gnutls_fips140_mode_enabled() != GNUTLS_FIPS140_DISABLED && ret < 0) {
+ 			_gnutls_audit_log(
+ 				NULL,
+-				"FIPS140-2 operation mode cannot be switched from %s to %s\n",
++				"FIPS140-3 operation mode cannot be switched from %s to %s\n",
+ 				operation_state_to_string(
+ 					_tfips_context->state),
+ 				operation_state_to_string(state));
+@@ -1009,7 +1009,7 @@ int gnutls_fips140_run_self_tests(void)
+ 	    ret < 0) {
  		_gnutls_switch_lib_state(LIB_STATE_ERROR);
  		_gnutls_audit_log(NULL,
 -				  "FIPS140-2 self testing part 2 failed\n");
@@ -842,40 +725,42 @@ Index: gnutls-3.8.0/lib/fips.c
  	} else {
  		/* Restore the previous library state */
  		_gnutls_switch_lib_state(prev_lib_state);
-@@ -1016,7 +1016,7 @@ int gnutls_fips140_run_self_tests(void)
+@@ -1021,7 +1021,7 @@ int gnutls_fips140_run_self_tests(void)
  		if (gnutls_fips140_pop_context() < 0) {
  			_gnutls_switch_lib_state(LIB_STATE_ERROR);
- 			_gnutls_audit_log(NULL,
--					  "FIPS140-2 context restoration failed\n");
-+					  "FIPS140-3 context restoration failed\n");
+ 			_gnutls_audit_log(
+-				NULL, "FIPS140-2 context restoration failed\n");
++				NULL, "FIPS140-3 context restoration failed\n");
  		}
  		gnutls_fips140_context_deinit(fips_context);
  	}
-Index: gnutls-3.8.0/lib/fips.h
+Index: gnutls-3.8.1/lib/fips.h
 ===================================================================
---- gnutls-3.8.0.orig/lib/fips.h
-+++ gnutls-3.8.0/lib/fips.h
-@@ -158,16 +158,16 @@ is_cipher_algo_allowed_in_fips(gnutls_ci
+--- gnutls-3.8.1.orig/lib/fips.h
++++ gnutls-3.8.1/lib/fips.h
+@@ -160,7 +160,7 @@ is_cipher_algo_allowed_in_fips(gnutls_ci
  }
  
- # ifdef ENABLE_FIPS140
+ #ifdef ENABLE_FIPS140
 -/* This will test the condition when in FIPS140-2 mode
 +/* This will test the condition when in FIPS140-3 mode
   * and return an error if necessary or ignore */
- #  define FIPS_RULE(condition, ret_error, ...) { \
- 	gnutls_fips_mode_t _mode = _gnutls_fips_mode_enabled(); \
- 	if (_mode != GNUTLS_FIPS140_DISABLED) { \
- 		if (condition) { \
- 			if (_mode == GNUTLS_FIPS140_LOG) { \
--				_gnutls_audit_log(NULL, "fips140-2: allowing "__VA_ARGS__); \
-+				_gnutls_audit_log(NULL, "fips140-3: allowing "__VA_ARGS__); \
- 			} else if (_mode != GNUTLS_FIPS140_LAX) { \
--				_gnutls_debug_log("fips140-2: disallowing "__VA_ARGS__); \
-+				_gnutls_debug_log("fips140-3: disallowing "__VA_ARGS__); \
- 				return ret_error; \
- 			} \
- 		} \
-@@ -181,7 +181,7 @@ inline static bool is_mac_algo_allowed(g
+ #define FIPS_RULE(condition, ret_error, ...)                                            \
+ 	{                                                                               \
+@@ -170,10 +170,10 @@ is_cipher_algo_allowed_in_fips(gnutls_ci
+ 				if (_mode == GNUTLS_FIPS140_LOG) {                      \
+ 					_gnutls_audit_log(                              \
+ 						NULL,                                   \
+-						"fips140-2: allowing " __VA_ARGS__);    \
++						"fips140-3: allowing " __VA_ARGS__);    \
+ 				} else if (_mode != GNUTLS_FIPS140_LAX) {               \
+ 					_gnutls_debug_log(                              \
+-						"fips140-2: disallowing " __VA_ARGS__); \
++						"fips140-3: disallowing " __VA_ARGS__); \
+ 					return ret_error;                               \
+ 				}                                                       \
+ 			}                                                               \
+@@ -188,7 +188,7 @@ inline static bool is_mac_algo_allowed(g
  		switch (mode) {
  		case GNUTLS_FIPS140_LOG:
  			_gnutls_audit_log(NULL,
@@ -884,7 +769,7 @@ Index: gnutls-3.8.0/lib/fips.h
  					  gnutls_mac_get_name(algo));
  			FALLTHROUGH;
  		case GNUTLS_FIPS140_DISABLED:
-@@ -203,7 +203,7 @@ inline static bool is_cipher_algo_allowe
+@@ -210,7 +210,7 @@ inline static bool is_cipher_algo_allowe
  		switch (mode) {
  		case GNUTLS_FIPS140_LOG:
  			_gnutls_audit_log(NULL,
@@ -893,11 +778,11 @@ Index: gnutls-3.8.0/lib/fips.h
  					  gnutls_cipher_get_name(algo));
  			FALLTHROUGH;
  		case GNUTLS_FIPS140_DISABLED:
-Index: gnutls-3.8.0/lib/global.c
+Index: gnutls-3.8.1/lib/global.c
 ===================================================================
---- gnutls-3.8.0.orig/lib/global.c
-+++ gnutls-3.8.0/lib/global.c
-@@ -326,12 +326,12 @@ static int _gnutls_global_init(unsigned
+--- gnutls-3.8.1.orig/lib/global.c
++++ gnutls-3.8.1/lib/global.c
+@@ -337,12 +337,12 @@ static int _gnutls_global_init(unsigned
  
  #ifdef ENABLE_FIPS140
  	res = _gnutls_fips_mode_enabled();
@@ -912,31 +797,31 @@ Index: gnutls-3.8.0/lib/global.c
  		_gnutls_priority_update_fips();
  
  		/* first round of self checks, these are done on the
-@@ -341,7 +341,7 @@ static int _gnutls_global_init(unsigned
+@@ -352,7 +352,7 @@ static int _gnutls_global_init(unsigned
  		if (ret < 0) {
  			_gnutls_switch_lib_state(LIB_STATE_ERROR);
- 			_gnutls_audit_log(NULL,
--					  "FIPS140-2 self testing part1 failed\n");
-+					  "FIPS140-3 self testing part1 failed\n");
+ 			_gnutls_audit_log(
+-				NULL, "FIPS140-2 self testing part1 failed\n");
++				NULL, "FIPS140-3 self testing part1 failed\n");
  			if (res != 2) {
  				gnutls_assert();
  				goto out;
-@@ -364,7 +364,7 @@ static int _gnutls_global_init(unsigned
+@@ -375,7 +375,7 @@ static int _gnutls_global_init(unsigned
  		if (ret < 0) {
  			_gnutls_switch_lib_state(LIB_STATE_ERROR);
- 			_gnutls_audit_log(NULL,
--					  "FIPS140-2 self testing part 2 failed\n");
-+					  "FIPS140-3 self testing part 2 failed\n");
+ 			_gnutls_audit_log(
+-				NULL, "FIPS140-2 self testing part 2 failed\n");
++				NULL, "FIPS140-3 self testing part 2 failed\n");
  			if (res != 2) {
  				gnutls_assert();
  				goto out;
-Index: gnutls-3.8.0/lib/includes/gnutls/gnutls.h.in
+Index: gnutls-3.8.1/lib/includes/gnutls/gnutls.h.in
 ===================================================================
---- gnutls-3.8.0.orig/lib/includes/gnutls/gnutls.h.in
-+++ gnutls-3.8.0/lib/includes/gnutls/gnutls.h.in
-@@ -3278,16 +3278,16 @@ void
- gnutls_alert_set_read_function(gnutls_session_t session,
- 			       gnutls_alert_read_func func);
+--- gnutls-3.8.1.orig/lib/includes/gnutls/gnutls.h.in
++++ gnutls-3.8.1/lib/includes/gnutls/gnutls.h.in
+@@ -3192,16 +3192,16 @@ typedef int (*gnutls_alert_read_func)(gn
+ void gnutls_alert_set_read_function(gnutls_session_t session,
+ 				    gnutls_alert_read_func func);
  
 -/* FIPS140-2 related functions */
 +/* FIPS140-3 related functions */
@@ -955,7 +840,7 @@ Index: gnutls-3.8.0/lib/includes/gnutls/gnutls.h.in
   *                      application is aware of the followed security policy, and needs
   *                      to utilize disallowed operations for other reasons (e.g., compatibility).
   * @GNUTLS_FIPS140_LOG: Similarly to %GNUTLS_FIPS140_LAX, it allows forbidden operations; any use of them results
-@@ -3295,7 +3295,7 @@ unsigned gnutls_fips140_mode_enabled(voi
+@@ -3209,7 +3209,7 @@ unsigned gnutls_fips140_mode_enabled(voi
   * @GNUTLS_FIPS140_SELFTESTS: A transient state during library initialization. That state
   *			cannot be set or seen by applications.
   *
@@ -964,11 +849,11 @@ Index: gnutls-3.8.0/lib/includes/gnutls/gnutls.h.in
   */
  typedef enum gnutls_fips_mode_t {
  	GNUTLS_FIPS140_DISABLED = 0,
-Index: gnutls-3.8.0/src/cli.c
+Index: gnutls-3.8.1/src/cli.c
 ===================================================================
---- gnutls-3.8.0.orig/src/cli.c
-+++ gnutls-3.8.0/src/cli.c
-@@ -1650,10 +1650,10 @@ static void cmd_parser(int argc, char **
+--- gnutls-3.8.1.orig/src/cli.c
++++ gnutls-3.8.1/src/cli.c
+@@ -1634,10 +1634,10 @@ static void cmd_parser(int argc, char **
  
  	if (HAVE_OPT(FIPS140_MODE)) {
  		if (gnutls_fips140_mode_enabled() != 0) {
@@ -981,11 +866,11 @@ Index: gnutls-3.8.0/src/cli.c
  		exit(1);
  	}
  
-Index: gnutls-3.8.0/src/gnutls-cli-options.c
+Index: gnutls-3.8.1/src/gnutls-cli-options.c
 ===================================================================
---- gnutls-3.8.0.orig/src/gnutls-cli-options.c
-+++ gnutls-3.8.0/src/gnutls-cli-options.c
-@@ -785,7 +785,7 @@ usage (FILE *out, int status)
+--- gnutls-3.8.1.orig/src/gnutls-cli-options.c
++++ gnutls-3.8.1/src/gnutls-cli-options.c
+@@ -791,7 +791,7 @@ usage (FILE *out, int status)
      "       --inline-commands-prefix=str Change the default delimiter for inline commands\n"
      "       --provider=file        Specify the PKCS #11 provider library\n"
      "				- file must pre-exist\n"
@@ -994,10 +879,10 @@ Index: gnutls-3.8.0/src/gnutls-cli-options.c
      "       --list-config          Reports the configuration of the library\n"
      "       --logfile=str          Redirect informational messages to a specific file\n"
      "       --keymatexport=str     Label used for exporting keying material\n"
-Index: gnutls-3.8.0/tests/cert-tests/gost.sh
+Index: gnutls-3.8.1/tests/cert-tests/gost.sh
 ===================================================================
---- gnutls-3.8.0.orig/tests/cert-tests/gost.sh
-+++ gnutls-3.8.0/tests/cert-tests/gost.sh
+--- gnutls-3.8.1.orig/tests/cert-tests/gost.sh
++++ gnutls-3.8.1/tests/cert-tests/gost.sh
 @@ -38,7 +38,7 @@ if ! test -x "${CERTTOOL}"; then
  fi
  
@@ -1007,10 +892,10 @@ Index: gnutls-3.8.0/tests/cert-tests/gost.sh
  	exit 77
  fi
  
-Index: gnutls-3.8.0/tests/cert-tests/pkcs12-corner-cases.sh
+Index: gnutls-3.8.1/tests/cert-tests/pkcs12-corner-cases.sh
 ===================================================================
---- gnutls-3.8.0.orig/tests/cert-tests/pkcs12-corner-cases.sh
-+++ gnutls-3.8.0/tests/cert-tests/pkcs12-corner-cases.sh
+--- gnutls-3.8.1.orig/tests/cert-tests/pkcs12-corner-cases.sh
++++ gnutls-3.8.1/tests/cert-tests/pkcs12-corner-cases.sh
 @@ -28,7 +28,7 @@ if ! test -x "${CERTTOOL}"; then
  fi
  
@@ -1020,10 +905,10 @@ Index: gnutls-3.8.0/tests/cert-tests/pkcs12-corner-cases.sh
  	exit 77
  fi
  
-Index: gnutls-3.8.0/tests/cert-tests/pkcs12-encode.sh
+Index: gnutls-3.8.1/tests/cert-tests/pkcs12-encode.sh
 ===================================================================
---- gnutls-3.8.0.orig/tests/cert-tests/pkcs12-encode.sh
-+++ gnutls-3.8.0/tests/cert-tests/pkcs12-encode.sh
+--- gnutls-3.8.1.orig/tests/cert-tests/pkcs12-encode.sh
++++ gnutls-3.8.1/tests/cert-tests/pkcs12-encode.sh
 @@ -28,7 +28,7 @@ if ! test -x "${CERTTOOL}"; then
  fi
  
@@ -1033,10 +918,10 @@ Index: gnutls-3.8.0/tests/cert-tests/pkcs12-encode.sh
  	exit 77
  fi
  
-Index: gnutls-3.8.0/tests/cert-tests/pkcs12-gost.sh
+Index: gnutls-3.8.1/tests/cert-tests/pkcs12-gost.sh
 ===================================================================
---- gnutls-3.8.0.orig/tests/cert-tests/pkcs12-gost.sh
-+++ gnutls-3.8.0/tests/cert-tests/pkcs12-gost.sh
+--- gnutls-3.8.1.orig/tests/cert-tests/pkcs12-gost.sh
++++ gnutls-3.8.1/tests/cert-tests/pkcs12-gost.sh
 @@ -29,7 +29,7 @@ if ! test -x "${CERTTOOL}"; then
  fi
  
@@ -1046,10 +931,10 @@ Index: gnutls-3.8.0/tests/cert-tests/pkcs12-gost.sh
  	exit 77
  fi
  
-Index: gnutls-3.8.0/tests/cert-tests/pkcs12.sh
+Index: gnutls-3.8.1/tests/cert-tests/pkcs12.sh
 ===================================================================
---- gnutls-3.8.0.orig/tests/cert-tests/pkcs12.sh
-+++ gnutls-3.8.0/tests/cert-tests/pkcs12.sh
+--- gnutls-3.8.1.orig/tests/cert-tests/pkcs12.sh
++++ gnutls-3.8.1/tests/cert-tests/pkcs12.sh
 @@ -28,7 +28,7 @@ if ! test -x "${CERTTOOL}"; then
  fi
  
@@ -1059,10 +944,10 @@ Index: gnutls-3.8.0/tests/cert-tests/pkcs12.sh
  	exit 77
  fi
  
-Index: gnutls-3.8.0/tests/cert-tests/pkcs8-decode.sh
+Index: gnutls-3.8.1/tests/cert-tests/pkcs8-decode.sh
 ===================================================================
---- gnutls-3.8.0.orig/tests/cert-tests/pkcs8-decode.sh
-+++ gnutls-3.8.0/tests/cert-tests/pkcs8-decode.sh
+--- gnutls-3.8.1.orig/tests/cert-tests/pkcs8-decode.sh
++++ gnutls-3.8.1/tests/cert-tests/pkcs8-decode.sh
 @@ -29,7 +29,7 @@ if ! test -x "${CERTTOOL}"; then
  fi
  
@@ -1072,10 +957,10 @@ Index: gnutls-3.8.0/tests/cert-tests/pkcs8-decode.sh
  	exit 77
  fi
  
-Index: gnutls-3.8.0/tests/cert-tests/pkcs8-eddsa.sh
+Index: gnutls-3.8.1/tests/cert-tests/pkcs8-eddsa.sh
 ===================================================================
---- gnutls-3.8.0.orig/tests/cert-tests/pkcs8-eddsa.sh
-+++ gnutls-3.8.0/tests/cert-tests/pkcs8-eddsa.sh
+--- gnutls-3.8.1.orig/tests/cert-tests/pkcs8-eddsa.sh
++++ gnutls-3.8.1/tests/cert-tests/pkcs8-eddsa.sh
 @@ -29,7 +29,7 @@ if ! test -x "${CERTTOOL}"; then
  fi
  
@@ -1085,10 +970,10 @@ Index: gnutls-3.8.0/tests/cert-tests/pkcs8-eddsa.sh
  	exit 77
  fi
  
-Index: gnutls-3.8.0/tests/cert-tests/pkcs8-gost.sh
+Index: gnutls-3.8.1/tests/cert-tests/pkcs8-gost.sh
 ===================================================================
---- gnutls-3.8.0.orig/tests/cert-tests/pkcs8-gost.sh
-+++ gnutls-3.8.0/tests/cert-tests/pkcs8-gost.sh
+--- gnutls-3.8.1.orig/tests/cert-tests/pkcs8-gost.sh
++++ gnutls-3.8.1/tests/cert-tests/pkcs8-gost.sh
 @@ -28,7 +28,7 @@ if ! test -x "${CERTTOOL}"; then
  fi
  
@@ -1098,10 +983,10 @@ Index: gnutls-3.8.0/tests/cert-tests/pkcs8-gost.sh
  	exit 77
  fi
  
-Index: gnutls-3.8.0/tests/cert-tests/pkcs8.sh
+Index: gnutls-3.8.1/tests/cert-tests/pkcs8.sh
 ===================================================================
---- gnutls-3.8.0.orig/tests/cert-tests/pkcs8.sh
-+++ gnutls-3.8.0/tests/cert-tests/pkcs8.sh
+--- gnutls-3.8.1.orig/tests/cert-tests/pkcs8.sh
++++ gnutls-3.8.1/tests/cert-tests/pkcs8.sh
 @@ -28,7 +28,7 @@ if ! test -x "${CERTTOOL}"; then
  fi
  
@@ -1111,10 +996,10 @@ Index: gnutls-3.8.0/tests/cert-tests/pkcs8.sh
  	exit 77
  fi
  
-Index: gnutls-3.8.0/tests/cipher-listings.sh
+Index: gnutls-3.8.1/tests/cipher-listings.sh
 ===================================================================
---- gnutls-3.8.0.orig/tests/cipher-listings.sh
-+++ gnutls-3.8.0/tests/cipher-listings.sh
+--- gnutls-3.8.1.orig/tests/cipher-listings.sh
++++ gnutls-3.8.1/tests/cipher-listings.sh
 @@ -63,7 +63,7 @@ check()
  
  ${CLI} --fips140-mode
@@ -1124,10 +1009,10 @@ Index: gnutls-3.8.0/tests/cipher-listings.sh
  	exit 77
  fi
  
-Index: gnutls-3.8.0/tests/testpkcs11.sh
+Index: gnutls-3.8.1/tests/testpkcs11.sh
 ===================================================================
---- gnutls-3.8.0.orig/tests/testpkcs11.sh
-+++ gnutls-3.8.0/tests/testpkcs11.sh
+--- gnutls-3.8.1.orig/tests/testpkcs11.sh
++++ gnutls-3.8.1/tests/testpkcs11.sh
 @@ -26,7 +26,7 @@
  RETCODE=0
  
@@ -1137,10 +1022,10 @@ Index: gnutls-3.8.0/tests/testpkcs11.sh
  	exit 77
  fi
  
-Index: gnutls-3.8.0/doc/enums/gnutls_fips_mode_t
+Index: gnutls-3.8.1/doc/enums/gnutls_fips_mode_t
 ===================================================================
---- gnutls-3.8.0.orig/doc/enums/gnutls_fips_mode_t
-+++ gnutls-3.8.0/doc/enums/gnutls_fips_mode_t
+--- gnutls-3.8.1.orig/doc/enums/gnutls_fips_mode_t
++++ gnutls-3.8.1/doc/enums/gnutls_fips_mode_t
 @@ -3,7 +3,7 @@
  @c gnutls_fips_mode_t
  @table @code
@@ -1161,10 +1046,10 @@ Index: gnutls-3.8.0/doc/enums/gnutls_fips_mode_t
  application is aware of the followed security policy, and needs
  to utilize disallowed operations for other reasons (e.g., compatibility).
  @item GNUTLS_@-FIPS140_@-LOG
-Index: gnutls-3.8.0/doc/gnutls-api.texi
+Index: gnutls-3.8.1/doc/gnutls-api.texi
 ===================================================================
---- gnutls-3.8.0.orig/doc/gnutls-api.texi
-+++ gnutls-3.8.0/doc/gnutls-api.texi
+--- gnutls-3.8.1.orig/doc/gnutls-api.texi
++++ gnutls-3.8.1/doc/gnutls-api.texi
 @@ -3275,7 +3275,7 @@ unusable.  This function is not thread-s
  @subheading gnutls_fips140_set_mode
  @anchor{gnutls_fips140_set_mode}
@@ -1190,11 +1075,11 @@ Index: gnutls-3.8.0/doc/gnutls-api.texi
  values for  @code{mode} or to @code{GNUTLS_FIPS140_SELFTESTS}  mode, the library
  switches to @code{GNUTLS_FIPS140_STRICT}  mode.
  
-Index: gnutls-3.8.0/lib/ext/session_ticket.c
+Index: gnutls-3.8.1/lib/ext/session_ticket.c
 ===================================================================
---- gnutls-3.8.0.orig/lib/ext/session_ticket.c
-+++ gnutls-3.8.0/lib/ext/session_ticket.c
-@@ -536,7 +536,7 @@ int gnutls_session_ticket_key_generate(g
+--- gnutls-3.8.1.orig/lib/ext/session_ticket.c
++++ gnutls-3.8.1/lib/ext/session_ticket.c
+@@ -517,7 +517,7 @@ int gnutls_session_ticket_key_generate(g
  {
  	if (_gnutls_fips_mode_enabled()) {
  		int ret;
@@ -1203,11 +1088,11 @@ Index: gnutls-3.8.0/lib/ext/session_ticket.c
  		 * some limits on allowed key size, thus it is not
  		 * used. These limits do not affect this function as
  		 * it does not generate a "key" but rather key material
-Index: gnutls-3.8.0/lib/libgnutls.map
+Index: gnutls-3.8.1/lib/libgnutls.map
 ===================================================================
---- gnutls-3.8.0.orig/lib/libgnutls.map
-+++ gnutls-3.8.0/lib/libgnutls.map
-@@ -1418,7 +1418,7 @@ GNUTLS_FIPS140_3_4 {
+--- gnutls-3.8.1.orig/lib/libgnutls.map
++++ gnutls-3.8.1/lib/libgnutls.map
+@@ -1428,7 +1428,7 @@ GNUTLS_FIPS140_3_4 {
  	gnutls_hkdf_self_test;
  	gnutls_pbkdf2_self_test;
  	gnutls_tlsprf_self_test;
@@ -1216,10 +1101,10 @@ Index: gnutls-3.8.0/lib/libgnutls.map
  	drbg_aes_reseed;
  	drbg_aes_init;
  	drbg_aes_generate;
-Index: gnutls-3.8.0/lib/nettle/mac.c
+Index: gnutls-3.8.1/lib/nettle/mac.c
 ===================================================================
---- gnutls-3.8.0.orig/lib/nettle/mac.c
-+++ gnutls-3.8.0/lib/nettle/mac.c
+--- gnutls-3.8.1.orig/lib/nettle/mac.c
++++ gnutls-3.8.1/lib/nettle/mac.c
 @@ -262,7 +262,7 @@ static void _wrap_gmac_digest(void *_ctx
  static int _mac_ctx_init(gnutls_mac_algorithm_t algo,
  			 struct nettle_mac_ctx *ctx)
@@ -1229,7 +1114,7 @@ Index: gnutls-3.8.0/lib/nettle/mac.c
  	 * gnutls_hash_init() and gnutls_hmac_init() */
  
  	ctx->set_nonce = NULL;
-@@ -649,7 +649,7 @@ static void _md5_sha1_digest(void *_ctx,
+@@ -648,7 +648,7 @@ static void _md5_sha1_digest(void *_ctx,
  static int _ctx_init(gnutls_digest_algorithm_t algo,
  		     struct nettle_hash_ctx *ctx)
  {
@@ -1238,23 +1123,10 @@ Index: gnutls-3.8.0/lib/nettle/mac.c
  	 * gnutls_hash_init() and gnutls_hmac_init() */
  	switch (algo) {
  	case GNUTLS_DIG_MD5:
-Index: gnutls-3.8.0/doc/gnutls.info-2
+Index: gnutls-3.8.1/config.h.in
 ===================================================================
---- gnutls-3.8.0.orig/doc/gnutls.info-2
-+++ gnutls-3.8.0/doc/gnutls.info-2
-@@ -687,7 +687,7 @@ Variable               Purpose
-                           * 0x400000: Enable VIA PHE SHA512
-                        
- 'GNUTLS_FORCE_FIPS_MODE'In setups where GnuTLS is compiled with support
--                       for FIPS140-2 (see *note FIPS140-2 mode::) if
-+                       for FIPS140-3 (see *note FIPS140-3 mode::) if
-                        set to one it will force the FIPS mode
-                        enablement.
-                        
-Index: gnutls-3.8.0/config.h.in
-===================================================================
---- gnutls-3.8.0.orig/config.h.in
-+++ gnutls-3.8.0/config.h.in
+--- gnutls-3.8.1.orig/config.h.in
++++ gnutls-3.8.1/config.h.in
 @@ -82,7 +82,7 @@
  /* enable DHE */
  #undef ENABLE_ECDHE
@@ -1273,11 +1145,11 @@ Index: gnutls-3.8.0/config.h.in
  #undef FIPS_KEY
  
  /* The FIPS140 module name */
-Index: gnutls-3.8.0/configure
+Index: gnutls-3.8.1/configure
 ===================================================================
---- gnutls-3.8.0.orig/configure
-+++ gnutls-3.8.0/configure
-@@ -3775,7 +3775,7 @@ Optional Features:
+--- gnutls-3.8.1.orig/configure
++++ gnutls-3.8.1/configure
+@@ -3826,7 +3826,7 @@ Optional Features:
    --enable-fast-install[=PKGS]
                            optimize for fast installation [default=yes]
    --disable-libtool-lock  avoid locking (might break parallel builds)
@@ -1286,11 +1158,11 @@ Index: gnutls-3.8.0/configure
    --enable-strict-x509    enable stricter sanity checks for x509 certificates
    --disable-non-suiteb-curves
                            disable curves not in SuiteB
-Index: gnutls-3.8.0/doc/cha-support.texi
+Index: gnutls-3.8.1/doc/cha-support.texi
 ===================================================================
---- gnutls-3.8.0.orig/doc/cha-support.texi
-+++ gnutls-3.8.0/doc/cha-support.texi
-@@ -135,5 +135,5 @@ There are certifications from national o
+--- gnutls-3.8.1.orig/doc/cha-support.texi
++++ gnutls-3.8.1/doc/cha-support.texi
+@@ -134,5 +134,5 @@ There are certifications from national o
  to an auditor that the crypto component follows some best practices, such
  as unit testing and reliance on well known crypto primitives.
  
@@ -1298,36 +1170,23 @@ Index: gnutls-3.8.0/doc/cha-support.texi
 -See @ref{FIPS140-2 mode} for more information.
 +GnuTLS has support for the FIPS 140-3 certification under Red Hat Enterprise Linux.
 +See @ref{FIPS140-3 mode} for more information.
-Index: gnutls-3.8.0/doc/gnutls.info-6
+Index: gnutls-3.8.1/doc/gnutls.info
 ===================================================================
---- gnutls-3.8.0.orig/doc/gnutls.info-6
-+++ gnutls-3.8.0/doc/gnutls.info-6
-@@ -7982,7 +7982,7 @@ Function and Data Index
- * gnutls_fingerprint:                    Core TLS API.       (line 3513)
- * gnutls_fips140_context_deinit:         Core TLS API.       (line 3540)
- * gnutls_fips140_context_init:           Core TLS API.       (line 3551)
--* gnutls_fips140_get_operation_state:    FIPS140-2 mode.     (line  138)
-+* gnutls_fips140_get_operation_state:    FIPS140-3 mode.     (line  138)
- * gnutls_fips140_get_operation_state <1>: Core TLS API.      (line 3564)
- * gnutls_fips140_mode_enabled:           Core TLS API.       (line 3578)
- * gnutls_fips140_pop_context:            Core TLS API.       (line 3596)
-Index: gnutls-3.8.0/doc/gnutls.info
+--- gnutls-3.8.1.orig/doc/gnutls.info
++++ gnutls-3.8.1/doc/gnutls.info
+@@ -618,7 +618,7 @@ Ref: fig-crypto-layers743604
+ Ref: Cryptographic Backend-Footnote-1746916
+ Ref: Cryptographic Backend-Footnote-2747001
+ Node: Random Number Generators-internals747113
+-Node: FIPS140-2 mode754583
++Node: FIPS140-3 mode754583
+ Ref: gnutls_fips_mode_t757281
+ Node: Upgrading from previous versions760950
+ Node: Support775192
+Index: gnutls-3.8.1/src/gnutls-cli-options.json
 ===================================================================
---- gnutls-3.8.0.orig/doc/gnutls.info
-+++ gnutls-3.8.0/doc/gnutls.info
-@@ -611,7 +611,7 @@ Ref: fig-crypto-layers730201
- Ref: Cryptographic Backend-Footnote-1733485
- Ref: Cryptographic Backend-Footnote-2733570
- Node: Random Number Generators-internals733678
--Node: FIPS140-2 mode741042
-+Node: FIPS140-3 mode741042
- Ref: gnutls_fips_mode_t743678
- Node: Upgrading from previous versions747275
- Node: Support761269
-Index: gnutls-3.8.0/src/gnutls-cli-options.json
-===================================================================
---- gnutls-3.8.0.orig/src/gnutls-cli-options.json
-+++ gnutls-3.8.0/src/gnutls-cli-options.json
+--- gnutls-3.8.1.orig/src/gnutls-cli-options.json
++++ gnutls-3.8.1/src/gnutls-cli-options.json
 @@ -372,7 +372,7 @@
          },
          {

@@ -1,0 +1,22 @@
+Index: gnutls-3.8.1/tests/srp.c
+===================================================================
+--- gnutls-3.8.1.orig/tests/srp.c
++++ gnutls-3.8.1/tests/srp.c
+@@ -287,7 +289,7 @@ static void start(const char *name, cons
+ 	if (child) {
+ 		int status;
+ 		/* parent */
+-		close(fd[0]);
++		/* close(fd[0]); */
+ 		client(fd[1], prio, user, pass, exp_err);
+ 		if (exp_err < 0) {
+ 			kill(child, SIGTERM);
+@@ -297,7 +299,7 @@ static void start(const char *name, cons
+ 			check_wait_status(status);
+ 		}
+ 	} else {
+-		close(fd[1]);
++		/* close(fd[1]); */
+ 		server(fd[0], prio);
+ 		exit(0);
+ 	}
