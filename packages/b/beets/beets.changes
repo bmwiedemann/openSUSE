@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 22 13:52:07 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Fix the names of the Flask recommended packages
+
+-------------------------------------------------------------------
 Fri Apr 22 11:58:53 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build

@@ -1,7 +1,7 @@
 #
 # spec file for package beets
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,10 +56,10 @@ Requires:       python3-mediafile >= 0.2.0
 Requires:       python3-munkres
 Requires:       python3-musicbrainzngs >= 0.4
 Recommends:     ffmpeg
+Recommends:     python3-Flask
+Recommends:     python3-Flask-Cors
 Recommends:     python3-dbus-python
 Recommends:     python3-discogs-client >= 2.1.0
-Recommends:     python3-flask
-Recommends:     python3-flask-cors
 Recommends:     python3-pyacoustid
 Recommends:     python3-pylast
 Recommends:     python3-python-mpd2
