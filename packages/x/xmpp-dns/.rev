@@ -72,4 +72,14 @@
     tcp connection.</comment>
     <requestid>1104315</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>faf75e071858c9581f0047a2fd3d6f26</srcmd5>
+    <version>0.3.8</version>
+    <time>1692795514</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.3.8:
+  * Don't look up IPs and don't try to connect if the SRV records
+    target is &quot;.&quot;.</comment>
+    <requestid>1105337</requestid>
+  </revision>
 </revisionlist>

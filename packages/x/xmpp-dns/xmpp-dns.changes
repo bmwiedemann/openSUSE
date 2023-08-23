@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 23 03:41:00 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.8:
+  * Don't look up IPs and don't try to connect if the SRV records
+    target is ".".
+
+-------------------------------------------------------------------
 Thu Aug 17 07:25:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.3.7:
