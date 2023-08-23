@@ -1,7 +1,7 @@
 #
 # spec file for package minidlna
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 by Lars Vogdt <lars@linux-schulserver.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,8 +18,8 @@
 
 
 Name:           minidlna
-Version:        1.3.2
-%define oversion 1.3.2
+Version:        1.3.3
+%define oversion 1.3.3
 Release:        0
 Summary:        DLNA compatible server
 License:        GPL-2.0-or-later
