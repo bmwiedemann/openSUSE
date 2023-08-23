@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 24 19:53:59 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Add epoch to make upgrades from 8.0 to 1.0.x easier
+
+-------------------------------------------------------------------
+Mon Jul 24 14:15:22 UTC 2023 - Gus Kenion <gkenion@suse.com>
+
+- Update upstream from abandoned sourceforge to actively maintained
+  github
+- bsc#1212404 (CVE-2023-34623): Prevent crash when parsing
+  documents with excessive nesting. (community fix, part of v1.0.4)
+
+-------------------------------------------------------------------
 Sun Mar 20 12:39:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

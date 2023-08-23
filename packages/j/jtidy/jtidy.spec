@@ -1,7 +1,7 @@
 #
 # spec file for package jtidy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,16 +24,14 @@
 %define section free
 %bcond_with             maven
 Name:           jtidy
-Version:        8.0
+Version:        1.0.4
+Epoch:          1
 Release:        0
 Summary:        HTML syntax checker and pretty printer
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
-URL:            http://jtidy.sourceforge.net/
-# svn export -r813 http://svn.sourceforge.net/svnroot/jtidy/trunk/jtidy/ jtidy
-# # bnc#501764
-# rm jtidy/src/config/clover.license
-Source0:        jtidy-r813.tar.bz2
+URL:            https://github.com/jtidy/jtidy
+Source0:        https://github.com/jtidy/jtidy/archive/refs/tags/jtidy-1.0.4.tar.gz
 Source1:        jtidy-build.xml
 BuildRequires:  ant >= 1.6
 BuildRequires:  ant-junit
@@ -74,7 +72,7 @@ cleaning up malformed and faulty HTML. In addition, JTidy provides a
 DOM parser for real-world HTML.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{name}-%{version}
 cp -p %{SOURCE1} build.xml
 
 %build

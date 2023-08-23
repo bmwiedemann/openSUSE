@@ -141,4 +141,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963250</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8cf486efa3e6b2a2ba89419ffd66b223</srcmd5>
+    <version>1.0.4</version>
+    <time>1692795434</time>
+    <user>anag+factory</user>
+    <comment>new version + change of fork</comment>
+    <requestid>1105110</requestid>
+  </revision>
 </revisionlist>
