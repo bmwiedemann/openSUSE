@@ -23,4 +23,12 @@
     <comment>- Add go-doc and go-race subpackages for developer convenience</comment>
     <requestid>1102821</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ebb4b86f44da8181ae4eeb534efbf536</srcmd5>
+    <version>unknown</version>
+    <time>1692795424</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1105165</requestid>
+  </revision>
 </revisionlist>
