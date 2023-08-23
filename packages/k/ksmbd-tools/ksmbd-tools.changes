@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 27 20:50:20 UTC 2023 - David Disseldorp <ddiss@suse.com>
+
+- Update to version 3.4.9:
+  * Fix handling of max connections on config reload.
+  * Add a crossmnt parameter in smb.conf.
+
+- Remove unnecessary kernel-default BuildRequires
+- Add explicit --with-systemdsystemunitdir %configure parameter
+
+-------------------------------------------------------------------
 Sun Apr  9 19:49:53 UTC 2023 - David Disseldorp <ddiss@suse.com>
 
 - Update to version 3.4.8:

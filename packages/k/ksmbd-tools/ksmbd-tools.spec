@@ -17,7 +17,7 @@
 
 
 Name:           ksmbd-tools
-Version:        3.4.8
+Version:        3.4.9
 Release:        0
 Summary:        ksmbd kernel server userspace utilities
 License:        GPL-2.0-or-later
@@ -25,13 +25,12 @@ Group:          System/Filesystems
 URL:            https://github.com/cifsd-team/ksmbd-tools
 Source:         https://github.com/cifsd-team/ksmbd-tools/archive/refs/tags/%{version}.tar.gz
 
-# ksmbd kernel module was only added in kernel 5.15
-BuildRequires:  kernel-default >= 5.15
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  glib2-devel
 BuildRequires:  libnl3-devel
 BuildRequires:  libtool
+# ksmbd kernel module was only added in kernel 5.15
 Requires:       kmod(ksmbd.ko)
 
 %description
@@ -43,7 +42,7 @@ module.
 
 %build
 ./autogen.sh
-%configure
+%configure --with-systemdsystemunitdir=%{_unitdir}
 %make_build
 
 %install
