@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 21 19:25:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add jsonschema < 4.18 to test dependencies
+  * gh#asdf-format/asdf-standard#391
+
+-------------------------------------------------------------------
 Thu Oct 27 16:31:58 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to v1.0.3

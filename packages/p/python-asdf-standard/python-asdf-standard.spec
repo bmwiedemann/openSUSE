@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,8 @@ BuildRequires:  %{python_module asdf >= 2.8.0}
 BuildRequires:  %{python_module asdf-standard = %{version}}
 BuildRequires:  %{python_module astropy >= 5.0.4}
 BuildRequires:  %{python_module gwcs}
+# https://github.com/asdf-format/asdf-standard/pull/391
+BuildRequires:  %{python_module jsonschema < 4.18}
 BuildRequires:  %{python_module packaging >= 16.0}
 BuildRequires:  %{python_module pytest}
 %endif

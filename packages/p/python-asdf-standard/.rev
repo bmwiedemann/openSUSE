@@ -42,4 +42,13 @@
   * Remove tag from within the remaining schemas.</comment>
     <requestid>1031584</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>58bdbef6582c9d05944f8eb0113eb84e</srcmd5>
+    <version>1.0.3</version>
+    <time>1692795442</time>
+    <user>anag+factory</user>
+    <comment>- Add jsonschema &lt; 4.18 to test dependencies
+  * gh#asdf-format/asdf-standard#391 (forwarded request 1105139 from bnavigator)</comment>
+    <requestid>1105140</requestid>
+  </revision>
 </revisionlist>
