@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-datatypes-collections
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-datatypes-collections
-Version:        2.13.3
+Version:        2.15.2
 Release:        0
 Summary:        Jackson datatypes: collections
 License:        Apache-2.0
@@ -27,9 +27,9 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.carrotsearch:hppc)
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.13
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.13
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.13
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.15
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.15
+BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.15
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)

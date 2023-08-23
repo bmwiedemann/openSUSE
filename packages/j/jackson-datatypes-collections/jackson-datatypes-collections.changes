@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 21 14:33:39 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Version update to 2.15.2
+  * No changes since 2.15.0
+  * 2.15.0 (23-Apr-2023)
+    + #7: (guava) Add support for 'WRITE_SORTED_MAP_ENTRIES' for
+      Guava 'Multimap's
+    + #92: (guava) '@JsonDeserialize.contentConverter' does not work
+      for non-builtin collections
+    + #102: (guava) accept lowerCase enums for 'Range' 'BoundType'
+      serialization
+    + #105: (guava) Update Guava dependency to 23.6.1-jre
+      (from 21.0)
+    + #106: (guava) There maybe a misusage in
+      GuavaMultimapDeserializer.findTransformer method
+  * 2.14.3 (05-May-2023)
+    + #92: (guava) '@JsonDeserialize.contentConverter' does not work
+      for non-builtin collections
+    + #104: 'ArrayListMultimapDeserializer' does not support
+      multimaps inside another object as a property
+  * 2.13.4 (03-Sep-2022)
+    + #94: Eclipse Collection serialization for Pairs does not work
+      when upgrading to EC version 11.0.0
+
+-------------------------------------------------------------------
 Wed Jun 15 07:23:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Version upgrade to 2.13.3
