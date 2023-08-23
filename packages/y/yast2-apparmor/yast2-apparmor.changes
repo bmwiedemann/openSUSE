@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 22 08:03:15 UTC 2023 - Michal Filka <mfilka@suse.com>
+
+- bsc#1214418
+  - Fixed crash on internal error when scanning audit.log
+- 4.6.2
+
+-------------------------------------------------------------------
 Mon Jun  5 08:19:51 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Added missing textdomain (bsc#1211980)
