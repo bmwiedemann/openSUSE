@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Aug 22 18:41:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.2.6
+  * Multithreading checks only apply to Python defined codecs and
+    filters. Now it is possible to use multithreading with C codecs
+    and filters plugins. See PR #127.
+  * New support for dynamic filters registry for Python.
+  * Now params for codec and filter plugins are correctly
+    initialized when using register_codec and register_filter
+    functions.
+  * Some fixes for Cython 3.0.0. However,compatibility with Cython
+    3.0.0 is not here yet, so build and install scripts are still
+    requiring Cython<3.
+  * Updated to latest C-Blosc2 2.10.1.
+- Release 2.2.5
+  * Updated to latest C-Blosc2 2.10.0.
+  * Use the new, fixed bytedelta filter introduced in C-Blosc2
+    2.10.0.
+  * Some small fixes in tutorials.
+- Release 2.2.3 and 2.2.4
+  * Added a new section of tutorials for a quick get start.
+  * Added a new section on how to cite Blosc.
+  * New method interchunks_info for SChunk and NDArray classes.
+    This iterates through chunks for getting meta info, like
+    decompression ratio, whether the chunk is special or not, among
+    others. For more information on how this works see this
+    example.
+  * Now it is possible to register a dynamic plugin by passing None
+    as the encoder and decoder arguments in the register_codec
+    function.
+  * Make shape of scalar slices NDArray objects to follow NumPy
+    conventions. See #117.
+  * Updated to latest C-Blosc2 2.9.3.
+
+-------------------------------------------------------------------
 Fri May 12 13:21:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Bump BuildRequires: Does not build with older c-blosc2
