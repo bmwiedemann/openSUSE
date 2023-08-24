@@ -8,13 +8,13 @@
   boo#1190434: '20230822'
   boo#1197719: '20230822'
   boo#1201057: '20230813'
-  boo#1205314: '20230822'
+  boo#1205314: '20230823'
   boo#1205633: '20230822'
   boo#1206230: '20230822'
   boo#1206614: '20230503'
   boo#1207385: '20230312'
   boo#1207386: '20230416'
-  boo#1207390: '20230822'
+  boo#1207390: '20230823'
   boo#1207892: '20230306'
   boo#1207940: '20230822'
   boo#1208170: '20230313'
@@ -24,7 +24,7 @@
   boo#1209037: '20230413'
   boo#1209043: '20230310'
   boo#1209053: '20230822'
-  boo#1209105: '20230822'
+  boo#1209105: '20230823'
   boo#1209177: '20230319'
   boo#1209179: '20230531'
   boo#1209180: '20230415'
@@ -33,7 +33,7 @@
   boo#1209682: '20230521'
   boo#1209694: '20230324'
   boo#1209727: '20230508'
-  boo#1209728: '20230822'
+  boo#1209728: '20230823'
   boo#1210027: '20230422'
   boo#1210033: '20230417'
   boo#1210479: '20230508'
@@ -52,7 +52,7 @@
   boo#1211476: '20230607'
   boo#1211566: '20230527'
   boo#1211766: '20230604'
-  boo#1211940: '20230728'
+  boo#1211940: '20230823'
   boo#1211980: '20230607'
   boo#1211981: '20230604'
   boo#1212269: '20230821'
@@ -71,14 +71,14 @@
   boo#1214057: '20230807'
   boo#1214143: '20230809'
   bsc#1198101: '20230715'
-  bsc#1205897: '20230822'
+  bsc#1205897: '20230823'
   gh#os-autoinst/opensuse-jobgroups#342: '20230621'
   gh#os-autoinst/os-autoinst-distri-opensuse#17083: '20230605'
   gh#os-autoinst/os-autoinst-distri-opensuse#17342: '20230629'
   poo#112649: '20230302'
   poo#115133: '20230617'
-  poo#117811: '20230822'
-  poo#120459: '20230822'
+  poo#117811: '20230823'
+  poo#120459: '20230823'
   poo#123127: '20230312'
   poo#124433: '20230308'
   poo#124601: '20230419'
@@ -96,7 +96,7 @@
   poo#128069: '20230420'
   poo#128213: '20230426'
   poo#128249: '20230502'
-  poo#128384: '20230822'
+  poo#128384: '20230823'
   poo#128387: '20230502'
   poo#128402: '20230628'
   poo#128549: '20230509'
@@ -104,7 +104,7 @@
   poo#128678: '20230510'
   poo#129029: '20230509'
   poo#129121: '20230520'
-  poo#129133: '20230822'
+  poo#129133: '20230823'
   poo#129304: '20230606'
   poo#129622: '20230703'
   poo#130036: '20230606'
@@ -116,7 +116,7 @@
   poo#131024: '20230724'
   poo#131411: '20230822'
   poo#132155: '20230713'
-  poo#132191: '20230822'
+  poo#132191: '20230823'
   poo#132677: '20230807'
   poo#132686: '20230715'
   poo#132755: '20230717'
@@ -126,8 +126,8 @@
   poo#133517: '20230731'
   poo#133529: '20230822'
   poo#133910: '20230816'
-  poo#134078: '20230822'
-  poo#134285: '20230822'
+  poo#134078: '20230823'
+  poo#134285: '20230823'
   poo#134330: '20230819'
 </value>
   </attribute>
@@ -350,6 +350,10 @@ products:
   containerfile:
   - 389-ds-container:
     - x86_64
+  - alertmanager-image:
+    - x86_64
+  - blackbox_exporter-image:
+    - x86_64
   - openQA-devel-container:
     - x86_64
   - cdi-apiserver-container:
@@ -380,6 +384,8 @@ products:
     - x86_64
   - golang-unstable-image:
     - x86_64
+  - grafana-image:
+    - x86_64
   - httpd-image:
     - x86_64
   - influxdb-image:
@@ -398,6 +404,10 @@ products:
     - x86_64
   - openjdk-11-image:
     - x86_64
+  - openjdk-17-devel-image:
+    - x86_64
+  - openjdk-17-image:
+    - x86_64
   - openjdk-20-devel-image:
     - x86_64
   - openjdk-20-image:
@@ -412,13 +422,29 @@ products:
     - x86_64
   - php8-image:
     - x86_64
+  - postgres-12-image:
+    - x86_64
+  - postgres-13-image:
+    - x86_64
   - postgres-14-image:
     - x86_64
   - postgres-15-image:
     - x86_64
+  - prometheus-image:
+    - x86_64
+  - python-3.9-image:
+    - x86_64
   - python-3.10-image:
     - x86_64
   - python-3.11-image:
+    - x86_64
+  - rmt-mariadb-client-image:
+    - x86_64
+  - rmt-mariadb-image:
+    - x86_64
+  - rmt-nginx-image:
+    - x86_64
+  - rmt-server-image:
     - x86_64
   - ruby-3.2-image:
     - x86_64
@@ -545,10 +571,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20230823'
 published: '20230822'
 publishing: '20230822'
-testing: '20230822'
+testing: '20230823'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
