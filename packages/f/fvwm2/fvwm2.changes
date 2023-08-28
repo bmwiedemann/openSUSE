@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug 27 09:06:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.7.0:
+  * Fix handling of configure's --enable-mandoc/--enable-htmldoc
+  * Fix crash in FvwmPager when desk height or width is 0
+  * Added DoubleClick time to man page.
+  * Fix to FvwmIconMan to disable a SizeHint warning.
+  * Allow for reproducible builds.
+  * Increase the number of supported mouse buttons to 15.
+  * Tweaks to configure.ac
+- Remove upstreamed patches:
+  * enable-more-mouse-buttons.patch
+
+-------------------------------------------------------------------
 Thu May  4 07:30:15 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch threadlocking.patch
