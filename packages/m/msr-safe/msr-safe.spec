@@ -1,7 +1,7 @@
 #
 # spec file for package msr-safe
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,23 +29,18 @@ Source2:        msr-safe.sysconfig
 Source3:        10-msr-safe.rules
 Source4:        msr-safe.sh
 Source5:        system-user-msr.conf
-Patch0:         0000-msr_allowlist-diff.patch
-Patch1:         0001-msr_batch-diff.patch
-Patch2:         0002-msr_entry-diff.patch
-Patch3:         0003-msr_version-diff.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %kernel_module_package_buildreqs
+Patch1:         Fix-the-layout-changes-after-linux-6.patch
+Patch2:         Fixup-for-commit-1aaba11da9aa-driver-core-class-remo.patch
+BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  kernel-default-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-Requires(post):   fillup
-Requires(post):   udev
-Requires(postun): udev
-
-%kernel_module_package 
-
+Requires(post): fillup
+Requires(post): udev
+Requires(postun):udev
 # Only supported on intel architectures
 ExclusiveArch:  %{ix86} x86_64
+%kernel_module_package
 
 %description
 Userspace utility for the kernel module of the same name
@@ -64,7 +59,7 @@ which exact MSRs may be read.
 %package -n system-user-msr
 Summary:        System user msr & group msr
 Group:          System/Fhs
-%{sysusers_requires}
+%sysusers_requires
 
 %description -n system-user-msr
 This package provides the system account and group "msr".
@@ -119,7 +114,6 @@ done
 %service_del_postun msr-safe.service
 
 %files -n system-user-msr
-%defattr(-,root,root)
 %{_sysusersdir}/system-user-msr.conf
 
 %{_fillupdir}/sysconfig.msr-safe
