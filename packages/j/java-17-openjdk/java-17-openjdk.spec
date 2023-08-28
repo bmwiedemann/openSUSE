@@ -33,7 +33,8 @@
 %global featurever      17
 %global interimver      0
 %global updatever       8
-%global buildver        7
+%global patchver        1
+%global buildver        1
 %global openjdk_repo    jdk17u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
