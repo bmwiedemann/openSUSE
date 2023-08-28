@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Aug 27 14:52:34 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.0
+  * new feature: add -c or count flag to exit TCPING after a
+    certain amount of probes specified by user.
+  * fix: packet loss NaN when program terminated too quickly.
+  * fix: random IP address selector index out of range bug.
+  * fix: display format of IPv4 embedded in IPv6 addresses.
+  * fix: time report bug. Everything is now accurate.
+  * docs: improve documentation.
+- Update to version 1.22.1
+  * new feature: implement JSON output.
+  * new feature: implement JSON output prettifier.
+  * fix IP version selection bug when -4 or -6 flags are passed.
+- Update to version 1.21.1
+  * make stats struct fields' names uniform.
+  * add | separator to summary report for better visibility.
+  * fix retry resolve logic.
+- Update to version 1.21.0
+  * add option to enforce the use of IPv4 -4 or IPv6 -6 addresses
+    only.
+  * instead of always picking the first, randomly pick an address
+    from the list of resolved IP addresses.
+- Update to version 1.20.0
+  * add hostname, IP and port number to summary output.
+
+-------------------------------------------------------------------
 Fri Apr  7 19:00:45 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.19.2
