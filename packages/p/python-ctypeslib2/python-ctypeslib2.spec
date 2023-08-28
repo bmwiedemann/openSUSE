@@ -16,20 +16,24 @@
 #
 
 
-# Until python3-clang is converted to multiflavor, we have the primary flavor only
-# Please keep the multiflavor macro usage in the specfile consistent.
-%define pythons python3
-# help in the rename from multiflavor to python3 only
-%define primary_python3 python%{python3_version_nodots}
 %ifarch %{ix86} x86_64
 %bcond_without test
 %else
 %bcond_with test
 %endif
+
 %if 0%{suse_version} >= 1599
 # Tumbleweed default 16 is not compatible
 %define clangmajor 15
+# Until python3-clang is converted to multiflavor, we have the primary flavor only
+# Please keep the multiflavor macro usage in the specfile consistent.
+%define pythons python3
+# help in the rename from multiflavor to python3 only
+%define primary_python3 python%{python3_version_nodots}
+%else
+%{?sle15_python_module_pythons}
 %endif
+
 Name:           python-ctypeslib2
 Version:        2.3.4
 Release:        0
@@ -43,8 +47,8 @@ Patch1:         ctypeslib2-suse-remove-info-check.patch
 BuildRequires:  %{python_module clang%{?clangmajor} >= 11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 57}
+BuildRequires:  %{python_module setuptools_scm >= 7}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  clang%{?clangmajor} >= 11

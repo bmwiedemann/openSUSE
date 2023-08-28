@@ -37,3 +37,25 @@ Index: ctypeslib-2.3.4/pyproject.toml
  dynamic = ["version"]
  
  [project.urls]
+From 12425beba8db4c3074bb045d80a07be8ad722ade Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Wed, 26 Apr 2023 11:00:41 +0200
+Subject: [PATCH] Switch clang and clang_py versions
+
+---
+ ctypeslib/clang2py.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ctypeslib/clang2py.py b/ctypeslib/clang2py.py
+index 10c29a1..49133bc 100755
+--- a/ctypeslib/clang2py.py
++++ b/ctypeslib/clang2py.py
+@@ -260,7 +260,7 @@ def windows_dlls(option, opt, value, _parser):  # pylint: disable=unused-argumen
+ 
+     def version_string():
+         version = "versions - %(prog)s:" \
+-                  f"{ctypeslib.__version__} python-clang:{clang_version()} clang:{clang_py_version()} " \
++                  f"{ctypeslib.__version__} python-clang:{clang_py_version()} clang:{clang_version()} " \
+                   f"clang_filename:{ctypeslib.__clang_library_filename}"  # pylint: disable=protected-access
+         return version
+ 

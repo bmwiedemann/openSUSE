@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 25 15:22:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update ctypeslib2-suse-remove-info-check.patch
+- Prevent failing 15.5 build until clang is available for the
+  SLE15 python smodule (forget dead Py 3.6)
+
+-------------------------------------------------------------------
 Mon Apr 24 21:34:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.3.4
