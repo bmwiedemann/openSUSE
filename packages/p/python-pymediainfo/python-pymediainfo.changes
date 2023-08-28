@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 25 10:52:11 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- (Build)Require python-importlib-metadata on Leap (boo#1214468)
+
+-------------------------------------------------------------------
 Mon Mar  6 07:05:10 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Don't use fdupes -s, it hurts.

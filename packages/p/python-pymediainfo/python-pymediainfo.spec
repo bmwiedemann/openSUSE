@@ -26,11 +26,15 @@ Group:          Development/Languages/Python
 URL:            https://github.com/sbraz/pymediainfo
 Source0:        https://files.pythonhosted.org/packages/source/p/pymediainfo/pymediainfo-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
+BuildRequires:  %{python_module importlib-metadata if %python-version < 3.8}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  libmediainfo0
 Requires:       libmediainfo0
+%if 0%{?python_version_nodots} < 38
+Requires:       python-importlib-metadata
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
