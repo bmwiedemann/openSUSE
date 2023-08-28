@@ -117,4 +117,14 @@ pgcsw</comment>
 </comment>
     <requestid>1102554</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>34e193d33f23af8e2e09410d9519997a</srcmd5>
+    <version>3.3.6</version>
+    <time>1693235749</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.3.6
+   * about.cpp line 101: URL updated
+</comment>
+    <requestid>1106180</requestid>
+  </revision>
 </revisionlist>

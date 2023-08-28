@@ -16,13 +16,13 @@
 #
 
 Name:           UltimateDailyWallpaper
-Version:        3.3.5
+Version:        3.3.6
 Release:        0
 Summary:        A wallpaper changer and downloader
 License:        GPL-3.0+
 Group:          Productivity/Multimedia/Other
-URL:            https://github.com/pagaco-swita/ultimatedailywallpaper
-Source0:        %{url}/archive/v%{version}.tar.gz#/ultimatedailywallpaper-%{version}.tar.gz
+URL:            https://gitlab.com/ultimatedailywallpaper/ultimatedailywallpaper
+Source0:        %{url}/-/archive/%{version}/ultimatedailywallpaper-%{version}.tar.gz
 
 BuildRequires:  libstdc++-devel
 BuildRequires:  Mesa-libGL-devel
