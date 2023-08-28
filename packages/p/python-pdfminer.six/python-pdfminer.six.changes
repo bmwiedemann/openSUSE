@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 25 14:07:07 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Apr 11 14:39:08 UTC 2023 - pgajdos@suse.com
 
 - python-six is not required
