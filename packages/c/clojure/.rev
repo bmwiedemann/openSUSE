@@ -200,4 +200,13 @@
   * GitHub releases now contain .sha256 files for binaries</comment>
     <requestid>1105338</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>78cf21784ede4e764fb77c71e3507b0f</srcmd5>
+    <version>1.11.1.1413</version>
+    <time>1693235737</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.11.1.1413:
+  * No changes from prior</comment>
+    <requestid>1106139</requestid>
+  </revision>
 </revisionlist>
