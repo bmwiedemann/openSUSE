@@ -31,4 +31,49 @@
     <comment></comment>
     <requestid>1031292</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>752262e993a7ff1f05cc1b95b6232382</srcmd5>
+    <version>1.6.0</version>
+    <time>1693235545</time>
+    <user>anag+factory</user>
+    <comment>- Update to latest tagged release version 1.6.0
+  * build
+    - increased code coverage to 85% globally across entire
+      project. This is the single largest effort included in this
+      version and touches most modules in some way, most particularly
+      the framing objects cleaning build to remove compiler warnings
+      (e.g. unused variables) stripped version number off archive
+  * dotprod
+    - added support for AVX512-F (thanks, @vankxr!)
+  * framing
+    - added numerous tests to increase coverage to 84%
+    - framesync64: using new qdsync object for simplified operation
+    - qdsync: new frame detector and synchronizer to much more
+      easily       support frame processing. The object not only
+      detects the frame, but also provides an initial carrier
+      frequency, phase, and timign offset, and also corrects for
+      these impairments, passing the results to the user in a clean
+      callback function.
+  * modem
+    - cpfskmod: increasing phase stability for long runs
+  * multichannel
+    - added numerous tests to increase coverage to 88%
+  * optim
+    - added numerous tests to increase coverage to 92%
+  * sequence
+    - msequence: extended support for state variables up to m=31,
+      reversed order for generator polynomial and internal state
+      definition to be more consistent with literature and
+      readily-available genpolys
+- Update to release version 1.5.0</comment>
+    <requestid>1105571</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a7b1c9e649ed4a452a6f6ec7f111cb26</srcmd5>
+    <version>1.6.0</version>
+    <time>1693482333</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108042</requestid>
+  </revision>
 </revisionlist>

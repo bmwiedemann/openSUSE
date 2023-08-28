@@ -1,7 +1,7 @@
 #
 # spec file for package liquid-dsp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,8 +18,10 @@
 
 
 %define use_build_checks 0
+%define libname libliquid
+
 Name:           liquid-dsp
-Version:        1.3.2
+Version:        1.6.0
 Release:        0
 Summary:        Digital signal processing library for software-defined radios
 License:        MIT
@@ -27,8 +29,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://liquidsdr.org
 #Git-Clone:     https://github.com/jgaeddert/liquid-dsp.git
 Source:         https://github.com/jgaeddert/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         liquid-dsp-fix-destdir.diff
-Patch1:         reproducible.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -43,11 +43,21 @@ liquid-dsp is a signal processing library for software-defined
 radios written in C. Its purpose is to provide a set of extensible DSP modules
 that do no rely on external dependencies or cumbersome frameworks.
 
-%package -n libliquid-devel
-Summary:        Development files for the liquid-dsp library
+%package -n %{libname}
+Summary:        Digital signal processing library for software-defined radios
 Group:          Development/Libraries/C and C++
 
-%description -n libliquid-devel
+%description -n %{libname}
+liquid-dsp is a signal processing library for software-defined
+radios written in C. Its purpose is to provide a set of extensible DSP modules
+that do no rely on external dependencies or cumbersome frameworks.
+
+%package -n %{libname}-devel
+Summary:        Development files for the liquid-dsp library
+Group:          Development/Libraries/C and C++
+Requires:       libliquid = %{version}
+
+%description -n %{libname}-devel
 liquid-dsp is a signal processing library for software-defined
 radios written in C. Its purpose is to provide a set of extensible DSP modules
 that do no rely on external dependencies or cumbersome frameworks.
@@ -57,31 +67,36 @@ applications that want to make use of libliquid.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+rm scripts/ax_ext.m4 # avoid CPU-detection on build machine (boo#1100677)
 
 %build
-autoreconf -fiv
-%configure
-make %{?_smp_mflags}
+./bootstrap.sh
+%configure -disable-static
+%make_build
 
 %install
 %make_install
-rm -f %{buildroot}/%{_libdir}/libliquid.a
+rm -f %{buildroot}/%{_libdir}/libliquid.a*
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+# fix library executable flag
+chmod a+x %{buildroot}/%{_libdir}/libliquid.so.1.6
+
+%post    -n %{libname} -p /sbin/ldconfig
+%postun  -n %{libname} -p /sbin/ldconfig
 
 %check
 %if 0%{?use_build_checks}
 make %{?_smp_mflags} check
 %endif
 
-%files -n libliquid-devel
+%files -n %{libname}
 %license LICENSE
 %doc HISTORY README.md TROUBLESHOOTING
+%{_libdir}/%{libname}.so.*
+
+%files -n %{libname}-devel
 %dir %{_includedir}/liquid
 %{_includedir}/liquid/liquid.h
-%{_libdir}/libliquid.so
+%{_libdir}/%{libname}.so
 
 %changelog
