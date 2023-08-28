@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           libXISF
-Version:        0.2.8
+Version:        0.2.9
 Release:        0
 Summary:        Library to read/write PixInsight XISF files
 License:        GPL-3.0-or-later
@@ -28,6 +28,7 @@ Source:         https://gitea.nouspiro.space/nou/libXISF/archive/v%{version}.tar
 Patch0:         fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  liblz4-devel
+BuildRequires:  libzstd-devel
 BuildRequires:  pkg-config
 BuildRequires:  pugixml-devel
 BuildRequires:  zlib-devel

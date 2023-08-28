@@ -67,4 +67,14 @@
 </comment>
     <requestid>1093067</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8dcb83a5f82bee712e577dda1f2f4e4a</srcmd5>
+    <version>0.2.9</version>
+    <time>1693235830</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.2.9:
+  * Support for ZSTD
+</comment>
+    <requestid>1106269</requestid>
+  </revision>
 </revisionlist>
