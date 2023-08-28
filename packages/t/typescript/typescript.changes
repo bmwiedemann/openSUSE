@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 26 14:47:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.2.2:
+  * 'using' Declarations and Explicit Resource Management
+  * Decorator Metadata
+  * Named and Anonymous Tuple Elements
+  * Easier Method Usage for Unions of Arrays
+  * Copying Array Methods
+  * symbols as WeakMap and WeakSet Keys
+  * Type-Only Import Paths with TypeScript Implementation File Extensions
+  * Comma Completions for Object Members
+  * Inline Variable Refactoring
+  * Optimized Checks for Ongoing Type Compatibility
+  * Breaking changes and Correctness fixes: see 
+    https://devblogs.microsoft.com/typescript/announcing-typescript-5-2/#breaking-changes-and-correctness-fixes
+
+-------------------------------------------------------------------
 Fri Aug 11 13:26:18 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.1.6:
