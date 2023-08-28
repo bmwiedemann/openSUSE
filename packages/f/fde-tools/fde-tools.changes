@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug 29 07:56:44 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.6.9
+  + Redirect the firstboot messages to journald instead of a
+    standalone log file (bsc#1214581)
+  + Update /boot/grub2/grub.cfg at the end of firstboot to reflect
+    the LUKS key change
+  + Update the version automatically
+  + Add 'cryptsetup' to 'make dist'
+  + Fix the version in fde.sh
+- Update the download URL
+
+-------------------------------------------------------------------
+Thu Aug 24 07:45:13 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.6.8
+  + Improve the LUKS partition detection to support LUKS over LVM
+- Remove openssl and tpm2-0-tss-devel from BuildRequires since all
+  TPM related programs are already in pcr-oracle
+- Add util-linux-systemd to Requires for 'lsblk'
+
+-------------------------------------------------------------------
 Fri Aug 18 07:51:12 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 0.6.7

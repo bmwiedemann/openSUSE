@@ -17,23 +17,22 @@
 
 
 Name:           fde-tools
-Version:        0.6.7
+Version:        0.6.9
 Release:        0
 Summary:        Tools required for Full Disk Encryption
 License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://github.com/openSUSE/fde-tools
-Source:         https://github.com/openSUSE/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/openSUSE/%{name}/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source1:        fde-tools.service
 Patch:          fde-tools-firstboot-alp-snapshot.patch
 BuildRequires:  help2man
-BuildRequires:  openssl >= 0.9.8
-BuildRequires:  tpm2-0-tss-devel
 BuildRequires:  pkgconfig(libcryptsetup)
 BuildRequires:  pkgconfig(libfido2)
 Requires:       cryptsetup
 Requires:       mokutil
 Requires:       pcr-oracle >= 0.4.5
+Requires:       util-linux-systemd
 ExclusiveArch:  aarch64 s390x ppc64le x86_64 riscv64
 
 %package -n fde-firstboot
