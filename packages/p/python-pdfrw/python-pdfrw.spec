@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Tests require external files
 %bcond_with     test
+%{?sle15_python_module_pythons}
 Name:           python-pdfrw
 Version:        0.4
 Release:        0
