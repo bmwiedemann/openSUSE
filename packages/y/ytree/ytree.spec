@@ -1,7 +1,7 @@
 #
 # spec file for package ytree
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ytree
-Version:        2.04
+Version:        2.05
 Release:        0
 Summary:        A filemanager similar to XTree
 License:        GPL-2.0-only
@@ -34,7 +34,7 @@ ytree is a (curses-based) file manager similar to DOS XTree.
 %setup -q
 
 %build
-export CFLAGS="%optflags"
+export CFLAGS="%{optflags}"
 %make_build
 
 %install
