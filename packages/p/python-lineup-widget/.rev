@@ -46,4 +46,13 @@
 </comment>
     <requestid>931197</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4ff679ffc788d18c12fbd892ed6c3c5d</srcmd5>
+    <version>4.0.0</version>
+    <time>1693235691</time>
+    <user>anag+factory</user>
+    <comment>- Don't use notebook 7: nbclassic or notebook 6 required
+- PEP517 (forwarded request 1106068 from bnavigator)</comment>
+    <requestid>1106069</requestid>
+  </revision>
 </revisionlist>
