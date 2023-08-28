@@ -89,4 +89,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1104907</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>024704ab39a5e7e890a32103bc164cd0</srcmd5>
+    <version>0.18.1</version>
+    <time>1693235684</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.18.1:
+  * Fixed parentheses around a single Luau type pack in a generic being removed causing syntax errors.
+</comment>
+    <requestid>1106048</requestid>
+  </revision>
 </revisionlist>
