@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 25 15:27:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change to fix detection of yaml-cpp 0.8:
+  * 0001-ClangTools-Add-support-for-yaml-cpp-0.8.patch
+
+-------------------------------------------------------------------
 Tue Aug 15 18:25:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 11.0.2
