@@ -17,12 +17,14 @@
 
 
 Name:           haruna
-Version:        0.11.3
+Version:        0.12.1
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
-URL:            https://invent.kde.org/multimedia/haruna
+URL:            https://apps.kde.org/haruna
 Source0:        https://download.kde.org/stable/haruna/%{name}-%{version}.tar.xz
+Source1:        https://download.kde.org/stable/haruna/%{name}-%{version}.tar.xz.sig
+Source2:        haruna.keyring
 BuildRequires:  cmake >= 3.15
 BuildRequires:  extra-cmake-modules >= 5.66
 BuildRequires:  hicolor-icon-theme
@@ -56,11 +58,7 @@ BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(mpv)
 Requires:       breeze5-icons
-%if 0%{?sle_version} != 150300
 Requires:       yt-dlp
-%else
-Requires:       youtube-dl
-%endif
 
 %description
 %{name} is a video player built with Qt/QML on top of libmpv.
@@ -80,10 +78,10 @@ Requires:       youtube-dl
 %find_lang %{name}
 
 # let's remove the documentation for now
-rm -rf %{buildroot}%{_datadir}/doc
+rm -r %{buildroot}%{_datadir}/doc
 
 # remove oddly-sized icons
-rm -rf %{buildroot}%{_datadir}/icons/hicolor/44x44 \
+rm -r %{buildroot}%{_datadir}/icons/hicolor/44x44 \
        %{buildroot}%{_datadir}/icons/hicolor/150x150 \
        %{buildroot}%{_datadir}/icons/hicolor/310x310
 

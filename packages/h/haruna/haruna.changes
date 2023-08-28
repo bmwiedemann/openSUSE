@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Aug 31 10:46:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.12.1
+  * Fixed file being paused on startup in certain cases
+  * Fixed text color of the progress bar tooltip (kde#473784)
+  * Fixed move video up/down and decrease subtitle font size
+    actions (kde#473906, kde#473962)
+  * Fixed playlist opening on top of the video when the overlay
+    setting is turned off
+
+-------------------------------------------------------------------
+Fri Aug 25 13:11:00 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.12.0
+  Features:
+  * Added preview thumbnail to the progress bar, can be
+    configured in the general settings page
+  * Added setting to allow only a single instance, can be
+    configured in the general settings page
+  * Added action selection popup where you can search all
+    available actions and trigger them (open with Ctrl+`
+    (backtick), similar to KCommandBar)
+  * Added setting to auto resize window to the video resolution,
+    on Wayland the maximum size is not constrained
+  * Added setting to hide playlist toolbar
+  * Added menu item for each settings page under settings menu
+  * The screenshot path is shown in the osd when using mpv
+    0.36.0 or later versions
+  * Added a "Scroll to playing item" entry to the playlist
+    context menu
+  * Added a "Open url" entry to the playlist context menu for
+    online url
+  * Hiding/showing the menubar, top toolbar and bottom toolbar
+    is now animated
+  * Added track selection menu entries to the hamburger menu
+  Bugfixes:
+  * Fixed not blocking inhibition (turning the display off,
+    sleep etc.) during playback
+
+-------------------------------------------------------------------
 Thu Jul 13 06:07:24 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.11.3

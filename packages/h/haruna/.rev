@@ -205,4 +205,27 @@
     <comment></comment>
     <requestid>1098507</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c3d2431a37147fb873c1a15ec204d37e</srcmd5>
+    <version>0.12.0</version>
+    <time>1693235604</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105916</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b234c20f3ae1afa1c33408c770228846</srcmd5>
+    <version>0.12.1</version>
+    <time>1693570906</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.12.1
+  * Fixed file being paused on startup in certain cases
+  * Fixed text color of the progress bar tooltip (kde#473784)
+  * Fixed move video up/down and decrease subtitle font size
+    actions (kde#473906, kde#473962)
+  * Fixed playlist opening on top of the video when the overlay
+    setting is turned off
+</comment>
+    <requestid>1108389</requestid>
+  </revision>
 </revisionlist>
