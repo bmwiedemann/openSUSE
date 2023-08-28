@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 30 00:57:21 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 116.0.5845.140 (boo#1214758):
+  * CVE-2023-4572: Use after free in MediaStream
+
+-------------------------------------------------------------------
+Wed Aug 23 06:09:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 116.0.5845.110 (boo#1214487):
+  * CVE-2023-4427: Out of bounds memory access in V8
+  * CVE-2023-4428: Out of bounds memory access in CSS
+  * CVE-2023-4429: Use after free in Loader
+  * CVE-2023-4430: Use after free in Vulkan
+  * CVE-2023-4431: Out of bounds memory access in Fonts
+
+-------------------------------------------------------------------
 Mon Aug 14 19:17:09 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 116.0.5845.96

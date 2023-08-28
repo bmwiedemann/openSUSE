@@ -4671,4 +4671,28 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>chromium 116.0.5845.96 boo#1214301</comment>
     <requestid>1104075</requestid>
   </revision>
+  <revision rev="393" vrev="1">
+    <srcmd5>0136ed378b8b666355de511e3a43881a</srcmd5>
+    <version>116.0.5845.110</version>
+    <time>1693235483</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 116.0.5845.110 (boo#1214487):
+  * CVE-2023-4427: Out of bounds memory access in V8
+  * CVE-2023-4428: Out of bounds memory access in CSS
+  * CVE-2023-4429: Use after free in Loader
+  * CVE-2023-4430: Use after free in Vulkan
+  * CVE-2023-4431: Out of bounds memory access in Fonts
+</comment>
+    <requestid>1105427</requestid>
+  </revision>
+  <revision rev="394" vrev="1">
+    <srcmd5>4a503c56b82df22119e2b4647658daaf</srcmd5>
+    <version>116.0.5845.140</version>
+    <time>1693383681</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 116.0.5845.140 (boo#1214758):
+  * CVE-2023-4572: Use after free in MediaStream
+</comment>
+    <requestid>1108013</requestid>
+  </revision>
 </revisionlist>
