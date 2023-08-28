@@ -25,7 +25,7 @@ Summary:        Screenshot tool for wlroots based compositors
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND BSD-3-Clause AND ISC AND MIT AND Zlib AND BSD-2-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/waycrate/wayshot
-Source0:        %{name}-%{version}.tar.zst
+Source0:        https://github.com/waycrate/wayshot/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 %if 0%{?suse_version} >= 1500

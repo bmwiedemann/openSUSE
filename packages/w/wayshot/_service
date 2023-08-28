@@ -1,29 +1,12 @@
 <services>
-  <service mode="manual" name="obs_scm">
-    <param name="url">https://github.com/waycrate/wayshot.git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="scm">git</param>
-    <param name="revision">43fae61</param>
-    <param name="versionrewrite-pattern">(.*)</param>
-    <param name="versionrewrite-replacement">\1</param>
-    <param name="changesgenerate">enable</param>
-    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
-  </service>
-  <service mode="manual" name="tar" />
-  <service mode="manual" name="recompress">
-    <param name="file">*.tar</param>
-    <param name="compression">zst</param>
-  </service>
-  <service mode="manual" name="set_version"/>
+  <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-     <param name="srcdir">wayshot</param>
+     <param name="srctar">wayshot-1.3.0.tar.gz</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
      <param name="cargotoml">wayshot/Cargo.toml</param>
      <param name="cargotoml">libwayshot/Cargo.toml</param>
   </service>
-  <service name="cargo_audit" mode="manual">
-     <param name="srcdir">wayshot</param>
-  </service>
+  <service name="cargo_audit" mode="manual" />
 </services>
 
