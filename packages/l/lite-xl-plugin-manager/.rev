@@ -7,4 +7,20 @@
     <comment>New package, see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/LAJWQAONRKG25I4VHAUGUIMA22DGLNFO/</comment>
     <requestid>1104469</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9a9684872ac5561656861841fb49751f</srcmd5>
+    <version>1.0.9+git20230818.02b2665</version>
+    <time>1693235615</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1105933</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>93e580eb94c320c29ed90267e8e3cdb9</srcmd5>
+    <version>1.0.10+git20230827.2452630</version>
+    <time>1693860780</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1108733</requestid>
+  </revision>
 </revisionlist>

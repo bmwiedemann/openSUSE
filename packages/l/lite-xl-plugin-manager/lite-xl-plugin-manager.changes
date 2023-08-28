@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Aug 27 18:50:53 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.10+git20230827.2452630:
+  * Updated CHANGELOG.md.
+  * Added in --config flag.
+  * Made us clear the entire bottle if we're reconstructing which is a lot safer.
+
+-------------------------------------------------------------------
+Fri Aug 18 15:44:17 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.9+git20230818.02b2665:
+  * Updated CHANGELOG.md.
+  * Minor documentation updates.
+  * Made it so we also chmod unzipped gz files.
+  * Added .gz to the spec.
+  * Allowed for extracting of .gz files without an associated tar.
+
+-------------------------------------------------------------------
 Thu Aug 17 17:52:09 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 1.0.8+git20230817.6bcc10e:
