@@ -210,4 +210,12 @@
   * Fix rotation for v4l2 devices (forwarded request 1056139 from dirkmueller)</comment>
     <requestid>1056200</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>090cd4b95378aa4112f97bd1ea93183e</srcmd5>
+    <version>4.5.1</version>
+    <time>1693235897</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107045</requestid>
+  </revision>
 </revisionlist>

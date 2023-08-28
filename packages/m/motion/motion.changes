@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 26 04:56:10 UTC 2023 - munix9@googlemail.com
+
+- Fix undefined reference to symbol 'WebPMemoryWriterClear'
+
+-------------------------------------------------------------------
 Thu Jan  5 08:00:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.1:

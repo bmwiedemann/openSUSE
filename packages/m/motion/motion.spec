@@ -60,6 +60,7 @@ without MySQL and PostgreSQL support.
 %patch0 -p1
 
 %build
+export LIBS="-lwebp"
 autoreconf -i -f
 %configure \
   --without-optimizecpu \
