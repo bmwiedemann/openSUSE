@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Aug 24 14:38:58 UTC 2023 - rombert@apache.org
+
+- Update to version 2.1.0:
+  * Add monitoring configuration deprecation notice
+  * tests/azure: update dependencies
+  * Update dependencies
+  * Update toolkit components
+  * modify `flux create secret tls` to create secrets of type TLS
+  * add deprecation warning per secret key field and constant
+  * add flag `--ca-crt-file` to `flux create secret git`
+  * deprecate TLS flags for flux create secret helm
+  * add support for Kubernetes TLS keys for `flux create secret tls`
+  * fix autocompletion for helm chart
+  * manifestgen/install: use clean default HTTP client
+  * cmd/events: handle error value
+  * Fix controller version info
+  * Set min value for the `--ssh-rsa-bits` flag
+  * ci: disable fail-fast for ARM end-to-end
+  * cmd: address typo in end-to-end tests
+  * build: update securejoin dependency
+  * build(deps): bump the ci group with 2 updates
+  * e2e: Add Kubernetes v1.28.0 to conformance tests
+  * build(deps): bump the ci group with 2 updates
+  * ci: enable security-and-quality CodeQL query
+  * monitoring: add Sources Stats panels
+  * monitoring: add OCIRepository in cluster dashboard panels
+  * disable e2e test
+  * Fix selection of kustomization resource from multi doc yaml
+  * Set Kubernetes min version to 1.25
+  * build(deps): bump the ci group with 2 updates
+  * Update dependencies - bump the APIs packages in tests - bump golang crypto and term to latest
+  * action: support `openssl` and `sha256sum`
+  * Take into account the server-side inventory for local diff
+  * action: re-allow configuration of non-default token
+  * Update toolkit components
+  * docs: Link to the Flux GitHub Action documentation
+  * ci: add workflow to test action
+  * action: rewrite action to use `$RUNNER_TOOL_CACHE`
+  * ci: release: extract the image tag from GITHUB_REF
+  * ci: backport: set write permissions
+  * ci: release: disable interpretation backslash esc
+
+-------------------------------------------------------------------
 Tue Jul 11 13:36:20 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.0.1:
