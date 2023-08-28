@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Aug 27 06:46:38 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 4.7.5
+  * Enhancements:
+    + Java 22 update: improve logic for detecting if the output
+      stream is connected to a terminal.
+    + Mask parameters in trace log when echo=false for interactive
+      options and positional parameters.
+  * Bugfixes:
+    + Fix positional parameters bug with late-resolved arity
+      variable.
+    + Don't generate auto-complete for hidden attributes in
+      picocli.shell.jline3.PicoCommand.
+    + ArgGroup with exclusive=false and multiplicity=1 should
+      require at least one option; fix regression and refine
+      solution introduced in [#1848][#2030].
+  * DOC fixes:
+    + Improve GraalVM documentation: add
+      graalvm-native-image-plugin.
+    + Commit html files with LF line-endings.
+- Removed patch:
+  * revert-version.patch
+    + not needed any more
+
+-------------------------------------------------------------------
+Sat Aug 26 05:11:45 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Fetch sources from upstream repository, since our pull request
+  https://github.com/remkop/picocli/pull/2045 has been integrated
+
+-------------------------------------------------------------------
 Tue Jun 13 12:49:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 4.7.4

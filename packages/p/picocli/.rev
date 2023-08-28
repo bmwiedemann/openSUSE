@@ -47,4 +47,12 @@
     <comment>Fix typo in *.changes</comment>
     <requestid>1093108</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0cd31826a672eb0c9debbc57d0bfe697</srcmd5>
+    <version>4.7.5</version>
+    <time>1693235652</time>
+    <user>anag+factory</user>
+    <comment>4.7.5</comment>
+    <requestid>1106117</requestid>
+  </revision>
 </revisionlist>

@@ -3,10 +3,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>info.picocli</groupId>
-  <artifactId>picocli-shell-jline2</artifactId>
-  <version>4.7.4</version>
-  <name>picocli-shell-jline2</name>
-  <description>Picocli Shell JLine2 - easily build interactive shell applications with JLine 2 and picocli.</description>
+  <artifactId>picocli-codegen</artifactId>
+  <version>4.7.5</version>
+  <name>picocli-codegen</name>
+  <description>Picocli Code Generation - Tools to generate documentation, configuration, source code and other files from a picocli model.</description>
   <url>https://picocli.info</url>
   <inceptionYear>2018</inceptionYear>
   <licenses>
@@ -32,13 +32,7 @@
     <dependency>
       <groupId>info.picocli</groupId>
       <artifactId>picocli</artifactId>
-      <version>4.7.4</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>jline</groupId>
-      <artifactId>jline</artifactId>
-      <version>2.14.6</version>
+      <version>4.7.5</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
