@@ -17,18 +17,14 @@
 
 
 Name:           OpenRGB
-Version:        0.8
+Version:        0.9
 Release:        0
 Summary:        Open source RGB lighting control
 License:        GPL-2.0-only
 URL:            https://gitlab.com/CalcProgrammer1/OpenRGB
 Source0:        https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_%{version}/OpenRGB-release_%{version}.tar.gz
-# PATCH-FIX-OPENSUSE OpenRGB-mbedTLS3-hueplusplus.patch
-Patch0:         OpenRGB-mbedTLS3-hueplusplus.patch
 # PATCH-FEATURE-OPENSUSE OpenRGB-use_system_libs.patch
-Patch1:         OpenRGB-use_system_libs.patch
-# PATCH-FIX-OPENSUSE GCC13 fix upstream commit 269ebeddb49951b72a8ca04adf02d3a3aa2db45d
-Patch2:         OpenRGB-GCC13.patch
+Patch0:         OpenRGB-use_system_libs.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-linguist-devel
@@ -39,10 +35,18 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(gusb)
 BuildRequires:  pkgconfig(hidapi-hidraw)
 BuildRequires:  pkgconfig(libe131)
+Requires:       %{name}-udev-rules = %{version}
 
 %description
 The purpose of this tool is to control RGB lights on different peripherals.
 Accessing the SMBus is a potentially dangerous operation, so exercise caution.
+
+%package udev-rules
+BuildArch:      noarch
+Summary:        OpenRGB udev rules
+
+%description udev-rules
+This package contain the udev rules for OpenRGB.
 
 %prep
 %autosetup -p1 -n %{name}-release_%{version}
@@ -61,10 +65,10 @@ install -Dpm0644 60-openrgb.rules %{buildroot}%{_udevrulesdir}/60-openrgb.rules
 
 # see if creating .conf to load speficic kernel modules is necessary
 
-%post
+%post udev-rules
 %udev_rules_update
 
-%postun
+%postun udev-rules
 %udev_rules_update
 
 %files
@@ -73,6 +77,9 @@ install -Dpm0644 60-openrgb.rules %{buildroot}%{_udevrulesdir}/60-openrgb.rules
 %{_bindir}/openrgb
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
+
+%files udev-rules
+%license LICENSE
 %{_udevrulesdir}/60-openrgb.rules
 
 %changelog

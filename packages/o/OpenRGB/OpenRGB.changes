@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Fri Jul 14 14:02:05 UTC 2023 - Erwan GEORGET <egeorget@canopus.dev>
+
+- Update to upstream version 0.9
+
+  New Features:
+
+  * Segments
+      + Split addressable LED zones into sub-groups
+      + Useful to divide up daisy-chained ARGB devices (fans, strips) connected to the same header
+  * Keyboard Layout Manager, a back-end feature that makes it easier to develop keyboard integrations and manage multiple regional layouts
+  * Hardware IDs page helps to make it easier to integrate new devices
+  * SDK integration for plugins, allows plugins to expose their own custom SDK hooks
+  * Replaced old PNG icons with new icons
+  * Additional translations
+      + Malaysian
+      + Japanese
+      + Croatian
+      + Polish
+  * Translation updates for existing translations
+  
+  New Device Support:
+
+  * Many additional GPUs added to existing GPU controllers
+    + ASUS
+    + Colorful
+    + EVGA
+    + Gainward
+    + Gigabyte
+    + iGame
+    + MSI
+    + NVIDIA
+    + Palit
+    + PNY
+  * AOC controller:
+    + AOC GK500 keyboard
+    + AOC GMM700 mousemat
+    + AOC GM500 mouse
+  * ASRock controller improvements:
+    + Fixes for ASRock Polychrome USB boards
+  * ASUS controller improvements:
+    + Additional devices added
+    + Various device-specific improvements
+    + ASUS ROG Ally support
+  * Cherry keyboard support
+  * Corsair controller improvements:
+    + Corsair Dominator Platinum DDR5 support
+    + Corsair Vengeance DDR5 support
+  * CRYORIG H7 Quad Lumi support
+  * Das Keyboard controller improvements:
+    + Additional device support
+  * ENE controller improvements:
+    + Improved ENE SMBus configuration table parsing (fixes Unknown LED names on most ENE DRAM)
+    + Made Save to Device hidden behind configuration file setting as it is unreliable on some modules
+  * GaiZhongGai controller improvements:
+    + Additional device support
+  * Gigabyte controller improvements:
+    + Added new motherboard layouts
+  * HyperX controller improvements:
+    + Added an hidapi wrapped device type to use libusb-hidapi on Linux for certain devices that have a non-compliant USB HID descriptor
+    + Additional device support
+  * JSAUX Steam Deck dock support
+  * LEGO Dimensions toypad base support
+  * Lenovo laptop controller improvements:
+    + Additional device support
+  * Lenovo motherboard support
+  * Lian-Li controller improvements:
+    + Additional device support
+  * Logitech controller improvements:
+    + Bug fixes
+  * MSI controller improvements:
+    + More MSI Mystic Light motherboards added
+  * Nollie32 controller support
+  * NZXT Hue 1 (Smart Device V1) support
+  * NZXT Hue 2 controller improvements:
+    + Additional device support
+    + Additional accessory (fans/strips) support
+  * OKS keyboard support
+  * Razer controller improvements:
+    + Additional device support
+    + Fixed initialization issues that made some devices unreliable
+    + Migrated many Razer keyboards to KeyboardLayoutManager
+  * RedSquare keyboard support
+  * Roccat headset support
+  * Sapphire controller improvements:
+    + Additional features supported
+  * TP-Link Kasa Smart support
+  * Wooting controller improvements:
+    + Additional device support
+
+Bug Fixes:
+
+  * Fixed some CLI issues
+
+Known Issues:
+
+  * Some NVIDIA GPU controllers may not work on Linux due to issues with NVIDIA's proprietary driver.  The latest beta version of the driver should have a fix.
+    + ASUS Aura 3xxx (ENE) GPUs
+    + EVGA 3xxx GPUs
+  * AMD GPU controllers do not work on Linux due to issues with AMD's amdgpu kernel driver.
+  * Redragon M711 wave effect doesn't work
+  * Some Corsair mice do not have specific LED labels
+  * Some Razer keyboards are missing key maps
+  * Asus Addressable number of channels may be incorrect
+
+Notes:
+
+  * Due to changes in device names, existing profiles you have saved from previous versions may not work and will need to be recreated.  Same goes for saved addressable controller sizes.
+  * If upgrading from a release prior to OpenRGB 0.6, it is recommended to disable OpenRazer or OpenRazer-win32 in the settings.  This allows use of the new Razer controller with better device support.  OpenRazer will likely be removed in the next release.
+  * Due to plugin versioning change, you may have to delete your old plugins manually before OpenRGB will install new ones.  To do this, go to the Settings tab, under General Settings click Open Settings Folder.  Close OpenRGB, then delete the plugins folder in this directory.  Reopen OpenRGB and you can install new plugins from the settings tab.  
+
+- Patches
+  * Drop OpenRGB-GCC13.patch: fixed upstream
+  * Drop OpenRGB-mbedTLS3-hueplusplus.patch: fixed upstream
+  * Rebase OpenRGB-use_system_libs.patch: Update to new version
+
+
+-------------------------------------------------------------------
+Sat Jun  3 07:38:14 UTC 2023 - Erwan GEORGET <egeorget@canopus.dev>
+
+- Split the package in two to allow installation of udev rules for use with the Flatpak version.
+
+-------------------------------------------------------------------
+Thu May 25 08:45:23 UTC 2023 - Jan Baier <jbaier@suse.com>
+
+- openSUSE build:
+  * Fix build in Factory:
+    + Add OpenRGB-mbedTLS3-hueplusplus.patch
+    + Add OpenRGB-GCC13.patch
+
+-------------------------------------------------------------------
 Tue May  2 13:59:02 UTC 2023 - Michael Gumsley <gumsley_6@hotmail.com>
 
 - Fix openSUSE build:
@@ -23,7 +153,7 @@ Mon Nov 28 09:31:08 UTC 2022 - Michael Gumsley <gumsley_6@hotmail.com>
   * UI cleanup, frames around UI elements
   * Automatic udev rules generation
   * Improved AMD ADL I2C driver to support more AMD GPUs on Windows
-  * Option to enable SMBus mutex in Windows for compatibility with other 
+  * Option to enable SMBus mutex in Windows for compatibility with other
     hardware management and RGB software that accesses SMBus.
   * (Windows) Switched from inpout32 to WinRing0 low level access library.
   * More Intel chipsets added to Intel SMBus detection
@@ -119,12 +249,12 @@ Mon Nov 28 09:31:08 UTC 2022 - Michael Gumsley <gumsley_6@hotmail.com>
   Bug Fixes:
 
   * Fixed inverted brightness handling in the UI
-  * Sinowealth keyboard controller has been disabled due to bricking 
+  * Sinowealth keyboard controller has been disabled due to bricking
     issues with certain Redragon keyboards due to USB PID/VID reuse.
 
   Known Issues:
 
-  * Some NVIDIA GPU controllers may not work on Linux due to issues 
+  * Some NVIDIA GPU controllers may not work on Linux due to issues
     with NVIDIA's proprietary driver. The latest beta version of
     the driver should have a fix.
     + ASUS Aura 3xxx (ENE) GPUs
@@ -147,11 +277,11 @@ Mon Nov 28 09:31:08 UTC 2022 - Michael Gumsley <gumsley_6@hotmail.com>
   Settings click Open Settings Folder. Close OpenRGB, then delete the
   plugins folder in this directory. Reopen OpenRGB and you can install
   new plugins from the settings tab.
-  
+
 -------------------------------------------------------------------
 Wed Jan  5 03:42:47 UTC 2022 - Michael Gumsley <gumsley_6@hotmail.com>
 
-- Disable link time optimization as this causes a segfault during 
+- Disable link time optimization as this causes a segfault during
   startup when loading in controllers.
 
 -------------------------------------------------------------------
@@ -545,4 +675,4 @@ Fri Mar 27 05:32:38 UTC 2020 - dead_mozay@opensuse.org
 -------------------------------------------------------------------
 Fri Mar 27 05:31:53 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Initial package 
+- Initial package
