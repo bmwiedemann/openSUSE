@@ -34,11 +34,11 @@
 %global featurever      11
 %global interimver      0
 %global updatever       20
-%global patchver        0
-%global buildver        8
+%global patchver        1
+%global buildver        1
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
-%global root_revision   f53b1321923ffd17ba1e4a88f1ec3a8d75f6df23
-%global root_branch     v0.40.0-release
+%global root_revision   0880e8df04a4bc00a61571fcf118ba77c214f458
+%global root_branch     v0.40.0-jdk11.0.20.1-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
 %global omr_revision    e80bff83b7fda8875071d89de7c73184d847085d
 %global omr_branch      v0.40.0-release

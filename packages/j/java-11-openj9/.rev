@@ -143,4 +143,12 @@
     <comment>Security updates</comment>
     <requestid>1104011</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f7746ee3d5c0c66345c5c0c3e395a9eb</srcmd5>
+    <version>11.0.20.1</version>
+    <time>1693235672</time>
+    <user>anag+factory</user>
+    <comment>out-of-range zip64 regression fix</comment>
+    <requestid>1106060</requestid>
+  </revision>
 </revisionlist>
