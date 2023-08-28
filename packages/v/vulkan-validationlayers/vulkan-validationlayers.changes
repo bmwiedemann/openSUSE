@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Aug 23 19:30:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.261.0
+  * Fix crash with push constants using spec const
+  * VVL for VK_EXT_dynamic_rendering_unused_attachments
+  * Fix vkGetSemaphoreCounterValue timeout with GPU-AV
+  * Add state tracking for CmdSetDepthBias2EXT
+  * Enable CooperativeMatrixKHR generation
+  * Add support for concurrent blocking operations
+  * Add basic shader object validation
+  * Prevent crash for physicalStorageBuffer interface
+  * Add Zero RenderArea checks
+  * Add active query type check for vkCmdExecuteCommands
+  * Add VkBufferUsageFlags2CreateInfoKHR support
+  * Fix multiview check with dynamic rendering
+  * Add validation for CopyMemoryToImage, CopyImageToMemory,
+    VkCopyImageToImageEXT, VkHostImageLayoutTransitionInfoEXT,
+    VK_EXT_shader_object
+  * Add support for Image Layout check for CopyImage
+  * Add support for TransitionImageLayoutEXT record
+  * Add layout checks to MemoryToImage & ImageToMemory
+
+-------------------------------------------------------------------
 Tue May 30 21:41:55 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.250.0

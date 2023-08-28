@@ -353,4 +353,12 @@
     <comment>- Update to release SDK-1.3.250.0</comment>
     <requestid>1089890</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>360bd9af50629737fa0c0b3f7147209f</srcmd5>
+    <version>1.3.261.0</version>
+    <time>1693235530</time>
+    <user>anag+factory</user>
+    <comment>- Update to release SDK-1.3.261.0</comment>
+    <requestid>1105515</requestid>
+  </revision>
 </revisionlist>
