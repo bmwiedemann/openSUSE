@@ -17,7 +17,7 @@
 
 
 Name:           nnn
-Version:        4.8
+Version:        4.9
 Release:        0
 Summary:        Terminal based file browser
 License:        BSD-2-Clause

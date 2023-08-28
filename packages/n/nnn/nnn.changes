@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Aug 27 13:21:00 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- nnn v4.9 Elixir release notes.
+
+  * config option NNN_ARCHMNT to specify archive mounter utility
+  * key ^y to jump to next young file
+  * filter adjustment when opening context from plugin
+  * properly update mode after chmod
+  * pre-fill selected file name to create link if sel is preferred
+    over hovered
+  * fix crash when PWD is empty
+  * make quitcd.bash_zsh POSIX-compliant
+  * nmount - support udiskctl as default
+  * preview-tui - support wezterm split size percentage
+  * preview-tui - move to bash for environment manipulation through
+    arrays
+  * fzopen - handle empty selection
+  * finder - use default path to find
+  * add icons for djvu files
+  * support Nerd Fonts v3.0.0 and above (older versions are broken
+    by v3.0.0)
+
+
+-------------------------------------------------------------------
 Fri Apr 14 12:53:17 UTC 2023 - Nicolas FORMICHELLA <stigpro@outlook.fr>
 
 - nnn v4.8 Spritz release notes.
