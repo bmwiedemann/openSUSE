@@ -38,11 +38,15 @@ Patch2:         skip_failing_tests.patch
 Patch3:         skip_rlimit_tests_on_python2.patch
 # PATCH-FIX-SLE adopt change of used memory of procps
 Patch4:         mem-used-bsc1181475.patch
+# PATCH-FIX-UPSTREAM logind_y2038.patch gh#giampaolo/psutil#2300 aplanas@suse.com
+Patch5:         logind_y2038.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       procps
+BuildRequires:  systemd
+BuildRequires:  systemd-devel
 %if %{with test}
 BuildRequires:  net-tools
 BuildRequires:  procps

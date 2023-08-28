@@ -734,4 +734,12 @@ It does not make sense to double the whole HISTORY of upstream source in .change
   * if cwd no longer exists. Return an empty string instead.</comment>
     <requestid>1084220</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>1df17a2163dde91a3d7d5e21e7bcb0c5</srcmd5>
+    <version>5.9.5</version>
+    <time>1693235480</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105468</requestid>
+  </revision>
 </revisionlist>

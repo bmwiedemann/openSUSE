@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 23 09:40:44 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add logind_y2038.patch to use logind if systemd >= 254 is used, to
+  fix the issue of ut_tv.tv_sec and the Y2038 problem.
+
+-------------------------------------------------------------------
 Wed May  3 09:04:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.9.5:
