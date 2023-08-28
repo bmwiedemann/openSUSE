@@ -1,7 +1,7 @@
 #
 # spec file for package molsketch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,14 @@
 #
 
 
+%if 0%{?suse_version} < 1599
+%define gcc_ver 9
+%endif
 %define srcname Molsketch
 %define sover 1
 %define soname %{sover}
 Name:           molsketch
-Version:        0.7.3
+Version:        0.8.0
 Release:        0
 Summary:        2D molecular structures editor
 License:        GPL-2.0-or-later
@@ -29,16 +32,13 @@ URL:            https://molsketch.sourceforge.net
 Source0:        https://downloads.sourceforge.net/molsketch/Molsketch-%{version}-src.tar.gz
 # PATCH-FIX-UPSTREAM molsketch-cmake-qt5-add-translation.patch badshah400@gmail.com -- Use qt5_add_translation instead of qt_add_translation with cmake
 Patch0:         molsketch-cmake-qt5-add-translation.patch
+# PATCH-FIX-UPSTREAM molsketch-include-numeric-header.patch badshah400@gmail.com -- Include numeric header for transform_reduce
+Patch1:         molsketch-include-numeric-header.patch
 BuildRequires:  cmake
-BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  hicolor-icon-theme
-%if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
-%else
-BuildRequires:  rsvg-view
-%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  (pkgconfig(openbabel-2.0) or pkgconfig(openbabel-3))
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -63,6 +63,7 @@ Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Provides:       lib%{name}%{soname} =  %{version}
 Requires:       libqt5-qttools
+BuildArch:      noarch
 
 %description 	devel
 2D molecular structures editor.
@@ -82,11 +83,14 @@ Help documentation for %{name}.
 
 %prep
 %autosetup -n %{srcname}-%{version} -p1
-dos2unix -k -c ascii doc/cs/%{name}.adp
 
 %build
 %cmake \
-  -DMSK_INSTALL_DOCS="/share/doc/packages/%{name}"
+%if 0%{?gcc_ver}
+  -DCMAKE_CXX_COMPILER:STRING=g++-%{gcc_ver} \
+%endif
+  -DMSK_INSTALL_DOCS:PATH="/share/doc/packages/%{name}" \
+%{nil}
 
 %cmake_build
 
