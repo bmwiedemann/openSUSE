@@ -5,8 +5,10 @@
  zdev/dracut/Makefile                       |   15 ++++++++++--
  4 files changed, 92 insertions(+), 2 deletions(-)
 
+Index: s390-tools-2.29.0/zdev/dracut/96zdev-live/module-setup.sh
+===================================================================
 --- /dev/null
-+++ b/zdev/dracut/96zdev-live/module-setup.sh
++++ s390-tools-2.29.0/zdev/dracut/96zdev-live/module-setup.sh
 @@ -0,0 +1,32 @@
 +#!/bin/bash
 +
@@ -40,8 +42,10 @@
 +    inst_hook cleanup     41 "$moddir/write-udev-live.sh"
 +    inst_multiple chzdev
 +}
+Index: s390-tools-2.29.0/zdev/dracut/96zdev-live/parse-zdev-live.sh
+===================================================================
 --- /dev/null
-+++ b/zdev/dracut/96zdev-live/parse-zdev-live.sh
++++ s390-tools-2.29.0/zdev/dracut/96zdev-live/parse-zdev-live.sh
 @@ -0,0 +1,36 @@
 +#!/bin/bash
 +#
@@ -79,8 +83,10 @@
 +    fi
 +done
 +
+Index: s390-tools-2.29.0/zdev/dracut/96zdev-live/write-udev-live.sh
+===================================================================
 --- /dev/null
-+++ b/zdev/dracut/96zdev-live/write-udev-live.sh
++++ s390-tools-2.29.0/zdev/dracut/96zdev-live/write-udev-live.sh
 @@ -0,0 +1,11 @@
 +#!/bin/sh
 +#
@@ -93,9 +99,11 @@
 +if [ -w /sysroot/etc/udev/rules.d ]; then
 +  cp -p /etc/udev/rules.d/41-* /sysroot/etc/udev/rules.d
 +fi
---- a/zdev/dracut/Makefile
-+++ b/zdev/dracut/Makefile
-@@ -3,17 +3,23 @@
+Index: s390-tools-2.29.0/zdev/dracut/Makefile
+===================================================================
+--- s390-tools-2.29.0.orig/zdev/dracut/Makefile
++++ s390-tools-2.29.0/zdev/dracut/Makefile
+@@ -3,17 +3,23 @@ include ../../common.mak
  
  ZDEVDIR := 95zdev
  ZDEVKDUMPDIR := 95zdev-kdump
@@ -121,7 +129,7 @@
  ifeq ($(HAVE_DRACUT),1)
  install:
  	$(INSTALL) -m 755 -d $(DESTDIR)$(DRACUTMODDIR)/
-@@ -25,4 +31,9 @@
+@@ -25,4 +31,9 @@ install:
  	$(INSTALL) -m 755 -d $(DESTDIR)$(DRACUTMODDIR)/$(ZDEVKDUMPDIR)
  	$(INSTALL) -m 755 $(ZDEVKDUMPDIR)/module-setup.sh \
  		$(DESTDIR)$(DRACUTMODDIR)/$(ZDEVKDUMPDIR)/

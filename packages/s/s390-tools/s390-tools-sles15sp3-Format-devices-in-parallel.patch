@@ -11,8 +11,10 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  dasdfmt/dasdfmt.c |   58 ++++++++++++++++++++++++++++++++++++++++++------------
  2 files changed, 60 insertions(+), 14 deletions(-)
 
---- a/dasdfmt/dasdfmt.8
-+++ b/dasdfmt/dasdfmt.8
+Index: s390-tools-2.29.0/dasdfmt/dasdfmt.8
+===================================================================
+--- s390-tools-2.29.0.orig/dasdfmt/dasdfmt.8
++++ s390-tools-2.29.0/dasdfmt/dasdfmt.8
 @@ -7,7 +7,7 @@
  dasdfmt \- formatting of DASD (ECKD) disk drives.
  
@@ -22,7 +24,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  .br
          [-r \fIcylinder\fR] [-b \fIblksize\fR] [-l \fIvolser\fR] [-d \fIlayout\fR]
  .br
-@@ -96,7 +96,7 @@
+@@ -96,7 +96,7 @@ Do not use this option if you are using
  running in background or redirecting the output to a file.
  
  .TP
@@ -31,7 +33,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  Print one line for each formatted cylinder showing the number of the
  cylinder and percentage of formatting process.
  Intended to be used by higher level interfaces.
-@@ -164,6 +164,18 @@
+@@ -164,6 +164,18 @@ Specify blocksize to be used. \fIblksize
  and always be a power of two. The recommended blocksize is 4096 bytes.
  
  .TP
@@ -50,8 +52,10 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  \fB-l\fR \fIvolser\fR or \fB--label\fR=\fIvolser\fR
  Specify the volume serial number or volume identifier to be written 
  to disk after formatting. If no label is specified, a sensible default 
---- a/dasdfmt/dasdfmt.c
-+++ b/dasdfmt/dasdfmt.c
+Index: s390-tools-2.29.0/dasdfmt/dasdfmt.c
+===================================================================
+--- s390-tools-2.29.0.orig/dasdfmt/dasdfmt.c
++++ s390-tools-2.29.0/dasdfmt/dasdfmt.c
 @@ -13,6 +13,7 @@
  #include <sys/sysmacros.h>
  #include <sys/time.h>
@@ -60,7 +64,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  
  #include "lib/dasd_base.h"
  #include "lib/dasd_sys.h"
-@@ -81,6 +82,7 @@
+@@ -81,6 +82,7 @@ static struct dasdfmt_globals {
  	int   mode_specified;
  	int   ese;
  	int   no_discard;
@@ -68,7 +72,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  } g = {
  	.dasd_info = { 0 },
  };
-@@ -105,6 +107,11 @@
+@@ -105,6 +107,11 @@ static struct util_opt opt_vec[] = {
  		.desc = "Perform complete format check on device",
  		.flags = UTIL_OPT_FLAG_NOSHORT,
  	},
@@ -80,7 +84,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  	UTIL_OPT_SECTION("FORMAT OPTIONS"),
  	{
  		.option = { "blocksize", required_argument, NULL, 'b' },
-@@ -162,7 +169,7 @@
+@@ -162,7 +169,7 @@ static struct util_opt opt_vec[] = {
  		.desc = "Show a progressbar",
  	},
  	{
@@ -89,7 +93,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  		.desc = "Show progress in percent",
  	},
  	UTIL_OPT_SECTION("MISC"),
-@@ -311,7 +318,7 @@
+@@ -311,7 +318,7 @@ static void draw_progress(int cyl, unsig
  	}
  
  	if (g.print_hashmarks && (cyl / g.hashstep - hashcount) != 0) {
@@ -98,7 +102,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  		fflush(stdout);
  		hashcount++;
  	}
-@@ -1573,7 +1580,11 @@
+@@ -1573,7 +1580,11 @@ int main(int argc, char *argv[])
  	char *reqsize_param_str = NULL;
  	char *hashstep_str      = NULL;
  
@@ -111,7 +115,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  
  	/* Establish a handler for interrupt signals. */
  	signal(SIGTERM, program_interrupt_signal);
-@@ -1636,7 +1647,7 @@
+@@ -1636,7 +1647,7 @@ int main(int argc, char *argv[])
  				g.print_hashmarks = 1;
  			}
  			break;
@@ -120,7 +124,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  			if (!(g.print_hashmarks || g.print_progressbar))
  				g.print_percentage = 1;
  			break;
-@@ -1695,6 +1706,9 @@
+@@ -1695,6 +1706,9 @@ int main(int argc, char *argv[])
  		case OPT_NODISCARD:
  			g.no_discard = 1;
  			break;
@@ -130,7 +134,7 @@ Signed-off-by: Hannes Reinecke <hare@suse.com>
  		case OPT_CHECK:
  			g.check = 1;
  			break;
-@@ -1746,15 +1760,35 @@
+@@ -1746,15 +1760,35 @@ int main(int argc, char *argv[])
  	if (numdev > 1 && g.labelspec)
  		error("Specifying a volser to be written doesn't make sense when formatting multiple DASD volumes.");
  

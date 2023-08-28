@@ -76,8 +76,10 @@ struct machinetype {
 	{ QC_TYPE_FAMILY_LINUXONE, "8561", "8561 = IBM LinuxONE III LT1" },
 	{ QC_TYPE_FAMILY_IBMZ,	   "8562", "8562 = z15 T02 IBM z15 T02" },
 	{ QC_TYPE_FAMILY_LINUXONE, "8562", "8562 = IBM LinuxONE III LT2" },
-	{ QC_TYPE_FAMILY_IBMZ,     "3931", "3931 = z16     IBM z16 A01" },
+	{ QC_TYPE_FAMILY_IBMZ,     "3931", "3931 = z16 A01 IBM z16 A01" },
 	{ QC_TYPE_FAMILY_LINUXONE, "3931", "3931 = IBM LinuxONE Emperor 4" },
+	{ QC_TYPE_FAMILY_IBMZ,     "3932", "3932 = z16 A02 IBM z16 A02" },
+	{ QC_TYPE_FAMILY_LINUXONE, "3932", "3932 = IBM LinuxONE Rockhopper 4" },
 	};
 
 int	debug = 0;
@@ -260,6 +262,40 @@ if (layers  > 2) {
 return;
 } /* print_scc */
 
+
+/******************************************************************************/
+/*                                                                            */
+/*      Secure boot support models ( check_model () )                         */
+/*      Only the following machines support secure boot:                      */
+/*         z14, z14 ZR1, z15, z16                                             */
+/*                                                                            */
+/******************************************************************************/
+
+int check_model (const char *cpu) {
+
+        #define     IBM_Models    6    /* Number of IBM models listed below   */
+        char *types[IBM_Models] = {
+               "3906",
+               "3907",
+               "8561",
+               "8562",
+               "3931",
+               "3932",
+       };
+
+       int i;
+       int models = sizeof(types) / sizeof(types[0]);
+
+        for ( i = 0; i < models; i++) {
+
+        if ( !strcmp(cpu,types[i]) ) {
+                return 1;
+                };
+        }
+        return 0;
+} /* check_model */
+
+
 /******************************************************************************/
 /*									      */
 /*	print out whether secure boot is enabled			      */
@@ -310,17 +346,14 @@ struct utsname uts;
 	printf("Print_secure called\n");
 #endif
 	/*
-	 *	Only the following machines support secure boot: z14, z14 ZR1, z15
-	 *	3906, 3907, 8561
+	 *	Only the following machines support secure boot: z14, z14 ZR1, z15, z16
+	 *	3906, 3907, 8561, 8562, 3931, 3932
 	 */
 	erg = qc_get_attribute_string(configuration_handle, qc_type, 0, &cpu_type);
 	if (erg == 1 && cpu_type != NULL) {
-		if (strcmp(cpu_type, "3906") != 0) {
-			if (strcmp(cpu_type, "3907") != 0) {
-				if (strcmp(cpu_type, "8561") != 0) {
-					goto return_does_not_exist;
-				} /* endif */
-			} /* endif */
+		
+		if ( check_model(cpu_type) ) {
+			goto return_does_not_exist;
 		} /* endif */
 	} /* endif */
 	print_attribute("Secure mode on", 1, qc_has_secure, integer, WITH_KEY);
@@ -334,6 +367,7 @@ return_does_not_exist:
 	puts("Secure mode on: 0\nSecure mode used: 0");
 return;
 } /* print_secure_mode */
+
 
 /******************************************************************************/
 /*									      */

@@ -33,7 +33,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.27.0
+Version:        2.29.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt
 License:        MIT
@@ -127,6 +127,9 @@ Source97:       qeth_configure.8
 Source98:       zfcp_disk_configure.8
 Source99:       zfcp_host_configure.8
 ###
+Source200:      cargo_config
+Source201:      vendor.tar.gz
+###
 
 # IBM patches
 ###
@@ -171,6 +174,12 @@ BuildRequires:  qclib-devel-static
 BuildRequires:  systemd-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  zlib-devel-static
+### Cargo
+BuildRequires:  rust
+BuildRequires:  cargo
+BuildRequires:  cargo-packaging
+BuildRequires:  openssl
+###
 # Don't build with pie to avoid problems with zipl
 #!BuildIgnore:  gcc-PIE
 Requires:       coreutils
@@ -308,10 +317,19 @@ operational path.
 %prep
 %autosetup -p1
 
+#
 cp -vi %{SOURCE22} CAUTION
+#
+
+###
+install -D -m 0644 %{SOURCE200} .cargo/config
+tar -xzvf %{SOURCE201}
+###
 
 %build
 
+#
+#
 # The "DISTRELEASE=%%{release}" needs to be on both the make and make install
 # commands, since make install runs sed commands against various scripts to
 # modify the "-v" output appropriately.
@@ -322,10 +340,13 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
      ZFCPDUMP_DIR=%{_prefix}/lib/s390-tools/zfcpdump \
      DISTRELEASE=%{release} \
      UDEVRUNDIR=/run/udev \
+     HAVE_CARGO=1 \
      HAVE_DRACUT=1
 gcc -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
 
 %install
+
+#
 mkdir -p %{buildroot}/boot/zipl
 mkdir -p %{buildroot}%{_sysconfdir}/zkey/repository
 %make_install \
@@ -333,6 +354,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/zkey/repository
      DISTRELEASE=%{release} \
      SYSTEMDSYSTEMUNITDIR=%{_unitdir} \
      UDEVRUNDIR=/run/udev \
+     HAVE_CARGO=1 \
      HAVE_DRACUT=1
 
 # The make install command puts things in /etc/sysconfig and not the
@@ -422,7 +444,7 @@ if [ ! -d %{_bindir} ]; then
 fi
 install -D -m755 %{SOURCE24} %{buildroot}%{_bindir}/cputype
 
-install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE25}
+install -m644 -t %{buildroot}/%{_mandir}/man1 %{SOURCE25}
 
 # If building for openSUSE, move all the binaries installed via
 # the IBM-provided Makefile from /sbin to /usr/sbin/ to

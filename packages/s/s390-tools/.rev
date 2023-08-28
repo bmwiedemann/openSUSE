@@ -731,4 +731,32 @@
     <comment></comment>
     <requestid>1093106</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>63591e62d5e23ac87c8738aa3c436094</srcmd5>
+    <version>2.29.0</version>
+    <time>1693235884</time>
+    <user>anag+factory</user>
+    <comment>- Amended read_value.c for newer z16 models (bsc#1214534) 
+- Upgrade to version 2.29.0 (jsc#PED-3275)
+  * s390-tools now supports tools written in Rust.
+  * Add compdb Makefile target to create 'compile_commands.json' to support LSP
+    backends in IDEs and editors
+- Add new tools / libraries:
+  * rust/pv: Library for pv tools written in rust
+  * rust/pvsecret: Tool to manage UV-secrets
+- Changes of existing tools:
+  * dbginfo.sh: Global IFS variable
+  * genprotimg: Add support for add-secret requests
+  * genprotimg: Build debuginfo files for bootloader
+  * hyptop: Add real SMT utilization field
+  * hyptop: Allow users to set speedup factor
+  * pvattest: Add yaml-output for verify command
+  * zipl: Build debuginfo files for bootloader
+- Bug Fixes:
+  * dump2tar: Fix truncated paths
+  * zdev/dracut: fix kdump build to integrate with site support
+- Amended .spec for version 2.29.0, including Rust integration
+- The patches were updated by quilt</comment>
+    <requestid>1107201</requestid>
+  </revision>
 </revisionlist>
