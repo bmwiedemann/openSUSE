@@ -5,7 +5,7 @@
  endif()
  
 -project(linphone VERSION 5.2.0 LANGUAGES C CXX)
-+project(linphone VERSION 5.2.75 LANGUAGES C CXX)
++project(linphone VERSION 5.2.98 LANGUAGES C CXX)
  
  
  set(LINPHONE_MAJOR_VERSION ${PROJECT_VERSION_MAJOR})

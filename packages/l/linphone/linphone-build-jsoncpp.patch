@@ -1,7 +1,7 @@
-Index: liblinphone-5.2.75/CMakeLists.txt
+Index: liblinphone-5.2.98/CMakeLists.txt
 ===================================================================
---- liblinphone-5.2.75.orig/CMakeLists.txt
-+++ liblinphone-5.2.75/CMakeLists.txt
+--- liblinphone-5.2.98.orig/CMakeLists.txt
++++ liblinphone-5.2.98/CMakeLists.txt
 @@ -244,7 +244,8 @@ if(ENABLE_LDAP)
  endif()
  
@@ -12,11 +12,11 @@ Index: liblinphone-5.2.75/CMakeLists.txt
  	set(HAVE_FLEXIAPI TRUE)
  endif()
  
-Index: liblinphone-5.2.75/src/CMakeLists.txt
+Index: liblinphone-5.2.98/src/CMakeLists.txt
 ===================================================================
---- liblinphone-5.2.75.orig/src/CMakeLists.txt
-+++ liblinphone-5.2.75/src/CMakeLists.txt
-@@ -740,7 +740,7 @@ if(ENABLE_SHARED)
+--- liblinphone-5.2.98.orig/src/CMakeLists.txt
++++ liblinphone-5.2.98/src/CMakeLists.txt
+@@ -741,7 +741,7 @@ if(ENABLE_SHARED)
  			# so we need static link on osx/ios
  			target_link_libraries(linphone PUBLIC jsoncpp_static)
  		else()

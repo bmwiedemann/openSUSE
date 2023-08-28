@@ -26,14 +26,13 @@
 %endif
 %define sover   10
 Name:           linphone
-Version:        5.2.75
+Version:        5.2.98
 Release:        0
 Summary:        Web Phone
 License:        AGPL-3.0-or-later
 Group:          Productivity/Telephony/SIP/Clients
 URL:            https://linphone.org/technical-corner/liblinphone/
 Source:         https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/liblinphone-%{version}.tar.bz2
-Source1:        %{name}-manual.tar.bz2
 Source3:        https://gitlab.linphone.org/BC/public/external/openldap/-/archive/bc/openldap-bc.tar.bz2
 # PATCH-FIX-OPENSUSE linphone-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install linphone.pc.
 Patch0:         linphone-fix-pkgconfig.patch
@@ -76,11 +75,11 @@ BuildRequires:  soci-devel
 BuildRequires:  soci-sqlite3-devel
 BuildRequires:  xsd
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(bctoolbox) >= 5.2.73
+BuildRequires:  pkgconfig(bctoolbox) >=  %{version}
 BuildRequires:  pkgconfig(belcard) >= 4.5.0
-BuildRequires:  pkgconfig(belle-sip) >= 5.2.73
+BuildRequires:  pkgconfig(belle-sip) >= %{version}
 BuildRequires:  pkgconfig(libavcodec) >= 51.0.0
-BuildRequires:  pkgconfig(libbzrtp) >= 5.2.73
+BuildRequires:  pkgconfig(libbzrtp) >= %{version}
 BuildRequires:  pkgconfig(libosip2)
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(libswscale) >= 0.7.0
@@ -89,9 +88,9 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libupnp)
 BuildRequires:  pkgconfig(libv4l2) >= 0.8.4
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mediastreamer) >= 5.2.73
+BuildRequires:  pkgconfig(mediastreamer) >= %{version}
 BuildRequires:  pkgconfig(opus)
-BuildRequires:  pkgconfig(ortp) >= 5.2.73
+BuildRequires:  pkgconfig(ortp) >= %{version}
 BuildRequires:  pkgconfig(speex) >= 1.1.6
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xerces-c)
@@ -141,9 +140,6 @@ This package contains the command line interface.
 %package -n lib%{name}%{sover}
 Summary:        Web Phone library
 Group:          Productivity/Telephony/SIP/Clients
-%if 0%{?suse_version}
-Recommends:     lib%{name}-lang
-%endif
 Provides:       lib%{name} = %{version}
 
 %description -n lib%{name}%{sover}
@@ -155,10 +151,6 @@ SIP-based Web phones. With several codecs available, it can be used
 with high speed connections as well as 28k modems.
 
 This package contains a library.
-
-%if 0%{?suse_version}
-%lang_package -n lib%{name}
-%endif
 
 %package -n lib%{name}++%{sover}
 Summary:        Web Phone C++ library
@@ -219,7 +211,6 @@ with high speed connections as well as 28k modems.
 
 %prep
 %autosetup -n liblinphone-%{version} -p1
-%setup -q -n liblinphone-%{version} -D -T -a 1
 %if 0%{?fedora}
 # patch deprecated python open mode
 sed -i "s|mode='rU'|mode='r'|" wrappers/cpp/genwrapper.py
@@ -329,12 +320,6 @@ chrpath -d %{buildroot}%{_bindir}/{linphone-daemon-pipetest,linphone-daemon,grou
 export QA_SKIP_BUILD_ROOT=0
 %endif
 
-# Install the manual.
-%if 0%{?suse_version}
-mkdir -p %{buildroot}%{_datadir}/gnome/help/
-cp -a %{name} %{buildroot}%{_datadir}/gnome/help/%{name}/
-%find_lang %{name}
-%endif
 %fdupes %{buildroot}%{_datadir}/
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
@@ -353,12 +338,6 @@ cp -a %{name} %{buildroot}%{_datadir}/gnome/help/%{name}/
 %dir %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/
 %endif
-%endif
-
-%if 0%{?suse_version}
-%files -n lib%{name}-lang -f %{name}.lang
-%dir %{_datadir}/gnome/
-%dir %{_datadir}/gnome/help/
 %endif
 
 %files -n lib%{name}++%{sover}

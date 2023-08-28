@@ -193,4 +193,15 @@
     <comment></comment>
     <requestid>1102633</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>478ca92cd1f6efed9d0d6ce96b505e11</srcmd5>
+    <version>5.2.98</version>
+    <time>1693235823</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2.98 (no changelog)
+- Drop the manual, since it's very outdated and has been replaced with 
+  an online Wiki.
+</comment>
+    <requestid>1106252</requestid>
+  </revision>
 </revisionlist>
