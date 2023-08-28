@@ -1,6 +1,8 @@
 -------------------------------------------------------------------
 Tue Aug  8 11:53:00 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 
+- Always set user and host build metadata to constant string to
+  achieve reproducible builds (compare reproducible-builds.org)
 - Add 0001-do_not_discover_user_host_for_reproducible_builds.patch
 - Require Go >= 1.19 for building
 - Require Go >= 1.18 for building Red Hat packages
