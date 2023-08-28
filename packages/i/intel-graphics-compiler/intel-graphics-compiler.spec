@@ -16,12 +16,12 @@
 #
 
 
-%global llvm_commit llvmorg-11.1.0
-%global opencl_clang_commit 10237c7109d613ef1161065d140b76d92133062f
-%global spirv_llvm_translator_commit a4e58ffda317221a15149f9d0d4f73424c9584fb
+%global llvm_commit llvmorg-14.0.5
+%global opencl_clang_commit 78c5e3f59e49f337c6a9af7818f0c8b918bee4bf
+%global spirv_llvm_translator_commit 23f398bf369093b1fd67459db8071ffcc6b92658
 %global vc_intrinsics_commit v0.12.3
 Name:           intel-graphics-compiler
-Version:        1.0.13822.6
+Version:        1.0.14062.11
 Release:        1%{?dist}
 Summary:        Intel Graphics Compiler for OpenCL
 License:        MIT
@@ -32,8 +32,7 @@ Source1:        https://github.com/intel/opencl-clang/archive/%{opencl_clang_com
 Source2:        https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/%{spirv_llvm_translator_commit}/spirv-llvm-translator.tar.gz
 Source3:        https://github.com/llvm/llvm-project/archive/%{llvm_commit}/llvm-project.tar.gz
 Source4:        https://github.com/intel/vc-intrinsics/archive/%{vc_intrinsics_commit}/vc-intrinsics.zip
-Patch0:         0001-llvm-needs-to-include-cstdio-for-gcc13.patch
-Patch1:         0001-Use-patch-instead-of-git-to-apply-opencl-clang-patch.patch
+Patch0:         0001-Use-patch-instead-of-git-to-apply-opencl-clang-patch.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
@@ -101,18 +100,17 @@ Requires:       libigdfcl1 = %{version}-%{release}
 %description -n libigdfcl-devel
 This package contains development files for libigdfcl.
 
-%package -n libopencl-clang11
+%package -n libopencl-clang14
 Summary:        A wrapper library around clang
 Group:          System/Libraries
 
-%description -n libopencl-clang11
+%description -n libopencl-clang14
 A wrapper library around clang.
 
 %prep
 mkdir llvm-project
 tar -xzf %{_sourcedir}/llvm-project.tar.gz -C llvm-project --strip-components=1
 pushd llvm-project
-%patch0 -p1
 popd
 
 unzip %{_sourcedir}/vc-intrinsics.zip
@@ -122,7 +120,7 @@ pushd llvm-project/llvm/projects
 mkdir opencl-clang llvm-spirv
 tar -xzf %{_sourcedir}/intel-opencl-clang.tar.gz -C opencl-clang --strip-components=1
 pushd opencl-clang
-%patch1 -p1
+%patch0 -p1
 popd
 tar -xzf %{_sourcedir}/spirv-llvm-translator.tar.gz -C llvm-spirv --strip-components=1
 popd
@@ -142,11 +140,13 @@ pushd build
 export CXXFLAGS="-Wno-nonnull -fPIE"
 export LDFLAGS="-pie"
 cmake ../igc \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DIGC_OPTION__ARCHITECTURE_TARGET='Linux64' \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
   -DINSTALL_SPIRVDLL=0 \
   -DIGC_OPTION__SPIRV_TOOLS_MODE=Prebuilds \
-  -DIGC_OPTION__USE_PREINSTALLED_SPRIV_HEADERS=ON
+  -DIGC_OPTION__USE_PREINSTALLED_SPRIV_HEADERS=ON \
+  -DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=%{_includedir}/spirv
 
 %make_build
 popd
@@ -156,12 +156,12 @@ cd build
 %make_install
 
 rm -fv %{buildroot}%{_bindir}/GenX_IR \
-	%{buildroot}%{_bindir}/clang-11 \
+	%{buildroot}%{_bindir}/clang-14 \
 	%{buildroot}%{_bindir}/lld \
 	%{buildroot}%{_includedir}/opencl-c.h \
 	%{buildroot}%{_includedir}/opencl-c-base.h \
 	%{buildroot}%{_prefix}/lib/debug
-chmod +x %{buildroot}%{_libdir}/libopencl-clang.so.11
+chmod +x %{buildroot}%{_libdir}/libopencl-clang.so.14
 
 %post -n libigc1 -p /sbin/ldconfig
 %postun -n libigc1 -p /sbin/ldconfig
@@ -169,8 +169,8 @@ chmod +x %{buildroot}%{_libdir}/libopencl-clang.so.11
 %postun -n libiga64-1 -p /sbin/ldconfig
 %post -n libigdfcl1 -p /sbin/ldconfig
 %postun -n libigdfcl1 -p /sbin/ldconfig
-%post -n libopencl-clang11 -p /sbin/ldconfig
-%postun -n libopencl-clang11 -p /sbin/ldconfig
+%post -n libopencl-clang14 -p /sbin/ldconfig
+%postun -n libopencl-clang14 -p /sbin/ldconfig
 
 %files -n iga
 %{_bindir}/iga64
@@ -199,7 +199,7 @@ chmod +x %{buildroot}%{_libdir}/libopencl-clang.so.11
 %{_includedir}/visa
 %{_libdir}/pkgconfig/igc-opencl.pc
 
-%files -n libopencl-clang11
-%{_libdir}/libopencl-clang.so.11
+%files -n libopencl-clang14
+%{_libdir}/libopencl-clang.so.14
 
 %changelog

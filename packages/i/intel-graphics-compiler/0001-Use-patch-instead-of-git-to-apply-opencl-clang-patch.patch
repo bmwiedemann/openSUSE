@@ -1,18 +1,18 @@
-From b8c0b98bd88c660eed1f3978bfd3a6929da2aaae Mon Sep 17 00:00:00 2001
+From 361738d16246949f4a8c2bb77c23ff9ba5a3d46f Mon Sep 17 00:00:00 2001
 From: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
 Date: Tue, 28 Mar 2023 10:34:25 +0200
 Subject: [PATCH] Use patch instead of git to apply opencl-clang patches
 
 Signed-off-by: Patrik Jakobsson <pjakobsson@suse.de>
 ---
- cmake/modules/CMakeFunctions.cmake | 72 +++++++-----------------------
- 1 file changed, 15 insertions(+), 57 deletions(-)
+ cmake/modules/CMakeFunctions.cmake | 71 +++++++-----------------------
+ 1 file changed, 15 insertions(+), 56 deletions(-)
 
 diff --git a/cmake/modules/CMakeFunctions.cmake b/cmake/modules/CMakeFunctions.cmake
-index fec3359..86a2985 100644
+index d8f3503..1cd9f1e 100644
 --- a/cmake/modules/CMakeFunctions.cmake
 +++ b/cmake/modules/CMakeFunctions.cmake
-@@ -99,65 +99,23 @@ function(apply_patches repo_dir patches_dirs base_revision target_branch ret)
+@@ -98,64 +98,23 @@ function(apply_patches repo_dir patches_dir base_revision target_branch ret)
      endif()
  
      message(STATUS "[OPENCL-CLANG] Patching repository ${repo_dir}")
@@ -25,8 +25,7 @@ index fec3359..86a2985 100644
 -    )
 -    if(patches_needed EQUAL 128) # not a git repo
 -        set(ret_not_git_repo 1)
--        message(STATUS "[OPENCL-CLANG] Is not a git repo")
--    elseif(patches_needed) # The target branch doesn't exist
+-	elseif(patches_needed) # The target branch doesn't exist
 -        list(SORT patches)
 -        is_valid_revision(${repo_dir} ${base_revision} exists_base_rev)
 +    list(SORT patches)
@@ -81,11 +80,11 @@ index fec3359..86a2985 100644
 -        execute_process( # Check it out
 -            COMMAND ${GIT_EXECUTABLE} checkout ${target_branch}
 -            WORKING_DIRECTORY ${repo_dir}
--            RESULT_VARIABLE ret_check_out
 -            OUTPUT_QUIET
+-            RESULT_VARIABLE ret_check_out
 -        )
 -    endif()
--    if (NOT (ret_not_git_repo OR ret_check_out OR ret_apply_patch))
+-	if (NOT (ret_not_git_repo OR ret_check_out OR ret_apply_patch))
 +        message(STATUS "[OPENCL-CLANG] Applied patch ${patch}")
 +    endforeach(patch)
 +
@@ -94,5 +93,5 @@ index fec3359..86a2985 100644
      else()
          message(FATAL_ERROR "[OPENCL-CLANG] Failed to apply patch!")
 -- 
-2.40.1
+2.41.0
 
