@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 22 17:19:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.3.2
+  ### astropy.coordinates
+  * Fixed import when called with Python -OO flag. [#15037]
+  ### astropy.nddata
+  * Fix for collapse operations on NDData without masks or units.
+    [#15082]
+  ###  astropy.units
+  * Modified the implementation of np.power() for instances of
+    Quantity to allow any array as the second operand if all its
+    elements have the same value. [#15101]
+
+-------------------------------------------------------------------
 Sun Jul 16 11:41:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.1:

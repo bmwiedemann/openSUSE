@@ -48,7 +48,7 @@
                       %{?unbundle_wcs}
 
 Name:           python-astropy%{psuffix}
-Version:        5.3.1
+Version:        5.3.2
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -76,7 +76,6 @@ BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.13
-Requires:       python-dbm
 Requires:       python-numpy >= 1.21
 Requires:       python-packaging >= 19.0
 Requires:       python-pyerfa >= 2.0

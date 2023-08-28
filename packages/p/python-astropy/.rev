@@ -1567,4 +1567,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1100172</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>4a045ebfbfaee37a8366deb2b5427bea</srcmd5>
+    <version>5.3.2</version>
+    <time>1693235482</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.3.2
+  ### astropy.coordinates
+  * Fixed import when called with Python -OO flag. [#15037]
+  ### astropy.nddata
+  * Fix for collapse operations on NDData without masks or units.
+    [#15082]
+  ###  astropy.units
+  * Modified the implementation of np.power() for instances of
+    Quantity to allow any array as the second operand if all its
+    elements have the same value. [#15101] (forwarded request 1105313 from bnavigator)</comment>
+    <requestid>1105314</requestid>
+  </revision>
 </revisionlist>
