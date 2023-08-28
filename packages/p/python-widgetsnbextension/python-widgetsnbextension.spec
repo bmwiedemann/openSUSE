@@ -26,9 +26,10 @@ URL:            https://github.com/jupyter-widgets/ipywidgets/tree/master/python
 Source:         https://files.pythonhosted.org/packages/source/w/widgetsnbextension/widgetsnbextension-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyter-packaging}
-BuildRequires:  %{python_module notebook >= 4.4.1}
+BuildRequires:  %{python_module nbclassic}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-widgetsnbextension = %{version}
 Provides:       python-jupyter_widgetsnbextension = %{version}-%{release}
@@ -46,6 +47,7 @@ IPython users would install ipywidgets into their kernel.
 
 %package -n jupyter-widgetsnbextension
 Summary:        Jupyter interactive widgets for Jupyter Notebook - Jupyter Files
+Requires:       (jupyter-notebook < 7 or jupyter-nbclassic)
 Requires:       python3dist(widgetsnbextension) = %{version}
 Suggests:       python3-widgetsnbextension
 Provides:       jupyter-jupyter-js-widgets = %{jupver}
@@ -71,7 +73,7 @@ export JUPYTER_CONFIG_DIR=%{buildroot}%{_jupyter_confdir}
 %{python_expand # no $python tests available
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -c 'import widgetsnbextension'
-jupyter-%{$python_bin_suffix} nbextension list 2>&1 | grep 'jupyter-js-widgets.*enabled'
+jupyter-%{$python_bin_suffix} nbclassic-extension list 2>&1 | grep 'jupyter-js-widgets.*enabled'
 }
 rm -f %{buildroot}%{_jupyter_confdir}migrated
 

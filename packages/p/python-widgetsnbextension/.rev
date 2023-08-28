@@ -113,4 +113,12 @@
   is okay (forwarded request 1104762 from bnavigator)</comment>
     <requestid>1104765</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9b85442a3200455b7e73ee40e98b2f6d</srcmd5>
+    <version>4.0.8</version>
+    <time>1693235687</time>
+    <user>anag+factory</user>
+    <comment>- Avoid notebook 7: use nbclassic or notebook &lt; 6 (forwarded request 1106055 from bnavigator)</comment>
+    <requestid>1106056</requestid>
+  </revision>
 </revisionlist>

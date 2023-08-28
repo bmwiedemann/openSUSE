@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 26 14:37:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Avoid notebook 7: use nbclassic or notebook < 6
+
+-------------------------------------------------------------------
 Fri Aug 18 18:24:34 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.0.8
