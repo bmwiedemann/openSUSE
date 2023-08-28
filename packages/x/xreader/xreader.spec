@@ -1,7 +1,7 @@
 #
 # spec file for package xreader
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,18 @@
 %define sover   3
 %define typelib1 typelib-1_0-XreaderDocument-1_5
 %define typelib2 typelib-1_0-XreaderView-1_5
+%define pkg_ver master.mint21
 Name:           xreader
-Version:        3.4.5
+Version:        3.8.2
 Release:        0
 Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
 Group:          Productivity/Office/Other
 URL:            https://github.com/linuxmint/xreader
-Source:         https://github.com/linuxmint/xreader/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/linuxmint/xreader/archive/%{pkg_ver}.tar.gz#/%{name}-%{pkg_ver}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gnome-common
+BuildRequires:  intltool
 BuildRequires:  libtiff-devel >= 3.6
 BuildRequires:  mathjax
 BuildRequires:  meson
@@ -199,7 +200,7 @@ Supplements:    %{name}
 A plugin for Xreader to read Pixbuf documents.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{pkg_ver}
 
 %build
 %meson \
@@ -244,7 +245,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING
-%doc AUTHORS README
+%doc AUTHORS README.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}-previewer
 %{_bindir}/%{name}-thumbnailer
@@ -268,13 +269,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files lang -f %{name}.lang
 
 %files -n libxreaderview%{sover}
-%license COPYING
-%doc AUTHORS README
 %{_libdir}/libxreaderview.so.%{sover}*
 
 %files -n libxreaderdocument%{sover}
-%license COPYING
-%doc AUTHORS README
 %{_libdir}/libxreaderdocument.so.%{sover}*
 
 %files -n %{typelib1}

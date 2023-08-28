@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 28 10:30:01 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to version 3.8.2
+  * Add the window maximization setting to preferences
+  * Add a setting to control window maximization on new documents
+  * Background colour of presentation view fixed
+  * ev-pixbuf-cache.c: Fix leak when rendering pages while annotating
+  * Add support for AI mimetype
+  * ps backend: disable pdf export using libspectre
+  * ev-view.c: Check if there is a focused annotation before trying
+     to access it
+
+-------------------------------------------------------------------
 Wed Nov  9 14:39:31 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 3.4.5
