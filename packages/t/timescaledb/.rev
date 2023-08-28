@@ -174,4 +174,12 @@
   https://github.com/timescale/timescaledb/releases/tag/2.10.1</comment>
     <requestid>1080967</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3627eeec267824550236eea578d93223</srcmd5>
+    <version>2.11.2</version>
+    <time>1693235876</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1106774</requestid>
+  </revision>
 </revisionlist>
