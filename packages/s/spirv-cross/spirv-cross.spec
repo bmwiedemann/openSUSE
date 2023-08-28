@@ -19,7 +19,7 @@
 %define _libpkg libspirv-cross-c-shared0
 %define __builder ninja
 Name:           spirv-cross
-Version:        1.3.243.0
+Version:        1.3.261.0
 Release:        0
 Summary:        Tool and library for SPIR-V reflection and disassembly
 License:        Apache-2.0 OR MIT
@@ -75,8 +75,11 @@ sed -i 's,${CMAKE_INSTALL_PREFIX}/lib,%{_libdir},;s,/share/pkgconfig,/%{_lib}/pk
 
 %install
 %cmake_install
-rm %{buildroot}%{_libdir}/*.a
-rm -r %{buildroot}%{_datadir}
+rm -fv %buildroot/%_libdir/*.a
+# When static/shared library names aren't thought through...
+for i in c core cpp glsl hlsl msl reflect util; do
+	ln -s "libspirv-cross-c-shared.so" "%buildroot/%_libdir/libspirv-cross-$i.so"
+done
 
 %post -n %{_libpkg} -p /sbin/ldconfig
 %postun -n %{_libpkg} -p /sbin/ldconfig
@@ -90,8 +93,10 @@ rm -r %{buildroot}%{_datadir}
 %{_libdir}/libspirv-cross-c-shared.so.*
 
 %files devel
-%{_libdir}/libspirv-cross-c-shared.so
-%{_libdir}/pkgconfig/spirv-cross-c-shared.pc
+%_libdir/libspirv-cross-*.so
+%{_libdir}/pkgconfig/*.pc
 %{_includedir}/spirv_cross
+%dir %_datadir/spirv*
+%_datadir/spirv*/cmake/
 
 %changelog

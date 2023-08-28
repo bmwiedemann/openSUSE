@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 25 08:56:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.261.0
+  * GLSL: Support KHR_subgroup_arithmetic IAdd/FAdd/IMul/FMul
+  * HLSL: support Texture2D::GatherCmp function
+  * HLSL: Add support to preserve (RW)StructuredBuffer resources
+  * HLSL: Add CLI option for --hlsl-preserve-structured-buffers
+  * MSL: Consider bool/short remapping when dealing with composites
+  * MSL: Handle more complex array copy scenarios with bool <-> short
+  * MSL: Support `SPV_KHR_shader_ballot` and `SPV_KHR_subgroup_vote`
+
+-------------------------------------------------------------------
 Wed Mar 29 19:39:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.243.0
