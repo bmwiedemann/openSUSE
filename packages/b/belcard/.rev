@@ -141,4 +141,14 @@
     <comment></comment>
     <requestid>1062180</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>20ab9dbc88d44c092122ce01f99441b5</srcmd5>
+    <version>5.2.98</version>
+    <time>1693235826</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.2.98 (no changelog).
+- Add set_current_version.patch.
+</comment>
+    <requestid>1106263</requestid>
+  </revision>
 </revisionlist>

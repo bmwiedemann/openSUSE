@@ -1,0 +1,11 @@
+--- belcard-5.2.98/CMakeLists.txt.orig	2023-08-28 10:05:04.583117981 +0200
++++ belcard-5.2.98/CMakeLists.txt	2023-08-28 10:05:11.626492737 +0200
+@@ -22,7 +22,7 @@
+ ############################################################################
+ 
+ cmake_minimum_required(VERSION 3.1)
+-project(BELCARD VERSION 5.2.0 LANGUAGES C CXX)
++project(BELCARD VERSION 5.2.98 LANGUAGES C CXX)
+ 
+ set(BELCARD_SO_VERSION "1")
+ 
