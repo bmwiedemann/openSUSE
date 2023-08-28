@@ -70,6 +70,10 @@ Source31:       python-mailman.rpmlintrc
 #
 Source100:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_cert.crt
 Source101:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_key.key
+#
+# Backport of https://gitlab.com/mailman/mailman/-/merge_requests/1130.patch
+Patch0:         mailman-fix-importlib-resources.patch
+#
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -106,6 +110,7 @@ Requires:       %{mypython}-gunicorn
 Requires:       %{mypython}-importlib-resources >= 1.1.0
 Requires:       %{mypython}-lazr.config
 Requires:       %{mypython}-passlib
+Requires:       %{mypython}-psycopg2
 Requires:       %{mypython}-python-dateutil >= 2.0
 Requires:       %{mypython}-requests
 Requires:       %{mypython}-setuptools
@@ -277,7 +282,7 @@ done
 %endif
 %dir %attr(750,root,mailman) %{_sysconfdir}/%{mailman_name}.d
 %dir %attr(750,mailman,mailman) %{mailman_homedir}
-%dir %attr(770,mailman,mailman) %{mailman_homedir}/data
+%dir %attr(770,mailman,mail) %{mailman_homedir}/data
 %dir %attr(750,mailman,mailman) %{mailman_spooldir}
 %dir %attr(750,mailman,mailman) %{mailman_logdir}
 %ghost %dir %{mailman_rundir}
