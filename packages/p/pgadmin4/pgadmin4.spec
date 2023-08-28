@@ -29,7 +29,7 @@
 %global python3_flask_login_min_version 0.4.1
 %global python3_flask_mail_min_version 0.9.1
 %global python3_flask_migrate_min_version 4.0
-%global python3_flask_min_version 2.2
+%global python3_flask_min_version 2.3
 %global python3_flask_paranoid_min_version 0.2.0
 %global python3_flask_security_too_min_version 5.1.0
 %global python3_flask_socketio_min_version 5.3.0
@@ -61,7 +61,7 @@
 %global user_group_name pgadmin
 
 Name:           pgadmin4
-Version:        7.4
+Version:        7.6
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
@@ -83,6 +83,7 @@ Patch0:         use-os-makedirs.patch
 Patch1:         fix-python3-crypto-call.patch
 Patch2:         support-new-azure-mgmt-rdbms.patch
 Patch3:         support-new-werkzeug.patch
+Patch4:         support-new-flask.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Authlib >= %{python3_authlib_min_version}

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri Aug 25 11:52:39 UTC 2023 - Simon Lees <simonf.lees@suse.com>
+
+- Update to 7.6 
+  - Features:
+    - Added Expression to CREATE INDEX.
+    - Added cascade option while creating an extension.
+    - Added ‘Ignore Grants’ option in the schema diff tool.
+    - Added ‘Ignore Tablespace’ option in the schema diff tool.
+    - Added support for ALTER INDEX column statistics.
+    - Added unlogged option while creating a sequence.
+    - Added all like options while creating a table.
+    - Added support for SYSTEM, CONCURRENTLY and TABLESPACE options in REINDEX.
+    - Added WAL option to EXPLAIN ANALYZE command.
+    - Added new/missing options to the VACUUM command.
+    - Added SKIP_LOCKED and BUFFER_USAGE_LIMIT option to Analyze command.
+    - Add support for TRUNCATE trigger in foreign table.
+    - Ensure that Schema Diff comparison results should be displayed in the sorted order.
+    - Added support to detach partitions using concurrently and finalize.
+    - Added all supported index storage parameters while creating an index.
+    - Added new/missing parameters to pg_dumpall (Backup Server).
+    - Added new/missing parameters to pg_dump (Backup Objects).
+    - Added new/missing parameters to pg_restore.
+  - Housekeeping:
+    - Generate software bill of materials as part of the package builds.
+    - Added support for PostgreSQL and EPAS 16 to ensure it works without any errors.
+    - Remove Bootstrap and jQuery from authentication pages and rewrite them in ReactJS.
+    - Enable cluster deployment with gp3 volume for AWS & BigAnimal cloud providers.
+    - Clarify the LICENSE file to indicate that it is the PostgreSQL Licence.
+    - Remove unsupported PostgreSQL versions from the container.
+  - Bug fixes:
+    - Fix incorrect redirection URL after authentication by removing fixed value set to SCRIPT_NAME environment variable in pgAdmin4.wsgi file.
+    - Allow changing the POOL_SIZE and MAX_OVERFLOW config values of the pgAdmin config DB connection pool.
+    - Fix an issue where query tool on shared server is throwing error if the pgAdmin config DB is external.
+    - Fix the query tool issue where raise Notice from func/proc or code blocks are no longer displayed live.
+    - Fix the issue where query tool window turns blank if the user tries to generate a graph on the result.
+    - Fix an issue where changing MFA_SUPPORTED_METHODS breaks the MFA validation.
+    - Fix an issue where pgAdmin 7.5 fails to render table SQL with extension loaded index method.
+    - Fix an issue where cycle syntax was not added in SQL when creating new sequence from UI.
+    - Fix an issue where the SET directive is excluded from the function header in the schema diff tool.
+    - Fix a query tool error ‘pgAdminThread’ object has no attribute ‘native_id’.
+    - Ensure keyboard shortcut for query execution is disabled when query execution is in progress.
+    - Fix an issue where queries can’t complete execution.
+    - Fixed an issue where Import Export not working when using pgpassfile.
+    - Fix an issue where queries longer than 1 minute get stuck - Container 7.1
+    - Fix an issue where queries get stuck with auto-completion enabled.
+    - Fixed Query Tool/ PSQL tool tab title not getting updated on database rename.
+    - Ensure user gets proper error if incorrect credentials are entered while authenticating AWS.
+    - Fix an issue where the edit server fails in desktop mode if the server password is not stored.
+    - Ensure that Backup, Restore, and Maintenance should work properly when pgpass file is used.
+    - Fix the query tool auto-complete issue on the server reconnection.
+    - Fix the query tool restore connection issue.
+    - Fix the reconnecton issue if the PostgreSQL server is restarted from the backend.
+    - Fix the connection and stability issues since v7, possibly related to background schema changes.
+    - Fixed an issue where the query tool is unable to execute a query on Postgres 10 and below versions.
+    - Fix the lost connection error in v7.4.
+    - Fixed an issue where pgAdmin failed to setup role with hyphens in name.
+    - Fixed an issue where filters are not working and query history shows empty queries.
+    - Fix an issue where adding a sub-folder inside a folder is not working as expected in File Manager.
+    - Fix an error ‘list’ object has no attribute ‘strip’ while attempting to populate auto-complete manually the first time.
+    - Fixed an issue where ERD Tool can’t load the saved pgerd file from Shared Storage.
+    - Fix an issue where inserting more than 10 rows does not work correctly in View Data; only parts end up in the table.
+  - Add support-new-flask.patch to fix build with flask 2.3
+
+-------------------------------------------------------------------
 Mon Jul 31 07:23:54 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 7.4, extremely large list of changes, partially chosen:
