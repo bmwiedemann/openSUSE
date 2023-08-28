@@ -18,12 +18,12 @@
 
 %define sover 1
 Name:           redis++
-Version:        1.3.8
+Version:        1.3.10
 Release:        0
 Summary:        C++ client for Redis
 License:        Apache-2.0
 URL:            https://github.com/sewenew/redis-plus-plus
-Source0:        https://github.com/sewenew/redis-plus-plus/archive/%{version}.tar.gz
+Source0:        https://github.com/sewenew/redis-plus-plus/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
@@ -53,7 +53,7 @@ The %{name}-devel package contains the header files and
 libraries for redis-plus-plus.
 
 %prep
-%autosetup -n redis-plus-plus-%{version} -p1
+%autosetup -n redis-plus-plus-%{version}
 
 %build
 sed -i -e '/DESTINATION.*/s/lib/%{_lib}/' CMakeLists.txt
