@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 20 03:13:08 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace obsoleted "disabled" with "manual" service option.
+- Update to version 0.4.34:
+  * Add workaround for macOS notify problem.
+  * Don't use distinct background for code in headers when printing
+  * Add note to not update toml.
+
+-------------------------------------------------------------------
 Mon Jul 31 21:14:32 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.4.32:
