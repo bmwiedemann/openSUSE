@@ -17,14 +17,12 @@
 
 
 Name:           fcitx5-zhuyin
-Version:        5.0.12
+Version:        5.1.0
 Release:        0
 Summary:        Libzhuyin Wrapper for Fcitx5
 License:        GPL-2.0-or-later
 URL:            https://github.com/fcitx/fcitx5-zhuyin
-Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
-Source1:        https://download.fcitx-im.org/data/model.text.20161206.tar.gz
-Patch1:         %{name}-no-download.patch
+Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_dict.tar.xz
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -44,8 +42,6 @@ Libzhuyin Wrapper for Fcitx5.
 
 %prep
 %setup -q
-%patch1 -p1
-cp -r %{SOURCE1} data
 
 %build
 %cmake

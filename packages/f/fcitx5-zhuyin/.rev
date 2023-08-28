@@ -39,4 +39,15 @@
     <comment></comment>
     <requestid>1072804</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a608008ccff014a1ae387fabfe1c2de5</srcmd5>
+    <version>5.1.0</version>
+    <time>1693235709</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.0
+  * translation update
+- drop fcitx5-zhuyin-no-download.patch
+</comment>
+    <requestid>1106095</requestid>
+  </revision>
 </revisionlist>
