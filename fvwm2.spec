@@ -17,7 +17,7 @@
 
 
 Name:           fvwm2
-Version:        2.6.9
+Version:        2.7.0
 Release:        0
 Summary:        The F Virtual Window Manager
 License:        GPL-2.0-or-later
@@ -31,9 +31,8 @@ Source6:        openSUSE.xpm
 Patch0:         fvwm-configure.patch
 Patch1:         fvwm-2.5.26-sv_SE.patch
 Patch2:         fvwm-no-date-time.patch
-Patch3:         enable-more-mouse-buttons.patch
-Patch4:         fvwm-FvwmAuto-overflow.patch
-Patch5:         threadlocking.patch
+Patch3:         fvwm-FvwmAuto-overflow.patch
+Patch4:         threadlocking.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libpng-devel
