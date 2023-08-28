@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 25 16:30:53 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.9.0:
+  * No release notes.
+- Add patches to fix build:
+  * scidavis-grabFrameBuffer.patch: Use QGLWidget::grabFrameBuffer
+    instead of QOpenGLWidget::grabFramebuffer to fix build
+    (https://sourceforge.net/p/scidavis/scidavis-bugs/441/).
+  * scidavis-specify-std-namespace.patch: Specify std namespace
+    where required, patch taken from upstream
+    [gh#SciDAVis/scidavis#30].
+- Do not build on aarch64: no GL headers.
+- Drop scidavis-rpmlintrc file: no longer needed.
+
+-------------------------------------------------------------------
 Sat Feb 26 14:57:07 UTC 2022 - Max Lin <mlin@suse.com>
 
 - BuildRequires python3-sip4 for Leap 15.4

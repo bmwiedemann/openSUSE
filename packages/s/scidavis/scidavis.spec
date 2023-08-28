@@ -1,7 +1,7 @@
 #
 # spec file for package scidavis
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Quentin Denis <quentin@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,29 +18,29 @@
 
 
 Name:           scidavis
-Version:        2.3.0
+Version:        2.9.0
 Release:        0
 Summary:        An application for Scientific Data Analysis and Visualization
 License:        GPL-2.0-only AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            http://scidavis.sourceforge.net/
-# Source0:        http://downloads.sourceforge.net/project/scidavis/SciDAVis/%%{version}/%%{name}-%%{version}.tar.gz
-Source0:        https://github.com/highperformancecoder/scidavis/archive/2.3.0.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        scidavis-rpmlintrc
+URL:            https://scidavis.sourceforge.net/
+Source0:        https://github.com/SciDAVis/scidavis/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Adapt-scidavis-for-openSUSE.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Adapt-scidavis-for-Leap.patch
+# PATCH-FIX-UPSTREAM gh#SciDAVis/scidavis#30 https://github.com/SciDAVis/scidavis/commit/afca5696c4f477dcae4a0484dad2d7314884f020
+Patch2:         scidavis-specify-std-namespace.patch
+# PATCH-FIX-UPSTREAM scidavis-grabFrameBuffer.patch badshah400@gmail.com -- Use grabFrameBuffer instead of grabFramebuffer, https://sourceforge.net/p/scidavis/scidavis-bugs/441
+Patch3:         scidavis-grabFrameBuffer.patch
 BuildRequires:  glu-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  liborigin-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-qt5-devel
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 BuildRequires:  python3-sip4
 BuildRequires:  python3-sip4-devel
-%endif
 BuildRequires:  qwt-devel
 BuildRequires:  qwtplot3d-devel
 BuildRequires:  zlib-devel
@@ -52,7 +52,7 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(muparser)
-Recommends:     %{name}-lang = %{version}
+ExcludeArch:    aarch64
 
 %description
 SciDAVis is an interactive application for data analysis and
@@ -70,6 +70,8 @@ QtiPlot, Labplot and Gnuplot.
 %if 0%{?suse_version} < 1550
 %patch1 -p1
 %endif
+%patch2 -p1
+%patch3 -p1
 
 %build
 export PYTHON=python3
@@ -92,8 +94,11 @@ cp %{name}/translations/%{name}_*.qm %{buildroot}%{_datadir}/%{name}/translation
 # Remove unneeded files.
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
 
-# mimelnk is deprecated in favor of %{_datadir}/mime/packages/ for a long time
+# mimelnk is deprecated in favor of %%{_datadir}/mime/packages/ for a long time
 rm -Rf %{buildroot}%{_datadir}/mimelnk
+
+# Not a config file, not used on Linux
+rm %{buildroot}%{_sysconfdir}/scidavis/scidavisrc.py
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/scidavis
@@ -118,6 +123,5 @@ rm -Rf %{buildroot}%{_datadir}/mimelnk
 %exclude %{_datadir}/%{name}/translations
 %{_libdir}/%{name}/
 %{_mandir}/man1/%{name}.1%{?ext_man}
-%{_sysconfdir}/scidavis/
 
 %changelog

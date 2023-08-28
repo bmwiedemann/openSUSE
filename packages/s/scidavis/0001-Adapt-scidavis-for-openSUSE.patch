@@ -17,10 +17,10 @@ Subject: [PATCH] Adapt scidavis for openSUSE
  libscidavis/libscidavis.pro                   |  1 -
  7 files changed, 11 insertions(+), 16 deletions(-)
 
-Index: scidavis-2.3.0/config.pri
+Index: scidavis-2.9.0/config.pri
 ===================================================================
---- scidavis-2.3.0.orig/config.pri
-+++ scidavis-2.3.0/config.pri
+--- scidavis-2.9.0.orig/config.pri
++++ scidavis-2.9.0/config.pri
 @@ -74,6 +74,11 @@ unix:message(Building with preset $$PRES
  ###            and/or copy files to the desired locations by other means.      #
  ################################################################################
@@ -59,7 +59,7 @@ Index: scidavis-2.3.0/config.pri
  ################################################################################
  ### Optional features                                                          #
  ################################################################################
-@@ -283,6 +284,8 @@ contains(PRESET, linux_package) {
+@@ -281,6 +282,8 @@ contains(PRESET, linux_package) {
          exists(/usr/include/qt5/qwtplot3d-qt5) {INCLUDEPATH+=/usr/include/qt5/qwtplot3d-qt5}
          exists(/usr/include/qwt5-qt5) {INCLUDEPATH+=/usr/include/qwt5-qt5}
          exists(/usr/include/qwtplot3d) {INCLUDEPATH+=/usr/include/qwtplot3d}
@@ -68,60 +68,60 @@ Index: scidavis-2.3.0/config.pri
  
          system (ls /usr/lib*/libqwt5-qt5.so) {LIBS+=-lqwt5-qt5}
          system (ls /usr/lib*/*/libqwt5-qt5.so) {LIBS+=-lqwt5-qt5}
-Index: scidavis-2.3.0/fitPlugins/exp_saturation/exp_saturation.pro
+Index: scidavis-2.9.0/fitPlugins/exp_saturation/exp_saturation.pro
 ===================================================================
---- scidavis-2.3.0.orig/fitPlugins/exp_saturation/exp_saturation.pro
-+++ scidavis-2.3.0/fitPlugins/exp_saturation/exp_saturation.pro
+--- scidavis-2.9.0.orig/fitPlugins/exp_saturation/exp_saturation.pro
++++ scidavis-2.9.0/fitPlugins/exp_saturation/exp_saturation.pro
 @@ -1,5 +1,4 @@
  QMAKE_PROJECT_DEPTH = 0
 -linux-g++-64: libsuff=64
  
  include(../../config.pri)
  TARGET = exp_saturation
-Index: scidavis-2.3.0/fitPlugins/explin/explin.pro
+Index: scidavis-2.9.0/fitPlugins/explin/explin.pro
 ===================================================================
---- scidavis-2.3.0.orig/fitPlugins/explin/explin.pro
-+++ scidavis-2.3.0/fitPlugins/explin/explin.pro
+--- scidavis-2.9.0.orig/fitPlugins/explin/explin.pro
++++ scidavis-2.9.0/fitPlugins/explin/explin.pro
 @@ -1,5 +1,4 @@
  QMAKE_PROJECT_DEPTH = 0
 -linux-g++-64: libsuff=64
  
  include(../../config.pri)
  TARGET = explin
-Index: scidavis-2.3.0/fitPlugins/fitRational0/fitRational0.pro
+Index: scidavis-2.9.0/fitPlugins/fitRational0/fitRational0.pro
 ===================================================================
---- scidavis-2.3.0.orig/fitPlugins/fitRational0/fitRational0.pro
-+++ scidavis-2.3.0/fitPlugins/fitRational0/fitRational0.pro
+--- scidavis-2.9.0.orig/fitPlugins/fitRational0/fitRational0.pro
++++ scidavis-2.9.0/fitPlugins/fitRational0/fitRational0.pro
 @@ -1,5 +1,4 @@
  QMAKE_PROJECT_DEPTH = 0
 -linux-g++-64: libsuff=64
  
  include(../../config.pri)
  TARGET            = fitRational0
-Index: scidavis-2.3.0/fitPlugins/fitRational1/fitRational1.pro
+Index: scidavis-2.9.0/fitPlugins/fitRational1/fitRational1.pro
 ===================================================================
---- scidavis-2.3.0.orig/fitPlugins/fitRational1/fitRational1.pro
-+++ scidavis-2.3.0/fitPlugins/fitRational1/fitRational1.pro
+--- scidavis-2.9.0.orig/fitPlugins/fitRational1/fitRational1.pro
++++ scidavis-2.9.0/fitPlugins/fitRational1/fitRational1.pro
 @@ -1,5 +1,4 @@
  QMAKE_PROJECT_DEPTH = 0
 -linux-g++-64: libsuff=64
  
  include(../../config.pri)
  TARGET            = fitRational1
-Index: scidavis-2.3.0/fitPlugins/planck_wavelength/planck_wavelength.pro
+Index: scidavis-2.9.0/fitPlugins/planck_wavelength/planck_wavelength.pro
 ===================================================================
---- scidavis-2.3.0.orig/fitPlugins/planck_wavelength/planck_wavelength.pro
-+++ scidavis-2.3.0/fitPlugins/planck_wavelength/planck_wavelength.pro
+--- scidavis-2.9.0.orig/fitPlugins/planck_wavelength/planck_wavelength.pro
++++ scidavis-2.9.0/fitPlugins/planck_wavelength/planck_wavelength.pro
 @@ -1,5 +1,4 @@
  QMAKE_PROJECT_DEPTH = 0
 -linux-g++-64: libsuff=64
  
  include(../../config.pri)
  TARGET = planck_wavelength
-Index: scidavis-2.3.0/libscidavis/libscidavis.pro
+Index: scidavis-2.9.0/libscidavis/libscidavis.pro
 ===================================================================
---- scidavis-2.3.0.orig/libscidavis/libscidavis.pro
-+++ scidavis-2.3.0/libscidavis/libscidavis.pro
+--- scidavis-2.9.0.orig/libscidavis/libscidavis.pro
++++ scidavis-2.9.0/libscidavis/libscidavis.pro
 @@ -47,6 +47,5 @@ include( muparser.pri )
  python {include( python.pri )}
  
@@ -129,10 +129,10 @@ Index: scidavis-2.3.0/libscidavis/libscidavis.pro
 -
  #############################################################################
  #############################################################################
-Index: scidavis-2.3.0/libscidavis/python-sipcmd.py
+Index: scidavis-2.9.0/libscidavis/python-sipcmd.py
 ===================================================================
---- scidavis-2.3.0.orig/libscidavis/python-sipcmd.py
-+++ scidavis-2.3.0/libscidavis/python-sipcmd.py
+--- scidavis-2.9.0.orig/libscidavis/python-sipcmd.py
++++ scidavis-2.9.0/libscidavis/python-sipcmd.py
 @@ -28,8 +28,8 @@
  
  import os
