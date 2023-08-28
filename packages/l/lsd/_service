@@ -2,11 +2,12 @@
 <services>
   <service name="obs_scm" mode="disabled">
     <param name="filename">lsd</param>
-    <param name="url">https://github.com/Peltoche/lsd.git</param>
+    <param name="url">https://github.com/lsd-rs/lsd.git</param>
     <param name="scm">git</param>
     <param name="version">git-master</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">0.23.1</param>
+    <param name="revision">v1.0.0</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">disable</param>
     <param name="changesauthor">dead_mozay@opensuse.org</param>
   </service>

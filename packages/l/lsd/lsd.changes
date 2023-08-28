@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Aug 28 03:22:01 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.0.0:
+  * Add complete color theming support for Git.
+  * Add Git integration.
+  * In keeping with the coreutils change, add quotes and escapes 
+    for necessary filenames.
+  * Add support for icon theme.
+  * Add icon for kt and kts.
+  * Add many icons from https://github.com/Peltoche/lsd/issues/764.
+  * Add support for localization.
+  * Add icons for cjs, cts and mts.
+  * Fix obsolete Nerd Font icons.
+  * profile and .profile now share the same icon.
+  * Make tox.ini files use the gear/settings icon.
+  * Do not quote filename when piping into another program.
+  * Handle dereference (-L) with broken symlink.
+  * Avoid using Clap’s deprecated structs and functions.
+  * Icon theme with overrides from config.
+  * Incorrect colorizing with --size=bytes.
+  * Color theme is now expected to be in $XDG/lsd/colors.yaml 
+    by default, Legacy behaviour (themes folder) is marked as 
+    deprecated but is still supported.
+  * Version sort option -v, --versionsort has been updated 
+    to match GNU version sort logic, similar to ls -v and sort -V.
+
+-------------------------------------------------------------------
 Tue Sep 13 05:54:16 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.23.1:
