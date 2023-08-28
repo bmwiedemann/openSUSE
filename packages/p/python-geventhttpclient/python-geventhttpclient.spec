@@ -67,7 +67,8 @@ sed -i '/sock.last_seen_sni/ d' src/geventhttpclient/tests/test_ssl.py
 
 %check
 # test_cookielib_compatibility https://github.com/gwik/geventhttpclient/issues/119
-%pytest_arch -m 'not online' -k 'not test_cookielib_compatibility'
+# test_no_module_ssl.py https://github.com/geventhttpclient/geventhttpclient/issues/180
+%pytest_arch -m 'not online' -k 'not (test_cookielib_compatibility or test_no_module_ssl)'
 
 %files %{python_files}
 %doc README.mdown
