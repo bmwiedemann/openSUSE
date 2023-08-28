@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-terminal
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,23 +19,25 @@
 
 %bcond_with git
 Name:           xfce4-terminal
-Version:        1.0.4
+Version:        1.1.0
 Release:        0
 Summary:        Terminal Emulator for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
 Group:          System/X11/Terminals
 URL:            https://docs.xfce.org/apps/terminal/start
-Source0:        https://archive.xfce.org/src/apps/xfce4-terminal/1.0/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/apps/xfce4-terminal/1.1/%{name}-%{version}.tar.bz2
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  utempter-devel
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.8
-BuildRequires:  pkgconfig(libpcre2-8)
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.16
+BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(libpcre2-8) >= 10.00
+BuildRequires:  pkgconfig(libxfce4kbd-private-3) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.17.5
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.16.0
 BuildRequires:  pkgconfig(vte-2.91) >= 0.51.3
 Recommends:     %{name}-lang
 
@@ -101,8 +103,6 @@ desktop-file-edit %{buildroot}%{_datadir}/applications/%{name}-settings.desktop 
 %{_datadir}/icons/hicolor/*/apps/org.xfce.terminal*
 %{_datadir}/applications/xfce4-terminal.desktop
 %{_datadir}/applications/xfce4-terminal-settings.desktop
-%dir %{_datadir}/gnome-control-center
-%{_datadir}/gnome-control-center/default-apps
 %{_mandir}/man1/xfce4-terminal.1*
 
 %files lang -f %{name}.lang
