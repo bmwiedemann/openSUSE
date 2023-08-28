@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 18 14:03:06 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Renew clamav.keyring .
+
+-------------------------------------------------------------------
+Wed Aug 16 17:32:03 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 0.103.9
+  * CVE-2023-20197: Fixed a possible denial of service vulnerability in
+    the HFS+ file parser. This issue affects versions 1.1.0, 1.0.1 through
+    1.0.0, 0.105.2 through 0.105.0, 0.104.4 through 0.104.0, and 0.103.8
+    through 0.103.0. (boo#1214342)
+  * Fixed compiler warnings that may turn into errors in Clang 16.
+
+-------------------------------------------------------------------
 Wed Feb 15 17:26:43 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 0.103.8

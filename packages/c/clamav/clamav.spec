@@ -19,7 +19,7 @@
 %bcond_with	clammspack
 %bcond_with	valgrind
 Name:           clamav
-Version:        0.103.8
+Version:        0.103.9
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
@@ -33,6 +33,7 @@ Source7:        service.clamd
 Source8:        service.freshclam
 Source9:        service.clamav-milter
 Source10:       timer.freshclam
+# w3m https://www.clamav.net/downloads | sed -n '/-BEGIN /,/-END /p'
 Source11:       clamav.keyring
 Source65:       system-user-vscan.conf
 Patch1:         clamav-conf.patch

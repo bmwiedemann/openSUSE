@@ -1194,4 +1194,12 @@
 - Package huge .html documentation in a separate subpackage.</comment>
     <requestid>1066149</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>27b7c4312341e56b18ced7d60930b4db</srcmd5>
+    <version>0.103.9</version>
+    <time>1693235605</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1105919</requestid>
+  </revision>
 </revisionlist>
