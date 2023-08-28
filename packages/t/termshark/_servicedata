@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/gcla/termshark.git</param>
+              <param name="changesrevision">e436160ef4f7bac030a9bddd5674d3159ebdd792</param></service><service name="tar_scm">
+                <param name="url">https://github.com/gcla/termshark</param>
+              <param name="changesrevision">e436160ef4f7bac030a9bddd5674d3159ebdd792</param></service></servicedata>
