@@ -17,7 +17,7 @@
 
 
 Name:           python-nbsphinx
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        Jupyter Notebook Tools for Sphinx
 License:        MIT

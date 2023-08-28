@@ -180,4 +180,12 @@ too small
   * LaTeX: Add support for admonition titles (forwarded request 1090499 from bnavigator)</comment>
     <requestid>1090500</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c105109aade15c2b18a6dc4f2f801cb3</srcmd5>
+    <version>0.9.3</version>
+    <time>1693235788</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1106239</requestid>
+  </revision>
 </revisionlist>
