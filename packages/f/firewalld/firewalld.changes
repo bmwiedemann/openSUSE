@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 22 10:47:06 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+
+- fix(cli): all --list-all-zones output identical (boo#1213609) 
+  [+ fix_list_all_zones_output.patch]
+
+-------------------------------------------------------------------
 Sat Jun 24 14:20:24 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
 - update to version 2.0.0:

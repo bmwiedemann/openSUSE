@@ -37,6 +37,7 @@ Source0:        https://github.com/firewalld/firewalld/releases/download/v%{vers
 Source1:        docker-zone.xml
 Patch0:         0002-Disable-FlushAllOnReload-option.patch
 Patch1:         firewalld-runstatedir.patch
+Patch2:         fix_list_all_zones_output.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  desktop-file-utils
