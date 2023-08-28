@@ -31,6 +31,7 @@ Patch0:         tango-icon-theme-rsvg-2_35_2.patch
 Patch1:         tango-icon-theme-extras-rsvg-2_35_2.patch
 # PATCH-FIX-UPSTREAM tango-icon-theme-reproducible.patch fdo#94510 bwiedemann@suse.com -- Drop png timestamps.
 Patch2:         tango-icon-theme-reproducible.patch
+BuildRequires:  bitstream-vera-fonts
 BuildRequires:  ImageMagick-devel
 BuildRequires:  fdupes
 BuildRequires:  icon-naming-utils
