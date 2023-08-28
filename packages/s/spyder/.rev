@@ -642,4 +642,12 @@ rename the package from spyder3 to spyder.
     <comment></comment>
     <requestid>1083328</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>1fdf91c66a9b6d0da93ae85a85867145</srcmd5>
+    <version>5.4.4</version>
+    <time>1693235565</time>
+    <user>anag+factory</user>
+    <comment>- Raise jedi pin to &lt;0.20 (forwarded request 1105913 from bnavigator)</comment>
+    <requestid>1105914</requestid>
+  </revision>
 </revisionlist>
