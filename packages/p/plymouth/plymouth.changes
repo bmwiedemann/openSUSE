@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 28 03:33:51 UTC 2023 - Cliff Zhao <qzhao@suse.com>
+
+- Remove plymouth-runstatedir-revert.patch: Tumbleweed following
+  upstream, which already support "--runstatedir", don't need this
+  modification anymore(jsc#PED-5841).
+
+-------------------------------------------------------------------
+Mon Aug 28 03:20:35 UTC 2023 - Cliff Zhao <qzhao@suse.com>
+
+- Add plymouth-runstatedir-revert.patch: For plymouth update
+  successfully build in SLE-15-SP6:GA. The current edition of
+  autoconf on SLE-15-SP6:GA don't support "--runstatedir" yet, so
+  reverse plymouth compile option to the old "--withruntimedir"
+  (jsc#PED-5841).
+
+-------------------------------------------------------------------
 Mon May 22 10:32:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Properly list services as parameters to
@@ -200,7 +216,7 @@ Thu Feb 10 22:09:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update plymouth-install-label-library-and-font-file-to-initrd.patch:
   avoid aborting on multiple font path match, pick the first one
-  (boo#1183425, 1195400).
+  (boo#1183425, boo#1195600).
 
 -------------------------------------------------------------------
 Sun Jan 30 05:12:13 UTC 2022 - Cliff Zhao <qzhao@suse.com>
