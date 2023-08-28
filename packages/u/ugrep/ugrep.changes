@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Aug 28 04:46:13 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.0.5:
+  * Fix a recently-added optimization that may in some rare cases
+    caused a problem with a match at the end of a file.
+
+-------------------------------------------------------------------
+Sat Aug 26 07:06:28 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.0.4:
+  * update --save-config as per user request  
+  * correct an issue with -o and context
+
+-------------------------------------------------------------------
+Fri Aug 25 18:15:33 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.0.3:
+  * new --delay=DELAY option to specify a default query TUI
+    response delay time, which can be specified in a .ugrep config
+    file with delay=DELAY (--save-config includes this setting also)
+  * fix option -m compatibility issue wth GNU grep when showing
+    context lines with -ABC after the last max match
+
+-------------------------------------------------------------------
+Wed Aug 23 15:02:01 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.0.2:
+  * additional speed up with improved parametrization of the
+    matching algorithm decision logic
+
+-------------------------------------------------------------------
 Sun Aug 20 17:52:48 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.0.1:
