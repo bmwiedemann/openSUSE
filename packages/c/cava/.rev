@@ -240,4 +240,13 @@
   * default input wrongly set to alsa instead of pulseaudio/pipewire #518</comment>
     <requestid>1103709</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>18b526df44b63173477076a22aa00502</srcmd5>
+    <version>0.9.1</version>
+    <time>1693235567</time>
+    <user>anag+factory</user>
+    <comment>- bsc#1214255: Additionally to libpulse-devel also buildrequire
+  pipewire-devel to enable build with pipewire support</comment>
+    <requestid>1105880</requestid>
+  </revision>
 </revisionlist>

@@ -31,6 +31,7 @@ BuildRequires:  libiniparser-devel >= 4.0
 BuildRequires:  libpulse-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
+BuildRequires:  pipewire-devel
 # Installing the psf in a directory that comes from kbd
 Requires:       kbd
 
