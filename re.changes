@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 28 07:52:39 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.3.0:
+  Breaking changes:
+    * librem is now merged with libre
+  Changes:
+    * https://github.com/baresip/re/releases/tag/v3.3.0
+    * https://github.com/baresip/re/releases/tag/v3.2.0
+    * https://github.com/baresip/re/releases/tag/v3.1.0
+    * https://github.com/baresip/re/releases/tag/v3.0.0
+
+-------------------------------------------------------------------
 Sun Dec 11 17:35:34 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - re 2.10.0:
