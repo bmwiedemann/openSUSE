@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Sun Aug 20 16:24:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.1
+  * VQT octave boundaries by @bmcfee in #1677
+  * redoing 0.10.0.post1 release by @bmcfee in #1684
+  * Pin pooch < 1.7 by @bmcfee in #1686
+  * Post-release 2 for 0.10.0, pin pooch by @bmcfee in #1687
+  * Stricter checks on yin/pyin parameters by @bmcfee in #1693
+  * bumping sphinx config, fixes #1671 by @bmcfee in #1699
+  * fixed bins_per_octave's docs type float to int by @kyaryunha in
+    #1703
+  * add volume adjustment(rms-mean) at pitch_shift by @kyaryunha in
+    #1704
+  * Several small documentation updates by @bmcfee in #1713
+  * pin numpy version to < 1.24 in doc environment by @bmcfee in
+    #1714
+  * fixed broken 'latest' link generator by @bmcfee in #1716
+  * README.md typo fix by @Zenitismus in #1706
+  * CI for documentation builds by @bmcfee in #1718
+  * reworked lazy loading of matplotlib by @bmcfee in #1722
+  * Advanced example for patch generation by @bmcfee in #1719
+  * support pooch >= 1.7 by @bmcfee in #1727
+  * Consistent conversion of time duration/offset to sample counts
+    by @bmcfee in #1726
+  * Update tests for scipy 1.11 by @bmcfee in #1731
+
+-------------------------------------------------------------------
+Mon May 29 15:19:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.0.post2
+  * This maintenance release updates the dependency specifications
+    to avoid an incompatibility with pooch >= 1.7.0. This
+    restriction only affects loading of specific example files, and
+    does not otherwise affect functionality of the library.
+- Releae 0.10.0
+  * This release provides many speedups and enhancements to core
+    operations, faster importing and loading, and full type
+    annotations.
+  ## New features
+  * #1485 Added support for “h” (hours) and “m” (minutes) in
+    librosa.display.TimeFormatter. Vincent Lostanlen
+  * #1495 Expanded options for bandwidth calculation in
+    librosa.segment.recurrence_matrix and
+    librosa.segment.cross_similarity. Tom Xi
+  * #1529 Accelerated utility functions for squared magnitude
+    librosa.util.abs2 and librosa.util.phasor. Brian McFee
+  * #1514 librosa.stft support for pre-allocated output arrays.
+    Brian McFee
+  * #1533 Accelerated librosa.util.localmax and
+    librosa.util.localmin. Brian McFee
+  * #1552 EXPERIMENTAL Support for just-intonation based variable-Q
+    transforms librosa.vqt and functional just system (FJS)
+    notation. Brian McFee, Vincent Lostanlen
+  * #1579 Imports are now done lazily, significantly reducing
+    startup time. It is not longer necessary to explicitly import
+    librosa.display. Brian McFee
+  * #1587, #1632, #1637 Type annotations. Matan Gover, Brian McFee,
+    Fabian Keller
+  * #1647 Harmonic spectrum interpolation librosa.f0_harmonics and
+    tempogram ratio features librosa.feature.tempogram_ratio. Brian
+    McFee
+  ## Bug fixes
+  * #1560 Corrected an error in bandwidth estimation for window
+    functions that take on negative sample values. Brian McFee
+  * #1571 Fixed rounding error in multirate filterbank calculation
+    of sampling rates. Brian McFee
+  * #1594 Fixed incorrect use of deprecated numpy numerical types.
+    Mattia Di Gangi
+  * #1596 Fixed harmonic interpolation for recent scipy releases.
+    Brian McFee
+  ## API changes
+  * #1561 librosa.resample now supports axis= for all sample rate
+    conversion backends. Brian McFee
+  * #1572 Notation conversion (e.g., librosa.midi_to_note) now
+    vectorizes operations, and produces numpy.ndarray outputs
+    rather than list when given iterable inputs. Brian McFee
+  * #1625 Deprecations now raise FutureWarning instead of
+    DeprecationWarning.
+  * #1625 librosa.get_duration parameter filename has been renamed
+    to path. Brian McFee
+  * #1643 Removed support for threshold=None in
+    librosa.zero_crossings. Brian McFee
+  * #1665 Fixed overflow bug in librosa.feature.rms on integer
+    inputs. Brian McFee
+  ## Deprecations
+  * #1521 Removed backward compatibility support for positional
+    arguments that are now keyword-only. Brian McFee
+  * #1577 Removed official support for python 3.6. Brian McFee
+  * #1625 The audioread backend is now deprecated and will be
+    removed in a future release. Brian McFee
+  ## Other changes
+  * #1501 Infer square / equal plot dimensions for compatible x/y
+    axes in librosa.display.specshow. Kian Eliasi
+  * #1535 Standardized integer type checks throughout the library.
+    Alexandre Chabot-Leclerc
+  * #1539 Refactored librosa.display.AdaptiveWaveplot to allow
+    callback disconnection. Brian McFee
+  * #1548 Removed deprecated ‘hanning’ window specification from
+    tests. Brian McFee
+  * #1551 Removed dependency on contextlib2. Steve Kowalik
+  * #1565 Efficiency improvements to librosa.autocorrelate. Brian
+    McFee
+  * #1566 Changed the default sample rate conversion method from
+    kaiser_best (resampy) to soxr_hq (soxr). Brian McFee
+  * #1581 Updated tests for numpy 1.23 compatibility. Brian McFee
+  * #1617 Accelerated librosa.yin implementation. Brian McFee
+  * #1640 Updated display module dependencies to require matplotlib
+    >= 3.3. Brian McFee
+  * #1643 Accelerated librosa.zero_crossings implementation. Brian
+    McFee
+  * #1646 Added support for transposed (vertical) display of
+    waveforms. Brian McFee
+- Drop patches
+  * remove-contextlib2.patch
+  * skip-test-data-missing-tests.patch
+  * update-tests-for-numpy-123.patch
+  * remove-hanning-from-tests.patch
+  * update-for-numpy-124.patch
+
+-------------------------------------------------------------------
 Mon May 29 13:45:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - reenable python311 build (numba now available) 
