@@ -558,4 +558,12 @@
   * missing build deps</comment>
     <requestid>1095879</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>ec715cb0f78e0c3b41aaa99acfbef758</srcmd5>
+    <version>6.0+git20230821.3093d53d</version>
+    <time>1693235697</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1106084</requestid>
+  </revision>
 </revisionlist>

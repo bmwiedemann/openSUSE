@@ -1,4 +1,449 @@
 -------------------------------------------------------------------
+Mon Aug 21 15:48:20 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20230821.3093d53d:
+  * #3967 authenticate_check is now an attribute, set it
+  * no need for quotes, silence buggy? rule
+
+-------------------------------------------------------------------
+Mon Aug 21 13:05:34 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20230821.3434dd60:
+  * add pre-commit hooks
+  * fix forwarding of 'draw' packets with stripped alpha
+  * simplify: load pycups from per-platform implementation
+  * silence some minor ruff linter warnings
+  * search & replace gone wrong
+  * unused imports
+  * oops: typo
+  * oops: undefined variable
+  * fixup 5995d0efd3dcc9974eeb874fd338f5b8db8ecea4: pyupgrade messed this one up
+
+-------------------------------------------------------------------
+Sun Aug 20 17:31:34 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20230820.7cda1ac3:
+  * partial revert of syntax upgrade
+  * add arm64 MacOS download link
+  * modernize the codebase using pyupgrade
+  * run opengl check on MacOS and MS Windows
+  * another stray dash
+  * use the alias
+  * correct NSObject init call
+  * MacOS 'configure-display' packets can be large because of ICC data
+  * just 'install', using --root messes things up
+  * strip newlines from arch
+  * prettier output, with unit tests
+  * safe to enable again thanks to aaf546ba056f3afac68069c00364d071d9a2baa0
+  * typo caused warnings
+  * support namespaced dpi caps
+  * the bind option is a list
+  * the bundler needs the xpra script installed
+  * log clipboard backend failures
+  * logging pids without '=' for consistency
+  * search and replace fixup
+  * add screenshot on home page
+  * fixup search and replace gone wrong
+  * don't try to enable dbus client mixin on win32 or macos
+  * missing a listener socket should not be fatal
+  * add debug logging
+  * simplify
+  * fix xdg import
+  * decode compressed logging packets
+  * update logging to match new function purpose
+  * simplify
+  * remove outdated info, use the new rc location
+  * oops: 43ce90cc5d77ccfdd6144f130189f9db9ff1f796 missed the trailing newline
+  * don't try to remove sockets that don't exist
+  * firewall-cmd is part of firewalld
+  * move gtk-update-icon-cache to client-gtk3
+  * duplicate obsoletes / conflicts, remove duplicated group
+  * fixup search and replace gone wrong
+  * we need a logger for printing the warning
+  * rename to avoid linter warnings
+  * refactoring misnamed
+  * missed from conversion to dataclass
+  * import cleanup
+  * fixup linter warnings: reserved keyword
+  * oops: no access to import exception here
+  * fixup: missing import
+  * type hint fixes
+  * fixup refactoring: not self here
+  * remove unused imports
+  * fixup: match parameter name change
+  * remove support for ancient versions
+  * re-instate missing function
+  * #3703 use correct exception type for invalid data
+  * #3945 more helpful error message
+  * always build an 'xpra' metapackage
+  * simplify?
+  * #3945 simplify and manage all dependencies / requires ourselves
+  * recommend x11 package at top level
+  * simplify?
+  * #3945 'obsoletes' should trigger removal of older versions
+  * #3945 enable upgrades to v6 on RHEL and clones
+  * fix check: prefix is always set
+  * try harder to prevent conflicts with older versions
+  * try harder to manage the dependencies ourselves
+  * another stray dash
+  * fix double dash in filename
+  * #3962 auto dependencies get confused by our python3 command
+  * oops: deps were moved to description
+  * the python-prefixed xpra packages do provide 'xpra'
+  * ignore debug which is empty and errors out on F37
+  * recommend is strong enough
+  * the bin prefix is only on Fedora
+  * oops: selinux is not related to multi-python3
+  * #3945 RHEL and clones don't have a valid 'python3'
+  * download source and verify checksum
+  * generic repository dependency table
+  * check Python version early
+  * #3961 add unit test
+  * more instances of misplaced '| None' syntax
+  * Moved deletion of x,y to where those variables live
+  * CI choked on this syntax
+  * enable source fetch since we have the checksum
+  * minor linter warnings
+  * Debian and Ubuntu choke on evdi
+  * missing import (fixup 4713b7a4d2e2b3b5a980683725817f26262686b1)
+  * implement non-32 formats for ClientMessage
+  * #3945 more common scripts moved to 'xpra-filesystem'
+  * #3930 use dataclass
+  * cosmetic
+  * #3930 switch to monotonic_ns
+  * oops: wrong test
+  * we now have to fake the 'video' attribute
+  * we now have to enable FULL_INFO to test get_sys_info
+  * #3952 don't show empty video info
+  * #3582 limit default info output further
+  * #3592 missed from 058f8f229d514848fabfc77de72da7d7cf7a490a
+  * #3953 turn off most subsystems when minimal=yes
+  * remove unused f-strings
+  * remove unused f-strings
+  * #3952 add switch to disable video
+  * #3945 ensure the main scripts are version agnostic
+  * add newline at end of files
+  * #3945 'filesystem' package conflicts with older 'common' package
+  * explicitly state that we always return 'True'
+  * #3930 use standard library
+  * #3930 make it easier to trap exceptions and log them
+  * #3930 convert to use dataclass
+  * add type hint
+  * add python icon
+  * #3945 use the same spec file for pycairo
+  * show python implementation and some version details
+  * simplify syntax
+  * #3945 split into new common 'filesystem' package
+  * fix formatting of old changelog entry
+  * #3945 always use prefix
+  * remove duplicated package
+  * silence warnings with rpmspec
+  * doh: prefix already includes '-'
+  * #3945 we always need pillow
+  * #3592 remove x265
+  * #3930 replaced with standard library managers
+  * #3945 RHEL fixes
+  * #3945 use madvise
+  * #3945 only override when needed
+  * RHEL doesn't have this package
+  * only build xpra for newer python versions
+  * openh264 is only for Fedora
+  * #3945 no need to block specific distros
+  * #3945 build python3.11 packages for RHEL
+  * #3945 build python3.10 and python3.12 packages for Fedora
+  * silence sonarqube warnings
+  * fixup quit_handler changes
+  * #3930 simplify
+  * #3930 use merge-update-operator
+  * #3930 expose native thread id
+  * #3930 self-documenting expresssions
+  * #3930 use SimpleQueue where sufficient
+  * #3930 replace HideStdErr with redirect_stderr
+  * #3930 replace DummyContextManager with nullcontext
+  * we don't support python-lzo at all any more
+  * we don't need python-lz4
+  * no support for Fedora versions older than 37
+  * #3945 support build for multiple PYTHON3 targets
+  * #3945 build packages for 'PYTHON3' env var version
+  * avoid sonarqube linter warning?
+  * extraneous f-string prefix
+  * missing f-string prefix
+  * missed changelog entry
+  * forgot to remove ffmpeg here
+  * don't just warn, fail the build
+  * more imports needed to be re-added
+  * bump the debian script version
+  * forgot to also re-add the import..
+  * unbreak installations _with_ dbus...
+  * something mangled this line
+  * older versions of cython choke on bare types
+  * handle missing python-dbus more gracefully
+  * missed from renaming
+  * more helpful failure message
+  * fix python3.10: 'type' object is not subscriptable
+  * bump version
+  * #3930 don't import from 'typing' if we don't have to
+  * #3930 replace 'Optional' with '| None'
+  * #3592 missed from 20bb5f04233dc650022bc67d5904566d1b158af9
+  * #3592 remove legacy packet format parsing code
+  * #3592 remove ffmpeg modules and dependencies
+  * #3592 remove legacy workarounds
+  * #3592 use pkcs7 padding by default
+  * #3592 remove legacy options, 'set-deflate' packet
+  * #3592 remove support for dummy versions older than 0.4
+  * #3592 remove outdated combinations
+  * #3592 remove unused rpc subsystem
+  * forgot to remove 'zlib' here
+  * handle missing mmap caps gracefully
+  * #3592 with Python 3.10+, we don't need typing-extensions
+  * #3592 all distros should support zstd nowadays?
+  * #3592 we require int(IntEnum) support
+  * #3592 generic 'wants' flags
+  * #3592 safe to remove net_utf8 since we require rencodeplus
+  * #3592 assume wants_default_cursor
+  * #3592 assume randr_notify is available
+  * #3592 remove fakeXinerama
+  * require structured mmap caps
+  * #3592 assume flush is used
+  * #3592 assume eos is supported
+  * #3592 assume xdg-menu-update is supported
+  * #3592 assume info-namespace (unused anyway?)
+  * #3592 remove ogg-latency-fix and bundle-metadata
+  * #3592 remove zlib compression
+  * remove debug logging
+  * #3592 require rencodeplus, remove bencode and rencode
+  * #3592 require gcc 9 or later
+  * #3592 remove support for nvcc versions older than 11.6
+  * #3592 remove old libav shim
+  * require Python 3.10 or later
+  * dep update and fixup typo
+  * #3932 clear socket upgrade options
+  * source is now a required parameter
+  * don't enable ffmpeg encoder by default
+  * #3750 don't enable gstreamer encoder by default
+  * #3937 replace remaining packet modifications
+  * fix variable name
+  * #3937 use utility function to modify packets
+  * remove 'Python3' from filenames
+  * #3934 add 'freetype2' to typelibs we need
+  * #3750 use the correct stream attributes for av1
+  * more consistent way of easily selecting decoder formats
+  * don't error out on missing codecs
+  * don't use XDG_RUNTIME_DIR on MacOS
+  * adapt to prefix / root changes in 416b65a9998f4430b09cf9227534de46dfcb924b
+  * remove setuptools workaround, run 'bootstrap' early
+  * missing CR looks bad on github
+  * #3937 initialize all attributes
+  * #3936 the beta repository now includese riscv64 packages
+  * don't do parallel builds on arm64 or riscv
+  * #3930 add typing-extensions to CI env
+  * #3930 workaround for older python versions
+  * #3936 don't enable parallel builds on riscv
+  * #3936 no x264 for riscv64 - for now?
+  * add riscv64 package list
+  * bump version
+  * we can't use --no-lintian with sid riscv64
+  * add Ubuntu Mantic Minotaur
+  * python packaging workaround everywhere
+  * add code of conduct
+  * missing prefix
+  * #3667 no longer failing it seems?
+  * refactor and avoid one more typo
+  * typo
+  * more type hints
+  * add type hints
+  * try to clean before the next test
+  * #3667 tests have been fixed
+  * #3933 skip newlines until we find the first ws header
+  * send all heaaders in a single write call
+  * #3933 add debug logging
+  * urrlib validates port numbers for us
+  * simplify test code, more detailed error message
+  * #3667 use a fake html5 client to enable websocket connections
+  * fix type hint
+  * fix XPRA_USE_CYTHON_BENCODE=0 as used by the unit tests
+  * this should now pass again, even on the CI
+  * fix file caps parsing
+  * we need strings here
+  * add debug logging
+  * config file limit is actually 1G
+  * easier using '--root=' ?
+  * use the same default value as the config file
+  * missing imports / cleanup
+  * fix debug logging
+  * typo
+  * always cleanup
+  * use both prefix and root to install datadirs
+  * more type hints, require source for make_hello
+  * missing import
+  * use constant
+  * doh: syntax error
+  * #3927 add type hints
+  * remove unused attribute
+  * #3927 stricter data types
+  * #3927 @SuppressWarnings is still not supported by SonarQube, but NOSONAR is
+  * older versions can't parse '*tuple'
+  * xxHash 0.8.2
+  * #3928 silence Java warnings due to huge command lines
+  * is this syntax working with older versions like the CI?
+  * more resilient code, fixes linter warning
+  * use ugly syntax for older Python versions
+  * #3927 annotate all packet handlers
+  * #3927 last few sonarqube warnings
+  * wait value is in milliseconds
+  * #3807 Python 3.12 should now build without warnings
+  * add more changes
+  * add link to the ticket
+  * add link to discord
+  * update dummy info
+  * split icon loading function, fix missing idle_add handler
+  * better error message format
+  * rgb_format must always be a string
+  * force x11 backend in 'opengl' check, for now
+  * make code more reusable
+  * missing import
+  * #3807 fix warnings with Python 3.12 and Cython 3.0
+  * doh: we need an exception to log
+  * 'password_file' is always a string
+  * update the release notes
+  * #3922 improve 'challenge-handlers' documentation
+  * no need to use wildcard
+  * Cython 3.0.0
+  * try to workaround buggy tools on centos stream8
+  * simplify regex
+  * minor linter warnings
+  * don't override parameter
+  * more linter warnings
+  * no need to use an attribute
+  * define all build attributes in init
+  * update test to use strings
+  * missing import
+  * more linter warnings
+  * don't divert logging in debug mode
+  * bytes remnant
+  * match switch to strings, add missing type hint
+  * fixup missing type hint import
+  * match change in superclass
+  * #3593 update ssh agent symlink when ui driver changes
+  * #3593 more reliable cleanup of agent symlinks
+  * #3593 move function to net.ssh.agent
+  * #3623 recommend libnm with xpra client
+  * missing bindings raises a ValueError...
+  * #3623 use NM to get adapter type
+  * move inline function to static function for readability
+  * whitelist for env vars preserved
+  * simplify: use strings
+  * str vs bytes bug: dbus env uses bytes
+  * remove debug
+  * type hints
+  * also force x11 backend for pyopengl
+  * move win32 specific auth code to platform module
+  * re-use existing mode
+  * more type hints
+  * log details about the mode we're creating
+  * always return a boolean
+  * type hints fixes
+  * simplify
+  * missing type hint import
+  * events now use plain window xid
+  * update test to use tuple
+  * use the new key
+  * more type hint fixes
+  * exclude more optional modules
+  * Cython 3.0.0rc2
+  * #3778 support legacy ssh:host:display format
+  * prevent splash from hanging
+  * shortcut out on any exit code
+  * don't shadow the function name
+  * #3778 don't specify a default username
+  * simplify and wait for all IO threads
+  * assume dummy 0.4 is available
+  * we must compare using strings
+  * stderr_print (now renamed) always adds newline
+  * #3313 enable auto-upgrades by default
+  * #3313 auto-upgrade tcp sockets to ssl
+  * missing packet type
+  * also use no-prefix colour output for 'id' subcommand
+  * duplicated newline
+  * add debug logging
+  * use the correct filename for saving the ssl cert
+  * pynvml 11.535.77
+  * Cython 3.0.0rc1
+  * aioquic 0.9.21
+  * also match sddm
+  * #3917 try hard to find a valid XAUTHORITY file
+  * new 'interface' requires this method
+  * minor linter warnings
+  * #3913 earlier and stricter packet validation
+
+-------------------------------------------------------------------
+Fri Jul 07 20:46:27 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 5.0+git20230706.bb1ecc9b:
+  * fix invalid syntax introduced by bef7c7e4c67102689b13ccae8cc13c5a86e9af57
+  * cosmetic
+  * doh: invert check
+  * more minor pycharm linter warnings
+  * simplify: let Popen deal with strings
+  * string vs bytes confusion: method never called?
+  * get_all_x11_layouts() uses the python lxml module
+  * more type fixes
+  * don't try to compare bytes with strings
+  * protocol error packet creation failure
+  * pycharm cosmetic warnings
+  * typo
+  * doh: try both schemes
+  * verify the digest is always a byte string
+  * line data indexes had changed
+  * #3881 use text mode to avoid encoding issues
+  * more type hints fixes
+  * type hints fixes
+  * lookup alternate auto-proxy scheme
+  * better error message
+  * fix missing import
+  * #3914 use the correct namespace
+  * oops: missing import
+  * #3914 python-pillow removed a useful constant alias
+  * #3909 forgot to update to new api here
+  * type hints and linter fixes
+  * forward any pre-read data we may have
+  * use integers explicitly
+  * exception is not used
+  * honour all 'start' options with remote starts
+  * make more authentication handler options configurable
+  * fixup table formatting and some ticket links
+  * remove duplicated files
+  * #3899 fixup a6dfd3e116280e39c1e8de1bffe7585df4660c1f
+  * #3899 allow keyboard shortcuts in readonly mode
+  * add type hints
+  * add Debian Trixie: copy bookworm library versions
+
+-------------------------------------------------------------------
+Fri Jul  7 20:18:00 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing more Recommends:
+  * python3-asn1crypto
+  * python3-cffi
+  * python3-decorator
+  * python3-idna
+  * python3-ipaddress
+  * python3-packaging
+  * python3-pyasn1
+  * python3-six
+
+-------------------------------------------------------------------
+Fri Jul  7 17:11:54 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing some Requires/Recommends after discussion w/
+  upstream developer
+  * https://github.com/orgs/Xpra-org/discussions/3902
+
+-------------------------------------------------------------------
+Fri Jun 30 01:00:41 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adjusting 'ffmpeg_ver' to 6 for 'suse_version >= 1550'
+
+-------------------------------------------------------------------
 Wed Jun 28 21:10:27 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding "Source100: xpra-rpmlintrc" to appease SR#1095874

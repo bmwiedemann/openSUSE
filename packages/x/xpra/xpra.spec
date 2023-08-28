@@ -25,10 +25,10 @@
 # setup.py build --verbose ...
 # Xpra version 4.4
 #%%define xpra_ver 4.4
-%define xpra_ver 5.0
+%define xpra_ver 6.0
 # ----
 %if 0%{?suse_version} >= 1550
-%define ffmpeg_ver 5
+%define ffmpeg_ver 6
 %else
 %define ffmpeg_ver 4
 %endif
@@ -36,7 +36,7 @@
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        5.0+git20230617.2a908f54
+Version:        6.0+git20230821.3093d53d
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -95,6 +95,8 @@ BuildRequires:  procps-devel
 BuildRequires:  qrencode-devel
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vpx) >= 1.4.0
+#BuildRequires:  pkgconfig(x264)
+#BuildRequires:  pkgconfig(openh264)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xkbfile)
@@ -116,8 +118,8 @@ Requires:       python3-cairo
 Requires:       python3-dbus-python
 Requires:       python3-gobject-Gdk
 Requires:       python3-gst
-Requires:       python3-lz4
-Requires:       python3-opencv
+###Requires:       python3-lz4
+###Requires:       python3-opencv
 Requires:       python3-pycups
 Requires:       python3-rencode
 Requires:       shared-mime-info
@@ -127,27 +129,27 @@ Requires(post): %fillup_prereq
 Recommends:     lsb-release
 Recommends:     pinentry
 Recommends:     pulseaudio-module-x11
-Recommends:     python3-asn1crypto
-Recommends:     python3-cffi
+###Recommends:     python3-asn1crypto
+###Recommends:     python3-cffi
 Recommends:     python3-cryptography
-Recommends:     python3-decorator
+###Recommends:     python3-decorator
 Recommends:     python3-dnspython
-Recommends:     python3-idna
-Recommends:     python3-ipaddress
+###Recommends:     python3-idna
+###Recommends:     python3-ipaddress
 Recommends:     python3-netifaces
 Recommends:     python3-opencv
 Recommends:     python3-opengl
 Recommends:     python3-opengl-accelerate
-Recommends:     python3-packaging
+###Recommends:     python3-packaging
 Recommends:     python3-paramiko
-Recommends:     python3-pyasn1
-Recommends:     python3-pycparser
+###Recommends:     python3-pyasn1
+###Recommends:     python3-pycparser
 Recommends:     python3-pyinotify
-Recommends:     python3-pynacl
-Recommends:     python3-pyparsing
+###Recommends:     python3-pynacl
+###Recommends:     python3-pyparsing
 Recommends:     python3-pyxdg
-Recommends:     python3-setuptools
-Recommends:     python3-six
+###Recommends:     python3-setuptools
+###Recommends:     python3-six
 Recommends:     xdg-menu
 # Overflow errors on 32-bit
 ExcludeArch:    %ix86
@@ -194,12 +196,17 @@ export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
 #%%endif
 python3 setup.py clean
 
+### These don't appear available anymore:
+#  --with-enc_ffmpeg \
+#  --with-dec_avcodec2 \
+#  --with-csc_swscale \
+#####
+### Not sure how to incorporate this from: Open H.264 Codec
+#  --with-openh264 \
+#####
 python3 setup.py build \
   --verbose \
-  --with-enc_ffmpeg \
   --with-vpx \
-  --with-dec_avcodec2 \
-  --with-csc_swscale \
   --with-webp \
   --with-Xdummy \
   --with-Xdummy_wrapper \
