@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 26 10:01:13 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Adapt once again to the build system changes in akonadi*
+  packages
+- Add patch:
+  * 0001-Look-for-each-akonadi-component-separately.patch
+
+-------------------------------------------------------------------
+Wed Aug  9 10:19:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add the optional libpulse dependency (boo#1210750)
+
+-------------------------------------------------------------------
 Fri Jul 28 05:34:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 8.1.0:

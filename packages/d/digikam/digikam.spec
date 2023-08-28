@@ -30,9 +30,14 @@ Source0:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{ver
 Source1:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 %endif
+# PATCH-FIX-OPENSUSE
+Patch0:         0001-Look-for-each-akonadi-component-separately.patch
 # QtWebEngine is not available on ppc and zSystems
 ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
 BuildRequires:  QtAV-devel >= 1.12
+# Don't use the CMake target names for these two dependencies
+BuildRequires:  akonadi-contact-devel
+BuildRequires:  akonadi-server-devel
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -51,7 +56,6 @@ BuildRequires:  doxygen
 BuildRequires:  graphviz-devel
 BuildRequires:  cmake(KF5DocTools)
 %endif
-BuildRequires:  cmake(KF5AkonadiContact)
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Contacts)
@@ -97,6 +101,8 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libgphoto2) >= 2.4.0
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
@@ -163,9 +169,13 @@ The main digikam libraries that are being shared between showfoto and digikam
 %prep
 %autosetup -p1
 
-%if %{pkg_vcmp cmake(KF5AkonadiContact) >= 23.03.80}
+%if %{pkg_vcmp akonadi-contact-devel >= 23.03.80}
 # Digikam doesn't look explicitly for akonadi-server but relies on AkonadiContact dependencies
 sed -i 's#KF5::AkonadiCore#KPim5::AkonadiCore#' core/utilities/extrasupport/addressbook/CMakeLists.txt
+%endif
+# Compatibility CMake files were removed in PIM packages after 23.08.0
+%if %{pkg_vcmp akonadi-contact-devel >= 23.08.0}
+sed -i 's#KF5\([:]*Akonadi\)#KPim5\1#' core/{CMakeLists.txt,utilities/extrasupport/{addressbook/,}CMakeLists.txt,app/DigikamCoreTarget.cmake,cmake/rules/RulesKDEFramework.cmake}
 %endif
 
 %build

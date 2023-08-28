@@ -1863,4 +1863,17 @@ General : Update internal Libraw to snapshot 202110
     <comment></comment>
     <requestid>1101149</requestid>
   </revision>
+  <revision rev="216" vrev="2">
+    <srcmd5>dd8a7e4fd8577665b66980d0e94d08ae</srcmd5>
+    <version>8.1.0</version>
+    <time>1693235655</time>
+    <user>anag+factory</user>
+    <comment>- Adapt once again to the build system changes in akonadi*
+  packages
+- Add patch:
+  * 0001-Look-for-each-akonadi-component-separately.patch
+
+- Add the optional libpulse dependency (boo#1210750)</comment>
+    <requestid>1106031</requestid>
+  </revision>
 </revisionlist>
