@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug 29 18:23:43 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1693332527.fb060dc:
+  * Improve setting default zone in os-autoinst-setup-multi-machine
+  * Revert "Fix script_run sanity checks"
+  * script_run: Terminate test if the command string is invalid
+  * script_run: Fix command mistype check on serial console
+  * Be more robust if os-autoinst-setup-multi-machine is ran twice
+  * Start openvswitch before use in os-autoinst-setup-multi-machine
+
+-------------------------------------------------------------------
+Thu Aug 24 10:36:59 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1692873408.b5fd97a:
+  * Revert "Fix script_run sanity checks"
+  * script_run: Terminate test if the command string is invalid
+  * script_run: Fix command mistype check on serial console
+  * Be more robust if os-autoinst-setup-multi-machine is ran twice
+  * Start openvswitch before use in os-autoinst-setup-multi-machine
+  * docs: Update currently supported test log formats
+
+-------------------------------------------------------------------
 Sun Aug 20 06:35:47 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1692366409.4b45019:
