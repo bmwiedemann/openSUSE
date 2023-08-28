@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>38028910205fc1d6b41bb5a6a41da0b1</srcmd5>
+    <version>1.5</version>
+    <time>1693235893</time>
+    <user>anag+factory</user>
+    <comment>fs-verity is a Linux kernel filesystem feature that does transparent
+on-demand verification of the contents of read-only files using Merkle
+trees.
+
+openSUSE Tumbleweed (ext4 + btrfs) and Leap (15.[45] ext4 only) ship
+with kernel support, but until now the corresponding user-space tools
+(fsverity-utils) have not been provided. These tools can be used to
+enable fs-verity on files, retrieve the digests of fs-verity files, and
+sign files for use with fs-verity (among other things).
+
+Links:
+https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/message/EM5HFHAYDOJ554OAPXLP27Z57AW27HBX/
+https://git.kernel.org/pub/scm/fs/fsverity/fsverity-utils.git
+https://www.kernel.org/doc/html/latest/filesystems/fsverity.html </comment>
+    <requestid>1107160</requestid>
+  </revision>
+</revisionlist>
