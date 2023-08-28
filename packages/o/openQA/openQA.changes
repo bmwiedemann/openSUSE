@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 01 10:56:00 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1693565748.f367431:
+  * Allow settings to wrap into the next line
+
+-------------------------------------------------------------------
+Fri Aug 25 08:19:57 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1692951551.c933949:
+  * apparmor: Allow using tesseract
+  * Allow using force-result label with all final job states
+
+-------------------------------------------------------------------
 Sun Aug 20 06:24:08 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1692349627.5bfccc7:
