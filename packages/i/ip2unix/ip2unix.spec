@@ -17,17 +17,15 @@
 
 
 Name:           ip2unix
-Version:        2.1.4
+Version:        2.2.1
 Release:        0
 Summary:        Turn IP sockets into Unix domain sockets
 License:        LGPL-3.0-only
 URL:            https://github.com/nixcloud/ip2unix/
 Source0:        https://github.com/nixcloud/ip2unix/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         gcc-12.patch
-Patch1:         gcc-13.patch
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
-BuildRequires:  meson >= 0.46.0
+BuildRequires:  meson >= 0.47.0
 BuildRequires:  python3
 BuildRequires:  python3-pytest
 BuildRequires:  pkgconfig(yaml-cpp) >= 0.5.0
@@ -46,7 +44,8 @@ path.
 %autosetup -p1
 
 %build
-
+# Building with LTO enabled causes crashes. https://github.com/nixcloud/ip2unix/issues/33
+%define _lto_cflags %{nil}
 %meson
 %meson_build
 
