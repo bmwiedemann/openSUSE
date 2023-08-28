@@ -30,6 +30,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-ipyleaflet = %{version}
 Requires:       python-branca >= 0.5.0
@@ -40,7 +41,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module ipywidgets >= 7.6.0 with %python-ipywidgets < 9}
 BuildRequires:  %{python_module branca >= 0.5.0}
-BuildRequires:  %{python_module notebook}
+BuildRequires:  %{python_module nbclassic}
 BuildRequires:  %{python_module traittypes >= 0.2.1 with %python-traittypes < 3}
 BuildRequires:  %{python_module xyzservices >= 2021.8.1}
 # /SECTION
@@ -54,7 +55,7 @@ This package provides the python interface.
 %package     -n jupyter-ipyleaflet
 Summary:        A Jupyter widget for dynamic Leaflet maps - Jupyter files
 Requires:       (jupyter-ipywidgets >= 7.6.0 with jupyter-ipywidgets < 9)
-Requires:       (jupyter-jupyterlab or jupyter-notebook)
+Requires:       (jupyter-jupyterlab or jupyter-notebook < 7 or jupyter-nbclassic)
 # Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
 Requires:       python3dist(ipyleaflet) = %{version}
 Suggests:       python3-ipyleaflet
@@ -78,11 +79,11 @@ This package provides the extensions for jupyter notebook and jupyterlab.
 
 %check
 export JUPYTER_PATH=%{buildroot}%{_jupyter_prefix}
-export JUPYTER_CONFIG_DIR=%{buildroot}%{_jupyter_confdir}
+export JUPYTER_CONFIG_PATH=%{buildroot}%{_jupyter_confdir}
 %{python_expand # no python tests available
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -c 'import ipyleaflet'
-jupyter-%{$python_bin_suffix} nbextension list 2>&1 | grep 'jupyter-leaflet.*enabled'
+jupyter-%{$python_bin_suffix} nbclassic-extension list 2>&1 | grep 'jupyter-leaflet.*enabled'
 jupyter-%{$python_bin_suffix} labextension list 2>&1 | grep 'jupyter-leaflet.*enabled'
 }
 rm -f %{buildroot}%{_jupyter_confdir}migrated

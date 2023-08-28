@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 26 14:25:52 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Make sure notebook 7 does not break this: nbclassic or notebook 6
+
+-------------------------------------------------------------------
 Thu Aug 17 15:34:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Suggest primary python package -- boo#1214354
