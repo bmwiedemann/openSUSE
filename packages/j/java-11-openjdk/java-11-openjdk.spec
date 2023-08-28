@@ -38,7 +38,8 @@
 %global featurever      11
 %global interimver      0
 %global updatever       20
-%global buildver        8
+%global patchver        1
+%global buildver        1
 %global openjdk_repo    jdk11u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}

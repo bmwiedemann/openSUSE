@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 23 06:17:57 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-11.0.20.1+1 (August 2023 emergency
+  release fixing a regression in July 2023 CPU)
+  * Changes:
+    + JDK-8313765: Invalid CEN header (invalid zip64 extra data
+      field size)
+    + JDK-8314678: Bump update version for OpenJDK: jdk-11.0.20.1
+
+-------------------------------------------------------------------
 Fri Aug  4 15:49:22 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

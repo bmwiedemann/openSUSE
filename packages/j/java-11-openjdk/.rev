@@ -511,4 +511,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1103522</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>96de37bac7c858c049821958dce7fdae</srcmd5>
+    <version>11.0.20.1</version>
+    <time>1693235454</time>
+    <user>anag+factory</user>
+    <comment>Emergency regresion fix after July 2023 CPU</comment>
+    <requestid>1105408</requestid>
+  </revision>
 </revisionlist>
