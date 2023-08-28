@@ -766,4 +766,12 @@ mostly-working synapse than nothing at all) and the package has been update to
       worker_replication_http_port and worker_replication_http_tls</comment>
     <requestid>1101105</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>8d7be271f4645c33b9fa55b25a38b5a5</srcmd5>
+    <version>1.90.0</version>
+    <time>1693235906</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107016</requestid>
+  </revision>
 </revisionlist>
