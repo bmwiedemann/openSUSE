@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 21 13:30:51 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version v2.3-rc4:
+  * Improve algorithm to see if we can reuse existing connections
+  * udev: Optimize uevent handling
+  * iputil: Reduce amount of netlink requests to the kernel
+  * udev: FC/Loop - use case-insensitive comparison for traddr
+  * trid: Take Host NQN into account
+  * avahi: add connectivity checker to verify IP addresses are reachable
+  * stafd|ctrl: Do not recreate ctrl object on nvme removed events
+  * udev: Rework/simplify _cid_matches_tid()
+  * udev-rules: Only react to `rediscover` events (not `connected`)
+  * udev: Use ipaddress objects when comparing traddr.
+  * udev: Only take src-addr into account for transport=="tcp"
+  * trid: use strong comparison on host-iface
+  * udev-rule: Invoke systemctl "restart" instead of "start"
+  * udev: improve comparison between candidate and existing controllers
+  * nbft: stafd will now use NBFT data (if found)
+  * nbft: Add NbftConf() object to retrieve and cache NBFT data
+  * iputil: Add mac2iface() and corresponding unit test
+  * ctrl: fix inverted logic "is not None" -> "is None"
+  * staslib: Add method to retrieve NBFT data
+
+-------------------------------------------------------------------
 Mon Jun 12 10:22:05 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 2.2.2:
