@@ -1,7 +1,7 @@
 #
 # spec file for package re
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%global sover   12
+%global sover   16
 %global libname lib%{name}%{sover}
 Name:           re
-Version:        2.10.0
+Version:        3.3.0
 Release:        0
 Summary:        Library for real-time communications with async I/O support
 License:        BSD-3-Clause
@@ -29,6 +29,7 @@ Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+Obsoletes:      librem4 < %{version}
 
 %description
 Libre is a library for real-time communications
@@ -61,7 +62,8 @@ applications that want to make use of libre.
 %setup -q
 
 %build
-%cmake
+%cmake \
+  -DCMAKE_BUILD_TYPE=Release
 %cmake_build
 
 %install
@@ -84,5 +86,9 @@ rm -v %{buildroot}/%{_libdir}/libre.a
 %{_libdir}/pkgconfig/libre.pc
 %dir %{_libdir}/cmake/re
 %{_libdir}/cmake/re/re-config.cmake
+%dir %{_libdir}/cmake/libre
+%{_libdir}/cmake/libre/libre-config.cmake
+%{_libdir}/cmake/libre/libre-release.cmake
+%{_libdir}/cmake/libre/libre.cmake
 
 %changelog
