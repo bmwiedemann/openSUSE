@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 21 16:24:48 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.3:
+  * Mapping in non-strict mode now assures that constraint
+    expressions are executed, even if their result is discarded.
+    This is important because very often constraint expressions
+    have side effects (such as setting the current endianness) on
+    which further mapping relies.
+  * Bug in array promotion has been fixed.
+  * A bug impacting array bounders in struct constructors has been
+    fixed.
+  * The return type of the builtin `iolist' has been fixed.
+  * A bug impacting the re-definition of struct types at the
+    top-level has been fixed.
+  * Error locations were not very xprecise in a couple of
+    circumstances due to a bison limitation
+  * Setting values of mapped structs in strict mode now really
+    check for integrity, erroing whenever necessary.
+  * A bug flushing stream IO devices has been fixed.
+  * The .sub dot-command now does the right thing when no name is
+    specified, instead of crashing poke.
+  * Pickles: The BTF pickle has been updated to support
+    BTF_KIND_ENUM64
+
+-------------------------------------------------------------------
 Sun May 14 11:51:52 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - Update to 3.2:
