@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Aug 25 11:40:31 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 23.6.0
+  * Y011/Y014/Y015: Allow math constants math.inf, math.nan, math.e, 
+    math.pi, math.tau, and their negatives in default values. Some 
+    other semantically equivalent values, such as x = inf (from math 
+    import inf), or x = np.inf (import numpy as np), should be rewritten 
+    to x = math.inf.
+  * Y053: Disallow string or bytes literals with length >50 characters. 
+    Previously this rule only applied to parameter default values; 
+    it now applies everywhere.
+  * Y054: Disallow numeric literals with a string representation >10 
+    characters long. Previously this rule only applied to parameter 
+    default values; it now applies everywhere.
+  * Y055: Unions of the form type[X] | type[Y] can be simplified to type[X | Y].
+  * The way in which flake8-pyi modifies pyflakes runs has been improved.
+  * Introduce Y056: Various type checkers have different levels of support 
+    for method calls on __all__. Use __all__ += ["foo", "bar"] instead, 
+    as this is known to be supported by all major type checkers.
+  * Support Python 3.12
+  * Support PEP 695 syntax for declaring type aliases
+  * Introduce Y057: Do not use typing.ByteString or collections.abc.ByteString.
+  * flake8-pyi no longer supports being run on Python 3.7.
+  * flake8-pyi no longer supports being run with flake8 <v6.
+
+-------------------------------------------------------------------
 Mon Mar  6 15:53:17 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add set-tests-python-path.patch to fix tests inside osc build

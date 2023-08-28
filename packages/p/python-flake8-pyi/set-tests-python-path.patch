@@ -1,10 +1,10 @@
-Index: flake8_pyi-23.1.2/tests/test_pyi_files.py
+Index: flake8_pyi-23.6.0/tests/test_pyi_files.py
 ===================================================================
---- flake8_pyi-23.1.2.orig/tests/test_pyi_files.py
-+++ flake8_pyi-23.1.2/tests/test_pyi_files.py
-@@ -35,16 +35,21 @@ def test_pyi_file(path: str) -> None:
-             message = line[match.end() : end_pos].strip()
-             expected_output += f"{path}:{lineno}: {match.group(1)}{message}\n"
+--- flake8_pyi-23.6.0.orig/tests/test_pyi_files.py
++++ flake8_pyi-23.6.0/tests/test_pyi_files.py
+@@ -42,16 +42,21 @@ def test_pyi_file(path: str) -> None:
+         option = flag.split("=")[0]
+         assert option != "--ignore", bad_flag_msg
  
 +    pythonpath = os.environ.get("PYTHONPATH")
 +    pythonpath = f"PYTHONPATH={pythonpath}:."
