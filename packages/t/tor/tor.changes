@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 30 18:50:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.8.5:
+  * bugfixes creating log BUG stacktrace
+
+-------------------------------------------------------------------
+Sun Aug 27 15:23:43 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.8.4:
+  * Extend DoS protection to partially opened channels and known
+    relays
+  * Dynamic Proof-Of-Work protocol to thwart flooding DoS attacks
+    against hidden services. Disabled by default, enable via
+    "HiddenServicePoW" in torrc
+  * Implement conflux traffic splitting
+  * Directory authorities and relays now interact properly with
+    directory authorities if they change addresses
+
+-------------------------------------------------------------------
 Sun Jul 30 07:33:04 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.7.14:

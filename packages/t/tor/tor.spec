@@ -20,7 +20,7 @@
 %define torgroup %{name}
 %define home_dir %{_localstatedir}/lib/empty
 Name:           tor
-Version:        0.4.7.14
+Version:        0.4.8.5
 Release:        0
 Summary:        Anonymizing overlay network for TCP (The onion router)
 License:        BSD-3-Clause
@@ -36,9 +36,6 @@ Source100:      https://www.torproject.org/dist/%{name}-%{version}.tar.gz.sha256
 Source101:      https://www.torproject.org/dist/%{name}-%{version}.tar.gz.sha256sum.asc
 Patch0:         tor-0.2.5.x-logrotate.patch
 Patch1:         fix-test.patch
-%if 0%{?suse_version} > 1500
-BuildRequires:  libscrypt-devel
-%endif
 BuildRequires:  openssl-devel >= 1.0.1
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pwdutils
@@ -55,6 +52,9 @@ Requires:       logrotate
 Requires(post): %fillup_prereq
 Recommends:     torsocks
 %systemd_ordering
+%if 0%{?suse_version} > 1500
+BuildRequires:  libscrypt-devel
+%endif
 
 %description
 Tor is a connection-based low-latency anonymous communication system.
