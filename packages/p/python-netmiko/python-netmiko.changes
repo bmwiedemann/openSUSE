@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Aug 27 14:11:35 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.0
+  Bug Fixes and Improvements
+  * Expanded and improved SSH autodetect support.
+  * Various bug fixes.
+  * Improve Huawei driver.
+  * MikroTik driver improvements.
+  * Fortinet driver improvements.
+  * IOS-XR driver improvements.
+  * Add simpler solution for Paramiko disabled_algorithms issue.
+  * Add IPv6 support for SNMP autodetect..
+  * Convert over to use Poetry (eliminate setup.py).
+  * Improve send_config_set() and read_timeout behavior.
+  * Improve behavior of normalize_linefeeds() method. Add
+    argument to disable this behavior.
+  * Add check_state argument to enable() method that allows for
+    disabling the initial check_enable_mode() call.
+  New Drivers or Expanded Driver Support
+  * Add support for Arris CER.
+  * Add support for Casa CMTS.
+  * Add support for Adva AOS FSP 150 F2 and F3.
+  * Add support for Hillstone StoneOS.
+  * Add support for Teldata CIT.
+  * Add support for Cisco S200.
+  * Add support for Ericsson MINI-LINK 66XX & 63XX.
+  * Add support for SCP on Ubiquiti EdgeRouter.
+
+-------------------------------------------------------------------
 Mon Jul 10 09:32:57 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file.
