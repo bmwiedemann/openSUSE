@@ -23,10 +23,15 @@
 %_mingw64_cmake %{_mingw64_env} ; \
     opts="" \
     while (( "$#" )); do  \
-        if test "$1" == "-S"; then \
+        if test "$1" == "--"; then \
+            shift \
+        elif test "$1" == "-S"; then \
             shift \
             sdir=$1 \
             shift \
+        elif test "$1" == ".."; then \
+            shift \
+            sdir=$(pwd)/.. \
         elif test "$1" == "-B"; then \
             shift \
             bdir=$1 \

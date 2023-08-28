@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 26 09:48:12 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 1.1.5
+  * Ignore the '--' parameter when calling the mingw64-cmake
+    macro from the command line (boo#1214641).
+  * Add support for using '..' as source directory when calling
+    the mingw64-cmake macro (boo#1214642)
+
+-------------------------------------------------------------------
 Thu Jul 20 08:16:41 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 1.1.4
