@@ -32,11 +32,14 @@ Group:          Development/Tools/Version Control
 URL:            http://foss.heptapod.net/mercurial/hg-git
 Source0:        https://files.pythonhosted.org/packages/source/h/hg-git/hg-git-%{version}.tar.gz
 Source90:       tests.blacklist
+# Unreleased upstream patch
+Patch0:         fix_mercurial_6.5_compatibility.patch
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  mercurial
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
+BuildRequires:  python3-dulwich >= 0.19.3
 BuildRequires:  python3-gpg
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
@@ -48,7 +51,7 @@ BuildRequires:  python3-toml
 %endif
 BuildRequires:  unzip
 Requires:       mercurial
-Requires:       python3-dulwich >= 0.19.0
+Requires:       python3-dulwich >= 0.19.3
 Provides:       python3-hg-git = %{version}-%{release}
 Obsoletes:      python3-hg-git < %{version}-%{release}
 BuildArch:      noarch
@@ -60,6 +63,7 @@ The Hg-Git plugin can convert commits/changesets losslessly from one system to a
 
 %prep
 %setup -q -n hg-git-%{version}
+%patch0 -p1
 
 %build
 %pyproject_wheel

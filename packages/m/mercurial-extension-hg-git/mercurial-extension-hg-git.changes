@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 25 22:02:17 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Make tests actually run by adding "BuildRequires: python3-dulwich".
+- Add unreleased upstream patch fix_mercurial_6.5_compatibility.patch.
+
+-------------------------------------------------------------------
 Mon Mar  6 13:02:39 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 1.0.2.
