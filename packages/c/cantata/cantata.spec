@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -47,7 +48,6 @@ BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libmusicbrainz5)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libvlc)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(taglib-extras)
 BuildRequires:  pkgconfig(udisks2)
@@ -95,8 +95,7 @@ information, please refer to the main README.
 
 %build
 %cmake -DENABLE_REMOTE_DEVICES=OFF \
-    -DENABLE_CATEGORIZED_VIEW=OFF \
-    -DENABLE_LIBVLC=ON
+    -DENABLE_CATEGORIZED_VIEW=OFF
 %cmake_build
 
 %install
