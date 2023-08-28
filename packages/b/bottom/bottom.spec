@@ -18,10 +18,10 @@
 
 
 Name:           bottom
-Version:        0.9.4~0
+Version:        0.9.6~0
 Release:        0
 Summary:        Yet another graphical process/system monitor
-License:        MIT
+License:        Apache-2.0 AND MIT
 Group:          System/Monitoring
 URL:            https://github.com/ClementTsang/bottom
 Source:         %{name}-%{version}.tar.zst

@@ -177,4 +177,39 @@
 Update to version 0.9.4</comment>
     <requestid>1102586</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7d119ff007d2ab8b74ba58a52a07094b</srcmd5>
+    <version>0.9.6~0</version>
+    <time>1693235740</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.6~0:
+  * uptick: 0.9.6 (#1288)
+  * deps: bump dependencies as of 2023-08-26 (#1287)
+  * deps: pin serde to 1.0.188 (#1286)
+  * docs: update changelog dates
+  * ci: pin musl to 1.71.0 for now when building releases (#1282)
+  * other: appease clippy after Rust 1.72.0 (#1281)
+  * uptick: 0.9.5 (#1280)
+  * deps: bump windows to 0.51.1 (#1279)
+  * deps: bump dependencies as of 2023-08-18 (#1277)
+  * deps: pin serde to &lt;=1.0.171 (#1278)
+  * deps: pin sysinfo to 0.29.8 (#1273)
+  * deps: bump deps as of 2023-08-08 (#1272)
+
+- Update to 0.9.6:
+  * #1286: Pin serde to 1.0.188 to help with potential cargo install
+    issues. Note this version should be fine and not pull in binaries.
+
+- Update to 0.9.5:
+  * #1278: Pin serde to 1.0.171.</comment>
+    <requestid>1106137</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>5a49fcd75ce8e32d8aeab000106e7899</srcmd5>
+    <version>0.9.6~0</version>
+    <time>1693383672</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107979</requestid>
+  </revision>
 </revisionlist>

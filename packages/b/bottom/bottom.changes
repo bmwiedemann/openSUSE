@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Aug 29 15:54:18 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Correct license to MIT and Apache-2.0
+
+-------------------------------------------------------------------
+Sun Aug 27 10:42:05 UTC 2023 - opensuse-packages@jlk.one
+
+- Update to version 0.9.6~0:
+  * uptick: 0.9.6 (#1288)
+  * deps: bump dependencies as of 2023-08-26 (#1287)
+  * deps: pin serde to 1.0.188 (#1286)
+  * docs: update changelog dates
+  * ci: pin musl to 1.71.0 for now when building releases (#1282)
+  * other: appease clippy after Rust 1.72.0 (#1281)
+  * uptick: 0.9.5 (#1280)
+  * deps: bump windows to 0.51.1 (#1279)
+  * deps: bump dependencies as of 2023-08-18 (#1277)
+  * deps: pin serde to <=1.0.171 (#1278)
+  * deps: pin sysinfo to 0.29.8 (#1273)
+  * deps: bump deps as of 2023-08-08 (#1272)
+
+-------------------------------------------------------------------
+Sun Aug 27 10:41:28 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.6:
+  * #1286: Pin serde to 1.0.188 to help with potential cargo install
+    issues. Note this version should be fine and not pull in binaries.
+
+-------------------------------------------------------------------
+Sun Aug 27 10:41:10 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.5:
+  * #1278: Pin serde to 1.0.171.
+
+-------------------------------------------------------------------
 Sun Aug  6 14:46:52 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 0.9.4:
