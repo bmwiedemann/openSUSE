@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 24 08:03:51 UTC 2023 - valentin.lefebvre@suse.com
+
+- Update to 6.0.0:
+  * geoipupdate now supports configuration via environment variables. Any
+    configuration set this way will override any value from the config file,
+    but still be overridden by any associated command line option (if any).
+  * Changed the signature of NewConfig in pkg/geoipupdate to no longer accept
+    a positional config file path argument, which can now be passed in using the
+    option from WithConfigFile along with the other optional parameters.
+  * geoipupdate and NewConfig no longer require a config file to exist.
+  * The --stack-trace flag has been removed. This flag has been broken since
+    4.11.0.
+
+-------------------------------------------------------------------
 Wed Jun 21 09:48:29 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to 5.1.1:

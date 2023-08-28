@@ -206,4 +206,12 @@ variables: GEOIPUPDATE_CONF_FILE and GEOIPUPDATE_DB_DIR
     <comment></comment>
     <requestid>1094336</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1fe207e7e52c929a214216b43924b3aa</srcmd5>
+    <version>6.0.0</version>
+    <time>1693235772</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1106213</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,6 @@
 <servicedata>
     <service name="tar_scm">
         <param name="url">https://github.com/maxmind/geoipupdate</param>
-        <param name="changesrevision">e70a0bb8f8f6ad6b23bf2b3cdd0659fca576cd90</param>
+        <param name="changesrevision">62d961efab55f5a9db3700423edf1154ac0f16fd</param>
     </service>
 </servicedata>
