@@ -28,11 +28,12 @@ Source:         https://files.pythonhosted.org/packages/source/i/ipywebrtc/ipywe
 BuildRequires:  %{python_module ipywidgets >= 7.4.0}
 BuildRequires:  %{python_module jupyter-packaging >= 0.7.9}
 BuildRequires:  %{python_module jupyterlab >= 3.0}
-BuildRequires:  %{python_module notebook}
+BuildRequires:  %{python_module nbclassic}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  npm
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-ipywebrtc = %{version}
@@ -49,8 +50,7 @@ This package provides the python interface.
 %package     -n jupyter-ipywebrtc
 Summary:        WebRTC for Jupyter notebook/lab
 Requires:       jupyter-ipywidgets >= 7.4.0
-Requires:       jupyter-jupyterlab
-Requires:       jupyter-notebook
+Requires:       (jupyter-jupyterlab or jupyter-notebook < 7 or jupyter-nbclassic)
 # Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
 Requires:       python3dist(ipywebrtc) = %{distversion}
 Suggests:       python3-ipywebrtc
@@ -79,9 +79,10 @@ export JUPYTER_PATH=%{buildroot}%{_jupyter_prefix}
 export JUPYTER_CONFIG_DIR=%{buildroot}%{_jupyter_confdir}
 %{python_expand  # Just check that we installed the extensions
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
-jupyter-%{$python_bin_suffix} nbextension list 2>&1 | grep -ie "jupyter-webrtc/extension.*enabled"
+jupyter-%{$python_bin_suffix} nbclassic-extension list 2>&1 | grep -ie "jupyter-webrtc/extension.*enabled"
 jupyter-%{$python_bin_suffix} labextension list 2>&1 | grep -ie "jupyter-webrtc.*enabled.*ok"
 }
+rm -f %{buildroot}%{_jupyter_confdir}migrated
 
 %files %{python_files}
 %doc README.md
@@ -91,7 +92,7 @@ jupyter-%{$python_bin_suffix} labextension list 2>&1 | grep -ie "jupyter-webrtc.
 
 %files -n jupyter-ipywebrtc
 %license LICENSE
-%config %{_jupyter_nb_notebook_confdir}/jupyter-webrtc.json
+%_jupyter_config %{_jupyter_nb_notebook_confdir}/jupyter-webrtc.json
 %{_jupyter_nbextension_dir}/jupyter-webrtc/
 %dir %{_jupyter_prefix}/labextensions/
 %{_jupyter_prefix}/labextensions/jupyter-webrtc/

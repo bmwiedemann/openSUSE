@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 26 15:05:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Use notebook < 6 or nbclassic for the nbextension
+
+-------------------------------------------------------------------
 Thu Aug 17 15:50:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Suggest primary python package -- boo#1214354

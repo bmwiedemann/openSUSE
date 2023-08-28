@@ -40,4 +40,13 @@
     <comment>- Suggest primary python package -- boo#1214354</comment>
     <requestid>1104441</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>7f4d2c1b94a5731c89892a228dbb206c</srcmd5>
+    <version>0.6.0</version>
+    <time>1693235690</time>
+    <user>anag+factory</user>
+    <comment>- Use notebook &lt; 6 or nbclassic for the nbextension
+</comment>
+    <requestid>1106065</requestid>
+  </revision>
 </revisionlist>
