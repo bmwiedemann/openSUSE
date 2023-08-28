@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Sun Aug 27 10:19:59 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Disable mujs backend for Leap because it's not available there
+
+-------------------------------------------------------------------
+Sat Aug 26 21:47:33 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Add fix-docs-path.patch to install docs in our default docdir
+- Enable jxl
+- Use meson auto-features instead of disabling everything manually
+- Small corrections to specfile
+- Update to version v0.36.0+git20230826.83c0e980:
+  * hwtransfer: check if the source format is accepted directly by the VO
+  * hwtransfer: use the right hardware config to find conversion targets
+  * autoconvert: destroy sub filter immediately if reconfiguration is needed
+  * output_chain: don't reset autoconvert on changes to unrelated filters
+  * hwtransfer: implement support for hw->hw format conversion
+  * player: make all autoload extensions configurable
+  * player: use audio pts corresponding to playing audio on EOF
+  * input: add missing keypad key defines
+  * sub/osd: signal osd_changed on resize
+  * win32: don't ignore --screen and --fs-screen
+  * DOCS/mpv: document ZOOMIN & ZOOMOUT multimedia keys
+  * input: add new keys: Back, Tools, ZoomIn, ZoomOut
+  * vo_gpu_next: move line to correct location (cosmetic)
+  * vo_gpu_next: correctly handle GAMUT_AUTO
+  * ci/mingw: disable vulkan for 32-bit build
+  * ci/mingw: don't include useless DLLs in artifact
+  * ci/mingw: refactor build script into functions
+  * ci/mingw: enable more ffmpeg features
+  * ci/mingw: add necessary deps and enable vulkan
+  * ci/mingw: move functional test to workflow
+  * ci/mingw: update dependency versions
+  * vo_gpu_next: reword error message on empty screenshot
+  * DOCS/options: clarify the video-pan-x/y example
+  * aspect: change --video-pan-x/y to be relative to the destination rect
+  * aspect: don't allow scaled_src_size be 0
+  * DOCS/options: fix typo in video-pan-x example
+  * meson: rename all features with underscores
+  * context_drm_egl: remove references to VAAPI in error messages
+  * context_drm_egl: more correctness fixes for uninit procedure
+  * Revert "ao/pulse: implement period_size"
+  * w32_common: try to get the monitor from the window bounds
+  * w32_common: don't fit to screen when VO_WIN_FORCE_POS is set
+  * ao/pulse: implement period_size
+  * ao/jack: set device_buffer to JACK buffer size
+  * demux_mf: utilize stdbool bool for if a format specifier was bad
+  * demux_mf: early exit with the '%%' case
+  * win32_common: fixes minimized window being focused on launch
+  * ao_oss: add "spdif" passthrough support for high bitrate codecs (e.g. Dolby Atmos, DTS-HD, etc.) over HDMI
+  * drm_common: skip cards that don't have connected outputs
+  * meson: remove redundant libplacebo version check for Vulkan interop
+  * x11: set sizehint for fs-screen and fs-screen-name
+  * x11: remove xinerama and refactor window geometry
+  * x11: require randr 1.4
+  * context_drm_egl: don't free egl properties if they are null
+  * vo_gpu_next: correctly clear removed hooks
+  * sd_lavc: use SUB_GAP_THRESHOLD for overlaps/gaps
+  * Revert "sub/sd_lavc: don't check endpts when getting subs"
+  * vo_gpu_next: fix typo in video_screenshot()
+  * vo_gpu_next: add --libplacebo-opts
+  * vo_gpu_next: don't re-set frame_mixer
+  * vo_gpu_next: move allow_delayed to move appropriate place
+  * vo_gpu_next: switch to new pl_options system
+  * TOOLS/lua/autoload: Enable run-time updates of options
+  * TOOLS/lua/autoload: may specify loading only one type of files
+  * vo_gpu_next: fix leak of --icc-profile-auto on uninit
+  * vo_gpu_next: drop redundant PL_HAVE_LCMS check
+  * ci: update freebsd to latest release channel
+  * ci: disable libplacebo in msys2 build
+  * vo_gpu_next: use pl_dispatch_info_move to avoid useless data copy
+  * libplacebo: drop PL_API_VER compatibility paths
+  * ra_pl: drop PL_API_VER compatibility paths
+  * vo_gpu_next: drop PL_API_VER compatibility paths
+  * meson: remove redundant libplacebo-next check
+  * hwdec_cuda: drop old PL_API_VER compatibility path
+  * meson: bump minimum libplacebo dependency to v6.292
+  * stats.lua: display output resolution if it differs to native one
+  * stats.lua: hide window scale in fullscreen
+  * vo_gpu: allow --hdr-peak-decay-rate=0.0
+  * loadfile: avoid infinite playlist loading loops
+  * build: check for SNDCTL_DSP_HALT for oss-audio
+  * vo: clear vsync_offset if drawing while paused
+  * win32: fix display resolution calculation on mulitple monitors
+  * demux_playlist: remove len restriction on headerless m3u
+  * wayland: clear all keys on keyboard_handle_leave
+  * wayland: clear saved mpkey more aggressively
+  * wayland: use fallback for display-fps/width/height
+  * x11: add --x11-wid-title option
+  * player: add playlist-path properties
+  * vf_vapoursynth: save display resolution as a variable
+  * player: add --term-remaining-playtime option
+  * player: make sub-pos a float value
+  * x11_common: drop unnecessary NULL check
+  * x11_common: avoid unnecessary XUnmapWindow() call
+  * stats.lua: use video-params/aspect-name
+  * player/command: add video-params/aspect-name
+  * ytdl_hook: improve Windows exe search with suffix
+  * command: don't print "unknown" on video tracks
+  * player/video: avoid spamming logs with EOF
+  * audio: drain ao before setting pause
+  * command: show "no" for hwdec-current if hwdec failed
+  * command: fix some fringe play-dir behavior
+  * sub/sd_lavc: don't check endpts when getting subs
+  * sub: fix switching tracks while paused
+  * path-unix: abort on path truncation
+  * osc: support speed-independent time-remaiing display
+  * command: fix stack smashing when displaying aspect-ratio
+  * external_files: add sbv to the sub whitelist
+  * external_files: alphabetize file extensions
+  * DOCS: update LGPL building instructions
+  * m_option: change m_option_type_aspect to double
+  * vo_gpu_next: actually fix screenshots with PAR
+  * ao_audiotrack: enable pcm-float by default
+  * ao_audiotrack: support more channel layouts
+  * ao_audiotrack: support media role
+  * ao_audiotrack: don't ignore ao_read_data return value
+  * ao_audiotrack: allow byte buffer data transfer for float samples
+  * ao_audiotrack: align buffer size to sample size
+  * ao_audiotrack: do not needlessly resample
+  * ao_audiotrack: fix broken exception checks
+  * ao_audiotrack: remove unused writeV23
+  * vo_gpu_next: take into account PAR when taking screenshots
+  * ad_spdif: fix this not working at all
+  * vo_gpu_next: add ability to use named hook params
+  * mp_image: properly infer color levels for some pixfmts
+  * vo_gpu_next: increase non-interpolation queue size
+  * vo_gpu_next: update for new pl_filter configuration API
+  * win32: signal VO_EVENT_DPI on dpi changes
+  * test/meson: add missing avutil dependency to chmap test
+  * test: indicate test function ran in log
+  * test: enable log messages for libmpv test
+  * test: refactor helper methods to be universally usable
+  * options: fix relative time parsing
+  * options: rename variables in parse_timestring
+  * vd_lavc: repeatedly attempt to fallback if hwdec fails in reinit
+  * DOCS/options: fix typo in hdr-peak-percentile
+  * vo_gpu/vo_gpu_next: fix setting an empty dscale
+  * builtin.conf: add --hdr-peak-percentile=99.995 to gpu-hq
+  * vo_gpu_next: add --hdr-peak-percentile
+  * player/main: do not print build time, if it is unknown
+  * version: move NO_BUILD_TIMESTAMPS check to version.h.in
+  * build: remove version.py
+  * vo_vdpau: set hwdec image format
+  * test: bump libmpv test timeout
+  * drm: bump minimum version to 2.4.105
+  * ci: update the mpv.com path
+  * build: remove outdated generated directory
+  * ao_pipewire: set media role during init()
+  * audio: add AO_INIT_MEDIA_ROLE_MUSIC
+
+-------------------------------------------------------------------
 Mon Jul 31 10:14:57 UTC 2023 - llyyr.public@gmail.com
 
 - Remove waf build: removed upstream

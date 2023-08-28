@@ -19,9 +19,14 @@
 #
 
 
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
+%bcond_without jxl
+%else
+%bcond_with jxl
+%endif
 %define lname   libmpv2
 Name:           mpv
-Version:        0.36.0+git.20230730.1bbc7a2c
+Version:        0.36.0+git20230826.83c0e980
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -32,9 +37,10 @@ Source2:        %{name}.changes
 # PATCH-FIX-OPENSUSE do not require equal libav versions, obs rebuilds as needed
 Patch0:         mpv-make-ffmpeg-version-check-non-fatal.patch
 Patch1:         0001-Revert-meson-bump-required-version-to-0.62.patch
+# Install docs in proper directory
+Patch2:         fix-docs-path.patch
 BuildRequires:  bash
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libjpeg-devel
 BuildRequires:  linux-kernel-headers
 BuildRequires:  meson >= 0.60.3
 # Needed any lua to convert the bash-completion
@@ -47,6 +53,7 @@ BuildRequires:  pkgconfig(alsa) >= 1.0.18
 BuildRequires:  pkgconfig(caca) >= 0.99.beta18
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(dvdnav) >= 4.2.0
+BuildRequires:  pkgconfig(dvdread) >= 4.1.0
 BuildRequires:  pkgconfig(egl) >= 1.4
 BuildRequires:  pkgconfig(ffnvcodec) >= 8.2.15.7
 BuildRequires:  pkgconfig(gbm) >= 17.1.0
@@ -72,17 +79,13 @@ BuildRequires:  pkgconfig(libcdio_cdda)
 BuildRequires:  pkgconfig(libcdio_paranoia)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.75
 BuildRequires:  pkgconfig(libiso9660)
+BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpulse) >= 1.0
 BuildRequires:  pkgconfig(libswresample) >= 3.0.100
 BuildRequires:  pkgconfig(libswscale) >= 5.0.101
-BuildRequires:  pkgconfig(libudf)
-BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libva) >= 1.1.0
-BuildRequires:  pkgconfig(libva-x11) >= 1.1.0
 BuildRequires:  pkgconfig(lua5.1)
 BuildRequires:  pkgconfig(openal) >= 1.13
-# Testing framework: disabled for now as it runs just 1 test
-# BuildRequires:  pkgconfig(cmocka) >= 0.4.1
 BuildRequires:  pkgconfig(python3)
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150400
 BuildRequires:  pkgconfig(libsixel) >= 1.5
@@ -92,16 +95,19 @@ BuildRequires:  pkgconfig(uchardet)
 BuildRequires:  pkgconfig(vapoursynth) >= 24
 BuildRequires:  pkgconfig(vapoursynth-script) >= 23
 BuildRequires:  pkgconfig(vdpau) >= 0.2
+BuildRequires:  pkgconfig(x11) >= 1.0.0
 BuildRequires:  pkgconfig(xext) >= 1.0.0
-BuildRequires:  pkgconfig(xinerama) >= 1.0.0
 BuildRequires:  pkgconfig(xkbcommon) >= 0.3.0
 BuildRequires:  pkgconfig(xpresent) >= 1.0.0
-BuildRequires:  pkgconfig(xrandr) >= 1.2.0
-BuildRequires:  pkgconfig(xscrnsaver)
+BuildRequires:  pkgconfig(xrandr) >= 1.4.0
+BuildRequires:  pkgconfig(xscrnsaver) >= 1.0.0
 BuildRequires:  pkgconfig(xv)
-BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zimg) >= 2.9
 BuildRequires:  pkgconfig(zlib)
+%if %{with jxl}
+BuildRequires:  pkgconfig(libjxl)
+BuildRequires:  pkgconfig(libjxl_threads)
+%endif
 Requires:       hicolor-icon-theme
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
@@ -120,8 +126,10 @@ BuildRequires:  (pkgconfig(libplacebo) >= 5 with pkgconfig(libplacebo) < 6.292.0
 # Use libplacebo v6.292 for Tumbleweed
 %if 0%{?suse_version} >= 1550
 BuildRequires:  pkgconfig(libplacebo) >= 6.292.0
+BuildRequires:  pkgconfig(shaderc)
 %endif
-%if 0%{?suse_version} > 1500
+# mujs is not available for Leap 15.5
+%if 0%{?suse_version} >= 1550
 BuildRequires:  pkgconfig(mujs)
 %endif
 BuildRequires:  pkgconfig(libva-wayland) >= 1.1.0
@@ -191,9 +199,7 @@ This package contains a library that can other apps use to utilize the mpv
 features.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 # I hate UNKNOWN so lets put decent info there.
 MODIFIED="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE2}")"
@@ -204,60 +210,24 @@ sed -i "s|UNKNOWN|$DATE|g;s|VERSION|\"%{version}\"|g" common/version.c
 # We don't want to rebuild all the time.
 myopts=" -Dbuild-date=false"
 # Disable pipwire for Leap because of build error
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150500
 myopts+=" -Dpipewire=disabled"
 %endif
 # Needs libavutil >= 58.11.100 (unreleased as of 2023-07-14)
 myopts+=" -Dvulkan-interop=disabled"
 %meson \
-  -Dlibmpv=true \
-  -Dmanpage-build=enabled \
-  -Dcdda=enabled \
-  -Ddvbin=enabled \
-  -Ddvdnav=enabled \
-  -Dopenal=enabled \
-  -Dandroid-media-ndk=disabled \
-  -Daudiounit=disabled \
-  -Dcocoa=disabled \
-  -Dcoreaudio=disabled \
-  -Dd3d-hwaccel=disabled \
-  -Dd3d11=disabled \
-  -Dd3d9-hwaccel=disabled \
-  -Ddirect3d=disabled \
-  -Degl-android=disabled \
-  -Degl-angle-lib=disabled \
-  -Degl-angle-win32=disabled \
-  -Degl-angle=disabled \
-  -Dgl-cocoa=disabled \
-  -Dgl-dxinterop-d3d9=disabled \
-  -Dgl-dxinterop=disabled \
-  -Dgl-win32=disabled \
-  -Dios-gl=disabled \
-  -Dmacos-10-11-features=disabled \
-  -Dmacos-10-12-2-features=disabled \
-  -Dmacos-10-14-features=disabled \
-  -Dmacos-cocoa-cb=disabled \
-  -Dmacos-media-player=disabled \
-  -Dmacos-touchbar=disabled \
-  -Dopensles=disabled \
-  -Doss-audio=disabled \
-  -Drpi-mmal=disabled \
-  -Dsdl2-audio=disabled \
-  -Dsdl2-gamepad=disabled \
-  -Dsdl2-video=disabled \
-  -Dsndio=disabled \
-  -Dspirv-cross=disabled \
-  -Dswift-build=disabled \
-  -Dvideotoolbox-gl=disabled \
-  -Dwasapi=disabled \
-  -Dwin32-internal-pthreads=disabled \
-  ${myopts}
+  --auto-features=auto       \
+  -Dcdda=enabled             \
+  -Dlibmpv=true              \
+  -Ddvbin=enabled            \
+  -Ddvdnav=enabled           \
+  -Dopenal=enabled           \
+  ${myopts}                  \
+  %{?nil}
 %meson_build
 
 %install
 %meson_install
-install -dm755 %{buildroot}%{_defaultdocdir}
-mv %{buildroot}%{_datadir}/doc/mpv %{buildroot}%{_defaultdocdir}/%{name}
 
 install -D -m 0644 etc/input.conf %{buildroot}%{_sysconfdir}/%{name}/input.conf
 install -D -m 0644 etc/mpv.conf %{buildroot}%{_sysconfdir}/%{name}/mpv.conf

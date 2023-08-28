@@ -1,0 +1,35 @@
+---
+ meson.build |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+Index: mpv-0.36.0/meson.build
+===================================================================
+--- mpv-0.36.0.orig/meson.build
++++ mpv-0.36.0/meson.build
+@@ -1610,7 +1610,7 @@ if features['html-build']
+           '@INPUT@', '@OUTPUT@'],
+         depfile: 'mpv.html.dep',
+         install: true,
+-        install_dir: join_paths(datadir, 'doc', 'mpv')
++        install_dir: join_paths(datadir, 'doc', 'packages', 'mpv')
+     )
+ endif
+ 
+@@ -1629,7 +1629,7 @@ if features['pdf-build']
+             '@INPUT@', '-o', '@OUTPUT@'],
+         depfile: 'mpv.pdf.dep',
+         install: true,
+-        install_dir: join_paths(datadir, 'doc', 'mpv')
++        install_dir: join_paths(datadir, 'doc', 'packages', 'mpv')
+     )
+ endif
+ 
+@@ -1734,7 +1734,7 @@ if get_option('cplayer')
+ 
+     conf_files = ['etc/mpv.conf', 'etc/input.conf',
+                   'etc/mplayer-input.conf', 'etc/restore-old-bindings.conf']
+-    install_data(conf_files, install_dir: join_paths(datadir, 'doc', 'mpv'))
++    install_data(conf_files, install_dir: join_paths(datadir, 'doc', 'packages', 'mpv'))
+ 
+     bash_install_dir = join_paths(datadir, 'bash-completion', 'completions')
+     install_data('etc/mpv.bash-completion', install_dir: bash_install_dir, rename: 'mpv')
