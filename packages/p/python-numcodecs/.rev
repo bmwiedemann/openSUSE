@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>1058132</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>755e4dda643d95f723d966ef7404d273</srcmd5>
+    <version>0.11.0</version>
+    <time>1693235756</time>
+    <user>anag+factory</user>
+    <comment>- Add patch move-from-entrypoints.patch:
+  * Drop requirements on entrypoints, use importlib.metadata.</comment>
+    <requestid>1106198</requestid>
+  </revision>
 </revisionlist>

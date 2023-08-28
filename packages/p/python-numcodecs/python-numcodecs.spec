@@ -27,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/n/numcodecs/numco
 Patch0:         unbundle-libs.patch
 # PATCH-FIX-UPSTREAM numcodecs-pr417-raggednumpy.patch gh#zarr-developers/numcodecs#417
 Patch1:         numcodecs-pr417-raggednumpy.patch
+# PATCH-FIX-UPSTREAM gh#zarr-developers/numcodecs#442
+Patch2:         move-from-entrypoints.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
@@ -43,13 +45,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
-Requires:       python-entrypoints
 Requires:       python-numpy >= 1.7
 Suggests:       python-msgpack
 Suggests:       python-zfpy >= 1
 # SECTION test requirements
 BuildRequires:  %{python_module numpy >= 1.7}
-BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pytest}
 # /SECTION
