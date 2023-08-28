@@ -3645,4 +3645,18 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   + ImageMagick-CVE-2023-3428.patch</comment>
     <requestid>1095937</requestid>
   </revision>
+  <revision rev="278" vrev="1">
+    <srcmd5>850a94ba3d50290cad3cf758a9c9a921</srcmd5>
+    <version>7.1.1.15</version>
+    <time>1693235460</time>
+    <user>anag+factory</user>
+    <comment>- version update to 7.1.1.15
+  * upstream changelog:
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#711-15---2023-07-30
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+- deleted patches
+  - ImageMagick-CVE-2023-3428.patch (upstreamed)</comment>
+    <requestid>1105419</requestid>
+  </revision>
 </revisionlist>
