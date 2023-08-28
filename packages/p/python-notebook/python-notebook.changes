@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Aug 19 08:39:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.0.2
+  * Update to JupyterLab 4.0.4 packages #6998 (@jtpio)
+  * Improve about dialog #6996 (@yjrab)
+  * Added documentation link in Help menu #6993 (@Mikil03)
+- Release 7.0.1
+  * Update accessibly compliance section in the docs #6982
+    (@andrii-i)
+  * Update the browser tab favicon on kernel busy #6980 (@jtpio)
+- Release 7.0.0
+  ## New features
+  * https://jupyter-notebook.readthedocs.io/en/latest/notebook_7_features.h
+  * Debugger
+  * Real Time collaboration
+  * Table of Contents
+  * Theming and Dark Mode
+  * Internationalization
+  * Accessibility Improvements
+  * Support for many JupyterLab extensions
+  * A document-centric user experience
+  * Compact View on Mobile Devices
+  ## Migrating to Notebook 7
+  * https://jupyter-notebook.readthedocs.io/en/latest/migrate_to_notebook7.html
+  * If you need to maintain compatibility with the Classic Notebook
+    for extensions or other customizations that are critical to
+    your workflows, you can switch to nbclassic, which will provide
+    compatibility with the old notebook interface and support
+    during an intermediate transition period to Notebook 7
+- Add notebook-issue7014-fixtests.patch gh#jupyter/notebook#7014
+
+-------------------------------------------------------------------
 Mon Aug  7 12:00:44 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - Don't require pandoc on ALP
