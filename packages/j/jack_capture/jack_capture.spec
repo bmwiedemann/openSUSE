@@ -1,7 +1,7 @@
 #
 # spec file for package jack_capture
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2005 JackLab, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/kmatheussen/jack_capture
 Source0:        https://github.com/kmatheussen/jack_capture/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Compile-with-_GNU_SOURCE-to-avoid-custom-version-of-.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libsndfile-devel
 BuildRequires:  pkgconfig
@@ -39,7 +41,7 @@ jack_capture is a small program to capture whatever
 sound is going out to your speakers into a file.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CXXFLAGS="%{optflags}"
