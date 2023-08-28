@@ -19,4 +19,18 @@
 - Update Requires from setup.py (forwarded request 1029678 from glaubitz)</comment>
     <requestid>1029719</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>312dceb7524934e62257d5d5363fef1e</srcmd5>
+    <version>8.0.0</version>
+    <time>1693235571</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 8.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1105885 from glaubitz)</comment>
+    <requestid>1105896</requestid>
+  </revision>
 </revisionlist>
