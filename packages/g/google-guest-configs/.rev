@@ -165,4 +165,12 @@
   * Debian packaging: add xxd dependency (#55) (forwarded request 1104055 from glaubitz)</comment>
     <requestid>1104058</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>f6fe496517e749c3a20bcbeda5a73e24</srcmd5>
+    <version>20230808.00</version>
+    <time>1693235631</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105852</requestid>
+  </revision>
 </revisionlist>
