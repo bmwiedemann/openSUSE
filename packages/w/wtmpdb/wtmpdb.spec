@@ -18,7 +18,7 @@
 
 %define lname   libwtmpdb0
 Name:           wtmpdb
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Database for recording the last logged in users and system reboots
 License:        BSD-2-Clause
@@ -67,7 +67,7 @@ the wtmpdb database.
 %install
 %meson_install
 mkdir -p %{buildroot}%{_mandir}/man1
-echo ".so wtmpdb.8" > %{buildroot}%{_mandir}/man1/last.1
+echo ".so man8/wtmpdb.8" > %{buildroot}%{_mandir}/man1/last.1
 
 %check
 %meson_test

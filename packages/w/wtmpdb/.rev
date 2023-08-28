@@ -69,4 +69,14 @@
     <comment></comment>
     <requestid>1104166</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fff391939b61896a979038794cca0824</srcmd5>
+    <version>0.9.1</version>
+    <time>1693235452</time>
+    <user>anag+factory</user>
+    <comment>- Fix last.1 manual page reference
+- Update to version 0.9.1
+  - Fix printf format specifier on 32bit (forwarded request 1105295 from kukuk)</comment>
+    <requestid>1105296</requestid>
+  </revision>
 </revisionlist>
