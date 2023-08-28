@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylint-venv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           python-pylint-venv
-Version:        2.3.0
+Version:        3.0.2
 Release:        0
 Summary:        Use the same Pylint installation with different virtual environments
 License:        MIT
 URL:            https://github.com/jgosmann/pylint-venv/
-Source:         https://files.pythonhosted.org/packages/source/p/pylint-venv/pylint-venv-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pylint-venv-pr13-fixinclude.patch gh#jgosmann/pylint-venv#13
-Patch0:         pylint-venv-pr13-fixinclude.patch
-BuildRequires:  %{python_module base >= 3.6}
+Source:         https://files.pythonhosted.org/packages/source/p/pylint-venv/pylint_venv-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-pylint_venv = %{version}-%{release}
@@ -38,7 +36,7 @@ BuildArch:      noarch
 pylint-venv provides a Pylint init-hook to use the same Pylint installation with different virtual environments.
 
 %prep
-%autosetup -p1 -n pylint-venv-%{version}
+%autosetup -p1 -n pylint_venv-%{version}
 
 %build
 %pyproject_wheel

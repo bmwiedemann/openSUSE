@@ -7,4 +7,12 @@
     <comment>Make pylint respect virtualenvs.</comment>
     <requestid>1034133</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>61a38e61081eec7326d23148f5f3b85b</srcmd5>
+    <version>3.0.2</version>
+    <time>1693235564</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105908</requestid>
+  </revision>
 </revisionlist>
