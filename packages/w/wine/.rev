@@ -4887,4 +4887,25 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 8.13 release</comment>
     <requestid>1100991</requestid>
   </revision>
+  <revision rev="418" vrev="1">
+    <srcmd5>46042c7fca40d082a4cbaab5fa9c72cc</srcmd5>
+    <version>8.14</version>
+    <time>1693235831</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1106278</requestid>
+  </revision>
+  <revision rev="419" vrev="1">
+    <srcmd5>59c0b9a1f8dba04723b1295fb0cec303</srcmd5>
+    <version>8.15</version>
+    <time>1693685265</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 8.15 release
+  - Support for TEXT print processor.
+  - Cycle Collection support in MSHTML.
+  - Cross-process memory notifications in Wow64.
+  - Various bug fixes.
+- update staging to 8.15 release</comment>
+    <requestid>1108545</requestid>
+  </revision>
 </revisionlist>

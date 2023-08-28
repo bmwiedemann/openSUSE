@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Sep  2 06:39:37 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.15 release
+  - Support for TEXT print processor.
+  - Cycle Collection support in MSHTML.
+  - Cross-process memory notifications in Wow64.
+  - Various bug fixes.
+- update staging to 8.15 release
+
+-------------------------------------------------------------------
+Sat Aug 19 06:31:08 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.14 release
+  - PCSC framework used on macOS for smart card support.
+  - Dumping of Windows registry files in WineDump.
+  - Fixes for Wow64 window messages.
+  - Various bug fixes.
+- update staging to 8.14 release
+
+-------------------------------------------------------------------
 Sat Jul 22 10:14:16 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.13 release
