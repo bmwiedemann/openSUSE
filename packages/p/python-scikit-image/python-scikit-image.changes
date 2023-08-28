@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 22 19:18:49 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patches np-warn.patch and skimage-numpy125.patch
+  to fix build with NumPy 1.25
+
+-------------------------------------------------------------------
 Thu Jul  6 06:31:16 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.21.0

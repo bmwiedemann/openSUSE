@@ -1,0 +1,256 @@
+From 01a9282f4ea2cd5523ff41e1ebcf88491ac76ca2 Mon Sep 17 00:00:00 2001
+From: Jarrod Millman <jarrod.millman@gmail.com>
+Date: Thu, 17 Aug 2023 11:40:50 -0700
+Subject: [PATCH] Fix for NumPy 1.25 (#6970)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* Fix for NumPy 1.25
+
+* Revert #6973
+
+* Revert "Don't test numpy prerelease on azure (#6996)"
+
+This reverts commit e57c23d3d9072fa7b810fc40dc7e9082791b0629.
+
+* Skip warning check on older, noisier versions of NumPy
+
+* Remove upperpin
+
+* Use stable sort in _raveled_offsets_and_distances
+
+NumPy enabled optimizations for quicksort on AVX-512 enabled
+processors [1]. We sort based on neighbor distances which can be equal.
+The default quicksort is not stable and could have different behavior on
+AVX-512. Test this assumption.
+
+[1] https://numpy.org/devdocs/release/1.25.0-notes.html#faster-np-argsort-on-avx-512-enabled-processors
+
+* Fix forgotten doctest in _offsets_to_raveled_neighbors
+
+after updating to stable sort internally.
+
+* Fix for NumPy 1.25
+
+* Revert #6973
+
+* Revert "Don't test numpy prerelease on azure (#6996)"
+
+This reverts commit e57c23d3d9072fa7b810fc40dc7e9082791b0629.
+
+* Skip warning check on older, noisier versions of NumPy
+
+* Remove upperpin
+
+* Use stable sort in _raveled_offsets_and_distances
+
+NumPy enabled optimizations for quicksort on AVX-512 enabled
+processors [1]. We sort based on neighbor distances which can be equal.
+The default quicksort is not stable and could have different behavior on
+AVX-512. Test this assumption.
+
+[1] https://numpy.org/devdocs/release/1.25.0-notes.html#faster-np-argsort-on-avx-512-enabled-processors
+
+* Fix forgotten doctest in _offsets_to_raveled_neighbors
+
+after updating to stable sort internally.
+
+* Handle rank>0 scalar arrays
+
+https://github.com/numpy/numpy/issues/10404
+
+* Use stable sort
+
+* Use stable sort in max_tree (debug)
+
+See if it does anything.
+
+* Use stable sort in _get_high_intensity_peaks (debug)
+
+See if it does anything.
+
+* Upper pin numpy<1.26 for tests
+
+---------
+
+Co-authored-by: Stefan van der Walt <stefanv@berkeley.edu>
+Co-authored-by: Lars Grüter <lagru@mailbox.org>
+---
+ .github/workflows/wheels_recipe.yml     | 24 ++++++++++-------------
+ azure-pipelines.yml                     |  4 ++--
+ skimage/exposure/tests/test_exposure.py | 26 ++++++++++---------------
+ skimage/feature/peak.py                 |  2 +-
+ skimage/measure/fit.py                  |  4 ++--
+ skimage/morphology/_util.py             | 11 ++++++-----
+ skimage/morphology/max_tree.py          |  2 +-
+ skimage/morphology/tests/test_util.py   | 22 ++++++++++-----------
+ tools/github/before_install.sh          |  5 ++---
+ 9 files changed, 45 insertions(+), 55 deletions(-)
+
+diff --git a/skimage/exposure/tests/test_exposure.py b/skimage/exposure/tests/test_exposure.py
+index 8ec7d13bf7f..ac2cf02be0c 100644
+--- a/skimage/exposure/tests/test_exposure.py
++++ b/skimage/exposure/tests/test_exposure.py
+@@ -7,6 +7,7 @@
+                            assert_array_almost_equal,
+                            assert_array_equal,
+                            assert_equal)
++from packaging.version import Version
+ 
+ from skimage import data
+ from skimage import exposure
+@@ -354,6 +355,10 @@ def test_rescale_same_values():
+     assert_array_almost_equal(out, image)
+ 
+ 
++@pytest.mark.skipif(
++    Version(np.__version__) < Version('1.25'),
++    reason="Older NumPy throws a few extra warnings here"
++)
+ @pytest.mark.parametrize(
+     "in_range,out_range", [("image", "dtype"),
+                            ("dtype", "image")]
+@@ -362,22 +367,11 @@ def test_rescale_nan_warning(in_range, out_range):
+     image = np.arange(12, dtype=float).reshape(3, 4)
+     image[1, 1] = np.nan
+ 
+-    msg = (
+-        r"One or more intensity levels are NaN\."
+-        r" Rescaling will broadcast NaN to the full image\."
+-    )
+-
+-    # 2019/11/10 Passing NaN to np.clip raises a DeprecationWarning for
+-    # versions above 1.17, "|\A\Z" marks as optional warning
+-    # TODO: Remove once NumPy 1.25.0 is minimal dependency
+-    numpy_warning_1_17_plus = (
+-        "|\\A\\ZPassing `np.nan` to mean no clipping in np.clip"
+-    )
+-
+-    with expected_warnings([msg, numpy_warning_1_17_plus]):
+-        result = exposure.rescale_intensity(image, in_range, out_range)
+-
+-    assert np.all(np.isnan(result))
++    with expected_warnings([
++            r"One or more intensity levels are NaN\."
++            r" Rescaling will broadcast NaN to the full image\."
++    ]):
++        exposure.rescale_intensity(image, in_range, out_range)
+ 
+ 
+ @pytest.mark.parametrize(
+diff --git a/skimage/feature/peak.py b/skimage/feature/peak.py
+index 4097d8245b1..5dca21d8dbb 100644
+--- a/skimage/feature/peak.py
++++ b/skimage/feature/peak.py
+@@ -15,7 +15,7 @@ def _get_high_intensity_peaks(image, mask, num_peaks, min_distance, p_norm):
+     coord = np.nonzero(mask)
+     intensities = image[coord]
+     # Highest peak first
+-    idx_maxsort = np.argsort(-intensities)
++    idx_maxsort = np.argsort(-intensities, kind="stable")
+     coord = np.transpose(coord)[idx_maxsort]
+ 
+     if np.isfinite(num_peaks):
+diff --git a/skimage/measure/fit.py b/skimage/measure/fit.py
+index dd0135290a2..0a21f8000fc 100644
+--- a/skimage/measure/fit.py
++++ b/skimage/measure/fit.py
+@@ -576,8 +576,8 @@ def residuals(self, data):
+         N = data.shape[0]
+ 
+         def fun(t, xi, yi):
+-            ct = math.cos(t)
+-            st = math.sin(t)
++            ct = math.cos(np.squeeze(t))
++            st = math.sin(np.squeeze(t))
+             xt = xc + a * ctheta * ct - b * stheta * st
+             yt = yc + a * stheta * ct + b * ctheta * st
+             return (xi - xt) ** 2 + (yi - yt) ** 2
+diff --git a/skimage/morphology/_util.py b/skimage/morphology/_util.py
+index c04cd13d6f4..d19fd6263e8 100644
+--- a/skimage/morphology/_util.py
++++ b/skimage/morphology/_util.py
+@@ -148,16 +148,17 @@ def _raveled_offsets_and_distances(
+         spacing = np.ones(ndim)
+     weighted_offsets = offsets * spacing
+     distances = np.sqrt(np.sum(weighted_offsets**2, axis=1))
+-    sorted_raveled_offsets = raveled_offsets[np.argsort(distances)]
+-    sorted_distances = np.sort(distances)
++    sorted_raveled_offsets = raveled_offsets[np.argsort(distances, kind="stable")]
++    sorted_distances = np.sort(distances, kind="stable")
+ 
+     # If any dimension in image_shape is smaller than footprint.shape
+     # duplicates might occur, remove them
+     if any(x < y for x, y in zip(image_shape, footprint.shape)):
+         # np.unique reorders, which we don't want
+         _, indices = np.unique(sorted_raveled_offsets, return_index=True)
+-        sorted_raveled_offsets = sorted_raveled_offsets[np.sort(indices)]
+-        sorted_distances = sorted_distances[np.sort(indices)]
++        indices = np.sort(indices, kind="stable")
++        sorted_raveled_offsets = sorted_raveled_offsets[indices]
++        sorted_distances = sorted_distances[indices]
+ 
+     # Remove "offset to center"
+     sorted_raveled_offsets = sorted_raveled_offsets[1:]
+@@ -198,7 +199,7 @@ def _offsets_to_raveled_neighbors(image_shape, footprint, center, order='C'):
+     >>> _offsets_to_raveled_neighbors((4, 5), np.ones((4, 3)), (1, 1))
+     array([-5, -1,  1,  5, -6, -4,  4,  6, 10,  9, 11])
+     >>> _offsets_to_raveled_neighbors((2, 3, 2), np.ones((3, 3, 3)), (1, 1, 1))
+-    array([ 2, -6,  1, -1,  6, -2,  3,  8, -3, -4,  7, -5, -7, -8,  5,  4, -9,
++    array([-6, -2, -1,  1,  2,  6, -8, -7, -5, -4, -3,  3,  4,  5,  7,  8, -9,
+             9])
+     """
+     raveled_offsets = _raveled_offsets_and_distances(
+diff --git a/skimage/morphology/max_tree.py b/skimage/morphology/max_tree.py
+index 49832e1c2b2..0f7c2bd29e4 100644
+--- a/skimage/morphology/max_tree.py
++++ b/skimage/morphology/max_tree.py
+@@ -131,7 +131,7 @@ def max_tree(image, connectivity=1):
+                                                       offset).astype(np.int32)
+ 
+     # pixels need to be sorted according to their gray level.
+-    tree_traverser = np.argsort(image.ravel()).astype(np.int64)
++    tree_traverser = np.argsort(image.ravel(), kind="stable").astype(np.int64)
+ 
+     # call of cython function.
+     _max_tree._max_tree(image.ravel(), mask.ravel().astype(np.uint8),
+diff --git a/skimage/morphology/tests/test_util.py b/skimage/morphology/tests/test_util.py
+index bc9a0fcbb6e..43024440224 100644
+--- a/skimage/morphology/tests/test_util.py
++++ b/skimage/morphology/tests/test_util.py
+@@ -98,9 +98,9 @@ def test_offsets_to_raveled_neighbors_explicit_0():
+     )
+ 
+     desired = np.array([
+-          3, -600,    1,   -1,  600,   -3,    4,    2,  603,   -2,   -4,
+-        -597,  601, -599, -601, -603,  599,  597,  602, -604,  596, -596,
+-        -598, -602,  598,  604
++        -600,   -3,   -1,    1,    3,  600, -603, -601, -599, -597,   -4,
++         -2,    2,    4,  597,  599,  601,  603, -604, -602, -598, -596,
++        596,  598,  602,  604
+     ])
+     assert_array_equal(offsets, desired)
+ 
+@@ -115,12 +115,12 @@ def test_offsets_to_raveled_neighbors_explicit_1():
+     )
+ 
+     desired = np.array([
+-            216, 24, -24, 3, -216, 1, -1, -3, 215, -27, -25, -23, -21, -2,
+-            -192, 192, 2, 4, 21, 23, 25, 27, -4, 217, 213, -219, 219, -217,
+-            -213, -215, 240, -240, 193, 239, -237, 241, -239, 218, -220, 22,
+-            -241, 243, 189, 26, -243, 191, 20, -218, 195, -193, 220, -191,
+-            -212, -189, 214, 28, -195, -214, -28, 212, -22, 237, -20, -26, 236,
+-            196, 190, 242, 238, 194, 188, -244, -188, -196, -194, -190, -238,
+-            -236, 244, -242, 5, 221, -211, -19, 29, -235, -187, 197, 245
+-            ])
++        -216,  -24,   -3,   -1,    1,    3,   24,  216, -240, -219, -217, -215, -213,
++        -192,  -27,  -25,  -23,  -21,   -4,   -2,    2,    4,   21,   23,   25,   27,
++         192,  213,  215,  217,  219,  240, -243, -241, -239, -237, -220, -218, -214,
++        -212, -195, -193, -191, -189,  -28,  -26,  -22,  -20,   20,   22,   26,   28,
++         189,  191,  193,  195,  212,  214,  218,  220,  237,  239,  241,  243, -244,
++        -242, -238, -236, -196, -194, -190, -188,  188,  190,  194,  196,  236,  238,
++         242,  244,    5, -211,  -19,   29,  221, -235, -187,  197,  245
++    ])
+     assert_array_equal(offsets, desired)
+

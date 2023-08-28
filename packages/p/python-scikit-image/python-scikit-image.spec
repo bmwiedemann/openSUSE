@@ -32,6 +32,10 @@ Summary:        Collection of algorithms for image processing in Python
 License:        BSD-3-Clause
 URL:            https://scikit-image.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-image/%{srcname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM np-warn.patch gh#scikit-image/scikit-image#7052
+Patch:          np-warn.patch
+# PATCH-FIX-UPSTREAM skimage-numpy125.patch gh#scikit-image/scikit-image#6970
+Patch:          skimage-numpy125.patch
 BuildRequires:  %{python_module Cython >= 0.29.21}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module meson-python}
