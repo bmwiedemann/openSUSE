@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 20 17:12:43 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 2.9.1:
+  * Fix compilation errors on spdlog 1.12, fmt 10.x and turbo-base64
+  * Bump internal dependencies versions
+
+-------------------------------------------------------------------
 Tue Aug  8 00:36:01 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 2.9.0:
