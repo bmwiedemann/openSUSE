@@ -1,7 +1,7 @@
 #
 # spec file for package stax2-api
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           stax2-api
-Version:        4.0.0
+Version:        4.2.1
 Release:        0
 Summary:        Experimental API extending basic StAX implementation
 License:        BSD-2-Clause
@@ -28,7 +28,6 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml:oss-parent:pom:)
-BuildRequires:  mvn(javax.xml.stream:stax-api)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildArch:      noarch
 
@@ -52,7 +51,8 @@ This package contains the API documentation for %{name}.
 
 %pom_xpath_remove pom:Import-Package
 
-# %pom_remove_plugin :maven-javadoc-plugin
+%pom_remove_plugin :maven-javadoc-plugin
+%pom_remove_plugin :moditect-maven-plugin
 
 %build
 %{mvn_file} :%{name} %{name}

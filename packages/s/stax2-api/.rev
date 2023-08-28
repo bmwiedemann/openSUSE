@@ -23,4 +23,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>964359</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>482e927b428941a99383f5fafba5f4c5</srcmd5>
+    <version>4.2.1</version>
+    <time>1693235603</time>
+    <user>anag+factory</user>
+    <comment>4.2.1 without bea-stax dep</comment>
+    <requestid>1105911</requestid>
+  </revision>
 </revisionlist>
