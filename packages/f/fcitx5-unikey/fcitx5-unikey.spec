@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-unikey
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,12 @@
 
 
 Name:           fcitx5-unikey
-Version:        5.0.11
+Version:        5.1.0
 Release:        0
 Summary:        Unikey engine support for Fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://github.com/fcitx/fcitx5-unikey
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
-# Backport from git
-#e352da5
-Patch1:         backport-commit-on-switchingIM.diff
-#b5f70ed
-Patch2:         backport-rebuild-surrounding-state.diff
-#0eac455
-Patch3:         backport-allow-uoh.diff
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
@@ -50,9 +43,6 @@ Chewing Wrapper for Fcitx5.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 %cmake

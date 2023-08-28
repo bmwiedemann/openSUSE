@@ -32,4 +32,22 @@
     <comment></comment>
     <requestid>1035667</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0364e2917b9481d73e5eb596f6294a6b</srcmd5>
+    <version>5.1.0</version>
+    <time>1693235713</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.0
+  * update unikey data to make it encode with ascii
+- drop backport-allow-uoh.diff
+- drop backport-commit-on-switchingIM.diff
+- drop backport-rebuild-surrounding-state.diff
+- Update to 5.0.13
+  * add all size of icon for unikey
+  * allow to modify commited words
+- Update to 5.0.12
+  * remove backports
+</comment>
+    <requestid>1106096</requestid>
+  </revision>
 </revisionlist>

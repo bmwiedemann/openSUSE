@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Aug 20 06:34:14 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.0
+  * update unikey data to make it encode with ascii
+- drop backport-allow-uoh.diff
+- drop backport-commit-on-switchingIM.diff
+- drop backport-rebuild-surrounding-state.diff
+
+-------------------------------------------------------------------
+Mon May 22 11:49:02 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.0.13
+  * add all size of icon for unikey
+  * allow to modify commited words
+
+-------------------------------------------------------------------
+Sun Nov 20 09:13:13 UTC 2022 - Tranter Madi <trmdi@yandex.com>
+
+- Update to 5.0.12
+  * remove backports
+
+-------------------------------------------------------------------
 Mon Nov 14 02:24:33 UTC 2022 - Tranter Madi <trmdi@yandex.com>
 
 - Remove: fix-enter.diff, fix-uou.diff
