@@ -51,4 +51,14 @@
 - Update to 0.6.0 with jupyter-scales 3.2.0</comment>
     <requestid>1056905</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>1c5996a4f79074f9b649ed336539c4bf</srcmd5>
+    <version>unknown</version>
+    <time>1693235686</time>
+    <user>anag+factory</user>
+    <comment>- Avoid notebook 7: use nbclassic or notebook 6 for extension
+
+- Refine jupyter requirement and recommendation chain (forwarded request 1106052 from bnavigator)</comment>
+    <requestid>1106053</requestid>
+  </revision>
 </revisionlist>

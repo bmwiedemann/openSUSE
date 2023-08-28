@@ -17,8 +17,9 @@
 
 
 %define mainver 0.7.0
+%define shortmainver 0.7
 %define labver  3.3.0
-%define         skip_python2 1
+
 Name:           python-ipyscales
 Version:        %{mainver}
 Release:        0
@@ -30,11 +31,10 @@ BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  jupyter-jupyterlab-filesystem
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-ipyscales = %{version}
 Requires:       python-ipywidgets >= 7.0.0
-Requires:       python-numpy
 Recommends:     python-ipydatawidgets
 Provides:       python-jupyter_ipyscales = %{version}-%{release}
 Obsoletes:      python-jupyter_ipyscales < %{version}-%{release}
@@ -55,10 +55,10 @@ This package provides the python interface.
 
 %package     -n jupyter-ipyscales
 Summary:        A Jupyter widget library for scales
-Requires:       jupyter-notebook >= 4.0.0
+Requires:       ((jupyter-notebook >= 4.0.0 with jupyter-notebook < 7) or jupyter-nbclassic)
 Conflicts:      python3-jupyter_ipyscales < 0.4.0
-# any flavor is okay
-Requires:       (%(echo "%{python_module ipyscales = %{mainver}@or@}" | sed "s/@or@/ or /g" | sed 's/ or\s*$//'))
+Requires:       python3dist(ipyscales) = %{shortmainver}
+Suggests:       python3-ipyscales
 
 %description -n jupyter-ipyscales
 A Jupyter/IPython widget library for scales.
@@ -69,8 +69,8 @@ This package provides the jupyter notebook extension.
 Version:        %{labver}
 Summary:        A JupyterLab widget library for scales
 Requires:       jupyter-jupyterlab
-# any flavor is okay
-Requires:       (%(echo "%{python_module ipyscales = %{mainver}@or@}" | sed "s/@or@/ or /g" | sed 's/ or\s*$//'))
+Requires:       python3dist(ipyscales) = %{shortmainver}
+Suggests:       python3-ipyscales
 
 %description -n jupyter-jupyterlab-ipyscales
 A Jupyter/IPython widget library for scales.
