@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Aug 29 09:58:47 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230829.44bcd82:
+  * Don't crash when trying to fetch owner for 404 devel prjs
+
+-------------------------------------------------------------------
+Mon Aug 28 08:21:24 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230828.37393de:
+  * gocd: add checkers for ALP:Source:Standard:1.0
+  * gocd: add stagings for ALP:Source:Standard:1.0
+  * gocd: remove old LEO group
+
+-------------------------------------------------------------------
+Mon Aug 28 08:18:19 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230828.02a6b36:
+  * Switch Leap dashboard to 15.6
+
+-------------------------------------------------------------------
+Thu Aug 24 11:53:15 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230824.337d2ce:
+  * gocd: enable SP6 jobs on BCI
+
+-------------------------------------------------------------------
+Wed Aug 23 15:15:20 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230823.3d34cbb:
+  * Fix E721: Use isinstance instead of comparing types
+
+-------------------------------------------------------------------
 Tue Aug 22 13:53:22 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230822.4be49e9:
