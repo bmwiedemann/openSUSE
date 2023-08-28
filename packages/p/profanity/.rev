@@ -593,4 +593,18 @@
   * Adapt to g_string_free glib 2.75.3 change (#1799)</comment>
     <requestid>1102110</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>6a3f6c817b43a27f4fdfa2400926b11b</srcmd5>
+    <version>0.14.0</version>
+    <time>1693235735</time>
+    <user>anag+factory</user>
+    <comment>- Add three bugfix patches:
+  * Correctly display OX carbons:
+    profanity-0.14.0-ox-carbons.patch
+  * Fix typos:
+    profanity-0.14.0-typos.patch
+  * Stop spamming log when X is not running:
+    profanity-0.14.0-xscreensaver.patch</comment>
+    <requestid>1106132</requestid>
+  </revision>
 </revisionlist>
