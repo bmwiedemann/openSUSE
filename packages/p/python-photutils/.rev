@@ -466,4 +466,41 @@
     as a ndarray. It is returned as a tuple. [#1531] (forwarded request 1087844 from bnavigator)</comment>
     <requestid>1087845</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c94d60fb59f1c453daa4a63784024783</srcmd5>
+    <version>1.9.0</version>
+    <time>1693235607</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.9.0
+  ## General
+  * The minimum required Python is now 3.9. [#1569]
+  * The minimum required NumPy is now 1.22. [#1572]
+  ## New Features
+  ### photutils.background
+  * Added LocalBackground class for computing local backgrounds in
+    a circular annulus aperture. [#1556]
+  ### photutils.datasets
+  * Added new make_test_psf_data function. [#1558, #1582, #1585]
+  ### photutils.psf
+  * Propagate measurement uncertainties in PSF fitting. [#1543]
+  * Added new PSFPhotometry and IterativePSFPhotometry classes for
+    performing PSF-fitting photometry. [#1558, #1559, #1563, #1566,
+    #1567, #1581, #1586, #1590, #1594, #1603, #1604]
+  * Added a new SourceGrouper class. [#1558, #1605]
+  * Added a GriddedPSFModel fill_value attribute. [#1583]
+  * Added a grid_from_epsfs function to make a GriddedPSFModel from
+    ePSFs. [#1596]
+  * Added a read method to GriddedPSFModel for reading “STDPSF”
+    FITS files containing grids of ePSF models. [#1557]
+  * Added a plot_grid method to GriddedPSFModel for plotting ePSF
+    grids. [#1557]
+  * Added a STDPSFGrid class for reading “STDPSF” FITS files
+    containing grids of ePSF models and plotting the ePSF grids.
+    [#1557]
+  ## Bug Fixes
+  ### photutils.aperture
+  * Fixed a bug in the validation of PixelAperture positions.
+    [#1553]</comment>
+    <requestid>1105925</requestid>
+  </revision>
 </revisionlist>
