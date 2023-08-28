@@ -65,4 +65,21 @@
   * jupyter lab 3.0 federated bundle support</comment>
     <requestid>999718</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>9101aa536c841936e4607c60a4765390</srcmd5>
+    <version>unknown</version>
+    <time>1693235785</time>
+    <user>anag+factory</user>
+    <comment>- Nbextension: nbclassic or notebook &lt; 7 required</comment>
+    <requestid>1106077</requestid>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>4f0e79fed146c3b3bffc5e279fc4db4f</srcmd5>
+    <version>unknown</version>
+    <time>1693383674</time>
+    <user>anag+factory</user>
+    <comment>- Require jupyterlab for extension check
+</comment>
+    <requestid>1107989</requestid>
+  </revision>
 </revisionlist>
