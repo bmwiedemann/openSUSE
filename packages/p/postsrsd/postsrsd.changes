@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 25 21:55:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.8
+  * Fixed socket creation for Milter
+  * Fixed Milter issue with IPv6 clients
+
+-------------------------------------------------------------------
 Sat Aug 12 15:27:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.7
