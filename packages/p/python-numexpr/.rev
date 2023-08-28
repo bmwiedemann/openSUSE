@@ -179,4 +179,12 @@ Implement single-spec version</comment>
     checks. `packaging` is no longer a requirement as a result.</comment>
     <requestid>1046267</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0fb6566edd50fd2eed7bcb2d9be3b5ea</srcmd5>
+    <version>2.8.5</version>
+    <time>1693235850</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1106397</requestid>
+  </revision>
 </revisionlist>
