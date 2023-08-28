@@ -12,10 +12,10 @@ https://en.opensuse.org/openSUSE:Packaging_guidelines#Donation_requests
  src/sem      |    2 ++
  2 files changed, 4 insertions(+)
 
-Index: parallel-20230722/src/parallel
+Index: parallel-20230822/src/parallel
 ===================================================================
---- parallel-20230722.orig/src/parallel
-+++ parallel-20230722/src/parallel
+--- parallel-20230822.orig/src/parallel
++++ parallel-20230822/src/parallel
 @@ -2604,6 +2604,7 @@ sub parse_options(@) {
      # out, and if it works, you should post it on the email
      # list. Ideas that will cost work and which have not been tested
@@ -26,16 +26,16 @@ Index: parallel-20230722/src/parallel
      # Parallel under a new name, but it does not give you the right to
 @@ -2643,6 +2644,7 @@ sub parse_options(@) {
      # accept to be added to a public hall of shame by removing the
-     # line. That includes you, George and Andreas.
+     # line.  That includes you, George and Andreas.
  
 +}
      parse_halt();
  
      if($ENV{'PARALLEL_ENV'}) {
-Index: parallel-20230722/src/sem
+Index: parallel-20230822/src/sem
 ===================================================================
---- parallel-20230722.orig/src/sem
-+++ parallel-20230722/src/sem
+--- parallel-20230822.orig/src/sem
++++ parallel-20230822/src/sem
 @@ -2629,6 +2629,7 @@ sub parse_options(@) {
      # runs. If that is too much trouble for you, why not use one of
      # the alternatives instead?
@@ -43,10 +43,10 @@ Index: parallel-20230722/src/sem
 +    if (0) {
      #
      # If you want GNU Parallel to be maintained in the future, you
-     # should keep this line.
+     # should keep this line:
 @@ -2643,6 +2644,7 @@ sub parse_options(@) {
      # accept to be added to a public hall of shame by removing the
-     # line. That includes you, George and Andreas.
+     # line.  That includes you, George and Andreas.
  
 +}
      parse_halt();
