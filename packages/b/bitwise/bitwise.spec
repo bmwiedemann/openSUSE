@@ -1,7 +1,7 @@
 #
 # spec file for package bitwise
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,9 +18,9 @@
 
 
 Name:           bitwise
-Version:        0.43
+Version:        0.50
 Release:        0
-Summary:        Interactive bitwise operation in ncurses
+Summary:        Interactive bit-wise operation in ncurses
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/mellowcandle/bitwise
@@ -43,7 +43,7 @@ Some of the features include:
  * Bitwise operations such as NOT, OR, AND, XOR, and shifts.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 autoreconf -fiv

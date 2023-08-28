@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 21 12:37:13 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.50
+  * Enhancements:
+    + Add r command to reverse endianess 
+    + Allow shortening of commands 
+  * Bug Fixes:
+    + Disable mouse events in interactive command mode
+    + Fix backward key not working in some terminals
+    + Fix divide by zero crash
+    + Fit bit function overflow 
+
+-------------------------------------------------------------------
 Mon Nov  1 09:28:54 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.43
