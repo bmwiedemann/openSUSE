@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 25 12:52:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Limit to Cython < 3
+
+-------------------------------------------------------------------
 Mon Jun 12 12:22:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 12.0.1

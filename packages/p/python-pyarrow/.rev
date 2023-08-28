@@ -62,4 +62,14 @@ https://datapythonista.me/blog/pandas-20-and-the-arrow-revolution-part-i</commen
     <comment></comment>
     <requestid>1092626</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a0e53f8dd80fdeb1617856953fc23b1e</srcmd5>
+    <version>12.0.1</version>
+    <time>1693235600</time>
+    <user>anag+factory</user>
+    <comment>- Limit to Cython &lt; 3
+
+(Waiting to udpdate to arrow 13; pandas is not ready for it yet)</comment>
+    <requestid>1105909</requestid>
+  </revision>
 </revisionlist>
