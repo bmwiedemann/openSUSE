@@ -32,8 +32,8 @@
 %global updatever       8
 %global buildver        7
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk17/archive
-%global root_revision   77b0f75480594444eb7fb47bf37d3aae6d8135ef
-%global root_branch     v0.40.0-release
+%global root_revision   8ecf238a124259b01b6a5ebcbcb22f618e5c56c9
+%global root_branch     v0.40.0-jdk17.0.8.1-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
 %global omr_revision    e80bff83b7fda8875071d89de7c73184d847085d
 %global omr_branch      v0.40.0-release
