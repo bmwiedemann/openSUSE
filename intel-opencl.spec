@@ -17,7 +17,7 @@
 
 
 Name:           intel-opencl
-Version:        23.13.26032.30
+Version:        23.22.26516.18
 Release:        1%{?dist}
 Summary:        Intel Graphics Compute Runtime for OpenCL
 License:        MIT
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(igc-opencl)
 BuildRequires:  pkgconfig(libva)
 Requires:       libigc1
 Requires:       libigdfcl1
-Requires:       libopencl-clang11
+Requires:       libopencl-clang14
 ExclusiveArch:  x86_64
 
 %description

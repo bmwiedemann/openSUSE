@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 23 11:57:18 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Use libopencl-clang14 from the intel-graphics-compiler llvm14 build
+
+-------------------------------------------------------------------
+Wed Aug 23 11:21:18 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 23.22.26516.18 
+
+-------------------------------------------------------------------
 Tue May 30 07:19:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop R/TM markup as per
