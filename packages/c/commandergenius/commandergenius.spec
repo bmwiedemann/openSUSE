@@ -17,9 +17,9 @@
 
 
 Name:           commandergenius
-Version:        3.4.0
+Version:        3.4.9
 Release:        0
-Summary:        An open clone of the Commander Keen engines
+Summary:        A clone of the Commander Keen engines
 License:        GPL-2.0-only
 Group:          Amusements/Games/Action/Arcade
 URL:            http://clonekeenplus.sf.net/
@@ -50,15 +50,15 @@ It has 4-player cooperative mode and six difficulty modes.
 
 %build
 %cmake \
-  -DBUILD_STATIC_LIBS:BOOL=ON \
-  -DBUILD_SHARED_LIBS:BOOL=OFF \
-  -DAPPDIR="%_bindir"
+	-DBUILD_STATIC_LIBS:BOOL=ON \
+	-DBUILD_SHARED_LIBS:BOOL=OFF \
+	-DAPPDIR="%_bindir"
 %cmake_build
 
 %install
 %cmake_install
-install -D -m0644 share/cg.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/cg.svg
-%fdupes %buildroot%_datadir
+install -Dm0644 share/cg.svg "%buildroot/%_datadir/icons/hicolor/scalable/apps/cg.svg"
+%fdupes %buildroot/%_datadir
 
 %files
 %license COPYRIGHT
