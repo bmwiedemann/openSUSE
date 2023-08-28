@@ -1,0 +1,6 @@
+<package name="wasmedge" project="openSUSE:Factory">
+  <title>WasmEdge</title>
+  <description>High-performance and extensible WebAssembly runtime</description>
+  <devel project="devel:languages:javascript" package="wasmedge"/>
+  <url>https://wasmedge.org/</url>
+</package>
