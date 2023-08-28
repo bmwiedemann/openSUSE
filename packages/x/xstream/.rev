@@ -95,4 +95,12 @@
     <comment>bsc#1206729 and bsc#1203520</comment>
     <requestid>1072631</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>27be180704f46a008eb362a09544e13d</srcmd5>
+    <version>1.4.20</version>
+    <time>1693235602</time>
+    <user>anag+factory</user>
+    <comment>make dependency on bea-stax optional</comment>
+    <requestid>1105910</requestid>
+  </revision>
 </revisionlist>

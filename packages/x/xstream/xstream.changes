@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 25 13:08:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Make dependency on bea-stax optional and disable it by default
+
+-------------------------------------------------------------------
 Fri Mar 17 13:04:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 1.4.20

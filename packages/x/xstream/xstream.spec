@@ -18,6 +18,7 @@
 
 
 %bcond_with  hibernate
+%bcond_with  stax
 Name:           xstream
 Version:        1.4.20
 Release:        0
@@ -45,8 +46,6 @@ BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.codehaus.woodstox:woodstox-core-asl)
 BuildRequires:  mvn(org.jdom:jdom)
 BuildRequires:  mvn(org.jdom:jdom2)
-BuildRequires:  mvn(stax:stax)
-BuildRequires:  mvn(stax:stax-api)
 BuildRequires:  mvn(xom:xom)
 BuildRequires:  mvn(xpp3:xpp3)
 BuildRequires:  mvn(xpp3:xpp3_min)
@@ -54,6 +53,10 @@ BuildArch:      noarch
 %if %{with hibernate}
 BuildRequires:  mvn(org.hibernate:hibernate-core)
 BuildRequires:  mvn(org.hibernate:hibernate-envers)
+%endif
+%if %{with stax}
+BuildRequires:  mvn(stax:stax)
+BuildRequires:  mvn(stax:stax-api)
 %endif
 
 %description
@@ -145,6 +148,12 @@ find . -name "*.jar" -print -delete
 
 %if %{without hibernate}
 %pom_disable_module xstream-hibernate
+%endif
+
+%if %{without stax}
+%pom_remove_dep -r stax:
+rm -f xstream/src/java/com/thoughtworks/xstream/io/xml/BEAStaxDriver.java \
+    xstream-benchmark/src/java/com/thoughtworks/xstream/tools/benchmark/products/XStreamBEAStax.java
 %endif
 
 %{mvn_file} :%{name} %{name}/%{name} %{name}
