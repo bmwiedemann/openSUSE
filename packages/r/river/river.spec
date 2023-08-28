@@ -54,6 +54,7 @@ Recommends:     libqt5-qtwayland
 Recommends:     libqt5-qtwayland-32bit
 Requires:       river-riverctl
 Requires:       river-rivertile
+Recommends:     river-contrib
 Suggests:       xdg-desktop-portal-wlr
 
 ExclusiveArch:  x86_64 aarch64 riscv64 %{mips64}
@@ -120,19 +121,34 @@ BuildArch:      noarch
 %description    bash-completion
 Bash command-line completion support for %{name}.
 
+%package        contrib
+Summary:        Helper files for making river easy to use
+Supplements:    (%{name} and river)
+Requires:       river
+BuildArch:      noarch
+
+%description    contrib
+This package contains files that make river easier to use such as
+listing it to a Display Manager such as GDM with a desktop file or
+setting up sane environmental variables before running river in
+`river.sh`. These files are not part of the river project.
+
 %build
 %zig_build -Dpie -Dxwayland
 
 %install
 mkdir -p %{buildroot}%{_datadir}/wayland-sessions
+mkdir -p %{buildroot}%{_datadir}/river
 %zig_install -Dpie -Dxwayland
 
 # Installing the desktop file for easy login manager access
 sed -i 's|Exec=river|Exec=river-run.sh|' contrib/river.desktop
 install -D -m 0644 contrib/river.desktop %{buildroot}%{_datadir}/wayland-sessions
+cp -rv contrib %{buildroot}%{_datadir}/river/contrib
+cp -v %{SOURCE1} %{buildroot}%{_datadir}/river/contrib/
 
 # Install convenient script to run river
-install -D -m 0755 %{SOURCE1} %{buildroot}%{_bindir}
+install -Dm 0755 %{SOURCE1} %{buildroot}%{_bindir}
 
 %files
 %license LICENSE
@@ -170,5 +186,10 @@ install -D -m 0755 %{SOURCE1} %{buildroot}%{_bindir}
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_riverctl
+
+%files contrib
+%dir %{_datadir}/river
+%dir %{_datadir}/river/contrib
+%{_datadir}/river/contrib/*
 
 %changelog
