@@ -71,4 +71,13 @@
 - restrict to older Cython</comment>
     <requestid>1103867</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>c5b6d3aac78c9e384412e9b73ab67f4a</srcmd5>
+    <version>0.6.2</version>
+    <time>1693235480</time>
+    <user>anag+factory</user>
+    <comment>- Revert restrict to older Cython. Can not find any specification.
+</comment>
+    <requestid>1105466</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,7 @@ URL:            https://github.com/alexmojaki/stack_data
 Source:         https://files.pythonhosted.org/packages/source/s/stack_data/stack_data-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Support typeguard 4+
 Patch0:         support-typeguard-4.patch
-BuildRequires:  %{python_module Cython with %python-Cython < 3}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module setuptools >= 44}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  fdupes

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 23 07:28:06 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Revert restrict to older Cython. Can not find any specification.
+
+-------------------------------------------------------------------
 Mon Aug 14 12:52:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - skip more tests for newer pygments version
