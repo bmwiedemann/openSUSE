@@ -1,7 +1,7 @@
 #
 # spec file for package python-Send2Trash
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,26 @@
 #
 
 
-# test scripts missing
-%define         oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-Send2Trash
-Version:        1.8.0
+Version:        1.8.2
 Release:        0
 Summary:        Python library to send files to the Trash location
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/arsenetar/send2trash
 Source:         https://github.com/arsenetar/send2trash/archive/refs/tags/%{version}.tar.gz#/Send2Trash-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       typelib(GObject)
 Requires:       typelib(Gio)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-%ifpython2
-Obsoletes:      %{oldpython}-send2trash < %{version}
-Provides:       %{oldpython}-send2trash = %{version}
-%endif
+Provides:       python-send2trash = %{version}-%{release}
 BuildArch:      noarch
 
 %python_subpackages
@@ -56,10 +53,10 @@ freedesktop.org.
 %setup -q -n send2trash-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/send2trash
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -78,6 +75,6 @@ export LANG=en_US.UTF8
 %doc CHANGES.rst README.rst
 %python_alternative %{_bindir}/send2trash
 %{python_sitelib}/send2trash
-%{python_sitelib}/Send2Trash-%{version}*-info
+%{python_sitelib}/Send2Trash-%{version}.dist-info
 
 %changelog

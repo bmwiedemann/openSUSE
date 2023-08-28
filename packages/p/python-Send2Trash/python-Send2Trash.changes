@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 26 13:11:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.8.2
+  * Add fallback to HOMETRASH when cross device errors happen in
+    plat_other (#26, #41, #63)
+  * win/legacy: tiny logic simplification by @BoboTiG in #77
+- PEP517
+- Drop Python2 code
+
+-------------------------------------------------------------------
 Thu Aug  3 17:41:08 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
