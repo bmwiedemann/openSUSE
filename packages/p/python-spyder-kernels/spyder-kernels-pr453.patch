@@ -9,10 +9,10 @@ That code was not working since the Spyder 5.0 release
  spyder_kernels/utils/iofuncs.py | 130 ++++++++++++++++++++++++--------
  1 file changed, 99 insertions(+), 31 deletions(-)
 
-Index: spyder-kernels-2.4.3/spyder_kernels/utils/iofuncs.py
+Index: spyder-kernels-2.4.4/spyder_kernels/utils/iofuncs.py
 ===================================================================
---- spyder-kernels-2.4.3.orig/spyder_kernels/utils/iofuncs.py
-+++ spyder-kernels-2.4.3/spyder_kernels/utils/iofuncs.py
+--- spyder-kernels-2.4.4.orig/spyder_kernels/utils/iofuncs.py
++++ spyder-kernels-2.4.4/spyder_kernels/utils/iofuncs.py
 @@ -35,6 +35,8 @@ from spyder_kernels.utils.lazymodules im
      FakeObject, numpy as np, pandas as pd, PIL, scipy as sp)
  
@@ -266,11 +266,11 @@ Index: spyder-kernels-2.4.3/spyder_kernels/utils/iofuncs.py
  
 -    print("Data loaded in %.3f seconds" % (time.time()-t0))  # spyder: test-skip
 +    print("Data loaded in %.3f seconds" % (time.time()-t0))
-Index: spyder-kernels-2.4.3/.github/workflows/linux-pip-tests.yml
+Index: spyder-kernels-2.4.4/.github/workflows/linux-pip-tests.yml
 ===================================================================
---- spyder-kernels-2.4.3.orig/.github/workflows/linux-pip-tests.yml
-+++ spyder-kernels-2.4.3/.github/workflows/linux-pip-tests.yml
-@@ -55,9 +55,9 @@ jobs:
+--- spyder-kernels-2.4.4.orig/.github/workflows/linux-pip-tests.yml
++++ spyder-kernels-2.4.4/.github/workflows/linux-pip-tests.yml
+@@ -56,9 +56,9 @@ jobs:
        - name: Run tests
          shell: bash -l {0}
          run: |
@@ -281,12 +281,12 @@ Index: spyder-kernels-2.4.3/.github/workflows/linux-pip-tests.yml
 +          xvfb-run --auto-servernum pytest spyder_kernels --color=yes --cov=spyder_kernels -vv || \
 +          xvfb-run --auto-servernum pytest spyder_kernels --color=yes --cov=spyder_kernels -vv
        - name: Upload coverage to Codecov
-         if: matrix.PYTHON_VERSION == '3.8'
-         shell: bash -l {0}
-Index: spyder-kernels-2.4.3/.github/workflows/linux-tests.yml
+         uses: codecov/codecov-action@v3
+         with:
+Index: spyder-kernels-2.4.4/.github/workflows/linux-tests.yml
 ===================================================================
---- spyder-kernels-2.4.3.orig/.github/workflows/linux-tests.yml
-+++ spyder-kernels-2.4.3/.github/workflows/linux-tests.yml
+--- spyder-kernels-2.4.4.orig/.github/workflows/linux-tests.yml
++++ spyder-kernels-2.4.4/.github/workflows/linux-tests.yml
 @@ -62,9 +62,9 @@ jobs:
        - name: Run tests
          shell: bash -l {0}
@@ -298,51 +298,23 @@ Index: spyder-kernels-2.4.3/.github/workflows/linux-tests.yml
 +          xvfb-run --auto-servernum pytest spyder_kernels --color=yes --cov=spyder_kernels -vv || \
 +          xvfb-run --auto-servernum pytest spyder_kernels --color=yes --cov=spyder_kernels -vv
        - name: Upload coverage to Codecov
-         if: matrix.PYTHON_VERSION == '3.8'
-         shell: bash -l {0}
-Index: spyder-kernels-2.4.3/.github/workflows/macos-tests.yml
+         uses: codecov/codecov-action@v3
+         with:
+Index: spyder-kernels-2.4.4/requirements/tests.txt
 ===================================================================
---- spyder-kernels-2.4.3.orig/.github/workflows/macos-tests.yml
-+++ spyder-kernels-2.4.3/.github/workflows/macos-tests.yml
-@@ -57,6 +57,6 @@ jobs:
-       - name: Run tests
-         shell: bash -l {0}
-         run: |
--          pytest spyder_kernels --color=yes --cov=spyder_kernels -x -vv || \
--          pytest spyder_kernels --color=yes --cov=spyder_kernels -x -vv || \
--          pytest spyder_kernels --color=yes --cov=spyder_kernels -x -vv
-+          pytest spyder_kernels --color=yes --cov=spyder_kernels -vv || \
-+          pytest spyder_kernels --color=yes --cov=spyder_kernels -vv || \
-+          pytest spyder_kernels --color=yes --cov=spyder_kernels -vv
-Index: spyder-kernels-2.4.3/.github/workflows/windows-tests.yml
-===================================================================
---- spyder-kernels-2.4.3.orig/.github/workflows/windows-tests.yml
-+++ spyder-kernels-2.4.3/.github/workflows/windows-tests.yml
-@@ -57,6 +57,6 @@ jobs:
-       - name: Run tests
-         shell: bash -l {0}
-         run: |
--          pytest spyder_kernels --color=yes --cov=spyder_kernels -x -vv || \
--          pytest spyder_kernels --color=yes --cov=spyder_kernels -x -vv || \
--          pytest spyder_kernels --cov=spyder_kernels -x -vv
-+          pytest spyder_kernels --color=yes --cov=spyder_kernels -vv || \
-+          pytest spyder_kernels --color=yes --cov=spyder_kernels -vv || \
-+          pytest spyder_kernels --cov=spyder_kernels -vv
-Index: spyder-kernels-2.4.3/requirements/tests.txt
-===================================================================
---- spyder-kernels-2.4.3.orig/requirements/tests.txt
-+++ spyder-kernels-2.4.3/requirements/tests.txt
-@@ -12,3 +12,5 @@ scipy
+--- spyder-kernels-2.4.4.orig/requirements/tests.txt
++++ spyder-kernels-2.4.4/requirements/tests.txt
+@@ -11,3 +11,5 @@ scipy
  xarray
  pillow
  django
 +h5py
 +pydicom
-Index: spyder-kernels-2.4.3/setup.py
+Index: spyder-kernels-2.4.4/setup.py
 ===================================================================
---- spyder-kernels-2.4.3.orig/setup.py
-+++ spyder-kernels-2.4.3/setup.py
-@@ -65,6 +65,8 @@ TEST_REQUIREMENTS = [
+--- spyder-kernels-2.4.4.orig/setup.py
++++ spyder-kernels-2.4.4/setup.py
+@@ -64,6 +64,8 @@ TEST_REQUIREMENTS = [
      'xarray',
      'pillow',
      'django',
@@ -351,10 +323,10 @@ Index: spyder-kernels-2.4.3/setup.py
  ]
  
  setup(
-Index: spyder-kernels-2.4.3/spyder_kernels/utils/tests/test_iofuncs.py
+Index: spyder-kernels-2.4.4/spyder_kernels/utils/tests/test_iofuncs.py
 ===================================================================
---- spyder-kernels-2.4.3.orig/spyder_kernels/utils/tests/test_iofuncs.py
-+++ spyder-kernels-2.4.3/spyder_kernels/utils/tests/test_iofuncs.py
+--- spyder-kernels-2.4.4.orig/spyder_kernels/utils/tests/test_iofuncs.py
++++ spyder-kernels-2.4.4/spyder_kernels/utils/tests/test_iofuncs.py
 @@ -16,6 +16,7 @@ import os
  import copy
  
@@ -401,16 +373,3 @@ Index: spyder-kernels-2.4.3/spyder_kernels/utils/tests/test_iofuncs.py
 +
  if __name__ == "__main__":
      pytest.main()
-Index: spyder-kernels-2.4.3/spyder_kernels/utils/tests/test_nsview.py
-===================================================================
---- spyder-kernels-2.4.3.orig/spyder_kernels/utils/tests/test_nsview.py
-+++ spyder-kernels-2.4.3/spyder_kernels/utils/tests/test_nsview.py
-@@ -353,7 +353,7 @@ def test_get_type_string():
-     assert get_type_string(series) == 'Series'
- 
-     index = pd.Index([1, 2, 3])
--    assert get_type_string(index) == 'Int64Index'
-+    assert get_type_string(index) in ['Int64Index', 'Index']
- 
-     # PIL images
-     img = PIL.Image.new('RGB', (256,256))

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 24 14:16:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.4
+  * Increase minimal required version of IPykernel to 6.23.2, by
+    @ccordoba12
+  * Skip more buggy IPython versions, by @ccordoba12
+  * Disable IPython's debugger skip functionality by default, by
+    @ccordoba12
+  * Remove codecov package and use Github action to upload coverage
+    instead, by @ccordoba12 (454)
+- Refresh spyder-kernels-pr453.patch
+
+-------------------------------------------------------------------
 Wed Jun  7 09:43:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add spyder-kernels-pr453.patch gh#spyder-ide/spyder-kernels#453

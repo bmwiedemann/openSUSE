@@ -19,7 +19,7 @@
 # flaky for obs, only test locally
 %bcond_with dasktest
 Name:           python-spyder-kernels
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
@@ -42,7 +42,7 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module h5py}
-BuildRequires:  %{python_module ipykernel >= 6.16.1 with %python-ipykernel < 7}
+BuildRequires:  %{python_module ipykernel >= 6.23.2 with %python-ipykernel < 7}
 BuildRequires:  %{python_module jupyter_client >= 7.4.9 with %python-jupyter_client < 9}
 BuildConflicts: %{python_module jupyter_client >= 8.8 with %python-jupyter_client < 8.10.1}
 BuildRequires:  %{python_module ipython >= 7.31.1 with %python-ipython < 9}
@@ -62,7 +62,7 @@ BuildRequires:  %{python_module dask-distributed}
 Requires:       python-cloudpickle
 Requires:       python-pyzmq >= 22.1
 Requires:       python-wurlitzer >= 1.0.3
-Requires:       (python-ipykernel >= 6.16.1 with python-ipykernel < 7)
+Requires:       (python-ipykernel >= 6.23.2 with python-ipykernel < 7)
 Requires:       (python-ipython >= 7.31.1 with python-ipython < 9)
 Conflicts:      (python-ipython >= 8.8.0 with python-ipython < 8.10.1)
 Requires:       (python-jupyter_client >= 7.4.9 with python-jupyter_client < 9)

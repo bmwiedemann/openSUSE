@@ -595,4 +595,20 @@
   * fixes test failure with pandas 2 (forwarded request 1091238 from bnavigator)</comment>
     <requestid>1091239</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>66a16035703d77daf2a5a9c67ef1c9be</srcmd5>
+    <version>2.4.4</version>
+    <time>1693235564</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.4.4
+  * Increase minimal required version of IPykernel to 6.23.2, by
+    @ccordoba12
+  * Skip more buggy IPython versions, by @ccordoba12
+  * Disable IPython's debugger skip functionality by default, by
+    @ccordoba12
+  * Remove codecov package and use Github action to upload coverage
+    instead, by @ccordoba12 (454)
+- Refresh spyder-kernels-pr453.patch</comment>
+    <requestid>1105875</requestid>
+  </revision>
 </revisionlist>
