@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 21 05:27:13 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 5.9.2:
+  * Don't crash when using comments inside \include-like command
+  * Folding ranges include only the contents instead of the entire range of the structure.
+    For example, the folding range of an environment will start after the \begin and stop before the \end
+
+-------------------------------------------------------------------
 Sun Aug 13 13:26:51 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Replace obsoleted `disabled` option with `manual`
