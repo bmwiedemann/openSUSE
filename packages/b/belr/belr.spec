@@ -19,7 +19,7 @@
 %define soname  libbelr
 %define sover   1
 Name:           belr
-Version:        5.2.51
+Version:        5.2.98
 Release:        0
 Summary:        Language recognition library
 License:        GPL-3.0-or-later
@@ -29,11 +29,12 @@ Source:         https://gitlab.linphone.org/BC/public/belr/-/archive/%{version}/
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE belr-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install belr.pc.
 Patch0:         belr-fix-pkgconfig.patch
+Patch1:         set_current_version.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libudev-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
+BuildRequires:  pkgconfig(bctoolbox) >= %{version}
 
 %description
 Belr parses input formatted according to a language defined by an
