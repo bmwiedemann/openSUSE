@@ -113,4 +113,16 @@
   * Fixes gh#ipydatawidgets/pull#52</comment>
     <requestid>1066643</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>5302dcdf19aa15c986a2fad1a4cded54</srcmd5>
+    <version>unknown</version>
+    <time>1693235696</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.3.5
+  * no upstream release notes
+  * merged patch below
+- Drop ipydatawidgets-pr56-traitlets-fix.patch
+- Fix jupyter package chain for multiflavor</comment>
+    <requestid>1106080</requestid>
+  </revision>
 </revisionlist>

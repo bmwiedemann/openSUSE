@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 26 16:21:34 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.3.5
+  * no upstream release notes
+  * merged patch below
+- Drop ipydatawidgets-pr56-traitlets-fix.patch
+- Fix jupyter package chain for multiflavor
+
+-------------------------------------------------------------------
 Sun Feb 19 16:46:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add ipydatawidgets-pr56-traitlets-fix.patch

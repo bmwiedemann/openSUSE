@@ -16,7 +16,7 @@
 #
 
 
-%define mainver 4.3.2
+%define mainver 4.3.5
 %define labver  7.1.2
 %define jupver  5.5.2
 Name:           python-ipydatawidgets
@@ -27,8 +27,6 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/vidartf/ipydatawidgets
 Source0:        https://files.pythonhosted.org/packages/py2.py3/i/ipydatawidgets/ipydatawidgets-%{mainver}-py2.py3-none-any.whl
-# PATCH-FIX-UPSTREAM ipydatawidgets-pr56-traitlets-fix.patch gh#ipydatawidgets/pull#56
-Patch0:         ipydatawidgets-pr56-traitlets-fix.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
 BuildRequires:  %{python_module numpy}
@@ -61,9 +59,10 @@ Version:        %{jupver}
 Release:        0
 Summary:        Jupyter widgets to help facilitate reuse of large datasets
 Group:          Development/Languages/Python
-Requires:       jupyter-notebook
+Requires:       (jupyter-notebook < 7 or jupyter-nbclassic)
 Provides:       jupyter-datawidgets = %{jupver}
-Requires:       python3-ipydatawidgets = %{mainver}
+Requires:       python3dist(ipydatawidgets) = %{mainver}
+Suggests:       python3-ipydatawidgets
 
 %description -n jupyter-ipydatawidgets
 IPydatawidgets is a set of widgets to help facilitate reuse of large
@@ -76,8 +75,9 @@ Version:        %{labver}
 Release:        0
 Summary:        JupyterLab Widgets to help facilitate reuse of large datasets
 Group:          Development/Languages/Python
-Requires:       jupyter-ipydatawidgets = %{jupver}
 Requires:       jupyter-jupyterlab
+Requires:       python3dist(ipydatawidgets) = %{mainver}
+Suggests:       python3-ipydatawidgets
 Provides:       jupyter-datawidgets-jupyterlab = %{labver}
 Provides:       jupyter_ipydatawidgets_jupyterlab = %{labver}
 Obsoletes:      jupyter_ipydatawidgets_jupyterlab < %{labver}
@@ -100,7 +100,6 @@ This package provides the JupyterLab extension.
 %{python_expand pushd %{buildroot}%{$python_sitelib}
 find ipydatawidgets/ -type f -name "*.py" -exec sed -i 's/\r$//' {} +
 find ipydatawidgets/ -type f -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} +
-patch --no-backup-if-mismatch -p1 < %{PATCH0}
 %{$python_compile}
 %fdupes %{buildroot}%{$python_sitelib}
 popd
