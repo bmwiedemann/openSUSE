@@ -17,19 +17,18 @@
 
 
 Name:           augeas
-Version:        1.13.0
+Version:        1.14.1
 Release:        0
 Summary:        An utility for changing configuration files
 License:        LGPL-2.1-or-later
+Group:          System/Shells
 URL:            https://augeas.net/
 Source0:        https://github.com/hercules-team/augeas/releases/download/release-%{version}/%{name}-%{version}.tar.gz
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Patch0:         augeas-modprobe-lense.patch
 # from https://patch-diff.githubusercontent.com/raw/hercules-team/augeas/pull/755.patch
-Patch1:         sysctl_parsing.patch
-Patch2:         augeas-1.13.0-replace_security_context_t-patch
-Patch3:         gcc9-disable-broken-test.patch
+Patch1:         gcc9-disable-broken-test.patch
 BuildRequires:  glibc-locale
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
@@ -45,6 +44,7 @@ file format and the transformation into a tree.
 
 %package        devel
 Summary:        A library for changing configuration files
+Group:          System/Shells
 Requires:       libaugeas0 = %{version}
 Requires:       libfa1 = %{version}
 
@@ -56,6 +56,7 @@ to the initially read files.
 
 %package -n libaugeas0
 Summary:        A library for changing configuration files
+Group:          System/Shells
 Recommends:     %{name}-lenses = %{version}
 
 %description -n libaugeas0
@@ -70,12 +71,14 @@ file format and the transformation into a tree.
 
 %package -n libfa1
 Summary:        Finite automaton library for Augeas
+Group:          System/Shells
 
 %description -n libfa1
 Component library for the Augeas configuration parser.
 
 %package        lenses
 Summary:        Official set of lenses for use by libaugeas
+Group:          System/Shells
 Requires:       libaugeas0 = %{version}
 
 %description    lenses
@@ -88,11 +91,26 @@ set of lenses.
 
 %package        lense-tests
 Summary:        Set of tests for official Augeas lenses
+Group:          System/Shells
 Requires:       %{name}-lenses = %{version}
 
 %description    lense-tests
 Set of tests for official Augeas lenses. These can be used when
 modifying the official lenses, or when creating new ones.
+
+%package bash-completion
+Summary:        Bash completion for augeas
+Group:          System/Shells
+Requires:       %{name}
+Requires:       bash-completion
+%if 0%{?suse_version} >= 1500
+Supplements:    (%{name} and bash-completion)
+%else
+Supplements:    packageand(%{name}:bash-completion)
+%endif
+
+%description bash-completion
+bash command line completion support for augeas.
 
 %prep
 %autosetup -p1
@@ -126,6 +144,7 @@ unset MALLOC_PERTURB_
 %{_bindir}/augmatch
 %{_bindir}/augtool
 %{_bindir}/augparse
+%{_bindir}/augprint
 %{_bindir}/fadot
 %{_mandir}/man1/*
 
@@ -156,5 +175,10 @@ unset MALLOC_PERTURB_
 %files lense-tests
 %dir %{_datadir}/%{name}/lenses/dist/tests
 %{_datadir}/%{name}/lenses/dist/tests/*.aug
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/augmatch
+%{_datadir}/bash-completion/completions/augprint
+%{_datadir}/bash-completion/completions/augtool
 
 %changelog
