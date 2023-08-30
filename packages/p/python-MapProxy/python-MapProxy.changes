@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 29 12:37:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.16.0
+  ## Improvements:
+  * New cache: Azure Blob storage
+  * Support for JSON legends
+  * Updated layer preview to use latest openlayers
+  * Official docker images released, documentation updated
+  ## Fixes:
+  * Fixed issues with sqlite cache (#629 and #625)
+  * Dependency correction
+  * library detection difficulties on some operating systems
+  * encoding issues with umlauts in featureinfo
+  * Several minor bugfixes
+  * mapproxy-util export - derive image format from cache config
+
+-------------------------------------------------------------------
 Sat Apr  1 20:34:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.15.1

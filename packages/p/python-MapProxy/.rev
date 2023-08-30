@@ -60,4 +60,24 @@
 </comment>
     <requestid>1076758</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a22f9bee92d7e63c6c2930989b6ff918</srcmd5>
+    <version>1.16.0</version>
+    <time>1693383657</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.16.0
+  ## Improvements:
+  * New cache: Azure Blob storage
+  * Support for JSON legends
+  * Updated layer preview to use latest openlayers
+  * Official docker images released, documentation updated
+  ## Fixes:
+  * Fixed issues with sqlite cache (#629 and #625)
+  * Dependency correction
+  * library detection difficulties on some operating systems
+  * encoding issues with umlauts in featureinfo
+  * Several minor bugfixes
+  * mapproxy-util export - derive image format from cache config</comment>
+    <requestid>1107940</requestid>
+  </revision>
 </revisionlist>

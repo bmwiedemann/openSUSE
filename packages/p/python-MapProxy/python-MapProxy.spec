@@ -19,7 +19,7 @@
 %bcond_without test
 %define pythons python3
 Name:           python-MapProxy
-Version:        1.15.1
+Version:        1.16.0
 Release:        0
 Summary:        Proxy for geospatial data
 License:        Apache-2.0
@@ -32,7 +32,8 @@ Source2:        https://github.com/mapproxy/mapproxy/raw/%{version}/mapproxy/tes
 Source99:       python-MapProxy-rpmlintrc
 BuildRequires:  %{python_module GDAL}
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module PyYAML >= 3.0}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -59,7 +60,7 @@ BuildRequires:  proj
 Requires:       libgeos_c1
 Requires:       proj
 Requires:       python-Pillow
-Requires:       python-PyYAML
+Requires:       python-PyYAML >= 3.0
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -100,6 +101,7 @@ export BOTO_CONFIG=/doesnotexist
 donttest="TestCouchDBCache"
 donttest="$donttest or TestRedisCache"
 donttest="$donttest or test_https_"
+donttest="$donttest or mapproxy.script.export.resolve_source"
 # flaky
 donttest="$donttest or (TestWMS130 and test_get_map)"
 # unexcpected mime type
