@@ -179,4 +179,25 @@
   xorg-x11-proto-devel; this looks weird ...</comment>
     <requestid>1062677</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>34cf6666617c3faa7a8953e9ff40351c</srcmd5>
+    <version>7.6_1.16.0</version>
+    <time>1693383549</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.16.0
+  * gitlab CI: add a basic build test
+  * Add documentation for DAMAGE extension
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * dpms: Add DPMSInfoNotify event (DPMS 1.2)
+  * Document the MIT-SHM extension
+  * Add documentation for XFixes v6
+  * Document BIG-REQUESTS
+  * Add documentation for Composite
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * xinput: qualify CW as from xproto
+  * add PresentOptionAsyncMayTear</comment>
+    <requestid>1106057</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug 26 14:40:29 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.16.0
+  * gitlab CI: add a basic build test
+  * Add documentation for DAMAGE extension
+  * Remove "All rights reserved" from Oracle copyright notices
+  * dpms: Add DPMSInfoNotify event (DPMS 1.2)
+  * Document the MIT-SHM extension
+  * Add documentation for XFixes v6
+  * Document BIG-REQUESTS
+  * Add documentation for Composite
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * xinput: qualify CW as from xproto
+  * add PresentOptionAsyncMayTear
+
+-------------------------------------------------------------------
 Thu Feb  2 15:55:40 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer let xcb-proto-devel provide/obsolete
