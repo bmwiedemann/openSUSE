@@ -1,7 +1,7 @@
 #
 # spec file for package pprof
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           pprof
-Version:        0.0.0+git20220520.d04f242
+Version:        0.0.0+git20230820.407c9e7
 Release:        0
 Summary:        CLI tool for visualization and analysis of profiling data
 License:        Apache-2.0
 Group:          Development/Languages/Other
 URL:            https://github.com/google/pprof
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.gz
 BuildRequires:  golang(API) >= 1.14
 

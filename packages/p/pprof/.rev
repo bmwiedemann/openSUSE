@@ -37,4 +37,12 @@
   * Update mapassign regex to match both call variants (forwarded request 988188 from gmbr3)</comment>
     <requestid>988195</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>938ad304c526197bf2c2fe2dd65ab6a5</srcmd5>
+    <version>0.0.0+git20230820.407c9e7</version>
+    <time>1693383491</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107866</requestid>
+  </revision>
 </revisionlist>
