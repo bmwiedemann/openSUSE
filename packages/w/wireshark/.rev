@@ -1789,4 +1789,20 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1099882</requestid>
   </revision>
+  <revision rev="208" vrev="1">
+    <srcmd5>fe88dd90f00f3378017dc6f3b738b1f9</srcmd5>
+    <version>4.0.8</version>
+    <time>1693383471</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105519</requestid>
+  </revision>
+  <revision rev="209" vrev="2">
+    <srcmd5>f0839c229d336aee3e0e17e96ecddbe8</srcmd5>
+    <version>4.0.8</version>
+    <time>1693482190</time>
+    <user>anag+factory</user>
+    <comment>add CVE/boo references for the last release</comment>
+    <requestid>1108108</requestid>
+  </revision>
 </revisionlist>

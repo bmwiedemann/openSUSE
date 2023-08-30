@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 23 20:53:58 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.0.8:
+  * CVE-2023-4512: CBOR dissector crash (boo#1214561).
+  * CVE-2023-4511: BT SDP dissector infinite loop (boo#1214560).
+  * CVE-2023-4513: BT SDP dissector memory leak (boo#1214562).
+  * CVE-2023-2906: CP2179 dissector crash (boo#1214652).
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.0.8.html
+
+-------------------------------------------------------------------
 Thu Jul 13 07:15:15 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.0.7:
