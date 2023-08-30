@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 29 11:07:37 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 4.6.2:
+  * Bump to v4.6.2
+  * Release notes for v4.6.2
+  * Packit: Disable unexpected journal message check for cockpit-podman
+  * Packit: Restrict cockpit tests to recent Fedoras
+  * Packit: run cockpit-podman tests in PRs
+  * rpm: spdx compatible license field
+  * vendor c/storage@v1.48.1
+  * rpm: depend on man-db
+  * use container restart policy if user specifies one
+  * podmansh man page UID=$(id -u lockedu) is not allowed
+  * packit: Build PRs into default packit COPRs
+  * Skip tests that fail in gating
+  * fix: pull parma parsing for the /build compat ep
+  * [CI:DOCS] Update Release Notes
+  * Bumpt to v4.6.2-dev
+
+-------------------------------------------------------------------
 Wed Aug 16 05:27:24 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Fix build error on SLE due to dangling files clause
