@@ -2650,4 +2650,12 @@ git 2.12.3
     <comment></comment>
     <requestid>1091063</requestid>
   </revision>
+  <revision rev="300" vrev="1">
+    <srcmd5>3abd6b455f5b648e4d86461359c674d5</srcmd5>
+    <version>2.42.0</version>
+    <time>1693383475</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105861</requestid>
+  </revision>
 </revisionlist>

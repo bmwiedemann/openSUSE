@@ -35,7 +35,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.41.0
+Version:        2.42.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -187,7 +187,6 @@ Supplements:    (%{name} and cvs)
 Tools for importing CVS repositories to the Git version control system.
 
 %if %{with git_libsecret}
-
 %package credential-libsecret
 Summary:        Git credential backend using libsecret to access keyring
 Group:          Development/Tools/Version Control
