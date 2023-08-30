@@ -1,7 +1,7 @@
-Index: mrouted-4.3/mrouted.service.in
-===================================================================
---- mrouted-4.3.orig/mrouted.service.in
-+++ mrouted-4.3/mrouted.service.in
+diff --git a/mrouted.service.in b/mrouted.service.in
+index 80d5d64..8c25a16 100644
+--- a/mrouted.service.in
++++ b/mrouted.service.in
 @@ -10,6 +10,19 @@ After=network-online.target
  Requires=network-online.target
  
@@ -21,4 +21,4 @@ Index: mrouted-4.3/mrouted.service.in
 +# end of automatic additions 
  Type=simple
  ExecStartPre=-/sbin/modprobe ipip
- ExecStart=@SBINDIR@/mrouted -ns
+ EnvironmentFile=-@SYSCONFDIR@/default/mrouted

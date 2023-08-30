@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Aug 27 14:05:21 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.5
+  Fixes
+  * Ignore IGMP proxy querys (src ip: 0.0.0.0), they must never
+    win a querier election.
+  * Fix compat read location and new location for mrouted.genid
+  * Fix "non-decreasing" generation id, must increment on each
+    restart.
+  Changes
+  * Add support for configurable IGMP query response interval.
+  * Add support for configurable IGMP querier timeout.
+  * New join-group <group> phyint option for cases where an IGMP
+    snooping switch blocks flooding of multicast to the port where
+    mrouted is connected.
+  * On startup and reconf, log why we skip disabled interfaces.
+  * Change to always log when assuming the IGMP querier role.
+
+-------------------------------------------------------------------
 Thu Nov  4 19:33:27 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.4
