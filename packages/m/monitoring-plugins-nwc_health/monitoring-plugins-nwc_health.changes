@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 27 13:41:39 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 11.0.1
+  Changes since 10.12.1.8:
+  * support new C9800 wlan controller.
+  * new structure suitble for epn.
+  * reduce amount of data in cisco fru.
+  * bugfix in traffic thresholds, do not use warning/critical
+    def. thresholds.
+  * implement traffic thresholds for interface-usage, correctly
+    calc the less-than perfdata thresholds.
+
+-------------------------------------------------------------------
 Mon Jun 12 20:14:52 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 10.12.1.8
