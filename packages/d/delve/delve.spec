@@ -24,14 +24,15 @@
 Name:           delve
 Version:        1.21.0
 Release:        0
-Summary:        Static website generator written in Go
+Summary:        Debugger for the Go Programming Language
 License:        MIT
 Group:          Development/Languages/Go
 URL:            https://github.com/go-delve/delve
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang(API) >= 1.16
-ExcludeArch:    s390x ppc64le %arm
+# your_linux_architecture_is_not_supported_by_delve (support_sentinel_linux.go)
+ExcludeArch:    s390x ppc64 ppc64le %arm riscv64
 
 %description
 Delve is a debugger for the Go programming language. The goal of

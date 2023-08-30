@@ -94,4 +94,12 @@
     <comment>- Update to version 1.21.0: (forwarded request 1095852 from jfkw)</comment>
     <requestid>1095857</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>8407c4f7029097c2a27d950eda0fe5f2</srcmd5>
+    <version>1.21.0</version>
+    <time>1693383648</time>
+    <user>anag+factory</user>
+    <comment>- update summary and architecture excludes</comment>
+    <requestid>1107865</requestid>
+  </revision>
 </revisionlist>
