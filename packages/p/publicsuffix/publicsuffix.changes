@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 29 09:47:52 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20230826:
+  * util: gTLD data autopull updates for 2023-08-26T15:11:07 UTC (#1835)
+  * util: gTLD data autopull updates for 2023-08-23T15:12:41 UTC (#1832)
+  * Update tld-update.yml (#1827)
+  * util: gTLD data autopull updates for 2023-08-12T15:10:57 UTC (#1829)
+  * util: gTLD data autopull updates for 2023-08-09T15:14:39 UTC (#1828)
+  * tools: include IANA TLD URL in new gtld updates. (#1817)
+  * util: gTLD data autopull updates for 2023-08-05T15:11:19 UTC (#1822)
+  * Update tld-update.yml to automatically add labels when autopull catches deltas and generates PR (#1815)
+  * ci: update test workflow triggers to include PRs. (#1818)
+  * util: gTLD data autopull updates for 2023-08-02T15:11:59 UTC (#1816)
+  * unbroke URL assembly
+  * Add IANA DB URL instead of blanking out contract date
+  * tools: skip contract date rendering, small CI fixups. (#1812)
+  * util: gTLD data autopull updates for 2023-07-28T15:13:22 UTC (#1805)
+
+-------------------------------------------------------------------
 Fri Jul 28 08:44:52 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20230717:
