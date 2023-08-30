@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug 24 10:16:57 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build only the jdom package and drop xom, jaxen and xom into
+  separate standalone packages
+- Removed patches:
+  * jdom-1.1-build.xml.patch
+  * jdom-1.1-xom-get-jaxen.patch
+    + not needed with the current package
+- Added patches:
+  * CVE-2021-33813.patch
+    + fix CVE-2021-33813: An XXE issue in SAXBuilder in JDOM
+      through 2.0.6 allows attackers to cause a denial of service
+      via a crafted HTTP request.
+  * jdom-crosslink.patch
+    + do not link to javadocs on web
+  * no-jaxen.patch
+    + do not fail to generate javadoc when jaxen is not present
+- Modified patch:
+  * jdom-1.1-OSGiManifest.patch
+    + rediff
+
+-------------------------------------------------------------------
 Wed Mar 30 09:52:00 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the standalone JavaEE modules unconditionally

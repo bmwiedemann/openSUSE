@@ -232,4 +232,12 @@
     <comment>sync changes with sle</comment>
     <requestid>978882</requestid>
   </revision>
+  <revision rev="32" vrev="40">
+    <srcmd5>2cc4ed19563040e6a4514bcc168cdc3f</srcmd5>
+    <version>1.1.3</version>
+    <time>1693383561</time>
+    <user>anag+factory</user>
+    <comment>Add an alias to org.jdom:jdom-legacy</comment>
+    <requestid>1105839</requestid>
+  </revision>
 </revisionlist>
