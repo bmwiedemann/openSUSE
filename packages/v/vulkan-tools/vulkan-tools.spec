@@ -17,7 +17,7 @@
 
 
 Name:           vulkan-tools
-Version:        1.3.250.0
+Version:        1.3.261.0
 Release:        0
 Summary:        Diagnostic utilities for Vulkan
 License:        Apache-2.0
@@ -30,7 +30,7 @@ BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  glslang-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
-BuildRequires:  pkgconfig(vulkan) >= 1.3.243
+BuildRequires:  pkgconfig(vulkan) >= 1.3.261
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)

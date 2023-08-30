@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 22 09:14:04 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.261.0
+  * icd: Fix OOB writes in QueuePerfCounters
+  * icd: Add support for vkGetDescriptorSetLayoutSupport,
+    vkGetRenderAreaGranularity, VK_KHR_cooperative_matrix,
+    VK_EXT_host_image_copy
+  * vulkaninfo: Make -j=<GPU> work
+
+-------------------------------------------------------------------
 Tue May 30 21:38:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.250.0
