@@ -4247,4 +4247,12 @@
   + add &quot;auto&quot; default for --with-xterm-kbs configure option.</comment>
     <requestid>1103809</requestid>
   </revision>
+  <revision rev="246" vrev="19">
+    <srcmd5>3980ce2c1617293972b25315064aa86f</srcmd5>
+    <version>unknown</version>
+    <time>1693383566</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1106232</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 21 06:02:33 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230819
+  + various manpage-formatting fixes.
+  + correct formatting of table header in curs_inopts.3x (Branden
+    Robinson).
+  + correct manpage description of panel_hidden (report by Benjamin
+    Mordaunt).
+
+-------------------------------------------------------------------
 Mon Aug 14 07:32:23 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20230812
