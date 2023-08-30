@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 15 09:07:07 UTC 2023 - Peter Varkoly <varkoly@suse.com>
+
+- CVE-2023-32182: postfix: config_postfix SUSE specific script
+  potentially bad /tmp file usage (bsc#1211196)
+  Use temp file created by mktemp
+
+-------------------------------------------------------------------
 Tue Jun  6 18:37:03 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.8.1
