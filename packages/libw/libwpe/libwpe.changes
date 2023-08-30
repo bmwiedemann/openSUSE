@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 24 10:56:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.1:
+  + Fix the build with older glibc C library versions.
+
+-------------------------------------------------------------------
 Tue Oct  4 19:55:14 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.14.0:
