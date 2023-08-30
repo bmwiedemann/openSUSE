@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 23 21:47:48 UTC 2023 - Héctor Orón Martínez <hector.oron@gmail.com>
+
+- enable HTTPS downloads (jsc#PED-5536)
+
+-------------------------------------------------------------------
 Mon Feb  6 17:47:32 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - cross-aarch64-gcc7 is not available for SLE-15 (i586).

@@ -168,4 +168,12 @@ use xorrisofs for creating iso
   cross-compile target on i586 (bsc#1207796). (forwarded request 1063501 from eeich)</comment>
     <requestid>1063544</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>eaf95b367006e14bf0c2bbcaa01b0e5b</srcmd5>
+    <version>1.21.1+git20230120.a99e435c</version>
+    <time>1693383593</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107778</requestid>
+  </revision>
 </revisionlist>

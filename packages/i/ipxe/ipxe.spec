@@ -94,6 +94,12 @@ sed -i.bak \
     -e 's,//\(#define.*IMAGE_GZIP.*\),\1,' \
     config/general.h
 
+# enable HTTPS downloads
+sed -i.bak \
+    -e 's,#undef\(.*DOWNLOAD_PROTO_HTTPS.*\),#define\1,' \
+    config/general.h
+
+
 make_ipxe() {
     # https://github.com/ipxe/ipxe/issues/620
     [ `gcc -dumpversion` -ge 12 ] && TAG="NO_WERROR=1" || TAG=""
