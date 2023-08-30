@@ -25,13 +25,20 @@ License:        Apache-2.0
 URL:            https://abseil.io/
 Source0:        https://github.com/abseil/abseil-cpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-BuildRequires:  c++_compiler
+%if 0%{?suse_version} < 1500
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
+%else
+BuildRequires:  gcc >= 7
+BuildRequires:  gcc-c++ >= 7
+%endif
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 # PATCH-FIX-OPENSUSE options-{old,cxx17}.patch Ensure ABI stability regardless of compiler options
 %if 0%{?suse_version} < 1550
 Patch0:         options-old.patch
+Patch1:         cmake.patch
 %else
 Patch0:         options-cxx17.patch
 %endif
@@ -64,6 +71,10 @@ This package contains headers and build system files for it.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} < 1500
+export CC="gcc-7"
+export CXX="g++-7"
+%endif
 %cmake
 %cmake_build
 

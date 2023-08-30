@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  9 15:18:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build on older systems by requiring C++17 compliant compiler
+- Added patch:
+  * cmake.patch
+    + lower the cmake requirement to 3.5 in order to be able to
+      build on SLE12SP5
+
+-------------------------------------------------------------------
 Thu Jun 29 09:52:24 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add baselibs.conf to make protobuf happy. Hopefully temporary.
