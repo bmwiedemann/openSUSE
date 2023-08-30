@@ -32,9 +32,11 @@ Patch1:         PrusaSlicer-2.6.0-octoprint-name-fix.patch
 Patch2:         PrusaSlicer-2.6.0-wxWidgets-CheckResizerFlags-assert-fix.patch
 # PATCH-FIX-UPSTREAM  PrusaSlicer-drop-wx3.0.patch gh#prusa3d/PrusaSlicer#11027 - wxWidgets >= 3.1.6 is required
 Patch3:         PrusaSlicer-drop-wx3.0.patch
+# PATCH-FIX-UPSTREAM  PrusaSlicer-pr11154-fix-cgal-c++-error.patch gh#prusa3d/PrusaSlicer#11154
+Patch4:         PrusaSlicer-pr11154-fix-cgal-c++-error.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
-BuildRequires:  cgal-devel >= 4.13.2
+BuildRequires:  cgal-devel >= 5.6
 BuildRequires:  cmake
 BuildRequires:  eigen3-devel >= 3
 BuildRequires:  expat
@@ -80,6 +82,8 @@ BuildRequires:  pkgconfig(qhullcpp)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-egl)
 Requires:       noto-sans-fonts
+# Cannot allocate memory to build
+ExcludeArch:    %{ix86}
 
 %description
 PrusaSlicer takes 3D models (STL, OBJ, AMF) and converts them into G-code
@@ -112,15 +116,7 @@ sed -i 's|slic3r_jobs_tests.cpp||' tests/slic3rutils/CMakeLists.txt
 # https://openbuildservice.org/help/manuals/obs-user-guide/cha.obs.build_job_constraints.html
 # https://en.opensuse.org/openSUSE:Specfile_guidelines#Parallel_make
 %limit_build -m 3072
-# sse2 flags for 32-bit: see gh#prusa3d/PrusaSlicer#3781
-%ifarch %ix86
-  export CFLAGS="%optflags -mfpmath=sse -msse2"
-  export CXXFLAGS="$CFLAGS"
-%endif
 export CC=gcc-%gcc_ver CXX=g++-%gcc_ver
-# rh#2059646
-#sed -i tests/libslic3r/CMakeLists.txt -e '\@test_voronoi.cpp@d'
-
 %cmake \
   -DCMAKE_CXX_STANDARD=17 \
   -DSLIC3R_FHS=1 \

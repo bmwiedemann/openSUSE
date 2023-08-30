@@ -288,4 +288,14 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
   * gh#prusa3d/PrusaSlicer#11026, gh#prusa3d/PrusaSlicer#11027 (forwarded request 1099890 from bnavigator)</comment>
     <requestid>1099891</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>bc5840976e630ce652dd19bf361025bf</srcmd5>
+    <version>2.6.0</version>
+    <time>1693383572</time>
+    <user>anag+factory</user>
+    <comment>- Add PrusaSlicer-pr11154-fix-cgal-c++-error.patch
+  * gh#prusa3d/PrusaSlicer#11154
+  * Fixes error on CGAL 5.6 (forwarded request 1107871 from bnavigator)</comment>
+    <requestid>1107872</requestid>
+  </revision>
 </revisionlist>

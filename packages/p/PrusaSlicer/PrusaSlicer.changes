@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 29 07:23:22 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add PrusaSlicer-pr11154-fix-cgal-c++-error.patch
+  * gh#prusa3d/PrusaSlicer#11154
+  * Fixes error on CGAL 5.6
+
+-------------------------------------------------------------------
+Sun Aug 20 16:01:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Limit to CGAL < 5.6 as it introduced breaking changes which
+  PrusaSlicer is not compatible yet
+- Disable failing ix86 build
+
+-------------------------------------------------------------------
 Fri Jul 21 10:32:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Require wxWidgets >= 3.1.6
