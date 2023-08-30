@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Aug 30 15:24:55 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 1.13:
+  * zless now diagnoses gzip failures, if using less 623 or later.
+  * When SIGPIPE is ignored, gzip now exits with status 2 (warning)
+  instead of status 1 (error) when writing to a broken pipe.  This is
+  more useful with programs like 'less' that treat gzip exit status 2
+  as a non-failure.
+  * 'gzip -d' no longer fails to report invalid compressed data
+  that uses a dictionary distance outside the input window.
+  [bug present since the beginning]
+  * Port to C23, which does not allow K&R-style function definitions
+  with parameters, and which does not define __alignas_is_defined.
+- Refreshed manpage-no-date.patch
+
+-------------------------------------------------------------------
+Wed Aug 16 14:52:39 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- export CONFIG_SHELL=/bin/sh before running configure: results in
+  the shell script (zcat/zgrep/…) to receive a /bin/sh shebang
+  instead of requiring bash (the local shell used to build).
+- Use for i in $(seq 1 9) instead of bashism for in in {1..9}, and
+  drop buildshell definition to require bash.
+
+-------------------------------------------------------------------
 Tue Dec 27 12:26:05 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

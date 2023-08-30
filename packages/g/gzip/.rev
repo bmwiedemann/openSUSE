@@ -512,4 +512,20 @@ though it did make builds reproducible, it would lose some optimizations (forwar
     <comment></comment>
     <requestid>1055860</requestid>
   </revision>
+  <revision rev="63" vrev="4">
+    <srcmd5>93fa55ace34c738239c061a0535fa3ec</srcmd5>
+    <version>1.12</version>
+    <time>1693383452</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105863</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>235379bf7b69300d7e62bc01b5ab59b4</srcmd5>
+    <version>1.13</version>
+    <time>1693570755</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108153</requestid>
+  </revision>
 </revisionlist>

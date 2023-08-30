@@ -16,9 +16,8 @@
 #
 
 
-%define _buildshell /bin/bash
 Name:           gzip
-Version:        1.12
+Version:        1.13
 Release:        0
 Summary:        GNU Zip Compression Utilities
 License:        GPL-3.0-or-later
@@ -70,6 +69,7 @@ export CFLAGS="$CFLAGS -DDFLTCC_LEVEL_MASK=0x7e"
 # Avoid text relocations on i386 as the assembler code (in
 # lib/match.c) is not prepared for PIE (bsc#1143125).
 export DEFS=NO_ASM
+export CONFIG_SHELL=/bin/sh
 %configure --disable-silent-rules \
   gl_cv_func_printf_directive_n=yes \
   gl_cv_func_printf_infinite_long_double=yes \
@@ -95,7 +95,7 @@ profile_gzip
 %endif
 
 %check
-for i in {1..9}; do
+for i in $(seq 1 9); do
   for f in build-aux/texinfo.tex /bin/bash; do
     basef=${f##*/}
     time ./gzip -$i < $f > $basef.gz
