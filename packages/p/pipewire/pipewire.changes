@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Tue Aug 29 17:32:30 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.3.79:
+ * Highlights
+   - Fix a regression in suspend that could cause silence.
+   - Fix a regression in JACK port registration that could cause
+     all kinds of JACK problems.
+   - Fix a typo in the neon sample conversion functions that could
+     cause distortion.
+   - Add BAP broadcast source and sink support.
+   - pw-top now has a batch mode to dump the output to stdout.
+   - Many more bugfixes and improvements.
+ * PipeWire
+   - Fix a regression in shutdown where a node might not first
+     suspend properly. This cause loss of sound in some cases.
+   - Failure to compile a regular expression in the config file
+     will now be reported and ! can be used to negate the match.
+   - Fix a regression where some nodes might not set running in
+     some cases.
+   - Nodes are now suspended before the format is cleared, which
+     might fix some crashes.
+ * Tools
+   - pw-top now has a batch mode to dump the output to stdout.
+ * SPA
+   - The queued samples in audioconvert are now correctly reported
+     in the delay.
+   - Make it easier to add a custom profile in ACP.
+   - Fix a typo in the neon sample conversion functions that could
+     cause distortion.
+   - device.profile.pro=true is added for pro audio nodes.
+   - An xrun counter was added to spa_io_clock to detect and track
+     skipped data because of xruns.
+ * Pulse-server
+   - Add alsa-sink and alsa-source modules.
+ * Bluetooth
+   - Fix a regression where only the BAP off profile is shown.
+   - Add BAP broadcast source and sink support.
+ * JACK
+   - Also emit a latency notify when the buffer size changes.
+   - Fix a regression in JACK port registration.
+   - jack_port_tie() is now supported.
+ * ALSA
+   - Improve property handling, support lists and ranges in
+     addition to fixed values.
+- Remove patches already included upstream:
+  * 0001-jack-make-sure-we-can-always-find-our-own-ports.patch
+  * 0001-audioconvert-fix-typo-in-neon-function.patch
+  * 0001-impl-node-improve-suspend.patch
+  * 0001-bluez5-fix-BAP-profiles-showing.patch
+
+-------------------------------------------------------------------
+Fri Aug 25 09:15:38 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.3.78:
+  * Highlights
+    - An old regression was fixed with where some nodes would not
+      run.
+    - A regression was fixed where removed events would not be
+      shown in some cases. This would result in duplicate entries
+      in audio clients.
+    - Fix an off-by-one in the vban audio receiver. Tweak the rate
+      adaption a little.
+    - ACP will now set a UCM verb before probing the pro-audio
+      devices.
+    - More bugfixes and improvements.
+  * PipeWire
+    - An old regression was fixed with where some nodes would not
+      run. (#3405)
+    - Suspend was improved a little to avoid races when the session
+      manager would suspend right when a driver was starting.
+  * Modules
+    - module-rtp-sap does not use the deprecated inet_aton anymore.
+    - Fix an off-by-one in the vban audio receiver. Tweak the rate
+      adaption a little. (#3380)
+  * SPA
+    - ACP will now set a UCM verb before probing the pro-audio
+      devices. (#3407)
+    - The mandatory flag will be set now on the video modifiers.
+    - EVL was updated to Xenomai4 r46 and xbuf creation was
+      improved.
+    - An option was added to force colors in the log even when
+      logging to !tty.
+    - The return type of spa_pod_builder_control() was fixed.
+    - inotify errors are handled better now. (#3439)
+  * pulse-server
+    - A regression was fixed where removed events would not be
+      shown in some cases. (#3414)
+  * Bluetooth
+    - Improve compatibility with more devices, avoid reusing the
+      same transport for different media-sink instances to avoid
+      encoder resets.
+    - Improve enumeration of codec profiles for BAP and A2DP.
+  * JACK
+    - Ensure we can't iterate ports from a deactivated client. Also
+      make sure the JACK clients with the node.always-process=false
+      always show their ports. (#3416)
+  * GStreamer
+    - A potential crash was fixed in the device provider when
+      stopping. 
+- Remove patches already included upstream:
+  * 0001-context-Dont-stop-setting-runnable-when-meeting-the-driving.patch
+  * 0001-gst-Prevent-a-crash-when-stopping-device-provider.patch
+  * 0001-jack-ports-become-visible-when-the-registration-is-queued.patch
+  * 0002-jack-handle-node.always-process-=-false-jack-nodes.patch
+  * 0001-pulse-server-set-all-change_mask-flags-when-removing.patch
+- Add patch from upstream to fix jack clients:
+  * 0001-jack-make-sure-we-can-always-find-our-own-ports.patch
+- Add patch from upstream to fix typo in neon function that makes
+  pipewire produce noise:
+  * 0001-audioconvert-fix-typo-in-neon-function.patch
+- Add patch from upstream to fix (among others) a race when a node
+  is suspended at the same time it is started causing silence:
+  * 0001-impl-node-improve-suspend.patch
+- Add patch from upstream to fix BAP only showing off profile:
+  * 0001-bluez5-fix-BAP-profiles-showing.patch
+
+-------------------------------------------------------------------
 Fri Aug 18 12:01:36 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix from upstream to ensure effect and sink nodes are set to
