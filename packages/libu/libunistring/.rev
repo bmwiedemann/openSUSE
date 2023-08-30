@@ -257,4 +257,12 @@ other affected packages to make sure the copies are refreshed.
     <comment>- Fix license tag to GPL-3.0-or-later or LGPL-3.0-or-later. (forwarded request 1080485 from fcrozat)</comment>
     <requestid>1080489</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>29ddb5907657980a847ab979793db7cd</srcmd5>
+    <version>1.1</version>
+    <time>1693383509</time>
+    <user>anag+factory</user>
+    <comment>- Run testsuite also under qemu emulation (forwarded request 1107882 from Andreas_Schwab)</comment>
+    <requestid>1107905</requestid>
+  </revision>
 </revisionlist>

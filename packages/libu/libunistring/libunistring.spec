@@ -70,7 +70,6 @@ rm -f %{buildroot}/%{_infodir}/dir
 rm -f %{buildroot}/%{_libdir}/libunistring.la
 
 %check
-%if ! 0%{?qemu_user_space_build}
 # test-malloca seem not to be suitable for ix86 obs worker
 # (locally passes, obs worker stucks -- )
 %ifarch %{ix86}
@@ -78,7 +77,6 @@ sed -i 's:50000:50:g' tests/test-malloca.c
 %endif
 # do not run tests in parallel, it stucks randomly
 %make_build check #
-%endif
 
 %files -n %{name}%{sover}
 %license COPYING*
