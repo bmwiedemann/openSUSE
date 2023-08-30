@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 30 05:06:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.16:
+  * docs: add missing option #344
+  * docs: Add missing items to manpage #345
+  * Add option to exit bemenu using esc in vim binds normal mode #348
+  * Evaluate filter first #350
+
+-------------------------------------------------------------------
 Tue May  9 06:26:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.15:

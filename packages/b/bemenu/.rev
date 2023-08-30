@@ -291,4 +291,16 @@
   * Small fixes #340</comment>
     <requestid>1085625</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d0849412950cef35376ef0311ae3bda9</srcmd5>
+    <version>0.6.16</version>
+    <time>1693383734</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.16:
+  * docs: add missing option #344
+  * docs: Add missing items to manpage #345
+  * Add option to exit bemenu using esc in vim binds normal mode #348
+  * Evaluate filter first #350</comment>
+    <requestid>1108018</requestid>
+  </revision>
 </revisionlist>
