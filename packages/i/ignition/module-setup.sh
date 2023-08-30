@@ -2,8 +2,16 @@
 # -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
 # ex: ts=8 sw=4 sts=4 et filetype=sh
 
+check() {
+    # Omit if building for this already configured system
+    if [[ $hostonly ]] && [ -e /etc/machine-id ]; then
+        return 255
+    fi
+    return 0
+}
+
 depends() {
-    echo ignition
+    echo combustion crypt dm firstboot ignition
 }
 
 install_ignition_unit() {
@@ -33,7 +41,7 @@ install() {
         "/usr/sbin/ignition-enable-network"
     inst_script "$moddir/ignition-setup-user.sh" \
         "/usr/sbin/ignition-setup-user"
-    inst_multiple awk systemd-detect-virt
+    inst_multiple awk systemd-detect-virt cryptsetup
     install_ignition_unit ignition-remove-reconfig_system.service initrd.target
     install_ignition_unit ignition-setup-user.service
 }

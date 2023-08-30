@@ -10,7 +10,7 @@ Changes for openSUSE / SLE:
   For better usability in addition to Ignition's own mount / umount stage all
   files systems tagged for being mounted in the initrd ("x-initrd.mount" mount
   flag) will automatically be mounted / umounted.
-* ignition-setup-user.service / ignition-setup-use.sh:
+* ignition-setup-user.service / ignition-setup-user.sh:
   The user configuration can be stored on a device with the label "ignition"
   (e.g. by attaching a USB flash drive with that name) instead of using the
   platform specific configuration storage mechanism.
@@ -28,27 +28,10 @@ Changes for openSUSE / SLE:
   SELinux itself, however this is a compile time option, so it can't be
   used here.
 * ignition-suse-generator:
-  Supplements the upstream generator by adding dependencies to
-  ignition-setup-user.service and ignition-mount-initrd-fstab.service.
+  Replaces the upstream generator by making use of firstboot.target provided
+  by combustion and hooking up the services provided by this module.
   Additionally it will try to autodect the platform if it is not set on the
   kernel command line.
-* 02_ignition_firstboot:
-  This file has been part of upstream ignition-dracut, but has since then been
-  moved to a static CoreOS specific configuration
-  (https://github.com/coreos/coreos-assembler/pull/616); it is now used in a
-  modified version adapted to SUSE's needs.
-  This script will automatically set the kernel parameters to trigger an
-  Ignition run if a flag file does not exist (e.g. on first boot). To trigger
-  an Ignition run manually just delete the file
-  "/boot/writable/firstboot_happened".
-* ignition-firstboot-complete.service:
-  This file has been part of upstream ignition-dracut, but has since then been
-  moved to a static CoreOS specific configuration
-  (https://github.com/coreos/fedora-coreos-config/pull/1087); it is now used
-  in a simpified version adapted to SUSE's needs.
-  Sets the flag file "/boot/writable/firstboot_happened" to indicate a
-  successful first boot. This flag file is evaluated by the GRUB script
-  02_ignition_firstboot from above.
 * ignition-enable-network.service / ignition-enable-network.sh:
   Ignition supports detection whether the configuration requires networking
   to avoid having to boot with networking enabled even when it isn't

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Aug 23 13:47:34 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Omit ignition module in initrds for already configured systems:
+  * Add 0001-dracut-Don-t-include-the-ignition-module-by-default.patch
+  * Edit module-setup.sh
+- Add explicit dep on combustion in module-setup.sh
+- Replace ignition-dracut-grub2 with combustion's firstboot.target:
+  * Add 0001-Order-ignition-disks.service-before-systemd-fsck-roo.patch
+  * Edit ignition-suse-generator
+  * Edit ignition-umount-initrd-fstab.service
+  * Edit module-setup.sh
+  * Drop 02_ignition_firstboot
+  * Drop ignition-firstboot-complete.service
+  * Adjust README.SUSE
+- Edit ignition-umount-initrd-fstab.service to not rely on combustion
+  units forcing proper order
+
+-------------------------------------------------------------------
+Wed Aug 23 13:33:29 UTC 2023 - Ignaz Forster <iforster@suse.com>
+
+- Fix segmentation fault if filesystem section of Ignition JSON
+  doesn't contain path entry
+- Add 0003-Move-the-GPT-header-on-resized-disks.patch to make it
+  possible to create partitions on resized disk images
+- Add dm and crypt modules as dependencies to make it possible to
+  configure a luks device
+- Fix patch file metadata in 0001-ignore-missing-qemu-blockdev.patch
+  and 0002-allow-multiple-mounts-of-same-device.patch
+
+-------------------------------------------------------------------
 Thu Jul 13 20:08:51 UTC 2023 - iforster@suse.com
 
 - Update to version 2.16.2:

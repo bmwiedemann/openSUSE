@@ -1,5 +1,5 @@
-Author: Ignaz Forster <iforster@suse.com>
-Date:   Thu, 9 Feb 2023 16:05:27 +0100
+From: Ignaz Forster <iforster@suse.com>
+Date: Thu, 9 Feb 2023 16:05:27 +0100
 Upstream: Ticket opened [gh#coreos/ignition#1556]
 
     Continue with empty config on missing QEMU device

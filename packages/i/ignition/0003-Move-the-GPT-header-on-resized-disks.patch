@@ -1,0 +1,23 @@
+From: Ignaz Forster <iforster@suse.com>
+Date: Tue, 22 Aug 2023 16:13:07 +0200
+Subject: [PATCH] Move the GPT header on resized disks
+
+---
+ internal/sgdisk/sgdisk.go | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/internal/sgdisk/sgdisk.go b/internal/sgdisk/sgdisk.go
+index 29915809..9be5a9e6 100644
+--- a/internal/sgdisk/sgdisk.go
++++ b/internal/sgdisk/sgdisk.go
+@@ -138,6 +138,7 @@ func (op Operation) buildOptions() []string {
+ 	}
+ 
+ 	for _, p := range op.parts {
++		opts = append(opts, "--move-second-header")
+ 		opts = append(opts, fmt.Sprintf("--new=%d:%s:+%s", p.Number, partitionGetStart(p), partitionGetSize(p)))
+ 		if p.Label != nil {
+ 			opts = append(opts, fmt.Sprintf("--change-name=%d:%s", p.Number, *p.Label))
+-- 
+2.41.0
+

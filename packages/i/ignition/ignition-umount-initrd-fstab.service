@@ -3,6 +3,8 @@ Description=Unmount initrd fstab entries for Ignition
 DefaultDependencies=false
 Before=ignition-complete.target
 After=ignition-files.service
+# Make sure not to unmount the real sysroot-*.mount units
+Before=initrd-parse-etc.service
 
 [Service]
 Type=oneshot

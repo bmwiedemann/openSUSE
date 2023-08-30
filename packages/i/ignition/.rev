@@ -688,4 +688,12 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
   * test: ShellCheck fixes</comment>
     <requestid>1098572</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>64bf7953ba1fe5983f72627e87931278</srcmd5>
+    <version>2.16.2</version>
+    <time>1693383459</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1105493</requestid>
+  </revision>
 </revisionlist>
