@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package ungoogled-chromium
 #
 # Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2023 Callum Farmer <gmbr3@opensuse.org>
@@ -58,7 +58,6 @@
 %else
 %bcond_without system_re2
 %endif
-%bcond_with is_beta # CHANNEL SWITCH
 %bcond_with system_avif
 # Compiler
 %bcond_without clang
@@ -75,15 +74,8 @@
 %define ffmpeg_version 58
 %endif
 # Package names
-%if %{with is_beta}
-%define chromedriver_name %{name}-chromedriver
-%define n_suffix -beta
-%else
-%define chromedriver_name chromedriver
-%define n_suffix %{nil}
-%endif
-Name:           ungoogled-chromium%{n_suffix}
-Version:        116.0.5845.96
+Name:           ungoogled-chromium
+Version:        116.0.5845.110
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -359,14 +351,13 @@ BuildRequires:  gcc%{gcc_version}-c++
 %description
 Chromium is the open-source project behind Google Chrome. We invite you to join us in our effort to help build a safer, faster, and more stable way for all Internet users to experience the web, and to create a powerful platform for developing a new generation of web applications.
 
-%package %{chromedriver_name}
+%package chromedriver
 Summary:        WebDriver for Google Chrome/Chromium
 License:        BSD-3-Clause
 Requires:       %{name} = %{version}
-Provides:       chromedriver = %{version}-%{release}
 Conflicts:      chromedriver
 
-%description %{chromedriver_name}
+%description chromedriver
 WebDriver is an open source tool for automated testing of webapps across many browsers. It provides capabilities for navigating to web pages, user input, JavaScript execution, and more. ChromeDriver is a standalone server which implements WebDriver's wire protocol for Chromium. It is being developed by members of the Chromium and WebDriver teams.
 
 %prep
@@ -964,7 +955,7 @@ install -Dm 0644 %{SOURCE104} %{buildroot}%{_datadir}/icons/hicolor/symbolic/app
 %{_bindir}/chromium
 %{_mandir}/man1/chromium-browser.1%{?ext_man}
 
-%files %{chromedriver_name}
+%files chromedriver
 %license LICENSE
 %{_libdir}/chromium/chromedriver
 %{_bindir}/chromedriver

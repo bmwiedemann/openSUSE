@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 28 18:05:54 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- ungoogled-chromium 116.0.5845.110 (boo#1214487):
+  * CVE-2023-4427: Out of bounds memory access in V8
+  * CVE-2023-4428: Out of bounds memory access in CSS
+  * CVE-2023-4429: Use after free in Loader
+  * CVE-2023-4430: Use after free in Vulkan
+  * CVE-2023-4431: Out of bounds memory access in Fonts
+
+-------------------------------------------------------------------
 Wed Aug 16 08:02:50 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
 
 - Chromium 116.0.5845.96

@@ -193,4 +193,18 @@
 </comment>
     <requestid>1104146</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cd0ec9fef803d644379c267684d581a4</srcmd5>
+    <version>116.0.5845.110</version>
+    <time>1693383606</time>
+    <user>anag+factory</user>
+    <comment>- ungoogled-chromium 116.0.5845.110 (boo#1214487):
+  * CVE-2023-4427: Out of bounds memory access in V8
+  * CVE-2023-4428: Out of bounds memory access in CSS
+  * CVE-2023-4429: Use after free in Loader
+  * CVE-2023-4430: Use after free in Vulkan
+  * CVE-2023-4431: Out of bounds memory access in Fonts
+</comment>
+    <requestid>1107812</requestid>
+  </revision>
 </revisionlist>
