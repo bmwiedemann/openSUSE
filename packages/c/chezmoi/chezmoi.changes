@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 28 15:01:56 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.38.0:
+  * feat: Add gitHubReleases and gitHubTags
+  * chore: Reformat long lines
+  * feat: Add promptChoice and promptChoiceOnce template functions
+  * fix: Fix minor issues with promptBool docs and errors
+  * feat: Restore --autotemplate flag to add command
+  * fix: Fix race condition in concurrent parsing of externals
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Mon Aug  7 17:15:09 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.37.0:
