@@ -1,8 +1,8 @@
 #
 # spec file for package zita-resampler
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2020-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %define sover   1
 %define libname libzita-resampler%{sover}
 Name:           zita-resampler
-Version:        1.8.0
+Version:        1.11.2
 Release:        0
 Summary:        A C++ library for resampling audio signals
 License:        GPL-3.0-or-later
 Group:          System/Libraries
 URL:            https://kokkinizita.linuxaudio.org/linuxaudio/zita-resampler/resampler.html
-Source:         https://kokkinizita.linuxaudio.org/linuxaudio/downloads/%{name}-%{version}.tar.bz2
+Source:         https://kokkinizita.linuxaudio.org/linuxaudio/downloads/%{name}-%{version}.tar.xz
 Patch0:         fix-makefile.patch
 Patch1:         disable-sse.patch
 BuildRequires:  gcc-c++
@@ -72,7 +72,6 @@ change the musical pitch and lenght of the file.
 The input for both tools can be any audio file readable by the
 libsndfile library. The output file type is either WAV, WAVEX, CAF,
 AIFF or FLAC.
-
 
 %prep
 %setup -q

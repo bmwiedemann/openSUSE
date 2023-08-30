@@ -1,55 +1,23 @@
 diff --git a/apps/Makefile b/apps/Makefile
-index 053b9a6..7216d1c 100644
+index 0b96a9e..2705170 100644
 --- a/apps/Makefile
 +++ b/apps/Makefile
 @@ -25,7 +25,6 @@ MANDIR ?= /usr/share/man/man1
- VERSION = 1.6.0
+ VERSION = 1.10.1
  CPPFLAGS += -MMD -MP -DVERSION=\"$(VERSION)\"
  CXXFLAGS += -O2  -ffast-math -Wall
 -CXXFLAGS += -march=native
  
  
  all:	zresample zretune zresample.1.gz zretune.1.gz
-@@ -55,8 +54,8 @@ zretune.1.gz:	zretune.1
- 
- 
- install:	all
--	install -d $(BINDIR)
--	install -d $(MANDIR)
-+	install -d $(DESTDIR)$(BINDIR)
-+	install -d $(DESTDIR)$(MANDIR)
- 	install -m 755 zresample $(DESTDIR)$(BINDIR)
- 	install -m 755 zretune $(DESTDIR)$(BINDIR)
- 	install -m 644 zresample.1.gz $(DESTDIR)$(MANDIR)
-@@ -65,8 +64,8 @@ install:	all
- uninstall: 
- 	/bin/rm -f $(DESTDIR)$(BINDIR)/zresample
- 	/bin/rm -f $(DESTDIR)$(BINDIR)/zretune
--	/bin/rm -f $(MANDIR)/zresample.1.gz
--	/bin/rm -f $(MANDIR)/zretune.1.gz
-+	/bin/rm -f $(DESTDIR)$(MANDIR)/zresample.1.gz
-+	/bin/rm -f $(DESTDIR)$(MANDIR)/zretune.1.gz
- 
- clean:
- 	/bin/rm -f *~ *.o *.a *.d *.so *.gz zresample zretune
 diff --git a/source/Makefile b/source/Makefile
-index de27da2..72c6eb9 100644
+index 97d1ffa..1491488 100644
 --- a/source/Makefile
 +++ b/source/Makefile
-@@ -33,7 +33,6 @@ DISTDIR = zita-resampler-$(VERSION)
- CPPFLAGS += -I. -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS
+@@ -34,7 +34,6 @@ CPPFLAGS += -I. -D_REENTRANT -D_POSIX_PT
  CPPFLAGS += -DENABLE_SSE2
+ #CPPFLAGS += -DENABLE_NEON  
  CXXFLAGS += -Wall -fPIC -O2 -ffast-math
 -CXXFLAGS += -march=native
  LDFLAGS += 
  LDLIBS +=
- 
-@@ -58,7 +57,7 @@ install:	$(ZITA-RESAMPLER_MIN)
- 	install -d $(DESTDIR)$(LIBDIR)
- 	install -m 644 $(ZITA-RESAMPLER_H)   $(DESTDIR)$(INCDIR)/zita-resampler
- 	install -m 755 $(ZITA-RESAMPLER_MIN) $(DESTDIR)$(LIBDIR)
--	ldconfig
-+	/sbin/ldconfig -N $(DESTDIR)/$(LIBDIR)
- 	ln -sf $(ZITA-RESAMPLER_MIN) $(DESTDIR)$(LIBDIR)/$(ZITA-RESAMPLER_SO)
- 
- uninstall:

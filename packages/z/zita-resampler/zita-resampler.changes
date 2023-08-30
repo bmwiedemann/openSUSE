@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Aug 29 16:59:06 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 1.11.2
+  * Added optimised code for ARM64, contributed by Nicolas Belin.
+    Edit the Makefile to disable SSE2 and enable NEON when
+    compiling for ARM64.
+- Update patches:
+  * fix-makefile.patch
+  * disable-sse.patch
+
+-------------------------------------------------------------------
+Sat Feb 18 09:11:32 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 1.10.1
+  * Fixed dithering of clipped signals.
+- Update patches:
+  * fix-makefile.patch
+  * disable-sse.patch
+  
+-------------------------------------------------------------------
+Thu Feb 16 19:54:21 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.10.0
+  * Fixed constructor parameter range tests.
+- Update patch:
+  * fix-makefile.patch
+
+-------------------------------------------------------------------
 Wed Dec 30 16:46:29 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8.0
