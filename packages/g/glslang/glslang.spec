@@ -18,15 +18,16 @@
 
 %define lname libglslang12
 Name:           glslang
-Version:        12.2.0
+Version:        12.3.1+sdk261
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 #Git-URL:	https://github.com/KhronosGroup/glslang
-Source:         https://github.com/KhronosGroup/glslang/archive/%version.tar.gz
+Source:         https://github.com/KhronosGroup/glslang/archive/sdk-1.3.261.0.tar.gz
 Source3:        baselibs.conf
+Patch1:         0001-Revert-CMake-Make-glslang-default-resource-limits-ST.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  fdupes
@@ -80,10 +81,11 @@ This package contains additional headers that are not officially installed,
 but which some downstream packages rely on.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %name-sdk-1.3.261.0
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
+# ABI keeps on breaking (gh#3052 #3311 #3312)
 echo "V_%version { global: *; };" >/tmp/z.sym
 # Trim -Wl,--no-undefined for now (https://github.com/KhronosGroup/glslang/issues/1484)
 %cmake -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
@@ -118,6 +120,7 @@ comm -13 "$od/devel.files" "$od/devel_full.files" >"$od/devel2.files"
 
 # 3rd party programs use -lOGLCompiler (because pristine glslang shipped .a files),
 # so satisfy them under our shared build.
+mkdir -p "$b/%_libdir"
 for i in libOGLCompiler libOSDependent libGenericCodeGen libMachineIndependent; do
 	ln -s libglslang.so "$b/%_libdir/$i.so"
 	rm -f "$b/%_libdir/$i.a"
@@ -135,7 +138,6 @@ done
 %_bindir/gls*
 %_bindir/spirv*
 %_libdir/cmake/
-%_libdir/*resource*.so
 %_libdir/libGenericCodeGen.so
 %_libdir/libHLSL.so
 %_libdir/libMachineIndependent.so
@@ -144,6 +146,7 @@ done
 %_libdir/libSPIRV.so
 %_libdir/libSPVRemapper.so
 %_libdir/libglslang.so
+%_libdir/libglslang-default-resource-limits.so
 
 %files nonstd-devel -f devel2.files
 
