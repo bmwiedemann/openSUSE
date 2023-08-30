@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Aug 24 13:45:36 UTC 2023 - pgajdos@suse.com
+
+- Version update to 4.8.0
+  * Concise (e.g. "1.2345(67)") and relative (e.g. "5+/-2%")
+    notation for output and input (disabled by default for concise
+    notation) of interval
+  * Optimize rest of unit expression when converting to partial
+    (insufficient) expression (e.g. 18MA×100ns to J = 1.8 J/V)
+  * Round high precision intervals enclosing integers for integer
+    arguments
+  * Add support for specifying position of sign bit in floating
+    point functions
+  * New derived units: Debye, C·m, Daraf, F^-1, V/C, N/C, kcal,
+    kcal/g, kJ
+  * Use international foot as base unit for rod
+  * Fix fibonacci() for non-integers and recursive use
+  * Fix conversion options presented for speed units (and possibly
+    other)
+  * Update dialogs for editing of variables, functions, units,
+    etc. to match the corresponding dialogs in the Qt UI (GTK)
+  * Show user-defined objects in a separate category in menus and
+    dialogs (GTK)
+  * Add option to disable tooltips in keypad or everywhere (GTK,
+    Qt)
+  * Add option to disable units and to interpret unrecognized
+    symbols as variables (unknowns) to preferences (Qt)
+  * Make closing of application with Escape key optional and
+    disabled by default (GTK, Qt)
+  * Hide name column in conversion list when applied to current
+    result (Qt)
+  * Add temporary option to unknown variable edit dialog (GTK, Qt)
+  * Add Microship (PIC16/17) 24 and 32 bit floating point formats
+    (GTK, Qt)
+  * Fix initial height of list and description in units window
+    (GTK)
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Fri Jul 21 08:02:53 UTC 2023 - pgajdos@suse.com
 
 - version update to 4.7.0
