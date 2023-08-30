@@ -1,3 +1,24 @@
+Index: glibc-2.38/debug/strcpy_chk.c
+===================================================================
+--- glibc-2.38.orig/debug/strcpy_chk.c
++++ glibc-2.38/debug/strcpy_chk.c
+@@ -31,3 +31,4 @@ __strcpy_chk (char *dest, const char *sr
+ 
+   return memcpy (dest, src, len + 1);
+ }
++libc_hidden_builtin_def (__strcpy_chk)
+Index: glibc-2.38/include/string.h
+===================================================================
+--- glibc-2.38.orig/include/string.h
++++ glibc-2.38/include/string.h
+@@ -213,6 +213,7 @@ libc_hidden_builtin_proto (__memcpy_chk)
+ libc_hidden_builtin_proto (__memmove_chk)
+ libc_hidden_builtin_proto (__mempcpy_chk)
+ libc_hidden_builtin_proto (__memset_chk)
++libc_hidden_builtin_proto (__strcpy_chk)
+ libc_hidden_builtin_proto (__stpcpy_chk)
+ 
+ #endif
 Index: glibc-2.38/intl/loadmsgcat.c
 ===================================================================
 --- glibc-2.38.orig/intl/loadmsgcat.c

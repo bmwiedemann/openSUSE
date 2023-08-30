@@ -2868,4 +2868,12 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   dl-find-object-return.patch; Removed (forwarded request 1102127 from Andreas_Schwab)</comment>
     <requestid>1102128</requestid>
   </revision>
+  <revision rev="278" vrev="2">
+    <srcmd5>0e5847cdf1611b8a8a115b56921105eb</srcmd5>
+    <version>2.38</version>
+    <time>1693383567</time>
+    <user>anag+factory</user>
+    <comment>- Add cross-ppc64le package (forwarded request 1107913 from Andreas_Schwab)</comment>
+    <requestid>1107915</requestid>
+  </revision>
 </revisionlist>

@@ -30,15 +30,23 @@
 # can use only simple RPM expressions, no lua, no shell, no '{expand:'
 # expression :-/  Ideally we'd like to just strip the 'cross_' prefix,
 # but we can't.  So enumerate the possibilities for now.
+%define cross_arch %{cross_cpu}
 %if "%flavor" == "cross-aarch64"
-%define cross_arch aarch64
+%define cross_cpu aarch64
 %endif
 %if "%flavor" == "cross-riscv64"
-%define cross_arch riscv64
+%define cross_cpu riscv64
+%endif
+%if "%flavor" == "cross-s390x"
+%define cross_cpu s390x
+%endif
+%if "%flavor" == "cross-ppc64le"
+%define cross_arch ppc64le
+%define cross_cpu powerpc64le
 %endif
 
-%if 0%{?cross_arch:1}
-%define binutils_os %{cross_arch}-suse-linux
+%if 0%{?cross_cpu:1}
+%define binutils_os %{cross_cpu}-suse-linux
 # use same sysroot as in binutils.spec
 %define sysroot %{_prefix}/%{binutils_os}/sys-root
 %endif
@@ -81,7 +89,7 @@ ExclusiveArch:  do_not_build
 %define build_utils 0
 %define build_testsuite 1
 %endif
-%if 0%{?cross_arch:1}
+%if 0%{?cross_cpu:1}
 %define build_main 0
 %define build_utils 0
 %define build_testsuite 0
@@ -89,7 +97,7 @@ ExclusiveArch:  do_not_build
 %undefine _build_create_debug
 ExcludeArch:    %{cross_arch}
 %endif
-%define host_arch %{?cross_arch}%{!?cross_arch:%{_target_cpu}}
+%define host_arch %{?cross_cpu}%{!?cross_cpu:%{_target_cpu}}
 
 %if %{build_main}
 %define name_suffix %{nil}
@@ -232,6 +240,8 @@ BuildRequires:  cross-%{cross_arch}-linux-glibc-devel
 %if "%flavor" == "i686"
 ExclusiveArch:  i586 i686
 BuildArch:      i686
+# Sync only this build counter with the main build
+#!BcntSyncTag:  glibc
 %endif
 
 ###
@@ -289,8 +299,14 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
-# PATCH-FIX-OPENSUSE iconv: restore verbosity with unrecognized encoding names (BZ #30694)
+# PATCH-FIX-UPSTREAM iconv: restore verbosity with unrecognized encoding names (BZ #30694)
 Patch1000:      iconv-error-verbosity.patch
+# PATCH-FIX-UPSTREAM x86: Fix for cache computation on AMD legacy cpus
+Patch1001:      cache-amd-legacy.patch
+# PATCH-FIX-UPSTREAM x86: Fix incorrect scope of setting `shared_per_thread` (BZ# 30745)
+Patch1002:      cache-intel-shared.patch
+# PATCH-FIX-UPSTREAM malloc: Enable merging of remainders in memalign, remove bin scanning from memalign (BZ #30723)
+Patch1003:      posix-memalign-fragmentation.patch
 
 ###
 # Patches awaiting upstream approval
@@ -515,6 +531,9 @@ library in a cross compilation setting.
 
 %if %{without snapshot}
 %patch1000 -p1
+%patch1001 -p1
+%patch1002 -p1
+%patch1003 -p1
 %endif
 
 %patch2000 -p1
@@ -590,8 +609,8 @@ BuildCCplus="%__cxx"
 #now overwrite for some architectures
 #
 %if %{build_cross}
-BuildCC=%{cross_arch}-suse-linux-gcc
-BuildCCplus=%{cross_arch}-suse-linux-g++
+BuildCC=%{cross_cpu}-suse-linux-gcc
+BuildCCplus=%{cross_cpu}-suse-linux-g++
 %else
 %ifarch sparc64
 	BuildFlags="-O2 -mcpu=ultrasparc -mvis -fcall-used-g6"
@@ -754,6 +773,7 @@ make %{?_smp_mflags} %{?make_output_sync} -C cc-base -k check || {
 # Exceptions:
 # None!
 make %{?_smp_mflags} %{?make_output_sync} -C cc-base check-abi
+make %{?_smp_mflags} %{?make_output_sync} -C cc-base test t=elf/check-localplt
 %endif
 
 %define rtldlib %{_lib}

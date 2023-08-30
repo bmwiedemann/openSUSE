@@ -1,3 +1,29 @@
+Mon Aug 28 11:56:10 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Add cross-ppc64le package
+
+-------------------------------------------------------------------
+Tue Aug 22 15:46:51 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- posix-memalign-fragmentation.patch: malloc: Enable merging of remainders
+  in memalign, remove bin scanning from memalign (BZ #30723)
+- Limit build counter sync to i686 flavor, to reduce needs for rebuilds
+
+-------------------------------------------------------------------
+Tue Aug 22 11:24:16 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Add cross-s390x package (bsc#1214460)
+
+-------------------------------------------------------------------
+Mon Aug 14 08:12:28 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Require that elf/check-localplt does not fail
+- glibc-2.3.90-langpackdir.diff: add hidden alias for __strcpy_chk
+- cache-amd-legacy.patch: x86: Fix for cache computation on AMD legacy
+  cpus
+- cache-intel-shared.patch: x86: Fix incorrect scope of setting
+  `shared_per_thread` (BZ# 30745)
+
 -------------------------------------------------------------------
 Wed Aug  2 10:50:32 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
