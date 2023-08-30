@@ -2,7 +2,7 @@
 # spec file for package python-impacket
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2020-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,23 @@
 #
 
 
+%define binaries impacket-GetADUsers impacket-Get-GPPPassword impacket-GetNPUsers impacket-GetUserSPNs impacket-DumpNTLMInfo impacket-addcomputer impacket-atexec impacket-changepasswd impacket-dcomexec impacket-dpapi impacket-esentutl impacket-exchanger impacket-findDelegation impacket-getArch impacket-getPac impacket-getST impacket-getTGT impacket-goldenPac impacket-karmaSMB impacket-keylistattack impacket-kintercept impacket-lookupsid impacket-machine_role impacket-mimikatz impacket-mqtt_check impacket-mssqlclient impacket-mssqlinstance impacket-net impacket-netview impacket-nmapAnswerMachine impacket-ntfs-read impacket-ntlmrelayx impacket-ping impacket-ping6 impacket-psexec impacket-raiseChild impacket-rbcd impacket-rdp_check impacket-reg impacket-registry-read impacket-rpcmap impacket-rpcdump impacket-sambaPipe impacket-samrdump impacket-secretsdump impacket-services impacket-smbclient impacket-smbexec impacket-smbpasswd impacket-smbrelayx impacket-smbserver impacket-sniff impacket-sniffer impacket-split impacket-ticketConverter impacket-ticketer impacket-tstool impacket-wmiexec impacket-wmipersist impacket-wmiquery
+
 Name:           python-impacket
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Python3 module to easily build and dissect network protocols
 # License: modified Apache-1.1 (see file LICENSE)
 License:        Apache-1.1
 Group:          Development/Languages/Python
 URL:            https://www.secureauth.com/labs/open-source-tools/impacket
+#Git-Clone:     https://github.com/fortra/impacket.git
 Source:         https://files.pythonhosted.org/packages/source/i/impacket/impacket-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 1.0
-Requires:       python-chardet
+Requires:       python-charset-normalizer
 Requires:       python-future
 Requires:       python-ldap3 >= 2.5
 Requires:       python-ldapdomaindump >= 0.9.0
@@ -77,63 +80,9 @@ sed -e '/^#!\//, 1d' -i \
 %install
 %python_install
 %python_expand cd %{buildroot}%{_bindir} && find . -name "*.py" -exec sh -c 'mv $0 impacket-`basename "$0" .py`' '{}' \;
-
-%python_clone -a %{buildroot}%{_bindir}/impacket-GetADUsers
-%python_clone -a %{buildroot}%{_bindir}/impacket-Get-GPPPassword
-%python_clone -a %{buildroot}%{_bindir}/impacket-GetNPUsers
-%python_clone -a %{buildroot}%{_bindir}/impacket-GetUserSPNs
-%python_clone -a %{buildroot}%{_bindir}/impacket-addcomputer
-%python_clone -a %{buildroot}%{_bindir}/impacket-atexec
-%python_clone -a %{buildroot}%{_bindir}/impacket-dcomexec
-%python_clone -a %{buildroot}%{_bindir}/impacket-dpapi
-%python_clone -a %{buildroot}%{_bindir}/impacket-esentutl
-%python_clone -a %{buildroot}%{_bindir}/impacket-exchanger
-%python_clone -a %{buildroot}%{_bindir}/impacket-findDelegation
-%python_clone -a %{buildroot}%{_bindir}/impacket-getArch
-%python_clone -a %{buildroot}%{_bindir}/impacket-getPac
-%python_clone -a %{buildroot}%{_bindir}/impacket-getST
-%python_clone -a %{buildroot}%{_bindir}/impacket-getTGT
-%python_clone -a %{buildroot}%{_bindir}/impacket-goldenPac
-%python_clone -a %{buildroot}%{_bindir}/impacket-karmaSMB
-%python_clone -a %{buildroot}%{_bindir}/impacket-keylistattack
-%python_clone -a %{buildroot}%{_bindir}/impacket-kintercept
-%python_clone -a %{buildroot}%{_bindir}/impacket-lookupsid
-%python_clone -a %{buildroot}%{_bindir}/impacket-machine_role
-%python_clone -a %{buildroot}%{_bindir}/impacket-mimikatz
-%python_clone -a %{buildroot}%{_bindir}/impacket-mqtt_check
-%python_clone -a %{buildroot}%{_bindir}/impacket-mssqlclient
-%python_clone -a %{buildroot}%{_bindir}/impacket-mssqlinstance
-%python_clone -a %{buildroot}%{_bindir}/impacket-netview
-%python_clone -a %{buildroot}%{_bindir}/impacket-nmapAnswerMachine
-%python_clone -a %{buildroot}%{_bindir}/impacket-ntfs-read
-%python_clone -a %{buildroot}%{_bindir}/impacket-ntlmrelayx
-%python_clone -a %{buildroot}%{_bindir}/impacket-ping
-%python_clone -a %{buildroot}%{_bindir}/impacket-ping6
-%python_clone -a %{buildroot}%{_bindir}/impacket-psexec
-%python_clone -a %{buildroot}%{_bindir}/impacket-raiseChild
-%python_clone -a %{buildroot}%{_bindir}/impacket-rbcd
-%python_clone -a %{buildroot}%{_bindir}/impacket-rdp_check
-%python_clone -a %{buildroot}%{_bindir}/impacket-reg
-%python_clone -a %{buildroot}%{_bindir}/impacket-registry-read
-%python_clone -a %{buildroot}%{_bindir}/impacket-rpcmap
-%python_clone -a %{buildroot}%{_bindir}/impacket-rpcdump
-%python_clone -a %{buildroot}%{_bindir}/impacket-sambaPipe
-%python_clone -a %{buildroot}%{_bindir}/impacket-samrdump
-%python_clone -a %{buildroot}%{_bindir}/impacket-secretsdump
-%python_clone -a %{buildroot}%{_bindir}/impacket-services
-%python_clone -a %{buildroot}%{_bindir}/impacket-smbclient
-%python_clone -a %{buildroot}%{_bindir}/impacket-smbexec
-%python_clone -a %{buildroot}%{_bindir}/impacket-smbpasswd
-%python_clone -a %{buildroot}%{_bindir}/impacket-smbrelayx
-%python_clone -a %{buildroot}%{_bindir}/impacket-smbserver
-%python_clone -a %{buildroot}%{_bindir}/impacket-sniff
-%python_clone -a %{buildroot}%{_bindir}/impacket-sniffer
-%python_clone -a %{buildroot}%{_bindir}/impacket-split
-%python_clone -a %{buildroot}%{_bindir}/impacket-ticketConverter
-%python_clone -a %{buildroot}%{_bindir}/impacket-ticketer
-%python_clone -a %{buildroot}%{_bindir}/impacket-wmiexec
-%python_clone -a %{buildroot}%{_bindir}/impacket-wmipersist
-%python_clone -a %{buildroot}%{_bindir}/impacket-wmiquery
+for b in %{binaries}; do
+  %python_clone -a %{buildroot}%{_bindir}/$b
+done
 #
 %python_expand rm -f %{buildroot}%{_datadir}/doc/impacket/LICENSE
 %python_expand rm -f %{buildroot}%{_datadir}/doc/impacket/README.md
@@ -142,64 +91,14 @@ sed -e '/^#!\//, 1d' -i \
 %python_expand rm %{buildroot}%{_bindir}/_current_flavor
 
 %post
-%python_install_alternative impacket-GetADUsers
-%python_install_alternative impacket-GetNPUsers
-%python_install_alternative impacket-Get-GPPPassword
-%python_install_alternative impacket-GetUserSPNs
-%python_install_alternative impacket-addcomputer
-%python_install_alternative impacket-atexec
-%python_install_alternative impacket-dcomexec
-%python_install_alternative impacket-dpapi
-%python_install_alternative impacket-esentutl
-%python_install_alternative impacket-exchanger
-%python_install_alternative impacket-findDelegation
-%python_install_alternative impacket-getArch
-%python_install_alternative impacket-getPac
-%python_install_alternative impacket-getST
-%python_install_alternative impacket-getTGT
-%python_install_alternative impacket-goldenPac
-%python_install_alternative impacket-karmaSMB
-%python_install_alternative impacket-keylistattack
-%python_install_alternative impacket-kintercept
-%python_install_alternative impacket-lookupsid
-%python_install_alternative impacket-machine_role
+%{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
+  print(rpm.expand("%python_install_alternative " .. b .. "\n"))
+end}
 
 %postun
-%python_uninstall_alternative impacket-mimikatz
-%python_uninstall_alternative impacket-mqtt_check
-%python_uninstall_alternative impacket-mssqlclient
-%python_uninstall_alternative impacket-mssqlinstance
-%python_uninstall_alternative impacket-netview
-%python_uninstall_alternative impacket-nmapAnswerMachine
-%python_uninstall_alternative impacket-ntfs-read
-%python_uninstall_alternative impacket-ntlmrelayx
-%python_uninstall_alternative impacket-ping
-%python_uninstall_alternative impacket-ping6
-%python_uninstall_alternative impacket-psexec
-%python_uninstall_alternative impacket-raiseChild
-%python_uninstall_alternative impacket-rbcd
-%python_uninstall_alternative impacket-rdp_check
-%python_uninstall_alternative impacket-reg
-%python_uninstall_alternative impacket-registry-read
-%python_uninstall_alternative impacket-rpcmap
-%python_uninstall_alternative impacket-rpcdump
-%python_uninstall_alternative impacket-sambaPipe
-%python_uninstall_alternative impacket-samrdump
-%python_uninstall_alternative impacket-secretsdump
-%python_uninstall_alternative impacket-services
-%python_uninstall_alternative impacket-smbclient
-%python_uninstall_alternative impacket-smbexec
-%python_uninstall_alternative impacket-smbrelayx
-%python_uninstall_alternative impacket-smbpasswd
-%python_uninstall_alternative impacket-smbserver
-%python_uninstall_alternative impacket-sniff
-%python_uninstall_alternative impacket-sniffer
-%python_uninstall_alternative impacket-split
-%python_uninstall_alternative impacket-ticketConverter
-%python_uninstall_alternative impacket-ticketer
-%python_uninstall_alternative impacket-wmiexec
-%python_uninstall_alternative impacket-wmipersist
-%python_uninstall_alternative impacket-wmiquery
+%{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
+  print(rpm.expand("%python_uninstall_alternative " .. b .. "\n"))
+end}
 
 %check
 # Don't run tests that require online connections
@@ -239,62 +138,9 @@ rm tests/misc/test_structure.py
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog.md README.md
-%python_alternative %{_bindir}/impacket-GetADUsers
-%python_alternative %{_bindir}/impacket-Get-GPPPassword
-%python_alternative %{_bindir}/impacket-GetNPUsers
-%python_alternative %{_bindir}/impacket-GetUserSPNs
-%python_alternative %{_bindir}/impacket-addcomputer
-%python_alternative %{_bindir}/impacket-atexec
-%python_alternative %{_bindir}/impacket-dcomexec
-%python_alternative %{_bindir}/impacket-dpapi
-%python_alternative %{_bindir}/impacket-esentutl
-%python_alternative %{_bindir}/impacket-exchanger
-%python_alternative %{_bindir}/impacket-findDelegation
-%python_alternative %{_bindir}/impacket-getArch
-%python_alternative %{_bindir}/impacket-getPac
-%python_alternative %{_bindir}/impacket-getST
-%python_alternative %{_bindir}/impacket-getTGT
-%python_alternative %{_bindir}/impacket-goldenPac
-%python_alternative %{_bindir}/impacket-karmaSMB
-%python_alternative %{_bindir}/impacket-keylistattack
-%python_alternative %{_bindir}/impacket-kintercept
-%python_alternative %{_bindir}/impacket-lookupsid
-%python_alternative %{_bindir}/impacket-machine_role
-%python_alternative %{_bindir}/impacket-mimikatz
-%python_alternative %{_bindir}/impacket-mqtt_check
-%python_alternative %{_bindir}/impacket-mssqlclient
-%python_alternative %{_bindir}/impacket-mssqlinstance
-%python_alternative %{_bindir}/impacket-netview
-%python_alternative %{_bindir}/impacket-nmapAnswerMachine
-%python_alternative %{_bindir}/impacket-ntfs-read
-%python_alternative %{_bindir}/impacket-ntlmrelayx
-%python_alternative %{_bindir}/impacket-ping
-%python_alternative %{_bindir}/impacket-ping6
-%python_alternative %{_bindir}/impacket-psexec
-%python_alternative %{_bindir}/impacket-raiseChild
-%python_alternative %{_bindir}/impacket-rbcd
-%python_alternative %{_bindir}/impacket-rdp_check
-%python_alternative %{_bindir}/impacket-reg
-%python_alternative %{_bindir}/impacket-registry-read
-%python_alternative %{_bindir}/impacket-rpcmap
-%python_alternative %{_bindir}/impacket-rpcdump
-%python_alternative %{_bindir}/impacket-sambaPipe
-%python_alternative %{_bindir}/impacket-samrdump
-%python_alternative %{_bindir}/impacket-secretsdump
-%python_alternative %{_bindir}/impacket-services
-%python_alternative %{_bindir}/impacket-smbclient
-%python_alternative %{_bindir}/impacket-smbexec
-%python_alternative %{_bindir}/impacket-smbrelayx
-%python_alternative %{_bindir}/impacket-smbpasswd
-%python_alternative %{_bindir}/impacket-smbserver
-%python_alternative %{_bindir}/impacket-sniff
-%python_alternative %{_bindir}/impacket-sniffer
-%python_alternative %{_bindir}/impacket-split
-%python_alternative %{_bindir}/impacket-ticketConverter
-%python_alternative %{_bindir}/impacket-ticketer
-%python_alternative %{_bindir}/impacket-wmiexec
-%python_alternative %{_bindir}/impacket-wmipersist
-%python_alternative %{_bindir}/impacket-wmiquery
+%{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
+  print(rpm.expand("%python_alternative %{_bindir}/" .. b .. "\n"))
+end}
 %{python_sitelib}/impacket*
 
 %changelog
