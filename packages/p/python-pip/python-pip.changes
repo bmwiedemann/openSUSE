@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Aug 28 03:30:09 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Finally drop csv23, it has been removed upstream since 2021. 
+- Shift around sle15_python_module_pythons.
+
+-------------------------------------------------------------------
+Mon Aug  7 22:01:39 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Upgrade to 23.2.1
+  * Bug fixes
+    - Disable PEP 658 metadata fetching with the legacy resolver.
+
+- Upgrade to 23.2
+  * Process
+    - Deprecate support for eggs for Python 3.11 or later, when the
+      new importlib.metadata backend is used to load distribution
+      metadata. This only affects the egg distribution format (with
+      the .egg extension); distributions using the .egg-info metadata
+      format (but are not actually eggs) are not affected. For more
+      information about eggs, see relevant section in the setuptools
+      documentation.
+  * Deprecations and Removals
+    - Deprecate legacy version and version specifiers that don’t
+      conform to PEP 440
+    - freeze no longer excludes the setuptools, distribute, and wheel
+      from the output when running on Python 3.12 or later, where they
+      are not included in a virtual environment by default. Use
+      --exclude if you wish to exclude any of these packages.
+  * Features
+    - make rejection messages slightly different between 1 and 8, so
+      the user can make the difference.
+  * Bug Fixes
+    - Fix pip completion --zsh.
+    - Prevent downloading files twice when PEP 658 metadata is present
+    - Add permission check before configuration
+    - Fix deprecation warnings in Python 3.12 for usage of
+      shutil.rmtree
+    - Ignore invalid or unreadable origin.json files in the cache of
+      locally built wheels.
+    - Fix installation of packages with PEP658 metadata using
+      non-canonicalized names
+    - Correctly parse dist-info-metadata values from JSON-format index
+      data.
+    - Fail with an error if the --python option is specified after the
+      subcommand name.
+    - Fix slowness when using importlib.metadata (the default way for
+      pip to read metadata in Python 3.11+) and there is a large
+      overlap between already installed and to-be-installed packages.
+    - Pass the -r flag to mercurial to be explicit that a revision is
+      passed and protect against hg options injection as part of VCS
+      URLs. Users that do not have control on VCS URLs passed to pip
+      are advised to upgrade.
+  * Vendored Libraries
+    - Upgrade certifi to 2023.5.7
+    - Upgrade platformdirs to 3.8.1
+    - Upgrade pygments to 2.15.1
+    - Upgrade pyparsing to 3.1.0
+    - Upgrade Requests to 2.31.0
+    - Upgrade rich to 13.4.2
+    - Upgrade setuptools to 68.0.0
+    - Updated typing_extensions to 4.6.0
+    - Upgrade typing_extensions to 4.7.1
+    - Upgrade urllib3 to 1.26.16
+
+-------------------------------------------------------------------
 Mon Jun 12 10:50:56 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove .exe files from package (bsc#1212015)

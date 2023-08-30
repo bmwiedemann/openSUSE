@@ -743,4 +743,41 @@
     <comment>- Remove .exe files from package (bsc#1212015)</comment>
     <requestid>1092512</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>c6d93805975f5f2ee4e67d69aa7cd7f8</srcmd5>
+    <version>23.2.1</version>
+    <time>1693383552</time>
+    <user>anag+factory</user>
+    <comment>- Finally drop csv23, it has been removed upstream since 2021. 
+- Shift around sle15_python_module_pythons.
+
+- Upgrade to 23.2.1
+  * Bug fixes
+    - Disable PEP 658 metadata fetching with the legacy resolver.
+- Upgrade to 23.2
+  * Process
+    - Deprecate support for eggs for Python 3.11 or later, when the
+      new importlib.metadata backend is used to load distribution
+      metadata. This only affects the egg distribution format (with
+      the .egg extension); distributions using the .egg-info metadata
+      format (but are not actually eggs) are not affected. For more
+      information about eggs, see relevant section in the setuptools
+      documentation.
+  * Deprecations and Removals
+    - Deprecate legacy version and version specifiers that don’t
+      conform to PEP 440
+    - freeze no longer excludes the setuptools, distribute, and wheel
+      from the output when running on Python 3.12 or later, where they
+      are not included in a virtual environment by default. Use
+      --exclude if you wish to exclude any of these packages.
+  * Features
+    - make rejection messages slightly different between 1 and 8, so
+      the user can make the difference.
+  * Bug Fixes
+    - Fix pip completion --zsh.
+    - Prevent downloading files twice when PEP 658 metadata is present
+    - Add permission check before configuration
+    - Fix deprecation warnings in Python 3.12 for usage of</comment>
+    <requestid>1106201</requestid>
+  </revision>
 </revisionlist>

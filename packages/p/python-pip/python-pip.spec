@@ -16,7 +16,6 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -39,8 +38,9 @@
 %else
 %bcond_with libalternatives
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-pip%{psuffix}
-Version:        23.1.2
+Version:        23.2.1
 Release:        0
 Summary:        A Python package management system
 License:        MIT
@@ -74,7 +74,6 @@ Requires(postun):update-alternatives
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module csv23}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module installer}
