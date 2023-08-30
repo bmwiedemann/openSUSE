@@ -304,4 +304,22 @@
     for the CHERI/Morello platform and other various fixes.</comment>
     <requestid>1091980</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f8c004718abd84291e6af9760bf37165</srcmd5>
+    <version>23.2.0</version>
+    <time>1693383547</time>
+    <user>anag+factory</user>
+    <comment>- enable libei and libdecor only for TW, since it does not exist
+  yet on sle15-sp5
+
+- Update to version 23.2.0:
+  * Optional support for emulated input (EI) via the libei library,
+    support for the tearing control protocol, and the XWayland
+    rootful mode is now resizable with libdecor.
+- Add pkgconfig(libei-1.0) BuildRequires, build new optional
+  emulated input support.
+- Add pkgconfig(libdecor-0) BuildRequires, build optional CSD
+  support.</comment>
+    <requestid>1105976</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,7 @@
 %endif
 
 Name:           xwayland
-Version:        23.1.2
+Version:        23.2.0
 Release:        0
 URL:            http://xorg.freedesktop.org
 Summary:        Xwayland Xserver
@@ -53,7 +53,13 @@ BuildRequires:  pkgconfig(glproto)
 BuildRequires:  pkgconfig(inputproto) >= 2.3.99.1
 BuildRequires:  pkgconfig(kbproto)
 BuildRequires:  pkgconfig(libbsd)
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(libdecor-0)
+%endif
 BuildRequires:  pkgconfig(libdrm) >= 2.4.109
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(libei-1.0)
+%endif
 BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(libxcvt)
 BuildRequires:  pkgconfig(openssl)
