@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 26 21:43:31 UTC 2023 - antoine.belvire@opensuse.org
+
+- Update to version 4.8:
+  * Updated astyle lib to version 3.4.6
+  * Moved old yaml.lang to yaml-ansible.lang and added a new yaml
+    definition (gl#saalen/highlight#235).
+  * Omit size property in BBCode output if `--fragment` is set
+    (gl#saalen/highlight#234).
+  * Allowed font size unit with `--font-size` for HTML and ODT
+    output (gl#saalen/highlight!145).
+  * GUI: Updated JP translation (gl#saalen/highlight!144).
+
+-------------------------------------------------------------------
 Mon Jul 17 22:41:06 UTC 2023 - antoine.belvire@opensuse.org
 
 - Update to version 4.7:
