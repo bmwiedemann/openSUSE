@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 29 10:33:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.8
+  * addr: create an all-zero addresses when parsing "any" or "default"
+  * addr: allow constructing all-zero addresses
+  * route: construct all-zero addresses for default route destination
+  * bridge: Add support for link_info of a bridge
+  * bridge: extend libnl with options needed for VLAN aware forwarding
+  * route/link: add accessor API for IPv6 DEVCONF
+  * neigh: add support of NHID attribute
+  * route: add nh type
+
+-------------------------------------------------------------------
 Wed Jul  6 15:41:36 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.7

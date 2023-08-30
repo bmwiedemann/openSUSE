@@ -1,7 +1,7 @@
 #
 # spec file for package libnl3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,8 @@
 Name:           libnl3
 %define lname	libnl3-200
 %define with_tools 1
-%define uver	3_7_0
-Version:        3.7.0
+%define uver	3_8_0
+Version:        3.8.0
 Release:        0
 Summary:        Convenience library for working with Netlink sockets
 License:        GPL-2.0-only AND LGPL-2.1-only
@@ -30,7 +30,9 @@ URL:            http://www.carisma.slowglass.com/~tgr/libnl/#(outdated)
 #Git-Clone:	https://github.com/thom311/libnl/
 Source:         https://github.com/thom311/libnl/releases/download/libnl%uver/libnl-%version.tar.gz
 Source2:        https://github.com/thom311/libnl/releases/download/libnl%uver/libnl-%version.tar.gz.sig
-Source3:        baselibs.conf
+# https://tynq.net/49EA7C670E0850E7419514F629C2366E4DFC5728.gpg
+Source3:        %name.keyring
+Source9:        baselibs.conf
 BuildRequires:  bison >= 2.4
 BuildRequires:  fdupes
 BuildRequires:  flex >= 2.5.19
