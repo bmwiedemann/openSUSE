@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 25 20:08:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.4:
+  + Fix for potential security issue.
+  + Restrict GraphHopper geocoder to supported languages.
+
+-------------------------------------------------------------------
 Sun Jul  2 09:15:27 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.3:
