@@ -1,20 +1,20 @@
-Index: kbd-2.3.0/src/loadkeys.c
+Index: b/src/loadkeys.c
 ===================================================================
---- kbd-2.3.0.orig/src/loadkeys.c
-+++ kbd-2.3.0/src/loadkeys.c
-@@ -27,6 +27,8 @@
+--- a/src/loadkeys.c
++++ b/src/loadkeys.c
+@@ -26,6 +26,8 @@
+ #include "keymap.h"
  
  static const char *const dirpath1[] = {
- 	"",
 +	DATADIR "/" XKBKEYMAPDIR "/",
 +	DATADIR "/" LEGACYKEYMAPDIR "/**",
  	DATADIR "/" KEYMAPDIR "/**",
  	KERNDIR "/",
  	NULL
-Index: kbd-2.3.0/src/paths.h
+Index: b/src/paths.h
 ===================================================================
---- kbd-2.3.0.orig/src/paths.h
-+++ kbd-2.3.0/src/paths.h
+--- a/src/paths.h
++++ b/src/paths.h
 @@ -5,6 +5,8 @@
   * The following five subdirectories are defined:
   */

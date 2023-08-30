@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 15 20:52:04 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 2.6.2:
+  - loadkeys:
+    * Don't look for keymap in the current directory.
+  - keymaps:
+    * Add colemak mod-dh keymaps.
+- Refresh kbd-1.15.5-loadkeys-search-path.patch
+
+-------------------------------------------------------------------
 Fri Jun 30 19:24:59 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 2.6.1:
