@@ -20,7 +20,7 @@ Name:           d2
 Version:        0.6.0
 Release:        0
 Summary:        CLI tool and modern declarative language that turns text to diagrams
-License:        MPL-2.0
+License:        Apache-2.0 AND MIT AND MPL-2.0 AND EPL-2.0 AND GPL-2.0-or-later AND BSD-3-Clause
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/terrastruct/d2
 Source:         %{name}-%{version}.tar.gz

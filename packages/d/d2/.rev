@@ -45,4 +45,12 @@
   Use GitHub release summary instead. (forwarded request 1103630 from jfkw)</comment>
     <requestid>1103633</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>29ec437ff99f462afa9397f09a5d8d2d</srcmd5>
+    <version>0.6.0</version>
+    <time>1693383669</time>
+    <user>anag+factory</user>
+    <comment>- Adjust license to cover also redistributed vendor/github.com/* files (forwarded request 1107982 from lkocman)</comment>
+    <requestid>1107983</requestid>
+  </revision>
 </revisionlist>
