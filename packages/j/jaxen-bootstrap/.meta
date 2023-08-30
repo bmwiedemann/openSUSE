@@ -1,6 +1,0 @@
-<package name="jaxen-bootstrap" project="openSUSE:Factory">
-  <title>A convenience package for build of dom4j</title>
-  <description>Dom4j depends on a jaxen build with dom4j support. This package must
-only be installed in the rare event of having to rebuild dom4j.</description>
-  <devel project="Java:packages" package="jaxen-bootstrap"/>
-</package>
