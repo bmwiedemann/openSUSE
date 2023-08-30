@@ -155,4 +155,13 @@
     <comment>1</comment>
     <requestid>443767</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>5c6ebe960ec2b445d5592956ae0d9aa4</srcmd5>
+    <version>0.12</version>
+    <time>1693383588</time>
+    <user>anag+factory</user>
+    <comment>- Spec cleanup
+</comment>
+    <requestid>1107773</requestid>
+  </revision>
 </revisionlist>
