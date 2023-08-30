@@ -3022,4 +3022,22 @@
 - removed upstreamed patch nss-fix-bmo1836925.patch</comment>
     <requestid>1101639</requestid>
   </revision>
+  <revision rev="207" vrev="1">
+    <srcmd5>655d91930de8927332e3094c725ab8c8</srcmd5>
+    <version>3.92</version>
+    <time>1693383515</time>
+    <user>anag+factory</user>
+    <comment>- update to NSS 3.92
+  * bmo#1822935 - Set nssckbi version number to 2.62
+  * bmo#1833270 - Add 4 Atos TrustedRoot Root CA certificates to NSS
+  * bmo#1839992 - Add 4 SSL.com Root CA certificates
+  * bmo#1840429 - Add Sectigo E46 and R46 Root CA certificates
+  * bmo#1840437 - Add LAWtrust Root CA2 (4096)
+  * bmo#1822936 - Remove E-Tugra Certification Authority root
+  * bmo#1827224 - Remove Camerfirma Chambers of Commerce Root.
+  * bmo#1840505 - Remove Hongkong Post Root CA 1
+  * bmo#1842928 - Remove E-Tugra Global Root CA ECC v3 and RSA v3
+  * bmo#1842937 - Avoid redefining BYTE_ORDER on hppa Linux</comment>
+    <requestid>1107943</requestid>
+  </revision>
 </revisionlist>

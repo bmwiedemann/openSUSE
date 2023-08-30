@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 27 07:58:09 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.92
+  * bmo#1822935 - Set nssckbi version number to 2.62
+  * bmo#1833270 - Add 4 Atos TrustedRoot Root CA certificates to NSS
+  * bmo#1839992 - Add 4 SSL.com Root CA certificates
+  * bmo#1840429 - Add Sectigo E46 and R46 Root CA certificates
+  * bmo#1840437 - Add LAWtrust Root CA2 (4096)
+  * bmo#1822936 - Remove E-Tugra Certification Authority root
+  * bmo#1827224 - Remove Camerfirma Chambers of Commerce Root.
+  * bmo#1840505 - Remove Hongkong Post Root CA 1
+  * bmo#1842928 - Remove E-Tugra Global Root CA ECC v3 and RSA v3
+  * bmo#1842937 - Avoid redefining BYTE_ORDER on hppa Linux
+
+-------------------------------------------------------------------
 Sat Jul 29 11:50:48 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.91
