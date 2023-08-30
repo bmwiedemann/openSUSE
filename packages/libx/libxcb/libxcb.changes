@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Aug 26 14:44:23 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.16
+  * gitlab CI: add a basic build test
+  * configure.ac: drop dependency `pthread-stubs` on Solaris
+  * configure.ac: Remove obsolete AC_HEADER_STDC
+  * Raise minimum required version of Python from 2.6 to 3.0
+  * Fix windows build.
+  * Fix indentation.
+  * Fix a compiler warning
+  * Fix handling of documented enum parameters
+  * Allow full paths to sockets on non-macOS
+  * DISPLAY starting with / or unix: is always a socket path
+  * Add tests for unix socket parsing
+  * autogen.sh: use quoted string variables
+  * c_client: Fix crash in xcb_randr_set_monitor
+  * configure.ac: drop `pthread-stubs` dependency on DragonFly and FreeBSD
+  * xcb_conn: Add a check for NULL to silence a UBSan runtime error
+  * configure.ac: Require xcb-proto >= 1.16.0
+  * Fix xcb_connect() call with a custom xcb_auth_info_t
+  * autogen: add default patch prefix
+  * Build DOUBLE-BUFFER extension.
+  * Require xcb-proto >= 1.15.1, which has Dbe
+  * configure.ac: drop dependency `pthread-stubs` on macOS
+  * autogen.sh: use exec instead of waiting for configure to finish
+  * Improve tutorial example
+- adjusted bug-262309_xcb-xauthlocalhostname.diff,
+  n_If-auth-with-credentials-for-hostname-fails-retry-with-XAUTHLOCALHOSTNAME.patch
+- added libxcb-dbe0 subpackage for libxcb-dbe.so.0*
+
+-------------------------------------------------------------------
 Thu Jan  5 20:19:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - avoid configuring twice 

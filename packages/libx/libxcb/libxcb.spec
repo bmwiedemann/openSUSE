@@ -23,7 +23,7 @@
 %bcond_without python2
 %endif
 Name:           libxcb
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        X11 core protocol C library
 License:        MIT
@@ -100,6 +100,15 @@ protocol, improved threading support, and extensibility.
 
 The X Damage Extension allows applications to track modified regions
 of drawables.
+
+%package -n libxcb-dbe0
+Summary:        X11 Dbe Extension C library
+Group:          System/Libraries
+
+%description -n libxcb-dbe0
+The X protocol C-language Binding (XCB) is a replacement for Xlib
+featuring a small footprint, latency hiding, direct access to the
+protocol, improved threading support, and extensibility.
 
 %package -n libxcb-dpms0
 Summary:        X11 DPMS Extension C library
@@ -412,6 +421,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libxcb-composite0 -p /sbin/ldconfig
 %post   -n libxcb-damage0 -p /sbin/ldconfig
 %postun -n libxcb-damage0 -p /sbin/ldconfig
+%post   -n libxcb-dbe0 -p /sbin/ldconfig
+%postun -n libxcb-dbe0 -p /sbin/ldconfig
 %post   -n libxcb-dpms0 -p /sbin/ldconfig
 %postun -n libxcb-dpms0 -p /sbin/ldconfig
 %post   -n libxcb-dri2-0 -p /sbin/ldconfig
@@ -463,6 +474,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libxcb-damage0
 %{_libdir}/libxcb-damage.so.0*
+
+%files -n libxcb-dbe0
+%{_libdir}/libxcb-dbe.so.0*
 
 %files -n libxcb-dpms0
 %{_libdir}/libxcb-dpms.so.0*
