@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Aug 27 13:13:37 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.69
+  Bugfixes
+  * The 'pattern expand' feature was heavily broken and would mess
+    up the pattern data (and potentially crash the program).
+  * The program crash message could overflow and not show the full
+    text on some system
+- Update to version 1.68
+  * De-minimize window (if minimized) and set focus after
+    drag n' drop of file.
+- Update to version 1.67
+  * The song-to-WAV export screen now defaults to the tracker's bit
+    depth and audio rate. This was actually the behavior for
+    earlier versions of the FT2 clone, but I decided to change it
+    back.
+  * The song-to-WAV exporter now allows rates up to 384kHz.
+  * Alpha-based fade in for the about screen content.
+  * Some small text string changes (config and song-to-WAV export
+    screen)
+
+-------------------------------------------------------------------
 Sat Apr 15 10:35:38 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.66

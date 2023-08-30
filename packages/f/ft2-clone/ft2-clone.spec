@@ -17,7 +17,7 @@
 
 
 Name:           ft2-clone
-Version:        1.66
+Version:        1.69
 Release:        0
 Summary:        Fasttracker II clone
 License:        BSD-3-Clause AND CC-BY-NC-SA-4.0
@@ -52,7 +52,7 @@ rm -R src/libflac
 %cmake_install
 
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
-install -Dpm 0644 ft2-clone-macos_256x256x32.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
+install -Dpm 0644 ft2-clone-macos_512x512x32.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
 %files
 %license LICENSE LICENSES.txt src/gfxdata/bmp/LICENSE.txt
