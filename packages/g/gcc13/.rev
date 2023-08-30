@@ -169,4 +169,24 @@
 - Filter out -Werror=return-type from D compile flags</comment>
     <requestid>1102636</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>50b7313f1bd11f154864dd72e8432636</srcmd5>
+    <version>13.2.1+git7683</version>
+    <time>1693383568</time>
+    <user>anag+factory</user>
+    <comment>- Disable building glibc cross compilers on SLE based code streams,
+  the required cross-glibc packages are not available there.
+- Disable building avr cross on non-openSUSE code streams since
+  avr-libc isn't available there.
+- Disable building newlib cross compilers on non-openSUSE code streams
+  since newlib isn't available there.
+- Fix typo preventing s390x compiler build.
+- Raise s390x architecture baseline to z14 for ALP.  [PED-253]
+- Turn cross compiler to ppc64le to a glibc cross.
+
+- Turn cross compiler to s390x to a glibc cross.  [bsc#1214460]
+
+- Raise Power architecture baseline to Power9 only for ALP (boo#1213915).</comment>
+    <requestid>1107917</requestid>
+  </revision>
 </revisionlist>

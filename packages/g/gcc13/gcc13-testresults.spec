@@ -853,7 +853,10 @@ amdgcn-amdhsa,\
 	--enable-fix-cortex-a53-843419 \
 %endif
 %if "%{TARGET_ARCH}" == "powerpc64le"
-%if %{suse_version} >= 1600
+%if 0%{?cross_arch:1}
+	--with-glibc-version=2.32 \
+%endif
+%if %{suse_version} >= 1600 && !0%{?is_opensuse}
 	--with-cpu=power9 \
 	--with-tune=power9 \
 %else
@@ -922,9 +925,9 @@ amdgcn-amdhsa,\
 %endif
 	--with-tune=generic \
 %endif
-%if "%{TARGET_ARCH}" == "s390"
-%if %{suse_version} >= 1600
-        --with-tune=zEC12 --with-arch=z196 \
+%if "%{TARGET_ARCH}" == "s390" || "%{TARGET_ARCH}" == "s390x"
+%if %{suse_version} >= 1600 && !0%{?is_opensuse}
+        --with-tune=z14 --with-arch=z14 \
 %else
 %if %{suse_version} >= 1310
         --with-tune=zEC12 --with-arch=z196 \
@@ -934,19 +937,9 @@ amdgcn-amdhsa,\
 %endif
 	--with-long-double-128 \
 	--enable-decimal-float \
+%if 0%{?cross_arch:1}
+	--disable-multilib \
 %endif
-%if "%{TARGET_ARCH}" == "s390x"
-%if %{suse_version} >= 1600
-        --with-tune=zEC12 --with-arch=z196 \
-%else
-%if %{suse_version} >= 1310
-        --with-tune=zEC12 --with-arch=z196 \
-%else
-	--with-tune=z9-109 --with-arch=z900 \
-%endif
-%endif
-	--with-long-double-128 \
-	--enable-decimal-float \
 %endif
 %if "%{TARGET_ARCH}" == "m68k"
 	--disable-multilib \
