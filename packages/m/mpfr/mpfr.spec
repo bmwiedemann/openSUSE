@@ -17,7 +17,7 @@
 
 
 Name:           mpfr
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        The GNU multiple-precision floating-point library
 License:        LGPL-3.0-or-later
@@ -27,7 +27,6 @@ Source0:        https://www.mpfr.org/mpfr-%{version}/mpfr-%{version}.tar.xz
 Source1:        https://www.mpfr.org/mpfr-%{version}/mpfr-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-Patch0:         mpfr-4.2.0-cummulative.patch
 BuildRequires:  gmp-devel
 BuildRequires:  pkgconfig
 
@@ -68,7 +67,6 @@ based on the GMP multiple-precision library.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure \

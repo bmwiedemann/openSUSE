@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 22 11:38:24 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Update to mpfr 4.2.1
+  * Includes all fixes from mpfr-4.2.0-cummulative.patch which is
+    subsequently removed.
+  * Improved MPFR manual.
+  * Configure tests: replaced the test of the link with GMP, in order
+    to avoid the use of a function without a prototype (Autoconf issue), as
+    this is obsolescent in ISO C. The new test should be more robust.
+
+-------------------------------------------------------------------
 Wed Jun  7 07:13:26 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Update mpfr-4.2.0-cummulative.patch, adds patches fixing the following bugs

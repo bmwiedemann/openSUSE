@@ -611,4 +611,18 @@
     %.2147483648Rg in the format string.</comment>
     <requestid>1091232</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>a2f4fe074db3f326b366c9918e2a9afa</srcmd5>
+    <version>4.2.1</version>
+    <time>1693383563</time>
+    <user>anag+factory</user>
+    <comment>- Update to mpfr 4.2.1
+  * Includes all fixes from mpfr-4.2.0-cummulative.patch which is
+    subsequently removed.
+  * Improved MPFR manual.
+  * Configure tests: replaced the test of the link with GMP, in order
+    to avoid the use of a function without a prototype (Autoconf issue), as
+    this is obsolescent in ISO C. The new test should be more robust.</comment>
+    <requestid>1105275</requestid>
+  </revision>
 </revisionlist>
