@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 30 05:26:54 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-six-and-future.patch:
+  * Remove use of six and future.
+- Remove patch python-pytest-server-fixtures-no-six.patch, covered by above.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Fri Dec  9 12:03:36 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove remote path for pytest-plugins-pr186-fix-psycopg29.patch to avoid

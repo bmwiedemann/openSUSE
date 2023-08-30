@@ -1,3 +1,19 @@
+From da6e8ccb688b3755285ba42a3d5518f1f3a5f6ff Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 30 Aug 2023 14:08:03 +1000
+Subject: [PATCH] pytest-server-fixtures: Remove six and future
+
+Now that we only support Python 3.6 and above, we can stop using
+crutches like six and future.
+---
+ pytest-server-fixtures/pytest_server_fixtures/base.py     | 6 ++----
+ pytest-server-fixtures/pytest_server_fixtures/http.py     | 8 +++-----
+ pytest-server-fixtures/pytest_server_fixtures/jenkins.py  | 3 +--
+ pytest-server-fixtures/pytest_server_fixtures/postgres.py | 5 ++---
+ pytest-server-fixtures/pytest_server_fixtures/s3.py       | 5 ++---
+ pytest-server-fixtures/setup.py                           | 2 --
+ 6 files changed, 10 insertions(+), 19 deletions(-)
+
 Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/base.py
 ===================================================================
 --- pytest-server-fixtures-1.7.0.orig/pytest_server_fixtures/base.py
@@ -11,12 +27,19 @@ Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/base.py
  from pytest_server_fixtures import CONFIG
  from pytest_shutil.workspace import Workspace
  
-@@ -109,7 +107,7 @@ class ProcessReader(threading.Thread):
+@@ -103,13 +101,13 @@ class ProcessReader(threading.Thread):
+         self.stderr = stderr
+         self.process = process
+         self.stream = stream
+-        super(ProcessReader, self).__init__()
++        super().__init__()
+         self.setDaemon(True)
+ 
      def run(self):
          while self.process.poll() is None:
              l = self.stream.readline()
 -            if not isinstance(l, string_types):
-+            if not isinstance(l, str):
++            if not isinstance(l, six):
                  l = l.decode('utf-8')
  
              if l.strip():
@@ -24,7 +47,14 @@ Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/http.py
 ===================================================================
 --- pytest-server-fixtures-1.7.0.orig/pytest_server_fixtures/http.py
 +++ pytest-server-fixtures-1.7.0/pytest_server_fixtures/http.py
-@@ -9,7 +9,6 @@ import sys
+@@ -1,5 +1,4 @@
+-from __future__ import print_function
+-
++import http.client
+ import os
+ import socket
+ import logging
+@@ -9,7 +8,6 @@ import sys
  import pytest
  import requests
  from contextlib import contextmanager
@@ -32,7 +62,7 @@ Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/http.py
  
  from pytest_shutil.env import unset_env
  from pytest_server_fixtures import CONFIG
-@@ -83,7 +82,7 @@ class HTTPTestServer(TestServer):
+@@ -83,7 +81,7 @@ class HTTPTestServer(TestServer):
                  with self.handle_proxy():
                      returned = requests.get('http://%s:%d/%s' % (self.hostname, self.port, path))
                  return returned.json() if as_json else returned
@@ -41,7 +71,7 @@ Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/http.py
                  time.sleep(int(i) / 10)
                  pass
          raise e
-@@ -107,7 +106,7 @@ class HTTPTestServer(TestServer):
+@@ -107,7 +105,7 @@ class HTTPTestServer(TestServer):
                  with self.handle_proxy():
                      returned = requests.post('http://%s:%d/%s' % (self.hostname, self.port, path), data=data)
                  return returned.json() if as_json else returned
@@ -101,3 +131,45 @@ Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/postgres.py
              print(msg)
              self._fail(msg)
  
+Index: pytest-server-fixtures-1.7.0/pytest_server_fixtures/s3.py
+===================================================================
+--- pytest-server-fixtures-1.7.0.orig/pytest_server_fixtures/s3.py
++++ pytest-server-fixtures-1.7.0/pytest_server_fixtures/s3.py
+@@ -11,7 +11,6 @@ import logging
+ import os
+ 
+ import pytest
+-from future.utils import text_type
+ from pytest_fixture_config import requires_config
+ 
+ from . import CONFIG
+@@ -47,7 +46,7 @@ def s3_bucket(s3_server):  # pylint: dis
+     returning a BucketInfo namedtuple with `s3_bucket.client` and `s3_bucket.name` fields
+     """
+     client = s3_server.get_s3_client()
+-    bucket_name = text_type(uuid.uuid4())
++    bucket_name = str(uuid.uuid4())
+     client.create_bucket(Bucket=bucket_name)
+     return BucketInfo(client, bucket_name)
+ 
+@@ -96,6 +95,6 @@ class MinioServer(HTTPTestServer):
+             "server",
+             "--address",
+             "{}:{}".format(self.hostname, self.port),
+-            text_type(self.datadir),
++            str(self.datadir),
+         ]
+         return cmdargs
+Index: pytest-server-fixtures-1.7.0/setup.py
+===================================================================
+--- pytest-server-fixtures-1.7.0.orig/setup.py
++++ pytest-server-fixtures-1.7.0/setup.py
+@@ -25,8 +25,6 @@ classifiers = [
+ install_requires = ['pytest',
+                     'pytest-shutil',
+                     'pytest-fixture-config',
+-                    'six',
+-                    'future',
+                     'requests',
+                     'retry',
+                     'psutil',

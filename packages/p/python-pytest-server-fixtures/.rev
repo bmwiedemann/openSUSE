@@ -75,4 +75,15 @@
 </comment>
     <requestid>1041859</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>b170ac9d13c08a9ab89895a23c908b24</srcmd5>
+    <version>1.7.0</version>
+    <time>1693383736</time>
+    <user>anag+factory</user>
+    <comment>- Add patch remove-six-and-future.patch:
+  * Remove use of six and future.
+- Remove patch python-pytest-server-fixtures-no-six.patch, covered by above.
+- Switch to pyproject macros.</comment>
+    <requestid>1108019</requestid>
+  </revision>
 </revisionlist>

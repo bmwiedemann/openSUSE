@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-server-fixtures
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,29 @@
 #
 
 
-%bcond_without python2
 Name:           python-pytest-server-fixtures
 Version:        1.7.0
 Release:        0
 Summary:        Extensible server fixtures for pytest
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/man-group/pytest-plugins
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-server-fixtures/pytest-server-fixtures-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM pytest-plugins-pr186-fix-psycopg29.patch -- gh#man-group/pytest-plugins#186
 Patch0:         pytest-plugins-pr186-fix-psycopg29.patch
-# PATCH-FEATURE-UPSTREAM remove-mock.patch -- gh#man-group#pytest-plugins#171
+# PATCH-FIX-UPSTREAM remove-mock.patch -- gh#man-group#pytest-plugins#171
 Patch1:         remove-mock.patch
-# https://github.com/man-group/pytest-plugins/issues/209
-Patch2:         python-pytest-server-fixtures-no-six.patch
+# PATCH-FIX-UPSTREAM gh#github.com/man-group/pytest-plugins#221
+Patch2:         remove-six-and-future.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  redis
 # net-tools-deprecated's netstat and lsof needed internally
 Requires:       lsof
 Requires:       net-tools-deprecated
-Requires:       python-future
 Requires:       python-psutil
 Requires:       python-pytest
 Requires:       python-pytest-fixture-config
@@ -64,7 +63,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module docker}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module kubernetes}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module psycopg2}
@@ -77,9 +75,6 @@ BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module rethinkdb}
 BuildRequires:  %{python_module retry}
-%if %{with python2}
-BuildRequires:  python2-mock
-%endif
 BuildRequires:  apache2
 BuildRequires:  lsof
 BuildRequires:  net-tools-deprecated
@@ -108,10 +103,10 @@ rm tests/unit/serverclass/test_kubernetes_unit.py
 sed -i '/mod_mpm_prefork.so/d' pytest_server_fixtures/httpd.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -126,6 +121,6 @@ export SERVER_FIXTURES_REDIS=%{_sbindir}/redis-server
 %doc CHANGES.md README.md
 %license LICENSE
 %{python_sitelib}/pytest_server_fixtures
-%{python_sitelib}/pytest_server_fixtures-%{version}*-info
+%{python_sitelib}/pytest_server_fixtures-%{version}.dist-info
 
 %changelog
