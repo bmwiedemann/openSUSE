@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 28 17:21:44 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix corrupted files when using a large
+  fs with 64-bit inodes (boo#1214708):
+  * 0001-builder-Fix-silent-truncation-of-gt-32-bit-inodes.patch
+
+-------------------------------------------------------------------
 Thu Feb  9 16:32:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add explicit pkgconfig(gio-2.0), pkgconfig(gio-unix-2.0) and

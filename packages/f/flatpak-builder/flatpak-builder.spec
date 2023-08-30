@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak-builder
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Tools/Building
 URL:            http://flatpak.org/
 Source0:        https://github.com/flatpak/flatpak-builder/releases/download/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 0001-builder-Fix-silent-truncation-of-gt-32-bit-inodes.patch boo#1214708 alarrosa@suse.com
+Patch0:         0001-builder-Fix-silent-truncation-of-gt-32-bit-inodes.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gettext
 BuildRequires:  gtk-doc
@@ -68,7 +70,7 @@ Tool to build flatpaks from source.
 See https://docs.flatpak.org/ for more information.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure \
