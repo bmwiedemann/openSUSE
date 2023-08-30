@@ -249,46 +249,59 @@ Patch53:        add-support-for-gpgautoimport-539.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62519
 Patch54:        change-the-delimeters-to-prevent-possible-tracebacks.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/62898
-Patch55:       pass-the-context-to-pillar-ext-modules.patch
+Patch55:        pass-the-context-to-pillar-ext-modules.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/c6be36eeea49ee0d0641da272087305f79c32c99 (not yet upstream)
 # Fix problem caused by: https://github.com/openSUSE/salt/pull/493 (Patch47) affecting only 3005.1.
-Patch56:       use-rlock-to-avoid-deadlocks-in-salt-ssh.patch
+Patch56:        use-rlock-to-avoid-deadlocks-in-salt-ssh.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/61064
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/5e3ff4d662321c237ddd5b2c5c83f35a84af594c (not PR to master yet)
-Patch57:       fixes-for-python-3.10-502.patch
+Patch57:        fixes-for-python-3.10-502.patch
 # PATCH-FIX-OPENSUSE: https://github.com/openSUSE/salt/pull/571
-Patch58:       control-the-collection-of-lvm-grains-via-config.patch
+Patch58:        control-the-collection-of-lvm-grains-via-config.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/63460
-Patch59:       3005.1-implement-zypper-removeptf-573.patch
+Patch59:        3005.1-implement-zypper-removeptf-573.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/63460
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/578
-Patch60:       skip-package-names-without-colon-bsc-1208691-578.patch
+Patch60:        skip-package-names-without-colon-bsc-1208691-578.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/commit/c0fae09e5a4f6997a60007d970c7c6a5614d9102
-Patch61:       fix-version-detection-and-avoid-building-and-testing.patch
+Patch61:        fix-version-detection-and-avoid-building-and-testing.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64113
-Patch62:       make-sure-the-file-client-is-destroyed-upon-used.patch
+Patch62:        make-sure-the-file-client-is-destroyed-upon-used.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/581
-Patch63:       avoid-conflicts-with-dependencies-versions-bsc-12116.patch
+Patch63:        avoid-conflicts-with-dependencies-versions-bsc-12116.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64369
-Patch64:       define-__virtualname__-for-transactional_update-modu.patch
+Patch64:        define-__virtualname__-for-transactional_update-modu.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/587
-Patch65:       make-master_tops-compatible-with-salt-3000-and-older.patch
+Patch65:        make-master_tops-compatible-with-salt-3000-and-older.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/583
-Patch66:       tornado-fix-an-open-redirect-in-staticfilehandler-cv.patch
+Patch66:        tornado-fix-an-open-redirect-in-staticfilehandler-cv.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/580
-Patch67:       fix-some-issues-detected-in-salt-support-cli-module-.patch
+Patch67:        fix-some-issues-detected-in-salt-support-cli-module-.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64510
-Patch68:       3006.0-prevent-_pygit2.giterror-error-loading-known_.patch
+Patch68:        3006.0-prevent-_pygit2.giterror-error-loading-known_.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64300
-Patch69:       fix-utf8-handling-in-pass-renderer-and-make-it-more-.patch
+Patch69:        fix-utf8-handling-in-pass-renderer-and-make-it-more-.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/63403
-Patch70:       zypper-pkgrepo-alreadyconfigured-585.patch
+Patch70:        zypper-pkgrepo-alreadyconfigured-585.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64530
-Patch71:       fix-the-regression-of-user.present-state-when-group-.patch
+Patch71:        fix-the-regression-of-user.present-state-when-group-.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64179
-Patch72:       fix-regression-multiple-values-for-keyword-argument-.patch
+Patch72:        fix-regression-multiple-values-for-keyword-argument-.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64554
-Patch73:       mark-salt-3006-as-released-586.patch
+Patch73:        mark-salt-3006-as-released-586.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64599
+Patch74:        prevent-possible-exceptions-on-salt.utils.user.get_g.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/592
+Patch75:        fix-tests-to-make-them-running-with-salt-testsuite.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/f82860b8ad3ee786762fa02fa1a6eaf6e24dc8d4
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/65020
+Patch76:        do-not-fail-on-bad-message-pack-message-bsc-1213441-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64510
+Patch77:        make-sure-configured-user-is-properly-set-by-salt-bs.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/64959
+Patch78:        fixed-gitfs-cachedir_basename-to-avoid-hash-collisio.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/600
+Patch79:        revert-usage-of-long-running-req-channel-bsc-1213960.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

@@ -2232,4 +2232,20 @@ let build start it or we will get libvirt errors.
     <comment></comment>
     <requestid>1103320</requestid>
   </revision>
+  <revision rev="139" vrev="3">
+    <srcmd5>ec6ec62571ccdb10ea2713b88b801c74</srcmd5>
+    <version>3006.0</version>
+    <time>1693383557</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1107946</requestid>
+  </revision>
+  <revision rev="140" vrev="4">
+    <srcmd5>b40a13fdeecf28a424f25b68eb7899b3</srcmd5>
+    <version>3006.0</version>
+    <time>1693570753</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108398</requestid>
+  </revision>
 </revisionlist>

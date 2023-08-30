@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Sep  1 07:33:18 UTC 2023 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Revert usage of long running REQ channel to prevent possible
+  missing responses on requests and dublicated responses
+  (bsc#1213960, bsc#1213630, bsc#1213257)
+
+- Added:
+  * revert-usage-of-long-running-req-channel-bsc-1213960.patch
+
+-------------------------------------------------------------------
+Thu Aug 31 09:51:20 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix gitfs cachedir basename to avoid hash collisions
+  (bsc#1193948, bsc#1214797, CVE-2023-20898)
+
+- Added:
+  * fixed-gitfs-cachedir_basename-to-avoid-hash-collisio.patch
+
+-------------------------------------------------------------------
+Tue Aug 22 12:03:21 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Make sure configured user is properly set by Salt (bsc#1210994)
+- Do not fail on bad message pack message (bsc#1213441, CVE-2023-20897, bsc#1214796)
+- Fix broken tests to make them running in the testsuite
+- Prevent possible exceptions on salt.utils.user.get_group_dict (bsc#1212794)
+
+- Added:
+  * do-not-fail-on-bad-message-pack-message-bsc-1213441-.patch
+  * fix-tests-to-make-them-running-with-salt-testsuite.patch
+  * prevent-possible-exceptions-on-salt.utils.user.get_g.patch
+  * make-sure-configured-user-is-properly-set-by-salt-bs.patch
+
+-------------------------------------------------------------------
 Wed Aug  9 15:13:50 UTC 2023 - Alexander Graul <alexander.graul@suse.com>
 
 - Create minion_id with reproducible mtime
