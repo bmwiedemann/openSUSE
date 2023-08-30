@@ -17,14 +17,15 @@
 
 
 Name:           combustion
-Version:        1.1+git0
+Version:        1.2+git2
 Release:        0
 Summary:        System for initial configuration of appliances
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/openSUSE/combustion
 Source0:        %{name}-%{version}.tar.xz
-Requires:       ignition-dracut-grub2
+# This doesn't work with old ignition,conflict with the old firstboot mechanism.
+Conflicts:      ignition-dracut-grub2
 BuildArch:      noarch
 
 %description
@@ -56,6 +57,9 @@ snapshot, so that no reboot is needed.
 %doc README.md
 %dir %{_prefix}/lib/dracut/
 %dir %{_prefix}/lib/dracut/modules.d/
+# Also used by ignition. Could be split into a separate package,
+# but ignition depends on combustion anyway.
+%{_prefix}/lib/dracut/modules.d/30firstboot/
 %{_prefix}/lib/dracut/modules.d/35combustion/
 
 %changelog

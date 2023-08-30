@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-pattern">v(.*?)(\+git0)?$</param>
   </service>
   <service mode="disabled" name="set_version" />
   <service mode="buildtime" name="tar" />

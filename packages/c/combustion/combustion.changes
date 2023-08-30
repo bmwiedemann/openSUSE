@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 22 15:57:49 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2+git2:
+  * Don't consider /var/lib/YaST2/reconfig_system for firstboot detection
+  * Use improved x-initrd.mount code in firstboot-detect as well
+
+-------------------------------------------------------------------
+Mon Aug 21 06:35:50 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2:
+  * Don't remove YaST reconfig_system marker if called from ignition
+  * Remove now obsolete workaround for ignition-mount.service ExecStop
+  * Set dasd_mod.dasd=autodetect in modprobe.d
+  * Omit combustion module in initrds for already configured systems
+  * New module to handle firstboot detection in the initrd (poo#127196,
+    jsc#PED-5843)
+  * Fixes for use with ignition-kargs-helper
+  * Improve x-initrd.mount handling
+  * Work around systemd issue with emergency.target at the root
+
+-------------------------------------------------------------------
 Thu Aug 03 07:32:20 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.1+git0:
