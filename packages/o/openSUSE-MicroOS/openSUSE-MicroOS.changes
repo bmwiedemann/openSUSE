@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 17 11:33:27 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Drop $ignition_firstboot and selfinstallreboot.service, no longer
+  needed with the new firstboot detection mechanism in combustion 1.2
+
+-------------------------------------------------------------------
 Wed Aug  9 08:43:26 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - The SelfInstall flavor is targeted at physical hardware, so add

@@ -654,7 +654,7 @@
         <!-- Needed for initial configuration, except on OpenStack-Cloud, where cloud-init is used -->
         <!-- On ONIE, the installer does the partitioning and salt is used for configuration -->
         <package name="ignition-dracut"/>
-        <package name="combustion"/>
+        <package name="combustion &gt;= 1.2"/> <!-- New firstboot mechanism -->
         <package name="jeos-firstboot"/>
         <package name="growpart-generator"/>
     </packages>

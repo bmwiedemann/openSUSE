@@ -176,7 +176,7 @@ case "${kiwi_profiles}" in
 esac
 
 # One '\' for sed, one '\' for grub2-mkconfig
-grub_cmdline+=('\\$ignition_firstboot' "ignition.platform.id=${ignition_platform}")
+grub_cmdline+=("ignition.platform.id=${ignition_platform}")
 
 sed -i "s#^GRUB_CMDLINE_LINUX_DEFAULT=.*\$#GRUB_CMDLINE_LINUX_DEFAULT=\"${grub_cmdline[*]}\"#" /etc/default/grub
 
@@ -216,28 +216,6 @@ EOF
 	fi
 else
 	systemctl enable NetworkManager
-fi
-
-#======================================
-# Configure SelfInstall specifics
-#--------------------------------------
-if [[ "$kiwi_profiles" == *"SelfInstall"* ]]; then
-	cat > /etc/systemd/system/selfinstallreboot.service <<-EOF
-	[Unit]
-	Description=SelfInstall Image Reboot after Firstboot (to ensure ignition and such runs)
-	After=systemd-machine-id-commit.service
-	Before=jeos-firstboot.service
-	
-	[Service]
-	Type=oneshot
-	ExecStart=rm /etc/systemd/system/selfinstallreboot.service
-	ExecStart=rm /etc/systemd/system/default.target.wants/selfinstallreboot.service
-	ExecStart=systemctl --no-block reboot
-
-	[Install]
-	WantedBy=default.target
-	EOF
-	ln -s /etc/systemd/system/selfinstallreboot.service /etc/systemd/system/default.target.wants/selfinstallreboot.service
 fi
 
 #======================================
