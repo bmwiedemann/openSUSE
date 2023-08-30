@@ -83,6 +83,7 @@ Patch3:         ruby-2_0-mkmf-destdir.patch
 Patch4:         apparmor-lessopen-profile.patch
 
 # workaround for boo#1119937 / lp#1784499 - allow network access for reading files on NFS (proper solution needs kernel fix)
+# fixed in Kernel 6.0 and later (see comment in https://bugs.launchpad.net/bugs/1784499)
 Patch5:         apparmor-lessopen-nfs-workaround.diff
 
 # make <apache2.d> include in apache extra profile optional to make openQA happy (boo#1178527)

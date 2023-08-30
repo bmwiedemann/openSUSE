@@ -2623,4 +2623,24 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   documentation (bsc#1213472) (forwarded request 1100592 from dmdiss)</comment>
     <requestid>1100613</requestid>
   </revision>
+  <revision rev="195" vrev="3">
+    <srcmd5>bcad018c6d5d80f60f8a396026584631</srcmd5>
+    <version>3.1.6</version>
+    <time>1693383484</time>
+    <user>anag+factory</user>
+    <comment>Add Jira tag to track AppArmor 3.1.6 submission for 15.6 (jsc#PED-5600)
+
+(+ an unrelated spec file comment for a patch)</comment>
+    <requestid>1107796</requestid>
+  </revision>
+  <revision rev="196" vrev="4">
+    <srcmd5>5c8793455d1efcec4494b5e73163ca52</srcmd5>
+    <version>3.1.6</version>
+    <time>1693482192</time>
+    <user>anag+factory</user>
+    <comment>Sorry Christian, another boring changelog-only change to track the
+samba-4-17.patch fix we're carrying in 15.5 and dropping for 15.6
+thanks to the upstream 926 merge. (forwarded request 1108011 from dmdiss)</comment>
+    <requestid>1108110</requestid>
+  </revision>
 </revisionlist>

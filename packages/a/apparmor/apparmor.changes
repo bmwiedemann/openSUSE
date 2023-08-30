@@ -7,7 +7,7 @@ Tue Jul 25 09:28:33 UTC 2023 - David Disseldorp <ddiss@suse.com>
 -------------------------------------------------------------------
 Thu Jun 22 11:16:52 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
 
-- update to AppArmor 3.1.6
+- update to AppArmor 3.1.6 (jsc#PED-5600)
   - fix regression in mount rules (boo#1211989)
   - some additions to the base and authentification abstractions
   - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.6
@@ -83,6 +83,14 @@ Mon Jan 30 11:33:05 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
 Tue Dec 27 10:20:43 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
+Fri Dec 23 22:59:24 UTC 2022 - Samuel Cabrero <scabrero@suse.de>
+
+- Add samba-4-17.patch to update the samba profiles for samba
+  version 4.17 (bsc#1206626);
+  - samba-4-17.patch superseded by upstream merge:
+    https://gitlab.com/apparmor/apparmor/-/merge_requests/926
 
 -------------------------------------------------------------------
 Tue Nov 22 18:54:46 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
