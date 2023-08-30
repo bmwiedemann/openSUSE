@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 30 05:29:51 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.5.5
+  Bug fixes:
+  * Fix transfer list tab hotkey
+  * Don't forget to enable the Apply button in the Options dialog
+  * Immediately update torrent status on moving files
+  * Improve performance when scrolling the file list of large
+    torrents
+  * Don't operate on random torrents when multiple are selected
+    and a sort/filter is applied
+  RSS:
+  * Fix overwriting feeds.json with an incomplete load of it
+
+-------------------------------------------------------------------
 Sun Jun 18 18:50:19 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.5.4
