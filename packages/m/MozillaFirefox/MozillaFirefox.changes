@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Aug 27 08:51:28 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 117.0
+  https://www.mozilla.org/en-US/firefox/117.0/releasenotes
+  MFSA 2023-34 (bsc#1214606)
+  * CVE-2023-4573 (bmo#1846687)
+    Memory corruption in IPC CanvasTranslator
+  * CVE-2023-4574 (bmo#1846688)
+    Memory corruption in IPC ColorPickerShownCallback
+  * CVE-2023-4575 (bmo#1846689)
+    Memory corruption in IPC FilePickerShownCallback
+  * CVE-2023-4576 (bmo#1846694)
+    Integer Overflow in RecordedSourceSurfaceCreation
+  * CVE-2023-4577 (bmo#1847397)
+    Memory corruption in JIT UpdateRegExpStatics
+  * CVE-2023-4578 (bmo#1839007)
+    Error reporting methods in SpiderMonkey could have triggered
+    an Out of Memory Exception
+  * CVE-2023-4579 (bmo#1842766)
+    Persisted search terms were formatted as URLs
+  * CVE-2023-4580 (bmo#1843046)
+    Push notifications saved to disk unencrypted
+  * CVE-2023-4581 (bmo#1843758)
+    XLL file extensions were downloadable without warnings
+  * CVE-2023-4582 (bmo#1773874)
+    Buffer Overflow in WebGL glGetProgramiv
+  * CVE-2023-4583 (bmo#1842030)
+    Browsing Context potentially not cleared when closing Private
+    Window
+  * CVE-2023-4584 (bmo#1843968, bmo#1845205, bmo#1846080,
+    bmo#1846526, bmo#1847529)
+    Memory safety bugs fixed in Firefox 117, Firefox ESR 102.15,
+    Firefox ESR 115.2, Thunderbird 102.15, and Thunderbird 115.2
+  * CVE-2023-4585 (bmo#1751583, bmo#1841082, bmo#1847904, bmo#1848999)
+    Memory safety bugs fixed in Firefox 117, Firefox ESR 115.2,
+    and Thunderbird 115.2
+- requires
+  NSS = 3.92
+  rustc = 1.71
+
+-------------------------------------------------------------------
 Thu Aug 17 18:20:18 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 116.0.3

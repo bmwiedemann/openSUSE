@@ -1,11 +1,15 @@
 # HG changeset patch
-# Parent  5df550d4b5fc674268055e504f60392389eb9ea7
+# Parent  505c5ac5cad0268fe81c67d39f70cbab3bff616a
 
-Index: firefox-115.0/gfx/skia/skia/include/codec/SkEncodedOrigin.h
-===================================================================
---- firefox-115.0.orig/gfx/skia/skia/include/codec/SkEncodedOrigin.h
-+++ firefox-115.0/gfx/skia/skia/include/codec/SkEncodedOrigin.h
-@@ -41,6 +41,7 @@ static inline SkMatrix SkEncodedOriginTo
+diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
+--- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
++++ b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
+@@ -36,16 +36,17 @@ static inline SkMatrix SkEncodedOriginTo
+         case kBottomRight_SkEncodedOrigin: return SkMatrix::MakeAll(-1,  0, w,  0, -1, h, 0, 0, 1);
+         case  kBottomLeft_SkEncodedOrigin: return SkMatrix::MakeAll( 1,  0, 0,  0, -1, h, 0, 0, 1);
+         case     kLeftTop_SkEncodedOrigin: return SkMatrix::MakeAll( 0,  1, 0,  1,  0, 0, 0, 0, 1);
+         case    kRightTop_SkEncodedOrigin: return SkMatrix::MakeAll( 0, -1, w,  1,  0, 0, 0, 0, 1);
+         case kRightBottom_SkEncodedOrigin: return SkMatrix::MakeAll( 0, -1, w, -1,  0, h, 0, 0, 1);
          case  kLeftBottom_SkEncodedOrigin: return SkMatrix::MakeAll( 0,  1, 0, -1,  0, h, 0, 0, 1);
      }
      SK_ABORT("Unexpected origin");
@@ -13,11 +17,20 @@ Index: firefox-115.0/gfx/skia/skia/include/codec/SkEncodedOrigin.h
  }
  
  /**
-Index: firefox-115.0/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
-===================================================================
---- firefox-115.0.orig/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
-+++ firefox-115.0/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
-@@ -325,6 +325,7 @@ static inline bool GrTextureTypeHasRestr
+  * Return true if the encoded origin includes a 90 degree rotation, in which case the width
+  * and height of the source data are swapped relative to a correctly oriented destination.
+  */
+ static inline bool SkEncodedOriginSwapsWidthHeight(SkEncodedOrigin origin) {
+     return origin >= kLeftTop_SkEncodedOrigin;
+diff --git a/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h b/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
+--- a/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
++++ b/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
+@@ -320,16 +320,17 @@ static inline bool GrTextureTypeHasRestr
+             return false;
+         case GrTextureType::kRectangle:
+             return true;
+         case GrTextureType::kExternal:
+             return true;
          default:
              SK_ABORT("Unexpected texture type");
      }
@@ -25,11 +38,20 @@ Index: firefox-115.0/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
  }
  
  //////////////////////////////////////////////////////////////////////////////
-Index: firefox-115.0/gfx/skia/skia/src/core/SkDescriptor.cpp
-===================================================================
---- firefox-115.0.orig/gfx/skia/skia/src/core/SkDescriptor.cpp
-+++ firefox-115.0/gfx/skia/skia/src/core/SkDescriptor.cpp
-@@ -26,6 +26,7 @@ std::unique_ptr<SkDescriptor> SkDescript
+ 
+ /**
+  * Types used to describe format of vertices in arrays.
+  */
+ enum GrVertexAttribType {
+diff --git a/gfx/skia/skia/src/core/SkDescriptor.cpp b/gfx/skia/skia/src/core/SkDescriptor.cpp
+--- a/gfx/skia/skia/src/core/SkDescriptor.cpp
++++ b/gfx/skia/skia/src/core/SkDescriptor.cpp
+@@ -21,16 +21,17 @@ std::unique_ptr<SkDescriptor> SkDescript
+     SkASSERT(length >= sizeof(SkDescriptor) && SkAlign4(length) == length);
+     void* allocation = ::operator new(length);
+     return std::unique_ptr<SkDescriptor>(new (allocation) SkDescriptor{});
+ }
+ 
  void SkDescriptor::operator delete(void* p) { ::operator delete(p); }
  void* SkDescriptor::operator new(size_t) {
      SK_ABORT("Descriptors are created with placement new.");
@@ -37,11 +59,20 @@ Index: firefox-115.0/gfx/skia/skia/src/core/SkDescriptor.cpp
  }
  
  void SkDescriptor::flatten(SkWriteBuffer& buffer) const {
-Index: firefox-115.0/gfx/skia/skia/src/core/SkGeometry.h
-===================================================================
---- firefox-115.0.orig/gfx/skia/skia/src/core/SkGeometry.h
-+++ firefox-115.0/gfx/skia/skia/src/core/SkGeometry.h
-@@ -281,6 +281,7 @@ static inline bool SkCubicIsDegenerate(S
+     buffer.writePad32(static_cast<const void*>(this), this->fLength);
+ }
+ 
+ void* SkDescriptor::addEntry(uint32_t tag, size_t length, const void* data) {
+     SkASSERT(tag);
+diff --git a/gfx/skia/skia/src/core/SkGeometry.h b/gfx/skia/skia/src/core/SkGeometry.h
+--- a/gfx/skia/skia/src/core/SkGeometry.h
++++ b/gfx/skia/skia/src/core/SkGeometry.h
+@@ -276,28 +276,30 @@ static inline bool SkCubicIsDegenerate(S
+         case SkCubicType::kLocalCusp:
+         case SkCubicType::kCuspAtInfinity:
+             return false;
+         case SkCubicType::kQuadratic:
+         case SkCubicType::kLineOrPoint:
              return true;
      }
      SK_ABORT("Invalid SkCubicType");
@@ -49,7 +80,12 @@ Index: firefox-115.0/gfx/skia/skia/src/core/SkGeometry.h
  }
  
  static inline const char* SkCubicTypeName(SkCubicType type) {
-@@ -293,6 +294,7 @@ static inline const char* SkCubicTypeNam
+     switch (type) {
+         case SkCubicType::kSerpentine: return "kSerpentine";
+         case SkCubicType::kLoop: return "kLoop";
+         case SkCubicType::kLocalCusp: return "kLocalCusp";
+         case SkCubicType::kCuspAtInfinity: return "kCuspAtInfinity";
+         case SkCubicType::kQuadratic: return "kQuadratic";
          case SkCubicType::kLineOrPoint: return "kLineOrPoint";
      }
      SK_ABORT("Invalid SkCubicType");
@@ -57,11 +93,20 @@ Index: firefox-115.0/gfx/skia/skia/src/core/SkGeometry.h
  }
  
  /** Returns the cubic classification.
-Index: firefox-115.0/gfx/skia/skia/src/core/SkTextBlob.cpp
-===================================================================
---- firefox-115.0.orig/gfx/skia/skia/src/core/SkTextBlob.cpp
-+++ firefox-115.0/gfx/skia/skia/src/core/SkTextBlob.cpp
-@@ -204,6 +204,7 @@ void SkTextBlob::operator delete(void* p
+ 
+     t[],s[] are set to the two homogeneous parameter values at which points the lines L & M
+     intersect with K, sorted from smallest to largest and oriented so positive values of the
+     implicit are on the "left" side. For a serpentine curve they are the inflection points. For a
+     loop they are the double point. For a local cusp, they are both equal and denote the cusp point.
+diff --git a/gfx/skia/skia/src/core/SkTextBlob.cpp b/gfx/skia/skia/src/core/SkTextBlob.cpp
+--- a/gfx/skia/skia/src/core/SkTextBlob.cpp
++++ b/gfx/skia/skia/src/core/SkTextBlob.cpp
+@@ -199,16 +199,17 @@ unsigned SkTextBlob::ScalarsPerGlyph(Gly
+ }
+ 
+ void SkTextBlob::operator delete(void* p) {
+     sk_free(p);
+ }
  
  void* SkTextBlob::operator new(size_t) {
      SK_ABORT("All blobs are created by placement new.");
@@ -69,11 +114,20 @@ Index: firefox-115.0/gfx/skia/skia/src/core/SkTextBlob.cpp
  }
  
  void* SkTextBlob::operator new(size_t, void* p) {
-Index: firefox-115.0/gfx/skia/skia/src/core/SkTypeface_remote.h
-===================================================================
---- firefox-115.0.orig/gfx/skia/skia/src/core/SkTypeface_remote.h
-+++ firefox-115.0/gfx/skia/skia/src/core/SkTypeface_remote.h
-@@ -95,12 +95,14 @@ public:
+     return p;
+ }
+ 
+ SkTextBlobRunIterator::SkTextBlobRunIterator(const SkTextBlob* blob)
+     : fCurrentRun(SkTextBlob::RunRecord::First(blob)) {
+diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core/SkTypeface_remote.h
+--- a/gfx/skia/skia/src/core/SkTypeface_remote.h
++++ b/gfx/skia/skia/src/core/SkTypeface_remote.h
+@@ -90,83 +90,97 @@ public:
+ 
+     SkTypefaceID remoteTypefaceID() const {return fTypefaceID;}
+ 
+     int glyphCount() const {return fGlyphCount;}
+ 
      bool isLogging() const {return fIsLogging;}
  
  protected:
@@ -89,7 +143,7 @@ Index: firefox-115.0/gfx/skia/skia/src/core/SkTypeface_remote.h
      }
      bool onGlyphMaskNeedsCurrentColor() const override {
          return fGlyphMaskNeedsCurrentColor;
-@@ -108,10 +110,12 @@ protected:
+     }
      int onGetVariationDesignPosition(SkFontArguments::VariationPosition::Coordinate coordinates[],
                                       int coordinateCount) const override {
          SK_ABORT("Should never be called.");
@@ -102,7 +156,7 @@ Index: firefox-115.0/gfx/skia/skia/src/core/SkTypeface_remote.h
      }
      void onGetFamilyName(SkString* familyName) const override {
          // Used by SkStrikeCache::DumpMemoryStatistics.
-@@ -119,15 +123,19 @@ protected:
+         *familyName = "";
      }
      bool onGetPostScriptName(SkString*) const override {
          SK_ABORT("Should never be called.");
@@ -122,7 +176,13 @@ Index: firefox-115.0/gfx/skia/skia/src/core/SkTypeface_remote.h
      }
      std::unique_ptr<SkScalerContext> onCreateScalerContext(
          const SkScalerContextEffects& effects, const SkDescriptor* desc) const override
-@@ -141,20 +149,25 @@ protected:
+     {
+         return std::make_unique<SkScalerContextProxy>(
+                 sk_ref_sp(const_cast<SkTypefaceProxy*>(this)), effects, desc, fDiscardableManager);
+     }
+     void onFilterRec(SkScalerContextRec* rec) const override {
+         // The rec filtering is already applied by the server when generating
+         // the glyphs.
      }
      void onGetFontDescriptor(SkFontDescriptor*, bool*) const override {
          SK_ABORT("Should never be called.");
@@ -148,7 +208,7 @@ Index: firefox-115.0/gfx/skia/skia/src/core/SkTypeface_remote.h
      }
      int onCountGlyphs() const override {
          return this->glyphCount();
-@@ -162,6 +175,7 @@ protected:
+     }
  
      void* onGetCTFontRef() const override {
          SK_ABORT("Should never be called.");
@@ -156,11 +216,20 @@ Index: firefox-115.0/gfx/skia/skia/src/core/SkTypeface_remote.h
      }
  
  private:
-Index: firefox-115.0/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
-===================================================================
---- firefox-115.0.orig/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
-+++ firefox-115.0/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
-@@ -815,6 +815,7 @@ sk_sp<SkSpecialImage> cpu_blur(
+     const SkTypefaceID                              fTypefaceID;
+     const int                                       fGlyphCount;
+     const bool                                      fIsLogging;
+     const bool                                      fGlyphMaskNeedsCurrentColor;
+     sk_sp<SkStrikeClient::DiscardableHandleManager> fDiscardableManager;
+diff --git a/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp b/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
+--- a/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
++++ b/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
+@@ -810,16 +810,17 @@ sk_sp<SkSpecialImage> cpu_blur(
+         SkASSERT(0 <= sigma && sigma <= 2183); // should be guaranteed after map_sigma
+         if (PassMaker* maker = GaussPass::MakeMaker(sigma, &alloc)) {
+             return maker;
+         }
+         if (PassMaker* maker = TentPass::MakeMaker(sigma, &alloc)) {
              return maker;
          }
          SK_ABORT("Sigma is out of range.");
@@ -168,11 +237,20 @@ Index: firefox-115.0/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cp
      };
  
      PassMaker* makerX = makeMaker(sigma.x());
-Index: firefox-115.0/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
-===================================================================
---- firefox-115.0.orig/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
-+++ firefox-115.0/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
-@@ -69,6 +69,7 @@ void SkFontMgr_Indirect::onGetFamilyName
+     PassMaker* makerY = makeMaker(sigma.y());
+ 
+     if (makerX->window() <= 1 && makerY->window() <= 1) {
+         return copy_image_with_bounds(ctx, input, srcBounds, dstBounds);
+     }
+diff --git a/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp b/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
+--- a/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
++++ b/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
+@@ -64,16 +64,17 @@ int SkFontMgr_Indirect::onCountFamilies(
+ }
+ 
+ void SkFontMgr_Indirect::onGetFamilyName(int index, SkString* familyName) const {
+     SK_ABORT("Not implemented");
+ }
  
  SkFontStyleSet* SkFontMgr_Indirect::onCreateStyleSet(int index) const {
      SK_ABORT("Not implemented");
@@ -180,11 +258,20 @@ Index: firefox-115.0/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
  }
  
  SkFontStyleSet* SkFontMgr_Indirect::onMatchFamily(const char familyName[]) const {
-Index: firefox-115.0/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
-===================================================================
---- firefox-115.0.orig/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
-+++ firefox-115.0/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
-@@ -162,18 +162,22 @@ public:
+     return new SkStyleSet_Indirect(this, -1, fProxy->matchName(familyName));
+ }
+ 
+ SkTypeface* SkFontMgr_Indirect::createTypefaceFromFontId(const SkFontIdentity& id) const {
+     if (id.fDataId == SkFontIdentity::kInvalidDataId) {
+diff --git a/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp b/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
+--- a/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
++++ b/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
+@@ -157,28 +157,32 @@ public:
+     SkFontMgr_FCI(sk_sp<SkFontConfigInterface> fci)
+         : fFCI(std::move(fci))
+         , fCache(kMaxSize)
+     {}
+ 
  protected:
      int onCountFamilies() const override {
          SK_ABORT("Not implemented.");
@@ -207,11 +294,20 @@ Index: firefox-115.0/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
      }
  
      SkTypeface* onMatchFamilyStyle(const char requestedFamilyName[],
-Index: firefox-115.0/gfx/skia/skia/src/sksl/SkSLCompiler.cpp
-===================================================================
---- firefox-115.0.orig/gfx/skia/skia/src/sksl/SkSLCompiler.cpp
-+++ firefox-115.0/gfx/skia/skia/src/sksl/SkSLCompiler.cpp
-@@ -277,6 +277,7 @@ std::unique_ptr<Expression> Compiler::co
+                                    const SkFontStyle& requestedStyle) const override
+     {
+         SkAutoMutexExclusive ama(fMutex);
+ 
+         SkFontConfigInterface::FontIdentity identity;
+diff --git a/gfx/skia/skia/src/sksl/SkSLCompiler.cpp b/gfx/skia/skia/src/sksl/SkSLCompiler.cpp
+--- a/gfx/skia/skia/src/sksl/SkSLCompiler.cpp
++++ b/gfx/skia/skia/src/sksl/SkSLCompiler.cpp
+@@ -272,16 +272,17 @@ std::unique_ptr<Expression> Compiler::co
+         case Symbol::Kind::kType: {
+             // go through DSLType so we report errors on private types
+             dsl::DSLModifiers modifiers;
+             dsl::DSLType dslType(result->name(), &modifiers, pos);
+             return TypeReference::Convert(*fContext, pos, &dslType.skslType());
          }
          default:
              SK_ABORT("unsupported symbol type %d\n", (int) result->kind());
@@ -219,11 +315,20 @@ Index: firefox-115.0/gfx/skia/skia/src/sksl/SkSLCompiler.cpp
      }
  }
  
-Index: firefox-115.0/gfx/skia/skia/src/sksl/SkSLOperator.cpp
-===================================================================
---- firefox-115.0.orig/gfx/skia/skia/src/sksl/SkSLOperator.cpp
-+++ firefox-115.0/gfx/skia/skia/src/sksl/SkSLOperator.cpp
-@@ -51,7 +51,7 @@ OperatorPrecedence Operator::getBinaryPr
+ bool Compiler::optimizeModuleBeforeMinifying(ProgramKind kind, Module& module) {
+     SkASSERT(this->errorCount() == 0);
+ 
+     auto m = SkSL::ModuleLoader::Get();
+ 
+diff --git a/gfx/skia/skia/src/sksl/SkSLOperator.cpp b/gfx/skia/skia/src/sksl/SkSLOperator.cpp
+--- a/gfx/skia/skia/src/sksl/SkSLOperator.cpp
++++ b/gfx/skia/skia/src/sksl/SkSLOperator.cpp
+@@ -46,17 +46,17 @@ OperatorPrecedence Operator::getBinaryPr
+         case Kind::SLASHEQ:      // fall through
+         case Kind::PERCENTEQ:    // fall through
+         case Kind::SHLEQ:        // fall through
+         case Kind::SHREQ:        // fall through
+         case Kind::BITWISEANDEQ: // fall through
          case Kind::BITWISEXOREQ: // fall through
          case Kind::BITWISEOREQ:  return OperatorPrecedence::kAssignment;
          case Kind::COMMA:        return OperatorPrecedence::kSequence;
@@ -232,11 +337,20 @@ Index: firefox-115.0/gfx/skia/skia/src/sksl/SkSLOperator.cpp
      }
  }
  
-Index: firefox-115.0/gfx/skia/skia/src/sksl/ir/SkSLType.h
-===================================================================
---- firefox-115.0.orig/gfx/skia/skia/src/sksl/ir/SkSLType.h
-+++ firefox-115.0/gfx/skia/skia/src/sksl/ir/SkSLType.h
-@@ -422,6 +422,7 @@ public:
+ const char* Operator::operatorName() const {
+     switch (this->kind()) {
+         case Kind::PLUS:         return " + ";
+         case Kind::MINUS:        return " - ";
+         case Kind::STAR:         return " * ";
+diff --git a/gfx/skia/skia/src/sksl/ir/SkSLType.h b/gfx/skia/skia/src/sksl/ir/SkSLType.h
+--- a/gfx/skia/skia/src/sksl/ir/SkSLType.h
++++ b/gfx/skia/skia/src/sksl/ir/SkSLType.h
+@@ -417,16 +417,17 @@ public:
+      * Returns the number of scalars needed to hold this type.
+      */
+     virtual size_t slotCount() const {
+         return 0;
+     }
  
      virtual const std::vector<Field>& fields() const {
          SK_ABORT("Internal error: not a struct");
@@ -244,11 +358,20 @@ Index: firefox-115.0/gfx/skia/skia/src/sksl/ir/SkSLType.h
      }
  
      /**
-Index: firefox-115.0/gfx/skia/skia/src/utils/SkShadowUtils.cpp
-===================================================================
---- firefox-115.0.orig/gfx/skia/skia/src/utils/SkShadowUtils.cpp
-+++ firefox-115.0/gfx/skia/skia/src/utils/SkShadowUtils.cpp
-@@ -140,6 +140,7 @@ struct SpotVerticesFactory {
+      * For generic types, returns the types that this generic type can substitute for.
+      */
+     virtual SkSpan<const Type* const> coercibleTypes() const {
+         SkDEBUGFAIL("Internal error: not a generic type");
+         return {};
+diff --git a/gfx/skia/skia/src/utils/SkShadowUtils.cpp b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
+--- a/gfx/skia/skia/src/utils/SkShadowUtils.cpp
++++ b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
+@@ -135,16 +135,17 @@ struct SpotVerticesFactory {
+                 }
+                 return false;
+             case OccluderType::kDirectional:
+             case OccluderType::kDirectionalTransparent:
+                 *translate = that.fOffset - fOffset;
                  return true;
          }
          SK_ABORT("Uninitialized occluder type?");
@@ -256,11 +379,20 @@ Index: firefox-115.0/gfx/skia/skia/src/utils/SkShadowUtils.cpp
      }
  
      sk_sp<SkVertices> makeVertices(const SkPath& path, const SkMatrix& ctm,
-Index: firefox-115.0/intl/icu/source/i18n/number_rounding.cpp
-===================================================================
---- firefox-115.0.orig/intl/icu/source/i18n/number_rounding.cpp
-+++ firefox-115.0/intl/icu/source/i18n/number_rounding.cpp
-@@ -283,6 +283,7 @@ FractionPrecision Precision::constructFr
+                                    SkVector* translate) const {
+         bool transparent = fOccluderType == OccluderType::kPointTransparent ||
+                            fOccluderType == OccluderType::kDirectionalTransparent;
+         bool directional = fOccluderType == OccluderType::kDirectional ||
+                            fOccluderType == OccluderType::kDirectionalTransparent;
+diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/number_rounding.cpp
+--- a/intl/icu/source/i18n/number_rounding.cpp
++++ b/intl/icu/source/i18n/number_rounding.cpp
+@@ -278,27 +278,29 @@ Precision IncrementPrecision::withMinFra
+ }
+ 
+ FractionPrecision Precision::constructFraction(int32_t minFrac, int32_t maxFrac) {
+     FractionSignificantSettings settings;
+     settings.fMinFrac = static_cast<digits_t>(minFrac);
      settings.fMaxFrac = static_cast<digits_t>(maxFrac);
      settings.fMinSig = -1;
      settings.fMaxSig = -1;
@@ -268,7 +400,11 @@ Index: firefox-115.0/intl/icu/source/i18n/number_rounding.cpp
      PrecisionUnion union_;
      union_.fracSig = settings;
      return {RND_FRACTION, union_};
-@@ -294,6 +295,7 @@ Precision Precision::constructSignifican
+ }
+ 
+ Precision Precision::constructSignificant(int32_t minSig, int32_t maxSig) {
+     FractionSignificantSettings settings;
+     settings.fMinFrac = -1;
      settings.fMaxFrac = -1;
      settings.fMinSig = static_cast<digits_t>(minSig);
      settings.fMaxSig = static_cast<digits_t>(maxSig);
@@ -276,11 +412,20 @@ Index: firefox-115.0/intl/icu/source/i18n/number_rounding.cpp
      PrecisionUnion union_;
      union_.fracSig = settings;
      return {RND_SIGNIFICANT, union_};
-Index: firefox-115.0/js/src/irregexp/imported/regexp-parser.cc
-===================================================================
---- firefox-115.0.orig/js/src/irregexp/imported/regexp-parser.cc
-+++ firefox-115.0/js/src/irregexp/imported/regexp-parser.cc
-@@ -2656,6 +2656,7 @@ bool MayContainStrings(ClassSetOperandTy
+ }
+ 
+ Precision
+ Precision::constructFractionSignificant(
+         const FractionPrecision &base,
+diff --git a/js/src/irregexp/imported/regexp-parser.cc b/js/src/irregexp/imported/regexp-parser.cc
+--- a/js/src/irregexp/imported/regexp-parser.cc
++++ b/js/src/irregexp/imported/regexp-parser.cc
+@@ -2644,16 +2644,17 @@ bool MayContainStrings(ClassSetOperandTy
+       return false;
+     case ClassSetOperandType::kCharacterClassEscape:
+     case ClassSetOperandType::kClassStringDisjunction:
+       return operand->AsClassSetOperand()->has_strings();
+     case ClassSetOperandType::kNestedClass:
        if (operand->IsClassRanges()) return false;
        return operand->AsClassSetExpression()->may_contain_strings();
    }
@@ -288,11 +433,20 @@ Index: firefox-115.0/js/src/irregexp/imported/regexp-parser.cc
  }
  
  }  // namespace
-Index: firefox-115.0/third_party/libwebrtc/api/adaptation/resource.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/api/adaptation/resource.cc
-+++ firefox-115.0/third_party/libwebrtc/api/adaptation/resource.cc
-@@ -22,6 +22,7 @@ const char* ResourceUsageStateToString(R
+ 
+ // TODO(v8:11935): Change permalink once proposal is in stage 4.
+ // https://arai-a.github.io/ecma262-compare/snapshot.html?pr=2418#prod-ClassUnion
+ template <class CharT>
+ RegExpTree* RegExpParserImpl<CharT>::ParseClassUnion(
+diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libwebrtc/api/adaptation/resource.cc
+--- a/third_party/libwebrtc/api/adaptation/resource.cc
++++ b/third_party/libwebrtc/api/adaptation/resource.cc
+@@ -17,16 +17,17 @@ namespace webrtc {
+ const char* ResourceUsageStateToString(ResourceUsageState usage_state) {
+   switch (usage_state) {
+     case ResourceUsageState::kOveruse:
+       return "kOveruse";
+     case ResourceUsageState::kUnderuse:
        return "kUnderuse";
    }
    RTC_CHECK_NOTREACHED();
@@ -300,11 +454,20 @@ Index: firefox-115.0/third_party/libwebrtc/api/adaptation/resource.cc
  }
  
  ResourceListener::~ResourceListener() {}
-Index: firefox-115.0/third_party/libwebrtc/api/rtp_parameters.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/api/rtp_parameters.cc
-+++ firefox-115.0/third_party/libwebrtc/api/rtp_parameters.cc
-@@ -32,6 +32,7 @@ const char* DegradationPreferenceToStrin
+ 
+ Resource::Resource() {}
+ 
+ Resource::~Resource() {}
+ 
+diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
+--- a/third_party/libwebrtc/api/rtp_parameters.cc
++++ b/third_party/libwebrtc/api/rtp_parameters.cc
+@@ -27,16 +27,17 @@ const char* DegradationPreferenceToStrin
+     case DegradationPreference::MAINTAIN_FRAMERATE:
+       return "maintain-framerate";
+     case DegradationPreference::MAINTAIN_RESOLUTION:
+       return "maintain-resolution";
+     case DegradationPreference::BALANCED:
        return "balanced";
    }
    RTC_CHECK_NOTREACHED();
@@ -312,11 +475,20 @@ Index: firefox-115.0/third_party/libwebrtc/api/rtp_parameters.cc
  }
  
  const double kDefaultBitratePriority = 1.0;
-Index: firefox-115.0/third_party/libwebrtc/api/video/video_frame_buffer.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/api/video/video_frame_buffer.cc
-+++ firefox-115.0/third_party/libwebrtc/api/video/video_frame_buffer.cc
-@@ -106,6 +106,8 @@ const char* VideoFrameBufferTypeToString
+ 
+ RtcpFeedback::RtcpFeedback() = default;
+ RtcpFeedback::RtcpFeedback(RtcpFeedbackType type) : type(type) {}
+ RtcpFeedback::RtcpFeedback(RtcpFeedbackType type,
+                            RtcpFeedbackMessageType message_type)
+diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party/libwebrtc/api/video/video_frame_buffer.cc
+--- a/third_party/libwebrtc/api/video/video_frame_buffer.cc
++++ b/third_party/libwebrtc/api/video/video_frame_buffer.cc
+@@ -101,16 +101,18 @@ const char* VideoFrameBufferTypeToString
+       return "kI210";
+     case VideoFrameBuffer::Type::kI410:
+       return "kI410";
+     case VideoFrameBuffer::Type::kNV12:
+       return "kNV12";
      default:
        RTC_DCHECK_NOTREACHED();
    }
@@ -325,11 +497,20 @@ Index: firefox-115.0/third_party/libwebrtc/api/video/video_frame_buffer.cc
  }
  
  int I420BufferInterface::ChromaWidth() const {
-Index: firefox-115.0/third_party/libwebrtc/api/video_codecs/video_codec.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/api/video_codecs/video_codec.cc
-+++ firefox-115.0/third_party/libwebrtc/api/video_codecs/video_codec.cc
-@@ -118,6 +118,7 @@ const char* CodecTypeToPayloadString(Vid
+   return (width() + 1) / 2;
+ }
+ 
+ int I420BufferInterface::ChromaHeight() const {
+   return (height() + 1) / 2;
+diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
+--- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
++++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
+@@ -113,16 +113,17 @@ const char* CodecTypeToPayloadString(Vid
+     case kVideoCodecH264:
+       return kPayloadNameH264;
+     case kVideoCodecMultiplex:
+       return kPayloadNameMultiplex;
+     case kVideoCodecGeneric:
        return kPayloadNameGeneric;
    }
    RTC_CHECK_NOTREACHED();
@@ -337,11 +518,20 @@ Index: firefox-115.0/third_party/libwebrtc/api/video_codecs/video_codec.cc
  }
  
  VideoCodecType PayloadStringToCodecType(const std::string& name) {
-Index: firefox-115.0/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-+++ firefox-115.0/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-@@ -163,6 +163,7 @@ class VideoEncoderSoftwareFallbackWrappe
+   if (absl::EqualsIgnoreCase(name, kPayloadNameVp8))
+     return kVideoCodecVP8;
+   if (absl::EqualsIgnoreCase(name, kPayloadNameVp9))
+     return kVideoCodecVP9;
+   if (absl::EqualsIgnoreCase(name, kPayloadNameAv1) ||
+diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
+--- a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
++++ b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
+@@ -158,16 +158,17 @@ class VideoEncoderSoftwareFallbackWrappe
+         [[fallthrough]];
+       case EncoderState::kMainEncoderUsed:
+         return encoder_.get();
+       case EncoderState::kFallbackDueToFailure:
+       case EncoderState::kForcedFallback:
          return fallback_encoder_.get();
      }
      RTC_CHECK_NOTREACHED();
@@ -349,7 +539,17 @@ Index: firefox-115.0/third_party/libwebrtc/api/video_codecs/video_encoder_softwa
    }
  
    // Updates encoder with last observed parameters, such as callbacks, rates,
-@@ -343,6 +344,7 @@ int32_t VideoEncoderSoftwareFallbackWrap
+   // etc.
+   void PrimeEncoder(VideoEncoder* encoder) const;
+ 
+   // Settings used in the last InitEncode call and used if a dynamic fallback to
+   // software is required.
+@@ -338,16 +339,17 @@ int32_t VideoEncoderSoftwareFallbackWrap
+     case EncoderState::kMainEncoderUsed: {
+       return EncodeWithMainEncoder(frame, frame_types);
+     }
+     case EncoderState::kFallbackDueToFailure:
+     case EncoderState::kForcedFallback:
        return fallback_encoder_->Encode(frame, frame_types);
    }
    RTC_CHECK_NOTREACHED();
@@ -357,11 +557,20 @@ Index: firefox-115.0/third_party/libwebrtc/api/video_codecs/video_encoder_softwa
  }
  
  int32_t VideoEncoderSoftwareFallbackWrapper::EncodeWithMainEncoder(
-Index: firefox-115.0/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
-+++ firefox-115.0/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
-@@ -168,6 +168,7 @@ const char* Adaptation::StatusToString(A
+     const VideoFrame& frame,
+     const std::vector<VideoFrameType>* frame_types) {
+   int32_t ret = encoder_->Encode(frame, frame_types);
+   // If requested, try a software fallback.
+   bool fallback_requested = (ret == WEBRTC_VIDEO_CODEC_FALLBACK_SOFTWARE);
+diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
+--- a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
++++ b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
+@@ -164,16 +164,17 @@ const char* Adaptation::StatusToString(A
+     case Status::kInsufficientInput:
+       return "kInsufficientInput";
+     case Status::kAdaptationDisabled:
+       return "kAdaptationDisabled";
+     case Status::kRejectedByConstraint:
        return "kRejectedByConstraint";
    }
    RTC_CHECK_NOTREACHED();
@@ -369,7 +578,17 @@ Index: firefox-115.0/third_party/libwebrtc/call/adaptation/video_stream_adapter.
  }
  
  Adaptation::Adaptation(int validation_id,
-@@ -390,6 +391,7 @@ VideoStreamAdapter::RestrictionsOrState
+                        VideoSourceRestrictions restrictions,
+                        VideoAdaptationCounters counters,
+                        VideoStreamInputState input_state)
+     : validation_id_(validation_id),
+       status_(Status::kValid),
+@@ -386,16 +387,17 @@ VideoStreamAdapter::RestrictionsOrState 
+     case DegradationPreference::MAINTAIN_RESOLUTION: {
+       // Scale up framerate.
+       return IncreaseFramerate(input_state, current_restrictions_);
+     }
+     case DegradationPreference::DISABLED:
        return Adaptation::Status::kAdaptationDisabled;
    }
    RTC_CHECK_NOTREACHED();
@@ -377,7 +596,17 @@ Index: firefox-115.0/third_party/libwebrtc/call/adaptation/video_stream_adapter.
  }
  
  Adaptation VideoStreamAdapter::GetAdaptationDown() {
-@@ -472,6 +474,7 @@ VideoStreamAdapter::GetAdaptationDownSte
+   RTC_DCHECK_RUN_ON(&sequence_checker_);
+   VideoStreamInputState input_state = input_state_provider_->InputState();
+   ++adaptation_validation_id_;
+   RestrictionsOrState restrictions_or_state =
+       GetAdaptationDownStep(input_state, current_restrictions_);
+@@ -468,16 +470,17 @@ VideoStreamAdapter::GetAdaptationDownSte
+     }
+     case DegradationPreference::MAINTAIN_RESOLUTION: {
+       return DecreaseFramerate(input_state, current_restrictions);
+     }
+     case DegradationPreference::DISABLED:
        return Adaptation::Status::kAdaptationDisabled;
    }
    RTC_CHECK_NOTREACHED();
@@ -385,7 +614,17 @@ Index: firefox-115.0/third_party/libwebrtc/call/adaptation/video_stream_adapter.
  }
  
  VideoStreamAdapter::RestrictionsOrState VideoStreamAdapter::DecreaseResolution(
-@@ -625,6 +628,8 @@ Adaptation VideoStreamAdapter::GetAdaptD
+     const VideoStreamInputState& input_state,
+     const RestrictionsWithCounters& current_restrictions) {
+   int target_pixels =
+       GetLowerResolutionThan(input_state.frame_size_pixels().value());
+   // Use single active stream if set, this stream could be lower than the input.
+@@ -621,16 +624,18 @@ Adaptation VideoStreamAdapter::GetAdaptD
+     case DegradationPreference::MAINTAIN_FRAMERATE:
+       return GetAdaptationDown();
+     case DegradationPreference::BALANCED: {
+       return RestrictionsOrStateToAdaptation(
+           GetAdaptDownResolutionStepForBalanced(input_state), input_state);
      }
    }
    RTC_CHECK_NOTREACHED();
@@ -394,11 +633,20 @@ Index: firefox-115.0/third_party/libwebrtc/call/adaptation/video_stream_adapter.
  }
  
  VideoStreamAdapter::RestrictionsOrState
-Index: firefox-115.0/third_party/libwebrtc/call/rtp_payload_params.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/call/rtp_payload_params.cc
-+++ firefox-115.0/third_party/libwebrtc/call/rtp_payload_params.cc
-@@ -407,7 +407,7 @@ absl::optional<FrameDependencyStructure>
+ VideoStreamAdapter::GetAdaptDownResolutionStepForBalanced(
+     const VideoStreamInputState& input_state) const {
+   // Adapt twice if the first adaptation did not decrease resolution.
+   auto first_step = GetAdaptationDownStep(input_state, current_restrictions_);
+   if (!absl::holds_alternative<RestrictionsWithCounters>(first_step)) {
+diff --git a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libwebrtc/call/rtp_payload_params.cc
+--- a/third_party/libwebrtc/call/rtp_payload_params.cc
++++ b/third_party/libwebrtc/call/rtp_payload_params.cc
+@@ -400,17 +400,17 @@ absl::optional<FrameDependencyStructure>
+       }
+       return structure;
+     }
+     case VideoCodecType::kVideoCodecAV1:
+     case VideoCodecType::kVideoCodecH264:
      case VideoCodecType::kVideoCodecMultiplex:
        return absl::nullopt;
    }
@@ -407,11 +655,20 @@ Index: firefox-115.0/third_party/libwebrtc/call/rtp_payload_params.cc
  }
  
  void RtpPayloadParams::GenericToGeneric(int64_t shared_frame_id,
-Index: firefox-115.0/third_party/libwebrtc/call/video_send_stream.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/call/video_send_stream.cc
-+++ firefox-115.0/third_party/libwebrtc/call/video_send_stream.cc
-@@ -30,6 +30,7 @@ const char* StreamTypeToString(VideoSend
+                                         bool is_keyframe,
+                                         RTPVideoHeader* rtp_video_header) {
+   RTPVideoHeader::GenericDescriptorInfo& generic =
+       rtp_video_header->generic.emplace();
+ 
+diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwebrtc/call/video_send_stream.cc
+--- a/third_party/libwebrtc/call/video_send_stream.cc
++++ b/third_party/libwebrtc/call/video_send_stream.cc
+@@ -25,16 +25,17 @@ const char* StreamTypeToString(VideoSend
+     case VideoSendStream::StreamStats::StreamType::kMedia:
+       return "media";
+     case VideoSendStream::StreamStats::StreamType::kRtx:
+       return "rtx";
+     case VideoSendStream::StreamStats::StreamType::kFlexfec:
        return "flexfec";
    }
    RTC_CHECK_NOTREACHED();
@@ -419,11 +676,20 @@ Index: firefox-115.0/third_party/libwebrtc/call/video_send_stream.cc
  }
  
  }  // namespace
-Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
-+++ firefox-115.0/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
-@@ -378,7 +378,7 @@ std::unique_ptr<ClippingPredictor> Creat
+ 
+ VideoSendStream::StreamStats::StreamStats() = default;
+ VideoSendStream::StreamStats::~StreamStats() = default;
+ 
+ std::string VideoSendStream::StreamStats::ToString() const {
+diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
+--- a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
++++ b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
+@@ -373,12 +373,12 @@ std::unique_ptr<ClippingPredictor> Creat
+           config.reference_window_delay, config.clipping_threshold,
+           /*adaptive_step_estimation=*/true);
+     case ClippingPredictorMode::kFixedStepClippingPeakPrediction:
+       return std::make_unique<ClippingPeakPredictor>(
+           num_channels, config.window_length, config.reference_window_length,
            config.reference_window_delay, config.clipping_threshold,
            /*adaptive_step_estimation=*/false);
    }
@@ -432,11 +698,15 @@ Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/agc2/clippin
  }
  
  }  // namespace webrtc
-Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
-+++ firefox-115.0/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
-@@ -48,6 +48,7 @@ constexpr absl::string_view MetricNamePr
+diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc b/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
+--- a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
++++ b/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
+@@ -43,16 +43,17 @@ int ComputeAverageUpdate(int sum_updates
+ constexpr absl::string_view MetricNamePrefix(
+     InputVolumeType input_volume_type) {
+   switch (input_volume_type) {
+     case InputVolumeType::kApplied:
+       return "WebRTC.Audio.Apm.AppliedInputVolume.";
      case InputVolumeType::kRecommended:
        return "WebRTC.Audio.Apm.RecommendedInputVolume.";
    }
@@ -444,11 +714,20 @@ Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/agc2/input_v
  }
  
  metrics::Histogram* CreateVolumeHistogram(InputVolumeType input_volume_type) {
-Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
-+++ firefox-115.0/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
-@@ -59,6 +59,8 @@ rtc::FunctionView<float(float)> GetActiv
+   char buffer[64];
+   rtc::SimpleStringBuilder builder(buffer);
+   builder << MetricNamePrefix(input_volume_type) << "OnChange";
+   return metrics::HistogramFactoryGetCountsLinear(/*name=*/builder.str(),
+                                                   /*min=*/1,
+diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
+--- a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
++++ b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
+@@ -54,16 +54,18 @@ std::vector<float> PreprocessWeights(rtc
+ rtc::FunctionView<float(float)> GetActivationFunction(
+     ActivationFunction activation_function) {
+   switch (activation_function) {
+     case ActivationFunction::kTansigApproximated:
+       return ::rnnoise::TansigApproximated;
      case ActivationFunction::kSigmoidApproximated:
        return ::rnnoise::SigmoidApproximated;
    }
@@ -457,11 +736,20 @@ Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad
  }
  
  }  // namespace
-Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-+++ firefox-115.0/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-@@ -99,6 +99,7 @@ GainControl::Mode Agc1ConfigModeToInterf
+ 
+ FullyConnectedLayer::FullyConnectedLayer(
+     const int input_size,
+     const int output_size,
+     const rtc::ArrayView<const int8_t> bias,
+diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
+--- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
++++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
+@@ -94,16 +94,17 @@ GainControl::Mode Agc1ConfigModeToInterf
+     case Agc1Config::kAdaptiveAnalog:
+       return GainControl::kAdaptiveAnalog;
+     case Agc1Config::kAdaptiveDigital:
+       return GainControl::kAdaptiveDigital;
+     case Agc1Config::kFixedDigital:
        return GainControl::kFixedDigital;
    }
    RTC_CHECK_NOTREACHED();
@@ -469,7 +757,17 @@ Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/audio_proces
  }
  
  bool MinimizeProcessingForUnusedOutput() {
-@@ -166,7 +167,7 @@ int AudioFormatValidityToErrorCode(Audio
+   return !field_trial::IsEnabled("WebRTC-MutedStateKillSwitch");
+ }
+ 
+ // Maximum lengths that frame of samples being passed from the render side to
+ // the capture side can have (does not apply to AEC3).
+@@ -161,17 +162,17 @@ int AudioFormatValidityToErrorCode(Audio
+     case AudioFormatValidity::kValidAndSupported:
+       return AudioProcessing::kNoError;
+     case AudioFormatValidity::kValidButUnsupportedSampleRate:  // fall-through
+     case AudioFormatValidity::kInvalidSampleRate:
+       return AudioProcessing::kBadSampleRateError;
      case AudioFormatValidity::kInvalidChannelCount:
        return AudioProcessing::kBadNumberChannelsError;
    }
@@ -478,7 +776,17 @@ Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/audio_proces
  }
  
  // Returns an AudioProcessing::Error together with the best possible option for
-@@ -2421,6 +2422,7 @@ void AudioProcessingImpl::InitializeNois
+ // output audio content.
+ std::pair<int, FormatErrorOutputOption> ChooseErrorOutputOption(
+     const StreamConfig& input_config,
+     const StreamConfig& output_config) {
+   AudioFormatValidity input_validity = ValidateAudioFormat(input_config);
+@@ -2416,16 +2417,17 @@ void AudioProcessingImpl::InitializeNois
+             case NoiseSuppresionConfig::kModerate:
+               return NsConfig::SuppressionLevel::k12dB;
+             case NoiseSuppresionConfig::kHigh:
+               return NsConfig::SuppressionLevel::k18dB;
+             case NoiseSuppresionConfig::kVeryHigh:
                return NsConfig::SuppressionLevel::k21dB;
            }
            RTC_CHECK_NOTREACHED();
@@ -486,11 +794,20 @@ Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/audio_proces
          };
  
      NsConfig cfg;
-Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
-+++ firefox-115.0/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
-@@ -32,6 +32,7 @@ std::string NoiseSuppressionLevelToStrin
+     cfg.target_level = map_level(config_.noise_suppression.level);
+     submodules_.noise_suppressor = std::make_unique<NoiseSuppressor>(
+         cfg, proc_sample_rate_hz(), num_proc_channels());
+   }
+ }
+diff --git a/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc b/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
+--- a/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
++++ b/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
+@@ -27,28 +27,30 @@ std::string NoiseSuppressionLevelToStrin
+     case AudioProcessing::Config::NoiseSuppression::Level::kModerate:
+       return "Moderate";
+     case AudioProcessing::Config::NoiseSuppression::Level::kHigh:
+       return "High";
+     case AudioProcessing::Config::NoiseSuppression::Level::kVeryHigh:
        return "VeryHigh";
    }
    RTC_CHECK_NOTREACHED();
@@ -498,7 +815,12 @@ Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/include/audi
  }
  
  std::string GainController1ModeToString(const Agc1Config::Mode& mode) {
-@@ -44,6 +45,7 @@ std::string GainController1ModeToString(
+   switch (mode) {
+     case Agc1Config::Mode::kAdaptiveAnalog:
+       return "AdaptiveAnalog";
+     case Agc1Config::Mode::kAdaptiveDigital:
+       return "AdaptiveDigital";
+     case Agc1Config::Mode::kFixedDigital:
        return "FixedDigital";
    }
    RTC_CHECK_NOTREACHED();
@@ -506,11 +828,20 @@ Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/include/audi
  }
  
  }  // namespace
-Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
-+++ firefox-115.0/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
-@@ -53,6 +53,7 @@ std::string GetVadModeLabel(TransientSup
+ 
+ constexpr int AudioProcessing::kNativeSampleRatesHz[];
+ 
+ void CustomProcessing::SetRuntimeSetting(
+     AudioProcessing::RuntimeSetting setting) {}
+diff --git a/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc b/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
+--- a/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
++++ b/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
+@@ -48,16 +48,17 @@ std::string GetVadModeLabel(TransientSup
+   switch (vad_mode) {
+     case TransientSuppressor::VadMode::kDefault:
+       return "default";
+     case TransientSuppressor::VadMode::kRnnVad:
+       return "RNN VAD";
      case TransientSuppressor::VadMode::kNoVad:
        return "no VAD";
    }
@@ -518,11 +849,20 @@ Index: firefox-115.0/third_party/libwebrtc/modules/audio_processing/transient/tr
  }
  
  }  // namespace
-Index: firefox-115.0/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
-+++ firefox-115.0/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
-@@ -44,6 +44,7 @@ ScreenCastPortal::CaptureSourceType Scre
+ 
+ TransientSuppressorImpl::TransientSuppressorImpl(VadMode vad_mode,
+                                                  int sample_rate_hz,
+                                                  int detector_rate_hz,
+                                                  int num_channels)
+diff --git a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
+--- a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
++++ b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
+@@ -39,16 +39,17 @@ ScreenCastPortal::CaptureSourceType Scre
+   switch (type) {
+     case CaptureType::kScreen:
+       return ScreenCastPortal::CaptureSourceType::kScreen;
+     case CaptureType::kWindow:
+       return ScreenCastPortal::CaptureSourceType::kWindow;
      case CaptureType::kAnyScreenContent:
        return ScreenCastPortal::CaptureSourceType::kAnyScreenContent;
    }
@@ -530,11 +870,41 @@ Index: firefox-115.0/third_party/libwebrtc/modules/desktop_capture/linux/wayland
  }
  
  ScreenCastPortal::ScreenCastPortal(CaptureType type, PortalNotifier* notifier)
-Index: firefox-115.0/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
-+++ firefox-115.0/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
-@@ -38,6 +38,7 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
+     : ScreenCastPortal(type,
+                        notifier,
+                        OnProxyRequested,
+                        OnSourcesRequestResponseSignal,
+                        this) {}
+diff --git a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
+--- a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
++++ b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
+@@ -64,16 +64,17 @@ bool BitrateProber::ReadyToSetActiveStat
+       return false;
+     case ProbingState::kInactive:
+       // If config_.min_packet_size > 0, a "large enough" packet must be sent
+       // first, before a probe can be generated and sent. Otherwise, send the
+       // probe asap.
+       return packet_size >=
+              std::min(RecommendedMinProbeSize(), config_.min_packet_size.Get());
+   }
++  RTC_CHECK_NOTREACHED();
+ }
+ 
+ void BitrateProber::OnIncomingPacket(DataSize packet_size) {
+   if (ReadyToSetActiveState(packet_size)) {
+     next_probe_time_ = Timestamp::MinusInfinity();
+     probing_state_ = ProbingState::kActive;
+   }
+ }
+diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
+@@ -33,11 +33,12 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
+       return std::make_unique<VideoRtpDepacketizerVp9>();
+     case kVideoCodecAV1:
+       return std::make_unique<VideoRtpDepacketizerAv1>();
+     case kVideoCodecGeneric:
+     case kVideoCodecMultiplex:
        return std::make_unique<VideoRtpDepacketizerGeneric>();
    }
    RTC_CHECK_NOTREACHED();
@@ -542,11 +912,15 @@ Index: firefox-115.0/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_
  }
  
  }  // namespace webrtc
-Index: firefox-115.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-+++ firefox-115.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-@@ -142,6 +142,7 @@ bool IsNonVolatile(RTPExtensionType type
+diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
+@@ -135,16 +135,17 @@ bool IsNonVolatile(RTPExtensionType type
+ #if defined(WEBRTC_MOZILLA_BUILD)
+     case kRtpExtensionCsrcAudioLevel:
+       // TODO: Mozilla implement for CsrcAudioLevel
+       RTC_CHECK(false);
+       return false;
  #endif
    }
    RTC_CHECK_NOTREACHED();
@@ -554,11 +928,20 @@ Index: firefox-115.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
  }
  
  bool HasBweExtension(const RtpHeaderExtensionMap& extensions_map) {
-Index: firefox-115.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-+++ firefox-115.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-@@ -45,6 +45,7 @@ namespace {
+   return extensions_map.IsRegistered(kRtpExtensionTransportSequenceNumber) ||
+          extensions_map.IsRegistered(kRtpExtensionTransportSequenceNumber02) ||
+          extensions_map.IsRegistered(kRtpExtensionAbsoluteSendTime) ||
+          extensions_map.IsRegistered(kRtpExtensionTransmissionTimeOffset);
+ }
+diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
+@@ -40,16 +40,17 @@ namespace {
+     case AudioFrameType::kEmptyFrame:
+       return "empty";
+     case AudioFrameType::kAudioFrameSpeech:
+       return "audio_speech";
+     case AudioFrameType::kAudioFrameCN:
        return "audio_cn";
    }
    RTC_CHECK_NOTREACHED();
@@ -566,11 +949,20 @@ Index: firefox-115.0/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_au
  }
  
  constexpr char kIncludeCaptureClockOffset[] =
-Index: firefox-115.0/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
-+++ firefox-115.0/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
-@@ -110,6 +110,7 @@ size_t BufferToIndex(Vp8BufferReference
+     "WebRTC-IncludeCaptureClockOffset";
+ 
+ }  // namespace
+ 
+ RTPSenderAudio::RTPSenderAudio(Clock* clock, RTPSender* rtp_sender)
+diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
+--- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
++++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
+@@ -105,16 +105,17 @@ size_t BufferToIndex(Vp8BufferReference 
+       return 0;
+     case Vp8FrameConfig::Vp8BufferReference::kGolden:
+       return 1;
+     case Vp8FrameConfig::Vp8BufferReference::kAltref:
+       return 2;
      case Vp8FrameConfig::Vp8BufferReference::kNone:
        RTC_CHECK_NOTREACHED();
    }
@@ -578,11 +970,20 @@ Index: firefox-115.0/third_party/libwebrtc/modules/video_coding/codecs/vp8/defau
  }
  
  }  // namespace
-Index: firefox-115.0/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
-+++ firefox-115.0/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
-@@ -30,6 +30,7 @@ TemporalLayersChecker::CreateTemporalLay
+ 
+ constexpr size_t DefaultTemporalLayers::kNumReferenceBuffers;
+ 
+ std::vector<DefaultTemporalLayers::DependencyInfo>
+ DefaultTemporalLayers::GetDependencyInfo(size_t num_layers) {
+diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
+--- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
++++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
+@@ -25,16 +25,17 @@ TemporalLayersChecker::CreateTemporalLay
+     case Vp8TemporalLayersType::kFixedPattern:
+       return std::make_unique<DefaultTemporalLayersChecker>(
+           num_temporal_layers);
+     case Vp8TemporalLayersType::kBitrateDynamic:
+       // Conference mode temporal layering for screen content in base stream.
        return std::make_unique<TemporalLayersChecker>(num_temporal_layers);
    }
    RTC_CHECK_NOTREACHED();
@@ -590,11 +991,20 @@ Index: firefox-115.0/third_party/libwebrtc/modules/video_coding/codecs/vp8/tempo
  }
  
  TemporalLayersChecker::TemporalLayersChecker(int num_temporal_layers)
-Index: firefox-115.0/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-===================================================================
---- firefox-115.0.orig/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-+++ firefox-115.0/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-@@ -63,6 +63,7 @@ std::string ToString(VideoAdaptationReas
+     : num_temporal_layers_(num_temporal_layers),
+       sequence_number_(0),
+       last_sync_sequence_number_(0),
+       last_tl0_sequence_number_(0) {}
+ 
+diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
+--- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
++++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
+@@ -58,16 +58,17 @@ bool IsFramerateScalingEnabled(Degradati
+ std::string ToString(VideoAdaptationReason reason) {
+   switch (reason) {
+     case VideoAdaptationReason::kQuality:
+       return "quality";
+     case VideoAdaptationReason::kCpu:
        return "cpu";
    }
    RTC_CHECK_NOTREACHED();
@@ -602,3 +1012,8 @@ Index: firefox-115.0/third_party/libwebrtc/video/adaptation/video_stream_encoder
  }
  
  std::vector<bool> GetActiveLayersFlags(const VideoCodec& codec) {
+   std::vector<bool> flags;
+   if (codec.codecType == VideoCodecType::kVideoCodecVP9) {
+     flags.resize(codec.VP9().numberOfSpatialLayers);
+     for (size_t i = 0; i < flags.size(); ++i) {
+       flags[i] = codec.spatialLayers[i].active;
