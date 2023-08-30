@@ -1,4 +1,500 @@
 -------------------------------------------------------------------
+Thu Aug 24 14:00:45 UTC 2023 - marius.kittler@suse.com
+
+- Update to version 10.1.0:
+  * Features and enhancements
+    - Usage stats: Tune collector execution startup and interval.
+    - Prometheus: Add support for day_of_year.
+    - Transforms: Add Alpha Format Time Transform.
+    - Prometheus: Add present_over_time syntax highlighting.
+    - Login: Show oauth error messages inline.
+    - Geomap: Promote route + photos layer to beta, promote geojson
+      layer to stable.
+    - Dashboards: Add Angular deprecation alert in data source
+      query editor.
+    - Auth: Lock organization roles for users who are managed
+      through an external auth provider.
+    - Tranformations: True OUTER JOIN in the join by field
+      transformation used for tabular data .
+    - NestedFolders: Enable new nested folder picker by default for
+      nested folders.
+    - Alerting: Add dashboardUID and panelID query parameters for
+      loki state history.
+    - Feature toggles management: Define get feature toggles api.
+    - Prometheus: Turn browser resource cache on by default.
+    - Alerting: Improve alerts names visibility on narrow panels.
+    - Data Sources: Remove Admin/Data sources page in favour of
+      Connections/Data sources.
+    - Loki: Enable Query Splitting by default.
+    - AuthN: Lock down manual role updates for users synced through
+      Grafana Com portal.
+    - Tempo: Remove traceqlSearch feature toggle.
+    - Alerting: Keep legacy alert rule maxDataPoints and intervalMs
+      during migration.
+    - Alerting: Add min interval option to alert rule query
+      creation.
+    - Alerting: Add View YAML button for Grafana/provisioned rules.
+    - Plugin: Remove error on invalid version.
+    - Traces: Enable showing trace ids.
+    - RBAC: Split non-empty scopes into kind, attribute and
+      identifier fields for better search performance.
+    - Adminstration: Feature toggle for feature toggle admin page.
+    - Alerting: Improve performance of matching captures.
+    - CommandPalette: Remove parent search and fuzzy search for
+      pages.
+    - Tracing: Remove newTraceViewHeader feature toggle.
+    - FlameGraph: Add column in table with buttons to filter and
+      sandwich a symbol.
+    - Units: Added support for Candela (cd).
+    - Alerting: Add contact point provisioning file export.
+    - Redshift: Support caching async aws queries.
+    - Alerting: Save and restore condition reference while
+      switching type.
+    - Explore: Remove exploreMixedDatasource feature toggle.
+    - OAuth: Introduce user_refresh_token setting and make it
+      default for the selected providers.
+    - Alerting: Adds support for toggling common labels.
+    - Plugin: Validate plugin version on installation.
+    - Explore: Replaced deprecated 'query' property with 'queries'
+      in splitOpen.
+    - Plugins: Remove logs button instead of disabling it.
+    - Traces: Add inline validation and greater precision to
+      duration fields in span filters.
+    - Alert: Change error icon to exclamation-circle.
+    - Field Config: Add new units (mΩ, kHz, MHz, GHz, ac, ha).
+    - Plugins: Fail plugins installation on wrong args provided.
+    - Logs: Display log row menu cell on displayed fields.
+    - Auth: Move LDAP debug to Authentication menu.
+    - AzureMonitor: Add switch to control time-range for Logs
+      queries.
+    - Alerting: Changes to evaluation group step.
+    - PanelInspect: Clean table display settings from field config.
+    - QueryBuilder: Preserve queries when switching from Mixed.
+    - Public Dashboard: Redesign modal (v2).
+    - Tracing: Add services, depth to span filters metadata.
+    - PluginExtensions: Add category to link extensions.
+    - Alerting: Add smart type selection when creating a new alert
+      rule.
+    - Alerting: Keep rule form buttons always on top.
+    - Feat: Match allowed cookies with optional character.
+    - Plugins: Add feature toggle for Temporary Credentials.
+    - Tracing: Show next/prev buttons when span filters are
+      collapsed.
+    - Heatmap: Add datalink support.
+    - Table: Add custom cell rendering option.
+    - Alerting: Use new "Label" components for alert instance
+      labels.
+    - Prometheus: Add disableRecordingRules datasource config.
+    - Alerting: Use ToggleTip instead of Hovercard in the info
+      popup on Math expressions.
+    - Alerting: Improve time range and max data points info in
+      QueryEditor.
+    - A11y: Do not force colors in the color swatch and icon
+      series.
+    - A11y: Add support for toggle buttons in high contrast mode.
+    - LogContext: Make centered row unsticky on click.
+    - LogContext: Add button to scroll to center.
+    - Alerting: Render folder selector in options for Alert List
+      Panel only when having Grafana datasource.
+    - Connections console: Add Angular badge for Angular plugins.
+    - Flamegraph: Add switch for color scheme by value or by
+      package.
+    - Auth: Enforce role sync except if skip org role sync is
+      enabled.
+    - AuthZ: Extend /api/search to work with self-contained
+      permissions.
+    - Login: Adjust error message when user exceed login attempts.
+    - Nested folders: Paginate child folder items.
+    - Units: Add events/messages/records/rows throughput units.
+    - Plugins: Enable feature toggles for long running queries by
+      deafult.
+    - I18n: Translate phrases for new Browse Dashboards.
+    - Flamegraph: Prevent cropping of tooltip by bottom of the
+      viewport.
+    - Pyroscope: Preselect default profile type or app in the query
+      editor dropdown.
+    - Trend: Support disconnect values and connect nulls options.
+    - StateTimeline: Add disconnect value option.
+    - DSPicker: Use new DS picker everywhere.
+    - Alerting: Reduce number of unnecessary request in the alert
+      list panel in case ….
+    - Docs: Update query and resource caching documentation to
+      improve clarity and add additional context.
+    - Alerting: Adds in-app documentation for Classic Conditions.
+    - Alerting: Display a warning when a contact point is not in
+      use.
+    - Dashboards: Support an auto refresh interval that is based on
+      the query range.
+    - Loki: Preserve pipeline stages in context query.
+    - Logs: Link anchored logline when opening context in split
+      view.
+    - Prometheus: Add capability to filter label names by metric in
+      template variable editor.
+    - Alerting: Expression card improvements.
+    - Logs: Show active state of "filter for value" buttons in Logs
+      Details.
+    - Loki: Deprecate resolution.
+    - PanelPlugin: Allow hiding standard field config from
+      defaults.
+    - InteractiveTable: Add pagination and header tooltips.
+    - FlameGraph: Add sandwich view.
+    - Login: Show error messages inline in form instead of in
+      toasts.
+    - Elasticsearch: Enable logs samples for metric queries.
+    - Geomap: Add network layer.
+    - Alerting: Bump grafana/alerting and refactor the
+      ImageStore/Provider to provide image URL/bytes.
+    - Auth: Support google OIDC and group fetching.
+    - Alerting: Make QueryEditor not collapsable.
+    - TimeSeries: Add option to disconnect values.
+    - Logs: Add toggle behavior support for "filter for" and
+      "filter out" label within Logs Details.
+    - Plugins: Periodically update public signing key.
+    - Navigation: Add navigation customization options to config
+      documentation.
+    - Config: Add configuration option to define custom user-facing
+      general error message for certain error types.
+    - Alerting: Add notification policy provisioning file export.
+    - CloudWatch: Add missing EventBridge Pipe metrics.
+    - SSE: Support for ML query node.
+    - Database: Make dialects independent of xorm Engine.
+    - Mysql Tests: For mysql5.7 integration tests use utf8mb4
+      charset.
+    - Alerting: Show disabled provisioned evaluation group.
+    - Auth: Support Gitlab OIDC scopes.
+    - InfluxDB: Backend parser compatibility with frontend parser.
+    - PublicDashboards: Audit table pagination.
+    - CloudWatch: Add missing AWS/FSx metrics.
+    - Variables: Show description instead of definition in table.
+    - Alerting: Repurpose rule testing endpoint to return potential
+      alerts.
+    - NestedFolders: Move New folder into a drawer.
+    - Loki: Implement step editor.
+    - DataFrame: Align frame (series.name) and field naming
+      (field.name).
+    - Auth: Use auth broker by default.
+    - Dashboards: Add dashboard embed route.
+    - Nested folders: Improve loading states.
+    - Alerting: Use monaco editor for admin page.
+    - Legend: Sort by name.
+    - QueryField: Set default value for onBlur prop.
+    - Tempo: TraceQL editor - Match type of new values with values
+      in dropdown.
+    - Logs: Add permalink to log lines.
+    - Logs: Implement "infinite" scrolling in log context.
+    - Tracing: Use new DataSourceDescription component.
+    - Plugin Extensions: Custom limits for extensions-per-plugin.
+    - Alerting: Display error if repeat interval is lower than
+      group interval.
+    - Tracing: Move upload trace to button.
+    - I18n: Add server config to detect browser language.
+    - Tempo: Represent OTLP Span Intrinsics correctly.
+    - News: Expose config option to disable News feed.
+    - Alerting: Change how we display annotations in the rule form.
+    - Azure: AzureMonitorMetrics - change response to be dataplane
+      compliant.
+    - JoinDataFrames: Keep field name if possible.
+    - Dashboards: Data source template variable options now specify
+      a current value using uid.
+    - Alerting: Add more context to delete modals.
+    - Plugins: Forbid loading Angular plugins when Angular is
+      disabled.
+    - Tempo: TraceQL query response streaming.
+    - Catalog: Display badges for Angular plugins and disable
+      install if Angular is disabled.
+    - Chore: Adding "allowed_groups" Configuration Parameter to
+      Generic OAuth Method.
+    - Loki: Add support for distinct operation in autocomplete and
+      query builder.
+    - Chore: Avoid unnecessary byte/string conversions.
+    - Loki: Implement decolorize logql operation.
+    - CloudWatch: Wrap VariableEditor dimension fields.
+    - TimeSeries: Add zoom-out functionality on double click.
+    - Plugins: Bump Plugin SDK version and address instance
+      management breaking changes.
+    - FlameGraph: Add option to align text left or right.
+    - Logs: Added copy-to-clipboard fallback support and visual
+      feedback after copying.
+    - Auth: Respect cache control for JWKS in auth.jwt.
+    - Pyroscope: Rename phlare to grafana-pyroscope-datasource.
+    - Alerting: Add notification policies preview in alert
+      creation.
+    - Page: Add inline rename functionality.
+    - Tracing: Rename reset to clear for consistency.
+    - Alerting: Adds support for timezones in mute timings.
+    - Datasources: Deprecate and log creating/updating datasources
+      with invalid UIDs.
+    - Tracing: Upgrade tracing data source configuration editors.
+    - Loki: Preserve pre-selected labels in the log context UI.
+    - NestedFolders: Improve performance of Browse Dashboards by
+      loading one page at a time.
+    - Plugins: Add a new UI Extension type.
+    - StateTimeline: Support hideFrom field config.
+    - Chore: Remove alpha icon panel.
+    - PublicDashboards: Support timezone on query API.
+    - API: Add deprecation notice for updating folder UID.
+    - Accessibility: Make QueryOptions in Phlare and Parca
+      accessible.
+    - Chore: Test datasource to support template $seriesIndex in
+      label values.
+    - Loki: Add functionality to revert to initial query in log
+      context.
+    - Alerting: Reorder new alert and export buttons.
+    - Accessibility: Prevent TimePickerContent overflowing page
+      height.
+    - Build: Update plugin installation in custom Dockerfile.
+    - Alerting: Enable alerts preview on notification policies
+      page.
+    - Accessibility: Adds aria tags to VizTooltip so screen readers
+      announce them.
+    - Breadcrumbs: Don't add breadcrumb for the current tab.
+    - NewsDrawer: Add grot to news drawer (after news items).
+    - Tempo: Integrate scoped tags API.
+    - Auth: Use PKCE by default (If OAuth provider supports PKCE).
+    - Accessibility: Add Skip to content link.
+    - Auth: Add alpha version of the Extended JWT client.
+    - Alerting: Add option for memberlist label.
+    - Breadcrumbs: Improve responsiveness.
+    - PluginExtensions: Expose scopedVars via the context to
+      plugins that extends the dashboard panel menu.
+    - Trace View: Rename span detail attribute sections.
+    - Correlations: Add links to prometheus dataframe where labels
+      are split out.
+    - Theme: Change dark theme borders to improve contrast on
+      primary background.
+    - Alerting: Refactor the ImageStore/Provider to provide image
+      URL/bytes.
+    - Alerting: Allow to tab onto elements for a11y.
+    - Grafana: Upgrades mysql images from 5.7 to 8.
+    - Frontend logging: Remove Sentry javascript agent support.
+    - HTTP: Add TLS version configurability for grafana server.
+    - NestedFolders: Use new Browse Dashboards UI behind feature
+      flag.
+    - CloudWatch: Remove dynamic labels feature toggle.
+    - Suggestions: Prioritize preferred visualizations for
+      suggestion list.
+    - Explore: Allow the use of plugin panels.
+    - Grafana/ui: Add UserIcon and UsersIndicator components.
+    - Connections: Simplify connections nav.
+    - Variables: Add support for $__timezone template variable.
+    - Design System: Refactor IconButton and update documentation.
+    - CloudWatch: Update metric stat editor to match aws
+      statistics.
+    - Chore: Replace go-multierror with errors package.
+    - Explore: Make toolbar action extendable by plugins.
+    - Loki: Add the ability to prettify logql queries.
+    - TimeSeries / StateTimeline: Add support for rendering enum
+      fields.
+    - Elasticsearch: Improve query type selection.
+    - Metrics: Update Help to mention active viewers.
+    - MySQL: Add option to allow cleartext passwords.
+    - Platform: Add support for Postgresql pgpass file.
+    - ServiceAccounts: Add secret scan service docs.
+    - Azure: Configuration for user identity authentication in
+      datasources (Experimental).
+  * Bug fixes
+    - DataSourceProxy: Fix url validation error handling.
+    - AzureMonitor: Allow serviceTags and tags to be empty for
+      trace results.
+    - UserSync: Avoid UpdateLastSeenAt with invalid user ids.
+    - Nested folders: Fix search query for empty self-contained
+      permissions.
+    - Auth: Lock down Grafana admin role updates if the role is
+      externally synced.
+    - DS Picker: Ignore capitalization when sorting dropdown list.
+    - Logs: Fix ui getting stuck when removing fields.
+    - Data sources: Dashboards page now loads correctly from direct
+      url.
+    - Provisioning: Fix overwrite SecureJSONData on provisioning.
+    - Loki: Run logs volume for query when switching from trace to
+      logs.
+    - Alerting: Fix refetching grafana rules on alert list panel.
+    - Alerting: Fix contact point testing with secure settings.
+    - Alerting: Exclude expression refIDs from NoData state.
+    - Alerting: Fix state manager to not keep datasource_uid and
+      ref_id labels in state after Error.
+    - Dashboards: Fix small drop target for importing dashboards.
+    - TimeSeries: Fix zoom not working after editing panel.
+    - Dashboard: New Datasource picker link is keyboard accessible.
+    - CloudMonitoring: Correctly set title and text fields for
+      annotations.
+    - AzureMonitor: Fix ResourcePicker hanging.
+    - Fix: Hide Forward OAuth Identity toggle when azure auth is
+      enabled.
+    - Flamegraph: Fix wrong positioning of tooltip in dashboards.
+    - Dashboards: Save tags on dashboard creation.
+    - A11y: Fix keyboard accessibility in LayerDragDropList.
+    - DataLinks: Fix bug where links which used built in variables
+      could be hidden.
+    - LogContext: Fix a bug where multiple logs with similar
+      nanosecond timestamps were loaded too often.
+    - Dashboard: Slider overlapping with right input field.
+    - Alerting: Support spaces in alert names for creating silence
+      links.
+    - Swagger: Fix response for the search users endpoint.
+    - Auth: Fix US gov azure ad oauth URL parsing.
+    - SSE: DSNode to update result with names to make each value
+      identifiable by labels (only Graphite and TestData).
+    - PanelChrome: Fixes issues with hover header and resizing
+      panel above.
+    - Dashboard: Add suggestion box for Flame Graph.
+    - Slug: Use urlencoding to support non-ASCII characters.
+    - Checkbox: Fix alignment in Safari.
+    - Alerting: Fixes clone url for instances hosted on sub path.
+    - Alerting: Support concurrent queries for saving alert
+      instances.
+    - Dashboards: Allow dashboards with same name in different
+      folders.
+    - Query: Fix concurrency handling for mixed datasource queries.
+    - Alerting: Allow executing "hidden" queries.
+    - EchoBackend: Make EchoSrvTransport batched.
+    - CodeEditor: Ensure suggestions only apply to the instance of
+      the editor that registered them.
+    - NestedFolders: Ensure New dashboard page has the correct
+      breadcrumb hierarchy.
+    - Transformations: Config overrides being lost when config from
+      query transform is applied.
+    - Azure: Fix Kusto auto-completion for Azure datasources.
+    - Loki: Fix parsing of escaped quotes in LogQL.
+    - Loki: Fix showing of correct line limit in options.
+    - Alerting: Fix notification policies inheritance algorithm.
+    - Checkbox: Fix extraneous right hand margin when no label is
+      present.
+    - Preferences: Can reset timezone preference back to default
+      correctly.
+    - Azuremonitor: Multi resource fix.
+    - AzureMonitor: Support multi-resource aliases and subscription
+      aliases.
+    - Revert: Allow editors to access GET /datasources.
+    - MySQL: Use transaction_isolation instead of tx_isolation.
+    - Logs: Change logic creating uid in LogRowModel.
+    - Dashboard: Re-align Save form.
+    - Elasticsearch: Implement filter query to not run hidden
+      queries trough backend.
+    - Elasticsearch: Fix passing of limit and datalinks to logs
+      data frame.
+    - Dashboards: Improve delete dashboard performance due to slow
+      annotations query.
+    - Elasticsearch: Handle no-index case in backend mode.
+    - GrafanaUI: Support Tooltip as Dropdown child.
+    - Node graph: Fix req/s in value.
+    - FlameGraph: Debounce search update preventing too frequent
+      rerenders.
+    - Settings: Add ability to override skip_org_role_sync with Env
+      variables.
+    - DarkTheme: Fix dark theme shadows.
+    - Heatmap: Fix color rendering for value ranges < 1.
+    - AzureMonitor: Clear queries if header value changes.
+    - AzureMonitor: Fix logs query multi-resource and timespan
+      values.
+    - CloudWatch: Use grafana-aws-sdk v0.15.0.
+    - Datasource: Fix missing raw SQL query in Query Inspector when
+      query returns zero rows.
+    - LibraryPanels: Don't include ScopedVars with persisted model.
+    - Elasticsearch: Fix processing of logs with not-recognized
+      time format.
+    - Google Cloud Monitor: Fix mem usage for dropdown.
+    - Cloudwatch Logs: Ignore non-time grouping fields in
+      expressions and alerts.
+    - Correlations: Enable traceView formatted links.
+    - SQL Datasources: Reinstate SQL data source behavior around
+      database selection when default configured databases already
+      exist.
+    - API: Fix status code when starring already starred dashboard.
+    - Dashboard: Update query group options.
+  * Breaking changes
+    - This change impacts all instances that use external
+      authentication providers to manage users and organization
+      role assignments.
+      From Grafana 10.1, it will no longer be possible to manually
+      update organization roles (Viewer, Editor and Admin) that are
+      managed by an external auth provider. We are making this
+      change to clearly separate between roles managed by an
+      external auth provider and manually assigned roles, which
+      increases security and clarity around role management.
+      If you prefer to manually set user organization roles, use
+      skip_org_role_sync option in the Grafana configuration file
+      of your OAuth provider.
+      Refer to the release notes of Grafana 9.5 for context on the
+      previous work done to build up to this change.
+     - This change impacts GitHub OAuth, Gitlab OAuth, Okta OAuth
+       and Generic OAuth
+       Currently if no organization role mapping is found for a
+       user when connecting via OAuth, Grafana doesn’t update the
+       user’s organization role.
+       With Grafana 10.1, on every login, if the
+       role_attribute_path property does not return a role, then
+       the user is assigned the role specified by the
+       auto_assign_org_role option.
+       To avoid overriding manually set roles, enable the
+       skip_org_role_sync option in the Grafana configuration for
+       your OAuth provider.
+     - InfluxDB backend parser returns incompatible data with
+       frontend. The data was being parsed by frontend and we
+       moving towards migrating InfluxDB fully backend. One caveat
+       is Frontend is generating data frames with fields Time and
+       Value. The backend parser, however, generates time and
+       value. This is causing issues and inconsistencies for the
+       features (i.e. transformations) relying on those. In order
+       to have a unique approach we choose to support what most of
+       the users already have. Existing Transformations that depend
+       on time fields have to be updated to use Time fields.
+     - For accessibility reasons tooltip or aria-label are now
+       required properties for IconButton. In order to continue to
+       use IconButton, you must ensure all IconButton components
+       have a corresponding tooltip or aria-label text. The tooltip
+       text will also be used as the aria-label if you didn't set
+       one separately. In case you add an aria-label the IconButton
+       will not show a tooltip.
+     - The implementation for template macro ${__series.name} was
+       not always correct, resulting in an interpolation that was
+       very different from the series name displayed in the
+       visualization. We have now fixed this issue so that it does
+       show the same name. Depending on how ${__series.name} is
+       used this could result in a minor breaking change.
+     - The data source template variable type has changed the way
+       it represents its options. The text field still represents
+       the data source name, but the value has been changed to the
+       uid of the data source. This allows dashboards to declare
+       the currently selected option by uid, however it changes how
+       a datasource template variable value will be rendered by
+       default. If the name of the data source is expected, the
+       variable syntax will have to be changed to specify the text
+       format.
+     - We are changing the logic that creates uid in LogRowModel.
+       Previously, for uid we used id field from log's data frame.
+       Unfortunately, when users run multiple queries that returned
+       duplicate logs data, uid was not unique which was causing
+       bugs. To make uid unique across multiple queries that return
+       duplicate logs data, we are now prepending uid with refId of
+       query that produced the log line. We recommend not to rely
+       on LogRowModel uid and instead use dataFrame id field.
+     - The deprecated support for monitoring Grafana frontend using
+       Sentry javascript agent has been removed in this release. If
+       you have frontend logging enabled and are sending telemetry
+       to Sentry by setting sentry_dsn configuration property, this
+       will no longer work. Otherwise, if frontend logging is
+       enabled, it will now automatically use Grafana Faro agent.
+  * Deprecations
+    - The query parameter of Explore's SplitOpen function is
+      deprecated (passed in mapInternalLinkToExplore). Please use
+      the queries parameter instead, which allows passing multiple
+      queries to SplitOpen function. To pass a single query to
+      SplitOpen function, set the queries parameter to an array
+      containing that single query.
+    - Starting with 10.0, changing the folder UID is deprecated. It
+      will be removed in a future release. Please avoid using it
+      because it can result in folder losing its permissions.
+  * Plugin development fixes & changes
+    - GrafanaUI: Define tooltip or aria-label as required for
+      IconButton.
+    - Select: Performance improvements when opening menu and when
+      hovering over options.
+    - ConfirmModal: Ignore case for confirmation text.
+    - Grafana/ui: Fix margin in RadioButtonGroup option when only
+      icon is present.
+
+-------------------------------------------------------------------
 Wed Jul 26 09:02:02 UTC 2023 - marius.kittler@suse.com
 
 - Update to version 10.0.3:
