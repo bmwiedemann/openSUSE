@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 28 11:59:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.130
+  * A correction of a schema formatting issue in the WSDL and XSD
+    files output of soapcpp2.
+  * Improved soapcpp2 deserializer validation source code
+    generation for primitive type struct/class members with default
+    values.
+  * Improve soapcpp2 for C++ custom serializer classes derived from
+    other classes, which might otherwise not compile properly.
+
+-------------------------------------------------------------------
 Tue Apr 11 07:59:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.127

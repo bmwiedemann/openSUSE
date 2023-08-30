@@ -17,8 +17,8 @@
 
 
 Name:           gsoap
-%define lname	libgsoap-2_8_127
-Version:        2.8.127
+%define lname	libgsoap-2_8_130
+Version:        2.8.130
 Release:        0
 Summary:        Toolkit for SOAP/REST-based C/C++ server and client web service applications
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -98,7 +98,7 @@ pushd gsoap/src/
 # build prerequisites for parallel build first
 make soapcpp2_yacc.c
 popd
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
