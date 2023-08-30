@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Aug 22 08:30:36 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 2.4.2:
+ * Async queries could wait forever instead of respecting the timeout if the timeout was
+   0 and a packet was lost.  The timeout is now respected.
+ * Restore HTTP/2 support which was accidentally broken during the https refactoring done
+   as part of 2.4.0.
+ * When an inception time and lifetime are specified, the signer now sets the expiration
+   to the inception time plus lifetime, instead of the current time plus the lifetime.
+- update to version 2.4.1:
+ * Importing dns.dnssecalgs without the cryptography module installed no longer causes
+   an ImportError.
+ * A number of timeout bugs with the asyncio backend have been fixed.
+ * DNS-over-QUIC for the asyncio backend now works for IPv6.
+ * Dnspython now enforces that the candidate DNSKEYs for DNSSEC signatures
+   have protocol 3 and have the ZONE flag set.  This is a standards compliance issue more
+   than a security issue as the legitimate authority would have to have published
+   the non-compliant keys as well as updated their DS record in order for the records
+   to validate (the DS digest includes both flags and protocol).  Dnspython will not
+   make invalid keys by default, but does allow them to be created and used
+   for testing purposes.
+ * Dependency specifications for optional features in the package metadata have been
+   improved.
+- update to version 2.4.0:
+ * Python 3.8 or newer is required.
+ * The stub resolver now uses instances of ``dns.nameserver.Nameserver`` to represent
+   remote recursive resolvers, and can communicate using
+   DNS over UDP/TCP, HTTPS, TLS, and QUIC.  In additional to being able to specify
+   an IPv4, IPv6, or HTTPS URL as a nameserver, instances of ``dns.nameserver.Nameserver``
+   are now permitted.
+ * The DNS-over-HTTPS bootstrap address no longer causes URL rewriting.
+ * DNS-over-HTTPS now only uses httpx; support for requests has been dropped.  A source
+   port may now be supplied when using httpx.
+ * DNSSEC zone signing with NSEC records is now supported. Thank you
+   very much (again!) Jakob Schlyter!
+ * The resolver and async resolver now have the ``try_ddr()`` method, which will try to
+   use Discovery of Designated Resolvers (DDR) to upgrade the connection from the stub
+   resolver to the recursive server so that it uses DNS-over-HTTPS, DNS-over-TLS, or
+   DNS-over-QUIC. This feature is currently experimental as the standard is still in
+   draft stage.
+ * The resolver and async resolver now have the ``make_resolver_at()`` and
+   ``resolve_at()`` functions, as a convenience for making queries to specific
+   recursive servers.
+ * Curio support has been removed.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

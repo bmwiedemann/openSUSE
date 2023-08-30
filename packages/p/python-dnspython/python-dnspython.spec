@@ -27,14 +27,14 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-dnspython%{psuffix}
-Version:        2.3.0
+Version:        2.4.2
 Release:        0
 Summary:        A DNS toolkit for Python
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/rthalley/dnspython
 Source:         https://files.pythonhosted.org/packages/source/d/dnspython/dnspython-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
@@ -44,15 +44,8 @@ Requires:       python-cryptography
 Requires:       python-httpx
 # idna
 Requires:       python-idna >= 2.1
-# Requires despite optional: see description
-# doh
-Requires:       python-requests
-Requires:       python-requests-toolbelt
 # HTTP/2 support in httpx
 Recommends:     python-h2
-Suggests:       python-curio >= 1.2
-# curio
-Suggests:       python-sniffio >= 1.1
 # trio
 Suggests:       python-trio >= 0.14.0
 BuildArch:      noarch
@@ -97,7 +90,6 @@ The package requires dependencies necessary for these optional features:
 - DNSSEC
 and suggest dependencies necessary for these optional features:
 - trio
-- curio
 This optional feature is not available due to missing dependencies:
 - wmi
 
