@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 28 11:27:15 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- 989a193268b963aa1047814f7f1402084fb7d859.patch: fix
+   stack out of bounds read in gsl_stats_quantile_from_sorted_data()
+   (bsc#1214681, CVE-2020-353570)
+
+-------------------------------------------------------------------
 Fri Feb  3 14:25:46 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to gsl 2.7.1:

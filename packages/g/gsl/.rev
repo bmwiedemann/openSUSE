@@ -445,4 +445,14 @@
     <comment></comment>
     <requestid>1063867</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>615882f8f9aecce5f8c9ff300efbd09c</srcmd5>
+    <version>2.7.1</version>
+    <time>1693383481</time>
+    <user>anag+factory</user>
+    <comment>- 989a193268b963aa1047814f7f1402084fb7d859.patch: fix
+   stack out of bounds read in gsl_stats_quantile_from_sorted_data()
+   (bsc#1214681, CVE-2020-353570)</comment>
+    <requestid>1106734</requestid>
+  </revision>
 </revisionlist>

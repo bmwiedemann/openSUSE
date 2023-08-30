@@ -122,6 +122,7 @@ Source1:        https://ftp.gnu.org/pub/gnu/%{pname}/%{pname}-%{version}.tar.gz.
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=gsl&download=1#/%{pname}.keyring
 Patch6:         gsl-qawc-test-x86-precision.diff
 Patch7:         gsl-disable-fma.patch
+Patch8:         989a193268b963aa1047814f7f1402084fb7d859.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -259,6 +260,7 @@ library packages.
 %setup -q -n %{pname}-%{version}
 %patch6
 %patch7 -p1
+%patch8 -p1
 
 %build
 
