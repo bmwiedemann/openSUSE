@@ -23,6 +23,7 @@
 #
 Name:           libunbound-devel-mini
 Version:        1.17.1
+#!BcntSyncTag: unbound
 Release:        0
 Summary:        Just a devel package for build loops
 License:        BSD-3-Clause

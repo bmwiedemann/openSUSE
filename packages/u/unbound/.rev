@@ -541,4 +541,30 @@ Features
     <comment>- Update to 1.17.1:</comment>
     <requestid>1067361</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>c3675804d3b26593cbbd85cefe09311b</srcmd5>
+    <version>1.17.1</version>
+    <time>1693383535</time>
+    <user>anag+factory</user>
+    <comment>- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.
+
+- openSUSE:Factory libunbound-devel-mini flavor is configured to
+  sync build counter with unbound package. This means it always
+  triggers a bootstrap no matter which of the packages got
+  initially triggered.
+  I am not sure if this is needed at all, if yes, please accept
+  this request and forward with an explenation.
+  If not, just decline it and we will remove the build counter
+  syncing in factory as well.
+  This adds the !BcntSyncTag: unbound to the mini spec file
+  Details:
+  https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/6GUU6JUQE72WCWEZCSLQYJLVVTNHBVTE/
+
+- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.</comment>
+    <requestid>1105588</requestid>
+  </revision>
 </revisionlist>
