@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 20 05:48:35 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use fixed hostname string (boo#1084909)
+
+-------------------------------------------------------------------
 Sat Jul 15 09:19:41 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.13.8

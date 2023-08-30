@@ -392,9 +392,7 @@ export CC=gcc-4.8
 export CXX=g++-4.8
 %endif
 
-%if "%{?_buildhost}" != ""
-CMAKE_OPTS="$CMAKE_OPTS -DICINGA2_BUILD_HOST_NAME:STRING=%_buildhost"
-%endif
+CMAKE_OPTS="$CMAKE_OPTS -DICINGA2_BUILD_HOST_NAME:STRING=OBS"
 
 %{?scl_enable} cmake $CMAKE_OPTS -DCMAKE_C_FLAGS:STRING="%{optflags} %{?march_flag}" -DCMAKE_CXX_FLAGS:STRING="%{optflags} %{?march_flag}" .
 
