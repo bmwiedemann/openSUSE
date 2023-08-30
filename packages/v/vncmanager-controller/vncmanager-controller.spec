@@ -1,7 +1,7 @@
 #
 # spec file for package vncmanager-controller
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,15 @@
 
 
 Name:           vncmanager-controller
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
+Summary:        Configuration application for VNC session
+License:        MIT
+Group:          System/X11/Utilities
+URL:            https://github.com/openSUSE/vncmanager-controller
+Source:         %{name}-%{version}.tar
+Patch1:         n_UsrEtc.patch
+
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libQt5Core-devel
@@ -29,16 +36,6 @@ BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xproto)
 
-URL:            https://github.com/michalsrb/vncmanager-controller
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Summary:        Configuration application for VNC session
-License:        MIT
-Group:          System/X11/Utilities
-Source:         vncmanager-controller-%{version}.tar.gz
-Patch1:         U_Declare-gnome-shell-versions-3.10-to-3.26-as-support.patch
-Patch2:         n_UsrEtc.patch
-Patch3:         0001-fix-js-code-incompatibility-with-gnome-3.34.patch
-Patch4:         u_Declare-also-gnome-shell-versions-3.27-to-41-as-supp.patch
 Requires:       vncmanager
 
 %description
@@ -47,21 +44,19 @@ This is configuration application to configure sharing and security from inside 
 %package gnome
 Requires:       gnome-shell
 Requires:       vncmanager-controller
-Supplements:    packageand(%{name}:gnome-shell)
+Supplements:    (%{name}:gnome-shell)
 Summary:        Configuration application for VNC session
 Group:          System/GUI/GNOME
+BuildArch:      noarch
 
 %description gnome
 This is configuration application to configure sharing and security from inside VNC session.
 
 %prep
 %setup
-%patch1 -p1
 %if 0%{?suse_version} >= 1550
-%patch2 -p1
+%patch1 -p1
 %endif
-%patch3 -p1
-%patch4 -p1
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_VERBOSE_MAKEFILE=ON

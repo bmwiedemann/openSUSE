@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 28 12:46:32 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Use obs_scm targeting the new github repo at
+  https://github.com/openSUSE/vncmanager-controller
+- Update to version 1.0.2:
+  * Fixes bsc#1214410 with forcing the use of xcb platform plugin
+- Drop updated upstream patches:
+  * U_Declare-gnome-shell-versions-3.10-to-3.26-as-support.patch
+  * u_Declare-also-gnome-shell-versions-3.27-to-41-as-supp.patch
+  * 0001-fix-js-code-incompatibility-with-gnome-3.34.patch
+- Cleanup specfile
+
+-------------------------------------------------------------------
 Tue Mar  8 13:12:27 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - replace broken U_vncmanager-controller-Declare-gnome-shell-versions-3.10-to-3.34-as-supported.patch 
