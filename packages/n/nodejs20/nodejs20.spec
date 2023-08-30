@@ -94,7 +94,7 @@ Release:        0
 %bcond_without intree_cares
 %endif
 
-%if 0%{?suse_version} >= 1330 || 0%{?fedora_version} >= 35
+%if 0%{?sle_version} != 150600 && ( 0%{?suse_version} >= 1330 || 0%{?fedora_version} >= 35 )
 %bcond_with    intree_icu
 %else
 %bcond_without intree_icu

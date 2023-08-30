@@ -129,4 +129,12 @@ https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.5.1
 versioned.patch: refreshed</comment>
     <requestid>1103349</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>53fc9e387195951a40bfd3c64412e264</srcmd5>
+    <version>20.5.1</version>
+    <time>1693383540</time>
+    <user>anag+factory</user>
+    <comment>- Temporarily bundle ICU for SLE15 SP6 (jsc#PED-4819)</comment>
+    <requestid>1105924</requestid>
+  </revision>
 </revisionlist>

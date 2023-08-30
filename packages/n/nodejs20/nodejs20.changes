@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 25 14:34:21 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Temporarily bundle ICU for SLE15 SP6 (jsc#PED-4819)
+
+-------------------------------------------------------------------
 Thu Aug 10 13:51:20 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Update to version 20.5.1:
