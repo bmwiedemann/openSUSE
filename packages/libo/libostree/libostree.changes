@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Fri Aug 25 23:21:50 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 2023.6:
+  + Signing with ed25519 can now be backed by openssl.
+  + composefs changes:
+    - Now enabled at build time (but disabled at runtime) by
+      default.
+    - composefs now supports signature verification. Note that
+      composefs continues to be classified as experimental.
+    - Configuration format has changed. The old ot-composefs kernel
+      argument is no longer honored in favor of a configuration
+      file that should be present in the initramfs.
+  + ostree-prepare-root other changes:
+    - A new configuration file in the initramfs is honored:
+      /etc/ostree/prepare-root.conf.
+    - This configuration file can also specify the readonly-sysroot
+      default, which is now recommended.
+    - The sysroot.readonly flag can now also be configured from
+      here, and this is recommended.
+  + ostree admin set-default: A long-overdue CLI verb to change the
+    default deployment for the next boot.
+  + sysroot other bugfixes and changes:
+    - It is now supported to have /usr/etc with an empty /etc. This
+      is preparatory for supporting a transient /etc.
+    - Finally fix the global sync timeout at shutdown.
+    - 'ostree admin deploy' now honors --stateroot as that term is
+      prefered over --os.
+  + trivial-httpd: The remnants of the deprecated 'ostree
+    trivial-httpd' CLI are now completely gone.
+
+-------------------------------------------------------------------
+Fri Jul  7 23:03:35 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 2023.5:
+  + This is a bugfix release for the recent 2023.4.
+  + Key bugs fixed:
+    - Revert "fetcher: Always open tmpfiles in repo location".
+    - Fix return value of generator on non-ostree systems.
+  + Other changes:
+    - lib/deploy: Use off_t not __off_t.
+    - prepare-root: Adjust to composefs mount struct changes.
+
+- Changes from version 2023.4:
+  + Notable bugfixe: fix ostree deployment on 64-bit inode fs.
+  + New Feauture: Composefs.
+  + HTTP/pull fixes:
+    - ostree-fetcher-curl: explicitly use HTTP1.1 when HTTP2 is
+      disabled.
+    - Increase the metadata size limit to 128MB.
+    - fetcher: Always open tmpfiles in repo location.
+  + Other changes:
+    - lib/deploy: Use fallocate for early prune space check.
+    - prepare-root: Move sysroot.tmp creation earlier.
+    - lib/deploy: Disambiguate error messages for early prune space
+      check.
+    - lib/deploy: skip fallocate call when requested size is 0.
+    - test-concurrency: Don't lower timeout.
+    - pull: Add error prefixing for corrupt checksums.
+    - Add more error prefixing when parsing commit objects.
+
+- Changes from version 2023.3:
+  + Many fixes and improvements.
+  + treegen: Require at least one mutation.
+  + rust: Bump MSRV to 1.64.
+  + fetcher/soup3: Rewrite without threads.
+  + fetcher: add libsoup3 backend.
+  + lib/sysroot-cleanup: Convert bootdir listing to dfd-relative.
+  + lib/sysroot-cleanup: Make some static utility functions global.
+  + libotutil: add utility functions for calculating directory
+    size.
+  + lib/sysroot-deploy: Nuke finalize-failure.stamp on successful
+    finalization.
+  + lib/sysroot-deploy: Add experimental support for automatic
+    early prune.
+
+- Define libversion and soversion and replace hard coded values
+  with them to ease package maintenance.
+- Add pkgconfig(libsoup-3.0) >= 3.0.0 build requirement and pass
+  --with-soup3 to configure. Libcurl needs it for tests and for the
+  trivial-httpd binary, also we've been waiting for upstream to
+  port to Soup 3, in order to re-enable it.
+- Pass --with-composefs to configure, under the condition of
+  building with composefs, while defining %bcond_with composefs
+  (not enabled, by default) for now.
+- Switch fuse with fuse3 pkgconfig() module BuildRequires, because
+  Fuse 3 is preffered over Fuse 2.
+- Drop --with-gjs option passed to configure. It's not recognized
+  anymore, and configure script looks for gjs binary instead,
+  acting accordingly.
+- Add %ghost /run/ostree to the main package files directive. This
+  directory is created via %{_tmpfilesdir}/ostree-tmpfiles.conf.
+- Mark /etc/grub.d/*ostree and /etc/dracut.conf.d/ostree.conf with
+  %config to instruct RPM those are config files.
+- Make the grub2 sub-package as noarch, since it doesn't have any
+  binaries.
+- Refresh ostree-grub2-location.patch with Quilt.
+
+-------------------------------------------------------------------
 Fri May 12 07:07:37 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Make gjs BuildRequires conditional if tests are built and used.
