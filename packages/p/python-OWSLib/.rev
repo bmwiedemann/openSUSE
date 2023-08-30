@@ -65,4 +65,25 @@ new request since download source check failed the first time</comment>
     <comment></comment>
     <requestid>1075593</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5d621fd4527bbff3b1c5f254b206461c</srcmd5>
+    <version>0.29.2</version>
+    <time>1693383656</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.29.2
+  * fix WCS logging
+- Release 0.29.1
+  * ISO: subclass SV_ServiceIdentification from
+    MD_DataIdentification
+- Release 0.29.0
+  * This release adds an OpenSearch client, as well as updates ISO
+    parsing by removing longstanding deprecations/warnings. Users
+    are advised to use 0.28.1 if previous ISO parsing workflows
+    support is required.
+  * BREAKING: remove ISO deprecations (#862) (#869)
+  * add OpenSearch client implementation
+  * safeguard WMS GetMap bgcolor parameter (@geographika)
+  * fix WMS dimension parsing (@emilianocastaneda)</comment>
+    <requestid>1107936</requestid>
+  </revision>
 </revisionlist>

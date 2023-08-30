@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 29 12:16:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.29.2
+  * fix WCS logging
+- Release 0.29.1
+  * ISO: subclass SV_ServiceIdentification from
+    MD_DataIdentification
+- Release 0.29.0
+  * This release adds an OpenSearch client, as well as updates ISO
+    parsing by removing longstanding deprecations/warnings. Users
+    are advised to use 0.28.1 if previous ISO parsing workflows
+    support is required.
+  * BREAKING: remove ISO deprecations (#862) (#869)
+  * add OpenSearch client implementation
+  * safeguard WMS GetMap bgcolor parameter (@geographika)
+  * fix WMS dimension parsing (@emilianocastaneda)
+
+-------------------------------------------------------------------
 Thu Mar 30 16:06:56 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.28.1

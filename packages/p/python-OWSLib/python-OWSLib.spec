@@ -18,14 +18,13 @@
 #
 
 
-%define         oldpython python
 Name:           python-OWSLib
-Version:        0.28.1
+Version:        0.29.2
 Release:        0
 Summary:        Python interface to OGC Web Services
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
-URL:            http://geopython.github.io/OWSLib/
+URL:            https://owslib.readthedocs.io/
 # get the test suite form Github
 Source:         https://github.com/geopython/OWSLib/archive/refs/tags/%{version}.tar.gz#/OWSLib-%{version}-gh.tar.gz
 BuildRequires:  %{python_module pip}
@@ -41,6 +40,9 @@ Requires:       python-lxml
 Requires:       python-python-dateutil >= 1.5
 Requires:       python-pytz
 Requires:       python-requests >= 1.0
+%if 0%{?python_version_nodots} < 37
+Requires:       python-dataclasses
+%endif
 Provides:       python-owslib = %{version}
 Obsoletes:      python-owslib < %{version}
 # SECTION test
@@ -64,10 +66,10 @@ related content models.
 %setup -q -n OWSLib-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -76,19 +78,18 @@ echo '[pytest]
 markers =
     online
 ' > pytest.ini
-# don't be too picky about failing tests. Upstreams CI is failing too.
-donttest="(TestOffline  and test_wfs_110_remotemd_parse_all)"
-donttest+=" or (TestOffline  and test_wfs_110_remotemd_parse_single)"
-donttest+=" or (TestOffline  and test_wfs_200_remotemd_parse_all)"
-donttest+=" or (TestOffline  and test_wfs_200_remotemd_parse_single)"
-donttest+=" or (TestOffline  and test_wms_130_remotemd_parse_all)"
-donttest+=" or (TestOffline  and test_wms_130_remotemd_parse_single)"
+donttest="     (TestOffline and test_wfs_110_remotemd_parse_all)"
+donttest+=" or (TestOffline and test_wfs_110_remotemd_parse_single)"
+donttest+=" or (TestOffline and test_wfs_200_remotemd_parse_all)"
+donttest+=" or (TestOffline and test_wfs_200_remotemd_parse_single)"
+donttest+=" or (TestOffline and test_wms_130_remotemd_parse_all)"
+donttest+=" or (TestOffline and test_wms_130_remotemd_parse_single)"
 # online but not marked
 donttest+=" or test_wmts_example_informatievlaanderen"
 %pytest -s -m "not online" -k "not ($donttest)"
 
 %files %python_files
-%doc AUTHORS.rst CHANGES.rst README.rst
+%doc AUTHORS.rst README.md SECURITY.md
 %license LICENSE
 %{python_sitelib}/owslib
 %{python_sitelib}/OWSLib-%{version}*-info
