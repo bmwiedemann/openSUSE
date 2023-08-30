@@ -19,7 +19,7 @@
 %define         _peazipinstalldir %{_libdir}/peazip
 %define         _helpver 9.3.0
 Name:           peazip
-Version:        9.3.0
+Version:        9.4.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -42,8 +42,9 @@ BuildRequires:  fdupes
 BuildRequires:  fpc
 BuildRequires:  fpc-src
 BuildRequires:  kf5-filesystem
-BuildRequires:  lazarus
-BuildRequires:  libQt5Pas-devel
+BuildRequires:  lazarus-lcl-qt5
+BuildRequires:  lazarus-tools
+BuildRequires:  libX11-devel
 BuildRequires:  unzip
 BuildRequires:  upx
 BuildRequires:  zpaq

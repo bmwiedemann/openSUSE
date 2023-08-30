@@ -1081,4 +1081,19 @@
 </comment>
     <requestid>1099754</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>0f478d26e99f2b46c33840c745c9ff7f</srcmd5>
+    <version>9.4.0</version>
+    <time>1693383738</time>
+    <user>anag+factory</user>
+    <comment>- Update to 9.4.0:
+  * Add support for adding, editing, and removing archive-level comments in RAR and ZIP/ZIPX files,
+    interactively (Alt+M) and from batch scripts, on single or multiple archives at once even of mixed types.
+  * It is now possible to directly add files and folders to archives in Brotli, BZip2, GZip, TAR, WIM, XZ,
+    Zstd, and Zpaq formats (from command line, Automator scripts, .desktop files, and context menu items),
+    and it was updated the (peazip)/res/share/batch folder containing scripting and system integration examples.
+- Use the new Lazarus packages.
+</comment>
+    <requestid>1108029</requestid>
+  </revision>
 </revisionlist>
