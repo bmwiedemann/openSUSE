@@ -42,6 +42,7 @@ Patch11:        0011-Fix-Aggregated-Discovery.patch
 Patch12:        0012-Wait-for-new-hotplug-attachment-pod-to-be-ready.patch
 Patch13:        0013-Adapt-e2e-tests-to-CDI-1.57.0.patch
 Patch14:        0014-Export-create-populator-compatible-datavolumes-from-.patch
+Patch15:        0015-tests-Delete-VMI-prior-to-NFS-server-pod.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
