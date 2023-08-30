@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 25 16:22:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to release 1.24.0
+  * On Apple touchpads, natural scrolling is now enabled by default
+    and palm detection is disabled - the touchpads are good enough
+    that they don't need our help.
+  * Built-in tablet devices now always have touch arbitration
+    enabled, so we no longer need to add a quirk for each of them.
+    And speaking of tablets: the pressure offset limit for worn-out
+    devices is now at 50% of the range. Modern pens have a precise
+    enough range that even worn out pen can still provide
+    satisfactory pressure sensitivity. This pressure offset is now
+    detected on worn-out pens that do not support distance.
+  * Finally, where a relative device's rotation is 180 degrees
+    (e.g. a trackball used upside-down) we now flip the scroll
+    wheel direction as well.
+  * The rest of the changes is the usual mix of janitorial patches
+    and device-specific quirks.
+
+-------------------------------------------------------------------
 Sat Mar 25 22:00:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.23

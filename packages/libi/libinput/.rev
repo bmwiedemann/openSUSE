@@ -1003,4 +1003,12 @@ Peter Hutterer (3):
     <comment>- Update to release 1.23</comment>
     <requestid>1074360</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>4705bc7f0091d1f8d51900d6d94751d8</srcmd5>
+    <version>1.24.0</version>
+    <time>1693383543</time>
+    <user>anag+factory</user>
+    <comment>New upstream release (forwarded request 1105936 from iznogood)</comment>
+    <requestid>1105957</requestid>
+  </revision>
 </revisionlist>
