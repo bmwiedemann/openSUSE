@@ -1,7 +1,7 @@
 #
 # spec file for package wsl-appx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,9 +82,20 @@ source "$os_release_file"
 # Trim PRETTY_NAME from space, open paren to end of string:
 # SUSE Linux Enterprise Server 15 SP3 (Snapshot 16) -> SUSE Linux Enterprise Server 15 SP3
 PRETTY_NAME="${PRETTY_NAME// (*/}"
+# Additionally, remove " Server" as we offer a Server|Desktop version at firstboot
+PRETTY_NAME="${PRETTY_NAME// Server/}"
 APPID="${PRETTY_NAME//[^[:alnum:]]/}"
 IDENTITYAPPID="${PRETTY_NAME//[^[:alnum:]\.]/}"
 LAUNCHERNAME="${PRETTY_NAME//[^[:alnum:].]/-}.exe"
+
+# These should work unless we move away from:
+#   SUSE Linux Enterprise XX SPY
+# where:
+#   XX = MAJOR_VER
+#    Y = SP_VER
+#
+MAJOR_VER="${PRETTY_NAME:22:2}"
+SP_VER="${PRETTY_NAME:27:1}"
 
 # FIX bsc#1179874 Error in parsing the WSL appx package
 # PRETTY_NAME in SLES development snapshots can exceed 40 characters allowed in ShortName appx schema field
@@ -128,9 +139,10 @@ else
 	VERSION=`printf "%d.%d.%d.0" "${VERSION_ID//\./}" "${RELEASE%.*}" "${RELEASE#*.}"`
 fi
 
-for i in PRETTY_NAME APPID IDENTITYAPPID ARCH PUBLISHER PUBLISHER_DISPLAY_NAME VERSION LAUNCHERNAME SHORT_NAME; do
+for i in PRETTY_NAME APPID IDENTITYAPPID ARCH PUBLISHER PUBLISHER_DISPLAY_NAME VERSION LAUNCHERNAME MAJOR_VER SP_VER SHORT_NAME; do
 	eval echo "\"$i='\$$i'\""
 done > .settings
+cp -v .settings files/DOTsettings
 
 cd files
 sed -e "s/@PRETTY_NAME@/${PRETTY_NAME}/g;s/@APPID@/$APPID/g;s/@IDENTITYAPPID@/$IDENTITYAPPID/g;s/@PUBLISHER@/$PUBLISHER/g;s/@PUBLISHER_DISPLAY_NAME@/$PUBLISHER_DISPLAY_NAME/g;s/@VERSION@/${VERSION}/g;s/@LAUNCHERNAME@/$LAUNCHERNAME/g;s/@SHORT_NAME@/$SHORT_NAME/g;s/@ARCH@/$ARCH/g" \
@@ -155,6 +167,7 @@ install -D -m 0644 files/images/*.ico $RPM_BUILD_ROOT%{_datadir}/%{name}/images/
 install -D -m 0644 files/*.pri $RPM_BUILD_ROOT%{_datadir}/%{name}
 install -D -m 0644 files/*.xml $RPM_BUILD_ROOT%{_datadir}/%{name}
 install -D -m 0755 files/*.exe $RPM_BUILD_ROOT%{_datadir}/%{name}
+install -D -m 0644 files/DOTsettings $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %files
 %{_datadir}/%{name}

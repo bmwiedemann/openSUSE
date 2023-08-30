@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 22 13:39:42 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding code to remove " Server" from PRETTY_NAME
+  * Should only affect SUSE side.
+
+-------------------------------------------------------------------
+Thu Aug 17 16:33:31 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- To account for /etc/YaST2/products.yaml as part of kiwi-images-wsl,
+  use wsl-appx to save off an updated copy of the .settings file it
+  was already creating.
+  * This file will be sourced by kiwi-images-wsl as it is building
+    Distro .appx files in SLE for the MAJOR_VER and SP_VER vars
+    used for selecting Server|Desktop versions during firstboot.
+
+-------------------------------------------------------------------
 Fri May 28 20:41:06 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Set Tumbleweed appx version using same method as SLE and Leap.
