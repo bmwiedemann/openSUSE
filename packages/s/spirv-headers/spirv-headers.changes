@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 22 09:47:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.261.0
+  * Header files changes to support SPV_INTEL_fp_max_error spec
+    extension
+  * Make the generated operators for masks constexpr
+  * Add definitions for SVP_EXT_image_raw10_raw12,
+    SPV_KHR_cooperative_matrix
+  * Remove capabilities on cooperative matrix enums to align with
+    specification
+  * Revert "Add support for fp_max_error extension"
+
+-------------------------------------------------------------------
 Tue May 30 21:59:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.3.250.0
