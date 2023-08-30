@@ -16,14 +16,13 @@
 #
 
 
-# The hypervisor drivers that run in libvirtd
+# Stateful hypervisor drivers that run in daemons
 %define with_qemu          0%{!?_without_qemu:1}
 %define with_lxc           0%{!?_without_lxc:1}
 %define with_libxl         0%{!?_without_libxl:1}
 %define with_vbox          0%{!?_without_vbox:0}
 
-# Then the hypervisor drivers that run outside libvirtd, in libvirt.so
-
+# Stateless hypervisor drivers that run in libvirt.so
 # The esx driver is built for both openSUSE and SLE, but it is not supported
 %define with_esx           0%{!?_without_esx:1}
 # Until we have requests for them, disable building the vmware, hyperv and
@@ -32,13 +31,14 @@
 %define with_hyperv        0%{!?_without_hyperv:0}
 %define with_openvz        0%{!?_without_openvz:0}
 
-# Then the secondary host drivers, which run inside libvirtd
+# Stateful secondary host drivers that run in daemons
 %define with_storage_rbd   0%{!?_without_storage_rbd:0}
 # The gluster storage backend is built for both openSUSE and SLE, but it is
 # not supported
 %define with_storage_gluster  0%{!?_without_storage_gluster:1}
 %define with_storage_iscsi_direct 0%{!?_without_storage_iscsi_direct:0}
 %define with_apparmor      0%{!?_without_apparmor:1}
+%define with_interface     0%{!?_without_interface:1}
 
 # Optional bits on by default
 %define with_sanlock       1
@@ -57,11 +57,6 @@
 
 # Xen is only available on x86_64
 %ifnarch x86_64
-    %define with_libxl     0
-%endif
-
-# Don't build Xen for ALP-based products
-%if 0%{?suse_version} == 1600
     %define with_libxl     0
 %endif
 
@@ -85,26 +80,8 @@
     %define with_libssh    1
 %endif
 
-# rbd enablement is a bit tricky. For x86_64
-%ifarch x86_64
-# enable on anything newer than 1320, or SLE12 family newer than 120100
-# use librbd-devel as build dependency
-    %if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && ( 0%{?sle_version} > 120100 ) )
-        %define with_storage_rbd 0%{!?_without_storage_rbd:1}
-        %define with_rbd_lib     librbd-devel
-    %endif
-# enable for SLE12 family <= 120100 (SLE12GA/SP1, Leap 42.1)
-# use ceph-devel as build dependency
-    %if 0%{?suse_version} == 1315 && 0%{?sle_version} <= 120100
-        %define with_storage_rbd 0%{!?_without_storage_rbd:1}
-        %define with_rbd_lib     ceph-devel
-    %endif
-%endif
-
-# For arm
-%ifarch aarch64
+%ifarch x86_64 aarch64
     %define with_storage_rbd 0%{!?_without_storage_rbd:1}
-    %define with_rbd_lib     librbd-devel
 %endif
 
 # libiscsi storage backend needs libiscsi >= 1.18.0 which is only available
@@ -116,17 +93,21 @@
 # numad is used to manage the CPU and memory placement dynamically for
 # qemu and lxc drivers
 %if %{with_qemu} || %{with_lxc}
-# Enable numad for most architectures. Handle aarch64 separately
-    %ifnarch s390 s390x %arm %ix86 aarch64
+# Enable numad for most architectures
+    %ifnarch s390 s390x %arm %ix86
         %define with_numad 0%{!?_without_numad:1}
     %endif
-# For aarch64, enable on anything newer than 1320, or SLE12 family newer
-# than 120100
-    %ifarch aarch64
-        %if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} > 120100 )
-            %define with_numad 0%{!?_without_numad:1}
-        %endif
-    %endif
+%endif
+
+# Items to exclude in ALP-based products
+%if 0%{?suse_version} == 1600
+    %define with_libxl     0
+    %define with_apparmor  0
+    %define with_interface 0
+    %define with_sanlock   0
+    %define with_numad     0
+    %define with_esx       0
+    %define with_storage_gluster 0
 %endif
 
 # Force QEMU to run as qemu:qemu
@@ -163,7 +144,9 @@ Requires:       %{name}-daemon-driver-qemu = %{version}-%{release}
 Requires:       %{name}-daemon-driver-vbox = %{version}-%{release}
 %endif
 Requires:       %{name}-client = %{version}-%{release}
+%if %{with_interface}
 Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
+%endif
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nwfilter = %{version}-%{release}
@@ -200,7 +183,8 @@ BuildRequires:  perl
 BuildRequires:  python3
 BuildRequires:  python3-docutils
 BuildRequires:  readline-devel
-# rpcgen is needed since we have a patch touching remote_protocol.x
+# Be conservative and require rpcgen in case any patches touch
+# remote protocol definitions
 BuildRequires:  rpcgen
 # For pool-build probing for existing pools
 BuildRequires:  libblkid-devel >= 2.17
@@ -238,7 +222,7 @@ BuildRequires:  parted-devel
 # For Multipath support
 BuildRequires:  device-mapper-devel
 %if %{with_storage_rbd}
-BuildRequires:  %{with_rbd_lib}
+BuildRequires:  librbd-devel
 %endif
 %if %{with_storage_gluster}
 BuildRequires:  glusterfs-devel >= 3.4.1
@@ -249,7 +233,9 @@ BuildRequires:  libnuma-devel
 %endif
 BuildRequires:  fuse-devel >= 2.8.6
 BuildRequires:  libcap-ng-devel >= 0.5.0
+%if %{with_interface}
 BuildRequires:  libnetcontrol-devel >= 0.2.0
+%endif
 %if %{with_libssh2}
 BuildRequires:  libssh2-devel
 %endif
@@ -260,7 +246,7 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libwsman-devel >= 2.6.3
 %endif
 BuildRequires:  audit-devel
-# we need /usr/sbin/dtrace
+# For /usr/sbin/dtrace
 BuildRequires:  systemtap-sdt-devel
 %if %{with_numad}
 BuildRequires:  numad
@@ -334,7 +320,7 @@ Requires:       dmidecode
 %endif
 # For service management
 %{?systemd_requires}
-# libvirtd depends on 'messagebus' service
+# Daemons depend on the 'messagebus' service
 Requires:       dbus-1
 Requires:       group(libvirt)
 # Needed by libvirt-guests init script.
@@ -443,7 +429,7 @@ Requires:       %{name}-libs = %{version}-%{release}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 Requires:       mdevctl
 %endif
-# for modprobe of pci devices
+# For modprobe of pci devices
 Requires:       modutils
 
 %description daemon-driver-nodedev
@@ -604,7 +590,6 @@ Requires:       systemd-container
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 Requires:       swtpm
 %endif
-# The KVM libvirt stack really does need UEFI firmware these days
 %ifarch x86_64
 Requires:       qemu-ovmf-x86_64
 %endif
@@ -626,7 +611,7 @@ Requires:       %{name}-libs = %{version}-%{release}
 # There really is a hard cross-driver dependency here
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       systemd-container
-# for modprobe of nbd driver
+# For modprobe of nbd driver
 Requires:       modutils
 %if %{with_numad}
 Suggests:       numad
@@ -651,7 +636,6 @@ VirtualBox
 Summary:        Libxl driver plugin for the libvirtd daemon
 Requires:       %{name}-daemon-common = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
-# The Xen libvirt stack really does need UEFI firmware these days
 Requires:       qemu-ovmf-x86_64
 
 %description daemon-driver-libxl
@@ -668,7 +652,9 @@ Requires:       %{name}-daemon-proxy = %{version}-%{release}
 %else
 Requires:       %{name}-daemon = %{version}-%{release}
 %endif
+%if %{with_interface}
 Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
+%endif
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nwfilter = %{version}-%{release}
@@ -688,7 +674,9 @@ Requires:       %{name}-daemon-proxy = %{version}-%{release}
 %else
 Requires:       %{name}-daemon = %{version}-%{release}
 %endif
+%if %{with_interface}
 Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
+%endif
 Requires:       %{name}-daemon-driver-lxc = %{version}-%{release}
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
@@ -709,7 +697,9 @@ Requires:       %{name}-daemon-proxy = %{version}-%{release}
 %else
 Requires:       %{name}-daemon = %{version}-%{release}
 %endif
+%if %{with_interface}
 Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
+%endif
 Requires:       %{name}-daemon-driver-libxl = %{version}-%{release}
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
@@ -729,7 +719,9 @@ Requires:       %{name}-daemon-proxy = %{version}-%{release}
 %else
 Requires:       %{name}-daemon = %{version}-%{release}
 %endif
+%if %{with_interface}
 Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
+%endif
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nwfilter = %{version}-%{release}
@@ -789,7 +781,7 @@ Include header files & development libraries for the libvirt C library.
 %package daemon-plugin-sanlock
 Summary:        Sanlock lock manager plugin for QEMU driver
 Requires:       sanlock >= 2.4
-# for virt-sanlock-cleanup require augeas
+# For virt-sanlock-cleanup require augeas
 Requires:       %{name}-libs = %{version}-%{release}
 Requires:       augeas
 Obsoletes:      %{name}-lock-sanlock < 9.0.0
@@ -857,6 +849,13 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %else
     %define arg_libxl -Ddriver_libxl=disabled
 %endif
+%if %{with_interface}
+    %define arg_interface -Ddriver_interface=enabled
+    %define arg_netcontrol -Dnetcontrol=enabled
+%else
+    %define arg_interface -Ddriver_interface=disabled
+    %define arg_netcontrol -Dnetcontrol=disabled
+%endif
 %if %{with_storage_rbd}
     %define arg_storage_rbd -Dstorage_rbd=enabled
 %else
@@ -898,10 +897,10 @@ libvirt plugin for NSS for translating domain names into IP addresses.
     %define arg_numad -Dnumad=disabled
 %endif
 %if %{with_apparmor}
-    %define arg_apparmor -Dapparmor=enabled
+    %define arg_apparmor -Dapparmor=enabled -Dsecdriver_apparmor=enabled
     %define arg_apparmor_profiles -Dapparmor_profiles=enabled
 %else
-    %define arg_apparmor -Dapparmor=disabled
+    %define arg_apparmor -Dapparmor=disabled -Dsecdriver_apparmor=disabled
     %define arg_apparmor_profiles -Dapparmor_profiles=disabled
 %endif
 %if %{with_sanlock}
@@ -992,7 +991,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Ddriver_bhyve=disabled \
            -Ddriver_ch=disabled \
            %{?arg_remote_mode} \
-           -Ddriver_interface=enabled \
+           %{?arg_interface} \
            -Ddriver_network=enabled \
            -Dstorage_fs=enabled \
            -Dstorage_lvm=enabled \
@@ -1010,7 +1009,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Dcapng=enabled \
            -Dfuse=enabled \
            -Dnetcf=disabled \
-           -Dnetcontrol=enabled \
+           %{?arg_netcontrol} \
            -Dselinux=enabled \
            %{?arg_selinux_mount} \
            %{?arg_apparmor} \
@@ -1047,7 +1046,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 
 %install
 %meson_install
-# remove currently unsupported locale(s)
+# Remove currently unsupported locale(s)
 for dir in %{buildroot}/usr/share/locale/*
 do
   sdir=`echo $dir | sed "s|%{buildroot}||"`
@@ -1096,14 +1095,12 @@ rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirt_sanlock.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirt_sanlock.aug
 %endif
 
-# init scripts
 rm -f %{buildroot}/usr/lib/sysctl.d/60-libvirtd.conf
 # Provide rc symlink backward compatibility
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rclibvirtd
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtproxyd
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtlogd
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtlockd
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtinterfaced
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtnetworkd
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtnodedevd
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtnwfilterd
@@ -1111,6 +1108,9 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtsecretd
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtstoraged
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rclibvirt-guests
 
+%if %{with_interface}
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtinterfaced
+%endif
 %if %{with_qemu}
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtqemud
 %endif
@@ -1124,15 +1124,15 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtxend
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtvboxd
 %endif
 
-# install firewall services for migration ports
+# Install firewall services for migration ports
 mkdir -p %{buildroot}/%{_fwdefdir}
 install -m 644 %{S:3} %{buildroot}/%{_fwdefdir}/libvirtd-relocation-server.xml
 
-# install supportconfig plugin
+# Install supportconfig plugin
 mkdir -p %{buildroot}/usr/lib/supportconfig/plugins
 install -m 755 %{S:1} %{buildroot}/usr/lib/supportconfig/plugins/libvirt
 
-# install qemu hook script
+# Install qemu hook script
 install -m 755 %{S:2} %{buildroot}/%{_sysconfdir}/%{name}/hooks/qemu
 
 %ifarch %{power64} s390x x86_64
@@ -1530,6 +1530,7 @@ fi
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/nwfilter/
 %config %{_sysconfdir}/%{name}/nwfilter/*.xml
 
+%if %{with_interface}
 %files daemon-driver-interface
 %config(noreplace) %{_sysconfdir}/%{name}/virtinterfaced.conf
 %{_datadir}/augeas/lenses/virtinterfaced.aug
@@ -1543,6 +1544,7 @@ fi
 %dir %{_libdir}/%{name}/connection-driver/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_interface.so
 %doc %{_mandir}/man8/virtinterfaced.8*
+%endif
 
 %files daemon-driver-network
 %config(noreplace) %{_sysconfdir}/%{name}/virtnetworkd.conf

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 25 19:51:06 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- spec: Disable Apparmor support in ALP-based products
+- spec: Disable interface driver in ALP-based products
+- spec: Disable sanlock plugin in ALP-based products
+- spec: Disable numad support in ALP-based products
+
+-------------------------------------------------------------------
 Thu Aug 17 20:04:23 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - spec: Disable Xen driver in ALP-based products

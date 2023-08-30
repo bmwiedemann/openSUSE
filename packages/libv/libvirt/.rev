@@ -4416,4 +4416,15 @@ StandardGroups in rpmlint package.
     <comment>- spec: Disable Xen driver in ALP-based products</comment>
     <requestid>1104472</requestid>
   </revision>
+  <revision rev="382" vrev="3">
+    <srcmd5>31cd393a1c9f54a600eb371bcbc7628f</srcmd5>
+    <version>9.6.0</version>
+    <time>1693383469</time>
+    <user>anag+factory</user>
+    <comment>- spec: Disable Apparmor support in ALP-based products
+- spec: Disable interface driver in ALP-based products
+- spec: Disable sanlock plugin in ALP-based products
+- spec: Disable numad support in ALP-based products</comment>
+    <requestid>1105960</requestid>
+  </revision>
 </revisionlist>
