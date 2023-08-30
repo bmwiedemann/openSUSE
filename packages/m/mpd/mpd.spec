@@ -66,7 +66,6 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcdio) >= 2.0.0
 BuildRequires:  pkgconfig(libcdio_paranoia)
-BuildRequires:  pkgconfig(libchromaprint)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libmms)
@@ -167,6 +166,7 @@ This package contains optional documentation provided in addition to this packag
     -Dlibmpdclient=enabled \
     -Dexpat=enabled \
     -Did3tag=enabled \
+    -Dchromaprint=disabled \
     -Dsqlite=enabled \
     -Dlibsamplerate=enabled \
     -Dsoxr=enabled \

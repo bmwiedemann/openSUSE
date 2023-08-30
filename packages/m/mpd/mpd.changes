@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 29 12:36:00 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Disable libchromaprint requirement and disable feature. This would
+  cause mpd to pull in ffmpeg-4 on installation.
+
+-------------------------------------------------------------------
 Tue May 23 22:00:59 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 0.23.13

@@ -723,4 +723,13 @@
   * supported libfmt 10</comment>
     <requestid>1088738</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>392856e357db2061dbf55c4101b356e1</srcmd5>
+    <version>0.23.13</version>
+    <time>1693383671</time>
+    <user>anag+factory</user>
+    <comment>- Disable libchromaprint requirement and disable feature. This would
+  cause mpd to pull in ffmpeg-4 on installation.</comment>
+    <requestid>1107984</requestid>
+  </revision>
 </revisionlist>
