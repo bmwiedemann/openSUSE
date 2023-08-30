@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Aug 26 14:35:14 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 2.4.116
+  * nouveau: add interface to make buffer objects global
+  * xf86drm: update DRM_NODE_NAME_MAX supporting more nodes
+  * xf86drm: use drm device name to identify drm node type
+  * meson: drop pthread-stubs dependency on BSDs
+  * amdgpu: add marketing names from amd-5.4.3 (22.40.3)
+  * tests/amdgpu: Fix Usage string
+  * tests/amdgpu: Add all 9 options to the help output
+  * tests/amdgpu: Allow to exclude a test or a suite of tests
+  * amdgpu: add an environment variable that overrides the context priority
+  * amdgpu: remove va::dev member
+  * tests/amdgpu/vcn: change vbv_buffer name to input
+  * tests/amdgpu/vcn: fix drm test failure
+  * tests/amdgpu/vcn: fix session buffer issue for vcn1-vcn3
+  * tests/amdgpu/vcn:update decoder unit test
+  * xf86drm: bump DRM_MAX_MINOR to 64
+  * xf86drm: drop control nodes implementation
+  * Sync headers with drm-next
+  * xf86drm: add drmSyncobjEventfd
+  * build: bump version to 2.4.116
+  * xf86drmMode: constify drmModeCrtcSetGamma
+  * tests/util: Add vkms driver
+  * test/amdgpu/hotunplug: add apu check for hotplug test
+
+-------------------------------------------------------------------
 Sat Feb 11 22:02:43 UTC 2023 - Hans-Peter Jansen <hp@urpla.net>
 
 - Adjust the n_libdrm-drop-valgrind* patches accordingly
