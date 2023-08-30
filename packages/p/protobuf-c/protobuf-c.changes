@@ -18,7 +18,7 @@ Thu Mar 23 14:36:19 UTC 2023 - Martin Liška <mliska@suse.cz>
 -------------------------------------------------------------------
 Mon Jul 11 07:46:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
-- Update to release 1.4.1
+- Update to release 1.4.1 (jsc#PED-5634)
   * Fixed unsigned integer overflow (GH#499, bsc#1210323, CVE-2022-48468)
   * Avoid shifting signed values (GH#508)
 - Remove 508.patch (merged)
@@ -43,7 +43,7 @@ Fri Nov 19 17:38:59 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Fold main package into devel package, as it needed its own
   devel-package, add a protobuf-c = version Provides to devel
-  sub-package.
+  sub-package. (bsc#1213443)
 
 -------------------------------------------------------------------
 Wed May 19 07:24:48 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
