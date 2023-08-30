@@ -22,7 +22,7 @@
 #
 
 Name:           vulkan-headers
-Version:        1.3.250.0
+Version:        1.3.261.0
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0
@@ -62,7 +62,7 @@ to make use of Vulkan.
 #find "%buildroot" -name genvk.py -type f -exec chmod a+x {} +
 
 %files
-%license LICENSE.txt
+%license LICENSE.md
 %_includedir/vulkan/
 %_includedir/vk_video/
 %_datadir/cmake/
