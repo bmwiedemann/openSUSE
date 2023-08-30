@@ -45,4 +45,13 @@ These issues are now fixed with a patch, hence this new submission.</comment>
     <comment>Update to version 3.6.0</comment>
     <requestid>1105015</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4cd7df07d3add0dbd1aefdf96ecc2dc0</srcmd5>
+    <version>3.6.1</version>
+    <time>1693383652</time>
+    <user>anag+factory</user>
+    <comment>- fixed missing dependencies
+- update to version 3.6.1</comment>
+    <requestid>1107894</requestid>
+  </revision>
 </revisionlist>

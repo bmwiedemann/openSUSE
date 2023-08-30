@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 29 09:28:21 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- fixed missing dependencies
+- Update to version 3.6.1:
+  * Bug fixes
+    - Fix clipboard facilities on X11 and Wayland
+    - Fix dark-mode and the darken (UNBOUND) bookmarklet command
+
+-------------------------------------------------------------------
 Mon Aug 14 14:47:08 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 3.6.0:
@@ -7,7 +16,7 @@ Mon Aug 14 14:47:08 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
       Brave and Vivaldi. For instance, import-history-from-firefox (UNBOUND)
   * Bug fixes
     - Fix keyscheme configuration via Common Settings Menu 
-   * UI/UX
+  * UI/UX
     - Add Public Sans font and set it as the default 
     - Redesign status buffer buttons
     - Minor review of start page
