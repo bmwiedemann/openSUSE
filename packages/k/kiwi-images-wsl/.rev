@@ -118,4 +118,12 @@
   * Add a replace_using_env eval clause to strip 150400 if present.</comment>
     <requestid>934890</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>1a2288e48418c1dcec22867c32b5c278</srcmd5>
+    <version>1.0.0</version>
+    <time>1693383667</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1107978</requestid>
+  </revision>
 </revisionlist>

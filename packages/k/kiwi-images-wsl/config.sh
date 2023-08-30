@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2019,2020 SUSE LLC
+# Copyright (c) 2019-2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,24 @@ if [ -e /etc/sysconfig/firstboot -a -e /etc/YaST2/firstboot-wsl.xml ]; then
 	# set custom firstboot control file
 	sed -ie 's,^\(FIRSTBOOT_CONTROL_FILE\)=.*,\1="/etc/YaST2/firstboot-wsl.xml",' \
 		/etc/sysconfig/firstboot
+fi
+
+if ! (grep -q opensuse /usr/lib/os-release || grep -q opensuse /etc/os-release); then
+  source /usr/share/wsl-appx/DOTsettings
+  # Inject curated text into /etc/YaST2/products.yaml
+  # MAJOR_VER and SP_VER come from wsl-appx DOTsettings file (sourced above)
+  cat << EOF > /etc/YaST2/products.yaml
+- display_name: "SUSE Linux Enterprise Server $MAJOR_VER SP$SP_VER"
+  name: "SLES"
+  register_target: "sle-$MAJOR_VER-x86_64"
+  version: "$MAJOR_VER.$SP_VER"
+  default: true
+- display_name: "SUSE Linux Enterprise Desktop $MAJOR_VER SP$SP_VER"
+  name: "SLED"
+  register_target: "sle-$MAJOR_VER-x86_64"
+  version: "$MAJOR_VER.$SP_VER"
+EOF
+  zypper --non-interactive rm -u wsl-appx
 fi
 
 # Remove zypp uuid (bsc#1098535)

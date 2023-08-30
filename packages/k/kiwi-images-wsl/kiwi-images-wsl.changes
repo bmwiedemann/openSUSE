@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Aug 22 15:03:36 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating _service file for OS_PRETTY_NAME_BEFORE_PAREN_DASHED
+
+-------------------------------------------------------------------
+Fri Aug 18 20:24:04 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- wsl-appx isn't available outside of being included by .kiwi file,
+  so adding it back, but using config.sh to remove it once done
+
+-------------------------------------------------------------------
+Fri Aug 18 18:05:51 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing wsl-appx inclusion from .kiwi file and incorporating
+  into config.sh
+
+-------------------------------------------------------------------
+Fri Aug 18 15:02:47 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- config.sh will pull in MAJOR_VER and SP_VER from wsl-appx
+  /usr/share/wsl-appx/DOTsettings to update /etc/YaST2/products.yaml
+  * This will only happen if opensuse is NOT detected in os-release
+
+-------------------------------------------------------------------
 Mon Nov 29 20:33:34 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Remove new 150400 version prefix in SLE-15 SP4 during OBS source

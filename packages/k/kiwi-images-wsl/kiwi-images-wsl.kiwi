@@ -49,6 +49,8 @@
     <package name="pam-config"/>
     <!-- Only used in config.sh and then removed again -->
     <package name="live-add-yast-repos"/>
+    <!-- Used to grab /usr/share/wsl-appx/DOTsettings -->
+    <package name="wsl-appx"/>
   </packages>
   <packages type="bootstrap">
     <package name="filesystem"/>
