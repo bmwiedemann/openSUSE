@@ -380,4 +380,17 @@
     <comment>- fixes CVE-2021-3630 [bsc#1187869]</comment>
     <requestid>1087909</requestid>
   </revision>
+  <revision rev="45" vrev="6">
+    <srcmd5>79fc0547f6366f68b1b3cbf5180289aa</srcmd5>
+    <version>3.5.28</version>
+    <time>1693383510</time>
+    <user>anag+factory</user>
+    <comment>- security update
+- added patches
+  fix CVE-2021-46310 [bsc#1214670], divide by zero in IW44Image.cpp
+  + djvulibre-CVE-2021-46310.patch
+  fix CVE-2021-46312 [bsc#1214672], divide by zero in IW44EncodeCodec.cpp
+  + djvulibre-CVE-2021-46312.patch</comment>
+    <requestid>1107914</requestid>
+  </revision>
 </revisionlist>

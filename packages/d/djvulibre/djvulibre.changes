@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 29 10:48:49 UTC 2023 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2021-46310 [bsc#1214670], divide by zero in IW44Image.cpp
+  + djvulibre-CVE-2021-46310.patch
+  fix CVE-2021-46312 [bsc#1214672], divide by zero in IW44EncodeCodec.cpp
+  + djvulibre-CVE-2021-46312.patch
+
+-------------------------------------------------------------------
 Wed May  4 09:30:24 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - switch to use https source url

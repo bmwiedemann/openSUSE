@@ -37,6 +37,10 @@ Patch2:         djvulibre-CVE-2021-32492.patch
 Patch3:         djvulibre-CVE-2021-32493.patch
 # CVE-2021-3500 [bsc#1186253], Stack overflow in function DJVU:DjVuDocument:get_djvu_file() via crafted djvu file
 Patch4:         djvulibre-CVE-2021-3500.patch
+# CVE-2021-46310 [bsc#1214670], divide by zero in IW44Image.cpp
+Patch5:         djvulibre-CVE-2021-46310.patch
+# CVE-2021-46312 [bsc#1214672], divide by zero in IW44EncodeCodec.cpp
+Patch6:         djvulibre-CVE-2021-46312.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -94,6 +98,8 @@ This package contains the documentation.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
 %build
 # configure script missing; generate using autogen.sh
