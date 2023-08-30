@@ -19,7 +19,7 @@
 # Prefer to go with just /^sdk-.*/ tags
 %define lname	libvulkan1
 Name:           vulkan-loader
-Version:        1.3.250.0
+Version:        1.3.261.0
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0
@@ -31,10 +31,11 @@ BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
 BuildRequires:  pkg-config
 BuildRequires:  python3-xml
-BuildRequires:  vulkan-headers >= %version
+BuildRequires:  vulkan-headers >= 1.3.261
 BuildRequires:  pkgconfig(pciaccess)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
+# vulkan-headers ain't the same as pkgconfig(vulkan), surprise
 
 %description
 Vulkan is a 3D graphics and compute API providing cross-platform

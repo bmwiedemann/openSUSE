@@ -389,4 +389,14 @@
     <comment>- Update to release SDK-1.3.250.0</comment>
     <requestid>1089883</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>6ea7bd91da7a50aed3417d72c1b320de</srcmd5>
+    <version>1.3.261.0</version>
+    <time>1693383469</time>
+    <user>anag+factory</user>
+    <comment>- Update to release SDK-1.3.261.0
+
+break cycle to pkgconfig(vulkan)</comment>
+    <requestid>1105590</requestid>
+  </revision>
 </revisionlist>
