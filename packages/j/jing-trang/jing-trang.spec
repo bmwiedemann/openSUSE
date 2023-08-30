@@ -38,10 +38,10 @@ BuildRequires:  fdupes
 BuildRequires:  isorelax
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javacc
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  qdox
 BuildRequires:  relaxngDatatype >= 2011.1
-BuildRequires:  saxon9
+BuildRequires:  saxon10
 BuildRequires:  unzip
 BuildRequires:  xalan-j2
 BuildRequires:  xml-commons-apis
@@ -133,15 +133,10 @@ sed -i -e 's|"\(copying\.txt\)"|"%{_licensedir}/dtdinst/\1"|' \
 sed -i -e 's|"\(copying\.txt\)"|"%{_licensedir}/trang/\1"|' \
     trang/doc/trang.html trang/doc/trang-manual.html
 
-# The saxon9 package provides mvn(net.sf.saxon:saxon)
-# instead of mvn(net.sf.saxon:Saxon-HE)
-%pom_remove_dep net.sf.saxon:Saxon-HE jing.pom
-%pom_add_dep net.sf.saxon:saxon jing.pom
-
 %build
 CLASSPATH=$(build-classpath \
     xalan-j2 xalan-j2-serializer xerces-j2 xml-commons-apis \
-	saxon9 relaxngDatatype) \
+	saxon10 relaxngDatatype) \
 %{ant} \
 	-Dlib.dir=%{_javadir} -Dbuild.sysclasspath=last \
 	-Dant.build.javac.source=8 -Dant.build.javac.target=8 \
@@ -160,11 +155,11 @@ install -dm 0755 %{buildroot}%{_javadir}
 install -dm 0755 %{buildroot}%{_mavenpomdir}
 
 install -pm 0644 jing-%{version}/bin/jing.jar %{buildroot}%{_javadir}/jing.jar
-install -pm 0644 jing.pom %{buildroot}%{_mavenpomdir}/jing.pom
+%mvn_install_pom jing.pom %{buildroot}%{_mavenpomdir}/jing.pom
 %add_maven_depmap jing.pom jing.jar -f jing
 
 install -pm 0644 trang-%{version}/trang.jar %{buildroot}%{_javadir}/trang.jar
-install -pm 0644 trang.pom  %{buildroot}%{_mavenpomdir}/trang.pom
+%mvn_install_pom trang.pom  %{buildroot}%{_mavenpomdir}/trang.pom
 %add_maven_depmap trang.pom trang.jar -f trang
 
 install -pm 0644 dtdinst-%{version}/dtdinst.jar %{buildroot}%{_javadir}/dtdinst.jar

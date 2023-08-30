@@ -63,4 +63,12 @@
     <comment>Fetch sources using source service</comment>
     <requestid>1073357</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>c8540ce90de2a9e96a7f8dc1ff6311c2</srcmd5>
+    <version>20220510</version>
+    <time>1693383455</time>
+    <user>anag+factory</user>
+    <comment>build with saxon10 instead of saxon9</comment>
+    <requestid>1105118</requestid>
+  </revision>
 </revisionlist>

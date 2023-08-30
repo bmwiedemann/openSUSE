@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 15 18:18:54 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build against saxon 10+
+
+-------------------------------------------------------------------
 Mon Mar 20 18:55:39 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Fetch the sources using the source service and filter out stray
