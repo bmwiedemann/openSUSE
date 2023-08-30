@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Aug 25 17:21:47 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.67:
+  * New Features/Enhancements
+    - The original demo gameplay video now plays when the
+      CorsixTH main menu is idle (this can be disabled in the
+      configuration file)
+    - File browser menus now have an OK button
+    - Selecting an existing file in the Save Game/Map browsers
+      will now update the text input box to that file name
+  * Changes
+    - Handymen now always stay in their assigned plots, except
+      when going to rest
+    - Staff members now have a maximum salary, which can be
+      configured in custom levels
+    - The game will now always use the GP's choice of next
+      diagnosis room for the patient, if available
+    - Queueing patients are now shown when hovering a door
+    - Epidemics can no longer fail because an infected patient
+      left before the epidemic was revealed
+    - Balance changes to drug improvement research
+    - Check for updates can now be disabled in Settings
+    - Check for updates timeout duration significantly reduced
+    - "Pause" now shows up when the "Build while paused" setting
+      is on and the game is paused.
+    - The gamelog file now includes a timestamp
+    - Support for detecting Theme Hospital game files from an
+      EA Store install
+    - Many, many, refactors of the code to make it better to
+      understand for future developers
+    - Contact methods to reach the CorsixTH Team have been updated
+  * Bug Fixes
+    - Fixed an instance where objects could disappear from the map
+    - Fixed a bug where the empty action queue message was
+      prevented from happening
+    - Fixed a bug where dying patients became undead and would
+      have a habit of ruining everything
+    - Fixed broken dynamic info during epidemics
+    - Handymen will no longer try to repair machinery while
+      a patient is using it
+    - Psychiatrist couch has less chance of causing blocked paths
+    - Roujin's challenge is now properly applied (read: harder)
+    - Serious Radiation is no longer contagious
+    - Room blueprints can no longer go beyond external walls
+    - Fixed incorrect button sounds in the Staff Management window
+    - Fixed back button behaviour in Font Picker
+    - Fixed a bug where word-wrapping text on dialogs could crash
+      the game
+    - Fixed a rare case where the next VIP date may be scheduled
+      in the past
+    - Fixed a rare case where awarded research points could
+      be negative
+    - Fixed a rare case of the balance sheet being victim of
+      a green highlighter
+  * Updated Translations
+
+-------------------------------------------------------------------
 Wed Jul 13 11:29:36 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.66:

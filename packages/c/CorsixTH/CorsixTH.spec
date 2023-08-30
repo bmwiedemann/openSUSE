@@ -1,7 +1,7 @@
 #
 # spec file for package CorsixTH
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           CorsixTH
-Version:        0.66
+Version:        0.67
 Release:        0
 Summary:        Theme Hospital clone
 License:        MIT
