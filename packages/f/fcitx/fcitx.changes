@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 24 09:38:18 UTC 2023 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add remote-module-use-safe-directory-for-socket-API-sock.patch: use a safe
+  directory for the fcitx-socket:%d API socket currently placed in /tmp. This
+  avoids a possible local denial of service issue (bsc#1213331).
+
+-------------------------------------------------------------------
 Wed Aug 17 20:03:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.9.9:

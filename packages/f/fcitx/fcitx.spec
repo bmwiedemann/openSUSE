@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ Source100:      https://download.fcitx-im.org/fcitx/%{name}-%{version}_dict.tar.
 Patch2:         fcitx-autostart-check-INPUT_METHOD.patch
 # PATCH-FIX-OPENSUSE downgrade cmake requirement to 3.1 again
 Patch3:         fcitx-cmake-3.1.patch
+Patch4:         remote-module-use-safe-directory-for-socket-API-sock.patch
 BuildRequires:  cairo-devel
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
@@ -337,6 +338,7 @@ You can either use this package for download from kde-look.org using knewstaff i
 %setup -q
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 mkdir build
