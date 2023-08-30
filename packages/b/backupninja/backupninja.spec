@@ -15,31 +15,32 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:          backupninja
-Version:       1.2.2
-Release:       0
-Summary:       Lightweight, extensible meta-backup system
-License:       GPL-2.0
-URL:           https://0xacab.org/liberate/backupninja
-Source0:       %{name}-%{version}.tar.gz
-Source1:       backupninja.service
-Source2:       backupninja.timer
-Group:         Productivity/Archiving/Backup
-Requires:      bash
-Requires:      dialog
-Requires:      gawk
-Requires:      gzip
-Requires:      logrotate
-Requires:      pkgconfig(systemd)
-BuildRequires: automake
-Recommends:    hwinfo
-Recommends:    rdiff-backup
-Recommends:    rsync
-Recommends:    sfdisk
+
+Name:           backupninja
+Version:        1.2.2
+Release:        0
+Summary:        Lightweight, extensible meta-backup system
+License:        GPL-2.0-only
+Group:          Productivity/Archiving/Backup
+URL:            https://0xacab.org/liberate/backupninja
+Source0:        %{name}-%{version}.tar.gz
+Source1:        backupninja.service
+Source2:        backupninja.timer
+BuildRequires:  automake
+Requires:       bash
+Requires:       dialog
+Requires:       gawk
+Requires:       gzip
+Requires:       logrotate
+Requires:       pkgconfig(systemd)
+Recommends:     hwinfo
+Recommends:     rdiff-backup
+Recommends:     rsync
+Recommends:     sfdisk
 
 %description
 Backupninja allows you to coordinate system backup by dropping a few simple
-configuration files into /etc/backup.d/. Most programs you might use for making
+configuration files into %{_sysconfdir}/backup.d/. Most programs you might use for making
 backups don't have their own configuration file format. Backupninja provides a
 centralized way to configure and coordinate many different backup utilities.
 The key features of backupninja are:
