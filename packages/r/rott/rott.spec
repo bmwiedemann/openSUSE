@@ -17,7 +17,7 @@
 
 
 Name:           rott
-Version:        1.2~git66
+Version:        1.2~git107
 Release:        0
 Summary:        SDL port of the Rise of the Triad engine
 License:        GPL-2.0-or-later
