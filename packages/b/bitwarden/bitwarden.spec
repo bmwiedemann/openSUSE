@@ -18,7 +18,7 @@
 #
 
 Name:       bitwarden
-Version:    2023.7.1
+Version:    2023.8.2
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security

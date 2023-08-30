@@ -92,7 +92,7 @@ Use node-argon2 instead of browser-argon2 as the second needs webassembly/emscri
 @@ -52,24 +50,19 @@
      memory: number,
      parallelism: number
-   ): Promise<ArrayBuffer> {
+   ): Promise<Uint8Array> {
 -    if (!this.wasmSupported) {
 -      throw "Webassembly support is required for the Argon2 KDF feature.";
 -    }
@@ -100,7 +100,7 @@ Use node-argon2 instead of browser-argon2 as the second needs webassembly/emscri
 -    const passwordArr = new Uint8Array(this.toBuf(password));
 -    const saltArr = new Uint8Array(this.toBuf(salt));
 +    const nodePassword = this.toNodeValue(password);
-+    const nodeSalt = this.toNodeBuffer(this.toArrayBuffer(salt));
++    const nodeSalt = this.toNodeBuffer(this.toUint8Buffer(salt));
  
 -    const result = await argon2.hash({
 -      pass: passwordArr,
@@ -120,7 +120,7 @@ Use node-argon2 instead of browser-argon2 as the second needs webassembly/emscri
      });
 -    argon2.unloadRuntime();
 -    return result.hash;
-+    return this.toArrayBuffer(hash);
++    return this.toUint8Buffer(hash);
    }
  
    async hkdf(
@@ -142,7 +142,7 @@ Use node-argon2 instead of browser-argon2 as the second needs webassembly/emscri
 -    } catch {
 -      return false;
 +// from libs/node/src/services/node-crypto-function.service.ts
-+  private toNodeValue(value: string | ArrayBuffer): string | Buffer {
++  private toNodeValue(value: string | Uint8Array): string | Buffer {
 +    let nodeValue: string | Buffer;
 +    if (typeof value === "string") {
 +      nodeValue = value;
@@ -152,16 +152,16 @@ Use node-argon2 instead of browser-argon2 as the second needs webassembly/emscri
 +    return nodeValue;
 +  }
 +
-+  private toNodeBuffer(value: ArrayBuffer): Buffer {
-+    return Buffer.from(new Uint8Array(value) as any);
++  private toNodeBuffer(value: Uint8Array): Buffer {
++    return Buffer.from(value);
 +  }
 +
-+  private toArrayBuffer(value: Buffer | string | ArrayBuffer): ArrayBuffer {
-+    let buf: ArrayBuffer;
++  private toUint8Buffer(value: Buffer | string | Uint8Array): Uint8Array {
++    let buf: Uint8Array;
 +    if (typeof value === "string") {
-+      buf = Utils.fromUtf8ToArray(value).buffer;
++      buf = Utils.fromUtf8ToArray(value);
 +    } else {
-+      buf = new Uint8Array(value).buffer;
++      buf = value;
      }
 -    return false;
 +    return buf;

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 28 16:21:41 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2023.8.2
+  * Add SSO with trusted devices
+  * Add Tailwind support
+  * Update server selector copy
+  * Bug fix for selecting self-hosted server
+  * Bug fix for hidden icons
+
+-------------------------------------------------------------------
 Wed Jul 26 20:19:05 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2023.7.1
