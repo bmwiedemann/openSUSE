@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug  6 08:39:35 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- Update to version 6.0.1
+  * Doxygen cleanup
+  * Fix memory leak in ILU routines
+  * Clean up some f2c-ed files
+- Run regression tests with CTest
+- Disable building examples
+- Update patch superlu-remove-mc64ad.patch
+- Drop patch superlu-examples_Makefile_remove_itersol.patch as
+  we use CMake and no longer the provided Makefiles. And
+  examples are no longer built.
+
+-------------------------------------------------------------------
 Mon May  1 10:05:57 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Fix broken magic in HPC module file. This has been broken since:

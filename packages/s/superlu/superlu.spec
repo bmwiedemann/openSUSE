@@ -20,7 +20,7 @@
 
 # Base package name
 %define pname superlu
-%define ver 6.0.0
+%define ver 6.0.1
 %define _ver %(echo %{ver} | tr . _)
 
 %if "%flavor" == ""
@@ -99,10 +99,9 @@ Source3:        superlu.rpmlintrc
 # The Harwell Subroutine Library (HSL) routine mc64ad.c have been removed
 # from the original sources for legal reasons. This patch disables the inclusion of
 # this routine in the library which, however, remains fully functional
-Patch3:         superlu-remove-mc64ad.patch
-Patch4:         superlu-examples_Makefile_remove_itersol.patch
-Patch5:         superlu-make.linux.patch
-BuildRequires:  cmake >= 2.8.12
+Patch0:         superlu-remove-mc64ad.patch
+Patch1:         superlu-make.linux.patch
+BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
 BuildRequires:  tcsh
 %if %{without hpc}
@@ -112,7 +111,7 @@ BuildRequires:  gcc-fortran
 Requires:       %{compiler_family}%{?c_f_ver}-compilers-hpc
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
-BuildRequires:  suse-hpc >= 0.3
+BuildRequires:  suse-hpc >= 0.5.20230501
 %endif
 
 %description
@@ -120,7 +119,7 @@ SuperLU is an algorithm that uses group theory to optimize LU
 decomposition of sparse matrices.
 
 Documentation can be found in the %{name}-doc package or on
-http://www.netlib.org.
+https://portal.nersc.gov/project/sparse/superlu/.
 
 %package -n %libname
 Summary:        SuperLU matrix solver
@@ -178,9 +177,7 @@ decomposition of sparse matrices.
 
 %prep
 %setup -q -n superlu-%{version}
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
+%autopatch -p1
 cp %SOURCE2 ./
 # Create baselibs.conf dynamically (non-HPC build only).
 %if %{without hpc}
@@ -197,7 +194,8 @@ EOF
 module load openblas
 %hpc_cmake \
 %endif
-  -DCMAKE_BUILD_TYPE=Release -DUSE_XSDK_DEFAULTS='TRUE' -Denable_tests=OFF
+  -DCMAKE_BUILD_TYPE=Release -DUSE_XSDK_DEFAULTS='TRUE' \
+  -Denable_tests=ON -Denable_examples=OFF
 make %{?_smp_mflags}
 
 %install
@@ -216,6 +214,9 @@ sed -i -e 's&@superlu_home@&%p_prefix&' -e 's&@superlu_lib@&%p_libdir&' examples
 rm -f examples/.gitignore
 cp FORTRAN/README README.fortran
 %fdupes -s examples
+
+%check
+%ctest
 
 %if %{with hpc}
 %{hpc_write_pkgconfig}
