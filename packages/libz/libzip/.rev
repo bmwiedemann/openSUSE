@@ -493,4 +493,16 @@
   * Use ISO C secure library functions, if available.</comment>
     <requestid>1095602</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>888a5ffea3f49218dc5728ae36aa66da</srcmd5>
+    <version>1.10.1</version>
+    <time>1693383475</time>
+    <user>anag+factory</user>
+    <comment>- version update to 1.10.1
+  * Add `ZIP_LENGTH_TO_END` and `ZIP_LENGTH_UNCHECKED`. Unless
+    `ZIP_LENGTH_UNCHECKED` is used as `length`, it is an error
+    for a file to shrink between the time when the source is
+    created and when its data is read.</comment>
+    <requestid>1105857</requestid>
+  </revision>
 </revisionlist>

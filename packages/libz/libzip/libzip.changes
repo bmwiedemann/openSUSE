@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 24 13:04:37 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.10.1
+  * Add `ZIP_LENGTH_TO_END` and `ZIP_LENGTH_UNCHECKED`. Unless
+    `ZIP_LENGTH_UNCHECKED` is used as `length`, it is an error
+    for a file to shrink between the time when the source is
+    created and when its data is read.
+
+-------------------------------------------------------------------
 Tue Jun 27 12:23:07 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.10.0
