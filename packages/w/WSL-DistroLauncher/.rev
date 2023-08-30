@@ -54,4 +54,12 @@
   * drop 0005-Run-yast2-firstboot-instead-of-useradd.patch (forwarded request 902543 from jfkw)</comment>
     <requestid>902548</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2a8c3845957cd90783f60cd728af54c0</srcmd5>
+    <version>0.0.1+git20200918.2ed9a93</version>
+    <time>1693383664</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1107968</requestid>
+  </revision>
 </revisionlist>

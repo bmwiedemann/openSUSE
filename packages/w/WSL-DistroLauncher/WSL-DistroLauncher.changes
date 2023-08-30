@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 22 14:42:44 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Microsoft prefers Name and distro id to be the same for usage with wsl.exe
+  * Removing " Server" from PRETTY_NAME so distro isn't registered
+    with it in the name
+  * This way both `wsl --install SUSE-Linux-Enterprise-15-SP5` and
+    `wsl -d SUSE-Linux-Enterprise-15-SP5` work vs. the second
+    iteration needing "Server" in the name
+
+-------------------------------------------------------------------
 Fri Jun 25 21:37:41 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Prepare distro-id and distro_name configure variables using bash

@@ -1,7 +1,7 @@
 #
 # spec file for package WSL-DistroLauncher
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,6 +82,9 @@ fi
 #
 # Special case for SLE release labels e.g. RC1. Keep only up to (space) open paren.
 # Provides a stable project name for third-party integrations e.g. app store submissions
+# 20230630, smb - Removing " Server" from PRETTY_NAME so distro isn't registered
+#  with it in the name.
+PRETTY_NAME="${PRETTY_NAME// Server/}"
 PRETTY_NAME_BEFORE_PAREN="${PRETTY_NAME// (*/}"
 
 # Attribute distro-id must not contain spaces, replace with dash
