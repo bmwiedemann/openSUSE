@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 24 06:55:14 UTC 2023 - aplanas@suse.com
+
+- Update to version v7.5.0 (CVE-2023-38201, bsc#1213314):
+  * Monthly release (7.5.0)
+  * Fix for CVE-2023-38201 (Security Advisory GHSA-f4r5-q63f-gcww)
+  * verifier: should read parameters from verifier.conf only
+  * tests: Correctly configure kernel IMA
+  * Handle session close using a session manager
+  * requirements.txt: update the need sqlalchemy version to 1.3.12 and above.
+  * elchecking/example: add ignores for EV_PLATFORM_CONFIG_FLAGS
+  * tpm_cert_store: add the Alibaba Cloud vTPM EK x509 cert
+  * installer.sh: use the -i parameter to set the default binding and listening IP about the agent, verifier, and registrar server is 127.0.0.1  or 0.0.0.0
+  * installer.sh: remove the unused command line params
+  * Update container build workflow actions
+  * mba: Manage the number of times measure boot attestation is done.
+  * codestyle: Fix access to possibly not available package 'rpm' (pyright)
+  * templates/2.0/mapping.json: fix the default registrar_port error in the verifier config
+
+-------------------------------------------------------------------
 Wed Aug 02 07:53:35 UTC 2023 - aplanas@suse.com
 
 - Add BSD-3-Clause license
