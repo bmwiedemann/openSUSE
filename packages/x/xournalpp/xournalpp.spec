@@ -17,7 +17,7 @@
 
 
 Name:           xournalpp
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Notetaking software designed around a tablet
 License:        GPL-2.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzip)
@@ -43,7 +44,6 @@ BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(gtksourceview-4)
 Recommends:     webp-pixbuf-loader
 Recommends:     tex(scontents.tex)
 Recommends:     tex(standalone.tex)

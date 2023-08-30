@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 25 23:42:54 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.1:
+  * Added a default toolbar so that the app does not start without
+    toolbar on new installations
+  * Fixed some crashes and various issues with the crash log
+    handling
+  * Added options to the command line and preferences to disable
+    the audio system used for audio recording
+  * The official release builds are now all built with
+    gtksourceview styling for the LaTeX tool and in "RelWithDeb"
+    mode. Thus failing asserts do not result in a crash anymore.
+
+-------------------------------------------------------------------
 Wed Aug  2 06:11:10 UTC 2023 - thod_@gmx.de
 
 - update to 1.2.0:
