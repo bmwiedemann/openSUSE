@@ -53,7 +53,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        1.9.5
+Version:        1.9.6
 Release:        0
 Summary:        Kernel crash dump scripts and utilities
 License:        GPL-2.0-or-later
@@ -64,7 +64,6 @@ Source1:        calibrate.conf.all
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.7
 BuildRequires:  gcc-c++
-BuildRequires:  libblkid-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-sysvinit
 BuildRequires:  util-linux-systemd

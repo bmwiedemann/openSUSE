@@ -1241,4 +1241,16 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
     <comment>- upgrade to version 1.9.5</comment>
     <requestid>1104196</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>f767fefae82b6a4b6cdb21f968c6c95a</srcmd5>
+    <version>1.9.6</version>
+    <time>1693383454</time>
+    <user>anag+factory</user>
+    <comment>- upgrade to version 1.9.6
+  * use newer /sys/kernel/fadump/ instead of /sys/kernel/fadump_
+  * use kexec -a which falls back to kexec_load(2) automatically
+  * update s390 udev rules
+  * drop systemd device timeout generator</comment>
+    <requestid>1105935</requestid>
+  </revision>
 </revisionlist>
