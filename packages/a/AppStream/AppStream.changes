@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug 26 13:12:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.16.3:
+  Features:
+  * compose: Allow creating metadata with complete URLs and no base URL
+  Bugfixes:
+  * Fix tweaking of appstream.pc when building as subproject
+  * Do not override default-priority when parsing multiple metadata files
+  * Ensure stemmer always has the right locale and token-search works
+  * Require a more recent libxmlb to avoid crashes
+  Miscellaneous:
+  * Work around invalid null-dereference warning in GCC 13
+- Drop patch, merged upstream:
+  * 0001-Do-not-override-default-priority-when-parsing-multip.patch
+
+-------------------------------------------------------------------
 Fri Jun  2 06:19:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.16.2:
