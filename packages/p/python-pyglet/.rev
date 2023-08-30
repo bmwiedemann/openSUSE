@@ -231,4 +231,38 @@
     settings.</comment>
     <requestid>1084858</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8002fb6e8b980a5a485237d462412d80</srcmd5>
+    <version>2.0.9</version>
+    <time>1693383643</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.9:
+  * Changes and Improvements
+    + Initialize AudioDriver when media module is imported, prevent pause
+      on first sound playback.
+    + New TextureArrayBin class for managing TextureArray based atlases.
+    + text: Caret supports RGBA color, in line with other pyglet objects.
+    + gui: Add alpha value to the Caret's default color.
+    + shapes: Allow checking if a point is in a shape, using the in operator
+    + Add missing OpenGL extensions
+    + Add support for FFmpeg 6.0
+    + Sprite width &amp; height properties are now settable, allowing scaling by
+      pixels
+    + app: Passing None to pyglet.app.run will disable automatic Window
+      redraws.
+    + window: Add a Window.draw method to help when manually scheduling
+      Window redraws.
+    + shapes: Add a border thickness setter to BorderedRectangle
+  * Bugfixes
+    + Fix numerous bugs remaining with IncrementalTextLayout, with
+      translation, caret, etc. #786
+    + shader: add missing sampler type definitions.
+    + Fix broken struct format strings in png and ttf decoders.
+    + text: Clear Group cache when a Layout's Group is changed.
+    + Fix incorrect string formatting in the timer.py example.
+    + input: ensure Xinput controllers dispatch events on the main thread
+* Switch to pyproject macros.
+* Remove unneeded futures module from {Build,}Requires.</comment>
+    <requestid>1107855</requestid>
+  </revision>
 </revisionlist>

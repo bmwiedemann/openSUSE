@@ -28,18 +28,18 @@
 %bcond_with     test
 %bcond_with     gtk2
 %endif
-%define skip_python2 1
 %bcond_with     pytest_helpers
 Name:           python-pyglet
-Version:        2.0.5
+Version:        2.0.9
 Release:        0
 Summary:        Windowing and multimedia library
 License:        BSD-3-Clause AND MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pyglet/pyglet
 Source0:        https://files.pythonhosted.org/packages/source/p/pyglet/pyglet-%{version}.zip
 Source1:        %{name}-rpmlintrc
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,7 +47,6 @@ BuildRequires:  unzip
 Requires:       Mesa-dri
 Requires:       libxcb-glx0
 Requires:       python-Pillow
-Requires:       python-future
 Requires:       python-pypng
 Recommends:     alsa-lib
 Recommends:     fontconfig
@@ -60,7 +59,6 @@ Recommends:     gtk2
 %endif
 %if %{with test}
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  Mesa-dri
 BuildRequires:  alsa-lib
@@ -92,6 +90,9 @@ developing games and other visually-rich applications.
 
 %prep
 %autosetup -p1 -n pyglet-%{version}
+
+# Broken, we shall fall back
+rm pyproject.toml
 
 # Windows only, and is a vendored module
 rm pyglet/font/win32*.py
@@ -174,10 +175,10 @@ rm tests/base/test_interactive_test_base.py
 find pyglet -name "*.py" -exec dos2unix "{}" "+"
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %{python_expand pkgdocdir=%{_docdir}/$(cat _current_flavor)-pyglet
@@ -246,6 +247,6 @@ fi
 %license LICENSE
 %doc README.md RELEASE_NOTES examples
 %{python_sitelib}/pyglet
-%{python_sitelib}/pyglet-%{version}-py*.egg-info
+%{python_sitelib}/pyglet-%{version}.dist-info
 
 %changelog
