@@ -172,4 +172,30 @@
     <comment></comment>
     <requestid>1071794</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>b752230040e8862a63438b3c90ff9267</srcmd5>
+    <version>2.2.6</version>
+    <time>1693383739</time>
+    <user>anag+factory</user>
+    <comment>- Split package into multiple packages:
+  LCL packages:
+    + lazarus-lcl
+    + lazarus-lcl-nogui
+    + lazarus-lcl-qt5
+    + lazarus-lcl-gtk2
+    + lazarus-lcl-gtk3
+  Doc package:
+    + lazarus-doc
+  IDE package:
+    + lazarus-ide
+  Tools package:
+    + lazarus-tools
+  QT5 bindings:
+    + libQt5Pas
+  Meta package:
+    + lazarus (this will install: ide, lcl, lcl-gtk2, lcl-nogui, tools)
+- Add 0002-fix-GTK3-build-error.patch: this fixes building the GTK3 LCL.
+</comment>
+    <requestid>1108032</requestid>
+  </revision>
 </revisionlist>
