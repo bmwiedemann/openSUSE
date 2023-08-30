@@ -205,4 +205,12 @@ SPDX (forwarded request 110717 from babelworx)</comment>
     <comment>Don't depend on jtidy</comment>
     <requestid>1100553</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9f078e8f7b3290e34c384396f8ea9056</srcmd5>
+    <version>2.1.4</version>
+    <time>1693383560</time>
+    <user>anag+factory</user>
+    <comment>add bootstrap flavour</comment>
+    <requestid>1105589</requestid>
+  </revision>
 </revisionlist>
