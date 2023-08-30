@@ -18,19 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Paste
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        Tools for using a Web Server Gateway Interface stack
 License:        MIT
 URL:            https://github.com/cdent/paste
 Source:         https://files.pythonhosted.org/packages/source/P/Paste/Paste-%{version}.tar.gz
 Patch0:         test_modified-fixup.patch
-Patch1:         support-python-311.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six > 1.4.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 Requires:       python-six > 1.4.0
 Suggests:       python-flup
 Suggests:       python-python3-openid
@@ -50,10 +52,10 @@ sed -i '/pytest-runner/d' setup.py
 rm tests/test_proxy.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +64,8 @@ rm tests/test_proxy.py
 %files %{python_files}
 %license docs/license.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/paste
+%{python_sitelib}/Paste-%{version}.dist-info
+%{python_sitelib}/Paste-%{version}-py*-nspkg.pth
 
 %changelog

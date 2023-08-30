@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 28 04:41:38 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.5.3:
+  * Use importlib instead of imp with Python 3.
+- Drop patch support-python-311.patch, something similar now included
+  upstream.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue May  9 13:53:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

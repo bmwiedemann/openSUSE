@@ -365,4 +365,17 @@
     <comment></comment>
     <requestid>1085814</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6dc19f0076e325d1b3907be8ec41076a</srcmd5>
+    <version>3.5.3</version>
+    <time>1693383553</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.5.3:
+  * Use importlib instead of imp with Python 3.
+- Drop patch support-python-311.patch, something similar now included
+  upstream.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1106211</requestid>
+  </revision>
 </revisionlist>
