@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 27 11:07:32 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.25:
+  * new program gama-local-deformation for processing two
+    adjustment epochs to calculate potential points position
+    changes (shift vectors).
+  * change from c++11 version to c++14
+  * New glossary of basic terms used in gama-local text output and
+    in documentation.
+
+-------------------------------------------------------------------
 Sun Feb 19 20:04:53 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.24:
