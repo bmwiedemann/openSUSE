@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.4
-%define patchversion 6.4.11
+%define patchversion 6.4.12
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -112,9 +112,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.4.11
+Version:        6.4.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g2a5b3f6
+Release:        <RELEASE>.gf5aa89b
 %else
 Release:        0
 %endif
@@ -148,6 +148,25 @@ BuildRequires:  dwarves >= 1.22
 BuildRequires:  libelf-devel
 # required for 50-check-kernel-build-id rpm check
 BuildRequires:  elfutils
+%ifarch %arm
+BuildRequires:  u-boot-tools
+%endif
+# Do not install p-b and dracut for the install check, the %post script is
+# able to handle this
+#!BuildIgnore: perl-Bootloader dracut distribution-release
+# Remove some packages that are installed automatically by the build system,
+# but are not needed to build the kernel
+#!BuildIgnore: autoconf automake gettext-runtime libtool cvs gettext-tools udev insserv
+# Force bzip2 instead of lzma compression to
+# 1) allow install on older dist versions, and
+# 2) decrease build times (bsc#962356 boo#1175882)
+%define _binary_payload w9.bzdio
+# Do not recompute the build-id of vmlinux in find-debuginfo.sh (bsc#964063)
+%undefine _unique_build_ids
+%define _no_recompute_build_ids 1
+# prevent usr/lib/debug/boot/vmlinux-4.12.14-11.10-default-4.12.14-11.10.ppc64le.debug
+%undefine _unique_debug_names
+
 %if "%{compress_modules}" == "zstd"
 BuildRequires:  zstd
 # Make sure kmod supports zstd compressed modules
@@ -193,37 +212,13 @@ Requires(post): dracut
 # Install the package providing /etc/SuSE-release early enough, so that
 # the grub entry has correct title (bnc#757565)
 Requires(post): distribution-release
-# Do not install p-b and dracut for the install check, the %post script is
-# able to handle this
-#!BuildIgnore: perl-Bootloader dracut distribution-release
-# Remove some packages that are installed automatically by the build system,
-# but are not needed to build the kernel
-#!BuildIgnore: autoconf automake gettext-runtime libtool cvs gettext-tools udev insserv
 
-%ifarch s390 s390x
-%if %build_vanilla && 0%{?suse_version} < 1130
-BuildRequires:  dwarfextract
-%endif
-%endif
-%ifarch %arm
-BuildRequires:  u-boot-tools
-%endif
 %if 0%{?usrmerged}
 # make sure we have a post-usrmerge system
 Conflicts:      filesystem < 16
 %endif
 
 Obsoletes:      microcode_ctl < 1.18
-
-# Force bzip2 instead of lzma compression to
-# 1) allow install on older dist versions, and
-# 2) decrease build times (bsc#962356 boo#1175882)
-%define _binary_payload w9.bzdio
-# Do not recompute the build-id of vmlinux in find-debuginfo.sh (bsc#964063)
-%undefine _unique_build_ids
-%define _no_recompute_build_ids 1
-# prevent usr/lib/debug/boot/vmlinux-4.12.14-11.10-default-4.12.14-11.10.ppc64le.debug
-%undefine _unique_debug_names
 
 %{lua:	fd, err = io.open(rpm.expand('%_sourcedir') .. '/kernel-binary-conflicts')
 	if not fd then io.stderr:write(err) end
@@ -242,27 +237,19 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-2a5b3f66898e9ecfa282f4399923c9546d3bc54d
-Provides:       kernel-srchash-2a5b3f66898e9ecfa282f4399923c9546d3bc54d
+Provides:       kernel-%build_flavor-base-srchash-f5aa89b3e95322c79e43c459f5b6862dec51fc5f
+Provides:       kernel-srchash-f5aa89b3e95322c79e43c459f5b6862dec51fc5f
 # END COMMON DEPS
-Provides:       %name-srchash-2a5b3f66898e9ecfa282f4399923c9546d3bc54d
+Provides:       %name-srchash-f5aa89b3e95322c79e43c459f5b6862dec51fc5f
 %ifarch %ix86
-Provides:       kernel-smp = 2.6.17
-Obsoletes:      kernel-smp <= 2.6.17
 Provides:       kernel-trace = 3.13
 Obsoletes:      kernel-trace <= 3.13
-%endif
-%ifarch ppc64
-Provides:       kernel-kdump = 2.6.28
-Obsoletes:      kernel-kdump <= 2.6.28
 %endif
 %ifarch s390x
 Provides:       kernel-trace = 3.13
 Obsoletes:      kernel-trace <= 3.13
 %endif
 %ifarch x86_64
-Provides:       kernel-smp = 2.6.17
-Obsoletes:      kernel-smp <= 2.6.17
 Provides:       kernel-trace = 3.13
 Obsoletes:      kernel-trace <= 3.13
 Provides:       kernel-bigsmp = 3.1
@@ -277,10 +264,6 @@ Obsoletes:      kernel-ec2 <= 4.4
 %ifarch %ix86
 Provides:       kernel-trace-base = 3.13
 Obsoletes:      kernel-trace-base <= 3.13
-%endif
-%ifarch ppc64
-Provides:       kernel-kdump-base = 2.6.28
-Obsoletes:      kernel-kdump-base <= 2.6.28
 %endif
 %ifarch s390x
 Provides:       kernel-trace-base = 3.13
@@ -812,11 +795,6 @@ add_vmlinux()
         image=bzImage
     fi
     cp -p arch/s390/boot/$image %buildroot/boot/%image-%kernelrelease-%build_flavor
-    if test -e arch/s390/boot/kerntypes.o; then
-        cp -p arch/s390/boot/kerntypes.o %buildroot/boot/Kerntypes-%kernelrelease-%build_flavor
-    elif test -x "$(which dwarfextract 2>/dev/null)"; then
-	dwarfextract vmlinux %buildroot/boot/Kerntypes-%kernelrelease-%build_flavor || echo "dwarfextract failed ($?)"
-    fi
 %if "%CONFIG_KMSG_IDS" == "y"
     mkdir -p %buildroot/usr/share/man/man9
     find man -name '*.9' -exec install -m 644 -D '{}' %buildroot/usr/share/man/man9/ ';'
@@ -930,13 +908,6 @@ if [ %CONFIG_MODULES = y ]; then
     make modules_install $MAKE_ARGS INSTALL_MOD_PATH=%buildroot
 
 %ifarch s390 s390x
-    if test -e arch/s390/boot/kerntypes.o; then
-        :
-    elif test -x "$(which dwarfextract 2>/dev/null)" -a \
-	-f %buildroot/boot/Kerntypes-%kernelrelease-%build_flavor; then
-	find %buildroot -name "*.ko" > kofiles.list
-	dwarfextract %buildroot/boot/Kerntypes-%kernelrelease-%build_flavor -C kofiles.list || echo "dwarfextract failed ($?)"
-    fi
     expoline=arch/s390/lib/expoline/expoline.o
     if test -f arch/s390/lib/expoline/expoline.o ; then
 	install -m 644 -D -t %rpm_install_dir/%cpu_arch_flavor/$(dirname $expoline) $expoline
@@ -1343,37 +1314,13 @@ Requires(post): dracut
 # Install the package providing /etc/SuSE-release early enough, so that
 # the grub entry has correct title (bnc#757565)
 Requires(post): distribution-release
-# Do not install p-b and dracut for the install check, the %post script is
-# able to handle this
-#!BuildIgnore: perl-Bootloader dracut distribution-release
-# Remove some packages that are installed automatically by the build system,
-# but are not needed to build the kernel
-#!BuildIgnore: autoconf automake gettext-runtime libtool cvs gettext-tools udev insserv
 
-%ifarch s390 s390x
-%if %build_vanilla && 0%{?suse_version} < 1130
-BuildRequires:  dwarfextract
-%endif
-%endif
-%ifarch %arm
-BuildRequires:  u-boot-tools
-%endif
 %if 0%{?usrmerged}
 # make sure we have a post-usrmerge system
 Conflicts:      filesystem < 16
 %endif
 
 Obsoletes:      microcode_ctl < 1.18
-
-# Force bzip2 instead of lzma compression to
-# 1) allow install on older dist versions, and
-# 2) decrease build times (bsc#962356 boo#1175882)
-%define _binary_payload w9.bzdio
-# Do not recompute the build-id of vmlinux in find-debuginfo.sh (bsc#964063)
-%undefine _unique_build_ids
-%define _no_recompute_build_ids 1
-# prevent usr/lib/debug/boot/vmlinux-4.12.14-11.10-default-4.12.14-11.10.ppc64le.debug
-%undefine _unique_debug_names
 
 %{lua:	fd, err = io.open(rpm.expand('%_sourcedir') .. '/kernel-binary-conflicts')
 	if not fd then io.stderr:write(err) end
@@ -1392,16 +1339,12 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-2a5b3f66898e9ecfa282f4399923c9546d3bc54d
-Provides:       kernel-srchash-2a5b3f66898e9ecfa282f4399923c9546d3bc54d
+Provides:       kernel-%build_flavor-base-srchash-f5aa89b3e95322c79e43c459f5b6862dec51fc5f
+Provides:       kernel-srchash-f5aa89b3e95322c79e43c459f5b6862dec51fc5f
 
 %ifarch %ix86
 Provides:       kernel-trace-base = 3.13
 Obsoletes:      kernel-trace-base <= 3.13
-%endif
-%ifarch ppc64
-Provides:       kernel-kdump-base = 2.6.28
-Obsoletes:      kernel-kdump-base <= 2.6.28
 %endif
 %ifarch s390x
 Provides:       kernel-trace-base = 3.13
@@ -1479,10 +1422,6 @@ Requires(post): dracut
 %ifarch %ix86
 Provides:       kernel-trace-extra = 3.13
 Obsoletes:      kernel-trace-extra <= 3.13
-%endif
-%ifarch ppc64
-Provides:       kernel-kdump-extra = 2.6.28
-Obsoletes:      kernel-kdump-extra <= 2.6.28
 %endif
 %ifarch s390x
 Provides:       kernel-trace-extra = 3.13
@@ -1573,10 +1512,6 @@ Requires(post): dracut
 %ifarch %ix86
 Provides:       kernel-trace-optional = 3.13
 Obsoletes:      kernel-trace-optional <= 3.13
-%endif
-%ifarch ppc64
-Provides:       kernel-kdump-optional = 2.6.28
-Obsoletes:      kernel-kdump-optional <= 2.6.28
 %endif
 %ifarch s390x
 Provides:       kernel-trace-optional = 3.13
@@ -1707,10 +1642,6 @@ Provides:       kernel-preempt-devel = %version-%release
 %ifarch %ix86
 Provides:       kernel-trace-devel = 3.13
 Obsoletes:      kernel-trace-devel <= 3.13
-%endif
-%ifarch ppc64
-Provides:       kernel-kdump-devel = 2.6.28
-Obsoletes:      kernel-kdump-devel <= 2.6.28
 %endif
 %ifarch s390x
 Provides:       kernel-trace-devel = 3.13

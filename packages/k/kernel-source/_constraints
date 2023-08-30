@@ -120,7 +120,7 @@
 <package>kernel-zfcpdump</package>
     </conditions>
     <hardware>
-      <jobs>8</jobs>
+      <jobs>4</jobs>
     </hardware>
   </overwrite>
 
