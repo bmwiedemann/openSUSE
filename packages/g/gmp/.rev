@@ -573,4 +573,12 @@ discover that breaks ...
   new release.</comment>
     <requestid>1102324</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>e8130cb72e66ba24bb2796da5d3c351c</srcmd5>
+    <version>6.3.0</version>
+    <time>1693383564</time>
+    <user>anag+factory</user>
+    <comment>- Add gmp-6.3.0-s390x-fix.patch to fix s390x optimized code on z13.</comment>
+    <requestid>1105276</requestid>
+  </revision>
 </revisionlist>
