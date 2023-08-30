@@ -540,4 +540,25 @@
     <comment></comment>
     <requestid>1092416</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>14d083f3fd67435241f709825564e020</srcmd5>
+    <version>2.7.2</version>
+    <time>1693383645</time>
+    <user>anag+factory</user>
+    <comment>- Update fixes:
+  * CVE-2023-39968 boo#1214730
+  * CVE-2023-40170 boo#1214731
+- Update to 2.7.2
+  * accessing API version should not count as activity #1315
+    (@minrk)
+  * Make kernel_id as a conditional optional field #1300
+    (@allstrive)
+  * Reference current_user to detect auth #1294 (@bhperry)
+  * send2trash now supports deleting from different filesystem
+    type(#1290) #1291 (@wqj97)
+- Release 2.7.0
+  * Add missing events to gateway client #1288 (@allstrive)
+</comment>
+    <requestid>1107864</requestid>
+  </revision>
 </revisionlist>

@@ -32,7 +32,7 @@
 %endif
 
 Name:           python-jupyter-server%{psuffix}
-Version:        2.6.0
+Version:        2.7.2
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
@@ -50,7 +50,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python >= 3.8
 Requires:       python-Jinja2
-Requires:       python-Send2Trash
+Requires:       python-Send2Trash >= 1.8.2
 Requires:       python-anyio >= 3.1.0
 Requires:       python-argon2-cffi
 Requires:       python-jupyter-client >= 7.4.4

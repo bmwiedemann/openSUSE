@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 29 07:28:29 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update fixes:
+  * CVE-2023-39968 boo#1214730
+  * CVE-2023-40170 boo#1214731
+
+-------------------------------------------------------------------
+Sat Aug 26 13:06:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.7.2
+  * accessing API version should not count as activity #1315
+    (@minrk)
+  * Make kernel_id as a conditional optional field #1300
+    (@allstrive)
+  * Reference current_user to detect auth #1294 (@bhperry)
+  * send2trash now supports deleting from different filesystem
+    type(#1290) #1291 (@wqj97)
+- Release 2.7.0
+  * Add missing events to gateway client #1288 (@allstrive)
+
+-------------------------------------------------------------------
 Sun Jun 11 20:34:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.6.0
