@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 22 10:04:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.4~rc2
+  * Add SPV_NV_bindless_texture to spirv optimizations
+  * Add folding rule for OpTranspose
+  * spirv-diff: Leave undefined ids unpaired
+  * SPV_KHR_cooperative_matrix
+  * Validate GroupNonUniform instructions
+  * Add support for LiteralFloat type
+  * Add SPV_EXT_shader_atomic_float_add to allow lists
+
+-------------------------------------------------------------------
 Tue May 30 22:01:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.3~rc1

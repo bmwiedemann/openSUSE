@@ -316,4 +316,12 @@ join Staging:E</comment>
     <comment>- Update to release 2023.3~rc1</comment>
     <requestid>1089886</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0262fcffb4f33d084cbb89cd3b855e55</srcmd5>
+    <version>2023.4~rc2</version>
+    <time>1693383462</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2023.4~rc2</comment>
+    <requestid>1105511</requestid>
+  </revision>
 </revisionlist>
