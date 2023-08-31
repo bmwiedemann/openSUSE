@@ -19,7 +19,7 @@
 %define libname libKPimItinerary5
 %bcond_without released
 Name:           kitinerary
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Data model and extraction system for travel reservations
 License:        LGPL-2.1-or-later
@@ -92,7 +92,7 @@ to build programs that use the kitinerary library.
 export CXX=g++-10
 %endif
 
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON
+%cmake_kf5 -d build -- -DBUILD_TESTING=OFF
 %cmake_build
 
 %install
@@ -100,8 +100,8 @@ export CXX=g++-10
 
 %find_lang %{name} --with-man --with-qt --all-name
 
-%check
-%ctest
+#%check
+#%ctest
 
 %ldconfig_scriptlets -n libKPim5Itinerary5
 

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:59:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- Changes since 23.07.90:
+  * Add extractor script for Aer Lingus PDF boarding passes
+  * Increase upper aspect ratio limit for PDF417 barcodes
+  * Support ZSSK network tickets
+  * Improve ZSSK barcode trigger pattern
+  * Add extractor script for Iberia PDF boarding passes
+  * Add extractor script for KLM/Air France PDF boarding passes
+  * Manually extract boarding time for Lufthansa PDF boarding passes
+  * Determine trigger nodes also for ancestor filters
+  * Skip generic flight time extraction if any of those is already present
+  * Allow to match on the PDF document author field as well
+  * Add DSB extractor script
+  * Fix RSP-6 date/time parsing (kde#473326)
+  * Fix wrong ticket token type prefixes in a few extractor scripts (kde#473325)
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Fix Spring Airlines multi-leg extraction
+  * Add extractor script for Cinemaxx events
+  * Run generic iCal extraction unconditionally in prior to extractors scripts
+  * Track used extractor in the document node rather than the engine
+  * Add cooltix.hu event ticket extractor script
+  * Allow to filter against the PDF document creator field as well
+  * Reduce the lower bound for 2D vector barcodes
+  * Add LH extractor script to the qrc file
+  * Extract discount program information from ERA FCB tickets
+  * Make Aer Lingus booking number extraction more robust
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
