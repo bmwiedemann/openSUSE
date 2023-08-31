@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kteatime
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Timer for various types of tea
 License:        GPL-2.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5Notifications)
