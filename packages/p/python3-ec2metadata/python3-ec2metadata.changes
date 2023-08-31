@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 23 21:26:04 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 5.0.0 (bsc#1214215)
+  + Remove the --use-token command line option. Aws is deprecating access
+    to instance metadata without authentication token. Ability to access
+    metadat without token has been removed
+  + Support access to the metadata server over IPv6. If the customer
+    enables the IPv6 endpoint for an instance it will be preferred over the
+    IPv4 endpoint
+
+-------------------------------------------------------------------
 Mon Oct 10 20:52:54 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 4.0.0 (bsc#1204066)
