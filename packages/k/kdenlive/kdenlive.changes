@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:59:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- Changes since 23.07.90:
+  * Allow speed effect on sequence/playlist items that already had it so it can be disabled in existing projects
+  * Disable speed change on playlist and sequence clips, as it is unstable in MLT.
+  * When an MLT playlist proxy is missing, it should be reverted to a producer, not stay in a chain
+  * Fix proxy clips not correctly recreated when missing on project open
+  * Fix no luma files for NTSC and other non HD formats
+  * Fix crash closing luma download dialog
+  * Ensure saved effect position is relative for fades (kde#473375)
+  * Fix Save As incorrectly triggering backup file.
+  * Fix layout file warning
+  * Fix path of LUT files on project opening, for appimage or imported projects
+  * Fix composition incorrectly selected after added through clip corner shortcut
+  * Fix crash closing project with mixes
+  * Fix timeline keyframe view broken afer remove keyframes or undo effect deletion
+  * Fix 'Save As' behaving like 'Save a Copy'
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Don't incorrectly update timeline duration on every clip move. Related to #1738
+  * Improve highly inefficient loop Related to #1422
+  * Fix warnings
+  * fix melt path config variable not renamed everywhere
+  * Fix timeline zone not correctly loaded on project open
+  * Fix timeline preview incorrectly connected when opening pre-nesting project file
+  * Fix crash tring to import DJI image stream (kde#467375)
+  * Fix crash dragging multistream clip outside timeline
+  * Fix play icon incorrectly active when playing from end, fix timeline not playing from start (kde#473087)
+  * Fix crash on audio record with multiple timeline sequences Related to #1731
+  * Ensure lines and dust effects have in/out defined
+  * Fix pasting keyframeble effect from one clip to another breaks if destination clip is shorter
+  * Fix timeline preview (and possible rendering) crash on title clips.
+  * Fix timeline preview not loaded on project opening
+  * Fix missing effects/compositions when rendering a project with several sequences
+  * Ensure Kdenlive's renderer path is always found or fixed
+  * Disable mediabrowser constantly checking for directory changes when widget is not visible
+  * Fix Render Widget url dialog not working properly (cannot choose another folder)
+  * Fix timeline focus when a drop quickly exits an existing timeline clip and that the  exit event is not triggered Related to #1704
+  * Fix freeze effect to select current playhead frame by default
+  * MLT does not support animated colors for avfilter. (kde#472722)
+  * Fix crash on project close introduced in last commit
+
+-------------------------------------------------------------------
+Tue Aug  1 10:21:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3

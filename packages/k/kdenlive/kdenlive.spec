@@ -19,7 +19,7 @@
 %define mlt_version 7.14.0
 %bcond_without released
 Name:           kdenlive
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -123,24 +123,25 @@ rm -r %{buildroot}%{_datadir}/doc/Kdenlive
 %attr(0755,-,-) %{_bindir}/%{name}_render
 %license LICENSES/*
 %doc AUTHORS README.md
+%{_kf5_knsrcfilesdir}/*.knsrc
 %doc %lang(en) %{_kf5_htmldir}/en/kdenlive/
-%dir %{_kf5_plugindir}/designer
-%dir %{_kf5_plugindir}/kf5/
-%dir %{_kf5_plugindir}/kf5/thumbcreator
 %{_kf5_applicationsdir}/org.kde.kdenlive.desktop
 %{_kf5_appstreamdir}/org.kde.kdenlive.appdata.xml
 %{_kf5_configkcfgdir}/kdenlivesettings.kcfg
 %{_kf5_debugdir}/kdenlive.categories
 %{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_knsrcfilesdir}/*.knsrc
 %{_kf5_kxmlguidir}/kdenlive/
 %{_kf5_mandir}/man1/kdenlive*
+%dir %{_kf5_plugindir}/designer
+%dir %{_kf5_plugindir}/kf5/
+%dir %{_kf5_plugindir}/kf5/thumbcreator
 %{_kf5_plugindir}/designer/kdenlivewidgets.so
 %{_kf5_plugindir}/kf5/thumbcreator/mltpreview.so
 %{_kf5_sharedir}/kdenlive/
 %{_kf5_sharedir}/knotifications5/kdenlive.notifyrc
 %{_kf5_sharedir}/mime/packages/org.kde.kdenlive.xml
 %{_kf5_sharedir}/mime/packages/westley.xml
+
 
 %files lang -f %{name}.lang
 
