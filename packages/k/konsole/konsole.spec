@@ -18,7 +18,7 @@
 %global libsover 21
 %bcond_without released
 Name:           konsole
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
@@ -64,7 +64,7 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5PrintSupport)
