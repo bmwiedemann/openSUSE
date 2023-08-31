@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 30 19:25:32 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.2.5
+  * Turn off IMAP_TLS_REQUIRED if IMAP_TLS is already set.
+  * Compiling with -DMAILDIR_SKIP_SYMLINK_CHECKS turns off checking for
+    rogue symlinks in maildirs.
+- update courier-imap.keyring with new signing key
+
+-------------------------------------------------------------------
 Sun Apr 30 14:22:53 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.2.4
