@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kmail-account-wizard
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Account wizard for KMail
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -51,7 +51,7 @@ BuildRequires:  cmake(KPim5IdentityManagement)
 BuildRequires:  cmake(KPim5Ldap)
 BuildRequires:  cmake(KPim5Libkdepim)
 BuildRequires:  cmake(KPim5MailTransport)
-BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KPim5PimCommon)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiTools)
@@ -60,7 +60,7 @@ BuildRequires:  cmake(Qt5Xml)
 Obsoletes:      akonadi_resources
 Obsoletes:      kdepim
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 An application which assists you with the configuration of accounts in KMail.
