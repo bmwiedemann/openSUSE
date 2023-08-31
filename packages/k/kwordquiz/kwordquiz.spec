@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kwordquiz
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Vocabulary Trainer
 License:        GPL-2.0-or-later
@@ -33,9 +33,12 @@ BuildRequires:  fdupes
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5Kirigami2)
+BuildRequires:  cmake(KF5KirigamiAddons)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5NewStuff)
@@ -46,7 +49,11 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(LibKEduVocDocument)
 BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Multimedia)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
@@ -84,9 +91,9 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_bindir}/kwordquiz
 %{_kf5_configkcfgdir}/
 %{_kf5_iconsdir}/hicolor/*/apps/kwordquiz.*
+%{_kf5_iconsdir}/hicolor/*/apps/org.kde.kwordquiz.*
 %{_kf5_iconsdir}/hicolor/*/mimetypes/application-x-kwordquiz.png
 %{_kf5_knsrcfilesdir}/kwordquiz.knsrc
-%{_kf5_kxmlguidir}/kwordquiz/
 %{_kf5_sharedir}/knotifications5/
 
 %files lang -f %{name}.lang
