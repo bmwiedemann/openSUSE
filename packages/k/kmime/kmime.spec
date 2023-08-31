@@ -16,11 +16,11 @@
 #
 
 
-%define kf5_version 5.103.0
+%define kf5_version 5.105.0
 %bcond_without released
 %define libname libKPim5Mime5
 Name:           kmime
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE PIM libraries MIME support
 License:        LGPL-2.1-or-later
