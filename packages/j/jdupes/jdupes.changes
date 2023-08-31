@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Sun Aug 27 10:49:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.27.3:
+  * Fix crash on Linux when opening a file for hashing fails
+
+-------------------------------------------------------------------
+Sun Aug 27 10:49:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.27.2:
+  * Hash database no longer crashes on 32-bit and x32 systems
+  * Hash database now uses 64-bit time and size counts
+
+-------------------------------------------------------------------
+Sun Aug 27 10:49:13 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.27.1:
+  * Fix a hash database corruption bug
+
+-------------------------------------------------------------------
+Fri Aug 25 08:15:52 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.27.0:
+  * Added long-awaited hash database feature -y (SEE README BEFORE USING)
+  * Removed legacy long options that were deprecated in v1.20.0
+  * -E option was moved to -e and now throws an error (CHECK YOUR SCRIPTS)
+  * Multiple hash algorithm capability added, but no user option exists yet
+  * Linux: use posix_fadvise() to improve read performance
+  * Fixed possible infinite loop freezing on certain errors when linking files
+  * Removed annoying warning for -Q; the user deserves what the user asks for
+
+-------------------------------------------------------------------
+Tue Aug 22 14:50:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.26.1:
+  * Fix '-P early' to actually work correctly
+
+-------------------------------------------------------------------
+Tue Aug 22 14:49:49 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.26.0:
+  * Change -C to use KiB instead of bytes for easier typing
+
+-------------------------------------------------------------------
+Tue Aug 22 14:49:34 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.25.3:
+  * Fix CTRL+C broken during scanning phase
+  * Added verbose error information for dedupe errors 22 and 95
+  * Partial-only flag for dedupe is no longer inappropriately enabled on macOS
+  * Build now enables dedupe support and uses nearby libjodycode by default
+  * Fix NO_HARDLINKS, LOW_MEMORY, and BARE_BONES builds
+
+-------------------------------------------------------------------
+Tue Aug 22 14:49:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.25.2:
+  * Fix -d and no valid directories exiting with an internal error message
+  * All errors or serious warnings exit with FAILURE instead of SUCCESS
+
+-------------------------------------------------------------------
+Tue Aug 22 14:49:02 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.25.1:
+  * Fix -D on non-debug builds which was falling through to set -E
+  * Debugging now dumps a list of internal option flags
+  * Fixed progress indicator: "hashing: xyz%" only shows if "stuck" on one file
+
+-------------------------------------------------------------------
+Tue Aug 22 14:48:45 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.25.0:
+  * Major bug in 1.24.0 affecting all types of linking has been fixed
+  * Update interfaces to libjodycode 3 API
+
+-------------------------------------------------------------------
+Tue Aug 22 14:48:28 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.24.0:
+  * Progress indication now uses platform timers instead of check loops
+  * Lots of small code size and efficiency improvements
+  * No one should be using -T so it has been made far more annoying
+  * -B can be used with -T which may be faster for BTRFS dedupe work
+  * CTRL-C aborts now show a user abort warning message to stderr
+  * Improved version information display
+  * Documentation updates
+
+-------------------------------------------------------------------
+Tue Aug 22 14:48:04 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.23.0:
+  * Use the new libjodycode 2.0 API version handling system
+  * Dedupe is now attempted on read-only files (meant for BTRFS snapshots)
+  * The -C option can now accept power-of-two chunk sizes up to 256 MiB
+  * "Extensions" are now "feature flags" and some have changed
+  * OMIT_GETOPT_LONG is now NO_GETOPT_LONG (does anyone actually use this?)
+  * Linux-x86_64 can now build several multilib arches (x86_64, x32, i386)
+  * Various other under-the-hood code changes for libjodycode 2.0
+
+-------------------------------------------------------------------
+Tue Aug 22 14:47:07 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.22.0:
+  * libjodycode is now required to build and run jdupes
+  * Move all jody_* code to libjodycode and remove from jdupes
+  * Add -E/--error-on-dupe option to terminate immediately if any dupe is found
+  * Support showing x32 ABI in version information
+  * Several build system improvements for macOS, BSD, and linking in libxxhash
+
+-------------------------------------------------------------------
 Thu Feb  9 17:13:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.21.3:

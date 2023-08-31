@@ -18,7 +18,7 @@
 
 
 Name:           jdupes
-Version:        1.21.3
+Version:        1.27.3
 Release:        0
 Summary:        A powerful duplicate file finder and an enhanced fork of 'fdupes'
 License:        MIT
@@ -28,6 +28,7 @@ Source0:        https://github.com/jbruchon/jdupes/archive/refs/tags/v%{version}
 Source1:        macros.jdupes
 Source2:        jdupes_wrapper.cpp
 BuildRequires:  gcc-c++
+BuildRequires:  libjodycode-devel
 
 %description
 A program for identifying and taking actions upon duplicate files.
@@ -41,7 +42,7 @@ programs.
 %setup -q
 
 %build
-make %{?_smp_mflags} \
+%make_build \
      ENABLE_DEDUPE=1 \
      STATIC_DEDUPE_H=1
 g++ %{optflags} -O2 -Wall %{SOURCE2} -o jdupes_wrapper
@@ -49,17 +50,17 @@ g++ %{optflags} -O2 -Wall %{SOURCE2} -o jdupes_wrapper
 %install
 make DESTDIR=%{buildroot} PREFIX=%{_prefix} install
 install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.%{name}
-install -D -m755 jdupes_wrapper  %{buildroot}/usr/lib/rpm/jdupes_wrapper
+install -D -m755 jdupes_wrapper  %{buildroot}%{_prefix}/lib/rpm/jdupes_wrapper
 
 %check
 ./jdupes -q -r testdir
 
 %files
-%license LICENSE
-%doc CHANGES README.md
+%license LICENSE.txt
+%doc CHANGES.txt README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_rpmmacrodir}/macros.%{name}
-/usr/lib/rpm/jdupes_wrapper
+%{_prefix}/lib/rpm/jdupes_wrapper
 
 %changelog
