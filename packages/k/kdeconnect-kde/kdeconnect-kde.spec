@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kdeconnect-kde
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -29,14 +29,12 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
-#PATCH-FIX-UPSTREAM kde#447385
-Patch0:         Use-org-freedesktop-DBus-Monitoring-to-monitor-notifications.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
+BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Declarative)
@@ -60,17 +58,16 @@ BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickControls2)
-BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5WaylandClient)
+BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(libfakekey)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xtst)
-BuildRequires:  pkgconfig(wayland-protocols)
-Requires:       kirigami2
 Requires:       kirigami-addons
+Requires:       kirigami2
 Requires:       libqt5-qtquickcontrols2
 Requires:       plasma-framework-components
 # kdeconnect-openssh-8.8.patch needs https://github.com/libfuse/sshfs/pull/269,
@@ -114,9 +111,8 @@ ZSH command line completion support for %{name}.
 %install
 %kf5_makeinstall -C build
 
-for translation_file in kdeconnect-{app,cli,core,fileitemaction,indicator,interfaces,kcm,kded,kio,nautilus-extension,plugins,settings,sms,urlhandler} plasma_applet_org.kde.kdeconnect; do
-    %find_lang $translation_file %{name}.lang
-done
+%find_lang %{name} --all-name
+
 %kf5_find_htmldocs
 
 %if 0%{?suse_version} < 1550
@@ -128,6 +124,10 @@ install -D -m 0644 %{SOURCE100} \
 %suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect.app.desktop Network RemoteAccess
 %suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect.nonplasma.desktop Network RemoteAccess
 %suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect_open.desktop Network RemoteAccess
+
+# Applications behave unexpectedly if application/octet-stream has a handler,
+# remove it for now (kde#472697).
+rm %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect_open.desktop
 
 %pre
 # migrate old kdeconnect-kde service
@@ -217,10 +217,12 @@ true
 %{_kf5_iconsdir}/hicolor/*/apps/kdeconnect*
 %{_kf5_iconsdir}/hicolor/*/status/*.svg
 %{_kf5_libdir}/libkdeconnect*.so.*
-%{_kf5_notifydir}/
+%{_kf5_notifydir}/kdeconnect.notifyrc
 %{_kf5_plugindir}/
-%{_kf5_qmldir}/
-%{_kf5_servicesdir}/
+%dir %{_kf5_qmldir}/org
+%dir %{_kf5_qmldir}/org/kde
+%{_kf5_qmldir}/org/kde/kdeconnect
+%{_kf5_servicesdir}/plasma-kdeconnect.desktop
 %{_kf5_sharedir}/dbus-1/services/org.kde.kdeconnect.service
 %{_kf5_sharedir}/kdeconnect/kdeconnect_findthisdevice_config.qml
 %{_kf5_sharedir}/kdeconnect/kdeconnect_pausemusic_config.qml

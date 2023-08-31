@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Aug 30 06:07:01 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Remove the kdeconnect_open handler to work around kde#472697
+
+-------------------------------------------------------------------
+Sun Aug 20 13:59:18 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- Changes since 23.07.90:
+  * Remove QIcon loading to avoid pre-stage D-Bus session cache
+  * Fix potential race condition
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Set `GVFS_REMOTE_VOLUME_MONITOR_IGNORE` to avoid potential crashes
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Fix kdeconnect_open desktop file type (kde#424782)
+  * When receiving files, delay de-duplicating filenames (kde#470078)
+  * Use explicit constructor for QSslCertificate with value initialized argument (kde#469428)
+  * Fix inactive "Send Arrow" in smsapp after first message sent (kde#455149)
+  * Improve bigscreen plugin description (kde#468143)
+  * Run command settings: add import and export buttons (kde#409388)
+  * Use `org.freedesktop.DBus.Monitoring` to monitor notifications (kde#447385)
+- Drop patch, merged upstream:
+  * Use-org-freedesktop-DBus-Monitoring-to-monitor-notifications.patch
+
+-------------------------------------------------------------------
 Mon Jul 24 01:46:34 UTC 2023 - Fusion Future <qydwhotmail@gmail.com>
 
 - Require kirigami-addons: used in app/qml/Settings.qml 

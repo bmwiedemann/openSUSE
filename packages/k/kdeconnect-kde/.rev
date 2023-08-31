@@ -571,4 +571,12 @@
     <comment></comment>
     <requestid>1100257</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>044807780f6727d58fd7f523dbaea78e</srcmd5>
+    <version>23.08.0</version>
+    <time>1693482227</time>
+    <user>anag+factory</user>
+    <comment>- Remove the kdeconnect_open handler to work around kde#472697 (forwarded request 1108027 from Vogtinator)</comment>
+    <requestid>1108047</requestid>
+  </revision>
 </revisionlist>
