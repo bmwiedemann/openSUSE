@@ -19,7 +19,7 @@
 %bcond_without released
 %define libname libKPim5Mbox5
 Name:           kmbox
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE PIM Libraries: Mailbox functionality
 License:        LGPL-2.1-or-later
@@ -77,7 +77,6 @@ to develop KDE PIM applications.
 %files devel
 %dir %{_includedir}/KPim5
 %{_includedir}/KPim5/KMbox/
-%{_kf5_cmakedir}/KF5Mbox/
 %{_kf5_cmakedir}/KPim5Mbox/
 %{_kf5_libdir}/libKPim5Mbox.so
 %{_kf5_mkspecsdir}/qt_KMbox.pri
