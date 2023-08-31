@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:59:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Drop unused KPimMime dependency
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Port the last KWallet use to QtKeychain
+  * Fix platforms name
+  * Remove unused TransportMananger::createDefaultTransport()
+  * Remove KWallet from the public link interface
+  * Remove CI 6 job. We will use kf6 branch for kf6 works
+  * Clean up kde-ci.yml
+  * Remove Akonadi dependancy
+  * Remove kmailtransportakonadi now as we ported all users
+  * Plugin moved to kdepim-runtime
+  * Use std::move
+  * create on stack
+  * Remvoe unused public area
+  * const'ify variable
+  * const'ify
+  * We need ConfigGui as public
+  * Perform initialization in initialization list
+  * Drop KCM
+  * Use correct INSTALL_TARGETS_DEFAULT_ARGS
+  * Remove old alias
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3

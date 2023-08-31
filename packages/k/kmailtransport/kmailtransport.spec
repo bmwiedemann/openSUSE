@@ -16,10 +16,10 @@
 #
 
 
-%define kf5_version 5.103.0
+%define kf5_version 5.105.0
 %bcond_without released
 Name:           kmailtransport
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE PIM Libraries: Mailtransport layer
 License:        LGPL-2.1-or-later
@@ -35,10 +35,7 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5ConfigWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
 BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
-BuildRequires:  cmake(KPim5Akonadi)
-BuildRequires:  cmake(KPim5AkonadiMime)
 BuildRequires:  cmake(KPim5GAPI)
-BuildRequires:  cmake(KPim5Mime)
 BuildRequires:  cmake(KPim5SMTP)
 BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5Test)
@@ -54,21 +51,11 @@ Requires:       %{name} >= %{version}
 %description -n libKPim5MailTransport5
 The Mail Transport library for KDE PIM functionality
 
-%package -n libKPim5MailTransportAkonadi5
-Summary:        libkdepim Akonadi library
-Requires:       %{name} >= %{version}
-
-%description -n libKPim5MailTransportAkonadi5
-The Mail Transport library for Akonadi related functions
-
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
 Requires:       cyrus-sasl-devel
 Requires:       libKPim5MailTransport5 = %{version}
-Requires:       libKPim5MailTransportAkonadi5 = %{version}
 Requires:       cmake(KF5Wallet) >= %{kf5_version}
-Requires:       cmake(KPim5AkonadiMime)
-Requires:       cmake(KPim5Mime)
 
 %description devel
 This package contains necessary include files and libraries needed
@@ -90,7 +77,6 @@ to develop KDE PIM applications.
 
 %ldconfig_scriptlets
 %ldconfig_scriptlets -n libKPim5MailTransport5
-%ldconfig_scriptlets -n libKPim5MailTransportAkonadi5
 
 %files
 %dir %{_kf5_plugindir}/pim5/
@@ -98,30 +84,19 @@ to develop KDE PIM applications.
 %{_kf5_configkcfgdir}/mailtransport.kcfg
 %{_kf5_debugdir}/kmailtransport.categories
 %{_kf5_debugdir}/kmailtransport.renamecategories
-%{_kf5_plugindir}/kcm_mailtransport.so
-%{_kf5_plugindir}/pim5/mailtransport/mailtransport_akonadiplugin.so
 %{_kf5_plugindir}/pim5/mailtransport/mailtransport_smtpplugin.so
-%{_kf5_servicesdir}/kcm_mailtransport.desktop
 
 %files -n libKPim5MailTransport5
 %license LICENSES/*
 %{_kf5_libdir}/libKPim5MailTransport.so.5*
 
-%files -n libKPim5MailTransportAkonadi5
-%{_kf5_libdir}/libKPim5MailTransportAkonadi.so.5*
-
 %files devel
 %dir %{_includedir}/KPim5
 %{_includedir}/KPim5/MailTransport/
-%{_includedir}/KPim5/MailTransportAkonadi/
 %{_kf5_cmakedir}/KF5MailTransport/
-%{_kf5_cmakedir}/KF5MailTransportAkonadi/
 %{_kf5_cmakedir}/KPim5MailTransport/
-%{_kf5_cmakedir}/KPim5MailTransportAkonadi/
 %{_kf5_libdir}/libKPim5MailTransport.so
-%{_kf5_libdir}/libKPim5MailTransportAkonadi.so
 %{_kf5_mkspecsdir}/qt_KMailTransport.pri
-%{_kf5_mkspecsdir}/qt_KMailTransportAkonadi.pri
 
 %files lang -f %{name}.lang
 
