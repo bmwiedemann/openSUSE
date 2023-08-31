@@ -18,7 +18,7 @@
 
 
 Name:           gede
-Version:        2.18.3
+Version:        2.19.1
 Release:        0
 Summary:        Qt-based GUI to GDB
 License:        BSD-2-Clause
@@ -26,6 +26,7 @@ Group:          Development/Tools/Debuggers
 URL:            https://gede.dexar.se
 Source0:        https://gede.dexar.se/uploads/source/gede-%{version}.tar.xz
 Source1:        gede.desktop
+BuildRequires:  libQt5SerialPort-devel
 BuildRequires:  libQt5Widgets-devel
 BuildRequires:  libqt5-qtbase-common-devel
 Requires:       ctags

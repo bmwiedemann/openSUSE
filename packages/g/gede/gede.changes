@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 30 17:39:32 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2.19.1
+  * Added support for remote debugging over serial port
+
+-------------------------------------------------------------------
 Mon Jun 26 05:18:12 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 2.18.3
   * Add “focus after stop” option
