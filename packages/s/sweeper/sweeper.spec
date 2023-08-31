@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           sweeper
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE Privacy Utility
 License:        LGPL-2.1-or-later
@@ -67,7 +67,6 @@ Helps clean unwanted traces the user leaves on the system.
 %suse_update_desktop_file org.kde.sweeper Utility Security
 mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/actions
 mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
-cp %{_kf5_iconsdir}/breeze/actions/24/trash-empty.svg %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/actions/
 cp %{_kf5_iconsdir}/breeze/apps/48/sweeper.svg %{buildroot}%{_kf5_iconsdir}/hicolor/scalable/apps/
 
 %files
