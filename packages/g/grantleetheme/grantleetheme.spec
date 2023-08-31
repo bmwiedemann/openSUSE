@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           grantleetheme
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Grantlee theme support
 License:        GPL-2.0-only
@@ -98,7 +98,6 @@ The development package for the grantleetheme library
 %files devel
 %dir %{_includedir}/KPim5
 %{_includedir}/KPim5/GrantleeTheme/
-%{_kf5_cmakedir}/KF5GrantleeTheme/
 %{_kf5_cmakedir}/KPim5GrantleeTheme/
 %{_kf5_libdir}/libKPim5GrantleeTheme.so
 %{_kf5_mkspecsdir}/qt_GrantleeTheme.pri
