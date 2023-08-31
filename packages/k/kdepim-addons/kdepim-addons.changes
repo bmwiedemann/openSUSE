@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:59:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- No code change since 23.07.80
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Consider field alignments for secondary/auxiliary boarding pass fields
+  * Don't require calendar invite to be inside a message/rfc822 message
+  * Use QStandardPaths
+  * Fix i18n
+  * limit string size
+  * Show who a hotel reservation is for
+  * Do not report success if no keys where considered for import
+  * Fix merging of hotel reservations
+  * Use KConfigDialogManager for the DKIM settings
+  * Remove CI 6 job. We will use kf6 branch for kf6 works
+  * Adapt to KMailTransportAkonadi being moved into AkonadiMime
+  * Adapt to new akonadi-contact/akonadi-contact-editor api
+  * Fix icons shown in inline vCards
+  * Add missing ConfigGui lib
+  * Adblock: Do not show "data" URLs in debug log
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3

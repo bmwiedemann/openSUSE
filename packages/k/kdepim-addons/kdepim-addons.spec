@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kdepim-addons
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
@@ -66,7 +66,7 @@ BuildRequires:  cmake(KPim5MailCommon)
 BuildRequires:  cmake(KPim5MailImporter)
 BuildRequires:  cmake(KPim5MailTransport)
 BuildRequires:  cmake(KPim5MessageCore)
-BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KPim5PimCommon)
 BuildRequires:  cmake(KPim5PkPass)
 BuildRequires:  cmake(KPim5Tnef)
 BuildRequires:  cmake(Qt5Concurrent)
@@ -80,7 +80,7 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5XmlPatterns)
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 Addons for KDE PIM applications, such as extensions for KMail, additional
