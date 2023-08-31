@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 30 13:37:16 UTC 2023 - Robert Munteanu <rombert@apache.org>
+
+- Add 8be10fa999b6631382c4f71826ee78ea9993f459.patch, fixes TSC
+  compilation 
+
+-------------------------------------------------------------------
 Fri Sep 23 11:59:16 UTC 2022 - Robert Munteanu <rombert@apache.org>
 
 - Add 4520e7813dcbca57ff19cba68085f5d8adf4785e.patch, allows GNOME 43 

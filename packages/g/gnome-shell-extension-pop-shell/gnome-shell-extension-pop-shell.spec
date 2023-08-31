@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell-extension-pop-shell
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source:         https://github.com/pop-os/shell/archive/%{version}.tar.gz#/%{ups
 Source1:        series
 Patch0:         0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch
 Patch1:         4520e7813dcbca57ff19cba68085f5d8adf4785e.patch
+Patch2:         8be10fa999b6631382c4f71826ee78ea9993f459.patch
 BuildRequires:  gnome-shell >= 3.36
 BuildRequires:  gobject-introspection
 BuildRequires:  typescript >= 3.8
