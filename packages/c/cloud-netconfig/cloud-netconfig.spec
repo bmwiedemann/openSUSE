@@ -42,7 +42,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{base_name}%{flavor_suffix}
-Version:        1.7
+Version:        1.8
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Network configuration scripts for %{csp_string}
@@ -59,6 +59,7 @@ Requires:       sysconfig
 BuildRequires:  sysconfig-netconfig
 Requires:       sysconfig-netconfig
 %endif
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(udev)
 %if 0%{?sle_version} > 150100
 BuildRequires:  NetworkManager
@@ -74,7 +75,11 @@ Conflicts:      otherproviders(cloud-netconfig)
 Provides:       cloud-netconfig
 Conflicts:      cloud-netconfig
 %endif
+%if 0%{?suse_version} == 1315
 %{?systemd_requires}
+%else
+%{?systemd_ordering}
+%endif
 %define _scriptdir %{_libexecdir}/cloud-netconfig
 %if 0%{?suse_version} > 1550
 %define _netconfigdir %{_libexecdir}/netconfig.d
@@ -120,6 +125,11 @@ mkdir -p %{buildroot}/%{_sysconfdir}/udev/rules.d
 ln -s /dev/null %{buildroot}/%{_sysconfdir}/udev/rules.d/75-persistent-net-generator.rules
 %endif
 
+# install link to cleanup script in /etc/sysconfig/network/scripts to wicked
+# will find it
+mkdir -p %{buildroot}/%{_sysconfdir}/sysconfig/network/scripts
+ln -s %{_scriptdir}/cloud-netconfig-cleanup %{buildroot}/%{_sysconfdir}/sysconfig/network/scripts/cloud-netconfig-cleanup
+
 %if 0%{?sle_version} <= 150100
 rm -r %{buildroot}/usr/lib/NetworkManager
 %endif
@@ -127,7 +137,8 @@ rm -r %{buildroot}/usr/lib/NetworkManager
 %files -n %{base_name}%{flavor_suffix}
 %defattr(-,root,root)
 %{_scriptdir}
-%if %{defined no_config}
+%{_sysconfdir}/sysconfig/network/scripts/cloud-netconfig-cleanup
+%if %{defined no_dist_conf}
 %config(noreplace) %{_distconfdir}/default/cloud-netconfig
 %else
 %{_distconfdir}/default/cloud-netconfig

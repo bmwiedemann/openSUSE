@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 30 06:26:29 UTC 2023 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 1.8:
+  + Fix Azure metadata check (bsc#1214715)
+  + Fix cleanup on ifdown
+
+-------------------------------------------------------------------
 Fri Dec 16 14:32:31 UTC 2022 - Joachim Gleissner <jgleissner@suse.com>
 
 - Update to version 1.7:
