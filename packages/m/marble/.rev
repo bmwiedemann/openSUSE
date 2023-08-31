@@ -1337,4 +1337,12 @@ touch version is still build but no desktop file installed. (forwarded request 2
     <comment>KDE Release Gear 23.04.3</comment>
     <requestid>1097436</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>0862dd9e907a2506662bef07b284cdaf</srcmd5>
+    <version>23.08.0</version>
+    <time>1693482314</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.0 (forwarded request 1105409 from krop)</comment>
+    <requestid>1105804</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Aug 20 14:00:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- No code change since 23.07.80
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * More comprehensive fix for MarbleQuickItem on HighDPI. (kde#408413)
+  * Should fix: Bad MarbleQuickItem layout on HighDPI (kde#408413)
+  * Patch by Boris Shhtrasman: - dgml is missing an option center the map (lonlat) (kde#358779)
+  * Fix Crash on Panning with Equirectangular Projection (kde#453332)
+  * Fix "Crash when working with a GPX-track" and brush up the UI a bit. (kde#394101)
+  * Fix: Selecting by pressing Enter doesn't work in MapViewWidget. (kde#318280)
+  * Enable retrieval of aircraft position information from a host other than the local host (kde#373022)
+
+-------------------------------------------------------------------
 Thu Jul  6 16:29:01 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Require protobuf < 22
