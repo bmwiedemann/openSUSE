@@ -1329,4 +1329,20 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1212217</comment>
     <requestid>1092475</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>9cf4fe0e3dce5164f0d49fa2cce9e563</srcmd5>
+    <version>6.3.3</version>
+    <time>1693482140</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.3.3: (forwarded request 1107776 from dsterba)</comment>
+    <requestid>1107777</requestid>
+  </revision>
+  <revision rev="149" vrev="3">
+    <srcmd5>c7314fc72870226d5277c3c060b29b31</srcmd5>
+    <version>6.3</version>
+    <time>1693570915</time>
+    <user>anag+factory</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1212217 - ABI break</comment>
+    <requestid>1108408</requestid>
+  </revision>
 </revisionlist>
