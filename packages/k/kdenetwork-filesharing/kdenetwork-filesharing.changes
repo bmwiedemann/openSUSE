@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:59:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- No code change since 23.07.80
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Make "Samba is missing" UI strings a bit more user-friendly
+  * Fix plugin install dir major version
+  * Fix view margins and layouts
+  * Show appropriate error messages when KAuth actions fail
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
