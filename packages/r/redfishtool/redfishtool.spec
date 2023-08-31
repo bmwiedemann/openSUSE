@@ -2,7 +2,7 @@
 # spec file for package redfishtool
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2020-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           redfishtool
-Version:        1.1.5
+Version:        1.1.8
 Release:        0
 Summary:        A CLI tool for accessing the Redfish API
 License:        BSD-3-Clause
@@ -28,7 +28,7 @@ Source:         https://github.com/DMTF/Redfishtool/archive/%{version}.tar.gz#/%
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
-Requires:       python3-dateutils
+Requires:       python3-dateutil
 Requires:       python3-requests
 BuildArch:      noarch
 

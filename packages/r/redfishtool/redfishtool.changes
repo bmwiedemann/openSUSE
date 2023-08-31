@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 27 12:23:51 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.8
+  * Corrected matching logic to return the matched resource if
+    found.
+- Update to version 1.1.7
+  * Added workaround to specify the 'BootSourceOverrideMode'
+    property when modifying the boot override properties even if
+    the mode is not changing.
+- Update to version 1.1.6
+  * Minor spelling fixes
+
+-------------------------------------------------------------------
 Fri May 26 15:33:05 UTC 2023 - Thomas Renninger <trenn@suse.de>
 
 - Add python3-dateutils dependency to fix:
