@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 30 15:47:17 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 4.1:
+  * add missing libssl-dev dependency
+  * Skip configuring ats_disable if the attribute is not present
+  * Add config-user-default command
+  * Add option "-c <config_file>" to load default configurations from
+    the file
+  * Disable default configured WQs and devices
+  * Add "-n <wq_name>" to specify WQ name for disabling WQs
+  * Add user_default_profile.conf
+  * Add doumentation for new command "config-user-default"
+
+
+-------------------------------------------------------------------
 Fri Apr 28 08:53:40 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 4.0:

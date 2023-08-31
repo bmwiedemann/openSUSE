@@ -19,7 +19,7 @@
 %define pkg_libname libaccel-config1
 %define src_name idxd-config-accel-config-v%{version}
 Name:           accel-config
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        Configure accelerator subsystem devices
 License:        GPL-2.0-only
@@ -88,6 +88,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %config %{_sysconfdir}/accel-config/contrib/configs/os_profile.conf
 %config %{_sysconfdir}/accel-config/contrib/configs/profilenote.txt
 %config %{_sysconfdir}/accel-config/contrib/configs/storage_profile.conf
+%config %{_sysconfdir}/accel-config/contrib/configs/user_default_profile.conf
 
 %files -n %{pkg_libname}
 %doc README.md
