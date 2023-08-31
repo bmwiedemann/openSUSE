@@ -17,11 +17,11 @@
 
 
 %define soversion 5
-%define kf5_version 5.104.0
+%define kf5_version 5.105.0
 %define libname libKPim5AkonadiSearch5
 %bcond_without released
 Name:           akonadi-search
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Framework for searching and managing PIM metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -113,7 +113,6 @@ Development files for the AkonadiSearch library.
 
 %files devel
 %dir %{_includedir}/KPim5
-%{_kf5_cmakedir}/KF5AkonadiSearch/
 %{_kf5_cmakedir}/KPim5AkonadiSearch/
 %{_includedir}/KPim5/AkonadiSearch/
 %{_kf5_libdir}/libKPim5AkonadiSearchCore.so
