@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           lokalize
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE Translation Editor
 License:        GPL-2.0-or-later
@@ -46,6 +46,7 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}

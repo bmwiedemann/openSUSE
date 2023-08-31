@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Aug 20 14:00:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Fix constructing pot branch dirs for symlinked dirs (kde#472605)
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Update entry reference after deleting nonexistent file in TM (kde#461950)
+  * Make progress bar percentage localizable (kde#459212)
+  * Initialize files in base and branch catalogs at the same time (kde#462902)
+
+-------------------------------------------------------------------
 Tue Jul  4 10:20:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
