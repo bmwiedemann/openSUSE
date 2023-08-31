@@ -31,4 +31,12 @@
     <comment>2.0.6.1</comment>
     <requestid>947124</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f59c483a7e8623509d804278e06f4c92</srcmd5>
+    <version>2.0.6.1</version>
+    <time>1693482150</time>
+    <user>anag+factory</user>
+    <comment>Reduce drastically the dependencies</comment>
+    <requestid>1108066</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package jdom2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,24 +23,13 @@ Summary:        Java manipulation of XML
 License:        Saxpath
 Group:          Development/Libraries/Java
 URL:            http://www.jdom.org/
-Source0:        https://github.com/hunterhacker/jdom/archive/JDOM-%{version}.tar.gz
-# originally taken from http://repo1.maven.org/maven2/org/jdom/jdom-contrib/1.1.3/jdom-contrib-1.1.3.pom
-Source1:        jdom-contrib-template.pom
-Source2:        jdom-junit-template.pom
-# Use system libraries
-# Disable gpg signatures
-# Process contrib and junit pom files
+Source0:        jdom-%{version}.tar.xz
 Patch0:         0001-Adapt-build.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
-BuildRequires:  isorelax
-BuildRequires:  java-devel >= 1.7
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  jaxen
-BuildRequires:  xalan-j2
-BuildRequires:  xerces-j2
-BuildRequires:  xml-apis
 BuildArch:      noarch
 
 %description
@@ -60,40 +49,31 @@ Group:          Documentation/HTML
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q -n jdom-JDOM-%{version}
-rm -r lib */lib
-find -name '*.jar' -delete
-find -name '*.class' -delete
+%setup -q -n jdom-%{version}
 
 %patch0 -p1
-
-cp -p %{SOURCE1} maven/contrib.pom
-cp -p %{SOURCE2} maven/junit.pom
 
 sed -i 's/\r//' LICENSE.txt
 
 # Unable to run coverage: use log4j12 but switch to log4j 2.x
 sed -i.coverage "s|coverage, jars|jars|" build.xml
 
+# XPath functionality is not needed
+rm -rf core/src/java/org/jdom2/xpath/
+sed -i '/import org.jdom2.xpath.XPathFactory/d' core/src/java/org/jdom2/JDOMConstants.java
+
 %build
-mkdir lib
-build-jar-repository lib xerces-j2 xml-commons-apis jaxen junit isorelax xalan-j2 xalan-j2-serializer
-%{ant} -Dversion=%{version} -Dcompile.target=7 -Dcompile.source=7 -Dj2se.apidoc=%{_javadocdir}/java maven
+mkdir -p lib
+%{ant} -Dversion=%{version} -Dcompile.target=8 -Dcompile.source=8 -Dj2se.apidoc=%{_javadocdir}/java maven
 
 %install
 # jar
 install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -pm 0644 build/package/jdom-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
-install -pm 0644 build/package/jdom-%{version}-contrib.jar %{buildroot}%{_javadir}/%{name}/%{name}-contrib.jar
-install -pm 0644  build/package/jdom-%{version}-junit.jar %{buildroot}%{_javadir}/%{name}/%{name}-junit.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 install -pm 0644 build/maven/core/%{name}-%{version}.pom %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
-install -pm 0644 build/maven/core/%{name}-%{version}-contrib.pom %{buildroot}%{_mavenpomdir}/%{name}/%{name}-contrib.pom
-%add_maven_depmap %{name}/%{name}-contrib.pom %{name}/%{name}-contrib.jar
-install -pm 0644 build/maven/core/%{name}-%{version}-junit.pom  %{buildroot}%{_mavenpomdir}/%{name}/%{name}-junit.pom
-%add_maven_depmap %{name}/%{name}-junit.pom %{name}/%{name}-junit.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr build/apidocs/* %{buildroot}%{_javadocdir}/%{name}/

@@ -1,0 +1,17 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/hunterhacker/jdom.git</param>
+		<param name="revision">JDOM-2.0.6.1</param>
+		<param name="match-tag">JDOM-*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">JDOM-(.*)</param>
+        <param name="exclude">lib/*</param>
+        <param name="exclude">*/lib</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
