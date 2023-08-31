@@ -19,7 +19,7 @@
 %global __requires_exclude qmlimport\\(kcmcolord.*
 %bcond_without released
 Name:           colord-kde
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE interfaces and session daemon to colord
 License:        GPL-2.0-or-later
@@ -38,7 +38,6 @@ BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Package)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
