@@ -16,10 +16,12 @@
 #
 
 
-%define kf5_version 5.99.0
+%define kf5_version 5.105.0
+# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
+%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           pimcommon
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Base package of KDE PIM PimCommon library
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -46,7 +48,7 @@ BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Purpose)
 BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5TextAutoCorrection)
+BuildRequires:  cmake(KF5TextAutoCorrectionWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(KPim5Akonadi)
@@ -56,7 +58,7 @@ BuildRequires:  cmake(KPim5IMAP)
 BuildRequires:  cmake(KPim5Ldap)
 BuildRequires:  cmake(KPim5Libkdepim)
 BuildRequires:  cmake(KPim5TextEdit)
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
@@ -72,36 +74,38 @@ applications.
 %package devel
 Summary:        Development package for pimcommon
 License:        LGPL-2.1-or-later
-Requires:       libKF5PimCommon5 = %{version}
-Requires:       libKF5PimCommonAkonadi5 = %{version}
+Requires:       libKPim5PimCommon5 = %{version}
+Requires:       libKPim5PimCommonAkonadi5 = %{version}
 Requires:       cmake(KF5Config)
 Requires:       cmake(KF5Contacts)
 Requires:       cmake(KF5KIO)
-Requires:       cmake(KF5TextAutoCorrection)
+Requires:       cmake(KF5TextAutoCorrectionCore)
+Requires:       cmake(KF5TextAutoCorrectionWidgets)
 Requires:       cmake(KF5TextGrammarCheck)
 Requires:       cmake(KF5TextTranslator)
 Requires:       cmake(KPim5Akonadi)
 Requires:       cmake(KPim5AkonadiContact)
 Requires:       cmake(KPim5IMAP)
+Requires:       cmake(KPim5Libkdepim)
 Requires:       cmake(KPim5TextEdit)
 
 %description devel
 The development package for the pimcommon libraries
 
-%package -n libKF5PimCommon5
+%package -n libKPim5PimCommon5
 Summary:        The PimCommon Library
 License:        LGPL-2.1-or-later
 %requires_eq    %{name}
 
-%description -n libKF5PimCommon5
+%description -n libKPim5PimCommon5
 The PimCommon library
 
-%package -n libKF5PimCommonAkonadi5
+%package -n libKPim5PimCommonAkonadi5
 Summary:        The PimCommon Akonadi Library
 License:        LGPL-2.1-or-later
 %requires_eq    %{name}
 
-%description -n libKF5PimCommonAkonadi5
+%description -n libKPim5PimCommonAkonadi5
 The PimCommon Akonadi library
 
 %lang_package
@@ -119,28 +123,28 @@ The PimCommon Akonadi library
 
 %find_lang %{name} --with-man --all-name
 
-%ldconfig_scriptlets -n libKF5PimCommon5
-%ldconfig_scriptlets -n libKF5PimCommonAkonadi5
+%ldconfig_scriptlets -n libKPim5PimCommon5
+%ldconfig_scriptlets -n libKPim5PimCommonAkonadi5
 
 %files
 %license LICENSES/*
 %{_kf5_debugdir}/pimcommon.categories
 %{_kf5_debugdir}/pimcommon.renamecategories
 
-%files -n libKF5PimCommon5
-%{_kf5_libdir}/libKF5PimCommon.so.*
+%files -n libKPim5PimCommon5
+%{_kf5_libdir}/libKPim5PimCommon.so.*
 
-%files -n libKF5PimCommonAkonadi5
-%{_kf5_libdir}/libKF5PimCommonAkonadi.so.*
+%files -n libKPim5PimCommonAkonadi5
+%{_kf5_libdir}/libKPim5PimCommonAkonadi.so.*
 
 %files devel
-%{_kf5_cmakedir}/KF5PimCommon/
-%{_kf5_cmakedir}/KF5PimCommonAkonadi/
-%dir %{_includedir}/KF5/
-%{_includedir}/KF5/PimCommon/
-%{_includedir}/KF5/PimCommonAkonadi/
-%{_kf5_libdir}/libKF5PimCommon.so
-%{_kf5_libdir}/libKF5PimCommonAkonadi.so
+%dir %{_includedir}/KPim5/
+%{_includedir}/KPim5/PimCommon/
+%{_includedir}/KPim5/PimCommonAkonadi/
+%{_kf5_cmakedir}/KPim5PimCommon/
+%{_kf5_cmakedir}/KPim5PimCommonAkonadi/
+%{_kf5_libdir}/libKPim5PimCommon.so
+%{_kf5_libdir}/libKPim5PimCommonAkonadi.so
 %{_kf5_mkspecsdir}/qt_PimCommon.pri
 %{_kf5_mkspecsdir}/qt_PimCommonAkonadi.pri
 %{_kf5_plugindir}/designer/
