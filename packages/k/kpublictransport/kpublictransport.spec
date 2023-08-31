@@ -20,7 +20,7 @@
 %global lname   libKPublicTransport%{sover}
 %bcond_without released
 Name:           kpublictransport
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        QML imports for querying public transport data
 License:        LGPL-2.0-or-later
@@ -34,12 +34,18 @@ BuildRequires:  bison
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  flex
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
+%endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5NetworkManagerQt)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{lname} = %{version}
 Requires:       libKPublicTransportOnboard%{sover} = %{version}
@@ -81,6 +87,9 @@ ransport journey queries.Development files.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} == 1500
+export CXX=g++-10
+%endif
 %cmake_kf5 -d build -- -DBUILD_TESTING=ON
 %cmake_build
 
