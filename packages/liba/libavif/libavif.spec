@@ -25,20 +25,20 @@
 %endif
 
 # Also update baselibs.conf if you bump the version
-%global lib_soversion 15
+%global lib_soversion 16
 %global lib_name libavif%{lib_soversion}
 
 Name:           libavif
-Version:        0.11.1
+Version:        1.0.0
 Release:        0
 Summary:        Library for encoding and decoding .avif files
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/AOMediaCodec/libavif
-#
 Source:         https://github.com/AOMediaCodec/libavif/archive/v%{version}/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-#
+# PATCH-FIX-UPSTREAM https://github.com/AOMediaCodec/libavif/pull/1528
+Patch0:         fix-gdkpixbuf.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg8-devel
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libpng) >= 1.6.32
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(rav1e) >= 0.5.0
 %if %{with aom}

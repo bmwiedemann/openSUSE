@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Aug 29 05:18:59 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.0:
+  * Incompatible changes:
+    + The clli member was added to the avifImage struct.
+    + The repetitionCount member was added to the avifEncoder and avifDecoder
+      structs.
+    + The quality and qualityAlpha members were added to the avifEncoder struct.
+    + Check that functions returning pointers do not return NULL before accessing
+      those pointers.
+    + Check the return value of avifEncoderSetCodecSpecificOption().
+    + The maxThreads member was added to the avifRGBImage struct.
+    + Check the return value of avifRGBImageAllocatePixels(), avifRWDataRealloc(),
+      avifRWDataSet(), avifImageSetProfileICC(), avifImageSetMetadataExif() and
+      avifImageSetMetadataXMP().
+    + The meaning of the keyframeInterval member of avifEncoder struct has changed
+      slightly. When set to a value of "n",
+      Before: It forces a keyframe on every nth frame.
+      After: Any set of "n" consecutive frame will have at least one keyframe
+      (every nth frame may or may not be a keyframe).
+  * Added:
+    + Add clli metadata read and write support
+    + Add repetitionCount member to avifEncoder and avifDecoder structs to specify
+      the number of repetitions for animated image sequences.
+    + Add quality and qualityAlpha to avifEncoder. Note: minQuantizer,
+      maxQuantizer, minQuantizerAlpha, and maxQuantizerAlpha are deprecated. Code
+      should be updated to set quality (and qualityAlpha if applicable) and leave
+      minQuantizer, maxQuantizer, minQuantizerAlpha, and maxQuantizerAlpha
+      initialized to the default values.
+    + The --target-size flag in avifenc was added to adapt the quality so that the
+      output file size is as close to the given number of bytes as possible.
+    + Add the public API function avifImageIsOpaque() in avif.h.
+    + Add the public API functions avifImagePlane(), avifImagePlaneRowBytes(),
+      avifImagePlaneWidth(), and avifImagePlaneHeight() in avif.h.
+    + Add API for multi-threaded YUV to RGB color conversion.
+    + Allow lossless 4:0:0 on grayscale input.
+    + Add avifenc --no-overwrite flag to avoid overwriting output file.
+    + Add avifenc --clli flag to set clli.
+    + Add support for all transfer functions when using libsharpyuv.
+  * Changed:
+    + Exif and XMP metadata is exported to PNG and JPEG files by default,
+      except XMP payloads larger than 65502 bytes in JPEG.
+    + The --grid flag in avifenc can be used for images that are not evenly divided
+      into cells.
+    + Change the encoder to write the boxes within the "stbl" box in the order of
+      stsd, stts, stsc, stsz, stco, stss.
+    + avifImageRGBToYUV() and avifImageYUVToRGB() handle avifImage bit depths 8, 10,
+      12 and now also 16. Files read by apps/shared/ can output 16-bit avifImage
+      instances.
+    + avifImageCreate(), avifImageCreateEmpty(), avifEncoderCreate() and other
+      internal functions now return NULL if a memory allocation failed.
+    + avifEncoderSetCodecSpecificOption() now returns avifResult instead of void to
+      report memory allocation failures.
+- Add fix-gdkpixbuf.patch.
+
+-------------------------------------------------------------------
 Sun May  7 14:52:35 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Add BuildRequires pkgconfig(libwebp) to enable libsharpyuv
