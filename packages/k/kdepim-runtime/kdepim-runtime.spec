@@ -16,10 +16,10 @@
 #
 
 
-%define kf5_version 5.103.0
+%define kf5_version 5.105.0
 %bcond_without released
 Name:           kdepim-runtime
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -74,10 +74,7 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5NetworkAuth)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5TextToSpeech)
-%ifarch %{ix86} x86_64 %{arm} aarch64
-# Only the tomboy and ews resources need Qt5WebEngine
 BuildRequires:  cmake(Qt5WebEngineWidgets)
-%endif
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5XmlPatterns)
 Recommends:     kalendarac
@@ -90,6 +87,8 @@ Requires(postun): shared-mime-info
 Provides:       kio-pimlibs = %{version}
 Obsoletes:      kdepim4-runtime < %{version}
 Obsoletes:      kio-pimlibs < %{version}
+# It can only build on the same platforms as Qt Webengine
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 This package contains the Akonadi resources, agents and plugins needed to
@@ -120,6 +119,11 @@ use PIM applications.
 %{_kf5_applicationsdir}/org.kde.akonadi_google_resource.desktop
 %{_kf5_applicationsdir}/org.kde.akonadi_kolab_resource.desktop
 %{_kf5_applicationsdir}/org.kde.akonadi_imap_resource.desktop
+%{_kf5_applicationsdir}/org.kde.akonadi_contacts_resource.desktop
+%{_kf5_applicationsdir}/org.kde.akonadi_ews_resource.desktop
+%{_kf5_applicationsdir}/org.kde.akonadi_openxchange_resource.desktop
+%{_kf5_applicationsdir}/org.kde.akonadi_vcard_resource.desktop
+%{_kf5_applicationsdir}/org.kde.akonadi_vcarddir_resource.desktop
 %{_kf5_bindir}/*
 %{_kf5_dbusinterfacesdir}/*.xml
 %{_kf5_debugdir}/kdepim-runtime.categories
