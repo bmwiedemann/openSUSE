@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Aug 31 12:08:49 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove wayland build dependencies: not needed until 1.0 ABI
+- Sync meson options with mutter
+
+-------------------------------------------------------------------
+Tue Aug 29 19:39:22 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Initial packaging version 0.9.3+0
