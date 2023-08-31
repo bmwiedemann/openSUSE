@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           libkgapi
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Extension for accessing Google data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -200,7 +200,6 @@ to develop KDE PIM applications.
 %files devel
 %dir %{_includedir}/KPim5
 %{_includedir}/KPim5/KGAPI/
-%{_includedir}/KPim5/kgapi_version.h
 %{_kf5_cmakedir}/KPimGAPI/
 %{_kf5_cmakedir}/KPim5GAPI/
 %{_kf5_libdir}/libKPim5GAPIBlogger.so
