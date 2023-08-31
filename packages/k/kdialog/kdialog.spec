@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kdialog
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE version of xdialog
 License:        GPL-2.0-or-later
@@ -54,7 +54,7 @@ KDialog can be used to show nice dialog boxes from shell scripts.
 
 %files
 %license COPYING*
-%doc README
+%doc README.md
 %{_kf5_appstreamdir}/org.kde.kdialog.metainfo.xml
 %{_kf5_applicationsdir}/org.kde.kdialog.desktop
 %{_kf5_bindir}/kdialog
