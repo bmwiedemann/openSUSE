@@ -17,10 +17,10 @@
 
 
 %define libname libKPim5ImportWizard5
-%define kf5_version 5.104.0
+%define kf5_version 5.105.0
 %bcond_without released
 Name:           akonadi-import-wizard
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Assistant to import PIM data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -49,12 +49,12 @@ BuildRequires:  cmake(KPim5MailCommon)
 BuildRequires:  cmake(KPim5MailImporterAkonadi)
 BuildRequires:  cmake(KPim5MailTransport)
 BuildRequires:  cmake(KPim5MessageViewer)
-BuildRequires:  cmake(KF5PimCommonAkonadi)
+BuildRequires:  cmake(KPim5PimCommonAkonadi)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5Widgets)
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 Assistant to import PIM data from other applications into Akonadi for use in
@@ -118,9 +118,7 @@ KDE PIM applications.
 
 %files devel
 %dir %{_includedir}/KPim5
-%{_includedir}/KPim5/importwizard_version.h
 %{_includedir}/KPim5/ImportWizard/
-%{_includedir}/KPim5/importwizard/
 %{_kf5_cmakedir}/KPimImportWizard/
 %{_kf5_cmakedir}/KPim5ImportWizard/
 %{_kf5_libdir}/libKPim5ImportWizard.so
