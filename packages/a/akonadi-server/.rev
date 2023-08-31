@@ -919,4 +919,13 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE release gear 23.04.3 (forwarded request 1097054 from krop)</comment>
     <requestid>1097168</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>85f942c7600f11cdc9679b91aea5f40a</srcmd5>
+    <version>23.08.0</version>
+    <time>1693482226</time>
+    <user>anag+factory</user>
+    <comment>- Fix Provides/Obsoletes: the removed package was named
+  akonadi-server-sqlite, not akonadi-sqlite (forwarded request 1107906 from wolfi323)</comment>
+    <requestid>1107918</requestid>
+  </revision>
 </revisionlist>

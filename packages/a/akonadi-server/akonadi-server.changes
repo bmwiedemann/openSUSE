@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Aug 29 10:07:22 UTC 2023 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Fix Provides/Obsoletes: the removed package was named
+  akonadi-server-sqlite, not akonadi-sqlite
+
+-------------------------------------------------------------------
+Sun Aug 20 13:58:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Debugging helper: indicate resource name in "Unknown resource" error msg
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Check for config file in the location of CONFIG_INSTALL_DIR (kde#418265)
+  * Fix wrong for clause in Akonadi::Session (kde#468343)
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3

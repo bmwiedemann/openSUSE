@@ -17,10 +17,10 @@
 
 
 %define rname   akonadi
-%define kf5_version 5.104.0
+%define kf5_version 5.105.0
 %bcond_without released
 Name:           akonadi-server
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -41,7 +41,6 @@ BuildRequires:  libxslt-tools
 BuildRequires:  mariadb
 BuildRequires:  postgresql-devel
 BuildRequires:  shared-mime-info
-BuildRequires:  sqlite3-devel
 BuildRequires:  cmake(KAccounts)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -72,6 +71,9 @@ Provides:       akonadi5 = %{version}
 # Needed for users of unstable repositories
 Obsoletes:      akonadi < %{version}
 Obsoletes:      akonadi-runtime < %{version}
+# Sqlite driver was removed, now uses Qt's
+Obsoletes:      %{name}-sqlite < %{version}
+Provides:       %{name}-sqlite = %{version}
 
 %description
 This package contains the data files of Akonadi, the KDE PIM storage
@@ -112,14 +114,6 @@ Recommends:     %{name}
 %description -n libKPim5AkonadiXml5
 This package includes the Akonadi Xml library for Akonadi, the KDE PIM storage service.
 
-%package sqlite
-Summary:        akonadi server's SQlite plugin
-Requires:       %{name} = %{version}
-Supplements:    (%{name} and sqlite3)
-
-%description sqlite
-Akonadi server's SQlite plugin.
-
 %package devel
 Summary:        Akonadi Framework: Build Environment
 Requires:       %{name} = %{version}
@@ -159,7 +153,7 @@ This package contains AppArmor profiles for Akonadi.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf5 -d build -- -DINSTALL_QSQLITE_IN_QT_PREFIX=TRUE -DQT_PLUGINS_DIR=%{_kf5_plugindir}
+%cmake_kf5 -d build -- -DQT_PLUGINS_DIR=%{_kf5_plugindir}
 %cmake_build
 
 %install
@@ -218,9 +212,6 @@ This package contains AppArmor profiles for Akonadi.
 
 %files -n libKPim5AkonadiXml5
 %{_kf5_libdir}/libKPim5AkonadiXml.so.*
-
-%files sqlite
-%{_kf5_plugindir}/sqldrivers/
 
 %files devel
 %dir %{_includedir}/KPim5
