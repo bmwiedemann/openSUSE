@@ -10,11 +10,9 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
  util/grub-install.c              | 29 ++++++++++++++++++++++++++---
  3 files changed, 42 insertions(+), 3 deletions(-)
 
-diff --git a/grub-core/osdep/linux/platform.c b/grub-core/osdep/linux/platform.c
-index e28a79dab..2a12ed867 100644
 --- a/grub-core/osdep/linux/platform.c
 +++ b/grub-core/osdep/linux/platform.c
-@@ -154,3 +154,16 @@ grub_install_get_default_x86_platform (void)
+@@ -154,3 +154,16 @@
    grub_util_info ("... not found");
    return "i386-pc";
  }
@@ -31,25 +29,21 @@ index e28a79dab..2a12ed867 100644
 +  }
 +  return ret;
 +}
-diff --git a/include/grub/util/install.h b/include/grub/util/install.h
-index c241a2a40..154487b72 100644
 --- a/include/grub/util/install.h
 +++ b/include/grub/util/install.h
-@@ -233,6 +233,9 @@ grub_install_get_default_arm_platform (void);
- const char *
+@@ -233,6 +233,9 @@
  grub_install_get_default_x86_platform (void);
  
-+int
+ int
 +grub_install_get_powerpc_secure_boot (void);
 +
- int
++int
  grub_install_register_efi (grub_device_t efidir_grub_dev,
  			   const char *efifile_path,
-diff --git a/util/grub-install.c b/util/grub-install.c
-index a2286b3dd..8fb5ea616 100644
+ 			   const char *efi_distributor);
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
-@@ -321,10 +321,10 @@ static struct argp_option options[] = {
+@@ -321,10 +321,10 @@
    {"suse-enable-tpm", OPTION_SUSE_ENABLE_TPM, 0, 0, N_("install TPM modules"), 0},
    {"suse-force-signed", OPTION_SUSE_FORCE_SIGNED, 0, 0,
     N_("force installation of signed grub" "%s."
@@ -62,7 +56,7 @@ index a2286b3dd..8fb5ea616 100644
    {"debug", OPTION_DEBUG, 0, OPTION_HIDDEN, 0, 2},
    {"no-floppy", OPTION_NO_FLOPPY, 0, OPTION_HIDDEN, 0, 2},
    {"debug-image", OPTION_DEBUG_IMAGE, N_("STRING"), OPTION_HIDDEN, 0, 2},
-@@ -1724,6 +1724,7 @@ main (int argc, char *argv[])
+@@ -1749,6 +1749,7 @@
    char mkimage_target[200];
    const char *core_name = NULL;
    char *signed_imgfile = NULL;
@@ -70,7 +64,7 @@ index a2286b3dd..8fb5ea616 100644
  
    switch (platform)
      {
-@@ -1770,11 +1771,33 @@ main (int argc, char *argv[])
+@@ -1796,11 +1797,33 @@
  		grub_install_get_platform_platform (platform));
        break;
  
@@ -105,6 +99,3 @@ index a2286b3dd..8fb5ea616 100644
      case GRUB_INSTALL_PLATFORM_I386_XEN:
      case GRUB_INSTALL_PLATFORM_X86_64_XEN:
      case GRUB_INSTALL_PLATFORM_I386_XEN_PVH:
--- 
-2.31.1
-

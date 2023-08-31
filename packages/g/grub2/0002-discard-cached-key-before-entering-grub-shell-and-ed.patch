@@ -17,7 +17,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/commands/crypttab.c
 +++ b/grub-core/commands/crypttab.c
-@@ -49,6 +49,22 @@
+@@ -53,6 +53,22 @@
    return GRUB_ERR_NONE;
  }
  
@@ -50,7 +50,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -477,6 +478,7 @@
+@@ -478,6 +479,7 @@
        return;
      }
  

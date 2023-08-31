@@ -1,0 +1,41 @@
+From 7cc578baf26986c2badce998125b429a2aeb4d33 Mon Sep 17 00:00:00 2001
+From: Patrick Colp <patrick.colp@oracle.com>
+Date: Sun, 30 Jul 2023 12:58:18 -0700
+Subject: [PATCH 2/4] cryptodisk: Fallback to passphrase
+
+If a protector is specified, but it fails to unlock the disk, fall back
+to asking for the passphrase. However, an error was set indicating that
+the protector(s) failed. Later code (e.g., LUKS code) fails as
+`grub_errno` is now set. Print the existing errors out first, before
+proceeding with the passphrase.
+
+Signed-off-by: Patrick Colp <patrick.colp@oracle.com>
+---
+ grub-core/disk/cryptodisk.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/disk/cryptodisk.c b/grub-core/disk/cryptodisk.c
+index 6620fca00..cf37a0934 100644
+--- a/grub-core/disk/cryptodisk.c
++++ b/grub-core/disk/cryptodisk.c
+@@ -1191,11 +1191,16 @@ grub_cryptodisk_scan_device_real (const char *name,
+ 		  source->name, source->partition != NULL ? "," : "",
+ 		  part != NULL ? part : N_("UNKNOWN"), dev->uuid);
+       grub_free (part);
+-      goto error;
+     }
+ 
+   if (!cargs->key_len)
+     {
++      if (grub_errno)
++	{
++	  grub_print_error ();
++	  grub_errno = GRUB_ERR_NONE;
++	}
++
+       /* Get the passphrase from the user, if no key data. */
+       askpass = 1;
+       part = grub_partition_get_name (source->partition);
+-- 
+2.35.3
+

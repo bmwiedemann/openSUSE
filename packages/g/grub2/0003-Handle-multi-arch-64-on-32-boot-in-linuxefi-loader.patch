@@ -12,44 +12,9 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  include/grub/i386/linux.h         |   7 +-
  3 files changed, 97 insertions(+), 48 deletions(-)
 
-diff --git a/grub-core/loader/efi/linux.c b/grub-core/loader/efi/linux.c
-index 442627dc2..9265cf420 100644
---- a/grub-core/loader/efi/linux.c
-+++ b/grub-core/loader/efi/linux.c
-@@ -30,11 +30,16 @@
- typedef void (*handover_func) (void *, grub_efi_system_table_t *, void *);
- 
- grub_err_t
--grub_efi_linux_boot (void *kernel_addr, grub_off_t offset,
-+grub_efi_linux_boot (void *kernel_addr, grub_off_t handover_offset,
- 		     void *kernel_params)
- {
-   grub_efi_loaded_image_t *loaded_image = NULL;
-   handover_func hf;
-+  int offset = 0;
-+
-+#ifdef __x86_64__
-+  offset = 512;
-+#endif
- 
-   /*
-    * Since the EFI loader is not calling the LoadImage() and StartImage()
-@@ -48,8 +53,8 @@ grub_efi_linux_boot (void *kernel_addr, grub_off_t offset,
-     grub_dprintf ("linux", "Loaded Image base address could not be set\n");
- 
-   grub_dprintf ("linux", "kernel_addr: %p handover_offset: %p params: %p\n",
--		kernel_addr, (void *)(grub_efi_uintn_t)offset, kernel_params);
--  hf = (handover_func)((char *)kernel_addr + offset);
-+		kernel_addr, (void *)(grub_efi_uintn_t)handover_offset, kernel_params);
-+  hf = (handover_func)((char *)kernel_addr + handover_offset + offset);
-   hf (grub_efi_image_handle, grub_efi_system_table, kernel_params);
- 
-   return GRUB_ERR_BUG;
-diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
-index 1e09c88ab..0b3d20875 100644
 --- a/grub-core/loader/i386/efi/linux.c
 +++ b/grub-core/loader/i386/efi/linux.c
-@@ -44,14 +44,10 @@ static char *linux_cmdline;
+@@ -44,14 +44,10 @@
  static grub_err_t
  grub_linuxefi_boot (void)
  {
@@ -66,7 +31,7 @@ index 1e09c88ab..0b3d20875 100644
  			      params);
  }
  
-@@ -147,14 +143,20 @@ grub_cmd_initrd (grub_command_t cmd __attribute__ ((unused)),
+@@ -147,14 +143,20 @@
    return grub_errno;
  }
  
@@ -89,7 +54,7 @@ index 1e09c88ab..0b3d20875 100644
    grub_err_t err;
  
    grub_dl_ref (my_mod);
-@@ -185,45 +187,79 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -185,45 +187,79 @@
        goto fail;
      }
  
@@ -104,14 +69,12 @@ index 1e09c88ab..0b3d20875 100644
      }
  
 -  grub_memset (params, 0, 16384);
--
--  grub_memcpy (&lh, kernel, sizeof (lh));
--
--  if (lh.boot_flag != grub_cpu_to_le16 (0xaa55))
 +  grub_dprintf ("linux", "params = %p\n", params);
-+
+ 
+-  grub_memcpy (&lh, kernel, sizeof (lh));
 +  grub_memset (params, 0, sizeof(*params));
-+
+ 
+-  if (lh.boot_flag != grub_cpu_to_le16 (0xaa55))
 +  setup_header_end_offset = *((grub_uint8_t *)kernel + 0x201);
 +  grub_dprintf ("linux", "copying %lu bytes from %p to %p\n",
 +		MIN((grub_size_t)0x202+setup_header_end_offset,
@@ -164,7 +127,7 @@ index 1e09c88ab..0b3d20875 100644
 +      goto fail;
 +    }
 +#endif
-+
+ 
 +#if defined(__i386__)
 +  if ((lh->xloadflags & LINUX_XLF_KERNEL_64) &&
 +      !(lh->xloadflags & LINUX_XLF_EFI_HANDOVER_32))
@@ -174,14 +137,14 @@ index 1e09c88ab..0b3d20875 100644
 +      goto fail;
 +    }
 +#endif
- 
++
 +  grub_dprintf ("linux", "setting up cmdline\n");
 +  linux_cmdline = grub_efi_allocate_pages_max(0x3fffffff,
 +					 BYTES_TO_PAGES(lh->cmdline_size + 1));
    if (!linux_cmdline)
      {
        grub_error (GRUB_ERR_OUT_OF_MEMORY, N_("can't allocate cmdline"));
-@@ -233,27 +269,26 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -233,27 +269,26 @@
    grub_memcpy (linux_cmdline, LINUX_IMAGE, sizeof (LINUX_IMAGE));
    err = grub_create_loader_cmdline (argc, argv,
                                linux_cmdline + sizeof (LINUX_IMAGE) - 1,
@@ -220,7 +183,7 @@ index 1e09c88ab..0b3d20875 100644
  
    if (!kernel_mem)
      {
-@@ -261,21 +296,23 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -261,21 +296,23 @@
        goto fail;
      }
  
@@ -254,7 +217,7 @@ index 1e09c88ab..0b3d20875 100644
  
   fail:
  
-@@ -291,8 +328,10 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -291,8 +328,10 @@
        loaded = 0;
      }
  
@@ -267,11 +230,9 @@ index 1e09c88ab..0b3d20875 100644
  
    if (kernel_mem && !loaded)
      grub_efi_free_pages((grub_efi_physical_address_t)(grub_addr_t)kernel_mem, BYTES_TO_PAGES(kernel_size));
-diff --git a/include/grub/i386/linux.h b/include/grub/i386/linux.h
-index eddf9251d..25ef52c04 100644
 --- a/include/grub/i386/linux.h
 +++ b/include/grub/i386/linux.h
-@@ -138,7 +138,12 @@ struct linux_i386_kernel_header
+@@ -138,7 +138,12 @@
    grub_uint32_t kernel_alignment;
    grub_uint8_t relocatable;
    grub_uint8_t min_alignment;
@@ -285,6 +246,34 @@ index eddf9251d..25ef52c04 100644
    grub_uint32_t cmdline_size;
    grub_uint32_t hardware_subarch;
    grub_uint64_t hardware_subarch_data;
--- 
-2.31.1
-
+--- a/grub-core/loader/efi/linux_boot.c
++++ b/grub-core/loader/efi/linux_boot.c
+@@ -30,11 +30,16 @@
+ typedef void (*handover_func) (void *, grub_efi_system_table_t *, void *);
+ 
+ grub_err_t
+-grub_efi_linux_boot (void *kernel_addr, grub_off_t offset,
++grub_efi_linux_boot (void *kernel_addr, grub_off_t handover_offset,
+ 		     void *kernel_params)
+ {
+   grub_efi_loaded_image_t *loaded_image = NULL;
+   handover_func hf;
++  int offset = 0;
++
++#ifdef __x86_64__
++  offset = 512;
++#endif
+ 
+   /*
+    * Since the EFI loader is not calling the LoadImage() and StartImage()
+@@ -48,8 +53,8 @@
+     grub_dprintf ("linux", "Loaded Image base address could not be set\n");
+ 
+   grub_dprintf ("linux", "kernel_addr: %p handover_offset: %p params: %p\n",
+-		kernel_addr, (void *)(grub_efi_uintn_t)offset, kernel_params);
+-  hf = (handover_func)((char *)kernel_addr + offset);
++		kernel_addr, (void *)(grub_efi_uintn_t)handover_offset, kernel_params);
++  hf = (handover_func)((char *)kernel_addr + handover_offset + offset);
+   hf (grub_efi_image_handle, grub_efi_system_table, kernel_params);
+ 
+   return GRUB_ERR_BUG;

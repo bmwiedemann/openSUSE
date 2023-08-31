@@ -60,11 +60,9 @@ Signed-off-by: Gary Lin <glin@suse.com>
  4 files changed, 1541 insertions(+)
  create mode 100644 util/grub-protect.c
 
-Index: grub-2.06/Makefile.util.def
-===================================================================
---- grub-2.06.orig/Makefile.util.def
-+++ grub-2.06/Makefile.util.def
-@@ -207,6 +207,28 @@ program = {
+--- a/Makefile.util.def
++++ b/Makefile.util.def
+@@ -208,6 +208,28 @@
  };
  
  program = {
@@ -93,11 +91,9 @@ Index: grub-2.06/Makefile.util.def
    name = grub-mkrelpath;
    mansection = 1;
  
-Index: grub-2.06/configure.ac
-===================================================================
---- grub-2.06.orig/configure.ac
-+++ grub-2.06/configure.ac
-@@ -71,6 +71,7 @@ grub_TRANSFORM([grub-mkpasswd-pbkdf2])
+--- a/configure.ac
++++ b/configure.ac
+@@ -76,6 +76,7 @@
  grub_TRANSFORM([grub-mkrelpath])
  grub_TRANSFORM([grub-mkrescue])
  grub_TRANSFORM([grub-probe])
@@ -105,7 +101,7 @@ Index: grub-2.06/configure.ac
  grub_TRANSFORM([grub-reboot])
  grub_TRANSFORM([grub-script-check])
  grub_TRANSFORM([grub-set-default])
-@@ -1926,6 +1927,14 @@ fi
+@@ -1992,6 +1993,14 @@
  AC_SUBST([LIBZFS])
  AC_SUBST([LIBNVPAIR])
  
@@ -120,10 +116,8 @@ Index: grub-2.06/configure.ac
  LIBS=""
  
  AC_SUBST([FONT_SOURCE])
-Index: grub-2.06/util/grub-protect.c
-===================================================================
 --- /dev/null
-+++ grub-2.06/util/grub-protect.c
++++ b/util/grub-protect.c
 @@ -0,0 +1,1508 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader

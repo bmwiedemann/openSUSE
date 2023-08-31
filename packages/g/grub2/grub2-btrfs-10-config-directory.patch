@@ -6,11 +6,9 @@ References: bsc#1106381
 Fix outputting invalid btrfs subvol path on non btrfs filesystem due to bogus
 return code handling.
 
-Index: grub-2.02/grub-core/fs/btrfs.c
-===================================================================
---- grub-2.02.orig/grub-core/fs/btrfs.c
-+++ grub-2.02/grub-core/fs/btrfs.c
-@@ -2590,8 +2590,7 @@ grub_btrfs_get_default_subvolume_id (str
+--- a/grub-core/fs/btrfs.c
++++ b/grub-core/fs/btrfs.c
+@@ -3260,8 +3260,7 @@
  }
  
  static grub_err_t
@@ -20,7 +18,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
  {
    char *devname;
    grub_device_t dev;
-@@ -2600,21 +2599,8 @@ grub_cmd_btrfs_get_default_subvol (struc
+@@ -3270,21 +3269,8 @@
    grub_uint64_t id;
    char *subvol = NULL;
    grub_uint64_t subvolid = 0;
@@ -43,7 +41,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
    dev = grub_device_open (devname);
    grub_free (devname);
    if (!dev)
-@@ -2625,8 +2611,7 @@ grub_cmd_btrfs_get_default_subvol (struc
+@@ -3295,8 +3281,7 @@
      {
        grub_device_close (dev);
        grub_dprintf ("btrfs", "failed to open fs\n");
@@ -53,7 +51,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
      }
  
    err = grub_btrfs_get_default_subvolume_id (data, &subvolid);
-@@ -2655,12 +2640,47 @@ grub_cmd_btrfs_get_default_subvol (struc
+@@ -3325,12 +3310,47 @@
  	  return err;
  	}
  
@@ -103,7 +101,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
    if (num_only && path_only)
        output = grub_xasprintf ("%"PRIuGRUB_UINT64_T" /%s", subvolid, subvol);
    else if (num_only)
-@@ -2676,9 +2696,6 @@ grub_cmd_btrfs_get_default_subvol (struc
+@@ -3346,9 +3366,6 @@
    grub_free (output);
    grub_free (subvol);
  
@@ -113,7 +111,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
    return GRUB_ERR_NONE;
  }
  
-@@ -2757,6 +2774,122 @@ subvol_get_env (struct grub_env_var *var
+@@ -3427,6 +3444,122 @@
      return "";
  }
  
@@ -236,7 +234,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
  GRUB_MOD_INIT (btrfs)
  {
    grub_fs_register (&grub_btrfs_fs);
-@@ -2780,6 +2913,8 @@ GRUB_MOD_INIT (btrfs)
+@@ -3450,6 +3583,8 @@
                                 subvol_set_env);
    grub_register_variable_hook ("btrfs_subvolid", subvolid_get_env,
                                 subvolid_set_env);
@@ -245,7 +243,7 @@ Index: grub-2.02/grub-core/fs/btrfs.c
    grub_env_export ("btrfs_subvol");
    grub_env_export ("btrfs_subvolid");
    grub_env_export ("btrfs_relative_path");
-@@ -2789,6 +2924,7 @@ GRUB_MOD_FINI (btrfs)
+@@ -3459,6 +3594,7 @@
  {
    grub_register_variable_hook ("btrfs_subvol", NULL, NULL);
    grub_register_variable_hook ("btrfs_subvolid", NULL, NULL);

@@ -26,15 +26,12 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  create mode 100644 grub-core/lib/pkcs1_v15.c
  create mode 100644 include/grub/pkcs1_v15.h
 
-diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 46a488131..5525aa194 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2504,6 +2504,14 @@ module = {
-   cppflags = '$(CPPFLAGS_GCRY)';
+@@ -2542,6 +2542,14 @@
  };
  
-+module = {
+ module = {
 +  name = pkcs1_v15;
 +  common = lib/pkcs1_v15.c;
 +
@@ -42,11 +39,10 @@ index 46a488131..5525aa194 100644
 +  cppflags = '$(CPPFLAGS_GCRY)';
 +};
 +
- module = {
++module = {
    name = all_video;
    common = lib/fake_module.c;
-diff --git a/grub-core/commands/pgp.c b/grub-core/commands/pgp.c
-index 5daa1e9d0..2408db499 100644
+ };
 --- a/grub-core/commands/pgp.c
 +++ b/grub-core/commands/pgp.c
 @@ -24,6 +24,7 @@
@@ -57,7 +53,7 @@ index 5daa1e9d0..2408db499 100644
  #include <grub/i18n.h>
  #include <grub/gcrypt/gcrypt.h>
  #include <grub/pubkey.h>
-@@ -411,32 +412,7 @@ static int
+@@ -411,32 +412,7 @@
  rsa_pad (gcry_mpi_t *hmpi, grub_uint8_t *hval,
  	 const gcry_md_spec_t *hash, struct grub_public_subkey *sk)
  {
@@ -91,9 +87,6 @@ index 5daa1e9d0..2408db499 100644
  }
  
  struct grub_pubkey_context
-diff --git a/grub-core/lib/pkcs1_v15.c b/grub-core/lib/pkcs1_v15.c
-new file mode 100644
-index 000000000..dbacd563d
 --- /dev/null
 +++ b/grub-core/lib/pkcs1_v15.c
 @@ -0,0 +1,59 @@
@@ -156,9 +149,6 @@ index 000000000..dbacd563d
 +  grub_free (em);
 +  return ret;
 +}
-diff --git a/include/grub/pkcs1_v15.h b/include/grub/pkcs1_v15.h
-new file mode 100644
-index 000000000..5c338c84a
 --- /dev/null
 +++ b/include/grub/pkcs1_v15.h
 @@ -0,0 +1,27 @@
@@ -189,6 +179,3 @@ index 000000000..5c338c84a
 +grub_crypto_rsa_pad (gcry_mpi_t * hmpi, grub_uint8_t * hval,
 +		     const gcry_md_spec_t * hash, gcry_mpi_t mod);
 +
--- 
-2.31.1
-

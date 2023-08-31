@@ -46,22 +46,20 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  create mode 100644 grub-core/osdep/journaled_fs.c
  create mode 100644 grub-core/osdep/linux/journaled_fs.c
 
-Index: grub-2.06/Makefile.util.def
-===================================================================
---- grub-2.06.orig/Makefile.util.def
-+++ grub-2.06/Makefile.util.def
-@@ -663,6 +663,7 @@ program = {
+--- a/Makefile.util.def
++++ b/Makefile.util.def
+@@ -672,6 +672,9 @@
    emu_condition = COND_s390x;
    common = grub-core/kern/emu/argp_common.c;
    common = grub-core/osdep/init.c;
 +  common = grub-core/osdep/journaled_fs.c;
++  extra_dist = grub-core/osdep/basic/journaled_fs.c;
++  extra_dist = grub-core/osdep/linux/journaled_fs.c;
  
    ldadd = '$(LIBLZMA)';
    ldadd = libgrubmods.a;
-Index: grub-2.06/grub-core/osdep/basic/journaled_fs.c
-===================================================================
 --- /dev/null
-+++ grub-2.06/grub-core/osdep/basic/journaled_fs.c
++++ b/grub-core/osdep/basic/journaled_fs.c
 @@ -0,0 +1,26 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
@@ -89,20 +87,16 @@ Index: grub-2.06/grub-core/osdep/basic/journaled_fs.c
 +  return 1;
 +}
 +
-Index: grub-2.06/grub-core/osdep/journaled_fs.c
-===================================================================
 --- /dev/null
-+++ grub-2.06/grub-core/osdep/journaled_fs.c
++++ b/grub-core/osdep/journaled_fs.c
 @@ -0,0 +1,5 @@
 +#ifdef __linux__
 +#include "linux/journaled_fs.c"
 +#else
 +#include "basic/journaled_fs.c"
 +#endif
-Index: grub-2.06/grub-core/osdep/linux/journaled_fs.c
-===================================================================
 --- /dev/null
-+++ grub-2.06/grub-core/osdep/linux/journaled_fs.c
++++ b/grub-core/osdep/linux/journaled_fs.c
 @@ -0,0 +1,48 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
@@ -152,21 +146,17 @@ Index: grub-2.06/grub-core/osdep/linux/journaled_fs.c
 +  return ret;
 +}
 +
-Index: grub-2.06/include/grub/util/install.h
-===================================================================
---- grub-2.06.orig/include/grub/util/install.h
-+++ grub-2.06/include/grub/util/install.h
-@@ -300,4 +300,6 @@ grub_set_install_backup_ponr (void)
+--- a/include/grub/util/install.h
++++ b/include/grub/util/install.h
+@@ -301,4 +301,6 @@
  }
  #endif
  
 +int
 +grub_install_sync_fs_journal (const char *path);
  #endif
-Index: grub-2.06/util/grub-install.c
-===================================================================
---- grub-2.06.orig/util/grub-install.c
-+++ grub-2.06/util/grub-install.c
+--- a/util/grub-install.c
++++ b/util/grub-install.c
 @@ -42,6 +42,7 @@
  #include <grub/emu/config.h>
  #include <grub/util/ofpath.h>
@@ -175,7 +165,7 @@ Index: grub-2.06/util/grub-install.c
  
  #include <string.h>
  
-@@ -2025,6 +2026,24 @@ main (int argc, char *argv[])
+@@ -2074,6 +2075,24 @@
        break;
      }
  
@@ -200,11 +190,9 @@ Index: grub-2.06/util/grub-install.c
    /*
     * Either there are no platform specific code, or it didn't raise
     * ponr. Raise it here, because usually this is already past point
-Index: grub-2.06/util/grub-mkconfig.in
-===================================================================
---- grub-2.06.orig/util/grub-mkconfig.in
-+++ grub-2.06/util/grub-mkconfig.in
-@@ -328,6 +328,15 @@ for i in "${grub_mkconfig_dir}"/* ; do
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -335,6 +335,15 @@
    esac
  done
  
@@ -220,9 +208,9 @@ Index: grub-2.06/util/grub-mkconfig.in
  if test "x${grub_cfg}" != "x" ; then
    if ! ${grub_script_check} ${grub_cfg}.new; then
      # TRANSLATORS: %s is replaced by filename
-@@ -341,6 +350,7 @@ and /etc/grub.d/* files or please file a
-     # none of the children aborted with error, install the new grub.cfg
+@@ -351,6 +360,7 @@
      cat ${grub_cfg}.new > ${grub_cfg}
+     umask $oldumask
      rm -f ${grub_cfg}.new
 +    sync_fs_journal || true
    fi

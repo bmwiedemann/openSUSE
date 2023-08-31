@@ -1,0 +1,80 @@
+From c3efb4ecbe91b63c127b92122dad3fa53d4efc69 Mon Sep 17 00:00:00 2001
+From: Patrick Colp <patrick.colp@oracle.com>
+Date: Mon, 31 Jul 2023 07:01:45 -0700
+Subject: [PATCH 1/4] protectors: Implement NV index
+
+Currently with the TPM2 protector, only SRK mode is supported and
+NV index support is just a stub. Implement the NV index option.
+
+Note: This only extends support on the unseal path. grub2_protect
+has not been updated. tpm2-tools can be used to insert a key into
+the NV index.
+
+An example of inserting a key using tpm2-tools:
+
+  # Get random key.
+  tpm2_getrandom 32 > key.dat
+
+  # Create primary object.
+  tpm2_createprimary -C o -g sha256 -G rsa -c primary.ctx
+
+  # Create policy object. `pcrs.dat` contains the PCR values to seal against.
+  tpm2_startauthsession -S session.dat
+  tpm2_policypcr -S session.dat -l sha256:7,11 -f pcrs.dat -L policy.dat
+  tpm2_flushcontext session.dat
+
+  # Seal key into TPM.
+  cat key.dat | tpm2_create -C primary.ctx -u key.pub -r key.priv -L policy.dat -i-
+  tpm2_load -C primary.ctx -u key.pub -r key.priv -n sealing.name -c sealing.ctx
+  tpm2_evictcontrol -C o -c sealing.ctx 0x81000000
+
+Then to unseal the key in grub, add this to grub.cfg:
+
+  tpm2_key_protector_init --mode=nv --nvindex=0x81000000 --pcrs=7,11
+  cryptomount -u <UUID> --protector tpm2
+
+Signed-off-by: Patrick Colp <patrick.colp@oracle.com>
+---
+ grub-core/tpm2/module.c | 25 ++++++++++++++++++++-----
+ 1 file changed, 20 insertions(+), 5 deletions(-)
+
+diff --git a/grub-core/tpm2/module.c b/grub-core/tpm2/module.c
+index 5274296b7..d3a64187a 100644
+--- a/grub-core/tpm2/module.c
++++ b/grub-core/tpm2/module.c
+@@ -757,12 +757,27 @@ static grub_err_t
+ grub_tpm2_protector_nv_recover (const struct grub_tpm2_protector_context *ctx,
+ 				grub_uint8_t **key, grub_size_t *key_size)
+ {
+-  (void)ctx;
+-  (void)key;
+-  (void)key_size;
++  TPM_HANDLE sealed_handle = ctx->nv;
++  tpm2key_policy_t policy_seq = NULL;
++  grub_err_t err;
++
++  /* Create a basic policy sequence based on the given PCR selection */
++  err = grub_tpm2_protector_simple_policy_seq (ctx, &policy_seq);
++  if (err != GRUB_ERR_NONE)
++    goto exit;
++
++  err = grub_tpm2_protector_unseal (policy_seq, sealed_handle, key, key_size);
++
++  /* Pop error messages on success */
++  if (err == GRUB_ERR_NONE)
++    while (grub_error_pop ());
++
++exit:
++  TPM2_FlushContext (sealed_handle);
+ 
+-  return grub_error (GRUB_ERR_NOT_IMPLEMENTED_YET,
+-		     N_("NV Index mode is not implemented yet"));
++  grub_tpm2key_free_policy_seq (policy_seq);
++
++  return err;
+ }
+ 
+ static grub_err_t
+-- 
+2.35.3
+

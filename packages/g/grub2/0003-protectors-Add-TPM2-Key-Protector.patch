@@ -133,15 +133,12 @@ Signed-off-by: Gary Lin <glin@suse.com>
  create mode 100644 include/grub/tpm2/internal/args.h
  create mode 100644 include/grub/tpm2/tpm2key.h
 
-diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 0335d9add..4a8ff26a8 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2525,6 +2525,19 @@ module = {
-   enable = efi;
+@@ -2599,6 +2599,19 @@
  };
  
-+module = {
+ module = {
 +  name = tpm2;
 +  common = tpm2/args.c;
 +  common = tpm2/buffer.c;
@@ -154,12 +151,10 @@ index 0335d9add..4a8ff26a8 100644
 +  enable = efi;
 +};
 +
- module = {
++module = {
    name = tr;
    common = commands/tr.c;
-diff --git a/grub-core/tpm2/args.c b/grub-core/tpm2/args.c
-new file mode 100644
-index 000000000..0113f64a8
+ };
 --- /dev/null
 +++ b/grub-core/tpm2/args.c
 @@ -0,0 +1,131 @@
@@ -294,9 +289,6 @@ index 000000000..0113f64a8
 +
 +  return GRUB_ERR_NONE;
 +}
-diff --git a/grub-core/tpm2/module.c b/grub-core/tpm2/module.c
-new file mode 100644
-index 000000000..5274296b7
 --- /dev/null
 +++ b/grub-core/tpm2/module.c
 @@ -0,0 +1,1033 @@
@@ -1333,9 +1325,6 @@ index 000000000..5274296b7
 +  grub_unregister_extcmd (grub_tpm2_protector_clear_cmd);
 +  grub_unregister_extcmd (grub_tpm2_protector_init_cmd);
 +}
-diff --git a/grub-core/tpm2/tpm2key.asn b/grub-core/tpm2/tpm2key.asn
-new file mode 100644
-index 000000000..e3b6a03e0
 --- /dev/null
 +++ b/grub-core/tpm2/tpm2key.asn
 @@ -0,0 +1,31 @@
@@ -1370,9 +1359,6 @@ index 000000000..e3b6a03e0
 +}
 +
 +END
-diff --git a/grub-core/tpm2/tpm2key.c b/grub-core/tpm2/tpm2key.c
-new file mode 100644
-index 000000000..62f6d865b
 --- /dev/null
 +++ b/grub-core/tpm2/tpm2key.c
 @@ -0,0 +1,440 @@
@@ -1816,9 +1802,6 @@ index 000000000..62f6d865b
 +      grub_free (authpol);
 +    }
 +}
-diff --git a/grub-core/tpm2/tpm2key_asn1_tab.c b/grub-core/tpm2/tpm2key_asn1_tab.c
-new file mode 100644
-index 000000000..551fc46ec
 --- /dev/null
 +++ b/grub-core/tpm2/tpm2key_asn1_tab.c
 @@ -0,0 +1,41 @@
@@ -1863,9 +1846,6 @@ index 000000000..551fc46ec
 +  { "privkey", 7, NULL },
 +  { NULL, 0, NULL }
 +};
-diff --git a/include/grub/tpm2/internal/args.h b/include/grub/tpm2/internal/args.h
-new file mode 100644
-index 000000000..df3341913
 --- /dev/null
 +++ b/include/grub/tpm2/internal/args.h
 @@ -0,0 +1,39 @@
@@ -1908,9 +1888,6 @@ index 000000000..df3341913
 +grub_tpm2_protector_parse_tpm_handle (const char *value, TPM_HANDLE *handle);
 +
 +#endif /* ! GRUB_TPM2_INTERNAL_ARGS_HEADER */
-diff --git a/include/grub/tpm2/tpm2key.h b/include/grub/tpm2/tpm2key.h
-new file mode 100644
-index 000000000..df46203e3
 --- /dev/null
 +++ b/include/grub/tpm2/tpm2key.h
 @@ -0,0 +1,83 @@
@@ -1997,6 +1974,3 @@ index 000000000..df46203e3
 +grub_tpm2key_free_authpolicy_seq (tpm2key_authpolicy_t authpol_seq);
 +
 +#endif /* GRUB_TPM2_TPM2KEY_HEADER */
--- 
-2.35.3
-

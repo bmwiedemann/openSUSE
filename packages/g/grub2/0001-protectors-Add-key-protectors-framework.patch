@@ -26,11 +26,9 @@ Signed-off-by: Gary Lin <glin@suse.com>
  create mode 100644 grub-core/kern/protectors.c
  create mode 100644 include/grub/protector.h
 
-diff --git a/grub-core/Makefile.am b/grub-core/Makefile.am
-index 80e7a83ed..79d17a3d2 100644
 --- a/grub-core/Makefile.am
 +++ b/grub-core/Makefile.am
-@@ -90,6 +90,7 @@ endif
+@@ -90,6 +90,7 @@
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/mm.h
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/parser.h
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/partition.h
@@ -38,11 +36,9 @@ index 80e7a83ed..79d17a3d2 100644
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/stack_protector.h
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/term.h
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/time.h
-diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index d83c9f7b6..0335d9add 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -144,6 +144,7 @@ kernel = {
+@@ -149,6 +149,7 @@
    common = kern/misc.c;
    common = kern/parser.c;
    common = kern/partition.c;
@@ -50,9 +46,6 @@ index d83c9f7b6..0335d9add 100644
    common = kern/rescue_parser.c;
    common = kern/rescue_reader.c;
    common = kern/term.c;
-diff --git a/grub-core/kern/protectors.c b/grub-core/kern/protectors.c
-new file mode 100644
-index 000000000..5ee059565
 --- /dev/null
 +++ b/grub-core/kern/protectors.c
 @@ -0,0 +1,75 @@
@@ -131,9 +124,6 @@ index 000000000..5ee059565
 +
 +  return kp->recover_key (key, key_size);
 +}
-diff --git a/include/grub/protector.h b/include/grub/protector.h
-new file mode 100644
-index 000000000..3d9f69bce
 --- /dev/null
 +++ b/include/grub/protector.h
 @@ -0,0 +1,48 @@
@@ -185,6 +175,3 @@ index 000000000..3d9f69bce
 +					      grub_size_t *key_size);
 +
 +#endif /* ! GRUB_PROTECTOR_HEADER */
--- 
-2.35.3
-

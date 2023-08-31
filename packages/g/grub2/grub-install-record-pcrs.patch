@@ -1,8 +1,6 @@
-Index: grub-2.06/util/grub-install.c
-===================================================================
---- grub-2.06.orig/util/grub-install.c
-+++ grub-2.06/util/grub-install.c
-@@ -1457,6 +1457,13 @@ main (int argc, char *argv[])
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -1501,6 +1501,13 @@
  
    grub_util_unlink (load_cfg);
  

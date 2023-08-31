@@ -53,9 +53,6 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  create mode 100644 grub-core/lib/libtasn1/lib/structure.h
  create mode 100644 include/grub/libtasn1.h
 
-diff --git a/grub-core/lib/libtasn1/COPYING b/grub-core/lib/libtasn1/COPYING
-new file mode 100644
-index 000000000..e8b3628db
 --- /dev/null
 +++ b/grub-core/lib/libtasn1/COPYING
 @@ -0,0 +1,16 @@
@@ -75,9 +72,6 @@ index 000000000..e8b3628db
 +
 +For any copyright year range specified as YYYY-ZZZZ in this package
 +note that the range specifies every single year in that closed interval.
-diff --git a/grub-core/lib/libtasn1/README.md b/grub-core/lib/libtasn1/README.md
-new file mode 100644
-index 000000000..b0305b93e
 --- /dev/null
 +++ b/grub-core/lib/libtasn1/README.md
 @@ -0,0 +1,98 @@
@@ -179,9 +173,6 @@ index 000000000..b0305b93e
 +The project homepage at the gnu site is at:
 +
 +https://www.gnu.org/software/libtasn1/
-diff --git a/grub-core/lib/libtasn1/lib/coding.c b/grub-core/lib/libtasn1/lib/coding.c
-new file mode 100644
-index 000000000..671104f63
 --- /dev/null
 +++ b/grub-core/lib/libtasn1/lib/coding.c
 @@ -0,0 +1,1425 @@
@@ -1610,9 +1601,6 @@ index 000000000..671104f63
 +  asn1_delete_structure (&node);
 +  return err;
 +}
-diff --git a/grub-core/lib/libtasn1/lib/decoding.c b/grub-core/lib/libtasn1/lib/decoding.c
-new file mode 100644
-index 000000000..b1a35356f
 --- /dev/null
 +++ b/grub-core/lib/libtasn1/lib/decoding.c
 @@ -0,0 +1,2501 @@
@@ -4117,9 +4105,6 @@ index 000000000..b1a35356f
 +  return _asn1_decode_simple_ber (etype, der, _der_len, str, str_len, ber_len,
 +				  DECODE_FLAG_HAVE_TAG);
 +}
-diff --git a/grub-core/lib/libtasn1/lib/element.c b/grub-core/lib/libtasn1/lib/element.c
-new file mode 100644
-index 000000000..86e64f2cf
 --- /dev/null
 +++ b/grub-core/lib/libtasn1/lib/element.c
 @@ -0,0 +1,1109 @@
@@ -5232,9 +5217,6 @@ index 000000000..86e64f2cf
 +
 +  return ASN1_SUCCESS;
 +}
-diff --git a/grub-core/lib/libtasn1/lib/element.h b/grub-core/lib/libtasn1/lib/element.h
-new file mode 100644
-index 000000000..4c9a901d1
 --- /dev/null
 +++ b/grub-core/lib/libtasn1/lib/element.h
 @@ -0,0 +1,42 @@
@@ -5280,9 +5262,6 @@ index 000000000..4c9a901d1
 +			      int name_size);
 +
 +#endif
-diff --git a/grub-core/lib/libtasn1/lib/errors.c b/grub-core/lib/libtasn1/lib/errors.c
-new file mode 100644
-index 000000000..4dadbd96d
 --- /dev/null
 +++ b/grub-core/lib/libtasn1/lib/errors.c
 @@ -0,0 +1,100 @@
@@ -5386,9 +5365,6 @@ index 000000000..4dadbd96d
 +
 +  return NULL;
 +}
-diff --git a/grub-core/lib/libtasn1/lib/gstr.c b/grub-core/lib/libtasn1/lib/gstr.c
-new file mode 100644
-index 000000000..1475ed51b
 --- /dev/null
 +++ b/grub-core/lib/libtasn1/lib/gstr.c
 @@ -0,0 +1,74 @@
@@ -5466,9 +5442,6 @@ index 000000000..1475ed51b
 +	return 0;
 +    }
 +}
-diff --git a/grub-core/lib/libtasn1/lib/gstr.h b/grub-core/lib/libtasn1/lib/gstr.h
-new file mode 100644
-index 000000000..cd47d145c
 --- /dev/null
 +++ b/grub-core/lib/libtasn1/lib/gstr.h
 @@ -0,0 +1,50 @@
@@ -5522,9 +5495,6 @@ index 000000000..cd47d145c
 +}
 +
 +#endif /* GSTR_H */
-diff --git a/grub-core/lib/libtasn1/lib/int.h b/grub-core/lib/libtasn1/lib/int.h
-new file mode 100644
-index 000000000..404cd1562
 --- /dev/null
 +++ b/grub-core/lib/libtasn1/lib/int.h
 @@ -0,0 +1,221 @@
@@ -5749,9 +5719,6 @@ index 000000000..404cd1562
 +}
 +
 +#endif /* INT_H */
-diff --git a/grub-core/lib/libtasn1/lib/parser_aux.c b/grub-core/lib/libtasn1/lib/parser_aux.c
-new file mode 100644
-index 000000000..c99c5a4cb
 --- /dev/null
 +++ b/grub-core/lib/libtasn1/lib/parser_aux.c
 @@ -0,0 +1,1178 @@
@@ -6933,9 +6900,6 @@ index 000000000..c99c5a4cb
 +
 +  return ASN1_SUCCESS;
 +}
-diff --git a/grub-core/lib/libtasn1/lib/parser_aux.h b/grub-core/lib/libtasn1/lib/parser_aux.h
-new file mode 100644
-index 000000000..b21235eb1
 --- /dev/null
 +++ b/grub-core/lib/libtasn1/lib/parser_aux.h
 @@ -0,0 +1,172 @@
@@ -7111,9 +7075,6 @@ index 000000000..b21235eb1
 +}
 +
 +#endif
-diff --git a/grub-core/lib/libtasn1/lib/structure.c b/grub-core/lib/libtasn1/lib/structure.c
-new file mode 100644
-index 000000000..c0802202e
 --- /dev/null
 +++ b/grub-core/lib/libtasn1/lib/structure.c
 @@ -0,0 +1,1225 @@
@@ -8342,9 +8303,6 @@ index 000000000..c0802202e
 +{
 +  return _asn1_copy_structure2 (src, src_name);
 +}
-diff --git a/grub-core/lib/libtasn1/lib/structure.h b/grub-core/lib/libtasn1/lib/structure.h
-new file mode 100644
-index 000000000..da70ae53f
 --- /dev/null
 +++ b/grub-core/lib/libtasn1/lib/structure.h
 @@ -0,0 +1,46 @@
@@ -8394,9 +8352,6 @@ index 000000000..da70ae53f
 +			unsigned int flags);
 +
 +#endif
-diff --git a/include/grub/libtasn1.h b/include/grub/libtasn1.h
-new file mode 100644
-index 000000000..fc695a28a
 --- /dev/null
 +++ b/include/grub/libtasn1.h
 @@ -0,0 +1,639 @@
@@ -9039,6 +8994,3 @@ index 000000000..fc695a28a
 +# endif
 +
 +#endif				/* LIBTASN1_H */
--- 
-2.31.1
-

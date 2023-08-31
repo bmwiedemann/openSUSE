@@ -5,29 +5,9 @@
  util/s390x/zipl2grub.pl.in    |   31 ++++++++++++++++++++++---------
  4 files changed, 37 insertions(+), 13 deletions(-)
 
---- a/grub-core/loader/emu/linux.c
-+++ b/grub-core/loader/emu/linux.c
-@@ -38,7 +38,7 @@ grub_linux_boot (void)
- {
-   grub_err_t rc = GRUB_ERR_NONE;
-   char *initrd_param;
--  const char *kexec[] = { "kexec", "-l", kernel_path, boot_cmdline, NULL, NULL };
-+  const char *kexec[] = { "kexec", "-la", kernel_path, boot_cmdline, NULL, NULL };
-   const char *systemctl[] = { "systemctl", "kexec", NULL };
-   int kexecute = grub_util_get_kexecute();
- 
-@@ -51,7 +51,7 @@ grub_linux_boot (void)
-     //return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("initrd required!"));
-   }
- 
--  grub_printf("%serforming 'kexec -l %s %s %s'\n",
-+  grub_printf("%serforming 'kexec -la %s %s %s'\n",
- 	(kexecute) ? "P" : "Not p",
- 	kernel_path, initrd_param, boot_cmdline);
- 
 --- a/util/s390x/dracut-grub2.sh.in
 +++ b/util/s390x/dracut-grub2.sh.in
-@@ -18,6 +18,9 @@ if getargbool 0 initgrub && [ ! -e /grub
+@@ -18,6 +18,9 @@
     done < /proc/mounts
     echo $rofs
    }
@@ -37,7 +17,7 @@
    checkd() {
      [ -d $1 ] && echo true || echo false
    }
-@@ -76,6 +79,7 @@ if getargbool 0 initgrub && [ ! -e /grub
+@@ -76,6 +79,7 @@
      export grub2bootw=$(checksubvol /boot/writable)
      export grub2devfs=$(checkd /sysroot/dev/disk)
      export grub2snap=$(checksnap)
@@ -45,7 +25,7 @@
      debug "" export -p
  
          _ctty="$(RD_DEBUG= getarg rd.ctty=)" && _ctty="/dev/${_ctty##*/}"
-@@ -107,7 +111,7 @@ if getargbool 0 initgrub && [ ! -e /grub
+@@ -107,7 +111,7 @@
      debug "Trying grub2-emu (ro=$grub2rofs, TERM=$TERM, ctty=$_ctty)..."
      setsid $CTTY -- chroot /sysroot $bindir/grub2-emu -X -X 0<>$_ctty 1>&0 2>&0
  
@@ -54,7 +34,7 @@
  	setsid $CTTY -- /sysroot@libdir@/grub2/zipl-refresh 0<>$_ctty 1>&0 2>&0
  	if [ $? != 0 ]; then
  	    warn "Not continuing"
-@@ -117,12 +121,18 @@ if getargbool 0 initgrub && [ ! -e /grub
+@@ -117,12 +121,18 @@
  	    sleep 3
  	    reboot
  	fi
@@ -76,7 +56,7 @@
      $grub2snap || umount /sysroot/.snapshots
 --- a/util/s390x/zipl2grub.conf.in
 +++ b/util/s390x/zipl2grub.conf.in
-@@ -45,6 +45,7 @@ defaultmenu = menu
+@@ -45,6 +45,7 @@
      timeout = 60
      default = 1
      prompt = 0
@@ -86,7 +66,7 @@
      3 = grub2-mem1G
 --- a/util/s390x/zipl2grub.pl.in
 +++ b/util/s390x/zipl2grub.pl.in
-@@ -21,6 +21,7 @@ my $miss = 0;
+@@ -21,6 +21,7 @@
  my $cfg = "";
  my %fsdev = ();
  my %fstype = ();
@@ -94,7 +74,7 @@
  
  my %C = (
    GRUB_CMDLINE_LINUX_DEFAULT => "quiet splash=silent",
-@@ -251,6 +252,15 @@ if ( -r $default ) {
+@@ -251,6 +252,15 @@
    }
    close( IN);
  }
@@ -110,7 +90,7 @@
  if ( -r "/etc/fstab" ) {
    my $regex = qr{^(\S+)\s+(\S+)\s+(\S+)\s+\S+\s+\S+\s+\S+\s*(?:#.*)?$};
    open( IN, "< /etc/fstab") || die;
-@@ -313,21 +323,21 @@ if ( ! exists( $C{GRUB_DEVICE}) ) {
+@@ -313,21 +323,21 @@
    }
  }
  if ( $C{GRUB_CMDLINE_LINUX_DEFAULT} eq "quiet splash=silent" &&
@@ -141,7 +121,7 @@
  if ( ! exists( $C{GRUB_EMU_CONMODE}) && exists( $C{GRUB_CONMODE}) ) {
    # GRUB_CONMODE is used for 'grub2-emu' as well
    $C{GRUB_EMU_CONMODE} = $C{GRUB_CONMODE};
-@@ -360,6 +370,9 @@ if ( $debug && $verbose > 2 ) {
+@@ -360,6 +370,9 @@
    foreach ( sort( keys( %C)) ) {
      printf( "%s=\"%s\"\n", $_, $C{$_});
    }

@@ -16,11 +16,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  util/grub-editenv.c  | 2 +-
  3 files changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/grub-core/fs/btrfs.c b/grub-core/fs/btrfs.c
-index 979ba1b28..7017248d1 100644
 --- a/grub-core/fs/btrfs.c
 +++ b/grub-core/fs/btrfs.c
-@@ -2551,7 +2551,7 @@ struct embed_region {
+@@ -2637,7 +2637,7 @@
  
  static const struct {
    struct embed_region available;
@@ -29,7 +27,7 @@ index 979ba1b28..7017248d1 100644
  } btrfs_head = {
    .available = {0, GRUB_DISK_KiB_TO_SECTORS (1024)}, /* The first 1 MiB. */
    .used = {
-@@ -2559,6 +2559,7 @@ static const struct {
+@@ -2645,6 +2645,7 @@
      {GRUB_DISK_KiB_TO_SECTORS (64) - 1, 1},                        /* Overflow guard. */
      {GRUB_DISK_KiB_TO_SECTORS (64), GRUB_DISK_KiB_TO_SECTORS (4)}, /* 4 KiB superblock. */
      {GRUB_DISK_KiB_TO_SECTORS (68), 1},                            /* Overflow guard. */
@@ -37,22 +35,18 @@ index 979ba1b28..7017248d1 100644
      {GRUB_DISK_KiB_TO_SECTORS (1024) - 1, 1},                      /* Overflow guard. */
      {0, 0}                                                         /* Array terminator. */
    }
-diff --git a/include/grub/fs.h b/include/grub/fs.h
-index 026bc3bb8..4c380e334 100644
 --- a/include/grub/fs.h
 +++ b/include/grub/fs.h
-@@ -128,4 +128,6 @@ grub_fs_unregister (grub_fs_t fs)
+@@ -128,4 +128,6 @@
  
  grub_fs_t EXPORT_FUNC(grub_fs_probe) (grub_device_t device);
  
 +#define ENV_BTRFS_OFFSET (256)
 +
  #endif /* ! GRUB_FS_HEADER */
-diff --git a/util/grub-editenv.c b/util/grub-editenv.c
-index a02d3f2a6..af30aabe7 100644
 --- a/util/grub-editenv.c
 +++ b/util/grub-editenv.c
-@@ -128,7 +128,7 @@ struct fs_envblk_spec {
+@@ -128,7 +128,7 @@
    int offset;
    int size;
  } fs_envblk_spec[] = {
@@ -61,6 +55,3 @@ index a02d3f2a6..af30aabe7 100644
    { NULL, 0, 0 }
  };
  
--- 
-2.35.3
-

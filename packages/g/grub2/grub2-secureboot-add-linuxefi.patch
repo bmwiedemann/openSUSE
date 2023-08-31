@@ -31,11 +31,9 @@ consequence.
  5 files changed, 415 insertions(+), 0 deletions(-)
  create mode 100644 grub-core/loader/i386/efi/linux.c
 
-Index: grub-2.06/grub-core/Makefile.core.def
-===================================================================
---- grub-2.06.orig/grub-core/Makefile.core.def
-+++ grub-2.06/grub-core/Makefile.core.def
-@@ -1875,6 +1875,13 @@ module = {
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -1920,6 +1920,13 @@
  };
  
  module = {
@@ -49,11 +47,9 @@ Index: grub-2.06/grub-core/Makefile.core.def
    name = chain;
    efi = loader/efi/chainloader.c;
    i386_pc = loader/i386/pc/chainloader.c;
-Index: grub-2.06/grub-core/kern/efi/mm.c
-===================================================================
---- grub-2.06.orig/grub-core/kern/efi/mm.c
-+++ grub-2.06/grub-core/kern/efi/mm.c
-@@ -113,6 +113,38 @@ grub_efi_drop_alloc (grub_efi_physical_a
+--- a/grub-core/kern/efi/mm.c
++++ b/grub-core/kern/efi/mm.c
+@@ -112,6 +112,38 @@
      }
  }
  
@@ -70,7 +66,7 @@ Index: grub-2.06/grub-core/kern/efi/mm.c
 +    return 0;
 +
 +  b = grub_efi_system_table->boot_services;
-+  status = efi_call_4 (b->allocate_pages, GRUB_EFI_ALLOCATE_MAX_ADDRESS, GRUB_EFI_LOADER_DATA, pages, &address);
++  status = b->allocate_pages (GRUB_EFI_ALLOCATE_MAX_ADDRESS, GRUB_EFI_LOADER_DATA, pages, &address);
 +
 +  if (status != GRUB_EFI_SUCCESS)
 +    return 0;
@@ -80,7 +76,7 @@ Index: grub-2.06/grub-core/kern/efi/mm.c
 +      /* Uggh, the address 0 was allocated... This is too annoying,
 +	 so reallocate another one.  */
 +      address = max;
-+      status = efi_call_4 (b->allocate_pages, GRUB_EFI_ALLOCATE_MAX_ADDRESS, GRUB_EFI_LOADER_DATA, pages, &address);
++      status = b->allocate_pages (GRUB_EFI_ALLOCATE_MAX_ADDRESS, GRUB_EFI_LOADER_DATA, pages, &address);
 +      grub_efi_free_pages (0, pages);
 +      if (status != GRUB_EFI_SUCCESS)
 +	return 0;
@@ -92,10 +88,8 @@ Index: grub-2.06/grub-core/kern/efi/mm.c
  /* Allocate pages. Return the pointer to the first of allocated pages.  */
  void *
  grub_efi_allocate_pages_real (grub_efi_physical_address_t address,
-Index: grub-2.06/grub-core/loader/i386/efi/linux.c
-===================================================================
 --- /dev/null
-+++ grub-2.06/grub-core/loader/i386/efi/linux.c
++++ b/grub-core/loader/i386/efi/linux.c
 @@ -0,0 +1,345 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
@@ -442,11 +436,9 @@ Index: grub-2.06/grub-core/loader/i386/efi/linux.c
 +  grub_unregister_command (cmd_linux);
 +  grub_unregister_command (cmd_initrd);
 +}
-Index: grub-2.06/include/grub/efi/efi.h
-===================================================================
---- grub-2.06.orig/include/grub/efi/efi.h
-+++ grub-2.06/include/grub/efi/efi.h
-@@ -47,6 +47,9 @@ EXPORT_FUNC(grub_efi_allocate_fixed) (gr
+--- a/include/grub/efi/efi.h
++++ b/include/grub/efi/efi.h
+@@ -61,6 +61,9 @@
  				      grub_efi_uintn_t pages);
  void *
  EXPORT_FUNC(grub_efi_allocate_any_pages) (grub_efi_uintn_t pages);

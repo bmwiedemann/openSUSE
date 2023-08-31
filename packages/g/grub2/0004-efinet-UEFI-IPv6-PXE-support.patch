@@ -14,20 +14,12 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  include/grub/efi/api.h             | 55 +++++++++++++++++++++++++++++++++++++-
  2 files changed, 73 insertions(+), 6 deletions(-)
 
-diff --git a/grub-core/net/drivers/efi/efinet.c b/grub-core/net/drivers/efi/efinet.c
-index 5388f95..fc90415 100644
 --- a/grub-core/net/drivers/efi/efinet.c
 +++ b/grub-core/net/drivers/efi/efinet.c
-@@ -378,11 +378,25 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
-     if (! pxe)
+@@ -400,6 +400,18 @@
        continue;
      pxe_mode = pxe->mode;
--    grub_net_configure_by_dhcp_ack (card->name, card, 0,
--				    (struct grub_net_bootp_packet *)
--				    &pxe_mode->dhcp_ack,
--				    sizeof (pxe_mode->dhcp_ack),
--				    1, device, path);
-+
+ 
 +    if (pxe_mode->using_ipv6)
 +      {
 +	grub_net_configure_by_dhcpv6_reply (card->name, card, 0,
@@ -40,20 +32,20 @@ index 5388f95..fc90415 100644
 +      }
 +    else
 +      {
-+	grub_net_configure_by_dhcp_ack (card->name, card, 0,
-+					(struct grub_net_bootp_packet *)
-+					&pxe_mode->dhcp_ack,
-+					sizeof (pxe_mode->dhcp_ack),
-+					1, device, path);
+     inter = grub_net_configure_by_dhcp_ack (card->name, card, 0,
+ 					    (struct grub_net_bootp_packet *)
+ 					    &pxe_mode->dhcp_ack,
+@@ -428,6 +440,7 @@
+ 	    vlan_dp = (grub_efi_device_path_t *) ((grub_efi_uint8_t *) vlan_dp + vlan_dp_len);
+ 	  }
+       }
 +      }
      return;
    }
  }
-diff --git a/include/grub/efi/api.h b/include/grub/efi/api.h
-index c7c9f0e..92f9b5a 100644
 --- a/include/grub/efi/api.h
 +++ b/include/grub/efi/api.h
-@@ -1452,14 +1452,67 @@ typedef struct grub_efi_simple_text_output_interface grub_efi_simple_text_output
+@@ -1523,14 +1523,67 @@
  
  typedef grub_uint8_t grub_efi_pxe_packet_t[1472];
  
@@ -122,6 +114,3 @@ index c7c9f0e..92f9b5a 100644
  } grub_efi_pxe_mode_t;
  
  typedef struct grub_efi_pxe
--- 
-2.6.6
-

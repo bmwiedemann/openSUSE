@@ -33,11 +33,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  util/grub.d/00_header.in | 10 +++++++++-
  2 files changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/grub-core/genmoddep.awk b/grub-core/genmoddep.awk
-index 04c2863e5a..9b64f3ca93 100644
 --- a/grub-core/genmoddep.awk
 +++ b/grub-core/genmoddep.awk
-@@ -96,6 +96,9 @@ END {
+@@ -98,6 +98,9 @@
    }
    modlist = ""
    while (getline <"video.lst") {
@@ -47,11 +45,9 @@ index 04c2863e5a..9b64f3ca93 100644
        modlist = modlist " " $1;
    }
    printf "all_video:%s\n", modlist;
-diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
-index b21caa4bcb..23671838e9 100644
 --- a/util/grub.d/00_header.in
 +++ b/util/grub.d/00_header.in
-@@ -280,7 +280,15 @@ case x${GRUB_TERMINAL_OUTPUT} in
+@@ -287,7 +287,15 @@
    ;;
    x*)
      cat << EOF
@@ -68,6 +64,3 @@ index b21caa4bcb..23671838e9 100644
  EOF
    ;;
  esac
--- 
-2.34.1
-

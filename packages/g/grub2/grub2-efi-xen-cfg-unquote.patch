@@ -17,11 +17,9 @@ Signed-off-by: Petr Tesarik <ptesarik@suse.cz>
  util/grub.d/20_linux_xen.in |   54 ++++++++++++++++++++++++++++++++++++++++++--
  1 file changed, 52 insertions(+), 2 deletions(-)
 
-Index: grub-2.06~rc1/util/grub.d/20_linux_xen.in
-===================================================================
---- grub-2.06~rc1.orig/util/grub.d/20_linux_xen.in
-+++ grub-2.06~rc1/util/grub.d/20_linux_xen.in
-@@ -137,6 +137,52 @@ else
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -139,6 +139,52 @@
    is_efi=false
  fi
  
@@ -74,7 +72,7 @@ Index: grub-2.06~rc1/util/grub.d/20_linux_xen.in
  linux_entry ()
  {
    linux_entry_xsm "$@" false
-@@ -205,11 +251,13 @@ linux_entry_xsm ()
+@@ -209,11 +255,13 @@
      else
        section="failsafe.$section_count"
      fi

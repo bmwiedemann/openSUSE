@@ -25,7 +25,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/commands/crypttab.c
 +++ b/grub-core/commands/crypttab.c
-@@ -3,10 +3,52 @@
+@@ -3,10 +3,56 @@
  #include <grub/command.h>
  #include <grub/misc.h>
  #include <grub/i18n.h>
@@ -41,7 +41,11 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +grub_err_t
 +grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len, const char *path)
 +{
-+  struct grub_key_publisher *cur =  grub_named_list_find (GRUB_AS_NAMED_LIST (kpuber), uuid);
++  struct grub_key_publisher *cur = NULL;
++
++  FOR_LIST_ELEMENTS (cur, kpuber)
++    if (grub_uuidcasecmp (cur->name, uuid, sizeof (cur->name)) == 0)
++      break;
 +
 +  if (!cur)
 +    cur = grub_zalloc (sizeof (*cur));
@@ -119,7 +123,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  static char
  hex (grub_uint8_t val)
  {
-@@ -423,41 +412,3 @@
+@@ -436,45 +425,3 @@
    root = 0;
    return GRUB_ERR_NONE;
  }
@@ -127,7 +131,11 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 -grub_err_t
 -grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len, const char *path)
 -{
--  struct grub_key_publisher *cur =  grub_named_list_find (GRUB_AS_NAMED_LIST (kpuber), uuid);
+-  struct grub_key_publisher *cur = NULL;
+-
+-  FOR_LIST_ELEMENTS (cur, kpuber)
+-    if (grub_uuidcasecmp (cur->name, uuid, sizeof (cur->name)) == 0)
+-      break;
 -
 -  if (!cur)
 -    cur = grub_zalloc (sizeof (*cur));
@@ -191,7 +199,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 @@ -22,6 +22,3 @@
  grub_err_t
  grub_initrd_load (struct grub_linux_initrd_context *initrd_ctx,
- 		  char *argv[], void *target);
+ 		  void *target);
 -
 -grub_err_t
 -grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len, const char *path);

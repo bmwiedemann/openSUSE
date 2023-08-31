@@ -16,7 +16,7 @@ V4:
 
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
-@@ -63,6 +63,10 @@
+@@ -65,6 +65,10 @@
    LINUX_ROOT_DEVICE=UUID=${GRUB_DEVICE_UUID}
  fi
  
@@ -27,7 +27,7 @@ V4:
  case x"$GRUB_FS" in
      xbtrfs)
  	rootsubvol="`make_system_path_relative_to_its_root /`"
-@@ -79,6 +83,21 @@
+@@ -81,6 +85,21 @@
  
  title_correction_code=
  
@@ -49,7 +49,7 @@ V4:
  linux_entry ()
  {
    os="$1"
-@@ -108,9 +127,11 @@
+@@ -110,9 +129,11 @@
  	  title_correction_code="${title_correction_code}if [ \"x\$default\" = '$quoted' ]; then default='$(echo "$replacement_title" | grub_quote)'; fi;"
  	  grub_warn "$(gettext_printf "Please don't use old title \`%s' for GRUB_DEFAULT, use \`%s' (for versions before 2.00) or \`%s' (for 2.00 or later)" "$GRUB_ACTUAL_DEFAULT" "$replacement_title" "gnulinux-advanced-$boot_device_id>gnulinux-$version-$type-$boot_device_id")"
        fi
@@ -63,7 +63,7 @@ V4:
    fi      
    if [ x$type != xrecovery ] ; then
        save_default_entry | grub_add_tab
-@@ -133,6 +154,7 @@
+@@ -135,6 +156,7 @@
  
    echo "	insmod gzio" | sed "s/^/$submenu_indentation/"
  
@@ -71,7 +71,7 @@ V4:
    if [ x$dirname = x/ ]; then
      if [ -z "${prepare_root_cache}" ]; then
        prepare_root_cache="$(prepare_grub_to_access_device ${GRUB_DEVICE} | grub_add_tab)"
-@@ -144,6 +166,7 @@
+@@ -146,6 +168,7 @@
      fi
      printf '%s\n' "${prepare_boot_cache}" | sed "s/^/$submenu_indentation/"
    fi
@@ -79,7 +79,7 @@ V4:
    message="$(gettext_printf "Loading Linux %s ..." ${version})"
    sed "s/^/$submenu_indentation/" << EOF
  	echo	'$(echo "$message" | grub_quote)'
-@@ -168,17 +191,15 @@
+@@ -170,17 +193,15 @@
  
  machine=`uname -m`
  case "x$machine" in
@@ -105,7 +105,7 @@ V4:
  
  case "$machine" in
      i?86) GENKERNEL_ARCH="x86" ;;
-@@ -188,6 +209,15 @@
+@@ -190,6 +211,15 @@
      *) GENKERNEL_ARCH="$machine" ;;
  esac
  
@@ -121,7 +121,7 @@ V4:
  prepare_boot_cache=
  prepare_root_cache=
  boot_device_id=
-@@ -204,6 +234,11 @@
+@@ -216,6 +246,11 @@
    basename=`basename $linux`
    dirname=`dirname $linux`
    rel_dirname=`make_system_path_relative_to_its_root $dirname`
@@ -133,7 +133,7 @@ V4:
    version=`echo $basename | sed -e "s,^[^0-9]*-,,g"`
    alt_version=`echo $version | sed -e "s,\.old$,,g"`
    linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
-@@ -319,7 +354,8 @@
+@@ -333,7 +368,8 @@
  	boot_device_id="$(grub_get_device_id "${GRUB_DEVICE}")"
      fi
      # TRANSLATORS: %s is replaced with an OS name

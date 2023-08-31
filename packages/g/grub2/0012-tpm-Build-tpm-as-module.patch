@@ -5,11 +5,9 @@ Subject: Build tpm as module
 
 Add --suse-enable-tpm option to grub2-install.
 
-Index: grub-2.04~rc1/util/grub-install.c
-===================================================================
---- grub-2.04~rc1.orig/util/grub-install.c
-+++ grub-2.04~rc1/util/grub-install.c
-@@ -80,6 +80,7 @@ static char *label_color;
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -81,6 +81,7 @@
  static char *label_bgcolor;
  static char *product_version;
  static int add_rs_codes = 1;
@@ -17,7 +15,7 @@ Index: grub-2.04~rc1/util/grub-install.c
  
  enum
    {
-@@ -106,6 +107,7 @@ enum
+@@ -107,6 +108,7 @@
      OPTION_DISK_MODULE,
      OPTION_NO_BOOTSECTOR,
      OPTION_NO_RS_CODES,
@@ -25,7 +23,7 @@ Index: grub-2.04~rc1/util/grub-install.c
      OPTION_MACPPC_DIRECTORY,
      OPTION_ZIPL_DIRECTORY,
      OPTION_LABEL_FONT,
-@@ -231,6 +233,10 @@ argp_parser (int key, char *arg, struct
+@@ -232,6 +234,10 @@
        add_rs_codes = 0;
        return 0;
  
@@ -36,7 +34,7 @@ Index: grub-2.04~rc1/util/grub-install.c
      case OPTION_DEBUG:
        verbosity++;
        return 0;
-@@ -292,6 +298,7 @@ static struct argp_option options[] = {
+@@ -293,6 +299,7 @@
    {"no-rs-codes", OPTION_NO_RS_CODES, 0, 0,
     N_("Do not apply any reed-solomon codes when embedding core.img. "
        "This option is only available on x86 BIOS targets."), 0},
@@ -44,7 +42,7 @@ Index: grub-2.04~rc1/util/grub-install.c
  
    {"debug", OPTION_DEBUG, 0, OPTION_HIDDEN, 0, 2},
    {"no-floppy", OPTION_NO_FLOPPY, 0, OPTION_HIDDEN, 0, 2},
-@@ -1320,6 +1327,9 @@ main (int argc, char *argv[])
+@@ -1373,6 +1380,9 @@
    else if (disk_module && disk_module[0])
      grub_install_push_module (disk_module);
  

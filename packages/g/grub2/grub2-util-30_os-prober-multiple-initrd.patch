@@ -1,17 +1,6 @@
-Index: grub-2.02/util/grub.d/30_os-prober.in
-===================================================================
---- grub-2.02.orig/util/grub.d/30_os-prober.in
-+++ grub-2.02/util/grub.d/30_os-prober.in
-@@ -216,7 +216,7 @@ EOF
-         LBOOT="`echo ${LINUX} | cut -d ':' -f 2`"
-         LLABEL="`echo ${LINUX} | cut -d ':' -f 3 | tr '^' ' '`"
-         LKERNEL="`echo ${LINUX} | cut -d ':' -f 4`"
--        LINITRD="`echo ${LINUX} | cut -d ':' -f 5`"
-+        LINITRD="`echo ${LINUX} | cut -d ':' -f 5 | tr '^' ' '`"
-         LPARAMS="`echo ${LINUX} | cut -d ':' -f 6- | tr '^' ' '`"
- 
-         if [ -z "${LLABEL}" ] ; then
-@@ -225,7 +225,7 @@ EOF
+--- a/util/grub.d/30_os-prober.in
++++ b/util/grub.d/30_os-prober.in
+@@ -223,7 +223,7 @@
  
  	if [ "${LROOT}" != "${LBOOT}" ]; then
  	  LKERNEL="${LKERNEL#/boot}"

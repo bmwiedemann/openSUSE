@@ -1,8 +1,6 @@
-Index: grub-2.04/util/grub-mkconfig_lib.in
-===================================================================
---- grub-2.04.orig/util/grub-mkconfig_lib.in
-+++ grub-2.04/util/grub-mkconfig_lib.in
-@@ -189,6 +189,12 @@ grub_file_is_not_garbage ()
+--- a/util/grub-mkconfig_lib.in
++++ b/util/grub-mkconfig_lib.in
+@@ -193,6 +193,12 @@
        *.rpmsave|*.rpmnew) return 1 ;;
        README*|*/README*)  return 1 ;; # documentation
        *.sig) return 1 ;; # signatures

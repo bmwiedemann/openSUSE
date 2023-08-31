@@ -1,7 +1,5 @@
-Index: grub-2.06/grub-core/commands/tpm.c
-===================================================================
---- grub-2.06.orig/grub-core/commands/tpm.c
-+++ grub-2.06/grub-core/commands/tpm.c
+--- a/grub-core/commands/tpm.c
++++ b/grub-core/commands/tpm.c
 @@ -26,6 +26,9 @@
  #include <grub/term.h>
  #include <grub/verify.h>
@@ -12,7 +10,7 @@ Index: grub-2.06/grub-core/commands/tpm.c
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -84,12 +87,220 @@ struct grub_file_verifier grub_tpm_verif
+@@ -94,8 +97,214 @@
    .verify_string = grub_tpm_verify_string,
  };
  
@@ -57,7 +55,7 @@ Index: grub-2.06/grub-core/commands/tpm.c
 +grub_tpm_parse_pcr_list (const char *arg, grub_uint32_t *bitmask)
 +{
 +  const char *word, *end;
-+  unsigned int index, last_index;
++  unsigned int index, last_index = 0;
 +
 +  if (!grub_strcmp (arg, "all"))
 +    {
@@ -165,12 +163,12 @@ Index: grub-2.06/grub-core/commands/tpm.c
 +static grub_err_t
 +grub_tpm_write_pcrs_to_efi (void *data, grub_size_t size, const char *var_name)
 +{
-+  grub_efi_guid_t vendor_guid = { 0x7ce323f2, 0xb841, 0x4d30, { 0xa0, 0xe9, 0x54, 0x74, 0xa7, 0x6c, 0x9a, 0x3f }};
++  grub_guid_t vendor_guid = { 0x7ce323f2, 0xb841, 0x4d30, { 0xa0, 0xe9, 0x54, 0x74, 0xa7, 0x6c, 0x9a, 0x3f }};
 +  grub_err_t rc;
 +
 +  rc = grub_efi_set_variable_with_attributes(var_name, &vendor_guid,
-+                                              GRUB_EFI_VARIABLE_BOOTSERVICE_ACCESS | GRUB_EFI_VARIABLE_RUNTIME_ACCESS,
-+                                              data, size);
++                                              data, size,
++                                              GRUB_EFI_VARIABLE_BOOTSERVICE_ACCESS | GRUB_EFI_VARIABLE_RUNTIME_ACCESS);
 +
 +  if (rc)
 +    return grub_error (GRUB_ERR_BAD_DEVICE, N_("Failed to publish PCR snapshot to UEFI variable %s"), var_name);
@@ -220,16 +218,18 @@ Index: grub-2.06/grub-core/commands/tpm.c
 +
  GRUB_MOD_INIT (tpm)
  {
-   grub_verifier_register (&grub_tpm_verifier);
-+
 +  cmd = grub_register_extcmd ("tpm_record_pcrs", grub_tpm_record_pcrs, 0,
 +			      N_("LIST_OF_PCRS"),
 +			      N_("Snapshot one or more PCR values and record them in an EFI variable."),
 +			      grub_tpm_record_pcrs_options);
- }
+   /*
+    * Even though this now calls ibmvtpm's grub_tpm_present() from GRUB_MOD_INIT(),
+    * it does seem to call it late enough in the initialization sequence so
+@@ -109,6 +318,7 @@
  
  GRUB_MOD_FINI (tpm)
  {
-   grub_verifier_unregister (&grub_tpm_verifier);
 +  grub_unregister_extcmd (cmd);
- }
+   if (!grub_tpm_present())
+     return;
+   grub_verifier_unregister (&grub_tpm_verifier);

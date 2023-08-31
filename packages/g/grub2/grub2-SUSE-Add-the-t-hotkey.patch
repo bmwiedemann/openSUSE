@@ -21,11 +21,9 @@ v2 -> v3 (by fvogt@suse.de)
 
   - make it a runtime decision (bsc#1164385)
 
-Index: grub-2.04/Makefile.util.def
-===================================================================
---- grub-2.04.orig/Makefile.util.def
-+++ grub-2.04/Makefile.util.def
-@@ -525,6 +525,12 @@ script = {
+--- a/Makefile.util.def
++++ b/Makefile.util.def
+@@ -552,6 +552,12 @@
    installdir = grubconf;
  };
  
@@ -38,11 +36,9 @@ Index: grub-2.04/Makefile.util.def
  program = {
    mansection = 1;
    name = grub-mkrescue;
-Index: grub-2.04/util/grub.d/00_header.in
-===================================================================
---- grub-2.04.orig/util/grub.d/00_header.in
-+++ grub-2.04/util/grub.d/00_header.in
-@@ -240,6 +240,10 @@ EOF
+--- a/util/grub.d/00_header.in
++++ b/util/grub.d/00_header.in
+@@ -247,6 +247,10 @@
  	fi
  
      cat << EOF
@@ -53,10 +49,8 @@ Index: grub-2.04/util/grub.d/00_header.in
    set gfxmode=${GRUB_GFXMODE}
    load_video
    insmod gfxterm
-Index: grub-2.04/util/grub.d/95_textmode.in
-===================================================================
 --- /dev/null
-+++ grub-2.04/util/grub.d/95_textmode.in
++++ b/util/grub.d/95_textmode.in
 @@ -0,0 +1,12 @@
 +#!/bin/sh
 +

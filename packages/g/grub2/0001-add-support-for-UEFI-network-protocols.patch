@@ -68,11 +68,9 @@ V6:
  create mode 100644 include/grub/efi/http.h
  create mode 100644 include/grub/net/efi.h
 
-Index: grub-2.06/grub-core/Makefile.core.def
-===================================================================
---- grub-2.06.orig/grub-core/Makefile.core.def
-+++ grub-2.06/grub-core/Makefile.core.def
-@@ -2306,6 +2306,12 @@ module = {
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -2362,6 +2362,12 @@
    common = net/ethernet.c;
    common = net/arp.c;
    common = net/netbuff.c;
@@ -85,11 +83,9 @@ Index: grub-2.06/grub-core/Makefile.core.def
  };
  
  module = {
-Index: grub-2.06/grub-core/io/bufio.c
-===================================================================
---- grub-2.06.orig/grub-core/io/bufio.c
-+++ grub-2.06/grub-core/io/bufio.c
-@@ -139,7 +139,7 @@ grub_bufio_read (grub_file_t file, char
+--- a/grub-core/io/bufio.c
++++ b/grub-core/io/bufio.c
+@@ -139,7 +139,7 @@
      return res;
  
    /* Need to read some more.  */
@@ -98,11 +94,9 @@ Index: grub-2.06/grub-core/io/bufio.c
    /* Now read between file->offset + res and bufio->buffer_at.  */
    if (file->offset + res < next_buf)
      {
-Index: grub-2.06/grub-core/kern/efi/efi.c
-===================================================================
---- grub-2.06.orig/grub-core/kern/efi/efi.c
-+++ grub-2.06/grub-core/kern/efi/efi.c
-@@ -750,7 +750,7 @@ grub_efi_print_device_path (grub_efi_dev
+--- a/grub-core/kern/efi/efi.c
++++ b/grub-core/kern/efi/efi.c
+@@ -770,7 +770,7 @@
  	      {
  		grub_efi_ipv4_device_path_t *ipv4
  		  = (grub_efi_ipv4_device_path_t *) dp;
@@ -111,7 +105,7 @@ Index: grub-2.06/grub-core/kern/efi/efi.c
  			     (unsigned) ipv4->local_ip_address[0],
  			     (unsigned) ipv4->local_ip_address[1],
  			     (unsigned) ipv4->local_ip_address[2],
-@@ -763,33 +763,60 @@ grub_efi_print_device_path (grub_efi_dev
+@@ -783,33 +783,60 @@
  			     (unsigned) ipv4->remote_port,
  			     (unsigned) ipv4->protocol,
  			     (unsigned) ipv4->static_ip_address);
@@ -189,7 +183,7 @@ Index: grub-2.06/grub-core/kern/efi/efi.c
  	      }
  	      break;
  	    case GRUB_EFI_INFINIBAND_DEVICE_PATH_SUBTYPE:
-@@ -829,6 +856,39 @@ grub_efi_print_device_path (grub_efi_dev
+@@ -856,6 +883,39 @@
  	      dump_vendor_path ("Messaging",
  				(grub_efi_vendor_device_path_t *) dp);
  	      break;
@@ -229,10 +223,8 @@ Index: grub-2.06/grub-core/kern/efi/efi.c
  	    default:
  	      grub_printf ("/UnknownMessaging(%x)", (unsigned) subtype);
  	      break;
-Index: grub-2.06/grub-core/net/drivers/efi/efinet.c
-===================================================================
---- grub-2.06.orig/grub-core/net/drivers/efi/efinet.c
-+++ grub-2.06/grub-core/net/drivers/efi/efinet.c
+--- a/grub-core/net/drivers/efi/efinet.c
++++ b/grub-core/net/drivers/efi/efinet.c
 @@ -24,6 +24,7 @@
  #include <grub/efi/efi.h>
  #include <grub/i18n.h>
@@ -241,7 +233,16 @@ Index: grub-2.06/grub-core/net/drivers/efi/efinet.c
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -481,6 +482,17 @@ grub_efinet_create_dhcp_ack_from_device_
+@@ -345,7 +346,7 @@
+ }
+ 
+ static grub_efi_handle_t
+-grub_efi_locate_device_path (grub_efi_guid_t *protocol, grub_efi_device_path_t *device_path,
++grub_efi_locate_device_path (grub_guid_t *protocol, grub_efi_device_path_t *device_path,
+ 			    grub_efi_device_path_t **r_device_path)
+ {
+   grub_efi_handle_t handle;
+@@ -498,6 +499,17 @@
  
    ldp = grub_efi_find_last_device_path (ddp);
  
@@ -259,7 +260,7 @@ Index: grub-2.06/grub-core/net/drivers/efi/efinet.c
    if (GRUB_EFI_DEVICE_PATH_TYPE (ldp) != GRUB_EFI_MESSAGING_DEVICE_PATH_TYPE
        || (GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV4_DEVICE_PATH_SUBTYPE
            && GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV6_DEVICE_PATH_SUBTYPE))
-@@ -744,6 +756,7 @@ grub_efi_net_config_real (grub_efi_handl
+@@ -765,6 +777,7 @@
  	if (GRUB_EFI_DEVICE_PATH_TYPE (ldp) != GRUB_EFI_MESSAGING_DEVICE_PATH_TYPE
  	    || (GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV4_DEVICE_PATH_SUBTYPE
  		&& GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV6_DEVICE_PATH_SUBTYPE
@@ -267,7 +268,7 @@ Index: grub-2.06/grub-core/net/drivers/efi/efinet.c
  		&& GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_URI_DEVICE_PATH_SUBTYPE))
  	  continue;
  	dup_dp = grub_efi_duplicate_device_path (dp);
-@@ -759,6 +772,15 @@ grub_efi_net_config_real (grub_efi_handl
+@@ -780,6 +793,15 @@
  	  }
  
  	dup_ldp = grub_efi_find_last_device_path (dup_dp);
@@ -283,7 +284,7 @@ Index: grub-2.06/grub-core/net/drivers/efi/efinet.c
  	dup_ldp->type = GRUB_EFI_END_DEVICE_PATH_TYPE;
  	dup_ldp->subtype = GRUB_EFI_END_ENTIRE_DEVICE_PATH_SUBTYPE;
  	dup_ldp->length = sizeof (*dup_ldp);
-@@ -816,6 +838,9 @@ grub_efi_net_config_real (grub_efi_handl
+@@ -860,6 +882,9 @@
  
  GRUB_MOD_INIT(efinet)
  {
@@ -293,18 +294,16 @@ Index: grub-2.06/grub-core/net/drivers/efi/efinet.c
    grub_efinet_findcards ();
    grub_efi_net_config = grub_efi_net_config_real;
  }
-@@ -827,5 +852,7 @@ GRUB_MOD_FINI(efinet)
-   FOR_NET_CARDS_SAFE (card, next) 
+@@ -871,5 +896,7 @@
+   FOR_NET_CARDS_SAFE (card, next)
      if (card->driver == &efidriver)
        grub_net_card_unregister (card);
 +
 +  grub_efi_net_config = NULL;
  }
  
-Index: grub-2.06/grub-core/net/efi/dhcp.c
-===================================================================
 --- /dev/null
-+++ grub-2.06/grub-core/net/efi/dhcp.c
++++ b/grub-core/net/efi/dhcp.c
 @@ -0,0 +1,399 @@
 +#include <grub/mm.h>
 +#include <grub/command.h>
@@ -383,7 +382,7 @@ Index: grub-2.06/grub-core/net/efi/dhcp.c
 +  grub_efi_uint32_t option_count = 0;
 +  grub_efi_uint32_t i;
 +
-+  status = efi_call_4 (dhcp4->parse, dhcp4, reply_packet, &option_count, NULL);
++  status = dhcp4->parse (dhcp4, reply_packet, &option_count, NULL);
 +
 +  if (status != GRUB_EFI_BUFFER_TOO_SMALL)
 +    return NULL;
@@ -392,7 +391,7 @@ Index: grub-2.06/grub-core/net/efi/dhcp.c
 +  if (!option_list)
 +    return NULL;
 +
-+  status = efi_call_4 (dhcp4->parse, dhcp4, reply_packet, &option_count, option_list);
++  status = dhcp4->parse (dhcp4, reply_packet, &option_count, option_list);
 +  if (status != GRUB_EFI_SUCCESS)
 +    {
 +      grub_free (option_list);
@@ -441,13 +440,13 @@ Index: grub-2.06/grub-core/net/efi/dhcp.c
 +
 +      if (!mode->started)
 +	{
-+	  status = efi_call_2 (pxe->start, pxe, 0);
++	  status = pxe->start (pxe, 0);
 +
 +	  if (status != GRUB_EFI_SUCCESS)
 +	      grub_printf ("Couldn't start PXE\n");
 +	}
 +
-+      status = efi_call_2 (pxe->dhcp, pxe, 0);
++      status = pxe->dhcp (pxe, 0);
 +      if (status != GRUB_EFI_SUCCESS)
 +	{
 +	  grub_printf ("dhcp4 configure failed, %d\n", (int)status);
@@ -498,7 +497,7 @@ Index: grub-2.06/grub-core/net/efi/dhcp.c
 +      config.option_list = &options;
 +
 +      /* FIXME: What if the dhcp has bounded */
-+      status = efi_call_2 (netdev->dhcp4->configure, netdev->dhcp4, &config);
++      status = netdev->dhcp4->configure (netdev->dhcp4, &config);
 +      grub_free (options);
 +      if (status != GRUB_EFI_SUCCESS)
 +	{
@@ -506,14 +505,14 @@ Index: grub-2.06/grub-core/net/efi/dhcp.c
 +	  continue;
 +	}
 +
-+      status = efi_call_2 (netdev->dhcp4->start, netdev->dhcp4, NULL);
++      status = netdev->dhcp4->start (netdev->dhcp4, NULL);
 +      if (status != GRUB_EFI_SUCCESS)
 +	{
 +	  grub_printf ("dhcp4 start failed, %d\n", (int)status);
 +	  continue;
 +	}
 +
-+      status = efi_call_2 (netdev->dhcp4->get_mode_data, netdev->dhcp4, &mode);
++      status = netdev->dhcp4->get_mode_data (netdev->dhcp4, &mode);
 +      if (status != GRUB_EFI_SUCCESS)
 +	{
 +	  grub_printf ("dhcp4 get mode failed, %d\n", (int)status);
@@ -614,21 +613,21 @@ Index: grub-2.06/grub-core/net/efi/dhcp.c
 +      config.rapid_commit = 0;
 +      config.solicit_retransmission = &retrans;
 +
-+      status = efi_call_2 (dev->dhcp6->configure, dev->dhcp6, &config);
++      status = dev->dhcp6->configure (dev->dhcp6, &config);
 +      grub_free (opt);
 +      if (status != GRUB_EFI_SUCCESS)
 +	{
 +	  grub_printf ("dhcp6 configure failed, %d\n", (int)status);
 +	  continue;
 +	}
-+      status = efi_call_1 (dev->dhcp6->start, dev->dhcp6);
++      status = dev->dhcp6->start (dev->dhcp6);
 +      if (status != GRUB_EFI_SUCCESS)
 +	{
 +	  grub_printf ("dhcp6 start failed, %d\n", (int)status);
 +	  continue;
 +	}
 +
-+      status = efi_call_3 (dev->dhcp6->get_mode_data, dev->dhcp6, &mode, NULL);
++      status = dev->dhcp6->get_mode_data (dev->dhcp6, &mode, NULL);
 +      if (status != GRUB_EFI_SUCCESS)
 +	{
 +	  grub_printf ("dhcp4 get mode failed, %d\n", (int)status);
@@ -664,14 +663,14 @@ Index: grub-2.06/grub-core/net/efi/dhcp.c
 +	grub_efi_dhcp6_packet_option_t **options = NULL;
 +	grub_efi_uint32_t i;
 +
-+	status = efi_call_4 (dev->dhcp6->parse, dev->dhcp6, mode.ia->reply_packet, &count, NULL);
++	status = dev->dhcp6->parse (dev->dhcp6, mode.ia->reply_packet, &count, NULL);
 +
 +	if (status == GRUB_EFI_BUFFER_TOO_SMALL && count)
 +	  {
 +	    options = grub_calloc (count, sizeof(*options));
 +	    if (!options)
 +	      return grub_error (GRUB_ERR_OUT_OF_RANGE, N_("overflow is detected"));
-+	    status = efi_call_4 (dev->dhcp6->parse, dev->dhcp6, mode.ia->reply_packet, &count, options);
++	    status = dev->dhcp6->parse (dev->dhcp6, mode.ia->reply_packet, &count, options);
 +	  }
 +
 +	if (status != GRUB_EFI_SUCCESS)
@@ -696,8 +695,8 @@ Index: grub-2.06/grub-core/net/efi/dhcp.c
 +	  grub_free (options);
 +      }
 +
-+      efi_call_1 (b->free_pool, mode.client_id);
-+      efi_call_1 (b->free_pool, mode.ia);
++      b->free_pool (mode.client_id);
++      b->free_pool (mode.ia);
 +    }
 +
 +  return GRUB_ERR_NONE;
@@ -705,10 +704,8 @@ Index: grub-2.06/grub-core/net/efi/dhcp.c
 +
 +grub_command_func_t grub_efi_net_bootp = grub_cmd_efi_bootp;
 +grub_command_func_t grub_efi_net_bootp6 = grub_cmd_efi_bootp6;
-Index: grub-2.06/grub-core/net/efi/http.c
-===================================================================
 --- /dev/null
-+++ grub-2.06/grub-core/net/efi/http.c
++++ b/grub-core/net/efi/http.c
 @@ -0,0 +1,424 @@
 +
 +#include <grub/efi/api.h>
@@ -739,7 +736,7 @@ Index: grub-2.06/grub-core/net/efi/http.c
 +
 +      http_config.local_address_is_ipv6 = 1;
 +      sz = sizeof (manual_address);
-+      status = efi_call_4 (dev->ip6_config->get_data, dev->ip6_config,
++      status = dev->ip6_config->get_data (dev->ip6_config,
 +			GRUB_EFI_IP6_CONFIG_DATA_TYPE_MANUAL_ADDRESS,
 +			&sz, &manual_address);
 +
@@ -771,19 +768,19 @@ Index: grub-2.06/grub-core/net/efi/http.c
 +      http_config.access_point.ipv4_node = &httpv4_node;
 +    }
 +
-+  status = efi_call_2 (http->configure, http, &http_config);
++  status = http->configure (http, &http_config);
 +
 +  if (status == GRUB_EFI_ALREADY_STARTED)
 +    {
 +      /* XXX: This hangs HTTPS boot */
 +#if 0
-+      if (efi_call_2 (http->configure, http, NULL) != GRUB_EFI_SUCCESS)
++      if (http->configure (http, NULL) != GRUB_EFI_SUCCESS)
 +	{
 +	  grub_error (GRUB_ERR_IO, N_("couldn't reset http instance"));
 +	  grub_print_error ();
 +	  return;
 +	}
-+      status = efi_call_2 (http->configure, http, &http_config);
++      status = http->configure (http, &http_config);
 +#endif
 +      return;
 +    }
@@ -799,14 +796,14 @@ Index: grub-2.06/grub-core/net/efi/http.c
 +static grub_efi_boolean_t request_callback_done;
 +static grub_efi_boolean_t response_callback_done;
 +
-+static void
++static void __grub_efi_api
 +grub_efi_http_request_callback (grub_efi_event_t event __attribute__ ((unused)),
 +				void *context __attribute__ ((unused)))
 +{
 +  request_callback_done = 1;
 +}
 +
-+static void
++static void __grub_efi_api
 +grub_efi_http_response_callback (grub_efi_event_t event __attribute__ ((unused)),
 +				void *context __attribute__ ((unused)))
 +{
@@ -886,7 +883,7 @@ Index: grub-2.06/grub-core/net/efi/http.c
 +  request_token.message = &request_message;
 +
 +  request_callback_done = 0;
-+  status = efi_call_5 (b->create_event,
++  status = b->create_event (
 +                       GRUB_EFI_EVT_NOTIFY_SIGNAL,
 +                       GRUB_EFI_TPL_CALLBACK,
 +                       grub_efi_http_request_callback,
@@ -899,17 +896,17 @@ Index: grub-2.06/grub-core/net/efi/http.c
 +      return grub_error (GRUB_ERR_IO, "Fail to create an event! status=0x%" PRIxGRUB_SIZE, status);
 +    }
 +
-+  status = efi_call_2 (http->request, http, &request_token);
++  status = http->request (http, &request_token);
 +
 +  if (status != GRUB_EFI_SUCCESS)
 +    {
-+      efi_call_1 (b->close_event, request_token.event);
++      b->close_event (request_token.event);
 +      grub_free (request_data.url);
 +      return grub_error (GRUB_ERR_IO, "Fail to send a request! status=0x%" PRIxGRUB_SIZE, status);
 +    }
 +  /* TODO: Add Timeout */
 +  while (!request_callback_done)
-+    efi_call_1(http->poll, http);
++    http->poll (http);
 +
 +  response_data.status_code = GRUB_EFI_HTTP_STATUS_UNSUPPORTED_STATUS;
 +  response_message.data.response = &response_data;
@@ -922,7 +919,7 @@ Index: grub-2.06/grub-core/net/efi/http.c
 +  response_message.body = NULL;
 +  response_token.event = NULL;
 +
-+  status = efi_call_5 (b->create_event,
++  status = b->create_event (
 +              GRUB_EFI_EVT_NOTIFY_SIGNAL,
 +              GRUB_EFI_TPL_CALLBACK,
 +              grub_efi_http_response_callback,
@@ -931,7 +928,7 @@ Index: grub-2.06/grub-core/net/efi/http.c
 +
 +  if (status != GRUB_EFI_SUCCESS)
 +    {
-+      efi_call_1 (b->close_event, request_token.event);
++      b->close_event (request_token.event);
 +      grub_free (request_data.url);
 +      return grub_error (GRUB_ERR_IO, "Fail to create an event! status=0x%" PRIxGRUB_SIZE, status);
 +    }
@@ -941,28 +938,28 @@ Index: grub-2.06/grub-core/net/efi/http.c
 +
 +  /* wait for HTTP response */
 +  response_callback_done = 0;
-+  status = efi_call_2 (http->response, http, &response_token);
++  status = http->response (http, &response_token);
 +
 +  if (status != GRUB_EFI_SUCCESS)
 +    {
-+      efi_call_1 (b->close_event, response_token.event);
-+      efi_call_1 (b->close_event, request_token.event);
++      b->close_event (response_token.event);
++      b->close_event (request_token.event);
 +      grub_free (request_data.url);
 +      return grub_error (GRUB_ERR_IO, "Fail to receive a response! status=%d\n", (int)status);
 +    }
 +
 +  /* TODO: Add Timeout */
 +  while (!response_callback_done)
-+    efi_call_1 (http->poll, http);
++    http->poll (http);
 +
 +  if (response_message.data.response->status_code != GRUB_EFI_HTTP_STATUS_200_OK)
 +    {
 +      grub_efi_http_status_code_t status_code = response_message.data.response->status_code;
 +
 +      if (response_message.headers)
-+	efi_call_1 (b->free_pool, response_message.headers);
-+      efi_call_1 (b->close_event, response_token.event);
-+      efi_call_1 (b->close_event, request_token.event);
++	b->free_pool (response_message.headers);
++      b->close_event (response_token.event);
++      b->close_event (request_token.event);
 +      grub_free (request_data.url);
 +      if (status_code == GRUB_EFI_HTTP_STATUS_404_NOT_FOUND)
 +	{
@@ -990,9 +987,9 @@ Index: grub-2.06/grub-core/net/efi/http.c
 +    }
 +
 +  if (response_message.headers)
-+    efi_call_1 (b->free_pool, response_message.headers);
-+  efi_call_1 (b->close_event, response_token.event);
-+  efi_call_1 (b->close_event, request_token.event);
++    b->free_pool (response_message.headers);
++  b->close_event (response_token.event);
++  b->close_event (request_token.event);
 +  grub_free (request_data.url);
 +
 +  return GRUB_ERR_NONE;
@@ -1017,7 +1014,7 @@ Index: grub-2.06/grub-core/net/efi/http.c
 +      return -1;
 +    }
 +
-+  efi_call_5 (b->create_event,
++  b->create_event (
 +              GRUB_EFI_EVT_NOTIFY_SIGNAL,
 +              GRUB_EFI_TPL_CALLBACK,
 +              grub_efi_http_response_callback,
@@ -1037,23 +1034,23 @@ Index: grub-2.06/grub-core/net/efi/http.c
 +
 +      response_callback_done = 0;
 +
-+      status = efi_call_2 (http->response, http, &response_token);
++      status = http->response (http, &response_token);
 +      if (status != GRUB_EFI_SUCCESS)
 +	{
-+	  efi_call_1 (b->close_event, response_token.event);
++	  b->close_event (response_token.event);
 +	  grub_error (GRUB_ERR_IO, "Error! status=%d\n", (int)status);
 +	  return -1;
 +	}
 +
 +      while (!response_callback_done)
-+	efi_call_1(http->poll, http);
++	http->poll (http);
 +
 +      sum += response_message.body_length;
 +      buf += response_message.body_length;
 +      len -= response_message.body_length;
 +    }
 +
-+  efi_call_1 (b->close_event, response_token.event);
++  b->close_event (response_token.event);
 +
 +  return sum;
 +}
@@ -1134,10 +1131,8 @@ Index: grub-2.06/grub-core/net/efi/http.c
 +    .read = grub_efihttp_read,
 +    .close = grub_efihttp_close
 +  };
-Index: grub-2.06/grub-core/net/efi/ip4_config.c
-===================================================================
 --- /dev/null
-+++ grub-2.06/grub-core/net/efi/ip4_config.c
++++ b/grub-core/net/efi/ip4_config.c
 @@ -0,0 +1,409 @@
 +
 +#include <grub/efi/api.h>
@@ -1249,7 +1244,7 @@ Index: grub-2.06/grub-core/net/efi/ip4_config.c
 +  if (!interface_info)
 +    return NULL;
 +
-+  status = efi_call_4 (ip4_config->get_data, ip4_config,
++  status = ip4_config->get_data (ip4_config,
 +		GRUB_EFI_IP4_CONFIG2_DATA_TYPE_INTERFACEINFO,
 +		&sz, interface_info);
 +
@@ -1257,7 +1252,7 @@ Index: grub-2.06/grub-core/net/efi/ip4_config.c
 +    {
 +      grub_free (interface_info);
 +      interface_info = grub_malloc (sz);
-+      status = efi_call_4 (ip4_config->get_data, ip4_config,
++      status = ip4_config->get_data (ip4_config,
 +		    GRUB_EFI_IP4_CONFIG2_DATA_TYPE_INTERFACEINFO,
 +		    &sz, interface_info);
 +    }
@@ -1283,7 +1278,7 @@ Index: grub-2.06/grub-core/net/efi/ip4_config.c
 +  if (!manual_address)
 +    return NULL;
 +
-+  status = efi_call_4 (ip4_config->get_data, ip4_config,
++  status = ip4_config->get_data (ip4_config,
 +		    GRUB_EFI_IP4_CONFIG2_DATA_TYPE_MANUAL_ADDRESS,
 +		    &sz, manual_address);
 +
@@ -1497,7 +1492,7 @@ Index: grub-2.06/grub-core/net/efi/ip4_config.c
 +	}
 +    }
 +
-+  status = efi_call_4 (dev->ip4_config->set_data, dev->ip4_config,
++  status = dev->ip4_config->set_data (dev->ip4_config,
 +		    GRUB_EFI_IP4_CONFIG2_DATA_TYPE_MANUAL_ADDRESS,
 +		    sizeof(*address), address);
 +
@@ -1513,7 +1508,7 @@ Index: grub-2.06/grub-core/net/efi/ip4_config.c
 +{
 +  grub_efi_status_t status;
 +
-+  status = efi_call_4 (dev->ip4_config->set_data, dev->ip4_config,
++  status = dev->ip4_config->set_data (dev->ip4_config,
 +		GRUB_EFI_IP4_CONFIG2_DATA_TYPE_GATEWAY,
 +		sizeof (address->ip4), &address->ip4);
 +
@@ -1529,7 +1524,7 @@ Index: grub-2.06/grub-core/net/efi/ip4_config.c
 +{
 +  grub_efi_status_t status;
 +
-+  status = efi_call_4 (dev->ip4_config->set_data, dev->ip4_config,
++  status = dev->ip4_config->set_data (dev->ip4_config,
 +		GRUB_EFI_IP4_CONFIG2_DATA_TYPE_DNSSERVER,
 +		sizeof (address->ip4), &address->ip4);
 +
@@ -1548,10 +1543,8 @@ Index: grub-2.06/grub-core/net/efi/ip4_config.c
 +    .set_gateway = grub_efi_ip4_interface_set_gateway,
 +    .set_dns = grub_efi_ip4_interface_set_dns
 +  };
-Index: grub-2.06/grub-core/net/efi/ip6_config.c
-===================================================================
 --- /dev/null
-+++ grub-2.06/grub-core/net/efi/ip6_config.c
++++ b/grub-core/net/efi/ip6_config.c
 @@ -0,0 +1,430 @@
 +#include <grub/efi/api.h>
 +#include <grub/efi/efi.h>
@@ -1680,7 +1673,7 @@ Index: grub-2.06/grub-core/net/efi/ip6_config.c
 +  sz = sizeof (*interface_info) + sizeof (*interface_info->route_table);
 +  interface_info = grub_malloc (sz);
 +
-+  status = efi_call_4 (ip6_config->get_data, ip6_config,
++  status = ip6_config->get_data (ip6_config,
 +		GRUB_EFI_IP6_CONFIG_DATA_TYPE_INTERFACEINFO,
 +		&sz, interface_info);
 +
@@ -1688,7 +1681,7 @@ Index: grub-2.06/grub-core/net/efi/ip6_config.c
 +    {
 +      grub_free (interface_info);
 +      interface_info = grub_malloc (sz);
-+      status = efi_call_4 (ip6_config->get_data, ip6_config,
++      status = ip6_config->get_data (ip6_config,
 +		    GRUB_EFI_IP6_CONFIG_DATA_TYPE_INTERFACEINFO,
 +		    &sz, interface_info);
 +    }
@@ -1714,7 +1707,7 @@ Index: grub-2.06/grub-core/net/efi/ip6_config.c
 +  if (!manual_address)
 +    return NULL;
 +
-+  status = efi_call_4 (ip6_config->get_data, ip6_config,
++  status = ip6_config->get_data (ip6_config,
 +		    GRUB_EFI_IP6_CONFIG_DATA_TYPE_MANUAL_ADDRESS,
 +		    &sz, manual_address);
 +
@@ -1932,7 +1925,7 @@ Index: grub-2.06/grub-core/net/efi/ip6_config.c
 +	}
 +    }
 +
-+  status = efi_call_4 (dev->ip6_config->set_data, dev->ip6_config,
++  status = dev->ip6_config->set_data (dev->ip6_config,
 +		    GRUB_EFI_IP6_CONFIG_DATA_TYPE_MANUAL_ADDRESS,
 +		    sizeof(*address), address);
 +
@@ -1948,7 +1941,7 @@ Index: grub-2.06/grub-core/net/efi/ip6_config.c
 +{
 +  grub_efi_status_t status;
 +
-+  status = efi_call_4 (dev->ip6_config->set_data, dev->ip6_config,
++  status = dev->ip6_config->set_data (dev->ip6_config,
 +		GRUB_EFI_IP6_CONFIG_DATA_TYPE_GATEWAY,
 +		sizeof (address->ip6), &address->ip6);
 +
@@ -1964,7 +1957,7 @@ Index: grub-2.06/grub-core/net/efi/ip6_config.c
 +
 +  grub_efi_status_t status;
 +
-+  status = efi_call_4 (dev->ip6_config->set_data, dev->ip6_config,
++  status = dev->ip6_config->set_data (dev->ip6_config,
 +		GRUB_EFI_IP6_CONFIG_DATA_TYPE_DNSSERVER,
 +		sizeof (address->ip6), &address->ip6);
 +
@@ -1983,10 +1976,8 @@ Index: grub-2.06/grub-core/net/efi/ip6_config.c
 +    .set_gateway = grub_efi_ip6_interface_set_gateway,
 +    .set_dns = grub_efi_ip6_interface_set_dns
 +  };
-Index: grub-2.06/grub-core/net/efi/net.c
-===================================================================
 --- /dev/null
-+++ grub-2.06/grub-core/net/efi/net.c
++++ b/grub-core/net/efi/net.c
 @@ -0,0 +1,1440 @@
 +#include <grub/net.h>
 +#include <grub/env.h>
@@ -2008,15 +1999,15 @@ Index: grub-2.06/grub-core/net/efi/net.c
 +
 +#define GRUB_EFI_IP6_PREFIX_LENGTH 64
 +
-+static grub_efi_guid_t ip4_config_guid = GRUB_EFI_IP4_CONFIG2_PROTOCOL_GUID;
-+static grub_efi_guid_t ip6_config_guid = GRUB_EFI_IP6_CONFIG_PROTOCOL_GUID;
-+static grub_efi_guid_t http_service_binding_guid = GRUB_EFI_HTTP_SERVICE_BINDING_PROTOCOL_GUID;
-+static grub_efi_guid_t http_guid = GRUB_EFI_HTTP_PROTOCOL_GUID;
-+static grub_efi_guid_t pxe_io_guid = GRUB_EFI_PXE_GUID;
-+static grub_efi_guid_t dhcp4_service_binding_guid = GRUB_EFI_DHCP4_SERVICE_BINDING_PROTOCOL_GUID;
-+static grub_efi_guid_t dhcp4_guid = GRUB_EFI_DHCP4_PROTOCOL_GUID;
-+static grub_efi_guid_t dhcp6_service_binding_guid = GRUB_EFI_DHCP6_SERVICE_BINDING_PROTOCOL_GUID;
-+static grub_efi_guid_t dhcp6_guid = GRUB_EFI_DHCP6_PROTOCOL_GUID;
++static grub_guid_t ip4_config_guid = GRUB_EFI_IP4_CONFIG2_PROTOCOL_GUID;
++static grub_guid_t ip6_config_guid = GRUB_EFI_IP6_CONFIG_PROTOCOL_GUID;
++static grub_guid_t http_service_binding_guid = GRUB_EFI_HTTP_SERVICE_BINDING_PROTOCOL_GUID;
++static grub_guid_t http_guid = GRUB_EFI_HTTP_PROTOCOL_GUID;
++static grub_guid_t pxe_io_guid = GRUB_EFI_PXE_GUID;
++static grub_guid_t dhcp4_service_binding_guid = GRUB_EFI_DHCP4_SERVICE_BINDING_PROTOCOL_GUID;
++static grub_guid_t dhcp4_guid = GRUB_EFI_DHCP4_PROTOCOL_GUID;
++static grub_guid_t dhcp6_service_binding_guid = GRUB_EFI_DHCP6_SERVICE_BINDING_PROTOCOL_GUID;
++static grub_guid_t dhcp6_guid = GRUB_EFI_DHCP6_PROTOCOL_GUID;
 +
 +struct grub_efi_net_device *net_devices;
 +
@@ -2031,13 +2022,13 @@ Index: grub-2.06/grub-core/net/efi/net.c
 +#define efi_net_interface(m,...) efi_net_interface_ ## m (net_interface, ## __VA_ARGS__)
 +
 +static grub_efi_handle_t
-+grub_efi_locate_device_path (grub_efi_guid_t *protocol, grub_efi_device_path_t *device_path,
++grub_efi_locate_device_path (grub_guid_t *protocol, grub_efi_device_path_t *device_path,
 +                            grub_efi_device_path_t **r_device_path)
 +{
 +  grub_efi_handle_t handle;
 +  grub_efi_status_t status;
 +
-+  status = efi_call_3 (grub_efi_system_table->boot_services->locate_device_path,
++  status = grub_efi_system_table->boot_services->locate_device_path (
 +                      protocol, &device_path, &handle);
 +
 +  if (status != GRUB_EFI_SUCCESS)
@@ -2687,7 +2678,7 @@ Index: grub-2.06/grub-core/net/efi/net.c
 +}
 +
 +static grub_efi_handle_t
-+grub_efi_service_binding (grub_efi_handle_t dev, grub_efi_guid_t *service_binding_guid)
++grub_efi_service_binding (grub_efi_handle_t dev, grub_guid_t *service_binding_guid)
 +{
 +  grub_efi_service_binding_t *service;
 +  grub_efi_status_t status;
@@ -2700,7 +2691,7 @@ Index: grub-2.06/grub-core/net/efi/net.c
 +      return NULL;
 +    }
 +
-+  status = efi_call_2 (service->create_child, service, &child_dev);
++  status = service->create_child (service, &child_dev);
 +  if (status != GRUB_EFI_SUCCESS)
 +    {
 +      grub_error (GRUB_ERR_IO, N_("Failed to create child device of http service %" PRIxGRUB_SIZE), status);
@@ -2913,7 +2904,7 @@ Index: grub-2.06/grub-core/net/efi/net.c
 +    {
 +      grub_efi_ip4_config2_policy_t ip4_policy = GRUB_EFI_IP4_CONFIG2_POLICY_STATIC;
 +
-+      if (efi_call_4 (dev->ip4_config->set_data, dev->ip4_config,
++      if (dev->ip4_config->set_data (dev->ip4_config,
 +		    GRUB_EFI_IP4_CONFIG2_DATA_TYPE_POLICY,
 +		    sizeof (ip4_policy), &ip4_policy) != GRUB_EFI_SUCCESS)
 +	grub_dprintf ("efinetfs", "could not set GRUB_EFI_IP4_CONFIG2_POLICY_STATIC on dev `%s'", dev->card_name);
@@ -2922,7 +2913,7 @@ Index: grub-2.06/grub-core/net/efi/net.c
 +	{
 +	  grub_efi_ip6_config_policy_t ip6_policy = GRUB_EFI_IP6_CONFIG_POLICY_MANUAL;
 +
-+	  if (efi_call_4 (dev->ip6_config->set_data, dev->ip6_config,
++	  if (dev->ip6_config->set_data (dev->ip6_config,
 +		    GRUB_EFI_IP6_CONFIG_DATA_TYPE_POLICY,
 +		    sizeof (ip6_policy), &ip6_policy) != GRUB_EFI_SUCCESS)
 +	    grub_dprintf ("efinetfs", "could not set GRUB_EFI_IP6_CONFIG_POLICY_MANUAL on dev `%s'", dev->card_name);
@@ -3428,10 +3419,8 @@ Index: grub-2.06/grub-core/net/efi/net.c
 +  grub_net_open = NULL;
 +  grub_fs_unregister (&grub_efi_netfs);
 +}
-Index: grub-2.06/grub-core/net/efi/pxe.c
-===================================================================
 --- /dev/null
-+++ grub-2.06/grub-core/net/efi/pxe.c
++++ b/grub-core/net/efi/pxe.c
 @@ -0,0 +1,424 @@
 +
 +#include <grub/efi/api.h>
@@ -3452,7 +3441,7 @@ Index: grub-2.06/grub-core/net/efi/pxe.c
 +  if (!manual_address)
 +    return NULL;
 +
-+  status = efi_call_4 (ip6_config->get_data, ip6_config,
++  status = ip6_config->get_data (ip6_config,
 +		    GRUB_EFI_IP6_CONFIG_DATA_TYPE_MANUAL_ADDRESS,
 +		    &sz, manual_address);
 +
@@ -3477,7 +3466,7 @@ Index: grub-2.06/grub-core/net/efi/pxe.c
 +  if (!manual_address)
 +    return NULL;
 +
-+  status = efi_call_4 (ip4_config->get_data, ip4_config,
++  status = ip4_config->get_data (ip4_config,
 +		    GRUB_EFI_IP4_CONFIG2_DATA_TYPE_MANUAL_ADDRESS,
 +		    &sz, manual_address);
 +
@@ -3500,7 +3489,7 @@ Index: grub-2.06/grub-core/net/efi/pxe.c
 +  if (!mode->started)
 +    {
 +      grub_efi_status_t status;
-+      status = efi_call_2 (pxe->start, pxe, prefer_ip6);
++      status = pxe->start (pxe, prefer_ip6);
 +
 +      if (status != GRUB_EFI_SUCCESS)
 +	  grub_printf ("Couldn't start PXE\n");
@@ -3523,7 +3512,7 @@ Index: grub-2.06/grub-core/net/efi/pxe.c
 +	  grub_efi_pxe_ip_address_t station_ip;
 +
 +	  grub_memcpy (station_ip.v6.addr, manual_address->address, sizeof (station_ip.v6.addr));
-+	  status = efi_call_3 (pxe->set_station_ip, pxe, &station_ip, NULL);
++	  status = pxe->set_station_ip (pxe, &station_ip, NULL);
 +
 +	  if (status != GRUB_EFI_SUCCESS)
 +	      grub_printf ("Couldn't set station ip\n");
@@ -3546,7 +3535,7 @@ Index: grub-2.06/grub-core/net/efi/pxe.c
 +	  grub_memcpy (station_ip.v4.addr, manual_address->address, sizeof (station_ip.v4.addr));
 +	  grub_memcpy (subnet_mask.v4.addr, manual_address->subnet_mask, sizeof (subnet_mask.v4.addr));
 +
-+	  status = efi_call_3 (pxe->set_station_ip, pxe, &station_ip, &subnet_mask);
++	  status = pxe->set_station_ip (pxe, &station_ip, &subnet_mask);
 +
 +	  if (status != GRUB_EFI_SUCCESS)
 +	      grub_printf ("Couldn't set station ip\n");
@@ -3699,7 +3688,7 @@ Index: grub-2.06/grub-core/net/efi/pxe.c
 +	server_ip.v4.addr[i] = grub_strtoul (p, &p, 10);
 +    }
 +
-+  status = efi_call_10 (pxe->mtftp,
++  status = pxe->mtftp (
 +	    pxe,
 +	    GRUB_EFI_PXE_BASE_CODE_TFTP_GET_FILE_SIZE,
 +	    NULL,
@@ -3784,7 +3773,7 @@ Index: grub-2.06/grub-core/net/efi/pxe.c
 +	server_ip.v4.addr[i] = grub_strtoul (p, &p, 10);
 +    }
 +
-+  status = efi_call_10 (pxe->mtftp,
++  status = pxe->mtftp (
 +	    pxe,
 +	    GRUB_EFI_PXE_BASE_CODE_TFTP_READ_FILE,
 +	    buf,
@@ -3815,7 +3804,7 @@ Index: grub-2.06/grub-core/net/efi/pxe.c
 +	  return 0;
 +	}
 +
-+      status = efi_call_10 (pxe->mtftp,
++      status = pxe->mtftp (
 +		pxe,
 +		GRUB_EFI_PXE_BASE_CODE_TFTP_READ_FILE,
 +		buf2,
@@ -3857,10 +3846,8 @@ Index: grub-2.06/grub-core/net/efi/pxe.c
 +    .close = pxe_close
 +  };
 +
-Index: grub-2.06/grub-core/net/net.c
-===================================================================
---- grub-2.06.orig/grub-core/net/net.c
-+++ grub-2.06/grub-core/net/net.c
+--- a/grub-core/net/net.c
++++ b/grub-core/net/net.c
 @@ -32,6 +32,9 @@
  #include <grub/loader.h>
  #include <grub/bufio.h>
@@ -3871,8 +3858,8 @@ Index: grub-2.06/grub-core/net/net.c
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -1954,8 +1957,49 @@ static grub_command_t cmd_addaddr, cmd_d
- static grub_command_t cmd_lsroutes, cmd_lscards;
+@@ -2014,8 +2017,49 @@
+ static grub_command_t cmd_setvlan, cmd_lsroutes, cmd_lscards;
  static grub_command_t cmd_lsaddr, cmd_slaac;
  
 +#ifdef GRUB_MACHINE_EFI
@@ -3921,7 +3908,7 @@ Index: grub-2.06/grub-core/net/net.c
    grub_register_variable_hook ("net_default_server", defserver_get_env,
  			       defserver_set_env);
    grub_env_export ("net_default_server");
-@@ -2003,10 +2047,37 @@ GRUB_MOD_INIT(net)
+@@ -2066,10 +2110,37 @@
  						grub_net_restore_hw,
  						GRUB_LOADER_PREBOOT_HOOK_PRIO_DISK);
    grub_net_poll_cards_idle = grub_net_poll_cards_idle_real;
@@ -3959,19 +3946,17 @@ Index: grub-2.06/grub-core/net/net.c
    grub_register_variable_hook ("net_default_server", 0, 0);
    grub_register_variable_hook ("pxe_default_server", 0, 0);
  
-@@ -2025,4 +2096,7 @@ GRUB_MOD_FINI(net)
+@@ -2088,4 +2159,7 @@
    grub_net_fini_hw (0);
    grub_loader_unregister_preboot_hook (fini_hnd);
-   grub_net_poll_cards_idle = grub_net_poll_cards_idle_real;
+   grub_net_poll_cards_idle = NULL;
 +#ifdef GRUB_MACHINE_EFI
 +  init_mode = INIT_MODE_NONE;
 +#endif
  }
-Index: grub-2.06/include/grub/efi/api.h
-===================================================================
---- grub-2.06.orig/include/grub/efi/api.h
-+++ grub-2.06/include/grub/efi/api.h
-@@ -608,6 +608,23 @@ typedef grub_uint16_t grub_efi_ipv6_addr
+--- a/include/grub/efi/api.h
++++ b/include/grub/efi/api.h
+@@ -653,6 +653,23 @@
  typedef grub_uint8_t grub_efi_ip_address_t[8] __attribute__ ((aligned(4)));
  typedef grub_efi_uint64_t grub_efi_physical_address_t;
  typedef grub_efi_uint64_t grub_efi_virtual_address_t;
@@ -3993,9 +3978,9 @@ Index: grub-2.06/include/grub/efi/api.h
 +    grub_efi_pxe_ipv6_address_t v6;
 +} grub_efi_pxe_ip_address_t;
  
- struct grub_efi_guid
- {
-@@ -875,6 +892,8 @@ struct grub_efi_ipv6_device_path
+ /* XXX although the spec does not specify the padding, this actually
+    must have the padding!  */
+@@ -902,6 +919,8 @@
    grub_efi_uint16_t remote_port;
    grub_efi_uint16_t protocol;
    grub_efi_uint8_t static_ip_address;
@@ -4004,7 +3989,7 @@ Index: grub-2.06/include/grub/efi/api.h
  } GRUB_PACKED;
  typedef struct grub_efi_ipv6_device_path grub_efi_ipv6_device_path_t;
  
-@@ -924,6 +943,15 @@ struct grub_efi_uri_device_path
+@@ -960,6 +979,15 @@
  } GRUB_PACKED;
  typedef struct grub_efi_uri_device_path grub_efi_uri_device_path_t;
  
@@ -4020,7 +4005,7 @@ Index: grub-2.06/include/grub/efi/api.h
  #define GRUB_EFI_VENDOR_MESSAGING_DEVICE_PATH_SUBTYPE	10
  
  /* Media Device Path.  */
-@@ -1006,6 +1034,23 @@ struct grub_efi_bios_device_path
+@@ -1042,6 +1070,23 @@
  } GRUB_PACKED;
  typedef struct grub_efi_bios_device_path grub_efi_bios_device_path_t;
  
@@ -4028,11 +4013,11 @@ Index: grub-2.06/include/grub/efi/api.h
 +struct grub_efi_service_binding;
 +
 +typedef grub_efi_status_t
-+(*grub_efi_service_binding_create_child) (struct grub_efi_service_binding *this,
++(__grub_efi_api *grub_efi_service_binding_create_child) (struct grub_efi_service_binding *this,
 +                                          grub_efi_handle_t *child_handle);
 +
 +typedef grub_efi_status_t
-+(*grub_efi_service_binding_destroy_child) (struct grub_efi_service_binding *this,
++(__grub_efi_api *grub_efi_service_binding_destroy_child) (struct grub_efi_service_binding *this,
 +                                           grub_efi_handle_t *child_handle);
 +
 +typedef struct grub_efi_service_binding
@@ -4044,7 +4029,7 @@ Index: grub-2.06/include/grub/efi/api.h
  struct grub_efi_open_protocol_information_entry
  {
    grub_efi_handle_t agent_handle;
-@@ -1497,23 +1542,28 @@ typedef struct grub_efi_simple_text_outp
+@@ -1544,23 +1589,28 @@
  
  typedef grub_uint8_t grub_efi_pxe_packet_t[1472];
  
@@ -4087,19 +4072,28 @@ Index: grub-2.06/include/grub/efi/api.h
  
  #define GRUB_EFI_PXE_BASE_CODE_MAX_IPCNT 8
  typedef struct {
-@@ -1563,17 +1613,31 @@ typedef struct grub_efi_pxe_mode
+@@ -1610,18 +1660,32 @@
  typedef struct grub_efi_pxe
  {
    grub_uint64_t rev;
--  void (*start) (void);
-+  grub_efi_status_t (*start) (struct grub_efi_pxe *this, grub_efi_boolean_t use_ipv6);
-   void (*stop) (void);
--  void (*dhcp) (void);
-+  grub_efi_status_t (*dhcp) (struct grub_efi_pxe *this,
+-  void *start;
+-  void *stop;
+-  void *dhcp;
+-  void *discover;
+-  void *mftp;
+-  void *udpwrite;
+-  void *udpread;
+-  void *setipfilter;
+-  void *arp;
+-  void *setparams;
+-  void *setstationip;
+-  void *setpackets;
++  grub_efi_status_t (__grub_efi_api *start) (struct grub_efi_pxe *this, grub_efi_boolean_t use_ipv6);
++  void (__grub_efi_api *stop) (void);
++  grub_efi_status_t (__grub_efi_api *dhcp) (struct grub_efi_pxe *this,
 +			    grub_efi_boolean_t sort_offers);
-   void (*discover) (void);
--  void (*mftp) (void);
-+  grub_efi_status_t (*mtftp) (struct grub_efi_pxe *this,
++  void (__grub_efi_api *discover) (void);
++  grub_efi_status_t (__grub_efi_api *mtftp) (struct grub_efi_pxe *this,
 +			    grub_efi_pxe_base_code_tftp_opcode_t operation,
 +			    void *buffer_ptr,
 +			    grub_efi_boolean_t overwrite,
@@ -4110,20 +4104,20 @@ Index: grub-2.06/include/grub/efi/api.h
 +			    grub_efi_char8_t *filename,
 +			    grub_efi_pxe_base_code_mtftp_info_t *info,
 +			    grub_efi_boolean_t dont_use_buffer);
-   void (*udpwrite) (void);
-   void (*udpread) (void);
-   void (*setipfilter) (void);
-   void (*arp) (void);
-   void (*setparams) (void);
--  void (*setstationip) (void);
-+  grub_efi_status_t (*set_station_ip) (struct grub_efi_pxe *this,
++  void (__grub_efi_api *udpwrite) (void);
++  void (__grub_efi_api *udpread) (void);
++  void (__grub_efi_api *setipfilter) (void);
++  void (__grub_efi_api *arp) (void);
++  void (__grub_efi_api *setparams) (void);
++  grub_efi_status_t (__grub_efi_api *set_station_ip) (struct grub_efi_pxe *this,
 +			    grub_efi_pxe_ip_address_t *new_station_ip,
 +			    grub_efi_pxe_ip_address_t *new_subnet_mask);
 +  //void (*setstationip) (void);
-   void (*setpackets) (void);
++  void (__grub_efi_api *setpackets) (void);
    struct grub_efi_pxe_mode *mode;
  } grub_efi_pxe_t;
-@@ -1835,6 +1899,44 @@ struct grub_efi_ip4_config2_protocol
+ 
+@@ -1921,6 +1985,44 @@
  };
  typedef struct grub_efi_ip4_config2_protocol grub_efi_ip4_config2_protocol_t;
  
@@ -4168,7 +4162,7 @@ Index: grub-2.06/include/grub/efi/api.h
  enum grub_efi_ip6_config_data_type {
    GRUB_EFI_IP6_CONFIG_DATA_TYPE_INTERFACEINFO,
    GRUB_EFI_IP6_CONFIG_DATA_TYPE_ALT_INTERFACEID,
-@@ -1869,6 +1971,49 @@ struct grub_efi_ip6_config_protocol
+@@ -1955,4 +2057,47 @@
  };
  typedef struct grub_efi_ip6_config_protocol grub_efi_ip6_config_protocol_t;
  
@@ -4215,13 +4209,9 @@ Index: grub-2.06/include/grub/efi/api.h
 +};
 +typedef struct grub_efi_ip6_config_manual_address grub_efi_ip6_config_manual_address_t;
 +
- #if (GRUB_TARGET_SIZEOF_VOID_P == 4) || defined (__ia64__) \
-   || defined (__aarch64__) || defined (__MINGW64__) || defined (__CYGWIN__) \
-   || defined(__riscv)
-Index: grub-2.06/include/grub/efi/dhcp.h
-===================================================================
+ #endif /* ! GRUB_EFI_API_HEADER */
 --- /dev/null
-+++ grub-2.06/include/grub/efi/dhcp.h
++++ b/include/grub/efi/dhcp.h
 @@ -0,0 +1,343 @@
 +#ifndef GRUB_EFI_DHCP_HEADER
 +#define GRUB_EFI_DHCP_HEADER	1
@@ -4378,27 +4368,27 @@ Index: grub-2.06/include/grub/efi/dhcp.h
 +typedef struct grub_efi_dhcp4_mode_data grub_efi_dhcp4_mode_data_t;
 +
 +struct grub_efi_dhcp4_protocol {
-+  grub_efi_status_t (*get_mode_data) (grub_efi_dhcp4_protocol_t *this,
++  grub_efi_status_t (__grub_efi_api *get_mode_data) (grub_efi_dhcp4_protocol_t *this,
 +	      grub_efi_dhcp4_mode_data_t *dhcp4_mode_data);
-+  grub_efi_status_t (*configure) (grub_efi_dhcp4_protocol_t *this,
++  grub_efi_status_t (__grub_efi_api *configure) (grub_efi_dhcp4_protocol_t *this,
 +	      grub_efi_dhcp4_config_data_t *dhcp4_cfg_data);
-+  grub_efi_status_t (*start) (grub_efi_dhcp4_protocol_t *this,
++  grub_efi_status_t (__grub_efi_api *start) (grub_efi_dhcp4_protocol_t *this,
 +	      grub_efi_event_t completion_event);
-+  grub_efi_status_t (*renew_rebind) (grub_efi_dhcp4_protocol_t *this,
++  grub_efi_status_t (__grub_efi_api *renew_rebind) (grub_efi_dhcp4_protocol_t *this,
 +	      grub_efi_boolean_t rebind_request,
 +	      grub_efi_event_t completion_event);
-+  grub_efi_status_t (*release) (grub_efi_dhcp4_protocol_t *this);
-+  grub_efi_status_t (*stop) (grub_efi_dhcp4_protocol_t *this);
-+  grub_efi_status_t (*build) (grub_efi_dhcp4_protocol_t *this,
++  grub_efi_status_t (__grub_efi_api *release) (grub_efi_dhcp4_protocol_t *this);
++  grub_efi_status_t (__grub_efi_api *stop) (grub_efi_dhcp4_protocol_t *this);
++  grub_efi_status_t (__grub_efi_api *build) (grub_efi_dhcp4_protocol_t *this,
 +	      grub_efi_dhcp4_packet_t *seed_packet,
 +	      grub_efi_uint32_t delete_count,
 +	      grub_efi_uint8_t *delete_list,
 +	      grub_efi_uint32_t append_count,
 +	      grub_efi_dhcp4_packet_option_t *append_list[],
 +	      grub_efi_dhcp4_packet_t **new_packet);
-+  grub_efi_status_t (*transmit_receive) (grub_efi_dhcp4_protocol_t *this,
++  grub_efi_status_t (__grub_efi_api *transmit_receive) (grub_efi_dhcp4_protocol_t *this,
 +	      grub_efi_dhcp4_transmit_receive_token_t *token);
-+  grub_efi_status_t (*parse) (grub_efi_dhcp4_protocol_t *this,
++  grub_efi_status_t (__grub_efi_api *parse) (grub_efi_dhcp4_protocol_t *this,
 +	      grub_efi_dhcp4_packet_t *packet,
 +	      grub_efi_uint32_t *option_count,
 +	      grub_efi_dhcp4_packet_option_t *packet_option_list[]);
@@ -4533,43 +4523,41 @@ Index: grub-2.06/include/grub/efi/dhcp.h
 +typedef struct grub_efi_dhcp6_config_data grub_efi_dhcp6_config_data_t;
 +
 +struct grub_efi_dhcp6_protocol {
-+  grub_efi_status_t (*get_mode_data) (grub_efi_dhcp6_protocol_t *this,
++  grub_efi_status_t (__grub_efi_api *get_mode_data) (grub_efi_dhcp6_protocol_t *this,
 +	    grub_efi_dhcp6_mode_data_t *dhcp6_mode_data,
 +	    grub_efi_dhcp6_config_data_t *dhcp6_config_data);
-+  grub_efi_status_t (*configure) (grub_efi_dhcp6_protocol_t *this,
++  grub_efi_status_t (__grub_efi_api *configure) (grub_efi_dhcp6_protocol_t *this,
 +	    grub_efi_dhcp6_config_data_t *dhcp6_cfg_data);
-+  grub_efi_status_t (*start) (grub_efi_dhcp6_protocol_t *this);
-+  grub_efi_status_t (*info_request) (grub_efi_dhcp6_protocol_t *this,
++  grub_efi_status_t (__grub_efi_api *start) (grub_efi_dhcp6_protocol_t *this);
++  grub_efi_status_t (__grub_efi_api *info_request) (grub_efi_dhcp6_protocol_t *this,
 +	    grub_efi_boolean_t send_client_id,
 +	    grub_efi_dhcp6_packet_option_t *option_request,
 +	    grub_efi_uint32_t option_count,
 +	    grub_efi_dhcp6_packet_option_t *option_list[],
 +	    grub_efi_dhcp6_retransmission_t *retransmission,
 +	    grub_efi_event_t timeout_event,
-+	    grub_efi_status_t (*reply_callback) (grub_efi_dhcp6_protocol_t *this,
++	    grub_efi_status_t (__grub_efi_api *reply_callback) (grub_efi_dhcp6_protocol_t *this,
 +		    void *context,
 +		    grub_efi_dhcp6_packet_t *packet),
 +	    void *callback_context);
-+  grub_efi_status_t (*renew_rebind) (grub_efi_dhcp6_protocol_t *this,
++  grub_efi_status_t (__grub_efi_api *renew_rebind) (grub_efi_dhcp6_protocol_t *this,
 +	    grub_efi_boolean_t rebind_request);
-+  grub_efi_status_t (*decline) (grub_efi_dhcp6_protocol_t *this,
++  grub_efi_status_t (__grub_efi_api *decline) (grub_efi_dhcp6_protocol_t *this,
 +	    grub_efi_uint32_t address_count,
 +	    grub_efi_ipv6_address_t *addresses);
-+  grub_efi_status_t (*release) (grub_efi_dhcp6_protocol_t *this,
++  grub_efi_status_t (__grub_efi_api *release) (grub_efi_dhcp6_protocol_t *this,
 +	    grub_efi_uint32_t address_count,
 +	    grub_efi_ipv6_address_t *addresses);
-+  grub_efi_status_t (*stop) (grub_efi_dhcp6_protocol_t *this);
-+  grub_efi_status_t (*parse) (grub_efi_dhcp6_protocol_t *this,
++  grub_efi_status_t (__grub_efi_api *stop) (grub_efi_dhcp6_protocol_t *this);
++  grub_efi_status_t (__grub_efi_api *parse) (grub_efi_dhcp6_protocol_t *this,
 +	    grub_efi_dhcp6_packet_t *packet,
 +	    grub_efi_uint32_t *option_count,
 +	    grub_efi_dhcp6_packet_option_t *packet_option_list[]);
 +};
 +
 +#endif /* ! GRUB_EFI_DHCP_HEADER */
-Index: grub-2.06/include/grub/efi/http.h
-===================================================================
 --- /dev/null
-+++ grub-2.06/include/grub/efi/http.h
++++ b/include/grub/efi/http.h
 @@ -0,0 +1,215 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
@@ -4761,35 +4749,33 @@ Index: grub-2.06/include/grub/efi/http.h
 +
 +struct grub_efi_http {
 +  grub_efi_status_t
-+  (*get_mode_data) (struct grub_efi_http *this,
++  (__grub_efi_api *get_mode_data) (struct grub_efi_http *this,
 +                    grub_efi_http_config_data_t *http_config_data);
 +
 +  grub_efi_status_t
-+  (*configure) (struct grub_efi_http *this,
++  (__grub_efi_api *configure) (struct grub_efi_http *this,
 +                grub_efi_http_config_data_t *http_config_data);
 +
 +  grub_efi_status_t
-+  (*request) (struct grub_efi_http *this,
++  (__grub_efi_api *request) (struct grub_efi_http *this,
 +              grub_efi_http_token_t *token);
 +
 +  grub_efi_status_t
-+  (*cancel) (struct grub_efi_http *this,
++  (__grub_efi_api *cancel) (struct grub_efi_http *this,
 +             grub_efi_http_token_t *token);
 +
 +  grub_efi_status_t
-+  (*response) (struct grub_efi_http *this,
++  (__grub_efi_api *response) (struct grub_efi_http *this,
 +               grub_efi_http_token_t *token);
 +
 +  grub_efi_status_t
-+  (*poll) (struct grub_efi_http *this);
++  (__grub_efi_api *poll) (struct grub_efi_http *this);
 +};
 +typedef struct grub_efi_http grub_efi_http_t;
 +
 +#endif /* !GRUB_EFI_HTTP_HEADER */
-Index: grub-2.06/include/grub/net/efi.h
-===================================================================
 --- /dev/null
-+++ grub-2.06/include/grub/net/efi.h
++++ b/include/grub/net/efi.h
 @@ -0,0 +1,144 @@
 +#ifndef GRUB_NET_EFI_HEADER
 +#define GRUB_NET_EFI_HEADER	1

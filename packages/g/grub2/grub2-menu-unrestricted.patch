@@ -1,8 +1,6 @@
-Index: grub-2.02~beta2/grub-core/normal/menu.c
-===================================================================
---- grub-2.02~beta2.orig/grub-core/normal/menu.c
-+++ grub-2.02~beta2/grub-core/normal/menu.c
-@@ -213,7 +213,17 @@ grub_menu_execute_entry(grub_menu_entry_
+--- a/grub-core/normal/menu.c
++++ b/grub-core/normal/menu.c
+@@ -212,7 +212,17 @@
    grub_size_t sz = 0;
  
    if (entry->restricted)

@@ -1,8 +1,6 @@
-Index: grub-2.04~rc1/grub-core/kern/ieee1275/cmain.c
-===================================================================
---- grub-2.04~rc1.orig/grub-core/kern/ieee1275/cmain.c
-+++ grub-2.04~rc1/grub-core/kern/ieee1275/cmain.c
-@@ -90,7 +90,10 @@ grub_ieee1275_find_options (void)
+--- a/grub-core/kern/ieee1275/cmain.c
++++ b/grub-core/kern/ieee1275/cmain.c
+@@ -89,7 +89,10 @@
    }
  
    if (rc >= 0 && grub_strncmp (tmp, "IBM", 3) == 0)
@@ -14,11 +12,9 @@ Index: grub-2.04~rc1/grub-core/kern/ieee1275/cmain.c
  
    /* Old Macs have no key repeat, newer ones have fully working one.
       The ones inbetween when repeated key generates an escaoe sequence
-Index: grub-2.04~rc1/grub-core/video/ieee1275.c
-===================================================================
---- grub-2.04~rc1.orig/grub-core/video/ieee1275.c
-+++ grub-2.04~rc1/grub-core/video/ieee1275.c
-@@ -352,9 +352,12 @@ static struct grub_video_adapter grub_vi
+--- a/grub-core/video/ieee1275.c
++++ b/grub-core/video/ieee1275.c
+@@ -351,9 +351,12 @@
  
  GRUB_MOD_INIT(ieee1275_fb)
  {
@@ -34,14 +30,12 @@ Index: grub-2.04~rc1/grub-core/video/ieee1275.c
  }
  
  GRUB_MOD_FINI(ieee1275_fb)
-Index: grub-2.04~rc1/include/grub/ieee1275/ieee1275.h
-===================================================================
---- grub-2.04~rc1.orig/include/grub/ieee1275/ieee1275.h
-+++ grub-2.04~rc1/include/grub/ieee1275/ieee1275.h
-@@ -148,6 +148,8 @@ enum grub_ieee1275_flag
-   GRUB_IEEE1275_FLAG_CURSORONOFF_ANSI_BROKEN,
- 
-   GRUB_IEEE1275_FLAG_RAW_DEVNAMES,
+--- a/include/grub/ieee1275/ieee1275.h
++++ b/include/grub/ieee1275/ieee1275.h
+@@ -141,6 +141,8 @@
+    */
+   GRUB_IEEE1275_FLAG_CAN_TRY_CAS_FOR_MORE_MEMORY,
+ #endif
 +
 +  GRUB_IEEE1275_FLAG_DISABLE_VIDEO_SUPPORT
  };

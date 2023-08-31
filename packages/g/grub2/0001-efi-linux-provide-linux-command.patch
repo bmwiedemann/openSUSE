@@ -25,11 +25,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  grub-core/loader/i386/efi/linux.c | 17 +++++++++++++----
  3 files changed, 20 insertions(+), 6 deletions(-)
 
-diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 6045da47b..3ea9dace0 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -1773,7 +1773,9 @@ module = {
+@@ -1840,7 +1840,9 @@
  
  module = {
    name = linux;
@@ -40,7 +38,16 @@ index 6045da47b..3ea9dace0 100644
    i386_xen_pvh = loader/i386/linux.c;
    xen = loader/i386/xen.c;
    i386_pc = lib/i386/pc/vesa_modes_table.c;
-@@ -1852,7 +1854,7 @@ module = {
+@@ -1856,8 +1858,6 @@
+   loongarch64 = loader/efi/linux.c;
+   riscv32 = loader/efi/linux.c;
+   riscv64 = loader/efi/linux.c;
+-  i386_efi = loader/efi/linux.c;
+-  x86_64_efi = loader/efi/linux.c;
+   emu = loader/emu/linux.c;
+   common = loader/linux.c;
+ };
+@@ -1922,7 +1922,7 @@
  
  module = {
    name = linuxefi;
@@ -49,22 +56,18 @@ index 6045da47b..3ea9dace0 100644
    enable = i386_efi;
    enable = x86_64_efi;
  };
-diff --git a/grub-core/gensyminfo.sh.in b/grub-core/gensyminfo.sh.in
-index 9bc767532..098de9258 100644
 --- a/grub-core/gensyminfo.sh.in
 +++ b/grub-core/gensyminfo.sh.in
-@@ -35,3 +35,6 @@ fi
+@@ -35,3 +35,6 @@
  
  # Print all undefined symbols used by module
  @TARGET_NM@ -u @TARGET_NMFLAGS_MINUS_P@ -p $module | sed "s@^\([^ ]*\).*@undefined $modname \1@g"
 +
 +# Specify linuxefi module should load default linux
 +test "$modname" = "linuxefi" && echo "undefined $modname grub_initrd_init" || true
-diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
-index 8017e8c05..3f6d51519 100644
 --- a/grub-core/loader/i386/efi/linux.c
 +++ b/grub-core/loader/i386/efi/linux.c
-@@ -347,20 +347,29 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+@@ -333,20 +333,29 @@
  }
  
  static grub_command_t cmd_linux, cmd_initrd;
@@ -98,6 +101,3 @@ index 8017e8c05..3f6d51519 100644
    grub_unregister_command (cmd_linux);
    grub_unregister_command (cmd_initrd);
  }
--- 
-2.26.2
-

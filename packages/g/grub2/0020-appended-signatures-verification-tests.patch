@@ -27,26 +27,21 @@ v2 changes:
  create mode 100644 grub-core/tests/appended_signature_test.c
  create mode 100644 grub-core/tests/appended_signatures.h
 
-diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index b55294e25..88eedd16d 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2161,6 +2161,12 @@ module = {
-   common = tests/setjmp_test.c;
+@@ -2191,6 +2191,12 @@
  };
  
-+module = {
+ module = {
 +  name = appended_signature_test;
 +  common = tests/appended_signature_test.c;
 +  common = tests/appended_signatures.h;
 +};
 +
- module = {
++module = {
    name = signature_test;
    common = tests/signature_test.c;
-diff --git a/grub-core/tests/appended_signature_test.c b/grub-core/tests/appended_signature_test.c
-new file mode 100644
-index 000000000..5365185cb
+   common = tests/signatures.h;
 --- /dev/null
 +++ b/grub-core/tests/appended_signature_test.c
 @@ -0,0 +1,273 @@
@@ -323,9 +318,6 @@ index 000000000..5365185cb
 +}
 +
 +GRUB_FUNCTIONAL_TEST (appended_signature_test, appended_signature_test);
-diff --git a/grub-core/tests/appended_signatures.h b/grub-core/tests/appended_signatures.h
-new file mode 100644
-index 000000000..c6aa12d86
 --- /dev/null
 +++ b/grub-core/tests/appended_signatures.h
 @@ -0,0 +1,975 @@
@@ -1304,11 +1296,9 @@ index 000000000..c6aa12d86
 +  0x89, 0xa0, 0x55, 0xf7
 +};
 +unsigned int certificate_eku_der_len = 916;
-diff --git a/grub-core/tests/lib/functional_test.c b/grub-core/tests/lib/functional_test.c
-index 96781fb39..403fa5c78 100644
 --- a/grub-core/tests/lib/functional_test.c
 +++ b/grub-core/tests/lib/functional_test.c
-@@ -73,6 +73,7 @@ grub_functional_all_tests (grub_extcmd_context_t ctxt __attribute__ ((unused)),
+@@ -73,6 +73,7 @@
    grub_dl_load ("xnu_uuid_test");
    grub_dl_load ("pbkdf2_test");
    grub_dl_load ("signature_test");
@@ -1316,6 +1306,3 @@ index 96781fb39..403fa5c78 100644
    grub_dl_load ("sleep_test");
    grub_dl_load ("bswap_test");
    grub_dl_load ("ctz_test");
--- 
-2.31.1
-

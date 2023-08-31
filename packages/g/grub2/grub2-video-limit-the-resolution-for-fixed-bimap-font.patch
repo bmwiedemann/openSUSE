@@ -20,11 +20,9 @@ v2: efi_gop: Avoid high resolution when trying to keep current mode.
  grub-core/video/i386/pc/vbe.c | 8 +++++++-
  2 files changed, 14 insertions(+), 1 deletion(-)
 
-Index: grub-2.02/grub-core/video/efi_gop.c
-===================================================================
---- grub-2.02.orig/grub-core/video/efi_gop.c
-+++ grub-2.02/grub-core/video/efi_gop.c
-@@ -360,7 +360,7 @@ grub_video_gop_setup (unsigned int width
+--- a/grub-core/video/efi_gop.c
++++ b/grub-core/video/efi_gop.c
+@@ -358,7 +358,7 @@
    grub_err_t err;
    unsigned bpp;
    int found = 0;
@@ -33,7 +31,7 @@ Index: grub-2.02/grub-core/video/efi_gop.c
    unsigned long long best_volume = 0;
    unsigned int preferred_width = 0, preferred_height = 0;
    grub_uint8_t *buffer;
-@@ -377,13 +377,21 @@ grub_video_gop_setup (unsigned int width
+@@ -375,13 +375,21 @@
  	  preferred_height = 600;
  	  grub_errno = GRUB_ERR_NONE;
  	}
@@ -57,7 +55,7 @@ Index: grub-2.02/grub-core/video/efi_gop.c
      {
        bpp = grub_video_gop_get_bpp (gop->mode->info);
        if (bpp && ((width == gop->mode->info->width
-@@ -456,9 +464,9 @@ again:
+@@ -454,9 +462,9 @@
  
    if (!found)
      {
@@ -69,11 +67,9 @@ Index: grub-2.02/grub-core/video/efi_gop.c
            goto again;
          }
        grub_dprintf ("video", "GOP: no mode found\n");
-Index: grub-2.02/grub-core/video/i386/pc/vbe.c
-===================================================================
---- grub-2.02.orig/grub-core/video/i386/pc/vbe.c
-+++ grub-2.02/grub-core/video/i386/pc/vbe.c
-@@ -994,7 +994,13 @@ grub_video_vbe_setup (unsigned int width
+--- a/grub-core/video/i386/pc/vbe.c
++++ b/grub-core/video/i386/pc/vbe.c
+@@ -994,7 +994,13 @@
      {
        grub_vbe_get_preferred_mode (&width, &height);
        if (grub_errno == GRUB_ERR_NONE)

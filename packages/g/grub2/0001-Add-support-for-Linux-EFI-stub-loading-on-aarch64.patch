@@ -23,20 +23,18 @@ like secure boot, gpg and tpm.
  4 files changed, 465 insertions(+), 1 deletion(-)
  create mode 100644 grub-core/loader/arm64/efi/linux.c
 
-Index: grub-2.06~rc1/grub-core/Makefile.core.def
-===================================================================
---- grub-2.06~rc1.orig/grub-core/Makefile.core.def
-+++ grub-2.06~rc1/grub-core/Makefile.core.def
-@@ -1812,7 +1812,7 @@ module = {
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -1854,7 +1854,7 @@
    arm_coreboot = loader/arm/linux.c;
-   arm_efi = loader/arm64/linux.c;
+   arm_efi = loader/efi/linux.c;
    arm_uboot = loader/arm/linux.c;
--  arm64 = loader/arm64/linux.c;
+-  arm64 = loader/efi/linux.c;
 +  arm64 = loader/arm64/efi/linux.c;
-   riscv32 = loader/riscv/linux.c;
-   riscv64 = loader/riscv/linux.c;
-   emu = loader/emu/linux.c;
-@@ -1879,7 +1879,7 @@ module = {
+   loongarch64 = loader/efi/linux.c;
+   riscv32 = loader/efi/linux.c;
+   riscv64 = loader/efi/linux.c;
+@@ -1922,7 +1922,7 @@
  
  module = {
    name = linuxefi;
@@ -45,10 +43,8 @@ Index: grub-2.06~rc1/grub-core/Makefile.core.def
    enable = i386_efi;
    enable = x86_64_efi;
  };
-Index: grub-2.06~rc1/grub-core/loader/arm64/efi/linux.c
-===================================================================
 --- /dev/null
-+++ grub-2.06~rc1/grub-core/loader/arm64/efi/linux.c
++++ b/grub-core/loader/arm64/efi/linux.c
 @@ -0,0 +1,411 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
@@ -120,7 +116,7 @@ Index: grub-2.06~rc1/grub-core/loader/arm64/efi/linux.c
 +
 +#pragma GCC diagnostic pop
 +
-+grub_err_t
++static grub_err_t
 +grub_arch_efi_linux_check_image (struct linux_arch_kernel_header * lh)
 +{
 +  if (lh->magic != GRUB_LINUX_ARMXX_MAGIC_SIGNATURE)
@@ -332,7 +328,7 @@ Index: grub-2.06~rc1/grub-core/loader/arm64/efi/linux.c
 +      goto fail;
 +    }
 +
-+  if (grub_initrd_load (&initrd_ctx, argv, initrd_mem))
++  if (grub_initrd_load (&initrd_ctx, initrd_mem))
 +    goto fail;
 +
 +  initrd_start = (grub_addr_t) initrd_mem;
@@ -461,21 +457,16 @@ Index: grub-2.06~rc1/grub-core/loader/arm64/efi/linux.c
 +  grub_unregister_command (cmd_linux);
 +  grub_unregister_command (cmd_initrd);
 +}
-Index: grub-2.06~rc1/include/grub/arm/linux.h
-===================================================================
---- grub-2.06~rc1.orig/include/grub/arm/linux.h
-+++ grub-2.06~rc1/include/grub/arm/linux.h
-@@ -20,6 +20,7 @@
+--- a/include/grub/arm/linux.h
++++ b/include/grub/arm/linux.h
+@@ -20,10 +20,22 @@
  #ifndef GRUB_ARM_LINUX_HEADER
  #define GRUB_ARM_LINUX_HEADER 1
  
 +#include <grub/efi/pe32.h>
  #include "system.h"
  
- #define GRUB_LINUX_ARM_MAGIC_SIGNATURE 0x016f2818
-@@ -34,9 +35,17 @@ struct linux_arm_kernel_header {
-   grub_uint32_t hdr_offset;
- };
+ #include <grub/efi/pe32.h>
  
 +struct grub_arm_linux_pe_header
 +{
@@ -484,29 +475,42 @@ Index: grub-2.06~rc1/include/grub/arm/linux.h
 +  struct grub_pe32_optional_header opt;
 +};
 +
- #if defined(__arm__)
- # define GRUB_LINUX_ARMXX_MAGIC_SIGNATURE GRUB_LINUX_ARM_MAGIC_SIGNATURE
- # define linux_arch_kernel_header linux_arm_kernel_header
++#if defined(__arm__)
 +# define grub_armxx_linux_pe_header grub_arm_linux_pe_header
- #endif
- 
++#endif
++
  #if defined GRUB_MACHINE_UBOOT
-Index: grub-2.06~rc1/include/grub/arm64/linux.h
-===================================================================
---- grub-2.06~rc1.orig/include/grub/arm64/linux.h
-+++ grub-2.06~rc1/include/grub/arm64/linux.h
-@@ -20,6 +20,7 @@
- #define GRUB_ARM64_LINUX_HEADER 1
- 
- #include <grub/types.h>
+ # include <grub/uboot/uboot.h>
+ # define LINUX_ADDRESS        (start_of_ram + 0x8000)
+--- /dev/null
++++ b/include/grub/arm64/linux.h
+@@ -0,0 +1,39 @@
++/*
++ *  GRUB  --  GRand Unified Bootloader
++ *  Copyright (C) 2013  Free Software Foundation, Inc.
++ *
++ *  GRUB is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  GRUB is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef GRUB_ARM64_LINUX_HEADER
++#define GRUB_ARM64_LINUX_HEADER 1
++
++#include <grub/types.h>
 +#include <grub/efi/pe32.h>
- 
- #define GRUB_LINUX_ARM64_MAGIC_SIGNATURE 0x644d5241 /* 'ARM\x64' */
- 
-@@ -38,9 +39,17 @@ struct linux_arm64_kernel_header
-   grub_uint32_t hdr_offset;	/* Offset of PE/COFF header */
- };
- 
++
++#define GRUB_LINUX_ARM64_MAGIC_SIGNATURE 0x644d5241 /* 'ARM\x64' */
++
 +struct grub_arm64_linux_pe_header
 +{
 +  grub_uint32_t magic;
@@ -514,10 +518,9 @@ Index: grub-2.06~rc1/include/grub/arm64/linux.h
 +  struct grub_pe64_optional_header opt;
 +};
 +
- #if defined(__aarch64__)
- # define GRUB_LINUX_ARMXX_MAGIC_SIGNATURE GRUB_LINUX_ARM64_MAGIC_SIGNATURE
- # define linux_arch_kernel_header linux_arm64_kernel_header
++#if defined(__aarch64__)
++# define GRUB_LINUX_ARMXX_MAGIC_SIGNATURE GRUB_LINUX_ARM64_MAGIC_SIGNATURE
 +# define grub_armxx_linux_pe_header grub_arm64_linux_pe_header
- #endif
- 
- #endif /* ! GRUB_ARM64_LINUX_HEADER */
++#endif
++
++#endif /* ! GRUB_ARM64_LINUX_HEADER */

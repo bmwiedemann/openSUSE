@@ -27,11 +27,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  grub-core/disk/ieee1275/ofdisk.c | 11 +++++++++--
  1 file changed, 9 insertions(+), 2 deletions(-)
 
-diff --git a/grub-core/disk/ieee1275/ofdisk.c b/grub-core/disk/ieee1275/ofdisk.c
-index 258a6e3891..410f4b849f 100644
 --- a/grub-core/disk/ieee1275/ofdisk.c
 +++ b/grub-core/disk/ieee1275/ofdisk.c
-@@ -491,10 +491,11 @@ grub_ofdisk_iterate (grub_disk_dev_iterate_hook_t hook, void *hook_data,
+@@ -491,10 +491,11 @@
  {
    unsigned i;
  
@@ -42,10 +40,10 @@ index 258a6e3891..410f4b849f 100644
 -  scan ();
 +  if (pull == GRUB_DISK_PULL_REMOVABLE)
 +    scan ();
-   
+ 
    for (i = 0; i < ARRAY_SIZE (ofdisk_hash); i++)
      {
-@@ -532,6 +533,12 @@ grub_ofdisk_iterate (grub_disk_dev_iterate_hook_t hook, void *hook_data,
+@@ -532,6 +533,12 @@
  	  if (!ent->is_boot && ent->is_removable)
  	    continue;
  
@@ -58,6 +56,3 @@ index 258a6e3891..410f4b849f 100644
  	  if (hook (ent->grub_shortest, hook_data))
  	    return 1;
  	}
--- 
-2.34.1
-

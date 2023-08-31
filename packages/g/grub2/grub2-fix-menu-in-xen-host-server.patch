@@ -27,27 +27,9 @@ if you need any other custom entries.
  util/grub.d/20_linux_xen.in |    6 ++++--
  3 files changed, 19 insertions(+), 4 deletions(-)
 
-Index: grub-2.06~rc1/util/grub-mkconfig_lib.in
-===================================================================
---- grub-2.06~rc1.orig/util/grub-mkconfig_lib.in
-+++ grub-2.06~rc1/util/grub-mkconfig_lib.in
-@@ -253,6 +253,11 @@ version_test_gt ()
-     *.old:*.old) ;;
-     *.old:*) version_test_gt_a="`echo "$version_test_gt_a" | sed -e 's/\.old$//'`" ; version_test_gt_cmp=gt ;;
-     *:*.old) version_test_gt_b="`echo "$version_test_gt_b" | sed -e 's/\.old$//'`" ; version_test_gt_cmp=ge ;;
-+# bnc#757895 - Grub2 menu items incorrect when "Xen Virtual Machines Host Server" selected
-+# The dbg version should be placed after release version
-+    dbg-*:dbg-*) ;;
-+    dbg-*:*) version_test_gt_a="" ;;
-+    *:dbg-*) version_test_gt_b="" ;;
-   esac
-   version_test_numeric "$version_test_gt_a" "$version_test_gt_cmp" "$version_test_gt_b"
-   return "$?"
-Index: grub-2.06~rc1/util/grub.d/20_linux_xen.in
-===================================================================
---- grub-2.06~rc1.orig/util/grub.d/20_linux_xen.in
-+++ grub-2.06~rc1/util/grub.d/20_linux_xen.in
-@@ -26,6 +26,12 @@ datarootdir="@datarootdir@"
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -26,6 +26,12 @@
  export TEXTDOMAIN=@PACKAGE@
  export TEXTDOMAINDIR="@localedir@"
  
@@ -60,7 +42,7 @@ Index: grub-2.06~rc1/util/grub.d/20_linux_xen.in
  CLASS="--class gnu-linux --class gnu --class os --class xen"
  
  if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
-@@ -210,10 +216,18 @@ file_is_not_xen_garbage () {
+@@ -213,10 +219,18 @@
      esac
  }
  
@@ -83,11 +65,9 @@ Index: grub-2.06~rc1/util/grub.d/20_linux_xen.in
  prepare_boot_cache=
  boot_device_id=
  
-Index: grub-2.06~rc1/util/grub.d/10_linux.in
-===================================================================
---- grub-2.06~rc1.orig/util/grub.d/10_linux.in
-+++ grub-2.06~rc1/util/grub.d/10_linux.in
-@@ -244,6 +244,40 @@ while [ "x$list" != "x" ] ; do
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -258,6 +258,40 @@
      fi
    done
  

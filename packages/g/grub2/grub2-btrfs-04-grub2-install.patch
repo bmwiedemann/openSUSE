@@ -1,8 +1,6 @@
-Index: grub-2.02~rc1/grub-core/osdep/unix/config.c
-===================================================================
---- grub-2.02~rc1.orig/grub-core/osdep/unix/config.c
-+++ grub-2.02~rc1/grub-core/osdep/unix/config.c
-@@ -219,6 +219,19 @@ grub_util_load_config (struct grub_util_
+--- a/grub-core/osdep/unix/config.c
++++ b/grub-core/osdep/unix/config.c
+@@ -207,6 +207,19 @@
    if (v)
      cfg->grub_distributor = xstrdup (v);
  
@@ -22,7 +20,7 @@ Index: grub-2.02~rc1/grub-core/osdep/unix/config.c
    cfgfile = grub_util_get_config_filename ();
    if (!grub_util_is_regular (cfgfile))
      return;
-@@ -242,8 +255,8 @@ grub_util_load_config (struct grub_util_
+@@ -230,8 +243,8 @@
        *ptr++ = *iptr;
      }
  
@@ -33,11 +31,9 @@ Index: grub-2.02~rc1/grub-core/osdep/unix/config.c
  
    argv[2] = script;
    argv[3] = '\0';
-Index: grub-2.02~rc1/include/grub/emu/config.h
-===================================================================
---- grub-2.02~rc1.orig/include/grub/emu/config.h
-+++ grub-2.02~rc1/include/grub/emu/config.h
-@@ -37,6 +37,7 @@ struct grub_util_config
+--- a/include/grub/emu/config.h
++++ b/include/grub/emu/config.h
+@@ -37,6 +37,7 @@
  {
    int is_cryptodisk_enabled;
    char *grub_distributor;
@@ -45,11 +41,9 @@ Index: grub-2.02~rc1/include/grub/emu/config.h
  };
  
  void
-Index: grub-2.02~rc1/util/config.c
-===================================================================
---- grub-2.02~rc1.orig/util/config.c
-+++ grub-2.02~rc1/util/config.c
-@@ -42,6 +42,16 @@ grub_util_parse_config (FILE *f, struct
+--- a/util/config.c
++++ b/util/config.c
+@@ -42,6 +42,16 @@
  	    cfg->is_cryptodisk_enabled = 1;
  	  continue;
  	}
@@ -66,20 +60,18 @@ Index: grub-2.02~rc1/util/config.c
        if (grub_strncmp (ptr, "GRUB_DISTRIBUTOR=",
  			sizeof ("GRUB_DISTRIBUTOR=") - 1) == 0)
  	{
-Index: grub-2.02~rc1/util/grub-install.c
-===================================================================
---- grub-2.02~rc1.orig/util/grub-install.c
-+++ grub-2.02~rc1/util/grub-install.c
-@@ -828,6 +828,8 @@ fill_core_services (const char *core_ser
-   free (sysv_plist);
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -857,6 +857,8 @@
  }
+ #endif
  
 +extern int use_relative_path_on_btrfs;
 +
  int
  main (int argc, char *argv[])
  {
-@@ -861,6 +863,9 @@ main (int argc, char *argv[])
+@@ -890,6 +892,9 @@
  
    grub_util_load_config (&config);
  
@@ -89,7 +81,7 @@ Index: grub-2.02~rc1/util/grub-install.c
    if (!bootloader_id && config.grub_distributor)
      {
        char *ptr;
-@@ -1347,6 +1352,16 @@ main (int argc, char *argv[])
+@@ -1426,6 +1431,16 @@
        fprintf (load_cfg_f, "set debug='%s'\n",
  	      debug_image);
      }
@@ -106,11 +98,9 @@ Index: grub-2.02~rc1/util/grub-install.c
    char *prefix_drive = NULL;
    char *install_drive = NULL;
  
-Index: grub-2.02~rc1/grub-core/osdep/linux/getroot.c
-===================================================================
---- grub-2.02~rc1.orig/grub-core/osdep/linux/getroot.c
-+++ grub-2.02~rc1/grub-core/osdep/linux/getroot.c
-@@ -376,6 +376,7 @@ get_btrfs_fs_prefix (const char *mount_p
+--- a/grub-core/osdep/linux/getroot.c
++++ b/grub-core/osdep/linux/getroot.c
+@@ -373,6 +373,7 @@
    return NULL;
  }
  
@@ -118,7 +108,7 @@ Index: grub-2.02~rc1/grub-core/osdep/linux/getroot.c
  
  char **
  grub_find_root_devices_from_mountinfo (const char *dir, char **relroot)
-@@ -519,6 +520,12 @@ again:
+@@ -516,6 +517,12 @@
  	{
  	  ret = grub_find_root_devices_from_btrfs (dir);
  	  fs_prefix = get_btrfs_fs_prefix (entries[i].enc_path);
@@ -131,11 +121,9 @@ Index: grub-2.02~rc1/grub-core/osdep/linux/getroot.c
  	}
        else if (!retry && grub_strcmp (entries[i].fstype, "autofs") == 0)
  	{
-Index: grub-2.02~rc1/util/grub-mkrelpath.c
-===================================================================
---- grub-2.02~rc1.orig/util/grub-mkrelpath.c
-+++ grub-2.02~rc1/util/grub-mkrelpath.c
-@@ -40,9 +40,12 @@ struct arguments
+--- a/util/grub-mkrelpath.c
++++ b/util/grub-mkrelpath.c
+@@ -40,9 +40,12 @@
  };
  
  static struct argp_option options[] = {
@@ -148,7 +136,7 @@ Index: grub-2.02~rc1/util/grub-mkrelpath.c
  static error_t
  argp_parser (int key, char *arg, struct argp_state *state)
  {
-@@ -52,6 +55,9 @@ argp_parser (int key, char *arg, struct
+@@ -52,6 +55,9 @@
  
    switch (key)
      {

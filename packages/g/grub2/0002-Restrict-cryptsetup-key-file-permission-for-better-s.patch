@@ -14,11 +14,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  grub-core/loader/linux.c | 6 +++++-
  1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/grub-core/loader/linux.c b/grub-core/loader/linux.c
-index e4018e65e..fc71a78d7 100644
 --- a/grub-core/loader/linux.c
 +++ b/grub-core/loader/linux.c
-@@ -32,6 +32,7 @@ struct grub_linux_initrd_component
+@@ -32,6 +32,7 @@
    char *buf;
    char *newc_name;
    grub_off_t size;
@@ -26,7 +24,7 @@ index e4018e65e..fc71a78d7 100644
  };
  
  struct dir
-@@ -202,6 +203,7 @@ grub_initrd_component (const char *buf, int bufsz, const char *newc_name,
+@@ -203,6 +204,7 @@
    grub_memcpy (comp->buf, buf, bufsz);
    initrd_ctx->nfiles++;
    comp->size = bufsz;
@@ -34,7 +32,7 @@ index e4018e65e..fc71a78d7 100644
    if (grub_add (initrd_ctx->size, comp->size,
  		&initrd_ctx->size))
      goto overflow;
-@@ -271,6 +273,7 @@ grub_initrd_init (int argc, char *argv[],
+@@ -272,6 +274,7 @@
  		  grub_initrd_close (initrd_ctx);
  		  return grub_errno;
  		}
@@ -42,7 +40,7 @@ index e4018e65e..fc71a78d7 100644
  	      name_len = grub_strlen (initrd_ctx->components[i].newc_name) + 1;
  	      if (grub_add (initrd_ctx->size,
  			    ALIGN_UP (sizeof (struct newc_head) + name_len, 4),
-@@ -372,6 +375,7 @@ grub_initrd_load (struct grub_linux_initrd_context *initrd_ctx,
+@@ -374,6 +377,7 @@
        if (initrd_ctx->components[i].newc_name)
  	{
  	  grub_size_t dir_size;
@@ -50,7 +48,7 @@ index e4018e65e..fc71a78d7 100644
  
  	  if (insert_dir (initrd_ctx->components[i].newc_name, &root, ptr,
  			  &dir_size))
-@@ -383,7 +387,7 @@ grub_initrd_load (struct grub_linux_initrd_context *initrd_ctx,
+@@ -385,7 +389,7 @@
  	  ptr += dir_size;
  	  ptr = make_header (ptr, initrd_ctx->components[i].newc_name,
  			     grub_strlen (initrd_ctx->components[i].newc_name) + 1,
@@ -59,6 +57,3 @@ index e4018e65e..fc71a78d7 100644
  			     initrd_ctx->components[i].size);
  	  newc = 1;
  	}
--- 
-2.39.2
-

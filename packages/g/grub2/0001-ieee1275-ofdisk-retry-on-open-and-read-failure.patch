@@ -17,8 +17,6 @@ Signed-off-by: Mukesh Kumar Chaurasiya <mchauras@linux.vnet.ibm.com>
  grub-core/disk/ieee1275/ofdisk.c | 65 +++++++++++++++++++++++++++++++-
  1 file changed, 63 insertions(+), 2 deletions(-)
 
-diff --git a/grub-core/disk/ieee1275/ofdisk.c b/grub-core/disk/ieee1275/ofdisk.c
-index c6cba0c8a..f4183a531 100644
 --- a/grub-core/disk/ieee1275/ofdisk.c
 +++ b/grub-core/disk/ieee1275/ofdisk.c
 @@ -24,6 +24,9 @@
@@ -31,7 +29,7 @@ index c6cba0c8a..f4183a531 100644
  
  static char *last_devpath;
  static grub_ieee1275_ihandle_t last_ihandle;
-@@ -452,7 +455,7 @@ compute_dev_path (const char *name)
+@@ -783,7 +786,7 @@
  }
  
  static grub_err_t
@@ -40,7 +38,7 @@ index c6cba0c8a..f4183a531 100644
  {
    grub_ieee1275_phandle_t dev;
    char *devpath;
-@@ -525,6 +528,41 @@ grub_ofdisk_open (const char *name, grub_disk_t disk)
+@@ -879,6 +882,41 @@
    return 0;
  }
  
@@ -82,7 +80,7 @@ index c6cba0c8a..f4183a531 100644
  static void
  grub_ofdisk_close (grub_disk_t disk)
  {
-@@ -568,7 +606,7 @@ grub_ofdisk_prepare (grub_disk_t disk, grub_disk_addr_t sector)
+@@ -915,7 +953,7 @@
  }
  
  static grub_err_t
@@ -91,11 +89,10 @@ index c6cba0c8a..f4183a531 100644
  		  grub_size_t size, char *buf)
  {
    grub_err_t err;
-@@ -587,6 +625,29 @@ grub_ofdisk_read (grub_disk_t disk, grub_disk_addr_t sector,
-   return 0;
+@@ -935,6 +973,29 @@
  }
  
-+static grub_err_t
+ static grub_err_t
 +grub_ofdisk_read (grub_disk_t disk, grub_disk_addr_t sector,
 +		  grub_size_t size, char *buf)
 +{
@@ -118,9 +115,7 @@ index c6cba0c8a..f4183a531 100644
 +  return err;
 +}
 +
- static grub_err_t
++static grub_err_t
  grub_ofdisk_write (grub_disk_t disk, grub_disk_addr_t sector,
  		   grub_size_t size, const char *buf)
--- 
-2.39.2
-
+ {

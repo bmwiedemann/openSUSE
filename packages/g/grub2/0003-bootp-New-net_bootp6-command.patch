@@ -19,10 +19,8 @@ V1:
  include/grub/net.h    |  72 ++++
  3 files changed, 1018 insertions(+), 1 deletion(-)
 
-Index: grub-2.06/grub-core/net/bootp.c
-===================================================================
---- grub-2.06.orig/grub-core/net/bootp.c
-+++ grub-2.06/grub-core/net/bootp.c
+--- a/grub-core/net/bootp.c
++++ b/grub-core/net/bootp.c
 @@ -24,6 +24,98 @@
  #include <grub/net/netbuff.h>
  #include <grub/net/udp.h>
@@ -122,7 +120,7 @@ Index: grub-2.06/grub-core/net/bootp.c
  
  struct grub_dhcp_discover_options
  {
-@@ -607,6 +699,578 @@ out:
+@@ -610,6 +702,578 @@
    return err;
  }
  
@@ -701,7 +699,7 @@ Index: grub-2.06/grub-core/net/bootp.c
  /*
   * This is called directly from net/ip.c:handle_dgram(), because those
   * BOOTP/DHCP packets are a bit special due to their improper
-@@ -675,6 +1339,77 @@ grub_net_process_dhcp (struct grub_net_b
+@@ -678,6 +1342,77 @@
      }
  }
  
@@ -779,7 +777,7 @@ Index: grub-2.06/grub-core/net/bootp.c
  static grub_err_t
  grub_cmd_dhcpopt (struct grub_command *cmd __attribute__ ((unused)),
  		  int argc, char **args)
-@@ -900,7 +1635,174 @@ grub_cmd_bootp (struct grub_command *cmd
+@@ -903,7 +1638,174 @@
    return err;
  }
  
@@ -955,7 +953,7 @@ Index: grub-2.06/grub-core/net/bootp.c
  
  void
  grub_bootp_init (void)
-@@ -914,6 +1816,9 @@ grub_bootp_init (void)
+@@ -917,6 +1819,9 @@
    cmd_getdhcp = grub_register_command ("net_get_dhcp_option", grub_cmd_dhcpopt,
  				       N_("VAR INTERFACE NUMBER DESCRIPTION"),
  				       N_("retrieve DHCP option and save it into VAR. If VAR is - then print the value."));
@@ -965,17 +963,15 @@ Index: grub-2.06/grub-core/net/bootp.c
  }
  
  void
-@@ -922,4 +1827,5 @@ grub_bootp_fini (void)
+@@ -925,4 +1830,5 @@
    grub_unregister_command (cmd_getdhcp);
    grub_unregister_command (cmd_bootp);
    grub_unregister_command (cmd_dhcp);
 +  grub_unregister_command (cmd_bootp6);
  }
-Index: grub-2.06/grub-core/net/ip.c
-===================================================================
---- grub-2.06.orig/grub-core/net/ip.c
-+++ grub-2.06/grub-core/net/ip.c
-@@ -239,6 +239,45 @@ handle_dgram (struct grub_net_buff *nb,
+--- a/grub-core/net/ip.c
++++ b/grub-core/net/ip.c
+@@ -240,6 +240,45 @@
    {
      struct udphdr *udph;
      udph = (struct udphdr *) nb->data;
@@ -1021,11 +1017,9 @@ Index: grub-2.06/grub-core/net/ip.c
      if (proto == GRUB_NET_IP_UDP && grub_be_to_cpu16 (udph->dst) == 68)
        {
  	const struct grub_net_bootp_packet *bootp;
-Index: grub-2.06/include/grub/net.h
-===================================================================
---- grub-2.06.orig/include/grub/net.h
-+++ grub-2.06/include/grub/net.h
-@@ -448,6 +448,66 @@ struct grub_net_bootp_packet
+--- a/include/grub/net.h
++++ b/include/grub/net.h
+@@ -450,6 +450,66 @@
    grub_uint8_t vendor[0];
  } GRUB_PACKED;
  
@@ -1092,7 +1086,7 @@ Index: grub-2.06/include/grub/net.h
  #define	GRUB_NET_BOOTP_RFC1048_MAGIC_0	0x63
  #define	GRUB_NET_BOOTP_RFC1048_MAGIC_1	0x82
  #define	GRUB_NET_BOOTP_RFC1048_MAGIC_2	0x53
-@@ -483,6 +543,14 @@ grub_net_configure_by_dhcp_ack (const ch
+@@ -485,6 +545,14 @@
  				grub_size_t size,
  				int is_def, char **device, char **path);
  
@@ -1107,7 +1101,7 @@ Index: grub-2.06/include/grub/net.h
  grub_err_t
  grub_net_add_ipv4_local (struct grub_net_network_level_interface *inf,
  			 int mask);
-@@ -491,6 +559,10 @@ void
+@@ -493,6 +561,10 @@
  grub_net_process_dhcp (struct grub_net_buff *nb,
  		       struct grub_net_network_level_interface *iface);
  

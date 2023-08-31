@@ -24,11 +24,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  util/grub-install.c                 | 31 ++++++++++++++++++--------
  5 files changed, 70 insertions(+), 9 deletions(-)
 
-diff --git a/grub-core/osdep/basic/no_platform.c b/grub-core/osdep/basic/no_platform.c
-index a173dafe90..dfbdd58e4e 100644
 --- a/grub-core/osdep/basic/no_platform.c
 +++ b/grub-core/osdep/basic/no_platform.c
-@@ -51,3 +51,8 @@ grub_install_zipl (const char *d, int i, int f)
+@@ -51,3 +51,8 @@
    grub_util_error ("%s", _("no zIPL routines are available for your platform"));
  }
  
@@ -37,11 +35,9 @@ index a173dafe90..dfbdd58e4e 100644
 +{
 +  return NULL;
 +}
-diff --git a/grub-core/osdep/unix/platform.c b/grub-core/osdep/unix/platform.c
-index 4df143671a..68186480b2 100644
 --- a/grub-core/osdep/unix/platform.c
 +++ b/grub-core/osdep/unix/platform.c
-@@ -250,3 +250,37 @@ grub_install_zipl (const char *dest, int install, int force)
+@@ -250,3 +250,37 @@
  	"-z", dest, NULL }))
      grub_util_error (_("`%s' failed.\n"), PACKAGE"-zipl-setup");
  }
@@ -79,11 +75,9 @@ index 4df143671a..68186480b2 100644
 +
 +  return buf;
 +}
-diff --git a/grub-core/osdep/windows/platform.c b/grub-core/osdep/windows/platform.c
-index 733c36d72c..1d2e356e6b 100644
 --- a/grub-core/osdep/windows/platform.c
 +++ b/grub-core/osdep/windows/platform.c
-@@ -430,3 +430,9 @@ grub_install_zipl (const char *d, int i, int f)
+@@ -440,3 +440,9 @@
  {
    grub_util_error ("%s", _("no zIPL routines are available for your platform"));
  }
@@ -93,25 +87,21 @@ index 733c36d72c..1d2e356e6b 100644
 +{
 +  return NULL;
 +}
-diff --git a/include/grub/util/install.h b/include/grub/util/install.h
-index 154487b72b..456955c3d7 100644
 --- a/include/grub/util/install.h
 +++ b/include/grub/util/install.h
-@@ -252,6 +252,9 @@ grub_install_sgi_setup (const char *install_device,
+@@ -251,6 +251,9 @@
  void
  grub_install_zipl (const char *d, int i, int f);
  
 +char *
 +grub_install_get_filesystem (const char *path);
 +
- int 
+ int
  grub_install_compress_gzip (const char *src, const char *dest);
- int 
-diff --git a/util/grub-install.c b/util/grub-install.c
-index 7bc5f84378..213f54a782 100644
+ int
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
-@@ -871,7 +871,6 @@ main (int argc, char *argv[])
+@@ -887,7 +887,6 @@
    const char *efi_file = NULL;
    char **grub_devices;
    grub_fs_t grub_fs;
@@ -119,7 +109,7 @@ index 7bc5f84378..213f54a782 100644
    grub_device_t grub_dev = NULL;
    enum grub_install_plat platform;
    char *grubdir, *device_map;
-@@ -1049,8 +1048,10 @@ main (int argc, char *argv[])
+@@ -1067,8 +1066,10 @@
    grub_host_init ();
  
    {
@@ -132,7 +122,7 @@ index 7bc5f84378..213f54a782 100644
      char *t = grub_util_path_concat (2, "/", rootdir);
  
      rootdir_path = grub_canonicalize_file_name (t);
-@@ -1071,20 +1072,32 @@ main (int argc, char *argv[])
+@@ -1089,20 +1090,32 @@
  		       rootdir_devices[0]);
  
      rootdir_grub_dev = grub_device_open (rootdir_grub_devname);
@@ -171,6 +161,3 @@ index 7bc5f84378..213f54a782 100644
    }
  
    switch (platform)
--- 
-2.34.1
-

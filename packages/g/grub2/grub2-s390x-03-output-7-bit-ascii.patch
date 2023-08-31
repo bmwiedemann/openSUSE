@@ -13,10 +13,8 @@ Vn+2:
  include/grub/term.h               |    4 
  5 files changed, 294 insertions(+), 12 deletions(-)
 
-Index: grub-2.06~rc1/grub-core/osdep/unix/emuconsole.c
-===================================================================
---- grub-2.06~rc1.orig/grub-core/osdep/unix/emuconsole.c
-+++ grub-2.06~rc1/grub-core/osdep/unix/emuconsole.c
+--- a/grub-core/osdep/unix/emuconsole.c
++++ b/grub-core/osdep/unix/emuconsole.c
 @@ -39,17 +39,61 @@
  
  #include <grub/emu/console.h>
@@ -80,7 +78,7 @@ Index: grub-2.06~rc1/grub-core/osdep/unix/emuconsole.c
  
    actual = write (STDOUT_FILENO, &chr, 1);
    if (actual < 1)
-@@ -60,17 +104,152 @@ put (struct grub_term_output *term __att
+@@ -60,17 +104,152 @@
  }
  
  static int
@@ -234,7 +232,7 @@ Index: grub-2.06~rc1/grub-core/osdep/unix/emuconsole.c
  static grub_err_t
  grub_console_init_input (struct grub_term_input *term)
  {
-@@ -105,7 +284,8 @@ static grub_err_t
+@@ -105,7 +284,8 @@
  grub_console_init_output (struct grub_term_output *term)
  {
    struct winsize size;
@@ -244,7 +242,7 @@ Index: grub-2.06~rc1/grub-core/osdep/unix/emuconsole.c
      {
        grub_console_terminfo_output.size.x = size.ws_col;
        grub_console_terminfo_output.size.y = size.ws_row;
-@@ -115,6 +295,8 @@ grub_console_init_output (struct grub_te
+@@ -115,6 +295,8 @@
        grub_console_terminfo_output.size.x = 80;
        grub_console_terminfo_output.size.y = 24;
      }
@@ -253,7 +251,7 @@ Index: grub-2.06~rc1/grub-core/osdep/unix/emuconsole.c
  
    grub_terminfo_output_init (term);
  
-@@ -161,24 +343,72 @@ static struct grub_term_output grub_cons
+@@ -161,24 +343,72 @@
  void
  grub_console_init (void)
  {
@@ -327,11 +325,9 @@ Index: grub-2.06~rc1/grub-core/osdep/unix/emuconsole.c
 +    }
    saved_orig = 0;
  }
-Index: grub-2.06~rc1/grub-core/normal/menu_text.c
-===================================================================
---- grub-2.06~rc1.orig/grub-core/normal/menu_text.c
-+++ grub-2.06~rc1/grub-core/normal/menu_text.c
-@@ -113,6 +113,7 @@ draw_border (struct grub_term_output *te
+--- a/grub-core/normal/menu_text.c
++++ b/grub-core/normal/menu_text.c
+@@ -113,6 +113,7 @@
  {
    int i;
  
@@ -339,7 +335,7 @@ Index: grub-2.06~rc1/grub-core/normal/menu_text.c
    grub_term_setcolorstate (term, GRUB_TERM_COLOR_NORMAL);
  
    grub_term_gotoxy (term, (struct grub_term_coordinate) { geo->first_entry_x - 1,
-@@ -142,7 +143,7 @@ draw_border (struct grub_term_output *te
+@@ -142,7 +143,7 @@
    grub_putcode (GRUB_UNICODE_CORNER_LR, term);
  
    grub_term_setcolorstate (term, GRUB_TERM_COLOR_NORMAL);
@@ -348,7 +344,7 @@ Index: grub-2.06~rc1/grub-core/normal/menu_text.c
    grub_term_gotoxy (term,
  		    (struct grub_term_coordinate) { geo->first_entry_x - 1,
  			(geo->first_entry_y - 1 + geo->num_entries
-@@ -155,6 +156,15 @@ print_message (int nested, int edit, str
+@@ -155,6 +156,15 @@
    int ret = 0;
    grub_term_setcolorstate (term, GRUB_TERM_COLOR_NORMAL);
  
@@ -364,7 +360,7 @@ Index: grub-2.06~rc1/grub-core/normal/menu_text.c
    if (edit)
      {
        ret += grub_print_message_indented_real (_("Minimum Emacs-like screen editing is \
-@@ -165,10 +175,15 @@ command-line or ESC to discard edits and
+@@ -165,10 +175,15 @@
      }
    else
      {
@@ -381,7 +377,7 @@ Index: grub-2.06~rc1/grub-core/normal/menu_text.c
  				       GRUB_UNICODE_UPARROW,
  				       GRUB_UNICODE_DOWNARROW);
        if (!msg_translated)
-@@ -177,6 +192,7 @@ command-line or ESC to discard edits and
+@@ -177,6 +192,7 @@
  					       STANDARD_MARGIN, term, dry_run);
  
        grub_free (msg_translated);
@@ -389,7 +385,7 @@ Index: grub-2.06~rc1/grub-core/normal/menu_text.c
  
        if (nested)
  	{
-@@ -211,6 +227,10 @@ print_entry (int y, int highlight, grub_
+@@ -211,6 +227,10 @@
  
    title = entry ? entry->title : "";
    title_len = grub_strlen (title);
@@ -400,7 +396,7 @@ Index: grub-2.06~rc1/grub-core/normal/menu_text.c
    unicode_title = grub_calloc (title_len, sizeof (*unicode_title));
    if (! unicode_title)
      /* XXX How to show this error?  */
-@@ -244,6 +264,14 @@ print_entry (int y, int highlight, grub_
+@@ -244,6 +264,14 @@
    if (data->geo.num_entries > 1)
      grub_putcode (highlight ? '*' : ' ', data->term);
  
@@ -415,7 +411,7 @@ Index: grub-2.06~rc1/grub-core/normal/menu_text.c
    grub_print_ucs4_menu (unicode_title,
  			unicode_title + len,
  			0,
-@@ -416,6 +444,8 @@ grub_menu_init_page (int nested, int edi
+@@ -416,6 +444,8 @@
    grub_term_highlight_color = old_color_highlight;
    geo->timeout_y = geo->first_entry_y + geo->num_entries
      + geo->border + empty_lines;
@@ -424,7 +420,7 @@ Index: grub-2.06~rc1/grub-core/normal/menu_text.c
    if (bottom_message)
      {
        grub_term_gotoxy (term,
-@@ -425,6 +455,8 @@ grub_menu_init_page (int nested, int edi
+@@ -425,6 +455,8 @@
        print_message (nested, edit, term, 0);
        geo->timeout_y += msg_num_lines;
      }
@@ -433,7 +429,7 @@ Index: grub-2.06~rc1/grub-core/normal/menu_text.c
    geo->right_margin = grub_term_width (term)
      - geo->first_entry_x
      - geo->entry_width - 1;
-@@ -436,12 +468,19 @@ menu_text_print_timeout (int timeout, vo
+@@ -436,12 +468,19 @@
    struct menu_viewer_data *data = dataptr;
    char *msg_translated = 0;
  
@@ -455,16 +451,16 @@ Index: grub-2.06~rc1/grub-core/normal/menu_text.c
    else
      msg_translated = grub_xasprintf (_("The highlighted entry will be executed automatically in %ds."), timeout);
    if (!msg_translated)
-@@ -471,6 +510,8 @@ menu_text_print_timeout (int timeout, vo
+@@ -471,6 +510,8 @@
  			       data->term);
    grub_free (msg_translated);
  
 +  if (data->term->flags & GRUB_TERM_DUMB)
 +    return;
    grub_term_gotoxy (data->term,
- 		    (struct grub_term_coordinate) { 
+ 		    (struct grub_term_coordinate) {
  		      grub_term_cursor_x (&data->geo),
-@@ -498,7 +539,7 @@ menu_text_set_chosen_entry (int entry, v
+@@ -498,7 +539,7 @@
        data->first = entry;
        complete_redraw = 1;
      }
@@ -473,7 +469,7 @@ Index: grub-2.06~rc1/grub-core/normal/menu_text.c
      print_entries (data->menu, data);
    else
      {
-@@ -528,6 +569,9 @@ menu_text_clear_timeout (void *dataptr)
+@@ -528,6 +569,9 @@
    struct menu_viewer_data *data = dataptr;
    int i;
  
@@ -483,11 +479,9 @@ Index: grub-2.06~rc1/grub-core/normal/menu_text.c
    for (i = 0; i < data->geo.timeout_lines;i++)
      {
        grub_term_gotoxy (data->term, (struct grub_term_coordinate) {
-Index: grub-2.06~rc1/grub-core/normal/term.c
-===================================================================
---- grub-2.06~rc1.orig/grub-core/normal/term.c
-+++ grub-2.06~rc1/grub-core/normal/term.c
-@@ -981,7 +981,7 @@ grub_print_ucs4_menu (const grub_uint32_
+--- a/grub-core/normal/term.c
++++ b/grub-core/normal/term.c
+@@ -981,7 +981,7 @@
  {
    print_ucs4_real (str, last_position, margin_left, margin_right,
  		   term, 0, 0, 1, skip_lines, max_lines,
@@ -496,11 +490,9 @@ Index: grub-2.06~rc1/grub-core/normal/term.c
  }
  
  void
-Index: grub-2.06~rc1/grub-core/kern/emu/main.c
-===================================================================
---- grub-2.06~rc1.orig/grub-core/kern/emu/main.c
-+++ grub-2.06~rc1/grub-core/kern/emu/main.c
-@@ -190,6 +190,12 @@ static struct argp argp = {
+--- a/grub-core/kern/emu/main.c
++++ b/grub-core/kern/emu/main.c
+@@ -190,6 +190,12 @@
    NULL, help_filter, NULL
  };
  
@@ -513,7 +505,7 @@ Index: grub-2.06~rc1/grub-core/kern/emu/main.c
  
  
  #pragma GCC diagnostic ignored "-Wmissing-prototypes"
-@@ -259,7 +265,7 @@ main (int argc, char *argv[])
+@@ -259,7 +265,7 @@
        sleep (1);
      }
  
@@ -522,11 +514,9 @@ Index: grub-2.06~rc1/grub-core/kern/emu/main.c
    grub_console_init ();
    grub_host_init ();
  
-Index: grub-2.06~rc1/include/grub/term.h
-===================================================================
---- grub-2.06~rc1.orig/include/grub/term.h
-+++ grub-2.06~rc1/include/grub/term.h
-@@ -102,8 +102,10 @@ grub_term_color_state;
+--- a/include/grub/term.h
++++ b/include/grub/term.h
+@@ -102,8 +102,10 @@
  #define GRUB_TERM_NO_EDIT	        (1 << 1)
  /* Set when the terminal cannot do fancy things.  */
  #define GRUB_TERM_DUMB		        (1 << 2)

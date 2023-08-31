@@ -1,8 +1,6 @@
-Index: grub-2.02~beta2/grub-core/Makefile.core.def
-===================================================================
---- grub-2.02~beta2.orig/grub-core/Makefile.core.def
-+++ grub-2.02~beta2/grub-core/Makefile.core.def
-@@ -1921,13 +1921,13 @@ module = {
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -2142,13 +2142,13 @@
  module = {
    name = video_cirrus;
    x86 = video/cirrus.c;
@@ -18,11 +16,9 @@ Index: grub-2.02~beta2/grub-core/Makefile.core.def
  };
  
  module = {
-Index: grub-2.02~beta2/gentpl.py
-===================================================================
---- grub-2.02~beta2.orig/gentpl.py
-+++ grub-2.02~beta2/gentpl.py
-@@ -80,6 +80,10 @@ GROUPS["fdt"] = [ "arm64_efi", "arm_uboo
+--- a/gentpl.py
++++ b/gentpl.py
+@@ -92,6 +92,10 @@
  GROUPS["i386_coreboot_multiboot_qemu"] = ["i386_coreboot", "i386_multiboot", "i386_qemu"]
  GROUPS["nopc"] = GRUB_PLATFORMS[:]; GROUPS["nopc"].remove("i386_pc")
  

@@ -49,28 +49,24 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  create mode 100644 grub-core/lib/libtasn1_wrap/wrap_tests.h
  create mode 100644 tests/test_asn1.in
 
-diff --git a/Makefile.util.def b/Makefile.util.def
-index ac2b6aab1..ef5c818e0 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
-@@ -1272,6 +1272,12 @@ script = {
-   common = tests/syslinux_test.in;
+@@ -1304,6 +1304,12 @@
+   common = tests/luks2_test.in;
  };
  
 +script = {
-+  testcase;
++  testcase = native;
 +  name = test_asn1;
 +  common = tests/test_asn1.in;
 +};
 +
  program = {
-   testcase;
+   testcase = native;
    name = example_unit_test;
-diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index f0df8ed94..6a3ff4265 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2590,3 +2590,16 @@ module = {
+@@ -2639,3 +2639,16 @@
    // -Wno-type-limits comes from libtasn1's configure.ac
    cppflags = '$(CPPFLAGS_POSIX) $(CPPFLAGS_GNULIB) -I$(srcdir)/lib/libtasn1/lib -Wno-type-limits';
  };
@@ -87,9 +83,6 @@ index f0df8ed94..6a3ff4265 100644
 +  common = lib/libtasn1_wrap/tests/Test_strings.c;
 +  common = lib/libtasn1_wrap/wrap_tests.c;
 +};
-diff --git a/grub-core/lib/libtasn1_wrap/tests/CVE-2018-1000654-1_asn1_tab.h b/grub-core/lib/libtasn1_wrap/tests/CVE-2018-1000654-1_asn1_tab.h
-new file mode 100644
-index 000000000..1e7d3d64f
 --- /dev/null
 +++ b/grub-core/lib/libtasn1_wrap/tests/CVE-2018-1000654-1_asn1_tab.h
 @@ -0,0 +1,32 @@
@@ -125,9 +118,6 @@ index 000000000..1e7d3d64f
 +  { NULL, 1, "1"},
 +  { NULL, 0, NULL }
 +};
-diff --git a/grub-core/lib/libtasn1_wrap/tests/CVE-2018-1000654-2_asn1_tab.h b/grub-core/lib/libtasn1_wrap/tests/CVE-2018-1000654-2_asn1_tab.h
-new file mode 100644
-index 000000000..e2561e5ec
 --- /dev/null
 +++ b/grub-core/lib/libtasn1_wrap/tests/CVE-2018-1000654-2_asn1_tab.h
 @@ -0,0 +1,36 @@
@@ -167,9 +157,6 @@ index 000000000..e2561e5ec
 +  { NULL, 1, "3"},
 +  { NULL, 0, NULL }
 +};
-diff --git a/grub-core/lib/libtasn1_wrap/tests/CVE-2018-1000654.c b/grub-core/lib/libtasn1_wrap/tests/CVE-2018-1000654.c
-new file mode 100644
-index 000000000..534e30452
 --- /dev/null
 +++ b/grub-core/lib/libtasn1_wrap/tests/CVE-2018-1000654.c
 @@ -0,0 +1,61 @@
@@ -234,9 +221,6 @@ index 000000000..534e30452
 +
 +  asn1_delete_structure (&definitions);
 +}
-diff --git a/grub-core/lib/libtasn1_wrap/tests/Test_overflow.c b/grub-core/lib/libtasn1_wrap/tests/Test_overflow.c
-new file mode 100644
-index 000000000..f48aea0ef
 --- /dev/null
 +++ b/grub-core/lib/libtasn1_wrap/tests/Test_overflow.c
 @@ -0,0 +1,138 @@
@@ -378,9 +362,6 @@ index 000000000..f48aea0ef
 +      }
 +  }
 +}
-diff --git a/grub-core/lib/libtasn1_wrap/tests/Test_simple.c b/grub-core/lib/libtasn1_wrap/tests/Test_simple.c
-new file mode 100644
-index 000000000..9f01006dd
 --- /dev/null
 +++ b/grub-core/lib/libtasn1_wrap/tests/Test_simple.c
 @@ -0,0 +1,207 @@
@@ -591,9 +572,6 @@ index 000000000..9f01006dd
 +      return;
 +    }
 +}
-diff --git a/grub-core/lib/libtasn1_wrap/tests/Test_strings.c b/grub-core/lib/libtasn1_wrap/tests/Test_strings.c
-new file mode 100644
-index 000000000..dbe1474b2
 --- /dev/null
 +++ b/grub-core/lib/libtasn1_wrap/tests/Test_strings.c
 @@ -0,0 +1,150 @@
@@ -747,9 +725,6 @@ index 000000000..dbe1474b2
 +      grub_free(b);
 +    }
 +}
-diff --git a/grub-core/lib/libtasn1_wrap/tests/object-id-decoding.c b/grub-core/lib/libtasn1_wrap/tests/object-id-decoding.c
-new file mode 100644
-index 000000000..d367bbfb5
 --- /dev/null
 +++ b/grub-core/lib/libtasn1_wrap/tests/object-id-decoding.c
 @@ -0,0 +1,116 @@
@@ -869,9 +844,6 @@ index 000000000..d367bbfb5
 +
 +    }
 +}
-diff --git a/grub-core/lib/libtasn1_wrap/tests/object-id-encoding.c b/grub-core/lib/libtasn1_wrap/tests/object-id-encoding.c
-new file mode 100644
-index 000000000..3a83b58c5
 --- /dev/null
 +++ b/grub-core/lib/libtasn1_wrap/tests/object-id-encoding.c
 @@ -0,0 +1,120 @@
@@ -995,9 +967,6 @@ index 000000000..3a83b58c5
 +	}
 +    }
 +}
-diff --git a/grub-core/lib/libtasn1_wrap/tests/octet-string.c b/grub-core/lib/libtasn1_wrap/tests/octet-string.c
-new file mode 100644
-index 000000000..d8a049e8d
 --- /dev/null
 +++ b/grub-core/lib/libtasn1_wrap/tests/octet-string.c
 @@ -0,0 +1,211 @@
@@ -1212,9 +1181,6 @@ index 000000000..d8a049e8d
 +
 +    }
 +}
-diff --git a/grub-core/lib/libtasn1_wrap/tests/reproducers.c b/grub-core/lib/libtasn1_wrap/tests/reproducers.c
-new file mode 100644
-index 000000000..dc7268d4c
 --- /dev/null
 +++ b/grub-core/lib/libtasn1_wrap/tests/reproducers.c
 @@ -0,0 +1,81 @@
@@ -1299,9 +1265,6 @@ index 000000000..dc7268d4c
 +
 +  asn1_delete_structure (&definitions);
 +}
-diff --git a/grub-core/lib/libtasn1_wrap/wrap_tests.c b/grub-core/lib/libtasn1_wrap/wrap_tests.c
-new file mode 100644
-index 000000000..75fcd21f0
 --- /dev/null
 +++ b/grub-core/lib/libtasn1_wrap/wrap_tests.c
 @@ -0,0 +1,75 @@
@@ -1380,9 +1343,6 @@ index 000000000..75fcd21f0
 +{
 +  grub_unregister_command (cmd);
 +}
-diff --git a/grub-core/lib/libtasn1_wrap/wrap_tests.h b/grub-core/lib/libtasn1_wrap/wrap_tests.h
-new file mode 100644
-index 000000000..555e56dd2
 --- /dev/null
 +++ b/grub-core/lib/libtasn1_wrap/wrap_tests.h
 @@ -0,0 +1,38 @@
@@ -1424,9 +1384,6 @@ index 000000000..555e56dd2
 +void test_strings (void);
 +
 +#endif
-diff --git a/tests/test_asn1.in b/tests/test_asn1.in
-new file mode 100644
-index 000000000..8173c5c27
 --- /dev/null
 +++ b/tests/test_asn1.in
 @@ -0,0 +1,12 @@
@@ -1442,6 +1399,3 @@ index 000000000..8173c5c27
 +  exit 1
 +fi
 +
--- 
-2.31.1
-

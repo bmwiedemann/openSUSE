@@ -32,20 +32,18 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  include/grub/efi/api.h             |  76 +++++++++++++++++
  2 files changed, 239 insertions(+)
 
-Index: grub-2.06~rc1/grub-core/net/drivers/efi/efinet.c
-===================================================================
---- grub-2.06~rc1.orig/grub-core/net/drivers/efi/efinet.c
-+++ grub-2.06~rc1/grub-core/net/drivers/efi/efinet.c
-@@ -30,6 +30,8 @@ GRUB_MOD_LICENSE ("GPLv3+");
+--- a/grub-core/net/drivers/efi/efinet.c
++++ b/grub-core/net/drivers/efi/efinet.c
+@@ -30,6 +30,8 @@
  /* GUID.  */
- static grub_efi_guid_t net_io_guid = GRUB_EFI_SIMPLE_NETWORK_GUID;
- static grub_efi_guid_t pxe_io_guid = GRUB_EFI_PXE_GUID;
-+static grub_efi_guid_t ip4_config_guid = GRUB_EFI_IP4_CONFIG2_PROTOCOL_GUID;
-+static grub_efi_guid_t ip6_config_guid = GRUB_EFI_IP6_CONFIG_PROTOCOL_GUID;
+ static grub_guid_t net_io_guid = GRUB_EFI_SIMPLE_NETWORK_GUID;
+ static grub_guid_t pxe_io_guid = GRUB_EFI_PXE_GUID;
++static grub_guid_t ip4_config_guid = GRUB_EFI_IP4_CONFIG2_PROTOCOL_GUID;
++static grub_guid_t ip6_config_guid = GRUB_EFI_IP6_CONFIG_PROTOCOL_GUID;
  
  static grub_err_t
  send_card_buffer (struct grub_net_card *dev,
-@@ -325,6 +327,125 @@ grub_efinet_findcards (void)
+@@ -342,6 +344,125 @@
    grub_free (handles);
  }
  
@@ -56,7 +54,7 @@ Index: grub-2.06~rc1/grub-core/net/drivers/efi/efinet.c
 +  grub_efi_handle_t handle;
 +  grub_efi_status_t status;
 +
-+  status = efi_call_3 (grub_efi_system_table->boot_services->locate_device_path,
++  status = grub_efi_system_table->boot_services->locate_device_path (
 +		      protocol, &device_path, &handle);
 +
 +  if (status != GRUB_EFI_SUCCESS)
@@ -92,7 +90,7 @@ Index: grub-2.06~rc1/grub-core/net/drivers/efi/efinet.c
 +  if (!addrs)
 +    return 0;
 +
-+  status = efi_call_4 (conf->get_data, conf,
++  status = conf->get_data (conf,
 +		      GRUB_EFI_IP4_CONFIG2_DATA_TYPE_DNSSERVER,
 +		      &data_size, addrs);
 +
@@ -103,7 +101,7 @@ Index: grub-2.06~rc1/grub-core/net/drivers/efi/efinet.c
 +      if (!addrs)
 +	return 0;
 +
-+      status = efi_call_4 (conf->get_data,  conf,
++      status = conf->get_data (conf,
 +			  GRUB_EFI_IP4_CONFIG2_DATA_TYPE_DNSSERVER,
 +			  &data_size, addrs);
 +    }
@@ -142,7 +140,7 @@ Index: grub-2.06~rc1/grub-core/net/drivers/efi/efinet.c
 +  if (!addrs)
 +    return 0;
 +
-+  status = efi_call_4 (conf->get_data, conf,
++  status = conf->get_data (conf,
 +		      GRUB_EFI_IP6_CONFIG_DATA_TYPE_DNSSERVER,
 +		      &data_size, addrs);
 +
@@ -153,7 +151,7 @@ Index: grub-2.06~rc1/grub-core/net/drivers/efi/efinet.c
 +      if (!addrs)
 +	return 0;
 +
-+      status = efi_call_4 (conf->get_data,  conf,
++      status = conf->get_data (conf,
 +			  GRUB_EFI_IP6_CONFIG_DATA_TYPE_DNSSERVER,
 +			  &data_size, addrs);
 +    }
@@ -171,7 +169,7 @@ Index: grub-2.06~rc1/grub-core/net/drivers/efi/efinet.c
  static struct grub_net_buff *
  grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *use_ipv6)
  {
-@@ -377,6 +498,8 @@ grub_efinet_create_dhcp_ack_from_device_
+@@ -394,6 +515,8 @@
        grub_efi_ipv4_device_path_t *ipv4 = (grub_efi_ipv4_device_path_t *) ldp;
        struct grub_net_bootp_packet *bp;
        grub_uint8_t *ptr;
@@ -180,7 +178,7 @@ Index: grub-2.06~rc1/grub-core/net/drivers/efi/efinet.c
  
        bp = (struct grub_net_bootp_packet *) nb->tail;
        err = grub_netbuff_put (nb, sizeof (*bp) + 4);
-@@ -438,6 +561,25 @@ grub_efinet_create_dhcp_ack_from_device_
+@@ -455,6 +578,25 @@
        *ptr++ = sizeof ("HTTPClient") - 1;
        grub_memcpy (ptr, "HTTPClient", sizeof ("HTTPClient") - 1);
  
@@ -206,7 +204,7 @@ Index: grub-2.06~rc1/grub-core/net/drivers/efi/efinet.c
        ptr = nb->tail;
        err = grub_netbuff_put (nb, 1);
        if (err)
-@@ -470,6 +612,8 @@ grub_efinet_create_dhcp_ack_from_device_
+@@ -487,6 +629,8 @@
        struct grub_net_dhcp6_option *opt;
        struct grub_net_dhcp6_option_iana *iana;
        struct grub_net_dhcp6_option_iaaddr *iaaddr;
@@ -215,7 +213,7 @@ Index: grub-2.06~rc1/grub-core/net/drivers/efi/efinet.c
  
        d6p = (struct grub_net_dhcp6_packet *)nb->tail;
        err = grub_netbuff_put (nb, sizeof(*d6p));
-@@ -533,6 +677,25 @@ grub_efinet_create_dhcp_ack_from_device_
+@@ -550,6 +694,25 @@
        opt->len = grub_cpu_to_be16 (uri_len);
        grub_memcpy (opt->data, uri_dp->uri, uri_len);
  
@@ -241,12 +239,10 @@ Index: grub-2.06~rc1/grub-core/net/drivers/efi/efinet.c
        *use_ipv6 = 1;
      }
  
-Index: grub-2.06~rc1/include/grub/efi/api.h
-===================================================================
---- grub-2.06~rc1.orig/include/grub/efi/api.h
-+++ grub-2.06~rc1/include/grub/efi/api.h
-@@ -354,6 +354,16 @@
-     { 0x86, 0x2e, 0xc0, 0x1c, 0xdc, 0x29, 0x1f, 0x44 } \
+--- a/include/grub/efi/api.h
++++ b/include/grub/efi/api.h
+@@ -379,6 +379,16 @@
+     {0xb6, 0xc7, 0x44, 0x0b, 0x29, 0xbb, 0x8c, 0x4f } \
    }
  
 +#define GRUB_EFI_IP4_CONFIG2_PROTOCOL_GUID \
@@ -262,9 +258,9 @@ Index: grub-2.06~rc1/include/grub/efi/api.h
  struct grub_efi_sal_system_table
  {
    grub_uint32_t signature;
-@@ -1793,6 +1803,72 @@ struct grub_efi_rng_protocol
- };
- typedef struct grub_efi_rng_protocol grub_efi_rng_protocol_t;
+@@ -1879,4 +1889,70 @@
+ } GRUB_PACKED;
+ typedef struct initrd_media_device_path initrd_media_device_path_t;
  
 +enum grub_efi_ip4_config2_data_type {
 +  GRUB_EFI_IP4_CONFIG2_DATA_TYPE_INTERFACEINFO,
@@ -278,21 +274,21 @@ Index: grub-2.06~rc1/include/grub/efi/api.h
 +
 +struct grub_efi_ip4_config2_protocol
 +{
-+  grub_efi_status_t (*set_data) (struct grub_efi_ip4_config2_protocol *this,
++  grub_efi_status_t (__grub_efi_api *set_data) (struct grub_efi_ip4_config2_protocol *this,
 +				 grub_efi_ip4_config2_data_type_t data_type,
 +				 grub_efi_uintn_t data_size,
 +				 void *data);
 +
-+  grub_efi_status_t (*get_data) (struct grub_efi_ip4_config2_protocol *this,
++  grub_efi_status_t (__grub_efi_api *get_data) (struct grub_efi_ip4_config2_protocol *this,
 +				 grub_efi_ip4_config2_data_type_t data_type,
 +				 grub_efi_uintn_t *data_size,
 +				 void *data);
 +
-+  grub_efi_status_t (*register_data_notify) (struct grub_efi_ip4_config2_protocol *this,
++  grub_efi_status_t (__grub_efi_api *register_data_notify) (struct grub_efi_ip4_config2_protocol *this,
 +					     grub_efi_ip4_config2_data_type_t data_type,
 +					     grub_efi_event_t event);
 +
-+  grub_efi_status_t (*unregister_datanotify) (struct grub_efi_ip4_config2_protocol *this,
++  grub_efi_status_t (__grub_efi_api *unregister_datanotify) (struct grub_efi_ip4_config2_protocol *this,
 +					     grub_efi_ip4_config2_data_type_t data_type,
 +					     grub_efi_event_t event);
 +};
@@ -312,26 +308,24 @@ Index: grub-2.06~rc1/include/grub/efi/api.h
 +
 +struct grub_efi_ip6_config_protocol
 +{
-+  grub_efi_status_t (*set_data) (struct grub_efi_ip6_config_protocol *this,
++  grub_efi_status_t (__grub_efi_api *set_data) (struct grub_efi_ip6_config_protocol *this,
 +				 grub_efi_ip6_config_data_type_t data_type,
 +				 grub_efi_uintn_t data_size,
 +				 void *data);
 +
-+  grub_efi_status_t (*get_data) (struct grub_efi_ip6_config_protocol *this,
++  grub_efi_status_t (__grub_efi_api *get_data) (struct grub_efi_ip6_config_protocol *this,
 +				 grub_efi_ip6_config_data_type_t data_type,
 +				 grub_efi_uintn_t *data_size,
 +				 void *data);
 +
-+  grub_efi_status_t (*register_data_notify) (struct grub_efi_ip6_config_protocol *this,
++  grub_efi_status_t (__grub_efi_api *register_data_notify) (struct grub_efi_ip6_config_protocol *this,
 +					     grub_efi_ip6_config_data_type_t data_type,
 +					     grub_efi_event_t event);
 +
-+  grub_efi_status_t (*unregister_datanotify) (struct grub_efi_ip6_config_protocol *this,
++  grub_efi_status_t (__grub_efi_api *unregister_datanotify) (struct grub_efi_ip6_config_protocol *this,
 +					     grub_efi_ip6_config_data_type_t data_type,
 +					     grub_efi_event_t event);
 +};
 +typedef struct grub_efi_ip6_config_protocol grub_efi_ip6_config_protocol_t;
 +
- #if (GRUB_TARGET_SIZEOF_VOID_P == 4) || defined (__ia64__) \
-   || defined (__aarch64__) || defined (__MINGW64__) || defined (__CYGWIN__) \
-   || defined(__riscv)
+ #endif /* ! GRUB_EFI_API_HEADER */

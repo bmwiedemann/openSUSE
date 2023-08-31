@@ -31,8 +31,6 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  include/grub/efi/api.h             |  11 ++
  2 files changed, 270 insertions(+), 9 deletions(-)
 
-diff --git a/grub-core/net/drivers/efi/efinet.c b/grub-core/net/drivers/efi/efinet.c
-index fc90415..2d3b00f 100644
 --- a/grub-core/net/drivers/efi/efinet.c
 +++ b/grub-core/net/drivers/efi/efinet.c
 @@ -23,6 +23,7 @@
@@ -43,7 +41,7 @@ index fc90415..2d3b00f 100644
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -324,6 +325,221 @@ grub_efinet_findcards (void)
+@@ -341,6 +342,221 @@
    grub_free (handles);
  }
  
@@ -265,7 +263,7 @@ index fc90415..2d3b00f 100644
  static void
  grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
  			  char **path)
-@@ -340,6 +556,11 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -361,6 +577,11 @@
      grub_efi_device_path_t *cdp;
      struct grub_efi_pxe *pxe;
      struct grub_efi_pxe_mode *pxe_mode;
@@ -277,7 +275,7 @@ index fc90415..2d3b00f 100644
      if (card->driver != &efidriver)
        continue;
      cdp = grub_efi_get_device_path (card->efi_handle);
-@@ -359,11 +580,21 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -380,11 +601,21 @@
  	ldp = grub_efi_find_last_device_path (dp);
  	if (GRUB_EFI_DEVICE_PATH_TYPE (ldp) != GRUB_EFI_MESSAGING_DEVICE_PATH_TYPE
  	    || (GRUB_EFI_DEVICE_PATH_SUBTYPE (ldp) != GRUB_EFI_IPV4_DEVICE_PATH_SUBTYPE
@@ -300,7 +298,7 @@ index fc90415..2d3b00f 100644
  	dup_ldp = grub_efi_find_last_device_path (dup_dp);
  	dup_ldp->type = GRUB_EFI_END_DEVICE_PATH_TYPE;
  	dup_ldp->subtype = GRUB_EFI_END_ENTIRE_DEVICE_PATH_SUBTYPE;
-@@ -375,16 +606,31 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -396,16 +627,31 @@
        }
      pxe = grub_efi_open_protocol (hnd, &pxe_io_guid,
  				  GRUB_EFI_OPEN_PROTOCOL_GET_PROTOCOL);
@@ -338,15 +336,20 @@ index fc90415..2d3b00f 100644
  					    1, device, path);
  	if (grub_errno)
  	  grub_print_error ();
-@@ -393,10 +639,14 @@ grub_efi_net_config_real (grub_efi_handle_t hnd, char **device,
+@@ -414,8 +660,8 @@
        {
- 	grub_net_configure_by_dhcp_ack (card->name, card, 0,
- 					(struct grub_net_bootp_packet *)
--					&pxe_mode->dhcp_ack,
--					sizeof (pxe_mode->dhcp_ack),
-+					packet_buf,
-+					packet_bufsz,
- 					1, device, path);
+     inter = grub_net_configure_by_dhcp_ack (card->name, card, 0,
+ 					    (struct grub_net_bootp_packet *)
+-					    &pxe_mode->dhcp_ack,
+-					    sizeof (pxe_mode->dhcp_ack),
++					    packet_buf,
++					    packet_bufsz,
+ 					    1, device, path);
+ 
+     if (inter != NULL)
+@@ -441,6 +687,10 @@
+ 	  }
+       }
        }
 +
 +    if (nb)
@@ -355,11 +358,9 @@ index fc90415..2d3b00f 100644
      return;
    }
  }
-diff --git a/include/grub/efi/api.h b/include/grub/efi/api.h
-index 92f9b5a..d5a1256 100644
 --- a/include/grub/efi/api.h
 +++ b/include/grub/efi/api.h
-@@ -825,6 +825,8 @@ struct grub_efi_ipv4_device_path
+@@ -876,6 +876,8 @@
    grub_efi_uint16_t remote_port;
    grub_efi_uint16_t protocol;
    grub_efi_uint8_t static_ip_address;
@@ -368,9 +369,9 @@ index 92f9b5a..d5a1256 100644
  } GRUB_PACKED;
  typedef struct grub_efi_ipv4_device_path grub_efi_ipv4_device_path_t;
  
-@@ -879,6 +881,15 @@ struct grub_efi_sata_device_path
+@@ -939,6 +941,15 @@
  } GRUB_PACKED;
- typedef struct grub_efi_sata_device_path grub_efi_sata_device_path_t;
+ typedef struct grub_efi_vlan_device_path grub_efi_vlan_device_path_t;
  
 +#define GRUB_EFI_URI_DEVICE_PATH_SUBTYPE		24
 +
@@ -384,6 +385,3 @@ index 92f9b5a..d5a1256 100644
  #define GRUB_EFI_VENDOR_MESSAGING_DEVICE_PATH_SUBTYPE	10
  
  /* Media Device Path.  */
--- 
-2.6.6
-

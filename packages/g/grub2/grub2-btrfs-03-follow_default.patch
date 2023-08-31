@@ -1,8 +1,6 @@
-Index: grub-2.02~beta2/grub-core/fs/btrfs.c
-===================================================================
---- grub-2.02~beta2.orig/grub-core/fs/btrfs.c
-+++ grub-2.02~beta2/grub-core/fs/btrfs.c
-@@ -913,6 +913,7 @@ grub_btrfs_mount (grub_device_t dev)
+--- a/grub-core/fs/btrfs.c
++++ b/grub-core/fs/btrfs.c
+@@ -1335,6 +1335,7 @@
  {
    struct grub_btrfs_data *data;
    grub_err_t err;
@@ -10,7 +8,7 @@ Index: grub-2.02~beta2/grub-core/fs/btrfs.c
  
    if (!dev->disk)
      {
-@@ -943,11 +944,14 @@ grub_btrfs_mount (grub_device_t dev)
+@@ -1365,11 +1366,14 @@
    data->devices_attached[0].dev = dev;
    data->devices_attached[0].id = data->sblock.this_device.device_id;
  
@@ -29,7 +27,7 @@ Index: grub-2.02~beta2/grub-core/fs/btrfs.c
      }
  
    return data;
-@@ -1407,24 +1411,39 @@ find_path (struct grub_btrfs_data *data,
+@@ -1971,24 +1975,39 @@
    grub_size_t allocated = 0;
    struct grub_btrfs_dir_item *direl = NULL;
    struct grub_btrfs_key key_out;
@@ -76,7 +74,7 @@ Index: grub-2.02~beta2/grub-core/fs/btrfs.c
      }
    else
      {
-@@ -1435,15 +1454,23 @@ find_path (struct grub_btrfs_data *data,
+@@ -1999,15 +2018,23 @@
  
    while (1)
      {
@@ -109,7 +107,7 @@ Index: grub-2.02~beta2/grub-core/fs/btrfs.c
  
        if (*type != GRUB_BTRFS_DIR_ITEM_TYPE_DIRECTORY)
  	{
-@@ -1454,7 +1481,9 @@ find_path (struct grub_btrfs_data *data,
+@@ -2018,7 +2045,9 @@
  
        if (ctokenlen == 1 && ctoken[0] == '.')
  	{
@@ -120,7 +118,7 @@ Index: grub-2.02~beta2/grub-core/fs/btrfs.c
  	  continue;
  	}
        if (ctokenlen == 2 && ctoken[0] == '.' && ctoken[1] == '.')
-@@ -1485,8 +1514,9 @@ find_path (struct grub_btrfs_data *data,
+@@ -2049,8 +2078,9 @@
  	  *type = GRUB_BTRFS_DIR_ITEM_TYPE_DIRECTORY;
  	  key->object_id = key_out.offset;
  
@@ -132,7 +130,7 @@ Index: grub-2.02~beta2/grub-core/fs/btrfs.c
  	  continue;
  	}
  
-@@ -1555,7 +1585,9 @@ find_path (struct grub_btrfs_data *data,
+@@ -2119,7 +2149,9 @@
  	  return err;
  	}
  
@@ -143,7 +141,7 @@ Index: grub-2.02~beta2/grub-core/fs/btrfs.c
        if (cdirel->type == GRUB_BTRFS_DIR_ITEM_TYPE_SYMLINK)
  	{
  	  struct grub_btrfs_inode inode;
-@@ -1605,14 +1637,26 @@ find_path (struct grub_btrfs_data *data,
+@@ -2169,14 +2201,26 @@
  	  path = path_alloc = tmp;
  	  if (path[0] == '/')
  	    {
@@ -177,7 +175,7 @@ Index: grub-2.02~beta2/grub-core/fs/btrfs.c
  		}
  	      else
  		{
-@@ -2268,6 +2312,7 @@ GRUB_MOD_INIT (btrfs)
+@@ -2933,6 +2977,7 @@
                                 subvolid_set_env);
    grub_env_export ("btrfs_subvol");
    grub_env_export ("btrfs_subvolid");

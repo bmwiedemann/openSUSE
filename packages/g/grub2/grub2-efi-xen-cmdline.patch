@@ -1,9 +1,9 @@
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
-@@ -295,7 +295,8 @@
+@@ -298,7 +298,8 @@
+   GRUB_BADRAM \
    GRUB_OS_PROBER_SKIP_LIST \
    GRUB_DISABLE_SUBMENU \
-   GRUB_CMDLINE_LINUX_RECOVERY \
 -  SUSE_BTRFS_SNAPSHOT_BOOTING
 +  SUSE_BTRFS_SNAPSHOT_BOOTING \
 +  SUSE_CMDLINE_XENEFI
@@ -12,7 +12,7 @@
    rm -f "${grub_cfg}.new"
 --- a/util/grub.d/20_linux_xen.in
 +++ b/util/grub.d/20_linux_xen.in
-@@ -216,7 +216,7 @@
+@@ -219,7 +219,7 @@
      message="$(gettext_printf "Loading Xen %s with Linux %s ..." ${xen_version} ${version})"
      sed "s/^/$submenu_indentation/" <<-EOF
  	 	echo	'$(echo "$message" | grub_quote)'

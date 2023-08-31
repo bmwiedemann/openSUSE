@@ -12,10 +12,8 @@ files - Makefile.core.am and  Makefile.util.am - it may be necessary to
 manually rename it.
 ---
 
-Index: grub-2.02~beta3/docs/Makefile.am
-===================================================================
---- grub-2.02~beta3.orig/docs/Makefile.am	2016-02-28 19:19:14.788874638 +0300
-+++ grub-2.02~beta3/docs/Makefile.am	2016-02-28 19:19:14.780874638 +0300
+--- a/docs/Makefile.am
++++ b/docs/Makefile.am
 @@ -1,7 +1,7 @@
  AUTOMAKE_OPTIONS = subdir-objects
  
@@ -25,10 +23,8 @@ Index: grub-2.02~beta3/docs/Makefile.am
  grub_TEXINFOS = fdl.texi
  
  EXTRA_DIST = font_char_metrics.png font_char_metrics.txt
-Index: grub-2.02~beta3/docs/grub.texi
-===================================================================
---- grub-2.02~beta3.orig/docs/grub.texi	2016-02-28 19:19:14.788874638 +0300
-+++ grub-2.02~beta3/docs/grub.texi	2016-02-28 19:19:14.784874638 +0300
+--- a/docs/grub.texi
++++ b/docs/grub.texi
 @@ -1,7 +1,7 @@
  \input texinfo
  @c -*-texinfo-*-

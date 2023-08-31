@@ -6,11 +6,9 @@ to subsidiary configuration files loaded using configfile.
 
 Signed-off-by: Michael Chang <mchang@suse.com>
 
-Index: grub-2.00/grub-core/fs/btrfs.c
-===================================================================
---- grub-2.00.orig/grub-core/fs/btrfs.c
-+++ grub-2.00/grub-core/fs/btrfs.c
-@@ -2252,6 +2252,8 @@ GRUB_MOD_INIT (btrfs)
+--- a/grub-core/fs/btrfs.c
++++ b/grub-core/fs/btrfs.c
+@@ -2931,6 +2931,8 @@
                                 subvol_set_env);
    grub_register_variable_hook ("btrfs_subvolid", subvolid_get_env,
                                 subvolid_set_env);

@@ -53,9 +53,6 @@ Thanks to Nayna Jain and Stefan Berger for their reviews.
  create mode 100644 grub-core/commands/appendedsig/pkcs7.c
  create mode 100644 grub-core/commands/appendedsig/x509.c
 
-diff --git a/grub-core/commands/appendedsig/appendedsig.h b/grub-core/commands/appendedsig/appendedsig.h
-new file mode 100644
-index 000000000..327d68ddb
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/appendedsig.h
 @@ -0,0 +1,118 @@
@@ -177,9 +174,6 @@ index 000000000..327d68ddb
 +void *grub_asn1_allocate_and_read (asn1_node node, const char *name,
 +				   const char *friendly_name,
 +				   int *content_size);
-diff --git a/grub-core/commands/appendedsig/asn1util.c b/grub-core/commands/appendedsig/asn1util.c
-new file mode 100644
-index 000000000..e116f8c75
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/asn1util.c
 @@ -0,0 +1,103 @@
@@ -286,9 +280,6 @@ index 000000000..e116f8c75
 +  res = asn1_array2tree (pkix_asn1_tab, &_gnutls_pkix_asn, NULL);
 +  return res;
 +}
-diff --git a/grub-core/commands/appendedsig/pkcs7.c b/grub-core/commands/appendedsig/pkcs7.c
-new file mode 100644
-index 000000000..845f58a53
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/pkcs7.c
 @@ -0,0 +1,509 @@
@@ -801,9 +792,6 @@ index 000000000..845f58a53
 +    }
 +  grub_free (msg->signerInfos);
 +}
-diff --git a/grub-core/commands/appendedsig/x509.c b/grub-core/commands/appendedsig/x509.c
-new file mode 100644
-index 000000000..70480aa73
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/x509.c
 @@ -0,0 +1,1079 @@
@@ -1886,6 +1874,3 @@ index 000000000..70480aa73
 +  gcry_mpi_release (cert->mpis[0]);
 +  gcry_mpi_release (cert->mpis[1]);
 +}
--- 
-2.31.1
-

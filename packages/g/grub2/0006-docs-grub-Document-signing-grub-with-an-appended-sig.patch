@@ -13,11 +13,9 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  docs/grub.texi | 42 ++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 42 insertions(+)
 
-diff --git a/docs/grub.texi b/docs/grub.texi
-index b1d808d93..dc1c58304 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
-@@ -6074,6 +6074,48 @@ image works under UEFI secure boot and can maintain the secure-boot chain. It
+@@ -6606,6 +6606,48 @@
  will also be necessary to enrol the public key used into a relevant firmware
  key database.
  
@@ -66,6 +64,3 @@ index b1d808d93..dc1c58304 100644
  @node Platform limitations
  @chapter Platform limitations
  
--- 
-2.31.1
-

@@ -27,7 +27,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2624,3 +2624,9 @@
+@@ -2673,3 +2673,9 @@
    common = lib/libtasn1_wrap/tests/Test_strings.c;
    common = lib/libtasn1_wrap/wrap_tests.c;
  };
@@ -99,7 +99,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +      if (grub_disk_read (dev->disk, p->offset, p->index,
 +			  sizeof (gptdata), &gptdata) == 0)
 +	{
-+	  const grub_gpt_part_guid_t template = {
++	  const grub_guid_t template = {
 +	    grub_cpu_to_le32_compile_time (0x9e1a2d38),
 +	    grub_cpu_to_le16_compile_time (0xc612),
 +	    grub_cpu_to_le16_compile_time (0x4316),

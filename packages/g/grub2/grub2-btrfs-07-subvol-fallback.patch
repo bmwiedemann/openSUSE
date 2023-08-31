@@ -1,8 +1,6 @@
-Index: grub-2.02~beta3/grub-core/fs/btrfs.c
-===================================================================
---- grub-2.02~beta3.orig/grub-core/fs/btrfs.c
-+++ grub-2.02~beta3/grub-core/fs/btrfs.c
-@@ -925,10 +925,40 @@ lookup_root_by_name(struct grub_btrfs_da
+--- a/grub-core/fs/btrfs.c
++++ b/grub-core/fs/btrfs.c
+@@ -1340,10 +1340,40 @@
  }
  
  static grub_err_t

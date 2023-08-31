@@ -1,8 +1,6 @@
-Index: grub-2.02~rc1/grub-core/loader/i386/efi/linux.c
-===================================================================
---- grub-2.02~rc1.orig/grub-core/loader/i386/efi/linux.c
-+++ grub-2.02~rc1/grub-core/loader/i386/efi/linux.c
-@@ -324,7 +324,14 @@ grub_cmd_linux (grub_command_t cmd __att
+--- a/grub-core/loader/i386/efi/linux.c
++++ b/grub-core/loader/i386/efi/linux.c
+@@ -298,7 +298,14 @@
        lh.code32_start = (grub_uint32_t)(grub_addr_t) kernel_mem;
      }
  

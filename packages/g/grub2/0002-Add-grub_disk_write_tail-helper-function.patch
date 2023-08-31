@@ -12,15 +12,12 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  include/grub/disk.h  |  3 +++
  2 files changed, 21 insertions(+)
 
-diff --git a/grub-core/lib/disk.c b/grub-core/lib/disk.c
-index b4eb064a81..08e24485f0 100644
 --- a/grub-core/lib/disk.c
 +++ b/grub-core/lib/disk.c
-@@ -51,6 +51,24 @@ grub_disk_cache_invalidate (unsigned long dev_id, unsigned long disk_id,
-     }
+@@ -52,6 +52,24 @@
  }
  
-+grub_err_t
+ grub_err_t
 +grub_disk_write_tail (grub_disk_t disk, grub_size_t size, const void *buf)
 +{
 +  grub_partition_t part;
@@ -38,14 +35,13 @@ index b4eb064a81..08e24485f0 100644
 +  return grub_disk_write (disk, sector, offset, size, buf);
 +}
 +
- grub_err_t
++grub_err_t
  grub_disk_write (grub_disk_t disk, grub_disk_addr_t sector,
  		 grub_off_t offset, grub_size_t size, const void *buf)
-diff --git a/include/grub/disk.h b/include/grub/disk.h
-index f95aca929a..6d656c4315 100644
+ {
 --- a/include/grub/disk.h
 +++ b/include/grub/disk.h
-@@ -232,6 +232,9 @@ grub_err_t EXPORT_FUNC(grub_disk_read) (grub_disk_t disk,
+@@ -252,6 +252,9 @@
  					grub_off_t offset,
  					grub_size_t size,
  					void *buf);
@@ -55,6 +51,3 @@ index f95aca929a..6d656c4315 100644
  grub_err_t grub_disk_write (grub_disk_t disk,
  			    grub_disk_addr_t sector,
  			    grub_off_t offset,
--- 
-2.34.1
-

@@ -1,8 +1,8 @@
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
-@@ -296,7 +296,8 @@
+@@ -299,7 +299,8 @@
+   GRUB_OS_PROBER_SKIP_LIST \
    GRUB_DISABLE_SUBMENU \
-   GRUB_CMDLINE_LINUX_RECOVERY \
    SUSE_BTRFS_SNAPSHOT_BOOTING \
 -  SUSE_CMDLINE_XENEFI
 +  SUSE_CMDLINE_XENEFI \
@@ -12,7 +12,7 @@
    rm -f "${grub_cfg}.new"
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
-@@ -74,7 +74,7 @@
+@@ -76,7 +76,7 @@
  	else
  	rootsubvol="`make_system_path_relative_to_its_root /`"
  	rootsubvol="${rootsubvol#/}"
@@ -21,7 +21,7 @@
  	    GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
  	fi
  	fi;;
-@@ -85,6 +85,10 @@
+@@ -87,6 +87,10 @@
  	;;
  esac
  
@@ -34,7 +34,7 @@
  hotkey=1
 --- a/util/grub.d/20_linux_xen.in
 +++ b/util/grub.d/20_linux_xen.in
-@@ -98,7 +98,7 @@
+@@ -100,7 +100,7 @@
  	else
  	rootsubvol="`make_system_path_relative_to_its_root /`"
  	rootsubvol="${rootsubvol#/}"
@@ -43,7 +43,7 @@
  	    GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
  	fi
  	fi;;
-@@ -109,6 +109,10 @@
+@@ -111,6 +111,10 @@
  	;;
  esac
  

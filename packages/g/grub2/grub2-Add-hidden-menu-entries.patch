@@ -27,11 +27,9 @@ v2 -> v3:
 
   - replace "--hidden" parameter with new command "hiddenentry"
 
-diff --git a/grub-core/commands/legacycfg.c b/grub-core/commands/legacycfg.c
-index dd9d9f1..b282c4f 100644
 --- a/grub-core/commands/legacycfg.c
 +++ b/grub-core/commands/legacycfg.c
-@@ -133,7 +133,7 @@ legacy_file (const char *filename)
+@@ -143,7 +143,7 @@
  	    args[0] = oldname;
  	    grub_normal_add_menu_entry (1, args, NULL, NULL, "legacy",
  					NULL, NULL,
@@ -40,7 +38,7 @@ index dd9d9f1..b282c4f 100644
  	    grub_free (args);
  	    entrysrc[0] = 0;
  	    grub_free (oldname);
-@@ -186,7 +186,7 @@ legacy_file (const char *filename)
+@@ -205,7 +205,7 @@
  	}
        args[0] = entryname;
        grub_normal_add_menu_entry (1, args, NULL, NULL, NULL,
@@ -49,11 +47,9 @@ index dd9d9f1..b282c4f 100644
        grub_free (args);
      }
  
-diff --git a/grub-core/commands/menuentry.c b/grub-core/commands/menuentry.c
-index 58d4dad..b4d6c31 100644
 --- a/grub-core/commands/menuentry.c
 +++ b/grub-core/commands/menuentry.c
-@@ -78,7 +78,7 @@ grub_normal_add_menu_entry (int argc, const char **args,
+@@ -78,7 +78,7 @@
  			    char **classes, const char *id,
  			    const char *users, const char *hotkey,
  			    const char *prefix, const char *sourcecode,
@@ -62,7 +58,7 @@ index 58d4dad..b4d6c31 100644
  {
    int menu_hotkey = 0;
    char **menu_args = NULL;
-@@ -188,8 +188,11 @@ grub_normal_add_menu_entry (int argc, const char **args,
+@@ -188,8 +188,11 @@
    (*last)->args = menu_args;
    (*last)->sourcecode = menu_sourcecode;
    (*last)->submenu = submenu;
@@ -75,7 +71,7 @@ index 58d4dad..b4d6c31 100644
    return GRUB_ERR_NONE;
  
   fail:
-@@ -286,7 +289,8 @@ grub_cmd_menuentry (grub_extcmd_context_t ctxt, int argc, char **args)
+@@ -286,7 +289,8 @@
  				       users,
  				       ctxt->state[2].arg, 0,
  				       ctxt->state[3].arg,
@@ -85,7 +81,7 @@ index 58d4dad..b4d6c31 100644
  
    src = args[argc - 1];
    args[argc - 1] = NULL;
-@@ -303,7 +307,8 @@ grub_cmd_menuentry (grub_extcmd_context_t ctxt, int argc, char **args)
+@@ -303,7 +307,8 @@
  				  ctxt->state[0].args, ctxt->state[4].arg,
  				  users,
  				  ctxt->state[2].arg, prefix, src + 1,
@@ -95,7 +91,7 @@ index 58d4dad..b4d6c31 100644
  
    src[len - 1] = ch;
    args[argc - 1] = src;
-@@ -311,7 +316,7 @@ grub_cmd_menuentry (grub_extcmd_context_t ctxt, int argc, char **args)
+@@ -311,7 +316,7 @@
    return r;
  }
  
@@ -104,7 +100,7 @@ index 58d4dad..b4d6c31 100644
  
  void
  grub_menu_init (void)
-@@ -327,6 +332,13 @@ grub_menu_init (void)
+@@ -327,6 +332,13 @@
  				  | GRUB_COMMAND_FLAG_EXTRACTOR,
  				  N_("BLOCK"), N_("Define a submenu."),
  				  options);
@@ -118,8 +114,6 @@ index 58d4dad..b4d6c31 100644
  }
  
  void
-diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
-index 719e2fb..2a151fe 100644
 --- a/grub-core/normal/menu.c
 +++ b/grub-core/normal/menu.c
 @@ -40,6 +40,8 @@
@@ -131,7 +125,7 @@ index 719e2fb..2a151fe 100644
  enum timeout_style {
    TIMEOUT_STYLE_MENU,
    TIMEOUT_STYLE_COUNTDOWN,
-@@ -80,8 +82,20 @@ grub_menu_get_entry (grub_menu_t menu, int no)
+@@ -80,8 +82,20 @@
  {
    grub_menu_entry_t e;
  
@@ -154,7 +148,7 @@ index 719e2fb..2a151fe 100644
  
    return e;
  }
-@@ -93,10 +107,10 @@ get_entry_index_by_hotkey (grub_menu_t menu, int hotkey)
+@@ -93,10 +107,10 @@
    grub_menu_entry_t entry;
    int i;
  
@@ -167,7 +161,7 @@ index 719e2fb..2a151fe 100644
  
    return -1;
  }
-@@ -510,6 +524,10 @@ get_entry_number (grub_menu_t menu, const char *name)
+@@ -519,6 +533,10 @@
        grub_menu_entry_t e = menu->entry_list;
        int i;
  
@@ -178,7 +172,7 @@ index 719e2fb..2a151fe 100644
        grub_errno = GRUB_ERR_NONE;
  
        for (i = 0; e; i++)
-@@ -521,6 +539,10 @@ get_entry_number (grub_menu_t menu, const char *name)
+@@ -530,6 +548,10 @@
  	      break;
  	    }
  	  e = e->next;
@@ -189,11 +183,9 @@ index 719e2fb..2a151fe 100644
  	}
  
        if (! e)
-diff --git a/grub-core/normal/menu_text.c b/grub-core/normal/menu_text.c
-index e22bb91..4ac2d6b 100644
 --- a/grub-core/normal/menu_text.c
 +++ b/grub-core/normal/menu_text.c
-@@ -290,6 +290,10 @@ print_entries (grub_menu_t menu, const struct menu_viewer_data *data)
+@@ -318,6 +318,10 @@
  		   e, data);
        if (e)
  	e = e->next;
@@ -204,11 +196,9 @@ index e22bb91..4ac2d6b 100644
      }
  
    grub_term_gotoxy (data->term,
-diff --git a/include/grub/menu.h b/include/grub/menu.h
-index ee2b5e9..eb8a86b 100644
 --- a/include/grub/menu.h
 +++ b/include/grub/menu.h
-@@ -58,6 +58,8 @@ struct grub_menu_entry
+@@ -58,6 +58,8 @@
  
    int submenu;
  
@@ -217,11 +207,9 @@ index ee2b5e9..eb8a86b 100644
    /* The next element.  */
    struct grub_menu_entry *next;
  };
-diff --git a/include/grub/normal.h b/include/grub/normal.h
-index 218cbab..bcb4124 100644
 --- a/include/grub/normal.h
 +++ b/include/grub/normal.h
-@@ -145,7 +145,7 @@ grub_normal_add_menu_entry (int argc, const char **args, char **classes,
+@@ -145,7 +145,7 @@
  			    const char *id,
  			    const char *users, const char *hotkey,
  			    const char *prefix, const char *sourcecode,

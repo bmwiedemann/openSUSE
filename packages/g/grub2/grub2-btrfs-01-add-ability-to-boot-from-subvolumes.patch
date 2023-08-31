@@ -95,7 +95,7 @@ V2:
  static grub_disk_addr_t superblock_sectors[] = { 64 * 2, 64 * 1024 * 2,
    256 * 1048576 * 2, 1048576ULL * 1048576ULL * 2
  };
-@@ -1173,6 +1195,62 @@
+@@ -1252,6 +1274,62 @@
    return GRUB_ERR_NONE;
  }
  
@@ -158,7 +158,7 @@ V2:
  static struct grub_btrfs_data *
  grub_btrfs_mount (grub_device_t dev)
  {
-@@ -1208,6 +1286,13 @@
+@@ -1287,6 +1365,13 @@
    data->devices_attached[0].dev = dev;
    data->devices_attached[0].id = data->sblock.this_device.device_id;
  
@@ -172,7 +172,7 @@ V2:
    return data;
  }
  
-@@ -1674,6 +1759,98 @@
+@@ -1783,6 +1868,98 @@
  }
  
  static grub_err_t
@@ -271,7 +271,7 @@ V2:
  find_path (struct grub_btrfs_data *data,
  	   const char *path, struct grub_btrfs_key *key,
  	   grub_uint64_t *tree, grub_uint8_t *type)
-@@ -1691,14 +1868,26 @@
+@@ -1800,14 +1977,26 @@
    char *origpath = NULL;
    unsigned symlinks_max = 32;
  
@@ -302,15 +302,18 @@ V2:
    while (1)
      {
        while (path[0] == '/')
-@@ -1871,9 +2060,21 @@
+@@ -1980,13 +2169,25 @@
  	  path = path_alloc = tmp;
  	  if (path[0] == '/')
  	    {
 -	      err = get_root (data, key, tree, type);
 -	      if (err)
--		return err;
 +	      if (data->fs_tree)
-+		{
+ 		{
+-		  grub_free (direl);
+-		  grub_free (path_alloc);
+-		  grub_free (origpath);
+-		  return err;
 +		  *type = GRUB_BTRFS_DIR_ITEM_TYPE_DIRECTORY;
 +		  *tree = data->fs_tree;
 +		  /* This is a tree root, so everything starts at objectid 256 */
@@ -322,12 +325,16 @@ V2:
 +		{
 +		  err = get_root (data, key, tree, type);
 +		  if (err)
-+		    return err;
-+		}
++		    {
++		      grub_free (direl);
++		      grub_free (path_alloc);
++		      grub_free (origpath);
++		      return err;
++		    }
+ 		}
  	    }
  	  continue;
- 	}
-@@ -2114,6 +2315,20 @@
+@@ -2254,6 +2455,20 @@
  				 data->tree, file->offset, buf, len);
  }
  
@@ -348,7 +355,7 @@ V2:
  static grub_err_t
  grub_btrfs_uuid (grub_device_t device, char **uuid)
  {
-@@ -2125,15 +2340,7 @@
+@@ -2265,15 +2480,7 @@
    if (!data)
      return grub_errno;
  
@@ -365,7 +372,7 @@ V2:
  
    grub_btrfs_unmount (data);
  
-@@ -2190,6 +2397,248 @@
+@@ -2394,6 +2601,248 @@
  }
  #endif
  
@@ -614,7 +621,7 @@ V2:
  static struct grub_fs grub_btrfs_fs = {
    .name = "btrfs",
    .fs_dir = grub_btrfs_dir,
-@@ -2205,12 +2654,88 @@
+@@ -2409,12 +2858,88 @@
  #endif
  };
  

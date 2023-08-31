@@ -16,11 +16,9 @@ v2: fix a grammar issue, thanks Stefan Berger.
  docs/grub.texi | 193 +++++++++++++++++++++++++++++++++++++++++++-----
  1 file changed, 176 insertions(+), 17 deletions(-)
 
-diff --git a/docs/grub.texi b/docs/grub.texi
-index dc1c58304..988ef8ddc 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
-@@ -3209,6 +3209,7 @@ These variables have special meaning to GRUB.
+@@ -3278,6 +3278,7 @@
  
  @menu
  * biosnum::
@@ -28,7 +26,7 @@ index dc1c58304..988ef8ddc 100644
  * check_signatures::
  * chosen::
  * cmdpath::
-@@ -3268,11 +3269,18 @@ For an alternative approach which also changes BIOS drive mappings for the
+@@ -3342,11 +3343,18 @@
  chain-loaded system, @pxref{drivemap}.
  
  
@@ -49,23 +47,23 @@ index dc1c58304..988ef8ddc 100644
  
  @node chosen
  @subsection chosen
-@@ -3989,6 +3997,7 @@ you forget a command, you can run the command @command{help}
+@@ -4322,6 +4330,7 @@
  * date::                        Display or set current date and time
  * devicetree::                  Load a device tree blob
  * distrust::                    Remove a pubkey from trusted keys
 +* distrust_certificate::        Remove a certificate from the list of trusted certificates
  * drivemap::                    Map a drive to another
  * echo::                        Display a line of text
- * eval::                        Evaluate agruments as GRUB commands
-@@ -4005,6 +4014,7 @@ you forget a command, you can run the command @command{help}
+ * efitextmode::                 Set/Get text output mode resolution
+@@ -4337,6 +4346,7 @@
+ * help::                        Show help messages
+ * insmod::                      Insert a module
  * keystatus::                   Check key modifier status
- * linux::                       Load a Linux kernel
- * linux16::                     Load a Linux kernel (16-bit mode)
 +* list_certificates::           List trusted certificates
  * list_env::                    List variables in environment block
  * list_trusted::                List trusted public keys
  * load_env::                    Load variables from environment block
-@@ -4042,8 +4052,10 @@ you forget a command, you can run the command @command{help}
+@@ -4375,8 +4385,10 @@
  * test::                        Check file types and compare values
  * true::                        Do nothing, successfully
  * trust::                       Add public key to list of trusted keys
@@ -75,8 +73,8 @@ index dc1c58304..988ef8ddc 100644
 +* verify_appended::             Verify appended digital signature
  * verify_detached::             Verify detached digital signature
  * videoinfo::                   List available video modes
- @comment * xen_*::              Xen boot commands for AArch64
-@@ -4371,9 +4383,28 @@ These keys are used to validate signatures when environment variable
+ * wrmsr::                       Write values to model-specific registers
+@@ -4710,9 +4722,28 @@
  @code{check_signatures} is set to @code{enforce}
  (@pxref{check_signatures}), and by some invocations of
  @command{verify_detached} (@pxref{verify_detached}).  @xref{Using
@@ -106,7 +104,7 @@ index dc1c58304..988ef8ddc 100644
  @node drivemap
  @subsection drivemap
  
-@@ -4631,6 +4662,21 @@ This command is only available on x86 systems.
+@@ -4975,6 +5006,21 @@
  @end deffn
  
  
@@ -128,7 +126,7 @@ index dc1c58304..988ef8ddc 100644
  @node list_env
  @subsection list_env
  
-@@ -4650,7 +4696,7 @@ The output is in GPG's v4 key fingerprint format (i.e., the output of
+@@ -4994,7 +5040,7 @@
  @code{gpg --fingerprint}).  The least significant four bytes (last
  eight hexadecimal digits) can be used as an argument to
  @command{distrust} (@pxref{distrust}).
@@ -137,7 +135,7 @@ index dc1c58304..988ef8ddc 100644
  these keys.
  @end deffn
  
-@@ -4685,8 +4731,12 @@ When used with care, @option{--skip-sig} and the whitelist enable an
+@@ -5029,8 +5075,12 @@
  administrator to configure a system to boot only signed
  configurations, but to allow the user to select from among multiple
  configurations, and to enable ``one-shot'' boot attempts and
@@ -151,7 +149,7 @@ index dc1c58304..988ef8ddc 100644
  @end deffn
  
  
-@@ -4982,7 +5032,7 @@ read.  It is possible to modify a digitally signed environment block
+@@ -5401,7 +5451,7 @@
  file from within GRUB using this command, such that its signature will
  no longer be valid on subsequent boots.  Care should be taken in such
  advanced configurations to avoid rendering the system
@@ -160,7 +158,7 @@ index dc1c58304..988ef8ddc 100644
  @end deffn
  
  
-@@ -5382,11 +5432,31 @@ signatures when environment variable @code{check_signatures} is set to
+@@ -5817,11 +5867,31 @@
  must itself be properly signed.  The @option{--skip-sig} option can be
  used to disable signature-checking when reading @var{pubkey_file}
  itself. It is expected that @option{--skip-sig} is useful for testing
@@ -193,7 +191,7 @@ index dc1c58304..988ef8ddc 100644
  @node unset
  @subsection unset
  
-@@ -5405,6 +5475,18 @@ only on PC BIOS platforms.
+@@ -5840,6 +5910,18 @@
  @end deffn
  @end ignore
  
@@ -212,7 +210,7 @@ index dc1c58304..988ef8ddc 100644
  
  @node verify_detached
  @subsection verify_detached
-@@ -5423,7 +5505,7 @@ tried.
+@@ -5858,7 +5940,7 @@
  
  Exit code @code{$?} is set to 0 if the signature validates
  successfully.  If validation fails, it is set to a non-zero value.
@@ -221,7 +219,7 @@ index dc1c58304..988ef8ddc 100644
  @end deffn
  
  @node videoinfo
-@@ -5808,13 +5890,14 @@ environment variables and commands are listed in the same order.
+@@ -6339,13 +6421,14 @@
  @chapter Security
  
  @menu
@@ -243,7 +241,7 @@ index dc1c58304..988ef8ddc 100644
  @end menu
  
  @node Authentication and authorisation
-@@ -5888,8 +5971,8 @@ generating configuration files with authentication.  You can use
+@@ -6419,8 +6502,8 @@
  adding @kbd{set superusers=} and @kbd{password} or @kbd{password_pbkdf2}
  commands.
  
@@ -254,7 +252,7 @@ index dc1c58304..988ef8ddc 100644
  
  GRUB's @file{core.img} can optionally provide enforcement that all files
  subsequently read from disk are covered by a valid digital signature.
-@@ -5972,6 +6055,82 @@ or BIOS) configuration to cause the machine to boot from a different
+@@ -6503,6 +6586,82 @@
  (attacker-controlled) device.  GRUB is at best only one link in a
  secure boot chain.
  
@@ -337,6 +335,3 @@ index dc1c58304..988ef8ddc 100644
  @node UEFI secure boot and shim
  @section UEFI secure boot and shim support
  
--- 
-2.31.1
-

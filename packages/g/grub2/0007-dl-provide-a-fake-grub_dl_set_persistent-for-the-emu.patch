@@ -16,11 +16,9 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  include/grub/dl.h | 11 +++++++++++
  1 file changed, 11 insertions(+)
 
-diff --git a/include/grub/dl.h b/include/grub/dl.h
-index b3753c9ca..5decbe2f2 100644
 --- a/include/grub/dl.h
 +++ b/include/grub/dl.h
-@@ -243,11 +243,22 @@ grub_dl_get (const char *name)
+@@ -242,11 +242,22 @@
    return 0;
  }
  
@@ -43,6 +41,3 @@ index b3753c9ca..5decbe2f2 100644
  
  static inline int
  grub_dl_is_persistent (grub_dl_t mod)
--- 
-2.31.1
-

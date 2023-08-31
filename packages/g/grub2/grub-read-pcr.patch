@@ -1,8 +1,6 @@
-Index: grub-2.06/include/grub/tpm.h
-===================================================================
---- grub-2.06.orig/include/grub/tpm.h
-+++ grub-2.06/include/grub/tpm.h
-@@ -34,6 +34,15 @@
+--- a/include/grub/tpm.h
++++ b/include/grub/tpm.h
+@@ -36,6 +36,12 @@
  
  #define EV_IPL 0x0d
  
@@ -14,23 +12,26 @@ Index: grub-2.06/include/grub/tpm.h
 +
  grub_err_t grub_tpm_measure (unsigned char *buf, grub_size_t size,
  			     grub_uint8_t pcr, const char *description);
+ int grub_tpm_present (void);
+@@ -45,5 +51,7 @@
+ {
+   return grub_env_get_bool ("tpm_fail_fatal", false);
+ }
 +struct grub_tpm_digest *grub_tpm_read_pcr (grub_uint8_t index, const char *algo);
 +void grub_tpm_digest_free (struct grub_tpm_digest *d);
-+
+ 
  #endif
-Index: grub-2.06/grub-core/commands/efi/tpm.c
-===================================================================
---- grub-2.06.orig/grub-core/commands/efi/tpm.c
-+++ grub-2.06/grub-core/commands/efi/tpm.c
-@@ -23,6 +23,7 @@
- #include <grub/efi/api.h>
+--- a/grub-core/commands/efi/tpm.c
++++ b/grub-core/commands/efi/tpm.c
+@@ -24,6 +24,7 @@
  #include <grub/efi/efi.h>
+ #include <grub/efi/cc.h>
  #include <grub/efi/tpm.h>
 +#include <grub/tpm2/tpm2.h>
  #include <grub/mm.h>
  #include <grub/tpm.h>
  #include <grub/term.h>
-@@ -186,6 +187,91 @@ grub_tpm1_log_event (grub_efi_handle_t t
+@@ -186,6 +187,91 @@
    return grub_efi_log_event_status (status);
  }
  
@@ -42,7 +43,7 @@ Index: grub-2.06/grub-core/commands/efi/tpm.c
 +  pcr = &o->pcrSelections[o->count++];
 +  pcr->hash = algo;
 +  pcr->sizeOfSelect = 3;
-+  TPMS_PCR_SELECTION_SelectPCR (pcr, pcrIndex);
++  pcr->pcrSelect[TPM2_PCR_TO_SELECT(pcrIndex)] |= TPM2_PCR_TO_BIT(pcrIndex);
 +}
 +
 +struct grub_tpm_hash_info {
@@ -122,9 +123,9 @@ Index: grub-2.06/grub-core/commands/efi/tpm.c
  static grub_err_t
  grub_tpm2_log_event (grub_efi_handle_t tpm_handle, unsigned char *buf,
  		     grub_size_t size, grub_uint8_t pcr,
-@@ -240,3 +326,26 @@ grub_tpm_measure (unsigned char *buf, gr
-   else
-     return grub_tpm2_log_event (tpm_handle, buf, size, pcr, description);
+@@ -323,3 +409,26 @@
+       return grub_tpm2_present (tpm);
+     }
  }
 +
 +struct grub_tpm_digest *
@@ -149,3 +150,16 @@ Index: grub-2.06/grub-core/commands/efi/tpm.c
 +
 +  return result;
 +}
+--- a/include/grub/tpm2/tpm2.h
++++ b/include/grub/tpm2/tpm2.h
+@@ -23,6 +23,10 @@
+ #include <grub/tpm2/internal/structs.h>
+ #include <grub/tpm2/internal/functions.h>
+ 
++/* Defined in: TCG TPM Specification, v1.59, Part 2, Section 10.6.1. */
++#define TPM2_PCR_TO_SELECT(x)  ((x) / 8)
++#define TPM2_PCR_TO_BIT(x)     (1 << ((x) % 8))
++
+ /* Well-Known Windows SRK handle */
+ #define TPM2_SRK_HANDLE 0x81000001
+ 

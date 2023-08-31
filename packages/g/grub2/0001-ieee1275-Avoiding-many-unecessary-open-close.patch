@@ -16,11 +16,9 @@ Signed-off-by: Diego Domingos <diegodo@linux.vnet.ibm.com>
  grub-core/disk/ieee1275/ofdisk.c | 64 +++++++++++++++++---------------
  1 file changed, 35 insertions(+), 29 deletions(-)
 
-diff --git a/grub-core/disk/ieee1275/ofdisk.c b/grub-core/disk/ieee1275/ofdisk.c
-index 03674cb47..ea7f78ac7 100644
 --- a/grub-core/disk/ieee1275/ofdisk.c
 +++ b/grub-core/disk/ieee1275/ofdisk.c
-@@ -44,7 +44,7 @@ struct ofdisk_hash_ent
+@@ -44,7 +44,7 @@
  };
  
  static grub_err_t
@@ -29,7 +27,7 @@ index 03674cb47..ea7f78ac7 100644
  			    struct ofdisk_hash_ent *op);
  
  #define OFDISK_HASH_SZ	8
-@@ -461,6 +461,7 @@ grub_ofdisk_open (const char *name, grub_disk_t disk)
+@@ -461,6 +461,7 @@
    grub_ssize_t actual;
    grub_uint32_t block_size = 0;
    grub_err_t err;
@@ -37,7 +35,7 @@ index 03674cb47..ea7f78ac7 100644
  
    if (grub_strncmp (name, "ieee1275/", sizeof ("ieee1275/") - 1) != 0)
        return grub_error (GRUB_ERR_UNKNOWN_DEVICE,
-@@ -471,6 +472,35 @@ grub_ofdisk_open (const char *name, grub_disk_t disk)
+@@ -471,6 +472,35 @@
  
    grub_dprintf ("disk", "Opening `%s'.\n", devpath);
  
@@ -73,7 +71,7 @@ index 03674cb47..ea7f78ac7 100644
    if (grub_ieee1275_finddevice (devpath, &dev))
      {
        grub_free (devpath);
-@@ -491,25 +521,18 @@ grub_ofdisk_open (const char *name, grub_disk_t disk)
+@@ -491,25 +521,18 @@
        return grub_error (GRUB_ERR_UNKNOWN_DEVICE, "not a block device");
      }
  
@@ -102,7 +100,7 @@ index 03674cb47..ea7f78ac7 100644
      if (err)
        {
          grub_free (devpath);
-@@ -532,13 +555,6 @@ grub_ofdisk_open (const char *name, grub_disk_t disk)
+@@ -528,13 +551,6 @@
  static void
  grub_ofdisk_close (grub_disk_t disk)
  {
@@ -116,7 +114,7 @@ index 03674cb47..ea7f78ac7 100644
    disk->data = 0;
  }
  
-@@ -685,7 +701,7 @@ grub_ofdisk_init (void)
+@@ -681,7 +697,7 @@
  }
  
  static grub_err_t
@@ -125,7 +123,7 @@ index 03674cb47..ea7f78ac7 100644
  			    struct ofdisk_hash_ent *op)
  {
    struct size_args_ieee1275
-@@ -698,16 +714,6 @@ grub_ofdisk_get_block_size (const char *device, grub_uint32_t *block_size,
+@@ -694,16 +710,6 @@
        grub_ieee1275_cell_t size2;
      } args_ieee1275;
  
@@ -142,6 +140,3 @@ index 03674cb47..ea7f78ac7 100644
    *block_size = 0;
  
    if (op->block_size_fails >= 2)
--- 
-2.26.2
-

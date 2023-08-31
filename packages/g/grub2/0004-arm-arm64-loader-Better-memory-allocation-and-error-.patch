@@ -77,11 +77,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  grub-core/loader/arm64/efi/linux.c | 78 ++++++++++++++++++++++--------
  2 files changed, 84 insertions(+), 27 deletions(-)
 
-diff --git a/grub-core/kern/efi/mm.c b/grub-core/kern/efi/mm.c
-index 15595a46e..324e1dca0 100644
 --- a/grub-core/kern/efi/mm.c
 +++ b/grub-core/kern/efi/mm.c
-@@ -154,6 +154,7 @@ grub_efi_allocate_pages_real (grub_efi_physical_address_t address,
+@@ -153,6 +153,7 @@
  {
    grub_efi_status_t status;
    grub_efi_boot_services_t *b;
@@ -89,12 +87,12 @@ index 15595a46e..324e1dca0 100644
  
    /* Limit the memory access to less than 4GB for 32-bit platforms.  */
    if (address > GRUB_EFI_MAX_USABLE_ADDRESS)
-@@ -165,19 +166,22 @@ grub_efi_allocate_pages_real (grub_efi_physical_address_t address,
+@@ -169,19 +170,22 @@
      }
  
    b = grub_efi_system_table->boot_services;
--  status = efi_call_4 (b->allocate_pages, alloctype, memtype, pages, &address);
-+  status = efi_call_4 (b->allocate_pages, alloctype, memtype, pages, &ret);
+-  status = b->allocate_pages (alloctype, memtype, pages, &address);
++  status = b->allocate_pages (alloctype, memtype, pages, &ret);
    if (status != GRUB_EFI_SUCCESS)
      {
 +      grub_dprintf ("efi",
@@ -110,13 +108,13 @@ index 15595a46e..324e1dca0 100644
        /* Uggh, the address 0 was allocated... This is too annoying,
  	 so reallocate another one.  */
 -      address = GRUB_EFI_MAX_USABLE_ADDRESS;
--      status = efi_call_4 (b->allocate_pages, alloctype, memtype, pages, &address);
+-      status = b->allocate_pages (alloctype, memtype, pages, &address);
 +      ret = address;
-+      status = efi_call_4 (b->allocate_pages, alloctype, memtype, pages, &ret);
++      status = b->allocate_pages (alloctype, memtype, pages, &ret);
        grub_efi_free_pages (0, pages);
        if (status != GRUB_EFI_SUCCESS)
  	{
-@@ -186,9 +190,9 @@ grub_efi_allocate_pages_real (grub_efi_physical_address_t address,
+@@ -190,9 +194,9 @@
  	}
      }
  
@@ -128,7 +126,7 @@ index 15595a46e..324e1dca0 100644
  }
  
  void *
-@@ -699,8 +703,21 @@ grub_efi_get_ram_base(grub_addr_t *base_addr)
+@@ -711,8 +715,21 @@
    for (desc = memory_map, *base_addr = GRUB_EFI_MAX_USABLE_ADDRESS;
         (grub_addr_t) desc < ((grub_addr_t) memory_map + memory_map_size);
         desc = NEXT_MEMORY_DESCRIPTOR (desc, desc_size))
@@ -152,11 +150,9 @@ index 15595a46e..324e1dca0 100644
  
    grub_free(memory_map);
  
-diff --git a/grub-core/loader/arm64/efi/linux.c b/grub-core/loader/arm64/efi/linux.c
-index 98c4f038b..4d084950a 100644
 --- a/grub-core/loader/arm64/efi/linux.c
 +++ b/grub-core/loader/arm64/efi/linux.c
-@@ -116,13 +116,15 @@ finalize_params_linux (void)
+@@ -89,13 +89,15 @@
  {
    grub_efi_loaded_image_t *loaded_image = NULL;
    int node, retval, len;
@@ -175,7 +171,7 @@ index 98c4f038b..4d084950a 100644
  
    node = grub_fdt_find_subnode (fdt, 0, "chosen");
    if (node < 0)
-@@ -133,17 +135,26 @@ finalize_params_linux (void)
+@@ -106,17 +108,26 @@
         */
        retval = grub_fdt_set_prop32(fdt, 0, "#address-cells", 2);
        if (retval)
@@ -205,7 +201,7 @@ index 98c4f038b..4d084950a 100644
  
    /* Set initrd info */
    if (initrd_start && initrd_end > initrd_start)
-@@ -154,15 +165,26 @@ finalize_params_linux (void)
+@@ -127,15 +138,26 @@
        retval = grub_fdt_set_prop64 (fdt, node, "linux,initrd-start",
  				    initrd_start);
        if (retval)
@@ -236,7 +232,7 @@ index 98c4f038b..4d084950a 100644
  
    grub_dprintf ("linux", "Installed/updated FDT configuration table @ %p\n",
  		fdt);
-@@ -170,14 +192,20 @@ finalize_params_linux (void)
+@@ -143,14 +165,20 @@
    /* Convert command line to UCS-2 */
    loaded_image = grub_efi_get_loaded_image (grub_efi_image_handle);
    if (!loaded_image)
@@ -259,7 +255,7 @@ index 98c4f038b..4d084950a 100644
  
    loaded_image->load_options_size =
      2 * grub_utf8_to_utf16 (loaded_image->load_options, len,
-@@ -187,7 +215,7 @@ finalize_params_linux (void)
+@@ -160,7 +188,7 @@
  
  failure:
    grub_fdt_unload();
@@ -268,7 +264,7 @@ index 98c4f038b..4d084950a 100644
  }
  
  static void
-@@ -272,16 +300,28 @@ grub_linux_unload (void)
+@@ -246,16 +274,28 @@
  static void *
  allocate_initrd_mem (int initrd_pages)
  {
@@ -303,6 +299,3 @@ index 98c4f038b..4d084950a 100644
  }
  
  static grub_err_t
--- 
-2.26.2
-

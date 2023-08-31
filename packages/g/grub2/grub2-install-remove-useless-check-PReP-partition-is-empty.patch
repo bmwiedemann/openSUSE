@@ -16,11 +16,9 @@ Fixes: cd46aa6cefab ("Rewrite grub-install, grub-mkrescue,
  util/grub-install.c | 39 ++-------------------------------------
  1 file changed, 2 insertions(+), 37 deletions(-)
 
-Index: grub-2.06~rc1/util/grub-install.c
-===================================================================
---- grub-2.06~rc1.orig/util/grub-install.c
-+++ grub-2.06~rc1/util/grub-install.c
-@@ -756,34 +756,6 @@ is_prep_partition (grub_device_t dev)
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -759,34 +759,6 @@
    return 0;
  }
  
@@ -55,7 +53,7 @@ Index: grub-2.06~rc1/util/grub-install.c
  static void
  bless (grub_device_t dev, const char *path, int x86)
  {
-@@ -1923,16 +1895,9 @@ main (int argc, char *argv[])
+@@ -1980,18 +1952,9 @@
  	    {
  	      grub_util_error ("%s", _("the chosen partition is not a PReP partition"));
  	    }
@@ -63,14 +61,17 @@ Index: grub-2.06~rc1/util/grub-install.c
 -	    {
 -	      if (write_to_disk (ins_dev, imgfile))
 -		grub_util_error ("%s", _("failed to copy Grub to the PReP partition"));
+-	      grub_set_install_backup_ponr ();
 -	    }
 -	  else
-+	  if (write_to_disk (ins_dev, imgfile))
- 	    {
+-	    {
 -	      char *s = xasprintf ("dd if=/dev/zero of=%s", install_device);
 -	      grub_util_error (_("the PReP partition is not empty. If you are sure you want to use it, run dd to clear it: `%s'"),
 -			       s);
-+	      grub_util_error ("%s", _("failed to copy Grub to the PReP partition"));
- 	    }
+-	    }
++	  if (write_to_disk (ins_dev, imgfile))
++	    grub_util_error ("%s", _("failed to copy Grub to the PReP partition"));
++	  grub_set_install_backup_ponr ();
  	  grub_device_close (ins_dev);
  	  if (update_nvram)
+ 	    grub_install_register_ieee1275 (1, grub_util_get_os_disk (install_device),

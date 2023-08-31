@@ -11,11 +11,9 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  docs/grub.texi | 17 +++++++++++++++++
  1 file changed, 17 insertions(+)
 
-Index: grub-2.06~rc1/docs/grub.texi
-===================================================================
---- grub-2.06~rc1.orig/docs/grub.texi
-+++ grub-2.06~rc1/docs/grub.texi
-@@ -5477,6 +5477,7 @@ This command is only available on AArch6
+--- a/docs/grub.texi
++++ b/docs/grub.texi
+@@ -5894,6 +5894,7 @@
  * net_add_dns::                 Add a DNS server
  * net_add_route::               Add routing entry
  * net_bootp::                   Perform a bootp/DHCP autoconfiguration
@@ -23,7 +21,7 @@ Index: grub-2.06~rc1/docs/grub.texi
  * net_del_addr::                Remove IP address from interface
  * net_del_dns::                 Remove a DNS server
  * net_del_route::               Remove a route entry
-@@ -5533,6 +5534,24 @@ command (@pxref{net_dhcp}).
+@@ -5951,6 +5952,24 @@
  
  @end deffn
  

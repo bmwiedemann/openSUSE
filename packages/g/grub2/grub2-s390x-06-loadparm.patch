@@ -7,11 +7,9 @@ Patch-Mainline: no
  util/grub.d/00_header.in |   27 +++++++++++++++++++++++++++
  1 file changed, 27 insertions(+)
 
-Index: grub-2.02~beta3/util/grub.d/00_header.in
-===================================================================
---- grub-2.02~beta3.orig/util/grub.d/00_header.in
-+++ grub-2.02~beta3/util/grub.d/00_header.in
-@@ -52,6 +52,33 @@ if [ "\${env_block}" ] ; then
+--- a/util/grub.d/00_header.in
++++ b/util/grub.d/00_header.in
+@@ -54,6 +54,33 @@
  fi
  
  EOF

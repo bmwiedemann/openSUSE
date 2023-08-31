@@ -1,10 +1,8 @@
-Index: grub-2.06/util/grub-mkconfig.in
-===================================================================
---- grub-2.06.orig/util/grub-mkconfig.in
-+++ grub-2.06/util/grub-mkconfig.in
-@@ -356,6 +356,11 @@ and /etc/grub.d/* files or please file a
-     # none of the children aborted with error, install the new grub.cfg
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -363,6 +363,11 @@
      cat ${grub_cfg}.new > ${grub_cfg}
+     umask $oldumask
      rm -f ${grub_cfg}.new
 +    # check if default entry need to be corrected for updated distributor version
 +    # and/or use fallback entry if default kernel entry removed

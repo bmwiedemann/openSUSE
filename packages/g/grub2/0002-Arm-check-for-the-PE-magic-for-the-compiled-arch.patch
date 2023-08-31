@@ -24,11 +24,9 @@ Signed-off-by: Peter Jones <pjones@redhat.com>
  include/grub/arm64/linux.h         | 1 +
  3 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/grub-core/loader/arm64/efi/linux.c b/grub-core/loader/arm64/efi/linux.c
-index 4da49a182..87cb2f97c 100644
 --- a/grub-core/loader/arm64/efi/linux.c
 +++ b/grub-core/loader/arm64/efi/linux.c
-@@ -376,7 +376,7 @@ parse_pe_header (void *kernel, grub_uint64_t *total_size,
+@@ -376,7 +376,7 @@
  
    pe = (void *)((unsigned long)kernel + lh->hdr_offset);
  
@@ -37,30 +35,23 @@ index 4da49a182..87cb2f97c 100644
      return grub_error(GRUB_ERR_BAD_OS, "Invalid PE optional header magic");
  
    *total_size   = pe->opt.image_size;
-diff --git a/include/grub/arm/linux.h b/include/grub/arm/linux.h
-index b582f67f6..966a5074f 100644
 --- a/include/grub/arm/linux.h
 +++ b/include/grub/arm/linux.h
-@@ -44,6 +44,7 @@ struct grub_arm_linux_pe_header
+@@ -33,6 +33,7 @@
+ };
  
  #if defined(__arm__)
- # define GRUB_LINUX_ARMXX_MAGIC_SIGNATURE GRUB_LINUX_ARM_MAGIC_SIGNATURE
 +# define GRUB_PE32_PEXX_MAGIC GRUB_PE32_PE32_MAGIC
- # define linux_arch_kernel_header linux_arm_kernel_header
  # define grub_armxx_linux_pe_header grub_arm_linux_pe_header
  #endif
-diff --git a/include/grub/arm64/linux.h b/include/grub/arm64/linux.h
-index de99d39c0..b4b91473a 100644
+ 
 --- a/include/grub/arm64/linux.h
 +++ b/include/grub/arm64/linux.h
-@@ -48,6 +48,7 @@ struct grub_arm64_linux_pe_header
+@@ -33,6 +33,7 @@
  
  #if defined(__aarch64__)
  # define GRUB_LINUX_ARMXX_MAGIC_SIGNATURE GRUB_LINUX_ARM64_MAGIC_SIGNATURE
 +# define GRUB_PE32_PEXX_MAGIC GRUB_PE32_PE64_MAGIC
- # define linux_arch_kernel_header linux_arm64_kernel_header
  # define grub_armxx_linux_pe_header grub_arm64_linux_pe_header
  #endif
--- 
-2.31.1
-
+ 

@@ -14,11 +14,9 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  include/grub/lockdown.h        |  3 ++-
  4 files changed, 32 insertions(+), 3 deletions(-)
 
-diff --git a/docs/grub.texi b/docs/grub.texi
-index 988ef8ddc..f4794fdda 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
-@@ -6208,8 +6208,8 @@ Measured boot is currently only supported on EFI platforms.
+@@ -6740,8 +6740,8 @@
  @section Lockdown when booting on a secure setup
  
  The GRUB can be locked down when booted on a secure boot environment, for example
@@ -29,11 +27,9 @@ index 988ef8ddc..f4794fdda 100644
  
  The @samp{lockdown} variable is set to @samp{y} when the GRUB is locked down.
  Otherwise it does not exit.
-diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 88eedd16d..49bdb63b6 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -317,6 +317,7 @@ kernel = {
+@@ -331,6 +331,7 @@
    powerpc_ieee1275 = kern/powerpc/cache.S;
    powerpc_ieee1275 = kern/powerpc/dl.c;
    powerpc_ieee1275 = kern/powerpc/compiler-rt.S;
@@ -41,8 +37,6 @@ index 88eedd16d..49bdb63b6 100644
  
    sparc64_ieee1275 = kern/sparc64/cache.S;
    sparc64_ieee1275 = kern/sparc64/dl.c;
-diff --git a/grub-core/kern/ieee1275/init.c b/grub-core/kern/ieee1275/init.c
-index 446201165..d77d89604 100644
 --- a/grub-core/kern/ieee1275/init.c
 +++ b/grub-core/kern/ieee1275/init.c
 @@ -44,6 +44,7 @@
@@ -51,9 +45,9 @@ index 446201165..d77d89604 100644
  #endif
 +#include <grub/lockdown.h>
  
- /* The maximum heap size we're going to claim. Not used by sparc.
-    We allocate 1/4 of the available memory under 4G, up to this limit. */
-@@ -440,6 +441,30 @@ grub_parse_cmdline (void)
+ /* The maximum heap size we're going to claim at boot. Not used by sparc. */
+ #ifdef __i386__
+@@ -708,6 +709,30 @@
      }
  }
  
@@ -84,7 +78,7 @@ index 446201165..d77d89604 100644
  grub_addr_t grub_modbase;
  
  void
-@@ -465,6 +490,8 @@ grub_machine_init (void)
+@@ -733,6 +758,8 @@
  #else
    grub_install_get_time_ms (grub_rtc_get_time_ms);
  #endif
@@ -93,8 +87,6 @@ index 446201165..d77d89604 100644
  }
  
  void
-diff --git a/include/grub/lockdown.h b/include/grub/lockdown.h
-index 40531fa82..ebfee4bf0 100644
 --- a/include/grub/lockdown.h
 +++ b/include/grub/lockdown.h
 @@ -24,7 +24,8 @@
@@ -107,6 +99,3 @@ index 40531fa82..ebfee4bf0 100644
  extern void
  EXPORT_FUNC (grub_lockdown) (void);
  extern int
--- 
-2.31.1
-

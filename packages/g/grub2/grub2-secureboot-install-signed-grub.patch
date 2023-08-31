@@ -17,11 +17,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  util/grub-install.c | 86 ++++++++++++++++++++++++++++++++++++++++++++++++++++-
  1 file changed, 85 insertions(+), 1 deletion(-)
 
-Index: grub-2.06/util/grub-install.c
-===================================================================
---- grub-2.06.orig/util/grub-install.c
-+++ grub-2.06/util/grub-install.c
-@@ -85,6 +85,15 @@ static int suse_enable_tpm = 0;
+--- a/util/grub-install.c
++++ b/util/grub-install.c
+@@ -85,6 +85,15 @@
  
  enum
    {
@@ -37,7 +35,7 @@ Index: grub-2.06/util/grub-install.c
      OPTION_BOOT_DIRECTORY = 0x301,
      OPTION_ROOT_DIRECTORY,
      OPTION_TARGET,
-@@ -109,6 +118,8 @@ enum
+@@ -109,6 +118,8 @@
      OPTION_NO_BOOTSECTOR,
      OPTION_NO_RS_CODES,
      OPTION_SUSE_ENABLE_TPM,
@@ -46,7 +44,7 @@ Index: grub-2.06/util/grub-install.c
      OPTION_MACPPC_DIRECTORY,
      OPTION_ZIPL_DIRECTORY,
      OPTION_LABEL_FONT,
-@@ -238,6 +249,14 @@ argp_parser (int key, char *arg, struct
+@@ -238,6 +249,14 @@
        suse_enable_tpm = 1;
        return 0;
  
@@ -61,7 +59,7 @@ Index: grub-2.06/util/grub-install.c
      case OPTION_DEBUG:
        verbosity++;
        return 0;
-@@ -300,7 +319,12 @@ static struct argp_option options[] = {
+@@ -300,7 +319,12 @@
     N_("Do not apply any reed-solomon codes when embedding core.img. "
        "This option is only available on x86 BIOS targets."), 0},
    {"suse-enable-tpm", OPTION_SUSE_ENABLE_TPM, 0, 0, N_("install TPM modules"), 0},
@@ -75,7 +73,7 @@ Index: grub-2.06/util/grub-install.c
    {"debug", OPTION_DEBUG, 0, OPTION_HIDDEN, 0, 2},
    {"no-floppy", OPTION_NO_FLOPPY, 0, OPTION_HIDDEN, 0, 2},
    {"debug-image", OPTION_DEBUG_IMAGE, N_("STRING"), OPTION_HIDDEN, 0, 2},
-@@ -373,6 +397,22 @@ help_filter (int key, const char *text,
+@@ -375,6 +399,22 @@
  	free (plats);
  	return ret;
        }
@@ -98,7 +96,7 @@ Index: grub-2.06/util/grub-install.c
      case ARGP_KEY_HELP_POST_DOC:
        return xasprintf (text, program_name, GRUB_BOOT_DIR_NAME "/" GRUB_DIR_NAME);
      default:
-@@ -1636,13 +1676,34 @@ main (int argc, char *argv[])
+@@ -1681,13 +1721,34 @@
  
    char mkimage_target[200];
    const char *core_name = NULL;
@@ -131,10 +129,10 @@ Index: grub-2.06/util/grub-install.c
      case GRUB_INSTALL_PLATFORM_X86_64_EFI:
      case GRUB_INSTALL_PLATFORM_ARM_EFI:
 -    case GRUB_INSTALL_PLATFORM_ARM64_EFI:
+     case GRUB_INSTALL_PLATFORM_LOONGARCH64_EFI:
      case GRUB_INSTALL_PLATFORM_RISCV32_EFI:
      case GRUB_INSTALL_PLATFORM_RISCV64_EFI:
-     case GRUB_INSTALL_PLATFORM_IA64_EFI:
-@@ -1712,13 +1773,75 @@ main (int argc, char *argv[])
+@@ -1758,13 +1819,75 @@
  				       core_name);
    char *prefix = xasprintf ("%s%s", prefix_drive ? : "",
  			    relative_grubdir);
@@ -211,7 +209,7 @@ Index: grub-2.06/util/grub-install.c
    /* Backward-compatibility kludges.  */
    switch (platform)
      {
-@@ -2014,6 +2137,13 @@ main (int argc, char *argv[])
+@@ -2061,6 +2184,13 @@
  	grub_set_install_backup_ponr ();
  
  	free (dst);

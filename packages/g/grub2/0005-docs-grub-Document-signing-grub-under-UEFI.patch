@@ -12,11 +12,9 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  docs/grub.texi | 22 +++++++++++++++++++++-
  1 file changed, 21 insertions(+), 1 deletion(-)
 
-diff --git a/docs/grub.texi b/docs/grub.texi
-index e48018c5f..b1d808d93 100644
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
-@@ -5814,6 +5814,7 @@ environment variables and commands are listed in the same order.
+@@ -6345,6 +6345,7 @@
  * Secure Boot Advanced Targeting::   Embedded information for generation number based revocation
  * Measured Boot::                    Measuring boot components
  * Lockdown::                         Lockdown when booting on a secure setup
@@ -24,7 +22,7 @@ index e48018c5f..b1d808d93 100644
  @end menu
  
  @node Authentication and authorisation
-@@ -5892,7 +5893,7 @@ commands.
+@@ -6423,7 +6424,7 @@
  
  GRUB's @file{core.img} can optionally provide enforcement that all files
  subsequently read from disk are covered by a valid digital signature.
@@ -33,7 +31,7 @@ index e48018c5f..b1d808d93 100644
  platform's firmware (e.g., Coreboot) validates @file{core.img}.
  
  If environment variable @code{check_signatures}
-@@ -6054,6 +6055,25 @@ be restricted and some operations/commands cannot be executed.
+@@ -6586,6 +6587,25 @@
  The @samp{lockdown} variable is set to @samp{y} when the GRUB is locked down.
  Otherwise it does not exit.
  
@@ -59,6 +57,3 @@ index e48018c5f..b1d808d93 100644
  @node Platform limitations
  @chapter Platform limitations
  
--- 
-2.31.1
-

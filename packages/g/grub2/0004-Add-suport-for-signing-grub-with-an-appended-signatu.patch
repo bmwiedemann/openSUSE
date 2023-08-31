@@ -51,8 +51,6 @@ Platform Reference (PAPR).
  util/mkimage.c              | 13 +++++++------
  6 files changed, 76 insertions(+), 14 deletions(-)
 
-diff --git a/include/grub/util/install.h b/include/grub/util/install.h
-index 9e83e1339..0b2e8a06d 100644
 --- a/include/grub/util/install.h
 +++ b/include/grub/util/install.h
 @@ -67,6 +67,9 @@
@@ -65,7 +63,7 @@ index 9e83e1339..0b2e8a06d 100644
    { "verbose", 'v', 0, 0,						\
      N_("print verbose messages."), 1 }
  
-@@ -129,7 +132,8 @@ enum grub_install_options {
+@@ -130,7 +133,8 @@
    GRUB_INSTALL_OPTIONS_INSTALL_CORE_COMPRESS,
    GRUB_INSTALL_OPTIONS_DTB,
    GRUB_INSTALL_OPTIONS_SBAT,
@@ -75,7 +73,7 @@ index 9e83e1339..0b2e8a06d 100644
  };
  
  extern char *grub_install_source_directory;
-@@ -189,7 +193,7 @@ grub_install_generate_image (const char *dir, const char *prefix,
+@@ -190,7 +194,7 @@
  			     size_t npubkeys,
  			     char *config_path,
  			     const struct grub_install_image_target_desc *image_target,
@@ -84,11 +82,9 @@ index 9e83e1339..0b2e8a06d 100644
  			     grub_compression_t comp, const char *dtb_file,
  			     const char *sbat_path, const int disable_shim_lock);
  
-diff --git a/include/grub/util/mkimage.h b/include/grub/util/mkimage.h
-index 3819a6744..6f1da89b9 100644
 --- a/include/grub/util/mkimage.h
 +++ b/include/grub/util/mkimage.h
-@@ -51,12 +51,12 @@ grub_mkimage_load_image64 (const char *kernel_path,
+@@ -51,12 +51,12 @@
  			   const struct grub_install_image_target_desc *image_target);
  void
  grub_mkimage_generate_elf32 (const struct grub_install_image_target_desc *image_target,
@@ -103,11 +99,9 @@ index 3819a6744..6f1da89b9 100644
  			     Elf64_Addr target_addr,
  			     struct grub_mkimage_layout *layout);
  
-diff --git a/util/grub-install-common.c b/util/grub-install-common.c
-index c6c561292..954df20eb 100644
 --- a/util/grub-install-common.c
 +++ b/util/grub-install-common.c
-@@ -461,10 +461,12 @@ static size_t npubkeys;
+@@ -466,10 +466,12 @@
  static char *sbat;
  static int disable_shim_lock;
  static grub_compression_t compression;
@@ -119,8 +113,8 @@ index c6c561292..954df20eb 100644
 +  const char *end;
    switch (key)
      {
-     case 'C':
-@@ -562,6 +564,12 @@ grub_install_parse (int key, char *arg)
+     case GRUB_INSTALL_OPTIONS_INSTALL_CORE_COMPRESS:
+@@ -567,6 +569,12 @@
        grub_util_error (_("Unrecognized compression `%s'"), arg);
      case GRUB_INSTALL_OPTIONS_GRUB_MKIMAGE:
        return 1;
@@ -133,7 +127,7 @@ index c6c561292..954df20eb 100644
      default:
        return 0;
      }
-@@ -661,10 +669,11 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
+@@ -666,10 +674,11 @@
  		  " --output '%s' "
  		  " --dtb '%s' "
  		  "--sbat '%s' "
@@ -147,7 +141,7 @@ index c6c561292..954df20eb 100644
  		  disable_shim_lock ? "--disable-shim-lock" : "", s);
    free (s);
  
-@@ -675,7 +684,7 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
+@@ -680,7 +689,7 @@
    grub_install_generate_image (dir, prefix, fp, outname,
  			       modules.entries, memdisk_path,
  			       pubkeys, npubkeys, config_path, tgt,
@@ -156,11 +150,9 @@ index c6c561292..954df20eb 100644
  			       disable_shim_lock);
    while (dc--)
      grub_install_pop_module ();
-diff --git a/util/grub-mkimage.c b/util/grub-mkimage.c
-index c0d559937..d01eaeb84 100644
 --- a/util/grub-mkimage.c
 +++ b/util/grub-mkimage.c
-@@ -84,6 +84,7 @@ static struct argp_option options[] = {
+@@ -84,6 +84,7 @@
    {"sbat", 's', N_("FILE"), 0, N_("SBAT metadata"), 0},
    {"disable-shim-lock", GRUB_INSTALL_OPTIONS_DISABLE_SHIM_LOCK, 0, 0, N_("disable shim_lock verifier"), 0},
    {"verbose",     'v', 0,      0, N_("print verbose messages."), 0},
@@ -168,7 +160,7 @@ index c0d559937..d01eaeb84 100644
    { 0, 0, 0, 0, 0, 0 }
  };
  
-@@ -128,6 +129,7 @@ struct arguments
+@@ -128,6 +129,7 @@
    char *sbat;
    int note;
    int disable_shim_lock;
@@ -176,7 +168,7 @@ index c0d559937..d01eaeb84 100644
    const struct grub_install_image_target_desc *image_target;
    grub_compression_t comp;
  };
-@@ -138,6 +140,7 @@ argp_parser (int key, char *arg, struct argp_state *state)
+@@ -138,6 +140,7 @@
    /* Get the input argument from argp_parse, which we
       know is a pointer to our arguments structure. */
    struct arguments *arguments = state->input;
@@ -184,7 +176,7 @@ index c0d559937..d01eaeb84 100644
  
    switch (key)
      {
-@@ -170,6 +173,13 @@ argp_parser (int key, char *arg, struct argp_state *state)
+@@ -170,6 +173,13 @@
        arguments->note = 1;
        break;
  
@@ -198,7 +190,7 @@ index c0d559937..d01eaeb84 100644
      case 'm':
        if (arguments->memdisk)
  	free (arguments->memdisk);
-@@ -324,6 +334,7 @@ main (int argc, char *argv[])
+@@ -324,6 +334,7 @@
  			       arguments.memdisk, arguments.pubkeys,
  			       arguments.npubkeys, arguments.config,
  			       arguments.image_target, arguments.note,
@@ -206,11 +198,9 @@ index c0d559937..d01eaeb84 100644
  			       arguments.comp, arguments.dtb,
  			       arguments.sbat, arguments.disable_shim_lock);
  
-diff --git a/util/grub-mkimagexx.c b/util/grub-mkimagexx.c
-index d78fa3e53..393119486 100644
 --- a/util/grub-mkimagexx.c
 +++ b/util/grub-mkimagexx.c
-@@ -84,6 +84,15 @@ struct grub_ieee1275_note
+@@ -85,6 +85,15 @@
    struct grub_ieee1275_note_desc descriptor;
  };
  
@@ -226,7 +216,7 @@ index d78fa3e53..393119486 100644
  #define GRUB_XEN_NOTE_NAME "Xen"
  
  struct fixup_block_list
-@@ -207,7 +216,7 @@ grub_arm_reloc_jump24 (grub_uint32_t *target, Elf32_Addr sym_addr)
+@@ -208,7 +217,7 @@
  
  void
  SUFFIX (grub_mkimage_generate_elf) (const struct grub_install_image_target_desc *image_target,
@@ -235,7 +225,7 @@ index d78fa3e53..393119486 100644
  				    Elf_Addr target_addr,
  				    struct grub_mkimage_layout *layout)
  {
-@@ -221,6 +230,12 @@ SUFFIX (grub_mkimage_generate_elf) (const struct grub_install_image_target_desc
+@@ -222,6 +231,12 @@
    int shnum = 4;
    int string_size = sizeof (".text") + sizeof ("mods") + 1;
  
@@ -248,7 +238,7 @@ index d78fa3e53..393119486 100644
    if (image_target->id != IMAGE_LOONGSON_ELF)
      phnum += 2;
  
-@@ -484,6 +499,28 @@ SUFFIX (grub_mkimage_generate_elf) (const struct grub_install_image_target_desc
+@@ -485,6 +500,28 @@
        phdr->p_offset = grub_host_to_target32 (header_size + program_size);
      }
  
@@ -277,11 +267,9 @@ index d78fa3e53..393119486 100644
    {
      char *str_start = (elf_img + sizeof (*ehdr) + phnum * sizeof (*phdr)
  		       + shnum * sizeof (*shdr));
-diff --git a/util/mkimage.c b/util/mkimage.c
-index a26cf76f7..d2cb33883 100644
 --- a/util/mkimage.c
 +++ b/util/mkimage.c
-@@ -869,8 +869,9 @@ grub_install_generate_image (const char *dir, const char *prefix,
+@@ -885,8 +885,9 @@
  			     char *memdisk_path, char **pubkey_paths,
  			     size_t npubkeys, char *config_path,
  			     const struct grub_install_image_target_desc *image_target,
@@ -293,7 +281,7 @@ index a26cf76f7..d2cb33883 100644
  {
    char *kernel_img, *core_img;
    size_t total_module_size, core_size;
-@@ -1773,11 +1774,11 @@ grub_install_generate_image (const char *dir, const char *prefix,
+@@ -1810,11 +1811,11 @@
  	else
  	  target_addr = image_target->link_addr;
  	if (image_target->voidp_sizeof == 4)
@@ -309,6 +297,3 @@ index a26cf76f7..d2cb33883 100644
        }
        break;
      }
--- 
-2.31.1
-

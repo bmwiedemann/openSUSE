@@ -1,11 +1,9 @@
 
 v2: Add menuentry "Help on bootable snapshot" to be excluded as default entry.  
 
-Index: grub-2.06/grub-core/normal/menu.c
-===================================================================
---- grub-2.06.orig/grub-core/normal/menu.c
-+++ grub-2.06/grub-core/normal/menu.c
-@@ -574,6 +574,43 @@ print_countdown (struct grub_term_coordi
+--- a/grub-core/normal/menu.c
++++ b/grub-core/normal/menu.c
+@@ -574,6 +574,43 @@
    grub_refresh ();
  }
  
@@ -49,7 +47,7 @@ Index: grub-2.06/grub-core/normal/menu.c
  #define GRUB_MENU_PAGE_SIZE 10
  
  /* Show the menu and handle menu entry selection.  Returns the menu entry
-@@ -592,6 +629,8 @@ run_menu (grub_menu_t menu, int nested,
+@@ -594,6 +631,8 @@
  
    default_entry = get_entry_number (menu, "default");
  

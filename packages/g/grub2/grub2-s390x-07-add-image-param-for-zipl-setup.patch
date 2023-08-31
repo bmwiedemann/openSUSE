@@ -1,6 +1,6 @@
---- grub-2.02~beta2.orig/util/s390x/zipl2grub.pl.in	2015-09-15 07:29:51.473202000 -0600
-+++ grub-2.02~beta2/util/s390x/zipl2grub.pl.in	2015-09-15 07:34:12.559142000 -0600
-@@ -7,6 +7,9 @@ my $in = '@sysconfdir@/default/zipl2grub
+--- a/util/s390x/zipl2grub.pl.in
++++ b/util/s390x/zipl2grub.pl.in
+@@ -7,6 +7,9 @@
  my $default = '@sysconfdir@/default/grub';
  my $fallback = '@sysconfdir@/zipl.conf';
  my $sysconfbl = '@sysconfdir@/sysconfig/bootloader';
@@ -10,7 +10,7 @@
  my $zipldir = "";
  my $running = "";
  my $refresh = 1; # needs to default to "on" until most bugs are shaken out!
-@@ -166,7 +169,7 @@ sub Usage($) {
+@@ -166,7 +169,7 @@
    my $msg = "";
  
    $msg .= sprintf( "%s: %s\n", $C, $cat[$_[0]]) if ($_[0] > 0);
@@ -19,7 +19,7 @@
    Panic( $_[0], $msg . "\n");
  }
  
-@@ -184,6 +187,7 @@ while ( $#ARGV >= 0 ) {
+@@ -183,6 +186,7 @@
    (/^--?help/ || /^-h/)       && (Usage(0));
    (/^--zipldir$/ || /^-z$/)   && ($zipldir = shift || Usage(2), next);
    (/^--template$/ || /^-T$/)  && ($in = shift || Usage(3), next);
@@ -27,7 +27,7 @@
    (/^-/)                      && (Usage(1));
    Usage(1);
  }
-@@ -379,11 +383,8 @@ if ( ! $debug ) {
+@@ -378,11 +382,8 @@
  }
  
  # copy out kernel and initrd

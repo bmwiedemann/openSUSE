@@ -1,8 +1,286 @@
 -------------------------------------------------------------------
+Wed Aug 16 06:59:35 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Implement NV index mode for TPM 2.0 key protector
+  0001-protectors-Implement-NV-index.patch
+- Fall back to passphrase mode when the key protector fails to
+  unlock the disk
+  0002-cryptodisk-Fallback-to-passphrase.patch
+- Wipe out the cached key cleanly
+  0003-cryptodisk-wipe-out-the-cached-keys-from-protectors.patch
+- Make diskfiler to look up cryptodisk devices first
+  0004-diskfilter-look-up-cryptodisk-devices-first.patch
+
+-------------------------------------------------------------------
 Thu Aug  3 03:24:41 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Change the bash-completion directory (bsc#1213855)
   * grub2-change-bash-completion-dir.patch 
+
+-------------------------------------------------------------------
+Thu Jul 27 06:16:36 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Version bump to 2.12~rc1
+  * Added:
+    - grub-2.12~rc1.tar.xz
+  * Removed:
+    - grub-2.06.tar.xz
+  * Patch dropped merged by new version:
+    - grub2-GRUB_CMDLINE_LINUX_RECOVERY-for-recovery-mode.patch
+    - grub2-s390x-02-kexec-module-added-to-emu.patch
+    - grub2-efi-chainloader-root.patch
+    - grub2-Fix-incorrect-netmask-on-ppc64.patch
+    - 0001-osdep-Introduce-include-grub-osdep-major.h-and-use-i.patch
+    - 0002-osdep-linux-hostdisk-Use-stat-instead-of-udevadm-for.patch
+    - 0002-net-read-bracketed-ipv6-addrs-and-port-numbers.patch
+    - grub2-s390x-10-keep-network-at-kexec.patch
+    - 0001-Fix-build-error-in-binutils-2.36.patch
+    - 0001-emu-fix-executable-stack-marking.patch
+    - 0046-squash-verifiers-Move-verifiers-API-to-kernel-image.patch
+    - 0001-30_uefi-firmware-fix-printf-format-with-null-byte.patch
+    - 0001-tpm-Pass-unknown-error-as-non-fatal-but-debug-print-.patch
+    - 0001-Filter-out-POSIX-locale-for-translation.patch
+    - 0001-disk-diskfilter-Use-nodes-in-logical-volume-s-segmen.patch
+    - 0001-fs-xfs-Fix-unreadable-filesystem-with-v4-superblock.patch
+    - 0001-fs-btrfs-Make-extent-item-iteration-to-handle-gaps.patch
+    - 0001-grub-mkconfig-restore-umask-for-grub.cfg.patch
+    - 0001-ieee1275-Drop-HEAP_MAX_ADDR-and-HEAP_MIN_SIZE-consta.patch
+    - 0002-ieee1275-claim-more-memory.patch
+    - 0003-ieee1275-request-memory-with-ibm-client-architecture.patch
+    - 0001-RISC-V-Adjust-march-flags-for-binutils-2.38.patch
+    - 0001-mkimage-Fix-dangling-pointer-may-be-used-error.patch
+    - 0002-Fix-Werror-array-bounds-array-subscript-0-is-outside.patch
+    - 0003-reed_solomon-Fix-array-subscript-0-is-outside-array-.patch
+    - 0001-powerpc-do-CAS-in-a-more-compatible-way.patch
+    - 0001-libc-config-merge-from-glibc.patch
+    - 0001-video-Remove-trailing-whitespaces.patch
+    - 0002-loader-efi-chainloader-Simplify-the-loader-state.patch
+    - 0003-commands-boot-Add-API-to-pass-context-to-loader.patch
+    - 0004-loader-efi-chainloader-Use-grub_loader_set_ex.patch
+    - 0005-kern-efi-sb-Reject-non-kernel-files-in-the-shim_lock.patch
+    - 0006-kern-file-Do-not-leak-device_name-on-error-in-grub_f.patch
+    - 0007-video-readers-png-Abort-sooner-if-a-read-operation-f.patch
+    - 0008-video-readers-png-Refuse-to-handle-multiple-image-he.patch
+    - 0009-video-readers-png-Drop-greyscale-support-to-fix-heap.patch
+    - 0010-video-readers-png-Avoid-heap-OOB-R-W-inserting-huff-.patch
+    - 0011-video-readers-png-Sanity-check-some-huffman-codes.patch
+    - 0012-video-readers-jpeg-Abort-sooner-if-a-read-operation-.patch
+    - 0013-video-readers-jpeg-Do-not-reallocate-a-given-huff-ta.patch
+    - 0014-video-readers-jpeg-Refuse-to-handle-multiple-start-o.patch
+    - 0015-video-readers-jpeg-Block-int-underflow-wild-pointer-.patch
+    - 0016-normal-charset-Fix-array-out-of-bounds-formatting-un.patch
+    - 0017-net-ip-Do-IP-fragment-maths-safely.patch
+    - 0018-net-netbuff-Block-overly-large-netbuff-allocs.patch
+    - 0019-net-dns-Fix-double-free-addresses-on-corrupt-DNS-res.patch
+    - 0020-net-dns-Don-t-read-past-the-end-of-the-string-we-re-.patch
+    - 0021-net-tftp-Prevent-a-UAF-and-double-free-from-a-failed.patch
+    - 0022-net-tftp-Avoid-a-trivial-UAF.patch
+    - 0023-net-http-Do-not-tear-down-socket-if-it-s-already-bee.patch
+    - 0024-net-http-Fix-OOB-write-for-split-http-headers.patch
+    - 0025-net-http-Error-out-on-headers-with-LF-without-CR.patch
+    - 0026-fs-f2fs-Do-not-read-past-the-end-of-nat-journal-entr.patch
+    - 0027-fs-f2fs-Do-not-read-past-the-end-of-nat-bitmap.patch
+    - 0028-fs-f2fs-Do-not-copy-file-names-that-are-too-long.patch
+    - 0029-fs-btrfs-Fix-several-fuzz-issues-with-invalid-dir-it.patch
+    - 0030-fs-btrfs-Fix-more-ASAN-and-SEGV-issues-found-with-fu.patch
+    - 0031-fs-btrfs-Fix-more-fuzz-issues-related-to-chunks.patch
+    - 0032-Use-grub_loader_set_ex-for-secureboot-chainloader.patch
+    - 0001-luks2-Add-debug-message-to-align-with-luks-and-geli-.patch
+    - 0002-cryptodisk-Refactor-to-discard-have_it-global.patch
+    - 0003-cryptodisk-Return-failure-in-cryptomount-when-no-cry.patch
+    - 0004-cryptodisk-Improve-error-messaging-in-cryptomount-in.patch
+    - 0005-cryptodisk-Improve-cryptomount-u-error-message.patch
+    - 0006-cryptodisk-Add-infrastructure-to-pass-data-from-cryp.patch
+    - 0007-cryptodisk-Refactor-password-input-out-of-crypto-dev.patch
+    - 0008-cryptodisk-Move-global-variables-into-grub_cryptomou.patch
+    - 0009-cryptodisk-Improve-handling-of-partition-name-in-cry.patch
+    - 0001-crytodisk-fix-cryptodisk-module-looking-up.patch
+    - 0001-devmapper-getroot-Have-devmapper-recognize-LUKS2.patch
+    - 0002-devmapper-getroot-Set-up-cheated-LUKS2-cryptodisk-mo.patch
+    - 0003-disk-cryptodisk-When-cheatmounting-use-the-sector-in.patch
+    - 0004-normal-menu-Don-t-show-Booting-s-msg-when-auto-booti.patch
+    - 0005-EFI-suppress-the-Welcome-to-GRUB-message-in-EFI-buil.patch
+    - 0006-EFI-console-Do-not-set-colorstate-until-the-first-te.patch
+    - 0007-EFI-console-Do-not-set-cursor-until-the-first-text-o.patch
+    - efi-set-variable-with-attrs.patch
+    - 0001-mm-Allow-dynamically-requesting-additional-memory-re.patch
+    - 0002-kern-efi-mm-Always-request-a-fixed-number-of-pages-o.patch
+    - 0003-kern-efi-mm-Extract-function-to-add-memory-regions.patch
+    - 0004-kern-efi-mm-Pass-up-errors-from-add_memory_regions.patch
+    - 0005-kern-efi-mm-Implement-runtime-addition-of-pages.patch
+    - 0001-kern-efi-mm-Enlarge-the-default-heap-size.patch
+    - 0002-mm-Defer-the-disk-cache-invalidation.patch
+    - 0001-grub-install-set-point-of-no-return-for-powerpc-ieee1275.patch
+    - 0001-commands-efi-tpm-Refine-the-status-of-log-event.patch
+    - 0002-commands-efi-tpm-Use-grub_strcpy-instead-of-grub_mem.patch
+    - 0003-efi-tpm-Add-EFI_CC_MEASUREMENT_PROTOCOL-support.patch
+    - 0001-ibmvtpm-Add-support-for-trusted-boot-using-a-vTPM-2..patch
+    - 0002-ieee1275-implement-vec5-for-cas-negotiation.patch
+    - 0001-font-Reject-glyphs-exceeds-font-max_glyph_width-or-f.patch
+    - 0002-font-Fix-size-overflow-in-grub_font_get_glyph_intern.patch
+    - 0003-font-Fix-several-integer-overflows-in-grub_font_cons.patch
+    - 0004-font-Remove-grub_font_dup_glyph.patch
+    - 0005-font-Fix-integer-overflow-in-ensure_comb_space.patch
+    - 0006-font-Fix-integer-overflow-in-BMP-index.patch
+    - 0007-font-Fix-integer-underflow-in-binary-search-of-char-.patch
+    - 0008-fbutil-Fix-integer-overflow.patch
+    - 0009-font-Fix-an-integer-underflow-in-blit_comb.patch
+    - 0010-font-Harden-grub_font_blit_glyph-and-grub_font_blit_.patch
+    - 0011-font-Assign-null_font-to-glyphs-in-ascii_font_glyph.patch
+    - 0012-normal-charset-Fix-an-integer-overflow-in-grub_unico.patch
+    - 0001-fs-btrfs-Use-full-btrfs-bootloader-area.patch
+    - 0001-ieee1275-Increase-initially-allocated-heap-from-1-4-.patch
+    - 0001-grub-core-modify-sector-by-sysfs-as-disk-sector.patch
+    - grub2-add-module-for-boot-loader-interface.patch
+    - 0001-ieee1275-Further-increase-initially-allocated-heap-f.patch
+    - 0002-tpm-Disable-tpm-verifier-if-tpm-is-not-present.patch
+    - 0001-RISC-V-Handle-R_RISCV_CALL_PLT-reloc.patch
+    - 0001-loader-linux-Ensure-the-newc-pathname-is-NULL-termin.patch
+    - 0001-kern-ieee1275-init-Convert-plain-numbers-to-constant.patch
+    - 0002-kern-ieee1275-init-Extended-support-in-Vec5.patch
+    - 0001-fs-ext2-Ignore-checksum-seed-incompat-feature.patch
+    - 0001-fs-ext2-Ignore-the-large_dir-incompat-feature.patch
+  * Patch modified to new base version:
+    - use-grub2-as-a-package-name.patch
+    - grub2-fix-menu-in-xen-host-server.patch
+    - grub2-secureboot-add-linuxefi.patch
+    - grub2-secureboot-chainloader.patch
+    - grub2-s390x-01-Changes-made-and-files-added-in-order-to-allow-s390x.patch
+    - grub2-s390x-03-output-7-bit-ascii.patch
+    - grub2-s390x-04-grub2-install.patch
+    - grub2-use-rpmsort-for-version-sorting.patch
+    - grub2-getroot-treat-mdadm-ddf-as-simple-device.patch
+    - grub2-grubenv-in-btrfs-header.patch
+    - grub2-commands-introduce-read_file-subcommand.patch
+    - grub2-efi-chainload-harder.patch
+    - grub2-emu-4-all.patch
+    - grub2-util-30_os-prober-multiple-initrd.patch
+    - grub2-install-fix-not-a-directory-error.patch
+    - grub-install-force-journal-draining-to-ensure-data-i.patch
+    - grub2-btrfs-01-add-ability-to-boot-from-subvolumes.patch
+    - grub2-btrfs-04-grub2-install.patch
+    - grub2-btrfs-05-grub2-mkconfig.patch
+    - grub2-btrfs-06-subvol-mount.patch
+    - grub2-efi-xen-chainload.patch
+    - grub2-efi-xen-cmdline.patch
+    - grub2-efi-xen-removable.patch
+    - grub2-suse-remove-linux-root-param.patch
+    - grub2-ppc64le-disable-video.patch
+    - grub2-install-remove-useless-check-PReP-partition-is-empty.patch
+    - 0004-efinet-UEFI-IPv6-PXE-support.patch
+    - 0007-efinet-Setting-network-from-UEFI-device-path.patch
+    - 0008-efinet-Setting-DNS-server-from-UEFI-protocol.patch
+    - 0001-add-support-for-UEFI-network-protocols.patch
+    - grub2-mkconfig-default-entry-correction.patch
+    - grub2-s390x-11-secureboot.patch
+    - grub2-secureboot-install-signed-grub.patch
+    - grub2-gfxmenu-support-scrolling-menu-entry-s-text.patch
+    - 0002-cmdline-Provide-cmdline-functions-as-module.patch
+    - 0001-efi-linux-provide-linux-command.patch
+    - 0001-Add-support-for-Linux-EFI-stub-loading-on-aarch64.patch
+    - 0004-arm-arm64-loader-Better-memory-allocation-and-error-.patch
+    - 0002-Arm-check-for-the-PE-magic-for-the-compiled-arch.patch
+    - 0001-Factor-out-grub_efi_linux_boot.patch
+    - 0003-Handle-multi-arch-64-on-32-boot-in-linuxefi-loader.patch
+    - 0015-test_asn1-test-module-for-libtasn1.patch
+    - 0021-appended-signatures-documentation.patch
+    - 0022-ieee1275-enter-lockdown-based-on-ibm-secure-boot.patch
+    - 0003-grub-install-support-prep-environment-block.patch
+    - 0004-Introduce-prep_load_env-command.patch
+    - 0001-grub-install-bailout-root-device-probing.patch
+    - 0001-install-fix-software-raid1-on-esp.patch
+    - 0001-ofdisk-improve-boot-time-by-lookup-boot-disk-first.patch
+    - 0001-protectors-Add-key-protectors-framework.patch
+    - 0002-tpm2-Add-TPM-Software-Stack-TSS.patch
+    - 0004-cryptodisk-Support-key-protectors.patch
+    - 0008-linuxefi-Use-common-grub_initrd_load.patch
+    - 0009-Add-crypttab_entry-to-obviate-the-need-to-input-pass.patch
+    - grub-read-pcr.patch
+    - tpm-record-pcrs.patch
+    - 0001-clean-up-crypttab-and-linux-modules-dependency.patch
+  * Patch refreshed:
+    - rename-grub-info-file-to-grub2.patch
+    - grub2-linux.patch
+    - grub2-simplefb.patch
+    - grub2-ppc-terminfo.patch
+    - grub2-pass-corret-root-for-nfsroot.patch
+    - grub2-efi-HP-workaround.patch
+    - grub2-secureboot-no-insmod-on-sb.patch
+    - grub2-linuxefi-fix-boot-params.patch
+    - grub2-s390x-05-grub2-mkconfig.patch
+    - grub2-xen-linux16.patch
+    - grub2-efi-disable-video-cirrus-and-bochus.patch
+    - grub2-vbe-blacklist-preferred-1440x900x32.patch
+    - grub2-mkconfig-aarch64.patch
+    - grub2-menu-unrestricted.patch
+    - grub2-mkconfig-arm.patch
+    - grub2-s390x-06-loadparm.patch
+    - grub2-s390x-07-add-image-param-for-zipl-setup.patch
+    - grub2-s390x-08-workaround-part-to-disk.patch
+    - grub2-diskfilter-support-pv-without-metadatacopies.patch
+    - grub2-getroot-support-nvdimm.patch
+    - grub2-s390x-skip-zfcpdump-image.patch
+    - grub2-btrfs-02-export-subvolume-envvars.patch
+    - grub2-btrfs-03-follow_default.patch
+    - grub2-btrfs-07-subvol-fallback.patch
+    - grub2-btrfs-08-workaround-snapshot-menu-default-entry.patch
+    - grub2-btrfs-09-get-default-subvolume.patch
+    - grub2-btrfs-10-config-directory.patch
+    - grub2-efi-xen-cfg-unquote.patch
+    - grub2-Add-hidden-menu-entries.patch
+    - grub2-SUSE-Add-the-t-hotkey.patch
+    - grub2-ppc64le-memory-map.patch
+    - grub2-ppc64-cas-reboot-support.patch
+    - grub2-ppc64-cas-new-scope.patch
+    - grub2-ppc64-cas-fix-double-free.patch
+    - 0003-bootp-New-net_bootp6-command.patch
+    - 0005-grub.texi-Add-net_bootp6-doument.patch
+    - 0006-bootp-Add-processing-DHCPACK-packet-from-HTTP-Boot.patch
+    - 0012-tpm-Build-tpm-as-module.patch
+    - 0002-AUDIT-0-http-boot-tracker-bug.patch
+    - grub2-btrfs-help-on-snapper-rollback.patch
+    - grub2-video-limit-the-resolution-for-fixed-bimap-font.patch
+    - 0001-kern-mm.c-Make-grub_calloc-inline.patch
+    - 0001-Unify-the-check-to-enable-btrfs-relative-path.patch
+    - 0002-arm64-make-sure-fdt-has-address-cells-and-size-cells.patch
+    - 0003-Make-grub_error-more-verbose.patch
+    - 0001-ieee1275-Avoiding-many-unecessary-open-close.patch
+    - 0001-Workaround-volatile-efi-boot-variable.patch
+    - 0001-templates-Follow-the-path-of-usr-merged-kernel-confi.patch
+    - 0004-Try-to-pick-better-locations-for-kernel-and-initrd.patch
+    - 0004-Add-suport-for-signing-grub-with-an-appended-signatu.patch
+    - 0005-docs-grub-Document-signing-grub-under-UEFI.patch
+    - 0006-docs-grub-Document-signing-grub-with-an-appended-sig.patch
+    - 0007-dl-provide-a-fake-grub_dl_set_persistent-for-the-emu.patch
+    - 0008-pgp-factor-out-rsa_pad.patch
+    - 0010-posix_wrap-tweaks-in-preparation-for-libtasn1.patch
+    - 0011-libtasn1-import-libtasn1-4.18.0.patch
+    - 0014-libtasn1-compile-into-asn1-module.patch
+    - 0016-grub-install-support-embedding-x509-certificates.patch
+    - 0017-appended-signatures-import-GNUTLS-s-ASN.1-descriptio.patch
+    - 0018-appended-signatures-parse-PKCS-7-signedData-and-X.50.patch
+    - 0019-appended-signatures-support-verifying-appended-signa.patch
+    - 0020-appended-signatures-verification-tests.patch
+    - 0001-grub-install-Add-SUSE-signed-image-support-for-power.patch
+    - 0002-Add-grub_disk_write_tail-helper-function.patch
+    - 0005-export-environment-at-start-up.patch
+    - 0001-Fix-infinite-boot-loop-on-headless-system-in-qemu.patch
+    - 0003-protectors-Add-TPM2-Key-Protector.patch
+    - 0005-util-grub-protect-Add-new-tool.patch
+    - 0010-templates-import-etc-crypttab-to-grub.cfg.patch
+    - grub-install-record-pcrs.patch
+    - safe_tpm_pcr_snapshot.patch
+    - 0002-Mark-environmet-blocks-as-used-for-image-embedding.patch
+    - 0001-grub2-Set-multiple-device-path-for-a-nvmf-boot-devic.patch
+    - 0002-discard-cached-key-before-entering-grub-shell-and-ed.patch
+    - 0001-ieee1275-ofdisk-retry-on-open-and-read-failure.patch
+    - 0002-Restrict-cryptsetup-key-file-permission-for-better-s.patch
+  * New:
+    - 0001-xen_boot-add-missing-grub_arch_efi_linux_load_image_.patch
+    - 0001-font-Try-memdisk-fonts-with-the-same-name.patch 
+    - 0001-Make-grub.cfg-compatible-to-old-binaries.patch
+    - 0001-disk-cryptodisk-Fix-missing-change-when-updating-to-.patch
+  * Embedding fonts in the grub.efi to get signed for secure boot
 
 -------------------------------------------------------------------
 Wed Jul 26 03:04:25 UTC 2023 - Michael Chang <mchang@suse.com>

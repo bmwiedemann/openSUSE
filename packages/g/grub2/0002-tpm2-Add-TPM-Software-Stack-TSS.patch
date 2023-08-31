@@ -55,9 +55,6 @@ Signed-off-by: Gary Lin <glin@suse.com>
  create mode 100644 include/grub/tpm2/tcg2.h
  create mode 100644 include/grub/tpm2/tpm2.h
 
-diff --git a/grub-core/tpm2/buffer.c b/grub-core/tpm2/buffer.c
-new file mode 100644
-index 000000000..cb9f29497
 --- /dev/null
 +++ b/grub-core/tpm2/buffer.c
 @@ -0,0 +1,145 @@
@@ -206,9 +203,6 @@ index 000000000..cb9f29497
 +  buffer->offset += sizeof (tmp);
 +  *value = grub_be_to_cpu32 (tmp);
 +}
-diff --git a/grub-core/tpm2/mu.c b/grub-core/tpm2/mu.c
-new file mode 100644
-index 000000000..1617f37cd
 --- /dev/null
 +++ b/grub-core/tpm2/mu.c
 @@ -0,0 +1,807 @@
@@ -1019,9 +1013,6 @@ index 000000000..1617f37cd
 +  for (grub_uint32_t i = 0; i < digest->count; i++)
 +    grub_tpm2_mu_TPM2B_DIGEST_Unmarshal (buf, &digest->digests[i]);
 +}
-diff --git a/grub-core/tpm2/tcg2.c b/grub-core/tpm2/tcg2.c
-new file mode 100644
-index 000000000..d350e3a24
 --- /dev/null
 +++ b/grub-core/tpm2/tcg2.c
 @@ -0,0 +1,143 @@
@@ -1064,7 +1055,7 @@ index 000000000..d350e3a24
 +  if (has_caps)
 +    goto exit;
 +
-+  status = efi_call_2 (protocol->get_capability, protocol, &caps);
++  status = protocol->get_capability (protocol, &caps);
 +  if (status != GRUB_EFI_SUCCESS || !caps.TPMPresentFlag)
 +    return GRUB_ERR_FILE_NOT_FOUND;
 +
@@ -1082,7 +1073,7 @@ index 000000000..d350e3a24
 +static grub_err_t
 +grub_tcg2_get_protocol (grub_efi_tpm2_protocol_t **protocol)
 +{
-+  static grub_efi_guid_t tpm2_guid = EFI_TPM2_GUID;
++  static grub_guid_t tpm2_guid = EFI_TPM2_GUID;
 +  static grub_efi_tpm2_protocol_t *tpm2_protocol = NULL;
 +
 +  int tpm2;
@@ -1161,16 +1152,13 @@ index 000000000..d350e3a24
 +  if (err)
 +    return err;
 +
-+  status = efi_call_5 (protocol->submit_command, protocol, input_size, input,
++  status = protocol->submit_command (protocol, input_size, input,
 +		       output_size, output);
 +  if (status != GRUB_EFI_SUCCESS)
 +    return GRUB_ERR_INVALID_COMMAND;
 +
 +  return GRUB_ERR_NONE;
 +}
-diff --git a/grub-core/tpm2/tpm2.c b/grub-core/tpm2/tpm2.c
-new file mode 100644
-index 000000000..d67699a24
 --- /dev/null
 +++ b/grub-core/tpm2/tpm2.c
 @@ -0,0 +1,761 @@
@@ -1935,9 +1923,6 @@ index 000000000..d67699a24
 +
 +  return TPM_RC_SUCCESS;
 +}
-diff --git a/include/grub/tpm2/buffer.h b/include/grub/tpm2/buffer.h
-new file mode 100644
-index 000000000..87dcd8d6c
 --- /dev/null
 +++ b/include/grub/tpm2/buffer.h
 @@ -0,0 +1,65 @@
@@ -2006,9 +1991,6 @@ index 000000000..87dcd8d6c
 +grub_tpm2_buffer_unpack_u32 (grub_tpm2_buffer_t buffer, grub_uint32_t* value);
 +
 +#endif /* ! GRUB_TPM2_BUFFER_HEADER */
-diff --git a/include/grub/tpm2/internal/functions.h b/include/grub/tpm2/internal/functions.h
-new file mode 100644
-index 000000000..9380f26a2
 --- /dev/null
 +++ b/include/grub/tpm2/internal/functions.h
 @@ -0,0 +1,117 @@
@@ -2129,9 +2111,6 @@ index 000000000..9380f26a2
 +		   TPMS_AUTH_RESPONSE *authResponse);
 +
 +#endif /* ! GRUB_TPM2_INTERNAL_FUNCTIONS_HEADER */
-diff --git a/include/grub/tpm2/internal/structs.h b/include/grub/tpm2/internal/structs.h
-new file mode 100644
-index 000000000..72d71eb70
 --- /dev/null
 +++ b/include/grub/tpm2/internal/structs.h
 @@ -0,0 +1,675 @@
@@ -2810,9 +2789,6 @@ index 000000000..72d71eb70
 +typedef struct TPMT_TK_CREATION TPMT_TK_CREATION;
 +
 +#endif /* ! GRUB_TPM2_INTERNAL_STRUCTS_HEADER */
-diff --git a/include/grub/tpm2/internal/types.h b/include/grub/tpm2/internal/types.h
-new file mode 100644
-index 000000000..9714f75d4
 --- /dev/null
 +++ b/include/grub/tpm2/internal/types.h
 @@ -0,0 +1,372 @@
@@ -3188,9 +3164,6 @@ index 000000000..9714f75d4
 +typedef TPM_HANDLE TPMI_DH_PERSISTENT;
 +
 +#endif /* ! GRUB_TPM2_INTERNAL_TYPES_HEADER */
-diff --git a/include/grub/tpm2/mu.h b/include/grub/tpm2/mu.h
-new file mode 100644
-index 000000000..c545976db
 --- /dev/null
 +++ b/include/grub/tpm2/mu.h
 @@ -0,0 +1,292 @@
@@ -3486,9 +3459,6 @@ index 000000000..c545976db
 +				    TPML_DIGEST* digest);
 +
 +#endif /* ! GRUB_TPM2_MU_HEADER */
-diff --git a/include/grub/tpm2/tcg2.h b/include/grub/tpm2/tcg2.h
-new file mode 100644
-index 000000000..553b3fd93
 --- /dev/null
 +++ b/include/grub/tpm2/tcg2.h
 @@ -0,0 +1,34 @@
@@ -3526,9 +3496,6 @@ index 000000000..553b3fd93
 +			  grub_uint8_t *output);
 +
 +#endif /* ! GRUB_TPM2_TCG2_HEADER */
-diff --git a/include/grub/tpm2/tpm2.h b/include/grub/tpm2/tpm2.h
-new file mode 100644
-index 000000000..cfdc9edcd
 --- /dev/null
 +++ b/include/grub/tpm2/tpm2.h
 @@ -0,0 +1,34 @@
@@ -3566,6 +3533,3 @@ index 000000000..cfdc9edcd
 +} TPM2_SEALED_KEY;
 +
 +#endif /* ! GRUB_TPM2_TPM2_HEADER */
--- 
-2.35.3
-

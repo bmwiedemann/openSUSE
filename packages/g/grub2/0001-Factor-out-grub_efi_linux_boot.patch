@@ -18,20 +18,18 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  create mode 100644 grub-core/loader/efi/linux.c
  create mode 100644 include/grub/efi/linux.h
 
-diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index b5328d7a0..46a488131 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -1834,6 +1834,7 @@ module = {
-   riscv64 = loader/riscv/linux.c;
+@@ -1860,6 +1860,9 @@
+   riscv64 = loader/efi/linux.c;
    emu = loader/emu/linux.c;
    common = loader/linux.c;
-+  efi = loader/efi/linux.c;
++  i386_efi = loader/efi/linux_boot.c;
++  x86_64_efi = loader/efi/linux_boot.c;
++  arm64 = loader/efi/linux_boot.c;
  };
  
  module = {
-diff --git a/grub-core/loader/arm64/efi/linux.c b/grub-core/loader/arm64/efi/linux.c
-index 87cb2f97c..0ebdc48b7 100644
 --- a/grub-core/loader/arm64/efi/linux.c
 +++ b/grub-core/loader/arm64/efi/linux.c
 @@ -33,6 +33,7 @@
@@ -42,7 +40,7 @@ index 87cb2f97c..0ebdc48b7 100644
  
  GRUB_MOD_LICENSE ("GPLv3+");
  
-@@ -51,40 +52,6 @@ static grub_uint32_t cmdline_size;
+@@ -51,40 +52,6 @@
  static grub_addr_t initrd_start;
  static grub_addr_t initrd_end;
  
@@ -80,14 +78,82 @@ index 87cb2f97c..0ebdc48b7 100644
 -
 -#pragma GCC diagnostic pop
 -
- grub_err_t
+ static grub_err_t
  grub_arch_efi_linux_check_image (struct linux_arch_kernel_header * lh)
  {
-diff --git a/grub-core/loader/efi/linux.c b/grub-core/loader/efi/linux.c
-new file mode 100644
-index 000000000..442627dc2
+--- a/grub-core/loader/i386/efi/linux.c
++++ b/grub-core/loader/i386/efi/linux.c
+@@ -26,6 +26,7 @@
+ #include <grub/i18n.h>
+ #include <grub/lib/cmdline.h>
+ #include <grub/efi/efi.h>
++#include <grub/efi/linux.h>
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+@@ -40,26 +41,18 @@
+ 
+ #define BYTES_TO_PAGES(bytes)   (((bytes) + 0xfff) >> 12)
+ 
+-typedef void(*handover_func)(void *, grub_efi_system_table_t *, struct linux_kernel_params *);
+-
+ static grub_err_t
+ grub_linuxefi_boot (void)
+ {
+-  handover_func hf;
+   int offset = 0;
+ 
+ #ifdef __x86_64__
+   offset = 512;
+ #endif
+-
+-  hf = (handover_func)((char *)kernel_mem + handover_offset + offset);
+-
+   asm volatile ("cli");
+ 
+-  hf (grub_efi_image_handle, grub_efi_system_table, params);
+-
+-  /* Not reached */
+-  return GRUB_ERR_NONE;
++  return grub_efi_linux_boot ((char *)kernel_mem, handover_offset + offset,
++			      params);
+ }
+ 
+ static grub_err_t
 --- /dev/null
-+++ b/grub-core/loader/efi/linux.c
++++ b/include/grub/efi/linux.h
+@@ -0,0 +1,29 @@
++/*
++ *  GRUB  --  GRand Unified Bootloader
++ *  Copyright (C) 2014  Free Software Foundation, Inc.
++ *
++ *  GRUB is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  GRUB is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
++ */
++#ifndef GRUB_EFI_LINUX_HEADER
++#define GRUB_EFI_LINUX_HEADER	1
++
++#include <grub/efi/api.h>
++#include <grub/err.h>
++#include <grub/symbol.h>
++
++grub_err_t
++EXPORT_FUNC(grub_efi_linux_boot) (void *kernel_address, grub_off_t offset,
++				  void *kernel_param);
++
++#endif /* ! GRUB_EFI_LINUX_HEADER */
+--- /dev/null
++++ b/grub-core/loader/efi/linux_boot.c
 @@ -0,0 +1,58 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
@@ -147,82 +213,3 @@ index 000000000..442627dc2
 +}
 +
 +#pragma GCC diagnostic pop
-diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
-index 355ecc9b9..06814cae3 100644
---- a/grub-core/loader/i386/efi/linux.c
-+++ b/grub-core/loader/i386/efi/linux.c
-@@ -26,6 +26,7 @@
- #include <grub/i18n.h>
- #include <grub/lib/cmdline.h>
- #include <grub/efi/efi.h>
-+#include <grub/efi/linux.h>
- 
- GRUB_MOD_LICENSE ("GPLv3+");
- 
-@@ -40,26 +41,18 @@ static char *linux_cmdline;
- 
- #define BYTES_TO_PAGES(bytes)   (((bytes) + 0xfff) >> 12)
- 
--typedef void(*handover_func)(void *, grub_efi_system_table_t *, struct linux_kernel_params *);
--
- static grub_err_t
- grub_linuxefi_boot (void)
- {
--  handover_func hf;
-   int offset = 0;
- 
- #ifdef __x86_64__
-   offset = 512;
- #endif
--
--  hf = (handover_func)((char *)kernel_mem + handover_offset + offset);
--
-   asm volatile ("cli");
- 
--  hf (grub_efi_image_handle, grub_efi_system_table, params);
--
--  /* Not reached */
--  return GRUB_ERR_NONE;
-+  return grub_efi_linux_boot ((char *)kernel_mem, handover_offset + offset,
-+			      params);
- }
- 
- static grub_err_t
-diff --git a/include/grub/efi/linux.h b/include/grub/efi/linux.h
-new file mode 100644
-index 000000000..887b02fd9
---- /dev/null
-+++ b/include/grub/efi/linux.h
-@@ -0,0 +1,29 @@
-+/*
-+ *  GRUB  --  GRand Unified Bootloader
-+ *  Copyright (C) 2014  Free Software Foundation, Inc.
-+ *
-+ *  GRUB is free software: you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License as published by
-+ *  the Free Software Foundation, either version 3 of the License, or
-+ *  (at your option) any later version.
-+ *
-+ *  GRUB is distributed in the hope that it will be useful,
-+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ *  GNU General Public License for more details.
-+ *
-+ *  You should have received a copy of the GNU General Public License
-+ *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
-+ */
-+#ifndef GRUB_EFI_LINUX_HEADER
-+#define GRUB_EFI_LINUX_HEADER	1
-+
-+#include <grub/efi/api.h>
-+#include <grub/err.h>
-+#include <grub/symbol.h>
-+
-+grub_err_t
-+EXPORT_FUNC(grub_efi_linux_boot) (void *kernel_address, grub_off_t offset,
-+				  void *kernel_param);
-+
-+#endif /* ! GRUB_EFI_LINUX_HEADER */
--- 
-2.31.1
-

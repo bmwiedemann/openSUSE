@@ -22,7 +22,7 @@ $cmdpath to work.
 
 --- a/util/grub.d/20_linux_xen.in
 +++ b/util/grub.d/20_linux_xen.in
-@@ -101,32 +101,6 @@ esac
+@@ -113,32 +113,6 @@
  
  title_correction_code=
  
@@ -55,7 +55,7 @@ $cmdpath to work.
  grub2_unquote ()
  {
    awk '
-@@ -234,10 +208,15 @@ linux_entry ()
+@@ -264,10 +238,15 @@
  	kernel=${basename} root=${linux_root_device_thisversion} ${args_unq}
  	ramdisk=${initrd_real}
  	EOF
@@ -72,7 +72,7 @@ $cmdpath to work.
  	}
  	EOF
      for f in ${grub_dir}/$xen_cfg ${xen_dir}/${xen_basename} ${dirname}/${basename} ${dirname}/${initrd_real}; do
-@@ -318,6 +297,7 @@ else
+@@ -363,6 +342,7 @@
      done
  fi
  prepare_boot_cache=
@@ -80,7 +80,7 @@ $cmdpath to work.
  boot_device_id=
  
  title_correction_code=
-@@ -328,6 +308,34 @@ submenu_indentation=""
+@@ -432,6 +412,34 @@
  
  is_top_level=true
  
@@ -112,6 +112,6 @@ $cmdpath to work.
 +  is_efi=false
 +fi
 +
- while [ "x${xen_list}" != "x" ] ; do
-     list="${linux_list}"
-     current_xen=`version_find_latest $xen_list`
+ for current_xen in ${reverse_sorted_xen_list}; do
+     xen_basename=`basename ${current_xen}`
+     xen_dirname=`dirname ${current_xen}`

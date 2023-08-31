@@ -22,8 +22,6 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  util/grub-install.c       | 38 ++++++++++++++++++++++++++++++++++++++
  2 files changed, 41 insertions(+)
 
-diff --git a/include/grub/lib/envblk.h b/include/grub/lib/envblk.h
-index 83f3fcf841..d01927bcf7 100644
 --- a/include/grub/lib/envblk.h
 +++ b/include/grub/lib/envblk.h
 @@ -24,6 +24,9 @@
@@ -36,8 +34,6 @@ index 83f3fcf841..d01927bcf7 100644
  struct grub_envblk
  {
    char *buf;
-diff --git a/util/grub-install.c b/util/grub-install.c
-index 8fb5ea616b..7bc5f84378 100644
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
 @@ -43,6 +43,7 @@
@@ -48,10 +44,10 @@ index 8fb5ea616b..7bc5f84378 100644
  
  #include <string.h>
  
-@@ -2112,6 +2113,43 @@ main (int argc, char *argv[])
- 	    {
- 	      grub_util_error ("%s", _("failed to copy Grub to the PReP partition"));
- 	    }
+@@ -2138,6 +2139,43 @@
+ 	  if (write_to_disk (ins_dev, imgfile))
+ 	    grub_util_error ("%s", _("failed to copy Grub to the PReP partition"));
+ 	  grub_set_install_backup_ponr ();
 +
 +	  if ((signed_grub_mode >= SIGNED_GRUB_FORCE) || ((signed_grub_mode == SIGNED_GRUB_AUTO) && (ppc_sb_state > 0)))
 +	    {
@@ -92,6 +88,3 @@ index 8fb5ea616b..7bc5f84378 100644
  	  grub_device_close (ins_dev);
  	  if (update_nvram)
  	    grub_install_register_ieee1275 (1, grub_util_get_os_disk (install_device),
--- 
-2.34.1
-

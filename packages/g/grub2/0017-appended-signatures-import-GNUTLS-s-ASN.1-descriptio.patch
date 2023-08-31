@@ -21,9 +21,6 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  create mode 100644 grub-core/commands/appendedsig/gnutls_asn1_tab.c
  create mode 100644 grub-core/commands/appendedsig/pkix_asn1_tab.c
 
-diff --git a/grub-core/commands/appendedsig/gnutls_asn1_tab.c b/grub-core/commands/appendedsig/gnutls_asn1_tab.c
-new file mode 100644
-index 000000000..ddd1314e6
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/gnutls_asn1_tab.c
 @@ -0,0 +1,121 @@
@@ -148,9 +145,6 @@ index 000000000..ddd1314e6
 +  { NULL, 4104, "0"},
 +  { NULL, 0, NULL }
 +};
-diff --git a/grub-core/commands/appendedsig/pkix_asn1_tab.c b/grub-core/commands/appendedsig/pkix_asn1_tab.c
-new file mode 100644
-index 000000000..adef69d95
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/pkix_asn1_tab.c
 @@ -0,0 +1,484 @@
@@ -638,6 +632,3 @@ index 000000000..adef69d95
 +  { NULL, 3, NULL },
 +  { NULL, 0, NULL }
 +};
--- 
-2.31.1
-

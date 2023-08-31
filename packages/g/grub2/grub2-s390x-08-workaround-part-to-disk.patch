@@ -1,8 +1,6 @@
-Index: grub-2.02~beta2/grub-core/osdep/linux/getroot.c
-===================================================================
---- grub-2.02~beta2.orig/grub-core/osdep/linux/getroot.c
-+++ grub-2.02~beta2/grub-core/osdep/linux/getroot.c
-@@ -713,6 +713,10 @@ grub_util_part_to_disk (const char *os_d
+--- a/grub-core/osdep/linux/getroot.c
++++ b/grub-core/osdep/linux/getroot.c
+@@ -740,6 +740,10 @@
    if (! realpath (os_dev, path))
      return NULL;
  

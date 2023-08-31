@@ -46,15 +46,12 @@ This reverts commit 676a19fa8a7f9cca7a58ce2180110f609185b2bd.
  3 files changed, 685 insertions(+)
  create mode 100644 grub-core/commands/appendedsig/appendedsig.c
 
-diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 6a3ff4265..b55294e25 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -952,6 +952,20 @@ module = {
-   enable = i386_pc;
+@@ -979,6 +979,21 @@
  };
  
-+module = {
+ module = {
 +  name = appendedsig;
 +  common = commands/appendedsig/appendedsig.c;
 +  common = commands/appendedsig/x509.c;
@@ -63,17 +60,16 @@ index 6a3ff4265..b55294e25 100644
 +  common = commands/appendedsig/gnutls_asn1_tab.c;
 +  common = commands/appendedsig/pkix_asn1_tab.c;
 +
++  extra_dist = commands/appendedsig/appendedsig.h;
 +  // posix wrapper required for gcry to get sys/types.h
 +  cflags = '$(CFLAGS_POSIX)';
 +  cppflags = '-I$(srcdir)/lib/posix_wrap';
 +};
 +
- module = {
++module = {
    name = hdparm;
    common = commands/hdparm.c;
-diff --git a/grub-core/commands/appendedsig/appendedsig.c b/grub-core/commands/appendedsig/appendedsig.c
-new file mode 100644
-index 000000000..e63ad1ac6
+   enable = pci;
 --- /dev/null
 +++ b/grub-core/commands/appendedsig/appendedsig.c
 @@ -0,0 +1,669 @@
@@ -746,11 +742,9 @@ index 000000000..e63ad1ac6
 +  grub_unregister_command (cmd_trust);
 +  grub_unregister_command (cmd_distrust);
 +}
-diff --git a/include/grub/file.h b/include/grub/file.h
-index 811728a99..99b1f3855 100644
 --- a/include/grub/file.h
 +++ b/include/grub/file.h
-@@ -80,6 +80,8 @@ enum grub_file_type
+@@ -80,6 +80,8 @@
      GRUB_FILE_TYPE_PUBLIC_KEY,
      /* File holding public key to add to trused keys.  */
      GRUB_FILE_TYPE_PUBLIC_KEY_TRUST,
@@ -759,6 +753,3 @@ index 811728a99..99b1f3855 100644
      /* File of which we intend to print a blocklist to the user.  */
      GRUB_FILE_TYPE_PRINT_BLOCKLIST,
      /* File we intend to use for test loading or testing speed.  */
--- 
-2.31.1
-

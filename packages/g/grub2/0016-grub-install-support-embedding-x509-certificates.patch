@@ -19,11 +19,9 @@ Signed-off-by: Daniel Axtens <dja@axtens.net>
  util/mkimage.c              | 41 ++++++++++++++++++++++++++++++++++---
  6 files changed, 80 insertions(+), 10 deletions(-)
 
-diff --git a/grub-core/commands/pgp.c b/grub-core/commands/pgp.c
-index 355a43844..b81ac0ae4 100644
 --- a/grub-core/commands/pgp.c
 +++ b/grub-core/commands/pgp.c
-@@ -944,7 +944,7 @@ GRUB_MOD_INIT(pgp)
+@@ -944,7 +944,7 @@
      grub_memset (&pseudo_file, 0, sizeof (pseudo_file));
  
      /* Not an ELF module, skip.  */
@@ -32,11 +30,9 @@ index 355a43844..b81ac0ae4 100644
        continue;
  
      pseudo_file.fs = &pseudo_fs;
-diff --git a/include/grub/kernel.h b/include/grub/kernel.h
-index abbca5ea3..d3aafc884 100644
 --- a/include/grub/kernel.h
 +++ b/include/grub/kernel.h
-@@ -28,7 +28,8 @@ enum
+@@ -28,7 +28,8 @@
    OBJ_TYPE_MEMDISK,
    OBJ_TYPE_CONFIG,
    OBJ_TYPE_PREFIX,
@@ -46,8 +42,6 @@ index abbca5ea3..d3aafc884 100644
    OBJ_TYPE_DTB,
    OBJ_TYPE_DISABLE_SHIM_LOCK
  };
-diff --git a/include/grub/util/install.h b/include/grub/util/install.h
-index 0b2e8a06d..c241a2a40 100644
 --- a/include/grub/util/install.h
 +++ b/include/grub/util/install.h
 @@ -67,6 +67,8 @@
@@ -59,7 +53,7 @@ index 0b2e8a06d..c241a2a40 100644
    { "appended-signature-size", GRUB_INSTALL_OPTIONS_APPENDED_SIGNATURE_SIZE,\
      "SIZE", 0, N_("Add a note segment reserving SIZE bytes for an appended signature"), \
      1},                                                                 \
-@@ -189,8 +191,9 @@ void
+@@ -190,8 +192,9 @@
  grub_install_generate_image (const char *dir, const char *prefix,
  			     FILE *out,
  			     const char *outname, char *mods[],
@@ -71,11 +65,9 @@ index 0b2e8a06d..c241a2a40 100644
  			     char *config_path,
  			     const struct grub_install_image_target_desc *image_target,
  			     int note, size_t appsig_size,
-diff --git a/util/grub-install-common.c b/util/grub-install-common.c
-index 954df20eb..44296afa0 100644
 --- a/util/grub-install-common.c
 +++ b/util/grub-install-common.c
-@@ -460,6 +460,8 @@ static char **pubkeys;
+@@ -465,6 +465,8 @@
  static size_t npubkeys;
  static char *sbat;
  static int disable_shim_lock;
@@ -84,7 +76,7 @@ index 954df20eb..44296afa0 100644
  static grub_compression_t compression;
  static size_t appsig_size;
  
-@@ -501,6 +503,12 @@ grub_install_parse (int key, char *arg)
+@@ -506,6 +508,12 @@
      case GRUB_INSTALL_OPTIONS_DISABLE_SHIM_LOCK:
        disable_shim_lock = 1;
        return 1;
@@ -97,7 +89,7 @@ index 954df20eb..44296afa0 100644
  
      case GRUB_INSTALL_OPTIONS_VERBOSITY:
        verbosity++;
-@@ -627,6 +635,9 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
+@@ -632,6 +640,9 @@
    for (pk = pubkeys; pk < pubkeys + npubkeys; pk++)
      slen += 20 + grub_strlen (*pk);
  
@@ -107,7 +99,7 @@ index 954df20eb..44296afa0 100644
    for (md = modules.entries; *md; md++)
      {
        slen += 10 + grub_strlen (*md);
-@@ -655,6 +666,14 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
+@@ -660,6 +671,14 @@
        *p++ = ' ';
      }
  
@@ -122,7 +114,7 @@ index 954df20eb..44296afa0 100644
    for (md = modules.entries; *md; md++)
      {
        *p++ = '\'';
-@@ -683,7 +702,8 @@ grub_install_make_image_wrap_file (const char *dir, const char *prefix,
+@@ -688,7 +707,8 @@
  
    grub_install_generate_image (dir, prefix, fp, outname,
  			       modules.entries, memdisk_path,
@@ -132,11 +124,9 @@ index 954df20eb..44296afa0 100644
  			       note, appsig_size, compression, dtb, sbat,
  			       disable_shim_lock);
    while (dc--)
-diff --git a/util/grub-mkimage.c b/util/grub-mkimage.c
-index d01eaeb84..7d61ef3ea 100644
 --- a/util/grub-mkimage.c
 +++ b/util/grub-mkimage.c
-@@ -75,7 +75,8 @@ static struct argp_option options[] = {
+@@ -75,7 +75,8 @@
     /* TRANSLATORS: "embed" is a verb (command description).  "*/
    {"config",   'c', N_("FILE"), 0, N_("embed FILE as an early config"), 0},
     /* TRANSLATORS: "embed" is a verb (command description).  "*/
@@ -146,7 +136,7 @@ index d01eaeb84..7d61ef3ea 100644
    /* TRANSLATORS: NOTE is a name of segment.  */
    {"note",   'n', 0, 0, N_("add NOTE segment for CHRP IEEE1275"), 0},
    {"output",  'o', N_("FILE"), 0, N_("output a generated image to FILE [default=stdout]"), 0},
-@@ -124,6 +125,8 @@ struct arguments
+@@ -124,6 +125,8 @@
    char *dtb;
    char **pubkeys;
    size_t npubkeys;
@@ -155,7 +145,7 @@ index d01eaeb84..7d61ef3ea 100644
    char *font;
    char *config;
    char *sbat;
-@@ -206,6 +209,13 @@ argp_parser (int key, char *arg, struct argp_state *state)
+@@ -206,6 +209,13 @@
        arguments->pubkeys[arguments->npubkeys++] = xstrdup (arg);
        break;
  
@@ -169,7 +159,7 @@ index d01eaeb84..7d61ef3ea 100644
      case 'c':
        if (arguments->config)
  	free (arguments->config);
-@@ -332,7 +342,8 @@ main (int argc, char *argv[])
+@@ -332,7 +342,8 @@
    grub_install_generate_image (arguments.dir, arguments.prefix, fp,
  			       arguments.output, arguments.modules,
  			       arguments.memdisk, arguments.pubkeys,
@@ -179,11 +169,9 @@ index d01eaeb84..7d61ef3ea 100644
  			       arguments.image_target, arguments.note,
  			       arguments.appsig_size,
  			       arguments.comp, arguments.dtb,
-diff --git a/util/mkimage.c b/util/mkimage.c
-index d2cb33883..5a8021a21 100644
 --- a/util/mkimage.c
 +++ b/util/mkimage.c
-@@ -866,8 +866,10 @@ init_pe_section(const struct grub_install_image_target_desc *image_target,
+@@ -882,8 +882,10 @@
  void
  grub_install_generate_image (const char *dir, const char *prefix,
  			     FILE *out, const char *outname, char *mods[],
@@ -196,7 +184,7 @@ index d2cb33883..5a8021a21 100644
  			     const struct grub_install_image_target_desc *image_target,
  			     int note, size_t appsig_size, grub_compression_t comp,
  			     const char *dtb_path, const char *sbat_path, 
-@@ -913,6 +915,19 @@ grub_install_generate_image (const char *dir, const char *prefix,
+@@ -929,6 +931,19 @@
        }
    }
  
@@ -216,7 +204,7 @@ index d2cb33883..5a8021a21 100644
    if (memdisk_path)
      {
        memdisk_size = ALIGN_UP(grub_util_get_image_size (memdisk_path), 512);
-@@ -1034,7 +1049,7 @@ grub_install_generate_image (const char *dir, const char *prefix,
+@@ -1050,7 +1065,7 @@
  	curs = grub_util_get_image_size (pubkey_paths[i]);
  
  	header = (struct grub_module_header *) (kernel_img + offset);
@@ -225,7 +213,7 @@ index d2cb33883..5a8021a21 100644
  	header->size = grub_host_to_target32 (curs + sizeof (*header));
  	offset += sizeof (*header);
  
-@@ -1043,6 +1058,26 @@ grub_install_generate_image (const char *dir, const char *prefix,
+@@ -1059,6 +1074,26 @@
        }
    }
  
@@ -252,6 +240,3 @@ index d2cb33883..5a8021a21 100644
    if (memdisk_path)
      {
        struct grub_module_header *header;
--- 
-2.31.1
-

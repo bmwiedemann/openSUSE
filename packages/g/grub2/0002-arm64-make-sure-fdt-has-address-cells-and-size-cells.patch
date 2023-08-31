@@ -13,11 +13,9 @@ make sure they exist.
  grub-core/loader/arm64/efi/linux.c | 16 +++++++++++++++-
  1 file changed, 15 insertions(+), 1 deletion(-)
 
-diff --git a/grub-core/loader/arm64/efi/linux.c b/grub-core/loader/arm64/efi/linux.c
-index d81a6d843..98c4f038b 100644
 --- a/grub-core/loader/arm64/efi/linux.c
 +++ b/grub-core/loader/arm64/efi/linux.c
-@@ -126,7 +126,21 @@ finalize_params_linux (void)
+@@ -99,7 +99,21 @@
  
    node = grub_fdt_find_subnode (fdt, 0, "chosen");
    if (node < 0)
@@ -40,6 +38,3 @@ index d81a6d843..98c4f038b 100644
  
    if (node < 1)
      goto failure;
--- 
-2.26.2
-

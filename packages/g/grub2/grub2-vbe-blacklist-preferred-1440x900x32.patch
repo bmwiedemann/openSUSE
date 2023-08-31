@@ -1,8 +1,6 @@
-Index: grub-2.02~beta2/grub-core/video/i386/pc/vbe.c
-===================================================================
---- grub-2.02~beta2.orig/grub-core/video/i386/pc/vbe.c
-+++ grub-2.02~beta2/grub-core/video/i386/pc/vbe.c
-@@ -1053,6 +1053,15 @@ grub_video_vbe_setup (unsigned int width
+--- a/grub-core/video/i386/pc/vbe.c
++++ b/grub-core/video/i386/pc/vbe.c
+@@ -1054,6 +1054,15 @@
  	      || vbe_mode_info.y_resolution > height)
  	    /* Resolution exceeds that of preferred mode.  */
  	    continue;

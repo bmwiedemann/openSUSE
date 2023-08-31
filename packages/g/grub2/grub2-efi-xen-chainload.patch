@@ -26,11 +26,9 @@ V3:
  util/grub.d/20_linux_xen.in |  109 +++++++++++++++++++++++++++++++++++++++-----
  1 file changed, 97 insertions(+), 12 deletions(-)
 
-Index: grub-2.06~rc1/util/grub.d/20_linux_xen.in
-===================================================================
---- grub-2.06~rc1.orig/util/grub.d/20_linux_xen.in
-+++ grub-2.06~rc1/util/grub.d/20_linux_xen.in
-@@ -21,6 +21,8 @@ prefix="@prefix@"
+--- a/util/grub.d/20_linux_xen.in
++++ b/util/grub.d/20_linux_xen.in
+@@ -21,6 +21,8 @@
  exec_prefix="@exec_prefix@"
  datarootdir="@datarootdir@"
  
@@ -39,7 +37,7 @@ Index: grub-2.06~rc1/util/grub.d/20_linux_xen.in
  . "$pkgdatadir/grub-mkconfig_lib"
  
  export TEXTDOMAIN=@PACKAGE@
-@@ -36,11 +38,23 @@ CLASS="--class gnu-linux --class gnu --c
+@@ -36,11 +38,23 @@
  
  if [ "x${GRUB_DISTRIBUTOR}" = "x" ] ; then
    OS=GNU/Linux
@@ -64,7 +62,7 @@ Index: grub-2.06~rc1/util/grub.d/20_linux_xen.in
  # loop-AES arranges things so that /dev/loop/X can be our root device, but
  # the initrds that Linux uses don't like that.
  case ${GRUB_DEVICE} in
-@@ -97,6 +111,32 @@ esac
+@@ -99,6 +113,32 @@
  
  title_correction_code=
  
@@ -97,7 +95,7 @@ Index: grub-2.06~rc1/util/grub.d/20_linux_xen.in
  linux_entry ()
  {
    linux_entry_xsm "$@" false
-@@ -150,6 +190,40 @@ linux_entry_xsm ()
+@@ -154,6 +194,40 @@
        save_default_entry | grub_add_tab | sed "s/^/$submenu_indentation/"
    fi
  
@@ -138,7 +136,7 @@ Index: grub-2.06~rc1/util/grub.d/20_linux_xen.in
    if [ -z "${prepare_boot_cache}" ]; then
      prepare_boot_cache="$(prepare_grub_to_access_device ${GRUB_DEVICE_BOOT} | grub_add_tab)"
    fi
-@@ -241,16 +315,6 @@ boot_device_id=
+@@ -245,16 +319,6 @@
  
  title_correction_code=
  
@@ -155,7 +153,7 @@ Index: grub-2.06~rc1/util/grub.d/20_linux_xen.in
  # Extra indentation to add to menu entries in a submenu. We're not in a submenu
  # yet, so it's empty. In a submenu it will be equal to '\t' (one tab).
  submenu_indentation=""
-@@ -264,6 +328,24 @@ while [ "x${xen_list}" != "x" ] ; do
+@@ -325,6 +389,24 @@
      xen_dirname=`dirname ${current_xen}`
      rel_xen_dirname=`make_system_path_relative_to_its_root $xen_dirname`
      xen_version=`echo $xen_basename | sed -e "s,.gz$,,g;s,^xen-,,g"`
@@ -180,15 +178,7 @@ Index: grub-2.06~rc1/util/grub.d/20_linux_xen.in
      if [ -z "$boot_device_id" ]; then
  	boot_device_id="$(grub_get_device_id "${GRUB_DEVICE}")"
      fi
-@@ -373,7 +455,6 @@ while [ "x${xen_list}" != "x" ] ; do
-     if [ x"$is_top_level" != xtrue ]; then
- 	echo '	}'
-     fi
--    xen_list=`echo $xen_list | tr ' ' '\n' | fgrep -vx "$current_xen" | tr '\n' ' '`
- done
- 
- # If at least one kernel was found, then we need to
-@@ -383,3 +464,7 @@ if [ x"$is_top_level" != xtrue ]; then
+@@ -445,3 +527,7 @@
  fi
  
  echo "$title_correction_code"

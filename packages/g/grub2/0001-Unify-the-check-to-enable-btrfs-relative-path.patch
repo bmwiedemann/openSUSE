@@ -13,11 +13,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  util/grub-mkconfig_lib.in |  3 +-
  2 files changed, 48 insertions(+), 22 deletions(-)
 
-diff --git a/util/grub-install.c b/util/grub-install.c
-index 746a42a04..8d18f2530 100644
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
-@@ -870,6 +870,7 @@ main (int argc, char *argv[])
+@@ -886,6 +886,7 @@
    const char *efi_file = NULL;
    char **grub_devices;
    grub_fs_t grub_fs;
@@ -25,7 +23,7 @@ index 746a42a04..8d18f2530 100644
    grub_device_t grub_dev = NULL;
    enum grub_install_plat platform;
    char *grubdir, *device_map;
-@@ -882,6 +883,8 @@ main (int argc, char *argv[])
+@@ -898,6 +899,8 @@
    int efidir_is_mac = 0;
    int is_prep = 0;
    const char *pkgdatadir;
@@ -34,7 +32,7 @@ index 746a42a04..8d18f2530 100644
  
    grub_util_host_init (&argc, &argv);
    product_version = xstrdup (PACKAGE_VERSION);
-@@ -895,9 +898,6 @@ main (int argc, char *argv[])
+@@ -911,9 +914,6 @@
  
    grub_util_load_config (&config);
  
@@ -44,7 +42,7 @@ index 746a42a04..8d18f2530 100644
    if (!bootloader_id && config.grub_distributor)
      {
        char *ptr;
-@@ -1046,6 +1046,45 @@ main (int argc, char *argv[])
+@@ -1064,6 +1064,45 @@
    grub_hostfs_init ();
    grub_host_init ();
  
@@ -90,7 +88,7 @@ index 746a42a04..8d18f2530 100644
    switch (platform)
      {
      case GRUB_INSTALL_PLATFORM_I386_EFI:
-@@ -1410,8 +1449,7 @@ main (int argc, char *argv[])
+@@ -1454,8 +1493,7 @@
  	      debug_image);
      }
  
@@ -100,7 +98,7 @@ index 746a42a04..8d18f2530 100644
      {
        if (!load_cfg_f)
          load_cfg_f = grub_util_fopen (load_cfg, "wb");
-@@ -1624,21 +1662,13 @@ main (int argc, char *argv[])
+@@ -1669,21 +1707,13 @@
  
  #ifdef __linux__
  
@@ -116,16 +114,17 @@ index 746a42a04..8d18f2530 100644
 -
 -      if (rootdir_path && grub_util_is_directory (rootdir_path))
 -	rootdir_devices = grub_guess_root_devices (rootdir_path);
- 
+-
 -      if (rootdir_devices && rootdir_devices[0])
 -	if (grub_strcmp (rootdir_devices[0], grub_devices[0]) == 0)
 -	  subvol = grub_util_get_btrfs_subvol (platdir, &mount_path);
++
 +      if (grub_strcmp (rootdir_devices[0], grub_devices[0]) == 0)
 +	subvol = grub_util_get_btrfs_subvol (platdir, &mount_path);
  
        if (subvol && mount_path)
  	{
-@@ -1663,11 +1693,6 @@ main (int argc, char *argv[])
+@@ -1708,11 +1738,6 @@
  	    }
  	}
  
@@ -137,11 +136,9 @@ index 746a42a04..8d18f2530 100644
        free (subvol);
        free (mount_path);
      }
-diff --git a/util/grub-mkconfig_lib.in b/util/grub-mkconfig_lib.in
-index 023f54a2d..eab46773b 100644
 --- a/util/grub-mkconfig_lib.in
 +++ b/util/grub-mkconfig_lib.in
-@@ -49,7 +49,8 @@ grub_warn ()
+@@ -49,7 +49,8 @@
  
  make_system_path_relative_to_its_root ()
  {
@@ -151,6 +148,3 @@ index 023f54a2d..eab46773b 100644
    "${grub_mkrelpath}" -r "$1"
    else
    "${grub_mkrelpath}" "$1"
--- 
-2.28.0
-

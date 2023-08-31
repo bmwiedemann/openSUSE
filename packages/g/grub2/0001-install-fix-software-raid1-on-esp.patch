@@ -39,11 +39,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  util/grub-install.c                 | 107 ++++++++++++++++++++++++++--
  8 files changed, 171 insertions(+), 37 deletions(-)
 
-diff --git a/grub-core/disk/diskfilter.c b/grub-core/disk/diskfilter.c
-index 39d74cb867..de0c02cf94 100644
 --- a/grub-core/disk/diskfilter.c
 +++ b/grub-core/disk/diskfilter.c
-@@ -159,8 +159,8 @@ scan_disk_partition_iter (grub_disk_t disk, grub_partition_t p, void *data)
+@@ -159,8 +159,8 @@
        for (m = arr->pvs; m; m = m->next)
  	if (m->disk && m->disk->id == disk->id
  	    && m->disk->dev->id == disk->dev->id
@@ -54,8 +52,8 @@ index 39d74cb867..de0c02cf94 100644
  	  return 0;
      }
  
-@@ -1330,19 +1330,23 @@ insert_array (grub_disk_t disk, const struct grub_diskfilter_pv_id *id,
- 	? (grub_memcmp (pv->id.uuid, id->uuid, id->uuidlen) == 0) 
+@@ -1340,19 +1340,23 @@
+ 	? (grub_memcmp (pv->id.uuid, id->uuid, id->uuidlen) == 0)
  	: (pv->id.id == id->id))
        {
 +	char *part_name = NULL;
@@ -85,7 +83,7 @@ index 39d74cb867..de0c02cf94 100644
  
  #ifdef GRUB_UTIL
  	{
-@@ -1359,7 +1363,6 @@ insert_array (grub_disk_t disk, const struct grub_diskfilter_pv_id *id,
+@@ -1369,7 +1373,6 @@
  #endif
  	if (start_sector != (grub_uint64_t)-1)
  	  pv->start_sector = start_sector;
@@ -93,7 +91,7 @@ index 39d74cb867..de0c02cf94 100644
  	/* Add the device to the array. */
  	for (lv = array->lvs; lv; lv = lv->next)
  	  if (!lv->became_readable_at && lv->fullname && is_lv_readable (lv, 0))
-@@ -1447,8 +1450,8 @@ grub_diskfilter_get_pv_from_disk (grub_disk_t disk,
+@@ -1457,8 +1460,8 @@
        {
  	if (pv->disk && pv->disk->id == disk->id
  	    && pv->disk->dev->id == disk->dev->id
@@ -104,11 +102,9 @@ index 39d74cb867..de0c02cf94 100644
  	  {
  	    if (vg_out)
  	      *vg_out = vg;
-diff --git a/grub-core/disk/mdraid1x_linux.c b/grub-core/disk/mdraid1x_linux.c
-index 38444b02c7..a2aafb69fb 100644
 --- a/grub-core/disk/mdraid1x_linux.c
 +++ b/grub-core/disk/mdraid1x_linux.c
-@@ -208,6 +208,9 @@ grub_mdraid_detect (grub_disk_t disk,
+@@ -208,6 +208,9 @@
  					 grub_le_to_cpu32 (sb.chunksize),
  					 grub_le_to_cpu32 (sb.layout),
  					 grub_le_to_cpu32 (sb.level));
@@ -118,11 +114,9 @@ index 38444b02c7..a2aafb69fb 100644
  
        return array;
      }
-diff --git a/grub-core/osdep/basic/no_platform.c b/grub-core/osdep/basic/no_platform.c
-index dfbdd58e4e..37b9570dbc 100644
 --- a/grub-core/osdep/basic/no_platform.c
 +++ b/grub-core/osdep/basic/no_platform.c
-@@ -33,7 +33,8 @@ grub_install_register_ieee1275 (int is_prep, const char *install_device,
+@@ -33,7 +33,8 @@
  void
  grub_install_register_efi (grub_device_t efidir_grub_dev,
  			   const char *efifile_path,
@@ -132,11 +126,9 @@ index dfbdd58e4e..37b9570dbc 100644
  {
    grub_util_error ("%s", _("no EFI routines are available for your platform"));
  }
-diff --git a/grub-core/osdep/unix/platform.c b/grub-core/osdep/unix/platform.c
-index 68186480b2..c7cf74c677 100644
 --- a/grub-core/osdep/unix/platform.c
 +++ b/grub-core/osdep/unix/platform.c
-@@ -132,15 +132,14 @@ grub_install_remove_efi_entries_by_distributor (const char *efi_distributor)
+@@ -132,15 +132,14 @@
  }
  
  int
@@ -157,7 +149,7 @@ index 68186480b2..c7cf74c677 100644
  
    if (grub_util_exec_redirect_null ((const char * []){ "efibootmgr", "--version", NULL }))
      {
-@@ -158,22 +157,50 @@ grub_install_register_efi (grub_device_t efidir_grub_dev,
+@@ -158,22 +157,50 @@
    if (ret)
      return ret;
  
@@ -194,7 +186,7 @@ index 68186480b2..c7cf74c677 100644
 +	ret = grub_util_exec ((const char * []){ "efibootmgr", "-q",
  	  "-c", "-d", efidir_disk,
  	  "-p", efidir_part_str, "-w",
--	  "-L", efi_distributor, "-l", 
+-	  "-L", efi_distributor, "-l",
 +	  "-L", new_efi_distributor ? : efi_distributor, "-l",
  	  efifile_path, NULL });
 -  else
@@ -203,7 +195,7 @@ index 68186480b2..c7cf74c677 100644
 +	ret = grub_util_exec ((const char * []){ "efibootmgr",
  	  "-c", "-d", efidir_disk,
  	  "-p", efidir_part_str, "-w",
--	  "-L", efi_distributor, "-l", 
+-	  "-L", efi_distributor, "-l",
 +	  "-L", new_efi_distributor ? : efi_distributor, "-l",
  	  efifile_path, NULL });
 -  free (efidir_part_str);
@@ -217,11 +209,9 @@ index 68186480b2..c7cf74c677 100644
  }
  
  void
-diff --git a/grub-core/osdep/windows/platform.c b/grub-core/osdep/windows/platform.c
-index 1d2e356e6b..3517803251 100644
 --- a/grub-core/osdep/windows/platform.c
 +++ b/grub-core/osdep/windows/platform.c
-@@ -204,7 +204,8 @@ set_efi_variable_bootn (grub_uint16_t n, void *in, grub_size_t len)
+@@ -204,7 +204,8 @@
  int
  grub_install_register_efi (grub_device_t efidir_grub_dev,
  			   const char *efifile_path,
@@ -231,11 +221,9 @@ index 1d2e356e6b..3517803251 100644
  {
    grub_uint16_t *boot_order, *new_boot_order;
    grub_uint16_t *distributor16;
-diff --git a/include/grub/diskfilter.h b/include/grub/diskfilter.h
-index 8deb1a8c30..94ed8673d7 100644
 --- a/include/grub/diskfilter.h
 +++ b/include/grub/diskfilter.h
-@@ -49,6 +49,7 @@ struct grub_diskfilter_vg {
+@@ -49,6 +49,7 @@
  
  #ifdef GRUB_UTIL
    struct grub_diskfilter *driver;
@@ -243,7 +231,7 @@ index 8deb1a8c30..94ed8673d7 100644
  #endif
  };
  
-@@ -66,8 +67,6 @@ struct grub_diskfilter_pv {
+@@ -66,8 +67,6 @@
    /* Optional.  */
    char *name;
    grub_disk_t disk;
@@ -252,11 +240,9 @@ index 8deb1a8c30..94ed8673d7 100644
    grub_disk_addr_t start_sector; /* Sector number where the data area starts. */
    struct grub_diskfilter_pv *next;
    /* Optional.  */
-diff --git a/include/grub/util/install.h b/include/grub/util/install.h
-index 456955c3d7..9f9e0b2ac1 100644
 --- a/include/grub/util/install.h
 +++ b/include/grub/util/install.h
-@@ -237,9 +237,10 @@ int
+@@ -236,9 +236,10 @@
  grub_install_get_powerpc_secure_boot (void);
  
  int
@@ -269,11 +255,9 @@ index 456955c3d7..9f9e0b2ac1 100644
  
  void
  grub_install_register_ieee1275 (int is_prep, const char *install_device,
-diff --git a/util/grub-install.c b/util/grub-install.c
-index 213f54a782..0cabc79119 100644
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
-@@ -1694,6 +1694,40 @@ main (int argc, char *argv[])
+@@ -1719,6 +1719,40 @@
  	    }
  	}
        prefix_drive = xasprintf ("(%s)", grub_drives[0]);
@@ -314,7 +298,7 @@ index 213f54a782..0cabc79119 100644
      }
  
  #ifdef __linux__
-@@ -2232,9 +2266,13 @@ main (int argc, char *argv[])
+@@ -2258,9 +2292,13 @@
  	    {
  	      /* Try to make this image bootable using the EFI Boot Manager, if available.  */
  	      int ret;
@@ -330,7 +314,7 @@ index 213f54a782..0cabc79119 100644
  	      if (ret)
  	        grub_util_error (_("efibootmgr failed to register the boot entry: %s"),
  				 strerror (ret));
-@@ -2287,7 +2325,11 @@ main (int argc, char *argv[])
+@@ -2314,7 +2352,11 @@
  	{
  	  char * efifile_path;
  	  char * part;
@@ -342,7 +326,7 @@ index 213f54a782..0cabc79119 100644
  
  	  /* Try to make this image bootable using the EFI Boot Manager, if available.  */
  	  if (!efi_distributor || efi_distributor[0] == '\0')
-@@ -2304,8 +2346,65 @@ main (int argc, char *argv[])
+@@ -2331,8 +2373,65 @@
  			  efidir_grub_dev->disk->name,
  			  (part ? ",": ""), (part ? : ""));
  	  grub_free (part);
@@ -410,6 +394,3 @@ index 213f54a782..0cabc79119 100644
  	  if (ret)
  	    grub_util_error (_("efibootmgr failed to register the boot entry: %s"),
  			     strerror (ret));
--- 
-2.34.1
-

@@ -32,21 +32,18 @@ care must be taken to ensure that:
  create mode 100644 grub-core/osdep/efi_removable_fallback.c
  create mode 100644 grub-core/osdep/linux/efi_removable_fallback.c
 
-diff --git a/Makefile.util.def b/Makefile.util.def
-index 2eaa3ff68..018874ab5 100644
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
-@@ -652,6 +652,7 @@ program = {
-   common = grub-core/kern/emu/argp_common.c;
-   common = grub-core/osdep/init.c;
+@@ -681,6 +681,9 @@
    common = grub-core/osdep/journaled_fs.c;
+   extra_dist = grub-core/osdep/basic/journaled_fs.c;
+   extra_dist = grub-core/osdep/linux/journaled_fs.c;
 +  common = grub-core/osdep/efi_removable_fallback.c;
++  extra_dist = grub-core/osdep/basic/efi_removable_fallback.c;
++  extra_dist = grub-core/osdep/linux/efi_removable_fallback.c;
  
    ldadd = '$(LIBLZMA)';
    ldadd = libgrubmods.a;
-diff --git a/grub-core/osdep/basic/efi_removable_fallback.c b/grub-core/osdep/basic/efi_removable_fallback.c
-new file mode 100644
-index 000000000..3f782f764
 --- /dev/null
 +++ b/grub-core/osdep/basic/efi_removable_fallback.c
 @@ -0,0 +1,26 @@
@@ -76,9 +73,6 @@ index 000000000..3f782f764
 +  return NULL;
 +}
 +
-diff --git a/grub-core/osdep/efi_removable_fallback.c b/grub-core/osdep/efi_removable_fallback.c
-new file mode 100644
-index 000000000..615a60831
 --- /dev/null
 +++ b/grub-core/osdep/efi_removable_fallback.c
 @@ -0,0 +1,5 @@
@@ -87,9 +81,6 @@ index 000000000..615a60831
 +#else
 +#include "basic/efi_removable_fallback.c"
 +#endif
-diff --git a/grub-core/osdep/linux/efi_removable_fallback.c b/grub-core/osdep/linux/efi_removable_fallback.c
-new file mode 100644
-index 000000000..7375fb0c2
 --- /dev/null
 +++ b/grub-core/osdep/linux/efi_removable_fallback.c
 @@ -0,0 +1,151 @@
@@ -244,11 +235,9 @@ index 000000000..7375fb0c2
 +  return NULL;
 +}
 +
-diff --git a/include/grub/util/install.h b/include/grub/util/install.h
-index 1541ee233..cedc5f856 100644
 --- a/include/grub/util/install.h
 +++ b/include/grub/util/install.h
-@@ -274,4 +274,7 @@ grub_install_is_short_mbrgap_supported(void);
+@@ -303,4 +303,7 @@
  
  int
  grub_install_sync_fs_journal (const char *path);
@@ -256,11 +245,9 @@ index 1541ee233..cedc5f856 100644
 +const char *
 +grub_install_efi_removable_fallback (const char *efidir, enum grub_install_plat platform);
  #endif
-diff --git a/util/grub-install.c b/util/grub-install.c
-index b37f3ca26..e20b3c6b9 100644
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
-@@ -885,6 +885,7 @@ main (int argc, char *argv[])
+@@ -901,6 +901,7 @@
    const char *pkgdatadir;
    char *rootdir_path;
    char **rootdir_devices;
@@ -268,7 +255,7 @@ index b37f3ca26..e20b3c6b9 100644
  
    grub_util_host_init (&argc, &argv);
    product_version = xstrdup (PACKAGE_VERSION);
-@@ -1142,6 +1143,7 @@ main (int argc, char *argv[])
+@@ -1175,6 +1176,7 @@
  	}
        if (!efidir)
  	grub_util_error ("%s", _("cannot find EFI directory"));
@@ -276,7 +263,7 @@ index b37f3ca26..e20b3c6b9 100644
        efidir_device_names = grub_guess_root_devices (efidir);
        if (!efidir_device_names || !efidir_device_names[0])
  	grub_util_error (_("cannot find a device for %s (is /dev mounted?)"),
-@@ -2159,6 +2161,23 @@ main (int argc, char *argv[])
+@@ -2217,6 +2219,23 @@
  	    free (grub_efi_cfg);
  	  }
        }
@@ -300,6 +287,3 @@ index b37f3ca26..e20b3c6b9 100644
        if (!removable && update_nvram)
  	{
  	  char * efifile_path;
--- 
-2.26.2
-

@@ -18,7 +18,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/Makefile.util.def
 +++ b/Makefile.util.def
-@@ -476,6 +476,13 @@
+@@ -483,6 +483,13 @@
  };
  
  script = {

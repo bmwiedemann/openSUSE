@@ -24,11 +24,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  grub-core/loader/efi/chainloader.c |  538 +++++++++++++++++++++++++++++++++--
  1 files changed, 507 insertions(+), 31 deletions(-)
 
-Index: grub-2.04/grub-core/loader/efi/chainloader.c
-===================================================================
---- grub-2.04.orig/grub-core/loader/efi/chainloader.c
-+++ grub-2.04/grub-core/loader/efi/chainloader.c
-@@ -40,15 +40,32 @@
+--- a/grub-core/loader/efi/chainloader.c
++++ b/grub-core/loader/efi/chainloader.c
+@@ -41,10 +41,24 @@
  #include <grub/i386/macho.h>
  #endif
  
@@ -45,31 +43,15 @@ Index: grub-2.04/grub-core/loader/efi/chainloader.c
  
  static grub_dl_t my_mod;
  
- static grub_efi_physical_address_t address;
- static grub_efi_uintn_t pages;
-+static grub_ssize_t fsize;
- static grub_efi_device_path_t *file_path;
- static grub_efi_handle_t image_handle;
- static grub_efi_char16_t *cmdline;
-+static grub_ssize_t cmdline_len;
-+static grub_efi_handle_t dev_handle;
-+
 +#ifdef SUPPORT_SECURE_BOOT
 +static grub_efi_boolean_t debug_secureboot = 0;
-+static grub_efi_status_t (*entry_point) (grub_efi_handle_t image_handle,  grub_efi_system_table_t *system_table);
++static grub_efi_status_t (__grub_efi_api *entry_point) (grub_efi_handle_t image_handle,  grub_efi_system_table_t *system_table);
 +#endif
- 
++
  static grub_err_t
- grub_chainloader_unload (void)
-@@ -63,6 +80,7 @@ grub_chainloader_unload (void)
-   grub_free (cmdline);
-   cmdline = 0;
-   file_path = 0;
-+  dev_handle = 0;
- 
-   grub_dl_unref (my_mod);
-   return GRUB_ERR_NONE;
-@@ -197,12 +215,409 @@ make_file_path (grub_efi_device_path_t *
+ grub_chainloader_unload (void *context)
+ {
+@@ -209,6 +223,421 @@
    return file_path;
  }
  
@@ -99,6 +81,17 @@ Index: grub-2.04/grub-core/loader/efi/chainloader.c
 +  struct grub_pe32_header_no_msdos_stub *pe_hdr;
 +};
 +
++struct grub_secureboot_chainloader_context
++{
++  grub_efi_physical_address_t address;
++  grub_efi_uintn_t pages;
++  grub_ssize_t fsize;
++  grub_efi_device_path_t *file_path;
++  grub_efi_char16_t *cmdline;
++  grub_ssize_t cmdline_len;
++  grub_efi_handle_t dev_handle;
++};
++
 +typedef struct pe_coff_loader_image_context pe_coff_loader_image_context_t;
 +
 +struct grub_efi_shim_lock
@@ -120,7 +113,7 @@ Index: grub-2.04/grub-core/loader/efi/chainloader.c
 +static grub_efi_boolean_t
 +grub_secure_validate (void *data, grub_efi_uint32_t size)
 +{
-+  grub_efi_guid_t guid = SHIM_LOCK_GUID;
++  grub_guid_t guid = SHIM_LOCK_GUID;
 +  grub_efi_shim_lock_t *shim_lock;
 +
 +  shim_lock = grub_efi_locate_protocol (&guid, NULL);
@@ -305,27 +298,32 @@ Index: grub-2.04/grub-core/loader/efi/chainloader.c
 +{
 +  while (1)
 +    {
-+      grub_efi_uint8_t type = GRUB_EFI_DEVICE_PATH_TYPE (dp);
-+      grub_efi_uint8_t subtype = GRUB_EFI_DEVICE_PATH_SUBTYPE (dp);
++      grub_efi_uint8_t type;
++      grub_efi_uint8_t subtype; 
 +
-+      if (type == GRUB_EFI_END_DEVICE_PATH_TYPE)
++      if (GRUB_EFI_END_ENTIRE_DEVICE_PATH (dp))
 +        break;
-+      else if (type == GRUB_EFI_MEDIA_DEVICE_PATH_TYPE
-+            && subtype == GRUB_EFI_FILE_PATH_DEVICE_PATH_SUBTYPE)
-+      return dp;
++
++      type = GRUB_EFI_DEVICE_PATH_TYPE (dp);
++      subtype = GRUB_EFI_DEVICE_PATH_SUBTYPE (dp);
++
++      if (type == GRUB_EFI_MEDIA_DEVICE_PATH_TYPE && subtype == GRUB_EFI_FILE_PATH_DEVICE_PATH_SUBTYPE)
++	return dp;
 +
 +      dp = GRUB_EFI_NEXT_DEVICE_PATH (dp);
 +    }
 +
-+    return NULL;
++  return NULL;
 +}
 +
 +static grub_efi_boolean_t
-+handle_image (void *data, grub_efi_uint32_t datasize)
++handle_image (struct grub_secureboot_chainloader_context *load_context)
 +{
 +  grub_efi_boot_services_t *b;
 +  grub_efi_loaded_image_t *li, li_bak;
 +  grub_efi_status_t efi_status;
++  void *data = (void *)(unsigned long)load_context->address;
++  grub_efi_uint32_t datasize = load_context->fsize;
 +  char *buffer = NULL;
 +  char *buffer_aligned = NULL;
 +  grub_efi_uint32_t i, size;
@@ -350,8 +348,8 @@ Index: grub-2.04/grub-core/loader/efi/chainloader.c
 +  section_alignment = context.pe_hdr->optional_header.section_alignment;
 +  buffer_size = context.image_size + section_alignment;
 +
-+  efi_status = efi_call_3 (b->allocate_pool, GRUB_EFI_LOADER_DATA,
-+			   buffer_size, &buffer);
++  efi_status = b->allocate_pool (GRUB_EFI_LOADER_DATA,
++			   buffer_size, (void**)&buffer);
 +
 +  if (efi_status != GRUB_EFI_SUCCESS)
 +    {
@@ -415,10 +413,10 @@ Index: grub-2.04/grub-core/loader/efi/chainloader.c
 +  grub_memcpy (&li_bak, li, sizeof (grub_efi_loaded_image_t));
 +  li->image_base = buffer_aligned;
 +  li->image_size = context.image_size;
-+  li->load_options = cmdline;
-+  li->load_options_size = cmdline_len;
-+  li->file_path = grub_efi_get_media_file_path (file_path);
-+  li->device_handle = dev_handle;
++  li->load_options = load_context->cmdline;
++  li->load_options_size = load_context->cmdline_len;
++  li->file_path = grub_efi_get_media_file_path (load_context->file_path);
++  li->device_handle = load_context->dev_handle;
 +  if (li->file_path)
 +    {
 +      grub_printf ("file path: ");
@@ -430,42 +428,43 @@ Index: grub-2.04/grub-core/loader/efi/chainloader.c
 +      goto error_exit;
 +    }
 +
-+  efi_status = efi_call_2 (entry_point, grub_efi_image_handle, grub_efi_system_table);
++  efi_status = entry_point (grub_efi_image_handle, grub_efi_system_table);
 +
 +  grub_memcpy (li, &li_bak, sizeof (grub_efi_loaded_image_t));
-+  efi_status = efi_call_1 (b->free_pool, buffer);
++  efi_status = b->free_pool (buffer);
 +
 +  return 1;
 +
 +error_exit:
 +  if (buffer)
-+      efi_call_1 (b->free_pool, buffer);
++    b->free_pool (buffer);
 +
 +  return 0;
 +
 +}
 +
 +static grub_err_t
-+grub_secureboot_chainloader_unload (void)
++grub_secureboot_chainloader_unload (void* context)
 +{
 +  grub_efi_boot_services_t *b;
++  struct grub_secureboot_chainloader_context *sb_context = (struct grub_secureboot_chainloader_context *)context;
 +
 +  b = grub_efi_system_table->boot_services;
-+  efi_call_2 (b->free_pages, address, pages);
-+  grub_free (file_path);
-+  grub_free (cmdline);
-+  cmdline = 0;
-+  file_path = 0;
-+  dev_handle = 0;
++  b->free_pages (sb_context->address, sb_context->pages);
++  grub_free (sb_context->file_path);
++  grub_free (sb_context->cmdline);
++  grub_free (sb_context);
 +
 +  grub_dl_unref (my_mod);
 +  return GRUB_ERR_NONE;
 +}
 +
 +static grub_err_t
-+grub_secureboot_chainloader_boot (void)
++grub_secureboot_chainloader_boot (void *context)
 +{
-+  handle_image ((void *)address, fsize);
++  struct grub_secureboot_chainloader_context *sb_context = (struct grub_secureboot_chainloader_context *)context;
++
++  handle_image (sb_context);
 +  grub_loader_unset ();
 +  return grub_errno;
 +}
@@ -474,25 +473,21 @@ Index: grub-2.04/grub-core/loader/efi/chainloader.c
  static grub_err_t
  grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
  		      int argc, char *argv[])
- {
-   grub_file_t file = 0;
--  grub_ssize_t size;
-   grub_efi_status_t status;
-   grub_efi_boot_services_t *b;
-   grub_device_t dev = 0;
-@@ -210,7 +625,6 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -222,11 +651,12 @@
    grub_efi_loaded_image_t *loaded_image;
    char *filename;
    void *boot_image = 0;
 -  grub_efi_handle_t dev_handle = 0;
+   grub_efi_physical_address_t address = 0;
+   grub_efi_uintn_t pages = 0;
+   grub_efi_char16_t *cmdline = NULL;
+   grub_efi_handle_t image_handle = NULL;
++  grub_ssize_t cmdline_len = 0;
++  grub_efi_handle_t dev_handle = 0;
  
    if (argc == 0)
      return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("filename expected"));
-@@ -222,9 +636,36 @@ grub_cmd_chainloader (grub_command_t cmd
-   address = 0;
-   image_handle = 0;
-   file_path = 0;
-+  dev_handle = 0;
+@@ -236,12 +666,39 @@
  
    b = grub_efi_system_table->boot_services;
  
@@ -525,80 +520,48 @@ Index: grub-2.04/grub-core/loader/efi/chainloader.c
    file = grub_file_open (filename, GRUB_FILE_TYPE_EFI_CHAINLOADED_IMAGE);
    if (! file)
      goto fail;
-@@ -270,14 +711,14 @@ grub_cmd_chainloader (grub_command_t cmd
-   grub_printf ("file path: ");
-   grub_efi_print_device_path (file_path);
  
--  size = grub_file_size (file);
--  if (!size)
-+  fsize = grub_file_size (file);
-+  if (!fsize)
-     {
-       grub_error (GRUB_ERR_BAD_OS, N_("premature end of file %s"),
- 		  filename);
-       goto fail;
-     }
--  pages = (((grub_efi_uintn_t) size + ((1 << 12) - 1)) >> 12);
-+  pages = (((grub_efi_uintn_t) fsize + ((1 << 12) - 1)) >> 12);
- 
-   status = efi_call_4 (b->allocate_pages, GRUB_EFI_ALLOCATE_ANY_PAGES,
- 			      GRUB_EFI_LOADER_CODE,
-@@ -291,7 +732,7 @@ grub_cmd_chainloader (grub_command_t cmd
-     }
- 
-   boot_image = (void *) ((grub_addr_t) address);
--  if (grub_file_read (file, boot_image, size) != size)
-+  if (grub_file_read (file, boot_image, fsize) != fsize)
-     {
-       if (grub_errno == GRUB_ERR_NONE)
- 	grub_error (GRUB_ERR_BAD_OS, N_("premature end of file %s"),
-@@ -301,7 +742,7 @@ grub_cmd_chainloader (grub_command_t cmd
-     }
- 
- #if defined (__i386__) || defined (__x86_64__)
--  if (size >= (grub_ssize_t) sizeof (struct grub_macho_fat_header))
-+  if (fsize >= (grub_ssize_t) sizeof (struct grub_macho_fat_header))
-     {
-       struct grub_macho_fat_header *head = boot_image;
-       if (head->magic
-@@ -324,20 +765,30 @@ grub_cmd_chainloader (grub_command_t cmd
- 	      > ~grub_cpu_to_le32 (archs[i].size)
- 	      || grub_cpu_to_le32 (archs[i].offset)
- 	      + grub_cpu_to_le32 (archs[i].size)
--	      > (grub_size_t) size)
-+	      > (grub_size_t) fsize)
- 	    {
- 	      grub_error (GRUB_ERR_BAD_OS, N_("premature end of file %s"),
- 			  filename);
- 	      goto fail;
- 	    }
- 	  boot_image = (char *) boot_image + grub_cpu_to_le32 (archs[i].offset);
--	  size = grub_cpu_to_le32 (archs[i].size);
-+	  fsize = grub_cpu_to_le32 (archs[i].size);
- 	}
+-  /* Get the root device's device path.  */
+-  dev = grub_device_open (0);
++  /* Get the device path from filename. */
++  char *devname = grub_file_get_device_name (filename);
++  dev = grub_device_open (devname);
+   if (dev == NULL)
+     ;
+   else if (dev->disk)
+@@ -343,6 +800,28 @@
      }
  #endif
  
 +#ifdef SUPPORT_SECURE_BOOT
 +  /* FIXME is secure boot possible also with universal binaries? */
-+  if (debug_secureboot || (grub_efi_get_secureboot () == GRUB_EFI_SECUREBOOT_MODE_ENABLED && grub_secure_validate ((void *)address, fsize)))
++  if (debug_secureboot || (grub_efi_get_secureboot () == GRUB_EFI_SECUREBOOT_MODE_ENABLED && grub_secure_validate ((void *)address, size)))
 +    {
++      struct grub_secureboot_chainloader_context *sb_context;
++
++      sb_context = grub_malloc (sizeof (*sb_context));
++      if (!sb_context)
++	goto fail;
++      sb_context->cmdline = cmdline;
++      sb_context->cmdline_len = cmdline_len;
++      sb_context->fsize = size;
++      sb_context->dev_handle = dev_handle;
++      sb_context->address = address;
++      sb_context->pages = pages;
++      sb_context->file_path = file_path;
 +      grub_file_close (file);
-+      grub_loader_set (grub_secureboot_chainloader_boot, grub_secureboot_chainloader_unload, 0);
++      grub_loader_set_ex (grub_secureboot_chainloader_boot, grub_secureboot_chainloader_unload, sb_context, 0);
 +      return 0;
 +    }
 +#endif
 +
-   status = efi_call_6 (b->load_image, 0, grub_efi_image_handle, file_path,
--		       boot_image, size,
-+		       boot_image, fsize,
- 		       &image_handle);
-   if (status != GRUB_EFI_SUCCESS)
-     {
-@@ -360,33 +811,10 @@ grub_cmd_chainloader (grub_command_t cmd
-     }
+   status = b->load_image (0, grub_efi_image_handle, file_path,
+ 			  boot_image, size,
+ 			  &image_handle);
+@@ -368,33 +847,10 @@
    loaded_image->device_handle = dev_handle;
  
+   /* Build load options with arguments from chainloader command line. */
 -  if (argc > 1)
 +  if (cmdline)
      {
@@ -631,13 +594,3 @@ Index: grub-2.04/grub-core/loader/efi/chainloader.c
      }
  
    grub_file_close (file);
-@@ -408,6 +836,9 @@ grub_cmd_chainloader (grub_command_t cmd
-   if (address)
-     efi_call_2 (b->free_pages, address, pages);
- 
-+  if (cmdline)
-+    grub_free (cmdline);
-+
-   grub_dl_unref (my_mod);
- 
-   return grub_errno;

@@ -16,11 +16,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  util/grub.d/20_linux_xen.in | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 7f3e79b09..00e351802 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
-@@ -307,7 +307,7 @@ while [ "x$list" != "x" ] ; do
+@@ -351,7 +351,7 @@
    fi
  
    config=
@@ -29,11 +27,9 @@ index 7f3e79b09..00e351802 100644
      if test -e "${i}" ; then
        config="${i}"
        break
-diff --git a/util/grub.d/20_linux_xen.in b/util/grub.d/20_linux_xen.in
-index 8813435b7..318b6d320 100644
 --- a/util/grub.d/20_linux_xen.in
 +++ b/util/grub.d/20_linux_xen.in
-@@ -304,7 +304,7 @@ for i in /boot/vmlinu[xz]-* /vmlinu[xz]-* /boot/kernel-*; do
+@@ -307,7 +307,7 @@
  	version=$(echo $basename | sed -e "s,^[^0-9]*-,,g")
  	dirname=$(dirname $i)
  	config=
@@ -42,6 +38,3 @@ index 8813435b7..318b6d320 100644
  	    if test -e "${j}" ; then
  		config="${j}"
  		break
--- 
-2.33.0
-

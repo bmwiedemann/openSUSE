@@ -12,11 +12,9 @@ maximum screen size so that text is not overwritten.
  2 files changed, 121 insertions(+), 0 deletions(-)
  create mode 100644 util/grub.d/20_ppc_terminfo.in
 
-Index: grub-2.02~beta2/Makefile.util.def
-===================================================================
---- grub-2.02~beta2.orig/Makefile.util.def
-+++ grub-2.02~beta2/Makefile.util.def
-@@ -485,6 +485,13 @@ script = {
+--- a/Makefile.util.def
++++ b/Makefile.util.def
+@@ -512,6 +512,13 @@
  };
  
  script = {
@@ -27,13 +25,11 @@ Index: grub-2.02~beta2/Makefile.util.def
 +};
 +
 +script = {
-   name = '30_os-prober';
-   common = util/grub.d/30_os-prober.in;
+   name = '25_bli';
+   common = util/grub.d/25_bli.in;
    installdir = grubconf;
-Index: grub-2.02~beta2/util/grub.d/20_ppc_terminfo.in
-===================================================================
 --- /dev/null
-+++ grub-2.02~beta2/util/grub.d/20_ppc_terminfo.in
++++ b/util/grub.d/20_ppc_terminfo.in
 @@ -0,0 +1,114 @@
 +#! /bin/sh
 +set -e

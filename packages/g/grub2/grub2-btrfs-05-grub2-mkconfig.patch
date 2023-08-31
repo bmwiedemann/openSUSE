@@ -77,19 +77,19 @@ elsewhere. (bsc#1209165)
 +fi
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
-@@ -294,7 +294,8 @@
+@@ -297,7 +297,8 @@
+   GRUB_ENABLE_CRYPTODISK \
    GRUB_BADRAM \
    GRUB_OS_PROBER_SKIP_LIST \
-   GRUB_DISABLE_SUBMENU \
--  GRUB_CMDLINE_LINUX_RECOVERY
-+  GRUB_CMDLINE_LINUX_RECOVERY \
+-  GRUB_DISABLE_SUBMENU
++  GRUB_DISABLE_SUBMENU \
 +  SUSE_BTRFS_SNAPSHOT_BOOTING
  
  if test "x${grub_cfg}" != "x"; then
    rm -f "${grub_cfg}.new"
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
-@@ -69,10 +69,14 @@
+@@ -71,10 +71,14 @@
  
  case x"$GRUB_FS" in
      xbtrfs)
@@ -104,7 +104,7 @@ elsewhere. (bsc#1209165)
  	fi;;
      xzfs)
  	rpool=`${grub_probe} --device ${GRUB_DEVICE} --target=fs_label 2>/dev/null || true`
-@@ -239,7 +243,12 @@
+@@ -295,7 +299,12 @@
    if [ $PLATFORM != "emu" ]; then
      hotkey=0
    else
@@ -120,7 +120,7 @@ elsewhere. (bsc#1209165)
    alt_version=`echo $version | sed -e "s,\.old$,,g"`
 --- a/util/grub.d/20_linux_xen.in
 +++ b/util/grub.d/20_linux_xen.in
-@@ -79,10 +79,14 @@
+@@ -81,10 +81,14 @@
  
  case x"$GRUB_FS" in
      xbtrfs)

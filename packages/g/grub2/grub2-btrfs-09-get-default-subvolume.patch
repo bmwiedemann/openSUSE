@@ -3,11 +3,9 @@ V1:
   * Use overflow checking primitives where the arithmetic expression for
     buffer allocations may include unvalidated data
 
-Index: grub-2.04/grub-core/fs/btrfs.c
-===================================================================
---- grub-2.04.orig/grub-core/fs/btrfs.c
-+++ grub-2.04/grub-core/fs/btrfs.c
-@@ -2880,6 +2880,254 @@ out:
+--- a/grub-core/fs/btrfs.c
++++ b/grub-core/fs/btrfs.c
+@@ -3104,6 +3104,254 @@
    return 0;
  }
  
@@ -262,7 +260,7 @@ Index: grub-2.04/grub-core/fs/btrfs.c
  static struct grub_fs grub_btrfs_fs = {
    .name = "btrfs",
    .fs_dir = grub_btrfs_dir,
-@@ -2898,6 +3146,7 @@ static struct grub_fs grub_btrfs_fs = {
+@@ -3122,6 +3370,7 @@
  static grub_command_t cmd_info;
  static grub_command_t cmd_mount_subvol;
  static grub_extcmd_t cmd_list_subvols;
@@ -270,7 +268,7 @@ Index: grub-2.04/grub-core/fs/btrfs.c
  
  static char *
  subvolid_set_env (struct grub_env_var *var __attribute__ ((unused)),
-@@ -2968,6 +3217,11 @@ GRUB_MOD_INIT (btrfs)
+@@ -3192,6 +3441,11 @@
  					 "[-p|-n] [-o var] DEVICE",
  					 "Print list of BtrFS subvolumes on "
  					 "DEVICE.", options);

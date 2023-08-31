@@ -22,18 +22,16 @@ minix.
 [1] https://savannah.gnu.org/bugs/index.php?57652
 [2] https://bugzilla.opensuse.org/attachment.cgi?id=828118
 
-Index: grub-2.04/Makefile.am
-===================================================================
---- grub-2.04.orig/Makefile.am
-+++ grub-2.04/Makefile.am
-@@ -42,8 +42,11 @@ libgrub.pp: grub_script.tab.h grub_scrip
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -51,8 +51,11 @@
  	  -D'GRUB_MOD_INIT(x)=@MARKER@x@' $^ > $@ || (rm -f $@; exit 1)
  CLEANFILES += libgrub.pp
  
 +# the grep/sed ensures that ext2 gets initialized before minix*
 +# see https://savannah.gnu.org/bugs/?57652
  libgrub_a_init.lst: libgrub.pp
- 	cat $< | grep '@MARKER@' | sed 's/@MARKER@\(.*\)@/\1/g' | sort -u > $@ || (rm -f $@; exit 1)
+ 	cat $< | grep '^@MARKER@' | sed 's/@MARKER@\(.*\)@/\1/g' | sort -u > $@ || (rm -f $@; exit 1)
 +	if grep ^ext2 $@ >/dev/null; then sed '/ext2/d;/newc/iext2' < $@ > $@.tmp && mv $@.tmp $@; fi
  CLEANFILES += libgrub_a_init.lst
  

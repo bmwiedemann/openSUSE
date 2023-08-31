@@ -11,11 +11,9 @@ For blk, the name would be /dev/ndblkX.YpZ or /dev/ndblkX.YsZ
  grub-core/osdep/linux/getroot.c | 44 +++++++++++++++++++++++++++++++++
  1 file changed, 44 insertions(+)
 
-diff --git a/grub-core/osdep/linux/getroot.c b/grub-core/osdep/linux/getroot.c
-index 8776009..d2ab60f 100644
 --- a/grub-core/osdep/linux/getroot.c
 +++ b/grub-core/osdep/linux/getroot.c
-@@ -1082,6 +1082,50 @@ grub_util_part_to_disk (const char *os_dev, struct stat *st,
+@@ -971,6 +971,50 @@
  	  *pp = '\0';
  	  return path;
  	}
@@ -66,6 +64,3 @@ index 8776009..d2ab60f 100644
      }
  
    return path;
--- 
-2.19.0
-
