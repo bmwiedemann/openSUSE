@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           krfb
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
@@ -30,10 +30,8 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  LibVNCServer-devel
 BuildRequires:  extra-cmake-modules
-BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  xcb-util-image-devel
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
@@ -51,13 +49,21 @@ BuildRequires:  cmake(KPipeWire)
 BuildRequires:  cmake(PlasmaWaylandProtocols)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5WaylandClient)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
-BuildRequires:  pkgconfig(gbm)
+BuildRequires:  cmake(Qt5XkbCommonSupport)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xcb-damage)
+BuildRequires:  pkgconfig(xcb-image)
+BuildRequires:  pkgconfig(xcb-render)
+BuildRequires:  pkgconfig(xcb-shape)
+BuildRequires:  pkgconfig(xcb-shm)
+BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xdamage)
-BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
 
