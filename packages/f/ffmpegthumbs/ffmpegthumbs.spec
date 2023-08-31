@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ffmpegthumbs
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        FFmpeg-based thumbnail creator for video files
 License:        LGPL-2.0-or-later
@@ -63,6 +63,5 @@ FFmpeg-based thumbnail creator for video files.
 %{_kf5_configkcfgdir}/ffmpegthumbnailersettings5.kcfg
 %{_kf5_debugdir}/ffmpegthumbs.categories
 %{_kf5_plugindir}/
-%{_kf5_servicesdir}/
 
 %changelog
