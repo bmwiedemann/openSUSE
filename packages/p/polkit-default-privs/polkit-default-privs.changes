@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 29 12:25:03 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20230829.1a9a761:
+  * deepin-api: provide backward compatibility whitelisting (bsc#1214101)
+
+-------------------------------------------------------------------
 Tue Jun 06 09:59:32 UTC 2023 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20230606.5001571:

@@ -2078,4 +2078,12 @@ for 12.3</comment>
   * profiles: drop dead mousepad action</comment>
     <requestid>1091064</requestid>
   </revision>
+  <revision rev="224" vrev="1">
+    <srcmd5>c6ab9c80f3bf2c6016d382702efc6f4c</srcmd5>
+    <version>1550+20230829.1a9a761</version>
+    <time>1693482143</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1107933</requestid>
+  </revision>
 </revisionlist>
