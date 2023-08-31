@@ -1,7 +1,7 @@
 #
-# spec file for package branding-openSUSE
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Stasiek Michalski <hellcp@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -115,7 +115,6 @@ process using YaST2
 Summary:        %{theme_name} %{theme_version_clean} branding for GRUB2
 License:        CC-BY-SA-3.0
 Requires:       grub2
-BuildRequires:  grub2
 Supplements:    (grub2 and branding-%{theme_name})
 Conflicts:      grub2-branding
 Provides:       grub2-branding = %{version}
