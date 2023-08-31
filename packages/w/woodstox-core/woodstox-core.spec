@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,18 +26,18 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/FasterXML/woodstox
 Source0:        https://github.com/FasterXML/%{base_name}/archive/%{name}-%{version}.tar.gz
+# Port to latest OSGi APIs
+Patch0:         0001-Allow-building-against-OSGi-APIs-newer-than-R4.patch
+# Drop requirements on defunct optional dependencies: msv and relaxng
+Patch1:         0002-Patch-out-optional-support-for-msv-and-relax-schema-.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.fasterxml:oss-parent:pom:)
-BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(net.java.dev.msv:msv-core)
-BuildRequires:  mvn(net.java.dev.msv:xsdlib)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
 BuildRequires:  mvn(org.codehaus.woodstox:stax2-api)
 BuildRequires:  mvn(org.osgi:osgi.core)
-BuildRequires:  mvn(relaxngDatatype:relaxngDatatype)
 BuildArch:      noarch
 
 %description
@@ -55,6 +55,12 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{base_name}-%{name}-%{version}
+%patch0 -p1
+%patch1 -p1
+
+%pom_remove_dep relaxngDatatype:relaxngDatatype
+%pom_remove_dep net.java.dev.msv:
+rm -rf src/main/java/com/ctc/wstx/msv
 
 %pom_remove_plugin :nexus-staging-maven-plugin
 

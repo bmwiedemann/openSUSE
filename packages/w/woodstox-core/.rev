@@ -47,4 +47,12 @@
     <comment>6.2.8</comment>
     <requestid>979200</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6b5ae2e4a21fb9f5aa05ed638f620704</srcmd5>
+    <version>6.2.8</version>
+    <time>1693482336</time>
+    <user>anag+factory</user>
+    <comment>Do not depend on msv</comment>
+    <requestid>1108065</requestid>
+  </revision>
 </revisionlist>

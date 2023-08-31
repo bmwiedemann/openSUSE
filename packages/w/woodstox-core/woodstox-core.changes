@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 23 12:48:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * 0001-Allow-building-against-OSGi-APIs-newer-than-R4.patch
+    + port to latest OSGi APIs
+  * 0002-Patch-out-optional-support-for-msv-and-relax-schema-.patch
+    + drop requirements unmaintained optional dependencies: msv and
+      relaxng
+
+-------------------------------------------------------------------
 Wed May 25 13:14:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 6.2.8
