@@ -17,7 +17,7 @@
 
 
 Name:           pam_p11
-Version:        0.3.1
+Version:        0.5.0
 Release:        0
 Summary:        PAM Authentication Module for Using Cryptographic Tokens
 License:        LGPL-2.1-or-later
