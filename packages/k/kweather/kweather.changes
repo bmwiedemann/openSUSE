@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Aug 20 14:00:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * flatpak: update runtime to 22.08
+  * Fix syntax of dep5 copyright statements
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:23 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Fix binary stripping of APKs with Qt 5.15.10
+  * Fix includes
+  * Fix flat screenshot
+  * Update screenshots
+
+-------------------------------------------------------------------
 Tue Jul  4 10:20:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3

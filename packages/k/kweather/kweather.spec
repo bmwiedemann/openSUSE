@@ -18,7 +18,7 @@
 
 %bcond_without  released
 Name:           kweather
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Weather application for Plasma
@@ -40,7 +40,7 @@ BuildRequires:  cmake(KF5KirigamiAddons)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(Qt5Charts)
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickCompiler)
