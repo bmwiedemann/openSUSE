@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           parley
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Vocabulary Trainer
 License:        GPL-2.0-or-later
@@ -59,7 +59,7 @@ Obsoletes:      %{name}5 < %{version}
 Obsoletes:      parley5 < %{version}
 Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 Parley is a vocabulary trainer by KDE.
