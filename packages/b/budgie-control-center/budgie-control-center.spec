@@ -17,7 +17,7 @@
 
 
 Name:           budgie-control-center
-Version:        1.2.0+0
+Version:        1.3.0+0
 Release:        0
 Summary:        Fork of GNOME Control Center for Budgie 10
 License:        GPL-2.0-or-later
