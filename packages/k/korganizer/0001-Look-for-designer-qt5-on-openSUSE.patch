@@ -7,12 +7,12 @@ Subject: [PATCH] Look for designer-qt5 on openSUSE
  src/kcmdesignerfields.cpp | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: korganizer-19.11.70git.20210502T090139~2f8322e65/src/kcmdesignerfields.cpp
-===================================================================
---- korganizer-19.11.70git.20210502T090139~2f8322e65.orig/src/kcmdesignerfields.cpp	2021-05-03 06:43:43.861755406 +0200
-+++ korganizer-19.11.70git.20210502T090139~2f8322e65/src/kcmdesignerfields.cpp	2021-05-03 06:44:52.388487257 +0200
-@@ -269,7 +269,7 @@
-     auto layout = new QVBoxLayout(this);
+diff --git a/src/kcmdesignerfields.cpp b/src/kcmdesignerfields.cpp
+index 1c6f2e1e1..82118b57b 100644
+--- a/src/kcmdesignerfields.cpp
++++ b/src/kcmdesignerfields.cpp
+@@ -282,7 +282,7 @@ void KCMDesignerFields::initGUI()
+ #endif
      layout->setContentsMargins({});
  
 -    const bool noDesigner = QStandardPaths::findExecutable(QStringLiteral("designer")).isEmpty();
@@ -20,12 +20,12 @@ Index: korganizer-19.11.70git.20210502T090139~2f8322e65/src/kcmdesignerfields.cp
  
      if (noDesigner) {
          const QString txt = i18n(
-@@ -438,7 +438,7 @@
+@@ -483,7 +483,7 @@ void KCMDesignerFields::startDesigner()
          args.append(pageItem->path());
      }
  
 -    auto job = new KIO::CommandLauncherJob(QStringLiteral("designer"), args, this);
 +    auto job = new KIO::CommandLauncherJob(QStringLiteral("designer-qt5"), args, this);
+ #if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
      job->setUiDelegate(new KDialogJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, this));
-     job->start();
- }
+ #else

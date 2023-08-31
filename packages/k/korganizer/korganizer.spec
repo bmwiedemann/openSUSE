@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           korganizer
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
@@ -58,7 +58,7 @@ BuildRequires:  cmake(KPim5Ldap)
 BuildRequires:  cmake(KPim5Libkdepim)
 BuildRequires:  cmake(KPim5MailTransport)
 BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KPim5PimCommon)
 BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Test)
@@ -71,6 +71,8 @@ Requires:       kdepim-addons
 Requires:       kdepim-runtime
 Provides:       korganizer5 = %{version}
 Obsoletes:      korganizer5 < %{version}
+# It can only build on the same platforms as Qt Webengine
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 KOrganizer is a calendar application by KDE.
