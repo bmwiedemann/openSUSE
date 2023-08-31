@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kfind
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE Find File Utility
 License:        GPL-2.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Widgets)
 
