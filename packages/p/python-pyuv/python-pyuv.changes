@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 29 10:00:10 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add patch loop.patch to fix the test failure
+
+-------------------------------------------------------------------
 Mon Jun 19 17:01:07 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding fix_building_for_Python311.patch vs. using non-default

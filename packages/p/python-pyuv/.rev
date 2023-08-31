@@ -48,4 +48,14 @@
     <comment></comment>
     <requestid>1093956</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>7285ad146aac68f96957c3310187af0e</srcmd5>
+    <version>1.4.0</version>
+    <time>1693482338</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1107904 from mcalabkova
+
+- Add patch loop.patch to fix the test failure</comment>
+    <requestid>1108061</requestid>
+  </revision>
 </revisionlist>

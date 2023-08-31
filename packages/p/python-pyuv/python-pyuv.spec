@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyuv/pyuv-%{ver
 Patch0:         tests_async_keyword.patch
 Patch1:         tests_py3.patch
 Patch2:         fix_building_for_Python311.patch
+# PATCH-FIX-OPENSUSE mmachova@suse.com https://github.com/saghul/pyuv/issues/279
+Patch3:         loop.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -41,10 +43,7 @@ BuildRequires:  pkgconfig(libuv)
 Python interface for libuv.
 
 %prep
-%setup -q -n pyuv-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n pyuv-%{version}
 # Force system libuv
 rm -r deps/libuv
 rmdir deps
@@ -56,17 +55,8 @@ sed -i 's:"proc_:"tests/proc_:' tests/test_process.py
 
 %build
 export CFLAGS="%{optflags}"
-%{python_expand \
-# fix for py3.10, but it doesn't work for py3.8 and lower
-# https://github.com/saghul/pyuv/issues/271
-%if %{$python_version_nodots} > 38
 sed -i 's/Py_REFCNT(self) = refcnt/Py_SET_REFCNT(self, refcnt)/' src/handle.c
-%else
-# what if python3.8 isn't first in the line?
-sed -i 's/Py_SET_REFCNT(self, refcnt)/Py_REFCNT(self) = refcnt/' src/handle.c
-%endif
-$python setup.py build
-}
+%python_build
 
 %install
 %python_install
