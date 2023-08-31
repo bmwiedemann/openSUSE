@@ -16,11 +16,11 @@
 #
 
 
-%define qt5_version 5.15.0
-%define kf5_version 5.98.0
+%define qt5_version 5.15.2
+%define kf5_version 5.105.0
 %bcond_without released
 Name:           elisa
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
 BuildRequires:  cmake(KF5FileMetaData) >= %{kf5_version}
+BuildRequires:  cmake(KF5QQC2DesktopStyle)
 BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
