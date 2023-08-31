@@ -21,8 +21,13 @@
 %if 0%{?suse_version} < 1550
 %define _distconfdir %{_sysconfdir}
 %endif
+%if 0%{?suse_version} < 1599
+%bcond_with magpie
+%else
+%bcond_without magpie
+%endif
 Name:           budgie-desktop
-Version:        10.7.2+0
+Version:        10.8+0
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -49,7 +54,11 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libgnome-menu-3.0)
-BuildRequires:  (pkgconfig(libmutter-12) or pkgconfig(libmutter-11) or pkgconfig(libmutter-10))
+%if %{with magpie}
+BuildRequires:  pkgconfig(libmagpie-0)
+%else
+BuildRequires:  (pkgconfig(libmutter-11) or pkgconfig(libmutter-10))
+%endif
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 BuildRequires:  pkgconfig(libpulse)
@@ -74,7 +83,8 @@ Requires:       budgie-screensaver >= 5.1.0+0
 Requires:       typelib-1_0-Budgie-1_0 >= %{version}
 Requires:       typelib-1_0-BudgieRaven-1_0 >= %{version}
 Requires:       budgie-desktop-branding >= 20220627.1
-Requires:       budgie-control-center >= 1.2.0+0
+Requires:       budgie-control-center >= 1.3.0+0
+Requires:       budgie-backgrounds >= 2.0+0
 #
 # unchanged SOVER but new APIs
 Requires:       libraven0 >= %{version}

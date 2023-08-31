@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 29 19:23:54 UTC 2023 - gmbr3@opensuse.org
+
+- Update to version 10.8+0:
+  * Drop libmutter-12 support in favor of magpie-0
+  * Polkit dialog will now show the action description
+    and action ID when graphical privilege escalation is requested
+  * Status applet now provides the ability to control the
+    Performance / Power profile modes offered by
+    power-profiles-daemon.
+  * System Tray has adopted the Status Notifier specification
+  * Application Indexer's fuzzy scoring function has been
+    ported to C
+  * Default colour is now green
+  * Kvantum and Murrine themes are now hidden in
+    Budgie Desktop Settings
+  * We now search for plugins in both /usr and /usr/local
+
+-------------------------------------------------------------------
 Tue May 16 19:38:39 UTC 2023 - gmbr3@opensuse.org
 
 - Update to version 10.7.2+0:
