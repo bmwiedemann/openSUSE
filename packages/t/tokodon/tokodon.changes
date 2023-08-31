@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Aug 20 14:00:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- Changes since 23.07.90:
+  * Add fake identity so the timeline test works again
+  * Use upload icons instead of download icons in the profile editor
+  * You did implement account editing, uncomment the arrow
+  * Use display name instead of the username in the timeline name
+  * Stop Qt Quick from complaining because "there's no place to replace"
+  * Improve Poll, by removing the invalid state and registering it properly
+  * Stop UserInfo from reading the pageStack if nothing has been added to it
+  * Fix AbstractAccount::apiUrl to strip slashes
+  * Stop interactions with posts causing the entire delegate to reload
+  * Improve default language selection when the preference is missing
+  * Add support for more poll options, if Pleroma/Akkoma reports it
+  * Handle Pleroma/Akkoma storing max post characters differently
+  * Fix my dumb mistake of adding two of the same property
+  * Set a maximum line count so link descriptions elide properly
+  * Fix the instance name sometimes getting out of sync in switcher
+  * Overhaul status composer attachment grid to match expected behavior
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Fix spacing in LinkPreview
+  * Show Link Preview only when Post Content is visible.
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Open account links inside Tokodon (kde#472496)
+  * Respect the filter action, so users can completely hide filtered posts (kde#471211)
+  * Set the custom icon theme to the main icon theme, not the fallback (kde#467143)
+  * Squash yet another duplicate accounts bug (kde#466440)
+  * Better communique state of search progress (kde#467206)
+  * Add a loading placeholder for searching (kde#467206)
+  * When user hides media, automatically pause the video (kde#467214)
+  * Fix -v arg not working when tokodon is already running (kde#467205)
+  * Allow submitting posts by pressing CTRL+ENTER or CTRL+RETURN (kde#467164)
+  * Make the composer text automatically focused (kde#467162)
+
+-------------------------------------------------------------------
 Tue Jul  4 10:20:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3

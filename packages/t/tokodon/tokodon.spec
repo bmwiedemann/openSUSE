@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           tokodon
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Mastodon client by KDE
 License:        GPL-3.0-only
@@ -29,17 +29,19 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  breeze5-icons
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5KirigamiAddons)
+BuildRequires:  cmake(KF5KirigamiAddons) >= 0.10
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5QQC2DesktopStyle)
 BuildRequires:  cmake(KF5WindowSystem) >= 5.91
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5Multimedia)
@@ -48,8 +50,9 @@ BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5WebSockets)
 BuildRequires:  cmake(Qt5Widgets)
-Requires:       kirigami-addons
+BuildRequires:  pkgconfig(mpv)
 Requires:       kirigami2
+Requires:       kirigami-addons
 Requires:       kitemmodels-imports
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols
