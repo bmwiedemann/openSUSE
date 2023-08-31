@@ -1,7 +1,7 @@
 #
 # spec file for package libisoburn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 %define so_ver 1
 Name:           libisoburn
-Version:        1.5.4
+Version:        1.5.6
 Release:        0
 Summary:        Frontend for libburn and libisofs
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
 URL:            https://libburnia-project.org/
 Source0:        https://files.libburnia-project.org/releases/%{name}-%{version}.tar.gz
+Source1:        https://files.libburnia-project.org/releases/%{name}-%{version}.tar.gz.sig
+# keyring from https://dev.lovelyhq.com/libburnia/web/wiki/Releases
+Source10:       keyring.asc
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libacl-devel
@@ -74,7 +77,7 @@ ISO-9660 sessions.
 Summary:        ISO 9660 Rock Ridge Filesystem Manipulator
 Group:          Productivity/Multimedia/CD/Record
 Requires(post): info
-Requires(preun): info
+Requires(preun):info
 # libburnia-tools was last used in version 1.4.0
 Provides:       libburnia-tools = %{version}
 Obsoletes:      libburnia-tools < %{version}
@@ -131,10 +134,12 @@ cp -a doc/html/ %{buildroot}%{_docdir}/%{name}-devel/
 
 %post -n libisoburn%{so_ver} -p /sbin/ldconfig
 %postun -n libisoburn%{so_ver} -p /sbin/ldconfig
+
 %post -n xorriso
 %install_info --info-dir="%{_infodir}" "%{_infodir}/xorriso.info%{ext_info}"
 %install_info --info-dir="%{_infodir}" "%{_infodir}/xorrisofs.info%{ext_info}"
 %install_info --info-dir="%{_infodir}" "%{_infodir}/xorrecord.info%{ext_info}"
+
 %post -n xorriso-tcltk
 %install_info --info-dir="%{_infodir}" "%{_infodir}/xorriso-tcltk.info%{?ext_info}"
 
@@ -142,6 +147,7 @@ cp -a doc/html/ %{buildroot}%{_docdir}/%{name}-devel/
 %install_info_delete --info-dir="%{_infodir}" "%{_infodir}/xorriso.info%{ext_info}"
 %install_info_delete --info-dir="%{_infodir}" "%{_infodir}/xorrisofs.info%{ext_info}"
 %install_info_delete --info-dir="%{_infodir}" "%{_infodir}/xorrecord.info%{ext_info}"
+
 %preun -n xorriso-tcltk
 %install_info_delete --info-dir="%{_infodir}" "%{_infodir}/xorriso-tcltk.info%{?ext_info}"
 

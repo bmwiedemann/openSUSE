@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Aug 30 09:26:32 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- update to 1.5.6: (jsc#PED-5018)
+  * Bug fix: False -status failure with -boot_image --interval:appended_partition
+  * Bug fix: -no_rc prevented pre-scanning of arguments for stdio output and
+             others. Introduced by mistake in a62f6af5, 2011.10.18.162119.
+  * Bug fix: -not_leaf and -not_paths were not applied to -extract and alike
+  * Bug fix: -report_system_area cmd misperceived -part_like_isohybrid with
+             -isohybrid-gpt-basdat
+  * Bug fix: -report_system_area cmd misperceived combination of isohybrid and
+             appended partition in GPT
+  * Bug fix: -as mkisofs option -part_like_isohybrid did not cause a MBR
+             partition table if the partitions are data files in the ISO
+             rather than appended
+  * Bug fix: Split file directories (-split_size) were created with wrong
+             permissions
+  * Bug fix: libisofs did not mark clones of imported files as imported.
+             This could cause that original and clone occupy data storage
+             in the newly written session. Thanks to Ivan Shmakov.
+  * Bug fix: Partition offset was preserved from -indev rather than from -outdev
+  * Bug fix: libisofs could misrepresent Rock Ridge information if many
+             symbolic links or AAIP data were recorded in a directory
+  * Bug fix: Data files named /boot.catalog or ./boot.cat could be left out of
+             the emerging ISO if the boot catalog was set to be hidden
+  * Bug fix: -toc reported wrong track LBA with overwritable media with
+             unrecognized content (pseudo-closed)
+  * Bug fix: -find test -has_xattr matched "isofs." attributes
+             in -xattr mode "any"
+  * New API call isoburn_assess_written_features()
+  * New API calls isoburn_igopt_set_max_ce_entries(),
+    isoburn_igopt_get_max_ce_entries()
+  * New flag bit12 with isoburn_read_iso_head():
+    Read even if start of multi-session emulation is damaged
+  * New -boot_image settings gpt_iso_bootable= and gpt_iso_not_ro=
+  * New -as mkisofs options --gpt-iso-bootable and --gpt-iso-not-ro
+  * New -as cdrecord option --obs_pad. Automatic no_emul_toc with -as cdrecord.
+  * New parameters "obs_pad" and "bdr_obs_exempt" for -dvd_obs
+  * New -as cdrecord option --bdr_obs_exempt
+  * New command -assess_indev_features
+  * New -find test -size
+  * New -compliance rules max_ce_entries=, max_ce_drop=
+  * Allowed lseekable device files with -cut_out.
+
+-------------------------------------------------------------------
 Tue Feb 23 19:20:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.4:

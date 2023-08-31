@@ -71,4 +71,41 @@
     <comment></comment>
     <requestid>875120</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8dad5ad0e62356c0da6dab3cb3991d26</srcmd5>
+    <version>1.5.6</version>
+    <time>1693482154</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.6: (jsc#PED-5018)
+  * Bug fix: False -status failure with -boot_image --interval:appended_partition
+  * Bug fix: -no_rc prevented pre-scanning of arguments for stdio output and
+             others. Introduced by mistake in a62f6af5, 2011.10.18.162119.
+  * Bug fix: -not_leaf and -not_paths were not applied to -extract and alike
+  * Bug fix: -report_system_area cmd misperceived -part_like_isohybrid with
+             -isohybrid-gpt-basdat
+  * Bug fix: -report_system_area cmd misperceived combination of isohybrid and
+             appended partition in GPT
+  * Bug fix: -as mkisofs option -part_like_isohybrid did not cause a MBR
+             partition table if the partitions are data files in the ISO
+             rather than appended
+  * Bug fix: Split file directories (-split_size) were created with wrong
+             permissions
+  * Bug fix: libisofs did not mark clones of imported files as imported.
+             This could cause that original and clone occupy data storage
+             in the newly written session. Thanks to Ivan Shmakov.
+  * Bug fix: Partition offset was preserved from -indev rather than from -outdev
+  * Bug fix: libisofs could misrepresent Rock Ridge information if many
+             symbolic links or AAIP data were recorded in a directory
+  * Bug fix: Data files named /boot.catalog or ./boot.cat could be left out of
+             the emerging ISO if the boot catalog was set to be hidden
+  * Bug fix: -toc reported wrong track LBA with overwritable media with
+             unrecognized content (pseudo-closed)
+  * Bug fix: -find test -has_xattr matched &quot;isofs.&quot; attributes
+             in -xattr mode &quot;any&quot;
+  * New API call isoburn_assess_written_features()
+  * New API calls isoburn_igopt_set_max_ce_entries(),
+    isoburn_igopt_get_max_ce_entries()
+  * New flag bit12 with isoburn_read_iso_head():</comment>
+    <requestid>1108112</requestid>
+  </revision>
 </revisionlist>
