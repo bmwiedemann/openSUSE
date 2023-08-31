@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:59:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * windows: get the compressed size for compressed and sparse files (kde#473024)
+  * posix: undo apfs hack
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Now we can build doc/po files
+  * QQC2DesktopStyle is build in kf6 too
+  * De-conditionalize icon naming
+  * Don't iterate over element that are immedialtely removed
+  * Remove unused includes
+  * Make source file non-executable
+  * Fix ignore path support. Fix crash when we load root path
+  * Remove extra ;
+  * Add menu separator before delete action
+  * Allow to build against kf6/kf5
+  * Fix Context Menu Items
+  * Add 23.04.0 Windows artifact
+  * make qml cache disabling conditional on statvfs
+  * disable qml disk cache (kde#466415)
+  * use the default loading text for polish (kde#468395)
+  * Set a sane default window size (kde#468118)
+  * Explicitly look for KF{5,6}CoreAddons
+  * Drop no longer used QtSvg dependency
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:18 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3

@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           filelight
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Graphical disk usage viewer
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -29,6 +29,10 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Config)
@@ -46,7 +50,6 @@ BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5Script)
-BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
@@ -62,6 +65,9 @@ and the sizes of files and directories on the system.
 %autosetup -p1 -n filelight-%{version}
 
 %build
+%if 0%{?suse_version} == 1500
+export CXX=g++-10
+%endif
 %cmake_kf5 -d build
 %cmake_build
 
