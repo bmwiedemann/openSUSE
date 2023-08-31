@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ksmtp
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
@@ -88,9 +88,7 @@ to build programs that use the KSMTP library.
 %files devel
 %dir %{_includedir}/KPim5
 %{_includedir}/KPim5/KSMTP/
-%{_includedir}/KPim5/ksmtp_version.h
 %{_kf5_cmakedir}/KPim5SMTP/
-%{_kf5_cmakedir}/KPimSMTP/
 %{_kf5_libdir}/libKPim5SMTP.so
 %{_kf5_mkspecsdir}/qt_KSMTP.pri
 
