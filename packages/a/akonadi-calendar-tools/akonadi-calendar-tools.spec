@@ -16,10 +16,10 @@
 #
 
 
-%define kf5_version 5.104.0
+%define kf5_version 5.105.0
 %bcond_without released
 Name:           akonadi-calendar-tools
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Console applications and utilities for managing calendars
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -40,6 +40,8 @@ BuildRequires:  cmake(KPim5AkonadiCalendar)
 BuildRequires:  cmake(KPim5CalendarSupport)
 BuildRequires:  cmake(KPim5CalendarUtils)
 BuildRequires:  cmake(Qt5Widgets)
+# It can only build on the same platforms as Qt Webengine
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 Console applications and utilities for managing calendars in Akonadi.
