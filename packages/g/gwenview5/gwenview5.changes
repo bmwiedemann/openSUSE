@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:59:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Make image switching seamless when animations are disabled (kde#472351)
+  * Delay showing loading indicator
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:23 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Add new format commit to ignore list
+  * Run clang-format
+  * Don't ignore the second of two fast middle-clicks to toggle zoom
+  * Fix KActivities and Purpose detection in KF6
+  * Pass exivData as argument to avoid crash in exiv2 library (kde#470880)
+  * Use non-deprecated Phonon includes
+  * Fix color management settings (kde#468706)
+  * Adapt to KIconThemes changes
+  * Fix build with exiv2 >= 0.28
+  * Fix running wrong application in 'Open with...' menu (kde#469824)
+  * Add an action to open in a new window (kde#469179)
+  * Add wayland to third-party deps
+  * ZoomComboBox: improve autocomplete
+  * Update AppData file's features list to reflect recent changes
+  * ZoomComboBox: use fuzzy comparing for qreal
+  * Remove "Delete" and "Create Folder" actions from sidebar (kde#458987)
+  * Don't set the default icon size for KFilePlacesView in *.ui file (kde#468755)
+  * ZoomSlider: directly zoom instead of page step on left click
+  * Improve ZoomComboBox
+  * Don't show Gwenview in its own "Open With" menu (kde#462088)
+  * Inhibit screen locking and sleep only when the app is in the foreground (kde#386517)
+  * Adapt to KF6 KParts change
+  * Save a shallow copy of the original image when rotating (kde#439697)
+  * flatpak: Use v5.104.0 tag for baloo frameworks
+  * flatpak: Fix whitespace
+  * Make it build against KF6
+  * Don't strip away scheme for non-local URLs in window title
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
