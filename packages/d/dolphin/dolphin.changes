@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:58:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- Changes since 23.07.90:
+  * Don't compute size for non-local urls (kde#472912)
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:13 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- No code change since 23.07.80
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Add explicit moc includes to sources for moc-covered headers
+  * Use ellipsis everywhere instead of three dots
+  * Move focus from hiding selection mode bars to view (kde#469621)
+  * Fix Refresh tooltip text and add Refresh whatsThis text (kde#469263)
+  * Hide application/x-trash files following showHidenFiles
+  * Tabbar: duplicate tab when double clicking on it (kde#470388)
+  * Settings Add ViewModes > Content display
+  * Expand or collapse all selected folders on Key Right/Left
+  * KDirectoryContentsCounter: show intermediate dir size counting results, improve stopping, improve data caching
+  * Add a TODO KF6 to solve bug 464722
+  * Fix build without KF5Activities
+  * Disable Qt6 CI build in master, use kf6 branch for Qt6
+  * Fix test regression in DolphinMainWindowTest::testGoActions
+  * Revert "Adapt autotest to new expected "Space" key behaviour"
+  * Fix activating the Selection Mode with a keyboard shortcut (kde#465489)
+  * Add DolphinTabPage::inactiveViewContainer()
+  * Improve copying and moving items between panels
+  * FilterBar: improve keyboard behavior and tab ordering
+  * TerminalPanel: better check if terminal needs to change its currentWorkingDirectory when unmounting
+  * DolphinView: allow selectUrls to be considered for selection in more cases (kde#407161)
+  * Reuse existing proxy style (kde#468548)
+  * Make "don't run me with sudo/kdesu" message informative
+  * Add test for openFiles()
+  * Context menu: allow to show copy to/move to inactive split view (kde#356436)
+  * panels/information: Add option to not show information for hovered item (kde#364956)
+  * Prevent dragging on non-writable directories
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3

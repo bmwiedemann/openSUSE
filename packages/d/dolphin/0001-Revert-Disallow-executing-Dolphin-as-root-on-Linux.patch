@@ -10,33 +10,33 @@ desktop. So this patch is absolutely pointless for us.
  src/main.cpp | 11 -------------
  1 file changed, 11 deletions(-)
 
-Index: dolphin-19.11.70git.20230131T022613~e4e68b90b/src/main.cpp
+Index: dolphin-19.11.70git.20230406T015410~70b160f89/src/main.cpp
 ===================================================================
---- dolphin-19.11.70git.20230131T022613~e4e68b90b.orig/src/main.cpp	2023-01-31 03:26:13.000000000 +0100
-+++ dolphin-19.11.70git.20230131T022613~e4e68b90b/src/main.cpp	2023-01-31 07:40:48.073527099 +0100
-@@ -43,25 +43,8 @@
- #endif
- #endif
+--- dolphin-19.11.70git.20230406T015410~70b160f89.orig/src/main.cpp	2023-04-06 03:54:10.000000000 +0200
++++ dolphin-19.11.70git.20230406T015410~70b160f89/src/main.cpp	2023-04-07 01:06:53.444363054 +0200
+@@ -50,24 +50,7 @@
  
--#ifndef Q_OS_WIN
--#include <unistd.h>
--#endif
--#include <iostream>
--
  int main(int argc, char **argv)
  {
 -#ifndef Q_OS_WIN
 -    // Prohibit using sudo or kdesu (but allow using the root user directly)
 -    if (getuid() == 0) {
 -        if (!qEnvironmentVariableIsEmpty("SUDO_USER")) {
--            std::cout << "Running Dolphin with sudo can cause bugs and expose you to security vulnerabilities." << std::endl;
+-            std::cout << "Running Dolphin with sudo is not supported as it can cause bugs and expose you to security vulnerabilities. Instead, install the "
+-                         "`kio-admin` package from your distro and use it to manage root-owned locations by right-clicking on them and selecting \"Open as "
+-                         "Administrator\"."
+-                      << std::endl;
 -            return EXIT_FAILURE;
 -        } else if (!qEnvironmentVariableIsEmpty("KDESU_USER")) {
--            std::cout << "Running Dolphin with kdesu can cause bugs and expose you to security vulnerabilities." << std::endl;
+-            std::cout << "Running Dolphin with kdesu is not supported as it can cause bugs and expose you to security vulnerabilities. Instead, install the "
+-                         "`kio-admin` package from your distro and use it to manage root-owned locations by right-clicking on them and selecting \"Open as "
+-                         "Administrator\"."
+-                      << std::endl;
 -            return EXIT_FAILURE;
 -        }
 -    }
 -#endif
++
  
      /**
       * enable high dpi support
