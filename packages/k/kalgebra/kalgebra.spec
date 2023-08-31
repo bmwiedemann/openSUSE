@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kalgebra
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Math Expression Solver and Plotter
 License:        GPL-2.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5PrintSupport)
@@ -57,7 +58,7 @@ BuildRequires:  pkgconfig(eigen3)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 KAlgebra is a math expression solver and plotter.
@@ -94,11 +95,11 @@ a QtQuick based version for use in mobile (phone, tablet) environments.
 %doc %lang(en) %{_kf5_htmldir}/en/kalgebra
 %{_kf5_applicationsdir}/org.kde.kalgebra.desktop
 %{_kf5_appstreamdir}/org.kde.kalgebra.appdata.xml
+%{_kf5_appstreamdir}/org.kde.graphsplasmoid.appdata.xml
 %{_kf5_bindir}/calgebra
 %{_kf5_bindir}/kalgebra
 %{_kf5_iconsdir}/hicolor/*/apps/kalgebra.*
 %{_kf5_plasmadir}/
-%{_kf5_servicesdir}
 %{_kf5_sharedir}/katepart5
 
 %files mobile
