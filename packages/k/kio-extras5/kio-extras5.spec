@@ -19,7 +19,7 @@
 %define rname kio-extras
 %bcond_without released
 Name:           kio-extras5
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -34,6 +34,10 @@ Source2:        applications.keyring
 BuildRequires:  OpenEXR-devel
 %endif
 BuildRequires:  flac-devel
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
+%endif
 BuildRequires:  gperf
 BuildRequires:  kdsoap-devel
 BuildRequires:  kf5-filesystem
@@ -52,7 +56,6 @@ BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DNSSD)
 BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5KExiv2)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
@@ -67,8 +70,6 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  pkgconfig(libimobiledevice-1.0)
-BuildRequires:  pkgconfig(libplist-2.0)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(smbclient)
 Recommends:     kimageformats
@@ -103,6 +104,10 @@ This is the development package for libkioarchive
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
+%if 0%{?suse_version} == 1500
+  export CXX=g++-10
+%endif
+
 %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=share/locale/kf5
 %cmake_build
 
@@ -135,8 +140,7 @@ This is the development package for libkioarchive
 %{_kf5_sharedir}/mime/packages/org.kde.kio.smb.xml
 
 %files -n libkioarchive-devel
-%{_kf5_includedir}/kio_archivebase.h
-%{_kf5_includedir}/libkioarchive_export.h
+%{_includedir}/KioArchive/
 %{_libdir}/cmake/KioArchive/
 
 %files -n libkioarchive5
@@ -146,4 +150,3 @@ This is the development package for libkioarchive
 %files lang -f %{name}.lang
 
 %changelog
-
