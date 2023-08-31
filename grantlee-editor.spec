@@ -16,10 +16,10 @@
 #
 
 
-%define kf5_version 5.99.0
+%define kf5_version 5.105.0
 %bcond_without released
 Name:           grantlee-editor
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Messageviewer header theme editor based on Grantlee
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -44,16 +44,17 @@ BuildRequires:  cmake(KPim5AkonadiContact)
 BuildRequires:  cmake(KPim5AkonadiMime)
 BuildRequires:  cmake(KPim5GrantleeTheme)
 BuildRequires:  cmake(KPim5IMAP)
+BuildRequires:  cmake(KPim5Libkdepim)
 BuildRequires:  cmake(KPim5MessageViewer)
 BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KF5PimCommonAkonadi)
+BuildRequires:  cmake(KPim5PimCommonAkonadi)
 BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       kaddressbook
 Requires:       kmail-application-icons
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 A theme editor for messageviewer based on Grantlee. Once created or modified,
