@@ -18,7 +18,7 @@
 
 %bcond_without  released
 Name:           alligator
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Convergent RSS/Atom feed reader
 License:        GPL-2.0-or-later
@@ -36,7 +36,7 @@ BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KirigamiAddons)
 BuildRequires:  cmake(KF5Syndication)
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickControls2)
