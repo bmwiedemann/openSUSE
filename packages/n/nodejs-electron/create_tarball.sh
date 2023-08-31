@@ -230,7 +230,7 @@ keeplibs=(
     third_party/libaom/source/libaom/third_party/vector
     third_party/libaom/source/libaom/third_party/x86inc
     third_party/libavif #leap too old
-    third_party/libgav1 #Usage of private headers (ObuFrameHeader from utils/types.h)
+    #third_party/libgav1 #Usage of private headers (ObuFrameHeader from utils/types.h) in VAAPI code only
     third_party/libjxl #not in Leap
     third_party/libphonenumber #Depends on protobuf which cannot be unbundled
     third_party/libsrtp #Use of private headers. they were public in libsrtp1
@@ -238,8 +238,8 @@ keeplibs=(
     third_party/libudev #Headers for a optional delay-loaded dependency
     third_party/liburlpattern #Derived code, not vendored dep.
     third_party/libva_protected_content #ChromeOS header not available separately. needed for build.
-    third_party/libvpx #Use of private headers in VAAPI code only.
-    third_party/libvpx/source/libvpx/third_party/x86inc
+    #third_party/libvpx #Use of private headers in VAAPI code only.
+    #third_party/libvpx/source/libvpx/third_party/x86inc
     third_party/libwebm #Usage of private headers (mkvparser/mkvmuxer)
     third_party/libx11 #Derived code, not vendored dep
     third_party/libxcb-keysyms #Derived code, not vendored dep
@@ -257,14 +257,15 @@ keeplibs=(
     third_party/one_euro_filter #not in any distro
     third_party/openscreen #Integral part of chrome, needed even if you're building without.
     third_party/openscreen/src/third_party/mozilla #derived code, not vendored dependency
-    third_party/openscreen/src/third_party/tinycbor/src/src #not in any distro
+    third_party/openscreen/src/third_party/tinycbor #not in any distro
     third_party/ots #not available as a shared library. Fedora has the cli version as opentype-sanitizer
-    third_party/pdfium #Integral part of chrome
-    third_party/pdfium/third_party/agg23 #Heavily patched version. Fedora has it as agg
-    third_party/pdfium/third_party/base #derived code, not vendored dependency
-    third_party/pdfium/third_party/bigint #not on any distro
-    third_party/pdfium/third_party/freetype #Copy of private headers
-    third_party/pdfium/third_party/skia_shared #Skia is not available as a shared library yet.
+    #we don't build pdf support, removing it from tarball to save space
+    #third_party/pdfium #Part of chrome, not available separately.
+    #third_party/pdfium/third_party/agg23 #Heavily patched version. Fedora has it as agg
+    #third_party/pdfium/third_party/base #derived code, not vendored dependency
+    #third_party/pdfium/third_party/bigint #not on any distro
+    #third_party/pdfium/third_party/freetype #Copy of private headers
+    #third_party/pdfium/third_party/skia_shared #Skia is not available as a shared library yet.
     third_party/perfetto #Seems not to be available as a shared library, despite the presence of a `debian` directory.
     third_party/perfetto/protos/third_party/chromium #derived code, not vendored dep
     third_party/pffft #not in any distro, also heavily patched
@@ -355,6 +356,7 @@ rm -rf third_party/blink/web_tests # 1.6GB
 rm -rf third_party/catapult/tracing/test_data # 200MB
 rm -rf third_party/sqlite/src/test #86MB
 find chrome/test/data -type f ! -name "*.gn" -a ! -name "*.gni" -delete #249MB, thanks Mageia
+find third_party/hunspell_dictionaries -type f ! -name "*.gn" -a ! -name "*.gni" -delete #262MB
 
 #see electron/.circleci/config/base.yml
 rm -rf android_webview

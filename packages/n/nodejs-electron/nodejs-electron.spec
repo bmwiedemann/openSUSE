@@ -76,6 +76,11 @@ BuildArch:      i686
 # Linker selection. GCC only. Default is BFD.
 # You can try different ones if it has problems.
 # arm64 reports relocation errors with BFD.
+# obj/third_party/electron_node/deps/uv/uv/threadpool.o: in function `init_once':
+# /home/abuild/rpmbuild/BUILD/src/out/Release/../../third_party/electron_node/deps/uv/src/threadpool.c:254:(.text+0x2bc): relocation truncated to fit: R_AARCH64_CALL26 against symbol `pthread_atfork' defined in .text section in /usr/lib64/libc_nonshared.a(pthread_atfork.oS)
+# obj/third_party/electron_node/node_lib/embed_helpers.o: in function `std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > node::SPrintFImpl<char const*>(char const*, char const*&&)':
+# /home/abuild/rpmbuild/BUILD/src/out/Release/../../third_party/electron_node/src/debug_utils-inl.h:76:(.text.unlikely._ZN4node11SPrintFImplIPKcJEEENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES2_OT_DpOT0_[_ZN4node11SPrintFImplIPKcJEEENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES2_OT_DpOT0_]+0x50): relocation truncated to fit: R_AARCH64_CALL26 against symbol `node::Assert(node::AssertionInfo const&)' defined in .text section in obj/third_party/electron_node/node_lib/node_errors.o
+
 %if 0%{?suse_version}
 %ifarch aarch64
 %bcond_without gold
@@ -212,7 +217,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        22.3.21
+Version:        22.3.23
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -284,8 +289,6 @@ Patch1040:      system-jsoncpp.patch
 Patch1041:      system-zlib.patch
 Patch1044:      replace_gn_files-system-libs.patch
 Patch1045:      angle-system-xxhash.patch
-# https://svnweb.mageia.org/packages/cauldron/chromium-browser-stable/current/SOURCES/chromium-99-pdfium-system-libtiff-libpng.patch
-Patch1046:      chromium-99-pdfium-system-libtiff.patch
 Patch1047:      cares_public_headers.patch
 Patch1048:      chromium-remove-bundled-roboto-font.patch
 Patch1053:      swiftshader-use-system-llvm.patch
@@ -329,6 +332,7 @@ Source2033:      node-upgrade-llhttp-to-8.patch
 %endif
 Patch2034:      swiftshader-LLVMJIT-AddressSanitizerPass-dead-code-remove.patch
 Patch2035:      RenderFrameHostImpl-use-after-free.patch
+Patch2036:      avif_image_decoder-libavif-1-mode.patch
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
 Patch3016:      chromium-98-EnumTable-crash.patch
@@ -900,25 +904,19 @@ export LDFLAGS="${LDFLAGS} -Wl,--as-needed -fuse-ld=mold"
 %limit_build -m 2600
 %endif
 
+
 %if %{with lto} && %{without clang}
-# reduce the threads for linking even more due to LTO eating ton of memory
-_link_threads=$(((%{jobs} - 2)))
-
 %ifarch aarch64
-_link_threads=1
+# reduce the threads for linking even more due to LTO eating ton of memory
+# [This is not used currently — these settings still get us OOM on 20GB memory]
+_link_threads=$(((%{jobs} - 6)))
 
-%if %{without mold}
-%if %{with gold}
-export LDFLAGS="${LDFLAGS} -Wl,--no-map-whole-files -Wl,--no-keep-memory -Wl,--no-keep-files-mapped"
-%else
-export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--hash-size=30 -Wl,--reduce-memory-overheads"
-%endif
-%endif
-export LDFLAGS="$LDFLAGS --param ggc-min-expand=30 --param ggc-min-heapsize=4096"
-
-%endif
 test "$_link_threads" -le 0 && _link_threads=1
-export LDFLAGS="$LDFLAGS -flto=$_link_threads --param lto-max-streaming-parallelism=1"
+export LDFLAGS="$LDFLAGS -flto=$_link_threads --param lto-max-streaming-parallelism=1 -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+%else
+# x64 is fine with the the default settings (the machines have 30GB+ ram)
+export LDFLAGS="$LDFLAGS -flto=auto"
+%endif
 %endif
 
 gn_system_libraries=(
@@ -1388,10 +1386,6 @@ ln -srv third_party/emoji-segmenter/src/emoji_presentation_scanner.rl -t out/Rel
 ln -srv third_party/angle/src/compiler/translator/glslang.l -t out/Release
 ln -srv third_party/angle/src/compiler/preprocessor/preprocessor.l -t out/Release
 ln -srv third_party -t out/Release
-ln -srv third_party/libvpx -t third_party/libvpx/source/libvpx/third_party
-ln -srv third_party -t third_party/libvpx/source/libvpx/vp8
-ln -srv third_party -t third_party/libvpx/source/libvpx/vp9
-ln -srv third_party -t third_party/libvpx/source
 
 %files
 %license electron/LICENSE out/Release/LICENSES.chromium.html

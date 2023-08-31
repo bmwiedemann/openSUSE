@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 31 19:31:29 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Add avif_image_decoder-libavif-1-mode.patch to fix ftbfs with new libavif
+
+-------------------------------------------------------------------
+Thu Aug 31 08:05:16 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 22.3.23
+  * Security fixes for V8 (CVE-2023-4427) and CSS (CVE-2023-4428)
+
+-------------------------------------------------------------------
+Mon Aug 28 15:59:52 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 22.3.22
+  * Fixed decorations for tiled windows on Wayland.
+  * Security fixes for V8 (CVE-2023-4355, CVE-2023-4352), Skia (CVE-2023-4354), ANGLE (CVE-2023-4353), and Network (CVE-2023-4351)
+- Clean up third_party/… in tarball.
+  * drop chromium-99-pdfium-system-libtiff.patch which is dead code
+
+-------------------------------------------------------------------
 Thu Aug 17 16:28:17 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 22.3.21
