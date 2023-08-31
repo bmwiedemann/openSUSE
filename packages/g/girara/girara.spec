@@ -19,7 +19,7 @@
 %define libname libgirara-gtk3
 %define so_ver  3
 Name:           girara
-Version:        0.3.9
+Version:        0.4.0
 Release:        0
 Summary:        Graphical user interface library
 License:        Zlib
