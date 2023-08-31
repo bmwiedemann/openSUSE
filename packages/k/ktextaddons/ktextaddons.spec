@@ -19,7 +19,7 @@
 %define sonum   1
 %bcond_without released
 Name:           ktextaddons
-Version:        1.1.0
+Version:        1.4.1
 Release:        0
 Summary:        Various text handling addons
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
@@ -50,13 +50,21 @@ text to speech, or translations.
 
 %lang_package
 
-%package -n libKF5TextAutoCorrection%{sonum}
+%package -n libKF5TextAutoCorrectionCore%{sonum}
 Summary:        Text autocorrection library
 License:        LGPL-2.1-or-later
-Requires:       %{name} = %{version}
 
-%description -n libKF5TextAutoCorrection%{sonum}
-This package provides a library for text autocorrection.
+%description -n libKF5TextAutoCorrectionCore%{sonum}
+This package provides the core KTextAddons library for text autocorrection.
+
+%package -n libKF5TextAutoCorrectionWidgets%{sonum}
+Summary:        User interface widgets for text autocorrection library
+License:        LGPL-2.1-or-later
+Requires:       libKF5TextAutoCorrectionCore%{sonum} = %{version}
+
+%description -n libKF5TextAutoCorrectionWidgets%{sonum}
+This package provides a library with UI elements to build widgets
+for text autocorrection.
 
 %package -n libKF5TextEditTextToSpeech%{sonum}
 Summary:        Text to speech functionality
@@ -68,7 +76,6 @@ This package provides a library for text to speech functionality.
 %package -n libKF5TextGrammarCheck%{sonum}
 Summary:        Text grammar checking
 License:        LGPL-2.1-or-later
-Requires:       %{name} = %{version}
 
 %description -n libKF5TextGrammarCheck%{sonum}
 This package provides a library for automated grammar checking.
@@ -76,18 +83,55 @@ This package provides a library for automated grammar checking.
 %package -n libKF5TextTranslator%{sonum}
 Summary:        Text translation library
 License:        LGPL-2.1-or-later
-Requires:       %{name} = %{version}
 
 %description -n libKF5TextTranslator%{sonum}
 This package provides a library for automated text translation.
 
+%package -n libKF5TextAddonsWidgets%{sonum}
+Summary:        User interface widgets for text handling
+License:        LGPL-2.1-or-later
+
+%description -n libKF5TextAddonsWidgets%{sonum}
+This package provides a library containing graphical widgets to build 
+user interfaces handling texts.
+
+%package -n libKF5TextEmoticonsCore%{sonum}
+Summary:        Core library to handle text emoticons
+License:        LGPL-2.1-or-later
+
+%description -n libKF5TextEmoticonsCore%{sonum}
+This package provides a library used to manipulate emoticons in text.
+
+%package -n libKF5TextEmoticonsWidgets%{sonum}
+Summary:        Core library to handle text emoticons
+License:        LGPL-2.1-or-later
+Requires:       libKF5TextEmoticonsCore%{sonum} = %{version}
+
+%description -n libKF5TextEmoticonsWidgets%{sonum}
+This package provides a library containing graphical widgets to build 
+user interfaces handling emoticons.
+
+%package -n libKF5TextUtils%{sonum}
+Summary:        TextUtils library
+License:        LGPL-2.1-or-later
+Requires:       libKF5TextEmoticonsCore%{sonum} = %{version}
+
+%description -n libKF5TextUtils%{sonum}
+The TextUtils library.
+
 %package devel
 Summary:        Development files for ktextaddons, a library for handling texts
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
-Requires:       libKF5TextAutoCorrection%{sonum} = %{version}
+Requires:       libKF5TextAutoCorrectionCore%{sonum} = %{version}
+Requires:       libKF5TextAutoCorrectionWidgets%{sonum} = %{version}
 Requires:       libKF5TextEditTextToSpeech%{sonum} = %{version}
 Requires:       libKF5TextGrammarCheck%{sonum} = %{version}
 Requires:       libKF5TextTranslator%{sonum} = %{version}
+Requires:       libKF5TextEmoticonsCore%{sonum} = %{version}
+Requires:       libKF5TextEmoticonsWidgets%{sonum} = %{version}
+Requires:       libKF5TextAddonsWidgets%{sonum} = %{version}
+Requires:       libKF5TextUtils%{sonum} = %{version}
+
 %requires_eq    cmake(Qt5Core)
 %requires_eq    cmake(Qt5Gui)
 %requires_eq    cmake(Qt5Network)
@@ -109,21 +153,40 @@ This package provides development files to use ktextaddons in other applications
 
 %find_lang %{name} --all-name
 
-%ldconfig_scriptlets -n libKF5TextAutoCorrection%{sonum}
+%ldconfig_scriptlets -n libKF5TextAutoCorrectionCore%{sonum}
+%ldconfig_scriptlets -n libKF5TextAutoCorrectionWidgets%{sonum}
 %ldconfig_scriptlets -n libKF5TextEditTextToSpeech%{sonum}
 %ldconfig_scriptlets -n libKF5TextGrammarCheck%{sonum}
 %ldconfig_scriptlets -n libKF5TextTranslator%{sonum}
+%ldconfig_scriptlets -n libKF5TextEmoticonsCore%{sonum}
+%ldconfig_scriptlets -n libKF5TextEmoticonsWidgets%{sonum}
+%ldconfig_scriptlets -n libKF5TextAddonsWidgets%{sonum}
+%ldconfig_scriptlets -n libKF5TextUtils%{sonum}
+
 
 %files
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/translator/
+%{_kf5_debugdir}/ktextaddons.categories
 %{_kf5_plugindir}/kf5/translator/*.so
 
 %files lang -f %{name}.lang
 
-%files -n libKF5TextAutoCorrection%{sonum}
-%{_kf5_libdir}/libKF5TextAutoCorrection.so.%{sonum}
-%{_kf5_libdir}/libKF5TextAutoCorrection.so.%{sonum}.*
+%files -n libKF5TextAutoCorrectionCore%{sonum}
+%{_kf5_libdir}/libKF5TextAutoCorrectionCore.so.%{sonum}
+%{_kf5_libdir}/libKF5TextAutoCorrectionCore.so.%{sonum}.*
+
+%files -n libKF5TextAutoCorrectionWidgets%{sonum}
+%{_kf5_libdir}/libKF5TextAutoCorrectionWidgets.so.%{sonum}
+%{_kf5_libdir}/libKF5TextAutoCorrectionWidgets.so.%{sonum}.*
+
+%files -n libKF5TextEmoticonsCore%{sonum}
+%{_kf5_libdir}/libKF5TextEmoticonsCore.so.%{sonum}
+%{_kf5_libdir}/libKF5TextEmoticonsCore.so.%{sonum}.*
+
+%files -n libKF5TextEmoticonsWidgets%{sonum}
+%{_kf5_libdir}/libKF5TextEmoticonsWidgets.so.%{sonum}
+%{_kf5_libdir}/libKF5TextEmoticonsWidgets.so.%{sonum}.*
 
 %files -n libKF5TextGrammarCheck%{sonum}
 %{_kf5_libdir}/libKF5TextGrammarCheck.so.%{sonum}
@@ -137,19 +200,42 @@ This package provides development files to use ktextaddons in other applications
 %{_kf5_libdir}/libKF5TextTranslator.so.%{sonum}
 %{_kf5_libdir}/libKF5TextTranslator.so.%{sonum}.*
 
+%files -n libKF5TextAddonsWidgets%{sonum}
+%{_kf5_libdir}/libKF5TextAddonsWidgets.so.%{sonum}
+%{_kf5_libdir}/libKF5TextAddonsWidgets.so.%{sonum}.*
+
+%files -n libKF5TextUtils%{sonum}
+%{_kf5_libdir}/libKF5TextUtils.so.%{sonum}
+%{_kf5_libdir}/libKF5TextUtils.so.%{sonum}.*
+
 %files devel
-%{_kf5_cmakedir}/KF5TextAutoCorrection
-%{_kf5_cmakedir}/KF5TextEditTextToSpeech
-%{_kf5_cmakedir}/KF5TextGrammarCheck
-%{_kf5_cmakedir}/KF5TextTranslator
-%{_kf5_includedir}/TextAutoCorrection/
+%{_kf5_cmakedir}/KF5TextAddonsWidgets/
+%{_kf5_cmakedir}/KF5TextAutoCorrectionCore/
+%{_kf5_cmakedir}/KF5TextAutoCorrectionWidgets/
+%{_kf5_cmakedir}/KF5TextEditTextToSpeech/
+%{_kf5_cmakedir}/KF5TextEmoticonsCore/
+%{_kf5_cmakedir}/KF5TextEmoticonsWidgets/
+%{_kf5_cmakedir}/KF5TextGrammarCheck/
+%{_kf5_cmakedir}/KF5TextTranslator/
+%{_kf5_cmakedir}/KF5TextUtils/
+%{_kf5_includedir}/TextAddonsWidgets/
+%{_kf5_includedir}/TextAutoCorrectionCore/
+%{_kf5_includedir}/TextAutoCorrectionWidgets/
 %{_kf5_includedir}/TextEditTextToSpeech/
+%{_kf5_includedir}/TextEmoticonsCore/
+%{_kf5_includedir}/TextEmoticonsWidgets/
 %{_kf5_includedir}/TextGrammarCheck/
 %{_kf5_includedir}/TextTranslator/
-%{_kf5_libdir}/libKF5TextAutoCorrection.so
+%{_kf5_includedir}/TextUtils/
+%{_kf5_libdir}/libKF5TextAddonsWidgets.so
+%{_kf5_libdir}/libKF5TextAutoCorrectionCore.so
+%{_kf5_libdir}/libKF5TextAutoCorrectionWidgets.so
 %{_kf5_libdir}/libKF5TextEditTextToSpeech.so
+%{_kf5_libdir}/libKF5TextEmoticonsCore.so
+%{_kf5_libdir}/libKF5TextEmoticonsWidgets.so
 %{_kf5_libdir}/libKF5TextGrammarCheck.so
 %{_kf5_libdir}/libKF5TextTranslator.so
+%{_kf5_libdir}/libKF5TextUtils.so
 %{_kf5_mkspecsdir}/qt_*.pri
 %dir %{_kf5_plugindir}/designer/
 %{_kf5_plugindir}/designer/texttranslatorwidgets5.so
