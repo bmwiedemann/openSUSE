@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:59:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Drop no longer needed Akonadi dependency
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Return plugin name that we can use with --module command line
+  * doc: use a non-deprecated entity for Frameworks
+  * Remove CI 6 job. We will use kf6 branch for kf6 works
+  * It's alpha version
+  * Port to new api
+  * Show all headers in qtc6
+  * Remove duplicate header
+  * Use PimCommon directly
+
+-------------------------------------------------------------------
 Tue Jul  4 10:20:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3

@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kontact
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Personal Information Manager
 License:        GPL-2.0-or-later
@@ -39,11 +39,10 @@ BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(KPim5Akonadi)
 BuildRequires:  cmake(KPim5GrantleeTheme)
 BuildRequires:  cmake(KPim5KontactInterface)
 BuildRequires:  cmake(KPim5Libkdepim)
-BuildRequires:  cmake(KF5PimCommonAkonadi)
+BuildRequires:  cmake(KPim5PimCommonAkonadi)
 BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5WebEngine)
@@ -57,7 +56,7 @@ Suggests:       korganizer
 Provides:       kontact5 = %{version}
 Obsoletes:      kontact5 < %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 Kontact combines the individual applications KMail, KAddressBook and
