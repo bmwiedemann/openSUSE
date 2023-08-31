@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kdebugsettings
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Program to set debug verbosity for KDE applications
 License:        LGPL-2.0-or-later
@@ -41,6 +41,8 @@ BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      kdebugsettings5 < %{version}
@@ -77,7 +79,7 @@ from verbose to completely silent.
 %{_kf5_debugdir}/kde.renamecategories
 %{_kf5_debugdir}/kdebugsettings.categories
 %{_kf5_libdir}/libkdebugsettings.so.*
-%{_kf5_libdir}/libkdebugsettings.so.5
+%{_kf5_libdir}/libkdebugsettingscore.so.*
 %{_kf5_sharedir}/kdebugsettings/groups/
 
 %files lang -f %{name}.lang
