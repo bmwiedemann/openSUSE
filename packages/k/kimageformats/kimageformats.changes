@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 29 11:00:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to support avif 1.0:
+  * 0001-Support-libavif-1.0.patch
+
+-------------------------------------------------------------------
 Tue Aug  8 17:42:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.109.0
