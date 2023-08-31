@@ -16,10 +16,10 @@
 #
 
 
-%define kf5_version 5.103.0
+%define kf5_version 5.105.0
 %bcond_without released
 Name:           kmail
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
@@ -77,7 +77,7 @@ BuildRequires:  cmake(KPim5MessageCore)
 BuildRequires:  cmake(KPim5MessageList)
 BuildRequires:  cmake(KPim5MessageViewer)
 BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KPim5PimCommon)
 BuildRequires:  cmake(KPim5TemplateParser)
 BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(KPim5Tnef)
@@ -93,11 +93,11 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-Requires:       grantleetheme
+Requires:       %{name}-application-icons
 Requires:       kdepim-addons
 Requires:       kdepim-runtime
 Requires:       kmail-account-wizard
-Requires:       kmail-application-icons
+Requires:       ktextaddons
 Recommends:     akonadi-import-wizard
 Recommends:     akonadi-search
 Recommends:     kleopatra
@@ -108,7 +108,7 @@ Recommends:     pim-sieve-editor
 Provides:       kmail5 = %{version}
 Obsoletes:      kmail5 < %{version}
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 %if %{with released}
 %requires_eq    libKF5PimCommon5
 %requires_eq    libKF5PimCommonAkonadi5
