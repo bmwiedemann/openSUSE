@@ -18,16 +18,15 @@
 
 %bcond_without released
 Name:           arianna
-Version:        1.1.0
+Version:        23.08.0
 Release:        0
 Summary:        Ebook reader and library management app
 License:        GPL-3.0-only
 URL:            https://apps.kde.org/arianna/
-Source0:        https://download.kde.org/stable/arianna/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/arianna/%{name}-%{version}.tar.xz.sig
-# https://carlschwan.eu/gpg-02325448204e452a/
-Source2:        arianna.keyring
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
 %endif
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Baloo)
@@ -37,7 +36,7 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5FileMetaData)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5KirigamiAddons) >= 0.8
+BuildRequires:  cmake(KF5KirigamiAddons) >= 0.10
 BuildRequires:  cmake(KF5QQC2DesktopStyle)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5Gui)
