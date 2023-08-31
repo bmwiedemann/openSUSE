@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Aug  5 03:33:26 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove move of $TARGET/tools since it does not exist.
+
+-------------------------------------------------------------------
+Sat Aug  5 03:18:08 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove move of `nim-gdb.py` since it's in ./tools/debug/ now.
+
+-------------------------------------------------------------------
+Sat Aug  5 03:03:46 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add atlas version 0.6.2 tarball. It will be extracted to dist/atlas directory from the
+  root of the project.
+
+-------------------------------------------------------------------
+Sat Aug  5 02:30:50 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 2.0.0:
+  * better tuple unpacking
+  * forbidden tags
+  * improved type inference
+  * new standard library modules:
+    - std/oserrors
+    - std/envvars
+    - std/dirs
+    - std/files
+    - std/symlinks
+    - std/appdirs
+    - std/cmdline
+  * overloadable enums
+  * default value for objects
+  * definite assignment analysis
+  * strict effects
+  * improved error message for type mismatch
+  * consistent underscore handling
+  * javascript codegen improvement
+  * docgen improvements
+  * c++ interop enhancements
+  * ARC/ORC refinements
+  * using an unnamed break in a block is deprecated
+  * new strict funcs definition
+  * several standard library modules are now moved to nimble packagse
+    - std/punycode => punycode
+    - std/asyncftpclient => asyncftpclient
+    - std/smtp => smtp
+    - std/db_common => db_connector/db_common
+    - std/db_sqlite => db_connector/db_sqlite
+    - std/db_mysql => db_connector/db_mysql
+    - std/db_postgres => db_connector/db_postgres
+    - std/db_odbc => db_connector/db_odbc
+    - std/md5 => checksums/md5
+    - std/sha1 => checksums/sha1
+    - std/sums => sums
+
+- remove nim-fix-tests-ip-protocol-missing.patch
+
+-------------------------------------------------------------------
 Wed Jul  5 07:52:43 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64

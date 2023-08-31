@@ -16,18 +16,19 @@
 #
 
 
+%define _atlas_version 0.6.2
+
 Name:           nim
-Version:        1.6.14
+Version:        2.0.0
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT
 Group:          Development/Languages/Other
 URL:            https://nim-lang.org/
 Source0:        https://nim-lang.org/download/nim-%{version}.tar.xz
-Source1:        nim-rpmlintrc
+Source1:        https://github.com/nim-lang/atlas/archive/refs/tags/%{_atlas_version}.tar.gz#/atlas-%{_atlas_version}.tar.gz
+Source2:        nim-rpmlintrc
 Patch0:         nim-nim-gdb_fix_interpreter.patch
-# UPSTREAM FIX: https://github.com/nim-lang/Nim/commit/2c73e84436a11cae1676c7da0228158ba1a885cc
-Patch1:         nim-fix-tests-ip-protocol-missing.patch
 BuildRequires:  binutils-devel
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
@@ -91,7 +92,8 @@ Elegant:
 * Statements are grouped by indentation but can span multiple lines.
 
 %prep
-%autosetup -p1
+%autosetup -a1 -p1
+mv -v atlas-%{_atlas_version} dist/atlas
 
 %build
 export CFLAGS="%{optflags}"
@@ -235,10 +237,6 @@ TARGET="%{buildroot}/_pending"
 # some binaries aren't installed at target location by koch
 cp ./bin/* $TARGET/nim/bin/
 
-# nim-gdb requires this script under "tools" folder at final location
-mkdir -p $TARGET/nim/tools
-cp ./tools/nim-gdb.py $TARGET/nim/tools/
-
 mkdir -p \
   %{buildroot}%{_bindir}/ \
   %{buildroot}%{_libdir}/nim \
@@ -280,7 +278,6 @@ mv $TARGET/nim/compiler* %{buildroot}%{_libdir}/nim/
 mv $TARGET/nim/lib       %{buildroot}%{_libdir}/nim/
 mv $TARGET/nim/doc       %{buildroot}%{_docdir}/nim/
 mv $TARGET/nim/config/*  %{buildroot}%{_sysconfdir}/nim/
-mv $TARGET/nim/tools     %{buildroot}%{_libdir}/nim/
 
 %files
 
