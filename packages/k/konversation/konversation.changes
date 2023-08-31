@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:59:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * caps: prevent connection hang when none are requested (kde#471940)
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Disable Qt6 CI builds
+  * Highlights sounds file picker: fix setting file filter by MIME types (kde#433667)
+  * doc: use a non-deprecated entity for Frameworks
+
+-------------------------------------------------------------------
 Tue Jul  4 10:20:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
