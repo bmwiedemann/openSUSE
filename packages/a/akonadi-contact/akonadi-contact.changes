@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:58:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Use CTRL+E for editing contact
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Fix creating new contact with familiy and sur-name (kde#451237)
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
