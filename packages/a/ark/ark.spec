@@ -19,7 +19,7 @@
 %define SOMAJOR 23
 %bcond_without released
 Name:           ark
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
@@ -108,6 +108,7 @@ This is a KDE application to work with compressed archives.
 %{_kf5_sharedir}/kconf_update/ark_add_hamburgermenu_to_toolbar.sh
 %{_kf5_debugdir}/ark.categories
 %{_kf5_iconsdir}/hicolor/*/apps/*
+%{_kf5_servicesdir}/ark_part.desktop
 %{_kf5_plugindir}/kf5/parts/arkpart.so
 %{_kf5_plugindir}/kerfuffle/
 %{_kf5_plugindir}/kf5/kfileitemaction/compressfileitemaction.so
