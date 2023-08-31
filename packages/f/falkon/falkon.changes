@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:58:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:15 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * SessionRestore: Set tab title after at the end
+  * Skip show/hide close button when restoring session (kde#455012)
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Add support for custom url schemes (kde#434099)
+  * Show page zoom level in locationbar (kde#399001)
+  * Fix: Folder disappears when moving it onto itself (kde#462891)
+  * Addressbar use default search engine by default (kde#405423)
+  * History: Don't delete all items under dates when filtering (kde#466936)
+  * KWallet: Store passwords entries in map fortmat (kde#391298)
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:18 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
