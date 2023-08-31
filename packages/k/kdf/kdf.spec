@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kdf
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Disk Usage Viewer
 License:        GPL-2.0-or-later
@@ -79,6 +79,7 @@ This utility allows you to manage removable media.
 %doc %lang(en) %{_kf5_htmldir}/en/kdf/
 %dir %{_kf5_htmldir}/en/kcontrol/
 %{_kf5_applicationsdir}/org.kde.kdf.desktop
+%{_kf5_applicationsdir}/kcm_kdf.desktop
 %{_kf5_appstreamdir}/org.kde.kdf.appdata.xml
 %{_kf5_bindir}/kdf
 %{_kf5_debugdir}/kdf.categories
@@ -86,7 +87,10 @@ This utility allows you to manage removable media.
 %{_kf5_iconsdir}/hicolor/*/*/kdf.png
 %{_kf5_kxmlguidir}/kdf/
 %{_kf5_libdir}/libkdfprivate.so.*
-%{_kf5_plugindir}/libkcm_kdf.so
+%dir %{_kf5_plugindir}/plasma
+%dir %{_kf5_plugindir}/plasma/kcms
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_kdf.so
 
 %files -n kwikdisk
 %license LICENSES/*
