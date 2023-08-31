@@ -20,7 +20,7 @@
 %define lname libKF5Sane
 %bcond_without released
 Name:           libksane
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE scanning library
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -98,7 +98,6 @@ scanners and other imaging devices supported by SANE.
 %files devel
 %{_kf5_cmakedir}/KF5Sane/
 %{_kf5_includedir}/KSane/
-%{_kf5_includedir}/ksane_version.h
 %{_kf5_libdir}/%{lname}.so
 
 %files lang -f %{name}.lang
