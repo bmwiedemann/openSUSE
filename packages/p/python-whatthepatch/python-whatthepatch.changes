@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 30 03:47:25 UTC 2023 - Tony Jones <tonyj@suse.com>
+
+- Update to v1.0.5
+  * bugfix:min line in binary diff (#57)
+- from v1.0.4
+  * git binary patch explore (#53)
+  * nixify (#54)
+  * Rename default branch on build yaml (#52)
+  * Remove redundant wheel dep from pyproject.toml (#51)
+
+-------------------------------------------------------------------
 Sun Nov 13 22:40:19 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Drop no-nose.patch merged upstream

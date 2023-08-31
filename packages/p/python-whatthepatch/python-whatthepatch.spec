@@ -1,7 +1,7 @@
 #
 # spec file for package python-whatthepatch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-whatthepatch
-Version:        1.0.3
+Version:        1.0.5
 Release:        0
 Summary:        A patch parsing and application library
 License:        MIT
@@ -29,8 +29,8 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  ed
 BuildRequires:  dos2unix
+BuildRequires:  ed
 BuildRequires:  fdupes
 BuildRequires:  patch
 BuildRequires:  python-rpm-macros
