@@ -151,4 +151,23 @@
   - fix: mcedb: v191 changed the MCE table format (forwarded request 966405 from msmeissn)</comment>
     <requestid>966406</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b24ca0c7eaf097836a40f59dd29efa6d</srcmd5>
+    <version>0.46</version>
+    <time>1693482363</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.46
+  This release mainly focuses on the detection of the new Zenbleed
+  (CVE-2023-20593) vulnerability, among few other changes that were in
+  line waiting for a release:
+  - feat: detect the vulnerability and mitigation of Zenbleed (CVE-2023-20593)
+  - feat: add the linux-firmware repository as another source for CPU microcode versions
+  - feat: arm: add Neoverse-N2, Neoverse-V1 and Neoverse-V2
+  - fix: docker: adding missing utils (#433)
+  - feat: add support for Guix System kernel
+  - fix: rewrite SQL to be sqlite3 &gt;= 3.41 compatible (#443)
+  - fix: a /devnull file was mistakenly created on the filesystem
+  - fix: fwdb: ignore MCEdb versions where an official Intel version exists (fixes #430) (forwarded request 1108154 from msmeissn)</comment>
+    <requestid>1108155</requestid>
+  </revision>
 </revisionlist>
