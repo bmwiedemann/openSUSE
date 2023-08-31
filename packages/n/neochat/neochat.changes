@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Sep  4 06:38:34 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add some qt5qmlimport runtime deps (boo#1214916)
+
+-------------------------------------------------------------------
+Sun Aug 20 14:00:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- Changes since 23.07.90:
+  * Don't inherit color in TimelineContainer
+  * Use view-list-details instead of expand icon in room drawer
+  * Destroy the correct component in space list context menu
+  * Prevent the TapHandler in AvatarTabButton from triggering clicked()
+  * Add icons to the space list context menu items
+  * Prevent the chat bar from pasting a local file URL if we save the bitmap
+  * Ensure that the notification avatar is drawn with no pen
+  * Further notification avatar improvements
+  * Fix the account switcher width so it doesn't spill off the side
+  * Pick a better shadow and clean up emoji popup backgrounds
+  * Don't clip the emoji popups as they destroy shadows
+  * Improve tooltips in chatbar
+  * Wrap room display name in Room Drawer
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Display big emoji correctly
+  * Force plain text in room delegate
+  * Remove leftover debug statement
+  * Fix last active time in devices page
+  * Redesign timeline
+  * Fix opening account menu on right click
+  * Html-escape display names in state delegates
+  * Fix room list icon size in compact room list (kde#472682)
+  * Fix compilation with e2ee disabled
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Fix toolbar of RoomList when using font size 11px (kde#467242)
+  * Don't try getting data for invalid indices (kde#470639)
+  * Refactor login (kde#469486)
+  * Improve Delegate Width Sizing (kde#470167)
+  * Fix replying and editing from chatbox (kde#469733)
+  * Fix the room timeline being dragged when selecting text (kde#467163)
+  * Focus message search window's search field by default (kde#469879)
+  * Cache last event (kde#455042)
+  * Add more bottom margin (kde#469616)
+  * Fix autocompletion not working (kde#468967)
+  * Remove Unread Count (kde#466515)
+  * Fix regressions from RoomPage refactoring (kde#469427)
+  * Improve RoomDrawer for direct chats (kde#466895)
+  * Prevent crash in SyntaxHighlighter when leaving room (kde#467722)
+  * Fix handling line separators (kde#468977)
+  * Fix Ctrl+Shift+, opening settings (kde#469057)
+  * Fix room search field shortcut (kde#469059)
+  * Fix Chat bubble background changing color when created (kde#468124)
+  * Fix Long Topics in the RoomDrawer Overflowing (kde#467512)
+  * Don't crash in UserListModel when there is no room (kde#466045)
+  * Fix state event visiblity in timeline (kde#455048)
+  * Improve Text Handling (kde#463932)
+
+-------------------------------------------------------------------
 Tue Jul  4 10:20:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3

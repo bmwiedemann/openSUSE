@@ -19,10 +19,10 @@
 %define _kf5_version 5.88.0
 %bcond_without  released
 Name:           neochat
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
-License:        GPL-3.0-or-later AND GPL-3.0-only AND BSD-2-Clause
+License:        BSD-2-Clause AND GPL-3.0-only AND GPL-3.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://apps.kde.org/neochat/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
@@ -35,8 +35,8 @@ BuildRequires:  cmark
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
 BuildRequires:  fdupes
 %if 0%{?suse_version} == 1500
-BuildRequires:  gcc10-c++
-BuildRequires:  gcc10-PIE
+BuildRequires:  gcc12-PIE
+BuildRequires:  gcc12-c++
 %endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
@@ -64,13 +64,16 @@ BuildRequires:  cmake(Qt5Quick) >= 5.15.2
 BuildRequires:  cmake(Qt5QuickControls2) >= 5.15.2
 BuildRequires:  cmake(Qt5Svg) >= 5.15.2
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.2
-BuildRequires:  cmake(Quotient) >= 0.6.3
+BuildRequires:  cmake(Quotient) >= 0.7.0
 BuildRequires:  pkgconfig(libcmark)
 Requires:       kirigami-addons
 Requires:       kirigami2
 Requires:       kitemmodels-imports
 Requires:       kquickimageeditor-imports
 Requires:       syntax-highlighting-imports
+Requires:       qt5qmlimport(QtLocation.5) >= 15
+Requires:       qt5qmlimport(QtPositioning.5) >= 15
+Requires:       qt5qmlimport(org.kde.quickcharts.1) >= 0
 
 %description
 Neochat is a client for Matrix, the decentralized communication protocol for instant
@@ -84,7 +87,7 @@ messaging.
 %build
 # c++-20 is required
 %if 0%{?suse_version} == 1500
-    export CC=gcc-10 CXX=g++-10
+    export CC=gcc-12 CXX=g++-12
 %endif
 
 %cmake_kf5 -d build
@@ -106,6 +109,7 @@ messaging.
 %{_kf5_applicationsdir}/org.kde.neochat.desktop
 %{_kf5_appstreamdir}/org.kde.neochat.appdata.xml
 %{_kf5_bindir}/neochat
+%{_kf5_debugdir}/neochat.categories
 %{_kf5_iconsdir}/hicolor/*/apps/org.kde.neochat.svg
 %{_kf5_iconsdir}/hicolor/scalable/apps/org.kde.neochat.tray.svg
 %{_kf5_mandir}/man1/neochat.1%{?ext_man}
