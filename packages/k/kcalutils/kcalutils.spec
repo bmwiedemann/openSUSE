@@ -16,10 +16,10 @@
 #
 
 
-%define kf5_version 5.103.0
+%define kf5_version 5.105.0
 %bcond_without released
 Name:           kcalutils
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
@@ -102,7 +102,6 @@ to develop applications wanting to use kcalutils.
 %files devel
 %dir %{_includedir}/KPim5
 %{_includedir}/KPim5/KCalUtils/
-%{_kf5_cmakedir}/KF5CalendarUtils/
 %{_kf5_cmakedir}/KPim5CalendarUtils/
 %{_kf5_libdir}/libKPim5CalendarUtils.so
 %{_kf5_mkspecsdir}/qt_KCalUtils.pri
