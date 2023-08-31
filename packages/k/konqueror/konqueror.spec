@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           konqueror
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
@@ -64,7 +64,7 @@ Obsoletes:      kdebase4-libkonq
 Obsoletes:      libKF5Konq6 < 17.04
 Provides:       libKF5Konq6 = 17.04
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 Konqueror allows you to manage your files and browse the web in a
@@ -138,11 +138,13 @@ Development package for the konqueror libraries.
 %{_kf5_applicationsdir}/kfmclient_html.desktop
 %{_kf5_applicationsdir}/kfmclient_war.desktop
 %{_kf5_applicationsdir}/konqbrowser.desktop
+%{_kf5_applicationsdir}/bookmarks.desktop
 %{_kf5_applicationsdir}/org.kde.konqueror.desktop
 %{_kf5_appstreamdir}/org.kde.konqueror.appdata.xml
 %{_kf5_bindir}/kfmclient
 %{_kf5_bindir}/konqueror
 %{_kf5_configkcfgdir}/konqueror.kcfg
+%{_kf5_configdir}/useragenttemplatesrc
 %{_kf5_datadir}/kbookmark/
 %{_kf5_dbusinterfacesdir}/org.kde.Konqueror.Main.xml
 %{_kf5_dbusinterfacesdir}/org.kde.Konqueror.MainWindow.xml
@@ -160,6 +162,7 @@ Development package for the konqueror libraries.
 %{_kf5_plugindir}/konqueror_kcms/khtml_filter.so
 %{_kf5_plugindir}/konqueror_kcms/khtml_general.so
 %{_kf5_plugindir}/konqueror_kcms/khtml_java_js.so
+%{_kf5_plugindir}/konqueror_kcms/khtml_useragent.so
 %{_kf5_servicesdir}/org.kde.konqueror.desktop
 %{_kf5_sharedir}/kconf_update/webenginepart.upd
 %{_kf5_sharedir}/kcontrol/pics/onlyone.png
