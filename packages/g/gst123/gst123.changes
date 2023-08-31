@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 30 14:29:13 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.4.1
+  * Avoid depending using .git / git during build (remove
+    ChangeLog).
+  version 0.4.0:
+  * Use gtk3 instead of gtk2.
+  * Change config file location to ~/.config/gst123rc
+  * Decode URIs to print proper media name.
+  * Support "audio/mpegurl" mime type for m3u playlist parser as
+    well.
+  * Various bugfixes.
+
+-------------------------------------------------------------------
 Sun Feb  4 09:12:34 UTC 2018 - jengelh@inai.de
 
 - Compact description.

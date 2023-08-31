@@ -1,7 +1,7 @@
 #
 # spec file for package gst123
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,18 +13,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gst123
-Version:        0.3.5
+Version:        0.4.1
 Release:        0
 Summary:        GStreamer based Command Line Music Player
-License:        LGPL-2.0+
+License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-URL:            http://space.twc.de/~stefan/gst123.php
-Source:         http://space.twc.de/~stefan/gst123/%{name}-%{version}.tar.bz2
+URL:            https://space.twc.de/~stefan/gst123.php
+Source:         https://github.com/swesterfeld/gst123/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source1:        gst123.desktop
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -32,12 +32,8 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
-BuildRequires:  pkgconfig(gtk+-2.0)
-%if 0%{?suse_version} >= 1500
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(ncurses) >= 5
-%else
-BuildRequires:  ncurses-devel
-%endif
 
 %description
 The gst123 program is a command line player akin to ogg123 or mpg123,
@@ -45,11 +41,11 @@ but uses gstreamer for decoding, so supports all the codecs gstreamer
 knows.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -57,18 +53,11 @@ install -D -m0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/applications/%{name}.des
 %suse_update_desktop_file -r "%{name}" AudioVideo Player
 %find_lang "%{name}" || echo -n >"%{name}.lang"
 
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
-
 %files -f "%{name}.lang"
-%doc AUTHORS COPYING NEWS
+%license COPYING
+%doc AUTHORS NEWS
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
