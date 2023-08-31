@@ -20,7 +20,7 @@ Name:           broot
 Version:        1.22.1
 Release:        0
 Summary:        A better way to navigate directories
-License:        MIT
+License:        GPL-2.0-only AND MIT AND MPL-2.0
 URL:            https://dystroy.org/broot/
 Source0:        https://github.com/Canop/broot/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
