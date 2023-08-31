@@ -19,7 +19,7 @@
 %define soversion 1
 %bcond_without released
 Name:           kosmindoormap
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        OSM indoor map QML component
 License:        LGPL-2.0-or-later AND CC0-1.0
@@ -35,6 +35,7 @@ BuildRequires:  flex
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KOpeningHours)
 BuildRequires:  cmake(KPublicTransport)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Test)
