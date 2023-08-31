@@ -73,4 +73,15 @@
   * No more Python 2.x support.</comment>
     <requestid>1058184</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>99f01cb993d1eba3a862fd77e9fede2d</srcmd5>
+    <version>3.0.0</version>
+    <time>1693482339</time>
+    <user>anag+factory</user>
+    <comment>- Remove future {Build,}Requires, not needed.
+- Stop using greedy globs in %files.
+- Switch to pyproject macros.
+- Rip out Python 2 support in the spec file.</comment>
+    <requestid>1108063</requestid>
+  </revision>
 </revisionlist>
