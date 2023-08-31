@@ -17,16 +17,15 @@
 
 
 # Note the wrong version number from upstream
-%global _bversion 1.70
 Name:           libunwind
-Version:        1.7.0
+Version:        1.7.2
 Release:        0
 Summary:        Call chain detection library
 License:        MIT
 Group:          System/Base
 URL:            https://savannah.nongnu.org/projects/libunwind/
-Source0:        https://github.com/libunwind/libunwind/releases/download/v1.7.0/libunwind-%{_bversion}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/libunwind/libunwind/releases/download/v1.7.0/libunwind-%{_bversion}.tar.gz.sig#/%{name}-%{version}.tar.gz.sig
+Source0:        https://github.com/libunwind/libunwind/releases/download/v%{version}/libunwind-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/libunwind/libunwind/releases/download/v%{version}/libunwind-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  automake >= 1.14
@@ -95,7 +94,7 @@ program (libunwind), of a coredump image (libunwind-coredump), or of a separate
 process (libunwind-ptrace).
 
 %prep
-%autosetup -p1 -n %{name}-%{_bversion}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 autoreconf -fiv

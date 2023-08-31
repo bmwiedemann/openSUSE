@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 30 09:24:53 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.7.2:
+  * Don't override sp on arm and mips64.
+  * Add direct dependent libraries to remotes.
+  * Fix make install failure.
+
+-------------------------------------------------------------------
+Wed Aug 28 12:34:01 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.7.1:
+  * Bump to release 1.7.1 to fix source tarball naming issue
+
+-------------------------------------------------------------------
 Fri Jun 23 18:49:48 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.7.0:
