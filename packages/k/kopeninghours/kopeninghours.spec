@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kopeninghours
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        OSM opening hours expression parser and evaluator
 License:        LGPL-2.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  cmake(KF5Holidays)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(Qt5Core) >= 5.14
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Test)
 
