@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           libkcompactdisc
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        CD drive library for KDE Platform
 License:        GPL-2.0-or-later
@@ -84,6 +84,7 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/wmlib/wm_helpers.c
 %{_kf5_cmakedir}/KF5CompactDisc/
 %{_kf5_includedir}/KCompactDisc/
 %{_kf5_libdir}/libKF5CompactDisc.so
+%{_kf5_mkspecsdir}/qt_KCompactDisc.pri
 
 %files lang -f %{name}.lang
 
