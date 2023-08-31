@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:59:18 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- No code change since 23.07.80
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Show import module
+  * Allow to remove unused import module
+  * Add script for porting to ksvg
+  * Fix porting script
+  * Fix scripting
+  * Fix typo
+  * Compile against qt6
+  * Improve porting script
+  * Script which allows to port from PlasmaCore to Kirigami
+  * Add olib to relicensecheck.pl
+  * Copy the .ui file too, the code for that was missing
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
