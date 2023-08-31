@@ -17,11 +17,11 @@
 
 
 %define sonum   5
-%define kf5_version 5.104.0
+%define kf5_version 5.105.0
 %define libname libKPim5AkonadiMime5
 %bcond_without released
 Name:           akonadi-mime
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        MIME email parser for KDE PIM
 License:        LGPL-2.1-or-later
