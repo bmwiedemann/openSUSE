@@ -263,4 +263,15 @@
     <comment></comment>
     <requestid>1060579</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7d84578da16288370f5ebddf241ab09d</srcmd5>
+    <version>7.1.0</version>
+    <time>1693482348</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+- Update to version 7.1.0
+  * Add support for NetBox v3.5.
+</comment>
+    <requestid>1108076</requestid>
+  </revision>
 </revisionlist>

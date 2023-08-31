@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 30 09:18:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Tue Aug 29 15:03:55 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.1.0
+  * Add support for NetBox v3.5.
+
+-------------------------------------------------------------------
 Mon Jan 23 21:56:39 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.0.1

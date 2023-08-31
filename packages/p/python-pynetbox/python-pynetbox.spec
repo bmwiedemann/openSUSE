@@ -18,7 +18,7 @@
 
 %define         skip_python2 1
 Name:           python-pynetbox
-Version:        7.0.1
+Version:        7.1.0
 Release:        0
 Summary:        NetBox API client library
 License:        Apache-2.0
@@ -27,13 +27,14 @@ URL:            https://github.com/digitalocean/pynetbox
 Source:         https://files.pythonhosted.org/packages/source/p/pynetbox/pynetbox-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module netaddr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-netaddr
+Requires:       python-packaging
 Requires:       python-requests >= 2.20.0
 BuildArch:      noarch
 %python_subpackages
@@ -42,13 +43,13 @@ BuildArch:      noarch
 Python API client library for NetBox.
 
 %prep
-%setup -q -n pynetbox-%{version}
+%autosetup -p1 -n pynetbox-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # remove testsuite from sitelib
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
@@ -59,6 +60,7 @@ Python API client library for NetBox.
 %files %{python_files}
 %doc README.md CHANGELOG.md
 %license LICENSE
-%{python_sitelib}/pynetbox*
+%{python_sitelib}/pynetbox
+%{python_sitelib}/pynetbox-%{version}*-info
 
 %changelog
