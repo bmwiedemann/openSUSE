@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 30 15:00:03 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to 2.0.9
+  * Fix fallback logic of direct mapping 
+  * Make timeout configurable through /dev/rshimX/misc
+
+-------------------------------------------------------------------
 Fri Apr 21 17:49:44 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
 
 - Update service to new tag format
