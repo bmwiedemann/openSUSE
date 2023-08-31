@@ -19,7 +19,7 @@
 %bcond_without released
 %define libname libKPim5IncidenceEditor5
 Name:           incidenceeditor
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Incidenceeditor library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -47,11 +47,12 @@ BuildRequires:  cmake(KPim5CalendarUtils)
 BuildRequires:  cmake(KPim5EventViews)
 BuildRequires:  cmake(KPim5Ldap)
 BuildRequires:  cmake(KPim5Libkdepim)
-BuildRequires:  cmake(KPim5MailTransportAkonadi)
 BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KF5PimCommonAkonadi)
+BuildRequires:  cmake(KPim5PimCommonAkonadi)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+# It can only build on the same platforms as Qt Webengine
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 This package contains the incidenceeditor library.
@@ -75,7 +76,7 @@ Requires:       cmake(KF5CalendarCore)
 Requires:       cmake(KPim5CalendarSupport)
 Requires:       cmake(KPim5CalendarUtils)
 Requires:       cmake(KPim5EventViews)
-Requires:       cmake(KPim5MailTransportAkonadi)
+Requires:       cmake(KPim5MailTransport)
 Requires:       cmake(KPim5Mime)
 
 %description devel
@@ -109,7 +110,6 @@ The development package for the incidenceeditor libraries.
 %files devel
 %dir %{_includedir}/KPim5
 %{_includedir}/KPim5/IncidenceEditor/
-%{_kf5_cmakedir}/KF5IncidenceEditor/
 %{_kf5_cmakedir}/KPim5IncidenceEditor/
 %{_kf5_libdir}/libKPim5IncidenceEditor.so
 %{_kf5_mkspecsdir}/qt_IncidenceEditor.pri
