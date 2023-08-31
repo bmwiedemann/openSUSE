@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Aug 20 14:00:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * No need to lookup paths for images without a dot.
+  * Better suggested signed name
+  * Bump SOVERSION of okularcore
+  * Fix playing of external audio files
+  * Fix phonon not being correctly detected
+  * Fix markdown converter with libdiscount 3
+  * Forms: Don't run focusin action when gaining focus because of window management (kde#472756)
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Handle absolute urls in Document::processAction (kde#472440)
+  * Avoid accidental scrolling when performing pinch gesture (kde#421755)
+  * Surface Digitally Sign action more obviously in hamburger menu (kde#470752)
+  * Make default PDF printing scale mode configurable (kde#463732)
+  * Let user "Save As..." when document has been externally modified (kde#402017)
+  * Reuse an existing action to toggle sidebar visibility (kde#468317)
+  * JS: Implement field.valueAsString (kde#468036)
+  * Fix crash when executing the Save action (kde#467603)
+  * JS: Make field.value return a number if possible (kde#467852)
+
+-------------------------------------------------------------------
 Tue Jul  4 10:20:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
