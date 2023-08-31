@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 30 10:57:59 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.19.1
+  * Minor formatting (#411)
+- from version 2.19.0
+  * Add interoperable symmetric encryption system (#403)
+
+-------------------------------------------------------------------
 Tue Jul 18 10:08:17 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.18.0

@@ -139,4 +139,15 @@
     <comment></comment>
     <requestid>1099264</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c2cbb6ba95da6c6eba9acd529ca567af</srcmd5>
+    <version>2.19.1</version>
+    <time>1693482350</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.19.1
+  * Minor formatting (#411)
+- from version 2.19.0
+  * Add interoperable symmetric encryption system (#403) (forwarded request 1108091 from glaubitz)</comment>
+    <requestid>1108093</requestid>
+  </revision>
 </revisionlist>
