@@ -16,11 +16,11 @@
 #
 
 
-%define kf5_version 5.103.0
+%define kf5_version 5.105.0
 %define libname libKPim5Tnef5
 %bcond_without released
 Name:           ktnef
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        TNEF support
 License:        LGPL-2.1-or-later
@@ -92,7 +92,6 @@ to develop KDE PIM applications.
 %files devel
 %dir %{_includedir}/KPim5
 %{_includedir}/KPim5/KTNEF/
-%{_kf5_cmakedir}/KF5Tnef/
 %{_kf5_cmakedir}/KPim5Tnef/
 %{_kf5_libdir}/libKPim5Tnef.so
 %{_kf5_mkspecsdir}/qt_KTNef.pri
