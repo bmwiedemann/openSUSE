@@ -19,7 +19,7 @@
 %define soversion 5
 %bcond_without released
 Name:           libksieve
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Sieve and Managesieve support library for KDE PIM applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -46,7 +46,7 @@ BuildRequires:  cmake(KPim5IMAP)
 BuildRequires:  cmake(KPim5Libkdepim)
 BuildRequires:  cmake(KPim5MailTransport)
 BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KPim5PimCommon)
 BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Test)
@@ -54,7 +54,7 @@ BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 This package contains the libksieve library, which is used to support
@@ -111,7 +111,6 @@ This package contains development headers of libksieve.
 %{_includedir}/KF5/KSieve/
 %{_includedir}/KPim5/KManageSieve/
 %{_includedir}/KPim5/KSieveUi/
-%{_kf5_cmakedir}/KF5LibKSieve/
 %{_kf5_cmakedir}/KPim5LibKSieve/
 %{_kf5_libdir}/libKPim5KManageSieve.so
 %{_kf5_libdir}/libKPim5KSieve.so
