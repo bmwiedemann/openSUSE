@@ -1123,4 +1123,12 @@
     <comment>KDE release gear 23.04.3 (forwarded request 1097054 from krop)</comment>
     <requestid>1097286</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>115cd0ac66b234a4d8615ee9598cff61</srcmd5>
+    <version>23.08.0</version>
+    <time>1693482195</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.0 (forwarded request 1105409 from krop)</comment>
+    <requestid>1105717</requestid>
+  </revision>
 </revisionlist>
