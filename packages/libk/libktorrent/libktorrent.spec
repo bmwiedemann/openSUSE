@@ -19,7 +19,7 @@
 %define sonum   6
 %bcond_without released
 Name:           libktorrent
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later
@@ -40,7 +40,7 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  cmake(Qca-qt5)
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Xml)
@@ -82,6 +82,9 @@ libktorrent is a torrent downloading library.
 sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 
 %build
+%ifarch ppc64
+%define _lto_cflags %{nil}
+%endif
 
 %cmake_kf5 -d build
 %cmake_build
