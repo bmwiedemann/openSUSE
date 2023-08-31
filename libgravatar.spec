@@ -19,7 +19,7 @@
 %bcond_without released
 %define libname libKPim5Gravatar5
 Name:           libgravatar
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Library to download and display gravatars
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -36,7 +36,7 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KPim5PimCommon)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
@@ -91,7 +91,6 @@ The development package for the libgravatar library.
 %files devel
 %dir %{_includedir}/KPim5
 %{_includedir}/KPim5/Gravatar/
-%{_kf5_cmakedir}/KF5Gravatar/
 %{_kf5_cmakedir}/KPim5Gravatar/
 %{_kf5_libdir}/libKPim5Gravatar.so
 %{_kf5_mkspecsdir}/qt_Gravatar.pri
