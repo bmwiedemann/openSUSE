@@ -19,7 +19,7 @@
 %bcond_without released
 %define libname libKPim5MailCommon5
 Name:           mailcommon
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -55,7 +55,7 @@ BuildRequires:  cmake(KPim5MailImporter)
 BuildRequires:  cmake(KPim5MailTransport)
 BuildRequires:  cmake(KPim5MessageCore)
 BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KPim5PimCommon)
 BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
@@ -64,7 +64,7 @@ BuildRequires:  cmake(Qt5UiPlugin)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 The mailcommon library is a KDE PIM project to provide a
@@ -88,7 +88,7 @@ Requires:       cmake(KPim5Akonadi)
 Requires:       cmake(KPim5AkonadiMime)
 Requires:       cmake(KPim5Libkdepim)
 Requires:       cmake(KPim5MessageCore)
-Requires:       cmake(KF5PimCommon)
+Requires:       cmake(KPim5PimCommon)
 
 %description devel
 This package contains the development headers for the mailcommon library.
