@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 29 09:55:24 UTC 2023 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+-  Add ash-fix-segfault-d417193cf.patch: fix stack overflow vulnerability 
+   in ash (CVE-2022-48174, bsc#1214538)
+
+-------------------------------------------------------------------
 Fri Jun  2 21:08:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.36.1:

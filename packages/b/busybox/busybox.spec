@@ -42,6 +42,8 @@ Source7:        busybox.config.static.warewulf3
 Patch0:         cpio-long-opt.patch
 Patch1:         sendmail-ignore-F-option.patch
 Patch2:         testsuite-gnu-echo.patch
+# PATCH-FIX-UPSTREAM shell: avoid segfault on ${0::0/0~09J} (CVE-2022-48174) https://git.busybox.net/busybox/commit/?id=d417193cf
+Patch3:         ash-fix-segfault-d417193cf.patch
 # other patches
 Patch100:       busybox.install.patch
 Provides:       useradd_or_adduser_dep
