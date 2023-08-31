@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 30 08:21:33 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip failing test with hypothesis gh#PyCQA/isort#2171
+
+-------------------------------------------------------------------
 Tue May  9 04:57:51 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

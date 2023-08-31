@@ -110,6 +110,8 @@ ignoretests+=" --ignore tests/benchmark"
 # test_setting_combinations.py::test_isort_is_idempotent
 # is flaky https://github.com/PyCQA/isort/issues/1466
 donttest="(test_setting_combinations and test_isort_is_idempotent)"
+# https://github.com/PyCQA/isort/issues/2171
+donttest+=" or (test_hypothesmith and test_isort_is_idempotent)"
 # The package python-requirementslib is not available anymore.
 # It's a deprecated finder for isort so we drop it
 # https://github.com/sarugaku/requirementslib/issues/288

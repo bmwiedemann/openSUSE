@@ -572,4 +572,12 @@ Let's see which package is missing in ringX for test flavor</comment>
     <comment></comment>
     <requestid>1085634</requestid>
   </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>02f2345556e66fcd9b5a552db0155d78</srcmd5>
+    <version>5.12.0</version>
+    <time>1693482338</time>
+    <user>anag+factory</user>
+    <comment>- Skip failing test with hypothesis gh#PyCQA/isort#2171 (forwarded request 1108058 from bnavigator)</comment>
+    <requestid>1108059</requestid>
+  </revision>
 </revisionlist>
