@@ -17,10 +17,10 @@
 
 
 %define rname baloo-widgets
-%define kf5_version 5.90.0
+%define kf5_version 5.105.0
 %bcond_without released
 Name:           baloo5-widgets
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
