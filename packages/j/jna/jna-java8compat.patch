@@ -1,22 +1,21 @@
-diff -urEbwB jna-5.4.0/build.xml jna-5.4.0.new/build.xml
---- jna-5.4.0/build.xml	2019-07-19 21:22:03.000000000 +0200
-+++ jna-5.4.0.new/build.xml	2019-10-10 21:47:22.950356404 +0200
-@@ -102,7 +102,12 @@
+--- jna-5.13.0/build.xml	2023-05-30 15:30:31.116195853 +0200
++++ jna-5.13.0/build.xml	2023-05-30 15:31:56.400786710 +0200
+@@ -106,8 +106,12 @@
+     JDK 11 is the last JDK, that supports creation of Java 6 compatible class
      files.
    -->
-   <condition property="compatibility" value="1.6" else="9">
+-  <condition property="compatibility" value="1.6" else="9">
++  <condition property="compatibility" value="1.8" else="9">
 +    <or>
      <matches pattern="^1\.\d+$" string="${ant.java.version}"/>
 +        <matches pattern="^9.*$" string="${ant.java.version}"/>
-+        <matches pattern="^10.*$$" string="${ant.java.version}"/>
-+        <matches pattern="^11.*$$" string="${ant.java.version}"/>
++        <matches pattern="^1.*$$" string="${ant.java.version}"/>
 +    </or>
    </condition>
  
    <condition property="compatibility-check" value="true">
-diff -urEbwB jna-5.4.0/contrib/platform/src/com/sun/jna/platform/mac/XAttrUtil.java jna-5.4.0.new/contrib/platform/src/com/sun/jna/platform/mac/XAttrUtil.java
---- jna-5.4.0/contrib/platform/src/com/sun/jna/platform/mac/XAttrUtil.java	2019-07-19 21:22:03.000000000 +0200
-+++ jna-5.4.0.new/contrib/platform/src/com/sun/jna/platform/mac/XAttrUtil.java	2019-10-10 21:37:54.962613364 +0200
+--- jna-5.13.0/contrib/platform/src/com/sun/jna/platform/mac/XAttrUtil.java	2023-05-30 15:30:31.140196020 +0200
++++ jna-5.13.0/contrib/platform/src/com/sun/jna/platform/mac/XAttrUtil.java	2023-05-30 15:30:47.452309013 +0200
 @@ -23,6 +23,7 @@
   */
  package com.sun.jna.platform.mac;
@@ -39,9 +38,8 @@ diff -urEbwB jna-5.4.0/contrib/platform/src/com/sun/jna/platform/mac/XAttrUtil.j
              }
          }
  
-diff -urEbwB jna-5.4.0/test/com/sun/jna/BufferArgumentsMarshalTest.java jna-5.4.0.new/test/com/sun/jna/BufferArgumentsMarshalTest.java
---- jna-5.4.0/test/com/sun/jna/BufferArgumentsMarshalTest.java	2019-07-19 21:22:03.000000000 +0200
-+++ jna-5.4.0.new/test/com/sun/jna/BufferArgumentsMarshalTest.java	2019-10-10 21:28:39.574890668 +0200
+--- jna-5.13.0/test/com/sun/jna/BufferArgumentsMarshalTest.java	2023-05-30 15:30:31.288197044 +0200
++++ jna-5.13.0/test/com/sun/jna/BufferArgumentsMarshalTest.java	2023-05-30 15:30:47.452309013 +0200
 @@ -23,6 +23,7 @@
   */
  package com.sun.jna;
@@ -59,9 +57,8 @@ diff -urEbwB jna-5.4.0/test/com/sun/jna/BufferArgumentsMarshalTest.java jna-5.4.
          lib.fillInt8Buffer(buf, 512, (byte)0);
          for (int i=0;i < buf.capacity();i++) {
              assertEquals("Bad value at index " + i,
-diff -urEbwB jna-5.4.0/test/com/sun/jna/PerformanceTest.java jna-5.4.0.new/test/com/sun/jna/PerformanceTest.java
---- jna-5.4.0/test/com/sun/jna/PerformanceTest.java	2019-07-19 21:22:03.000000000 +0200
-+++ jna-5.4.0.new/test/com/sun/jna/PerformanceTest.java	2019-10-10 21:26:21.041920761 +0200
+--- jna-5.13.0/test/com/sun/jna/PerformanceTest.java	2023-05-30 15:30:31.288197044 +0200
++++ jna-5.13.0/test/com/sun/jna/PerformanceTest.java	2023-05-30 15:30:47.452309013 +0200
 @@ -396,7 +396,7 @@
          start = System.currentTimeMillis();
          for (int i=0;i < COUNT;i++) {
@@ -89,9 +86,8 @@ diff -urEbwB jna-5.4.0/test/com/sun/jna/PerformanceTest.java jna-5.4.0.new/test/
              b.put(bulk);
          }
          delta = System.currentTimeMillis() - start;
-diff -urEbwB jna-5.4.0/test/com/sun/jna/PointerBufferTest.java jna-5.4.0.new/test/com/sun/jna/PointerBufferTest.java
---- jna-5.4.0/test/com/sun/jna/PointerBufferTest.java	2019-07-19 21:22:03.000000000 +0200
-+++ jna-5.4.0.new/test/com/sun/jna/PointerBufferTest.java	2019-10-10 21:21:33.152310989 +0200
+--- jna-5.13.0/test/com/sun/jna/PointerBufferTest.java	2023-05-30 15:30:31.288197044 +0200
++++ jna-5.13.0/test/com/sun/jna/PointerBufferTest.java	2023-05-30 15:30:47.452309013 +0200
 @@ -24,6 +24,7 @@
  
  package com.sun.jna;

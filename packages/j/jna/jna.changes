@@ -1,4 +1,266 @@
 -------------------------------------------------------------------
+Wed Aug 30 10:34:18 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 5.13.0
+- Changes in version 5.13.0:
+  * Features:
+    + #1454: Add 'c.s.j.p.win32.Psapi.QueryWorkingSetEx' and
+      associated Types
+    + #1459: Add 'VirtualLock' and 'VirtualUnlock' in
+      'c.s.j.p.win32.Kernel32'
+    + #1471: Add
+      'c.s.j.p.win32.Advapi32Util#isCurrentProcessElevated' and
+       associated Types
+    + #1474: Add
+      'c.s.j.p.win32.WbemCli#IWbemClassObject.IWbemQualifierSet',
+      'IWbemServices.GetObject', 'IWbemContext.SetValue' and
+      associated methods
+    + #1482: Add multilingual support of
+      'Kernel32Util.formatMessage'
+    + #1490: Adds support for a custom 'SymbolProvider' in
+      'NativeLibrary' & 'Library'
+    + #1491: Update libffi to v3.4.4
+    + #1487: Add 'uses' information to OSGI metadata in MANIFEST.MF
+      to improve stability of package resolution
+  * Bug Fixes:
+    + #1452: Fix memory allocation/handling for error message
+      generation in native library code ('dispatch.c')
+    + #1460: Fix win32 variant date conversion in DST offest window
+      and with millisecond values
+    + #1472: Fix incorrect bitmask in
+      'c.s.j.Pointer#createConstant(int)'
+    + #1481: Fix NPE in NativeLibrary when unpacking from classpath
+      is disabled
+    + #1489: Fixes typo in 'OpenGL32Util#wglGetProcAddress', instead
+      of parameter 'procName' the hardcoded value 'wglEnumGpusNV'
+      was used
+- Changes in version 5.12.1:
+  * Bug Fixes:
+    + #1447: Null-check cleanable in 'c.s.j.Memory#close'
+- Changes in version 5.12.0:
+  * Features:
+    + #1433: Add 'CFEqual', 'CFDictionaryRef.ByReference',
+      'CFStringRef.ByReference' to 'c.s.j.p.mac.CoreFoundation'
+    + #978: Remove use of finalizers in JNA and improve concurrency
+      for 'Memory', 'CallbackReference' and 'NativeLibrary'
+    + #1440: Support for LoongArch64
+    + #1444: Update embedded libffi to
+      1f14b3fa92d4442a60233e9596ddec428a985e3c and rebuild native
+      libraries
+  * Bug Fixes:
+    + #1438: Handle arrays in structures with differing size
+    + #1442: Handle race condition in
+      'c.s.j.p.win32.PdhUtil#PdhEnumObjectItems'
+  * Important Changes:
+    + 'Memory#dispose', 'CallbackReference#dispose' and
+      'NativeLibrary#dispose' were called by the 'Object#finalize'
+      override. These calls were replaced by the use of a cleaner.
+      It is not guaranteed anymore, that 'dispose' is called on
+      subclasses on finalization.
+- Changes in version 5.11.0:
+  * Features:
+    + #1398: Increase 'c.s.j.p.win32.Sspi#MAX_TOKEN_SIZE' on
+      Windows 8/Server 2012 and later
+    + #1403: Rebuild AIX binaries with libffi 3.4.2 (other
+      architectures were part of 5.10)
+    + #1404: Added Solaris Kstat2 library
+    + #1416: Add 'CFDictionaryGetCount' to
+      'c.s.j.p.mac.CoreFoundation'
+    + #1418: Add 'CertOpenStore' to 'c.s.j.p.win32.Crypt32'
+  * Bug Fixes:
+    + #1411: Do not throw 'Win32Exception' on success for empty
+      section in 'Kernel32Util#getPrivateProfileSection'
+    + #1414: Fix definition of 'c.s.j.p.unix.X11.XK_Shift_R'
+    + #1323. Fix crashes in direct callbacks on mac OS aarch64
+    + #1422: Load jawt library relative to 'sun.boot.library.path'
+      system on unix OSes
+    + #1427: Rebuild all binaries with fix from #1422 and #1323
+- Changes in version 5.10.0:
+  * Features:
+    + #1377: Add 'RegLoadAppKey' to 'c.s.j.p.win32.Advapi32' and
+      'registryLoadAppKey' to 'c.s.j.p.win32.Advapi32Util'
+    + #1093: Add 'OpenFileMapping' to 'c.s.j.p.win32.Kernel32'
+    + #1388: Map the arch 'zarch_64' as reported by SAPJVM8 to
+      's390x'
+    + #1381: Update embedded libffi to 3.4.2
+    + #1393: Update native encoding detection for JEP400 / JDK 18
+      ('file.encoding' now defaults to 'UTF-8')
+  * Bug Fixes:
+    + #1378: Handle failure in 'ffi_closure_alloc'
+- Changes in version 5.9.0:
+  * Features:
+    + #1336: Add 'HKEY_CURRENT_USER_LOCAL_SETTINGS' to
+      'c.s.j.p.win32.WinReg'
+    + #1337: Add 'REG_NOTIFY_THREAD_AGNOSTIC' to
+      'c.s.j.p.win32.WinNet' and update 'REG_LEGAL_CHANGE_FILTER'
+    + #1338: Add 'RegNotifyChangeKeyValue' to
+      'c.s.j.p.win32.Advapi32'
+    + #1340: Add 'CM_Get_DevNode_Registry_Property' to
+      'c.s.j.p.win32.Cfgmgr32' and corresponding util in
+      'c.s.j.p.win32.Cfgmgr32Util'
+    + #1352: Add 'BringWindowToTop' to 'c.s.j.p.win32.User32'
+    + #1354: Add 'GetParent' to 'c.s.j.p.win32.User32'
+    + #1360: Add 'CommandLineToArgvW' to 'c.s.j.p.win32.Shell32'
+      and corresponding util in 'c.s.j.p.win32.Shell32Util'
+    + #1363: Update 'NUMA_NODE_RELATIONSHIP' in
+      'c.s.j.p.win32.WinNT' to new version of the structure and
+      improve support for future values of
+      'c.s.j.p.win32.WinNT.LOGICAL_PROCESSOR_RELATIONSHIP'
+  * Bug Fixes:
+    + #1343: 'c.s.j.p.mac.CoreFoundation.CFStringRef#stringValue'
+      buffer needs space for a null byte
+    + #1351: Define 'c.s.j.p.unix.size_t.ByReference' and fix macOS
+      sysctl 'size_t *' parameters
+    + #1362: Clear security sensitive data after usage in
+      'c.s.j.p.win32.Crypt32Util#cryptProtectData' and
+      '#cryptUnprotectData'
+    + #1361: Make 'c.s.j.p.win32.Crypt32Util#cryptProtectData' and
+      '#cryptUnprotectData' properly handle 0-length array as input
+- Changes in version 5.8.0:
+  * Features:
+    + #1313: Normalize 'RESOURCE_PREFIX' for darwin to
+      'darwin-$arch' and split jnidispatch library per architecture
+    + #1318: Add support for linux-riscv64
+    + #1327: Add partial support for future values of
+      'c.s.j.p.win32.WinNT.LOGICAL_PROCESSOR_RELATIONSHIP' enum
+      present in Windows Insider builds
+  * Bug Fixes:
+    + #1317: Change the maven coordinates of the JPMS artifacts from
+      classifier 'jpms' to custom artifact ids 'jna-jpms' and
+      'jna-platform-jpms'
+    + #1322: Handle 0-length domain names in
+      'c.s.j.p.win32.Advapi32Util#getAccountBySid'
+    + #1326: Ensure pointers indirected from Memory and pointing
+      into Memory retain originating object
+  * Important Changes:
+    + The maven coordinates of the experimental JPMS (java module
+      system) artifacts were moved from using the classifier 'jpms'
+      to custom artifact ids 'jna-jpms' and 'jna-platform-jpms',
+      without an classifier. The reason for this is, that the
+      platform artifacts depend on the jna artifacts and need to
+      pull in the right variant. This is not possible if the
+      classifier is used.
+    + 'RESOURCE_PREFIX' for darwin (mac OS) was changed from
+      'darwin' to 'darwin-$arch' as the fat binaries on mac OS
+      causes various problems: It was reported, that binaries were
+      rejected from the appstore because x86 binaries were found in
+      the application (jnidispatch for mac OS x86) and that builds
+      needed to be special cased so that the native library can be
+      assembled. The latter is also true for JNA.
+      While the prefix is changed, the old prefix is still searched
+      as a fallback location, so if only a fat binary is present, it
+      can still be loaded.
+- Changes in version 5.7.0:
+  * Features:
+    + #1301: Improve bindings of the printer notification functions
+      ('FindFirstPrinterChangeNotification',
+      'FindNextPrinterChangeNotification') in 'c.s.j.p.w.Winspool'
+    + #1238: Add macOS 'aarch64' architecture to universal 'darwin'
+      target
+    + #1264: Update libffi to v3.3; Add Windows 'aarch64' target.
+    + #1293: Bind part of Windows Application Recovery and Restart
+      API: 'RegisterApplicationRestart',
+      'UnregisterApplicationRestart' and
+      'GetApplicationRestartSettings' in 'c.s.j.p.w.Kernel32'
+    + #1217: Add mappings for AIX 'Perfstat' library to
+      'c.s.j.p.unix.aix'
+    + #1231: The test suite can now be executed on Windows using
+      either ANSI or UNICODE win32 API by passing
+      '-Dw32.ascii=true/false' to ant. Previously, UNICODE was
+      always used.
+    + #1237: *Experimental:* Add artifacts that make jna and
+      jna-platform named modules (provide 'module-info.class').
+      The new artifacts are named 'jna-jpms.jar' and
+      'jna-platform-jpms.jar'
+    + #1242: Add CallWindowProc to User32
+    + #1239: Improve performance of allocation of 'c.s.j.Memory'
+      objects
+    + #1246: Improve performance of 'c.s.j.Structure#read' and
+      'c.s.j.Structure#write'
+    + #1260: Add mapping for X11 generic events
+    + #1263: Add LowLevelMouseProc
+    + #1265: Add mapping for XQueryExtension
+    + #1299: Add 'c.s.j.p.win32.IPHlpApi#GetExtendedTcpTable',
+      'c.s.j.p.win32.IPHlpApi#GetExtendedUdpTable', and supporting
+      structures.
+  * Bug Fixes:
+    + #1286: Fix bindings of 'c.s.j.p.win32.DBT'
+    + #326: Fix loading library that re-uses pointers for different
+      callbacks
+    + #1244: Fix building on GCC 10
+    + #1252: Fix bindings of 'CTL_ENTRY#getRgAttribute',
+      'CTL_INFO#getRgCTLEntry', 'CTL_INFO#getRgExtension',
+      'CERT_EXTENSIONS#getRgExtension', 'CERT_INFO#getRgExtension',
+      'CRL_INFO#getRgCRLEntry', 'CRL_INFO#getRgExtension',
+      'CRL_ENTRY#getRgExtension'.
+      Add bindings for 'CertEnumCertificatesInStore',
+      'CertEnumCTLsInStore', 'CertEnumCRLsInStore' and
+      'CryptQueryObject' in 'c.s.j.p.win32.Crypt32'.
+      *WARNING:* The signatures for 'CTL_INFO#getRgCTLEntry' and
+      'CTL_INFO#getRgExtension' were changed - as the original
+      signatures were obviously wrong and read the wrong attributes,
+      it is not considered an API break
+    + #1275: Fix 'CFStringRef#stringValue' for empty Strings
+    + #1279: Remove 'DLLCallback' import from 'CallbackReference'
+    + #1278: Improve compatibility of
+      'c.s.j.p.WindowUtils#getProcessFilePath' and fix unittests for
+      windows 32bit intel
+    + #1284: Fix illegal access exceptions, when retrieving options
+      for private library interfaces with an instance field
+    + #1300: Deprecate 'c.s.j.p.win32.WTypes.BSTR' String
+      constructor and 'setValue' method, as 'BSTR' allocation should
+      be managed by COM, Automation, and Interop functions
+  * Breaking Changes:
+    + Prebuild native library for darwin x86 (32bit java on mac OS)
+      was removed
+- Changes in version 5.6.0:
+  * Features:
+    + #1160: Make FileUtils#moveToTrash a varargs method
+    + #1167: Add 'c.s.j.p.win32.Kernel32#GetProcessAffinityMask'
+    + #1168: Add 'c.s.j.p.win32.Kernel32#SetProcessAffinityMask'
+    + #1169: Wait for process in getLinuxLdPaths
+    + #1178: Add 'c.s.j.p.win32.IPHlpAPI#GetTcpStatistics',
+      'c.s.j.p.win32.IPHlpAPI#GetUdpStatistics',
+      'c.s.j.p.win32.IPHlpAPI#GetTcpStatisticsEx' and
+      'c.s.j.p.win32.IPHlpAPI#GetUdpStatisticsEx'
+    + #1182: Add 'toString' to classes extending
+      'c.s.j.ptr.ByReference'
+    + #1191: Add 'c.s.j.p.win32.Advapi32Util#getTokenPrimaryGroup'
+    + #1194: Add 'GetConsoleScreenBufferInfo', 'ReadConsoleInput'
+      and 'WriteConsole' with associated structures to
+      'c.s.j.p.win32.Wincon'
+    + #1198: Add 'NetSessionEnum' to 'c.s.j.p.win32.Netapi32' and
+      'WTSEnumerateSessions', 'WTSQuerySessionInformation', and
+      'WTSFreeMemory' to 'c.s.j.p.win32.Wtsapi32'
+    + #1200: Add mappings for 'libudev' to 'c.s.j.p.linux.Udev'
+    + #1202: Add mappings supporting shared memory including
+      'c.s.j.p.unix.LibCAPI' types 'size_t' and 'ssize_t',
+      'c.s.j.p.linux.LibC' methods 'munmap()', 'msync()', and
+      'close()', 'c.s.j.p.unix.LibCUtil' mapping 'mmap()' and
+      'ftruncate()', and 'c.s.j.p.linux.LibRT' methods 'shm_open()'
+      and 'shm_unlink()'
+    + #1209: Add mappings for 'Thread32First' and 'Thread32Next' to
+      'c.s.j.p.win32.Kernel32'
+    + #1214: Add mapping for EnumProcesses to 'c.s.j.p.win32.Psapi'
+      and 'c.s.j.p.win32.PsapiUtil'
+  * Bug Fixes:
+    + #1183: 'c.s.j.p.win32.WinDef.CHARByReference#getValue' should
+      only read one byte
+    + #1184: 'c.s.j.p.win32.WinDef.ULONGLONG' should always be 8
+      bytes
+    + #1196: 'c.s.j.p.win32.WinNT.LARGE_INTEGER' needs to populate
+      both union fields
+    + #1216: Failure loading frameworks on macOS 11
+- Modified patches:
+  * jna-build.patch
+  * jna-java8compat.patch
+    + rediff to changed context
+- Added patch:
+  * jna-old-libffi.patch
+    + patch out an enum that is not present in less recent libffi
+      used on some older systems
+
+-------------------------------------------------------------------
 Sat Mar 19 21:55:37 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source/target levels 8

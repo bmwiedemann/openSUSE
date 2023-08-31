@@ -1,7 +1,7 @@
 #
 # spec file for package jna
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,10 +18,11 @@
 
 
 Name:           jna
-Version:        5.5.0
+Version:        5.13.0
 Release:        0
 Summary:        Pure Java access to native libraries
 License:        Apache-2.0 OR LGPL-2.1-or-later
+Group:          Development/Libraries/Java
 URL:            https://github.com/twall/jna
 Source0:        https://github.com/twall/%{name}/archive/%{version}.tar.gz
 Source1000:     %{name}-rpmlintrc
@@ -29,16 +30,17 @@ Patch0:         jna-build.patch
 Patch1:         jna-callback.patch
 Patch2:         jna-system-libjnidispatch.patch
 Patch3:         jna-java8compat.patch
+Patch4:         jna-old-libffi.patch
 BuildRequires:  ant
-BuildRequires:  ant-junit
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local
-BuildRequires:  junit
+BuildRequires:  libX11-devel
+BuildRequires:  libXt-devel
 BuildRequires:  libffi-devel
-BuildRequires:  xorg-x11-libX11-devel
-BuildRequires:  xorg-x11-libXt-devel
+BuildRequires:  objectweb-asm
+BuildRequires:  pkg-config
 Requires:       java >= 1.8
 Provides:       jna-native = %{version}-%{release}
 Obsoletes:      jna-native < %{version}-%{release}
@@ -55,7 +57,10 @@ of use take priority.
 
 %package        contrib
 Summary:        Contrib for %{name}
+Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}-%{release}
+Provides:       jna-platform = %{version}-%{release}
+Obsoletes:      jna-platform < %{version}-%{release}
 BuildArch:      noarch
 
 %description    contrib
@@ -63,6 +68,7 @@ This package contains the contributed examples for %{name}.
 
 %package        javadoc
 Summary:        Javadocs for %{name}
+Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description    javadoc
@@ -80,11 +86,16 @@ dos2unix OTHERS
 %patch2 -p1
 %patch3 -p1
 
+%if 0%{?suse_version} < 1550
+%patch4 -p1
+%endif
+
 sed -i 's|@LIBDIR@|%{_libdir}/%{name}|' src/com/sun/jna/Native.java
 
 %build
 build-jar-repository -s -p lib ant
-%ant \
+ln -s $(find-jar objectweb-asm/asm) lib/asm-8.0.1.jar
+%{ant} \
     jar \
     native \
     platform-jar \
@@ -106,17 +117,17 @@ install -m 755 build/native*/libjnidispatch*.so %{buildroot}%{_libdir}/%{name}/
 
 install -d -m 755 %{buildroot}%{_jnidir}/%{name}
 install -d -m 755 %{buildroot}%{_javadir}/%{name}
-install -p -m 644 build/jna-min.jar %{buildroot}%{_jnidir}/%{name}.jar
+install -p -m 644 build/jna-jpms.jar %{buildroot}%{_jnidir}/%{name}.jar
 ln -sf ../%{name}.jar %{buildroot}%{_jnidir}/%{name}/%{name}.jar
 ln -sf %{_jnidir}/%{name}.jar %{buildroot}%{_javadir}/%{name}.jar
-install -p -m 644 ./contrib/platform/dist/jna-platform.jar %{buildroot}%{_javadir}/%{name}-platform.jar
+install -p -m 644 ./contrib/platform/dist/jna-platform-jpms.jar %{buildroot}%{_javadir}/%{name}-platform.jar
 ln -sf ../%{name}-platform.jar %{buildroot}%{_javadir}/%{name}/%{name}-platform.jar
 
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -p -m 644 pom-jna.xml %{buildroot}/%{_mavenpomdir}/%{name}.pom
-install -p -m 644 pom-jna-platform.xml %{buildroot}/%{_mavenpomdir}/%{name}-platform.pom
-%add_maven_depmap %{name}.pom %{name}.jar
-%add_maven_depmap %{name}-platform.pom %{name}-platform.jar -a net.java.dev.jna:platform -f contrib
+install -p -m 644 build/pom-jna.xml %{buildroot}/%{_mavenpomdir}/%{name}.pom
+install -p -m 644 build/pom-jna-platform.xml %{buildroot}/%{_mavenpomdir}/%{name}-platform.pom
+%add_maven_depmap %{name}.pom %{name}.jar -a net.java.dev.jna:jna-jpms
+%add_maven_depmap %{name}-platform.pom %{name}-platform.jar -a net.java.dev.jna:platform,net.java.dev.jna:jna-platform-jpms -f contrib
 
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr doc/javadoc/* %{buildroot}%{_javadocdir}/%{name}
