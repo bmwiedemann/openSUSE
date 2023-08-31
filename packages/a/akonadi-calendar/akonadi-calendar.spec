@@ -16,11 +16,11 @@
 #
 
 
-%define kf5_version 5.104.0
+%define kf5_version 5.105.0
 %define libname libKPim5AkonadiCalendar5
 %bcond_without released
 Name:           akonadi-calendar
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
@@ -42,11 +42,14 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(KPim5Akonadi)
 BuildRequires:  cmake(KPim5AkonadiContact)
 BuildRequires:  cmake(KPim5CalendarUtils)
+BuildRequires:  cmake(KPim5MessageCore)
 BuildRequires:  cmake(KPim5IdentityManagement)
-BuildRequires:  cmake(KPim5MailTransportAkonadi)
+BuildRequires:  cmake(KPim5MailTransport)
 BuildRequires:  cmake(KPim5Mime)
 BuildRequires:  cmake(Qt5Test)
 Conflicts:      libKF5AkonadiCalendar5 < %{version}
+# It can only build on the same platforms as Qt Webengine
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 This library provides calendar integration for Akonadi based Applications.

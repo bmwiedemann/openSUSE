@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:58:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Fix linking with self-built gpgmepp
+  * Explicitly search for KPim{5,6}Libkleo
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Make sure to extract only email
+  * Fix generate emails (don't create "foo" <foo <foo@kde.org> >)
+  * Avoid too big dialogbox
+  * Generate properties for CalendarSettings
+  * Add Akonadi::CalendarUtils::displayName overload that takes ETM instead of ETMCalendar
+  * Don't link twice against KF::Codecs
+  * Add messagelib dependency
+  * Sign/encrypt iTIP emails (kde#297956)
+  * make free/busy invokable from QML
+  * Fix platforms name
+  * Remove the never set "MailTransport" setting
+  * Remove CI 6 job. We will use kf6 branch for kf6 works
+  * Simplify default mail transport code
+  * Don't needlessly link against KIOWidgets
+  * Add akonadi-mime dependency explicitly
+  * Adapt to KMailTransportAkonadi being integrated into AkonadiMime
+  * Expose missing kidentitymanagement
+  * Add TodoModel (coming from eventviews)
+  * Bump library version
+  * Move SearchCollectionHelper to akonadi-calendar
+  * Move CalendarSupport::createMimeData here
+  * not export symbol of private methods
+  * Add QCH support
+  * Add missing lib
+  * Use correct INSTALL_TARGETS_DEFAULT_ARGS
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
