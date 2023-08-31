@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:58:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:12 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * CI: Also drop obsolete dependency on KF5Pty there
+  * Drop KPty dependency
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Some cleanup in the Sage backend
+  * [sage] allow to specify plot format and size in the application settings.
+  * [sage] don't call sage-cleaner explicitly.
+  * Fix displaying plots in sagemath>=9.7 (kde#468598)
+  * Add Flatpak CI/CD Integration
+  * Make sure zoom percentage translation can be parsed back
+  * Fix gcc dangling reference warnings
+  * Catch exception by const &
+  * Make percent value localizable
+  * [sage] bump the minimal supported version of Sage to 9.2 (kde#408176)
+  * Port away from deprecated standard path
+  * [octave] evaluate the option "integrate plots" on every expression execution
+  * Added changes that were forgotten in the previous two commits.
+  * [maxima] always trim the command string and remove line breaks (kde#465277)
+  * Don't use strict icon size mode when picking icon
+  * [lua] refactored and fixed the parsing of LuaJIT's output. (kde#461135)
+  * [tests] skip testInterrupt for python.
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
