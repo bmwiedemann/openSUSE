@@ -16,12 +16,12 @@
 #
 
 
-%define kf5_version 5.90.0
+%define kf5_version 5.105.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           artikulate
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Pronunciation Self-Teaching
 License:        LGPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
