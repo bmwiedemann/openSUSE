@@ -19,7 +19,7 @@
 %bcond_without released
 %define libname libKPim5EventViews5
 Name:           eventviews
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -50,6 +50,8 @@ BuildRequires:  cmake(KPim5Libkdepim)
 BuildRequires:  cmake(KPim5Mime)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+# It can only build on the same platforms as Qt Webengine
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 This internal library implements a GUI framework for viewing various
@@ -107,7 +109,6 @@ The development package for the eventviews libraries
 %files devel
 %dir %{_includedir}/KPim5
 %{_includedir}/KPim5/EventViews/
-%{_kf5_cmakedir}/KF5EventViews/
 %{_kf5_cmakedir}/KPim5EventViews/
 %{_kf5_libdir}/libKPim5EventViews.so
 %{_kf5_mkspecsdir}/qt_EventViews.pri

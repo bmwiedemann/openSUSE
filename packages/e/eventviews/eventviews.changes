@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:58:58 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:15 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Fix korganizer crashes when graphically moving or resizing a copied recurring event (kde#472789)
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Avoid crashes if findCalendar or calendar2 return empty (kde#470584)
+  * Invalidate model to apply sortCompletedTodosSeparately pref (kde#458254)
+  * Remove TodoModel from eventviews
+  * Switch to the TodoModel copy coming from akonadi-calendar
+  * Remove CI 6 job. We will use kf6 branch for kf6 works
+  * Explicitly link against KConfig
+  * Remove the background coloring from TodoModel
+  * Add a ColorTodoProxyModel providing the colored background feature
+  * Adapt to CalendarSupport::createMimeData having moved to akoandi-calendar
+  * Remove tooltips on TodoModel
+  * not export symbol of private methods
+  * Allow to build test + fix generated QCH target
+  * Use correct INSTALL_TARGETS_DEFAULT_ARGS
+  * Const'ify pointer
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
