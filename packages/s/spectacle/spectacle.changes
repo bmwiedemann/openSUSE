@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Aug 20 14:00:29 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Fix crash in QApplication::screenRemoved lambda
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Avoid auto quitting on auto save (kde#469646)
+  * Use ecm_query_qt to query Qt binaries dir (kde#471095)
+  * Multiply annotation shadow opacity by stroke or fill opacity (kde#464170)
+  * Allow making annotation colors fully transparent via checkboxes (kde#468077)
+  * Hide redundant header on Wayland (kde#468818)
+  * Fix wrong image position in rectangle capture mode with scaling (kde#462860)
+  * Fix quitting Spectacle with Escape affecting windows below it (kde#428478)
+  * Don't close all windows if activated by DBus with GUI and no CLI options (kde#467118)
+  * Fix window title file name template on wayland (kde#465524)
+  * Use deleteLater() to delete SpectacleWindows (kde#467401)
+  * AnnotationDocument: Divide image size by devicePixelRatio in addImage() (kde#467398)
+
+-------------------------------------------------------------------
 Tue Jul  4 10:20:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
