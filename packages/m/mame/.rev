@@ -73,4 +73,13 @@
   * https://mametesters.org/changelog_page.php</comment>
     <requestid>1104924</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c1d4c25d229b4f5cd2edd94c44b93b7a</srcmd5>
+    <version>0.258</version>
+    <time>1693482342</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.258
+  * /usr/share/doc/packages/mame/whatsnew-0.258.txt</comment>
+    <requestid>1108085</requestid>
+  </revision>
 </revisionlist>
