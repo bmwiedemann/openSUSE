@@ -18,7 +18,7 @@
 
 %bcond_without  released
 Name:           angelfish
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Mobile web browser
 License:        GPL-2.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  gcc10-PIE
 BuildRequires:  hicolor-icon-theme
 # Cargo is only needed if Corrosion is present
 # BuildRequires:  cmake(Corrosion)
+BuildRequires:  cmake(FutureSQL5)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
@@ -46,7 +47,9 @@ BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Purpose)
 BuildRequires:  cmake(KF5QQC2DesktopStyle)
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Qt5Core) >= 5.15.0
+BuildRequires:  cmake(QCoro5Core) >= 0.7.0
+BuildRequires:  cmake(QCoro5Quick) >= 0.7.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickControls2)
@@ -58,7 +61,7 @@ BuildRequires:  cmake(Qt5Widgets)
 Requires:       kirigami-addons
 Requires:       kirigami2
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 Angelfish is a mobile web browser. It supports typical browser features, such
