@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           mailimporter
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Mail import functionality for KDE PIM applications
 License:        GPL-2.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  cmake(KPim5Akonadi)
 BuildRequires:  cmake(KPim5AkonadiMime)
 BuildRequires:  cmake(KPim5Libkdepim)
 BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KF5PimCommonAkonadi)
+BuildRequires:  cmake(KPim5PimCommonAkonadi)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
@@ -104,9 +104,7 @@ used by KDE PIM applications to import data from other mail formats
 %dir %{_includedir}/KPim5
 %{_includedir}/KPim5/MailImporter/
 %{_includedir}/KPim5/MailImporterAkonadi/
-%{_kf5_cmakedir}/KF5MailImporter/
 %{_kf5_cmakedir}/KPim5MailImporter/
-%{_kf5_cmakedir}/KF5MailImporterAkonadi/
 %{_kf5_cmakedir}/KPim5MailImporterAkonadi/
 %{_kf5_libdir}/libKPim5MailImporter.so
 %{_kf5_libdir}/libKPim5MailImporterAkonadi.so
