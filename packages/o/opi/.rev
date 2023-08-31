@@ -484,4 +484,17 @@
 - Add config option to disable auto refresh</comment>
     <requestid>1101179</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>bcb9e5a64cac860462ea4508ad1f1b97</srcmd5>
+    <version>3.4.0</version>
+    <time>1693482359</time>
+    <user>anag+factory</user>
+    <comment>- Version 3.4.0
+- Add unofficial Teams-for-linux client
+- Improve non interactive tests
+- Strip test module name
+- chore: fix indentation
+- docs: add config options, update opi help page</comment>
+    <requestid>1108126</requestid>
+  </revision>
 </revisionlist>
