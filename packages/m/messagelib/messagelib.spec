@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           messagelib
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
@@ -50,7 +50,7 @@ BuildRequires:  cmake(KF5Libkleo)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
-BuildRequires:  cmake(KF5TextAutoCorrection)
+BuildRequires:  cmake(KF5TextAutoCorrectionWidgets)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(KPim5Akonadi)
 BuildRequires:  cmake(KPim5AkonadiContact)
@@ -65,7 +65,7 @@ BuildRequires:  cmake(KPim5Libkdepim)
 BuildRequires:  cmake(KPim5MailTransport)
 BuildRequires:  cmake(KPim5Mbox)
 BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KPim5PimCommon)
 BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(QGpgme)
 BuildRequires:  cmake(Qca-qt5)
@@ -78,7 +78,7 @@ BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 This package contains the messagelib library. It is used by KDE PIM to parse and
@@ -90,7 +90,7 @@ License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}
 Requires:       cmake(KF5Contacts)
 Requires:       cmake(KF5Libkleo)
-Requires:       cmake(KF5PimCommon)
+Requires:       cmake(KPim5PimCommon)
 Requires:       cmake(KPim5Akonadi)
 Requires:       cmake(KPim5AkonadiMime)
 Requires:       cmake(KPim5IdentityManagement)

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Aug 20 14:00:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:03:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Fix Do not change color from original HTML mail" also makes plain text mail not adhere to color scheme (kde#471857)
+
+-------------------------------------------------------------------
+Tue Aug  1 10:14:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * Fix references to message parts in encrypted messages (kde#469383)
+  * Look for matching subkey if no key was found for fingerprint (kde#469304)
+
+-------------------------------------------------------------------
 Tue Jul  4 10:20:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
