@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           itinerary
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
@@ -106,7 +106,7 @@ Itinerary and boarding pass management application.
 %check
 # one test fails on ppc64 (be). Upstream is investigating
 %ifnarch ppc64
-%ctest
+%ctest --exclude-regex "(itinerary-self-test)"
 %endif
 
 %find_lang %{name} --all-name

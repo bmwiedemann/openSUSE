@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:59:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- Changes since 23.07.90:
+  * Add 23.08.0 release notes
+  * Correctly clip weather forecasts at the end of the available data
+  * Include icons needed by Kirigami Addons
+  * Fix sunset/sunrise computation for weather icons
+  * Remove health certificate Android shortcut
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * Generalize the live data polling cooldown to all queries
+  * Test pkpass update failure behind a captive portal
+  * Don't poll pkpass updates in a continuous loop on errors
+  * Don't check in PkPassManager whether a pass should be updated
+  * Unify checks for updatable pkpasses
+  * Check for live updatable pkpass files once they are actually added
+  * Centralize QNetworkAccessManager creation
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
