@@ -16,11 +16,11 @@
 #
 
 
-%define kf5_version 5.104.0
+%define kf5_version 5.105.0
 %define libname libKPim5AkonadiNotes5
 %bcond_without released
 Name:           akonadi-notes
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Library to implement management of notes in Akonadi
 License:        LGPL-2.1-or-later
