@@ -16,11 +16,11 @@
 #
 
 
-%define kf5_version 5.91.0
-%define qt5_version 5.15.0
+%define kf5_version 5.105.0
+%define qt5_version 5.15.2
 %bcond_without released
 Name:           markdownpart
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KPart for rendering Markdown content
 License:        LGPL-2.1-or-later
