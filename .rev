@@ -104,4 +104,39 @@
     <comment></comment>
     <requestid>1064035</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b9891920c5b51ef13e61eabe3cc73e18</srcmd5>
+    <version>1.3.0+0</version>
+    <time>1693482352</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.0+0:
+  * shell: fix visibility check for rows and avoid empty searches
+  * shell: avoid activating panel from an empty search
+  * Set last-panel only for noncrashing panels
+  * network: Increase maximum MTU value from 10000 to 65536
+  * display: Removed the loop from the snapping function
+  * display: Try snapping all the displays after a config change
+  * sound: Prevent duplicate sound device entries
+  * common: hostname-entry: Update hostname only after apply is
+    clicked
+  * usage: Fix confirmation dialog when clearing history
+  * thunderbold: Don't cast CcBoltPanel when cancelled
+  * user-accounts: close CcAvatarChooser before showing
+    GtkFileChooser
+  * user-accounts: disallow commas in real name
+  * printers: Use CUPS dest API for printing test page
+    instead CUPS IPP API
+  * keyboard: country matches should not be shown under a
+    language name.
+  * display: Add 32:9 to known aspect ratios
+  * sound: Add a &quot;None&quot; option to the alert chooser
+  * sound: Update sounds directory mtime when changing alert
+  * sound: Don't flip the balance and fade sliders in RTL
+  * Rework cc-usage-panel.c to display dialog on history
+    clearance
+  * Update POT for the latest translatables
+  * Add support for switching the file manager
+</comment>
+    <requestid>1108119</requestid>
+  </revision>
 </revisionlist>
