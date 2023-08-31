@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 30 07:06:43 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Don't build the Dockerfile in OBS, it's for development only
+
+-------------------------------------------------------------------
 Mon Aug 14 11:56:07 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - Check in filelists instead of buildrequiring all non-busybox utils
