@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           pim-data-exporter
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Data exporter for KDE PIM applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -43,7 +43,6 @@ BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5TextAutoCorrection)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(KPim5Akonadi)
@@ -53,14 +52,14 @@ BuildRequires:  cmake(KPim5Libkdepim)
 BuildRequires:  cmake(KPim5MailCommon)
 BuildRequires:  cmake(KPim5MailTransport)
 BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KF5PimCommonAkonadi)
+BuildRequires:  cmake(KPim5PimCommonAkonadi)
 BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(KUserFeedback)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       kontact
 # It can only build on the same platforms as Qt Webengine
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 This package contains utlities needed by KDE PIM applications to export data
