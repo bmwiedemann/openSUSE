@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kcron
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Cron job configuration tool
 License:        GPL-2.0-or-later
@@ -32,6 +32,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5PrintSupport)
@@ -64,11 +65,14 @@ KCron allows you to change your cron jobs setup.
 %doc README
 %doc %lang(en) %{_kf5_htmldir}/en/kcontrol5/
 %dir %{_libexecdir}/kauth
+%dir %{_kf5_plugindir}/plasma
+%dir %{_kf5_plugindir}/plasma/kcms/
+%dir %{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/
+%{_kf5_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_cron.so
 %{_kf5_appstreamdir}/org.kde.kcron.metainfo.xml
+%{_kf5_applicationsdir}/kcm_cron.desktop
 %{_kf5_dbuspolicydir}/local.kcron.crontab.conf
 %{_kf5_debugdir}/kcron.categories
-%{_kf5_plugindir}/kcm_cron.so
-%{_kf5_servicesdir}/kcm_cron.desktop
 %{_kf5_sharedir}/dbus-1/system-services/local.kcron.crontab.service
 %{_kf5_sharedir}/polkit-1/actions/local.kcron.crontab.policy
 %{_libexecdir}/kauth/kcron_helper
