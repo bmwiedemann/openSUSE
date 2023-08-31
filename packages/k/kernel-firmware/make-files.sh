@@ -1,9 +1,8 @@
 #!/bin/sh
 #
-# Read WHENCE from stdin and install the compressed firmware files into DESTDIR.
-# The file list for each topic is created as files-xxx under the current dir.
+# Read WHENCE from stdin create files-xxx for each topic
 #
-# usage: install-split.sh [-v] topics.list DESTDIR < WHENCE
+# usage: make-files.sh [-v] topics.list DESTDIR < WHENCE
 # 
 
 verbose=:
@@ -28,7 +27,6 @@ fi
 
 make_dirs () {
     local f="$1"
-    mkdir -p $(dirname "$dest/$f")
     local d=$(dirname "$f")
     if [ "$d" != "." ]; then
 	while true; do
@@ -46,39 +44,18 @@ make_dirs () {
 copy_link () {
     local f="$1"
     local lf="$2"
-    local src
-    test -f "$dest/$f$cext" && return
-    if [ -z "$lf" ]; then
-	lf=$(readlink "$f")
+    local src="${f%/*}"
+    if [ "$src" = "$f" ]; then
 	src="$lf"
     else
-	src="${f%/*}"
-	if [ "$src" = "$f" ]; then
-	    src="$lf"
-	else
-	    src="$src/$lf"
-	fi
+	src="$src/$lf"
     fi
     make_dirs "$f"
     if [ -d "$dest/$src" ]; then
-	ln -sf "$lf" "$dest/$f"
 	echo "\"$fwdir/$f\"" >> files-$topic
-	$verbose "Link: $lf -> $f (directory) for topic $topic"
     else
-	ln -sf "$lf$cext" "$dest/$f$cext"
 	echo "\"$fwdir/$f$cext\"" >> files-$topic
-	$verbose "Link: $lf$cext -> $f$cext for topic $topic"
     fi
-}
-
-copy_file () {
-    local f="$1"
-    test -f "$dest/$f$cext" && return
-    make_dirs "$f"
-    install -c -m 0644 "$f" $(dirname "$dest/$f")
-    test -n "$do_compress" && xz -f -C crc32 --lzma2=dict=2MiB "$dest/$f"
-    echo "\"$fwdir/$f$cext\"" >> files-$topic
-    $verbose "Copy: $f$cext for topic $topic"
 }
 
 sub="xxx"
@@ -106,18 +83,19 @@ while read l; do
 		fi
 	    fi
 	    ;;
-	File:*)
+	File:*|RawFile:*)
 	    test "$topic" = "SKIP" && continue
 	    if [ -z "$topic" ]; then
 		echo "ERROR: no topic found for $l"
 		exit 1
 	    fi
 	    f=$(echo "$l" | sed -e's/^File: *//' -e's/"//g' -e's/\\//g')
-	    if [ -L "$f" ]; then
-		copy_link "$f"
-	    else
-		copy_file "$f"
-	    fi
+	    case "$f" in
+		*/README)
+		    continue;;
+	    esac
+	    make_dirs "$f"
+	    echo "\"$fwdir/$f$cext\"" >> files-$topic
 	    ;;
 	Link:*)
 	    test "$topic" = "SKIP" && continue

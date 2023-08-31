@@ -2899,6 +2899,14 @@ msm: of:N*T*Cqcom,sm6115-dpu
 msm: of:N*T*Cqcom,sm6115-dpuC*
 msm: of:N*T*Cqcom,sm6115-mdss
 msm: of:N*T*Cqcom,sm6115-mdssC*
+msm: of:N*T*Cqcom,sm6350-dpu
+msm: of:N*T*Cqcom,sm6350-dpuC*
+msm: of:N*T*Cqcom,sm6350-mdss
+msm: of:N*T*Cqcom,sm6350-mdssC*
+msm: of:N*T*Cqcom,sm6375-dpu
+msm: of:N*T*Cqcom,sm6375-dpuC*
+msm: of:N*T*Cqcom,sm6375-mdss
+msm: of:N*T*Cqcom,sm6375-mdssC*
 msm: of:N*T*Cqcom,sm8150-dpu
 msm: of:N*T*Cqcom,sm8150-dpuC*
 msm: of:N*T*Cqcom,sm8150-mdss

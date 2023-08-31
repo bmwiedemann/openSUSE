@@ -31,11 +31,7 @@ Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
-# Created with umask 022; cd /_tmp
-# After git clone https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
-# cd linux-firmware
-# git archive --format=tar --prefix=kernel-firmware-$version/ -v master ./ | xz -9 -M 4G --check=crc32 -T 4 > /tmp/kernel-firmware-$version.tar.xz
-#
+# Created via OSC service
 Source0:        kernel-firmware-%{version}.tar.xz
 Source1:        extrawhence
 Source2:        ast_dp501_fw.bin
@@ -43,10 +39,8 @@ Source8:        ql2600_fw.bin
 Source9:        ql2700_fw.bin
 Source10:       ql8300_fw.bin
 Source99:       kernel-firmware-rpmlintrc
-# temporary revert (bsc#1202152): taken from upstream commit 06acb465d80b
-Source100:      rtw8822c_fw.bin
 # install / build infrastructure
-Source1001:     install-split.sh
+Source1001:     make-files.sh
 Source1002:     list-license.sh
 Source1003:     get_supplements.sh
 Source1004:     topics.list
@@ -63,6 +57,9 @@ Source1014:     README.build
 # workarounds
 Source1100:     qcom-post
 Source1101:     uncompressed-post
+# workarounds
+Patch1:         copy-file-ignore-README.patch
+Patch2:         amd-ucode-rawfile.patch
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
@@ -125,36 +122,36 @@ all files that have been provided by kernel-firmware package.
 
 %prep
 %setup -q -n kernel-firmware-%{version}
+%patch1 -p1
+%patch2 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
-# temporary revert (bsc#1202152)
-install -c -m 0644 %{SOURCE100} rtw88/rtw8822c_fw.bin
 
 %build
 # nothing to do
 
 %install
 mkdir -p %{buildroot}%{_firmwaredir}
-%if "%{flavor}" != "compressed"
+%if "%{flavor}" == "uncompressed"
 sh ./copy-firmware.sh %{buildroot}%{_firmwaredir}
 %else
-sh %{_sourcedir}/install-split.sh -v %{_sourcedir}/topics.list %{buildroot} %{_firmwaredir} < WHENCE
+sh ./copy-firmware.sh -v --xz %{buildroot}%{_firmwaredir}
+sh %{_sourcedir}/make-files.sh -v %{_sourcedir}/topics.list %{buildroot} %{_firmwaredir} < WHENCE
 sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %endif
 %fdupes -s %{buildroot}
 
-%if "%{flavor}" != "compressed"
+%if "%{flavor}" == "uncompressed"
 @@POST@@
-
-@@POST@@ -n ucode-amd
 %else
 
 @@POST@@ all
+@@POST@@ -n ucode-amd
 @@SUBPKGPOSTS@@
 %endif
 
-%if "%{flavor}" != "compressed"
+%if "%{flavor}" == "uncompressed"
 %files
 %doc WHENCE README
 %license GPL-2 GPL-3 LICEN[CS]E.*
@@ -162,16 +159,15 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %exclude %{_firmwaredir}/amd-ucode
 %exclude %{_firmwaredir}/amd-ucode/*
 
+%else
+%files all
+%doc WHENCE README
+
 %files -n ucode-amd
 %doc amd-ucode/README
 %license LICENSE.amd-ucode
 %dir %{_firmwaredir}
 %{_firmwaredir}/amd-ucode
-%endif
-
-%if "%{flavor}" == "compressed"
-%files all
-%doc WHENCE README
 
 @@SUBPKGFILES@@
 %endif

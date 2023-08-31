@@ -127,7 +127,7 @@ btmtk_usb:	mediatek
 rp2:		serial
 go7007:		platform	go7007 saa7134-go7007 go7007-loader
 ccp:		platform
-microcode_amd:	SKIP
+microcode_amd:	ucode-amd
 mxu11x0:	serial		ti_usb_3410_5052
 mxuport:	serial
 cw1200:		network

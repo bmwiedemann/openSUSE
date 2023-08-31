@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Aug 29 15:09:31 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230829 (git commit 49f9e3479fb5):
+  * i915: Update MTL DMC to v2.16
+  * copy-firmware: Introduce 'RawFile' keyword
+  * copy-firmware: Support additional compressor options
+  * linux-firmware: Update firmware file for Intel Bluetooth AX203
+  * linux-firmware: Update firmware file for Intel Bluetooth AX203
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: update firmware for qat_4xxx devices
+  * linux-firmware: Update AMD SEV firmware
+  * amdgpu: update DMCUB to 0.0.181.0 for various AMDGPU ASICs
+  * rtw89: 8852b: update fw to v0.29.29.3
+  * rtw89: 8851b: update fw to v0.29.41.2
+  * i915: add GSC 102.0.0.1655 for MTL
+  * amdgpu: DMCUB updates for various AMDGPU asics
+- Switch to the compressed / split installation as default, make
+  uncompressed / raw package as a multibuild flavor, instead
+  as a preliminary work for dropping the big kernel-firmware
+  (bsc#1214789)
+- Use the standard copy-file.sh for split package installation, too
+  Another scirpt, make-files.sh, is provided for generating file lists
+- Ignore README in copy-file.sh:
+  copy-file-ignore-README.patch
+- Workaround for installing raw files for ucode-amd:
+  amd-ucode-rawfile.patch
+- Drop the obsolsted revert of rtw8822c_fw.bin
+- Update aliases from 6.5
+
+-------------------------------------------------------------------
 Fri Aug 18 14:04:53 UTC 2023 - tiwai@suse.com
 
 - Update to version 20230814 (git commit 0e048b061bde):
