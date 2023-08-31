@@ -16,10 +16,7 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
-%define skip_python38 1
-%{?!python_module:%define python_module() python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-pyproj
 Version:        3.6.0
 Release:        0
@@ -28,9 +25,11 @@ License:        SUSE-Public-Domain AND X11
 Group:          Development/Languages/Python
 URL:            https://github.com/pyproj4/pyproj
 Source:         https://files.pythonhosted.org/packages/source/p/pyproj/pyproj-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.28.4}
+BuildRequires:  %{python_module Cython >= 0.28.4 with %python-Cython < 3}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  proj
 BuildRequires:  proj-devel >= 8
@@ -74,10 +73,10 @@ where you may access the most up-to-date source.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pyproj
 %python_expand rm -rf  %{buildroot}%{$python_sitearch}/test
 %python_expand %fdupes %{buildroot}%{$python_sitearch}

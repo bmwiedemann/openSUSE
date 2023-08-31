@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 29 11:48:28 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Limit to Cython <3 gh#pyproj4/pyproj#1321
+- Use PEP517 macros instead of deprecated setup.py
+- 15.X: give it a chance with the SLE15 python module pythons
+  (would need more dependencies for it to build)
+
+-------------------------------------------------------------------
 Tue Jun 13 03:02:39 UTC 2023 - Libor Pechacek <lpechacek@gmx.com>
 
 - Update to 3.6.0
