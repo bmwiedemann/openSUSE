@@ -1,7 +1,0 @@
-<package name="xpp2" project="openSUSE:Factory">
-  <title>XML Pull Parser</title>
-  <description>XML Pull Parser 2 (XPP2) is a simple and fast incremental XML parser.
-NOTE: XPP2 is no longer developed and is on maintenance mode. All
-active development concentrates on its successor XPP3/MXP1</description>
-  <devel project="Java:packages" package="xpp2"/>
-</package>
