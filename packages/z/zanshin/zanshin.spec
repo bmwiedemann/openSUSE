@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           zanshin
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        TODO Application
 License:        GPL-2.0-only
@@ -37,10 +37,13 @@ BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KPim5Akonadi)
 BuildRequires:  cmake(KPim5AkonadiCalendar)
 BuildRequires:  cmake(KPim5KontactInterface)
+BuildRequires:  cmake(KPim5IdentityManagement)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+# It can only build on the same platforms as Qt Webengine
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 Zanshin Todo is an application for managing your day-to-day actions.
