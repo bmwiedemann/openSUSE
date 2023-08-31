@@ -19,7 +19,7 @@
 %bcond_without released
 %global sover 12
 Name:           kpmcore
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE Partition Manager core library
 License:        GPL-3.0-only
@@ -41,7 +41,7 @@ BuildRequires:  cmake(KF5CoreAddons) >= 5.73
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(PolkitQt5-1)
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
