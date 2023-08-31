@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ktorrent
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        KDE BitTorrent Client
 License:        GPL-2.0-or-later
@@ -65,7 +65,7 @@ BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(LibKWorkspace)
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Core) >= 5.14
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Script)
