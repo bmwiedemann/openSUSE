@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           knetwalk
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Puzzle game
 License:        GPL-2.0-or-later
