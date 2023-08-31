@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           libkdepim
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -34,11 +34,8 @@ BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5ItemViews)
-BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KPim5Akonadi)
