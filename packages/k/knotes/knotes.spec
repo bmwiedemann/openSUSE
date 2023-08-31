@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           knotes
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Popup Notes
 License:        GPL-2.0-or-later
@@ -61,7 +61,7 @@ BuildRequires:  cmake(KPim5GrantleeTheme)
 BuildRequires:  cmake(KPim5KontactInterface)
 BuildRequires:  cmake(KPim5Libkdepim)
 BuildRequires:  cmake(KPim5Mime)
-BuildRequires:  cmake(KF5PimCommon)
+BuildRequires:  cmake(KPim5PimCommon)
 BuildRequires:  cmake(KPim5TextEdit)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
