@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:59:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- Changes since 23.07.90:
+  * Fix crash when adding/removing suppression
+  * Use QFontMetrics::lineSpacing to calculate the line y offset (kde#473362)
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:27 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- Changes since 23.07.80:
+  * block session auto save in some more places
+  * File Browser plugin: make search string partial-matching (kde#472374)
+  * Fix diagnostics tab overlay
+  * check that blocking level is zero
+  * avoid that the session save timer messes up session saving (kde#470293)
+  * Add missing $ to fix installed translated documentation
+  * Add missing KI18n links
+  * handle tab deletion/creation
+  * diagnostics: Handle suppressions from multiple providers
+  * diagnostics: Refactor diagnostics removal
+  * Remove Designer's "." normaloff file data from icon properties in .ui files
+  * ensure we don't use m_quickOpen uninited
+  * remove deprecated Id
+  * ensure proper parent for dialog
+  * ensure proper parent for dialog
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:30 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Too many changes since 23.04.3, only listing bugfixes:
+  * lsp: always honor server when using Completion.textEdit.newText (kde#468130)
+  * Add open action to tabbar context menu (kde#471471)
+  * use word-completion-minimal-word-length as configured (kde#470494)
+  * Allow opening new tab in front of currently active tab optionally (kde#471225)
+  * Fix double drive letters on "Run Current Doc" (kde#469340)
+  * ensure sidebars are properly collapsed (kde#460160)
+  * Don't ask user if he wants to save modified document when deleting (kde#448861)
+  * Fix --version, --help, -h, -v not working (kde#468318)
+  * CompilerExplorer: Fix crash when minimizing (kde#468294)
+  * Fix preview for markdown files not loaded on mode change (kde#384972)
+  * Include markdownpart in flatpak builds (kde#466349)
+  * Fix asking to save untitled empty doc on close (kde#462347)
+  * Intoduce open links plugin (kde#93087)
+  * Konsole: Show error when konsole not found (kde#438308)
+  * Intoduce KateTextHintManager (kde#467322)
+  * Use internal diff view in KateMWonHDDialog (kde#441120)
+  * ensure projects view is focused (kde#465786)
+  * Allow opening multiple files from welcome view (kde#467097)
+  * Cleanup/improve MWModOnHDDialog (kde#464088)
+  * Search: Fix crash on clicking clear (kde#467255)
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
