@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Aug 20 13:59:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.0/
+- No code change since 23.07.90
+
+-------------------------------------------------------------------
+Mon Aug 14 08:02:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.90
+  * New feature release
+- No code change since 23.07.80
+
+-------------------------------------------------------------------
+Tue Aug  1 10:13:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.07.80
+  * New feature release
+- Changes since 23.04.3:
+  * Include <cstdint> where needed
+  * Fix build
+  * Fix tr() extraction warning
+  * Remove flatpak CI
+  * Added configurable backup location for .backup files (kde#470425)
+  * markdowneditor: Add support for code block
+  * Remove comment from json file
+  * Allow building against KF6
+  * Add packages in requirement list for debian/ubuntu to build ghostwriter
+  * Added checkbox to not open exported files on export if unselected.
+  * Apply i18n to percentage value
+  * kde neon ci tooloing requires a new line at the end of CMakeLists.txt
+  * Show unbreakable space  indicator
+  * Tidy up for KF6 transition, and add clazy/clang format support.
+  * Update changelong with new release version
+  * Fixes for toggling inline markup format
+  * Syntax highlighting and live spell check performance improvements
+  * Fix crash when currentHtmlExporter is null
+
+-------------------------------------------------------------------
 Tue Jul  4 10:19:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.3
