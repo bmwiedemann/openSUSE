@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kaddressbook
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Address book application to manage contacts
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -42,8 +42,7 @@ BuildRequires:  cmake(KPim5AkonadiSearch)
 BuildRequires:  cmake(KPim5GrantleeTheme)
 BuildRequires:  cmake(KPim5KontactInterface)
 BuildRequires:  cmake(KPim5Libkdepim)
-BuildRequires:  cmake(KF5PimCommonAkonadi)
-BuildRequires:  cmake(KPim5TextEdit)
+BuildRequires:  cmake(KPim5PimCommonAkonadi)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Test)
@@ -130,8 +129,6 @@ for KAddressbook.
 %files -n libKPim5AddressbookImportExport5-devel
 %dir %{_includedir}/KPim5
 %{_includedir}/KPim5/KAddressBookImportExport/
-%{_includedir}/KPim5/kaddressbookimportexport/
-%{_includedir}/KPim5/kaddressbookimportexport_version.h
 %{_kf5_cmakedir}/KPimAddressbookImportExport/
 %{_kf5_cmakedir}/KPim5AddressbookImportExport/
 %{_kf5_libdir}/libKPim5AddressbookImportExport.so
