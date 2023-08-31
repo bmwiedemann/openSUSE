@@ -127,4 +127,20 @@
     <comment>KDE release gear 23.04.3 (forwarded request 1097054 from krop)</comment>
     <requestid>1097405</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>23edb202cec2fe4059a4b7cff72df180</srcmd5>
+    <version>23.08.0</version>
+    <time>1693482323</time>
+    <user>anag+factory</user>
+    <comment>KDE Release Gear 23.08.0 (forwarded request 1105409 from krop)</comment>
+    <requestid>1105825</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>443d31858af92f96f0adc1b1d75c459f</srcmd5>
+    <version>23.08.0</version>
+    <time>1693570904</time>
+    <user>anag+factory</user>
+    <comment>- Add runtime dependency on kquickimageeditor-imports (boo#1214836)</comment>
+    <requestid>1108384</requestid>
+  </revision>
 </revisionlist>
