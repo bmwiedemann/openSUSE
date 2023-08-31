@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kontrast
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Contrast checker
 License:        GPL-3.0-or-later AND CC0-1.0
@@ -29,13 +29,20 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
+%if 0%{?suse_version} == 1500
+# gcc10 is not enough. Missing std::coroutine_handle
+BuildRequires:  gcc12-c++
+BuildRequires:  gcc12-PIE
+%endif
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(FutureSQL5)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(QCoro5Core)
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Qml)
@@ -54,6 +61,9 @@ used together.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} == 1500
+  export CXX=g++-12
+%endif
 %cmake_kf5 -d build
 %cmake_build
 
