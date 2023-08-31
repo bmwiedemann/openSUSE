@@ -1,7 +1,7 @@
 #
 # spec file for package python-cftime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# no numpy for Python 3.6
-%define skip_python36 1
 Name:           python-cftime
 Version:        1.6.2
 Release:        0
@@ -26,14 +24,16 @@ Summary:        Time-handling functionality from netcdf4-python
 License:        MIT
 URL:            https://github.com/Unidata/cftime
 Source:         https://files.pythonhosted.org/packages/source/c/cftime/cftime-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+#PATCH-FIX-UPSTREAM https://github.com/Unidata/cftime/pull/305 Set c_api_binop_methods Cython compiler directive to True
+Patch:          cython3.patch
+BuildRequires:  %{python_module Cython >= 0.29.20}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 18.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Cython
+Requires:       python-Cython >= 0.29.20
 Requires:       python-numpy
 %python_subpackages
 
@@ -42,7 +42,7 @@ Time-handling functionality from netcdf4-python.
 Was split out from netcfd4-python in 2016.
 
 %prep
-%setup -q -n cftime-%{version}
+%autosetup -p1 -n cftime-%{version}
 # do not require cov/xdist/etc
 rm setup.cfg
 

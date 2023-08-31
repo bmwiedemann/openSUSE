@@ -184,4 +184,12 @@
       wheel builds and uploads to pypi automatically when GH release created). PR #290.</comment>
     <requestid>1032181</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4e7c7bfa5fa5f21701855c21f6f9c352</srcmd5>
+    <version>1.6.2</version>
+    <time>1693482351</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108098</requestid>
+  </revision>
 </revisionlist>
