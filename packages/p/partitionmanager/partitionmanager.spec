@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           partitionmanager
-Version:        23.04.3
+Version:        23.08.0
 Release:        0
 Summary:        Easily manage disks, partitions and file systems on your KDE Desktop
 License:        GPL-3.0-or-later
@@ -49,7 +49,7 @@ BuildRequires:  cmake(KF5XmlGui)
 # Update for each minor change
 BuildRequires:  cmake(KPMcore) >= 21.12
 BuildRequires:  cmake(PolkitQt5-1)
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.2
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      partitionmanager5 < %{version}
