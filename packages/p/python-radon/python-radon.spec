@@ -1,7 +1,7 @@
 #
 # spec file for package python-radon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,26 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-radon
-Version:        5.1.0
+Version:        6.0.1
 Release:        0
 Summary:        Code Metrics in Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/rubik/radon
 Source:         https://files.pythonhosted.org/packages/source/r/radon/radon-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+# PATCH-FIX-UPSTREAM gh#rubik/radon#250
+Patch0:         add-scripts-to-pyproject.toml.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-colorama >= 0.4.1
-Requires:       python-future
 Requires:       python-mando >= 0.6
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module colorama >= 0.4.1}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module mando >= 0.6}
 BuildRequires:  %{python_module pytest >= 2.7}
 BuildRequires:  %{python_module pytest-mock}
@@ -53,17 +54,16 @@ Radon can compute:
 * Maintainability Index (the one used in Visual Studio)
 
 %prep
-%setup -q -n radon-%{version}
+%autosetup -p1 -n radon-%{version}
 # unpin mando
 sed -i -E 's/(mando.*),<0\.7/\1/' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
 %python_clone -a %{buildroot}%{_bindir}/radon
 
 %check
@@ -80,6 +80,6 @@ sed -i -E 's/(mando.*),<0\.7/\1/' setup.py
 %license LICENSE
 %python_alternative %{_bindir}/radon
 %{python_sitelib}/radon
-%{python_sitelib}/radon-%{version}*-info
+%{python_sitelib}/radon-%{version}.dist-info
 
 %changelog

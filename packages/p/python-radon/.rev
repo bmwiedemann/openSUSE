@@ -105,4 +105,22 @@
     <comment></comment>
     <requestid>1093041</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8c7ae2d77693c5ee528ed83f968729f7</srcmd5>
+    <version>6.0.1</version>
+    <time>1693570782</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.0.1:
+  * Prevent tomllib error when the `toml` module is not available
+  * Add support for `match` pattern in Python 3.10+, by @DolajoCZ: #227
+  * Fix typo in Markdown export, reported by @huornlmj: #231
+  * Remove unnecessary &quot;future&quot; dependency, by @mgorny: #234
+  * Add `pyproject.toml` support, by @ajslater: #236
+  * Allow Mando v0.7.1, by @ajslater: #237
+  * Fix HCHarvester JSON results format, by @benabel: #240
+- Use pyproject macros due to the switch to poetry.
+- Add patch add-scripts-to-pyproject.toml.patch, make sure the CLI tool
+  is built.</comment>
+    <requestid>1108364</requestid>
+  </revision>
 </revisionlist>

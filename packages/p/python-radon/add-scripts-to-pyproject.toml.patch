@@ -1,0 +1,25 @@
+From d88d9f5651aab064b5535e3b33d923771dcceeea Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 1 Sep 2023 14:37:06 +1000
+Subject: [PATCH] Add radon CLI script to pyproject.toml
+
+The pyproject.toml is missing the tool.poetry.scripts section, which
+means that builds that rely only on pyproject.toml will not install it.
+---
+ pyproject.toml | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 0e869cf..c25f1bd 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -26,6 +26,9 @@ argparse = "*"
+ nbformat = "*"
+ tox = "^4.4.7"
+ 
++[tool.poetry.scripts]
++radon = "radon:main"
++
+ [build-system]
+ requires = ["poetry-core"]
+ build-backend = "poetry.core.masonry.api"
