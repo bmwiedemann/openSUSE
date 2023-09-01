@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Aug 24 13:21:39 UTC 2023 - pgajdos@suse.com
+
+- version update to 3.1.11
+  ## Version 3.1.11 (August 13, 2023)
+  Patch release that fixes a build failure with `-march=x86-64-v3`
+  * Initialize `regs[]` to 0 in `check_for_x86_simd`
+  * Fix CPUID detection with `-march=x86-64-v3`
+  ## Version 3.1.10 (August 2, 2023)
+  Patch release that addresses miscellaneous build issues, test
+  failures, and performance regressions, as well as:
+  * OSS-fuzz [59457](https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=59457)
+   Heap-buffer-overflow in `LossyDctDecoder_execute`
+  * Readdress #1456: disallow NaNs in `testOptimizedInterleavePatterns`
+  * Revert pre-computed values
+  * Fix handling for corrupt number of DC components
+  * Add `OPENEXR_MISSING_ARM_VLD1` workaround to `internal_dwa_simd.h`
+  * Fix Huffman performance regression on Linux/clang
+  * Fix range check in dwa compressor
+  * Fix build with i386 and musl libc
+  * Fix the code contains unhandled character
+  * Fix cpu detection of sse2 on non-64 x86
+  * Fix the code contains unhandled character
+  * Fix gcc-11 warnings: signed/unsigned integer comparison, unused variables
+  * Fix macOS and Windows build failures when threading is disabled
+  * Fix build error on win_arm64
+- deleted patches
+  - 1488.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Jul 18 08:08:13 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix regression on non-SSE architectures 

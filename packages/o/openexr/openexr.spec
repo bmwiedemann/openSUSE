@@ -22,7 +22,7 @@
 %define sonum 30
 %global so_suffix -3_1
 Name:           openexr
-Version:        3.1.9
+Version:        3.1.11
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause
@@ -30,8 +30,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.openexr.com/
 Source0:        https://github.com/openexr/openexr/archive/v%{version}.tar.gz
 Source2:        baselibs.conf
-# PATCH-FIX-UPSTREAM - https://github.com/AcademySoftwareFoundation/openexr/issues/1460
-Patch0:         1488.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++

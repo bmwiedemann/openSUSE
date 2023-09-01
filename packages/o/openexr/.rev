@@ -838,4 +838,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
   above fixes the issue for all targets, except aarch64 (forwarded request 1099245 from Guillaume_G)</comment>
     <requestid>1099246</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>33b0ec464863d8cdae0d21814090d076</srcmd5>
+    <version>3.1.11</version>
+    <time>1693570750</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1108302</requestid>
+  </revision>
 </revisionlist>
