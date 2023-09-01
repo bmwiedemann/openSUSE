@@ -10,8 +10,9 @@ Wed Aug  2 18:25:12 UTC 2023 - Michael Gorse <mgorse@suse.com>
 -------------------------------------------------------------------
 Fri Jul 21 20:49:06 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 2.40.4:
+- Update to version 2.40.4 (boo#1213379):
   + Fix a bug in JavaScript reading variable arguments in a call.
+  + Security fixes: CVE-2023-37450.
 
 -------------------------------------------------------------------
 Wed Jun 28 16:41:25 UTC 2023 - Michael Gorse <mgorse@suse.com>
@@ -108,7 +109,7 @@ Tue Mar 21 08:17:44 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Fri Mar 17 19:06:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 2.40.0:
+- Update to version 2.40.0 (boo#1213581):
   + New GTK4 API is now stable.
   + Use ANGLE for WebGL implementation and enable WebGL2.
   + Prefer EGL over X11, intead of GLX, where available.
@@ -124,7 +125,7 @@ Fri Mar 17 19:06:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix large memory allocation when uploading content.
 - Add regression-fix.patch: [GLib] Broke
   WebKitUserContentManager::script-message-received
-  + Security fixes: CVE-2023-32435.
+  + Security fixes: CVE-2023-32393, CVE-2023-32435.
 
 -------------------------------------------------------------------
 Wed Mar  8 16:18:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
