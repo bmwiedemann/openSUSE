@@ -41,6 +41,8 @@ URL:            https://opencolorio.org/
 Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gcc12_fix.patch asterios.dramis@gmail.com -- Fix compilation with GCC12
 Patch0:         gcc12_fix.patch
+# PATCH-FIX-OPENSUSE 0001-Fix-detection-of-yaml-cpp-0.8.patch -- temporary solution to detect yaml-cpp 0.8
+Patch1:         0001-Fix-detection-of-yaml-cpp-0.8.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -124,8 +126,7 @@ Obsoletes:      python-OpenColorIO < %{version}
 This package contains python bindings for OpenColorIO.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{pkg_name}-%{version}
 
 # Fix library install location
 sed -i 's|DESTINATION lib|DESTINATION %{_lib}|' src/OpenColorIO/CMakeLists.txt
