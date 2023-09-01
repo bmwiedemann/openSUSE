@@ -239,4 +239,12 @@ Hope everyone find this sattisfactory now.</comment>
     <comment>Avoid building with OpenJ9 to prevent build cycle</comment>
     <requestid>767559</requestid>
   </revision>
+  <revision rev="34" vrev="37">
+    <srcmd5>ad65b9f8c753029288fec5cdc1f700ba</srcmd5>
+    <version>1.2</version>
+    <time>1693570722</time>
+    <user>anag+factory</user>
+    <comment>Remove bogus dependency on avalon-logkit</comment>
+    <requestid>1108211</requestid>
+  </revision>
 </revisionlist>

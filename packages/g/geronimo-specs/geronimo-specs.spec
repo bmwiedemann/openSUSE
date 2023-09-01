@@ -1,7 +1,7 @@
 #
 # spec file for package geronimo-specs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Geronimo J2EE server J2EE specifications
 License:        Apache-2.0
 Group:          Development/Languages/Java
-URL:            http://geronimo.apache.org
+URL:            https://geronimo.apache.org
 Source0:        %{name}-%{version}-src.tar.bz2
 # STEPS TO CREATE THE SOURCE FILE
 # mkdir geronimo-specs-1.2
@@ -76,11 +76,11 @@ Source1001:     undot.py
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit >= 3.8.1
 BuildConflicts: java-devel >= 11
-BuildConflicts: java-headless >= 11
 BuildConflicts: java-devel-openj9
+BuildConflicts: java-headless >= 11
 BuildConflicts: java-headless-openj9
 BuildArch:      noarch
 
@@ -682,11 +682,6 @@ cp LICENSE.txt etc
 mkdir external_repo
 ln -s %{_javadir} external_repo/JPP
 cp %{SOURCE1000} build.xml
-for i in */pom.xml; do
-  %pom_remove_parent ${i}
-  %pom_xpath_inject "pom:project" "<groupId>org.apache.geronimo.specs</groupId>" ${i}
-done
-%pom_add_dep logkit:logkit:1.2.2 geronimo-spec-corba-2.3
 %pom_xpath_set pom:project/pom:version 1.0 geronimo-spec-commonj
 %pom_xpath_set pom:project/pom:version 1.0 geronimo-spec-corba
 %pom_xpath_set pom:project/pom:version 1.1 geronimo-spec-corba-2.3
@@ -706,238 +701,238 @@ install -d -m 755 %{buildroot}%{_javadir}
 install -m 0644 \
   geronimo-activation_1.0.2_spec-1.2/target/geronimo-activation_1.0.2_spec-1.2.jar \
   %{buildroot}%{_javadir}/geronimo-jaf-1.0.2-api.jar
-install -m 0644 geronimo-activation_1.0.2_spec-1.2/pom.xml \
+%{mvn_install_pom} geronimo-activation_1.0.2_spec-1.2/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-jaf-1.0.2-api.pom
 %add_maven_depmap JPP-geronimo-jaf-1.0.2-api.pom geronimo-jaf-1.0.2-api.jar -f jaf-1.0.2-api
 
 install -m 0644 \
   geronimo-activation_1.1_spec-1.0/target/geronimo-activation_1.1_spec-1.0.jar \
   %{buildroot}%{_javadir}/geronimo-jaf-1.1-api.jar
-install -m 0644 geronimo-activation_1.1_spec-1.0/pom.xml \
+%{mvn_install_pom} geronimo-activation_1.1_spec-1.0/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-jaf-1.1-api.pom
 %add_maven_depmap JPP-geronimo-jaf-1.1-api.pom geronimo-jaf-1.1-api.jar -f jaf-1.1-api
 
 install -m 0644 \
   geronimo-annotation_1.0_spec-1.1.0/target/geronimo-annotation_1.0_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-annotation-1.0-api.jar
-install -m 0644 geronimo-annotation_1.0_spec-1.1.0/pom.xml \
+%{mvn_install_pom} geronimo-annotation_1.0_spec-1.1.0/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-annotation-1.0-api.pom
 %add_maven_depmap JPP-geronimo-annotation-1.0-api.pom geronimo-annotation-1.0-api.jar -a "javax.annotation:jsr250-api,org.eclipse.jetty.orbit:javax.annotation" -f annotation-1.0-api
 
 install -m 0644 \
   geronimo-spec-corba-2.3/target/geronimo-corba_2.3_spec-null.jar \
   %{buildroot}%{_javadir}/geronimo-corba-2.3-apis.jar
-install -m 0644 geronimo-spec-corba-2.3/pom.xml \
+%{mvn_install_pom} geronimo-spec-corba-2.3/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-corba-2.3-apis.pom
 %add_maven_depmap JPP-geronimo-corba-2.3-apis.pom geronimo-corba-2.3-apis.jar -f corba-2.3-apis
 
 install -m 0644 \
   geronimo-spec-corba/target/geronimo-spec-corba-null.jar \
   %{buildroot}%{_javadir}/geronimo-corba-1.0-apis.jar
-install -m 0644 geronimo-spec-corba/pom.xml \
+%{mvn_install_pom} geronimo-spec-corba/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-corba-1.0-apis.pom
 %add_maven_depmap JPP-geronimo-corba-1.0-apis.pom geronimo-corba-1.0-apis.jar -f corba-1.0-apis
 
 install -m 0644 \
   geronimo-ejb_2.1_spec-1.1/target/geronimo-ejb_2.1_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-ejb-2.1-api.jar
-install -m 0644 geronimo-ejb_2.1_spec-1.1/pom.xml \
+%{mvn_install_pom} geronimo-ejb_2.1_spec-1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-ejb-2.1-api.pom
 %add_maven_depmap JPP-geronimo-ejb-2.1-api.pom geronimo-ejb-2.1-api.jar -f ejb-2.1-api
 
 install -m 0644 \
   geronimo-ejb_3.0_spec-1.0/target/geronimo-ejb_3.0_spec-1.0.jar \
   %{buildroot}%{_javadir}/geronimo-ejb-3.0-api.jar
-install -m 0644 geronimo-ejb_3.0_spec-1.0/pom.xml \
+%{mvn_install_pom} geronimo-ejb_3.0_spec-1.0/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-ejb-3.0-api.pom
 %add_maven_depmap JPP-geronimo-ejb-3.0-api.pom geronimo-ejb-3.0-api.jar -f ejb-3.0-api
 
 install -m 0644 \
   geronimo-el_1.0_spec-1.0/target/geronimo-el_1.0_spec-1.0.jar \
   %{buildroot}%{_javadir}/geronimo-el-1.0-api.jar
-install -m 0644 geronimo-el_1.0_spec-1.0/pom.xml \
+%{mvn_install_pom} geronimo-el_1.0_spec-1.0/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-el-1.0-api.pom
 %add_maven_depmap JPP-geronimo-el-1.0-api.pom geronimo-el-1.0-api.jar -f el-1.0-api
 
 install -m 0644 \
   geronimo-interceptor_3.0_spec-1.0/target/geronimo-interceptor_3.0_spec-1.0.jar \
   %{buildroot}%{_javadir}/geronimo-interceptor-3.0-api.jar
-install -m 0644 geronimo-interceptor_3.0_spec-1.0/pom.xml \
+%{mvn_install_pom} geronimo-interceptor_3.0_spec-1.0/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-interceptor-3.0-api.pom
 %add_maven_depmap JPP-geronimo-interceptor-3.0-api.pom geronimo-interceptor-3.0-api.jar -f interceptor-3.0-api
 
 install -m 0644 \
   geronimo-j2ee-connector_1.5_spec-1.1.1/target/geronimo-j2ee-connector_1.5_spec-1.1.1.jar \
   %{buildroot}%{_javadir}/geronimo-j2ee-connector-1.5-api.jar
-install -m 0644 geronimo-j2ee-connector_1.5_spec-1.1.1/pom.xml \
+%{mvn_install_pom} geronimo-j2ee-connector_1.5_spec-1.1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-j2ee-connector-1.5-api.pom
 %add_maven_depmap JPP-geronimo-j2ee-connector-1.5-api.pom geronimo-j2ee-connector-1.5-api.jar -f j2ee-connector-1.5-api
 
 install -m 0644 \
   geronimo-j2ee-deployment_1.1_spec-1.1/target/geronimo-j2ee-deployment_1.1_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-j2ee-deployment-1.1-api.jar
-install -m 0644 geronimo-j2ee-deployment_1.1_spec-1.1/pom.xml \
+%{mvn_install_pom} geronimo-j2ee-deployment_1.1_spec-1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-j2ee-deployment-1.1-api.pom
 %add_maven_depmap JPP-geronimo-j2ee-deployment-1.1-api.pom geronimo-j2ee-deployment-1.1-api.jar -f j2ee-deployment-1.1-api
 
 install -m 0644 \
   geronimo-javaee-deployment_1.1MR3_spec-1.0/target/geronimo-javaee-deployment_1.1MR3_spec-1.0.jar \
   %{buildroot}%{_javadir}/geronimo-javaee-deployment-1.1-api.jar
-install -m 0644 geronimo-javaee-deployment_1.1MR3_spec-1.0/pom.xml \
+%{mvn_install_pom} geronimo-javaee-deployment_1.1MR3_spec-1.0/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-javaee-deployment-1.1-api.pom
 %add_maven_depmap JPP-geronimo-javaee-deployment-1.1-api.pom geronimo-javaee-deployment-1.1-api.jar -f javaee-deployment-1.1-api
 
 install -m 0644 \
   geronimo-j2ee-jacc_1.0_spec-1.1/target/geronimo-j2ee-jacc_1.0_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-jacc-1.0-api.jar
-install -m 0644 geronimo-j2ee-jacc_1.0_spec-1.1/pom.xml \
+%{mvn_install_pom} geronimo-j2ee-jacc_1.0_spec-1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-jacc-1.0-api.pom
 %add_maven_depmap JPP-geronimo-jacc-1.0-api.pom geronimo-jacc-1.0-api.jar -f jacc-1.0-api
 
 install -m 0644 \
   geronimo-jacc_1.1_spec-1.0/target/geronimo-jacc_1.1_spec-1.0.jar \
   %{buildroot}%{_javadir}/geronimo-jacc-1.1-api.jar
-install -m 0644 geronimo-jacc_1.1_spec-1.0/pom.xml \
+%{mvn_install_pom} geronimo-jacc_1.1_spec-1.0/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-jacc-1.1-api.pom
 %add_maven_depmap JPP-geronimo-jacc-1.1-api.pom geronimo-jacc-1.1-api.jar -f jacc-1.1-api
 
 install -m 0644 \
   geronimo-j2ee-management_1.0_spec-1.1/target/geronimo-j2ee-management_1.0_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-j2ee-management-1.0-api.jar
-install -m 0644 geronimo-j2ee-management_1.0_spec-1.1/pom.xml \
+%{mvn_install_pom} geronimo-j2ee-management_1.0_spec-1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-j2ee-management-1.0-api.pom
 %add_maven_depmap JPP-geronimo-j2ee-management-1.0-api.pom geronimo-j2ee-management-1.0-api.jar -f j2ee-management-1.0-api
 
 install -m 0644 \
   geronimo-j2ee-management_1.1_spec-1.0/target/geronimo-j2ee-management_1.1_spec-1.0.jar \
   %{buildroot}%{_javadir}/geronimo-j2ee-management-1.1-api.jar
-install -m 0644 geronimo-j2ee-management_1.1_spec-1.0/pom.xml \
+%{mvn_install_pom} geronimo-j2ee-management_1.1_spec-1.0/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-j2ee-management-1.1-api.pom
 %add_maven_depmap JPP-geronimo-j2ee-management-1.1-api.pom geronimo-j2ee-management-1.1-api.jar -f j2ee-management-1.1-api
 
 install -m 0644 \
   geronimo-javamail_1.3.1_spec-1.3/target/geronimo-javamail_1.3.1_spec-1.3.jar \
   %{buildroot}%{_javadir}/geronimo-javamail-1.3.1-api.jar
-install -m 0644 geronimo-javamail_1.3.1_spec-1.3/pom.xml \
+%{mvn_install_pom} geronimo-javamail_1.3.1_spec-1.3/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-javamail-1.3.1-api.pom
 %add_maven_depmap JPP-geronimo-javamail-1.3.1-api.pom geronimo-javamail-1.3.1-api.jar -f javamail-1.3.1-api
 
 install -m 0644 \
   geronimo-javamail_1.4_spec-1.1/target/geronimo-javamail_1.4_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-javamail-1.4-api.jar
-install -m 0644 geronimo-javamail_1.4_spec-1.1/pom.xml \
+%{mvn_install_pom} geronimo-javamail_1.4_spec-1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-javamail-1.4-api.pom
 %add_maven_depmap JPP-geronimo-javamail-1.4-api.pom geronimo-javamail-1.4-api.jar -f javamail-1.4-api
 
 install -m 0644 \
   geronimo-jaxr_1.0_spec-1.1/target/geronimo-jaxr_1.0_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-jaxr-1.0-api.jar
-install -m 0644 geronimo-jaxr_1.0_spec-1.1/pom.xml \
+%{mvn_install_pom} geronimo-jaxr_1.0_spec-1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-jaxr-1.0-api.pom
 %add_maven_depmap JPP-geronimo-jaxr-1.0-api.pom geronimo-jaxr-1.0-api.jar -f jaxr-1.0-api
 
 install -m 0644 \
   geronimo-jaxrpc_1.1_spec-1.1/target/geronimo-jaxrpc_1.1_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-jaxrpc-1.1-api.jar
-install -m 0644 geronimo-jaxrpc_1.1_spec-1.1/pom.xml \
+%{mvn_install_pom} geronimo-jaxrpc_1.1_spec-1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-jaxrpc-1.1-api.pom
 %add_maven_depmap JPP-geronimo-jaxrpc-1.1-api.pom geronimo-jaxrpc-1.1-api.jar -f jaxrpc-1.1-api
 
 install -m 0644 \
   geronimo-spec-j2ee/target/geronimo-j2ee_1.4_spec-1.2-jar-with-dependencies.jar \
   %{buildroot}%{_javadir}/geronimo-j2ee-1.4-apis.jar
-install -m 0644 geronimo-spec-j2ee/pom.xml \
+%{mvn_install_pom} geronimo-spec-j2ee/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-j2ee-1.4-apis.pom
 %add_maven_depmap JPP-geronimo-j2ee-1.4-apis.pom geronimo-j2ee-1.4-apis.jar -f j2ee-1.4-apis
 
 install -m 0644 \
   geronimo-jms_1.1_spec-1.1/target/geronimo-jms_1.1_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-jms-1.1-api.jar
-install -m 0644 geronimo-jms_1.1_spec-1.1/pom.xml \
+%{mvn_install_pom} geronimo-jms_1.1_spec-1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-jms-1.1-api.pom
 %add_maven_depmap JPP-geronimo-jms-1.1-api.pom geronimo-jms-1.1-api.jar -f jms-1.1-api -a javax.jms:jms
 
 install -m 0644 \
   geronimo-jpa_3.0_spec-1.1.0/target/geronimo-jpa_3.0_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-jpa-3.0-api.jar
-install -m 0644 geronimo-jpa_3.0_spec-1.1.0/pom.xml \
+%{mvn_install_pom} geronimo-jpa_3.0_spec-1.1.0/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-jpa-3.0-api.pom
 %add_maven_depmap JPP-geronimo-jpa-3.0-api.pom geronimo-jpa-3.0-api.jar -f jpa-3.0-api -a javax.persistence:persistence-api
 
 install -m 0644 \
   geronimo-jsp_2.0_spec-1.1/target/geronimo-jsp_2.0_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-jsp-2.0-api.jar
-install -m 0644 geronimo-jsp_2.0_spec-1.1/pom.xml \
+%{mvn_install_pom} geronimo-jsp_2.0_spec-1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-jsp-2.0-api.pom
 %add_maven_depmap JPP-geronimo-jsp-2.0-api.pom geronimo-jsp-2.0-api.jar -f jsp-2.0-api
 
 install -m 0644 \
   geronimo-jsp_2.1_spec-1.0/target/geronimo-jsp_2.1_spec-1.0.jar \
   %{buildroot}%{_javadir}/geronimo-jsp-2.1-api.jar
-install -m 0644 geronimo-jsp_2.1_spec-1.0/pom.xml \
+%{mvn_install_pom} geronimo-jsp_2.1_spec-1.0/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-jsp-2.1-api.pom
 %add_maven_depmap JPP-geronimo-jsp-2.1-api.pom geronimo-jsp-2.1-api.jar -f jsp-2.1-api
 
 install -m 0644 \
   geronimo-jta_1.0.1B_spec-1.1.1/target/geronimo-jta_1.0.1B_spec-1.1.1.jar \
   %{buildroot}%{_javadir}/geronimo-jta-1.0.1B-api.jar
-install -m 0644 geronimo-jta_1.0.1B_spec-1.1.1/pom.xml \
+%{mvn_install_pom} geronimo-jta_1.0.1B_spec-1.1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-jta-1.0.1B-api.pom
 %add_maven_depmap JPP-geronimo-jta-1.0.1B-api.pom geronimo-jta-1.0.1B-api.jar -f jta-1.0.1B-api
 
 install -m 0644 \
   geronimo-jta_1.1_spec-1.1.0/target/geronimo-jta_1.1_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-jta-1.1-api.jar
-install -m 0644 geronimo-jta_1.1_spec-1.1.0/pom.xml \
+%{mvn_install_pom} geronimo-jta_1.1_spec-1.1.0/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-jta-1.1-api.pom
 %add_maven_depmap JPP-geronimo-jta-1.1-api.pom geronimo-jta-1.1-api.jar -f jta-1.1-api -a "javax.transaction:jta,org.eclipse.jetty.orbit:javax.transaction"
 
 install -m 0644 \
   geronimo-qname_1.1_spec-1.1/target/geronimo-qname_1.1_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-qname-1.1-api.jar
-install -m 0644 geronimo-qname_1.1_spec-1.1/pom.xml \
+%{mvn_install_pom} geronimo-qname_1.1_spec-1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-qname-1.1-api.pom
 %add_maven_depmap JPP-geronimo-qname-1.1-api.pom geronimo-qname-1.1-api.jar -f qname-1.1-api
 
 install -m 0644 \
   geronimo-saaj_1.1_spec-1.1/target/geronimo-saaj_1.1_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-saaj-1.1-api.jar
-install -m 0644 geronimo-saaj_1.1_spec-1.1/pom.xml \
+%{mvn_install_pom} geronimo-saaj_1.1_spec-1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-saaj-1.1-api.pom
 %add_maven_depmap JPP-geronimo-saaj-1.1-api.pom geronimo-saaj-1.1-api.jar -f saaj-1.1-api
 
 install -m 0644 \
   geronimo-servlet_2.4_spec-1.1.1/target/geronimo-servlet_2.4_spec-1.1.1.jar \
   %{buildroot}%{_javadir}/geronimo-servlet-2.4-api.jar
-install -m 0644 geronimo-servlet_2.4_spec-1.1.1/pom.xml \
+%{mvn_install_pom} geronimo-servlet_2.4_spec-1.1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-servlet-2.4-api.pom
 %add_maven_depmap JPP-geronimo-servlet-2.4-api.pom geronimo-servlet-2.4-api.jar -f servlet-2.4-api
 
 install -m 0644 \
   geronimo-servlet_2.5_spec-1.1/target/geronimo-servlet_2.5_spec-1.1.jar \
   %{buildroot}%{_javadir}/geronimo-servlet-2.5-api.jar
-install -m 0644 geronimo-servlet_2.5_spec-1.1/pom.xml \
+%{mvn_install_pom} geronimo-servlet_2.5_spec-1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-servlet-2.5-api.pom
 %add_maven_depmap JPP-geronimo-servlet-2.5-api.pom geronimo-servlet-2.5-api.jar -f servlet-2.5-api
 
 install -m 0644 \
   geronimo-stax-api_1.0_spec-1.0/target/geronimo-stax-api_1.0_spec-1.0.jar \
   %{buildroot}%{_javadir}/geronimo-stax-1.0-api.jar
-install -m 0644 geronimo-stax-api_1.0_spec-1.0/pom.xml \
+%{mvn_install_pom} geronimo-stax-api_1.0_spec-1.0/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-stax-1.0-api.pom
 %add_maven_depmap JPP-geronimo-stax-1.0-api.pom geronimo-stax-1.0-api.jar -f stax-1.0-api
 
 install -m 0644 \
   geronimo-ws-metadata_2.0_spec-1.1.1/target/geronimo-ws-metadata_2.0_spec-1.1.1.jar \
   %{buildroot}%{_javadir}/geronimo-ws-metadata-2.0-api.jar
-install -m 0644 geronimo-ws-metadata_2.0_spec-1.1.1/pom.xml \
+%{mvn_install_pom} geronimo-ws-metadata_2.0_spec-1.1.1/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-ws-metadata-2.0-api.pom
 %add_maven_depmap JPP-geronimo-ws-metadata-2.0-api.pom geronimo-ws-metadata-2.0-api.jar -f ws-metadata-2.0-api
 
 install -m 0644 \
   geronimo-spec-commonj/target/geronimo-commonj_1.1_spec-null.jar \
   %{buildroot}%{_javadir}/geronimo-commonj-1.1-apis.jar
-install -m 0644 geronimo-spec-commonj/pom.xml \
+%{mvn_install_pom} geronimo-spec-commonj/pom.xml \
   %{buildroot}/%{_mavenpomdir}/JPP-geronimo-commonj-1.1-apis.pom
 %add_maven_depmap JPP-geronimo-commonj-1.1-apis.pom geronimo-commonj-1.1-apis.jar -f commonj-1.1-apis
 

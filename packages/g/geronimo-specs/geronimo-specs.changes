@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 31 07:44:42 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove bogus dependency on avalon-logkit that our spec is adding
+- Clean the spec file and use the new %%mvn_install_pom macro
+
+-------------------------------------------------------------------
 Mon Jan 27 06:32:39 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - On supported platforms, avoid building with OpenJ9, in order to
