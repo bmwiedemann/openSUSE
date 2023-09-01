@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>943069</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>dc36d7fda2f2abc69150cf5444ceb16d</srcmd5>
+    <version>3.12.0</version>
+    <time>1693570725</time>
+    <user>anag+factory</user>
+    <comment>cleanup and break potential cycle</comment>
+    <requestid>1108217</requestid>
+  </revision>
 </revisionlist>

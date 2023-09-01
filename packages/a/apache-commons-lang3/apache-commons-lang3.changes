@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 30 20:57:36 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Break cycle with the new bcel
+- Removed patch:
+  * apache-commons-lang3-junit-bom.patch
+    + not needed since we install the pom file using the new
+      %%mvn_install_pom macro which sanitizes the pom file to the
+      bare runtime dependencies.
+
+-------------------------------------------------------------------
 Wed Dec 29 15:18:48 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Remove the junit bom dependency for now as it breaks the build of

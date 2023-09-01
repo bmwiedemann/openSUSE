@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,11 +28,13 @@ URL:            https://commons.apache.org/proper/commons-lang/
 Source0:        https://dlcdn.apache.org/commons/lang/source/%{short_name}-%{version}-src.tar.gz
 Source1:        build.xml
 Source2:        default.properties
-Patch0:         apache-commons-lang3-junit-bom.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
+#!BuildIgnore:  bcel
+#!BuildIgnore:  xalan-j2
+#!BuildIgnore:  xerces-j2
 Provides:       %{short_name} = %{version}-%{release}
 BuildArch:      noarch
 
@@ -58,19 +60,10 @@ Javadoc for %{name}.
 
 %prep
 %setup -q -n %{short_name}-%{version}-src
-%patch0 -p1
 
 cp %{SOURCE1} .
 cp %{SOURCE2} .
 sed -i 's/\r//' *.txt
-
-# Not needed since we don't build with maven
-%pom_remove_parent
-%pom_xpath_inject "pom:project" "<groupId>org.apache.commons</groupId>"
-%pom_xpath_remove pom:project/pom:reporting
-%pom_xpath_remove pom:project/pom:build
-%pom_xpath_remove pom:project/pom:profiles
-%pom_remove_dep :::test
 
 %build
 export OPT_JAR_LIST=`cat %{_sysconfdir}/ant.d/junit`
@@ -86,9 +79,10 @@ ant \
 install -dm 755 %{buildroot}%{_javadir}
 install -m 0644  target/%{short_name}.jar %{buildroot}%{_javadir}/%{name}.jar
 ln -sf %{name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
+
 # pom
 install -dm 755 %{buildroot}%{_mavenpomdir}
-install -m 0644  pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom}  pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar
 
 # javadoc
