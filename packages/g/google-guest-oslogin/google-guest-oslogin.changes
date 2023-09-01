@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 31 11:46:10 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230823.00
+  * selinux: Add sshd_key_t type enforcement to trusted user ca (#113)
+- from version 20230822.00
+  * sshca: Add tests with fingerprint and multiple extensions (#111)
+- from version 20230821.01
+  * sshca: Support method token and handle multi line (#109)
+- from version 20230821.00
+  * Update owners (#110)
+
+-------------------------------------------------------------------
 Tue Aug 15 13:53:44 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230808.00

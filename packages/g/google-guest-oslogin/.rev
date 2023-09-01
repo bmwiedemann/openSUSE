@@ -190,4 +190,19 @@
   * byoid: extract and apply the ca fingerprint to policy call (#106) (forwarded request 1104059 from glaubitz)</comment>
     <requestid>1104089</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>aa83a15542fbc835f81e4d0ad4287f8b</srcmd5>
+    <version>20230823.00</version>
+    <time>1693570763</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20230823.00
+  * selinux: Add sshd_key_t type enforcement to trusted user ca (#113)
+- from version 20230822.00
+  * sshca: Add tests with fingerprint and multiple extensions (#111)
+- from version 20230821.01
+  * sshca: Support method token and handle multi line (#109)
+- from version 20230821.00
+  * Update owners (#110) (forwarded request 1108273 from glaubitz)</comment>
+    <requestid>1108277</requestid>
+  </revision>
 </revisionlist>
