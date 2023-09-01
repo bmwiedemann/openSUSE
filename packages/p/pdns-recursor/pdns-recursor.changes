@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 25 10:06:27 UTC 2023 - Adam Majer <adam.majer@suse.de> 4.9.1
+
+- update to 4.9.1
+  * The setting of policy tags for packet cache hist has been fixed.
+    Previously, packet cache hits would not contain policy tags set in
+    the Lua gettags(-ffi) intercept functions.
+  * The retrieval of RPZ zones could fail in situations where a read of
+    the chunk length from the IXFR TCP stream would produce an
+    incomplete result.
+- enable DSN-over-TLS (DoT) via OpenSSL
+
+For complete list of changes, see
+https://doc.powerdns.com/recursor/changelog/4.9.html#change-4.9.1
+
+For upgrades since 4.8.x and earlier, see
+https://doc.powerdns.com/recursor/upgrade.html
+
+-------------------------------------------------------------------
 Tue Apr  4 09:04:14 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - update to 4.8.4

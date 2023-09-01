@@ -757,4 +757,12 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     being marked unavailable (bsc#1209897, CVE-2023-26437)</comment>
     <requestid>1077167</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>55621792ccbd4b8a5d200af5690f58df</srcmd5>
+    <version>4.9.1</version>
+    <time>1693570919</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1108433</requestid>
+  </revision>
 </revisionlist>

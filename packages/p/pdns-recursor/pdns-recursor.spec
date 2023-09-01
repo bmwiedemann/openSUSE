@@ -25,7 +25,7 @@
 %endif
 
 Name:           pdns-recursor
-Version:        4.8.4
+Version:        4.9.1
 Release:        0
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -107,6 +107,7 @@ ln effective_tld_names.dat effective_tld_list.dat
   --disable-silent-rules             \
   --bindir=%{_sbindir}               \
   --sysconfdir=%{_sysconfdir}/pdns/  \
+  --enable-dns-over-tls              \
   --with-lua                         \
   --with-socketdir=%{_rundir}        \
   --with-service-user=pdns           \
