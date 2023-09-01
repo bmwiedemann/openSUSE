@@ -944,4 +944,12 @@ this is ever going to be fixed</comment>
     <comment>- limit to protobuf &lt; 22 for now until build failures have been fixed</comment>
     <requestid>1095693</requestid>
   </revision>
+  <revision rev="114" vrev="6">
+    <srcmd5>1fbd8d4099d07893c4b957e1bbc5c2e4</srcmd5>
+    <version>12.2.0</version>
+    <time>1693570752</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108318</requestid>
+  </revision>
 </revisionlist>

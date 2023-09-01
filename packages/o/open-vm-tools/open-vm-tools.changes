@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 28 15:10:27 UTC 2023 - Kirk Allan <kallan@suse.com>
+
+- Fix (bsc#1214566) - (CVE-2023-20900) - VUL-0: CVE-2023-20900:
+  open-vm-tools: SAML token signature bypass vulnerability
+  + Add patch: CVE-20230-20900.patch
+
+-------------------------------------------------------------------
 Tue Jun 27 19:54:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - limit to protobuf < 22 for now until build failures have been fixed 
