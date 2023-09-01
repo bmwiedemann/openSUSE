@@ -231,4 +231,12 @@
     <comment>Many new security patterns and fixed invalid solution urls (forwarded request 1031619 from jrecord)</comment>
     <requestid>1031620</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0a44b4714c46d8a5527a5fd3a9fba60d</srcmd5>
+    <version>1.5.5</version>
+    <time>1693570774</time>
+    <user>anag+factory</user>
+    <comment>bsc#1214837 (forwarded request 1108325 from jrecord)</comment>
+    <requestid>1108326</requestid>
+  </revision>
 </revisionlist>
