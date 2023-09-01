@@ -37,7 +37,7 @@ ExclusiveArch:  do_not_build
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hypothesis%{psuffix}
-Version:        6.82.4
+Version:        6.82.7
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -149,35 +149,58 @@ donttest="test_updating_the_file_include_new_shrinkers"
 donttest+=" or test_can_learn_to_normalize_the_unnormalized"
 # Fail because typing comparison
 donttest+=" or test_ghostwriter_on_hypothesis"
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+donttest+=" or test_gets_right_dtype_for_empty_indices"
+donttest+=" or test_has_string_of_max_length"
+fi
+# https://github.com/HypothesisWorks/hypothesis/issues/3704
+donttest+=" or (test_make_full_patch and covering)"
+donttest+=" or test_overflowing_integers_are_deprecated"
+# we're disabling the healthcheck below, obs is too flaky with it
+donttest+=" or fails_health_check or slow_tests or on_healthcheck or a_health_check"
+donttest+=" or test_statistics_with_events_and_target"
+donttest+=" or test_self_ref_regression"
 # adapted from pytest.ini in github repo toplevel dir (above hypothesis-python)
 echo '[pytest]
 addopts=
+    -rfE
     --strict-markers
     --tb=native
-    -p pytester --runpytest=subprocess
+    -p pytester
+    --runpytest=subprocess
+    --hypothesis-profile=obs
     -v
     -n auto
-    -ra
+xfail_strict = False
 filterwarnings =
-    error
+    # error <-- disabled for obs packaging
     ignore::hypothesis.errors.NonInteractiveExampleWarning
     # https://github.com/pandas-dev/pandas/issues/41199
     default:Creating a LegacyVersion has been deprecated and will be removed in the next major release:DeprecationWarning
     default:distutils Version classes are deprecated\. Use packaging\.version instead:DeprecationWarning
     # https://github.com/pandas-dev/pandas/issues/32056 (?)
     default:numpy\.ufunc size changed, may indicate binary incompatibility\. Expected 216 from C header, got 232 from PyObject:RuntimeWarning
-    # https://github.com/lark-parser/lark/pull/1140
-    default:module 'sre_constants' is deprecated:DeprecationWarning
-    default:module 'sre_parse' is deprecated:DeprecationWarning
     # https://github.com/pandas-dev/pandas/issues/34848
     default:`np\.bool` is a deprecated alias for the builtin `bool`:DeprecationWarning
     default:`np\.complex` is a deprecated alias for the builtin `complex`:DeprecationWarning
     default:`np\.object` is a deprecated alias for the builtin `object`:DeprecationWarning
 ' > pytest.ini
+# increase test deadline for slow obs executions
+echo "
+import hypothesis
+
+hypothesis.settings.register_profile(
+    'obs',
+    deadline=5000,
+    suppress_health_check=[
+        hypothesis.HealthCheck.too_slow,
+        ]
+)
+" >> tests/conftest.py
 %if %{without complete_tests}
 export PYTEST_ADDOPTS="--ignore=tests/pandas/ --ignore=tests/redis/test_redis_exampledatabase.py"
 %endif
-%pytest -c pytest.ini -k "not ($donttest)" tests
+%pytest -c pytest.ini -k "not ($donttest)" tests; rm -rf .pytest_cache
 %endif
 
 %if !%{with test}

@@ -1,3 +1,16 @@
+-------------------------------------------------------------------
+Tue Aug 29 17:43:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.82.7
+  * This patch updates our autoformatting tools, improving our code
+    style without any API changes.
+- Release 6.82.6
+  * This patch enables and fixes many more of ruff‘s lint rules.
+- Release 6.82.5
+  * Fixes the error message for missing [cli] extra.
+- Use slow 'obs' profile for testing and disable healthcheck
+  tests because of it.
+
 ------------------------------------------------------------------
 Mon Aug 14 07:03:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
