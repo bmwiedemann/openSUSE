@@ -958,4 +958,41 @@ Feature Improvements
   *  Correct test for open sessions in radacct for MS SQL.</comment>
     <requestid>1063506</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>ec88150aea5f380809c06f31edf6205c</srcmd5>
+    <version>3.2.3</version>
+    <time>1693570916</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.2.3:
+  Feature Improvements
+  * Add &quot;max_retries&quot; for connection pools. Fixes #4908.
+  * Update dictionary.ciena, dictionary.huawei, dictionary.wifialliance and
+    dictionary.wispr; add dictionary.eleven.
+  * You can now list &quot;eap&quot; in the &quot;pre-proxy&quot; section. If the packet contains a
+    malformed EAP message, then the request will be rejected The home server
+    will either reject (or discard) this packet anyways, so this change can
+    only help with large proxy scenarios.
+  * Show warnings if libldap is not using OpenSSL.
+  * Support RADIUS/1.1. See
+    https://datatracker.ietf.org/doc/draft-dekok-radext-radiusv11/ Disabled by
+    default, can be enabled by passing `--with-radiusv11` to the configure
+    script. For now, this is for testing interoperability.
+  * Add extra sanity checks for malformed EAP attributes.
+  * More TLS debugging output.
+  * Clear old module instance data before HUP reload. Avoids burst memory use
+    when e.g. using large data files with rlm_files.
+  * `rlm_cache_redis` is now included in the freeradius-redis packages.
+Bug Fixes
+  * Don't leak MD contexts with OpenSSL 3.0.
+  * Increase internal buffer size for TLS connections, which can help with
+    high-load proxies.
+  * Send Status-Server checks for TLS connections.
+  * Give descriptive error if &quot;update CoA&quot; is used with &quot;fake&quot; packets, as it
+    won't work. i.e. inner-tunnel and virtual home servers.
+  * Many small ASAN / LSAN fixes from Jorge Pereira.
+  * Close inbound RADIUS/TLS socket on TLS errors. When a home server sees a
+    TLS error, it will now close the socket, so proxies do not have an open
+    (but dead) TLS connection.</comment>
+    <requestid>1108446</requestid>
+  </revision>
 </revisionlist>

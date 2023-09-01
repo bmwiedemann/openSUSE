@@ -18,7 +18,7 @@
 
 %define unitname radiusd
 Name:           freeradius-server
-Version:        3.2.1
+Version:        3.2.3
 Release:        0
 
 # Disable FreeTDS on SLE12. We never shipped it enabled with FreeTDS.
@@ -94,6 +94,7 @@ Obsoletes:      freeradius < %{version}
 Conflicts:      icradius
 Conflicts:      radiusd-cistron
 Conflicts:      radiusd-livingston
+BuildRequires:  libunbound-devel
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 
@@ -141,7 +142,6 @@ FreeRADIUS documentation.
 %package ldap
 Summary:        LDAP support for freeradius
 Group:          System/Daemons
-BuildRequires:  openldap2-devel
 Requires:       %{name} = %{version}
 
 %description ldap
@@ -158,7 +158,6 @@ FreeRADIUS schemas for OpenLDAP.
 %package krb5
 Summary:        Kerberos 5 support for freeradius
 Group:          System/Daemons
-BuildRequires:  krb5-devel
 Requires:       %{name} = %{version}
 
 %description krb5
@@ -167,8 +166,6 @@ FreeRADIUS plugin providing Kerberos 5 authentication support.
 %package perl
 Summary:        Perl support for freeradius
 Group:          System/Daemons
-BuildRequires:  perl
-BuildRequires:  perl(ExtUtils::Embed)
 Requires:       %{name} = %{version}
 Requires:       perl
 
@@ -186,7 +183,6 @@ FreeRADIUS plugin providing Python3 support.
 %package mysql
 Summary:        MySQL support for freeradius
 Group:          System/Daemons
-BuildRequires:  mysql-devel
 Requires:       %{name} = %{version}
 
 %description mysql
@@ -195,7 +191,6 @@ FreeRADIUS plugin providing MySQL support.
 %package postgresql
 Summary:        Postgresql support for freeradius
 Group:          System/Daemons
-BuildRequires:  postgresql-devel
 Requires:       %{name} = %{version}
 
 %description postgresql
@@ -204,7 +199,6 @@ FreeRADIUS plugin providing PostgreSQL support.
 %package sqlite
 Summary:        SQLite support for freeradius
 Group:          System/Daemons
-BuildRequires:  sqlite3-devel
 Requires:       %{name} = %{version}
 
 %description sqlite
@@ -242,6 +236,7 @@ export LDFLAGS="-pie"
   --without-rlm_sql_iodbc \
   --without-rlm_redis \
   --without-rlm_rediswho \
+  --without-rlm_cache_redis \
   --without-rlm_sql_oracle \
   --without-rlm_securid \
   --without-rlm_python \
@@ -663,6 +658,7 @@ done
 %{_libdir}/freeradius/rlm_sql_null.so
 %{_libdir}/freeradius/rlm_test.so
 %{_libdir}/freeradius/rlm_totp.so
+%{_libdir}/freeradius/rlm_unbound.so
 %{_libdir}/freeradius/rlm_unix.so
 %{_libdir}/freeradius/rlm_utf8.so
 %{_libdir}/freeradius/rlm_wimax.so
