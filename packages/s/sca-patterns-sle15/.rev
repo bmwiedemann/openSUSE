@@ -183,4 +183,12 @@
     <comment>Factory Ready (forwarded request 1031621 from jrecord)</comment>
     <requestid>1031622</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b3b8e51dc132d23cae38cee71cefa9d5</srcmd5>
+    <version>1.5.5</version>
+    <time>1693570775</time>
+    <user>anag+factory</user>
+    <comment>bsc#1214837 (forwarded request 1108327 from jrecord)</comment>
+    <requestid>1108328</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package sca-patterns-sle15
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define category SLE
 
 Name:           sca-patterns-sle15
-Version:        1.5.3
+Version:        1.5.5
 Release:        0
 Summary:        Supportconfig Analysis Patterns for SLE15
 License:        GPL-2.0-only
@@ -56,12 +56,14 @@ install -d %{buildroot}/%{patdir}/%{category}/sle15sp1
 install -d %{buildroot}/%{patdir}/%{category}/sle15sp2
 install -d %{buildroot}/%{patdir}/%{category}/sle15sp3
 install -d %{buildroot}/%{patdir}/%{category}/sle15sp4
+install -d %{buildroot}/%{patdir}/%{category}/sle15sp5
 install -m %{mode} patterns/%{category}/sle15all/* %{buildroot}/%{patdir}/%{category}/sle15all
 install -m %{mode} patterns/%{category}/sle15sp0/* %{buildroot}/%{patdir}/%{category}/sle15sp0
 install -m %{mode} patterns/%{category}/sle15sp1/* %{buildroot}/%{patdir}/%{category}/sle15sp1
 install -m %{mode} patterns/%{category}/sle15sp2/* %{buildroot}/%{patdir}/%{category}/sle15sp2
 install -m %{mode} patterns/%{category}/sle15sp3/* %{buildroot}/%{patdir}/%{category}/sle15sp3
 install -m %{mode} patterns/%{category}/sle15sp4/* %{buildroot}/%{patdir}/%{category}/sle15sp4
+install -m %{mode} patterns/%{category}/sle15sp5/* %{buildroot}/%{patdir}/%{category}/sle15sp5
 %fdupes %{buildroot}
 
 %files
@@ -75,11 +77,13 @@ install -m %{mode} patterns/%{category}/sle15sp4/* %{buildroot}/%{patdir}/%{cate
 %dir %{patdir}/%{category}/sle15sp2
 %dir %{patdir}/%{category}/sle15sp3
 %dir %{patdir}/%{category}/sle15sp4
+%dir %{patdir}/%{category}/sle15sp5
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle15all/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp0/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp1/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp2/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp3/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp4/*
+%attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/sle15sp5/*
 
 %changelog
