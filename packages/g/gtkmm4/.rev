@@ -63,4 +63,12 @@
     <comment>New stable release (forwarded request 1073101 from iznogood)</comment>
     <requestid>1073232</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>055ebbe682d5f9b00ded869110624800</srcmd5>
+    <version>4.10.0</version>
+    <time>1693570909</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108399</requestid>
+  </revision>
 </revisionlist>

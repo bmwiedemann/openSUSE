@@ -38,6 +38,7 @@ BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairomm-1.16) >= 1.15.4
+BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.35.5
 BuildRequires:  pkgconfig(giomm-2.68) >= 2.68.0
 BuildRequires:  pkgconfig(glibmm-2.68)
