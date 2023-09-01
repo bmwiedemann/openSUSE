@@ -26,7 +26,7 @@ Source:         weblug-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source10:       weblug.yml
 BuildRequires:  golang-packaging
-BuildRequires:  go1.18
+BuildRequires:  golang(API) >= 1.18
 %{go_nostrip}
 %{systemd_ordering}
 

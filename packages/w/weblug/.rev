@@ -15,4 +15,15 @@
     <comment>Update to version 0.4. This also addresses bsc#1211197 (forwarded request 1091062 from ph03nix)</comment>
     <requestid>1091161</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a7a965acf42f6a998d7374e89f7fcb41</srcmd5>
+    <version>0.4</version>
+    <time>1693570779</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * _service obs_scm enable changesgenerate
+  * BuildRequires: golang(API) &gt;= 1.18 instead of pinned go1.18
+  * Reformat changelog entries per 'osc vc' template (forwarded request 1108368 from jfkw)</comment>
+    <requestid>1108369</requestid>
+  </revision>
 </revisionlist>

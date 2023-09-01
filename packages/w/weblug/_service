@@ -5,6 +5,7 @@
     <param name="revision">main</param>
     <param name="version">0.4</param>
 	<param name="versionrewrite-pattern">v(.*)</param>
+	<param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
