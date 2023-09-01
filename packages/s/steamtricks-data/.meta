@@ -1,5 +1,0 @@
-<package name="steamtricks-data" project="openSUSE:Factory">
-  <title>steamtricks-data</title>
-  <description>steamtricks companion data repository</description>
-  <devel project="games:tools" package="steamtricks-data"/>
-</package>
