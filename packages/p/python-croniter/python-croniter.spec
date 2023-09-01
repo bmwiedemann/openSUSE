@@ -18,18 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-croniter
-Version:        1.3.15
+Version:        1.4.1
 Release:        0
 Summary:        Python iterators for datetime objects with cron-like format
 License:        MIT
 URL:            https://github.com/kiorky/croniter
 Source:         https://files.pythonhosted.org/packages/source/c/croniter/croniter-%{version}.tar.gz
-BuildRequires:  %{python_module future}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.0.3}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tzlocal}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -44,10 +45,10 @@ croniter provides iterators for datetime object with cron-like format.
 %setup -q -n croniter-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +57,7 @@ croniter provides iterators for datetime object with cron-like format.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/croniter
+%{python_sitelib}/croniter-%{version}.dist-info
 
 %changelog

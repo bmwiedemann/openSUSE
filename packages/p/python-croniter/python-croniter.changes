@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 31 12:04:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.1:
+  * Make a retrocompatible version of 1.4.0 change about supporting
+    VIXIECRON bug.
+  * Added "implement_cron_bug" flag to make the cron parser compatible
+    with a bug in Vixie/ISC Cron.
+- Switch to pyproject macros.
+- Actually drop future requirement.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Jun 26 07:01:22 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

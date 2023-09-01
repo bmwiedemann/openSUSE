@@ -252,4 +252,19 @@
     <comment></comment>
     <requestid>1095394</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a54cf42249e2f6fca32af4d597f2ba1f</srcmd5>
+    <version>1.4.1</version>
+    <time>1693570764</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.1:
+  * Make a retrocompatible version of 1.4.0 change about supporting
+    VIXIECRON bug.
+  * Added &quot;implement_cron_bug&quot; flag to make the cron parser compatible
+    with a bug in Vixie/ISC Cron.
+- Switch to pyproject macros.
+- Actually drop future requirement.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1108278</requestid>
+  </revision>
 </revisionlist>
