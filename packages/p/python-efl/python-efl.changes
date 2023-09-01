@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Sep  1 12:18:58 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- Fix Leap build by tweeking dependencies and disabling docs as
+  they require newer tooling then Leap provides.
+
+-------------------------------------------------------------------
+Thu Aug 31 21:46:49 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Use Cython to regenerate files during the build
+- Build documentation using sphinx-build since Sphinx 7+ dropped
+  the integration with setuptools
+- Added patch:
+  * cython3.patch
+    + Explicite declaration of functions as noexcept:
+      in Cython 3+, default swallowing of Python exception is
+      deprecated and the new default is to propagate them.
+      Generation of files is ending up in error on exception
+      mismatch
+
+-------------------------------------------------------------------
+Tue Mar 21 01:10:27 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- Update to 1.26.0
+  * Sync with latest efl
+- Drop memory-allocation-error.patch fixed upstream
+
+-------------------------------------------------------------------
 Mon Jan 10 14:29:25 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - memory-allocation-error.patch: fix a memory allocation error

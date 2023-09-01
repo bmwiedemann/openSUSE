@@ -1,7 +1,7 @@
 #
 # spec file for package python-efl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,22 +14,32 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-
 %{?!python_module:%define python_module() python3-%{**}}
+
+%if 0%{?suse_version} > 1599
+%define build_doc 1
+%else
+%define build_doc 0
+%endif
+
 Name:           python-efl
-Version:        1.25.0
+Version:        1.26.0
 Release:        0
 Summary:        Python bindings of evas
 License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            http://enlightenment.org
 Source:         https://download.enlightenment.org/rel/bindings/python/%{name}-%{version}.tar.xz
-Patch0:         memory-allocation-error.patch
+Patch0:         cython3.patch
+%if 0%{?suse_version} > 1599
+BuildRequires:  %{python_module Cython3}
+%else
+BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module setuptools}
+%endif
 BuildRequires:  %{python_module devel}
 BuildRequires:  dbus-1-python3-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3-Cython
 BuildRequires:  pkgconfig(ecore)
 BuildRequires:  pkgconfig(edje)
 BuildRequires:  pkgconfig(elementary)
@@ -74,6 +84,7 @@ Python bindings of the Enlightenment Foundation Libraries (efl).
 Python bindings of the Enlightenment Foundation Libraries (efl).
 
 %if 0%{?suse_version}
+%if %{build_doc}
 %package -n python-efl-doc
 Summary:        Documentation for python-efl
 Group:          Documentation/HTML
@@ -83,7 +94,7 @@ Conflicts:      otherproviders(python3-efl-doc)
 
 %description -n python-efl-doc
 HTML formated documentation for python-efl module.
-
+%endif
 %package -n python-efl-examples
 Summary:        Examples of python-efl usage
 Group:          Documentation/Other
@@ -96,18 +107,23 @@ Some examples of usage of python-efl.
 
 %prep
 %setup -q
+%if 0%{?suse_version} > 1599
 %patch0 -p1
+%endif
 # drop build date from doc to fix build-compare
 sed -i "s/\(html_last_updated_fmt = \).*/\\1None/" ./doc/conf.py
 
 %build
+export ENABLE_CYTHON=1
 export CFLAGS="$CFLAGS -Wno-declaration-after-statement"
 %ifarch %ix86
 export CFLAGS="$CFLAGS -O0"
 %endif
 %if 0%{?suse_version}
-%{python_expand $python setup.py build -g
-$python setup.py build_doc}
+%{python_expand $python setup.py build -g}
+%if %{build_doc}
+python3 -m sphinx.cmd.build doc build/sphinx/html
+%endif
 %else
 %py2_build
 %py3_build
@@ -123,6 +139,7 @@ export DISABLE_CYTHON=1
 
 # documentation
 %if 0%{?suse_version}
+%if %{build_doc}
 for _name in python-efl python3-efl; do
   install -m 0755 -d "%{buildroot}/%{_docdir}/$_name"
   cp -R build/sphinx/html "%{buildroot}/%{_docdir}/$_name"
@@ -131,6 +148,7 @@ done
 
 %python_expand %fdupes %{buildroot}%{_docdir}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
 # examples
 for _name in python-efl python3-efl; do
@@ -148,8 +166,10 @@ rm -r "%{buildroot}/%{_docdir}/%{name}/"
 %{python_sitearch}/*
 %exclude %{_docdir}/python3-efl/html/
 
+%if %{build_doc}
 %files -n python-efl-doc
 %{_docdir}/python3-efl
+%endif
 
 %files -n python-efl-examples
 %{_datadir}/python3-efl
