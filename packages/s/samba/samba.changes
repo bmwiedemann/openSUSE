@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Aug 21 15:16:35 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.18.6
+  * reply_sesssetup_and_X() can dereference uninitialized tmp pointer;
+    (bso#15420);
+  * Missing return in reply_exit_done(); (bso#15430);
+  * post-exec password redaction for samba-tool is more reliable for fully
+    random passwords as it no longer uses regular expressions containing the
+    password value itself; (bso#15289);
+  * Windows client join fails if a second container CN=System exists somewhere;
+    (bso#9959);
+  * Spotlight sometimes returns no results on latest macOS; (bso#15342);
+  * Renaming results in NT_STATUS_SHARING_VIOLATION if previously attempted to
+    remove the destination; (bso#15417);
+  * Spotlight results return wrong date in result list; (bso#15427);
+  * "net offlinejoin provision" does not work as non-root user; (bso#15414);
+  * rpcserver no longer accepts double backslash in dfs pathname; (bso#15400);
+  * cm_prepare_connection() calls close(fd) for the second time; (bso#15433);
+  * 2-3min delays at reconnect with smb2_validate_sequence_number: bad
+    message_id 2; (bso#15346);
+  * samba-tool ntacl get segfault if aio_pthread appended; (bso#15441);
+  * DCERPC_PKT_CO_CANCEL and DCERPC_PKT_ORPHANED can't be parsed; (bso#15446);
+  * Python tarfile extraction needs change to avoid a warning (CVE-2007-4559
+    mitigation); (bso#15390);
+  * Regression DFS not working with widelinks = true; (bso#15435);
+  * mdssvc: Do an early talloc_free() in _mdssvc_open(); (bso#15449);
+
+-------------------------------------------------------------------
+Tue Aug  8 15:40:54 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
+
+- Move libcluster-samba4.so from samba-libs to samba-client-libs;
+  (bsc#1213940);
+
+-------------------------------------------------------------------
 Wed Jul 19 14:35:34 UTC 2023 - Noel Power <nopower@suse.com>
 
 - Update to 4.18.5

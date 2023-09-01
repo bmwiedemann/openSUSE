@@ -158,7 +158,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.18.5+git.313.c8e274c7852
+Version:        4.18.6+git.320.cfda27bacb
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -604,10 +604,7 @@ LDB library.
 %setup -n samba-%{version} -q
 # Create and add vendor suffix
 if test "%{_project}" != "openSUSE:Factory"; then
-	vendor_tag_release=$( grep -m 1 ^Release: %{_sourcedir}/samba.spec | \
-		while read tag release; do \
-			echo -n "${release:+${release}-}"; \
-		done)
+	vendor_tag_release="%{release}"
 else
 	vendor_tag_release=""
 fi
@@ -1429,6 +1426,7 @@ exit 0
 %{_libdir}/samba/libcli-spoolss-samba4.so
 %{_libdir}/samba/libcliauth-samba4.so
 %{_libdir}/samba/libclidns-samba4.so
+%{_libdir}/samba/libcluster-samba4.so
 %{_libdir}/samba/libcmdline-contexts-samba4.so
 %{_libdir}/samba/libcmdline-samba4.so
 %{_libdir}/samba/libcommon-auth-samba4.so
@@ -1506,7 +1504,6 @@ exit 0
 %{_libdir}/samba/libLIBWBCLIENT-OLD-samba4.so
 %{_libdir}/samba/libauth4-samba4.so
 %{_libdir}/samba/libauth-unix-token-samba4.so
-%{_libdir}/samba/libcluster-samba4.so
 %{_libdir}/samba/libdnsserver-common-samba4.so
 %{_libdir}/samba/libgpext-samba4.so
 %{_libdir}/samba/libposix-eadb-samba4.so
