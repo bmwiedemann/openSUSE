@@ -16,31 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-minio
-Version:        7.1.14
+Version:        7.1.16
 Release:        0
 Summary:        Minio library for Amazon S3 compatible cloud storage
 License:        Apache-2.0
 URL:            https://github.com/minio/minio-py
 Source:         https://files.pythonhosted.org/packages/source/m/minio/minio-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi
-Requires:       python-future
-Requires:       python-python-dateutil
-Requires:       python-pytz
 Requires:       python-urllib3
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module urllib3}
 # /SECTION
 %python_subpackages
@@ -49,26 +42,24 @@ BuildRequires:  %{python_module urllib3}
 Minio library for Amazon S3 compatible cloud storage.
 
 %prep
-%setup -q -n minio-%{version}
-%autopatch -p1
+%autosetup -p1 -n minio-%{version}
 mv docs/zh_CN/API.md docs/API_zh_CN.md
 sed -i -e '/configparser/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/minio/minio-py/issues/1187
-sed -i 's:import mock:import unittest.mock as mock:' tests/unit/*.py
 %pytest
 
 %files %{python_files}
 %doc README*.md docs/API*.md examples/
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/minio
+%{python_sitelib}/minio-%{version}.dist-info
 
 %changelog
