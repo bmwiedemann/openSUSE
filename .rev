@@ -245,4 +245,26 @@
   * checks: ignore broad-exception-raised pylint error</comment>
     <requestid>1074502</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7d43e80ad3aee7cbbc6e018e747e86cd</srcmd5>
+    <version>7.1.16</version>
+    <time>1693570784</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.1.16:
+  * Update deprecated mc admin policy commands
+  * update release references to master in README.md
+  * Fix upload snowball objects with staging file
+  * Add generic AWS S3 domain support
+  * upload_snowball_object(): seek stream to 0 before upload
+  * Revert &quot;list_objecst: fix parsing user metadata as per
+    MinIO server (#1240)&quot;
+  * Disable multipart upload for upload_snowball_objects() api.
+  * Remove locale usage for datetime parsing
+  * fix policy as a string in presigned_post_policy() API
+  * Add cert_check flag to main class constructor
+- Switch to pyproject and autosetup macros.
+- Stop using greedy globs in %files.
+- Clean up unneeded {Build,}Requires.</comment>
+    <requestid>1108371</requestid>
+  </revision>
 </revisionlist>
