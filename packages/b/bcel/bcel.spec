@@ -1,7 +1,7 @@
 #
 # spec file for package bcel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,20 @@
 
 
 Name:           bcel
-Version:        5.2
+Version:        6.7.0
 Release:        0
 Summary:        Byte Code Engineering Library
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://commons.apache.org/proper/commons-bcel/
-Source0:        http://archive.apache.org/dist/commons/bcel/source/%{name}-%{version}-src.tar.gz
-Source1:        http://archive.apache.org/dist/commons/bcel/source/%{name}-%{version}-src.tar.gz.asc
-Source2:        http://repo.maven.apache.org/maven2/org/apache/%{name}/%{name}/%{version}/%{name}-%{version}.pom
-Source3:        bcel.keyring
-Patch0:         bcel-5.2-encoding.patch
-#PATCH-FIX-UPSTREAM bsc#1205125 CVE-2022-42920 Out-of-bounds writing issue
-Patch1:         bcel-CVE-2022-42920.patch
+URL:            https://commons.apache.org/proper/commons-bcel/
+Source0:        https://archive.apache.org/dist/commons/bcel/source/%{name}-%{version}-src.tar.gz
+Source1:        %{name}-build.xml
 BuildRequires:  ant
+BuildRequires:  apache-commons-lang3
+BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-BuildRequires:  regexp
+BuildRequires:  javapackages-local >= 6
 #!BuildIgnore:  xalan-j2 xerces-j2 xml-apis xml-resolver
-Requires:       regexp
 BuildArch:      noarch
 
 %description
@@ -60,36 +55,39 @@ It contains a byte code verifier named JustIce, which usually gives you
 much better information about what is wrong with your code than the
 standard JVM message.
 
-%prep
-%autosetup -p1
+%package javadoc
+Summary:        Javadoc for %{name}
+Group:          Documentation/HTML
 
-# remove all binary libs
-find . -name "*.jar" -exec rm -f {} \;
-# very broken build
-perl -p -i -e 's| depends=\"examples\"||g;' build.xml
-touch manifest.txt
+%description javadoc
+This package contains the API documentation for %{name}.
+
+%prep
+%setup -q -n %{name}-%{version}-src
+cp %{SOURCE1} build.xml
 
 %build
-export CLASSPATH=%(build-classpath regexp)
-export OPT_JAR_LIST="ant/ant-nodeps"
-ant \
-    -Dant.build.javac.target=8 -Dant.build.javac.source=8 \
-    -Dbuild.dest=./build -Dbuild.dir=./build -Dname=%{name} \
-    compile jar
+mkdir -p lib
+build-jar-repository -s lib apache-commons-lang3
+%ant jar javadoc
 
 %install
-# jars
+# jar
 mkdir -p %{buildroot}%{_javadir}
-install -m 644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -s ${jar} `echo $jar| sed  "s|-%{version}||g"`; done)
-
+install -m 644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+# pom
 mkdir -p %{buildroot}%{_mavenpomdir}
-install -m 644 %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
-
-%add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar -a "bcel:bcel"
+%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar -a "bcel:bcel"
+# javadoc
+mkdir -p %{buildroot}%{_javadocdir}/%{name}
+cp -a target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
+%fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
 %license LICENSE.txt
-%{_javadir}/*
+
+%files javadoc
+%{_javadocdir}/%{name}
 
 %changelog

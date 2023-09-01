@@ -230,4 +230,12 @@
     <comment>Security fixes</comment>
     <requestid>1037028</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>890e04da0f910f5d35614b265c9b65df</srcmd5>
+    <version>6.7.0</version>
+    <time>1693570728</time>
+    <user>anag+factory</user>
+    <comment>6.7.0</comment>
+    <requestid>1108225</requestid>
+  </revision>
 </revisionlist>

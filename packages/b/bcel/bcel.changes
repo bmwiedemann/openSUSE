@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Aug 31 08:38:22 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 6.7.0
+  * 6.7.0 (2022-11-28) Maintenance and bug fix release.
+  * 6.6.1 (2022-10-29) Maintenance and bug fix release.
+  * 6.6.0 (2022-10-08) Minor feature and bug fix release.
+  * 6.5.0 (2020-06-05) Minor feature and bug fix release.
+  * 6.4.1 (2019-09-26) Bug fix release.
+  * 6.4.0 (2019-09-20) Feature and bug fix release.
+  * 6.3.1 (2019-03-20) Bug fix release
+  * 6.3 (2019-01-23) Experimental Java 9, 10, 11, 12-EA, and 13-EA
+    Support
+  * 6.2 (2017-12-08) Experimental Java 9 Support
+  * 6.1 (2017-09-14) Experimental Java 9 Support
+  * 6.0 (2016-07-10) Apache Commons BCEL 6.0 is a major release
+    supporting the new features introduced in Java 6, 7 and 8. It
+    requires Java 7 or higher to run.
+    COMPATIBILITY with 5.2
+    + Binary compatible
+      - not strictly compatible
+      - The constant interface org.apache.bcel.Constants has been
+        deprecated. Classes which implemented this interface in 5.2
+        now use the constants defined in the org.apache.bcel.Const
+        class.
+      - The constant interface
+        org.apache.bcel.generic.InstructionConstants has been
+        deprecated. Classes which implemented this interface in 5.2
+        now use the constants defined in the
+        org.apache.bcel.generic.InstructionConsts class.
+      - Return type of method 'public java.lang.Object
+        getElementAt(int)' in org.apache.bcel.verifier
+        .VerifierFactoryListModel has been changed to
+        java.lang.String.
+      - The BCEL classes do no longer implement java.io.Serializable.
+    + Source compatible
+      - Yes, sort of;
+      - The org.apache.bcel.classfile.Visitor interface has been
+        enhanced with additional methods. If you implemented it
+        directly instead of extending the EmptyVisitor class you'll
+        have to implement the new methods.
+      - The org.apache.bcel.generic.Visitor interface has been
+        enhanced with an additional method. If you implemented it
+        directly instead of extending the EmptyVisitor class you'll
+        have to implement the new methods.
+    + Semantic compatible
+      - Yes, except:
+      - BCEL 6.0 handles new attributes such as code annotations
+        that could only be processed by implementing a custom
+        AttributeReader in the previous versions. Code relying on
+        this behavior will have to be adjusted since the
+        AttributeReader will no longer be called in these cases.
+    + For full information about API changes please see the extended
+      Clirr report: https://commons.apache.org/bcel/clirr-report.html
+- Removed patches:
+  * bcel-5.2-encoding.patch
+    + part of our own build.xml file generated to build with ant
+  * bcel-CVE-2022-42920.patch
+    + integrated upstrea
+
+-------------------------------------------------------------------
 Thu Nov 10 11:02:08 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1205125, CVE-2022-42920]
