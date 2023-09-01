@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Sep  1 01:43:20 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.28.0:
+  * add load balancer target health status field
+  * implement resource actions clients
+  * missing long_description content_type in setup.py
+  * add global request timeout option
+  * reexport references in parent ressources modules
+  * the package is now typed
+  * allow omitting datacenter when creating a primary ip
+  * invalid attribute in placement group
+  * add repr method to domains
+  * drop support for python 3.7
+  * add details to raise exceptions
+  * move hcloud.hcloud module to hcloud._client
+  * revert remove python-dateutil dependency
+  * handle Z timezone in ISO8601 datetime format
+  * isos: invalid name for include_wildcard_architecture argument
+  * network: add field expose_routes_to_vswitch
+  * setup exception hierarchy
+  * add deprecation field to ServerType
+  * adjust label validation for max length of 63 characters
+  * server_type: add field for included traffic
+  * feat: add support for ARM APIs by @apricote
+  * fix: remove unused future dependency by @apricote
+  * Remove use of external mock module by @s-t-e-v-e-n-k
+  * Add validation helper for Label Values/Keys by @LKaemmerling
+- Switch to pyproject macros.
+- Drop patch remove-mock.patch, included upstream.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Aug  2 05:01:14 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.17.0:

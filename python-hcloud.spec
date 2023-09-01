@@ -1,7 +1,7 @@
 #
 # spec file for package python-hcloud
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hcloud
-Version:        1.17.0
+Version:        1.28.0
 Release:        0
 Summary:        Hetzner Cloud Python library
 License:        MIT
 URL:            https://github.com/hetznercloud/hcloud-python
 Source:         https://files.pythonhosted.org/packages/source/h/hcloud/hcloud-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#hetznercloud/hcloud-python#162
-Patch0:         remove-mock.patch
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-future >= 0.17.1
 Requires:       python-python-dateutil >= 2.7.5
 Requires:       python-requests >= 2.20
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module future >= 0.17.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.7.5}
 BuildRequires:  %{python_module requests >= 2.20}
@@ -48,10 +46,10 @@ Official Hetzner Cloud Python library.
 %autosetup -p1 -n hcloud-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,8 +57,9 @@ export LANG=en_US.UTF-8
 %pytest tests/unit/
 
 %files %{python_files}
-%doc CHANGELOG.rst README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/hcloud
+%{python_sitelib}/hcloud-%{version}.dist-info
 
 %changelog
