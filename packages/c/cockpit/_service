@@ -7,6 +7,9 @@
   </service>
   <service mode="buildtime" name="tar">
     <param name="obsinfo">cockpit-suse-theme.obsinfo</param>
+    <!-- On SLE15.4 extra '-' gets added to the filename so we need to
+         define the name explicitly -->
+    <param name="filename">cockpit-suse-theme</param>
   </service>
   <service name="obs_scm" mode="manual">
     <param name="versionformat">@PARENT_TAG@</param>

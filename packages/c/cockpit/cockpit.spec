@@ -130,10 +130,15 @@ BuildRequires: pam-devel
 BuildRequires: autoconf automake
 BuildRequires: make
 BuildRequires: /usr/bin/python3
-%if 0%{?rhel} && 0%{?rhel} <= 8
+%if ( 0%{?rhel} && 0%{?rhel} <= 8 ) || 0%{?suse_version} <= 1500
 # RHEL 8's gettext does not yet have metainfo.its
 BuildRequires: gettext >= 0.19.7
+%if 0%{?rhel}
 BuildRequires: libappstream-glib-devel
+%else
+# Suse's package has a different name
+BuildRequires: appstream-glib-devel
+%endif
 %else
 BuildRequires: gettext >= 0.21
 %endif
