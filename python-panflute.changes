@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  1 00:26:56 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Stop using greedy globs in %files.
+- Switch to pyproject macros.
+- Drop unneeded {Build,}Requires on future.
+
+-------------------------------------------------------------------
 Thu Jun  1 20:16:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:

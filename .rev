@@ -58,4 +58,14 @@
   * Remove `Null` block object (scheduled for removed)</comment>
     <requestid>1090387</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2bb0878196dabe2e40c90fe913ee35ee</srcmd5>
+    <version>2.3.0</version>
+    <time>1693570780</time>
+    <user>anag+factory</user>
+    <comment>- Stop using greedy globs in %files.
+- Switch to pyproject macros.
+- Drop unneeded {Build,}Requires on future.</comment>
+    <requestid>1108349</requestid>
+  </revision>
 </revisionlist>
