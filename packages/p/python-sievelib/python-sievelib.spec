@@ -1,7 +1,7 @@
 #
-# spec file for package python-sievelib
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016 Aeneas Jaissle <aj@ajaissle.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,19 +18,17 @@
 
 
 %define modname sievelib
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-%{modname}
 Version:        1.2.1
 Release:        0
 Summary:        Client-side Sieve and Managesieve library written in Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/sievelib
 Source:         https://files.pythonhosted.org/packages/source/s/sievelib/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -47,16 +45,19 @@ sed -i -e '/^#!\/usr\/bin.*python/d' sievelib/parser.py
 chmod -x sievelib/parser.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %license COPYING
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/sievelib
+%{python_sitelib}/sievelib-%{version}.dist-info
 
 %changelog

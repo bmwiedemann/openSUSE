@@ -34,4 +34,15 @@
 - drop fix_pip_version.patch: obsolete</comment>
     <requestid>866481</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>674d65fbbef6dc4342ea0421c371d952</srcmd5>
+    <version>1.2.1</version>
+    <time>1693570783</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Actually run the testsuite.
+- Drop unneeded future requirement.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1108366</requestid>
+  </revision>
 </revisionlist>
