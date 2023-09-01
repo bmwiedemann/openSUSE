@@ -808,4 +808,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment></comment>
     <requestid>1084832</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>dcb8c1d38d31ff4383427b4a11a88e32</srcmd5>
+    <version>1.10.14</version>
+    <time>1693570724</time>
+    <user>anag+factory</user>
+    <comment>1.10.14 compatible with java 18+</comment>
+    <requestid>1108214</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Aug 31 06:49:53 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.10.14:
+  * Changes that could break older environments:
+    + Resource#compareTo now invokes getName rather than toString as
+      the later may be costly (for example in the case of a
+      StringResource).
+    + When using Java 18 or higher, Ant will no longer use Java
+      SecurityManager because it has been deprecated for removal and
+      by default is disallowed to be set at runtime
+      https://openjdk.org/jeps/411.
+      This will mean that the "<permissions>" type is no longer
+      functional when using Java 18 or higher.
+      Furthermore, when using Java 18 or higher, if the build
+      executes tasks that call "java.lang.System.exit()" and if
+      those tasks aren't running in a forked VM of their own, then
+      such tasks will now kill the entire Ant build process. It is
+      recommended that such tasks be updated to launch in a forked 
+      VM so that the System.exit() call will not impact the JVM in
+      which Ant process runs.
+  * Fixed bugs:
+    + log only the stylesheet name in the xslt task.
+    + junitlauncher task's "test" and "listener" elements which take
+      a "outputDir" property were incorrectly resolving the
+      outputDir against the current working directory instead of the
+      project's basedir.
+    + regexmapper would, in some cases, incorrectly consume
+      backslash characters from the "to" attribute, resulting in
+      missing backslashes in the output.
+    + <fixcrlf>, <replace> and <replaceregexp> now try to preserve
+      the file permissions of the files they modify.
+    + junitlauncher task would fail if a forked test timed out even
+      if haltOnFailure was set to false.
+    + fixes a bug in org.apache.tools.zip.ZipOutputStream where,
+      even when "zip64Mode" is set to "always", ZipOutputStream may
+      not create a CEN extra field data for the entry.
+    + legacy-xml listener of junitlauncher task wouldn't report
+      certain failures involving junit jupiter dynamic tests.
+    + allow.class which was introduced in Ant 1.10.13 release, has
+      been removed from this 1.10.14 release. This class was
+      introduced in context of the SecurityManager changes in
+      Ant 1.10.13, which have now been reverted in Ant 1.10.14,
+      since they caused several regressions.
+  * Other changes:
+    + <fork> element of the junitlauncher task now has a new
+      optional "java" attribute which can be used to point to a
+      different Java installation for runnning the forked tests.
+    + made sure <echoproperties> sorts the echoed properties on
+      JDK9+ as well.
+    + org.apache.tools.ant.taskdefs.Recorder class now introduces a
+      setLogLevel(LogLevel level) method.
+    + The <fork> element of junitlaunchertask now allows a
+      "forkMode" attribute. forkMode=perTestClass can now be used to
+      launch each test class in a separate forked JVM.
+
+-------------------------------------------------------------------
 Thu May  4 12:48:37 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add _multibuild to define additional spec files as additional
