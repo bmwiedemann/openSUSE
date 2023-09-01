@@ -320,4 +320,37 @@
   * Support for reading &amp; writing Root CA cert from UEFI variable (#225) (forwarded request 1104054 from glaubitz)</comment>
     <requestid>1104057</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>ada6430862539c272956963a31946059</srcmd5>
+    <version>20230828.00</version>
+    <time>1693570761</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20230828.00
+  * snapshot: Use main context rather than create its own (#266)
+- from version 20230825.01
+  * Verify if cert was successfully added to certpool (#264)
+- from version 20230825.00
+  * Find previous cert for cleanup using one stored on disk (#263)
+- from version 20230823.00
+  * Revert &quot;sshtrustedca: configure selinux context
+    for sshtrustedca pipe (#256)&quot; (#262)
+  * Update credentials directory on Linux (#260)
+- from version 20230821.00
+  * Update owners (#261)
+- from version 20230819.00
+  * Revert &quot;guest-agent: prepare for public release (#258)&quot; (#259)
+- from version 20230817.00
+  * guest-agent: prepare for public release (#258)
+- from version 20230816.01
+  * Enable telemetry collection by default (#253)
+- from version 20230816.00
+  * Add pkcs12 license and update retry logic (#257)
+  * sshtrustedca: Configure selinux context for sshtrustedca pipe (#256)
+  * Store windows certs in certstore (#255)
+  * events: Multiplex event watchers (#250)
+  * Scheduler fixes (#254)
+  * Update license files (#251)
+  * Run telemetry every 24 hours, record pretty name on linux (#248) (forwarded request 1108255 from glaubitz)</comment>
+    <requestid>1108271</requestid>
+  </revision>
 </revisionlist>
