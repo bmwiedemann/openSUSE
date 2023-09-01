@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Jun 27 11:49:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.5.6:
+- update to 1.5.6 (jsc#PED-5018)
   * Bug fix: iso_write_opts_set_part_like_isohybrid() did not
     cause a MBR partition table if the partitions are data files
     in the ISO rather than appended
