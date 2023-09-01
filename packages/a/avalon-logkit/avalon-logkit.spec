@@ -1,7 +1,7 @@
 #
 # spec file for package avalon-logkit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -41,14 +41,10 @@ BuildRequires:  geronimo-jms-1_1-api
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javamail
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jdbc-stdext
 BuildRequires:  reload4j
 BuildRequires:  unzip
-Requires:       mvn(javax.jms:jms)
-Requires:       mvn(javax.mail:mail)
-Requires:       mvn(javax.servlet:servlet-api)
-Requires:       mvn(log4j:log4j)
 BuildArch:      noarch
 
 %description
@@ -96,7 +92,7 @@ install -m 644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 #pom
 install -d -m 755 %{buildroot}/%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}/%{_mavenpomdir}/JPP-%{name}.pom
+%mvn_install_pom pom.xml %{buildroot}/%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap JPP-%{name}.pom %{name}.jar -a "%{short_name}:%{short_name},org.apache.avalon.logkit:%{name}"
 
 # javadoc
@@ -104,11 +100,8 @@ install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr dist/docs/api/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
-%files
+%files -f .mfiles
 %doc LICENSE.txt NOTICE.txt
-%{_javadir}/*
-%{_datadir}/maven-metadata/%{name}.xml
-%{_mavenpomdir}/JPP-%{name}.pom
 
 %files javadoc
 %doc LICENSE.txt
