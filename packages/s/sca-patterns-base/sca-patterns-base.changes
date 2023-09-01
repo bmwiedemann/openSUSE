@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 31 16:05:05 UTC 2023 - jason.record@suse.com
+
+- Changes to version 1.5.2
+  + Fixed SUSE.getRpmInfo to find the correct rpm.txt section (bsc#1210908)
+  + Changes to python/SUSE.py version 1.0.1
+    - Changed name from getScInfo to getSCInfo
+    - Fixed getSCInfo error on basic-environment.txt (bsc#1205826)
+    - Updated SLES version constants
+
+-------------------------------------------------------------------
 Wed Oct 26 19:12:21 UTC 2022 - jason.record@suse.com
 
 - Changes to version 1.5.1

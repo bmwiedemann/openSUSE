@@ -71,4 +71,12 @@
     <comment>Fixed UnicodeDecodeError when reading files bsc#1204723 (forwarded request 1031612 from jrecord)</comment>
     <requestid>1031613</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b4d178a8567f6ff2e1a76016f18a8ad3</srcmd5>
+    <version>1.5.2</version>
+    <time>1693570772</time>
+    <user>anag+factory</user>
+    <comment>bsc#1210908 bsc#1205826 (forwarded request 1108320 from jrecord)</comment>
+    <requestid>1108321</requestid>
+  </revision>
 </revisionlist>
