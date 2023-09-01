@@ -468,4 +468,12 @@ See https://build.opensuse.org/package/live_build_log/openSUSE:Factory:Staging:N
 update to latest version</comment>
     <requestid>1103604</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>90a9858adfc8ef08645e4d9579afb248</srcmd5>
+    <version>4.66.1</version>
+    <time>1693570726</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108219</requestid>
+  </revision>
 </revisionlist>

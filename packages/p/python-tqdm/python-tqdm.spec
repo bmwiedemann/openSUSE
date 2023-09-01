@@ -26,6 +26,7 @@
 %define pkg_suffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-tqdm%{pkg_suffix}
 Version:        4.66.1
 Release:        0
@@ -45,7 +46,6 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Enhances:       python-ipython
 BuildArch:      noarch
-%{?sle15_python_module_pythons}
 %if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module numpy if (python-base without python36-base)}
