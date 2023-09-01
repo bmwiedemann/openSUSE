@@ -1,7 +1,7 @@
 #
 # spec file for package python-proselint
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 %define modname proselint
 Name:           python-proselint
 Version:        0.13.0
@@ -34,18 +32,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires:       python-dbm
-Requires:       python-future
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module dbm}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest}
-%if %{with python2}
-BuildRequires:  python-mock
-%endif
 # /SECTION
 %python_subpackages
 
@@ -58,8 +51,7 @@ Proselint is a command-line utility that can be integrated into
 existing tools.
 
 %prep
-%setup -q -n proselint-%{version}
-%autopatch -p1
+%autosetup -p1 -n proselint-%{version}
 
 sed -i -e '/^#!\//, 1d' proselint/*.py
 

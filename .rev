@@ -128,4 +128,14 @@ Removed upstreamed patches:
     <comment></comment>
     <requestid>1030156</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>87209221bb41f3b3ee72cdbc0128ffcf</srcmd5>
+    <version>0.13.0</version>
+    <time>1693570783</time>
+    <user>anag+factory</user>
+    <comment>- Remove future requirement, not required.
+- Switch to autosetup.
+- Drop python2 leftovers.</comment>
+    <requestid>1108365</requestid>
+  </revision>
 </revisionlist>
