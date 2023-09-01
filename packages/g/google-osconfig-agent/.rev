@@ -316,4 +316,13 @@
   * Bump golang.org/x/sys from 0.0.0-20210923061019-b8560ed6a9b7 to 0.1.0 (#463) (forwarded request 1097495 from glaubitz)</comment>
     <requestid>1097515</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>de7fe72293e699f796c7eedff00dc75e</srcmd5>
+    <version>20230829.00</version>
+    <time>1693570768</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20230829.00
+  * Added burov, dowgird, paulinakania and Gulio to OWNERS (#482) (forwarded request 1108287 from glaubitz)</comment>
+    <requestid>1108291</requestid>
+  </revision>
 </revisionlist>
