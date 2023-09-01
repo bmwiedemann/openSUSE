@@ -1,6 +1,0 @@
-<package name="sblim-cmpi-ssh_service_profile" project="openSUSE:Factory">
-  <title>Instrumentation for DMTF SSH Service Profile.</title>
-  <description>Linux providers for instrumentation of DMTF SSH Service Profile (DSP
-1017)</description>
-  <devel project="systemsmanagement:wbem" package="sblim-cmpi-ssh_service_profile"/>
-</package>
