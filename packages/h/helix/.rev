@@ -194,4 +194,17 @@ This will increase possible helix users.</comment>
     <comment></comment>
     <requestid>1094660</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>1140b3ce0d5eb6e366ebdf9fb0c4f0b6</srcmd5>
+    <version>23.05</version>
+    <time>1693570786</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-fix-ub-in-diff-gutter.patch.
+  * This fixes issues when building helix with Rust &gt;1.71. In the future,
+  This will be removed once a fix lands on the `ropey` crate which was the
+  cause of the issue.
+- Reenable usage of cargo-packaging macros
+- Remove explicit dependency declaration of cargo1.66 to use latest Rust.</comment>
+    <requestid>1108347</requestid>
+  </revision>
 </revisionlist>

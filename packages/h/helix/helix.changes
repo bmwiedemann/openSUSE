@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 31 23:40:52 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add 0001-fix-ub-in-diff-gutter.patch.
+  * This fixes issues when building helix with Rust >1.71. In the future,
+  This will be removed once a fix lands on the `ropey` crate which was the
+  cause of the issue.
+- Reenable usage of cargo-packaging macros
+- Remove explicit dependency declaration of cargo1.66 to use latest Rust.
+
+-------------------------------------------------------------------
+Wed Aug 30 12:51:00 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Disable usage of cargo-packaging macros
+
+-------------------------------------------------------------------
+Wed Aug 30 12:34:13 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Limit cargo version = 1.66
+
+-------------------------------------------------------------------
 Thu Jun 22 11:33:28 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - helix-runtime now requires helix

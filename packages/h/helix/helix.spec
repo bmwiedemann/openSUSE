@@ -34,6 +34,7 @@ Source1:        vendor.tar.xz
 Source2:        cargo_config
 Source3:        README-suse-maint.md
 Source4:        helix-rpmlintrc
+Patch1:         https://github.com/helix-editor/helix/pull/7227.patch#/0001-fix-ub-in-diff-gutter.patch
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  cargo-packaging
@@ -96,7 +97,7 @@ sed -e '/^\#\!\/usr\/bin\/env .*/d' -i contrib/completion/hx.*
 export HELIX_DISABLE_AUTO_GRAMMAR_BUILD=true
 export TARGET="%_arch"
 %{cargo_build}
-cargo run --release -- --grammar build
+cargo run --release --offline -- --grammar build
 
 # Shell completions
 sed -i "s|hx|helix|g" contrib/completion/hx.*
