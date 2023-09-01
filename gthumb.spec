@@ -17,7 +17,7 @@
 
 
 Name:           gthumb
-Version:        3.12.2
+Version:        3.12.3
 Release:        0
 # FIXME: Add libchamplain BuildRequires once the map feature is considered stable.
 Summary:        An Image Viewer and Browser for GNOME
@@ -25,12 +25,6 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Apps/gthumb
 Source0:        https://download.gnome.org/sources/gthumb/3.12/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM da0d3f22.patch dimstar@opensuse.org -- Fix build with libraw 0.21
-Patch0:         https://gitlab.gnome.org/GNOME/gthumb/-/commit/da0d3f22.patch
-# PATCH-FIX-UPSTREAM 3376550a.patch -- exiv2: added support for version 0.28
-Patch1:         https://gitlab.gnome.org/GNOME/gthumb/-/commit/3376550a.patch
-# PATCH-FIX-UPSTREAM c97a8aaa.patch desktop background: fixed when using the dark color scheme
-Patch2:         https://gitlab.gnome.org/GNOME/gthumb/-/commit/c97a8aaa.patch
 
 BuildRequires:  AppStream
 BuildRequires:  bison
@@ -121,6 +115,7 @@ slide shows, set your desktop background, and more.
 %{_bindir}/gthumb
 %{_datadir}/gthumb/
 %{_libdir}/gthumb/
+%{_libexecdir}/gthumb/
 %if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1590
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/org.gnome.gThumb.appdata.xml
