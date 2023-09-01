@@ -16,29 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-panflute
 Version:        2.3.0
 Release:        0
 Summary:        Pandoc filters package for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/sergiocorreia/panflute
 Source:         https://files.pythonhosted.org/packages/source/p/panflute/panflute-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-click
-Requires:       python-future
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 %if %{with python2}
@@ -46,9 +43,6 @@ BuildRequires:  python-configparser
 BuildRequires:  python-shutilwhich
 %endif
 # /SECTION
-%ifpython2
-Requires:       python-shutilwhich
-%endif
 %python_subpackages
 
 %description
@@ -58,14 +52,13 @@ Panflute is a Python package for writing Pandoc filters.
 %setup -q -n panflute-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/panfl
 %python_clone -a %{buildroot}%{_bindir}/panflute
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-sed -i 's|shutilwhich||' %{buildroot}%{python3_sitelib}/panflute-*.egg-info/requires.txt
 
 %post
 %python_install_alternative panfl
@@ -80,6 +73,7 @@ sed -i 's|shutilwhich||' %{buildroot}%{python3_sitelib}/panflute-*.egg-info/requ
 %license LICENSE
 %python_alternative %{_bindir}/panflute
 %python_alternative %{_bindir}/panfl
-%{python_sitelib}/*
+%{python_sitelib}/panflute
+%{python_sitelib}/panflute-%{version}.dist-info
 
 %changelog
