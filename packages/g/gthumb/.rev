@@ -956,4 +956,12 @@
     <comment>Enable JPEG XL image  support; and add c97a8aaa.patch to fix desktop background when using the dark  color scheme.</comment>
     <requestid>1099348</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>4865f4111052fc2852cd5d32faaa9c71</srcmd5>
+    <version>3.12.3</version>
+    <time>1693570776</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108348</requestid>
+  </revision>
 </revisionlist>
