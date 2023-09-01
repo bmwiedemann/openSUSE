@@ -57,4 +57,25 @@
   * drop python2 support</comment>
     <requestid>948244</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ad76102f057e92be0e73692edd506c3e</srcmd5>
+    <version>1.4.0</version>
+    <time>1693570781</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.0:
+  * Using common strings in string interpolation is now the default.
+  * Add option to adjust alignment of text of multi-line values.
+  * Raise warning if parser is used multiple times, which leads to a
+    merged library.
+  * Allow preservation of existing order of entry fields in writer
+  * Support for python 3.10
+  * Removing unused dependencies
+  * Allow capital AND when splitting author list
+  * Fix problem in `homogenize_latex_encoding` when authors are lists
+  * Long description in setup.py
+- Switch to pyproject macros.
+- Drop patch python-bibtexparser-remove-unittest2.patch, dependency
+  dropped.</comment>
+    <requestid>1108356</requestid>
+  </revision>
 </revisionlist>

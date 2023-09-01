@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep  1 02:52:53 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.0:
+  * Using common strings in string interpolation is now the default.
+  * Add option to adjust alignment of text of multi-line values.
+  * Raise warning if parser is used multiple times, which leads to a
+    merged library.
+  * Allow preservation of existing order of entry fields in writer
+  * Support for python 3.10
+  * Removing unused dependencies
+  * Allow capital AND when splitting author list
+  * Fix problem in `homogenize_latex_encoding` when authors are lists
+  * Long description in setup.py
+- Switch to pyproject macros.
+- Drop patch python-bibtexparser-remove-unittest2.patch, dependency
+  dropped.
+
+-------------------------------------------------------------------
 Sun Jan 23 16:41:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.0:
