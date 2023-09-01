@@ -670,4 +670,15 @@
     (the old default broke systems with limited memory)</comment>
     <requestid>1102597</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>42aea2bf24e57026a1ba4f660178ddcf</srcmd5>
+    <version>1.10.7</version>
+    <time>1693570908</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.10.7:
+  * Fix mu4e-compose-complete-addresses defcustom
+  * Allow for specifying the guile dir (useful for distros)
+    meson setup -Dguile-extension-dir= build</comment>
+    <requestid>1108391</requestid>
+  </revision>
 </revisionlist>
