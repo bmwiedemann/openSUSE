@@ -1,7 +1,7 @@
 #
 # spec file for package xalan-j2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%define cvs_version 2_7_2
+%define cvs_version 2_7_3
 Name:           xalan-j2
-Version:        2.7.2
+Version:        2.7.3
 Release:        0
 Summary:        Java XSLT processor
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://xalan.apache.org/index.html
-Source0:        http://www.apache.org/dist/xalan/xalan-j/source/xalan-j_%{cvs_version}-src.tar.gz
-Source1:        http://repo1.maven.org/maven2/xalan/xalan/%{version}/xalan-%{version}.pom
-Source2:        http://repo1.maven.org/maven2/xalan/serializer/%{version}/serializer-%{version}.pom
+Source0:        https://www.apache.org/dist/xalan/xalan-j/source/xalan-j_%{cvs_version}-src.tar.gz
+Source1:        https://repo1.maven.org/maven2/xalan/xalan/%{version}/xalan-%{version}.pom
+Source2:        https://repo1.maven.org/maven2/xalan/serializer/%{version}/serializer-%{version}.pom
 Source3:        xsltc-%{version}.pom
 Source4:        xalan-j2-serializer-MANIFEST.MF
 Source5:        xalan-j2-MANIFEST.MF
@@ -43,8 +43,10 @@ BuildRequires:  java-cup-bootstrap
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  jlex
+BuildRequires:  regexp
 BuildRequires:  servletapi5
 BuildRequires:  xml-commons-apis-bootstrap
+#!BuildIgnore:  apache-commons-lang3
 #!BuildIgnore:  java-cup
 #!BuildIgnore:  xerces-j2
 #!BuildIgnore:  xml-commons
@@ -122,14 +124,11 @@ dos2unix KEYS LICENSE.txt NOTICE.txt xdocs/sources/xsltc/README.xsltc xdocs/sour
 cp %{SOURCE1} xalan.pom
 cp %{SOURCE2} serializer.pom
 
-%pom_remove_parent xalan.pom
-%pom_remove_parent serializer.pom
-
 %build
 if [ ! -e "$JAVA_HOME" ] ; then export JAVA_HOME="%{java_home}" ; fi
 pushd lib
 ln -sf $(build-classpath java-cup-runtime) runtime.jar
-ln -sf $(build-classpath bcel) BCEL.jar
+ln -sf $(build-classpath bcel) bcel-6.7.0.jar
 ln -sf $(build-classpath regexp) regexp.jar
 ln -sf $(build-classpath xerces-j2) xercesImpl.jar
 ln -sf $(build-classpath xml-commons-apis) xml-apis.jar
@@ -140,7 +139,7 @@ ln -sf $(build-classpath ant) ant.jar
 ln -sf $(build-classpath jlex) JLex.jar
 ln -sf $(build-classpath stylebook) stylebook-1.0-b3_xalan-2.jar
 popd
-ant \
+%{ant} \
   -Dservlet-api.jar=$(build-classpath servletapi5) \
   -Dcompiler.source=1.8 -Dcompiler.target=1.8 \
   -Djava.awt.headless=true \

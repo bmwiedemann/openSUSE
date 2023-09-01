@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Aug 31 08:42:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.7.3
+  * Java 8 requirement
+    + This XalanJ release, requires users to use Java minimum
+      version 8 for working with XalanJ.
+  * Fix for CVE-2022-34169 (bsc#1201684) An integer truncation issue
+    when processing malicious XSLT stylesheets
+    + This issue was fixed within XalanJ's XSLTC processor. This
+      XalanJ issue, when present causes following problems:
+      Malicious XSLT stylesheets may be written, which could result
+      in XalanJ invalid translet Java byte code to be produced by
+      XalanJ XSLTC processor. The XalanJ translet is a Java byte
+      code compiled representation, of an XSLT transformation.
+  * Upgrade to Apache Commons BCEL 6.7.0
+    + This XalanJ release, contains upgraded version of Apache
+      Commons BCEL library.
+  * Enhancements for, performing XalanJ build and running of XalanJ
+    tests from source distribution
+    + The XalanJ users, can now make XalanJ builds and perform
+      XalanJ tests from the XalanJ source distribution. The XalanJ
+      build scripts for the implementation and the tests, both for
+      the Windows and Linux platforms, were enhanced to support
+      building XalanJ with JDK 1.8.
+  * Upgrade to Xerces-J 2.12.2
+    + This XalanJ release, contains upgraded versions of
+      xercesImpl.jar and xml-apis.jar (Xerces-J 2.12.2).
+- Modified patches:
+  * openjdk-build.patch
+  * xalan-j2-manifest.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Fri Mar 18 16:35:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source/target levels 8
