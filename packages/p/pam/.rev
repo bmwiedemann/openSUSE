@@ -1179,4 +1179,12 @@
     <comment>Backport of upstream fixes for ALP</comment>
     <requestid>1102711</requestid>
   </revision>
+  <revision rev="133" vrev="3">
+    <srcmd5>12556c81bea675de4479a2ccb050e7ea</srcmd5>
+    <version>1.5.3</version>
+    <time>1693570754</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1108086</requestid>
+  </revision>
 </revisionlist>

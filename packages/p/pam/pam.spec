@@ -551,8 +551,10 @@ done
 %{_mandir}/man8/pam_rhosts.8%{?ext_man}
 %{_mandir}/man8/pam_rootok.8%{?ext_man}
 %{_mandir}/man8/pam_securetty.8%{?ext_man}
+%if %{with selinux}
 %{_mandir}/man8/pam_selinux.8%{?ext_man}
 %{_mandir}/man8/pam_sepermit.8%{?ext_man}
+%endif
 %{_mandir}/man8/pam_setquota.8%{?ext_man}
 %{_mandir}/man8/pam_shells.8%{?ext_man}
 %{_mandir}/man8/pam_stress.8%{?ext_man}
