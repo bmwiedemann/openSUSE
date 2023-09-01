@@ -159,4 +159,12 @@
     <comment>Fixed invalid solution links bsc#1204776 (forwarded request 1031617 from jrecord)</comment>
     <requestid>1031618</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0e3897f11d62658835312e4447093dd6</srcmd5>
+    <version>1.5.3</version>
+    <time>1693570773</time>
+    <user>anag+factory</user>
+    <comment>bsc#1214837 (forwarded request 1108322 from jrecord)</comment>
+    <requestid>1108323</requestid>
+  </revision>
 </revisionlist>
