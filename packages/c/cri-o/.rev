@@ -603,4 +603,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1045368</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>696fb72fa18bc2f648ccd7886b2d8c37</srcmd5>
+    <version>1.24.3</version>
+    <time>1693685239</time>
+    <user>dimstar_suse</user>
+    <comment>(bsc#1214406) update `kubelet.env`:
+
+* to remove the following deprecated/obselete flags:
+** `--container-runtime=remote --container-runtime-endpoint=unix:///var/run/crio/crio.sock --runtime-request-timeout=15m` 
+
+* to add new flag -&gt; `--fail-swap-on=false`
+</comment>
+    <requestid>1108439</requestid>
+  </revision>
 </revisionlist>

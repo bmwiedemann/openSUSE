@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 31 09:46:11 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- (bsc#1214406) update `kubelet.env`:
+  * to remove the following deprecated/obselete flags:
+  ** `--container-runtime=remote --container-runtime-endpoint=unix:///var/run/crio/crio.sock --runtime-request-timeout=15m`
+ 
+  * to add new flag -> `--fail-swap-on=false`
+
+-------------------------------------------------------------------
 Mon Dec 19 10:59:59 UTC 2022 - rbrown@suse.com
 
 - Update to version 1.24.3:
