@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep  1 13:59:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.7:
+  * New HJSON-based configuration format
+  * Adapter status indicators
+  * Cancellable OBEX session creation
+  * Enhanced popups
+  * Major bugfixes and improvements
+
+-------------------------------------------------------------------
 Mon Jul 10 05:47:43 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.1.5:
