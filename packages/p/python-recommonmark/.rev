@@ -102,4 +102,14 @@
 add sle15_python_module_pythons</comment>
     <requestid>1086534</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>d744eb5b086d487b3df2a258fe6b950b</srcmd5>
+    <version>0.7.1</version>
+    <time>1693685237</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject and autosetup macros.
+- Add missing postun section.
+- Drop unneeded future requirement.</comment>
+    <requestid>1108372</requestid>
+  </revision>
 </revisionlist>

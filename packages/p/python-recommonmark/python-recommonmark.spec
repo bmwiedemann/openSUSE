@@ -27,13 +27,16 @@ URL:            https://github.com/rtfd/recommonmark
 Source:         https://files.pythonhosted.org/packages/source/r/recommonmark/recommonmark-%{version}.tar.gz
 #Source0:        https://github.com/rtfd/recommonmark/archive/%%{version}.tar.gz#/recommonmark-%%{version}.tar.gz
 Patch0:         sphinx2.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-CommonMark >= 0.7.3
 Requires:       python-Sphinx >= 1.3.1
 Requires:       python-docutils >= 0.11
 Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Requires(preun):update-alternatives
 Provides:       python-reCommonMark = %{version}
 Obsoletes:      python-reCommonMark < %{version}
@@ -42,7 +45,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module CommonMark >= 0.7.3}
 BuildRequires:  %{python_module Sphinx >= 1.3.1}
 BuildRequires:  %{python_module docutils >= 0.11}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest}
 # /SECTION tests
 %python_subpackages
@@ -56,18 +58,17 @@ Documentation is available on Read the Docs:
 http://recommonmark.readthedocs.org
 
 %prep
-%setup -q -n recommonmark-%{version}
-%patch0 -p1
+%autosetup -p1 -n recommonmark-%{version}
 # Remove upstream's egg-info
 rm -rf %{pypi_name}.egg-info
 # find and remove unneeded shebangs
 find recommonmark -name "*.py" | xargs sed -i '1 {/^#!/ d}'
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/cm2html
@@ -84,6 +85,9 @@ find recommonmark -name "*.py" | xargs sed -i '1 {/^#!/ d}'
 %post
 %{python_install_alternative cm2man cm2latex cm2xetex cm2pseudoxml cm2html cm2xml}
 
+%postun
+%{python_uninstall_alternative cm2man cm2latex cm2xetex cm2pseudoxml cm2html cm2xml}
+
 %preun
 %python_uninstall_alternative cm2man
 
@@ -96,7 +100,7 @@ find recommonmark -name "*.py" | xargs sed -i '1 {/^#!/ d}'
 %python_alternative %{_bindir}/cm2xetex
 %python_alternative %{_bindir}/cm2xml
 %{python_sitelib}/recommonmark/
-%{python_sitelib}/recommonmark-%{version}-py*.egg-info
+%{python_sitelib}/recommonmark-%{version}.dist-info
 %doc README.md CHANGELOG.md
 
 %changelog
