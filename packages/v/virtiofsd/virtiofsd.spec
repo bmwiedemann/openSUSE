@@ -17,7 +17,7 @@
 
 
 Name:           virtiofsd
-Version:        1.6.1
+Version:        1.7.2
 Release:        0
 Summary:        vhost-user virtio-fs device backend written in Rust
 Group:          Development/Libraries/Rust

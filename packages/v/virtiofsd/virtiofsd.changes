@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 31 20:28:08 UTC 2023 - Caleb Crane <caleb.crane@suse.com>
+
+- Update to upstream version v1.7.2 (jsc#4980)
+  - Add supplementary group extension support
+  - Prevent EPERM failures with O_NOATIME
+  - Fix cache timeouts
+  - seccomp: Allow SYS_sched_yield
+  - Allow to provide the same argument multiple times
+  - Add the -V/--version options
+- Upgrade vendored dependencies
+
+-------------------------------------------------------------------
 Fri Jun  2 15:40:06 UTC 2023 - Caleb Crane <caleb.crane@suse.com>
 
 - Add qemu config file to ensure qemu is aware of the virtiofsd executable
