@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 01 07:00:58 UTC 2023 - rfrohl@suse.com
+
+- Update to version 0.1.0:
+  * v4l2: Use SystemDevices properties to identify cameras
+  * apps: Add ipa-verify application
+  * libcamera: formats: Add 14-bits Bayer RAW formats
+  * libcamera: v4l2_device: openat(2) with O_CLOEXEC to cleanup
+    after exec(3)
+- Drop silent-Werror_dangling-reference.patch: fixed upstream
+
+-------------------------------------------------------------------
 Mon Mar 13 08:48:30 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Disable warning in silent-Werror_dangling-reference.patch based

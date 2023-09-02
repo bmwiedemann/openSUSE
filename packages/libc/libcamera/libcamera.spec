@@ -16,10 +16,10 @@
 #
 
 
-%define lname       libcamera0_0_4
-%define lname_base  libcamera-base0_0_4
+%define lname       libcamera0_1
+%define lname_base  libcamera-base0_1
 Name:           libcamera
-Version:        0.0.4
+Version:        0.1.0
 Release:        0
 Summary:        A complex camera support library in C++
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,7 +28,6 @@ URL:            http://libcamera.org/
 
 Source:         %name-%version.tar.xz
 Source1:        baselibs.conf
-Patch0:         silent-Werror_dangling-reference.patch
 
 BuildRequires:  boost-devel
 BuildRequires:  c++_compiler
