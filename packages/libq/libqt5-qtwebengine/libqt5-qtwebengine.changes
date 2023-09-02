@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 01 08:27:14 UTC 2023 - christophe@krop.fr
+
+- Update to version 5.15.15:
+  * Update Chromium:
+  * [Backport] Security bug 1454860
+  * Further fixes for building with GCC 13
+  * Fixup [Backport] CVE-2023-2935: Type Confusion in V8
+  * [Backport] Security bug 1447430
+  * [Backport] CVE-2023-2930: Use after free in Extensions
+  * [Backport] CVE-2023-3079: Type Confusion in V8
+  * [Backport] CVE-2023-3216: Type Confusion in V8
+  * [Backport] CVE-2023-2933: Use after free in PDF
+  * [Backport] CVE-2023-2935: Type Confusion in V8
+  * [Backport] CVE-2023-2932: Use after free in PDF
+  * [Backport] CVE-2023-2931: Use after free in PDF
+  * [Backport] Security bug 1444195
+  * [Backport] Security bug 1428743
+  * [Backport] CVE-2023-2721: Use after free in Navigation
+
+-------------------------------------------------------------------
 Fri Jul 28 19:03:30 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with older re2 on Tumbleweed, the upcoming re2 2023-07-01
