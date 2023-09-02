@@ -17,7 +17,7 @@
 
 
 Name:           javaparser
-Version:        3.25.3
+Version:        3.25.5
 Release:        0
 Summary:        Java 1 to 15 Parser and Abstract Syntax Tree for Java
 License:        Apache-2.0 OR LGPL-3.0-or-later
@@ -36,7 +36,7 @@ BuildRequires:  mvn(org.javassist:javassist)
 BuildArch:      noarch
 
 %description
-A set of libraries implementing a Java 1.0 - Java 15 Parser with advanced
+A set of libraries implementing a Java 1.0 - Java 17 Parser with advanced
 analysis functionalities. This includes preview features to Java 13, with Java
 14 preview features work-in-progress.
 
