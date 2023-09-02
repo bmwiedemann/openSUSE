@@ -144,4 +144,13 @@
     <comment></comment>
     <requestid>1074640</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>00314d9945932afa2c3c531b2478dcdd</srcmd5>
+    <version>0.25</version>
+    <time>1693685267</time>
+    <user>dimstar_suse</user>
+    <comment>- Set version requirement for libadwaita-1
+</comment>
+    <requestid>1108552</requestid>
+  </revision>
 </revisionlist>
