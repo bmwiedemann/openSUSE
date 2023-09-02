@@ -137,4 +137,12 @@ This version fixes the conflict with labplot</comment>
     <comment></comment>
     <requestid>1102016</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>9fb74fc66ae4aa30adedab543381020a</srcmd5>
+    <version>2.10.1</version>
+    <time>1693685262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1108509</requestid>
+  </revision>
 </revisionlist>

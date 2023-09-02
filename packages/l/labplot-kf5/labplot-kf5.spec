@@ -28,6 +28,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://labplot.kde.org/
 Source:         https://download.kde.org/stable/labplot/labplot-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         Fix-finding-liborigin-header-in-project-import-test.patch
 BuildRequires:  bison
 BuildRequires:  cantor-devel
 BuildRequires:  extra-cmake-modules
@@ -87,7 +89,7 @@ exported to several pixmap and vector graphic formats.
 This version is based on KDE Frameworks 5
 
 %prep
-%setup -q -n labplot-%{version}
+%autosetup -p1 -n labplot-%{version}
 
 %build
 %cmake_kf5 -d build -- -DENABLE_READSTAT:BOOL=OFF -DENABLE_VECTOR_BLF:BOOL=OFF -DENABLE_REPRODUCIBLE:BOOL=ON
