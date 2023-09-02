@@ -17,7 +17,7 @@
 
 
 %global somajor 1
-%global sominor 28
+%global sominor 30
 %global libname libjanet%{somajor}_%{sominor}
 
 Name:           janet
@@ -59,7 +59,7 @@ C source file and a single header.
 
 %build
 export CFLAGS="%optflags -ffat-lto-objects"
-%meson -Ddefault_library=shared 
+%meson -Ddefault_library=shared
 %meson_build
 
 %install
