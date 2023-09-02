@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 29 12:27:09 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.8
+  * Fix issue with handling OWE AKM in association reply.
+
+-------------------------------------------------------------------
 Sat Jul  8 04:32:07 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.7
