@@ -36,7 +36,7 @@
 %define uwac_package %{uwac_version}-%{uwac_version}
 
 Name:           freerdp
-Version:        2.10.0
+Version:        2.11.0
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
@@ -46,8 +46,6 @@ Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/Fr
 Source1:        freerdp-rpmlintrc
 # PATCH-FIX-UPSTREAM https://github.com/FreeRDP/FreeRDP/pull/7476
 Patch0:         0001-Make-H.264-codec-optional-during-runtime.patch
-# PATCH-FIX-UPSTREAM https://github.com/FreeRDP/FreeRDP/commit/c5d91f8ef584174310970d0f7e31d6ffad7c5246.patch
-Patch1:         Update_h264_to_use_new_FFMPEG_API.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
@@ -202,31 +200,31 @@ find . -type f -name "*.c" -exec perl -i -pe 's{__(DATE|TIME)__}{""}g' "{}" "+"
 fi
 
 %cmake \
-	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-	-DCMAKE_INSTALL_LIBDIR=%{_lib} \
-	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-	-DCMAKE_EXE_LINKER_FLAGS="-pie" \
-	-DWITH_ALSA=ON \
-	-DWITH_CAIRO=ON \
-	-DWITH_CUPS=ON \
-	-DWITH_CHANNELS=ON -DBUILTIN_CHANNELS=OFF \
-	-DWITH_PLUGIN_RPATH_ONLY=ON \
+        -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+        -DCMAKE_INSTALL_LIBDIR=%{_lib} \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_EXE_LINKER_FLAGS="-pie" \
+        -DWITH_ALSA=ON \
+        -DWITH_CAIRO=ON \
+        -DWITH_CUPS=ON \
+        -DWITH_CHANNELS=ON -DBUILTIN_CHANNELS=OFF \
+        -DWITH_PLUGIN_RPATH_ONLY=ON \
         -DWITH_CLIENT=ON \
         -DWITH_DIRECTFB=OFF \
         -DWITH_FFMPEG=%{?_with_ffmpeg:ON}%{?!_with_ffmpeg:OFF} \
-	-DWITH_GSM=ON \
-	-DWITH_GSSAPI=%{?_with_gss:ON}%{?!_with_gss:OFF} \
+        -DWITH_GSM=ON \
+        -DWITH_GSSAPI=%{?_with_gss:ON}%{?!_with_gss:OFF} \
         -DWITH_GSTREAMER_1_0=ON -DWITH_GSTREAMER_0_10=OFF \
         -DWITH_ICU=ON \
         -DWITH_IPP=OFF \
-	-DWITH_JPEG=ON \
+        -DWITH_JPEG=ON \
         -DWITH_LAME=%{?_with_lame:ON}%{?!_with_lame:OFF} \
         -DWITH_MANPAGES=ON \
         -DWITH_OPENH264=%{?_with_openh264:ON}%{?!_with_openh264:OFF} \
         -DWITH_OPENSSL=ON \
-	-DWITH_PCSC=ON \
+        -DWITH_PCSC=ON \
         -DWITH_PULSE=ON \
-	-DWITH_SERVER=ON \
+        -DWITH_SERVER=ON \
         -DWITH_SERVER_INTERFACE=ON \
         -DWITH_SHADOW_X11=ON \
         -DWITH_SHADOW_MAC=ON \
@@ -259,9 +257,9 @@ fi
         -DARM_FP_ABI=soft \
         -DWITH_NEON=OFF \
 %endif
-	-DCHANNEL_GEOMETRY=ON -DCHANNEL_GEOMETRY_CLIENT=ON \
-	-DCHANNEL_URBDRC=ON \
-	-DCHANNEL_URBDRC_CLIENT=ON
+        -DCHANNEL_GEOMETRY=ON -DCHANNEL_GEOMETRY_CLIENT=ON \
+        -DCHANNEL_URBDRC=ON \
+        -DCHANNEL_URBDRC_CLIENT=ON
 
 %make_build
 
