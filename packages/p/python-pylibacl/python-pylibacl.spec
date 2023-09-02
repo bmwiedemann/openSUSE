@@ -17,8 +17,7 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pylibacl
 Version:        0.6.0
 Release:        0
