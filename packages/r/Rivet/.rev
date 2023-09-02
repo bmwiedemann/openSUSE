@@ -213,4 +213,14 @@ Depends on
     <comment></comment>
     <requestid>1100939</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>a8efba310fe48bf4da50a6b68362c520</srcmd5>
+    <version>3.1.8</version>
+    <time>1693685260</time>
+    <user>dimstar_suse</user>
+    <comment>- License: Change LPPL-1.3 to LPPL-1.3a according to spdx list.
+- License correction based on the legaldb scan
+</comment>
+    <requestid>1108503</requestid>
+  </revision>
 </revisionlist>

@@ -22,7 +22,7 @@ Name:           Rivet
 Version:        %{ver}
 Release:        0
 Summary:        A toolkit for validation of Monte Carlo event generators
-License:        GPL-2.0-only
+License:        GPL-2.0-only and Apache-2.0 and MPL-2.0 and LPPL-1.3a and BSL-1.0
 URL:            https://rivet.hepforge.org/
 Source:         https://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.gz
 Patch0:         sover.diff
