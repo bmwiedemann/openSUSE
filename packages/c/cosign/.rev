@@ -414,4 +414,41 @@
   - Mark keyless pem files with b64 (#2671) (forwarded request 1079858 from msmeissn)</comment>
     <requestid>1079859</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0e8361a1725a27ce1b03cf90e2ca9ff1</srcmd5>
+    <version>2.2.0</version>
+    <time>1693685241</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.2.0 (jsc#SLE-23879)
+  - Enhancements
+    * switch to uploading DSSE types to rekor instead of intoto (#3113)
+    * add 'cosign sign' command-line parameters for mTLS (#3052)
+    * improve error messages around bundle != payload hash (#3146)
+    * make VerifyImageAttestation function public (#3156)
+    * Switch to cryptoutils function for SANS (#3185)
+    * Handle HTTP_1_1_REQUIRED errors in github provider (#3172)
+  - Bug Fixes
+    * Fix nondeterminsitic timestamps (#3121)
+  - Documentation
+    * doc: Add example of sign-blob with key in env var (#3152)
+    * add deprecation notice for cosign-releases GCS bucket (#3148)
+    * update doc links (#3186)
+
+- updated to 2.1.1 (jsc#SLE-23879)
+  - Bug Fixes
+    - wait for the workers become available again to continue the execution (#3084)
+    - fix help text when in a container (#3082)
+- updated to 2.1.0 (jsc#SLE-23879)
+  - Breaking Change: The predicate is now a required flag in the attest commands, set via the --type flag.
+  - Enhancements
+    - Verify sigs and attestations in parallel (#3066)
+    - Deep inspect attestations when filtering download (#3031)
+    - refactor bundle validation code, add support for DSSE rekor type (#3016)
+    - Allow overriding remote options (#3049)
+    - feat: adds no cert found on sig exit code (#3038)
+    - Make predicate a required flag in attest commands (#3033)
+    - Added support for attaching Time stamp authority Response in attach command (#3001)
+    - Add sign --sign-container-identity CLI (#2984) (forwarded request 1108431 from msmeissn)</comment>
+    <requestid>1108432</requestid>
+  </revision>
 </revisionlist>
