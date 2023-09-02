@@ -88,12 +88,31 @@ compilers.
 %package -n libcmocka-devel
 Summary:        Development headers for the cmocka library
 Group:          Development/Libraries/C and C++
-Requires:       cmake
 Requires:       libcmocka0 = %{version}
 Requires:       pkg-config
+Requires:       (libcmocka-cmake if cmake)
 
 %description -n libcmocka-devel
 Development headers for the cmocka unit testing library.
+
+%package -n libcmocka-doc
+Summary:        Documentation for the cmocka library
+Group:          Development/Libraries/C and C++
+Enhances:       libcmocka-devel
+Provides:       libcmocka-devel:%{_defaultdocdir}/libcmocka-devel
+
+%description -n libcmocka-doc
+Documentation for the cmocka unit testing library.
+
+%package -n libcmocka-cmake
+Summary:        cmake support for the cmocka library
+Group:          Development/Libraries/C and C++
+Requires:       libcmocka-devel = %{version}
+Requires:       cmake
+Provides:       libcmocka-devel:%{_libdir}/cmake/cmocka
+
+%description -n libcmocka-cmake
+cmake support for developing with the cmocka unit testing library.
 
 %prep
 %autosetup -p1
@@ -130,20 +149,18 @@ popd
 %{_libdir}/libcmocka.so.*
 
 %files -n libcmocka-devel
-%if %{with docs}
-%doc build/doc/html
-#endif with docs
-%endif
 %{_includedir}/cmocka.h
 %{_includedir}/cmocka_pbc.h
-%dir %{_includedir}/cmockery
-%{_includedir}/cmockery/cmockery.h
-%{_includedir}/cmockery/pbc.h
+%{_includedir}/cmockery
 %{_libdir}/libcmocka.so
 %{_libdir}/pkgconfig/cmocka.pc
-%dir %{_libdir}/cmake/cmocka
-%{_libdir}/cmake/cmocka/cmocka-config-relwithdebinfo.cmake
-%{_libdir}/cmake/cmocka/cmocka-config-version.cmake
-%{_libdir}/cmake/cmocka/cmocka-config.cmake
+
+%if %{with docs}
+%files -n libcmocka-doc
+%doc build/doc/html
+%endif
+
+%files -n libcmocka-cmake
+%{_libdir}/cmake/cmocka
 
 %changelog
