@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 01 15:07:05 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.24.0
+- Implement “commit_and_forward_key” command
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/461)
+- m17n-lib interface: transliterate “produced” part and “preedit” separately
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/460)
+- Update emoji annotations from CLDR
+
+-------------------------------------------------------------------
 Thu Aug 10 17:24:32 UTC 2023 - maiku.fabian@gmail.com
 
 - Update to 2.23.4
