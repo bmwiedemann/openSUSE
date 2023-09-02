@@ -1,7 +1,7 @@
 #
 # spec file for package wget2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,8 @@
 
 
 Name:           wget2
-Version:        2.0.1
+%define lname libwget2
+Version:        2.1.0
 Release:        0
 Summary:        A Tool for Mirroring FTP and HTTP Servers
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -52,24 +53,27 @@ zlib compression, parallel connections and use of If-Modified-Since
 HTTP header. HTTP/2 has been implemented. Wget2 also consumes less
 system and user CPU cycles than Wget1.x.
 
-%package -n libwget1
+%package -n %lname
 Summary:        A library to download and mirror FTP/HTTP sites
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n libwget1
+%description -n %lname
 Wget enables you to retrieve WWW documents or FTP files from a
 server. This can be done in script files or via the command line.
 
 libwget which provides an interface to many useful functions used by
 Wget2.
 
-%package -n libwget-devel
+%package devel
 Summary:        Development files for libwget
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
+Requires:       %lname = %version-%release
+Obsoletes:      libwget-devel < %version-%release
+Provides:       libwget-devel = %version-%release
 
-%description -n libwget-devel
+%description devel
 libwget which provides an interface to many useful functions used by
 Wget2.
 
@@ -92,18 +96,18 @@ to build against libwget.
 rm -f "%buildroot/%_bindir"/*_noinstall "%buildroot/%_libdir"/*.la
 %find_lang %name
 
-%post   -n libwget1 -p /sbin/ldconfig
-%postun -n libwget1 -p /sbin/ldconfig
+%post   -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
 %files -f %name.lang
 %_bindir/wget*
 %license COPYING
 
-%files -n libwget1
+%files -n %lname
 %_libdir/libwget*.so.*
 %license COPYING.LESSER
 
-%files -n libwget-devel
+%files devel
 %_mandir/man3/*.3*
 %_libdir/pkgconfig/*.pc
 %_libdir/libwget*.so
