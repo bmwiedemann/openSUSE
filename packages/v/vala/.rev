@@ -1255,4 +1255,12 @@
   + Bindings: gtk4: Update to 4.12.0 (forwarded request 1104772 from iznogood)</comment>
     <requestid>1105009</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>582adc083c0d27c48a4ffc306fce7453</srcmd5>
+    <version>0.56.13</version>
+    <time>1693685233</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1108350</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 30 07:36:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.56.13:
+  + Bindings: gtk4: Restore CssProvider.load_from_data() signature
+    to take an array.
+
+-------------------------------------------------------------------
 Sat Aug 19 12:14:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.56.12:
