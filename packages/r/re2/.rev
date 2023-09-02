@@ -467,4 +467,12 @@
     <comment>re2 2023-08-01</comment>
     <requestid>1101567</requestid>
   </revision>
+  <revision rev="55" vrev="56">
+    <srcmd5>92308b407806383a3d745252e378c3b2</srcmd5>
+    <version>MACRO</version>
+    <time>1693685227</time>
+    <user>dimstar_suse</user>
+    <comment>re2 2023-09-01</comment>
+    <requestid>1108487</requestid>
+  </revision>
 </revisionlist>
