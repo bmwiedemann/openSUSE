@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 01 12:43:48 UTC 2023 - antonio.teixeira@suse.com
+
+- Update to version 3.12.5+git0.a8471d8:
+  * steamcompmgr: Fix build (rebase woes)
+  * steamcompmgr: If we have an override surface, make sure new commits are for it
+  * Remove reference to non-existent key bind
+  * steamcompmgr: Fix disable color mgmt leaving some states behind
+  * Only SetSelectionOwner when syncing selections
+  * Improve clipboard handling
+  * Remove unnecessary key bind
+  * Fix build issue
+  * Fix documentation
+  * Update documentation and --help
+
+-------------------------------------------------------------------
 Fri Aug 18 12:25:53 UTC 2023 - antonio.teixeira@suse.com
 
 - Update to version 3.12.3+git1.77d9432:
