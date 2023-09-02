@@ -1,7 +1,7 @@
 #
 # spec file for package osgi-core
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           osgi-core
-Version:        7.0.0
+Version:        8.0.0
 Release:        0
 Summary:        OSGi Core API
 License:        Apache-2.0
@@ -35,7 +35,7 @@ BuildRequires:  unzip
 BuildArch:      noarch
 
 %description
-OSGi Core Release 7, Interfaces and Classes for use in compiling bundles.
+OSGi Core Release 8, Interfaces and Classes for use in compiling bundles.
 
 %package javadoc
 Summary:        API documentation for %{name}
@@ -79,7 +79,7 @@ mv org src/main/java/
 %pom_add_dep org.osgi:osgi.annotation::provided
 
 %build
-ant jar javadoc
+%{ant} jar javadoc
 
 %install
 # jar
