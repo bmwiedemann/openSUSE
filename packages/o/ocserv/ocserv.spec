@@ -17,7 +17,7 @@
 
 
 Name:           ocserv
-Version:        1.1.6
+Version:        1.2.1
 Release:        0
 Summary:        OpenConnect VPN Server
 License:        GPL-2.0-only
@@ -149,7 +149,7 @@ sed -i '/^\[Service\].*/a ExecStartPre=%{_sbindir}/ocserv-forwarding --enable' %
 %files
 %defattr(-,root,root)
 %doc AUTHORS NEWS README.md
-%license COPYING LICENSE
+%license COPYING
 %config %{_sysconfdir}/ocserv
 %if 0%{suse_version} >= 1500
 %dir %{_prefix}/lib/firewalld

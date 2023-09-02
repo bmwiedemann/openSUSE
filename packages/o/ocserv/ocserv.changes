@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Aug 29 12:37:56 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.1
+  * Accept the Clavister OneConnect VPN Android client.
+  * No longer require to set device name per vhost.
+  * Account the correct number of points when proxyproto is in use
+  * nuttcp tests were replaced with iperf3 that is available
+    in more environments
+  * occtl: fix duplicate key in `occtl --json show users` output
+- Update to version 1.2.0
+  * Add support for Cisco Enterprise phones to authenticate via
+    the /svc endpoint and the 'cisco-svc-client-compat' config
+    option.
+  * Enhanced radius group support to enable radius servers send
+    multiple group class attributes
+    See doc/README-radius.md for more information.
+  * Enhanced the seccomp filters to open files related to FIPS
+    compliance on SuSe.
+  * Added "Camouflage" functionality that makes ocserv look like a
+    web server to unauthorized parties.
+  * Avoid login failure when the end point of server URI
+    contains a query string.
+  * Make sure we print proper JSON with `occtl --debug --json`
+  * Eliminated the need for using the gnulib portability library.
+- Update to version 1.1.7
+  * Emit a LOG_ERR error message with plain authentication fails
+  * The bundled inih was updated to r56.
+  * The bundled protobuf-c was updated to 1.4.1.
+  * Enhanced the seccomp filters for ARMv7 compatibility and musl
+    libc
+  * HTTP headers always capitalised as in RFC 9110
+
+-------------------------------------------------------------------
 Wed Jan 18 13:17:42 UTC 2023 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add ocserv-forwarding.sh: replace the sysctl drop-in file which was wrongly
