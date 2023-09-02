@@ -680,4 +680,14 @@ source service setup which messed up my spec file.
   * usrmerge: Drop support for non-usrmerged (boo#1206798) (forwarded request 1104072 from mwilck)</comment>
     <requestid>1104074</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>5f29a3ab22b0a973e0885532f706adaa</srcmd5>
+    <version>16.0.34</version>
+    <time>1693685226</time>
+    <user>dimstar_suse</user>
+    <comment>* support old-style markers under /run/regenerate-initrd
+    (bsc#1214877)
+  * Fix comment in regenerate-initrd-posttrans (forwarded request 1108485 from mwilck)</comment>
+    <requestid>1108486</requestid>
+  </revision>
 </revisionlist>

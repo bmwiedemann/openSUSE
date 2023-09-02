@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  1 15:35:17 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+  * support old-style markers under /run/regenerate-initrd
+    (bsc#1214877)
+  * Fix comment in regenerate-initrd-posttrans 
+
+-------------------------------------------------------------------
 Tue Aug 15 16:12:13 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.33:
