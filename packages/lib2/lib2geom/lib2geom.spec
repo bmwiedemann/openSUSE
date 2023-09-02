@@ -70,7 +70,8 @@ needed to develop applications that require %{name}.
 %autosetup -n %{name}-%{short_version} -p1
 
 %build
-%global optflags %optflags -fexcess-precision=fast
+export CFLAGS="%optflags -fexcess-precision=fast -DNDEBUG"
+export CXXFLAGS="$CFLAGS"
 %cmake -Wno-dev \
        -D2GEOM_BUILD_SHARED:BOOL=ON \
        -D2GEOM_TOYS:BOOL=OFF \

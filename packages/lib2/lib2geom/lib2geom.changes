@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 23 13:38:04 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add -DNDEBUG to CFLAGS explicitly, since the i586 build depends
+  on it.
+
+-------------------------------------------------------------------
 Thu Jul 27 20:40:32 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - add skip_failing_tests.diff to fix instable intersection tests
