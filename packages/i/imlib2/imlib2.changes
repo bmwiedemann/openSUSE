@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 31 13:05:14 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Disable MMX code, it's broken in 1.12.0 (boo#1214528)
+
+-------------------------------------------------------------------
 Thu Aug 17 18:02:04 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to 1.12.0:

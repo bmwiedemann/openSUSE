@@ -131,11 +131,7 @@ jpeg, png, pnm, tga, tiff, xpm, j2k, heif, jxl.
 
 %build
 %configure \
-%ifarch %{ix86}
-	--enable-mmx \
-%else
 	--disable-mmx \
-%endif
 %ifarch x86_64
 	--enable-amd64 \
 %endif
