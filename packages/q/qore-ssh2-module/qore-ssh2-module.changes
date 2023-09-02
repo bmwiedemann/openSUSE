@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  2 13:23:51 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- fixed a bug where the sftp connection scheme was unusable (issue 4755)
+
+-------------------------------------------------------------------
 Sat Mar 26 10:51:50 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Update to version 1.4.1
