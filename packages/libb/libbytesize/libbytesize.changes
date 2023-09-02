@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 30 19:40:43 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 2.9:
+  * This release contains fixes for some small issues.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Sat May  6 21:46:55 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Drop lang sub-package recommendation. It's not needed anymore now

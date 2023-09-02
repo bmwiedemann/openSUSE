@@ -16,16 +16,17 @@
 #
 
 
-%define somajor 1
-%define libname %{name}%{somajor}
+%define soversion 1
+
 Name:           libbytesize
-Version:        2.8
+Version:        2.9
 Release:        0
 Summary:        A library for working with sizes in bytes
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/storaged-project/libbytesize
-Source:         https://github.com/storaged-project/libbytesize/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        %{url}/raw/%{version}/NEWS.rst
 
 BuildRequires:  gcc
 BuildRequires:  gmp-devel
@@ -41,33 +42,30 @@ bytes, be it parsing the input from users or producing a human-readable
 representation of a size in bytes. This library takes localization into
 account. It also provides support for sizes bigger than MAXUINT64.
 
-%package -n %{libname}
+%package -n libbytesize%{soversion}
 Summary:        A library for working with sizes in bytes
 Group:          System/Libraries
 Provides:       %{name} = %{version}
 
-%description -n %{libname}
+%description -n libbytesize%{soversion}
 The LibBytesize is a C library that facilitates work with sizes in
 bytes, be it parsing the input from users or producing a human-readable
 representation of a size in bytes. This library takes localization into
 account. It also provides support for sizes bigger than MAXUINT64.
 
 %package -n bscalc
-Summary:        A utility for working with sizes in bytes
+Summary:        A libbytesize tool
 Group:          System/Libraries
-Requires:       %{libname} = %{version}
+Requires:       libbytesize%{soversion} = %{version}
 BuildArch:      noarch
 
 %description -n bscalc
-The LibBytesize is a C library that facilitates work with sizes in
-bytes, be it parsing the input from users or producing a human-readable
-representation of a size in bytes. This library takes localization into
-account. It also provides support for sizes bigger than MAXUINT64.
+This package solely contains the bscalc tool.
 
 %package devel
 Summary:        Development files for LibBytesize
 Group:          Development/Libraries/C and C++
-Requires:       %{libname} = %{version}
+Requires:       libbytesize%{soversion} = %{version}
 
 %description devel
 This package contains header files and pkg-config files needed for development
@@ -76,7 +74,7 @@ with the LibBytesize library.
 %package -n python3-%{name}
 Summary:        Python 3 bindings for LibBytesize
 Group:          Development/Libraries/Python
-Requires:       %{libname} = %{version}
+Requires:       libbytesize%{soversion} = %{version}
 Requires:       python3-six
 
 %description -n python3-%{name}
@@ -86,7 +84,9 @@ the library from Python 3 easier and more convenient.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
+# Place NEWS.rst in the source tree for %%doc'ing it later.
+install -m 644 -t . %{SOURCE1}
 
 %build
 %configure \
@@ -100,16 +100,16 @@ the library from Python 3 easier and more convenient.
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%post -n libbytesize%{soversion} -p /sbin/ldconfig
+%postun -n libbytesize%{soversion} -p /sbin/ldconfig
 
 %files -n bscalc
 %license LICENSE
-%doc README.md
+%doc NEWS.rst README.md
 %{_bindir}/bscalc
 %{_mandir}/man1/bscalc.1*
 
-%files -n %{libname}
+%files -n libbytesize%{soversion}
 %{_libdir}/%{name}.so.*
 
 %files devel
