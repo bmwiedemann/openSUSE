@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Sep  2 13:17:09 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 1.18.1
+  * Added the ElasticSearchDataProvider module + tests 
+  * Fixed TID assignments after all TIDs have been assigned 
+  * Implemented support for ellipses in Qore 
+  * Implemented options to allow some badly-formatted Swagger 
+  * Set the default connect timeout for HTTP connection
+  * Implemented an initial EmpathicBuildingDataProvider module 
+  * Fixed date subtraction when the RHS is 1970-01-01Z 
+  * Fix compilation of QoreEllipsesNode during non-scu 
+  * Verify connection option values against allowed_values 
+  * Fixed a bug where the HttpConnection scheme could not be used 
+  * Allow user modules included with external binary modules 
+  * Fixed compatibility with recent versions of ServiceNow 
+  * Fixed operator handling in ServiceNow searches 
+  * Fixed URI path reporting in REST error messages 
+  * Added missing allowed values to field data info 
+
+-------------------------------------------------------------------
 Fri Jul 21 18:57:45 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Fix qore-stdlib configuration

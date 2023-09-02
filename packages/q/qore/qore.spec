@@ -37,13 +37,12 @@
 %endif
 %endif
 
-
 %define so_ver 12
 %define module_dir %{_libdir}/qore-modules
 %global user_module_dir %{mydatarootdir}/qore-modules/
 %global libname libqore12
 Name:           qore
-Version:        1.16.1
+Version:        1.18.1
 Release:        1%{dist}
 Summary:        Multithreaded Programming Language
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MIT
@@ -52,8 +51,7 @@ URL:            https://qore.org
 Source0:        https://github.com/qorelanguage/qore/releases/download/release-%{version}/%{name}-%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE bmwiedemann boo#1084909
 Patch0:         reproducible.patch
-BuildRequires:  automake
-BuildRequires:  bison >= 1.8.5
+BuildRequires:  bison
 BuildRequires:  bzip2
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -72,11 +70,13 @@ Requires(post): shared-mime-info
 Requires(postun):shared-mime-info
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-
 %description
 Qore is a scripting language supporting threading and embedded logic.
 It applies a scripting-based approach to interface development and
 can also be used as a general purpose language.
+
+%if 0%{?suse_version}
+%endif
 
 %package -n %{libname}
 Summary:        Libraries for the qore runtime and qore clients
@@ -85,8 +85,8 @@ Group:          Development/Languages/Other
 Provides:       qore-module(abi)%{?_isa} = 1.3
 Provides:       qore-module(abi)%{?_isa} = 1.4
 %if "%{libname}" == "libqore"
-Provides: libqore12 = %{version}
-Obsoletes: libqore12 < %{version}
+Provides:       libqore12 = %{version}
+Obsoletes:      libqore12 < %{version}
 %endif
 
 %description -n %{libname}
@@ -99,9 +99,9 @@ functionality.
 
 %files -n %{libname}
 %defattr(-,root,root,-)
-%{_libdir}/libqore.so.12.3.1
+%{_libdir}/libqore.so.12.4.0
 %{_libdir}/libqore.so.12
-%doc COPYING.LGPL COPYING.GPL COPYING.MIT README.md README-LICENSE README-MODULES RELEASE-NOTES AUTHORS ABOUT
+%doc README.md README-MODULES RELEASE-NOTES AUTHORS ABOUT
 %license COPYING.LGPL COPYING.GPL COPYING.MIT README-LICENSE
 
 %post -n %{libname}
@@ -111,9 +111,9 @@ ldconfig %{_libdir}
 ldconfig %{_libdir}
 
 %package stdlib
-Summary: Standard library modules
-Group: System Environment/Libraries
-Requires: %{libname} = %{version}-%{release}
+Summary:        Standard library modules
+Group:          System Environment/Libraries
+Requires:       %{libname} = %{version}-%{release}
 
 %description stdlib
 Qore is a scripting language supporting threading and embedded logic, designed
@@ -127,7 +127,7 @@ modules.
 %defattr(-,root,root,-)
 %{user_module_dir}
 %{module_dir}
-%doc COPYING.MIT README-LICENSE
+%license COPYING.MIT README-LICENSE
 
 %package doc
 Summary:        API documentation, programming language reference, and Qore example programs
@@ -145,14 +145,14 @@ and also for user modules delivered with Qore and also example programs.
 
 %files doc
 %defattr(-,root,root,-)
-%doc docs/lang docs/modules/* examples/ 
+%doc docs/lang docs/modules/* examples/
 %license COPYING.LGPL COPYING.GPL COPYING.MIT README-LICENSE
 
 %package devel
 Summary:        Header files needed to compile programs using the qore library
 License:        GPL-2.0-or-later OR LGPL-2.0-or-later OR MIT
 Group:          Development/Languages/C and C++
-Requires:       libqore%{so_ver} = %{version}-%{release}
+Requires:       %{libname}%{?_isa} = %{version}-%{release}
 
 %description devel
 Qore is a scripting language supporting threading and embedded logic.
@@ -178,14 +178,15 @@ Qore library.
 %package devel-doc
 Summary:        C++ API documentation for the qore library
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MIT
-Group:          Documentation/HTML
-Requires:       libqore12 = %{version}-%{release}
+Group:          Documentation
 BuildArch:      noarch
 
 %description devel-doc
 Qore is a scripting language supporting threading and embedded logic, designed
 for applying a flexible scripting-based approach to enterprise interface
 development but is also useful as a general purpose language.
+
+This package provides HTML documentation for the C++ API for the Qore library.
 
 %files devel-doc
 %defattr(-,root,root,-)
@@ -220,24 +221,18 @@ This package contains tool for working with:
 find examples -type f -exec chmod -x {} \;
 
 %build
-aclocal
-autoreconf -fi
-%if "%_lib" == "lib64"
-c64=--enable-64bit
-%endif
 export CXXFLAGS="%{?optflags}"
 %configure --disable-debug --disable-dependency-tracking
 %{__make} %{?_smp_mflags}
 sed -i '1s,#!/usr/bin/env qore,#!/usr/bin/qore,' bin/* doxygen/qdx doxygen/qjar
 
 %install
-mkdir -p %{buildroot}%{_prefix}/bin
-mkdir -p %{buildroot}/%{module_dir}/%{version}
-mkdir -p %{buildroot}%{_prefix}/man/man1
-make install prefix=%{_prefix} DESTDIR=%{buildroot}
-rm %{buildroot}/%{_libdir}/libqore.la
+make install prefix=%{_prefix} DESTDIR=$RPM_BUILD_ROOT
+rm $RPM_BUILD_ROOT/%{_libdir}/libqore.la
 mkdir -p $RPM_BUILD_ROOT/%{module_dir}
-%fdupes -s docs
+%if 0%{?suse_version}
+%fdupes -s docs/library/html
+%endif
 
 %check
 export QORE_MODULE_DIR=qlib
@@ -252,7 +247,6 @@ export QORE_MODULE_DIR=qlib
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-
 %files
 %defattr(-,root,root,-)
 /usr/bin/qore
@@ -260,7 +254,8 @@ rm -rf $RPM_BUILD_ROOT
 /usr/bin/qdbg-server
 /usr/bin/qdbg-remote
 /usr/bin/qdbg-vsc-adapter*
+%if 0%{?_mandir:1}
 %{_mandir}/man1/qore.1.*
-
+%endif
 
 %changelog
