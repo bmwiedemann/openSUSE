@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Thu Aug 31 06:33:17 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.43.0.0
+  * Features
+    ~ upgrade to sqlite 3.43.0 (6e02ee7)
+  * Fixes
+    ~ jdbc
+      + remove support for Statement#getGeneratedKeys:
+        getGeneratedKeys is not supported anymore (712a8a5), closes
+        #329
+  * Changes
+    ~ remove the deprecated SQLiteJDBCLoader isPureJavaMode and
+      getPureJavaFlag: methods are removed (e52c44f)
+    ~ remove the deprecated TransactionMode.DEFFERED: no more
+      backward compatibility when using the deprecated enum value
+      (8967d75)
+  * Build
+    ~ deps
+      + bump org.graalvm.buildtools:native-maven-plugin (a89a42a)
+      + bump org.apache.maven.plugins:maven-enforcer-plugin
+        (5488061)
+    ~ deps-dev
+      + bump org.mockito:mockito-core from 5.4.0 to 5.5.0 (fffd224)
+    ~ unscoped
+      +  remove conditions over native or java mode (c4ddd1e)
+- Update to v3.42.0.1
+  * Fixes
+    ~ jdbc
+      + PreparedStatement#executeQuery should not return null
+        (1eacd68), closes #914
+      + add fallback to LocalDateTime.parse in ResultSet#getObject
+        (d76c933)
+      + ResultSet#getObject could throw a NPE (ea165fa), closes
+        #915
+      + check parameters presence in getParameterType (76b560d),
+        closes #911
+    ~ native-image
+      + make sure the parent directory exists before exporting
+        (bfa7510)
+    ~ unscoped
+      + use dylib extension instead of jnilib for MacOS library
+        names (78defd0)
+      + correct the exception message when backup fails (3ffef4d)
+  * Changes
+    ~ fix typos (8e999fe)
+  + Build
+    ~ deps
+      + bump org.graalvm.buildtools:native-maven-plugin (168c998)
+      + bump jreleaser-maven-plugin from 1.6.0 to 1.7.0 (0bccb7c)
+      + bump native-maven-plugin from 0.9.22 to 0.9.23 (3be5102)
+      + bump surefire.version from 3.1.0 to 3.1.2 (b2f968f)
+      + bump versions-maven-plugin from 2.15.0 to 2.16.0 (6c3430d)
+      + bump maven-source-plugin from 3.2.1 to 3.3.0 (774c104)
+      + bump maven-bundle-plugin from 5.1.8 to 5.1.9 (e41c5e6)
+    ~ deps-dev
+      + bump ch.qos.logback:logback-classic (d370eea)
+      + bump com.tngtech.archunit:archunit-junit5 (30b71aa)
+      + bump org.junit.jupiter:junit-jupiter (14e5eb8)
+      + bump ch.qos.logback:logback-classic from 1.4.8 to 1.4.9
+        (85f8319)
+      + bump mockito-core from 5.3.1 to 5.4.0 (3d28792)
+      + bump logback-classic from 1.4.7 to 1.4.8 (1738823)
+    + unscoped
+      + update to GraalVM 23 (840ce0e)
+      + fix version update in README (3054957)
+  * Documentation
+    ~ add project status in README (cae28b1)
+
+-------------------------------------------------------------------
 Mon May 22 12:15:50 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.42.0.0
