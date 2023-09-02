@@ -234,4 +234,17 @@
     <comment></comment>
     <requestid>1079087</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f58b3fb931811b255a40a7530b0efab9</srcmd5>
+    <version>6.2.8</version>
+    <time>1693685259</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.8:
+  * Upgrade catch2 to fix another gcc13 error.
+
+- Update to 6.2.7
+  * Fixes errors in release build &amp; CI
+- Drop ET-gcc13.patch</comment>
+    <requestid>1108504</requestid>
+  </revision>
 </revisionlist>

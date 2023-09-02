@@ -17,26 +17,25 @@
 
 
 %global _firewalld_dir %{_prefix}/lib/firewalld
+%if 0%{?sle_version} >= 150300
+%define forced_gcc_version -10
+BuildRequires:  gcc10-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 Name:           EternalTerminal
-Version:        6.2.4
+Version:        6.2.8
 Release:        0
 Summary:        Remote shell that survives IP roaming and disconnect
 License:        Apache-2.0
 URL:            https://mistertea.github.io/EternalTerminal/
 Source0:        https://github.com/MisterTea/EternalTerminal/archive/et-v%{version}.tar.gz
 Source1:        et.xml
-Patch0:         ET-gcc13.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  firewall-macros
 BuildRequires:  firewalld
-%if 0%{?sle_version} >= 150300
-BuildRequires:  gcc10-c++
-%define forced_gcc_version -10
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  gflags-devel
 BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  libsodium-devel
@@ -64,7 +63,7 @@ export CXX=g++%{?forced_gcc_version}
 export CXXFLAGS="%{optflags} -std=c++17"
 # see https://github.com/MisterTea/EternalTerminal/issues/403
 %cmake -DDISABLE_VCPKG:BOOL=ON -DProtobuf_LITE_LIBRARY=%{_libdir}/libprotobuf-lite.so
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -77,6 +76,10 @@ install -m 0644 -p systemctl/et.service %{buildroot}%{_unitdir}/et.service
 install -m 0644 -p etc/et.cfg %{buildroot}%{_sysconfdir}/et.cfg
 install -m 0644 %{SOURCE1} %{buildroot}%{_firewalld_dir}/services/et.xml
 mv %{buildroot}%{_bindir}/et %{buildroot}%{_bindir}/et-client
+
+# https://github.com/MisterTea/EternalTerminal/issues/601
+rm %{buildroot}%{_includedir}/httplib.h
+rm %{buildroot}%{_libdir}/cmake/httplib/*.cmake
 
 %pre
 %service_add_pre et.service

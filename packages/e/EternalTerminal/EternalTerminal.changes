@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep  1 17:28:29 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.2.8:
+  * Upgrade catch2 to fix another gcc13 error.
+
+-------------------------------------------------------------------
+Fri Sep  1 17:27:52 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.2.7
+  * Fixes errors in release build & CI
+- Drop ET-gcc13.patch
+
+-------------------------------------------------------------------
 Wed Apr 12 10:22:11 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add ET-gcc13.patch: Fix build using GCC 13.
