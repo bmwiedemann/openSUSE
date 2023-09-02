@@ -32,6 +32,7 @@ Patch4:         CVE-2017-11358.patch
 Patch5:         CVE-2017-15370.patch
 Patch6:         CVE-2017-15372.patch
 Patch7:         CVE-2017-18189.patch
+BuildRequires:  file-devel
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libtool
@@ -40,7 +41,6 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(ao)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(id3tag)
-BuildRequires:  pkgconfig(libmagic)
 BuildRequires:  pkgconfig(libmp3lame)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpulse)

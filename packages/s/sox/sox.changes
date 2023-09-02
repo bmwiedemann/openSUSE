@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  1 12:34:56 UTC 2023 - olaf@aepfle.de
+
+- Use file-devel instead of libmagic to fix build in Leap
+
+-------------------------------------------------------------------
 Wed May 10 14:27:52 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Further modernise specfile
