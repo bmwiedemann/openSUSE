@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep  1 12:11:07 UTC 2023 - jason.record@suse.com
+
+- Changes in version 3.1.26
+  + powerpc plugin to collect the slots and active memory (bsc#1210950)
+  + A Cleartext Storage of Sensitive Information vulnerability CVE-2022-45154
+  + supportconfig: collect BPF information (pr#154)
+  + Added additional iscsi information (pr#155)
+
+-------------------------------------------------------------------
+Wed Jul 26 15:05:45 UTC 2023 - jason.record@suse.com
+
+- Added run time detection (bsc#1213127)
+
+-------------------------------------------------------------------
+Mon Jun 26 14:11:15 UTC 2023 - jason.record@suse.com
+
+- ha_info sle15 uses /var/log/pacemaker/ (pq#153)
+
+-------------------------------------------------------------------
 Thu Jun  1 04:29:14 UTC 2023 - jason.record@suse.com
 
 - Changes for supportutils version 3.1.25

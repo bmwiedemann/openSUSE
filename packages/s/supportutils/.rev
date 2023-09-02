@@ -274,4 +274,12 @@
     <comment>CVE-2022-45154 and podman (forwarded request 1090119 from jrecord)</comment>
     <requestid>1090120</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>a7f7c2268797d6cc2b80ff4cc787cb45</srcmd5>
+    <version>3.1.26</version>
+    <time>1693685245</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1210950 CVE-2022-45154 bsc#1213127 pr#153, pr#154, pr#155 (forwarded request 1108454 from jrecord)</comment>
+    <requestid>1108455</requestid>
+  </revision>
 </revisionlist>
