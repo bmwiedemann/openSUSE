@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep  1 08:54:06 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to rekor 1.3.0 (jsc#SLE-23476):
+  - Update openapi.yaml (#1655)
+  - pass transient errors through retrieveLogEntry (#1653)
+  - return full entryID on HTTP 409 responses (#1650)
+  - feat: Support publishing new log entries to Pub/Sub topics (#1580)
+  - Change values of Identity.Raw, add fingerprints (#1628)
+  - Extract all subjects from SANs for x509 verifier (#1632)
+  - Fix type comment for Identity struct (#1619)
+  - Refactor Identities API (#1611)
+  - Refactor Verifiers to return multiple keys (#1601)
+  - Update checkpoint link (#1597)
+  - Use correct log index in inclusion proof (#1599)
+  - remove instrumentation library (#1595)
+
+- updated to rekor 1.2.2 (jsc#SLE-23476):
+  - pass down error with message instead of nil
+  - swap killswitch for 'docker-compose restart'
+
+-------------------------------------------------------------------
 Tue May 30 07:52:52 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to rekor 1.2.1 (jsc#SLE-23476):

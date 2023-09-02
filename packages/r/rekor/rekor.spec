@@ -19,9 +19,9 @@
 %define apps cli server
 
 Name:           rekor
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
-%define revision 576458cb53269ed54dccf8a43271ee02a785c191
+%define revision ed3d0b15a97e6497e3ab758e3102a6ef540fff50
 Summary:        Supply Chain Transparency Log
 License:        Apache-2.0
 URL:            https://github.com/sigstore/rekor
