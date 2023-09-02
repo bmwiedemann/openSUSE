@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 30 16:43:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 7.5.1:
+  * Fix problem of converting a symbolic link target that is on
+    another file system
+  * Updated Chinese and Serbian translations
+
+-------------------------------------------------------------------
 Thu May 18 08:21:08 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - update to 7.5.0:
