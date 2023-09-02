@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 31 18:12:21 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to 1.1.3+20230830
+  * Patches:
+    - 0001-Don-t-run-kreadconfig-if-KDE_SESSION_VERSION-is-5.patch
+    - support-deepin-desktop.patch
+    - xdg-utils-egrep.patch
+    are merged upstream
+  * Support for KDE Plasma 6
+
+-------------------------------------------------------------------
 Sun Sep  4 17:29:24 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - xdg-open: convert usage of obsolete egrep to grep -E

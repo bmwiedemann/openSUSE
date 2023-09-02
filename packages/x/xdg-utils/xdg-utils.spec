@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xdg-utils
-Version:        1.1.3+20210805
+Version:        1.1.3+20230830
 Release:        0
 Summary:        Utilities to uniformly interface desktop environments
 License:        MIT
@@ -27,11 +27,6 @@ URL:            https://www.freedesktop.org/wiki/Software/xdg-utils/
 Source:         xdg-utils-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE install-some-more-scripts.diff jslaby@suse.cz
 Patch0:         install-some-more-scripts.diff
-# PATCH-FIX-UPSTREAM 0001-Don-t-run-kreadconfig-if-KDE_SESSION_VERSION-is-5.patch
-Patch1:         0001-Don-t-run-kreadconfig-if-KDE_SESSION_VERSION-is-5.patch
-# PATCH-FIX-OPENSUSE support-deepin-desktop.patch hillwood@opensuse.org
-Patch2:         support-deepin-desktop.patch
-Patch3:         xdg-utils-egrep.patch
 BuildRequires:  make
 # for xmlto to be able to generate text from html
 BuildRequires:  w3m
