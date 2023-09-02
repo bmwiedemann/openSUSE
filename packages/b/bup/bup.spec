@@ -19,36 +19,40 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 %define with_test 0
+%if 0%{?suse_version} < 1600
+%define pythons python311
+%endif
 Name:           bup
-Version:        0.32.1
+Version:        0.33.2
 Release:        0
 Summary:        Backup program based on git
 License:        LGPL-2.0-only
 Group:          Productivity/Archiving/Backup
 URL:            https://bup.github.io/
 Source0:        https://github.com/bup/bup/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  git-core >= 1.5.3.1
+BuildRequires:  git-core >= 1.5.6
 %ifnarch %ix86
 BuildRequires:  pandoc
 %endif
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module fuse}
+BuildRequires:  %{python_module pylibacl}
+BuildRequires:  %{python_module pyxattr}
+BuildRequires:  %{python_module tornado}
 BuildRequires:  perl-Time-HiRes
-BuildRequires:  python3-devel
-BuildRequires:  python3-fuse
-BuildRequires:  python3-pylibacl
-BuildRequires:  python3-pyxattr
-BuildRequires:  python3-tornado
 %if %{with_test}
-BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-xdist
+BuildRequires:  %{python_module pylint}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  rsync
 %endif
-Requires:       git-core >= 1.5.3.1
+Requires:       %{python_flavor}
+Requires:       %{python_flavor}-fuse
+Requires:       %{python_flavor}-pylibacl
+Requires:       %{python_flavor}-pyxattr
+Requires:       %{python_flavor}-tornado
+Requires:       git-core >= 1.5.6
 Requires:       par2
-Requires:       python3
-Requires:       python3-fuse
-Requires:       python3-pylibacl
-Requires:       python3-pyxattr
-Requires:       python3-tornado
 
 %description
 Very efficient backup system based on the git packfile format,
@@ -57,14 +61,12 @@ providing fast incremental saves and global deduplication
 
 %prep
 %autosetup -p1
-# rpmlint: fix incorrect-fsf-address
-find . -type f | xargs sed -i -e 's:59 Temple Place\, Suite 330\, Boston\, MA  02111-1307  USA:51 Franklin Street\, Fifth Floor\, Boston\, MA 02110-1301 USA:g'
 # fix binpath
-sed -i -e "s|PREFIX=/usr/local|PREFIX=%{_prefix}|g" Makefile
+sed -i -e "s|PREFIX=/usr/local|PREFIX=%{_prefix}|g" GNUmakefile
 # fix docpath
-sed -i -e "s|/share/doc/bup|/share/doc/packages/bup|g" Makefile
+sed -i -e "s|/share/doc/bup|/share/doc/packages/bup|g" GNUmakefile
 # fix env-script-interpreter
-sed -i -e "s|\/usr\/bin\/env bash|\/bin\/bash|g" cmd/import-rdiff-backup-cmd.sh
+sed -i -e "s|\/usr\/bin\/env bash|\/bin\/bash|g" lib/cmd/bup-import-rdiff-backup
 # rpmlint
 find -type f -name ".gitignore" -exec rm {} \;
 
@@ -72,13 +74,13 @@ find -type f -name ".gitignore" -exec rm {} \;
 # FIXME: you should use the %%configure macro
 # With macro %%configure package will not build.
 ./configure
-%make_build PYTHON=python3
+%make_build
 
 %install
 %if 0%{!?make_install:1}
 %define make_install make install 'DESTDIR=%{buildroot}'
 %endif
-%make_install PYTHON=python
+%make_install
 
 %check
 %if %{with_test}
@@ -87,7 +89,7 @@ make check
 
 %files
 %license LICENSE
-%doc README
+%doc README.md
 %{_bindir}/%{name}
 %dir %{_prefix}/lib/%{name}/
 %dir %{_prefix}/lib/%{name}/bup/
