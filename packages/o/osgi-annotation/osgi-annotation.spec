@@ -1,7 +1,7 @@
 #
 # spec file for package osgi-annotation
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           osgi-annotation
-Version:        7.0.0
+Version:        8.1.0
 Release:        0
 Summary:        Annotations for use in compiling OSGi bundles
 License:        Apache-2.0
