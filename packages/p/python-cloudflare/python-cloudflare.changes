@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  4 15:56:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.11.7:
+  * more api endpoints
+  * update examples and README to use == for numberic values 
+
+-------------------------------------------------------------------
 Tue Jul 11 14:06:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.11.6:

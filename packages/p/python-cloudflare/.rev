@@ -117,4 +117,14 @@
   * added deprecated processing, now shows version</comment>
     <requestid>1098206</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2e8f441093ab3ddbf358fc93bdb16077</srcmd5>
+    <version>2.11.7</version>
+    <time>1693860844</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.11.7:
+  * more api endpoints
+  * update examples and README to use == for numberic values</comment>
+    <requestid>1108926</requestid>
+  </revision>
 </revisionlist>
