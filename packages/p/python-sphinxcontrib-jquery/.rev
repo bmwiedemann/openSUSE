@@ -7,4 +7,13 @@
     <comment>Break build requires loop</comment>
     <requestid>1085511</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>932e9ff009b088c538b334a17e743f5f</srcmd5>
+    <version>4.1</version>
+    <time>1693860750</time>
+    <user>anag+factory</user>
+    <comment>- Add tests-with-sphinx-72.patch to fix tests with sphinx 7.2.
+  gh#sphinx-contrib/jquery#27</comment>
+    <requestid>1108857</requestid>
+  </revision>
 </revisionlist>

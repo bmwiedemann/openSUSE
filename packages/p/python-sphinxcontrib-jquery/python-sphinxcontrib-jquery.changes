@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  4 12:04:08 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- remove tests-with-sphinx-71.patch.
+- Add tests-with-sphinx-72.patch to fix tests with sphinx 7.2.
+  gh#sphinx-contrib/jquery#27
+
+-------------------------------------------------------------------
+Mon Sep  4 10:52:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add tests-with-sphinx-71.patch to fix tests with sphinx 7.1+
+
+-------------------------------------------------------------------
 Mon May  8 11:07:48 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Switch to mulitbuild to avoid build loop dependency
