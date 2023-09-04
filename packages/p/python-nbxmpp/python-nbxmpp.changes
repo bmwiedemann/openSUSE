@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep  1 14:18:08 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.3.3:
+  * JID: Allow comparisons against any object.
+  * DiscoInfo: Improve discovery if subject is allowed to be
+    modified.
+  * Don’t expect localpart for bare JIDs.
+
+-------------------------------------------------------------------
 Mon Aug  7 23:17:29 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.3.2:
