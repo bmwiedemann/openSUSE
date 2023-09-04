@@ -17,13 +17,13 @@
 
 
 Name:           python-pyreadstat
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Package to read and write statistical data files into pandas
 License:        Apache-2.0
 URL:            https://github.com/Roche/pyreadstat
 Source:         https://github.com/Roche/pyreadstat/archive/v%{version}.tar.gz#/pyreadstat-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython >= 3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pandas >= 0.24.0}

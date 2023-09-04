@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 31 11:39:15 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.2.3
+  * changes introduced for compatibility with cython 3.0.0. 
+    Cython 0.29 no longer supported. Python 2.7 no longer supported.
+
+-------------------------------------------------------------------
 Tue Jun 27 12:06:04 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - update to 1.2.2
