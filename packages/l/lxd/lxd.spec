@@ -175,7 +175,7 @@ popd
 readarray -t mainpkgs \
 	<<<"$(go list -f '{{.Name}}:{{.ImportPath}}' %{import_path}/... | \
 	      awk -F: '$1 == "main" { print $2 }' | \
-	      grep -Ev '^github.com/lxc/lxd/(test|shared)')"
+	      grep -Ev '^github.com/canonical/lxd/(test|shared)')"
 
 # Needed because lxd and deps use funky #cgo LDFLAGS that Go blocks by default.
 export CGO_LDFLAGS_ALLOW="(-Wl,-wrap,pthread_create)|(-Wl,-z,now)"
