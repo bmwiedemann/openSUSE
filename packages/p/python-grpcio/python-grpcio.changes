@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 30 17:07:21 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.57.0:
+  * [posix] Enable systemd sockets for libsystemd>=233
+    (gh#grpc/grpc#32671).
+  * [python O11Y] Initial Implementation (gh#grpc/grpc#32974).
+- Add python-grpcio-cython3-compat.patch: Fix noexcept errors upon
+  compiling with Cython 3+ (gh#grpc/grpc#33918).
+- Build with LTO (don't set _lto_cflags to %nil).
+- No need to pass '-std=c++17' to build CFLAGS.
+
+-------------------------------------------------------------------
 Sat Aug  5 13:25:52 UTC 2023 - munix9@googlemail.com
 
 - Update to version 1.56.2:

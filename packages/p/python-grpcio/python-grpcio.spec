@@ -21,13 +21,15 @@
 %define         skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-grpcio
-Version:        1.56.2
+Version:        1.57.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://grpc.io
 Source:         https://files.pythonhosted.org/packages/source/g/grpcio/grpcio-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-grpcio-cython3-compat.patch gh#grpc/grpc#33918 badshah400@gmail.com -- Fix noexcept errors upon compiling with Cython 3+
+Patch0:         python-grpcio-cython3-compat.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
@@ -57,7 +59,6 @@ connected systems.
 %autosetup -p1 -n grpcio-%{version}
 
 %build
-%define _lto_cflags %{nil}
 export GRPC_BUILD_WITH_BORING_SSL_ASM=false
 export GRPC_PYTHON_BUILD_SYSTEM_ABSL=true
 export GRPC_PYTHON_BUILD_SYSTEM_CARES=true
@@ -65,7 +66,7 @@ export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=true
 export GRPC_PYTHON_BUILD_SYSTEM_RE2=true
 export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=true
 export GRPC_PYTHON_BUILD_WITH_CYTHON=true
-export GRPC_PYTHON_CFLAGS="%{optflags} -std=c++17"
+export GRPC_PYTHON_CFLAGS="%{optflags}"
 %pyproject_wheel
 
 %install
@@ -77,7 +78,7 @@ export GRPC_PYTHON_CFLAGS="%{optflags} -std=c++17"
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitearch}/grpc
+%{python_sitearch}/grpc/
 %{python_sitearch}/%{modname}-%{version}.dist-info
 
 %changelog
