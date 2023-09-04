@@ -109,4 +109,14 @@
 </comment>
     <requestid>1087978</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>8c09a0d2b4d6828672d9ca4732688d1e</srcmd5>
+    <version>0.2.11</version>
+    <time>1693860746</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1107345 from mcalabkova
+
+- Add patch sphinx72.patch</comment>
+    <requestid>1108040</requestid>
+  </revision>
 </revisionlist>

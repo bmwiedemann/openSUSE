@@ -25,6 +25,8 @@ Summary:        Extended sphinx autodoc including automatic autosummaries
 License:        Apache-2.0
 URL:            https://github.com/Chilipp/autodocsumm
 Source:         https://github.com/Chilipp/autodocsumm/archive/v%{version}.tar.gz#/autodocsumm-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/Chilipp/autodocsumm/pull/88 fix build with Sphinx 7.2
+Patch:          sphinx72.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module versioneer}
 BuildRequires:  %{python_module wheel}
