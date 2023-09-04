@@ -25,25 +25,24 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-qthelp%{psuffix}
-Version:        1.0.3
+Version:        1.0.6
 Release:        0
 Summary:        Sphinx extension which outputs QtHelp
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-qthelp
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-qthelp/sphinxcontrib-qthelp-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinxcontrib-qthelp/pull/14 Fix tests with Sphinx 5.0
-Patch0:         sphinx5.patch
-BuildRequires:  %{python_module setuptools}
+Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib_qthelp/sphinxcontrib_qthelp-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx
+Requires:       python-Sphinx >= 5.0
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module Sphinx >= 5.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-qthelp >= %{version}}
 %endif
@@ -53,15 +52,15 @@ BuildRequires:  %{python_module sphinxcontrib-qthelp >= %{version}}
 sphinxcontrib-qthelp is a sphinx extension which outputs QtHelp document.
 
 %prep
-%setup -q -n sphinxcontrib-qthelp-%{version}
+%setup -q -n sphinxcontrib_qthelp-%{version}
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -74,7 +73,9 @@ sphinxcontrib-qthelp is a sphinx extension which outputs QtHelp document.
 %files %{python_files}
 %doc README.rst CHANGES
 %license LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/sphinxcontrib
+%{python_sitelib}/sphinxcontrib/qthelp
+%{python_sitelib}/sphinxcontrib_qthelp-%{version}*-info
 %endif
 
 %changelog
