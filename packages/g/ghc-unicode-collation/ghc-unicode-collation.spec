@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.3.4
+Version:        0.1.3.5
 Release:        0
 Summary:        Haskell implementation of the Unicode Collation Algorithm
 License:        BSD-2-Clause
