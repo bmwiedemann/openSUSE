@@ -44,8 +44,6 @@ Mon Jun 26 14:18:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + video-blend: Fix linking error with C++.
   + Fixes FLAC file parsing integer overflow remote code execution
     vulnerability (bsc#1213128, CVE-2023-37327)
-  + Fixes PGS file parsing heap-based buffer overflow remote code
-    execution vulnerability (bsc#1213126, CVE-2023-37329)
 - Rebase reduce-required-meson.patch.
 
 -------------------------------------------------------------------
