@@ -17,7 +17,7 @@
 
 
 Name:           himalaya
-Version:        0.8.4~0
+Version:        0.9.0~0
 Release:        0
 Summary:        Command-line interface for email management
 License:        MIT
