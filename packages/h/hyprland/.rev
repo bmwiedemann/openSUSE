@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>1103511</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>50c5ffc4cc2cab0654e200a4581bb6ad</srcmd5>
+    <version>0.29.1</version>
+    <time>1693860776</time>
+    <user>anag+factory</user>
+    <comment>Update to version 0.29.1
+(this time actually, due to an OBS *bug*/bad design the previous request was just 0.29.0)</comment>
+    <requestid>1108727</requestid>
+  </revision>
 </revisionlist>

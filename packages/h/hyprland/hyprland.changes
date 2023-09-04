@@ -1,4 +1,148 @@
 -------------------------------------------------------------------
+Sun Sep  3 17:30:30 UTC 2023 - Florian <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.29.1:
+  + New hyprland update :)
+    Fixes some annoying wlroots bump related issues and adds some
+    QoL stuff.
+  + New features:
+    - special: add misc:close_special_on_empty
+  + Fixes:
+    - fix: use-after-free of CWindow* in
+      CHyprGroupBarDecoration::draw (#3146)
+    - input: fix xwayland constraint calcs
+    - keybinds: fixup global conditions
+    - keybinds: fixup release conditions
+    - refactor: raise SIGABRT instead of write to null address
+      (#3124)
+    - renderer: fixup occlusion conditions
+    - screencopy: fix region sharing
+    - text-input-v1: Fix preedit styling in chromium (#3131)
+  + Other:
+    - compositor: remove wlr_scene refs
+    - decos: groupbar mouse interaction (#3102)
+    - globalshortcuts: allow empty appid
+    - input: warp in unconstrainMouse
+    - internal: Unsafe state reworks (#3114)
+    - internal: workspace rule handling refactor (#3116)
+    - keybinds: set special monitor id before recalc
+    - keybinds: suppress up event if down was consumed
+    - layout: always center floating xdg windows
+    - meson: remove refs to ext-workspace-unstable-v1
+    - opengl: cleanup framebuffer style
+    - readme: refactor and update a bit
+    - readme: remove wlr_ext workspace proto support mention
+    - renderer: don't set enabled in applyMonitorRule
+    - renderer: render IME popups in fullscreen
+    - waylandResource: remove user data in markDefunct and not ~dtor
+    - window: check for special id matching in close_special_on_empty
+    - wlr-ext-workspace: remove protocol impl
+
+-------------------------------------------------------------------
+Tue Aug 29 13:31:16 UTC 2023 - Florian <packaging@sp1rit.anonaddy.me>
+
+- Updated to version 0.29.0:
+  + Plamene zore bude me iz sna.
+    New Hyprland update brought to you by Yours Truly :)
+  + Breaking changes
+    - misc:suppress_portal_warnings has been yeeten (alongside the
+      warning)
+  + New features:
+    - animations: add slidefade and slidefadevert styles for
+      workspaces (#3008)
+    - background: add background color option (#2915)
+    - config: add vrr per-display
+    - feat(debug): add debug:suppress_errors to suppress errors.
+      (#3032)
+    - hyprctl: add --instance
+    - input: add transparent binds
+    - internal: add a new monitor auto system
+    - internal: add lock files and hyprctl instances
+    - renderer: add decoration:blur:special
+    - renderer: don't add workspace offset to pinned
+    - rules: add layer and window xray rules
+  + Fixes:
+    - Close keymap files. Fixes #2904 (#2905)
+    - compositor: fix auto positioning offset calcs
+    - compositor: fix log types
+    - compositor: fix missed raw throws
+    - compositor: fix offset in auto arrangeMonitors
+    - compositor: fix skipping iterators in arrangeMonitors
+    - fix workspace change focus (#2891)
+    - fix: improved focus behaviour on workspace switching for
+      follow_mouse!=1 (#3041)
+    - hyprctl: fix hyprpaper
+    - hyprctl: fix old request methods
+    - input: fix and unify client checking in mouseRequests
+    - internal: Fix XDP multi-portal issues (#3077)
+    - internal: Fix grouped windows not being properly focused on
+      activation (#2925)
+    - macros: fix missing include
+    - master: fix always_center_master (#2961)
+    - renderer: fix missing premultiplication for border
+      multisampling
+    - shaders: minor premultiplication fixes
+    - toplevelexport: minor fixes to dmabuf
+    - xwayland: fix incorrect VECINRECT usage
+    - xwayland: fix use of xwayland coords in native spaces
+  + Other:
+    - animationmgr: avoid redundant ticks
+    - compositor: don't apply offsets in renderer
+    - compositor: log more in arrangeMonitors
+    - compositor: log thrown runtime exceptions
+    - compositor: minor cleanup
+    - compositor: update window rules on workspace move
+    - config: adjust default background color
+    - deps: update wlroots
+    - dwindle: disallow togglesplit on fullscreen
+    - dwindle: use smart on display borders (#2897)
+    - gestures: Swipe direction lock (#3052)
+    - input: improved path handling; null check return value of
+      fopen. (#3061)
+    - input: notify idle about activity on mouse move regardless of
+      focus
+    - input: sanitize newlines in device names
+    - input: unify constraint hint logic
+    - internal: Wayland Protocol impl improvements (#2944)
+    - internal: allow negative monitor offsets
+    - internal: allow opening empty special workspaces
+    - internal: cleanup headers in helpers/
+    - internal: ioctl use /dev/tty instead of fd 0 for VT_GETSTATE
+      (#2989)
+    - internal: move backtrace to specific func
+    - keybinds: Keep aspect ratio (#2907)
+    - keybinds: Only call fclose() when we have a valid file.
+      (#2908)
+    - layers: set proper alpha to top grabbing surfaces
+    - layout: Use refreshrate tick on all manual animations (#2988)
+    - layout: allow changing float status of fullscreen windows
+    - layout: allow drag on fullscreen windows
+    - layout: use full box for visibility check of floating xdg
+    - master: layout resize makes the wrong size changes (#3064)
+    - props: bump ver to 0.29.0
+    - remove shadow no_gaps_when_only (#2956)
+    - remove shadow no_gaps_when_only master (#2958)
+    - renderer: Border improvements (#2986)
+    - renderer: don't blur special on disabled blur
+    - renderer: fully switch to premultiplied alpha
+    - renderer: make contrast and brightness adjustments before
+      rendering
+    - renderer: remember extents before removing a window and use
+      them for dt
+    - renderer: track fade alpha for blur if ignore opacity is true
+    - renderer: update alpha of layers only if active ws (#2994)
+    - rules: center window improvements (#2935)
+    - toplevel: patches group toplevel-activated (#2931)
+    - xdgoutput: don't send all details in .get
+    - xdgoutput: manually destroy manager resource
+    - xdgoutput: mark resources defunct when monitor is unplugged
+    - xdgoutput: separate logic for zero scaling positions
+    - xdgshell: damage old popup coords after a reposition
+    - xwayland: drop wlr_xwayland_surface.events.set_pid (#2884)
+    - xwayland: use a completely separate coordinate system
+    - xwayland: use logical pos in unmanaged geom requests
+
+-------------------------------------------------------------------
 Fri Aug 11 14:37:54 UTC 2023 - Florian <packaging@sp1rit.anonaddy.me>
 
 - Updated to version 0.28.0:

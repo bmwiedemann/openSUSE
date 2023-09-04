@@ -20,7 +20,7 @@
 %bcond_without devel
 
 Name:           hyprland
-Version:        0.28.0
+Version:        0.29.1
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -111,6 +111,8 @@ rm %{buildroot}/%{_libdir}/libwlroots.a %{buildroot}/%{_libdir}/pkgconfig/wlroot
 %{_datadir}/%{name}/
 %dir %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/%{name}.desktop
+%dir %{_datadir}/xdg-desktop-portal
+%{_datadir}/xdg-desktop-portal/%{name}-portals.conf
 %{_mandir}/man1/Hyprland.*
 %{_mandir}/man1/hyprctl.*
 
