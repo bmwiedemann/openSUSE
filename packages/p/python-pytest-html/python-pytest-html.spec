@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-html
-Version:        4.0.0rc5
+Version:        4.0.0
 Release:        0
 Summary:        Pytest plugin for generating HTML reports
 License:        MPL-2.0

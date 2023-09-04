@@ -1,7 +1,7 @@
-Index: pytest_html-4.0.0rc5/testing/test_e2e.py
+Index: pytest_html-4.0.0/testing/test_e2e.py
 ===================================================================
---- pytest_html-4.0.0rc5.orig/testing/test_e2e.py
-+++ pytest_html-4.0.0rc5/testing/test_e2e.py
+--- pytest_html-4.0.0.orig/testing/test_e2e.py
++++ pytest_html-4.0.0/testing/test_e2e.py
 @@ -5,7 +5,6 @@ import urllib.parse
  
  import pytest
@@ -10,7 +10,7 @@ Index: pytest_html-4.0.0rc5/testing/test_e2e.py
  from selenium import webdriver
  from selenium.webdriver.common.by import By
  from selenium.webdriver.support.wait import WebDriverWait
-@@ -67,7 +66,7 @@ def test_visible(pytester, path, driver)
+@@ -84,7 +83,7 @@ def test_visible(pytester, path, driver)
          ec.visibility_of_all_elements_located((By.CSS_SELECTOR, "#results-table"))
      )
      result = driver.find_elements(By.CSS_SELECTOR, "tr.collapsible")
@@ -19,16 +19,47 @@ Index: pytest_html-4.0.0rc5/testing/test_e2e.py
  
      query_params = _encode_query_params({"visible": ""})
      driver.get(f"file:///reports{path()}?{query_params}")
-@@ -75,4 +74,4 @@ def test_visible(pytester, path, driver)
+@@ -92,7 +91,7 @@ def test_visible(pytester, path, driver)
          ec.visibility_of_all_elements_located((By.CSS_SELECTOR, "#results-table"))
      )
      result = driver.find_elements(By.CSS_SELECTOR, "tr.collapsible")
 -    assert_that(result).is_length(0)
 +    assert len(result) == 0
-Index: pytest_html-4.0.0rc5/testing/test_integration.py
+ 
+ 
+ def test_custom_sorting(pytester, path, driver):
+@@ -121,17 +120,17 @@ def test_custom_sorting(pytester, path,
+     )
+ 
+     rows = _parse_result_table(driver)
+-    assert_that(rows).is_length(2)
+-    assert_that(rows[0]["test"]).contains("AAA")
+-    assert_that(rows[0]["alpha"]).is_equal_to("AAA")
+-    assert_that(rows[1]["test"]).contains("BBB")
+-    assert_that(rows[1]["alpha"]).is_equal_to("BBB")
++    assert len(rows) == 2
++    assert "AAA" in rows[0]["test"]
++    assert "AAA" == rows[0]["alpha"]
++    assert "BBB" in rows[1]["test"]
++    assert "BBB" == rows[1]["alpha"]
+ 
+     driver.find_element(By.CSS_SELECTOR, "th[data-column-type='alpha']").click()
+     # we might need some wait here to ensure sorting happened
+     rows = _parse_result_table(driver)
+-    assert_that(rows).is_length(2)
+-    assert_that(rows[0]["test"]).contains("BBB")
+-    assert_that(rows[0]["alpha"]).is_equal_to("BBB")
+-    assert_that(rows[1]["test"]).contains("AAA")
+-    assert_that(rows[1]["alpha"]).is_equal_to("AAA")
++    assert len(rows) == 2
++    assert "BBB" in rows[0]["test"]
++    assert "BBB" == rows[0]["alpha"]
++    assert "AAA" in rows[1]["test"]
++    assert "AAA" == rows[1]["alpha"]
+Index: pytest_html-4.0.0/testing/test_integration.py
 ===================================================================
---- pytest_html-4.0.0rc5.orig/testing/test_integration.py
-+++ pytest_html-4.0.0rc5/testing/test_integration.py
+--- pytest_html-4.0.0.orig/testing/test_integration.py
++++ pytest_html-4.0.0/testing/test_integration.py
 @@ -9,7 +9,6 @@ from base64 import b64encode
  from pathlib import Path
  
@@ -37,7 +68,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  from bs4 import BeautifulSoup
  from selenium import webdriver
  
-@@ -76,7 +75,7 @@ def assert_results(
+@@ -82,7 +81,7 @@ def assert_results(
          if isinstance(number, int):
              number_of_tests += number
              result = get_text(page, f"span[class={outcome}]")
@@ -46,7 +77,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
  
  def get_element(page, selector):
-@@ -142,20 +141,18 @@ class TestHTML:
+@@ -148,13 +147,11 @@ class TestHTML:
          duration = get_text(page, "#results-table td[class='col-duration']")
          total_duration = get_text(page, "p[class='run-count']")
          if pause < 1:
@@ -62,6 +93,15 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
 +            assert re.match(expectation, duration)
 +            assert re.match(r"\d{2}:\d{2}:\d{2}", total_duration)
  
+     def test_duration_format_hook(self, pytester):
+         pytester.makeconftest(
+@@ -169,14 +166,14 @@ class TestHTML:
+         assert_results(page, passed=1)
+ 
+         duration = get_text(page, "#results-table td[class='col-duration']")
+-        assert_that(duration).contains("seconds")
++        assert "seconds" in duration
+ 
      def test_total_number_of_tests_zero(self, pytester):
          page = run(pytester)
          assert_results(page)
@@ -72,7 +112,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      def test_total_number_of_tests_singular(self, pytester):
          pytester.makepyfile("def test_pass(): pass")
-@@ -163,7 +160,7 @@ class TestHTML:
+@@ -184,7 +181,7 @@ class TestHTML:
          assert_results(page, passed=1)
  
          total = get_text(page, "p[class='run-count']")
@@ -81,7 +121,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      def test_total_number_of_tests_plural(self, pytester):
          pytester.makepyfile(
-@@ -176,7 +173,7 @@ class TestHTML:
+@@ -197,7 +194,7 @@ class TestHTML:
          assert_results(page, passed=2)
  
          total = get_text(page, "p[class='run-count']")
@@ -90,28 +130,28 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      def test_pass(self, pytester):
          pytester.makepyfile("def test_pass(): pass")
-@@ -196,7 +193,7 @@ class TestHTML:
+@@ -217,7 +214,7 @@ class TestHTML:
          assert_results(page, skipped=1, total_tests=0)
  
-         log = get_text(page, ".summary div[class='log']")
+         log = get_text(page, "div[class='log']")
 -        assert_that(log).contains(reason)
 +        assert reason in log
  
      def test_skip_function_marker(self, pytester):
          reason = str(random.random())
-@@ -212,7 +209,7 @@ class TestHTML:
+@@ -233,7 +230,7 @@ class TestHTML:
          assert_results(page, skipped=1, total_tests=0)
  
-         log = get_text(page, ".summary div[class='log']")
+         log = get_text(page, "div[class='log']")
 -        assert_that(log).contains(reason)
 +        assert reason in log
  
      def test_skip_class_marker(self, pytester):
          reason = str(random.random())
-@@ -229,16 +226,14 @@ class TestHTML:
+@@ -250,16 +247,14 @@ class TestHTML:
          assert_results(page, skipped=1, total_tests=0)
  
-         log = get_text(page, ".summary div[class='log']")
+         log = get_text(page, "div[class='log']")
 -        assert_that(log).contains(reason)
 +        assert reason in log
  
@@ -120,15 +160,15 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
          page = run(pytester)
          assert_results(page, failed=1)
 -        assert_that(get_log(page)).contains("AssertionError")
--        assert_that(get_text(page, ".summary div[class='log'] span.error")).matches(
+-        assert_that(get_text(page, "div[class='log'] span.error")).matches(
 -            r"^E\s+assert False$"
 -        )
 +        assert "AssertionError" in get_log(page)
-+        assert re.match(r"^E\s+assert False$", get_text(page, ".summary div[class='log'] span.error"))
++        assert re.match(r"^E\s+assert False$", get_text(page, "div[class='log'] span.error"))
  
      def test_xfail(self, pytester):
          reason = str(random.random())
-@@ -251,7 +246,7 @@ class TestHTML:
+@@ -272,7 +267,7 @@ class TestHTML:
          )
          page = run(pytester)
          assert_results(page, xfailed=1)
@@ -137,7 +177,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      def test_xfail_function_marker(self, pytester):
          reason = str(random.random())
-@@ -265,7 +260,7 @@ class TestHTML:
+@@ -286,7 +281,7 @@ class TestHTML:
          )
          page = run(pytester)
          assert_results(page, xfailed=1)
@@ -146,18 +186,18 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      def test_xfail_class_marker(self, pytester):
          pytester.makepyfile(
-@@ -353,8 +348,8 @@ class TestHTML:
+@@ -374,8 +369,8 @@ class TestHTML:
          assert_results(page, error=1, total_tests=0)
  
-         col_name = get_text(page, ".summary td[class='col-name']")
+         col_name = get_text(page, "td[class='col-testId']")
 -        assert_that(col_name).contains("::setup")
 -        assert_that(get_log(page)).contains("ValueError")
-+        assert "::setup" in col_name
++        asswert "::setup" in col_name
 +        assert "ValueError" in get_log(page)
  
      @pytest.mark.parametrize("title", ["", "Special Report"])
      def test_report_title(self, pytester, title):
-@@ -371,8 +366,8 @@ class TestHTML:
+@@ -392,8 +387,8 @@ class TestHTML:
  
          expected_title = title if title else "report.html"
          page = run(pytester)
@@ -168,7 +208,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      def test_resources_inline_css(self, pytester):
          pytester.makepyfile("def test_pass(): pass")
-@@ -380,15 +375,13 @@ class TestHTML:
+@@ -401,15 +396,13 @@ class TestHTML:
  
          content = file_content()
  
@@ -186,10 +226,10 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      def test_custom_content_in_summary(self, pytester):
          content = {
-@@ -412,11 +405,11 @@ class TestHTML:
-         page = run(pytester)
- 
-         elements = page.select(".summary__data p:not(.run-count):not(.filter)")
+@@ -435,11 +428,11 @@ class TestHTML:
+         elements = page.select(
+             ".additional-summary p"
+         )  # ".summary__data p:not(.run-count):not(.filter)")
 -        assert_that(elements).is_length(3)
 +        assert len(elements) == 3
          for element in elements:
@@ -200,73 +240,73 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      def test_extra_html(self, pytester):
          content = str(random.random())
-@@ -437,7 +430,7 @@ class TestHTML:
+@@ -460,7 +453,7 @@ class TestHTML:
          pytester.makepyfile("def test_pass(): pass")
          page = run(pytester)
  
--        assert_that(page.select_one(".summary .extraHTML").string).is_equal_to(content)
-+        assert content == page.select_one(".summary .extraHTML").string
+-        assert_that(page.select_one(".extraHTML").string).is_equal_to(content)
++        assert content == page.select_one(".extraHTML").string
  
      @pytest.mark.parametrize(
          "content, encoded",
-@@ -461,10 +454,8 @@ class TestHTML:
+@@ -484,10 +477,8 @@ class TestHTML:
          page = run(pytester, cmd_flags=["--self-contained-html"])
  
-         element = page.select_one(".summary a[class='col-links__extra text']")
+         element = page.select_one("a[class='col-links__extra text']")
 -        assert_that(element.string).is_equal_to("Text")
 -        assert_that(element["href"]).is_equal_to(
 -            f"data:text/plain;charset=utf-8;base64,{encoded}"
 -        )
 +        assert "Text" == element.string
-+        assert element["href"] == f"data:text/plain;charset=utf-8;base64,{encoded}"
++        assert f"data:text/plain;charset=utf-8;base64,{encoded}" == element["href"]
  
      def test_extra_json(self, pytester):
          content = {str(random.random()): str(random.random())}
-@@ -489,10 +480,8 @@ class TestHTML:
+@@ -512,10 +503,8 @@ class TestHTML:
          data = b64encode(content_str.encode("utf-8")).decode("ascii")
  
-         element = page.select_one(".summary a[class='col-links__extra json']")
+         element = page.select_one("a[class='col-links__extra json']")
 -        assert_that(element.string).is_equal_to("JSON")
 -        assert_that(element["href"]).is_equal_to(
 -            f"data:application/json;charset=utf-8;base64,{data}"
 -        )
 +        assert "JSON" == element.string
-+        assert element["href"] == f"data:application/json;charset=utf-8;base64,{data}"
++        assert f"data:application/json;charset=utf-8;base64,{data}" == element["href"]
  
      def test_extra_url(self, pytester):
          content = str(random.random())
-@@ -513,8 +502,8 @@ class TestHTML:
+@@ -536,8 +525,8 @@ class TestHTML:
          page = run(pytester)
  
-         element = page.select_one(".summary a[class='col-links__extra url']")
+         element = page.select_one("a[class='col-links__extra url']")
 -        assert_that(element.string).is_equal_to("URL")
 -        assert_that(element["href"]).is_equal_to(content)
 +        assert "URL" == element.string
-+        assert element["href"] == content
++        assert content == element["href"]
  
      @pytest.mark.parametrize(
          "mime_type, extension",
-@@ -552,7 +541,7 @@ class TestHTML:
+@@ -575,7 +564,7 @@ class TestHTML:
          # assert_that(element["href"]).is_equal_to(src)
  
-         element = page.select_one(".summary .media img")
+         element = page.select_one(".media img")
 -        assert_that(str(element)).is_equal_to(f'<img src="{src}"/>')
-+        assert str(element) == f'<img src="{src}"/>'
++        assert f'<img src="{src}"/>' == str(element)
  
      @pytest.mark.parametrize("mime_type, extension", [("video/mp4", "mp4")])
      def test_extra_video(self, pytester, mime_type, extension):
-@@ -580,9 +569,7 @@ class TestHTML:
+@@ -603,9 +592,7 @@ class TestHTML:
          # assert_that(element["href"]).is_equal_to(src)
  
-         element = page.select_one(".summary .media video")
+         element = page.select_one(".media video")
 -        assert_that(str(element)).is_equal_to(
 -            f'<video controls="">\n<source src="{src}" type="{mime_type}"/>\n</video>'
 -        )
-+        assert str(element) == f'<video controls="">\n<source src="{src}" type="{mime_type}"/>\n</video>'
++        assert f'<video controls="">\n<source src="{src}" type="{mime_type}"/>\n</video>' == str(element)
  
      def test_xdist(self, pytester):
          pytester.makepyfile("def test_xdist(): pass")
-@@ -613,19 +600,10 @@ class TestHTML:
+@@ -634,19 +621,10 @@ class TestHTML:
  
          description_index = 5
          time_index = 6
@@ -289,8 +329,8 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
 +        assert "A description" == get_text(page, row_selector.format(description_index))
  
      def test_results_table_hook_insert(self, pytester):
-         header_selector = (
-@@ -652,19 +630,10 @@ class TestHTML:
+         header_selector = "#results-table-head tr:nth-child(1) th:nth-child({})"
+@@ -671,19 +649,10 @@ class TestHTML:
  
          description_index = 4
          time_index = 2
@@ -314,22 +354,20 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      def test_results_table_hook_delete(self, pytester):
          pytester.makeconftest(
-@@ -701,12 +670,12 @@ class TestHTML:
+@@ -720,10 +689,10 @@ class TestHTML:
          page = run(pytester)
  
-         header_columns = page.select(".summary #results-table-head th")
+         header_columns = page.select("#results-table-head th")
 -        assert_that(header_columns).is_length(3)
 +        assert len(header_columns) == 3
  
-         row_columns = page.select_one(".summary .results-table-row").select(
-             "td:not(.extra)"
-         )
+         row_columns = page.select_one(".results-table-row").select("td:not(.extra)")
 -        assert_that(row_columns).is_length(3)
 +        assert len(row_columns) == 3
  
      @pytest.mark.parametrize("no_capture", ["", "-s"])
      def test_standard_streams(self, pytester, no_capture):
-@@ -735,11 +704,11 @@ class TestHTML:
+@@ -752,11 +721,11 @@ class TestHTML:
          for when in ["setup", "call", "teardown"]:
              for stream in ["stdout", "stderr"]:
                  if no_capture:
@@ -345,7 +383,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
  
  class TestLogCapturing:
-@@ -787,7 +756,7 @@ class TestLogCapturing:
+@@ -804,7 +773,7 @@ class TestLogCapturing:
  
          log = get_log(page)
          for when in ["setup", "test", "teardown"]:
@@ -354,7 +392,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      @pytest.mark.usefixtures("log_cli")
      def test_setup_error(self, test_file, pytester):
-@@ -796,9 +765,9 @@ class TestLogCapturing:
+@@ -813,9 +782,9 @@ class TestLogCapturing:
          assert_results(page, error=1)
  
          log = get_log(page)
@@ -367,7 +405,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      @pytest.mark.usefixtures("log_cli")
      def test_test_fails(self, test_file, pytester):
-@@ -808,7 +777,7 @@ class TestLogCapturing:
+@@ -825,7 +794,7 @@ class TestLogCapturing:
  
          log = get_log(page)
          for when in ["setup", "test", "teardown"]:
@@ -376,7 +414,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      @pytest.mark.usefixtures("log_cli")
      @pytest.mark.parametrize(
-@@ -822,7 +791,7 @@ class TestLogCapturing:
+@@ -839,7 +808,7 @@ class TestLogCapturing:
          for test_name in ["test_logging", "test_logging::teardown"]:
              log = get_log(page, test_name)
              for when in ["setup", "test", "teardown"]:
@@ -385,7 +423,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      def test_no_log(self, test_file, pytester):
          pytester.makepyfile(test_file(assertion=True))
-@@ -830,9 +799,9 @@ class TestLogCapturing:
+@@ -847,9 +816,9 @@ class TestLogCapturing:
          assert_results(page, passed=1)
  
          log = get_log(page, "test_logging")
@@ -397,7 +435,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      @pytest.mark.usefixtures("log_cli")
      def test_rerun(self, test_file, pytester):
-@@ -843,8 +812,8 @@ class TestLogCapturing:
+@@ -860,8 +829,8 @@ class TestLogCapturing:
          assert_results(page, failed=1, rerun=2)
  
          log = get_log(page)
@@ -408,7 +446,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
  
  class TestCollapsedQueryParam:
-@@ -871,9 +840,9 @@ class TestCollapsedQueryParam:
+@@ -888,9 +857,9 @@ class TestCollapsedQueryParam:
          page = run(pytester)
          assert_results(page, passed=1, failed=1, error=1)
  
@@ -421,7 +459,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      @pytest.mark.parametrize("param", ["failed,error", "FAILED,eRRoR"])
      def test_specified(self, pytester, test_file, param):
-@@ -881,9 +850,9 @@ class TestCollapsedQueryParam:
+@@ -898,9 +867,9 @@ class TestCollapsedQueryParam:
          page = run(pytester, query_params={"collapsed": param})
          assert_results(page, passed=1, failed=1, error=1)
  
@@ -434,7 +472,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      def test_all(self, pytester, test_file):
          pytester.makepyfile(test_file)
-@@ -891,7 +860,7 @@ class TestCollapsedQueryParam:
+@@ -908,7 +877,7 @@ class TestCollapsedQueryParam:
          assert_results(page, passed=1, failed=1, error=1)
  
          for test_name in ["test_pass", "test_fail", "test_error::setup"]:
@@ -443,7 +481,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      @pytest.mark.parametrize("param", ["", 'collapsed=""', "collapsed=''"])
      def test_falsy(self, pytester, test_file, param):
-@@ -899,9 +868,9 @@ class TestCollapsedQueryParam:
+@@ -916,9 +885,9 @@ class TestCollapsedQueryParam:
          page = run(pytester, query_params={"collapsed": param})
          assert_results(page, passed=1, failed=1, error=1)
  
@@ -456,7 +494,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      @pytest.mark.parametrize("param", ["failed,error", "FAILED,eRRoR"])
      def test_render_collapsed(self, pytester, test_file, param):
-@@ -915,9 +884,9 @@ class TestCollapsedQueryParam:
+@@ -932,9 +901,9 @@ class TestCollapsedQueryParam:
          page = run(pytester)
          assert_results(page, passed=1, failed=1, error=1)
  
@@ -469,7 +507,7 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
  
      def test_render_collapsed_precedence(self, pytester, test_file):
          pytester.makeini(
-@@ -934,7 +903,7 @@ class TestCollapsedQueryParam:
+@@ -951,7 +920,7 @@ class TestCollapsedQueryParam:
          page = run(pytester, query_params={"collapsed": "skipped"})
          assert_results(page, passed=1, failed=1, error=1, skipped=1)
  
@@ -481,10 +519,10 @@ Index: pytest_html-4.0.0rc5/testing/test_integration.py
 +        assert not is_collapsed(page, "test_fail")
 +        assert not is_collapsed(page, "test_error::setup")
 +        assert is_collapsed(page, "test_skip")
-Index: pytest_html-4.0.0rc5/testing/test_unit.py
+Index: pytest_html-4.0.0/testing/test_unit.py
 ===================================================================
---- pytest_html-4.0.0rc5.orig/testing/test_unit.py
-+++ pytest_html-4.0.0rc5/testing/test_unit.py
+--- pytest_html-4.0.0.orig/testing/test_unit.py
++++ pytest_html-4.0.0/testing/test_unit.py
 @@ -4,7 +4,6 @@ import sys
  
  import pkg_resources
