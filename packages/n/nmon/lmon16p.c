@@ -27,11 +27,11 @@ nmon: lmon.o
  */
 /* Other #ifdef's for specific features or platforms
 Platforms: POWER MAINFRAME X86 ARM - Mandatory one of these at a time
-Specific Linux versions: RHEL7 SLES113 SLES12
+Specific Linux versions: RHEL7 SLES11 SLES12
 Specific feature: NVIDIA_GPU
 Bug / missing feature workarounds:
 	REREAD - for RHEL3
-	LSBLK_NO_TYPE - SLES11.3 has not lsblk disk TYPE option
+	LSBLK_NO_TYPE - SLES11 has not lsblk disk TYPE option
 
 Options which should always but switched on:
 SMALLMEM - removes huge memory, dirty, whritebak, mapped, slab, pagethreads as not in older kernels
@@ -46,7 +46,7 @@ PRE_KERNEL_2_6_18 1 kernel levels before removed the following to the disk stats
 #define RAW(member)      (long)((long)(p->cpuN[i].member)   - (long)(q->cpuN[i].member))
 #define RAWTOTAL(member) (long)((long)(p->cpu_total.member) - (long)(q->cpu_total.member))
 
-#define VERSION "16n"
+#define VERSION "16p"
 char version[] = VERSION;
 static char *SccsId = "nmon " VERSION;
 
@@ -172,13 +172,13 @@ nvmlReturn_t nvmlDeviceGetClockInfo(nvmlDevice_t device, int type,
 #define NVML_TEMPERATURE_GPU 0
 #define NVML_CLOCK_GRAPHICS 0
 
-nvmlDevice_t gpu_device[4];
-nvmlUtilization_t gpu_util[4];
+nvmlDevice_t gpu_device[6];
+nvmlUtilization_t gpu_util[6];
 unsigned int gpu_devices;
-char gpu_name[4][1024];
-unsigned int gpu_temp[4];
-unsigned int gpu_watts[4];
-unsigned int gpu_clock[4];
+char gpu_name[6][1024];
+unsigned int gpu_temp[6];
+unsigned int gpu_watts[6];
+unsigned int gpu_clock[6];
 char gpu_driver_version[1024];
 char gpu_nvml_version[1024];
 int first_time_gpu = 1;
@@ -193,14 +193,12 @@ void gpu_init()
     }
 
     if ((nvres =
-	 nvmlSystemGetDriverVersion(&gpu_driver_version[0],
-				    1024)) != NVML_SUCCESS) {
+	 nvmlSystemGetDriverVersion(&gpu_driver_version[0], 1024)) != NVML_SUCCESS) {
 	printf("nvmlSystemGetDriverVersion failed %d\n", nvres);
 	return;
     }
     if ((nvres =
-	 nvmlSystemGetNVMLVersion(&gpu_nvml_version[0],
-				  1024)) != NVML_SUCCESS) {
+	 nvmlSystemGetNVMLVersion(&gpu_nvml_version[0], 1024)) != NVML_SUCCESS) {
 	printf("nvmlSystemGetDriverVersion failed %d\n", nvres);
 	return;
     }
@@ -209,8 +207,12 @@ void gpu_init()
 	printf("nvmlDeviceGetCount failed %d\n", nvres);
 	return;
     }
-    if (gpu_devices > 4)
-	gpu_devices = 4;
+
+    /* TESTING GPU
+    gpu_devices = 2;
+    */
+    if (gpu_devices > 6)
+	gpu_devices = 6;
 
     for (i = 0; i < gpu_devices; i++) {
 	if (nvmlDeviceGetHandleByIndex(i, &gpu_device[i]) != NVML_SUCCESS) {
@@ -682,10 +684,15 @@ int cursed = 1;			/* 1 = using curses and
 				   0 = loging output for a spreadsheet */
 int colour = 1;			/* 1 = using colour curses and 
 				   0 = using black and white curses  (see -b flag) */
+
 #define MVPRINTW(row,col,string) {move((row),(col)); \
 					attron(A_STANDOUT); \
 					printw(string); \
 					attroff(A_STANDOUT); }
+
+int show_box = 1;		/* 1 = display the on screen boxes 
+				   0 = no boxes but "---" between different measurement stats, see -B option */
+
 FILE *fp;			/* filepointer for spreadsheet output */
 
 
@@ -1345,7 +1352,7 @@ int proc_lparcfg()
 	   a) inside ifdef POWER so can't be x86
 	   b) we have a /proc/ppc64/lparcfg - probably mostly missing (1.9)
 	   c) system type string includes "qemu" 
-	   Confirmed true for SLES11.3 RHEL6.5 and Ubuntu 14.4.1
+	   Confirmed true for SLES11 RHEL6.5 and Ubuntu 14.4.1
 	 */
 	if (strstr(lparcfg.system_type, "(emulated-by-qemu)") == 0)
 	    power_vm_type = VM_POWERVM;	/* not found */
@@ -1436,7 +1443,7 @@ int diskmax = DISKMIN;
 
 /* Supports up to 780, but not POWER6 595 follow-up with POWER7 */
 /* XXXX needs rework to cope to with fairly rare but interesting higher numbers of CPU machines */
-#define CPUMAX (240 * 8)	/* MAGIC COOKIE WARNING */
+#define CPUMAX (192 * 8)	/* MAGIC COOKIE WARNING */
 
 struct data {
     struct dsk_stat *dk;
@@ -2999,28 +3006,20 @@ void hint(void)
     printf("Hint for %s version %s\n", progname, VERSION);
     printf("\tFull Help Info : %s -h\n\n", progname);
     printf("\tOn-screen Stats: %s\n", progname);
-    printf
-	("\tData Collection: %s -f [-s <seconds>] [-c <count>] [-t|-T]\n",
-	 progname);
+    printf ("\tData Collection: %s -f [-s <seconds>] [-c <count>] [-t|-T]\n", progname);
     printf("\tCapacity Plan  : %s -x\n", progname);
     printf("Interactive-Mode:\n");
-    printf
-	("\tRead the Welcome screen & at any time type: \"h\" for more help\n");
+    printf ("\tRead the Welcome screen & at any time type: \"h\" for more help\n");
     printf("\tType \"q\" to exit nmon\n\n");
     printf("For Data-Collect-Mode\n");
-    printf
-	("\t-f            Must be the first option on the line (switches off interactive mode)\n");
-    printf
-	("\t              Saves data to a CSV Spreadsheet format .nmon file in then local directory\n");
-    printf
-	("\t              Note: -f sets a defaults -s300 -c288    which you can then modify\n");
+    printf ("\t-f            Must be the first option on the line (switches off interactive mode)\n");
+    printf ("\t              Saves data to a CSV Spreadsheet format .nmon file in then local directory\n");
+    printf ("\t              Note: -f sets a defaults -s300 -c288    which you can then modify\n");
     printf("\tFurther Data Collection Options:\n");
     printf("\t-s <seconds>  time between data snapshots\n");
     printf("\t-c <count>    of snapshots before exiting\n");
-    printf
-	("\t-t            Includes Top Processes stats (-T also collects command arguments)\n");
-    printf
-	("\t-x            Capacity Planning=15 min snapshots for 1 day. (nmon -ft -s 900 -c 96)\n");
+    printf ("\t-t            Includes Top Processes stats (-T also collects command arguments)\n");
+    printf ("\t-x            Capacity Planning=15 min snapshots for 1 day. (nmon -ft -s 900 -c 96)\n");
     printf("---- End of Hints\n");
 }
 
@@ -3033,142 +3032,105 @@ void help(void)
     printf ("\tIt is a work around Linux issues, where disks & partitions are mixed up in /proc files\n");
     printf ("\t& drive driver developers use bizarre device names, making it trick to separate them.\n");
     printf("\t-g <filename> Use this file to define the groups\n");
-    printf ("\t              - On each line: group-name <disks-list>   (space separated list)\n");
+    printf("\t              - On each line: group-name <disks-list>   (space separated list)\n");
     printf("\t              - Example line: database sdb sdc sdd sde\n");
     printf("\t              - Up to 64 disk groups, 512 disks per line\n");
-    printf ("\t              - Disks names can appear more than one group\n");
-    printf ("\t-g auto       - Will generate a file called \"auto\" with just disks from \"lsblk|grep disk\" output\n");
+    printf("\t              - Disks names can appear more than one group\n");
+    printf("\t-g auto       - Will generate a file called \"auto\" with just disks from \"lsblk|grep disk\" output\n");
     printf("\t For Interactive use define the groups then type: g or G\n");
-    printf ("\t For Data Capture defining the groups switches on data collection\n");
+    printf("\t For Data Capture defining the groups switches on data collection\n");
     printf("\n");
-    printf ("Data-Collect-Mode = spreadsheet format (i.e. comma separated values)\n");
-    printf ("\tNote: Use only one of f, F, R, x, X or z to switch on Data Collection mode\n");
-    printf ("\tNote: Make it the first argument then use other options to modify the defaults\n");
-    printf ("\tNote: Don't collect data that you don't want - it just makes the files too large\n");
-    printf ("\tNote: Too many snapshots = too much data and crashes Analyser and other tools\n");
-    printf ("\tNote: 500 to 800 snapshots make a good graph on a normal size screen\n");
-    printf ("\tRecommended normal minimal options: snapshots every 2 minutes all day: \n");
+    printf("Data-Collect-Mode = spreadsheet format (i.e. comma separated values)\n");
+    printf("\tNote: Use only one of f, F, R, x, X or z to switch on Data Collection mode\n");
+    printf("\tNote: Make it the first argument then use other options to modify the defaults\n");
+    printf("\tNote: Don't collect data that you don't want - it just makes the files too large\n");
+    printf("\tNote: Too many snapshots = too much data and crashes Analyser and other tools\n");
+    printf("\tNote: 500 to 800 snapshots make a good graph on a normal size screen\n");
+    printf("\tRecommended normal minimal options: snapshots every 2 minutes all day: \n");
     printf("\t\tSimple capture:      nmon -f  -s 120 -c 720\n");
     printf("\t\tWith Top Procs:      nmon -fT -s 120 -c 720\n");
-    printf ("\t\tSet the directory:   nmon -fT -s 120 -c 720 -m /home/nag/nmon\n");
-    printf
-	("\t\tCapture a busy hour: nmon -fT -s   5 -c 720 -m /home/nag/nmon\n");
+    printf("\t\tSet the directory:   nmon -fT -s 120 -c 720 -m /home/nag/nmon\n");
+    printf("\t\tCapture a busy hour: nmon -fT -s   5 -c 720 -m /home/nag/nmon\n");
     printf("\n");
     printf("For Data-Collect-Mode Options\n");
-    printf
-	("\t-f            spreadsheet output format [note: default -s300 -c288]\n");
+    printf("\t-f            spreadsheet output format [note: default -s300 -c288]\n");
     printf("\t\t\t output file is <hostname>_YYYYMMDD_HHMM.nmon\n");
     printf("\t-F <filename> same as -f but user supplied filename\n");
     printf("\t\t\t Not recommended as the default file name is perfect\n");
     printf("\tThe other options in alphabetical order:\n");
     printf("\t-a            Include Accelerator GPU stats\n");
-    printf
-	("\t-b            Online only: for black and white mode (switch off colour)\n");
+    printf("\t-b            Online only: for black and white mode (switch off colour)\n");
+    printf("\t-B            Online only: for no boxes mode (switch off boxes)\n");
     printf("\t-c <number>   The number of snapshots before nmon stops\n");
-    printf
-	("\t-d <disks>    To set the maximum number of disks [default 256]\n");
-    printf
-	("\t              Ignores disks if the systems has 100's of disk or the config is odd!\n");
-    printf
-	("\t-D            Use with -g to add the Disk Wait/Service Time & in-flight stats\n");
+    printf("\t-d <disks>    To set the maximum number of disks [default 256]\n");
+    printf("\t              Ignores disks if the systems has 100's of disk or the config is odd!\n");
+    printf("\t-D            Use with -g to add the Disk Wait/Service Time & in-flight stats\n");
     printf("\t-f and -F     See above\n");
-    printf
-	("\t-g <filename> User Defined Disk Groups (see above) - Data Capture: Generates  BBBG & DG lines\n");
-    printf
-	("\t-g auto       See above but makes the file \"auto\" for you of just the disks like sda etc.\n");
+    printf("\t-g <filename> User Defined Disk Groups (see above) - Data Capture: Generates  BBBG & DG lines\n"); 
+    printf("\t-g auto       See above but makes the file \"auto\" for you of just the disks like sda etc.\n");
     printf("\t-h            This help output\n");
-    printf
-	("\t-I <percent>  Set the ignore process & disks busy threshold (default 0.1%%)\n");
-    printf
-	("\t              Don't save or show proc/disk using less than this percent\n");
-    printf
-	("\t-J            Switch-off Journel Filesystem stats collection (can causes issues with automound NFS)\n");
-    printf
-	("\t-l <dpl>      Disks per line in data capture to avoid spreadsheet width issues. Default 150. EMC=64.\n");
-    printf
-	("\t-m <directory> nmon changes to this directory before saving to file\n");
+    printf("\t-I <percent>  Set the ignore process & disks busy threshold (default 0.1%%)\n");
+    printf("\t              Don't save or show proc/disk using less than this percent\n");
+    printf("\t-J            Switch-off Journel Filesystem stats collection (can causes issues with automound NFS)\n");
+    printf("\t-l <dpl>      Disks per line in data capture to avoid spreadsheet width issues. Default 150. EMC=64.\n");
+    printf("\t-m <directory> nmon changes to this directory before saving to file\n");
     printf("\t              Useful when starting nmon via cron\n");
-    printf
-	("\t-M 		Adds MHz stats for each CPU thread. Some POWER8 model CPU cores can be different frequencies\n");
-    printf
-	("\t-N            Include NFS Network File System for V2, V3 and V4\n");
-    printf
-	("\t-p            nmon outputs the PID when it starts. Useful in scripts to capture the PID for a later safe stop.\n");
-    printf
-	("\t-r <runname>  Use in a benchmark to record the run details for later analysis [default hostname]\n");
-    printf
-	("\t-R  		Old rrdtool format used by some - may be removed in the future. If you use this email Nigel\n");
-    printf
-	("\t-s <seconds>  Time between snap shots - with \"-c count\" decides duration of the data capture\n");
+    printf("\t-M 		Adds MHz stats for each CPU thread. Some POWER8 model CPU cores can be different frequencies\n");
+    printf("\t-N            Include NFS Network File System for V2, V3 and V4\n");
+    printf("\t-p            nmon outputs the PID when it starts. Useful in scripts to capture the PID for a later safe stop.\n");
+    printf("\t-r <runname>  Use in a benchmark to record the run details for later analysis [default hostname]\n");
+    printf("\t-R  		Old rrdtool format used by some - may be removed in the future. If you use this email Nigel\n");
+    printf("\t-s <seconds>  Time between snap shots - with \"-c count\" decides duration of the data capture\n");
     printf("\t-t            Include Top Processes in the output\n");
-    printf
-	("\t-T            As -t plus it saves command line arguments in UARG section\n");
-    printf
-	("\t-U            Include the Linux 10 CPU utilisation stats (CPUUTIL lines in the file)\n");
+    printf("\t-T            As -t plus it saves command line arguments in UARG section\n");
+    printf("\t-U            Include the Linux 10 CPU utilisation stats (CPUUTIL lines in the file)\n");
     printf("\t-V            Print nmon version & exit immediately\n");
+    printf("\t-^            Online only: Disk stats KB/s changed to MB/s. A 2nd ^ defaults to GB/s\n");
     printf("\n");
     printf("\tTo manually load nmon files into a spreadsheet:\n");
     printf("\t\tsort -A *nmon >stats.csv\n");
     printf("\t\tTransfer the stats.csv file to your PC\n");
-    printf
-	("\t\tStart spreadsheet & then Open with type=comma-separated-value ASCII file\n");
+    printf ("\t\tStart spreadsheet & then Open with type=comma-separated-value ASCII file\n");
     printf("\t\tThis puts every datum in a different cell\n");
-    printf
-	("\t\tNow select the data of one type (same 1st column) and graph it\n");
-    printf
-	("\t\tThe nmon Analyser & other tools do not need the file sorted.\n");
+    printf("\t\tNow select the data of one type (same 1st column) and graph it\n");
+    printf("\t\tThe nmon Analyser & other tools do not need the file sorted.\n");
     printf("\n");
     printf("Capacity Planning mode - use cron to run each day\n");
     printf("\t-x            Sensible spreadsheet output for one day\n");
-    printf
-	("\t              Every 15 mins for 1 day ( i.e. -ft -s 900 -c 96)\n");
+    printf("\t              Every 15 mins for 1 day ( i.e. -ft -s 900 -c 96)\n");
     printf("\t-X            Sensible spreadsheet output for busy hour\n");
-    printf
-	("\t              Every 30 secs for 1 hour ( i.e. -ft -s 30 -c 120)\n");
-    printf
-	("\t-z            Like -x but the output saved in /var/perf/tmp assuming root user\n");
+    printf("\t              Every 30 secs for 1 hour ( i.e. -ft -s 30 -c 120)\n");
+    printf("\t-z            Like -x but the output saved in /var/perf/tmp assuming root user\n");
     printf("\n");
 
     printf("Interactive Mode Keys in Alphabetical Order\n");
-    printf
-	("    Start nmon then type the letters below to switch on & off particular stats\n");
+    printf("    Start nmon then type the letters below to switch on & off particular stats\n");
     printf("    The stats are always in the same order on-screen\n");
-    printf
-	("    To see more stats: make the font smaller or use two windows\n\n");
+    printf("    To see more stats: make the font smaller or use two windows\n\n");
     printf("\tKey --- Toggles on off to control what is displayed ---\n");
 #ifdef NVIDIA_GPU
     printf("\ta   = Accelerator from Nvidia GPUs\n");
-#endif				/*NVIDIA_GPU */
-    printf
-	("\tb   = Black and white mode (or use -b command line option)\n");
-    printf
-	("\tc   = CPU Utilisation stats with bar graphs (CPU core threads)\n");
-    printf
-	("\tC   = CPU Utilisation as above but concise wide view (up to 192 CPUs)\n");
+#endif	/*NVIDIA_GPU */
+    printf("\tb   = Black and white mode (or use -b command line option)\n");
+    printf("\tB   = Switch on/off on-screen boxes (or use -B command line option)\n");
+    printf("\tc   = CPU Utilisation stats with bar graphs (CPU core threads)\n");
+    printf("\tC   = CPU Utilisation as above but concise wide view (up to 192 CPUs)\n");
     printf("\td   = Disk I/O Busy%% & Graphs of Read and Write KB/s\n");
-    printf
-	("\tD   = Disk I/O Numbers including Transfers, Average Block Size & Peaks (type: 0 to reset)\n");
-    printf
-	("\tg   = User Defined Disk Groups            (assumes -g <file> when starting nmon)\n");
-    printf
-	("\tG   = Change Disk stats (d) to just disks (assumes -g auto   when starting nmon)\n");
+    printf("\tD   = Disk I/O Numbers including Transfers, Average Block Size & Peaks (type: 0 to reset)\n");
+    printf("\tg   = User Defined Disk Groups            (assumes -g <file> when starting nmon)\n");
+    printf("\tG   = Change Disk stats (d) to just disks (assumes -g auto   when starting nmon)\n");
     printf("\th   = This help information\n");
     printf("\tj   = File Systems including Journal File Systems\n");
     printf("\tJ   =  Reduces \"j\" output by removing unreal File Systems\n");
-    printf
-	("\tk   = Kernel stats Run Queue, context-switch, fork, Load Average & Uptime\n");
-    printf
-	("\tl   = Long term Total CPU (over 75 snapshots) via bar graphs\n");
+    printf("\tk   = Kernel stats Run Queue, context-switch, fork, Load Average & Uptime\n");
+    printf("\tl   = Long term Total CPU (over 75 snapshots) via bar graphs\n");
     printf("\tL   = Large and =Huge memory page stats\n");
     printf("\tm   = Memory & Swap stats\n");
-    printf
-	("\tM   = MHz for machines with variable frequency 1st=Threads 2nd=Cores 3=Graphs\n");
-    printf
-	("\tn   = Network stats & errors (if no errors it disappears)\n");
+    printf("\tM   = MHz for machines with variable frequency 1st=Threads 2nd=Cores 3=Graphs\n");
+    printf("\tn   = Network stats & errors (if no errors it disappears)\n");
     printf("\tN   = NFS - Network File System\n");
     printf("\t      1st NFS V2 & V3, 2nd=NFS4-Client & 3rd=NFS4-Server\n");
-    printf
-	("\to   = Disk I/O Map (one character per disk pixels showing how busy it is)\n");
+    printf("\to   = Disk I/O Map (one character per disk pixels showing how busy it is)\n");
     printf("\t      Particularly good if you have 100's of disks \n");
 #ifdef PARTITIONS
     printf("\tP   = Partitions Disk I/O Stats\n");
@@ -3177,90 +3139,67 @@ void help(void)
     printf("\tp   = PowerVM LPAR Stats from /proc/ppc64/lparcfg\n");
 #endif
     printf("\tq   = Quit\n");
-    printf
-	("\tr   = Resources: Machine type, name, cache details & OS version & Distro + LPAR\n");
-    printf
-	("\tt   = Top Processes: select the data & order 1=Basic, 3=Perf 4=Size 5=I/O=root only\n");
+    printf("\tr   = Resources: Machine type, name, cache details & OS version & Distro + LPAR\n");
+    printf("\tt   = Top Processes: select the data & order 1=Basic, 3=Perf 4=Size 5=I/O=root only\n");
     printf("\tu   = Top Process with command line details\n");
     printf("\tU   = CPU utilisation stats - all 10 Linux stats:\n");
-    printf
-	("\t      user, user_nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice\n");
-    printf
-	("\tv   = Experimental Verbose mode - tries to make recommendations\n");
+    printf("\t      user, user_nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice\n");
+    printf("\tv   = Experimental Verbose mode - tries to make recommendations\n");
     printf("\tV   = Virtual Memory stats\n");
     printf("\n");
     printf("\tKey --- Other Interactive Controls ---\n");
     printf("\t+   = Double the screen refresh time\n");
     printf("\t-   = Halves the screen refresh time\n");
-    printf
-	("\t0   = Reset peak counts to zero (peak highlight with \">\")\n");
+    printf("\t0   = Reset peak counts to zero (peak highlight with \">\")\n");
     printf("\t1   = Top Processes mode 1 Nice, Priority, Status\n");
     printf("\t3   = Top Processes mode 3 CPU, Memory, Faults\n");
     printf("\t4   = Top Processes mode 4 as 3 but order by memory\n");
-    printf
-	("\t5   = Top Processes mode 5 as 3 but order by I/O (if root user)\n");
+    printf("\t5   = Top Processes mode 5 as 3 but order by I/O (if root user)\n");
     printf("\t6   = Highlights 60%% row on Long Term CPU view\n");
     printf("\t7   = Highlights 70%% row on Long Term CPU view\n");
     printf("\t8   = Highlights 80%% row on Long Term CPU view\n");
     printf("\t9   = Highlights 90%% row on Long Term CPU view\n");
-    printf
-	("\t.   = Minimum mode i.e. only busy disks and processes shown\n");
+    printf("\t.   = Minimum mode i.e. only busy disks and processes shown\n");
+    printf("\t^   = Disk stats KB/s changed to MB/s. A 2nd ^ to GB/s then back to KB/s\n");
     printf("\tspace = Refresh screen now\n");
 
     printf("\n");
     printf("Interactive Start-up Control\n");
-    printf
-	("\tIf you find you always type the same toggles every time you start\n");
+    printf("\tIf you find you always type the same toggles every time you start\n");
     printf("\tthen place them in the NMON shell variable. For example:\n");
     printf("\t export NMON=cmdrtn\n");
 
     printf("\n");
     printf("Other items for Interactive and Data Collection mode:\n");
-    printf
-	("\ta) To limit the processes nmon lists (online and to a file)\n");
-    printf
-	("\t    either set NMONCMD0 to NMONCMD63 to the program names\n");
+    printf("\ta) To limit the processes nmon lists (online and to a file)\n");
+    printf("\t    either set NMONCMD0 to NMONCMD63 to the program names\n");
     printf("\t    or use -C cmd:cmd:cmd etc. example: -C ksh:vi:syncd\n");
     printf("Other items for Data Collection mode:\n");
     printf("\tb) To you want to stop nmon use: kill -USR2 <nmon-pid>\n");
     printf("\tc) Use -p and nmon outputs the background process pid\n");
-    printf
-	("\td) If you want to pipe nmon output to other commands use a FIFO:\n");
+    printf("\td) If you want to pipe nmon output to other commands use a FIFO:\n");
     printf("\t    mkfifo /tmp/mypipe\n");
     printf("\t    nmon -F /tmp/mypipe &\n");
     printf("\t    tail -f /tmp/mypipe\n");
     printf("\te) If nmon fails please report it with:\n");
     printf("\t   1) nmon version like: %s\n", VERSION);
-    printf
-	("\t   2) the output of: cd /proc; cat cpuinfo meminfo partitions stat vmstat\n");
+    printf("\t   2) the output of: cd /proc; cat cpuinfo meminfo partitions stat vmstat\n");
     printf("\t   3) some clue of what you were doing\n");
-    printf
-	("\t   4) I may ask you to run the debug version or collect data files\n");
-    printf
-	("\tf) If box & line characters are letters then check: terminal emulator & $TERM\n");
-    printf
-	("\tg) External Data Collectors - nmon will execute a command or script at each snapshot time\n");
-    printf
-	("\t   They must output to a different file which is merge afterwards with the nmon output\n");
+    printf("\t   4) I may ask you to run the debug version or collect data files\n");
+    printf("\tf) If box & line characters are letters then check: terminal emulator & $TERM\n");
+    printf("\tg) External Data Collectors - nmon will execute a command or script at each snapshot time\n");
+    printf("\t   They must output to a different file which is merge afterwards with the nmon output\n");
     printf("\t   Set the following shell variables:\n");
-    printf
-	("\t    NMON_START  = script to generate CVS Header test line explaining the columns\n");
-    printf
-	("\t         Generate: TabName,DataDescription,Column_name_and_units,Column_name_and_units ... \n");
-    printf
-	("\t    NMON_SNAP   = script for each snapshots data, the parameter is the T0000 snapshot number\n");
+    printf("\t    NMON_START  = script to generate CVS Header test line explaining the columns\n");
+    printf("\t         Generate: TabName,DataDescription,Column_name_and_units,Column_name_and_units ... \n");
+    printf("\t    NMON_SNAP   = script for each snapshots data, the parameter is the T0000 snapshot number\n");
     printf("\t         Generate: TabName,T00NN,Data,Data,Data ...\n");
-    printf
-	("\t    NMON_END    = script to clean up or finalise the data\n");
-    printf
-	("\t    NMON_ONE_IN = call NMON_START less often (if it is heavy in CPU terms)\n");
-    printf
-	("\t    Once capture done: cat nmon-file data-file >merged-file ; ready for Analyser or other tools\n");
-    printf
-	("\t    The nmon Analyser will automatically do its best to graph the data on a new Tab sheet\n");
+    printf("\t    NMON_END    = script to clean up or finalise the data\n");
+    printf("\t    NMON_ONE_IN = call NMON_START less often (if it is heavy in CPU terms)\n");
+    printf("\t    Once capture done: cat nmon-file data-file >merged-file ; ready for Analyser or other tools\n");
+    printf("\t    The nmon Analyser will automatically do its best to graph the data on a new Tab sheet\n");
     printf("\n");
-    printf
-	("\tDeveloper: Nigel Griffiths      See http://nmon.sourceforge.net\n");
+    printf("\tDeveloper: Nigel Griffiths      See http://nmon.sourceforge.net\n");
     printf("\tFeedback welcome - On the current release only\n");
     printf("\tNo warranty given or implied. (C) Copyright 2009 Nigel Griffiths GPLv3\n");
     exit(0);
@@ -3365,6 +3304,16 @@ int disk_compare(const void *a, const void *b)
     return (int) ((((struct topper *) b)->io - ((struct topper *) a)->io));
 }
 
+int request_units = 'K'; /* user preference */
+int minimum_units = 'K'; /* force display disk stats in KB, MB, GB */
+
+double minimum_units_factor()
+{
+ if(minimum_units == 'K') return 1.0;
+ if(minimum_units == 'M') return 1024.0;
+ if(minimum_units == 'G') return 1024.0 * 1024.0;
+ return 1.0;
+}
 
 /* checkinput is the subroutine to handle user input */
 int checkinput(void)
@@ -3498,6 +3447,12 @@ int checkinput(void)
 #endif				/* NVIDIA_GPU */
 		case 'b':
 		    FLIP(colour);
+		    clear();
+		    break;
+		case 'B':
+		    FLIP(show_box);
+		    move(0,0);
+		    clrtobot();
 		    clear();
 		    break;
 		case 'c':
@@ -3651,6 +3606,15 @@ int checkinput(void)
 		    nocbreak();
 		    endwin();
 		    exit(0);
+		case '^':
+		    if(request_units == 'K') 
+			request_units = 'M';
+		    else if(request_units == 'M') 
+			request_units = 'G';
+		    else if(request_units == 'G') 
+			request_units = 'K';
+		    else request_units = 'K';
+		    break;
 		default:
 		    return 0;
 		}
@@ -3930,7 +3894,7 @@ print_procs(int index)
     printf("procs[%d].cutime       =%ld\n", index, procs[index].pi_cutime);
     printf("procs[%d].cstime       =%ld\n", index, procs[index].pi_cstime);
     printf("procs[%d].pri           =%d\n", index, procs[index].pi_pri);
-    printf("procs[%d].nice          =%d\n", index, procs[index].pi_nice);
+    printf("procs[%d].nice          =%d\n", index, (int)procs[index].pi_nice);
 #ifdef PRE_KERNEL_2_6_18
     printf("procs[%d].junk          =%d\n", index, procs[index].junk);
 #else
@@ -4023,22 +3987,6 @@ int getprocs(int records)
 
 /* --- */
 
-const char cpu_line[] = "---------------------------+-------------------------------------------------+";
-
-const char wide1[]       = "100%%-+--------+---------+---------+---------+---------+---------+-----+100%%";
-const char wide2[]       = " 90%%-|                                                                |-90%%";
-const char wide3[]       = " 80%%-|                                                                |-80%%";
-const char wide4[]       = " 70%%-|                                                                |-70%%";
-const char wide5[]       = " 60%%-|                                                                |-60%%";
-const char wide6[]       = " 50%%-|                                                                |-50%%";
-const char wide7[]       = " 40%%-|                                                                |-40%%";
-const char wide8[]       = " 30%%-|                                                                |-30%%";
-const char wide9[]       = " 20%%-|                                                                |-20%%";
-const char wide10[]      = " 10%%-|                                                                |-10%%";
-const char wide_1_64[]   = " CPU +1--------+10-------+20-------+30-------+40-------+50-------+60--+--0%%";
-const char wide_65_128[] = " CPU +65---+70-------+80-------+90-------+100------+110------+120-----+--0%%";
-const char wide_129_192[]= " CPU +129--------+140------+150------+160------+170------+180------+190--0%%";
-
 /* Start process as specified in cmd in a child process without waiting
  * for completion
  * not sure if want to prevent this funcitonality for root user
@@ -4120,8 +4068,21 @@ void child_start(int when,
     }
 }
 
+const char head1_top_argonly[]    = "  PID    %%CPU   ResSize Command                                            ";
+const char head1_top_wide_mode5[] = "  PID        %%CPU      Size       Res      Res       Res       Res      Shared       StorageKB  Command";
+const char head1_top_wide_modex[] = "  PID        %%CPU      Size       Res      Res       Res       Res      Shared   Faults   Faults Command";
+const char head1_top_thin_mode5[] = "  PID    %%CPU  Size   Res   Res   Res   Res Shared StorageKB Command";
+const char head1_top_thin_modex[] = "  PID    %%CPU  Size   Res   Res   Res   Res Shared   Faults  Command";
+
+const char head2_top_argonly[]    = "         Used       KB                                                       ";
+const char head2_top_wide_mode5[] = "             Used        KB       Set      Text      Data       Lib        KB      Read   Write";
+const char head2_top_wide_modex[] = "             Used        KB       Set      Text      Data       Lib        KB      Min      Maj";
+const char head2_top_thin_mode5[] = "         Used    KB   Set  Text  Data   Lib    KB ReadWrite ";
+const char head2_top_thin_modex[] = "         Used    KB   Set  Text  Data   Lib    KB  Min  Maj ";
+
 int main(int argc, char **argv)
 {
+    const char cpu_line[] = "---------------------------+-------------------------------------------------+";
     int secs;
     int cpu_idle;
     int cpu_user;
@@ -4167,7 +4128,6 @@ int main(int argc, char **argv)
     struct utsname uts;		/* UNIX name, version, etc */
     double top_disk_busy = 0.0;
     char *top_disk_name = "";
-    int disk_mb;
     double disk_total;
     double disk_busy;
     double disk_read;
@@ -4185,7 +4145,6 @@ int main(int argc, char **argv)
     /* for popen on oslevel */
     char *str_p;
     int varperftmp = 0;
-    char *formatstring;
     char *open_filename = 0;
     char *user_filename = 0;
     char user_filename_set = 0;
@@ -4267,8 +4226,8 @@ int main(int argc, char **argv)
                         else \
                                 pnoutrefresh(pad, 0,0,x,1,x+rows+1,COLS-2); \
                         x=x+(rows);     \
-                        if(x+4>LINES) { \
-                                mvwprintw(stdscr,LINES-1,10,"Warning: Some Statistics may not shown"); \
+                        if(x+1>LINES) { \
+                                mvwprintw(stdscr,LINES-1,4,"Warning: Some statistics may not be visable due to limited number of rows!"); \
                         }               \
                        }
 
@@ -4354,7 +4313,7 @@ int main(int argc, char **argv)
     while (-1 !=
 	   (i =
 	    getopt(argc, argv,
-		   "?abc:C:Dd:EfF:g:hI:Jl:m:MNpr:Rs:tTUVxXz"))) {
+		   "?abBc:C:Dd:EfF:g:hI:Jl:m:MNpr:Rs:tTUVxXz^"))) {
 	switch (i) {
 	case '?':
 	    hint();
@@ -4365,6 +4324,9 @@ int main(int argc, char **argv)
 	    break;
 	case 'b':
 	    colour = 0;
+	    break;
+	case 'B':
+	    show_box = 0;
 	    break;
 	case 'c':
 	    maxloops = atoi(optarg);
@@ -4414,9 +4376,9 @@ int main(int argc, char **argv)
 		auto_dgroup++;
 		printf
 		    ("Generating disk group file from lsblk output to file: \"auto\"\n");
-#ifdef SLES113
+#ifdef SLES11
 #define LSBLK_NO_TYPE		/* define this to work around missing --output TYPE feature */
-#endif				/* SLES113 */
+#endif				/* SLES11 */
 
 #ifdef LSBLK_NO_TYPE
 #define LSBLK_STRING "lsblk --nodeps --output NAME --noheadings | awk 'BEGIN {printf \"# This file created by: nmon -g auto\\n# It is an automatically generated disk-group file which excluses disk paritions\\n\" } { printf \"%s %s\\n\", $1, $1 }' >auto"
@@ -4501,6 +4463,14 @@ int main(int argc, char **argv)
 	case 'z':		/* background mode for 1 day output to /var/perf/tmp */
 	    varperftmp++;
 	    go_background(4 * 24, 15 * 60);
+	    break;
+	case '^':
+	    if(request_units == 'K') 
+		request_units = 'M';
+	    else if(request_units == 'M') 
+		request_units = 'G';
+	    else 
+		request_units = 'K';
 	    break;
 	}
     }
@@ -4984,12 +4954,10 @@ int main(int argc, char **argv)
 	linux_bbbp("/proc/1/stat", "/bin/cat /proc/1/stat 2>/dev/null",
 		   WARNING);
 #ifdef PRE_KERNEL_2_6_18
-	linux_bbbp("/proc/1/statm", "/bin/cat /proc/1/statm 2>/dev/null",
-		   WARNING);
+	linux_bbbp("/proc/1/statm", "/bin/cat /proc/1/statm 2>/dev/null", WARNING);
 #endif
 #ifdef MAINFRAME
-	linux_bbbp("/proc/sysinfo", "/bin/cat /proc/sysinfo 2>/dev/null",
-		   WARNING);
+	linux_bbbp("/proc/sysinfo", "/bin/cat /proc/sysinfo 2>/dev/null", WARNING);
 #endif
 	linux_bbbp("/proc/net/rpc/nfs",
 		   "/bin/cat /proc/net/rpc/nfs 2>/dev/null", WARNING);
@@ -5054,7 +5022,10 @@ int main(int argc, char **argv)
 	y = x = 0;
 
 	if (cursed) {		/* Top line */
-	    box(stdscr, 0, 0);
+            if(show_box) 
+		box(stdscr,0,0); 
+	    else 
+		mvwprintw(stdscr,0,0, "--------------------------------------------------------------------------------");
 	    mvprintw(x, 1, "nmon");
 	    mvprintw(x, 6, "%s", VERSION);
 	    if (flash_on)
@@ -5104,12 +5075,12 @@ int main(int argc, char **argv)
 #ifdef RHEL7
 		    mvwprintw(padwelcome, x + 8, 3, "%s %s", easy[0], easy[1]);
 #else
-#ifdef SLES113
+#ifdef SLES11
 		    mvwprintw(padwelcome, x + 8, 3, "%s", easy[2]);
 #else
 		    mvwprintw(padwelcome, x + 8, 3, "%s", easy[3]);
-#endif				/* SLES113 */
-#endif				/* RHEL7 */
+#endif /* SLES11 */
+#endif /* RHEL7 */
 		    mvwprintw(padwelcome, x + 9, 3, "PowerKVM Guest %s",
 			      &proc[P_CPUINFO].line[1][7]);
 		    mvwprintw(padwelcome, x + 10, 3,
@@ -5140,17 +5111,15 @@ int main(int argc, char **argv)
 		    break;
 		default:
 		case VM_POWERVM:
-#ifdef SLES113
-		    mvwprintw(padwelcome, x + 8, 3, "%s %s", easy[0],
-			      easy[2]);
+#ifdef SLES11
+		    mvwprintw(padwelcome, x + 8, 3, "%s %s", easy[0], easy[2]);
 #else
 #ifdef RHEL7
-		    mvwprintw(padwelcome, x + 8, 3, "%s %s", easy[0],
-			      easy[1]);
+		    mvwprintw(padwelcome, x + 8, 3, "%s %s", easy[0], easy[1]);
 #else
 		    mvwprintw(padwelcome, x + 8, 3, "%s", easy[3]);
-#endif
-#endif
+#endif /*RHE7*/
+#endif /*SLES*/
 		    mvwprintw(padwelcome, x + 9, 3, "PowerVM %s %s",
 			      &proc[P_CPUINFO].line[1][7],
 			      &proc[P_CPUINFO].line[proc[P_CPUINFO].lines -
@@ -5177,13 +5146,11 @@ int main(int argc, char **argv)
 		proc_read(P_CPUINFO);
 		lscpu_init();
 
-#ifdef SLES113
-		    mvwprintw(padwelcome, x + 8, 3, "%s %s", easy[0],
-			      easy[2]);
+#ifdef SLES11
+		    mvwprintw(padwelcome, x + 8, 3, "%s %s", easy[0], easy[2]);
 #else
 #ifdef RHEL7
-		    mvwprintw(padwelcome, x + 8, 3, "%s %s", easy[0],
-			      easy[1]);
+		    mvwprintw(padwelcome, x + 8, 3, "%s %s", easy[0], easy[1]);
 #else
 		    mvwprintw(padwelcome, x + 8, 3, "%s", easy[3]);
 #endif /*RHEL*/
@@ -5197,7 +5164,7 @@ int main(int argc, char **argv)
 		mvwprintw(padwelcome, x + 12, 3,
 			  "Processor %s", lscpu.byte_order);
 #endif /*MAINFRAME */
-#if X86 || ARM
+#if defined(X86) || defined(ARM) 
 		get_cpu_cnt();
 		lscpu_init();
 #ifdef RHEL7
@@ -5206,15 +5173,15 @@ int main(int argc, char **argv)
 #ifdef RHEL6
 		mvwprintw(padwelcome, x + 8, 3, "%s", easy[1]);
 #else
-#ifdef SLES113
+#ifdef SLES11
 		mvwprintw(padwelcome, x + 8, 3, "%s %s %s", easy[1], easy[2], easy[3]);
 #else
-#ifdef UBUNTU
+#if defined(UBUNUT14) || defined(UBUNT15) || defined(UBUNT16) || defined(UBUNT17) || defined(UBUNT18) || defined(UBUNT19) || defined(UBUNT20) || defined(UBUNT21) || defined(UBUNT22) || defined(UBUNT23) || defined(UBUNT24) 
 		mvwprintw(padwelcome, x + 8, 3, "%s %s %s", easy[0], easy[1], easy[2]);
 #else
 		mvwprintw(padwelcome, x + 8, 3, "%s %s", easy[0], easy[2]);
 #endif /*UBUNTU */
-#endif /*SLES113 */
+#endif /*SLES11 */
 #endif /*RHEL6 */
 #endif /*RHEL7 */
 		mvwprintw(padwelcome, x + 9, 3, "Vendor=%s Model=%s", 
@@ -5485,10 +5452,6 @@ int main(int argc, char **argv)
 		if (cursed) {
 		    BANNER(padsmp, "CPU Utilisation");
 
-		    /* mvwprintw(padsmp,1, 0, cpu_line); */
-		    /*
-		     *mvwprintw(padsmp,2, 0, "CPU  User%%  Sys%% Wait%% Idle|0          |25         |50          |75       100|");
-		     */
 		    mvwprintw(padsmp, 1, 0, cpu_line);
 		    mvwprintw(padsmp, 2, 0, "CPU  ");
 		    COLOUR wattrset(padsmp, COLOR_PAIR(2));	/* Green */
@@ -5579,10 +5542,8 @@ int main(int argc, char **argv)
 			}
 #endif
 			plot_smp(padsmp, i + 1, 3 + i,
-				 (double) cpu_user / (double) cpu_sum *
-				 100.0,
-				 (double) cpu_sys / (double) cpu_sum *
-				 100.0,
+				 (double) cpu_user / (double) cpu_sum * 100.0, 
+				(double) cpu_sys / (double) cpu_sum * 100.0,
 				 (double) cpu_wait / (double) cpu_sum *
 				 100.0,
 				 (double) cpu_idle / (double) cpu_sum *
@@ -5675,16 +5636,11 @@ int main(int argc, char **argv)
 		if (cpus > 1 || !cursed) {
 		    if (!smp_first_time || !cursed) {
 			plot_smp(padsmp, 0, 4 + i,
-				 (double) cpu_user / (double) cpu_sum *
-				 100.0,
-				 (double) cpu_sys / (double) cpu_sum *
-				 100.0,
-				 (double) cpu_wait / (double) cpu_sum *
-				 100.0,
-				 (double) cpu_idle / (double) cpu_sum *
-				 100.0,
-				 (double) cpu_steal / (double) cpu_sum *
-				 100.0);
+				 (double) cpu_user / (double) cpu_sum * 100.0,
+				 (double) cpu_sys / (double) cpu_sum * 100.0,
+				 (double) cpu_wait / (double) cpu_sum * 100.0,
+				 (double) cpu_idle / (double) cpu_sum * 100.0,
+				 (double) cpu_steal / (double) cpu_sum * 100.0);
 		    }
 
 		    CURSE mvwprintw(padsmp, i + 5, 0, cpu_line);
@@ -5697,6 +5653,18 @@ int main(int argc, char **argv)
 		if (cursed) {
 		    int rows = 0;
 		    BANNER(padwide, "CPU Utilisation Wide View");
+		    const char wide1[]  = "100%%-+--------+---------+---------+---------+---------+---------+-----+100%%";
+		    const char wide2[]  = " 90%%-|                                                                |-90%%";
+		    const char wide3[]  = " 80%%-|                                                                |-80%%";
+		    const char wide4[]  = " 70%%-|                                                                |-70%%";
+		    const char wide5[]  = " 60%%-|                                                                |-60%%";
+		    const char wide6[]  = " 50%%-|                                                                |-50%%";
+		    const char wide7[]  = " 40%%-|                                                                |-40%%";
+		    const char wide8[]  = " 30%%-|                                                                |-30%%";
+		    const char wide9[]  = " 20%%-|                                                                |-20%%";
+		    const char wide10[] = " 10%%-|                                                                |-10%%";
+		    const char wide11[] = " CPU +1--------+10-------+20-------+30-------+40-------+50-------+60--+--0%%";
+
 		    mvwprintw(padwide, 1, 0, wide1);
 		    mvwprintw(padwide, 2, 0, wide2);
 		    mvwprintw(padwide, 3, 0, wide3);
@@ -5706,8 +5674,8 @@ int main(int argc, char **argv)
 		    mvwprintw(padwide, 7, 0, wide7);
 		    mvwprintw(padwide, 8, 0, wide8);
 		    mvwprintw(padwide, 9, 0, wide9);
-		    mvwprintw(padwide, 10, 0, wide10);
-		    mvwprintw(padwide, 11, 0, wide_1_64);
+		    mvwprintw(padwide,10, 0, wide10);
+		    mvwprintw(padwide,11, 0, wide11);
 		    mvwprintw(padwide, 1, 6, "CPU(s)=%d", cpus);
 		    if (wide_first_time) {
 			mvwprintw(padwide, 3, 7,
@@ -5757,7 +5725,8 @@ int main(int argc, char **argv)
 			mvwprintw(padwide, rows + 7, 0, wide8);
 			mvwprintw(padwide, rows + 8, 0, wide9);
 			mvwprintw(padwide, rows + 9, 0, wide10);
-			mvwprintw(padwide, rows + 10, 0, wide_65_128);
+			mvwprintw(padwide, rows + 10, 0,
+				  " CPU +65---+70-------+80-------+90-------+100------+110------+120-----+--0%%");
 			if (wide_first_time) {
 			    mvwprintw(padwide, rows + 3, 7,
 				      " Please wait gathering CPU statistics");
@@ -5814,7 +5783,8 @@ int main(int argc, char **argv)
 			mvwprintw(padwide, rows + 7, 0, wide8);
 			mvwprintw(padwide, rows + 8, 0, wide9);
 			mvwprintw(padwide, rows + 9, 0, wide10);
-			mvwprintw(padwide, rows + 10, 0,wide_129_192);
+			mvwprintw(padwide, rows + 10, 0,
+				  " CPU +129--------+140------+150------+160------+170------+180------+190--0%%");
 			if (wide_first_time) {
 			    mvwprintw(padwide, rows + 3, 7,
 				      " Please wait gathering CPU statistics");
@@ -6195,7 +6165,7 @@ int main(int argc, char **argv)
 		mvwprintw(padgpu, 2, 55, "Name");
 
 		for (i = 0; i < gpu_devices; i++) {
-		    mvwprintw(padgpu, 4 + i, 1, "%3d", i);
+		    mvwprintw(padgpu, 4 + i, 1, "%3d", i+1);
 		    COLOUR wattrset(padgpu, COLOR_PAIR(1));
 		    mvwprintw(padgpu, 4 + i, 5, "%7d", (int) gpu_clock[i]);
 		    COLOUR wattrset(padgpu, COLOR_PAIR(2));
@@ -6210,7 +6180,7 @@ int main(int argc, char **argv)
 		    COLOUR wattrset(padgpu, COLOR_PAIR(0));
 		    mvwprintw(padgpu, 4 + i, 55, "%-s", &gpu_name[i][0]);
 		}
-		DISPLAY(padgpu, 8);
+		DISPLAY(padgpu, 4 + gpu_devices); /*GPUSIZE*/
 	    } else {
 		if (!show_rrd) {
 		    if (first_time_gpu) {
@@ -6390,7 +6360,7 @@ int main(int argc, char **argv)
 		BANNER(padmem, "Memory and Swap");
 
 		COLOUR wattrset(padmem, COLOR_PAIR(1));
-		mvwprintw(padmem, 1, 1, "PageSize:%luKB", pagesize / 1024);
+		mvwprintw(padmem, 1, 1, "PageSize:%ldKB", pagesize / 1024);
 		COLOUR wattrset(padmem, COLOR_PAIR(0));
 		mvwprintw(padmem, 2, 1, "Total (MB)");
 		mvwprintw(padmem, 3, 1, "Free  (MB)");
@@ -7400,7 +7370,7 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 				    mvwprintw(padjfs, 2 + j, 0,
 					      "%-20s %7.0f %7.0f %4.0f%% %-8s %s",
 					      str_p, fs_size, fs_free,
-					      ceil(fs_size_used),
+					      (double)ceil((double)fs_size_used),
 					      jfs[k].type, jfs[k].name);
 
 				} else {
@@ -7561,9 +7531,9 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 			mvwprintw(paddisk, 0, 12, "/proc/stat+disk_io");
 			break;
 		    }
-		    mvwprintw(paddisk, 0, 31, "mostly in KB/s");
-		    mvwprintw(paddisk, 0, 50,
-			      "Warning:contains duplicates");
+		    mvwprintw(paddisk, 0, 29, "Requested %cB/s", request_units);
+		    mvwprintw(paddisk, 0, 47,
+			      "Warning:may contains duplicates");
 		    switch (show_disk) {
 		    case SHOW_DISK_STATS:
 			mvwprintw(paddisk, 1, 0, "DiskName Busy");
@@ -7581,9 +7551,10 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 			mvwprintw(paddisk, 1, 15, "Read ");
 			COLOUR wattrset(paddisk, COLOR_PAIR(3));
 			mvwprintw(paddisk, 1, 20, "Write");
+			/* --- mvwprintw(paddisk, 1, 25, "%cb", request_units);*/
 			COLOUR wattrset(paddisk, COLOR_PAIR(0));
-			mvwprintw(paddisk, 1, 25,
-				  "KB|0          |25         |50          |75       100|");
+			mvwprintw(paddisk, 1, 27,
+				  "|0          |25         |50          |75       100|");
 			break;
 		    }
 		}
@@ -7592,28 +7563,37 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 		    mvwprintw(paddisk, 2, 0,
 			      "Please wait - collecting disk data");
 		} else {
+		    minimum_units = request_units;
+		    if (show_disk == SHOW_DISK_GRAPH) {
+		      for (i = 0, k = 0; i < disks; i++) {
+			disk_read  = DKDELTA(dk_rkb) / elapsed;
+			disk_write = DKDELTA(dk_wkb) / elapsed;
+			if(disk_read  > 99999.9 /* max display size */
+			|| disk_write > 99999.9)
+			    if(minimum_units == 'K')
+			 	minimum_units = 'M';
+			if(disk_read  > 99999.9 * 1024.0 
+			|| disk_write > 99999.9 * 1024.0)
+			    if(minimum_units == 'K' || minimum_units == 'M')
+				minimum_units = 'G';
+		      }
+		      if(minimum_units != request_units) {
+		        COLOUR wattrset(paddisk, COLOR_PAIR(1));
+		        mvwprintw(paddisk, 1, 25, "%cB", minimum_units); 
+		        mvwprintw(paddisk, 0, 29, "Change to %cB/s", request_units);
+		        COLOUR wattrset(paddisk, COLOR_PAIR(0));
+		      } else {
+		        mvwprintw(paddisk, 1, 25, "  "); 
+		      }
+		    }
+		    
 		    total_disk_read = 0.0;
 		    total_disk_write = 0.0;
 		    total_disk_xfers = 0.0;
-		    disk_mb = 0;
-		    for (i = 0, k = 0; i < disks; i++) {
-			disk_read = DKDELTA(dk_rkb) / elapsed;
-			disk_write = DKDELTA(dk_wkb) / elapsed;
-			if ((show_disk == SHOW_DISK_GRAPH)
-			    && (disk_read > 9999.9
-				|| disk_write > 9999.9)) {
-			    disk_mb = 1;
-			    COLOUR wattrset(paddisk, COLOR_PAIR(1));
-			    mvwprintw(paddisk, 1, 25, "MB");
-			    COLOUR wattrset(paddisk, COLOR_PAIR(0));
-			    break;
-			}
-		    }
 		    for (i = 0, k = 0; i < disks; i++) {
 			if (disk_only_mode
 			    && is_dgroup_name(p->dk[i].dk_name) == 0)
 			    continue;
-
 /*
 					if(p->dk[i].dk_name[0] == 'h')
 						continue;
@@ -7647,10 +7627,11 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 				      str_p, disk_busy);
 			    COLOUR wattrset(paddisk, COLOR_PAIR(6));
 			    mvwprintw(paddisk, 2 + k, 13, "%9.1f",
-				      disk_read);
+				      disk_read / minimum_units_factor() );
 			    COLOUR wattrset(paddisk, COLOR_PAIR(3));
-			    mvwprintw(paddisk, 2 + k, 22, "%9.1fKB/s",
-				      disk_write);
+			    mvwprintw(paddisk, 2 + k, 22, "%9.1f",
+				      disk_write / minimum_units_factor() );
+			    mvwprintw(paddisk, 2 + k, 32, "%cB", minimum_units);
 			    COLOUR wattrset(paddisk, COLOR_PAIR(5));
 			    mvwprintw(paddisk, 2 + k, 36, "%6.1f", disk_xfers / elapsed);
 			    COLOUR wattrset(paddisk, COLOR_PAIR(4));
@@ -7658,23 +7639,19 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 				      disk_xfers == 0.0 ? 0.0 : (DKDELTA(dk_rkb) + DKDELTA(dk_wkb)) / disk_xfers); 
 			    COLOUR wattrset(paddisk, COLOR_PAIR(2));
 			    mvwprintw(paddisk, 2 + k, 52,
-				      "%3.0f%% %9.1fKB/s",
-				      disk_busy_peak[i],
-				      disk_rate_peak[i]);
+				      "%3.0f%% %9.1f%cB",
+				      disk_busy_peak[i] / minimum_units_factor(),
+				      disk_rate_peak[i] / minimum_units_factor(), 
+				      minimum_units);
 			    COLOUR wattrset(paddisk, COLOR_PAIR(3));
-			    mvwprintw(paddisk, 2 + k, 70, "%3ld", p->dk[i].dk_inflight);
+			    mvwprintw(paddisk, 2 + k, 70, "%3d", (int)p->dk[i].dk_inflight);
 			    COLOUR wattrset(paddisk, COLOR_PAIR(0));
 			    k++;
 			}
 			if (show_disk == SHOW_DISK_GRAPH) {
 			    /* output disk bar graphs */
-			    if (disk_mb) {
-				disk_read_tmp = disk_read / 1024.0;
-				disk_write_tmp = disk_write / 1024.0;
-			    } else {
-				disk_read_tmp = disk_read;
-				disk_write_tmp = disk_write;
-			    }
+			    disk_read_tmp = disk_read / minimum_units_factor();
+			    disk_write_tmp = disk_write / minimum_units_factor();
 
 			    mvwprintw(paddisk, 2 + k, 0, "%-8s %3.0f%%",
 				      str_p, disk_busy);
@@ -7685,7 +7662,6 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 			    mvwprintw(paddisk, 2 + k, 20, "%7.1f",
 				      disk_write_tmp);
 			    COLOUR wattrset(paddisk, COLOR_PAIR(0));
-
 			    mvwprintw(paddisk, 2 + k, 27,
 				      "|                                                  ");
 			    wmove(paddisk, 2 + k, 28);
@@ -8186,15 +8162,14 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 	    }
 	    CURSE BANNER(padtop, "Top Processes");
 	    if (isroot) {
-		formatstring = "Procs=%d-mode=%d-1=Base 3=Perf 4=Size 5=I/O u=Args";
+		CURSE mvwprintw(padtop, 0, 15, "Procs=%d-mode=%d-1=Base 3=Perf 4=Size 5=I/O u=Args", p->processes, show_topmode);
 	    } else {
-		formatstring = "Procs=%d-mode=%d-1=Base 3=Perf 4=Size 5=I/O[RootOnly] u=Args";
-	   }
-	    CURSE mvwprintw(padtop, 0, 15, formatstring, p->processes, show_topmode);
+		CURSE mvwprintw(padtop, 0, 15, "Procs=%d-mode=%d-1=Base 3=Perf 4=Size 5=I/O[RootOnly] u=Args", p->processes, show_topmode);
+	    }
+
 	    if (cursed && top_first_time) {
 		top_first_time = 0;
-		mvwprintw(padtop, 1, 1,
-			  "Please wait - information being collected");
+		mvwprintw(padtop, 1, 1, "Please wait - information being collected");
 	    } else {
 		switch (show_topmode) {
 		case 1:   /* Basic */
@@ -8245,46 +8220,28 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 		case 3:
 		case 4:
 		case 5:
-
-		    if (show_args == ARGS_ONLY) {
-			formatstring =
-			    "  PID    %%CPU   ResSize Command                                            ";
-		    } else if (COLS > 119) {
-			if (show_topmode == 5)
-			    formatstring =
-				"  PID        %%CPU      Size       Res      Res       Res       Res      Shared       StorageKB  Command";
-			else
-			    formatstring =
-				"  PID        %%CPU      Size       Res      Res       Res       Res      Shared   Faults   Faults Command";
-		    } else {
-			if (show_topmode == 5)
-			    formatstring =
-				"  PID    %%CPU  Size   Res   Res   Res   Res Shared StorageKB Command";
-			else
-			    formatstring =
-				"  PID    %%CPU  Size   Res   Res   Res   Res Shared   Faults  Command";
-		    }
-		    CURSE mvwprintw(padtop, 1, y, "%s", formatstring);
-
-		    if (show_args == ARGS_ONLY) {
-			formatstring =
-			    "         Used       KB                                                       ";
-		    } else if (COLS > 119) {
-			if (show_topmode == 5)
-			    formatstring =
-				"             Used        KB       Set      Text      Data       Lib        KB      Read   Write";
-			else
-			    formatstring =
-				"             Used        KB       Set      Text      Data       Lib        KB      Min      Maj";
-		    } else {
-			if (show_topmode == 5)
-			    formatstring =
-				"         Used    KB   Set  Text  Data   Lib    KB ReadWrite ";
-			else
-			    formatstring =
-				"         Used    KB   Set  Text  Data   Lib    KB  Min  Maj ";
-		    }
-		    CURSE mvwprintw(padtop, 2, 1, "%s", formatstring);
+		    if(cursed) {
+		        if (show_args == ARGS_ONLY) {
+			    mvwprintw(padtop, 1, y, head1_top_argonly);
+			    mvwprintw(padtop, 2, y, head2_top_argonly);
+		        } else if (COLS > 119) {
+			    if (show_topmode == 5) {
+			        mvwprintw(padtop, 1, y, head1_top_wide_mode5);
+			        mvwprintw(padtop, 2, y, head2_top_wide_mode5);
+			    } else{
+			        mvwprintw(padtop, 1, y, head1_top_wide_modex);
+			        mvwprintw(padtop, 2, y, head2_top_wide_modex);
+			    }
+		        } else {
+			    if (show_topmode == 5) {
+			        mvwprintw(padtop, 1, y, head1_top_thin_mode5);
+			        mvwprintw(padtop, 2, y, head2_top_thin_mode5);
+			    } else {
+			        mvwprintw(padtop, 1, y, head1_top_thin_modex);
+			        mvwprintw(padtop, 2, y, head2_top_thin_modex);
+		            }
+		        }
+                    } /* cursed */
 		    for (j = 0; j < max_sorted; j++) {
 			i = topper[j].index;
 			if (!show_all) {
@@ -8336,12 +8293,7 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 				toprio_ch = ' ';
 				topwio = (int) (COUNTDELTA(write_io) / elapsed / 1024);
 				topwio_ch = ' ';
-/*
-				if (COLS > 119) 
-				    formatstring = "%8d %8.1f %9lu%c%9lu%c%9lu%c%9lu%c%9lu%c%9lu%c%8d%c%8d%c%-32s"; 
-				else  {
-				    formatstring = "%7d %5.1f %5lu%c%5lu%c%5lu%c%5lu%c%5lu%c%5lu%c%4d%c%4d%c%-32s";
-*/
+
 				if (COLS < 119) {
 				    if(topsize > 99999UL) {
 					topsize = topsize / 1024UL;
@@ -8359,7 +8311,7 @@ I/F Name Recv=KB/s Trans=KB/s packin packout insize outsize Peak->Recv Trans
 					topdrs = topdrs / 1024UL;
 					topdrs_ch = 'm';
 				    }
-				    if(toptrs > 99999UL) {
+				    if(toplrs > 99999UL) {   /* XXX was trs should be lrs */
 					toplrs = toplrs / 1024UL;
 					toplrs_ch = 'm';
 				    }

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  4 10:32:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 16p:
+  * Small improvements to on-screen use only :
+    + CLI -B and GUI 'B' to toggle boxes around stats.
+    + CLI -^ and '^' to change units for Disk I/O KB/s -> MB/s -> GB/s.
+      This happen temporarily too if the size of the statistic
+      will not fit on-scree. 
+  * Code changed to ensure clean compile for GCC 12
+
+-------------------------------------------------------------------
 Sun Apr 10 13:41:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 16n:

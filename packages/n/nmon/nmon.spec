@@ -1,7 +1,7 @@
 #
 # spec file for package nmon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,11 +18,11 @@
 
 
 Name:           nmon
-Version:        16n
+Version:        16p
 Release:        0
 Summary:        Performance Monitor
 License:        GPL-3.0-only
-URL:            http://nmon.sourceforge.net/pmwiki.php
+URL:            https://nmon.sourceforge.io/pmwiki.php
 Source0:        https://sourceforge.net/projects/nmon/files/lmon%{version}.c
 Source1:        https://www.gnu.org/licenses/gpl-3.0.txt
 BuildRequires:  ncurses-devel
@@ -61,10 +61,8 @@ export CFLAGS="%{optflags} \
   -D GETUSER \
   -D LARGEMEM \
   -D KERNEL_2_6_18 \
-  %if 0%{?is_opensuse}
-  -Wno-unused \
-  %else
-  -D SLES12 -Wno-unused \
+  %if !0%{?is_opensuse}
+  -D SLES12 \
   %endif
   %{SOURCE0}"
 export LDFLAGS="-o nmon \
