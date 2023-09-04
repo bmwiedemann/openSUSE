@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1061495</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9120a16c3365f6ba41e56d496ed7673e</srcmd5>
+    <version>2023.8.30</version>
+    <time>1693860846</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.8.30:
+  * Drop support for Python 3.8 and numpy &lt; 1.22 (NEP29).</comment>
+    <requestid>1108928</requestid>
+  </revision>
 </revisionlist>

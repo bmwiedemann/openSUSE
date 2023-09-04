@@ -17,17 +17,17 @@
 
 
 Name:           python-cmapfile
-Version:        2022.9.29
+Version:        2023.8.30
 Release:        0
 Summary:        Write Chimera Map (CMAP) files
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://www.lfd.uci.edu/~gohlke/
+URL:            https://github.com/cgohlke/cmapfile/
 # SourceRepository: https://github.com/cgohlke/cmapfile
 Source:         https://github.com/cgohlke/cmapfile/archive/v%{version}.tar.gz#/cmapfile-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module h5py >= 3.1}
-BuildRequires:  %{python_module numpy >= 1.19.2}
+BuildRequires:  %{python_module numpy >= 1.22}
 BuildRequires:  %{python_module oiffile >= 2021.6.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scipy >= 1.5}
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-h5py >= 3.1
-Requires:       python-numpy >= 1.19.2
+Requires:       python-numpy >= 1.22
 Requires:       python-oiffile >= 2021.6.6
 Requires:       python-scipy >= 1.5
 Requires:       python-tifffile >= 2021.11.2
