@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 30 20:04:13 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update concurrent-output to version 1.10.19.
+  concurrent-output (1.10.19) unstable; urgency=medium
+
+    * Support building for WASM.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 30 Aug 2023 16:03:03 -0400
+
+-------------------------------------------------------------------
 Mon May 15 20:34:00 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update concurrent-output to version 1.10.18.
