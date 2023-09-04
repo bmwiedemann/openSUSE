@@ -16,8 +16,8 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,23 +26,23 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-htmlhelp%{psuffix}
-Version:        2.0.1
+Version:        2.0.4
 Release:        0
 Summary:        Sphinx contrib extension to generate html help files
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-htmlhelp
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-htmlhelp/sphinxcontrib-htmlhelp-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib_htmlhelp/sphinxcontrib_htmlhelp-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx
+Requires:       python-Sphinx >= 5.0
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module Sphinx >= 5.0}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-htmlhelp >= %{version}}
@@ -53,7 +53,7 @@ BuildRequires:  %{python_module sphinxcontrib-htmlhelp >= %{version}}
 Html help generating extension.
 
 %prep
-%autosetup -p1 -n sphinxcontrib-htmlhelp-%{version}
+%autosetup -p1 -n sphinxcontrib_htmlhelp-%{version}
 
 %build
 %pyproject_wheel
@@ -73,7 +73,9 @@ Html help generating extension.
 %files %{python_files}
 %doc README.rst CHANGES
 %license LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/sphinxcontrib
+%{python_sitelib}/sphinxcontrib/htmlhelp
+%{python_sitelib}/sphinxcontrib_htmlhelp-%{version}*-info
 %endif
 
 %changelog
