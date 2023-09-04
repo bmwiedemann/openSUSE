@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Glances
-Version:        3.3.1
+Version:        3.4.0.3
 Release:        0
 Summary:        A cross-platform curses-based monitoring tool
 License:        LGPL-3.0-only
@@ -27,22 +27,22 @@ Source:         https://github.com/nicolargo/glances/archive/v%{version}.tar.gz
 Source2:        glances.service
 Source3:        glances.firewalld
 Patch0:         adjust-data-files.patch
-Patch1:         remove-shebang.patch
 Patch2:         skip-online-tests.patch
 Patch3:         fix-tests.patch
 Patch4:         unitest-wait-for-server.patch
 BuildRequires:  %{python_module bottle}
 BuildRequires:  %{python_module defusedxml}
-BuildRequires:  %{python_module future}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil >= 5.3.0}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module ujson}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-bottle
 Requires:       python-defusedxml
-Requires:       python-future
+Requires:       python-packaging
 Requires:       python-psutil >= 5.3.0
 Requires:       python-requests
 Requires:       python-ujson
@@ -75,14 +75,13 @@ This packages contains the service file to start a glances server
 from systemd and a firewalld file to open the default port.
 
 %prep
-%setup -q -n glances-%{version}
-%autopatch -p1
+%autosetup -p1 -n glances-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_mandir}/man1/glances.1
 %python_clone -a %{buildroot}%{_bindir}/glances
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -125,7 +124,7 @@ export LANG=en_US.UTF-8
 %python_alternative %{_bindir}/glances
 %python_alternative %{_mandir}/man1/glances.1%{?ext_man}
 %{python_sitelib}/glances
-%{python_sitelib}/Glances-%{version}*-info
+%{python_sitelib}/Glances-%{version}.dist-info
 %exclude %{python_sitelib}/glances/outputs/static/.eslintrc.js
 %exclude %{python_sitelib}/glances/outputs/static/.gitignore
 %exclude %{python_sitelib}/glances/outputs/static/.prettierrc.js

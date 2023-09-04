@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Sep  4 03:10:49 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.4.0.3:
+  * Influxdb2 export not working #2407
+  * 3.4.0 crash on startupwith minimal deps #2401
+  * Enhance process "extended stats" display (in Curses interface) #2225
+  * Improve Glances start time by disabling Docker and Podman version getter
+  * Customizable InfluxDB2 export interval #2348
+  * Improve kill signal management #2194
+  * Display a critical error message if Glances is ran with both webserver
+    and rpcserver mode
+  * Refactor the Cloud plugin, disable it by default in the default
+    configuration file - Related to #2279
+  * Correct clear-text logging of sensitive information (security alert #29)
+  * Use of a broken or weak cryptographic hashing algorithm (SHA256) on
+    password storage #2175
+  * Correct issue (error message) concerning the Cloud plugin
+  * InfluxDB2 export doesn't process folders correctly - missing key #2327
+  * Index error when displaying programs on MacOS #2360
+  * Dissociate 2 sensors with exactly the same names #2280
+  * It is not possible to return API data for a particular mount
+    point (FS plugin) #1162
+- Drop patch remove-shebang.patch, no longer required.
+- Switch to pyproject and autosetup macros.
+
+-------------------------------------------------------------------
 Thu Jul  6 11:11:15 UTC 2023 - ecsos <ecsos@openssuse.org>
 
 - Add %{?sle15_python_module_pythons}
