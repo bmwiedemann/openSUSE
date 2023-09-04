@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Wed Aug 30 11:31:33 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to 7.2.4
+  * Require sphinxcontrib-serializinghtml 1.1.9.
+  * Fix regression in autodoc.Documenter.parse_name().
+  * Fix regression in JSON serialisation.
+  * autodoc: Support positional-only parameters in classmethod methods 
+    when autodoc_preserve_defaults is True.
+  * Restore support string methods on path objects. This is deprecated 
+    and will be removed in Sphinx 8. Use os.fspath() to convert Path 
+    objects to strings, or Path’s methods to work with path objects.
+  * Fix a regression in the MoveModuleTargets transform.
+  * linkcheck: Resolve hanging tests for timezones west of London and 
+    incorrect conversion from UTC to offsets from the UNIX epoch.
+
+-------------------------------------------------------------------
+Wed Aug 23 12:06:50 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to 7.2.2
+  * Drop Python 3.8 support.
+  * Require Pygments 2.14 or later.
+  * Deprecate sphinx.util.md5 and sphinx.util.sha1. Use hashlib instead.
+  * Deprecate sphinx.testing.path. Use os.path or pathlib instead.
+  * Support os.PathLike types and pathlib.Path objects in many more places.
+  * Add the :no-typesetting: option to suppress textual output and only 
+    create a linkable anchor.
+  * Allow running Sphinx with python -m sphinx build
+  * graphviz: Fix relative links from within the graph.
+  * pytest: Fail tests on “XPASS”, Set PYTHONWARNINGS=error, set strict config
+  * Restored the the str interface of the asset classes (_CascadingStyleSheet 
+    and _JavaScript), which several extensions relied upon. This will be 
+    removed in Sphinx 9.
+  * Many more changes (even deprecations), see upstream changelog
+
+-------------------------------------------------------------------
+Mon Aug  7 08:18:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.2:
+  * #11542: linkcheck: Properly respect :confval:`linkcheck_anchors`
+    and do not spuriously report failures to validate anchors.
+
+-------------------------------------------------------------------
+Fri Jul 28 13:34:59 UTC 2023 - Martin Liška <martin.liska@hey.com>
+
+- Update to 7.1.1:
+  * #11514: Fix ``SOURCE_DATE_EPOCH`` in multi-line copyright footer.
+    Patch by Bénédikt Tran.
+
+- Update to 7.1.0:
+  * Releases are no longer signed, given the `change in PyPI policy`_.
+  * #11412: Emit warnings on using a deprecated Python-specific index entry type
+    (namely, ``module``, ``keyword``, ``operator``, ``object``, ``exception``,
+    ``statement``, and ``builtin``) in the :rst:dir:`index` directive, and
+    set the removal version to Sphinx 9. Patch by Adam Turner.
+  * #11415: Add a checksum to JavaScript and CSS asset URIs included within
+    generated HTML, using the CRC32 algorithm.
+  * :meth:`~sphinx.application.Sphinx.require_sphinx` now allows the version
+    requirement to be specified as ``(major, minor)``.
+  * #11011: Allow configuring a line-length limit for object signatures, via
+    :confval:`maximum_signature_line_length` and the domain-specific variants.
+    If the length of the signature (in characters) is greater than the configured
+    limit, each parameter in the signature will be split to its own logical line.
+    This behaviour may also be controlled by options on object description
+    directives, for example :rst:dir:`py:function:single-line-parameter-list`.
+    Patch by Thomas Louf, Adam Turner, and Jean-François B.
+  * #10983: Support for multiline copyright statements in the footer block.
+    Patch by Stefanie Molin
+  * ``sphinx.util.display.status_iterator`` now clears the current line
+    with ANSI control codes, rather than overprinting with space characters.
+  * #11431: linkcheck: Treat SSL failures as broken links.
+    Patch by Bénédikt Tran
+  * #11157: Keep the ``translated`` attribute on translated nodes.
+  * #11451: Improve the traceback displayed when using :option:`sphinx-build -T`
+    in parallel builds. Patch by Bénédikt Tran
+  * #11324: linkcheck: Use session-basd HTTP requests.
+  * #11438: Add support for the :rst:dir:`py:class` and :rst:dir:`py:function`
+    directives for PEP 695 (generic classes and functions declarations) and
+    PEP 696 (default type parameters).  Multi-line support (#11011) is enabled
+    for type parameters list and can be locally controlled on object description
+    directives, e.g., :rst:dir:`py:function:single-line-type-parameter-list`.
+    Patch by Bénédikt Tran.
+  * #11484: linkcheck: Allow HTML anchors to be ignored on a per-URL basis
+    via :confval:`linkcheck_anchors_ignore_for_url` while
+    still checking the validity of the page itself.
+    Patch by Bénédikt Tran
+  * #1246: Add translation progress statistics and inspection support,
+    via a new substitution (``|translation progress|``) and a new
+    configuration variable (:confval:`translation_progress_classes`).
+    These enable determining the percentage of translated elements within
+    a document, and the remaining translated and untranslated elements.
+  * Restored the ``footnote-reference`` class that has been removed in
+    the latest (unreleased) version of Docutils.
+  * #11486: Use :rfc:`8081` font file MIME types in the EPUB builder.
+    Using the correct MIME type will prevent warnings from ``epubcheck``
+    and will generate a valid EPUB.
+  * #11435: Use microsecond-resolution timestamps for outdated file detection
+    in ``BuildEnvironment.get_outdated_files``.
+  * #11437: Top-level headings starting with a reStructuredText role
+    now render properly when :confval:`rst_prolog` is set.
+    Previously, a file starting with the below would have
+    improperly rendered due to where the prologue text
+    was inserted into the document.
+    Patch by Bénédikt Tran.
+  * #11337: Fix a ``MemoryError`` in ``sphinx.ext.intersphinx`` when using ``None``
+    or ``typing.*`` as inline type references. Patch by Bénédikt Tran (picnixz)
+  * #11345: Always delete ``docutils.conf`` in test directories when running
+    ``SphinxTestApp.cleanup()``.
+
+-------------------------------------------------------------------
 Sun May 14 15:27:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.1:

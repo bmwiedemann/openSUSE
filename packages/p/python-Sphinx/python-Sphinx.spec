@@ -26,14 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Sphinx%{psuffix}
-Version:        7.0.1
+Version:        7.2.4
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://sphinx-doc.org
-Source:         https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-%{version}.tar.gz
-Source1:        https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-%{version}.tar.gz.asc
+Source:         https://files.pythonhosted.org/packages/source/s/sphinx/sphinx-%{version}.tar.gz
 # Provide intersphinx inventory offline, run update-intersphinx.sh
 # https://docs.python.org/3/objects.inv
 Source2:        python3.inv
@@ -55,7 +54,7 @@ BuildRequires:  python3-pip
 #!BuildIgnore:  texinfo
 Requires:       python-Babel >= 1.3
 Requires:       python-Jinja2 >= 2.3
-Requires:       python-Pygments >= 2.1
+Requires:       python-Pygments >= 2.14
 Requires:       python-alabaster >= 0.7
 Requires:       python-docutils >= 0.12
 Requires:       python-imagesize
@@ -69,7 +68,7 @@ Requires:       python-sphinxcontrib-devhelp
 Requires:       python-sphinxcontrib-htmlhelp >= 2.0.0
 Requires:       python-sphinxcontrib-jsmath
 Requires:       python-sphinxcontrib-qthelp >= 1.0.2
-Requires:       python-sphinxcontrib-serializinghtml >= 1.1.5
+Requires:       python-sphinxcontrib-serializinghtml >= 1.1.9
 Requires:       python-sphinxcontrib-websupport
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -92,7 +91,6 @@ BuildRequires:  %{python_module sphinxcontrib-websupport}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  ImageMagick
 BuildRequires:  graphviz
-BuildRequires:  (python3-typed-ast if python3-base < 3.8)
 # For PNG format
 BuildRequires:  graphviz-gd
 # For PDF format (!?)
@@ -239,7 +237,7 @@ This package contains the HTML documentation for Sphinx.
 %endif
 
 %prep
-%setup -q -n Sphinx-%{version}
+%setup -q -n sphinx-%{version}
 %autopatch -p1
 
 %build
@@ -315,6 +313,7 @@ mv build.doc/man/sphinx-quickstart.1 %{buildroot}%{_mandir}/man1/sphinx-quicksta
 
 %check
 %if %{with test}
+export PYTHONPATH=.
 export LC_ALL="C.utf8"
 # test_latex_images test downloading a remote image
 # test_signature_annotations doesn’t work
