@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 29 21:32:58 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Mon Aug 28 12:00:48 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.3.0
+  * Load jQuery correctly when using latest sphinxcontrib-jquery release
+  * Relaxed requirements to include Sphinx release 7.0
+
+-------------------------------------------------------------------
 Fri May  5 14:19:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - move jquery to runtime requires

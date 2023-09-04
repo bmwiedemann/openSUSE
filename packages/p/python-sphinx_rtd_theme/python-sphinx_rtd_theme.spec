@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinx_rtd_theme%{psuffix}
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        ReadTheDocs.org theme for Sphinx
 License:        Apache-2.0 AND MIT AND OFL-1.1
@@ -39,14 +38,14 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 1.6
 Requires:       python-docutils
-Requires:       python-sphinxcontrib-jquery >= 2.0.0
+Requires:       python-sphinxcontrib-jquery >= 4.0
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Sphinx}
-# as per https://github.com/readthedocs/sphinx_rtd_theme/pull/1336 no changes are needed for the new docutils to work
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module readthedocs-sphinx-ext}
+BuildRequires:  %{python_module sphinxcontrib-jquery >= 4.0}
 %endif
 %python_subpackages
 
@@ -85,7 +84,8 @@ sed -i "/'build_py'/d" setup.py
 %files %{python_files}
 %license LICENSE OFL-License.txt Apache-License-2.0.txt
 %doc README.rst
-%{python_sitelib}/sphinx_rtd_theme*
+%{python_sitelib}/sphinx_rtd_theme
+%{python_sitelib}/sphinx_rtd_theme-%{version}*-info
 %endif
 
 %changelog
