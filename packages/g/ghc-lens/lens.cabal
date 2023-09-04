@@ -1,6 +1,6 @@
 name:          lens
 category:      Data, Lenses, Generics
-version:       5.2.2
+version:       5.2.3
 x-revision: 1
 license:       BSD2
 cabal-version: 1.18
@@ -20,9 +20,10 @@ tested-with:   GHC == 8.0.2
              , GHC == 8.8.4
              , GHC == 8.10.7
              , GHC == 9.0.2
-             , GHC == 9.2.6
-             , GHC == 9.4.4
-             , GHC == 9.6.1
+             , GHC == 9.2.8
+             , GHC == 9.4.5
+             , GHC == 9.6.2
+             , GHC == 9.8.1
 synopsis:      Lenses, Folds and Traversals
 description:
   This package comes \"Batteries Included\" with many useful lenses for the types
@@ -199,9 +200,9 @@ library
     semigroupoids                 >= 5.0.1    && < 7,
     strict                        >= 0.4      && < 0.6,
     tagged                        >= 0.8.6    && < 1,
-    template-haskell              >= 2.11.1.0 && < 2.21,
-    text                          >= 1.2.3.0  && < 2.1,
-    th-abstraction                >= 0.4.1    && < 0.6,
+    template-haskell              >= 2.11.1.0 && < 2.22,
+    text                          >= 1.2.3.0  && < 2.2,
+    th-abstraction                >= 0.4.1    && < 0.7,
     these                         >= 1.1.1.1  && < 1.3,
     transformers                  >= 0.5.0.0  && < 0.7,
     transformers-compat           >= 0.5.0.4  && < 1,
@@ -230,6 +231,7 @@ library
     Control.Lens.Internal.Context
     Control.Lens.Internal.CTypes
     Control.Lens.Internal.Deque
+    Control.Lens.Internal.Doctest
     Control.Lens.Internal.Exception
     Control.Lens.Internal.FieldTH
     Control.Lens.Internal.PrismTH
@@ -327,6 +329,7 @@ test-suite templates
   type: exitcode-stdio-1.0
   main-is: templates.hs
   other-modules:
+    BigRecord
     T799
     T917
     T972

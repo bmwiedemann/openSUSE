@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.2.2
+Version:        5.2.3
 Release:        0
 Summary:        Lenses, Folds and Traversals
 License:        BSD-2-Clause

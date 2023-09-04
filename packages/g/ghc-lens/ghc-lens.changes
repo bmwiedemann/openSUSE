@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug 27 15:30:05 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update lens to version 5.2.3 revision 1.
+  5.2.3 [2023.08.24]
+  ------------------
+  * Allow building with GHC 9.8.
+  * Add new `Prism`s to `Language.Haskell.TH.Lens` to reflect recent additions to
+    `template-haskell`:
+    * `_GetFieldE` and `_ProjectionE` `Prism`s for the `Exp` data type, whose
+      corresponding data constructors were introduced in
+      `template-haskell-2.18.*`.
+    * `_TypedBracketE` and `_TypedSpliceE` `Prism`s for the `Exp` data type, whose
+      corresponding data constructors were introduced in
+      `template-haskell-2.21.*`.
+    * `_BndrReq` and `_BndrInvis` `Prism`s for the `BndrVis` data type, which was
+      added in `template-haskell-2.21.*`.
+  * Add a `generateRecordSyntax` option to `Control.Lens.TH`, which controls
+    whether to generate lenses using record update syntax or not. By default, this
+    option is disabled.
+  * Fix a bug in which the `declare*` Template Haskell functions would fail if a
+    data type's field has a type that is defined in the same Template Haskell
+    quotation.
+  * Add `altOf`, which collects targets into any `Alternative`.
+
+-------------------------------------------------------------------
 Mon Jul 10 00:43:25 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update lens to version 5.2.2 revision 1.
