@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug 28 17:04:40 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20230828.
+  git-annex (10.20230828) upstream; urgency=medium
+
+    * oldkeys: New command that lists the keys used by old versions of a file.
+    * Fix behavior of onlyingroup.
+    * info: Added --dead-repositories option.
+    * Significant startup speed increase by avoiding repeatedly checking
+      if some remote git-annex branch refs need to be merged.
+    * Fix behavior when importing a tree from a directory remote when the
+      directory does not exist. An empty tree was imported, rather than the
+      import failing.
+    * sync, assist, push, pull: Skip more types of remotes when they
+      are not available due to eg being on a drive that is offline.
+      (directory, borg, bup, ddar, gcrypt, rsync)
+    * info: Added available to the info displayed for a remote.
+    * Added AVAILABILITY UNAVAILABLE and the UNAVAILABLERESPONSE extension
+      to the external special remote protocol.
+    * The remote.name.annex-availability git config is no longer used.
+    * Avoid using curl when annex.security.allowed-ip-addresses is set
+      but neither annex.web-options nor annex.security.allowed-url-schemes
+      is set to a value that needs curl.
+    * Stop bundling curl in the OSX dmg and linux standalone image.
+    * diffdriver: Added --get option.
+    * diffdriver: Refuse to run when not in a git-annex repository.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 28 Aug 2023 12:40:37 -0400
+
+-------------------------------------------------------------------
 Wed Aug  2 20:09:47 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20230802.

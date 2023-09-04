@@ -17,7 +17,7 @@
 
 
 Name:           git-annex
-Version:        10.20230802
+Version:        10.20230828
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
@@ -241,11 +241,11 @@ larger than git can currently easily handle, whether due to limitations in
 memory, time, or disk space.
 
 It can store large files in many places, from local hard drives, to a large
-number of cloud storage services, including S3, WebDAV, and rsync, with a dozen
-cloud storage providers usable via plugins. Files can be stored encrypted with
-gpg, so that the cloud storage provider cannot see your data.
-git-annex keeps track of where each file is stored, so it knows how many copies
-are available, and has many facilities to ensure your data is preserved.
+number of cloud storage services, including S3, WebDAV, and rsync, and many
+other usable via plugins. Files can be stored encrypted with gpg, so that the
+cloud storage provider cannot see your data. git-annex keeps track of where
+each file is stored, so it knows how many copies are available, and has many
+facilities to ensure your data is preserved.
 
 git-annex can also be used to keep a folder in sync between computers, noticing
 when files are changed, and automatically committing them to git and
