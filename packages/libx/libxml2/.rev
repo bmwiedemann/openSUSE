@@ -1029,4 +1029,14 @@
     <comment></comment>
     <requestid>1082712</requestid>
   </revision>
+  <revision rev="119" vrev="3">
+    <srcmd5>a36ebea4cab752a8d90cf8dda32ed4ca</srcmd5>
+    <version>2.10.4</version>
+    <time>1693826370</time>
+    <user>anag+factory</user>
+    <comment>- Security fix: CVE-2023-39615 (bsc#1214768)
+  * crafted xml can cause global buffer overflow
+  * Added file libxml2-CVE-2023-39615.patch</comment>
+    <requestid>1108847</requestid>
+  </revision>
 </revisionlist>

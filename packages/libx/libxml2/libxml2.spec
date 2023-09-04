@@ -42,6 +42,9 @@ Patch0:         libxml2-python3-unicode-errors.patch
 # PATCH-FIX-UPSTREAM libxml2-python3-string-null-check.patch bsc#1065270 mgorse@suse.com
 # https://gitlab.gnome.org/GNOME/libxml2/-/merge_requests/15
 Patch1:         libxml2-python3-string-null-check.patch
+# PATCH-FIX-UPSTREAM CVE-2023-39615 bsc#1214768
+# https://gitlab.gnome.org/GNOME/libxml2/-/commit/d0c3f01e110d54415611c5fa0040cdf4a56053f9
+Patch2:         libxml2-CVE-2023-39615.patch
 #
 ### -- openSUSE patches range from 1000 to 1999 -- ###
 # PATCH-FIX-OPENSUSE

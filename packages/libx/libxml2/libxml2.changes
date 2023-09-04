@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  4 10:36:54 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Security fix: CVE-2023-39615 (bsc#1214768)
+  * crafted xml can cause global buffer overflow
+  * Added file libxml2-CVE-2023-39615.patch   
+
+-------------------------------------------------------------------
 Fri Apr 21 14:50:09 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Remove unneeded dependency (bsc#1209918). 
