@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep  4 08:10:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.25:
+  * update btrfs library to 6.3.3
+  * Full Changelog: 
+    https://github.com/Thomas-Tsai/partclone/compare/0.3.24...0.3.25
+- update to 0.3.24:
+  * IO stream support for torrent info file.
+  * split jobs in github action
+  * add dockerfile and test on tag creating
+  * Handle absence of mtrace.h (e.g. uClibc) gracefully
+  * Link with -lm for isnormal()/__fpclassifyf() as needed
+  * Add Russian language file.
+  * Update partclone.c
+  * Add missing space before opening parenthesis
+  * Add german language
+  * Update language files
+  * Add localization
+
+-------------------------------------------------------------------
 Sat Jan 28 20:54:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.23:
