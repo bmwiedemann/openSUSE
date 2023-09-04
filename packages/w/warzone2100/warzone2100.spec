@@ -32,6 +32,8 @@ Group:          Amusements/Games/Strategy/Real Time
 URL:            http://wz2100.net/
 Source:         https://github.com/Warzone2100/warzone2100/releases/download/%{version}/warzone2100_src.tar.xz
 Source99:       %{name}.changes
+# PATCH-FIX-UPSTREAM - warzone2100_fix_build_with_newer_vulkan.patch - fix building with vulkan >= 1.3.260
+Patch0:         warzone2100_fix_build_with_newer_vulkan.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
@@ -110,6 +112,9 @@ This package provides the game data for Warzone 2100.
 
 %prep
 %setup -q -n %{name}
+%if %{with vulkan}
+%patch0 -p1
+%endif
 
 # constant timestamp for reproducible builds
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"
