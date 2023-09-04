@@ -31,4 +31,12 @@
     <comment>Sync changes with sle</comment>
     <requestid>979211</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2fc90927b64988ad0a5de94daecf79a9</srcmd5>
+    <version>7.0.0</version>
+    <time>1693860758</time>
+    <user>anag+factory</user>
+    <comment>regenerate bundle manifest</comment>
+    <requestid>1108669</requestid>
+  </revision>
 </revisionlist>
