@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Fri Aug 25 09:07:10 UTC 2023 - gmoro@suse.com
+
+- Update to version 0.3.1.0:
+  * create $(DESTDIR)/etc/ if it does not exist
+  * document `configuration` in the README.
+  * add OVF configurations
+  * Update README.md
+  * add -m/--manifest option to create manifest with OVF
+  * support empty disks
+  * typo
+  * Document ova-compose, declare mkova.sh legacy
+  * up level titles
+
+-------------------------------------------------------------------
+Tue May  9 15:08:08 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
+
+- install /etc/open-vmdk.conf
+
+-------------------------------------------------------------------
+Fri May  5 09:54:14 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
+
+- Initial version 0.2.0+git20230503.777215f
