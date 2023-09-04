@@ -27,13 +27,13 @@ License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/casacore/python-casacore
 Source:         https://github.com/casacore/python-casacore/archive/refs/tags/v%{version}.tar.gz#/python-casacore-%{version}-gh.tar.gz
-BuildRequires:  %{python_module configargparse}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  casacore-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -42,8 +42,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(wcslib)
-Requires:       python-configargparse
-Requires:       python-future
 Requires:       python-numpy
 Requires:       python-six
 ExcludeArch:    %ix86
@@ -59,10 +57,10 @@ rm pyrap/images.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -78,6 +76,6 @@ mv casacore.tmp casacore
 %license LICENSE
 %{python_sitearch}/%{modname}/
 %{python_sitearch}/pyrap/
-%{python_sitearch}/python_%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitearch}/python_%{modname}-%{version}.dist-info/
 
 %changelog
