@@ -1,11 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 30 17:13:33 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.57.0:
+  * [posix] Enable systemd sockets for libsystemd>=233
+    (gh#grpc/grpc#32671).
+  * [python O11Y] Initial Implementation (gh#grpc/grpc#32974).
+- Build with Cython.
+
+-------------------------------------------------------------------
 Sat Aug  5 13:25:52 UTC 2023 - munix9@googlemail.com
 
 - Update to version 1.56.2:
   * [WRR] backport (gh#grpc/grpc#33694) to 1.56 (gh#grpc/grpc#33698)
   * [backport][iomgr][EventEngine] Improve server handling of
     file descriptor exhaustion (gh#grpc/grpc#33667)
-
 - Switch build to pip/wheel.
 
 -------------------------------------------------------------------
