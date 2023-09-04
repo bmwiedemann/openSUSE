@@ -103,7 +103,7 @@ Obsoletes:      python39%{?1:-%{1}}
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.12
+Version:        3.10.13
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -180,6 +180,20 @@ Patch40:        CVE-2023-27043-email-parsing-errors.patch
 # PATCH-FIX-UPSTREAM Revert-gh105127-left-tests.patch bsc#1210638 mcepl@suse.com
 # Partially revert previous patch
 Patch41:        Revert-gh105127-left-tests.patch
+# PATCH-FIX-UPSTREAM fix-sphinx-72.patch gh#python/cpython#97950
+# This is a patch with a lot of PR combined to make the doc work with
+# sphinx 7.2
+# This patch has the following github pull requests:
+# * gh#python/cpython#104151
+# * gh#python/cpython#104154
+# * gh#python/cpython#104155
+# * gh#python/cpython#104157
+# * gh#python/cpython#104159
+# * gh#python/cpython#104161
+# * gh#python/cpython#104163
+# * gh#python/cpython#104221
+# * gh#python/cpython#107246
+Patch42:        fix-sphinx-72.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -455,6 +469,7 @@ other applications.
 %patch39 -p1
 %patch40 -p1
 %patch41 -p1
+%patch42 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
