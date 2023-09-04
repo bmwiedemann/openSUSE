@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 31 19:20:41 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update blaze-html to version 0.9.1.2 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Jul 17 06:35:34 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update blaze-html to version 0.9.1.2 revision 3.
