@@ -20,9 +20,9 @@
 %define         _theme              Matcha
 %define         gtk3_min_version    3.20.0
 %define         gtk2_min_version    2.24.30
-%define         _version            2022-11-15
+%define         _version            2023-04-03
 Name:           matcha-gtk-theme
-Version:        20221115
+Version:        20230403
 Release:        0
 Summary:        Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell
 License:        GPL-3.0-only
