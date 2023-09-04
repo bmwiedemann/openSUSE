@@ -64,4 +64,12 @@
     <comment>Don't depend on jtidy</comment>
     <requestid>1100556</requestid>
   </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>fd42015a4545abdc3c97396020821dfc</srcmd5>
+    <version>3.6.0</version>
+    <time>1693860761</time>
+    <user>anag+factory</user>
+    <comment>cleanup + fix build with javapackages-local 6.2.0</comment>
+    <requestid>1108705</requestid>
+  </revision>
 </revisionlist>

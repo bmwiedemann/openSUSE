@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep  3 11:06:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Download sources from https://repo1.maven.org
+
+-------------------------------------------------------------------
+Sun Sep  3 05:52:11 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with javapackages-local 6.2.0
+  * com.sun:tools is not resolved from system any more
+
+-------------------------------------------------------------------
 Mon Jul 24 21:05:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

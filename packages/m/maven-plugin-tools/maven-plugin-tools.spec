@@ -22,8 +22,8 @@ Release:        0
 Summary:        Maven Plugin Tools
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/plugin-tools/
-Source0:        http://repo2.maven.org/maven2/org/apache/maven/plugin-tools/%{name}/%{version}/%{name}-%{version}-source-release.zip
+URL:            https://maven.apache.org/plugin-tools/
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-tools/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
 Patch0:         0001-Avoid-duplicate-MOJO-parameters.patch
 Patch1:         0002-Deal-with-nulls-from-getComment.patch
@@ -37,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  google-guice
 BuildRequires:  guava
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jdom2
 BuildRequires:  junit
 BuildRequires:  maven-lib
@@ -59,9 +59,6 @@ BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 BuildRequires:  velocity
 BuildRequires:  xbean
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
-BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildArch:      noarch
 
 %description
@@ -172,10 +169,6 @@ API documentation for %{name}.
 
 %pom_remove_dep net.sf.jtidy:jtidy maven-plugin-tools-generators
 
-%{mvn_package} :maven-plugin-tools __noinstall
-%{mvn_package} :maven-script __noinstall
-%{mvn_package} :{*} @1
-
 %build
 mkdir -p lib
 build-jar-repository -s lib \
@@ -211,25 +204,25 @@ build-jar-repository -s lib \
 	velocity \
 	xbean/xbean-reflect
 
-	ln -s $(xmvn-resolve com.sun:tools) lib/
-
 %{ant} \
 	-Dtest.skip=true \
 	package javadoc
 
-%mvn_artifact pom.xml
-%mvn_artifact maven-script/pom.xml
-
-mkdir -p target/site/apidocs
+%install
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 for i in \
 	maven-plugin-annotations \
 	maven-plugin-tools-annotations \
 	maven-plugin-tools-api \
 	maven-plugin-tools-generators \
 	maven-plugin-tools-java; do
-  %{mvn_artifact} ${i}/pom.xml ${i}/target/${i}-%{version}.jar
+  install -pm 0644 ${i}/target/${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/${i}.jar
+  %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
+  %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f ${i}
   if [ -d ${i}/target/site/apidocs ]; then
-    cp -r ${i}/target/site/apidocs target/site/apidocs/${i}
+    cp -r ${i}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${i}
   fi
 done
 for i in \
@@ -238,14 +231,13 @@ for i in \
 	maven-plugin-tools-model \
 	maven-script-ant \
 	maven-script-beanshell; do
-  %{mvn_artifact} maven-script/${i}/pom.xml maven-script/${i}/target/${i}-%{version}.jar
+  install -pm 0644 maven-script/${i}/target/${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/${i}.jar
+  %{mvn_install_pom} maven-script/${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
+  %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f ${i}
   if [ -d maven-script/${i}/target/site/apidocs ]; then
-    cp -r maven-script/${i}/target/site/apidocs target/site/apidocs/${i}
+    cp -r maven-script/${i}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${i}
   fi
 done
-
-%install
-%mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -n maven-plugin-annotations -f .mfiles-maven-plugin-annotations
@@ -273,7 +265,8 @@ done
 %files -n maven-script-beanshell -f .mfiles-maven-script-beanshell
 %license LICENSE NOTICE
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE NOTICE
 
 %changelog

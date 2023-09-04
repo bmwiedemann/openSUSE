@@ -24,8 +24,8 @@ Release:        0
 Summary:        Maven Plugin Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/plugin-tools/
-Source0:        http://repo2.maven.org/maven2/org/apache/maven/plugin-tools/%{base_name}/%{version}/%{base_name}-%{version}-source-release.zip
+URL:            https://maven.apache.org/plugin-tools/
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-tools/%{base_name}/%{version}/%{base_name}-%{version}-source-release.zip
 Source1:        %{base_name}-build.tar.xz
 Patch0:         0001-Avoid-duplicate-MOJO-parameters.patch
 Patch1:         0002-Deal-with-nulls-from-getComment.patch
@@ -120,12 +120,12 @@ build-jar-repository -s lib \
 
 %{mvn_file} :%{artifactId} %{base_name}/%{artifactId}
 pushd %{artifactId}
-%ant \
+%{ant} \
 	-Dtest.skip=true \
 	jar
 popd
-%mvn_artifact pom.xml
-%mvn_artifact %{artifactId}/pom.xml %{artifactId}/target/%{artifactId}-%{version}.jar
+%{mvn_artifact} pom.xml
+%{mvn_artifact} %{artifactId}/pom.xml %{artifactId}/target/%{artifactId}-%{version}.jar
 
 %install
 %mvn_install
