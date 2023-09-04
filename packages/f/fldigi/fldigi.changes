@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep  3 08:58:12 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to 4.2.00:
+  * THOR
+    + add THOR-56 modem
+    + add THOR-32 and THOR-44 modems
+    + update THOR documentation
+  * TTY ptt dtr/rts: 
+    + configuration item not being set by combo selection
+    + update to flrig code
+  * Correct position/width/shape of waterfall cursor center tic
+  * Revert "improved s/n and squelch processing" mod
+ 
+-------------------------------------------------------------------
 Wed Jul 19 22:24:56 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - update to 4.1.27:
@@ -7,8 +21,8 @@ Wed Jul 19 22:24:56 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
   * add TEN_TEN field to log.adif file
   * add CTRL-P as pause/break equivalent keystroke
   * FSQ: improved s/n and squelch processing
-. faster acting squelch open/close
-. modified s/n evaluator
+    . faster acting squelch open/close
+    . modified s/n evaluator
   * improved s/n and squelch processing
     + squelch opens and closes faster
     + better s/n estimator

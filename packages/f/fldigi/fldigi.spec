@@ -17,7 +17,7 @@
 
 
 Name:           fldigi
-Version:        4.1.27
+Version:        4.2.00
 Release:        0
 Summary:        Digital modem program (hamradio)
 License:        GPL-3.0-only
@@ -72,7 +72,7 @@ export BUILD_DATE=`date -d@0`
 export BUILD_USER=openSUSE
 export BUILD_HOST=openSUSE
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
