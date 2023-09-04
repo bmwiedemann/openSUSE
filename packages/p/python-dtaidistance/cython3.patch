@@ -1,0 +1,34 @@
+From a4b4bbf4be5bac7b95210b993ee24213bc2a0a36 Mon Sep 17 00:00:00 2001
+From: Pieter Robberechts <pieter.robberechts@kuleuven.be>
+Date: Tue, 25 Jul 2023 16:34:07 +0200
+Subject: [PATCH] Fix build for Cython v3.0.0
+
+Fixes #195
+---
+ setup.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index de52e266..a5458591 100755
+--- a/setup.py
++++ b/setup.py
+@@ -403,7 +403,7 @@ def check_openmp(cc_bin, noxpreprocessor, printfn=print):
+     extensions.append(
+         Extension(
+             "dtaidistance.dtw_cc",
+-            ["dtaidistance/dtw_cc.pyx", "dtaidistance/dtw_cc.pxd",
++            ["dtaidistance/dtw_cc.pyx",
+              "dtaidistance/lib/DTAIDistanceC/DTAIDistanceC/dd_dtw.c",
+              "dtaidistance/lib/DTAIDistanceC/DTAIDistanceC/dd_ed.c"
+              ],
+@@ -447,8 +447,8 @@ def check_openmp(cc_bin, noxpreprocessor, printfn=print):
+     else:
+         print("WARNING: Numpy was not found, preparing a version without Numpy support.")
+ 
+-    ext_modules = cythonize(extensions)
+-                            # compiler_directives={'language_level': "3"})
++    ext_modules = cythonize(extensions, language_level=2)
++
+ else:
+     print("WARNING: Cython was not found, preparing a pure Python version.")
+     ext_modules = []

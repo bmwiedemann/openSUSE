@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 31 09:10:04 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream cython3.patch
+
+-------------------------------------------------------------------
 Wed Mar  1 13:48:09 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop compilation.log to make package build reproducible

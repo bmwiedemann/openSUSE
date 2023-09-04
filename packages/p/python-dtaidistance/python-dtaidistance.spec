@@ -24,6 +24,8 @@ Summary:        Dynamic Time Warping (DTW) package
 License:        Apache-2.0
 URL:            https://github.com/wannesm/dtaidistance
 Source:         https://github.com/wannesm/dtaidistance/archive/v%{version}.tar.gz#/dtaidistance-%{version}.tar.gz
+#PATCH-FIX-UPSTREAM https://github.com/wannesm/dtaidistance/commit/a4b4bbf4be5bac7b95210b993ee24213bc2a0a36 Fix build for Cython v3.0.0
+Patch:          cython3.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -50,7 +52,7 @@ BuildRequires:  %{python_module scipy if (%python-base without python36-base)}
 Library for time series distances (e.g. Dynamic Time Warping, DTW).
 
 %prep
-%setup -q -n dtaidistance-%{version}
+%autosetup -p1 -n dtaidistance-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -65,14 +67,6 @@ find %{buildroot}/usr/lib*/python* -name compilation.log -delete
 %check
 # Test are too slow in x86
 %ifnarch %{ix86}
-python36_parameter="-c pytest-nolibs.ini \
---ignore tests/test_alignment.py \
---ignore tests/test_benchmark.py \
---ignore tests/test_dtw2d.py \
---ignore tests/test_dtw_weighted.py \
---ignore tests/test_dtw_weighted_dt.py \
---ignore tests/test_penalty.py \
-"
 # openMP library mismatch (symbol in libgomp not found) -- use use_mp=True"
 donttest+=" or (test_clustering and test_clustering_tree_ndim)"
 donttest+=" or (test_dtw and test_distance_matrix2_e)"
@@ -82,7 +76,7 @@ donttest+=" or (test_dtw2d and test_distances2_fast_parallel)"
 
 # Broken tests with latest numpy >= 1.24
 donttest+=" or test_bug3 or test_distance1_a"
-%pytest_arch ${$python_parameter} ${donttest:+ -k "not (${donttest:4})"} -m "not benchmark"
+%pytest_arch ${donttest:+ -k "not (${donttest:4})"} -m "not benchmark"
 %endif
 
 %files %{python_files}
