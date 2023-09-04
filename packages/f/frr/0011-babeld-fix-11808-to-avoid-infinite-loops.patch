@@ -1,0 +1,48 @@
+From 8a8f20d89585aa490e3cae5ad705ce23107fc1fe Mon Sep 17 00:00:00 2001
+From: harryreps <harryreps@gmail.com>
+Date: Fri, 3 Mar 2023 23:17:14 +0000
+Upsteam: yes
+References: CVE-2023-3748,bsc#1213434,gh#FRRouting/frr#11808,https://github.com/FRRouting/frr/pull/12952
+Subject: [PATCH] babeld: fix #11808 to avoid infinite loops
+
+Replacing continue in loops to goto done so that index of packet buffer
+increases.
+
+Signed-off-by: harryreps <harryreps@gmail.com>
+(cherry picked from commit ae1e0e1fed77716bc06f181ad68c4433fb5523d0)
+Signed-off-by: Marius Tomaschewski <mt@suse.com>
+
+diff --git a/babeld/message.c b/babeld/message.c
+index 7d45d91bf7..2bf2337965 100644
+--- a/babeld/message.c
++++ b/babeld/message.c
+@@ -439,7 +439,7 @@ parse_packet(const unsigned char *from, struct interface *ifp,
+ 			debugf(BABEL_DEBUG_COMMON,
+ 			       "Received Hello from %s on %s that does not have all 0's in the unused section of flags, ignoring",
+ 			       format_address(from), ifp->name);
+-			continue;
++			goto done;
+ 		}
+ 
+ 		/*
+@@ -451,7 +451,7 @@ parse_packet(const unsigned char *from, struct interface *ifp,
+ 			debugf(BABEL_DEBUG_COMMON,
+ 			       "Received Unicast Hello from %s on %s that FRR is not prepared to understand yet",
+ 			       format_address(from), ifp->name);
+-			continue;
++			goto done;
+ 		}
+ 
+ 		DO_NTOHS(seqno, message + 4);
+@@ -469,7 +469,7 @@ parse_packet(const unsigned char *from, struct interface *ifp,
+ 			debugf(BABEL_DEBUG_COMMON,
+ 			       "Received hello from %s on %s should be ignored as that this version of FRR does not know how to properly handle interval == 0",
+ 			       format_address(from), ifp->name);
+-			continue;
++			goto done;
+ 		}
+ 
+ 		changed = update_neighbour(neigh, seqno, interval);
+-- 
+2.35.3
+

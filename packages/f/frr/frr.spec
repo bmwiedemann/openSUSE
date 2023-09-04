@@ -46,6 +46,10 @@ Patch4:         0004-tools-remove-backslash-from-declare-check-regex.patch
 Patch5:         0005-root-ok-in-account-frr.pam.patch
 Patch6:         0006-bgpd-Check-7-bytes-for-Long-lived-Graceful-Restart-c.patch
 Patch7:         0007-bgpd-Ensure-stream-received-has-enough-data.patch
+Patch8:         0008-bgpd-Don-t-read-the-first-byte-of-ORF-header-if-we-a.patch
+Patch9:         0009-bgpd-Do-not-process-NLRIs-if-the-attribute-length-is.patch
+Patch10:        0010-bgpd-Use-treat-as-withdraw-for-tunnel-encapsulation-.patch
+Patch11:        0011-babeld-fix-11808-to-avoid-infinite-loops.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7
@@ -61,7 +65,6 @@ BuildRequires:  mininet
 BuildRequires:  net-snmp-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  protobuf-c
 BuildRequires:  python-rpm-macros
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
@@ -191,6 +194,10 @@ developing OSPF-API and frr applications.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
 
 %build
 # GCC LTO objects must be "fat" to avoid assembly errors

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug 30 17:15:35 UTC 2023 - Marius Tomaschewski <mt@suse.com>
+
+- Removed protobuf-c BuildRequires (source package name) breaking
+  build-system setup with libprotobuf-c-devel 1.3.2 updates.
+- Apply upstream fix for bgpd: Don't read initial byte of the ORF
+  header in an ahead-of-stream situation (CVE-2023-41360,
+  bsc#1214739,https://github.com/FRRouting/frr/pull/14245)
+  [+ 0008-bgpd-Don-t-read-the-first-byte-of-ORF-header-if-we-a.patch]
+- Apply upstream fix for bgpd: Do not process NLRIs if the attribute
+  length is zero (CVE-2023-41358,bsc#1214735,
+  https://github.com/FRRouting/frr/pull/14260)
+  [+ 0009-bgpd-Do-not-process-NLRIs-if-the-attribute-length-is.patch]
+- Apply upstream fix bgpd: Use treat-as-withdraw for tunnel encapsulation
+  attribute instead of session reset (CVE-2023-38802,bsc#1213284,
+  https://github.com/FRRouting/frr/pull/14290)
+  [+ 0010-bgpd-Use-treat-as-withdraw-for-tunnel-encapsulation-.patch]
+- Apply upstream fix babeld: avoid infinite loops (CVE-2023-3748,bsc#1213434,
+  gh#FRRouting/frr#11808,https://github.com/FRRouting/frr/pull/12952)
+  [+ 0011-babeld-fix-11808-to-avoid-infinite-loops.patch]
+
+-------------------------------------------------------------------
 Mon May 15 08:01:39 UTC 2023 - Marius Tomaschewski <mt@suse.com>
 
 - Apply upstream fix for denial of service via the bgp_capability_llgr()
