@@ -43,4 +43,31 @@
 </comment>
     <requestid>947585</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>93e044801e7b223a95df2399a813b61f</srcmd5>
+    <version>2023.7</version>
+    <time>1693860749</time>
+    <user>anag+factory</user>
+    <comment>- update to 2023.7:
+  * Fix compatability with Sphinx 7.1
+  * Enable the slash keypress to focus the search field
+  * Sphinx 6.2 fix: add ``nav.contents`` where ``div.topic`` is
+    used
+  * Dark mode: fix contrast for C++ specific styling (#133)
+  * Don't let long code literals extend beyond the right side of
+    the screen
+  * Test with Python 3.12
+  * Add a dark theme.
+  * Fix: Remove searchbox id from form.
+  * Update ``python-docs-theme`` to work with Sphinx 5 &amp; 6.
+  * Override font for ``.sig`` for consistency with other code
+    blocks.
+  * Dark mode: add class to invert image brightness.
+  * Skip cache-busting for old Sphinx
+  * Fix problem with monospace rendering in Vivaldi
+  * Fix mobile nav obstructing content
+  * Reduce footer margin only for desktop
+  * Append a hash ?digest to CSS files for cache-busting</comment>
+    <requestid>1108837</requestid>
+  </revision>
 </revisionlist>

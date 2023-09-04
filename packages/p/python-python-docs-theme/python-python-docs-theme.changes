@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep  4 10:45:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.7:
+  * Fix compatability with Sphinx 7.1
+  * Enable the slash keypress to focus the search field
+  * Sphinx 6.2 fix: add ``nav.contents`` where ``div.topic`` is
+    used
+  * Dark mode: fix contrast for C++ specific styling (#133)
+  * Don't let long code literals extend beyond the right side of
+    the screen
+  * Test with Python 3.12
+  * Add a dark theme.
+  * Fix: Remove searchbox id from form.
+  * Update ``python-docs-theme`` to work with Sphinx 5 & 6.
+  * Override font for ``.sig`` for consistency with other code
+    blocks.
+  * Dark mode: add class to invert image brightness.
+  * Skip cache-busting for old Sphinx
+  * Fix problem with monospace rendering in Vivaldi
+  * Fix mobile nav obstructing content
+  * Reduce footer margin only for desktop
+  * Append a hash ?digest to CSS files for cache-busting
+
+-------------------------------------------------------------------
 Wed Jan 19 23:41:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2022.1:

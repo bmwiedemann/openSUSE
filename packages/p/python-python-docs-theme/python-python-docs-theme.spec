@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-docs-theme
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-docs-theme
-Version:        2022.1
+Version:        2023.7
 Release:        0
 Summary:        The Sphinx theme for the CPython docs and related projects
 License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.python.org
-Source:         https://files.pythonhosted.org/packages/source/p/python-docs-theme/python-docs-theme-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python-docs-theme/python_docs_theme-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,7 +36,7 @@ BuildArch:      noarch
 The Sphinx theme for the CPython docs and related projects
 
 %prep
-%setup -q -n python-docs-theme-%{version}
+%setup -q -n python_docs_theme-%{version}
 
 %build
 %pyproject_wheel
@@ -49,6 +48,7 @@ The Sphinx theme for the CPython docs and related projects
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/python_docs_theme
+%{python_sitelib}/python_docs_theme-%{version}*-info
 
 %changelog
