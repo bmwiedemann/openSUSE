@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           python-holoviews
-Version:        1.16.1
+Version:        1.17.1
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
@@ -26,6 +26,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
 Source99:       python-holoviews-rpmlintrc
+#PATCH-FIX-UPSTREAM https://github.com/holoviz/holoviews/pull/5870 Support Numpy 1.25
+Patch:          numpy125.patch
+#PATCH-FIX-UPSTREAM https://github.com/holoviz/holoviews/pull/5874 support python3-only systems
+Patch:          python3-only.patch
 BuildRequires:  %{python_module colorcet}
 BuildRequires:  %{python_module numpy >= 1.0}
 BuildRequires:  %{python_module packaging}

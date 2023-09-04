@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 31 09:40:27 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.17.1
+  * interactive twin-axis support
+  * ability to set custom options on plot components with backend_opts
+  * datashaders where and summary aggregators are now supported
+  * rasterize now has a selector option
+  * Bokeh figures with the same labels will synchronize muteness or 
+    visibility across different figures
+  * several enhancements and bug fixes
+- Add upstream numpy125.patch
+- Add python3-only.patch (sent upstream)
+
+-------------------------------------------------------------------
 Wed Jun  7 15:57:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.16.1
