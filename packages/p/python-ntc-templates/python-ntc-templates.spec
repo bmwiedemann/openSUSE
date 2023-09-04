@@ -1,7 +1,7 @@
 #
 # spec file for package python-ntc-templates
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-ntc-templates
-Version:        3.1.0
+Version:        3.5.0
 Release:        0
 Summary:        Package to return structured data from the output of network devices
 License:        Apache-2.0
@@ -59,6 +58,7 @@ chmod -x ntc_templates/templates/cisco*
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand rm %{buildroot}%{$python_sitelib}/{LICENSE,README.md}
 
 %check
 %if 0%{suse_version} <= 1500
@@ -73,7 +73,7 @@ rm tests/cisco_ios/show_access-list/cisco_ios_show_access-list.raw
 
 %files %{python_files}
 %license LICENSE
-%doc README.md CHANGELOG.md
-%{python_sitelib}/*
+%doc README.md
+%{python_sitelib}/ntc_templates*
 
 %changelog

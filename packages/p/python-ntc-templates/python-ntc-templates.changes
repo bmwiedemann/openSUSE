@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Mon Sep  4 08:03:24 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.5.0
+  * Adding new outputs for cisco asa show license all command.
+  * Adding Aruba CX template and tests for show system.
+  * Fix ubiquiti show interfaces template.
+  * Added new values for destination port lt/gt/range, IPv6,
+    time-range.
+  * Feat ubiquiti nat rule template.
+- Update to version 3.4.0
+  * Updated support for Cisco NXOS devices.
+  * Fix cisco_nxos_show_interface_brief.textfsm.
+  * fixs_1060_cisco_ios_show_access-list.
+  * Support lowercase interfaces on Cisco IOS (XR).
+  * Update cisco_ios_show_lldp_neighbors_detail parser to gather
+    more information.
+  * sort development_script.py yaml output, make changes more
+    predictable.
+  * Fix Cisco show interfaces speed and duplex.
+  * Feat(cisco): add vrf template detail.
+  * Fix arista eos show interfaces - description quotes.
+  * Fix cisco xr admin show inventory.
+  * Fix1198 cisco nxos show access lists.
+  * Template and tests for cisco_nxos_show_ip_msdp_summary_vrf_all.
+- Update to version 3.3.0
+  * Add support for Ericsson IPOS router.
+  * Add display_arp_all and display_isis_peer
+  * Add support DLink DS Show ARP.
+  * Add support DLink DS Show ARP.
+  * Zyxel fix sys atsh parsing.
+  * Fix Cisco NXOS 5K: show forwarding ipv4 route.
+  * Hp comware displ vpn inst det.
+  * Update hp_comware_display_device_manuinfo.textfsm.
+  * fix: huawei_vrf_display_version.
+  * Fix Mikrotik interface ethernet monitor name once when no link
+    partner.
+  * Hpe templates.
+  * Fix HP Comware displ inteface.
+  * recon tabs on hp comware.
+  * Fix cisco_xr_show_version.template.
+  * Added input and output pps for cisco_ios_show_interfaces.
+  * added cisco_ios_show_ip_http_server_status.textfsm.
+  * Added FPM to the Start and XCVR States.
+  * Update Existing Template/ Added RUNTS, GIANTS, FRAME, and
+    OVERRUN.
+  * feat(ubiquiti): add show ipv6 route template.
+  * Feature/cisco ios ping fail.
+  * feat(ubiquiti): add show ip route template.
+  * Fix for ASA timezones that have / in them.
+  * Cisco ASA fixed timezones and support for IPsecOverNatT.
+  * Improvement: cisco_ios_show_ip_ospf_interface_brief.
+  * Added nxos show ip bgp summary address family to parsed data.
+  * Multiple fixes for Cisco ASA show interface.
+  * cisco ios show_version capture software and release.
+  * Corrected nexthop_ip regex in ubiquiti ipv6 route template.
+  * Improvement: cisco_ios_show_ip_route added support for VRFs.
+  * Add nxos show ip ospf intf br and fixed process on
+    show ip ospf nbr.
+  * Update Cisco AireOS WLC show inventory.
+  * feat(ubiquiti): Add template ubiquiti edgerouter show
+    interfaces.
+  * Add new cisco asa templates.
+  * Add: cisco wlc templates for show flexconnect and interface
+    group summary.
+  * Fix HP Comware display interface and ip interface.
+  * NXOS show ip int fails without WCCP.
+  * XR show ipv4 int fails on Int prot proc disabled.
+  * Cisco add template ipv6 access-lists.
+  * Corrected Huawei display_interface template to add Tunnel and
+    Virtuel interface.
+  * Added support for IKEv2 parameters.
+  * added IOS show nve vni and nve peers templates.
+  * added NXOS show nve vni and nve peers templates.
+  * Mikrotik routeros - firewall filter - Add src mac address,
+    correct ipv6 path and empty log prefix.
+  * Added new template: show interface link on cisco ios.
+  * Hp comware new displ vlan lldp.
+  * Mikrotik routeros add hw offload management in ip firewall
+    template.
+  * Fixed missing OK in header of show int ip brief.
+  * Fixed by adding support for ext comm in asa show bgp summary.
+  * Fix Cisco: change the ip nat translations template to make
+    ports non-optional.
+- Update to version 3.2.0
+  https://ntc-templates.readthedocs.io/en/latest/admin/release_notes/version_3.2/
+
+-------------------------------------------------------------------
 Sat Oct  1 17:48:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.0:
