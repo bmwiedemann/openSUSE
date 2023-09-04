@@ -1,0 +1,9 @@
+<package name="zcfan" project="openSUSE:Factory">
+  <title>Zero-configuration fan control daemon for ThinkPads</title>
+  <description>Zero-configuration fan control daemon for ThinkPads with watchdog
+support and automatic temperature- and time-based hysteresis (no
+bouncing between fan levels).
+</description>
+  <devel project="hardware" package="zcfan"/>
+  <url>https://github.com/cdown/zcfan</url>
+</package>
