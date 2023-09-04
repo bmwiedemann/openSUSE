@@ -25,25 +25,25 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-applehelp%{psuffix}
-Version:        1.0.4
+Version:        1.0.7
 Release:        0
 Summary:        Sphinx extension which outputs Apple help books
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-applehelp
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-applehelp/sphinxcontrib-applehelp-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib_applehelp/sphinxcontrib_applehelp-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx
+Requires:       python-Sphinx >= 5.0
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module Sphinx >= 5.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-applehelp >= %{version}}
 %endif
@@ -53,7 +53,7 @@ BuildRequires:  %{python_module sphinxcontrib-applehelp >= %{version}}
 sphinxcontrib-applehelp is a sphinx extension which outputs Apple help books
 
 %prep
-%setup -q -n sphinxcontrib-applehelp-%{version}
+%setup -q -n sphinxcontrib_applehelp-%{version}
 
 %build
 %pyproject_wheel
@@ -73,7 +73,9 @@ sphinxcontrib-applehelp is a sphinx extension which outputs Apple help books
 %files %{python_files}
 %doc README.rst CHANGES
 %license LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/sphinxcontrib
+%{python_sitelib}/sphinxcontrib/applehelp
+%{python_sitelib}/sphinxcontrib_applehelp-%{version}*-info
 %endif
 
 %changelog
