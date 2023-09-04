@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep  4 10:43:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- reduce buildrequires to git-core 
+
+-------------------------------------------------------------------
+Sun Sep  3 17:13:37 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 0.22.0:
+  - Changes from 0.22.0:
+    * Macro definitions and tags gained a new valid attribute. A macro
+      definition/tag is considered valid if it doesn't appear in a
+      false branch of any condition appearing in the spec file.
+  - Changes from 0.21.0:
+    * specfile no longer tracebacks when some sources are missing and
+      can't be emulated. In such case the spec file is parsed without
+      them at the cost of %setup and %patch macros potentially
+      expanding differently than with the sources present.
+    * Specfile's license in RPM spec file is now confirmed to be SPDX
+      compatible.
+- Blacklist a new broken test on spec file: test_parse_texlive_spec.
+- Add a new Python module dependency: typing_extensions.
+- Apply spec-cleaner.
+
+-------------------------------------------------------------------
 Wed Jul 19 04:53:41 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.20.0:
