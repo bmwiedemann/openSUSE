@@ -25,23 +25,24 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-serializinghtml%{psuffix}
-Version:        1.1.5
+Version:        1.1.9
 Release:        0
 Summary:        Sphinx extension which outputs serialized HTML files
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-serializinghtml
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-serializinghtml/sphinxcontrib-serializinghtml-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-serializinghtml/sphinxcontrib_serializinghtml-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx
+Requires:       python-Sphinx >= 5.0
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module Sphinx >= 5.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-serializinghtml >= %{version}}
 %endif
@@ -52,14 +53,14 @@ sphinxcontrib-serializinghtml is a sphinx extension which outputs
 "serialized" HTML files (json and pickle).
 
 %prep
-%setup -q -n sphinxcontrib-serializinghtml-%{version}
+%setup -q -n sphinxcontrib_serializinghtml-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -72,7 +73,9 @@ sphinxcontrib-serializinghtml is a sphinx extension which outputs
 %files %{python_files}
 %doc README.rst CHANGES
 %license LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/sphinxcontrib
+%{python_sitelib}/sphinxcontrib/serializinghtml
+%{python_sitelib}/sphinxcontrib_serializinghtml-%{version}*-info
 %endif
 
 %changelog
