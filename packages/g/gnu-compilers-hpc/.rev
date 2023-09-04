@@ -178,4 +178,14 @@
 - Add support for gcc13 (forwarded request 1093265 from eeich)</comment>
     <requestid>1093266</requestid>
   </revision>
+  <revision rev="20" vrev="14">
+    <srcmd5>e17532a67d4c2d335ff04d574baa73b4</srcmd5>
+    <version>1.4</version>
+    <time>1693860821</time>
+    <user>anag+factory</user>
+    <comment>- Create correct links for cc and c++ and make sure failure of last
+  test in %posttrans is not returned as status of scriptlet
+  (bsc#1214816).</comment>
+    <requestid>1108912</requestid>
+  </revision>
 </revisionlist>

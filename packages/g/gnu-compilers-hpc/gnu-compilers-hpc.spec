@@ -250,8 +250,8 @@ do
     esac
 done
 for i in cc,gcc c++,g++; do
-    test -e %{hpc_cf_install_path}/bin/${i##*,}%{hpc_gnu_bin_version} \
-	&& ln -s %{hpc_cf_install_path}/bin/${i%%%%,*} ${i##*,}%{hpc_gnu_bin_version}
+    test -e %{hpc_cf_install_path}/bin/${i##*,} \
+	&& ln -s ${i##*,} %{hpc_cf_install_path}/bin/${i%%%%,*} || true
 done
 %else
 # for the base compiler version link to the 'default' binary:
