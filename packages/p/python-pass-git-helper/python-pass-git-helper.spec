@@ -1,7 +1,7 @@
 #
 # spec file for package python-pass-git-helper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname pass-git-helper
 Name:           python-pass-git-helper
-Version:        1.2.0
+Version:        1.4.0
 Release:        0
 Summary:        A git credential helper interfacing with pass
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 URL:            https://github.com/languitar/pass-git-helper
 Source:         https://github.com/languitar/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module dataclasses >= 0.7 if %python-base < 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module dataclasses >= 0.7 if %python-base < 3.7}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-mock}
@@ -38,8 +37,8 @@ BuildRequires:  %{python_module pyxdg}
 BuildRequires:  fdupes
 Requires:       python-pyxdg
 BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -52,10 +51,10 @@ sed -i -e '/--cov-config=setup.cfg/d' setup.cfg
 sed -i -e '1{\@^#!%{_bindir}/env python@d}' passgithelper.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pass-git-helper
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 

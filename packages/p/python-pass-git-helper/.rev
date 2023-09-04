@@ -7,4 +7,12 @@
     <comment>A git credential helper interfacing with pass(1).</comment>
     <requestid>1005996</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1fee2089e0ce89b19c6b02a68650d815</srcmd5>
+    <version>1.4.0</version>
+    <time>1693860756</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108642</requestid>
+  </revision>
 </revisionlist>
