@@ -17,23 +17,23 @@
 
 
 Name:           python-matrix-nio
-Version:        0.20.2
+Version:        0.21.2
 Release:        0
 Summary:        A Python Matrix client library, designed according to sans I/O principles
 License:        ISC
 URL:            https://github.com/poljar/matrix-nio
 Source:         https://files.pythonhosted.org/packages/source/m/matrix_nio/matrix_nio-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#poljar/matrix-nio#440
+Patch0:         remove-future-requirement.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Logbook >= 1.5.3
 Requires:       python-aiofiles >= 0.6.0
 Requires:       python-aiohttp >= 3.7.4
 Requires:       python-aiohttp-socks >= 0.7.0
-Requires:       python-future >= 0.18.2
 Requires:       python-h11 >= 0.12.0
 Requires:       python-h2 >= 4.0.0
 Requires:       python-jsonschema >= 3.2.0
@@ -46,11 +46,9 @@ Suggests:       python-peewee >= 3.14.4
 Suggests:       python-python-olm >= 3.1.3
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Logbook >= 1.5.3}
 BuildRequires:  %{python_module aiofiles >= 0.6.0}
 BuildRequires:  %{python_module aiohttp >= 3.7.4}
 BuildRequires:  %{python_module aiohttp-socks >= 0.7.0}
-BuildRequires:  %{python_module future >= 0.18.2}
 BuildRequires:  %{python_module h11 >= 0.12.0}
 BuildRequires:  %{python_module h2 >= 4.0.0}
 BuildRequires:  %{python_module jsonschema >= 3.2.0}

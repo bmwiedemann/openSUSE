@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep  4 03:30:04 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.21.2:
+  * Breaking Changes
+    + [#416] Drop support for end-of-life python3.7
+    + [#413] Drop usage of logbook in favor of standard library logging
+  * Features
+    + [#409] Support m.space.parent and m.space.child events
+    + [#418] Add ability to knock on a room, and enable knocking for a room
+  * Miscellaneous Tasks
+    + [#401] Removing skip for passing test
+    + [#406] [#407] [#414] Add content to built-with-nio
+  * Bug Fixes
+    + [#422] async_client.whoami will alter the state of async_client
+      correctly, and accept all spec-compliant fields.
+    + [#408] Properly generate code coverage
+- Add patch remove-future-requirement.patch, dropping dependency on future.
+
+-------------------------------------------------------------------
 Tue Jul 18 19:23:16 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.20.2:
