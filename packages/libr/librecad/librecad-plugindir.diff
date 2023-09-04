@@ -9,11 +9,11 @@ Look in the right spot for plugins.
  librecad/src/lib/engine/rs_system.cpp |    2 ++
  1 file changed, 2 insertions(+)
 
-Index: LibreCAD-2.0.2/librecad/src/lib/engine/rs_system.cpp
+Index: LibreCAD-2.2.0.2/librecad/src/lib/engine/rs_system.cpp
 ===================================================================
---- LibreCAD-2.0.2.orig/librecad/src/lib/engine/rs_system.cpp
-+++ LibreCAD-2.0.2/librecad/src/lib/engine/rs_system.cpp
-@@ -642,6 +642,9 @@ QStringList RS_System::getDirectoryList(
+--- LibreCAD-2.2.0.2.orig/librecad/src/lib/engine/rs_system.cpp
++++ LibreCAD-2.2.0.2/librecad/src/lib/engine/rs_system.cpp
+@@ -635,6 +635,9 @@ QStringList RS_System::getDirectoryList(
      }
      RS_SETTINGS->endGroup();
  

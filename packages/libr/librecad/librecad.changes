@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  4 07:00:05 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to release 2.2.0.2:
+  * fixes an undetected vulnerability when opening malformed LFF
+    font files that caused a crash
+  * fixes format issues in bundled fonts
+  * fixes regression, finding nearest points on ellipses caused a crash
+  * plugin Importshp has been removed
+- Drop librecad-use-system-shapelib.patch since the plugin has been
+  removed.
+- Rebase patches.
+
+-------------------------------------------------------------------
 Sun Feb 19 12:10:12 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.2.0 [boo#1208447]

@@ -16,10 +16,8 @@
 #
 
 
-%define tar_version 2.2.0
-
 Name:           librecad
-Version:        2.2.0
+Version:        2.2.0.2
 Release:        0
 Summary:        Computer-aided design (CAD) software package for 2D design and drafting
 License:        (Apache-2.0 OR SUSE-GPL-3.0+-with-font-exception) AND GPL-2.0-only
@@ -27,7 +25,7 @@ Group:          Productivity/Graphics/CAD
 URL:            http://librecad.org/
 
 #Git-Web:       https://github.com/LibreCAD/LibreCAD
-Source:         https://github.com/LibreCAD/LibreCAD/archive/%tar_version.tar.gz
+Source:         https://github.com/LibreCAD/LibreCAD/archive/%version.tar.gz
 # Version is actually 8, not 3 (it is 3 in the filename due to how MediaWiki
 # works -- see http://wiki.librecad.org/index.php/File:Architect3-LCAD.zip)
 Source2:        https://wiki.librecad.org/images/d/d9/Architect3-LCAD.zip
@@ -39,12 +37,10 @@ Patch4:         librecad-no-date.diff
 Patch5:         librecad-use-system-libdxfrw.patch
 Patch6:         librecad-install.diff
 Patch7:         librecad-plugindir.diff
-Patch8:         librecad-use-system-shapelib.patch
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++ >= 4.7
 BuildRequires:  libboost_headers-devel
-BuildRequires:  libshp-devel
 BuildRequires:  muparser-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -77,7 +73,7 @@ Collection of parts for LibreCAD, a Qt application to design 2D
 CAD drawings.
 
 %prep
-%setup -qn LibreCAD-%tar_version -a2 -a3 -a4
+%setup -qn LibreCAD-%version -a2 -a3 -a4
 %autopatch -p1
 
 pc="libdxfrw"
@@ -93,7 +89,6 @@ sed -i 's@LRELEASE="lrelease"@LRELEASE="lrelease-qt5"@' scripts/postprocess-unix
 
 # Make sure bundled libraries are not used
 rm -rf libraries/libdxfrw
-rm -rf plugins/importshp/shapelib
 
 # Fix "wrong-file-end-of-line-encoding" rpmlint warning
 sed -i 's/\r$//' licenses/{MIT,KST32B_v2,lc_opengost-fonts}.txt

@@ -275,4 +275,12 @@
     <comment>- Update to release 2.2.0 [boo#1208447]</comment>
     <requestid>1066616</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>58013b8fc66957f06ff21f149616d043</srcmd5>
+    <version>2.2.0.2</version>
+    <time>1693860814</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.2.0.2:</comment>
+    <requestid>1108839</requestid>
+  </revision>
 </revisionlist>
