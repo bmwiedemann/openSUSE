@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 29 02:48:53 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Upgrade to 4.35: 
+  * Pull lone literal blocks in paragraphs up to produce correct doctree.
+  * Fix tests for changes in Sphinx 5.3.
+  * Bump Python requirement to 3.7.
+  * Support Sphinx 6.
+  * Support sort option to sort sections by name.
+- Drop patch Fix-tests-for-Sphinx-5.3.0.patch, included upstream.
+- Add patch support-sphinx-7.2.patch:
+  * Support Sphinx 7.2 changes.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Thu Jul  6 10:23:41 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

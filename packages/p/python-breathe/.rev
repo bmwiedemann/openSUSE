@@ -266,4 +266,21 @@
     <comment></comment>
     <requestid>1097122</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>4a1a6ec3284c7d0140590b416a0cefc0</srcmd5>
+    <version>4.35.0</version>
+    <time>1693860742</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to 4.35: 
+  * Pull lone literal blocks in paragraphs up to produce correct doctree.
+  * Fix tests for changes in Sphinx 5.3.
+  * Bump Python requirement to 3.7.
+  * Support Sphinx 6.
+  * Support sort option to sort sections by name.
+- Drop patch Fix-tests-for-Sphinx-5.3.0.patch, included upstream.
+- Add patch support-sphinx-7.2.patch:
+  * Support Sphinx 7.2 changes.
+- Switch to pyproject macros.</comment>
+    <requestid>1107831</requestid>
+  </revision>
 </revisionlist>

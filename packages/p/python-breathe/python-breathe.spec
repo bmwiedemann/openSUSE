@@ -16,22 +16,22 @@
 #
 
 
-%define skip_python2 1
 %define modname breathe
 %{?sle15_python_module_pythons}
 Name:           python-breathe
-Version:        4.34.0
+Version:        4.35.0
 Release:        0
 Summary:        Sphinx Doxygen renderer
 License:        BSD-3-Clause
 URL:            https://github.com/michaeljones/breathe
 Source:         https://github.com/michaeljones/%{modname}/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Fix-tests-for-Sphinx-5.3.0.patch gh#breathe-doc/breathe#865
-Patch0:         Fix-tests-for-Sphinx-5.3.0.patch
+Patch0:         support-sphinx-7.2.patch
 BuildRequires:  %{python_module Sphinx >= 4.0}
 BuildRequires:  %{python_module docutils >= 0.12}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 4.0
@@ -51,13 +51,13 @@ able to read and  render Doxygen xml output.
 %autosetup -p1 -n breathe-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %check
 %pytest
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/breathe-apidoc
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -72,6 +72,6 @@ able to read and  render Doxygen xml output.
 %license LICENSE
 %python_alternative %{_bindir}/breathe-apidoc
 %{python_sitelib}/breathe
-%{python_sitelib}/breathe-%{version}-py*.egg-info
+%{python_sitelib}/breathe-%{version}.dist-info
 
 %changelog
