@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep  4 13:05:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.3.0.
+  Check https://discuss.pixls.us/t/release-of-gmic-3-3/34786 for
+  the full list of changes
+  * Interactive image viewer using display has been improved a lot
+  * Command is_3d renamed as is_mesh3d
+  * New command strbuffer returns a string describing a buffer size
+  * New command rand_sum fills selected images with strictly
+    positive, random, integer values, that sums to specified
+    fixed value
+  * Starting a fill expression with + forces it to be evaluated
+    in a single thread, but with an image copy (equivalent to
+    * without multi-threading)
+  * Allow run() to be run in parallel in math parser
+
+-------------------------------------------------------------------
 Tue Jun 27 07:39:47 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.2.6. No changelog.
