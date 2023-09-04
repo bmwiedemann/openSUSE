@@ -98,4 +98,13 @@
   * Support pathlib.Path as directory argument</comment>
     <requestid>1082879</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b00ab54287cbc14238e83ba012906b5a</srcmd5>
+    <version>5.6.3</version>
+    <time>1693860845</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.6.3:
+  * Fix peek when value is so large that a file is used</comment>
+    <requestid>1108927</requestid>
+  </revision>
 </revisionlist>
