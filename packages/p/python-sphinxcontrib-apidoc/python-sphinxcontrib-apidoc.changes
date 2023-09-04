@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 30 11:27:32 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- add sphinx72.patch to fix tests, sent upstream
+
+-------------------------------------------------------------------
 Fri Apr 21 12:36:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -34,6 +34,8 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://www.sphinx-doc.org/
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-apidoc/sphinxcontrib-apidoc-%{version}.tar.gz
+#PATCH-FIX-UPSTREAM https://github.com/sphinx-contrib/apidoc/pull/18 fix tests with Sphinx 7.2
+Patch:          sphinx72.patch
 BuildRequires:  %{python_module pbr >= 4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -57,7 +59,7 @@ actually build documentation - rather it simply generates it. As a result, it
 must be run before *sphinx-build*.
 
 %prep
-%setup -q -n sphinxcontrib-apidoc-%{version}
+%autosetup -p1 -n sphinxcontrib-apidoc-%{version}
 
 %build
 %python_build
