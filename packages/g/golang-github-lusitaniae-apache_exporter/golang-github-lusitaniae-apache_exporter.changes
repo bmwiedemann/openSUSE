@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  4 10:40:18 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Fix apparmor profile for SLE 12
+
+-------------------------------------------------------------------
 Fri Aug 11 12:55:45 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Do not build with apparmor profile for SLE 12
@@ -75,6 +80,13 @@ Mon Mar  8 09:40:42 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
 - Require building with Go 1.15
 
 -------------------------------------------------------------------
+Wed Mar 18 17:49:17 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
+
+- Add support for RedHat 8
+  + Adjust dependencies on spec file 
+  + Disable dwarf compression in go build
+
+-------------------------------------------------------------------
 Tue Nov 19 15:18:13 UTC 2019 - Joao Cavalheiro <jcavalheiro@suse.com>
 
 - Update to 0.7
@@ -82,6 +94,11 @@ Tue Nov 19 15:18:13 UTC 2019 - Joao Cavalheiro <jcavalheiro@suse.com>
 
 - Changes from 0.6
   * Add option to override host name
+
+-------------------------------------------------------------------
+Tue Nov 19 13:08:57 UTC 2019 - Joao Cavalheiro <jcavalheiro@suse.com>
+
+- Add support for Red Hat
 
 -------------------------------------------------------------------
 Thu Jun  6 09:26:16 UTC 2019 - jmc <jcavalheiro@suse.com>

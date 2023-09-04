@@ -25,10 +25,16 @@
 %undefine _missing_build_ids_terminate_build
 %endif
 
-%if 0%{?suse_version} >= 1500
+%if 0%{?suse_version}
 %bcond_without apparmor
 %else
 %bcond_with apparmor
+%endif
+
+%if %{with apparmor} && 0%{?suse_version} > 1320
+%bcond_without apparmor_reload
+%else
+%bcond_with apparmor_reload
 %endif
 
 # Templating vars to simplify and standardize Prometheus exporters spec files
@@ -58,9 +64,13 @@ Requires(pre):  shadow-utils
 BuildRequires:  golang(API) >= 1.19
 Requires(pre):  shadow
 %if %{with apparmor}
+%if %{with apparmor_reload}
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
 Recommends:     apparmor-abstractions
+%else
+BuildRequires:  apparmor-profiles
+%endif
 %endif
 %endif
 ExcludeArch:    s390
@@ -106,7 +116,7 @@ getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceus
 %systemd_post %{targetname}.service
 %else
 %service_add_post %{targetname}.service
-%if %{with apparmor}
+%if %{with apparmor_reload}
 %apparmor_reload %{_sysconfdir}/apparmor.d/usr.bin.%{targetname}
 %endif
 %endif
