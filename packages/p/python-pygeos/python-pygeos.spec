@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygeos
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pygeos
-Version:        0.13
+Version:        0.14
 Release:        0
 Summary:        GEOS wrapped in numpy ufuncs
 License:        BSD-3-Clause
 URL:            https://github.com/pygeos/pygeos
 Source:         https://files.pythonhosted.org/packages/source/p/pygeos/pygeos-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module Cython with %python-Cython < 3}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 61}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libgeos-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.13
 # SECTION test requirements
-BuildRequires:  %{python_module numpy >= 1.13}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -51,10 +52,10 @@ mv pygeos/tests/ .
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm %{buildroot}%{$python_sitearch}/pygeos/_{geometry,geos}.c
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
@@ -66,6 +67,7 @@ mv .pygeos pygeos
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/pygeos*/
+%{python_sitearch}/pygeos
+%{python_sitearch}/pygeos-%{version}.dist-info
 
 %changelog
