@@ -229,4 +229,12 @@
   * Update rule E2532 to include current task properties (pull #2549)</comment>
     <requestid>1061741</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>58052af8f076e21dc2714b8e3ba71329</srcmd5>
+    <version>0.79.8</version>
+    <time>1693860835</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108877</requestid>
+  </revision>
 </revisionlist>

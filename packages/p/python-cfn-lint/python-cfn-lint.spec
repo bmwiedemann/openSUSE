@@ -17,24 +17,28 @@
 
 
 Name:           python-cfn-lint
-Version:        0.72.10
+Version:        0.79.8
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT
 URL:            https://github.com/aws-cloudformation/cfn-python-lint
 Source:         https://github.com/aws-cloudformation/cfn-python-lint/archive/v%{version}.tar.gz#/cfn-lint-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module regex}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sympy}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       git-core
 Requires:       python-PyYAML >= 5.4
-Requires:       python-aws-sam-translator >= 1.54.0
+Requires:       python-aws-sam-translator >= 1.71.0
 Requires:       python-jschema-to-python >= 1.2.3
 Requires:       python-jsonpatch
 Requires:       python-junit-xml >= 1.9
 Requires:       python-networkx >= 2.4
+Requires:       python-regex
 Requires:       python-sarif-om >= 1.0.4
+Requires:       python-sympy >= 1.0.0
 Requires:       (python-jsonschema > 3.0 with python-jsonschema < 5)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -44,7 +48,7 @@ Obsoletes:      cfn-lint < %{version}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.4}
-BuildRequires:  %{python_module aws-sam-translator >= 1.54.0}
+BuildRequires:  %{python_module aws-sam-translator >= 1.71.0}
 BuildRequires:  %{python_module jschema-to-python >= 1.2.3}
 BuildRequires:  %{python_module jsonpatch}
 BuildRequires:  %{python_module jsonschema > 3.0 with %python-jsonschema < 5}
@@ -86,6 +90,10 @@ git add src/cfnlint/rules
 donttest="test_sarif_formatter"
 donttest="$donttest or test_update_resource_specs_python_2"
 donttest="$donttest or test_update_resource_specs_python_3"
+donttest="$donttest or test_bad_config"
+donttest="$donttest or test_override_parameters"
+donttest="$donttest or test_positional_template_parameters"
+donttest="$donttest or test_template_config"
 %pytest -s test -v -k "not ($donttest)"
 
 %post

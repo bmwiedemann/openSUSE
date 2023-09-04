@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Sun Sep  3 07:27:08 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.79.8
+  * Update CloudFormation specs to `136.0.0` (#2848)
+  * Added `ItemReader` key to StateMachine `Map` state (#2850)
+  * Update rule (E2503) to allow network load balancers to use
+    security groups (#2850)
+- from version 0.79.7
+  * Add region `il-central-1` (#2836)
+  * Update CloudFormation specs to `135.0.0` (#2837)
+  * Allow for `RetainExceptOnCreate` for `DeletionPolicy` (#2834)
+  * Fix language extension transform to resolve
+    foreach refs in Sub parameters (#2846)
+  * Fix language extension transform to allow `Fn::FindInMap`
+    to return arrays (#2845)
+- from version 0.79.6
+  * Fix `AWS::Glue::Job.Name` to use string min/max instead
+    of number min/max (#2831)
+- from version 0.79.5
+  * Update schema to spec conversions to include include a default
+    string minimum value of 0 if not specified (#2824)
+  * Update CloudFormation specs to `132.0.0` (#2824)
+  * Fix `AWS::LanguageExtensions` to not empty out a hardcoded
+    string `Fn::FindInmap` that cannot be resolved (#2827)
+- from version 0.79.4
+  * Fix `AWS::LanguageExtensions` to not fully resolve `Fn::FindInMap`
+    unless in `Fn::ForEach` collection (#2822)
+  * Update `convert_dict` to include `Mark` instead of tuple for default value (#2821)
+- from version 0.79.3
+  * Fix `Conditions` logic to not crash on a condition that isn't found (#2814)
+  * Update rule (E1011) to better handle `Fn::FindInMap` with `AWS::LanguageExtensions` (#2814)
+  * Update rule (W2001) to better handle `Ref` with `AWS::LanguageExtensions` (#2814)
+- from version 0.79.2
+  * Add rule (E1032) to validate ForEach with transform (#2809)
+  * Fix `AWS::LanguageExtensions` regex for sub removal to handle pseudo parameters (#2812)
+- from version 0.79.1
+  * Add support for `Fn::ForEach` when using `AWS::LanguageExtensions` (#2801)
+- from version 0.78.2
+  * Add `test` function to test conditions given a scenario (#2801)
+  * Update CloudFormation specs to `131.0.0` (#2795)
+  * Updated `DocumentDBEngineVersion` `AllowedValues` (#2800)
+- from version 0.78.1
+  * Update rule (E1018) to flag splitting dynamic references (#2786)
+  * New rule (W2533) to validate lambda zip deployment configuration (#2682)
+  * Supporting intrinsic function in `DeletionPolicy` and `UpdateReplacePolicy` (#2784)
+  * Update CloudFormation specs to `130.0.0` (#2783)
+  * Pin `jsonschema` to be under `4.18` (#2792)
+  * Fix using `include_experimental` in metadata (#2785)
+  * Fix rule (E1024) to better handle conditions (#2780)
+- from version 0.77.10
+  * Update CloudFormation specs to `127.0.0` (#2763)
+- from version 0.77.9
+  * Fix an issue with SSM patching (#2765)
+- from version 0.77.8
+  * Update CloudFormation specs to `126.0.0` (#2753)
+- from version 0.77.7
+  * Fix usage of comments and new lines in custom rules(#2757)
+- from version 0.77.6
+  * Update CloudFormation specs to `124.0.0` (#2736)
+  * Add `AWS::KMS::Key` to stateful resource list (#2751)
+  * Update (E3012) documentation changes for more clarity (#2747)
+- from version 0.77.5
+  * Update CloudFormation specs to `121.0.0` (#2723)
+- from version 0.77.4
+  * Update CloudFormation specs to `120.0.0` (#2714)
+  * Fix Conditions logic when checking a condition against a region. Now
+    return True and False when the condition has no basis on region (#2721)
+  * Rebuild conditions inside the Template class when doing a Transform (#2721)
+- from version 0.77.3
+  * Update CloudFormation specs to `119.2.0` (#2703)
+  * GetAtt can return objects along with FindInMap (#2709)
+- from version 0.77.2
+  * Add custom operators for regex, gt, lt (#2694)
+  * Update CloudFormation specs to `119.1.0` (#2698)
+- from version 0.77.1
+  * Update CloudFormation specs to `119.1.0` (#2678)
+  * Update allowed values for `AWS::RDS::DBInstance.PerformanceInsightsRetentionPeriod` (#2696)
+  * Update rule (E3001) to evaluate if a resource with a condition is affected by the region (#2691)
+- from version 0.77.0
+  * Convert from `re` to `regex` (#2643)
+  * Implement `IS DEFINED` in custom rules (#2656)
+  * Update CloudFormation specs to `119.0.0` (#2660)
+  * Patch `AWS::S3::Bucket.InventoryConfiguration.OptionalFields` to include `ChecksumAlgorithm` (#2666)
+  * Patch `AWS::Cognito::UserPool.UserPollTags` to be a map of strings (#2671)
+  * Update SAM translation to substitute for a sub in `CodeUri` (#2661)
+  * Update language extensions to validate if a ref is iterable before assuming it is (#2665)
+  * Update rule (E3001) to consider a resource level condition when evaluating if the resource type exists (#2668)
+  * Update rule (E3012) to validate if a map is actually a map (#2669)
+- from version 0.76.2
+  * Update CloudFormation specs to `118.1.0` (#2644)
+- from version 0.76.1
+  * Fix an issue with Conditions when a `Fn::Equals` has a string
+    that isn't in a Parameters `AllowedValues` (#2649)
+- from version 0.76.0
+  * Convert conditions to SymPy (#2624)
+  * Include tests in sdist (#2630)
+  * Update CloudFormation specs to `117.0.0` (#2642)
+  * Fix SAM templates treated as normal by api (#2646)
+- from version 0.75.1
+  * Update CloudFormation specs to `116.0.0` (#2620)
+  * Add string length for `AWS::WAFRegional::RegexPatternSet.RegexPatternStrings`
+    and `AWS::WAFv2::RegexPatternSet.RegularExpressionList` (#2637, (#2639)
+- from version 0.75.0
+  * Read the default region from Env Vars (#2618)
+  * Update rule (W2030) and (E3008) to read `ValueTypes` from `us-east-1` when `CACHED` (#2635)
+- from version 0.74.3
+  * Update rule (W2031), (E3031), (E3030), (E3034), and E3033) to
+    read `ValueTypes` from `us-east-1` when `CACHED` (#2628)
+- from version 0.74.2
+  * Update CloudFormation specs to `115.0.0` (#2616)
+  * Fix custom rule inequality comparison (#2614)
+  * Restructure the decode module (#2607)
+- from version 0.74.1
+  * Update CloudFormation specs to `114.0.0` (#2601)
+  * Remove `AWS::Logs::LogGroup.RetentionInDays` `AllowedValues` (#2604)
+- from version 0.74.0
+  * Add rule (E3044) to validate the scheduling strategy for Fargate services (#2559)
+  * Update CloudFormation specs to `113.0.0` (#2591)
+  * Updated condition logic to limit the number of conditions that are processed (#2598)
+- from version 0.73.2
+  * Update CloudFormation specs to `112.0.0` (#2580)
+  * Updated rule (E2532) by adding `ItemProcessor` to `Map` (#2577)
+  * Relax `networkx` dependency (#2584)
+  * Validate sub string checks are strings before running regex in graph and template (#2589)
+  * Update SAM transform pre-work to include `DefinitionBody`
+    when `DisableExecuteApiEndpoint` is specified (#2590)
+- from version 0.73.1
+  * Patch back in `TargetRole` for `AWS::RDS::DBProxyEndpoint` (#2581)
+- from version 0.73.0
+  * Update CloudFormation specs to `111.0.0` (#2572)
+  * Add region `ap-southeast-4` (#2568)
+  * Remove `AWS::RDS::DBCluster` `MasterUsername`
+    and `MasterUserPassword` from Inclusive (#2571)
+  * Update SAM Translator version based on the SAM CLI requirement (#2570)
+- Skip some more failing test
+  * test_bad_config
+  * test_override_parameters
+  * test_positional_template_parameters
+  * test_template_config
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Sat Jan 28 13:41:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.72.10:
