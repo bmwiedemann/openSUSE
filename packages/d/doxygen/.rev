@@ -1103,4 +1103,39 @@
     <time>1683296337</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>db4da5accbe5460a95abe522a621f09e</srcmd5>
+    <version>1.9.7</version>
+    <time>1693860737</time>
+    <user>anag+factory</user>
+    <comment>- doxygen-test multibuild target to break build cycle with latex
+- modified sources
+  % _multibuild
+
+- rebase reproducible.patch to 1.9.7
+
+- Add reproducible.patch to make doxytags output reproducible (boo#1201579)
+
+- version update to 1.9.7
+  * https://www.doxygen.nl/manual/changelog.html#log_1_9_7
+- modified patches
+  % doxygen-no-libclang-cpp.patch (refreshed)
+  % doxygen-no-lowercase-man-names.patch (refreshed)
+- deleted patches
+  - Fix-boundingbox-parsing_part1.patch (upstreamed)
+  - Fix-boundingbox-parsing_part2.patch (upstreamed)
+  - Fix-boundingbox-parsing_part3.patch (upstreamed)
+  - Fix-boundingbox-parsing_part4.patch (upstreamed)
+- convert two specfiles into one
+- deleted patches
+  - doxygen-no-lowercase-man-names.patch (not needed)</comment>
+    <requestid>1105846</requestid>
+  </revision>
+  <revision rev="95" vrev="5">
+    <srcmd5>2c2743615281ca8883a6b66e4ab1e04c</srcmd5>
+    <version>1.9.6</version>
+    <time>1693907688</time>
+    <user>anag+factory</user>
+    <comment>https://bugzilla.opensuse.org/1214979</comment>
+  </revision>
 </revisionlist>
