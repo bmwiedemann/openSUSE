@@ -1,7 +1,7 @@
-Index: python-isc-dhcp-leases-0.9.1/isc_dhcp_leases/iscdhcpleases.py
-===================================================================
---- python-isc-dhcp-leases-0.9.1.orig/isc_dhcp_leases/iscdhcpleases.py
-+++ python-isc-dhcp-leases-0.9.1/isc_dhcp_leases/iscdhcpleases.py
+diff --git a/isc_dhcp_leases/iscdhcpleases.py b/isc_dhcp_leases/iscdhcpleases.py
+index e16677e..8578060 100644
+--- a/isc_dhcp_leases/iscdhcpleases.py
++++ b/isc_dhcp_leases/iscdhcpleases.py
 @@ -5,8 +5,6 @@ import re
  import struct
  import gzip
@@ -9,5 +9,5 @@ Index: python-isc-dhcp-leases-0.9.1/isc_dhcp_leases/iscdhcpleases.py
 -from six import iteritems
 -
  
- def parse_time(s):
-     """
+ try:
+     utc = datetime.timezone.utc
