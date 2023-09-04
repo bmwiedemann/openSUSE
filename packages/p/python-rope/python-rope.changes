@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Sep  3 23:28:27 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 1.9.0:
+  - Changes from 1.9.0:
+    * Implement nonlocal keyword
+    * Automatically purge autoimport.db when there is schema change
+  - Changes from 1.8.0:
+    * Install pre-commit hooks on rope repository
+    * Remove unused init() methods
+    * Reformat using black 23.1.0
+    * Fix/supress all mypy complaints
+    * Remove a do-nothing statement in soi._handle_first_parameter
+    * Fix autoimport not scanning packages recursively
+  - Changes from 1.7.0:
+    * Implement MoveGlobal using string as destination module names
+    * Fix parsing of octal literal
+    * Fix fstrings with mismatched parens
+    * Fix renaming kwargs when refactoring from imports
+    * Remove init from import statement when using sqlite autoimport
+    * Update readme to reflect 1.0 has been released
+
+-------------------------------------------------------------------
 Fri Dec 30 10:09:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.6.0

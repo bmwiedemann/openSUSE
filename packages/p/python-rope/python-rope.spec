@@ -1,7 +1,7 @@
 #
 # spec file for package python-rope
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define upname rope
 Name:           python-rope
-Version:        1.6.0
+Version:        1.9.0
 Release:        0
 Summary:        A python refactoring library
 License:        LGPL-3.0-or-later
