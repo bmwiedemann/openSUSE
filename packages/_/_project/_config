@@ -911,13 +911,17 @@ Prefer: php8:php8-cli
 Prefer: -libomp15-devel
 
 # have choice for python3dist(jupyterlab) = 3.6.2 needed by jupyter-jupyterlab: python310-jupyterlab python311-jupyterlab python38-jupyterlab python39-jupyterlab
-Prefer: -python311-jupyterlab -python38-jupyterlab -python39-jupyterlab
-Prefer: -python310-jupyter-client7 -python311-jupyter-client7 -python39-jupyter-client7
+Prefer: -python310-jupyterlab -python39-jupyterlab
+Prefer: -python310-jupyter-client7 -python39-jupyter-client7
+Prefer: -python310-jupyter-client7 -python39-jupyter-client7
+Prefer: -python311-jupyter-client7
+Prefer: -python311-jupyter-client7
+Prefer: -python310-nbclassic -python39-nbclassic
+prefer: -python310-notebook -python39-notebook
 
 # azure-cli reports: have choice for python3-vsts needed by python3-azure-functions-devops-build: python3-azure-devops python3-vsts
 # Use the real package name
 Prefer: python38-vsts python39-vsts
-
 
 # have choice for container:opensuse/nginx:latest: container:opensuse-nginx-1.25 container:opensuse-nginx-image
 Prefer: -container:opensuse-nginx-1.25
@@ -1617,6 +1621,7 @@ BuildFlags: onlybuild:ColPack
 BuildFlags: onlybuild:DirectX-Headers
 BuildFlags: onlybuild:FAudio
 BuildFlags: onlybuild:FastCGI
+BuildFlags: onlybuild:GraphicsMagick
 BuildFlags: onlybuild:ImageMagick
 BuildFlags: onlybuild:Imath
 BuildFlags: onlybuild:Mesa
@@ -1641,6 +1646,7 @@ BuildFlags: onlybuild:alsa-ucm-conf
 BuildFlags: onlybuild:alsa-utils
 BuildFlags: onlybuild:ant
 BuildFlags: onlybuild:antlr:antlr-bootstrap
+BuildFlags: onlybuild:apache-commons-lang3
 BuildFlags: onlybuild:apache-rpm-macros
 BuildFlags: onlybuild:apache-rpm-macros-control
 BuildFlags: onlybuild:apache2
@@ -1682,6 +1688,7 @@ BuildFlags: onlybuild:boost-defaults
 BuildFlags: onlybuild:boost:base
 BuildFlags: onlybuild:boost:extra
 BuildFlags: onlybuild:bpftool
+BuildFlags: onlybuild:branding-openSUSE
 BuildFlags: onlybuild:brltty
 BuildFlags: onlybuild:brotli
 BuildFlags: onlybuild:brp-check-suse
@@ -1742,6 +1749,7 @@ BuildFlags: onlybuild:dbus-1
 BuildFlags: onlybuild:dbus-1-glib
 BuildFlags: onlybuild:dbus-1:dbus-1-x11
 BuildFlags: onlybuild:dconf
+BuildFlags: onlybuild:dcraw
 BuildFlags: onlybuild:debianutils
 BuildFlags: onlybuild:debugedit
 BuildFlags: onlybuild:dejagnu
@@ -1753,6 +1761,7 @@ BuildFlags: onlybuild:dialog
 BuildFlags: onlybuild:diffutils
 BuildFlags: onlybuild:dirac
 BuildFlags: onlybuild:discount
+BuildFlags: onlybuild:distribution-logos-openSUSE
 BuildFlags: onlybuild:djvulibre
 BuildFlags: onlybuild:dnsmasq
 BuildFlags: onlybuild:docbook-xsl
@@ -1765,6 +1774,7 @@ BuildFlags: onlybuild:double-conversion
 BuildFlags: onlybuild:doxygen
 BuildFlags: onlybuild:dpkg
 BuildFlags: onlybuild:dpkg:update-alternatives
+BuildFlags: onlybuild:dracut
 BuildFlags: onlybuild:drpm
 BuildFlags: onlybuild:dtc
 BuildFlags: onlybuild:duktape
@@ -1837,6 +1847,7 @@ BuildFlags: onlybuild:gdk-pixbuf
 BuildFlags: onlybuild:geany
 BuildFlags: onlybuild:gettext-runtime
 BuildFlags: onlybuild:gettext-runtime:gettext-runtime-mini
+BuildFlags: onlybuild:gfxboot
 BuildFlags: onlybuild:ghostscript
 BuildFlags: onlybuild:ghostscript-fonts
 BuildFlags: onlybuild:ghostscript:mini
@@ -1918,7 +1929,6 @@ BuildFlags: onlybuild:iceauth
 BuildFlags: onlybuild:icu
 BuildFlags: onlybuild:imake
 BuildFlags: onlybuild:imlib2
-BuildFlags: onlybuild:infinipath-psm
 BuildFlags: onlybuild:inih
 BuildFlags: onlybuild:intltool
 BuildFlags: onlybuild:iproute2
@@ -1930,6 +1940,7 @@ BuildFlags: onlybuild:iso-codes
 BuildFlags: onlybuild:iso_ent
 BuildFlags: onlybuild:itstool
 BuildFlags: onlybuild:jack
+BuildFlags: onlybuild:jasper
 BuildFlags: onlybuild:java-17-openjdk
 BuildFlags: onlybuild:java-cup:java-cup-bootstrap
 BuildFlags: onlybuild:javapackages-tools
@@ -2391,6 +2402,7 @@ BuildFlags: onlybuild:perl-DBD-mysql
 BuildFlags: onlybuild:perl-DBI
 BuildFlags: onlybuild:perl-Data-Compare
 BuildFlags: onlybuild:perl-Data-Dump
+BuildFlags: onlybuild:perl-Data-OptList
 BuildFlags: onlybuild:perl-Data-Uniqid
 BuildFlags: onlybuild:perl-Date-Calc
 BuildFlags: onlybuild:perl-Date-Manip
@@ -2476,6 +2488,7 @@ BuildFlags: onlybuild:perl-Log-Log4perl
 BuildFlags: onlybuild:perl-MIME-Charset
 BuildFlags: onlybuild:perl-MRO-Compat
 BuildFlags: onlybuild:perl-MailTools
+BuildFlags: onlybuild:perl-Mixin-Linewise
 BuildFlags: onlybuild:perl-Mock-Config
 BuildFlags: onlybuild:perl-Module-Build
 BuildFlags: onlybuild:perl-Module-Build-Tiny
@@ -2503,11 +2516,8 @@ BuildFlags: onlybuild:perl-Parse-Yapp
 BuildFlags: onlybuild:perl-Path-Tiny
 BuildFlags: onlybuild:perl-PerlIO-utf8_strict
 BuildFlags: onlybuild:perl-Pod-Coverage
-BuildFlags: onlybuild:perl-Data-OptList
-BuildFlags: onlybuild:perl-Sub-Exporter
-BuildFlags: onlybuild:perl-Mixin-Linewise
-BuildFlags: onlybuild:perl-Pod-Eventual
 BuildFlags: onlybuild:perl-Pod-Coverage-TrustPod
+BuildFlags: onlybuild:perl-Pod-Eventual
 BuildFlags: onlybuild:perl-Pod-Parser
 BuildFlags: onlybuild:perl-Readonly
 BuildFlags: onlybuild:perl-Readonly-XS
@@ -2521,6 +2531,7 @@ BuildFlags: onlybuild:perl-Sort-Versions
 BuildFlags: onlybuild:perl-Specio
 BuildFlags: onlybuild:perl-Spiffy
 BuildFlags: onlybuild:perl-Spreadsheet-ParseExcel
+BuildFlags: onlybuild:perl-Sub-Exporter
 BuildFlags: onlybuild:perl-Sub-Exporter-Progressive
 BuildFlags: onlybuild:perl-Sub-Identify
 BuildFlags: onlybuild:perl-Sub-Install
@@ -2565,7 +2576,6 @@ BuildFlags: onlybuild:perl-Text-CharWidth
 BuildFlags: onlybuild:perl-Text-Diff
 BuildFlags: onlybuild:perl-Text-Glob
 BuildFlags: onlybuild:perl-Text-Iconv
-BuildFlags: onlybuild:perl-Text-Markdown
 BuildFlags: onlybuild:perl-Text-Roman
 BuildFlags: onlybuild:perl-Text-Soundex
 BuildFlags: onlybuild:perl-Text-Unidecode
@@ -2620,6 +2630,7 @@ BuildFlags: onlybuild:pesign
 BuildFlags: onlybuild:pesign-obs-integration
 BuildFlags: onlybuild:php8
 BuildFlags: onlybuild:php8-pear
+BuildFlags: onlybuild:pigz
 BuildFlags: onlybuild:pinentry
 BuildFlags: onlybuild:pipewire
 BuildFlags: onlybuild:pixman
@@ -2627,6 +2638,7 @@ BuildFlags: onlybuild:pkcs11-helper
 BuildFlags: onlybuild:pkgconf
 BuildFlags: onlybuild:plasma-wayland-protocols
 BuildFlags: onlybuild:plotutils
+BuildFlags: onlybuild:plymouth
 BuildFlags: onlybuild:pngquant
 BuildFlags: onlybuild:po4a
 BuildFlags: onlybuild:policycoreutils
@@ -2689,7 +2701,6 @@ BuildFlags: onlybuild:python-atspi
 BuildFlags: onlybuild:python-attrs
 BuildFlags: onlybuild:python-bcrypt
 BuildFlags: onlybuild:python-beniget
-BuildFlags: onlybuild:python-betamax
 BuildFlags: onlybuild:python-brotlipy
 BuildFlags: onlybuild:python-build
 BuildFlags: onlybuild:python-calver
@@ -2831,7 +2842,6 @@ BuildFlags: onlybuild:python-rdflib
 BuildFlags: onlybuild:python-regex
 BuildFlags: onlybuild:python-requests
 BuildFlags: onlybuild:python-requests-gssapi
-BuildFlags: onlybuild:python-requests-toolbelt
 BuildFlags: onlybuild:python-rpm-macros
 BuildFlags: onlybuild:python-rpm-packaging
 BuildFlags: onlybuild:python-rtslib-fb
@@ -2938,8 +2948,7 @@ BuildFlags: onlybuild:rubygem-rdiscount
 BuildFlags: onlybuild:rubygem-ronn
 BuildFlags: onlybuild:rust
 BuildFlags: onlybuild:rust-bindgen
-BuildFlags: onlybuild:rust1.70
-BuildFlags: onlybuild:rust1.71
+BuildFlags: onlybuild:rust1.72
 BuildFlags: onlybuild:samba
 BuildFlags: onlybuild:sane-backends
 BuildFlags: onlybuild:sbc
@@ -2997,6 +3006,7 @@ BuildFlags: onlybuild:suitesparse
 BuildFlags: onlybuild:superlu:serial
 BuildFlags: onlybuild:suse-module-tools
 BuildFlags: onlybuild:swig
+BuildFlags: onlybuild:syslinux
 BuildFlags: onlybuild:sysstat
 BuildFlags: onlybuild:system-user-mktex
 BuildFlags: onlybuild:system-user-root
@@ -3085,6 +3095,7 @@ BuildFlags: onlybuild:userspace-rcu
 BuildFlags: onlybuild:utempter
 BuildFlags: onlybuild:utf8proc
 BuildFlags: onlybuild:util-linux
+BuildFlags: onlybuild:util-linux:systemd
 BuildFlags: onlybuild:util-macros
 BuildFlags: onlybuild:v4l-utils
 BuildFlags: onlybuild:vala
