@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 06 01:57:59 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1693909530.ff28f36:
+  * Remove one UPDATE query from worker status updates
+  * contrib: Align the .xml.erp profile to the recent install attempts
+  * contrib: Add autoyast profile for SUSE PRG2 o3 workers
+
+-------------------------------------------------------------------
 Fri Sep 01 10:56:00 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1693565748.f367431:
