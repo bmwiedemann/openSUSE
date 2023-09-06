@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  4 19:11:49 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20230904.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230904
+  * Show openssl version used from homebrew by default by @MatasNed in #2226
+  * Bump up OpenSSL versions by @hsbt in #2227
+  * Avoid test failure when stubbing FreeBSD environment by @mislav in #2228
+  * Display the actual error when testing for Ruby's openssl extension by @YellowApple in #2223
+  * Remove `require_gcc` implementation by @mislav in #2232
+  * Remove `require_llvm` implementation by @mislav in #2231
+  * Update URLs for truffleruby+graalvm-dev by @eregon in #2244
+
+-------------------------------------------------------------------
 Mon Jul 17 14:36:33 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20230717.
