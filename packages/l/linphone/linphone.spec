@@ -25,6 +25,11 @@
 %define __requires_exclude ^(libldap\\.so.*|liblber\\.so.*)$
 %endif
 %define sover   10
+%if 0%{?suse_version} >= 1600
+%bcond_with slp
+%else
+%bcond_without slp
+%endif
 Name:           linphone
 Version:        5.2.98
 Release:        0
@@ -107,7 +112,9 @@ BuildRequires:  db-devel
 %else
 BuildRequires:  libdb-devel
 %endif
+%if %{with slp}
 BuildRequires:  openslp-devel
+%endif
 %endif
 %if 0%{?fedora}
 BuildRequires:  pkgconfig(openssl)
@@ -241,7 +248,9 @@ LDFLAGS="-Wl,-rpath,%ldaplibdir" ./configure \
   --enable-crypt     \
   --enable-ipv6=yes  \
   --enable-rewrite   \
+%if %{with slp}
   --enable-slp       \
+%endif
   --enable-lmpasswd  \
   --with-yielding-select \
   --prefix=$PWD/..   \
