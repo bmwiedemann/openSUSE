@@ -16,28 +16,27 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-napalm
 Version:        4.1.0
 Release:        0
 Summary:        Network Automation and Programmability Abstraction Layer
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/napalm-automation/napalm
 Source:         https://github.com/napalm-automation/napalm/archive/%{version}.tar.gz#/napalm-%{version}.tar.gz
 # https://github.com/napalm-automation/napalm/issues/1594
 Patch0:         python-napalm-no-mock.patch
 # https://github.com/napalm-automation/napalm/pull/1796
 Patch1:         napalm-gh-pr1796-xmlgetparent.patch
+# https://github.com/napalm-automation/napalm/pull/2002
+Patch2:         remove-future-requirement.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-PyYAML
 Requires:       python-cffi >= 1.11.3
-Requires:       python-ciscoconfparse
-Requires:       python-future
 Requires:       python-junos-eznc >= 2.6.3
 Requires:       python-lxml >= 4.3.0
 Requires:       python-ncclient
@@ -61,7 +60,6 @@ BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module cffi >= 1.11.3}
 BuildRequires:  %{python_module ddt}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module junos-eznc >= 2.6.3}
 BuildRequires:  %{python_module lxml >= 4.3.0}
 BuildRequires:  %{python_module ncclient}
@@ -90,10 +88,10 @@ interact with different router vendor devices using a unified API.
 sed -i '1{/env python/d}' napalm/pyIOSXR/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/napalm
 %python_clone -a %{buildroot}%{_bindir}/cl_napalm_validate
 %python_clone -a %{buildroot}%{_bindir}/cl_napalm_test
@@ -125,6 +123,7 @@ rm -Rf test/junos/
 %python_alternative %{_bindir}/cl_napalm_test
 %python_alternative %{_bindir}/cl_napalm_validate
 %python_alternative %{_bindir}/napalm
-%{python_sitelib}/*
+%{python_sitelib}/napalm
+%{python_sitelib}/napalm-%{version}.dist-info
 
 %changelog

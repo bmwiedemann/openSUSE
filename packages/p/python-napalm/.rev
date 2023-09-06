@@ -164,4 +164,15 @@
     <comment></comment>
     <requestid>1105467</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>5b1253b2dfe4c55c73cec30ca2354239</srcmd5>
+    <version>4.1.0</version>
+    <time>1694019503</time>
+    <user>anag+factory</user>
+    <comment>- Add patch remove-future-requirement.patch, remove requirement of
+  future module.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1109156</requestid>
+  </revision>
 </revisionlist>
