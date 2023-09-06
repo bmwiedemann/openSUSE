@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 31 14:44:03 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 0.13.0:
+  * Ignore gofmt errors from vendor folder
+  * Remove usage of deprecated errors package
+  * Remove rebuild and cgo
+  * Update to Go 1.20
+  * Format some of the code, comment out unused line
+  * Add --tls-san for join command for servers
+  * Update README.md
+  * Update dependencies
+  * Print agent host/IP in join command
+  * Change streaming behaviour when joining nodes
+
+-------------------------------------------------------------------
 Tue May 30 07:54:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - use -buildmode=pie and BuildRequire go1.19
