@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  4 12:44:35 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.3.20
+  * Allows to specify separate date and/or time format.
+  * Add "date only format" and "time only format" to locales.conf
+    configuration.
+  * Better logs for iconv initialization
+  * Report more verbose and helpful logs if tds_iconv_init fails.
+
+-------------------------------------------------------------------
 Wed Jun  7 12:43:58 UTC 2023 - pgajdos@suse.com
 
 - version update to 1.3.18
