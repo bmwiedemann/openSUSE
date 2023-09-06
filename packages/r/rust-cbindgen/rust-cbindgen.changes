@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Sep 04 23:21:09 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.25.0+git0:
+  * Fix minimal Rust version in CI
+  * Revert "Upgrade clap 3 to clap 4"
+  * Fix clippy warning
+  * Fix CI
+  * Update changelog for v0.25.0
+  * CI: Replace forbidden actions with cli code
+  * CI: Add semver checks to CI deploy job
+  * msrv 1.64
+  * Upgrade clap 3 to clap 4
+  * Add: Add rust-toolchain.toml
+
+-------------------------------------------------------------------
+Tue Jul 11 04:12:33 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Tue Jul 11 03:53:57 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.24.3+git0:
+  * Bump version.
+  * tests: Add a test for struct constants going through typedefs.
+  * bindings: Peel through typedefs for struct constant generation.
+  * Rustfmt recent changes.
+  * Version bump.
+  * bitflags: Be explicit in binary operators and such.
+  * Version bump.
+  * constant: Add support for unary negation.
+  * bitflags: Make more operations constexpr.
+  * Fix changelog typo.
+
+-------------------------------------------------------------------
 Wed Jul 27 07:30:01 UTC 2022 - wolfgang@rosenauer.org
 
 - Update to version 0.24.3+git0:

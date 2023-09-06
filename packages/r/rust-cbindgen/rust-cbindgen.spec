@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,18 +20,19 @@
 %global crate_name cbindgen
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now
 Name:           rust-%{crate_name}
-Version:        0.24.3+git0
+Version:        0.25.0+git0
 Release:        0
 Summary:        A tool for generating C bindings from Rust code
 License:        MPL-2.0
 Group:          Development/Languages/Rust
 URL:            https://crates.io/crates/cbindgen
-Source0:        %{crate_name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        %{crate_name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 Source99:       UPDATING.md
-BuildRequires:  cargo >= 1.30.0
-BuildRequires:  rust >= 1.30.0
+BuildRequires:  cargo >= 1.70.0
+BuildRequires:  cargo-packaging
+BuildRequires:  rust >= 1.70.0
 
 %description
 A tool for generating C bindings from Rust code.
