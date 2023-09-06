@@ -49,7 +49,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Command line software manager using libzypp
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        1.14.62
+Version:        1.14.64
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
@@ -209,7 +209,7 @@ done
 %config(noreplace) %{_sysconfdir}/logrotate.d/zypper.lr
 %config(noreplace) %{_sysconfdir}/logrotate.d/zypp-refresh.lr
 %endif
-%{_sysconfdir}/bash_completion.d/zypper.sh
+%{_datadir}/bash-completion/completions/zypper
 %{_bindir}/zypper
 %{_bindir}/yzpper
 %{_bindir}/installation_sources
