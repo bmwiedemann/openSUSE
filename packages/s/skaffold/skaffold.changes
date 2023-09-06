@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Sep 05 11:08:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.7.0:
+  * fix: verify flaky tests (#9050)
+  * chore: bump github/codeql-action from 2.21.4 to 2.21.5 (#9053)
+  * fix: save runtime type in artifact json (#9052)
+  * feat: crd status check (#9016)
+  * chore: bump flask from 2.3.2 to 2.3.3 in /integration/examples
+    (#9041)
+  * chore: bump flask from 2.3.2 to 2.3.3 in /examples (#9042)
+  * chore: bump puma from 4.3.12 to 5.6.7 in /examples/ruby/backend
+    (#9036)
+  * chore: bump puma in /integration/examples/ruby/backend (#9037)
+  * feat: enable skaffold render to track telemetry (#9020)
+  * fix: use moby/patternmatcher for dockerignore (#9029)
+  * feat: support url as kustomize file path (#9023)
+  * fix: status check list all events (#9015)
+  * chore: bump github/codeql-action from 2.21.3 to 2.21.4 (#9022)
+  * feat: configure verify and exec commands to emit metrics
+    (#9013)
+  * feat: support overrides in helm renderer (#8966)
+  * fix: ignore unset variables from minikube docker-env (#9018)
+  * fix: Address #9006 (#9008)
+  * docs: update documentation (#9017)
+  * fix: documentation for Helm Template Value (#8991)
+  * chore: upgrade go to 1.21.0 (#8999)
+  * feat: Add Sprig template functions (#9005)
+  * chore: bump github/codeql-action from 2.21.2 to 2.21.3 (#9000)
+  * chore: upgrade go 1.19.10 -> 1.20.7 (#8992)
+  * docs: add example to use cloudrun deployer + local build
+    (#8983)
+  * chore: remove latest tagging from relase process (#8986)
+  * docs: add anchors to yaml paths (#8541)
+  * fix: status check connecting to the wrong context (#8981)
+  * chore: bump github/codeql-action from 2.21.1 to 2.21.2 (#8980)
+  * fix: remote kustomize manifest being watched (#8979)
+  * docs: schema version mapping (#8973)
+  * chore: bump github/codeql-action from 2.21.0 to 2.21.1 (#8975)
+  * fix: Add integration tests for helm namespace (#8965)
+  * fix: edit original file if the given skaffold path is a symlink
+    (#8955)
+  * chore: bump github/codeql-action from 2.20.4 to 2.21.0 (#8964)
+  * fix: verify hangs if event-logs-file does not exist (#8961)
+  * chore: update the way the LTS images are built (#8953) (#8957)
+  * chore: bump ossf/scorecard-action from 2.1.3 to 2.2.0 (#8915)
+  * chore: bump github.com/sigstore/rekor from 1.1.1 to 1.2.0
+    (#8829)
+  * feat: remove condition that checks if an image was built from
+    Skaffold (#8935)
+  * chore:  configure minikube to a static version in github ci
+    (#8951)
+  * chore: bump github/codeql-action from 2.20.3 to 2.20.4 (#8950)
+  * fix: Fix typo in Cloud Run log tailing (#8944)
+  * chore: disable edge image scanning (#8942)
+  * chore: remove duplicate page meta links (#8824)
+  * chore: bump github/codeql-action from 2.20.2 to 2.20.3 (#8937)
+  * chore: bump google.golang.org/grpc (#8932)
+  * chore: bump google.golang.org/grpc in
+    /examples/grpc-e2e-tests/service (#8933)
+  * chore: bump google.golang.org/grpc (#8934)
+  * chore: bump google.golang.org/grpc (#8931)
+  * docs: document cmd template function (#8929)
+  * chore: bump github/codeql-action from 2.20.1 to 2.20.2 (#8928)
+  * chore: push scanning marker tag to remote (#8917)
+
+-------------------------------------------------------------------
 Sun Aug 06 07:52:08 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.6.3:
