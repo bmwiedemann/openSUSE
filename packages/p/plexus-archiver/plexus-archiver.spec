@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-archiver
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,44 +16,30 @@
 #
 
 
-%bcond_with tests
-%bcond_with snappy
 Name:           plexus-archiver
-Version:        4.2.1
+Version:        4.8.0
 Release:        0
 Summary:        Plexus Archiver Component
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://codehaus-plexus.github.io/plexus-archiver
+URL:            https://codehaus-plexus.github.io/plexus-archiver
 Source0:        https://github.com/codehaus-plexus/plexus-archiver/archive/plexus-archiver-%{version}.tar.gz
 Source1:        %{name}-build.xml
 Patch0:         0001-Remove-support-for-snappy.patch
-Patch1:         logger-level.patch
+Patch1:         plexus-archiver-4.8.0-no_zstd.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
 BuildRequires:  apache-commons-io
+BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
-BuildRequires:  plexus-containers-container-default >= 2.1
 BuildRequires:  plexus-io >= 3.2
 BuildRequires:  plexus-utils >= 3.3
+BuildRequires:  sisu-inject
+BuildRequires:  slf4j
 BuildRequires:  xz-java
-Requires:       mvn(org.apache.commons:commons-compress)
-Requires:       mvn(org.codehaus.plexus:plexus-io)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
-Requires:       mvn(org.tukaani:xz)
 BuildArch:      noarch
-%if %{with snappy}
-BuildRequires:  mvn(org.iq80.snappy:snappy)
-%endif
-%if %{with tests}
-BuildRequires:  ant-junit
-BuildRequires:  guava
-BuildRequires:  plexus-classworlds
-BuildRequires:  xbean
-BuildRequires:  xz-java
-%endif
 
 %description
 Plexus contains end-to-end developer tools for writing applications.
@@ -73,7 +59,6 @@ Javadoc for %{name}.
 %setup -q -n %{name}-%{name}-%{version}
 cp %{SOURCE1} build.xml
 
-%if %{without snappy}
 %patch0 -p1
 %pom_remove_dep org.iq80.snappy:snappy
 rm -rf src/main/java/org/codehaus/plexus/archiver/snappy
@@ -81,24 +66,24 @@ rm -rf src/test/java/org/codehaus/plexus/archiver/snappy
 rm -f src/main/java/org/codehaus/plexus/archiver/tar/SnappyTarFile.java
 rm -f src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarSnappyFileResourceCollection.java
 rm -r src/test/java/org/codehaus/plexus/archiver/tar/TarSnappyUnArchiverTest.java
-%endif
+
 %patch1 -p1
-
-%pom_remove_plugin :maven-enforcer-plugin
-
-%pom_remove_parent .
-%pom_xpath_inject "pom:project" "<groupId>org.codehaus.plexus</groupId>" .
+%pom_remove_dep com.github.luben:zstd-jni
+rm -rf src/main/java/org/codehaus/plexus/archiver/zstd
+rm -rf src/test/java/org/codehaus/plexus/archiver/zstd
+rm -rf src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTZstdFileResourceCollection.java
+rm -rf src/main/java/org/codehaus/plexus/archiver/tar/ZstdTarFile.java
+rm -rf src/main/java/org/codehaus/plexus/archiver/tar/TZstdUnArchiver.java
+rm -rf src/main/java/org/codehaus/plexus/archiver/tar/TZstdArchiver.java
+rm -rf src/main/java/org/codehaus/plexus/archiver/tar/TarZstdUnArchiver.java
+rm -rf src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarZstdFileResourceCollection.java
+rm -rf src/main/java/org/codehaus/plexus/archiver/tar/TarZstdArchiver.java
+rm -rf src/test/java/org/codehaus/plexus/archiver/tar/TarZstdUnArchiverTest.java
 
 %build
 mkdir -p lib
-build-jar-repository -s lib plexus-containers/plexus-container-default jsr-305 commons-compress commons-io plexus/utils plexus/io
-%if %{with tests}
-build-jar-repository -s lib plexus/classworlds guava/guava xbean/xbean-reflect xz-java
-%endif
+build-jar-repository -s lib atinject slf4j/api org.eclipse.sisu.inject jsr-305 commons-compress commons-io plexus/utils plexus/io
 %{ant} \
-%if %{without tests}
-  -Dtest.skip=true \
-%endif
   jar javadoc
 
 %install
@@ -107,7 +92,7 @@ install -dm 0755 %{buildroot}%{_javadir}/plexus
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/plexus/archiver.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/plexus
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/plexus/archiver.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/plexus/archiver.pom
 %add_maven_depmap plexus/archiver.pom plexus/archiver.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
