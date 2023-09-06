@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Sep 04 09:42:29 UTC 2023 - Markus Ebner <info@ebner-markus.de>
+
+- Update to 4.6.3
+  * improved handling of active packages when loading included files
+  * better detection that a screen is not active any more and move
+    window onto active screen
+  * Cancel button of dialog for inserting label references now inserts
+    nothing, but you can still add an empty reference when needed (#3230)
+- Update to 4.6.2
+  * fix crash
+- Update to 4.6.1
+  * fix wrong path for saving cache information (#3225)
+  * allow delimiter operations on $ math sections
+- Update to 4.6.0
+  * use subfiles root for compilation if the current document is a child
+  * load the complete subfile project to provide proper syntax checking,
+    also when just opening a subfile root
+  * cache structure/labels/usercommands/packages for faster reload of
+    large projects (optional) (ef0ab75)
+  * add support for alignedat environment in QuickArray Wizard (#2921)
+  * add a Lorem Ipsum generator to the Random Text Generator
+    dialog (#3102)
+  * change default windows style for new installs to Fusion instead
+    of modern-dark, in case system darkmode is detected (ad0fc44)
+  * improve some details and fix issues of the Quick Start
+    wizard (#2901, #3153, #3150, #3157)
+  * improve some details of the Edit Macros dialog (#3130)
+  * The link to the TeXstudio homepage is now at the top of the About
+    dialog (Help menu) and the number of the latest stable version is
+    also displayed (#3146)
+  * option Disable horizontal scrolling for “Fit to Text Width” now
+    affects horizontal scrolling with mousepad and scroll wheel (#1526)
+  * fix editor moving last line of a selection when selection ends
+    at start of a line (#3131)
+  * fix some icon issues on OSX (#3100,#3104)
+  * basic support for tblr colspec
+
+-------------------------------------------------------------------
 Sun Apr 16 09:39:05 UTC 2023 - Dmitry Roshchin <dmitry_r@opensuse.org>
 
 - Update to version 4.5.2
