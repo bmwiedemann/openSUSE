@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  6 12:00:38 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.5:
+  * The keyword used for ASTAP parity was updated since some images were getting the opposite parity due to an issue with the other keyword.
+  * The Online flip for astrometry was removed since it was not needed anymore.
+  * The he URL for Online astrometry was updated as well.
+
+-------------------------------------------------------------------
 Fri Mar 10 07:39:31 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Revert hwcaps.

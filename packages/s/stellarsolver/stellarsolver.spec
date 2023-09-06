@@ -17,10 +17,10 @@
 
 
 %define sover 2
-%define min_sover 4
+%define min_sover 5
 
 Name:           stellarsolver
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        Astrometric Solver
 License:        GPL-3.0-or-later

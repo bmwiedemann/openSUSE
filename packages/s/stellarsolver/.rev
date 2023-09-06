@@ -108,4 +108,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1072560</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>45bfdba91972d752d26b8d7f35d35cd8</srcmd5>
+    <version>2.5</version>
+    <time>1694019598</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.5:
+  * The keyword used for ASTAP parity was updated since some images were getting the opposite parity due to an issue with the other keyword.
+  * The Online flip for astrometry was removed since it was not needed anymore.
+  * The he URL for Online astrometry was updated as well.
+</comment>
+    <requestid>1109263</requestid>
+  </revision>
 </revisionlist>
