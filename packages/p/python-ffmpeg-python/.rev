@@ -49,4 +49,13 @@
 - Skip a test failing because of missing libopenh264 support</comment>
     <requestid>1045132</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>2def791a8e474b8b652063307b8d4475</srcmd5>
+    <version>0.2.0</version>
+    <time>1694019565</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject and autosetup macros.
+- Add patch remove-future-requirement.patch, reove future requirement.</comment>
+    <requestid>1109195</requestid>
+  </revision>
 </revisionlist>
