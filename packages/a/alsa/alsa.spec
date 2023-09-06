@@ -32,7 +32,7 @@
 %endif
 
 Name:           alsa
-Version:        1.2.9
+Version:        1.2.10
 Release:        0
 Summary:        Advanced Linux Sound Architecture
 License:        LGPL-2.1-or-later
@@ -55,6 +55,8 @@ Source32:       all_notes_off.mid
 Source34:       alsa-init.sh
 # from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
 Source35:       alsa.keyring
+# upstream fixes
+Patch1:         0001-control.h-Fix-ump-header-file-detection.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -143,6 +145,7 @@ This package contains the library for ALSA topology support.
 
 %prep
 %setup -q -n alsa-lib-%{version}
+%patch1 -p1
 %patch101 -p1
 
 %build
