@@ -186,4 +186,12 @@
     - Fix single-item menu height (forwarded request 1102463 from iznogood)</comment>
     <requestid>1102935</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cd2f4c362bab69471c2fec2a7fe2ddcb</srcmd5>
+    <version>1.3.5</version>
+    <time>1694019382</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109062</requestid>
+  </revision>
 </revisionlist>
