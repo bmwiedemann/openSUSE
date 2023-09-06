@@ -30,7 +30,7 @@ Name:           javapackages-tools-%{flavor}
 %else
 Name:           javapackages-tools
 %endif
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        Macros and scripts for Java packaging support
 License:        BSD-3-Clause
@@ -45,8 +45,8 @@ Patch1:         python-optional.patch
 #PATCH-FIX-SUSE: SUSE did not bump epoch of openjdk packages, whereas Fedora did
 #               Avoid generating unresolvable requires
 Patch2:         suse-no-epoch.patch
-#PATCH-FIX-SUSE: Let maven_depmap.py generate metadata with dependencies under certain circumstances
-Patch3:         javapackages-%{version}-maven-depmap.patch
+#PATCH-FIX-SUSE: Let maven_depmap.py generate reproducible list of aliases
+Patch3:         0001-Make-the-alias-generation-reproducible.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  perl
@@ -75,9 +75,6 @@ BuildArch:      noarch
 %define python_sitelib %python3_sitelib
 %define python_files() -n python3-%{**}
 %endif
-%else
-Provides:       mvn(com.sun:tools) = SYSTEM
-Provides:       mvn(sun.jdk:jconsole) = SYSTEM
 %endif
 
 %description
@@ -236,7 +233,7 @@ popd
 
 %else
 
-%files -n javapackages-local -f files-common -f files-extra -f files-compat -f files-generators
+%files -n javapackages-local -f files-common -f files-compat -f files-generators
 %dir %{_datadir}/java-utils
 
 %files -n javapackages-ivy -f files-ivy

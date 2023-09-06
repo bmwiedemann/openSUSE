@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep  2 23:07:32 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 6.2.0
+  * Întegrate our changes from javapackages-6.1.0-maven-depmap.patch
+- Removed patch:
+  * javapackages-6.1.0-maven-depmap.patch
+    + upstreamed
+- Added patch:
+  * 0001-Make-the-alias-generation-reproducible.patch
+    + separate patch for our reproducible changes that was not
+      part of the integrated pull request
+
+-------------------------------------------------------------------
 Mon Aug 21 14:49:36 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
