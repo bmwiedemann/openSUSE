@@ -17,7 +17,7 @@
 
 
 Name:           pigz
-Version:        2.7
+Version:        2.8
 Release:        0
 Summary:        Multi-core gzip version
 License:        Zlib
@@ -26,7 +26,6 @@ URL:            https://www.zlib.net/pigz/
 Source0:        https://www.zlib.net/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://www.zlib.net/%{name}/%{name}-%{version}-sig.txt#/%{name}-%{version}.tar.gz.asc
 Source9:        %{name}.keyring
-Patch0:         pigz-2.7-NOTHREAD-tests.patch
 BuildRequires:  zlib-devel
 
 %description
