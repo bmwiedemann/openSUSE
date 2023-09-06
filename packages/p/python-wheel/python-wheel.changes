@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep  4 03:35:21 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 0.41.2:
+  - Changes from 0.41.2:
+    * Fixed platform tag detection for GraalPy and 32-bit python
+      running on an aarch64 kernel
+    * Fixed wheel tags to not list directories in RECORD files
+    * Fixed ABI tag generation for GraalPy
+  - Changes from 0.41.1:
+    * Fixed naming of the data_dir directory in the presence of local
+      version segment given via egg_info.tag_build
+    * Fixed version specifiers in Requires-Dist being wrapped in
+      parentheses
+  - Changes from 0.41.0:
+    * Added full support of the build tag syntax to wheel tags
+    * Fixed warning on Python 3.12 about onerror deprecation
+    * Support testing on Python 3.12 betas
+
+-------------------------------------------------------------------
 Thu May  4 21:13:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.40.0:
