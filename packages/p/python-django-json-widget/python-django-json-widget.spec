@@ -24,13 +24,15 @@ Summary:        Django JSON widget for editing the Django jsonfield
 License:        MIT
 URL:            https://github.com/jmrivas86/django-json-widget
 Source:         https://github.com/jmrivas86/django-json-widget/archive/v%{version}.tar.gz#/django-json-widget-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE We don't use Django < 3.1
+Patch0:         remove-future-requirement.patch
 BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module future}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
-Requires:       python-future
 BuildArch:      noarch
 %python_subpackages
 
@@ -39,14 +41,14 @@ Django json widget is an alternative widget that makes it easy to edit the
 jsonfield field of django.
 
 %prep
-%setup -q -n django-json-widget-%{version}
+%autosetup -p1 -n django-json-widget-%{version}
 chmod a-x django_json_widget/static/dist/img/*.* django_json_widget/static/dist/*.* django_json_widget/static/css/*.*
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +58,7 @@ export PYTHONPATH=.
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/django_json_widget
+%{python_sitelib}/django_json_widget-%{version}.dist-info
 
 %changelog

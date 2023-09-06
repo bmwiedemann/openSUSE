@@ -67,4 +67,15 @@
 - Use sle15_python_module_pythons</comment>
     <requestid>1095238</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>a709a82f62cbbaed1e60d8692fdbd5df</srcmd5>
+    <version>1.1.1</version>
+    <time>1694019404</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject and autosetup macros.
+- Add patch remove-future-requirement.patch, drop future, we do not need
+  it.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1108970</requestid>
+  </revision>
 </revisionlist>
