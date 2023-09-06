@@ -33,6 +33,8 @@ Summary:        Python setuptools handler for SCM tags
 License:        MIT
 URL:            https://github.com/pypa/setuptools_scm
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools_scm/setuptools_scm-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: https://github.com/pypa/setuptools_scm/pull/867
+Patch1:         setuptools-68.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module pip}

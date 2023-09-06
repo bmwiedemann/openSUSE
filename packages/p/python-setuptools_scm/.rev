@@ -303,4 +303,12 @@
     <comment></comment>
     <requestid>1086175</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>8fd86b3359b791a0dc44f4060171e9aa</srcmd5>
+    <version>7.1.0</version>
+    <time>1694019344</time>
+    <user>anag+factory</user>
+    <comment>- add setuptools-68.patch to fix tests with newer setuptools</comment>
+    <requestid>1108959</requestid>
+  </revision>
 </revisionlist>
