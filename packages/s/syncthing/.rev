@@ -1335,4 +1335,23 @@
 </comment>
     <requestid>1103112</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>ce87c22d3c6bb63a9c7b95ab78184bdd</srcmd5>
+    <version>1.24.0</version>
+    <time>1694019424</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.24.0
+  * Bugfixes:
+    #8965: v1.23.6 introduces untrusted sharing regression
+  * Enhancements:
+    #5175: Record more performance metrics
+    #7456: Announce IPv6 ULA
+    #7973: Restore versions file filter should be case insensitive
+    #8767: Check interface for FlagRunning
+  * Other issues:
+    #9021: panic: bug: ClusterConfig called on closed or nonexistent connection
+    #9034: Build with Go 1.21 out of the box
+</comment>
+    <requestid>1109018</requestid>
+  </revision>
 </revisionlist>

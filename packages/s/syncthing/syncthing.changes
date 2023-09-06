@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep  5 08:26:30 UTC 2023 - Martchus <martchus@gmx.net>
+
+- Update to 1.24.0
+  * Bugfixes:
+    #8965: v1.23.6 introduces untrusted sharing regression
+  * Enhancements:
+    #5175: Record more performance metrics
+    #7456: Announce IPv6 ULA
+    #7973: Restore versions file filter should be case insensitive
+    #8767: Check interface for FlagRunning
+  * Other issues:
+    #9021: panic: bug: ClusterConfig called on closed or nonexistent connection
+    #9034: Build with Go 1.21 out of the box
+
+-------------------------------------------------------------------
 Wed Aug  9 09:35:27 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.13.7
