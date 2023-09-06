@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Sep 05 15:52:59 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.1:
+  * add skupper
+
+-------------------------------------------------------------------
+Tue Sep 05 15:51:44 UTC 2023 - kastl@b1-systems.de
+
+- BuildRequire go1.20
+- Update to version 0.10.0:
+  * Fix viddy failing app
+  * Ignore gofmt errors from vendor folder
+  * Update vendor
+  * Update Go dependencies
+  * Build with Go 1.20
+
+-------------------------------------------------------------------
+Tue Sep 05 15:45:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.27:
+  * Add note on actuated
+  * add vhs to arkade get
+  * Uncommenting kubestr as issue #160 is resolved due to binaries
+    becoming available once more
+  * Bump golang.org/x/crypto from 0.10.0 to 0.11.0
+  * Corrected to reflect the new url for the atuin project
+
+-------------------------------------------------------------------
 Tue Aug 01 13:03:34 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.9.26:
