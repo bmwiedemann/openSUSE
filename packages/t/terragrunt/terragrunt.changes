@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Wed Sep 06 07:42:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.13:
+  * Module path checking improvements (#2700)
+
+-------------------------------------------------------------------
+Wed Sep 06 07:35:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.12:
+  * Updated setting of fetch depednency flag (#2699)
+
+-------------------------------------------------------------------
+Wed Sep 06 07:30:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.11:
+  * feat: disable terraform command validation (#2697)
+  * Prevent `init` command from parallel running if plugin cache is
+    used (#2698)
+
+-------------------------------------------------------------------
+Wed Sep 06 07:15:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.10:
+  * GCS remote state configuration prefix (#2695)
+  * Move shared libraries to go-commons repository (#2688)
+
+-------------------------------------------------------------------
+Wed Sep 06 07:11:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.9:
+  * Improved handling of errors from AWS API (#2684)
+
+-------------------------------------------------------------------
+Wed Sep 06 06:30:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.8:
+  * TFLint configuration loading from hook parameters (#2683)
+
+-------------------------------------------------------------------
+Wed Sep 06 06:29:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.7:
+  * fix: terraform console command in non-interactive mode (#2686)
+
+-------------------------------------------------------------------
+Wed Sep 06 06:21:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.6:
+  * Google Cloud impersonate fixes (#2679)
+
+-------------------------------------------------------------------
+Wed Sep 06 06:10:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.5:
+  * Add terraform command validation (#2676)
+
+-------------------------------------------------------------------
+Wed Sep 06 06:09:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.4:
+  * Null vars file cleanup (#2672)
+
+-------------------------------------------------------------------
+Wed Sep 06 06:02:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.3:
+  * Logrus dependency update (#2665)
+
+-------------------------------------------------------------------
+Wed Sep 06 05:45:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.2:
+  * fix: "null" values in json for aws policy (#2667)
+
+-------------------------------------------------------------------
+Wed Sep 06 05:41:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.1:
+  * Prevent parsing of excluded modules (#2664)
+
+-------------------------------------------------------------------
+Wed Sep 06 05:37:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.50.0:
+  * Pass null values in Terraform inputs (#2663)
+
+-------------------------------------------------------------------
+Wed Sep 06 05:34:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.49.1:
+  * Update CircleCI config to sign MacOS binaries (#2661)
+
+-------------------------------------------------------------------
+Wed Sep 06 05:32:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.49.0:
+  * TFLint variables and arguments (#2645)
+
+-------------------------------------------------------------------
+Wed Sep 06 05:23:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.48.7:
+  * Refactoring cli related code (#2608)
+
+-------------------------------------------------------------------
 Thu Aug 03 17:44:19 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.48.6:
