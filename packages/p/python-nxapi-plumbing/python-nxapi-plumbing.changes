@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  5 06:44:12 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-future-requirement.patch, drops requirement on future.
+- Switch to pyproject and autosetup macro.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed Oct  2 12:07:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use %license macro

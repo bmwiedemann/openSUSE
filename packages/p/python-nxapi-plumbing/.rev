@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>734580</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d305065f07b31708917083f238a56561</srcmd5>
+    <version>0.5.2</version>
+    <time>1694019412</time>
+    <user>anag+factory</user>
+    <comment>- Add patch remove-future-requirement.patch, drops requirement on future.
+- Switch to pyproject and autosetup macro.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1108985</requestid>
+  </revision>
 </revisionlist>

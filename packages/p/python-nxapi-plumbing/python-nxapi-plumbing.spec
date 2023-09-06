@@ -1,7 +1,7 @@
 #
 # spec file for package python-nxapi-plumbing
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-nxapi-plumbing
 Version:        0.5.2
 Release:        0
@@ -25,10 +24,12 @@ License:        Apache-2.0
 URL:            https://github.com/ktbyers/nxapi-plumbing
 Source:         https://github.com/ktbyers/nxapi-plumbing/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         python-nxapi-plumbing-fix-broken-test.patch
+Patch1:         remove-future-requirement.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-future
 Requires:       python-lxml
 Requires:       python-requests >= 2.7.0
 Requires:       python-scp
@@ -36,7 +37,6 @@ Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.7.0}
@@ -49,15 +49,14 @@ BuildRequires:  %{python_module six}
 A low-level library for managing Cisco devices through NX-API using JSON-RPC and XML.
 
 %prep
-%setup -q -n nxapi-plumbing-%{version}
-%patch0 -p1
+%autosetup -p1 -n nxapi-plumbing-%{version}
 sed -i 's/\r$//' README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,6 +65,7 @@ sed -i 's/\r$//' README.md
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/nxapi_plumbing
+%{python_sitelib}/nxapi_plumbing-%{version}.dist-info
 
 %changelog
