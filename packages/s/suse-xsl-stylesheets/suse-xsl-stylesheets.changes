@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 28 10:06:42 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.92.6
+
+- Update 2.92.6
+  Fix SUSE header to avoid issues with new+old header code #571
+
+-------------------------------------------------------------------
 Tue Aug 15 14:10:43 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.92.5
 
 - Update 2.92.5
