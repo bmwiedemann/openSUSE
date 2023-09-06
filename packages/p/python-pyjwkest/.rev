@@ -29,4 +29,13 @@
     <comment></comment>
     <requestid>937350</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f7ef4422cf54d00f5d5973ced71d7124</srcmd5>
+    <version>1.4.2</version>
+    <time>1694019398</time>
+    <user>anag+factory</user>
+    <comment>- Add patch remove-future-requirement.patch, drop future requirement
+- Switch to pyproject macros</comment>
+    <requestid>1108963</requestid>
+  </revision>
 </revisionlist>

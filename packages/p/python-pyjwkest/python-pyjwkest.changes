@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  5 01:24:06 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-future-requirement.patch, drop future requirement
+- Switch to pyproject macros
+
+-------------------------------------------------------------------
 Wed Dec  8 11:22:56 UTC 2021 - pgajdos@suse.com
 
 - do not require pytest-runner for build
