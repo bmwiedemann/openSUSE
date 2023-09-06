@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep  6 07:13:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.23.1:
+  _Maintenance only, no bug fixes, or new features_
+  * Development
+    - Automated typo fixes from [typos-cli]:
+      ```console
+      typos --format brief --write-changes
+      ```
+      [typos-cli]: https://github.com/crate-ci/typos
+    - ruff's linter for code comments, `ERA` (eradicate), has been
+      removed
+
+-------------------------------------------------------------------
+Wed Sep  6 07:12:15 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.23.0:
+  _This maintenance release covers only developer quality of life
+  improvements, no bug fixes or new features_
+  * Maintenance
+    - Stricter code quality rules (via ruff) by @tony in
+      https://github.com/tmux-python/libtmux/pull/488
+
+-------------------------------------------------------------------
+Wed Sep  6 07:10:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.22.2:
+  _Maintenance only, no bug fixes or features for this release_
+  * Build system
+    - ci: Remove setuptools requirement for build-system in
+      https://github.com/tmux-python/libtmux/pull/495
+
+-------------------------------------------------------------------
 Mon May 29 17:53:51 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.22.1:
