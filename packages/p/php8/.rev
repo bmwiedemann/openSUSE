@@ -582,4 +582,12 @@
   * https://www.php.net/ChangeLog-8.php#8.2.10</comment>
     <requestid>1108385</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>398602e42962a95f06068a5b7013b7ef</srcmd5>
+    <version>8.2.10</version>
+    <time>1694019339</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108884</requestid>
+  </revision>
 </revisionlist>

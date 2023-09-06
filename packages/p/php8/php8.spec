@@ -1070,7 +1070,7 @@ Build()
            -e 's/\(^EXTRA_LIBS =.*\)/\1 -lasan/' \
            Makefile
 %endif
-    make %{?_smp_mflags}
+    %make_build
 }
 
 %if "%{flavor}" == "apache2"
