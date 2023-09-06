@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  1 18:15:06 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable cython-ised builds: not compatible with Cython 3+.
+- Add python-Mathics-relax-numpy-versions.patch to drop the upper
+  limit on numpy versions.
+
+-------------------------------------------------------------------
 Wed Jul 26 15:24:55 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.0.2:
