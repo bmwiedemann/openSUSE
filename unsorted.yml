@@ -4054,6 +4054,7 @@ unsorted:
   - fmit 
   - fmpp 
   - fmpp-javadoc 
+  - fmt-9-devel 
   - fmt-devel 
   - fnotifystat 
   - fnotifystat-bash-completion 
@@ -4298,6 +4299,10 @@ unsorted:
   - gamin-server 
   - gammaray 
   - gammaray-devel 
+  - gammaray-qt6 
+  - gammaray-qt6-devel 
+  - gammaray-qt6-shared-plugins 
+  - gammaray-shared-plugins 
   - gammastep 
   - gammastep-indicator 
   - gammu 
@@ -9661,6 +9666,7 @@ unsorted:
   - ld10k1 
   - ld10k1-devel 
   - ldacBT-devel 
+  - ldap-proxy 
   - ldap-sdk 
   - ldap-sdk-javadoc 
   - ldap-yp-tools 
@@ -10644,18 +10650,18 @@ unsorted:
   - libargon2-1-32bit 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute31 
-  - libarm_compute_core31 
-  - libarm_compute_graph31 
+  - libarm_compute32 
+  - libarm_compute_core32 
+  - libarm_compute_graph32 
   - libarmadillo12 
-  - libarmnn32 
-  - libarmnn32-opencl 
-  - libarmnnBasePipeServer32 
-  - libarmnnBasePipeServer32-opencl 
-  - libarmnnSerializer32 
-  - libarmnnSerializer32-opencl 
-  - libarmnnTestUtils2 
-  - libarmnnTestUtils2-opencl 
+  - libarmnn33 
+  - libarmnn33-opencl 
+  - libarmnnBasePipeServer33 
+  - libarmnnBasePipeServer33-opencl 
+  - libarmnnSerializer33 
+  - libarmnnSerializer33-opencl 
+  - libarmnnTestUtils3 
+  - libarmnnTestUtils3-opencl 
   - libarmnnTfLiteParser24 
   - libarmnnTfLiteParser24-opencl 
   - libarpack2 
@@ -11971,6 +11977,10 @@ unsorted:
   - libgaminggear0 
   - libgaminggearfx0 
   - libgaminggearwidget0 
+  - libgammaray-3_0_0 
+  - libgammaray-qt6-3_0_0 
+  - libgammaray-shared-3_0_0 
+  - libgammaray-shared-qt6-3_0_0 
   - libganesha_nfsd-devel 
   - libganesha_nfsd3_3 
   - libgarcon-branding-upstream 
@@ -15148,10 +15158,10 @@ unsorted:
   - libtiff-devel 
   - libtiff-devel-32bit 
   - libtiff6-32bit 
-  - libtimelineDecoder32 
-  - libtimelineDecoder32-opencl 
-  - libtimelineDecoderJson32 
-  - libtimelineDecoderJson32-opencl 
+  - libtimelineDecoder33 
+  - libtimelineDecoder33-opencl 
+  - libtimelineDecoderJson33 
+  - libtimelineDecoderJson33-opencl 
   - libtimezonemap1 
   - libtimidity-devel 
   - libtimidity2 
@@ -16932,8 +16942,6 @@ unsorted:
   - maven-plugin-annotations 
   - maven-plugin-build-helper 
   - maven-plugin-build-helper-javadoc 
-  - maven-plugin-bundle 
-  - maven-plugin-bundle-javadoc 
   - maven-plugin-descriptor 
   - maven-plugin-plugin 
   - maven-plugin-plugin-bootstrap 
@@ -17025,8 +17033,6 @@ unsorted:
   - maven-wagon-ssh 
   - maven-wagon-ssh-common 
   - maven-wagon-ssh-external 
-  - maven-war-plugin 
-  - maven-war-plugin-javadoc 
   - maven2-javadoc 
   - mawk 
   - maxima 
@@ -20813,6 +20819,7 @@ unsorted:
   - perl-Net-AMQP-RabbitMQ 
   - perl-Net-CIDR 
   - perl-Net-CIDR-Set 
+  - perl-Net-DNS-Native 
   - perl-Net-DNS-Resolver-Mock 
   - perl-Net-DNS-Resolver-Programmable 
   - perl-Net-Daemon 
@@ -34647,6 +34654,7 @@ unsorted:
   - siproxd-doc 
   - sipsak 
   - siril 
+  - sirilic 
   - sirocco-devel 
   - sisctrl 
   - sispmctl 
