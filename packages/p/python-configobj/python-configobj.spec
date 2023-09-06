@@ -26,9 +26,11 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/DiffSK/configobj
 Source:         https://files.pythonhosted.org/packages/source/c/configobj/configobj-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/DiffSK/configobj/pull/236 Address CVE-2023-26112 ReDoS
+Patch0:         CVE-2023-26112.patch
 # PATCH-FIX-UPSTREAM remove_six.patch gh#DiffSK/configobj#239 mcepl@suse.com
 # We don't need six anymore
-Patch0:         remove_six.patch
+Patch1:         remove_six.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

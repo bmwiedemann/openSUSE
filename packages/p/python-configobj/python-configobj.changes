@@ -5,6 +5,11 @@ Wed Jul  5 07:29:38 UTC 2023 - Matej Cepl <mcepl@suse.com>
   need for six.
 
 -------------------------------------------------------------------
+Tue Jul  4 10:51:42 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add CVE-2023-26112.patch (bsc#1210070)
+
+-------------------------------------------------------------------
 Thu May  4 18:56:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.8:
