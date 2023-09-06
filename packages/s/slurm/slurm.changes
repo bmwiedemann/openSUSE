@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug 21 09:43:08 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- updated to 23.02.04 which includes following changes: 
+  * fixing the main scheduler loop not starting on the backup controller after
+    a failover event, a segfault when attempting to use
+  * AccountingStorageExternalHost, and an issue where steps could continue
+    running indefinitely if the slurmctld takes too long to respond (bsc#1214983)
+  * include a fix for a potential slurmctld crashes when the backup slurmctld
+    takes over.
+  * This also fixes some issues when using older versions of the command line
+    tools with a 23.02 controller.
+  * srun/sbatch/salloc - In order to support user namespaces, process user and
+    group ids are no longer used unless explicitly requested as an argument and
+    are left as nobody(99) by default. Any cli_filters or SPANK plugins need to
+    ignore any uid or gid that equal SLURM_AUTH_NOBODY (99). User and group ids
+    are now resolved by the active auth plugin. To determine the actual job uid
+    or gid you should use the RESPONSE_RESOURCE_ALLOCATION RPC.
+- removed Fix-test-3.13.patch as fixed upstream
+- removed Fix-test-38.11.patch as test changed upstream
+
+-------------------------------------------------------------------
 Tue May  9 09:28:23 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - updated to 23.02.02 which includes a number of fixes to Slurm stability
