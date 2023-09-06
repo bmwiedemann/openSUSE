@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Wed Sep  6 11:56:23 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.15.7:
+  * fix: the path to the "About" dialog box icon
+  * Menu refactoring
+  * add icons in menu
+  * add platesolve
+  * add request object coords in simbad
+  * add 'find text' and 'goto line' to the script editor
+
+-------------------------------------------------------------------
+Fri Jul 28 05:40:14 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.15.3:
+  * fix drizzle in duoband (Ha/O3)
+  * add a internal script editor
+
+-------------------------------------------------------------------
+Mon Jun  5 08:04:45 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.15.2:
+  * add an button : 'Edit/Run'
+  * fix: option findstar
+  * fix: stop siril processing
+
+-------------------------------------------------------------------
+Tue Mar 14 09:22:28 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.15.0:
+  * add new options for preprocessing
+  * add new options for registring
+  * add new options for stacking
+  * add new options for subsky
+  * add new fonction ( seqapplyreg )
+  * add L/RGB compositing
+  * add a dialog box to load files according to a pattern
+  * improvement of the properties tab
+  * fix a bug in multi-session ( issue #25 )
+  * fix a bug '2pass' ( issue #24 )
+
+-------------------------------------------------------------------
+Thu Mar 24 06:58:04 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.14.3:
+  * GUI refactoring
+
+-------------------------------------------------------------------
+Tue Jan 11 07:05:42 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.14.2:
+  * fix 'norot' register option (no prefix)
+  * fix register options with multi-session
+  * add register options: -transf, -norot, -minpairs
+  * stop the script if there is an empty session
+  * add the synthetic bias
+  * delete 'hcompress' option for the compression
+
+-------------------------------------------------------------------
+Thu Nov  4 06:31:17 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.13.11:
+  * fix size spinCtrlDouble
+  * update GUI
+  * add scroll bars for low res screens
+  * add MAD rejection
+
+-------------------------------------------------------------------
+Mon Jun 21 14:54:39 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.13.10:
+  * fix Issue #13: no debayer with cosme in  Ha or HaO3  filter (DLSR)
+  * fix range for "generalized" and "percentile" rejection
+  * add ExtractGreen
+  * add option "weighted"
+  * add option "rejection type"
+  * add option "identical parameters for all layers"
+  * add a 'Siril' button in the log tab
+  * delete flip option
+  * fix namepath with a simple quote
+  * fix remove_file() with symbolic link on linux when the source file is deleted
+  * Correction of the log display when no image is selected 
+
+-------------------------------------------------------------------
+Thu Apr  8 11:46:29 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.13.6:
+  * fix remove_file() with symbolic link
+  * add linear_match to Duo Band (HaO3)
+  * fix project history
+  * fix GetHDU() with compressed FITS
+  * Change label CCD => OSC/CCD
+  * fix DuoBand HaO3  with subsky option
+  * add an abort when the sequence contains an image only
+  * fix objectname with space
+  * fix the reading of the FITS file header (bitpix < 0 if float32)
+  * fix remove_file()
+
+-------------------------------------------------------------------
+Tue Mar  2 15:34:06 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.13.1:
+  * refactoring for siril 0.99.8
+  * add fix fujiX
+  * add processing summary
+  * add search field in the log tab
+  * add subsky sequence
+  * add single-multi fit / ser mode
+  * add ser processing
+  * optimisation code
+  * generic script without absolute path
+  * fix Sirilic Step by Step (debug)
+  * fix reverse project
+
+-------------------------------------------------------------------
+Mon Nov 23 20:06:23 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- First release in OBS, v1.12.8 
