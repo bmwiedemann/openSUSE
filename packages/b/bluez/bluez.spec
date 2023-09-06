@@ -35,7 +35,7 @@
 %endif
 
 Name:           bluez
-Version:        5.68
+Version:        5.69
 Release:        0
 Summary:        Bluetooth Stack for Linux
 License:        GPL-2.0-or-later
@@ -411,6 +411,9 @@ done
 %{_mandir}/man1/hid2hci.1%{?ext_man}
 %{_mandir}/man1/l2ping.1%{?ext_man}
 %{_mandir}/man1/rctest.1%{?ext_man}
+%{_mandir}/man1/bluetoothctl-mgmt.1%{?ext_man}
+%{_mandir}/man1/bluetoothctl-monitor.1%{?ext_man}
+%{_mandir}/man1/btmgmt.1%{?ext_man}
 %{_datadir}/dbus-1/system.d/bluetooth.conf
 # not packaged, boo#1151518
 ###%%{_datadir}/dbus-1/system.d/bluetooth-mesh.conf

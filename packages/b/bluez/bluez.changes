@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 29 05:37:54 UTC 2023 - Timo Jyrinki <tjyrinki@suse.com>
+
+- update to 5.69
+  * Fix issue with BAP enabling state correctly when resuming.
+  * Fix issue with detaching source ASEs only after Stop Ready.
+  * Fix issue with handling VCP audio location and descriptor.
+  * Fix issue with generating IRK for adapter with privacy enabled.
+  * Add support for BAP broadcast sink.
+- Add three new man pages
+
+-------------------------------------------------------------------
 Sat Aug 19 13:42:08 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %_firmwaredir
