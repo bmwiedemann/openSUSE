@@ -16,27 +16,24 @@
 #
 
 
-%if 0%{?suse_version} <= 1500
-%if 0%{?sle_version} >= 150400
-%define _pyn 310
-%define _pyd 3.10
-%else
-%define _pyn 39
-%define _pyd 3.9
-%endif
-%else
 %define _pyn 3
 %define _pyd 3
+%if 0%{?sle_version} == 150500 || 0%{?sle_version} == 150600
+%define _pyn 311
+%define _pyd 3.11
+%endif
+%if 0%{?sle_version} == 150400
+%define _pyn 310
+%define _pyd 3.10
 %endif
 
 Name:           android-tools
-Version:        34.0.1
+Version:        34.0.4
 Release:        0
 Summary:        Android platform tools
 License:        Apache-2.0 AND MIT
 URL:            https://developer.android.com/studio/releases/platform-tools
 Source0:        https://github.com/nmeum/android-tools/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        vendor.tar.gz
 Source2:        man-pages.tar.gz
 # PATCH-FIX-OPENSUSE fix-install-completion.patch boo#1185883 munix9@googlemail.com -- Simplify completion
 Patch0:         fix-install-completion.patch
@@ -55,10 +52,9 @@ BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libunwind-generic)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libzstd)
-BuildRequires:  pkgconfig(protobuf) < 22.5
+BuildRequires:  pkgconfig(protobuf)
 Requires:       android-udev-rules
 Requires:       f2fs-tools
-Requires:       python%{_pyn}
 Suggests:       %{name}-mkbootimg = %{version}
 Suggests:       %{name}-partition = %{version}
 Provides:       %{name}-python3 = %{version}-%{release}
@@ -75,7 +71,6 @@ It includes tools that interface with the Android platform.
 %package mkbootimg
 Summary:        Android boot.img manipulation tools
 Requires:       %{name} = %{version}
-Requires:       python%{_pyn}
 BuildArch:      noarch
 
 %description mkbootimg
@@ -100,7 +95,6 @@ Bash command line completion support for android-tools.
 
 %prep
 %autosetup -a2 -p1
-tar -xf %{SOURCE1} -C vendor/boringssl
 
 # fix env-script-interpreter
 sed -e '1s|^#!.*|#!/usr/bin/python%{_pyd}|' -i vendor/avb/avbtool.py \
@@ -110,7 +104,7 @@ sed -e '1s|^#!.*|#!/usr/bin/python%{_pyd}|' -i vendor/avb/avbtool.py \
 
 %build
 %define __builder ninja
-export GOFLAGS="-mod=vendor -buildmode=pie -trimpath -ldflags=-buildid="
+export GOFLAGS="-buildmode=pie -trimpath -ldflags=-buildid="
 
 %cmake \
 	-DBUILD_SHARED_LIBS=OFF		\
