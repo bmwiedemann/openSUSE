@@ -17,7 +17,7 @@
 
 
 Name:           logwatch
-Version:        7.8
+Version:        7.9
 Release:        0
 Summary:        Tool to analyze and report on system logs
 License:        MIT
@@ -121,6 +121,7 @@ rm -f   %{buildroot}%{_sysconfdir}/cron.daily/logwatch \
 
 install -D -m 644 scheduler/logwatch.service %{buildroot}%{_unitdir}/logwatch.service
 install -D -m 644 scheduler/logwatch.timer %{buildroot}%{_unitdir}/logwatch.timer
+install -D -m 644 scheduler/systemd.conf %{buildroot}%{_datadir}/logwatch/default.conf/systemd.conf
 install -D -m 644 Logwatch_Setup_Files/logwatch_dmeventd.service %{buildroot}%{_unitdir}/logwatch_dmeventd.service
 install -D -m 644 Logwatch_Setup_Files/logwatch_dmeventd.timer %{buildroot}%{_unitdir}/logwatch_dmeventd.timer
 install -m 0755 -d %{buildroot}%{_sbindir}
@@ -129,6 +130,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rclogwatch_dmeventd
 ln -s %{_datadir}/logwatch/scripts/logwatch.pl %{buildroot}%{_sbindir}/logwatch
 echo "###### REGULAR EXPRESSIONS IN THIS FILE WILL BE TRIMMED FROM REPORT OUTPUT #####" > %{buildroot}%{_sysconfdir}/logwatch/conf/ignore.conf
 echo "# Local configuration options go here (defaults are in %{_datadir}/logwatch/default.conf/logwatch.conf)" > %{buildroot}%{_sysconfdir}/logwatch/conf/logwatch.conf
+echo "# Local configuration options go here (defaults are in %{_datadir}/logwatch/default.conf/systemd.conf)" > %{buildroot}%{_sysconfdir}/logwatch/conf/systemd.conf
 echo "# Configuration overrides for specific logfiles/services may be placed here." > %{buildroot}%{_sysconfdir}/logwatch/conf/override.conf
 #
 

@@ -2,6 +2,282 @@
 control logs (e.g. 'git log --oneline v1..v2'), as the Logwatch project does
 not release a change log themselves. ***
 
+==== 7.9 ====
+9393486 [rpm] corrected dates in specfile changelog, not released
+c3df994 [logwatch.spec,logwatch.pl] Preparing 7.9 release.
+59b947b [dovecot] Disconnects may occur because of inactivity, but other reason still logged and displayed.
+b5a183e [postfix] Removed extra parenthesis.
+a1fd923 [zz-sys] Better printing and syntax.
+850be85 [zz-sys] No longer using obsolete Sys::CPU and Sys::MemInfo Perl modules. Reported by Jitka Plesnikova.
+9362481 [postfix] Added detection of enhanced SMTP status for SPF Fail. Reported by Anotnio Querubin.
+f23081b Merge branch 'master' of ssh://git.code.sf.net/p/logwatch/git
+7b5c2eb [named] Handle policy zone changed messages
+8dcdbe4 [kernel] Handle cpu clock throttled messages
+e927bc6 [lvm] Ignore some pvscan informational messages
+0dc6b1f [named] Handle rewrite messages
+a6d553b [dovecot] Added logging of failed authentications, by Reio Remma.
+79d6013 [snort] Added files for snort (network intrusion detection), by Darold Gilles.
+3083b74 [sendmail] Better handling of "Unmatched entries" and TLS errors.
+dbd3675 [logwatch.pl] Corrected delineation of "To:" headers, by submitter Mr. Lazy.
+554af3b [sudo] Handle entries with TSID; Handle parse error messages
+3661a13 [evtmswindows] More de-duplication; ignore some routine messages
+7e64fdf [evtapplication] More de-duplication; Ignore openvpnserv "The operation completed successfully."
+7790402 [fail2ban] Add option to ignore latency warnings
+fa2f60b Do new report for DNS format errors
+557c355 Update to fix Redhat BZ2192995
+f79b300 [nut] Ignore "wall: cannot get tty name: Inappropriate ioctl for device"
+59fadad [nut] Handle Instant command messages
+12aba8e [kernel] Report megaraid_sas CRIT messages
+
+==== 7.8 ====
+87eff61 Logwatch 7.8-3 update for linux noarch version
+14186cc fix typo in specfile, take 2
+0db0810 fix typo
+3bd9d75 fix RPM specfile
+c841f03 fix RPM specfile
+34fd821 [logwatch.spec,logwatch.pl] Preparing 7.8 release.
+ecdfa52 [syslog-ng] Ignore "Configuration reload finished;" since we already process initial message; Suppress Starts/Stops/Reloads if Detail == 0
+fdccdf3 Better handling of spaces in DNSSEC errors
+220affa Handle missing cookie messages
+9a61853 [sudo] Cleanup and ignore more pam messages
+e814db8 [system] Relax "has no hold-off time.*, scheduling restart" regex
+89876ef Ignore adb growth messages as informational
+ee803dc Ignore messages about an inactive service
+cc78b40 Allow multiple spaces when matching views
+31287e7 Updated to match older systemd
+70ac84f Merge with recent updates
+d7cc3c1 Merge branch 'master' of ssh://git.code.sf.net/p/logwatch/git
+84657e7 Handle bad cookies and new errors in latest named
+0c8f9a7 Catch a few new errors from systemd
+05f57e3 Catch a few new error from systemd
+fab9ad0 Ignore OpenSSL initialisation message
+e29f625 [dropbear] Initial version
+a9f41ca [evtsystem] De-dupe via rounded human readable byte counts
+67e13c6 [evtsecurity] More de-duplication
+4ff9137 [systemd] sssd users @ in usernames
+590e54d [nut] Handle 2.8.0 messages, new service names; Fix handling of current communication state
+be3eb25 [nut] Ignore "upsd: Running as foreground process, not saving a PID file"
+e7ea1a3 [system] Ignore "bpf-lsm: LSM BPF program attached"
+5a3e737 [system] Relax regex for "Arbitrary Executable File Formats File System Automount Point"
+ab74b31 [systemd] Move Skipped before Failed to catch "was skipped because all trigger condition checks failed." messages
+6bd137d Updated for multiline key exchange errors
+0dc010f Process MaxStartups messages as requested by Joe Horn
+ef69221 [kernel] Correct filter on killed process, by Artur Jaroschek
+9fff4bd [extreme-networks] Fixed incorrect syntax on 'use' statement, by Bryce Harrington
+7790708 Merge branch 'master' of ssh://git.code.sf.net/p/logwatch/git
+6932a22 [postfix] Additional filtering, by Vladimir Elisseev.
+4cc503d [syslog-ng] add XML support
+377722f [logwatch.pl] Add basic support for XML, services are free to define their own schema.
+48b7736 [syslog-ng] fixed typo in format string
+3e05c6f [zz-disk_space] Print error messages to STDERR
+1300096 [logwatch.pl and shared] Replace calls to egrep by grep -E, by Andreas Stieger
+7c6c302 Merge branch 'master' of ssh://git.code.sf.net/p/logwatch/git
+d8a261e Update for some message format changes
+e9c8335 Ignore startup messages and handle other minor changes
+c36e4a5 Handle some minor message format changes
+efd9abe Ignore message on informational messages
+0fa0a4d Ignore message on logging shutdown
+7addc60 Merge branch 'master' of ssh://git.code.sf.net/p/logwatch/git
+9cb5863 [fail2ban] Add fail2ban_ignore_flushing option to ignore issues with flushing tracking - needed when fail2ban jail actionflush is set to true to disable it
+5d89705 [fail2ban] Whitespace cleanup
+f18e5c9 [zz-lmsensors] Significant rewrite, by Marius Feraru
+
+==== 7.7 ====
+ec13cea [logwatch.spec,logwatch.pl] Preparing 7.7 release.
+0948a3c [systemd] Improved filtering of CPU time, by Marius Feraru.
+42c132a [dirsrv] Ignore warning that should not be a warning
+8827d6a [pam] sssd on Fedora includes status message when shutting down
+5e97cc5 [pam] Ignore sssd messages leaking in
+4427ab7 [eventlogonlyservice] Fix message; Use ?: in regex pattern
+52d3d25 [clam-update] Add option to ignore when no updates have occurred
+f12c6f1 [clamav] Reset Errors as well
+8aade3e [fail2ban] Only emit banned summary for Detail > 0
+4e31514 [systemd] Add "was skipped because" wording
+605ef78 [logwatch.spec] Add s-nail as a mailer package option, per Reio Remma
+092b228 [smartd] Allowing raw temperature values.
+42f0372 [dovecot,sudo] Allow for undef variables.
+905b365 Merge branch 'master' of ssh://git.code.sf.net/p/logwatch/git
+873958b [journalctl] Updated documentation for LogFile, and allowing for multiple sources,   by Anders Blomdell.
+6ed3155 [systemd] Relax slow start regex for EL7
+c6241c9 [systemd] Ignore "Current command vanished from the unit file, execution of the command list won't be resumed."
+28cc428 [named] Remove port number, for proper IP sorting
+a92f495 [sshd] Removed PotentialIllegalUsers variable, and coalescing under IllegalUsers variable.
+6473fa7 [Logwatch.pm,named,secure] Setting global default to no reverse DNS lookup, and enabled DoLookup call in named and secure.
+358f426 Merge branch 'master' of ssh://git.code.sf.net/p/logwatch/git
+823553a [Logwatch.pm,iptables,named,secure,sshd] Using lexical variable for DoLookup, per Daniel Lewart.
+136aab2 [evtmswindows] Add evtmswindows.conf; Drop unused ignore_profile_program option
+745c7c7 [nut] Add cannot_connect_threshold
+305c866 [pureftpd] Meant to expand the suppressed warning on Noel's patch.
+ca11a60 [dovecot,pureftpd,secure,smartd,sshd] Suppressing warnings, by Noel Butler
+375d9da [logwatch.pl,iptables] Adding sort for configuration printout, and sorting    of iptables by protocol.
+402295c Accommodating delaycompress by adding archive files with '.1' suffix, reported by Daniel Lewart
+
+==== 7.6 ====
+cedf583 [7.6] Updated logwatch.spec and logwatch.pl with new versions
+5787b25 [systemd] Various
+2d896b1 [sudo] Ignore "User info message: Authenticated with cached credentials"
+de333e7 [rsyslog] Handle "messages lost due to rate-limiting"; Make threshold >=; Ignore some write failed messages that match with connection closed
+8dcfb5d [nut] Ignore SSL/Timer messages; Relax connect failed regex
+f3f022c [lvm] Ignore "dmeventd detected break" message from shutdown
+97d009e [cron] Handle PAM ERROR messages
+abfa36d [named] Various fixes
+ecd4726 [lvm] Handle "activating all complete VGs for init"; relax regex for "WARNING: lvmetad is being updated, retrying"
+8333116 [secure] handle su-l pam service with pam_succeed_if
+fbd8323 [nut] Handle "Cannot connect to UPS server", "UPS is unavailable" and self-test passed; Exclude cupsd messages; Ignore more messages
+bde6701 [named] Ignore "dumping all zones, removing journal files: success" from rndc flush; Ignore RRL bins increase message; Only show CCMessages2 (freeze/thaw) with detail
+31a402e [sssd] Handle "Cannot contact any KDC for realm" messages; Add offline_okay option to ignore it
+b0fc3ea [sshd] Handle another variant of "Connection closed by remote host"
+66f3f9e [secure] Ignore more gkr-pam messages
+e35c9cf [rsyslogd] Handle remote closed connection with threshold; Fix variable names in conf file
+6250dc1 [nut] Add NUT UPS script
+1eaea40 [rsyslogd] Handle "cannot connect" messages
+5bf2424 [sssd] Handle multiple domains
+bb1a9c1 Merge branch 'master' of ssh://git.code.sf.net/p/logwatch/git
+9ad3e2e Ignore Sanescan found message this is caught by ClamAV already -mgt
+df65c4f [dovecot] Check existence of hash entry before print.
+78a2b81 [fail2ban] Checking for existence of hash entries before print,    and improved multiline print.
+09cb3d9 Under Centos 6.10 / dovecot-2.0.9-23.el6 imap-login messages missed no session tag. This patch catches that. -mgt
+19bb7ee [pam_unix] Fixed bug resulting from low-priority 'or'.
+18e4270 [dhcpd] Corrected bashism to proper Perl syntax for backreference.
+dcc57aa Correct some extra warning errors -mgt
+2ccbe13 Restored use Logwatch -mgt
+3cdf010 Forgot to restore use Logwatch -mgt
+a6fcae8 Removed my declares from ThisLine loop Added Init String Containers -mgt
+8540454 Removed my declares from ThisLine loop Adde init String Containers -mgt
+9e0f20c Duplicate my for debug and detail -mgt
+f98e701 Removed my delcare from ThisLine loop Added Init String Containers -mgt:wq
+9131f96 Cleaned up many variables in assorted scripts.  Functionality should not have changed.
+0130e1e Added init string containers and some scope cleanup -mgt
+5cb3449 Removed my from line 440 because it was done in the match above it -mgt
+6127ffa Removed my delcares from ThisLine loop Added init strings -mgt
+84a86a5 Remeoved some my declares from ThisLine loop Added some variables to Init Strings -mgt
+65c54ec Removed one instance of my Startups -mgt
+5ef92b2 Removed my from ThisLine loop Added Init String Containers -mgt
+436d4fa Remived my from ThisLine loop Added more entries to existing Init String Container -mgt
+a76271a Removed my inside ThisLine loop Added Init String Containers -mgt
+58418e0 Removed my inside ThisLine loop Added Init String Container -mgt
+dfd82b4 Removed my declares in ThisLine loop Added Init String Containers -mgt
+4b2303a Removed my inside the ThisLine stdin main loop, Added Init String Containers instead passes -w test -mgt
+77fcc46 Added use strict; -mgt
+f364b14 Added use strict Init Strings Hashes and Arrays -mgt
+f3004b3 Added use strict Init Strings and hashes -mgt
+478e2ca Added use strict Init Strings  Hashes -mgt
+7fd09e2 Added use strict and Init Strings and hashes -mgt
+1d59421 Added use strict and Init Strings and Hashes -mgt
+e220a5c Added use strict; Init Strings and Hashes -mgt
+6c84d0d Added use strict init Strings and Hashes -mgt
+d99a0a2 Added use strict; Init Strings Hashes -mgt
+5d92e51 Added use strict; Init Strings and hashes -mgt
+e467208 Added use strict Init Strings  Hashes and Arrays -mgt
+bc6dcac Reenabled Logwatch lib -mgt
+c87877b Added use strict and Init Hashes and Strings -mgt
+0c3b282 Added use strict init hashes -mgt
+780ad64 Added use strict and init strings arrays and hashes -mgt
+1771fd8 Adding 'use script' to scripts/logfiles/*/* files. TBD: I believe some could be converted to applystddate with parametric strings.
+0e29cde Added use strict init counter and hashes -mgt
+2c7eda6 Added use strict init strings and arrays -mgt
+0e57650 Added use strict; Init strings array and hashes -mgt
+ab21eab Added use strict; init hashes and strings -mgt
+6a43eb1 Added use strict; -mgt
+a1cb153 Added use strict Line 172 has $tmpEntry = (); as reset but I can't see why I removed it -mgt
+29b9db1 Added use strict -mgt
+68c6a26 Added use strict and init hashes -mgt
+1bbfb87 Added use strict and init hashes -mgt
+75a8b53 Added use strict nad init hashes -mgt
+d30bdb1 Added use strict; -mgt
+cca6ee6 Added use strict; Init Array and hashes -mgt
+a4d1b12 Added use strict and init hashes -mgt
+1eb7283 Added use strict; -mgt
+4c8c962 erge Bjorn shareed scripts -mgt Merge branch 'master' of ssh://git.code.sf.net/p/logwatch/git
+49e9197 Added use strict; init arrays  hashes and strings -mgt
+cdaa12c Adding 'use strict' to remaining scripts/shared programs
+8855faf Added use strict init strings arrays and hashes -mgt
+1327d75 Added use strict; -mgt
+dfc88ca Added use strict init strings  hashes and array there was a bug with $dfields as array that didn't exist -mgt
+f9fa57c Added use strict init strings and hashes -mgt
+55dc5ae Added use strict and init counters strings and hashes Did some proper scoping on this one -mgt
+9b666cf Added use strict; init hashes and couple of strings -mgt
+aed2737 Added use strict; hashes and string comtainer -mgt
+e1a8cd1 Added use strict; init strings array and hashes Bug with variable $Notices line 225 should have been $Notice -mgt
+a2de701 Added use strict and init strings and hashes -mgt
+612e334 Added use strict and init strings (hash ref) array and hashes -mgt
+82a0987 Added use strict; -mgt
+8122344 Added use strict; and a few inits -mgt
+c1c431c Added use strict; -mgt
+9f18b7f Added use strict init strings and hashes -mgt
+db458d9 Ignore Activating the newly loaded database this is covered already by Database Reload -mgt
+c042b07 Added use strict a few inits -mgt
+fe1cf91 Cleanup on string containers removed lowercase Pid and user Tested script in Alma 8.4 A lot of this service is ancient and modern installs use pam and other service to summarize the secure/authlogs. It could use a good testing and possible cleanup against host logs that do not use pam. -mgt
+8f33498 Added use strict; Init hashes strings Did a fair amount of scope initalization I think there is a big with $ChangedUserName I will test this commit and make more changes as needed -mgt
+9c406a0 Added use string; init strings and hashes -mgt
+d2c5db0 Added use strict; init counters and arrays -mgt
+db29707 Added use strict; init hashes, init array, init string containers -mgt
+4eca6bd Added use strict and init string containers -mgt
+aa37e37 Added use strict; Not sure this service is really needed anymore -mgt
+2ed8827 Added use strict; -mgt
+b8d0073 Added use strict and init hashes and strings. Odd ball onj style hash counter SuccessfulLogin -mgt
+bd100b1 Added use strict and init hashes -mgt
+178abfd Added use strict and Init hashes arrays and strings -mgt
+2250574 Added use strict and init hashes. The %second and %thirdtotals should scoped to the functions if anyone edits this in the future -mgt
+e0476ef Added use strict and init hashes and strings -mgt
+aa7c991 Added use strict -mgt
+b46d170 Added use strict and init hashes and array, a few scoped strings -mgt
+b268a98 Added use strict and my $DebugCounter -mgt
+294e821 Added use strict; -mgt
+5901a87 Added use strict a couple inits pretty simple -mgt
+9d7b264 Added use strict -mgt
+e9e16cd added use strict only change -mgt
+3d69e47 Step 2 all the rest, needs test Note I start doing scope inside the elsif but in the end init'd about half the variable as global, can fixed up in the future is anyone is workng on this one -mgt
+001f151 Step 1 towards use strict on named Init Hash complete -mgt
+82020b0 Added use strict - Line 103 $Cause was bug fixed to $Status -mgt
+0c1f6a5 Added use strict to denyhosts this one was trivial -mgt
+0be0ed4 Added use strict to cron. Test Alma 8.4 Not totally happy with User and Error string useage -mgt
+959acd3 use strict enabled on mailscanner - tested on Alma 8.4 -mgt
+f47508b Step 2 mailscanner init counters and init ThisOne and line -mgt
+c3db606 Initalize hashes step 1 for use  strict -mgt
+e90145f [exim] Additional correction to SelfSignedH, by Daniel Lewart.
+30da30a [sendmail] Handling of unknown hostname for split envelopes
+61341e7 [systemd] Ignore all "Closed" messages
+9e6031e fix https://sourceforge.net/p/logwatch/bugs/99/
+b46107f [Added Restored Bans and Flush Bans to report, as requested by Christophe Perez
+97c94fb [exim] Fix to unitialized $bb, reported by Roland Heymanns. 	Fix to unitialized $SelfSigned, reported by Daniel Lewart.
+816c571 [kernel] Ignore slightly different format audit records
+fd89382 [postfix] Handle some client certificate messages
+f4b28e4 [systemd] Ignore "Sent signal SIGHUP to main process .* on client request" messages
+f6a14e1 Match minor change in systemd
+2fc19db Merge branch 'master' of ssh://git.code.sf.net/p/logwatch/git
+b048086 [sendmail] sendmail-8.17.1 may add a stat=0 to tls features statement.
+6afa677 Merge /u/stone-free/logwatch/ branch fail2ban-regex into master
+372c5b7 Merge /u/bgordon/logwatch/ branch fedora34 into master
+1fe2a92 fix fail2ban regex
+526c64b [sshd] Ignore banner format errors
+3a66775 [sshd] Accept zone in IPv6 addresses
+de8ec57 [pam_unix] Add cinnamon-screensaver
+
+==== 7.5.6 ====
+65a105b [logwatch] Preparing the 7.5.6 release.
+b19a8f3 Minor update to systemd from Glenn
+2f0f6d7 [logwatch.pl] Corrected syntax error.
+2d34929 Adding Encode option for 7bit.  Requested by Don Cohen.
+67fc3de [postfix.conf] Allowing for multiple services.  Reported by Francisco Paletta.
+fe60fe9 [fail2ban] Accounting for restored bans.  Reported by Christophe Perez.
+bd0ee91 [amavis] Allowing for space in LMTP log statement.  Reported by Simon Wilson.
+5314007 Accept sshd patch from Allen J Newton -mgt
+953be00 [systemd] Ignore "Closed REST API socket for" messages
+732f2b4 [zz-disk_space] Added check for existence of directory.
+d2f2a1c [fail2ban] Corrected NoticeList, as reported by Thomas Wilhelmi.
+5d4904c [zz-zfs] Reverting to hard-coded paths for zfs and zpool.  Reported by Marcel Telka.
+d28953b [cron] Fix copy/paste error
+0a7fdef [cron] Ignore CMDEND lines
+97800b8 [omsa] Update non-certified drive regex
+f87a57c [systemd] Ignore more messages; Handle new Deactivated message format
+61d2755 [evtmswindows] General application event logs
+8fd2d31 [evt*] More de-duplication
+4b841e4 [system] Unit entered failed state became a debug message; trigger on" Failed with result"
+9a0423a [dhcpd] Ignore "GSSAPI Authentication for LDAP will not be used"
+f44f342 [pam_unix] Ignore "received for user" messages; handle some messages generically for all services
+8c0f772 [sudo] Allow for missing TTY= with commands
+
 ==== 7.5.5 (2021-01-23) ====
 a8bdb8b [logwatch] Preparing new release 7.5.5
 c3fbbc2 Merge /u/fcrawford/logwatch/ branch frank-lvm into master
