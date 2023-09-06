@@ -18,12 +18,13 @@
 
 %define cpan_name URI
 Name:           perl-URI
-Version:        5.19
+Version:        5.210.0
 Release:        0
+%define cpan_version 5.21
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Uniform Resource Identifiers (absolute and relative)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -34,6 +35,53 @@ BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(parent)
 Requires:       perl(parent)
+Provides:       perl(URI) = 5.210.0
+Provides:       perl(URI::Escape) = 5.210.0
+Provides:       perl(URI::Heuristic) = 5.210.0
+Provides:       perl(URI::IRI) = 5.210.0
+Provides:       perl(URI::QueryParam) = 5.210.0
+Provides:       perl(URI::Split) = 5.210.0
+Provides:       perl(URI::URL) = 5.210.0
+Provides:       perl(URI::WithBase) = 5.210.0
+Provides:       perl(URI::data) = 5.210.0
+Provides:       perl(URI::file) = 5.210.0
+Provides:       perl(URI::file::Base) = 5.210.0
+Provides:       perl(URI::file::FAT) = 5.210.0
+Provides:       perl(URI::file::Mac) = 5.210.0
+Provides:       perl(URI::file::OS2) = 5.210.0
+Provides:       perl(URI::file::QNX) = 5.210.0
+Provides:       perl(URI::file::Unix) = 5.210.0
+Provides:       perl(URI::file::Win32) = 5.210.0
+Provides:       perl(URI::ftp) = 5.210.0
+Provides:       perl(URI::gopher) = 5.210.0
+Provides:       perl(URI::http) = 5.210.0
+Provides:       perl(URI::https) = 5.210.0
+Provides:       perl(URI::icap) = 5.210.0
+Provides:       perl(URI::icaps) = 5.210.0
+Provides:       perl(URI::ldap) = 5.210.0
+Provides:       perl(URI::ldapi) = 5.210.0
+Provides:       perl(URI::ldaps) = 5.210.0
+Provides:       perl(URI::mailto) = 5.210.0
+Provides:       perl(URI::mms) = 5.210.0
+Provides:       perl(URI::news) = 5.210.0
+Provides:       perl(URI::nntp) = 5.210.0
+Provides:       perl(URI::nntps) = 5.210.0
+Provides:       perl(URI::pop) = 5.210.0
+Provides:       perl(URI::rlogin) = 5.210.0
+Provides:       perl(URI::rsync) = 5.210.0
+Provides:       perl(URI::rtsp) = 5.210.0
+Provides:       perl(URI::rtspu) = 5.210.0
+Provides:       perl(URI::sftp) = 5.210.0
+Provides:       perl(URI::sip) = 5.210.0
+Provides:       perl(URI::sips) = 5.210.0
+Provides:       perl(URI::snews) = 5.210.0
+Provides:       perl(URI::ssh) = 5.210.0
+Provides:       perl(URI::telnet) = 5.210.0
+Provides:       perl(URI::tn3270) = 5.210.0
+Provides:       perl(URI::urn) = 5.210.0
+Provides:       perl(URI::urn::isbn) = 5.210.0
+Provides:       perl(URI::urn::oid) = 5.210.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -67,7 +115,7 @@ components. The methods available for a specific 'URI' object depend on the
 scheme.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
