@@ -2642,4 +2642,12 @@
   had %{_distconfdir) not defined yet.</comment>
     <requestid>1102516</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>882051c47aa43d1ac583b433d2e1dc61</srcmd5>
+    <version>2.48.4</version>
+    <time>1694019381</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109061</requestid>
+  </revision>
 </revisionlist>
