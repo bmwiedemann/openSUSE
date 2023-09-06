@@ -12,6 +12,11 @@ Fri Mar  3 08:57:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Added colored svg sprintf text and % appended to selected outputs.
   * Shift operation bugfix.
   * Improved error messaging; additional distribution examples. 
+  * CVE-2021-33390: Use-after-free in thedeletestringbox() (boo#1214501).
+  * CVE-2021-33388: Heap Buffer Overflow in themakevar() (boo#1214502).
+  * CVE-2021-32422: Buffer Overflow in theyylex() (boo#1214503).
+  * CVE-2021-32421: Heap Use-After-Free in thedeletestringbox() (boo#1214504).
+  * CVE-2021-32420: Heap-based Buffer Overflow in thestorestring() (boo#1214505).
 
 -------------------------------------------------------------------
 Mon Aug 17 12:20:14 UTC 2020 - Dirk Mueller <dmueller@suse.com>
