@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep  6 05:57:17 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.25:
+  * Spine should see if script to be executed is executable
+  * Enhance number recognition
+  * When polling devices, sort by larger number of items first
+  * Log format may be corrupted when timeout occurs
+  * Compile warning appears due to GCC flag on RHEL7/RHEL8
+  * Downed device detection only checks one of the two uptime OIDs
+  * Compile error appears due to execinfo.h on FreeBSD
+  * Bootstrap shell script contains some PHP cruft
+  * Padding is not always removed from the start of non-numeric
+    strings
+  * Improve SNMP result handling for non-numeric results
+  * Further improve SNMP result handling for non-numeric results
+  * Remove check for the max_oids column which has been present
+    since Cacti v1.0
+  * Minimize Sorting when fetching poller records for maximum
+    performance
+  * Spine should see if script to be executed is executable
+
+-------------------------------------------------------------------
 Mon Feb 27 22:55:55 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.24:
