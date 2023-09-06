@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  5 16:25:10 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 4.20.0: Updated and added many translations.
+- Rebase broken links patch:
+  * Remove manpages-l10n-4.16.0-fix-links.patch.
+  * Add manpages-l10n-4.20.0-fix-links.patch.
+- Update macros:
+  * Switch from Leap 15.5 to Leap 15.6.
+  * Switch from Fedora 38 to Fedora 39.
+
+-------------------------------------------------------------------
 Thu Jun  1 21:29:16 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 4.19.0: Updated and added many translations.

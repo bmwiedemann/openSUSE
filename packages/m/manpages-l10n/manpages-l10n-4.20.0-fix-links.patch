@@ -3,7 +3,7 @@ From: Antoine Belvire <antoine.belvire@opensuse.org>
 Date: Fri, 25 Nov 2022 00:19:40 +0100
 Subject: [PATCH] Fix openSUSE's links.txt
 
-Fix links.txt of openSUSE Leap 15.5 and Tumbleweed to prevent the following
+Fix links.txt of openSUSE Leap 15.6 and Tumbleweed to prevent the following
 incorrect links to be installed in /usr/share/man/*/man2:
 
 ```
@@ -16,10 +16,10 @@ sigsuspend.2.gz.gz -> sigaction.2.gz
  upstream/opensuse-tumbleweed/links.txt | 4 ++--
  2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/upstream/opensuse-leap-15-5/links.txt b/upstream/opensuse-leap-15-5/links.txt
+diff --git a/upstream/opensuse-leap-15-6/links.txt b/upstream/opensuse-leap-15-6/links.txt
 index 0356f992a3..5345738247 100644
---- a/upstream/opensuse-leap-15-5/links.txt
-+++ b/upstream/opensuse-leap-15-5/links.txt
+--- a/upstream/opensuse-leap-15-6/links.txt
++++ b/upstream/opensuse-leap-15-6/links.txt
 @@ -1111,8 +1111,8 @@ man2/rename.2.gz man2/renameat.2.gz
  man2/sigaction.2.gz man2/rt_sigaction.2.gz
  man2/sigpending.2.gz man2/rt_sigpending.2.gz

@@ -18,15 +18,15 @@
 
 
 Name:           manpages-l10n
-Version:        4.19.0
+Version:        4.20.0
 Release:        0
 Summary:        Translation of man pages
 License:        GPL-3.0-or-later
 URL:            https://manpages-l10n-team.pages.debian.net/manpages-l10n
 Source0:        https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        macros.%{name}
-# PATCH-FIX-UPSTREAM manpages-l10n-4.16.0-fix-links.patch -- Fix incorrect links in man2 (boo#1202798)
-Patch0:         manpages-l10n-4.16.0-fix-links.patch
+# PATCH-FIX-UPSTREAM manpages-l10n-4.20.0-fix-links.patch -- Fix incorrect links in man2 (boo#1202798)
+Patch0:         manpages-l10n-4.20.0-fix-links.patch
 BuildRequires:  po4a
 BuildArch:      noarch
 %{load:%{SOURCE1}}
