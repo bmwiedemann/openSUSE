@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 31 09:28:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.901 (1.1.0~rc1)
+  * ei_device_get_region_at() and its libeis equivalent was added
+    as a helper to obtain a device's region at a given point.
+  * ei_region_get_mapping_id() returns the mapping id previously
+    set by the EIS implementation via
+    eis_region_set_mapping_id(). This mapping id can be used to
+    identify external resources that have a relationship with
+    this region.
+    This is a protocol addition and bumps the ei_device protocol
+    to version 2.
+
+-------------------------------------------------------------------
 Thu Jun  8 13:10:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.0
