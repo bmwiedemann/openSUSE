@@ -255,4 +255,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1108223 from glaubitz)</comment>
     <requestid>1108276</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7bbaa231a558b627ff02a628d9b2b0af</srcmd5>
+    <version>4.0.0b12</version>
+    <time>1694019591</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.0.0b12
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1108937 from glaubitz)</comment>
+    <requestid>1109254</requestid>
+  </revision>
 </revisionlist>
