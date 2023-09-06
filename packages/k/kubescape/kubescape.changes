@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed Sep 06 06:04:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.9.1:
+  * Fix scan command (#1369)
+  * validate sarif format
+  * bump version (#1368)
+  * move context flag to root (#1367)
+  * Error Fixed when downloading on azure cloud vm environment
+    (#720)
+  * Logger fixes (#1362)
+  * Service discovery (#1359)
+  * core(cmd): adding corrections to cmd (#1357)
+  * Beautify install.sh script logs (#1356)
+  * Refactor backend integration (#1355)
+  * fix panic & provide msg (#1353)
+  * Improve cluster scan cli (#1352)
+  * support paths from related resources (#1351)
+  * Improve logs (#1349)
+  * improve cli output (#1347)
+  * fix panic and improve logs (#1344)
+  * fix: icons formatting (#1343)
+  * bump k8s-interface version (#1345)
+  * Support unified configuration (#1304)
+  * Create dependabot.yaml
+
+-------------------------------------------------------------------
+Wed Sep 06 05:45:37 UTC 2023 - kastl@b1-systems.de
+
+- there were no releases betweeen 2.3.9 and 2.9.0
+- Update to version 2.9.0:
+  * feat: migrate fatih/color to gchalk
+  * Update logs (#1340)
+  * feat: add table heading colors (#1321)
+  * use distroless base image (#1338)
+  * feat: improve pretty logger (#1311)
+  * feat: add short table (#1292)
+  * feat: change colors library (#1316)
+  * chore: update docs build.ps1 (#1299)
+  * feat: add unicode table (#1285)
+  * scan per namespace (#1337)
+  * Implementing container image name normalization built-in
+    function for Rego (#1334)
+  * Support scanning scope (#1293)
+  * Hotfix for version 2.3.8 (#1333)
+  * Code refactor (follow up to PR #1300) (#1323)
+  * fix(httphandler): pin breaking anchore dependency
+  * Update PR workflow (#1330)
+  * Update codesee-arch-diagram.yml
+  * Update 00-pr-scanner.yaml
+  * fix submit time
+  * New output (#1320)
+  * Adding pr-agent
+  * Install the CodeSee workflow. Learn more at
+    https://docs.codesee.io
+  * add prints to smoketest
+  * docs(imagescan): provide package-level docs
+  * chore(imagescan): create vuln db with dedicated function
+  * chore(imagescan): add dependencies to httphandler
+  * chore(imagescan): include dependencies
+  * feat(imagescan): add an image scanning command
+  * remove scan workload command
+  * Scanning a single resource (#1300)
+  * reset head (#1306)
+  * bump opa-utils
+  * bump opa-utils, k8s-interface and armoapi-go
+  * fix: negative compliance score
+  * linter correction
+  * review corrections
+  * update armo docs
+  * git recognition for empty directory for test
+  * add error handle when there are no scan to trigger since the
+    directory not contain any relevant scanning files
+  * fix: kubescape list controls
+
+-------------------------------------------------------------------
 Wed Jul 26 04:29:48 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.3.8:
