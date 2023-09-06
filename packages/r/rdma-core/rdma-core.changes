@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 23 11:19:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add missing-quoting.patch
+- Use normal GNU tar option syntax
+- Remove old RPM spec logic (%defattr)
+
+-------------------------------------------------------------------
 Thu Aug  3 15:03:33 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop patches adding support for cxgb3 (EOL, removed from kernel 5.5)

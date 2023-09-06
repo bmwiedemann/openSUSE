@@ -12,7 +12,7 @@ sed -i -e 's/^%define with_static .*$/%define with_static 0/' rdma-core.spec
 bash gen-pandoc.sh || exit 1
 
 EXTRA_SOURCES="Source2:        post_download.sh\nSource3:        prebuilt-pandoc.tgz\nSource4:        rdma-core-rpmlintrc\nSource5:        gen-pandoc.sh\nSource6:        get_build.py"
-PANDOC_SETUP="#Extract prebuilt pandoc file in the buildlib directory\n(cd buildlib && tar xf %{S:3})"
+PANDOC_SETUP="#Extract prebuilt pandoc file in the buildlib directory\n(cd buildlib && tar -xf %{S:3})"
 sed -i -e '/Source1:/a '"$EXTRA_SOURCES" rdma-core.spec
 sed -i -e '/^BuildRequires:  pandoc/d' rdma-core.spec
 sed -i -e '/^BuildRequires:  python3-docutils/d' rdma-core.spec
