@@ -373,6 +373,7 @@ Patch185:       0001-protectors-Implement-NV-index.patch
 Patch186:       0002-cryptodisk-Fallback-to-passphrase.patch
 Patch187:       0003-cryptodisk-wipe-out-the-cached-keys-from-protectors.patch
 Patch188:       0004-diskfilter-look-up-cryptodisk-devices-first.patch
+Patch189:       grub2-mkconfig-riscv64.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
