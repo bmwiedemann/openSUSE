@@ -4695,4 +4695,17 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>1108013</requestid>
   </revision>
+  <revision rev="395" vrev="1">
+    <srcmd5>c69985a933d2317e8fd57ca5cc01a807</srcmd5>
+    <version>116.0.5845.179</version>
+    <time>1694019516</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 116.0.5845.179 (boo#1215023):
+  * CVE-2023-4761: Out of bounds memory access in FedCM
+  * CVE-2023-4762: Type Confusion in V8
+  * CVE-2023-4763: Use after free in Networks
+  * CVE-2023-4764: Incorrect security UI in BFCache
+</comment>
+    <requestid>1109167</requestid>
+  </revision>
 </revisionlist>

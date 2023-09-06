@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep  6 05:08:13 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 116.0.5845.179 (boo#1215023):
+  * CVE-2023-4761: Out of bounds memory access in FedCM
+  * CVE-2023-4762: Type Confusion in V8
+  * CVE-2023-4763: Use after free in Networks
+  * CVE-2023-4764: Incorrect security UI in BFCache
+
+-------------------------------------------------------------------
 Wed Aug 30 00:57:21 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 116.0.5845.140 (boo#1214758):
