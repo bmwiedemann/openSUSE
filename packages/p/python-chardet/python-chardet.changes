@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  4 16:04:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * Adds support for running chardet CLI via `python -m chardet`
+
+-------------------------------------------------------------------
 Fri Apr 21 12:23:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

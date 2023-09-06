@@ -280,4 +280,13 @@
     <comment></comment>
     <requestid>1082056</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0a6868c9155e8abd5c93025931608e8a</srcmd5>
+    <version>5.2.0</version>
+    <time>1694019358</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.2.0:
+  * Adds support for running chardet CLI via `python -m chardet`</comment>
+    <requestid>1108929</requestid>
+  </revision>
 </revisionlist>

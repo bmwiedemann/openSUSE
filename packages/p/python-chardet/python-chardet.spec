@@ -36,7 +36,7 @@
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-chardet%{psuffix}
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        Universal encoding detector
 License:        LGPL-2.1-or-later
