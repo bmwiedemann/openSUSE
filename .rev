@@ -59,4 +59,12 @@
  * distro: use authselect on Red Hat platforms</comment>
     <requestid>1061752</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7fdf9b65a1655e704fd7e89dfb63e768</srcmd5>
+    <version>0.17.1</version>
+    <time>1694019429</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109023</requestid>
+  </revision>
 </revisionlist>
