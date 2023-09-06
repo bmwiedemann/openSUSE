@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 28 13:06:36 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2 (0db2832)
+  * Rename CAL_DEFAULT to MAPI_CAL_DEFAULT
+  * Do not mark meeting requests as read
+  * Add freebusy permission bits to mapidefs
+  * Define MAPIException::setNotificationType()
+
+-------------------------------------------------------------------
 Mon Feb 27 12:17:12 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag 1.1 (70e984f)

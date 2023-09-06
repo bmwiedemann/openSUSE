@@ -1,7 +1,7 @@
 Format: 1.0
 Source: mapi-header-php
 Architecture: any
-Version: 1.1.0.70e984f
+Version: 1.2.0.0db2832
 DEBTRANSFORM-RELEASE: 1
 Maintainer: Grommunio <null@grommunio.com>
 Homepage: https://grommunio.com
