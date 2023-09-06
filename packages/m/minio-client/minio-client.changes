@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Sep 05 14:05:18 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230902T212803Z:
+  * Update to minio/pkg v2 (#4674)
+
+-------------------------------------------------------------------
+Tue Sep 05 13:40:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230830T080226Z:
+  * Change replicate status metrics to show additional info (#4582)
+
+-------------------------------------------------------------------
+Tue Sep 05 13:32:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230829T225506Z:
+  * support all scanner events to be reported for excessive
+    versions (#4672)
+  * Added `mc admin kms key list ALIAS` command (#4663)
+  * update contribution license PR template
+
+-------------------------------------------------------------------
+Tue Sep 05 13:27:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230818T215755Z:
+  * fix: bandwidth displayed in `mc replicate status` (#4664)
+
+-------------------------------------------------------------------
+Tue Sep 05 13:23:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230815T230309Z:
+  * add new PR template license terms and go1.21.x build (#4662)
+  * fix: batch status responsiveness (#4661)
+  * kms-status: Show unknown for decryption when encryption fails
+    (#4659)
+  * mv: Do not error out when a bucket has an object lock config
+    (#4654)
+  * fix license register error in airgap mode (#4653)
+  * feat: support perf client to show `TX` from client to server
+    (#4645)
+
+-------------------------------------------------------------------
+Tue Sep 05 13:17:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230808T172359Z:
+  * fix: provide an option for Prometheus config for node and
+    bucket endpoints (#4652)
+  * update go1.20.7 for vulncheck
+
+-------------------------------------------------------------------
 Sun Aug 06 08:00:30 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230801T233057Z:
