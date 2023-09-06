@@ -1,4 +1,26 @@
 --------------------------------------------------------------------
+Wed Sep 6 09:47:07 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#946
+- improved json parse functions to handle string and integer
+- 4.5.139
+
+--------------------------------------------------------------------
+Mon Sep 4 08:25:46 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#945
+- fixed parsing of lsscsi version for older lsscsi versions
+  (bsc#1214814)
+- 4.5.138
+
+--------------------------------------------------------------------
+Mon Sep 4 07:21:42 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#944
+- add awk to GitHub action for Tumbleweed
+- 4.5.137
+
+--------------------------------------------------------------------
 Tue Aug 8 13:02:14 UTC 2023 - aschnell@suse.com
 
 - Translated using Weblate (Indonesian) (bsc#1149754)
