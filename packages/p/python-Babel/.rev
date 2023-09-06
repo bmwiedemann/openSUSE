@@ -777,4 +777,13 @@
 </comment>
     <requestid>1085498</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>f4a84da16906177dcd37b7fb1ee0f054</srcmd5>
+    <version>2.12.1</version>
+    <time>1694019390</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.1 (bsc#1185768, CVE-2021-42771, bsc#1185768, CVE-2021-20095):
+- obsoletes CVE-2021-42771-rel-path-traversal.patch in older dists</comment>
+    <requestid>1109065</requestid>
+  </revision>
 </revisionlist>
