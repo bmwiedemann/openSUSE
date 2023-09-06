@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  4 13:28:24 UTC 2023 - pgajdos@suse.com
+
+- version update to 0.2.42
+* Fix several compiler warnings.
+* Apply patch to consider ERASE_PAGE flag with single page transmissions.
+
+-------------------------------------------------------------------
 Mon Apr 10 06:57:57 UTC 2023 - Dave Plater <davejplater@gmail.com>
 
 - Set minimum version for gettext
