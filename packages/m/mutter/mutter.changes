@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep  4 14:28:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.4:
+  + Fix xwayland-allow-byte-swapped-clients setting.
+  + Fix restoring focus when leaving the overview.
+  + Fix touch move operations on subsurfaces.
+  + Fix flickering when DRI driver isn't available.
+  + Fix unexpected cursor changes over non-resizable windows.
+  + Fix restoring maximized state of SSD windows.
+  + Fix window focus unexpectedly moving to secondary monitor when
+    changing workspaces.
+  + Fixed crash.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Aug 29 09:50:53 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add mutter-fix-clipped-redraw.patch: Previous refactor forget
