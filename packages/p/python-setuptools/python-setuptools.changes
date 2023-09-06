@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Aug 22 13:02:46 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to 68.1.2
+  * Fix editable install finder handling of nested packages, by only 
+    handling 1 level of nesting and relying on importlib.machinery 
+    to find the remaining modules based on the parent package path. 
+- add sphinx72.patch: address circular imports in sphinx 7.2+
+
+-------------------------------------------------------------------
+Wed Aug 16 07:53:31 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to 68.1.0
+  * Removed code referencing bdist_wininst in install_scripts. 
+  * Promote pyproject.toml’s [tool.setuptools] out of beta.
+  * Automatically add files listed in Extension.depends to sdists, 
+    as long as they are contained in the project directory 
+  * Require Python 3.8 or later.
+  * Use default encoding to create .pth files with editable_wheel.
+  * Detects (and complain about) scripts and gui-scripts set via 
+    setup.py when pyproject.toml does not include them in dynamic.
+
+-------------------------------------------------------------------
+Sun Aug 13 18:25:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 68.0.0:
+  * Removed verification for existing ``depends.txt`` file
+  * Remove autofixing of broken ``.egg-info`` directories
+    containing the ``-`` character in their base name (without suffix).
+  * Remove deprecated APIs in ``easy_install``:
+    ``get_script_args``,
+    ``get_script_header`` and ``get_writer``.
+  * Removed ``egg_info.get_pkg_info_revision`` (deprecated
+  * Removed ``setuptools.dist._get_unpatched`` (deprecated
+  * Removed support for SVN in
+    ``setuptools.package_index`` (deprecated since 2018).
+  * Removed support for invalid ``pyproject.toml`` files.
+  * Added symlink support to launcher for installed
+    executables -- by :user:`eugene-sevostianov-sc`
+  * Updated vendored ``packaging`` version from 23.0 to
+    23.1 -- by :user:`MetRonnie`
+  * Implemented workaround for old versions of
+    ``vswhere``, which miss the
+  * ``-requiresAny`` parameter, such as the ones distributed
+    together with Visual Studio 2017 < 15.6.
+  * Changed ``DistutilsMetaFinder`` to skip
+    ``spec_for_pip`` on Python >= 3.12.
+  * Removed ``_distutils_hack.remove_shim`` on Python >=
+    3.12 (since ``distutils`` was removed from the standard library,
+    ``DistutilsMetaFinder`` cannot be disabled on Python >=
+    3.12).
+  * #3920: Add a link to deprecation warning in ``pkg_resources``
+    and improve ``stacklevel`` for better visibility.
+- drop use-tarfile-extraction_filter.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Jun  7 09:07:45 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 67.8.0:

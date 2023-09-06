@@ -1,8 +1,8 @@
-Index: setuptools-65.5.1/setuptools/_distutils/sysconfig.py
+Index: setuptools-68.0.0/setuptools/_distutils/sysconfig.py
 ===================================================================
---- setuptools-65.5.1.orig/setuptools/_distutils/sysconfig.py
-+++ setuptools-65.5.1/setuptools/_distutils/sysconfig.py
-@@ -238,9 +238,13 @@ def get_python_lib(plat_specific=0, stan
+--- setuptools-68.0.0.orig/setuptools/_distutils/sysconfig.py
++++ setuptools-68.0.0/setuptools/_distutils/sysconfig.py
+@@ -246,9 +246,13 @@ def get_python_lib(plat_specific=0, stan
  
      if os.name == "posix":
          if plat_specific or standard_lib:

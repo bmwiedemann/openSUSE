@@ -1096,4 +1096,41 @@
     <comment></comment>
     <requestid>1091248</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>b104f5db1df12eda763e4023aad513ab</srcmd5>
+    <version>68.1.2</version>
+    <time>1694019343</time>
+    <user>anag+factory</user>
+    <comment>- update to 68.1.2
+  * Fix editable install finder handling of nested packages, by only 
+    handling 1 level of nesting and relying on importlib.machinery 
+    to find the remaining modules based on the parent package path. 
+- add sphinx72.patch: address circular imports in sphinx 7.2+
+
+- update to 68.1.0
+  * Removed code referencing bdist_wininst in install_scripts. 
+  * Promote pyproject.toml’s [tool.setuptools] out of beta.
+  * Automatically add files listed in Extension.depends to sdists, 
+    as long as they are contained in the project directory 
+  * Require Python 3.8 or later.
+  * Use default encoding to create .pth files with editable_wheel.
+  * Detects (and complain about) scripts and gui-scripts set via 
+    setup.py when pyproject.toml does not include them in dynamic.
+
+- update to 68.0.0:
+  * Removed verification for existing ``depends.txt`` file
+  * Remove autofixing of broken ``.egg-info`` directories
+    containing the ``-`` character in their base name (without suffix).
+  * Remove deprecated APIs in ``easy_install``:
+    ``get_script_args``,
+    ``get_script_header`` and ``get_writer``.
+  * Removed ``egg_info.get_pkg_info_revision`` (deprecated
+  * Removed ``setuptools.dist._get_unpatched`` (deprecated
+  * Removed support for SVN in
+    ``setuptools.package_index`` (deprecated since 2018).
+  * Removed support for invalid ``pyproject.toml`` files.
+  * Added symlink support to launcher for installed
+    executables -- by :user:`eugene-sevostianov-sc`</comment>
+    <requestid>1108946</requestid>
+  </revision>
 </revisionlist>

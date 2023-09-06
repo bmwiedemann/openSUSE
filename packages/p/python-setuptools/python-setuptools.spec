@@ -38,7 +38,7 @@
 %define mypython python
 %{?sle15_python_module_pythons}
 Name:           python-setuptools%{psuffix}
-Version:        67.8.0
+Version:        68.1.2
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
@@ -47,8 +47,8 @@ Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setu
 Patch0:         sort-for-reproducibility.patch
 # PATCH-FIX-OPENSUSE fix-get-python-lib-python38.patch bsc#1204395
 Patch2:         fix-get-python-lib-python38.patch
-# PATCH-FIX-UPSTREAM gh#pypa/setuptools#3917
-Patch3:         use-tarfile-extraction_filter.patch
+# PATCH-FIX-UPSTREAM https://github.com/pypa/setuptools/pull/4023 Address circular imports complaints by Sphinx 7.2+
+Patch3:         sphinx72.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -63,6 +63,7 @@ BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module filelock >= 3.4.0}
 BuildRequires:  %{python_module ini2toml-lite >= 0.9}
+BuildRequires:  %{python_module jaraco.develop >= 7.21}
 BuildRequires:  %{python_module jaraco.envs >= 2.2}
 BuildRequires:  %{python_module jaraco.path >= 3.2.0}
 BuildRequires:  %{python_module pip >= 19.1}
@@ -126,7 +127,7 @@ donttest+=" or test_pbr_integration"
 %files %{python_files}
 %if !%{with wheel}
 %license LICENSE
-%doc CHANGES.rst README.rst
+%doc NEWS.rst README.rst
 %{python_sitelib}/setuptools
 %{python_sitelib}/setuptools-%{version}*-info
 %dir %{python_sitelib}/pkg_resources
