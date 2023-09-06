@@ -247,4 +247,16 @@
   * Updated how to test django_rq #204</comment>
     <requestid>1099295</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>52674ffb2831713cf053d6c373789706</srcmd5>
+    <version>2.18.0</version>
+    <time>1694019357</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.18.0:
+  * Implement `PUBSUB NUMPAT` #195, `SSUBSCRIBE` #199, `SPUBLISH`
+    #198, `SUNSUBSCRIBE` #200, `PUBSUB SHARDCHANNELS` #196, `PUBSUB
+    SHARDNUMSUB` #197
+  * Fix All aio.FakeRedis instances share the same server #218</comment>
+    <requestid>1108924</requestid>
+  </revision>
 </revisionlist>
