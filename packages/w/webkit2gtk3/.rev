@@ -1500,4 +1500,12 @@
     <comment></comment>
     <requestid>1108346</requestid>
   </revision>
+  <revision rev="174" vrev="3">
+    <srcmd5>963b3e31b83817fd0ec42f856a24e307</srcmd5>
+    <version>2.40.5</version>
+    <time>1694019326</time>
+    <user>anag+factory</user>
+    <comment>Expand lang sub-packages unconditionally to handle previous name change of WebKit2GTK-lang to WebKitGTK-lang  (boo#1214835, boo#1214640)</comment>
+    <requestid>1108740</requestid>
+  </revision>
 </revisionlist>

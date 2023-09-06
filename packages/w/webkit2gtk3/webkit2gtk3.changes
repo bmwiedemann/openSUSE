@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep  1 19:57:17 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Expand lang sub-package in spec file unconditionally to handle
+  previous name change from WebKit2GTK-lang to WebKitGTK-lang. This
+  change affected the automatic generated Requires tag on
+  WebKit2GTK-%{_apiver}, then getting out of sync of what's being
+  required and what's being provided. Now, any sub-package that was
+  providing WebKit2GTK-%{_apiver} will provide WebKitGTK-%{_apiver}
+  instead (boo#1214835, boo#1214640).
+
+-------------------------------------------------------------------
 Wed Aug  2 18:25:12 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.40.5 (boo#1213905):
