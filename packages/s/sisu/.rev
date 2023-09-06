@@ -31,4 +31,12 @@
     <comment>Rewrite build in order to build before xmvn-tools and avoid build cycles with upcoming changes</comment>
     <requestid>973614</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>a7800150819e67b34dfab51425ce7a58</srcmd5>
+    <version>0.3.5</version>
+    <time>1694019599</time>
+    <user>anag+factory</user>
+    <comment>reproducible index</comment>
+    <requestid>1109043</requestid>
+  </revision>
 </revisionlist>

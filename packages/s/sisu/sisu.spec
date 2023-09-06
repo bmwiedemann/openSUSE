@@ -1,7 +1,7 @@
 #
 # spec file for package sisu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Patch0:         %{name}-OSGi-import-guava.patch
 Patch1:         %{name}-no-dependency-on-glassfish-servlet-api.patch
 Patch2:         %{name}-ignored-tests.patch
 Patch3:         %{name}-osgi-api.patch
+Patch4:         %{name}-reproducible-index.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  cdi-api
@@ -97,6 +98,7 @@ cp %{SOURCE101} sisu-plexus/pom.xml
 %patch1
 %patch2
 %patch3
+%patch4 -p1
 
 %pom_remove_dep :servlet-api sisu-inject
 
