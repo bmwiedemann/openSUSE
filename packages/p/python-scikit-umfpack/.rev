@@ -49,4 +49,18 @@
     <comment></comment>
     <requestid>966736</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>70caa06dceefaa35d8bde939e96cc158</srcmd5>
+    <version>0.3.3</version>
+    <time>1694019603</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.3
+  * use scipy.sparse.linalg function without linsolve namespace
+  * DOC: add citations to README.rst
+- drop merged scikit-umfpack-pr68-scipy-sparse-linalg.patch
+- add numpy125.patch
+- Clean up the SPEC file.
+</comment>
+    <requestid>1109269</requestid>
+  </revision>
 </revisionlist>

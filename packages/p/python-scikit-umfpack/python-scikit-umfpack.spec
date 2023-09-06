@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-umfpack
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-scikit-umfpack
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        Python interface to UMFPACK sparse direct solver
 License:        BSD-3-Clause
 URL:            https://github.com/scikit-umfpack/scikit-umfpack
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-umfpack/scikit-umfpack-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM both patches sent upstream in  https://github.com/scikit-umfpack/scikit-umfpack/pull/87 NumPy 1.25 compatibility fixes
 Patch0:         do-not-use-numpy-decorators.patch
-# PATCH-FIX-UPSTREAM scikit-umfpack-pr68-scipy-sparse-linalg.patch -- gh#scikit-umfpack/scikit-umfpack68
-Patch1:         scikit-umfpack-pr68-scipy-sparse-linalg.patch
+Patch1:         numpy125.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.14.3}
 BuildRequires:  %{python_module scipy >= 1.0.0rc1}

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 31 12:48:22 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.3.3
+  * use scipy.sparse.linalg function without linsolve namespace
+  * DOC: add citations to README.rst
+- drop merged scikit-umfpack-pr68-scipy-sparse-linalg.patch
+- add numpy125.patch
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
 Sat Apr  2 20:13:01 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add scikit-umfpack-pr68-scipy-sparse-linalg.patch
