@@ -36,7 +36,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.34
+Version:        16.0.35
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -224,7 +224,6 @@ exit 0
 %dir /usr/lib/module-init-tools
 /usr/lib/module-init-tools/driver-check.sh
 /usr/lib/module-init-tools/lsinitrd-quick
-/usr/lib/module-init-tools/regenerate-initrd-posttrans
 /usr/lib/module-init-tools/unblacklist
 /usr/lib/module-init-tools/weak-modules2
 %{_unitdir}/*.service
@@ -237,5 +236,6 @@ exit 0
 #
 %files scriptlets
 /usr/lib/module-init-tools/kernel-scriptlets
+/usr/lib/module-init-tools/regenerate-initrd-posttrans
 
 %changelog

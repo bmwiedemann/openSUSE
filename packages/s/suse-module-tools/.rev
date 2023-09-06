@@ -690,4 +690,15 @@ source service setup which messed up my spec file.
   * Fix comment in regenerate-initrd-posttrans (forwarded request 1108485 from mwilck)</comment>
     <requestid>1108486</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>3bf0f87a8845a6807ad8c8354734752f</srcmd5>
+    <version>16.0.35</version>
+    <time>1694019387</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 16.0.35:
+  * split off regenerate-initrd-posttrans in the kernel-scriptlets package
+    (boo#1213459)
+  * wm2: Update for usrmerge (boo#1214428) (forwarded request 1109138 from mwilck)</comment>
+    <requestid>1109139</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  5 19:10:35 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.35:
+
+  * split off regenerate-initrd-posttrans in the kernel-scriptlets package
+    (boo#1213459)
+  * wm2: Update for usrmerge (boo#1214428)
+
+-------------------------------------------------------------------
 Fri Sep  1 15:35:17 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
   * support old-style markers under /run/regenerate-initrd
