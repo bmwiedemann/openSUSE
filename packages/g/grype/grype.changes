@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Sep 05 14:42:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.66.0:
+  * chore(deps): update Syft to v0.89.0 (#1472)
+  * Add registry certificate verification support (#1232)
+  * fix: set correct default to exclude overlapping binaries
+    (#1452)
+  * fix: portage version comparison (#1468)
+  * chore: pin the vulnerability DB used in quality gate testing
+    (#1470)
+  * chore(deps): update Syft to v0.88.0 (#1466)
+  * chore: update quill version (#1465)
+  * docs: fix some typos on main README (#1455)
+  * note supported versions of grype (#1458)
+  * bump vml labels (#1462)
+  * chore(deps): bump github.com/google/uuid from 1.3.0 to 1.3.1
+    (#1453)
+  * chore(deps): update bootstrap tools to latest versions (#1450)
+  * fill out new version notice (#1445)
+  * feat: filter out packages owned by OS packages (#1387)
+  * fix: Only remove packages by binary overlap (#1444)
+  * chore: bump to syft v0.87.1 in quality gate (#1442)
+
+-------------------------------------------------------------------
+Tue Sep 05 14:28:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.65.2:
+  * chore(deps): update Syft to v0.87.1 (#1432)
+  * chore: Init submodule if missing (#1439)
+  * chore: exclude yardstick store from filename rules (#1440)
+  * chore: use latest yardstick (#1438)
+  * fix: update semver regular expression constraint to allow for
+    1.20rc1 cases no '-' (#1434)
+  * chore(deps): update bootstrap tools to latest versions (#1424)
+  * chore(deps): bump actions/setup-go from 4.0.1 to 4.1.0 (#1421)
+  * docs(example-templates): add a simple JUnit XML template
+    (#1422)
+  * chore(deps): bump golang.org/x/term from 0.10.0 to 0.11.0
+    (#1420)
+  * chore: use syft v0.86.1 in the quality gate tests (#1418)
+
+-------------------------------------------------------------------
 Sun Aug 06 07:56:46 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.65.1:
