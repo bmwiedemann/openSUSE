@@ -25,7 +25,7 @@
 %endif
 
 Name:           alsa-utils
-Version:        1.2.9
+Version:        1.2.10
 Release:        0
 Summary:        Advanced Linux Sound Architecture Utilities
 License:        GPL-2.0-or-later
@@ -38,6 +38,14 @@ Source3:        sound-extra.service
 Source5:        load-sound-modules.sh
 # from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
 Source6:        alsa-utils.keyring
+# upstream fixes
+Patch1:         0001-axfer-use-ATTRIBUTE_UNUSED-instead-remove-argument-n.patch
+Patch2:         0002-amidi-use-ATTRIBUTE_UNUSED-instead-remove-argument-n.patch
+Patch3:         0003-alsaloop-use-ATTRIBUTE_UNUSED-instead-remove-argumen.patch
+Patch4:         0004-bat-use-ATTRIBUTE_UNUSED-instead-remove-argument-nam.patch
+Patch5:         0005-seq-use-ATTRIBUTE_UNUSED-instead-remove-argument-nam.patch
+Patch6:         0006-alsaucm-use-ATTRIBUTE_UNUSED-instead-remove-argument.patch
+Patch7:         0007-topology-use-ATTRIBUTE_UNUSED-instead-remove-argumen.patch
 Patch100:       alsa-info-no-update-for-distro-script.patch
 Patch101:       alsa-utils-configure-version-revert.patch
 BuildRequires:  alsa-devel
@@ -82,6 +90,13 @@ and test audio before and after PM state changes.
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
 %patch100 -p1
 %if 0%{?do_autoreconf}
 %patch101 -p1

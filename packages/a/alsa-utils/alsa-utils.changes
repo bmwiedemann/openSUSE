@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep  4 12:38:04 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-utils 1.2.10:
+  * MIDI 2.0 / UMP support for sequencer programs
+  * nhlt: add nhlt-dmic-info utility
+  * Build fixes and cleanups
+  * speaker-test: allow large buffer and period time setup - up to 100 seconds
+  * various topology fixes
+  For details, see:
+  https://www.alsa-project.org/wiki/Changes_v1.2.9_v1.2.10#alsa-utils
+- Fix the builds with old gcc:
+  0001-axfer-use-ATTRIBUTE_UNUSED-instead-remove-argument-n.patch
+  0002-amidi-use-ATTRIBUTE_UNUSED-instead-remove-argument-n.patch
+  0003-alsaloop-use-ATTRIBUTE_UNUSED-instead-remove-argumen.patch
+  0004-bat-use-ATTRIBUTE_UNUSED-instead-remove-argument-nam.patch
+  0005-seq-use-ATTRIBUTE_UNUSED-instead-remove-argument-nam.patch
+  0006-alsaucm-use-ATTRIBUTE_UNUSED-instead-remove-argument.patch
+  0007-topology-use-ATTRIBUTE_UNUSED-instead-remove-argumen.patch
+
+-------------------------------------------------------------------
 Mon May  8 08:50:35 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-utils 1.2.9:
