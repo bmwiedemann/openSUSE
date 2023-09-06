@@ -17,25 +17,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ldapdomaindump
 Version:        0.9.4
 Release:        0
 Summary:        Active Directory information dumper via LDAP
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/dirkjanm/ldapdomaindump/
 Source:         https://files.pythonhosted.org/packages/source/l/ldapdomaindump/ldapdomaindump-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#dirkjanm/ldapdomaindump#55
+Patch0:         remove-future-requirement.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-dnspython
-Requires:       python-future
 Requires:       python-ldap3 >= 2.5
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dnspython}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module ldap3 >= 2.5}
 # /SECTION
 %python_subpackages
@@ -44,18 +47,19 @@ BuildRequires:  %{python_module ldap3 >= 2.5}
 Active Directory information dumper via LDAP.
 
 %prep
-%setup -q -n ldapdomaindump-%{version}
+%autosetup -p1 -n ldapdomaindump-%{version}
 sed -i 's|#!%{_bindir}/env python|#!%{_bindir}/python3|g' \
   bin/ldd2pretty \
   bin/ldapdomaindump \
   bin/ldd2bloodhound
 sed -i '/^#!\//, 1d' ldapdomaindump/__main__.py
+find . -type f -exec dos2unix {} \;
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ldapdomaindump
 %python_clone -a %{buildroot}%{_bindir}/ldd2bloodhound
 %python_clone -a %{buildroot}%{_bindir}/ldd2pretty
@@ -76,6 +80,7 @@ sed -i '/^#!\//, 1d' ldapdomaindump/__main__.py
 %python_alternative %{_bindir}/ldapdomaindump
 %python_alternative %{_bindir}/ldd2bloodhound
 %python_alternative %{_bindir}/ldd2pretty
-%{python_sitelib}/ldapdomaindump*
+%{python_sitelib}/ldapdomaindump
+%{python_sitelib}/ldapdomaindump-%{version}.dist-info
 
 %changelog
