@@ -39,6 +39,7 @@ Wed May 10 09:15:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
     ``pathlib.Path``. :issue:`4892`
   * Add ``--debug`` option to the ``flask run`` command.
     :issue:`4777`
+- drops CVE-2023-30861-always-vary-cookie.patch in older dists
 
 -------------------------------------------------------------------
 Fri Apr 21 12:20:33 UTC 2023 - Dirk Müller <dmueller@suse.com>

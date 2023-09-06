@@ -430,4 +430,12 @@
 - Delete unneeded .gitignore files, update rpmlintrc</comment>
     <requestid>1101890</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>5ff9be06dcda20f6606e7b4cc88edf37</srcmd5>
+    <version>2.3.2</version>
+    <time>1694019392</time>
+    <user>anag+factory</user>
+    <comment>- drops CVE-2023-30861-always-vary-cookie.patch in older dists</comment>
+    <requestid>1109078</requestid>
+  </revision>
 </revisionlist>
