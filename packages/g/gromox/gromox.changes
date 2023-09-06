@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  4 16:42:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.12
+  * ews: support CreateItem, DeleteItem, SendItem requests
+  * oxm2mt: support multi-valued properties
+  * kdb2mt: do not abort when --src-mbox is used
+  * exmdb_provider: opening the detail view of Personal Addressbook
+    entries now works in Outlook, as does selecting them as message
+    recipients
+  * zcore: fix a flaw in permissions dialog that caused the
+    delegates to be able to see the private items of the delegator
+
+-------------------------------------------------------------------
 Mon Aug 21 13:40:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.11

@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.11
+Version:        2.12
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -109,6 +109,9 @@ capable of serving as a replacement for Microsoft Exchange and
 compatibles. Connectivity options include RPC/HTTP (Outlook
 Anywhere), MAPI/HTTP, IMAP, POP3, an SMTP-speaking LDA, and a PHP
 module with a Z-MAPI function subset.
+
+Import is possible from PST/OST/MSG/CDFV2/TNEF, EML/ICAL/VCF, Kopano,
+Zarafa, and via imapsync.
 
 Gromox relies on other components to provide a sensibly complete mail
 system, such as Postfix as a mail transfer agent, and grommunio-admin
