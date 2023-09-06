@@ -988,4 +988,12 @@
   * Check for stray cats even if no manual pages in a given manpath were</comment>
     <requestid>1104015</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>eb7558e8724f682991b75f3f8bf35ff2</srcmd5>
+    <version>2.11.2</version>
+    <time>1694019337</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108796</requestid>
+  </revision>
 </revisionlist>
