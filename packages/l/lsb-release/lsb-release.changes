@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  5 11:07:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add 797e459ecaa482bf8e7bfe02cf5f1cea367ba9e9.patch to fix
+  bashisms
+
+-------------------------------------------------------------------
 Wed Aug  9 16:10:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add util-linux dependency for getopt to avoid:

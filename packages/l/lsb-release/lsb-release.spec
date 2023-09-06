@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          System/Fhs
 URL:            https://github.com/thkukuk/lsb-release_os-release
 Source:         https://github.com/thkukuk/lsb-release_os-release/archive/refs/tags/v%{version}.tar.gz#/lsb-release-%{version}.tar.gz
+Patch1:         https://github.com/thkukuk/lsb-release_os-release/commit/797e459ecaa482bf8e7bfe02cf5f1cea367ba9e9.patch
 # for getopt(1)
 Requires:       util-linux
 BuildArch:      noarch
@@ -32,7 +33,7 @@ BuildArch:      noarch
 Tools from the Linux Standard Base project to determine the used distribution
 
 %prep
-%setup -q -n lsb-release_os-release-%{version}
+%autosetup -p1 -n lsb-release_os-release-%{version}
 
 %build
 %make_build

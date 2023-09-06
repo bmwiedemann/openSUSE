@@ -164,4 +164,13 @@ Sourcing /etc/os-release instead of parsing /etc/SuSE-release and extracting the
   /usr/bin/lsb_release: line 123: getopt: command not found</comment>
     <requestid>1103195</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>90647e4243a61d1d1ad7e6dc3038e5c9</srcmd5>
+    <version>3.2</version>
+    <time>1694019360</time>
+    <user>anag+factory</user>
+    <comment>- add 797e459ecaa482bf8e7bfe02cf5f1cea367ba9e9.patch to fix
+  bashisms</comment>
+    <requestid>1109021</requestid>
+  </revision>
 </revisionlist>
