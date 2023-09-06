@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 05 15:43:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.10.3:
+  * release 1.10.3 (#8006)
+  * fix: return err in load data (#7982) (#7983)
+  * release: bump chart versions (#7933)
+  * fix(chart): only create ServiceMonitor if cluster supports it
+    (#7926) (#7931)
+
+-------------------------------------------------------------------
 Tue Aug 01 10:00:11 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.10.2:
