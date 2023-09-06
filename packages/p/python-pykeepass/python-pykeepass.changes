@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  5 04:58:15 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.6:
+  * fixed #350 - fixed all Python 2 deprecation FIXMEs (e.g. future, )
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Sat Jun 10 16:42:35 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.0.5:
