@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 29 04:49:29 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Revert update of vendored deps.
+
+-------------------------------------------------------------------
+Tue Aug 29 03:56:26 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove cargotoml parameters in _service.
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
 Sun Aug 13 13:51:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Revert update of vendored dependencies.

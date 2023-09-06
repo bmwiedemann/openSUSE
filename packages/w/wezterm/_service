@@ -4,23 +4,7 @@
      <param name="srctar">wezterm-20230712.072601.f4abf8fd.tar.gz</param>
      <param name="compression">zst</param>
      <param name="update">false</param>
-	 <param name="cargotoml">wezterm/Cargo.toml</param>
-	 <param name="cargotoml">wezterm-blob-leases/Cargo.toml</param>
-	 <param name="cargotoml">wezterm-client/Cargo.toml</param>
-	 <param name="cargotoml">wezterm-dynamic/Cargo.toml</param>
-	 <param name="cargotoml">wezterm-dynamic/derive/Cargo.toml</param>
-	 <param name="cargotoml">wezterm-font/Cargo.toml</param>
-	 <param name="cargotoml">wezterm-gui/Cargo.toml</param>
-	 <param name="cargotoml">wezterm-gui-subcommands/Cargo.toml</param>
-	 <param name="cargotoml">wezterm-input-types/Cargo.toml</param>
-	 <param name="cargotoml">wezterm-mux-server/Cargo.toml</param>
-	 <param name="cargotoml">wezterm-mux-server-impl/Cargo.toml</param>
-	 <param name="cargotoml">wezterm-open-url/Cargo.toml</param>
-	 <param name="cargotoml">wezterm-ssh/Cargo.toml</param>
-	 <param name="cargotoml">wezterm-toast-notification/Cargo.toml</param>
   </service>
-  <service name="cargo_audit" mode="manual">
-     <param name="srcdir">wezterm-20230712-072601-f4abf8fd</param>
-  </service>
+  <service name="cargo_audit" mode="manual" />
 </services>
 
