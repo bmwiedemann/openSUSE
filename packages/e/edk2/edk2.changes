@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  5 10:09:13 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Drop python2 dependency, python2 is obsolete.
+
+-------------------------------------------------------------------
 Mon Apr  3 09:45:11 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add ArmVExpress-FVP-AArch64

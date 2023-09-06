@@ -67,10 +67,8 @@ BuildRequires:  dtc
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libuuid-devel
-BuildRequires:  python
 BuildRequires:  python3
 BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if "%{platform}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -104,6 +102,7 @@ export PACKAGES_PATH=$PWD:$PWD/edk2-platforms:$PWD/edk2-platforms/Drivers:$PWD/e
 %else
 export PACKAGES_PATH=$PWD:$PWD/edk2-platforms:$PWD/edk2-platforms/Drivers
 %endif
+export PYTHON_COMMAND=python3
 %if "%{platform}" == "ArmVExpress-FVP-AArch64"
 DSC_PATH="edk2-platforms/Platform/ARM/VExpressPkg/ArmVExpress-FVP-AArch64.dsc"
 %endif
@@ -184,7 +183,6 @@ done
 popd
 
 %files
-%defattr(-,root,root)
 %if %{with edk2_non_osi}
 %if "%{platform}" == "hikey"
 /boot/mcuimage.bin
