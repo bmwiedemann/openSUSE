@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 06 05:34:59 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.5.1:
+  * Fix numerical resource ranges (#991)
+  * Update topologySpreadConstraint.yaml (#971)
+
+-------------------------------------------------------------------
+Tue Sep 05 15:00:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.5.0:
+  * Add helm-skip-tests flag (#986)
+  * update CLI documentation (#967)
+  * Bump k8s.io/apimachinery from 0.27.3 to 0.27.4 (#977)
+  * feat: handle multiple values files (#974)
+
+-------------------------------------------------------------------
 Mon Jul 17 04:59:19 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 8.4.0:
