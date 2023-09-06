@@ -1088,4 +1088,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment>Make installation of debuginfod-client more consistent, along with debuginfod-profile, with software/packages that have debuginfod support. (forwarded request 1099351 from luc14n0)</comment>
     <requestid>1099743</requestid>
   </revision>
+  <revision rev="110" vrev="5">
+    <srcmd5>64d076852607787987b08ab2939de285</srcmd5>
+    <version>0.189</version>
+    <time>1694019388</time>
+    <user>anag+factory</user>
+    <comment>Conditionalize config(debuginfod-profile) Requires tag, narrowing it down to Tumbleweed only (forwarded request 1105124 from luc14n0)</comment>
+    <requestid>1108893</requestid>
+  </revision>
 </revisionlist>

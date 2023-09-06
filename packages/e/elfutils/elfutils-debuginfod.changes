@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 20 00:25:03 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Conditionalize config(debuginfod-profile) Requires tag in the
+  debuginfod-client sub-package, with the help of the %sle_version
+  macro, so only Tumbleweed (currently the only distro supported by
+  debuginfod.opensuse.org) sets it.
+
+-------------------------------------------------------------------
 Wed Jul 12 01:05:48 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Replace libdebuginfo1 sub-package's debuginfod-profile Recommends

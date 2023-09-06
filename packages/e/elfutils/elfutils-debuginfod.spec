@@ -93,10 +93,13 @@ to create applications to use the debuginfod service.
 Summary:        Command line client for build-id HTTP ELF/DWARF server
 Group:          Development/Tools/Building
 Conflicts:      debuginfod-dummy-client = %{version}
-# Without DEBUGINFOD_URLS being set debuginfod-find won't work. Provide it,
-# by default, so even general users benefit from automatic debuginfo
-# installation.
+# Without DEBUGINFOD_URLS being set debuginfod-find won't work out of the box,
+# on openSUSE Tumbleweed. Provide it, by default, so even general users benefit
+# from automatic debuginfo installation. However, only on Tumbleweed, the only
+# available platform supported by debuginfod.opensuse.org, for now.
+%if !0%{?sle_version}
 Requires:       config(debuginfod-profile)
+%endif
 #
 # Client-side supported tools, based on:
 #   https://sourceware.org/elfutils/Debuginfod.html
