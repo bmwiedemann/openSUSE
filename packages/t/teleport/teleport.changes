@@ -1,4 +1,400 @@
 -------------------------------------------------------------------
+Wed Sep 06 05:23:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.3.8:
+  * Release 13.3.8 (#31442)
+  * Added 08/31 Update (#31301)
+  * desktop discovery: unmap IPv6 addresses (#31434)
+  * fix: Skip known bad asset tags on Windows (#31412)
+  * [v13] Update device trust docs (#31328)
+  * MySQL: avoid tiny writes to improve performance in read-heavy
+    scenarios (#31402)
+  * Periodically refresh Azure cloud credentials (#31164)
+  * Periodically refresh Azure cloud credentials (#31164)
+  * AWS OIDC - List EC2: add instance id as label (#31436)
+  * Update product change log link (#31424)
+  * Fix webauthnwin c types size (#31420)
+  * Preserve query params in cross-cluster app redirect. (#31379)
+  * [v13] AWS OIDC: List Security Groups (#31272)
+  * Update e (#31384)
+  * Remove note about canceled requests not being supported
+    (#31318)
+  * [v13] docs: describe dedicated account dashboard for ent
+    (#31336)
+  * Fix plugin screen not wrapping tiles (#31365)
+  * AWS OIDC EICE: fix connection set up (#31209) (#31362)
+  * Web: return user traits with getUser request (#31331)
+  * [v13] skip motd in UI if request initiated from tsh headless
+    auth (#31205)
+  * Recommend writing the client secret to a file (#30954)
+  * bump eref (#31308)
+  * [v13] docs: add prompt field definition for OIDC auth connector
+    (#31294)
+  * [v13] docs: update db getting started and mongodb atlas
+    (#31299)
+  * [docs] update TLS routing curl test with --no-alpn (#31239)
+  * [v13] [buddy] Add an optional PodMonitor to the
+    teleport-kube-agent chart (#31247)
+  * [v13] docs: update labels documentation (#31110)
+  * Fixed typo in error message for terminal params (#31288)
+  * Clarified default cryptographic primitives (#31263)
+  * Add known STS endpoint for il-central-1 (#31282)
+  * use active db cert principals when available (#31250)
+  * Fix the access list lockName in the backend service. (#31290)
+  * docs: use variables for proxy addresses in Kube access (#31241)
+  * post-release: pass GITHUB_TOKEN for gh CLI use (#31225)
+    (#31280)
+  * UsageEvents: add OpenSSH EC2 Instance Connect Endpoint Nodes
+    (#31266)
+  * AWS OIDC - List RDS: add VPC ID (#30971) (#31274)
+  * Move the `tsh` config file guidance (#30953)
+  * [v13] Refactor IsOwner/IsMember and use AccessListMember
+    object. (#31234)
+  * Allow configurable Okta service synchronization duration.
+    (#31251)
+  * [v13] Ensure access list data integrity. (#31233)
+  * docs: update version (#31221)
+  * [v13] AWS OIDC: Create EC2 Instance Connect Endpoint (#31198)
+  * Fix ui trace forwarding (#31223)
+  * [v13] tctl acl command uses separate member calls. (#31212)
+  * [v13] Remove dead KNNRetriever class (#31189)
+  * [v13] Fix flaky tests (#31163)
+  * Fix flaky tsh export test (#31167)
+  * [v13] Don't set additional groups on darwin (#31152)
+
+-------------------------------------------------------------------
+Tue Sep 05 14:18:59 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.3.7:
+  * Release 13.3.7 (#31172)
+  * Allow Azure/IAM join over reverse tunnel (#31000)
+  * [v13] wait for disconnect in tests (#31160)
+  * docs: include sudo for db configure create examples (#31049)
+  * docs: mention that the GitHub connector requires team slugs,
+    not display names (#31154)
+  * Use Amazon EICE to connect into EC2 instances (#30632) (#31021)
+  * add custom theme and logos (#30823) (#31149)
+  * Fix Oracle Windows Path Separator (#31129)
+  * fix unbackported breakpoints (#31151)
+  * Get accessInfo based on user on access request drop (#31136)
+  * Update headless modal to show both Reject and Cancel (#31135)
+  * Use 127.0.0.1:3080 as Vite default proxy target (#31148)
+  * add feature hiding license flag (#30083) (#30936)
+  * Respect `[HTTP(S)|NO]_PROXY` envs when dialing directly to Kube
+    via SPDY (#30624) (#31133)
+  * [v13] Dynamic identity file reloading support for API Client
+    (#31076)
+  * add OSS CTA for auth connectors (#30713) (#31083)
+  * docs: update version (#31064)
+  * docs: update cloud version (#31079)
+  * ci: Use "post-release" environment in update-docs post-release
+    workflow (#30937)
+  * Fix flaky test TestDatabaseRootLeafIdleTimeout (#31100)
+  * [v13] AWS OIDC: Add StateMessage and DashboardLink to List EICE
+    (#30949)
+  * [v13] oss CTAs for support, access reqs & moderated sessions
+    (#31030)
+  * docs: add page on revoking access (#30682)
+  * [v13] Fix leaking connection monitor instances. Expand comment
+    with a warning. (#31042)
+  * Web: Add calendar icon, export select style, and add type to
+    validation rule (#30817) (#31036)
+  * Add access list members to the cache. (#30837) (#30919)
+
+-------------------------------------------------------------------
+Tue Sep 05 14:07:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.3.6:
+  * Release 13.3.6 (#31031)
+  * Ensure that DNS errors in desktop discovery fail fast (#31032)
+  * [v13] docs: include example service account JSON in the Google
+    workspace guide (#30807)
+  * Remove exported webauthn test functions. (#31008)
+  * Improve proxy address sourcing for VM auto-discovery (#31001)
+  * Fetch metadata for heartbeat in background (#30999)
+  * Additional safety with `X-Forwarded-Host` handling (#30980)
+    (#31027)
+  * bump e (#31012)
+  * Fix flaky TestResizeTerminal (#30983)
+  * [v13] Reduce memory leakage in API client caused by `otelgrpc`
+    interceptors (#30991)
+  * [v13] AWS OIDC: Configure IAM for EC2 Instance Connect Endpoint
+    (#30948)
+  * Added PostgreSQL enablement to documentation (#31006)
+  * [v13] Use the most recent user object for the bot generation
+    label. (#30996)
+  * Issue certficate for desktop connection before actual
+    connection (#30963)
+  * [v13] helm: Use cert-manager secret or tls.existingSecretName
+    for ingress when enabled (#30984)
+  * docs: update version (#30959)
+  * Flesh out the Application Access intro (#30958)
+  * Add package manager Enterprise install steps (#30777)
+  * Add secure credentials for API client tests (#30518) (#30870)
+  * docs: update agent joining when to use (#30961)
+  * [v13] Remove ScopedBlocks from the docs (#30805)
+  * [v13] Metrics: expose install method counter (#30683)
+  * Add `DeleteClusterMaintenanceConfig` for terraform (#30667)
+  * reduce alert log spam (#30849) (#30904)
+  * Fix access list enterprise tests. (#30931)
+  * Expose AuthorizeContextWithVerbs. (#30917)
+  * [v13] Changes to Discord plugin for running in hosted mode.
+    (#30826)
+  * [v13] Include consistent installation info (including Helm)
+    across Access Request plugin docs (#30449)
+  * Set cloud version to v13.3.4 (#30926)
+  * Update eks helm guide for AWS PCA (#30633)
+  * [v13] Include file option description in token, session-id
+    parameters (#30928)
+  * Emit event for auto-discovered VMs (#29285) (#30923)
+  * [v13] Add in the next audit date to access lists. (#30912)
+  * List EC2 instances: add subnet id field (#30692) (#30897)
+  * [v13] Add preset device trust roles (#30908)
+  * [v13] Machine ID: Support for JSON log formatting (#30763)
+  * [v13] Add FeatureRecommendationEvent to Prehog (#30875)
+  * add option to force re-authentication for OIDC connectors
+    (#30877)
+  * crdgen: handle OIDCConnectorSpecV3.MaxAge as a special case
+    (#30879)
+
+-------------------------------------------------------------------
+Tue Sep 05 13:40:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.3.5:
+  * Release 13.3.5 (#30832)
+  * [v13] Update access duration logic and tests for dry run
+    requests (#30885)
+  * [v13] Update the docs UI reference (#30857)
+  * docs: remove default designation in cloud proxies (#30868)
+  * Update e ref (#30848)
+  * Respect `[HTTP(S)|NO]_PROXY` envs when dialing directly to Kube
+    (#30583) (#30615)
+  * [v13] [buddy] 🐛 issue #30400 fixing missing billing_mode param
+    in teleport-cluster helm chart fo dynamodb autoscaling (#30841)
+  * [v13] Web: Remove all cap and bolding for LabelInput used with
+    inputs (#30845)
+  * AWS OIDC - DeployService: use debug log level for service
+    (#30606)
+  * fix (#30824)
+  * feat(helm/teleport-kube-agent): custom annotations in the
+    Secret (#30838)
+  * [v13] Embedded Assist SSH  (#30811)
+  * ci: Pass secrets from post-release to update-ami-ids (#30754)
+  * Update e (#30814)
+  * Add in access list member backend and gRPC methods. (#30800)
+  * Add required title to access list resource (#30782)
+  * [v13] docs: updates to cloud api docs (#30801)
+  * Add a link to Teleport Labs in the landing page (#30482)
+  * fix typo in s3 completemultipartupload metric (#30710)
+  * Added Week of 08/17 Update (#30625)
+  * [v13] AWS OIDC: List EC2 Instance Connect Endpoints (#30752)
+  * Drop etcd from buildbox (#30700) (#30765)
+  * Generate user login state from access lists and integrate into
+    certificates. (#29364) (#30628)
+  * Add `--current-device` capabilities to `tsh` (#30636) (#30702)
+  * [v13] Enable limited Access Requests feature for the Team plan
+    (#29866) (#30570)
+  * [v13] Fixed an issue with `tsh aws ssm start-session` (#30668)
+  * Ensure the correct stderr is used for ssh sessions (#30684)
+  * [v13] Split up the CLI reference (#30371)
+  * [v13] docs: include openssh instrs for jetbrains setup (#30470)
+  * Correct DynamoDB table config instructions (#30675)
+  * Web: Add access_list rule to usercontext and access list
+    related icons (#30564) (#30658)
+  * Drop gcloud SDK from buildbox (#30640) (#30696)
+  * Drop custom gRPC chain functions (#30685)
+  * docs: update gitlab and azuread sso docs (#30680)
+  * [v13] Review Requests: prevent reviews after request is
+    resolved (#30690)
+  * Update docs version automatically (#30670)
+  * [v13] Add initial servicenow client (#30611)
+  * Deflake `TestNodeWatcher` tests (#30676)
+  * [v13] Add initial rough opsgenie docs (#30609)
+
+-------------------------------------------------------------------
+Tue Sep 05 13:27:27 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.3.4:
+  * Release 13.3.4 (#30666)
+  * Remove exported Webauthn functions (#30420) (#30650)
+  * [v13] Fix node equality check in embedding processor (#30325)
+    (#30608)
+  * Begin separating access list members from access list
+    resources. (#30627)
+
+-------------------------------------------------------------------
+Tue Sep 05 13:16:56 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.3.3:
+  * Teleport Release 13.3.3 (#30614)
+  * Add Teleport agent pod readiness checks to docs (#30362)
+  * Discovery service panics on GKE clusters without labels
+    (#30643) (#30647)
+  * Isolate MFA prompt into a new package (#30379) (#30599)
+  * Deflake discovery tests (#30474) (#30641)
+  * Make TestWebClientClosesIdleConnections more stable (#30637)
+  * [v13] Add user login state to the cache. (#30219)
+  * Add Teleport Connect to Headless docs. (#30594)
+  * [v13] Add `teleport_proxy_db_active_connections_total` gauge.
+    (#30604)
+  * Build version checker - multiple fixes (#30580) (#30595)
+  * [v13] bump e ref (#30613)
+  * [v13] [docs] TLS routing FAQs (#30610)
+  * events emitter: improve logging on failed emits (#30185)
+  * [v13] small change to tsh error messages (#30575)
+  * bump e (#30592)
+  * [v13] Add Teleport Connect to Headless docs (#30476)
+  * [v13] fix forwarding a SSH agent in a Cygwin environment
+    (#30582)
+  * [v13] fix `tsh db connect` and `tsh proxy db` with logged in
+    certs (#30563)
+  * update tsh db env/config ux (#30571)
+  * [v13] Partially backport: add metrics for database service
+    (#28150, #30121). (#30429)
+  * Work around go-ldap's lack of errors.Is support (#30560)
+  * update onboarding UI styles (#29917) (#30558)
+  * [v13] Re-add ServerInfo reconciler with better backend
+    performance (#30495)
+  * [v13] discover personalization (#30557)
+  * docs: correct double quotes in tctl devices add example
+    (#30559)
+  * Discover RDS: remove aurora engine (#30548)
+  * OneOff: add success message (#30540)
+  * [v13] Remove temporary type aliases from `lib/auth/webauthn`
+    (#30551)
+  * Teleport Connect headless approval - Skip Confirmation (#29875)
+    (#30475)
+  * [v13] Database Service to validate URL of database resources
+    from Discovery Service (#30462)
+  * Semver version validation (#30538)
+  * pam: free conversation buffer on error (#30521)
+  * [v13] [Docs] Teleport Team getting started, Fix comparison
+    pointer to Teleport Enterprise/Enterprise Cloud (#30430)
+  * [v13] docs: hsm minor corrections (#30506)
+  * [v13] Update e ref. (#30502)
+  * [v13] Remove `lib/auth/webauthn` dependency from `webauthncli`
+    (#30498)
+  * Fix PIV support for tsh proxy kube and Teleport connect
+    (#30205) (#30477)
+  * docs: update faq for proxy recording mode support (#30491)
+  * Refactor AWS db mocks (#30086) (#30461)
+  * Redirect directly to Okta apps from proxy. (#30489)
+  * chore: Bump golangci-lint to v1.54.1 (#30435) (#30483)
+  * [v13] Update 11 eol date (#30467)
+  * Fix SAML certificate decoding when data is padded (#30450)
+  * Improve LDAP desktop discovery (#30383)
+  * fix: Explicitly mention OTPs on tsh/Windows logins (#30444)
+  * integrations/access: Make the plugins exit when the connection
+    breaks instead of retrying infinetly and hanging (#30039)
+    (#30431)
+  * [v13] Fixed "user is not managed" error when accessing
+    ElastiCache and MemoryDB (#30353)
+  * [v13] Adjust indentation in Assist YAML conf reference (#29195)
+    (#30375)
+  * [v13] Adds Discord settings to API types. (#30316)
+  * [v13] chore: Bump Buf to v1.26.1 (#30329)
+  * Error if users attempt to do `tsh login --headless` (#30298)
+    (#30307)
+  * Mention Discord and ServiceNow integrations on previews page
+    (#30373)
+  * [v13] Document `jwt_claims` app rewrite option (#30366)
+  * Version ID check on Amazon Linux2023/rhel installs (#30310)
+  * Set network restrictions static fields upon update (#30324)
+  * AgentMetadataEvent: add AWS OIDC Deploy Service install method
+    (#30328)
+  * [v13] Add device authentication event to prehog (#30303)
+  * Fix AccessDenied not recognized for MemoryDB/RSSL API calls
+    (#30286)
+  * [v13] EC2 Instance Connect Endpoint: List EC2 Instances
+    (#30258)
+  * [v13] Add option to configure JWT claim rewriting (#30280)
+  * Added 08/10 Upcoming Releases Update (#30283)
+  * changelog: Update distroless debug image name (#30305)
+  * Fix resources being deleted from Firestore on update (#30287)
+  * Fix desktop access connecting to direct dial nodes (#30275)
+  * chore: Bump gci to v0.11.0 (#30228) (#30261)
+  * chore: Bump golangci-lint to v1.54.0 (#30222) (#30265)
+  * [v13] Adjust max session duration in web sessions (#30153)
+  * Fix matcher AssumeRoleARN not appied to
+    DiscoveryResourceChecker (#30260)
+  * docs: update version (#30257)
+  * [v13] Add a quick note about AWS and FIPS (#30240)
+  * Support auditing chunked SQL Server packets (#29228) (#30243)
+  * integrations/access: fix infinite retry on already resolved
+    requests (#30231)
+  * Add in the access list tctl command. (#30238)
+  * chore: Bump golang.org/x/net to v0.14.0 (#30234)
+  * [v13] docs: use a consistent intro in the DB guides (#30204)
+  * Promote EKS and AKS discovery to GA (#30209)
+  * [v13] refactor label string formatting (#30223)
+  * [v13] Allow host users to be created with a specific UID or GID
+    (#30178)
+  * Add in paginated access list endpoint. (#30132)
+  * [v13] Use distinct prompts during Windows WebAuthn registration
+    (#30215)
+  * [v13] [Docs] Fix the table of contents and edit content
+    (#30067)
+
+-------------------------------------------------------------------
+Tue Sep 05 11:30:56 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.3.2:
+  * Release 13.3.2 (#30192)
+  * Revert "Add discovery-side label reconciler" (#30198)
+  * [v13] integrations/operator: Fix a bug that caused
+    ProvisionToken.spec.github.allow rules to be ignored (#30179)
+  * Add the `hcl` label to Terraform snippets (#30147)
+  * EC2 Instance Connect Endpoint: HTTP endpoint to create Nodes
+    (#29370) (#30189)
+  * Backported OS repo publishing changes to v13 (#30154)
+  * [v13] Tests: run `lib/integration` and `lib/auth/integration`
+    (#30173)
+  * fix: Save device keys on os.UserCacheDir (#30177)
+  * [v13] Add initial auto approval flow for opsgenie plugin
+    (#30161)
+  * [v13] Improve "tsh kube login" message for proxy behind l7 lb
+    (#30174)
+  * docs: update version (#30162)
+  * AWS configurator support for OpenSearch (#30085)
+  * Refactor database `DiscoveryResourceChecker` (#30056)
+  * Add support for templating to kube's `--set-context-override`
+    (#30157)
+  * [v13] dronegen: Build Teleport Connect for amd64 push build
+    (#30021)
+  * [v13] Bumps `e` version to include hosted Jira integration
+    (#30117)
+  * [Docs] Add the max-duration role option to documentation
+    (#30148)
+  * [v13] [buddy] Allow setting storage class name for auth
+    component (#30145)
+  * Add imagePullSecrets to predeploy tests (#30142)
+  * Ensure Helm deployment guides match the sidebar (#30007)
+  * Use test server context to ensure headless watcher is closed
+    once the test completes. (#30138)
+  * Add docs for the new Slack helm chart values (#30130)
+  * List supported URI schemas in the audit error messages (#30080)
+  * Stablize backend test suite (#30074)
+  * [v13] Changes to the Jira plugin required to run as a hosted
+    integration (#30040)
+  * [v13] Add GCP auto-discovery docs (#30052)
+  * update e-ref (#30069)
+  * Backport #29757 to branch/v13 (#30015)
+  * [v13] docs: document browser env var for tsh (#30057)
+  * [v13] Improve backend `testKeepAlive` (#30053)
+  * [v13] Stop piping child process output into logger only after
+    close (#30025)
+  * chore: Bump Buf to v1.25.1 (#30046)
+  * bump e (#30045)
+  * [v13] Fix authorization rules to the Assistant and
+    UserPreferences service (#29961)
+  * add oss support for existing user onboard survey (#29535)
+    (#29983)
+  * [v13] Add Kubernetes Access FAQ and Troubleshooting docs
+    (#29857)
+  * Drop subtests from `addOneOfEachMFADevice` helper (#30036)
+  * [v13] Tighten discovery service permissions (#29994)
+
+-------------------------------------------------------------------
 Fri Aug 04 06:29:52 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.3.1:
