@@ -131,10 +131,11 @@ Mon May 31 06:38:35 UTC 2021 - Adrian Schröter <adrian@suse.de>
 -------------------------------------------------------------------
 Tue Feb  9 15:42:40 UTC 2021 - Alexandros Toptsoglou <atoptsoglou@suse.com>
 
-- update to 2.11.3  
-  * Improve the speed of the urlize filter by reducing regex backtracking. 
+- update to 2.11.3
+  * Improve the speed of the urlize filter by reducing regex backtracking.
     Email matching requires a word character at the start of the domain part
-    and only word characters in the TLD (CVE-2020-28493 bsc#1181944).  
+    and only word characters in the TLD (CVE-2020-28493 bsc#1181944).
+- drops CVE-2020-28493.patch in older dists
 
 -------------------------------------------------------------------
 Mon May  4 09:35:51 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
