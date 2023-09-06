@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  5 01:47:52 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-future-requirement.patch, remove future requirement.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Sun Aug 27 10:04:40 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.11.0

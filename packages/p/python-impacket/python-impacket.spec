@@ -29,17 +29,21 @@ Group:          Development/Languages/Python
 URL:            https://www.secureauth.com/labs/open-source-tools/impacket
 #Git-Clone:     https://github.com/fortra/impacket.git
 Source:         https://files.pythonhosted.org/packages/source/i/impacket/impacket-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#fortra/impacket#1598
+Patch0:         remove-future-requirement.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 1.0
 Requires:       python-charset-normalizer
-Requires:       python-future
 Requires:       python-ldap3 >= 2.5
 Requires:       python-ldapdomaindump >= 0.9.0
 Requires:       python-pyOpenSSL >= 0.13.1
 Requires:       python-pyasn1 >= 0.2.3
 Requires:       python-pycryptodomex
+Requires:       python-setuptools
 Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -47,7 +51,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask >= 1.0}
 BuildRequires:  %{python_module chardet}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module ldap3 >= 2.5}
 BuildRequires:  %{python_module ldapdomaindump >= 0.9.0}
 BuildRequires:  %{python_module pyOpenSSL >= 0.13.1}
@@ -75,10 +78,10 @@ sed -e '/^#!\//, 1d' -i \
   impacket/mqtt.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand cd %{buildroot}%{_bindir} && find . -name "*.py" -exec sh -c 'mv $0 impacket-`basename "$0" .py`' '{}' \;
 for b in %{binaries}; do
   %python_clone -a %{buildroot}%{_bindir}/$b
@@ -141,6 +144,7 @@ rm tests/misc/test_structure.py
 %{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
   print(rpm.expand("%python_alternative %{_bindir}/" .. b .. "\n"))
 end}
-%{python_sitelib}/impacket*
+%{python_sitelib}/impacket
+%{python_sitelib}/impacket-%{version}.dist-info
 
 %changelog
