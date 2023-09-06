@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep  4 14:23:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.76.5:
+  + Bugs fixed:
+    - Possible SEGV (null pointer deref) in
+      distribute_method_call().
+    - Possible SEGV (null pointer deref) in _g_resource_file_new().
+    - Backport !3529 “gmenuexporter: synchronization in
+      org_gtk_Menus_get_interface.” to glib-2-76.
+    - Backport !3547 “glib/gfileutils.c: use 64 bits for value in
+      get_tmp_file()” to glib-2-76.
+    - Backport !3554 “gresourcefile: Fix crash if called with a
+      badly escaped URI” to glib-2-76.
+    - Backport !3555 “gkeyfile: Fix overwriting of GError” to
+      glib-2-76.
+    - Backport !3539 “gdbusmessage: Validate required headers have
+      the right type” to glib-2-76.
+
+-------------------------------------------------------------------
 Thu Jul  6 16:01:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.76.4:
