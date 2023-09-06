@@ -17,7 +17,7 @@
 
 
 Name:           alsa-ucm-conf
-Version:        1.2.9
+Version:        1.2.10
 Release:        0
 Summary:        ALSA UCM Profiles
 License:        BSD-3-Clause
@@ -26,6 +26,7 @@ Source:         %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2
 Source1:        %{url}/files/pub/lib/alsa-ucm-conf-%{version}.tar.bz2.sig
 # from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
 Source2:        alsa-ucm-conf.keyring
+Patch1:         0001-SplitPCM-Device-argument-may-not-be-set.patch
 BuildRequires:  fdupes
 BuildArch:      noarch
 Requires:       libasound2 >= 1.2.6.1
