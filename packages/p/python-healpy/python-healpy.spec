@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-healpy
-Version:        1.16.2
+Version:        1.16.5
 Release:        0
 Summary:        Python library to handle pixelated data on the sphere based on HEALPix
 License:        GPL-2.0-only
@@ -27,7 +27,10 @@ Source:         https://files.pythonhosted.org/packages/source/h/healpy/healpy-%
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.13}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -72,14 +75,15 @@ healpy provides utilities to:
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a  %{buildroot}%{_bindir}/healpy_get_wmap_maps.sh
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 # Skip tests requiring network access
 %pytest_arch -k 'not (test_astropy_download_file or test_rotate_map_polarization or test_pixelweights_local_datapath)' %{buildroot}%{$python_sitearch}/healpy
 
@@ -94,6 +98,6 @@ export CFLAGS="%{optflags}"
 %license COPYING
 %python_alternative %{_bindir}/healpy_get_wmap_maps.sh
 %{python_sitearch}/healpy/
-%{python_sitearch}/healpy-%{version}-py%{python_version}.egg-info/
+%{python_sitearch}/healpy-%{version}*-info/
 
 %changelog

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep  4 16:40:18 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.16.5:
+  * No documented changes.
+- Changes from vesion 1.16.4:
+  * Updated HEALPix C++ to fix compilation issue, no actual
+    changes to the library (gh#healpy/healpy#875).
+  * Fix support for latest Cython (gh#healpy/healpy#862).
+  * Minor changes to packaging and actions (gh#healpy/healpy#872,
+    gh#healpy/healpy#865, gh#healpy/healpy#864,
+    gh#healpy/healpy#863).
+- Changes from version 1.16.3:
+  * Drop support for Python 3.7 (gh#healpy/healpy#821).
+  * Added wheels for aarch64 under emulation in Github Actions
+    (gh#healpy/healpy#819).
+  * Allow pixelfunc.get_interp_val to operate on multiple maps
+    (gh#healpy/healpy#816).
+  * Add healpy-specific HealpyDeprecationWarning instead of using
+    astropy's (gh#healpy/healpy#822).
+  * Bugfix in Rotator in rmul (gh#healpy/healpy#810).
+- Use wheel macros to package; new BuildRequires:
+  python-setuptools_scm, python-pip, python-wheel.
+
+-------------------------------------------------------------------
 Wed May 31 08:31:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.16.2:
