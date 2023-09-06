@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 06 07:54:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.31.0:
+  * build(deps): bump github.com/open-policy-agent/opa from 0.55.0
+    to 0.56.0 (#430)
+  * fix: Fix acceptance tests after doc changes in #428 (#431)
+  * feat: Support custom doc template (#428)
+  * deps: Move to sigs.k8s.io/yaml (#429)
+  * fix broken link to OPA Metadata Annotations (#427)
+  * Bump k8s.io/apiextensions-apiserver from 0.28.0 to 0.28.1
+    (#426)
+  * Bump github.com/open-policy-agent/opa from 0.54.0 to 0.55.0
+    (#418)
+  * Bump k8s.io/apiextensions-apiserver from 0.27.3 to 0.28.0
+    (#424)
+  * Bump golang from 1.20.5-alpine to 1.21.0-alpine (#422)
+  * Bump golang.org/x/text from 0.11.0 to 0.12.0 (#419)
+  * Bump alpine from 3.18.2 to 3.18.3 (#421)
+  * Bump golang.org/x/text from 0.10.0 to 0.11.0 (#414)
+
+-------------------------------------------------------------------
 Mon Jul 03 05:08:58 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.30.0:
