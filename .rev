@@ -15,4 +15,12 @@
     <comment>- Switch to snapshot 1.10.4.b7a36f2</comment>
     <requestid>1075497</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8e0207abf252cb74598eff38e577b7ad</srcmd5>
+    <version>1.11.0.58baa16</version>
+    <time>1694019393</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.11</comment>
+    <requestid>1108952</requestid>
+  </revision>
 </revisionlist>
