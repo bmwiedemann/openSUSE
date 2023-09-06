@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -%{flavor}
@@ -26,20 +25,22 @@
 %bcond_with test
 %endif
 Name:           python-stestr%{psuffix}
-Version:        3.2.1
+Version:        4.0.1
 Release:        0
 Summary:        A parallel Python test runner built around subunit
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/mtreinish/stestr
 Source:         https://files.pythonhosted.org/packages/source/s/stestr/stestr-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#mtreinish/stestr#112598d44ee682553c2540b853f9626085b8df2c
+Patch0:         remove-future-requirement.patch
 BuildRequires:  %{python_module pbr >= 2.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.10.0
 Requires:       python-fixtures >= 3.0.0
-Requires:       python-future
 Requires:       python-pbr >= 2.0.0
 Requires:       python-python-subunit >= 1.4.0
 Requires:       python-testtools >= 2.2.0
@@ -77,9 +78,7 @@ with testrepository. At a high level the basic concepts of operation are shared
 between the two projects but the actual usage is not exactly the same.
 
 %prep
-%setup -q -n stestr-%{version}
-# do not test sql
-rm stestr/tests/repository/test_sql.py
+%autosetup -p1 -n stestr-%{version}
 
 %if %{with test}
 %check
@@ -91,11 +90,11 @@ python3 -B -m pytest stestr/tests -v -k 'not test_empty_with_pretty_out'
 %if ! %{with test}
 %build
 export LC_ALL="en_US.UTF8"
-%python_build
+%pyproject_wheel
 
 %install
 export LC_ALL="en_US.UTF8"
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
@@ -105,7 +104,7 @@ export LC_ALL="en_US.UTF8"
 %{_bindir}/stestr
 %endif
 %{python_sitelib}/stestr
-%{python_sitelib}/stestr-%{version}*-info
+%{python_sitelib}/stestr-%{version}.dist-info
 %endif
 
 %changelog

@@ -286,4 +286,26 @@
     <comment></comment>
     <requestid>998411</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>bdbf6ed69e6a9dbccbc05686ea295f4b</srcmd5>
+    <version>4.0.1</version>
+    <time>1694019410</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.1:
+  * Fixed an issue around the unittest runner unexpectedly not running the
+    requested tests (or executing them in an unexpected order) causing odd
+    failures that were difficult to debug.
+  * Fixed the output handling of stestr run and stestr load so that any
+    segfaults or unexpected failures in a test worker are now properly
+    reported in the subunit-trace output.
+  * Drops support for the 'sql' repository type and also the flags and
+    Python API flags for selecting the repository type.
+  * Remove support for running with Python 3.5.
+  * Official support for Python 3.10.
+  * Fixed the execution order of the stestr run --load-list option so that
+    tests are executed in the order specified in the list.
+- Add patch remove-future-requirement.patch, drop use of the future module.
+- Switch to pyproject and autosetup macros.</comment>
+    <requestid>1108982</requestid>
+  </revision>
 </revisionlist>
