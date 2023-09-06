@@ -1,0 +1,65 @@
+From 599dc0284287da5d48f578f5fe90b84dd4e0e485 Mon Sep 17 00:00:00 2001
+From: Emmanuel Bourg <ebourg@apache.org>
+Date: Mon, 4 Sep 2023 17:10:19 +0200
+Subject: [PATCH 5/5] Reproducible maven.build.timestamp
+
+Set the maven.build.timestamp variable to the date defined by
+the SOURCE_DATE_EPOCH environment variable to make the Maven
+builds reproducible.
+---
+ .../interpolation/BuildTimestampValueSource.java       | 10 +++++++++-
+ .../maven/model/interpolation/MavenBuildTimestamp.java | 10 +++++++++-
+ 2 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/maven-compat/src/main/java/org/apache/maven/project/interpolation/BuildTimestampValueSource.java b/maven-compat/src/main/java/org/apache/maven/project/interpolation/BuildTimestampValueSource.java
+index f2af8036a..9e0db2cb0 100644
+--- a/maven-compat/src/main/java/org/apache/maven/project/interpolation/BuildTimestampValueSource.java
++++ b/maven-compat/src/main/java/org/apache/maven/project/interpolation/BuildTimestampValueSource.java
+@@ -44,7 +44,15 @@ public BuildTimestampValueSource(Date startTime, String format) {
+     public Object getValue(String expression) {
+         if ("build.timestamp".equals(expression) || "maven.build.timestamp".equals(expression)) {
+             if (formattedDate == null && startTime != null) {
+-                formattedDate = new SimpleDateFormat(format).format(startTime);
++                if ( System.getenv( "SOURCE_DATE_EPOCH" ) == null ) {
++                    formattedDate = new SimpleDateFormat( format ).format( startTime );
++                } else {
++                    // Use the SOURCE_DATE_EPOCH timestamp and make the format locale insensitive
++                    SimpleDateFormat fmt = new SimpleDateFormat( format, java.util.Locale.ENGLISH );
++                    fmt.setTimeZone( java.util.TimeZone.getTimeZone( "UTC" ) );
++                    Date date = new Date( 1000 * Long.parseLong( System.getenv( "SOURCE_DATE_EPOCH" ) ) );
++                    formattedDate = fmt.format( date );
++                }
+             }
+ 
+             return formattedDate;
+diff --git a/maven-model-builder/src/main/java/org/apache/maven/model/interpolation/MavenBuildTimestamp.java b/maven-model-builder/src/main/java/org/apache/maven/model/interpolation/MavenBuildTimestamp.java
+index e1721334f..2ea2ce381 100644
+--- a/maven-model-builder/src/main/java/org/apache/maven/model/interpolation/MavenBuildTimestamp.java
++++ b/maven-model-builder/src/main/java/org/apache/maven/model/interpolation/MavenBuildTimestamp.java
+@@ -21,6 +21,7 @@
+ import java.text.SimpleDateFormat;
+ import java.util.Date;
+ import java.util.GregorianCalendar;
++import java.util.Locale;
+ import java.util.Properties;
+ import java.util.TimeZone;
+ 
+@@ -56,7 +57,14 @@ public MavenBuildTimestamp(Date time, String timestampFormat) {
+         if (time == null) {
+             time = new Date();
+         }
+-        SimpleDateFormat dateFormat = new SimpleDateFormat(timestampFormat);
++
++        Locale locale = Locale.getDefault();
++        if ( System.getenv( "SOURCE_DATE_EPOCH" ) != null ) {
++            time = new Date( 1000 * Long.parseLong( System.getenv( "SOURCE_DATE_EPOCH" ) ) );
++            locale = Locale.ENGLISH;
++        }
++
++        SimpleDateFormat dateFormat = new SimpleDateFormat( timestampFormat, locale );
+         dateFormat.setCalendar(new GregorianCalendar());
+         dateFormat.setTimeZone(DEFAULT_BUILD_TIME_ZONE);
+         formattedTimestamp = dateFormat.format(time);
+-- 
+2.42.0
+

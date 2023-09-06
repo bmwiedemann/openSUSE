@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  4 15:13:23 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0005-Reproducible-maven.build.timestamp.patch
+    + debian patch to make maven builds more reproducible
+
+-------------------------------------------------------------------
 Mon Jun 19 15:31:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.9.2
