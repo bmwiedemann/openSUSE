@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep  6 06:44:11 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 8.5.3
+  * Fixed a race condition in GenericRateLimiter that could cause it to stop granting requests
+
+- update to 8.5.2
+  * Fix a bug where iterator may return incorrect result for DeleteRange() users if there was an error reading from a file.
+
+- update to 8.5.1
+  * Fix a bug where if there is an error reading from offset 0 of a file from L1+ and that the file is not the first file in the sorted run, data can be lost in compaction and read/scan can return incorrect results.
+
+- update to 8.5.0
+  * Public API Changes:
+      Removed recently added APIs GeneralCache and MakeSharedGeneralCache() as our plan changed to stop exposing a general-purpose cache interface. The old forms of these APIs, Cache and NewLRUCache(), are still available, although general-purpose caching support will be dropped eventually.
+  * Behavior Changes
+      Option periodic_compaction_seconds no longer supports FIFO compaction: setting it has no effect on FIFO compactions. FIFO compaction users should only set option ttl instead.
+      Move prefetching responsibility to page cache for compaction read for non directIO use case
+  * Performance Improvements
+      In case of direct_io, if buffer passed by callee is already aligned, RandomAccessFileRead::Read will avoid realloacting a new buffer, reducing memcpy and use already passed aligned buffer.
+      Small efficiency improvement to HyperClockCache by reducing chance of compiler-generated heap allocations
+  * Bug Fixes
+      Fix use_after_free bug in async_io MultiReads when underlying FS enabled kFSBuffer. kFSBuffer is when underlying FS pass their own buffer instead of using RocksDB scratch in FSReadRequest. Right now it's an experimental feature.
+      Fix a bug in FileTTLBooster that can cause users with a large number of levels (more than 65) to see errors like "runtime error: shift exponent .. is too large.."
+
+- see more on HISTORY.md (https://github.com/facebook/rocksdb/blob/main/HISTORY.md)
+
+
+-------------------------------------------------------------------
 Thu Jul 27 13:10:54 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 8.3.2

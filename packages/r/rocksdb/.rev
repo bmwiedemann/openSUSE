@@ -33,4 +33,12 @@ The conflict with mariadb is still a problem. Debian solved this by making maria
     <comment></comment>
     <requestid>1101090</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>443c0d3a40910e252b57abf15c9f2274</srcmd5>
+    <version>8.5.3</version>
+    <time>1694019577</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109205</requestid>
+  </revision>
 </revisionlist>
