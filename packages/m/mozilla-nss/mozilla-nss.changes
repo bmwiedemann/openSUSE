@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  5 10:48:46 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to NSS 3.93:
+  + bmo#1849471 - Update zlib in NSS to 1.3.
+  + bmo#1848183 - softoken: iterate hashUpdate calls for long inputs.
+  + bmo#1813401 - regenerate NameConstraints test certificates (boo#1214980).
+- Rebase nss-fips-pct-pubkeys.patch.
+
+-------------------------------------------------------------------
 Sun Aug 27 07:58:09 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.92

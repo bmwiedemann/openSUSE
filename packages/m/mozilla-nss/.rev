@@ -3040,4 +3040,12 @@
   * bmo#1842937 - Avoid redefining BYTE_ORDER on hppa Linux</comment>
     <requestid>1107943</requestid>
   </revision>
+  <revision rev="208" vrev="1">
+    <srcmd5>8deff63b79b6b27750b4a15b28dac54b</srcmd5>
+    <version>3.93</version>
+    <time>1694019363</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109133</requestid>
+  </revision>
 </revisionlist>

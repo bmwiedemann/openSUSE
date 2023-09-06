@@ -5,15 +5,15 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -17,6 +17,7 @@
-  *   In this implementation, session objects are only visible to the session
-  *   that created or generated them.
-  */
+@@ -20,6 +20,7 @@
+ 
+ #include <limits.h> /* for UINT_MAX and ULONG_MAX */
+ 
 +#include "lowkeyti.h"
  #include "seccomon.h"
  #include "secitem.h"
  #include "secport.h"
-@@ -4934,6 +4935,88 @@ pairwise_signverify_mech (CK_SESSION_HAN
+@@ -4963,6 +4964,88 @@ pairwise_signverify_mech (CK_SESSION_HAN
      return crv;
  }
  
@@ -102,7 +102,7 @@ Index: nss/lib/softoken/pkcs11c.c
  /*
   * FIPS 140-2 pairwise consistency check utilized to validate key pair.
   *
-@@ -5280,6 +5363,30 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -5309,6 +5392,30 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
          }
      }
  
