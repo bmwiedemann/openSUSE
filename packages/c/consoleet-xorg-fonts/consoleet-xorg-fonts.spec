@@ -1,7 +1,7 @@
 #
 # spec file for package consoleet-xorg-fonts
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,23 @@
 
 
 Name:           consoleet-xorg-fonts
-Version:        7.6
+Version:        7.6.1
 Release:        0
-Summary:        Vector/OTF versions of the Xorg fixed font
-License:        MIT
+Summary:        Vector/OTF remakes of Xorg fonts
+License:        CC-BY-SA-4.0
 Group:          System/X11/Fonts
 URL:            https://inai.de/projects/consoleet/
 Source:         https://inai.de/files/consoleet/consoleet-xorg-%version.tar.zst
 Source2:        https://inai.de/files/consoleet/consoleet-xorg-%version.tar.asc
+Source3:        %name.keyring
 BuildRequires:  fontpackages-devel
 BuildRequires:  zstd
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 
 %description
-The 8x13, 9x15 and 10x20 monospace bold fonts from Xorg.
+Vector remakes of the Xorg "Misc Fixed" fonts (8x13, 9x15, 10x20) and
+"Sony Fixed" (12x24).
 
 %prep
 %setup -Tcq
