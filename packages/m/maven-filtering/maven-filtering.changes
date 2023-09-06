@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep  6 13:00:35 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.3.1
+  * Changes of 3.3.1
+    + MSHARED-1175: Copying x resources from rel/path to rel/path
+    + MSHARED-1213: Bug: filtering existing but 0 byte file
+    + MSHARED-1199: Upgrade parent pom to 39
+    + MSHARED-1112: Ignore setting permissions on non existing dest
+      files/symlinks
+    + MSHARED-1144: remove rendundant error message
+  * Changes of 3.3.0
+    + fixed cloning of MavenResourcesExecution's instances using
+      copyOf() method
+    + MRESOURCES-258: Copying and filtering logic is delegated to
+      FileUtils
+    + replace deprecated methods
+    + replace deprecated code in favor of Java 7 core and apache
+      commons libraries
+     declare dependencies
+    + MSHARED-1080: Parent POM 36, Java8, drop legacy.
+
+-------------------------------------------------------------------
 Thu Apr 28 11:53:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.2.0

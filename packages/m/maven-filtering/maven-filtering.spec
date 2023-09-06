@@ -1,7 +1,7 @@
 #
 # spec file for package maven-filtering
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-filtering
-Version:        3.2.0
+Version:        3.3.1
 Release:        0
 Summary:        Shared component providing resource filtering
 License:        Apache-2.0
@@ -26,32 +26,17 @@ URL:            https://maven.apache.org/shared/%{name}/index.html
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 BuildRequires:  ant
-BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-io
 BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  google-guice
-BuildRequires:  guava
-BuildRequires:  javapackages-local
-BuildRequires:  jdom2
-BuildRequires:  jsr-305
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
-BuildRequires:  maven-shared-utils
-BuildRequires:  objectweb-asm
 BuildRequires:  plexus-build-api
-BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-cli
-BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-interpolation
-BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
-BuildRequires:  qdox
 BuildRequires:  sisu-inject
-BuildRequires:  sisu-plexus
+BuildRequires:  slf4j
 BuildRequires:  unzip
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
-BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
 BuildArch:      noarch
 
 %description
@@ -70,47 +55,43 @@ This package contains the API documentation for %{name}.
 %setup -q
 cp %{SOURCE1} build.xml
 
+%pom_xpath_remove pom:project/pom:parent/pom:relativePath
+
 %build
 mkdir -p lib
 build-jar-repository -s lib \
+    atinject \
+    commons-io \
     maven/maven-core \
     maven/maven-model \
     maven/maven-settings \
-    org.eclipse.sisu.plexus \
-    plexus-containers/plexus-component-annotations \
-    maven-shared-utils/maven-shared-utils \
+    org.eclipse.sisu.inject \
     plexus/utils \
     plexus/interpolation \
     plexus/plexus-build-api \
-    commons-io \
-    jsr-305 \
-    \
-    atinject \
-    commons-cli \
-    guava/guava \
-    guice/google-guice-no_aop \
-    jdom2/jdom2 \
-    objectweb-asm/asm \
-    org.eclipse.sisu.inject \
-    plexus-classworlds \
-    plexus-metadata-generator \
-    plexus/cli \
-    qdox
+    slf4j/api
 
-# Tests use a package that is no longer present in plexus-build-api (v0.0.7)
 %{ant} \
   jar javadoc
 
-%{mvn_artifact} pom.xml target/%{name}-%{version}.jar
-
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE NOTICE
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE NOTICE
 
 %changelog
