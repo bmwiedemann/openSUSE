@@ -22,20 +22,19 @@ Version:        2.11.7
 Release:        0
 Summary:        Python wrapper for the Cloudflare v4 API
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/cloudflare/python-cloudflare
 Source:         https://files.pythonhosted.org/packages/source/c/cloudflare/cloudflare-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module jsonlines}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.4.2}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-beautifulsoup4
-Requires:       python-future
 Requires:       python-jsonlines
 Requires:       python-requests >= 2.4.2
 Requires(post): update-alternatives
@@ -50,10 +49,10 @@ Python wrapper for the Cloudflare Client API v4.
 %setup -q -n cloudflare-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/cli4
 %python_clone -a %{buildroot}%{_mandir}/man1/cli4.1
 # remove examples from sitelib
@@ -74,6 +73,8 @@ Python wrapper for the Cloudflare Client API v4.
 %license LICENSE
 %python_alternative %{_bindir}/cli4
 %python_alternative %{_mandir}/man1/cli4.1
-%{python_sitelib}/*
+%{python_sitelib}/CloudFlare
+%{python_sitelib}/cli4
+%{python_sitelib}/cloudflare-%{version}.dist-info
 
 %changelog

@@ -127,4 +127,14 @@
   * update examples and README to use == for numberic values</comment>
     <requestid>1108926</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>434dd00cacffbb60cb1412c3bfba10e4</srcmd5>
+    <version>2.11.7</version>
+    <time>1694019402</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Drop unneeded {Build,}Requires on future.</comment>
+    <requestid>1108969</requestid>
+  </revision>
 </revisionlist>
