@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-io
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%bcond_with tests
 Name:           plexus-io
-Version:        3.2.0
+Version:        3.4.1
 Release:        0
 Summary:        Plexus IO Components
 License:        Apache-2.0
@@ -29,20 +28,13 @@ Source1:        %{name}-build.xml
 Source2:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
+BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsr-305
 BuildRequires:  plexus-utils >= 3.3.0
-Requires:       mvn(commons-io:commons-io)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  sisu-inject
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-BuildRequires:  guava
-BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-containers-container-default
-BuildRequires:  xbean
-%endif
 
 %description
 Plexus IO is a set of plexus components, which are designed for use
@@ -63,22 +55,11 @@ cp %{SOURCE2} .
 %pom_remove_plugin :animal-sniffer-maven-plugin
 %pom_remove_plugin :maven-enforcer-plugin
 
-%pom_remove_parent
-
-%pom_xpath_inject "pom:project" "<groupId>org.codehaus.plexus</groupId>"
-
 %build
 mkdir -p lib
-build-jar-repository -s lib plexus/utils commons-io jsr-305
-%if %{with tests}
-build-jar-repository -s lib plexus-containers/plexus-container-default plexus/classworlds
-build-jar-repository -s lib guava/guava xbean/xbean-reflect
-%endif
+build-jar-repository -s lib atinject org.eclipse.sisu.inject plexus/utils commons-io jsr-305
 
 %{ant} \
-%if %{without tests}
-  -Dtest.skip=true \
-%endif
   jar javadoc
 
 %install
@@ -87,7 +68,7 @@ install -dm 0755 %{buildroot}%{_javadir}/plexus
 install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/plexus/io.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/plexus
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/plexus/io.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/plexus/io.pom
 %add_maven_depmap plexus/io.pom plexus/io.jar
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
