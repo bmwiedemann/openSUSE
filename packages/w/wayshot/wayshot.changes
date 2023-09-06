@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 29 01:29:21 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove cargotoml param in _service.
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
 Mon Aug 21 03:41:25 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Use upstream source tarball instead of generating through service.
