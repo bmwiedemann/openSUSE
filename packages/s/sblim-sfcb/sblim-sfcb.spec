@@ -22,6 +22,12 @@
 %define has_systemd 0
 %endif
 
+%if 0%{?suse_version} >= 1600
+%bcond_with slp
+%else
+%bcond_without slp
+%endif
+
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Small Footprint CIM Broker
 License:        EPL-1.0
@@ -103,7 +109,9 @@ BuildRequires:  pam-devel
 BuildRequires:  sblim-sfcc-devel
 BuildRequires:  zlib-devel
 %if 0%{?rhel_version} == 0 && 0%{?centos_version} == 0
+%if %{with slp}
 BuildRequires:  openslp-devel
+%endif
 %endif
 BuildRequires:  bison
 BuildRequires:  flex
@@ -186,7 +194,7 @@ autoreconf -f -i
 if test -d mofc; then cd mofc && autoreconf -f -i; cd ..; fi
 #%%configure --enable-debug --enable-ssl --enable-pam --enable-ipv6 CIMSCHEMA_SOURCE=%{SOURCE1} CIMSCHEMA_MOF=cimv216.mof CIMSCHEMA_SUBDIRS=y
 mkdir -p m4
-%if 0%{?rhel_version} == 0 && 0%{?centos_version} == 0
+%if %{with slp} && 0%{?rhel_version} == 0 && 0%{?centos_version} == 0
 WITH_SLP=--enable-slp
 %else
 WITH_SLP=
