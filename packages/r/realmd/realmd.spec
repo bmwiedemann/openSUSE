@@ -34,6 +34,7 @@ BuildRequires:  libtool
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  polkit-devel
+BuildRequires:  samba-client
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(systemd)
