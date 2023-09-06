@@ -17,7 +17,7 @@
 
 
 Name:           mirrorsorcerer
-Version:        0.1.2~0
+Version:        0.1.2~1
 Release:        0
 Summary:        Mirror Sorcerer tool to magically make OpenSUSE mirror sources more magic-er
 License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND BSD-3-Clause AND MIT AND MPL-2.0
@@ -29,6 +29,9 @@ Source2:        cargo_config
 BuildRequires:  cargo >= 1.69.0
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
+# The openSUSE-repos-Tumbleweed package was force-installed on most peoples installs
+# which mucked up all their repos. We need to exclude it.
+Conflicts:      openSUSE-repos-Tumbleweed
 # Disable this line if you wish to support all platforms.
 # In most situations, you will likely only target tier1 arches for user facing components.
 ExclusiveArch:  %{rust_tier1_arches}
