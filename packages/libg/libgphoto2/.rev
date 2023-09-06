@@ -1626,4 +1626,41 @@
     <comment>- drop lockdev support (boo#1212801) (forwarded request 1097916 from lnussel)</comment>
     <requestid>1097929</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>f9a2522905b6009ee153ac90bdd64dbd</srcmd5>
+    <version>2.5.31</version>
+    <time>1694019325</time>
+    <user>anag+factory</user>
+    <comment>- updated to 2.5.31 release
+  ptp2:
+  * do better event queueing during capture (makes capture faster, avoids losing events)
+  * Canon EOS: OLC logic rewritten to be table driven, more debugging of the content,
+    config &quot;testolc&quot; to generate debugoutput. Supports more cameras better.
+  * Canon EOS: various bugfixes
+  * Sony Alpha: Added config options: focusarea, liveviewsettingeffect
+  * Olympus: Enabled OM-1 capture
+  * Battery Level: also support ENUM style battery reporting for Canon
+  * Nikon 1: S1 also does not support everything
+  * Sony Alpha: small changes in config setters
+  * merged some improvements from NorthOfYou fork for Canon EOS, Nikon and Sony
+  * New ids:
+    - Canon EOS 850D, R7, R10, R5 C, R6m2
+    - Fuji X-H2, X-T5
+    - GOPRO HERO 11 BLACK, 11 BLACK mini
+    - new ids also imported from libmtp
+    - Nikon Z30, Z8
+    - OMSYSTEM OM-1
+    - Pentax KP (PTP mode)
+    - Ricoh GR IIIx
+    - Sigma fp L
+    - Sony A7S III, ILCE-1, ILME-FX3, 7RM5 aka A7-RV,
+  digigr8:
+  * fixed init to not switch to webcam mode
+  pentax:
+  * Added Pentax KP
+  general:
+  * disable log formatting when we are not logging (speeds up large downloads, as
+    we are not hex dumping the whole data and immediately discard the result)</comment>
+    <requestid>1108555</requestid>
+  </revision>
 </revisionlist>

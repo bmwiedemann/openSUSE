@@ -55,13 +55,12 @@ Obsoletes:      libgphoto2-64bit
 Summary:        A Digital Camera Library
 License:        LGPL-2.1-or-later
 Group:          Hardware/Camera
-Version:        2.5.30
+Version:        2.5.31
 Release:        0
 Source0:        https://downloads.sourceforge.net/project/gphoto/libgphoto/%version/%name-%version.tar.xz
 Source1:        https://downloads.sourceforge.net/project/gphoto/libgphoto/%version/%name-%version.tar.xz.asc
 Source2:        %name.keyring
 Source3:        baselibs.conf
-Patch0:         libgphoto2-enable-vusb-ptp.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %package -n libgphoto2-%major
@@ -159,7 +158,6 @@ This is its API documentation in HTML format.
 
 %prep
 %setup -q
-%patch0 -p1
 (cd doc && tar -xaf libgphoto2-api.html.tar.gz)
 
 %build
@@ -182,7 +180,7 @@ export LIBRARY_PATH="%buildroot/%_libdir"
 # .la files are not needed
 rm %buildroot/%_libdir/*.la
 rm %buildroot/%_libdir/libgphoto2/%version/*.la
-rm %buildroot/%_libdir/libgphoto2_port/0.12.1/*.la
+rm %buildroot/%_libdir/libgphoto2_port/0.12.2/*.la
 
 rm -rf %buildroot/usr/share/doc/libgphoto2_port
 
