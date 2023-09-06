@@ -1,7 +1,7 @@
 #
 # spec file for package pdfarranger
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Karl Cheng <qantas94heavy@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           pdfarranger
-Version:        1.9.2
+Version:        1.10.0
 Release:        0
 Summary:        Merge, split, rotate, crop, and rearrange pages of PDF documents
 License:        GPL-3.0-only
@@ -27,7 +27,6 @@ Source:         https://github.com/pdfarranger/pdfarranger/archive/%{version}.ta
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  python3-devel
-BuildRequires:  python3-distutils-extra
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
