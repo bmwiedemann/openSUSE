@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  5 23:43:19 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 23.09.05
+   * Wayland Vulkan crash fix for Qt <= 6.4,
+   * RadioBrowser improvements and fixes,
+   * ALSA crash fix on early pause,
+   * tray menu fixes.
+
+-------------------------------------------------------------------
 Tue Aug 22 21:05:33 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 23.08.22
