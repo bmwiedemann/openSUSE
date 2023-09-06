@@ -28,13 +28,13 @@
 %bcond_with systemd
 %endif
 Name:           cacti
-Version:        1.2.24
+Version:        1.2.25
 Release:        0
 Summary:        Web Front-End to Monitor System Data via RRDtool
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://www.cacti.net/
-Source0:        https://www.cacti.net/downloads/%{name}-%{version}.tar.gz
+Source0:        http://files.cacti.net/cacti/linux/%{name}-%{version}.tar.gz
 Source1:        %{name}.cron
 Source2:        %{name}-httpd.conf
 Source3:        %{name}.logrotate

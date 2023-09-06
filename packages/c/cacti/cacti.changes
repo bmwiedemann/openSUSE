@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Wed Sep  6 06:06:32 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.25 (boo#1215024):
+  * Protect against Insecure deserialization of filter data
+  * Protect against Cross-Site Scripting vulnerability when creating new graphs
+  * Protect against Unauthenticated SQL Injection when viewing graphs
+  * Protect against SQL Injection when saving data with sql_save()
+  * Protect against Authenticated command injection when using SNMP options
+  * Protect against Authenticated SQL injection vulnerability when managing graphs
+  * Protect against Authenticated SQL injection vulnerability when managing reports
+  * Protect against SQL Injection when using regular expressions
+  * Protect against Open redirect in change password functionality
+  * Protect against Cross-Site Scripting vulnerability with Device Name when managing Data Sources
+  * Protect against Cross-Site Scripting vulnerability with Device Name when administrating Reports
+  * Protect against Cross-Site Scripting vulnerability with Device Name when editing Graphs whilst managing Reports
+  * Protect against Cross-Site Scripting vulnerability with Device Name when managing Data Sources
+  * Protect against Cross-Site Scripting vulnerability with Device Name when debugging data queries
+  * Protect against Cross-Site Scripting vulnerability with Data Source Name when managing Graphs
+  * Protect against Cross-Site Scripting vulnerability with Data Source Name when debugging Data Queries
+  * Protect against Cross-Site Scripting vulnerability with Data Source Information when managing Data Sources
+  * When rebuilding the Poller Cache from command line, allow it to be multi-threaded
+  * When searching tree or list views, the URL does not update after changes
+  * When creating a Data Source Template with a specific snmp port, the port is not always applied
+  * When a Data Query references a file, the filename should be trimmed to remove spurious spaces
+  * THold plugin may not always install or upgrade properly
+  * RRD file structures are not always updated properly, if there are more Data Sources in the Data Template than the Graph Template
+  * When reindexing devices, errors may sometimes be shown
+  * Boost may loose data when the database server is overloaded
+  * Boost can sometimes output unexpected or invalid values
+  * Boost should not attempt to start if there are no items to process
+  * Rebuilding the poller cache does not always work as expected
+  * Host CPU items may not work poll as expected when on a remote data collector where hmib is also enabled
+  * When creating new graphs, invalid offset errors may be generated
+  * When importing packages, SQL errors may be generated
+  * When managing plugins from command line, the --plugin option is not properly handled
+  * When automating an install of Cacti, error messages can be appear
+  * When performing automated install of a plugin, warnings can be thrown
+  * Automation references the wrong table name causing errors
+  * Data Source Info Mode produces invalid recommendations
+  * Data Source Debug 'Run All' generates too many log messages
+  * The description of rebuild poller cache in utilities does not display properly
+  * When reindexing a device, debug information may not always display properly
+  * Upon displaying a form with errors, the session error fields variable isn't cleared
+  * MariaDB clusters will no longer support exclusive locks
+  * RRDtool can fail to update when sources in Data Template and Graph Template data sources do not match
+  * Compatibility improvements for Boost under PHP 8.x
+  * When searching the tree, increase the time before querying for items
+  * Device Location drop down does not always populate correctly
+  * When viewing Realtime graphs, undefined variable errors may be reported
+  * SNMP Uptime is not always ignored for spikekills
+  * Improve detection of downed Devices
+  * When reporting missing functions from Plugins, ensure messages do not occur too often
+  * When starting the Cacti daemon, database errors may be reported when there is no problem
+  * When reporting from RRDcheck, ensure prefix is in the correct casing
+  * Improve Orphaned Data Source options and display
+  * Parsing the PHP Configuration may sometimes produce errors
+  * Security processes attempt to check for a user lockout even if there is no user logged in
+  * When attempting to edit a tree, the search filter for Graphs remains disabled
+  * When reindexing, a Data Source that could be un-orphaned may not always be unorphaned
+  * When parsing a date value, there could be more than 30 chars
+  * Untemplated Data Sources can fail to update due to lack of an assigned Graph
+  * When processing items to check, do not include disabled hosts
+  * When saving a Data Source Template, SQL errors may be reported
+  * When importing a Template, errors may be recorded
+  * Some display strings have invalid formatting that cannot be parsed
+  * When filtering with regular expressions, the 'does not match' option does not always function as expected
+  * When enabling a plugin, sometimes it can appear as if nothing happens
+  * Ensure the Rows Per Page option shows limitations set by configuration
+  * Plugins are unable to modify fields in the setting 'Change Device Settings'
+  * When reporting emails being sent, ensure BCC addresses are also included
+  * Improve compatibility of SNMP class trim handling under PHP 8.x
+  * When importing legacy Data Query Templates, the Template can become unusable
+  * Provide ability to raise an event when extending the settings form
+  * Prevent unsupported SQL Mode flags from being set
+  * The DSStats summary does not always display expected values
+  * When performing a fresh install, device classification may be missing.
+  * Duplication functions for Graph/Template and Data Source/Template do not return and id
+  * Duplication of Device Templates should be an API call
+  * Unable to convert database to latin1 instead of utf8 if desired
+  * When creating Graphs, the process may become slower over time as more items exist
+  * When a bulk walk size is set to automatic, this is not always set to the optimal value
+  * Update copyright notice on import packages
+  * When viewing Orphan Graphs, SQL errors may be reported
+  * When reindexing hosts from command line, ensure only one process runs at once
+  * When a Data Query has no Graphs, it may not be deletable
+  * When duplicating a Graph Template, provide an option to not duplicate Data Query association
+  * When duplicating a Data Template errors can appear in the Cacti log
+  * When importing a Package, previewing makes unexpected changes to Cacti Templates
+  * When enabling boost on a fresh install, an error may be reported
+  * Improve compatibility for backtrace logging under PHP 8.x
+  * Improve compatibility for Advanced Ping under PHP 8.x
+  * Provide new templates for Fortigate and Aruba Cluster to be available during install
+  * Provide new template for SNMP Printer to be available during install
+  * When importing devices, allow a device classification to be known
+  * Extend length of maximum name in settings table
+  * Extend length of maximum name in user settings table
+  * Data Queries do not have a Duplication function
+  * Upgrade d3.js v7.8.2 and billboard.js v3.7.4
+  * Upgrade ua-parser.js to version 1.0.35
+  * Update Cisco Device Template to include HSRP graph template
+  * New hook for device template change 'device_template_change'
+
+-------------------------------------------------------------------
 Mon Feb 27 22:47:51 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.24
