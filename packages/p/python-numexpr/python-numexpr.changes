@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  4 19:07:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Revert to version 2.8.4: Patch release breaks its API and thus
+  Pandas -- gh#pydata/numexpr#442, gh#pydata/numexpr#444
+- Move to PEP517 build
+
+-------------------------------------------------------------------
 Sun Aug 27 21:31:12 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - update to version 2.8.5:

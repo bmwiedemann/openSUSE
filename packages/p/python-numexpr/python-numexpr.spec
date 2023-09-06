@@ -17,7 +17,7 @@
 
 
 Name:           python-numexpr
-Version:        2.8.5
+Version:        2.8.4
 Release:        0
 Summary:        Numerical expression evaluator for NumPy
 License:        MIT
@@ -26,7 +26,9 @@ URL:            https://github.com/pydata/numexpr/
 Source:         https://files.pythonhosted.org/packages/source/n/numexpr/numexpr-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel >= 1.13.3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -48,10 +50,10 @@ sed -i '/^#!/ d' numexpr/cpuinfo.py
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -65,7 +67,7 @@ popd
 %files %{python_files}
 %doc ANNOUNCE.rst AUTHORS.txt README.rst RELEASE_NOTES.rst site.cfg.example
 %license LICENSE.txt
-%{python_sitearch}/numexpr/
-%{python_sitearch}/numexpr-%{version}-py*.egg-info
+%{python_sitearch}/numexpr
+%{python_sitearch}/numexpr-%{version}.dist-info
 
 %changelog
