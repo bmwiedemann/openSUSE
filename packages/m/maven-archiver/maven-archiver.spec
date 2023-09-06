@@ -1,7 +1,7 @@
 #
 # spec file for package maven-archiver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,14 @@
 
 %bcond_with tests
 Name:           maven-archiver
-Version:        3.5.0
+Version:        3.6.1
 Release:        0
 Summary:        Maven Archiver
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/shared/maven-archiver/
-Source0:        http://repo1.maven.org/maven2/org/apache/maven/%{name}/%{version}/%{name}-%{version}-source-release.zip
+URL:            https://maven.apache.org/shared/maven-archiver/
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
-Patch0:         0001-Port-tests-to-Eclipse-Aether.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -37,19 +36,7 @@ BuildRequires:  plexus-interpolation >= 1.25
 BuildRequires:  plexus-utils >= 3.3.0
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
-BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-BuildRequires:  apache-commons-compress
-BuildRequires:  apache-commons-io
-BuildRequires:  assertj-core
-BuildRequires:  maven-resolver-api
-BuildRequires:  plexus-io
-BuildRequires:  plexus-utils
-%endif
 
 %description
 The Maven Archiver is used by other Maven plugins
@@ -65,7 +52,8 @@ Javadoc for %{name}.
 %prep
 %setup -q
 cp %{SOURCE1} build.xml
-%patch0 -p1
+
+%pom_xpath_remove pom:project/pom:parent/pom:relativePath
 
 %build
 mkdir -p lib
@@ -77,34 +65,28 @@ build-jar-repository -s lib \
   plexus/interpolation \
   plexus/archiver
 
-%if %{with tests}
-  build-jar-repository -s lib \
-    assertj-core/assertj-core \
-    maven-resolver/maven-resolver-api \
-    maven/maven-settings \
-    plexus/io \
-    commons-compress \
-    commons-io \
-    plexus/utils
-%endif
-
 %{ant} \
-%if %{without tests}
-  -Dtest.skip=true \
-%endif
   jar javadoc
 
-%{mvn_artifact} pom.xml target/%{name}-%{version}.jar
-
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE
 %doc NOTICE
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE
 %doc NOTICE
 
