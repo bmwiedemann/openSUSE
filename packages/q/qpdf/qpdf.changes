@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep  4 13:06:10 UTC 2023 - pgajdos@suse.com
+
+- version update to 11.6.0
+  - Bug fixes:
+    - Fix corner case in the ASCII85 decoder.
+    - Properly report warnings when ``--pages`` is used and the
+      warnings appear in other than the primary file.
+    - Improve ``--bash-completion`` and ``--zsh-completion`` to better
+      support paths with spaces in them.
+    - Move detection of random number device from compile-time to
+      runtime to improve cross compilation.
+    - Fix bugs around attempting to copy ``/Pages`` objects with
+      ``copyForeignObject`` (which explicitly doesn't allow this).
+
+-------------------------------------------------------------------
 Thu Jul 13 11:54:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 11.5.0:
