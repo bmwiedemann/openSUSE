@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  5 16:24:53 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to 0.32.1:
+  * Weather(metno): stop using an API which was terminated on August 31, 2023. The functionality of the block is not affected, but all i3status-rust versions older than 0.32.1 will be unable to use met.no weather service.
+
+-------------------------------------------------------------------
+Tue Sep  5 16:24:53 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to 0.32.0
+  * Update default memory format.
+  * Fix inconsistent rounding in .eng() formatter.
+  * AMD GPU: select device automatically if device is not set.
+
+-------------------------------------------------------------------
 Fri Aug  4 10:45:58 UTC 2023 - Dawid Adam <nyslay@gmail.com>
 
 - Update to version 0.31.9:
