@@ -8701,6 +8701,7 @@ unsorted:
   - junit5-bom 
   - junit5-guide 
   - junit5-javadoc 
+  - jupyter-anywidget 
   - jupyter-bqplot-jupyterlab 
   - jupyter-bqplot-notebook 
   - jupyter-cadabra2-kernel 
@@ -10518,7 +10519,7 @@ unsorted:
   - libabigail2 
   - libabiword-3_0 
   - libabiword-3_0-devel 
-  - libabsl2301_0_0-32bit 
+  - libabsl2308_0_0-32bit 
   - libabw-devel 
   - libabw-devel-doc 
   - libabw-tools 
@@ -12122,7 +12123,7 @@ unsorted:
   - libglog0 
   - libgloox18 
   - libglpk40 
-  - libglslang12-32bit 
+  - libglslang13-32bit 
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglusterfs0 
@@ -12219,9 +12220,9 @@ unsorted:
   - libgravatar-devel 
   - libgromacs8 
   - libgromacs_mpi8 
-  - libgrpc++1_57 
-  - libgrpc1_57 
-  - libgrpc34 
+  - libgrpc++1_58 
+  - libgrpc1_58 
+  - libgrpc35 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -12840,7 +12841,7 @@ unsorted:
   - libknet1-crypto-plugins-all 
   - libknet1-devel 
   - libknet1-plugins-all 
-  - libknot13 
+  - libknot14 
   - libkokkos-4_1 
   - libkolabxml-devel 
   - libkomparediff2-devel 
@@ -15337,7 +15338,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
-  - libupb34 
+  - libupb35 
   - libupm1 
   - libupnp-devel 
   - libupnpp-devel 
@@ -16958,7 +16959,6 @@ unsorted:
   - maven-plugin-tools-java 
   - maven-plugin-tools-javadoc 
   - maven-plugin-tools-model 
-  - maven-plugins-pom 
   - maven-profile 
   - maven-project 
   - maven-remote-resources-plugin 
@@ -16995,7 +16995,6 @@ unsorted:
   - maven-settings 
   - maven-shade-plugin 
   - maven-shade-plugin-javadoc 
-  - maven-shared 
   - maven-shared-incremental 
   - maven-shared-incremental-javadoc 
   - maven-shared-io 
@@ -22425,6 +22424,7 @@ unsorted:
   - python-mpi4py-common-devel 
   - python-mpi4py-doc 
   - python-mpld3-doc 
+  - python-murmurhash-devel 
   - python-nautilus-common-devel 
   - python-nautilus-common-files 
   - python-ncclient-doc 
@@ -23142,6 +23142,7 @@ unsorted:
   - python310-anyio 
   - python310-anyjson 
   - python310-anymarkup-core 
+  - python310-anywidget 
   - python310-apache-libcloud 
   - python310-apacheconfig 
   - python310-apfel 
@@ -24796,6 +24797,7 @@ unsorted:
   - python310-multivolumefile 
   - python310-munch 
   - python310-munkres 
+  - python310-murmurhash 
   - python310-musicbrainzngs 
   - python310-mutagen 
   - python310-mutatorMath 
@@ -26131,6 +26133,7 @@ unsorted:
   - python310-urllib3 
   - python310-urllib3_1 
   - python310-urwid 
+  - python310-urwid-readline 
   - python310-usbsdmux 
   - python310-user-agents 
   - python310-user_agent 
@@ -26616,6 +26619,7 @@ unsorted:
   - python311-anyascii 
   - python311-anyjson 
   - python311-anymarkup-core 
+  - python311-anywidget 
   - python311-apache-libcloud 
   - python311-apacheconfig 
   - python311-apfel 
@@ -28189,6 +28193,7 @@ unsorted:
   - python311-multivolumefile 
   - python311-munch 
   - python311-munkres 
+  - python311-murmurhash 
   - python311-musicbrainzngs 
   - python311-mutagen 
   - python311-mutatorMath 
@@ -29448,6 +29453,7 @@ unsorted:
   - python311-urlgrabber 
   - python311-urllib3_1 
   - python311-urwid 
+  - python311-urwid-readline 
   - python311-usbsdmux 
   - python311-user-agents 
   - python311-user_agent 
@@ -29973,6 +29979,7 @@ unsorted:
   - python39-anyio 
   - python39-anyjson 
   - python39-anymarkup-core 
+  - python39-anywidget 
   - python39-apache-libcloud 
   - python39-apacheconfig 
   - python39-apfel 
@@ -31626,6 +31633,7 @@ unsorted:
   - python39-multivolumefile 
   - python39-munch 
   - python39-munkres 
+  - python39-murmurhash 
   - python39-musicbrainzngs 
   - python39-mutagen 
   - python39-mutatorMath 
@@ -32959,6 +32967,7 @@ unsorted:
   - python39-urllib3 
   - python39-urllib3_1 
   - python39-urwid 
+  - python39-urwid-readline 
   - python39-usbsdmux 
   - python39-user-agents 
   - python39-user_agent 
