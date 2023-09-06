@@ -163,4 +163,12 @@
   * Removed use of `gssntlmssp` to simplify codebase and ensure a</comment>
     <requestid>1085986</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4d934ffda3f3e4c563cfa21a16a6d602</srcmd5>
+    <version>0.9.2</version>
+    <time>1694019416</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109000</requestid>
+  </revision>
 </revisionlist>
