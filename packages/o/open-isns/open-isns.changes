@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  5 11:59:19 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable SLP by default for Factory and ALP (bsc#1214884)
+
+-------------------------------------------------------------------
 Thu Sep 08 18:40:34 UTC 2022 - lduncan@suse.com
 
 - Update to version 0.102:

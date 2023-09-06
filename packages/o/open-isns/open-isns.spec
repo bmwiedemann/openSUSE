@@ -1,7 +1,7 @@
 #
 # spec file for package open-isns
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} >= 1600
+%bcond_with slp
+%else
+%bcond_without slp
+%endif
 
 Name:           open-isns
 Summary:        Partial Implementation of iSNS iSCSI registration
@@ -31,7 +37,9 @@ BuildRequires:  automake
 BuildRequires:  glibc-devel
 BuildRequires:  make
 BuildRequires:  meson >= 0.55.0
+%if %{with slp}
 BuildRequires:  openslp-devel
+%endif
 BuildRequires:  openssl-devel
 BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}
@@ -62,7 +70,12 @@ Files to develop an application using the open-isns library.
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
-%meson --default-library=both
+%meson --default-library=both \
+%if %{with slp}
+       -Dslp=enabled
+%else
+       -Dslp=disabled
+%endif
 %meson_build
 
 %install

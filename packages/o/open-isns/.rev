@@ -139,4 +139,12 @@ Creates two RPMs: open-isns, and open-isns-devel</comment>
     <comment></comment>
     <requestid>1002212</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>efd533d49005d7b5636ba7096c65d6e5</srcmd5>
+    <version>0.102</version>
+    <time>1694019386</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109137</requestid>
+  </revision>
 </revisionlist>
