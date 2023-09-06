@@ -1,7 +1,7 @@
 #
 # spec file for package Cadence
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://kx.studio/Applications:Cadence
 Source:         https://github.com/falkTX/Cadence/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch1:         0001-cadence_aloop_daemon-place-lockfile-into-non-public-.patch
+Patch2:         0001-cadence.py-wine-ASIO-settings-use-safe-tempfile.patch
 BuildRequires:  alsa-devel
 BuildRequires:  dbus-1-python3-devel
 BuildRequires:  libjack-devel
@@ -54,7 +56,7 @@ They are:
 Some of these also have sub-tools, such as Cadence-JackMeter and Claudia-Launcher.
 
 %prep
-%setup -q -n Cadence-%{version}
+%autosetup -p1 -n Cadence-%{version}
 
 %build
 export CXXFLAGS="%{optflags}"
