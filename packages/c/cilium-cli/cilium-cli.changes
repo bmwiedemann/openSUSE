@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue Sep 05 13:08:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.7:
+  * Prepare for v0.15.7 release
+  * connectivity: Use slices.Clone
+  * connectivity: Add secondary network NodePort tests
+  * chore(deps): update aws-actions/configure-aws-credentials
+    action to v3.0.1
+  * chore(deps): update docker/setup-buildx-action action to
+    v2.10.0
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    ba1b914
+  * Update bgp.go#2
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    171ecc4
+  * fix(deps): update module github.com/cilium/cilium to v1.14.1
+  * chore(deps): update aws-actions/configure-aws-credentials
+    action to v3
+  * chore(deps): update actions/checkout action to v3.6.0
+  * connectivity: add and complete a few missing comments
+  * connectivity: display reason for skipping Tests and Scenarios
+  * Clarify classic / helm mode incompatibilities
+  * install: remove deprecated kube-proxy-replacement CLI flag
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.54.2
+  * implement helm get values with sysdump
+  * go.mod: bump Go to 1.21
+  * connectivity: print all captured packets
+  * connectivity: fix node-to-node encryption tests
+  * connectivity: document feature detection order
+  * connectivity: fix tunnel feature defaults
+  * Fine tune CODEOWNERS file
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    196c2d0
+  * install: Remove some auto-detection log messages
+  * fix(deps): update all go dependencies main
+  * chore(deps): update golangci/golangci-lint-action action to
+    v3.7.0
+  * chore(deps): update docker.io/coredns/coredns docker tag to
+    v1.11.1
+  * chore(deps): update dependency cilium/cilium to v1.14.1
+
+-------------------------------------------------------------------
+Tue Sep 05 11:06:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.6:
+  * Prepare for v0.15.6 release
+  * fix(deps): update all go dependencies main
+  * chore(deps): update actions/setup-go action to v4.1.0
+  * Update missing dependencies to Go 1.21
+  * Bump k8s to 1.28
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.54.1
+  * chore(deps): update dependency go to v1.21.0
+  * Expand warning about big sysdump
+  * fix(deps): update all go dependencies main
+  * gha: exercise connectivity disruption tests
+  * disruption tests: check restart counts from both clusters
+  * disruption tests: fix wait for deployments
+  * disruption tests: create svc in both clusters and mark as
+    global
+  * connectivity tests: anticipate namespace creation in remote
+    cluster
+  * chore(deps): update dependency ubuntu to v22
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.54.0
+  * connectivity: get nodename on which a pod is running via
+    PodStatus
+  * chore(deps): update docker.io/coredns/coredns docker tag to
+    v1.11.0
+  * clustermesh: fix failure during CA certificate retrieval
+  * chore(deps): update dependency go to v1.20.7
+  * Update stable release to v0.15.5
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    c62ce11
+
+-------------------------------------------------------------------
 Thu Aug 03 17:42:29 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.5:
