@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Sep 05 14:28:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.21.0:
+  * test: e2e test reliability improvements (#10950)
+  * build(deps): upgrade to compose-go v1.18.3 (#10947)
+  * added the dot at the end of the sentence
+  * add support for attributes exposed by `docker ps`
+  * align docker compose ps with docker CLI to support --format
+  * watch: only allow a single instance per-project
+  * ci: bump golangci-lint to v1.54.2
+  * logs: fix for missing output on container exit (#10925)
+  * replace dockerfile/dockerignore with patternmatcher/ignorefile
+  * go.mod: github.com/moby/patternmatcher v0.6.0
+  * go.mod: remove some outdated comments
+  * otel: add `include` to project up span
+  * build(deps): bump github.com/compose-spec/compose-go from
+    1.18.1 to 1.18.2 (#10915)
+  * include: add experimental support for Git resources (#10811)
+  * up: handle various attach use cases better
+  * build: use correct values for proxy variables (#10908)
+  * warn user secret uid/gid/mode is not supported
+
+-------------------------------------------------------------------
+Tue Sep 05 14:26:37 UTC 2023 - kastl@b1-systems.de
+
+- BuildRequire go1.21
+- Update to version 2.20.3:
+  * build(deps): bump github.com/moby/buildkit
+  * bump compose-go to version v1.18.1
+  * bump compose-go to version v1.18.0
+  * update README and CI workflows to match main branch
+  * upgrade Golang to 1.21
+  * build: fix missing proxy build args for classic builder
+    (#10887)
+  * trace: do not block connecting to OTLP endpoint (#10882)
+  * watch: enable tar-based syncer by default (#10877)
+  * Display builder's name on the first build line. Code borrowed
+    from buildx commands/build.go.
+  * up: do not warn on successful optional dependency complete
+    (#10870)
+  * Improve shell completion for `--project-directory`
+  * Add shell completion for `--profile`
+  * progress: minor correctness fixes (#10871)
+  * doc: update Config() comment in API Service interface (#10840)
+  * Improve buildkit node creation (#10843)
+  * watch: batch & de-duplicate file events (#10865)
+  * watch: support multiple containers for tar implementation
+    (#10860)
+  * test: temporarily disable an exit-code-from Cucumber test case
+    (#10875)
+  * test: fix e2e test for privileged builds (#10873)
+  * update to go1.20.7
+  * build(deps): bump github.com/docker/docker from
+    24.0.5-0.20230714235725-36e9e796c6fc+incompatible to
+    24.0.5+incompatible (#10844)
+  * build(deps): bump github.com/containerd/containerd from 1.7.2
+    to 1.7.3 (#10850)
+  * build(deps): bump google.golang.org/grpc from 1.56.2 to 1.57.0
+    (#10847)
+  * watch: add tar sync implementation (#10853)
+  * build(deps): bump github.com/docker/cli
+
+-------------------------------------------------------------------
 Wed Jul 19 14:01:30 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.20.2:
