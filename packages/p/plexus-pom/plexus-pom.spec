@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-pom
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           plexus-pom
-Version:        5.1
+Version:        14
 Release:        0
 Summary:        Root Plexus Projects POM
 License:        Apache-2.0
@@ -25,7 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/codehaus-plexus/plexus-pom
 Source0:        https://github.com/codehaus-plexus/plexus-pom/archive/plexus-%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -35,21 +35,20 @@ Plexus packages.
 
 %prep
 %setup -q -n plexus-pom-plexus-%{version}
-# * require: org.codehaus.plexus plexus-stylus-skin 1.0
-# org.apache.maven.wagon wagon-webdav-jackrabbit 1.0
-%pom_remove_plugin :maven-site-plugin
 
-%pom_remove_plugin org.codehaus.mojo:findbugs-maven-plugin
-%pom_remove_plugin org.codehaus.mojo:taglist-maven-plugin
-#Temporary?
+%pom_remove_dep org.junit:junit-bom
+%pom_remove_plugin :maven-site-plugin
 %pom_remove_plugin :maven-enforcer-plugin
+%pom_remove_plugin :taglist-maven-plugin
+%pom_remove_plugin :spotless-maven-plugin
+
 cp -p %{SOURCE1} LICENSE
 
 %build
 
 %install
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/plexus.pom
+%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{name}/plexus.pom
 %add_maven_depmap %{name}/plexus.pom
 
 %files -f .mfiles
