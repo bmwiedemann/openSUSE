@@ -136,4 +136,17 @@
     <comment></comment>
     <requestid>1089368</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>28b134a23f4d94be1505271a4b49166f</srcmd5>
+    <version>2.5.0</version>
+    <time>1694019590</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 2.5.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1109197 from glaubitz)</comment>
+    <requestid>1109249</requestid>
+  </revision>
 </revisionlist>
