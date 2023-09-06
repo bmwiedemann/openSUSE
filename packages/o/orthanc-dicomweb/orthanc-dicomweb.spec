@@ -21,7 +21,7 @@ Name:           orthanc-dicomweb
 Summary:        WebViewer plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.14
+Version:        1.15
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-dicom-web/OrthancDicomWeb-%{version}.tar.gz
@@ -35,6 +35,7 @@ Source7:        bootstrap-vue-2.0.0-rc.24-dist.tar.gz
 Source8:        babel-polyfill-6.26.0.min.js.gz
 Source9:        orthanc-dicomweb-readme.SUSE
 Source10:       dicomweb.json
+Patch0:         framework.diff
 
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
@@ -64,6 +65,7 @@ WebViewer plugin for Orthanc
 
 %prep
 %setup -q -n OrthancDicomWeb-%{version}
+%autopatch -p1
 
 #OrthanPlugins may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web

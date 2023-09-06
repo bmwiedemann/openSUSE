@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep  3 22:23:04 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.15 
+
+* speed improvement:
+  - Now storing the output of /dicom-web/studies/../series/../metadata route in an attachment that can be used
+    by the "Full" mode.
+    The json file is gzipped and stored in attachment 4301 everytime a series is stable or the first time
+    its /dicom-web/studies/../series/../metadata route is called in "Full" mode if the attachment does not exist yet.
+    A new route /studies/{orthancId}/update-dicomweb-cache has also been added to allow e.g. the Housekeeper plugin
+    to generate these attachment for old studies.
+    This cache can be disabled by setting "EnableMetadataCache" to false.  However, disabling the cache
+    won't delete the already cached data.  You may call DELETE /series/../attachments/4031 to clear the cache.
+* framework.diff added to compile against Orthanc framework
+
+-------------------------------------------------------------------
 Tue Jul 11 13:57:47 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.14
