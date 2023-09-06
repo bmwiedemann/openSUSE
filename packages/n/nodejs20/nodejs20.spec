@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs20
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,23 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-###########################################################
-#
-#   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!
-#
-# This spec file is generated from a template hosted at
-# https://github.com/AdamMajer/nodejs-packaging
-#
-###########################################################
 
-# Fedora doesn't have rpm-config-SUSE which provides
-# ext_man in /usr/lib/rpm/macros.d/macros.obs
 %if 0%{?fedora_version}
 %define ext_man .gz
 %endif
 
 Name:           nodejs20
-Version:        20.5.1
+Version:        20.6.0
 Release:        0
 
 # Double DWZ memory limits
@@ -129,12 +119,12 @@ Source1:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt
 Source2:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt.sig
 Source3:        nodejs.keyring
 
-# Python 3.4 compatible node-gyp 
-### https://github.com/nodejs/node-gyp.git 
-### git archive v7.1.2 | xz > node-gyp_7.1.2.tar.xz 
-Source5:        node-gyp_7.1.2.tar.xz 
-# Only required to run unit tests in NodeJS 10+ 
-Source10:       update_npm_tarball.sh 
+# Python 3.4 compatible node-gyp
+### https://github.com/nodejs/node-gyp.git
+### git archive v7.1.2 | xz > node-gyp_7.1.2.tar.xz
+Source5:        node-gyp_7.1.2.tar.xz
+# Only required to run unit tests in NodeJS 10+
+Source10:       update_npm_tarball.sh
 Source11:       node_modules.tar.xz
 Source20:       bash_output_helper.bash
 
@@ -144,8 +134,6 @@ Patch3:         fix_ci_tests.patch
 Patch5:         sle12_python3_compat.patch
 Patch7:         manual_configure.patch
 Patch13:        openssl_binary_detection.patch
-
-
 
 ## Patches specific to SUSE and openSUSE
 Patch100:       linker_lto_jobs.patch
@@ -174,8 +162,8 @@ Patch308:       node-gyp-config.patch
 Patch309:       gcc13.patch
 Patch311:       z13.patch
 
-BuildRequires:  pkg-config
 BuildRequires:  fdupes
+BuildRequires:  pkg-config
 BuildRequires:  procps
 BuildRequires:  xz
 BuildRequires:  zlib-devel
@@ -195,10 +183,10 @@ BuildRequires:  config(netcfg)
 %if 0%{?suse_version} == 1110
 # GCC 5 is only available in the SUSE:SLE-11:SP4:Update repository (SDK).
 %if %node_version_number >= 8
-BuildRequires:   gcc5-c++
+BuildRequires:  gcc5-c++
 %define forced_gcc_version 5
 %else
-BuildRequires:   gcc48-c++
+BuildRequires:  gcc48-c++
 %define forced_gcc_version 4.8
 %endif
 %endif
@@ -208,15 +196,15 @@ BuildRequires:   gcc48-c++
 # for SLE-12:Update targets
 %if 0%{?suse_version} == 1315
 %if %node_version_number >= 17
-BuildRequires:   gcc12-c++
+BuildRequires:  gcc12-c++
 %define forced_gcc_version 12
 %else
 %if %node_version_number >= 14
-BuildRequires:   gcc9-c++
+BuildRequires:  gcc9-c++
 %define forced_gcc_version 9
 %else
 %if %node_version_number >= 8
-BuildRequires:   gcc7-c++
+BuildRequires:  gcc7-c++
 %define forced_gcc_version 7
 %endif
 %endif
@@ -225,7 +213,7 @@ BuildRequires:   gcc7-c++
 
 %if 0%{?suse_version} == 1500
 %if %node_version_number >= 17
-BuildRequires:   gcc12-c++
+BuildRequires:  gcc12-c++
 %define forced_gcc_version 12
 %endif
 %endif
@@ -235,7 +223,6 @@ BuildRequires:   gcc12-c++
 %if ! 0%{?forced_gcc_version:1}
 BuildRequires:  gcc-c++
 %endif
-
 
 # Python dependencies
 %if %node_version_number >= 14
@@ -262,8 +249,8 @@ BuildRequires:  python
 %endif
 
 %if 0%{?suse_version} >= 1500 && %{node_version_number} >= 10
-BuildRequires:  user(nobody)
 BuildRequires:  group(nobody)
+BuildRequires:  user(nobody)
 %endif
 
 # shared openssl
@@ -278,10 +265,9 @@ BuildRequires:  openssl >= %{openssl_req_ver}
 BuildRequires:  (libopenssl1_1-hmac if libopenssl-1_1-devel)
 BuildRequires:  (libopenssl3-hmac if libopenssl-3-devel)
 %else
-BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
 BuildRequires:  libopenssl1_1-hmac
+BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
 %endif
-
 
 # /suse_version
 %endif
@@ -326,7 +312,7 @@ BuildRequires:  valgrind
 %if %{with libalternatives}
 Suggests:       alts
 %else
-Requires(postun): %{_sbindir}/update-alternatives
+Requires(postun):%{_sbindir}/update-alternatives
 %endif
 # either for update-alternatives, or their removal
 Requires(post): %{_sbindir}/update-alternatives
@@ -365,8 +351,8 @@ ExclusiveArch:  not_buildable
 %endif
 %endif
 
-Provides:       bundled(uvwasi) = 0.0.18
 Provides:       bundled(libuv) = 1.46.0
+Provides:       bundled(uvwasi) = 0.0.18
 Provides:       bundled(v8) = 11.3.244.8
 %if %{with intree_brotli}
 Provides:       bundled(brotli) = 1.0.9
@@ -374,13 +360,12 @@ Provides:       bundled(brotli) = 1.0.9
 BuildRequires:  pkgconfig(libbrotlidec)
 %endif
 
-
+Provides:       bundled(base64) = 0.5.0
 Provides:       bundled(llhttp) = 8.1.1
 Provides:       bundled(ngtcp2) = 0.8.1
-Provides:       bundled(base64) = 0.5.0
-Provides:       bundled(simdutf) = 3.2.14
+Provides:       bundled(simdutf) = 3.2.17
 # bundled url-ada parser, not ada
-Provides:       bundled(ada) = 2.5.1
+Provides:       bundled(ada) = 2.6.0
 
 Provides:       bundled(node-acorn) = 8.10.0
 Provides:       bundled(node-acorn-walk) = 8.2.0
@@ -391,7 +376,7 @@ Provides:       bundled(node-cjs-module-lexer) = 1.2.2
 Provides:       bundled(node-corepack) = 0.19.0
 Provides:       bundled(node-minimatch) = 9.0.3
 Provides:       bundled(node-streamsearch) = 1.1.0
-Provides:       bundled(node-undici) = 5.22.1
+Provides:       bundled(node-undici) = 5.23.0
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js
@@ -402,8 +387,8 @@ provided by npm.
 Summary:        Development headers for NodeJS 20.x
 Group:          Development/Languages/NodeJS
 Provides:       nodejs-devel = %{version}
-Requires:       npm20 = %{version}
 Requires:       %{name} = %{version}
+Requires:       npm20 = %{version}
 
 %description devel
 This package provides development headers for Node.js needed for creation
@@ -420,12 +405,12 @@ Requires:       nodejs-common
 Requires:       nodejs20 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm(npm) = 9.8.0
 Provides:       npm = %{version}
+Provides:       npm(npm) = 9.8.1
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
-Requires:       user(nobody)
 Requires:       group(nobody)
+Requires:       user(nobody)
 %endif
 %endif
 Provides:       bundled(node-abbrev) = 1.1.1
@@ -444,14 +429,14 @@ Provides:       bundled(node-are-we-there-yet) = 3.0.1
 Provides:       bundled(node-are-we-there-yet) = 4.0.0
 Provides:       bundled(node-balanced-match) = 1.0.2
 Provides:       bundled(node-base64-js) = 1.5.1
-Provides:       bundled(node-bin-links) = 4.0.1
+Provides:       bundled(node-bin-links) = 4.0.2
 Provides:       bundled(node-binary-extensions) = 2.2.0
 Provides:       bundled(node-brace-expansion) = 1.1.11
 Provides:       bundled(node-brace-expansion) = 2.0.1
 Provides:       bundled(node-buffer) = 6.0.3
 Provides:       bundled(node-builtins) = 5.0.1
 Provides:       bundled(node-cacache) = 17.1.3
-Provides:       bundled(node-chalk) = 5.2.0
+Provides:       bundled(node-chalk) = 5.3.0
 Provides:       bundled(node-chownr) = 2.0.0
 Provides:       bundled(node-ci-info) = 3.8.0
 Provides:       bundled(node-cidr-regex) = 3.1.1
@@ -525,7 +510,7 @@ Provides:       bundled(node-just-diff) = 6.0.2
 Provides:       bundled(node-just-diff-apply) = 5.5.0
 Provides:       bundled(node-libnpmaccess) = 7.0.2
 Provides:       bundled(node-libnpmdiff) = 5.0.19
-Provides:       bundled(node-libnpmexec) = 6.0.2
+Provides:       bundled(node-libnpmexec) = 6.0.3
 Provides:       bundled(node-libnpmfund) = 4.0.19
 Provides:       bundled(node-libnpmhook) = 9.0.3
 Provides:       bundled(node-libnpmorg) = 5.0.4
@@ -539,7 +524,7 @@ Provides:       bundled(node-lru-cache) = 7.18.3
 Provides:       bundled(node-lru-cache) = 9.1.1
 Provides:       bundled(node-make-fetch-happen) = 11.1.1
 Provides:       bundled(node-minimatch) = 3.1.2
-Provides:       bundled(node-minimatch) = 9.0.1
+Provides:       bundled(node-minimatch) = 9.0.3
 Provides:       bundled(node-minipass) = 3.3.6
 Provides:       bundled(node-minipass) = 5.0.0
 Provides:       bundled(node-minipass-collect) = 1.0.2
@@ -596,7 +581,7 @@ Provides:       bundled(node-retry) = 0.12.0
 Provides:       bundled(node-rimraf) = 3.0.2
 Provides:       bundled(node-safe-buffer) = 5.2.1
 Provides:       bundled(node-safer-buffer) = 2.1.2
-Provides:       bundled(node-semver) = 7.5.2
+Provides:       bundled(node-semver) = 7.5.4
 Provides:       bundled(node-set-blocking) = 2.0.0
 Provides:       bundled(node-shebang-command) = 2.0.0
 Provides:       bundled(node-shebang-regex) = 3.0.0
@@ -611,12 +596,12 @@ Provides:       bundled(node-spdx-exceptions) = 2.3.0
 Provides:       bundled(node-spdx-expression-parse) = 3.0.1
 Provides:       bundled(node-spdx-license-ids) = 3.0.13
 Provides:       bundled(node-ssri) = 10.0.4
-Provides:       bundled(node-string_decoder) = 1.3.0
 Provides:       bundled(node-string-width) = 4.2.3
 Provides:       bundled(node-string-width) = 5.1.2
+Provides:       bundled(node-string_decoder) = 1.3.0
 Provides:       bundled(node-strip-ansi) = 6.0.1
 Provides:       bundled(node-strip-ansi) = 7.1.0
-Provides:       bundled(node-supports-color) = 9.3.1
+Provides:       bundled(node-supports-color) = 9.4.0
 Provides:       bundled(node-tar) = 6.1.15
 Provides:       bundled(node-text-table) = 0.2.0
 Provides:       bundled(node-tiny-relative-date) = 1.3.0
@@ -734,8 +719,6 @@ find -name \*~ -print0 -delete
 
 # abnormalities from patching
 find \( -name \*.js.orig -or -name \*.md.orig -or -name \*.1.orig \) -delete
-
-
 
 %build
 # normalize shebang
@@ -1096,6 +1079,7 @@ update-alternatives --remove npm-default %{_bindir}/npm%{node_version_number}
 update-alternatives --remove npx-default %{_bindir}/npx%{node_version_number}
 
 %else
+
 %pre
 # remove files that are no longer owned but provided by update-alternatives
 if ! [ -L %{_mandir}/man1/node.1%{ext_man} ]; then

@@ -137,4 +137,16 @@ versioned.patch: refreshed</comment>
     <comment>- Temporarily bundle ICU for SLE15 SP6 (jsc#PED-4819)</comment>
     <requestid>1105924</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d3cb48443a84431d522edc80046f05f1</srcmd5>
+    <version>20.6.0</version>
+    <time>1694019361</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20.6.0:
+  * add support for .env files to configure envrionment variables
+  * import.meta.resolve unflagged
+  * deps: npm updated to 9.8.1
+- nodejs.keyring: updated to include current upstream releasers</comment>
+    <requestid>1109025</requestid>
+  </revision>
 </revisionlist>
