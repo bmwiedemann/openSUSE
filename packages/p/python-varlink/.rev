@@ -36,4 +36,14 @@
   * fix: reduce test-requirements.txt</comment>
     <requestid>945354</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>551beb664946a60a650f1471a9459fe2</srcmd5>
+    <version>31.0.0</version>
+    <time>1694019411</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Drop unneeded {Build,}Requires on future.</comment>
+    <requestid>1108983</requestid>
+  </revision>
 </revisionlist>
