@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep  4 15:59:43 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 3.0.10:
+  * Security impacting issue (fix bsc#1213702, CVE-2023-38285)
+    - Fix: worst-case time in implementation of four transformations
+    - Additional information on this issue is available at 
+      https://www.trustwave.com/resources/blogs/spiderlabs-blog/modsecurity-v3-dos-vulnerability-in-four-transformations-cve-2023-38285/
+  * Enhancements and bug fixes
+    - Add TX synonym for MSC_PCRE_LIMITS_EXCEEDED
+    - Make MULTIPART_PART_HEADERS accessible to lua
+    - Fix: Lua scripts cannot read whole collection at once
+    - Fix: quoted Include config with wildcard
+    - Support isolated PCRE match limits
+    - Fix: meta actions not applied if multiMatch in first rule of chain
+    - Fix: audit log may omit tags when multiMatch
+    - Exclude CRLF from MULTIPART_PART_HEADER value
+    - Configure: use AS_ECHO_N instead echo -n
+    - Adjust position of memset from 2890
+
+-------------------------------------------------------------------
 Tue May  9 11:30:26 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 3.0.9:
