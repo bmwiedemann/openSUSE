@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Sep 05 15:00:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.12.1:
+  * Fix panic when waiting for global resources
+
+-------------------------------------------------------------------
+Tue Sep 05 14:57:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.12.0:
+  * Update example modules
+    - podinfo v6.4.1
+    - redis v7.2.0
+    - minimal v0.1.0
+  * Mark image fields as required Use CUE 0.6 required fields
+    feature for better error messages when required fields are
+    missing from values.
+  * Build with Go 1.21
+  * Bump the ci group with 2 updates
+  * Run server-side apply operations in parallel Speed up the
+    Kubernetes resources reconciliation by running the server-side
+    apply operations in parallel.
+  * Set standard Kubernetes labels: app name and version
+  * Use metadata abstraction in the module template
+  * Introduce Kubernetes metadata CUE definition
+  * Inject version info Add optional tags to inject the module
+    version and Kubernetes version at runtime.
+  * Update `cuelang.org/go` to v0.6.0
+  * Bump the ci group with 3 updates
+  * Document how to change the apply behaviour
+  * Add support for one-off resources To apply resources only if
+    they don't exist on the cluster, module authors can annotate
+    them with `action.timoni.sh/one-off: "enabled"`.
+  * Update dependencies
+  * Bump the ci group with 2 updates
+
+-------------------------------------------------------------------
 Tue Aug 01 10:00:45 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.11.1:
