@@ -49,4 +49,16 @@
 </comment>
     <requestid>1060866</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>1ad7932b1786ed77ff1e6d46583e6b2c</srcmd5>
+    <version>0.06</version>
+    <time>1694019508</time>
+    <user>anag+factory</user>
+    <comment>- Stop patching files that we ship directly, therefore
+  * Remove patch fix-tests.patch
+  * Remove patch use_unittest.patch
+- Switch to pyproject, autosetup and pyunittest macros.
+- Add patch remove-future-requirement.patch, remove requirement of future</comment>
+    <requestid>1109157</requestid>
+  </revision>
 </revisionlist>

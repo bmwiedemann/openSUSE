@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep  6 03:05:47 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Stop patching files that we ship directly, therefore
+  * Remove patch fix-tests.patch
+  * Remove patch use_unittest.patch
+- Switch to pyproject, autosetup and pyunittest macros.
+- Add patch remove-future-requirement.patch, remove requirement of future
+
+-------------------------------------------------------------------
 Wed Jan 25 11:30:57 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Make package compatible with python3.6

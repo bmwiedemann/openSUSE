@@ -22,21 +22,18 @@ Version:        0.06
 Release:        0
 Summary:        The Python "ana" module
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/zardus/ana
 Source:         https://files.pythonhosted.org/packages/source/a/ana/ana-%{version}.tar.gz
 # https://github.com/zardus/ana/issues/13
-Source2:        https://raw.githubusercontent.com/zardus/ana/master/test.py
+Source2:        test.py
 Source3:        https://raw.githubusercontent.com/zardus/ana/master/test_pickle.p
-# https://github.com/zardus/ana/pull/14
-Patch0:         use_unittest.patch
-# https://github.com/zardus/ana/pull/15
-Patch1:         fix-tests.patch
-BuildRequires:  %{python_module future}
+# https://github.com/zardus/ana/commit/7f3c0dd8bd9ed89e3e146f934212516831147c51
+Patch0:         remove-future-requirement.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-future
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,21 +41,19 @@ BuildArch:      noarch
 A Python module that provides an undocumented data layer for Python objects.
 
 %prep
-%setup -q -n ana-%{version}
-[ -e test.py ] || cp %{SOURCE2} test.py
-[ -e test_pickle.p ] || cp %{SOURCE3} test_pickle.p
-%patch0
-%patch1 -p1
+%autosetup -p1 -n ana-%{version}
+cp %{SOURCE2} test.py
+cp %{SOURCE3} test_pickle.p
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest discover
+%pyunittest discover
 
 %files %{python_files}
 %license LICENSE
