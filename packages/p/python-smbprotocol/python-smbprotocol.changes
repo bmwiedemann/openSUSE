@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  5 21:56:00 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.11.0
+  * Fix up pre authenticated session id lookups that were failing
+    with Linux ksmbd.
+  * Removes logging.NullHandler() being set in the root
+    smbprotocol namespace.
+  * Adds basic support for remote to local and vice versa file
+    operations with smbclient.shutil.copytree.
+  * Fixes DFS infinite recursion error when dealing with a file
+    that does not exist on a DFS namespace.
+
+-------------------------------------------------------------------
 Mon Dec  5 13:36:15 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.10.1 
