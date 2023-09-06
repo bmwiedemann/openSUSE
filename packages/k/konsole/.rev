@@ -1373,4 +1373,13 @@
     <comment>KDE Release Gear 23.08.0 (forwarded request 1105409 from krop)</comment>
     <requestid>1105741</requestid>
   </revision>
+  <revision rev="171" vrev="2">
+    <srcmd5>8914395e8b61d2c6e6297d02f2b315d3</srcmd5>
+    <version>23.08.0</version>
+    <time>1694019359</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream crash fix (kde#473043)
+  * 0001-Fix-crashes-in-testTerminalInterface.patch</comment>
+    <requestid>1108941</requestid>
+  </revision>
 </revisionlist>
