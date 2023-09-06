@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 05 14:24:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.45.0:
+  * chore: Replace ghodss/yaml with sigs.k8s.io/yaml (#858)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.55.0
+    to 0.56.0 (#860)
+  * cleanup: Use generics to simplify code for parse_config and
+    related builtins (#857)
+  * ci: Bump Go to 1.21.0 (#855)
+  * build(deps): bump alpine from 3.18.2 to 3.18.3 (#851)
+  * build(deps): bump golang from 1.20.7-alpine to 1.21.0-alpine
+    (#850)
+  * feat: added support for Azure DevOps output (#853)
+  * build(deps): bump golang from 1.20.6-alpine to 1.20.7-alpine
+    (#849)
+  * build(deps): bump github.com/open-policy-agent/opa from 0.54.0
+    to 0.55.0 (#848)
+  * fix: Use Bool instead of BoolP for three flags (#847)
+  * docs: Fix typo in options docs (#846)
+  * build(deps): bump golang from 1.20.5-alpine to 1.20.6-alpine
+    (#845)
+  * ci: Check GoReleaser config before performing any release
+    actions (#843)
+
+-------------------------------------------------------------------
 Sun Jul 09 12:43:41 UTC 2023 - kastl@b1-systems.de
 
 - (skipping non-existent release 0.44.0)
