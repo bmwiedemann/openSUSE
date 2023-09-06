@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/kanidm/ldap-proxy.git</param>
+              <param name="changesrevision">bcf97c9aa2164bf2c181030047be94152b4c19b5</param></service></servicedata>
