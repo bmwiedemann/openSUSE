@@ -127,4 +127,12 @@
     <comment>fix build with maven 3.9.2/maven-resolver 1.9.12</comment>
     <requestid>1093805</requestid>
   </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>81b667876367fcc7ab7015c62a3fa98d</srcmd5>
+    <version>0.13.18</version>
+    <time>1694019604</time>
+    <user>anag+factory</user>
+    <comment>fix build with newer sisu-mojos</comment>
+    <requestid>1109281</requestid>
+  </revision>
 </revisionlist>

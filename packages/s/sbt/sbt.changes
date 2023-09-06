@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  6 15:13:42 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with new sisu-mojos
+
+-------------------------------------------------------------------
 Mon Jun 19 16:03:07 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build against maven 3.9.2

@@ -396,6 +396,7 @@ mkdir %{ivy_local_dir}
 ./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.3.0.M1 --ignore "cdi-api"
 ./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.3.3 --ignore "cdi-api"
 ./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.3.5 --ignore "cdi-api"
+./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.9.0.M2 --ignore "cdi-api"
 
 ./climbing-nemesis.py org.slf4j slf4j-api %{ivy_local_dir} --version 1.7.25
 ./climbing-nemesis.py org.slf4j slf4j-api %{ivy_local_dir} --version 1.7.36
