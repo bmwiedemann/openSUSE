@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Sep 06 05:41:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.4:
+  * Add v0.8.4 release notes (#5656)
+  * Run Engine tests in dev Engine (on top of stable Engine)
+    (#5652)
+  * fix: switch to stable engine only case no local cli (#5654)
+  * core: default container tar export permissions to 0600 (#5649)
+  * feat: support version compatibility check (#5577)
+  * fix: NodeJS conflict between enumeration and string (#5645)
+  * fix: fix connect always timeout (#5646)
+
+-------------------------------------------------------------------
+Wed Sep 06 05:37:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.3:
+  * Add v0.8.3 release notes (#5641)
+  * docs: Updated some guides to use "dagger run" (#5604)
+  * Fix utf8 labels causing hang, clean up + fix label collection
+    in general (#5628)
+  * feat: show export host target (#5632)
+  * add changelogs for fixes (#5633)
+  * core: export files with same permissions as source (#5629)
+  * core: hide merge vertexes from output (#5630)
+  * feat: add more logs on dagger loading (#5436)
+  * Improve releasing during 0.8.2 (#5615)
+  * docs: quickstart layout width auto-expands so that playground
+    fits better (#5610)
+  * fix: fix example query in dagger query (#5622)
+
+-------------------------------------------------------------------
+Wed Sep 06 05:35:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.2:
+  * Generate v0.8.2 release notes (#5612)
+  * remote cache: improve http error checking (#5506)
+  * Preserve git email anonymity (one-way hash) (#5611)
+  * Add release note missed from previous PR (#5603)
+  * telemetry: fix labels not being included (#5602)
+  * docs: Added dagger run examples (#5529)
+  * core: add integ test for dagger run and showing progress
+    (#5582)
+  * docs: Added cookbook examples for Git dir ops (#5599)
+  * docs: Modified releases link to point to changelog (#5600)
+  * docs: Added "dagger run" to get started guides (#5591)
+  * docs: Updated some URLs to remove numeric ids (#5592)
+  * Improve releasing during v0.8.0 (#5569)
+  * chore: improve elixir bump version (#5527)
+  * docs: Updated multiarch examples with `mediatypes` (#5556)
+  * engine: fix combined cache manager to query local cache too.
+    (#5585)
+
+-------------------------------------------------------------------
 Sun Aug 06 07:55:27 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.8.1:
