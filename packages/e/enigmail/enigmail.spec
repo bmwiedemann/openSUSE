@@ -1,7 +1,7 @@
 #
 # spec file for package enigmail
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,6 +44,10 @@ OpenPGP support.
 
 %prep
 %setup -q -n enigmail
+if test -f /usr/lib/rpm/config.sub; then
+  # The file has been edited in a way that the automatic update fails
+  cp /usr/lib/rpm/config.sub .
+fi
 
 %build
 %configure
