@@ -743,4 +743,25 @@ Core and Builtins
   revert it).</comment>
     <requestid>1102235</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>4b13f8cdbfbf770842e81b87f3ec9a2e</srcmd5>
+    <version>3.8.18</version>
+    <time>1694019566</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.8.18 (bsc#1214692):
+  - gh-108310: Fixed an issue where instances of ssl.SSLSocket were
+    vulnerable to a bypass of the TLS handshake and included
+    protections (like certificate verification) and treating sent
+    unencrypted data as if it were post-handshake TLS encrypted data.
+    Security issue reported as CVE-2023-40217 by Aapo Oksman. Patch by
+    Gregory P. Smith.
+  - gh-107845: tarfile.data_filter() now takes the location of
+    symlinks into account when determining their target, so it will no
+    longer reject some valid tarballs with
+    LinkOutsideDestinationError.
+  - gh-107565: Update multissltests and GitHub CI workflows to use
+    OpenSSL 1.1.1v, 3.0.10, and 3.1.2.
+</comment>
+    <requestid>1109196</requestid>
+  </revision>
 </revisionlist>
