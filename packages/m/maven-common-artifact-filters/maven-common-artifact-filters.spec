@@ -1,7 +1,7 @@
 #
 # spec file for package maven-common-artifact-filters
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-%bcond_with tests
 Name:           maven-common-artifact-filters
-Version:        3.0.1
+Version:        3.3.2
 Release:        0
 Summary:        Maven Common Artifact Filters
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/shared/
-Source0:        http://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
+URL:            https://maven.apache.org/shared/
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
-Patch0:         0001-Remove-Maven-3.0-specific-code.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -35,19 +33,12 @@ BuildRequires:  maven-resolver-api
 BuildRequires:  maven-resolver-util
 BuildRequires:  maven-shared-utils
 BuildRequires:  sisu-plexus
+BuildRequires:  slf4j
 BuildRequires:  unzip
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-BuildRequires:  apache-commons-lang3
-BuildRequires:  easymock
-BuildRequires:  maven-plugin-testing-harness
-BuildRequires:  plexus-archiver
-BuildRequires:  plexus-utils
-%endif
 
 %description
 A collection of ready-made filters to control inclusion/exclusion of artifacts
@@ -63,12 +54,8 @@ This package contains javadoc for %{name}.
 %prep
 %setup -q
 cp %{SOURCE1} build.xml
-%patch0 -p1
 
-# We don't want to support legacy Maven versions (older than 3.1)
-%pom_remove_dep org.sonatype.sisu:
-%pom_remove_dep org.sonatype.aether:
-find -name SonatypeAether\*.java -delete
+%pom_xpath_remove pom:project/pom:parent/pom:relativePath
 
 %build
 mkdir -p lib
@@ -81,32 +68,30 @@ build-jar-repository -s lib \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-util \
     maven-shared-utils/maven-shared-utils \
-    org.eclipse.sisu.plexus
-%if %{with tests}
-build-jar-repository -s lib \
-    commons-lang3 \
-    easymock \
-    maven-plugin-testing/maven-plugin-testing-harness \
-    plexus/archiver \
-    plexus/utils
-%endif
+    org.eclipse.sisu.plexus \
+    slf4j/api
 
 %{ant} \
-%if %{without tests}
-    -Dtest.skip=true \
-%endif
     jar javadoc
 
-%mvn_artifact pom.xml target/%{name}-%{version}.jar
-
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE NOTICE
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE NOTICE
 
 %changelog
