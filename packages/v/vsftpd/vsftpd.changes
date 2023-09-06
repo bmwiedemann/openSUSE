@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 25 15:06:06 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use pam macros to install pam config in /usr/lib/pam.d
+- Adjust vsftpd.pam to include postlogin config (replace wtmp with
+  wtmpdb for Y2038 [jsc#3144])
+
+-------------------------------------------------------------------
 Mon Jun 19 06:25:26 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Apply "0001-Fix-default-value-of-strict_ssl_read_eof-in-man-page.patch"

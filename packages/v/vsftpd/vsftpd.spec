@@ -200,7 +200,7 @@ install -D -m 600 %{name}.conf %{buildroot}%{_sysconfdir}/%{name}.conf
 %if 0%{?suse_version} < 1330
 install -D -m 600 xinetd.d/%{name} %{buildroot}%{_sysconfdir}/xinetd.d/%{name}
 %endif
-install -D -m 644 $RPM_SOURCE_DIR/%{name}.pam %{buildroot}%{_sysconfdir}/pam.d/%{name}
+install -D -m 644 $RPM_SOURCE_DIR/%{name}.pam %{buildroot}%{_pam_vendordir}/%{name}
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
 install -D -m 644 $RPM_SOURCE_DIR/%{name}.logrotate %{buildroot}%{_distconfdir}/logrotate.d/%{name}
@@ -290,10 +290,11 @@ done
 %config(noreplace) %{_sysconfdir}/xinetd.d/%{name}
 %endif
 %config(noreplace) %{_sysconfdir}/%{name}.conf
-%config %{_sysconfdir}/pam.d/%{name}
 %if 0%{?suse_version} > 1500
+%config %{_pam_vendordir}/%{name}
 %{_distconfdir}/logrotate.d/%{name}
 %else
+%config %{_pam_sysconfdir}/pam.d/%{name}
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %endif
 %{_mandir}/man5/%{name}.conf.*

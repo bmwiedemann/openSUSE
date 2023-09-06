@@ -925,4 +925,12 @@ confusing &quot;failed to try-restart&quot; error message. [bsc#1093179, bsc#101
   in fact enabled. [bsc#1200075]</comment>
     <requestid>1093728</requestid>
   </revision>
+  <revision rev="86" vrev="11">
+    <srcmd5>d1b4935355b81b8c96662d95c2a7ce1f</srcmd5>
+    <version>3.0.5</version>
+    <time>1694019342</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108895</requestid>
+  </revision>
 </revisionlist>
