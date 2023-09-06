@@ -65,9 +65,9 @@
 %bcond_with armnn_onnx
 %endif
 %define version_major 23
-%define version_minor 05
-%define version_lib 32
-%define version_lib_testutils 2
+%define version_minor 08
+%define version_lib 33
+%define version_lib_testutils 3
 %define version_lib_tfliteparser 24
 %define version_lib_onnxparser 24
 Name:           armnn%{?package_suffix}
