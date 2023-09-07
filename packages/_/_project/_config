@@ -960,6 +960,9 @@ Prefer: wine-32bit wine-devel-32bit wine-devel
 # have choice for pkgconfig(nunit): nunit-devel nunit3-devel; as usual, unversioned one wins
 Prefer: -nunit3-devel
 
+# have choice for pkgconfig(fmt): fmt-9-devel fmt-devel
+Prefer: -fmt-9-devel
+
 # have choice for libz.so.1()(64bit) needed by gcc11: libz-ng-compat1 libz1
 # Pick the regular libz.so.1
 Prefer: -libz-ng-compat1 -zlib-ng-compat-devel
