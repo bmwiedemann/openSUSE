@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed Sep  6 15:49:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- check/add/modify BuildRequires and Requires
+- update to 6.19.0:
+  * Minor Changes
+    - Add auto transform for no-log-password rule (#3708) @ajinkyau
+    - Add auto-fixing implementation for key-order[task] rule
+      (#3705) @ajinkyau
+    - Add auto-fixing implementation for `jinja[spacing]` rule
+      (#3691) @ajinkyau
+    - Make schema validation messages more explicit (#3701)
+      @ssbarnea
+    - Transform for deprecated-local-action rule (#3689) @ajinkyau
+  * Bugfixes
+    - Require ansible-compat>=4.1.10 (#3723) @ssbarnea
+    - Skip altered path warning for `ansible-lint` installed by
+      `pipx` (#3720) @chrysle
+    - Update transform for `key-order` rule (#3719) @ajinkyau
+    - Allow installation of pre-release collection version as
+      dependencies (#3716) @ssbarnea
+    - Avoid deprecated-bare-vars false positive with file paths
+      (#3709) @ssbarnea
+    - Limit sequence-of-sequence indents to a single space (#3671)
+      @Qalthos
+    - Avoid no-handlers false positives (#3702) @ssbarnea
+    - Add missing word to risky-shell-pipe docs (#3704) @roock
+    - Avoid yamllint truthy violations with github workflows
+      (#3698) @ssbarnea
+    - Avoid false positive with var-name rule on roles (#3697)
+      @ssbarnea
+    - Include links to documentation for schema validation errors
+      (#3684) @ssbarnea
+    - Schema update (#3693) @cidrblock
+    - Use yaml.load_all for multiple yaml document (#3679)
+      @shatakshiiii
+    - Ignore user configured value for any_unparsed_is_failed
+      (#3680) @ssbarnea
+    - Update rulebook schema (#3681) @ssbarnea
+
+-------------------------------------------------------------------
+Wed Sep  6 15:48:25 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.18.0:
+  * Minor Changes
+    - Limit the maximum block depth (#3602) @Ruchip16
+    - Transform functionality for command_instead_of_shell  (#3675)
+      @ajinkyau
+    - Add rule to check the number of tasks (#3156) @Ruchip16
+  * Bugfixes
+    - Clarify loop-var-prefix rule and code snippet (#3642)
+      @schwarmco
+    - Update `version_added` for complexity rule (#3623) @ajinkyau
+    - Ensure that single space between tasks is preserved when
+      using --write (#3641) @shatakshiiii
+    - Update ansible-compat used for testing (#3664) @ssbarnea
+    - Document `yaml[line-length]` rule (#3653) @shatakshiiii
+    - Prevent use of spdx-tools 0.8.0 due to breaking changes
+      (#3649) @ssbarnea
+    - fixes dead marketplace link (#3631) @wookietreiber
+    - Improve profile information on summary line (#3637)
+      @ziegenberg
+    - command-instead-of-module: allow `git rev-parse` (#3610)
+      @JohnVillalovos
+    - Include filepaths starting from $HOME in lintables (#3621)
+      @shatakshiiii
+    - Update _mockings.py to fix bug created in #3390 (#3614)
+      @karcaw
+    - Allow to set gather_facts as templated boolean (#3606)
+      @noonedeadpunk
+    - Add dependency version check for collection metadata (#3601)
+      @ajinkyau
+    - Fix installation of dependencies when run as an action
+      (#3592) @ssbarnea
+
+-------------------------------------------------------------------
 Thu Jun 22 13:29:44 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.17.2:
