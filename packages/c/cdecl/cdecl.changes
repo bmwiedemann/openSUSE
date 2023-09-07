@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep  7 14:35:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.4
+  * _Alignas is now correctly forbidden on forward declarations.
+  * Now correctly forbidden in C: ``auto`` with multiple
+    declarators, ``auto`` with a pointer declarator, and bit-fields
+    of a typedef for an enum.
+  * Support C99's ability to qualify function parameters using
+    array syntax.
+  * cdecl now flags member functions with user-specified
+    linkage as an error.
+
+-------------------------------------------------------------------
 Tue Aug  8 09:36:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 14.3
