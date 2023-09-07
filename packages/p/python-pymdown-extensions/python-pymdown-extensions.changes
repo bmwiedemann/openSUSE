@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Sep  7 07:14:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 10.3:
+  * NEW: Officially support Python 3.12.
+  * NEW: Drop Python 3.7 support.
+
+-------------------------------------------------------------------
+Thu Sep  7 07:09:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 10.2.1 (skipping non-existent 10.2.0 release):
+  * FIX: Tabbed: Fix regression.
+
+-------------------------------------------------------------------
+Thu Sep  7 07:08:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 10.1.0:
+  * NEW: Add new combine_header_slug option in legacy Tabbed
+    extension and new Block Tab extension that will
+    prefix a content tab's slug with the parent header's slug. This
+    allows for content tab slugs that are scoped to the
+    header they are under.
+
+-------------------------------------------------------------------
+Thu Sep  7 07:07:05 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 10.0.1:
+  * FIX: Regression related to snippets nested deeply under
+    specified base path.
+
+-------------------------------------------------------------------
+Thu Sep  7 07:05:48 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 10.0:
+  * Break: Snippets: snippets will restrict snippets to ensure they
+    are under the base_path preventing snippets relative to the
+    base_path but not explicitly under it. restrict_base_path can
+    be set to False for legacy behavior.
+
+-------------------------------------------------------------------
 Mon Apr 24 12:19:08 UTC 2023 - Elisei Roca <eroca@mailbox.org>
 
 - require python-PyYAML from requirements/project.txt
