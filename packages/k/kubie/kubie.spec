@@ -19,12 +19,12 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           kubie
-Version:        0.21.2
+Version:        0.22.0
 Release:        0
 Summary:        A Kubernetes context switcher
 License:        Zlib
 URL:            https://github.com/sbstp/kubie
-Source:         https://github.com/sbstp/kubie/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 Recommends:     fzf

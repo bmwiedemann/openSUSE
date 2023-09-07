@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 06 07:57:37 UTC 2023 - rombert@apache.org
+
+- Update to version 0.22.0:
+  * Version 0.22.0
+  * Revert commit 4097062 (#161)
+  * Bump rustls-webpki from 0.101.2 to 0.101.4 (#159)
+  * Bump serde from 1.0.183 to 1.0.185 (#157)
+  * Bump tempfile from 3.7.1 to 3.8.0 (#156)
+  * Bump serde_json from 1.0.104 to 1.0.105 (#155)
+  * Bump clap from 4.3.21 to 4.3.23 (#158)
+  * Bump anyhow from 1.0.72 to 1.0.75 (#154)
+  * Bump clap from 4.3.19 to 4.3.21 (#152)
+  * Bump tempfile from 3.7.0 to 3.7.1 (#150)
+  * Bump serde from 1.0.180 to 1.0.183 (#149)
+
+-------------------------------------------------------------------
 Sun Aug 06 07:53:56 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.21.2:
