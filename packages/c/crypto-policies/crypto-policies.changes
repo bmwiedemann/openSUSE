@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 31 12:17:44 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Tests: Fix pylint versioning for TW and fix the parsing of the
+  policygenerators to account for the commented lines correctly.
+  * Add crypto-policies-pylint.patch
+  * Rebase crypto-policies-policygenerators.patch
+
+-------------------------------------------------------------------
+Tue Aug  1 12:23:33 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Adapt the fips-mode-setup script to use the pbl command
+  from the perl-Bootloader package to replace grubby. Add a note
+  for transactional systems [jsc#PED-4578].
+  * Rebase crypto-policies-FIPS.patch
+
+-------------------------------------------------------------------
 Fri Jul 14 14:59:06 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - BSI.pol: Added a new BSI policy for BSI TR 02102* (jsc#PED-4933)

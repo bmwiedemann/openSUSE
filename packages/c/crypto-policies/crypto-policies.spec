@@ -51,8 +51,10 @@ Patch2:         crypto-policies-policygenerators.patch
 Patch3:         crypto-policies-supported.patch
 #PATCH-FIX-OPENSUSE Revert a breaking change that introduces rh-allow-sha1-signatures
 Patch4:         crypto-policies-revert-rh-allow-sha1-signatures.patch
-#PATCH-FIX-OPENSUSE Adpat the fips-mode-setup script for TW
-Patch5:         crypto-policies-FIPS.patch
+#PATCH-FIX-OPENSUSE Remove version for pylint from Makefile
+Patch5:         crypto-policies-pylint.patch
+#PATCH-FIX-OPENSUSE Adpat the fips-mode-setup script for SUSE/openSUSE [jsc#PED-4578]
+Patch6:         crypto-policies-FIPS.patch
 BuildRequires:  python3-base >= 3.6
 # The sequoia stuff needs python3-toml, removed until needed
 # BuildRequires:  python3-toml
@@ -62,10 +64,12 @@ BuildRequires:  asciidoc
 %if %{with testsuite}
 # The following packages are needed for the testsuite
 BuildRequires:  bind
+BuildRequires:  codespell
 BuildRequires:  gnutls >= 3.6.0
 BuildRequires:  java-devel
 BuildRequires:  krb5-devel
 BuildRequires:  libxslt
+#BuildRequires:  mozilla-nss-tools
 BuildRequires:  openssl
 BuildRequires:  perl
 BuildRequires:  python3-coverage
@@ -79,9 +83,9 @@ BuildRequires:  perl(File::Which)
 BuildRequires:  perl(File::pushd)
 %endif
 Recommends:     crypto-policies-scripts
-Conflicts:      gnutls < 3.7.0
+Conflicts:      gnutls < 3.7.3
 #Conflicts:      libreswan < 3.28
-Conflicts:      nss < 3.44.0
+Conflicts:      nss < 3.90.0
 #Conflicts:      openssh < 8.2p1
 #!BuildIgnore:  crypto-policies
 BuildArch:      noarch
@@ -94,7 +98,7 @@ such as SSL/TLS libraries.
 %package scripts
 Summary:        Tool to switch between crypto policies
 Requires:       %{name} = %{version}-%{release}
-Recommends:     grubby
+Recommends:     perl-Bootloader
 
 %description scripts
 This package provides a tool update-crypto-policies, which applies
@@ -141,11 +145,11 @@ install -p -m 644 default-config %{buildroot}%{_sysconfdir}/crypto-policies/conf
 touch %{buildroot}%{_sysconfdir}/crypto-policies/state/current
 touch %{buildroot}%{_sysconfdir}/crypto-policies/state/CURRENT.pol
 
-%if %{without manbuild}
-# Install the manpages from defined sources
 mkdir -p -m 755 %{buildroot}%{_mandir}/
 mkdir -p -m 755 %{buildroot}%{_mandir}/man7/
 mkdir -p -m 755 %{buildroot}%{_mandir}/man8/
+%if %{without manbuild}
+# Install the manpages from defined sources
 cp %{SOURCE2} %{buildroot}%{_mandir}/man7/
 cp %{SOURCE3} %{SOURCE4} %{SOURCE5} %{buildroot}%{_mandir}/man8/
 %endif
@@ -181,7 +185,8 @@ install -p -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/crypto-policies
 %check
 %if %{with testsuite}
 export OPENSSL_CONF=''
-%make_build test test-install test-fips-setup || :
+%make_build test
+%make_build test-install test-fips-setup || :
 %endif
 
 %post -p <lua>
