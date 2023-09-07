@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Sep  5 08:30:24 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add CVE-2023-41040.patch to fix directory traversal attack
+  vulnerability gh#gitpython-developers/GitPython#1644
+  bsc#1214810
+
+-------------------------------------------------------------------
+Tue Sep 05 06:34:12 UTC 2023 - daniel.garcia@suse.com
+
+- Update _service to use manualrun, disabledrun is deprecated now.
+- Update to version 3.1.34.1693646983.2a2ae77:
+  * prepare patch release
+  * util: close lockfile after opening successfully
+  * update instructions for how to create a release
+  * prepare for next release
+  * Skip now permanently failing test with note on how to fix it
+  * Don't check form of version number
+  * Add a unit test for CVE-2023-40590
+  * Fix CVE-2023-40590
+  * feat: full typing for "progress" parameter
+  * Creating a lock now uses python built-in "open()" method to work around docker virtiofs issue
+  * Disable merge_includes in config writers
+  * Apply straight-forward typing fixes
+  * Add missing type annotation
+  * Run black and exclude submodule
+  * Allow explicit casting even when slightly redundant
+  * Ignore remaining [unreachable] type errors
+  * Define supported version for mypy
+  * Do not typecheck submodule
+  * typo
+  * added more resources section
+  * generic hash
+  * redundant code cell
+  * redundant line
+  * fixed tabbing
+  * tabbed all code-blocks
+  * added new section for diffs and formatting
+  * formatting wip
+  * change to formatting - removed = bash cmds
+  * Added new section to print prev file
+  * WIP major changes to structure to improve readability
+  * Removed all reference to source code
+  * Updated generic sha hash
+  * Added warning about index add
+  * Made trees and blobs the first section
+  * refactored print git tree
+  * clarified comment
+  * draft of description
+  * replaced hash with generic
+  * replaced output cell to generic commit ID
+  * removed unnecessary variables
+  * convert from --all flag to all=True
+  * correct way to get the latest commit tree
+  * removed try/except and updated sample url
+  * Updated the sample repo URL
+  * Made variable names more intuitive
+  * try to fix CI by making it deal with tags forcefully.
+  * Removed code from RST
+  * added quickstart to toctree to fix sphinx warning
+  * added quickstart to toctree and fixed sphinx warning
+  * fixed some indentation
+  * finished code for quickstart
+  * finished code for quickstart
+  * Finishing touches for Repo quickstart
+  * Added git clone & git add
+  * Made the init repo section of quickdoc
+
+-------------------------------------------------------------------
 Mon Aug 21 04:36:14 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to version 3.1.32.1689011721.5d45ce2:

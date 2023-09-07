@@ -17,10 +17,10 @@
 
 
 %define skip_python2 1
-%define simple_ver 3.1.32
+%define simple_ver 3.1.34
 %{?sle15_python_module_pythons}
 Name:           python-GitPython
-Version:        3.1.32.1689011721.5d45ce2
+Version:        3.1.34.1693646983.2a2ae77
 Release:        0
 Summary:        Python Git Library
 License:        BSD-3-Clause
@@ -28,6 +28,8 @@ URL:            https://github.com/gitpython-developers/GitPython
 Source:         GitPython-%{version}.tar.xz
 Patch0:         test-skips.patch
 Patch1:         test_blocking_lock_file-extra-time.patch
+# PATCH-FIX-UPSTREAM CVE-2023-41040.patch gh#gitpython-developers/GitPython#1644
+Patch2:         CVE-2023-41040.patch
 BuildRequires:  %{python_module ddt >= 1.1.1}
 BuildRequires:  %{python_module gitdb >= 4.0.1}
 BuildRequires:  %{python_module pip}
