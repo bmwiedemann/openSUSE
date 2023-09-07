@@ -471,4 +471,13 @@
     <comment></comment>
     <requestid>1102730</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>8ab6fd46be4b6330e23cbcb7e680aeab</srcmd5>
+    <version>2.16.1</version>
+    <time>1694113963</time>
+    <user>anag+factory</user>
+    <comment>  it) (CVE-2021-20270, bsc#1183169, CVE-2021-27291, bsc#1184812):
+  * drops cve_2021_20270.patch, cve_2021_27291.patch in older dists</comment>
+    <requestid>1109328</requestid>
+  </revision>
 </revisionlist>

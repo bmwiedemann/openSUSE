@@ -383,7 +383,8 @@ Thu Jul 15 05:11:04 UTC 2021 - Matej Cepl <mcepl@suse.com>
 Fri Jan 29 15:42:09 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.7.4 (all what was in the update to 2.7.2 and above
-  it):
+  it) (CVE-2021-20270, bsc#1183169, CVE-2021-27291, bsc#1184812):
+  * drops cve_2021_20270.patch, cve_2021_27291.patch in older dists
   - Updated lexers:
 
     * Ada (#1581)
