@@ -18,7 +18,7 @@
 
 %define _protocol_version 0.2
 Name:           xdg-desktop-portal-hyprland
-Version:        0.5.0
+Version:        1.0.0
 Release:        0
 Summary:        Extended xdg-desktop-portal backend for Hyprland
 License:        MIT
@@ -26,6 +26,8 @@ Group:          System/Libraries
 URL:            https://github.com/hyprwm/xdg-desktop-portal-hyprland
 Source0:        https://github.com/hyprwm/xdg-desktop-portal-hyprland/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/hyprwm/hyprland-protocols/archive/refs/tags/v%{_protocol_version}.tar.gz#/hyprland-protocols-%{_protocol_version}.tar.gz
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-devel
@@ -37,12 +39,17 @@ BuildRequires:  scdoc >= 1.9.7
 BuildRequires:  pkgconfig(gbm) >= 21.3
 BuildRequires:  pkgconfig(inih)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.109
+BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.62
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(pangocairo)
+BuildRequires:  pkgconfig(sdbus-c++)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
+Patch0:         0000-sdbus-c++-cmake-lists.patch
 # Screencasting won't work without pipewire, but it's not a hard dependency.
 Recommends:     pipewire >= 0.3.41
 
@@ -70,19 +77,31 @@ Provides:       hyprland-protocols-devel = %{_protocol_version}
 Wayland protocol extensions for interacting or modifying Hyprland.
 
 %prep
-%setup -q
+%autosetup -p1
 
 # Needed for this portal to work.
 tar xvf %{SOURCE1} -C subprojects/hyprland-protocols --strip-components=1
 
 %build
-%meson -Dsd-bus-provider=libsystemd
+# We need to build hyprland protocols so it can be installed.
+pushd subprojects/hyprland-protocols
+%meson
 %meson_build
-make -C hyprland-share-picker all
+popd
+
+%cmake
+%cmake_build
 
 %install
+install -Dm0755 -t %{buildroot}%{_bindir} 								./build/hyprland-share-picker/hyprland-share-picker
+install -Dm0755 -t %{buildroot}%{_libexecdir} 							./build/xdg-desktop-portal-hyprland
+install -Dm0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/portals/  ./hyprland.portal
+install -Dm0644 -t %{buildroot}%{_datadir}/dbus-1/services/ 			./org.freedesktop.impl.portal.desktop.hyprland.service
+
+# Install it as well
+pushd subprojects/hyprland-protocols
 %meson_install
-install -Dm0755 -t %{buildroot}%{_bindir} hyprland-share-picker/build/hyprland-share-picker
+popd
 
 %files
 %{-,root,root,-}
@@ -90,10 +109,9 @@ install -Dm0755 -t %{buildroot}%{_bindir} hyprland-share-picker/build/hyprland-s
 %doc README.md CONTRIBUTING.md
 %{_bindir}/hyprland-share-picker
 %{_libexecdir}/%{name}
-%{_userunitdir}/%{name}.service
-%{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprland.service
 %dir %{_datadir}/xdg-desktop-portal
 %dir %{_datadir}/xdg-desktop-portal/portals
+%{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprland.service
 %{_datadir}/xdg-desktop-portal/portals/hyprland.portal
 
 %files -n hyprland-protocols-devel

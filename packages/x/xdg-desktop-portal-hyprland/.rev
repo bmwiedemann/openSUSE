@@ -30,4 +30,20 @@
 </comment>
     <requestid>1104275</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>904c83e0bcb7141e76f921f21f998377</srcmd5>
+    <version>unknown</version>
+    <time>1694114002</time>
+    <user>anag+factory</user>
+    <comment>- Fix build and install for hyprland protocol and the portal
+- Use sdb-c++ from system instead of subproject through cmake patch:
+  0000-sdbus-c++-cmake-lists.patch
+- Add libjpeg, cairo, pango(cairo) as deps
+- Use cmake instead of meson.
+- Update to version 1.0.0:
+  * added sdbus-c++ as dependency
+  * this release is a full rewrite from C to C++
+</comment>
+    <requestid>1109424</requestid>
+  </revision>
 </revisionlist>
