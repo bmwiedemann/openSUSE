@@ -16,7 +16,7 @@
 #
 
 
-%define services drbd.service drbd-lvchange@.service drbd-promote@.service drbd-reconfigure-suspend-or-error@.service drbd-services@.target drbd-wait-promotable@.service drbd@.service drbd@.target ocf.ra@.service
+%define services drbd.service drbd-lvchange@.service drbd-promote@.service drbd-demote-or-escalate@.service drbd-reconfigure-suspend-or-error@.service drbd-services@.target drbd-wait-promotable@.service drbd@.service drbd@.target ocf.ra@.service
 %if 0%{?suse_version} < 1550
   # for SLEs
   %define sbindir /sbin
@@ -32,26 +32,30 @@
 # Only need po4a to build man from git source code
 %bcond_without prebuiltman
 Name:           drbd-utils
-Version:        9.19.0
+Version:        9.25.0
 Release:        0
 Summary:        Distributed Replicated Block Device
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/HA
 URL:            https://linbit.com/linbit-software-download-page-for-linstor-and-drbd-linux-driver/
-# tarball might be available at https://pkg.linbit.com/downloads/drbd/utils/drbd-utils-%{name}.tar.gz
-Source:         %{name}-%{version}.tar.gz
+Source:         https://pkg.linbit.com//downloads/drbd/utils/%{name}-%{version}.tar.gz
 Source100:      %{name}.rpmlintrc
-# PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
-Patch1:         init-script-fixes.diff
-Patch2:         usrmerge_move_lib_to_prefix_lib.patch
-Patch3:         fence-after-pacemaker-down.patch
-# PATCH-SUSE-FIX: Disable quorum in default configuration (bsc#1032142)
-Patch4:         0001-Disable-quorum-in-default-configuration-bsc-1032142.patch
-Patch5:         move_fencing_from_disk_to_net_in_example.patch
-Patch6:         pie-fix.patch
-Patch7:         0001-crm-fence-peer-fix-timeout-with-Pacemaker-2.1-milli-.patch
-Patch8:         0002-crm-fence-peer-fix-timeout-with-Pacemaker-2.0.5-mill.patch
-Patch99:        rpmlint-build-error.patch
+
+#############################################
+# Upstream patches
+Patch0001:      0001-drbdadm-v9-do-not-segfault-when-re-configuring-proxy.patch
+Patch0002:      0002-user-drbrdmon-add-missing-stdint.h-includes.patch
+Patch0003:      0003-Introduce-default_types.h-header.patch
+
+# SUSE specific patches
+Patch1001:      init-script-fixes.diff
+Patch1002:      usrmerge_move_lib_to_prefix_lib.patch
+Patch1003:      fence-after-pacemaker-down.patch
+Patch1004:      bsc-1032142_Disable-quorum-in-default-configuration.patch
+Patch1005:      move_fencing_from_disk_to_net_in_example.patch
+Patch1006:      pie-fix.patch
+Patch1099:      rpmlint-build-error.patch
+#############################################
 
 Provides:       drbd-bash-completion = %{version}
 Provides:       drbd-pacemaker = %{version}
@@ -59,7 +63,7 @@ Provides:       drbd-udev = %{version}
 Obsoletes:      drbd-bash-completion < %{version}
 Obsoletes:      drbd-pacemaker < %{version}
 Obsoletes:      drbd-udev < %{version}
-# drbd-utils first splict from drbd-8.4.5(only driver)
+# drbd-utils first split from drbd-8.4.5(only driver)
 # and suse let drbd driver goes in-kernel
 # Provides:       drbd = 8.4.5
 # Obsoletes:      drbd < 8.4.5
@@ -96,15 +100,16 @@ raid 1. It is a building block for setting up clusters.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch99 -p1
+%patch0001 -p1
+%patch0002 -p1
+%patch0003 -p1
+%patch1001 -p1
+%patch1002 -p1
+%patch1003 -p1
+%patch1004 -p1
+%patch1005 -p1
+%patch1006 -p1
+%patch1099 -p1
 
 %build
 export WANT_DRBD_REPRODUCIBLE_BUILD=1
@@ -133,7 +138,9 @@ PATH=/sbin:$PATH ./configure \
     --exec_prefix=%{_prefix}/lib \
     %{?with_drbdmon:   --with-drbdmon}     \
     %{?with_prebuiltman: --with-prebuiltman} \
-    --with-tmpfilesdir=%{_tmpfilesdir}
+    --with-tmpfilesdir=%{_tmpfilesdir} \
+    --without-83support \
+    --without-84support
 
 %make_build OPTFLAGS="%{optflags}"
 
@@ -225,6 +232,7 @@ fi
 %{_unitdir}/drbd.service
 %{_unitdir}/drbd-lvchange@.service
 %{_unitdir}/drbd-promote@.service
+%{_unitdir}/drbd-demote-or-escalate@.service
 %{_unitdir}/drbd-reconfigure-suspend-or-error@.service
 %{_unitdir}/drbd-services@.target
 %{_unitdir}/drbd-wait-promotable@.service
