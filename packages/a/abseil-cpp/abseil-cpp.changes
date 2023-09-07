@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep  7 06:49:51 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- update to 20230802.0
+  What's New:
+  * Added the nullability library for designating the expected
+    nullability of pointers. Currently these serve as annotations
+    only, but it is expected that compilers will one day be able
+    to use these annotations for diagnostic purposes.
+  * Added the prefetch library as a portable layer for moving data
+    into caches before it is read.
+  * Abseil's hash tables now detect many more programming errors
+    in debug and sanitizer builds.
+  * Abseil's synchronization objects now differentiate absolute
+    waits (when passed an absl::Time) from relative waits (when
+    passed an absl::Duration) when the underlying platform supports
+    differentiating these cases. This only makes a difference when
+    system clocks are adjusted.
+  * Abseil's flag parsing library includes additional methods that
+    make it easier to use when another library also expects to be
+    able to parse flags.
+  * absl::string_view is now available as a smaller target,
+    @com_google_absl//absl/strings:string_view, so that users may
+    use this library without depending on the much larger
+    @com_google_absl//absl/strings target.
+
+-------------------------------------------------------------------
 Wed Aug  9 15:18:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build on older systems by requiring C++17 compliant compiler
