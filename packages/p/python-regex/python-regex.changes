@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep  7 08:18:52 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2023.8.8:
+  * Git issue 508: Regex doesn't build using CPython main
+    (3.13.0a0)
+  * Removed usage of _PyBytes_Join and did a little tidying of
+    the code that makes the result string.
+
+-------------------------------------------------------------------
+Thu Sep  7 08:11:04 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2023.6.3:
+   * Git issue 498: Conditional negative lookahead inside positive
+     lookahead fails to match
+   * Conditional node needed an additional member that points to
+     the true branch.
+
+-------------------------------------------------------------------
 Sun May 14 16:27:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.5.5:
