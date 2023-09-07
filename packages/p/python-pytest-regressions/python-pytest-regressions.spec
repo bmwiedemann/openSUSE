@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-regressions
-Version:        2.4.2
+Version:        2.5.0
 Release:        0
 License:        MIT
 Summary:        Python fixtures to write regression tests

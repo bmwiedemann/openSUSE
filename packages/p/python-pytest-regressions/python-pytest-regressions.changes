@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  7 09:51:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.0:
+  * Dropped support for EOL Python 3.6 and Python 3.7.
+  * Added support for Python 3.11.
+  * Make ``dataframe_regression`` compatible with classes inheriting
+    from ``pandas.DataFrame``.
+
+-------------------------------------------------------------------
 Tue May 30 12:07:58 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip test_different_data_types because of s390x architecture issue.
