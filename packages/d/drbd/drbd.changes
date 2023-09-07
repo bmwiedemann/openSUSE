@@ -1,4 +1,258 @@
 ------------------------------------------------------------------
+Mon Sep 04 11:35:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
+
+- Update DRBD version from 9.0.30+ to 9.1.16 (PED-6362)
+
+  * 9.1.16 (api:genl2/proto:86-121/transport:18)
+    * shorten times DRBD keeps IRQs on one CPU disabled. Could lead
+      to connection interruption under specific conditions
+    * fix a corner case where resync did not start after resync-pause
+      state flapped
+    * fix online adding of volumes/minors to an already connected resource
+    * fix a possible split-brain situation with quorum enabled with
+      ping-timeout set to (unusual) high value
+    * fix a locking problem that could lead to kernel OOPS
+    * ensure resync can continue (bitmap-based) after interruption
+      also when it started as a full-resync first
+    * correctly handle meta-data when forgetting diskless peers
+    * fix a possibility of getting a split-brain although quorum enabled
+    * correctly propagate UUIDs after resync following a resize operation.
+      Consequence could be a full resync instead of a bitmap-based one
+    * fix a rare race condition that can cause a drbd device to end up
+      with WFBitMapS/Established replication states
+
+  * 9.1.15 (api:genl2/proto:86-121/transport:18)
+    * fix how flush requests are marked when submitted to the Linux IO
+      stack on the secondary node
+    * when establishing a connection failed with a two-pc timeout, a
+      receiver thread deadlocked, causing drbdsetup calls to block on
+      that resource (difficult to trigger)
+    * fixed a NULL-ptr deref (a OOPS) caused by a rare race condition
+      while taking a resource down
+    * fix a possible hard kernel-lockup, can only be triggerd when a
+      CPU-mask is configured
+    * updated kernel compatibility to at least Linux head and also fixed
+      a bug in the compat checks/rules that caused OOPSes of the previous
+      drbd releases when compiled with Linux-6.2 (or on RHEL 9.2 kernel).
+    * fix an aspect of the data-generation (UUID) handling where DRBD
+      failed to do a resync when a diskless node in the remaining
+      partition promotes and demotes while a diskful node is isolated
+    * fix an aspect of the data-generation (UUID) handling where DRBD
+      considered a node to have unrelated data; this bug was triggered by
+      a sequence involving removing two nodes from a cluster and readding
+      one with the "day-0" UUIDs.
+    * do not block specific state changes (promote, demote, attach, and
+      detach) when only some nodes add a new minor
+
+  * 9.1.14 (api:genl2/proto:86-121/transport:18)
+    * fix a race with concurrent promotion and demotion, which can
+      lead to an unexpected "split-brain" later on
+    * fix a specific case where promotion was allowed where it should not
+    * fix a race condition between auto-promote and a second two-phase
+      commit that can lead to a DRBD thread locking up in an endless loop
+    * fix several bugs with "resync-after":
+      - missing resync-resume when minor numbers run in opposite
+        direction as the resync-after dependencies
+      - a race that might lead to an OOPS in add_timer()
+    * fix an OOPS when reading from in_flight_summary in debugfs
+    * fix a race that might lead to an endless loop of printing
+      "postponing start_resync" while starting a resync
+    * fix diskless node with a diskfull with a 4KiB backend
+    * simplify remembering two-pc parents, maybe fixing a one-time-seen bug
+    * derive abort_local_transaction timeout from ping-timeout
+
+  * 9.1.13 (api:genl2/proto:86-121/transport:18)
+    * when calculating if a partition has quorum, take into account if
+      the missing nodes might have quorum
+    * fix forget-peer for diskless peers
+    * clear the resync_again counter upon disconnect
+    * also call the unfence handler when no resync happens
+    * do not set bitmap bits when attaching to an up-to-date disk (late)
+    * work on bringing the out-of-tree DRBD9 closer to DRBD in the upstream
+      kernel; Use lru_cahche.ko from the installed kernel whenever possible
+
+  * 9.1.12 (api:genl2/proto:86-121/transport:18)
+    * fix a race that could result in connection attempts getting aborted
+      with the message "sock_recvmsg returned -11"
+    * rate limit messages in case the peer can not write the backing storage
+      and it does not finish the necessary state transitions
+    * reduced the receive timeout during connecting to the intended 5 seconds
+      (ten times ping-ack timeout)
+    * losing the connection at a specific point in time during establishing
+      a connection could cause a transition to StandAlone; fixed that, so
+      that it keeps trying to connect
+    * fix a race that could lead to a fence-peer handler being called
+      unexpectedly when the fencing policy is changed at the moment before
+      promoting
+
+  * 9.1.11 (api:genl2/proto:86-121/transport:18)
+    * The change introduced with 9.1.10 created another problem that might
+      lead to premature request completion (kernel crash); reverted that
+      change and fix it in another way
+
+  * 9.1.10 (api:genl2/proto:86-121/transport:18)
+    * fix a regression introduced with 9.1.9; using protocol A on SMP
+      with heavy IO can might cause kernel crash
+
+  * 9.1.9 (api:genl2/proto:86-121/transport:18)
+    * fix a mistake in the compat generation code; it broke DRBD on
+      partitions on kernel older than linux 5.10 (this was introduced
+      with drbd-9.1.8; not affected: logical volumes)
+    * fix for a bug (introduced with drbd-9.0.0), that caused possible
+      inconsistencies in the mirror when using the 'resync-after' option
+    * fix a bug that could cause a request to get stuck after an unlucky
+      timing with a loss of connection
+    * close a very small timing window between connect and promote that
+      could lead to the new-current-uuid not being transmitted to the
+      concurrently connecting peer, which might lead to denied connections
+      later on
+    * fix a recently introduced OOPS when adding new volumes to a
+      connected resource
+    * fix online attach when the connection to a 3rd node is down
+
+  * 9.1.8 (api:genl2/proto:86-121/transport:18)
+    * restore protocol compatibility with drbd-8.4
+    * detect peers that died silently when starting a two-phase-commit
+    * correctly abort two-phase-commits when a connection breaks between
+      phases 1 and 2
+    * allow re-connect to a node that was forced into secondary role and
+      where an opener is still present from the last time it was primary
+    * fix a race condition that allowed to configure two peers with the
+      same node id
+    * ensure that an open() call fails within the auto-promote timeout
+      if it can not succeed
+    * build fixes for RHEL9
+    * following upstream changes to DRBD up to Linux 5.17 and updated compat
+
+  * 9.1.7 (api:genl2/proto:110-121/transport:18)
+    * avoid deadlock upon trying to down an io-frozen DRBD device that
+      has a file system mounted
+    * fix DRBD to not send too large resync requests at multiples of 8TiB
+    * fix for a "forgotten" resync after IO was suspended due to lack of quorum
+    * refactored IO suspend/resume fixing several bugs; the worst one could
+      lead to premature request completion
+    * disable discards on diskless if diskful peers do not support it
+    * make demote to secondary a two-phase state transition; that guarantees that
+      after demotion, DRBD will not write to any meta-data in the cluster
+    * enable "--force primary" in for no-quorum situations
+    * allow graceful recovery of primary lacking quorum and therefore
+      have forzen IO requests; that includes "--force secondary"
+    * following upstream changes to DRBD up to Linux 5.15 and updated compat
+
+  * 9.1.6 (api:genl2/proto:110-121/transport:17)
+    * fix IO to internal meta-data for backing device larger than 128TB
+    * fix resending requests towards diskless peers, this is relevant when
+      fencing is enabled, but the connection is re-established before fencing
+      succeeds; when the bug triggered it lead to "stuck" requests
+    * remove lockless buffer pages handling; it still contained very hard to
+      trigger bugs
+    * make sure DRBD's resync does not cause unnecessary allocation in
+      a thinly provisioned backing device on a resync target node
+    * avoid unnecessary resync (or split-brain) due to a wrongly generated
+      new current UUID when an already IO frozen DBRD gets new writes
+    * small fix to autopromote, when an application tries a read-only open
+      before it does a read-write open immediately after the peer primary
+      vanished ungracefully
+    * split out the secure boot key into a package on its own, that is
+      necessary to allow installation of multiple drbd kernel module packages
+    * Support for building containers for flacar linux
+
+  * 9.1.5 (api:genl2/proto:110-121/transport:17)
+    * merged all changes from drbd-9.0.32
+      - fix a read-access-after-free, that could cause an OOPs; triggers with
+        an unusual configuration with a secondary having a smaller AL than
+        the primary or a diskless primary and heavy IO
+      - avoid a livelock that can cause long IO delays during resync on a
+        primary resync-target node
+      - following upstream changes to DRBD up to Linux 5.14 and updated compat
+        (including RHEL9-beta)
+      - fix module override for Oracle-Linux
+    * fixed a locking regression of the 9.1 branch, only relevant in
+      the moment a local backing device delivers an IO error to drbd
+    * removed compat support for kernel older than Linux-3.10 (RHEL7)
+    * code cleanups and refactoring
+
+  * 9.1.4 (api:genl2/proto:110-121/transport:17)
+    * merged all changes from drbd-9.0.31
+    * enabled dynamic debug on some additional log messages
+    * remove (broken) write conflict resolution, replace it with warning
+      about the fact
+    * debugfs entry for the interval tree
+
+  * 9.1.3 (api:genl2/proto:110-120/transport:17)
+    * merged all fixes from drbd-9.0.30-0rc1
+    * fix a corner-case NULL deref in the lockless buffer pages handling; the
+      regression was introduced with 9.1.0 (released Feb 2021); To my knowledge
+      it took 6 months until someone triggered it for the first time
+    * fix sending a P_PEERS_IN_SYNC packet into a fresh connection (before
+      handshake packets); this problem was introduced when the drbd-8.x
+      compatibility code was removed
+    * remove sending a DRBD-barrier packet when processing a REQ_PREFLUSH
+      request, that improves IO-depth and improves performance with that
+
+  * 9.1.2 (api:genl2/proto:110-120/transport:17)
+    * merged all fixes from drbd-9.0.29; other than that no changes in this branch
+
+  * 9.1.1 (api:genl2/proto:110-119/transport:17)
+    * fix a temporal deadlock you could trigger when you exercise promotion races
+      and mix some read-only openers into the test case
+    * fix for bitmap-copy operation in a very specific and unlikely case where
+      two nodes do a bitmap-based resync due to disk-states
+    * fix size negotiation when combining nodes of different CPU architectures
+      that have different page sizes
+    * fix a very rare race where DRBD reported wrong magic in a header
+      packet right after reconnecting
+    * fix a case where DRBD ends up reporting unrelated data; it affected
+      thinly allocated resources with a diskless node in a recreate from day0
+      event
+    * changes to socket buffer sizes get applied to established connections immediately;
+      before it was applied after a re-connect
+    * add exists events for path objects
+    * fix a merge-mistake that broke compatibility with 5.10 kernels
+
+  * 9.1.0 (api:genl2/proto:110-119/transport:16)
+    * was forked off from drbd 9.0.19
+    * has all changes up to 9.0.28-1
+    * locking in the IO-submit code path was considerably improved,
+      allowing multiple CPU to submit in parallel
+
+  * rename patch
+    - fix-resync-finished-with-syncs-have-bits-set.patch
+    + bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
+
+  * remove patches which are already included in upstream code:
+    - bsc-1192929_01-make_block_holder_optional.patch
+    - bsc-1192929_02-move_kvmalloc_related_to_slab.patch
+    - bsc-1192929_03-polling_to_bio_base.patch
+    - bsc-1192929_04-pass_gend_to_blk_queue_update_readahead.patch
+    - bsc-1192929_07-add_disk_error_handle.patch
+    - bsc-1192929_08-have_void_drbd_submit_bio.patch
+    - bsc-1192929_09-remove_bdgrab.patch
+    - bsc-1201335_01-compat-test-and-cocci-patch-for-bdi-in-gendisk.patch
+    - bsc-1201335_02-compat-only-apply-bdi-pointer-patch-if-bdi-is-in-req.patch
+    - bsc-1201335_03-genhd.patch
+    - bsc-1201335_04-bio_alloc_bioset.patch
+    - bsc-1201335_05-bio_alloc.patch
+    - bsc-1201335_06-bdi.patch
+    - bsc-1201335_07-write-same.patch
+    - bsc-1201335_08-bio_clone_fast.patch
+    - bsc-1202600_01-remove-QUEUE_FLAG_DISCARD.patch
+    - bsc-1202600_02-dax-introduce-DAX_RECOVERY_WRITE-dax-access-mode.patch
+    - bsc-1202600_03-block-decouple-REQ_OP_SECURE_ERASE-from-REQ_OP_DISCA.patch
+    - bsc-1202600_04-remove-assign_p_sizes_qlim.patch
+    - bsc-1204596_01-block-remove-blk_cleanup_disk.patch
+    - bsc-1204596_02-drbd-remove-usage-of-bdevname.patch
+    - bsc-1206791-01-drbd-add-comments-explaining-removal-of-bdi-congesti.patch
+    - bsc-1206791-02-drbd-fix-static-analysis-warnings.patch
+    - bsc-1206791-03-drbd-fix-warning-about-initializing-multiple-struct-.patch
+    - bsc-1206791-04-blk_queue_split__no_present.patch
+    - bsc-1206791-05-prandom_u32_max.patch
+    - bsc-1206791-06-write_zeroes__no_capable.patch
+    - bsc-1206791-07-drbd-fix-use-after-free-bugs-in-get_initial_state.patch
+    - bsc-1206791-08-lib-lru_cache-Fixed-array-overflow-caused-by-incorre.patch
+    - bsc-1206791-09-pmem-use-fs_dax_get_by_bdev-instead-of-dax_get_by_ho.patch
+
+------------------------------------------------------------------
 Sat Mar 11 06:25:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
 
 - drbd: fix build error against kernel v6.2.1 (bsc#1209168)
