@@ -558,4 +558,12 @@ All packages broken by this update should be fixed now.</comment>
 </comment>
     <requestid>1104661</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>7c26d1ecb7585ca7720459d3c7d8f61c</srcmd5>
+    <version>2.1.0</version>
+    <time>1694113928</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109366</requestid>
+  </revision>
 </revisionlist>

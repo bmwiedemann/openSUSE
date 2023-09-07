@@ -48,42 +48,38 @@
 %bcond_with gcp
 # xlsb not available
 %bcond_with xslb
+%bcond_with consortium_standard
 
 %{?sle15_python_module_pythons}
 Name:           python-pandas%{psuffix}
-Version:        2.0.3
+# Set version through _service
+Version:        2.1.0
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://pandas.pydata.org/
-# Use GitHub Archive: Test-data
-Source0:        https://github.com/pandas-dev/pandas/archive/refs/tags/v%{version}.tar.gz#/pandas-%{version}-gh.tar.gz
 # SourceRepository: https://github.com/pandas-dev/pandas
+# Must be created by cloning through `osc service runall`: gh#pandas-dev/pandas#54903, gh#pandas-dev/pandas#54907
+Source0:        pandas-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.29.33 with %python-Cython < 3}
-BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module numpy-devel >= 1.20.3}
+BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module meson-python >= 0.13.1}
+BuildRequires:  %{python_module numpy-devel >= 1.22.4}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 61.0.0}
 BuildRequires:  %{python_module versioneer-toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  git-core
+BuildRequires:  meson >= 1.0.1
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.8.2
 Requires:       python-pytz >= 2020.1
 Requires:       timezone >= 2022a
 Obsoletes:      python-pandas-doc < %{version}
 Provides:       python-pandas-doc = %{version}
-%if 0%{?python_version_nodots} >= 311
-Requires:       python-numpy >= 1.23.2
-%else
-%if 0%{?python_version_nodots} >= 310
-Requires:       python-numpy >= 1.21.0
-%else
-Requires:       python-numpy >= 1.20.3
-%endif
-%endif
+Requires:       python-numpy >= 1.22.4
 # SECTION extras
 Recommends:     python-pandas-performance
 Suggests:       python-pandas-all
@@ -138,6 +134,7 @@ BuildRequires:  %{python_module pandas-xml = %{version}}
 BuildRequires:  xclip
 %{?_with_aws:BuildRequires:  %{python_module pandas-aws = %{version}}}
 %{?_with_gcp:BuildRequires:  %{python_module pandas-gcp = %{version}}}
+%{?_with_consortium_standard:BuildRequires:  %{python_module pandas-consortium-standard = %{version}}}
 %endif
 %endif
 %python_subpackages
@@ -150,9 +147,9 @@ block for doing data analysis in Python.
 
 %package test
 Summary:        The python pandas[test] extra
-Requires:       python-hypothesis >= 6.34.2
+Requires:       python-hypothesis >= 6.46.1
 Requires:       python-pandas = %{version}
-Requires:       python-pytest >= 7.0.0
+Requires:       python-pytest >= 7.3.2
 Requires:       python-pytest-asyncio >= 0.17.0
 Requires:       python-pytest-xdist >= 2.2.0
 BuildArch:      noarch
@@ -162,9 +159,9 @@ This package provides the [test] extra for python-pandas
 
 %package performance
 Summary:        The python pandas[performance] extra
-Requires:       python-Bottleneck >= 1.3.2
-Requires:       python-numba >= 0.53.1
-Requires:       python-numexpr >= 2.7.1
+Requires:       python-Bottleneck >= 1.3.4
+Requires:       python-numba >= 0.55.2
+Requires:       python-numexpr >= 2.8.0
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -177,8 +174,8 @@ provide speed improvements, especially when working with large data sets.
 %package computation
 Summary:        The python pandas[computation] extra
 Requires:       python-pandas = %{version}
-Requires:       python-scipy >= 1.7.1
-Requires:       python-xarray >= 0.21.0
+Requires:       python-scipy >= 1.8.1
+Requires:       python-xarray >= 2022.03
 BuildArch:      noarch
 
 %description computation
@@ -186,7 +183,7 @@ This package provides the [computation] extra for python-pandas
 
 %package fss
 Summary:        The python pandas[fss] extra
-Requires:       python-fsspec >= 2021.07.0
+Requires:       python-fsspec >= 2022.05
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -196,7 +193,7 @@ This package provides the [fss] extra for python-pandas
 %package aws
 Summary:        The python pandas[aws] extra
 Requires:       python-pandas = %{version}
-Requires:       python-s3fs >= 2021.08.0
+Requires:       python-s3fs >= 2022.05.0
 BuildArch:      noarch
 
 %description aws
@@ -204,9 +201,9 @@ This package provides the [aws] extra for python-pandas
 
 %package gcp
 Summary:        The python pandas[gcp] extra
-Requires:       python-gcsfs >= 2021.07.0
+Requires:       python-gcsfs >= 2022.05.0
 Requires:       python-pandas = %{version}
-Requires:       python-pandas-gbq >= 0.15.0
+Requires:       python-pandas-gbq >= 0.17.5
 BuildArch:      noarch
 
 %description gcp
@@ -215,10 +212,10 @@ This package provides the [gcp] extra for python-pandas
 %package excel
 Summary:        The python pandas[excel] extra
 Requires:       python-odfpy >= 1.4.1
-Requires:       python-openpyxl >= 3.0.7
+Requires:       python-openpyxl >= 3.0.10
 Requires:       python-pandas = %{version}
-%{?_with_xlsb:Requires: python-pyxlsb >= 1.0.8}
-Requires:       python-XlsxWriter >= 1.4.3
+%{?_with_xlsb:Requires: python-pyxlsb >= 1.0.9}
+Requires:       python-XlsxWriter >= 3.0.3
 Requires:       python-xlrd >= 2.0.1
 BuildArch:      noarch
 
@@ -248,7 +245,7 @@ This package provides the [feather] extra for python-pandas
 Summary:        The python pandas[hdf5] extra
 Requires:       python-blosc
 Requires:       python-pandas = %{version}
-Requires:       python-tables >= 3.6.1
+Requires:       python-tables >= 3.7.0
 BuildArch:      noarch
 
 %description hdf5
@@ -257,7 +254,7 @@ This package provides the [hdf5] extra for python-pandas
 %package spss
 Summary:        The python pandas[spss] extra
 Requires:       python-pandas = %{version}
-Requires:       python-pyreadstat >= 1.1.2
+Requires:       python-pyreadstat >= 1.1.5
 BuildArch:      noarch
 
 %description spss
@@ -265,9 +262,9 @@ This package provides the [spss] extra for python-pandas
 
 %package postgresql
 Summary:        The python pandas[postgresql] extra
-Requires:       python-SQLAlchemy >= 1.4.16
+Requires:       python-SQLAlchemy >= 1.4.36
 Requires:       python-pandas = %{version}
-Requires:       python-psycopg2 >= 2.8.6
+Requires:       python-psycopg2 >= 2.9.3
 BuildArch:      noarch
 
 %description postgresql
@@ -276,7 +273,7 @@ This package provides the [postgresql] extra for python-pandas
 %package mysql
 Summary:        The python pandas[mysql] extra
 Requires:       python-PyMySQL >= 1.0.2
-Requires:       python-SQLAlchemy >= 1.4.16
+Requires:       python-SQLAlchemy >= 1.4.36
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -285,7 +282,7 @@ This package provides the [mysql] extra for python-pandas
 
 %package sql-other
 Summary:        The python pandas[sql-other] extra
-Requires:       python-SQLAlchemy >= 1.4.16
+Requires:       python-SQLAlchemy >= 1.4.36
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -294,9 +291,9 @@ This package provides the [sql-other] extra for python-pandas
 
 %package html
 Summary:        The python pandas[html] extra
-Requires:       python-beautifulsoup4 >= 4.9.3
+Requires:       python-beautifulsoup4 >= 4.11.1
 Requires:       python-html5lib >= 1.1
-Requires:       python-lxml >= 4.6.3
+Requires:       python-lxml >= 4.8.0
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -305,7 +302,7 @@ This package provides the [html] extra for python-pandas
 
 %package xml
 Summary:        The python pandas[xml] extra
-Requires:       python-lxml >= 4.6.3
+Requires:       python-lxml >= 4.8.0
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -323,9 +320,9 @@ This package provides the [plot] extra for python-pandas
 
 %package output_formatting
 Summary:        The python pandas[output_formatting] extra
-Requires:       python-Jinja2 >= 3.0.0
+Requires:       python-Jinja2 >= 3.1.2
 Requires:       python-pandas = %{version}
-Requires:       python-tabulate >= 0.8.9
+Requires:       python-tabulate >= 0.8.10
 BuildArch:      noarch
 
 %description output_formatting
@@ -333,7 +330,7 @@ This package provides the [output_formatting] extra for python-pandas
 
 %package clipboard
 Summary:        The python pandas[clipboard] extra
-Requires:       python-PyQt5 >= 5.15.1
+Requires:       python-PyQt5 >= 5.15.6
 Requires:       python-QtPy >= 2.2.0
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
@@ -343,55 +340,61 @@ This package provides the [clipboard] extra for python-pandas
 
 %package compression
 Summary:        The python pandas[compression] extra
-Requires:       python-brotlipy >= 0.7.0
 Requires:       python-pandas = %{version}
-Requires:       python-python-snappy >= 0.6.0
-Requires:       python-zstandard >= 0.15.2
+Requires:       python-zstandard >= 0.17.0
 BuildArch:      noarch
 
 %description compression
 This package provides the [compression] extra for python-pandas
 
+%package consortium-standard
+Summary:        The python pandas[consortium-standard] extra
+Requires:       python-dataframe-api-compat >= 0.1.7
+Requires:       python-pandas = %{version}
+BuildArch:      noarch
+
+%description consortium-standard
+This package provides the [consortium-standard] extra for python-pandas
+
 %package all
 Summary:        The python pandas[all] extra
-Requires:       python-Bottleneck >= 1.3.2
-Requires:       python-Jinja2 >= 3.0.0
+Requires:       python-Bottleneck >= 1.3.4
+Requires:       python-Jinja2 >= 3.1.2
 Requires:       python-PyMySQL >= 1.0.2
-Requires:       python-PyQt5 >= 5.15.1
+Requires:       python-PyQt5 >= 5.15.6
 Requires:       python-QtPy >= 2.2.0
-Requires:       python-SQLAlchemy >= 1.4.16
-Requires:       python-XlsxWriter >= 1.4.3
+Requires:       python-SQLAlchemy >= 1.4.36
+Requires:       python-XlsxWriter >= 3.0.3
 Requires:       python-beautifulsoup4 >= 4.9.3
 Requires:       python-blosc
-Requires:       python-brotlipy >= 0.7.0
-Requires:       python-fastparquet >= 0.6.3
-Requires:       python-fsspec >= 2021.07.0
-Requires:       python-gcsfs >= 2021.07.0
+Requires:       python-fastparquet >= 0.8
+Requires:       python-fsspec >= 2022.05
+Requires:       python-gcsfs >= 2022.05
 Requires:       python-html5lib >= 1.1
-Requires:       python-hypothesis >= 6.34.2
-Requires:       python-lxml >= 4.6.3
+Requires:       python-hypothesis >= 6.46.1
+Requires:       python-lxml >= 4.8.0
 Requires:       python-matplotlib >= 3.6.1
-Requires:       python-numba >= 0.53.1
-Requires:       python-numexpr >= 2.7.3
+Requires:       python-numba >= 0.55.2
+Requires:       python-numexpr >= 2.8.0
 Requires:       python-odfpy >= 1.4.1
-Requires:       python-openpyxl >= 3.0.7
+Requires:       python-openpyxl >= 3.0.10
 Requires:       python-pandas = %{version}
-Requires:       python-psycopg2 >= 2.8.6
+Requires:       python-psycopg2 >= 2.9.3
 Requires:       python-pyarrow >= 7.0.0
-Requires:       python-pyreadstat >= 1.1.2
-Requires:       python-pytest >= 7.0.0
+Requires:       python-pyreadstat >= 1.1.5
+Requires:       python-pytest >= 7.3.2
 Requires:       python-pytest-asyncio >= 0.17.0
 Requires:       python-pytest-xdist >= 2.2.0
-Requires:       python-python-snappy >= 0.6.0
-Requires:       python-scipy >= 1.7.1
-Requires:       python-tables >= 3.6.1
-Requires:       python-tabulate >= 0.8.9
-Requires:       python-xarray >= 0.21.0
+Requires:       python-scipy >= 1.8.1
+Requires:       python-tables >= 3.7.0
+Requires:       python-tabulate >= 0.8.10
+Requires:       python-xarray >= 2022.03
 Requires:       python-xlrd >= 2.0.1
-Requires:       python-zstandard >= 0.15.2
-%{?_with_aws:Requires:       python-s3fs >= 2021.08.0}
-%{?_with_gcp:Requires:       python-pandas-gbq >= 0.15.0}
-%{?_with_xslb:Requires:       python-pyxlsb >= 1.0.8}
+Requires:       python-zstandard >= 0.17.0
+%{?_with_aws:Requires:       python-s3fs >= 2022.05.0}
+%{?_with_gcp:Requires:       python-pandas-gbq >= 0.17.5}
+%{?_with_xslb:Requires:       python-pyxlsb >= 1.0.9}
+%{?_with_consortium_standard: Requires: python-dataframe-api-compat >= 0.1.7}
 BuildArch:      noarch
 
 %description all
@@ -403,15 +406,21 @@ because they are not available as openSUSE RPM packages:
   * pandas-gbq
   * pyxlsb
   * s3fs
+  * dataframe-api-compat
 
 You can install them directly through `pip3 install --user`, if needed.
 
 %prep
-%autosetup -p1 -n pandas-%{version}
-# don't call pytest with --strict-data-files
-sed -i '/addopts/ {s/--strict-data-files//}' pyproject.toml
+# ATTENTION: unpack and generate _version_meson.py before any patches and modifications for a clean version
+%setup -q -n pandas-%{version}
+%if !%{with test}
+# any installed python3 will do (SLE15 python module pythons does note guarantee /usr/bin/python3)
+firstpython3=$(find %{_bindir} -name 'python3*' -print -quit)
+${firstpython3} generate_version.py -o _version_meson.py
+sed -i "s|'python', 'generate_version.py',|'${firstpython3}', 'generate_version.py',|" meson.build
 # don't require the PyPI data only tzdata package, we use the timezone RPM package
 sed -i '/dependencies = \[/,/\]/ {/tzdata.*>=/d}' pyproject.toml
+%endif
 
 %build
 %if !%{with test}
@@ -422,7 +431,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %install
 %if !%{with test}
 %pyproject_install
-%{python_expand sed -i -e 's|"python", "-c",|"%{__$python}", "-c",|' %{buildroot}%{$python_sitearch}/pandas/tests/io/test_compression.py
+%{python_expand #
+find %{buildroot}%{$python_sitearch}/pandas/_libs -name '*.[ch]' -delete
+sed -i -e '/.[ch],/d' %{buildroot}%{$python_sitearch}/pandas-%{version}.dist-info/RECORD
 %fdupes %{buildroot}%{$python_sitearch}
 }
 %else
@@ -442,16 +453,18 @@ export PYTHONDONTWRITEBYTECODE=1
 # https://github.com/pytest-dev/pytest/issues/920
 # https://github.com/pytest-dev/pytest/issues/1075
 export PYTHONHASHSEED=1
-# --skip-* arguments: Upstream's custom way to skip marked tests. These do not use pytest.mark.
-SKIP_ARGS="--skip-network"
+# no network connection on obs
+SKIP_MARKERS="network"
 # clipboard not set up properly in build service without window manager
-SKIP_MARKERS="clipboard"
+SKIP_MARKERS+=" or clipboard"
 # skip tests which upstream marked for -n 1 only.
 SKIP_MARKERS+=" or single_cpu"
 # pytest-xdist worker crash
 SKIP_TESTS="test_pivot_number_of_levels_larger_than_int32"
 # no locally running database server
 SKIP_TESTS+=" or psycopg2_engine or psycopg2_conn or pymysql_engine or pymysql_conn"
+# expects a dirty git revision from git repo
+SKIP_TESTS+=" or test_git_version"
 
 %ifarch %{ix86} %{arm32}
 # https://github.com/pandas-dev/pandas/issues/31856
@@ -462,6 +475,7 @@ SKIP_TESTS+=" or (test_rolling_quantile_interpolation_options and data1 and line
 SKIP_TESTS+=" or test_large_string_pyarrow"
 # dtype mismatch
 SKIP_TESTS+=" or test_frame_setitem_dask_array_into_new_col"
+SKIP_TESTS+=" or test_get_indexer_arrow_dictionary_target"
 # numba formats not supported on 32-bit
 SKIP_TESTS+=" or numba"
 %endif
@@ -491,7 +505,7 @@ SKIP_TESTS+=" or (test_groupby  and test_groupby_numerical_stability_sum_mean)"
 SKIP_TESTS+=" or (test_groupby  and test_groupby_numerical_stability_cumsum)"
 SKIP_TESTS+=" or (test_c_parser_only and test_float_precision_options)"
 # run the slow tests only on x86_64
-SKIP_ARGS+=" --skip-slow --skip-db"
+SKIP_MARKERS+=" or slow or db"
 %endif
 
 # The test collection consumes a lot of memory per worker. This sets %%jobs.
@@ -501,7 +515,6 @@ SKIP_ARGS+=" --skip-slow --skip-db"
 # cache: can't just say no cacheprovider, because one test checks for the --lf option of pytest-cache
 xvfb-run pytest-%{$python_bin_suffix} -v -n %{jobs} -rsfE --dist=loadfile \
                                       -o cache_dir=$PWD/.pytest_cache --cache-clear \
-                                      ${SKIP_ARGS} \
                                       -m "not (${SKIP_MARKERS})" \
                                       -k "not (${SKIP_TESTS})" \
                                       pandas
@@ -511,7 +524,7 @@ xvfb-run pytest-%{$python_bin_suffix} -v -n %{jobs} -rsfE --dist=loadfile \
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
-%doc README.md RELEASE.md
+%doc README.md
 %{python_sitearch}/pandas/
 %{python_sitearch}/pandas-%{version}.dist-info
 
@@ -599,6 +612,12 @@ xvfb-run pytest-%{$python_bin_suffix} -v -n %{jobs} -rsfE --dist=loadfile \
 %files %{python_files compression}
 %license LICENSE
 %doc README.md
+
+%if %{with consortium_standard}
+%files %{python_files consortium-standard}
+%license LICENSE
+%doc README.md
+%endif
 
 %files %{python_files all}
 %license LICENSE

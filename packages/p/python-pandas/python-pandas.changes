@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Sep  5 21:02:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Use git cloned archive gh#pandas-dev/pandas#54907
+
+-------------------------------------------------------------------
+Thu Aug 31 14:51:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.1.0
+  * https://pandas.pydata.org/pandas-docs/version/2.1.0/whatsnew/v2.1.0.html
+  * Avoid NumPy object dtype for strings by default
+  * DataFrame reductions preserve extension dtypes
+  * Copy-on-Write improvements
+  * New DataFrame.map() method and support for ExtensionArrays
+  * New implementation of DataFrame.stack()
+  * Other minor enhancements (see link above)
+  ## Backwards incompatible API changes
+  * pandas 2.1.0 supports Python 3.9 and higher
+  * Increased minimum versions for numpy 1.22.3 and some optional
+    dependencies
+  * arrays.PandasArray has been renamed NumpyExtensionArray and the
+    attached dtype name changed from PandasDtype to NumpyEADtype;
+    importing PandasArray still works until the next major version
+    (GH 53694)
+  ## Deprecations
+  * Deprecated silent upcasting in setitem-like Series operations
+  * Deprecated parsing datetimes with mixed time zones
+  * Other Deprecation (see link above)
+  ## More
+  * Performance Improvements (see link above)
+  * Bug fixes (see linkl above)
+- Switch to meson build system
+
+-------------------------------------------------------------------
 Sun Aug 13 21:50:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.3:
