@@ -19,7 +19,7 @@
 # Remember to bump in baselibs.conf
 %define lname libshaderc_shared1
 Name:           shaderc
-Version:        2023.4
+Version:        2023.6
 Release:        0
 Summary:        A collection of tools, libraries and tests for shader compilation
 License:        Apache-2.0
@@ -31,10 +31,10 @@ Source99:       baselibs.conf
 Patch1:         0001-Use-system-third-party-libs.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 2.8.12
-BuildRequires:  glslang-devel >= 12.2
+BuildRequires:  glslang-devel >= 12.3.1+sdk261
 BuildRequires:  glslang-nonstd-devel
-BuildRequires:  spirv-headers >= 1.6.1~sdk250
-BuildRequires:  spirv-tools-devel >= 2023.3~rc1
+BuildRequires:  spirv-headers >= 1.6.1~sdk261
+BuildRequires:  spirv-tools-devel >= 2023.4~rc2
 
 %description
 A collection of tools, libraries and tests for shader compilation.
