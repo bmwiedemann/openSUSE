@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Sep  6 15:25:15 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix BuildRequires and Requires
+- ignore 4 new checks that need internet connectivity
+  * test_scan_sys_path[isolatedT-scanT-raises_not_foundT]
+  * test_scan_sys_path[isolatedT-scanF-raises_not_foundT]
+  * test_scan_sys_path[isolatedF-scanT-raises_not_foundF]
+  * test_scan_sys_path[isolatedF-scanF-raises_not_foundT]
+- update to 4.1.10:
+  * Bugfixes
+    - Catch empty collection lists (#332) @lod
+
+-------------------------------------------------------------------
+Wed Sep  6 14:55:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.9:
+  * Bugfixes
+    - Automatically add --pre when installing collections from git
+      repositories @ssbarnea
+
+-------------------------------------------------------------------
+Wed Sep  6 06:01:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.8:
+  * Bugfixes
+    - Revise site packages collection search test (#325) @cidrblock
+    - Add only those sys.paths which contain an ansible_collections
+      directory path (#322) @ajinkyau
+    - Allow git dependencies in galaxy.yml files (#321) @ssbarnea
+
+-------------------------------------------------------------------
+Wed Sep  6 05:44:29 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.7:
+  * Bugfixes
+    - Add `sys.path` to collection paths (#318) @cidrblock
+
+-------------------------------------------------------------------
+Wed Sep  6 05:39:12 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.6:
+  * Bugfixes
+    - Fix logic on prepare environment (#310) @ssbarnea
+    - Add smoke testing with ansible-lint (#312) @ssbarnea
+    - Adapt collection install test to pass with ansible-core
+      2.15.3 changes (#313) @ssbarnea
+    - Support meta main yaml extension (#304) @zhan9san
+
+-------------------------------------------------------------------
 Fri Jul 21 12:08:15 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - releases 4.1.3 and 4.1.4 were yanked

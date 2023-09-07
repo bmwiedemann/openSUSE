@@ -24,7 +24,7 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        4.1.5
+Version:        4.1.10
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
@@ -36,18 +36,24 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module jsonschema >= 4.17.3}
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module subprocess-tee >= 0.4.1}
+# https://github.com/ansible/ansible-compat/blob/main/pyproject.toml#L38
 BuildRequires:  ansible-core >= 2.12
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module jsonschema >= 4.17.3}
+BuildRequires:  %{python_module subprocess-tee >= 0.4.1}
+# https://github.com/ansible/ansible-compat/blob/main/pyproject.toml#L56
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-plus}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
-%{?python_enable_dependency_generator}
+Requires:       ansible-core >= 2.12
+Requires:       python-PyYAML
+Requires:       python-jsonschema >= 4.17.3
+Requires:       python-packaging
 Requires:       python-subprocess-tee >= 0.4.1
+%{?python_enable_dependency_generator}
 BuildArch:      noarch
 %python_subpackages
 
@@ -66,7 +72,22 @@ Facilitate working with various versions of Ansible 2.9 and newer.
 
 %check
 # excluding tests requiring internet connection
-%pytest -k 'not (test_runtime_example or test_require_collection_no_cache_dir or test_upgrade_collection or test_install_collection_dest or test_install_collection or test_require_collection or test_require_collection_wrong_version or test_prerun_reqs_v2 or test_prerun_reqs_v1 or test_prepare_environment_with_collections or test_runtime_require_module)' -W ignore:'There is no current event loop'
+IGNORED_CHECKS="test_install_collection"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_install_collection_dest"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_prepare_environment_with_collections"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_prerun_reqs_v1"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_prerun_reqs_v2"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_require_collection"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_require_collection_no_cache_dir"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_require_collection_wrong_version"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_runtime_example"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_runtime_require_module"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[isolatedF-scanF-raises_not_foundT]"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[isolatedF-scanT-raises_not_foundF]"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[isolatedT-scanF-raises_not_foundT]"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_scan_sys_path[isolatedT-scanT-raises_not_foundT]"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_upgrade_collection"
+%pytest -k "not (${IGNORED_CHECKS})"
 
 %files %{python_files}
 %{python_sitelib}/ansible_compat
