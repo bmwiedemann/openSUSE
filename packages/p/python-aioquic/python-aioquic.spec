@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aioquic
-Version:        0.9.20
+Version:        0.9.21
 Release:        0
 Summary:        Python implementation of QUIC and HTTP/3
 License:        BSD-3-Clause
@@ -29,13 +29,14 @@ Source:         https://files.pythonhosted.org/packages/source/a/aioquic/aioquic
 Patch1:         cryptography.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(openssl)
 Requires:       python-certifi
 Requires:       python-cryptography >= 3.1
-Requires:       python-pyOpenSSL >= 20
+Requires:       python-pyOpenSSL >= 22
 Requires:       python-pylsqpack >= 0.3.3
 # SECTION test requirements
 BuildRequires:  %{python_module certifi}

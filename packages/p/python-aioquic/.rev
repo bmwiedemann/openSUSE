@@ -61,4 +61,17 @@
     <comment></comment>
     <requestid>1096896</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>82f9317b1d3397052b6f2ca0717176f6</srcmd5>
+    <version>0.9.21</version>
+    <time>1694114048</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.9.21:
+  * http3_client: :path should not be empty
+  * Move project metadata to pyproject.toml
+  * Fix X509StoreContextError usage for pyOpenSSL &gt;= 22
+  * Test against Python 3.11
+  * Use function parameters instead of global args in examples</comment>
+    <requestid>1109559</requestid>
+  </revision>
 </revisionlist>
