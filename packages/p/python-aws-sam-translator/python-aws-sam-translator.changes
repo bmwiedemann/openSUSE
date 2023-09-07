@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-Fri Sep  1 15:44:47 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+Thu Sep  7 11:31:24 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.74.0
   * fix:RuntimeManagementConfig by @ConnorRobertson in #3274
@@ -45,7 +45,14 @@ Fri Sep  1 15:44:47 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * chore: json schema docs update by @ssenchenko in #3256
   * chore(schema): update by @github-actions in #3259
   * Release 1.72.0 (to main) by @ConnorRobertson in #3277
-- from version 1.71.0
+- Drop patch to skip network tests
+  * skip-tests-require-network.patch
+- Update and Rewrite skip list for failing tests
+
+-------------------------------------------------------------------
+Fri Sep  1 15:44:47 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.71.0
   * chore(schema): update by @github-actions in #3192
   * chore: make statemachine cw events test nonblocking by @aaythapa in #3196
   * feat: make add_transform_test.py always match expected output by @hoffa in #3195

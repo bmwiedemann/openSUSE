@@ -27,13 +27,13 @@
 %define skip_python2 1
 %endif
 Name:           python-aws-sam-translator
-Version:        1.71.0
+Version:        1.74.0
 Release:        0
 Summary:        AWS SAM template to AWS CloudFormation template translator
 License:        Apache-2.0
 URL:            https://github.com/awslabs/serverless-application-model
 Source:         https://github.com/awslabs/serverless-application-model/archive/v%{version}.tar.gz#/serverless-application-model-%{version}.tar.gz
-Patch0:         skip-tests-require-network.patch
+#Patch0:         skip-tests-require-network.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -87,11 +87,16 @@ install -D -m 755 bin/sam-translate.py %{buildroot}%{_bindir}/sam-translate
 %if %{with test}
 %check
 export LANG=en_US.UTF8
-# test_is_service_supported_positive_4_ec2:
-#   samtranslator/region_configuration.py:52: NoRegionFound
-# test_errors_13_error_definitionuri:
-#   AssertionError: Expected 7 errors, found 9
-%pytest -k 'not (test_is_service_supported_positive_4_ec2 or test_errors_13_error_definitionuri or test_py27_hash)'
+donttest="test_plugin_accepts_different_sar_client or test_plugin_accepts_flags or"
+donttest="$donttest test_plugin_accepts_parameters or test_plugin_default_values or"
+donttest="$donttest test_plugin_invalid_configuration_raises_exception or test_plugin_must_setup_correct_name or"
+donttest="$donttest test_must_process_applications or test_must_process_applications_validate or"
+donttest="$donttest test_process_invalid_applications or test_process_invalid_applications_validate or"
+donttest="$donttest test_resolve_intrinsics or test_sar_service_calls or test_sar_success_one_app or"
+donttest="$donttest test_sar_throttling_doesnt_stop_processing or test_sleep_between_sar_checks or"
+donttest="$donttest test_unexpected_sar_error_stops_processing or test_time_limit_exceeds_between_combined_sar_calls or"
+donttest="$donttest test_is_service_supported_positive_4_ec2"
+%pytest  -k "not ($donttest)"
 %endif
 
 %post
