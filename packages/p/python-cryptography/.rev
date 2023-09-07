@@ -963,4 +963,13 @@
     Poly1305`.</comment>
     <requestid>1102868</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>e9db9bccd6545bd9c35d2f827cbddfa8</srcmd5>
+    <version>41.0.3</version>
+    <time>1694113968</time>
+    <user>anag+factory</user>
+    <comment>- Update to 39.0.1 (bsc#1208036, CVE-2023-23931):
+  * drops CVE-2023-23931-dont-allow-update-into.patch in older dists</comment>
+    <requestid>1109339</requestid>
+  </revision>
 </revisionlist>
