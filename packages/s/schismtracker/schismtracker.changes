@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep  7 06:29:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230906
+  * Add FLAC loading support
+  * Fix improper playback of note-without-instrument after
+    instrument-without-note
+  * Fix for initial instrument-without-note
+  * MIDI note-off events that don't match the last note are now dropped
+  * Detect S3M files made with Graoumf Tracker
+
+-------------------------------------------------------------------
 Thu Dec  1 20:10:17 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20221201

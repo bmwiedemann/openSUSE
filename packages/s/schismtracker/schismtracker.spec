@@ -1,7 +1,7 @@
 #
 # spec file for package schismtracker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           schismtracker
-Version:        20221201
+Version:        20230906
 Release:        0
 Summary:        Music editor that matches the look and feel of Impulse Tracker
 License:        GPL-2.0-or-later
@@ -31,6 +31,7 @@ Patch3:         schism-deptrack.diff
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -65,6 +66,7 @@ for size in 16 22 24 32 36 48 64 72 96 128 192; do
 done
 install -Dm 0644 icons/schism-icon.svg \
 	"$b/%_datadir/icons/hicolor/scalable/apps/%name.svg"
+%fdupes %buildroot/%_prefix
 # install desktop file
 %suse_update_desktop_file -i %name
 
