@@ -34,7 +34,7 @@
 %global cryptography_version          41.0.2
 %global immutabledict_version         3.0.0
 %global idna_version                  3.4
-%global ijson_version                 3.2.0
+%global ijson_version                 3.2.3
 # TODO: 4.19.0
 %global jsonschema_version            4.18.6
 %global matrix_common_version         1.3.0
@@ -67,7 +67,7 @@
 %global Authlib_version               1.2.1
 # TODO             4.9.3
 %global lxml_version                  4.9.2
-%global sentry_sdk_version            1.28.1
+%global sentry_sdk_version            1.29.2
 %global PyJWT_version                 2.4.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
@@ -160,7 +160,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.90.0
+Version:        1.91.2
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -194,7 +194,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  unzip
-BuildRequires:  (%{use_python}-poetry-core >= 1.0.0 with %{use_python}-poetry-core =< 1.6.1)
+BuildRequires:  (%{use_python}-poetry-core >= 1.0.0 with %{use_python}-poetry-core =< 1.7.0)
 %{?systemd_ordering}
 %{sysusers_requires}
 %requires_peq   %{use_python}-base
