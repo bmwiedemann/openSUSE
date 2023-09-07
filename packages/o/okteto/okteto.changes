@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Sep 06 15:37:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.19.2:
+  * fix: remove context init from rch install cmd (#3954) (#3955)
+  * chore: add rch install / uninstall cmds (#3949) (#3952)
+  * fix: registrytoken cmd output processing (#3946) (#3951)
+  * fix: registrytoken cmd notfound error (#3945) (#3948)
+
+-------------------------------------------------------------------
+Wed Sep 06 15:34:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.19.1:
+  * restore previewLabels at default view of preview list (#3919)
+    (#3933)
+
+-------------------------------------------------------------------
+Wed Sep 06 15:32:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.19.0:
+  * Add cache to registry credentials (#3910) (#3913)
+  * fix: wait until build stops logs to return (#3908) (#3912)
+  * fix: if repo is not clean always return err (#3895) (#3898)
+  * fix: compose not getting image expansion from build (#3890)
+  * Wrap kubetoken client into OktetoClient (#3888)
+  * Add CA to kubeconfig in insecure mode (#3845)
+  * track deploy destroy on remote (#3873)
+  * fix: compute build envs in local (#3874)
+  * Revert "add logs for image digest getter (#3870)" (#3877)
+  * [Hybrid] add e2e to test support of additional dev fields
+    (#3808)
+  * revert: track deploy and destroy (#3872)
+  * track deploy and destroy on remote (#3848)
+  * add logs for image digest getter (#3870)
+  * fix: preview output json (#3861)
+  * Run e2e tests from PR labels (#3852)
+  * Fix hybrid interactive terminal and processes (#3811)
+  * Add .git to .dockerignore (#3846)
+  * fix: build args flags populated into buildkit (#3843)
+  * Fix context cancelled with reading git status operation (#3704)
+  * Update info messages for hybrid `okteto up` (#3815)
+  * Added gracefull fail in case of malformed docker-compose.yml
+    (#3844)
+  * fix: command unmarshal wrapping command (#3832)
+  * fix:infer name with default okteto manifest (#3822)
+  * fix: show context message on okteto build (#3831)
+  * feat: add `--output` flag for `okteto preview list` (#3804)
+  * chore: use buildkit v0.9.2-okteto3.systemcerts-2 (#3813)
+  * Add dockerconfig in remote commands (#3819)
+  * Add docker-credential-okteto to cli image (#3818)
+  * fix(up): skip deploy properly if deploy and depencencies are
+    empty (#3814)
+  * Add cluster private credentials to build and deploy remote
+    (#3799)
+  * fix publish okteto release for windows (#3802)
+  * ci: add env for OKTETO_PATH (#3809)
+  * fix: fail if dev mode is not valid (#3806)
+
+-------------------------------------------------------------------
+Wed Sep 06 15:30:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.18.3:
+  * fix: if repo is not clean always return err (#3895) (#3897)
+
+-------------------------------------------------------------------
 Tue Aug 08 14:08:51 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.18.2:
