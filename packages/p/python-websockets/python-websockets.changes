@@ -81,6 +81,11 @@ Sat Sep 24 16:17:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Avoided leaking open sockets when :func:`~client.connect` is canceled.
 
 -------------------------------------------------------------------
+Thu Jul 21 11:39:54 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Include in SLE-15 (bsc#1199282, jsc#PM-3243, jsc#SLE-24629)
+
+-------------------------------------------------------------------
 Fri Feb  4 22:08:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.1:
