@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  7 11:08:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.7:
+  * Fix propagation of exceptions raised during module
+    initialization
+  * Fix building when pg_config returns an empty string
+
+-------------------------------------------------------------------
 Fri Apr 21 12:30:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -19,7 +27,7 @@ Mon Apr  3 19:55:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Oct 28 19:56:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 2.9.5 
+- Update to 2.9.5
   * Add support for Python 3.11.
   * Add support for rowcount in MERGE statements in binary packages
     (ticket`#1497`).
@@ -40,7 +48,7 @@ Fri Oct 28 19:56:31 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 Thu Dec 30 09:54:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.3:
-  * Alpine (musl) wheels now available 
+  * Alpine (musl) wheels now available
 
 -------------------------------------------------------------------
 Mon Nov 29 10:57:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -101,7 +109,7 @@ Tue May 19 06:16:56 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Thu Apr 23 16:13:29 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
-- update to 2.8.5 
+- update to 2.8.5
   - Fixed use of connection_factory and cursor_factory together
     (ticket #1019).
   - Added support for logging.LoggerAdapter in LoggingConnection
@@ -150,32 +158,32 @@ Thu Jul  4 15:02:11 UTC 2019 - Daniel Molkentin <daniel.molkentin@suse.com>
 Tue Jun  4 15:36:23 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.8.3
-  * Added interval_status parameter to start_replication() method 
-    and other facilities to send automatic replication keepalives 
+  * Added interval_status parameter to start_replication() method
+    and other facilities to send automatic replication keepalives
     at periodic intervals
   * Fixed RealDictCursor when there are repeated columns
   * Fixed RealDictRow modifiability
-  * Fixed “there’s no async cursor” error polling a connection with 
+  * Fixed “there’s no async cursor” error polling a connection with
     no cursor
   2.8.0
-  * Added errors module. Every PostgreSQL error is converted into 
+  * Added errors module. Every PostgreSQL error is converted into
     a specific exception class
   * Added encrypt_password() function
-  * Added BYTES adapter to manage databases with mixed encodings on 
+  * Added BYTES adapter to manage databases with mixed encodings on
     Python 3
-  * Added table_oid and table_column attributes on cursor.description 
+  * Added table_oid and table_column attributes on cursor.description
     items
-  * Added connection.info object to retrieve various PostgreSQL 
+  * Added connection.info object to retrieve various PostgreSQL
     connection information
   * str() on Range produces a human-readable representation
-  * Fixed async communication blocking if results are returned in 
+  * Fixed async communication blocking if results are returned in
     different chunks
   * Fixed adaptation of numeric subclasses such as IntEnum
   * Dropped support for Python 2.6, 3.2, 3.3.
   * Dropped deprecated register_tstz_w_secs()
-  * Dropped deprecated PersistentConnectionPool. Use 
+  * Dropped deprecated PersistentConnectionPool. Use
     ZPsycopgDA.pool instead.
-  * Binary packages no longer installed by default. The 
+  * Binary packages no longer installed by default. The
     ‘psycopg2-binary’ package must be used explicitly.
   * Dropped PSYCOPG_DISPLAY_SIZE build parameter.
 
@@ -286,32 +294,32 @@ Fri Jun 23 16:26:18 UTC 2017 - jmatejek@suse.com
 - convert to singlespec
 - update to 2.7.1
   * Added sql module to generate SQL dynamically (ticket #308).
-  * Added Replication protocol support (ticket #322). Main authors are 
+  * Added Replication protocol support (ticket #322). Main authors are
     Oleksandr Shulgin and Craig Ringer, who deserve a huge thank you.
-  * Added parse_dsn() and make_dsn() functions (tickets #321, #363). connect() 
+  * Added parse_dsn() and make_dsn() functions (tickets #321, #363). connect()
     now can take both dsn and keyword arguments, merging them together.
-  * Added __libpq_version__ and libpq_version() to inspect the version of the 
+  * Added __libpq_version__ and libpq_version() to inspect the version of the
     libpq library the module was compiled/loaded with (tickets #35, #323).
-  * The attributes notices and notifies can be customized replacing them with 
+  * The attributes notices and notifies can be customized replacing them with
     any object exposing an append() method (ticket #326).
-  * Adapt network types to ipaddress objects when available. When not enabled, 
-    convert arrays of network types to lists by default. The old Inet adapter is 
+  * Adapt network types to ipaddress objects when available. When not enabled,
+    convert arrays of network types to lists by default. The old Inet adapter is
     deprecated (tickets #317, #343, #387).
   * Added quote_ident() function (ticket #359).
   * Added get_dsn_parameters() connection method (ticket #364).
   * callproc() now accepts a dictionary of parameters (ticket #381).
-  * Give precedence to __conform__() over superclasses to choose an object 
+  * Give precedence to __conform__() over superclasses to choose an object
     adapter (ticket #456).
-  * Using Python C API decoding functions and codecs caching for faster 
+  * Using Python C API decoding functions and codecs caching for faster
     unicode encoding/decoding (ticket #473).
-  * executemany() slowness addressed by execute_batch() and execute_values() 
+  * executemany() slowness addressed by execute_batch() and execute_values()
     (ticket #491).
-  * Added async_ as an alias for async to support Python 3.7 where async will 
+  * Added async_ as an alias for async to support Python 3.7 where async will
     become a keyword (ticket #495).
-  * Unless in autocommit, do not use default_transaction_* settings to control 
-    the session characteristics as it may create problems with external 
+  * Unless in autocommit, do not use default_transaction_* settings to control
+    the session characteristics as it may create problems with external
     connection pools such as pgbouncer; use BEGIN options instead (ticket #503).
-  * isolation_level is now writable and entirely separated from autocommit; 
+  * isolation_level is now writable and entirely separated from autocommit;
     added readonly, deferrable writable attributes.
   * dropped support for python 2.5 and postgres client library < 9.1
   * many bugs fixed
@@ -479,7 +487,7 @@ Tue Apr 16 18:05:47 UTC 2013 - jfunk@funktronics.ca
 -------------------------------------------------------------------
 Fri May 25 14:07:21 UTC 2012 - cfarrell@suse.com
 
-- license update: LGPL-3.0+ and (LGPL-3.0+ or ZPL-2.0) and       
+- license update: LGPL-3.0+ and (LGPL-3.0+ or ZPL-2.0) and
   SUSE-GPL-2.0-with-openssl-exception
   See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions
   for pgsql) in the package. Also, the ZPL option is only available for one
@@ -489,7 +497,7 @@ Fri May 25 14:07:21 UTC 2012 - cfarrell@suse.com
 Fri May 25 05:32:01 UTC 2012 - highwaystar.ru@gmail.com
 
 - python3 package added
-- minor spec improvement 
+- minor spec improvement
 
 -------------------------------------------------------------------
 Fri Apr  6 19:05:14 UTC 2012 - jfunk@funktronics.ca
@@ -615,8 +623,8 @@ Wed Oct 27 02:43:22 UTC 2010 - termim@gmail.com
     * the call to logging.basicConfig() in pool.py has been dropped:
       it was messing with some projects using logging (and a library
       should not initialize the logging system anyway.)
-    * psycopg now correctly handles time zones with seconds in the 
-      UTC offset. The old register_tstz_w_secs() function is deprecated 
+    * psycopg now correctly handles time zones with seconds in the
+      UTC offset. The old register_tstz_w_secs() function is deprecated
       and will raise a warning if called.
     * Exceptions raised by the column iterator are propagated.
     * Exceptions raised by executemany() interators are propagated.
@@ -674,7 +682,7 @@ Wed Nov  5 11:57:40 CET 2008 - poeml@suse.de
 Wed Jun 13 07:56:02 UTC 2007 - judas_iscariote@shorewall.net
 
 - Update to version 2.0.6 see http://initd.org/pub/software/psycopg/ChangeLog
-  for details. 
+  for details.
 
 -------------------------------------------------------------------
 Wed Oct 19 00:00:00 UTC 2005 - jfunk@funktronics.ca

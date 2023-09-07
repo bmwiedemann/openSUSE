@@ -16,18 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-psycopg2
-Version:        2.9.6
+Version:        2.9.7
 Release:        0
 Summary:        Python-PostgreSQL Database Adapter
 License:        LGPL-3.0-or-later AND (LGPL-3.0-or-later OR ZPL-2.0) AND SUSE-GPL-2.0-with-openssl-exception
-URL:            http://initd.org/psycopg/
+URL:            https://www.psycopg.org/
 Source:         https://files.pythonhosted.org/packages/source/p/psycopg2/psycopg2-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.6}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # newer postgresql packages pg_config in -server-devel
@@ -56,10 +55,10 @@ for coroutine libraries.
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -rf %{buildroot}%{$python_sitearch}/psycopg2/tests # Don't package testsuite
 %fdupes %{buildroot}/%{_mandir}  # Create symlinks for man pages
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
@@ -72,6 +71,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %license LICENSE
 %doc AUTHORS NEWS README.rst
 %{python_sitearch}/psycopg2/
-%{python_sitearch}/psycopg2-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/psycopg2-%{version}*-info
 
 %changelog

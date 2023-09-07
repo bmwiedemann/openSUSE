@@ -392,4 +392,41 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
     <comment></comment>
     <requestid>1081820</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c5974ab25c2acd76db38e103e238b43e</srcmd5>
+    <version>2.9.7</version>
+    <time>1694114028</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.9.7:
+  * Fix propagation of exceptions raised during module
+    initialization
+  * Fix building when pg_config returns an empty string
+
+- Update to 2.9.5
+  * Alpine (musl) wheels now available
+- update to 2.8.5
+  * Added interval_status parameter to start_replication() method
+    and other facilities to send automatic replication keepalives
+  * Fixed “there’s no async cursor” error polling a connection with
+  * Added errors module. Every PostgreSQL error is converted into
+  * Added BYTES adapter to manage databases with mixed encodings on
+  * Added table_oid and table_column attributes on cursor.description
+  * Added connection.info object to retrieve various PostgreSQL
+  * Fixed async communication blocking if results are returned in
+  * Dropped deprecated PersistentConnectionPool. Use
+  * Binary packages no longer installed by default. The
+  * Added Replication protocol support (ticket #322). Main authors are
+  * Added parse_dsn() and make_dsn() functions (tickets #321, #363). connect()
+  * Added __libpq_version__ and libpq_version() to inspect the version of the
+  * The attributes notices and notifies can be customized replacing them with
+  * Adapt network types to ipaddress objects when available. When not enabled,
+    convert arrays of network types to lists by default. The old Inet adapter is
+  * Give precedence to __conform__() over superclasses to choose an object
+  * Using Python C API decoding functions and codecs caching for faster
+  * executemany() slowness addressed by execute_batch() and execute_values()
+  * Added async_ as an alias for async to support Python 3.7 where async will
+  * Unless in autocommit, do not use default_transaction_* settings to control
+    the session characteristics as it may create problems with external</comment>
+    <requestid>1109514</requestid>
+  </revision>
 </revisionlist>
