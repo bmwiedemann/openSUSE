@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 # cookiecutter is only available for python3
 %define pythons python3
 Name:           python-pytest-cookies
@@ -24,10 +23,11 @@ Version:        0.7.0
 Release:        0
 Summary:        Cookiecutter template pytest plugin
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/hackebrot/pytest-cookies
 Source:         https://github.com/hackebrot/pytest-cookies/archive/%{version}.tar.gz#/pytest-cookies-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       cookiecutter >= 2.1.0
@@ -46,10 +46,10 @@ The pytest plugin for your Cookiecutter templates.
 %setup -q -n pytest-cookies-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +58,7 @@ The pytest plugin for your Cookiecutter templates.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_cookies
+%{python_sitelib}/pytest_cookies-%{version}.dist-info
 
 %changelog

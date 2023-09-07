@@ -36,4 +36,13 @@
     `Result.project_path`</comment>
     <requestid>1085823</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e33050b9f32c09c6f05b44ab8279cb6b</srcmd5>
+    <version>0.7.0</version>
+    <time>1694113998</time>
+    <user>anag+factory</user>
+    <comment>- Stop using greedy globs in %files.
+- Switch to pyproject macros.</comment>
+    <requestid>1109386</requestid>
+  </revision>
 </revisionlist>
