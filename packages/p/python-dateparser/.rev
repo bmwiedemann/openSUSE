@@ -220,4 +220,12 @@
     <comment></comment>
     <requestid>1081949</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>9fc1f024e2b502d3bd78e2347d7b2460</srcmd5>
+    <version>1.1.8</version>
+    <time>1694113935</time>
+    <user>anag+factory</user>
+    <comment>- remove unneeded GitPython dependency</comment>
+    <requestid>1109435</requestid>
+  </revision>
 </revisionlist>

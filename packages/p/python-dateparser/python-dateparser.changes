@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  7 07:09:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove unneeded GitPython dependency
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

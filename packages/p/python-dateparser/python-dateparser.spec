@@ -42,7 +42,6 @@ Recommends:     python-langdetect
 Recommends:     python-ruamel.yaml
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module GitPython}
 BuildRequires:  %{python_module convertdate}
 BuildRequires:  %{python_module fasttext}
 BuildRequires:  %{python_module langdetect}
