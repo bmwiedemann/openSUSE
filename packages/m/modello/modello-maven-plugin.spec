@@ -19,14 +19,16 @@
 %global parent modello
 %global subname maven-plugin
 Name:           %{parent}-%{subname}
-Version:        2.0.0
+Version:        2.1.2
 Release:        0
 Summary:        Modello Maven Plugin
 License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Java
 URL:            https://codehaus-plexus.github.io/modello/modello-maven-plugin
 Source0:        https://repo1.maven.org/maven2/org/codehaus/%{parent}/%{parent}/%{version}/%{parent}-%{version}-source-release.zip
-Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
+Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
+Patch0:         modello-cli-domasxpp3.patch
+Patch1:         0001-Revert-Switch-to-codehaus-plexus-build-api-1.2.0-345.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -45,7 +47,9 @@ BuildRequires:  mvn(org.codehaus.modello:modello-plugin-stax) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xdoc) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xpp3) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xsd) = %{version}
+BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.codehaus.plexus:plexus:pom:)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
 #!BuildRequires: maven-compiler-plugin-bootstrap
 #!BuildRequires: maven-jar-plugin-bootstrap
@@ -75,18 +79,31 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n %{parent}-%{version}
+%patch0 -p1
+%patch1 -p1
 cp -p %{SOURCE1} LICENSE
 
 %pom_remove_plugin :maven-site-plugin
+%pom_remove_plugin :maven-enforcer-plugin
+
+%pom_remove_dep :plexus-xml modello-core
+%pom_remove_dep :sisu-guice modello-core
+%pom_add_dep com.google.inject:guice modello-core
 
 %pom_remove_dep :jackson-bom
 
 %pom_disable_module modello-plugin-jackson modello-plugins
 %pom_disable_module modello-plugin-jsonschema modello-plugins
 %pom_disable_module modello-plugin-snakeyaml modello-plugins
+%pom_disable_module modello-plugin-velocity modello-plugins
 %pom_remove_dep :modello-plugin-jackson modello-maven-plugin
 %pom_remove_dep :modello-plugin-jsonschema modello-maven-plugin
 %pom_remove_dep :modello-plugin-snakeyaml modello-maven-plugin
+%pom_remove_dep :modello-plugin-velocity modello-maven-plugin
+
+rm -f modello-maven-plugin/src/main/java/org/codehaus/modello/maven/ModelloVelocityMojo.java
+
+%pom_disable_module modello-test
 
 %build
 pushd %{name}

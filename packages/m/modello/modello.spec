@@ -17,39 +17,35 @@
 
 
 Name:           modello
-Version:        2.0.0
+Version:        2.1.2
 Release:        0
 Summary:        Modello Data Model toolkit
 License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Java
 URL:            https://codehaus-plexus.github.io/modello
 Source0:        https://repo1.maven.org/maven2/org/codehaus/%{name}/%{name}/%{version}/%{name}-%{version}-source-release.zip
-Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
+Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Source100:      %{name}-build.tar.xz
 Patch0:         modello-cli-domasxpp3.patch
+Patch1:         0001-Revert-Switch-to-codehaus-plexus-build-api-1.2.0-345.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  google-guice
 BuildRequires:  guava
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsoup
 BuildRequires:  junit
 BuildRequires:  plexus-build-api
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-compiler
+BuildRequires:  plexus-containers-component-annotations
+BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 Requires:       guava
 Requires:       javapackages-tools
 Requires:       xbean
-Requires:       mvn(org.codehaus.plexus:plexus-compiler-api)
-Requires:       mvn(org.codehaus.plexus:plexus-compiler-javac)
-Requires:       mvn(org.codehaus.plexus:plexus-utils)
-Requires:       mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
-Requires:       mvn(org.jsoup:jsoup)
-Requires:       mvn(org.sonatype.plexus:plexus-build-api)
-Requires:       mvn(org.sonatype.sisu:sisu-guice::no_aop:)
 BuildArch:      noarch
 
 %description
@@ -71,25 +67,55 @@ API documentation for %{name}.
 %prep
 %setup -q -a100
 %patch0 -p1
+%patch1 -p1
 cp -p %{SOURCE1} LICENSE
 
 %pom_remove_plugin :maven-site-plugin
+%pom_remove_plugin :maven-enforcer-plugin
+
+%pom_remove_dep :plexus-xml modello-core
+%pom_remove_dep :sisu-guice modello-core
+%pom_add_dep com.google.inject:guice modello-core
 
 %pom_remove_dep :jackson-bom
 
 %pom_disable_module modello-plugin-jackson modello-plugins
 %pom_disable_module modello-plugin-jsonschema modello-plugins
 %pom_disable_module modello-plugin-snakeyaml modello-plugins
+%pom_disable_module modello-plugin-velocity modello-plugins
 %pom_remove_dep :modello-plugin-jackson modello-maven-plugin
 %pom_remove_dep :modello-plugin-jsonschema modello-maven-plugin
 %pom_remove_dep :modello-plugin-snakeyaml modello-maven-plugin
+%pom_remove_dep :modello-plugin-velocity modello-maven-plugin
+
+rm -f modello-maven-plugin/src/main/java/org/codehaus/modello/maven/ModelloVelocityMojo.java
+
+%pom_disable_module modello-test
 
 %build
 mkdir -p lib
-build-jar-repository -s lib plexus/classworlds plexus/utils plexus/plexus-build-api \
-  plexus-compiler/plexus-compiler-api plexus-compiler/plexus-compiler-javac \
-  jsoup guava/guava junit org.eclipse.sisu.plexus
-# skip tests because we have too old xmlunit in openSUSE now (1.5)
+build-jar-repository -s lib \
+	atinject \
+	commons-cli \
+    guava/guava \
+    guice/google-guice \
+	jdom2/jdom2 \
+    jsoup \
+    junit \
+	objectweb-asm/asm \
+    org.eclipse.sisu.inject \
+    org.eclipse.sisu.plexus \
+    plexus/classworlds \
+	plexus/cli \
+    plexus/plexus-build-api \
+    plexus/utils \
+    plexus-compiler/plexus-compiler-api \
+    plexus-compiler/plexus-compiler-javac \
+    plexus-containers/plexus-component-annotations \
+    plexus-metadata-generator \
+	qdox \
+	xbean/xbean-reflect
+
 %{ant} \
   -Dtest.skip=true \
   package javadoc
@@ -98,7 +124,7 @@ build-jar-repository -s lib plexus/classworlds plexus/utils plexus/plexus-build-
 # jars
 install -dm 0755 %{buildroot}%{_javadir}/%{name}
 
-for i in core test; do
+for i in core; do
   install -pm 0644 %{name}-${i}/target/%{name}-${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-${i}.jar
 done
 
@@ -109,26 +135,20 @@ done
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 
-install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
-%add_maven_depmap %{name}/%{name}.pom
-
-install -pm 0644 %{name}-plugins/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-plugins.pom
-%add_maven_depmap %{name}/%{name}-plugins.pom
-
-for i in core test; do
-  install -pm 0644 %{name}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${i}.pom
+for i in core; do
+  %mvn_install_pom %{name}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${i}.pom
   %add_maven_depmap %{name}/%{name}-${i}.pom %{name}/%{name}-${i}.jar
 done
 
 for i in converters dom4j java jdom sax stax xdoc xml xpp3 xsd; do
-  install -pm 0644 %{name}-plugins/%{name}-plugin-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-plugin-${i}.pom
+  %mvn_install_pom %{name}-plugins/%{name}-plugin-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-plugin-${i}.pom
   %add_maven_depmap %{name}/%{name}-plugin-${i}.pom %{name}/%{name}-plugin-${i}.jar
 done
 
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 
-for i in core test; do
+for i in core; do
   install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}
   cp -pr %{name}-${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}/
 done
@@ -141,7 +161,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # script
-%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:google-guice-no_aop:atinject:plexus-containers/plexus-component-annotations:plexus/classworlds:plexus/utils:plexus/plexus-build-api:guava:plexus-compiler/plexus-compiler-api:plexus-compiler/plexus-compiler-javac %{name} true
+%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:google-guice:aopalliance:atinject:plexus-containers/plexus-component-annotations:plexus/classworlds:plexus/utils:plexus/plexus-build-api:guava:plexus-compiler/plexus-compiler-api:plexus-compiler/plexus-compiler-javac %{name} true
 
 %files -f .mfiles
 %license LICENSE

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Sep  6 14:43:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.1.2
+  * Changes of version 2.1.2
+    + Switch to codehaus plexus-build-api 1.2.0 (reverted by a
+      patch in this package)
+    + Add plexus 13 parent and reformat
+    + Remove readonly flag from basedir: support .mdo from any
+      location
+    + Require Maven 3.5.4+
+    + Prepare to run with Java 19+
+  * Changes of version 2.1.1
+    + replace generatedBy context value by template
+    + add velocityBasedir to select where to load (shared) .vm from
+  * Changes of version 2.1.0
+    + Make the Xpp3Reader#read(XmlPullParser, boolean strict) public
+    + Fix json encoding
+    + Support arbitrary element names via 'xs:any'
+    + Call setter only after object has been populated
+    + replace handwritten components.xml with annotations
+    + Optionally enforce required elements in XSDs
+    + Add a velocity template based generator
+    + Use optimised plexus-utils CachingWriter
+- Added patch:
+  * 0001-Revert-Switch-to-codehaus-plexus-build-api-1.2.0-345.patch
+    + use the version of plexus-build-api that we have packaged
+- Modified patch:
+  * modello-cli-domasxpp3.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Thu May  4 14:27:26 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
