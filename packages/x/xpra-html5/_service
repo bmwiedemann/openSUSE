@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/Xpra-org/xpra-html5</param>
     <param name="scm">git</param>
     <!-- TESTING -->
@@ -21,20 +21,25 @@
     <param name="revision">21cabde</param>
     -->
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
-    <!--  This comes from setup.py which defines
+    <!--
+      As of 20230831, this seems to be in sync
+
+      This comes from setup.py which defines
       a 'VERSION = ' based off a tag; current
-      release is 'v7.0' (Tags) but master defines
-      it as 8.0 (per `grep -r 'VERSION =' xpra-html5`)
-    -->
+      release is 'v8.0' (Tags) but master defines
+      it as 9.0 (per `grep -r 'VERSION =' xpra-html5`)
+
     <param name="versionrewrite-pattern">v8.0</param>
     <param name="versionrewrite-replacement">9.0</param>
+    -->
+    <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="set_version" mode="disabled"/>
-  <service name="tar" mode="disabled">
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="manual">
     <param name="package-meta">yes</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="compression">gz</param>
     <param name="file">*.tar</param>
   </service>

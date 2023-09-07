@@ -22,7 +22,7 @@
 
 Name:           xpra-html5
 Release:        0
-Version:        9.0+git20230615.cdd9ea7
+Version:        9.0+git20230830.e5fb000
 Summary:        HTML5 client for Xpra
 License:        GPL-2.0+ AND BSD-3-Clause AND LGPL-3.0+ AND MIT
 URL:            https://xpra.org/

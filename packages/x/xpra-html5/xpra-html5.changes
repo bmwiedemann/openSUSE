@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Aug 31 12:38:39 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 9.0+git20230830.e5fb000:
+  * workaround 'mv: inter-device move failed'
+  * update release no
+  * update the release notes
+  * #262 use v5 audio caps
+  * #262 use v5 file-transfer caps
+  * move modifier parsing to a dedicated function
+  * move audio parsing to a dedicated function
+  * #262 newer servers don't need these flags
+  * #262 remove bencode remnants and calls to StringToUint8
+  * #262 remove zlib
+  * add screenshots to home page
+  * Fix encoding issue when using authentication.
+  * Use TextEncoder/TextDecoder to handle string conversion to/from UTF-8.
+  * require less CPU in html5 clients
+  * #227 Safari is the new IE
+  * #258 enable OffscreenCanvas with Firefox>=108 and Safari>=16.4
+  * use functions from Utilities.js
+  * add function ord() to Utilities.js
+  * load Utilities.js in index.html first
+  * fix Protocol.js
+
+-------------------------------------------------------------------
 Tue Jun 20 15:01:07 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 9.0+git20230615.cdd9ea7:
