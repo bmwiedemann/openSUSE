@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  7 07:55:29 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
+
+- Fix CVE-2023-3153 [bsc#1212125], VUL-0: CVE-2023-3153: openvswitch,openvswitch3: service monitor MAC flow is not rate limited
+- Added patch,
+       CVE-2023-3152.patch 
+
+-------------------------------------------------------------------
 Wed May 17 09:46:44 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
 - Fix CVE-2023-1668 [bsc#1210054], openvswitch: remote traffic denial of service via crafted packets with IP proto 0

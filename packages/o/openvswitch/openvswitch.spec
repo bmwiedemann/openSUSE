@@ -81,6 +81,8 @@ Patch5:         CVE-2023-1668.patch
 #OVN patches
 # PATCH-FIX-OPENSUSE: 0001-Run-ovn-as-openvswitch-openvswitch.patch
 Patch20:        0001-Run-ovn-as-openvswitch-openvswitch.patch
+# PATCH-FIX-UPSTREAM CVE-2023-3152 [bsc#1212125] -- service monitor MAC flow is not rate limited
+Patch21:        CVE-2023-3152.patch
 # CVE-2021-36980 [bsc#1188524], use-after-free in decode_NXAST_RAW_ENCAP
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -417,6 +419,7 @@ Devel libraries and headers for Open Virtual Network.
 rm python/ovs/dirs.py
 cd %{ovn_dir}
 %patch20 -p1
+%patch21 -p1
 
 %build
 mkdir %ovs_dir

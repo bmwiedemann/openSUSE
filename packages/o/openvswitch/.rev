@@ -803,4 +803,21 @@
     <comment></comment>
     <requestid>1087788</requestid>
   </revision>
+  <revision rev="69" vrev="15">
+    <srcmd5>4e324eedb8b5197296446e3914f05199</srcmd5>
+    <version>unknown</version>
+    <time>1694113942</time>
+    <user>anag+factory</user>
+    <comment>Description:
+- Added fix for CVE-2023-3152, openvswitch : service monitor MAC flow is not rate limited
+
+Actions:
+- submit network/openvswitch =&gt; openSUSE:Factory/openvswitch
+
+Changes:
+- Fix CVE-2023-3153 [bsc#1212125], VUL-0: CVE-2023-3153: openvswitch,openvswitch3: service monitor MAC flow is not rate limited
+- Added patch,
+       CVE-2023-3152.patch </comment>
+    <requestid>1109539</requestid>
+  </revision>
 </revisionlist>
