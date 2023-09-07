@@ -63,4 +63,13 @@
     <comment></comment>
     <requestid>1081846</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>933c350a6ea44cfe979758632b7aba4c</srcmd5>
+    <version>1.2.0</version>
+    <time>1694113925</time>
+    <user>anag+factory</user>
+    <comment>- drop outdated depndendy on async_generator
+  (see https://github.com/python-trio/outcome/issues/12)</comment>
+    <requestid>1109331</requestid>
+  </revision>
 </revisionlist>
