@@ -175,4 +175,12 @@ SR for python stack proposal</comment>
   * Fix test failures with Python TLS changes.</comment>
     <requestid>1084544</requestid>
   </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>6d2e67727da538a9388c3cebb3bb84f3</srcmd5>
+    <version>3.6.2</version>
+    <time>1694113967</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-trio-0.22.patch:</comment>
+    <requestid>1109337</requestid>
+  </revision>
 </revisionlist>
