@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  6 15:55:24 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.39.1:
+  * fix: Ensure default template data when reading .chezmoidata in subdir
+
+-------------------------------------------------------------------
+Tue Sep  5 15:15:02 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.39.0:
+  * feat: add .chezmoi.targetFile template variable
+  * feat: Add age command
+  * feat: Add bitwardenSecrets template function
+  * fix: Handle .chezmoidata files in subdirectories when template has already been executed
+
+-------------------------------------------------------------------
 Mon Aug 28 15:01:56 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.38.0:

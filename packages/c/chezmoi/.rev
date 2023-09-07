@@ -265,4 +265,19 @@
     <comment></comment>
     <requestid>1107789</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>6d82837c29074d168aaccbcca146cbb5</srcmd5>
+    <version>2.39.1</version>
+    <time>1694113949</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.39.1:
+  * fix: Ensure default template data when reading .chezmoidata in subdir
+- Update to version 2.39.0:
+  * feat: add .chezmoi.targetFile template variable
+  * feat: Add age command
+  * feat: Add bitwardenSecrets template function
+  * fix: Handle .chezmoidata files in subdirectories when template has already been executed
+</comment>
+    <requestid>1109301</requestid>
+  </revision>
 </revisionlist>
