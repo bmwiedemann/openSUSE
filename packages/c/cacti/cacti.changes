@@ -1,24 +1,24 @@
 -------------------------------------------------------------------
 Wed Sep  6 06:06:32 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- cacti 1.2.25 (boo#1215024):
-  * Protect against Insecure deserialization of filter data
-  * Protect against Cross-Site Scripting vulnerability when creating new graphs
-  * Protect against Unauthenticated SQL Injection when viewing graphs
-  * Protect against SQL Injection when saving data with sql_save()
-  * Protect against Authenticated command injection when using SNMP options
-  * Protect against Authenticated SQL injection vulnerability when managing graphs
-  * Protect against Authenticated SQL injection vulnerability when managing reports
-  * Protect against SQL Injection when using regular expressions
-  * Protect against Open redirect in change password functionality
-  * Protect against Cross-Site Scripting vulnerability with Device Name when managing Data Sources
-  * Protect against Cross-Site Scripting vulnerability with Device Name when administrating Reports
-  * Protect against Cross-Site Scripting vulnerability with Device Name when editing Graphs whilst managing Reports
-  * Protect against Cross-Site Scripting vulnerability with Device Name when managing Data Sources
-  * Protect against Cross-Site Scripting vulnerability with Device Name when debugging data queries
-  * Protect against Cross-Site Scripting vulnerability with Data Source Name when managing Graphs
-  * Protect against Cross-Site Scripting vulnerability with Data Source Name when debugging Data Queries
-  * Protect against Cross-Site Scripting vulnerability with Data Source Information when managing Data Sources
+- cacti 1.2.25:
+  * CVE-2023-30534: Protect against Insecure deserialization of filter data (boo#1215082)
+  * CVE-2023-39360: Cross-Site Scripting vulnerability when creating new graphs (boo#1215044)
+  * CVE-2023-39361: Unauthenticated SQL Injection when viewing graphs (boo#1215045)
+  * CVE-2023-39357: SQL Injection when saving data with sql_save() (boo#1215040)
+  * CVE-2023-39362: Authenticated command injection when using SNMP options (boo#1215047)
+  * CVE-2023-39359: Authenticated SQL injection vulnerability when managing graphs (boo#1215043)
+  * CVE-2023-39358: Authenticated SQL injection vulnerability when managing reports (boo#1215042)
+  * CVE-2023-39365: SQL Injection when using regular expressions (boo#1215051)
+  * CVE-2023-39364: redirect in change password functionality (boo#1215050)
+  * CVE-2023-39366: Cross-Site Scripting vulnerability with Device Name when managing Data Sources (boo#1215052)
+  * CVE-2023-39510: Cross-Site Scripting vulnerability with Device Name when administrating Reports (boo#1215053)
+  * CVE-2023-39511: Cross-Site Scripting vulnerability with Device Name when editing Graphs whilst managing Reports (boo#1215081)
+  * CVE-2023-39512: Cross-Site Scripting vulnerability with Device Name when managing Data Sources (boo#1215054)
+  * CVE-2023-39513: Cross-Site Scripting vulnerability with Device Name when debugging data queries (boo#1215055)
+  * CVE-2023-39514: Cross-Site Scripting vulnerability with Data Source Name when managing Graphs (boo#1215056)
+  * CVE-2023-39515: Cross-Site Scripting vulnerability with Data Source Name when debugging Data Queries (boo#1215058)
+  * CVE-2023-39516: Cross-Site Scripting vulnerability with Data Source Information when managing Data Sources (boo#1215059)
   * When rebuilding the Poller Cache from command line, allow it to be multi-threaded
   * When searching tree or list views, the URL does not update after changes
   * When creating a Data Source Template with a specific snmp port, the port is not always applied

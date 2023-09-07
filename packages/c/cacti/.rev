@@ -384,4 +384,31 @@
     <comment>cacti 1.2.25 (boo#1215024)</comment>
     <requestid>1109188</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>a985b09230910570eb44c94b5b5b4de5</srcmd5>
+    <version>1.2.25</version>
+    <time>1694113978</time>
+    <user>anag+factory</user>
+    <comment>cl update for tracking...
+
+CVE-2023-30534 boo#1215082
+CVE-2023-39360 boo#1215044
+CVE-2023-39361 boo#1215045
+CVE-2023-39357 boo#1215040
+CVE-2023-39362 boo#1215047
+CVE-2023-39359 boo#1215043
+CVE-2023-39358 boo#1215042
+CVE-2023-39365 boo#1215051
+CVE-2023-39364 boo#1215050
+CVE-2023-39366 boo#1215052
+CVE-2023-39510 boo#1215053
+CVE-2023-39511 boo#1215081
+CVE-2023-39512 boo#1215054
+CVE-2023-39513 boo#1215055
+CVE-2023-39514 boo#1215056
+CVE-2023-39515 boo#1215058
+CVE-2023-39516 boo#1215059
+</comment>
+    <requestid>1109347</requestid>
+  </revision>
 </revisionlist>
