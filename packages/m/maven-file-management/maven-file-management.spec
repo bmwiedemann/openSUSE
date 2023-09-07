@@ -1,7 +1,7 @@
 #
 # spec file for package maven-file-management
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 
-%bcond_with tests
 Name:           maven-file-management
 Version:        3.0.0
 Release:        0
 Summary:        Maven File Management API
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/shared/file-management
-Source0:        http://repo1.maven.org/maven2/org/apache/maven/shared/file-management/%{version}/file-management-%{version}-source-release.zip
+URL:            https://maven.apache.org/shared/file-management
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/file-management/%{version}/file-management-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
 BuildRequires:  maven-shared-io
 BuildRequires:  maven-shared-utils
@@ -36,13 +35,7 @@ BuildRequires:  modello >= 2.0.0
 BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-utils
 BuildRequires:  unzip
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
-BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-%endif
 
 %description
 Provides a component for plugins to easily resolve project dependencies.
@@ -68,21 +61,26 @@ build-jar-repository -s lib \
 	plexus/utils
 
 %{ant} \
-%if %{without tests}
-	-Dtest.skip=true \
-%endif
 	jar javadoc
 
-%{mvn_artifact} pom.xml target/file-management-%{version}.jar
-
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 target/file-management-%{version}.jar %{buildroot}%{_javadir}/%{name}/file-management.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/file-management.pom
+%add_maven_depmap %{name}/file-management.pom %{name}/file-management.jar
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE NOTICE
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE NOTICE
 
 %changelog
