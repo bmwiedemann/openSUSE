@@ -16,6 +16,8 @@
 #
 
 
+%define with_wasmedge 1
+
 Name:           crun
 Version:        1.8.6
 Release:        0
@@ -48,6 +50,9 @@ BuildRequires:  criu-devel >= 3.15
 BuildRequires:  libkrun-devel
 Requires:       libkrun1
 %endif
+%if %with_wasmedge
+BuildRequires:  wasmedge-devel
+%endif
 
 %description
 crun is a runtime for running OCI containers. It is built with libkrun support
@@ -59,8 +64,12 @@ crun is a runtime for running OCI containers. It is built with libkrun support
 %ifarch x86_64 aarch64
 export LIBKRUN="--with-libkrun"
 %endif
+%if %with_wasmedge
+export WASMEDGE="--with-wasmedge"
+%endif
+
 ./autogen.sh
-%configure --disable-silent-rules $LIBKRUN CFLAGS='-I %{_includedir}/libseccomp'
+%configure --disable-silent-rules $LIBKRUN $WASMEDGE CFLAGS='-I %{_includedir}/libseccomp'
 %make_build
 
 # TODO:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  5 11:41:14 UTC 2023 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Enable WasmEdge support to run Wasm compat containers. 
+
+-------------------------------------------------------------------
 Mon Aug 14 12:55:14 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Update to 1.8.6:
