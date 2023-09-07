@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Sep 06 14:40:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.155.0:
+  * Add release notes for 0.155
+  * Improve unit tests' runtime (#6992)
+  * Bump dependencies (#6998)
+  * Add support for us-iso-west-1 region
+  * Update Ginkgo
+  * Replace deprecated Ginkgo CLI options
+  * Add validations for managed nodegroup labels (#6947)
+  * Fix merge release workflow when there is nothing to merge
+  * Set region when config file is not supplied
+  * Revert "Set default volume type for ISO regions"
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
+Wed Sep 06 09:04:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.154.0:
+  * Release notes for 0.154.0
+  * Bump actions/setup-go from 4.0.1 to 4.1.0
+  * Bump aws-actions/amazon-ecr-login from 1.6.2 to 1.7.0
+  * Fix error message for Bottlerocket validation
+  * Add references to Enterprise support with Flux on Gitops page
+    (#6968)
+  * Don't wait for aws-efs-csi-driver if cluster has no nodegroups
+    (#6960)
+  * Bring Windows integration test runtime down to less than half
+  * Prepare for next development iteration (#6953)
+
+-------------------------------------------------------------------
+Wed Sep 06 08:00:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.153.0:
+  * Add release notes for 0.153.0 (#6948)
+  * Bump dependencies
+  * Bump dependencies and Update build image tag
+  * Unit test creating the EKS provider (#6875)
+  * Update Bottlerocket image version on nodegroup upgrade (#6923)
+  * Remove PR rebase workflow (#6934)
+  * Allow setting cluster-dns-ip for Bottlerocket
+  * Improve error message when `overrideBootstrapCommand` is
+    required for `customAMIs` (#6897)
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
+Wed Sep 06 07:56:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.152.0:
+  * Release notes for 0.152.0
+  * Bump dependencies
+  * Fix PR Rebase workflow (#6903)
+  * Replace deprecated field
+  * Bump dependencies
+  * Update announcement
+  * Add support for Tel Aviv (il-central-1)
+  * Remove typo
+  * Update workflows with pinned sha
+  * Remove iam:ListInstanceProfiles from the required permissions
+    list (#6898)
+  * Bump dependencies
+  * Prepare for next development iteration
+  * Add option to print specific events when running `eksctl
+    describe-stacks` (#6851)
+  * Fix k8s.io/kubernetes version
+
+-------------------------------------------------------------------
 Sun Aug 06 07:56:00 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.151.0:
