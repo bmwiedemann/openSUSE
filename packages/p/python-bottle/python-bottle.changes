@@ -58,9 +58,10 @@ Thu May 26 20:41:56 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 0.12.21: bugfix release
   * Fix: Bad deprecation warning in cherrypy server adapter
-- update to version 0.12.20: security fix
+- update to version 0.12.20 (bsc#1200286, CVE-2022-31799):
   * fix: Multipart file uploads with empty filename not detected
     as binary
+  * obsoletes 0002_Gracefully_handle_errors_during_early_request_binding.patch in older dists
   * fix auth_basic decorator (#586)
   * Add ServerAdapter for CherryPy >= 9
   * Gracefully handle errors during early request binding
@@ -68,7 +69,8 @@ Thu May 26 20:41:56 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 -------------------------------------------------------------------
 Fri Nov 13 17:49:59 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
-- update to version 0.12.19: bugfix release
+- update to version 0.12.19 (bsc#1182181, CVE-2020-28473):
+  * obsoletes 0001_Do_not_split_query_strings_on_semicolon_anymore.patch in older dists
   * Do not split query strings on `;` anymore.
   * Fix the Allow: header value in 405 "Method not allowed." 
     response.

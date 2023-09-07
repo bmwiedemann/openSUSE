@@ -232,4 +232,15 @@
     <comment></comment>
     <requestid>1087976</requestid>
   </revision>
+  <revision rev="26" vrev="5">
+    <srcmd5>921669589ceda51a99eaeb289b4b5e33</srcmd5>
+    <version>0.12.25</version>
+    <time>1694113967</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.12.20 (bsc#1200286, CVE-2022-31799):
+  * obsoletes 0002_Gracefully_handle_errors_during_early_request_binding.patch in older dists
+- update to version 0.12.19 (bsc#1182181, CVE-2020-28473):
+  * obsoletes 0001_Do_not_split_query_strings_on_semicolon_anymore.patch in older dists</comment>
+    <requestid>1109338</requestid>
+  </revision>
 </revisionlist>
