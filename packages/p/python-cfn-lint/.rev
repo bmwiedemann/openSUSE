@@ -237,4 +237,41 @@
     <comment></comment>
     <requestid>1108877</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>620ef9a055ccb8f0558db52ef6cd27cb</srcmd5>
+    <version>0.79.9</version>
+    <time>1694114052</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.79.9:
+  * Update CloudFormation specs to `138.0.0` (pull #2857)
+  * Fix `AWS::LanguageExtensions` to have regex escape for string
+    replacement (pull #2862)
+
+  * New rule E3504 to validate resources with AWS::Backup::BackupPlan.
+  - Update `AWS::Lambda::Function.MemorySize` to new service limits
+  - Add `RouteSelectionExpression` to exludes on rule
+  * Expand Allowed Values for AWS::AmazonMQ::Broker.EngineVersion
+  * Update AWS::Lambda::EventSourceMapping.EventSourceArn to allow
+  * Update rule E3008 to allow for lists in getatt allowed values
+  * Add registry_schemas to be supported in the .cfnlintrc (pull
+  * Cache all rules to speed up reloading rules when scanning
+  * Add support to validate private types from the CloudFormation
+  * Update allowed values for AWS::DocDB::DBCluster.EngineVersion
+  * Fix an issue with RegexDict to return the longest matched value
+  * Fix rule E3008 to not fail when using
+    AWS::ServiceCatalog::CloudFormationProvisionedProduct Outputs
+  * Make sure types are strings before assuming they are (pull
+  * Remove rules W2509, E2004, E2505, E2510 and move logic to rules
+  * Remove rule E2530 and move logic to W2030 and E3030 (pull
+  * Update rule E3002 to error when a singular function is used
+  * Update rule E2503 to include more attributes for application
+  * Expand Allowed Values for AWS::AmazonMQ::Broker EngineVersion
+  * Update rule E2529 to allow for two subscriptions per log group
+  * Allow SAM translation for AutoPublishAlias in Globals (pull
+  * Allow numbers and booleans when doing a Fn::Sub parameter (pull
+  * Add rule E3017 to validate when properties are required based
+  * Add rule E3018 to validate when properties are unwanted based
+  * Add allowed values for AWS::Lambda::EventSourceMapping (pull</comment>
+    <requestid>1109560</requestid>
+  </revision>
 </revisionlist>
