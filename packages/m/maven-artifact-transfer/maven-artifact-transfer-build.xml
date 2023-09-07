@@ -40,11 +40,6 @@
       <include name="**/*.jar"/>
     </fileset>
   </path>
-  <path id="build.test.classpath">
-    <fileset dir="lib">
-      <include name="**/*.jar"/>
-    </fileset>
-  </path>
 
   <!-- ====================================================================== -->
   <!-- Cleaning up target                                                     -->
@@ -135,74 +130,6 @@
   </target>
 
   <!-- ====================================================================== -->
-  <!-- Run all tests                                                          -->
-  <!-- ====================================================================== -->
-
-  <target name="test"
-          depends="compile-tests, junit-missing"
-          unless="junit.skipped"
-          description="Run the test cases">
-    <condition property="modularJava">
-      <javaversion atleast="9"/>
-    </condition>
-    <mkdir dir="${test.reports}"/>
-    <junit printSummary="yes" haltonerror="true" haltonfailure="true" fork="true" dir=".">
-      <jvmarg line="--add-opens java.base/java.io=ALL-UNNAMED" if:set="modularJava"/>
-      <jvmarg line="--add-opens java.base/java.lang=ALL-UNNAMED" if:set="modularJava"/>
-      <sysproperty key="basedir" value="."/>
-      <formatter type="xml"/>
-      <formatter type="plain" usefile="false"/>
-      <classpath>
-        <path refid="build.test.classpath"/>
-        <pathelement location="${build.outputDir}"/>
-        <pathelement location="${build.testOutputDir}"/>
-      </classpath>
-      <batchtest todir="${test.reports}" unless="test">
-        <fileset dir="${build.testDir}">
-          <include name="**/Test*.java"/>
-          <include name="**/*Test.java"/>
-          <include name="**/*TestCase.java"/>
-          <exclude name="**/*Abstract*Test.java"/>
-        </fileset>
-      </batchtest>
-      <batchtest todir="${test.reports}" if="test">
-        <fileset dir="${build.testDir}">
-          <include name="**/${test}.java"/>
-          <exclude name="**/*Abstract*Test.java"/>
-        </fileset>
-      </batchtest>
-    </junit>
-  </target>
-
-  <target name="test-junit-present">
-    <available classname="junit.framework.Test" property="junit.present" classpathref="build.test.classpath"/>
-  </target>
-
-  <target name="test-junit-status"
-          depends="test-junit-present">
-    <condition property="junit.missing">
-      <and>
-        <isfalse value="${junit.present}"/>
-        <isfalse value="${test.skip}"/>
-      </and>
-    </condition>
-    <condition property="junit.skipped">
-      <or>
-        <isfalse value="${junit.present}"/>
-        <istrue value="${test.skip}"/>
-      </or>
-    </condition>
-  </target>
-
-  <target name="junit-missing"
-          depends="test-junit-status"
-          if="junit.missing">
-    <echo>=================================== WARNING ===================================</echo>
-    <echo> JUnit is not present in the test classpath or your $ANT_HOME/lib directory. Tests not executed.</echo>
-    <echo>===============================================================================</echo>
-  </target>
-
-  <!-- ====================================================================== -->
   <!-- Javadoc target                                                         -->
   <!-- ====================================================================== -->
 
@@ -235,7 +162,7 @@
   <!-- Package target                                                         -->
   <!-- ====================================================================== -->
 
-  <target name="package" depends="plexus,test" description="Package the application">
+  <target name="package" depends="plexus" description="Package the application">
     <jar jarfile="${build.dir}/${build.finalName}.jar"
          compress="true"
          index="false"

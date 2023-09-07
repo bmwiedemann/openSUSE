@@ -1,7 +1,7 @@
 #
 # spec file for package maven-artifact-transfer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%bcond_with tests
 Name:           maven-artifact-transfer
 Version:        0.13.1
 Release:        0
@@ -36,7 +35,7 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  google-guice
 BuildRequires:  guava
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jdom2
 BuildRequires:  maven-common-artifact-filters
 BuildRequires:  maven-lib
@@ -55,16 +54,7 @@ BuildRequires:  sisu-plexus
 BuildRequires:  slf4j
 BuildRequires:  unzip
 BuildRequires:  xbean
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
-BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-BuildRequires:  cglib
-BuildRequires:  mockito
-BuildRequires:  objenesis
-%endif
 
 %description
 An API to either install or deploy artifacts with Maven 3.
@@ -94,11 +84,6 @@ find -name Maven30\*.java -delete
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-%if %{with tests}
-    cglib/cglib \
-    mockito/mockito-core \
-    objenesis/objenesis \
-%endif
 	atinject \
 	commons-cli \
 	commons-codec \
@@ -126,21 +111,26 @@ build-jar-repository -s lib \
 	xbean/xbean-reflect
 
 %{ant} \
-%if %{without tests}
-	-Dtest.skip=true \
-%endif
 	package javadoc
 
-%{mvn_artifact} pom.xml target/%{name}-%{version}.jar
-
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE NOTICE
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE NOTICE
 
 %changelog
