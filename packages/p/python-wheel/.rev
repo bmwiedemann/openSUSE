@@ -342,4 +342,13 @@
     <comment></comment>
     <requestid>1108786</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>9d0303959cb3255f0b94ff807d32fd33</srcmd5>
+    <version>0.41.2</version>
+    <time>1694113976</time>
+    <user>anag+factory</user>
+    <comment>- changes from version 0.38.0 (bsc#1206670, CVE-2022-40898):
+  * obsoletes wheel_cve_2022_40898.patch in older dists</comment>
+    <requestid>1109362</requestid>
+  </revision>
 </revisionlist>

@@ -69,7 +69,8 @@ Sat Nov  5 20:12:16 UTC 2022 - Arun Persaud <arun@gmx.de>
     abi tag was faulty. Fixed so that future changes in the SOABI will
     not change the tag.
 
-- changes from version 0.38.0:
+- changes from version 0.38.0 (bsc#1206670, CVE-2022-40898):
+  * obsoletes wheel_cve_2022_40898.patch in older dists
   * Dropped support for Python < 3.7
   * Updated vendored "packaging" to 21.3
   * Replaced all uses of "distutils" with "setuptools"
