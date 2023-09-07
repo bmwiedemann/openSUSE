@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep  4 11:45:19 UTC 2023 - Jan Baier <jbaier@suse.com>
+
+- update to 13.11.5:
+  * Update Portuguese translation (Américo Monteiro)
+    (Closes: #1028159)
+  * Update on German translation of pages (Closes: #1028564)
+  * Fix minor typo in DEB_BUILD_OPTIONS warning ("and but not" -> "but not")
+  * AddonAPI.pm: Correct method name in error message.
+    Thanks to wferi@Github
+  * dh_missing: Update link to PROGRAMMING.md.gz
+  * cmake.pm: set -DBUILD_TESTING=OFF for nocheck builds
+  * autoscripts/postinst-init-tmpfiles: do not output to /dev/null to not hide error messages
+  * cmake.pm, meson.pm: Set DEB_PYTHON_INSTALL_LAYOUT=deb if not already set
+    (Closes: #1043136)
+  * buildsystems: Give XDG_RUNTIME_DIR spec-compliant u=rwx,og-rwx permissions
+  * meson.pm: Disable Python byte-compilation if the Meson version is new enough
+    (Closes: #1042398)
+
+-------------------------------------------------------------------
 Thu Jan  5 07:13:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 13.11.4:
