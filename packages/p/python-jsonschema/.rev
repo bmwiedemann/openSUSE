@@ -344,4 +344,20 @@
     <comment></comment>
     <requestid>1102347</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4a8293e787336584a08a66a049d63af1</srcmd5>
+    <version>4.19.0</version>
+    <time>1694113933</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109430</requestid>
+  </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>e305fa1e14ff4f4f7778f09f1efc242d</srcmd5>
+    <version>4.18.6</version>
+    <time>1694113972</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.2.0 (jsc#SLE-18756):</comment>
+    <requestid>1109350</requestid>
+  </revision>
 </revisionlist>

@@ -381,7 +381,7 @@ Thu Mar 12 07:44:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Fri Nov 22 06:06:52 UTC 2019 - Arun Persaud <arun@gmx.de>
 
-- update to version 3.2.0:
+- update to version 3.2.0 (jsc#SLE-18756):
   * Added a format_nongpl setuptools extra, which installs only format
     dependencies that are non-GPL (#619).
 
