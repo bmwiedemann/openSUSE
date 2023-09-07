@@ -632,4 +632,33 @@
   * util.startup: Close state on exit to ensure GC finalizers are called</comment>
     <requestid>1067095</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e1a5fb466ae3238b94181fe093622f1b</srcmd5>
+    <version>0.12.4</version>
+    <time>1694113999</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.12.4:
+  * core.certmanager: Update Mozilla TLS config to version 5.7
+  * util.error: Fix error on conversion of invalid error stanza #1805
+  * util.array: Fix new() library function
+  * util.array: Expose new() on module table
+  * prosodyctl: Fix output of error messages containing ‘%’
+  * util.prosodyctl.check: Correct suggested replacement for ‘disallow_s2s’
+  * util.prosodyctl.check: Allow same config syntax variants as in Prosody for some options #896
+  * util.prosodyctl.check: Fix error where hostname can’t be turned into A label
+  * util.prosodyctl.check: Hint about the ‘external_addresses’ config option
+  * util.prosodyctl.check: Suggest ‘http_cors_override’ instead of older CORS settings
+  * util.prosodyctl.check: Validate format of module list options
+  * mod_websocket: Add a ‘pre-session-close’ event #1800
+  * mod_smacks: Fix stray watchdog closing sessions
+  * mod_csi_simple: Disable revert-to-inactive timer when going to active mode
+  * mod_csi_simple: Clear delayed active mode timer on disable
+  * mod_admin_shell: Fix display of remote cert status when expired etc
+  * mod_smacks: Replace existing watchdog when starting hibernation
+  * mod_http: Fix error if ‘access_control_allow_origins’ is set
+  * mod_pubsub: Send correct ‘jid’ attribute in disco#items
+  * mod_http: Unhook CORS handlers only if active to fix an error #1801
+  * mod_s2s: Add event where resolver for s2sout can be tweaked</comment>
+    <requestid>1109423</requestid>
+  </revision>
 </revisionlist>
