@@ -229,4 +229,12 @@ Note: socket_wrapper fails if built on 'lamb'</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1097147</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>ee40e2de536d4f3d68897c472bdc5ba1</srcmd5>
+    <version>1.4.2</version>
+    <time>1694113936</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1109454</requestid>
+  </revision>
 </revisionlist>

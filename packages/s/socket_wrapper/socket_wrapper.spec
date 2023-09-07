@@ -37,8 +37,8 @@ Source2:        socket_wrapper.keyring
 Source3:        %{name}-rpmlintrc
 #
 BuildRequires:  cmake
-BuildRequires:  libcmocka-devel
 BuildRequires:  pkg-config
+BuildRequires:  cmake(cmocka)
 
 %description
 socket_wrapper helps client/server software development to gain functional test
