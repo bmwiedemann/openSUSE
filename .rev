@@ -720,4 +720,12 @@
     supported PyPy releases</comment>
     <requestid>1100699</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>f79813519caee38e52694dcb1ee1abbf</srcmd5>
+    <version>2.0.4</version>
+    <time>1694113974</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.25.9 (bsc#1177120, CVE-2020-26137):</comment>
+    <requestid>1109358</requestid>
+  </revision>
 </revisionlist>
