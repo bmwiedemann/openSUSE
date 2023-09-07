@@ -150,6 +150,11 @@ Thu Jul 21 11:16:04 UTC 2022 - Ben Greiner <code@bnavigator.de>
   builds
 
 -------------------------------------------------------------------
+Thu Jul 21 10:16:17 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1199282, jsc#PM-3243, jsc#SLE-24629)
+
+-------------------------------------------------------------------
 Fri Jul 15 12:30:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Split primary flavor in multibuild for possible inclusion into
