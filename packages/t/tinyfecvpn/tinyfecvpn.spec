@@ -1,8 +1,8 @@
 #
 # spec file for package tinyfecvpn
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2019-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           tinyfecvpn
-Version:        20210116.0
+Version:        20230206.0
 Release:        0
 Summary:        A VPN designed for lossy links with build-in FEC
 # Bundled libev is licenced under GPL-3.0+ or BSD-2-Clause

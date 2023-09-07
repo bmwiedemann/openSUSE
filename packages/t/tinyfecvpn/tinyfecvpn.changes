@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 27 13:59:15 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 20230206.0
+  * updated to lastest UDPspeeder library
+    bug fix: https://github.com/wangyu-/UDPspeeder/issues/290
+
+-------------------------------------------------------------------
 Sun Jan 17 21:44:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 20210116.0
