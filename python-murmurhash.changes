@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Wed Sep  6 18:45:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- fix cython buildrequires 
+
+-------------------------------------------------------------------
+Wed Aug 30 12:31:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Fix installation of -devel package.
+
+-------------------------------------------------------------------
+Mon Aug 28 01:28:34 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- require python-cython version 3 or higher to ensure the most recent release is used 
+
+-------------------------------------------------------------------
+Sun Aug 13 20:08:48 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Mon May 22 22:14:17 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- initial version v1.0.9
