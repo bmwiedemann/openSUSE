@@ -1,7 +1,7 @@
 #
 # spec file for package tycho-bootstrap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,7 @@ Patch5:         0006-Mockito-does-not-have-test-scope.patch
 # Fix incorrect generated requires
 Patch6:         0007-Fix-dependency-problems-when-bootstrapping-with-extr.patch
 Patch7:         0008-Use-custom-resolver-for-tycho-eclipserun-plugin.patch
+Patch8:         plexus-lookup-fix.patch
 Patch10:        tycho-sourcetarget.patch
 Patch100:       fedoraproject-p2-bootstrap-fix.patch
 BuildRequires:  bash
@@ -95,7 +96,7 @@ BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-model-builder)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
+BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver) >= 4.4
 BuildRequires:  mvn(org.codehaus.plexus:plexus-compiler-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-compiler-manager)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-annotations)
@@ -209,6 +210,7 @@ mv fedoraproject-p2-%{fp_p2_git_tag} fedoraproject-p2
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 %patch10 -p1
 %patch100
 

@@ -71,4 +71,12 @@
     <comment>Sync changes with sle</comment>
     <requestid>979220</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>a0194020b16fdca80cc123c67882b488</srcmd5>
+    <version>1.6.0</version>
+    <time>1694113960</time>
+    <user>anag+factory</user>
+    <comment>Fix build with newer plexus-archiver</comment>
+    <requestid>1109296</requestid>
+  </revision>
 </revisionlist>
