@@ -46,6 +46,7 @@ match to a specified pattern.  By default, grep prints the matching lines.
 %autosetup -p1
 
 %build
+export CONFIG_SHELL=/bin/sh
 %configure \
   --disable-silent-rules \
   %{nil}

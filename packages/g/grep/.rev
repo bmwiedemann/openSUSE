@@ -774,4 +774,12 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
     back to Unicode again, without breaking [\d] as 3.10 did.</comment>
     <requestid>1089292</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>48d6a4315595b9ef62be92d59dd9c78a</srcmd5>
+    <version>3.11</version>
+    <time>1694113920</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1108777</requestid>
+  </revision>
 </revisionlist>

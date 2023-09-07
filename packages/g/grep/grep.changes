@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 16 14:21:13 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- export CONFIG_SHELL=/bin/sh before running configure: results in
+  the shell script (egrep/fgrep) to receive a /bin/sh shebang
+  instead of requiring bash (the local shell used to build).
+
+-------------------------------------------------------------------
 Thu May 18 12:00:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.11:
