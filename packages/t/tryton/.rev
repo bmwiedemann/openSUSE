@@ -119,4 +119,12 @@
     <comment>bugfix</comment>
     <requestid>1088645</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>07c601527200a67039f12e439c0e0e4b</srcmd5>
+    <version>6.0.28</version>
+    <time>1694114017</time>
+    <user>anag+factory</user>
+    <comment>bugfix release</comment>
+    <requestid>1109472</requestid>
+  </revision>
 </revisionlist>
