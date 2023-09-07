@@ -1,7 +1,7 @@
 #
 # spec file for package maven-dependency-analyzer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,8 @@ Release:        0
 Summary:        Maven dependency analyzer
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/shared/maven-dependency-analyzer/
-Source0:        http://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
+URL:            https://maven.apache.org/shared/maven-dependency-analyzer/
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
@@ -32,7 +32,7 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  google-guice
 BuildRequires:  guava
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jdom2
 BuildRequires:  maven-lib
 BuildRequires:  objectweb-asm
@@ -46,9 +46,6 @@ BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 BuildRequires:  xbean
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
-BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
 BuildArch:      noarch
 
 %description
@@ -100,19 +97,24 @@ build-jar-repository -s lib \
 	-Dtest.skip=true \
 	jar javadoc
 
-%{mvn_artifact} pom.xml target/%{name}-%{version}.jar
-
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%dir %{_javadir}/%{name}
-%license LICENSE
-%doc NOTICE
+%license LICENSE NOTICE
 
-%files javadoc -f .mfiles-javadoc
-%license LICENSE
-%doc NOTICE
+%files javadoc
+%{_javadocdir}/%{name}
+%license LICENSE NOTICE
 
 %changelog

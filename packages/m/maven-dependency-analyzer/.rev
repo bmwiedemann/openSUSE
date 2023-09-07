@@ -24,4 +24,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>964421</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5ebfec251e9e2f733172b1b8c5679580</srcmd5>
+    <version>1.10</version>
+    <time>1694113967</time>
+    <user>anag+factory</user>
+    <comment>Decrease dependencies a bit</comment>
+    <requestid>1109321</requestid>
+  </revision>
 </revisionlist>
