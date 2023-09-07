@@ -88,4 +88,12 @@
     <comment>version bump (forwarded request 959963 from DocB)</comment>
     <requestid>959982</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2c8d58ab65223e9a80eadedbd546f801</srcmd5>
+    <version>6.0.1</version>
+    <time>1694114014</time>
+    <user>anag+factory</user>
+    <comment>bugfix release</comment>
+    <requestid>1109467</requestid>
+  </revision>
 </revisionlist>
