@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-hk2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,6 @@ BuildConflicts: java-headless >= 12
 BuildRequires:  mvn(args4j:args4j)
 BuildRequires:  mvn(com.google.inject:guice)
 BuildRequires:  mvn(com.google.protobuf:protobuf-java)
-BuildRequires:  mvn(com.sun:tools)
 BuildRequires:  mvn(javax.el:javax.el-api)
 BuildRequires:  mvn(javax.json:javax.json-api)
 BuildRequires:  mvn(javax.validation:validation-api)

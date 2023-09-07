@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  5 18:03:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on com.sun:tools since nobody provides it any more
+
+-------------------------------------------------------------------
 Thu Oct 13 11:21:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Force building with java 11 on ix86 in order to avoid random
