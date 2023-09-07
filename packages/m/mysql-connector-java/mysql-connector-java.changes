@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  7 08:08:24 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to 8.1.0:
+  - WL#15826, Deprecate autoDeserialize feature.
+  - Fix for Bug#95039 (Bug#35534640), KeyManagementException: 
+    FIPS mode: only SunJSSE TrustManagers may be used.
+  - Fix for Bug#110321 (Bug#35167701), Issue in JDBC 
+    PreparedStatement on adding NO_BACKSLASH_ESCAPES in sql_mode.
+
+-------------------------------------------------------------------
 Tue Jun  6 16:58:51 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Wrap the reload4j/log4j dependencies in conditions, so that the

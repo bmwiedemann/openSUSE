@@ -383,4 +383,12 @@
     <comment>Allow building on sle12-sp1</comment>
     <requestid>1091133</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>1435537f42dfac78a7b229b43571a578</srcmd5>
+    <version>8.1.0</version>
+    <time>1694114050</time>
+    <user>anag+factory</user>
+    <comment>8.1.0</comment>
+    <requestid>1109564</requestid>
+  </revision>
 </revisionlist>
