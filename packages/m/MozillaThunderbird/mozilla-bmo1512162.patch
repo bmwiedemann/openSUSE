@@ -3,15 +3,11 @@
 This fixes a broken build for gcc < 9 on ppc64le.
 This patch can be removed for newer gcc-versions.
 
-diff --git a/js/xpconnect/src/XPCWrappedNative.cpp b/js/xpconnect/src/XPCWrappedNative.cpp
---- a/js/xpconnect/src/XPCWrappedNative.cpp
-+++ b/js/xpconnect/src/XPCWrappedNative.cpp
-@@ -1072,17 +1072,21 @@ class MOZ_STACK_CLASS CallMethodHelper f
-                                                uint32_t* result);
- 
-   MOZ_ALWAYS_INLINE bool GetInterfaceTypeFromParam(const nsXPTType& type,
-                                                    nsID* result) const;
- 
+Index: firefox-115.0/js/xpconnect/src/XPCWrappedNative.cpp
+===================================================================
+--- firefox-115.0.orig/js/xpconnect/src/XPCWrappedNative.cpp
++++ firefox-115.0/js/xpconnect/src/XPCWrappedNative.cpp
+@@ -1061,7 +1061,11 @@ class MOZ_STACK_CLASS CallMethodHelper f
    MOZ_ALWAYS_INLINE bool GetOutParamSource(uint8_t paramIndex,
                                             MutableHandleValue srcp) const;
  
@@ -24,17 +20,7 @@ diff --git a/js/xpconnect/src/XPCWrappedNative.cpp b/js/xpconnect/src/XPCWrapped
  
    MOZ_ALWAYS_INLINE bool QueryInterfaceFastPath();
  
-   nsXPTCVariant* GetDispatchParam(uint8_t paramIndex) {
-     if (paramIndex >= mJSContextIndex) {
-       paramIndex += 1;
-     }
-     if (paramIndex >= mOptArgcIndex) {
-@@ -1119,17 +1123,21 @@ class MOZ_STACK_CLASS CallMethodHelper f
- 
-   {
-     // Success checked later.
-     mIFaceInfo->GetMethodInfo(mVTableIndex, &mMethodInfo);
-   }
+@@ -1108,7 +1112,11 @@ class MOZ_STACK_CLASS CallMethodHelper f
  
    ~CallMethodHelper();
  
@@ -47,8 +33,3 @@ diff --git a/js/xpconnect/src/XPCWrappedNative.cpp b/js/xpconnect/src/XPCWrapped
  
    // Trace implementation so we can put our CallMethodHelper in a Rooted<T>.
    void trace(JSTracer* aTrc);
- };
- 
- // static
- bool XPCWrappedNative::CallMethod(XPCCallContext& ccx,
-                                   CallMode mode /*= CALL_METHOD */) {

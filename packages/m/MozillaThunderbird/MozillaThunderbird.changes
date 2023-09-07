@@ -1,8 +1,59 @@
 -------------------------------------------------------------------
-Tue Aug  1 20:15:02 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+Sun Aug 27 08:17:34 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Mozilla Thunderbird 102.14.0
-  MFSA 2023-32 (bsc#1213746)
+- Mozilla Thunderbird 115.2.0
+  https://www.thunderbird.net/en-US/thunderbird/115.2.0/releasenotes
+  MFSA 2023-38 (bsc#1214606)
+  * CVE-2023-4573 (bmo#1846687)
+    Memory corruption in IPC CanvasTranslator
+  * CVE-2023-4574 (bmo#1846688)
+    Memory corruption in IPC ColorPickerShownCallback
+  * CVE-2023-4575 (bmo#1846689)
+    Memory corruption in IPC FilePickerShownCallback
+  * CVE-2023-4576 (bmo#1846694)
+    Integer Overflow in RecordedSourceSurfaceCreation
+  * CVE-2023-4577 (bmo#1847397)
+    Memory corruption in JIT UpdateRegExpStatics
+  * CVE-2023-4051 (bmo#1821884)
+    Full screen notification obscured by file open dialog
+  * CVE-2023-4578 (bmo#1839007)
+    Error reporting methods in SpiderMonkey could have triggered
+    an Out of Memory Exception
+  * CVE-2023-4053 (bmo#1839079)
+    Full screen notification obscured by external program
+  * CVE-2023-4580 (bmo#1843046)
+    Push notifications saved to disk unencrypted
+  * CVE-2023-4581 (bmo#1843758)
+    XLL file extensions were downloadable without warnings
+  * CVE-2023-4582 (bmo#1773874)
+    Buffer Overflow in WebGL glGetProgramiv
+  * CVE-2023-4583 (bmo#1842030)
+    Browsing Context potentially not cleared when closing Private
+    Window
+  * CVE-2023-4584 (bmo#1843968, bmo#1845205, bmo#1846080,
+    bmo#1846526, bmo#1847529)
+    Memory safety bugs fixed in Firefox 117, Firefox ESR 102.15,
+    Firefox ESR 115.2, Thunderbird 102.15, and Thunderbird 115.2
+  * CVE-2023-4585 (bmo#1751583, bmo#1833504, bmo#1841082,
+    bmo#1847904, bmo#1848999)
+    Memory safety bugs fixed in Firefox 117, Firefox ESR 115.2,
+    and Thunderbird 115.2
+
+-------------------------------------------------------------------
+Tue Aug 15 07:53:02 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 115.1.1
+  bugfixes as documented here
+  https://www.thunderbird.net/en-US/thunderbird/115.1.1/releasenotes
+
+-------------------------------------------------------------------
+Tue Aug  1 07:51:37 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 115.1.0
+  New major release with Supernova UI
+  Releasenotes for 115.0:
+  https://www.thunderbird.net/en-US/thunderbird/115.0/releasenotes
+  MFSA 2023-33 (bsc#1213746)
   * CVE-2023-4045 (bmo#1833876)
     Offscreen Canvas could have bypassed cross-origin restrictions
   * CVE-2023-4046 (bmo#1837686)
@@ -15,14 +66,30 @@ Tue Aug  1 20:15:02 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
     Fix potential race conditions when releasing platform objects
   * CVE-2023-4050 (bmo#1843038)
     Stack buffer overflow in StorageManager
+  * CVE-2023-4052 (bmo#1824420)
+    File deletion and privilege escalation through Firefox uninstaller
   * CVE-2023-4054 (bmo#1840777)
     Lack of warning when opening appref-ms files
   * CVE-2023-4055 (bmo#1782561)
     Cookie jar overflow caused unexpected cookie jar state
-  * CVE-2023-4056 (bmo#1820587, bmo#1824634, bmo#1839235,
-    bmo#1842325, bmo#1843847)
+  * CVE-2023-4056 (bmo#1820587, bmo#1824634, bmo#1839235, bmo#1842325,
+    bmo#1843847)
     Memory safety bugs fixed in Firefox 116, Firefox ESR 115.1,
     Firefox ESR 102.14, Thunderbird 115.1, and Thunderbird 102.14
+  * CVE-2023-4057 (bmo#1841682)
+    Memory safety bugs fixed in Firefox 116, Firefox ESR 115.1,
+    and Thunderbird 115.1
+- requires NSS 3.90
+- add patches:
+  mozilla-rust-disable-future-incompat.patch
+  mozilla-partial-revert-1768632.patch
+  mozilla-bmo1775202.patch
+- removed obsolete patches:
+  gcc13-fix.patch
+  mozilla-bmo1568145.patch
+  mozilla-bmo1005535.patch
+  mozilla-s390x-skia-gradient.patch
+- update create-tar.sh
 
 -------------------------------------------------------------------
 Tue Jul 25 06:56:46 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>

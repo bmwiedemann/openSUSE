@@ -6,15 +6,11 @@ Solution: Problem is with skia once again. Output of webgl seems endian-correct,
           So we swizzle the output of webgl after reading it from readpixels()
 Note:     This does not fix all webGL sites, but is a step in the right direction
 
-diff --git a/gfx/gl/GLContext.h b/gfx/gl/GLContext.h
---- a/gfx/gl/GLContext.h
-+++ b/gfx/gl/GLContext.h
-@@ -1548,16 +1548,23 @@ class GLContext : public GenericAtomicRe
-     AFTER_GL_CALL;
-   }
- 
-   void raw_fReadPixels(GLint x, GLint y, GLsizei width, GLsizei height,
-                        GLenum format, GLenum type, GLvoid* pixels) {
+Index: firefox-115.0/gfx/gl/GLContext.h
+===================================================================
+--- firefox-115.0.orig/gfx/gl/GLContext.h
++++ firefox-115.0/gfx/gl/GLContext.h
+@@ -1560,6 +1560,13 @@ class GLContext : public GenericAtomicRe
      BEFORE_GL_CALL;
      mSymbols.fReadPixels(x, y, width, height, format, type, pixels);
      OnSyncCall();
@@ -28,8 +24,3 @@ diff --git a/gfx/gl/GLContext.h b/gfx/gl/GLContext.h
      AFTER_GL_CALL;
      mHeavyGLCallsSinceLastFlush = true;
    }
- 
-   void fReadPixels(GLint x, GLint y, GLsizei width, GLsizei height,
-                    GLenum format, GLenum type, GLvoid* pixels);
- 
-  public:

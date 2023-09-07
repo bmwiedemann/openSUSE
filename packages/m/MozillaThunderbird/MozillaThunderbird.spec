@@ -2,7 +2,7 @@
 # spec file
 #
 # Copyright (c) 2023 SUSE LLC
-#               2006-2023 Wolfgang Rosenauer <wr@rosenauer.org>
+# Copyright (c) 2006-2023 Wolfgang Rosenauer <wr@rosenauer.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,11 @@
 # orig_version 70.0
 # orig_suffix b3
 # major 69
-# mainver %major.99
-%define major          102
-%define mainver        %major.14.0
-%define orig_version   102.14.0
-%define orig_suffix    %{nil}
+# mainver %%major.99
+%define major          115
+%define mainver        %major.2.0
+%define orig_version   115.2.0
+%define orig_suffix    %nil
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
 
@@ -54,8 +54,9 @@
 %ifarch %ix86
 ExclusiveArch:  i586 i686
 BuildArch:      i686
-%{expand:%%global optflags %(echo "%optflags"|sed -e s/i586/i686/) -march=i686 -mtune=generic}
+%{expand:%%global optflags %(echo "%optflags"|sed -e s/i586/i686/) -march=i686 -mtune=generic -msse2}
 %endif
+%{expand:%%global optflags %(echo "%optflags"|sed -e s/-flto=auto//) }
 
 # general build definitions
 %define progname thunderbird
@@ -68,8 +69,12 @@ BuildArch:      i686
 %define __provides_exclude ^lib.*\\.so.*$
 %define __requires_exclude ^(libmoz.*|liblgpllibs.*|libxul.*|libldap.*|libldif.*|libprldap.*|librnp.*)$
 %define localize 1
+%ifarch %ix86 x86_64
+%define crashreporter 1
+%else
 %define crashreporter 0
-%define with_pipewire0_3 1
+%endif
+%define with_pipewire0_3  1
 %define wayland_supported 1
 %if 0%{?sle_version} > 0 && 0%{?sle_version} < 150200
 # pipewire is too old on Leap <=15.1
@@ -85,41 +90,33 @@ BuildRequires:  autoconf213
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  fdupes
 BuildRequires:  memory-constraints
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150500
-BuildRequires:  gcc11-c++
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
-BuildRequires:  cargo >= 1.59
-BuildRequires:  rust >= 1.59
-%else
-# Newer sle/leap/tw use parallel versioned rust releases which have
-# a different method for provides that we can use to request a
-# specific version
-# minimal requirement:
-BuildRequires:  rust+cargo >= 1.59
-# actually used upstream:
-BuildRequires:  cargo1.67
-BuildRequires:  rust1.67
-%endif
+BuildRequires:  cargo1.69
+BuildRequires:  rust1.69
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
-BuildRequires:  mozilla-nspr-devel >= 4.34.1
-BuildRequires:  mozilla-nss-devel >= 3.79.4
+BuildRequires:  mozilla-nspr-devel >= 4.35
+BuildRequires:  mozilla-nss-devel >= 3.90
 BuildRequires:  nasm >= 2.14
-BuildRequires:  nodejs >= 10.22.1
-%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
-BuildRequires:  python-libxml2
-BuildRequires:  python36
+BuildRequires:  nodejs >= 12.22.12
+%if 0%{?sle_version} >= 150000 && 0%{?sle_version} <= 150600
+BuildRequires:  python39
+BuildRequires:  python39-curses
+BuildRequires:  python39-devel
 %else
-BuildRequires:  python3 >= 3.5
+BuildRequires:  python3 >= 3.7
+BuildRequires:  python3-curses
 BuildRequires:  python3-devel
 %endif
-BuildRequires:  rust-cbindgen >= 0.24.0
+BuildRequires:  rust-cbindgen >= 0.24.3
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
@@ -131,11 +128,7 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
-%if (0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000)
-BuildRequires:  clang6-devel
-%else
 BuildRequires:  clang-devel >= 5
-%endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
@@ -177,36 +170,39 @@ Source2:        thunderbird-rpmlintrc
 Source3:        mozilla.sh.in
 Source4:        tar_stamps
 Source6:        suse-default-prefs.js
+%if %{localize}
 Source7:        l10n-%{orig_version}%{orig_suffix}.tar.xz
+%endif
 Source9:        thunderbird.appdata.xml
 Source13:       spellcheck.js
-Source14:       https://github.com/openSUSE/firefox-scripts/raw/9b77cf0/create-tar.sh
+Source14:       https://github.com/openSUSE/firefox-scripts/raw/c3f287d/create-tar.sh
 Source20:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
 Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
 # Gecko/Toolkit
 Patch1:         mozilla-nongnome-proxies.patch
+%if %{with mozilla_tb_kde4}
 Patch2:         mozilla-kde.patch
+%endif
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
 Patch5:         mozilla-fix-aarch64-libopus.patch
 Patch6:         mozilla-s390-context.patch
 Patch7:         mozilla-pgo.patch
 Patch8:         mozilla-reduce-rust-debuginfo.patch
-Patch9:         mozilla-bmo1005535.patch
-Patch10:        mozilla-bmo1568145.patch
-Patch11:        mozilla-bmo1504834-part1.patch
-Patch12:        mozilla-bmo1504834-part3.patch
-Patch13:        mozilla-bmo1512162.patch
-Patch14:        mozilla-fix-top-level-asm.patch
-Patch15:        mozilla-bmo849632.patch
-Patch16:        mozilla-bmo998749.patch
-Patch17:        mozilla-s390x-skia-gradient.patch
-Patch18:        mozilla-libavcodec58_91.patch
-Patch19:        mozilla-silence-no-return-type.patch
-Patch20:        mozilla-bmo531915.patch
-Patch21:        one_swizzle_to_rule_them_all.patch
-Patch22:        svg-rendering.patch
-Patch23:        gcc13-fix.patch
+Patch9:         mozilla-bmo1504834-part1.patch
+Patch10:        mozilla-bmo1504834-part3.patch
+Patch11:        mozilla-bmo1512162.patch
+Patch12:        mozilla-fix-top-level-asm.patch
+Patch13:        mozilla-bmo849632.patch
+Patch14:        mozilla-bmo998749.patch
+Patch15:        mozilla-libavcodec58_91.patch
+Patch16:        mozilla-silence-no-return-type.patch
+Patch17:        mozilla-bmo531915.patch
+Patch18:        one_swizzle_to_rule_them_all.patch
+Patch19:        svg-rendering.patch
+Patch20:        mozilla-partial-revert-1768632.patch
+Patch21:        mozilla-bmo1775202.patch
+Patch22:        mozilla-rust-disable-future-incompat.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
@@ -271,49 +267,18 @@ fi
 %else
 %setup -q -n %{srcname}-%{orig_version}
 %endif
-%patch1 -p1
-%if %{with mozilla_tb_kde4}
-%patch2 -p1
-%endif
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
+cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
+%autopatch -p1
 %endif
 
 %build
 %if !%{with only_print_mozconfig}
 # no need to add build time to binaries
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
+modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{pkgname}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
 
-# SLE-12 provides python36, but that package does not provide a python3 binary
-%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
-sed -i "s/python3/python36/g" configure.in
-sed -i "s/python3/python36/g" mach
-export PYTHON3=/usr/bin/python36
-%endif
-
-#
 %if %{with mozilla_tb_kde4}
 kdehelperversion=$(cat toolkit/xre/nsKDEUtils.cpp | grep '#define KMOZILLAHELPER_VERSION' | cut -d ' ' -f 3)
 if test "$kdehelperversion" != %{kde_helper_version}; then
@@ -322,73 +287,65 @@ if test "$kdehelperversion" != %{kde_helper_version}; then
 fi
 %endif
 
-source %{SOURCE4}
+# When doing only_print_mozconfig, this file isn't necessarily available, so skip it
+cp %{SOURCE4} .obsenv.sh
+%else
+# We need to make sure its empty
+echo "" > .obsenv.sh
 %endif
 
+cat >> .obsenv.sh <<EOF
 export CARGO_HOME=${RPM_BUILD_DIR}/%{srcname}-%{orig_version}/.cargo
-export MOZ_SOURCE_CHANGESET=$RELEASE_TAG
-export SOURCE_REPO=$RELEASE_REPO
-export source_repo=$RELEASE_REPO
-export MOZ_SOURCE_REPO=$RELEASE_REPO
-export MOZ_BUILD_DATE=$RELEASE_TIMESTAMP
+export MOZ_SOURCE_CHANGESET=\$RELEASE_TAG
+export SOURCE_REPO=\$RELEASE_REPO
+export source_repo=\$RELEASE_REPO
+export MOZ_SOURCE_REPO=\$RELEASE_REPO
+export MOZ_BUILD_DATE=\$RELEASE_TIMESTAMP
 export MOZILLA_OFFICIAL=1
 export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
-export MOZ_REQUIRE_SIGNING=
-export MACH_USE_SYSTEM_PYTHON=1
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150500
-export CC=gcc-11
+export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+export CFLAGS="%{optflags}"
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
+export CC=gcc-12
+export CXX=g++-12
 %else
 %if 0%{?clang_build} == 0
 export CC=gcc
 export CXX=g++
 %if 0%{?gcc_version:%{gcc_version}} >= 12
-export CFLAGS="$CFLAGS -fimplicit-constexpr"
+export CFLAGS="\$CFLAGS -fimplicit-constexpr"
 %endif
 %endif
 %endif
 %ifarch %arm %ix86
 # Limit RAM usage during link
-export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+export LDFLAGS="\$LDFLAGS -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 # A lie to prevent -Wl,--gc-sections being set which requires more memory than 32bit can offer
 export GC_SECTIONS_BREAKS_DEBUG_RANGES=yes
 %endif
-export LDFLAGS="${LDFLAGS} -fPIC -Wl,-z,relro,-z,now"
+export LDFLAGS="\$LDFLAGS -fPIC -Wl,-z,relro,-z,now"
 %ifarch ppc64 ppc64le
 %if 0%{?clang_build} == 0
-export CFLAGS="$CFLAGS -mminimal-toc"
+#export CFLAGS="\$CFLAGS -mminimal-toc"
 %endif
 %endif
-export CXXFLAGS="$CFLAGS"
+%ifarch %ix86
+# Not enough memory on 32-bit systems, reduce debug info.
+export CFLAGS="\$CFLAGS -g1"
+%endif
+export CXXFLAGS="\$CFLAGS"
 export MOZCONFIG=$RPM_BUILD_DIR/mozconfig
-%if %{with only_print_mozconfig}
-echo "export CC=$CC"
-echo "export CXX=$CXX"
-echo "export CFLAGS=\"$CFLAGS\""
-echo "export CXXFLAGS=\"$CXXFLAGS\""
-echo "export LDFLAGS=\"$LDFLAGS\""
-echo "export RUSTFLAGS=\"$RUSTFLAGS\""
-echo "export CARGO_HOME=\"$CARGO_HOME\""
-echo "export PATH=\"$PATH\""
-echo "export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH\""
-echo "export PKG_CONFIG_PATH=\"$PKG_CONFIG_PATH\""
-echo "export MOZCONFIG=\"$MOZCONFIG\""
-echo "export MOZILLA_OFFICIAL=1"
-echo "export BUILD_OFFICIAL=1"
-echo "export MOZ_TELEMETRY_REPORTING=1"
-echo "export MOZ_REQUIRE_SIGNING="
-echo ""
-cat << EOF
-%else
-%ifarch aarch64 ppc64 ppc64le
+EOF
+# Done with env-variables.
+source ./.obsenv.sh
+
+%ifarch aarch64 %arm ppc64 ppc64le riscv64
 %limit_build -m 2500
-%else
-%limit_build -m 2000
 %endif
-# TODO: Check if this can be removed
-#export MOZ_DEBUG_FLAGS="-pipe"
+
+# Generating mozconfig
 cat << EOF > $MOZCONFIG
-%endif
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
 mk_add_options MOZ_MAKE_FLAGS=%{?jobs:-j%jobs}
@@ -412,15 +369,18 @@ ac_add_options --enable-debug-symbols=-g1
 %endif
 ac_add_options --disable-install-strip
 # building with elf-hack started to fail everywhere with FF73
-#%if 0%{?suse_version} > 1549
-%ifnarch aarch64 ppc64 ppc64le s390x
+#%%if 0%%{?suse_version} > 1549
+%ifarch %arm %ix86 x86_64
 ac_add_options --disable-elf-hack
 %endif
-#%endif
+#%%endif
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 %if 0%{useccache} != 0
 ac_add_options --with-ccache
+%endif
+%if %{localize}
+ac_add_options --with-l10n-base=$RPM_BUILD_DIR/l10n-central
 %endif
 ac_add_options --with-system-zlib
 ac_add_options --disable-updater
@@ -456,7 +416,7 @@ ac_add_options --enable-optimize="-O1"
 %ifarch x86_64
 # LTO needs newer toolchain stack only (at least GCC 8.2.1 (r268506)
 %if 0%{?suse_version} > 1500
-ac_add_options --enable-lto
+#ac_add_options --enable-lto
 %if 0%{?do_profiling}
 ac_add_options MOZ_PGO=1
 %endif
@@ -467,7 +427,12 @@ ac_add_options --enable-valgrind
 %endif
 %endif
 EOF
-%if !%{with only_print_mozconfig}
+
+%if %{with only_print_mozconfig}
+cat ./.obsenv.sh
+cat $MOZCONFIG
+%else
+
 %if 0%{useccache} != 0
 ccache -s
 %endif
@@ -491,15 +456,21 @@ mk_add_options BUILD_OFFICIAL=1
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../obj_LANG
 ac_add_options --enable-application=comm/mail
 ac_add_options --prefix=%{_prefix}
-ac_add_options --with-l10n-base=$RPM_BUILD_DIR/l10n
+ac_add_options --with-l10n-base=$RPM_BUILD_DIR/l10n-central
 ac_add_options --disable-updater
 ac_add_options --without-wasm-sandboxed-libraries
 ac_add_options --enable-official-branding
 EOF
+
+%ifarch %ix86
+%define njobs 1
+%else
+%define njobs 0%{?jobs:%jobs}
+%endif
 mkdir -p $RPM_BUILD_DIR/langpacks_artifacts/
 
-sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/mail/locales/shipped-locales \
-    | xargs -n 1 %{?jobs:-P %jobs} -I {} /bin/sh -c '
+sed -r '/^(ja-JP-mac|ga-IE|en-US|)$/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/mail/locales/shipped-locales \
+    | xargs -n 1 %{?njobs:-P %njobs} -I {} /bin/sh -c '
         locale=$1
         cp ${MOZCONFIG}_LANG ${MOZCONFIG}_$locale
         sed -i "s|obj_LANG|obj_$locale|" ${MOZCONFIG}_$locale
@@ -518,6 +489,7 @@ sed -r '/^(ja-JP-mac|en-US|$)/d;s/ .*$//' $RPM_BUILD_DIR/%{source_prefix}/comm/m
           >> %{_tmppath}/translations.$_l10ntarget
 ' -- {}
 %endif
+
 %if 0%{useccache} != 0
 ccache -s
 %endif
@@ -531,7 +503,7 @@ export MOZ_SOURCE_REPO=$RELEASE_REPO
 make -C comm/mail/installer STRIP=/bin/true MOZ_PKG_FATAL_WARNINGS=0
 # copy tree into RPM_BUILD_ROOT
 mkdir -p %{buildroot}%{progdir}
-cp -rf $RPM_BUILD_DIR/obj/dist/%{progname}/* %{buildroot}%{progdir}
+cp -rf $RPM_BUILD_DIR/obj/dist/%{srcname}/* %{buildroot}%{progdir}
 mkdir -p %{buildroot}%{progdir}/extensions
 cp -rf $RPM_BUILD_DIR/langpacks_artifacts/* %{buildroot}%{progdir}/extensions/
 
@@ -581,10 +553,10 @@ EOF
 mkdir -p %{buildroot}%{gnome_dir}/share/icons/hicolor/symbolic/apps/
 cp %{_builddir}/%{source_prefix}/comm/mail/branding/thunderbird/TB-symbolic.svg \
    %{buildroot}%{gnome_dir}/share/icons/hicolor/symbolic/apps/%{progname}-symbolic.svg
-for size in 16 22 24 32 48 64 128; do
-  mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/
+for size in 16 22 24 32 48 64 128 256; do
+  mkdir -p %{buildroot}%{gnome_dir}/share/icons/hicolor/${size}x${size}/apps/
   cp %{buildroot}%{progdir}/chrome/icons/default/default$size.png \
-    %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/%{progname}.png
+         %{buildroot}%{gnome_dir}/share/icons/hicolor/${size}x${size}/apps/%{progname}.png
 done
 # excluded files
 rm -f %{buildroot}%{progdir}/thunderbird
@@ -602,13 +574,16 @@ rm -f %{buildroot}%{progdir}/nspr-config
 %fdupes %{buildroot}%{_datadir}
 
 %post
+# update mime and desktop database
+%mime_database_post
 %desktop_database_post
 %icon_theme_cache_post
 exit 0
 
 %postun
-%desktop_database_postun
 %icon_theme_cache_postun
+%desktop_database_postun
+%mime_database_postun
 exit 0
 
 %files
@@ -617,9 +592,13 @@ exit 0
 %dir %{progdir}
 %{progdir}/application.ini
 %{progdir}/dependentlibs.list
-%{progdir}/fonts/
 %{progdir}/*.so
+%{progdir}/glxtest
+%if 0%{wayland_supported}
+%{progdir}/vaapitest
+%endif
 %{progdir}/omni.ja
+%{progdir}/fonts/
 %{progdir}/pingsender
 %{progdir}/platform.ini
 %{progdir}/plugin-container
@@ -630,8 +609,8 @@ exit 0
 %if %crashreporter
 %{progdir}/crashreporter
 %{progdir}/crashreporter.ini
-%{progdir}/minidump-analyzer
 %{progdir}/Throbber-small.gif
+%{progdir}/minidump-analyzer
 %endif
 %dir %{progdir}/chrome/
 %{progdir}/chrome/icons/

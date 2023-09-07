@@ -4947,4 +4947,41 @@ I cannot test locally unfortunately.
   * CVE-2023-3417 (bmo#1835582, boo#1213658)</comment>
     <requestid>1102113</requestid>
   </revision>
+  <revision rev="315" vrev="1">
+    <srcmd5>4d093aa778b7dd13f77e0a2037f315df</srcmd5>
+    <version>115.2.0</version>
+    <time>1694114031</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 115.2.0
+  https://www.thunderbird.net/en-US/thunderbird/115.2.0/releasenotes
+  MFSA 2023-38 (bsc#1214606)
+  * CVE-2023-4573 (bmo#1846687)
+    Memory corruption in IPC CanvasTranslator
+  * CVE-2023-4574 (bmo#1846688)
+    Memory corruption in IPC ColorPickerShownCallback
+  * CVE-2023-4575 (bmo#1846689)
+    Memory corruption in IPC FilePickerShownCallback
+  * CVE-2023-4576 (bmo#1846694)
+    Integer Overflow in RecordedSourceSurfaceCreation
+  * CVE-2023-4577 (bmo#1847397)
+    Memory corruption in JIT UpdateRegExpStatics
+  * CVE-2023-4051 (bmo#1821884)
+    Full screen notification obscured by file open dialog
+  * CVE-2023-4578 (bmo#1839007)
+    Error reporting methods in SpiderMonkey could have triggered
+    an Out of Memory Exception
+  * CVE-2023-4053 (bmo#1839079)
+    Full screen notification obscured by external program
+  * CVE-2023-4580 (bmo#1843046)
+    Push notifications saved to disk unencrypted
+  * CVE-2023-4581 (bmo#1843758)
+    XLL file extensions were downloadable without warnings
+  * CVE-2023-4582 (bmo#1773874)
+    Buffer Overflow in WebGL glGetProgramiv
+  * CVE-2023-4583 (bmo#1842030)
+    Browsing Context potentially not cleared when closing Private
+    Window
+  * CVE-2023-4584 (bmo#1843968, bmo#1845205, bmo#1846080,</comment>
+    <requestid>1109528</requestid>
+  </revision>
 </revisionlist>

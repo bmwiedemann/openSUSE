@@ -6,10 +6,10 @@
 # Parent  81832d035e101471dcf52dd91de287268add7a91
 imported patch one_swizzle_to_rule_them_all.patch
 
-Index: firefox-102.0/gfx/webrender_bindings/RenderCompositorSWGL.cpp
+Index: firefox-115.0/gfx/webrender_bindings/RenderCompositorSWGL.cpp
 ===================================================================
---- firefox-102.0.orig/gfx/webrender_bindings/RenderCompositorSWGL.cpp
-+++ firefox-102.0/gfx/webrender_bindings/RenderCompositorSWGL.cpp
+--- firefox-115.0.orig/gfx/webrender_bindings/RenderCompositorSWGL.cpp
++++ firefox-115.0/gfx/webrender_bindings/RenderCompositorSWGL.cpp
 @@ -7,6 +7,7 @@
  #include "RenderCompositorSWGL.h"
  
@@ -18,7 +18,7 @@ Index: firefox-102.0/gfx/webrender_bindings/RenderCompositorSWGL.cpp
  #include "mozilla/widget/CompositorWidget.h"
  
  #ifdef MOZ_WIDGET_GTK
-@@ -235,6 +237,13 @@ void RenderCompositorSWGL::CommitMappedB
+@@ -242,6 +243,13 @@ void RenderCompositorSWGL::CommitMappedB
    }
    mDT->Flush();
  

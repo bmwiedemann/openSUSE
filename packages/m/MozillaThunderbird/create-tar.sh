@@ -78,6 +78,9 @@ function set_internal_variables() {
 
   SOURCE_TARBALL="$PRODUCT-$VERSION$VERSION_SUFFIX.source.tar.xz"
   PREV_SOURCE_TARBALL="$PRODUCT-$PREV_VERSION$PREV_VERSION_SUFFIX.source.tar.xz"
+  if [ "$PRODUCT" = "thunderbird" ]; then
+    TB_LOCALE_TARBALL="$PRODUCT-$VERSION$VERSION_SUFFIX.strings_all.tar.zst"
+  fi
   FTP_URL="https://ftp.mozilla.org/pub/$PRODUCT/releases/$VERSION$VERSION_SUFFIX/source"
   FTP_CANDIDATES_BASE_URL="https://ftp.mozilla.org/pub/%s/candidates"
   LOCALES_URL="https://product-details.mozilla.org/1.0/l10n"
@@ -302,10 +305,18 @@ function check_what_to_do_with_source_tarballs() {
     printf "%-40s: %s\n" "$ff" "$(check_tarball_source $ff)"
   done
 
+  if [ "$PRODUCT" = "thunderbird" ]; then
+    printf "%-40s: %s\n" "$TB_LOCALE_TARBALL" "$(check_tarball_source $TB_LOCALE_TARBALL)"
+  fi
+
   ask_cont_abort_question "Is this ok?" || exit 0
 }
 
 function check_what_to_do_with_locales_tarballs() {
+  if [ -e "$TB_LOCALE_TARBALL" ]; then
+    return;
+  fi
+
   LOCALES_CHANGED=1
 
   extract_locales_file
@@ -363,6 +374,10 @@ function download_upstream_source_tarballs() {
   # Try to download tar-ball from officiall mozilla-mirror
   download_release_or_candidate_file "$SOURCE_TARBALL"
   download_release_or_candidate_file "$SOURCE_TARBALL.asc"
+
+  if [ "$PRODUCT" = "thunderbird" ]; then
+    download_release_or_candidate_file "$TB_LOCALE_TARBALL"
+  fi
 
   # we might have an upstream archive already and can skip the checkout
   if [ -e "$SOURCE_TARBALL" ]; then
@@ -447,13 +462,18 @@ function create_locales_tarballs() {
     exit 0
   fi
 
-  if [ "$LOCALES_CHANGED" -ne 0 ]; then
-    clone_and_repackage_locales
-  elif [ -f "l10n-$PREV_VERSION$PREV_VERSION_SUFFIX.tar.xz" ]; then
-    # Locales did not change, but the old tar-ball is in this directory
-    # Simply rename it:
-    echo "Moving l10n-$PREV_VERSION$PREV_VERSION_SUFFIX.tar.xz to l10n-$VERSION$VERSION_SUFFIX.tar.xz"
-    mv "l10n-$PREV_VERSION$PREV_VERSION_SUFFIX.tar.xz" "l10n-$VERSION$VERSION_SUFFIX.tar.xz"
+  if [ -e "$TB_LOCALE_TARBALL" ]; then
+    echo "Repackaging upstream lang-tarball."
+    zstd -dcf "$TB_LOCALE_TARBALL" | xz > "l10n-$VERSION$VERSION_SUFFIX.tar.xz"
+  else 
+    if [ "$LOCALES_CHANGED" -ne 0 ]; then
+      clone_and_repackage_locales
+    elif [ -f "l10n-$PREV_VERSION$PREV_VERSION_SUFFIX.tar.xz" ]; then
+      # Locales did not change, but the old tar-ball is in this directory
+      # Simply rename it:
+      echo "Moving l10n-$PREV_VERSION$PREV_VERSION_SUFFIX.tar.xz to l10n-$VERSION$VERSION_SUFFIX.tar.xz"
+      mv "l10n-$PREV_VERSION$PREV_VERSION_SUFFIX.tar.xz" "l10n-$VERSION$VERSION_SUFFIX.tar.xz"
+    fi
   fi
 }
 
@@ -536,6 +556,13 @@ function clean_up_old_tarballs() {
       if [ -f "l10n-$PREV_VERSION$PREV_VERSION_SUFFIX.tar.xz" ] && [ -f "l10n-$VERSION$VERSION_SUFFIX.tar.xz" ]; then
           rm "l10n-$PREV_VERSION$PREV_VERSION_SUFFIX.tar.xz"
       fi
+  fi
+  # If we downloaded the upstream zstd-tarball and repackaged it, remove it now
+  if [ -f "$TB_LOCALE_TARBALL" ] && [ -f "l10n-$VERSION$VERSION_SUFFIX.tar.xz" ]; then 
+      echo ""
+      echo "Deleting old sources tarball $TB_LOCALE_TARBALL"
+      ask_cont_abort_question "Is this ok?" || exit 0
+      rm "$TB_LOCALE_TARBALL"
   fi
 }
 
