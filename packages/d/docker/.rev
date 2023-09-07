@@ -1308,4 +1308,12 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
   &lt;https://docs.docker.com/engine/release-notes/24.0/#2405&gt;. bsc#1213229</comment>
     <requestid>1100698</requestid>
   </revision>
+  <revision rev="137" vrev="2">
+    <srcmd5>4cf0a095e791095a2ce199ad854d9b73</srcmd5>
+    <version>24.0.5_ce</version>
+    <time>1694113977</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109451</requestid>
+  </revision>
 </revisionlist>

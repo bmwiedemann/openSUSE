@@ -75,6 +75,10 @@ Wed Apr 26 00:31:54 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 23.0.4-ce. See upstream changelog online at
   <https://docs.docker.com/engine/release-notes/23.0/#2304>. bsc#1208074
+- Fixes:
+  * bsc#1214107 - CVE-2023-28840
+  * bsc#1214108 - CVE-2023-28841
+  * bsc#1214109 - CVE-2023-28842
 - Rebase patches:
   * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
   * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
