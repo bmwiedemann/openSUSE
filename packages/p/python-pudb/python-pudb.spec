@@ -1,7 +1,7 @@
 #
 # spec file for package python-pudb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,6 @@
 %define upstream_name pudb
 %define module_name pudb
 %define py_maj_ver %(c=%{python})
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pudb
 Version:        2022.1.3
@@ -29,13 +28,17 @@ License:        MIT
 Group:          Development/Tools/Debuggers
 URL:            https://mathema.tician.de/software/pudb
 Source0:        https://files.pythonhosted.org/packages/source/p/%{upstream_name}/%{upstream_name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module urwid}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments
+Requires:       python-jedi
+Requires:       python-packaging
 Requires:       python-urwid
+Requires:       python-urwid-readline
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -47,15 +50,15 @@ Control is by keyboard. The UI is reminiscient of the DOS versions
 of Turbo Pascal.
 
 %prep
-%setup -q -n %{upstream_name}-%{version}
+%autosetup -p1 -n %{upstream_name}-%{version}
 
 sed -i '1{\@^#! %{_bindir}/env python@d}' pudb/debugger.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 mv -v %{buildroot}%{_bindir}/pudb{*,} || /bin/true
 %python_clone -a %{buildroot}%{_bindir}/pudb
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -81,7 +84,7 @@ export LC_ALL=en_US.utf8
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/%{module_name}
-%{python_sitelib}/%{module_name}*.egg-info
+%{python_sitelib}/%{module_name}*-info
 %python_alternative %{_bindir}/pudb
 
 %changelog
