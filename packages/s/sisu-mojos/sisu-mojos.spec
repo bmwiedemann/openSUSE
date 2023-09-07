@@ -16,25 +16,28 @@
 #
 
 
+%global upstream_version 0.9.0.M2
 Name:           sisu-mojos
-Version:        0.3.1
+Version:        0.9.0~M2
 Release:        0
 Summary:        Sisu plugin for Apache Maven
 License:        EPL-1.0
 Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/sisu
-Source0:        http://git.eclipse.org/c/sisu/org.eclipse.sisu.mojos.git/snapshot/org.eclipse.sisu.mojos-releases/%{version}.tar.xz#/%{name}-%{version}.tar.xz
+Source0:        https://github.com/eclipse/sisu.mojos/archive/refs/tags/milestones/%{upstream_version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.shared:maven-common-artifact-filters)
+BuildRequires:  mvn(org.apache.maven:maven-artifact)
+BuildRequires:  mvn(org.apache.maven:maven-core)
+BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.inject)
 BuildRequires:  mvn(org.slf4j:slf4j-nop)
-BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
+BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
 BuildArch:      noarch
 
 %description
@@ -48,10 +51,10 @@ Summary:        API documentation for %{name}
 This package contains %{summary}.
 
 %prep
-%setup -q -c
-mv org.eclipse.sisu.mojos-releases/%{version}/* .
-# Animal Sniffer is not useful during rpm build
-%pom_remove_plugin :animal-sniffer-maven-plugin
+%setup -q -n sisu.mojos-milestones-%{upstream_version}
+
+%pom_remove_plugin -r :maven-enforcer-plugin
+
 %{mvn_alias} : org.sonatype.plugins:
 
 %build
