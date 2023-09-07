@@ -1,7 +1,7 @@
 #
 # spec file for package python-uncertainties
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-uncertainties
 Version:        3.1.7
 Release:        0
 Summary:        Uncertainties on the Quantities Involved (aka "Error Propagation")
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/lebigot/uncertainties/
 Source:         https://files.pythonhosted.org/packages/source/u/uncertainties/uncertainties-%{version}.tar.gz
-BuildRequires:  %{python_module future}
+Patch0:         remove-future-requirement.patch
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module tools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
-Requires:       python-future
 BuildArch:      noarch
 %if 0%{?suse_version}
 Recommends:     python-numpy
@@ -46,26 +45,24 @@ performed transparently. Much more complex mathematical expressions
 involving numbers with uncertainties can also be evaluated directly.
 
 %prep
-%setup -q -n uncertainties-%{version}
+%autosetup -p1 -n uncertainties-%{version}
 sed -i -e '/^#!\//, 1d' uncertainties/1to2.py
 sed -i -e '/^#!\//, 1d' uncertainties/lib1to2/test_1to2.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# no python36-numpy
-python36_ignore="--ignore uncertainties/unumpy"
-%pytest ${$python_ignore}
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/uncertainties/
-%{python_sitelib}/uncertainties-%{version}*-info
+%{python_sitelib}/uncertainties-%{version}.dist-info
 
 %changelog
