@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs-material
-Version:        9.1.21
+Version:        9.2.8
 Release:        0
 Summary:        Material theme for mkdocs
 License:        MIT
@@ -34,31 +34,38 @@ Source:         https://files.pythonhosted.org/packages/source/m/mkdocs_material
 # we have these in openSUSE, we should stay with this
 # hand-managed patch.
 Patch0:         no-hatchling-requirements_txt.patch
-BuildRequires:  %{python_module Markdown >= 3.2}
 BuildRequires:  %{python_module hatch_nodejs_version}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module jinja2 >= 3.0}
-BuildRequires:  %{python_module mkdocs >= 1.4.2}
-BuildRequires:  %{python_module mkdocs-material-extensions >= 1.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pygments >= 2.12}
-BuildRequires:  %{python_module pymdown-extensions >= 9.4}
 BuildRequires:  %{python_module setuptools}
+# Requirements for core
+# https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L21
+BuildRequires:  %{python_module Jinja2 >= 3.1}
+BuildRequires:  %{python_module Markdown >= 3.4}
+BuildRequires:  %{python_module mkdocs >= 1.5}
+BuildRequires:  %{python_module mkdocs-material-extensions >= 1.1}
+BuildRequires:  %{python_module pygments >= 2.16}
+BuildRequires:  %{python_module pymdown-extensions >= 10.3}
+# Requirements for plugins
+# https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L29
+BuildRequires:  %{python_module colorama >= 0.4}
+BuildRequires:  %{python_module regex => 2023.8}
+BuildRequires:  %{python_module requests >= 2.31}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Requirements for core
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L21
-Requires:       python-Markdown >= 3.2
-Requires:       python-jinja2 >= 3.0
-Requires:       python-mkdocs >= 1.4.2
+Requires:       python-Jinja2 >= 3.1
+Requires:       python-Markdown >= 3.4
+Requires:       python-mkdocs >= 1.5
 Requires:       python-mkdocs-material-extensions >= 1.1
-Requires:       python-pygments >= 2.14
-Requires:       python-pymdown-extensions >= 9.9.1
+Requires:       python-pygments >= 2.16
+Requires:       python-pymdown-extensions >= 10.3
 # Requirements for plugins
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L29
 Requires:       python-colorama >= 0.4
-Requires:       python-regex => 2022.4.24
-Requires:       python-requests >= 2.26
+Requires:       python-regex => 2023.8
+Requires:       python-requests >= 2.31
 
 BuildArch:      noarch
 %python_subpackages
