@@ -17,7 +17,7 @@
 
 
 %define libdnssec   libdnssec9
-%define libknot     libknot13
+%define libknot     libknot14
 %define libzscanner libzscanner4
 %define pkg_name knot
 %bcond_without  dnstap
@@ -35,7 +35,7 @@ BuildRequires:  systemd-devel
 %{?systemd_requires}
 %endif
 Name:           knot
-Version:        3.2.9
+Version:        3.3.0
 Release:        0
 Summary:        An authoritative DNS daemon
 License:        GPL-3.0-or-later
@@ -73,7 +73,6 @@ BuildRequires:  python3-Sphinx
 %if %{with dnstap}
 BuildRequires:  libfstrm-devel
 BuildRequires:  libprotobuf-c-devel >= 1.0.0
-BuildRequires:  protobuf-c >= 1.0.0
 %endif
 
 %description
