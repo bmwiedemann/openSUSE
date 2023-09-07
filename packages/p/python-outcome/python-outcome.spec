@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-outcome
 Version:        1.2.0
@@ -35,12 +33,10 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module pytest}
-%if 0%{suse_version} >= 1550 || (0%{suse_version} == 1500 && 0%{?sle_version} >= 150400)
+%if 0%{?suse_version} >= 1550 || (0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400)
 # for more than one python 3 flavor, but no python2 flavor
-BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module pytest-asyncio}
 %else
-BuildRequires:  python3-async_generator
 BuildRequires:  python3-pytest-asyncio
 %endif
 # /SECTION
