@@ -29,4 +29,12 @@
 - drop support-fixed-ssl-shared_ciphers.patch (obsolete)</comment>
     <requestid>1088727</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d3aa4db8d318c546ba498867e1565e51</srcmd5>
+    <version>1.26.16</version>
+    <time>1694113973</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.25.9 (bsc#1177120, CVE-2020-26137):</comment>
+    <requestid>1109357</requestid>
+  </revision>
 </revisionlist>

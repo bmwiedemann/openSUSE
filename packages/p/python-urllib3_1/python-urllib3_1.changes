@@ -267,7 +267,7 @@ Tue Aug  4 16:09:35 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Jun  2 17:19:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- update to 1.25.9:
+- update to 1.25.9 (bsc#1177120, CVE-2020-26137):
   * Added ``InvalidProxyConfigurationWarning`` which is raised when
     erroneously specifying an HTTPS proxy URL. urllib3 doesn't currently
     support connecting to HTTPS proxies but will soon be able to
