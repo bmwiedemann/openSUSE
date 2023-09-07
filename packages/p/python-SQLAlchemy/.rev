@@ -1145,4 +1145,14 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     <comment>- use generic Cython &gt;= 3 buildrequires</comment>
     <requestid>1103749</requestid>
   </revision>
+  <revision rev="111" vrev="3">
+    <srcmd5>943bf2daba22bedf7dea5eca54428604</srcmd5>
+    <version>2.0.19</version>
+    <time>1694113963</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.12 (bsc#1184038):
+  * obsoletes sqlalchemy-7293b3dc0e9eb3dae84ffd831494b85355df8e73.patch
+    in older dists</comment>
+    <requestid>1109329</requestid>
+  </revision>
 </revisionlist>

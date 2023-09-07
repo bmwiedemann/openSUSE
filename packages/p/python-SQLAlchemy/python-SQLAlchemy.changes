@@ -1836,10 +1836,12 @@ Tue May  4 07:40:41 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 -------------------------------------------------------------------
 Fri Apr 30 09:06:50 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
-- Update to 1.4.12:
+- Update to 1.4.12 (bsc#1184038):
   * There are many changes between the 1.4 and 1.3 branch so please
     check the full list at:
     https://docs.sqlalchemy.org/en/14/changelog/changelog_14.html
+  * obsoletes sqlalchemy-7293b3dc0e9eb3dae84ffd831494b85355df8e73.patch
+    in older dists
 
 - Update to the 1.4 branch:
   Version 1.4 is taking on a different focus than other SQLAlchemy
