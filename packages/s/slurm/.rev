@@ -1183,4 +1183,41 @@
 - removed Fix-test-38.11.patch as test changed upstream (forwarded request 1109009 from mslacken)</comment>
     <requestid>1109029</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>388c3b38e5235593a2040a08ccdbad95</srcmd5>
+    <version>23.02.4</version>
+    <time>1694113961</time>
+    <user>anag+factory</user>
+    <comment>- Fixes since 23.02.03:
+  Highlights:
+  * Fix main scheduler loop not starting after a failover to backup controller.
+  * Avoid slurmctld segfault when specifying `AccountingStorageExternalHost`
+    (bsc#1214983).
+  Other:
+  * Fix sbatch return code when `--wait` is requested on a job array.
+  * Fix collected `GPUUtilization` values for `acct_gather_profile` plugins.
+  * Fix `slurmrestd` handling of job hold/release operations.
+  * Make spank `S_JOB_ARGV` item value hold the requested command `argv`
+    instead of the `srun --bcast` value when `--bcast` requested (only in local
+    context).
+  * Fix step running indefinitely when slurmctld takes more than
+    `MessageTimeout` to respond. Now, slurmctld will cancel the step when
+    detected, preventing following steps from getting stuck waiting for
+    resources to be released.
+  * Fix regression to make `job_desc.min_cpus` accurate again in job_submit when
+    requesting a job with `--ntasks-per-node`.
+  * Fix handling of `ArrayTaskThrottle` in backfill.
+  * Fix regression in 23.02.2 when checking gres state on `slurmctld` startup or
+    reconfigure. Gres changes in the configuration were not updated on slurmctld
+    startup. On startup or reconfigure, these messages were present in the log:
+    `&quot;error: Attempt to change gres/gpu Count`&quot;.
+  * Fix potential double count of gres when dealing with limits.
+  * Fix slurmstepd segfault when ContainerPath is not set in `oci.conf`
+  * Fixed an issue where jobs requesting licenses were incorrectly rejected.
+  * `scrontab` - Fix cutting off the final character of quoted variables.
+  * `smail` - Fix issues where e-mails at job completion were not being sent.
+  * `scontrol/slurmctld` - fix comma parsing when updating a reservation's
+    nodes.</comment>
+    <requestid>1109308</requestid>
+  </revision>
 </revisionlist>
