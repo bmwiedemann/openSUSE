@@ -165,4 +165,25 @@
     keys.</comment>
     <requestid>1087083</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3d4b69a6c130faa2f074a29c5fadcb5f</srcmd5>
+    <version>0.12.1</version>
+    <time>1694114029</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.1:
+  * Make float and int hashable.
+  * Allow users to specify encoders for custom types. (#296)
+  * Fix the incorrect sort when building a table with dotted
+    keys.
+  * Complete the methods required for integer and float items.
+  * Replace the deprecated usage of `datetime.utcnow()`. (#308)
+  * Minor performance improvements when iterating over the escape
+    sequences. (#304)
+
+- Update to 0.11.6
+  * Auto-determine if a table is a super table if not specified explicitly. (#245)
+  * Added support for sorting keys when dumping raw
+  * Keys are not longer sorted by default when dumping a raw</comment>
+    <requestid>1109526</requestid>
+  </revision>
 </revisionlist>

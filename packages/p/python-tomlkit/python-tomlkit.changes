@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep  7 11:29:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * Make float and int hashable.
+  * Allow users to specify encoders for custom types. (#296)
+  * Fix the incorrect sort when building a table with dotted
+    keys.
+  * Complete the methods required for integer and float items.
+  * Replace the deprecated usage of `datetime.utcnow()`. (#308)
+  * Minor performance improvements when iterating over the escape
+    sequences. (#304)
+
+-------------------------------------------------------------------
 Sun May 14 09:47:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.8:
@@ -37,10 +50,10 @@ Sun Apr 16 08:08:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Nov  9 19:31:14 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 0.11.6 
+- Update to 0.11.6
   Fixed
   * Allow broader type for toml file path value (#243)
-  * Auto-determine if a table is a super table if not specified explicitly. (#245) 
+  * Auto-determine if a table is a super table if not specified explicitly. (#245)
 
 -------------------------------------------------------------------
 Mon Oct  3 16:05:27 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -124,9 +137,9 @@ Thu Jan 20 22:45:49 UTC 2022 - Matej Cepl <mcepl@suse.com>
 Mon Oct  5 12:57:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 0.7.0
-  * Added support for sorting keys when dumping raw 
+  * Added support for sorting keys when dumping raw
     dictionaries by passing sort_keys=True to dumps() (#103).
-  * Keys are not longer sorted by default when dumping a raw 
+  * Keys are not longer sorted by default when dumping a raw
     dictionary but the original order will be preserved (#103).
   * Fixed compliance with the 1.0.0rc1 TOML specification (#102).
 
