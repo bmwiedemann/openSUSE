@@ -1806,4 +1806,15 @@ see https://github.com/opensvc/multipath-tools/compare/2bdd3a14..79c3556f</comme
   * libmultipathd: Avoid parsing errors due to unsupported designators (forwarded request 1086780 from mwilck)</comment>
     <requestid>1086784</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>8e64ab8ac1fbc5f3eff8d69333825cd7</srcmd5>
+    <version>0.9.6+71+suse.f07325e</version>
+    <time>1694113934</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.6+71+suse.f07325e:
+
+code-identical to previous submission, replaced a local commit
+by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment>
+    <requestid>1109433</requestid>
+  </revision>
 </revisionlist>
