@@ -19,7 +19,7 @@
 %define soname  libnextcloudsync
 %define sover   0
 Name:           nextcloud-desktop
-Version:        3.9.0
+Version:        3.9.3
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -37,11 +37,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  inkscape >= 1.0
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  qtkeychain-qt5-devel
+BuildRequires:  rsvg-convert
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Config)
@@ -205,8 +205,7 @@ cp -a %{SOURCE1} sysctl-sync-inotify.conf
 export SOURCE_DATE_EPOCH=`date -r VERSION.cmake +"%s"`
 %cmake \
 %if 0%{?is_opensuse}
-  -DWITH_DOC=ON \
-  -DNO_SHIBBOLETH=1
+  -DWITH_DOC=ON
 %endif
 %cmake_build
 

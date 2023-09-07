@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Sep  5 15:23:28 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.9.3:
+  * Fix filename encoding test on windows
+    (gh#nextcloud/desktop#5974).
+- Drop NO_SHIBBOLETH flag: has not been used by build since
+  version 3.2.0.
+
+-------------------------------------------------------------------
+Wed Aug  9 19:05:45 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.9.2:
+  * Feature/check server availibility every minute
+    (gh#nextcloud/desktop#5928).
+  * windows reserved word silently excluded - csync exclude.cpp
+    (gh#nextcloud/desktop#5934).
+  * Do not modify discovered files on disk if not necessary
+    (gh#nextcloud/desktop#5958).
+
+-------------------------------------------------------------------
+Wed Jul 26 08:43:55 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.9.1:
+  * Bugfix/unsupported filename on server
+    (gh#nextcloud/desktop#5812).
+  * Bugfix/remove stale caseclashcopies
+    (gh#nextcloud/desktop#5817).
+  * Bugfix/checksum calculation stop on destruction
+    (gh#nextcloud/desktop#5827).
+  * Prevent crash by resetting common pointer after deleting
+    gobject menu (gh#nextcloud/desktop#5850).
+  * Documentation for mass deployment (gh#nextcloud/desktop#5857).
+  * Update the documentation with information on how 'Edit
+    locally' works (gh#nextcloud/desktop#5858).
+  * Fix typos found by codespell (gh#nextcloud/desktop#5859).
+  * Remove seen Talk notificatios from Tray window
+    (gh#nextcloud/desktop#5869).
+  * Fix bulk upload of empty files (gh#nextcloud/desktop#5878).
+  * Add link in readme to nextcloud-releases correct page with
+    binaries (gh#nextcloud/desktop#5880).
+  * Always propagate locked status to read-only or read/write for
+    real file (gh#nextcloud/desktop#5883).
+  * Added new state and new job to check if /index.php/204 is
+    being redirected (gh#nextcloud/desktop#5894).
+  * Fix crash and incorrect implementation of seen chat
+    notofications removal (gh#nextcloud/desktop#5897).
+  * Disable share view completely when server does not support/has
+    disabled file sharing (gh#nextcloud/desktop#5900).
+  * Set VFS PinState to Excluded for ignored files
+    (gh#nextcloud/desktop#5904).
+  * Create placeholder while dehydrating if needed
+    (gh#nextcloud/desktop#5906).
+  * Fix password generation for shares, improve generator
+    (gh#nextcloud/desktop#5908).
+  * Fix expire date field in Share settings
+    (gh#nextcloud/desktop#5907).
+  * Fix SVG rendering error in SvgImageProvider
+    (gh#nextcloud/desktop#5909).
+- Use rsvg-convert instead of inkscape to convert svg icons to
+  bitmaps during build. This shaves about 40 GUI dependencies of
+  inkscape --- and the significant disk-space they occupy ---
+  pulled in for builds but are otherwise unnecessary
+  (boo#1205096).
+
+-------------------------------------------------------------------
 Thu Jun 29 18:50:15 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add nextcloud-fix-HiDPI-window-size.patch -- Fix huge sized
