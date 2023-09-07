@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 29 13:06:26 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.5.0
+  Changes since 4.3.11:
+  * Has some license template updates and spelling fixes.
+  * Adds the ability for admin connections to be advertised
+    through MDNS.
+  * A systemd unit file example is added.
+  * The setgroup() function for ptys and stdio was not being
+    called if running the child under a new user and the new user
+    had no groups.
+  * A random time was added to the certauth challenge response.
+  * A timer was added to ssl and certauth.
+  * Adds the ability for gensios to report errors as they parse the
+    gensio string.
+
+-------------------------------------------------------------------
 Thu Dec 29 13:59:09 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.3.11:
