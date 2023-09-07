@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  6 18:16:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove stray dependency on xmvn tools and parent pom
+
+-------------------------------------------------------------------
 Wed Sep  6 14:30:17 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.3.2

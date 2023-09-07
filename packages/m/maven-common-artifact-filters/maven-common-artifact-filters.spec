@@ -27,7 +27,7 @@ Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
 BuildRequires:  maven-resolver-api
 BuildRequires:  maven-resolver-util
@@ -35,9 +35,6 @@ BuildRequires:  maven-shared-utils
 BuildRequires:  sisu-plexus
 BuildRequires:  slf4j
 BuildRequires:  unzip
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
-BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
 BuildArch:      noarch
 
 %description

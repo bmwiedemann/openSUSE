@@ -23,4 +23,12 @@
     <comment>3.3.2</comment>
     <requestid>1109285</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>6ec267593e4256434f3978e499341ed2</srcmd5>
+    <version>3.3.2</version>
+    <time>1694113965</time>
+    <user>anag+factory</user>
+    <comment>Stray dependencies</comment>
+    <requestid>1109319</requestid>
+  </revision>
 </revisionlist>
