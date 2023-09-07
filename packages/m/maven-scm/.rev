@@ -39,4 +39,12 @@
     <comment>Fix i386 build breakages by requiring java 11</comment>
     <requestid>1010951</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>300275931a368c6813346998f7846665</srcmd5>
+    <version>1.12.0</version>
+    <time>1694113958</time>
+    <user>anag+factory</user>
+    <comment>Remove unresolved version variable</comment>
+    <requestid>1109279</requestid>
+  </revision>
 </revisionlist>

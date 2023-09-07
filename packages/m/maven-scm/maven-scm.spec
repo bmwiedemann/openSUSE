@@ -1,7 +1,7 @@
 #
 # spec file for package maven-scm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -113,6 +113,8 @@ sed -i "s/org\.apache\.commons\.lang\./org.apache.commons.lang3./" \
 %pom_remove_dep org.mockito: maven-scm-providers/maven-scm-provider-accurev
 
 %pom_add_dep org.eclipse.jgit:org.eclipse.jgit.ssh.jsch maven-scm-providers/maven-scm-providers-git/maven-scm-provider-jgit
+
+%pom_xpath_remove "pom:build/pom:pluginManagement/pom:plugins/pom:plugin[pom:artifactId = 'maven-plugin-plugin']/pom:version" maven-scm-plugin
 
 # Put TCK tests into a separate sub-package
 %{mvn_package} :%{name}-provider-cvstest test

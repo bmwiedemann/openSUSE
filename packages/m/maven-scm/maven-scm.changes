@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  6 15:09:51 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove unresolved plugin version which creates a validation
+  error during the build
+
+-------------------------------------------------------------------
 Thu Oct 13 11:21:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Force building with java 11 on ix86 in order to avoid random
