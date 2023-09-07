@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  7 07:34:22 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.3.4:
+  * [2.3 backport] Give more detail when we cannot process a
+    non-JSON streamed line (#1186) by @AlanCoding in
+    https://github.com/ansible/ansible-runner/pull/1258
+
+-------------------------------------------------------------------
 Wed May 31 05:22:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 2.3.3:
