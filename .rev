@@ -47,4 +47,12 @@
     <comment>bsc#1209605</comment>
     <requestid>1080162</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2386278caeb3bb658263feb7fbafa717</srcmd5>
+    <version>1.5.4</version>
+    <time>1694113947</time>
+    <user>anag+factory</user>
+    <comment>reproducible manifest</comment>
+    <requestid>1109027</requestid>
+  </revision>
 </revisionlist>
