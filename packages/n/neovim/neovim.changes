@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Sep  7 11:28:17 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 0.9.2:
+  - Bram: Nvim is a fork of the Vim editor, created and developed by Bram Moolenaar.
+    On August 3, 2023, he passed away at the age of 62. If Vim or Nvim have been of
+    use to you in your life, read :help Bram and :help Uganda and consider honoring
+    his memory in a way you see fit.
+  - Breaking change:
+    - An adjustment was made to the grid_line event as part of
+      the exernal UI protocol: the cells array might now end with
+      a [' ', attr, 0] item with a repeat count of zero. This is
+      needed by the TUI to disambiguate final spaces from a line
+      from just clearing the line, which will make a difference
+      when copying text using the terminal emulators builtin
+      primary selection support.
+      External UI:s can safely ignore such an empty item and most
+      UIs already handle this fine. But it could break UI:s which
+      has an assert to validate the cell count to be bigger than
+      zero, or similar.
+  - Features:
+    - tui: Support Super and Meta modifiers
+    - terminal: forward more special keys and modifier-mouse
+      combinations
+  - Bug Fixes:
+    - lua: Always set arg0 to lua scripts
+    - api: Redundant error when using nvim_cmd
+    - api, lua: Make blank lines in a message work properly
+    - column: fix bugs related to signs in 'statuscol'
+    - completion: Don't add backslash in runtime completion
+    - diff: Filler lines for hunks bigger than linematch limit
+    - edit: Fix K_EVENT interfering with 'digraph'
+    - editorconfig: Better validation and error handling
+    - events: Don't expand non-file as file name
+    - events: Trigger VimResume on next UI request
+    - extmarks: Wrong display when changing text with virt_lines
+    - folds: Update folds in Insert mode with fdm=indent
+    - helptags: Make multibyte help tags work properly
+    - highlight: Make CurSearch work properly with 'winhl'
+    - inccommand: Fix saving of undo info
+    - keycodes: Recognize <t_xx> as a key
+    - lsp: Do not assume client capability exists in watchfiles
+      check (#24558)
+    - mouse: Handle folded lines with virt_lines attached to line
+      above
+    - remote: Make --remote-expr print to stdout
+    - remote: Restore previous --remote-expr output formatting
+    - spell: Splice extmarks on :spellrepall
+    - startup: Don't truncate when printing with -l
+    - startup: Run embedded Nvim with real path
+    - statusline: Redraw when Visual submode changes
+    - statusline: Fill for double-width char after moving items
+    - treesitter: updates to queries and injections
+    - treesitter: Fix TSNode:tree() double free
+    - ui: Propagate line wrapping state on grid_line events
+    - ui: Avoid ambiguity about chunk that clears part of line
+  - Performance:
+    - extmarks: Avoid unnecessary marktree traversal with folds
+    - substitute: Don't reallocate new_start every time
+- Remove unnecessary neovim-rpmlintrc.
+
+-------------------------------------------------------------------
 Tue Jun 20 08:30:27 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.1:

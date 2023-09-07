@@ -46,7 +46,7 @@ Requires:       python3-neovim
 %bcond_with luajit
 %endif
 Name:           neovim
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim
@@ -59,7 +59,6 @@ Source3:        suse-spec-template
 # Our packaged busted script has a shebang pointing to regular Lua interepreter,
 # we need /usr/bin/luajit. Fake it.
 Source10:       lj-busted.sh
-Source99:       neovim-rpmlintrc
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  filesystem
@@ -180,7 +179,7 @@ export CXXFLAGS="%{optflags} -fcommon"
        -DCMAKE_C_FLAGS_RELWITHDEBINFO="$opts" \
        -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
        -DLIBLUV_INCLUDE_DIR:PATH=%{lua_incdir} \
-# -DLIBLUV_LIBRARY=%{lua_archdir}/luv.so
+# -DLIBLUV_LIBRARY=%%{lua_archdir}/luv.so
 %make_build
 
 popd
