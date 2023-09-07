@@ -14,6 +14,11 @@ Fri Sep 16 12:01:41 UTC 2022 - pgajdos@suse.com
 - python-six not required
 
 -------------------------------------------------------------------
+Thu Jul 21 10:16:18 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1199282, jsc#PM-3243, jsc#SLE-24629)
+
+-------------------------------------------------------------------
 Sun Jan  9 18:54:14 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 1.5.0
@@ -62,9 +67,15 @@ Fri Apr 17 06:48:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
   * hypothesis-no-unilmited.patch
 
 -------------------------------------------------------------------
+Tue Jan 21 13:46:13 UTC 2020 - pgajdos@suse.com
+
+- python-PyNaCl requires python-cffi as demonstrated by python-dkimpy
+  tests [SLE-7686] [bsc#1161557]
+
+-------------------------------------------------------------------
 Wed Sep 25 14:15:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Add missing runtime dependency on cffi
+- Add missing runtime dependency on cffi 
 
 -------------------------------------------------------------------
 Thu Jul 18 11:12:47 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>

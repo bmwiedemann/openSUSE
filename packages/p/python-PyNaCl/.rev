@@ -120,4 +120,17 @@
     <comment></comment>
     <requestid>1082029</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>b84af4a9359a8c1640a8977e98b3c039</srcmd5>
+    <version>1.5.0</version>
+    <time>1694113962</time>
+    <user>anag+factory</user>
+    <comment>- Update in SLE-15 (bsc#1199282, jsc#PM-3243, jsc#SLE-24629)
+
+- python-PyNaCl requires python-cffi as demonstrated by python-dkimpy
+  tests [SLE-7686] [bsc#1161557]
+
+- Add missing runtime dependency on cffi</comment>
+    <requestid>1109327</requestid>
+  </revision>
 </revisionlist>
