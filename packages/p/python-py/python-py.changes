@@ -17,6 +17,13 @@ Thu Apr 13 22:43:30 UTC 2023 - Matej Cepl <mcepl@suse.com>
 - Make calling of %{sle15modernpython} optional.
 
 -------------------------------------------------------------------
+Tue Jan 17 05:13:56 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove all traces of py._path.svn{url,wc}. (bsc#1204364, CVE-2022-42969) 
+- Add patch remove-svn-remants.patch to help with that goal.
+- Refresh pr_222.patch as needed for above.
+
+-------------------------------------------------------------------
 Tue Nov 29 17:04:41 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition
@@ -28,6 +35,12 @@ Tue Nov 29 17:04:41 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 Tue Mar 15 08:13:43 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 - use %python_expand for %fdupes
+
+-------------------------------------------------------------------
+Mon Mar 14 10:53:30 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1195916, bsc#1196696, jsc#PM-3356, jsc#SLE-23972)
+- Drop CVE-2020-29651.patch, issue fixed upstream in 1.10.0
 
 -------------------------------------------------------------------
 Sun Jan 23 15:40:00 UTC 2022 - Dirk Müller <dmueller@suse.com>

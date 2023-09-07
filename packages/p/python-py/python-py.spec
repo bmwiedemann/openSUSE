@@ -36,6 +36,8 @@ URL:            https://github.com/pytest-dev/py
 Source:         https://files.pythonhosted.org/packages/source/p/py/py-%{version}.tar.gz
 # https://github.com/pytest-dev/py/pull/222
 Patch0:         pr_222.patch
+# CVE-2022-42969 Remove all traces of svn
+Patch1:         remove-svn-remants.patch
 BuildRequires:  %{python_module apipkg}
 BuildRequires:  %{python_module iniconfig}
 BuildRequires:  %{python_module setuptools_scm}
@@ -70,6 +72,14 @@ rm -f tox.ini
 # https://github.com/pytest-dev/py/issues/162
 rm -f testing/log/test_warning.py
 rm -r py/_vendored_packages
+
+# CVE-2022-42969 Remove all traces of svn
+pushd py/_path
+rm svnwc.py svnurl.py
+popd
+pushd testing/path
+rm conftest.py svntestbase.py test_svnauth.py test_svnurl.py test_svnwc.py
+popd
 
 %build
 %python_build

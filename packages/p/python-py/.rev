@@ -454,4 +454,17 @@
     <comment></comment>
     <requestid>1100741</requestid>
   </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>94ad4a38884c57b6e08347598088840f</srcmd5>
+    <version>1.11.0</version>
+    <time>1694113927</time>
+    <user>anag+factory</user>
+    <comment>- Remove all traces of py._path.svn{url,wc}. (bsc#1204364, CVE-2022-42969) 
+- Add patch remove-svn-remants.patch to help with that goal.
+- Refresh pr_222.patch as needed for above.
+
+- Update in SLE-15 (bsc#1195916, bsc#1196696, jsc#PM-3356, jsc#SLE-23972)
+- Drop CVE-2020-29651.patch, issue fixed upstream in 1.10.0</comment>
+    <requestid>1109354</requestid>
+  </revision>
 </revisionlist>
