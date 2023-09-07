@@ -111,18 +111,9 @@ export CFLAGS="%{optflags}"
 export CFLAGS="%{optflags}"
 export LANG=en_US.UTF-8
 export PYTHONUNBUFFERED=x
-%if 0%{?have_python2}
-%{python_expand # define python version for test:
-export PYTHON="$python"
-%make_build test
-}
-%endif
-%if 0%{?have_python3}
-%{python_expand # define python version for test:
-export PYTHON3="$python"
-%make_build test3
-}
-%endif
+# cyclic dependency between html5lib and lxml
+rm -v src/lxml/html/tests/test_html5parser.py
+%{python_expand PYTHON3="$python" %make_build test3}
 
 %install
 %python_install

@@ -996,4 +996,13 @@ Send to Staging:E.
   * Built with Cython 0.29.36 to adapt to changes in Python 3.12.</comment>
     <requestid>1103711</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>ace179b922d6696d5a9bad1c87d173c0</srcmd5>
+    <version>4.9.3</version>
+    <time>1694113926</time>
+    <user>anag+factory</user>
+    <comment>- skip html5lib tests - cyclic dependency with html5lib tests
+- remove python 2.x from testing</comment>
+    <requestid>1109332</requestid>
+  </revision>
 </revisionlist>
