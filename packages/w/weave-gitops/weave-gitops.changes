@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Wed Sep 06 15:45:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.31.2:
+  * Update README to point download link to 0.31.2
+  * Update docs for release 0.31.2
+  * Update the helm reference
+  * Update helm chart to 4.0.29 to use gitops 0.31.2
+  * Update javascript library version to 0.31.2
+  * add timeout for yarn (#3975)
+
+-------------------------------------------------------------------
+Wed Sep 06 15:38:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.31.1:
+  * Update README to point download link to 0.31.1
+  * Update docs for release 0.31.1
+  * Update the helm reference
+  * Update helm chart to 4.0.29 to use gitops 0.31.1
+  * Update javascript library version to 0.31.1
+  * add timeout for yarn (#3972)
+
+-------------------------------------------------------------------
+Wed Sep 06 15:33:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.31.0:
+  * Update README to point download link to 0.31.0
+  * Update docs for release 0.31.0
+  * Update the helm reference
+  * Update helm chart to 4.0.29 to use gitops 0.31.0
+  * Update javascript library version to 0.31.0
+  * JWT cookie fetcher converted to session storage. (#3946)
+  * Bump @adobe/css-tools from 4.0.1 to 4.3.1 (#3969)
+  * fix: Bump client-go version to address discovery client panic
+    https://github.com/weaveworks/weave-gitops/issues/3960
+  * updated flux upgrade doc link
+  * Update .github/workflows/prepare-release.yaml
+  * moving flux compatibility table last and setting only flux ga
+  * adding flux compatibility section to the release notes so we
+    provide that info to our users
+  * Improve feedback to user when objects aren't retrieved due to
+    RBAC  (#3667)
+  * Fixes issues raised by `yarn audit`
+  * Re-run `yarn import` on a clean npm installation
+  * Upgrade typescript to avoid typecheck errors from node_modules
+  * Use yarn import for direct dep translation from npm
+  * Change CI jobs to yarn
+  * Fixing linting errors
+  * Convert to yarn for package management
+  * fix: Moved security policy to the right place
+  * docs: Add SECURITY.md
+  * User docs cleanup (#3964)
+  * Add Flex with breakpoint prop (#3953)
+  * Add Azure-related pages to user docs (#3921)
+  * update snapshots
+  * remove extra border in disable state in sync button
+  * refactor style to be border color only
+  * update border color and remove button style
+  * User docs changes in WGE install guide, cluster mgmt pages
+    (#3955)
+  * Anonymous / No-auth mode (#3958)
+  * remove unused test objects
+  * return nil instead of the blank array
+  * add a test for the case of blank inventory
+  * fix npe when inventory object is nil
+  * update Table snapshot
+  * update row bottom border color for dark mode
+  * helmrepository api version is v1beta2 not v1
+  * Weave GitOps Enterprise v0.30.0 Release Notes (#3954)
+  * add new primary color to palette
+  * Add DCO and mention DCO in contribution guide
+  * Set static height on signin footer
+
+-------------------------------------------------------------------
+Wed Sep 06 15:30:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.30.0:
+  * Update README to point download link to 0.30.0
+  * Update docs for release 0.30.0
+  * Update the helm reference
+  * Update helm chart to 4.0.28 to use gitops 0.30.0
+  * Update javascript library version to 0.30.0
+  * update severity font size and edit violated policy column
+    (#3938)
+  * Implement release locking to avoid publishing helm chart before
+    container image  (#3940)
+  * remove titles from detail pages for design (#3939)
+  * Fixes WGE username field in installation guide (#3942)
+  * Fixes github-oauth link in Install WGE page (#3941)
+  * WGE install pages updates (#3924)
+  * Added incident report for latest v0.29 out of ordering artefact
+    pubishing (#3937)
+  * Standardize Alert icon
+  * Add batch error handling to Notifications page
+  * Add redirect for another orphaned docs page
+  * filter out dupe error messages (#3927)
+  * Add redirects for orphanes website pages
+  * Fix version in tf getting started guide (#3932)
+  * Updates user guide page names and links (#3904)
+  * Update docs with verified status (#3894)
+  * UI token refreshing (#3842)
+  * Update Flux GA guide
+  * added wge v0.29 release notes
+  * Update video on main docs page
+  * Harden pipeline pull-request promotions security documentation
+    and recommendations (#3540)
+  * Bump tough-cookie from 4.0.0 to 4.1.3
+
+-------------------------------------------------------------------
 Thu Aug 03 17:46:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.29.0:
