@@ -567,4 +567,12 @@ Features
   Eliminates the need for source package links in OBS.</comment>
     <requestid>1105588</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>00e5a8053cb0b99f472bb4652710f5f1</srcmd5>
+    <version>1.18.0</version>
+    <time>1694113940</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.18.0:</comment>
+    <requestid>1109502</requestid>
+  </revision>
 </revisionlist>

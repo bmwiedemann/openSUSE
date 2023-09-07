@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Sep  7 08:03:33 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.18.0:
+  * Features:
+    - Аdd a metric about the maximum number of collisions in lrushah.
+    - Set max-udp-size default to 1232. This is the same default value
+      as the default value for edns-buffer-size. It restricts client
+      edns buffer size choices, and makes unbound behave similar to
+      other DNS resolvers.
+    - Add harden-unknown-additional option. It removes unknown records
+      from the authority section and additional section.
+    - Added new static zone type block_a to suppress all A queries for
+      specific zones.
+    - [FR] Ability to use Redis unix sockets.
+    - [FR] Ability to set the Redis password.
+    - Features/dropqueuedpackets, with sock-queue-timeout option that
+      drops packets that have been in the socket queue for too long.
+      Added statistics num.queries_timed_out and query.queue_time_us.max
+      that track the socket queue timeouts.
+    - 'eqvinox' Lamparter: NAT64 support.
+    - [FR] Use kernel timestamps for dnstap.
+    - Add cachedb hit stat. Introduces 'num.query.cachedb' as a new
+      statistical counter.
+    - Add SVCB dohpath support.
+    - Add validation EDEs to queries where the CD bit is set.
+    - Add prefetch support for subnet cache entries.
+    - Add EDE (RFC8914) caching.
+    - Add support for EDE caching in cachedb and subnetcache.
+    - Downstream DNS Server Cookies a la RFC7873 and RFC9018. Create server
+      cookies for clients that send client cookies. This needs to be explicitly
+      turned on in the config file with: `answer-cookie: yes`.
+  * Bug Fixes
+    - Response change to NODATA for some ANY queries since 1.12.
+    - Fix not following cleared RD flags potentially enables
+      amplification DDoS attacks.
+    - Set default for harden-unknown-additional to no. So that it
+      does not hamper future protocol developments.
+    - Fix to ignore entirely empty responses, and try at another authority.
+      This turns completely empty responses, a type of noerror/nodata into
+      a servfail, but they do not conform to RFC2308, and the retry can fetch
+      improved content.
+    - Allow TTL refresh of expired error responses.
+    - Fix: Unexpected behavior with client-subnet-always-forward and serve-expired
+    - Fix unbound-dnstap-socket test program to reply the finish frame over
+      a TLS connection correctly.
+    - Fix: reserved identifier violation
+    - Fix: Unencrypted query is sent when forward-tls-upstream: yes is used
+      without tls-cert-bundle
+    - Extra consistency check to make sure that when TLS is requested,
+      either we set up a TLS connection or we return an error.
+    - Fix: NXDOMAIN instead of NOERROR rcode when asked for existing CNAME record.
+    - Fix: Bad interaction with 0 TTL records and serve-expired
+    - Fix RPZ IP responses with trigger rpz-drop on cache entries.
+    - Fix RPZ removal of client-ip, nsip, nsdname triggers from IXFR.
+    - Fix dereference of NULL variable warning in mesh_do_callback.
+    - Fix ip_ratelimit test to work with dig that enables DNS cookies.
+    - Fix for iter_dec_attempts that could cause a hang, part of capsforid
+      and qname minimisation, depending on the settings.
+    - Fix uninitialized memory passed in padding bytes of cmsg to sendmsg.
+    - Fix stat_values test to work with dig that enables DNS cookies.
+    - unbound.service: Main process exited, code=killed, status=11/SEGV.
+      Fixes cachedb configuration handling.
+    - Fix: processQueryResponse() THROWAWAY should be mindful of fail_reply.
+
+-------------------------------------------------------------------
 Thu Aug 24 10:07:02 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - openSUSE:Factory libunbound-devel-mini flavor is configured to
