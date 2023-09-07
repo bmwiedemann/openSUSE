@@ -1529,4 +1529,12 @@
   git to fix tests with newer dependency versions</comment>
     <requestid>1095481</requestid>
   </revision>
+  <revision rev="64" vrev="8">
+    <srcmd5>8b5728ad48e0bd6231b8da1391069624</srcmd5>
+    <version>22.10.0</version>
+    <time>1694113964</time>
+    <user>anag+factory</user>
+    <comment>    + drops CVE-2022-39348-do-not-echo-host-header.patch in older dists</comment>
+    <requestid>1109330</requestid>
+  </revision>
 </revisionlist>
