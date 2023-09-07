@@ -585,4 +585,14 @@ The license in the LICENSE file is ISC, not MIT (http://www.spdx.org/licenses/IS
   * wireless-regdb: Update regulatory rules for Egypt (EG) from March 2022 guidelines</comment>
     <requestid>1101167</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>8ce58d9a21e8776d714b4b11a86de4bc</srcmd5>
+    <version>20230901</version>
+    <time>1694113937</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20230901:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: Update regulatory rules for Australia (AU) for June 2023</comment>
+    <requestid>1109459</requestid>
+  </revision>
 </revisionlist>
