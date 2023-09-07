@@ -18,13 +18,15 @@
 
 
 Name:           timeshift
-Version:        22.11.2
+Version:        23.07.1
 Release:        0
 Summary:        System restore utility
 License:        GPL-3.0-only
 URL:            https://github.com/linuxmint/timeshift
 Source0:        https://codeload.github.com/linuxmint/timeshift/tar.gz/refs/tags/%{version}#/%{name}-%{version}.tar.gz
 BuildRequires:  chrpath
+BuildRequires:  help2man
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
@@ -33,6 +35,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(polkit-agent-1)
 BuildRequires:  pkgconfig(vte-2.91)
+BuildRequires:  pkgconfig(xapp)
 Requires:       rsync
 #Lets just recommend for btrfs as more likely used with other filesystems
 Recommends:     btrfsprogs
@@ -47,12 +50,15 @@ using BTRFS tools.
 
 %prep
 %autosetup -p1
+# rpmlint
+sed -i -e 's|/usr/bin/env bash|/usr/bin/bash|g' src/timeshift-launcher
 
 %build
-make -j1 V=1
+%meson -Dxapp=false
+%meson_build
 
 %install
-%make_install
+%meson_install
 #Cleanup rpath references
 chrpath --delete %{buildroot}%{_bindir}/timeshift
 chrpath --delete %{buildroot}%{_bindir}/timeshift-gtk
@@ -71,13 +77,14 @@ install -d %{buildroot}%{_localstatedir}/log/timeshift-btrfs
 %find_lang %{name} %{?no_lang_C}
 
 %files
-%license LICENSE.md
+%license LICENSES/*
 %dir %{_sysconfdir}/timeshift
 %config(noreplace) %{_sysconfdir}/timeshift/default.json
 %{_bindir}/timeshift*
 %{_datadir}/applications/timeshift-gtk.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 %{_mandir}/man1/timeshift.1%{?ext_man}
+%{_mandir}/man1/timeshift-gtk.1%{?ext_man}
 %{_datadir}/metainfo/timeshift.appdata.xml
 %{_datadir}/polkit-1/actions/in.teejeetech.pkexec.timeshift.policy
 %{_datadir}/pixmaps/timeshift.png
