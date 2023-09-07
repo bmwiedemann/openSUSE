@@ -134,4 +134,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1100171</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d97d94d9bc661e46929b7fe38d463a53</srcmd5>
+    <version>2.3.0</version>
+    <time>1694113997</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.3.0:
+  * Improve style of prompts using `rich` (#1901) @vemonet
+  * Fix replay (#1904) @vemonet
+  * Support multichoice overwrite (#1903) @Meepit
+- Switch to pyproject macro.</comment>
+    <requestid>1109385</requestid>
+  </revision>
 </revisionlist>

@@ -19,37 +19,34 @@
 
 %{?sle15_python_module_pythons}
 Name:           cookiecutter
-Version:        2.2.3
+Version:        2.3.0
 Release:        0
 Summary:        A command-line utility that creates projects from project templates
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/audreyr/cookiecutter
 Source:         https://github.com/cookiecutter/cookiecutter/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # recent versions are not published on PyPI: https://github.com/cookiecutter/cookiecutter/issues/1636
 #Source:         https://files.pythonhosted.org/packages/source/c/cookiecutter/cookiecutter-%%{version}.tar.gz
 Source1:        ccext.py
 BuildRequires:  %{python_module Jinja2 >= 2.7 with %python-Jinja2 < 4}
+BuildRequires:  %{python_module arrow}
 BuildRequires:  %{python_module binaryornot >= 0.2.0}
 BuildRequires:  %{python_module click >= 7 with %python-click < 9}
-BuildRequires:  %{python_module future >= 0.15.2}
-BuildRequires:  %{python_module jinja2-time >= 0.1.0}
-BuildRequires:  %{python_module poyo >= 0.1.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-slugify}
+BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module whichcraft >= 0.4.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       git-core
 Requires:       python-PyYAML
+Requires:       python-arrow
 Requires:       python-binaryornot >= 0.2.0
-Requires:       python-future >= 0.15.2
-Requires:       python-jinja2-time >= 0.1.0
-Requires:       python-poyo >= 0.1.0
 Requires:       python-python-slugify
 Requires:       python-requests >= 2.18.0
-Requires:       python-whichcraft >= 0.4.0
+Requires:       python-rich
 Requires:       (python-Jinja2 >= 2.7 with python-Jinja2 < 4)
 Requires:       (python-click >= 7 with python-click < 9)
 Requires(post): update-alternatives
@@ -105,14 +102,14 @@ cp %{SOURCE1} docs
 rm setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 pushd docs
 sphinx-build -b html -d .build/doctrees . _build/html
 rm _build/html/.buildinfo
 popd
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/cookiecutter
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # the doc directive in the files section cannot deduplicate, so do it manually
@@ -140,7 +137,7 @@ export LANG=en_US.UTF-8
 %license LICENSE
 %python_alternative cookiecutter
 %{python_sitelib}/cookiecutter
-%{python_sitelib}/cookiecutter-%{version}*-info
+%{python_sitelib}/cookiecutter-%{version}.dist-info
 
 %files -n cookiecutter-doc
 %license LICENSE

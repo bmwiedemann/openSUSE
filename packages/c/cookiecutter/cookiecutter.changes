@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  7 05:19:46 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.0:
+  * Improve style of prompts using `rich` (#1901) @vemonet
+  * Fix replay (#1904) @vemonet
+  * Support multichoice overwrite (#1903) @Meepit
+- Switch to pyproject macro.
+
+-------------------------------------------------------------------
 Sun Jul 16 09:58:27 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2.2.3:
