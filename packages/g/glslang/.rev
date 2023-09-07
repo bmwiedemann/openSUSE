@@ -358,4 +358,12 @@
     <comment>- Update to release 12.3.1+SDK-1.3.261.0</comment>
     <requestid>1105516</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>ef9dd6b6ab5a5eb5db657281f3789e69</srcmd5>
+    <version>13.0.0</version>
+    <time>1694113929</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 13</comment>
+    <requestid>1109372</requestid>
+  </revision>
 </revisionlist>

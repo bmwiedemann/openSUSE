@@ -16,16 +16,16 @@
 #
 
 
-%define lname libglslang12
+%define lname libglslang13
 Name:           glslang
-Version:        12.3.1+sdk261
+Version:        13.0.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 #Git-URL:	https://github.com/KhronosGroup/glslang
-Source:         https://github.com/KhronosGroup/glslang/archive/sdk-1.3.261.0.tar.gz
+Source:         https://github.com/KhronosGroup/glslang/archive/%version.tar.gz
 Source3:        baselibs.conf
 Patch1:         0001-Revert-CMake-Make-glslang-default-resource-limits-ST.patch
 BuildRequires:  bison
@@ -81,7 +81,7 @@ This package contains additional headers that are not officially installed,
 but which some downstream packages rely on.
 
 %prep
-%autosetup -p1 -n %name-sdk-1.3.261.0
+%autosetup -p1
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
@@ -132,7 +132,7 @@ done
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/*.so.12*
+%_libdir/*.so.13*
 
 %files devel -f devel.files
 %_bindir/gls*
