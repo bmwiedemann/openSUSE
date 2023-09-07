@@ -70,8 +70,11 @@ if ! (grep -q opensuse /usr/lib/os-release || grep -q opensuse /etc/os-release);
   register_target: "sle-$MAJOR_VER-x86_64"
   version: "$MAJOR_VER.$SP_VER"
 EOF
-  zypper --non-interactive rm -u wsl-appx
 fi
+
+# Always remove wsl-appx so future rebuilds of that package
+#   don't cause zypper dup conflict
+zypper --non-interactive rm -u wsl-appx
 
 # Remove zypp uuid (bsc#1098535)
 rm -f /var/lib/zypp/AnonymousUniqueId

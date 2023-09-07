@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 30 17:19:42 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Always remove wsl-appx so future rebuilds of that package don't
+  cause zypper dup conflict
+
+-------------------------------------------------------------------
 Tue Aug 22 15:03:36 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating _service file for OS_PRETTY_NAME_BEFORE_PAREN_DASHED
