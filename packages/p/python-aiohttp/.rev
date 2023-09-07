@@ -336,4 +336,18 @@
     <comment></comment>
     <requestid>1104927</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>e8d4d24a3d5f9c199ae1e5b7d441bc23</srcmd5>
+    <version>3.8.5</version>
+    <time>1694113966</time>
+    <user>anag+factory</user>
+    <comment>- Update in SLE-15 (bsc#1197831)
+
+- Update to 3.7.4 (bsc#1184745, CVE-2021-21330):
+  * obsoletes CVE-2021-21330.patch in older dists
+  * Fixes https://github.com/aio-libs/aiohttp/security/advisories/GHSA-v6wp-4m6f-gcjg
+
+- Include in SLE-15 (bsc#1176785, jsc#ECO-3105, jsc#PM-2352)</comment>
+    <requestid>1109336</requestid>
+  </revision>
 </revisionlist>

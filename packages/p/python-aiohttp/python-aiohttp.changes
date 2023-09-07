@@ -99,6 +99,11 @@ Sat Sep 24 11:07:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
     property return type declaration.
 
 -------------------------------------------------------------------
+Wed May  4 11:35:43 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update in SLE-15 (bsc#1197831)
+
+-------------------------------------------------------------------
 Sun Mar 27 19:01:09 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add ignore-pytest-deprecationwarning.patch
@@ -337,7 +342,14 @@ Thu May 13 21:58:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Sun Feb 28 13:09:40 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
-- Update to 3.7.4 - no upstream changelog available
+- Update to 3.7.4 (bsc#1184745, CVE-2021-21330):
+  * obsoletes CVE-2021-21330.patch in older dists
+  * Fixes https://github.com/aio-libs/aiohttp/security/advisories/GHSA-v6wp-4m6f-gcjg
+
+-------------------------------------------------------------------
+Mon Feb  8 10:55:58 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Include in SLE-15 (bsc#1176785, jsc#ECO-3105, jsc#PM-2352)
 
 -------------------------------------------------------------------
 Sun Dec 20 08:22:59 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
