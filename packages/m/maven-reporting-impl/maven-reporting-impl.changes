@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  6 22:31:19 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove unnecessary dependency on xmvn tools and parent pom
+
+-------------------------------------------------------------------
 Fri Mar 11 07:02:31 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.1.0
