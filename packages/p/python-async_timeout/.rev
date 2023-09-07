@@ -66,4 +66,15 @@
     <comment></comment>
     <requestid>1082000</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>85f181fc54d6ae1997e9dd8312046961</srcmd5>
+    <version>4.0.3</version>
+    <time>1694113942</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.0.3:
+  * Fixed compatibility with asyncio.timeout() on Python 3.11+.
+  * Added support for Python 3.11.
+  * Dropped support for Python 3.6.</comment>
+    <requestid>1109504</requestid>
+  </revision>
 </revisionlist>

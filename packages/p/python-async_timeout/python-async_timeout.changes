@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  7 10:48:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.3:
+  * Fixed compatibility with asyncio.timeout() on Python 3.11+.
+  * Added support for Python 3.11.
+  * Dropped support for Python 3.6.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:22:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
