@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  6 16:02:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.58
+  * Build system updates
+  * ruby extension: remove unnecessary background thread startup
+    wait logic that interferes with forking
+
+-------------------------------------------------------------------
 Wed Aug  9 01:02:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.57

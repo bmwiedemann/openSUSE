@@ -492,4 +492,12 @@ Note: In my home project this only builds on Factory/Tumbleweed. (forwarded requ
     <comment>- Update to release 1.57</comment>
     <requestid>1103055</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>3fbfb83d2a602670c1a8d61b38c7ddeb</srcmd5>
+    <version>1.58.0</version>
+    <time>1694113923</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.58</comment>
+    <requestid>1109312</requestid>
+  </revision>
 </revisionlist>

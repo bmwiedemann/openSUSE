@@ -16,11 +16,11 @@
 #
 
 
-%define lver 34
-%define lverp 1_57
+%define lver 35
+%define lverp 1_58
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.57.0
+Version:        1.58.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -185,6 +185,7 @@ cp -r * "%buildroot/%src_install_dir"
 %_libdir/libaddress_sorting.so.%{lver}*
 %_libdir/libgpr*.so.%{lver}*
 %_libdir/libgrpc*.so.%{lver}*
+%_libdir/libutf8_range_lib.so.%{lver}*
 
 %files -n libgrpc%lverp
 %_libdir/libgrpc_authorization_provider.so.1.*
