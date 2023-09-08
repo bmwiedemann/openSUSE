@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Sep  6 15:52:41 UTC 2023 - Kirk Allan <kallan@suse.com>
+
+- Update to 12.3.0 (build 22234872) (boo#1214850)
+  - There are no new features in the open-vm-tools 12.3.0 release. This is
+    primarily a maintenance release that addresses a few critical problems,
+    including:
+    - This release integrates CVE-2023-20900 without the need for a patch.
+      For more information on this vulnerability and its impact on VMware
+      products, see
+      https://www.vmware.com/security/advisories/VMSA-2023-0019.html.
+    - A tools.conf configuration setting is available to temporaily direct
+      Linux quiesced snaphots to restore pre open-vm-tools 12.2.0 behavior
+      of ignoring file systems already frozen.
+    - Building of the VMware Guest Authentication Service (VGAuth) using
+      "xml-security-c" and "xerces-c" is being deprecated.
+    - A number of Coverity reported issues have been addressed.
+    - A number of GitHub issues and pull requests have been handled.
+      Please see the Resolves Issues section of the Release Notes.
+    - For issues resolved in this release, see the Resolved Issues section
+      of the Release Notes.
+  - For complete details, see:
+    https://github.com/vmware/open-vm-tools/releases/tag/stable-12.3.0
+  - Release Notes are available at
+    https://github.com/vmware/open-vm-tools/blob/stable-12.3.0/ReleaseNotes.md
+  - The granular changes that have gone into the 12.3.0 release are in the
+    ChangeLog at
+    https://github.com/vmware/open-vm-tools/blob/stable-12.3.0/open-vm-tools/ChangeLog
+
+- Fix (bsc#1205927) - hv_vmbus module is loaded unnecessarily in VMware guests
+
+- jsc-PED-1344 - reinable building containerinfo plugin for SLES 15 SP4.
+
+- Drop patch now contained in 12.3.0:
+  + 0001-build-put-l-specifiers-into-LIBADD-not-LDFLAGS.patch
+  + 0002-build-use-grpc-pkgconfig-to-retrieve-flags-libraries.patch
+  + 2023-20867-Remove-some-dead-code.patch
+  + CVE-20230-20900.patch
+
+-------------------------------------------------------------------
 Mon Aug 28 15:10:27 UTC 2023 - Kirk Allan <kallan@suse.com>
 
 - Fix (bsc#1214566) - (CVE-2023-20900) - VUL-0: CVE-2023-20900:

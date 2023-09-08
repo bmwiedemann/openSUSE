@@ -38,7 +38,7 @@
 %define with_X 1
 
 Name:           open-vm-tools
-Version:        12.2.0
+Version:        12.3.0
 Release:        0
 Summary:        Open Virtual Machine Tools
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -69,7 +69,7 @@ BuildRequires:  pam-devel
 BuildRequires:  pcre-devel
 BuildRequires:  procps-devel
 BuildRequires:  update-desktop-files
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 BuildRequires:  containerd-devel
 BuildRequires:  grpc-devel
 BuildRequires:  libcurl-devel
@@ -106,7 +106,11 @@ BuildRequires:  pkgconfig(libudev)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0120300
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig(xmlsec1)
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0150400
+Requires:       libxmlsec1-openssl1 >= 1.2.37
+%else
 Requires:       libxmlsec1-openssl1 >= 1.2.28
+%endif
 %define         arg_xmlsec1 --enable-xmlsec1
 %else
 # Leap 42.1 and 42.2 supports xmlsec1 and libxmlsec1-openssl1 but 12 SP1 and
@@ -153,10 +157,6 @@ Obsoletes:      open-vm-tools-deploypkg <= 10.0.5
 Supplements:    modalias(pci:v000015ADd*sv*sd*bc*sc*i*)
 ExclusiveArch:  %ix86 x86_64 aarch64
 #Upstream patches
-Patch2:         0001-build-put-l-specifiers-into-LIBADD-not-LDFLAGS.patch
-Patch3:         0002-build-use-grpc-pkgconfig-to-retrieve-flags-libraries.patch
-Patch4:         2023-20867-Remove-some-dead-code.patch
-Patch5:         CVE-20230-20900.patch
 
 #SUSE specific patches
 Patch0:         pam-vmtoolsd.patch
@@ -243,7 +243,7 @@ Requires:       libvmtools0 = %{version}
 Those are the development headers for libvmtools. They are needed
 if you intend to create own plugins for vmtoolsd.
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %package        containerinfo
 Summary:        Container Info Plugin
 Group:          System Environment/Libraries
@@ -259,10 +259,6 @@ This package interfaces with the container runtime to retrieve a list of contain
 # fix for an rpmlint warning regarding wrong line feeds
 sed -i -e "s/\r//" README
 #Upstream patches
-%patch2 -p2
-%patch3 -p2
-%patch4 -p2
-%patch5 -p2
 
 #SUSE specific patches
 %patch0 -p2
@@ -318,6 +314,10 @@ make
 %install
 %make_install
 
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+mkdir -p  %buildroot%_modulesloaddir
+echo vmw_vsock_vmci_transport > %buildroot%_modulesloaddir/vmw_vsock_vmci_transport.conf
+%endif
 mkdir -p  %{buildroot}%{_sbindir}
 
 # Remove exec bit from config files
@@ -457,7 +457,7 @@ systemctl try-restart vmtoolsd.service || :
 
 %postun -n libvmtools0 -p /sbin/ldconfig
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %post containerinfo
 systemctl try-restart vmtoolsd.service || :
 
@@ -466,6 +466,9 @@ systemctl try-restart vmtoolsd.service || :
 %endif
 
 %files
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+%_modulesloaddir/vmw_vsock_vmci_transport.conf
+%endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0120300
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
@@ -590,7 +593,7 @@ systemctl try-restart vmtoolsd.service || :
 %{_includedir}/libDeployPkg
 %{_libdir}/pkgconfig/libDeployPkg.pc
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %files containerinfo
 %{_libdir}/%{name}/plugins/vmsvc/libcontainerInfo.so
 %endif
