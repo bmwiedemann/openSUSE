@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep  7 15:46:45 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.64
+  * Bugfix: A buffer overrun would occur if MOD2WAVFREQUENCY was
+    set higher than FREQUENCY in protracker.ini while using
+    MOD2WAV.
+  * Right mouse button can now be held down while scrolling in
+    Pos Ed. for faster scrolling speeds (forgot to implement this).
+- Update to version 1.63
+  * When loading raw samples, use the filename as the sample name.
+
+-------------------------------------------------------------------
 Tue Aug 29 15:01:15 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.62:
