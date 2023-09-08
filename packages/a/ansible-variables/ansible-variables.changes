@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep  8 04:40:19 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.5.1:
+  Bug Fixes
+  * passing undefined variable to --var will lead to Exception
+    ([#30](https://github.com/hille721/ansible-variables/issues/30))
+
+-------------------------------------------------------------------
 Wed May 24 16:42:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase for descriptions; update descriptions altogether

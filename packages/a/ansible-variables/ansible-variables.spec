@@ -1,5 +1,5 @@
 #
-# spec file for package python-ansible-variables
+# spec file for package ansible-variables
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -38,27 +38,27 @@
 %endif
 
 Name:           ansible-variables
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Tool to show origin of Ansible host context variables
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 URL:            https://github.com/hille721/ansible-variables
 # the PyPI tarball does not contain all files required for the tests
 Source:         https://github.com/hille721/ansible-variables/archive/v%{version}/ansible-variables-%{version}.tar.gz#/ansible-variables-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  %{ansible_python}-wheel
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  ansible-core >= 2.11.0
 BuildRequires:  %{ansible_python}-pytest
 BuildRequires:  %{ansible_python}-rich
 # /SECTION
 BuildRequires:  fdupes
-Requires:       ansible-core >= 2.11.0
 Requires:       %{ansible_python}-rich
+Requires:       ansible-core >= 2.11.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 
 %description
