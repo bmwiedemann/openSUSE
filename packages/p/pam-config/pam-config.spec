@@ -17,7 +17,7 @@
 
 
 Name:           pam-config
-Version:        2.5
+Version:        2.8
 Release:        0
 Summary:        Utility to modify common PAM configuration files
 License:        GPL-2.0-only
@@ -61,12 +61,6 @@ fi
 %postun
 if [ $1 = 0 ]; then
   # Deinstall
-  dir=%{_sysconfdir}/security
-  for conf in pam_unix2.conf pam_pwcheck.conf ; do
-    if [ -f $dir/$conf.pam-config-backup -a ! -f $dir/$conf ]; then
-      mv -v $dir/$conf.pam-config-backup $dir/$conf
-    fi
-  done
   dir=%{_sysconfdir}/pam.d
   for pamd in common-account common-auth common-password common-session ; do
     if [ -f $dir/$pamd.pam-config-backup -a -L $dir/$pamd ]; then
@@ -79,8 +73,7 @@ if [ $1 = 0 ]; then
   done
 fi
 
-%triggerpostun -- pam-modules
-[ $2 = 0 ] || exit 0
+%posttrans
 pam-config --debug --update ||:
 
 %files -f pam-config.lang

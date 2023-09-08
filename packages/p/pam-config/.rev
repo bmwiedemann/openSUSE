@@ -761,4 +761,22 @@
     <comment></comment>
     <requestid>1080905</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>2552312f160218536db1f593c973d113</srcmd5>
+    <version>2.8</version>
+    <time>1694200497</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.8
+  - Replace aad module with himmelblau
+
+- Update to version 2.7
+  - Add support for aad module
+
+- Update to version 2.6
+  - Remove pam_cracklib from config even if no successor is installed
+- Run update in %posttrans after all other PAM modules got
+  installed/removed
+- Both are required for [bsc#1214885]</comment>
+    <requestid>1109700</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep  8 09:01:18 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.8
+  - Replace aad module with himmelblau
+
+-------------------------------------------------------------------
+Thu Sep  7 11:42:28 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.7
+  - Add support for aad module
+
+-------------------------------------------------------------------
+Wed Sep  6 14:53:33 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.6
+  - Remove pam_cracklib from config even if no successor is installed
+- Run update in %posttrans after all other PAM modules got
+  installed/removed
+- Both are required for [bsc#1214885]
+
+-------------------------------------------------------------------
 Wed Apr 12 12:58:30 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.5
