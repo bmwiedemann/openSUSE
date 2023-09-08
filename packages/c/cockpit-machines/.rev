@@ -125,4 +125,15 @@
 - deps.patch: fix esbuild dependency</comment>
     <requestid>1105065</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>445b512b060432042b08e9cee280146d</srcmd5>
+    <version>298</version>
+    <time>1694200573</time>
+    <user>anag+factory</user>
+    <comment>- Update to 298:
+  * bug and stability improvements
+  * Don't use localhost as default source for PXE installation
+- deps.patch: upstreamed, removed</comment>
+    <requestid>1109730</requestid>
+  </revision>
 </revisionlist>

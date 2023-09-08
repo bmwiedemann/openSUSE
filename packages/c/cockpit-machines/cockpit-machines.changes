@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep  8 13:32:04 UTC 2023 - Adam Majer <adam.majer@suse.de> - 298
+
+- Update to 298:
+  * bug and stability improvements
+  * Don't use localhost as default source for PXE installation
+- deps.patch: upstreamed, removed
+
+-------------------------------------------------------------------
 Mon Aug 21 11:57:18 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Update to 296:
