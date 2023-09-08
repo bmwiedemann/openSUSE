@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-core
-Version:        2.15.2
+Version:        2.15.3
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -68,6 +68,9 @@ BuildRequires:  %{ansible_python}-pytz
 # https://github.com/ansible/ansible/blob/devel/requirements.txt
 BuildRequires:  (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 1.1.0)
 # /SECTION
+# SECTION docs
+BuildRequires:  %{ansible_python}-docutils
+# /SECTION
 Requires:       %{ansible_python}-Jinja2 >= 3.0.0
 Requires:       %{ansible_python}-PyYAML >= 5.1
 Requires:       %{ansible_python}-cryptography
@@ -75,6 +78,9 @@ Requires:       %{ansible_python}-packaging
 # https://github.com/ansible/ansible/blob/devel/requirements.txt
 # importlib_resources not required, as we are using python 3.10 or higher
 Requires:       (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 1.1.0)
+
+# ansible-documentation is a separate package since 2.15.3
+Recommends:     ansible-documentation
 
 %description
 Ansible is a radically simple IT automation system. It handles
@@ -116,15 +122,15 @@ find ./ -type f -exec \
 %build
 %python_build
 
+mkdir man1
+%{ansible_python_executable} packaging/cli-doc/build.py man --output-dir ./man1
+
 %install
 %python_install
 %fdupes %{buildroot}%{ansible_python_sitelib}
 
 mkdir -p %{buildroot}%{_sysconfdir}/ansible/
-cp examples/hosts %{buildroot}%{_sysconfdir}/ansible/
-cp examples/ansible.cfg %{buildroot}%{_sysconfdir}/ansible/
 mkdir -p %{buildroot}/%{_mandir}/man1/
-cp -v docs/man/man1/*.1 %{buildroot}/%{_mandir}/man1/
 mkdir -p %{buildroot}/%{_datadir}/ansible
 
 # Create system directories that Ansible defines as default locations in
@@ -172,19 +178,15 @@ sed -i "1{/python3/d;}" %{buildroot}/%{ansible_python_sitelib}/ansible/cli/*.py
 sed -i "1{/python3/d;}" %{buildroot}/%{ansible_python_sitelib}/ansible/cli/scripts/ansible_connection_cli_stub.py
 sed -i "1{/python3/d;}" %{buildroot}/%{ansible_python_sitelib}/ansible/modules/hostname.py
 
-cp examples/hosts %{buildroot}%{_sysconfdir}/ansible/
-cp examples/ansible.cfg %{buildroot}%{_sysconfdir}/ansible/
 mkdir -p %{buildroot}/%{_mandir}/man1/
-cp -v docs/man/man1/*.1 %{buildroot}/%{_mandir}/man1/
-
-cp -pr docs/docsite/rst .
+cp -v ./man1/*.1 %{buildroot}/%{_mandir}/man1/
 
 %check
 # NEVER ship untested pure python packages. Enable this before the final submit.
 #python3 bin/ansible-test units -v --python %%{python3_version}
 
 %files
-%doc README.rst changelogs/CHANGELOG-v2.15.rst changelogs/CHANGELOG.rst changelogs/changelog.yaml
+%doc changelogs/CHANGELOG-v2.15.rst changelogs/changelog.yaml
 %license COPYING licenses/Apache-License.txt licenses/MIT-license.txt licenses/PSF-license.txt licenses/simplified_bsd.txt
 %{_bindir}/ansible
 %{_bindir}/ansible-config
@@ -208,9 +210,8 @@ cp -pr docs/docsite/rst .
 %{_mandir}/man1/ansible-playbook.1%{?ext_man}*
 %{_mandir}/man1/ansible-pull.1%{?ext_man}*
 %{_mandir}/man1/ansible-vault.1%{?ext_man}*
+
 %dir %{_sysconfdir}/ansible
-%config(noreplace) %{_sysconfdir}/ansible/ansible.cfg
-%config(noreplace) %{_sysconfdir}/ansible/hosts
 %{_datadir}/ansible/
 
 %files -n ansible-test
