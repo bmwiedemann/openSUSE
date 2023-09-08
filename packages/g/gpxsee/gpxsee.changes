@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep  7 22:22:05 CEST 2023 - tumic@cbox.cz
+
+- Update to version 13.8
+  * Added support for ENC atlases (catalogues).
+  * Fixed broken "Use styles" persistent configuration.
+  * Fixed broken opening of files from "content:" URLs (Android).
+
+-------------------------------------------------------------------
+Sun Aug 27 18:23:03 CEST 2023 - tumic@cbox.cz
+
+- Update to version 13.7
+  * Fixed/improved map info background rendering settings.
+  * Improved Mapsforge and ENC maps rendering.
+  * Switched to Android SDK 33.
+  * Added missing Windows quiet uninstaller entry.
+
+-------------------------------------------------------------------
 Sun Aug 13 13:24:32 CEST 2023 - tumic@cbox.cz
 
 - Update to version 13.6

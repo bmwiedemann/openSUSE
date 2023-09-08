@@ -1,3 +1,20 @@
+gpxsee (13.8) stable; urgency=low
+
+  * Added support for ENC atlases (catalogues).
+  * Fixed broken "Use styles" persistent configuration.
+  * Fixed broken opening of files from "content:" URLs (Android).
+
+ -- Martin Tuma <tumic@cbox.cz>  Thu, 07 Sep 2023 22:32:07 +0200
+
+gpxsee (13.7) stable; urgency=low
+
+  * Fixed/improved map info background rendering settings.
+  * Improved Mapsforge and ENC maps rendering.
+  * Switched to Android SDK 33.
+  * Added missing Windows quiet uninstaller entry.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 27 Aug 2023 18:27:57 +0200
+
 gpxsee (13.6) stable; urgency=low
 
   * Fixed Garmin GPI parser rejecting some valid files.
