@@ -57,4 +57,15 @@ There should be a rpmlint which whitelists this PAM module.</comment>
     <comment>- Add lastlog symlink for compatibility (forwarded request 1079199 from kukuk)</comment>
     <requestid>1079200</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5e9ec2680cd34de0835682b02896b4af</srcmd5>
+    <version>1.2.0</version>
+    <time>1694200496</time>
+    <user>anag+factory</user>
+    <comment>- Version 1.2.0
+  - show_lastlogin: Don't read if no database
+  - Fix -flto for clang
+  - Documentation fixes</comment>
+    <requestid>1109699</requestid>
+  </revision>
 </revisionlist>

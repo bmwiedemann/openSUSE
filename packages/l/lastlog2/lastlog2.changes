@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep  8 08:48:54 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Version 1.2.0
+  - show_lastlogin: Don't read if no database
+  - Fix -flto for clang
+  - Documentation fixes
+
+-------------------------------------------------------------------
 Thu Apr 13 12:38:05 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add lastlog symlink for compatibility
