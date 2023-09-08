@@ -130,4 +130,22 @@
     <comment></comment>
     <requestid>1081842</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9f6a83306c221d656bc3e7f523cd8160</srcmd5>
+    <version>0.11.2</version>
+    <time>1694200505</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.11.2:
+  * `Issue #80`_: match_files with negated path spec.
+    `pathspec.PathSpec.match_*()` now have a `negate` parameter
+    to make using *.gitignore* logic easier and more efficient.
+  * Add edge case: patterns that end with an escaped
+    space
+  * Negate with caret symbol as with the exclamation mark.
+
+- Update to version 0.10.3
+- Update to version 0.10.2:
+  * `Issue #43`_: Add support for addition operator</comment>
+    <requestid>1109524</requestid>
+  </revision>
 </revisionlist>

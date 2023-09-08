@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-pathspec
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Utility library for gitignore style pattern matching of file paths
 License:        MPL-2.0
