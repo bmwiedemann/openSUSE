@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-flit
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        Simplified packaging of Python modules
 License:        BSD-3-Clause
@@ -28,14 +28,14 @@ URL:            https://github.com/pypa/flit
 Source:         https://files.pythonhosted.org/packages/source/f/flit/flit-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module flit-core >= 3.8.0}
+BuildRequires:  %{python_module flit-core >= %{version}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module tomli-w}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docutils
-Requires:       python-flit-core >= 3.8.0
+Requires:       python-flit-core >= %{version}
 Requires:       python-requests
 Requires:       python-tomli-w
 Requires(post): update-alternatives

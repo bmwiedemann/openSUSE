@@ -1,7 +1,29 @@
 -------------------------------------------------------------------
+Thu Sep  7 10:50:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.0:
+  * New options :option:`flit build --use-vcs` and :option:`flit
+    build --no-use-vcs` to enable & disable including all
+    committed files in the sdist. For now --use-vcs is the
+    default, but this is likely to change in a
+    future version, to bring flit build in line with standard
+    build frontends like python -m build
+  * Sdist file names, and the name of the top-level folder in an
+    sdist, are now normalised, in accordance with PEP 625
+  * A statically defined version number can now be parsed from
+    files called version.py, _version.py or __version__.py inside
+    a packge, as well as from __init__.py, so executing code is
+    required in fewer cases
+  * Fix setting the flag for regular files in zip metadata
+  * The timestamp embedded in the gzip wrapper for sdists now
+    defaults to a fixed date, so building an sdist twice on the
+    same machine should produce identical results, even without
+    any special steps.
+
+-------------------------------------------------------------------
 Thu Aug 10 09:01:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- skip install tests for better interoperability with PEP 668 
+- skip install tests for better interoperability with PEP 668
 
 -------------------------------------------------------------------
 Wed May 10 06:11:46 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
