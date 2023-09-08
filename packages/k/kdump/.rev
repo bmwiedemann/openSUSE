@@ -1253,4 +1253,12 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
   * drop systemd device timeout generator</comment>
     <requestid>1105935</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>a97d88056025476be1837ff421a2b190</srcmd5>
+    <version>1.9.6</version>
+    <time>1694200494</time>
+    <user>anag+factory</user>
+    <comment>- update calibrate values, newly added SLE15-SP6 values</comment>
+    <requestid>1109265</requestid>
+  </revision>
 </revisionlist>
