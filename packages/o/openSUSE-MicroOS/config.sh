@@ -169,14 +169,18 @@ case "${kiwi_profiles}" in
 	*VirtualBox*) ignition_platform='virtualbox' ;;
 	*HyperV*) ignition_platform='metal'
 	          grub_cmdline+=('rootdelay=300') ;;
-	*Pine64*|*RaspberryPi*|*Rock64*|*Vagrant*|*onie*|*SelfInstall*) ignition_platform='metal' ;;
+	*Pine64*|*RaspberryPi*|*Rock64*|*Vagrant*|*onie*) ignition_platform='metal' ;;
+	# Use autodetection on selfinstall. The first boot doesn't use the grub
+	# cmdline anyway, it's started with kexec using kiwi's builtin default.
+	*SelfInstall*) ignition_platform='' ;;
 	*) echo "Unhandled profile?"
 	   exit 1
 	   ;;
 esac
 
-# One '\' for sed, one '\' for grub2-mkconfig
-grub_cmdline+=("ignition.platform.id=${ignition_platform}")
+if [ -n "${ignition_platform}" ]; then
+	grub_cmdline+=("ignition.platform.id=${ignition_platform}")
+fi
 
 sed -i "s#^GRUB_CMDLINE_LINUX_DEFAULT=.*\$#GRUB_CMDLINE_LINUX_DEFAULT=\"${grub_cmdline[*]}\"#" /etc/default/grub
 

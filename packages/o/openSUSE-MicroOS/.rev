@@ -606,4 +606,14 @@
     <comment></comment>
     <requestid>1105555</requestid>
   </revision>
+  <revision rev="64" vrev="64">
+    <srcmd5>6b8fe1e9903b1868531486cdb4f2bed3</srcmd5>
+    <version>16.0.0</version>
+    <time>1694200513</time>
+    <user>anag+factory</user>
+    <comment>Urgh, wrong source again.
+
+- Use ignition platform autodection for the SelfInstall flavor (forwarded request 1109553 from favogt)</comment>
+    <requestid>1109554</requestid>
+  </revision>
 </revisionlist>
