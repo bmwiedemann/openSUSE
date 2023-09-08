@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  7 11:26:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * drop python 2.x support
+  * format code with black
+  * add official support for python 3.9+
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

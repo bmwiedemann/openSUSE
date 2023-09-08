@@ -16,24 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         short_name requests-futures
 %{?sle15_python_module_pythons}
 Name:           python-%{short_name}
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Asynchronous Python HTTP Requests for Humans using Futures
 License:        Apache-2.0
-URL:            https://github.com/ross/%{short_name}
+URL:            https://github.com/ross/requests-futures
 Source:         https://files.pythonhosted.org/packages/source/r/%{short_name}/%{short_name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 38.6.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-requests >= 1.2.0
+Requires:       python-requests >= 2.31.0
 BuildArch:      noarch
-%ifpython2
-Requires:       python-futures >= 2.1.3
-%endif
 %python_subpackages
 
 %description

@@ -47,4 +47,15 @@
     <comment></comment>
     <requestid>1081778</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ea9941b23917650237adaac06eae8ec5</srcmd5>
+    <version>1.0.1</version>
+    <time>1694200504</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.1:
+  * drop python 2.x support
+  * format code with black
+  * add official support for python 3.9+</comment>
+    <requestid>1109523</requestid>
+  </revision>
 </revisionlist>
