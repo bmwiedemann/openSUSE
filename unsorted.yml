@@ -588,6 +588,7 @@ unsorted:
   - ansible-builder 
   - ansible-cmdb 
   - ansible-core 
+  - ansible-documentation 
   - ansible-lint 
   - ansible-navigator 
   - ansible-runner 
@@ -2457,6 +2458,7 @@ unsorted:
   - coredns-for-k8s1.27-extras 
   - corepack20 
   - coreutils-single 
+  - coreutils-systemd 
   - coreutils-testsuite 
   - corosync 
   - corosync-qdevice 
@@ -4254,7 +4256,6 @@ unsorted:
   - fuse3-doc 
   - fuseiso 
   - fusesmb 
-  - fusesource-pom 
   - fusion-icon 
   - futuresql-qt5-devel 
   - futuresql-qt6-devel 
@@ -10666,9 +10667,9 @@ unsorted:
   - libarmnnTfLiteParser24-opencl 
   - libarpack2 
   - libarprec0 
-  - libarrow1200 
-  - libarrow_acero1200 
-  - libarrow_dataset1200 
+  - libarrow1300 
+  - libarrow_acero1300 
+  - libarrow_dataset1300 
   - libart_lgpl-devel 
   - libart_lgpl_2-2 
   - libasan4 
@@ -13833,6 +13834,7 @@ unsorted:
   - libpapi 
   - libpapi-hpc 
   - libpapi_7_0_0-hpc 
+  - libpappl1 
   - libparanoia1_0 
   - libparaview5_11 
   - libpari-gmp-tls8 
@@ -13842,7 +13844,7 @@ unsorted:
   - libparpack2-openmpi2 
   - libparpack2-openmpi3 
   - libparpack2-openmpi4 
-  - libparquet1200 
+  - libparquet1300 
   - libparserutils-devel 
   - libparserutils0 
   - libpartio1 
@@ -19715,6 +19717,8 @@ unsorted:
   - papi_7_0_0-hpc-devel-static 
   - papirus-folders 
   - papirus-icon-theme 
+  - pappl 
+  - pappl-devel 
   - paprefs 
   - paprefs-lang 
   - paps 
@@ -25550,7 +25554,6 @@ unsorted:
   - python310-python-stdnum 
   - python310-python-subunit 
   - python310-python-ternary 
-  - python310-python-twitter 
   - python310-python-utils 
   - python310-python-vlc 
   - python310-python-whois 
@@ -28905,7 +28908,6 @@ unsorted:
   - python311-python-stdnum 
   - python311-python-subunit 
   - python311-python-ternary 
-  - python311-python-twitter 
   - python311-python-utils 
   - python311-python-vlc 
   - python311-python-whois 
@@ -32385,7 +32387,6 @@ unsorted:
   - python39-python-stdnum 
   - python39-python-subunit 
   - python39-python-ternary 
-  - python39-python-twitter 
   - python39-python-utils 
   - python39-python-vlc 
   - python39-python-whois 
