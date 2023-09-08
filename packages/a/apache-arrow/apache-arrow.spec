@@ -20,13 +20,13 @@
 # Required for runtime dispatch, not yet packaged
 %bcond_with xsimd
 
-%define sonum   1200
+%define sonum   1300
 # See git submodule /testing pointing to the correct revision
 %define arrow_testing_commit 47f7b56b25683202c1fd957668e13f2abafc0f12
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
 %define parquet_testing_commit b2e7cc755159196e3a068c8594f7acbaecfdaaac
 Name:           apache-arrow
-Version:        12.0.1
+Version:        13.0.0
 Release:        0
 Summary:        A development platform for in-memory data
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -36,7 +36,7 @@ Source0:        https://github.com/apache/arrow/archive/apache-arrow-%{version}.
 Source1:        https://github.com/apache/arrow-testing/archive/%{arrow_testing_commit}.tar.gz#/arrow-testing-%{version}.tar.gz
 Source2:        https://github.com/apache/parquet-testing/archive/%{parquet_testing_commit}.tar.gz#/parquet-testing-%{version}.tar.gz
 BuildRequires:  bison
-BuildRequires:  cmake >= 3.2
+BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++

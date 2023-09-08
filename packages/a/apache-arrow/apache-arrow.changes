@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Fri Aug 25 09:05:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 13.0.0
+  ## Acero
+  * Handling of unaligned buffers is input nodes can be configured
+    programmatically or by setting the environment variable
+    ACERO_ALIGNMENT_HANDLING. The default behavior is to warn when
+    an unaligned buffer is detected GH-35498.
+  ## Compute
+  * Several new functions have been added:
+    - aggregate functions “first”, “last”, “first_last” GH-34911;
+    - vector functions “cumulative_prod”, “cumulative_min”,
+      “cumulative_max” GH-32190;
+    - vector function “pairwise_diff” GH-35786.
+  * Sorting now works on dictionary arrays, with a much better
+    performance than the naive approach of sorting the decoded
+    dictionary GH-29887. Sorting also works on struct arrays, and
+    nested sort keys are supported using FieldRed GH-33206.
+  * The check_overflow option has been removed from
+    CumulativeSumOptions as it was redundant with the availability
+    of two different functions: “cumulative_sum” and
+    “cumulative_sum_checked” GH-35789.
+  * Run-end encoded filters are efficiently supported GH-35749.
+  * Duration types are supported with the “is_in” and “index_in”
+    functions GH-36047. They can be multiplied with all integer
+    types GH-36128.
+  * “is_in” and “index_in” now cast their inputs more flexibly:
+    they first attempt to cast the value set to the input type,
+    then in the other direction if the former fails GH-36203.
+  * Multiple bugs have been fixed in “utf8_slice_codeunits” when
+    the stop option is omitted GH-36311.
+  ## Dataset
+  * A custom schema can now be passed when writing a dataset
+    GH-35730. The custom schema can alter nullability or metadata
+    information, but is not allowed to change the datatypes
+    written.
+  ## Filesystems
+  * The S3 filesystem now writes files in equal-sized chunks, for
+    compatibility with Cloudflare’s “R2” Storage GH-34363.
+  * A long-standing issue where S3 support could crash at shutdown
+    because of resources still being alive after S3 finalization
+    has been fixed GH-36346. Now, attempts to use S3 resources
+    (such as making filesystem calls) after S3 finalization should
+    result in a clean error.
+  * The GCS filesystem accepts a new option to set the project id
+    GH-36227.
+  ## IPC
+  * Nullability and metadata information for sub-fields of map
+    types is now preserved when deserializing Arrow IPC GH-35297.
+  ## Orc
+  * The Orc adapter now maps Arrow field metadata to Orc type
+    attributes when writing, and vice-versa when reading GH-35304.
+  ## Parquet
+  * It is now possible to write additional metadata while a
+    ParquetFileWriter is open GH-34888.
+  * Writing a page index can be enabled selectively per-column
+    GH-34949. In addition, page header statistics are not written
+    anymore if the page index is enabled for the given column
+    GH-34375, as the information would be redundant and less
+    efficiently accessed.
+  * Parquet writer properties allow specifying the sorting columns
+    GH-35331. The user is responsible for ensuring that the data
+    written to the file actually complies with the given sorting.
+  * CRC computation has been implemented for v2 data pages
+    GH-35171. It was already implemented for v1 data pages.
+  * Writing compliant nested types is now enabled by default
+    GH-29781. This should not have any negative implication.
+  * Attempting to load a subset of an Arrow extension type is now
+    forbidden GH-20385. Previously, if an extension type’s storage
+    is nested (for example a “Point” extension type backed by a
+    struct<x: float64, y: float64>), it was possible to load
+    selectively some of the columns of the storage type.
+  ## Substrait
+  * Support for various functions has been added: “stddev”,
+    “variance”, “first”, “last” (GH-35247, GH-35506).
+  * Deserializing sorts is now supported GH-32763. However, some
+    features, such as clustered sort direction or custom sort
+    functions, are not implemented.
+  ## Miscellaneous
+  * FieldRef sports additional methods to get a flattened version
+    of nested fields GH-14946. Compared to their non-flattened
+    counterparts, the methods GetFlattened, GetAllFlattened,
+    GetOneFlattened and GetOneOrNoneFlattened combine a child’s
+    null bitmap with its ancestors’ null bitmaps such as to compute
+    the field’s overall logical validity bitmap.
+  * In other words, given the struct array [null, {'x': null},
+    {'x': 5}], FieldRef("x")::Get might return [0, null, 5] while
+    FieldRef("y")::GetFlattened will always return [null, null, 5].
+  * Scalar::hash() has been fixed for sliced nested arrays
+    GH-35360.
+  * A new floating-point to decimal conversion algorithm exhibits
+    much better precision GH-35576.
+  * It is now possible to cast between scalars of different
+    list-like types GH-36309.
+
+-------------------------------------------------------------------
 Mon Jun 12 12:13:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 12.0.1
