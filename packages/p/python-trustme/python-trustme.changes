@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  7 11:03:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Allow `os.PathLike` in typing of `Blob.write_to_path`
+  * Add support for PyPy 3.10 and Python 3.12
+  * Remove support for Python 3.7
+- drop python 2.x specific conditionals from spec file
+
+-------------------------------------------------------------------
 Sun May 14 16:33:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.0:
@@ -7,7 +16,7 @@ Sun May 14 16:33:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
     key_type parameter on the multiple methods that generate
     certificates. ECDSA certificates as they can be generated
     significantly faster.
-  * Support for Python 3.10 and 3.11 (#372, 574) 
+  * Support for Python 3.10 and 3.11 (#372, 574)
 
 -------------------------------------------------------------------
 Fri Apr 21 12:38:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -96,7 +105,7 @@ Sun May  9 17:12:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.0:
   - trustme can now be used a command line interface with ``python -m
-    trustme``. Get the help with ``python -m trustme --help``. 
+    trustme``. Get the help with ``python -m trustme --help``.
 
 -------------------------------------------------------------------
 Thu Mar 12 07:55:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
@@ -108,7 +117,7 @@ Fri Feb  7 15:33:14 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.6.0
   * Allow specifying organization and organization unit in CA and issued certs
-  * Added attr CA.from_pem to import an existing certificate authority; 
+  * Added attr CA.from_pem to import an existing certificate authority;
     this allows migrating to trustme step-by-step.
 
 -------------------------------------------------------------------
@@ -132,4 +141,4 @@ Mon Mar 18 18:02:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Wed Feb 27 11:30:53 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- initial package 
+- initial package

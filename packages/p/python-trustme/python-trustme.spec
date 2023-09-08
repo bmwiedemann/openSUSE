@@ -16,10 +16,9 @@
 #
 
 
-%bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-trustme
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Fake CA provider for Python tests
 License:        Apache-2.0 OR MIT
@@ -34,16 +33,9 @@ BuildRequires:  %{python_module service_identity}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cryptography
+Requires:       python-cryptography >= 41.0.1
 Requires:       python-idna
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-futures
-BuildRequires:  python-ipaddress
-%endif
-%ifpython2
-Requires:       python-ipaddress
-%endif
 %python_subpackages
 
 %description
