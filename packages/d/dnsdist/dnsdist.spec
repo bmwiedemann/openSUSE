@@ -26,7 +26,7 @@
 # in which case it might be faster to just run it locally and put the regenerated file into the tarball
 %bcond_with     dnsdist_ragel
 
-# requires h2o http server
+# requires h2o http server for DoH
 %bcond_with  dnsdist_doh
 
 %if 0%{?%is_backports} || 0%{?suse_version} >= 1599
@@ -35,8 +35,14 @@
 %bcond_with     dnsdist_re2
 %endif
 
+%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1599
+%bcond_without  dnsdist_luajit
+%else
+%bcond_with     dnsdist_luajit
+%endif
+
 Name:           dnsdist
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 License:        GPL-2.0-only
 Summary:        A highly DNS-, DoS- and abuse-aware loadbalancer
@@ -67,7 +73,11 @@ BuildRequires:  libedit-devel
 BuildRequires:  libfstrm-devel
 BuildRequires:  libsodium-devel
 BuildRequires:  lmdb-devel
-BuildRequires:  luajit-devel
+%if %{with dnsdist_luajit}
+BuildRequires:  pkgconfig(luajit)
+%else
+BuildRequires:  pkgconfig(lua)
+%endif
 BuildRequires:  net-snmp-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
@@ -113,7 +123,9 @@ export CXXFLAGS="$CFLAGS"
   --with-ebpf \
   --with-net-snmp \
   --with-libcap \
+%if %{with dnsdist_luajit}
   --with-lua=luajit \
+%endif
   --with-lmdb \
   --disable-silent-rules \
   --bindir=%{_sbindir} \

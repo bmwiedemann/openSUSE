@@ -46,4 +46,14 @@
     <comment>Changelog only change</comment>
     <requestid>1079926</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c3fb6caf1cba2098cc685e8f24e9a62f</srcmd5>
+    <version>1.8.1</version>
+    <time>1694200569</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.1
+  bug fix release. For details, see
+  https://dnsdist.org/changelog.html#change-1.8.1</comment>
+    <requestid>1109721</requestid>
+  </revision>
 </revisionlist>
