@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  8 03:52:38 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-future-requirement.patch, remove requirement of future.
+- Switch to autosetup and pyproject macros.
+
+-------------------------------------------------------------------
 Thu Oct 20 13:25:13 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required

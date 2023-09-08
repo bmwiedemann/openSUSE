@@ -1,7 +1,7 @@
 #
 # spec file for package python-tableprint
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,25 +17,23 @@
 #
 
 
-%define         skip_python2 1
-%define         skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tableprint
 Version:        0.9.1
 Release:        0
 Summary:        Pretty console printing of tabular data
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/nirum/tableprint
 Source:         https://github.com/nirum/tableprint/archive/v%{version}.tar.gz#/tableprint-%{version}.tar.gz
-BuildRequires:  %{python_module future}
+# PATCH-FIX-UPSTREAM gh#nirum/tableprint#24
+Patch0:         remove-future-requirement.patch
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wcwidth}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-future
 Requires:       python-wcwidth
 BuildArch:      noarch
 %python_subpackages
@@ -47,13 +45,13 @@ Unlike other modules, you can print single rows of data at a time
 (useful for printing ongoing computation results).
 
 %prep
-%setup -q -n tableprint-%{version}
+%autosetup -p1 -n tableprint-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,6 +61,6 @@ Unlike other modules, you can print single rows of data at a time
 %license License.md
 %doc README.md
 %{python_sitelib}/tableprint
-%{python_sitelib}/tableprint*egg-info
+%{python_sitelib}/tableprint-%{version}.dist-info
 
 %changelog
