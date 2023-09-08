@@ -32,4 +32,14 @@
     <comment></comment>
     <requestid>1088693</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cd2a7858f739fbaab9e29d5ef8ccc053</srcmd5>
+    <version>2.1.1</version>
+    <time>1694200509</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.1:
+  * Remove leftover Python 2 compatibility code. :pr:`69`
+  * Dotted underlines on links are smaller. :issue:`70`</comment>
+    <requestid>1109532</requestid>
+  </revision>
 </revisionlist>

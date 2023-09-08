@@ -18,9 +18,9 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pallets-Sphinx-Themes
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
-Summary:        Themes for the Pallets projects.
+Summary:        Themes for the Pallets projects
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pallets/pallets-sphinx-themes/
