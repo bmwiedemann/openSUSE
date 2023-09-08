@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-pygments-ansi-color
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        ANSI color-code highlighting for Pygments
 License:        Apache-2.0

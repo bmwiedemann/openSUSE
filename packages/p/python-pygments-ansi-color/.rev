@@ -50,4 +50,17 @@
   * documentation, CI, test fixes</comment>
     <requestid>1085968</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>476a95e45805367eca0b6b84aa9d823f</srcmd5>
+    <version>0.3.0</version>
+    <time>1694200510</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.3.0:
+  * Set default style theme
+  * update tests
+
+  * documentation, CI, test fixes
+- Update to version 0.1.0</comment>
+    <requestid>1109534</requestid>
+  </revision>
 </revisionlist>
