@@ -213,4 +213,23 @@
     unittest and class-scoped</comment>
     <requestid>1085988</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5314340b22b35f482fdf50ddda7afdb2</srcmd5>
+    <version>5.2.4</version>
+    <time>1694200506</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.2.4:
+  * Fixes a rare problem on pytest shutdown.
+  * Adds compatibility with PyPy 3.10 and Python 3.12.
+
+    `fake_path.FakePathModule`, `fake_io.FakeIoModule` and
+- Update to version 5.0.0
+- Update to version 4.7.0
+- Update to version 3.5.2
+  - Added support for path-like objects as arguments in create_file(),
+    - readline() did not work correctly in binary mode
+    - several functions did not behave correctly for paths ending with a
+- Initial packaging of version 3.4.1</comment>
+    <requestid>1109529</requestid>
+  </revision>
 </revisionlist>

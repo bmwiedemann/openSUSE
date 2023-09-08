@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyfakefs%{psuffix}
-Version:        5.2.2
+Version:        5.2.4
 Release:        0
 Summary:        Fake file system that mocks the Python file system modules
 License:        Apache-2.0

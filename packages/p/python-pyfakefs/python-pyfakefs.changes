@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  7 11:35:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.4:
+  * Fixes a rare problem on pytest shutdown.
+  * Adds compatibility with PyPy 3.10 and Python 3.12.
+
+-------------------------------------------------------------------
 Wed May 10 07:06:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.2:
@@ -22,7 +29,7 @@ Wed May 10 07:06:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
     or beta versions.
   * Fake module classes previously defined in `fake_filesystem`
     have now moved to their own modules: `fake_os.FakeOsModule`,
-    `fake_path.FakePathModule`, `fake_io.FakeIoModule` and 
+    `fake_path.FakePathModule`, `fake_io.FakeIoModule` and
     `fake_open.FakeFileOpen`.
   * Patching of parsers for pandas >= 1.2 is removed since pandas
     now uses Python fs functions internally even when the engine
@@ -53,7 +60,7 @@ Thu Apr 13 22:43:38 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Fri Oct 28 20:07:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 5.0.0 
+- Update to version 5.0.0
   New version after the transfer to pytest-dev.
   Changes
   * the old-style API deprecated since version 3.4 has now been removed
@@ -72,7 +79,7 @@ Fri Oct 28 20:07:05 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Wed Oct 12 14:10:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 4.7.0 
+- Update to version 4.7.0
   Changes
   fs fixtures cannot be nested; any nested fs fixture
   (for example inside an fs_session or fs_module fixture) will just reference the outer fixture (the behavior had been unexpected before)
@@ -267,7 +274,7 @@ Thu Nov 22 19:40:46 UTC 2018 - Karol Babioch <kbabioch@suse.de>
 -------------------------------------------------------------------
 Mon Nov 12 09:07:49 UTC 2018 - Karol Babioch <kbabioch@suse.com>
 
-- Update to version 3.5.2 
+- Update to version 3.5.2
   * This is mostly a bug-fix release.
   * added support for pause/resume of patching the file system modules
   * allow to set current group ID, set current user ID and group ID as `st_uid`
@@ -303,19 +310,19 @@ Tue Oct 23 06:39:22 UTC 2018 - Karol Babioch <kbabioch@suse.com>
 Thu Jun 14 05:05:28 UTC 2018 - kbabioch@suse.com
 
 - Update to version 3.4.3
-  - Added support for path-like objects as arguments in create_file(), 
+  - Added support for path-like objects as arguments in create_file(),
     create_dir(), create_symlink(), add_real_file() and add_real_directory()
   - Bugfixes:
     - tell after seek gave incorrect result in append mode
     - flushing file contents after truncate was incorrect under some conditions
-    - readline() did not work correctly in binary mode 
+    - readline() did not work correctly in binary mode
     - pathlib.Path.resolve() behaved incorrectly if the path does not exist
     - closed attribute was not implemented in fake file
     - add_real_directory did not behave correctly for nested paths
-    - several functions did not behave correctly for paths ending with a 
+    - several functions did not behave correctly for paths ending with a
       path separator
 
 -------------------------------------------------------------------
 Tue Apr 17 11:42:01 UTC 2018 - kbabioch@suse.com
 
-- Initial packaging of version 3.4.1 
+- Initial packaging of version 3.4.1
