@@ -1,7 +1,7 @@
 #
 # spec file for package python-stomper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-stomper
 Version:        0.4.3
 Release:        0
 Summary:        Transport neutral client implementation of the STOMP protocol
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://code.google.com/p/stomper
 Source0:        https://files.pythonhosted.org/packages/source/s/stomper/stomper-%{version}.tar.gz
+Patch0:         remove-future-requirement.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 # /SECTION
 %python_subpackages
 
@@ -44,13 +44,13 @@ messages can be easily generated and parsed, however its up to the user to do
 the sending and receiving.
 
 %prep
-%setup -q -n stomper-%{version}
+%autosetup -p1 -n stomper-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +59,7 @@ the sending and receiving.
 %files %{python_files}
 %doc README.rst lib/stomper/examples
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/stomper
+%{python_sitelib}/stomper-%{version}.dist-info
 
 %changelog

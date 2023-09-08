@@ -91,4 +91,14 @@
     <comment></comment>
     <requestid>811091</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>020b84c8c140a96c9c93cda667c57fa9</srcmd5>
+    <version>0.4.3</version>
+    <time>1694200559</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject and autosetup macros.
+- Stop using greedy globs in %files.
+- Add patch remove-future-requirement.patch, remove future requirement.</comment>
+    <requestid>1109682</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  8 07:03:32 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject and autosetup macros.
+- Stop using greedy globs in %files.
+- Add patch remove-future-requirement.patch, remove future requirement.
+
+-------------------------------------------------------------------
 Wed Jun  3 09:22:00 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - replace nose with pytest
