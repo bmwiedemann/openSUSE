@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Thu Sep 7 17:05:41 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#158
+- skip warning about unsupported options when in compat mode
+- 1.8
+
+--------------------------------------------------------------------
+Thu Sep 7 16:36:25 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#156
+- bootloader_entry script can have an optional 'force-default'
+  argument (bsc#1215064)
+- 1.7
+
+--------------------------------------------------------------------
 Mon Jul 3 12:40:36 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#154
