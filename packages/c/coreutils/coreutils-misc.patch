@@ -1,6 +1,6 @@
 ---
  gnulib-tests/test-isnanl.h |    5 +++--
- tests/misc/help-version.sh |    1 +
+ tests/help/help-version.sh |    1 +
  tests/other-fs-tmpdir      |    3 +++
  3 files changed, 7 insertions(+), 2 deletions(-)
 
@@ -33,10 +33,10 @@ Index: gnulib-tests/test-isnanl.h
 +#endif
    return 0;
  }
-Index: tests/misc/help-version.sh
+Index: tests/help/help-version.sh
 ===================================================================
---- tests/misc/help-version.sh.orig
-+++ tests/misc/help-version.sh
+--- tests/help/help-version.sh.orig
++++ tests/help/help-version.sh
 @@ -241,6 +241,7 @@ parted_setup () { args="-s $tmp_in mklab
  for i in $built_programs; do
    # Skip these.

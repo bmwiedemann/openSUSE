@@ -24,11 +24,13 @@
 %global psuffix -single
 %elif "%{flavor}" == "testsuite"
 %global psuffix -testsuite
+%elif "%{flavor}" == "systemd"
+%global psuffix -systemd
 %else
 %global psuffix %{nil}
 %endif
 Name:           coreutils%{?psuffix}
-Version:        9.3
+Version:        9.4
 Release:        0
 Summary:        GNU Core Utilities
 License:        GPL-3.0-or-later
@@ -42,13 +44,15 @@ Patch1:         coreutils-remove_hostname_documentation.patch
 Patch3:         coreutils-remove_kill_documentation.patch
 Patch4:         coreutils-i18n.patch
 Patch8:         coreutils-sysinfo.patch
-Patch16:        coreutils-invalid-ids.patch
 # OBS / RPMLINT require /usr/bin/timeout to be built with the -fpie option.
 Patch100:       coreutils-build-timeout-as-pie.patch
 # There is no network in the build root so make the test succeed
 Patch112:       coreutils-getaddrinfo.patch
 # Assorted fixes
 Patch113:       coreutils-misc.patch
+# gnulib seg.faults if there is no session
+# https://debbugs.gnu.org/cgi/bugreport.cgi?bug=65617
+Patch114:       gnulib-readutmp.patch
 # Skip 2 valgrind'ed sort tests on ppc/ppc64 which would fail due to
 # a glibc issue in mkstemp.
 Patch300:       coreutils-skip-some-sort-tests-on-ppc.patch
@@ -73,6 +77,9 @@ BuildRequires:  libselinux-devel
 BuildRequires:  makeinfo
 BuildRequires:  perl
 BuildRequires:  xz
+%if "%{name}" == "coreutils-systemd"
+BuildRequires:  pkgconfig(libsystemd)
+%endif
 %if 0%{?suse_version} > 1320
 BuildRequires:  gcc-PIE
 %endif
@@ -100,6 +107,10 @@ Provides:       textutils = %{version}
 Conflicts:      coreutils
 Provides:       coreutils = %{version}-%{release}
 %endif
+%endif
+%if "%{name}" == "coreutils-systemd"
+Provides:       coreutils:%{_bindir}/who
+Requires:       coreutils = %{version}
 %endif
 
 # ================================================
@@ -133,17 +144,17 @@ This package contains the documentation for the GNU Core Utilities.
 
 %prep
 %setup -q -n coreutils-%{version}
-%patch4
+%patch4 -p1
 %patch1
 %patch3
 %patch8
-%patch16
 #
 %if 0%{?suse_version} <= 1320
 %patch100
 %endif
 %patch112
 %patch113
+%patch114 -p1
 
 %patch300
 
@@ -172,6 +183,9 @@ export CFLAGS="%{optflags}"
            --enable-single-binary \
            --without-openssl \
            --without-gmp \
+%endif
+%if "%{name}" == "coreutils-systemd"
+           --enable-systemd \
 %endif
            DEFAULT_POSIX2_VERSION=200112 \
            alternative=199209
@@ -220,6 +234,10 @@ rm -rf %{buildroot}%{_datadir}/locale
 > coreutils.lang
 %endif
 %endif
+%if "%{name}" == "coreutils-systemd"
+mkdir -p %{buildroot}%{_bindir}
+install src/{pinky,uptime,users,who} %{buildroot}%{_bindir}/
+%endif
 
 # ================================================
 %post
@@ -239,6 +257,10 @@ rm -rf %{buildroot}%{_datadir}/locale
 
 %license COPYING
 %doc NEWS README THANKS
+%exclude %{_bindir}/pinky
+%exclude %{_bindir}/uptime
+%exclude %{_bindir}/users
+%exclude %{_bindir}/who
 %{_bindir}/*
 %{_libdir}/%{name}
 
@@ -249,6 +271,14 @@ rm -rf %{buildroot}%{_datadir}/locale
 %{_infodir}/coreutils.info*.gz
 %{_mandir}/man1/*.1%{?ext_man}
 %endif
+
+%elif "%{name}" == "coreutils-systemd"
+%license COPYING
+%doc NEWS README THANKS
+%{_bindir}/pinky
+%{_bindir}/uptime
+%{_bindir}/users
+%{_bindir}/who
 
 %else
 

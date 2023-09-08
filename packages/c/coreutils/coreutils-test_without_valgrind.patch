@@ -1,11 +1,11 @@
 ---
- tests/misc/shuf-reservoir.sh |    3 +--
+ tests/shuf/shuf-reservoir.sh |    3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-Index: tests/misc/shuf-reservoir.sh
+Index: tests/shuf/shuf-reservoir.sh
 ===================================================================
---- tests/misc/shuf-reservoir.sh.orig
-+++ tests/misc/shuf-reservoir.sh
+--- tests/shuf/shuf-reservoir.sh.orig
++++ tests/shuf/shuf-reservoir.sh
 @@ -37,8 +37,7 @@ run_shuf_n()
  
    # Critical memory-related bugs will cause a segfault here

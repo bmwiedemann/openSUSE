@@ -12,18 +12,18 @@ Valgrind diagnoses problems in 'mkstemp64' deep down in glibc on PowerPC:
   by 0x1000A427: maybe_create_temp (sort.c:1176)
   by 0x100031BF: main (sort.c:1223)
 
-* tests/misc/sort-stale-thread-mem.sh: Skip on ppc/ppc64.
-* tests/misc/sort-u-FMR.sh: Likewise.  
+* tests/sort/sort-stale-thread-mem.sh: Skip on ppc/ppc64.
+* tests/sort/sort-u-FMR.sh: Likewise.  
 
 ---
- tests/misc/sort-stale-thread-mem.sh |    4 ++++
- tests/misc/sort-u-FMR.sh            |    4 ++++
+ tests/sort/sort-stale-thread-mem.sh |    4 ++++
+ tests/sort/sort-u-FMR.sh            |    4 ++++
  2 files changed, 8 insertions(+)
 
-Index: tests/misc/sort-stale-thread-mem.sh
+Index: tests/sort/sort-stale-thread-mem.sh
 ===================================================================
---- tests/misc/sort-stale-thread-mem.sh.orig
-+++ tests/misc/sort-stale-thread-mem.sh
+--- tests/sort/sort-stale-thread-mem.sh.orig
++++ tests/sort/sort-stale-thread-mem.sh
 @@ -27,6 +27,10 @@ require_valgrind_
  grep '^#define HAVE_PTHREAD_T 1' "$CONFIG_HEADER" > /dev/null ||
    skip_ 'requires pthreads'
@@ -35,10 +35,10 @@ Index: tests/misc/sort-stale-thread-mem.sh
  # gensort output seems to trigger the failure more often,
  # so prefer gensort if it is available.
  (gensort -a 10000 in) 2>/dev/null ||
-Index: tests/misc/sort-u-FMR.sh
+Index: tests/sort/sort-u-FMR.sh
 ===================================================================
---- tests/misc/sort-u-FMR.sh.orig
-+++ tests/misc/sort-u-FMR.sh
+--- tests/sort/sort-u-FMR.sh.orig
++++ tests/sort/sort-u-FMR.sh
 @@ -20,6 +20,10 @@
  print_ver_ sort
  require_valgrind_
