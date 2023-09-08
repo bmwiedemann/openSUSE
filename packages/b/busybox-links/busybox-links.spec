@@ -192,6 +192,7 @@ This package contains the symlinks to replace bind-utils with busybox.
 Summary:        Busybox applets replacing coreutils
 Requires:       busybox = %{version}
 Conflicts:      coreutils
+Conflicts:      coreutils-systemd
 
 %description -n busybox-coreutils
 This package contains the symlinks to replace coreutils with busybox.

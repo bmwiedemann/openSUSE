@@ -238,4 +238,12 @@
     <comment></comment>
     <requestid>1108037</requestid>
   </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>387ba308c472eacf5b82d8d9a5184a9b</srcmd5>
+    <version>MACRO</version>
+    <time>1694200524</time>
+    <user>anag+factory</user>
+    <comment>- Add conflict for coreutils-systemd, package got splitted</comment>
+    <requestid>1109541</requestid>
+  </revision>
 </revisionlist>
