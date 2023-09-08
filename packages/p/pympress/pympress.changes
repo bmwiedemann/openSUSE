@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  7 14:21:28 UTC 2023 - me@cimba.li
+
+-   Update to v1.8.4
+    *   Fix bug in v1.8.3 where translations were not being found
+    *   Update Italian and Polish translations
+    *   Avoid inconsequential errors on exit
+
+-------------------------------------------------------------------
 Tue Jun  6 21:32:18 UTC 2023 - me@cimba.li
 
 -   Update to v1.8.3
