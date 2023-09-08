@@ -19,14 +19,12 @@
 %define soname libfeedback-0_0-0
 
 Name:           feedbackd
-Version:        0.1.0
+Version:        0.2.1
 Release:        0
 Summary:        Feedback library for GNOME
 License:        GPL-3.0-only AND LGPL-2.1-only
 URL:            https://source.puri.sm/Librem5/feedbackd
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 109.patch -- Fix build with glib-2.76.x
-Patch0:         https://source.puri.sm/Librem5/feedbackd/-/merge_requests/109.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  dbus-1

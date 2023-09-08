@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep  6 08:56:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.2.1:
+  + event: Fix doc link
+  + treewide: Drop superfluous '()' after functions in doc strings.
+    Otherwise we have that doubled in the docs.
+  + doc:
+    - Better cross reference manpages.
+    - Add manpage for feedback themes. This should direct users to
+      the documentation.
+
+-------------------------------------------------------------------
+Fri Jul 21 10:46:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.2.0:
+  + build: Bump version to 0.2.0. We have a slight api change.
+  + lfb-event: Avoid allocation when getting profile. We can return
+    the const *. This makes it consistent with other getters. This
+    is an API change we didn't find any users and the API is
+    declared unstable.
+  + tests: Get properties all at once.
+  + lfb-event: Add getter and setter for app-id. For applications
+    this is figured out automatically but notification daemons and
+    portal implementations might want to override it to have the
+    per-app feedback profile picked up automatically.
+- Drop 109.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Tue Mar 21 21:00:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 109.patch: Fix build with glib-2.76.x
