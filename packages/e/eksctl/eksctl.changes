@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 08 10:37:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.156.0:
+  * Add release notes for 0.156.0 (#7033)
+  * cleanup
+  * Added adopters ticker for the docs
+  * Cleanup subnets with invalid AZs before importing VPC from CFN
+    stack (#6935)
+  * Bump aws-actions/configure-aws-credentials from 2.2.0 to 3.0.1
+    (#7008)
+  * Update build image tag
+  * Bump dependencies
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Wed Sep 06 14:40:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.155.0:
