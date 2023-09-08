@@ -16,12 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname zope.event
-%define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-zope.event
-Version:        4.6
+Version:        5.0
 Release:        0
 Summary:        Very basic event publishing system
 License:        ZPL-2.1
@@ -33,10 +31,6 @@ BuildRequires:  python-rpm-macros
 # Documentation requirements:
 BuildRequires:  python3-Sphinx
 BuildArch:      noarch
-%ifpython2
-Provides:       %{oldpython}-zope-event = %{version}
-Obsoletes:      %{oldpython}-zope-event < %{version}
-%endif
 %python_subpackages
 
 %description

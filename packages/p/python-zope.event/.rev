@@ -164,4 +164,13 @@
     <comment></comment>
     <requestid>1100788</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b13dfdb6946718cd8377ea6411d661bc</srcmd5>
+    <version>5.0</version>
+    <time>1694200500</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0:
+  * Drop support for Python 2.7, 3.5, 3.6.</comment>
+    <requestid>1109515</requestid>
+  </revision>
 </revisionlist>
