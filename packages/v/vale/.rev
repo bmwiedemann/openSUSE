@@ -322,4 +322,27 @@
   * docs: add Appwrite (forwarded request 1104423 from jfkw)</comment>
     <requestid>1104426</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2c67ac9c6b320a98d2d55b8c73591959</srcmd5>
+    <version>2.28.3</version>
+    <time>1694200542</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.28.3:
+  * fix: workaround `blk.Line` inconsistency
+  * fix: take the best match, when available
+  * fix: don't concatenate an empty regex
+  * fix: `metric` shouldn't error on empty files
+  * fix: ignore statichcheck for seqence history
+  * chore: fix workflow branch for golangci
+  * test: update expected error message
+  * chore: add workflow for golangci
+  * chore: get `cmd` passing new CI config
+  * chore: get `check` passing new CI config
+  * chore: get `core` passing new ci config
+  * chore: get `spell` passing new ci config
+  * chore: get `nlp` passing new ci config
+  * chore: get `lint` passing new golangci config
+  * chore: update `goldmark` and `net` (forwarded request 1109634 from jfkw)</comment>
+    <requestid>1109636</requestid>
+  </revision>
 </revisionlist>

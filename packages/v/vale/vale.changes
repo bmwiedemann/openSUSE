@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 07 22:16:47 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.28.3:
+  * fix: workaround `blk.Line` inconsistency
+  * fix: take the best match, when available
+  * fix: don't concatenate an empty regex
+  * fix: `metric` shouldn't error on empty files
+  * fix: ignore statichcheck for seqence history
+  * chore: fix workflow branch for golangci
+  * test: update expected error message
+  * chore: add workflow for golangci
+  * chore: get `cmd` passing new CI config
+  * chore: get `check` passing new CI config
+  * chore: get `core` passing new ci config
+  * chore: get `spell` passing new ci config
+  * chore: get `nlp` passing new ci config
+  * chore: get `lint` passing new golangci config
+  * chore: update `goldmark` and `net`
+
+-------------------------------------------------------------------
 Thu Aug 17 13:11:48 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 2.28.2:
