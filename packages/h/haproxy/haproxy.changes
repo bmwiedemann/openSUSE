@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Sep 07 22:07:54 UTC 2023 - mrueckert@suse.de
+
+- Update to version 2.8.3+git0.86e043add:
+  * [RELEASE] Released version 2.8.3
+  * CI: Update to actions/checkout@v4
+  * MEDIUM: capabilities: enable support for Linux capabilities
+  * BUG/MINOR: hlua/action: incorrect message on E_YIELD error
+  * BUG/MINOR: ring/cli: Don't expect input data when showing events
+  * BUG/MINOR: applet: Always expect data when CLI is waiting for a new command
+  * NUG/MEDIUM: stconn: Always update stream's expiration date after I/O
+  * BUG/MEDIUM: stconn/stream: Forward shutdown on write timeout
+  * BUG/MEDIUM: applet: Report an error if applet request more room on aborted SC
+  * BUG/MEDIUM: stconn: Report read activity when a stream is attached to front SC
+  * BUG/MEDIUM: applet: Fix API for function to push new data in channels buffer
+  * BUG/MINOR: quic: Wrong RTT computation (srtt and rrt_var)
+  * BUG/MINOR: quic: Wrong RTT adjusments
+  * MINOR: httpclient: allow to configure the timeout.connect
+  * MINOR: httpclient: allow to configure the retries
+  * DOC: configuration: update examples for req.ver
+  * BUG/MINOR: stream: further protect stream_dump() against incomplete sessions
+  * BUG/MEDIUM: h1-htx: Ensure chunked parsing with full output buffer
+  * BUG/MAJOR: quic: Really ignore malformed ACK frames.
+  * BUG/MINOR: quic: Possible skipped RTT sampling
+  * BUG/MEDIUM: stconn: Don't block sends if there is a pending shutdown
+  * BUG/MEDIUM: stconn: Wake applets on sending path if there is a pending shutdown
+  * BUG/MINOR: stconn: Don't report blocked sends during connection establishment
+  * BUG/MEDIUM: stconn: Update stream expiration date on blocked sends
+  * DEBUG: applet: Properly report opposite SC expiration dates in traces
+  * BUG/MINOR: checks: do not queue/wake a bounced check
+  * DOC: config: mention uid dependency on the tune.quic.socket-owner option
+  * BUG/MINOR: stream: protect stream_dump() against incomplete streams
+  * BUG/MINOR: ssl/cli: can't find ".crt" files when replacing a certificate
+  * BUILD: import: guard plock.h against multiple inclusion
+  * BUG/MINOR: ssl_sock: fix possible memory leak on OOM
+  * DOC: lua: fix core.register_action typo
+  * BUG/MINOR: hlua_fcn: potentially unsafe stktable_data_ptr usage
+  * CI: fedora: fix "dnf" invocation syntax
+  * IMPORT: xxhash: update xxHash to version 0.8.2
+  * MINOR: atomic: make sure to always relax after a failed CAS
+  * MINOR: threads: inline the wait function for pthread_rwlock emulation
+  * IMPORT: plock: also support inlining the int code
+  * BUILD: Makefile: add the USE_QUIC option to make help
+  * DOC: jwt: Add explicit list of supported algorithms
+  * REGTESTS: Do not use REQUIRE_VERSION for HAProxy 2.5+ (3)
+  * SCRIPTS: git-show-backports: automatic ref and base detection with -m
+  * DOC: typo: fix sc-set-gpt references
+  * BUG/MINOR: stktable: allow sc-add-gpc from tcp-request connection
+  * BUG/MINOR: stktable: allow sc-set-gpt(0) from tcp-request connection
+  * DEV: flags/show-sess-to-flags: properly decode fd.state
+  * BUG/MINOR: hlua: fix invalid use of lua_pop on error paths
+  * BUG/MEDIUM: quic: fix tasklet_wakeup loop on connection closing
+  * CI: get rid of travis-ci wrapper for Coverity scan
+  * CI: do not use "groupinstall" for Fedora Rawhide builds
+- drop 0001-IMPORT-xxhash-update-xxHash-to-version-0.8.2.patch:
+  part of the version update
+
+-------------------------------------------------------------------
+Wed Aug 30 09:04:25 UTC 2023 - Peter Varkoly <varkoly@suse.com>
+
+- Apply upstream patch for the ppc64le issue:
+  Add patch:
+  0001-IMPORT-xxhash-update-xxHash-to-version-0.8.2.patch 
+  Remove patch:
+  fix-invalid-parameter-combination-for-AltiVec-intrinsic-__builtin_vec_ld.patch
+
+-------------------------------------------------------------------
 Mon Aug 21 14:38:51 UTC 2023 - Peter Varkoly <varkoly@suse.com>
 
 - Build error on ppc64le: include/import/xxhash.h:4148:9: error: invalid parameter combination for AltiVec intrinsic __builtin_vec_ld

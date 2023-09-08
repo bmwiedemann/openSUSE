@@ -51,7 +51,7 @@
 %endif
 
 Name:           haproxy
-Version:        2.8.2+git0.61a0f576a
+Version:        2.8.3+git0.86e043add
 Release:        0
 #
 #
@@ -99,7 +99,6 @@ Source5:        haproxy-user.conf
 Patch1:         haproxy-1.6.0_config_haproxy_user.patch
 Patch2:         haproxy-1.6.0-makefile_lib.patch
 Patch3:         haproxy-1.6.0-sec-options.patch
-Patch4:         fix-invalid-parameter-combination-for-AltiVec-intrinsic-__builtin_vec_ld.patch
 #
 Source98:       series
 Source99:       haproxy-rpmlintrc
