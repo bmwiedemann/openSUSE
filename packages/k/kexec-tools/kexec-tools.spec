@@ -17,16 +17,15 @@
 
 
 # Temporarily bump version to aid package split
-%global realversion 2.0.26
 Name:           kexec-tools
-Version:        %{realversion}.0
+Version:        2.0.27
 Release:        0
 Summary:        Tools for loading replacement kernels into memory
 License:        GPL-2.0-or-later
 Group:          System/Kernel
 URL:            https://projects.horms.net/projects/kexec/
-Source:         https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{realversion}.tar.xz
-Source1:        https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{realversion}.tar.sign
+Source:         https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{version}.tar.xz
+Source1:        https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{version}.tar.sign
 Source2:        kexec-tools.keyring
 Source3:        kexec-load.service
 Source4:        %{name}-rpmlintrc
@@ -45,9 +44,13 @@ Requires:       perl-Bootloader >= 1.6
 Requires(post): suse-module-tools
 Requires(postun):suse-module-tools
 %{?systemd_requires}
+%if 0%{?suse_version} == 1600
+# No Xen
+%else
 %ifarch         x86_64
 BuildRequires:  pkgconfig
 BuildRequires:  xen-devel
+%endif
 %endif
 
 %description
@@ -57,7 +60,7 @@ kernel may be asked to start the loaded kernel on reboot, or to start
 the loaded kernel after it panics.
 
 %prep
-%setup -q -n %{name}-%{realversion}
+%setup -q -n %{name}-%{version}
 %autopatch -p1
 
 %build

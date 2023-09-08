@@ -1093,4 +1093,12 @@ installer uses kexec to boot into second stage..
     <comment></comment>
     <requestid>1096565</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>da078733fd4e5e9b1e4589335a2ffa0d</srcmd5>
+    <version>2.0.27</version>
+    <time>1694200493</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109228</requestid>
+  </revision>
 </revisionlist>
