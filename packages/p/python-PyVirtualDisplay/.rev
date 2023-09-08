@@ -158,4 +158,12 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092067</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>4ca89db8dc86200266d55cd95166625f</srcmd5>
+    <version>3.0</version>
+    <time>1694200520</time>
+    <user>anag+factory</user>
+    <comment>- require who to builld with coreutils-systemd split</comment>
+    <requestid>1109371</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  6 22:54:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- require who to builld with coreutils-systemd split 
+
+-------------------------------------------------------------------
 Sat Jun 10 09:54:17 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -51,6 +51,7 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module vncdotool >= 0.13.0}
+BuildRequires:  /usr/bin/who
 BuildRequires:  xmessage
 BuildRequires:  xorg-x11-server-extra
 BuildRequires:  xvfb-run
