@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Sep  8 05:33:02 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.26.0
+  * New Features
+    - MTP driver: Support the new Kindle Scribe firmware that
+      causes it to act as an MTP device instead of USB disk.
+      Add "Documents" to the list of default folders to send books to
+    - E-book viewer: Add a new option under scrolling behavior to
+      control horizontal mouse wheel events jumping to next section
+    - Allow full customization of Book details styling via
+      Preferences->Look & feel->Book details
+  * Bug Fixes
+    - Get books: Update ebooks.com plugin for website changes
+    - Edit book: Fix searching for non-BMP unicode characters
+      highlighting only half the character
+    - E-book viewer: Fix displaying more than one page per screen
+      causing page layout to be slightly wrong for some books
+    - E-book viewer: Fix clicking on links with empty destinations
+      hanging the viewer
+    - E-book viewer: Fix modifying, then jumping to and then
+      modifying the highlight again from the highlights panel
+      causing the highlight to be deleted
+    - E-book viewer: Fix indication of current section in Table of
+      Contents sometimes wrong after changing font size
+    - E-book viewer/Content server: Disallow browser native context
+      menu when right clicking in sandboxed iframes
+    - MTP driver: Ignore top level folders whose names start with a
+      leading dot Also ignore AppleDouble files, top level system
+      and fonts folders and sdr folders on Kindle devices
+    - FB2 Input: use the <p> tag for paragraphs that dont contain
+      other block content
+    - E-book viewer: Fix clicking on the back/forward buttons not
+      working in some situations
+    - E-book viewer: Fix scrolling to Table of Contents items that
+      are within a single internal file not activating the back button
+    - E-book viewer: Fix changing the sans-serif font without also
+      changing the monospaced font not working
+
+-------------------------------------------------------------------
 Fri Aug 18 06:05:27 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 6.25.0
