@@ -1,7 +1,7 @@
 #
 # spec file for package python-textfsm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,26 @@
 #
 
 
-%define oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-textfsm
 Version:        1.1.3
 Release:        0
 Summary:        Python module for parsing semi-structured text into python tables
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/google/textfsm
 Source:         https://github.com/google/textfsm/archive/v%{version}.tar.gz#/textfsm-%{version}.tar.gz
-BuildRequires:  %{python_module future}
+# PATCH-FIX-OPENSUSE https://github.com/google/textfsm/issues/118
+Patch0:         correct-version.patch
+# PATCH-FIX-UPSTREAM gh#google/textfsm#116
+Patch1:         remove-future-requirement.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-future
 Requires:       python-six
-%ifpython2
-Requires:       python-future
-%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,17 +46,19 @@ information returned from the command line interface (CLI) of networking
 devices.
 
 %prep
-%setup -q -n textfsm-%{version}
+%autosetup -p1 -n textfsm-%{version}
 # drop shebang
 sed -i -e '/^#!\//, 1d' textfsm/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # don't install broken textfsm wrapper binary
 %python_expand rm -f %{buildroot}%{_bindir}/textfsm
+# or the testdata
+%python_expand rm -r %{buildroot}%{$python_sitelib}/testdata
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -67,6 +67,7 @@ sed -i -e '/^#!\//, 1d' textfsm/*.py
 %files %{python_files}
 %license COPYING
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/textfsm
+%{python_sitelib}/textfsm-%{version}.dist-info
 
 %changelog

@@ -90,4 +90,17 @@
     <comment></comment>
     <requestid>1097954</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>7e64e69d7a486ef3ca68235f6cfc179e</srcmd5>
+    <version>1.1.3</version>
+    <time>1694200546</time>
+    <user>anag+factory</user>
+    <comment>- Add patch correct-version.patch, version in the tarball does not match.
+- Add patch remove-future-requirement.patch, drop requirement of future
+- Switch to pyproject and autosetup macros
+- Clean up python 2 leftovers
+- Do not install testdata
+- Stop using greedy globs in %files</comment>
+    <requestid>1109646</requestid>
+  </revision>
 </revisionlist>

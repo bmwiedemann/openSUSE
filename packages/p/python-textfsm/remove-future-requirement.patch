@@ -1,0 +1,21 @@
+From b47bcfd36a753d330be0a9f4202b68dd3a549fc9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lum=C3=ADr=20=27Frenzy=27=20Balhar?=
+ <frenzy.madness@gmail.com>
+Date: Mon, 14 Aug 2023 11:43:50 +0200
+Subject: [PATCH] Remove future from dependencies
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index e9ff894..8fccbbb 100755
+--- a/setup.py
++++ b/setup.py
+@@ -53,5 +53,5 @@
+       },      
+       include_package_data=True,
+       package_data={'textfsm': ['../testdata/*']},
+-      install_requires=['six', 'future'],
++      install_requires=['six'],
+      )
