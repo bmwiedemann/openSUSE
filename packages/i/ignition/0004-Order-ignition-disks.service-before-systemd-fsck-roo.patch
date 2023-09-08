@@ -1,20 +1,19 @@
-From c30af974e1487e4a23d773e2061873afd6dcb8bf Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fvogt@suse.de>
 Date: Thu, 17 Aug 2023 13:51:24 +0200
 Subject: [PATCH] Order ignition-disks.service before systemd-fsck-root.service
 
 firstboot-detect.service needs initrd-root-device.target but has to be before
 any ignition units, so ignition units can't use
-Before=initrd-root-device.target. Use systemd-fsck-root.service instead, which
-fits the comment above more anyway.
+Before=initrd-root-device.target. Use systemd-fsck-root.service and
+dracut-pre-mount.service instead, which fits the comment above more anyway.
 ---
  dracut/30ignition/ignition-disks.service | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/dracut/30ignition/ignition-disks.service b/dracut/30ignition/ignition-disks.service
-index 730063f1..2c817408 100644
---- a/dracut/30ignition/ignition-disks.service
-+++ b/dracut/30ignition/ignition-disks.service
+Index: ignition-2.16.2/dracut/30ignition/ignition-disks.service
+===================================================================
+--- ignition-2.16.2.orig/dracut/30ignition/ignition-disks.service
++++ ignition-2.16.2/dracut/30ignition/ignition-disks.service
 @@ -9,7 +9,7 @@ Before=ignition-complete.target
  After=ignition-fetch.service
  Before=ignition-mount.service
@@ -29,10 +28,7 @@ index 730063f1..2c817408 100644
  # completely wipe the rootfs. Though we're not there yet. But we still run
  # before `sysroot.mount` on principle.
 -Before=initrd-root-device.target
-+Before=systemd-fsck-root.service
++Before=systemd-fsck-root.service dracut-pre-mount.service
  Before=sysroot.mount
  
  OnFailure=emergency.target
--- 
-2.41.0
-

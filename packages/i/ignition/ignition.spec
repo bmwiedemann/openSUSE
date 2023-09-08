@@ -42,9 +42,9 @@ Source21:       ignition-userconfig-timeout-arm.conf
 Patch1:         0001-ignore-missing-qemu-blockdev.patch
 Patch2:         0002-allow-multiple-mounts-of-same-device.patch
 Patch3:         0003-Move-the-GPT-header-on-resized-disks.patch
-Patch4:         0001-Order-ignition-disks.service-before-systemd-fsck-roo.patch
+Patch4:         0004-Order-ignition-disks.service-before-systemd-fsck-roo.patch
 # https://github.com/coreos/ignition/pull/1698
-Patch5:         0001-dracut-Don-t-include-the-ignition-module-by-default.patch
+Patch5:         0005-dracut-Don-t-include-the-ignition-module-by-default.patch
 BuildRequires:  dracut
 BuildRequires:  libblkid-devel
 BuildRequires:  systemd-rpm-macros

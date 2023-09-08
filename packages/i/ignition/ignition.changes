@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep  6 15:29:10 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Amend patch to fix race condition with kiwi:
+  * 0005-dracut-Don-t-include-the-ignition-module-by-default.patch
+
+-------------------------------------------------------------------
+Fri Aug 25 13:19:15 UTC 2023 - Ignaz Forster <iforster@suse.com>
+
+- Patch file cleanup:
+  * Improve description of
+    0003-Move-the-GPT-header-on-resized-disks.patch
+  * Rename
+    0001-Order-ignition-disks.service-before-systemd-fsck-roo.patch
+    to
+    0004-Order-ignition-disks.service-before-systemd-fsck-roo.patch
+  * Rename
+    0001-dracut-Don-t-include-the-ignition-module-by-default.patch
+    to
+    0005-dracut-Don-t-include-the-ignition-module-by-default.patch
+
+-------------------------------------------------------------------
 Wed Aug 23 13:47:34 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Omit ignition module in initrds for already configured systems:

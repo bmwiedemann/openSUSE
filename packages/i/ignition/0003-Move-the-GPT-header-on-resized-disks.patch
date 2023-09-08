@@ -1,7 +1,14 @@
 From: Ignaz Forster <iforster@suse.com>
 Date: Tue, 22 Aug 2023 16:13:07 +0200
-Subject: [PATCH] Move the GPT header on resized disks
+Subject: [PATCH] Move GTP header to the end on resized disk images
 
+Fedora CoreOS is handling the GPT move by putting flags into the disk's
+GUID (see also [gh#coreos/ignition#839]) and then adjusting the root disk
+in
+https://github.com/coreos/fedora-coreos-config/blob/testing-devel/overlay.d/05core/usr/lib/dracut/modules.d/35coreos-ignition/coreos-gpt-setup.sh.
+We are not using the CoreOS Assembler and have no reason to change the
+UUID, so introducing a dracut service just to possibly move the GPT seems
+like overkill. Just do so when creating new partitions.
 ---
  internal/sgdisk/sgdisk.go | 1 +
  1 file changed, 1 insertion(+)
