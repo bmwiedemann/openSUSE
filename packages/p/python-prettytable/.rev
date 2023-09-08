@@ -78,4 +78,25 @@
 </comment>
     <requestid>1084996</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>da889bc46163c72296150a458d43e27a</srcmd5>
+    <version>3.8.0</version>
+    <time>1694200501</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.8.0:
+  * Add `get_formatted_string()` convenience function (#241)
+  * Drop support for EOL Python 3.7 (#245)
+
+  * Convert from setuptools to hatchling
+  * Alignment timing fix (#179) @myheroyuki
+  * Add Single Border table style
+  * Markdown: Add colons to align the rendered output
+  * Add custom format support
+  * Add auto index column
+  * Add add_rows to add several rows at once
+- Update URL/Source0 due to Google Code Hosting being dead since 2016
+- Add license boilerplate
+- Name field shouldn't contain a macro</comment>
+    <requestid>1109518</requestid>
+  </revision>
 </revisionlist>

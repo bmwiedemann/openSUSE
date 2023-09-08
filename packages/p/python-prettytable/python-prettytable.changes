@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  7 11:15:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.0:
+  * Add `get_formatted_string()` convenience function (#241)
+  * Drop support for EOL Python 3.7 (#245)
+
+-------------------------------------------------------------------
 Fri May  5 07:47:24 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.7.0:
@@ -28,7 +35,7 @@ Sun Nov  6 10:05:26 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 - Update to v3.5.0
   * Add py.typed and update setup.cfg
   * Add type hints from typeshed
-  * Convert from setuptools to hatchling 
+  * Convert from setuptools to hatchling
 
 -------------------------------------------------------------------
 Sat Sep 17 07:34:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -42,7 +49,7 @@ Sat Jun  4 11:42:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 3.3.0:
   * Support Python 3.11
   * Add flag to preserve internal borders when border=False
-  * Alignment timing fix (#179) @myheroyuki 
+  * Alignment timing fix (#179) @myheroyuki
 
 -------------------------------------------------------------------
 Wed Mar 30 09:21:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -63,7 +70,7 @@ Wed Mar 30 09:21:10 UTC 2022 - Ben Greiner <code@bnavigator.de>
 Mon Jan  3 11:29:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.0:
-  * Add Single Border table style 
+  * Add Single Border table style
 
 -------------------------------------------------------------------
 Thu Nov 25 21:15:15 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -80,20 +87,20 @@ Wed Nov 24 07:41:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
 Mon Nov  8 21:56:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.0:
-  * Markdown: Add colons to align the rendered output 
+  * Markdown: Add colons to align the rendered output
   * Add rows attribute to prettytable
   * Add Jupyter repr and default interpreter repr methods
-  * Add custom format support 
+  * Add custom format support
   * Add method to generate LaTex formatted string
   * Add support for Python 3.10
   * Update issue templates
   * Add support for positional junction characters and add "double_border" table style
   * Access properties instead of protected fields in _get_options()
   * Use declarative metadata and support PyPy3
-  * Add auto index column 
+  * Add auto index column
   * Support formatting options in get_json_string()
   * Add tbody and thead tags
-  * Add add_rows to add several rows at once 
+  * Add add_rows to add several rows at once
   * Add setuptools as a dependency
   * Fix string comparison and deprecation warning
 - skip python2
@@ -106,7 +113,7 @@ Fri Oct 15 10:39:59 UTC 2021 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Nov 10 03:28:39 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Update URL/Source0 due to Google Code Hosting being dead since 2016 
+- Update URL/Source0 due to Google Code Hosting being dead since 2016
 
 -------------------------------------------------------------------
 Thu Nov  7 15:05:10 UTC 2019 - Matej Cepl <mcepl@suse.com>
@@ -225,12 +232,12 @@ Tue Nov 29 14:37:34 UTC 2011 - saschpe@suse.de
 -------------------------------------------------------------------
 Tue Nov 29 12:31:24 UTC 2011 - idoenmez@suse.de
 
-- Add license boilerplate 
+- Add license boilerplate
 
 -------------------------------------------------------------------
 Thu Nov 24 14:07:29 UTC 2011 - idoenmez@suse.de
 
-- Name field shouldn't contain a macro 
+- Name field shouldn't contain a macro
 
 -------------------------------------------------------------------
 Wed Apr 20 19:29:33 CEST 2011 - berendt@b1-systems.de
