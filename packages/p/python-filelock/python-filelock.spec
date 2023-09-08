@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-filelock
-Version:        3.12.2
+Version:        3.12.3
 Release:        0
 Summary:        Platform Independent File Lock in Python
 License:        Unlicense
@@ -33,6 +33,9 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?python_version_nodots} < 311
+Requires:       python-typing_extensions >= 4.7.1
+%endif
 BuildArch:      noarch
 %python_subpackages
 

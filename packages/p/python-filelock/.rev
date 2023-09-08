@@ -132,4 +132,22 @@
   * Restore 'if TYPE_CHECKING' syntax for FileLock definition</comment>
     <requestid>1094132</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fb15e1f466ea959a83edc44a32d2e597</srcmd5>
+    <version>3.12.3</version>
+    <time>1694200516</time>
+    <user>anag+factory</user>
+    <comment>- Add missing Requires on typing-extensions if &lt; 3.11 
+
+- update to 3.12.3:
+  * Fix import ordering
+  * Exclude dependabot and pre-commit ci from release notes
+  * Create parent directories if necessary
+
+- Update to version 3.8.2
+- Update to version 3.8.0
+  * Ownership moved from @benediktschmitt to the tox-dev organization
+  * Accept path types (like pathlib.Path and pathlib.PurePath) in the</comment>
+    <requestid>1109649</requestid>
+  </revision>
 </revisionlist>
