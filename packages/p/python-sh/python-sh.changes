@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  7 11:16:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.6:
+  * Add back appropriate sdist files comment
+  * Allow nested `with` contexts #690
+  * Call correct asyncio function for getting event loop #683
+
+-------------------------------------------------------------------
 Mon May 22 21:07:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.4:
@@ -32,13 +40,13 @@ Sun Jul 24 07:52:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.3:
   * bugfix where `Command` was not aware of default call args when wrapping the
-    module 
+    module
 
 -------------------------------------------------------------------
 Sun Jun  6 11:40:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.2:
-  * fix documentation link 
+  * fix documentation link
 
 -------------------------------------------------------------------
 Tue Dec  8 21:25:24 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
@@ -51,7 +59,7 @@ Tue Dec  8 21:25:24 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * None and False arguments now do not pass through to underlying
     command #525
   * Implemented find_spec on the fancy importer, which fixes some
-    Python3.4+ issues #536 
+    Python3.4+ issues #536
 - Drop all patches: they are no longer applicable
   * fix-sleep-path-in-test.patch
   * fix-test_general_signal.diff
@@ -307,7 +315,7 @@ Fri Jan  2 10:58:53 UTC 2015 - aplanas@suse.com
   * SIGABRT, SIGBUS, SIGFPE, SIGILL, SIGPIPE, SIGSYS have been added to the list of signals that throw an exception PR #201
   * "callable" builtin has been faked for python3.1, which lacks it.
   * "direct" option added to _piped special keyword argument, which allows sh to hand off a process's stdout fd directly to another process, instead of buffering its stdout internally, then handing it off. #119
- 
+
 
 -------------------------------------------------------------------
 Fri May  2 12:37:53 UTC 2014 - multyrealm@gmail.com
