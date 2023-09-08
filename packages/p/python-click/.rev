@@ -224,4 +224,18 @@
     <comment></comment>
     <requestid>1101851</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>95ec67f8356fd43f354ba716f287e9fe</srcmd5>
+    <version>8.1.7</version>
+    <time>1694200498</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.1.7:
+  * Fix issue with regex flags in shell completion.
+  * Bash version detection issues a warning instead of an
+    error.
+  * Fix issue with completion script for Fish shell.
+
+- Update to version 4.1</comment>
+    <requestid>1109509</requestid>
+  </revision>
 </revisionlist>

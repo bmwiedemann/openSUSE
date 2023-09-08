@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click
-Version:        8.1.6
+Version:        8.1.7
 Release:        0
 Summary:        A wrapper around optparse for command line utilities
 License:        BSD-3-Clause
