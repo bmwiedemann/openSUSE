@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20230329.b39efbc%{git_version}
+Version:        84.87+git20230815.cab7b44%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -229,7 +229,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 /etc/skel/.emacs
 /etc/skel/.inputrc
 %dir /usr/lib/base-scripts
-/usr/etc/profile.d/complete.bash
 /usr/lib/base-scripts/backup-rpmdb
 /usr/lib/base-scripts/backup-sysconfig
 /usr/lib/base-scripts/check-battery

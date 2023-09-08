@@ -4068,4 +4068,21 @@
   * Prepare more /etc cleanup</comment>
     <requestid>1075154</requestid>
   </revision>
+  <revision rev="493" vrev="1">
+    <srcmd5>456fcfa6c127701d838a9ecb4dc8f077</srcmd5>
+    <version>84.87+git20230815.cab7b44</version>
+    <time>1694200525</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 84.87+git20230815.cab7b44:
+  * Remove broken autocompletion overrides and restore default bash behavior
+  * Add foot to DIR_COLORS
+  * files/u/s/sysconf_addword: avoid bashism, fix shellcheck warnings
+  * files/u/s/smart_agetty: replace shebang with /bin/sh
+  * files/u/s/service: avoid bashism, fix shellcheck warnings
+  * files/u/s/refresh_initrd: make POSIX compliant
+  * files/u/b/safe-rm: make POSIX compliant
+  * aaa_base.post: replace shebang with /usr/sh
+  * files/u/b/old: make POSIX compliant</comment>
+    <requestid>1104001</requestid>
+  </revision>
 </revisionlist>
