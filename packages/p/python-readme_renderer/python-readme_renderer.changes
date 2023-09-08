@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  7 11:38:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 41.0:
+  * Allow HTML5 `figcaption` tag through cleaner (#291)
+  * Test `README.rst` from this project (#288)
+  * Add CLI option to render package README. (#271)
+  * Adapt tests to pygments 2.14.0 (#272)
+  * Update release process to use Trusted Publishing (#276)
+  * Replace usage of deprecated `pkg_resources` with
+    `importlib.metadata` (#281)
+  * Drop support for Python 3.7 (#282), Test against Python 3.11
+    (#280)
+- drop fix-tests-pygments-2.14.0.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -12,7 +27,7 @@ Thu Apr 13 22:44:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
 Wed Jan  4 16:24:09 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-tests-pygments-2.14.0.patch to adapt tests to the new version of
-  pygments gh#pypa/readme_renderer#272 
+  pygments gh#pypa/readme_renderer#272
 
 -------------------------------------------------------------------
 Wed Nov  9 18:51:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
@@ -42,7 +57,7 @@ Wed Nov  9 18:51:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
  * Update codebase for modern Python (#244)
  * Fix table cell spans (#245)
  * Allow math directive in rst (#246)
- * Preserve lang attribute in pre (#247) 
+ * Preserve lang attribute in pre (#247)
 
 -------------------------------------------------------------------
 Fri Jul 15 10:07:35 UTC 2022 - Jacob Michalskie <hel@lcp.world>

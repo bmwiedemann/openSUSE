@@ -118,4 +118,25 @@
     <comment></comment>
     <requestid>1081782</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>05dee89167dbe12fdbc331dd6c9b796d</srcmd5>
+    <version>41.0</version>
+    <time>1694200507</time>
+    <user>anag+factory</user>
+    <comment>- update to 41.0:
+  * Allow HTML5 `figcaption` tag through cleaner (#291)
+  * Test `README.rst` from this project (#288)
+  * Add CLI option to render package README. (#271)
+  * Adapt tests to pygments 2.14.0 (#272)
+  * Update release process to use Trusted Publishing (#276)
+  * Replace usage of deprecated `pkg_resources` with
+    `importlib.metadata` (#281)
+  * Drop support for Python 3.7 (#282), Test against Python 3.11
+    (#280)
+- drop fix-tests-pygments-2.14.0.patch (upstream)
+
+  pygments gh#pypa/readme_renderer#272
+ * Preserve lang attribute in pre (#247)</comment>
+    <requestid>1109530</requestid>
+  </revision>
 </revisionlist>

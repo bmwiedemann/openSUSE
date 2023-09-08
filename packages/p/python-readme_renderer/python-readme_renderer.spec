@@ -16,17 +16,14 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-readme_renderer
-Version:        37.3
+Version:        41.0
 Release:        0
 Summary:        A library for rendering "readme" descriptions
 License:        Apache-2.0
 URL:            https://github.com/pypa/readme_renderer
 Source:         https://files.pythonhosted.org/packages/source/r/readme_renderer/readme_renderer-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-tests-pygments-2.14.0.patch gh#pypa/readme_renderer#272
-Patch0:         fix-tests-pygments-2.14.0.patch
 BuildRequires:  %{python_module Pygments >= 2.5.1}
 BuildRequires:  %{python_module bleach >= 2.1.0}
 BuildRequires:  %{python_module cmarkgfm >= 0.7.0}
