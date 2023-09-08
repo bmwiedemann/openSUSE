@@ -48,6 +48,7 @@ Requires:       procps
 BuildRequires:  systemd
 BuildRequires:  systemd-devel
 %if %{with test}
+BuildRequires:  /usr/bin/who
 BuildRequires:  net-tools
 BuildRequires:  procps
 %if %{with python2}
