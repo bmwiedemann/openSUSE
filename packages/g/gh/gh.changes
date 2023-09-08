@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep 07 05:18:42 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.34.0:
+  * Use consistent variable naming
+  * `gh status`: show status even if a comment 404s (#7873)
+  * build(deps): bump actions/checkout from 3 to 4 (#7937)
+  * rename template to mark-template cmd (#7923)
+  * Simplify mock jobs response
+  * Use "Link" header for pagination completion check
+  * Fix pagination resp with "Link" header
+  * Refactor GetJobs to use RESTWithNext
+  * Add formula-path to homebrew-bump step (#7930)
+  * Add JSON output flags to workflow list command (#7902)
+  * fix tests
+  * no other descriptions have a period
+  * mark and unmark project as template
+  * Add config clear-cache command (#7693)
+  * Allow --disable-wiki flag with --template flag in repo create command (#7886)
+  * Reword token invalid message (#7906)
+  * 🐛 (repo create)execute clone when readme option is enabled (#7837)
+  * Use go-gh prompter package (#7896)
+  * pr checks return distinct exit code for PENDING checks (#7866)
+  * Properly rename remote for GHES hosts (#7890)
+  * Add verbose flag to api cmd (#7826)
+  * Fix up Nix installation instructions (#7891)
+  * Fetch all jobs on a gh view run --json
+
+-------------------------------------------------------------------
 Tue Aug 22 08:29:55 UTC 2023 - pdostal@suse.com
 
 - Update to version 2.33.0:
