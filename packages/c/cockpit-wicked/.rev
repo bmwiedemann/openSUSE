@@ -7,4 +7,13 @@
     <comment>this is shipped in Micro, but was missed in Factory</comment>
     <requestid>1107921</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2e280abf1b8454b1e6d439a60924f31e</srcmd5>
+    <version>5~git0.82629da</version>
+    <time>1694200585</time>
+    <user>anag+factory</user>
+    <comment>- Remove the node_modules service workaround
+  and node-module-duplicate-fix.patch</comment>
+    <requestid>1109737</requestid>
+  </revision>
 </revisionlist>

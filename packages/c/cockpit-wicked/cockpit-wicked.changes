@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  8 12:33:48 UTC 2023 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Remove the node_modules service workaround
+  and node-module-duplicate-fix.patch
+
+-------------------------------------------------------------------
 Tue Aug 22 17:03:05 UTC 2023 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Version 5:

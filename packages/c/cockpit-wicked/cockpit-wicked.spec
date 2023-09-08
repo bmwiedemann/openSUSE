@@ -1,7 +1,7 @@
 #
-# spec file for package cockpit
+# spec file for package cockpit-wicked
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 Source12:       node_modules.sums
 %include %_sourcedir/node_modules.spec.inc
-Patch0:         node-module-duplicate-fix.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
 BuildRequires:  appstream-glib
@@ -50,7 +49,6 @@ Cockpit component for managing network configuration through Wicked
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1
 rm -f package-lock.json
 rm -rf node_modules
 local-npm-registry %{_sourcedir} install --with=dev || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
