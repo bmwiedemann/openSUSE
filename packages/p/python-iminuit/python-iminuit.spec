@@ -19,7 +19,7 @@
 %define modname iminuit
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        2.22.0
+Version:        2.24.0
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
@@ -79,12 +79,13 @@ export CMAKE_ARGS="-DIMINUIT_EXTERNAL_PYBIND11=ON -DCMAKE_VERBOSE_MAKEFILE=ON"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+# https://github.com/scikit-hep/iminuit/issues/940
+donttest="((test_bad_function or test_disp) and minimize)"
 # A tolerance issue on 32-bit
 %ifarch %ix86
-%pytest_arch -k 'not test_matrix'
-%else
-%pytest_arch
+donttest+=" or test_matrix"
 %endif
+%pytest_arch -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.rst
