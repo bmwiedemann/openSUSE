@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,25 +24,26 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-devhelp%{psuffix}
-Version:        1.0.2
+Version:        1.0.5
 Release:        0
 Summary:        Sphinx extension which outputs Devhelp documents
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-devhelp
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-devhelp/sphinxcontrib-devhelp-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-devhelp/sphinxcontrib_devhelp-%{version}.tar.gz
 %if %{with test}
-BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module Sphinx >= 5.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinxcontrib-devhelp >= %{version}}
 %endif
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx
+Requires:       python-Sphinx >= 5.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,14 +51,14 @@ BuildArch:      noarch
 sphinxcontrib-devhelp is a sphinx extension which outputs Devhelp document.
 
 %prep
-%setup -q -n sphinxcontrib-devhelp-%{version}
+%setup -q -n sphinxcontrib_devhelp-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 

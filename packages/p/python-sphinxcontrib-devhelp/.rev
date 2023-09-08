@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>1081752</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>135936a119be7a824b00139f246388fd</srcmd5>
+    <version>1.0.5</version>
+    <time>1694200503</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.5:
+  * Use ``os.PathLike`` over ``pathlib.Path``
+  * Fix tests for Sphinx 7.1 and below
+  * Drop support for Python 3.5, 3.6, 3.7, and 3.8
+  * Raise minimum required Sphinx version to 5.0</comment>
+    <requestid>1109520</requestid>
+  </revision>
 </revisionlist>
