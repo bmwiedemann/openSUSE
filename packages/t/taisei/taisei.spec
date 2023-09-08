@@ -1,7 +1,7 @@
 #
 # spec file for package taisei
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,34 +23,36 @@
 %endif
 
 Name:           taisei
-Version:        1.3.2
+Version:        1.4
 Release:        0
 Summary:        Clone of the Touhou Project series of shoot ’em up games
 License:        MIT
 Group:          Amusements/Games/Action/Arcade
 URL:            https://taisei-project.org
-Source0:        https://github.com/taisei-project/taisei/releases/download/v%{version}/taisei-v%{version}.tar.xz
-Source1:        https://github.com/taisei-project/taisei/releases/download/v%{version}/taisei-v%{version}.tar.xz.sig
+Source0:        https://github.com/taisei-project/taisei/releases/download/v%{version}/taisei-%{version}.tar.xz
+Source1:        https://github.com/taisei-project/taisei/releases/download/v%{version}/taisei-%{version}.tar.xz.sig
 Source2:        gpg.keyring
+BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  gcc
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson >= 0.49.0
+BuildRequires:  meson >= 0.63.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Pygments
 BuildRequires:  python3-docutils
-BuildRequires:  pkgconfig(SDL2_mixer) >= 2.0.4
-BuildRequires:  pkgconfig(cglm)
+BuildRequires:  python3-zstandard
+BuildRequires:  pkgconfig(cglm) >= 0.7.8
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gamemode)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libwebpdecoder) > 0.4
-BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(libwebpdecoder) >= 0.5
+BuildRequires:  pkgconfig(libzip) >= 1.7.0
+BuildRequires:  pkgconfig(libzstd) >= 1.4.0
 BuildRequires:  pkgconfig(opusfile)
-BuildRequires:  pkgconfig(sdl2) >= 2.0.5
+BuildRequires:  pkgconfig(sdl2) >= 2.0.16
 BuildRequires:  pkgconfig(zlib)
 %if %{shader_translation}
+BuildRequires:  shaderc
 BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(spirv-cross-c-shared)
 %endif
@@ -74,17 +76,18 @@ one-man project of shoot ’em up games set in an isolated world full of
 Japanese folklore.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%setup -q
 
 %build
 _v=%{version}
 %meson \
     -Dstrip=false \
     -Db_pch=false \
-    -Dversion_fallback=${_v//.g/-g} \
+    -Dinstall_macos_bundle=disabled \
+    -Dinstall_relocatable=disabled \
 %if %{shader_translation}
-    -Dshader_transpiler=true \
-    -Dr_gles30=true \
+    -Dshader_transpiler=enabled \
+    -Dr_gles30=enabled \
 %endif
 %meson_build
 
@@ -100,11 +103,11 @@ mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}/%{name}
 %files
 %{_docdir}/%{name}
 %{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/applications/%{name}-replay-viewer.desktop
-%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
-%{_datadir}/icons/hicolor/256x256/mimetypes/taisei-replay.png
-%{_datadir}/mime/packages/taisei.xml
+%{_datadir}/applications/org.taisei_project.Taisei*.desktop
+%{_datadir}/icons/hicolor/*/apps/*%{name}*.png
+%{_datadir}/icons/hicolor/*/mimetypes/*%{name}*.png
+%{_datadir}/mime/packages/org.taisei_project.Taisei.xml
+%{_datadir}/metainfo/org.taisei_project.Taisei.appdata.xml
 
 %files data
 %{_datadir}/%{name}

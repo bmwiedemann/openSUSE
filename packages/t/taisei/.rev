@@ -97,4 +97,15 @@
     <comment></comment>
     <requestid>932903</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>08b7e4f256aad2a36820623d5a034473</srcmd5>
+    <version>1.4</version>
+    <time>1694200581</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4
+This is a major release, with substantially redesigned stages and
+bosses, new story, new backgrounds, and heavy internal rewrites.
+See the announcement at https://taisei-project.org/news/0016_v1.4</comment>
+    <requestid>1109742</requestid>
+  </revision>
 </revisionlist>
