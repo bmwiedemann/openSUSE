@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymod2pkg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/Python
 URL:            https://wiki.openstack.org/wiki/Rpm-packaging
 Source0:        https://files.pythonhosted.org/packages/source/p/pymod2pkg/pymod2pkg-0.26.0.tar.gz
+Patch1:         0001-add-suse_py39-flavor-to-explicitly-render-templates-.patch
 BuildRequires:  openstack-macros
 BuildRequires:  python3-distro
 BuildRequires:  python3-pbr >= 2.0.0
@@ -39,7 +40,6 @@ corresponding package names which is a common problem in the packaging world.
 
 %package -n python3-pymod2pkg
 Summary:        OpenStack Packaging - python module name to package name map
-Group:          Development/Libraries/Python
 Requires:       python3-distro
 Requires:       python3-pbr >= 2.0.0
 %if 0%{?suse_version}
@@ -54,7 +54,6 @@ This package contains the Python 3.x module.
 
 %package -n python-pymod2pkg-doc
 Summary:        Documentation for python module name to package name map library
-Group:          Development/Libraries/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 
@@ -77,7 +76,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{py3_install}
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-pymod2pkg
 %license LICENSE

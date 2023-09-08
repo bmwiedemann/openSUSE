@@ -296,4 +296,12 @@
     <comment></comment>
     <requestid>850980</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>1feba7a896aba64108afb84144e409fd</srcmd5>
+    <version>0.26.0</version>
+    <time>1694200528</time>
+    <user>anag+factory</user>
+    <comment>- added 0001-add-suse_py39-flavor-to-explicitly-render-templates-.patch</comment>
+    <requestid>1109587</requestid>
+  </revision>
 </revisionlist>
