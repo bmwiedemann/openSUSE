@@ -37,6 +37,11 @@ Source7:        stunnel.README
 # PATCH-FIX-UPSTREAM Fix service file, so it ensure we are starting after network is really up!
 Patch1:         stunnel-5.59_service_always_after_network.patch
 Patch2:         harden_stunnel.service.patch
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+# PATCH-FIX-FEDORA bsc#1211301 Add crypto-policies support
+Patch3:         stunnel-5.69-system-ciphers.patch
+Patch4:         stunnel-5.69-default-tls-version.patch
+%endif
 BuildRequires:  libopenssl-devel
 # test dependencies
 BuildRequires:  netcat
@@ -77,12 +82,17 @@ This package contains additional documentation for the stunnel program.
 chmod -x %{_builddir}/stunnel-%{version}/tools/ca.*
 chmod -x %{_builddir}/stunnel-%{version}/tools/importCA.*
 %patch2 -p1
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+%patch3 -p1
+%patch4 -p1
+%endif
 
 %build
 sed -i 's/-m 1770//g' tools/Makefile.in
 %configure \
 	--disable-static \
-	--bindir=%{_sbindir}
+	--bindir=%{_sbindir} \
+	--with-bashcompdir=%{_datadir}/bash-completion/completions
 %if 0%{?sle_version} < 150000
   %define make_build %{__make} -O %{?_smp_mflags}
 %endif
@@ -161,6 +171,7 @@ fi
 %dir %attr(755,stunnel,root) %{_localstatedir}/lib/stunnel%{_localstatedir}/run
 %{_fillupdir}/sysconfig.syslog-stunnel
 %{_unitdir}/stunnel.service
+%{_datadir}/bash-completion/completions/%{name}.bash
 
 %files doc
 %doc %{_docdir}/%{name}

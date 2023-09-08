@@ -331,4 +331,12 @@ Do not replace the active config file: boo#1182376</comment>
     <comment></comment>
     <requestid>1099866</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>97ad6fdfdf81e4d7d9065663481f745b</srcmd5>
+    <version>5.70</version>
+    <time>1694200534</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109601</requestid>
+  </revision>
 </revisionlist>

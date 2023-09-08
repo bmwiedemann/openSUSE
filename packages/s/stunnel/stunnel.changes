@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep  7 11:01:11 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Enable crypto-policies support: [bsc#1211301]
+  * The system's crypto-policies are the best source to determine
+    which cipher suites to accept in TLS. OpenSSL supports the
+    PROFILE=SYSTEM setting to use those policies. Change stunnel
+    to default to the system settings.
+  * Add patches:
+    - stunnel-5.69-system-ciphers.patch
+    - stunnel-5.69-default-tls-version.patch
+
+-------------------------------------------------------------------
+Thu Sep  7 10:34:18 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Enable bash completion support
+
+-------------------------------------------------------------------
 Fri Jul 21 07:37:10 UTC 2023 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
 
 - Update to 5.70:
