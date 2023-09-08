@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  5 14:52:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.12.4:
+  no changes in cmctl in this release, all changes betweeen 1.12.3
+  and 1.12.4 are in other parts of the code.
+  Nevertheless, to keep in sync, we release this version.
+
+-------------------------------------------------------------------
 Thu Jul 27 04:50:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.12.3:
