@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Aug 31 18:43:55 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 13.0.0
+  ## Compatibility notes:
+  * The default format version for Parquet has been bumped from 2.4
+    to 2.6 GH-35746. In practice, this means that nanosecond
+    timestamps now preserve its resolution instead of being
+    converted to microseconds.
+  * Support for Python 3.7 is dropped GH-34788
+  ## New features:
+  * Conversion to non-nano datetime64 for pandas >= 2.0 is now
+    supported GH-33321
+  * Write page index is now supported GH-36284
+  * Bindings for reading JSON format in Dataset are added GH-34216
+  * keys_sorted property of MapType is now exposed GH-35112
+  ## Other improvements:
+  * Common python functionality between Table and RecordBatch
+    classes has been consolidated ( GH-36129, GH-35415, GH-35390,
+    GH-34979, GH-34868, GH-31868)
+  * Some functionality for FixedShapeTensorType has been improved
+    (__reduce__ GH-36038, picklability GH-35599)
+  * Pyarrow scalars can now be accepted in the array constructor
+    GH-21761
+  * DataFrame Interchange Protocol implementation and usage is now
+    documented GH-33980
+  * Conversion between Arrow and Pandas for map/pydict now has
+    enhanced support GH-34729
+  * Usability of pc.map_lookup / MapLookupOptions is improved
+    GH-36045
+  * zero_copy_only keyword can now also be accepted in
+    ChunkedArray.to_numpy() GH-34787
+  * Python C++ codebase now has linter support in Archery and the
+    CI GH-35485
+  ## Relevant bug fixes:
+  * __array__ numpy conversion for Table and RecordBatch is now
+    corrected so that np.asarray(pa.Table) doesn’t return a
+    transposed result GH-34886
+  * parquet.write_to_dataset doesn’t create empty files for
+    non-observed dictionary (category) values anymore GH-23870
+  * Dataset writer now also correctly follows default Parquet
+    version of 2.6 GH-36537
+  * Comparing pyarrow.dataset.Partitioning with other type is now
+    correctly handled GH-36659
+  * Pickling of pyarrow.dataset PartitioningFactory objects is now
+    supported GH-34884
+  * None schema is now disallowed in parquet writer GH-35858
+  * pa.FixedShapeTensorArray.to_numpy_ndarray is not failing on
+    sliced arrays GH-35573
+  * Halffloat type is now supported in the conversion from Arrow
+    list to pandas GH-36168
+  * __from_arrow__ is now also implemented for Array.to_pandas for
+    pandas extension data types GH-36096
+- Add pyarrow-pr37481-pandas2.1.patch gh#apache/arrow#37481
+
+-------------------------------------------------------------------
 Fri Aug 25 12:52:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Limit to Cython < 3
