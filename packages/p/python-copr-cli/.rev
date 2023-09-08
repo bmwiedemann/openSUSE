@@ -83,4 +83,16 @@
 </comment>
     <requestid>1064371</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f94b52fbfc79c8b91db0c07cfd7a89b8</srcmd5>
+    <version>1.110</version>
+    <time>1694200550</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.110:
+  * No upstream changelog.
+- Fiddle with {Build,}Requires as appropiate.
+- Switch to pyproject macros.
+- Refresh patch remove-simplejson.patch</comment>
+    <requestid>1109655</requestid>
+  </revision>
 </revisionlist>

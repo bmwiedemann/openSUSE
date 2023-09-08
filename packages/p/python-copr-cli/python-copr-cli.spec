@@ -17,7 +17,7 @@
 
 
 Name:           python-copr-cli
-Version:        1.105
+Version:        1.110
 Release:        0
 Summary:        Copr cli
 License:        GPL-2.0-or-later
@@ -27,25 +27,21 @@ Source:         https://files.pythonhosted.org/packages/source/c/copr-cli/copr-c
 # Remove dependency on simplejson
 # (not upstream, which on master switched to ujson)
 Patch0:         remove-simplejson.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-copr >= 1.116
-Requires:       python-filelock
-Requires:       python-future
 Requires:       python-humanize
-Requires:       python-requests-gssapi
-Requires:       python-responses
+Requires:       python-setuptools
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module copr >= 1.116}
-BuildRequires:  %{python_module filelock}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module humanize}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests-gssapi}
 BuildRequires:  %{python_module responses}
 # /SECTION
 Requires(post): update-alternatives
@@ -61,10 +57,10 @@ CLI tool to run copr.
 sed -i '1{/#!/d}' copr_cli/package_build_order.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/copr-cli
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -81,6 +77,6 @@ sed -i '1{/#!/d}' copr_cli/package_build_order.py
 %license LICENSE
 %python_alternative %{_bindir}/copr-cli
 %{python_sitelib}/copr_cli
-%{python_sitelib}/copr_cli-%{version}*-info
+%{python_sitelib}/copr_cli-%{version}.dist-info
 
 %changelog
