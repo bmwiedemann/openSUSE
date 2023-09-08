@@ -42,4 +42,14 @@ Fixed recent build fail</comment>
     <comment></comment>
     <requestid>975730</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>eea7c23c7a1d3350a054bd21ced3279c</srcmd5>
+    <version>0.4.5</version>
+    <time>1694200562</time>
+    <user>anag+factory</user>
+    <comment>- Replace build requirement 'lazarus' by 'lazarus-tools' and 'lazarus-lcl-qt5'
+  The package 'lazarus' was spilt into multiple sub-packages
+</comment>
+    <requestid>1109683</requestid>
+  </revision>
 </revisionlist>
