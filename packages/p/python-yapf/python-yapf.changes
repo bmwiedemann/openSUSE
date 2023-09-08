@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep  7 11:12:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.40.1:
+  * Corrected bad distribution v0.40.0 package.
+  * Support for Python 3.11
+  * Add the `--print-modified` flag to print out file names of
+    modified files when running in in-place mode.
+  * Replace the outdated and no-longer-supported lib2to3 with a
+    fork of blib2to3
+  * Support for Python versions < 3.7 are no longer supported.
+
+-------------------------------------------------------------------
 Thu May  4 19:56:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.33.0:
@@ -123,7 +135,7 @@ Wed Aug 29 11:37:58 UTC 2018 - tchvatal@suse.com
 - Version update to 0.23.0:
   * Many changes to behaviour based on CHANGELOG
   * Add various documents/license to distributed tarball
- 
+
 -------------------------------------------------------------------
 Sun Mar  4 11:06:23 UTC 2018 - jengelh@inai.de
 

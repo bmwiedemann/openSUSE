@@ -142,4 +142,19 @@
   * Split line before all comparison operators.</comment>
     <requestid>1084863</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>137e96b4dd57e929174cf4c04ea9ac0b</srcmd5>
+    <version>0.40.1</version>
+    <time>1694200501</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.40.1:
+  * Corrected bad distribution v0.40.0 package.
+  * Support for Python 3.11
+  * Add the `--print-modified` flag to print out file names of
+    modified files when running in in-place mode.
+  * Replace the outdated and no-longer-supported lib2to3 with a
+    fork of blib2to3
+  * Support for Python versions &lt; 3.7 are no longer supported.</comment>
+    <requestid>1109517</requestid>
+  </revision>
 </revisionlist>
