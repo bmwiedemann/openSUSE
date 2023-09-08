@@ -168,4 +168,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1068666</requestid>
   </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>ae66eff704f857be629b13f452e70855</srcmd5>
+    <version>0.10.0</version>
+    <time>1694200558</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream patch fix_test_mac_with_cryptographic_failure.patch
+  gh#OpenKMIP/PyKMIP#702, this fixes the issue with the
+  test_mac_with_cryptographic_failure.</comment>
+    <requestid>1109678</requestid>
+  </revision>
 </revisionlist>

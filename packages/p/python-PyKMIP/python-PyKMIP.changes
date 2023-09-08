@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  8 06:13:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch fix_test_mac_with_cryptographic_failure.patch
+  gh#OpenKMIP/PyKMIP#702, this fixes the issue with the
+  test_mac_with_cryptographic_failure.
+
+-------------------------------------------------------------------
 Thu Feb 23 10:44:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken test, test_mac_with_cryptographic_failure,

@@ -32,6 +32,8 @@ Patch0:         fix-tests-SQLAlchemy-140.patch
 Patch1:         python-PyKMIP-no-mock.patch
 # PATCH-FIX-OPENSUSE crypto-39.patch gh#OpenKMIP/PyKMIP#689
 Patch2:         crypto-39.patch
+# PATCH-FIX-UPSTREAM fix_test_mac_with_cryptographic_failure.patch gh#OpenKMIP/PyKMIP#702
+Patch3:         fix_test_mac_with_cryptographic_failure.patch
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module devel}
@@ -77,11 +79,7 @@ Standards`_ (OASIS). PyKMIP supports a subset of features in versions
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Broken test, possibly related with the latest release of openssl
-# gh#OpenKMIP/PyKMIP#690
-donttest="test_mac_with_cryptographic_failure"
-
-%pytest -k "not ($donttest)" kmip/tests/unit
+%pytest kmip/tests/unit
 
 %post
 %python_install_alternative pykmip-server
