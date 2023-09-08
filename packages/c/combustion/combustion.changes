@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 07 12:39:56 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2+git5:
+  * Run combustion-prepare.service before ignition-enable-network.service
+  * Revert "Remove now obsolete workaround for ignition-mount.service ExecStop"
+  * Only attempt firstboot check on devices
+
+-------------------------------------------------------------------
 Tue Aug 22 15:57:49 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.2+git2:
