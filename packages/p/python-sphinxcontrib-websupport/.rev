@@ -117,4 +117,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1086825</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ba9e835c3a2f096a2443455ce3e2c8ed</srcmd5>
+    <version>1.2.6</version>
+    <time>1694200504</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.6:
+  * Fix tests for Sphinx 7.1 and below
+  * Drop support for Python 3.5, 3.6, 3.7, and 3.8
+  * Raise minimum required Sphinx version to 5.0
+- drop python-sphinxcontrib-websupport-no-six.patch (upstream)</comment>
+    <requestid>1109522</requestid>
+  </revision>
 </revisionlist>
