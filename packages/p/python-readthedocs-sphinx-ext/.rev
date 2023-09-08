@@ -104,4 +104,17 @@
     <comment></comment>
     <requestid>1081783</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b2b6377eb8767776efd7b8ae5ba644ea</srcmd5>
+    <version>2.2.2</version>
+    <time>1694200508</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.2:
+  * Remove build-time and commit field to avoid changing all pages
+  * Stop creating readthedocs-sphinx-domain-names.json
+
+- Update to version 2.2.0
+- Update to version 2.1.9</comment>
+    <requestid>1109531</requestid>
+  </revision>
 </revisionlist>

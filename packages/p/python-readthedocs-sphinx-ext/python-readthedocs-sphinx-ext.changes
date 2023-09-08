@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  7 11:41:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * Remove build-time and commit field to avoid changing all pages
+  * Stop creating readthedocs-sphinx-domain-names.json
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -11,7 +18,7 @@ Thu Apr 13 22:44:25 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Sat Oct 29 00:11:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2.2.0 
+- Update to version 2.2.0
   Telemetry: dump `app.extensions` and `app.config.html_theme` (#117)
     * Telemetry: dump `app.extensions` and `app.config.html_theme`
     Dump data from Sphinx into a JSON file that will be read and processed by our
@@ -31,7 +38,7 @@ Sat Oct 29 00:11:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 -------------------------------------------------------------------
 Wed Oct 12 15:50:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to version 2.1.9 
+- Update to version 2.1.9
   * fix: Only add external version warning nodes on documents (#114)
 
 -------------------------------------------------------------------
