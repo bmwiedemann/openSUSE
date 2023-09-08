@@ -1,4 +1,232 @@
 -------------------------------------------------------------------
+Wed Sep  6 07:52:11 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.11.5 (bsc#1214692):
+  - Security
+    - gh-108310: Fixed an issue where instances of ssl.SSLSocket were
+      vulnerable to a bypass of the TLS handshake and included
+      protections (like certificate verification) and treating sent
+      unencrypted data as if it were post-handshake TLS encrypted data.
+      Security issue reported as CVE-2023-40217 by Aapo Oksman. Patch by
+      Gregory P. Smith.
+  - Core and Builtins
+    - gh-104432: Fix potential unaligned memory access on C APIs
+      involving returned sequences of char * pointers within the grp
+      and socket modules. These were revealed using a
+      -fsaniziter=alignment build on ARM macOS. Patch by Christopher
+      Chavez.
+    - gh-77377: Ensure that multiprocessing synchronization objects
+      created in a fork context are not sent to a different process
+      created in a spawn context. This changes a segfault into an
+      actionable RuntimeError in the parent process.
+    - gh-106092: Fix a segmentation fault caused by a use-after-free
+      bug in frame_dealloc when the trashcan delays the deallocation
+      of a PyFrameObject.
+    - gh-106719: No longer suppress arbitrary errors in the
+      __annotations__ getter and setter in the type and module types.
+    - gh-106723: Propagate frozen_modules to multiprocessing spawned
+      process interpreters.
+    - gh-105979: Fix crash in _imp.get_frozen_object() due to improper
+      exception handling.
+    - gh-105840: Fix possible crashes when specializing function calls
+      with too many __defaults__.
+    - gh-105588: Fix an issue that could result in crashes when
+      compiling malformed ast nodes.
+    - gh-105375: Fix bugs in the builtins module where exceptions
+      could end up being overwritten.
+    - gh-105375: Fix bug in the compiler where an exception could end
+      up being overwritten.
+    - gh-105375: Improve error handling in
+      PyUnicode_BuildEncodingMap() where an exception could end up
+      being overwritten.
+    - gh-105235: Prevent out-of-bounds memory access during
+      mmap.find() calls.
+    - gh-101006: Improve error handling when read marshal data.
+  - Library
+    - gh-105736: Harmonized the pure Python version of OrderedDict
+      with the C version. Now, both versions set up their internal
+      state in __new__. Formerly, the pure Python version did the set
+      up in __init__.
+    - gh-107963: Fix multiprocessing.set_forkserver_preload() to check
+      the given list of modules names. Patch by Dong-hee Na.
+    - gh-106242: Fixes os.path.normpath() to handle embedded null
+      characters without truncating the path.
+    - gh-107845: tarfile.data_filter() now takes the location of
+      symlinks into account when determining their target, so it will
+      no longer reject some valid tarballs with
+      LinkOutsideDestinationError.
+    - gh-107715: Fix doctest.DocTestFinder.find() in presence of class
+      names with special characters. Patch by Gertjan van Zwieten.
+    - gh-100814: Passing a callable object as an option value to a
+      Tkinter image now raises the expected TclError instead of an
+      AttributeError.
+    - gh-106684: Close asyncio.StreamWriter when it is not closed by
+      application leading to memory leaks. Patch by Kumar Aditya.
+    - gh-107077: Seems that in some conditions, OpenSSL will return
+      SSL_ERROR_SYSCALL instead of SSL_ERROR_SSL when a certification
+      verification has failed, but the error parameters will still
+      contain ERR_LIB_SSL and SSL_R_CERTIFICATE_VERIFY_FAILED. We are
+      now detecting this situation and raising the appropiate
+      ssl.SSLCertVerificationError. Patch by Pablo Galindo
+    - gh-107396: tarfiles; Fixed use before assignment of
+      self.exception for gzip decompression
+    - gh-62519: Make gettext.pgettext() search plural definitions when
+      translation is not found.
+    - gh-83006: Document behavior of shutil.disk_usage() for
+      non-mounted filesystems on Unix.
+    - gh-106186: Do not report MultipartInvariantViolationDefect
+      defect when the email.parser.Parser class is used to parse
+      emails with headersonly=True.
+    - gh-106831: Fix potential missing NULL check of d2i_SSL_SESSION
+      result in _ssl.c.
+    - gh-106774: Update the bundled copy of pip to version 23.2.1.
+    - gh-106752: Fixed several bug in zipfile.Path in
+      name/suffix/suffixes/stem operations when no filename is present
+      and the Path is not at the root of the zipfile.
+    - gh-106602: Add __copy__ and __deepcopy__ in enum
+    - gh-106530: Revert a change to colorsys.rgb_to_hls() that caused
+      division by zero for certain almost-white inputs. Patch by Terry
+      Jan Reedy.
+    - gh-106052: re module: fix the matching of possessive quantifiers
+      in the case of a subpattern containing backtracking.
+    - gh-106510: Improve debug output for atomic groups in regular
+      expressions.
+    - gh-105497: Fix flag mask inversion when unnamed flags exist.
+    - gh-90876: Prevent multiprocessing.spawn from failing to import
+      in environments where sys.executable is None. This regressed in
+      3.11 with the addition of support for path-like objects in
+      multiprocessing.
+    - gh-106350: Detect possible memory allocation failure in the
+      libtommath function mp_init() used by the _tkinter module.
+    - gh-102541: Make pydoc.doc catch bad module ImportError when
+      output stream is not None.
+    - gh-106263: Fix crash when calling repr with a manually
+      constructed SignalDict object. Patch by Charlie Zhao.
+    - gh-105375: Fix a bug in _Unpickler_SetInputStream() where an
+      exception could end up being overwritten in case of failure.
+    - gh-105375: Fix bugs in sys where exceptions could end up being
+      overwritten because of deferred error handling.
+    - gh-105605: Harden pyexpat error handling during module
+      initialisation to prevent exceptions from possibly being
+      overwritten, and objects from being dereferenced twice.
+    - gh-105375: Fix bug in decimal where an exception could end up
+      being overwritten.
+    - gh-105375: Fix bugs in _datetime where exceptions could be
+      overwritten in case of module initialisation failure.
+    - gh-105375: Fix bugs in _ssl initialisation which could lead to
+      leaked references and overwritten exceptions.
+    - gh-105375: Fix a bug in array.array where an exception could end
+      up being overwritten.
+    - gh-105375: Fix bugs in _ctypes where exceptions could end up
+      being overwritten.
+    - gh-105375: Fix a bug in the posix module where an exception
+      could be overwritten.
+    - gh-105375: Fix bugs in _elementtree where exceptions could be
+      overwritten.
+    - gh-105375: Fix bugs in zoneinfo where exceptions could be
+      overwritten.
+    - gh-105375: Fix bugs in pickle where exceptions could be
+      overwritten.
+    - gh-105497: Fix flag inversion when alias/mask members exist.
+    - gh-105375: Fix bugs in pickle where exceptions could be
+      overwritten.
+    - gh-103171: Revert undocumented behaviour change with
+      runtime-checkable protocols decorated with typing.final() in
+      Python 3.11. The behaviour change had meant that objects would
+      not be considered instances of these protocols at runtime unless
+      they had a __final__ attribute. Patch by Alex Waygood.
+    - gh-105375: Fix a bug in sqlite3 where an exception could be
+      overwritten in the collation callback.
+    - gh-105332: Revert pickling method from by-name back to by-value.
+    - gh-104554: Add RTSPS scheme support in urllib.parse
+    - gh-100061: Fix a bug that causes wrong matches for regular
+      expressions with possessive qualifier.
+    - gh-102541: Hide traceback in help() prompt, when import failed.
+    - gh-99203: Restore following CPython <= 3.10.5 behavior of
+      shutil.make_archive(): do not create an empty archive if
+      root_dir is not a directory, and, in that case, raise
+      FileNotFoundError or NotADirectoryError regardless of format
+      choice. Beyond the brought-back behavior, the function may now
+      also raise these exceptions in dry_run mode.
+    - gh-94777: Fix hanging multiprocessing ProcessPoolExecutor when a
+      child process crashes while data is being written in the call
+      queue.
+    - bpo-18319: Ensure gettext(msg) retrieve translations even if a
+      plural form exists. In other words: gettext(msg) ==
+      ngettext(msg, '', 1).
+  - Documentation
+    - gh-107008: Document the curses module variables LINES and COLS.
+    - gh-106948: Add a number of standard external names to
+      nitpick_ignore.
+    - gh-54738: Add documentation on how to localize the argparse
+      module.
+  - Tests
+    - gh-105776: Fix test_cppext when the C compiler command -std=c11
+      option: remove -std= options from the compiler command. Patch by
+      Victor Stinner.
+    - gh-107237: test_logging: Fix test_udp_reconnection() by
+      increasing the timeout from 100 ms to 5 minutes (LONG_TIMEOUT).
+      Patch by Victor Stinner.
+    - gh-101634: When running the Python test suite with -jN option,
+      if a worker stdout cannot be decoded from the locale encoding
+      report a failed testn so the exitcode is non-zero. Patch by
+      Victor Stinner.
+  - Build
+    - gh-107814: When calling find_python.bat with -q it did not
+      properly silence the output of nuget. That is now fixed.
+    - gh-106881: Check for linux/limits.h before including it in
+      Modules/posixmodule.c.
+    - gh-104692: Include commoninstall as a prerequisite for
+      bininstall
+    - This ensures that commoninstall is completed before bininstall
+      is started when parallel builds are used (make -j install), and
+      so the python3 symlink is only installed after all standard
+      library modules are installed.
+    - gh-100340: Allows -Wno-int-conversion for wasm-sdk 17 and
+      onwards, thus enables building WASI builds once against the
+      latest sdk.
+  - Windows
+    - gh-106242: Fixes realpath() to behave consistently when passed a
+      path containing an embedded null character on Windows. In strict
+      mode, it now raises OSError instead of the unexpected
+      ValueError, and in non-strict mode will make the path absolute.
+    - gh-106844: Fix integer overflow in _winapi.LCMapStringEx() which
+      affects ntpath.normcase().
+    - gh-99079: Update Windows build to use OpenSSL 3.0.9
+    - gh-105436: Ensure that an empty environment block is terminated
+      by two null characters, as is required by Windows.
+  - macOS
+    - gh-107565: Update macOS installer to use OpenSSL 3.0.10.
+    - gh-99079: Update macOS installer to use OpenSSL 3.0.9.
+  - Tools/Demos
+    - gh-107565: Update multissltests and GitHub CI workflows to use
+      OpenSSL 1.1.1v, 3.0.10, and 3.1.2.
+    - gh-95065: Argument Clinic now supports overriding automatically
+      generated signature by using directive @text_signature. See How
+      to override the generated signature.
+    - gh-106970: Fix bugs in the Argument Clinic destination <name>
+      clear command; the destination buffers would never be cleared,
+      and the destination directive parser would simply continue to
+      the fault handler after processing the command. Patch by Erlend
+      E. Aasland.
+  - C API
+    - gh-107916: C API functions PyErr_SetFromErrnoWithFilename(),
+      PyErr_SetExcFromWindowsErrWithFilename() and
+      PyErr_SetFromWindowsErrWithFilename() save now the error code
+      before calling PyUnicode_DecodeFSDefault().
+    - gh-107915: Such C API functions as PyErr_SetString(),
+      PyErr_Format(), PyErr_SetFromErrnoWithFilename() and many others
+      no longer crash or ignore errors if it failed to format the
+      error message or decode the filename. Instead, they keep a
+      corresponding error.
+    - gh-107226: PyModule_AddObjectRef() is now only available in the
+      limited API version 3.10 or later.
+    - gh-105375: Fix a bug in PyErr_WarnExplicit() where an exception
+      could end up being overwritten if the API failed internally.
+    - gh-99612: Fix PyUnicode_DecodeUTF8Stateful() for ASCII-only
+      data: *consumed was not set.
+
+-------------------------------------------------------------------
 Thu Aug 10 09:33:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - restrict PEP668 to ALP/Tumbleweed 
