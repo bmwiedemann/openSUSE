@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Sep  7 16:23:23 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.7:
+  *  new   : added balance mode for statistics total report
+  *  new   : added fulfilled column for budget report
+  *  new   : added back the Custom indicator in Date Range widget
+  *  new   : added the date as last sort in case of prior equality
+     for transaction list
+  *  new   : added two preferences parameters to be more flexible
+     with currency rate api
+  *  new   : added abbreviated weekday in date input widget
+  *  change: migrating to GTK4 preparation
+     (GtkContainer/GdkEvent/...)
+  *  change: the currency rate api to exchangerate.host
+  *  change: numerous optimization and refactoring for report
+     computing
+  *  change: home scheduled: moved the maximum post date to an
+     info icon tooltip
+  *  change: avoid refreshing undisplayed items on the home main
+     window
+  *  change: chart legend is hidden when not enough space to
+     display chart
+  *  change: export PDF of transaction migrated to a standard
+     print feature
+  *  wish  : lp#2030322 add weekday display in date input 
+  *  wish  : lp#2024956 sort the scheduled transaction by date
+     order
+  *  wish  : lp#2028464 manage account add sort header, search
+     and website 
+  *  wish  : lp#2023477 stack chart to display income above and
+     expense below
+  *  wish  : lp#2019193 preference to sync transfer status by
+     default
+  *  wish  : lp#2018680 replace  * *PREFILLED** for new
+     assignement/archive from register with added icon
+  *  wish  : lp#2018174 change currency rate api to a more
+     fulfilled one
+  *  wish  : lp#2008641 add a duplicate assignment action 
+  *  wish  : lp#2004078 print option missing in Show all
+  *  wish  : lp#1964434 optimize the legend position to maximize
+     chart size
+  *  wish  : lp#1933165 budget report includes
+     Category & Subcategory
+  *  wish  : lp#1932198 pdf print txn report, custom title, total
+     and portrait/paysage 
+  *  wish  : lp#1918459 adding pdf print function - show the
+     result as a list 
+  *  wish  : lp#1912973 ability to print "Your accounts" list
+     in main window 
+  *  wish  : lp#1909851 filter scheduled operations add Next
+     payout (max post date)
+  *  wish  : lp#1857890 home chart to show account balance
+     total/time
+  *  wish  : lp#1816389 home chart to show spending by month
+  *  wish  : lp#1783645 chart drill down for categories
+  *  wish  : lp#588864 budget report over time (month)
+  *  wish  : lp#121510 cash flow forecast
+  *  bugfix: lp#2030333 account not sorted by position in import
+     assistant
+  *  bugfix: lp#2024322 currency online update not working
+  *  bugfix: lp#2018726 budget report should be bounded to month
+- Update BuildRequires minimum versions for glib-2.0, gtk+-3.0
+  and libsoup-2.4
+
+-------------------------------------------------------------------
 Tue Aug  8 05:15:14 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.6.6:
