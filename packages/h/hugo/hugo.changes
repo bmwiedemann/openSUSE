@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Sep 07 22:11:04 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.118.2:
+  * release: Revert to building with Go 1.20
+
+-------------------------------------------------------------------
+Thu Sep 07 22:09:28 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.118.1:
+  * Revert to bullseye as the release build image
+
+-------------------------------------------------------------------
+Thu Sep 07 22:08:58 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.118.0:
+  * docs: Regen docs helper
+  * Don't use the OS environment when creating config for docs
+  * Delay the creation of cache directories until they're used
+  * deploy: Create AWS session for CloudFront invalidation via Go CDK
+  * markup/goldmark: Add CJK extension
+  * build(deps): bump google.golang.org/api from 0.134.0 to 0.138.0
+  * Fix RegularPagesRecursive for the home page
+  * build(deps): bump golang.org/x/tools from 0.11.1 to 0.12.0
+  * build(deps): bump gocloud.dev from 0.33.0 to 0.34.0
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.9 to 2.1.0
+  * testscripts: Move hugo new tests to where they belong
+  * Fix .RawContent for empty content pages (#11407)
+  * hugolib: Handle dropped error
+  * common/loggers: Fix typo in option name
+  * misc: Change dart-sass labels in workflows and snapcraft
+  * Make sure resources directory isn't created in hugo new theme
+  * Go 1.21 Upgrade
+  * testscripts: Make mod vendor test stable
+  * dockerfile: Update Docker images
+  * Fix it so disable a module does not disable transitive dependency required by others
+  * create/skeletons: Move theme's site config to top level
+  * build(deps): bump github.com/yuin/goldmark from 1.5.5 to 1.5.6
+  * modules: Make new cache directories read/write
+  * deploy: Update InvalidateCloudFront to use Go CDK helper
+  * Avoid escaping HTML chars inside hugo_stats.json
+  * commands/new: Embed site and theme skeletons
+  * docshelper: Improve template lookup order descriptions
+  * build(deps): bump github.com/evanw/esbuild from 0.18.17 to 0.19.2
+  * cache: Hide IsResourceDir from the exported config
+  * commands: Handle floats without decimals in hugo config
+  * docs: Replace docs.json with docs.yaml
+  * config: Add a type value for the tags related config entry
+
+-------------------------------------------------------------------
 Wed Aug 09 19:38:59 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.117.0:
