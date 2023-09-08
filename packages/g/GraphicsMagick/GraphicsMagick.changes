@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Fri Sep  1 13:19:26 UTC 2023 - pgajdos@suse.com
+
+- revert to 1.3.40 [bsc#1214831]
+  https://sourceforge.net/p/graphicsmagick/news/2023/08/because-1341-is-discarded-i-has-been-published-2-builds-for-win32-architecture/
+- modified patches
+  % GraphicsMagick-disable-insecure-coders.patch (refreshed)
+- deleted patches
+  - GraphicsMagick-fix-regression-NULL-instead-of-empty-string.patch (not needed)
+  - GraphicsMagick-name-key-return-input-file-base-name.patch (not needed)
+
+-------------------------------------------------------------------
+Mon Aug 28 12:41:40 UTC 2023 - pgajdos@suse.com
+
+- fix regression in 1.3.41
+  https://sourceforge.net/p/graphicsmagick/bugs/722/
+- added patches
+  fix 17179:91afa18a6161
+  + GraphicsMagick-fix-regression-NULL-instead-of-empty-string.patch
+  fix 17180:bb42cd90ce6f
+  + GraphicsMagick-name-key-return-input-file-base-name.patch
+
+-------------------------------------------------------------------
+Thu Aug 24 11:54:37 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.3.41
+  Bug fixes:
+  * Blob: Immediately reject attempts to write blobs to formats which
+    can not support blobs.
+  * TranslateTextEx(): An empty string argument should return an empty
+    string rather than a NULL string.
+  * SetImageAttribute(): Fix bounds issue when concatenating string.
+  * JPEG: Do not set image resolution if the values provided are outside
+    of the valid range.
+  * Fixes for NaN when reading formats based on floating point.
+  * HEIF: Fix reading images with rotation/transformation.
+  * BMP: Do not decode primaries or gamma unless colorspace is
+    LCS_CALIBRATED_RGB.  Add/correct bmp_info.size "biSize" logic which
+    decides if header chunks are present (or invalid).
+  * MNG: Fixes for resizing using X_method 5.
+  * GM command (convert, montage, mogrify): Many command-line parser
+    fixes/checks for invalid command line syntax which causes unexpected
+    behavior, or core dumps.
+  
+  * TopoL: Given that a writer is now provided, issues found in the
+    reader (and writer) due to continual fuzz-testing have been fixed,
+    as encountered.
+  * GetImageClippingPathAttribute(): Check for and use clipping path
+    name (ID=2999) to get the real attribute name.
+  * ReadIPTCProfile(): Fix malformed IPTC data parsing.
+  New Features:
+  * TopoL: Now provides a writer.
+  * WPG: Now provides a writer.
+  * gm batch: Implement simple Test Anything Protocol (TAP) test
+    counting and "ok N"/"not ok N" messaging.
+  * TIFF: Support '-define tiff:photometric=minisblack' and '-define
+    tiff:photometric=miniswhite' to be able to adjust the sense used
+    when writing bilevel TIFF images.
+  * TIFF: Require that TIFFTAG_EXTRASAMPLES be used appropriately to
+    indicate the intention of extra channels.
+  * utilities/tests/gen-tiff-images/genimages: Script for writing (and
+    then reading) thousands (5568 permutations) of TIFF format variants.
+  * EXIF and PNG: Retrieve image orientation from EXIF (if present) and
+    store in image.
+  * HEIF: Retrieve image orientation from EXIF and store in image.
+  Behavior Changes:
+  * The ability to extend existing image attribute text by calling
+    SetImageAttribute() multiple times with the same key is now
+    deprecated, and will soon be removed.  In the mean time, the
+    annoying message "SetImageAttribute: Extending attribute value text
+    is deprecated!"  is printed to the standard error output to help
+    expose code which is using this feature.
+- modified patches
+  % GraphicsMagick-disable-insecure-coders.patch (refreshed)
+- deleted patches
+  - strlcpy-wrong-sizing.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Aug  8 08:23:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add strlcpy-wrong-sizing.patch: fix incorrect usages of
