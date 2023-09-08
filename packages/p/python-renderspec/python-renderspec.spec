@@ -1,7 +1,7 @@
 #
 # spec file for package python-renderspec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/renderspec
 Source0:        https://files.pythonhosted.org/packages/source/r/renderspec/renderspec-%{version}.tar.gz
+Patch1:         0001-Allow-selecting-suse_39-template.patch
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Jinja2 >= 2.10
 BuildRequires:  python3-ddt
@@ -77,7 +78,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{py3_install}
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-renderspec
 %license LICENSE

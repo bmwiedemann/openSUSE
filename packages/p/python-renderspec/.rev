@@ -172,4 +172,12 @@
     <comment>- remove unused dependencies</comment>
     <requestid>1039271</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>46bb4fc9ca56203db3e299b36e91a4d2</srcmd5>
+    <version>2.2.0</version>
+    <time>1694200527</time>
+    <user>anag+factory</user>
+    <comment>- added 0001-Allow-selecting-suse_39-template.patch</comment>
+    <requestid>1109584</requestid>
+  </revision>
 </revisionlist>
