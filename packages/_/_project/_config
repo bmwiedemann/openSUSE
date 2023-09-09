@@ -456,6 +456,7 @@ FileProvides: /usr/bin/vulkaninfo vulkan-tools
 FileProvides: /usr/bin/wayland-info wayland-utils
 FileProvides: /usr/bin/wc busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/which busybox-which which
+FileProvides: /usr/bin/who coreutils-systemd
 FileProvides: /usr/bin/wish tk
 FileProvides: /usr/bin/xargs busybox-findutils findutils
 FileProvides: /usr/bin/xdg-desktop-icon xdg-utils
@@ -1729,6 +1730,7 @@ BuildFlags: onlybuild:colord
 BuildFlags: onlybuild:compat-usrmerge
 BuildFlags: onlybuild:console-setup
 BuildFlags: onlybuild:coreutils
+BuildFlags: onlybuild:coreutils:systemd
 BuildFlags: onlybuild:corosync
 BuildFlags: onlybuild:cpio
 BuildFlags: onlybuild:cppunit
