@@ -1,7 +1,7 @@
 #
 # spec file for package libportal
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libportal
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        A GIO-style async APIs for most Flatpak portals
 License:        LGPL-3.0-or-later

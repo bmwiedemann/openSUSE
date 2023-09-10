@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  6 21:00:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.7:
+  + Add support for the new SetStatus() method of the Background
+    portal.
+  + Add support for the new ConnectToEIS() method of the Remote
+    Desktop portal.
+  + Improve unit and integration tests.
+  + Documentation improvements.
+  + CI improvements.
+
+-------------------------------------------------------------------
 Mon Mar 21 19:31:57 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.6:
