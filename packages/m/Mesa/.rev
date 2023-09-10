@@ -5368,4 +5368,18 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1105975</requestid>
   </revision>
+  <revision rev="485" vrev="357">
+    <srcmd5>3ce14789909608e1e024d4f3a5f70422</srcmd5>
+    <version>unknown</version>
+    <time>1694344175</time>
+    <user>anag+factory</user>
+    <comment>- Update to bugfix release 23.1.7:
+  --&gt; https://docs.mesa3d.org/relnotes/23.1.7.html
+
+- mini-cleanup for python package BuildRequires in specfile
+- added python3-dataclasses package for sle15/Leap15 to finally fix
+  build for these build targets; dataclasses module is in standard
+  library of python &gt;= 3.7 ...</comment>
+    <requestid>1109717</requestid>
+  </revision>
 </revisionlist>

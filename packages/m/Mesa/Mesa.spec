@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 23.1.6
+%define _version 23.1.7
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -123,7 +123,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        23.1.6
+Version:        23.1.7
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -163,11 +163,11 @@ BuildRequires:  memory-constraints
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
-%if 0%{?suse_version} > 1320
-BuildRequires:  python3-mako
-%else
-BuildRequires:  python3-Mako
+# dataclasses is in standard library of python >= 3.7
+%if 0%{?suse_version} < 1550
+BuildRequires:  python3-dataclasses
 %endif
+BuildRequires:  python3-Mako
 BuildRequires:  python3-xml
 BuildRequires:  pkgconfig(dri2proto)
 BuildRequires:  pkgconfig(dri3proto)
