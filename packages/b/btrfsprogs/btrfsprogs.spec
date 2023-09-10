@@ -34,7 +34,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           btrfsprogs
-Version:        6.3
+Version:        6.5
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only
@@ -55,7 +55,6 @@ Provides:       btrfs-progs = %{version}-%{release}
 Provides:       btrfs-progs(%_arch) = %{version}-%{release}
 
 Patch1:         mkfs-default-features.patch
-Patch2:         btrfs-progs-qgroup-show-fix-formatting-of-limit-valu.patch
 
 %if %build_docs
 BuildRequires:  python3-Sphinx
@@ -198,6 +197,8 @@ Summary:        Bash completion for btrfsprogs
 Group:          System/Shells
 Requires:       %{name}
 Requires:       bash-completion
+# versions below 6.2.1 had bash completion files builtin and will create a file conflict
+Conflicts:      %{name} <= 6.2.1
 %if 0%{?suse_version} >= 1500
 Supplements:    (%{name} and bash-completion)
 %else
@@ -208,9 +209,7 @@ Supplements:    packageand(%{name}:bash-completion)
 bash command line completion support for btrfsprogs.
 
 %prep
-%setup -q -n btrfs-progs-v%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n  btrfs-progs-v%{version}
 
 %build
 ./autogen.sh

@@ -1345,4 +1345,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1212217 - ABI break</comment>
     <requestid>1108408</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>fbd137f4518efdb4723e378bf288b1c5</srcmd5>
+    <version>6.5</version>
+    <time>1694344176</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.5: (forwarded request 1108466 from dsterba)</comment>
+    <requestid>1108467</requestid>
+  </revision>
 </revisionlist>

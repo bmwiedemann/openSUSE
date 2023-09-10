@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri Sep  1 00:00:00 CEST 2023 - dsterba@suse.cz
+
+- update to 6.5:
+  * crc32c implementation speedup (3x)
+  * btrfstune:
+    * be more strict about option combinations and refuse changing
+      features from incompatible groups
+    * metadata_uuid changes fixes
+  * libbtrfs: fix ABI breakage introduced in 6.3.1, revert struct subvol_info
+    and subvol_uuid_search changes (bsc#1212217)
+  * CI updates
+    * pull request build tests enabled
+    * published static binaries built with backward compatibility (-march=x86-64)
+  * other
+    * documentation updates
+    * new and updated tests
+    * experimental feature updates (json, list-chunks, checksum switch)
+    * code refactoring
+    * remove btrfs-fragments
+
+-------------------------------------------------------------------
+Mon Aug 28 00:00:00 CEST 2023 - dsterba@suse.cz
+
+- update to 6.3.3:
+  * add btrfs-find-root to btrfs.box
+  * replace: properly enqueue if there's another replace running
+  * other:
+    * CI updates, more tests enabled, code coverage, badges
+    * documentation updates
+    * build warning fixes
+
+-------------------------------------------------------------------
+Thu Jul  6 13:45:20 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Let btrfsprogs-bash-completion conflict with btrfsprogs <= 6.2.1
+  as there is a file conflict with the bash completion scripts
+  still being bundled with btrfsprogs in these versions.
+
+-------------------------------------------------------------------
+Tue Jun 20 07:12:59 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 6.3.2:
+  * fix mkfs and others on big endian hosts
+  * mkfs: don't print changed defaults notice with --quiet
+  * scrub: fix wrong stats of processed bytes in background and foreground mode
+  * convert: actually create free-space-tree instead of v1 space cache
+  * print-tree: recognize and print CHANGING_FSID_V2 flag (for the
+    metadata_uuid change in progress)
+  * other: documentation updates
+- update to 6.3.1:
+  * convert: fix checksum of a block relocated from 0-1M range
+  * qgroup show: fix formatting of limit values in json output
+  * receive: report paret subovl UUID on errors
+  * btrfsune: new option --convert-to-free-space-tree to convert from
+    block-group-tree back to extent tree for block group tracking
+  * mkfs: make option --rootdir more verbose and report start when filling
+    from the given directory starts
+  * experimental:
+    * btrfstune: checksum switch logic reimplemented, conversion of all
+      metadata and data now works, resume from various states also supported
+  * other:
+    * test updates and fixes
+    * CI cleanups and old files removed
+    * integration with Github actions
+- Remove patch: btrfs-progs-qgroup-show-fix-formatting-of-limit-valu.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon May 29 00:00:00 CEST 2023 - dsterba@suse.cz
 
 - qgroup show: fix formatting of limit values in json output (bsc#1206960,
