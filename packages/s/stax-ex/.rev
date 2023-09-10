@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1000809</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b843936504c8b416ce8a622edc6d62bf</srcmd5>
+    <version>1.8</version>
+    <time>1694344263</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109998</requestid>
+  </revision>
 </revisionlist>

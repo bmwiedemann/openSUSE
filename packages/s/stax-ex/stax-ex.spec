@@ -1,7 +1,7 @@
 #
 # spec file for package stax-ex
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,7 +80,9 @@ popd
 %build
 pushd %{name}
 
-%{mvn_build} -f -- -Dproject.build.sourceEncoding=UTF-8 -Dsource=8
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dproject.build.sourceEncoding=UTF-8 -Dsource=8
 popd
 
 %install
