@@ -60,7 +60,8 @@ This package contains API documentation for %{name}.
 %pom_change_dep :mockito-core :::test
 
 %build
-%{mvn_build} -f
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
 
 %install
 %mvn_install

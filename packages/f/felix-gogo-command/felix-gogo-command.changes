@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  9 13:23:24 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Fri Feb 10 08:13:33 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 1.1.2
