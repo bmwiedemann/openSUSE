@@ -31,4 +31,12 @@
     <comment>4.2.1 without bea-stax dep</comment>
     <requestid>1105911</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>92037e98fd458020500ee55cef850673</srcmd5>
+    <version>4.2.1</version>
+    <time>1694344262</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109997</requestid>
+  </revision>
 </revisionlist>
