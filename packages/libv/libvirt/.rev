@@ -4427,4 +4427,17 @@ StandardGroups in rpmlint package.
 - spec: Disable numad support in ALP-based products</comment>
     <requestid>1105960</requestid>
   </revision>
+  <revision rev="383" vrev="1">
+    <srcmd5>54d34a8656f361c545650992924a57f6</srcmd5>
+    <version>9.7.0</version>
+    <time>1694344191</time>
+    <user>anag+factory</user>
+    <comment>- Update to libvirt 9.7.0 (jsc#PED-3279)
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-7-0-2023-09-01
+- spec: Unconditionally enable modular daemons (jsc#PED-6303)
+- spec: ESX hypervisor driver in ALP-based products
+- spec: Disable glusterfs storage backend in ALP-based products</comment>
+    <requestid>1109743</requestid>
+  </revision>
 </revisionlist>
