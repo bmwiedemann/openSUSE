@@ -79,4 +79,12 @@
     <comment>Fix build with newer plexus-archiver</comment>
     <requestid>1109296</requestid>
   </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>fcd53911e117947708570e337ef32e36</srcmd5>
+    <version>1.6.0</version>
+    <time>1694344269</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1110002</requestid>
+  </revision>
 </revisionlist>
