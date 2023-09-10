@@ -485,4 +485,12 @@
     <comment>3.43.0.0</comment>
     <requestid>1108494</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e35edae9e71b0fd6afcfee498b2740f4</srcmd5>
+    <version>3.43.0.0</version>
+    <time>1694344261</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109996</requestid>
+  </revision>
 </revisionlist>

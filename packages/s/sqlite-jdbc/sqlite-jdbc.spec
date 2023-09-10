@@ -77,7 +77,8 @@ cp %{SOURCE1} target/sqlite-$(sed -e 's/^version=//' VERSION)-amal.zip
 
 %build
 %make_build native
-%{mvn_build} -f
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
 
 %install
 %mvn_install
