@@ -111,4 +111,12 @@
     <comment>javax.activation is only a transitive dependency</comment>
     <requestid>982388</requestid>
   </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>4ca89562af523025e2f81d346018d8be</srcmd5>
+    <version>3.10.6</version>
+    <time>1694344256</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109989</requestid>
+  </revision>
 </revisionlist>
