@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  9 14:30:59 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Tue May 23 21:36:17 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Do not require sun.nio.ch package that we access by reflection

@@ -31,4 +31,12 @@
     <comment>Don't require sun.nio.misc package</comment>
     <requestid>1089738</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>eb3dc1f6488f14864cf6b6aa668e081b</srcmd5>
+    <version>3.1.16</version>
+    <time>1694344249</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109979</requestid>
+  </revision>
 </revisionlist>
