@@ -149,4 +149,14 @@ versioned.patch: refreshed</comment>
 - nodejs.keyring: updated to include current upstream releasers</comment>
     <requestid>1109025</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>36d8330af7b237e832e11e192f1a97b6</srcmd5>
+    <version>20.6.0</version>
+    <time>1694344173</time>
+    <user>anag+factory</user>
+    <comment>- f0ff63fbc32ea55f3d92c5c89fdb91ec47786859.patch: fixes issues with
+  Angular and other software that tries to load ECM modules in
+  somewhat circular fashion ending up with multiple executions.</comment>
+    <requestid>1109713</requestid>
+  </revision>
 </revisionlist>

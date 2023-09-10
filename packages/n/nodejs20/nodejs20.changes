@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  8 10:46:20 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- f0ff63fbc32ea55f3d92c5c89fdb91ec47786859.patch: fixes issues with
+  Angular and other software that tries to load ECM modules in
+  somewhat circular fashion ending up with multiple executions.
+
+-------------------------------------------------------------------
 Tue Sep  5 09:29:49 UTC 2023 - Adam Majer <adam.majer@suse.de> - 20.6.0
 
 - Update to 20.6.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs20
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+###########################################################
+#
+#   WARNING! WARNING! WARNING! WARNING! WARNING! WARNING!
+#
+# This spec file is generated from a template hosted at
+# https://github.com/AdamMajer/nodejs-packaging
+#
+###########################################################
 
+# Fedora doesn't have rpm-config-SUSE which provides
+# ext_man in /usr/lib/rpm/macros.d/macros.obs
 %if 0%{?fedora_version}
 %define ext_man .gz
 %endif
@@ -119,12 +129,12 @@ Source1:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt
 Source2:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt.sig
 Source3:        nodejs.keyring
 
-# Python 3.4 compatible node-gyp
-### https://github.com/nodejs/node-gyp.git
-### git archive v7.1.2 | xz > node-gyp_7.1.2.tar.xz
-Source5:        node-gyp_7.1.2.tar.xz
-# Only required to run unit tests in NodeJS 10+
-Source10:       update_npm_tarball.sh
+# Python 3.4 compatible node-gyp 
+### https://github.com/nodejs/node-gyp.git 
+### git archive v7.1.2 | xz > node-gyp_7.1.2.tar.xz 
+Source5:        node-gyp_7.1.2.tar.xz 
+# Only required to run unit tests in NodeJS 10+ 
+Source10:       update_npm_tarball.sh 
 Source11:       node_modules.tar.xz
 Source20:       bash_output_helper.bash
 
@@ -134,6 +144,8 @@ Patch3:         fix_ci_tests.patch
 Patch5:         sle12_python3_compat.patch
 Patch7:         manual_configure.patch
 Patch13:        openssl_binary_detection.patch
+
+
 
 ## Patches specific to SUSE and openSUSE
 Patch100:       linker_lto_jobs.patch
@@ -161,9 +173,10 @@ Patch305:       qemu_timeouts_arches.patch
 Patch308:       node-gyp-config.patch
 Patch309:       gcc13.patch
 Patch311:       z13.patch
+Patch312:       f0ff63fbc32ea55f3d92c5c89fdb91ec47786859.patch
 
-BuildRequires:  fdupes
 BuildRequires:  pkg-config
+BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  xz
 BuildRequires:  zlib-devel
@@ -183,10 +196,10 @@ BuildRequires:  config(netcfg)
 %if 0%{?suse_version} == 1110
 # GCC 5 is only available in the SUSE:SLE-11:SP4:Update repository (SDK).
 %if %node_version_number >= 8
-BuildRequires:  gcc5-c++
+BuildRequires:   gcc5-c++
 %define forced_gcc_version 5
 %else
-BuildRequires:  gcc48-c++
+BuildRequires:   gcc48-c++
 %define forced_gcc_version 4.8
 %endif
 %endif
@@ -196,15 +209,15 @@ BuildRequires:  gcc48-c++
 # for SLE-12:Update targets
 %if 0%{?suse_version} == 1315
 %if %node_version_number >= 17
-BuildRequires:  gcc12-c++
+BuildRequires:   gcc12-c++
 %define forced_gcc_version 12
 %else
 %if %node_version_number >= 14
-BuildRequires:  gcc9-c++
+BuildRequires:   gcc9-c++
 %define forced_gcc_version 9
 %else
 %if %node_version_number >= 8
-BuildRequires:  gcc7-c++
+BuildRequires:   gcc7-c++
 %define forced_gcc_version 7
 %endif
 %endif
@@ -213,7 +226,7 @@ BuildRequires:  gcc7-c++
 
 %if 0%{?suse_version} == 1500
 %if %node_version_number >= 17
-BuildRequires:  gcc12-c++
+BuildRequires:   gcc12-c++
 %define forced_gcc_version 12
 %endif
 %endif
@@ -223,6 +236,7 @@ BuildRequires:  gcc12-c++
 %if ! 0%{?forced_gcc_version:1}
 BuildRequires:  gcc-c++
 %endif
+
 
 # Python dependencies
 %if %node_version_number >= 14
@@ -249,8 +263,8 @@ BuildRequires:  python
 %endif
 
 %if 0%{?suse_version} >= 1500 && %{node_version_number} >= 10
-BuildRequires:  group(nobody)
 BuildRequires:  user(nobody)
+BuildRequires:  group(nobody)
 %endif
 
 # shared openssl
@@ -265,9 +279,10 @@ BuildRequires:  openssl >= %{openssl_req_ver}
 BuildRequires:  (libopenssl1_1-hmac if libopenssl-1_1-devel)
 BuildRequires:  (libopenssl3-hmac if libopenssl-3-devel)
 %else
-BuildRequires:  libopenssl1_1-hmac
 BuildRequires:  openssl-1_1 >= %{openssl_req_ver}
+BuildRequires:  libopenssl1_1-hmac
 %endif
+
 
 # /suse_version
 %endif
@@ -312,7 +327,7 @@ BuildRequires:  valgrind
 %if %{with libalternatives}
 Suggests:       alts
 %else
-Requires(postun):%{_sbindir}/update-alternatives
+Requires(postun): %{_sbindir}/update-alternatives
 %endif
 # either for update-alternatives, or their removal
 Requires(post): %{_sbindir}/update-alternatives
@@ -351,8 +366,8 @@ ExclusiveArch:  not_buildable
 %endif
 %endif
 
-Provides:       bundled(libuv) = 1.46.0
 Provides:       bundled(uvwasi) = 0.0.18
+Provides:       bundled(libuv) = 1.46.0
 Provides:       bundled(v8) = 11.3.244.8
 %if %{with intree_brotli}
 Provides:       bundled(brotli) = 1.0.9
@@ -360,9 +375,10 @@ Provides:       bundled(brotli) = 1.0.9
 BuildRequires:  pkgconfig(libbrotlidec)
 %endif
 
-Provides:       bundled(base64) = 0.5.0
+
 Provides:       bundled(llhttp) = 8.1.1
 Provides:       bundled(ngtcp2) = 0.8.1
+Provides:       bundled(base64) = 0.5.0
 Provides:       bundled(simdutf) = 3.2.17
 # bundled url-ada parser, not ada
 Provides:       bundled(ada) = 2.6.0
@@ -387,8 +403,8 @@ provided by npm.
 Summary:        Development headers for NodeJS 20.x
 Group:          Development/Languages/NodeJS
 Provides:       nodejs-devel = %{version}
-Requires:       %{name} = %{version}
 Requires:       npm20 = %{version}
+Requires:       %{name} = %{version}
 
 %description devel
 This package provides development headers for Node.js needed for creation
@@ -405,12 +421,12 @@ Requires:       nodejs-common
 Requires:       nodejs20 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm = %{version}
 Provides:       npm(npm) = 9.8.1
+Provides:       npm = %{version}
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
-Requires:       group(nobody)
 Requires:       user(nobody)
+Requires:       group(nobody)
 %endif
 %endif
 Provides:       bundled(node-abbrev) = 1.1.1
@@ -596,9 +612,9 @@ Provides:       bundled(node-spdx-exceptions) = 2.3.0
 Provides:       bundled(node-spdx-expression-parse) = 3.0.1
 Provides:       bundled(node-spdx-license-ids) = 3.0.13
 Provides:       bundled(node-ssri) = 10.0.4
+Provides:       bundled(node-string_decoder) = 1.3.0
 Provides:       bundled(node-string-width) = 4.2.3
 Provides:       bundled(node-string-width) = 5.1.2
-Provides:       bundled(node-string_decoder) = 1.3.0
 Provides:       bundled(node-strip-ansi) = 6.0.1
 Provides:       bundled(node-strip-ansi) = 7.1.0
 Provides:       bundled(node-supports-color) = 9.4.0
@@ -707,6 +723,7 @@ popd
 %patch305 -p1
 %patch309 -p1
 %patch311 -p1
+%patch312 -p1
 
 %if %{node_version_number} == 12
 # minimist security update - patch50
@@ -719,6 +736,8 @@ find -name \*~ -print0 -delete
 
 # abnormalities from patching
 find \( -name \*.js.orig -or -name \*.md.orig -or -name \*.1.orig \) -delete
+
+
 
 %build
 # normalize shebang
@@ -1079,7 +1098,6 @@ update-alternatives --remove npm-default %{_bindir}/npm%{node_version_number}
 update-alternatives --remove npx-default %{_bindir}/npx%{node_version_number}
 
 %else
-
 %pre
 # remove files that are no longer owned but provided by update-alternatives
 if ! [ -L %{_mandir}/man1/node.1%{ext_man} ]; then
