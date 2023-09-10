@@ -1148,4 +1148,29 @@
 </comment>
     <requestid>1108105</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>f4366ae36aa4bfc07831c8afd2d273d9</srcmd5>
+    <version>7.2.5</version>
+    <time>1694344171</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.2.5:
+  * #11645: Fix a regression preventing autodoc from importing
+    modules within packages that make use of
+    ``if typing.TYPE_CHECKING:`` to guard circular imports
+    needed by type checkers.
+  * #11634: Fixed inheritance diagram relative link resolution
+    for sibling files in a subdirectory.
+  * #11659: Allow ``?config=...`` in :confval:`mathjax_path`.
+  * #11654: autodoc: Fail with a more descriptive error message
+    when an object claims to be an instance of ``type``,
+    but is not a class.
+  * 11620: Cease emitting :event:`source-read` events for files
+    read via the :dudir:`include` directive.
+  * 11620: Add a new :event:`include-read` for observing and
+    transforming the content of included files via the :dudir:`include`
+    directive.
+  * #11627: Restore support for copyright lines of the form
+    ``YYYY`` when ``SOURCE_DATE_EPOCH`` is set.</comment>
+    <requestid>1109692</requestid>
+  </revision>
 </revisionlist>
