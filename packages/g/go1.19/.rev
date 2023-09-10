@@ -359,4 +359,27 @@
   * go#61470 cmd/compile: failed to make Go on riscv64 CPU with numa (forwarded request 1101870 from jfkw)</comment>
     <requestid>1101872</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6177787aa11036e2d5944164badfdc0e</srcmd5>
+    <version>1.19.13</version>
+    <time>1694344164</time>
+    <user>anag+factory</user>
+    <comment>- go1.19.13 (released 2023-09-06) includes fixes to the go command,
+  and the crypto/tls and net/http packages.
+  Refs boo#1200441 go1.19 release tracking
+  * go#61197 cmd/go: extended forwards compatibility for Go
+  * go#61825 net/http: go 1.20.6 host validation breaks setting Host to a unix socket address
+  * go#61968 crypto/tls: add GODEBUG to control max RSA key size
+
+- Add missing directory pprof html asset directory to package.
+  Refs boo#1215090
+  * src/cmd/vendor/github.com/google/pprof/internal/driver/html/
+    dir containing html assets is present in upstream Go
+    distribution but missing from SUSE go1.x packages
+  * Go programs importing runtime/pprof may fail with error:
+    /usr/lib64/go/1.21/src/cmd/vendor/github.com/google/pprof/internal/driver/webhtml.go
+    pattern html: no matching files found
+  * Reformat adjacent commment in spec file (forwarded request 1109611 from jfkw)</comment>
+    <requestid>1109620</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep  6 15:08:50 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.19.13 (released 2023-09-06) includes fixes to the go command,
+  and the crypto/tls and net/http packages.
+  Refs boo#1200441 go1.19 release tracking
+  * go#61197 cmd/go: extended forwards compatibility for Go
+  * go#61825 net/http: go 1.20.6 host validation breaks setting Host to a unix socket address
+  * go#61968 crypto/tls: add GODEBUG to control max RSA key size
+
+-------------------------------------------------------------------
+Tue Sep  5 19:12:05 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add missing directory pprof html asset directory to package.
+  Refs boo#1215090
+  * src/cmd/vendor/github.com/google/pprof/internal/driver/html/
+    dir containing html assets is present in upstream Go
+    distribution but missing from SUSE go1.x packages
+  * Go programs importing runtime/pprof may fail with error:
+    /usr/lib64/go/1.21/src/cmd/vendor/github.com/google/pprof/internal/driver/webhtml.go
+    pattern html: no matching files found
+  * Reformat adjacent commment in spec file
+
+-------------------------------------------------------------------
 Tue Aug  1 20:35:02 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.19.12 (released 2023-08-01) includes a security fix to the
