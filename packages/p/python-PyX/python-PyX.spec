@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyX
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,16 +20,18 @@
 %define         skip_python2 1
 %bcond_without  test
 Name:           python-PyX
-Version:        0.15
+Version:        0.16
 Release:        0
 Summary:        Python package for the generation of PostScript, PDF, and SVG files
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://pyx-project.org/
-Source:         https://github.com/pyx-project/pyx/archive/%{version}.tar.gz
+Source:         https://github.com/pyx-project/pyx/archive/%{version}.tar.gz#/PyX-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testfixtures}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  texlive-latex-bin-bin
@@ -55,11 +57,14 @@ built out of these primitives.
 sed -i 's/l.check/l.check_present/' test/unit/test_texmessageparser.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%pyproject_install
+%{python_expand # Cleanups
+chmod -x %{buildroot}%{$python_sitelib}/pyx/data/lfs/createlfs.py
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
 %pytest test/unit
@@ -67,6 +72,7 @@ sed -i 's/l.check/l.check_present/' test/unit/test_texmessageparser.py
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS CHANGES README.md
-%{python_sitelib}/*
+%{python_sitelib}/pyx/
+%{python_sitelib}/PyX-%{version}*-info/
 
 %changelog

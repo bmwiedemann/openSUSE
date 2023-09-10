@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep  8 14:09:29 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.16:
+  * Enable a shortcut for accessing graph-component attributes,
+    simplifying the modification of default components.
+  * Small improvements and several bug fixes, especially for text
+    alignment with TeX Live 2020.
+- Rename source tarball to PyX-%{version}.tar.gz.
+- Use pyproject macros to build; add BuildRequires: python-pip,
+  python-wheel.
+
+-------------------------------------------------------------------
 Fri May  7 12:21:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Ignore unrelated warning during tests introduced by l3backend
