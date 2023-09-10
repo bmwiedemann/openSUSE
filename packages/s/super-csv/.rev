@@ -31,4 +31,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>964364</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>3c6020ce02dfaeb8479d047a4f82e91a</srcmd5>
+    <version>2.4.0</version>
+    <time>1694344264</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109999</requestid>
+  </revision>
 </revisionlist>
