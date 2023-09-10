@@ -1,4 +1,17 @@
 --------------------------------------------------------------------
+Sat Sep 9 03:30:04 UTC 2023 - bittin@opensuse.org
+
+- Translated using Weblate (Swedish) (bsc#1149754)
+- 4.5.141
+
+--------------------------------------------------------------------
+Thu Sep 7 14:08:15 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#947
+- handle json output of btrfs version 6.5
+- 4.5.140
+
+--------------------------------------------------------------------
 Wed Sep 6 09:47:07 UTC 2023 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#946
