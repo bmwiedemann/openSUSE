@@ -1001,4 +1001,16 @@ new request.</comment>
     <comment>Drop downstream-only suse-set-migration-constraints.patch</comment>
     <requestid>1098702</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>a60bf0a03d026d030879512ed7317231</srcmd5>
+    <version>9.7.0</version>
+    <time>1694344196</time>
+    <user>anag+factory</user>
+    <comment>Updated perl bindings for libvirt 9.7.0.
+
+- Update to 9.7.0
+  - Add all new APIs and constants in libvirt 9.7.0
+  - jsc#PED-3279</comment>
+    <requestid>1109745</requestid>
+  </revision>
 </revisionlist>

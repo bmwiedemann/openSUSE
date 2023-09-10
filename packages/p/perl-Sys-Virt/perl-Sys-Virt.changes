@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  8 14:43:07 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- Update to 9.7.0
+  - Add all new APIs and constants in libvirt 9.7.0
+  - jsc#PED-3279
+
+-------------------------------------------------------------------
 Thu Jul  6 20:23:16 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - Drop downstream-only suse-set-migration-constraints.patch
