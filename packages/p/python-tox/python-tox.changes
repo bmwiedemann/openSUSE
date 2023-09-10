@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Sep  4 21:12:18 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Refresh mark-network-tests.patch for 4.11.1.
+- Rewrite optional_devpi_process.patch for 4.11.1.
+- Add explicit numpy built-time dependency, as the one pulled by
+  pytest-randomly was broken.
+- Fix rpmlint warning: package was obsoleting itself.
+- Update to 4.11.1:
+  - Changes from 4.11.1:
+    * Tests: Don't assume Python 3.10 is always installed, use current
+      Python version
+    * Set the --parallel default to "auto", not CPU count
+    * Fix , being used as value parser for env var configs
+  - Changes from 4.11.0:
+    * Fix type checker and bump tools
+    * Add config_settings support for build backend calls
+  - Changes from 4.10.0:
+    * Set basepython for docs env in alignment to Read the Docs
+      default
+    * Document release process
+    * Replace undefined settings with overrides when appending
+    * Accept environments with defined factors or of python selector
+      form - suggest closest
+  - Changes from 4.9.0:
+    * Disallow command line environments which are not explicitly
+      specified in the config file
+  - Changes from 4.8.0:
+    * Correct "notset" typo in --hashseed's --help text
+    * Bump pypa/gh-action-pypi-publish from 1.8.8 to 1.8.10
+    * Allow extending lists with --override foo+=bar
+  - Changes from 4.7.0:
+    * Fix doc alignment and link check
+    * Bump pypa/gh-action-pypi-publish from 1.8.7 to 1.8.8
+    * Update a test regex to work with Python 3.12+
+    * Remove broken link
+    * Add sponsor button for tidelift
+    * Make --hashseed default to PYTHONHASHSEED, if defined
+  - Changes from 4.6.4:
+    * Ensure tox r -e docs generates the documentation
+    * Bump pypa/gh-action-pypi-publish from 1.8.6 to 1.8.7
+    * s/setup.cfg/pyproject.toml/ in the development docs
+    * Fix hang and zombie process on interrupt (CTRL-C)
+  - Changes from 4.6.3:
+    * Made issue template have less whitespace
+    * Docs link of env var subs section to set_env
+    * Removed duplicate text in bug report template
+    * Ensure get_requires hook is called before prepare_metadata
+  - Changes from 4.6.2:
+    * Avoid cache collision between wheel and editable wheel builds
+  - Changes from 4.6.1:
+    * Update usedevelop doc
+    * Use ruff
+  - Changes from 4.6.0:
+    * Remove unnecessary Future usage
+    * Test against 3.12.0-beta.1
+    * Add --list-dependencies options
+  - Changes from 4.5.2:
+    * Add 3.12 support
+    * Bump pypa/gh-action-pypi-publish from 1.8.5 to 1.8.6
+    * Update list of maintainers
+    * Fix legacy tox --devenv venv
+    * Fix legacy devenv
+
+-------------------------------------------------------------------
 Fri Jun  9 07:26:58 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Fix build error in Leap.

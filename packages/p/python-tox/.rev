@@ -598,4 +598,20 @@ please add to Staging:E, should fix the tox failure</comment>
     <comment></comment>
     <requestid>1092492</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>bf0abcd083127b8415a833fd25412d7e</srcmd5>
+    <version>4.11.1</version>
+    <time>1694344199</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1109638 from mschreiner
+
+- Refresh mark-network-tests.patch for 4.11.1.
+  - Rewrite optional_devpi_process.patch for 4.11.1.
+  - Add explicit numpy built-time dependency, as the one pulled by
+    pytest-randomly was broken.
+  - Fix rpmlint warning: package was obsoleting itself.
+  - Update to 4.11.1.
+  - Please check the .changes file for a more complete changelog.</comment>
+    <requestid>1109766</requestid>
+  </revision>
 </revisionlist>

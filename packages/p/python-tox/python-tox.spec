@@ -23,12 +23,11 @@
 %bcond_with devpi_process
 %endif
 Name:           python-tox
-Version:        4.5.1
+Version:        4.11.1
 Release:        0
 Summary:        Virtualenv-based automation of test activities
 License:        MIT
 URL:            https://github.com/tox-dev/tox
-# Source:         https://github.com/tox-dev/tox/archive/refs/tags/%%{version}.tar.gz#/tox-%%{version}.tar.gz
 Source:         https://files.pythonhosted.org/packages/source/t/tox/tox-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE optional_devpi_process.patch bsc#[0-9]+ mcepl@suse.com
 # Make use devpi_process optional
@@ -72,7 +71,7 @@ Requires:       python-colorama
 Requires:       python-filelock >= 3.0.0
 Requires:       python-packaging >= 14
 Requires:       python-platformdirs >= 3.5.1
-Requires:       python-pluggy >= 0.12.0
+Requires:       python-pluggy >= 1.0.0
 Requires:       python-pyproject-api
 Requires:       python-tomli >= 2.0.1
 Requires:       python-virtualenv >= 20.0.8
@@ -81,16 +80,17 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # last detox version is 0.19
 Obsoletes:      python-detox <= 0.19
-Provides:       python-detox
+Provides:       python-detox > 0.19
 BuildArch:      noarch
 # SECTION setup.cfg [options.extras_requires] testing=
 # (except for pytest-cov and -randomly)
 BuildRequires:  %{python_module flaky >= 3.4.0}
 BuildRequires:  %{python_module freezegun >= 0.3.11}
+BuildRequires:  %{python_module numpy >= 1.25}
 BuildRequires:  %{python_module psutil >= 5.6.1}
 BuildRequires:  %{python_module pytest >= 4.0.0}
 BuildRequires:  %{python_module pytest-mock >= 1.10.0}
-BuildRequires:  %{python_module pytest-randomly >= 1.0.0}
+BuildRequires:  %{python_module pytest-randomly >= 3.0.0}
 BuildRequires:  %{python_module pytest-xdist >= 1.22.2}
 # /SECTION
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
@@ -146,6 +146,9 @@ donttest+=" or test_parallel_live or (test_parallel and not test_parallel_)"
 donttest+=" or test_replace_env_var_circular_flip_flop"
 #
 donttest+=" or test_call_as_exe or test_skip_pkg_install"
+donttest+=" or test_python_generate_hash_seed"
+# this test doesn't work on aarch64
+donttest+=" or test_bad_env_var"
 
 %{python_expand # tests expect an active virtualenv with a clean python name as sys.executable
 virtualenv-%{$python_bin_suffix} --system-site-packages testenv-%{$python_bin_suffix}
