@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  9 13:38:45 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Fri Apr  1 08:00:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with Java >= 9 in order to produce a modular jar by

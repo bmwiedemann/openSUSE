@@ -55,4 +55,12 @@
     <comment>Sync changes with sle</comment>
     <requestid>979201</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>6e930f2e9104e2ad1425d4c923249860</srcmd5>
+    <version>2.8.9</version>
+    <time>1694344229</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109953</requestid>
+  </revision>
 </revisionlist>
