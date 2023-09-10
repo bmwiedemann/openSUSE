@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>983190</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0acdf2415c93036f2639e685769b3e5b</srcmd5>
+    <version>0.5.2</version>
+    <time>1694344242</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109971</requestid>
+  </revision>
 </revisionlist>
