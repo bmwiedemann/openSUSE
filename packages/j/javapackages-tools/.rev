@@ -367,4 +367,12 @@
     <comment>6.2.0</comment>
     <requestid>1108778</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>43e29a89d08e6833f1c480a41d38d8e0</srcmd5>
+    <version>6.2.0</version>
+    <time>1694344162</time>
+    <user>anag+factory</user>
+    <comment>Cleanup and use our patches as they are integrated in upstream</comment>
+    <requestid>1109307</requestid>
+  </revision>
 </revisionlist>

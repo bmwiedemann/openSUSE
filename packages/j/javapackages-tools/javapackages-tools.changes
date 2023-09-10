@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  5 11:40:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * 0001-Make-the-alias-generation-reproducible.patch ->
+    0001-Make-maven_depmap-order-of-aliases-reproducible.patch
+    + replace by the version of patch integrated by upstream
+- Added patch:
+  * 0002-Do-not-bomb-on-relativePath-construct.patch
+    + integrated patch fixing parent recursion with empty
+      <relativePath/> element
+
+-------------------------------------------------------------------
 Sat Sep  2 23:07:32 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 6.2.0

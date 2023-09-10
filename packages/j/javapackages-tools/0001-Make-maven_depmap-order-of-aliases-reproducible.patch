@@ -1,7 +1,7 @@
-From 88ca6f13c707652c9992e9f7f4b86c5bdc198d03 Mon Sep 17 00:00:00 2001
+From 5cc434bdeffbee25158ae2bdcda08f4b07610f7a Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
-Date: Sun, 3 Sep 2023 01:03:26 +0200
-Subject: [PATCH] Make the alias generation reproducible
+Date: Mon, 4 Sep 2023 16:14:43 +0200
+Subject: [PATCH 1/2] Make maven_depmap order of aliases reproducible
 
 ---
  java-utils/maven_depmap.py | 2 +-
@@ -21,5 +21,5 @@ index 6a0520fa..4bfb877d 100644
          alias.extension = artifact.extension
          result.append(alias)
 -- 
-2.41.0
+2.42.0
 

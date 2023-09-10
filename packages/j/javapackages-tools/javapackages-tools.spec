@@ -45,8 +45,10 @@ Patch1:         python-optional.patch
 #PATCH-FIX-SUSE: SUSE did not bump epoch of openjdk packages, whereas Fedora did
 #               Avoid generating unresolvable requires
 Patch2:         suse-no-epoch.patch
-#PATCH-FIX-SUSE: Let maven_depmap.py generate reproducible list of aliases
-Patch3:         0001-Make-the-alias-generation-reproducible.patch
+#PATCH-FIX-UPSTREAM: Make maven_depmap order of aliases reproducible
+Patch3:         0001-Make-maven_depmap-order-of-aliases-reproducible.patch
+#PATCH-FIX-UPSTREAM: Do not bomb on <relativePath/> construct
+Patch4:         0002-Do-not-bomb-on-relativePath-construct.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  perl
