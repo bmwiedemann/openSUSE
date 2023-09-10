@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  9 14:27:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Fri Feb 28 07:32:13 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of jfreechart 1.0.19
