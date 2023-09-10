@@ -126,7 +126,7 @@
 %endif
 
 Name:           go1.21
-Version:        1.21.0
+Version:        1.21.1
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -367,14 +367,14 @@ for ext in *.{go,c,h,s,S,py,syso,bin}; do
 done
 # executable bash scripts called by go tool, etc
 find src -name "*.bash" -exec install -Dm655 \{\} %{buildroot}%{_datadir}/go/%{go_label}/\{\} \;
-# # Trace viewer html and javascript files moved from misc/trace in
-# # previous versions to src/cmd/trace/static in go1.19.
-# # static contains pprof trace viewer html javascript and markdown
-# echo "PWD:" `pwd`
-# echo "GOROOT:" $GOROOT
-# mkdir -v -p $GOROOT/src/cmd/trace/static
+# Trace viewer html and javascript files moved from misc/trace in
+# previous versions to src/cmd/trace/static in go1.19.
+# static contains pprof trace viewer html javascript and markdown
 install -d  %{buildroot}%{_datadir}/go/%{go_label}/src/cmd/trace/static
 install -Dm644 src/cmd/trace/static/* %{buildroot}%{_datadir}/go/%{go_label}/src/cmd/trace/static
+# pprof viewer html templates are needed for import runtime/pprof
+install -d  %{buildroot}%{_datadir}/go/%{go_label}/src/cmd/vendor/github.com/google/pprof/internal/driver/html
+install -Dm644 src/cmd/vendor/github.com/google/pprof/internal/driver/html/* %{buildroot}%{_datadir}/go/%{go_label}/src/cmd/vendor/github.com/google/pprof/internal/driver/html
 
 mkdir -p $GOROOT/src
 for i in $(ls %{buildroot}/usr/share/go/%{go_label}/src);do

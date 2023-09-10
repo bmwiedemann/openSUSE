@@ -54,4 +54,28 @@
   Refs boo#1212475 go1.21 release tracking (forwarded request 1103035 from jfkw)</comment>
     <requestid>1103036</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1c197a245c01551488f758d1173349db</srcmd5>
+    <version>1.21.1</version>
+    <time>1694344167</time>
+    <user>anag+factory</user>
+    <comment>- go1.21.1 (released 2023-09-06) includes four security fixes to
+  the cmd/go, crypto/tls, and html/template packages, as well as
+  bug fixes to the compiler, the go command, the linker, the
+  runtime, and the context, crypto/tls, encoding/gob, encoding/xml,
+  go/types, net/http, os, and path/filepath packages.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2023-39318 CVE-2023-39319 CVE-2023-39320 CVE-2023-39321 CVE-2023-39322
+
+- Add missing directory pprof html asset directory to package.
+  Refs boo#1215090
+  * src/cmd/vendor/github.com/google/pprof/internal/driver/html/
+    dir containing html assets is present in upstream Go
+    distribution but missing from SUSE go1.x packages
+  * Go programs importing runtime/pprof may fail with error:
+    /usr/lib64/go/1.21/src/cmd/vendor/github.com/google/pprof/internal/driver/webhtml.go
+    pattern html: no matching files found
+  * Reformat adjacent commment in spec file (forwarded request 1109619 from jfkw)</comment>
+    <requestid>1109622</requestid>
+  </revision>
 </revisionlist>
