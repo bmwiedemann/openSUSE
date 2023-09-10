@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  6 10:08:53 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 2.7.1:
+  * Don't draw clipPath when defined after reference
+  * Handle evenodd fill rule with gradients and patterns
+  * Fix ratio and clip for "image" tags with no size
+  * Handle data-URLs in safe mode
+  * Use f-strings
+
+-------------------------------------------------------------------
 Tue May  9 06:33:14 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
-- Update to 2.7.0:
+- Update to 2.7.0 (bsc#1209538, CVE-2023-27586):
   WARNING: this is a security update.
 
   When processing SVG files, CairoSVG could access other files online,
@@ -42,7 +52,7 @@ Thu Aug 12 12:01:51 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Sun Jan 10 16:09:41 UTC 2021 - andy great <andythe_great@pm.me>
 
-- Update to version 2.5.1.
+- Update to version 2.5.1 (bsc#1180648, CVE-2021-21236):
   * Security fix: When processing SVG files, CairoSVG was using two
     regular expressions which are vulnerable to Regular Expression 
     Denial of Service (REDoS). If an attacker provided a malicious 
