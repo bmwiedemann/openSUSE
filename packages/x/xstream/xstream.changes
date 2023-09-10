@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  9 15:02:20 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Fri Aug 25 13:08:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Make dependency on bea-stax optional and disable it by default

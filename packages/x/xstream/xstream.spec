@@ -162,8 +162,8 @@ rm -f xstream/src/java/com/thoughtworks/xstream/io/xml/BEAStaxDriver.java \
 %{mvn_package} :%{name}
 
 %build
-# test skipped for unavailable test deps (com.megginson.sax:xml-writer)
 %{mvn_build} -f -s -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
 	-Dversion.java.source=8 -Dversion.java.target=8
 
 %install

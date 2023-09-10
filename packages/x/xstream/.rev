@@ -103,4 +103,12 @@
     <comment>make dependency on bea-stax optional</comment>
     <requestid>1105910</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>23d3729bd3e3d3b183145402b578c0db</srcmd5>
+    <version>1.4.20</version>
+    <time>1694344273</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1110007</requestid>
+  </revision>
 </revisionlist>
