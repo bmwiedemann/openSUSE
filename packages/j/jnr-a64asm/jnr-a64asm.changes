@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  9 14:29:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Tue May 23 20:51:08 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Add an OSGi manifest to the package

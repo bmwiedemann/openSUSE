@@ -15,4 +15,12 @@
     <comment>Add OSGi manifest</comment>
     <requestid>1089741</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0166e940284fe769401ea4cf3d746ee4</srcmd5>
+    <version>1.0.0</version>
+    <time>1694344247</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109977</requestid>
+  </revision>
 </revisionlist>
