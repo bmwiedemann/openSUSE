@@ -17,7 +17,7 @@
 
 
 Name:           font-util
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        X.Org font package creation/installation utilities
 License:        MIT

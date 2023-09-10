@@ -131,4 +131,16 @@
     shortly.</comment>
     <requestid>1067356</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7e96e236d10ee8a8c6dde04c283c6952</srcmd5>
+    <version>1.4.1</version>
+    <time>1694344171</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.1
+  * No functional changes - the map files have been updated to the
+    ones currently available from the unicode website. This only
+    changes the license preamble to SPDX Unicode-TOU, the actuali
+    mappings are just the same as before.</comment>
+    <requestid>1109695</requestid>
+  </revision>
 </revisionlist>
