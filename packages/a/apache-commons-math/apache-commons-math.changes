@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  9 09:14:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Sun Jun 19 14:16:56 UTC 2022 - Michael Calmer <mc@suse.com>
 
 - Obsolete apache-commons-math3 package
