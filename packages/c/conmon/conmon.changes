@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep  6 05:41:47 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to version 2.1.8:
+  * stdio: ignore EIO for terminals
+  * ensure console socket buffers are properly sized
+  * conmon: drop return after pexit()
+  * ctrl: make accept4 failures fatal
+  * logging: avoid opening /dev/null for each write
+  * oom: restore old OOM score
+  * Use default umask 0022
+  * cli: log parsing errors to stderr
+  * Changes to build conmon for riscv64
+  * Changes to build conmon for ppc64le
+  * Fix close_other_fds on FreeBSD
+
+-------------------------------------------------------------------
 Wed Mar 15 14:36:27 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 2.1.7
