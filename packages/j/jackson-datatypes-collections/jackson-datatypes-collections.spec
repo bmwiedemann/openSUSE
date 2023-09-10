@@ -80,10 +80,11 @@ cp -p hppc/src/main/resources/META-INF/LICENSE .
 
 %build
 %{mvn_build} -f -s -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=8 \
+    -Dmaven.compiler.release=8 \
 %endif
-	-Dsource=8
+    -Dsource=8
 
 %install
 %mvn_install
