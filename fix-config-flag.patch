@@ -1,0 +1,22 @@
+From 8182224dc7da9943e467c8d9c286d24f7b448fe0 Mon Sep 17 00:00:00 2001
+From: Bailey Kasin <baileykasin@gmail.com>
+Date: Fri, 25 Aug 2023 21:14:00 -0700
+Subject: [PATCH] [F] Fix config file argument not being used
+
+---
+ hyfetch/main.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hyfetch/main.py b/hyfetch/main.py
+index 3462e06dc..3ef66816b 100755
+--- a/hyfetch/main.py
++++ b/hyfetch/main.py
+@@ -27,7 +27,7 @@ def check_config(path) -> Config:
+     """
+     if path.is_file():
+         try:
+-            return Config.from_dict(json.loads(CONFIG_PATH.read_text('utf-8')))
++            return Config.from_dict(json.loads(path.read_text('utf-8')))
+         except KeyError:
+             return create_config()
+ 
