@@ -21,7 +21,7 @@ add-yast-repos
 zypper --non-interactive rm -u live-add-yast-repos jdupes
 
 # Not needed, but neither rpm nor libzypp handle rpmlib(X-CheckUnifiedSystemdir) yet
-# which would avoid it being installed by filesystem packge
+# which would avoid it being installed by the filesystem package
 rpm -e compat-usrmerge-tools
 
 #======================================
@@ -30,7 +30,7 @@ rpm -e compat-usrmerge-tools
 sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.conf
 
 #======================================
-# Exclude docs intallation
+# Exclude docs installation
 #--------------------------------------
 sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
 
