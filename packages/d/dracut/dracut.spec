@@ -25,7 +25,7 @@
 %endif
 
 Name:           dracut
-Version:        059+suse.491.g87f19c22
+Version:        059+suse.497.ga7feaf12
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -76,6 +76,7 @@ Dracut contains various modules which are driven by the event-based udev
 and systemd. Having root on MD, DM, LVM2, LUKS is supported as well as
 NFS, iSCSI, NBD, FCoE.
 
+%ifnarch %ix86
 %package fips
 Summary:        Dracut modules to build a dracut initramfs with an integrity check
 Group:          System/Base
@@ -89,7 +90,9 @@ Requires:       libopenssl1_1-hmac
 This package requires everything which is needed to build an
 initramfs with dracut, which does an integrity check of the kernel
 and its cryptography during startup.
+%endif
 
+%ifnarch %ix86
 %package ima
 Summary:        Dracut modules to build a dracut initramfs with IMA
 Group:          System/Base
@@ -100,6 +103,7 @@ Requires:       keyutils
 %description ima
 This package requires everything which is needed to build an
 initramfs (using dracut) which tries to load an IMA policy during startup.
+%endif
 
 %package tools
 Summary:        Tools to build a local initramfs
@@ -115,8 +119,6 @@ This package contains tools to assemble the local initrd and host configuration.
 Summary:        Dracut modules usually not required for normal operation
 Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
-Requires:       evmctl
-Requires:       keyutils
 
 %description extra
 This package contains all modules that are part of dracut upstream
@@ -165,8 +167,10 @@ touch %{buildroot}%{_localstatedir}/log/dracut.log
 
 install -D -m 0644 dracut.conf.d/suse.conf.example %{buildroot}%{dracutlibdir}/dracut.conf.d/01-dist.conf
 install -m 0644 suse/99-debug.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/99-debug.conf
+%ifnarch %ix86
 install -m 0644 dracut.conf.d/fips.conf.example %{buildroot}%{_sysconfdir}/dracut.conf.d/40-fips.conf
 install -m 0644 dracut.conf.d/ima.conf.example %{buildroot}%{_sysconfdir}/dracut.conf.d/40-ima.conf
+%endif
 # bsc#915218
 %ifarch s390 s390x
 install -m 0644 suse/s390x_persistent_policy.conf %{buildroot}%{_sysconfdir}/dracut.conf.d/10-persistent_policy.conf
@@ -206,41 +210,57 @@ if [ -L /var/run ] && [ -f /etc/dracut.conf.d/05-convertfs.conf ]; then
 fi
 %{?regenerate_initrd_post}
 
+%ifnarch %ix86
 %post fips
 %{?regenerate_initrd_post}
+%endif
 
+%ifnarch %ix86
 %post ima
 %{?regenerate_initrd_post}
+%endif
 
 %postun
 %{?regenerate_initrd_post}
 
+%ifnarch %ix86
 %postun fips
 %{?regenerate_initrd_post}
+%endif
 
+%ifnarch %ix86
 %postun ima
 %{?regenerate_initrd_post}
+%endif
 
 %posttrans
 %{?regenerate_initrd_posttrans}
 
+%ifnarch %ix86
 %posttrans fips
 %{?regenerate_initrd_posttrans}
+%endif
 
+%ifnarch %ix86
 %posttrans ima
 %{?regenerate_initrd_posttrans}
+%endif
 
+%ifnarch %ix86
 %files fips
 %license COPYING
 %config %{_sysconfdir}/dracut.conf.d/40-fips.conf
 %{dracutlibdir}/modules.d/01fips
+%endif
 
+%ifnarch %ix86
 %files ima
 %license COPYING
 %config %{_sysconfdir}/dracut.conf.d/40-ima.conf
 %{dracutlibdir}/modules.d/96securityfs
 %{dracutlibdir}/modules.d/97masterkey
 %{dracutlibdir}/modules.d/98integrity
+%endif
 
 %files tools
 %{_bindir}/dracut-catimages
@@ -326,6 +346,9 @@ fi
 %{dracutlibdir}/modules.d/00systemd-network-management
 %ifnarch s390 s390x
 %{dracutlibdir}/modules.d/00warpclock
+%endif
+%ifarch %ix86
+%exclude %{dracutlibdir}/modules.d/01fips
 %endif
 %{dracutlibdir}/modules.d/01systemd-ac-power
 %{dracutlibdir}/modules.d/01systemd-ask-password
@@ -436,6 +459,11 @@ fi
 %{dracutlibdir}/modules.d/95zfcp_rules
 %endif
 %{dracutlibdir}/modules.d/97biosdevname
+%ifarch %ix86
+%exclude %{dracutlibdir}/modules.d/96securityfs
+%exclude %{dracutlibdir}/modules.d/97masterkey
+%exclude %{dracutlibdir}/modules.d/98integrity
+%endif
 %{dracutlibdir}/modules.d/98dracut-systemd
 %{dracutlibdir}/modules.d/98ecryptfs
 %{dracutlibdir}/modules.d/98pollcdrom

@@ -1,25 +1,81 @@
-Maintaining Dracut
+Maintaining dracut
 ==================
 
 1. Adding/Submitting patches:
 
-Patches get added as merge requests on Github against the respective maintenance branch.
-If the dracut version is 049, the maintenance branch is SUSE/049. Please make sure
-to provide an adiquate patch description. If you fix a modules, please prepend the module
-name in the first line. Also add bugzilla and fate references in their own line:
+Patches are added as merge requests on GitHub against the respective maintenance
+branch. Currently, these active maintenance branches are:
 
-  99example: Provide a useful description
+- SUSE/044          -> SLE 12 SP5
+- SUSE/049          -> SLE 15 SP2, SLE 15 SP3
+- SUSE/055          -> SLE 15 SP4
+- SLE-15-SP5_Update -> SLE 15 SP5 (based on SUSE/055 plus some specific patches)
+- SUSE/059          -> Tumbleweed
 
-  Explain the use cases for the module in more detail, give a general summary of
-  its purpose.
+Rules:
 
-  Reference: bsc#4566
+- Follow the commit message convention [1].
+- Write related Bugzilla ID in the commit message (the dracut.changes file is
+  updated automatically from the information of the patch).
+- If the Bugzilla ID cannot be added to the commit title because the length is
+  greater than 80 characters (the maximum allowed), then write it into the
+  commit description (it must be manually added to dracut.changes prior to OBS
+  submission).
+- To indicate backports of upstream commits use `git cherry-pick -x` (this
+  automatically appends "cherry picked from commit xxxxx").
+- First, check if your patch can be submitted upstream, and if so, do it there
+  first. Once approved, it can be backported here.
 
-2. Updating the OBS repo from git:
+Example, fix for https://bugzilla.opensuse.org/show_bug.cgi?id=1203749:
 
-  rm dracut*.xz
-  rm dracut*.obscpio
-  osc service manualrun
-  osc ar
-  osc commit
-  osc sr
+```
+commit 92a6793c7d94a9a70c99ffcaf72112808164851b
+Author: Antonio Alvarez Feijoo <antonio.feijoo@suse.com>
+Date:   Wed Sep 21 11:54:17 2022 +0200
+
+    fix(systemd): add missing modprobe@.service (bsc#1203749)
+
+    sys-kernel-config.mount needs modprobe@configfs.service since systemd v246.7
+    (https://github.com/systemd/systemd/commit/42cc2855), so the kernel configfs
+    fails to mount in the initrd.
+
+    (cherry picked from commit 928252a145ca44627ba5873e01245eabe246992f)
+```
+
+2. Updating the OBS repo:
+
+2.1. Branch dracut
+
+- Go to the Factory OBS repo [2] and "Branch Package".
+- Checkout branch with `osc`:
+
+    $ osc checkout home:USER:branches:openSUSE:Factory/dracut
+
+2.2. Trigger services and build the package
+
+    $ rm dracut*.xz
+    $ rm dracut*.obscpio
+    $ osc service manualrun
+    $ osc ar
+
+    * Verify that the new Bugzilla IDs are referenced in the dracut.changes file.
+
+2.3. Commit the changes
+
+    $ osc commit
+
+    * Verify that the package is correctly built in the OBS branch.
+    * Test the built package and make sure it fixes the bug.
+
+2.4. Create request to submit source
+
+    $ osc sr
+
+    * The request is submitted against the OBS Devel repo [3].
+
+
+--
+[1] Commit message convention: https://github.com/dracutdevs/dracut/blob/master/docs/HACKING.md#commit-messages
+[2] Factory OBS repo: https://build.opensuse.org/package/show/openSUSE:Factory/dracut
+[3] Factory OBS Devel repo: https://build.opensuse.org/package/show/Base:System/dracut
+
