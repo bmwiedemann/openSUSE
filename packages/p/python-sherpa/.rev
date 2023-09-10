@@ -150,4 +150,12 @@
   * fixed cache errors with the TableModel class</comment>
     <requestid>1089585</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>41d1e67894139bd10a10462ab1597554</srcmd5>
+    <version>4.15.1</version>
+    <time>1694344201</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1109765</requestid>
+  </revision>
 </revisionlist>

@@ -24,6 +24,10 @@ License:        GPL-3.0-only
 URL:            https://github.com/sherpa/sherpa/
 Source0:        https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sherpa-%{version}.tar.gz
 Source1:        https://github.com/sherpa/sherpa-test-data/archive/refs/tags/%{version}.tar.gz#/sherpa-test-data-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/sherpa/sherpa/pull/1807 NumPy 1.25 support
+Patch:          numpy125.patch
+# PATCH-FIX-UPSTREAM https://github.com/sherpa/sherpa/pull/1819 CI: hide NumPy 1.25 array ndim>0 deprecation warnings
+Patch:          numpy125-CI.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.19}
 BuildRequires:  %{python_module pip}
@@ -54,7 +58,7 @@ user to construct models from definitions and fit those models to
 data, using a variety of statistics and optimization methods.
 
 %prep
-%setup -q -n sherpa-%{version} -a1
+%autosetup -p1 -n sherpa-%{version} -a1
 # uncomment system libs https://sherpa.readthedocs.io/en/latest/install.html#fftw
 sed -i "s|#fftw=local|fftw=local|" setup.cfg
 sed -i "s|#fftw-include[-_]dirs.*$|fftw-include-dirs=%{_includedir}|" setup.cfg
