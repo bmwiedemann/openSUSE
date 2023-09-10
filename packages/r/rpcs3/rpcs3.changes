@@ -1,4 +1,222 @@
 -------------------------------------------------------------------
+Sat Sep 02 03:36:40 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.29~git20230902:
+  * Set azure variables
+  * SPU LLVM: Optimize spu_idisable
+  * Fix excluded sections check mismatch
+  * rsx/texture-cache: Remove archaic short-circuit during purge-xxxxx routines
+  * Crypto: Fix endianess, avoid crashing on invalid values
+  * Qt: rename pad profiles to config files
+  * Make sure to enable PR builds
+  * More cleanup
+  * Update linux Azure and re-enable GitHub pushing
+  * Precompile PRX/ELF extension
+  * Hotfix SPU Cache Spam For Game Collections
+  * Fixup Create PPU Cache
+  * SPU: support pure SPU code precompilation discovery
+  * SPU: Refactor function discovery
+  * Add SPU Precompilation to Create PPU Cache
+  * Qt: fix pressure intensity deadzone enabled state
+  * macOS CI: build ffmpeg and gnutls from source, and fix deploy script (#14563)
+  * input: add SDL_GameControllerDB
+  * Update MVK
+  * Update homebrew mvk on build script
+  * [DS4] Proper USB/BT detection
+  * SPU LLVM Precompilation Fixup
+  * SPU LLVM Precompilation
+  * Zero register optimization for AVX-512-VBMI - Take advantage of the fact that AVX instructions zero the upper 128 bits for a nice optimization when one input vector is zeroed
+  * PPU Analyzer: Fix OPD section validation
+  * cellPad: fix lost status during cellPad_NotifyStateChange
+  * cellPad: fix potential out of bounds read and u32 warnings
+  * cellPad: some readability updates
+  * Midi: fix data type warnings
+  * cellPad: implement cellPadPeriphGetData default logic and add some comments
+  * input: Use pad class instead of index in pad settings dialog
+
+-------------------------------------------------------------------
+Sat Aug 26 14:52:21 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.29~git20230826:
+  * input: implement pressure intensity deadzone
+  * input: clamp 0-1 in NormalizeDirectedInput
+  * GHLtar: fix guitar tilt
+  * Update rpcs3/Emu/Io/RB3MidiKeyboard.cpp
+  * RB3MidiKeyboard.cpp: fix some note off messages being processed incorrectly
+  * rsx: Optimize RET returning to following CALL
+  * PPU Analyzer: Analyze whole segment 0 when patches are applied
+  * Savestates: Fix config_event_entry compatibility
+  * rsx: Discard color mask writes with reserved bits
+  * Remove unused variable in PPUThread.cpp
+  * cellPad: remove unused variables
+  * Fix Vulkan link in README
+  * overlays: fix some warnings, simplify code, use move and references
+  * sceNpDrm: Slow down sceNpDrmIsAvailable
+  * cellGame: Make cellGameDataCheck slower
+  * PPU Analyzer: Fix for unaligned sections
+  * rsx: Fixup calculate_required_range
+  * Progress Dialog: Fix race when PPU compilation is super fast
+  * rsx: Fix index vertex array range with modulo calculation
+  * Progress Dialog: Avoid PPU compilation pop-up on short linkage
+  * Progress Dialog: Fix race that could lead to ever-inaccurate results
+  * Progress Dialog: Fix race on PPU compilation status
+  * input: fix dance mat PID
+  * Input: Add PS Move navigation controller
+  * qt/utils: support full path in get_dir_entries
+  * Game List: Add initials-only search
+  * LV2/Loader: Fix kernel regions addresses
+  * PPU/debugger: Fixup
+  * Debugger/PPU: Superior Callstack Detection
+  * CLI - install multiple pkgs from folder (#14516)
+  * Update BUILDING.md (#14515)
+  * xaudio2: enable IID_IXAudio2Extension for mingw-w64
+  * Fixup cellPadPeriphGetInfo
+  * Replace some utils::bless usages
+  * Workaround for Clang: move bless to its own header file
+  * Cg Disasm: Fix instruction highlighting patter
+  * Debugger/RSX: Add FP/VP hash of current shader
+  * Add link for homebrew MVK 1.2.5 to Mac build script
+  * Bump MoltenVK to 1.2.5
+  * Update submodules
+  * cellAudio: Move and partially fix _mxr000 hack
+  * Update focal
+  * PPU: Fix LVRX bad memory access
+  * LV2: Fixup reservation notifications
+  * utils/endian.hpp: Use std::byteswap
+  * SPU: Use usermode waiting for busy GETLLAR loop
+  * CELL: Postponed address notifications
+  * Fixup atomic wait (Linux)
+  * cmake: replace add_compile_definitions with target_compile_definitions
+  * sys_net.cpp: fix compiler warning
+  * qt6: fix mingw-w64 build
+  * remove unnecessary defines
+  * Fix PPU SELF Precompilation
+  * cellRec: add more encoder options
+  * cellPad: Fixup sys_config management
+  * cellRec: fix width of encoder frames
+  * home menu: remove non-dynamic SPU Loop Detection
+  * SPU LLVM: Inline timer reads for WrDec and RdDec - Uses RDTSC to emulate the spu decrementer
+  * patches: Improve location logging for invalid note sequence
+  * VS: Fix compilation on Visual Studio 17.7.0
+  * SPU LLVM: Fix for AVX-512 CFLTU path - vcvvtps2udq doesn't turn negative numbers into 0, fix by using signed integer max with 0 instead of vrangeps
+  * PPU Loader: Fixup stack alignment after envp fix
+  * (Linux) Fixup futex_waitv
+  * PPU Loader: Fix main()'s envp
+
+-------------------------------------------------------------------
+Thu Aug 10 15:33:40 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.29~git20230810:
+  * LV2/cellPad: Implement priority-based connection updates
+  * cellPad: Fix max_connect in GetInfo
+  * rsx: Remove unused code (argb<->bgra modifier) and refactor a bit
+  * rsx: Implement image copy between 2D -> 3C/CUBE with scaling support.
+  * ELF.h: fix warning
+  * PPU/Debugger: Fix op_branch_targets
+  * PPU: Fixup interpreter and analyzer
+  * PPU/Patches: Fix CALLOC patch with interpreter
+  * cellSaveData: Fix check 58, implement checks 77 and 76
+  * PPU Loader: Fixup virtual load for non PRX
+  * cellGame: Add some LV2 sleep
+  * Add some error checking to sys_fs_chmod
+  * PPU Analyzer: Fixup verify_func
+  * PPU: fix leak when precompiling SELF files
+  * PPU Loader: Fix imports/exports in virtual mode
+  * PPU Analyzer: Add more function constraints
+  * Fixup SPU/PPU Cache Abortion
+  * PPU Precompilation Fixup
+  * Merge xfloat options
+  * vm.cpp: Fixup race in range_lock_internal
+  * Fixup log message in sys_memory_allocate
+  * System.cpp: Fixup spu.log/tty.log dumping
+  * PPU LLVM: Fixup VSH Precompilation
+  * PPU: A few more minor bugfixes
+  * PPU LLVM Cache Fixup
+  * PPU LLVM/RawSPU: Fixup MMIO crossing-out
+  * vk: Fix detection of RADV on get_driver_vendor()
+  * Make experimental build warning modal
+  * CI: Don't silence curl errors
+  * LV2: Improve sys_timer_usleep by using CPU usermode waiting
+  * macOS CI: use lzma compression for the DMG
+  * macOS CI: use faudio from submodule
+  * macOS CI: build faudio from source
+  * osk: ignore input based on ignore_device_events
+  * rsx: Rebuild shader texture state if we detect a silent mismatch
+  * Fix current date format
+  * Optimize memory usage of ELF loader
+  * Auto-dump decrypted binaries if PPU debug is enabled
+  * Fix decrypt_binaries_t::done()
+  * vm.cpp/Non-TSX: Fixup potential deadlock
+  * PPU LLVM/SPU/Non-TSX: Obnoxiously responsive and obedient PPU for SPU requests
+  * Fixup futex_waitv redefinition
+  * direct return in ppu_check
+  * Fix lf_queue regression
+  * Linux: use futex_waitv syscall for atomic waiting
+  * Remove thread pool
+  * Reset broken LLCM_CCACHE_BUILD change
+  * Don't require Qt 6.4.0 (works with 6.2.4)
+  * Update ffmpeg
+  * Update dependencies
+
+-------------------------------------------------------------------
+Tue Aug 01 14:13:31 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.29~git20230731:
+  * rsx: fix register_vertex_printer value func
+  * rpcs3_version: Bump to 0.0.29
+  * Qt6 port
+  * cellAudioIn: reduce log spam
+  * cellMsgDialogAbort: do not return CELL_MSGDIALOG_ERROR_DIALOG_NOT_OPENED
+  * Thread.cpp: Fixup SPU access violation log message
+  * Optimize RSX Debugger
+  * Qt: Fix elf_memory_dumping_dialog PPU address
+  * Debugger: Transition to plain text edit
+  * Fix color tag of logs/tty
+  * Qt: fix data type of find_dialog text edits
+
+-------------------------------------------------------------------
+Sun Jul 30 07:16:40 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.28~git20230729:
+  * SPU LLVM: AVX-512 optimization for CFLTU (#14384)
+  * Fix typos, improve consistency
+  * SPU LLVM: Optimize common SFI+ROTQMBY pattern
+  * Utils: Add initial AVX10 support
+  * Include spu.log inside RPCS3.log when SPU Debug is true
+  * SPU/Non-TSX: Implement cuncurrent reservations
+  * SPU/MFC: Format command more consistently
+  * cellSaveData: Adjust to non-TSX
+  * Log TTY output after emulation have been stopped
+  * sceNpTrophy: Minor UB fixup
+  * sys_fs: Updated sys_fs_fcntl(0xc0000015&0xc000001c)'s error handling according to real hardware testing
+  * sys_fs: Fixed up sys_fs_fcntl(0xc0000007) aka cellFsArcadeHddSerialNumber according to real hardware testing
+  * sceNpTrophy: Check if a trophy configuration file exists before starting the install process
+  * sceNpTrophy: Initial commSign checking of CreateContext
+  * rename fs::stat to fs::get_stat
+  * Fix config path in Emu.Restart()
+  * cellSaveData: add some more error logging
+  * Fixed Emu.Restart(graceful=false) no longer worked after #14038
+  * Debugger: Make break-all non-default
+  * Fixup patches
+  * Minor ppu_initialize fix
+  * ppu: Make install function log message trace
+  * USIO: Added support for Tekken Tag Tournament 2 Live Monitor edition
+  * opengl: fix Qt warnings (#14249)
+  * USIO: Added support for Tekken Tag Tournament 2
+  * Savestates: Facilitate multi slots
+  * Thread.cpp: Always print SPU thread name in access violation
+  * PPU Analyzer: Fixup get_ptr()
+  * Add ppu_module::get_ref() to ease debugging
+  * Update SPU reservation notifier mask
+  * Qt: Minor logging change
+  * CPUThread.cpp: Fix use of cpu_counter::add
+  * Invalidate Savestates
+  * Qt: Fix GetBootConfirmation()
+  * Game List: Fix allowance of caches/games to be removed while the game is running!
+  * Game List: Implement Remove HDD1 Cache option
+  * USIO: Fixed BACKUP MEMORY ERROR for some games (#14248)
+
+-------------------------------------------------------------------
 Fri Jul 21 14:31:06 UTC 2023 - i@guoyunhe.me
 
 - Update to version 0.0.28~git20230721:

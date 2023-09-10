@@ -17,7 +17,7 @@
 
 
 Name:           rpcs3
-Version:        0.0.28~git20230721
+Version:        0.0.29~git20230902
 Release:        0
 Summary:        PS3 emulator/debugger
 License:        GPL-2.0-only
@@ -74,16 +74,16 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
 
 #qt dependencies
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.15.2
-BuildRequires:  libqt5-qtbase-private-headers-devel >= 5.15.2
-BuildRequires:  pkgconfig(Qt5Core) >= 5.15.2
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.15.2
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.15.2
-BuildRequires:  pkgconfig(Qt5MultimediaWidgets) >= 5.15.2
-BuildRequires:  pkgconfig(Qt5Network) >= 5.15.2
-BuildRequires:  pkgconfig(Qt5Qml) >= 5.15.2
-BuildRequires:  pkgconfig(Qt5Svg)  >= 5.15.2
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15.2
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  qt6-base-private-devel
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Multimedia)
+BuildRequires:  pkgconfig(Qt6MultimediaWidgets)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Qml)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Widgets)
 
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
