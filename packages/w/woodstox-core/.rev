@@ -55,4 +55,12 @@
     <comment>Do not depend on msv</comment>
     <requestid>1108065</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e5c8a487f328230922be98a4d57c417a</srcmd5>
+    <version>6.2.8</version>
+    <time>1694344272</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1110006</requestid>
+  </revision>
 </revisionlist>
