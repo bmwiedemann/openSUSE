@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-simpleclient-java
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -153,7 +153,9 @@ done
 %pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
 
 %build
-%{mvn_build} -f -s -- -Dsource=8
+%{mvn_build} -f -s -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dsource=8
 
 %install
 %mvn_install
