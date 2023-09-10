@@ -115,7 +115,8 @@ ant jar build-native -Duse.system.libffi=1
 # maven will look for JAR with native bits in archive/
 cp -p dist/jffi-*-Linux.jar archive/
 
-%{mvn_build} -f
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
 cp target/%{name}-%{version}-complete.jar target/%{name}-%{version}.jar
 
 %install
