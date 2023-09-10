@@ -18,14 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uc-micro-py
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Micro subset of unicode data files for linkify-it-py projects
 License:        MIT
 URL:            https://github.com/tsutsu3/uc.micro-py
 Source:         https://github.com/tsutsu3/uc.micro-py/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,10 +39,10 @@ Micro subset of unicode data files for linkify-it-py projects.
 %setup -q -n uc.micro-py-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -51,6 +52,6 @@ Micro subset of unicode data files for linkify-it-py projects.
 %doc CHANGELOG.md README.md
 %license LICENSE
 %{python_sitelib}/uc_micro
-%{python_sitelib}/uc_micro_py-%{version}*.egg-info
+%{python_sitelib}/uc_micro_py-%{version}*-info
 
 %changelog
