@@ -140,4 +140,14 @@
 - deps.patch: fix dependencies</comment>
     <requestid>1105060</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2617349923411d73b6687f4488a1a4c3</srcmd5>
+    <version>76</version>
+    <time>1694344186</time>
+    <user>anag+factory</user>
+    <comment>- New version 76:
+  * performance and stability improvements
+- deps.patch: upstreamed, dropped</comment>
+    <requestid>1109729</requestid>
+  </revision>
 </revisionlist>
