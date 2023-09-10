@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  9 14:15:32 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Fri Apr  8 21:50:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the provider of mvn(log4j:log4j:1.2.16) instead of
