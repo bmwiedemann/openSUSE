@@ -23,4 +23,12 @@
     <comment>bsc#1211923</comment>
     <requestid>1103981</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7287c19544ffb7db0eb05c9136aaa4fe</srcmd5>
+    <version>3.1.10</version>
+    <time>1694344235</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109961</requestid>
+  </revision>
 </revisionlist>

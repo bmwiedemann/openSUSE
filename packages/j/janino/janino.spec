@@ -88,7 +88,9 @@ popd
 %build
 
 pushd %{name}-parent
-  %{mvn_build} -fs -- -Dmaven.compiler.source=8 -Dmaven.compiler.target=8
+  %{mvn_build} -fs -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dmaven.compiler.source=8 -Dmaven.compiler.target=8
 popd
 
 %install
