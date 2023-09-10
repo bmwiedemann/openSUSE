@@ -340,4 +340,16 @@
     <comment></comment>
     <requestid>1108267</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>43bf010c0a558e478b99f0460beed739</srcmd5>
+    <version>300.1</version>
+    <time>1694344180</time>
+    <user>anag+factory</user>
+    <comment>- new version 300.1
+  https://cockpit-project.org/blog/cockpit-300.html
+  https://cockpit-project.org/blog/cockpit-299.html
+
+- Re-add pwscore dependency for SLE</comment>
+    <requestid>1109728</requestid>
+  </revision>
 </revisionlist>
