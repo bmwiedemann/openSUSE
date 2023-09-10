@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  9 14:14:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Fri Sep  1 10:26:24 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Upgrade to upstream version 3.25.5
