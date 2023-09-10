@@ -21592,6 +21592,7 @@ unsorted:
   - pipewire-libjack-0_3-32bit 
   - pipewire-libjack-0_3-devel 
   - pipewire-module-x11-0_3 
+  - pipewire-module-xrdp 
   - pipewire-modules-0_3-32bit 
   - pipewire-spa-plugins-0_2-32bit 
   - pithos 
@@ -24347,6 +24348,7 @@ unsorted:
   - python310-husl 
   - python310-hvac 
   - python310-hvplot 
+  - python310-hyfetch 
   - python310-hyperframe 
   - python310-hyperlink 
   - python310-hypothesis 
@@ -27769,6 +27771,7 @@ unsorted:
   - python311-husl 
   - python311-hvac 
   - python311-hvplot 
+  - python311-hyfetch 
   - python311-hypothesis 
   - python311-hypothesis-fspaths 
   - python311-hypothesmith 
@@ -31182,6 +31185,7 @@ unsorted:
   - python39-husl 
   - python39-hvac 
   - python39-hvplot 
+  - python39-hyfetch 
   - python39-hyperframe 
   - python39-hyperlink 
   - python39-hypothesis 
