@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep  2 11:26:50 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Revert update of vendored dependencies.
+
+-------------------------------------------------------------------
+Sat Sep  2 10:21:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies
+- Update source cargo_config
+
+-------------------------------------------------------------------
 Sun Aug 13 13:26:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Replace obsoleted `disabled` option with `manual`
