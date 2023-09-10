@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  9 14:42:27 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Thu May 25 10:56:16 UTC 2023 - Stefan Bluhm <stefan.bluhm@clacee.eu>
 
 - Fix for Enterprise Linux to allow building with log4j v1 and v2

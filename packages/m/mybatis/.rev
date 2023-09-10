@@ -63,4 +63,12 @@
     <comment>RHEL fixes</comment>
     <requestid>1105111</requestid>
   </revision>
+  <revision rev="9" vrev="8">
+    <srcmd5>1cade1c01ee91ab01820e422467d88ef</srcmd5>
+    <version>3.5.6</version>
+    <time>1694344256</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109988</requestid>
+  </revision>
 </revisionlist>
