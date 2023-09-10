@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>939463</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9e37fdf8bcc15cc1b66d12fac15bc35c</srcmd5>
+    <version>3.4.4</version>
+    <time>1694344222</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109943</requestid>
+  </revision>
 </revisionlist>
