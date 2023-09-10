@@ -1,7 +1,7 @@
 #
 # spec file for package jboss-websocket-1.0-api
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,8 +50,9 @@ This package contains the API documentation for %{name}.
 %build
 %{mvn_alias} "org.jboss.spec.javax.websocket:jboss-websocket-api_1.0_spec" "javax.websocket:javax.websocket-api" "javax.websocket:javax.websocket-client-api"
 %{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=8 \
+    -Dmaven.compiler.release=8 \
 %endif
     -Dsource=8
 
