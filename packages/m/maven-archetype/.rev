@@ -23,4 +23,12 @@
     <comment>3.2.1</comment>
     <requestid>973678</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>206d4dc5c3abcaaf96662df16936fd37</srcmd5>
+    <version>3.2.1</version>
+    <time>1694344254</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109985</requestid>
+  </revision>
 </revisionlist>
