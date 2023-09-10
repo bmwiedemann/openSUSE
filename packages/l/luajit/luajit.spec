@@ -19,16 +19,16 @@
 # These numbers are from readelf -a /usr/lib*/lib*.so* |grep soname (dots replaced by underscores)
 %define lib_version 5_1
 %define so_version 2
-%define realver -2.1.0-beta3
-
 Name:           luajit
-Version:        2.1.0~beta3+git.1669107176.46aa45d
+Version:        5.1.2.1.0+git.1693350652.41fb94d
 Release:        0
 Summary:        JIT compiler for Lua language
 License:        MIT
 URL:            https://luajit.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-OPENSUSE luajit-lua-versioned.patch mcepl@suse.com
+# Because we obsolete moonjit with version number higher than %%{version} we have to emulate Epoch
 Patch0:         luajit-lua-versioned.patch
 # https://salsa.debian.org/lua-team/luajit/-/raw/master/debian/patches/0002-Enable-debugging-symbols-in-the-build.patch
 Patch2:         0002-Enable-debugging-symbols-in-the-build.patch
@@ -41,9 +41,12 @@ Patch4:         luajit-s390x.patch
 # # Patch again out of sync, gh#LuaJIT/LuaJIT#140
 # Patch5:         0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
 # Patch6:         luajit-ppc64-replace-asserts.patch
+BuildRequires:  git
 BuildRequires:  pkgconfig
 Requires:       %{name}-%{lib_version}-%{so_version} = %{version}
+Provides:       lua51-luajit = %{version}-%{release}
 Obsoletes:      lua51-luajit <= 2.2.0
+Provides:       moonjit = %{version}-%{release}
 Obsoletes:      moonjit <= 2.2.0
 # lj_arch.h:441:2: error: #error "No target architecture defined"
 ExcludeArch:    riscv64 ppc64 ppc64le
@@ -53,7 +56,7 @@ A Just-In-Time Compiler for Lua language
 
 %package -n libluajit-%{lib_version}-%{so_version}
 Summary:        Library for JIT Lua compiler
-Provides:       %{name}-%{lib_version}-%{so_version} = %{version}
+Provides:       %{name}-%{lib_version}-%{so_version} = %{version}-%{release}
 
 %description -n libluajit-%{lib_version}-%{so_version}
 Libraries to use JIT Lua compiler
@@ -62,23 +65,27 @@ Libraries to use JIT Lua compiler
 Summary:        Devel files for %{name}
 Requires:       %{name} = %{version}
 Requires:       luajit-%{lib_version}-%{so_version} = %{version}
+Provides:       moonjit-devel = %{version}-%{release}
 Obsoletes:      moonjit-devel <= 2.2.0
-Provides:       libluajit-devel = %{version}
+Provides:       libluajit-devel = %{version}-%{release}
 
 %description devel
 Devel files for luajit package
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 # Fix variables
 sed -i "s,PREFIX= %{_prefix}/local,PREFIX= %{_prefix}," Makefile
 sed -i "s,%{_libexecdir},%{_libdir}," etc/luajit.pc
 
+# Unfortunately, tar_scm doesn't use git archive (gh#openSUSE/obs-service-tar_scm#144)
+%global realver 2.1.%(echo '%{version}' | cut -d. -f 6)
+echo '%{version}' | cut -d. -f 6 >.relver
+
 %build
 export CFLAGS="%{optflags}"
-make %{?_make_output_sync} %{?_smp_mflags} \
+%make_build %{?_make_output_sync} \
 	Q= \
 	DYNAMIC_CC="cc -fPIC" \
 	LDCONFIG="true" \
@@ -88,7 +95,7 @@ make %{?_make_output_sync} %{?_smp_mflags} \
 
 %install
 make DESTDIR=%{buildroot} install \
-	INSTALL_LIB="%{buildroot}/%{_libdir}" \
+	INSTALL_LIB="%{buildroot}%{_libdir}" \
 	DYNAMIC_CC="cc -fPIC" \
 	LDCONFIG="true" \
 	TARGET_AR="ar rcus" \
@@ -96,10 +103,10 @@ make DESTDIR=%{buildroot} install \
 	MULTILIB=%{_lib}
 
 # remove static lib, not needed
-rm %{buildroot}/%{_libdir}/*.a
+rm %{buildroot}%{_libdir}/*.a
 
 # Create runnable binary
-ln -sf %{_bindir}/luajit-%{lib_version}%{realver} %{buildroot}%{_bindir}/luajit
+ln -sf %{_bindir}/luajit-%{lib_version}-%{realver} %{buildroot}%{_bindir}/luajit
 
 %post -n libluajit-%{lib_version}-%{so_version} -p /sbin/ldconfig
 %postun -n libluajit-%{lib_version}-%{so_version} -p /sbin/ldconfig
@@ -107,10 +114,12 @@ ln -sf %{_bindir}/luajit-%{lib_version}%{realver} %{buildroot}%{_bindir}/luajit
 %files
 %license COPYRIGHT
 %doc README
+
 %{_bindir}/luajit
-%{_bindir}/luajit-%{lib_version}%{realver}
+%{_bindir}/luajit-%{lib_version}
+%{_bindir}/luajit-%{lib_version}-%{realver}
 %{_mandir}/man1/luajit-%{lib_version}.1%{?ext_man}
-%{_datadir}/luajit-%{lib_version}%{realver}
+%{_datadir}/luajit-%{lib_version}-2.1
 
 %files -n libluajit-%{lib_version}-%{so_version}
 %{_libdir}/libluajit-5.1.so.*

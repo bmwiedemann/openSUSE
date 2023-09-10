@@ -2232,7 +2232,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
 +------------------------------------------------------------------------------
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -245,6 +245,9 @@ else
+@@ -244,6 +244,9 @@ else
  ifneq (,$(findstring LJ_TARGET_ARM ,$(TARGET_TESTARCH)))
    TARGET_LJARCH= arm
  else
@@ -2242,7 +2242,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  ifneq (,$(findstring LJ_TARGET_ARM64 ,$(TARGET_TESTARCH)))
    ifneq (,$(findstring __AARCH64EB__ ,$(TARGET_TESTARCH)))
      TARGET_ARCH= -D__AARCH64EB__=1
-@@ -273,6 +276,7 @@ else
+@@ -272,6 +275,7 @@ else
  endif
  endif
  endif
@@ -2318,7 +2318,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  #else
  /* Emit words piecewise as assembler text. */
  static void emit_asm_words(BuildCtx *ctx, uint8_t *p, int n)
-@@ -299,6 +347,9 @@ void emit_asm(BuildCtx *ctx)
+@@ -302,6 +350,9 @@ void emit_asm(BuildCtx *ctx)
  	emit_asm_reloc(ctx, r->type, ctx->relocsym[r->sym]);
        }
        ofs += n+4;
@@ -2328,7 +2328,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  #else
        emit_asm_wordreloc(ctx, ctx->code+ofs, n, ctx->relocsym[r->sym]);
        ofs += n;
-@@ -307,6 +358,8 @@ void emit_asm(BuildCtx *ctx)
+@@ -310,6 +361,8 @@ void emit_asm(BuildCtx *ctx)
      }
  #if LJ_TARGET_X86ORX64
      emit_asm_bytes(ctx, ctx->code+ofs, next-ofs);
@@ -2343,7 +2343,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
 +-- Not yet implemented.
 --- a/src/lib_jit.c
 +++ b/src/lib_jit.c
-@@ -719,6 +719,8 @@ static uint32_t jit_cpudetect(void)
+@@ -720,6 +720,8 @@ static uint32_t jit_cpudetect(void)
    }
  #endif
  
@@ -2372,7 +2372,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  #elif defined(__ppc__) || defined(__ppc) || defined(__PPC__) || defined(__PPC) || defined(__powerpc__) || defined(__powerpc) || defined(__POWERPC__) || defined(__POWERPC) || defined(_M_PPC)
  #define LUAJIT_TARGET	LUAJIT_ARCH_PPC
  #elif defined(__mips64__) || defined(__mips64) || defined(__MIPS64__) || defined(__MIPS64)
-@@ -435,6 +439,21 @@
+@@ -438,6 +442,21 @@
  #define LJ_ARCH_VERSION		10
  #endif
  
@@ -2396,7 +2396,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  #endif
 --- a/src/lj_asm.c
 +++ b/src/lj_asm.c
-@@ -1662,6 +1662,8 @@ static void asm_loop(ASMState *as)
+@@ -1704,6 +1704,8 @@ static void asm_loop(ASMState *as)
  #include "lj_asm_ppc.h"
  #elif LJ_TARGET_MIPS
  #include "lj_asm_mips.h"
@@ -2407,7 +2407,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  #endif
 --- a/src/lj_ccall.c
 +++ b/src/lj_ccall.c
-@@ -574,6 +574,40 @@
+@@ -575,6 +575,40 @@
      goto done; \
    }
  
@@ -2448,7 +2448,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  #else
  #error "Missing calling convention definitions for this architecture"
  #endif
-@@ -988,7 +1022,7 @@ static int ccall_set_args(lua_State *L,
+@@ -990,7 +1024,7 @@ static int ccall_set_args(lua_State *L,
      CTypeID did;
      CType *d;
      CTSize sz;
@@ -2457,15 +2457,15 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
      void *dp, *rp = NULL;
  
      if (fid) {  /* Get argument type from field. */
-@@ -1028,6 +1062,7 @@ static int ccall_set_args(lua_State *L,
+@@ -1029,6 +1063,7 @@ static int ccall_set_args(lua_State *L,
      CCALL_HANDLE_REGARG  /* Handle register arguments. */
  
      /* Otherwise pass argument on stack. */
 +    onstack = 1;
-     if (CCALL_ALIGN_STACKARG && !rp && (d->info & CTF_ALIGN) > CTALIGN_PTR) {
-       MSize align = (1u << ctype_align(d->info-CTALIGN_PTR)) -1;
-       nsp = (nsp + align) & ~align;  /* Align argument on stack. */
-@@ -1069,6 +1104,16 @@ static int ccall_set_args(lua_State *L,
+     if (CCALL_ALIGN_STACKARG) {  /* Align argument on stack. */
+       MSize align = (1u << ctype_align(d->info)) - 1;
+       if (rp || (CCALL_PACK_STACKARG && isva && align < CTSIZE_PTR-1))
+@@ -1073,6 +1108,16 @@ static int ccall_set_args(lua_State *L,
        *(int64_t *)dp = (int64_t)*(int32_t *)dp;  /* Sign-extend to 64 bit. */
      }
  #endif
@@ -2484,7 +2484,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
        if (nfpr == ngpr)
 --- a/src/lj_ccall.h
 +++ b/src/lj_ccall.h
-@@ -126,6 +126,21 @@ typedef union FPRArg {
+@@ -129,6 +129,21 @@ typedef union FPRArg {
    struct { LJ_ENDIAN_LOHI(float f; , float g;) };
  } FPRArg;
  
@@ -2561,7 +2561,7 @@ Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
  #endif
 --- a/src/lj_target.h
 +++ b/src/lj_target.h
-@@ -144,6 +144,8 @@ typedef uint32_t RegCost;
+@@ -146,6 +146,8 @@ typedef uint32_t RegCost;
  #include "lj_target_ppc.h"
  #elif LJ_TARGET_MIPS
  #include "lj_target_mips.h"

@@ -194,4 +194,41 @@
 </comment>
     <requestid>1105084</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5275153368734bc0c06df19def015735</srcmd5>
+    <version>5.1.2.1.0+git.1693350652.41fb94d</version>
+    <time>1694344168</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.1.2.1.0+git.1693350652.41fb94d:
+  * Add randomized register allocation for fuzz testing.
+  * ARM64: Improve register allocation for integer IR_MUL/IR_MULOV.
+  * ARM64: Fix register allocation for IR_*LOAD.
+  * Update external MSDN URL in code.
+  * FFI/ARM64/OSX: Handle non-standard OSX C calling conventions.
+  * FFI: Unify stack setup for C calls in interpreter.
+  * ARM64: Prevent STP fusion for conditional code emitted by TBAR.
+  * ARM64: Fix LDP/STP fusing for unaligned accesses.
+  * Handle table unsinking in the presence of IRFL_TAB_NOMM.
+  * Use fallback name for install files without valid .git or .relver.
+  * Handle non-.git checkout with .relver in .bat-file builds.
+  * Fix external C call stack check when using LUAJIT_MODE_WRAPCFUNC.
+  * Fix predict_next() in parser (again).
+- Update luajit-lua-versioned.patch to work with the git checkout
+  created tarball. The point of the patch is to extend the
+  version number so that it is always bigger than 2.2.0 version
+  of moonjit, which is Obsoleted by this package.
+
+- Update to version 2.1.0~beta3+git.1692716794.03c3112:
+  * Fix typo.
+  * Handle the case when .git is not a directory.
+  * Add .gitattributes to dynamically resolve .relver.
+  * Add .gitattributes to dynamically resolve .relver.
+  * Fix for last commit: also remove symlink on uninstall.
+  * Switch to rolling releases: mark v2.1 as production.
+  * Fix Windows build scripts for rolling releases.
+  * Switch MSVC and console build scripts to rolling releases.
+  * Switch build system to rolling releases.
+  * Update documentation for switch to rolling releases.</comment>
+    <requestid>1109627</requestid>
+  </revision>
 </revisionlist>

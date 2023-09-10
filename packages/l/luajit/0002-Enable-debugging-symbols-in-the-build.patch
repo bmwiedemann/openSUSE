@@ -8,7 +8,7 @@ Subject: Enable debugging symbols in the build
 
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -55,9 +55,9 @@ CCOPT_arm64=
+@@ -54,9 +54,9 @@ CCOPT_arm64=
  CCOPT_ppc=
  CCOPT_mips=
  #

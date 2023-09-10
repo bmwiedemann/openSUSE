@@ -1,47 +1,38 @@
 ---
- Makefile      |   15 ++++++++-------
+ Makefile      |    9 +++++----
  etc/luajit.pc |    2 +-
  src/Makefile  |    3 ++-
  src/luaconf.h |    2 +-
- 4 files changed, 12 insertions(+), 10 deletions(-)
+ 4 files changed, 9 insertions(+), 7 deletions(-)
 
 --- a/Makefile
 +++ b/Makefile
-@@ -19,6 +19,7 @@ RELVER=  0
- PREREL=  -beta3
- VERSION= $(MAJVER).$(MINVER).$(RELVER)$(PREREL)
+@@ -16,13 +16,14 @@
+ MAJVER=  2
+ MINVER=  1
  ABIVER=  5.1
 +SUFFIX= 5_1
  
- ##############################################################################
- #
-@@ -33,20 +34,20 @@ DPREFIX= $(DESTDIR)$(PREFIX)
- INSTALL_BIN=   $(DPREFIX)/bin
- INSTALL_LIB=   $(DPREFIX)/$(MULTILIB)
- INSTALL_SHARE= $(DPREFIX)/share
--INSTALL_DEFINC= $(DPREFIX)/include/luajit-$(MAJVER).$(MINVER)
-+INSTALL_DEFINC= $(DPREFIX)/include/luajit-$(SUFFIX)-$(MAJVER).$(MINVER)
- INSTALL_INC=   $(INSTALL_DEFINC)
+ # LuaJIT uses rolling releases. The release version is based on the time of
+ # the latest git commit. The 'git' command must be available during the build.
+ RELVER= $(shell cat src/luajit_relver.txt 2>/dev/null || : )
+ # Note: setting it with := doesn't work, since it will change during the build.
  
--INSTALL_LJLIBD= $(INSTALL_SHARE)/luajit-$(VERSION)
-+INSTALL_LJLIBD= $(INSTALL_SHARE)/luajit-$(SUFFIX)-$(VERSION)
- INSTALL_JITLIB= $(INSTALL_LJLIBD)/jit
- INSTALL_LMODD= $(INSTALL_SHARE)/lua
- INSTALL_LMOD= $(INSTALL_LMODD)/$(ABIVER)
- INSTALL_CMODD= $(INSTALL_LIB)/lua
- INSTALL_CMOD= $(INSTALL_CMODD)/$(ABIVER)
--INSTALL_MAN= $(INSTALL_SHARE)/man/man1
-+INSTALL_MAN= $(INSTALL_SHARE)/man/man1/
+-MMVERSION= $(MAJVER).$(MINVER)
++MMVERSION= $(SUFFIX)-$(MAJVER).$(MINVER)
+ VERSION= $(MMVERSION).$(RELVER)
+ 
+ ##############################################################################
+@@ -51,7 +52,7 @@ INSTALL_MAN= $(INSTALL_SHARE)/man/man1
  INSTALL_PKGCONFIG= $(INSTALL_LIB)/pkgconfig
  
--INSTALL_TNAME= luajit-$(VERSION)
+ INSTALL_TNAME= luajit-$(VERSION)
 -INSTALL_TSYMNAME= luajit
-+INSTALL_TNAME= luajit-$(SUFFIX)-$(VERSION)
 +INSTALL_TSYMNAME= luajit-$(SUFFIX)
  INSTALL_ANAME= libluajit-$(ABIVER).a
  INSTALL_SOSHORT1= libluajit-$(ABIVER).so
  INSTALL_SOSHORT2= libluajit-$(ABIVER).so.$(MAJVER)
-@@ -83,7 +84,7 @@ ifneq ($(INSTALL_DEFINC),$(INSTALL_INC))
+@@ -89,7 +90,7 @@ ifneq ($(INSTALL_DEFINC),$(INSTALL_INC))
    SED_PC+= -e "s|^includedir=.*|includedir=$(INSTALL_INC)|"
  endif
  
@@ -50,7 +41,7 @@
  FILE_A= libluajit.a
  FILE_SO= libluajit.so
  FILE_MAN= luajit.1
-@@ -128,7 +129,7 @@ install: $(INSTALL_DEP)
+@@ -136,7 +137,7 @@ install: $(INSTALL_DEP)
  	  ( $(LDCONFIG) $(INSTALL_LIB) || : ) && \
  	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT1) && \
  	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT2) || :
@@ -72,15 +63,15 @@
  INSTALL_CMOD=${prefix}/${multilib}/lua/${abiver}
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -15,6 +15,7 @@ MINVER=  1
- RELVER=  0
+@@ -14,6 +14,7 @@ MAJVER=  2
+ MINVER=  1
  ABIVER=  5.1
  NODOTABIVER= 51
 +SUFFIX= 5_1
  
  ##############################################################################
  #############################  COMPILER OPTIONS  #############################
-@@ -512,7 +513,7 @@ LIB_VMDEFP= $(LIB_VMDEF)
+@@ -520,7 +521,7 @@ LIB_VMDEFP= $(LIB_VMDEF)
  LUAJIT_O= luajit.o
  LUAJIT_A= libluajit.a
  LUAJIT_SO= libluajit.so
@@ -95,8 +86,8 @@
  #endif
  #define LUA_LROOT	"/usr/local"
  #define LUA_LUADIR	"/lua/5.1/"
--#define LUA_LJDIR	"/luajit-2.1.0-beta3/"
-+#define LUA_LJDIR	"/luajit-5_1-2.1.0-beta3/"
+-#define LUA_LJDIR	"/luajit-2.1/"
++#define LUA_LJDIR	"/luajit-5_1-2.1.0-rolling/"
  
  #ifdef LUA_ROOT
  #define LUA_JROOT	LUA_ROOT

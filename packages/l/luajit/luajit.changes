@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Sep 06 21:51:55 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 5.1.2.1.0+git.1693350652.41fb94d:
+  * Add randomized register allocation for fuzz testing.
+  * ARM64: Improve register allocation for integer IR_MUL/IR_MULOV.
+  * ARM64: Fix register allocation for IR_*LOAD.
+  * Update external MSDN URL in code.
+  * FFI/ARM64/OSX: Handle non-standard OSX C calling conventions.
+  * FFI: Unify stack setup for C calls in interpreter.
+  * ARM64: Prevent STP fusion for conditional code emitted by TBAR.
+  * ARM64: Fix LDP/STP fusing for unaligned accesses.
+  * Handle table unsinking in the presence of IRFL_TAB_NOMM.
+  * Use fallback name for install files without valid .git or .relver.
+  * Handle non-.git checkout with .relver in .bat-file builds.
+  * Fix external C call stack check when using LUAJIT_MODE_WRAPCFUNC.
+  * Fix predict_next() in parser (again).
+- Update luajit-lua-versioned.patch to work with the git checkout
+  created tarball. The point of the patch is to extend the
+  version number so that it is always bigger than 2.2.0 version
+  of moonjit, which is Obsoleted by this package.
+
+-------------------------------------------------------------------
+Wed Aug 23 14:18:06 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 2.1.0~beta3+git.1692716794.03c3112:
+  * Fix typo.
+  * Handle the case when .git is not a directory.
+  * Add .gitattributes to dynamically resolve .relver.
+  * Add .gitattributes to dynamically resolve .relver.
+  * Fix for last commit: also remove symlink on uninstall.
+  * Switch to rolling releases: mark v2.1 as production.
+  * Fix Windows build scripts for rolling releases.
+  * Switch MSVC and console build scripts to rolling releases.
+  * Switch build system to rolling releases.
+  * Update documentation for switch to rolling releases.
+  * Bump copyright date.
+  * Remove work-in-progress notice in string buffer docs.
+  * MIPS: Fix "bad FP FLOAD" assertion.
+  * Ensure forward progress on trace exit to BC_ITERN.
+  * ARM64: Add support for ARM64e pointer authentication codes (PAC).
+  * DynASM/ARM64: Add instructions for ARM64e PAC.
+  * Fix maxslots when recording BC_VARG, part 3.
+  * Fix predict_next() in parser.
+  * MIPS32: Declare that the assembler part uses the FR=0 model.
+  * ARM64: Fix assembly of HREFK (again).
+  * Fix frame for more types of on-trace error messages.
+  * Add workaround for bytecode dump of builtins.
+  * DynASM: Fix regression due to warning fix.
+  * Fix base register coalescing in side trace.
+  * ARM64: Fix assembly of HREFK.
+  * Fix maxslots when recording BC_VARG, part 2.
+  * Fix maxslots when recording BC_TSETM.
+  * Fix maxslots when recording BC_VARG.
+  * Fix register mask for stack check in head of side trace.
+  * FFI: Fix ffi.metatype() for non-raw types.
+  * ARM64: Fix LDP code generation.
+  * MIPSr6: Add missing files to Makefile install target.
+  * DynASM: Fix warnings.
+  * Fix frame for on-trace out-of-memory error.
+  * Fix handling of instable types in TNEW/TDUP load forwarding.
+  * Fix compiler warning.
+  * Fix last commit.
+  * Print errors from __gc finalizers instead of rethrowing them.
+  * Fix TDUP load forwarding after table rehash.
+  * Fix canonicalization of +-0.0 keys for IR_NEWREF.
+  * Improve error reporting on stack overflow.
+  * Allow building sources with mixed LF/CRLF line-endings.
+  * Fix compiler warning.
+  * Don't fail for Clang builds, which pretend to be an ancient GCC.
+  * Avoid negation of signed integers in C that may hold INT*_MIN.
+  * Correct fix for stack check when recording BC_VARG.
+  * Disable FMA by default. Use -Ofma or jit.opt.start("+fma") to enable.
+  * FFI: Fix dangling reference to CType. Improve checks.
+  * ARM64: Fix code generation for IR_SLOAD with typecheck + conversion.
+  * PS4/PS5: Fix build scripts.
+  * Avoid assertion in case of stack overflow from stitched trace.
+
+-------------------------------------------------------------------
 Mon Aug 21 13:04:40 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update luajit-s390x.patch from gh#LuaJIT/LuaJIT#631 to the

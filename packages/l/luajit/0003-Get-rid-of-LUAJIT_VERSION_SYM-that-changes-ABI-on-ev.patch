@@ -3,9 +3,9 @@ Date: Thu, 19 Nov 2015 16:29:02 +0200
 Subject: Get rid of LUAJIT_VERSION_SYM that changes ABI on every patch release
 
 ---
- src/lj_dispatch.c |    5 -----
- src/luajit.c      |    1 -
- src/luajit.h      |    3 ---
+ src/lj_dispatch.c    |    5 -----
+ src/luajit.c         |    1 -
+ src/luajit_rolling.h |    3 ---
  3 files changed, 9 deletions(-)
 
 --- a/src/lj_dispatch.c
@@ -32,8 +32,8 @@ Subject: Get rid of LUAJIT_VERSION_SYM that changes ABI on every patch release
  
    argn = collectargs(argv, &flags);
    if (argn < 0) {  /* Invalid args? */
---- a/src/luajit.h
-+++ b/src/luajit.h
+--- a/src/luajit_rolling.h
++++ b/src/luajit_rolling.h
 @@ -73,7 +73,4 @@ LUA_API void luaJIT_profile_stop(lua_Sta
  LUA_API const char *luaJIT_profile_dumpstack(lua_State *L, const char *fmt,
  					     int depth, size_t *len);
