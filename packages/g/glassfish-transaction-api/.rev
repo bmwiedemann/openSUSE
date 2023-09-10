@@ -23,4 +23,12 @@
     <comment>Allow building with newer versions of spec-version-maven-plugin</comment>
     <requestid>966812</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>51d61c1896cdd177f38f67849dbe7564</srcmd5>
+    <version>1.3</version>
+    <time>1694344228</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109951</requestid>
+  </revision>
 </revisionlist>
