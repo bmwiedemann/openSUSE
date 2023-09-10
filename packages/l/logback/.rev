@@ -47,4 +47,12 @@
     <comment>1.2.11</comment>
     <requestid>973671</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6220b47aff3ee950533f1d1639c0bfe9</srcmd5>
+    <version>1.2.11</version>
+    <time>1694344252</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109983</requestid>
+  </revision>
 </revisionlist>
