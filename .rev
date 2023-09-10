@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0f76e6a14e87a281332481985442bf62</srcmd5>
+    <version>0~git19</version>
+    <time>1694344195</time>
+    <user>anag+factory</user>
+    <comment>Sound doesn't not work in xrdp when using pipewire w/o this module. It has been requested on the Factory mailing list.</comment>
+    <requestid>1108961</requestid>
+  </revision>
+</revisionlist>

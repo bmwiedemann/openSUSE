@@ -1,0 +1,5 @@
+<package name="pipewire-module-xrdp" project="openSUSE:Factory">
+  <title>pipewire-module-xrdp</title>
+  <description>This module allows xrdp to generate sound on a pipewire-based system.</description>
+  <devel project="X11:RemoteDesktop" package="pipewire-module-xrdp"/>
+</package>
