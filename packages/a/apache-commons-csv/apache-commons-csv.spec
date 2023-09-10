@@ -46,7 +46,9 @@ This package contains the API documentation for %{name}.
 %setup -q -n commons-csv-%{version}-src
 
 %build
-%{mvn_build} -f -- -Dsource=8
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dsource=8
 
 %install
 %mvn_install
