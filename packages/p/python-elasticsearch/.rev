@@ -137,4 +137,18 @@
     <comment></comment>
     <requestid>1081936</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5a840f0edc91e366d329f0fb9dd89ac6</srcmd5>
+    <version>8.9.0</version>
+    <time>1694344178</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.9.0:
+  Number of changes is so large, that I suggest looking at it at
+  https://www.elastic.co/guide/en/elasticsearch/client/python-api/master/release-notes.html.
+- Remove upstreamed python-elasticsearch-no-nose.patch and
+  python-elasticsearch-no-mock.patch.
+
+- Remove upstreamed python-elasticsearch-no-mock.patch.</comment>
+    <requestid>1109633</requestid>
+  </revision>
 </revisionlist>

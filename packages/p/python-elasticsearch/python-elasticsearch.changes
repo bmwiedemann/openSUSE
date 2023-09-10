@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep  1 16:36:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 8.9.0:
+  Number of changes is so large, that I suggest looking at it at
+  https://www.elastic.co/guide/en/elasticsearch/client/python-api/master/release-notes.html.
+- Remove upstreamed python-elasticsearch-no-nose.patch and
+  python-elasticsearch-no-mock.patch.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
+- Remove upstreamed python-elasticsearch-no-mock.patch.
 
 -------------------------------------------------------------------
 Thu Apr 13 22:41:05 UTC 2023 - Matej Cepl <mcepl@suse.com>

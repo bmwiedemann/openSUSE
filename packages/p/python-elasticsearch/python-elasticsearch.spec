@@ -22,20 +22,18 @@ Name:           python-elasticsearch
 # DO NOT UPDATE until the compatible version of
 # python-elasticsearch-dsl is available (i.e., the same major
 # version ... currently we are waiting on 8.* release).
-Version:        7.6.0
+Version:        8.9.0
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/elastic/elasticsearch-py
-Source:         https://github.com/elastic/elasticsearch-py/archive/%{version}.tar.gz
-Patch0:         python-elasticsearch-no-nose.patch
-# https://github.com/elastic/elasticsearch-py/issues/1983
-Patch1:         python-elasticsearch-no-mock.patch
+Source:         https://github.com/elastic/elasticsearch-py/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module elastic-transport}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module urllib3 >= 1.21.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-elastic-transport
@@ -58,13 +56,12 @@ to be opinion-free and very extendable.
 %prep
 %autosetup -p1 -n elasticsearch-py-%{version}
 sed -i '/addopts/d' setup.cfg
-rm README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -72,7 +69,7 @@ rm README.rst
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS Changelog.rst README
+%doc CODE_OF_CONDUCT.md CHANGELOG.md README.rst
 %{python_sitelib}/elasticsearch
 %{python_sitelib}/elasticsearch-%{version}*-info
 
