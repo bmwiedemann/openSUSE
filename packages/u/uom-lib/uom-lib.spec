@@ -1,7 +1,7 @@
 #
 # spec file for package uom-lib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,10 +80,11 @@ Libraries (JSR 363).
 %pom_disable_module jackson
 
 %build
-%{mvn_build} -f -s \
+%{mvn_build} -f -s -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=8
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
 
 %install
 %mvn_install
