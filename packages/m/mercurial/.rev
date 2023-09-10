@@ -1649,4 +1649,19 @@ As usual, a lot of patches don't make it to this list since they're more interna
   * perf: fix perf::tags (forwarded request 1103333 from develop7)</comment>
     <requestid>1103334</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>8255214e7b919e1c4eb5c4d0309eacb4</srcmd5>
+    <version>6.5.2</version>
+    <time>1694344163</time>
+    <user>anag+factory</user>
+    <comment>- Mercurial 6.5.2
+  * hgweb: encode WSGI environment using the ISO-8859-1 codec
+  * rhg: fix the bug where sparse config is interpreted as relglob instead of glob
+  * gpg: fix an UnboundLocalError whenever using --force
+  * transaction: fix __repr__() and make the default name bytes
+  * setup: make the error &quot;Unable to find a working hg binary&quot; more informative
+  * tests: avoid test environment affecting setup.py
+  * run-tests: detect HGWITHRUSTEXT value (forwarded request 1109476 from develop7)</comment>
+    <requestid>1109477</requestid>
+  </revision>
 </revisionlist>

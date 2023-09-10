@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  6 17:00:37 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.5.2
+
+  * hgweb: encode WSGI environment using the ISO-8859-1 codec
+  * rhg: fix the bug where sparse config is interpreted as relglob instead of glob
+  * gpg: fix an UnboundLocalError whenever using --force
+  * transaction: fix __repr__() and make the default name bytes
+  * setup: make the error "Unable to find a working hg binary" more informative
+  * tests: avoid test environment affecting setup.py
+  * run-tests: detect HGWITHRUSTEXT value
+ 
+-------------------------------------------------------------------
 Thu Aug 10 11:09:11 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 6.5.1
