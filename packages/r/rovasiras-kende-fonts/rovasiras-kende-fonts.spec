@@ -17,14 +17,16 @@
 
 
 Name:           rovasiras-kende-fonts
-Version:        20221015
+Version:        20230908
 Release:        0
 Summary:        A ligatured font for the Old Hungarian script
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/rovasiras/kende-font
 # https://github.com/rovasiras/kende-font/archive/refs/tags/Font.tar.gz
-Source0:        kende-font-Font.tar.gz
+Source0:        Kende.ttf
+Source1:        OFL.txt
+Source2:        README.md
 BuildRequires:  fontpackages-devel
 BuildArch:      noarch
 %reconfigure_fonts_prereq
@@ -33,7 +35,9 @@ BuildArch:      noarch
 Kende is a ligatured font for the Old Hungarian script.
 
 %prep
-%autosetup -n kende-font-Font
+cp %{SOURCE0} .
+cp %{SOURCE1} .
+cp %{SOURCE2} .
 
 %build
 
@@ -43,7 +47,7 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} Kende.ttf
 %reconfigure_fonts_scriptlets
 
 %files
-%license LICENSE
+%license OFL.txt
 %doc README.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/Kende.ttf
