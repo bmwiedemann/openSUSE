@@ -44,4 +44,17 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1098416 from glaubitz)</comment>
     <requestid>1098534</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>dd6d276d82e961fd7c2813fa3b1e9a9b</srcmd5>
+    <version>1.0.0b11</version>
+    <time>1694344215</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0b11
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1109704 from glaubitz)</comment>
+    <requestid>1109930</requestid>
+  </revision>
 </revisionlist>
