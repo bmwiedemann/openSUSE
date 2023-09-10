@@ -15,4 +15,12 @@
     <comment>fix build with new maven-javadoc-plugin</comment>
     <requestid>750550</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1614bb8578a906a608c1e747e84cf92e</srcmd5>
+    <version>4.0.2</version>
+    <time>1694344251</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109982</requestid>
+  </revision>
 </revisionlist>
