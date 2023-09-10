@@ -31,4 +31,12 @@
     <comment>fix build with newer javapackage-tools</comment>
     <requestid>1109130</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>21b7c47a61817f90e8c33f0ead6330f9</srcmd5>
+    <version>2.5.0</version>
+    <time>1694344225</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109948</requestid>
+  </revision>
 </revisionlist>

@@ -480,9 +480,10 @@ done
 %build
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=7 \
+    -Dmaven.compiler.release=8 \
 %endif
-	-Dhk2.mvn.plugins.version=%{version}
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dhk2.mvn.plugins.version=%{version}
 
 %install
 %mvn_install

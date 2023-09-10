@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  9 13:33:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Tue Sep  5 18:03:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Do not depend on com.sun:tools since nobody provides it any more
