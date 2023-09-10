@@ -1,7 +1,7 @@
 #
 # spec file for package uncommons-maths
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,8 @@ sed -i "s|<version>@VERSION@</version>|<version>%{version}</version>|" core/pom.
 cd core
 %{mvn_file} : %{name}
 
-%{mvn_build} -f
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
 
 %install
 
