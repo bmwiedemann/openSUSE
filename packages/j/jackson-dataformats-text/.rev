@@ -15,4 +15,12 @@
     <comment>A bug/CVE number missing</comment>
     <requestid>1105158</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>11252d53cda3f60fbbc66fbae212c2dd</srcmd5>
+    <version>2.15.2</version>
+    <time>1694344231</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109956</requestid>
+  </revision>
 </revisionlist>

@@ -90,7 +90,8 @@ sed -i 's/\r//' LICENSE NOTICE
 %{mvn_file} ":{*}" jackson-dataformats/@1
 
 %build
-%{mvn_build} -sf
+%{mvn_build} -sf -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
 
 %install
 %mvn_install
