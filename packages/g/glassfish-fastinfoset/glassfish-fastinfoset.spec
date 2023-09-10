@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-fastinfoset
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,7 +88,9 @@ pushd code
 %if 0%{?rhel}
 MVN_OPTIONS=-j
 %endif
-%{mvn_build} -f $MVN_OPTIONS -- -Dsource=8
+%{mvn_build} -f $MVN_OPTIONS -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dsource=8
 popd
 
 %install

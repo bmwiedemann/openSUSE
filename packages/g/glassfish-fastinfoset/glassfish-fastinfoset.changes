@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  9 13:31:38 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Thu May 25 10:47:11 UTC 2023 - Stefan Bluhm <stefan.bluhm@clacee.eu>
 
 - Don't build javadocs on Enterprise Linux as it fails with known
