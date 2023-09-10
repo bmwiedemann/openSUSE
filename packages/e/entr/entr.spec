@@ -18,7 +18,7 @@
 
 
 Name:           entr
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        A utility for running arbitrary commands when files change
 License:        ISC
@@ -45,6 +45,9 @@ make %{?_smp_mflags}
 export PREFIX=%{_prefix}
 export MANPREFIX=%{_mandir}
 %make_install
+
+%check
+make test
 
 %files
 %license LICENSE

@@ -89,19 +89,33 @@ pushd subprojects/hyprland-protocols
 %meson_build
 popd
 
+%meson
+%meson_build
+
+# Hyprland Share Picker
 %cmake
 %cmake_build
 
 %install
+%meson_install
 install -Dm0755 -t %{buildroot}%{_bindir} 								./build/hyprland-share-picker/hyprland-share-picker
-install -Dm0755 -t %{buildroot}%{_libexecdir} 							./build/xdg-desktop-portal-hyprland
-install -Dm0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/portals/  ./hyprland.portal
-install -Dm0644 -t %{buildroot}%{_datadir}/dbus-1/services/ 			./org.freedesktop.impl.portal.desktop.hyprland.service
 
 # Install it as well
 pushd subprojects/hyprland-protocols
 %meson_install
 popd
+
+%pre
+%systemd_user_pre %{name}.service
+
+%post
+%systemd_user_post %{name}.service
+
+%preun
+%systemd_user_preun %{name}.service
+
+%postun
+%systemd_user_postun %{name}.service
 
 %files
 %{-,root,root,-}
@@ -113,6 +127,7 @@ popd
 %dir %{_datadir}/xdg-desktop-portal/portals
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprland.service
 %{_datadir}/xdg-desktop-portal/portals/hyprland.portal
+%{_userunitdir}/%{name}.service
 
 %files -n hyprland-protocols-devel
 %{_datadir}/pkgconfig/hyprland-protocols.pc

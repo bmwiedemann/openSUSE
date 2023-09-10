@@ -46,4 +46,13 @@
 </comment>
     <requestid>1109424</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>914ca6c789cabb4a1b838da5e6bb0988</srcmd5>
+    <version>unknown</version>
+    <time>1694344276</time>
+    <user>anag+factory</user>
+    <comment>- Add back cmake. Seems they forgotten share picker on the meson.build
+- Further correct mistake by installing of systemd services properly.</comment>
+    <requestid>1109938</requestid>
+  </revision>
 </revisionlist>
