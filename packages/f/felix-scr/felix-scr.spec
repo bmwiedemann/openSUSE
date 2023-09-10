@@ -1,7 +1,7 @@
 #
 # spec file for package felix-scr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -77,10 +77,12 @@ sed -i -e '/IgnoreJRERequirement/d' src/main/java/org/apache/felix/scr/impl/mana
 %{mvn_file} : felix/%{bundle}
 
 %build
-%{mvn_build} -f  -- -Dfelix.java.version=7 \
+%{mvn_build} -f  -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=7
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dfelix.java.version=8 \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
 
 %install
 %mvn_install
