@@ -17,27 +17,23 @@
 
 
 Name:           python-elasticsearch-dsl
-Version:        7.4.1
+Version:        8.9.0
 Release:        0
 Summary:        Python client for Elasticsearch
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/elasticsearch/elasticsearch-dsl-py
 Source:         https://github.com/elastic/elasticsearch-dsl-py/archive/refs/tags/v%{version}.tar.gz#/elasticsearch-dsl-%{version}.tar.gz
-# https://github.com/elastic/elasticsearch-dsl-py/issues/1596
-# PATCH-FEATURE-UPSTREAM python-elasticsearch-dsl-no-mock.patch gh#elastic/elasticsearch-dsl-py#1596 mcepl@suse.com
-# Use unittest.mock instead of the external package (merged to master, not yet released)
-Patch0:         python-elasticsearch-dsl-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # gh#elastic/elasticsearch-dsl-py#1569
-Requires:       (python-elasticsearch >= 7.0.0 with python-elasticsearch < 8)
+Requires:       python-elasticsearch >= 8.0.0
 Requires:       python-python-dateutil
 Suggests:       python-pytz
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module elasticsearch >= 7.0.0 with %python-elasticsearch < 8.0.0}
+BuildRequires:  %{python_module elasticsearch >= 8.0.0}
 BuildRequires:  %{python_module pytest >= 3.0.0}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}

@@ -84,4 +84,19 @@
 </comment>
     <requestid>1086025</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cebbe81f5d4a52bc62dbbac668b7cfa7</srcmd5>
+    <version>8.9.0</version>
+    <time>1694344196</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.9.0:
+  - Added Elasticsearch 8.x support
+  - Dropped support for Python 2.7 and 3.5
+  - Added support for Python 3.10 and 3.11
+  - Added the MultiTerms aggregation
+  - Added the CombinedFields query
+- Remove upstreamed python-elasticsearch-dsl-no-mock.patch.
+</comment>
+    <requestid>1109630</requestid>
+  </revision>
 </revisionlist>
