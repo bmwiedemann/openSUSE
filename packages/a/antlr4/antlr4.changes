@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  9 09:10:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Sat Jun 10 13:35:31 UTC 2023 - marec <marec@detebe.org>
 
 - Upgrade to version 4.13.0

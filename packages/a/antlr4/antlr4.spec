@@ -159,7 +159,9 @@ perl -pi -e 's#\\>#>#g' tool/resources/org/antlr/v4/tool/templates/unicodedata.s
 %{mvn_package} :antlr4-master antlr4-runtime
 
 %build
-%{mvn_build} -s -f -- -Dsource=8
+%{mvn_build} -s -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dsource=8
 
 pushd runtime/Cpp
 %if 0%{?suse_version} < 1500

@@ -70,4 +70,12 @@
     <comment>4.13.0</comment>
     <requestid>1092296</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>29c4e4c846bd6443e0d4bab217894ae7</srcmd5>
+    <version>4.13.0</version>
+    <time>1694344218</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109939</requestid>
+  </revision>
 </revisionlist>
