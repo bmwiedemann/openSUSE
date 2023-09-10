@@ -44,4 +44,21 @@
     <comment></comment>
     <requestid>888245</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>41d9bc6396bc38412bf44985341e9361</srcmd5>
+    <version>0.4.12</version>
+    <time>1694344198</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file.
+- Convert from python_{build,install} to
+  pyproject_{wheel,install} macros.
+- Update to 0.4.12
+  * Allow suitesparse include/library paths to be passed in to 
+    pip install through environment variables.
+  * Added support for python 3.11
+  * Fix compilation with Cython&gt;=3.0.0
+- Add upstream scipy111.patch
+</comment>
+    <requestid>1109763</requestid>
+  </revision>
 </revisionlist>

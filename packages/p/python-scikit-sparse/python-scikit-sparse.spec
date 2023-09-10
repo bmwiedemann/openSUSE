@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-sparse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,34 +16,34 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
-Name:           python-scikit-sparse
-Version:        0.4.5
-Release:        0
 # For license file
 %define tag     c94f8418b6c36c3ff9db4f87e00fc08bd51cfb4b
+Name:           python-scikit-sparse
+Version:        0.4.12
+Release:        0
 Summary:        Scikits sparse matrix package
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/scikit-sparse/scikit-sparse/
 Source:         https://files.pythonhosted.org/packages/source/s/scikit-sparse/scikit-sparse-%{version}.tar.gz
+#PATCH-FIX-UPSTREAM https://github.com/scikit-sparse/scikit-sparse/pull/102 Fix breaking changes in isspmatrix of scipy >=1.11.0
+Patch0:         scipy111.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.13.3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scipy >= 0.19}
 BuildRequires:  %{python_module setuptools >= 18.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  suitesparse-devel
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
-# /SECTION
 Requires:       python-numpy >= 1.12
 Requires:       python-scipy >= 0.18
 ExcludeArch:    %{ix86}
-
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %python_subpackages
 
 %description
@@ -57,16 +57,14 @@ There is a wrapper for the CHOLMOD library for sparse Cholesky
 decomposition.
 
 %prep
-%setup -q -n scikit-sparse-%{version}
-# no need for nose here -- gh#scikit-sparse/pull#66
-sed -i 's/from nose.tools import assert_raises/from pytest import raises as assert_raises/' sksparse/test_cholmod.py
+%autosetup -p1 -n scikit-sparse-%{version}
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
