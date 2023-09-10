@@ -19,7 +19,7 @@
 %global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-PyJWT
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        JSON Web Token implementation in Python
 License:        MIT
@@ -57,7 +57,7 @@ find ./ -type f -name "*.py" -perm 644 -exec sed -i -e '1{\@^#!%{_bindir}/env py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k "not test_verify_false_deprecated"
+%pytest -k "not test_verify_false_deprecated" -k "not test_get_jwt_set_sslcontext_default"
 
 %files %{python_files}
 %license LICENSE

@@ -313,4 +313,17 @@
 </comment>
     <requestid>1087975</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>daa1af38720e77712dec8cc88e50e1c4</srcmd5>
+    <version>2.8.0</version>
+    <time>1694344161</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.8.0
+  * Update python version test matrix by @auvipy in #895
+  * Add ``strict_aud`` as an option to ``jwt.decode`` by @woodruffw in #902
+  * Export PyJWKClientConnectionError class by @daviddavis in #887
+  * Allows passing of ssl.SSLContext to PyJWKClient by @juur in #891
+- Skip test_get_jwt_set_sslcontext_default test in testsuite (forwarded request 1108939 from glaubitz)</comment>
+    <requestid>1109256</requestid>
+  </revision>
 </revisionlist>
