@@ -128,7 +128,8 @@ rm json/src/test/java/com/fasterxml/jackson/jaxrs/json/resteasy/RestEasyProvider
 %pom_remove_dep org.glassfish.jersey.containers:
 
 %build
-%{mvn_build} -s -f
+%{mvn_build} -s -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
 
 %install
 %mvn_install
