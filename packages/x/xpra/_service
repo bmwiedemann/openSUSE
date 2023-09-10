@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/Xpra-org/xpra</param>
     <param name="scm">git</param>
     <!-- TESTING -->
@@ -36,11 +36,11 @@
     <param name="versionrewrite-pattern">v(.*)</param>
     -->
     <param name="versionrewrite-pattern">v4.4</param>
-    <param name="versionrewrite-replacement">5.0</param>
+    <param name="versionrewrite-replacement">6.0</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="set_version" mode="disabled"/>
-  <service name="tar" mode="disabled">
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="manual">
   <!--  I'd like to include this, but METADATA_PATTERN
         seems to block including .git
         * 20220718:
@@ -52,7 +52,7 @@
   -->
     <param name="package-meta">yes</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="compression">gz</param>
     <param name="file">*.tar</param>
   </service>

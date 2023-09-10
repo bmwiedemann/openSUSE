@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Sep 01 16:50:53 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version v6.0+git20230901.77211231:
+  * rename clipboard module for better consistency
+  * #3930 remove yaml
+  * remove last references to rencode and bencode
+  * #3930 remove unprefixed legacy compatibility
+  * #3981 mode subsystems doc stubs
+  * pynvml 12.535.108
+  * #3981 add documentation on network protocol
+  * https://github.com/inducer/pyopencl/pull/699/files
+  * #3978 minor fixes for Cython
+  * #3976 fix check for existing dbus instance
+  * try harder to show a valid exception message
+  * move x11 dependencies to x11 package
+  * better warning message for invalid audio requests
+  * if 'load-balancing' is unset, don't log a warning
+  * silence zeroconf update errors
+  * Cython 3.0.2
+  * FULL_INFO valid range is 0..2
+  * #3592 remove legacy flat audio caps
+  * #3592 make more assumptions about client caps
+  * #56 assume that we can resize the display precisely
+  * #3973 move code to a testable function
+  * #3973 doh, use the actual mode string
+  * log the arguments
+  * don't try to build pycuda for default python
+  * EL8 can now build pycuda using a python3.11 prefix
+  * group imports
+  * #3973 try to reverse the mode alias to find the argument
+  * #3974 Python 3.12 compatibility
+  * Cython 3.0.1
+  * #3974 no python3.10-cups package in Fedora 39?
+  * #3974 workaround debug package errors on Fedora 39
+  * doh: typo
+  * #3974 workaround pandoc builds without lua filters in F39
+  * simplify: require Cython 3
+  * remove unused code: Ubuntu 18.04 is not supported
+  * missing f-string qualifier
+  * improve test coverage
+  * workaround for Fedora 39 builds
+  * #3968 move 'xpra-codecs-nvidia' to suggests
+  * fixup RHEL builds: no pycups
+  * doh: use correct path for archive
+  * #3945 make it possible to build multiple python versions in parallel
+  * get revision number from source archive
+  * prettify output format
+  * #3945 simplify? only a single package should obsolete another one
+  * #3968 move python3-pycuda to recommends
+  * typo
+  * update changelog, remove duplicated entry
+
+-------------------------------------------------------------------
 Mon Aug 21 15:48:20 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 6.0+git20230821.3093d53d:
