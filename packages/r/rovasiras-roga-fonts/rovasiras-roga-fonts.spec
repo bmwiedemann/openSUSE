@@ -17,7 +17,7 @@
 
 
 Name:           rovasiras-roga-fonts
-Version:        20230614
+Version:        20230908
 Release:        0
 Summary:        A ligatureless variant of the Kende Old Hungarian font
 License:        OFL-1.1
