@@ -143,4 +143,12 @@
     <comment>Security fixes</comment>
     <requestid>1088154</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>af50056f2a624948efcc81f7f58b2183</srcmd5>
+    <version>9.4.51</version>
+    <time>1694344243</time>
+    <user>anag+factory</user>
+    <comment>Reproducible builds improvement</comment>
+    <requestid>1109972</requestid>
+  </revision>
 </revisionlist>
