@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Sep  6 15:08:50 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.20.8 (released 2023-09-06) includes two security fixes to the
+  html/template package, as well as bug fixes to the compiler, the
+  go command, the runtime, and the crypto/tls, go/types, net/http,
+  and path/filepath packages.
+  Refs boo#1206346 go1.20 release tracking
+  CVE-2023-39318 CVE-2023-39319
+  * go#62395 go#62196 boo#1215084 security: fix CVE-2023-39318 html/template: improper handling of HTML-like comments within script contexts
+  * go#62397 go#62197 boo#1215085 security: fix CVE-2023-39319 html/template: improper handling of special tags within script contexts
+  * go#61198 cmd/go: extended forwards compatibility for Go
+  * go#61744 go/types: interface.Complete panics for interfaces with duplicate methods
+  * go#61826 net/http: go 1.20.6 host validation breaks setting Host to a unix socket address
+  * go#61867 path/filepath: Clean on some invalid Windows paths can lose .. components
+  * go#61873 cmd/go: using a module path without dot fails to build after toolchain selection
+  * go#61966 crypto/tls: add GODEBUG to control max RSA key size
+  * go#62018 runtime: execution halts with goroutines stuck in runtime.gopark (protocol error E08 during memory read for packet)
+  * go#62056 cmd/compile: internal compiler error: 'F': func F, startMem[b1] has different values
+  * go#62070 cmd/api: make non-importable
+
+-------------------------------------------------------------------
+Tue Sep  5 19:12:05 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add missing directory pprof html asset directory to package.
+  Refs boo#1215090
+  * src/cmd/vendor/github.com/google/pprof/internal/driver/html/
+    dir containing html assets is present in upstream Go
+    distribution but missing from SUSE go1.x packages
+  * Go programs importing runtime/pprof may fail with error:
+    /usr/lib64/go/1.21/src/cmd/vendor/github.com/google/pprof/internal/driver/webhtml.go
+    pattern html: no matching files found
+  * Reformat adjacent commment in spec file
+
+-------------------------------------------------------------------
 Tue Aug  1 20:35:02 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.20.7 (released 2023-08-01) includes a security fix to the
