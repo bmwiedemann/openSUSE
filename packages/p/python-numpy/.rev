@@ -1158,4 +1158,41 @@ The Python versions supported in this release are 3.9-3.11.
 </comment>
     <requestid>1104294</requestid>
   </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>1c1b51baa5eb7fcc5e7f2060086cc6fa</srcmd5>
+    <version>1.25.2</version>
+    <time>1694460034</time>
+    <user>anag+factory</user>
+    <comment>- limit to Cython &lt; 3
+  * Change to a non-deprecated function from hypothesis.
+  * Ignore DeprecationWarning from pkg_resources.
+- changes from version 1.22.2 (CVE-2021-41495, bsc#1193911):
+  * Support Python &gt;= 3.9.8 changes.
+- update to 1.21.0 (bsc#1193913, CVE-2021-33430, bsc#1193907,
+  CVE-2021-41496):
+  * BUG: Fix failing mypy test in 1.20.x.
+  * BUG: Fix small issues found with pytest-leaks
+  * Annotations for NumPy functions. This work is ongoing and
+  * Wider use of SIMD to increase execution speed of ufuncs. Much
+    work has been done in introducing universal functions that
+    will ease use of modern features across different hardware
+  * Preliminary work in changing the dtype and casting
+    implementations in order to provide an easier path to
+    extending dtypes. This work is ongoing but enough has been
+  * Extensive documentation improvements comprising some 185 PR
+    merges. This work is ongoing and part of the larger project to
+  * Further cleanups related to removing Python 2.7. This improves
+- Fix hpc for multiflavors (needs gh#openSUSE/hpc#3)
+- update to version 1.17.3 (bsc#1149203, jsc#SLE-8532):
+    when either ``stable`` or ``mergesort`` is passed as the method.
+- Update to version 1.16.1 (jsc#SLE-8532, bsc#1149203):
+  * This Fixes CVE-2019-6446 and obsoletes
+  * CVE-2019-6446_numpy_load.patch in older dists (bsc#1122208)
+- add s390 to the ifarch conditional to build without openblas
+  Numpy assumes either libblas.so or libcblas.so to contain all CBLAS
+  and BLAS functions. However the cblas-devel in Leap and Tumbleweed
+  * gh-5231: fix build in c99 mode
+  * Numerous performance improvements in various areas, most</comment>
+    <requestid>1110295</requestid>
+  </revision>
 </revisionlist>

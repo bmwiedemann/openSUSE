@@ -7,7 +7,7 @@ Wed Aug 16 11:31:28 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Mon Aug 14 11:41:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- limit to Cython < 3 
+- limit to Cython < 3
 
 -------------------------------------------------------------------
 Mon Aug 14 07:07:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -77,7 +77,7 @@ Fri Jun 23 12:23:14 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 Fri May 12 04:22:36 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-deprecated-hypothesis-funcs.patch:
-  * Change to a non-deprecated function from hypothesis. 
+  * Change to a non-deprecated function from hypothesis.
 
 -------------------------------------------------------------------
 Fri Apr 21 12:28:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -88,7 +88,7 @@ Fri Apr 21 12:28:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Fri Mar 24 07:02:57 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch ignore-pkg_resources-deprecation.patch:
-  * Ignore DeprecationWarning from pkg_resources. 
+  * Ignore DeprecationWarning from pkg_resources.
 
 -------------------------------------------------------------------
 Wed Mar 22 13:08:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -303,7 +303,7 @@ Fri Sep 30 23:43:53 UTC 2022 - Arun Persaud <arun@gmx.de>
   * #21148: BUG,ENH: np._from_dlpack: export arrays with any strided
      size-1...
 
-- changes from version 1.22.2:
+- changes from version 1.22.2 (CVE-2021-41495, bsc#1193911):
   * #20842: BLD: Add NPY_DISABLE_SVML env var to opt out of SVML
   * #20843: BUG: Fix build of third party extensions with
      Py_LIMITED_API
@@ -422,7 +422,7 @@ Fri Dec  3 10:54:01 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 Fri Nov 19 00:33:15 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch bpo-45167-fixes.patch:
-  * Support Python >= 3.9.8 changes. 
+  * Support Python >= 3.9.8 changes.
 
 -------------------------------------------------------------------
 Tue Nov  9 15:27:58 UTC 2021 - Andreas Schwab <schwab@suse.de>
@@ -506,7 +506,8 @@ Fri Jul 16 15:14:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Jul  7 08:24:03 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
-- update to 1.21.0:
+- update to 1.21.0 (bsc#1193913, CVE-2021-33430, bsc#1193907,
+  CVE-2021-41496):
   * DEP: Deprecate data_type.dtype if attribute is not already...
   * ENH: Implement faster keyword argument parsing capable of METH_FASTCALL
   * ENH: Optimize and cleanup ufunc calls and ufunc CheckOverrides
@@ -1122,7 +1123,7 @@ Wed Jun  2 18:56:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * BUG: for MINGW, threads.h existence test requires GLIBC > 2.12
   * BUG: Make changelog recognize gh- as a PR number prefix.
   * REL, DOC: Prepare for the NumPy 1.20.3 release.
-  * BUG: Fix failing mypy test in 1.20.x. 
+  * BUG: Fix failing mypy test in 1.20.x.
 
 -------------------------------------------------------------------
 Fri May  7 20:39:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -1145,7 +1146,7 @@ Fri May  7 20:39:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * MAINT: Ensure that re-exported sub-modules are properly annotated
   * BUG: Fix ma coercion list-of-ma-arrays if they do not cast to…
   * BUG: Fix small valgrind-found issues
-  * BUG: Fix small issues found with pytest-leaks 
+  * BUG: Fix small issues found with pytest-leaks
 
 -------------------------------------------------------------------
 Wed Feb 10 12:19:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -1155,20 +1156,20 @@ Wed Feb 10 12:19:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
     is fixed.
   * The random.shuffle regression is fixed.
 - Higlights for 1.20.0:
-  * Annotations for NumPy functions. This work is ongoing and 
+  * Annotations for NumPy functions. This work is ongoing and
     improvements can be expected pending feedback from users.
-  * Wider use of SIMD to increase execution speed of ufuncs. Much 
-    work has been done in introducing universal functions that 
-    will ease use of modern features across different hardware 
+  * Wider use of SIMD to increase execution speed of ufuncs. Much
+    work has been done in introducing universal functions that
+    will ease use of modern features across different hardware
     platforms. This work is ongoing.
-  * Preliminary work in changing the dtype and casting 
-    implementations in order to provide an easier path to 
-    extending dtypes. This work is ongoing but enough has been 
+  * Preliminary work in changing the dtype and casting
+    implementations in order to provide an easier path to
+    extending dtypes. This work is ongoing but enough has been
     done to allow experimentation and feedback.
-  * Extensive documentation improvements comprising some 185 PR 
-    merges. This work is ongoing and part of the larger project to 
+  * Extensive documentation improvements comprising some 185 PR
+    merges. This work is ongoing and part of the larger project to
     improve NumPy’s online presence and usefulness to new users.
-  * Further cleanups related to removing Python 2.7. This improves 
+  * Further cleanups related to removing Python 2.7. This improves
     code readability and removes technical debt.
   * Preliminary support for the upcoming Cython 3.0.
 - Full release notes at
@@ -1185,7 +1186,7 @@ Wed Feb 10 12:19:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
 Sat Jan 16 21:39:13 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Move flaky tests to test_failok
-- Fix hpc for multiflavors (needs gh#openSUSE/hpc#3) 
+- Fix hpc for multiflavors (needs gh#openSUSE/hpc#3)
 
 -------------------------------------------------------------------
 Fri Jan  8 09:51:04 UTC 2021 - Markéta Machová <mmachova@suse.com>
@@ -2051,7 +2052,7 @@ Tue Oct 29 09:57:08 UTC 2019 - Andreas Schwab <schwab@suse.de>
 -------------------------------------------------------------------
 Sat Oct 19 17:04:18 UTC 2019 - Arun Persaud <arun@gmx.de>
 
-- update to version 1.17.3:
+- update to version 1.17.3 (bsc#1149203, jsc#SLE-8532):
   * #14456: MAINT: clean up pocketfft modules inside numpy.fft
      namespace.
   * #14463: BUG: random.hypergeometic assumes npy_long is npy_int64,
@@ -2148,7 +2149,7 @@ Fri Jul 26 20:30:10 UTC 2019 - Todd R <toddrme2178@gmail.com>
     prime length.
   * New radix sort and timsort sorting methods. It is currently not possible to
     choose which will be used, but they are hardwired to the datatype and used
-    when either ``stable`` or ``mergesort`` is passed as the method. 
+    when either ``stable`` or ``mergesort`` is passed as the method.
   * Overriding numpy functions is now possible by default.
 - Python 2 support has been dropped
 - Rebase numpy-buildfix.patch
@@ -2247,7 +2248,9 @@ Tue Feb 19 12:52:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Tue Feb  5 22:14:25 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
-- Update to version 1.16.1
+- Update to version 1.16.1 (jsc#SLE-8532, bsc#1149203):
+  * This Fixes CVE-2019-6446 and obsoletes
+  * CVE-2019-6446_numpy_load.patch in older dists (bsc#1122208)
   Changes documented in release notes:
   https://github.com/numpy/numpy/blob/master/doc/release/1.16.1-notes.rst
 - Update to version 1.16.0
@@ -2336,7 +2339,7 @@ Tue Feb  6 09:26:56 UTC 2018 - eich@suse.com
 -------------------------------------------------------------------
 Fri Jan 19 16:17:22 CET 2018 - ro@suse.de
 
-- add s390 to the ifarch conditional to build without openblas 
+- add s390 to the ifarch conditional to build without openblas
 
 -------------------------------------------------------------------
 Wed Jan 10 09:04:47 UTC 2018 - adrian@suse.de
@@ -2643,8 +2646,8 @@ specfile:
 Wed Mar 30 14:18:43 UTC 2016 - stecue@gmail.com
 
 - Add numpy-1.10.4-cblas.patch to build against system cblas.
-  Numpy assumes either libblas.so or libcblas.so to contain all CBLAS 
-  and BLAS functions. However the cblas-devel in Leap and Tumbleweed 
+  Numpy assumes either libblas.so or libcblas.so to contain all CBLAS
+  and BLAS functions. However the cblas-devel in Leap and Tumbleweed
   contains only the CBLAS interface and libblas.so is also needed.
 
 -------------------------------------------------------------------
@@ -2655,7 +2658,7 @@ Fri Jan  8 09:37:38 UTC 2016 - toddrme2178@gmail.com
   * There is no 1.10.3 due to packaging issues.
 - update to version 1.10.2:
   * see https://github.com/numpy/numpy/blob/master/doc/release/1.10.2-notes.rst
-  
+
 -------------------------------------------------------------------
 Tue Oct 13 08:24:51 UTC 2015 - toddrme2178@gmail.com
 
@@ -2780,25 +2783,25 @@ Thu Nov  6 11:38:20 UTC 2014 - toddrme2178@gmail.com
   * gh-4896: fix build error with MSVC 2013 caused by C99 complex support
   * gh-4465: Make PyArray_PutTo respect writeable flag
   * gh-5225: fix crash when using arange on datetime without dtype set
-  * gh-5231: fix build in c99 mode 
+  * gh-5231: fix build in c99 mode
 
 -------------------------------------------------------------------
 Mon Sep  8 10:01:09 UTC 2014 - toddrme2178@gmail.com
 
 - Update to 1.9.0
   Highlights
-  * Numerous performance improvements in various areas, most 
-    notably indexing and operations on small arrays are 
+  * Numerous performance improvements in various areas, most
+    notably indexing and operations on small arrays are
     significantly faster. Indexing operations now also release the
     GIL.
-  * Addition of nanmedian and nanpercentile rounds out the 
+  * Addition of nanmedian and nanpercentile rounds out the
     nanfunction set.
 - Remove upstreamed numpy-double-double-le.patch
 - Add numpy-1.9.0-remove-__declspec.patch
   Fixes spurious warnings during build.  These warnings are related
   to a windows-specific function that is not built, so the patch
   just removed the function.
-  See: 
+  See:
   http://lists.opensuse.org/opensuse-packaging/2014-09/msg00004.html
 - Added patch tag for numpy-buildfix.patch
 
@@ -2836,13 +2839,13 @@ Thu Oct 31 10:17:25 UTC 2013 - toddrme2178@gmail.com
 
 - Update to 1.8.0
   Highlights:
-  * New, no 2to3, Python 2 and Python 3 are supported by a common code base. 
-  * New, gufuncs for linear algebra, enabling operations on stacked arrays. 
-  * New, inplace fancy indexing for ufuncs with the ``.at`` method. 
-  * New, ``partition`` function, partial sorting via selection for fast median. 
-  * New, ``nanmean``, ``nanvar``, and ``nanstd`` functions skipping NaNs. 
-  * New, ``full`` and ``full_like`` functions to create value initialized arrays. 
-  * New, ``PyUFunc_RegisterLoopForDescr``, better ufunc support for user dtypes. 
+  * New, no 2to3, Python 2 and Python 3 are supported by a common code base.
+  * New, gufuncs for linear algebra, enabling operations on stacked arrays.
+  * New, inplace fancy indexing for ufuncs with the ``.at`` method.
+  * New, ``partition`` function, partial sorting via selection for fast median.
+  * New, ``nanmean``, ``nanvar``, and ``nanstd`` functions skipping NaNs.
+  * New, ``full`` and ``full_like`` functions to create value initialized arrays.
+  * New, ``PyUFunc_RegisterLoopForDescr``, better ufunc support for user dtypes.
   * Numerous performance improvements in many areas.
 - Add a new flag to easily enable/disable atlas support for if it
   ever gets fixed in the future
@@ -2862,13 +2865,13 @@ Fri Apr  5 13:20:14 UTC 2013 - idonmez@suse.com
 -------------------------------------------------------------------
 Tue Mar 12 06:21:52 UTC 2013 - highwaystar.ru@gmail.com
 
-- update to 1.7.0 
- * This release includes several new features as well as numerous 
+- update to 1.7.0
+ * This release includes several new features as well as numerous
  bug fixes and refactorings
   Highlights:
-  - ``where=`` parameter to ufuncs (allows the use of boolean 
+  - ``where=`` parameter to ufuncs (allows the use of boolean
   arrays to choose where a computation should be done)
-  - ``vectorize`` improvements (added 'excluded' and 'cache' 
+  - ``vectorize`` improvements (added 'excluded' and 'cache'
   keyword, general cleanup and bug fixes)
   - ``numpy.random.choice`` (random sample generating function)
 
@@ -2883,7 +2886,7 @@ Tue Mar 12 06:21:52 UTC 2013 - highwaystar.ru@gmail.com
   - Ability to pad rank-n arrays
   - New argument to searchsorted
   - Added experimental support for the AArch64 architecture.
- * For additional details check release notes at 
+ * For additional details check release notes at
    http://sourceforge.net/projects/numpy/files/NumPy/1.7.0/
 - numpy-aarch64.diff: removed, now upstream
 
@@ -2891,7 +2894,7 @@ Tue Mar 12 06:21:52 UTC 2013 - highwaystar.ru@gmail.com
 Tue Mar  5 22:25:53 UTC 2013 - dmueller@suse.com
 
 - add numpy-aarch64.diff:
-  * Fix build for AArch64 
+  * Fix build for AArch64
 
 -------------------------------------------------------------------
 Fri Aug 17 08:20:36 UTC 2012 - toddrme2178@gmail.com
@@ -2944,7 +2947,7 @@ Mon Apr 23 16:25:57 UTC 2012 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Sun Apr 15 19:23:41 UTC 2012 - idonmez@suse.com
 
-- Fix SLE_11 build 
+- Fix SLE_11 build
 
 -------------------------------------------------------------------
 Fri Apr 13 02:56:50 UTC 2012 - badshah400@gmail.com
@@ -2972,7 +2975,7 @@ Mon Jan 23 15:07:08 UTC 2011 - toddrme2178@gmail.com
 
 - update to 1.5.1
 
- Numpy 1.5.1 is a bug-fix release with no new 
+ Numpy 1.5.1 is a bug-fix release with no new
  features compared to 1.5.0.
 
  Relevant bugs fixed:
@@ -3034,7 +3037,7 @@ Wed Apr  8 19:43:27 CEST 2009 - matejcik@suse.cz
 -------------------------------------------------------------------
 Wed Feb 11 01:31:36 CET 2009 - ro@suse.de
 
-- fix filelist by using "--record-rpm" instead of "--record" 
+- fix filelist by using "--record-rpm" instead of "--record"
   (and do not quote lines starting with "%dir ")
 
 -------------------------------------------------------------------
@@ -3055,12 +3058,12 @@ Wed Feb  4 17:10:04 CET 2009 - matejcik@suse.cz
     * Pierre GM -- masked array, fix dictionary update.
     * Pierre GM -- masked array, fix itertools groupby dependency.
     * Pierre GM -- masked array, fix use of iterators.
-    * Neil Muller -- fix test dependency on pretty print (#828). 
+    * Neil Muller -- fix test dependency on pretty print (#828).
   - General improvements
     * David Cournapeau -- scons build fixes/improvements.
     * Stefan van der Walt -- Howto document updates.
     * Fernando Perez -- cython updates.
-    * Robert Kern -- PyPI metadata fixes. 
+    * Robert Kern -- PyPI metadata fixes.
   - Bug fixes
     * #791 -- Travis Oliphant, std/var not properly calling array_finalize.
     * #798 -- Stefan van der Walt, piecewise exposes raw memory.
