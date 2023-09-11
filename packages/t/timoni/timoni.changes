@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep 11 05:01:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.13.1:
+  * bundle: Fix values merge with module defaults
+
+-------------------------------------------------------------------
+Mon Sep 11 04:55:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.13.0:
+  * docs: Add Nix installation instructions
+  * ci: Push and sign minimal module Publish signed (cosign
+    keyless) module to `oci://ghcr.io/stefanprodan/timoni/minimal`
+  * docs: Signing modules with Cosign - add signing with Cosign
+    static keys and keyless to module publishing docs - add Cosign
+    Keyless example to the GitHub Actions docs
+  * Add cosign signing and verification for modules (#182)
+  * Enforce Kubernetes min version for modules
+  * Use Go 1.21 stdlib
+  * Add tests for the runtime flag
+  * Add the runtime flag to bundle cmd
+  * Decode Secret data from base64
+  * Add bundle runtime documentation
+  * Replace `@timoni(env)` with `@timoni(runtime)` Make reading env
+    vars an opt-in feature `timoni bundle --runtime-from-env`
+  * Introduce the Runtime API
+  * Prefix Kubernetes flags Add `kube-` prefix to all the flags
+    specific to Kubernetes to avoid collision with OCI registry.
+  * Add a YAML CRD to CUE IR conversion function
+  * Bump github.com/cyphar/filepath-securejoin from 0.2.3 to 0.2.4
+
+-------------------------------------------------------------------
 Tue Sep 05 15:00:22 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.12.1:
