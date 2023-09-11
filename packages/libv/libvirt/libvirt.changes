@@ -5,7 +5,7 @@ Wed Sep  6 20:01:14 UTC 2023 - James Fehlig <jfehlig@suse.com>
   - Many incremental improvements and bug fixes, see
     https://libvirt.org/news.html#v9-7-0-2023-09-01
 - spec: Unconditionally enable modular daemons (jsc#PED-6303)
-- spec: ESX hypervisor driver in ALP-based products
+- spec: Disable ESX hypervisor driver in ALP-based products
 - spec: Disable glusterfs storage backend in ALP-based products
 
 -------------------------------------------------------------------

@@ -4440,4 +4440,15 @@ StandardGroups in rpmlint package.
 - spec: Disable glusterfs storage backend in ALP-based products</comment>
     <requestid>1109743</requestid>
   </revision>
+  <revision rev="384" vrev="2">
+    <srcmd5>173cdfea6aabf832154bebbb25c1b2d4</srcmd5>
+    <version>9.7.0</version>
+    <time>1694460035</time>
+    <user>anag+factory</user>
+    <comment>The last changelog entry did not clearly indicate the ESX hypervisor
+driver is disabled for ALP. Fix it.
+
+- spec: Disable ESX hypervisor driver in ALP-based products</comment>
+    <requestid>1110332</requestid>
+  </revision>
 </revisionlist>
