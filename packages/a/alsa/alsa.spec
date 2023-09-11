@@ -57,6 +57,8 @@ Source34:       alsa-init.sh
 Source35:       alsa.keyring
 # upstream fixes
 Patch1:         0001-control.h-Fix-ump-header-file-detection.patch
+Patch2:         0002-global.h-move-__STRING-macro-outside-PIC-ifdef-block.patch
+Patch3:         0003-pcm-Fix-segfault-with-32bit-libs.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -146,6 +148,8 @@ This package contains the library for ALSA topology support.
 %prep
 %setup -q -n alsa-lib-%{version}
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 %patch101 -p1
 
 %build
