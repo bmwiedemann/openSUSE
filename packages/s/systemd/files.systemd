@@ -47,7 +47,6 @@
 %dir %{_systemd_util_dir}/system-preset
 %dir %{_systemd_util_dir}/system-shutdown
 %dir %{_systemd_util_dir}/user
-%dir %{_systemd_util_dir}/user-generators
 %dir %{_systemd_util_dir}/user-preset
 %dir %{_systemdgeneratordir}
 %dir %{_systemdusergeneratordir}
@@ -72,6 +71,7 @@
 %dir %{_unitdir}/sockets.target.wants
 %dir %{_unitdir}/sysinit.target.wants
 %dir %{_unitdir}/timers.target.wants
+%dir %{_unitdir}/user-.slice.d
 %dir %{_unitdir}/user@.service.d
 %dir %{_unitdir}/user@0.service.d
 %dir %{xinitconfdir}
@@ -101,6 +101,7 @@
 %{_bindir}/systemd-cat
 %{_bindir}/systemd-cgls
 %{_bindir}/systemd-cgtop
+%{_bindir}/systemd-confext
 %{_bindir}/systemd-creds
 %{_bindir}/systemd-delta
 %{_bindir}/systemd-detect-virt
@@ -204,30 +205,12 @@
 %{_datadir}/zsh/site-functions/_systemd-run
 %{_datadir}/zsh/site-functions/_systemd-tmpfiles
 %{_datadir}/zsh/site-functions/_timedatectl
-%endif
-%{_journalcatalogdir}/systemd.be.catalog
-%{_journalcatalogdir}/systemd.be@latin.catalog
-%{_journalcatalogdir}/systemd.bg.catalog
 %{_journalcatalogdir}/systemd.catalog
-%{_journalcatalogdir}/systemd.da.catalog
-%{_journalcatalogdir}/systemd.de.catalog
-%{_journalcatalogdir}/systemd.fr.catalog
-%{_journalcatalogdir}/systemd.hr.catalog
-%{_journalcatalogdir}/systemd.hu.catalog
-%{_journalcatalogdir}/systemd.it.catalog
-%{_journalcatalogdir}/systemd.ko.catalog
-%{_journalcatalogdir}/systemd.pl.catalog
-%{_journalcatalogdir}/systemd.pt_BR.catalog
-%{_journalcatalogdir}/systemd.ru.catalog
-%{_journalcatalogdir}/systemd.sr.catalog
-%{_journalcatalogdir}/systemd.zh_CN.catalog
-%{_journalcatalogdir}/systemd.zh_TW.catalog
-%if %{without bootstrap}
 %{_libdir}/libnss_myhostname.so.2
 %{_libdir}/libnss_systemd.so.2
 %endif
-%{_libdir}/systemd/libsystemd-core-253.so
-%{_libdir}/systemd/libsystemd-shared-253.so
+%{_libdir}/systemd/libsystemd-core-254.so
+%{_libdir}/systemd/libsystemd-shared-254.so
 %if %{without bootstrap}
 %{_mandir}/man1/busctl.1.gz
 %{_mandir}/man1/hostnamectl.1.gz
@@ -235,6 +218,7 @@
 %{_mandir}/man1/journalctl.1.gz
 %{_mandir}/man1/localectl.1.gz
 %{_mandir}/man1/loginctl.1.gz
+%{_mandir}/man1/mount.ddi.1.gz
 %{_mandir}/man1/systemctl.1.gz
 %{_mandir}/man1/systemd-ac-power.1.gz
 %{_mandir}/man1/systemd-analyze.1.gz
@@ -350,10 +334,13 @@
 %{_mandir}/man8/systemd-binfmt.service.8.gz
 %{_mandir}/man8/systemd-boot-check-no-failures.8.gz
 %{_mandir}/man8/systemd-boot-check-no-failures.service.8.gz
+%{_mandir}/man8/systemd-confext.8.gz
+%{_mandir}/man8/systemd-confext.service.8.gz
 %{_mandir}/man8/systemd-debug-generator.8.gz
 %{_mandir}/man8/systemd-environment-d-generator.8.gz
 %{_mandir}/man8/systemd-getty-generator.8.gz
 %{_mandir}/man8/systemd-halt.service.8.gz
+%{_mandir}/man8/systemd-hibernate-resume.service.8.gz
 %{_mandir}/man8/systemd-hostnamed.8.gz
 %{_mandir}/man8/systemd-hostnamed.service.8.gz
 %{_mandir}/man8/systemd-journald-audit.socket.8.gz
@@ -375,6 +362,7 @@
 %{_mandir}/man8/systemd-run-generator.8.gz
 %{_mandir}/man8/systemd-shutdown.8.gz
 %{_mandir}/man8/systemd-socket-proxyd.8.gz
+%{_mandir}/man8/systemd-soft-reboot.service.8.gz
 %{_mandir}/man8/systemd-sysctl.8.gz
 %{_mandir}/man8/systemd-sysctl.service.8.gz
 %{_mandir}/man8/systemd-sysext.8.gz
@@ -392,8 +380,10 @@
 %{_mandir}/man8/systemd-tmpfiles.8.gz
 %{_mandir}/man8/systemd-update-done.8.gz
 %{_mandir}/man8/systemd-update-done.service.8.gz
+%if %{with utmp}
 %{_mandir}/man8/systemd-update-utmp.8.gz
 %{_mandir}/man8/systemd-update-utmp.service.8.gz
+%endif
 %{_mandir}/man8/systemd-user-sessions.8.gz
 %{_mandir}/man8/systemd-user-sessions.service.8.gz
 %{_mandir}/man8/systemd-userdbd.8.gz
@@ -405,6 +395,7 @@
 %{_pam_vendordir}/systemd-user
 %{_sbindir}/halt
 %{_sbindir}/init
+%{_sbindir}/mount.ddi
 %{_sbindir}/poweroff
 %{_sbindir}/reboot
 %{_sbindir}/shutdown
@@ -431,14 +422,15 @@
 %{_systemd_util_dir}/systemd-timedated
 %{_systemd_util_dir}/systemd-update-done
 %{_systemd_util_dir}/systemd-update-helper
+%if %{with utmp}
 %{_systemd_util_dir}/systemd-update-utmp
+%endif
 %{_systemd_util_dir}/systemd-user-runtime-dir
 %{_systemd_util_dir}/systemd-user-sessions
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-userdbd
 %endif
 %{_systemd_util_dir}/systemd-xdg-autostart-condition
-%{_systemd_util_dir}/user-generators/systemd-xdg-autostart-generator
 %{_systemd_util_dir}/user-preset/90-systemd.preset
 %{_systemd_util_dir}/user-preset/99-default.preset
 %{_systemd_util_dir}/user/app.slice
@@ -466,6 +458,7 @@
 %{_systemdgeneratordir}/systemd-getty-generator
 %{_systemdgeneratordir}/systemd-run-generator
 %{_systemdgeneratordir}/systemd-system-update-generator
+%{_systemdusergeneratordir}/systemd-xdg-autostart-generator
 %{_sysusersdir}/systemd-journal.conf
 %{_tmpfilesdir}/credstore.conf
 %{_tmpfilesdir}/journal-nocow.conf
@@ -551,6 +544,7 @@
 %{_unitdir}/sockets.target
 %{_unitdir}/sockets.target.wants/systemd-journald-dev-log.socket
 %{_unitdir}/sockets.target.wants/systemd-journald.socket
+%{_unitdir}/soft-reboot.target
 %{_unitdir}/sound.target
 %{_unitdir}/swap.target
 %{_unitdir}/sys-fs-fuse-connections.mount
@@ -576,7 +570,9 @@
 %{_unitdir}/sysinit.target.wants/systemd-sysusers.service
 %{_unitdir}/sysinit.target.wants/systemd-tmpfiles-setup.service
 %{_unitdir}/sysinit.target.wants/systemd-update-done.service
+%if %{with utmp}
 %{_unitdir}/sysinit.target.wants/systemd-update-utmp.service
+%endif
 %{_unitdir}/syslog.socket
 %{_unitdir}/system-update-cleanup.service
 %{_unitdir}/system-update-pre.target
@@ -587,6 +583,7 @@
 %{_unitdir}/systemd-ask-password-wall.service
 %{_unitdir}/systemd-binfmt.service
 %{_unitdir}/systemd-boot-check-no-failures.service
+%{_unitdir}/systemd-confext.service
 %{_unitdir}/systemd-exit.service
 %{_unitdir}/systemd-halt.service
 %{_unitdir}/systemd-hostnamed.service
@@ -604,6 +601,7 @@
 %{_unitdir}/systemd-logind.service
 %{_unitdir}/systemd-machine-id-commit.service
 %{_unitdir}/systemd-poweroff.service
+%{_unitdir}/systemd-soft-reboot.service
 %{_unitdir}/systemd-sysctl.service
 %{_unitdir}/systemd-sysext.service
 %{_unitdir}/systemd-sysusers.service
@@ -613,7 +611,9 @@
 %{_unitdir}/systemd-tmpfiles-clean.timer
 %{_unitdir}/systemd-tmpfiles-setup.service
 %{_unitdir}/systemd-update-done.service
+%if %{with utmp}
 %{_unitdir}/systemd-update-utmp.service
+%endif
 %{_unitdir}/systemd-user-sessions.service
 %if %{without bootstrap}
 %{_unitdir}/systemd-userdbd.service
@@ -626,7 +626,6 @@
 %{_unitdir}/tmp.mount
 %{_unitdir}/umount.target
 %{_unitdir}/usb-gadget.target
-%{_unitdir}/user-.slice.d
 %{_unitdir}/user-.slice.d/10-defaults.conf
 %{_unitdir}/user-runtime-dir@.service
 %{_unitdir}/user.slice

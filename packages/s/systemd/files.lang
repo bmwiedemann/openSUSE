@@ -1,0 +1,19 @@
+#
+# Please keep the list sorted (with `LC_ALL=C sort`).
+#
+%lang(be) %{_journalcatalogdir}/systemd.be.catalog
+%lang(be@latin) %{_journalcatalogdir}/systemd.be@latin.catalog
+%lang(bg) %{_journalcatalogdir}/systemd.bg.catalog
+%lang(da) %{_journalcatalogdir}/systemd.da.catalog
+%lang(de) %{_journalcatalogdir}/systemd.de.catalog
+%lang(fr) %{_journalcatalogdir}/systemd.fr.catalog
+%lang(hr) %{_journalcatalogdir}/systemd.hr.catalog
+%lang(hu) %{_journalcatalogdir}/systemd.hu.catalog
+%lang(it) %{_journalcatalogdir}/systemd.it.catalog
+%lang(ko) %{_journalcatalogdir}/systemd.ko.catalog
+%lang(pl) %{_journalcatalogdir}/systemd.pl.catalog
+%lang(pt_BR) %{_journalcatalogdir}/systemd.pt_BR.catalog
+%lang(ru) %{_journalcatalogdir}/systemd.ru.catalog
+%lang(sr) %{_journalcatalogdir}/systemd.sr.catalog
+%lang(zh_CN) %{_journalcatalogdir}/systemd.zh_CN.catalog
+%lang(zh_TW) %{_journalcatalogdir}/systemd.zh_TW.catalog

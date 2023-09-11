@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Mon Sep 11 07:54:35 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit b6b4e5a8a82d1f13f265a4ef170f2d13be82789a (merge of v254.3)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/1f73719d67b9300c6bb75232d695d03410991098...b6b4e5a8a82d1f13f265a4ef170f2d13be82789a
+
+-------------------------------------------------------------------
+Thu Aug 24 11:32:52 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Make utmp support per project configureable [jsc#PED-3144]
+- Make apparmor and selinux per project configureable [jsc#PED-2736]
+
+-------------------------------------------------------------------
+Thu Aug 24 10:42:20 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: don't use build conditionals (%bcond_with/%bcond_without) with
+  the mini flavor to make sure that all the features remain disabled for this
+  flavor regardless of what is enabled in the prjconf.
+
+-------------------------------------------------------------------
+Fri Aug 18 13:19:39 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Don't build systemd-doc with the mini flavor
+
+-------------------------------------------------------------------
+Fri Aug 18 10:06:37 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly require group(lp) by udev: this used to be provided by
+  system-group-hardware, but with the introduction of
+  system-user-lp (and systemd-users auto-generating groups) is now
+  actually provided by system-user-lp. Latest versions of
+  system-group-hardware clean this up and no longer also provide
+  this group.
+
+-------------------------------------------------------------------
+Fri Aug 18 06:24:11 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Fix incorrect option name when calling pam-config for systemd-homed
+
+-------------------------------------------------------------------
+Thu Aug 17 09:01:36 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- testsuite: Recommend selinux-policy-devel instead of requiring it in line with
+  other tests. Add Recommends for selinux-policy-targeted as this is also
+  required to run the test (in general any SELinux policy should do)
+
+-------------------------------------------------------------------
+Wed Aug 16 16:51:01 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
+
+- systemd.spec: add journal translations to lang package
+
+-------------------------------------------------------------------
+Wed Aug 16 10:29:45 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commmit 1f73719d67b9300c6bb75232d695d03410991098
+
+  1f73719d67 test-mountpoint-util: /root might be mounted
+  a391ba4a8f test: testsuite-35.sh needs manual/test-session-properties to be installed on SUSE
+
+-------------------------------------------------------------------
+Wed Aug 16 08:48:58 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v254.1 (commit 208a21833b6953a2517a6c3f8f4849c6664b01be)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v254/NEWS for details.
+
+  This includes the following bug fixes:
+
+   - upstream commit 331aa7aa15ee5dd12b369b276f575d521435eb52 (bsc#1203141)
+   - upstream commit 529ba8a1a3968564b67049a077f213e3a0d53070 (bsc#1209340)
+   - upstream commit f1f331a252d22c15f37d03524cce967664358c5c (bsc#1186606)
+   - upstream commit df1dccd25547b430258bd42ec60428fc9aff1370 (bsc#1213185)
+   - upstream commit 000680a68dbdb07d77807868df0b4f978180e4cd (bsc#1211725)
+
+  * Drop 5001-Revert-core-propagate-stop-too-if-restart-is-issued.patch. A fix
+    for https://github.com/systemd/systemd/issues/26839 has been integrated in
+    v254.
+
+  * Drop 5002-Revert-core-service-when-resetting-PID-also-reset-kn.patch, it's
+    part of v254.
+
+  * Drop 0001-restore-var-run-and-var-lock-bind-mount-if-they-aren.patch, it's
+    no more needed these days.
+
+  * Rebase 0001-conf-parser-introduce-early-drop-ins.patch
+
+-------------------------------------------------------------------
 Fri Aug 11 08:31:12 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Import commit fcdb2dd2c921db3c6b7c28465dbda314f4469d17 (merge of v253.8)

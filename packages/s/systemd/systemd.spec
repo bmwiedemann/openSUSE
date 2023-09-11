@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.32.gfcdb2dd2c9
+%define archive_version +suse.3.gb6b4e5a8a8
 
 %define _testsuitedir %{_systemd_util_dir}/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -35,23 +35,11 @@
 %define when_not()     %{expand:%%__when_not_%# %{*}}
 
 %if "%{flavor}" == "mini"
-%define mini -mini
-%bcond_without  bootstrap
-%bcond_with     coredump
-%bcond_with     homed
-%bcond_with     importd
-%bcond_with     journal_remote
-%bcond_with     machined
-%bcond_with     networkd
-%bcond_with     portabled
-%bcond_with     resolved
-%bcond_with     sd_boot
-%bcond_with     sysvcompat
-%bcond_with     experimental
-%bcond_with     testsuite
+%global mini -mini
+%global with_bootstrap 1
 %else
-%define mini %nil
-%bcond_with     bootstrap
+%global mini %nil
+%bcond_without  apparmor
 %bcond_without  coredump
 %bcond_without  homed
 %bcond_without  importd
@@ -65,17 +53,21 @@
 %else
 %bcond_with     sd_boot
 %endif
+%bcond_without  selinux
 %bcond_without  sysvcompat
 %bcond_without  experimental
 %bcond_without  testsuite
+%bcond_without  utmp
 %endif
-# Kept to ease migrations toward SLE
+
+# The following features are kept to ease migrations toward SLE. Their default
+# value is independent of the build flavor.
 %bcond_without  filetriggers
 %bcond_with     split_usr
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        253.8
+Version:        254.3
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -85,7 +77,9 @@ BuildRequires:  bpftool
 BuildRequires:  clang
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  kbd
+%if %{with apparmor}
 BuildRequires:  libapparmor-devel
+%endif
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libxslt-tools
 BuildRequires:  polkit
@@ -101,7 +95,9 @@ BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(libseccomp) >= 2.3.1
+%if %{with selinux}
 BuildRequires:  pkgconfig(libselinux) >= 2.1.9
+%endif
 BuildRequires:  pkgconfig(libzstd)
 %endif
 BuildRequires:  fdupes
@@ -191,17 +187,17 @@ Source206:      files.uefi-boot
 Source207:      files.experimental
 Source208:      files.coredump
 Source209:      files.homed
+Source210:      files.lang
 
 #
 # All changes backported from upstream are tracked by the git repository, which
 # can be found at:  https://github.com/openSUSE/systemd.
 #
-# Patches listed below are openSUSE specific and should be kept at its
+# Patches listed below are openSUSE specific ones and should be kept at its
 # minimum. We try hard to push our changes to upstream but sometimes they are
 # only relevant for SUSE distros. Special rewards for those who will manage to
 # get rid of one of them !
 #
-Patch1:         0001-restore-var-run-and-var-lock-bind-mount-if-they-aren.patch
 Patch2:         0001-conf-parser-introduce-early-drop-ins.patch
 Patch3:         0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 %if %{with sysvcompat}
@@ -215,7 +211,6 @@ Patch5:         0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 # worked around quickly. In these cases, the patches are added temporarily and
 # will be removed as soon as a proper fix will be merged by upstream.
 Patch5000:      5000-core-manager-run-generators-directly-when-we-are-in-.patch
-Patch5001:      5001-Revert-core-propagate-stop-too-if-restart-is-issued.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -226,19 +221,6 @@ Linux cgroups, supports snapshotting and restoring of the system state,
 maintains mount and automount points and implements an elaborate
 transactional dependency-based service control logic. It can work as a
 drop-in replacement for sysvinit.
-
-%package doc
-Summary:        HTML documentation for systemd
-License:        LGPL-2.1-or-later
-%if %{with bootstrap}
-Conflicts:      systemd-doc
-Requires:       this-is-only-for-build-envs
-%else
-Supplements:    (systemd and patterns-base-documentation)
-%endif
-
-%description doc
-The HTML documentation for systemd.
 
 %package devel
 Summary:        Development files for libsystemd and libudev
@@ -319,6 +301,7 @@ Requires:       filesystem
 Requires:       kmod
 Requires:       system-group-hardware
 Requires:       group(kvm)
+Requires:       group(lp)
 # The next dependency is also needed with file-triggers enabled due to the way
 # the libzypp default transaction backend works.
 Requires(pre):  group(kvm)
@@ -402,8 +385,8 @@ Visit https://systemd.io/COREDUMP for more details.
 %package boot
 Summary:        A simple UEFI boot manager
 License:        LGPL-2.1-or-later
-BuildRequires:  gnu-efi
 BuildRequires:  pesign-obs-integration
+BuildRequires:  python3-pyelftools
 
 %description boot
 This package provides systemd-boot (short: sd-boot), which is a simple UEFI boot
@@ -570,7 +553,6 @@ systemd-journal-remote, and systemd-journal-upload.
 %if %{with testsuite}
 %package testsuite
 Summary:        Testsuite for systemd
-# Unit tests dependencies
 License:        LGPL-2.1-or-later
 Recommends:     python3
 Recommends:     python3-colorama
@@ -579,12 +561,17 @@ Recommends:     dosfstools
 # Optional deps needed by TEST-70-TPM2 (otherwise skipped)
 Recommends:     swtpm
 Recommends:     tpm2.0-tools
-# The following deps on libs are for test-dlopen-so whereas the pkgconfig ones
-# are used by test-funtions to find the libs on the host and install them in the
-# image, see install_missing_libraries() for details.
 %if %{with resolved}
 # Optional dep for knot needed by TEST-75-RESOLVED
 Recommends:     knot
+%if %{with selinux}
+# Optional deps needed by TEST-06-SELINUX (otherwise skipped)
+Recommends:     selinux-policy-devel
+Recommends:     selinux-policy-targeted
+%endif
+# The following deps on libs are for test-dlopen-so whereas the pkgconfig ones
+# are used by test-funtions to find the libs on the host and install them in the
+# image, see install_missing_libraries() for details.
 Requires:       libidn2
 Requires:       pkgconfig(libidn2)
 %endif
@@ -613,7 +600,6 @@ Requires:       netcat
 Requires:       python3-pexpect
 Requires:       qemu-kvm
 Requires:       quota
-Requires:       selinux-policy-devel
 Requires:       socat
 Requires:       squashfs
 Requires:       systemd-container
@@ -693,6 +679,14 @@ Have fun (at your own risk).
 
 %if %{without bootstrap}
 %lang_package
+
+%package doc
+Summary:        HTML documentation for systemd
+License:        LGPL-2.1-or-later
+Supplements:    (systemd and patterns-base-documentation)
+
+%description doc
+The HTML documentation for systemd.
 %endif
 
 %prep
@@ -718,6 +712,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         -Dclock-valid-range-usec-max=946728000000000 \
         -Dadm-group=false \
         -Dwheel-group=false \
+        -Dutmp=%{when utmp} \
         -Ddefault-hierarchy=unified \
         -Ddefault-kill-user-processes=false \
         -Dpamconfdir=no \
@@ -744,7 +739,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         \
         -Dpstore=true \
         \
-        -Dapparmor=%{when_not bootstrap} \
+        -Dapparmor=%{when apparmor} \
         -Dbpf-framework=%{when_not bootstrap} \
         -Defi=%{when_not bootstrap} \
         -Delfutils=%{when_not bootstrap} \
@@ -756,7 +751,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         -Dnss-myhostname=%{when_not bootstrap} \
         -Dnss-systemd=%{when_not bootstrap} \
         -Dseccomp=%{when_not bootstrap} \
-        -Dselinux=%{when_not bootstrap} \
+        -Dselinux=%{when selinux} \
         -Dtpm=%{when_not bootstrap} \
         -Dtpm2=%{when_not bootstrap} \
         -Dtranslations=%{when_not bootstrap} \
@@ -770,7 +765,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         -Dportabled=%{when portabled} \
         -Dremote=%{when journal_remote} \
         \
-        -Dgnu-efi=%{when sd_boot} \
+        -Dbootloader=%{when sd_boot} \
         -Defi-color-highlight="black,green" \
         \
         -Dsbat-distro="%{?sbat_distro}" \
@@ -1008,6 +1003,9 @@ tar -cO \
 
 %if %{without bootstrap}
 %find_lang systemd
+%else
+rm -f  %{buildroot}%{_journalcatalogdir}/*
+rm -fr %{buildroot}%{_docdir}/systemd
 %endif
 
 # Don't drop %%pre section even if it becomes empty: the build process of
@@ -1239,14 +1237,14 @@ fi
 
 %post homed
 if [ $1 -eq 1 ]; then
-        pam-config --add --systemd-homed || :
+        pam-config --add --systemd_home || :
 fi
 %systemd_post systemd-homed.service
 
 %preun homed
 %systemd_preun systemd-homed.service
 if [ $1 -eq 0 ]; then
-        pam-config --delete --systemd-homed || :
+        pam-config --delete --systemd_home || :
 fi
 
 %postun homed
@@ -1318,10 +1316,6 @@ fi
 %include %{SOURCE203}
 %endif
 
-%files doc
-%defattr(-,root,root,-)
-%{_docdir}/systemd/
-
 %files devel
 %defattr(-,root,root,-)
 %license LICENSE.LGPL2.1
@@ -1337,13 +1331,13 @@ fi
 %defattr(-,root,root)
 %license LICENSE.LGPL2.1
 %{_libdir}/libsystemd.so.0
-%{_libdir}/libsystemd.so.0.36.0
+%{_libdir}/libsystemd.so.0.37.0
 
 %files -n libudev%{?mini}1
 %defattr(-,root,root)
 %license LICENSE.LGPL2.1
 %{_libdir}/libudev.so.1
-%{_libdir}/libudev.so.1.7.6
+%{_libdir}/libudev.so.1.7.7
 
 %if %{with coredump}
 %files coredump
@@ -1353,6 +1347,11 @@ fi
 
 %if %{without bootstrap}
 %files lang -f systemd.lang
+%include %{SOURCE210}
+
+%files doc
+%defattr(-,root,root,-)
+%{_docdir}/systemd/
 %endif
 
 %if %{with journal_remote}

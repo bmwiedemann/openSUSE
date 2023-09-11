@@ -22,8 +22,8 @@
 %{_mandir}/man8/systemd-boot-random-seed.service.8.gz
 %endif
 # These are the few exceptions where glob pattern is allowed.
+%{_systemd_util_dir}/boot/efi/addon*.efi.stub
 %{_systemd_util_dir}/boot/efi/linux*.efi.stub
-%{_systemd_util_dir}/boot/efi/linux*.elf.stub
 %{_systemd_util_dir}/boot/efi/systemd-boot*.efi
 %{_systemd_util_dir}/systemd-bless-boot
 %{_systemdgeneratordir}/systemd-bless-boot-generator

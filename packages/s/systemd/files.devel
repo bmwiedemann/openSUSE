@@ -21,6 +21,7 @@
 %{_mandir}/man3/SD_BUS_ERROR_INCONSISTENT_MESSAGE.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_INTERACTIVE_AUTHORIZATION_REQUIRED.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_INVALID_ARGS.3.gz
+%{_mandir}/man3/SD_BUS_ERROR_INVALID_FILE_CONTENT.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_INVALID_SIGNATURE.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_IO_ERROR.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_LIMITS_EXCEEDED.3.gz
@@ -35,8 +36,11 @@
 %{_mandir}/man3/SD_BUS_ERROR_NO_REPLY.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_NO_SERVER.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_NULL.3.gz
+%{_mandir}/man3/SD_BUS_ERROR_OBJECT_PATH_IN_USE.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_PROPERTY_READ_ONLY.3.gz
+%{_mandir}/man3/SD_BUS_ERROR_SELINUX_SECURITY_CONTEXT_UNKNOWN.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_SERVICE_UNKNOWN.3.gz
+%{_mandir}/man3/SD_BUS_ERROR_TIMED_OUT.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_TIMEOUT.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_UNIX_PROCESS_ID_UNKNOWN.3.gz
 %{_mandir}/man3/SD_BUS_ERROR_UNKNOWN_INTERFACE.3.gz
@@ -108,9 +112,11 @@
 %{_mandir}/man3/SD_JOURNAL_RUNTIME_ONLY.3.gz
 %{_mandir}/man3/SD_JOURNAL_SUPPRESS_LOCATION.3.gz
 %{_mandir}/man3/SD_JOURNAL_SYSTEM.3.gz
+%{_mandir}/man3/SD_JOURNAL_TAKE_DIRECTORY_FD.3.gz
 %{_mandir}/man3/SD_LISTEN_FDS_START.3.gz
 %{_mandir}/man3/SD_NOTICE.3.gz
 %{_mandir}/man3/SD_WARNING.3.gz
+%{_mandir}/man3/libsystemd.3.gz
 %{_mandir}/man3/libudev.3.gz
 %{_mandir}/man3/sd-bus-errors.3.gz
 %{_mandir}/man3/sd-bus.3.gz
@@ -454,6 +460,7 @@
 %{_mandir}/man3/sd_event_add_inotify.3.gz
 %{_mandir}/man3/sd_event_add_inotify_fd.3.gz
 %{_mandir}/man3/sd_event_add_io.3.gz
+%{_mandir}/man3/sd_event_add_memory_pressure.3.gz
 %{_mandir}/man3/sd_event_add_post.3.gz
 %{_mandir}/man3/sd_event_add_signal.3.gz
 %{_mandir}/man3/sd_event_add_time.3.gz
@@ -508,6 +515,7 @@
 %{_mandir}/man3/sd_event_source_get_time_clock.3.gz
 %{_mandir}/man3/sd_event_source_get_userdata.3.gz
 %{_mandir}/man3/sd_event_source_is_ratelimited.3.gz
+%{_mandir}/man3/sd_event_source_leave_ratelimit.3.gz
 %{_mandir}/man3/sd_event_source_ref.3.gz
 %{_mandir}/man3/sd_event_source_send_child_signal.3.gz
 %{_mandir}/man3/sd_event_source_set_child_pidfd_own.3.gz
@@ -520,6 +528,8 @@
 %{_mandir}/man3/sd_event_source_set_io_events.3.gz
 %{_mandir}/man3/sd_event_source_set_io_fd.3.gz
 %{_mandir}/man3/sd_event_source_set_io_fd_own.3.gz
+%{_mandir}/man3/sd_event_source_set_memory_pressure_period.3.gz
+%{_mandir}/man3/sd_event_source_set_memory_pressure_type.3.gz
 %{_mandir}/man3/sd_event_source_set_prepare.3.gz
 %{_mandir}/man3/sd_event_source_set_priority.3.gz
 %{_mandir}/man3/sd_event_source_set_ratelimit.3.gz
@@ -531,6 +541,7 @@
 %{_mandir}/man3/sd_event_source_unref.3.gz
 %{_mandir}/man3/sd_event_source_unrefp.3.gz
 %{_mandir}/man3/sd_event_time_handler_t.3.gz
+%{_mandir}/man3/sd_event_trim_memory.3.gz
 %{_mandir}/man3/sd_event_unref.3.gz
 %{_mandir}/man3/sd_event_unrefp.3.gz
 %{_mandir}/man3/sd_event_wait.3.gz
@@ -591,6 +602,7 @@
 %{_mandir}/man3/sd_journal_get_fd.3.gz
 %{_mandir}/man3/sd_journal_get_monotonic_usec.3.gz
 %{_mandir}/man3/sd_journal_get_realtime_usec.3.gz
+%{_mandir}/man3/sd_journal_get_seqnum.3.gz
 %{_mandir}/man3/sd_journal_get_timeout.3.gz
 %{_mandir}/man3/sd_journal_get_usage.3.gz
 %{_mandir}/man3/sd_journal_has_persistent_files.3.gz
@@ -627,6 +639,7 @@
 %{_mandir}/man3/sd_journal_sendv.3.gz
 %{_mandir}/man3/sd_journal_sendv_with_location.3.gz
 %{_mandir}/man3/sd_journal_set_data_threshold.3.gz
+%{_mandir}/man3/sd_journal_step_one.3.gz
 %{_mandir}/man3/sd_journal_stream_fd.3.gz
 %{_mandir}/man3/sd_journal_test_cursor.3.gz
 %{_mandir}/man3/sd_journal_wait.3.gz
@@ -664,8 +677,10 @@
 %{_mandir}/man3/sd_pid_get_user_slice.3.gz
 %{_mandir}/man3/sd_pid_get_user_unit.3.gz
 %{_mandir}/man3/sd_pid_notify.3.gz
+%{_mandir}/man3/sd_pid_notify_barrier.3.gz
 %{_mandir}/man3/sd_pid_notify_with_fds.3.gz
 %{_mandir}/man3/sd_pid_notifyf.3.gz
+%{_mandir}/man3/sd_pid_notifyf_with_fds.3.gz
 %{_mandir}/man3/sd_pidfd_get_cgroup.3.gz
 %{_mandir}/man3/sd_pidfd_get_machine_name.3.gz
 %{_mandir}/man3/sd_pidfd_get_owner_uid.3.gz
@@ -681,18 +696,22 @@
 %{_mandir}/man3/sd_session_get_class.3.gz
 %{_mandir}/man3/sd_session_get_desktop.3.gz
 %{_mandir}/man3/sd_session_get_display.3.gz
+%{_mandir}/man3/sd_session_get_leader.3.gz
 %{_mandir}/man3/sd_session_get_remote_host.3.gz
 %{_mandir}/man3/sd_session_get_remote_user.3.gz
 %{_mandir}/man3/sd_session_get_seat.3.gz
 %{_mandir}/man3/sd_session_get_service.3.gz
+%{_mandir}/man3/sd_session_get_start_time.3.gz
 %{_mandir}/man3/sd_session_get_state.3.gz
 %{_mandir}/man3/sd_session_get_tty.3.gz
 %{_mandir}/man3/sd_session_get_type.3.gz
 %{_mandir}/man3/sd_session_get_uid.3.gz
+%{_mandir}/man3/sd_session_get_username.3.gz
 %{_mandir}/man3/sd_session_get_vt.3.gz
 %{_mandir}/man3/sd_session_is_active.3.gz
 %{_mandir}/man3/sd_session_is_remote.3.gz
 %{_mandir}/man3/sd_uid_get_display.3.gz
+%{_mandir}/man3/sd_uid_get_login_time.3.gz
 %{_mandir}/man3/sd_uid_get_seats.3.gz
 %{_mandir}/man3/sd_uid_get_sessions.3.gz
 %{_mandir}/man3/sd_uid_get_state.3.gz

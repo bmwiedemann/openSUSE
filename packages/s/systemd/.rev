@@ -6749,4 +6749,41 @@ handle manual pages that consist only of a .so directive such as
   https://github.com/openSUSE/systemd/compare/2dac0aff9ced1eca0cd11c24e264b33095ee5a5e...fcdb2dd2c921db3c6b7c28465dbda314f4469d17</comment>
     <requestid>1103458</requestid>
   </revision>
+  <revision rev="400" vrev="1">
+    <srcmd5>e3db6819b08f12d59e83d0364d27f23f</srcmd5>
+    <version>254.3</version>
+    <time>1694459988</time>
+    <user>anag+factory</user>
+    <comment>- Import commit b6b4e5a8a82d1f13f265a4ef170f2d13be82789a (merge of v254.3)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/1f73719d67b9300c6bb75232d695d03410991098...b6b4e5a8a82d1f13f265a4ef170f2d13be82789a
+
+- Make utmp support per project configureable [jsc#PED-3144]
+- Make apparmor and selinux per project configureable [jsc#PED-2736]
+
+- systemd.spec: don't use build conditionals (%bcond_with/%bcond_without) with
+  the mini flavor to make sure that all the features remain disabled for this
+  flavor regardless of what is enabled in the prjconf.
+
+- Don't build systemd-doc with the mini flavor
+
+- Explicitly require group(lp) by udev: this used to be provided by
+  system-group-hardware, but with the introduction of
+  system-user-lp (and systemd-users auto-generating groups) is now
+  actually provided by system-user-lp. Latest versions of
+  system-group-hardware clean this up and no longer also provide
+  this group.
+
+- Fix incorrect option name when calling pam-config for systemd-homed
+
+- testsuite: Recommend selinux-policy-devel instead of requiring it in line with
+  other tests. Add Recommends for selinux-policy-targeted as this is also
+  required to run the test (in general any SELinux policy should do)
+
+- systemd.spec: add journal translations to lang package
+
+- Import commmit 1f73719d67b9300c6bb75232d695d03410991098
+  1f73719d67 test-mountpoint-util: /root might be mounted</comment>
+    <requestid>1110245</requestid>
+  </revision>
 </revisionlist>

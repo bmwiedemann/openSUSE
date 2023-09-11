@@ -42,6 +42,9 @@
 %{_mandir}/man8/systemd-sysupdate.8.gz
 %{_mandir}/man8/systemd-sysupdate.service.8.gz
 %{_mandir}/man8/systemd-sysupdate.timer.8.gz
+%if %{with sd_boot}
+%{_prefix}/lib/kernel/install.d/60-ukify.install
+%endif
 %{_systemd_util_dir}/system/initrd-root-fs.target.wants/systemd-repart.service
 %{_systemd_util_dir}/system/sysinit.target.wants/systemd-repart.service
 %if %{with sd_boot}

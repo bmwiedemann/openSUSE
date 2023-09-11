@@ -4,6 +4,7 @@
 %config(noreplace) %{_sysconfdir}/systemd/pstore.conf
 %config(noreplace) %{_sysconfdir}/systemd/sleep.conf
 %config(noreplace) %{_sysconfdir}/systemd/timesyncd.conf
+%config(noreplace) %{_sysconfdir}/udev/iocost.conf
 %config(noreplace) %{_sysconfdir}/udev/udev.conf
 %if %{without bootstrap}
 %dir %{_libdir}/cryptsetup
@@ -22,6 +23,7 @@
 %dir %{_systemd_util_dir}/system-sleep
 %dir %{_udevhwdbdir}
 %dir %{_udevrulesdir}
+%dir %{_unitdir}/initrd.target.wants
 %doc %{_udevhwdbdir}/README
 %doc %{_udevrulesdir}/README
 %ghost %attr(0600,root,root) %{_localstatedir}/lib/systemd/random-seed
@@ -47,14 +49,13 @@
 %if %{without bootstrap}
 %{_datadir}/zsh/site-functions/_kernel-install
 %{_datadir}/zsh/site-functions/_udevadm
-%endif
-%if %{without bootstrap}
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-fido2.so
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-pkcs11.so
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-tpm2.so
 %{_mandir}/man1/systemd-cryptenroll.1.gz
 %{_mandir}/man5/crypttab.5.gz
 %{_mandir}/man5/integritytab.5.gz
+%{_mandir}/man5/iocost.conf.5.gz
 %{_mandir}/man5/modules-load.d.5.gz
 %{_mandir}/man5/pstore.conf.5.gz
 %{_mandir}/man5/pstore.conf.d.5.gz
@@ -66,10 +67,14 @@
 %{_mandir}/man5/vconsole.conf.5.gz
 %{_mandir}/man5/veritytab.5.gz
 %{_mandir}/man7/hwdb.7.gz
+%{_mandir}/man7/smbios-type-11.7.gz
+%{_mandir}/man7/systemd.image-policy.7.gz
 %{_mandir}/man7/udev.7.gz
 %{_mandir}/man8/kernel-install.8.gz
 %{_mandir}/man8/systemd-backlight.8.gz
 %{_mandir}/man8/systemd-backlight@.service.8.gz
+%{_mandir}/man8/systemd-battery-check.8.gz
+%{_mandir}/man8/systemd-battery-check.service.8.gz
 %{_mandir}/man8/systemd-cryptsetup-generator.8.gz
 %{_mandir}/man8/systemd-cryptsetup.8.gz
 %{_mandir}/man8/systemd-cryptsetup@.service.8.gz
@@ -84,7 +89,6 @@
 %{_mandir}/man8/systemd-growfs@.service.8.gz
 %{_mandir}/man8/systemd-hibernate-resume-generator.8.gz
 %{_mandir}/man8/systemd-hibernate-resume.8.gz
-%{_mandir}/man8/systemd-hibernate-resume@.service.8.gz
 %{_mandir}/man8/systemd-hibernate.service.8.gz
 %{_mandir}/man8/systemd-hwdb.8.gz
 %{_mandir}/man8/systemd-hybrid-sleep.service.8.gz
@@ -114,6 +118,7 @@
 %{_mandir}/man8/systemd-suspend.service.8.gz
 %{_mandir}/man8/systemd-timesyncd.8.gz
 %{_mandir}/man8/systemd-timesyncd.service.8.gz
+%{_mandir}/man8/systemd-tmpfiles-setup-dev-early.service.8.gz
 %{_mandir}/man8/systemd-tmpfiles-setup-dev.service.8.gz
 %{_mandir}/man8/systemd-udev-settle.service.8.gz
 %{_mandir}/man8/systemd-udevd-control.socket.8.gz
@@ -135,17 +140,19 @@
 %endif
 %{_prefix}/lib/udev/ata_id
 %{_prefix}/lib/udev/cdrom_id
-# dmi_memory_id is only relevant on arches with DMI
 %ifarch %{arm} aarch64 %{ix86} x86_64 ia64 mips
+# dmi_memory_id is only relevant on arches with DMI
 %{_prefix}/lib/udev/dmi_memory_id
 %endif
 %{_prefix}/lib/udev/fido_id
+%{_prefix}/lib/udev/iocost
 %{_prefix}/lib/udev/mtd_probe
 %{_prefix}/lib/udev/scsi_id
 %{_prefix}/lib/udev/v4l_id
 %{_systemd_util_dir}/network/99-default.link
 %{_systemd_util_dir}/ntp-units.d/80-systemd-timesync.list
 %{_systemd_util_dir}/systemd-backlight
+%{_systemd_util_dir}/systemd-battery-check
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-cryptsetup
 %endif
@@ -220,6 +227,7 @@
 %{_udevrulesdir}/60-autosuspend.rules
 %{_udevrulesdir}/60-block.rules
 %{_udevrulesdir}/60-cdrom_id.rules
+%{_udevrulesdir}/60-dmi-id.rules
 %{_udevrulesdir}/60-drm.rules
 %{_udevrulesdir}/60-evdev.rules
 %{_udevrulesdir}/60-fido-id.rules
@@ -249,6 +257,7 @@
 %endif
 %{_udevrulesdir}/80-net-setup-link.rules
 %{_udevrulesdir}/81-net-dhcp.rules
+%{_udevrulesdir}/90-iocost.rules
 %{_udevrulesdir}/90-vconsole.rules
 %if %{without bootstrap}
 %{_unitdir}/cryptsetup-pre.target
@@ -261,6 +270,7 @@
 %{_unitdir}/initrd-root-device.target.wants/remote-veritysetup.target
 %endif
 %{_unitdir}/initrd-udevadm-cleanup-db.service
+%{_unitdir}/initrd.target.wants/systemd-battery-check.service
 %if %{without bootstrap}
 %{_unitdir}/integritysetup-pre.target
 %{_unitdir}/integritysetup.target
@@ -283,20 +293,22 @@
 %{_unitdir}/sysinit.target.wants/systemd-modules-load.service
 %endif
 %{_unitdir}/sysinit.target.wants/systemd-random-seed.service
+%{_unitdir}/sysinit.target.wants/systemd-tmpfiles-setup-dev-early.service
 %{_unitdir}/sysinit.target.wants/systemd-tmpfiles-setup-dev.service
 %{_unitdir}/sysinit.target.wants/systemd-udev-trigger.service
 %{_unitdir}/sysinit.target.wants/systemd-udevd.service
 %if %{without bootstrap}
 %{_unitdir}/sysinit.target.wants/veritysetup.target
 %{_unitdir}/system-systemd\x2dcryptsetup.slice
+%{_unitdir}/system-systemd\x2dveritysetup.slice
 %endif
 %{_unitdir}/systemd-backlight@.service
+%{_unitdir}/systemd-battery-check.service
 %{_unitdir}/systemd-firstboot.service
 %{_unitdir}/systemd-fsck-root.service
 %{_unitdir}/systemd-fsck@.service
 %{_unitdir}/systemd-growfs-root.service
 %{_unitdir}/systemd-growfs@.service
-%{_unitdir}/systemd-hibernate-resume@.service
 %{_unitdir}/systemd-hibernate.service
 %{_unitdir}/systemd-hwdb-update.service
 %{_unitdir}/systemd-hybrid-sleep.service
@@ -314,6 +326,7 @@
 %{_unitdir}/systemd-suspend-then-hibernate.service
 %{_unitdir}/systemd-suspend.service
 %{_unitdir}/systemd-timesyncd.service
+%{_unitdir}/systemd-tmpfiles-setup-dev-early.service
 %{_unitdir}/systemd-tmpfiles-setup-dev.service
 %{_unitdir}/systemd-udev-settle.service
 %{_unitdir}/systemd-udev-trigger.service
