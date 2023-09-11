@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 11 04:59:40 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop patch python-asciimatics-no-mock.patch, has been subsummed.
+- Add patch move-to-python3.patch
+- Switch to autosetup and pyproject macros.
+
+-------------------------------------------------------------------
 Mon Aug 29 16:38:23 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - update to 1.14.0 

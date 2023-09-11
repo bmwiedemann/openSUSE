@@ -50,4 +50,14 @@
     <comment></comment>
     <requestid>1000121</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4dad6328f3a25b8006799eb0ab92862b</srcmd5>
+    <version>1.14.0</version>
+    <time>1694460111</time>
+    <user>anag+factory</user>
+    <comment>- Drop patch python-asciimatics-no-mock.patch, has been subsummed.
+- Add patch move-to-python3.patch
+- Switch to autosetup and pyproject macros.</comment>
+    <requestid>1110191</requestid>
+  </revision>
 </revisionlist>

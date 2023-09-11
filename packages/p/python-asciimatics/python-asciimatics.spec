@@ -1,7 +1,7 @@
 #
 # spec file for package python-asciimatics
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asciimatics
 Version:        1.14.0
 Release:        0
 Summary:        Package to replace curses and create ASCII animations
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/peterbrittain/asciimatics
 Source:         https://files.pythonhosted.org/packages/source/a/asciimatics/asciimatics-%{version}.tar.gz
-# https://github.com/peterbrittain/asciimatics/issues/347
-Patch0:         python-asciimatics-no-mock.patch
-BuildRequires:  %{python_module setuptools}
+# PATCH-FIX-UPSTREAM Based on gh#peterbrittain/asciimatics#376
+Patch0:         move-to-python3.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow >= 2.7.0
 Requires:       python-curses
-Requires:       python-future
 Requires:       python-pyfiglet >= 0.7.2
 Requires:       python-wcwidth
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow >= 2.7.0}
 BuildRequires:  %{python_module curses}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pyfiglet >= 0.7.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wcwidth}
@@ -51,15 +49,13 @@ Asciimatics is a package to help people create full-screen text UIs
 (from interactive forms to ASCII animations) on any platform.
 
 %prep
-%setup -q -n asciimatics-%{version}
-%autopatch -p1
-sed -i '/setup_requires/d' setup.py
+%autosetup -p1 -n asciimatics-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -69,6 +65,7 @@ sed -i '/setup_requires/d' setup.py
 %files %{python_files}
 %doc CHANGES.rst README.rst doc/source/*.rst doc/source/*.png
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/asciimatics
+%{python_sitelib}/asciimatics-%{version}.dist-info
 
 %changelog
