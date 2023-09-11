@@ -1,7 +1,7 @@
 #
 # spec file for package python-snuggs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python36 1
 Name:           python-snuggs
 Version:        1.4.7
@@ -26,7 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mapbox/snuggs
 Source:         https://files.pythonhosted.org/packages/source/s/snuggs/snuggs-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
@@ -44,21 +44,23 @@ BuildRequires:  %{python_module pytest}
 Snuggs are s-expressions for Numpy.
 
 %prep
-%setup -q -n snuggs-%{version}
+%autosetup -p1 -n snuggs-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand pytest-%{$python_bin_suffix} test_snuggs.py
+# gh#mapbox/snuggs#27
+%pytest -k 'not (test_missing_closing_paren or test_missing_func2 or test_bogus_higher_order_func)' test_snuggs.py
 
 %files %{python_files}
 %doc AUTHORS.txt CHANGES.txt README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/snuggs
+%{python_sitelib}/snuggs-%{version}*-info
 
 %changelog

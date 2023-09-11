@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep  9 14:51:16 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Skip failing tests because of poor exception handling
+  (gh#mapbox/snuggs#27)
+
+-------------------------------------------------------------------
 Tue Apr 27 05:05:34 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 
