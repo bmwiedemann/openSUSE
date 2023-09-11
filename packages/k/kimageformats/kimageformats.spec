@@ -33,7 +33,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kimageformats
-Version:        5.109.0
+Version:        5.110.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -43,8 +43,6 @@ Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Support-libavif-1.0.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -117,6 +115,7 @@ environments.
 %{_kf5_plugindir}/imageformats/kimg_pcx.so
 %{_kf5_plugindir}/imageformats/kimg_pic.so
 %{_kf5_plugindir}/imageformats/kimg_psd.so
+%{_kf5_plugindir}/imageformats/kimg_qoi.so
 %{_kf5_plugindir}/imageformats/kimg_ras.so
 %{_kf5_plugindir}/imageformats/kimg_raw.so
 %{_kf5_plugindir}/imageformats/kimg_rgb.so
@@ -142,6 +141,7 @@ environments.
 %{_kf5_servicesdir}/qimageioplugins/pcx.desktop
 %{_kf5_servicesdir}/qimageioplugins/pic.desktop
 %{_kf5_servicesdir}/qimageioplugins/psd.desktop
+%{_kf5_servicesdir}/qimageioplugins/qoi.desktop
 %{_kf5_servicesdir}/qimageioplugins/ras.desktop
 %{_kf5_servicesdir}/qimageioplugins/raw.desktop
 %{_kf5_servicesdir}/qimageioplugins/rgb.desktop
@@ -154,6 +154,5 @@ environments.
 %dir %{_kf5_servicesdir}/qimageioplugins
 %{_kf5_plugindir}/imageformats/kimg_eps.so
 %{_kf5_servicesdir}/qimageioplugins/eps.desktop
-%{_kf5_plugindir}/imageformats/kimg_eps.so
 
 %changelog

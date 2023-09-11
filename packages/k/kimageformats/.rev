@@ -1015,4 +1015,12 @@
   * 0001-Support-libavif-1.0.patch</comment>
     <requestid>1107916</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>cda952b676faa56a7fa72aae4d9356d3</srcmd5>
+    <version>5.110.0</version>
+    <time>1694460035</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.110.0 (forwarded request 1109602 from krop)</comment>
+    <requestid>1110084</requestid>
+  </revision>
 </revisionlist>

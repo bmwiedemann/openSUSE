@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep  6 12:24:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.110.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.110.0
+- Changes since 5.109.0:
+  * QOI: Advertise write support in the desktop file
+  * qoi: write support backported from master
+  * xcf: format v12 support (kf5)
+  * Support libavif 1.0
+  * exr: multiple fixes (kf5)
+  * Fix missing qoi.desktop
+  * qoi: fix buffer overflow kf5
+  * Renamed qoi.h to qoi_p.h
+  * Minor improvements
+  * Add support for the QOI image format
+  * Set linear color space and round fix
+- Drop patch, merged upstream
+  * 0001-Support-libavif-1.0.patch
+
+-------------------------------------------------------------------
 Tue Aug 29 11:00:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add patch to support avif 1.0:
