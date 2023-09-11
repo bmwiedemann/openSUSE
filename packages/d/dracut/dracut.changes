@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 11 09:01:18 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.501.gc44a365d:
+  * chore(suse): remove obsolete fillup template (bsc#1212764)
+  * fix(systemd): add new systemd-tmpfiles-setup-dev-early.service
+
+-------------------------------------------------------------------
 Fri Sep 08 09:51:48 UTC 2023 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.497.ga7feaf12:
