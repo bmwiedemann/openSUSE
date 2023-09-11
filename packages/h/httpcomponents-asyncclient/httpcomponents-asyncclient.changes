@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 11 10:11:27 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Sat Apr 30 14:31:24 UTC 2022 - Stefan Bluhm <stefan.bluhm@clacee.eu>
 
 - Adapted for Enterprise Linux 9
