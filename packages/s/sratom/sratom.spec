@@ -30,9 +30,9 @@ BuildRequires:  doxygen
 BuildRequires:  graphviz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(lv2) >= 1.10.0
+BuildRequires:  pkgconfig(lv2) >= 1.18.4
 BuildRequires:  pkgconfig(serd-0) >= 0.30.0
-BuildRequires:  pkgconfig(sord-0) >= 0.12.0
+BuildRequires:  pkgconfig(sord-0) >= 0.16.10
 
 %description
 A library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax.
