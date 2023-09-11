@@ -1,7 +1,7 @@
 #
 # spec file for package sord
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ BuildRequires:  meson
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
-BuildRequires:  pkgconfig(serd-0) >= 0.22.4
+BuildRequires:  pkgconfig(serd-0) >= 0.30.10
 
 %description
 Utilities to work with RDF data.
