@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 31 06:57:37 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- add test-io_uring_register-fix-errno-confusion-and-new-e.patch
+  to fix test errors on the 6.5 kernel
+
+-------------------------------------------------------------------
 Mon Jun 12 08:44:39 UTC 2023 - David Disseldorp <ddiss@suse.com>
 
 - Update to 2.4:
