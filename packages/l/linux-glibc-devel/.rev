@@ -716,4 +716,12 @@
     <comment>- Update to kernel headers 6.4 (forwarded request 1095350 from Andreas_Schwab)</comment>
     <requestid>1095351</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>8eccabaed31b14c1373b058b4c45bb4f</srcmd5>
+    <version>6.5</version>
+    <time>1694459978</time>
+    <user>anag+factory</user>
+    <comment>- Update to kernel headers 6.5 (forwarded request 1108117 from Andreas_Schwab)</comment>
+    <requestid>1108118</requestid>
+  </revision>
 </revisionlist>
