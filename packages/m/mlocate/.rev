@@ -274,4 +274,12 @@ The group warning is fixed in rpmlint devel project already.</comment>
     <comment></comment>
     <requestid>1074319</requestid>
   </revision>
+  <revision rev="32" vrev="34">
+    <srcmd5>74360b601ce1d04ee2bc74f7eceadaff</srcmd5>
+    <version>0.26</version>
+    <time>1694460198</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1110327</requestid>
+  </revision>
 </revisionlist>
