@@ -36,6 +36,7 @@ Patch4:         enable-jdom.patch
 # Fix compatibility with javacc 7
 Patch5:         javacc-7.patch
 Patch6:         no-doctype.patch
+Patch7:         reproducible-javadoc.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-logging
 BuildRequires:  apache-parent
@@ -92,6 +93,11 @@ find -type f -name "*.class" -delete
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
+
+echo "-reproducible: true" >> osgi.bnd
+echo "-noextraheaders: true" >> osgi.bnd
+echo "-snapshot: SNAPSHOT" >> osgi.bnd
 
 # Use system ivy settings
 rm ivysettings.xml
@@ -118,7 +124,7 @@ rm src/main/java/freemarker/ext/xml/_Dom4jNavigator.java
 
 %build
 JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8 \
-	ant -Divy.mode=local -Ddeps.available=true javacc jar javadoc maven-pom
+	%{ant} -Divy.mode=local -Ddeps.available=true javacc jar javadoc maven-pom
 
 mkdir build/manual
 for lang in en_US zh_CN; do

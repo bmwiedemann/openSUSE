@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 11 08:40:53 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: avoid timestamps in generated manifest
+- Added patch:
+  * reproducible-javadoc.patch
+    + avoid hidden timestamps in javadoc
+
+-------------------------------------------------------------------
 Mon Aug 21 23:36:08 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
