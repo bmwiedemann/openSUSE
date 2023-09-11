@@ -227,4 +227,25 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>965770</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cff59daf0a4b3a184ce005cd1ceb81f1</srcmd5>
+    <version>3.1.1</version>
+    <time>1694460118</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.1:
+  * Source distribution packaging issue ([392]). Thanks yurivict@GitHub.
+  * Fixed RREL lookup in case of multi-meta models (some special cases were not
+    handled correctly; [#379]).
+  * Fixed test suite invocation to use `pytest` over `py.test` that stopped
+    working in pytest-7.2.0. ([#389]). Thanks mgorny@GitHub.
+  * Changed separator in obj. rule refs from `|` to `:`. Old separator
+    will still be allowed until version 4.0. ([#385], [#384])
+  * Removed the dependency on `future` package ([#388]). Thanks mgorny@GitHub.
+  * Removed vendored `six` library. We don't need 2.x support anymore. Thanks 
+    davidchall@GitHub for reporting the issue ([#390]).
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Drop a Python 2 requires.</comment>
+    <requestid>1110197</requestid>
+  </revision>
 </revisionlist>

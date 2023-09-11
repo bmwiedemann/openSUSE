@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 11 05:42:48 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.1:
+  * Source distribution packaging issue ([392]). Thanks yurivict@GitHub.
+  * Fixed RREL lookup in case of multi-meta models (some special cases were not
+    handled correctly; [#379]).
+  * Fixed test suite invocation to use `pytest` over `py.test` that stopped
+    working in pytest-7.2.0. ([#389]). Thanks mgorny@GitHub.
+  * Changed separator in obj. rule refs from `|` to `:`. Old separator
+    will still be allowed until version 4.0. ([#385], [#384])
+  * Removed the dependency on `future` package ([#388]). Thanks mgorny@GitHub.
+  * Removed vendored `six` library. We don't need 2.x support anymore. Thanks 
+    davidchall@GitHub for reporting the issue ([#390]).
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Drop a Python 2 requires.
+
+-------------------------------------------------------------------
 Tue Mar 22 20:51:24 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 3.0.0:

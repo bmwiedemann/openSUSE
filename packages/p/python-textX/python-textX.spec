@@ -1,7 +1,7 @@
 #
 # spec file for package python-textX
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-textX
-Version:        3.0.0
+Version:        3.1.1
 Release:        0
 Summary:        Meta-language for DSL implementation inspired by Xtext
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://textx.github.io/textX/stable/
 Source:         https://github.com/igordejanovic/textX/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -34,11 +33,6 @@ BuildRequires:  python2-xml
 %endif
 Requires:       python-Arpeggio >= 1.9.0
 Requires:       python-click >= 7.0
-Requires:       python-future
-Requires:       python-setuptools
-%if "%{python_flavor}" == "python2"
-Requires:       python2-xml
-%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Obsoletes:      %{name}-doc
@@ -47,7 +41,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Arpeggio}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module click >= 7.0}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module memory_profiler}
 BuildRequires:  %{python_module pytest}
@@ -74,40 +67,28 @@ sed -i '0,/#!\/usr\/bin\/env/ d' examples/hello_world/hello.py
 sed -i -e 's:click==:click>=:g' setup.py
 
 %build
-%python_build
-pushd tests/functional/subcommands/example_project
-%python_build
-popd
-pushd tests/functional/registration/projects/types_dsl
-%python_build
-popd
-pushd tests/functional/registration/projects/data_dsl
-%python_build
-popd
-pushd tests/functional/registration/projects/flow_dsl
-%python_build
-popd
-pushd tests/functional/registration/projects/flow_codegen
-%python_build
-popd
+%pyproject_wheel
+for dir in tests/functional/subcommands/example_project \
+tests/functional/registration/projects/types_dsl \
+tests/functional/registration/projects/data_dsl \
+tests/functional/registration/projects/flow_dsl \
+tests/functional/registration/projects/flow_codegen ; do
+    pushd $dir
+    %pyproject_wheel
+    popd
+done
 
 %install
-%python_install
-pushd tests/functional/subcommands/example_project
-%python_install
-popd
-pushd tests/functional/registration/projects/types_dsl
-%python_install
-popd
-pushd tests/functional/registration/projects/data_dsl
-%python_install
-popd
-pushd tests/functional/registration/projects/flow_dsl
-%python_install
-popd
-pushd tests/functional/registration/projects/flow_codegen
-%python_install
-popd
+%pyproject_install
+for dir in tests/functional/subcommands/example_project \
+tests/functional/registration/projects/types_dsl \
+tests/functional/registration/projects/data_dsl \
+tests/functional/registration/projects/flow_dsl \
+tests/functional/registration/projects/flow_codegen ; do
+    pushd $dir
+    %pyproject_install
+    popd
+done
 %python_expand install -m 0644 textx/textx.tx %{buildroot}%{$python_sitelib}/textx/
 %python_clone -a %{buildroot}%{_bindir}/textx
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/textx
@@ -131,7 +112,8 @@ export LC_ALL=C.UTF-8
 %python_uninstall_alternative textx
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/textx
+%{python_sitelib}/textX-%{version}.dist-info
 %python_alternative %{_bindir}/textx
 %license LICENSE.txt
 %doc AUTHORS.md CHANGELOG.md README.md
