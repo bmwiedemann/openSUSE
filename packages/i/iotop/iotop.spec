@@ -1,7 +1,7 @@
 #
 # spec file for package iotop
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define gitdate 20220308
-%define gitversion HEAD-a14256a
+%define gitdate 20230403
+%define gitversion HEAD-4b2e1aa
 
 Name:           iotop
 Version:        0.6git.%{gitdate}
@@ -40,7 +40,7 @@ Iotop is a Python program with a UI similar to top to show on behalf of
 which process is the I/O going on.
 
 %prep
-%autosetup -p1 -n %{name}-%{gitversion}
+%autosetup -n %{name}-%{gitversion}
 
 %build
 %python3_build

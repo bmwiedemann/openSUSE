@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  8 14:05:49 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to head checkout 4b2e1aa:
+  * data.py get_cmdline: use errors=replace for unicode errors 
+
+-------------------------------------------------------------------
 Sat Jul  9 22:47:02 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to head checkout a14256a:
