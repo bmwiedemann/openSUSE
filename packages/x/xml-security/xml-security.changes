@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 11 10:50:10 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Wed Mar 30 09:23:46 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the standalone JavaEE modules inconditionally
