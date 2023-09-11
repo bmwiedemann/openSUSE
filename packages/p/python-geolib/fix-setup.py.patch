@@ -1,0 +1,30 @@
+Index: geolib-1.0.7/setup.py
+===================================================================
+--- geolib-1.0.7.orig/setup.py
++++ geolib-1.0.7/setup.py
+@@ -3,17 +3,14 @@ import setuptools
+ with open("README.md", "r") as fh:
+     long_description = fh.read()
+ 
+-requires = [
+-    'future'
+-]
++requires = []
+ test_requirements = [
+-    'future',
+     'pytest'
+ ]
+ 
+ setuptools.setup(
+     name="geolib",
+-    version="1.0.6",
++    version="1.0.7",
+     author="Anu Joy",
+     author_email="oss@cartographix.org",
+     description="A library for geohash encoding, decoding and associated functions",
+Index: geolib-1.0.7/requirements.txt
+===================================================================
+--- geolib-1.0.7.orig/requirements.txt
++++ geolib-1.0.7/requirements.txt
+@@ -1 +0,0 @@
+-future>=0.16.0

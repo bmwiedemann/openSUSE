@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 11 05:55:24 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch fix-setup.py.patch, correct version, drop unused
+  requirements.
+- Switch to pyproject and autosetup macros.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed Jul  3 12:52:49 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop unused environment.pickle to make package build reproducible

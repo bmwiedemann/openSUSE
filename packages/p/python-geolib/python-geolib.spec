@@ -1,7 +1,7 @@
 #
 # spec file for package python-geolib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-geolib
 Version:        1.0.7
 Release:        0
 Summary:        A library for geohash encoding, decoding and associated functions
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://geolib.readthedocs.io/en/latest/
-# does not include license, docs, tests: https://github.com/joyanujoy/geolib/issues/1
-#Source:         https://files.pythonhosted.org/packages/source/g/geolib/geolib-%{version}.tar.gz
 Source:         https://github.com/joyanujoy/geolib/archive/%{version}.tar.gz#/geolib-%{version}.tar.gz
+Patch0:         fix-setup.py.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 # SECTION docs requirements
 BuildRequires:  python3-Sphinx
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-future
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -48,10 +44,10 @@ This is a Python port of Chris Veness's Javascript implementation,
 https://www.movable-type.co.uk/scripts/geohash.html .
 
 %prep
-%setup -q -n geolib-%{version}
+%autosetup -p1 -n geolib-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 pushd docs
 make html
 rm _build/html/.buildinfo
@@ -59,8 +55,8 @@ rm _build/html/.nojekyll
 popd
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}a
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
@@ -68,6 +64,7 @@ popd
 %files %{python_files}
 %doc README.md docs/_build/html/
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/geolib
+%{python_sitelib}/geolib-%{version}.dist-info
 
 %changelog
