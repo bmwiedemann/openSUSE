@@ -255,4 +255,12 @@ The vscan user is currently used by the amavisd-new and clamav packages, but the
     <comment></comment>
     <requestid>932250</requestid>
   </revision>
+  <revision rev="30" vrev="25">
+    <srcmd5>bb3a1639c6c73bdcfb6c97ff5e991037</srcmd5>
+    <version>20170617</version>
+    <time>1694459984</time>
+    <user>anag+factory</user>
+    <comment>- system-group-hardware: remove group lp, we have system-user-lp (forwarded request 1104654 from kukuk)</comment>
+    <requestid>1104655</requestid>
+  </revision>
 </revisionlist>

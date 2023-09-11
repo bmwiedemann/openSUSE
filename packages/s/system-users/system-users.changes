@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 18 09:49:58 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- system-group-hardware: remove group lp, we have system-user-lp
+
+-------------------------------------------------------------------
 Wed Sep  8 12:48:06 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Set shell for nobody in sysusers.d config
