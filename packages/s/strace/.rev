@@ -1463,4 +1463,21 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     arguments that do not normally have a path associated with them. (forwarded request 1095573 from Andreas_Schwab)</comment>
     <requestid>1095574</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>cfcf575cd5cb8203912922fc3a815772</srcmd5>
+    <version>6.5</version>
+    <time>1694459980</time>
+    <user>anag+factory</user>
+    <comment>- Update to strace 6.5
+  * Implemented decoding of cachestat and fchmodat2 syscalls.
+  * Implemented decoding of SO_PASSPIDFD and SO_PEERPIDFD socket options.
+  * Implemented decoding of SCM_PIDFD control messages.
+  * Implemented decoding of BPF_ENABLE_STATS, BPF_ITER_CREATE, BPF_LINK_DETACH,
+    and BPF_PROG_BIND_MAP bpf syscall commands.
+  * Updated decoding of BPF_OBJ_PIN and BPF_OBJ_GET bpf syscall commands.
+  * Updated lists of AT_*, BPF_*, IORING_*, KVM_*, MOVE_MOUNT_*, NFT_*, NT_*,
+    PR_*, and V4L2_* constants.
+  * Updated lists of ioctl commands from Linux 6.5. (forwarded request 1108644 from AndreasSchwab)</comment>
+    <requestid>1108645</requestid>
+  </revision>
 </revisionlist>
