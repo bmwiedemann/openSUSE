@@ -17,10 +17,8 @@
 #
 
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
-#
 Name:           rdiff-backup
-Version:        2.2.4
+Version:        2.2.6
 Release:        0
 Summary:        Convenient and transparent local/remote incremental mirror/backup
 License:        GPL-2.0-or-later

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Sep 11 07:32:26 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.2.6:
+  * FIX: extended variables were not correctly written if content of file
+         hadn't changed and file was read-only (API 201).
+  * FIX: failed parsing of arguments would return code 2 for warnings
+         instead of 1 for errors
+  * FIX: quoting variables where not correctly propagated when set from
+         the command line (API 201).
+  * FIX: some new functions were needed with higher security level and
+         had to be sorted accordingly (API 201).
+  * FIX: test action would fail with empty error message when using API
+         201
+  * FIX: timezone was not always correctly calculated in countries with
+         historically changing DST, closes #902
+  * NEW: add environment variable RDIFF_BACKUP_API_VERSION to
+         artificially modify the API version dictionary, see the man page for
+         details.
+  * NEW: add warning that server will be called with deprecated CLI and
+         how to avoid the corresponding warning (see also the FAQ)
+  * NEW: there is now a weekly release with changelog for intermediate
+         testing available at
+         https://github.com/rdiff-backup/rdiff-backup/releases/tag/weekly
+  * FIX: cross-version issue with 2.0.5 complaining about KeyError
+         restrict_path, closes #872
+  * FIX: fail gracefully when connection(s) can't be setup e.g. in case
+         of network error, closes #868
+
+-------------------------------------------------------------------
 Thu Mar 30 10:01:40 UTC 2023 - Petr Vorel <pvorel@suse.cz>
 
 - Require python3-PyYAML, python3-pylibacl, python3-xattr
