@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Sep  6 06:29:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.0.2:
+  * Bugfixes
+    - Update the getting started guide (#4023) @ajinkyau
+    - Update ansible-compat to v4.1.7 (#4022) @ajinkyau
+- drop Requires and BuildRequires that are no longer needed
+- add Requires for wcmatch >= 8.1.2
+- ignore some more pytest checks that cannot be run in OBS as they
+  required podman/docker etc.
+
+-------------------------------------------------------------------
+Wed Sep  6 06:26:45 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.0.1:
+  * Bugfixes
+    - Pass environment in testinfra (#4014) @zhan9san
+    - fix: remove `role` from `init` help info (#4010) @chenrui333
+
+-------------------------------------------------------------------
+Wed Sep  6 06:24:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.0.0:
+  * Major Changes
+    - Change current directory to scenario before running playbooks
+      (#3966) @ssbarnea
+    - Temporary disable support for external drivers (#3961)
+      @ssbarnea
+    - Reimplemented templating (init command) (#3959) @ssbarnea
+    - Remove ability to configure collections-path and roles-path
+      for dependency (#3956) @ssbarnea
+  * Minor Changes
+    - Allow molecule to list scenarios present under molecule
+      directory within a collection (#3989) @ajinkyau
+    - Avoid skipping create and destroy steps on delegated (#3949)
+      @ssbarnea
+  * Bugfixes
+    - Ignore scenarios in virtual envrionments (#3996) @ajinkyau
+    - Scaffold future docs structure (#3997) @cidrblock
+    - Update documentation (#3985) @ajinkyau
+    - Add example of integration with kubevirt (#3972) @jangel97
+    - Make pytest-testinfra as an optional dependency (#3982)
+      @ajinkyau
+    - Dependency installation directory is changed (#3980)
+      @zhan9san
+    - Avoid reinstalling dependencies (#3979) @zhan9san
+    - Remove constraints requirement files (#3981) @zhan9san
+    - Add example of using docker collection using default driver
+      (#3978) @zhan9san
+    - Update documentation (#3975) @ajinkyau
+    - Fix connection plugin name setting (#3957) @apatard
+    - Disable isolation from ansible-compat Runtime (#3962)
+      @ssbarnea
+    - Add example of using podman collection using default driver
+      (#3947) @ssbarnea
+    - Improve how executed commands are logged (#3948) @ssbarnea
+    - Make driver optional in molecule.yml file (#3946) @ssbarnea
+
+-------------------------------------------------------------------
 Mon Jun 26 05:10:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - remove fix_ansible_compat.patch that is no longer needed
