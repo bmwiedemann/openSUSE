@@ -199,4 +199,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1104915</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e8a05192967ffb8f2fb13a4e36af9c50</srcmd5>
+    <version>0.38.1</version>
+    <time>1694460096</time>
+    <user>anag+factory</user>
+    <comment>- Add session-manager and fixture-tests plugins.
+- Update to version 0.38.1:
+  * refactor(server): remove unnecessary mut
+  * fix(status-bar): add break tab hints
+  * fix(reconnect): glitches on windows terminal
+  * fix(grid): memory leak with unfocused tabs
+  * fix(input): enforce ordering of actions after opening a new pane
+- Remove zellij-fix-theme-dir.patch 
+</comment>
+    <requestid>1110146</requestid>
+  </revision>
 </revisionlist>

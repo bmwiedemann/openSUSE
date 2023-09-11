@@ -22,7 +22,7 @@
 
 %bcond_with     test
 Name:           zellij
-Version:        0.37.2
+Version:        0.38.1
 Release:        0
 Summary:        Terminal workspace with batteries included
 License:        MIT
@@ -31,7 +31,6 @@ Source0:        https://github.com/zellij-org/zellij/archive/refs/tags/v%{versio
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 Source3:        README.suse-maint.md
-Patch0:         zellij-fix-theme-dir.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  rust+cargo
 BuildRequires:  zstd
@@ -102,6 +101,12 @@ pushd default-plugins/tab-bar
 cargo --offline build --release --target=wasm32-wasi
 popd
 pushd default-plugins/strider
+cargo --offline build --release --target=wasm32-wasi
+popd
+pushd default-plugins/session-manager
+cargo --offline build --release --target=wasm32-wasi
+popd
+pushd default-plugins/fixture-plugin-for-tests
 cargo --offline build --release --target=wasm32-wasi
 popd
 
