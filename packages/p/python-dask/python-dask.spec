@@ -46,7 +46,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.5.1
+Version:        2023.9.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -123,6 +123,8 @@ BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module mimesis}
 BuildRequires:  %{python_module multipledispatch}
 BuildRequires:  %{python_module numba}
+# https://github.com/dask/partd/issues/66, https://github.com/dask/dask/pull/10176
+BuildRequires:  %{python_module partd >= 1.4.0}
 # snappy required for using fastparquet
 BuildRequires:  %{python_module python-snappy}
 BuildRequires:  %{python_module requests}
@@ -204,7 +206,6 @@ Summary:        Pandas-like DataFrame data structure for dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-array = %{version}
 Requires:       %{name}-bag = %{version}
-Requires:       python-numpy >= 1.21
 Requires:       python-pandas >= 1.3
 
 %description dataframe
@@ -277,6 +278,7 @@ Requires:       python-pytest-asyncio
 Requires:       python-pre-commit
 Requires:       python-pytest
 Requires:       python-pytest-rerunfailures
+Requires:       python-pytest-timeout
 Requires:       python-pytest-xdist
 
 %description test
@@ -327,6 +329,7 @@ if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   donttest+=" or test_repartition_npartitions"
   #
   donttest+=" or test_pandas_multiindex"
+  donttest+=" or test_categorize_info"
 fi
 # (rarely) flaky on obs
 donttest+=" or test_local_scheduler"

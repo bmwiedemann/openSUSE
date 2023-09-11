@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Sun Sep 10 13:29:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.9.1
+  ## Enhancements
+  * Stricter data type for dask keys (GH#10485) crusaderky
+  * Special handling for None in DASK_ environment variables
+    (GH#10487) crusaderky
+  ## Bug Fixes
+- Release 2023.9.0
+  ## Bug Fixes
+  * Remove support for np.int64 in keys (GH#10483) crusaderky
+  * Fix _partitions dtype in meta for shuffling (GH#10462) Hendrik
+    Makait
+  * Don’t use exception hooks to shorten tracebacks (GH#10456)
+    crusaderky
+- Release 2023.8.1
+  ## Enhancements
+  * Adding support for cgroup v2 to cpu_count (GH#10419) Johan
+    Olsson
+  * Support multi-column groupby with sort=True and split_out>1
+    (GH#10425) Richard (Rick) Zamora
+  * Add DataFrame.enforce_runtime_divisions method (GH#10404)
+    Richard (Rick) Zamora
+  * Enable file mode="x" with a single_file=True for Dask DataFrame
+    to_csv (GH#10443) Genevieve Buckley
+  ## Bug Fixes
+  * Fix ValueError when running to_csv in append mode with
+    single_file as True (GH#10441)
+- Release 2023.8.0
+  ## Enhancements
+  * Fix for make_timeseries performance regression (GH#10428) Irina
+    Truong
+- Release 2023.7.1
+  * This release updates Dask DataFrame to automatically convert
+    text data using object data types to string[pyarrow] if
+    pandas>=2 and pyarrow>=12 are installed. This should result in
+    significantly reduced memory consumption and increased
+    computation performance in many workflows that deal with text
+    data. You can disable this change by setting the
+    dataframe.convert-string configuration value to False with
+        dask.config.set({"dataframe.convert-string": False})
+  ## Enhancements
+  * Convert to pyarrow strings if proper dependencies are installed
+    (GH#10400) James Bourbeau
+  * Avoid repartition before shuffle for p2p (GH#10421) Patrick
+    Hoefler
+  * API to generate random Dask DataFrames (GH#10392) Irina Truong
+  * Speed up dask.bag.Bag.random_sample (GH#10356) crusaderky
+  * Raise helpful ValueError for invalid time units (GH#10408) Nat
+    Tabris
+  * Make repartition a no-op when divisions match (divisions
+    provided as a list) (GH#10395) Nicolas Grandemange
+  ## Bug Fixes
+  * Use dataframe.convert-string in read_parquet token (GH#10411)
+    James Bourbeau
+  * Category dtype is lost when concatenating MultiIndex (GH#10407)
+    Irina Truong
+  * Fix FutureWarning: The provided callable... (GH#10405) Irina
+    Truong
+  * Enable non-categorical hive-partition columns in read_parquet
+    (GH#10353) Richard (Rick) Zamora
+  * concat ignoring DataFrame withouth columns (GH#10359) Patrick
+    Hoefler
+- Release 2023.7.0
+  ## Enhancements
+  * Catch exceptions when attempting to load CLI entry points
+    (GH#10380) Jacob Tomlinson
+  ## Bug Fixes
+  * Fix typo in _clean_ipython_traceback (GH#10385) Alexander
+    Clausen
+  * Ensure that df is immutable after from_pandas (GH#10383)
+    Patrick Hoefler
+  * Warn consistently for inplace in Series.rename (GH#10313)
+    Patrick Hoefler
+- Release 2023.6.1
+  ## Enhancements
+  * Remove no longer supported clip_lower and clip_upper (GH#10371)
+    Patrick Hoefler
+  * Support DataFrame.set_index(..., sort=False) (GH#10342) Miles
+  * Cleanup remote tracebacks (GH#10354) Irina Truong
+  * Add dispatching mechanisms for pyarrow.Table conversion
+    (GH#10312) Richard (Rick) Zamora
+  * Choose P2P even if fusion is enabled (GH#10344) Hendrik Makait
+  * Validate that rechunking is possible earlier in graph
+    generation (GH#10336) Hendrik Makait
+  ## Bug Fixes
+  * Fix issue with header passed to read_csv (GH#10355) GALI PREM
+    SAGAR
+  * Respect dropna and observed in GroupBy.var and GroupBy.std
+    (GH#10350) Patrick Hoefler
+  * Fix H5FD_lock error when writing to hdf with distributed client
+    (GH#10309) Irina Truong
+  * Fix for total_mem_usage of bag.map() (GH#10341) Irina Truong
+  ## Deprecations
+  * Deprecate DataFrame.fillna/Series.fillna with method (GH#10349)
+    Irina Truong
+  * Deprecate DataFrame.first and Series.first (GH#10352) Irina
+    Truong
+- Release 2023.6.0
+  ## Enhancements
+  * Add missing not in predicate support to read_parquet (GH#10320)
+    Richard (Rick) Zamora
+  ## Bug Fixes
+  * Fix for incorrect value_counts (GH#10323) Irina Truong
+  * Update empty describe top and freq values (GH#10319) James
+    Bourbeau
+
+-------------------------------------------------------------------
 Sat Jun 10 12:27:59 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
