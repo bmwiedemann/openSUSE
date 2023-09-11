@@ -1,7 +1,7 @@
 #
 # spec file for package jersey
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -306,16 +306,13 @@ sed -i -e 's/javax\.activation\.\*;/javax.activation.*;resolution:=optional;/' c
 %{mvn_package} "org.glassfish.jersey.test-framework*:" test-framework
 
 %build
-%if %{without jp_minimal}
-# Build everything except examples, integration tests and distribution bundles
-%{mvn_build} -f -- -PsecurityOff -Dasm.version=6.2.1 -Dmaven.test.failure.ignore=true \
-  -Dexamples.excluded -Dtests.excluded -Dbundles.excluded -Dsource=8
-%else
-# Additionally omit tests and testing framework for minimal builds
-%{mvn_build} -f -- -PsecurityOff -Dasm.version=6.2.1 -Dmaven.test.failure.ignore=true \
-  -Dexamples.excluded -Dtests.excluded -Dbundles.excluded -Dtest-framework.excluded \
-  -Dsource=8
+%mvn_build -f -- \
+%if %{with jp_minimal}
+    -Dtest-framework.excluded \
 %endif
+    -PsecurityOff -Dasm.version=6.2.1 -Dmaven.test.failure.ignore=true \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dexamples.excluded -Dtests.excluded -Dbundles.excluded -Dsource=8
 
 %install
 %mvn_install
