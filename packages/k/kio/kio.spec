@@ -23,7 +23,7 @@
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kio
-Version:        5.109.0
+Version:        5.110.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -96,7 +96,6 @@ file dialog also uses this to provide its network-enabled file management.
 
 %package core
 Summary:        Network transparent access to files and data
-
 # core subpackage created with 5.9.0
 Conflicts:      kio <= 5.8.0
 
@@ -167,7 +166,7 @@ export CXX=g++-10
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/kio
 %dir %{_kf5_plugindir}/kf5/kiod
-%dir %{_kf5_sharedir}/kconf_update/
+%dir %{_kf5_sharedir}/kconf_update
 %{_kf5_applicationsdir}/ktelnetservice5.desktop
 %{_kf5_applicationsdir}/kcm_trash.desktop
 %{_kf5_bindir}/ktelnetservice5
