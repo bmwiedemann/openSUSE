@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  7 21:38:11 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 23.8.0:
+  * Better print scaling.
+  * More consistent page size handling for printing.
+  * Many performance and stability fixes from coverity-scan.
+  * Resolved many warnings from cppcheck.
+  * A RegEx search.
+
+-------------------------------------------------------------------
 Wed Aug  2 22:59:55 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 23.7.0:
