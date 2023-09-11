@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep  8 20:13:24 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Upgrade to version 2.39.2:
+  * libblkid: fix topology chain types mismatch
+  * libmount:
+    * handle failure to apply flags as part of a mount operation
+    * improve EPERM interpretation
+    * update documentation for MNT_ERR_APPLYFLAGS
+    * use mount(2) for remount on Linux < 5.14
+    * use some MS_* flags as superblock flags
+  * setarch: add PER_LINUX_FDPIC fallback
+  * uuidd: improve man page for -cont-clock
+  * wall: do not error for ttys that do not exist
+  * zramctl: add hint about supported algorithms
+  * other changes, see:
+    https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.39/v2.39.2-ReleaseNotes
+
+-------------------------------------------------------------------
+Thu Aug 17 08:03:09 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use logind as Y2038 safe utmp replacement [jsc#PED-3144]
+  - drop libutempter
+  - use-logind-not-utmp.patch: agetty, wall, write: use logind
+    instead of utmp
+
+-------------------------------------------------------------------
 Fri Aug  4 18:17:29 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Re-add util-linux-fix-tests-with-64k-pagesize.patch because it is

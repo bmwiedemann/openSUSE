@@ -85,7 +85,7 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.39.1
+Version:        2.39.2
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
@@ -114,6 +114,8 @@ Patch3:         util-linux-bash-completion-su-chsh-l.patch
 Patch4:         0001-Revert-libblkid-try-LUKS2-first-when-probing.patch
 # PATCH-FIX-UPSTREAM util-linux-fix-tests-with-64k-pagesize.patch -- fadvise: fix tests with 64k pagesize
 Patch5:         util-linux-fix-tests-with-64k-pagesize.patch
+# https://github.com/util-linux/util-linux/pull/2100
+Patch6:         use-logind-not-utmp.patch
 
 BuildRequires:  audit-devel
 BuildRequires:  bc
@@ -130,7 +132,9 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
 BuildRequires:  readline-devel
+%if 0%{?suse_version} < 1600
 BuildRequires:  utempter-devel
+%endif
 BuildRequires:  zlib-devel
 Requires(post): permissions
 Requires(verify):permissions
@@ -480,7 +484,9 @@ configure_options+="--with-systemd "
 	--with-ncursesw\
 	--with-readline\
 	--with-selinux\
+%if 0%{?suse_version} < 1600
 	--with-utempter\
+%endif
 	--with-bashcompletiondir=%{_datadir}/bash-completion/completions\
 	--with-systemdsystemunitdir=%{_unitdir}\
 	--enable-libuuid-force-uuidd\
