@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  6 20:08:50 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2023.8.3
+  * Support onboarding Key Connector users with existing master passwords
+  * Handle user decryption options from pre-TDE server response
+
+-------------------------------------------------------------------
 Mon Aug 28 16:21:41 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2023.8.2
