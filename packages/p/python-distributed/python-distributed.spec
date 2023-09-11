@@ -47,7 +47,7 @@
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.5.1
+Version:        2023.9.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -96,6 +96,7 @@ BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module sparse}
+BuildRequires:  %{python_module zict >= 3}
 %if %{with paralleltests}
 BuildRequires:  %{python_module pytest-xdist}
 %endif
@@ -175,6 +176,8 @@ if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   donttest+=" or test_fail_to_pickle_execute_1"
   # https://github.com/dask/distributed/issues/7175
   donttest+=" or (test_sizeof_error and larger)"
+  #
+  donttest+=" or test_task_groups"
 fi
 
 %if %{with paralleltests}

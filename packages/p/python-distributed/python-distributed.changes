@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Sun Sep 10 13:45:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.9.1
+  ## Enhancements
+  Raise in P2P if column dtype is wrong (GH#8167) Hendrik Makait
+  * Auto-fail tasks with deps larger than the worker memory (GH#8135) crusaderky
+  * Make workers table sortable (GH#8153) Jacob Tomlinson
+  * Support for unsetting environment variables (GH#8144) crusaderky
+  ## Deprecations
+  * Deprecate asynchronous Listener.stop() (GH#8151) Hendrik Makait
+- Release 2023.9.0
+  ## Enhancements
+  Don’t capture functools frames in code (GH#8146) crusaderky
+  * Ignore asyncio when scraping code (GH#8122) Matthew Rocklin
+  * Remove stringification (GH#8083) Florian Jetter
+  ## Bug Fixes
+  * Ensure NannyPlugin are always installed (GH#8107) Florian Jetter
+  * Don’t use exception hooks to shorten tracebacks (GH#8127) crusaderky
+  * Fix P2P shuffle with LocalCluster(..., processes=False) (GH#8125) Hendrik Makait
+  * Merge with P2P shuffle fails if left_index or right_index is True (GH#8121) Patrick Hoefler
+- Release 2023.8.1
+  ## New Features
+  * Add memray integration (GH#8044) Florian Jetter
+  ## Enhancements
+  * Await async listener.stop in Worker.close (GH#8118) Hendrik Makait
+  * Minor fixes in memray (GH#8113) Florian Jetter
+  * Enable basic p2p shuffle for dask-cudf (GH#7743) Richard (Rick) Zamora
+  * Don’t shut down unresponsive workers on gather() (GH#8101) crusaderky
+  * Propagate CancelledError in gather_from_workers (GH#8089) crusaderky
+  * Better logging for anomalous task termination (GH#8082) crusaderky
+  ## Bug Fixes
+  * Handle null partitions in P2P shuffling (GH#8116) Hendrik Makait
+  * Handle CancelledError properly in ConnectionPool (GH#8110) Florian Jetter
+  * Fix additional race condition that can cause P2P restart to deadlock (GH#8094) Hendrik Makait
+  * Ensure x-axis is uniform when plotting (GH#8093) Florian Jetter
+  * Fix deadlock in P2P restarts (GH#8091) Hendrik Makait
+- Release 2023.8.0
+  ## Enhancements
+  * Offload CPU intensive sections of update graph to unblock event loop (GH#8049) Florian Jetter
+  * Log worker close reason in events (GH#8042) Florian Jetter
+  * Exclude comm handshake from connect timeout (GH#7698) Florian Jetter
+  * Automatically restart P2P shuffles when output worker leaves (GH#7970) Hendrik Makait
+  * Add Client.unregister_scheduler_plugin method (GH#7968) Brian Phillips
+  * Fix log message (GH#8029) Hendrik Makait
+  * Send shards grouped by input chunk in P2P rechunking (GH#8010) Hendrik Makait
+  ## Bug Fixes
+  * Close state machine and add-ins first in Worker.close (GH#8066) Hendrik Makait
+  * Fix decide_worker picking a closing worker (GH#8032) crusaderky
+  * Raise CommClosedError in get_stream_address (GH#8020) jochenott
+  * Respect average nthreads in adaptive (GH#8041) Matthew Rocklin
+  * Use queued tasks in adaptive target (GH#8037) Matthew Rocklin
+  * Restore support for yield unsafe Client context managers and deprecate that support (GH#7987) Thomas Grainger
+- Release 2023.7.1
+  ## Enhancements
+  * gather_dep should handle CancelledError (GH#8013) crusaderky
+  * Pass stimulus_id to SchedulerPlugin.remove_worker and SchedulerPlugin.transition (GH#7974) Hendrik Makait
+  * Log stimulus_id in retire_worker (GH#8003) crusaderky
+  * Use BufferOutputStream in P2P (GH#7991) Florian Jetter
+  * Add Coiled to ignored modules for code sniffing (GH#7986) Matthew Rocklin
+  * Progress bar can group tasks by span (GH#7952) Irina Truong
+  * Improved error messages for P2P shuffling (GH#7979) Hendrik Makait
+  * Reduce removing comms log to debug level (GH#7972) Florian Jetter
+  ## Bug Fixes
+  * Fix for TypeError: '<' not supported in graph dashboard (GH#8017) Irina Truong
+  * Fix shuffle code to work with pyarrow 13 (GH#8009) Joris Van den Bossche
+- Release 2023.7.0
+  ## Enhancements
+  * Propagate spans to tasks (GH#7898) crusaderky
+  * Make Fine Performance Metrics bar graph horizontal (GH#7966) crusaderky
+  * Don’t pile up context_meter callbacks (GH#7961) crusaderky
+  * Polish Fine Performance Metrics plot (GH#7963) crusaderky
+  * Sign task-erred with run_id and reject outdated responses (GH#7933) Hendrik Makait
+  * Set Client.as_current when entering ctx (GH#6527) Florian Jetter
+  * Re-run erred task on ComputeTaskEvent (GH#7967) Hendrik Makait
+  ## Bug Fixes
+  * Fix crash in spans when time() is not monotonic (GH#7960) crusaderky
+- Release 2023.6.1
+  ## Enhancements
+  * Add idle time to fine performance metrics (GH#7938) crusaderky
+  * Spans: capture code snippets (GH#7930) crusaderky
+  * Improve memory footprint of P2P rechunking (GH#7897) Hendrik Makait
+  * Improve error message on invalid state in _handle_remove_replicas (GH#7920) Hendrik Makait
+  * Make ShuffleSchedulerExtension.remove_worker more robust (GH#7921) Hendrik Makait
+  * Provide more information if occupancy drops below zero (GH#7924) Hendrik Makait
+  * Improved conversion between pyarrow and pandas in P2P shuffling (GH#7896) Hendrik Makait
+  ## Bug Fixes
+  Add Cluster.called_from_running_loop and fix Cluster.asynchronous (GH#7941) Jacob Tomlinson
+  * Fix annotations and spans leaking between threads (GH#7935) Irina Truong
+  * Handle null partitions in P2P shuffling (GH#7922) Jonathan De Troye
+  * Fix race condition in Fine Performance Metrics sync (GH#7927) crusaderky
+  * Avoid (GH#7923) by starting run_id at 1 (GH#7925) Hendrik Makait
+  * Fix glitches in Fine Performance Metrics stacked graph (GH#7919) crusaderky
+- Release 2023.6.0
+  ## Enhancements
+  * Post fine performance metrics to spans (GH#7885) crusaderky
+  * Unique Spans (GH#7882) crusaderky
+  * Add a timeout to client.as_completed that mirrors concurrent.futures.as_completed timeout (GH#7811) Thomas Grainger
+  * Enforce dtypes in P2P shuffle (GH#7879) Hendrik Makait
+  * Support load= keyword for Client.upload_file (GH#7873) James Bourbeau
+  * Support get_worker() and worker_client() in async tasks (GH#7844) Thomas Grainger
+  * Capture line number for code frames (GH#7786) Miles
+  ## Bug Fixes
+  * Avoid meta roundtrip in P2P shuffle (GH#7895) Hendrik Makait
+  * Fix Fine Performance Metrics mis-aligned ColumnData lengths (GH#7893) Miles
+  * Fix Fine Performance Metrics spilling crash (GH#7878) Miles
+  * Fix spans bug when scatter or client_desires_new_key creates a task (GH#7886) crusaderky
+  * Fix Fine Performance Metrics w/ Bokeh 3 (GH#7874) Miles
+  * TaskGroup.start can move backwards (GH#7867) crusaderky
+  * Use properly imported MatDescriptor for cupy dispatch registration (GH#7868) Charles Blackmon-Luca
+  * Ensure retire_workers works if AMM extension hasn’t been loaded (GH#7863) crusaderky
+
+-------------------------------------------------------------------
 Mon Jun  5 02:14:02 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Ratchet up bokeh to >= 3.1, since upstream supports it.
