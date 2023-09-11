@@ -16,20 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-netCDF4
-Version:        1.6.2
+Version:        1.6.4
 Release:        0
 Summary:        Python interface to netCDF 3 and 4
 License:        HPND AND MIT
 URL:            https://github.com/Unidata/netcdf4-python
 Source:         https://files.pythonhosted.org/packages/source/n/netCDF4/netCDF4-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.21}
-BuildRequires:  %{python_module base >= 3.7}
+Source99:       python-netCDF4.rpmlintrc
+BuildRequires:  %{python_module Cython >= 0.29 with %python-Cython < 3}
+BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module cftime}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel >= 1.10.0}
-BuildRequires:  %{python_module setuptools >= 18.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 61}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hdf5-devel >= 1.8.4
 BuildRequires:  libcurl-devel
@@ -38,6 +40,7 @@ BuildRequires:  netcdf-devel >= 4.2
 BuildRequires:  python-rpm-macros
 Requires:       hdf5 >= 1.8.4
 Requires:       netcdf >= 4.2
+Requires:       python-certifi
 Requires:       python-cftime
 Requires:       python-numpy >= 1.10.0
 Requires(post): update-alternatives
@@ -68,10 +71,10 @@ containing vlens, and vlens containing compound types) are not supported.
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ncinfo
 %python_clone -a %{buildroot}%{_bindir}/nc4tonc3
 %python_clone -a %{buildroot}%{_bindir}/nc3tonc4
@@ -101,6 +104,7 @@ popd
 %python_alternative %{_bindir}/nc3tonc4
 %python_alternative %{_bindir}/nc4tonc3
 %python_alternative %{_bindir}/ncinfo
-%{python_sitearch}/*
+%{python_sitearch}/netCDF4
+%{python_sitearch}/netCDF4-%{version}.dist-info
 
 %changelog

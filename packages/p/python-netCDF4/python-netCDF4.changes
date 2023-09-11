@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep 10 17:08:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.6.4
+ * set path to SSL certificates internally, so https DAP URLs work
+   with wheels (issue #1246, requires nc_rc_set function available
+   starting with netcdf-c 4.9.1, plus bugfix in netcdf-c PR #2690).
+ * Added certifi as a dependency.
+ * Added `isopen` method to `MFDataset` object to check if
+   underlying files are open.
+- Version 1.6.3
+ * Use ``nc_put_vars`` for strided writes for netcdf-c >= 4.6.2
+   (issue #1222).
+ * _Unsigned="false" should be same as not having _Unsigned set
+   (issue #1232). _Unsigned now must be set to "true" or "True" for
+   variable to be interpreted as unsigned, instead of just having
+   _Unsigned be set (to anything).
+
+-------------------------------------------------------------------
 Sat Jan  7 12:25:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.2:
