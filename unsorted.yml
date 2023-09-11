@@ -3249,6 +3249,7 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
+  - drbd-kmp-default 
   - drc 
   - drc-doc 
   - driverctl 
@@ -3684,6 +3685,10 @@ unsorted:
   - extreme-tuxracer-data 
   - extundelete 
   - ez-ipupdate 
+  - eza 
+  - eza-bash-completion 
+  - eza-fish-completion 
+  - eza-zsh-completion 
   - ezmorph 
   - ezmorph-javadoc 
   - ezstream 
@@ -19187,11 +19192,14 @@ unsorted:
   - openSUSE-repos-Tumbleweed-NVIDIA 
   - openSUSE-signkey-cert 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit 
@@ -22764,6 +22772,7 @@ unsorted:
   - python3-pylibiio 
   - python3-pymod2pkg 
   - python3-pynest2d 
+  - python3-pynitrokey 
   - python3-pyprompter 
   - python3-pysearpc 
   - python3-pyside2 
@@ -35262,7 +35271,6 @@ unsorted:
   - systemd-mini 
   - systemd-mini-container 
   - systemd-mini-devel 
-  - systemd-mini-doc 
   - systemd-network 
   - systemd-portable 
   - systemd-status-mail 
@@ -45312,7 +45320,9 @@ unsorted:
   - virtualbox-devel 
   - virtualbox-guest-desktop-icons 
   - virtualbox-guest-source 
+  - virtualbox-guest-tools 
   - virtualbox-host-source 
+  - virtualbox-kmp-default 
   - virtualbox-qt 
   - virtualbox-vnc 
   - virtualbox-websrv 
