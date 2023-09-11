@@ -47,8 +47,8 @@
            verbose="false"
            fork="false"
            source="${compiler.source}"
-		   encoding="UTF-8"
-		   createMissingPackageInfoClass="false">
+           encoding="UTF-8"
+           createMissingPackageInfoClass="false">
       <src>
         <pathelement location="${build.srcDir}"/>
       </src>
@@ -62,8 +62,8 @@
            release="9"
            verbose="false"
            fork="false"
-		   encoding="UTF-8"
-		   createMissingPackageInfoClass="false">
+           encoding="UTF-8"
+           createMissingPackageInfoClass="false">
       <src>
         <pathelement location="${build.srcDir9}"/>
       </src>
@@ -79,14 +79,14 @@
            verbose="false"
            fork="false"
            source="${compiler.source}"
-		   encoding="UTF-8"
-		   createMissingPackageInfoClass="false">
+           encoding="UTF-8"
+           createMissingPackageInfoClass="false">
       <src>
-	  	<pathelement location="picocli-codegen/${build.srcDir}"/>
+        <pathelement location="picocli-codegen/${build.srcDir}"/>
       </src>
-	  <classpath>
-	  	<pathelement location="${build.outputDir}"/>
-	  </classpath>
+      <classpath>
+        <pathelement location="${build.outputDir}"/>
+      </classpath>
     </javac>
     <!-- Build module-info.java with release 9 -->
     <javac destdir="picocli-codegen/${build.outputDir}"
@@ -97,15 +97,15 @@
            release="9"
            verbose="false"
            fork="false"
-		   encoding="UTF-8"
-		   createMissingPackageInfoClass="false">
+           encoding="UTF-8"
+           createMissingPackageInfoClass="false">
       <src>
-	  	<pathelement location="picocli-codegen/${build.srcDir9}"/>
+        <pathelement location="picocli-codegen/${build.srcDir9}"/>
       </src>
       <include name="**/module-info.java"/>
-	  <modulepath>
-	  	<pathelement location="${build.outputDir}"/>
-	  </modulepath>
+      <modulepath>
+        <pathelement location="${build.outputDir}"/>
+      </modulepath>
     </javac>
     <!-- Build all except module-info.java with source/target 8 -->
     <mkdir dir="picocli-shell-jline2/${build.outputDir}"/>
@@ -118,15 +118,15 @@
            verbose="false"
            fork="false"
            source="${compiler.source}"
-		   encoding="UTF-8"
-		   createMissingPackageInfoClass="false">
+           encoding="UTF-8"
+           createMissingPackageInfoClass="false">
       <src>
-	  	<pathelement location="picocli-shell-jline2/${build.srcDir}"/>
+        <pathelement location="picocli-shell-jline2/${build.srcDir}"/>
       </src>
-	  <classpath>
-	  	<pathelement location="${build.outputDir}"/>
-	  	<pathelement location="${jline2.jar}"/>
-	  </classpath>
+      <classpath>
+        <pathelement location="${build.outputDir}"/>
+        <pathelement location="${jline2.jar}"/>
+      </classpath>
     </javac>
     <!-- Build module-info.java with release 9 -->
     <javac destdir="picocli-shell-jline2/${build.outputDir}"
@@ -137,15 +137,15 @@
            release="9"
            verbose="false"
            fork="false"
-		   encoding="UTF-8"
-		   createMissingPackageInfoClass="false">
+           encoding="UTF-8"
+           createMissingPackageInfoClass="false">
       <src>
-	  	<pathelement location="picocli-shell-jline2/${build.srcDir9}"/>
+        <pathelement location="picocli-shell-jline2/${build.srcDir9}"/>
       </src>
-	  <modulepath>
-	  	<pathelement location="${build.outputDir}"/>
-	  	<pathelement location="${jline2.jar}"/>
-	  </modulepath>
+      <modulepath>
+        <pathelement location="${build.outputDir}"/>
+        <pathelement location="${jline2.jar}"/>
+      </modulepath>
     </javac>
   </target>
 
@@ -174,16 +174,16 @@
              charset="UTF-8"
              linksource="false"
              breakiterator="false"
-			 source="${compiler.source}"
-			 >
-	  <sourcepath>
-	  	<pathelement location="${build.srcDir}"/>
-	  	<pathelement location="picocli-codegen/${build.srcDir}"/>
-	  </sourcepath>
-	  <classpath>
-	  	<pathelement location="${build.outputDir}"/>
-	  </classpath>
-	</javadoc>
+             source="${compiler.source}"
+             >
+      <sourcepath>
+        <pathelement location="${build.srcDir}"/>
+        <pathelement location="picocli-codegen/${build.srcDir}"/>
+      </sourcepath>
+      <classpath>
+        <pathelement location="${build.outputDir}"/>
+      </classpath>
+    </javadoc>
   </target>
 
   <!-- ====================================================================== -->
@@ -201,9 +201,9 @@
          index="false"
          basedir="picocli-codegen/${build.outputDir}"
          excludes="**/package.html">
-	  <service type="javax.annotation.processing.Processor"
+      <service type="javax.annotation.processing.Processor"
          provider="picocli.codegen.aot.graalvm.processor.NativeImageConfigGeneratorProcessor"/>
-	</jar>
+    </jar>
     <jar jarfile="${build.dir}/${project.artifactId}-shell-jline2-${project.version}.jar"
          compress="true"
          index="false"

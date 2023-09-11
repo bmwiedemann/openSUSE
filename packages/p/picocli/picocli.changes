@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 10 10:27:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: Do not create timestamps with bnd wrap
+
+-------------------------------------------------------------------
 Sun Aug 27 06:46:38 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 4.7.5

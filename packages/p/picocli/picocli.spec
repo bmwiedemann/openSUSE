@@ -81,13 +81,18 @@ cp %{SOURCE1} build.xml
 	-Djline2.jar=$(find-jar jline/jline) \
 	jar javadoc
 
+echo "-reproducible: true" >> bnd.bnd
+echo "-noextraheaders: true" >> bnd.bnd
+echo "-snapshot: SNAPSHOT" >> bnd.bnd
+
 # Convert to OSGi bundle
 bnd wrap \
-	--bsn %{name} \
-	--version %{version} \
-	--output target/%{name}-%{version}.bar \
-	--properties bnd.bnd \
-	target/%{name}-%{version}.jar
+    --force \
+    --bsn %{name} \
+    --version %{version} \
+    --output target/%{name}-%{version}.bar \
+    --properties bnd.bnd \
+    target/%{name}-%{version}.jar
 mv target/%{name}-%{version}.bar target/%{name}-%{version}.jar
 
 %install

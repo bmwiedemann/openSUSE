@@ -55,4 +55,12 @@
     <comment>4.7.5</comment>
     <requestid>1106117</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a0268764040d41f59b8d9b914056db2a</srcmd5>
+    <version>4.7.5</version>
+    <time>1694460130</time>
+    <user>anag+factory</user>
+    <comment>reproducible</comment>
+    <requestid>1110246</requestid>
+  </revision>
 </revisionlist>
