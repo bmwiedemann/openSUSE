@@ -1,7 +1,7 @@
 #
 # spec file for package python-zict
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-zict
-Version:        2.2.0
+Version:        3.0.0
 Release:        0
 Summary:        Mutable mapping tools
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/dask/zict/
 Source:         https://files.pythonhosted.org/packages/source/z/zict/zict-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-HeapDict
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module HeapDict}
 BuildRequires:  %{python_module lmdb}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -45,12 +47,14 @@ Mutable Mapping interfaces for python.
 %setup -q -n zict-%{version}
 # needs more memory than what we have on generic hosts
 rm zict/tests/test_lmdb.py
+# ignore pytest-repeat marker: we don't stress test on OBS
+sed -i '/markers =/ a \    repeat: Ignore me' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +63,7 @@ rm zict/tests/test_lmdb.py
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/zict
+%{python_sitelib}/zict-%{version}.dist-info
 
 %changelog

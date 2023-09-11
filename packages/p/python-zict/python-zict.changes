@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Sep 10 15:26:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.0
+  * The library is now almost completely thread-safe (#82, #90,
+    #92, #93)
+  * Dropped support for Python 3.7 (#84)
+  * File.__getitem__ now returns bytearray instead of bytes. This
+    prevents a memcpy when deserializing numpy arrays with dask.
+    (#74)
+  * Removed dependency from heapdict; sped up LRU (#77)
+  * Fixed broken LRU state when the underlying mapping starts
+    non-empty. (#77)
+  * File and LMDB now support pathlib.Path and pytest’s tmpdir
+    (#78)
+  * LMDB now uses memory-mapped I/O on MacOSX and is usable on
+    Windows (#78)
+  * LRU and Buffer now support delayed eviction (#87)
+  * New object InsertionSortedSet (#87)
+  * All mappings now return proper KeysView, ItemsView, and
+    ValuesView objects from their keys(), items(), and values()
+    methods (#93)
+  * File, LMDB, and Zip now behave coherently with unexpected
+    key/value types (#95)
+  * Zip.__contains__ no longer reads the value from disk (#95)
+  * Zip.__setitem__ will now raise when updating an
+    already-existing key instead of quietly corrupting the mapping
+    (#95)
+  * Can now change LRU.n on the fly. Added LRU.offset attribute.
+    Added accessors to n and offset to Buffer. (#101)
+  * New object AsyncBuffer; new method LRU.get_all_or_nothing()
+    (#88)
+
+-------------------------------------------------------------------
 Fri Sep 16 22:52:04 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - version update to 2.2.0
