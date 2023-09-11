@@ -92,7 +92,7 @@
 @BINARY_PACKAGES_XML@
     </conditions>
     <hardware>
-      <jobs>4</jobs>
+      <jobs>8</jobs>
     </hardware>
   </overwrite>
 

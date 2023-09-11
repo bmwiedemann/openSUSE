@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 6.4
-%define patchversion 6.4.12
+%define srcversion 6.5
+%define patchversion 6.5.2
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-riscv64
-Version:        6.4.12
+Version:        6.5.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gf5aa89b
+Release:        <RELEASE>.gfdde566
 %else
 Release:        0
 %endif
@@ -183,6 +183,15 @@ NoSource:       121
 %description
 Device Tree files for $MACHINES.
 
+%package -n dtb-allwinner
+Summary:        Allwinner based riscv64 systems
+Group:          System/Boot
+Provides:       multiversion(dtb)
+Requires(post): coreutils
+
+%description -n dtb-allwinner
+Device Tree files for Allwinner based riscv64 systems.
+
 %package -n dtb-microchip
 Summary:        Microchip based riscv64 systems
 Group:          System/Boot
@@ -219,6 +228,15 @@ Requires(post): coreutils
 %description -n dtb-starfive
 Device Tree files for StarFive based riscv64 systems.
 
+%package -n dtb-thead
+Summary:        T-HEAD based riscv64 systems
+Group:          System/Boot
+Provides:       multiversion(dtb)
+Requires(post): coreutils
+
+%description -n dtb-thead
+Device Tree files for T-HEAD based riscv64 systems.
+
 
 
 %prep
@@ -238,7 +256,7 @@ export DTC_FLAGS="-R 4 -p 0x1000"
 DTC_FLAGS="$DTC_FLAGS -@"
 
 cd $source/arch/riscv/boot/dts
-for dts in microchip/*.dts renesas/*.dts sifive/*.dts starfive/*.dts ; do
+for dts in allwinner/*.dts microchip/*.dts renesas/*.dts sifive/*.dts starfive/*.dts thead/*.dts ; do
     target=${dts%*.dts}
     mkdir -p $PPDIR/$(dirname $target)
     cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $target.dts -o $PPDIR/$target.dts
@@ -250,7 +268,7 @@ done
 %install
 
 cd pp
-for dts in microchip/*.dts renesas/*.dts sifive/*.dts starfive/*.dts ; do
+for dts in allwinner/*.dts microchip/*.dts renesas/*.dts sifive/*.dts starfive/*.dts thead/*.dts ; do
     target=${dts%*.dts}
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
@@ -264,6 +282,13 @@ for dts in microchip/*.dts renesas/*.dts sifive/*.dts starfive/*.dts ; do
 %endif
 done
 cd -
+
+%post -n dtb-allwinner
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
 
 %post -n dtb-microchip
 cd /boot
@@ -292,6 +317,24 @@ cd /boot
 [ -d dtb ] && [ -L dtb ] && rm -f dtb
 # Unless /boot/dtb exists as real directory, create a symlink.
 [ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%post -n dtb-thead
+cd /boot
+# If /boot/dtb is a symlink, remove it, so that we can replace it.
+[ -d dtb ] && [ -L dtb ] && rm -f dtb
+# Unless /boot/dtb exists as real directory, create a symlink.
+[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
+
+%ifarch aarch64 riscv64
+%files -n dtb-allwinner -f dtb-allwinner.list
+%else
+%files -n dtb-allwinner
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/allwinner
+%{dtbdir}/allwinner/*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-microchip -f dtb-microchip.list
@@ -336,5 +379,16 @@ cd /boot
 %dir %{dtbdir}
 %dir %{dtbdir}/starfive
 %{dtbdir}/starfive/*.dtb
+
+%ifarch aarch64 riscv64
+%files -n dtb-thead -f dtb-thead.list
+%else
+%files -n dtb-thead
+%endif
+%defattr(-,root,root)
+%ghost /boot/dtb
+%dir %{dtbdir}
+%dir %{dtbdir}/thead
+%{dtbdir}/thead/*.dtb
 
 %changelog

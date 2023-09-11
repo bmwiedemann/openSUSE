@@ -17,8 +17,8 @@
 # needssslcertforbuild
 
 
-%define srcversion 6.4
-%define patchversion 6.4.12
+%define srcversion 6.5
+%define patchversion 6.5.2
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -112,9 +112,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.4.12
+Version:        6.5.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gf5aa89b
+Release:        <RELEASE>.gfdde566
 %else
 Release:        0
 %endif
@@ -237,10 +237,10 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-f5aa89b3e95322c79e43c459f5b6862dec51fc5f
-Provides:       kernel-srchash-f5aa89b3e95322c79e43c459f5b6862dec51fc5f
+Provides:       kernel-%build_flavor-base-srchash-fdde5661b32952cc1387b51e8071c3287189a247
+Provides:       kernel-srchash-fdde5661b32952cc1387b51e8071c3287189a247
 # END COMMON DEPS
-Provides:       %name-srchash-f5aa89b3e95322c79e43c459f5b6862dec51fc5f
+Provides:       %name-srchash-fdde5661b32952cc1387b51e8071c3287189a247
 %ifarch %ix86
 Provides:       kernel-trace = 3.13
 Obsoletes:      kernel-trace <= 3.13
@@ -1339,8 +1339,8 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-f5aa89b3e95322c79e43c459f5b6862dec51fc5f
-Provides:       kernel-srchash-f5aa89b3e95322c79e43c459f5b6862dec51fc5f
+Provides:       kernel-%build_flavor-base-srchash-fdde5661b32952cc1387b51e8071c3287189a247
+Provides:       kernel-srchash-fdde5661b32952cc1387b51e8071c3287189a247
 
 %ifarch %ix86
 Provides:       kernel-trace-base = 3.13

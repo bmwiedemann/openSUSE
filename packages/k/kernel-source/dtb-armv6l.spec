@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 6.4
-%define patchversion 6.4.12
+%define srcversion 6.5
+%define patchversion 6.5.2
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv6l
-Version:        6.4.12
+Version:        6.5.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gf5aa89b
+Release:        <RELEASE>.gfdde566
 %else
 Release:        0
 %endif
@@ -211,7 +211,7 @@ export DTC_FLAGS="-R 4 -p 0x1000"
 DTC_FLAGS="$DTC_FLAGS -@"
 
 cd $source/arch/arm/boot/dts
-for dts in bcm2835*.dts ; do
+for dts in broadcom/bcm2835*.dts ; do
     target=${dts%*.dts}
     mkdir -p $PPDIR/$(dirname $target)
     cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $target.dts -o $PPDIR/$target.dts
@@ -223,7 +223,7 @@ done
 %install
 
 cd pp
-for dts in bcm2835*.dts ; do
+for dts in broadcom/bcm2835*.dts ; do
     target=${dts%*.dts}
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
@@ -253,6 +253,7 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/bcm2835*.dtb
+%dir %{dtbdir}/broadcom
+%{dtbdir}/broadcom/bcm2835*.dtb
 
 %changelog

@@ -6378,4 +6378,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.4.12 and other fixes (temporarily lower jobs constraints)</comment>
     <requestid>1106120</requestid>
   </revision>
+  <revision rev="703" vrev="1">
+    <srcmd5>7194e778b55510f02e63aa12d23553c5</srcmd5>
+    <version>6.5.2</version>
+    <time>1694459983</time>
+    <user>anag+factory</user>
+    <comment>6.5.2</comment>
+    <requestid>1110222</requestid>
+  </revision>
 </revisionlist>

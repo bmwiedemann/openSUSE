@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 6.4
-%define patchversion 6.4.12
+%define srcversion 6.5
+%define patchversion 6.5.2
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -25,9 +25,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv7l
-Version:        6.4.12
+Version:        6.5.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gf5aa89b
+Release:        <RELEASE>.gfdde566
 %else
 Release:        0
 %endif
@@ -591,7 +591,7 @@ export DTC_FLAGS="-R 4 -p 0x1000"
 DTC_FLAGS="$DTC_FLAGS -@"
 
 cd $source/arch/arm/boot/dts
-for dts in am335x-*.dts am3517*.dts am57xx-*.dts armada-370-*.dts armada-375-*.dts armada-385-*.dts armada-388-*.dts armada-398-*.dts armada-xp-*.dts bcm2836*.dts dove-*.dts exynos4*.dts exynos5*.dts imx5*.dts imx6*.dts imx7*.dts keystone-*.dts meson6-*.dts meson8-*.dts meson8b-*.dts mt76*.dts omap3*.dts omap4*.dts omap5*.dts qcom-*.dts rk3*.dts socfpga_*.dts ste-*.dts sun4i-*.dts sun5i-*.dts sun6i-*.dts sun7i-*.dts sun8i-*.dts sun9i-*.dts tegra20-*.dts tegra30-*.dts tegra114-*.dts tegra124-*.dts vexpress-*.dts vf500-*.dts vf610-*.dts xenvm-*.dts zynq-*.dts ; do
+for dts in ti/omap/am335x-*.dts ti/omap/am3517*.dts ti/omap/am57xx-*.dts marvell/armada-370-*.dts marvell/armada-375-*.dts marvell/armada-385-*.dts marvell/armada-388-*.dts marvell/armada-398-*.dts marvell/armada-xp-*.dts broadcom/bcm2836*.dts marvell/dove-*.dts samsung/exynos4*.dts samsung/exynos5*.dts nxp/imx/imx5*.dts nxp/imx/imx6*.dts nxp/imx/imx7*.dts ti/keystone/keystone-*.dts amlogic/meson6-*.dts amlogic/meson8-*.dts amlogic/meson8b-*.dts mediatek/mt76*.dts ti/omap/omap3*.dts ti/omap/omap4*.dts ti/omap/omap5*.dts qcom/qcom-*.dts rockchip/rk3*.dts intel/socfpga/socfpga_*.dts st/ste-*.dts allwinner/sun4i-*.dts allwinner/sun5i-*.dts allwinner/sun6i-*.dts allwinner/sun7i-*.dts allwinner/sun8i-*.dts allwinner/sun9i-*.dts nvidia/tegra20-*.dts nvidia/tegra30-*.dts nvidia/tegra114-*.dts nvidia/tegra124-*.dts arm/vexpress-*.dts nxp/vf/vf500-*.dts nxp/vf/vf610-*.dts xen/xenvm-*.dts xilinx/zynq-*.dts ; do
     target=${dts%*.dts}
     mkdir -p $PPDIR/$(dirname $target)
     cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $target.dts -o $PPDIR/$target.dts
@@ -603,7 +603,7 @@ done
 %install
 
 cd pp
-for dts in am335x-*.dts am3517*.dts am57xx-*.dts armada-370-*.dts armada-375-*.dts armada-385-*.dts armada-388-*.dts armada-398-*.dts armada-xp-*.dts bcm2836*.dts dove-*.dts exynos4*.dts exynos5*.dts imx5*.dts imx6*.dts imx7*.dts keystone-*.dts meson6-*.dts meson8-*.dts meson8b-*.dts mt76*.dts omap3*.dts omap4*.dts omap5*.dts qcom-*.dts rk3*.dts socfpga_*.dts ste-*.dts sun4i-*.dts sun5i-*.dts sun6i-*.dts sun7i-*.dts sun8i-*.dts sun9i-*.dts tegra20-*.dts tegra30-*.dts tegra114-*.dts tegra124-*.dts vexpress-*.dts vf500-*.dts vf610-*.dts xenvm-*.dts zynq-*.dts ; do
+for dts in ti/omap/am335x-*.dts ti/omap/am3517*.dts ti/omap/am57xx-*.dts marvell/armada-370-*.dts marvell/armada-375-*.dts marvell/armada-385-*.dts marvell/armada-388-*.dts marvell/armada-398-*.dts marvell/armada-xp-*.dts broadcom/bcm2836*.dts marvell/dove-*.dts samsung/exynos4*.dts samsung/exynos5*.dts nxp/imx/imx5*.dts nxp/imx/imx6*.dts nxp/imx/imx7*.dts ti/keystone/keystone-*.dts amlogic/meson6-*.dts amlogic/meson8-*.dts amlogic/meson8b-*.dts mediatek/mt76*.dts ti/omap/omap3*.dts ti/omap/omap4*.dts ti/omap/omap5*.dts qcom/qcom-*.dts rockchip/rk3*.dts intel/socfpga/socfpga_*.dts st/ste-*.dts allwinner/sun4i-*.dts allwinner/sun5i-*.dts allwinner/sun6i-*.dts allwinner/sun7i-*.dts allwinner/sun8i-*.dts allwinner/sun9i-*.dts nvidia/tegra20-*.dts nvidia/tegra30-*.dts nvidia/tegra114-*.dts nvidia/tegra124-*.dts arm/vexpress-*.dts nxp/vf/vf500-*.dts nxp/vf/vf610-*.dts xen/xenvm-*.dts xilinx/zynq-*.dts ; do
     target=${dts%*.dts}
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
@@ -927,7 +927,9 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/am335x-*.dtb
+%dir %{dtbdir}/ti
+%dir %{dtbdir}/ti/omap
+%{dtbdir}/ti/omap/am335x-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-am3517 -f dtb-am3517.list
@@ -937,7 +939,9 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/am3517*.dtb
+%dir %{dtbdir}/ti
+%dir %{dtbdir}/ti/omap
+%{dtbdir}/ti/omap/am3517*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-am57xx -f dtb-am57xx.list
@@ -947,7 +951,9 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/am57xx-*.dtb
+%dir %{dtbdir}/ti
+%dir %{dtbdir}/ti/omap
+%{dtbdir}/ti/omap/am57xx-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-armada-370 -f dtb-armada-370.list
@@ -957,7 +963,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/armada-370-*.dtb
+%dir %{dtbdir}/marvell
+%{dtbdir}/marvell/armada-370-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-armada-375 -f dtb-armada-375.list
@@ -967,7 +974,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/armada-375-*.dtb
+%dir %{dtbdir}/marvell
+%{dtbdir}/marvell/armada-375-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-armada-385 -f dtb-armada-385.list
@@ -977,7 +985,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/armada-385-*.dtb
+%dir %{dtbdir}/marvell
+%{dtbdir}/marvell/armada-385-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-armada-388 -f dtb-armada-388.list
@@ -987,7 +996,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/armada-388-*.dtb
+%dir %{dtbdir}/marvell
+%{dtbdir}/marvell/armada-388-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-armada-398 -f dtb-armada-398.list
@@ -997,7 +1007,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/armada-398-*.dtb
+%dir %{dtbdir}/marvell
+%{dtbdir}/marvell/armada-398-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-armada-xp -f dtb-armada-xp.list
@@ -1007,7 +1018,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/armada-xp-*.dtb
+%dir %{dtbdir}/marvell
+%{dtbdir}/marvell/armada-xp-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-bcm2836 -f dtb-bcm2836.list
@@ -1017,7 +1029,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/bcm2836*.dtb
+%dir %{dtbdir}/broadcom
+%{dtbdir}/broadcom/bcm2836*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-dove -f dtb-dove.list
@@ -1027,7 +1040,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/dove-*.dtb
+%dir %{dtbdir}/marvell
+%{dtbdir}/marvell/dove-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-exynos4 -f dtb-exynos4.list
@@ -1037,7 +1051,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/exynos4*.dtb
+%dir %{dtbdir}/samsung
+%{dtbdir}/samsung/exynos4*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-exynos5 -f dtb-exynos5.list
@@ -1047,7 +1062,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/exynos5*.dtb
+%dir %{dtbdir}/samsung
+%{dtbdir}/samsung/exynos5*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-imx5 -f dtb-imx5.list
@@ -1057,7 +1073,9 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/imx5*.dtb
+%dir %{dtbdir}/nxp
+%dir %{dtbdir}/nxp/imx
+%{dtbdir}/nxp/imx/imx5*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-imx6 -f dtb-imx6.list
@@ -1067,7 +1085,9 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/imx6*.dtb
+%dir %{dtbdir}/nxp
+%dir %{dtbdir}/nxp/imx
+%{dtbdir}/nxp/imx/imx6*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-imx7 -f dtb-imx7.list
@@ -1077,7 +1097,9 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/imx7*.dtb
+%dir %{dtbdir}/nxp
+%dir %{dtbdir}/nxp/imx
+%{dtbdir}/nxp/imx/imx7*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-keystone -f dtb-keystone.list
@@ -1087,7 +1109,9 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/keystone-*.dtb
+%dir %{dtbdir}/ti
+%dir %{dtbdir}/ti/keystone
+%{dtbdir}/ti/keystone/keystone-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-meson6 -f dtb-meson6.list
@@ -1097,7 +1121,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/meson6-*.dtb
+%dir %{dtbdir}/amlogic
+%{dtbdir}/amlogic/meson6-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-meson8 -f dtb-meson8.list
@@ -1107,7 +1132,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/meson8-*.dtb
+%dir %{dtbdir}/amlogic
+%{dtbdir}/amlogic/meson8-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-meson8b -f dtb-meson8b.list
@@ -1117,7 +1143,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/meson8b-*.dtb
+%dir %{dtbdir}/amlogic
+%{dtbdir}/amlogic/meson8b-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-mt76 -f dtb-mt76.list
@@ -1127,7 +1154,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/mt76*.dtb
+%dir %{dtbdir}/mediatek
+%{dtbdir}/mediatek/mt76*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-omap3 -f dtb-omap3.list
@@ -1137,7 +1165,9 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/omap3*.dtb
+%dir %{dtbdir}/ti
+%dir %{dtbdir}/ti/omap
+%{dtbdir}/ti/omap/omap3*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-omap4 -f dtb-omap4.list
@@ -1147,7 +1177,9 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/omap4*.dtb
+%dir %{dtbdir}/ti
+%dir %{dtbdir}/ti/omap
+%{dtbdir}/ti/omap/omap4*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-omap5 -f dtb-omap5.list
@@ -1157,7 +1189,9 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/omap5*.dtb
+%dir %{dtbdir}/ti
+%dir %{dtbdir}/ti/omap
+%{dtbdir}/ti/omap/omap5*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-qcom -f dtb-qcom.list
@@ -1167,7 +1201,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/qcom-*.dtb
+%dir %{dtbdir}/qcom
+%{dtbdir}/qcom/qcom-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-rk3 -f dtb-rk3.list
@@ -1177,7 +1212,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/rk3*.dtb
+%dir %{dtbdir}/rockchip
+%{dtbdir}/rockchip/rk3*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-socfpga -f dtb-socfpga.list
@@ -1187,7 +1223,9 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/socfpga_*.dtb
+%dir %{dtbdir}/intel
+%dir %{dtbdir}/intel/socfpga
+%{dtbdir}/intel/socfpga/socfpga_*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-ste -f dtb-ste.list
@@ -1197,7 +1235,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/ste-*.dtb
+%dir %{dtbdir}/st
+%{dtbdir}/st/ste-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-sun4i -f dtb-sun4i.list
@@ -1207,7 +1246,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/sun4i-*.dtb
+%dir %{dtbdir}/allwinner
+%{dtbdir}/allwinner/sun4i-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-sun5i -f dtb-sun5i.list
@@ -1217,7 +1257,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/sun5i-*.dtb
+%dir %{dtbdir}/allwinner
+%{dtbdir}/allwinner/sun5i-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-sun6i -f dtb-sun6i.list
@@ -1227,7 +1268,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/sun6i-*.dtb
+%dir %{dtbdir}/allwinner
+%{dtbdir}/allwinner/sun6i-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-sun7i -f dtb-sun7i.list
@@ -1237,7 +1279,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/sun7i-*.dtb
+%dir %{dtbdir}/allwinner
+%{dtbdir}/allwinner/sun7i-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-sun8i -f dtb-sun8i.list
@@ -1247,7 +1290,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/sun8i-*.dtb
+%dir %{dtbdir}/allwinner
+%{dtbdir}/allwinner/sun8i-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-sun9i -f dtb-sun9i.list
@@ -1257,7 +1301,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/sun9i-*.dtb
+%dir %{dtbdir}/allwinner
+%{dtbdir}/allwinner/sun9i-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-tegra2 -f dtb-tegra2.list
@@ -1267,7 +1312,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/tegra20-*.dtb
+%dir %{dtbdir}/nvidia
+%{dtbdir}/nvidia/tegra20-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-tegra3 -f dtb-tegra3.list
@@ -1277,7 +1323,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/tegra30-*.dtb
+%dir %{dtbdir}/nvidia
+%{dtbdir}/nvidia/tegra30-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-tegra114 -f dtb-tegra114.list
@@ -1287,7 +1334,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/tegra114-*.dtb
+%dir %{dtbdir}/nvidia
+%{dtbdir}/nvidia/tegra114-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-tegra124 -f dtb-tegra124.list
@@ -1297,7 +1345,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/tegra124-*.dtb
+%dir %{dtbdir}/nvidia
+%{dtbdir}/nvidia/tegra124-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-vexpress -f dtb-vexpress.list
@@ -1307,7 +1356,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/vexpress-*.dtb
+%dir %{dtbdir}/arm
+%{dtbdir}/arm/vexpress-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-vf500 -f dtb-vf500.list
@@ -1317,7 +1367,9 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/vf500-*.dtb
+%dir %{dtbdir}/nxp
+%dir %{dtbdir}/nxp/vf
+%{dtbdir}/nxp/vf/vf500-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-vf6 -f dtb-vf6.list
@@ -1327,7 +1379,9 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/vf610-*.dtb
+%dir %{dtbdir}/nxp
+%dir %{dtbdir}/nxp/vf
+%{dtbdir}/nxp/vf/vf610-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-xenvm -f dtb-xenvm.list
@@ -1337,7 +1391,8 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/xenvm-*.dtb
+%dir %{dtbdir}/xen
+%{dtbdir}/xen/xenvm-*.dtb
 
 %ifarch aarch64 riscv64
 %files -n dtb-zynq -f dtb-zynq.list
@@ -1347,6 +1402,7 @@ cd /boot
 %defattr(-,root,root)
 %ghost /boot/dtb
 %dir %{dtbdir}
-%{dtbdir}/zynq-*.dtb
+%dir %{dtbdir}/xilinx
+%{dtbdir}/xilinx/zynq-*.dtb
 
 %changelog
