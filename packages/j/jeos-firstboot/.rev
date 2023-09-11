@@ -515,4 +515,13 @@
     <comment></comment>
     <requestid>1086719</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>89979f21f982c4053abd7b30c748b558</srcmd5>
+    <version>1.2.0.7</version>
+    <time>1694459985</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.0.7:
+  * Don't pass --setup-machine-id to systemd-firstboot</comment>
+    <requestid>1105195</requestid>
+  </revision>
 </revisionlist>
