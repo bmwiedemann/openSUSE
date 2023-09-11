@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 11 09:25:47 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible: don't emit timestamp by bnd-maven-plugin
+
+-------------------------------------------------------------------
 Sat Sep  9 14:14:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
