@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  8 14:22:24 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use Cython < 3 to avoid an issue with `setYErr` when using
+  Cython >= 3.
+
+-------------------------------------------------------------------
 Tue Jul 11 08:06:31 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.9.8:

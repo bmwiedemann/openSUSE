@@ -32,7 +32,7 @@ BuildRequires:  bash-completion
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python3-Cython
+BuildRequires:  python3-Cython < 3
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 # SECTION For running python tests in make check
