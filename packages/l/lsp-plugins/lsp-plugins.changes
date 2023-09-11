@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 10 19:56:44 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 1.2.11
+
+ * Added partial support of AVX-512 instruction set.
+ * Windows support changed to experimental.
+ * Fixed code issues reported by the PVS Studio static analyzer.
+ * Fixed improper band characteristics drawn on band Mute for 
+   multiband plugins in Linear Phase mode.
+
+-------------------------------------------------------------------
 Sun Aug 27 01:24:00 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - update to 1.2.10
