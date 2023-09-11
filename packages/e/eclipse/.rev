@@ -159,4 +159,12 @@
     <comment>Fix build with newer ant</comment>
     <requestid>1064162</requestid>
   </revision>
+  <revision rev="21" vrev="10">
+    <srcmd5>5c0b59fc92df05d8f79ea512aca01f0d</srcmd5>
+    <version>4.15</version>
+    <time>1694460079</time>
+    <user>anag+factory</user>
+    <comment>Fix build with osgi-core 8.0.0</comment>
+    <requestid>1108671</requestid>
+  </revision>
 </revisionlist>

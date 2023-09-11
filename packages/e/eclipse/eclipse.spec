@@ -112,6 +112,8 @@ Patch26:        force-clean-after-p2-operations.patch
 Patch27:        compiler-release.patch
 # Adapt the symlinks to the openSUSE install of batik
 Patch31:        eclipse-suse-batik.patch
+# Add symlink for osgi-core
+Patch32:        eclipse-suse-osgi-core.patch
 # Fix build on ppc64 big endian
 Patch33:        eclipse-ppc64.patch
 Patch34:        eclipse-libkeystorelinuxnative.patch
@@ -178,6 +180,7 @@ BuildRequires:  maven-install-plugin
 BuildRequires:  maven-local
 BuildRequires:  maven-shade-plugin
 BuildRequires:  objectweb-asm >= 7.0
+BuildRequires:  osgi-core
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sac
@@ -369,6 +372,7 @@ Requires:       osgi(org.eclipse.jetty.server) >= %{_jetty_version}
 Requires:       osgi(org.eclipse.jetty.servlet) >= %{_jetty_version}
 Requires:       osgi(org.eclipse.jetty.util) >= %{_jetty_version}
 Requires:       osgi(org.tukaani.xz)
+Requires:       osgi(osgi.core)
 Recommends:     eclipse-usage
 
 %if %{with bootstrap}
@@ -522,6 +526,7 @@ tar --strip-components=1 -xf %{SOURCE1}
 %patch27
 
 %patch31 -p1
+%patch32 -p1
 %patch33 -p1
 %patch34 -p1
 %patch35 -p1
@@ -1165,6 +1170,7 @@ echo "%{version}-%{release}" > %{buildroot}%{_eclipsedir}/.pkgs/Distro%{?dist}
 %{_eclipsedir}/plugins/org.eclipse.update.configurator_*
 %{_eclipsedir}/plugins/org.eclipse.urischeme_*
 %{_eclipsedir}/plugins/org.glassfish.web.javax.servlet.jsp_*
+%{_eclipsedir}/plugins/osgi.core_*
 %{_eclipsedir}/plugins/org.sat4j.core_*
 %{_eclipsedir}/plugins/org.sat4j.pb_*
 %{_eclipsedir}/plugins/org.tukaani.xz_*

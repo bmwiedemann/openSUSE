@@ -1,0 +1,10 @@
+diff -ur org.eclipse.linuxtools.eclipse-build-c985e357223668b4bc1fb76ea6b9e0c12829b7e8.orig/dependencies/replace_platform_plugins_with_symlinks.sh org.eclipse.linuxtools.eclipse-build-c985e357223668b4bc1fb76ea6b9e0c12829b7e8/dependencies/replace_platform_plugins_with_symlinks.sh
+--- org.eclipse.linuxtools.eclipse-build-c985e357223668b4bc1fb76ea6b9e0c12829b7e8.orig/dependencies/replace_platform_plugins_with_symlinks.sh	2023-09-02 20:52:24.564838688 +0200
++++ org.eclipse.linuxtools.eclipse-build-c985e357223668b4bc1fb76ea6b9e0c12829b7e8/dependencies/replace_platform_plugins_with_symlinks.sh	2023-09-02 20:52:47.311663946 +0200
+@@ -72,5 +72,6 @@
+ 		_symlink org.w3c.css.sac_ sac.jar
+ 		_symlink org.w3c.dom.svg_ xml-commons-apis-ext.jar
+ 		_symlink org.xmlpull_ xpp3.jar
++		_symlink osgi.core_ osgi-core/osgi.core.jar
+ 	popd
+ popd

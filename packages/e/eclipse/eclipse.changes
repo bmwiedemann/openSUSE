@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep  2 22:00:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with osgi-core 8.0.0
+- Added patch:
+  * eclipse-suse-osgi-core.patch
+    + symlink the osgi.core_8.0.0 plugin from system
+
+-------------------------------------------------------------------
 Fri Feb 10 07:31:48 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
