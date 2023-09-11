@@ -1,3 +1,7 @@
+NOTE: add-sha256sum-for-zipcode-archives.patch is automatically generated from
+      add-sha256sum-for-zipcode-archives.patch.in by make_archive.sh
+      Please do not modify the patch file manually.
+
 Index: mozc-2.28.4715.102/src/WORKSPACE.bazel
 ===================================================================
 --- mozc-2.28.4715.102.orig/src/WORKSPACE.bazel

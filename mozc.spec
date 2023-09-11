@@ -50,7 +50,7 @@
 %define makebazelcache() mkdir -p %{bz_cachdir}/content_addressable/sha256/%{?2:%2}%{?!2:$(sha256sum %1 | cut -f 1 -d ' ')}/; cp %1 %{bz_cachdir}/content_addressable/sha256/%{?2:%2}%{?!2:$(sha256sum %1 | cut -f 1 -d ' ')}/file ;
 
 Name:           mozc
-Version:        2.29.5111.102
+Version:        2.29.5220.102
 Release:        0
 Summary:        Mozc - Japanese Input Method for Chromium OS, Mac and Linux
 License:        Apache-2.0 AND BSD-3-Clause AND SUSE-Public-Domain
@@ -70,8 +70,7 @@ Source5:        japanese_usage_dictionary-r10.tar.xz
 # License: BSD-3-Clause
 #
 # Bazel requires static protobuf
-# https://github.com/protocolbuffers/protobuf/archive/refs/tags/v3.22.5.tar.gz
-Source6:        protobuf-v3.22.5.tar.gz
+Source6:        https://github.com/protocolbuffers/protobuf/releases/download/v24.2/protobuf-24.2.tar.gz
 # abseil cpp
 # License: Apache-2.0
 # https://github.com/abseil/abseil-cpp/archive/refs/tags/20230125.3.tar.gz
@@ -92,7 +91,7 @@ Source12:       material-design-icons.tar.xz
 # https://github.com/fcitx/mozc/tree/fcitx/src/unix/fcitx{,5}
 # Run ./make_archive.sh to make tar.xz
 %if %{with_fcitx4} || %{with_fcitx5}
-Source20:       fcitx-mozc-ebc1ce4c.tar.xz
+Source20:       fcitx-mozc-25efda3b.tar.xz
 Source21:       fcitx-mozc-icons.tar.gz
 Patch20:        fcitx-mozc-bazel-build.patch
 %endif
@@ -100,11 +99,11 @@ Patch20:        fcitx-mozc-bazel-build.patch
 # Protobuf dependencies
 # protocolbuffers/bazel-rules-ruby
 # License: Apache-2.0
-# https://github.com/protocolbuffers/rules_ruby/archive/5cf6ff74161d7f985b9bf86bb3c5fb16cef6337b.zip
-Source31:       bazel-rules-ruby-5cf6ff74.zip
+# https://github.com/protocolbuffers/rules_ruby/archive/8fca842a3006c3d637114aba4f6bf9695bb3a432.zip
+Source31:       bazel-rules-ruby-8fca842a.zip
 # License: BSD-3-Clause
-# https://github.com/protocolbuffers/upb/archive/f3149d5ff4564834d2c9c2661f91570b57257f8e.zip
-Source32:       upb-f3149d5f.zip
+# https://github.com/protocolbuffers/upb/archive/ea4e825d22c9ae0031d59ec5e86dc85bb50cbbcb.zip
+Source32:       upb-ea4e825d.zip
 # License: MIT
 # https://github.com/protocolbuffers/utf8_range/archive/de0b4a8ff9b5d4c98108bdfe723291a33c52c54f.zip
 Source33:       utf8_range-de0b4a8f.zip
@@ -165,9 +164,9 @@ The Mozc engine for IBus provides a Japanese input method.
 %package -n ibus-mozc-candidate-window
 Summary:        An optional candidate window for ibus-mozc
 Group:          System/I18n/Japanese
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Widgets)
 Requires:       ibus-mozc = %{version}
 Provides:       locale(ibus:ja)
 
@@ -206,9 +205,9 @@ The Mozc backend for Fcitx 5 provides a Japanese input method.
 %package gui-tools
 Summary:        GUI tools for mozc
 Group:          System/I18n/Japanese
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Widgets)
 Requires:       mozc = %{version}
 
 %description gui-tools
@@ -271,7 +270,7 @@ echo build --override_repository="rules_pkg=/usr/src/bazel-rules-pkg" >> src/.ba
 for f in %{optflags}; do
 	case $f in
 		*FORTIFY_SOURCE*) ;; # conflicts with opts (-DFORTIFY_SOURCE and -Werror) from source
-		*) echo echo build --copt=$f >> src/.bazelrc
+		*) echo build --copt=$f >> src/.bazelrc
 	esac
 done
 

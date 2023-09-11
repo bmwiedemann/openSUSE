@@ -1,7 +1,7 @@
 #!/bin/sh
 
-commit=9a2f53ad33bc9ccd15f02d69a94f8f3552bd08cd
-fcitxcommit=ebc1ce4c8f66e490aec8964777e5f672264d659c
+commit="f79e092ac7068f6bbdacb2b069641771e7cb1f43"
+fcitxcommit="25efda3bfb6523332503651d742e4452ffee44d2"
 
 set -e
 

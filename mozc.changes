@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 10 05:46:51 UTC 2023 - Fuminobu Takeyama <ftake@geeko.jp> - 2.29.5220.102
+
+- Upstream update to 2.29.5220.102
+  * Update the segment prefix for Tabi
+  * Update dictionaries
+  * Switch to Qt6
+  * Update protobuf to 24.2
+- Update fcitx-mozc
+- Update zip code dictionaries
+  * Refresh add-sha256sum-for-zipcode-archives.patch
+    - Update hash codes
+    - Add a comment to state auto generated
+- Fix the compiler options from RPM is not passed to a compiler
+
+-------------------------------------------------------------------
 Wed Aug 16 17:37:50 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix build without %jobs
