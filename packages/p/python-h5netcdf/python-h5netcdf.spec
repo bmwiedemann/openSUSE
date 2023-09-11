@@ -16,27 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-h5netcdf
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        A Python library to use netCDF4 files via h5py
 License:        BSD-3-Clause
 URL:            https://github.com/h5netcdf/h5netcdf
 Source:         https://files.pythonhosted.org/packages/source/h/h5netcdf/h5netcdf-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module setuptools_scm >= 7}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-h5py
+Requires:       python-packaging
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module netCDF4}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -63,6 +64,6 @@ relying on the Unidata netCDF library.
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/h5netcdf
-%{python_sitelib}/h5netcdf-%{version}*-info
+%{python_sitelib}/h5netcdf-%{version}.dist-info
 
 %changelog

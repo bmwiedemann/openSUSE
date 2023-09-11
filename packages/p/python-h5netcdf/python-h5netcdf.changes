@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 10 17:30:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.2.0
+  * MNT: Remove h5py2 compatibility code by @kmuehlbauer in #194
+  * FIX: raise early for mismatched object string by @kmuehlbauer
+    in #213
+  * Add simple test to ensure that the shape is stored in the
+    coordinates by @hmaarrfk in #199
+
+-------------------------------------------------------------------
 Sat Jan  7 12:08:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:

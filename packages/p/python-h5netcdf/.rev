@@ -134,4 +134,17 @@
   greater is detected to help compatibility with netCDF4-c programs.</comment>
     <requestid>1056763</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fe5f1de8df51e8bb22c2cab7a846a85c</srcmd5>
+    <version>1.2.0</version>
+    <time>1694460112</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.2.0
+  * MNT: Remove h5py2 compatibility code by @kmuehlbauer in #194
+  * FIX: raise early for mismatched object string by @kmuehlbauer
+    in #213
+  * Add simple test to ensure that the shape is stored in the
+    coordinates by @hmaarrfk in #199</comment>
+    <requestid>1110215</requestid>
+  </revision>
 </revisionlist>
