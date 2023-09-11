@@ -986,4 +986,12 @@ depends on sr#237875</comment>
     <comment>KDE Frameworks 5.109.0 (forwarded request 1104028 from krop)</comment>
     <requestid>1104552</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>6e023a154fbdd3d2723a4798acf2a406</srcmd5>
+    <version>5.110.0</version>
+    <time>1694460005</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.110.0 (forwarded request 1109602 from krop)</comment>
+    <requestid>1110055</requestid>
+  </revision>
 </revisionlist>
