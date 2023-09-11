@@ -66,8 +66,6 @@ This package contains the shared libraries for VulkanSceneGraph.
 Summary:        VulkanSceneGraph development files
 Group:          Development/Libraries/C and C++
 Requires:       libvsg%{_vsg_so_nr} = %{version}
-Requires:       cmake(glslang)
-Requires:       pkgconfig(SPIRV-Tools)
 Requires:       pkgconfig(vulkan)
 
 %description -n libvsg-devel
