@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Mon Aug 28 10:18:34 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#654
+- cifs kernel modules have a new location (bsc#1214329)
+- 17.93
+
+--------------------------------------------------------------------
+Tue Aug 22 14:48:22 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#653
+- Add system-user-lp to initrd. group(lp) moved from
+  system-group-hardware there (bsc#1214467)
+- 17.92
+
+--------------------------------------------------------------------
 Thu Aug 3 11:25:48 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#652
