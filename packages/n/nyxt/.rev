@@ -54,4 +54,12 @@ These issues are now fixed with a patch, hence this new submission.</comment>
 - update to version 3.6.1</comment>
     <requestid>1107894</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>81c83935e86d83fac21ec42bcaf7f92b</srcmd5>
+    <version>3.7.0</version>
+    <time>1694460152</time>
+    <user>anag+factory</user>
+    <comment>Update to version 3.7.0</comment>
+    <requestid>1110273</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 %bcond_with webextensions
 
 Name:           nyxt
-Version:        3.6.1
+Version:        3.7.0
 Release:        0
 Summary:        Keyboard-oriented, Common Lisp extensible web-browser
 License:        BSD-3-Clause
@@ -74,8 +74,9 @@ strip -s %{buildroot}/%{_libdir}/nyxt/libnyxt.so
 %{_libdir}/nyxt/
 %endif
 %{_datadir}/nyxt/
-%{_datadir}/icons/hicolor/*/apps/nyxt.png
+%{_datadir}/icons/hicolor/*/apps/nyxt.*
 %{_datadir}/applications/nyxt.desktop
+%{_datadir}/metainfo/nyxt.metainfo.xml
 %doc README.org
 %license licenses/ASSET-LICENSE
 %license licenses/SOURCE-LICENSE

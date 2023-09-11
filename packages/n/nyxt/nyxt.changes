@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 11 09:46:33 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 3.7.0:
+  * Features
+    - Minor UI improvements on the status and prompt buffer
+    - Stylistic review of the manual to improve readability
+  * UI/UX
+    - Add possibility to open PDF files via command open-file (C-o)
+    - The installation process now takes into account the Appdata file and a scalable icon
+
+-------------------------------------------------------------------
 Tue Aug 29 09:28:21 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - fixed missing dependencies
