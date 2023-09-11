@@ -1220,4 +1220,41 @@
     nodes.</comment>
     <requestid>1109308</requestid>
   </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>c60a2ab89ab5c5111000ff4ad14cf624</srcmd5>
+    <version>23.02.4</version>
+    <time>1694460139</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 23.02.4 with the following changes:
+  * Bug Fixes:
+    + Fix main scheduler loop not starting after a failover to backup
+      controller. Avoid slurmctld segfault when specifying
+     `AccountingStorageExternalHost` (bsc#1214983).
+    + Fix sbatch return code when `--wait` is requested on a job array.
+    + Fix collected `GPUUtilization` values for `acct_gather_profile` plugins.
+    + Fix `slurmrestd` handling of job hold/release operations.
+    + Fix step running indefinitely when slurmctld takes more than
+      `MessageTimeout` to respond. Now, `slurmctld` will cancel the step when
+       detected, preventing following steps from getting stuck waiting for
+       resources to be released.
+    + Fix regression to make `job_desc.min_cpus` accurate again in `job_submit`
+      when requesting a job with `--ntasks-per-node`.
+    + Fix handling of `ArrayTaskThrottle` in backfill.
+    + Fix regression in 23.02.2 when checking gres state on `slurmctld`
+      startup  or reconfigure. Gres changes in the configuration were not
+      updated on slurmctld startup. On startup or reconfigure, these messages
+      were present in the log: `&quot;error: Attempt to change gres/gpu Count`&quot;.
+    + Fix potential double count of gres when dealing with limits.
+    + Fix `slurmstepd` segfault when `ContainerPath` is not set in `oci.conf`
+    + Fixed an issue where jobs requesting licenses were incorrectly rejected.
+    + `scrontab` - Fix cutting off the final character of quoted variables.
+    + `smail` - Fix issues where e-mails at job completion were not being sent.
+    + `scontrol/slurmctld` - fix comma parsing when updating a reservation's
+       nodes.
+    + Fix `--gpu-bind=single binding` tasks to wrong gpus, leading to some gpus
+      having more tasks than they should and other gpus being unused.
+    + Fix regression in 23.02 that causes slurmstepd to crash when `srun`
+      requests more than `TreeWidth` nodes in a step and uses the pmi2 or</comment>
+    <requestid>1110259</requestid>
+  </revision>
 </revisionlist>

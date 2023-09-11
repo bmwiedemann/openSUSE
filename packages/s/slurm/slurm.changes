@@ -1,164 +1,171 @@
 -------------------------------------------------------------------
 Mon Aug 21 09:43:08 UTC 2023 - Christian Goll <cgoll@suse.com>
 
-- Fixes since 23.02.03:
-  Highlights:
-  * Fix main scheduler loop not starting after a failover to backup controller.
-  * Avoid slurmctld segfault when specifying `AccountingStorageExternalHost`
-    (bsc#1214983).
-  Other:
-  * Fix sbatch return code when `--wait` is requested on a job array.
-  * Fix collected `GPUUtilization` values for `acct_gather_profile` plugins.
-  * Fix `slurmrestd` handling of job hold/release operations.
-  * Make spank `S_JOB_ARGV` item value hold the requested command `argv`
-    instead of the `srun --bcast` value when `--bcast` requested (only in local
-    context).
-  * Fix step running indefinitely when slurmctld takes more than
-    `MessageTimeout` to respond. Now, slurmctld will cancel the step when
-    detected, preventing following steps from getting stuck waiting for
-    resources to be released.
-  * Fix regression to make `job_desc.min_cpus` accurate again in job_submit when
-    requesting a job with `--ntasks-per-node`.
-  * Fix handling of `ArrayTaskThrottle` in backfill.
-  * Fix regression in 23.02.2 when checking gres state on `slurmctld` startup or
-    reconfigure. Gres changes in the configuration were not updated on slurmctld
-    startup. On startup or reconfigure, these messages were present in the log:
-    `"error: Attempt to change gres/gpu Count`".
-  * Fix potential double count of gres when dealing with limits.
-  * Fix slurmstepd segfault when ContainerPath is not set in `oci.conf`
-  * Fixed an issue where jobs requesting licenses were incorrectly rejected.
-  * `scrontab` - Fix cutting off the final character of quoted variables.
-  * `smail` - Fix issues where e-mails at job completion were not being sent.
-  * `scontrol/slurmctld` - fix comma parsing when updating a reservation's
-    nodes.
-  * Fix `--gpu-bind=single binding` tasks to wrong gpus, leading to some gpus
-    having more tasks than they should and other gpus being unused.
-  * Fix regression in 23.02 that causes slurmstepd to crash when srun requests
-    more than `TreeWidth` nodes in a step and uses the pmi2 or pmix plugin.
-  * `job_container/tmpfs` - Fix `%h` and `%n` substitution in `BasePath` where
-    `%h` was substituted as the NodeName instead of the hostname, and %n was
-    substituted as an empty string.
-  * Fix regression where `--cpu-bind=verbose` would override `TaskPluginParam`.
-  * `scancel` - Fix `--clusters/-M` for federations. Only filtered jobs (e.g.
-    `-A`, `-u`, `-p`, etc.) from the specified clusters will be canceled,
-    rather than all jobs in the federation. Specific jobids will still be
-    routed to the origin cluster for cancellation.
-- Fixes since 23.02.02
-  Highlight:
-  * `slurmctld` - Fix backup slurmctld crash when it takes control multiple
-    times.
-  Other:
-  * Fix regression in 23.02.2 that ignored the partition `DefCpuPerGPU` setting
-    on the first pass of scheduling a job requesting `--gpus --ntasks`.
-  * `srun` - fix issue creating regular and interactive steps because
-    *_PACK_GROUP* environment variables were incorrectly set on non-HetSteps.
-  * Fix dynamic nodes getting stuck in allocated states when reconfiguring.
-  * Fix regression in 23.02.2 that set the `SLURM_NTASKS` environment variable
-    in sbatch jobs from `--ntasks-per-node` when `--ntasks` was not requested.
-  * Fix regression in 23.02 that caused sbatch jobs to set the wrong number
-    of tasks when requesting `--ntasks-per-node` without `--ntasks`, and also
-    requesting one of the following options: `--sockets-per-node`,
-    --cores-per-socket, --threads-per-core (or `--hint=nomultithread`), or
-    `-B,--extra-node-info`.
-  * Fix double counting suspended job counts on nodes when reconfiguring, which
-    prevented nodes with suspended jobs from being powered down or rebooted
-    once the jobs completed.
-  * Fix backfill not scheduling jobs submitted with `--prefer` and
-    `--constraint` properly.
-  * mpi/pmix - fix regression introduced in 23.02.2 which caused PMIx shmem
-    backed files permissions to be incorrect.
-  * api/submit - fix memory leaks when submission of batch regular jobs or batch
-    HetJobs fails (response data is a return code).
-  * Fix regression in 23.02 leading to error() messages being sent at `INFO`
-    instead of `ERR` in syslog.
-  * Fix `TresUsageIn[Tot|Ave]` calculation for `gres/gpumem` and `gres/gpuutil`.
-  * Fix issue in the gpu plugins where gpu frequencies would only be set if both
-    gpu memory and gpu frequencies were set, while one or the other suffices.
-  * Fix reservations group ACL's not working with the root group.
-  * Fix updating a job with a ReqNodeList greater than the job's node count.
-  * Fix inadvertent permission denied error for `--task-prolog` and
-    `--task-epilog` with filesystems mounted with `root_squash`.
-  * Fix missing detailed cpu and gres information in json/yaml output from
-    `scontrol`, `squeue` and `sinfo`.
-  * Fix regression in 23.02 that causes a failure to allocate job steps that
-    request `--cpus-per-gpu` and gpus with types.
-  * Fix potentially waiting indefinitely for a defunct process to finish,
-    which affects various scripts including `Prolog` and `Epilog`. This could
-    have various symptoms, such as jobs getting stuck in a completing state.
-  * Fix losing list of reservations on job when updating job with list of
-    reservations and restarting the controller.
-  * Fix nodes resuming after down and drain state update requests from
-    clients older than 23.02.
-  * Fix advanced reservation creation/update when an association that should
-    have access to it is composed with partition(s).
-  * Fix job layout calculations with `--ntasks-per-gpu`, especially when
-    `--nodes` has not been explicitly provided.
-  * Fix X11 forwarding for jobs submitted from the slurmctld host.
-  * When a job requests `--no-kill` and one or more nodes fail during the job,
-    fix subsequent job steps unable to use some of the remaining resources
-    allocated to the job.
-  * Fix shared gres allocation when using `--tres-per-task` with tasks that span
-    multiple sockets.
-- Other changes
-  (since 23.02.3):
-  * `scontrol` - Permit changes to StdErr and StdIn for pending jobs.
-  * `scontrol` - Reset std{err,in,out} when set to empty string.
-  * `slurmrestd` - mark environment as a required field for job submission
-    descriptions.
-  * `slurmrestd` - avoid dumping null in OpenAPI schema required fields.
-  * `data_parser/v0.0.39` - avoid rejecting valid memory_per_node formatted as
-    dictionary provided with a job description.
-  * `data_parser/v0.0.39` - avoid rejecting valid memory_per_cpu formatted as
-    dictionary provided with a job description.
-  * `slurmrestd` - Return HTTP error code 404 when job query fails.
-  * `slurmrestd` - Add return schema to error response to job and license query.
-  * Change the log message warning for rate limited users from debug to verbose.
-  * `cgroup/v2` - Avoid capturing log output for ebpf when constraining devices,
-    as this can lead to inadvertent failure if the log buffer is too small.
-  * Added error message when attempting to use sattach on batch or extern steps.
-  * Reject job ArrayTaskThrottle update requests from unprivileged users.
-  * `data_parser/v0.0.39` - populate description fields of property objects in
-    generated OpenAPI specifications where defined.
-  * `slurmstepd` - Avoid segfault caused by ContainerPath not being terminated
-    by '/' in oci.conf.
-  * `data_parser/v0.0.39` - Change `v0.0.39_job_info` response to tag `exit_code`
-    field as being complex instead of only an unsigned integer.
-  (since 23.02.2):
-  * `openapi/dbv0.0.39/users` - If a default account update failed, resulting
-    in a no-op, the query returned success without any warning. Now a warning
-    is sent back to the client that the default account wasn't modified.
-  * Avoid job write lock when nodes are dynamically added/removed.
-  * burst_buffer/lua - allow jobs to get scheduled sooner after
-    `slurm_bb_data_in` completes.
-  * `openapi/v0.0.39` - fix memory leak in `_job_post_het_submit()`.
-  * Avoid possible `slurmctld` segfault caused by race condition with already
-    completed `slurmdbd_conn` connections.
-  * `Slurmdbd.conf` checks included conf files for 0600 permissions
-  * `slurmrestd` - fix regression "oversubscribe" fields were removed from job
-    descriptions and submissions from v0.0.39 end points.
-  * `accounting_storage/mysql` - Query for indiviual QOS correctly when you have
-    more than 10.
-  * Add warning message about ignoring `--tres-per-tasks=license` when used
-    on a step.
-  * `sshare` - Fix command to work when using priority/basic.
-  * Avoid loading `cli_filter` plugins outside of `salloc`/`sbatch`/`scron`/
-    `srun`. This fixes a number of missing symbol problems that can manifest
-    for executables linked against libslurm (and not `libslurmfull`).
-  * Allow cloud_reg_addrs to update dynamically registered node's addrs on
-    subsequent registrations.
-  * Revert a change in 22.05.5 that prevented tasks from sharing a core if
-    `--cpus-per-task` > threads per core, but caused incorrect accounting and
-    cpu.
-    binding. Instead, `--ntasks-per-core=1` may be requested to prevent tasks
-    from sharing a core.
-  * Correctly send `assoc_mgr` lock to mcs plugin.
-  * Avoid unnecessary gres/gpumem and gres/gpuutil TRES position lookups.
-  * `sacct` - when printing PLANNED time, use end time instead of start time for
-    jobs cancelled before they started.
-  * Hold the job with "(Reservation ... invalid)" state reason if the
-    reservation is not usable by the job.
-  * `auth/jwt` - Fix memory leak.
-  * `sbatch` - Added new `--export=NIL` option.
+- Updated to 23.02.4 with the following changes:
+  * Bug Fixes:
+    + Fix main scheduler loop not starting after a failover to backup
+      controller. Avoid slurmctld segfault when specifying
+     `AccountingStorageExternalHost` (bsc#1214983).
+    + Fix sbatch return code when `--wait` is requested on a job array.
+    + Fix collected `GPUUtilization` values for `acct_gather_profile` plugins.
+    + Fix `slurmrestd` handling of job hold/release operations.
+    + Fix step running indefinitely when slurmctld takes more than
+      `MessageTimeout` to respond. Now, `slurmctld` will cancel the step when
+       detected, preventing following steps from getting stuck waiting for
+       resources to be released.
+    + Fix regression to make `job_desc.min_cpus` accurate again in `job_submit`
+      when requesting a job with `--ntasks-per-node`.
+    + Fix handling of `ArrayTaskThrottle` in backfill.
+    + Fix regression in 23.02.2 when checking gres state on `slurmctld`
+      startup  or reconfigure. Gres changes in the configuration were not
+      updated on slurmctld startup. On startup or reconfigure, these messages
+      were present in the log: `"error: Attempt to change gres/gpu Count`".
+    + Fix potential double count of gres when dealing with limits.
+    + Fix `slurmstepd` segfault when `ContainerPath` is not set in `oci.conf`
+    + Fixed an issue where jobs requesting licenses were incorrectly rejected.
+    + `scrontab` - Fix cutting off the final character of quoted variables.
+    + `smail` - Fix issues where e-mails at job completion were not being sent.
+    + `scontrol/slurmctld` - fix comma parsing when updating a reservation's
+       nodes.
+    + Fix `--gpu-bind=single binding` tasks to wrong gpus, leading to some gpus
+      having more tasks than they should and other gpus being unused.
+    + Fix regression in 23.02 that causes slurmstepd to crash when `srun`
+      requests more than `TreeWidth` nodes in a step and uses the pmi2 or
+      pmix plugin.
+    + `job_container/tmpfs` - Fix `%h` and `%n` substitution in `BasePath`
+      where `%h` was substituted as the NodeName instead of the hostname,
+      and %n was substituted as an empty string.
+    + Fix regression where `--cpu-bind=verbose` would override
+      `TaskPluginParam`.
+    + `scancel` - Fix `--clusters/-M` for federations. Only filtered jobs
+      (e.g. `-A`, `-u`, `-p`, etc.) from the specified clusters will be
+      canceled, rather than all jobs in the federation. Specific jobids
+      will still be routed to the origin cluster for cancellation.
+  * Other changes:
+    + Make spank `S_JOB_ARGV` item value hold the requested command `argv`
+      instead of the `srun --bcast` value when `--bcast` requested (only in
+      local context).
+    + `scontrol` - Permit changes to StdErr and StdIn for pending jobs.
+    + `scontrol` - Reset `std`{`err`,`in`,`out`} when set to empty string.
+    + `slurmrestd` - mark environment as a required field for job submission
+      descriptions.
+    + `slurmrestd` - avoid dumping null in OpenAPI schema required fields.
+    + `data_parser/v0.0.39` - avoid rejecting valid `memory_per_node` formatted
+      as dictionary provided with a job description.
+    + `data_parser/v0.0.39` - avoid rejecting valid `memory_per_cpu` formatted
+       as dictionary provided with a job description.
+    + `slurmrestd` - Return HTTP error code 404 when job query fails.
+    + `slurmrestd` - Add return schema to error response to job and license
+      query.
+    + Change the log message warning for rate limited users from debug to
+      verbose.
+    + `cgroup/v2` - Avoid capturing log output for ebpf when constraining
+      devices,
+      as this can lead to inadvertent failure if the log buffer is too small.
+    + Added error message when attempting to use sattach on batch or extern
+      steps.
+    + Reject job `ArrayTaskThrottle` update requests from unprivileged users.
+    + `data_parser/v0.0.39` - populate description fields of property objects
+      in generated OpenAPI specifications where defined.
+    + `slurmstepd` - Avoid segfault caused by `ContainerPath` not being
+      terminated by `/` in `oci.conf`.
+    + `data_parser/v0.0.39` - Change `v0.0.39_job_info` response to tag
+      `exit_code` field as being complex instead of only an unsigned integer.
+- Updated to 23.02.3 with the following changes:
+  * Bug Fixes:
+    + `slurmctld` - Fix backup slurmctld crash when it takes control
+      multiple times.
+    + Fix regression in 23.02.2 that ignored the partition `DefCpuPerGPU`
+      setting on the first pass of scheduling a job requesting
+      `--gpus --ntasks`.
+    + `srun` - fix issue creating regular and interactive steps because
+       environment variables were incorrectly set on non-HetSteps.
+    + Fix dynamic nodes getting stuck in allocated states when reconfiguring.
+    + Fix regression in 23.02.2 that set the `SLURM_NTASKS` environment
+      variable in sbatch jobs from `--ntasks-per-node` when `--ntasks` was not
+      requested.
+    + Fix regression in 23.02 that caused sbatch jobs to set the wrong number
+      of tasks when requesting `--ntasks-per-node` without `--ntasks`, and also
+      requesting one of the following options: `--sockets-per-node`,
+      `--cores-per-socket`, `--threads-per-core` (or `--hint=nomultithread`),
+      or `-B,--extra-node-info`.
+    + Fix double counting suspended job counts on nodes when reconfiguring,
+      which prevented nodes with suspended jobs from being powered down or
+      rebooted once the jobs completed.
+    + Fix backfill not scheduling jobs submitted with `--prefer` and
+      `--constraint` properly.
+    + mpi/pmix - fix regression introduced in 23.02.2 which caused PMIx shmem
+      backed files permissions to be incorrect.
+    + api/submit - fix memory leaks when submission of batch regular jobs
+      or batch HetJobs fails (response data is a return code).
+    + Fix regression in 23.02 leading to error() messages being sent at `INFO`
+      instead of `ERR` in syslog.
+    + Fix `TresUsageIn[Tot|Ave]` calculation for `gres/gpumem` and
+      `gres/gpuutil`.
+    + Fix issue in the gpu plugins where gpu frequencies would only be set if
+      both gpu memory and gpu frequencies were set, while one or the other
+      suffices.
+    + Fix reservations group ACL's not working with the root group.
+    + Fix updating a job with a ReqNodeList greater than the job's node count.
+    + Fix inadvertent permission denied error for `--task-prolog` and
+      `--task-epilog` with filesystems mounted with `root_squash`.
+    + Fix missing detailed cpu and gres information in json/yaml output from
+      `scontrol`, `squeue` and `sinfo`.
+    + Fix regression in 23.02 that causes a failure to allocate job steps that
+      request `--cpus-per-gpu` and gpus with types.
+    + Fix potentially waiting indefinitely for a defunct process to finish,
+      which affects various scripts including `Prolog` and `Epilog`. This could
+      have various symptoms, such as jobs getting stuck in a completing state.
+    + Fix losing list of reservations on job when updating job with list of
+      reservations and restarting the controller.
+    + Fix nodes resuming after down and drain state update requests from
+      clients older than 23.02.
+    + Fix advanced reservation creation/update when an association that should
+      have access to it is composed with partition(s).
+    + Fix job layout calculations with `--ntasks-per-gpu`, especially when
+      `--nodes` has not been explicitly provided.
+    + Fix X11 forwarding for jobs submitted from the slurmctld host.
+    +  When a job requests `--no-kill` and one or more nodes fail during the
+       job, fix subsequent job steps unable to use some of the remaining
+       resources allocated to the job.
+    + Fix shared gres allocation when using `--tres-per-task` with tasks that
+      span multiple sockets.
+    + `auth/jwt` - Fix memory leak.
+  * Other changes:
+    + `openapi/dbv0.0.39/users` - If a default account update failed, resulting
+      in a no-op, the query returned success without any warning. Now a warning
+      is sent back to the client that the default account wasn't modified.
+    + Avoid job write lock when nodes are dynamically added/removed.
+    + `burst_buffer/lua` - allow jobs to get scheduled sooner after
+      `slurm_bb_data_in` completes.
+    + `openapi/v0.0.39` - fix memory leak in `_job_post_het_submit()`.
+    + Avoid possible `slurmctld` segfault caused by race condition with already
+      completed `slurmdbd_conn` connections.
+    + `Slurmdbd.conf` checks included conf files for 0600 permissions
+    + `slurmrestd` - fix regression "oversubscribe" fields were removed from
+      job descriptions and submissions from v0.0.39 end points.
+    + `accounting_storage/mysql` - Query for indiviual QOS correctly when you
+      have more than 10.
+    + Add warning message about ignoring `--tres-per-tasks=license` when used
+      on a step.
+    + `sshare` - Fix command to work when using `priority/basic`.
+    + Avoid loading `cli_filter` plugins outside of `salloc`/`sbatch`/`scron`/
+      `srun`. This fixes a number of missing symbol problems that can manifest
+      for executables linked against libslurm (and not `libslurmfull`).
+    + Allow cloud_reg_addrs to update dynamically registered node's addrs on
+      subsequent registrations.
+    + Revert a change in 22.05.5 that prevented tasks from sharing a core if
+      `--cpus-per-task` > threads per core, but caused incorrect accounting and
+      cpu binding. Instead, `--ntasks-per-core=1` may be requested to prevent
+      tasks from sharing a core.
+    + Correctly send `assoc_mgr` lock to mcs plugin.
+    + Avoid unnecessary `gres/gpumem` and `gres/gpuutil` `TRES` position
+      lookups.
+    + `sacct` - when printing `PLANNED` time, use end time instead of start
+      time for jobs cancelled before they started.
+    + Hold the job with "`(Reservation ... invalid)`" state reason if the
+      reservation is not usable by the job.
+    + `sbatch` - Added new `--export=NIL` option.
 - Removed:
   * Fix-test-3.13.patch
   * Fix-test-38.11.patch as both tests changed upstream
