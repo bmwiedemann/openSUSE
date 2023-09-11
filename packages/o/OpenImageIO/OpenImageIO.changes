@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Aug 30 14:04:03 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Disable tiff-misc test, because it often(!) fails the build on OBS
+
+-------------------------------------------------------------------
+Mon Aug 28 21:54:15 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 2.4.14.0:
+  * ico: IOProxy support for ICO input #3919 (by jasonbaumeister)
+  * fix(psd): CMYK PSD files now copy alpha correctly #3918 (by
+    jasonbaumeister)
+  * fix(python): Fix arithmetic overflow in oiio_bufinfo (Python
+    interop) #3931 (by Jesse Yurkovich)
+  * build: Fix WebP linking if CMAKE_FIND_PACKAGE_PREFER_CONFIG is
+    ON #3863 (by Benjamin Buch)
+  * build: Find OpenEXR equally well with our FindOpenEXR and exr's
+    exported config file #3862 (by Benjamin Buch)
+  * build: Fix broken OIIO_NO_NEON definition #3911
+  * ci: Lock down icx version #3929
+  * ci: Bump build_openexr and build_opencolorio defaults to latest
+    versions #3920
+  * admin: Update mail list to https://lists.aswf.io/g/oiio-dev
+    #3880
+  * admin: Add charter and other ASWF documents to the repo #3850
+  * admin: Document use of the DCO which is now required for all
+    PRs #3897
+  * admin: Put logo on the main readme #3927
+  * admin: Remove old CLAs that are no longer in effect
+  * admin: Change open source license to Apache 2.0. #3899, #3903,
+    #3904, #3906, #3914, #3922, #3926.
+
+-------------------------------------------------------------------
 Sat Jul 15 17:04:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.13.0:
