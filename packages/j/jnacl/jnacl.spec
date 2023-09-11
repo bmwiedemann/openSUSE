@@ -24,6 +24,7 @@ License:        BSD-2-Clause
 Group:          Development/Libraries/Java
 URL:            https://github.com/neilalexander/jnacl
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         %{name}-bnd.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(biz.aQute.bnd:bnd-maven-plugin)
@@ -42,6 +43,7 @@ This package contains API documentation for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %pom_remove_plugin :maven-source-plugin
 

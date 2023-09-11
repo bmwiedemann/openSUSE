@@ -1,0 +1,12 @@
+--- jnacl-1.0.0/pom.xml	2023-09-11 11:27:05.368011560 +0200
++++ jnacl-1.0.0/pom.xml	2023-09-11 11:28:25.318574098 +0200
+@@ -102,6 +102,9 @@
+ Bundle-SymbolicName: ${project.groupId}.${project.artifactId}
+ Bundle-Version: ${project.version}
+ -exportcontents: com.neilalexander.jnacl.crypto;version="${project.version}", com.neilalexander.jnacl;version="${project.version}"
++-reproducible: true
++-noextraheaders: true
++-snapshot: SNAPSHOT
+ ]]>
+           </bnd>
+         </configuration>
