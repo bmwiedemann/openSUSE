@@ -41,4 +41,15 @@
     <comment>- skip python 3.6 (no scipy)</comment>
     <requestid>871618</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>8b5b2c6b0c6b124e9855e834f4b6f157</srcmd5>
+    <version>2.0.12</version>
+    <time>1694460124</time>
+    <user>anag+factory</user>
+    <comment>- Add patch remove-future-requirement.patch, drop requirement on future
+- Switch to pyproject and autosetup macros
+- Remove skips, unneeded
+- Stop using greedy globs in %files</comment>
+    <requestid>1110224</requestid>
+  </revision>
 </revisionlist>

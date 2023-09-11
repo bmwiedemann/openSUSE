@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 11 07:07:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-future-requirement.patch, drop requirement on future
+- Switch to pyproject and autosetup macros
+- Remove skips, unneeded
+- Stop using greedy globs in %files
+
+-------------------------------------------------------------------
 Sat Feb 13 09:50:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 (no scipy) 

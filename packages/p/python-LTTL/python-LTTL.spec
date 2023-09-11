@@ -1,7 +1,7 @@
 #
 # spec file for package python-LTTL
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-LTTL
 Version:        2.0.12
 Release:        0
@@ -26,16 +23,17 @@ Summary:        Library for text processing and analysis
 License:        GPL-3.0-only
 URL:            https://github.com/axanthos/LTTL
 Source:         https://files.pythonhosted.org/packages/source/L/LTTL/LTTL-%{version}.zip
+Patch0:         remove-future-requirement.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-future
 Requires:       python-numpy
 Requires:       python-scipy
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
@@ -46,14 +44,14 @@ BuildRequires:  %{python_module scipy}
 LangTech Text Library (LTTL) for text processing and analysis
 
 %prep
-%setup -q -n LTTL-%{version}
+%autosetup -p1 -n LTTL-%{version}
 sed -i 's/\r$//' README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +60,7 @@ sed -i 's/\r$//' README.rst
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/LTTL
+%{python_sitelib}/LTTL-%{version}.dist-info
 
 %changelog
