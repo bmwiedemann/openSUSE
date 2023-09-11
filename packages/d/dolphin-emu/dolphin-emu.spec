@@ -21,7 +21,7 @@ Name:           dolphin-emu
 Version:        5.0.17995
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
-License:        GPL-2.0-or-later
+License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND libpng-2.0 AND GPL-2.0-or-later
 URL:            https://dolphin-emu.org
 # n=dolphin-emu && v=5.0.17995 && c=8bad821019721b9b72701b495da95656ace5fea5 && cd /tmp && git clone https://github.com/$n/dolphin.git $n && cd $n && git checkout $c && rm -rf .??* && cd .. && n=dolphin-emu && d=$n-$v && mv $n $d && f=$d.tar.xz && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz

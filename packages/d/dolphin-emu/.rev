@@ -81,4 +81,14 @@
 - Removed file dolphin-emu-gcc13.patch.</comment>
     <requestid>1104938</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>50fa3e001afb1c983f421d207625b9aa</srcmd5>
+    <version>5.0.17995</version>
+    <time>1694460169</time>
+    <user>anag+factory</user>
+    <comment>- Correction of the license based on the legaldb report.
+  Add BSD-2-Clause AND libpng-2.0, and (Apache-2.0 OR MIT)
+  aside from original GPL-2.0-or-later </comment>
+    <requestid>1110310</requestid>
+  </revision>
 </revisionlist>

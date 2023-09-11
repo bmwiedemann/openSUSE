@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 11 12:31:12 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Correction of the license based on the legaldb report.
+  Add BSD-2-Clause AND libpng-2.0, and (Apache-2.0 OR MIT)
+  aside from original GPL-2.0-or-later 
+
+-------------------------------------------------------------------
 Sun Aug 20 19:17:37 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Switched to gcc12 (boo#1210477).
