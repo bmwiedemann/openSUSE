@@ -369,4 +369,12 @@ Another accidental omission in the KDE Frameworks update...</comment>
     <comment>KDE Frameworks 5.109.0 (forwarded request 1104028 from krop)</comment>
     <requestid>1104599</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>2fc5787d8aa96b6398146bb1fa8b10ce</srcmd5>
+    <version>5.110.0</version>
+    <time>1694460049</time>
+    <user>anag+factory</user>
+    <comment>KDE Frameworks 5.110.0 (forwarded request 1109602 from krop)</comment>
+    <requestid>1110102</requestid>
+  </revision>
 </revisionlist>
