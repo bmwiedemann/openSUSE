@@ -24,7 +24,7 @@
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma-framework
-Version:        5.109.0
+Version:        5.110.0
 Release:        0
 Summary:        Plasma library and runtime components based upon KF5 and Qt5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -75,6 +75,7 @@ BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
 BuildRequires:  libQt5PlatformHeaders-devel
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(x11)
+Requires:       (plasma-framework-desktoptheme or kf6-plasma-framework-desktoptheme)
 Recommends:     %{name}-components = %{version}
 Provides:       %{name}-private = %{version}
 Obsoletes:      %{name}-private < %{version}
@@ -107,6 +108,14 @@ Requires:       libqt5-qtquickcontrols2
 
 %description components
 Plasma QML and runtime components based upon KF5 and Qt5
+
+%package desktoptheme
+Summary:        Desktop themes usable by Plasma 5 or Plasma 6
+# Split from the main package
+Conflicts:      plasma-framework < 5.110.0
+
+%description desktoptheme
+Desktop themes usable by plasma 5 or plasma 6.
 
 %package devel
 Summary:        Plasma library and runtime components
@@ -151,9 +160,13 @@ fi
 
 %ldconfig_scriptlets -n %{lname}
 
-%files lang -f %{name}.lang
-# LC_SCRIPTS is not recognized by find-lang.sh
-%lang(lt) %{_datadir}/locale/lt/LC_SCRIPTS
+%files
+%{_kf5_bindir}/*
+%{_kf5_plugindir}/
+%{_kf5_plasmadir}/
+%{_kf5_servicetypesdir}/
+%{_kf5_mandir}/man1/plasmapkg*.*
+%exclude %{_kf5_plasmadir}/desktoptheme/
 
 %files -n %{lname}
 %license LICENSES/*
@@ -162,15 +175,11 @@ fi
 %{_kf5_debugdir}/plasma-framework.categories
 %{_kf5_debugdir}/*.renamecategories
 
-%files
-%{_kf5_bindir}/*
-%{_kf5_plugindir}/
-%{_kf5_plasmadir}/
-%{_kf5_servicetypesdir}/
-%{_kf5_mandir}/man1/plasmapkg*.*
-
 %files components
 %{_kf5_qmldir}/
+
+%files desktoptheme
+%{_kf5_plasmadir}/desktoptheme/
 
 %files devel
 %{_kf5_includedir}/Plasma/
@@ -181,5 +190,9 @@ fi
 %{_kf5_libdir}/libKF5Plasma.so
 %{_kf5_libdir}/libKF5PlasmaQuick.so
 %{_kf5_sharedir}/kdevappwizard
+
+%files lang -f %{name}.lang
+# LC_SCRIPTS is not recognized by find-lang.sh
+%lang(lt) %{_datadir}/locale/lt/LC_SCRIPTS
 
 %changelog
