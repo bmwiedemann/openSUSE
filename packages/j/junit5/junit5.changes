@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 11 10:40:34 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Mon May  9 12:28:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 5.8.2

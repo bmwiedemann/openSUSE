@@ -1,7 +1,7 @@
 #
 # spec file for package junit5
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -139,7 +139,9 @@ done
 %{mvn_package} :junit-bom bom
 
 %build
-%{mvn_build} -f -- -Dencoding=utf-8 -Dsource=8
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dencoding=utf-8 -Dsource=8
 
 # Build docs.  Ignore exit asciidoc -- it fails for some reason, but
 # still produces readable docs.
