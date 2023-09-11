@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@
 %global base_name scala
 %define __requires_exclude .*org\.apache\.ant.*
 Version:        2.10.7
+#!BcntSyncTag: scala
 Release:        0
 Summary:        A hybrid functional/object-oriented language for the JVM
 License:        BSD-3-Clause AND CC0-1.0 AND SUSE-Public-Domain
