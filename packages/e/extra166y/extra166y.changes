@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 11 08:44:10 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: Do not create timestamps with bnd tools
+
+-------------------------------------------------------------------
 Wed Mar 23 16:44:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Some classes were built with higher bytecode level
