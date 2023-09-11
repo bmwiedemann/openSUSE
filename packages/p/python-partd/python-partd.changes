@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 10 14:02:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.4.0
+  * no release notes
+  * DataFrame._data deprecation in pandas (#65)
+  * Use pickle for pandas Index with extension dtype (#64)
+
+-------------------------------------------------------------------
 Tue Oct  4 22:42:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to Version 1.3.0

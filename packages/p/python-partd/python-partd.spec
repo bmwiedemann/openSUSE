@@ -1,7 +1,7 @@
 #
 # spec file for package python-partd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-partd
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Appendable key-value storage
 License:        BSD-3-Clause
@@ -26,14 +25,15 @@ Group:          Development/Languages/Python
 URL:            https://github.com/mrocklin/partd/
 Source:         https://files.pythonhosted.org/packages/source/p/partd/partd-%{version}.tar.gz
 BuildRequires:  %{python_module locket}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toolz}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-locket
 Requires:       python-toolz
 Recommends:     python-blosc
-Recommends:     python-msgpack-python
 Recommends:     python-numpy >= 1.9.0
 Recommends:     python-pandas
 Recommends:     python-pyzmq
@@ -56,10 +56,10 @@ Partd excels at shuffling operations.
 %setup -q -n partd-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,6 +68,7 @@ Partd excels at shuffling operations.
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/partd
+%{python_sitelib}/partd-%{version}.dist-info
 
 %changelog
