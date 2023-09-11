@@ -7,4 +7,12 @@
     <comment>dep of h2database. c.f. https://build.opensuse.org/request/show/1069922</comment>
     <requestid>1073664</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7664d60bba3fb5c18875910f4fc2c49c</srcmd5>
+    <version>1.0.0</version>
+    <time>1694460158</time>
+    <user>anag+factory</user>
+    <comment>reproducible</comment>
+    <requestid>1110278</requestid>
+  </revision>
 </revisionlist>
