@@ -70,6 +70,11 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
+Patch1:         0001-pulse-server-allow-monitors-when-selecting-source-by-index.patch
+Patch2:         0001-Revert-v4l2-handle-inotify-errors.patch
+Patch3:         0002-Revert-v4l2-dont-set-inotify-on-_dev.patch
+Patch4:         0003-spa-v4l2-use-a-separate-watch-for-each-device.patch
+
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -382,6 +387,10 @@ JACK libraries.
 sed -ie "s/version : '0.3.72'/version : '%{version}'/" %{P:0}
 %patch0 -p1
 %endif
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}

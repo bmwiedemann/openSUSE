@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 11 09:56:03 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a regression introduced in 0.3.77
+  which made it fail to open a monitor device as source:
+  * 0001-pulse-server-allow-monitors-when-selecting-source-by-index.patch
+- Add patch from upstream to fix a bug which caused 100% cpu usage
+  under some circumstances:
+  * 0001-Revert-v4l2-handle-inotify-errors.patch
+  * 0002-Revert-v4l2-dont-set-inotify-on-_dev.patch
+  * 0003-spa-v4l2-use-a-separate-watch-for-each-device.patch
+
+-------------------------------------------------------------------
 Tue Aug 29 17:32:30 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.3.79:
