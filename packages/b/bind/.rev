@@ -2200,4 +2200,14 @@ New Features
     <comment>- Update to release 9.18.18</comment>
     <requestid>1104195</requestid>
   </revision>
+  <revision rev="201" vrev="2">
+    <srcmd5>b7d2242d7a3ae3652fceb1e921c5a7a7</srcmd5>
+    <version>9.18.18</version>
+    <time>1694545328</time>
+    <user>anag+factory</user>
+    <comment>- Enable crypto-policies support: [bsc#1211301]
+  * Rebase vendor-files/config/named.conf
+</comment>
+    <requestid>1110323</requestid>
+  </revision>
 </revisionlist>

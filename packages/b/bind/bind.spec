@@ -316,6 +316,7 @@ mkdir -p \
 	%{buildroot}/%{_sysconfdir}/named.d \
 	%{buildroot}/%{_sysconfdir}/openldap/schema \
 	%{buildroot}/%{_sysconfdir}/slp.reg.d \
+	%{buildroot}/%{_sysconfdir}/crypto-policies/back-ends \
 	%{buildroot}%{_prefix}/{bin,%{_lib},sbin,include} \
 	%{buildroot}/%{_datadir}/bind \
 	%{buildroot}/%{_datadir}/susehelp/meta/Administration/System \
@@ -494,6 +495,8 @@ fi
 %if %{with_sfw2}
 %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/bind
 %endif
+%dir %{_sysconfdir}/crypto-policies
+%dir %{_sysconfdir}/crypto-policies/back-ends
 %{_bindir}/named-rrchecker
 %{_sbindir}/rcnamed
 %{_sbindir}/named
