@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 10 19:09:43 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add coreutils-systemd, coreutils got splitted in two RPMs
+
+-------------------------------------------------------------------
 Wed Aug  9 08:42:09 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add ucode-{amd,intel} to the hardware pattern

@@ -66,6 +66,7 @@ Requires:       btrfsprogs
 Requires:       ca-certificates
 Requires:       ca-certificates-mozilla
 Requires:       coreutils
+Requires:       coreutils-systemd
 Requires:       glibc
 Suggests:       busybox-hostname
 Requires:       NetworkManager
