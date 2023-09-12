@@ -28,6 +28,12 @@
 %bcond_with gcc11
 %endif
 
+%if 0%{?suse_version} < 1600
+%bcond_without slp
+%else
+%bcond_with slp
+%endif
+
 Name:           rsync
 Version:        3.2.7
 Release:        0
@@ -49,13 +55,13 @@ Source11:       https://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.t
 Source12:       %{name}.keyring
 Source13:       rsyncd
 Patch0:         rsync-no-libattr.patch
+Patch1:         fortified-strlcpy-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
 BuildRequires:  libacl-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  libzstd-devel
-BuildRequires:  openslp-devel
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  systemd-rpm-macros
@@ -65,6 +71,9 @@ BuildRequires:  pkgconfig(libxxhash) >= 0.8.0
 %endif
 %if %{with gcc11}
 BuildRequires:  gcc11-c++
+%endif
+%if %{with slp}
+BuildRequires:  openslp-devel
 %endif
 BuildRequires:  pkgconfig(openssl)
 Requires(post): grep
@@ -85,7 +94,9 @@ for backups and mirroring and as an improved copy command for everyday use.
 %setup -q -b 1
 rm -f zlib/*.h zlib/*.c
 
+%if %{with slp}
 patch -p1 < patches/slp.diff
+%endif
 
 %autopatch -p1
 
@@ -108,7 +119,9 @@ export LDFLAGS="-Wl,-z,relro,-z,now -fPIE -pie"
 %ifarch x86_64
   --enable-simd \
 %endif
+%if %{with slp}
   --enable-slp \
+%endif
   --enable-acl-support \
   --enable-xattr-support
 %make_build reconfigure

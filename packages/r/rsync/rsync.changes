@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep  6 09:19:36 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use "slp" for bcond, not "openslp", like we use for all other
+  packages, too.
+- Disable slp patch and configure option if bcond slp is disabled.
+
+-------------------------------------------------------------------
+Tue Sep  5 12:07:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add fortified-strlcpy-fix.patch (bsc#1214616)
+
+-------------------------------------------------------------------
+Tue Sep  5 11:11:04 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Disable openslp support on new distros (bsc#1214884)
+
+-------------------------------------------------------------------
 Wed Jul 26 15:07:23 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Add support directory to %docdir.
