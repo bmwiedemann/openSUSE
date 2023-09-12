@@ -143,4 +143,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>963790</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>2eaa593086b529dedf963dbcf63085d5</srcmd5>
+    <version>2.5.9</version>
+    <time>1694545376</time>
+    <user>anag+factory</user>
+    <comment>- Add patch remove-future-requirement.patch, remove future requirement
+- Switch to pyproject and autosetup macros</comment>
+    <requestid>1110427</requestid>
+  </revision>
 </revisionlist>

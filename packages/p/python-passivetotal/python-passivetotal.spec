@@ -1,7 +1,7 @@
 #
 # spec file for package python-passivetotal
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-passivetotal
 Version:        2.5.9
 Release:        0
 Summary:        Client for the PassiveTotal REST API
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://passivetotal.readthedocs.org
 Source:         https://files.pythonhosted.org/packages/source/p/passivetotal/passivetotal-%{version}.tar.gz
 Source1:        https://github.com/passivetotal/python_api/raw/c2d0c8f4ea3dde4caec01f5401fb6f105f8a2447/LICENSE
+Patch0:         remove-future-requirement.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-ez_setup
-Requires:       python-future
 Requires:       python-python-dateutil
 Requires:       python-requests
 Requires:       python-tldextract
@@ -39,8 +38,6 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module ez_setup}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module requests}
 %endif
@@ -57,15 +54,15 @@ services. The library currently provides support for the following services:
 - Site actions (tagging, classifying, etc.)
 
 %prep
-%setup -q -n passivetotal-%{version}
+%autosetup -p1 -n passivetotal-%{version}
 sed -i '1s/^#!.*//' passivetotal/*.py passivetotal/*/*.py
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_clone -a %{buildroot}%{_bindir}/pt-client
 %python_clone -a %{buildroot}%{_bindir}/pt-config
@@ -88,7 +85,7 @@ cp %{SOURCE1} .
 %python_alternative %{_bindir}/pt-info
 %python_alternative %{_bindir}/pt-config
 %python_alternative %{_bindir}/pt-client
-%{python_sitelib}/passivetotal-*.egg-info
+%{python_sitelib}/passivetotal-{%version}.dist-info
 %{python_sitelib}/passivetotal/
 
 %changelog

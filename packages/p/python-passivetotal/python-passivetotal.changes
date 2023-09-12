@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 12 05:20:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-future-requirement.patch, remove future requirement
+- Switch to pyproject and autosetup macros
+
+-------------------------------------------------------------------
 Mon Mar 14 21:39:35 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - - update to version 2.5.9:
