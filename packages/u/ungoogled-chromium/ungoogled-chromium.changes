@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 12 08:41:52 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- ungoogled-chromium 116.0.5845.179 (boo#1215023):
+  * CVE-2023-4761: Out of bounds memory access in FedCM
+  * CVE-2023-4762: Type Confusion in V8
+  * CVE-2023-4763: Use after free in Networks
+  * CVE-2023-4764: Incorrect security UI in BFCache
+  * CVE-2023-4572: Use after free in MediaStream
+
+-------------------------------------------------------------------
 Mon Aug 28 18:05:54 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
 
 - ungoogled-chromium 116.0.5845.110 (boo#1214487):

@@ -207,4 +207,18 @@
 </comment>
     <requestid>1107812</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>568cb3db9e53c34995289fa3baa7816c</srcmd5>
+    <version>116.0.5845.179</version>
+    <time>1694545444</time>
+    <user>anag+factory</user>
+    <comment>- ungoogled-chromium 116.0.5845.179 (boo#1215023):
+  * CVE-2023-4761: Out of bounds memory access in FedCM
+  * CVE-2023-4762: Type Confusion in V8
+  * CVE-2023-4763: Use after free in Networks
+  * CVE-2023-4764: Incorrect security UI in BFCache
+  * CVE-2023-4572: Use after free in MediaStream
+</comment>
+    <requestid>1110604</requestid>
+  </revision>
 </revisionlist>
