@@ -1,7 +1,7 @@
 #
 # spec file for package velero
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,17 @@
 #
 
 
-%define goipath github.com/vmware-tanzu/velero
-%define commit cdf3acab5aa562a7841ce733b964b0dc13d10c71
-%define gitstate clean
-
 Name:           velero
-Version:        1.9.2
+Version:        1.11.1
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        Apache-2.0
 Group:          Productivity/Archiving/Backup
 URL:            https://velero.io
-Source0:        https://github.com/vmware-tanzu/velero/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/vmware-tanzu/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.17
+BuildRequires:  golang(API) = 1.20
 
 %description
 velero is a backup program. It supports verification, encryption,
@@ -76,25 +72,36 @@ Fish command line completion support for %{name}.
 %setup -q -a1
 
 %build
-%goprep %{goipath}
-export CGO_ENABLED=0
-%gobuild -mod vendor -installsuffix "static" -ldflags "-X %{goipath}/pkg/buildinfo.Version=%{version} -X %{goipath}/pkg/buildinfo.GitSHA=%{commit} -X %{goipath}/pkg/buildinfo.GitTreeState=%{gitstate}" cmd/velero
-%gobuild -mod vendor -installsuffix "static" -ldflags "-X %{goipath}/pkg/buildinfo.Version=%{version} -X %{goipath}/pkg/buildinfo.GitSHA=%{commit} -X %{goipath}/pkg/buildinfo.GitTreeState=%{gitstate}" cmd/velero-restic-restore-helper
+go build \
+   -installsuffix "static" \
+   -mod=vendor \
+   -buildmode=pie \
+   -ldflags=" \
+   -X github.com/vmware-tanzu/%{name}/pkg/buildinfo.Version=%{version} \
+   -X github.com/vmware-tanzu/%{name}/pkg/buildinfo.GitSHA=v%{version} \
+   -X github.com/vmware-tanzu/%{name}/pkg/buildinfo.GitTreeState=clean" \
+   -o bin/%{name} ./cmd/%{name}
 
 %install
-%goinstall
+# Install the binary.
+install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+
+# create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
 %{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+
+# create the zsh completion file
 mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
 %{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+
+# create the fish completion file
 mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %files
 %doc README.md
 %license LICENSE
-%{_bindir}/velero
-%{_bindir}/velero-restic-restore-helper
+%{_bindir}/%{name}
 
 %files bash-completion
 %defattr(-,root,root)

@@ -1,4 +1,172 @@
 -------------------------------------------------------------------
+Thu Sep 07 12:02:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.11.1:
+  * Add v1.11.1 changelog. (#6522)
+  * Integrate pushing to docker hub and gcr.io in one docker build
+    and push command.
+  * Fix release-1.11 push github action out of space issue. (#6500)
+  * Add support for OpenStack CSI drivers topology keys
+  * Bump Golang to v1.20.6 for release-1.11.
+  * fix-issue-6297
+  * Restore Endpoints before Services (#6316)
+  * Fix status.progress not getting updated for backup
+  * Make the E2E testing pods obey the restricted pod security
+    standard.
+  * Fix issue 6182
+  * Update Golang to v1.20 for release-1.11 branch. (#6159)
+
+-------------------------------------------------------------------
+Thu Sep 07 11:41:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.11.0:
+  very big changelog, please find it here:
+  https://github.com/vmware-tanzu/velero/releases/tag/v1.11.0
+
+  * Breaking changes
+    The Velero CSI plugin now determines whether to restore
+    Volume's data from snapshots on the restore's restorePVs
+    setting. Before v1.11, the CSI plugin doesn't check the
+    restorePVs parameter setting.
+
+  * Upgrading
+    Due to the major changes of file system backup, the old upgrade
+    steps are not suitable any more.
+    https://velero.io/docs/v1.11/upgrade-to-1.11/
+
+-------------------------------------------------------------------
+Thu Sep 07 11:02:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.10.3:
+  * Using gcr.io as velero image registry
+  * 1.10.3 change log
+  * fix issue 6182
+  * Bump v1.10's Golang version to v1.20
+  * Ignore not found error during patching managedFields (#6135)
+  * fix issue 5972
+  * E2E test can read VC credential secret according to vSphere CSI
+    driver version.
+  * Restore Services before Clusters
+
+-------------------------------------------------------------------
+Thu Sep 07 11:00:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.10.2:
+  * fix main CI problem 02
+  * fix main CI disk space error
+  * Roll back pkg client code for Velero server
+  * 1.10.2 change log
+  * Update distroless image and fix CVE-2022-41717 for release-1.10
+  * Set Kopia IgnoreUnknownTypes in ErrorHandlingPolicy to True for
+    ignoring backup unknown file type
+  * Add labels for created namespace during velero installation to
+    adopt k8s v1.25's PSS and PSA.
+  * Restore finalizer and managedFields (#5877)
+  * Publish backup results extracted from backup logs
+  * Add secret restore item action to handle service account token secret
+  * move UpdatePVXStatusToFailed to controller pkg
+  * Use updated PVB/PVR for patching Failed Phase during startup
+  * Remove container-builder-env section.
+
+-------------------------------------------------------------------
+Thu Sep 07 10:54:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.10.1:
+  * Fix Restic v0.14.0 HIGH grade CVEs.
+  * add change log
+  * bump up golang net
+  * add 1.10.1 changelog
+  * bump up to golang 1.18.10
+  * Add GOARM in Restic builder. Add PR container build action.
+  * Remove container-builder-env section.
+  * Fix Dockerfile issue.
+  * Add Restic builder in Dockerfile.
+  * fix issue 5696
+  * Fix error with Restic backup empty volumes
+  * Fix changelog
+  * Prevent nil panic on exec restore hooks (#5675)
+  * Fix CVEs scanned by trivy
+
+-------------------------------------------------------------------
+Thu Sep 07 09:16:10 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.10.0:
+  very big changelog, please find it here:
+  https://github.com/vmware-tanzu/velero/releases/tag/v1.10.0
+
+  * Upgrading
+    Due to the major changes of file system backup, the old upgrade
+    steps are not suitable any more.
+    https://velero.io/docs/v1.10/upgrade-to-1.10/
+
+-------------------------------------------------------------------
+Thu Sep 07 09:01:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to 1.9.6:
+  * Bump up Golang version and fix CVEs. (#5884, @blackpiglet)
+  * Add labels for velero installed namespace to support PSA.
+    (#5887, @blackpiglet)
+  * Fix Dockerfile issue. (#5761, @blackpiglet)
+  * Add PR container build action, which will not push image. Add
+    GOARM parameter. (#5777, @blackpiglet)
+  * Correct PVB/PVR Failed Phase patching during startup (#5829,
+    @kaovilai)
+- Update to version 1.9.5:
+  * Add GOARM for restic compile failure
+  * Add changelogs for v1.9.5
+  * Add Restic builder in Dockerfile.
+
+-------------------------------------------------------------------
+Thu Sep 07 08:57:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.9.4:
+  * Rollback compile restic
+  * Fix CVE for trivy scan
+  * remove old versions from kind CI (#5627)
+  * Restore ClusterBootstrap before Cluster
+
+-------------------------------------------------------------------
+Thu Sep 07 08:53:27 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.9.3:
+  * Fix restic cross platform compile
+  * Add compile restic binary for CVE fix
+  * Fix controller problematic log output
+  * Bump up golang version to 1.18.8
+  * Generate v1.9.3 changelog (#5538)
+  * Enhance the restore priorities list to support specifying the
+    low prioritized resources that need to be restored in the last
+  * Fix v1.9.3 CSI VolumeSnapshot status duplicate issue.
+  * Bump up the distroless image to the latest version (#5500)
+  * Cherry pick 5388 to v1.9.3 (#5482)
+  * Fix CVE-2022-27191
+  * Change the name of changelog file and update code/doc to pass
+    checking
+  * update k8s.io dependencies to 0.24.0
+    - This also required an update to use github.com/bombsimon/logrusr/v3
+  * 'WithClusterName' removed as per the k8s doc reasoning:
+    - https://github.com/kubernetes/apimachinery/blob/release-1.24/pkg/apis/meta/v1/types.go\#L257-L259
+    - ('ClusterName was a legacy field that was always cleared by
+      the system and never used')
+    - Test was updated accordingly
+  * Exclude "csinodes.storage.k8s.io" and
+    "volumeattachments.storage.k8s.io" from backup and restore by
+    default.
+  * Skip the exclusion check for additional resources returned by
+    BIA
+  * Amend changelog for v1.9.2
+  * Generate changelog for v1.9.2
+  * increase restic ensure repo timeout
+  * Fix CVE-2022-1962 by bumping up golang verison to 1.17.13
+    (#5286)
+  * Add support to download CSI json from object store
+  * fix edge cases for already exists resources
+  * check vsc null pointer
+  * Check for empty ns list before checking nslist[0]
+  * Don't panic when storageClassName is not set in stateful sets
+  * Fix code spell check fail
+
+-------------------------------------------------------------------
 Tue Nov  8 14:13:25 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.9.2:
@@ -12,6 +180,256 @@ Tue Nov  8 14:13:25 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
     you to control the group of resources whose status will be restored.
   * ExistingResourcePolicy in the restore API
   * Upgrade integrated Restic version and add skip TLS validation in Restic command
+- Update to version 1.9.1:
+  * Bump up base image and package version to fix CVEs
+  * Amend changelogs for v1.9.1
+  * Make CSI snapshot creation timeout configurable for backup and schedule.
+  * Add annotation "pv.kubernetes.io/migrated-to" for CSI checking.
+  * Generate the changelog for v1.9.1 (#5176)
+  * Generate the changelog for v1.9.1
+  * Fix restic backups to multiple backup storage locations bug
+  * Skip registering "crd-remap-version" plugin when feature flag (#5165) (#5173)
+  * Delay CA file deletion in PVB controller
+  * Modify BackupStoreGetter to avoid BSL spec changes
+  * Fix bsl validation bug
+- Update to version 1.9.0:
+  * Add changelog for rc2
+  * When spec.RestoreStatus is empty, don't restore status
+  * Fix tag release error
+  * Bumpup plugin version for Velero 1.9 E2E test
+  * Fix wrong bucket issue in BSL deletion E2E test
+  * Pin the base image and golang image for v1.9.0 release
+  * Add more explanation for gen-docs parameters
+  * Amend doc 1.9 version
+  * Add Changelog and Docs for v1.9
+  * Enhance checkpoint of bsl deletion
+  * Add more information for failing to get path or snapshot in
+    restic backup and restore.
+  * Update release instruction
+  * Bugs fixing: use patch to update status and set default GC
+    period
+  * Undo setting the VSC's deletion policy during backup
+  * Fix ordered resources cmd Stdout already set error
+  * Disable status as sub resource in CRDs
+  * Fix E2E test [Backups][Deletion][Restic] on GCP.
+  * Mark in-progress CRs as failed when starting the server
+  * Fix nightly running failure
+  * Add more details about restore workflow (#4928)
+  * add site bio/img for maintainer/contributor shubham-pampattiwar
+  * Update the doc of CSI support
+  * Bump up kind version to support Kubernetes 1.24
+  * Add changelog
+  * Add docs
+  * Add details about using multiple volume snapshot locations and
+    restic
+  * Cleanup resetStatus
+  * fix flag typo
+  * Remove break line
+  * Propose Shubham Pampattiwar as a maintainer
+  * Include moer details
+  * Update docs for flag to skip TLS validation
+  * Make updates from review
+  * Adds informaiton about resticRepoPrefix
+  * Fix typos
+  * Add schedule ordered resources test
+  * Refactor to simplify
+  * Enhance the map flag to support parsing input value contains
+    entry delimiters
+  * Make velero completion zsh command output can be used by
+    `source` command.
+  * Update cluster migration scenario with more details
+  * Add resource limits testing information
+  * Update wording and add more useful links
+  * Remove jenting from maintainers (#4888)
+  * Add note about restoring when resource scaled to 0
+  * Add setting TTL in backup E2E test
+  * Add restore status to cli
+  * Update CRDs
+  * Update codegen
+  * Fixes tests hopefully
+  * Add restore status mechanism
+  * Add resource status
+  * Add StatusUpdater
+  * Fix DeepEqual when status is updated
+  * add multiple label selector support to backup API
+  * Refactor BSL controller with periodical enqueue source.
+  * Make garbage collection for expired backups configurable
+  * Update compatibility matrix for 1.9
+  * fix typo
+  * Add supported versions statment to support process page
+  * add existingResourcePolicy to Restore API
+  * Add Orlin and Abigail in the team on the site
+  * Bump up the version of distroless to base-debian11
+  * changes according to review comments
+  * change func name and repository description
+  * Make in-progress PVB/PVR as failed when restic controller
+    restarts to avoid hanging backup/restore
+  * Add snapshot checkpoint for CSI E2E test and fix CSI snapshot
+    name issue
+  * Add wording for using commands in hooks
+  * continue rather than return for non-matching restore action
+    label
+  * Remove VolumeSnapshot created during backup, when the
+    VolumeSnapshotClass's DeletionPolicy is set to Delete.
+  * Make waiting VolumeSnapshot to ready process parallel.
+  * Delete orphan CSI snapshots in backup sync controller
+  * Add info about enviroment variables in pre/post hooks
+  * Update resource filtering page
+  * Update headers in supported providers page
+  * Add aws limitation for migration, add limitation section
+  * Refactor restic repository
+  * cleanup restic helper folder when done
+  * Update ROADMAP.md with link to wiki and wiki guidance
+  * Bump up the version of library go-plugin
+  * Change the name of UT to be more consistent
+  * Add multiple label selector support to Velero backup /restore
+    API
+  * design for enabling existing resource policy
+  * Refactor backup deletion controller based on kubebuilder
+  * Add ClusterClasses to the restore priority list
+  * Convert Pod Volume Restore resource/controller to the
+    Kubebuilder framework
+  * Make in-progress backup/restore as failed when doing the
+    reconcile
+  * Document steps to update helm chart for each Velero GA release
+  * Remove DeletedBackupRequest information
+  * Modify CSI VolumeSnapshot metric related code.
+  * Add docs for deleting backups
+  * Make the vsc created by backup sync controller deletable
+  * Return the error when running reconcile to trigger the handling
+    logic again
+  * Update site/content/docs/main/api-types/restore.md
+  * Update integrated Restic version and add insecureSkipTLSVerify
+    for Restic CLI
+  * Use controller-gen to generate the deep copy methods for
+    objects
+  * Update according to comments. Remove
+    csiVolumeSnapshotsStorageTotal related code.
+  * Fix default-backup-ttl not work
+  * fix: delete empty backups
+  * fix: use the right kind in getRestartableProcess logger
+  * Update CRD and GRPC.
+  * Add CSI VolumeSnapshot related metrics.
+  * Avoid duplicated snapshotting, when CSI is enabled
+  * Refactor schedule controller with kubebuilder
+  * Add debug switcher for E2E test
+  * Rename binary generated by go install cmd/*
+  * Support CSI plugin in E2E test
+  * Bump up to v1 API for CSI snapshot
+  * Fix bug when pushing the build-image
+  * Skip podvolumerestore creation when restore excludes pv/pvc
+  * Add CSI plugin in E2E test
+  * Support multi-upgrade-path in upgrade E2E test
+  * Ensure the restore hook applied to new namespace based on the
+    mapping
+  * Add parameter for e2e test to support modify kibishii install
+    path.
+  * add bsl and vsl parameter links
+  * Add labels to expired backups failing garbage collection.
+    (#4757)
+  * Update community managers in MAINTAINERS.md
+  * metrics: add items gauges
+  * Fix the golang lint error: Variable 'session' collides with
+    imported package name
+  * Correct copyright comment and string compare
+  * Remove blocking indexing of our versioned docs (#4750)
+  * Insert all restore errors and warnings into restore log (#4743)
+  * Plugin versioning design (#4698)
+  * clarify date/time (#4745)
+  * Remove Bridget from maintainer list
+  * Fix format.
+  * Add unit tests, change copyright years and revert unrelated
+    changes.
+  * Add changelog
+  * Adding PriorityClass to backup podAction and restore podAction.
+  * Support multiple skip option for E2E test
+  * Fixed start contributing link (#4723)
+  * Add E2E test of bsl deletion
+  * Clarify backups that get deleted via object storage sync
+  * Support multiple skip option for E2E test
+  * Fixed start contributing link (#4723)
+  * Update BSL CR as long as there is any error
+  * fix broken links in ibm config page (#4715)
+  * Remove gcp auth action. Use JSON key as docker login secret
+    instead.
+  * Change authentication method from workload identity provider to
+    service account key.
+  * Add e2e for verify snapshto in VSL
+  * Modify according to comments.
+  * Enable coverage in test.sh and upload to codecov
+  * Fix typo on tests fields name and add another test with gesture
+    of errors wanted on equals
+  * Fix labels removed in ObjectMeta
+  * Add support for --pod-labels (#4694)
+  * Add skip case support in e2e test
+  * Bypass the remap CRD version plugin when v1beta1 CRD is not
+    supported
+  * Modify according to comments
+  * Update --use-owner-references-in-backup description in velero
+    command line
+  * [fix] Add regional PV support for GKE
+  * Append "-dev" suffix for the image tag of release branches
+  * Enable building and pushing image for release branches
+  * Don't exit when getting no match for grep
+  * Remove the office hours from the community page
+  * Add backup deletion e2e test
+  * [fix] Avoid overwritten hook's exec.container parameter when
+    running pod command executor
+  * Add CloudCasa to "Adopters of Velero" section on velero.io
+    (#4588)
+  * Add Xun Jiang's profile information into Velero Website.
+    (#4620)
+  * Updates to 1.8 changelog
+  * Copy edits for 1.8 release notes
+  * Update release note to reflect the fix for #1980
+  * Add more exempt labels for stalebot (#4641)
+  * restic backupper: ignore volumes of non-running pods (#4584)
+  * Add delete BSL cleanup highlight and fixed grammar in heading
+  * Refine the release note of v1.8
+  * Update e2e test image to gcr.io
+  * Fix E2E backup namespaces test
+  * Add Ming Qiu's profile information into Velero Website's
+    contributor list
+  * Add GCR login actions
+  * Simplify by assuming nil is false and use boolptr util function
+  * Add pushing image to GCR in github workflow
+  * Make sure the tag-release script fail on any error
+  * Add changelog for PR 4436
+  * Minor change to trigger GitHub actions
+  * Check for nil before logging DefaultVolumestToRestic value
+  * Undeprecate the volumesnapshot plugin in the doc
+  * Change 1.8 plugins version to release version
+  * Fix E2E gcp plugin tag name
+  * Add 1.8 plugins map in e2e test
+  * Use OrderedResources in schedules (#4550)
+  * Run go mod tidy
+  * Replace r.Client.Update with patch helper
+  * Remove Bridget McErlean from maintainers
+  * E2E SSR test add retry mechanism and logs
+  * Run go mod tidy
+  * Convert PodVolumeBackup to Kubebuilder framework
+  * Add timeout for CI e2e job
+  * Nominate Xun Jiang and Ming Qiu to become maintainers (#4578)
+  * Change dsu-igeek affiliation to Kasten, requires governance
+    vote
+  * Add continue-on-error in ci e2e test
+  * Remove reference of restic_restore_action.go from the doc
+  * Upload debug tarball in PR CI E2E pipeline
+  * #4067 Initial design of the new plugins - pre-post backup and
+    restore (#4083)
+  * Add E2E test of backups sync from BSL
+  * Fix: skip not mounted volumes when backing up
+  * Clarify restore hook includedResources when not specified
+    Signed-off-by: Tiger Kaovilai <tkaovila@redhat.com>
+  * Fix bug to make the restic prune frequency configurable
+  * update migration across different Kubernetes versions section
+  * Fix lint issue and test failed
+  * update dependancies
+  * add changelog
+  * Add doc for new secCtx cm key and missing
+    secCtxAllowPrivilegeEscalation.
+  * Add full support for setting securityContext for restic restore
+    container
 
 Breaking changes
 With bumping up the API to v1 in CSI plugin, the v0.3.0 CSI plugin will only work for Kubernetes v1.20+.
