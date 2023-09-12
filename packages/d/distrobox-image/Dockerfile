@@ -17,35 +17,57 @@ PREFIXEDLABEL org.opencontainers.image.vendor="openSUSE Project"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="registry.opensuse.org/opensuse/distrobox:%OS_VERSION_ID%.%RELEASE%"
 
-# Packagelist from https://github.com/89luca89/distrobox/blob/main/distrobox-init#L639-L674
+# Packagelist from https://github.com/89luca89/distrobox/blob/main/docs/distrobox_custom.md
 # openSUSE-release included explicitly to ensure kiwi-metainfo-helper finds it for %OS_VERSION_ID%
 RUN zypper --non-interactive install --no-recommends bash \
+    Mesa-dri \
+    bash-completion \
     bc \
+    bzip2 \
     curl \
     diffutils \
     findutils \
+    glibc-locale \
+    glibc-locale-base \
     gnupg \
+    hostname \
+    iputils \
+    keyutils \
     less \
-    vte \
-    lsof \
-    ncurses \
-    pinentry \
-    procps \
-    shadow \
-    sudo \
-    systemd \
-    time \
-    wget \
-    util-linux \
-    util-linux-systemd \
-    Mesa-dri \
+    libvte-2_91-0 \
     libvulkan1 \
     libvulkan_intel \
     libvulkan_radeon \
+    lsof \
+    man \
+    man-pages \
+    mtr \
+    ncurses \
+    nss-mdns \
     openSUSE-release \
+    openssh-clients \
+    pam \
+    pam-extra \
+    pigz \
+    pinentry \
+    procps \
+    rsync \
+    shadow \
+    sudo \
+    system-group-wheel \
+    systemd \
+    time \
+    timezone \
+    tree \
+    unzip \
+    util-linux \
+    util-linux-systemd \
+    vte \
+    wget \
+    words \
+    xauth \
+    zip \
   && zypper al parallel-printer-support \
   && zypper clean \
   && sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = false/g' /etc/zypp/zypp.conf \
   && sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = no/g' /etc/zypp/zypp.conf
-  
-
