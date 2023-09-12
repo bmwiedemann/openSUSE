@@ -331,4 +331,13 @@ changelog can't be avoided.
   - build-container-8fd6c337-63c94b45.pem: New SLE RSA 4096 bit container signing key (PEM format). (forwarded request 1088284 from msmeissn)</comment>
     <requestid>1088291</requestid>
   </revision>
+  <revision rev="41" vrev="12">
+    <srcmd5>9b615a2df0edfd5ae3fb14fc187e6f3d</srcmd5>
+    <version>12.0</version>
+    <time>1694545466</time>
+    <user>anag+factory</user>
+    <comment>- remove gpg, fileutils, mktemp, sh-utils requires as they are not
+  needed by the package main functionality, but only by dumpsigs. (forwarded request 1110631 from msmeissn)</comment>
+    <requestid>1110632</requestid>
+  </revision>
 </revisionlist>

@@ -19,8 +19,6 @@
 Name:           suse-build-key
 BuildRequires:  gpg
 Provides:       build-key
-Requires:       gpg
-AutoReqProv:    off
 Summary:        The public gpg key for rpm package signature verification
 License:        GPL-2.0-or-later
 Group:          System/Packages
@@ -98,10 +96,6 @@ BuildArch:      noarch
 %define keydir  %{_prefix}/lib/rpm/gnupg/keys
 %define containerkeydir  %{_prefix}/share/container-keys/
 %define pemcontainerkeydir  %{_prefix}/share/pki/containers/
-PreReq:         fileutils
-PreReq:         gpg
-PreReq:         mktemp
-PreReq:         sh-utils
 
 %description
 This package contains the gpg keys that are used to sign the

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 12 10:08:56 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- remove gpg, fileutils, mktemp, sh-utils requires as they are not
+  needed by the package main functionality, but only by dumpsigs.
+
+-------------------------------------------------------------------
 Mon May 15 09:44:20 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated with all current changes
