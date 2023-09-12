@@ -17,7 +17,7 @@
 
 
 %define pkg_version 9.0
-%define patchlevel 1632
+%define patchlevel 1894
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim90
 %define site_runtimepath %{_datadir}/vim/site
@@ -75,12 +75,8 @@ Patch15:        %{name}-7.4-filetype_apparmor.patch
 Patch18:        %{name}-7.3-filetype_spec.patch
 Patch21:        %{name}-7.3-filetype_changes.patch
 Patch22:        %{name}-7.4-filetype_mine.patch
-Patch24:        disable-unreliable-tests.patch
-Patch25:        ignore-flaky-test-failure.patch
 Patch100:       vim73-no-static-libpython.patch
 Patch101:       vim-8.0.1568-defaults.patch
-# https://github.com/vim/vim/issues/3348 - problem more probadly in buildenv than in test
-Patch102:       vim-8.1.0297-dump3.patch
 Patch104:       vim-8.2.2411-globalvimrc.patch
 BuildRequires:  autoconf
 BuildRequires:  db-devel
@@ -234,31 +230,10 @@ cp %{SOURCE23} runtime/syntax/apparmor.vim
 %patch18 -p1
 %patch21 -p1
 %patch22 -p1
-%patch24 -p1
-%patch25 -p1
 %patch100 -p1
 %patch101 -p1
-%patch102 -p1
 %patch104 -p1
 cp %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} .
-
-# Unreliable tests
-# See also disable-unreliable-tests.patch
-rm src/testdir/test_arglist.*
-rm src/testdir/test_command_count.*
-rm src/testdir/test_cmdline.*
-rm src/testdir/test_channel.*
-rm src/testdir/test_diffmode.*
-rm src/testdir/test_mksession.*
-rm src/testdir/gen_opt_test.*
-rm src/testdir/test_options.*
-rm src/testdir/test_popupwin.*
-rm src/testdir/test_startup.*
-rm src/testdir/test_terminal*
-rm src/testdir/test_textprop.*
-rm src/testdir/test_window_cmd.*
-rm src/testdir/test_writefile.*
-rm runtime/indent/testdir/vim.*
 
 %build
 export CFLAGS="%{optflags} -Wall -pipe -fno-strict-aliasing"
@@ -492,18 +467,6 @@ mkdir -p %{buildroot}%{_localstatedir}/run/vi.recover
 
 sed -i "s@%{_bindir}/env perl@%{_bindir}/perl@" %{buildroot}%{_datadir}/vim/%{VIM_SUBDIR}/tools/*.pl
 sed -i "s@%{_bindir}/env perl@%{_bindir}/perl@" %{buildroot}%{_datadir}/vim/%{VIM_SUBDIR}/doc/vim2html.pl
-
-%check
-%ifnarch %{ix86}
-# vim does quite an extensive test relying on a full fledged terminal
-# inside OBS, stdio is redirected to a serial console (where the build log
-# is being recorded/extracted. Systemd set non-local tty by default to vt220
-# in upcoming versions
-export TERM=xterm
-# Reset the terminal scrolling region left behind by the testsuite
-trap "printf '\e[r'" EXIT
-TEST_IGNORE_FLAKY=1 LC_ALL=en_US.UTF-8 make -j1 test
-%endif
 
 %if %{with libalternatives}
 # with libalternatives

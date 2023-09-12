@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Sep 11 14:51:02 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1894, fixes the following problems
+- drop patches: disable-unreliable-tests.patch
+                ignore-flaky-test-failure.patch
+                vim-8.1.0297-dump3.patch
+- fixes:
+ + boo#1214922 - CVE-2023-4738
+ + boo#1214925 - CVE-2023-4734
+ + boo#1214924 - CVE-2023-4735
+ + boo#1214921 - CVE-2023-4751
+- droped %check - most of tests didn't work correctly in OBS
+                   and maitenace burden of this was getting too big
+  * Not all cabal config files are recognized.
+  * Duplicate code for converting float to string.
+  * Message is cleared when removing mode message (Gary Johnson).
+  * Error message is cleared when removing mode message.
+  * Expanding a pattern interferes with command line completion.
+  * Compiler warning for uninitialized variable.
+  * crypt tests hang and cause memory errors
+  * Build failure without the crypt feature.
+  * Compiler warning for unused variables without the crypt feature.
+  * The log file does not give information about window sizes.
+  * Build failure with tiny features.
+  * Filetype detection fails if file name ends in many '~'.
+  * Not all filetype file name matches are tested.
+  * zserio files are not recognized.
+  * Insufficient testing for syntax plugins.
+  * Result of syntax tests is hard to see.
+  * Syntax test failure causes script to abort.
+  * Unclear why syntax test fails on Mac.
+  * Unclear why syntax test fails on Mac.
+  * Syntax test fails when Vim window is not tall enough.
+  * Syntax test fails when detected shell type differs.
+  * One more syntax test depends on the system.
+  * Autoload files for "zig" are not installed.
+  * Termdebug: default highlight cleared when changing colorscheme.
+  * Error for using matchfuzzy() in Vim9 script returning a list of dicts.
+  * BUCK files are not recognized.
+  * Crash when using a class member twice. (Christian J. Robinson)
+  * Termdebug on MS-Windows: some file names are not recognized.
+  * Divide by zero when scrolling with 'smoothscroll' set.
+  * Empty CmdlineEnter autocommand causes errors in Ex mode.
+  * Compiler may warn for uninitialized variable.
+  * Regression test doesn't fail when fix is reverted.
+  * PEM files are not recognized.
+  * Crash syncing swapfile in new buffer when using sodium crypt. (James McCoy)
+  * Resetting local option to global value is inconsistent.
+  * Termdebug: error with more than 99 breakpoints.
+  * Tabline highlight wrong after truncated double width label.
+  * Cannot produce a status 418 or 503 message.
+  * Help for builtin functions is not sorted properly.
+  * Test may run into timeout when using valgrind.
+  * Warning for buffer in use when exiting early.
+  * Typo in syntax test input file.
+  * Blade files are not recognized.
+
+-------------------------------------------------------------------
 Sun Jul  9 05:47:19 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Use app icon generated from vimlogo.eps in source tarball; add

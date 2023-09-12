@@ -7163,4 +7163,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1098182</requestid>
   </revision>
+  <revision rev="353" vrev="1">
+    <srcmd5>654cdc4a60b3d9c54219036aba839b48</srcmd5>
+    <version>9.0.1894</version>
+    <time>1694545331</time>
+    <user>anag+factory</user>
+    <comment>- Updated to version 9.0.1894, fixes the following problems
+- drop patches: disable-unreliable-tests.patch
+                ignore-flaky-test-failure.patch
+                vim-8.1.0297-dump3.patch
+- fixes:
+ + boo#1214922 - CVE-2023-4738
+ + boo#1214925 - CVE-2023-4734
+ + boo#1214924 - CVE-2023-4735
+ + boo#1214921 - CVE-2023-4751
+- droped %check - most of tests didn't work correctly in OBS
+                   and maitenace burden of this was getting too big
+  * Not all cabal config files are recognized.
+  * Duplicate code for converting float to string.
+  * Message is cleared when removing mode message (Gary Johnson).
+  * Error message is cleared when removing mode message.
+  * Expanding a pattern interferes with command line completion.
+  * Compiler warning for uninitialized variable.
+  * crypt tests hang and cause memory errors
+  * Build failure without the crypt feature.
+  * Compiler warning for unused variables without the crypt feature.
+  * The log file does not give information about window sizes.
+  * Build failure with tiny features.
+  * Filetype detection fails if file name ends in many '~'.
+  * Not all filetype file name matches are tested.
+  * zserio files are not recognized.
+  * Insufficient testing for syntax plugins.
+  * Result of syntax tests is hard to see.
+  * Syntax test failure causes script to abort.
+  * Unclear why syntax test fails on Mac.
+  * Unclear why syntax test fails on Mac.</comment>
+    <requestid>1110341</requestid>
+  </revision>
 </revisionlist>
