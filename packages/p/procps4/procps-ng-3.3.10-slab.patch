@@ -1,64 +1,12 @@
 ---
- man/free.1         |    6 ++++++
- src/free.c         |    7 ++++++-
- library/meminfo.c  |    7 ++++++-
- src/vmstat.c       |    7 ++++++-
+ library/meminfo.c |    7 ++++++-
+ man/free.1        |    6 ++++++
+ src/free.c        |    7 ++++++-
+ src/vmstat.c      |    7 ++++++-
  4 files changed, 24 insertions(+), 3 deletions(-)
 
---- man/free.1
-+++ man/free.1	2022-03-28 11:53:32.173182702 +0000
-@@ -110,6 +110,12 @@ Switch to the wide mode. The wide mode p
- than 80 characters. In this mode \fBbuffers\fR and \fBcache\fR
- are reported in two separate columns.
- .TP
-+\fB\-C\fR, \fB\-\-full\-cache\fR
-+Add to the plain \fBCached\fR in-memory cache for files also more cache lines as
-+the \fBNFS_Unstable\fR pages sent to the server, but not yet committed to stable storage
-+and the \fBSwapCached\fR memory that once was swapped out but is swapped back.
-+Can be also enabled by the environment variable \fBPS_FULL_CACHE\fR.
-+.TP
- \fB\-c\fR, \fB\-\-count\fR \fIcount\fR
- Display the result
- .I count
---- src/free.c
-+++ src/free.c	2022-03-28 12:05:01.544663755 +0000
-@@ -90,6 +90,7 @@ static void __attribute__ ((__noreturn__
- 	fputs(_(" -v, --committed     show committed memory and commit limit\n"), out);
- 	fputs(_(" -s N, --seconds N   repeat printing every N seconds\n"), out);
- 	fputs(_(" -c N, --count N     repeat printing N times, then exit\n"), out);
-+	fputs(_(" -C, --full-cache    add further cache lines to main cache\n"), out);
- 	fputs(_(" -w, --wide          wide output\n"), out);
- 	fputs(USAGE_SEPARATOR, out);
- 	fputs(_("     --help     display this help and exit\n"), out);
-@@ -241,6 +242,7 @@ int main(int argc, char **argv)
- 		{  "committed",	no_argument,	    NULL,  'v'		},
- 		{  "seconds",	required_argument,  NULL,  's'		},
- 		{  "count",	required_argument,  NULL,  'c'		},
-+		{  "full-cache",no_argument,        NULL,  'C'		},
- 		{  "wide",	no_argument,	    NULL,  'w'		},
- 		{  "help",	no_argument,	    NULL,  HELP_OPTION	},
- 		{  "version",	no_argument,	    NULL,  'V'		},
-@@ -260,7 +262,7 @@ int main(int argc, char **argv)
- 	textdomain(PACKAGE);
- 	atexit(close_stdout);
- 
--	while ((c = getopt_long(argc, argv, "bkmghltvc:ws:V", longopts, NULL)) != -1)
-+	while ((c = getopt_long(argc, argv, "bkmghltvCc:ws:V", longopts, NULL)) != -1)
- 		switch (c) {
- 		case 'b':
- 		        check_unit_set(&unit_set);
-@@ -346,6 +348,9 @@ int main(int argc, char **argv)
- 		case 'w':
- 			flags |= FREE_WIDE;
- 			break;
-+		case 'C':
-+			setenv("PS_FULL_CACHE", "yes", 1);
-+			break;
- 		case HELP_OPTION:
- 			usage(stdout);
- 		case 'V':
 --- library/meminfo.c
-+++ library/meminfo.c	2022-03-28 12:39:29.291205555 +0000
++++ library/meminfo.c	2023-09-12 12:08:41.033738450 +0000
 @@ -3,6 +3,7 @@
   *
   * Copyright © 2015-2023 Jim Warner <james.warner@comcast.net>
@@ -87,8 +35,60 @@
  
      /* if 'available' is greater than 'total' or our calculation of mem_used
         overflows, that's symptomatic of running within a lxc container where
+--- man/free.1
++++ man/free.1	2023-09-12 12:08:41.029738522 +0000
+@@ -110,6 +110,12 @@ Switch to the wide mode. The wide mode p
+ than 80 characters. In this mode \fBbuffers\fR and \fBcache\fR
+ are reported in two separate columns.
+ .TP
++\fB\-C\fR, \fB\-\-full\-cache\fR
++Add to the plain \fBCached\fR in-memory cache for files also more cache lines as
++the \fBNFS_Unstable\fR pages sent to the server, but not yet committed to stable storage
++and the \fBSwapCached\fR memory that once was swapped out but is swapped back.
++Can be also enabled by the environment variable \fBPS_FULL_CACHE\fR.
++.TP
+ \fB\-c\fR, \fB\-\-count\fR \fIcount\fR
+ Display the result
+ .I count
+--- src/free.c
++++ src/free.c	2023-09-12 12:10:26.647842455 +0000
+@@ -92,6 +92,7 @@ static void __attribute__ ((__noreturn__
+ 	fputs(_(" -v, --committed     show committed memory and commit limit\n"), out);
+ 	fputs(_(" -s N, --seconds N   repeat printing every N seconds\n"), out);
+ 	fputs(_(" -c N, --count N     repeat printing N times, then exit\n"), out);
++	fputs(_(" -C, --full-cache    add further cache lines to main cache\n"), out);
+ 	fputs(_(" -w, --wide          wide output\n"), out);
+ 	fputs(USAGE_SEPARATOR, out);
+ 	fputs(_("     --help     display this help and exit\n"), out);
+@@ -244,6 +245,7 @@ int main(int argc, char **argv)
+ 		{  "committed",	no_argument,	    NULL,  'v'		},
+ 		{  "seconds",	required_argument,  NULL,  's'		},
+ 		{  "count",	required_argument,  NULL,  'c'		},
++		{  "full-cache",no_argument,        NULL,  'C'		},
+ 		{  "wide",	no_argument,	    NULL,  'w'		},
+ 		{  "help",	no_argument,	    NULL,  HELP_OPTION	},
+ 		{  "version",	no_argument,	    NULL,  'V'		},
+@@ -263,7 +265,7 @@ int main(int argc, char **argv)
+ 	textdomain(PACKAGE);
+ 	atexit(close_stdout);
+ 
+-	while ((c = getopt_long(argc, argv, "bkmghlLtvc:ws:V", longopts, NULL)) != -1)
++	while ((c = getopt_long(argc, argv, "bkmghlLtvCc:ws:V", longopts, NULL)) != -1)
+ 		switch (c) {
+ 		case 'b':
+ 		        check_unit_set(&unit_set);
+@@ -352,6 +354,9 @@ int main(int argc, char **argv)
+ 		case 'w':
+ 			flags |= FREE_WIDE;
+ 			break;
++		case 'C':
++			setenv("PS_FULL_CACHE", "yes", 1);
++			break;
+ 		case HELP_OPTION:
+ 			usage(stdout);
+ 		case 'V':
 --- src/vmstat.c
-+++ src/vmstat.c	2022-03-28 12:41:52.744612074 +0000
++++ src/vmstat.c	2023-09-12 12:08:41.033738450 +0000
 @@ -230,6 +230,7 @@ static void __attribute__ ((__noreturn__
      fputs(_(" -p, --partition <dev>  partition specific statistics\n"), out);
      fputs(_(" -S, --unit <char>      define display unit\n"), out);
@@ -97,7 +97,7 @@
      fputs(_(" -t, --timestamp        show timestamp\n"), out);
      fputs(_(" -y, --no-first         skips first line of output\n"), out);
      fputs(USAGE_SEPARATOR, out);
-@@ -952,6 +953,7 @@ int main(int argc, char *argv[])
+@@ -951,6 +952,7 @@ int main(int argc, char *argv[])
          {"partition", required_argument, NULL, 'p'},
          {"unit", required_argument, NULL, 'S'},
          {"wide", no_argument, NULL, 'w'},
@@ -105,7 +105,7 @@
          {"timestamp", no_argument, NULL, 't'},
          {"help", no_argument, NULL, 'h'},
          {"version", no_argument, NULL, 'V'},
-@@ -968,7 +970,7 @@ int main(int argc, char *argv[])
+@@ -967,7 +969,7 @@ int main(int argc, char *argv[])
      atexit(close_stdout);
  
      while ((c =
@@ -114,7 +114,7 @@
          switch (c) {
          case 'V':
              printf(PROCPS_NG_VERSION);
-@@ -1035,6 +1037,9 @@ int main(int argc, char *argv[])
+@@ -1034,6 +1036,9 @@ int main(int argc, char *argv[])
          case 't':
              t_option = 1;
              break;

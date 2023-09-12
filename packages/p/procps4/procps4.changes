@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Sep 12 12:33:45 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to procps-ng-4.0.4
+  * library (API & ABI unchanged)
+    increment revision: 0:2:0
+    tolerates all potential 'cpuinfo' formats              issue #272
+    restore the proper main thread tics valuations         issue #280
+    Remove myself from proc count                          merge #193
+    Refactor the escape code                               Debian #1035649
+  * free: -L one line output                               issue #156
+  * pgrep: Use only --signal option for signal             Debian #1031765
+  * pgrep: suppress >15 warning if using regex             Debian #1037450
+  * pidof: Add -t option to show threads                   merge #190
+  * pmap: Reset totals between processes                   issue #298
+  * ps: fixed missing or corrupted fields with -m option   Debian #1036631, issue #279
+  * ps: Fix buffer overflow in -C option CVE-2023-4016     Debian #1042887, issue #297
+  * ps: Add --signames to show signal names in masks       merge #98
+  * sysctl: -N show names                                  merge #198, RH #2222056
+  * tests: dont compare floats with ==                     issue #271
+  * tests: skips tests if maps missing                     merge #197, Gentoo #583036
+  * top: bad command line arguments yield EXIT_FAILURE     issue #273
+  * top: avoids keystroke induced '%Cpu' distortions
+  * top: includes VM (guest) tics in 'system' overhead     issue #274
+  * top: includes VM (guest) tics with '!' toggle          merge #179
+  * top: lessen summary cpu distortions on first display   merge #180
+  * top: better backspace handling wtth line edits         issue #278
+  * vmstat: Print guest time in non-wide mode
+  * w: Fix musl UT_HOSTSIZE issue
+- Remove patches now upstream
+  * CVE-2023-4016.patch
+  * procps-ng-4.0.3-logind.patch
+- Port patches
+  * procps-ng-3.3.10-errno.patch
+  * procps-ng-3.3.10-slab.patch
+  * procps-ng-3.3.10-xen.dif
+  * procps-ng-3.3.11-pmap4suse.patch
+  * procps-ng-3.3.8-petabytes.patch
+  * procps-ng-3.3.8-tinfo.dif
+  * procps-ng-3.3.9-w-notruncate.diff
+  * procps-v3.3.3-columns.dif
+  * procps-v3.3.3-read-sysctls-also-from-boot-sysctl.conf-kernelversion.diff
+
+-------------------------------------------------------------------
 Fri Aug 18 11:10:05 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Modify patch procps-ng-3.3.9-w-notruncate.diff

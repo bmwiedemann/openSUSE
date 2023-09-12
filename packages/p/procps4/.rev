@@ -74,4 +74,41 @@
 - procps-ng-3.3.9-w-notruncate.diff: Rebase</comment>
     <requestid>1104662</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d160448480af365d8c649aeef237c9ec</srcmd5>
+    <version>4.0.4</version>
+    <time>1694545443</time>
+    <user>anag+factory</user>
+    <comment>- Update to procps-ng-4.0.4
+  * library (API &amp; ABI unchanged)
+    increment revision: 0:2:0
+    tolerates all potential 'cpuinfo' formats              issue #272
+    restore the proper main thread tics valuations         issue #280
+    Remove myself from proc count                          merge #193
+    Refactor the escape code                               Debian #1035649
+  * free: -L one line output                               issue #156
+  * pgrep: Use only --signal option for signal             Debian #1031765
+  * pgrep: suppress &gt;15 warning if using regex             Debian #1037450
+  * pidof: Add -t option to show threads                   merge #190
+  * pmap: Reset totals between processes                   issue #298
+  * ps: fixed missing or corrupted fields with -m option   Debian #1036631, issue #279
+  * ps: Fix buffer overflow in -C option CVE-2023-4016     Debian #1042887, issue #297
+  * ps: Add --signames to show signal names in masks       merge #98
+  * sysctl: -N show names                                  merge #198, RH #2222056
+  * tests: dont compare floats with ==                     issue #271
+  * tests: skips tests if maps missing                     merge #197, Gentoo #583036
+  * top: bad command line arguments yield EXIT_FAILURE     issue #273
+  * top: avoids keystroke induced '%Cpu' distortions
+  * top: includes VM (guest) tics in 'system' overhead     issue #274
+  * top: includes VM (guest) tics with '!' toggle          merge #179
+  * top: lessen summary cpu distortions on first display   merge #180
+  * top: better backspace handling wtth line edits         issue #278
+  * vmstat: Print guest time in non-wide mode
+  * w: Fix musl UT_HOSTSIZE issue
+- Remove patches now upstream
+  * CVE-2023-4016.patch
+  * procps-ng-4.0.3-logind.patch
+- Port patches</comment>
+    <requestid>1110606</requestid>
+  </revision>
 </revisionlist>

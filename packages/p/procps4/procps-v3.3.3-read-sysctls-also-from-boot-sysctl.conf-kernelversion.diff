@@ -5,7 +5,7 @@
 
 --- man/sysctl.8
 +++ man/sysctl.8	2022-03-29 10:21:47.926686046 +0000
-@@ -122,6 +122,8 @@ will read files from directories in the
+@@ -123,6 +123,8 @@ will read files from directories in the
  order from top to bottom. Once a file of a given filename is loaded, any
  file of the same name in subsequent directories is ignored.
  
@@ -24,7 +24,7 @@
  #include <unistd.h>
  #include <ctype.h>
  
-@@ -811,6 +812,7 @@ static int sortpairs(const void *A, cons
+@@ -808,6 +809,7 @@ static int sortpairs(const void *A, cons
  static int PreloadSystem(SettingList *setlist)
  {
  	unsigned di, i;
@@ -32,7 +32,7 @@
  	const char *dirs[] = {
  		"/etc/sysctl.d",
  		"/run/sysctl.d",
-@@ -875,6 +877,16 @@ static int PreloadSystem(SettingList *se
+@@ -872,6 +874,16 @@ static int PreloadSystem(SettingList *se
  	}
  	qsort(cfgs, ncfgs, sizeof(struct cfg *), sortpairs);
  

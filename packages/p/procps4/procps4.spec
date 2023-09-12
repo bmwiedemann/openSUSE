@@ -26,7 +26,7 @@
 %bcond_without  pidof
 %bcond_without  nls
 Name:           procps4
-Version:        4.0.3
+Version:        4.0.4
 Release:        0
 Summary:        The ps utilities for /proc
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -58,9 +58,6 @@ Patch32:        procps-ng-3.3.10-errno.patch
 Patch33:        procps-ng-3.3.11-pmap4suse.patch
 # PATCH-FIX-SUSE -- Avoid float errors on 32bit architectures
 Patch37:        procps-ng-4.0.0-floats.dif
-# PATCH-FIX-UPSTREAM -- bsc#1214290
-Patch38:        CVE-2023-4016.patch
-Patch39:        procps-ng-4.0.3-logind.patch
 BuildRequires:  automake
 BuildRequires:  dejagnu
 BuildRequires:  diffutils
@@ -134,7 +131,6 @@ the process information pseudo-file system.
 %prep
 %setup -q -n procps-ng-%{version}
 %patch1
-%patch39 -p1
 %patch3 -p1 -b .trcate
 %patch7 -b .rof
 %patch8 -b .cache
@@ -143,14 +139,13 @@ the process information pseudo-file system.
 %patch14 -b .ovrflw
 %patch17 -b .sysctl
 %patch18
-%patch20
+%patch20 -b .p20
 %patch21
 %patch28
 %patch31 -p1
-%patch32
+%patch32 -b .p32
 %patch33 -b .pmap4us
 %patch37
-%patch38
 
 %build
 test -s .tarball-version || echo %{version} > .tarball-version

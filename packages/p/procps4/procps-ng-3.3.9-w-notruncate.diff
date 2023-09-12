@@ -1,10 +1,10 @@
 ---
- procps-ng-4.0.3/man/w.1 |    3 +++
- procps-ng-4.0.3/src/w.c |   27 +++++++++++++++++++++++----
+ procps-ng-4.0.4/man/w.1 |    3 +++
+ procps-ng-4.0.4/src/w.c |   27 +++++++++++++++++++++++----
  2 files changed, 26 insertions(+), 4 deletions(-)
 
---- procps-ng-4.0.3/man/w.1
-+++ procps-ng-4.0.3/man/w.1	2023-08-18 11:06:24.615573481 +0000
+--- procps-ng-4.0.4/man/w.1
++++ procps-ng-4.0.4/man/w.1	2023-09-12 12:03:09.111689620 +0000
 @@ -51,6 +51,9 @@ and a
  \fB\-s\fR, \fB\-\-short\fR
  Use the short format.  Don't print the login time, JCPU or PCPU times.
@@ -15,9 +15,9 @@
  \fB\-f\fR, \fB\-\-from\fR
  Toggle printing the
  .B from
---- procps-ng-4.0.3/src/w.c
-+++ procps-ng-4.0.3/src/w.c	2023-08-18 11:06:24.615573481 +0000
-@@ -217,7 +217,8 @@ static void print_from(
+--- procps-ng-4.0.4/src/w.c
++++ procps-ng-4.0.4/src/w.c	2023-09-12 12:06:20.612256361 +0000
+@@ -220,7 +220,8 @@ static void print_from(
  	    if (r < 0 || host == NULL)
  	        print_host("", 0, fromlen);
  	    else {
@@ -27,7 +27,7 @@
  		free(host);
  	    }
  	} else {
-@@ -510,7 +511,7 @@ static void showinfo(
+@@ -513,7 +514,7 @@ static void showinfo(
              const char *session, const char *name,
  #endif
              utmp_t * u, int formtype, int maxcmd, int from,
@@ -36,28 +36,28 @@
              const int pids)
  {
      unsigned long long jcpu, pcpu;
-@@ -574,7 +575,19 @@ static void showinfo(
+@@ -576,7 +577,19 @@ static void showinfo(
      uname[UT_NAMESIZE] = '\0';
  
      if (formtype) {
--        printf("%-*.*s%-9.8s", userlen + 1, userlen, uname, tty+5);
+-        printf("%-*.*s%-9.8s", userlen + 1, userlen, uname, tty + 5);
 +        int utlnlen = 8;
-+	if (formtype > 1) {
-+	    userlen = strnlen(uname, UT_NAMESIZE);
-+	    if (u) {
-+	        fromlen = strnlen(u->ut_host, UT_HOSTSIZE);
-+	        utlnlen = strnlen(u->ut_line, UT_LINESIZE);
-+	    } else {
-+	        fromlen = 0;
-+		utlnlen = strlen (tty+5);
-+ 	    }
-+	    maxcmd = MAX_CMD_WIDTH;
-+	}
-+	printf("%-*.*s%-*.*s", userlen + 1, userlen, uname, utlnlen + 1, utlnlen, tty+5);
++        if (formtype > 1) {
++            userlen = strnlen(uname, UT_NAMESIZE);
++            if (u) {
++                fromlen = strnlen(u->ut_host, UT_HOSTSIZE);
++                utlnlen = strnlen(u->ut_line, UT_LINESIZE);
++            } else {
++                fromlen = 0;
++                utlnlen = strlen (tty+5);
++            }
++            maxcmd = MAX_CMD_WIDTH;
++        }
++        printf("%-*.*s%-*.*s", userlen + 1, userlen, uname, utlnlen + 1, utlnlen, tty+5);
  #if (defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)) && defined(HAVE_SD_SESSION_GET_LEADER)
          if (session) {
- 	    uint64_t ltime;
-@@ -657,6 +670,7 @@ static void __attribute__ ((__noreturn__
+             uint64_t ltime;
+@@ -658,6 +671,7 @@ static void __attribute__ ((__noreturn__
  	fputs(_(" -h, --no-header     do not print header\n"),out);
  	fputs(_(" -u, --no-current    ignore current process username\n"),out);
  	fputs(_(" -s, --short         short format\n"),out);
@@ -65,7 +65,7 @@
  	fputs(_(" -f, --from          show remote hostname field\n"),out);
  	fputs(_(" -o, --old-style     old style output\n"),out);
  	fputs(_(" -i, --ip-addr       display IP address instead of hostname (if possible)\n"), out);
-@@ -695,6 +709,7 @@ int main(int argc, char **argv)
+@@ -696,6 +710,7 @@ int main(int argc, char **argv)
  		{"no-header", no_argument, NULL, 'h'},
  		{"no-current", no_argument, NULL, 'u'},
  		{"short", no_argument, NULL, 's'},
@@ -73,7 +73,7 @@
  		{"from", no_argument, NULL, 'f'},
  		{"old-style", no_argument, NULL, 'o'},
  		{"ip-addr", no_argument, NULL, 'i'},
-@@ -717,7 +732,7 @@ int main(int argc, char **argv)
+@@ -718,7 +733,7 @@ int main(int argc, char **argv)
  #endif
  
  	while ((ch =
@@ -82,7 +82,7 @@
  		switch (ch) {
  		case 'h':
  			header = 0;
-@@ -725,6 +740,10 @@ int main(int argc, char **argv)
+@@ -726,6 +741,10 @@ int main(int argc, char **argv)
  		case 's':
  			longform = 0;
  			break;

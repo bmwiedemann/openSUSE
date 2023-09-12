@@ -4,7 +4,7 @@
  2 files changed, 44 insertions(+), 20 deletions(-)
 
 --- src/pmap.c
-+++ src/pmap.c	2022-10-20 13:35:47.074351812 +0000
++++ src/pmap.c	2023-09-12 12:23:39.537610124 +0000
 @@ -59,7 +59,9 @@ const char *nls_Address,
  	   *nls_Kbytes,
  	   *nls_Mode,
@@ -39,7 +39,7 @@
  
  static unsigned shm_minor = ~0u;
  
-@@ -542,12 +546,17 @@ static int one_proc (struct pids_stack *
+@@ -544,12 +548,17 @@ static int one_proc (struct pids_stack *
  	char perms[32] = "";
  	const char *cp2 = NULL;
  	unsigned long long rss = 0ull;
@@ -57,7 +57,7 @@
  
  	printf("%u:   %s\n", PIDS_VAL(tgid, s_int, p, Pids_info), PIDS_VAL(cmdline, str, p, Pids_info));
  
-@@ -570,13 +579,15 @@ static int one_proc (struct pids_stack *
+@@ -572,13 +581,15 @@ static int one_proc (struct pids_stack *
  	if (x_option) {
  		maxw1 = 16;
  		if (sizeof(long) == 4) maxw1 = 8;
@@ -74,7 +74,7 @@
  			maxw5 = justify_print(nls_Mode, maxw5, 0);
  			justify_print(nls_Mapping, 0, 0);
  		}
-@@ -616,6 +627,11 @@ static int one_proc (struct pids_stack *
+@@ -618,6 +629,11 @@ static int one_proc (struct pids_stack *
  					total_rss += smap_value;
  					continue;
  				}
@@ -86,7 +86,7 @@
  				if (strcmp("Shared_Dirty", smap_key) == 0) {
  					shared_dirty = smap_value;
  					total_shared_dirty += smap_value;
-@@ -628,16 +644,20 @@ static int one_proc (struct pids_stack *
+@@ -630,16 +646,20 @@ static int one_proc (struct pids_stack *
  				}
  				if (strcmp("Swap", smap_key) == 0) {
  					/* doesn't matter as long as last */
@@ -109,7 +109,7 @@
                      diff = end = 0;
                      perms[0] = '\0';
                      cp2 = NULL;
-@@ -671,7 +691,6 @@ static int one_proc (struct pids_stack *
+@@ -673,7 +693,6 @@ static int one_proc (struct pids_stack *
  		if (perms[3] == 's')
  			total_shared += diff;
  		if (perms[3] == 'p') {
@@ -117,7 +117,7 @@
  			if (perms[1] == 'w')
  				total_private_writeable += diff;
  			else
-@@ -723,17 +742,21 @@ static int one_proc (struct pids_stack *
+@@ -725,17 +744,21 @@ static int one_proc (struct pids_stack *
  				justify_print("----------------", maxw1, 0);
  			justify_print("-------", maxw2, 1);
  			justify_print("-------", maxw3, 1);
@@ -141,7 +141,7 @@
  		}
  		if (d_option) {
  			printf
-@@ -1046,16 +1069,18 @@ int main(int argc, char **argv)
+@@ -1052,16 +1075,18 @@ int main(int argc, char **argv)
  	while ((c = getopt_long(argc, argv, "xXrdqA:hVcC:nN:p", longopts, NULL)) != -1)
  		switch (c) {
  		case 'x':
@@ -163,7 +163,7 @@
  		case 'q':
  			q_option = 1;
 --- testsuite/pmap.test/pmap.exp
-+++ testsuite/pmap.test/pmap.exp	2022-10-20 13:35:47.074351812 +0000
++++ testsuite/pmap.test/pmap.exp	2023-09-12 12:25:22.375764402 +0000
 @@ -8,16 +8,16 @@ set pmap_procname "${mypid}:\\s+\\S+\[^\
  set pmap_initname "1:\\s+\\S+\[^\\r\]+\\s+"
  set pmap_std_header $pmap_procname
@@ -206,12 +206,12 @@
  set test "pmap device output quiet (dq)"
  spawn $pmap -dq $mypid
  expect_table $test $pmap_procname $pmap_device_items "\$"
-@@ -47,7 +46,7 @@ expect_table $test $pmap_procname $pmap_
+@@ -50,7 +49,7 @@ if  { [ file readable "/proc/self/smaps"
+ } else {
+     set test "pmap extended output"
+     spawn $pmap -x $mypid
+-    expect_table $test $pmap_ext_header $pmap_ext_items $pmap_ext_footer
++    expect_table $test $pmap_std_header $pmap_std_items $pmap_std_footer
  
- set test "pmap extended output"
- spawn $pmap -x $mypid
--expect_table $test $pmap_ext_header $pmap_ext_items $pmap_ext_footer
-+expect_table $test $pmap_std_header $pmap_std_items $pmap_std_footer
- 
- # -X and -XX have no real format as its dependent on smaps
- set test "pmap extra extended output"
+     # -X and -XX have no real format as its dependent on smaps
+     set test "pmap extra extended output"
