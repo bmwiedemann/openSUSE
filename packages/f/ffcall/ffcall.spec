@@ -1,7 +1,7 @@
 #
 # spec file for package ffcall
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ URL:            https://www.gnu.org/software/libffcall/
 Source0:        https://ftp.gnu.org/gnu/libffcall/libffcall-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/libffcall/libffcall-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=libffcall&download=1#/%{name}.keyring
+Patch1:         riscv-pic.patch
 Provides:       ffcall-devel
 Requires:       libavcall1 = %{version}-%{release}
 Requires:       libcallback1 = %{version}-%{release}
@@ -100,6 +101,7 @@ functions.
 
 %prep
 %setup -q -n libffcall-%{version}
+%patch1 -p1
 if ! test -e /usr/include/asm/cachectl.h
 then
     # FIX-OPENSUSE -- Remove this if there is no <asm/cachectl.h>
@@ -152,6 +154,9 @@ EOF
 for page in *; do
   mv $page %{name}-$page
 done
+
+%check
+make check
 
 %post   -n libavcall1 -p /sbin/ldconfig
 %postun -n libavcall1 -p /sbin/ldconfig

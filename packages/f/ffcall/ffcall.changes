@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 18 17:00:35 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- riscv-pic.patch: Use PIC-compatible code for vacall
+  (https://savannah.gnu.org/bugs/?62422)
+- Run testsuite
+
+-------------------------------------------------------------------
 Wed Apr 27 08:57:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint report "libffcall0.x86_64: E:

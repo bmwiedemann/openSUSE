@@ -199,4 +199,14 @@
   package suffix: 1&quot; (forwarded request 973063 from jengelh)</comment>
     <requestid>973065</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>044472ef5827204ecaf09b18ab3f6676</srcmd5>
+    <version>2.4</version>
+    <time>1694545440</time>
+    <user>anag+factory</user>
+    <comment>- riscv-pic.patch: Use PIC-compatible code for vacall
+  (https://savannah.gnu.org/bugs/?62422)
+- Run testsuite (forwarded request 1104705 from Andreas_Schwab)</comment>
+    <requestid>1110584</requestid>
+  </revision>
 </revisionlist>
