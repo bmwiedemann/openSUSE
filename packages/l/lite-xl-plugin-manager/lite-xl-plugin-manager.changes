@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Sep 11 17:17:58 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Correction of licenses based on the legaldb report
+  * Main package is under MIT, however archive contains bundled
+    libraries, mostly licensed under BSD-3-Clause, Apache-2.0 and Zlib.
+  * Use SUSE-GPL-2.0-with-linking-exception identifier instead of spdx
+    which is not recognized
+
+-------------------------------------------------------------------
+Sun Sep 10 19:01:49 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.11+git20230910.4129734:
+  * Added the ability to unstub plugins.
+  * Constructed bottles in the TMP directory, rather than directly in-place.
+  * Updated CHANGELOG.md.
+  * Fix installing plugins with version containing `.`
+  * Don't create user `init.lua` if no custom config was specified
+
+-------------------------------------------------------------------
+Thu Sep  7 20:08:58 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Leap 15.6 will be using mbedtls for v3 and mbedtls-2 for v2,
+  like Tumbleweed
+
+-------------------------------------------------------------------
 Sun Aug 27 18:50:53 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 1.0.10+git20230827.2452630:

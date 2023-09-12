@@ -15,19 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define baseprogramname lite-xl
 Name:           lite-xl-plugin-manager
-Version:        1.0.10+git20230827.2452630
+Version:        1.0.11+git20230910.4129734
 Release:        0
 Summary:        A %{baseprogramname} plugin manager
 %if 0%{?suse_version} > 1500
 %else
 Group:          Productivity/Text/Editors
 %endif
-License:        MIT
+License:        Apache-2.0 AND BSD-3-Clause AND MIT AND Zlib AND SUSE-GPL-2.0-with-linking-exception
 URL:            https://github.com/lite-xl/lite-xl-plugin-manager
 Source:         %{name}-%{version}.tar.gz
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600
 BuildRequires:  mbedtls-2-devel
 %else
 BuildRequires:  mbedtls-devel
@@ -72,4 +73,3 @@ install -D -m 0755 "%{_arch}-suse-linux/lpm" "%{buildroot}/%{_bindir}/lpm"
 %doc README.md CHANGELOG.md
 
 %changelog
-

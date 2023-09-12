@@ -23,4 +23,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1108733</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>df943a576b123f38678e333c28be2e0b</srcmd5>
+    <version>1.0.11+git20230910.4129734</version>
+    <time>1694545343</time>
+    <user>anag+factory</user>
+    <comment>- Correction of licenses based on the legaldb report
+  * Main package is under MIT, however archive contains bundled
+    libraries, mostly licensed under BSD-3-Clause, Apache-2.0 and Zlib.
+  * Use SUSE-GPL-2.0-with-linking-exception identifier instead of spdx
+    which is not recognized
+
+- Update to version 1.0.11+git20230910.4129734:
+  * Added the ability to unstub plugins.
+  * Constructed bottles in the TMP directory, rather than directly in-place.
+  * Updated CHANGELOG.md.
+  * Fix installing plugins with version containing `.`
+  * Don't create user `init.lua` if no custom config was specified
+
+- Leap 15.6 will be using mbedtls for v3 and mbedtls-2 for v2,
+  like Tumbleweed</comment>
+    <requestid>1110353</requestid>
+  </revision>
 </revisionlist>
