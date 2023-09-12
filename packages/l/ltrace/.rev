@@ -406,4 +406,24 @@
     <comment>- ppc64le-use-after-free.patch: fix use after free (forwarded request 1078433 from Andreas_Schwab)</comment>
     <requestid>1078434</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>388af793701f7ac0b674aa85910e4243</srcmd5>
+    <version>0.7.91+git20230705.8eabf68</version>
+    <time>1694545331</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.7.91+git20230705.8eabf68:
+  * Add missing semi-colon
+  * ./autogen.sh is needed before ./configure
+  * sysdeps: x86: update syscall tables
+  * testsuite: system_calls: recognize statx
+  * testsuite: system_calls: recognize newfstatat
+  * PowerPC Fix HFA FP/GPR parameter logic typo
+  * Add -Wno-psabi to avoid compilation warning/failure
+  * Avoid infinite loop when single stepping into PLT
+  * PowerPC ltrace-elf handle LEP/GEP offset
+  * riscv64: add initial riscv64 support
+- arm-trace.patch, ltrace-0.7.91-ppc64le-scv.patch, readdir.patch: remove
+- Rediff remaining patches (forwarded request 1110336 from Andreas_Schwab)</comment>
+    <requestid>1110337</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 11 13:01:23 UTC 2023 - schwab@suse.de
+
+- Update to version 0.7.91+git20230705.8eabf68:
+  * Add missing semi-colon
+  * ./autogen.sh is needed before ./configure
+  * sysdeps: x86: update syscall tables
+  * testsuite: system_calls: recognize statx
+  * testsuite: system_calls: recognize newfstatat
+  * PowerPC Fix HFA FP/GPR parameter logic typo
+  * Add -Wno-psabi to avoid compilation warning/failure
+  * Avoid infinite loop when single stepping into PLT
+  * PowerPC ltrace-elf handle LEP/GEP offset
+  * riscv64: add initial riscv64 support
+- arm-trace.patch, ltrace-0.7.91-ppc64le-scv.patch, readdir.patch: remove
+- Rediff remaining patches
+
+-------------------------------------------------------------------
 Tue Apr 11 10:59:57 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - ppc64le-use-after-free.patch: fix use after free

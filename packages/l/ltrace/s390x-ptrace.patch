@@ -1,8 +1,8 @@
-Index: ltrace-0.7.91/expr.c
+Index: ltrace-0.7.91+git20230705.8eabf68/expr.c
 ===================================================================
---- ltrace-0.7.91.orig/expr.c
-+++ ltrace-0.7.91/expr.c
-@@ -171,85 +171,6 @@ expr_destroy(struct expr_node *node)
+--- ltrace-0.7.91+git20230705.8eabf68.orig/expr.c
++++ ltrace-0.7.91+git20230705.8eabf68/expr.c
+@@ -171,89 +171,6 @@ expr_destroy(struct expr_node *node)
  	abort();
  }
  
@@ -23,11 +23,14 @@ Index: ltrace-0.7.91/expr.c
 -int
 -expr_clone(struct expr_node *retp, const struct expr_node *node)
 -{
+-	struct expr_node *nlhs;
+-	/* Must be a known value to distinguish EXPR_OP_CALL2
+-	   from EXPR_OP_CALL1 or EXPR_OP_UP.  */
+-	struct expr_node *nrhs = NULL;
+-
 -	*retp = *node;
 -
 -	switch (node->kind) {
--		struct expr_node *nlhs;
--		struct expr_node *nrhs;
 -
 -	case EXPR_OP_ARGNO:
 -	case EXPR_OP_SELF:
@@ -70,7 +73,8 @@ Index: ltrace-0.7.91/expr.c
 -	case EXPR_OP_CALL1:
 -		if (expr_alloc_and_clone(&nlhs, node->lhs, node->own_lhs) < 0) {
 -			if (node->kind == EXPR_OP_CALL2
--			    && node->u.call.own_rhs) {
+-			    && node->u.call.own_rhs
+-			    && nrhs != NULL) {
 -				expr_destroy(nrhs);
 -				free(nrhs);
 -				return -1;
@@ -88,10 +92,10 @@ Index: ltrace-0.7.91/expr.c
  int
  expr_is_compile_constant(struct expr_node *node)
  {
-Index: ltrace-0.7.91/expr.h
+Index: ltrace-0.7.91+git20230705.8eabf68/expr.h
 ===================================================================
---- ltrace-0.7.91.orig/expr.h
-+++ ltrace-0.7.91/expr.h
+--- ltrace-0.7.91+git20230705.8eabf68.orig/expr.h
++++ ltrace-0.7.91+git20230705.8eabf68/expr.h
 @@ -125,9 +125,6 @@ void expr_init_cb2(struct expr_node *nod
  /* Release the data inside NODE.  Doesn't free NODE itself.  */
  void expr_destroy(struct expr_node *node);

@@ -16,20 +16,16 @@
 #
 
 
-%define git_id gea8928d
 Name:           ltrace
-Version:        0.7.91
+Version:        0.7.91+git20230705.8eabf68
 Release:        0
 Summary:        Library and system call tracer for programs
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://ltrace.org/
-Source:         ltrace-%{version}-%{git_id}.tar.bz2
+Source:         ltrace-%{version}.tar.bz2
 Source2:        baselibs.conf
-Patch0:         readdir.patch
-Patch1:         https://src.fedoraproject.org/rpms/ltrace/raw/rawhide/f/ltrace-0.7.91-ppc64le-scv.patch
 Patch3:         ppc-ptrace.patch
-Patch4:         arm-trace.patch
 Patch5:         gcc9-printf-s-null-argument.patch
 Patch6:         lens-double-free.patch
 Patch7:         gcc9-Wlto-type-mismatch.patch
@@ -43,7 +39,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libtool
-ExclusiveArch:  %{ix86} s390x ppc ppc64 ppc64le %{arm} x86_64 alpha ia64 m68k aarch64
+ExclusiveArch:  %{ix86} s390x ppc ppc64 ppc64le %{arm} x86_64 alpha ia64 m68k aarch64 riscv64
 
 %description
 Ltrace is a program that runs the specified command until it exits. It
@@ -59,10 +55,7 @@ child processes may fail or some things may not work as expected.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 %patch3 -p1
-%patch4 -p1
 %patch5
 %patch6 -p1
 %patch7 -p1
@@ -76,7 +69,7 @@ export CFLAGS="%{optflags} -Wall -Wno-unused-local-typedefs"
 %make_build
 
 %check
-%if 1
+%if !0%{?qemu_user_space_build}
 if timeout 180 make check
 then
 	echo 'no make check errors' > testresults.txt
