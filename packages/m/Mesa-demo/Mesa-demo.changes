@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 10 21:52:01 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- don't package "bitmap" sample (conflict with /usr/bin/bitmap of
+  package bitmap) {boo#1215185)
+
+-------------------------------------------------------------------
 Thu Mar 30 21:00:29 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - enabled osmesa and libdrm support

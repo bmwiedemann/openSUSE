@@ -149,6 +149,8 @@ cp -a %{buildroot}%{_bindir}/{glxgears,glxinfo,pbinfo} \
 %exclude %{_bindir}/xeglthreads
 # conflict with line of util-linux
 %exclude %{_bindir}/line
+# conflict with bitmap of package bitmap
+%exclude %{_bindir}/bitmap
 
 %files x
 %defattr(-,root,root)
