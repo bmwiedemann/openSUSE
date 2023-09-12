@@ -1,7 +1,7 @@
 #
 # spec file for package appx-util
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           appx-util
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Utility to create Microsoft .appx packages
 
@@ -26,8 +26,7 @@ Summary:        Utility to create Microsoft .appx packages
 License:        BSD-3-Clause AND MPL-2.0
 URL:            https://github.com/OSInside/appx-util
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM bsc#1205042 Add OpenSSL 3.0 support
-Patch0:         https://github.com/OSInside/appx-util/commit/504dad8ca52a44eb6f3a656368f6708b63f73c10.patch#/appx-util-openssl3-support.patch
+
 BuildRequires:  cmake >= 3.11
 BuildRequires:  gcc-c++
 BuildRequires:  make
