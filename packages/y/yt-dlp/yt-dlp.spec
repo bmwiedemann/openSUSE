@@ -44,7 +44,6 @@ Requires:       ffmpeg
 %if 0%{?suse_version} > 1500
 Requires:       python3
 Suggests:       python3-Brotli
-Suggests:       python3-brotlicffi
 Suggests:       python3-certifi
 Suggests:       python3-mutagen
 Suggests:       python3-pycryptodomex

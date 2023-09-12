@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 11 20:46:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove suggests on brotlicffi - this is only for != cpython
+
+-------------------------------------------------------------------
 Fri Jul  7 04:49:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.07.06
@@ -47,7 +52,7 @@ Fri Mar  3 23:33:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Sat Feb 18 06:08:22 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
-- Update to release 2023.02.17 
+- Update to release 2023.02.17
   * Merge youtube-dl: Upto commit/2dd6c6e (Feb 17 2023)
   * Fix --concat-playlist
   * Imply --no-progress when --print
@@ -675,11 +680,11 @@ Tue Jul 28 08:43:35 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to release 2020.07.28
   * [youtube] Fix sigfunc name extraction
-  * [youtube] Improve description extraction 
+  * [youtube] Improve description extraction
   * [wistia] Restrict embed regular expression
-  * [youtube] Prevent excess HTTP 301 
+  * [youtube] Prevent excess HTTP 301
   * [youtube:playlists] Extend URL regular expression
-  * [bellmedia] Add support for cp24.com clip URLs 
+  * [bellmedia] Add support for cp24.com clip URLs
   * [brightcove] Improve embed detection
 
 -------------------------------------------------------------------

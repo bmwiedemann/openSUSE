@@ -199,4 +199,17 @@
     <comment>- Update to release 2023.07.06</comment>
     <requestid>1104209</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>7dbc72c5ef84d93d14815e712230bc74</srcmd5>
+    <version>2023.07.06</version>
+    <time>1694545367</time>
+    <user>anag+factory</user>
+    <comment>- remove suggests on brotlicffi - this is only for != cpython
+
+- Update to release 2023.02.17
+  * [youtube] Improve description extraction
+  * [youtube] Prevent excess HTTP 301
+  * [bellmedia] Add support for cp24.com clip URLs (forwarded request 1110370 from dirkmueller)</comment>
+    <requestid>1110391</requestid>
+  </revision>
 </revisionlist>
