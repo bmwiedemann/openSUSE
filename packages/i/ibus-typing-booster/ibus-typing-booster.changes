@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 12 09:39:35 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.24.1
+- Support several backends for playing sounds
+  (Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=2237675)
+- Update UnicodeData.txt to current Unicode 15.1.0
+  and emoji data files to current Unicode 15.1
+- Update emoji annotations from CLDR
+
+-------------------------------------------------------------------
 Fri Sep 01 15:07:05 UTC 2023 - maiku.fabian@gmail.com
 
 - Update to 2.24.0
