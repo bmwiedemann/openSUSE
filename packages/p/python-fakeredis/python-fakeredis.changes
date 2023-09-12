@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 11 20:38:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18.1:
+  * Fix stream type issue #233
+
+-------------------------------------------------------------------
 Mon Sep  4 15:53:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18.0:
@@ -90,7 +96,7 @@ Wed Apr 19 07:46:41 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
   * Add support for MAXLEN, MAXID, LIMIT arguments for XADD command
   * Add support for ZRANGE arguments for ZRANGE command #127
   * Relax python version requirement #128
-  * Support for redis-py 4.5.0 #125 
+  * Support for redis-py 4.5.0 #125
 
 -------------------------------------------------------------------
 Fri Feb 10 10:40:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -175,7 +181,7 @@ Fri Sep 23 13:27:54 UTC 2022 - pgajdos@suse.com
 - version update to 1.9.1
   * Zrange byscore by @cunla in #44
   * Expire options by @cunla in #46
-  * Enable redis7 support by @cunla in #42 
+  * Enable redis7 support by @cunla in #42
 - added patches
   fix https://github.com/cunla/fakeredis-py/issues/50
   + python-fakeredis-no-six.patch

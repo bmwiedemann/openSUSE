@@ -259,4 +259,16 @@
   * Fix All aio.FakeRedis instances share the same server #218</comment>
     <requestid>1108924</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ebecda6442e7f9376b5ed4372544f461</srcmd5>
+    <version>2.18.1</version>
+    <time>1694545338</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.18.1:
+  * Fix stream type issue #233
+
+  * Support for redis-py 4.5.0 #125
+  * Enable redis7 support by @cunla in #42</comment>
+    <requestid>1110364</requestid>
+  </revision>
 </revisionlist>
