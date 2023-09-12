@@ -120,4 +120,12 @@
   * Add `retries` option to SOCKS proxy classes. (#643)</comment>
     <requestid>1084216</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3e7c6c7ebf1e603d383ffd2e19095054</srcmd5>
+    <version>0.17.3</version>
+    <time>1694545335</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110216</requestid>
+  </revision>
 </revisionlist>
