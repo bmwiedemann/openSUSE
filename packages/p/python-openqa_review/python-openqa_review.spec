@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@
 
 %define pythons python3
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         short_name openqa_review
 %define         binaries openqa-review openqa-review-daily-email openqa-review-sles-ha tumblesle-release openqa-review-functional_yast_concise
 %define         oldpython python
@@ -37,7 +36,6 @@ Version:        1.30.0
 Release:        0
 Summary:        A review helper script for openQA
 License:        MIT
-Group:          Development/Languages/Python
 Source:         python-%{short_name}-%{version}.tar.xz
 URL:            https://github.com/os-autoinst/%{short_name}
 BuildRequires:  python-rpm-macros
@@ -55,7 +53,6 @@ Requires:       python-configparser
 Requires:       python-PyYAML
 Requires:       python-beautifulsoup4
 Requires:       python-certifi
-Requires:       python-future
 Requires:       python-humanfriendly
 Requires:       python-pika
 Requires:       python-requests

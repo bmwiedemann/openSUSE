@@ -369,4 +369,12 @@
     <comment>Update to 1.30.0</comment>
     <requestid>997375</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>8f7efd5d4381b19d9d005ef3647631ee</srcmd5>
+    <version>1.30.0</version>
+    <time>1694545379</time>
+    <user>anag+factory</user>
+    <comment>- Clean up no longer needed Requires.</comment>
+    <requestid>1110437</requestid>
+  </revision>
 </revisionlist>
