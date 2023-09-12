@@ -1,0 +1,21 @@
+--- apache-ant-1.10.14/src/main/org/apache/tools/ant/util/DateUtils.java	2023-09-11 14:41:39.980341631 +0200
++++ apache-ant-1.10.14/src/main/org/apache/tools/ant/util/DateUtils.java	2023-09-11 14:46:43.779148231 +0200
+@@ -227,6 +227,10 @@
+      */
+     public static String getDateForHeader() {
+         Calendar cal = Calendar.getInstance();
++        if (System.getenv("SOURCE_DATE_EPOCH") != null) {
++            cal.setTimeZone(TimeZone.getTimeZone("UTC"));
++            cal.setTime(new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"))));
++        }
+         TimeZone tz = cal.getTimeZone();
+         int offset = tz.getOffset(cal.get(Calendar.ERA),
+                                   cal.get(Calendar.YEAR),
+@@ -247,6 +251,7 @@
+         }
+         tzMarker.append(minutes);
+         synchronized (DATE_HEADER_FORMAT_INT) {
++            DATE_HEADER_FORMAT_INT.setTimeZone(tz);
+             return DATE_HEADER_FORMAT_INT.format(cal.getTime()) + tzMarker.toString();
+         }
+     }

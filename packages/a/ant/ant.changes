@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 11 12:50:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-propertyfile-task.patch
+    + Debian patch to improve propertyfile task in RPM builds by
+      using the date specified by the SOURCE_DATE_EPOCH variable
+      in the header of the .properties file generated
+
+-------------------------------------------------------------------
 Thu Aug 31 06:49:53 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 1.10.14:

@@ -816,4 +816,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment>1.10.14 compatible with java 18+</comment>
     <requestid>1108214</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>23f70da795ae8011ee83909e72ec3da0</srcmd5>
+    <version>1.10.14</version>
+    <time>1694545327</time>
+    <user>anag+factory</user>
+    <comment>reproducible timestamp in property files</comment>
+    <requestid>1110311</requestid>
+  </revision>
 </revisionlist>

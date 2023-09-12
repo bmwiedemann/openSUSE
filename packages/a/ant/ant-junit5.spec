@@ -44,6 +44,8 @@ Patch3:         reproducible-build-date.patch
 # PATCH-FEATURE-OPENSUSE reproducible-build-manifest.patch -- have fixed "Created-by" in manifest
 Patch5:         reproducible-build-manifest.patch
 Patch6:         apache-ant-xml-apis.patch
+# PATCH-FEATURE-OPENSUSE debian patch to use SOURCE_DATE_EPOCH for timestamp in property files
+Patch7:         reproducible-propertyfile-task.patch
 BuildRequires:  antlr-bootstrap
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
@@ -392,6 +394,7 @@ find -name \*.jar -print -delete
 %patch3 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 # clean jar files
 find . -name "*.jar" -print -delete
