@@ -76,4 +76,15 @@
   * Support Python 3.12.</comment>
     <requestid>1098172</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>66168c9e52c7cd2f418fdac7dc3a1744</srcmd5>
+    <version>1.14.1</version>
+    <time>1694545354</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.14.1:
+  * Fix bug in ``STORAGES`` fixer when only one of
+    ``DEFAULT_FILE_STORAGE`` or ``STATICFILES_STORAGE`` was
+    defined.</comment>
+    <requestid>1110366</requestid>
+  </revision>
 </revisionlist>
