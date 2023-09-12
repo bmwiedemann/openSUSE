@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 11 21:06:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * added CLI --dictionary option
+  * decoder: faster decoding
+  * encoder: faster encoding
+  * encoder: smaller stack frames
+
+-------------------------------------------------------------------
 Fri Apr 21 12:20:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -11,9 +20,9 @@ Thu Apr 13 22:40:20 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Fri Jan 22 19:54:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- update to 1.0.9:
+- update to 1.0.9 (CVE-2020-8927, bsc##1175825):
   * Fix integer overflow when input chunk is longer than
-    2GiB [boo#1175825]
+    2GiB
   * `brotli -v` now reports raw / compressed size
   * decoder: minor speed / memory usage improvements
   * encoder: fix rare access to uninitialized data in ring-buffer

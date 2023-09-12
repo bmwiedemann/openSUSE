@@ -39,4 +39,19 @@
     <comment></comment>
     <requestid>1082049</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3d26fc5697cde2f244230e2fefcdece2</srcmd5>
+    <version>1.1.0</version>
+    <time>1694545341</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.0:
+  * added CLI --dictionary option
+  * decoder: faster decoding
+  * encoder: faster encoding
+  * encoder: smaller stack frames
+
+- update to 1.0.9 (CVE-2020-8927, bsc##1175825):
+    2GiB</comment>
+    <requestid>1110375</requestid>
+  </revision>
 </revisionlist>

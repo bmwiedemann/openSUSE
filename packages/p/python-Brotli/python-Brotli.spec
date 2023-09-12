@@ -16,22 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-Brotli
-Version:        1.0.9
+Version:        1.1.0
 Release:        0
 Summary:        Python bindings for the Brotli compression library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://pypi.org/project/Brotli/
-Source:         https://files.pythonhosted.org/packages/source/B/Brotli/Brotli-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/B/Brotli/Brotli-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 %python_subpackages
 
 %description
