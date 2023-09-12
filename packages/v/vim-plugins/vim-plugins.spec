@@ -104,6 +104,7 @@ Source35:       https://github.com/tpope/vim-fugitive/archive/refs/tags/v%{fugit
 Source36:       https://github.com/vim-airline/vim-airline/archive/refs/tags/v%{airline_version}.tar.gz#/vimplugin-airline-%{airline_version}.tar.gz
 Source37:       https://github.com/dense-analysis/ale/archive/refs/tags/v%{ale_version}.tar.gz#/vimplugin-ale-%{ale_version}.tar.gz
 Source38:       https://github.com/dhruvasagar/vim-table-mode/archive/refs/tags/v%{table_mode_version}.tar.gz#/vimplugin-table-mode-%{table_mode_version}.tar.gz
+Source39:       https://cscope.sourceforge.net/cscope_maps.vim
 # from _service
 Source100:      file-line-%{file_line_version}.tar.xz
 Source101:      vim-markdown-%{markdown_version}.tar.xz
@@ -254,6 +255,17 @@ Requires:       vim
 %description -n vim-plugin-colorsel
 A simple interactive RGB/HSV color selector modelled after Gimp2 RGB/HSV color
 selector.
+
+%package -n vim-plugin-cscope
+Version:        1
+Release:        0
+Summary:        Keyboard mappings for cscope
+License:        BSD-3-Clause
+Group:          Productivity/Text/Editors
+Requires:       vim
+
+%description -n vim-plugin-cscope
+Boilerplate settings for vim's cscope interface, plus some keyboard mappings.
 
 %package -n vim-plugin-diffchanges
 Version:        %diffchanges_version
@@ -796,6 +808,8 @@ for i in */; do
 		"$i" %buildroot/%{vimplugin_dir}/
 done
 
+install -m 644 %{SOURCE39} %buildroot/%vimplugin_dir/plugin/
+
 install -d %buildroot/%vimplugin_dir/after/ftplugin/
 install -m 644 %{SOURCE200} %buildroot/%vimplugin_dir/after/ftplugin/
 
@@ -931,6 +945,10 @@ fi \
 %files -n vim-plugin-colorschemes
 %defattr(-,root,root,0755)
 %vimplugin_dir/colors/*.vim
+
+%files -n vim-plugin-cscope
+%defattr(-,root,root,0755)
+%vimplugin_dir/plugin/cscope_maps.vim
 
 %files -n vim-plugin-diffchanges
 %defattr(-,root,root,0755)
