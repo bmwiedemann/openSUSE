@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libportal
-Version:        0.7
+Version:        0.7.1
 Release:        0
 Summary:        A GIO-style async APIs for most Flatpak portals
 License:        LGPL-3.0-or-later

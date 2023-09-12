@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 10 08:53:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.7.1:
+  + Restore ability to call g_object_new (XDP_TYPE_PORTAL, ...).
+
+-------------------------------------------------------------------
 Wed Sep  6 21:00:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.7:
