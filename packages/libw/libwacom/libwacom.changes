@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Sep 11 12:52:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.0 (bsc#1214390):
+  * data: Add "Wacom One pen tablet"
+  * data: add Wacom One 12 & Wacom One 13
+  * data: Add support for the Samsung Chromebook Plus v2
+  * data: Add support for Nuvision Solo 10 Draw
+  * data: add ELAN 2C1B and 2D55 (Asus ZenBook Pro Duo UX482EG)
+  * data: create a stylus group for the generic-no-eraser pen
+  * data: create a generic-with-eraser group for the default
+    stylus
+  * data: include another device name for the Huion H950P
+  * libwacom 2.8.0
+  * data: add XP Pen Deco mini7
+- update keyring with keys from https://github.com/whot.gpg
+
+-------------------------------------------------------------------
+Mon May 29 20:25:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.0:
+  * Added support for XP-Pen Deco MW (#548)
+  * Add support for Lenovo Ideapad Duet 5i
+  * Add support for HP Spectre x360 14
+  * data: make XP-Pen Deco Pro MW layout generic
+  * data: Add XP-Pen Deco Pro SW
+  * Format python files with Python black
+  * tools: add list-local-devices as builddir tool
+  * data: narrow down the Huion H950p to include a name match
+  * tools: list the kernel name together with the event node
+  * Add ID 04f3:23b9 for HP Envy x360 ar0xxx (#550)
+  * Add Wacom HID 52D3 (Lenovo Yoga 7 14ARB7)
+  * Update to follow auto-generated standard
+  * Add Wacom HID 52D5 (Lenovo Yoga 7 14ARB7) (#549)
+  * Support for xp-pen deco pro mw (#552)
+
+-------------------------------------------------------------------
+Sat Feb  4 19:04:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to libwacom-2.6.0:
+  * Add Ugee M708 v1 tablet
+  * Add tablet definition for Wacom HID 52FA Pen (#536)
+  * Added support for XP-Pen Deco01 v2
+  * tools/clean_svg: don't modify the dict while iterating
+  * data: add the sysinfo to the wacom.example file
+  * CI: update some actions to newer versions
+  * CI: bump an action to the current version
+  * README: note that we support tablets other than Wacom's
+    too
+  * CI: bump to use latest Ubuntu LTS
+  * Add tablet definition for Huion Kamvas 13
+  * tests: fix failure if system doesn't use systemd
+
+-------------------------------------------------------------------
 Mon Jan 16 08:04:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.0:
@@ -6,7 +59,7 @@ Mon Jan 16 08:04:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
   - Intuos Pro Small refresh
   - Dell Chromebook 11 5190 2-in-1
   - Dell Inspiron 14 7425 2-in-1
-  - Fujitsu U729X 
+  - Fujitsu U729X
 - update keyring
 
 -------------------------------------------------------------------
@@ -167,7 +220,7 @@ Sat Aug 22 06:36:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   - Many AES stylus definitions added
   - New API: libwacom_stylus_get_eraser_type()
   - udev rules are now using hwdb entries
- 
+
 -------------------------------------------------------------------
 Thu May  7 13:10:58 UTC 2020 - pgajdos@suse.com
 
@@ -197,7 +250,7 @@ Wed Nov 20 10:06:24 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Thu Nov 14 00:46:28 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
-- Update to 1.1: 
+- Update to 1.1:
   New devices: Wacom HID 5115
   Other change:
   * Button codes defined for the 3rd gen Intuos S
@@ -230,11 +283,11 @@ Thu Nov 14 00:46:28 UTC 2019 - Michael Gorse <mgorse@suse.com>
 - Add libxml2 to BuildRequires.
 - Don't manually install udev rules: now done by install.
 - Switch URL to github.
-  
+
 -------------------------------------------------------------------
 Tue Jan 29 08:42:16 UTC 2019 - cornelis@solcon.nl
 
-- Run through spec-cleaner 
+- Run through spec-cleaner
 
 -------------------------------------------------------------------
 Mon Jan 28 19:54:10 UTC 2019 - Cor Blom <cornelis@solcon.nl>
