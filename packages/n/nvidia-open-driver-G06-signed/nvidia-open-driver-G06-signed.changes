@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  5 07:58:49 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- kmp-post.sh/kmp-postun.sh:
+  * add/remove nosimplefb=1 kernel option in order to fix Linux
+    console also on sle15-sp6/Leap 15.6 kernel, which will come
+    with simpledrm support
+
+-------------------------------------------------------------------
 Mon Aug 28 13:20:15 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 535.104.05
