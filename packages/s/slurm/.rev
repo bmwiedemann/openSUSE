@@ -1257,4 +1257,12 @@
       requests more than `TreeWidth` nodes in a step and uses the pmi2 or</comment>
     <requestid>1110259</requestid>
   </revision>
+  <revision rev="94" vrev="4">
+    <srcmd5>43c1e012a44daa7e5dc5406760c1c4ab</srcmd5>
+    <version>23.02.4</version>
+    <time>1694545373</time>
+    <user>anag+factory</user>
+    <comment>- Create a macro for upgrade dependency to ensure uniform handling. (forwarded request 1110421 from eeich)</comment>
+    <requestid>1110422</requestid>
+  </revision>
 </revisionlist>

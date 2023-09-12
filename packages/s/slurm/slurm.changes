@@ -171,6 +171,11 @@ Mon Aug 21 09:43:08 UTC 2023 - Christian Goll <cgoll@suse.com>
   * Fix-test-38.11.patch as both tests changed upstream
 
 -------------------------------------------------------------------
+Tue Jul  4 19:21:37 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Create a macro for upgrade dependency to ensure uniform handling.
+
+-------------------------------------------------------------------
 Tue May  9 09:28:23 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - updated to 23.02.02 which includes a number of fixes to Slurm stability

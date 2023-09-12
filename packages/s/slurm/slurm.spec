@@ -63,6 +63,10 @@ ExclusiveArch:  do_not_build
 %if 0%{?base_ver} > 0 && 0%{?base_ver} < %{lua:x=string.gsub(rpm.expand("%_ver"),"_","");print(x)}
 %define upgrade 1
 %endif
+%define upgrade_dep() %{?upgrade: #
+Provides:       %{*} = %{version}
+Obsoletes:      %{*} < %{version}
+Conflicts:      %{*} }
 
 %if 0%{?suse_version} >= 1500
 %define have_sysuser 1
@@ -146,10 +150,7 @@ Patch12:        Fix-test-32.8.patch
 Patch14:        Keep-logs-of-skipped-test-when-running-test-cases-sequentially.patch
 Patch15:        Fix-test7.2-to-find-libpmix-under-lib64-as-well.patch
 
-%{?upgrade:Provides: %{pname} = %{version}}
-%{?upgrade:Obsoletes: %{pname} < %{version}}
-%{?upgrade:Conflicts: %{pname}}
-
+%{upgrade_dep %pname}
 Requires:       %{name}-config = %{version}
 %if 0%{?have_boolean_deps}
 Requires:       (%{name}-munge = %version if munge)
@@ -223,9 +224,7 @@ management, scheduling and accounting modules.
 Summary:        Documentation for SLURM
 Group:          Documentation/HTML
 BuildArch:      noarch
-%{?upgrade:Provides: %{pname}-doc = %{version}}
-%{?upgrade:Obsoletes: %{pname}-doc < %{version}}
-%{?upgrade:Conflicts: %{pname}-doc}
+%{upgrade_dep %{pname}-doc}
 
 %package webdoc
 Summary:        Set up SLURM Documentation Server
@@ -238,9 +237,7 @@ BuildRequires:  apache-rpm-macros
 %endif
 Requires:       slurm-doc = %{version}
 Requires(pre):  apache2
-%{?upgrade:Provides: %{pname}-webdoc = %{version}}
-%{?upgrade:Obsoletes: %{pname}-webdoc < %{version}}
-%{?upgrade:Conflicts: %{pname}-webdoc}
+%{upgrade_dep %{pname}-webdoc}
 
 %description webdoc
 Set up HTTP server for SLURM configuration.
@@ -258,9 +255,7 @@ Requires:       perl = %{perl_version}
 %{libperl_requires}
 %{perl_requires}
 %endif
-%{?upgrade:Provides: perl-%{pname} = %{version}}
-%{?upgrade:Obsoletes: perl-%{pname} < %{version}}
-%{?upgrade:Conflicts: perl-%{pname}}
+%{upgrade_dep perl-%{pname}}
 
 %description -n perl-%{name}
 This package includes the Perl API to provide an interface to SLURM
@@ -284,9 +279,7 @@ with SLURM.
 %package -n libpmi%{pmi_so}%{?upgrade:%{_ver}}
 Summary:        SLURM PMI Library
 Group:          System/Libraries
-%{?upgrade:Provides: libpmi%{pmi_so} = %{version}}
-%{?upgrade:Obsoletes: libpmi%{pmi_so} < %{version}}
-%{?upgrade:Conflicts: libpmi%{pmi_so}}
+%{upgrade_dep libpmi%{pmi_so}}
 
 %description -n libpmi%{pmi_so}%{?upgrade:%{_ver}}
 This package contains the library needed to run programs dynamically linked
@@ -295,9 +288,7 @@ with SLURM.
 %package -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}}
 Summary:        NSS Plugin for SLURM
 Group:          System/Libraries
-%{?upgrade:Provides: libnss_%{pname}%{nss_so} = %{version}}
-%{?upgrade:Obsoletes: libnss_%{pname}%{nss_so} < %{version}}
-%{?upgrade:Conflicts: libnss_%{pname}%{nss_so}}
+%{upgrade_dep libnss_%{pname}%{nss_so}}
 
 %description -n libnss_%{pname}%{nss_so}%{?upgrade:%{_ver}}
 libnss_slurm is an optional NSS plugin that permits password and group
@@ -310,9 +301,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{libslurm} = %{version}
 Requires:       %{name} = %{version}
 Requires:       libpmi%{pmi_so}%{?upgrade:%{_ver}} = %{version}
-%{?upgrade:Provides: %{pname}-devel = %{version}}
-%{?upgrade:Obsoletes: %{pname}-devel < %{version}}
-%{?upgrade:Conflicts: %{pname}-devel}
+%{upgrade_dep %{pname}-devel}
 
 %description devel
 This package includes the header files for the SLURM API.
@@ -321,9 +310,7 @@ This package includes the header files for the SLURM API.
 Summary:        SLURM auth NULL implementation (no authentication)
 Group:          Productivity/Clustering/Computing
 Requires:       %{name} = %{version}
-%{?upgrade:Provides: %{pname}-auth-none = %{version}}
-%{?upgrade:Obsoletes: %{pname}-auth-none < %{version}}
-%{?upgrade:Conflicts: %{pname}-auth-none}
+%{upgrade_dep %{pname}-auth-none}
 
 %description auth-none
 This package cobtains the SLURM NULL authentication module.
@@ -336,9 +323,7 @@ Requires:       munge
 BuildRequires:  munge-devel
 Obsoletes:      %{name}-auth-munge < %{version}
 Provides:       %{name}-auth-munge = %{version}
-%{?upgrade:Provides: %{pname}-munge = %{version}}
-%{?upgrade:Obsoletes: %{pname}-munge < %{version}}
-%{?upgrade:Conflicts: %{pname}-munge}
+%{upgrade_dep %{pname}-munge}
 
 %description munge
 This package contains the SLURM authentication module for Chris Dunlap's Munge.
@@ -346,9 +331,7 @@ This package contains the SLURM authentication module for Chris Dunlap's Munge.
 %package sview
 Summary:        SLURM graphical interface
 Group:          Productivity/Clustering/Computing
-%{?upgrade:Provides: %{pname}-sview = %{version}}
-%{?upgrade:Obsoletes: %{pname}-sview < %{version}}
-%{?upgrade:Conflicts: %{pname}-sview}
+%{upgrade_dep %{pname}-sview}
 
 %description sview
 sview is a graphical user interface to get and update state information for
@@ -371,9 +354,7 @@ Recommends:     %{name}-munge = %version
 %{?systemd_ordering}
 Obsoletes:      slurm-sched-wiki < %{version}
 Obsoletes:      slurmdb-direct < %{version}
-%{?upgrade:Provides: %{pname}-slurmdbd = %{version}}
-%{?upgrade:Obsoletes: %{pname}-slurmdbd < %{version}}
-%{?upgrade:Conflicts: %{pname}-slurmdbd}
+%{upgrade_dep %{pname}-slurmdbd}
 
 %description slurmdbd
 The SLURM database daemon provides accounting of jobs in a database.
@@ -381,9 +362,7 @@ The SLURM database daemon provides accounting of jobs in a database.
 %package sql
 Summary:        Slurm SQL support
 Group:          Productivity/Clustering/Computing
-%{?upgrade:Provides: %{pname}-sql = %{version}}
-%{?upgrade:Obsoletes: %{pname}-sql < %{version}}
-%{?upgrade:Conflicts: %{pname}-sql}
+%{upgrade_dep %{pname}-sql}
 
 %description sql
 Contains interfaces to MySQL for use by SLURM.
@@ -391,9 +370,7 @@ Contains interfaces to MySQL for use by SLURM.
 %package plugins
 Summary:        SLURM plugins (loadable shared objects)
 Group:          Productivity/Clustering/Computing
-%{?upgrade:Provides: %{pname}-plugins = %{version}}
-%{?upgrade:Obsoletes: %{pname}-plugins < %{version}}
-%{?upgrade:Conflicts: %{pname}-plugins}
+%{upgrade_dep %{pname}-plugins}
 %if %{with pmix}
 Requires:       libpmix%{pmix_so}
 Requires:       pmix
@@ -406,9 +383,7 @@ This package contains the SLURM plugins (loadable shared objects)
 Summary:        SLURM ext_sensors/rrd Plugin (loadable shared objects)
 Group:          Productivity/Clustering/Computing
 Requires:       %{name}-plugins = %{version}
-%{?upgrade:Provides: %{pname}-plugin-ext-sensors-rrd = %{version}}
-%{?upgrade:Obsoletes: %{pname}-plugin-ext-sensors-rrd < %{version}}
-%{?upgrade:Conflicts: %{pname}-plugin-ext-sensors-rrd}
+%{upgrade_dep %{pname}-plugin-ext-sensors-rrd}
 # file was moved from slurm-plugins to here
 Conflicts:      %{pname}-plugins < %{version}
 
@@ -423,9 +398,7 @@ Group:          Productivity/Clustering/Computing
 Requires:       perl-%{name} = %{version}
 Requires:       perl-Switch
 Provides:       torque-client
-%{?upgrade:Provides: %{pname}-torque = %{version}}
-%{?upgrade:Obsoletes: %{pname}-torque < %{version}}
-%{?upgrade:Conflicts: %{pname}-torque}
+%{upgrade_dep %{pname}-torque}
 
 %description torque
 Wrapper scripts for aiding migration from Torque/PBS to SLURM.
@@ -435,9 +408,7 @@ Summary:        Wrappers for transitition from OpenLava/LSF to Slurm
 Group:          Productivity/Clustering/Computing
 Requires:       perl-%{name} = %{version}
 BuildArch:      noarch
-%{?upgrade:Provides: %{pname}-openlava = %{version}}
-%{?upgrade:Obsoletes: %{pname}-openlava < %{version}}
-%{?upgrade:Conflicts: %{pname}-openlava}
+%{upgrade_dep %{pname}-openlava}
 
 %description openlava
 Wrapper scripts for aiding migration from OpenLava/LSF to Slurm
@@ -447,9 +418,7 @@ Summary:        Mail tool that includes job statistics in user notification emai
 Group:          Productivity/Clustering/Computing
 Requires:       perl-%{name} = %{version}
 BuildArch:      noarch
-%{?upgrade:Provides: %{pname}-seff = %{version}}
-%{?upgrade:Obsoletes: %{pname}-seff < %{version}}
-%{?upgrade:Conflicts: %{pname}-seff}
+%{upgrade_dep %{pname}-seff}
 
 %description seff
 Mail program used directly by the SLURM daemons. On completion of a job,
@@ -461,9 +430,7 @@ Summary:        Perl tool to print SLURM job state information
 Group:          Productivity/Clustering/Computing
 Requires:       %{name} = %{version}
 BuildArch:      noarch
-%{?upgrade:Provides: %{pname}-sjstat = %{version}}
-%{?upgrade:Obsoletes: %{pname}-sjstat < %{version}}
-%{?upgrade:Conflicts: %{pname}-sjstat}
+%{upgrade_dep %{pname}-sjstat}
 %if 0%{?suse_version} < 1140
 Requires:       perl = %{perl_version}
 %else
@@ -477,9 +444,7 @@ This package contains a Perl tool to print SLURM job state information.
 Summary:        PAM module for restricting access to compute nodes via SLURM
 Group:          Productivity/Clustering/Computing
 Requires:       %{name}-node = %{version}
-%{?upgrade:Provides: %{pname}-pam_slurm = %{version}}
-%{?upgrade:Obsoletes: %{pname}-pam_slurm < %{version}}
-%{?upgrade:Conflicts: %{pname}-pam_slurm}
+%{upgrade_dep %{pname}-pam_slurm}
 BuildRequires:  pam-devel
 
 %description pam_slurm
@@ -492,9 +457,7 @@ or any user who has allocated resources on the node according to the SLURM.
 Summary:        Lua API for SLURM
 Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
-%{?upgrade:Provides: %{pname}-lua = %{version}}
-%{?upgrade:Obsoletes: %{pname}-lua < %{version}}
-%{?upgrade:Conflicts: %{pname}-lua}
+%{upgrade_dep %{pname}-lua}
 BuildRequires:  lua-devel
 
 %description lua
@@ -513,9 +476,7 @@ Recommends:     (%{name}-munge = %version if munge)
 %else
 Recommends:     %{name}-munge = %version
 %endif
-%{?upgrade:Provides: %{pname}-rest = %{version}}
-%{?upgrade:Obsoletes: %{pname}-rest < %{version}}
-%{?upgrade:Conflicts: %{pname}-rest}
+%{upgrade_dep %{pname}-rest}
 
 %description rest
 This package provides the interface to SLURM via REST API.
@@ -532,9 +493,7 @@ Recommends:     %{name}-munge = %version
 %endif
 %{?with_pmix:Recommends:     pmix-devel}
 %{?systemd_ordering}
-%{?upgrade:Provides: %{pname}-node = %{version}}
-%{?upgrade:Obsoletes: %{pname}-node < %{version}}
-%{?upgrade:Conflicts: %{pname}-node}
+%{upgrade_dep %{pname}-node}
 
 %description node
 This package contains just the minmal code to run a compute node.
@@ -550,9 +509,7 @@ Requires(pre):  pwdutils
 Requires(pre):  shadow
 %endif
 %{?systemd_ordering}
-%{?upgrade:Provides: %{pname}-config = %{version}}
-%{?upgrade:Obsoletes: %{pname}-config < %{version}}
-%{?upgrade:Conflicts: %{pname}-config}
+%{upgrade_dep %{pname}-config}
 
 %description config
 This package contains the slurm config files necessary direcories
@@ -562,9 +519,7 @@ for the slurm daemons.
 Summary:        Config files and directories for slurm services
 Group:          Documentation/Man
 BuildArch:      noarch
-%{?upgrade:Provides: %{pname}-config-man = %{version}}
-%{?upgrade:Obsoletes: %{pname}-config-man < %{version}}
-%{?upgrade:Conflicts: %{pname}-config-man}
+%{upgrade_dep %{pname}-config-man}
 
 %description config-man
 Man pages for the SLURM cluster managment software config files.
@@ -572,9 +527,7 @@ Man pages for the SLURM cluster managment software config files.
 %package hdf5
 Summary:        Store accounting data in hdf5
 Group:          Productivity/Clustering/Computing
-%{?upgrade:Conflicts:      %{pname}-hdf5}
-%{?upgrade:Obsoletes:      %{pname}-hdf5 < %{version}}
-%{?upgrade:Provides:       %{pname}-hdf5 = %{version}}
+%{upgrade_dep %{pname}-hdf5}
 Requires:       %{name}-plugins = %version
 
 %description hdf5
@@ -585,9 +538,7 @@ sh5utils to merge this hdf5 files or extract data from them.
 %package cray
 Summary:        Cray specific plugins
 Group:          Productivity/Clustering/Computing
-%{?upgrade:Conflicts:      %{pname}-cray}
-%{?upgrade:Obsoletes:      %{pname}-cray < %{version}}
-%{?upgrade:Provides:       %{pname}-cray = %{version}}
+%{upgrade_dep %{pname}-cray}
 
 %description cray
 Plugins for specific cray hardware, includes power and knl node management.
@@ -599,9 +550,7 @@ Contains also cray specific documentation.
 %package testsuite
 Summary:        Regression tests from Slurm sources
 Group:          Productivity/Clustering/Computing
-%{?upgrade:Conflicts:      %{pname}-testsuite}
-%{?upgrade:Obsoletes:      %{pname}-testsuite < %{version}}
-%{?upgrade:Provides:       %{pname}-testsuite = %{version}}
+%{upgrade_dep %{pname}-testsuite}
 Requires:       %{name} = %version
 Requires:       %{name}-auth-none = %version
 Requires:       %{name}-cray = %version
