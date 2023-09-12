@@ -56,8 +56,8 @@ Recommends:     python-cryptography >= 1.3.4
 Recommends:     python-pyOpenSSL >= 0.14
 %endif
 %if %{with test}
+BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module PySocks >= 1.5.6}
-BuildRequires:  %{python_module brotlipy}
 BuildRequires:  %{python_module charset-normalizer >= 2.0.0}
 BuildRequires:  %{python_module idna >= 2.5}
 BuildRequires:  %{python_module pytest-httpbin >= 0.0.7}

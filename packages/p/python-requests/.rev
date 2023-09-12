@@ -851,4 +851,32 @@
 </comment>
     <requestid>1092607</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>5ff25a39f42a3c344038743b87798ad4</srcmd5>
+    <version>2.31.0</version>
+    <time>1694545339</time>
+    <user>anag+factory</user>
+    <comment>- switch from unmaintained brotlipy to Brotli (same as urllib3)
+
+- allow using newest version of charset-normalizer (3.0+)
+- Skip test_pyopenssl_redirect due to gh#psf/requests#5846
+- add 5711.patch from upstream instead to remove idna&lt;3 pin
+  can install the new idna dropping python2
+- refreshed requests-no-hardcoded-version.patch
+- Do not require full python, (implicit) python-base is sufficient.
+- Skip one more test that is flaky
+- -test subpackage must be empty
+  * Only load the idna library when we’ve determined we need it.
+  * Fixed an issue with JSON encoding detection, specifically detecting
+- Fixed requests-do-not-use-bundle.patch
+  requests-do-not-use-bundle.patch
+- fix license (Apache-2.0 only)
+  - Now has a &quot;security&quot; package extras set,
+  - Bugfix for responses that attempt to redirect to themselves
+    - Support for connect timeouts! Timeout now accepts a tuple
+      (connect, read) which is used to set individual connect and
+- update to 1.2.0:
+  + charade: LGPL-2.1+</comment>
+    <requestid>1110368</requestid>
+  </revision>
 </revisionlist>

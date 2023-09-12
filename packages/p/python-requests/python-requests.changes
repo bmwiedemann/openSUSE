@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 11 20:41:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- switch from unmaintained brotlipy to Brotli (same as urllib3)
+
+-------------------------------------------------------------------
 Mon Jun 12 12:02:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Delete requests-no-hardcoded-version.patch
@@ -56,7 +61,7 @@ Sat Jan 21 10:01:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Oct 31 07:43:29 UTC 2022 - David Anes <david.anes@suse.com>
 
-- allow using newest version of charset-normalizer (3.0+) 
+- allow using newest version of charset-normalizer (3.0+)
   * requests-allow-charset-normalizer-3.patch
 
 -------------------------------------------------------------------
@@ -162,18 +167,18 @@ Tue Oct 26 21:08:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Jul  1 06:28:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Skip test_pyopenssl_redirect due to gh#psf/requests#5846 
+- Skip test_pyopenssl_redirect due to gh#psf/requests#5846
 
 -------------------------------------------------------------------
 Thu Feb  4 10:32:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add 5711.patch from upstream instead to remove idna<3 pin 
+- add 5711.patch from upstream instead to remove idna<3 pin
 
 -------------------------------------------------------------------
 Wed Feb  3 14:04:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't pin idna<3 in the egg-info so that depending packages
-  can install the new idna dropping python2 
+  can install the new idna dropping python2
 
 -------------------------------------------------------------------
 Sat Dec 19 09:57:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -211,7 +216,7 @@ Mon Feb 24 15:19:16 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.23.0
 - dropped merged_pr_5049.patch
-- refreshed requests-no-hardcoded-version.patch 
+- refreshed requests-no-hardcoded-version.patch
  * Remove defunct reference to prefetch in Session __attrs__
  * Requests no longer outputs password in basic auth usage warning
 
@@ -220,7 +225,7 @@ Sat Dec 14 22:48:50 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove python-urllib3, python-certifi and ca-certificates from
   main package BuildRequires, not required for building.
-- Do not require full python, (implicit) python-base is sufficient. 
+- Do not require full python, (implicit) python-base is sufficient.
 
 -------------------------------------------------------------------
 Fri Nov  1 07:57:29 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
@@ -252,7 +257,7 @@ Tue Apr 23 10:45:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Mon Feb 25 15:45:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
-- Skip one more test that is flaky 
+- Skip one more test that is flaky
 
 -------------------------------------------------------------------
 Fri Feb 15 11:41:05 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
@@ -317,7 +322,7 @@ Sat Oct 20 15:39:32 UTC 2018 - Arun Persaud <arun@gmx.de>
 -------------------------------------------------------------------
 Thu Jul 19 10:27:24 UTC 2018 - mimi.vx@gmail.com
 
-- -test subpackage must be empty 
+- -test subpackage must be empty
 
 -------------------------------------------------------------------
 Mon Jul 16 00:09:54 UTC 2018 - mimi.vx@gmail.com
@@ -523,13 +528,13 @@ Mon Mar  6 15:09:56 UTC 2017 - jweberhofer@weberhofer.at
 - fixed dependencies in spec
 
 - update to version 2.13.0
-  * Only load the idna library when we’ve determined we need it. 
+  * Only load the idna library when we’ve determined we need it.
     This will save some memory for users.
   * Updated bundled urllib3 to 1.20.
   * Updated bundled idna to 2.2.
 
 - update to version 2.12.5
-  * Fixed an issue with JSON encoding detection, specifically detecting 
+  * Fixed an issue with JSON encoding detection, specifically detecting
     big-endian UTF-32 with BOM.
 
 -------------------------------------------------------------------
@@ -866,13 +871,13 @@ Fri Oct  9 19:11:09 UTC 2015 - sor.alexei@meowr.ru
 -------------------------------------------------------------------
 Tue Oct  6 17:48:20 UTC 2015 - aloisio@gmx.com
 
-- Fixed requests-do-not-use-bundle.patch 
+- Fixed requests-do-not-use-bundle.patch
 
 -------------------------------------------------------------------
 Mon Oct  5 17:18:43 UTC 2015 - p.drouand@gmail.com
 
 - Unbundle python-chardet and python-urllib3 (boo#947357)
-  requests-do-not-use-bundle.patch 
+  requests-do-not-use-bundle.patch
 
 -------------------------------------------------------------------
 Mon Sep 14 07:48:30 UTC 2015 - tbechtold@suse.com
@@ -1047,24 +1052,24 @@ Tue Feb 24 13:04:17 UTC 2015 - tbechtold@suse.com
 -------------------------------------------------------------------
 Mon Dec  1 12:05:19 UTC 2014 - dmueller@suse.com
 
-- fix license (Apache-2.0 only) 
+- fix license (Apache-2.0 only)
 
 -------------------------------------------------------------------
 Thu Sep 11 12:34:42 UTC 2014 - toddrme2178@gmail.com
 
 - Update to 2.4.1 (2014-09-09)
-  - Now has a "security" package extras set, 
+  - Now has a "security" package extras set,
     ``$ pip install requests[security]``
   - Requests will now use Certifi if it is available.
   - Capture and re-raise urllib3 ProtocolError
-  - Bugfix for responses that attempt to redirect to themselves 
+  - Bugfix for responses that attempt to redirect to themselves
     forever (wtf?).
 - Update to 2.4.0 (2014-08-29)
   * Behavioral Changes
     - ``Connection: keep-alive`` header is now sent automatically.
   * Improvements
-    - Support for connect timeouts! Timeout now accepts a tuple 
-      (connect, read) which is used to set individual connect and 
+    - Support for connect timeouts! Timeout now accepts a tuple
+      (connect, read) which is used to set individual connect and
       read timeouts.
     - Allow copying of PreparedRequests without headers/cookies.
     - Updated bundled urllib3 version.
@@ -1219,7 +1224,7 @@ Mon May 27 10:36:36 UTC 2013 - dmueller@suse.com
 -------------------------------------------------------------------
 Mon May 13 08:57:09 UTC 2013 - dmueller@suse.com
 
-- update to 1.2.0: 
+- update to 1.2.0:
  * Fixed cookies on sessions and on requests
  * Significantly change how hooks are dispatched - hooks now receive all the
   arguments specified by the user when making a request so hooks can make a
@@ -1248,7 +1253,7 @@ Fri Jan 18 08:31:22 UTC 2013 - saschpe@suse.de
 - Set license to "Apache-2.0 and LGPL-2.1+ and MIT", according to
   https://github.com/kennethreitz/requests/issues/1111, the base
   license is Apache-2.0 but requests ships two libraries (bnc#799119):
-  + charade: LGPL-2.1+ 
+  + charade: LGPL-2.1+
   + urllib3: MIT
 
 -------------------------------------------------------------------
