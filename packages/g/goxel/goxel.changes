@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 24 06:07:28 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.12.0
+  * Added basic support for Minetest file format import.
+  * Added a new tool to select from a 2d rectangle.
+  * Fixed issues with high density screens.
+  * Added some (very basic) support for scripting.
+
+The biggest new feature is probably the scripting support. For the moment it is very limited, see the example in data/scripts/test.js. If you would like to make your own scripts but some features are missing (and they will), please open an issue about it.
+
+- Added patch fix_security_issue_in_quickjs.patch to address potential security issue
+
+-------------------------------------------------------------------
 Mon Dec  5 09:24:33 UTC 2022 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
 
 - Update to 0.11.0
