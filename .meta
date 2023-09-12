@@ -1,0 +1,8 @@
+<package name="cargo-vendor-filterer" project="openSUSE:Factory">
+  <title>Cargo Vendor with filter capabilities!</title>
+  <description>The core cargo vendor tool is useful to save all dependencies. However, it doesn't offer any filtering; today cargo includes all platforms, but some projects only care about Linux for example.
+
+This tool solves that by extending the core functionality of cargo vendor with filtering for platforms and more!</description>
+  <devel project="devel:languages:rust" package="cargo-vendor-filterer"/>
+  <url>https://github.com/coreos/cargo-vendor-filterer</url>
+</package>
