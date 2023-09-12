@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 12 08:04:17 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0+git.20230905:
+  * fix compatibility with old make
+  * save message in select() if fd is not polled
+  * don't read /usr/include/sys/time.h directly
+
+-------------------------------------------------------------------
 Tue Jun 27 08:56:13 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 

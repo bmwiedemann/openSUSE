@@ -7,4 +7,15 @@
     <comment>new package, might be used when building chrony</comment>
     <requestid>1095561</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6b9bab6387a639c053ba6036ccedacae</srcmd5>
+    <version>0+git.20230905</version>
+    <time>1694545424</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0+git.20230905:
+  * fix compatibility with old make
+  * save message in select() if fd is not polled
+  * don't read /usr/include/sys/time.h directly</comment>
+    <requestid>1110463</requestid>
+  </revision>
 </revisionlist>
