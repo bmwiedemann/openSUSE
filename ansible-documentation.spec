@@ -17,14 +17,14 @@
 
 
 Name:           ansible-documentation
-Version:        2.15.3
+Version:        2.15.4
 Release:        0
 Summary:        Ansible community documentation and example files
-License:        GPL-3.0
+License:        GPL-3.0-only
 URL:            https://github.com/ansible/ansible-documentation
 Source:         ansible-documentation-%{version}.tar.gz
-BuildRequires:  fdupes
 BuildRequires:  ansible-core = %{version}
+BuildRequires:  fdupes
 Requires:       ansible-core = %{version}
 BuildArch:      noarch
 
