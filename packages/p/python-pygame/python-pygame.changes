@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 11 14:54:31 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Correction of licenses based on the diff against old report
+  Add libpng-2.0, Apache-2.0, BSD. Ignoring FTL as fonts seem
+  to be only referenced in tests.
+
+-------------------------------------------------------------------
 Wed Aug  9 21:10:42 UTC 2023 - Dominik George <nik@naturalnet.de>
 
 - Update to 2.5.0
