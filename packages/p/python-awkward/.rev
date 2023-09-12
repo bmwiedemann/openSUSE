@@ -341,4 +341,41 @@
     <comment></comment>
     <requestid>1098092</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2138addf1beb5eb268f735065dfe6eb7</srcmd5>
+    <version>2.3.3</version>
+    <time>1694545362</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.3:
+  * feat: add support for expected termination of transform functions
+  * feat: export error classes
+  * feat: unpickle arrays made in Awkward v1 (as v2).
+  * feat: use pyarrow for string functions
+  * feat: add support for dictionary encoding from Arrow
+  * feat: add CPU kernel for to_numpy support for strings/bytestrings
+  * feat: add support for __arrow_array__
+  * feat: add __dlpack__, from_dlpack support
+
+- add sle15_python_module_pythons
+  * bump numpy to 1.17.0
+- awkward 2.0.7 actually requires awkward-cpp 8.
+  * perf: improve Array initialisation performance
+- skip python 3.6 (numbas requires scipy)
+  * Added the ability to select fields inside of nested
+    records with syntax like array[[“pt”, “eta”, “phi”],
+  * Fixed Apache Arrow → Awkward Array (ak.from_arrow) for
+    sliced Arrow arrays: it has an offset attribute we had
+    been ignoring (#625). Thanks to @trickarcher for the
+  * Ensured that an ak.Array’s behavior always gets passed to
+    output of any operation (#626), even if the input is a
+    dict (#627, affected ak.zip, ak.cartesian, and
+  * Fixed #629, ak.with_field dropping parameters (#631),
+    and #634, ak.fill_none not accepting a Record as a fill
+  * Added a roadmap and upvote/thumbs up instructions to the
+  * @jpivarski revised the ak.concatenate implementation
+    (#610), fixed a bug related to axis handling (#612), and
+    made ak.concatenate friendlier to lazy arrays (#613;
+  * @chrisburr added setuptools as a requirement because it</comment>
+    <requestid>1110380</requestid>
+  </revision>
 </revisionlist>

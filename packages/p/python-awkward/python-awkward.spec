@@ -16,10 +16,10 @@
 #
 
 
-%define awkward_cpp_version 21
+%define awkward_cpp_version 22
 %{?sle15_python_module_pythons}
 Name:           python-awkward
-Version:        2.3.1
+Version:        2.3.3
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
@@ -77,13 +77,14 @@ generalizes when they're not.
 %install
 %pyproject_install
 %{python_expand # remove devel files
-rm -r %{buildroot}%{$python_sitelib}/awkward/_connect/header-only
 rm -r %{buildroot}%{$python_sitelib}/awkward/_connect/rdataframe/include
 %fdupes %{buildroot}%{$python_sitelib}
 }
 
 %check
 export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
+# need to package cupy
+rm -rvf ./tests-cuda-kernels
 %pytest -n auto --ignore tests-cuda/
 
 %files %{python_files}
