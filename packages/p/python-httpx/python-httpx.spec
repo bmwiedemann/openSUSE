@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpx%{psuffix}
-Version:        0.24.0
+Version:        0.24.1
 Release:        0
 Summary:        Python HTTP client with async support
 License:        BSD-3-Clause
@@ -41,9 +41,9 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi
-Requires:       python-httpcore >= 0.15.0
 Requires:       python-idna >= 2.0
 Requires:       python-sniffio
+Requires:       (python-httpcore >= 0.17.2 with python-httpcore < 0.18.0)
 Recommends:     python-Brotli
 Recommends:     python-Pygments >= 2
 Recommends:     python-click >= 8
@@ -78,7 +78,7 @@ Python HTTP client with async support.
 %prep
 %autosetup -p1 -n httpx-%{version}
 # remove turning pytest warnings into error
-sed -i '/tool.pytest/,$ {/error/d}' setup.cfg
+#sed -i '/tool.pytest/,$ {/error/d}' setup.cfg
 
 %build
 %pyproject_wheel
