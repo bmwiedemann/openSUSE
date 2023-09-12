@@ -59,4 +59,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>996315</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>081493d4d91b41c34a1a97f1a2d29fb5</srcmd5>
+    <version>0.8.0</version>
+    <time>1694545377</time>
+    <user>anag+factory</user>
+    <comment>- Add patch remove-future-requirement.patch, remove future requirement
+- Switch to autosetup and pyproject macros
+- Stop using greedy globs in %files</comment>
+    <requestid>1110429</requestid>
+  </revision>
 </revisionlist>
