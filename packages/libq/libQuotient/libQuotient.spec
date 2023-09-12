@@ -51,6 +51,7 @@ BuildRequires:  cmake(Qt6Test)
 %else
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core) >= 5.5
+BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5Multimedia)

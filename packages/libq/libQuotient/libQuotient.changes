@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 11 13:11:30 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Add Qt5DBus as build requirement
+  * fixes Leap 15.5 build
+
+-------------------------------------------------------------------
 Sat Aug 19 21:37:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.8.1.1
