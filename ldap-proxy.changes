@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 09 00:13:36 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.1.0~6:
+  * Remove incorrectly added cargo config
+  * Add support for allowing all dns to bind through the proxy
+
+-------------------------------------------------------------------
 Wed Sep 06 02:33:30 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.1.0~2:

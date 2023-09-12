@@ -1,6 +1,7 @@
 #
-# spec file for package specRPM_CREATION_NAME
+# spec file for package ldap-proxy
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) specCURRENT_YEAR SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,14 +16,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define configdir %{_sysconfdir}/ldap-proxy
 
 Name:           ldap-proxy
-Version:        0.1.0~2
+Version:        0.1.0~6
 Release:        0
 Summary:        An in-memory caching proxy for LDAP
 License:        MPL-2.0 AND MPL-2.0+
-Url:            https://github.com/kanidm/ldap-proxy
+URL:            https://github.com/kanidm/ldap-proxy
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
