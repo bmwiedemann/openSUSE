@@ -29,23 +29,31 @@ Source100:      %{name}-build.tar.xz
 Patch0:         modello-cli-domasxpp3.patch
 Patch1:         0001-Revert-Switch-to-codehaus-plexus-build-api-1.2.0-345.patch
 BuildRequires:  ant
+BuildRequires:  aopalliance
+BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  google-guice
 BuildRequires:  guava
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsoup
-BuildRequires:  junit
 BuildRequires:  plexus-build-api
 BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-compiler
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
+Requires:       aopalliance
+Requires:       atinject
+Requires:       google-guice
 Requires:       guava
 Requires:       javapackages-tools
-Requires:       xbean
+Requires:       plexus-build-api
+Requires:       plexus-classworlds
+Requires:       plexus-containers-component-annotations
+Requires:       plexus-utils
+Requires:       sisu-inject
+Requires:       sisu-plexus
 BuildArch:      noarch
 
 %description
@@ -95,26 +103,23 @@ rm -f modello-maven-plugin/src/main/java/org/codehaus/modello/maven/ModelloVeloc
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-	atinject \
-	commons-cli \
+    aopalliance \
+    atinject \
+    commons-cli \
     guava/guava \
     guice/google-guice \
-	jdom2/jdom2 \
+    jdom2/jdom2 \
     jsoup \
-    junit \
-	objectweb-asm/asm \
+    objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     plexus/classworlds \
-	plexus/cli \
+    plexus/cli \
     plexus/plexus-build-api \
     plexus/utils \
-    plexus-compiler/plexus-compiler-api \
-    plexus-compiler/plexus-compiler-javac \
     plexus-containers/plexus-component-annotations \
     plexus-metadata-generator \
-	qdox \
-	xbean/xbean-reflect
+    qdox
 
 %{ant} \
   -Dtest.skip=true \
@@ -136,12 +141,12 @@ done
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 
 for i in core; do
-  %mvn_install_pom %{name}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${i}.pom
+  %{mvn_install_pom} %{name}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${i}.pom
   %add_maven_depmap %{name}/%{name}-${i}.pom %{name}/%{name}-${i}.jar
 done
 
 for i in converters dom4j java jdom sax stax xdoc xml xpp3 xsd; do
-  %mvn_install_pom %{name}-plugins/%{name}-plugin-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-plugin-${i}.pom
+  %{mvn_install_pom} %{name}-plugins/%{name}-plugin-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-plugin-${i}.pom
   %add_maven_depmap %{name}/%{name}-plugin-${i}.pom %{name}/%{name}-plugin-${i}.jar
 done
 
@@ -161,7 +166,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # script
-%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:google-guice:aopalliance:atinject:plexus-containers/plexus-component-annotations:plexus/classworlds:plexus/utils:plexus/plexus-build-api:guava:plexus-compiler/plexus-compiler-api:plexus-compiler/plexus-compiler-javac %{name} true
+%jpackage_script org.codehaus.modello.ModelloCli "" "" modello:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:google-guice:aopalliance:atinject:plexus-containers/plexus-component-annotations:plexus/classworlds:plexus/utils:plexus/plexus-build-api:guava %{name} true
 
 %files -f .mfiles
 %license LICENSE

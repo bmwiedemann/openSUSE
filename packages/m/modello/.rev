@@ -73,4 +73,12 @@
     <comment>2.1.2</comment>
     <requestid>1109297</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>fb7edfa9056da8c422f5f841ce3a73ad</srcmd5>
+    <version>2.1.2</version>
+    <time>1694545347</time>
+    <user>anag+factory</user>
+    <comment>Cleanup unnecessary dependencies</comment>
+    <requestid>1110345</requestid>
+  </revision>
 </revisionlist>
