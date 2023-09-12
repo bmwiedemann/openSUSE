@@ -1,7 +1,7 @@
 #
 # spec file for package python-astropy-healpix
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-astropy-healpix
-Version:        0.7
+Version:        1.0.0
 Release:        0
 Summary:        HEALPix for Astropy
 License:        BSD-3-Clause
