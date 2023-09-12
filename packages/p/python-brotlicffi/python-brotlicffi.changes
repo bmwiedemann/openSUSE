@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 11 20:49:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- obsolete brotlipy:
+  https://github.com/python-hyper/brotlicffi/blob/4742c7fde3b052d7afa94d0866e8eb9dec0b2bab/HISTORY.rst#080-2020-11-30
+
+-------------------------------------------------------------------
 Thu Jul  6 10:24:12 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

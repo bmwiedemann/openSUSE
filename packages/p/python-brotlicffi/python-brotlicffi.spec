@@ -1,7 +1,7 @@
 #
 # spec file for package python-brotlicffi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,18 +25,19 @@ Summary:        Python CFFI bindings to the Brotli library
 License:        MIT
 URL:            https://github.com/python-hyper/brotlicffi
 Source:         brotlicffi-%{version}.tar.xz
-BuildRequires:  python-rpm-macros
-BuildRequires:  gcc-c++
+BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module cffi >= 1.0.0}
+BuildRequires:  gcc-c++
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cffi >= 1.0.0}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-cffi >= 1.0.0
+Obsoletes:      python-brotlipy < %version
 %python_subpackages
 
 %description
