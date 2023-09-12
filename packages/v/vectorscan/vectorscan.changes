@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 12 12:00:44 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 5.4.10.1:
+  * Bugfix/disable fat macos arm
+  * Fix compilation with libcxx 16
+  * Fix use-of-uninitialized-value due to getData128()
+  * Use std::vector instead of boost::container::small_vector under MSan
+  * Feature/enable fat runtime arm
+  * adding ifndef around HS_PUBLIC_API definition so that
+    vectorscan can be statically linked into another shared
+    library without exporting symbols
+  * Feature/backport hyperscan 2023 q3
+- Run unit-hyperscan in %check
+
+-------------------------------------------------------------------
 Wed May  3 06:16:58 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - devel package must require libhs%{sover}%{so_suffix}%{sover}

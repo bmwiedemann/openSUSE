@@ -21,7 +21,7 @@
 %define so_suffix -vectorscan
 
 Name:           vectorscan
-Version:        5.4.9
+Version:        5.4.10.1
 Release:        0
 Summary:        Regular expression matching library
 License:        BSD-3-Clause
@@ -119,6 +119,11 @@ export CXX=g++-9
 pushd build/
 mkdir -p  %{buildroot}%{_bindir}
 install bin/* %{buildroot}%{_bindir}
+popd
+
+%check
+pushd build/
+LD_LIBRARY_PATH=%{buildroot}%{_libdir} bin/unit-hyperscan
 popd
 
 %post -n libhs%{sover}%{so_suffix}%{sover} -p /sbin/ldconfig
