@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 11 20:43:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- switch from unmaintained brotlipy to Brotli
+
+-------------------------------------------------------------------
 Fri Aug 18 15:42:27 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Remove py3109-compat.patch, no longer required. The current spec
@@ -74,7 +79,7 @@ Mon Nov  7 17:49:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Oct  4 20:31:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- skip more tests 
+- skip more tests
 
 -------------------------------------------------------------------
 Sat Sep 24 11:07:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -301,12 +306,12 @@ Sat Dec 11 19:18:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Wed Nov 24 00:38:26 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Drop python39-failures.patch, no longer required. 
+- Drop python39-failures.patch, no longer required.
 
 -------------------------------------------------------------------
 Wed Nov 17 09:52:49 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Update python39-failures.patch to only fire with Python 3.9.7. 
+- Update python39-failures.patch to only fire with Python 3.9.7.
 
 -------------------------------------------------------------------
 Fri Sep 10 14:22:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -361,25 +366,25 @@ Fri Dec  4 11:50:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to v3.7.3
   Features
-  * Made exceptions pickleable. Also changed the repr of 
-    some exceptions. #4077 
+  * Made exceptions pickleable. Also changed the repr of
+    some exceptions. #4077
   Bugfixes
-  * Raise a ClientResponseError instead of an AssertionError for a 
+  * Raise a ClientResponseError instead of an AssertionError for a
     blank HTTP Reason Phrase. #3532
-  * Fix web_middlewares.normalize_path_middleware behavior for   
+  * Fix web_middlewares.normalize_path_middleware behavior for
     patch without slash. #3669
-  * Fix overshadowing of overlapped sub-applications prefixes. 
+  * Fix overshadowing of overlapped sub-applications prefixes.
     #3701
-  * Make BaseConnector.close() a coroutine and wait until the 
-    client closes all connections. Drop deprecated "with  
+  * Make BaseConnector.close() a coroutine and wait until the
+    client closes all connections. Drop deprecated "with
     Connector():" syntax. #3736
-  * Reset the sock_read timeout each time data is received for a   
+  * Reset the sock_read timeout each time data is received for a
     aiohttp.client response. #3808
-  * Fixed type annotation for add_view method of UrlDispatcher to 
+  * Fixed type annotation for add_view method of UrlDispatcher to
     accept any subclass of View #3880
-  * Fixed querying the address families from DNS that the current 
+  * Fixed querying the address families from DNS that the current
     host supports. #5156
-  * Change return type of MultipartReader.__aiter__() and 
+  * Change return type of MultipartReader.__aiter__() and
     BodyPartReader.__aiter__() to AsyncIterator. #5163
   * Provide x86 Windows wheels. #5230
   * Improved Documentation
@@ -391,7 +396,7 @@ Fri Dec  4 11:50:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * #4102
 - Also clean header files in sitearch
 - Remove hidden .hash directory (remnant from build process)
-- Fix python 3.6 build 
+- Fix python 3.6 build
   * For Leap
   * For TW with python36 flavor gh#openSUSE/python-rpm-macros#66
   * Always BuildRequire idna_ssl
@@ -416,7 +421,7 @@ Wed Oct 28 15:33:18 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
   * Fix flaky test_when_timeout_smaller_second
   * Ensure sending a zero byte file does not throw an exception
 - from v3.7.0
-  * Response headers are now prepared prior to running 
+  * Response headers are now prepared prior to running
     ``on_response_prepare`` hooks, directly before headers are
     sent to the client
   * Add a ``quote_cookie`` option to ``CookieJar``, a way to skip

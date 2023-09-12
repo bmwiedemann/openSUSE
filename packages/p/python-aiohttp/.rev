@@ -350,4 +350,29 @@
 - Include in SLE-15 (bsc#1176785, jsc#ECO-3105, jsc#PM-2352)</comment>
     <requestid>1109336</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>78cc1ad64aa88f1b5624fb8a216cf848</srcmd5>
+    <version>3.8.5</version>
+    <time>1694545340</time>
+    <user>anag+factory</user>
+    <comment>- switch from unmaintained brotlipy to Brotli
+
+- skip more tests
+- Drop python39-failures.patch, no longer required.
+- Update python39-failures.patch to only fire with Python 3.9.7.
+  * Made exceptions pickleable. Also changed the repr of
+    some exceptions. #4077
+  * Raise a ClientResponseError instead of an AssertionError for a
+  * Fix web_middlewares.normalize_path_middleware behavior for
+  * Fix overshadowing of overlapped sub-applications prefixes.
+  * Make BaseConnector.close() a coroutine and wait until the
+    client closes all connections. Drop deprecated &quot;with
+  * Reset the sock_read timeout each time data is received for a
+  * Fixed type annotation for add_view method of UrlDispatcher to
+  * Fixed querying the address families from DNS that the current
+  * Change return type of MultipartReader.__aiter__() and
+- Fix python 3.6 build
+  * Response headers are now prepared prior to running</comment>
+    <requestid>1110373</requestid>
+  </revision>
 </revisionlist>

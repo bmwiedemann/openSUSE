@@ -39,8 +39,8 @@ Requires:       (python-idna_ssl >= 1.0 if python-base < 3.7)
 Requires:       (python-multidict >= 4.5 with python-multidict < 7)
 Requires:       (python-typing_extensions >= 3.7.4 if python-base < 3.8)
 Requires:       (python-yarl >= 1.0 with python-yarl < 2)
+Recommends:     python-Brotli
 Recommends:     python-aiodns
-Recommends:     python-brotlipy
 Recommends:     python-cChardet
 Suggests:       %{name}-doc
 # SECTION build requirements
@@ -67,7 +67,7 @@ BuildRequires:  %{python_module yarl >= 1.0 with %python-yarl < 2}
 # /SECTION
 # SECTION test requirements
 BuildRequires:  %{python_module aiodns}
-BuildRequires:  %{python_module brotlipy}
+BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module pluggy}
