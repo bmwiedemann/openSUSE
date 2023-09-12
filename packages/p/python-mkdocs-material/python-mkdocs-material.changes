@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 12 04:58:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.3.1:
+  * Fixed crash of group plugin when used together with hooks
+
+-------------------------------------------------------------------
+Tue Sep 12 04:55:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- rebase patch no-hatchling-requirements_txt.patch
+- update to 9.3.0:
+  * Improved configuration sharing between community and Insiders
+    edition
+  * Added experimental built-in group plugin for enabling plugins
+    conditionally
+  * Added new settings in tags plugin for enabling/disabling
+  * Dropped support for Python 3.7 (EOL)
+
+-------------------------------------------------------------------
 Thu Sep  7 06:59:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.2.8:

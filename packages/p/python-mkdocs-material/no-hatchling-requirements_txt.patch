@@ -1,7 +1,15 @@
+From 09647236257c0c6f9f645c7cd136f75403b24b82 Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <kastl@b1-systems.de>
+Date: Tue, 12 Sep 2023 07:40:26 +0200
+Subject: [PATCH] pyproject.toml: remove requirement for hatchling
+
+Created my Matej Cepl!
 ---
- pyproject.toml |   16 ++++++++++++----
+ pyproject.toml | 16 ++++++++++++----
  1 file changed, 12 insertions(+), 4 deletions(-)
 
+diff --git a/pyproject.toml b/pyproject.toml
+index 99a8691ee..b861b4e90 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -30,12 +30,23 @@ build-backend = "hatchling.build"
@@ -27,9 +35,9 @@
 +]
 +
  readme = "README.md"
- requires-python = ">=3.7"
+ requires-python = ">=3.8"
  classifiers = [
-@@ -72,9 +83,6 @@ source = "nodejs"
+@@ -74,9 +85,6 @@ source = "nodejs"
  [tool.hatch.metadata.hooks.nodejs]
  fields = ["license", "description", "authors", "keywords", "urls"]
  
@@ -39,3 +47,6 @@
  [tool.hatch.build.targets.wheel]
  include = ["/material"]
  
+-- 
+2.42.0
+
