@@ -3,7 +3,7 @@ Mon Sep  4 13:18:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-sphinx-72.patch to make it work with latest sphinx version
   gh#python/cpython#97950
-- Update to 3.10.13:
+- Update to 3.10.13 (bsc#1214692):
   - gh-108310: Fixed an issue where instances of ssl.SSLSocket were
     vulnerable to a bypass of the TLS handshake and included
     protections (like certificate verification) and treating sent
