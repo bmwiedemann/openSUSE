@@ -15,25 +15,26 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-%bcond_without python2
-Name:           python-pypiserver
-Version:        1.5.1
+Name:           python-pypiserver%{psuffix}
+Version:        1.5.2
 Release:        0
 Summary:        Minimal PyPI server for uploading & downloading packages with pip/easy_install
 License:        MIT
 URL:            https://github.com/pypiserver
 Source:         https://github.com/pypiserver/pypiserver/archive/v%{version}.tar.gz#/pypiserver-%{version}.tar.gz
-BuildRequires:  %{python_module WebTest}
-BuildRequires:  %{python_module passlib >= 1.6}
 BuildRequires:  %{python_module pip >= 7}
-BuildRequires:  %{python_module pytest >= 3.5}
 BuildRequires:  %{python_module setuptools-git >= 0.3}
 BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tox}
-BuildRequires:  %{python_module twine}
 BuildRequires:  %{python_module wheel >= 0.25.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,9 +43,16 @@ Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-mock
+# SECTION test requirements
+%if %{with test}
+BuildRequires:  %{python_module passlib >= 1.6}
+BuildRequires:  %{python_module pypiserver = %{version}}
+BuildRequires:  %{python_module pytest >= 3.5}
+BuildRequires:  %{python_module tox}
+BuildRequires:  %{python_module twine}
+BuildRequires:  %{python_module WebTest}
 %endif
+# /SECTION
 %python_subpackages
 
 %description
@@ -57,18 +65,22 @@ sed -i '1{/env python/d}' pypiserver/*.py
 rm -f pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%if !%{with test}
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pypi-server
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 # test_hash_algos:
 # ERROR: No matching distribution found for a==1.0 (from centodeps)
 # (see centodeps-setup.py)
 %pytest tests -k "not (test_pipInstall_openOk or test_pipInstall_authedOk or test_hash_algos or test_pip_install_open_succeeds or test_pip_install_authed_succeeds)"
+%endif
 
 %post
 %python_install_alternative pypi-server
@@ -76,11 +88,13 @@ rm -f pytest.ini
 %postun
 %python_uninstall_alternative pypi-server
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/pypiserver
 %{python_sitelib}/pypiserver-%{version}*-info
 %python_alternative %{_bindir}/pypi-server
+%endif
 
 %changelog
