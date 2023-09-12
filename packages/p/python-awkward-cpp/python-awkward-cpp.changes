@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep 11 21:23:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 22:
+  * Add iostream wrapper (#530)
+  * Add Jsonx example for converting JSON into JSONx (a XML
+    format) (#531)
+  * Add optional unresolvedTokenIndex parameter to Pointer::Get()
+    (#532)
+  * Add encoding validation option for Writer/PrettyWriter (#534)
+  * Add Writer::SetMaxDecimalPlaces() (#536)
+  * Support {0, } and {0, m} in Regex (#539)
+  * Add Value::Get/SetFloat(), Value::IsLossLessFloat/Double()
+    (#540)
+  * Add stream position check to reader unit tests (#541)
+  * Add Templated accessors and range-based for (#542)
+  * Add (Pretty)Writer::RawValue() (#543)
+  * Add Document::Parse(std::string), Document::Parse(const
+    char*, size_t length) and related APIs. (#553)
+  * Add move constructor for GenericSchemaDocument (#554)
+  * Add VS2010 and VS2015 to AppVeyor CI (#555)
+  * Add parse-by-parts example (#556, #562)
+  * Support parse number as string (#564, #589)
+  * Add kFormatSingleLineArray for PrettyWriter (#577)
+  * Added optional support for trailing commas (#584)
+  * Added filterkey and filterkeydom examples (#615)
+  * Added npm docs (#639)
+  * Allow options for writing and parsing NaN/Infinity (#641)
+  * Add std::string overload to PrettyWriter::Key() when
+    RAPIDJSON_HAS_STDSTRING is defined (#698)
+
+-------------------------------------------------------------------
 Thu Jul 27 10:26:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - mark as python311 on sle15 as it requires >= 3.8
@@ -7,7 +38,7 @@ Thu Jul 27 10:26:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Mon Jul 10 17:53:20 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 21:
-  * Bug fix: added kernel specializations for 
+  * Bug fix: added kernel specializations for
     awkward_ListOffsetArray_reduce_local_nextparents_64
     [gh#scikit-hep/awkward#2572].
 - Now requires python >= 3.8.
@@ -16,7 +47,7 @@ Mon Jul 10 17:53:20 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 Sat Jul  1 21:04:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 18:
-  * update pyodide parts a bit 
+  * update pyodide parts a bit
 
 -------------------------------------------------------------------
 Tue Jun 20 16:37:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
