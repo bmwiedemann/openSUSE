@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Mon Sep 11 13:07:07 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.33.0
+  * Support for filtering and sorting work requests in the Container Instances service
+    * ``oci container-instances work-request list --availability-\
+      domain --sort-by --sort-order --status``
+    * ``oci container-instances work-request list-errors --sort-by --sort-order``
+    * ``oci container-instances work-request list-logs --sort-by --sort-order``
+  * Queue Service
+    * Support for queue channels
+      * ``oci queue channels list-channels``
+    * Support for new optional parameters
+      * ``oci queue messages get-messages --channel-filter``
+      * ``oci queue messages get-stats --channel-id``
+      * ``oci queue queue-admin queue create --channel-consumption-limit``
+      * ``oci queue queue-admin queue purge --channel-ids``
+      * ``oci queue queue-admin queue update --channel-consumption-limit``
+  * Data Catalog Service
+    * Support for new entity lineage retrieval and asynchronous glossary
+      export commands in the Data Catalog service
+      * ``oci data-catalog entity fetch-entity-lineage``
+      * ``oci data-catalog glossary asynchronous-export``
+    * Support for new optional parameters on folders
+      and jobs in the Data Catalog service
+      * ``oci data-catalog folder list --type-key``
+      * ``oci data-catalog job list --glossary-key``
+      * ``oci data-catalog job-definition create --glossary-key``
+      * ``oci data-catalog job-definition list --glossary-key``
+      * ``oci data-catalog job-definition update --glossary-key``
+  * [BREAKING] Customer Incident Management Service
+    * Endoint changed from https://incidentmanagement.{region}.{domainAndTopLevelDomain} to
+      https://incidentmanagement.{region}.oci.{domainAndTopLevelDomain}
+      (e.g. https://incidentmanagement.us-phoenix-1.oraclecloud.com to
+      https://incidentmanagement.us-phoenix-1.oci.oraclecloud.com)
+    * Incident commands moved to parent group
+      * ``oci support incident create``
+      * ``oci support incident get``
+      * ``oci support incident list``
+      * ``oci support incident update``
+      * ``oci support incident-resource-type list``
+      * ``oci support validation-response validate-user``
+    * Command removed
+      * ``oci support user user create``
+- from version 3.32.0
+  * Database Service
+    * Support for displaying resource usage information on
+      autonomous container database get operations
+      * ``oci db autonomous-container-database get-autonomous-container-\
+        database-resource-usage --autonomous-container-database-id``
+    * Support for displaying resource usage information on cloud autonomous
+      vm cluster get operations
+      * ``oci db cloud-autonomous-vm-cluster get-cloud-autonomous-vm-cluster-\
+        resource-usage --cloud-autonomous-vm-cluster-id``
+    * Support for displaying resource usage information for list of autonomous
+      container databases on cloud autonomous vm cluster get operations
+      * ``oci db cloud-autonomous-vm-cluster list-cloud-autonomous-vm-cluster-\
+        acd-resource-usage --cloud-autonomous-vm-cluster-id``
+  * APM Synthetic Monitoring Service
+    * Support for the network monitor creation and updation
+      * ``oci apm-synthetics monitor create-network-monitor``
+      * ``oci apm-synthetics monitor update-network-monitor``
+  * Database Migration Service
+    * Support for new parameters for GoldenGate Service integration in DMS
+      * ``oci database-migration connection create --replication-credentials``
+      * ``oci database-migration connection update --replication-credentials``
+    * Support for new parameters for GoldenGate service integration in DMS
+      * ``oci database-migration migration create --golden-gate-service-details``
+      * ``oci database-migration migration update --golden-gate-service-details``
+  * Networking Services
+    * Support for new parameters is-private, is-transport-mode
+      * ``oci network cpe create --is-private``
+      * ``oci network virtual-circuit create --is-transport-mode``
+      * ``oci network virtual-circuit update --is-transport-mode``
+    * Support for virtual circuit associated tunnels
+      * ``oci network virtual-circuit-associated-tunnel-details list-virtual-\
+        circuit-associated-tunnels --virtual-circuit-id``
+    * Support for new parameters transportAttachmentId, transportOnlyMode
+      in the Dynamic Routing Gateway
+      * ``oci network drg-attachment create-drg-attachment-loop-back-drg-\
+        attachment-network-create-details --network-details-ids``
+      * ``oci network drg-attachment create-vcn-drg-attachment-loop-back-\
+        drg-attachment-network-create-details --network-details-ids``
+      * ``oci network drg-attachment update-drg-attachment-loopback-drg-\
+        attachment-network-update-details --network-details-ids``
+      * ``oci network drg-attachment update-vcn-drg-attachment-loopback-drg-\
+        attachment-network-update-details --network-details-ids``
+    * Support for Encrypted Fastconnect
+  * Compute Service
+    * Support for assigning an IPv6 address to a compute instance during
+      instance launch or secondary VNIC attach
+      * ``oci compute instance launch --assign-ipv6-ip true``
+  * [BREAKING] Removal of Analytics Cluster in MySQL Database Service
+    * ``oci mysql db-system analytics-cluster``
+    * ``oci mysql db-system analytics-cluster-memory-estimate``
+  * [BREAKING] New required parameter in Networking Services
+    * ``oci network virtual-circuit update --virtual-circuit-id``
+- from version 3.31.1
+  * Support for Warehouse data objects in the Operations Insights service
+    * ``oci opsi opsi-warehouse-data-objects list``
+    * ``oci opsi opsi-warehouse-data-objects query-warehouse-data-standard-query``
+    * ``oci opsi opsi-warehouse-data-objects query-warehouse-data-templatized-query``
+  * Support standard queries for Operations Insights data
+    objects in the Operations Insights service
+    * ``oci opsi opsi-data-objects query-data-standard-query``
+  * Support for new parameter in the Operations Insights service
+    * ``oci opsi opsi-data-objects list --group-name --name``
+    * ``oci opsi opsi-data-objects query-data-templatized-query --data-objects
+      --query-bind-params --query-from-clause --query-query-execution-timeout-in-seconds``
+  * Support for the Compute Cloud at Customer service
+    * ``oci ccc``
+  * Support for Database In-Memory for autonomous databases in the Database service
+    * ``oci db autonomous-database create --in-memory-percentage``
+    * ``oci db autonomous-database create-adb-cross-region-data-\
+      guard-details --in-memory-percentage``
+    * ``oci db autonomous-database create-autonomous-database-create-\
+      cross-region-disaster-recovery-details --in-memory-percentage``
+    * ``oci db autonomous-database create-from-backup-id --in-memory-percentage``
+    * ``oci db autonomous-database create-from-backup-timestamp --in-memory-percentage``
+    * ``oci db autonomous-database create-from-clone --in-memory-percentage``
+    * ``oci db autonomous-database create-refreshable-clone --in-memory-percentage``
+    * ``oci db autonomous-database update --in-memory-percentage``
+- from version 3.31.0
+  * Support for new data sync commands in the Rover service
+    * ``oci rover device data-sync``
+  * Support for new parameters including Single Sign-On support in the Golden Gate service
+    * ``oci goldengate deployment create --credential-store
+      --identity-domain-id --password-secret-id``
+    * ``oci goldengate deployment create --credential-store
+      --identity-domain-id --password-secret-id``
+  * Support for the placement constraint and cluster configuration
+    feature for the Cluster networks in the Compute Management service
+    * ``oci compute-management cluster-network create --cluster-configuration``
+  * Required parameters is now optional for below diagnostics
+    bundle commands in the Rover service
+    * ``oci rover device diagnostics bundle create --display-name``
+    * ``oci rover device diagnostics bundle get --encryption-key-file``
+  * [BREAKING] Renamed commands for below external-db-system-connector
+    commands in the Database Management service
+    * ``oci database-management external-db-system-connector check-connection-status``
+    * ``oci database-management external-db-system-connector create-macs-connector``
+    * ``oci database-management external-db-system-connector update-macs-connector``
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Aug 22 12:35:00 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.30.2
