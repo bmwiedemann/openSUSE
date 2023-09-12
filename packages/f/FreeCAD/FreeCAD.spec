@@ -20,14 +20,17 @@
 
 %if 0%{?suse_version} > 1500
 %bcond_without boost_signals2
+# The AddonManager requires Python >= 3.8
+%bcond_without fc_addonmanager
 %else
 %bcond_with    boost_signals2
+%bcond_with    fc_addonmanager
 %endif
 %bcond_with    smesh_external
 %bcond_without smesh
 
 Name:           FreeCAD
-Version:        0.21.0
+Version:        0.21.1
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -38,6 +41,8 @@ Source0:        https://github.com/FreeCAD/FreeCAD/archive/refs/tags/%{version}.
 Patch0:         0001-Gui-Quarter-Add-missing-OpenGL-includes.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Avoid-catching-SIGSEGV-defer-to-system-services.patch
+# PATCH-FIX-OPENSUSE
+Patch2:         0001-Implement-math.comb-fallback-for-Python-3.6.patch
 # PATCH-FIX-UPSTREAM
 Patch9:         0001-Fix-variable-name-for-OpenGL-library.patch
 
@@ -139,7 +144,8 @@ This package contains the files needed for development with FreeCAD.
 %autopatch -p1
 # Use system gtest - https://github.com/FreeCAD/FreeCAD/issues/10126
 sed -i -e 's/add_subdirectory(lib)/find_package(GTest)/' \
-       -e 's/ gtest_main / GTest::gtest_main /' \
+       -e 's/ gtest_main/ GTest::gtest_main/' \
+       -e 's/ gmock_main/ GTest::gmock_main/' \
   tests/CMakeLists.txt
 # Lower Python minimum version for Leap
 sed -i -e 's/3.8/3.6/' cMake/FreeCAD_Helpers/SetupPython.cmake
@@ -153,11 +159,14 @@ sed -i -e 's/std::filesystem/boost::filesystem/' \
 sed -i '1 s@#!.*@#!%{__python3}@' \
         src/Mod/AddonManager/AddonManager.py \
         src/Mod/Mesh/App/MeshTestsApp.py \
+        src/Mod/Part/parttests/ColorPerFaceTest.py \
+        src/Mod/Part/parttests/TopoShapeListTest.py \
         src/Mod/Robot/KukaExporter.py \
         src/Mod/Robot/MovieTool.py \
         src/Mod/Spreadsheet/importXLSX.py \
         src/Mod/TechDraw/TDTest/D*Test.py \
-        src/Mod/Test/testmakeWireString.py
+        src/Mod/Test/testmakeWireString.py \
+        src/Mod/Test/unittestgui.py
 
 # Fix "wrong-script-end-of-line-encoding" rpmlint warning
 sed -i 's/\r$//' src/Mod/Mesh/App/MeshTestsApp.py
@@ -211,6 +220,7 @@ rm tests/lib -fr
   -DBUILD_FEM:BOOL=%{?with_smesh:ON}%{!?with_smesh:OFF} \
   -DBUILD_FEM_NETGEN:BOOL=ON \
   -DBUILD_FEM_VTK:BOOL=ON \
+  -DBUILD_ADDONMGR:BOOL=%{?with_fc_addonmanager:ON}%{!?with_fc_addonmanager:OFF} \
   -Wno-dev \
   ..
 
@@ -221,18 +231,25 @@ rm tests/lib -fr
 
 # Fix "non-executable-script" rpmlint warning
 # Run after install, as CMake "install(FILES...) sets rw- permissions
-chmod 755 %{buildroot}%{_libdir}/FreeCAD/Mod/AddonManager/AddonManager.py \
-          %{buildroot}%{_libdir}/FreeCAD/Mod/Robot/KukaExporter.py \
+%if %{with fc_addonmanager}
+chmod 755 %{buildroot}%{_libdir}/FreeCAD/Mod/AddonManager/AddonManager.py
+%endif
+chmod 755 %{buildroot}%{_libdir}/FreeCAD/Mod/Robot/KukaExporter.py \
           %{buildroot}%{_libdir}/FreeCAD/Mod/Robot/MovieTool.py \
           %{buildroot}%{_libdir}/FreeCAD/Mod/Spreadsheet/importXLSX.py \
           %{buildroot}%{_libdir}/FreeCAD/Mod/TechDraw/TDTest/D*Test.py \
-          %{buildroot}%{_libdir}/FreeCAD/Mod/Test/testmakeWireString.py
+          %{buildroot}%{_libdir}/FreeCAD/Mod/Test/testmakeWireString.py \
+          %{buildroot}%{_libdir}/FreeCAD/Mod/Mesh/MeshTestsApp.py \
+          %{buildroot}%{_libdir}/FreeCAD/Mod/Part/parttests/ColorPerFaceTest.py \
+          %{buildroot}%{_libdir}/FreeCAD/Mod/Part/parttests/TopoShapeListTest.py \
+          %{buildroot}%{_libdir}/FreeCAD/Mod/Test/unittestgui.py
 
 %suse_update_desktop_file -r org.freecadweb.FreeCAD Education Engineering
 
 # Remove unneeded files
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -Rf %{buildroot}%{_datadir}/pixmaps
+rm %{buildroot}%{x_prefix}/include/E57Format/E57Export.h
 # Broken
 rm -Rf %{buildroot}%{_datadir}/thumbnailers
 

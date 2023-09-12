@@ -1,10 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 11 10:52:51 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.21.1:
+  * Bugfix release, for details see
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.21.1
+
+-------------------------------------------------------------------
+Wed Aug 10 15:42:59 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Disable AddonManager extension on Leap 15.x, as it requires
+  Python >= 3.8
+- Add 0001-Implement-math.comb-fallback-for-Python-3.6.patch
+- Minor packaging cleanups
+
+-------------------------------------------------------------------
 Tue Aug  8 15:49:02 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.21.0:
   * Lots of bugfixes and new features, for details see
     https://wiki.freecad.org/Release_notes_0.21 and
-    https://github.com/FreeCAD/FreeCAD/releases/tag/0.21
+    https://github.com/FreeCAD/FreeCAD/releases/tag/0.21.0
 - Drop upstream patches:
   * 0001-Fix-build-with-NG-6.2.2201-include-BRepMesh_Incremen.patch
   * 0001-Part-OCCError.h-remove-unneeded-includes.patch
