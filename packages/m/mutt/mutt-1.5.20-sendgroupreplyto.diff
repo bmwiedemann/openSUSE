@@ -6,7 +6,7 @@
 
 --- init.h
 +++ init.h	2020-01-14 13:12:26.725982952 +0000
-@@ -3482,6 +3482,13 @@ struct option_t MuttVars[] = {
+@@ -3479,6 +3479,13 @@ struct option_t MuttVars[] = {
    ** .pp
    ** Also see the $$force_name variable.
    */
@@ -22,7 +22,7 @@
    ** .pp
 --- mutt.h
 +++ mutt.h	2020-01-14 13:07:33.727426389 +0000
-@@ -540,6 +540,7 @@ enum
+@@ -539,6 +539,7 @@ enum
    OPTSAVEADDRESS,
    OPTSAVEEMPTY,
    OPTSAVENAME,

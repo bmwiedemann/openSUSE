@@ -73,7 +73,7 @@
        {
 --- mutt.h
 +++ mutt.h	2020-01-14 13:28:45.787807571 +0000
-@@ -1222,4 +1222,7 @@ typedef struct
+@@ -1221,4 +1221,7 @@ typedef struct
  #include "lib.h"
  #include "globals.h"
  
@@ -230,7 +230,7 @@
 +}
 --- sendlib.c
 +++ sendlib.c	2020-01-14 13:28:45.787807571 +0000
-@@ -2580,7 +2580,11 @@ send_msg (const char *path, char **args,
+@@ -2589,7 +2589,11 @@ send_msg (const char *path, char **args,
        if (SendmailWait >= 0 && tempfile && *tempfile)
        {
  	/* *tempfile will be opened as stdout */

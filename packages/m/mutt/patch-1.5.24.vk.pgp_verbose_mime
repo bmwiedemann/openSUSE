@@ -17,7 +17,7 @@
  WHERE char *PgpVerifyCommand;
 --- init.h
 +++ init.h	2020-01-14 13:41:15.145875625 +0000
-@@ -3872,9 +3872,18 @@ struct option_t MuttVars[] = {
+@@ -3869,9 +3869,18 @@ struct option_t MuttVars[] = {
    ** a line quoted text if it also matches $$smileys. This mostly
    ** happens at the beginning of a line.
    */

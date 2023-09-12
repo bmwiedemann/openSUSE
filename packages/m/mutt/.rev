@@ -1390,4 +1390,17 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1082366</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>14ed4ad02b59a44c5d9eee9b51d24c1b</srcmd5>
+    <version>2.2.12</version>
+    <time>1694545427</time>
+    <user>anag+factory</user>
+    <comment>- Update to mutt 2.2.12 (bsc#1215189 for CVE-2023-4874,
+  bsc#1215191 for CVE-2023-4875)
+  * 2.2.12 (2023-09-09):
+    Bug fix release.
+  * 2.2.11 (2023-08-18):
+    Bug fix release.</comment>
+    <requestid>1110464</requestid>
+  </revision>
 </revisionlist>

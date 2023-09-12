@@ -8,7 +8,7 @@
 
 --- crypt-gpgme.c
 +++ crypt-gpgme.c	2019-11-13 13:46:16.512388398 +0000
-@@ -2723,7 +2723,7 @@ static void copy_clearsigned (gpgme_data
+@@ -2733,7 +2733,7 @@ static void copy_clearsigned (gpgme_data
  
      if (armor_header)
      {

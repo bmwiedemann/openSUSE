@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 12 07:15:52 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to mutt 2.2.12 (bsc#1215189 for CVE-2023-4874,
+  bsc#1215191 for CVE-2023-4875)
+  * 2.2.12 (2023-09-09):
+    Bug fix release.
+  * 2.2.11 (2023-08-18):
+    Bug fix release.
+
+-------------------------------------------------------------------
 Mon Apr 17 06:49:36 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Use astrix instead of german u umlaut as point 
