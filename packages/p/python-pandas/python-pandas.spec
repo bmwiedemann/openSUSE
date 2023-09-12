@@ -62,6 +62,8 @@ URL:            https://pandas.pydata.org/
 # SourceRepository: https://github.com/pandas-dev/pandas
 # Must be created by cloning through `osc service runall`: gh#pandas-dev/pandas#54903, gh#pandas-dev/pandas#54907
 Source0:        pandas-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pandas-pr55073-pyarrow13.patch gh#pandas-dev/pandas#55073 gh#pandas-dev/pandas#55048
+Patch0:         https://github.com/pandas-dev/pandas/pull/55073.patch#/pandas-pr55073-pyarrow13.patch
 BuildRequires:  %{python_module Cython >= 0.29.33 with %python-Cython < 3}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module meson-python >= 0.13.1}
@@ -421,6 +423,7 @@ sed -i "s|'python', 'generate_version.py',|'${firstpython3}', 'generate_version.
 # don't require the PyPI data only tzdata package, we use the timezone RPM package
 sed -i '/dependencies = \[/,/\]/ {/tzdata.*>=/d}' pyproject.toml
 %endif
+%patch0 -p1
 
 %build
 %if !%{with test}

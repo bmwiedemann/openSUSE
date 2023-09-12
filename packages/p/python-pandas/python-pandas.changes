@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 10 13:10:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix test failures with pyarrow 13
+  * Add pandas-pr55073-pyarrow13.patch
+  * gh#pandas-dev/pandas#55073
+  * gh#pandas-dev/pandas#55048
+  * gh#pandas-dev/pandas#55020
+
+-------------------------------------------------------------------
 Tue Sep  5 21:02:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Use git cloned archive gh#pandas-dev/pandas#54907
