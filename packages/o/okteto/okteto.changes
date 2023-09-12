@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Sep 12 08:04:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.20.0:
+  * expand branch value if comes from variable (#3956) (#3973)
+  * add e2e using static token (#3953)
+  * fix: remove context init from rch install cmd (#3954)
+  * handle 423 api error a trial license expiration (#3929)
+  * tests: add kubetoken unit tests (#3939)
+  * feat: clone from global to dev reg already built images (#3950)
+  * Tag with global and dev when pushing to global registry (#3940)
+  * chore: add rch install / uninstall cmds (#3949)
+  * fix: registrytoken cmd output processing (#3946)
+  * fix: registrytoken cmd notfound error (#3945)
+  * fix(hybrid): read secrets from kubernetes (#3931)
+  * fix: type mismatch oktetoClientProvider (#3938)
+  * feat: add kubetoken pre-reqs validation (#3909)
+  * Fix kubetoken remote deploy (#3928)
+  * restore previewLabels at default view of preview list (#3919)
+  * Extend help from kubeconfig command to mention that the
+    generated kub…econfig requires to have Okteto CLI in the path
+    (#3917)
+  * Adding syncthing api unittests. (#3899)
+  * fix kubeconfig for non okteto contexts (#3920)
+  *  Feature Flag to Opt-In to Static Tokens/Existing Flow (#3893)
+  * Add cache to registry credentials (#3910)
+  * fix: wait until build stops logs to return (#3908)
+  * Use dynamic kube token for k8s requests  (#3891)
+  * Add exec to kubeconfig when okteto context init (#3887)
+  * fix panic when displayer has no cancel function (#3880)
+  * fix: if repo is not clean always return err (#3895)
+  * Add new props to up event (#3876)
+  * Up event refactor (#3875)
+
+-------------------------------------------------------------------
 Wed Sep 06 15:37:09 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.19.2:
