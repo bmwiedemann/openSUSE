@@ -197,4 +197,15 @@
 - Use correct prerequisite name: pmix-plugin-munge not pmix-plugins-munge</comment>
     <requestid>1074587</requestid>
   </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>d5036494583eb8b84f8a175e4ede36da</srcmd5>
+    <version>3.2.3</version>
+    <time>1694545468</time>
+    <user>anag+factory</user>
+    <comment>- Fix a potential vulnerability where a `chown` may follow a
+  user-created link:
+  Fix-a-potential-vulnerability-which-allows-chown-on-user-created-links.patch
+  (CVE-2023-41915, bsc#1215190). (forwarded request 1110641 from eeich)</comment>
+    <requestid>1110642</requestid>
+  </revision>
 </revisionlist>

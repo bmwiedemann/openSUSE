@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 12 14:04:10 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Fix a potential vulnerability where a `chown` may follow a
+  user-created link:
+  Fix-a-potential-vulnerability-which-allows-chown-on-user-created-links.patch
+  (CVE-2023-41915, bsc#1215190).
+
+-------------------------------------------------------------------
 Tue Mar 21 15:27:23 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Move the requirement for pmix-runtime-config to libpmix2 and make

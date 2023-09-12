@@ -26,6 +26,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Parallel
 URL:            https://pmix.org/
 Source0:        https://github.com/openpmix/openpmix/archive/v%{version}.tar.gz#/openpmix-%{version}.tar.gz
+Patch0:         Fix-a-potential-vulnerability-which-allows-chown-on-user-created-links.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -128,6 +129,7 @@ Test binaries which allow to test proper PMIx operations.
 
 %prep
 %setup -q -n openpmix-%{version}
+%autopatch -p1
 
 %build
 ./autogen.pl --force
