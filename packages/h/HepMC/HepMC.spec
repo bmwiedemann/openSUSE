@@ -30,7 +30,7 @@ Summary:        An event record for High Energy Physics Monte Carlo Generators i
 Patch0:         HepMC-disable-doxygen-html-timestamp.patch
 # Note: pybind11 (BSD-3-Clause) is bundled but not used because we use the system packaged pybind11
 # bxzstr (bundled) uses MPL-2.0
-License:        GPL-3.0-or-later AND MPL-2.0
+License:        LGPL-3.0-or-later AND MPL-2.0
 URL:            http://hepmc.web.cern.ch/hepmc/
 Source:         http://hepmc.web.cern.ch/hepmc/releases/%{name}3-%{version}.tar.gz
 BuildRequires:  %{python_module devel}

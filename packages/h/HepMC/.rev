@@ -130,4 +130,12 @@
 - Make doc package noarch.</comment>
     <requestid>1099615</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>dbd1a7b45c8a2978785e154a1294f363</srcmd5>
+    <version>3.2.6</version>
+    <time>1694545463</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110623</requestid>
+  </revision>
 </revisionlist>
