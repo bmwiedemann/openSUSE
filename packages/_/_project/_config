@@ -2813,6 +2813,7 @@ BuildFlags: onlybuild:python-pycparser
 BuildFlags: onlybuild:python-pycups
 BuildFlags: onlybuild:python-pycurl
 BuildFlags: onlybuild:python-pydot
+BuildFlags: onlybuild:python-pyelftools
 BuildFlags: onlybuild:python-pyenchant
 BuildFlags: onlybuild:python-pyflakes
 BuildFlags: onlybuild:python-pyftpdlib
