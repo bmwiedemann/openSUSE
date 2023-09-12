@@ -4708,4 +4708,14 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>1109167</requestid>
   </revision>
+  <revision rev="396" vrev="1">
+    <srcmd5>754abeb285c3e3172ec372162020c9e6</srcmd5>
+    <version>116.0.5845.187</version>
+    <time>1694545389</time>
+    <user>anag+factory</user>
+    <comment>- Chromium 116.0.5845.187 (boo#1215231):
+  * CVE-2023-4863: Heap buffer overflow in WebP
+</comment>
+    <requestid>1110459</requestid>
+  </revision>
 </revisionlist>

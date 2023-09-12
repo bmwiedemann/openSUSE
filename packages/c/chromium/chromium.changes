@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 12 06:18:00 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 116.0.5845.187 (boo#1215231):
+  * CVE-2023-4863: Heap buffer overflow in WebP
+
+-------------------------------------------------------------------
 Wed Sep  6 05:08:13 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 116.0.5845.179 (boo#1215023):
