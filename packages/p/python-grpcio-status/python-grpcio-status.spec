@@ -19,7 +19,7 @@
 %global modname grpcio_status
 %{?sle15_python_module_pythons}
 Name:           python-grpcio-status
-Version:        1.56.0
+Version:        1.56.2
 Release:        0
 Summary:        Status proto mapping for gRPC
 License:        Apache-2.0
@@ -27,13 +27,15 @@ Group:          Development/Languages/Python
 URL:            https://grpc.io
 Source:         https://files.pythonhosted.org/packages/source/g/grpcio-status/grpcio-status-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-googleapis-common-protos >= 1.5.5
 Requires:       python-grpcio >= %{version}
 Requires:       python-protobuf >= 3.6.0
-
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -47,16 +49,16 @@ This package implements the GRPC Python status proto mapping.
 %autosetup -p1 -n grpcio-status-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/grpc_status/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/grpc_status
+%{python_sitelib}/%{modname}-%{version}.dist-info
 
 %changelog
