@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Sep  9 16:52:36 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.0
+  * Results from concurrent scans against multiple hosts are no
+    longer improperly combined.
+  * Hostname resolution failure no longer causes scans against
+    multiple hosts to terminate unexpectedly.
+  * Algorithm recommendations resulting from warnings are now
+    printed in yellow instead of red.
+  * Added failure, warning, and info notes to JSON output (note
+    that this results in a breaking change to the banner protocol,
+    "enc", and "mac" fields).
+  * Fixed crash during GEX tests.
+  * Refined GEX testing against OpenSSH servers: when the fallback
+    mechanism is suspected of being triggered, perform an
+    additional test to obtain more accurate results.
+  * The color of all notes will be printed in green when the
+    related algorithm is rated good.
+  * Prioritized host key certificate algorithms for Ubuntu
+    22.04 LTS client policy.
+  * Marked all NIST K-, B-, and T-curves as unproven since they
+    are so rarely used.
+  * Added built-in policy for OpenSSH 9.4.
+  * Added 12 new host keys
+  * Added 15 new key exchanges.
+  * Added 8 new ciphers.
+  * Added 14 new MACs.
+
+-------------------------------------------------------------------
 Mon May  1 11:39:44 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.9.0

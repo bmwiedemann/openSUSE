@@ -17,7 +17,7 @@
 
 
 Name:           ssh-audit
-Version:        2.9.0
+Version:        3.0.0
 Release:        0
 Summary:        SSH server auditing
 License:        MIT
