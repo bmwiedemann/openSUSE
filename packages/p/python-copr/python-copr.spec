@@ -17,7 +17,7 @@
 
 
 Name:           python-copr
-Version:        1.129
+Version:        1.130
 Release:        0
 Summary:        Python client for copr service
 License:        GPL-2.0-or-later
@@ -29,14 +29,14 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-filelock
-Requires:       python-future
 Requires:       python-munch
 Requires:       python-requests
 Requires:       python-requests-toolbelt
+Requires:       python-setuptools
+Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module filelock}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module munch}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-gssapi}
@@ -65,6 +65,6 @@ Python client for copr service.
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/copr
-%{python_sitelib}/copr-%{version}*-info
+%{python_sitelib}/copr-%{version}.dist-info
 
 %changelog

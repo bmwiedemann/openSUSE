@@ -71,4 +71,14 @@
 - Move to pyproject macros.</comment>
     <requestid>1093861</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>706a5ecdd063bd227fc7a1e12da37d60</srcmd5>
+    <version>1.130</version>
+    <time>1694545371</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.130:
+  * No upstream changelog.
+- Fiddle with {Build,}Requires as appropiate.</comment>
+    <requestid>1110413</requestid>
+  </revision>
 </revisionlist>
