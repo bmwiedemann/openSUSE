@@ -18,13 +18,14 @@
 
 %define cpan_name Prima
 Name:           perl-Prima
-Version:        1.69000
+Version:        1.70000
 Release:        0
+%define cpan_version 1.70
 #Upstream: SUSE-Public-Domain
 License:        AGPL-3.0-only AND BSD-2-Clause
 Summary:        Perl graphic toolkit
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/K/KA/KARASIK/%{cpan_name}-1.69.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/K/KA/KARASIK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -50,15 +51,16 @@ Requires:       xorg-x11
 # MANUAL END
 
 %description
-The toolkit is combined from two basic set of classes - core and external.
-The core classes are coded in C and form a base line for every Prima object
-written in perl. The usage of C is possible together with the toolkit;
-however, its full power is revealed in the perl domain. The external
-classes present easily expandable set of widgets, written completely in
-perl and communicating with the system using Prima library calls.
+The toolkit is a combination of two basic sets of classes - core and
+external. The core classes are coded in C and form a baseline for every
+Prima object written in Perl. The usage of C is possible together with the
+toolkit; however, its full power is revealed in the Perl domain. The
+external classes present an easily expandable set of widgets, written
+entirely in Perl and communicating with the system using Prima library
+calls.
 
 %prep
-%autosetup  -n %{cpan_name}-1.69
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

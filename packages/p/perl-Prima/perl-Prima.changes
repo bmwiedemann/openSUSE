@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep  5 16:57:28 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.70
+   see /usr/share/doc/packages/perl-Prima/Changes
+
+  1.70 2023-09-03
+   - Use fading effects in widgets
+   - Solidify emulated 2D transformations with images
+     -- Add aperture point for Image.matrix_transform
+   - Animation is using core image processing instead of DeviceBitmap
+   - Path rendering is optimized for widened arcs and splines
+   - Add Widget.is_surface_buffered to check if .buffered(1) was respected
+   - Edit.find() changed the coordinate system used, from visual to physical
+   - Core Icon.put_image(Icon) will affect the destinations 1-bit mask
+   - Image.premultiply_alpha(constant) will work on palettes when bpp <= 8
+   - Add Image.to_colormask
+   - Add --no-xrender-matrix command line switch for x11 builds
+
+-------------------------------------------------------------------
 Thu Jun  1 16:03:42 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Set version to 1.69000 to ensure it's bigger than the previous
