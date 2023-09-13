@@ -1,7 +1,7 @@
 #
 # spec file for package checkstyle
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -99,7 +99,8 @@ sed -i '/testUnexpectedChar/s/./@org.junit.Ignore/' src/test/java/com/puppycrawl
 %build
 %{mvn_file}  : %{name}
 
-%{mvn_build} -f
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
 
 %install
 %mvn_install
