@@ -34,6 +34,8 @@ Patch0:         0001-OSGi-metadata-fixes.patch
 Patch1:         0002-Fixed-tests.patch
 # Module ambiguous in java 11
 Patch2:         hk2-jdk11.patch
+# Reproducible timestamps
+Patch3:         reproducible-now.patch
 BuildRequires:  maven-local
 BuildRequires:  mvn(aopalliance:aopalliance)
 BuildRequires:  mvn(javax.annotation:javax.annotation-api)
@@ -250,6 +252,8 @@ for mod in osgi-resource-locator dependency-verifier dependency-visualizer ; do
   %pom_remove_parent $mod
   %pom_add_parent "org.glassfish.hk2:hk2-parent:%{version}" $mod
 done
+
+%patch3 -p1
 
 # Do not remove test resources
 find . -name '*.jar' ! -name "gendir.jar" -type f -print -delete

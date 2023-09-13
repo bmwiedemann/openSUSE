@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 12 15:38:18 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-now.patch
+    + use SOURCE_DATE_EPOCH also for timestamp in generated files
+
+-------------------------------------------------------------------
 Sat Sep  9 13:33:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
