@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 12 15:42:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Wed Mar 23 23:23:13 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with maven-antrun-plugin 3.x (jsc#SLE-23217)

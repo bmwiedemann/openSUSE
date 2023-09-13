@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-jaxb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -249,7 +249,9 @@ popd
 
 %build
 pushd jaxb-ri
-%{mvn_build} -f -j -s -- -Ddev -DbuildNumber=unknown
+%{mvn_build} -f -j -s -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Ddev -DbuildNumber=unknown
 popd
 
 %install
