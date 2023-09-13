@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep 13 08:17:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.8.0:
+  * Add Hungarian localization
+  * Revise Turkish localization
+  * Translate "thousand" to "千" for zh_CN
+  * Move logic to convert aware datetime to naive into function
+  * Docs: fix formatting of return value
+  * Declare support for Python 3.12
+  * Add Esperanto localization
+  * Support timezone-aware datetimes in naturaltime
+  * Update Bengali translation
+  * Drop support for EOL Python 3.7
+  * Add missing keys to extract translatable strings
+  * Add default Italian thousand and decimal separator
+  * Add Italian translation for "thousand" and fix singulars
+  * Add Italian translation for "%s and %s"
+  * Add Basque translation
+  * Add latest metric prefixes: ronna, ronto, quetta, quecto
+  * Add pt_BR separators
+  * Replace setup.cfg with pyproject.toml
+  * Filesize simplification
+  * Fix intword for 1,000 decillion
+  * Add localisation for thousand, fixing German plurals
+  * Handle NaN
+
+-------------------------------------------------------------------
 Wed Jan  4 20:02:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.0:
@@ -62,12 +89,12 @@ Thu Jun  4 06:42:45 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 - Update to 2.4.0:
   * Added Spanish (Spain) locale.
   * Polish (pl_PL) locales added
-- Switch to %pytest macro. 
+- Switch to %pytest macro.
 
 -------------------------------------------------------------------
 Tue Mar 31 05:49:52 UTC 2020 - steven.kowalik@suse.com
 
-- Update to 2.2.0: 
+- Update to 2.2.0:
   * Added
     + Disambiguate naturaldate return: only append year if more than
     + ~5 months away (#107) @hugovk
@@ -112,7 +139,7 @@ Sat Jul  1 14:54:14 UTC 2017 - okurz@suse.com
 Fri Dec 18 09:06:59 UTC 2015 - mimi.vx@gmail.com
 
 - update to 0.5.1
-- use %find_lang macro 
+- use %find_lang macro
 
 -------------------------------------------------------------------
 Sun Dec  8 21:48:32 UTC 2013 - p.drouand@gmail.com

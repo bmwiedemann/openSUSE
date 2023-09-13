@@ -16,20 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 %global modname humanize
 Name:           python-humanize
-Version:        4.4.0
+Version:        4.8.0
 Release:        0
 Summary:        Python humanize utilities
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/python-humanize/humanize
 Source:         https://files.pythonhosted.org/packages/source/h/humanize/humanize-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -48,10 +48,10 @@ readable size or throughput.
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

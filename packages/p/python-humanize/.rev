@@ -127,4 +127,38 @@
   * Update repo links (#2) @hugovk</comment>
     <requestid>1055993</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b55dbc6a3685e54e8433aecf11b47d73</srcmd5>
+    <version>4.8.0</version>
+    <time>1694630750</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.8.0:
+  * Add Hungarian localization
+  * Revise Turkish localization
+  * Translate &quot;thousand&quot; to &quot;千&quot; for zh_CN
+  * Move logic to convert aware datetime to naive into function
+  * Docs: fix formatting of return value
+  * Declare support for Python 3.12
+  * Add Esperanto localization
+  * Support timezone-aware datetimes in naturaltime
+  * Update Bengali translation
+  * Drop support for EOL Python 3.7
+  * Add missing keys to extract translatable strings
+  * Add default Italian thousand and decimal separator
+  * Add Italian translation for &quot;thousand&quot; and fix singulars
+  * Add Italian translation for &quot;%s and %s&quot;
+  * Add Basque translation
+  * Add latest metric prefixes: ronna, ronto, quetta, quecto
+  * Add pt_BR separators
+  * Replace setup.cfg with pyproject.toml
+  * Filesize simplification
+  * Fix intword for 1,000 decillion
+  * Add localisation for thousand, fixing German plurals
+  * Handle NaN
+
+- Switch to %pytest macro.
+- Update to 2.2.0:
+- use %find_lang macro</comment>
+    <requestid>1110845</requestid>
+  </revision>
 </revisionlist>
