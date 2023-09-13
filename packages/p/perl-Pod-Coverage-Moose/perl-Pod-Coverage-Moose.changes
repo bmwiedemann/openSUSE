@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  5 16:56:11 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.08
+   see /usr/share/doc/packages/perl-Pod-Coverage-Moose/Changes
+
+  0.08      2023-08-25 22:44:37Z
+          - fix "Attempt to call undefined import method with arguments" error
+            on perl 5.39.1
+
+-------------------------------------------------------------------
 Sun Sep  6 08:56:46 UTC 2015 - coolo@suse.com
 
 - updated to 0.07
