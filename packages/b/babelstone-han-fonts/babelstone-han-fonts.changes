@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 13 04:50:14 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 15.1.1
+ * 128 PUA characters added from BabelStone Han PUA version 1.357
+ * 193 PUA characters removed (now included in Ext. I)
+ * 5 new IDC characters added
+ * 786 Latin letters and non-Han symbols removed (due to the 65,535 glyph limit on TrueType fonts)
+ * Glyph corrections and glyph improvements for 337 CJK unified ideographs
+-------------------------------------------------------------------
 Fri Jan  6 08:49:10 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - update: 15.0.4 -> 15.0.5
