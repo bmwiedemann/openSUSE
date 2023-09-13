@@ -996,4 +996,13 @@
     <comment></comment>
     <requestid>1108796</requestid>
   </revision>
+  <revision rev="96" vrev="3">
+    <srcmd5>baf19bad303249c0074b0efe686baf7d</srcmd5>
+    <version>2.11.2</version>
+    <time>1694630599</time>
+    <user>anag+factory</user>
+    <comment>- Add man-db-groff-1.23.0-warnings.patch
+  * Fix build errors with groff 1.23.0</comment>
+    <requestid>1110605</requestid>
+  </revision>
 </revisionlist>

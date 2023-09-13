@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  8 19:48:53 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add man-db-groff-1.23.0-warnings.patch
+  * Fix build errors with groff 1.23.0
+
+-------------------------------------------------------------------
 Sat Aug 26 12:20:42 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - Fix the content in patch file man-propose-online.patch 

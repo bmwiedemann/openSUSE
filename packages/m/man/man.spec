@@ -59,6 +59,8 @@ Patch9:         man-db-2.6.3-man0.dif
 Patch10:        man-db-2.9.4-alternitive.dif
 # PATCH-FEATURE-OPENSUSE -- Propose to read man pages online
 Patch12:        man-propose-online.patch
+# PATCH-FIX-UPSTREAM -- Update warning regex for groff 1.23.0
+Patch13:        man-db-groff-1.23.0-warnings.patch
 BuildRequires:  automake
 BuildRequires:  flex
 BuildRequires:  gdbm-devel
@@ -109,6 +111,7 @@ printer (using groff).
 %patch10 -b .libalernative
 rm -f configure
 %patch12 -p1 -b .p12
+%patch13 -p1 -b .p13
 
 %build
 %global optflags %{optflags} -funroll-loops -pipe -Wall
