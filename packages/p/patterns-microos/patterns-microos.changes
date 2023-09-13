@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 13 07:11:56 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Install grub2-branding-openSUSE if grub2 will be used.
+  (Added in base pattern).
+
+-------------------------------------------------------------------
 Sun Sep 10 19:09:43 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add coreutils-systemd, coreutils got splitted in two RPMs

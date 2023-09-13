@@ -68,6 +68,7 @@ Requires:       ca-certificates-mozilla
 Requires:       coreutils
 Requires:       coreutils-systemd
 Requires:       glibc
+Requires:       (grub2-branding-openSUSE if grub2)
 Suggests:       busybox-hostname
 Requires:       NetworkManager
 Requires:       NetworkManager-wifi
