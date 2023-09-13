@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 13 10:53:44 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- fix wrong library versioning 3 -> 1.1.0. (bsc#1215305)
+  Also solves a file conflict to libArcus-lulzbot
+  Adding set-soname.patch
+
+-------------------------------------------------------------------
 Thu Jul  6 14:26:42 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove explicit --std=c++11 in example compile flags, keep c++17

@@ -30,6 +30,8 @@ Source:         https://github.com/Ultimaker/libArcus/archive/%{sversion}.tar.gz
 Patch0:         libArcus-3.5.1-PyQt5.sip.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Use-single-parameter-SetTotalBytesLimit-fix-protobuf.patch
+# PATCH-FIX-OPENSUSE - set a soname
+Patch2:         set-soname.patch
 BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel >= 3.0.0
@@ -85,11 +87,11 @@ sed -i -e '/COMPILE_FLAGS.*c++11/ d' examples/CMakeLists.txt
 # Create a minimal dist-info (PEP 241/314)
 cat > %{buildroot}%{python3_sitearch}/Arcus-%{version}.egg-info <<HERE_EOF
 Metadata-Version: 1.1
-Name: Arcus
-Version: %{version}
-Summary: Python bindings for libArcus
+Name:           Arcus
+Version:        %{version}
+Summary:        Python bindings for libArcus
 Author-email: info@ultimaker.com
-License: LGPL-3.0-only
+License:        LGPL-3.0-only
 Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
 HERE_EOF
 

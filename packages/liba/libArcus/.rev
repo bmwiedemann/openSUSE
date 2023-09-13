@@ -163,4 +163,14 @@
     <comment></comment>
     <requestid>1097416</requestid>
   </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>92619204ca112559ee8d476b1bb9654d</srcmd5>
+    <version>4.13.1</version>
+    <time>1694630773</time>
+    <user>anag+factory</user>
+    <comment>- fix wrong library versioning 3 -&gt; 1.1.0. (bsc#1215305)
+  Also solves a file conflict to libArcus-lulzbot
+  Adding set-soname.patch</comment>
+    <requestid>1110915</requestid>
+  </revision>
 </revisionlist>
