@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 12 15:45:54 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 6.0.0
+  * https://pecl.php.net/package-changelog.php?package=redis&release=6.0.0
+  * Raised minimal php version to 7.2.
+
+-------------------------------------------------------------------
 Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)

@@ -1,7 +1,7 @@
 #
 # spec file for package php-redis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define pkg_name    redis
-
 %define flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "" || (0%{?suse_version} >= 1550 && "%{flavor}" == "php7")
 %define php_name php
@@ -29,9 +28,8 @@ ExclusiveArch:  do-not-build
 %define php_extdir  %(%{__php_config} --extension-dir)
 %define php_cfgdir  %{_sysconfdir}/%{php_name}/conf.d
 %endif
-
 Name:           %{php_name}-%{pkg_name}
-Version:        5.3.7
+Version:        6.0.0
 Release:        0
 Summary:        API for communicating with Redis servers
 License:        PHP-3.01
@@ -68,8 +66,8 @@ mkdir -p %{buildroot}%{php_cfgdir}
 install -pm0644 %{SOURCE1} %{buildroot}%{php_cfgdir}/%{pkg_name}.ini
 
 %files
-%license COPYING
-%doc CREDITS README.markdown
+%license LICENSE
+%doc CREDITS README.md
 %config(noreplace) %{php_cfgdir}/%{pkg_name}.ini
 %{php_extdir}/%{pkg_name}.so
 
