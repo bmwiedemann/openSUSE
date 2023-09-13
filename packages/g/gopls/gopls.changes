@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 12 13:55:41 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- License correction based on legaldb review
+  Add Apache-2.0 and MIT for vendor/gopkg.in/yaml.v3
+
+-------------------------------------------------------------------
 Thu Aug 17 20:11:29 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.13.2:

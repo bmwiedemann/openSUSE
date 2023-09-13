@@ -20,7 +20,7 @@ Name:           gopls
 Version:        0.13.2
 Release:        0
 Summary:        Go LSP protocol language server
-License:        BSD-3-Clause
+License:        Apache-2.0 AND MIT AND BSD-3-Clause
 Group:          Development/Tools/Other
 URL:            https://pkg.go.dev/golang.org/x/tools/gopls
 Source:         %{name}-%{version}.tar.gz

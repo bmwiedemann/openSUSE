@@ -41,4 +41,13 @@
   * [gopls-release-branch.0.13] refactor/satisfy: (re)allow composite lits of pointer type (forwarded request 1104476 from jfkw)</comment>
     <requestid>1104477</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5d7d1ec29930a613d01e7b74e3328cd6</srcmd5>
+    <version>0.13.2</version>
+    <time>1694630715</time>
+    <user>anag+factory</user>
+    <comment>- License correction based on legaldb review
+  Add Apache-2.0 and MIT for vendor/gopkg.in/yaml.v3 (forwarded request 1110633 from lkocman)</comment>
+    <requestid>1110780</requestid>
+  </revision>
 </revisionlist>
