@@ -1,7 +1,7 @@
 #
 # spec file for package jboss-jaxrs-2.0-api
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,9 @@ This package contains the API documentation for %{name}.
 %{mvn_alias} ":jboss-jaxrs-api_2.0_spec" "org.jboss.resteasy:jaxrs-api"
 
 %build
-%{mvn_build} -f -- -Dsource=8
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dsource=8
 
 %install
 %mvn_install

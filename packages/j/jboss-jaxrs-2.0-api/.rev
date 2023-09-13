@@ -23,4 +23,12 @@
     <comment>Build against the standalone JavaEE modules inconditionally</comment>
     <requestid>978700</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>120f11625bcd6b20fc856c7c0fe2a6e5</srcmd5>
+    <version>1.0.1</version>
+    <time>1694630733</time>
+    <user>anag+factory</user>
+    <comment>reproducible improvements</comment>
+    <requestid>1110825</requestid>
+  </revision>
 </revisionlist>
