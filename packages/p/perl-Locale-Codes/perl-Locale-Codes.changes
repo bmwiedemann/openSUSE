@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  5 16:49:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.76
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+
+  3.76  2023-09-05  sbeck
+    -  Fixed problem in distro
+           Accidentally created a distribution (3.75) that is broken. GitHub
+           #18
+
+  3.75  2023-09-01  sbeck
+    -  NEW CODE(s)
+
+-------------------------------------------------------------------
 Thu Jun  8 03:09:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.74
