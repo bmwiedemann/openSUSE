@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Email-Abstract
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name Email-Abstract
 Name:           perl-Email-Abstract
-Version:        3.009
+Version:        3.10.0
 Release:        0
-Summary:        Unified interface to mail representations
+%define cpan_version 3.010
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Unified interface to mail representations
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -36,6 +37,14 @@ BuildRequires:  perl(Test::More) >= 0.96
 Requires:       perl(Email::Simple) >= 1.998
 Requires:       perl(MRO::Compat)
 Requires:       perl(Module::Pluggable) >= 1.5
+Provides:       perl(Email::Abstract) = 3.10.0
+Provides:       perl(Email::Abstract::EmailMIME) = 3.10.0
+Provides:       perl(Email::Abstract::EmailSimple) = 3.10.0
+Provides:       perl(Email::Abstract::MIMEEntity) = 3.10.0
+Provides:       perl(Email::Abstract::MailInternet) = 3.10.0
+Provides:       perl(Email::Abstract::MailMessage) = 3.10.0
+Provides:       perl(Email::Abstract::Plugin) = 3.10.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -55,7 +64,7 @@ under the 'Email::Abstract' hierarchy will be automatically picked up and
 used.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
