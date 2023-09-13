@@ -20,8 +20,6 @@
      <param name="srcdir">tiny</param>
      <param name="compression">zst</param>
   </service>
-  <service name="cargo_audit" mode="manual">
-     <param name="srcdir">tiny</param>
-  </service>
+  <service name="cargo_audit" mode="manual" />
 </services>
 

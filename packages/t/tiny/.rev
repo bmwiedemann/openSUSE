@@ -86,4 +86,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1104912</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>4bdbd1d78f356fa6aad9628db8eb5070</srcmd5>
+    <version>0.11.0+git7</version>
+    <time>1694630769</time>
+    <user>anag+factory</user>
+    <comment>- Fix and update vendored tarball
+- Remove leftover obscpio file
+- Update vendored sources.
+</comment>
+    <requestid>1110913</requestid>
+  </revision>
 </revisionlist>
