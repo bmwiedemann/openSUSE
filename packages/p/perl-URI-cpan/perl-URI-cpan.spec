@@ -1,7 +1,7 @@
 #
 # spec file for package perl-URI-cpan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name URI-cpan
 Name:           perl-URI-cpan
-Version:        1.008
+Version:        1.9.0
 Release:        0
-Summary:        URLs that refer to things on the CPAN
+%define cpan_version 1.009
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        URLs that refer to things on the CPAN
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -36,13 +37,20 @@ BuildRequires:  perl(parent)
 Requires:       perl(CPAN::DistnameInfo)
 Requires:       perl(URI)
 Requires:       perl(parent)
+Provides:       perl(URI::cpan) = 1.9.0
+Provides:       perl(URI::cpan::author) = 1.9.0
+Provides:       perl(URI::cpan::dist) = 1.9.0
+Provides:       perl(URI::cpan::distfile) = 1.9.0
+Provides:       perl(URI::cpan::module) = 1.9.0
+Provides:       perl(URI::cpan::package) = 1.9.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
 URLs that refer to things on the CPAN
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
