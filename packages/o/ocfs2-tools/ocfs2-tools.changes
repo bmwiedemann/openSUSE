@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 06 10:50:00 UTC 2023 - heming.zhao@suse.com
+
+- Update from 1.8.7 to 1.8.8 (PED-6362)
+  * Upstream only marked a new tag, there is no new feature in this upgrade.
+  * remove patch
+    - ocfs2-tools-kernel33.patch
+    - fixed-mounted.ocfs2-output-when-some-devices-are-Not.patch
+    - update-mounted.ocfs2-mounted.c.patch
+    - libocfs2-roll-back-when-dir_index-creation-fails.patch
+    - fsck.ocfs2-do-not-try-locking-after-replaying-journa.patch
+    - bug-1203166-dump_fs_locks-support-v4.patch
+
+-------------------------------------------------------------------
 Mon Oct 24 10:06:00 UTC 2022 - heming.zhao@suse.com
 
 - ocfs2-tools: finish UsrMerge, install to /usr (bsc#1191084)

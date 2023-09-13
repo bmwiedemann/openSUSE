@@ -43,7 +43,7 @@
 %endif
 
 Name:           ocfs2-tools
-Version:        1.8.7
+Version:        1.8.8
 Release:        0
 Summary:        Oracle Cluster File System 2 Core Tools
 License:        GPL-2.0-only
@@ -51,6 +51,8 @@ Group:          System/Filesystems
 URL:            https://ocfs2.wiki.kernel.org/
 Source:         ocfs2-tools-%{version}.tar.gz
 Source1:        reflink.tar.bz2
+
+# suse special patches
 Patch001:       auto-setup-pcmk-stack-as-default-if-no-stack-is-setup.patch
 Patch103:       debug-ocfs2_hb_ctl.patch
 Patch105:       bug-470741-debug_start_failures.patch
@@ -58,18 +60,13 @@ Patch106:       ocfs2-devel.diff
 Patch107:       reflink-no-syscall.patch
 Patch202:       fix-configure-check-libs.patch
 Patch204:       dont-use-var-lock-subsys.patch
-Patch205:       ocfs2-tools-kernel33.patch
-Patch206:       ocfs2-tools-resource.patch
+Patch205:       ocfs2-tools-resource.patch
 Patch225:       0004-mkfs.ocfs2-Abort-if-cluster-information-is-not-detec.patch
 Patch228:       0007-Improve-error-message-if-DLM-service-is-unavailable.patch
 Patch405:       0007-vendor-Add-vendor-files-for-sles12.patch
 Patch406:       0008-ocfs2-tools-add-systemd-support-fix.patch
-# below are upstream patches
-Patch501:       fixed-mounted.ocfs2-output-when-some-devices-are-Not.patch
-Patch502:       update-mounted.ocfs2-mounted.c.patch
-Patch503:       libocfs2-roll-back-when-dir_index-creation-fails.patch
-Patch504:       fsck.ocfs2-do-not-try-locking-after-replaying-journa.patch
-Patch505:       bug-1203166-dump_fs_locks-support-v4.patch
+# upstream patches (start from Patch501)
+# n/a. 
 
 BuildRequires:  autoconf
 BuildRequires:  e2fsprogs-devel
@@ -172,16 +169,10 @@ OCFS2 filesystem.
 %patch202 -p1
 %patch204 -p1
 %patch205 -p1
-%patch206 -p1
 %patch225 -p1
 %patch228 -p1
 %patch405 -p1
 %patch406 -p1
-%patch501 -p1
-%patch502 -p1
-%patch503 -p1
-%patch504 -p1
-%patch505 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
