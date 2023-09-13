@@ -18,12 +18,13 @@
 
 %define cpan_name Log-Dispatchouli
 Name:           perl-Log-Dispatchouli
-Version:        3.005
+Version:        3.7.0
 Release:        0
+%define cpan_version 3.007
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple wrapper around Log::Dispatch
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -57,6 +58,11 @@ Requires:       perl(Sub::Exporter::GlobExporter) >= 0.002
 Requires:       perl(Sys::Syslog) >= 0.16
 Requires:       perl(Try::Tiny) >= 0.04
 Requires:       perl(experimental)
+Provides:       perl(Log::Dispatchouli) = 3.7.0
+Provides:       perl(Log::Dispatchouli::Global) = 3.7.0
+Provides:       perl(Log::Dispatchouli::Proxy) = 3.7.0
+Provides:       perl(Log::Fmt) = 3.7.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -78,7 +84,7 @@ subroutines are called only if needed. For more information read the
 String::Flogger docs.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
