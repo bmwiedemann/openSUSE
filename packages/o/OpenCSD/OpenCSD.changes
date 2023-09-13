@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 12 13:38:10 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- update to 1.4.1:
+  * Test: Update test program trc_pkt_lister with option to have 
+    no logging output - final stats only.
+  * Bugfix: ETM4x: ETE: Fix memory leak / use after free
+    (github issues #53, #58 from yabinc) 
+  * Bugfix: C-API: Fix memory leak with output sink object.
+    (github issue #55)
+
+-------------------------------------------------------------------
 Wed Mar 22 09:09:23 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - update to 1.4.0:
