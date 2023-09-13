@@ -155,7 +155,7 @@ This package provides development files and documentation for libdmmp.
 %define sbindir /sbin
 %define libdir  /%{_lib}
 %else
-%define dirflags LIB=%{_lib} prefix=%{_prefix}
+%define dirflags LIB=%{_lib} prefix=%{_prefix} configdir=%{_sysconfdir}/multipath/conf.d
 %define sbindir %{_sbindir}
 %define libdir  %{_libdir}
 %endif

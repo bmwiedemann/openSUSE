@@ -1817,4 +1817,13 @@ code-identical to previous submission, replaced a local commit
 by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment>
     <requestid>1109433</requestid>
   </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>c4961fef68993b7c8a7fc517737cc1ff</srcmd5>
+    <version>0.9.6+71+suse.f07325e</version>
+    <time>1694630594</time>
+    <user>anag+factory</user>
+    <comment>- Configuration directory should be /etc/multipath/conf.d
+  (broken since 0.9.4+68+suse.98559ea) (forwarded request 1110447 from mwilck)</comment>
+    <requestid>1110448</requestid>
+  </revision>
 </revisionlist>

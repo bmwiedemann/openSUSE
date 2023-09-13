@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 12 06:48:40 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Configuration directory should be /etc/multipath/conf.d
+  (broken since 0.9.4+68+suse.98559ea)
+
+-------------------------------------------------------------------
 Thu Sep  7 06:58:57 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.9.6+71+suse.f07325e:
