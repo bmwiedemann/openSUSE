@@ -1,7 +1,7 @@
 #
 # spec file for package aws-sdk-java
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -816,7 +816,9 @@ dos2unix src/samples/AmazonEC2SpotInstances-Advanced/CreateSecurityGroupApp.java
 # Tests require networking and unavailable test deps:
 # com.github.tomakehurst:wiremock:1.55
 # nl.jqno.equalsverifier:equalsverifier:1.7.5
-%{mvn_build} -sfj -- -Dsource=8 org.apache.maven.plugins:maven-javadoc-plugin:aggregate
+%{mvn_build} -sfj -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dsource=8 org.apache.maven.plugins:maven-javadoc-plugin:aggregate
 
 %install
 %mvn_install
