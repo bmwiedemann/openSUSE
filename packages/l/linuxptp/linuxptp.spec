@@ -1,7 +1,7 @@
 #
 # spec file for package linuxptp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           linuxptp
-Version:        3.1.1
+Version:        4.1
 Release:        0
 Summary:        Precision Time Protocol v2 daemon
 License:        GPL-2.0-or-later
@@ -95,6 +95,7 @@ install -Dpm 644 %{SOURCE6} %{buildroot}%{_fillupdir}/sysconfig.phc2sys
 %{_sbindir}/nsm
 %{_sbindir}/timemaster
 %{_sbindir}/ts2phc
+%{_sbindir}/tz2alt
 %{_mandir}/man8/hwstamp_ctl.8%{?ext_man}
 %{_mandir}/man8/nsm.8%{?ext_man}
 %{_mandir}/man8/phc2sys.8%{?ext_man}
@@ -103,6 +104,7 @@ install -Dpm 644 %{SOURCE6} %{buildroot}%{_fillupdir}/sysconfig.phc2sys
 %{_mandir}/man8/ptp4l.8%{?ext_man}
 %{_mandir}/man8/timemaster.8%{?ext_man}
 %{_mandir}/man8/ts2phc.8%{?ext_man}
+%{_mandir}/man8/tz2alt.8%{?ext_man}
 %{_fillupdir}/sysconfig.ptp4l
 %{_fillupdir}/sysconfig.phc2sys
 
