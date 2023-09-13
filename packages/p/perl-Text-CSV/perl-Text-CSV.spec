@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-CSV
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,26 @@
 
 %define cpan_name Text-CSV
 Name:           perl-Text-CSV
-Version:        2.02
+Version:        2.30.0
 Release:        0
+%define cpan_version 2.03
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Comma-separated values manipulator (using XS or PurePerl)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.71
+BuildRequires:  perl(Text::CSV_XS) >= 1.510.0
 Requires:       perl(Test::More) >= 0.71
-Recommends:     perl(Text::CSV_XS) >= 1.48
+Requires:       perl(Text::CSV_XS) >= 1.510.0
+Provides:       perl(Text::CSV) = 2.30.0
+Provides:       perl(Text::CSV::ErrorDiag)
+Provides:       perl(Text::CSV_PP) = 2.30.0
+%define         __perllib_provides /bin/true
+Recommends:     perl(Text::CSV_XS) >= 1.510.0
 %{perl_requires}
 
 %description
@@ -41,7 +48,7 @@ default, and when Text::CSV_XS is not available, falls back on
 Text::CSV_PP, which is bundled in the same distribution as this module.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

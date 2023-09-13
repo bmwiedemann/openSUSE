@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 12 03:09:28 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.03
+   see /usr/share/doc/packages/perl-Text-CSV/Changes
+
+  2.03  2023-08-11
+      - Imported tests/fixes from Text::CSV_XS 1.51
+
+-------------------------------------------------------------------
 Mon Aug  8 03:11:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.02
