@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 12 17:04:01 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 117.0.1
+  * Fix a bug causing extensions using an event page for long-
+    running tasks to be terminated while running, causing
+    unexpected behavior changes (bmo#1851373)
+  * Temporarily revert an intentional behavior change preventing
+    Javascript from changing URL.protocol (bmo#1850954).
+  * Fix audio worklets not working for sites using WebAssembly
+    exception handling (bmo#1851468)
+  * Fix the Reopen all tabs option in the Recently closed tabs
+    menu sometimes failing to open all tabs (bmo#1850856)
+  * Fix the bookmarks menu sometimes remaining partially visible
+    when minimizing Firefox (bmo#1843700)
+  * Fix an issue causing incorrect time zones to be detected on
+    some sites (bmo#1848615)
+  * MFSA 2023-40 CVE-2023-4863 (boo#1215231)
+    Heap buffer overflow in WebP
+
+-------------------------------------------------------------------
 Sun Aug 27 08:51:28 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 117.0

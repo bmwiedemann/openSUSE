@@ -6393,4 +6393,12 @@
     Memory safety bugs fixed in Firefox 117, Firefox ESR 102.15,</comment>
     <requestid>1107944</requestid>
   </revision>
+  <revision rev="409" vrev="1">
+    <srcmd5>6f5c4259cfb946f43989fe6be7046aa1</srcmd5>
+    <version>117.0.1</version>
+    <time>1694630614</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110687</requestid>
+  </revision>
 </revisionlist>
