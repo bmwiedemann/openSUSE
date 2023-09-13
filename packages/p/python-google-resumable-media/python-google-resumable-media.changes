@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 12 13:11:29 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.0
+  Features
+  * Add support for concurrent XML MPU uploads (#395)
+  * Introduce compatibility with native namespace packages (#385)
+  Bug Fixes
+  * Add google-auth to aiohttp extra (#386)
+- Update file pattern in %files section
+
+-------------------------------------------------------------------
 Thu May 11 10:52:03 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.5.0

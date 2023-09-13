@@ -218,4 +218,12 @@
   * Add support to retry known connection errors (#375) (forwarded request 1086484 from glaubitz)</comment>
     <requestid>1086489</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>271fa4f4a319511ac1a272c31377e4f2</srcmd5>
+    <version>2.6.0</version>
+    <time>1694630742</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110838</requestid>
+  </revision>
 </revisionlist>
