@@ -1,11 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 13 12:09:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.3.11:
+  * Add PVC Device ID
+  * Add more MTL Device IDs
+  * Replace WaDefaultTile4 with a feature flag
+  * Multi-threaded fixes for GMM Context info
+  * Use GmmResGetAuxSurfaceOffset64
+  * Fix UnifiedAuxSurvface checks to allow HiZ w/o CCS
+  * add ARL-S support
+  * Add device IDs for RPL
+
+-------------------------------------------------------------------
 Sat Apr 15 18:20:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.3.5:
   * Change Scratch L1 Caching to WB
   * Update Cachepolicy for MTL
   * Add forceful fallback to support Tile4 using an Ftr flag
-  * Enable L3 for VP_INPUT_PICTURE_RENDER usage 
+  * Enable L3 for VP_INPUT_PICTURE_RENDER usage
 
 -------------------------------------------------------------------
 Mon Feb 27 20:21:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -33,12 +46,12 @@ Thu Dec 15 10:39:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Sun Dec  4 20:29:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.3.1:
-  * Fix memory leak Destroy allocated resources for ULT 
+  * Fix memory leak Destroy allocated resources for ULT
 
 -------------------------------------------------------------------
 Mon Nov  7 15:36:14 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
-- needed for jira#PED-1174 (Video decoding/encoding support 
+- needed for jira#PED-1174 (Video decoding/encoding support
   (VA-API, ...) for Intel GPUs is outside of Mesa)
 
 -------------------------------------------------------------------
@@ -99,7 +112,7 @@ Thu Oct 28 12:41:19 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Thu Oct 28 10:40:08 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
-- mention baselibs.conf as source in specfile 
+- mention baselibs.conf as source in specfile
 
 -------------------------------------------------------------------
 Mon Oct 25 17:12:32 UTC 2021 - Duarte Pousa <pousaduarte@gmail.com>
@@ -109,7 +122,7 @@ Mon Oct 25 17:12:32 UTC 2021 - Duarte Pousa <pousaduarte@gmail.com>
 -------------------------------------------------------------------
 Mon Oct  4 14:59:36 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
-- fixed JIRA number in previous changelog 
+- fixed JIRA number in previous changelog
 
 -------------------------------------------------------------------
 Mon Sep 27 13:13:23 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
@@ -145,7 +158,7 @@ Mon Aug 31 17:07:40 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 Sun Aug 16 02:33:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 20.2.3:
-  * No upstream changelog available. 
+  * No upstream changelog available.
 
 -------------------------------------------------------------------
 Fri Apr 10 16:44:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -168,13 +181,13 @@ Thu Nov  7 12:40:14 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 Wed Nov  6 14:02:44 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Updated to version 19.3.3
-  * Intel Graphics Memory Management Library 2019 Q3 Release 3 
+  * Intel Graphics Memory Management Library 2019 Q3 Release 3
 - Bump soname to 11
 
 -------------------------------------------------------------------
 Mon Sep  2 14:13:59 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
-- Updated to version 19.2.4 
+- Updated to version 19.2.4
   * adds support for Icelake, EHL, Cometlake, Lakefield
   * bug fixes
 
