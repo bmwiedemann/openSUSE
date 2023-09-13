@@ -34,6 +34,8 @@ URL:            https://github.com/cgohlke/imagecodecs/
 Source:         https://files.pythonhosted.org/packages/source/i/imagecodecs/imagecodecs-%{version}.tar.gz
 Source1:        imagecodecs_distributor_setup.py
 Patch0:         always-cythonize.patch
+# PATCH-FIX-UPSTREAM https://github.com/cgohlke/imagecodecs/commit/14bb6012a8c9f48df264ea996f3376e57166201a Update imagecodecs/_heif.pyx
+Patch1:         cython3.patch
 BuildRequires:  %{python_module Cython >= 0.29.19}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module numpy-devel}

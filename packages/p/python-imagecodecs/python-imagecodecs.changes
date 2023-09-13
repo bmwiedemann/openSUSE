@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 12 14:21:29 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add patch cython3.patch to fix build
+
+-------------------------------------------------------------------
 Fri Mar 24 14:31:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2023.3.16
