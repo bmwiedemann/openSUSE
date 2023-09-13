@@ -64,7 +64,9 @@ BuildRequires:  db-devel
 BuildRequires:  groff
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
+%if 0%{?suse_version} < 1600
 BuildRequires:  openslp-devel
+%endif
 BuildRequires:  sysuser-tools
 BuildRequires:  unixODBC-devel
 # avoid cycle with krb5
@@ -279,7 +281,9 @@ export STRIP=""
         --enable-sql=mod \
         --enable-mdb=mod \
         --enable-relay=mod \
+%if 0%{?suse_version} < 1600
         --enable-slp \
+%endif
         --enable-overlays=mod \
         --enable-syncprov=mod \
         --enable-ppolicy=mod \

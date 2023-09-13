@@ -1548,4 +1548,12 @@ Removal of SuSEfirewall2 service.
     <comment>add CVE ref (forwarded request 1093958 from rfrohl)</comment>
     <requestid>1093975</requestid>
   </revision>
+  <revision rev="181" vrev="3">
+    <srcmd5>797c98628f627d4fef10264beba567c3</srcmd5>
+    <version>2.6.4</version>
+    <time>1694630593</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110389</requestid>
+  </revision>
 </revisionlist>
