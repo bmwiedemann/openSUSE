@@ -1,7 +1,7 @@
 #
 # spec file for package cglib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%bcond_with tests
 %global tarball_name RELEASE_3_3_0
 Name:           cglib
 Version:        3.3.0
@@ -30,16 +29,11 @@ Source1:        %{name}-%{version}-build.tar.xz
 BuildRequires:  ant >= 1.6
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  objectweb-asm >= 5
-Requires:       mvn(org.ow2.asm:asm)
 Provides:       %{name}-nohook = %{version}-%{release}
 Obsoletes:      %{name}-nohook < %{version}-%{release}
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-BuildConflicts: java-devel >= 9
-%endif
 
 %description
 cglib is a powerful, high performance and quality Code Generation
@@ -80,20 +74,12 @@ runtime.
 %pom_remove_plugin -r :maven-javadoc-plugin
 
 %pom_remove_dep -r junit:junit
-%pom_change_dep ::::: ::::: cglib cglib-sample
-
-for i in %{name} %{name}-sample; do
-    %pom_remove_parent ${i}
-    %pom_xpath_inject pom:project "<groupId>cglib</groupId><version>%{version}</version>" ${i}
-done
 
 %build
 mkdir -p lib
 build-jar-repository -s -p lib objectweb-asm/asm ant/ant ant/ant-launcher
 %{ant} \
-%if %{without tests}
     -Dtest.skip=true \
-%endif
     -Dcompiler.target=1.8 -Dcompiler.source=1.8 \
     package javadoc
 
@@ -106,9 +92,9 @@ install -pm 0644 %{name}-sample/target/%{name}-sample-%{version}.jar %{buildroot
 
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-install -pm 0644 %{name}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%mvn_install_pom %{name}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar -a "net.sf.cglib:cglib,cglib:cglib-full,cglib:cglib-nodep,org.sonatype.sisu.inject:cglib"
-install -pm 0644 %{name}-sample/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-sample.pom
+%mvn_install_pom %{name}-sample/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-sample.pom
 %add_maven_depmap %{name}/%{name}-sample.pom %{name}/%{name}-sample.jar
 
 # javadoc
