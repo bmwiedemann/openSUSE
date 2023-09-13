@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  5 16:42:43 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.336
+   see /usr/share/doc/packages/perl-App-Cmd/Changes
+
+  0.336     2023-08-26 11:07:01-04:00 America/New_York
+          - allow getopt_conf to be provided by user (thanks, Michael McClimon!)
+          - add "--version" to Simple commands (thanks, Diab Jerius!)
+          - don't point to Plugin docs when they don't exist (thanks, Sawyer!)
+
+-------------------------------------------------------------------
 Sun Jan  1 03:06:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.335

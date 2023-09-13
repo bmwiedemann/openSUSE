@@ -18,12 +18,13 @@
 
 %define cpan_name App-Cmd
 Name:           perl-App-Cmd
-Version:        0.335
+Version:        0.336.0
 Release:        0
+%define cpan_version 0.336
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Write command line apps with less suffering
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -60,6 +61,20 @@ Requires:       perl(Sub::Exporter::Util)
 Requires:       perl(Sub::Install)
 Requires:       perl(experimental)
 Requires:       perl(parent)
+Provides:       perl(App::Cmd) = 0.336.0
+Provides:       perl(App::Cmd::ArgProcessor) = 0.336.0
+Provides:       perl(App::Cmd::Command) = 0.336.0
+Provides:       perl(App::Cmd::Command::commands) = 0.336.0
+Provides:       perl(App::Cmd::Command::help) = 0.336.0
+Provides:       perl(App::Cmd::Command::version) = 0.336.0
+Provides:       perl(App::Cmd::Plugin) = 0.336.0
+Provides:       perl(App::Cmd::Setup) = 0.336.0
+Provides:       perl(App::Cmd::Simple) = 0.336.0
+Provides:       perl(App::Cmd::Subdispatch) = 0.336.0
+Provides:       perl(App::Cmd::Subdispatch::DashedStyle) = 0.336.0
+Provides:       perl(App::Cmd::Tester) = 0.336.0
+Provides:       perl(App::Cmd::Tester::CaptureExternal) = 0.336.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -70,8 +85,9 @@ usually involved.
 For information on how to start using App::Cmd, see App::Cmd::Tutorial.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
