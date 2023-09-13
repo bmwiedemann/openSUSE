@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Sep 13 04:53:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.13.0:
+  * update cert-manager version imported by cmctl to the latest
+    'release-1.13' commit
+  * upgrade dependencies
+  * fix trivy CVE alert for cyphar/filepath-securejoin
+  * upgrade docker dependencies
+  * upgrade cert-manager to latest master digest
+  * upgrade to k8s 1.28.1
+  * upgrade all dependencies
+  * cleanup: some redundant code clean up
+  * update comment and explain why we use cmdutil.CheckErr
+  * check api, only log if -v is set
+  * use logging library in cmctl
+  * downgrade k8s.io/kube-openapi
+  * run 'make tidy'
+  * Bump k8s.io dependencies
+  * add validation to pki CertificateTemplate function and add
+    support for add DontAllowInsecureCSRUsageDefinition featuregate
+    to use old behavior in controller
+  * Update cmd/cmctl's go.mod to v1.13.0-alpha.0
+  * if wait is set to 0, we still want to check the API once
+  * Bump sigs.k8s.io/controller-runtime to v0.15.0
+  * Updates cmctl to point at latest cert-manager
+  * Bump k8s.io dependencies
+  * upgrade all our docker deps
+  * replace go.mod replace statements with require statements
+  * allow importing the ctl cmd package
+  * make update-licenses
+  * Bumps Helm to latest release
+  * Bumps c/r to latest commit
+  * use a concrete cert-manager version for cmctl
+  * replace deprecated wait.PollUntil() and wait.Poll()
+
+-------------------------------------------------------------------
 Tue Sep  5 14:52:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.12.4:
