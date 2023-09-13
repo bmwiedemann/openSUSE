@@ -39,4 +39,12 @@
     <comment>bsc#1212801</comment>
     <requestid>1095861</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>4c5458168e7a93326c07ba5a231cc02b</srcmd5>
+    <version>2.2~pre2</version>
+    <time>1694630712</time>
+    <user>anag+factory</user>
+    <comment>reproducible</comment>
+    <requestid>1110776</requestid>
+  </revision>
 </revisionlist>
