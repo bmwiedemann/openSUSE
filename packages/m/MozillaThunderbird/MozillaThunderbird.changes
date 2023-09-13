@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Sep 12 21:08:50 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 115.2.2
+  https://www.thunderbird.net/en-US/thunderbird/115.2.2/releasenotes
+  MFSA 2023-40 (bsc#1215231)
+  * CVE-2023-4863 (bmo# bmo#1852649)
+    Heap buffer overflow in libwebp
+
+-------------------------------------------------------------------
+Tue Sep 12 21:00:52 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 115.2.1
+  https://www.thunderbird.net/en-US/thunderbird/115.2.1/releasenotes
+  * new: Column separators are now shown between all columns in
+    tree view (bmo#1847441)
+  * fixed: New mail notification always opened message in message
+    pane, even if pane was disabled (bmo#1840092)
+  * fixed: After moving an IMAP message to another folder, the
+    incorrect message was selected in the message list
+    (bmo#1845376)
+  * fixed: Adding a tag to an IMAP message opened in a tab failed
+    (bmo#1844452)
+  * fixed: Junk/Spam folders were not always shown in Unified
+    Folders mode (bmo#1838672)
+  * fixed: Middle-clicking a folder or message did not open it in
+    a background tab, as in previous versions (bmo#1842482)
+  * fixed: Settings tab visual improvements: Advanced Fonts
+    dialog, Section headers hidden behind search box
+    (bmo#1717382,bmo#1846751)
+  * fixed: Various visual and style fixes
+    (bmo#1843707,bmo#1849823)
+
+-------------------------------------------------------------------
 Sun Aug 27 08:17:34 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 115.2.0

@@ -4984,4 +4984,12 @@ I cannot test locally unfortunately.
   * CVE-2023-4584 (bmo#1843968, bmo#1845205, bmo#1846080,</comment>
     <requestid>1109528</requestid>
   </revision>
+  <revision rev="316" vrev="1">
+    <srcmd5>530b03fda65e5eaedf9b89c454812d3c</srcmd5>
+    <version>115.2.2</version>
+    <time>1694630698</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110767</requestid>
+  </revision>
 </revisionlist>
