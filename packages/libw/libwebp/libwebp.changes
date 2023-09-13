@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 12 12:53:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Fix-OOB-write-in-BuildHuffmanTable.patch
+  [boo#1215231] [CVE-2023-4863]
+
+-------------------------------------------------------------------
 Tue Jul 18 09:22:41 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.3.1:
