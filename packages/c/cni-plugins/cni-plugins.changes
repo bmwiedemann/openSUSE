@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Wed Sep 06 06:16:36 UTC 2023 - danish.prakash@suse.com
+
+- Update to version v1.3.0:
+  * [sbr]: Ignore LinkNotFoundError during cmdDel
+  * build(deps): bump github.com/Microsoft/hcsshim from 0.9.8 to 0.9.9
+  * Bump to golang 1.20 to pick up go1.19.6 / go1.20.1 CVE fixes
+  * Fix ValidateExpectedRoute with non default routes and nil GW
+  * tuning: fix cmdCheck when using IFNAME
+  * bridge, del: timeout after 55 secs of trying to list rules
+  * bridge, spoofcheck: only read the prerouting chain on CNI delete
+  * build: consume specific tables/chains via go-nft
+  * bridge: add vlan trunk support
+  * enable govet and unparam linters
+  * build(deps): bump golang.org/x/sys from 0.6.0 to 0.7.0
+  * Add parameter to disable default vlan
+  * bridge, spoof check: remove drop rule index
+  * go.mod: bump all deps
+  * linter: fix ginkgolinter errors
+  * Fix wastedassign linter errors
+  * build(deps): bump actions/stale from 7 to 8
+  * Fix revive linter errors
+  * build(deps): bump actions/setup-go from 3 to 4
+  * enable durationcheck,  predeclared, unconvert, unused and wastedassign linters
+  * remove govet and gofmt from test_linux.sh
+  * enable ginkgolinter linter
+  * enable revive linter
+  * enable gocritic linter
+  * enable gosimple linter
+  * enable  nonamedreturns linter
+  * enable ineffassign linter
+  * enable contextcheck linter
+  * enable staticcheck linter
+  * ci(lint): setup golangci-lint
+  * ci(lint): setup yamllint linter Signed-off-by: Matthieu MOREL <matthieu.morel35@gmail.com>
+  * Fix overwritten error var in getMTUByName
+  * Update tests to utilize ginkgo/v2
+  * Update ginkgo to v2 in go.mod, go.sum, vendor
+  * Tap plugin
+  * build(deps): bump github.com/onsi/gomega from 1.24.2 to 1.26.0
+  * build(deps): bump golang.org/x/sys from 0.4.0 to 0.5.0
+  * Only check ipv6 when an IPv6 is configured
+  * Add support for in-container master for macvlans
+  * Add support for in-container master for ipvlan
+  * Add support for in-container master for vlans
+  * bridge: re-fetch mac address
+  * Update Allocate method to reuse lease if present
+  * build(deps): bump github.com/safchain/ethtool to v0.2.0
+  * build(deps): bump golang.org/x/sys from 0.3.0 to 0.4.0
+  * Add IPv6 support for AddDefaultRoute
+  * build(deps): bump github.com/containernetworking/cni from 1.0.1 to 1.1.2
+  * build(deps): bump github.com/coreos/go-systemd/v22 from 22.3.2 to 22.5.0
+  * build(deps): bump github.com/onsi/ginkgo from 1.16.4 to 1.16.5
+  * build(deps): bump alpine in /.github/actions/retest-action
+  * build(deps): bump github.com/godbus/dbus/v5 from 5.0.4 to 5.1.0
+  * build(deps): bump github.com/vishvananda/netlink
+  * build(deps): bump github.com/alexflint/go-filemutex from 1.1.0 to 1.2.0
+  * build(deps): bump github.com/Microsoft/hcsshim from 0.8.20 to 0.9.6
+  * build(deps): bump github.com/onsi/gomega from 1.15.0 to 1.24.2
+  * Update dependabot.yml
+  * build(deps): bump actions/checkout from 2 to 3
+  * build(deps): bump actions/stale from 4 to 7
+  * build(deps): bump actions/setup-go from 2 to 3
+  * Update dependabot.yml
+  * Update dependabot.yml
+  * ci(deps): setup dependabot
+  * Fix tuning path validation
+  * Update email to gmail
+  * Update portmap test's iptables error check
+  * Remove references to io/ioutil package
+  * fix bug on getting NextIP of addresses with first byte 0
+  * Fix path substitution to enable setting sysctls on vlan interfaces
+  * support masquerade all config
+  * host-local: remove unused Release(ip) from type Store interface
+  * Cleanup Socket and Pidfile on exit
+  * dummy: Create a Dummy CNI plugin that creates a virtual interface.
+  * Use the same options for acquiring, renewing lease
+  * bridge: update vlanFiltering variable to make code more readable
+  * ci: only rerun failed jobs on `/retest`
+  * build: support riscv64
+  * Check for duplicated sysctl keys
+  * Update github.com/vishvananda/netlink to v1.2.0-beta
+  * bridge: support IPAM DNS settings
+  * Bump to go 1.18
+  *    V2 API support for win-overlay CNI
+  * bug: return errors when iptables and ip6tables are unusable
+  * github: ignore issues with "keep" label from stale closing
+  * Make description for `static` plugin more exact
+  * workflow: add something to auto-close stale PRs
+  * ipam/dhcp: Fix client id in renew/release
+  * call ipam.ExceDel after clean up device in netns fix #666
+  * Add sysctl allowlist
+
+-------------------------------------------------------------------
 Tue Mar 29 10:08:13 UTC 2022 - fvogt@suse.com
 
 - Update to version 1.1.1:
