@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 12 08:13:05 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20230912.0978001:
+  * udisks2: add additional mount and NVME actions (bsc#1214897)
+
+-------------------------------------------------------------------
 Tue Aug 29 12:25:03 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 1550+20230829.1a9a761:
