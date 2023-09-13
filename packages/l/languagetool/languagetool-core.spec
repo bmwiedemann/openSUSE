@@ -118,7 +118,9 @@ popd
         </executions>"
 
 pushd %{name}
-%{mvn_build} -- -DskipTests -Dsource=8
+%{mvn_build} -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -DskipTests -Dsource=8
 popd
 
 %install
