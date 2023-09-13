@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 13 07:46:17 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to latest upstream version (2.2.1)
+  * Fix Capture if directory contains space
+  * Fix segfault in libkshark-tepdata
+
+-------------------------------------------------------------------
 Tue Feb  7 16:14:45 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to latest upstream version (2.2.0)

@@ -17,7 +17,7 @@
 
 
 Name:           kernelshark
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Visualisation tool for trace-cmd data
 License:        GPL-2.0-only AND LGPL-2.1-only
