@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep 12 14:08:37 UTC 2023 - trenn@suse.de
+
+- This contains following features:
+  PED-6122
+  [GNR] RAS: mcelog Add support for Granite Rapids (ALP)
+  PED-6102
+  [GNR] RAS: mcelog Add support for Granite Rapids (SLE 15 SP6)
+  PED-6021
+  [SRF] RAS: mcelog support for Sierra Forest (SLE 15 SP6)
+  PED-6050
+  [SRF] RAS: mcelog support for Sierra Forest (ALP)
+- Change git repo in _service file from git to https url
+- Update to version 195:
+  * mcelog: Wire up model-specific decoding for Sierra Forest
+  * mcelog: Add model-specific decoding for Granite Rapids
+  * client.c: fix build w/ musl libc
+  * mcelog: New model number for Arrowlake
+  * mcelog: Don't overwrite model number when lookup fails
+  * mcelog: Add Graniterapids, Grandridge and Sierraforest
+  * mcelog: New model number for Lunarlake
+  * mcelog: Add Emerald Rapids
+  * Update PFA_test_howto
+- Adopt to mainline:
+M email.patch
+
+-------------------------------------------------------------------
 Wed Jun 14 14:58:43 UTC 2023 - trenn@suse.de
 
 - Update to version 194 (jsc#PED-4218):

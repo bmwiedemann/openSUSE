@@ -7,10 +7,10 @@
  msg.c    |    8 ++
  6 files changed, 346 insertions(+), 3 deletions(-)
 
-Index: mcelog-194/Makefile
+Index: mcelog-195/Makefile
 ===================================================================
---- mcelog-194.orig/Makefile
-+++ mcelog-194/Makefile
+--- mcelog-195.orig/Makefile
++++ mcelog-195/Makefile
 @@ -1,3 +1,4 @@
 +CONFIG_EMAIL := 1
  CFLAGS := -g -Os
@@ -18,7 +18,7 @@ Index: mcelog-194/Makefile
  etcprefix :=
 @@ -38,16 +39,24 @@ OBJ := p4.o k8.o mcelog.o dmi.o tsc.o co
         broadwell_de.o broadwell_epex.o skylake_xeon.o		 \
-        denverton.o i10nm.o sapphire.o				 \
+        denverton.o i10nm.o sapphire.o granite.o			 \
         msr.o bus.o unknown.o lookup_intel_cputype.o
 +EMAIL_OBJ := email.o
  CLEAN := mcelog dmi tsc dbquery .depend .depend.X dbquery.o \
@@ -51,10 +51,10 @@ Index: mcelog-194/Makefile
  
  version.tmp: FORCE
  	( printf "char version[] = \"" ; 			\
-Index: mcelog-194/email.c
+Index: mcelog-195/email.c
 ===================================================================
 --- /dev/null
-+++ mcelog-194/email.c
++++ mcelog-195/email.c
 @@ -0,0 +1,200 @@
 +#include <unistd.h>
 +#include <signal.h>
@@ -256,10 +256,10 @@ Index: mcelog-194/email.c
 +	smtp_destroy_session (session);
 +	return 0;
 +}
-Index: mcelog-194/email.h
+Index: mcelog-195/email.h
 ===================================================================
 --- /dev/null
-+++ mcelog-194/email.h
++++ mcelog-195/email.h
 @@ -0,0 +1,34 @@
 +#ifndef _MCELOG_EMAIL_H_
 +#define _MCELOG_EMAIL_H_
@@ -295,10 +295,10 @@ Index: mcelog-194/email.h
 +#endif
 +
 +#endif
-Index: mcelog-194/mcelog.c
+Index: mcelog-195/mcelog.c
 ===================================================================
---- mcelog-194.orig/mcelog.c
-+++ mcelog-194/mcelog.c
+--- mcelog-195.orig/mcelog.c
++++ mcelog-195/mcelog.c
 @@ -37,6 +37,7 @@
  #include <assert.h>
  #include <signal.h>
@@ -466,10 +466,10 @@ Index: mcelog-194/mcelog.c
  	checkdmi();
  	general_setup();
  		
-Index: mcelog-194/mcelog.h
+Index: mcelog-195/mcelog.h
 ===================================================================
---- mcelog-194.orig/mcelog.h
-+++ mcelog-194/mcelog.h
+--- mcelog-195.orig/mcelog.h
++++ mcelog-195/mcelog.h
 @@ -118,6 +118,7 @@ extern int open_logfile(char *fn);
  enum option_ranges {
  	O_COMMON = 500,
@@ -478,10 +478,10 @@ Index: mcelog-194/mcelog.h
  };
  
  enum syslog_opt { 
-Index: mcelog-194/msg.c
+Index: mcelog-195/msg.c
 ===================================================================
---- mcelog-194.orig/msg.c
-+++ mcelog-194/msg.c
+--- mcelog-195.orig/msg.c
++++ mcelog-195/msg.c
 @@ -8,10 +8,13 @@
  #include "mcelog.h"
  #include "msg.h"

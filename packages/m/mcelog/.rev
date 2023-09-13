@@ -753,4 +753,12 @@ M email.patch
   * mcelog: Generate CPU_* enums from a table</comment>
     <requestid>1093247</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>0d98c73cae2ca882c415a3ec5c179e60</srcmd5>
+    <version>195</version>
+    <time>1694630611</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110657</requestid>
+  </revision>
 </revisionlist>
