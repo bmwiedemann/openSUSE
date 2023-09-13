@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Sep 13 06:45:33 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.3.0: [bsc#1215026, CVE-2023-38039]
+  * Changes:
+    - curl: make %output{} in -w specify a file to write to
+    - gskit: remove
+    - lib: --disable-bindlocal builds curl without local binding support
+    - nss: remove support for this TLS library
+    - tool: add "variable" support
+    - trace: make tracing available in non-debug builds
+    - url: change default value for CURLOPT_MAXREDIRS to 30
+    - urlapi: CURLU_PUNY2IDN - convert from punycode to IDN name
+  * Bugfixes:
+    - altsvc: accept and parse IPv6 addresses in response headers
+    - asyn-ares: reduce timeout to 2000ms
+    - aws-sigv4: canonicalize the query
+    - aws-sigv4: fix having date header twice in some cases
+    - aws-sigv4: handle no-value user header entries
+    - c-hyper: adjust the hyper to curlcode conversion
+    - c-hyper: fix memory leaks in `Curl_http`
+    - cf-haproxy: make CURLOPT_HAPROXY_CLIENT_IP set the *source* IP
+    - cf-socket: log successful interface bind
+    - cmake: add GnuTLS option
+    - cmake: add support for `CURL_DEFAULT_SSL_BACKEND`
+    - cmake: detect `SSL_set0_wbio` in OpenSSL
+    - configure: trust pkg-config when it's used for zlib
+    - configure: use the pkg-config --libs-only-l flag for libssh2
+    - connect: stop halving the remaining timeout when less than 600 ms left
+    - crypto: ensure crypto initialization works
+    - digest: Use hostname to generate spn instead of realm
+    - ftp: fix temp write of ipv6 address
+    - headers: accept leading whitespaces on first response header
+    - http2: fix in h2 proxy tunnel: progress in ingress on sending
+    - http3/ngtcp2: shorten handshake, trace cleanup
+    - http3: quiche, handshake optimization, trace cleanup
+    - http: close the connection after a late 417 is received
+    - http: fix sending of large requests
+    - http: return error when receiving too large header set
+    - lib: fix null ptr derefs and uninitialized vars (h2/h3)
+    - lib: move mimepost data from ->req.p.http to ->state
+    - list-only.d: mention SFTP as supported protocol
+    - ngtcp2: fix handling of large requests
+    - openssl: auto-detect `SSL_R_TLSV13_ALERT_CERTIFICATE_REQUIRED`
+    - openssl: clear error queue after SSL_shutdown
+    - openssl: make aws-lc version support OCSP
+    - openssl: Support async cert verify callback
+    - openssl: switch to modern init for LibreSSL 2.7.0+
+    - openssl: when CURLOPT_SSL_CTX_FUNCTION is registered, init x509 store before
+    - quic: don't set SNI if hostname is an IP address
+    - quiche: adjust quiche `QUIC_IDLE_TIMEOUT` to 60s
+    - quiche: enable quiche to handle timeout events
+    - resolve: use PF_INET6 family lookups when CURL_IPRESOLVE_V6 is set
+    - schannel: verify hostname independent of verify cert
+    - tool_filetime: make -z work with file dates before 1970
+    - tool_operate: allow both SSL_CERT_FILE and SSL_CERT_DIR
+    - tool_operate: make aws-sigv4 not require TLS to be used
+    - transfer: also stop the sending on closed connection
+    - urlapi: fix heap buffer overflow
+    - urlapi: setting a blank URL ("") is not an ok URL
+
+-------------------------------------------------------------------
 Fri Jul 28 08:54:52 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.2.1:
