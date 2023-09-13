@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 13 06:04:08 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.31.3:
+  * [release-1.31] Bump to v1.31.3
+  * [release-1.31] Bump c/common 0.55.4, c/image 5.26.2, c/storage 1.48.1
+  * rpm: spdx compatible license field
+  * RPM: fix buildtags
+  * [release-1.31] Bump to v1.31.3-dev
+
+-------------------------------------------------------------------
 Fri Aug 11 05:43:19 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.31.2:
