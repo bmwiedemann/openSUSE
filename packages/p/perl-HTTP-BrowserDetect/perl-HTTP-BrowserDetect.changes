@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep  9 03:06:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.39
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.39      2023-09-08 13:07:26Z
+      - Match iOS by `iPod|iPhone|iPad` with word boundary (GH#203) (sakakibear)
+
+-------------------------------------------------------------------
 Sat Mar  4 03:08:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.38

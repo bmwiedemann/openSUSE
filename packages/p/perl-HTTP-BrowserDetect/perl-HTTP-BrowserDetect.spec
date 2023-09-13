@@ -18,12 +18,13 @@
 
 %define cpan_name HTTP-BrowserDetect
 Name:           perl-HTTP-BrowserDetect
-Version:        3.38
+Version:        3.390.0
 Release:        0
+%define cpan_version 3.39
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Determine Web browser, version, and platform from an HTTP user agent string
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -36,6 +37,8 @@ BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::NoWarnings)
 BuildRequires:  perl(Test::Warnings)
+Provides:       perl(HTTP::BrowserDetect) = 3.390.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -50,7 +53,7 @@ available at
 http://www.mozilla.org/docs/web-developer/sniffer/browser_type.html.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
