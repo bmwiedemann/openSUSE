@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 10 03:06:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.40
+   see /usr/share/doc/packages/perl-JSON-Any/Changes
+
+  1.40      2023-09-09 21:59:01Z
+      - fix issues on perl 5.39.1 with 'import' subs
+      - added support for JSON v3, v4, JSON::XS v4
+
+-------------------------------------------------------------------
 Sun Jun 14 08:15:38 UTC 2015 - coolo@suse.com
 
 - updated to 1.39
