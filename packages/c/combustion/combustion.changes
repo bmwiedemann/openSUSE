@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 12 15:04:25 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2+git6:
+  * Fix failure if /sysroot not mounted and no config provided
+
+-------------------------------------------------------------------
 Thu Sep 07 12:39:56 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.2+git5:
