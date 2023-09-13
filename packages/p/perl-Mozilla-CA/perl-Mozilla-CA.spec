@@ -18,9 +18,9 @@
 
 %define cpan_name Mozilla-CA
 Name:           perl-Mozilla-CA
-Version:        20230807.0.0
+Version:        20230821.0.0
 Release:        0
-%define cpan_version 20230807
+%define cpan_version 20230821
 #Upstream: SUSE-Public-Domain
 License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
 Summary:        Mozilla's CA cert bundle in PEM format
@@ -31,7 +31,7 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.94
-Provides:       perl(Mozilla::CA) = 20230807.0.0
+Provides:       perl(Mozilla::CA) = 20230821.0.0
 %define         __perllib_provides /bin/true
 %{perl_requires}
 

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Aug 22 03:07:53 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20230821
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20230821
+    - Update from Mozilla repository to 2023-08-21
+    - Added certificates:
+      - Atos TrustedRoot Root CA ECC TLS 2021
+        sha256: b2fae53e14ccd7ab9212064701ae279c1d8988facb775fa8a008914e663988a8
+      - Atos TrustedRoot Root CA RSA TLS 2021
+        sha256: 81a9088ea59fb364c548a6f85559099b6f0405efbf18e5324ec9f457ba00112f
+      - SSL.com TLS ECC Root CA 2022
+        sha256: c32ffd9f46f936d16c3673990959434b9ad60aafbb9e7cf33654f144cc1ba143
+      - SSL.com TLS RSA Root CA 2022
+        sha256: 8faf7d2e2cb4709bb8e0b33666bf75a5dd45b5de480f8ea8d4bfe6bebc17f2ed
+      - Sectigo Public Server Authentication Root E46
+        sha256: c90f26f0fb1b4018b22227519b5ca2b53e2ca5b3be5cf18efe1bef47380c5383
+      - Sectigo Public Server Authentication Root R46
+        sha256: 7bb647a62aeeac88bf257aa522d01ffea395e0ab45c73f93f65654ec38f25a06
+    - Removed certificates:
+      - E-Tugra Global Root CA ECC v3
+        sha256: 873f4685fa7f563625252e6d36bcd7f16fc24951f264e47e1b954f4908cdca13
+      - E-Tugra Global Root CA RSA v3
+        sha256: ef66b0b10a3cdb9f2e3648c76bd2af18ead2bfe6f117655e28c4060da1a3f4c2
+
+-------------------------------------------------------------------
 Tue Aug  8 03:08:15 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20230807
