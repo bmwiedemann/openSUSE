@@ -55,4 +55,12 @@
   (fix-compile.patch)</comment>
     <requestid>947642</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>69254b4bdeac2afcf93629d9d7d2e950</srcmd5>
+    <version>20230129</version>
+    <time>1694630633</time>
+    <user>anag+factory</user>
+    <comment>bot hasn't picked it up yet</comment>
+    <requestid>1110572</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Aug 29 13:26:34 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- update to current state (from january 2023)
+  * stb_c_lexer.h: v0.12 
+  * stb_connected_components: v0.96 
+  * stb_divide.h: v0.94 
+  * stb_dxt.h: v1.12 
+  * stb_easy_font.h: v1.1 
+  * stb_hexwave: v0.5 
+  * stb_include.h: v0.02 
+  * stb_leakcheck.h: v0.6 
+  * stb_perlin.h: v0.5 
+  * stb_rect_pack.h: v1.01 
+  * stb_sprintf: v1.10 
+  * stb_textedit.h: v1.14  
+  * stb_tilemap_editor.h: v0.42 
+  * stb_truetype.h: v1.26 
+  * stb_voxel_render.h: v0.89 
+
+-------------------------------------------------------------------
+Sat Aug 26 13:01:45 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add pkgconfig file which can be used by gamescope
+
+-------------------------------------------------------------------
 Thu Jan 20 09:27:27 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - use a date as version now

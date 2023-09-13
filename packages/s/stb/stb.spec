@@ -1,7 +1,7 @@
 #
 # spec file for package stb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           stb
-Version:        20210910
+Version:        20230129
 Release:        0
 Summary:        Single-File Public Domain Libraries for C/C++
 License:        MIT OR Unlicense
@@ -28,6 +28,9 @@ Source0:        stb-%{version}.tar.xz
 Patch1:         fix-compile.patch
 BuildRequires:  c++_compiler
 BuildArch:      noarch
+
+# to create version list for changelog
+# for i  in stb_*.h ; do sed -n  '1 s,^// \([^-]*\) - \([^-]*\).*,\1: \2,p' "$i"; done
 
 %description
 Useful functions provided via C header files:
@@ -85,13 +88,25 @@ stb_leakcheck.h             | misc             | quick-and-dirty malloc/free lea
 %patch1 -p1
 
 %build
-# nothing to do
+# pkgconf
+cat > stb.pc << EOF
+prefix=%{_prefix}
+exec_prefix=\${prefix}
+includedir=%{_includedir}
+
+Name:           %{name}
+Description:    %{summary}
+Version:        %{version}
+Cflags:         -I\${includedir}/stb
+EOF
 
 %install
 mkdir -p %buildroot%_includedir/stb
 install -m0644 *.h %buildroot%_includedir/stb
 # stb_vorbis.c is a header file..
 cp stb_vorbis.c %buildroot%_includedir/stb/stb_vorbis.h
+
+install -Dm0644 stb.pc %{buildroot}%{_datadir}/pkgconfig/stb.pc
 
 %check
 cd tests
@@ -100,5 +115,6 @@ make && ./a.out
 %files devel
 %doc README.md docs
 %_includedir/stb
+%_datadir/pkgconfig/stb.pc
 
 %changelog

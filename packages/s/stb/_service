@@ -3,7 +3,7 @@
     <param name="url">https://github.com/nothings/stb.git</param>
     <param name="scm">git</param>
 <!-- every header has an own version meanwhile. so using last commit time. -->
-    <param name="version">20210910</param>
+    <param name="version">20230129</param>
   </service>
   <service mode="manual" name="set_version" />
 
