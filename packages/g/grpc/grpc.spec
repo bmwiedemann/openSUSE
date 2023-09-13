@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(openssl) >= 1.0.1
 BuildRequires:  pkgconfig(protobuf) >= 22
 BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(zlib)
+Patch0:         fix_grpconfig_cmake.patch
 
 %description
 The reference implementation of the gRPC protocol, done on top of

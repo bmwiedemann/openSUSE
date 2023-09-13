@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 13 10:49:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add fix_grpconfig_cmake.patch to make find_package(gRPC) in
+  downstream using packages functional again.
+
+-------------------------------------------------------------------
 Wed Sep  6 16:02:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.58

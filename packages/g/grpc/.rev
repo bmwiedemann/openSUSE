@@ -500,4 +500,13 @@ Note: In my home project this only builds on Factory/Tumbleweed. (forwarded requ
     <comment>- Update to release 1.58</comment>
     <requestid>1109312</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>4f53263e1e45ebfaa6324a1582f87fae</srcmd5>
+    <version>1.58.0</version>
+    <time>1694630626</time>
+    <user>anag+factory</user>
+    <comment>- Add fix_grpconfig_cmake.patch to make find_package(gRPC) in
+  downstream using packages functional again.</comment>
+    <requestid>1110898</requestid>
+  </revision>
 </revisionlist>
