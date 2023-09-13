@@ -346,4 +346,12 @@
     <comment>Upgrade to version 4.2ga10 (jsc#PED-3355)</comment>
     <requestid>1090018</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>3f8937876eeec33508ab4282219d8657</srcmd5>
+    <version>4.3</version>
+    <time>1694630726</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110815</requestid>
+  </revision>
 </revisionlist>

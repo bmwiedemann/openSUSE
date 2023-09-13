@@ -16,11 +16,11 @@
 #
 
 
-%define _suffix ga10
+%define _suffix ga3
 %define _fullname suite3270-%{version}%{_suffix}
 %define _x026ver 1.2
 Name:           x3270
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        A Family of IBM 3270 Terminal Emulators
 License:        MIT
@@ -195,6 +195,7 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/x3270.desktop
 # x3270
 %{_bindir}/x3270
 %{_bindir}/x3270a
+%{_bindir}/prtodir
 %dir %{_miscfontsdir}
 %{_miscfontsdir}/*
 %{_mandir}/man1/x3270.1%{?ext_man}

@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Sep 13 06:14:39 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 4.3ga (jsc#PED-3355)
+* Improvements
+* 4.3beta2
+  - Builds now work on MSYS2 MinGW.
+  - The ibm_hosts file is now case-insensitive. (Request from Drew Derbyshire)
+  - The underscoreBlankFill resource can now be set to false to prevent trailing 
+  underscore characters in a field from being treated like blanks when inserting 
+  in blank fill mode.
+  - Changed the keymap for Alt-q in x3270, c3270 and wc3270 to exit the emulator 
+  unconditionally, using Quit(-force).
+* 4.3alpha1
+  - The x3270 Color scheme menu option has been renamed 3279 color scheme, since 
+  it only applies to 3279 mode. The green-screen color scheme option has been removed, 
+  though the resource behind it (x3270.colorScheme.GreenScreen) remains. 
+  The default 3279 color scheme now has a grey10 background to make it easier to see 
+  with minimal window frames.
+  - The confDir resource, where the ibm_hosts file is found, can now be displayed by the 
+  Set() action.
+  - Added Alt-e to the default wc3270 keymap and Ctrl-a, f to the c3270 default keymap for 
+  the EraseEOF() action. This is needed because Windows no longer passes the END key to 
+  console applications.
+  - Added the ability to save printer output to a file in a particular directory, 
+  either by specifying the directory path as the printer name (on Windows) or 
+  by specifying the new prtodir command as the printing command (on POSIX).
+  - Added support for growing or shrinking the x3270 emulator font using Ctrl-+ and Ctrl--.
+  - Added the IBM 3270 fonts from Ricardo Bánffy to the wc3270 installation and added the 
+  ability to specify fonts in the wc3270 Session Wizard.
+  - Changed the default behavior of the terminal type reported in TN3270 mode for 
+  3279 models 4 and 5. Previous versions reported these as IBM-3279-4-E and 
+  IBM-3279-5-E respectively; now they are reported as IBM-3278-4-E and 
+  IBM-3278-5-E because the other names are often not recognized by hosts. 
+  To restore the previous behavior, set the wrongTerminalName resource to true. 
+  (Note that the model resource still refers to these models as 3279-4-E and 3279-5-E; 
+  this only changes what is reported to the host.)
+  - Changed the default library for TLS on macOS to OpenSSL.
+  - Added a summary of warnings to the end of the output from the ./configure script.
+  - Added a Python-based test target (documentation coming soon).
+  - Added a BUILDCC variable to the ./configure script, to facilitate cross-compilation. 
+  (Original suggested patch by Thorsten Otto.)
+  - The code can now be built on POSIX without the <langinfo.h> header file or the 
+  nl_langinfo() library function being present. It will guess the codeset (encoding) 
+  from the LC_CTYPE or LANG environment variable if present, or default to ASCII if 
+  neither is present or the value is not defined as locale.encoding. 
+  (Original suggested patch by Thorsten Otto.)
+* Bug fixes
+* 4.3ga3
+  - When there is an error making a connection in s3270, the error message is 
+  no longer output on two lines. (Bug report)
+* 4.3beta2
+  - When using a printer session and TLS, the printer session no longer 
+  fails with a host certificate validation error.
+  - When inserting in blank fill mode, trailing underscores are no longer consumed, 
+  unless they are at the end of the field. (Bug report) 
+
+-------------------------------------------------------------------
 Wed May 31 11:18:17 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade to version 4.2ga10 (jsc#PED-3355)
