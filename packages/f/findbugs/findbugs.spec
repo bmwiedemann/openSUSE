@@ -1,7 +1,7 @@
 #
 # spec file for package findbugs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,7 @@ Patch3:         findbugs-manual.patch
 Patch4:         findbugs-dom4j.patch
 Patch5:         findbugs-jdk11.patch
 Patch6:         findbugs-javadoc.patch
+Patch7:         reproducible-now.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-lang
 BuildRequires:  desktop-file-utils
@@ -129,6 +130,7 @@ README.tools for more information.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 cp -p %{SOURCE2} README.tools
 

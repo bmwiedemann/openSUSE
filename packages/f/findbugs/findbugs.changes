@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 12 15:15:11 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * findbugs-javadoc.patch
+    + avoid timestamps in javadoc
+- Added patch:
+  * reproducible-now.patch
+    + use timestamp from the SOURCE_DATE_EPOCH environmental
+      variable, if it is set
+
+-------------------------------------------------------------------
 Sun Sep 29 19:55:16 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove reference to parent pom, since we don't build using maven.

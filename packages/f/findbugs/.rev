@@ -251,4 +251,12 @@
     <comment>remove reference to parent pom</comment>
     <requestid>733942</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>c5a01f69f32d10d23e7dafd96593000c</srcmd5>
+    <version>3.0.1</version>
+    <time>1694630645</time>
+    <user>anag+factory</user>
+    <comment>reproducibility improvements</comment>
+    <requestid>1110689</requestid>
+  </revision>
 </revisionlist>
