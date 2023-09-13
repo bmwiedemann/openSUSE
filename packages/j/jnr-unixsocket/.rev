@@ -23,4 +23,12 @@
     <comment>0.38.19</comment>
     <requestid>1083180</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c183c51289d3d50800a894532b1c8bcc</srcmd5>
+    <version>0.38.19</version>
+    <time>1694630735</time>
+    <user>anag+factory</user>
+    <comment>reproducible improvements</comment>
+    <requestid>1110828</requestid>
+  </revision>
 </revisionlist>
