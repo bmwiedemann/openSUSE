@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 12 12:33:05 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 1.9.14p3:
+  * Fixed a crash with Python 3.12 when the sudo Python python is unloaded.
+    This only affects make check for the Python plugin.
+  * Adapted the sudo Python plugin test output to match Python 3.12.
+- Update to 1.9.14p2:
+  * Fixed a crash on Linux systems introduced in version 1.9.14 when running a
+    command with a NULL argv[0] if log_subcmds or intercept is enabled in
+    sudoers.
+  * Fixed a problem with "stair-stepped" output when piping or redirecting the
+    output of a sudo command that takes user input when running a command in
+    a pseudo-terminal.
+  * Fixed a bug introduced in sudo 1.9.14 that affects matching sudoers rules
+    containing a Runas_Spec with an empty Runas user. These rules should only
+    match when sudo’s -g option is used but were matching even without the -g
+    option. #290.
+
+-------------------------------------------------------------------
 Wed Jul 12 09:27:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.14p1:

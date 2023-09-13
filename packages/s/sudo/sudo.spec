@@ -17,7 +17,7 @@
 
 
 Name:           sudo
-Version:        1.9.14p1
+Version:        1.9.14p3
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
