@@ -29,6 +29,8 @@ Source:         https://downloads.sf.net/%name/%name-%version.tar.gz
 Patch1:         0001-Fix-failure-crash-of-sgdisk-when-compiled-with-lates.patch
 # PATCH-FIX-UPSTREAM gptfdisk-fix-null-pointer-dereference.patch bsc#1208877 alynx.zhou@suse.com -- Fix NULL pointer dereference in previous patch
 Patch2:         gptfdisk-fix-null-pointer-dereference.patch
+# PATCH-FIX-UPSTREAM https://bugs.gentoo.org/844073 https://sourceforge.net/p/gptfdisk/code/ci/6a8416cbd12d55f882bb751993b94f72d338d96f/
+Patch3:         gptfdisk-1.0.9-libuuid.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig(popt)
