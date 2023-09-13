@@ -375,4 +375,12 @@
     <comment>Cleanup and use our patches as they are integrated in upstream</comment>
     <requestid>1109307</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>cf809bcde7e08a77bbf550530de201b9</srcmd5>
+    <version>6.2.0</version>
+    <time>1694630628</time>
+    <user>anag+factory</user>
+    <comment>More reproducible</comment>
+    <requestid>1110919</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 13 13:52:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0004-Reproducible-builds-keep-order-of-aliases-and-depend.patch
+    + make the aliases and dependencies lists so that the order is
+      kept
+
+-------------------------------------------------------------------
+Tue Sep 12 09:54:08 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0003-Reproducible-exclusions-order-in-maven-metadata.patch
+    + sort exclusions in maven metadata
+
+-------------------------------------------------------------------
 Tue Sep  5 11:40:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

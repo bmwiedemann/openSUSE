@@ -49,6 +49,10 @@ Patch2:         suse-no-epoch.patch
 Patch3:         0001-Make-maven_depmap-order-of-aliases-reproducible.patch
 #PATCH-FIX-UPSTREAM: Do not bomb on <relativePath/> construct
 Patch4:         0002-Do-not-bomb-on-relativePath-construct.patch
+#PATCH-FIX-UPSTREAM: Sort exclusions when writing out metadata
+Patch5:         0003-Reproducible-exclusions-order-in-maven-metadata.patch
+#PATCH-FIX-UPSTREAM: make the aliases and dependencies lists so that the order is kept
+Patch6:         0004-Reproducible-builds-keep-order-of-aliases-and-depend.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  perl
