@@ -18,17 +18,18 @@
 
 %define cpan_name App-perlbrew
 Name:           perl-App-perlbrew
-Version:        0.97
+Version:        0.980.0
 Release:        0
+%define cpan_version 0.98
 License:        MIT
 Summary:        Manage perl installations in your $HOME
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/G/GU/GUGOD/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/G/GU/GUGOD/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Perl::Releases) >= 5.20230423
+BuildRequires:  perl(CPAN::Perl::Releases) >= 5.20230720
 BuildRequires:  perl(Capture::Tiny) >= 0.48
 BuildRequires:  perl(Devel::PatchPerl) >= 2.08
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.22
@@ -39,7 +40,7 @@ BuildRequires:  perl(JSON::PP)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.039
 BuildRequires:  perl(Path::Class) >= 0.33
 BuildRequires:  perl(Pod::Usage) >= 1.69
-BuildRequires:  perl(Test::Exception) >= 0.320000
+BuildRequires:  perl(Test::Exception) >= 0.32
 BuildRequires:  perl(Test::More) >= 1.001002
 BuildRequires:  perl(Test::NoWarnings) >= 1.04
 BuildRequires:  perl(Test::Output) >= 1.03
@@ -47,7 +48,7 @@ BuildRequires:  perl(Test::Simple) >= 1.001002
 BuildRequires:  perl(Test::Spec) >= 0.49
 BuildRequires:  perl(Test::TempDir::Tiny) >= 0.016
 BuildRequires:  perl(local::lib) >= 2.000014
-Requires:       perl(CPAN::Perl::Releases) >= 5.20230423
+Requires:       perl(CPAN::Perl::Releases) >= 5.20230720
 Requires:       perl(Capture::Tiny) >= 0.48
 Requires:       perl(Devel::PatchPerl) >= 2.08
 Requires:       perl(ExtUtils::MakeMaker) >= 7.22
@@ -55,6 +56,14 @@ Requires:       perl(File::Temp) >= 0.2304
 Requires:       perl(JSON::PP)
 Requires:       perl(Pod::Usage) >= 1.69
 Requires:       perl(local::lib) >= 2.000014
+Provides:       perl(App::Perlbrew::HTTP)
+Provides:       perl(App::Perlbrew::Path)
+Provides:       perl(App::Perlbrew::Path::Installation)
+Provides:       perl(App::Perlbrew::Path::Installations)
+Provides:       perl(App::Perlbrew::Path::Root)
+Provides:       perl(App::Perlbrew::Util)
+Provides:       perl(App::perlbrew) = 0.980.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  wget curl groff
@@ -77,7 +86,7 @@ https://perlbrew.pl/. The following documentation features the API of
 read.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 # MANUAL BEGIN
 chmod a+x t/fake-bin/curl
