@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 13 05:04:17 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: produce reproducible manifest with bnd
+
+-------------------------------------------------------------------
 Thu Jun  9 18:35:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Removed patch:

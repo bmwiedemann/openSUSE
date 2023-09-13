@@ -1,7 +1,7 @@
 #
 # spec file for package mockito
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,6 +79,10 @@ mkdir -p lib/compile lib/build lib/run lib/repackaged
 %build
 build-jar-repository lib/compile objenesis cglib junit hamcrest/core
 ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 jar javadoc prepare.poms
+
+echo "-reproducible: true" >> conf/%{name}-core.bnd
+echo "-noextraheaders: true" >> conf/%{name}-core.bnd
+echo "-snapshot: SNAPSHOT" >> conf/%{name}-core.bnd
 
 # Convert to OSGi bundle
 bnd wrap \
