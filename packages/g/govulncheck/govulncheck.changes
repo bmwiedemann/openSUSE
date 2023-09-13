@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 12 13:13:23 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Correction of license based on legaldb scan
+  Add Apache 2.0 for google/go-cmdtest and
+  vendor/github.com/google/renameio
+   
+
+-------------------------------------------------------------------
 Tue Jul 18 22:43:11 UTC 2023 - jkowalczyk@suse.com
 
 - Initial package version 1.0.0:

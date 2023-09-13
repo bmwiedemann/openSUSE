@@ -7,4 +7,14 @@
     <comment>New package govulncheck version 1.0.0 is a CLI tool to report known CVE vulnerabilities in Go source code and binaries.</comment>
     <requestid>1099364</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4ee56c7dca2b8128f3d39b64d73bfc55</srcmd5>
+    <version>1.0.0</version>
+    <time>1694630715</time>
+    <user>anag+factory</user>
+    <comment>- Correction of license based on legaldb scan
+  Add Apache 2.0 for google/go-cmdtest and
+  vendor/github.com/google/renameio (forwarded request 1110619 from lkocman)</comment>
+    <requestid>1110781</requestid>
+  </revision>
 </revisionlist>
