@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 11 03:08:25 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.20230911
+   see /usr/share/doc/packages/perl-Mail-DKIM/Changes
+
+  1.20230911 2023-09-11 UTC
+    * Option to add custom tags to generated ARC signatures and seals
+
+-------------------------------------------------------------------
 Fri Jun 30 03:06:43 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.20230630
