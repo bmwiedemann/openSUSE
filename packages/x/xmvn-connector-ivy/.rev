@@ -23,4 +23,12 @@
     <comment>more recent git snapshot</comment>
     <requestid>1084990</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d12a3b84ae3984ff45bad7fc249ba7a7</srcmd5>
+    <version>4.0.0~20220623.8da91ea</version>
+    <time>1694630642</time>
+    <user>anag+factory</user>
+    <comment>reproducible</comment>
+    <requestid>1110613</requestid>
+  </revision>
 </revisionlist>

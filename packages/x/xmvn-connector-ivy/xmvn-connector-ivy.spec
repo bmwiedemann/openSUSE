@@ -18,7 +18,6 @@
 
 %global parent xmvn
 %global subname connector-ivy
-%bcond_with tests
 Name:           %{parent}-%{subname}
 Version:        4.0.0~20220623.8da91ea
 Release:        0
@@ -38,14 +37,6 @@ BuildRequires:  slf4j
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit5
-BuildRequires:  apiguardian
-BuildRequires:  cglib
-BuildRequires:  easymock
-BuildRequires:  objectweb-asm
-BuildRequires:  objenesis
-%endif
 
 %description
 This package provides XMvn MOJO, which is a Maven plugin that consists
@@ -69,17 +60,10 @@ cp %{SOURCE1} build.xml
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-%if %{with tests}
-    easymock junit5 junit \
-    apiguardian opentest4j \
-    objenesis cglib objectweb-asm \
-%endif
     ivy slf4j %{parent}
 
 %{ant} \
-%if %{without tests}
     -Dtest.skip=true \
-%endif
     package javadoc
 
 %{mvn_artifact} pom.xml target/%{name}-*.jar

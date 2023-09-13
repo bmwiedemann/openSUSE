@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 12 12:49:11 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible: don't include timestamp in javadoc
+
+-------------------------------------------------------------------
 Fri May  5 08:41:22 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to git checkout from June 2022 with our patch integrated
