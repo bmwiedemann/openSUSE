@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Wed Sep 13 12:09:25 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix and update generated vendored tarball.
+
+-------------------------------------------------------------------
+Sat Sep  2 12:21:09 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.16.0:
+  * Add graceful shutdown on SIGTERM
+  * Update Arch Linux links in README
+  * fix: Adjust broken link to supported shells
+  * feat: do not allow empty passwords durring account creation
+  * Fix movement keys in inverted mode
+  * Make Ctrl-d behaviour match other tools
+  * refactor server to allow pluggable db and tracing
+  * Add support to override hostname and username via env vars
+  * Fix --delete-it-all and --delete commands
+  * Make requirement of PostgreSQL 14 explicit
+  * Bug/fix gh action aarch64 tarball
+  * Key values
+  * Add namespaces to kv store
+  * Builder interface for History objects
+  * clean apt cache in Dockerfile
+  * remove rmp-serde
+  * fix: fixes unix specific impl of shutdown_signal
+  * Add RecordIndex data structure
+  * remove decryption from api-client
+  * Revamp getting started guide
+  * Redirect old docs
+  * Move key binding docs so they can be more easily found
+  * record encryption
+  * Fix nu section in key-bindings.md - set-env -> let-env
+  * Update Nushell support to use support* remove decryption from api-client
+  * Revamp getting started guide
+  * Redirect old docs
+  * Move key binding docs so they can be more easily found
+  * record encryption
+  * Fix nu section in key-bindings.md - set-env -> let-env
+  * Update Nushell support to use supported $env update syntax
+  * fix key encodings again
+  * Update config.toml path default comments
+  * fix for zsh no-unset environments
+  * atuin crypto blog post
+  * Add OG image
+  * write some key tests
+  * Add new sync
+  * Add total history count to the index API
+  * Delete the count cache row when a user is deleted
+  * Add workspace mode, enable if in git repo
+  * Unvendor ratatui
+  * skim: fix filtering aggregates
+  * Serve docusaurus on /docs/
+  * Try adjusting docs root
+  * Remove vercel config
+  * Tidy up docs
+  * use Ctrl-n instead of Alt-n on macOS
+  * some simple server tests
+  * Disable server tests in the nix build
+  * Drop default sync frequency to 10m
+  * Move all references to the old repo
+  * Add self hosted runner
+  * Split integration and unit tests, use runner for unit
+  * fix(server): Teapot is a cup of coffee
+  * rebase: fix: nushell empty hooks
+  * Add support for max_preview_height setting
+  * fix(docs): List all presently documented commands
+  * encode paseto payloads as json
+  * fix(docs): Correct command overview paths
+  * Prepare release v16.0.0
+  * fix key encodings again
+  * Update config.toml path default comments
+  * fix for zsh no-unset environments
+  * atuin crypto blog post
+  * Add OG image
+  * write some key tests
+  * Add new sync
+  * Add total history count to the index API
+  * Delete the count cache row when a user is deleted
+  * Add workspace mode, enable if in git repo
+  * Unvendor ratatui
+  * skim: fix filtering aggregates
+  * Serve docusaurus on /docs/
+  * Try adjusting docs root
+  * Remove vercel config
+  * Tidy up docs
+  * use Ctrl-n instead of Alt-n on macOS
+  * some simple server tests
+  * Disable server tests in the nix build
+  * Drop default sync frequency to 10m
+  * Move all references to the old repo
+  * Add self hosted runner
+  * Split integration and unit tests, use runner for unit
+  * fix(server): Teapot is a cup of coffee
+  * rebase: fix: nushell empty hooks
+  * Add support for max_preview_height setting
+  * fix(docs): List all presently documented commands
+  * encode paseto payloads as json
+  * fix(docs): Correct command overview paths
+
+-------------------------------------------------------------------
+Sun Aug 13 13:26:54 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Replace obsoleted `disabled` option with `manual`
+
+-------------------------------------------------------------------
 Mon May 29 05:30:35 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 15.0.0:
@@ -22,7 +127,6 @@ Mon May 29 05:30:35 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
   * Correct typos in website
   * website: Fix participle "be ran" -> "be run"
   * Update README.md: Disable update check for offline mode
-  * Bump debian from bullseye-20230320-slim to bullseye-20230502-slim
   * At least patch this on the server side so we don't loop forever
   * Fix key regression
   * Include bash preexec warning
