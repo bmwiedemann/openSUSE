@@ -1,7 +1,7 @@
 #
 # spec file for package librime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,13 @@
 
 
 Name:           librime
-Version:        1.7.3
+Version:        1.8.5
 Release:        0
 Summary:        Rime Input Method Engine
 License:        BSD-3-Clause
 Group:          System/I18n/Chinese
 URL:            https://github.com/rime/librime
-Source:         https://github.com/rime/librime/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM Fix compilation errors due to missing cmath header (boo#1185458) https://github.com/rime/librime/commit/57cffcd02ac70148e21ce982be834876b3df87db
-Patch1:         librime-1.7.2-add_cmath_header.patch
-#PATCH-FIX-UPSTREAM Ensure std::exp can be found after including cmath https://github.com/rime/librime/pull/476
-Patch2:         librime-1.7.3-ensure_std_exp_can_be_found_after_including_cmath.patch
+Source:         https://github.com/rime/librime/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  capnproto >= 0.7.0
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
@@ -97,9 +93,7 @@ Requires:       librime-devel = %{version}
 This package provides private headers of Rime to build plugins.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=Release \

@@ -261,4 +261,15 @@
     <comment>- Enable logging with google-glog library (forwarded request 935733 from nuklly)</comment>
     <requestid>935796</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>8d6cf1035f125e40543351ea58520890</srcmd5>
+    <version>1.8.5</version>
+    <time>1694630728</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.8.5
+  * Fix bugs
+- Drop librime-1.7.2-add_cmath_header.patch and
+  librime-1.7.3-ensure_std_exp_can_be_found_after_including_cmath.patch (forwarded request 1110803 from hillwood)</comment>
+    <requestid>1110804</requestid>
+  </revision>
 </revisionlist>
