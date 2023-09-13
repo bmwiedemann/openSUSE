@@ -73,6 +73,7 @@
   boo#1214786: '20230912'
   boo#1214834: '20230912'
   boo#1214875: '20230906'
+  boo#1215283: '20230912'
   bsc#1198101: '20230715'
   bsc#1205897: '20230912'
   gh#os-autoinst/opensuse-jobgroups#342: '20230621'
@@ -578,9 +579,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20230912'
-published: '20230911'
-publishing: '20230911'
+    <value>failed: ''
+published: '20230912'
+publishing: '20230912'
 testing: '20230912'
 </value>
   </attribute>
