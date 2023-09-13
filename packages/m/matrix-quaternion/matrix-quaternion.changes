@@ -1,4 +1,207 @@
 -------------------------------------------------------------------
+Sun Sep 10 21:03:35 UTC 2023 - ecsos@opensuse.org
+
+- Update to version 0.0.95.84+git.20230827.3d7083a:
+  * DockModeMenu: fix building with Qt 6
+  * Update translation base
+  * Prepare for windowHandle() where it's actually needed
+  * DockModeMenu: a better menu to handle dock panels
+  * Remove unused QML registration for RoomMessageEvent
+  * Update to lib 0.8.1.1
+  * ci.yml: refresh the comment on code conventions
+  * Pass the name without .desktop to setDesktopFileName()
+
+-------------------------------------------------------------------
+Sat Aug 19 11:57:36 UTC 2023 - ecsos@opensuse.org
+
+- Update to version 0.0.95.83+git.20230811.f8cb856:
+  * CMakeLists.txt: mark warning support flags as advanced
+  * CMakeLists.txt: set symbol visibility to match libQuotient
+  * Room topic: fix mouse cursor shape; don't show URLs in status bar
+  * Update Flatpak local manifest again
+  * main.cpp: +git again
+  * Update Flatpak local manifest
+  * 0.0.96-beta4
+  * Enable selecting the room topic with mouse again
+  * CI, GH Releases: make sure to use the existing draft
+  * Lokalise: updates
+  * Update translation base
+  * Make attachment pasting messages clearer
+  * Document logging categories in Quaternion
+  * Factor out chatView.scrollTimer to ScrollFinisher
+  * Make timeline scrolling less sluggish
+
+-------------------------------------------------------------------
+Fri Jul 28 09:18:58 UTC 2023 - ecsos@opensuse.org
+
+- Update to version 0.0.95.83+git.20230728.28eef67:
+  * Use logging categories throughout Quaternion
+  * Use logging categories in QML
+  * Further modernize QML; use QQC2 tooltips instead of status bar
+  * More refactoring in HtmlFilter::runOn()
+  * HtmlFilter: fix importing plain text and even some HTML
+  * HtmlFilter: fix monospace formatting being lost
+  * MainWindow::sslErrors(): check that the network reply is alive
+  * MainWindow: update the logic to the current AccountRegistry
+  * Ensure E2EE setting on the connection matches that in the login dialog
+  * Eliminate remaining QML warnings when on Qt 6
+  * TimelineWidget: clean up old code
+  * Timeline: Modernise QML code; use more of QQC2
+  * TimelineItem: drop a no more relevant comment
+  * Timeline: abuse disabled color palette less
+  * Render timestamps on C++ side
+
+-------------------------------------------------------------------
+Thu Jul 13 16:17:17 UTC 2023 - ecsos@opensuse.org
+
+- Update to version 0.0.95.83+git.20230713.5483620:
+  * CI: fine tune GH Release creation a bit more
+  * main.cpp: +git again
+  * CI: further fine tune GH Release creation
+  * Update AppData
+  * ci.yml: Fix a typo
+  * GitHub Releases: omit release name and body entirely
+  * 0.0.96-beta3
+  * Do not add AppImage at GitHub Releases
+  * CMakeLists.txt: build with Qt 6 by default
+  * Revive flatpak/ contents
+  * Add 0.0.96.82 to appdata.xml
+  * Update quaternion_en.ts again
+  * TimelineItem: drop properties that are only used once
+  * TimelineSettings: prefer a shorter default value
+  * Use normal QQC2 propagation of font and palette
+  * Don't show LoginDialog if some accounts are loading
+  * MainWindow: only setEncryptionDefault() when it's there
+  * Update quaternion_en.ts
+  * Lokalise: updates
+  * A few more updates in BUILDING.md
+  * Update documentation
+  * ImageProvider: Use `QPointer` where appropriate
+  * Fix a QML warning
+  * Drop no more needed stuff
+  * One last attempt to fix AppImage
+  * CI: Install Qt on Linux via apt
+  * Start phasing out Qt 5
+  * CI: No need to install OpenSSL, it's already there
+  * Stop building with Qt 5 anywhere except Linux
+  * Build artifacts with Qt 6
+  * CI: bump CI versions
+  * Add a missing #include
+  * Drop NAM::instance() where it's not needed
+  * Update to lib 0.8 final tag
+  * BUILDING.md: say that we're on lib 0.8 now
+  * Use new Change constants instead of deprecated
+  * Only add accounts to the registry after successful login
+  * Refactor ConnectionInitiator
+  * CMakeLists: Drop no more needed include_directories(lib)
+  * Make E2EE switchable per-connection
+  * Drop Quotient/logging.h inclusions
+  * Use MainWindow-owned AccountRegistry
+  * MessageEventModel: use class name instead of Event::type()
+  * More QML fixes
+  * Modernize QML for Qt 6
+  * Revert "TimelineItem: nicer message highlighting"
+  * Use lib 0.8 beta
+  * CMakeLists: Drop DBus from dependencies
+  * CI: fix building with dynamic Quotient and Qt 6
+  * Solve it in a more traditional way
+  * Address deprecation warnings from Qt 6
+  * Switch to lib 0.8
+  * Check for image MIME data before HTML data
+  * Update to lib 0.7.2
+
+-------------------------------------------------------------------
+Wed Apr 26 16:29:04 UTC 2023 - ecsos@opensuse.org
+
+- Update to version 0.0.95.81+git.20230421.5cddd9a:
+  * Clean up a few deprecations
+  * BUILDING.md: mention QtGraphicalEffects in deps list
+  * Timeline.qml: remove unused import
+  * Drop the former line no more needed
+  * Remove COPYING
+  * Use SPDX headers instead of traditional copyright headers
+  * readme: remove lgtm badge
+  * +git again
+
+-------------------------------------------------------------------
+Sun Apr 02 15:11:21 UTC 2023 - ecsos@opensuse.org
+
+- Update to version 0.0.96beta1+git.20230402.2b4c04a:
+  * AppData: fix a typo
+  * 0.0.96 beta
+  * Use Qt 5.15+ convention to define QML Connections objects
+  * Update translation base
+  * Add a comment for translators
+  * Drop adaptations for Qt older than 5.15
+  * Update documentation for 0.0.96 beta
+  * Workaround #861 by pinning lib to the older working commit
+  * Use own invokeLogin() instead of that in Quotient::AccountRegistry
+  * Cleanup
+  * Stop using Accounts singleton
+  * Use std::array instead of a C array
+  * LoginDialog: reuse saved accounts
+  * CI: avoid Qt 6.5 for now
+  * Lokalise: updates
+  * .clang-format: update from that in libQuotient
+  * Update to lib 0.7.1
+  * TimelineTextEditSelector: fix selection extension
+  * Update client/chatedit.cpp
+  * CI: fix packaging AppImage
+  * RoomListModel: refresh room if highlights changed
+  * Chatedit: make default paste mode configurable
+  * TimelineTextEditSelector: enable preventStealing
+
+-------------------------------------------------------------------
+Sat Jan 07 11:11:39 UTC 2023 - ecsos@opensuse.org
+
+- Update to version 0.0.95.1+git.20230106.0315b39:
+  * Cleanup, mostly of things deprecated in lib 0.7
+  * Update to even newer lib to fix QtKeychain linking problem
+  * Enable E2EE in CI
+  * Use -platform instead of QT_QPA_PLATFORM
+  * Hack around Cloudsmith action not accepting globs
+  * Update to even newer lib to fix QtKeychain linking problem
+  * Consolidate and refactor packaging
+  * Update to the latest lib (pre-0.7.1)
+  * Fix finding qtkeychain
+  * Port to libQuotient's keychain and connection handling
+  * Modernize actions code
+  * Make sure install directories are configured early on
+  * CMakeLists: Qt 6 doesn't build on macOS below 10.15
+  * Configure checks with extra matrix variables
+  * Make CI matrix similar to that for libQuotient
+  * Install Ninja along with Qt
+  * Check that translations actually get installed
+
+-------------------------------------------------------------------
+Sat Dec 24 20:01:32 UTC 2022 - ecsos@opensuse.org
+
+- Update to version 0.0.95.1+git.20221223.dd02ec8:
+  * Fix building translations (for both Qt 5 and Qt 6)
+  * Update to lib 0.7.0
+
+-------------------------------------------------------------------
+Wed Dec 21 07:46:35 UTC 2022 - ecsos@opensuse.org
+
+- Update to version 0.0.95.1+git.20221221.3c5ca95:
+  * Adapt to isReplaced being moved to RoomMessageEvent
+  * Simplify and fix qrc registration
+
+-------------------------------------------------------------------
+Sat Oct 29 09:19:53 UTC 2022 - ecsos@opensuse.org
+
+- Update to version 0.0.95.1+git.20221005.e69bbb7:
+  * Fix building with Qt 6
+  * Use QtKeychain unconditionally
+  * CMakeLists: add flags more carefully for non-Windows
+  * CI: add Qt 6
+  * AppImage: install libraries linuxdeploy looks for
+  * Bump to the even more latest lib
+  * CI: use the offscreen QPA plugin instead of xvfb-run
+  * CI: fix missing qt-version specification
+  * Update CI (not Qt 6 yet)
+
+-------------------------------------------------------------------
 Thu Oct  7 18:23:52 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.0.95.1
