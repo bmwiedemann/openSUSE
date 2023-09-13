@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 24 15:55:44 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Removed bootloader from default patterns. (jsc#PED-1906)
+- 20230524
+
+-------------------------------------------------------------------
 Wed Jan 25 09:48:05 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
 
 - drop unused proposals definition ( related to drop of yast2-sound
