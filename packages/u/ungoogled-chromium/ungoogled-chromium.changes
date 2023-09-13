@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 12 15:49:26 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- ungoogled-chromium 116.0.5845.187 (boo#1215231):
+  * CVE-2023-4863: Heap buffer overflow in WebP
+
+-------------------------------------------------------------------
 Tue Sep 12 08:41:52 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
 
 - ungoogled-chromium 116.0.5845.179 (boo#1215023):

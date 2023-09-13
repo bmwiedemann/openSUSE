@@ -221,4 +221,14 @@
 </comment>
     <requestid>1110604</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f734656faf6b8532adffdc78c9344025</srcmd5>
+    <version>116.0.5845.187</version>
+    <time>1694630670</time>
+    <user>anag+factory</user>
+    <comment>- ungoogled-chromium 116.0.5845.187 (boo#1215231):
+  * CVE-2023-4863: Heap buffer overflow in WebP
+</comment>
+    <requestid>1110694</requestid>
+  </revision>
 </revisionlist>

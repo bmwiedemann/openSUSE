@@ -75,7 +75,7 @@
 %endif
 # Package names
 Name:           ungoogled-chromium
-Version:        116.0.5845.179
+Version:        116.0.5845.187
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
