@@ -119,4 +119,17 @@
     <comment></comment>
     <requestid>1032184</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>00aba76a63bcf456adf3fc45a8648a01</srcmd5>
+    <version>0.4.2</version>
+    <time>1694630664</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.2:
+  * Small type annotation clean ups.
+
+- Update to 0.4.1
+- Cleanup use of ifpython3, using the existing macro checks
+- Add remove-nose.patch</comment>
+    <requestid>1110673</requestid>
+  </revision>
 </revisionlist>
