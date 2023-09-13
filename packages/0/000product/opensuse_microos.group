@@ -200,6 +200,7 @@
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="coreutils-doc" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="coreutils-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="coreutils-systemd" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="cpio" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="cpio-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="cpio-mt" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -1799,7 +1800,7 @@
     <package name="libsignon-qt5-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libslang2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libslirp0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
-    <package name="libslp1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-microdnf -->
+    <package name="libslp1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libsmartcols1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libsmbios-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libsmbios_c2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
