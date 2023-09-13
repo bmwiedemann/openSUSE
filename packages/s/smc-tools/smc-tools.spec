@@ -1,7 +1,7 @@
 #
 # spec file for package smc-tools
 #
-# Copyright (c) 2018-2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           smc-tools
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        Shared Memory Communication via RDMA
 License:        EPL-1.0
 Group:          System/Kernel
 URL:            https://www.ibm.com/developerworks/linux/linux390/smc-tools.html
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com/ibm-s390-linux/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+### Source:     https://github.com/ibm-s390-linux/smc-tools/releases/tag/1.8.3.tar.gz
 
 BuildRequires:  bash-completion-devel
 BuildRequires:  libnl3-devel

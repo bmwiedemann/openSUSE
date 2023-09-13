@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 13 05:29:49 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to vesion 1.8.3 (jsc#PED-5438)
+  * Bug fixes
+    - Makefile: Adjust default library path for Ubuntu
+    - smc_stats: Fix man page name
+
+-------------------------------------------------------------------
 Tue Oct  4 19:03:55 UTC 2022 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 1.8.2 (jsc#PED-577)
