@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Tue Sep 12 12:10:39 UTC 2023 - dfaggioli@suse.com
+
+- Fix bsc#1211000:
+  * [openSUSE] block: Add a thread-pool version of fstat (bsc#1211000)
+  * [openSUSE] block: Convert qmp_query_block() to coroutine_fn (bsc#1211000)
+  * [openSUSE] block: Don't query all block devices at hmp_nbd_server_start (bsc#1211000)
+  * [openSUSE] block: Convert qmp_query_named_block_nodes to coroutine (bsc#1211000)
+  * [openSUSE] block: Convert bdrv_block_device_info into co_wrapper (bsc#1211000)
+  * [openSUSE] block: Convert bdrv_query_block_graph_info to coroutine (bsc#1211000)
+  * [openSUSE] block: Temporarily mark bdrv_co_get_allocated_file_size as mixed (bsc#1211000)
+  * [openSUSE] block: Allow the wrapper script to see functions declared in qapi.h (bsc#1211000)
+  * [openSUSE] block: Remove unnecessary variable in bdrv_block_device_info (bsc#1211000)
+  * [openSUSE] block: Remove bdrv_query_block_node_info (bsc#1211000)
+- Fix bsc#1213210:
+  * target/s390x: Fix the "ignored match" case in VSTRS (bsc#1213210)
+
+-------------------------------------------------------------------
+Tue Sep 12 11:41:07 UTC 2023 - dfaggioli@suse.com
+
+- Update to version 8.1.0. Full list of changes are available at:
+
+  https://wiki.qemu.org/ChangeLog/8.1
+    
+  Highlights:
+  * VFIO: improved live migration support, no longer an experimental feature
+  * GTK GUI now supports multi-touch events
+  * ARM, PowerPC, and RISC-V can now use AES acceleration on host processor
+  * PCIe: new QMP commands to inject CXL General Media events, DRAM
+    events and Memory Module events
+  * ARM: KVM VMs on a host which supports MTE (the Memory Tagging Extension)
+    can now use MTE in the guest
+  * ARM: emulation support for bpim2u (Banana Pi BPI-M2 Ultra) board and
+    neoverse-v1 (Cortex Neoverse-V1) CPU
+  * ARM: new architectural feature support for: FEAT_PAN3 (SCTLR_ELx.EPAN),
+    FEAT_LSE2 (Large System Extensions v2), and experimental support for
+    FEAT_RME (Realm Management Extensions)
+  * Hexagon: new instruction support for v68/v73 scalar, and v68/v69 HVX
+  * Hexagon: gdbstub support for HVX
+  * MIPS: emulation support for Ingenic XBurstR1/XBurstR2 CPUs, and MXU
+    instructions
+  * PowerPC: TCG SMT support, allowing pseries and powernv to run with up
+    to 8 threads per core
+  * PowerPC: emulation support for Power9 DD2.2 CPU model, and perf
+    sampling support for POWER CPUs
+  * RISC-V: ISA extension support for BF16/Zfa, and disassembly support
+    for Zcm*/Z*inx/XVentanaCondOps/Xthead
+  * RISC-V: CPU emulation support for Veyron V1
+  * RISC-V: numerous KVM/emulation fixes and enhancements
+  * s390: instruction emulation fixes for LDER, LCBB, LOCFHR, MXDB, MXDBR,
+    EPSW, MDEB, MDEBR, MVCRL, LRA, CKSM, CLM, ICM, MC, STIDP, EXECUTE, and
+    CLGEBR(A)
+  * SPARC: updated target/sparc to use tcg_gen_lookup_and_goto_ptr() for
+    improved performance
+  * Tricore: emulation support for TC37x CPU that supports ISA v1.6.2
+    instructions
+  * Tricore: instruction emulation of POPCNT.W, LHA, CRC32L.W, CRC32.B,
+    SHUFFLE, SYSCALL, and DISABLE
+  * x86: CPU model support for GraniteRapids
+  * and lots more...
+
+- This also (automatically) fixes:
+  * bsc#1212850 (CVE-2023-3354)
+  * bsc#1213001 (CVE-2023-3255)
+  * bsc#1213925 (CVE-2023-3180)
+  * bsc#1213414 (CVE-2023-3301)
+  * bsc#1207205 (CVE-2023-0330)
+  * bsc#1212968 (CVE-2023-2861)
+  * bsc#1179993, bsc#1181740  
+
+-------------------------------------------------------------------
 Mon Aug 07 23:01:35 UTC 2023 - dfaggioli@suse.com
 
 - perl-Text-Markdown is not available in all distros and for all

@@ -82,7 +82,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        8.0.4
+Version:        8.1.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -354,6 +354,12 @@ Conflicts:      qemu-tools > %{version}-%{release}
 %prep
 %autosetup -n qemu-%{version}
 
+# We have the meson subprojects there, but as submodules (because OBS
+# SCM bridge can handle the latter, but not the former) so we need to
+# apply the layering of the packagefiles manually
+meson subprojects packagefiles --apply berkeley-testfloat-3
+meson subprojects packagefiles --apply berkeley-softfloat-3
+
 # for the record, this set of firmware files is installed, but we don't
 # build (yet): bamboo.dtb canyonlands.dtb hppa-firmware.img openbios-ppc
 # openbios-sparc32 openbios-sparc64 palcode-clipper petalogix-ml605.dtb
@@ -444,8 +450,8 @@ sed -i '/^\ \ \ about\/index.*/i \ \ \ supported.rst' docs/index.rst
 # from a git branch. We, therefore, assumed that the following commands
 # have been run, and the result committed to the repository (with seabios
 # and skiboot at the proper commit/tag/...):
-#  (cd roms/seabios && git describe --tags --long --dirty > rpm/seabios_version)
-#  (cd roms/skiboot && ./make_version.sh > rpm/skiboot_version)
+#  git -C roms/seabios describe --tags --long --dirty > rpm/seabios_version
+#  (cd roms/skiboot && ./make_version.sh > ../../rpm/skiboot_version)
 cp %{rpmfilesdir}/seabios_version roms/seabios/.version
 cp %{rpmfilesdir}/skiboot_version roms/skiboot/.version
 find . -iname ".git" -exec rm -rf {} +
@@ -484,7 +490,6 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--prefix=%_prefix \
         --python=%_bindir/python3 \
 	--sysconfdir=%_sysconfdir \
-	--with-git-submodules=ignore \
 	--with-pkgversion="%(echo '%{distro}' | sed 's/ (.*)//')" \
 	--disable-alsa \
 	--disable-attr \
@@ -514,6 +519,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--disable-debug-tcg \
 	--disable-dmg \
 	--disable-docs \
+	--disable-download \
 	--disable-dsound \
 	--disable-fdt \
 	--disable-fuse \
