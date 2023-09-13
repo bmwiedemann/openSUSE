@@ -1,7 +1,7 @@
 #
 # spec file for package ipmiutil
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Andy Cress
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{!?_unitdir: %define _unitdir  %{_prefix}/lib/systemd/system}
 Name:           ipmiutil
-Version:        3.1.8
+Version:        3.1.9
 Release:        0
 Summary:        Easy-to-use IPMI server management utilities
 License:        BSD-3-Clause
@@ -126,6 +126,7 @@ autoreconf -fiv
 %{_datadir}/%{name}/evt.sh
 %{_datadir}/%{name}/ipmi.init.basic
 %{_datadir}/%{name}/bmclanpet.mib
+%{_datadir}/%{name}/ipmiutil.env
 %{_datadir}/%{name}/ipmiutil.env.template
 %{_mandir}/man8/isel.8%{?ext_man}
 %{_mandir}/man8/isensor.8%{?ext_man}

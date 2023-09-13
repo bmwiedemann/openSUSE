@@ -1,7 +1,7 @@
-Index: ipmiutil-3.1.7/scripts/ipmiutil_asy.service
+Index: ipmiutil-3.1.9/scripts/ipmiutil_asy.service
 ===================================================================
---- ipmiutil-3.1.7.orig/scripts/ipmiutil_asy.service
-+++ ipmiutil-3.1.7/scripts/ipmiutil_asy.service
+--- ipmiutil-3.1.9.orig/scripts/ipmiutil_asy.service
++++ ipmiutil-3.1.9/scripts/ipmiutil_asy.service
 @@ -3,6 +3,17 @@ Description=ipmiutil Async Bridge Agent
  After=network.target
  

@@ -1,7 +1,7 @@
-Index: ipmiutil-3.1.7/scripts/ipmi_port.service
+Index: ipmiutil-3.1.9/scripts/ipmi_port.service
 ===================================================================
---- ipmiutil-3.1.7.orig/scripts/ipmi_port.service
-+++ ipmiutil-3.1.7/scripts/ipmi_port.service
+--- ipmiutil-3.1.9.orig/scripts/ipmi_port.service
++++ ipmiutil-3.1.9/scripts/ipmi_port.service
 @@ -3,6 +3,17 @@ Description=ipmiutil ipmi_port service
  After=network.target
  
