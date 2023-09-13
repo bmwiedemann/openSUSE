@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 12 08:12:16 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapt "sle15sp6" to GA as it is still in development and it is
+  now based on previous SP and not on git master (bsc#1213989)
+- 0.2.50
+
+-------------------------------------------------------------------
+Fri Aug  4 13:58:46 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Move the "sle_latest" build target to SLE15-SP6 (bsc#1213989)
+- Added "sle15sp6" and future "sle15sp7" build targets
+- 0.2.49
+
+-------------------------------------------------------------------
 Mon Mar  6 16:35:45 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Allow overriding the submit target using YAST_SUBMIT also
