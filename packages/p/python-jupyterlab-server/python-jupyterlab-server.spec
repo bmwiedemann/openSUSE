@@ -25,27 +25,25 @@
 %bcond_with test
 %endif
 
-# https://github.com/jupyterlab/jupyterlab_server/issues/400
-%bcond_with openapi
 Name:           python-jupyterlab-server%{psuffix}
-Version:        2.24.0
+Version:        2.25.0
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/jupyterlab_server
 Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_server/jupyterlab_server-%{version}.tar.gz
 Source100:      python-jupyterlab-server-rpmlintrc
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module hatchling >= 1.5}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module hatchling >= 1.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Babel >= 2.10
 Requires:       python-Jinja2 >= 3.0.3
 Requires:       python-json5 >= 0.9.0
-Requires:       python-jsonschema >= 4.17.3
+Requires:       python-jsonschema >= 4.18
 Requires:       python-packaging >= 21.3
-Requires:       python-requests >= 2.28
+Requires:       python-requests >= 2.31
 Requires:       (python-jupyter-server >= 1.21 with python-jupyter-server < 3)
 %if 0%{?python_version_nodots} < 310
 Requires:       python-importlib-metadata >= 4.8.3
@@ -92,11 +90,12 @@ Requires:       python-pytest-console-scripts
 Requires:       python-pytest-jupyter-server >= 0.6.2
 Requires:       python-pytest-timeout
 Requires:       python-requests-mock
-Requires:       (python-openapi-spec-validator >= 0.5.1 with python-openapi-spec-validator < 0.7)
+Requires:       (python-openapi-spec-validator >= 0.6 with python-openapi-spec-validator < 0.7)
 #Requires:       python-sphinxcontrib-spelling
 Requires:       python-strict-rfc3339
 Requires:       python-jupyterlab-server = %{version}
-%{?_with_openapi:Requires:       python-jupyterlab-server-openapi = %{version}}
+Requires:       python-ruamel.yaml
+Requires:       (python-openapi-core >= 0.18 with python-openapi-core < 0.19)
 
 %description test
 Metapackage for the jupyterlab_server[test] requirement specifier
@@ -106,7 +105,7 @@ without code coverage.
 Summary:        The jupyterlab_server[openapi]] extra
 Requires:       python-jupyterlab-server = %{version}
 Requires:       python-ruamel.yaml
-Requires:       (python-openapi-core >= 0.16.1 with python-openapi-core < 0.17)
+Requires:       (python-openapi-core >= 0.18 with python-openapi-core < 0.19)
 
 %description openapi
 Metapackage for the jupyterlab_server[openapi] extra
@@ -157,10 +156,8 @@ build/testenv/bin/python -m pytest -v $ignoretests
 %files %{python_files test}
 %license LICENSE
 
-%if %{with openapi}
 %files %{python_files openapi}
 %license LICENSE
-%endif
 %endif
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 13 07:53:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.25.0
+  * Bump openapi deps and support Python 3.8-3.12 #410 (@blink1073)
+
+-------------------------------------------------------------------
 Sun Jul 30 15:55:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Drop jupyterlab_server-ignore-jsonschema-deprecation.patch

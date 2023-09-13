@@ -71,4 +71,13 @@
 </comment>
     <requestid>1101421</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>36b3d63461a5db86751536c205144513</srcmd5>
+    <version>2.25.0</version>
+    <time>1694630743</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.25.0
+  * Bump openapi deps and support Python 3.8-3.12 #410 (@blink1073) (forwarded request 1110841 from bnavigator)</comment>
+    <requestid>1110842</requestid>
+  </revision>
 </revisionlist>
