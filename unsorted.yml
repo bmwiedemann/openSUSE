@@ -1890,6 +1890,7 @@ unsorted:
   - cargo-auditable 
   - cargo-c 
   - cargo-packaging 
+  - cargo-vendor-filterer 
   - cargo1.66 
   - cargo1.67 
   - cargo1.68 
@@ -2458,7 +2459,6 @@ unsorted:
   - coredns-for-k8s1.27-extras 
   - corepack20 
   - coreutils-single 
-  - coreutils-systemd 
   - coreutils-testsuite 
   - corosync 
   - corosync-qdevice 
@@ -2552,7 +2552,6 @@ unsorted:
   - crmsh 
   - crmsh-scripts 
   - crmsh-test 
-  - croc 
   - cronic 
   - cronie-anacron 
   - cross-aarch64-binutils 
@@ -3651,10 +3650,6 @@ unsorted:
   - evolution-plugin-pst-import 
   - evolution-plugin-text-highlight 
   - evtest 
-  - exa 
-  - exa-bash-completion 
-  - exa-fish-completion 
-  - exa-zsh-completion 
   - exaile 
   - exaile-lang 
   - exec-maven-plugin 
@@ -34038,6 +34033,7 @@ unsorted:
   - rhythmbox-lang 
   - rhythmbox-plugin-alternative-toolbar 
   - rhythmbox-plugin-alternative-toolbar-lang 
+  - riff 
   - rime 
   - rime-plum 
   - rime-schema-all 
@@ -34069,7 +34065,6 @@ unsorted:
   - rinetd 
   - rinstall 
   - rinutils-devel 
-  - rio 
   - ripgrep 
   - ripgrep-bash-completion 
   - ripgrep-fish-completion 
@@ -45266,6 +45261,7 @@ unsorted:
   - vim-plugin-colorschemes 
   - vim-plugin-colorsel 
   - vim-plugin-conky 
+  - vim-plugin-cscope 
   - vim-plugin-devhelp 
   - vim-plugin-diffchanges 
   - vim-plugin-editorconfig 
