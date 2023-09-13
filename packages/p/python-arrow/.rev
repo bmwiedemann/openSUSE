@@ -294,4 +294,16 @@
     <comment></comment>
     <requestid>1082007</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>59eb6daf744ca6f6ded0e00620bc13a3</srcmd5>
+    <version>1.2.3</version>
+    <time>1694630597</time>
+    <user>anag+factory</user>
+    <comment>- drop unnecessary test dependencies to chai (it uses pytest now)
+
+    argument to the Arrow constructor.
+  * Updated Turkish locale and added tests.
+- new version needs pytest instead of nose</comment>
+    <requestid>1110582</requestid>
+  </revision>
 </revisionlist>

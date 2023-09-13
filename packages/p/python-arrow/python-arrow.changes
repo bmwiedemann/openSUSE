@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:06:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- drop unnecessary test dependencies to chai (it uses pytest now)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:21:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -57,10 +62,10 @@ Sun Jul  4 19:48:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 1.1.1:
   * Added Odia, Maltese, Serbian, Sami, and Luxembourgish locales.
   * All calls to ``arrow.get()`` should now properly pass the ``tzinfo``
-    argument to the Arrow constructor. 
+    argument to the Arrow constructor.
   * Humanize output is now properly truncated when a locale class
     overrides ``_format_timeframe()``.
-  * Updated Turkish locale and added tests. 
+  * Updated Turkish locale and added tests.
 
 -------------------------------------------------------------------
 Tue May 18 22:06:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -190,7 +195,7 @@ Sun Jul 12 21:40:32 UTC 2020 - Arun Persaud <arun@gmx.de>
 -------------------------------------------------------------------
 Fri May 15 21:33:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- new version needs pytest instead of nose 
+- new version needs pytest instead of nose
 
 -------------------------------------------------------------------
 Tue May 12 08:49:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>

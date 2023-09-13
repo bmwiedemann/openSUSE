@@ -40,7 +40,6 @@ Requires:       python-python-dateutil >= 2.7.0
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module arrow == %{version}}
-BuildRequires:  %{python_module chai}
 BuildRequires:  %{python_module dateparser}
 BuildRequires:  %{python_module dateutil >= 2.7.0}
 BuildRequires:  %{python_module pytest-mock}
