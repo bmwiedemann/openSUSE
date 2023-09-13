@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Aug 21 01:22:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
 
-- Update to version 3.5.1:
+- Update to version 3.5.1 (PED-6362):
   * Don't use char arrays as temporary buffers
   * libgfs2: Separate gfs and gfs2 code in lgfs2_sb_out()
   * Re-enable -Wstrict-aliasing
