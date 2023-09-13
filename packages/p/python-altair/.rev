@@ -109,4 +109,41 @@
   * Replace iteritems with items due to pandas deprecation (#2683).</comment>
     <requestid>1061737</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>00050476061e3157f3b152c125a28155</srcmd5>
+    <version>5.1.1</version>
+    <time>1694630729</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.1.1:
+  * infer dtype pandas fallback
+  * The chart.transformed_data() method was added to extract transformed
+    chart data
+  * Introduction of a new data transformer named vegafusion
+  * A JupyterChart class was added to support accessing params and
+    selections from Python
+  * Support for field encoding inference for objects that support the
+    DataFrame Interchange Protocol
+  * Add support for new referencing logic in version 4.18 of jsonschema
+  * A new transform method transform_extent is available
+  * Drop support for Python 3.7 which is end-of-life
+  * Hard dependencies: Increase minimum required pandas version to 0.25
+  * TitleParam to Title in example gallery and sync scatterplot table
+  * Fix bug in reconstructing layered charts with from_json/from_dict
+  * Remove extra files in site-packages from wheel
+  * Introduction of parameters. There are two types of parameters, selection
+    parameters and variable parameters. Variable parameters are new to
+    Altair, and while selections are not new, much of the old terminology
+    has been deprecated.
+  * Grouped bar charts and jitter are now supported using offset channels
+  * vl-convert is now used as the default backend for saving Altair charts as
+    svg and png files
+  * Saving charts with HTML inline is now supported without having
+    altair_saver installed.
+  * Ordered pandas categorical data are now automatically encoded as sorted
+    ordinal data.
+  * The Title and Impute aliases were added for TitleParams and ImputeParams
+  * More informative autocompletion by removing deprecated methods and for
+  * Substantially improved error handling. Both in terms of finding the more</comment>
+    <requestid>1110808</requestid>
+  </revision>
 </revisionlist>

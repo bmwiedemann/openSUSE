@@ -16,39 +16,41 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-altair
-Version:        4.2.2
+Version:        5.1.1
 Release:        0
 Summary:        Declarative statistical visualization library for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/altair-viz/altair
-Source:         https://files.pythonhosted.org/packages/source/a/altair/altair-%{version}.tar.gz
+Source:         https://github.com/altair-viz/altair/archive/refs/tags/v%{version}.tar.gz#/altair-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module entrypoints}
+BuildRequires:  %{python_module anywidget}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module black}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module jupyter_ipython}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pip}
+##BuildRequires:  %%{python_module vl-convert-python}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toolz}
-BuildRequires:  %{python_module typing}
+BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  %{python_module vega_datasets}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
-Requires:       python-entrypoints
 Requires:       python-jsonschema
 Requires:       python-numpy
+Requires:       python-packaging
 Requires:       python-pandas
 Requires:       python-toolz
-Requires:       python-typing
+Requires:       python-typing-extensions
 Recommends:     python-jupyter_ipython
+Recommends:     python-pyarrow
 Recommends:     python-vega_datasets
+##Recommends:     python-vl-convert-python
 BuildArch:      noarch
 %python_subpackages
 
@@ -63,20 +65,21 @@ seamlessly display client-side renderings in the Jupyter notebook.
 %setup -q -n altair-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # disable tests that require network
-%pytest altair -k 'not test_examples'
+# vega requires vl-convert-python, not packaged
+%pytest -k 'not (test_examples or test_vegalite_compiler or with_format_vega)'
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/altair/
-%{python_sitelib}/altair-%{version}*-info/
+%{python_sitelib}/altair-%{version}.dist-info/
 
 %changelog
