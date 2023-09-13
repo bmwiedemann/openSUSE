@@ -18,13 +18,14 @@
 
 %define cpan_name Glib-Object-Introspection
 Name:           perl-Glib-Object-Introspection
-Version:        0.050
+Version:        0.51.0
 Release:        0
+%define cpan_version 0.051
 #Upstream:  This library is free software; you can redistribute it and/or modify it under the terms of the Lesser General Public License (LGPL). For more information, see http://www.fsf.org/licenses/lgpl.txt
 License:        LGPL-2.1-only
 Summary:        Dynamically create Perl language bindings
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -34,6 +35,9 @@ BuildRequires:  perl(Glib) >= 1.32
 Requires:       perl(ExtUtils::Depends) >= 0.3
 Requires:       perl(ExtUtils::PkgConfig) >= 1
 Requires:       perl(Glib) >= 1.32
+Provides:       perl(Glib::Object::Introspection) = 0.51.0
+Provides:       perl(Glib::Object::Introspection::_FuncWrapper)
+%define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  pkgconfig
@@ -44,7 +48,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 Dynamically create Perl language bindings
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
