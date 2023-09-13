@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 12 05:32:46 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Update to version 0.20.1 with the following changes:
+  * Bug fixes:
+    + Fix spec removed from an environment where not actually
+      removed if `--force` was not given.
+    + Hotfix for a few recipes that treat CMake as a link
+      dependency.
+    + Fix re-running stand-alone test a second time, which was
+      getting a trailing spurious failure.
+    + Fix reading JSON manifest on Cray, reporting non-concrete
+      specs.
+    + Fix a few bugs when generating Dockerfiles from Spack.
+    + Fix a few long-standing bugs when generating module files.
+    + Fix issues with building Python extensions when using an
+      external Python.
+    + Fix `spack compiler remove`: remove from command line even
+      if they appear in different scopes.
+  * Features:
+    + Speed-up module file generation.
+    + Show external status as `[e]`.
+    + Backport `archspec` fixes.
+    + Improve a few error messages.
+
+-------------------------------------------------------------------
 Sun Aug 13 12:21:57 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Fix SPACK_ROOT setting in /etc/profile.d/spack.[c]sh (bsc#1214222).
