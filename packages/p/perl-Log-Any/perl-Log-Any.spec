@@ -18,16 +18,36 @@
 
 %define cpan_name Log-Any
 Name:           perl-Log-Any
-Version:        1.716
+Version:        1.717.0
 Release:        0
+%define cpan_version 1.717
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Bringing loggers and listeners together
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PR/PREACTION/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PR/PREACTION/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Log::Any) = 1.717.0
+Provides:       perl(Log::Any::Adapter) = 1.717.0
+Provides:       perl(Log::Any::Adapter::Base) = 1.717.0
+Provides:       perl(Log::Any::Adapter::Capture) = 1.717.0
+Provides:       perl(Log::Any::Adapter::File) = 1.717.0
+Provides:       perl(Log::Any::Adapter::Multiplex) = 1.717.0
+Provides:       perl(Log::Any::Adapter::Null) = 1.717.0
+Provides:       perl(Log::Any::Adapter::Stderr) = 1.717.0
+Provides:       perl(Log::Any::Adapter::Stdout) = 1.717.0
+Provides:       perl(Log::Any::Adapter::Syslog) = 1.717.0
+Provides:       perl(Log::Any::Adapter::Test) = 1.717.0
+Provides:       perl(Log::Any::Adapter::Util) = 1.717.0
+Provides:       perl(Log::Any::Manager) = 1.717.0
+Provides:       perl(Log::Any::Proxy) = 1.717.0
+Provides:       perl(Log::Any::Proxy::Null) = 1.717.0
+Provides:       perl(Log::Any::Proxy::Test) = 1.717.0
+Provides:       perl(Log::Any::Proxy::WithStackTrace) = 1.717.0
+Provides:       perl(Log::Any::Test) = 1.717.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -70,7 +90,7 @@ See http://www.openswartz.com/2007/09/06/standard-logging-api/ for the
 original post proposing this module.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
