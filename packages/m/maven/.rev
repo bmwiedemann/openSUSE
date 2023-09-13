@@ -143,4 +143,12 @@
     <comment>More reproducible stuff</comment>
     <requestid>1108981</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>6c598c88978b9b30ff2550312c506a36</srcmd5>
+    <version>3.9.2</version>
+    <time>1694630643</time>
+    <user>anag+factory</user>
+    <comment>reproducible</comment>
+    <requestid>1110614</requestid>
+  </revision>
 </revisionlist>

@@ -202,9 +202,7 @@ rm apache-maven/src/main/appended-resources/META-INF/LICENSE.vm
 %pom_remove_plugin -r :maven-site-plugin
 %pom_remove_plugin -r :buildnumber-maven-plugin
 sed -i "
-/buildNumber=/ {
-  s/=.*/=SUSE %{version}-%{release}/
-}
+/buildNumber=/ d
 /timestamp=/ d
 " `find -name build.properties`
 sed -i "s/version=.*/version=%{version}/" `find -name build.properties`

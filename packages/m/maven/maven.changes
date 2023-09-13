@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 12 12:55:07 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: do not output build number
+
+-------------------------------------------------------------------
 Mon Sep  4 15:13:23 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
