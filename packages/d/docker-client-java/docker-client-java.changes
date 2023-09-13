@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 12 14:30:08 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Thu Jan 13 17:55:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with newer auto version by adding the
