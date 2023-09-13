@@ -1,7 +1,7 @@
-Index: dateconv.pl
+Index: mirror-2.9/dateconv.pl
 ===================================================================
---- dateconv.pl.orig
-+++ dateconv.pl
+--- mirror-2.9.orig/dateconv.pl
++++ mirror-2.9/dateconv.pl
 @@ -47,7 +47,7 @@ sub lstime_to_standard
  }
  

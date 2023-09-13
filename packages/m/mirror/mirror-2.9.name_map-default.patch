@@ -1,7 +1,7 @@
-Index: mirror.defaults
+Index: mirror-2.9/mirror.defaults
 ===================================================================
---- mirror.defaults.orig
-+++ mirror.defaults
+--- mirror-2.9.orig/mirror.defaults
++++ mirror-2.9/mirror.defaults
 @@ -62,3 +62,5 @@ package=defaults
  
  	timeout=300

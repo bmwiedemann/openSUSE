@@ -1,7 +1,7 @@
-Index: mm.pl
+Index: mirror-2.9/mm.pl
 ===================================================================
---- mm.pl.orig
-+++ mm.pl
+--- mirror-2.9.orig/mm.pl
++++ mirror-2.9/mm.pl
 @@ -63,7 +63,7 @@ $max = 6;
  # $pkg is the package number fixed up to replace characters likely to give
  # grief under unix.

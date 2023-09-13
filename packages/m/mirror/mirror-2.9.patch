@@ -1,17 +1,17 @@
-Index: do_unlinks.pl
+Index: mirror-2.9/do_unlinks.pl
 ===================================================================
---- do_unlinks.pl.orig
-+++ do_unlinks.pl
+--- mirror-2.9.orig/do_unlinks.pl
++++ mirror-2.9/do_unlinks.pl
 @@ -1,4 +1,4 @@
 -#!/usr/local/bin/perl -s
 +#!/usr/bin/perl -s
  #
  #
  #
-Index: makefile
+Index: mirror-2.9/makefile
 ===================================================================
---- makefile.orig
-+++ makefile
+--- mirror-2.9.orig/makefile
++++ mirror-2.9/makefile
 @@ -65,25 +65,26 @@ PLMODE = 644
  # mode to install executables
  EXMODE = 755
@@ -52,10 +52,10 @@ Index: makefile
  
  # directory to install .pl (perl library) files for rperl
  RPLDIR = /usr/local/rperl5/lib/perl5
-Index: mirror.defaults
+Index: mirror-2.9/mirror.defaults
 ===================================================================
---- mirror.defaults.orig
-+++ mirror.defaults
+--- mirror-2.9.orig/mirror.defaults
++++ mirror-2.9/mirror.defaults
 @@ -11,12 +11,12 @@ package=defaults
  	# The LOCAL hostname - if not the same as `hostname`
  	# (I advertise the name sunsite.org.uk but the machine is
@@ -90,10 +90,10 @@ Index: mirror.defaults
 +
  	timeout=300
  	#failed_gets_excl=\:\ Permission denied\.$
-Index: mirror.pl
+Index: mirror-2.9/mirror.pl
 ===================================================================
---- mirror.pl.orig
-+++ mirror.pl
+--- mirror-2.9.orig/mirror.pl
++++ mirror-2.9/mirror.pl
 @@ -163,8 +163,8 @@ $sum_prog = &find_prog( 'sum' );
  
  # SPECIAL NOTE: This is eval'd, so DONT put double-quotes (") in it.

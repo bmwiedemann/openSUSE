@@ -1,7 +1,7 @@
-Index: mirror.defaults
+Index: mirror-2.9/mirror.defaults
 ===================================================================
---- mirror.defaults.orig
-+++ mirror.defaults
+--- mirror-2.9.orig/mirror.defaults
++++ mirror-2.9/mirror.defaults
 @@ -33,7 +33,7 @@ package=defaults
  	exclude_patt=(^|/)(\.mirror$|\.mirror\.log|core$|\.cap|\.in\..*\.$|MIRROR\.LOG|#.*#|\.FSP|\.cache|\.zipped|\.notar|\.message|lost\+found/|Network Trash Folder)|suky.mpe?g
  	# Do not to compress anything
@@ -11,10 +11,10 @@ Index: mirror.defaults
  	# Don't compress information files, files that don't benifit from
  	# being compressed, files that tell ftpd, gopher, wais... to do things,
  	# the sources for compression programs...
-Index: mirror.html
+Index: mirror-2.9/mirror.html
 ===================================================================
---- mirror.html.orig
-+++ mirror.html
+--- mirror-2.9.orig/mirror.html
++++ mirror-2.9/mirror.html
 @@ -1070,7 +1070,7 @@ files not to compress (case insensitive)
  <TR VALIGN=TOP>
  <TD ALIGN=LEFT VALIGN=TOP><A NAME="compress_prog"></A><B><I>compress_prog</I></B></TD>
@@ -24,10 +24,10 @@ Index: mirror.html
  
  <TD ALIGN=LEFT VALIGN=TOP>Program to compress files. If set to the word
  <B>compress</B> or <B>gzip</B>, the full pathname for the program and correct
-Index: mirror.txt
+Index: mirror-2.9/mirror.txt
 ===================================================================
---- mirror.txt.orig
-+++ mirror.txt
+--- mirror-2.9.orig/mirror.txt
++++ mirror-2.9/mirror.txt
 @@ -506,7 +506,7 @@ The keywords are grouped into the follow
   compress_excl        \.(z|gz)$                  Regexp of files not to
                                                   compress (case

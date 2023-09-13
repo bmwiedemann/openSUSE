@@ -131,4 +131,12 @@ See the explanation added in the spreadsheet linked at license.opensuse.org (SUS
   * mirror-dump.patch</comment>
     <requestid>619378</requestid>
   </revision>
+  <revision rev="18" vrev="911">
+    <srcmd5>e484c8e1191189cb208de433fb540eca</srcmd5>
+    <version>2.9</version>
+    <time>1694630756</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1110879</requestid>
+  </revision>
 </revisionlist>

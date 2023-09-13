@@ -1,7 +1,7 @@
-Index: makefile
+Index: mirror-2.9/makefile
 ===================================================================
---- makefile.orig
-+++ makefile
+--- mirror-2.9.orig/makefile
++++ mirror-2.9/makefile
 @@ -64,8 +64,6 @@ ci:
  PLMODE = 644
  # mode to install executables

@@ -1,7 +1,8 @@
-diff -urN mirror-2.9.old/ftp.pl mirror-2.9/ftp.pl
---- mirror-2.9.old/ftp.pl	2017-01-31 14:31:19.917551342 +0100
-+++ mirror-2.9/ftp.pl	2017-01-31 14:31:44.777631533 +0100
-@@ -270,6 +270,13 @@
+Index: mirror-2.9/ftp.pl
+===================================================================
+--- mirror-2.9.orig/ftp.pl
++++ mirror-2.9/ftp.pl
+@@ -270,6 +270,13 @@ sub ftp'set_signals
  	$SIG{ 'PIPE' } = "ftp'ftp__sighandler";
  }
  
@@ -15,7 +16,7 @@ diff -urN mirror-2.9.old/ftp.pl mirror-2.9/ftp.pl
  # &ftp'set_namemap( function to map outgoing name,  function to map incoming )
  sub ftp'set_namemap
  {
-@@ -279,7 +286,6 @@
+@@ -279,7 +286,6 @@ sub ftp'set_namemap
  	}
  }
  
@@ -23,7 +24,7 @@ diff -urN mirror-2.9.old/ftp.pl mirror-2.9/ftp.pl
  # &ftp'open( hostname or address,
  #            port to use,
  #            retry on call failure,
-@@ -581,6 +587,9 @@
+@@ -581,6 +587,9 @@ sub ftp'dir_close
  		return 0;
  	}
  
@@ -33,7 +34,7 @@ diff -urN mirror-2.9.old/ftp.pl mirror-2.9/ftp.pl
  	# read the close
  	#
  	$ret = &expect($timeout,
-@@ -590,9 +599,6 @@
+@@ -590,9 +599,6 @@ sub ftp'dir_close
  		$ret = 0;
  	}
  
