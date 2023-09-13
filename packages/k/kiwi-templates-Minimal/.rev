@@ -54,4 +54,12 @@
     <comment></comment>
     <requestid>1084242</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>d66c9763d8e508b94816cb0e91842b7e</srcmd5>
+    <version>84.87.1</version>
+    <time>1694630610</time>
+    <user>anag+factory</user>
+    <comment>- Add combustion (jsc#PED-5843)</comment>
+    <requestid>1110654</requestid>
+  </revision>
 </revisionlist>

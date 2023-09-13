@@ -289,6 +289,7 @@
         <!-- <package name="rsyslog"/> for SLE -->
         <package name="systemd-logger"/> <!-- for openSUSE -->
         <package name="zypper-needs-restarting"/> <!-- Some deployment script use this (bsc#1173548) -->
+        <package name="combustion &gt;= 1.2"/> <!-- 1.2+ has improved firstboot detection -->
     </packages>
 
     <!-- Not needed in Cloud as it uses XFS and cloud-init -->
