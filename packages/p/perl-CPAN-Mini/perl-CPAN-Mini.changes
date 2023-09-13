@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  5 16:44:15 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.111017
+   see /usr/share/doc/packages/perl-CPAN-Mini/Changes
+
+  1.111017  2023-09-02 20:43:07-04:00 America/New_York
+          - packaging updates, including notes on Perl version expected
+          - improved error handling
+          - absolutize local mirror location before mirroring
+          - some doc tweaks
+
+-------------------------------------------------------------------
 Thu Apr 16 19:57:57 UTC 2015 - coolo@suse.com
 
 - updated to 1.111016
