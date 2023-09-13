@@ -47,4 +47,12 @@
     <comment>Fix build with JDK 17</comment>
     <requestid>964068</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>0eca935e8028d0e615dc447bfb002d28</srcmd5>
+    <version>2.4</version>
+    <time>1694630736</time>
+    <user>anag+factory</user>
+    <comment>reproducible improvements</comment>
+    <requestid>1110829</requestid>
+  </revision>
 </revisionlist>

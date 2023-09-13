@@ -1,7 +1,7 @@
 #
 # spec file for package json-lib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -120,16 +120,18 @@ MAVEN_OPTS="--add-opens=java.base/java.lang=ALL-UNNAMED" \
 %endif
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=8 \
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dproject.build.sourceEncoding=UTF-8
 
 # build Jenkins JSON lib
 pushd jenkins-%{name}-%{version}
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=8 \
+    -Dmaven.compiler.release=8 \
 %endif
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dproject.build.sourceEncoding=UTF-8
 
 popd
