@@ -18,17 +18,33 @@
 
 %define cpan_name Perl-Tidy
 Name:           perl-Perl-Tidy
-Version:        20230701
+Version:        20230909.0.0
 Release:        0
+%define cpan_version 20230909
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Indent and reformat perl scripts
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHANCOCK/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHANCOCK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Perl::Tidy) = 20230909.0.0
+Provides:       perl(Perl::Tidy::Debugger) = 20230909.0.0
+Provides:       perl(Perl::Tidy::Diagnostics) = 20230909.0.0
+Provides:       perl(Perl::Tidy::FileWriter) = 20230909.0.0
+Provides:       perl(Perl::Tidy::Formatter) = 20230909.0.0
+Provides:       perl(Perl::Tidy::HtmlWriter) = 20230909.0.0
+Provides:       perl(Perl::Tidy::IOScalar) = 20230909.0.0
+Provides:       perl(Perl::Tidy::IOScalarArray) = 20230909.0.0
+Provides:       perl(Perl::Tidy::IndentationItem) = 20230909.0.0
+Provides:       perl(Perl::Tidy::Logger) = 20230909.0.0
+Provides:       perl(Perl::Tidy::Tokenizer) = 20230909.0.0
+Provides:       perl(Perl::Tidy::VerticalAligner) = 20230909.0.0
+Provides:       perl(Perl::Tidy::VerticalAligner::Alignment) = 20230909.0.0
+Provides:       perl(Perl::Tidy::VerticalAligner::Line) = 20230909.0.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -48,7 +64,7 @@ completion. Additional discuss of errors is contained below in the ERROR
 HANDLING section.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
