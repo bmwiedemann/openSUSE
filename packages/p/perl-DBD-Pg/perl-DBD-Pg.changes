@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Aug 24 03:06:13 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.17.0
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.17.0  (released August 23, 2023)
+   - New database handle attribute pg_skip_deallocate
+     Prevents any deallocation of automatically prepared
+       statements to support new pgBouncer feature
+     [Greg Sabino Mullane]
+   - Fix to handle escaped quotes in connection string
+     [Dagfinn Ilmari Mannsåker]
+   - Return number of affected rows from a MERGE command
+     [Greg Sabino Mullane]
+     (Github issue #118)
+   - Add support for Github CI actions
+     [Gábor Szabó]
+     (Github pull request #115)
+   - Remove undocumented internal-only pg_pid_number attribute
+     [Greg Sabino Mullane]
+     (Github issue #102)
+   - Small warning in docs about PG_CHAR
+     [Greg Sabino Mullane]
+     (Github issue #103)
+
+-------------------------------------------------------------------
 Wed Apr  5 03:06:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.16.3
