@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Sun Sep 10 16:38:28 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.8.0
+  * This release brings changes to minimum dependencies, allows
+    reading of datasets where a dimension name is associated with a
+    multidimensional variable (e.g. finite volume ocean model
+    output), and introduces a new xarray.Coordinates object.
+  ## Announcements
+  * The xarray.Variable class is being refactored out to a new
+    project title 'namedarray'. See the design doc for more
+    details. Reach out to us on this discussion topic if you have
+    any thoughts.
+  ## What's Changed
+  * Use variable name in all exceptions raised in as_variable by
+    @ZedThree in #7995
+  * Allow opening datasets with nD dimenson coordinate variables.
+    by @dcherian in #7989
+  * join together duplicate entries in the text repr by @keewis in
+    #7225
+  * Expose "Coordinates" as part of Xarray's public API by @benbovy
+    in #7368
+  * Update interpolate_na in dataset.py by @ilgast in #7974
+  * Add HDF5 Section to read/write docs page by @rwegener2 in #8012
+  * Add examples to docstrings by @harshitha1201 in #7937
+  * (chore) min versions bump by @jhamman in #8022
+  * Automatically chunk other in GroupBy binary ops. by @dcherian
+    in #7684
+  * change cumproduct to cumprod by @quantsnus in #8031
+  * Reduce pre-commit update frequency to monthly from weekly. by
+    @dcherian in #8033
+  * sort when encoding coordinates for deterministic outputs by
+    @itcarroll in #8034
+  * Zarr : Allow setting write_empty_chunks by @RKuttruff in #8016
+  * Count documentation by @Articoking in #8057
+  * unpin numpy by @keewis in #8061
+- Release 2023.7.0
+  * This release brings improvements to the documentation on
+    wrapping numpy-like arrays, improved docstrings, and bug fixes.
+  ## What's Changed
+  * Allow cubed arrays to be passed to flox groupby by @TomNicholas
+    in #7941
+  * Duck array documentation improvements by @TomNicholas in #7911
+  * Docstring examples by @harshitha1201 in #7881
+  * Chunked array docs by @TomNicholas in #7951
+  * ensure no forward slashes in names for HDF5-based backends by
+    @kmuehlbauer in #7953
+  * Move absolute path finder from open_mfdataset to own function
+    by @Illviljan in #7968
+  * Skip broken tests on Python 3.11 and Windows by @Illviljan in
+    #7972
+  * Examples added to docstrings by @harshitha1201 in #7936
+  * Fix typo in zarr.py by @johmathe in #7983
+  * Improve explanation in example "Working with Multidimensional
+    Coordinates" by @yvonnefroehlich in #7984
+  * Remove hue_style from plot1d docstring by @Illviljan in #7925
+- Release 2023.06.0
+  * This release adds features to curvefit, improves the
+    performance of concatenation, and fixes various bugs.
+  ## What's Changed
+  * Array API fixes for astype by @TomNicholas in #7847
+  * Add type hints to test_dtypes by @Illviljan in #7858
+  * adapt the pint + dask test to the newest version of pint by
+    @keewis in #7855
+  * Avoid explicit loop when updating OrderedSet by @Illviljan in
+    #7857
+  * Improve to_dask_dataframe performance by @Illviljan in #7844
+  * Changed duck typing exception to: (ImportError, AttributeError)
+    by @vhaasteren in #7874
+  * defer to numpy for the expected result by @keewis in #7875
+  * deprecate the cdms2 conversion methods by @keewis in #7876
+  * Implement multidimensional initial guess and bounds for
+    curvefit by @mgunyho in #7821
+  * Improve concat performance by @Illviljan in #7824
+  * Fix .groupby(multi index level) by @dcherian in #7830
+  * don't use CacheFileManager.__del__ on interpreter shutdown by
+    @keewis in #7880
+  * fix polyfit changing the original object by @malmans2 in #7900
+  * Fix flaky doctest for curvefit by @mgunyho in #7893
+  * Ensure dtype of reindex result matches dtype of the original
+    DataArray by @andersy005 in #7917
+  * Add errors option to curvefit by @mgunyho in #7891
+  * CF encoding should preserve vlen dtype for empty arrays by
+    @tomwhite in #7862
+  * use trusted publishers instead of a API token by @keewis in
+    #7899
+  * Add cfgrib,ipywidgets to doc env by @dcherian in #7888
+  * Fix regression with grouper object on an IndexVariable by
+    @mwtoews in #7920
+  * Fix check for chunk_store in zarr backend by @juntyr in #7923
+  * fixing rolling_window issue with cupy by @negin513 in #7938
+- Add xarray-pr8139-pandas-fill_value.patch gh#pydata/xarray#8125,
+  gh#pydata/xarray#8139
+
+-------------------------------------------------------------------
 Wed May 31 08:23:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.05.0:

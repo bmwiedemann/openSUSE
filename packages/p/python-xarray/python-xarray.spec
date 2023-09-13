@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xarray
-Version:        2023.5.0
+Version:        2023.8.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
@@ -27,15 +27,19 @@ Source:         https://files.pythonhosted.org/packages/source/x/xarray/xarray-%
 # PATCH-FEATURE-UPSTREAM local_dataset.patch gh#pydata/xarray#5377 mcepl@suse.com
 # fix xr.tutorial.open_dataset to work with the preloaded cache.
 Patch0:         local_dataset.patch
+# PATCH-FIX-UPSTREAM xarray-pr8139-pandas-fill_value.patch gh#pydata/xarray#8125, gh#pydata/xarray#8139
+Patch1:         https://github.com/pydata/xarray/pull/8139.patch#/xarray-pr8139-pandas-fill_value.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module numpy-devel >= 1.20}
 BuildRequires:  %{python_module packaging >= 21.3}
 BuildRequires:  %{python_module pandas >= 1.3}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.21
+Requires:       python-numpy >= 1.22
 Requires:       python-packaging >= 21.3
 Requires:       python-pandas >= 1.4
 Provides:       python-xray = %{version}
@@ -68,9 +72,8 @@ Suggests:       python-pooch
 #/SECTION
 # SECTION tests
 BuildRequires:  %{python_module Bottleneck}
-# not available on python 3.11
-#BuildRequires:  %%{python_module dask-dataframe}
-#BuildRequires:  %%{python_module dask-diagnostics}
+BuildRequires:  %{python_module dask-dataframe}
+BuildRequires:  %{python_module dask-diagnostics}
 BuildRequires:  %{python_module h5netcdf}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module netCDF4}
@@ -97,22 +100,22 @@ The dataset is an in-memory representation of a netCDF file.
 chmod -x xarray/util/print_versions.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# OOM crashes the whole vm or even the local host running osc: https://github.com/pydata/xarray/issues/6854
-donttest="nczarr"
+# obs file open race conditions?
+donttest="(test_open_mfdataset_manyfiles and (h5netcdf or netCDF4))"
 if [ $(getconf LONG_BIT) -eq 32 ]; then
   # https://github.com/pydata/xarray/issues/5341
   # https://github.com/pydata/xarray/issues/5375
   # still precision problems in 2022.11.0
   donttest="$donttest or (test_interpolate_chunk_advanced and linear)"
   # tests for 64bit types
-  donttest="$donttest or TestZarrDictStore or TestZarrDirectoryStore"
+  donttest="$donttest or TestZarrDictStore or TestZarrDirectoryStore or TestZarrWriteEmpty"
 fi
 %pytest -n auto -rsEf -k "not ($donttest)" xarray
 
@@ -120,7 +123,6 @@ fi
 %doc README.md
 %license LICENSE licenses/
 %{python_sitelib}/xarray
-%exclude %{python_sitelib}/xarray/tests
-%{python_sitelib}/xarray-%{version}*-info
+%{python_sitelib}/xarray-%{version}.dist-info
 
 %changelog
