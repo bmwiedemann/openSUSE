@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 13 06:04:30 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to 1.9:
+  * linux: support arbitrary idmapped mounts.
+  * linux: add support for "ridmap" mount option to support recursive
+    idmapped mounts.
+  * crun delete: call systemd's reset-failed.
+  * linux: fix check for oom_score_adj.
+  * features: Support mountExtensions.
+  * linux: correctly handle unknown signal string when it doesn't start with
+    a digit.
+  * linux: do not attempt to join again already joined namespace.
+  * wasmer: use latest wasix API.
+
+-------------------------------------------------------------------
 Tue Sep  5 11:41:14 UTC 2023 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
-- Enable WasmEdge support to run Wasm compat containers. 
+- Enable WasmEdge support to run Wasm compat containers.
 
 -------------------------------------------------------------------
 Mon Aug 14 12:55:14 UTC 2023 - Danish Prakash <danish.prakash@suse.com>

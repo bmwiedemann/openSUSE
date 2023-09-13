@@ -19,7 +19,7 @@
 %define with_wasmedge 1
 
 Name:           crun
-Version:        1.8.6
+Version:        1.9
 Release:        0
 Summary:        OCI runtime written in C
 License:        GPL-2.0-or-later
