@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Sep 14 04:54:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.32.0:
+  * Update README to point download link to 0.32.0
+  * Update docs for release 0.32.0
+  * Update the helm reference
+  * Update helm chart to 4.0.30 to use gitops 0.32.0
+  * Update javascript library version to 0.32.0
+  * Backstage Plugin overview. (#3913)
+  * Adds Image Automation info to user docs (#4000)
+  * UI works on subpaths (#3992)
+  * Add Artifact Metadata section to OCI Repository detail pages
+    (#4002)
+  * Add Policies nav-item to the side nav (#4004)
+  * Add eslint rule to alphabetize imports (#3994)
+  * Updates images in Readme (#3998)
+  * Fix backporting gaps to prevent old docs versions from showing
+    up in search (#3993)
+  * fix inconsistency in listing  components (#3984)
+  * fix Space in between buttons (#3985)
+  * add WGE 0.31.0 release notes (#3979)
+  * releasing container image before github release (#3971)
+  * Downgrade the `htmlnano` package to fix error `could not not
+    resolve module "node:os"` in the `cosmiconfig` package.
+  * predictable resolution for gitrepository gvk when v1 and
+    v1beta2 exist (#3980)
+  * Adds Troubleshooting Section to GitOps Run user docs (#3981)
+  * Adds troubleshooting section (#3982)
+  * Move stray Progressive Delivery text to related page (#3923)
+  * Modify hook on verified status check (#3974)
+
+-------------------------------------------------------------------
 Wed Sep 06 15:45:41 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.31.2:
