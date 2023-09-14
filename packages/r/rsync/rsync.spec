@@ -55,7 +55,7 @@ Source11:       https://rsync.samba.org/ftp/rsync/src/rsync-patches-%{version}.t
 Source12:       %{name}.keyring
 Source13:       rsyncd
 Patch0:         rsync-no-libattr.patch
-Patch1:         fortified-strlcpy-fix.patch
+Patch1:         rsync-fortified-strlcpy-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler

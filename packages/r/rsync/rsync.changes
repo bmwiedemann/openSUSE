@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  6 09:52:41 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Rename patch to follow naming patch policies:
+  fortified-strlcpy-fix.patch -> rsync-fortified-strlcpy-fix.patch
+
+-------------------------------------------------------------------
 Wed Sep  6 09:19:36 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use "slp" for bcond, not "openslp", like we use for all other
@@ -8,7 +14,7 @@ Wed Sep  6 09:19:36 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Tue Sep  5 12:07:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- add fortified-strlcpy-fix.patch (bsc#1214616)
+- add fortified-strlcpy-fix.patch (bsc#1214616, bsc#1214249)
 
 -------------------------------------------------------------------
 Tue Sep  5 11:11:04 UTC 2023 - Fabian Vogt <fvogt@suse.com>
