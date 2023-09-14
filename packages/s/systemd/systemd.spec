@@ -108,9 +108,6 @@ BuildRequires:  libmount-devel >= 2.27.1
 BuildRequires:  meson >= 0.53.2
 BuildRequires:  pam-devel
 BuildRequires:  python3-Jinja2
-# regenerate_initrd_post macro is expanded during build, hence this BR. Also
-# this macro was introduced since version 12.4.
-BuildRequires:  suse-module-tools >= 12.4
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(blkid) >= 2.26
 
@@ -171,7 +168,6 @@ Source4:        systemd-sysv-install
 Source5:        tmpfiles-suse.conf
 Source6:        baselibs.conf
 Source7:        triggers.systemd
-Source11:       after-local.service
 Source14:       kbd-model-map.legacy
 
 Source100:      fixlet-container-post.sh
@@ -308,6 +304,8 @@ Requires(pre):  group(kvm)
 Requires(post): sed
 Requires(post): coreutils
 Requires(postun):coreutils
+# 'regenerate_initrd_post' macro is expanded during build, hence this BR.
+BuildRequires:  suse-module-tools
 %if %{without bootstrap}
 BuildRequires:  pkgconfig(libcryptsetup) >= 1.6.0
 BuildRequires:  pkgconfig(libkmod) >= 15
@@ -727,8 +725,9 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
 %if %{without sysvcompat}
         -Dsysvinit-path= \
         -Dsysvrcnd-path= \
-%endif
+%else
         -Drc-local=/etc/init.d/boot.local \
+%endif
         -Dcreate-log-dirs=false \
         -Ddebug-shell=/bin/bash \
         \
@@ -921,10 +920,6 @@ mkdir -p %{buildroot}%{_userpresetdir}
 mkdir -p %{buildroot}%{_systemd_system_env_generator_dir}
 mkdir -p %{buildroot}%{_systemd_user_env_generator_dir}
 
-# Ensure after.local wrapper is called.
-install -m 644 %{SOURCE11} %{buildroot}%{_unitdir}/
-ln -s ../after-local.service %{buildroot}%{_unitdir}/multi-user.target.wants/
-
 # ghost directories with default permissions.
 mkdir -p %{buildroot}%{_localstatedir}/lib/systemd/backlight
 
@@ -1068,7 +1063,7 @@ if [ $1 -gt 1 ]; then
         %systemd_post systemd-userdbd.socket
 fi
 
-# Run the hacks/fixups to clean up old garbages left by (very) old versions of
+# Run the hacks/fixups to clean up the old stuff left by (very) old versions of
 # systemd.
 %{_systemd_util_dir}/rpm/fixlet-systemd-post.sh $1 || :
 

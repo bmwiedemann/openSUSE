@@ -6786,4 +6786,23 @@ handle manual pages that consist only of a .so directive such as
   1f73719d67 test-mountpoint-util: /root might be mounted</comment>
     <requestid>1110245</requestid>
   </revision>
+  <revision rev="401" vrev="2">
+    <srcmd5>12f5065c8cd3e7bc06f22ca285f3edac</srcmd5>
+    <version>254.3</version>
+    <time>1694701506</time>
+    <user>anag+factory</user>
+    <comment>- systemd.spec: %regenerate_initrd_post is only used by udev sub-package hence
+  move the build requirement pulling this macro in in the list of udev BRs.
+
+- Don't ship after-local.service anymore. This was mostly a hack for people
+  wanting to execute any random things once the boot was finished. We shouldn't
+  encourage such practice and it actually conflicts with the sysv-generator
+  which believes that /etc/init.d/after.local is SysV init script that needs to
+  be converted into a native unit file.
+  We still install a copy of this service in /etc if the user is relying on
+  it, for backward compatibility.
+
+- fixlet-systemd-post.sh: fix invalid use of rpm macro %{_localstatedir}</comment>
+    <requestid>1111019</requestid>
+  </revision>
 </revisionlist>

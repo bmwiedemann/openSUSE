@@ -131,6 +131,7 @@ migrate_language () {
 	fi
 }
 
+#
 # Migrate old i18n settings previously configured in /etc/sysconfig to the new
 # locations used by systemd (/etc/locale.conf, /etc/vconsole.conf, ...). Recent
 # versions of systemd parse the new locations only.
@@ -139,7 +140,8 @@ migrate_language () {
 # might be upgrading from a system which was running SysV init (systemd package
 # is being installed).
 #
-# It's run only once.
+# Note: run only once.
+#
 migrate_sysconfig_i18n() {
 	local tagfile=/var/lib/systemd/rpm/systemd-i18n_migrated
 	local -i rv=0
@@ -252,9 +254,25 @@ fix_bsc_1020601() {
 # Note: run at each package update.
 #
 fix_issue_11329() {
-	if [ -L %{_localstatedir}/lib/systemd/timesync ]; then
-		rm %{_localstatedir}/lib/systemd/timesync
-		mv %{_localstatedir}/lib/private/systemd/timesync %{_localstatedir}/lib/systemd/timesync
+	if [ -L /var/lib/systemd/timesync ]; then
+		rm /var/lib/systemd/timesync
+		mv /var/lib/private/systemd/timesync /var/lib/systemd/timesync
+	fi
+}
+
+#
+# We don't ship after-local.service anymore however as a courtesy we install a
+# copy in /etc for users who are relying on it.
+#
+# Note: should run only once since it is conditionalized on the presence of
+# %{_unitdir}/after-local.service
+#
+drop_after_local_support() {
+	if [ -x /etc/init.d/after.local ] &&
+	   [ -f /usr/lib/systemd/system/after-local.service ]; then
+		echo "after-local.service is no more provided by systemd but a copy has been installed in /etc"
+		cp /usr/lib/systemd/system/after-local.service /etc/systemd/system/
+		ln -s ../after-local.service /etc/systemd/system/multi-user.target.wants/after-local.service
 	fi
 }
 
@@ -264,5 +282,6 @@ fix_pre_210 || r=1
 migrate_sysconfig_i18n || r=1
 fix_bsc_1020601 || r=1
 fix_issue_11329 || r=1
+drop_after_local_support || r=1
 
 exit $r

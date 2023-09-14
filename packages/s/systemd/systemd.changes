@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 14 06:33:05 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: %regenerate_initrd_post is only used by udev sub-package hence
+  move the build requirement pulling this macro in in the list of udev BRs.
+
+-------------------------------------------------------------------
+Tue Sep 12 19:24:02 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Don't ship after-local.service anymore. This was mostly a hack for people
+  wanting to execute any random things once the boot was finished. We shouldn't
+  encourage such practice and it actually conflicts with the sysv-generator
+  which believes that /etc/init.d/after.local is SysV init script that needs to
+  be converted into a native unit file.
+
+  We still install a copy of this service in /etc if the user is relying on
+  it, for backward compatibility.
+
+-------------------------------------------------------------------
+Tue Sep 12 18:28:07 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- fixlet-systemd-post.sh: fix invalid use of rpm macro %{_localstatedir}
+
+-------------------------------------------------------------------
 Mon Sep 11 07:54:35 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Import commit b6b4e5a8a82d1f13f265a4ef170f2d13be82789a (merge of v254.3)
