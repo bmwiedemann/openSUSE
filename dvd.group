@@ -295,6 +295,7 @@
     <package name="container-selinux" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="coreutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="coreutils-systemd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cpio" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="cpio-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="cpio-mt" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2033,6 +2034,7 @@
     <package name="libgtk-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgtk-3-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgtk-4-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libgtk-layer-shell0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgtk-vnc-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgtkimageview0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libgtkmm-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
