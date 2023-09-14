@@ -4,6 +4,12 @@ Thu Sep  7 22:27:36 UTC 2023 - David Disseldorp <ddiss@suse.com>
 - add vim-plugin-cscope
 
 -------------------------------------------------------------------
+Mon Sep  4 14:50:28 UTC 2023 - Olav Reinert <seroton10@gmail.com>
+
+- add vim-plugin-bats 0.10.0
+  *  add upstream file not released yet: bats-indent-19eb3c5.patch
+
+-------------------------------------------------------------------
 Tue Jul 11 07:51:41 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - update

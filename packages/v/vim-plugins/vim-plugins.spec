@@ -22,6 +22,7 @@
 %define align_version_orig	37-43
 %define align_version		37.43
 %define a_version		2.18
+%define bats_version    0.10.0
 %define bufexplorer_version	7.4.26
 %define calendar_version	2.5
 %define colorsel_version	20110107
@@ -104,7 +105,8 @@ Source35:       https://github.com/tpope/vim-fugitive/archive/refs/tags/v%{fugit
 Source36:       https://github.com/vim-airline/vim-airline/archive/refs/tags/v%{airline_version}.tar.gz#/vimplugin-airline-%{airline_version}.tar.gz
 Source37:       https://github.com/dense-analysis/ale/archive/refs/tags/v%{ale_version}.tar.gz#/vimplugin-ale-%{ale_version}.tar.gz
 Source38:       https://github.com/dhruvasagar/vim-table-mode/archive/refs/tags/v%{table_mode_version}.tar.gz#/vimplugin-table-mode-%{table_mode_version}.tar.gz
-Source39:       https://cscope.sourceforge.net/cscope_maps.vim
+Source39:       https://github.com/aliou/bats.vim/archive/refs/tags/v%{bats_version}.tar.gz#/vimplugin-bats-%{bats_version}.tar.gz
+Source40:       https://cscope.sourceforge.net/cscope_maps.vim
 # from _service
 Source100:      file-line-%{file_line_version}.tar.xz
 Source101:      vim-markdown-%{markdown_version}.tar.xz
@@ -119,6 +121,7 @@ Patch0:         salt-syntax-avoid-multiline-lets.patch
 Patch1:         locateopen-1.3-locate-support.patch
 Patch2:         showmarks-signs.patch
 Patch3:         file-line-Fix-other-plugins-loading.patch
+Patch4:         bats-indent-19eb3c5.patch
 BuildRequires:  rsync
 BuildRequires:  vim
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -196,6 +199,18 @@ Align lets you align statements on their equal signs, make comment boxes, align
 comments, align declarations, etc. It handles alignment on multiple separators,
 not just the first one, and the separators may be the same across the line or
 different.
+
+%package -n vim-plugin-bats
+Version:        %bats_version
+Release:        0
+Summary:        Bats plugin for Vim
+License:        Vim
+Group:          Productivity/Text/Editors
+URL:            https://github.com/aliou/bats.vim
+
+%description -n vim-plugin-bats
+This Vim plugin provides support for editing Bats (Bash Automated Testing
+System) test files.
 
 %package -n vim-plugin-bufexplorer
 Version:        %bufexplorer_version
@@ -721,7 +736,7 @@ Usage:
      Press <c-w>o again: the previous set of windows is restored
 
 %prep
-%setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a36 -a37 -a38 -a100 -a101 -a102 -a103 -a104
+%setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a36 -a37 -a38 -a39 -a100 -a101 -a102 -a103 -a104
 pushd salt-vim-%{salt_version}
 %patch0 -p1
 popd
@@ -734,6 +749,9 @@ pushd ShowMarks7-%showmarks_version
 popd
 pushd file-line-%file_line_version
 %patch3 -p1
+popd
+pushd bats.vim-%{bats_version}
+%patch4 -p1
 popd
 
 find tlib_vim-%{tlib_version} -type f \( -name '*.vim' -o -name '*.txt' \) -exec chmod -v 644 {} +
@@ -799,6 +817,10 @@ cat > vim-latex-%{latex_version}/.rsync-filter <<EOF
 - /doc/Makefile*
 - /doc/README*
 EOF
+
+cat > bats.vim-%{bats_version}/.rsync-filter <<EOF
+- /readme.md
+EOF
 # END EXCLUDES
 
 install -d %buildroot/%vimplugin_dir
@@ -808,7 +830,7 @@ for i in */; do
 		"$i" %buildroot/%{vimplugin_dir}/
 done
 
-install -m 644 %{SOURCE39} %buildroot/%vimplugin_dir/plugin/
+install -m 644 %{SOURCE40} %buildroot/%vimplugin_dir/plugin/
 
 install -d %buildroot/%vimplugin_dir/after/ftplugin/
 install -m 644 %{SOURCE200} %buildroot/%vimplugin_dir/after/ftplugin/
@@ -847,6 +869,7 @@ fi \
 %vim_doc_post -n vim-plugin-airline
 %vim_doc_post -n vim-plugin-ale
 %vim_doc_post -n vim-plugin-align
+%vim_doc_post -n vim-plugin-bats
 %vim_doc_post -n vim-plugin-bufexplorer
 %vim_doc_post -n vim-plugin-colorsel
 %vim_doc_post -n vim-plugin-diffchanges
@@ -925,6 +948,17 @@ fi \
 %vimplugin_dir/plugin/AlignMapsPlugin.vim
 %vimplugin_dir/plugin/AlignPlugin.vim
 %vimplugin_dir/plugin/cecutil.vim
+
+%files -n vim-plugin-bats
+%defattr(-,root,root,0755)
+%doc bats.vim-%{bats_version}/readme.md
+%vimplugin_dir/ftplugin/bats.vim
+%vimplugin_dir/after/syntax/bats.vim
+%dir %vimplugin_dir/after/indent
+%vimplugin_dir/after/indent/bats.vim
+%vimplugin_dir/ftdetect/bats.vim
+%vimplugin_dir/compiler/bats.vim
+%vimplugin_dir/plugin/bats.vim
 
 %files -n vim-plugin-bufexplorer
 %defattr(-,root,root,0755)
