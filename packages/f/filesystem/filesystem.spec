@@ -30,8 +30,7 @@ Version:        84.87
 Release:        0
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# XXX libsolv never sees the rpmlib provides fulfilled
-Requires(pre):  (compat-usrmerge-tools or rpmlib(X-CheckUnifiedSystemdir))
+Requires(pre):  compat-usrmerge-tools
 Requires:       group(root)
 Requires:       user(root)
 URL:            https://build.opensuse.org/package/show/openSUSE:Factory/filesystem

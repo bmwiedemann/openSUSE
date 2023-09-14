@@ -1342,4 +1342,41 @@
     <comment>- Remove /etc/sysconfig/network hierachy again, YaST got fixed (forwarded request 1064298 from kukuk)</comment>
     <requestid>1064299</requestid>
   </revision>
+  <revision rev="170" vrev="13">
+    <srcmd5>215cf01a24c0a576bae670c20e3c53e3</srcmd5>
+    <version>84.87</version>
+    <time>1694701453</time>
+    <user>anag+factory</user>
+    <comment>- remove complex dependency on rpmlib(X-CheckUnifiedSystemdir),
+  there is nothing that ever provided it and it triggers
+  a libsolv bug (in progress of being fixed)
+
+- Added zh_Hans (simplified Chinese) and zh_Hant (traditional
+  is fixed (bsc#1184786)
+  unless they are already symlinks (bsc#1084119)
+- drop /etc/xinetd.d (bsc#1084457)
+- Exclude some directories from fs-var.conf which are already part
+- Remove /var/adm/fillup-templates, already prohibited by rpmlint
+  aaa_base-extras only.
+- Create fs-var.conf for systemd-tmpfiles, which contains all
+- add /usr/share/appdata (bnc#893441)
+  actually replace directories with symlinks there (bnc#874748)
+- add vscan user to ignore home list
+- change /etc/cups to mode 0755 (bnc#871640) for new cups version
+- change /sys to mode 0555 (bnc#871640)
+- make /var/lock a symlink to /run/lock (bnc#867873)
+- use lazy umount
+  bnc#866964
+- change pre to pretrans for directory/symlink conversion
+- drop /var/lib/pam_devperm (bnc#866234)
+- bnc#865893
+- bump version to 13.2
+- Drop /lib/systemd and /lib/systemd/system, everything is now in
+- add /run directory (mode 0755,root,root)
+- bump version to 11.5
+- fix build whitelisting /lib/udev/devices
+  they were done manually as ghosts in the specfile before
+- minor change for sparc in specfile (bnc#558343)</comment>
+    <requestid>1110634</requestid>
+  </revision>
 </revisionlist>
