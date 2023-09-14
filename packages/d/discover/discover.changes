@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:22:19 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- Changes since 5.27.7:
+  * SteamOS: Use new currentBuildID in addition to currentVersion.
+  * flatpak: Check if error is null before trying to log a message (kde#473497)
+  * flatpak: Do not crash if we failed to get unused refs
+
+-------------------------------------------------------------------
 Tue Aug  1 11:18:27 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.7
