@@ -2139,4 +2139,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
   * 0002-TriangleMouseFilter-also-check-optional-position-has.patch (forwarded request 1104688 from fusionfuture)</comment>
     <requestid>1104995</requestid>
   </revision>
+  <revision rev="219" vrev="1">
+    <srcmd5>01903a454dc4a04ed7e795ef2b393a3b</srcmd5>
+    <version>5.27.8</version>
+    <time>1694701491</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
+    <requestid>1110745</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:22:30 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-OSD-Fix-size-calculation-for-progress-value.patch
+  * 0001-shell-avoid-potential-crash-when-previous-window-is-.patch
+  * 0001-TriangleMouseFilter-check-intercepted-item-still-exi.patch
+  * 0002-TriangleMouseFilter-also-check-optional-position-has.patch
+  
+-------------------------------------------------------------------
 Fri Aug 18 14:03:29 UTC 2023 - Fusion Future <qydwhotmail@gmail.com>
 
 - Add patch to fix crash when opening windows (kde#473432)
