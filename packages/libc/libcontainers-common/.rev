@@ -546,4 +546,12 @@
     <comment>Update changelog, follows sr#1103807 (forwarded request 1103849 from danishprakash)</comment>
     <requestid>1103859</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>656b676c4449bbd2c8cb5bbad226442f</srcmd5>
+    <version>20230913</version>
+    <time>1694701500</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110903</requestid>
+  </revision>
 </revisionlist>

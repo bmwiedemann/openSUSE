@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed Sep 13 06:13:53 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- New release 20230913
+- bump c/image to 5.28.0
+  * Bump to v5.26.0
+  * fix(deps): update module github.com/sigstore/rekor to v1.2.2
+  * fix(deps): update module github.com/sigstore/fulcio to v1.3.2
+  * Adding IO decorator to copy progress bar
+  * Ensure we close HTTP connections on all paths
+  * fix(deps): update module github.com/containers/storage to v1.48.0
+  * fix(deps): update module github.com/opencontainers/image-spec to v1.1.0-rc4
+  * fix(deps): update github.com/cyberphone/json-canonicalization digest to 91eb5f1
+  * fix(deps): update golang.org/x/exp digest to 97b1e66
+  * fix(deps): update module github.com/klauspost/compress to v1.16.7
+  * fix(deps): update module github.com/docker/docker to v24.0.3+incompatible
+  * fix(deps): update module golang.org/x/oauth2 to v0.10.0
+  * manifest: ListUpdate add imgspecv1.Platform field
+  * fix(deps): update module github.com/docker/docker to v24.0.4+incompatible
+  * pkg/docker: use the same default auth path as macOS on FreeBSD
+  * fix(deps): update module github.com/sigstore/fulcio to v1.3.4
+  * blob: TryReusingBlobWithOptions consider RequiredCompression if set
+  * Fix tests of the ostree transport
+  * helpers_test,cleanup: correct argument order
+  * fix(deps): update module github.com/vbauerster/mpb/v8 to v8.5.1
+  * Make temporary names container/image specific
+  * listupdate,oci: instance show read-only annotations and CompressionAlgorithmNames
+  * fix(deps): update module github.com/docker/docker-credential-helpers to v0.8.0
+  * fix(deps): update module github.com/vbauerster/mpb/v8 to v8.5.2
+  * Fix TestOCI1IndexChooseInstanc
+  * Refactor data passing in c/image/copy
+  * Update module github.com/sigstore/fulcio to v1.4.0
+  * copy/multiple: instanceCopyCopy honor UpdateCompressionAlgorithms
+  * Update vendor of containers/storage
+  * copy/single: accept custom *Options and wrap arguments in copySingleImageOptions
+  * Improve transport documentation
+  * fix(deps): update module github.com/vbatts/tar-split to v0.11.5
+  * fix(deps): update module github.com/docker/docker to v24.0.5+incompatible
+  * copy: implement instanceCopyClone for zstd compression
+  * copy/multiple: priority of instanceCopyCopy must be higher than instanceCopyClone
+  * Clarify where mirrors are used
+  * fix(deps): update github.com/cyberphone/json-canonicalization digest to aa7fe85
+  * fix(deps): update github.com/containers/storage digest to c3da76f
+  * Update x/exp/slices, and some small slice-related cleanups
+  * Use consistent example domains in #2069
+  * copy: add support for ForceCompressionFormat
+  * fix(deps): update module golang.org/x/term to v0.11.0
+  * fix(deps): update module golang.org/x/crypto to v0.12.0
+  * fix(deps): update module golang.org/x/oauth2 to v0.11.0
+  * [release-5.27] Preparing 5.27 backport
+  * Update to Go 1.19
+  * storage.storageImageDestination.Commit(): leverage image options
+  * Rename SKOPEO_CI_TAG to SKOPEO_CI_BRANCH
+  * [CI:DOCS] Add cirrus-cron retry/monitor jobs
+  * chore(deps): update dependency containers/automation_images to v20230807
+  * [release-5.27] Fix the branch we use for determining a git-validation starting point
+  * fix(deps): update golang.org/x/exp digest to 352e893
+  * fix(deps): update module github.com/sigstore/sigstore to v1.7.2
+  * OCI image-spec / distribution-spec v1.1 updates, first round
+  * fix(deps): update module github.com/sylabs/sif/v2 to v2.12.0
+  * chore(deps): update dependency containers/automation_images to v20230809
+  * Merge release branch into main
+  * BREAKING: Update for move of github.com/theupdateframework/go-tuf/encrypted
+  * Update module github.com/containers/ocicrypt to v1.1.8
+  * chore(deps): update dependency containers/automation_images to v20230816
+  * fix(deps): update module github.com/containers/storage to v1.49.0
+  * fix(deps): update module github.com/sylabs/sif/v2 to v2.13.0
+  * fix(deps): update module github.com/vbauerster/mpb/v8 to v8.6.0
+  * fix(deps): update module github.com/vbauerster/mpb/v8 to v8.6.1
+  * fix(deps): update golang.org/x/exp digest to d852ddb
+  * fix(deps): update module golang.org/x/term to v0.12.0
+  * fix(deps): update module github.com/sigstore/sigstore to v1.7.3
+  * fix removal of temp file in GetBlob on Windows
+  * fix(deps): update module golang.org/x/crypto to v0.13.0
+  * Fix build with golangci-lint 1.54.2
+  * fix(deps): update module golang.org/x/oauth2 to v0.12.0
+  * Implement, and default to, a SQLite BlobInfoCache instead of BoltDB
+  * fix(deps): update module github.com/docker/docker to v24.0.6+incompatible
+  * Update dependencies of docker/docker
+  * Correctly handle encryption/decryption changes in non-OCI formats
+  * chore(deps): update module github.com/cyphar/filepath-securejoin to v0.2.4 [security]
+  * fix(deps): update module github.com/containers/storage to v1.50.1
+- bump c/storage to 1.50.2
+  * Bump to v1.50.1
+  * Add an OWNERS file for the merge bot to refer to
+- bump c/common to 0.55.4
+  * Bump c/image to v0.55.3
+
+
+-------------------------------------------------------------------
 Mon Aug 14 07:27:59 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - New release 20230814
