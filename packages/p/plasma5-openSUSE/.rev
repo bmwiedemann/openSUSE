@@ -1384,4 +1384,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.27.7(.1)</comment>
     <requestid>1101835</requestid>
   </revision>
+  <revision rev="167" vrev="10">
+    <srcmd5>55df074cfedabc024ed43a642aea2ddd</srcmd5>
+    <version>84.87~git20230131T131056~433af24</version>
+    <time>1694701489</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
+    <requestid>1110739</requestid>
+  </revision>
 </revisionlist>
