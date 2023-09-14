@@ -1020,4 +1020,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>Plasma 5.27.7(.1)</comment>
     <requestid>1101820</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>52edde203de342687be7ed4f41c95504</srcmd5>
+    <version>5.27.8</version>
+    <time>1694701483</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
+    <requestid>1110727</requestid>
+  </revision>
 </revisionlist>
