@@ -24,7 +24,7 @@
 
 %define kf5_version 5.98.0
 Name:           xdg-desktop-portal-kde
-Version:        5.27.7
+Version:        5.27.8
 Release:        0
 Summary:        QT/KF5 backend for xdg-desktop-portal
 License:        LGPL-2.1-or-later
@@ -109,6 +109,7 @@ A Qt/KF5 backend implementation for xdg-desktop-portal
 %{_kf5_debugdir}/xdp-kde.categories
 %{_kf5_notifydir}/xdg-desktop-portal-kde.notifyrc
 %{_kf5_sharedir}/dbus-1/services/org.freedesktop.impl.portal.desktop.kde.service
+%{_kf5_sharedir}/xdg-desktop-portal/kde-portals.conf
 %{_kf5_sharedir}/xdg-desktop-portal/portals/kde.portal
 %{_libexecdir}/xdg-desktop-portal-kde
 %{_userunitdir}/plasma-xdg-desktop-portal-kde.service

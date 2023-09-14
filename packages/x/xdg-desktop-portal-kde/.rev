@@ -953,4 +953,23 @@
     <comment>Plasma 5.27.7(.1)</comment>
     <requestid>1101836</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>00a4c8fd3ce7cee118f38b4e8cc78c0d</srcmd5>
+    <version>5.27.8</version>
+    <time>1694701496</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- Changes since 5.27.7:
+  * Fix data type for accent color
+  * settings: provide accent-color settings
+  * Install kde-portals.conf in datadir
+  * Install a portals.conf file for the plasma session
+  * RemoteDesktop: Fix relativity of absolute pointer motion
+  * RemoteDesktop: Use QScreen for starting multiple streams
+  * Add a method using QScreen to create a screencasting stream</comment>
+    <requestid>1110818</requestid>
+  </revision>
 </revisionlist>
