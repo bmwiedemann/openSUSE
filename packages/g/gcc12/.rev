@@ -155,4 +155,17 @@ to release my review on the gcc package now.
   * includes regression bug fixes</comment>
     <requestid>1085554</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e8098737bfb882ad2f36f5897e7e3e5d</srcmd5>
+    <version>12.3.0+git1204</version>
+    <time>1694701489</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc12-aarch64-bsc1214052.patch to fix -fstack-protector issues
+  with variable length stack allocations on aarch64.
+  Fixes CVE-2023-4039.  [bsc#1214052]
+
+- Add gcc12-testsuite-fixes.patch to pick testsuite related fixes
+  from the branch after the release.</comment>
+    <requestid>1110685</requestid>
+  </revision>
 </revisionlist>

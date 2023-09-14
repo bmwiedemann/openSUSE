@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 17 06:37:28 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Add gcc12-aarch64-bsc1214052.patch to fix -fstack-protector issues
+  with variable length stack allocations on aarch64.
+  Fixes CVE-2023-4039.  [bsc#1214052]
+
+-------------------------------------------------------------------
 Mon May  8 12:58:20 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC 12.3 release, 0c61aa720e62f1baf0bfd178e283, git1204
   * includes regression bug fixes
+- Add gcc12-testsuite-fixes.patch to pick testsuite related fixes
+  from the branch after the release.
 
 -------------------------------------------------------------------
 Wed Mar 29 14:27:43 UTC 2023 - Martin Liška <mliska@suse.cz>

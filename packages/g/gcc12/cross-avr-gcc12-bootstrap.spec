@@ -131,6 +131,8 @@ Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
 Patch22:        gcc12-riscv-inline-atomics.patch
 # remove libatomics linking
 Patch23:        gcc12-riscv-pthread.patch
+Patch24:        gcc12-testsuite-fixes.patch
+Patch25:        gcc12-aarch64-bsc1214052.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -325,6 +327,8 @@ ln -s newlib-4.2.0.20211231/newlib .
 %patch17 -p1
 %patch22 -p1
 %patch23 -p1
+%patch24 -p1
+%patch25 -p1
 # These patches are needed only for llvm11
 %if "%{TARGET_ARCH}" == "amdgcn" && %{suse_version} < 1550
 %patch18 -p1
