@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Thu Sep 14 04:49:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.5:
+  * Add v0.8.5 release notes (#5776)
+  * Backport: services via gateway, minus API changes (#5764)
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 0.7.1
+    to 0.8.0 (#5736)
+  * chore(deps): bump @svgr/webpack from 8.0.1 to 8.1.0 in /website
+    (#5735)
+  * fix: engine CLI flags typo (#5761)
+  * fix: panic if services DNS is disabled (#5760)
+  * feat: extends mounted secret api (#5707)
+  * engine: add DAGGERL_CLOUD_TOKEN env variable support (#5773)
+  * chore(deps): bump typedoc-plugin-markdown in /website (#5731)
+  * fix(docs): quickstart css selectors (#5624)
+  * feat: Unify VCS labels + add Gitlab and CircleCI labels (#5705)
+  * docs: Adds "dagger run" to Jenkins/Circle samples (#5703)
+  * update go versions for go getting started step 5b (#5770)
+  * docs: Adds cookbook recipe for shared client session and
+    modules (#5721)
+  * refactor: chip away at removing eyre (#5768)
+  * docs: Adds subsections to FAQ (#5766)
+  * feat: update rust dependencies (#5767)
+  * Python: Add experimental default client (#5723)
+  * tests: use `connect(t)` everywhere, send logs to `t.Log`
+    (#5762)
+  * docs: Removes dagger.WithWorkdir from examples (#5725)
+  * chore(deps): bump sass from 1.64.2 to 1.66.1 in /website
+    (#5732)
+  * docs: Adds note and information on cache types and
+    invalidations (#5718)
+  * docs: Added "dagger run" to quickstart (#5702)
+  * docs: Updates troubleshooting guide with networking problem and
+    solution (#5717)
+  * Re-enable dagger k8s runners (#5722)
+  * chore: update release guide to remove rust. (#5720)
+  * fix interactive TUI (#5681)
+  * docs: Updates some guides to use "dagger run" (#5701)
+  * feat: add rust to mage (#5709)
+  * cli: allow to set secret session token in listen command
+    (#5704)
+  * docs: Adds host directory r/w example to guide and cookbook
+    (#5619)
+  * docs: Updated some guides to use "dagger run" (#5637)
+  * Basic Project Zenith README (#5698)
+  * Disable dagger-runner (#5692)
+  * gha: fix yaml error in main push scan-engine (#5690)
+  * Add trivy vulnerability scanning to GHA (#5683)
+  * fix: cannot connect to Dagger Engine and always raise error
+    (#5665)
+  * feat: throw error when workdir config on session (#5689)
+  * Updated examples link in repository README
+  * Reorganized directories, updated README, deleted LICENSE
+  * Moves content to examples sub-dir
+  * core: update operator manual w/ how to config registry mirrors
+    (#5684)
+  * engine: update go.mod deps and engine image binaries to trim
+    deps w/ CVEs (#5680)
+  * fix: calling id for any optional arguments that is ID type
+    (#5674)
+  * feat: throw error on workdir config on session (#5675)
+  * docs: Added Dockerfile build secrets example  (#5661)
+  * docs: Added recipe to build Dockerfile with different build
+    context directory (#5634)
+  * docs: Updated OCI runtime guide (#5639)
+  * docs: Added chainable callbacks guide (#5653)
+  * docs: Added Tailscale access recipe to cookbook (#5532)
+  * Improve releasing during v0.8.4 (#5658)
+  * Add Pulumi example. (#33)
+  * More core concepts! (#22)
+  * Bump webpack from 5.75.0 to 5.76.1 in /nodejs/react-build (#20)
+  * add core concepts section to readme
+  * add python db service example
+  * add nodejs db service example
+  * add go db service example
+  * update go examples to be chained
+  * README
+  * go: adds aws-cdk demo
+  * Bump json5 from 1.0.1 to 1.0.2 in /nodejs/react-build
+  * add published to in output text
+  * convert memcached dockerfile to dagger pipeline
+  * Add first nodejs, python, and bash examples (#12)
+  * feat: New structure
+  * reorder steps since no default url
+  * simplfy output
+  * update multiarch example concurrency
+  * remove europa examples
+  * add readme
+  * do a tree after the dagger pipeline
+  * unneeded closures
+  * parallel builds
+  * pass repo by cli arg
+  * build something else
+  * build darwin too
+  * make flat files
+  * multiarch build example
+  * Reduce packages to essentials
+  * Add cue.mod
+  * Update README.md
+
+-------------------------------------------------------------------
 Wed Sep 06 05:41:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.8.4:
