@@ -1800,4 +1800,12 @@
     <comment></comment>
     <requestid>1102414</requestid>
   </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>74c321916d1cbffd90cd504889818985</srcmd5>
+    <version>5.27.8</version>
+    <time>1694701487</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
+    <requestid>1110733</requestid>
+  </revision>
 </revisionlist>

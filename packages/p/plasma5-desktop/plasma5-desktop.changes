@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:22:26 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- Changes since 5.27.7:
+  * Fix touchpad kded crash on X11 (kde#426937)
+  * XlibBackend: port to modern signal-slot
+  * XlibNotifications: port to modern signal-slot (kde#426937)
+  * RecentFiles kcm: whattoremember: Make the value visible in the UI match the value saved (kde#397487)
+  * PositionerTest: make sure folder model is ready before moving test
+  * FolderView: fix missing Kirigami import
+  * FolderViewLayer: use fixed interval
+  * ScreenMapper: remove handling for config before Plasma 5.25
+  * folder: modernize iteration
+  * folder: use qset instead of qvector to improve performance
+  * desktop: don't save positions immediately
+  * kcms/access Fix unintentional config changes
+  * folderview: cap amount of screen mappings we hold (kde#469445)
+  * applets/taskmanager: update deprecation message for DragHelper
+  * applets/pager: fix window/screen size/position when using Qt scaling (kde#446627)
+  * Panel: fix applet not returning focus after pressing applet shortcut (kde#472909)
+  * Migrate missing key handling/accessibility features from default CompactRepresentation
+
+-------------------------------------------------------------------
 Fri Aug  4 14:49:45 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.7.1:
