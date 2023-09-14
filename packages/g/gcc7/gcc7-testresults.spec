@@ -351,6 +351,9 @@ Patch39:        gcc7-libgo-don-t-include-linux-fs.h-when-building-gen-sys.patch
 Patch40:        gcc7-pr72764.patch
 Patch41:        gcc7-pr89124.patch
 Patch42:        libgcc-riscv-div.patch
+Patch43:        gcc7-aarch64-bsc1214052.patch
+Patch44:        gcc7-aarch64-untyped_call.patch
+Patch45:        gcc7-lra-elim.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -531,6 +534,9 @@ ln -s nvptx-newlib/newlib .
 %patch40 -p1
 %patch41 -p1
 %patch42 -p1
+%patch43 -p1
+%patch44 -p1
+%patch45 -p1
 %patch51
 %patch60
 %patch61
