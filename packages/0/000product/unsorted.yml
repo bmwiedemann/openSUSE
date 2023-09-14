@@ -6839,6 +6839,7 @@ unsorted:
   - go-for-it 
   - go-for-it-lang 
   - go-md2man 
+  - go-mod-upgrade 
   - go-race 
   - go-sendxmpp 
   - go1.13 
@@ -12285,7 +12286,6 @@ unsorted:
   - libgthread-2_0-0-32bit 
   - libgtk-2_0-0-32bit 
   - libgtk-3-0-32bit 
-  - libgtk-layer-shell0 
   - libgtkd-3-0 
   - libgtkdatabox-0_9_3-1 
   - libgtkdatabox-devel 
@@ -15310,7 +15310,7 @@ unsorted:
   - libudunits2-0 
   - libuev-devel 
   - libuev3 
-  - libuhd4_4_0 
+  - libuhd4_5_0 
   - libuhttpmock-1_0-1 
   - libulfius2_7 
   - libulockmgr1 
@@ -17108,6 +17108,10 @@ unsorted:
   - merkuro 
   - merkuro-lang 
   - merkuro-plasmoid 
+  - mesheryctl 
+  - mesheryctl-bash-completion 
+  - mesheryctl-fish-completion 
+  - mesheryctl-zsh-completion 
   - meshlab 
   - meslo-lg-fonts 
   - meson 
@@ -22777,6 +22781,7 @@ unsorted:
   - python3-pyside6 
   - python3-pyside6-devel 
   - python3-pysol-cards 
+  - python3-pytest-ansible 
   - python3-pytest-cookies 
   - python3-rados 
   - python3-rbd 
@@ -45253,6 +45258,7 @@ unsorted:
   - vim-plugin-airline 
   - vim-plugin-ale 
   - vim-plugin-align 
+  - vim-plugin-bats 
   - vim-plugin-bufexplorer 
   - vim-plugin-calendar 
   - vim-plugin-colorschemes 

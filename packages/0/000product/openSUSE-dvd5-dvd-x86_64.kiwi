@@ -289,6 +289,7 @@
       <repopackage name="container-selinux"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-lang"/>
+      <repopackage name="coreutils-systemd"/>
       <repopackage name="cpio"/>
       <repopackage name="cpio-lang"/>
       <repopackage name="cpio-mt"/>
@@ -1697,6 +1698,7 @@
       <repopackage name="libgtk-2_0-0"/>
       <repopackage name="libgtk-3-0"/>
       <repopackage name="libgtk-4-1"/>
+      <repopackage name="libgtk-layer-shell0"/>
       <repopackage name="libgtk-vnc-2_0-0"/>
       <repopackage name="libgtkimageview0"/>
       <repopackage name="libgtkmm-3_0-1"/>
