@@ -1,0 +1,13 @@
+diff -urEbwB org.eclipse.tycho-tycho-1.6.0.orig/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/buildversion/DefaultBuildTimestampProvider.java org.eclipse.tycho-tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/buildversion/DefaultBuildTimestampProvider.java
+--- org.eclipse.tycho-tycho-1.6.0.orig/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/buildversion/DefaultBuildTimestampProvider.java	2023-09-05 17:53:07.666513409 +0200
++++ org.eclipse.tycho-tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/buildversion/DefaultBuildTimestampProvider.java	2023-09-14 06:14:27.034252611 +0200
+@@ -28,6 +28,9 @@
+ 
+     @Override
+     public Date getTimestamp(MavenSession session, MavenProject project, MojoExecution execution) {
++        if (System.getenv("SOURCE_DATE_EPOCH") != null) {
++            return new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
++        }
+         return session.getStartTime();
+     }
+ }

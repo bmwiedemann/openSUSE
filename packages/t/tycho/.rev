@@ -87,4 +87,12 @@
     <comment>Reproducible builds improvement</comment>
     <requestid>1110002</requestid>
   </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>28de8df133c946aab9d33cc8b56fa1ed</srcmd5>
+    <version>1.6.0</version>
+    <time>1694701537</time>
+    <user>anag+factory</user>
+    <comment>more reproducibility stuff</comment>
+    <requestid>1110990</requestid>
+  </revision>
 </revisionlist>

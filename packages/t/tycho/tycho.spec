@@ -65,7 +65,9 @@ Patch5:         0006-Mockito-does-not-have-test-scope.patch
 Patch6:         0007-Fix-dependency-problems-when-bootstrapping-with-extr.patch
 Patch7:         0008-Use-custom-resolver-for-tycho-eclipserun-plugin.patch
 Patch8:         plexus-lookup-fix.patch
+Patch9:         tycho-plexus-compiler-2.13.patch
 Patch10:        tycho-sourcetarget.patch
+Patch11:        tycho-getTimestamp.patch
 Patch100:       fedoraproject-p2-bootstrap-fix.patch
 BuildRequires:  bash
 BuildRequires:  fdupes
@@ -211,7 +213,9 @@ mv fedoraproject-p2-%{fp_p2_git_tag} fedoraproject-p2
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 %patch10 -p1
+%patch11 -p1
 %patch100
 
 # Unneeded for RPM builds
