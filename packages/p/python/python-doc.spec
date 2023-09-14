@@ -155,6 +155,8 @@ Patch77:        CVE-2023-27043-email-parsing-errors.patch
 # PATCH-FIX-UPSTREAM Revert-gh105127-left-tests.patch bsc#1210638 mcepl@suse.com
 # Partially revert previous patch
 Patch78:        Revert-gh105127-left-tests.patch
+# PATCH-FIX-UPSTREAM CVE-2023-40217-avoid-ssl-pre-close.patch gh#python/cpython#108315
+Patch79:        CVE-2023-40217-avoid-ssl-pre-close.patch
 # COMMON-PATCH-END
 Provides:       pyth_doc = %{version}
 Provides:       pyth_ps = %{version}
@@ -244,6 +246,7 @@ Python, and Macintosh Module Reference in PDF format.
 %patch76 -p1
 %patch77 -p1
 %patch78 -p1
+%patch79 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar

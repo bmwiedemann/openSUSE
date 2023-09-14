@@ -4006,4 +4006,17 @@ However, upstream development now focuses on 3.x series.
 </comment>
     <requestid>1103620</requestid>
   </revision>
+  <revision rev="187" vrev="38">
+    <srcmd5>c728d486614a6ba426b992578f5dd486</srcmd5>
+    <version>2.7.18</version>
+    <time>1694701501</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1110536 from dgarcia
+
+- Add CVE-2023-40217-avoid-ssl-pre-close.patch fixing
+    gh#python/cpython#108310, backport from upstream patch
+    gh#python/cpython#108315
+    (bsc#1214692, CVE-2023-40217)</comment>
+    <requestid>1110909</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 12 07:55:52 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add CVE-2023-40217-avoid-ssl-pre-close.patch fixing
+  gh#python/cpython#108310, backport from upstream patch
+  gh#python/cpython#108315
+  (bsc#1214692, CVE-2023-40217)
+
+-------------------------------------------------------------------
 Thu Aug  3 14:53:38 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - IT MEANS THAT bsc#1210638 STILL HAS NOT BEEN FIXED!
