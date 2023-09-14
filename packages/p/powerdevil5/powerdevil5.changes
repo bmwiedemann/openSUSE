@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:22:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- Changes since 5.27.7:
+  * profiledefaults: don't automatically suspend by default if running in a virtual machine
+  * Fix the error overlay shown on other kcms (kde#424531)
+  * dimdisplay: only dim the screen at configured dim time (kde#304696)
+  * Print error with higher logging severity when backend fails to load
+
+-------------------------------------------------------------------
 Tue Aug  1 11:19:44 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.7
