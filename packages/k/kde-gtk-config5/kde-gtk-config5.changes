@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:22:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- Changes since 5.27.7:
+  * Set GTK scale-factor value as a uint (kde#472305)
+
+-------------------------------------------------------------------
 Tue Aug  1 11:18:42 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.7
