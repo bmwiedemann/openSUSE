@@ -83,7 +83,6 @@ Patch5:         %{name}-%{major_version}.%{minor_version}-jdt.patch
 Patch6:         tomcat-9.0.75-secretRequired-default.patch
 Patch7:         tomcat-9.0-fix_catalina.patch
 Patch8:         tomcat-9.0-logrotate_everything.patch
-
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
 BuildRequires:  apache-commons-collections
@@ -117,8 +116,7 @@ Requires:       apache-commons-logging
 Requires:       apache-commons-pool2
 Requires:       java >= 1.8
 Requires(post): %fillup_prereq
-Requires(pre):  %{_sbindir}/groupadd
-Requires(pre):  %{_sbindir}/useradd
+Requires(pre):  shadow
 Recommends:     libtcnative-1-0 >= 1.1.24
 Recommends:     logrotate
 BuildArch:      noarch

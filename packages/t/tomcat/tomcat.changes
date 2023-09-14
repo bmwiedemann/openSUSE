@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:30:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Require(pre) shadow because groupadd is needed early
+
+-------------------------------------------------------------------
 Tue May 23 04:25:45 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to Tomcat 9.0.75.

@@ -877,4 +877,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>9.0.75 == security fixes</comment>
     <requestid>1088487</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>d2f726e5f7b2cb9824e7f4f331004173</srcmd5>
+    <version>9.0.75</version>
+    <time>1694701536</time>
+    <user>anag+factory</user>
+    <comment>fix factory build</comment>
+    <requestid>1110988</requestid>
+  </revision>
 </revisionlist>
