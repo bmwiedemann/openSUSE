@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Sep  2 08:11:28 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.18.7:
+  * Fix property dialog file count (#1173)
+  * Don't store GFile pointer in GTK pointer
+  * Don't reload the directory on copy or cut (#1060)
+  * Add folder to history only for new tab (Issue #1072)
+  * Fix job operation crash on error
+  * Limit number of templates to prevent lag (#472)
+  * Prevent crash on multi-file-activate (#1121)
+  * Remove unneeded menu separator
+  * Switch zoom shortcuts
+  * Prevent glib-critical - followup of (#912)
+  * Keep location selector state on focus lost (#912)
+  * Prevent minor memory leak (#573)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Apr 30 09:29:14 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 4.18.6:
