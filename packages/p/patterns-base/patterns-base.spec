@@ -121,6 +121,7 @@ Requires:       aaa_base
 Requires:       bash
 Requires:       ca-certificates-mozilla
 Requires:       coreutils
+Requires:       coreutils-systemd
 Requires:       glibc
 Requires:       libnss_usrfiles2
 Requires:       pam

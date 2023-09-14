@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 10 19:04:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add coreutils-systemd, coreutils got split in two RPMs
+
+-------------------------------------------------------------------
 Fri Aug 18 02:33:18 UTC 2023 - Simon Lees <sflees@suse.de>
 
 - move udev-configure-printer from enhanced_base to x11_enhanced
