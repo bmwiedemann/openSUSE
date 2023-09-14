@@ -22,6 +22,11 @@ Sat Oct  1 14:03:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * CI only fixes, no bug fixes or new features 
 
 -------------------------------------------------------------------
+Mon Feb  8 10:56:26 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Include in SLE-15 (bsc#1176785, jsc#ECO-3105, jsc#PM-2352)
+
+-------------------------------------------------------------------
 Mon Mar  9 16:17:29 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.11.1:
