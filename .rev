@@ -299,4 +299,12 @@
   # CN=E-Tugra Global Root CA ECC v3 O=E-Tugra EBG A.S. OU=E-Tugra Trust Center</comment>
     <requestid>1103088</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>f9411ca30d047dca8f6452073e9ea59d</srcmd5>
+    <version>2023.7.22</version>
+    <time>1694701494</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1110952</requestid>
+  </revision>
 </revisionlist>
