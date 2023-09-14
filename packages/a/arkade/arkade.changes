@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 14 04:49:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.4:
+  * Inline errors
+  * Force helm repo to be added if it exists
+
+-------------------------------------------------------------------
 Wed Sep 13 14:09:36 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.10.3:
