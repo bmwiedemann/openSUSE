@@ -1,8 +1,9 @@
 #!/bin/bash
 #
-# Copyright (c) 2019 SuSE GmbH Nuernberg, Germany.
-# Copyright (c) 2021 SuSE SUSE Software Solutions Germany GmbH.
-# Copyright (c) 2019,2021 Werner Fink
+# Copyright (c) 2019 SUSE GmbH Nuernberg, Germany.
+# Copyright (c) 2021 SUSE Software Solutions Germany GmbH.
+# Copyright (c) 2023 SUSE Software Solutions Germany GmbH.
+# Copyright (c) 2019,2021,2023 Werner Fink
 #
 # Wrapper script for ghostscript based on bwrap, the container setup
 # utility, which does use e.g. unshare(2) system call to create a
@@ -80,7 +81,8 @@ do
     opts[o++]="$lib"
     opts[o++]="$lib"
 done
-for dir in /lib/tls /lib64/tls /lib64/x86_64 /usr/lib/ghostscript /usr/lib64/ghostscript /etc/ghostscript
+arch=$(uname -i)
+for dir in /lib/tls /lib64/tls /lib64/${arch} /usr/lib/ghostscript /usr/lib64/ghostscript /etc/ghostscript /lib64/glibc-hwcaps/${arch/_/[_-]}-v*
 do
     test -d "$dir" || continue
     opts[o++]=--ro-bind
@@ -304,7 +306,7 @@ fi
 # Clearly the `false´ should then changed to `true´
 if false
 then
-    for bin in /usr/bin/strace
+    for bin in /usr/bin/strace /bin/ls
     do
 	opts[o++]=--ro-bind
 	opts[o++]="$bin"
@@ -343,8 +345,6 @@ set -euo pipefail
       --chdir "$home" \
       "${opts[@]}" \
       --new-session \
-      --sync-fd 0 \
-      --sync-fd 1 \
       --sync-fd 2 \
       --setenv XDG_RUNTIME_DIR "/run/user/$uid" \
       --setenv USER "$user" \

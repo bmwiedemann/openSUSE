@@ -78,4 +78,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>940648</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>7cb6eba7e1f21afe5ea8ed3206677d9b</srcmd5>
+    <version>0.1</version>
+    <time>1694701570</time>
+    <user>anag+factory</user>
+    <comment>- Make it work even with different hwcaps versions</comment>
+    <requestid>1111326</requestid>
+  </revision>
 </revisionlist>

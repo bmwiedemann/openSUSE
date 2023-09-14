@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 14 11:56:38 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Make it work even with different hwcaps versions
+
+-------------------------------------------------------------------
 Wed Dec  8 07:00:33 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Use this version for new package in SLE-12-SP5 (jsc#SLE-21704)
