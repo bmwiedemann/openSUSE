@@ -189,4 +189,15 @@
 - Raise Power architecture baseline to Power9 only for ALP (boo#1213915).</comment>
     <requestid>1107917</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dbc90620c2956b67ae70358e7d03bffb</srcmd5>
+    <version>13.2.1+git7813</version>
+    <time>1694701454</time>
+    <user>anag+factory</user>
+    <comment>- Bump to b96e66fd4ef3e36983969fb8cdd1956f551a074b, git7831
+  * Includes many bugfixes
+  * Includes fix to -fstack-protector issues with variable
+    length stack allocations on aarch64.  [bsc#1214052] (CVE-2023-4039)</comment>
+    <requestid>1110686</requestid>
+  </revision>
 </revisionlist>

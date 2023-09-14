@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 12 17:52:25 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Bump to b96e66fd4ef3e36983969fb8cdd1956f551a074b, git7831
+  * Includes many bugfixes
+  * Includes fix to -fstack-protector issues with variable
+    length stack allocations on aarch64.  [bsc#1214052] (CVE-2023-4039)
+
+-------------------------------------------------------------------
 Mon Aug 28 07:59:17 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Disable building glibc cross compilers on SLE based code streams,
