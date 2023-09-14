@@ -20,7 +20,7 @@
 
 %bcond_without released
 Name:           kcm_flatpak
-Version:        5.27.7
+Version:        5.27.8
 Release:        0
 Summary:        Flatpak Permissions Management KCM
 License:        GPL-2.0-or-later
