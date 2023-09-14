@@ -1211,4 +1211,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Plasma 5.27.7(.1)</comment>
     <requestid>1101807</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>e45ef053f2d6c6797d063883ad3829ec</srcmd5>
+    <version>5.27.8</version>
+    <time>1694701473</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
+    <requestid>1110713</requestid>
+  </revision>
 </revisionlist>
