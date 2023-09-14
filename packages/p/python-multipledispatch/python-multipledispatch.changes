@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 14 12:38:16 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.0.0
+  * no upstream changelog
+- python-six is not required
+
+-------------------------------------------------------------------
 Mon Nov  8 14:01:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add missing six dependency 

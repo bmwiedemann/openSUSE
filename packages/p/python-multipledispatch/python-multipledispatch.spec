@@ -1,7 +1,7 @@
 #
 # spec file for package python-multipledispatch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-multipledispatch
-Version:        0.6.0
+Version:        1.0.0
 Release:        0
 Summary:        Multiple dispatch in Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://multiple-dispatch.readthedocs.io/
-Source:         https://github.com/mrocklin/multipledispatch/archive/0.6.0.tar.gz
+Source:         https://github.com/mrocklin/multipledispatch/archive/%{version}.tar.gz
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,8 +40,7 @@ performs static analysis to avoid conflicts, and provides optional namespace
 support.
 
 %prep
-%setup -q -n multipledispatch-%{version}
-rm multipledispatch/tests/test_dispatcher_3only.py
+%autosetup -n multipledispatch-%{version}
 
 %build
 %python_build
@@ -58,9 +53,8 @@ rm multipledispatch/tests/test_dispatcher_3only.py
 %pytest
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/multipledispatch*
 
 %changelog
