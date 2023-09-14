@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 13 12:07:48 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.8.1.2
+  * It turned out that version 0.8.1 is not entirely ABI compatible
+    with 0.8.0 as it should. This release is made solely to fix it;
+    there are no other changes.
+
+-------------------------------------------------------------------
 Mon Sep 11 13:11:30 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Add Qt5DBus as build requirement

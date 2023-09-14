@@ -1,7 +1,7 @@
 #
-# spec file for package libQuotient
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define rname libQuotient
 %bcond_without e2ee
 Name:           libQuotient%{?pkg_suffix}
-Version:        0.8.1.1
+Version:        0.8.1.2
 Release:        0
 Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only
@@ -37,8 +37,8 @@ Source0:        https://github.com/quotient-im/%{rname}/archive/%{version}/%{rna
 BuildRequires:  cmake
 # c++-20 required
 %if 0%{?suse_version} < 1550
-BuildRequires:  gcc12-c++
 BuildRequires:  gcc12-PIE
+BuildRequires:  gcc12-c++
 %endif
 BuildRequires:  pkgconfig
 %if 0%{?qt6}
