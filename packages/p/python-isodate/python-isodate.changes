@@ -45,6 +45,11 @@ Tue Dec  4 12:49:23 UTC 2018 - Matej Cepl <mcepl@suse.com>
 - Remove superfluous devel dependency for noarch package
 
 -------------------------------------------------------------------
+Wed Sep 26 14:21:15 UTC 2018 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Include in SLE-15 (bsc#1109694)
+
+-------------------------------------------------------------------
 Wed May  2 12:53:11 UTC 2018 - adrian.glaubitz@suse.com
 
 - update to version 0.6.0:
