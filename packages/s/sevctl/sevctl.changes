@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 13 14:42:56 UTC 2023 - Caleb Crane <caleb.crane@suse.com>
+
+- Update to sevctl v0.4.3 (jsc#4981)
+    - Add show commands for identifier and VCEK URL
+    - Improve processor identification
+    - Add 'sevctl measurement build'
+    - Expand coverage for all AMD CPU model numbers
+    - Adjust to use sev VMSA result changes
+    - Add vmsa show command
+    - Implement vmsa update subcommand
+    - Implement vmsa build subcommand
+    - Detect and use host arch's CPU generation
+    - Support HTTP/HTTPS proxies
+- Spec: Upgrade vendored dependencies
+- Spec: Utilize upstream git tags
+
+
+-------------------------------------------------------------------
 Wed Apr 19 07:39:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire rubygem(asciidoctor) instead of %{rubygem
