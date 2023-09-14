@@ -48,7 +48,7 @@
                       %{?unbundle_wcs}
 
 Name:           python-astropy%{psuffix}
-Version:        5.3.2
+Version:        5.3.3
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -59,12 +59,12 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
 # https://docs.astropy.org/en/v5.3/install.html#requirements
-BuildRequires:  %{python_module Cython >= 0.29.34}
+BuildRequires:  %{python_module Cython >= 0.29.34 with %python-Cython < 3}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML >= 3.13}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module extension-helpers}
-BuildRequires:  %{python_module numpy-devel >= 1.21}
+BuildRequires:  %{python_module numpy-devel >= 1.25 with %python-numpy-devel < 2}
 BuildRequires:  %{python_module packaging >= 19.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyerfa >= 2.0}
@@ -76,9 +76,9 @@ BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.13
-Requires:       python-numpy >= 1.21
 Requires:       python-packaging >= 19.0
 Requires:       python-pyerfa >= 2.0
+Requires:       (python-numpy >= 1.21 with python-numpy < 2)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     libxml2-tools
@@ -132,7 +132,7 @@ BuildRequires:  libxml2-tools
 BuildRequires:  %{python_module astropy = %{version}}
 BuildRequires:  %{python_module ipython >= 4.2}
 BuildRequires:  %{python_module objgraph}
-BuildRequires:  %{python_module pytest >= 7}
+BuildRequires:  %{python_module pytest >= 7 with %python-pytest < 8}
 BuildRequires:  %{python_module pytest-astropy >= 0.10}
 BuildRequires:  %{python_module pytest-astropy-header >= 0.2.1}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.12}
