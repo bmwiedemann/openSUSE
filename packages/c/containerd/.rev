@@ -480,4 +480,15 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment></comment>
     <requestid>1088255</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e23d98e574a848f15d7fb46a5fb517e6</srcmd5>
+    <version>1.7.6</version>
+    <time>1694701507</time>
+    <user>anag+factory</user>
+    <comment>- Update to containerd v1.7.6 for Docker v24.0.6-ce. Upstream release notes:
+  &lt;https://github.com/containerd/containerd/releases/tag/v1.7.6&gt; bsc#1215323
+- Add `Provides: cri-runtime` to use containerd as container runtime in Factory
+  Kubernetes packages</comment>
+    <requestid>1111024</requestid>
+  </revision>
 </revisionlist>

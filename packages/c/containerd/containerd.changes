@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 14 04:27:07 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.7.6 for Docker v24.0.6-ce. Upstream release notes:
+  <https://github.com/containerd/containerd/releases/tag/v1.7.6> bsc#1215323
+
+-------------------------------------------------------------------
+Thu Aug 31 09:20:32 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Add `Provides: cri-runtime` to use containerd as container runtime in Factory
+  Kubernetes packages
+
+-------------------------------------------------------------------
 Sun May 21 11:16:18 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.6.21 for Docker v23.0.6-ce. Upstream release notes:

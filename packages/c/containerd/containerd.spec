@@ -23,14 +23,14 @@
 %endif
 
 # MANUAL: Update the git_version.
-%define git_version 3dce8eb055cbb6872793272b4f20ed16117344f8
-%define git_short   3dce8eb055cb
+%define git_version 091922f03c2762540fd057fba91260237ff86acb
+%define git_short   091922f03c27
 
 %global provider_prefix github.com/containerd/containerd
 %global import_path %{provider_prefix}
 
 Name:           containerd
-Version:        1.6.21
+Version:        1.7.6
 Release:        0
 Summary:        Standalone OCI Container Daemon
 License:        Apache-2.0
@@ -41,7 +41,7 @@ Source1:        %{name}-rpmlintrc
 Source2:        %{name}.service
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
-BuildRequires:  go >= 1.18
+BuildRequires:  go >= 1.19
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  libbtrfs-devel >= 3.8
@@ -60,6 +60,7 @@ Provides:       %{name}-kubic = %{version}
 Obsoletes:      %{name} = 0.2.5+gitr569_2a5e70c
 Obsoletes:      %{name}_2a5e70c
 ExcludeArch:    s390
+Provides:       cri-runtime
 
 %description
 Containerd is a daemon with an API and a command line client, to manage
