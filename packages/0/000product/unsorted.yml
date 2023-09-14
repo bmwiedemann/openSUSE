@@ -19425,6 +19425,7 @@ unsorted:
   - openssl-3-doc 
   - openssl-engine-libp11 
   - openssl-ibmpkcs11 
+  - openssl-pkcs11-sign-provider 
   - openssl_tpm2_engine 
   - openssl_tpm_engine 
   - openstack-macros 
@@ -23631,8 +23632,6 @@ unsorted:
   - python310-branca 
   - python310-breathe 
   - python310-brewer2mpl 
-  - python310-brotlicffi 
-  - python310-brotlipy 
   - python310-bsddb3 
   - python310-bsddb3-devel 
   - python310-bson 
@@ -24525,6 +24524,7 @@ unsorted:
   - python310-jupyterlab 
   - python310-jupyterlab-pygments 
   - python310-jupyterlab-server 
+  - python310-jupyterlab-server-openapi 
   - python310-jupyterlab-server-test 
   - python310-jupyterlab-templates 
   - python310-jupyterlab-widgets 
@@ -27094,8 +27094,6 @@ unsorted:
   - python311-branca 
   - python311-breathe 
   - python311-brewer2mpl 
-  - python311-brotlicffi 
-  - python311-brotlipy 
   - python311-bsddb3 
   - python311-bsddb3-devel 
   - python311-bson 
@@ -27934,6 +27932,7 @@ unsorted:
   - python311-jupyterlab 
   - python311-jupyterlab-pygments 
   - python311-jupyterlab-server 
+  - python311-jupyterlab-server-openapi 
   - python311-jupyterlab-server-test 
   - python311-jupyterlab-templates 
   - python311-jupyterlab-widgets 
@@ -30468,8 +30467,6 @@ unsorted:
   - python39-branca 
   - python39-breathe 
   - python39-brewer2mpl 
-  - python39-brotlicffi 
-  - python39-brotlipy 
   - python39-bsddb3 
   - python39-bsddb3-devel 
   - python39-bson 
@@ -31362,6 +31359,7 @@ unsorted:
   - python39-jupyterlab 
   - python39-jupyterlab-pygments 
   - python39-jupyterlab-server 
+  - python39-jupyterlab-server-openapi 
   - python39-jupyterlab-server-test 
   - python39-jupyterlab-templates 
   - python39-jupyterlab-widgets 
@@ -34065,6 +34063,8 @@ unsorted:
   - rinetd 
   - rinstall 
   - rinutils-devel 
+  - rioterm 
+  - rioterm-terminfo 
   - ripgrep 
   - ripgrep-bash-completion 
   - ripgrep-fish-completion 
