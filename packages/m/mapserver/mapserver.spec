@@ -1,7 +1,7 @@
 #
 # spec file for package mapserver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann (tigerfoot)
 # Copyright (c) 2015 Angelos Tzotsos (kalxas)
 #
@@ -32,7 +32,7 @@
 %endif
 
 Name:           mapserver
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        Environment for building spatially-enabled internet applications
 License:        MIT
@@ -75,7 +75,6 @@ BuildRequires:  postgresql-server-devel >= 9.1
 BuildRequires:  libprotobuf-c-devel
 BuildRequires:  php8-devel
 BuildRequires:  proj
-BuildRequires:  protobuf-c
 BuildRequires:  readline-devel
 BuildRequires:  rpm
 %if 0%{with php}
@@ -104,12 +103,6 @@ Group:          System/Libraries
 Mapserver library for mapserver or mapscript module. you need this lib to run mapserver
 or any of the mapscript module (php, java, python, ruby)
 
-
-
-
-# We don't require apache2_mod-php8 users could have php5 running
-# with other modes (cgi, php-fpm, etc)
-
 %package -n php-mapscriptng
 Summary:        PHP/MapscriptNG map making extensions to PHP
 Group:          Development/Libraries/Other
@@ -121,6 +114,8 @@ BuildRequires:  php-devel
 %endif
 Requires:       php
 Requires:       php-gd
+# We don't require apache2_mod-php8 users could have php5 running
+# with other modes (cgi, php-fpm, etc)
 
 %description -n php-mapscriptng
 The PHP/Mapscript extension provides full map customization capabilities within the PHP scripting language.
@@ -339,10 +334,8 @@ mv -v "%buildroot/%python3_sitelib"/* "%buildroot/%python3_sitearch/"
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%doc README.rst HISTORY.TXT mapserver.conf
-%doc MIGRATION_GUIDE.txt
-%doc symbols tests
-%doc fonts
+%doc README.md HISTORY.md MIGRATION_GUIDE.md mapserver.conf
+%doc symbols tests fonts
 %{_bindir}/coshp
 %{_bindir}/map2img
 %{_bindir}/shptree

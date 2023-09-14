@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 13 16:21:02 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 8.0.1 Many changes, see
+  https://www.mapserver.org/development/changelog/changelog-8-0.html
+
+-------------------------------------------------------------------
 Sat Nov  5 22:40:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable PHP8 module build in Tumbleweed again since newer SWIG
@@ -40,7 +46,6 @@ Wed Mar  9 12:06:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 -------------------------------------------------------------------
 Thu Nov 11 16:38:03 UTC 2021 - Boris Manojlovic <boris@steki.net>
-
 
 - update to release 7.6.4
   * PostGIS: fix ST_Intersects() with collections with PostGIS < 2.5. 

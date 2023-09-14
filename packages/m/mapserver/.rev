@@ -33,4 +33,14 @@
   [boo#1204736]</comment>
     <requestid>1033752</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b8c3a55a9a315ba201533856a3619562</srcmd5>
+    <version>8.0.1</version>
+    <time>1694701526</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.0.1 Many changes, see
+  https://www.mapserver.org/development/changelog/changelog-8-0.html
+</comment>
+    <requestid>1110932</requestid>
+  </revision>
 </revisionlist>
