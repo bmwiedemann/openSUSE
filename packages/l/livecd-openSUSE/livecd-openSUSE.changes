@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 14 20:09:45 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- list-x11: no longer block accountsservice: it is now a dependency
+  of xfce4-panel.
+
+-------------------------------------------------------------------
 Fri Jun 23 08:57:38 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - list-gnome: Ignore gnome-backgrounds

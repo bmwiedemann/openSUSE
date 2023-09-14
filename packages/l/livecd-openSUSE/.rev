@@ -1661,4 +1661,12 @@
     <comment></comment>
     <requestid>1094807</requestid>
   </revision>
+  <revision rev="208" vrev="208">
+    <srcmd5>96a20945ed6c5942c63d07bf20958bbe</srcmd5>
+    <version>unknown</version>
+    <time>1694722237</time>
+    <user>dimstar_suse</user>
+    <comment>- list-x11: no longer block accountsservice: it is now a dependency
+  of xfce4-panel.</comment>
+  </revision>
 </revisionlist>

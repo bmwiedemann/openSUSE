@@ -54,7 +54,6 @@ buildignore aspell-en
 buildignore ModemManager
 buildignore avahi
 buildignore fprintd
-buildignore accountsservice
 buildignore MozillaFirefox
 buildignore tcpdump
 

@@ -505,8 +505,6 @@
     <ignore name="avahi"/>
     <package name="aaa_base" replaces="fprintd"/>
     <ignore name="fprintd"/>
-    <package name="aaa_base" replaces="accountsservice"/>
-    <ignore name="accountsservice"/>
     <package name="aaa_base" replaces="MozillaFirefox"/>
     <ignore name="MozillaFirefox"/>
     <package name="aaa_base" replaces="tcpdump"/>
