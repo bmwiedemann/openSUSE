@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:22:25 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- Changes since 5.27.7:
+  * thumbnail_grid: use MouseArea as delegate root
+  * thumbnail_grid: allow screen reader to announce window name when pressing Alt+Tab
+  * applets/userswitcher: Set an explicitly compact width
+
+-------------------------------------------------------------------
 Tue Aug  1 11:19:11 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.7
