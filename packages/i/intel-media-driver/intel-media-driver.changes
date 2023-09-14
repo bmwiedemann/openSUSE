@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 13 12:11:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to intel-media-23.2.4:
+  * Fixed AV1e obu size bits and max tile number caps report.
+  * Enhanced BT2020 YUV/RGB range conversion(YUV limited to full,
+    RGB full to limited).
+  * Enabled PAT index for cache setting.
+  * Enable GuC submission on RPL-S.
+  * Supported DDI query for engine reset info for ACM+.
+  * Fixed HEVC virtual tile scalability hang issue on TGL+.
+  * Fixed AV1 TX_MODE_SELECT caps for bitstream corruption for
+    ACM.
+  * Fixed HEVC ICQ caps report for ACM.
+  * Enabled HEVC VDEnc 422 encoding for ATS-M.
+  * Power optimization for VP9 unaligned surface padding on TGL.
+  * Fixed AVC memory management control operation w/
+    adaptive_ref_pic_marking_mode_flag update for ACM+.
+  * Improved HDR tone mapping performance for the case the input
+    image height is not 8 aligned.
+  * Fixed RGBP vaGetImage and vaPutImage.
+
+-------------------------------------------------------------------
 Tue Jun 27 15:04:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 12.1.6:
@@ -31,25 +53,25 @@ Thu Mar  9 14:23:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Feb 27 21:04:29 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
-- updated Supplements 
+- updated Supplements
 
 -------------------------------------------------------------------
 Mon Feb 27 20:26:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - updaet to 23.1.2:
-  * Fix Decode Encryption Types Missing in APO 
+  * Fix Decode Encryption Types Missing in APO
   * Fallback to doubleBufferCopy when lock external resource failed
   * Enhance robustness of Decode SubPacket Manager
   * FP16 Enable on APOes
-  * Refine mos gpu hang interface to use correct ctx id 
+  * Refine mos gpu hang interface to use correct ctx id
   * Move rowstore cache regkey report to new location
-  * optimize vebox resource 
+  * optimize vebox resource
   * Fix Output out of scaling when using SR with Rotation
 
 -------------------------------------------------------------------
 Mon Feb 13 22:14:52 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
-- updated Supplements 
+- updated Supplements
 
 -------------------------------------------------------------------
 Mon Feb 13 09:04:49 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
@@ -105,14 +127,14 @@ Tue Dec  6 18:49:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Nov  7 12:12:24 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
-- needed for jira#PED-1174 (Video decoding/encoding support 
+- needed for jira#PED-1174 (Video decoding/encoding support
   (VA-API, ...) for Intel GPUs is outside of Mesa)
 
 -------------------------------------------------------------------
 Wed Nov  2 12:06:52 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.6.1
-  * Revert "[Decode] Legacy MI interface removal" 
+  * Revert "[Decode] Legacy MI interface removal"
 - specfile cleanup
 - updated Supplements
 
@@ -135,14 +157,14 @@ Sun Oct 30 22:36:58 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 -------------------------------------------------------------------
 Sat Oct  1 13:01:10 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
-- adding _constraints in the hope to reserve enough disk space; 
+- adding _constraints in the hope to reserve enough disk space;
   trying with 7GB for now ...
 
 -------------------------------------------------------------------
 Fri Sep 30 19:31:31 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_libva-2.16.0.patch
-  * fixes build against libva 2.16.0 
+  * fixes build against libva 2.16.0
   * culprit: https://github.com/intel/libva/commit/8682f9e30f2fabf2ccc6f7609db035ed1af44703
 
 -------------------------------------------------------------------
@@ -178,7 +200,7 @@ Thu May 26 13:14:05 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
   * [Encode] AVC RC mode - Implement abs QP map (MBQP) and CQP QP
       - Enable abs QP map mode caps
   - Implement programming for abs QP map mode
-- removed no longer needed Werror-initialize-in-right-order.patch 
+- removed no longer needed Werror-initialize-in-right-order.patch
 
 -------------------------------------------------------------------
 Wed Jan 19 19:25:04 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -211,7 +233,7 @@ Mon Nov 29 15:49:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Thu Oct 28 10:38:53 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
-- mention baselibs.conf as source in specfile 
+- mention baselibs.conf as source in specfile
 
 -------------------------------------------------------------------
 Mon Oct 25 17:15:44 UTC 2021 - Duarte Pousa <pousaduarte@gmail.com>
@@ -221,7 +243,7 @@ Mon Oct 25 17:15:44 UTC 2021 - Duarte Pousa <pousaduarte@gmail.com>
 -------------------------------------------------------------------
 Mon Oct  4 15:04:15 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
-- fixed JIRA number in a previous changelog 
+- fixed JIRA number in a previous changelog
 
 -------------------------------------------------------------------
 Wed Sep 29 08:56:25 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
@@ -238,7 +260,7 @@ Mon Sep 27 13:15:38 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 Wed Sep 15 05:53:42 UTC 2021 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to 21.3.3:
-  * Supported platforms: 
+  * Supported platforms:
     BDW/SKL/APL(BXT)/KBL/CFL/WHL/CML/ICL/EHL/JSL/TGL/RKL/DG1/SG1/ADL-S/ADL-P
   * Extensive new features and enhancements, see README.md
 - Move generated supplements list to supplements.inc
@@ -254,11 +276,11 @@ Sat Oct 10 20:48:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * Added HuC Error Status Report improvements for VP9 VDEnc encoding
   * Added scaling interpolation method(nearest, bilinear, advanced)
   * Added resource usage type to specify cache policy usage
-  * Enabled SFC bilinear scaling. 
+  * Enabled SFC bilinear scaling.
 - Disable Werror from build, which avoids having to create build fixes
   patches for every release
 - remove u_20.1.1-build-fixes.patch, u_20.2.0-build-fixes.patch (obsolete)
-  
+
 -------------------------------------------------------------------
 Mon Aug 31 16:14:23 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
@@ -393,7 +415,7 @@ Mon Apr  1 09:29:32 CEST 2019 - tiwai@suse.de
 Tue Nov 13 15:38:31 UTC 2018 - sndirsch@suse.com
 
 - added hardware supplements in order to install the package on
-  appropriate hardware (Broadwell, Skylake, Broxton/Apollo Lake, 
+  appropriate hardware (Broadwell, Skylake, Broxton/Apollo Lake,
   Kaby Lake, Coffee Lake, Cannonlake, Ice Lake at this time)
 - added script to generate the above information easily
 

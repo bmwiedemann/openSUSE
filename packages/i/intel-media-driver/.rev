@@ -403,4 +403,12 @@ versions of libva(2)</comment>
     case.</comment>
     <requestid>1095652</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>64f4033f7a1560e4a049345178d6366e</srcmd5>
+    <version>23.3.3</version>
+    <time>1694701563</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111039</requestid>
+  </revision>
 </revisionlist>
