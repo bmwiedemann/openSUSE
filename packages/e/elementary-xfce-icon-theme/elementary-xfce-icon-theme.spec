@@ -25,6 +25,7 @@ License:        GPL-2.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/shimmerproject/elementary-xfce
 Source:         %{_name}-%{version}.tar.xz
+BuildRequires:  bitstream-vera-fonts
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  hicolor-icon-theme

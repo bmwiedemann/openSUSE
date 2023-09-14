@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 28 06:52:55 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- BuildRequire bitstream-vera-fonts for SVG text rendering
+
+-------------------------------------------------------------------
 Mon Jan 11 05:21:23 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 0.15.2+git0.2e2ca316:
