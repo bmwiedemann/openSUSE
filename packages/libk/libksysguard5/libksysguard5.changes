@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:22:24 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.8
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.8
+- Changes since 5.27.7:
+  * sensors: Correctly handle the return value of QCollator::compare (kde#461070)
+
+-------------------------------------------------------------------
 Tue Aug  1 11:19:04 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.7
