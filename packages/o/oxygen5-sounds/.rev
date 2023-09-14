@@ -159,4 +159,12 @@
     <comment>Plasma 5.27.7(.1)</comment>
     <requestid>1101845</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>96d3b35f128a6ee7932d5d9181a92351</srcmd5>
+    <version>5.27.8</version>
+    <time>1694701483</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
+    <requestid>1110726</requestid>
+  </revision>
 </revisionlist>
