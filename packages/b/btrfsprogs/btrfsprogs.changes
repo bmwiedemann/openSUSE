@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 13 00:00:00 CEST 2023 - dsterba@suse.cz
+
+- update to 6.5.1:
+  * build fixes:
+    * crc32c if PIE or relro is enabled
+    * detect if PCLMUL feature is recognized by compiler and also detect that
+      at runtime
+  * check: verify metadata item level when skinny-metadata is enabled
+  * other: minor build and docs updates
+  * spec: remove xmlto dependency, docs built by sphinx
+
+-------------------------------------------------------------------
 Fri Sep  1 00:00:00 CEST 2023 - dsterba@suse.cz
 
 - update to 6.5:

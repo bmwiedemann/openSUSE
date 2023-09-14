@@ -34,7 +34,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           btrfsprogs
-Version:        6.5
+Version:        6.5.1
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only
@@ -79,12 +79,9 @@ BuildRequires:  pkg-config
 BuildRequires:  suse-module-tools
 %endif
 BuildRequires:  libudev-devel
-BuildRequires:  pkgconfig(udev)
-%if %build_docs
-BuildRequires:  xmlto
-%endif
 BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(udev)
 %if 0%{?suse_version} >= 1310
 Requires(post): coreutils
 Requires(postun):coreutils
