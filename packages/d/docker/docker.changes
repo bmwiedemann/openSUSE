@@ -1,8 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 14 01:46:30 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 24.0.6-ce. See upstream changelong online at
+  <https://docs.docker.com/engine/release-notes/24.0/#2406>. bsc#1215323
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * cli-0001-docs-include-required-tools-in-source-tree.patch
+- Switch from disabledrun to manualrun in _service.
+- Add a docker.socket unit file, but with socket activation effectively
+  disabled to ensure that Docker will always run even if you start the socket
+  individually. Users should probably just ignore this unit file. bsc#1210141
+
+-------------------------------------------------------------------
 Tue Jul 25 19:40:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to Docker 24.0.5-ce. See upstream changelong online at
-  <https://docs.docker.com/engine/release-notes/24.0/#2405>. bsc#1213229 
+- Update to Docker 24.0.5-ce. See upstream changelong online at
+  <https://docs.docker.com/engine/release-notes/24.0/#2405>. bsc#1213229
 
 -------------------------------------------------------------------
 Fri Jul  7 21:29:05 UTC 2023 - Aleksa Sarai <asarai@suse.com>

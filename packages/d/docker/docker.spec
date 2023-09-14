@@ -31,9 +31,9 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define real_version 24.0.5
-%define git_version a61e2b4c9
-%define git_commit_epoch 1689962786
+%define real_version 24.0.6
+%define git_version 1a7969545d73
+%define git_commit_epoch 1693336457
 
 Name:           docker
 Version:        %{real_version}_ce
@@ -50,12 +50,13 @@ Source1:        %{name}-cli-%{version}.tar.xz
 Source3:        docker-rpmlintrc
 # TODO: Move these source files to somewhere nicer.
 Source100:      docker.service
-Source101:      80-docker.rules
-Source102:      sysconfig.docker
-Source103:      README_SUSE.md
-Source104:      docker-audit.rules
-Source105:      docker-daemon.json
-Source106:      docker.sysusers
+Source101:      docker.socket
+Source110:      80-docker.rules
+Source120:      sysconfig.docker
+Source130:      README_SUSE.md
+Source140:      docker-audit.rules
+Source150:      docker-daemon.json
+Source160:      docker.sysusers
 # NOTE: All of these patches are maintained in <https://github.com/suse/docker>
 #       in the suse-v<version> branch. Make sure you update the patches in that
 #       branch and then git-format-patch the patch here.
@@ -107,8 +108,8 @@ Obsoletes:      docker-libnetwork < 0.7.0.2
 Provides:       docker-libnetwork = 0.7.0.2.%{version}
 # Required to actually run containers. We require the minimum version that is
 # pinned by Docker, but in order to avoid headaches we allow for updates.
-Requires:       runc >= 1.1.7
-Requires:       containerd >= 1.6.21
+Requires:       runc >= 1.1.9
+Requires:       containerd >= 1.7.3
 # Needed for --init support. We don't use "tini", we use our own implementation
 # which handles edge-cases better.
 Requires:       catatonit
@@ -202,7 +203,7 @@ Fish command line completion support for %{name}.
 %setup -q -n %{name}-%{version}_%{git_version}
 [ "%{docker_builddir}" = "$PWD" ]
 # README_SUSE.md for documentation.
-cp %{SOURCE103} .
+cp %{SOURCE130} .
 
 %if 0%{?is_opensuse} == 0
 # PATCH-SUSE: Secrets patches.
@@ -217,7 +218,7 @@ cp %{SOURCE103} .
 %patch300 -p1
 
 %build
-%sysusers_generate_pre %{SOURCE106} %{name} %{name}.conf
+%sysusers_generate_pre %{SOURCE160} %{name} %{name}.conf
 
 BUILDTAGS="exclude_graphdriver_aufs apparmor selinux seccomp pkcs11"
 %if 0%{?sle_version} == 120000
@@ -279,7 +280,7 @@ install -d %{buildroot}/usr/lib/docker/cli-plugins
 # /var/lib/docker
 install -d %{buildroot}/%{_localstatedir}/lib/docker
 # daemon.json config file
-install -D -m0644 %{SOURCE105} %{buildroot}%{_sysconfdir}/docker/daemon.json
+install -D -m0644 %{SOURCE150} %{buildroot}%{_sysconfdir}/docker/daemon.json
 
 # docker cli
 install -D -m0755 %{cli_builddir}/build/docker %{buildroot}/%{_bindir}/docker
@@ -289,17 +290,18 @@ install -D -m0644 %{cli_builddir}/contrib/completion/fish/docker.fish "%{buildro
 
 # systemd service
 install -D -m0644 %{SOURCE100} %{buildroot}%{_unitdir}/%{name}.service
+install -D -m0644 %{SOURCE101} %{buildroot}%{_unitdir}/%{name}.socket
 ln -sf service %{buildroot}%{_sbindir}/rcdocker
 
 # udev rules that prevents dolphin to show all docker devices and slows down
 # upstream report https://bugs.kde.org/show_bug.cgi?id=329930
-install -D -m0644 %{SOURCE101} %{buildroot}%{_udevrulesdir}/80-%{name}.rules
+install -D -m0644 %{SOURCE110} %{buildroot}%{_udevrulesdir}/80-%{name}.rules
 
 # audit rules
-install -D -m0640 %{SOURCE104} %{buildroot}%{_sysconfdir}/audit/rules.d/%{name}.rules
+install -D -m0640 %{SOURCE140} %{buildroot}%{_sysconfdir}/audit/rules.d/%{name}.rules
 
 # sysconfig file
-install -D -m0644 %{SOURCE102} %{buildroot}%{_fillupdir}/sysconfig.docker
+install -D -m0644 %{SOURCE120} %{buildroot}%{_fillupdir}/sysconfig.docker
 
 # install manpages (using the ones from the engine)
 install -d %{buildroot}%{_mandir}/man1
@@ -310,7 +312,7 @@ install -d %{buildroot}%{_mandir}/man8
 install -p -m0644 %{cli_builddir}/man/man8/*.8 %{buildroot}%{_mandir}/man8
 
 # sysusers.d
-install -D -m0644 %{SOURCE106} %{buildroot}%{_sysusersdir}/%{name}.conf
+install -D -m0644 %{SOURCE160} %{buildroot}%{_sysusersdir}/%{name}.conf
 
 # rootless extras
 install -D -p -m 0755 contrib/dockerd-rootless.sh %{buildroot}/%{_bindir}/dockerd-rootless.sh
@@ -334,17 +336,17 @@ grep -q '^dockremap:' /etc/subgid || \
 	usermod -w 100000000-200000000 dockremap &>/dev/null || \
 	echo "dockremap:100000000:100000001" >>/etc/subgid ||:
 
-%service_add_pre %{name}.service
+%service_add_pre %{name}.service %{name}.socket
 
 %post
-%service_add_post %{name}.service
+%service_add_post %{name}.service %{name}.socket
 %{fillup_only -n docker}
 
 %preun
-%service_del_preun %{name}.service
+%service_del_preun %{name}.service %{name}.socket
 
 %postun
-%service_del_postun %{name}.service
+%service_del_postun %{name}.service %{name}.socket
 
 %files
 %defattr(-,root,root)
@@ -360,6 +362,7 @@ grep -q '^dockremap:' /etc/subgid || \
 %dir /usr/lib/docker/cli-plugins
 
 %{_unitdir}/%{name}.service
+%{_unitdir}/%{name}.socket
 %{_sysusersdir}/%{name}.conf
 
 %dir %{_sysconfdir}/docker

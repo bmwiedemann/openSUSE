@@ -2,6 +2,12 @@
 Description=Docker Application Container Engine
 Documentation=http://docs.docker.com
 After=network.target lvm2-monitor.service firewalld.service
+# We don't use the docker socket activation, but doing this ensures that the
+# docker.socket unit is alive while Docker is (docker.socket has BindsTo, so we
+# only need a weak requirement to make sure starting docker.service also
+# "starts" the socket service). Forcefully stopping docker.socket will not
+# cause docker to die, but there's no nice workaround for that.
+Wants=docker.socket
 
 [Service]
 EnvironmentFile=/etc/sysconfig/docker
