@@ -34,6 +34,11 @@ Wed Jul 20 12:01:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 - BuildRequire itself when building test flavour. 
 
 -------------------------------------------------------------------
+Mon Mar 14 10:47:56 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Include in SLE-15 (bsc#1195916, bsc#1196696, jsc#PM-3356, jsc#SLE-23972)
+
+-------------------------------------------------------------------
 Tue Nov 10 08:00:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.1.1:
