@@ -1,0 +1,68 @@
+Index: jupyter-sphinx-0.4.0/requirements.txt
+===================================================================
+--- jupyter-sphinx-0.4.0.orig/requirements.txt
++++ jupyter-sphinx-0.4.0/requirements.txt
+@@ -1,4 +1,4 @@
+-sphinx>=2.4.4
++sphinx>=7.2
+ ipykernel>=4.5.1
+ ipywidgets>=7.0.0
+ IPython
+Index: jupyter-sphinx-0.4.0/setup.py
+===================================================================
+--- jupyter-sphinx-0.4.0.orig/setup.py
++++ jupyter-sphinx-0.4.0/setup.py
+@@ -29,13 +29,13 @@ setup(
+     license="BSD",
+     packages=["jupyter_sphinx"],
+     install_requires=[
+-        "Sphinx>=2",
++        "Sphinx>=7.2",
+         "ipykernel>=4.5.1",
+         "ipywidgets>=7.0.0",
+         "IPython",
+         "nbconvert>=5.5",
+         "nbformat",
+     ],
+-    python_requires=">= 3.6",
++    python_requires=">= 3.8",
+     package_data={"jupyter_sphinx": ["thebelab/*", "css/*"]},
+ )
+Index: jupyter-sphinx-0.4.0/tests/test_execute.py
+===================================================================
+--- jupyter-sphinx-0.4.0.orig/tests/test_execute.py
++++ jupyter-sphinx-0.4.0/tests/test_execute.py
+@@ -12,7 +12,7 @@ from docutils.nodes import container, im
+ from nbformat import from_dict
+ from sphinx.addnodes import download_reference
+ from sphinx.errors import ExtensionError
+-from sphinx.testing.util import SphinxTestApp, assert_node, path
++from sphinx.testing.util import SphinxTestApp, assert_node
+ 
+ from jupyter_sphinx.ast import (
+     JupyterCellNode,
+@@ -48,7 +48,7 @@ def doctree():
+ 
+         warnings = StringIO()
+         app = SphinxTestApp(
+-            srcdir=path(src_dir.as_posix()),
++            srcdir=src_dir,
+             status=StringIO(),
+             warning=warnings,
+             buildername=buildername,
+Index: jupyter-sphinx-0.4.0/tox.ini
+===================================================================
+--- jupyter-sphinx-0.4.0.orig/tox.ini
++++ jupyter-sphinx-0.4.0/tox.ini
+@@ -1,9 +1,9 @@
+ [tox]
+-envlist = py36,py37
++envlist = py38,py311
+ 
+ [testenv]
+ deps =
+-  sphinx
++  sphinx >= 7.2
+   pytest
+ commands =
+   pytest

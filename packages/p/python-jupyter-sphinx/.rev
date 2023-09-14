@@ -61,4 +61,14 @@
 - PEP517</comment>
     <requestid>1105444</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>61f533f188ba06350eadf89cef02c5fc</srcmd5>
+    <version>0.4.0</version>
+    <time>1694701565</time>
+    <user>anag+factory</user>
+    <comment>- Add jupyter-sphinx-pr233-pathlib.patch
+  gh#jupyter/jupyter-sphinx#233
+</comment>
+    <requestid>1111064</requestid>
+  </revision>
 </revisionlist>

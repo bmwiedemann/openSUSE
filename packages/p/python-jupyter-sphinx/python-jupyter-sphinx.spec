@@ -23,11 +23,14 @@ Summary:        Jupyter Sphinx Extensions
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter-widgets/jupyter-sphinx
 Source:         https://github.com/jupyter/jupyter-sphinx/archive/v%{version}.tar.gz#/jupyter-sphinx-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM jupyter-sphinx-pr226-ipykernel.patch gh#upyter-widgets/jupyter-sphinx#226
+# PATCH-FIX-UPSTREAM jupyter-sphinx-pr226-ipykernel.patch gh#jupyter-widgets/jupyter-sphinx#226
 Patch0:         jupyter-sphinx-pr226-ipykernel.patch
+# PATCH-FIX-UPSTREAM jupyter-sphinx-pr233-pathlib.patch gh#jupyter-widgets/jupyter-sphinx#233
+Patch1:         jupyter-sphinx-pr233-pathlib.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-IPython
