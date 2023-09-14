@@ -1150,4 +1150,12 @@ and test it with openQA
     <comment>Plasma 5.27.7(.1)</comment>
     <requestid>1101825</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>29d8daf0d35998a795f83339d5d14484</srcmd5>
+    <version>5.27.8</version>
+    <time>1694701490</time>
+    <user>anag+factory</user>
+    <comment>Plasma 5.27.8, not built yet (forwarded request 1110693 from Vogtinator)</comment>
+    <requestid>1110740</requestid>
+  </revision>
 </revisionlist>
