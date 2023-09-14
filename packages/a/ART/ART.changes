@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Sep 14 05:54:13 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to 1.20.2:
+  * histogram: fixed bug in showing the pixel values under the
+    cursor in log modes
+  * fixed glitch in opening pictures that are filtered out from the
+    current file catalog
+  * rawimage: use internal decoder for floating-point DNGs
+  * CLF-LUTs: invalidate cache when content of clf files change
+  * moved film simulation before tone curve (with backwards-
+    compatibility option added)
+  * rgb curves: show the other curves in the curve editor
+  * restored shortcuts for the Lab tool
+  * masks: do not perform guided filtering if blur is set to the
+    minimum val
+  * texture boost: make the "iterations" slider better behaved
+  * updated labeling of some tools - Sharpening -> Capture
+    Sharpening - Texture Boost -> Texture Boost / Sharpening
+  * wbpresets: use the internal "make+model" key to match camera
+    preset info
+  * fixed another glitch in displaying the "triangle" indicator for
+    the currently-selected thumbnails
+  * updated translations
+  * updated camera matrices
+  * updated WB presets
+
+-------------------------------------------------------------------
 Thu Jul 13 21:49:10 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to 1.20.1:
