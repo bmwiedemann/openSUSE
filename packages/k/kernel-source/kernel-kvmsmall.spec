@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.5
-%define patchversion 6.5.2
+%define patchversion 6.5.3
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -112,9 +112,9 @@ Name:           kernel-kvmsmall
 Summary:        The Small Developer Kernel for KVM
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.5.2
+Version:        6.5.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfdde566
+Release:        <RELEASE>.g786e0d6
 %else
 Release:        0
 %endif
@@ -237,10 +237,10 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-fdde5661b32952cc1387b51e8071c3287189a247
-Provides:       kernel-srchash-fdde5661b32952cc1387b51e8071c3287189a247
+Provides:       kernel-%build_flavor-base-srchash-786e0d6a09099507d4d0227b55ca112f2f488afa
+Provides:       kernel-srchash-786e0d6a09099507d4d0227b55ca112f2f488afa
 # END COMMON DEPS
-Provides:       %name-srchash-fdde5661b32952cc1387b51e8071c3287189a247
+Provides:       %name-srchash-786e0d6a09099507d4d0227b55ca112f2f488afa
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -382,7 +382,7 @@ NoSource:       114
 NoSource:       120
 NoSource:       121
 
-ExclusiveArch:  aarch64 ppc64 ppc64le x86_64
+ExclusiveArch:  aarch64 ppc64le x86_64
 %define kmp_target_cpu %_target_cpu
 %ifarch %ix86
 # Only i386/default supports i586, mark other flavors' packages as i686
@@ -513,7 +513,6 @@ cat > .kernel-binary.spec.buildenv <<EOF
 export KBUILD_BUILD_TIMESTAMP="$(LANG=C date -d "$date") (${commit:0:7})"
 export KBUILD_VERBOSE=0
 export KBUILD_SYMTYPES=1
-export KBUILD_OVERRIDE=1
 export KBUILD_BUILD_USER=geeko
 export KBUILD_BUILD_HOST=buildhost
 export HOST_EXTRACFLAGS="-include %_sourcedir/host-memcpy-hack.h"
@@ -1306,8 +1305,8 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-fdde5661b32952cc1387b51e8071c3287189a247
-Provides:       kernel-srchash-fdde5661b32952cc1387b51e8071c3287189a247
+Provides:       kernel-%build_flavor-base-srchash-786e0d6a09099507d4d0227b55ca112f2f488afa
+Provides:       kernel-srchash-786e0d6a09099507d4d0227b55ca112f2f488afa
 
 %obsolete_rebuilds %name-base
 %ifarch %ix86

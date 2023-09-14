@@ -17,7 +17,7 @@
 # needsrootforbuild
 
 
-%define patchversion 6.5.2
+%define patchversion 6.5.3
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -28,13 +28,13 @@ BuildRequires:  kernel-default
 # here as well to avoid that qa and build package build parallel
 BuildRequires:  kernel-obs-build
 BuildRequires:  modutils
-ExclusiveArch:  aarch64 armv6hl armv7hl ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
 Summary:        Basic QA tests for the kernel
 License:        GPL-2.0-only
 Group:          SLES
-Version:        6.5.2
+Version:        6.5.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfdde566
+Release:        <RELEASE>.g786e0d6
 %else
 Release:        0
 %endif

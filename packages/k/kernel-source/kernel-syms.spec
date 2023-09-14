@@ -24,10 +24,10 @@ Name:           kernel-syms
 Summary:        Kernel Symbol Versions (modversions)
 License:        GPL-2.0-only
 Group:          Development/Sources
-Version:        6.5.2
+Version:        6.5.3
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfdde566
+Release:        <RELEASE>.g786e0d6
 %else
 Release:        0
 %endif
@@ -41,7 +41,7 @@ BuildRequires:  coreutils
 %ifarch aarch64
 Requires:       kernel-64kb-devel = %version-%source_rel
 %endif
-%ifarch aarch64 armv6hl armv7hl %ix86 ppc64 ppc64le riscv64 s390x x86_64
+%ifarch aarch64 armv6hl armv7hl %ix86 ppc64le riscv64 s390x x86_64
 Requires:       kernel-default-devel = %version-%source_rel
 %endif
 %ifarch armv7hl
@@ -52,11 +52,11 @@ Requires:       kernel-pae-devel = %version-%source_rel
 %endif
 Requires:       pesign-obs-integration
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-fdde5661b32952cc1387b51e8071c3287189a247
+Provides:       %name-srchash-786e0d6a09099507d4d0227b55ca112f2f488afa
 Provides:       multiversion(kernel)
 Source:         README.KSYMS
 Requires:       kernel-devel%variant = %version-%source_rel
-ExclusiveArch:  %ix86 aarch64 armv6hl armv7hl ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  %ix86 aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
 Prefix:         /usr/src
 
 # Force bzip2 instead of lzma compression to

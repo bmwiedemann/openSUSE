@@ -6386,4 +6386,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.5.2</comment>
     <requestid>1110222</requestid>
   </revision>
+  <revision rev="704" vrev="1">
+    <srcmd5>edfeb24f89bd3119bd732eca020126d6</srcmd5>
+    <version>6.5.3</version>
+    <time>1694701510</time>
+    <user>anag+factory</user>
+    <comment>6.5.3 &amp; uring fix &amp; X13 fixes &amp; other fixes</comment>
+    <requestid>1111049</requestid>
+  </revision>
 </revisionlist>

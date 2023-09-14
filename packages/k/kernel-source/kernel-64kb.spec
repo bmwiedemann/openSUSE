@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.5
-%define patchversion 6.5.2
+%define patchversion 6.5.3
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -112,9 +112,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.5.2
+Version:        6.5.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfdde566
+Release:        <RELEASE>.g786e0d6
 %else
 Release:        0
 %endif
@@ -237,10 +237,10 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-fdde5661b32952cc1387b51e8071c3287189a247
-Provides:       kernel-srchash-fdde5661b32952cc1387b51e8071c3287189a247
+Provides:       kernel-%build_flavor-base-srchash-786e0d6a09099507d4d0227b55ca112f2f488afa
+Provides:       kernel-srchash-786e0d6a09099507d4d0227b55ca112f2f488afa
 # END COMMON DEPS
-Provides:       %name-srchash-fdde5661b32952cc1387b51e8071c3287189a247
+Provides:       %name-srchash-786e0d6a09099507d4d0227b55ca112f2f488afa
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -509,7 +509,6 @@ cat > .kernel-binary.spec.buildenv <<EOF
 export KBUILD_BUILD_TIMESTAMP="$(LANG=C date -d "$date") (${commit:0:7})"
 export KBUILD_VERBOSE=0
 export KBUILD_SYMTYPES=1
-export KBUILD_OVERRIDE=1
 export KBUILD_BUILD_USER=geeko
 export KBUILD_BUILD_HOST=buildhost
 export HOST_EXTRACFLAGS="-include %_sourcedir/host-memcpy-hack.h"
@@ -1302,8 +1301,8 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-fdde5661b32952cc1387b51e8071c3287189a247
-Provides:       kernel-srchash-fdde5661b32952cc1387b51e8071c3287189a247
+Provides:       kernel-%build_flavor-base-srchash-786e0d6a09099507d4d0227b55ca112f2f488afa
+Provides:       kernel-srchash-786e0d6a09099507d4d0227b55ca112f2f488afa
 
 %obsolete_rebuilds %name-base
 %ifarch %ix86
