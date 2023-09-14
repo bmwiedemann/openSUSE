@@ -19,7 +19,7 @@
 %global sover   16
 %global libname lib%{name}%{sover}
 Name:           re
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        Library for real-time communications with async I/O support
 License:        BSD-3-Clause
@@ -70,8 +70,10 @@ applications that want to make use of libre.
 %cmake_install
 rm -v %{buildroot}/%{_libdir}/libre.a
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
+
+%check
+%ctest
 
 %files -n %{libname}
 %license LICENSE
