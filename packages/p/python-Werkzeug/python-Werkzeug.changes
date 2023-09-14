@@ -163,6 +163,8 @@ Thu Apr 13 22:45:56 UTC 2023 - Matej Cepl <mcepl@suse.com>
 Mon Mar 13 18:48:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.3 (bsc#1208283, CVE-2023-25577):
+  * drops 0001-limit-the-maximum-number-of-multipart-form-parts.patch 
+    in older dists
   * Ensure that URL rules using path converters will redirect
     with strict slashes when the trailing slash is missing.
   * Type signature for ``get_json`` specifies that return type
