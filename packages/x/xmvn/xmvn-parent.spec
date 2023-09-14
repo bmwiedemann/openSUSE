@@ -27,6 +27,7 @@ Group:          Development/Tools/Building
 URL:            https://fedora-java.github.io/xmvn/
 Source0:        https://github.com/fedora-java/%{parent}/releases/download/%{version}/%{parent}-%{version}.tar.xz
 Patch0:         UUID.patch
+Patch1:         0001-Do-not-leave-a-stray-options-file-in-the-generated-j.patch
 BuildRequires:  javapackages-local
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven.plugins:maven-compiler-plugin)

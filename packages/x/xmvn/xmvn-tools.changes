@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 13 16:55:35 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-Do-not-leave-a-stray-options-file-in-the-generated-j.patch
+    + Remove generated temporary file from the tree after use, make
+      thus the generated javadoc more reproducible
+
+-------------------------------------------------------------------
 Wed Aug  2 09:46:49 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

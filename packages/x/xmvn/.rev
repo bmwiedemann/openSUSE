@@ -127,4 +127,12 @@
     <comment>Try to make the split packages UUIDs unique</comment>
     <requestid>1101926</requestid>
   </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>b6703a7a481869033d53b2dd9ef7b83e</srcmd5>
+    <version>4.2.0</version>
+    <time>1694701537</time>
+    <user>anag+factory</user>
+    <comment>Reproducible: temporary file in generated javadoc</comment>
+    <requestid>1110989</requestid>
+  </revision>
 </revisionlist>
