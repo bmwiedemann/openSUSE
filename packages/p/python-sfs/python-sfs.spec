@@ -24,6 +24,8 @@ Summary:        Sound Field Synthesis toolbox for Python
 License:        MIT
 URL:            https://github.com/sfstoolbox/
 Source:         https://files.pythonhosted.org/packages/source/s/sfs/sfs-%{version}.tar.gz
+#PATCH-FIX-UPSTREAM https://github.com/sfstoolbox/sfs-python/pull/163 Replace inner1d bei einsum
+Patch:          numpy125.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,7 +47,7 @@ synthesis methods like wave field synthesis (WFS) or
 near-field compensated higher order Ambisonics (NFC-HOA).
 
 %prep
-%setup -q -n sfs-%{version}
+%autosetup -p1 -n sfs-%{version}
 
 %build
 %python_build
@@ -60,6 +62,7 @@ near-field compensated higher order Ambisonics (NFC-HOA).
 %files %{python_files}
 %doc NEWS.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/sfs
+%{python_sitelib}/sfs-%{version}*-info
 
 %changelog
