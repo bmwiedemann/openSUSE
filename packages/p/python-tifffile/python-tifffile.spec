@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-tifffile%{psuffix}
-Version:        2023.7.18
+Version:        2023.8.30
 Release:        0
 Summary:        Read and write TIFF files
 License:        BSD-2-Clause
@@ -42,7 +42,7 @@ Requires:       python-numpy
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-fsspec
-Recommends:     python-imagecodecs >= 2022.2.22
+Recommends:     python-imagecodecs >= 2023.3.16
 Recommends:     python-lxml
 Recommends:     python-matplotlib >= 3.3
 Recommends:     python-zarr
@@ -53,7 +53,7 @@ BuildRequires:  %{python_module czifile}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module fsspec}
-BuildRequires:  %{python_module imagecodecs >= 2023.1.23}
+BuildRequires:  %{python_module imagecodecs >= 2023.3.16}
 BuildRequires:  %{python_module lfdfiles}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module matplotlib}
@@ -113,7 +113,7 @@ sed -i '1{/env python/d}' tifffile/{lsm2bin,tiff2fsspec,tiffcomment}.py
 %check
 %if %{with test}
 # Crashes Out-Of-Memory
-donttest="test_write_5GB_bigtiff"
+donttest="test_write_5GB_bigtiff or test_write_imagej_raw"
 # no lerc support in imagecodecs
 donttest="$donttest or test_write_compression_lerc"
 # flaky write errors

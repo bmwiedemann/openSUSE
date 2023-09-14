@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 12 08:45:57 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2023.8.30
+  * Support decompressing EER frames.
+  * Facilitate filtering logged warnings (#216).
+  * Read more tags from UIC1Tag (#217).
+  * Fix premature closing of files in main (#218).
+  * Don't force matplotlib backend to tkagg in main (#219).
+  * Add py.typed marker.
+  * Drop support for imagecodecs < 2023.3.16.
+  * Verify shaped metadata is compatible with page shape.
+  * Support out parameter when returning selection from imread (#222).
+  * Support exclusive file creation mode (#221, #223).
+
+-------------------------------------------------------------------
 Thu Aug  3 13:13:00 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2023.7.18

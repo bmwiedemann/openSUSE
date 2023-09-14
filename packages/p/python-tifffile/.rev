@@ -140,4 +140,12 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
 </comment>
     <requestid>1103855</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ab559725434d3f43469e55ab622e4148</srcmd5>
+    <version>2023.8.30</version>
+    <time>1694701569</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111068</requestid>
+  </revision>
 </revisionlist>
