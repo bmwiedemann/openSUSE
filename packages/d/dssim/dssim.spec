@@ -21,7 +21,7 @@ Name:           dssim
 Version:        3.2.3
 Release:        0
 Summary:        This tool computes (dis)similarity between two (or more) PNG images
-License:        AGPL-3.0-only
+License:        AGPL-3.0-only and (BSD-2-Clause AND AOMPL-1.0) and Apache-2.0 and BSD-2-Clause and (MIT or Apache2) and MIT and VP8 and MPL-2.0 and Apache-2.0 WITH LLVM-exception
 Group:          Productivity/Graphics/Other
 URL:            https://kornel.ski/dssim
 Source:         https://github.com/pornel/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
