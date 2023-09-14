@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 13 11:57:38 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add patches for the compatibility with libavif 1.0.0:
+  * libavif.patch
+  * quantize.patch
+  * avif.patch
+  * tests.patch
+  * integrate.patch
+
+-------------------------------------------------------------------
 Tue Sep 12 14:21:29 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add patch cython3.patch to fix build

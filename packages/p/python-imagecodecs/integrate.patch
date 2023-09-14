@@ -1,0 +1,77 @@
+From e9b5a984b72c9d4e14f9d37ec99389d25645c7fb Mon Sep 17 00:00:00 2001
+From: Christoph Gohlke <cgohlke@cgohlke.com>
+Date: Sun, 3 Sep 2023 09:37:58 -0700
+Subject: [PATCH] Update imagecodecs/imagecodecs.py
+
+---
+ imagecodecs/imagecodecs.py | 98 ++++++++++++++++++++++++--------------
+ 1 file changed, 62 insertions(+), 36 deletions(-)
+
+Index: imagecodecs-2023.3.16/imagecodecs/imagecodecs.py
+===================================================================
+--- imagecodecs-2023.3.16.orig/imagecodecs/imagecodecs.py
++++ imagecodecs-2023.3.16/imagecodecs/imagecodecs.py
+@@ -483,9 +483,6 @@ import sys
+ import io
+ import importlib
+ import threading
+-
+-import numpy
+-
+ from typing import TYPE_CHECKING
+ 
+ if TYPE_CHECKING:
+@@ -496,6 +493,8 @@ if TYPE_CHECKING:
+ 
+     from numpy.typing import ArrayLike, NDArray
+ 
++import numpy
++
+ # map extension module names to attribute names
+ _MODULES: dict[str, list[str]] = {
+     '': [
+@@ -834,6 +833,14 @@ _MODULES: dict[str, list[str]] = {
+         'pglz_check',
+         'pglz_version',
+     ],
++    '_png': [
++        'PNG',
++        'PngError',
++        'png_encode',
++        'png_decode',
++        'png_check',
++        'png_version',
++    ],
+     '_qoi': [
+         'QOI',
+         'QoiError',
+@@ -842,13 +849,13 @@ _MODULES: dict[str, list[str]] = {
+         'qoi_check',
+         'qoi_version',
+     ],
+-    '_png': [
+-        'PNG',
+-        'PngError',
+-        'png_encode',
+-        'png_decode',
+-        'png_check',
+-        'png_version',
++    '_quantize': [
++        'QUANTIZE',
++        'QuantizeError',
++        'quantize_encode',
++        'quantize_decode',
++        'quantize_check',
++        'quantize_version',
+     ],
+     '_rgbe': [
+         'RGBE',
+@@ -1144,6 +1151,8 @@ def _stub(name: str, module: ModuleType
+         return StubError
+ 
+     class StubType(type):
++        """Stub type metaclass."""
++
+         def __getattr__(cls, arg: str, /) -> Any:
+             raise DelayedImportError(name)
+ 

@@ -36,6 +36,16 @@ Source1:        imagecodecs_distributor_setup.py
 Patch0:         always-cythonize.patch
 # PATCH-FIX-UPSTREAM https://github.com/cgohlke/imagecodecs/commit/14bb6012a8c9f48df264ea996f3376e57166201a Update imagecodecs/_heif.pyx
 Patch1:         cython3.patch
+# PATCH-FIX-UPSTREAM https://github.com/cgohlke/imagecodecs/commit/d04112759c48772c4d46a2dfa4f4c6a76e23c9a9 Update imagecodecs/libavif.pxd
+Patch2:         libavif.patch
+# PATCH-FIX-UPSTREAM https://github.com/cgohlke/imagecodecs/commit/93d1f751436e357d73eb6fdebc2af833059d9ea9 Add imagecodecs/_quantize.pyx
+Patch3:         quantize.patch
+# PATCH-FIX-UPSTREAM https://github.com/cgohlke/imagecodecs/commit/2f548c9a4df443948f2dfcde30a7211ce8b3adc2 Update imagecodecs/_avif.pyx
+Patch4:         avif.patch
+# PATCH-FIX-UPSTREAM https://github.com/cgohlke/imagecodecs/commit/0030b7b74fc17ceb356d1f67633ba1734108dac9 Update tests/test_imagecodecs.py
+Patch5:         tests.patch
+# PATCH-FIX-UPSTREAM https://github.com/cgohlke/imagecodecs/commit/e9b5a984b72c9d4e14f9d37ec99389d25645c7fb Update imagecodecs/imagecodecs.py
+Patch6:         integrate.patch
 BuildRequires:  %{python_module Cython >= 0.29.19}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module numpy-devel}
@@ -60,9 +70,9 @@ BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module blosc}
 BuildRequires:  %{python_module czifile}
-BuildRequires:  %{python_module dask if %python-base < 3.11}
-BuildRequires:  %{python_module dask-array if %python-base < 3.11}
-BuildRequires:  %{python_module dask-delayed if %python-base < 3.11}
+BuildRequires:  %{python_module dask-array}
+BuildRequires:  %{python_module dask-delayed}
+BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module imagecodecs >= %{version}}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module matplotlib >= 3.3}
@@ -102,6 +112,7 @@ BuildRequires:  pkgconfig(blosc2) >= 2.7.1
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libavif) >= 1.0.0
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libheif)
 # Beta, not available in minimum version
@@ -122,8 +133,6 @@ BuildRequires:  pkgconfig(zlib-ng)
 BuildRequires:  zfp-devel
 BuildRequires:  pkgconfig(SvtAv1Dec)
 BuildRequires:  pkgconfig(SvtAv1Enc)
-# 32-bit tests fail
-BuildRequires:  pkgconfig(libavif)
 %endif
 %endif
 %python_subpackages
@@ -144,6 +153,9 @@ Bitshuffle, and Float24 (24-bit floating point).
 %setup -q -n imagecodecs-%{version}
 # the patch from github requires unix line endings to apply
 dos2unix tests/test_imagecodecs.py
+dos2unix imagecodecs/libavif.pxd
+dos2unix imagecodecs/_avif.pyx
+dos2unix imagecodecs/imagecodecs.py
 %autopatch -p1
 
 cp %SOURCE1 ./
@@ -179,8 +191,6 @@ donttest="$donttest or (test_tiff and (webp or lerc or jpeg))"
 %ifarch %ix86 %arm32
 donttest="$donttest or spng"
 %endif
-# no dask because of numba for python 3.11
-python311_donttest="or imagecodecs.imagecodecs"
 %pytest_arch -n auto tests -rsXfE --doctest-modules %{$python_sitearch}/imagecodecs/imagecodecs.py -k "not ($donttest ${$python_donttest})"
 %endif
 
