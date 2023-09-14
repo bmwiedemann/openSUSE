@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-rpm-spec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,21 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-rpm-spec
-Version:        0.10
+Version:        0.14.1
 Release:        0
 Summary:        Python module for parsing RPM spec files
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/bkircher/python-rpm-spec
 Source0:        https://files.pythonhosted.org/packages/source/p/python-rpm-spec/python-rpm-spec-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE avoid-DoS-on-carefully-crafted-spec-files.patch bsc#1215274
+# this patch fixes an endless loop that could be triggered by carefully crafting
+# a malicious RPM spec file that uses macro expansions, causing a denial-of-service
+# PR to upstream code here: https://github.com/bkircher/python-rpm-spec/pull/62
+Patch0:         avoid-DoS-on-carefully-crafted-spec-files.patch
+BuildRequires:  %{python_module flit}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -42,12 +48,13 @@ access to various bits of information that is contained in the spec file.
 
 %prep
 %setup -q -n python-rpm-spec-%{version}
+%patch0 -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +63,7 @@ access to various bits of information that is contained in the spec file.
 %files %{python_files}
 %doc CHANGELOG* README*
 %license LICENSE*
-%{python_sitelib}/*
+%{python_sitelib}/python_rpm_spec-%{version}*-info
+%{python_sitelib}/pyrpm
 
 %changelog
