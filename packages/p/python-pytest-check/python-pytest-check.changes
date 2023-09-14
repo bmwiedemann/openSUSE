@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  7 09:23:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.1:
+  * Increase Python range to include 3.7.0. Thanks EliahKagan
+
+-------------------------------------------------------------------
 Mon Jul 24 18:46:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:

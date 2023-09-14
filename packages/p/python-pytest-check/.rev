@@ -44,4 +44,12 @@
   * `--check-max-report` - limit reported failures per test</comment>
     <requestid>1100440</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce8ddd5eb7172ec6cff3f6b7b8d9ca75</srcmd5>
+    <version>2.2.1</version>
+    <time>1694701568</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1111063</requestid>
+  </revision>
 </revisionlist>
