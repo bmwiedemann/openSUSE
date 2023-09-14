@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  6 06:42:37 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to runc v1.1.9. Upstream changelog is available from
+  <https://github.com/opencontainers/runc/releases/tag/v1.1.9>.
+
+-------------------------------------------------------------------
 Wed Jul 19 14:04:08 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.1.8. Upstream changelog is available from
