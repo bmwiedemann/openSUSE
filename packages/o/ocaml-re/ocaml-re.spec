@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-re
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 
 %define     pkg ocaml-re
 Name:           %pkg%nsuffix
-Version:        1.10.4
+Version:        1.11.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Pure OCaml regular expressions
@@ -35,7 +35,7 @@ URL:            https://opam.ocaml.org/packages/re
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.0
-BuildRequires:  ocaml-rpm-macros >= 20220409
+BuildRequires:  ocaml-rpm-macros >= 20230101
 %if 1
 BuildRequires:  ocamlfind(seq)
 BuildRequires:  ocamlfind(str)
