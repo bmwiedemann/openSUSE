@@ -7,8 +7,8 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
+patches:
+  deprecated-spurt.patch: -p1 PATCH-FIX-UPSTREAM https://github.com/openSUSE/Mojo-IOLoop-ReadWriteProcess/pull/51
 #  bar.patch:
 #preamble: |-
 # BuildRequires:  gcc-c++

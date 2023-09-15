@@ -1,0 +1,156 @@
+From 91220d3c90c97f9339220aa9166bbd35880faff0 Mon Sep 17 00:00:00 2001
+From: Oliver Kurz <okurz@suse.de>
+Date: Thu, 14 Sep 2023 08:05:39 +0200
+Subject: [PATCH] Adapt to deprecation of spurt in upstream Mojolicious
+
+Related progress issue: https://progress.opensuse.org/issues/135632
+---
+ Build.PL                                   |  2 +-
+ META.json                                  |  2 +-
+ cpanfile                                   |  2 +-
+ lib/Mojo/IOLoop/ReadWriteProcess.pm        |  2 +-
+ lib/Mojo/IOLoop/ReadWriteProcess/CGroup.pm |  2 +-
+ t/10_cgroupv1.t                            |  2 +-
+ t/10_cgroupv2.t                            | 17 ++++++++---------
+ 7 files changed, 14 insertions(+), 15 deletions(-)
+
+diff --git a/Build.PL b/Build.PL
+index ad9d29b..a3ab8a4 100644
+--- a/Build.PL
++++ b/Build.PL
+@@ -24,7 +24,7 @@ my %args = (
+ 
+     requires => {
+         'IPC::SharedMem' => '0',
+-        'Mojolicious' => '0',
++        'Mojolicious' => '>=9.34',
+     },
+ 
+     recommends => {
+diff --git a/META.json b/META.json
+index 4a2bf53..8073a41 100644
+--- a/META.json
++++ b/META.json
+@@ -47,7 +47,7 @@
+       "runtime" : {
+          "requires" : {
+             "IPC::SharedMem" : "0",
+-            "Mojolicious" : "0"
++            "Mojolicious" : ">= 9.34"
+          }
+       },
+       "test" : {
+diff --git a/cpanfile b/cpanfile
+index 9e6efb4..c51046a 100644
+--- a/cpanfile
++++ b/cpanfile
+@@ -1,4 +1,4 @@
+-requires 'Mojolicious';
++requires 'Mojolicious', '>= 9.34';
+ requires 'IPC::SharedMem';
+ 
+ on configure => sub {
+diff --git a/lib/Mojo/IOLoop/ReadWriteProcess.pm b/lib/Mojo/IOLoop/ReadWriteProcess.pm
+index aea520e..a617424 100644
+--- a/lib/Mojo/IOLoop/ReadWriteProcess.pm
++++ b/lib/Mojo/IOLoop/ReadWriteProcess.pm
+@@ -412,7 +412,7 @@ sub write_pidfile {
+   return unless $self->pid;
+   return unless $self->pidfile;
+ 
+-  path($self->pidfile)->spurt($self->pid);
++  path($self->pidfile)->spew($self->pid);
+   return $self;
+ }
+ 
+diff --git a/lib/Mojo/IOLoop/ReadWriteProcess/CGroup.pm b/lib/Mojo/IOLoop/ReadWriteProcess/CGroup.pm
+index 1acf478..6ba28b0 100644
+--- a/lib/Mojo/IOLoop/ReadWriteProcess/CGroup.pm
++++ b/lib/Mojo/IOLoop/ReadWriteProcess/CGroup.pm
+@@ -72,7 +72,7 @@ sub _contains {
+ 
+ sub _setget {
+   $_[2]
+-    ? shift->_cgroup->child($_[0])->spurt($_[1])
++    ? shift->_cgroup->child($_[0])->spew($_[1])
+     : shift->_cgroup->child($_[0])->slurp;
+ }
+ 
+diff --git a/t/10_cgroupv1.t b/t/10_cgroupv1.t
+index 5c18ff9..c3509a4 100644
+--- a/t/10_cgroupv1.t
++++ b/t/10_cgroupv1.t
+@@ -87,7 +87,7 @@ subtest mock => sub {
+ 
+ sub mockwrite {
+   my $c = shift;
+-  $c->cgroup->_cgroup->child(shift)->spurt(shift);
++  $c->cgroup->_cgroup->child(shift)->spew(shift);
+ }
+ 
+ subtest dev_freez_pid_rdma_controller => sub {
+diff --git a/t/10_cgroupv2.t b/t/10_cgroupv2.t
+index 37f12f2..c259c26 100644
+--- a/t/10_cgroupv2.t
++++ b/t/10_cgroupv2.t
+@@ -104,7 +104,7 @@ subtest mock => sub {
+ 
+   $cgroup->io->cgroup->_cgroup->child(
+     Mojo::IOLoop::ReadWriteProcess::CGroup::v2::IO::STAT_INTERFACE())
+-    ->spurt('20');
++    ->spew('20');
+   is $cgroup->io->stat, '20', 'Correct io.max set';
+ 
+   $cgroup->cpu->max('30');
+@@ -115,27 +115,27 @@ subtest mock => sub {
+   is $cgroup->cpu->weight_nice, '42', 'Correct cpu.weight_nice set';
+   $cgroup->cpu->cgroup->_cgroup->child(
+     Mojo::IOLoop::ReadWriteProcess::CGroup::v2::CPU::STAT_INTERFACE())
+-    ->spurt('20');
++    ->spew('20');
+   is $cgroup->cpu->stat, '20', 'Correct cpu.stat set';
+ 
+   $cgroup->memory->cgroup->_cgroup->child(
+     Mojo::IOLoop::ReadWriteProcess::CGroup::v2::Memory::EVENTS_INTERFACE())
+-    ->spurt('230');
++    ->spew('230');
+   is $cgroup->memory->events, '230', 'Correct memory.events set';
+ 
+   $cgroup->memory->cgroup->_cgroup->child(
+     Mojo::IOLoop::ReadWriteProcess::CGroup::v2::Memory::STAT_INTERFACE())
+-    ->spurt('333');
++    ->spew('333');
+   is $cgroup->memory->stat, '333', 'Correct memory.stat set';
+ 
+   $cgroup->memory->cgroup->_cgroup->child(
+     Mojo::IOLoop::ReadWriteProcess::CGroup::v2::Memory::CURRENT_INTERFACE())
+-    ->spurt('foo');
++    ->spew('foo');
+   is $cgroup->memory->current, 'foo', 'Correct memory.stat set';
+ 
+   $cgroup->memory->cgroup->_cgroup->child(
+     Mojo::IOLoop::ReadWriteProcess::CGroup::v2::Memory::SWAP_CURRENT_INTERFACE(
+-    ))->spurt('bar');
++    ))->spew('bar');
+   is $cgroup->memory->swap_current, 'bar', 'Correct memory.stat set';
+ 
+   $cgroup->memory->max('4');
+@@ -158,7 +158,7 @@ subtest mock => sub {
+ 
+   $cgroup->pid->cgroup->_cgroup->child(
+     Mojo::IOLoop::ReadWriteProcess::CGroup::v2::PID::CURRENT_INTERFACE())
+-    ->spurt('test');
++    ->spew('test');
+   is $cgroup->pid->current, 'test', 'Can get cgroup max';
+ 
+   my $cgroup2
+@@ -195,8 +195,7 @@ subtest mock => sub {
+ 
+ 
+   $cgroup2->_cgroup->child(
+-    Mojo::IOLoop::ReadWriteProcess::CGroup::v2::STAT_INTERFACE())
+-    ->spurt('test');
++    Mojo::IOLoop::ReadWriteProcess::CGroup::v2::STAT_INTERFACE())->spew('test');
+   is $cgroup2->stat, 'test', 'Can get cgroup stats';
+ 
+ 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 15 10:32:21 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Add patch deprecated-spurt.patch
+  https://github.com/openSUSE/Mojo-IOLoop-ReadWriteProcess/pull/51
+
+-------------------------------------------------------------------
 Mon Dec 12 20:21:31 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.33
