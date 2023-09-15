@@ -128,4 +128,12 @@ Resubmit without Source URL</comment>
     <comment>Update to 13.11.5</comment>
     <requestid>1109466</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>854ab0cb5731f609ee7dd28f31ff59ac</srcmd5>
+    <version>13.11.5</version>
+    <time>1694808330</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1111502</requestid>
+  </revision>
 </revisionlist>

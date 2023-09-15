@@ -28,6 +28,8 @@ Source0:        https://salsa.debian.org/debian/debhelper/-/archive/debian/%{ver
 Patch0:         debhelper-no-localized-manpages.patch
 # PATCH-FIX-UPSTREAM remove --utf8 since we only build En manpages.
 Patch1:         debhelper-pod2man-no-utf8.patch
+# PATCH-FIX-UPSTREAM debhelper-fix-perl-version-requirement.patch https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1001403
+Patch2:         debhelper-fix-perl-version-requirement.patch
 Requires:       dh-autoreconf >= 17
 Requires:       dpkg >= 1.18
 Requires:       strip-nondeterminism
@@ -51,6 +53,9 @@ as part of their build process.
 %patch0 -p1
 %if 0%{?suse_version} && 0%{?suse_version} < 1130
 %patch1 -p1
+%endif
+%if 0%{?sle_version} == 150500
+%patch2 -p0
 %endif
 
 %build
