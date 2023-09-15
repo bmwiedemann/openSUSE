@@ -1,7 +1,7 @@
 #
 # spec file for package hppc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://labs.carrotsearch.com/hppc.html
 Source0:        https://github.com/carrotsearch/hppc/archive/%{version}.tar.gz
+Patch0:         hppc-timestamp.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.google.guava:guava)
@@ -63,6 +64,8 @@ This package contains javadoc for HPPC.
 
 %prep
 %setup -q
+%patch0 -p1
+
 find . -name "*.class" -print -delete
 find . -name "*.jar" -print -delete
 
@@ -89,7 +92,9 @@ done
 %{mvn_package} :%{name}-template-processor %{name}-templateprocessor
 
 %build
-%{mvn_build} -f -- -Dsource=8
+%{mvn_build} -f -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dsource=8
 
 %install
 %mvn_install
