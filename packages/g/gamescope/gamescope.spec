@@ -100,9 +100,11 @@ BuildRequires:  pkgconfig(xkbcommon)
 
 %prep
 %autosetup -p1
-sed -i "s|dependency('stb')|declare_dependency(include_directories: include_directories('/usr/include/stb'))|g" src/meson.build
 
 %build
+%if 0%{?suse_version} < 1599
+sed -i "s|dependency('stb')|declare_dependency(include_directories: include_directories('/usr/include/stb'))|g" src/meson.build
+%endif
 %meson \
   -Dpipewire=enabled \
 %{nil}
