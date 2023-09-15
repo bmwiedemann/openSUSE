@@ -1,8 +1,4 @@
 <servicedata>
-  <service name="tar_scm">
-    <param name="url">https://github.com/heptio/sonobuoy.git</param>
-    <param name="changesrevision">eb9343dbd96ebc225d076630be5c348a57dfc430</param>
-  </service>
 <service name="tar_scm">
-                <param name="url">https://github.com/vmware-tanzu/sonobuoy.git</param>
-              <param name="changesrevision">f6e19140201d6bf2f1274bf6567087bc25154210</param></service></servicedata>
+                <param name="url">https://github.com/vmware-tanzu/sonobuoy</param>
+              <param name="changesrevision">c7712478228e3b50a225783119fee1286b5104af</param></service></servicedata>

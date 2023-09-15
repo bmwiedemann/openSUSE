@@ -56,4 +56,12 @@
     <comment></comment>
     <requestid>873734</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>57ca7c6b5f34fc2d57e09fd400743426</srcmd5>
+    <version>0.56.16</version>
+    <time>1694808316</time>
+    <user>anag+factory</user>
+    <comment>large update to 0.56.16 (from 0.20.0), rework spec file, add shell completion subpackages, ...</comment>
+    <requestid>1111434</requestid>
+  </revision>
 </revisionlist>

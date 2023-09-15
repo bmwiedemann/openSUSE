@@ -1,4 +1,762 @@
 -------------------------------------------------------------------
+Tue Sep  5 13:34:16 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework spec file
+- add shell completion subpackages
+- update to 0.56.16:
+  * c771247 Merge pull request #1896 from franknstyle/docs-new
+  * afdd4ea add docs for v0.56.16
+  * f6b766f Merge pull request #1892 from franknstyle/psa
+  * 537203a add support for pod security admission
+  * 3375907 Bump golang.org/x/net from 0.4.0 to 0.7.0
+- update to 0.56.15:
+  * 1c88db1 Add e2e tests and docs for v0.56.15
+  * 69f7154 Add brew installation to README, fix broken plugin link
+- update to 0.56.14:
+  * bd5465d Merge pull request #1877 from vmware-tanzu/fix
+  * e90f2d4 Update Sonobuoy version used in Dockerfile
+  * 9b72df1 Add docs for v0.56.14
+  * 7d03a79 Add e2e test lists
+  * bbfc279 Update go dependencies
+- update to 0.56.13:
+  * 9e95f1a Add docs for v0.56.13
+  * 6d46d52 Fix syntax error in k8s release workflow
+- update to 0.56.12:
+  * 5b97033 Merge pull request #1861 from joyvuu-dave/dpr-updates
+  * 55e07d3 Use latest version of linter in scripts
+  * f3d6995 Use kubectl 1.25.3 in scripts
+  * d8bfcb6 Use latest sonobuoy in script
+  * a4cf1b5 Formatting
+  * 2a99c18 Update to latest kind image in 1.23 line
+  * 9baa7f1 Update golang to 1.19
+  * 1c714dd Update golang syntax to pass linter
+  * b466ac4 Add docs for v0.56.12
+  * 201c5ec Update versions of Github workflow dependencies
+  * f285f4f Merge pull request #1860 from joyvuu-dave/e2e
+  * 265083a Update e2e test list resources
+  * 78c7931 Update weekly-release issue template
+  * f1f22cd Update strategy document examples
+- update to 0.56.11:
+  * b762629 Add docs for v0.56.11
+  * 67583df fix for CVE-2022-27664 and CVE-2022-32149
+  * 785b390 Add new data from k8s 1.25.0 release for e2e command
+- update to 0.56.10:
+  * 551bf68 Update goversion for goreleaser
+  * aebe979 Add docs for v0.56.10
+  * 0ab80f7 Add new data from k8s releases for e2e command
+  * 78cd688 Remove v0.0.0 e2e data
+  * 906a4a8 Fix auto-issues to use new label names
+  * 19aaa60 Use single quotes for github action literal
+  * 1e65c14 delete minor unreachable code caused by t.Fatal
+  * ce2bbc4 Allow e2e results to refer to one another
+- update to 0.56.9:
+  * e8648ea Add docs for 0.56.9
+  * 2b06bc8 Allow users to skip specific preflight checks
+  * 94e8236 Fix check for kubectl
+  * d125fb9 Refresh e2e data
+  * 32c6c69 Allow worker to upload directory instead of file
+  * e51d8a3 Add K8s release check workflow
+  * e00b9a3 Automate e2e data gathering
+  * 684a594 Plugins with manual results process all `*.yml` and
+    `*.yaml` files
+  * 1ef30df Tweak to function to allow multiple args
+  * 7f82b6b Allow postprocessors to modify done file contents
+  * d6099e7 Bump a few dep versions
+  * 9484850 Change warnings to errors for conflicting flags.
+  * c98e4ba Update plugin ordering to latest Sonobuoy version
+- update to 0.56.8:
+  * e709787 Add docs for v0.56.8
+  * b18f805 Simplify logic for status aggregation
+  * dd9992f Move to registry.k8s.io
+  * 9a4dedc Fix link to roadmap wiki
+  * e14baa4 Update Sonobuoy team
+  * a2fdb9c Add July drumbeat
+  * 706edde Add command to get worker pod names
+  * 7c0e8d3 Adds a simple Makefile with the most commonly used
+    options
+  * 24ebb1f Add readable mode to results command
+  * 1c31007 Updates the lint function to be consistent with CI
+  * e36a26c Update copyright and golden files
+  * cb82909 Add flags to allow customizing the service account
+  * 33a0568 Download kubectl when testing locally
+- update to 0.56.7:
+  * 41f2081 Add docs for v0.56.7
+  * c156860 Add clusterRead to aggregator permissions help
+  * 6ef1eae Refactor feature gates into its own package
+  * 3d5fd5b Link to roadmap in main readme.
+  * 092122a Fix skopeo login for image push issue
+  * 5482d22 Add CLI docs to the site
+  * 35589fa Parse user-provided ConfigMap YAML
+  * c4593e0 Include Image name in image pull error message (#1718)
+- update to 0.56.6:
+  * 87e26ab Add docs for v0.56.6 (#1710)
+  * 6811726 Reconcile results directory and mount on server (#1709)
+  * 6542678 Remove empty resources from gen plugin (#1708)
+  * 021b7a5 remove unnecessary volume from gen plugin command
+    (#1703)
+  * 692522d Only apply imagePullPolicy to plugins if instructed
+    (#1705)
+  * b293bf0 Fix typo in pluginDefinitionFilename (#1672)
+  * 216bda4 Fix bug where 'retrieve' fails if filepath diectories
+    DNE (#1690)
+- update to 0.56.5:
+  * 4fd3874 Add docs for v0.56.5 (#1702)
+  * 4fe34cb Add new e2e data for k8s versions (#1701)
+  * 02cc231 Always upload artifacts to github actions (#1699)
+  * 4598995 Moved the logic for gathering logs to before plugin
+    cleanup (#1693)
+  * 7b3375c FailNow if Must... fails as expected (#1697)
+  * 8690c6c Remove -r option from mv command (#1696)
+  * be9293d add url flag to set url for plugin (#1694)
+  * 8336e02 add description flag and function to set description
+    (#1673)
+  * 12ebf3f Fix aggregator to wait forever when timeout is zero.
+    (#1681)
+  * 6d36456 Update Build with golang:1.18 (#1674)
+  * bbc49da Have 'images' commands respect env vars (#1679)
+  * 9294926 Add drumbeat blog (#1670)
+- update to 0.56.4:
+  * 51c7906 Add docs for v0.56.4 (#1668)
+  * 24480fa Fix mount for sidecars (#1667)
+  * 0151ee8 Export functions to enable postprocessing of files
+    (#1666)
+  * c12595f Add configmaps to sidecars (#1665)
+  * 2fb4373 Add function for walking item tree (#1658)
+  * 8988672 Update linter and fix staticcheck issues (#1659)
+  * e09387c Add governance document and design folder (#1642)
+- update to 0.56.3:
+  * 1005bee Docs for v0.56.3 (#1645)
+  * 1409358 Better debug messages when aggregator is starting up
+    (#1638)
+  * e8507f2 Add sonobuoy images list command (#1639)
+  * b8eb801 Update e2e with more tags
+  * 0138be0 Modify reader code to work on unzipped results as well
+- update to 0.56.2:
+  * 6cf7519 Bump docs and version for v0.56.2
+  * 458c06a Tweak docs for release and dryrun test lists
+  * 65a726a Added health summary with basic log scanning
+  * 13af7b1 Add extra steps for release
+  * f5af769 Fix release doc and update_docs script
+- update to 0.56.1:
+  * Overview
+    A small release as we try and get into the habit of weekly
+    releases.
+    - New darwin/arm64 binary in release artifacts
+    - Improvements to behavior when plugins have other sidecars
+    - Improved output for progress updates
+  * Changelog
+    - eedd1ec Version and docs for v0.56.1
+    - d79aeaf Add darwin/arm64 binary to release
+    - 91f9c2a Improve version subcommand
+    - 3fce527 Update kind images
+    - ddda7b1 Issue1595: deal with plugins with unknown total tests
+      count
+    - c7e914c Worker sidecars get plugin env vars
+    - d60bd54 Add a delay before consuming done file for
+      postprocessing window
+    - ea06304 Add workflows for automated release and blog issues
+    - 5200a14 Change the link "custom plugin"
+- update to 0.56.0:
+  * Overview
+    This release found a surprisingly large amount of new features
+    and improvements including: The common theme in these features
+    is that they are about making what you might already do,
+    better:
+    - Cut down on CI time with the new --mode=conformance-lite
+      option
+    - Better understand and plan which tests and tags to run with
+      sonobuoy e2e without having to launch a single pod
+    - Gather API data and logs from the CLI without launching pods
+    - Run Sonobuoy with reduced permissions more easily and
+      reliably (--aggregator-permissions)
+  * New Features
+    - Sonobuoy Modes and 'conformance-lite'
+      - 0e4a1c5 Add sonobuoy modes command
+      - f105e68 Add conformance-lite mode Sonobuoy has a new
+        command
+      sonobuoy modes which lists the what each of the various
+      --mode options means for the E2E plugin.
+      This allows users to choose the appropriate mode without even
+      having to navigate to the web documentation.
+      Instead, sonobuoy modes shows the the name of the mode, its
+      purpose, and its focus/skip/parallel values.
+      A new option for --mode was added: conformance-lite which
+      runs the fastest tests from the conformance suite (~80%) in
+      parallel.
+      This allows running of hundreds of tests in just minutes
+      which can cut down CI and debugging times.
+    - E2E Improvements: Built in E2E Dry-run and Airgapped
+      Simplification
+      - 90dd4c1 Add e2e command for dry-run help
+      - 7af4fe2 Support KUBE_TEST_REPO
+      We still get numerous questions regarding what tests from the
+      E2E conformance suite can/should be run or what tags are
+      available.
+      Built into the conformance tests is a "dry-run" feature which
+      allows you to try out regular expressions and filter the
+      tests without running them.
+      However, doing this still requires you launch Sonobuoy and
+      e2e pods, gather results, and inspect them.
+      The new sonobuoy e2e command will allow you to try out
+      focus/skip values and immediately get the resulting test
+      list.
+      Not only that, but by editing the output --mode, you can
+      print only the test tags with or without their respective
+      frequency counts.
+    - Sonobuoy Queries from the CLI
+      - 5577b2d Refactor query logic and add to CLI
+      Sonobuoy gathers lots of data from the API in order to aid in
+      debugging.
+      If you want that information without bothering with launching
+      any pods at all, just run sonobuoy query.
+      All the query logic has been extracted and made available on
+      the CLI for faster, easier access.
+    - More Permissions Options For Sonobuoy
+      - a4ca834 Add namespaced permissions with cluster read
+      The --aggregator-permissions options have expanded to
+      include:
+      - clusterRead which is namespace admin permissions with added
+        read-only permissions at the cluster level
+      - namespaceAdmin which has no cluster permissions, only
+        namespaced ones
+      - the default clusterAdmin
+      In most cases the default is a good choice, but in production
+      clusters where access is more carefully monitored, the other
+      options may be a better fit.
+  * Improvements and Bug Fixes
+    - aea30a0 Adjust progress messages to allow for appending data
+      - Plugins can now report progress updates in more piecemeal
+        fashion and the aggregator will combine the results. This
+        fixes a bug where the e2e plugin couldn't report progress
+        when in parallel mode. The fix will be in Sonobuoy, but the
+        upstream fix will get put into releases going forward.
+    - 94b6f18 Allow setting aggregator env vars via CLI
+      - Sonobuoy now allows you to set environment variables on the
+        aggregator from the CLI via the existing --plugin-env flag
+        using the reserved plugin name sonobuoy. For instance,
+        --plugin-env sonobuoy.KEY=val.
+    - 9ba34dc Modify entrypoint for getting e2e test images
+      - Fixed a bug which caused sonobuoy images to fail for
+        Kubernetes v1.22+
+    - c7c47dc Roles and bindings should have namespace label for
+      deletion
+      - Fixed a bug which caused cluster roles and bindings to not
+        be deleted.
+        Modified the behavior of sonobuoy delete --all to include
+        deleting all cluster roles related to any Sonobuoy run,
+        regardless of namespace.
+        Added back a "namespace" label for ClusterRoles and
+        ClusterRoleBindings in order to properly associate them
+        with their Sonobuoy run.
+    - ec3df49 Continue with run even if unable to query nodes
+      - Fixed a bug which caused the new
+        --aggregator-permissions=namespaceAdmin option to fail due
+        to the inability to query cluster nodes.
+  * Complete Changelog
+    - 0665cd3 Add docs for v0.56.0 and bump version
+    - 7c8e495 Fix calculation for appending failures
+    - aea30a0 Adjust progress messages to allow for appending data
+    - f105e68 Add conformance-lite mode
+    - 5bec08c Add test lists for recent k8s versions
+    - 90dd4c1 Add e2e command for dry-run help
+    - 7871297 added aggregator permissions doc
+    - d831a21 Add POC doc for upcoming feature
+    - 94b6f18 Allow setting aggregator env vars via CLI
+    - 928b7b4 Fix spacing for headers in strategy doc
+    - a265fc0 Add strategy doc
+    - d98b1fe New document for sonobuoy query
+    - 0e4a1c5 Add sonobuoy modes command
+    - 7af4fe2 Support KUBE_TEST_REPO
+    - a4ca834 Add namespaced permissions with cluster read
+    - ec3df49 Continue with run even if unable to query nodes
+    - b47d982 Adjust cluster suggestions for starting with Sonobuoy
+    - 85b1f22 Add docs for result type gojson
+    - e679e44 Add links to top of plugins page
+    - 5577b2d Refactor query logic and add to CLI
+    - c7c47dc Roles and bindings should have namespace label for
+      deltion
+    - 9ba34dc Modify entrypoint for getting e2e test images
+    - ae75211 Remove template and convert to code
+    - 9506d94 Fix template for namespaced permissions
+- update to 0.55.1:
+  * Add docs and bump to v0.55.1
+  * c2f6968 Fix index bug in gen logic
+  * 104cfba Export field
+  * 0142d9c Merge pull request #1526 from
+    johnSchnake/exportJunitProcessing
+  * ea56087 Export junitResults type
+  * 692611c Merge pull request #1472 from NikhilSharmaWe/newFlag
+  * cdf69c8 Modify the template based on input
+  * bfce3a9 Add flag/config settings for aggregator permissions
+  * 0e7f9c9 Manually bump version to v0.55.0 for library code
+  * af1d73c Add more warnings for flag interactions
+  * 450be8b Add blog for e2e-skeleton plugin
+  * 354bb67 Remove junk and fix links in docs
+  * c5269ae Add ci-lint options- update to 0.55.0:
+- update to 0.55.0:
+  * Overview
+    This is a fairly big release with a number of worthwhile
+    improvements and bug fixes that we would recommend users take
+    advantage of, including:
+    - Simplified results reporting for many plugins
+    - Better handling of multi-container plugins
+    - Bug fixes related to results storage and cooperation between
+      components
+    - A new command to wait on an existing Sonobuoy run
+    - More os/arch support
+    - and more
+  * Improvements
+    - Sonobuoy automatically reports results if your plugin
+      completes and exits 0
+      One of the most frustrating types of bugs is where the plugin
+      container runs successfully but fails to write the done file
+      to inform the Sonobuoy worker that it has completed and where
+      to find the results.
+      We decided to add a bit more intelligence to the worker to
+      avoid many of these cases. Now, if the worker container is
+      the only container left running and the others all exited
+      with a status code of 0, the worker will automtaically upload
+      the entire results directory to the aggregator on your
+      behalf.
+      - e4f0a0d Sonobuoy workers report results of completed plugins
+    - Add environment variables and mounts to sidecar containers
+      Now that Sonobuoy adds a few environment variables to the
+      containers it creates (Kuberentes version, directory
+      locations, etc), it is reasonable that we should be adding
+      these to the sidecars and other containers in the plugin.
+      - 9ae72e6 Add all env vars to all containers
+    - Running Sonobuoy without any plugins
+      Many releases ago it was possible to run Sonobuoy without any
+      plugins as solely a means of gathering the other debug
+      information. This use case was dropped at some point but we
+      have found that some users relied on it so we are adding it
+      back in a simpler fashion.
+      If you want to run Sonobuoy but not run any plugins, just add
+      SkipPlugins: true to the Sonobuoy config file (e.g.  sonobuoy
+      gen config then edit the file). This will clear out the
+      plugin selections so that the aggregator has no plugins to
+      load.
+      - 8c57b24 Add special config option to skip all plugins
+    - New build artifacts: s390x and ppc64le
+      Kubectl supports these formats and so should we. Thanks to
+      @barthy1 and @MatthieuSarter for this help.
+      - 06f5616 Update build setup to publish sonobuoy binary and
+        image for s390x and ppc64le
+    - Add a new sonobuoy wait command
+      Sometimes you start a sonobuoy run and then later decide you
+      wish you had provided --wait. We added a convenience command
+      to effectively do that. Just run sonobuoy wait to wait for
+      the Sonobuoy run in the targeted namespace to complete.
+      - 17b7050 Add sonobuoy wait command
+    - Rename plugins on a per-run basis without editing YAML
+      Now that locally Sonobuoy can install/lookup different
+      plugins and configurations, it is much more likely that a
+      user may want to run two different configurations of the same
+      plugin at the same time. However, Sonobuoy requires that
+      plugin names are unique.
+      To avoid having to edit the YAML each time this may occur,
+      you can edit the plugin name for that individual run by a new
+      bit of syntactic sugar:
+        $ sonobuoy run -p <old-name>@<new-name>
+      - 0434aa0 Allow plugin renaming via @ seperator in flag name
+    - Reworking sonobuoy plugins list output
+      We are still working out the best approach for some of the
+      plugin management commands. As part of that effort we've
+      reworked the sonobuoy plugins list output to make it more
+      succinct and to try and make it more clear how to invoke the
+      plugin from the command line.
+      - a01be9b Clarify plugin list output surrounding name/file
+  * Bug Fixes
+    - Fix bugs involving a custom ResultsDir
+      A few issues have occurred lately where it became clear that
+      the ResultsDir field of the Sonobuoy config was not being
+      respected or passed correctly between the different bits of
+      code.
+      As such, there were situations where the plugin and
+      sonobuoy-worker disagreed about where the results should be
+      stored or mounted from and other bugs where the CLI client
+      and aggregator pod would disagree about where the aggregator
+      stored the final product.
+      - 9bf47ef Pass ResultsDir through necessary calls
+    - Fixed a bug causing nodeSelectors to not be properly respected
+      If your daemonset plugin is OS-specific, you'll need to have
+      the nodeSelector set to target the right nodes.
+      However, Sonobuoy goes beyond the default Kubernetes tracking
+      and will monitor which nodes have or have not yet run the
+      plugin. It is important that Sonobuoy properly understands
+      the nodeSelector being used or else it will constantly expect
+      other nodes to report results when none will occur due to the
+      scheduling limitation.
+      - 4b072ef Fix plugin nodeSelector issue inc. systemd-logs
+    - Fixed a bug causing some pod logs to be dropped
+      Fixed a race in sonobuoy logs that sometimes caused logs from
+      random containers to not be gathered.
+      Also added a new special case to get just the logs from the
+      Sonobuoy aggregator pod:
+        $ sonobuoy logs -p sonobuoy
+      - 95eb1e2 Fix logs bug causing aggregator to be dropped
+  * Full Changelog
+    - dc78b39 Bump version for v0.55.0
+    - f7f9a6f Add flag for specifying the aggregator path to
+      retrieve
+    - 8c57b24 Add special config option to skip all plugins
+    - d043d72 Fix bug causing some duplicate gojson tests
+    - 9ae72e6 Add all env vars to all containers
+    - e4f0a0d Sonobuoy workers report results of completed plugins
+    - e31cd28 Upload artifacts from integration tests
+    - 9bf47ef Pass ResultsDir through necessary calls
+    - bfcbf9b Remove deprecated fields
+    - 9109c69 Fix build image push issue
+    - c6e899d Fix issues related to logging and plugin cache
+    - 06f5616 Update build setup to publish sonobuoy binary and
+      image for s390x
+    - 17b7050 Add sonobuoy wait command
+    - 4b072ef Fix plugin nodeSelector issue inc. systemd-logs
+    - 95eb1e2 Fix logs bug causing aggregator to be dropped
+    - 582ac8a Update GoReleaser config for linux-ppc64le
+    - 51f037b Update build script to build ppc64le binary and image
+    - f6ed823 Bump version of systemd-logs
+    - 0434aa0 Allow plugin renaming via @ seperator in flag name
+    - a01be9b Clarify plugin list output surrounding name/file
+    - 1ca5b4e Add plugin management blog
+- update to 0.54.0:
+  * Overview
+    This is a big release filled with new features, bug fixes, and
+    UX improvements for all Sonobuoy users and plugin developers.
+  * Major Changes
+    - By default, sonobuoy run --wait and sonobuoy delete --wait
+      will now output much more information. This was an
+      experimental feature for a release and it was extremely
+      useful. When waiting on a run, the user is effectively given
+      timestamped changes to sonobuoy status data so you can see
+      when plugins are progressing. When running sonobuoy delete
+      --wait, the JSON for the namespace is output as it changes.
+      This makes it clear what is causing namespace deletion to be
+      slow or hang.
+    - Adds some basic plugin management capabilities. You can now
+      try out sonobuoy plugin install <file or URL> and it will
+      store the plugin in a central location so that when you run
+      sonobuoy run -p myplugin the plugin doesn't have to reside in
+      the present working directory. Expect a blog post on this
+      feature as it is a very new capability and we have some ideas
+      how to make it better.
+    - Sonobuoy now supports plugin results in go-json format
+      - This is the format from go test --json and enables us to
+        support the upstream e2e-framework. To write a plugin that
+        uses this format, simply change the result-type to go-json.
+    - Added a securityContext by default and set the
+      user/group/fsGroup; this prevents certain security tools from
+      blocking typical Sonobuoy runs. This is not supported on
+      Windows nodes so a flag was added to turn off this
+      functionality (--security-context-mode=none) if desired.
+    - Adds multiple new env vars to plugin environments when run
+      including:
+      - SONOBUOY=true to indicate that it was launched by Sonobuoy
+      - SONOBUOY_CONFIG_DIR to identify where configmaps will be
+        mounted at
+      - SONOBUOY_RESULTS_DIR to identify where the results should
+        be saved
+    - By default, Sonobuoy will now gather logs for all pods in
+      kube-system and will query all API resources it can,
+      including CRDs (but not secrets!)
+    - Add --rerun-failed flag to sonobuoy run. This takes a
+      filename as a parameter and will walk the given tarball for
+      e2e results and adjust the E2E_FOCUS accordingly to target
+      just those failed tests. This is meant to be a replacement
+      for the older sonobuoy e2e command.
+  * Minor Changes
+    - sonobuoy gen will not support all the flags that sonobuoy run
+      does including things like --wait and --skip-preflight in
+      order to make it easier to change back and forth between run
+      and gen for testing
+    - Fixed a bug where --level was not respected on the aggregator
+      container and added more logging at the --level=trace.
+    - Documented underlying issues with supporting Kubernetes for
+      Docker Desktop
+    - Removed managed field data from the data that Sonobuoy
+      queries. This is usually not relevant for users and is
+      verbose and confusing.
+    - Fixed a bug which caused podLogs to only be gathered for one
+      pod (typically the Sonobuoy aggregator)
+    - Adds a useful dev feature: if SONOBUOY_DEV_REPO is set, it
+      will use that repo for the default Sonobuoy image to
+      facilitate faster iteration
+    - Fixed a bug where a plugin's name would cause an invalid
+      configmap name to be generated. A few more restrictions and
+      validation were added to make the naming limitation more
+      clear.
+    - Fixed a bug where, when a plugin failed, the Sonobuoy
+      aggregator status would report itself as failed regardless of
+      other plugins. This was originally by design but as we have
+      more fine-grained reporting abilities now, it is not
+      necessary and is potentially confusing.
+  * Changelog
+    - 08bb70f Bump version and docs for v0.54.0 release
+    - b214bb7 Add go-json output support for results
+    - 0e55157 Combine gen and run flags
+    - 623d739 Add tracing throughout code and ensure level is
+      passed to server
+    - 57b5ecc Add known issue related to docker desktop
+    - af87543 Add flag/config setting for security context
+    - b633b4f Export and tweak some of the manual results
+      methods/values
+    - 0ffc70b Add more auto env vars to plugins
+    - df0e77d Default our experimental features to true
+    - b51156c Increase default query data
+    - 2adb0a5 Removed managed fields from query output
+    - b84102e Improve various logging points on aggregator
+    - 7d59d80 Adds easy way for devs to swap their own registry
+    - fe560d0 Do not use deprecated SelfLink
+    - ca27736 Add default security context to aggregator
+    - 0f94168 Added validation to gen [plugin] for plugin name
+    - 6df070d Adjust the logic for processing plugin results for
+      aggregator status
+    - 57feff6 Update contributors on site
+    - 90abde6 Fix feature gate name
+    - a189f91 Replace master with main
+    - 26b589b Show/maintain fewer versions of docs
+    - dc458b5 Tweaks logging and how pluginList uses cache
+    - f1060a2 Use experimental features in test
+    - 34a3fc3 Absorb e2e functionality into rerun-failed flag
+    - baffa30 Add vulnerability scanning to CI
+    - 63394b6 Fix readme for github
+    - d3bca9e Fix docs links for 1388 issue
+- update to 0.53.2:
+  Shortly after releasing v0.53.1 a bug was found that impacted
+  certified-conformance mode. Since this is an important function
+  of Sonobuoy, we decided to release a patch for this single
+  change. See more details
+  [here](https://sonobuoy.io/docs/v0.53.1/issue1388/).
+  * Changelog
+    - 981a3ff Point release for certified-conformance issue
+    - a650400 Add documentation about issue 1388
+    - 3a522d4 Fix regression regarding certified-conformance mode
+- update to 0.53.1:
+  *NOTE*
+  This version of Sonobuoy was impacted by #1388 and as a result we
+  decided to push a new point release. Users interested in
+  certified-conformance mode should use a newer version and/or see
+  here for more details.
+
+  Sonobuoy v0.53.1
+  This patch release includes a few bug and security fixes. No
+  other new functionality was added.
+  * Fix typo which broken custom registries for e2e plugin
+    (373bdc2)
+    - It would be looking in /tmp/sonobuoy/configs/... for the file
+      but it should have been config without an s.
+  * Updates various references for security reasons (584a3e0)
+    - There were 3 separate CVEs that were reported to us as a
+      result of different dependencies. By updating these we
+      resolved the vulnerabilities. The CVEs were from client-go,
+      k8s.io/api/v1/core, jwt-go, and protobuf.
+  * Fix broken link after plugins moved (bb9776e)
+    - We moved all our example plugins into the separate
+      github.com/vmware-tanzu/sonobouy-plugins repository and had
+      failed to update the links in our documentation.
+  * Warn if kubernetes-version and set with conflicting flags
+    (7b2fe4d)
+    - If kubernetes-version and kube-conformance-image[-version]
+      are both set then some unexpected results can occur. This
+      mitigates the problem by providing a warning of that fact.
+- update to 0.53.0:
+  *NOTE*
+  This version of Sonobuoy was impacted by #1388 and as a result we
+  decided to push a new point release. Users interested in
+  certified-conformance mode should use a newer version and/or see
+  here for more details.
+
+  Sonobuoy v0.53.0
+  This release includes numerous small improvements and two
+  experimental features which we expect to become default behavior
+  in the future: better progress reporting when --wait is used and
+  plugin management.
+  * Plugin Management (9539f16)
+    All users can take advantage of new commands to help manage
+    your plugins. This helps keep track of plugins so that you can
+    save them from URLs/files and invoke them more easily from any
+    other directory. See sonobuoy plugins for commands to install,
+    uninstall, list, and show plugins.
+    In the future, Sonobuoy will look for installed plugins before
+    looking in the present working directory. If you would like to
+    enable this behavior now, set the environment variable
+    SONOBUOY_ALL_FEATURES=true or
+    SONOBUOY_PLUGIN_INSTALLATION=true.
+  * Progress Messages (eeff4bf)
+    Currently, when you invoke sonobuoy run --wait or sonobuoy
+    delete --wait the default --output-mode is silent. The only
+    alternative, until now, has been a spinner to ensure CI and
+    end-users don't think Sonobuoy has frozen.
+    However, we often have more information that would be useful
+    for a user to know about the progress made. As a result, we've
+    added a new option --wait-output=progress which will output
+    more valuable information.
+    This may become the default in the future but to enable it now
+    you can either specify it manually with --wait-output=progress
+    or with SONOBUOY_ALL_FEATURES=true.
+  * Minor Changes
+    - Sonobuoy Retrieve (8cf38a5)
+      Adds a new flag --filename -f to specify the exact name of
+      the tarball once it has been downloaded. This may ease the
+      burden when writing scripts.
+    - Custom Log Levels (69cdfc5)
+      We've added a --level flag for custom log levels so you can
+      get more/less output based on your needs.
+    - New Fields For Plugin Definitions
+      Added source-url and description fields so that a plugin can
+      be more self-documenting. This will be of great use when
+      plugins can be installed/organized more easily.
+    - ImagePullPolicy Change (60adfff)
+      If you specify the --image-pull-policy flag, it will now be
+      applied to all plugins, not just the built in e2e and
+      systemd-logs plugins. The reasoning is that we would like to
+      make custom plugins and built-in plugins have as much parity
+      as possible.
+  * Other changes since the last release
+    - 3e8f806 Bump version
+    - 0bc9e58 pkg/client/results: fix dropped test error
+    - 0a59430 Update site docs
+    - cc3607c Tweak CLI language
+    - 9539f16 Loads plugins from installation directory if feature
+      enabled
+    - 5d53c20 pkg/plugin/driver/utils: fix multiple imports
+    - dedbbcd Update sonobuoy.io button to edit docs and report
+      issues
+    - f9f2b4e Adds plugin installation functionality
+    - a63033a add GcEtcdRegistry to GetDefaultImageRegistries for
+      API server aggregator test
+    - b5dfc48 pkg/tarball: fix dropped test error
+    - a573937 Add new fields to plugin manifests
+    - 68f4b32 Blog update regarding quick mode
+    - ee7227f Blog describing Kubernetes suite
+    - 1b626d7 Update more e2e flags to use transforms and remove
+      special logic
+    - 0ae0a6f Use transform to rewire the ssh key logic
+    - 5f6c8b5 Add configurable log levels for logrus
+    - c5063fb Add generic plugin transformations and use for
+      kube-repo-list
+    - ac68f65 Default to assuming the conformance image can support
+      progress
+    - d5c90a2 Rework the gen plugin commands in order to reuse more
+      code
+    - d97f12f Wire e2e focus/skip/mode/parallel into existing env
+      structure
+    - 9f293f2 Fix a unit test by avoiding local kubeconfig
+    - 564f622 Simplify the way mode and plugin selection is
+      processed
+    - 7af6504 Simplify config handling
+    - 709de5b Adds extra gen tests
+    - 8e47c2a Default config.New to not provide UUID
+    - 9ffa8d7 Update github actions workflows to show history
+    - dc4be9c Add more descriptive status output
+    - c738d7c Run integration tests in parallel
+    - 576dcdb Add convenience function for updating goldenfiles
+    - 4c029aa Fix version resolution during image pulling
+    - 3889bbd Add sleep after systemd-logs again
+    - cf5bbd4 Prevent logs -f from repeating
+    - d0258d6 Add K8sOnWindows alternative to Azure
+- update to 0.52.0:
+  This release comes on the heels of our v0.51.0 but includes an
+  incredibly some incredibly useful improvements for custom
+  plugins: variable image names and ConfigMap embedding.
+  We made these changes to better fulfill our goal of running the
+  Kubernetes E2E tests on Windows as easily as possible. Our new
+  windows-e2e plugins make use of both of these features.
+  * ConfigMaps Embedded in Your Plugin (d2e9dfe)
+    - Plugins can now specify ConfigMap data directly in the plugin
+      specification file itself. The new config-map field is an
+      optional, sibling field to the sonobuoy-config and spec
+      fields. Sonobuoy will automatically generate a ConfigMap with
+      that data and mount it as a volume on your plugin so it can
+      consume the data. This allows you to more easily bundle and
+      share your plugin configuration with others.
+  * Variable-based Plugin Images (eed1cd7)
+    This feature allows plugins to base their plugin image on the
+    version of Kubernetes detected in their cluster. This behavior
+    was previously reserved for our custom e2e plugin, but has been
+    generalized for other plugins. Simply use $SONOBUOY_K8S_VERSION
+    in the image name to make use of it.
+    It is also available automatically as an environment variable
+    (by the same name) in your plugin.
+- update to 0.51.0:
+  * Major changes
+    - Windows support af895d7 63d1573 fcc107c
+      The largest announcement of this release is that Sonobuoy
+      will now build/publish images for Windows nodes. This means
+      that plugins can be easily written for and run on Windows
+      nodes. Various other changes this release were motivated by
+      this change to work towards making the Windows experience as
+      positive as possible. Check out our blog on more regarding
+      Windows support.
+  * Other Improvements
+    - 0586df2 Improve retrieve command with extraction option
+      sonobuoy retrieve now has an --extract flag which will
+      download then extract the tarball in the specified directory
+      (defaults to the present working directory).
+    - 9b9e6e8 Add support for testing against the most recent dev
+      E2E image
+      This helps simplify the workflow if you find yourself
+      actively working on the tip of Kubernetes. Test against the
+      master branch of k8s by specifying the
+      --kube-conformance-image-version=latest. It does use a
+      version that is built periodically and may lag what you see
+      in github but minutes/hours.
+    - 649cfac E2E Image ignores metadata and provider build info
+      This should make things work more seamlessly when you use
+      clusters created by cloud providers which may add their own
+      metadata onto the build information (e.g.
+      v0.19.3+aks.some.info). Now we'll just ignore all the
+      metadata and assume you want to test with the upstream
+      version provided.
+    - d7d930c Extend default timeout
+      The amount of time Sonobuoy waits for the plugins to report
+      is always customizable with the --timeout flag, but we
+      extended the default timeout from 3 to 6 hours in order to
+      avoid timeouts potentially caused by running on Windows
+      clusters where pods take longer to startup/shutdown.
+    - 2c86eb1 Add node selector option when generating plugin spec
+      Adds a new flag: sonobuoy gen plugin --node-selector foo=bar
+      to facilitate creating windows plugins more easily.
+    - c96ae19 Adjust default nodeSelector behavior
+      Along with the above change, by not specifying a nodeSelector
+      Sonobuoy will assume you want to target Linux nodes. This, in
+      most cases, avoids an issue where you have a Windows node in
+      a cluster and it causes your (Linux) plugin to accidently run
+      on that node and fail.
+  * Bug fixes
+    - 04acfcb Avoid infinite loop when a following logs
+    - And other misc. fixes in the documentation such as spelling,
+      tweaks for clarity, and fixing broken links.
+- update to 0.50.0:
+  * New version
+    This release introduce support for distroless images for
+    Sonobuoy. The release also resetting its release version by
+    increasing the release number to v0.50.
+    Read more here https://sonobuoy.io/sonobuoy-v0-50/.
+  * Documentation update
+    Part of this release includes migrating the content generator,
+    for the Sonobuoy site, to use the Hugo content server. This
+    should make content management and generation faster and
+    easier.
+  * New Reliability Scanner plugin blog
+    The realibility scanner was announced earlier this year. It is
+    a Sonobuoy plugin that allows cluster operators to configure a
+    set of reliability checks to be executed against a cluster. You
+    can find a write up here.
+  * Changelog
+    - d9ec0c1 v0.50 release (#1221)
+    - da8d5d3 Reliability-As-Code blogpost (#1217)
+    - d9e7485 Update to policy text in SECURITY.md (#1214)
+    - 0d4ff32 Finish contributors migration to Hugo
+    - c5c3695 Major website overhaul - moving to Hugo (#1220)
+    - 4daa503 Merge pull request #1205 from wilsonehusin/distroless
+    - 3aeb730 Add x509ignoreCN and CGO_ENABLED=0 for integration
+      tests
+    - cccc0b0 Update contributors section (#1208)
+    - e4b694c Extend stale markers
+    - 13c2ffc Circle CI tests migration to GitHub Actions (#1204)
+
+-------------------------------------------------------------------
 Fri Feb 19 07:21:20 UTC 2021 - opensuse-packaging@opensuse.org
 
 - Update to version 0.20.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package sonobuoy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,46 +16,101 @@
 #
 
 
-%define project github.com/vmware-tanzu/sonobuoy
+%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
+
 Name:           sonobuoy
-Version:        0.20.0
+Version:        0.56.16
 Release:        0
 Summary:        Conformance test suite for diagnosing a Kubernetes cluster
 License:        Apache-2.0
-Group:          Development/Languages/Other
 URL:            https://github.com/vmware-tanzu/sonobuoy
-Source:         %{name}-%{version}.tar.gz
+Source:         sonobuoy-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.12
-%{go_nostrip}
-%{go_provides}
+BuildRequires:  go >= 1.19
 
 %description
-Sonobuoy is a diagnostic tool for understanding the state of a
-Kubernetes cluster by running a set of Kubernetes conformance tests
-in an accessible and non-destructive manner.
+Sonobuoy is a diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of plugins (including Kubernetes conformance tests) in an accessible and non-destructive manner. It is a customizable, extendable, and cluster-agnostic way to generate clear, informative reports about your cluster.
+
+Its selective data dumps of Kubernetes resource objects and cluster nodes allow for the following use cases:
+
+* Integrated end-to-end (e2e) conformance-testing
+* Workload debugging
+* Custom data collection via extensible plugins
+
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description -n %{name}-fish-completion
+Fish command line completion support for %{name}.
+
+%package -n %{name}-zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-zsh-completion
+zsh command line completion support for %{name}.
 
 %prep
-%setup -q -a1
+%setup -q
+%setup -q -T -D -a 1
 
 %build
-%{goprep} github.com/vmware-tanzu/sonobuoy
-export GOPATH=$HOME/go
-mkdir -pv $HOME/go/src/%{project}
-rm -rf $HOME/go/src/%{project}/*
-cp -avr * $HOME/go/src/%{project}
-
-cd $HOME/go/src/%{project}
-CGO_ENABLED=0 go build -o sonobuoy -buildmode=pie -ldflags="-s -w -X %{project}/pkg/buildinfo.Version=v%{version}" %{project}
+go build \
+   -mod=vendor \
+   -buildmode=pie \
+   -o bin/sonobuoy .
 
 %install
-cd $HOME/go/src/%{project}
-install -Dm755 sonobuoy %{buildroot}/%{_bindir}/sonobuoy
+# Install the binary.
+install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/%{name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+
+# create the fish completion file
+mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
+%{buildroot}/%{_bindir}/%{name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
 
 %files
 %doc README.md
 %license LICENSE
-%{_bindir}/sonobuoy
+%{_bindir}/%{name}
+
+%files -n %{name}-bash-completion
+%dir %{_datarootdir}/bash-completion/completions/
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files -n %{name}-fish-completion
+%dir %{_datarootdir}/fish
+%dir %{_datarootdir}/fish/vendor_completions.d
+%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+%files -n %{name}-zsh-completion
+%defattr(-,root,root)
+%dir %{_datarootdir}/zsh_completion.d/
+%{_datarootdir}/zsh_completion.d/_%{name}
 
 %changelog
