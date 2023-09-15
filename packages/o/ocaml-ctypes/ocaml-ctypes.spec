@@ -32,7 +32,7 @@ ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 
 %define     pkg ocaml-ctypes
 Name:           %pkg%nsuffix
-Version:        0.21.0
+Version:        0.21.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Combinators for binding to C libraries without writing any C
