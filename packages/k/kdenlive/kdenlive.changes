@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:55:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Fix audio channel setting breaking opening of existing project file
+  * Fix possible crash in audiolevel widget
+  * Fix default audio channels for project not correctly saved
+  * Fix guide/marker categories all black on some non english locales
+  * Ensure Media browser saves zoom level when using mouse wheel to zoom Fixes #1754
+  * Extract audio: export only active streams, merge all if requested
+  * Fix crash on subclip transcoding Fixes #1753
+  * Fix audio extract for multi stream clips
+  * When restoring audio or video component in timeline, first try target track, then mirror track Fixes #1749
+  * Fix multi guide export enabled by default Fixes #1750
+  * Fix guides categories all black when opening a project from a different locale
+  * Fix archiving crash on Windows caused by filesystem case sensitivity
+  * Project Bin: don't draw icon frame if icon size is null
+  * Fix zone rendering not remembered when reopening a project
+  * Fix detection/fixing when several clips in the project use the same file
+  * Correctly update guides list when switching timeline tab
+
+-------------------------------------------------------------------
 Sun Aug 20 13:59:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.0
