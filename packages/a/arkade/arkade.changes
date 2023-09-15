@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 15 09:27:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.7:
+  * Fix typo in test
+  * Update vendor
+  * Update to v2 of go-execute
+
+-------------------------------------------------------------------
+Thu Sep 14 12:39:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.6:
+  * Fix Windows template for K9s
+
+-------------------------------------------------------------------
+Thu Sep 14 12:38:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.5:
+  * Fix jq executable name for release 1.7
+
+-------------------------------------------------------------------
 Thu Sep 14 04:49:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.10.4:
