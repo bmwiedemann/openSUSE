@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep  4 08:14:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.3:
+  * fix #376 "vector's iterator dereference out of range"
+  * due to low issue activity remove the automatic stale workflow
+  * fix #374 start / stop roll mode sampling (almost) immediately
+  * split 'samplerateChanged' event handler; remove useless
+    'this->'
+  * update translations
+  * Fixes #363, refs #365. Splitted
+    HorizontalDock::timebaseChanged event handler from doing
+    operations on dsoControl and dsoWidget in the same callback.
+    Now there two callback and each uses the Widget it operates
+    on. [875a8dc]
+  * Add support for YiXingDianZiKeJi YX-DSO (MSDO)
+  * show error message when screenshot or export file write fails
+  * MSDO calibration file update from real device.
+  * Add support for YiXingDianZiKeJi YX-DSO (MSDO)
+  * change dB suffix with "Ok" or "Apply"
+  * more cleanup
+  * i18n for dB suffix "V", "u", "m"; silence more warnings
+  * fix mac build
+  * rearrange GH runner steps
+  * move "Demo Mode" button to dialog button box at the window
+    bottom
+  * fix build versioning
+
+-------------------------------------------------------------------
 Sat Apr 15 14:56:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.2.2:
