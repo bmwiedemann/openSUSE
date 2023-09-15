@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Sep 14 15:00:47 UTC 2023 - martin.liska@hey.com
+
+- Update to version 2.8.0+git.20230914.9f237d6:
+  * CMake: port to find_package(Python3)
+  * CMake: add minimal version 3.14
+  * Moderninze to Python 3.8 and remove Leap CI.
+  * Test LLVM 18 again.
+  * LLVM nightly: move back to version 17
+  * fix pip installation
+  * Revert previous change and use Ubuntu 23.04.
+  * CI: remove 2 missing LLVM deps for version 18
+  * Fix CI.
+  * Bump LLVM nightly build to LLVM 18.
+  * LLVM 16: add missing header file for toString
+  * Remove LLVM 12 from testing matrix as it is removed in TW.
+  * Add build to ignored list of folders.
+  * LLVM 17: add workaround for a Werror
+  * Stop building against LLVM 11 due to a known LLVM issue:
+  * Fix build with LLVM 17.
+  * LLVM 17: port enum value to c++23.
+  * Fix typo in the previous revision for LLVM 17.
+  * Fix current LLVM tip branch.
+  * Revert a leftover hunk.
+
+-------------------------------------------------------------------
 Fri Apr 28 07:01:39 UTC 2023 - mliska@suse.cz
 
 - Update to version 2.8.0+git.20230428.7aaa251:
