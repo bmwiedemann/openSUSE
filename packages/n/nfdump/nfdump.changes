@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sat Sep  2 11:35:54 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versin 1.7.3
+  * Add zstd compression speeds compression (multi threading)
+  * Add compression levels.
+  * Fix some nfprofile issues.
+- Update to versin 1.7.2
+  * Update nfcapd/sfcapd man pages for erspan data link.
+  * Implement erspan protocol in nfpcapd packet processing.
+  * Sync ipfix and netflow_v9 for option field processing.
+  * Handle buggy option data(!) from exporter.
+  * Fixes compile warnings for Linux(es) and *BSDs.
+  * Fix v9 option template processing.
+  * Fix option record processing for multiple records.
+  * Fix ipfix nbar processing.
+  * Update pcap reader with erspan device.
+  * Fix fmt argument parsing.
+  * Add IPv4 in IPv6 special cases in geolookup.
+  * Fix IP version check in geolookup.
+  * Disable signals in threads. Different OS handle signals
+    differently.
+  * Recongnize old sampler with missing algorithm tag.
+  * Fix memory leaks.
+  * Update pcap_reader and add CISCO application performance
+    monitor tags.
+  * Add ERSPAN decoding to pcap_reader.
+  * Check uid root for src spoofing option.
+  * Fix valgrind error for uninitalised memory.
+  * Update lz4 code.
+  * Update number of enabled tags in v9 and ipfix.
+  * Add collector option -X to limit stored data.
+  * Implement %sasn, %dasn organisation name printing tags.
+  * Improve geoDB handling. Needs rebuild of the geoDB.
+  * Wire sampling extension for individual sampling.
+  * Update ICMP type/code handling.
+  * Fix #415. ICMP decoding in netflow v9.
+  * Pimp pcap_reader
+  * Added source address support for nfreplay
+  * Fix dst tos bug in output_raw.
+  * Add geo info in JSON output when using GeoDB.
+  * Fix 408. Interchanged time stamps.
+  * Add icmp type/code elements 176, 177, 178, 179.
+  * Add unique version string.
+  * Add Linux nflog in nfpcapd.
+  * Replace old packet repeater code with more modern privsep code
+  * Replace old launcher startup code with more modern privsep code
+
+-------------------------------------------------------------------
 Wed Jan 11 09:59:53 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.1
