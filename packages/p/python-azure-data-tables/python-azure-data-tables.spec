@@ -21,22 +21,21 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-data-tables
-Version:        12.4.3
+Version:        12.4.4
 Release:        0
 Summary:        Microsoft Azure Azure Data Tables Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/table/azure-table
-Source:         https://files.pythonhosted.org/packages/source/a/azure-data-tables/azure-data-tables-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-data-tables/azure-data-tables-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-data-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.24.0
+Requires:       python-azure-core >= 1.29.4
 Requires:       python-azure-data-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-isodate < 1.0.0

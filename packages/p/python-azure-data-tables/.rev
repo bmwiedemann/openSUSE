@@ -154,4 +154,18 @@
 - Update Requires from setup.py (forwarded request 1093220 from glaubitz)</comment>
     <requestid>1093276</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d35a98113be7f0e556661ba7d4eae252</srcmd5>
+    <version>12.4.4</version>
+    <time>1694808353</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.4.4
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1111514 from glaubitz)</comment>
+    <requestid>1111567</requestid>
+  </revision>
 </revisionlist>
