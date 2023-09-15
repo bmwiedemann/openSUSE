@@ -17,11 +17,11 @@
 
 
 Name:           dovecot23
-Version:        2.3.20
+Version:        2.3.21
 Release:        0
 %define pkg_name dovecot
-%define dovecot_version 2.3.20
-%define dovecot_pigeonhole_version 0.5.20
+%define dovecot_version 2.3.21
+%define dovecot_pigeonhole_version 0.5.21
 %define dovecot_branch  2.3
 %define dovecot_pigeonhole_source_dir %{pkg_name}-%{dovecot_branch}-pigeonhole-%{dovecot_pigeonhole_version}
 %define dovecot_pigeonhole_docdir     %{_docdir}/%{pkg_name}/dovecot-pigeonhole
@@ -162,6 +162,7 @@ Patch:          dovecot-2.3.0-dont_use_etc_ssl_certs.patch
 Patch1:         dovecot-2.3.0-better_ssl_defaults.patch
 # PATCH-FIX-OPENSUSE - boo#1207958
 Patch2:         fix-build-with-openssl-3.patch
+# PATCH-FIX-UPSTREAM - https://github.com/dovecot/core/commit/f0c1cf42ea78d22e2674b03fe65f0ee6545c5b99
 Patch3:         fix-strict-aliasing.patch
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT

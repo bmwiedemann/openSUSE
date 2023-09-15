@@ -682,4 +682,12 @@
 - Enable LTO now as it works now (boo#1156301).</comment>
     <requestid>1074626</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>8f5874cfa3d7dcb97f593ff9ae39e775</srcmd5>
+    <version>2.3.21</version>
+    <time>1694808355</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.3.21 and pigeonhole 0.5.21</comment>
+    <requestid>1111576</requestid>
+  </revision>
 </revisionlist>
