@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Aug 27 15:01:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11
+  Fixed
+  * Database queries worked only if SQLite double-quoted string (DQS)
+    feature (https://www.sqlite.org/quirks.html#dblquote) was enabled
+  * Disabling data resolutions in data retention configuration didn't result
+    in possibly existing database entries getting removed from the database
+  * Disabling data resolutions in data retention configuration didn't result
+    in the data resolution getting disabled but instead storing data forever
+  * "expr: syntax error" during configure in BSD (pull request by namtsui)
+  * Image output summary would show only "no data available" text in case of
+    zero total traffic even when the historical data of no traffic could have
+    been shown instead
+  * Image output "-o -" content could get corrupted due to info, warning and
+    error messages also using stdout, configuration file warnings being the
+    most likely source, now uses stderr in image output
+  * Configuration validation was too heavily limiting and enforcing image
+    output 5 minute graph related configuration options for combinations that
+    would have resulted in usable images
+  New
+  * Database cleanup has been changed to interpret data retention
+    configuration as number of entries to be kept instead of calendar time,
+    this restores the behaviour to similar as it was up to version 1.18, the
+    difference is visible only on systems that aren't powered all the time
+  * Database is vacuumed during daemon startup and reload, behaviour is
+    configurable using VacuumOnStartup and VacuumOnHUPSignal configuration
+    options
+  * Add configuration option InterfaceOrder for controlling the interface
+    order in outputs with multiple interfaces
+  * Used data retention configuration is made visible during daemon startup
+    and after configuration reloads
+  * Daemon will no longer start if all data resolutions have been disabled
+    in the configuration file
+  * SQLite version is visible in --version outputs
+  Notes
+  * "Not enough data available yet." message has been replaced with
+    "No data. Timestamp of last update is same YYYY-MM-DD HH:MM:SS as of
+    database creation." to better explain the reason why there's nothing to
+    show, this message is expected to disappear within configured
+    SaveInterval if the interface is active
+
+-------------------------------------------------------------------
 Thu Dec  8 07:22:58 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Drop vnstat-if.sh, the used options are not supported anymore by
