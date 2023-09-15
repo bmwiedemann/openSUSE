@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:56:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Use shortcode as a fallback for body when sending stickers
+  * Add cmake check for qtlocation QML module
+  * Add Windows-specific screenshots as screenshots with custom attribute
+  * Deselect space when leaving it (kde#473271)
+  * Fix opening settings (kde#473789)
+  * Fix opening report sheet
+  * Force plain text user display name in user detail sheet
+  * Fix opening ban sheet
+  * Add release note for last two version
+  * Remove debuging value
+
+-------------------------------------------------------------------
 Mon Sep  4 06:38:34 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add some qt5qmlimport runtime deps (boo#1214916)
