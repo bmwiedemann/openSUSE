@@ -55,4 +55,18 @@
 - Actually run the testsuite.</comment>
     <requestid>964440</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3feb183e53dc4c5ae6b54ea9a85205a7</srcmd5>
+    <version>3.2.0</version>
+    <time>1694808272</time>
+    <user>anag+factory</user>
+    <comment>- drop python2 support completely, python-six not required
+- deleted patches
+  - remove-mock.patch (upstreamed)
+- added patches
+  fix https://github.com/pchomik/pytest-spec/compare/3.2.0...master
+  + python-pytest-spec-nopython2.patch
+</comment>
+    <requestid>1111343</requestid>
+  </revision>
 </revisionlist>

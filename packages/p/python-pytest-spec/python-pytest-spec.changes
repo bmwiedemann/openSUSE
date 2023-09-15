@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 14 11:59:56 UTC 2023 - pgajdos@suse.com
+
+- drop python2 support completely, python-six not required
+- deleted patches
+  - remove-mock.patch (upstreamed)
+- added patches
+  fix https://github.com/pchomik/pytest-spec/compare/3.2.0...master
+  + python-pytest-spec-nopython2.patch
+
+-------------------------------------------------------------------
 Thu Mar 24 01:24:23 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.2.0:

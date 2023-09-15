@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-spec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-spec
 Version:        3.2.0
 Release:        0
@@ -24,16 +23,14 @@ Summary:        Plugin to display pytest execution output like a specification
 License:        GPL-2.0-only
 URL:            https://github.com/pchomik/pytest-spec
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-spec/pytest-spec-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#pchomik/pytest-spec#51
-Patch0:         remove-mock.patch
+# https://github.com/pchomik/pytest-spec/compare/3.2.0...master
+Patch1:         python-pytest-spec-nopython2.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
@@ -58,6 +55,6 @@ pytest plugin to display test execution output like a specification.
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pytest_spec*
 
 %changelog
