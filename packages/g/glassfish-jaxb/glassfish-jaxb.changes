@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 14 17:02:52 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * glassfish-jaxb-timestamp.patch
+    + use SOURCE_DATE_EPOCH for timestamp in generated files
+
+-------------------------------------------------------------------
 Tue Sep 12 15:42:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp

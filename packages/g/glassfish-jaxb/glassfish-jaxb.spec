@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://jaxb.java.net
 Source0:        https://github.com/javaee/jaxb-v2/archive/%{version}.tar.gz
 Patch0:         txw2-args4j.patch
+Patch1:         glassfish-jaxb-timestamp.patch
 BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -209,6 +210,7 @@ This package contains the API documentation for %{name}.
 %setup -q -n jaxb-v2-%{version}
 
 %patch0
+%patch1 -p1
 
 pushd jaxb-ri
 
