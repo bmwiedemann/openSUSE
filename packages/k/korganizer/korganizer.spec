@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           korganizer
-Version:        23.08.0
+Version:        23.08.1
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
