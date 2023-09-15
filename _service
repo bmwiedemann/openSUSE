@@ -1,0 +1,32 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <!-- ✨ URL of the git repo ✨ -->
+    <param name="url">https://github.com/vyskocilm/cnf-rs.git</param>
+    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
+    <param name="scm">git</param>
+    <!-- ✨ The version tag or branch name from git ✨ -->
+    <param name="revision">main</param>
+    <param name="match-tag">*</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+    <!-- ✨ Your email here ✨ -->
+    <param name="changesauthor">michal.vyskocil@gmai.com</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service name="cargo_vendor" mode="disabled">
+      <!-- ✨ The name of the project here ✨ -->
+     <param name="srcdir">cnf-rs</param>
+     <param name="compression">zst</param>
+     <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="disabled">
+      <!-- ✨ The name of the project here ✨ -->
+     <param name="srcdir">cnf-rs</param>
+  </service>
+</services>
