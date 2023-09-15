@@ -143,4 +143,12 @@
     <comment>- Add runtime dependency on kquickimageeditor-imports (boo#1214836)</comment>
     <requestid>1108384</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b54e3e75a73f1c4511ac702aa732ae3b</srcmd5>
+    <version>23.08.1</version>
+    <time>1694808266</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.1 (forwarded request 1110807 from krop)</comment>
+    <requestid>1111306</requestid>
+  </revision>
 </revisionlist>
