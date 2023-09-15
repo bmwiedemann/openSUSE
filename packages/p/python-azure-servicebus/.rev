@@ -305,4 +305,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1098500 from glaubitz)</comment>
     <requestid>1098514</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2e5776d5fcdd2d2bce7a9516ca2f2e6e</srcmd5>
+    <version>7.11.2</version>
+    <time>1694808358</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 7.11.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1111589 from glaubitz)</comment>
+    <requestid>1111599</requestid>
+  </revision>
 </revisionlist>

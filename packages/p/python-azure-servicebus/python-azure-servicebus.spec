@@ -21,19 +21,18 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-servicebus
-Version:        7.11.1
+Version:        7.11.2
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-servicebus/azure-servicebus-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-servicebus/azure-servicebus-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.24.0
 Requires:       python-azure-nspkg >= 3.0.0
