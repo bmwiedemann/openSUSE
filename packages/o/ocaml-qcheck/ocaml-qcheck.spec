@@ -32,7 +32,7 @@ ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 
 %define     pkg ocaml-qcheck
 Name:           %pkg%nsuffix
-Version:        0.21.1
+Version:        0.21.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        QuickCheck inspired property-based testing for OCaml
