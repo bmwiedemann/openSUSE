@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 14 15:03:05 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 23.09
+  Added features:
+  * DTS-UHD support (contribution from Xperi)
+  * MPEG-7 output update, supporting collections for DVD Video
+  * ISO 9660: more metadata
+  * AVC: read out of time code
+  Fixed bugs:
+  * DVD Video: better support of ISO having several episodes
+  * MPEG Video: fix duration not including last field duration
+    (interlaced content only)
+  * I754, AVC&HEVC: fix risk of crash with some streams
+
+-------------------------------------------------------------------
 Wed Jul 12 18:55:56 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 23.07
