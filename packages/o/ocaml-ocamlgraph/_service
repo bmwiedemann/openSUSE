@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-ocamlgraph</param>
-    <param name="revision">f97d342db06ccdbc11354303b5f225ae433f7ef3</param>
+    <param name="revision">9ebfbb119b50d98b31f34be4983cd4f842460ea0</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/backtracking/ocamlgraph.git</param>

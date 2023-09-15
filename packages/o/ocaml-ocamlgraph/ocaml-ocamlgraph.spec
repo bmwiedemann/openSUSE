@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ocamlgraph
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,19 @@
 
 
 Name:           ocaml-ocamlgraph
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Graph library for OCaml
 License:        LGPL-2.1
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/ocamlgraph
-Source:         %{name}-%{version}.tar.xz
-BuildRequires:  ocaml
+Source:         %name-%version.tar.xz
+BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune >= 2.0
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(stdlib-shims)
+BuildRequires:  ocamlfind(graphics)
 
 %description
 OCamlgraph is a graph library for Objective Caml.
@@ -36,12 +37,12 @@ OCamlgraph is a graph library for Objective Caml.
 %package devel
 Summary:        Development files for the OcamlGraph graph library
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description devel
 OCamlgraph is a graph library for Objective Caml.
 
-This package contains development files for %{name}.
+This package contains development files for %name.
 
 %prep
 %autosetup -p1
@@ -58,8 +59,8 @@ dune_release_pkgs='ocamlgraph'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog
