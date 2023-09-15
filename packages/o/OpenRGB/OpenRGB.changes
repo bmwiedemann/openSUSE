@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  7 06:41:06 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Use the make install target to install everything properly
+  (boo#1215079)
+
+-------------------------------------------------------------------
 Fri Jul 14 14:02:05 UTC 2023 - Erwan GEORGET <egeorget@canopus.dev>
 
 - Update to upstream version 0.9

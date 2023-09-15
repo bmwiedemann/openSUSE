@@ -52,15 +52,11 @@ This package contain the udev rules for OpenRGB.
 %autosetup -p1 -n %{name}-release_%{version}
 
 %build
-%qmake5 QMAKE_CXXFLAGS+=-save-temps
+%qmake5
 %make_build
 
-./scripts/build-udev-rules.sh $(pwd)
-
 %install
-install -Dpm0755 openrgb %{buildroot}/%{_bindir}/openrgb
-install -Dpm0644 qt/OpenRGB.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
-install -Dpm0644 60-openrgb.rules %{buildroot}%{_udevrulesdir}/60-openrgb.rules
+%make_install INSTALL_ROOT=%{buildroot}
 %suse_update_desktop_file -c %{name} %{name} 'Configure RGB LEDs' openrgb %{name} Settings HardwareSettings
 
 # see if creating .conf to load speficic kernel modules is necessary
@@ -75,8 +71,9 @@ install -Dpm0644 60-openrgb.rules %{buildroot}%{_udevrulesdir}/60-openrgb.rules
 %license LICENSE
 %doc README.md
 %{_bindir}/openrgb
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/metainfo/org.openrgb.OpenRGB.metainfo.xml
 
 %files udev-rules
 %license LICENSE
