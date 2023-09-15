@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 13 06:33:51 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Tue Dec  6 21:31:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.64:
