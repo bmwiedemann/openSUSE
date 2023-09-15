@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:55:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- No code change since 23.08.0
+
+-------------------------------------------------------------------
 Tue Aug 29 10:07:22 UTC 2023 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Fix Provides/Obsoletes: the removed package was named

@@ -928,4 +928,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
   akonadi-server-sqlite, not akonadi-sqlite (forwarded request 1107906 from wolfi323)</comment>
     <requestid>1107918</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>7c98ceb081ded1b13477c6b1f7a10c5c</srcmd5>
+    <version>23.08.1</version>
+    <time>1694808102</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.1 (forwarded request 1110807 from krop)</comment>
+    <requestid>1111081</requestid>
+  </revision>
 </revisionlist>
