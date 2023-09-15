@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:55:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Apply the same fix for ToolTip
+  * Convert the displayed time to local time
+  * IncidenceFormatter: fix start/end dt of recurrent event crossing DST (kde#451459)
+  * Preserve timezone of original incidence when copy-pasting (kde#448703)
+
+-------------------------------------------------------------------
 Sun Aug 20 13:59:15 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.0
