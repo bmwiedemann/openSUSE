@@ -688,4 +688,12 @@
     <comment></comment>
     <requestid>1110810</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>91cfc903e6a39eab16bdd668a8774408</srcmd5>
+    <version>1.8.8</version>
+    <time>1694808321</time>
+    <user>anag+factory</user>
+    <comment>change changelog mistake, from PED-6362 to jsc#PED-6362</comment>
+    <requestid>1111460</requestid>
+  </revision>
 </revisionlist>
