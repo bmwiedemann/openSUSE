@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 15 11:07:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.24.0:
+  * Release notes for v0.24.0 (#1322)
+  * feat: multidoc support for yaml and json (#1304)
+  * Bump golang.org/x/crypto from 0.12.0 to 0.13.0 (#1319)
+  * Update the golang version to the latest available one (#1318)
+  * Bump k8s.io/client-go from 0.28.0 to 0.28.1 (#1308)
+  * Bump github.com/onsi/ginkgo/v2 from 2.11.0 to 2.12.0 (#1310)
+  * Bump k8s.io/code-generator from 0.28.0 to 0.28.1 (#1307)
+  * Delete repeating warning message (#1303)
+  * Bump k8s.io/code-generator from 0.27.4 to 0.28.0 (#1300)
+  * Bump k8s.io/client-go from 0.27.4 to 0.28.0 (#1297)
+  * Add dashboard configmap annotations (#1302)
+  * docs: updating readme to show how to get kubeseal version
+    dynamically in install (#1294)
+  * Update carvel package to v2.12.0 (#1293)
+  * Release chart 2.12.0 (#1292)
+
+-------------------------------------------------------------------
 Thu Sep 07 07:24:51 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.23.1:
