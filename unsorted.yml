@@ -2236,6 +2236,10 @@ unsorted:
   - cmus-plugin-vorbis 
   - cmus-plugin-wavpack 
   - cmus-plugins-all 
+  - cnf-rs 
+  - cnf-rs-bash 
+  - cnf-rs-locale 
+  - cnf-rs-zsh 
   - cni-plugin-dnsname 
   - cni-plugin-flannel 
   - cntlm 
@@ -8586,6 +8590,7 @@ unsorted:
   - jlatexmath 
   - jlatexmath-fop 
   - jlatexmath-javadoc 
+  - jless 
   - jlex 
   - jlfgr 
   - jline 
@@ -13446,7 +13451,7 @@ unsorted:
   - libnfc-devel 
   - libnfc-tools 
   - libnfc6 
-  - libnfdump1_7_1 
+  - libnfdumplibnfdump-1_7_3 
   - libnfnetlink-devel 
   - libnfnetlink0-32bit 
   - libnfs-devel 
@@ -23386,6 +23391,7 @@ unsorted:
   - python310-azure-mgmt-containerinstance 
   - python310-azure-mgmt-containerregistry 
   - python310-azure-mgmt-containerservice 
+  - python310-azure-mgmt-containerservicefleet 
   - python310-azure-mgmt-core 
   - python310-azure-mgmt-cosmosdb 
   - python310-azure-mgmt-costmanagement 
@@ -26849,6 +26855,7 @@ unsorted:
   - python311-azure-mgmt-containerinstance 
   - python311-azure-mgmt-containerregistry 
   - python311-azure-mgmt-containerservice 
+  - python311-azure-mgmt-containerservicefleet 
   - python311-azure-mgmt-core 
   - python311-azure-mgmt-cosmosdb 
   - python311-azure-mgmt-costmanagement 
@@ -30219,6 +30226,7 @@ unsorted:
   - python39-azure-mgmt-containerinstance 
   - python39-azure-mgmt-containerregistry 
   - python39-azure-mgmt-containerservice 
+  - python39-azure-mgmt-containerservicefleet 
   - python39-azure-mgmt-core 
   - python39-azure-mgmt-cosmosdb 
   - python39-azure-mgmt-costmanagement 
@@ -34843,6 +34851,9 @@ unsorted:
   - sonnet-devel 
   - sonnet-voikko 
   - sonobuoy 
+  - sonobuoy-bash-completion 
+  - sonobuoy-fish-completion 
+  - sonobuoy-zsh-completion 
   - sops 
   - sopwith 
   - sord 
