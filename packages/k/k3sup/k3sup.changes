@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 15 09:20:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.13.1:
+  * Update vendor
+  * Update to go-execute v2
+  * chore: remove refs to deprecated io/ioutil
+
+-------------------------------------------------------------------
 Thu Aug 31 14:44:03 UTC 2023 - andrea.manzini@suse.com
 
 - Update to version 0.13.0:
