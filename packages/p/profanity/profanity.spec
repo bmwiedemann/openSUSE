@@ -25,10 +25,11 @@ Group:          Productivity/Networking/Instant Messenger
 URL:            https://profanity-im.github.io
 Source:         https://github.com/profanity-im/profanity/releases/download/%{version}/profanity-%{version}.tar.gz
 Source1:        profanity-rpmlintrc
-# all 3 patches taken from upstream repo
+# all 4 patches taken from upstream repo
 Patch0:         profanity-0.14.0-ox-carbons.patch
 Patch1:         profanity-0.14.0-typos.patch
 Patch2:         profanity-0.14.0-xscreensaver.patch
+Patch3:         profanity-0.14.0-plugins-install.patch
 BuildRequires:  glib2-devel >= 2.62
 BuildRequires:  gtk2-devel
 BuildRequires:  libcurl-devel
@@ -88,6 +89,7 @@ Including:
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 sed -i -e "s/python-config/python3-config/g" configure
 
 %build

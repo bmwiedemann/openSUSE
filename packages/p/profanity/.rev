@@ -607,4 +607,13 @@
     profanity-0.14.0-xscreensaver.patch</comment>
     <requestid>1106132</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>ada040c975b2e573987bc26e7d9884dc</srcmd5>
+    <version>0.14.0</version>
+    <time>1694808319</time>
+    <user>anag+factory</user>
+    <comment>- Add profanity-0.14.0-plugins-install.patch:
+  Fix crash upon /plugins install while disconnected</comment>
+    <requestid>1111435</requestid>
+  </revision>
 </revisionlist>
