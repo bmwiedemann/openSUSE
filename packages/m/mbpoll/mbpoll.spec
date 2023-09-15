@@ -1,7 +1,8 @@
 #
 # spec file for package mbpoll
 #
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2020-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +16,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           mbpoll
-Version:        1.4.11
+Version:        1.5.2
 Release:        0
 Summary:        Command line utility to communicate with ModBus slave (RTU or TCP)
 License:        GPL-3.0-or-later
@@ -29,7 +31,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libmodbus) >= 3.1.4
 
 %description
-mbpoll uses libmodbus (http://libmodbus.org/).  
+mbpoll uses libmodbus (http://libmodbus.org/).
 Although the syntax of these options is very close modpoll proconX program,
 it is a completely independent project.
 
@@ -39,7 +41,7 @@ mbpoll can:
  - read input registers
  - read and write output registers (holding register)
 
-The reading and writing registers may be in decimal, hexadecimal or 
+The reading and writing registers may be in decimal, hexadecimal or
 floating single precision.
 
 %prep
