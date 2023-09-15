@@ -1808,4 +1808,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     * reset ReGIS-context when resetting graphics in RIS. (forwarded request 1098806 from dirkmueller)</comment>
     <requestid>1098828</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>ee85f02865bad2807ed064450d75d733</srcmd5>
+    <version>384</version>
+    <time>1694808149</time>
+    <user>anag+factory</user>
+    <comment>      (CVE-2023-40359 bsc#1214282)</comment>
+    <requestid>1111588</requestid>
+  </revision>
 </revisionlist>
