@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Sep 15 11:13:10 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.157.0:
+  What's Changed
+  * bump github.com/helmfile/vals by @jkroepke in #982
+  * fix snapshot tests random error by @yxxhero in #985
+  * feat: keyring supportting by @yxxhero in #984
+  * update keyring docs by @yxxhero in #986
+  * Update docs for running as container by @PointyShinyBurning
+    in #988
+  * Add missing documentation for isFile function by @anessi in #996
+  * Update workflows by @bonddim in #998
+  * build(deps): bump actions/checkout from 3 to 4 by @dependabot
+    in #999
+  * build(deps): bump gitpython from 3.1.32 to 3.1.34 in /docs
+    by @dependabot in #1004
+  * chore: added a note in the doc. by @rlnchow in #1006
+  * build(deps): bump gitpython from 3.1.34 to 3.1.35 in /docs by
+    @dependabot in #1008
+
+- Update to version 0.156.0:
+  What's Changed
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.1 to
+    1.7.2 by @dependabot in #949
+  * build(deps): bump go.uber.org/zap from 1.24.0 to 1.25.0 by
+    @dependabot in #957
+  * build(deps): bump github.com/helmfile/chartify from 0.14.0 to
+    0.15.0 by @dependabot in #956
+  * build(deps): bump github.com/helmfile/vals from 0.26.1 to
+    0.26.2 by @dependabot in #962
+  * build(deps): bump golang.org/x/term from 0.10.0 to 0.11.0
+    by @dependabot in #961
+  * fix re-using environment state in sub-helmfiles issue by
+    @yxxhero in #951
+  * feat: add friendly tips for helmfile config order by @yxxhero
+    in #710
+  * chore: join with space by @wrenix in #963
+  * Implement --diff-args by @jkroepke in #959
+  * build(deps): bump gitpython from 3.1.30 to 3.1.32 in /docs
+    by @dependabot in #970
+  * build(deps): bump helm.sh/helm/v3 from 3.12.2 to 3.12.3
+    by @dependabot in #968
+  * bump helm to v3.12.3 by @yxxhero in #971
+  * bump go to 1.21 by @yxxhero in #972
+  * Support functions written by KCL to mutate or validate
+    manifests for Helmfile @Peefy #827
+
+-------------------------------------------------------------------
 Sat Aug 12 09:05:31 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.155.1:
