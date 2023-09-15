@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 27 16:47:53 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Compile with support for systemd (sd_notify)
+
+-------------------------------------------------------------------
 Mon Jul  3 13:31:07 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.20.5

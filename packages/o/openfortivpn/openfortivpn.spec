@@ -29,7 +29,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  openssl-devel
 Requires:       ppp
-BuildRequires:  systemd-rpm-macros
+BuildRequires:  systemd-devel
 
 %description
 openfortivpn is a client for PPP+SSL VPN tunnel services. It spawns a pppd
