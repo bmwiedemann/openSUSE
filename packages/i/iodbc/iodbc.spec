@@ -1,7 +1,7 @@
 #
 # spec file for package iodbc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           iodbc
-Version:        3.52.14
+Version:        3.52.16
 Release:        0
 Summary:        ODBC compliant driver manager
 License:        BSD-3-Clause OR LGPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            http://www.iodbc.org/
 Source:         https://download.sourceforge.net/iodbc/libiodbc-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-nonvoid-return.diff -- https://github.com/openlink/iODBC/issues/58
-Patch0:         fix-nonvoid-return.diff
 BuildRequires:  pkgconfig(gtk+-2.0)
 
 %description
