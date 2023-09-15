@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:55:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Fix lintian cleanup in snapcraft.yaml
+  * Add snapcraft 23.08 release
+
+-------------------------------------------------------------------
 Sun Aug 20 13:58:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.0
