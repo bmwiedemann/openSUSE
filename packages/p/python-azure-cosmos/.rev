@@ -85,4 +85,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1103832 from glaubitz)</comment>
     <requestid>1103873</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ada72b7bf8dd5cc3b4f3c1ec48ebbd3c</srcmd5>
+    <version>4.5.1</version>
+    <time>1694808351</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.5.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1111508 from glaubitz)</comment>
+    <requestid>1111565</requestid>
+  </revision>
 </revisionlist>
