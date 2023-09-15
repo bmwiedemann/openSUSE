@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:56:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Also allow direct extraction from SNCF Secutix barcodes
+  * Correctly update the search offset in the MAV extractor
+  * Handle more cases of ZSSK network tickets
+  * Correctly import buses from DB online tickets
+  * Add Slovak Lines PDF ticket extractor script
+  * Add premiumkino Apple Wallet pass extractor script
+  * Handle more end of validtity variants in RCT2 tickets
+  * Fall back to the second RCT2 title line if the first one is empty (kde#472916)
+  * Handle Amtrak tickets with unreserved seats
+  * Add British Airways boarding pass extractor script
+  * Add extractor script for Aer Lingus PDF boarding passes
+  * Increase upper aspect ratio limit for PDF417 barcodes
+
+-------------------------------------------------------------------
 Sun Aug 20 13:59:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.0
