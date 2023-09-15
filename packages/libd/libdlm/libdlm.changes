@@ -95,6 +95,13 @@ Mon Aug  5 09:16:31 UTC 2019 - ghe@suse.com
 - Update to v4.0.9
  * include some fixes/enhancements for dlm_controld (bsc#1144793)
  * source moved to https://pagure.io/dlm
+ * drop 0004-bsc#1098449-dlm_stonith-explicitly-use-libstonithd.patch
+
+-------------------------------------------------------------------
+Thu Nov 15 10:40:59 UTC 2018 - ygao@suse.com
+
+- Explicitly use and link libstonithd from libpacemaker3 (bsc#1098449)
+  * 0004-bsc#1098449-dlm_stonith-explicitly-use-libstonithd.patch
 
 -------------------------------------------------------------------
 Mon Aug  6 11:01:48 UTC 2018 - schwab@suse.de
