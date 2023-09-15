@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           dolphin-plugins
-Version:        23.08.0
+Version:        23.08.1
 Release:        0
 Summary:        Version control plugins for Dolphin
 License:        GPL-2.0-or-later
@@ -51,6 +51,7 @@ Recommends:     dolphin >= %{_kapp_version}
 Dolphin file manager specific version control plugins that:
 - Show the version state of a file by an emblem + color
 - Provide a context menu with version control specific actions
+- Provide context menu actions to mount ISO disk images
 
 %lang_package
 
