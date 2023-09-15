@@ -1,8 +1,17 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."git+https://github.com/reknih/iai"]
-git = "https://github.com/reknih/iai"
+[source."git+https://github.com/typst/iai"]
+git = "https://github.com/typst/iai"
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/typst/oxipng?rev=b8ec65b"]
+git = "https://github.com/typst/oxipng"
+rev = "b8ec65b"
+replace-with = "vendored-sources"
+
+[source."git+https://github.com/typst/self-replace"]
+git = "https://github.com/typst/self-replace"
 replace-with = "vendored-sources"
 
 [source.vendored-sources]
