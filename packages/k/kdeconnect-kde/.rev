@@ -579,4 +579,12 @@
     <comment>- Remove the kdeconnect_open handler to work around kde#472697 (forwarded request 1108027 from Vogtinator)</comment>
     <requestid>1108047</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>a1acaf519c0f0e1bf8481a08cf52a960</srcmd5>
+    <version>23.08.1</version>
+    <time>1694808117</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.1 (forwarded request 1110807 from krop)</comment>
+    <requestid>1111149</requestid>
+  </revision>
 </revisionlist>

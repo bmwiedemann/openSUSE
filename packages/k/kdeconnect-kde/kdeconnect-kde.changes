@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:55:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Sanitize certificate subject name before comparing to deviceId
+  * Fix remote keyboard sending "space" when pressing space (kde#473956)
+  * Fix SFTP plugin on Windows (kde#473511)
+
+-------------------------------------------------------------------
 Wed Aug 30 06:07:01 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Remove the kdeconnect_open handler to work around kde#472697
