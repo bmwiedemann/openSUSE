@@ -53,7 +53,6 @@ available) to accelerate video decoding.
 %package -n %{soname}%{sover}
 Summary:        VDPAU driver with OpenGL/VAAPI backend
 Group:          System/Libraries
-Supplements:    modalias(pci:v00008086d*sv*sd*bc03sc*i*)
 Provides:       %{soname} = %{version}
 
 %description -n %{soname}%{sover}
