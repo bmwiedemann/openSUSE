@@ -438,4 +438,15 @@
 - Switch source archive format to TAR.GZ (forwarded request 1105451 from glaubitz)</comment>
     <requestid>1105470</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>cd2fed747f051bebeca7c4de926918ac</srcmd5>
+    <version>1.29.4</version>
+    <time>1694808352</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.29.4
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1111513 from glaubitz)</comment>
+    <requestid>1111566</requestid>
+  </revision>
 </revisionlist>
