@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:56:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Fix creation of new JS objects (kde#474256)
+  * Guard against setting invalid button icons
+  * The nFace argument in PDF JS button icon methods is optional
+  * Fix cert selection height
+
+-------------------------------------------------------------------
 Sun Aug 20 14:00:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.0
