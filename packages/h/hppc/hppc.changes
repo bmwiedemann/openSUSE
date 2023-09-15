@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 14 15:27:47 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * hppc-timestamp.patch
+    + use SOURCE_DATE_EPOCH for timestamp in generated files
+
+-------------------------------------------------------------------
+Wed Sep 13 06:30:04 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
 Wed Mar 30 10:24:48 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the standalone JavaEE modules inconditionally
