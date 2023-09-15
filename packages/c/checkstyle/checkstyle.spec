@@ -27,6 +27,7 @@ URL:            http://checkstyle.sourceforge.net/
 Source0:        http://download.sf.net/checkstyle/checkstyle-%{version}-src.tar.gz
 Source2:        %{name}.catalog
 Patch0:         checkstyle-8.0-guava.patch
+Patch1:         checkstyle-no-timestamp.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  maven-local
@@ -64,6 +65,7 @@ API documentation for %{name}.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %pom_remove_parent
 

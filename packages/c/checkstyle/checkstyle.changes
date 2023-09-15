@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 14 08:23:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * checkstyle-no-timestamp.patch
+    + Do not add build "checkstyle.compile.timestamp" into
+      checkstylecompilation.properties
+
+-------------------------------------------------------------------
 Tue Sep 12 12:35:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
