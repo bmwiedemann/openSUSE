@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:56:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * "changed" can't be a reference since it gets modified later on the loop (kde#474132)
+
+-------------------------------------------------------------------
 Sun Aug 20 14:00:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.0
