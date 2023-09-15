@@ -1,7 +1,7 @@
 #
 # spec file for package jless
 #
-# Copyright (c) 2022, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2022-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,22 @@
 
 
 Name:           jless
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Pager for JSON (or YAML) data
 License:        MIT
 Group:          Productivity/Text/Utilities
 URL:            https://jless.io/
 Source:         https://github.com/PaulJuliusMartinez/jless/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
+BuildRequires:  zstd
 BuildRequires:  cargo
 BuildRequires:  pkgconfig
-BuildRequires:  rust
-BuildRequires:  rust-packaging
+BuildRequires:  rust >= 1.67
+BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(xcb)
+BuildRequires:  python3-base
 
 %description
 JLess is a command-line JSON viewer designed for reading, exploring, and
