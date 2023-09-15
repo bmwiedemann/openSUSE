@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:55:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Add 23.08.1 release notes
+  * Add release APK CI jobs
+  * Fix editing bus and train elements without an associated ticket object (kde#474234)
+  * Manually manage permissions in the Android manifest
+  * Correctly size constrain Apple Wallet generic pass thumbnail image
+  * Fix typos in the release notes
+  * Fix progress computation on the initial journey stopover
+  * Unbreak Flatpak build after the runtime removed ZXing
+  * Add 23.08.0 release notes
+
+-------------------------------------------------------------------
 Sun Aug 20 13:59:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.0
