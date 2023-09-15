@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:55:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Copy Location: Make sure to export path with native separators
+
+-------------------------------------------------------------------
 Sun Aug 20 13:58:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.0
