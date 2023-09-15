@@ -18,7 +18,7 @@
 %global libsover 21
 %bcond_without released
 Name:           konsole
-Version:        23.08.0
+Version:        23.08.1
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
@@ -28,8 +28,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-crashes-in-testTerminalInterface.patch
 Source3:        Root_Shell.profile
 Source4:        konsolesu.desktop
 Source21:       utilities-terminal-su-16.png

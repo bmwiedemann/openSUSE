@@ -1382,4 +1382,12 @@
   * 0001-Fix-crashes-in-testTerminalInterface.patch</comment>
     <requestid>1108941</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>af9d5de38b135cd2631675556517807d</srcmd5>
+    <version>23.08.1</version>
+    <time>1694808134</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.1 (forwarded request 1110807 from krop)</comment>
+    <requestid>1111221</requestid>
+  </revision>
 </revisionlist>
