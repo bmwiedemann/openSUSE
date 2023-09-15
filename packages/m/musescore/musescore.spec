@@ -179,7 +179,7 @@ export CXX=g++-12
 %cmake \
        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DMUSESCORE_BUILD_CONFIGURATION=app \
-       -DMUSESCORE_BUILD_CONFIG=release \
+       -DMUSESCORE_BUILD_MODE=release \
        -DBUILD_UNIT_TESTS=OFF \
        -DUSE_SYSTEM_FREETYPE=ON \
        -DBUILD_JACK:BOOL=ON \
