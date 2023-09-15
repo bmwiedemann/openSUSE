@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep 15 10:41:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.157.0:
+  * Release notes for 0.157.0
+  * Bump dependencies
+  * update readme with new url of logo image
+  * fix permission denied error for link checker
+  * fix *** missing separator.  Stop. error
+  * fix dependencies required for social cards
+  * Material version updates and added social cards, cookie consent
+    and feedback functionality
+  * Fix `update aws node` workflow (#7045)
+  * Add note on how to use `--include/exclude` flags when creating
+    iamserviceaccounts (#7047)
+  * Skip adding egress rules if default egress rule is present
+  * Disallow passing a vpc.securityGroup with external SG rules for
+    unowned clusters
+  * Bump actions/checkout from 3.6.0 to 4.0.0
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Fri Sep 08 10:37:11 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.156.0:
