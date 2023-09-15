@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
 Wed Sep 13 16:21:02 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
-- update to 8.0.1 Many changes, see
-  https://www.mapserver.org/development/changelog/changelog-8-0.html
+- update to 8.0.1
+  * PROJ_DATA set through config option: take into account
+    possibility of multiple paths separated by ; on Windows or : on
+    Unix
+  * Resolve a bunch of memory leaks, integer overflows, nullptr
+    dereferences, double-frees.
+  * Allow NULL shapes to be returned in WFS GetFeature requests
+  * Ensure POINT blocks do not contain too many points
+  * https://www.mapserver.org/development/changelog/changelog-8-0.html
 
 -------------------------------------------------------------------
 Sat Nov  5 22:40:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
