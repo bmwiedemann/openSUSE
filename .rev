@@ -7,4 +7,41 @@
     <comment></comment>
     <requestid>1110287</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d8c43719188c62b7e3a2c679ef064eba</srcmd5>
+    <version>0.12.0~0</version>
+    <time>1694808314</time>
+    <user>anag+factory</user>
+    <comment>- Add version to provides/obsoletes
+
+- Update to 0.12.0:
+  Bug Fixes:
+  * Expand --all help
+  * RUSTSEC-2020-0071
+  * Generalize gitignore to ignore all eza deb packages
+  * Canonicalize errors when the destination of a symbolic link is bad
+  * Handle other canonicalize errors in hyperlinks and git
+  * Fix windows build when canonicalize returns an error
+  * Change trycmd config to use test/itest folder for testing
+  * Revert to old apt install command suggestion and add hint
+  * Remove stray backslashes
+  * Is_some_and is an unstable Rust feature until 1.70
+  * Revert &quot;Support for Windows Hidden Files&quot;
+  * Shellcheck warnings
+  * Revert &quot;Support for Windows Hidden Files&quot;
+  * Shellcheck warnings
+  * Exit 13 on os error 13
+  * Rewrite comment
+  * Improve trace strings
+  * Tracing typo
+  Documentation:
+  * Expand --all documentation
+  * Add pthorpe92 gist
+  * Remove xtests section from readme
+  * Add deprecation warning to xtests/readme
+  * Add deprecation warning to just xtest commands
+  * Add deprecation warning to vagrantfile
+  * Add MacPorts install info</comment>
+    <requestid>1111515</requestid>
+  </revision>
 </revisionlist>

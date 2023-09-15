@@ -17,7 +17,7 @@
 
 
 Name:           eza
-Version:        0.11.1~0
+Version:        0.12.0~0
 Release:        0
 Summary:        Replacement for ls written in Rust
 License:        MIT
@@ -33,8 +33,8 @@ BuildRequires:  zsh
 %ifnarch %ix86 %arm ppc
 BuildRequires:  pandoc
 %endif
-Provides:       exa
-Obsoletes:      exa
+Provides:       exa = 0.10.1
+Obsoletes:      exa <= 0.10.1
 
 %description
 eza is a modern, maintained replacement for ls, built on exa.
