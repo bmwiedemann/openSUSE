@@ -21,19 +21,18 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-storage-blob
-Version:        12.17.0
+Version:        12.18.0
 Release:        0
 Summary:        Microsoft Azure Storage Blob Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-storage-blob/azure-storage-blob-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-storage-blob/azure-storage-blob-%{version}.tar.gz
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-storage-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-common >= 1.1.5
 Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.28.0
