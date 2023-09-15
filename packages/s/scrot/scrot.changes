@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 11 12:43:34 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.10.0:
+  * New option: --compression to specify a compression level.
+    Note that certain formats (such as PNG) will now use --compression instead of --quality.
+  * Improvement: Timing in scrot --delay.
+  * Improvement: Screenshot timestamps timing.
+  * Document: Not all compositors support opacity.
+  * Document: Depend on an interface, not an implementation.
+  * Document: Fixed license to MIT-feh. NOTE: this is NOT a license change,
+    we simply fixed the document to correctly identify the license.
+  * Document: Make it clear --window option takes an argument.
+  * Document: Clarify imlib2 feature requirement.
+  * Document: Fix --quality description in manpage.
+  * Improvement: Fatally error out in case the mouse pointer image cannot be acquired.
+  * Deprecate: --note.
+  * Fixes: Memory leak.
+  * Several other fixes.
+
+-------------------------------------------------------------------
 Sat Jan 28 16:13:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.1:
