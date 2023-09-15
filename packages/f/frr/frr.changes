@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 12 13:40:19 UTC 2023 - Marius Tomaschewski <mt@suse.com>
+
+- Apply upstream fix for NULL pointer dereference due to processing
+  of malformed requests with no attributes in bgp_nlri_parse_flowspec
+  (CVE-2023-41909,bsc#1215065,https://github.com/FRRouting/frr/pull/13222/commits/cfd04dcb3e689754a72507d086ba3b9709fc5ed8).
+  [+ 0012-bgpd-Limit-flowspec-to-no-attribute-means-a-implicit.patch]
+
+-------------------------------------------------------------------
 Wed Aug 30 17:15:35 UTC 2023 - Marius Tomaschewski <mt@suse.com>
 
 - Removed protobuf-c BuildRequires (source package name) breaking

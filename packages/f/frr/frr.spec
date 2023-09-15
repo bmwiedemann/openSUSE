@@ -50,6 +50,7 @@ Patch8:         0008-bgpd-Don-t-read-the-first-byte-of-ORF-header-if-we-a.patch
 Patch9:         0009-bgpd-Do-not-process-NLRIs-if-the-attribute-length-is.patch
 Patch10:        0010-bgpd-Use-treat-as-withdraw-for-tunnel-encapsulation-.patch
 Patch11:        0011-babeld-fix-11808-to-avoid-infinite-loops.patch
+Patch12:        0012-bgpd-Limit-flowspec-to-no-attribute-means-a-implicit.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7
@@ -198,6 +199,7 @@ developing OSPF-API and frr applications.
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 %build
 # GCC LTO objects must be "fat" to avoid assembly errors
