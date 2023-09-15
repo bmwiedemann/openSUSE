@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Aug 27 09:38:29 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to new upstream release 0.4.1
+  * Always write output files with newlines.
+  * test binary mode for stdout stream.
+  * Doc: initial readme updates and conversion to rst format.
+  * FIX error: 'TypeError: can only concatenate str (not "bytes")
+    to str'.
+  * cp210x: Provide baud rate table as bytearray to pyusb
+  * cp210x: Convert return of pyusb.ctrl_transfer to bytearray
+  * fix format of sample ini files
+    + get rid of duplicate line, which made ConfigParser throw an
+      exception
+    + get rid of leading spaces, which made ConfigParser interpret
+      those entries as being additional lines in a multi-line value
+      for 120000 entry
+  * ini: Allow inline comments
+
+-------------------------------------------------------------------
 Mon Oct 26 06:54:05 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to new upstream release 0.4
