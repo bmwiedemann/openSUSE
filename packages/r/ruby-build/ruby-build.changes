@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 14 17:25:09 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20230914.1.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230914.1
+  * Use the TruffleRuby JVM Standalones for truffleruby+graalvm-dev by @eregon in #2251
+  * Update URLs for truffleruby+graalvm-dev by @eregon in #2252
+
+-------------------------------------------------------------------
+Thu Sep 14 13:44:29 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20230914.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230914
+  * workaround jruby#7799 by updating rubygems for JRuby 9.2.x by @jsvd in #2246
+  * Added 3.3.0-preview2 by @hsbt in #2249
+  * Bump up openssl-1.1.1w by @hsbt in #2250
+
+-------------------------------------------------------------------
 Mon Sep 11 23:02:14 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20230912.

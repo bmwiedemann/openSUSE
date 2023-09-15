@@ -295,4 +295,21 @@
     <comment></comment>
     <requestid>1110386</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>cdd1917205d3124df8675e44f39cf900</srcmd5>
+    <version>20230914.1</version>
+    <time>1694808281</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20230914.1.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230914.1
+  * Use the TruffleRuby JVM Standalones for truffleruby+graalvm-dev by @eregon in #2251
+  * Update URLs for truffleruby+graalvm-dev by @eregon in #2252
+- Update to version 20230914.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230914
+  * workaround jruby#7799 by updating rubygems for JRuby 9.2.x by @jsvd in #2246
+  * Added 3.3.0-preview2 by @hsbt in #2249
+  * Bump up openssl-1.1.1w by @hsbt in #2250
+</comment>
+    <requestid>1111396</requestid>
+  </revision>
 </revisionlist>
