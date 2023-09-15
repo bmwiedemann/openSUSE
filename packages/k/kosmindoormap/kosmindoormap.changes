@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:56:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.1/
+- Changes since 23.08.0:
+  * Handle another luggage locker tagging variant
+  * Show the type of diplomatic entities in the info box
+  * Add consulate icon, show labels for embassys
+  * Render food courts, clinics and an alternative travel agency tagging
+  * Handle network:wikipedia tags in the same way we handle operator:wikipedia
+  * Display lost & found offices
+  * Display airport baggage claim belts
+  * Add luggage locker icon
+
+-------------------------------------------------------------------
 Sun Aug 20 13:59:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.0
