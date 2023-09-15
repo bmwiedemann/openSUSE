@@ -10,7 +10,7 @@
 
   <service name="recompress" mode="disabled">
     <param name="file">gfs2-utils*.tar</param>
-    <param name="compression">bz2</param>
+    <param name="compression">gz</param>
   </service>
 
   <service name="set_version" mode="disabled">

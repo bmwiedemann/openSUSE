@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Aug 21 01:22:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
 
-- Update to version 3.5.1 (PED-6362):
+- Update to version 3.5.1 (jsc#PED-6362)
   * Don't use char arrays as temporary buffers
   * libgfs2: Separate gfs and gfs2 code in lgfs2_sb_out()
   * Re-enable -Wstrict-aliasing
@@ -14,6 +14,10 @@ Mon Aug 21 01:22:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
   + 0001-fsck.gfs2-Tighten-offset-check-in-check_eattr_entrie.patch
   + 0002-fsck.gfs2-Fix-max-xattr-record-length-check.patch
   + 0003-fsck.gfs2-Fix-xattr-offset-checks-in-p1_check_eattr_.patch
+
+- Update rpm build file
+  * _service
+  * _servicedata
 
 -------------------------------------------------------------------
 Mon Mar  6 15:28:16 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
