@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Aug 27 13:50:46 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.0
+  * French translation added for NLS support.
+  * Option to skip to next group while searching for next unread
+    article added.
+  * Support for custom colors in displayed article added.
+  * Support for user defined TCP connection timeout.
+  * Header field "Newsgroups" can now be extracted from overview,
+    if present. Scoring rules of type "group" are applied to all
+    groups of an Xpost in this case.
+  * Support for LIST OVERVIEW.FMT command (RFC 3977) added
+  * Experimental support for NNTP MAXARTNUM extension added.
+  * Zero-width space (ZWSP) is now used too as line breaking hint
+    for the format "flowed" decoder.
+  * Soft hyphens are now handled consistently with all FLTK
+    backends (formerly X11 rendered all SHY characters visible,
+    as defined by ISO 8859-1, while Pango and Cocoa rendered SHY
+    characters invisible).
+  * Unicode database updated to version 15.0.0.
+  * The experimental option USE_CUSTOM_FONTSIZE has been removed
+    Since FLTK 1.4 there is a resize feature via keyboard
+    (Ctrl-+/-).
+  * Examples for postprocessor added in subdirectory "postproc".
+  * Example for external editor added in subdirectory "editor".
+
+-------------------------------------------------------------------
 Sat May 28 08:31:40 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.0

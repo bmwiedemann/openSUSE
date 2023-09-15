@@ -1,8 +1,8 @@
 #
 # spec file for package flnews
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2020-2022, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2020-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           flnews
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Graphical USENET newsreader
 License:        BSD-2-Clause
@@ -58,6 +58,7 @@ make PREFIX=%{_prefix} %{?_smp_mflags}
 %{_datadir}/flnews/license.txt
 %dir %{_datadir}/flnews/nls
 %{_datadir}/flnews/nls/de_DE.cat
+%{_datadir}/flnews/nls/fr_FR.cat
 %{_mandir}/man1/flnews.1%{?ext_man}
 %{_datadir}/applications/flnews.desktop
 %{_datadir}/icons/hicolor/*/apps/flnews.png
