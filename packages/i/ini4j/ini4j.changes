@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 14 17:10:17 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not package information about all the properties of the
+  build environment
+
+-------------------------------------------------------------------
 Sun Mar 20 16:45:58 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8

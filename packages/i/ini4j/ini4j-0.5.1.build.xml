@@ -83,10 +83,6 @@
     <replaceregexp file="${build.dst}/buildinfo.properties" match=".Name:\s*\D*([\d_]*)(-\w+)*\s*\$" replace="\1\2" byline="true" flags="g"/>
     <replaceregexp file="${build.dst}/buildinfo.properties" match="_(\d+)" replace=".\1" byline="true" flags="g"/>
     <property file="${build.dst}/buildinfo.properties"/>
-
-    <!-- property definitions for filtering and testing -->
-    <echoproperties destfile="${build.dst}/build.properties"/>
-    <filter filtersfile="${build.dst}/build.properties"/>
 </target>
 
 <!-- compile ============================================================= -->
