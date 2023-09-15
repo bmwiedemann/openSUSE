@@ -99,4 +99,12 @@
   * Stop specifying an invalid Sphinx version.</comment>
     <requestid>1063709</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f3d3dbffe64c88a7856f1471fac0427b</srcmd5>
+    <version>1.2.2</version>
+    <time>1694808297</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1111392</requestid>
+  </revision>
 </revisionlist>

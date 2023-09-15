@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 14 14:11:02 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.2.2
+  * Fixed installation (eg. #101)
+- Drop fix-requirements.patch, no longer needed
+
+-------------------------------------------------------------------
 Wed Feb  8 00:50:32 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch fix-requirements.patch:

@@ -18,14 +18,12 @@
 
 %define modname hankel
 Name:           python-hankel
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Hankel Transformations using method of Ogata 2005
 License:        MIT
 URL:            https://github.com/steven-murray/hankel
 Source:         https://files.pythonhosted.org/packages/source/h/%{modname}/%{modname}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Work around gh#steven-murray/hankel#80
-Patch0:         fix-requirements.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
