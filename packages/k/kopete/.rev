@@ -1035,4 +1035,12 @@ Please add to Staging:I project where giflib 5.1.0 is being tested.</comment>
     <comment>KDE Release Gear 23.08.0 (forwarded request 1105409 from krop)</comment>
     <requestid>1105747</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>e415b738a437c46a807e776300a4bd59</srcmd5>
+    <version>23.08.1</version>
+    <time>1694808231</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.1 (forwarded request 1110807 from krop)</comment>
+    <requestid>1111227</requestid>
+  </revision>
 </revisionlist>
