@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep  7 16:07:07 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 4.3.2
+  * General improvements:
+    + all : do not raise error on no-op reification outside macro
+  * Bugfixes:
+    + all : don't infer Null if it already is Null 
+    + all : fix ?? inference and precedence 
+    + all : bring back forced inline 
+    + all : allow non constant "inline" var init with -D no-inline 
+    + all : improve @:enum abstract deprecation warning handling 
+    + all : fix some stack overflow with pretty errors
+    + display : fix go to definition with final 
+    + display : fix completion requests with @:forwardStatics 
+    + eval : fix MainLoop.add not repeating 
+    + hl/eval/neko : fix exception stack when wrapping native exceptions 
+    + macro : map this when restoring typed expressions 
+    + macro : safe navigation fix for ExprTools.map 
+    + macro : safe navigation fix for haxe.macro.Printer 
+    + macro : macro generated EVars position fixes 
+    + macro : fix abstract casts for local statics 
+    + macro : add flags to TDAbstract to be able to construct enum abstracts 
+    + nullsafety : make break/continue expressions not-nullable 
+    + nullsafety : handle return in assignment 
+
+-------------------------------------------------------------------
 Sun May 21 21:21:21 UTC 2023 - ohering@suse.de
 
 - JaneStreet libraries are 64bit, this pkg depends on them
