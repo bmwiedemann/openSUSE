@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Sep 12 05:09:28 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 1.1.1w:
+ * Fix POLY1305 MAC implementation corrupting XMM registers on Windows.
+
+   The POLY1305 MAC (message authentication code) implementation in OpenSSL
+   does not save the contents of non-volatile XMM registers on Windows 64
+   platform when calculating the MAC of data larger than 64 bytes. Before
+   returning to the caller all the XMM registers are set to zero rather than
+   restoring their previous content. The vulnerable code is used only on newer
+   x86_64 processors supporting the AVX512-IFMA instructions.
+
+   The consequences of this kind of internal application state corruption can
+   be various - from no consequences, if the calling application does not
+   depend on the contents of non-volatile XMM registers at all, to the worst
+   consequences, where the attacker could get complete control of the
+   application process. However given the contents of the registers are just
+   zeroized so the attacker cannot put arbitrary values inside, the most likely
+   consequence, if any, would be an incorrect result of some application
+   dependent calculations or a crash leading to a denial of service.
+
+   (CVE-2023-4807)
+
+-------------------------------------------------------------------
+Tue Aug  8 10:34:14 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Add missing FIPS patches from SLE:
+  * Add patches:
+    - bsc1185319-FIPS-KAT-for-ECDSA.patch
+    - bsc1198207-FIPS-add-hash_hmac-drbg-kat.patch
+    - openssl-1.1.1-fips-fix-memory-leaks.patch
+    - openssl-1_1-FIPS-PBKDF2-KAT-requirements.patch
+    - openssl-1_1-FIPS_drbg-rewire.patch
+    - openssl-1_1-Zeroization.patch
+    - openssl-1_1-fips-drbg-selftest.patch
+    - openssl-1_1-fips-list-only-approved-digest-and-pubkey-algorithms.patch
+    - openssl-1_1-jitterentropy-3.4.0.patch
+    - openssl-1_1-ossl-sli-000-fix-build-error.patch
+    - openssl-1_1-ossl-sli-001-fix-faults-preventing-make-update.patch
+    - openssl-1_1-ossl-sli-002-ran-make-update.patch
+    - openssl-1_1-ossl-sli-003-add-sli.patch
+    - openssl-1_1-ossl-sli-004-allow-aes-xts-256.patch
+    - openssl-1_1-ossl-sli-005-EC_group_order_bits.patch
+    - openssl-1_1-ossl-sli-006-rsa_pkcs1_padding.patch
+    - openssl-1_1-ossl-sli-007-pbkdf2-keylen.patch
+    - openssl-1_1-ossl-sli-008-pbkdf2-salt_pass_iteration.patch
+    - openssl-1_1-serialize-jitterentropy-calls.patch
+    - openssl-1_1-shortcut-test_afalg_aes_cbc.patch
+    - openssl-DH.patch
+    - openssl-FIPS-KAT-before-integrity-tests.patch
+    - openssl-fips-DH_selftest_shared_secret_KAT.patch
+    - openssl-fips-kdf-hkdf-selftest.patch
+    - openssl-kdf-selftest.patch
+    - openssl-kdf-ssh-selftest.patch
+    - openssl-kdf-tls-selftest.patch
+    - openssl-no-date.patch
+    - openssl-s_client-check-ocsp-status.patch
+  * Modify patches:
+    - openssl-1.1.1-fips.patch
+    - openssl-1_1-FIPS-fix-error-reason-codes.patch
+  * Remove patches:
+    - openssl-add_rfc3526_rfc7919.patch
+    - openssl-fips-dont_run_FIPS_module_installed.patch
+    - openssl-fips_fix_selftests_return_value.patch
+  * Add build and runtime dependency on jitterentropy
+- Pass over with spec-cleaner
+
+-------------------------------------------------------------------
 Tue Aug  1 16:12:36 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.1.1v:

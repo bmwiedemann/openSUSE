@@ -16,11 +16,13 @@
 #
 
 
+%define ssletcdir %{_sysconfdir}/ssl
+%define maj_min 1.1
+%define _rname  openssl
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 # Enable livepatching support for SLE15-SP4 onwards. It requires
 # compiler support introduced there.
 %define livepatchable 1
-
 # Set variables for livepatching.
 %define _other %{_topdir}/OTHER
 %define tar_basename %{_rname}-livepatch-%{version}-%{release}
@@ -30,18 +32,13 @@
 # Unsupported operating system.
 %define livepatchable 0
 %endif
-
 %ifnarch x86_64
 # Unsupported architectures must have livepatch disabled.
 %define livepatchable 0
 %endif
-
-%define ssletcdir %{_sysconfdir}/ssl
-%define maj_min 1.1
-%define _rname  openssl
 Name:           openssl-1_1
 # Don't forget to update the version in the "openssl" meta-package!
-Version:        1.1.1v
+Version:        1.1.1w
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
@@ -63,6 +60,7 @@ Patch3:         openssl-pkgconfig.patch
 Patch4:         openssl-DEFAULT_SUSE_cipher.patch
 Patch5:         openssl-ppc64-config.patch
 Patch6:         openssl-riscv64-config.patch
+Patch7:         openssl-no-date.patch
 # PATCH-FIX-UPSTREAM jsc#SLE-6126 and jsc#SLE-6129
 Patch8:         0001-s390x-assembly-pack-perlasm-support.patch
 Patch9:         0002-crypto-chacha-asm-chacha-s390x.pl-add-vx-code-path.patch
@@ -94,57 +92,103 @@ Patch35:        openssl-ship_fips_standalone_hmac.patch
 Patch36:        openssl-fips_mode.patch
 Patch37:        openssl-1.1.1-evp-kdf.patch
 Patch38:        openssl-1.1.1-ssh-kdf.patch
-Patch39:        openssl-fips-dont_run_FIPS_module_installed.patch
 Patch40:        openssl-fips-selftests_in_nonfips_mode.patch
 Patch41:        openssl-fips-clearerror.patch
 Patch42:        openssl-fips-ignore_broken_atexit_test.patch
 Patch43:        openssl-keep_EVP_KDF_functions_version.patch
-Patch44:        openssl-fips_fix_selftests_return_value.patch
 Patch45:        openssl-fips-add-SHA3-selftest.patch
 Patch46:        openssl-fips_selftest_upstream_drbg.patch
 Patch47:        openssl-unknown_dgst.patch
 # PATCH-FIX-UPSTREAM jsc#SLE-7403 Support for CPACF enhancements - part 2 (crypto)
 Patch50:        openssl-s390x-assembly-pack-accelerate-X25519-X448-Ed25519-and-Ed448.patch
 Patch51:        openssl-s390x-fix-x448-and-x448-test-vector-ctime-for-x25519-and-x448.patch
-Patch52:        openssl-1.1.1-system-cipherlist.patch
+# PATCH-FIX-UPSTREAM bsc#1175844 FIPS: (EC)Diffie-Hellman requirements
+# from SP800-56Arev3 SLE-15-SP2
+Patch52:        openssl-DH.patch
+Patch53:        openssl-kdf-selftest.patch
+Patch54:        openssl-kdf-tls-selftest.patch
+Patch55:        openssl-kdf-ssh-selftest.patch
+Patch56:        openssl-fips-DH_selftest_shared_secret_KAT.patch
+# PATCH-FIX-UPSTREAM bsc#1192442 FIPS: missing KAT for HKDF/TLS 1.3/IPSEC IKEv2
+Patch57:        openssl-fips-kdf-hkdf-selftest.patch
+Patch58:        openssl-1.1.1-system-cipherlist.patch
 # PATCH-FIX-OPENSUSE jsc#SLE-15832 Centralized Crypto Compliance Configuration
-Patch53:        openssl-1_1-seclevel.patch
-Patch54:        openssl-1_1-use-seclevel2-in-tests.patch
-Patch55:        openssl-1_1-disable-test_srp-sslapi.patch
-Patch56:        openssl-add_rfc3526_rfc7919.patch
-Patch57:        openssl-1_1-use-include-directive.patch
-#PATCH-FIX-UPSTREAM jsc#SLE-18136 POWER10 performance enhancements for cryptography
+Patch59:        openssl-1_1-seclevel.patch
+Patch60:        openssl-1_1-use-seclevel2-in-tests.patch
+Patch61:        openssl-1_1-disable-test_srp-sslapi.patch
+# PATCH-FIX-UPSTREAM jsc#SLE-18136 POWER10 performance enhancements for cryptography
 Patch69:        openssl-1_1-Optimize-ppc64.patch
-#PATCH-FIX-UPSTREAM jsc#SLE-19742 Backport Arm improvements from OpenSSL 3
+# PATCH-FIX-UPSTREAM jsc#SLE-19742 Backport Arm improvements from OpenSSL 3
 Patch70:        openssl-1_1-Optimize-RSA-armv8.patch
 Patch71:        openssl-1_1-Optimize-AES-XTS-aarch64.patch
 Patch72:        openssl-1_1-Optimize-AES-GCM-uarchs.patch
-#PATCH-FIX-SUSE bsc#1182959 FIPS: Fix function and reason error codes
-Patch73:        openssl-1_1-FIPS-fix-error-reason-codes.patch
-#PATCH-FIX-SUSE bsc#1180995 Default to RFC7919 groups in FIPS mode
-Patch74:        openssl-1_1-paramgen-default_to_rfc7919.patch
+# PATCH-FIX-SUSE bsc#1185320 FIPS: move the HMAC-SHA2-256 used for integrity test
+Patch73:        openssl-FIPS-KAT-before-integrity-tests.patch
+# PATCH-FIX-SUSE bsc#1182959 FIPS: Fix function and reason error codes
+Patch74:        openssl-1_1-FIPS-fix-error-reason-codes.patch
+# PATCH-FIX-SUSE bsc#1180995 Default to RFC7919 groups in FIPS mode
+Patch75:        openssl-1_1-paramgen-default_to_rfc7919.patch
+# PATCH-FIX-SUSE bsc#1194187 bsc#1004463 Add engines section in openssl.cnf
+Patch76:        openssl-1_1-use-include-directive.patch
+# PATCH-FIX-SUSE bsc#1197280 FIPS: Additional PBKDF2 requirements for KAT
+Patch77:        openssl-1_1-FIPS-PBKDF2-KAT-requirements.patch
+Patch78:        bsc1185319-FIPS-KAT-for-ECDSA.patch
+Patch79:        bsc1198207-FIPS-add-hash_hmac-drbg-kat.patch
+Patch81:        openssl-1_1-shortcut-test_afalg_aes_cbc.patch
+# PATCH-FIX-SUSE bsc#1190653 FIPS: Provide methods to zeroize all unprotected SSPs and key components
+Patch84:        openssl-1_1-Zeroization.patch
+# PATCH-FIX-SUSE bsc#1190651 FIPS: Provide a service-level indicator
+Patch85:        openssl-1_1-ossl-sli-000-fix-build-error.patch
+Patch86:        openssl-1_1-ossl-sli-001-fix-faults-preventing-make-update.patch
+Patch87:        openssl-1_1-ossl-sli-002-ran-make-update.patch
+Patch88:        openssl-1_1-ossl-sli-003-add-sli.patch
+# PATCH-FIX-SUSE bsc#1202148 FIPS: Port openssl to use jitterentropy
+Patch89:        openssl-1_1-jitterentropy-3.4.0.patch
+# PATCH-FIX-SUSE bsc#1203046 FIPS: Fix memory leak when FIPS mode is enabled
+Patch90:        openssl-1.1.1-fips-fix-memory-leaks.patch
+# PATCH-FIX-FEDORA bsc#1201293 FIPS: RAND api should call into FIPS DRBG
+Patch91:        openssl-1_1-FIPS_drbg-rewire.patch
+# PATCH-FIX-FEDORA bsc#1203069 FIPS: Add KAT for the RAND_DRBG implementation
+Patch92:        openssl-1_1-fips-drbg-selftest.patch
+# PATCH-FIX-SUSE bsc#1121365, bsc#1190888, bsc#1193859, bsc#1198471, bsc#1198472
+# FIPS: List only approved digest and pubkey algorithms
+Patch93:        openssl-1_1-fips-list-only-approved-digest-and-pubkey-algorithms.patch
+# PATCH-FIX-SUSE bsc#1190651 FIPS: Provide a service-level indicator
+Patch94:        openssl-1_1-ossl-sli-004-allow-aes-xts-256.patch
+Patch95:        openssl-1_1-ossl-sli-005-EC_group_order_bits.patch
+Patch96:        openssl-1_1-ossl-sli-006-rsa_pkcs1_padding.patch
+Patch97:        openssl-1_1-ossl-sli-007-pbkdf2-keylen.patch
 # PATCH-FIX-UPSTREAM jsc#PED-512
 # POWER10 performance enhancements for cryptography
-Patch75:        openssl-1_1-AES-GCM-performance-optimzation-with-stitched-method.patch
-Patch76:        openssl-1_1-Fixed-counter-overflow.patch
-Patch77:        openssl-1_1-chacha20-performance-optimizations-for-ppc64le-with-.patch
-Patch78:        openssl-1_1-Fixed-conditional-statement-testing-64-and-256-bytes.patch
-Patch79:        openssl-1_1-Fix-AES-GCM-on-Power-8-CPUs.patch
-#PATCH-FIX-OPENSUSE bsc#1205042 Set OpenSSL 3.0 as the default openssl
-Patch80:        openssl-1_1-openssl-config.patch
+Patch98:        openssl-1_1-AES-GCM-performance-optimzation-with-stitched-method.patch
+Patch99:        openssl-1_1-Fixed-counter-overflow.patch
+Patch100:       openssl-1_1-chacha20-performance-optimizations-for-ppc64le-with-.patch
+Patch101:       openssl-1_1-Fixed-conditional-statement-testing-64-and-256-bytes.patch
+Patch102:       openssl-1_1-Fix-AES-GCM-on-Power-8-CPUs.patch
+# PATCH-FIX-OPENSUSE bsc#1205042 Set OpenSSL 3.0 as the default openssl
+Patch103:       openssl-1_1-openssl-config.patch
+# PATCH-FIX-SUSE bsc#1207994 FIPS Make jitterentropy calls thread-safe
+Patch104:       openssl-1_1-serialize-jitterentropy-calls.patch
+# PATCH-FIX-SUSE bsc#1208998 FIPS: PBKDF2 requirements for openssl
+Patch105:       openssl-1_1-ossl-sli-008-pbkdf2-salt_pass_iteration.patch
+# PATCH-FIX-SUSE bsc#1212623 openssl s_client does not honor ocsp revocation status
+Patch106:       openssl-s_client-check-ocsp-status.patch
 # PATCH-FIX-SUSE bsc#1213517 Dont pass zero length input to EVP_Cipher
-Patch81:        openssl-dont-pass-zero-length-input-to-EVP_Cipher.patch
+Patch107:       openssl-dont-pass-zero-length-input-to-EVP_Cipher.patch
+
+BuildRequires:  jitterentropy-devel >= 3.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
+Requires:       libjitterentropy3 >= 3.4.0
 Provides:       ssl
 Requires:       libopenssl1_1 = %{version}-%{release}
-%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
-Requires:       crypto-policies
-%endif
 # Needed for clean upgrade path, boo#1070003
 Obsoletes:      openssl-1_0_0
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      openssl-1_1_0
+%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
+Requires:       crypto-policies
+%endif
 
 %description
 OpenSSL is a software library to be used in applications that need to
@@ -155,12 +199,12 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 %package -n libopenssl1_1
 Summary:        Secure Sockets and Transport Layer Security
 Group:          Productivity/Networking/Security
-%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
-Requires:       crypto-policies
-%endif
 Recommends:     ca-certificates-mozilla
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      libopenssl1_1_0
+%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
+Requires:       crypto-policies
+%endif
 Conflicts:      %{name} < %{version}-%{release}
 # Merge back the hmac files bsc#1185116
 Provides:       libopenssl1_1-hmac = %{version}-%{release}
@@ -179,6 +223,7 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 %package -n libopenssl-1_1-devel
 Summary:        Development files for OpenSSL
 Group:          Development/Libraries/C and C++
+Requires:       jitterentropy-devel >= 3.4.0
 Requires:       libopenssl1_1 = %{version}
 Requires:       pkgconfig(zlib)
 Recommends:     %{name} = %{version}
@@ -250,21 +295,40 @@ export MACHINE=armv6l
 perl configdata.pm --dump
 
 util/mkdef.pl crypto update
-make depend %{?_smp_mflags}
-make all %{?_smp_mflags}
+%make_build depend
+%make_build all
 
 %check
 export MALLOC_CHECK_=3
 export MALLOC_PERTURB_=$(($RANDOM % 255 + 1))
-#export HARNESS_VERBOSE=1
-#export OPENSSL_FORCE_FIPS_MODE=1
 LD_LIBRARY_PATH=`pwd` make test -j1
+
+# Create the hmac files required to run the regression tests in FIPS mode
+#%{buildroot}%{_bindir}/fips_standalone_hmac \
+# libssl.so.%{maj_min} > .libssl.so.%{maj_min}.hmac
+#%{buildroot}%{_bindir}/fips_standalone_hmac \
+# libcrypto.so.%{maj_min} > .libcrypto.so.%{maj_min}.hmac
+#OPENSSL_FORCE_FIPS_MODE=1 LD_LIBRARY_PATH=`pwd` make TESTS='-test_pem \
+#		       -test_hmac -test_mdc2 -test_dh -test_dsa -test_genrsa \
+#		       -test_mp_rsa -test_enc -test_enc_more -test_passwd -test_req \
+#		       -test_verify -test_evp -test_evp_extra -test_pkey_meth_kdf \
+#		       -test_bad_dtls -test_comp -test_key_share -test_renegotiation \
+#		       -test_sslcbcpadding -test_sslcertstatus -test_sslextension \
+#		       -test_sslmessages -test_sslrecords -test_sslsessiontick \
+#		       -test_sslsigalgs -test_sslsignature -test_sslskewith0p \
+#		       -test_sslversions -test_sslvertol -test_tls13alerts \
+#		       -test_tls13cookie -test_tls13downgrade -test_tls13hrr \
+#		       -test_tls13kexmodes -test_tls13messages -test_tls13psk \
+#		       -test_tlsextms -test_ca -test_cipherlist -test_cms \
+#		       -test_dtls_mtu -test_ssl_new -test_ssl_old -test_bio_enc \
+#		       -test_sslapi -test_tls13ccs -test_ec' test -j1
 
 # show ciphers
 gcc -o showciphers %{optflags} -I%{buildroot}%{_includedir} %{SOURCE5} -L%{buildroot}%{_libdir} -lssl -lcrypto
 LD_LIBRARY_PATH=%{buildroot}%{_libdir} ./showciphers
 
 %install
+
 %if %{livepatchable}
 
 # Ipa-clones are files generated by gcc which logs changes made across
