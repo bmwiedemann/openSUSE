@@ -396,7 +396,6 @@
     <package name="geocode-glib" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="gettext-runtime" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="ghostscript" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="ghostscript-fonts-grops" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="ghostscript-fonts-other" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="ghostscript-fonts-std" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="ghostscript-fonts-std-converted" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
