@@ -220,4 +220,13 @@
     <comment>- spelling fixes in comments</comment>
     <requestid>1109727</requestid>
   </revision>
+  <revision rev="27" vrev="27">
+    <srcmd5>f56826dd4afe52fdad9c03991c2ad010</srcmd5>
+    <version>unknown</version>
+    <time>1694971724</time>
+    <user>anag+factory</user>
+    <comment>- Install shadow explicitly, no longer pulled in by
+  system-group-hardware</comment>
+    <requestid>1111339</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 14 12:21:36 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Install shadow explicitly, no longer pulled in by
+  system-group-hardware
+
+-------------------------------------------------------------------
 Tue Sep  5 10:00:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - spelling fixes in comments
