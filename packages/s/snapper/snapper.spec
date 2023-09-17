@@ -35,7 +35,7 @@
 %bcond_with coverage
 
 Name:           snapper
-Version:        0.10.5
+Version:        0.10.6
 Release:        0
 Summary:        Tool for filesystem snapshot management
 License:        GPL-2.0-only
@@ -44,16 +44,16 @@ URL:            http://snapper.io/
 Source:         snapper-%{version}.tar.xz
 %if 0%{?suse_version}
 BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
+BuildRequires:  libboost_test-devel
 %else
 BuildRequires:  boost-devel
 %endif
-BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
+BuildRequires:  e2fsprogs-devel
 BuildRequires:  ncurses-devel
 %if 0%{?suse_version}
 BuildRequires:  libbtrfs-devel
@@ -71,9 +71,9 @@ BuildRequires:  systemd
 BuildRequires:  pkg-config
 %endif
 %if 0%{?fedora_version} || 0%{?centos_version}
-BuildRequires:  glibc-langpack-de
-BuildRequires:  glibc-langpack-en
-BuildRequires:  glibc-langpack-fr
+BuildRequires:	glibc-langpack-de
+BuildRequires:	glibc-langpack-fr
+BuildRequires:	glibc-langpack-en
 %else
 BuildRequires:  glibc-locale
 %endif
@@ -112,8 +112,7 @@ Requires:       diffutils
 Requires:       libsnapper7 = %version
 Requires:       systemd
 %if 0%{?suse_version}
-Recommends:     logrotate
-Recommends:     snapper-zypp-plugin
+Recommends:     logrotate snapper-zypp-plugin
 Supplements:    btrfsprogs
 %endif
 
@@ -297,7 +296,7 @@ Requires:       libboost_headers-devel
 Requires:       boost-devel
 %endif
 Requires:       gcc-c++
-Requires:       libacl-devel
+Requires:	    libacl-devel
 Requires:       libsnapper7 = %version
 Requires:       libstdc++-devel
 Requires:       libxml2-devel
@@ -319,8 +318,8 @@ libsnapper.
 %{_includedir}/snapper
 
 %package -n snapper-zypp-plugin
-Requires:       snapper = %version
 Requires:       libzypp(plugin:commit) = 1
+Requires:       snapper = %version
 Summary:        A zypp commit plugin for calling snapper
 Group:          System/Packages
 

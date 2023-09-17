@@ -1,6 +1,6 @@
 Format: 1.0
 Source: snapper
-Version: 0.10.5-1
+Version: 0.10.6-1
 Binary: snapper
 Maintainer: Arvin Schnell <aschnell@suse.com>
 Architecture: any
