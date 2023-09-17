@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 15 12:19:21 UTC 2023 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 1.10
+  * Fix Btrfs subvolume check if subvol starts with '-'
+    [boo#1215368].
+
+-------------------------------------------------------------------
 Thu Jun 22 16:04:47 UTC 2023 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 1.9

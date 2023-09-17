@@ -181,4 +181,14 @@
 </comment>
     <requestid>1094705</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5e101552ad96c23606fae393cd6b96ff</srcmd5>
+    <version>1.10</version>
+    <time>1694971733</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.10
+  * Fix Btrfs subvolume check if subvol starts with '-' [boo#1215368].
+</comment>
+    <requestid>1111554</requestid>
+  </revision>
 </revisionlist>
