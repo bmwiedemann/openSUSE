@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep  8 19:42:28 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Refresh bash-scripts.patch
+- Add nroff-map-CW-to-R.patch
+  * Fixes man-db build errors
+
+-------------------------------------------------------------------
+Tue Aug 29 14:21:17 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 1.23.0:
+  * Too many changes, see NEWS file for details.
+- Refreshed patches:
+  * 0002-documentation-for-the-locale-keyword.patch
+  * 0004-don-t-use-usr-bin-env-in-shebang.patch
+  * groff-1.20.1-deunicode.patch
+  * groff-1.20.1-nroff-empty-LANGUAGE.patch
+  * groff-1.21-CVE-2009-5081.patch
+  * groff-force-locale-usage.patch
+- Drop sort-perl-hash-keys.patch (upstreamed)
+- Drop doc-volume-operating-system and doc-default-operating-system
+  changes (doesn't default to BSD anymore)
+- Configure flag --with-appresdir has been renamed to --with-appdefdir
+- Update file list with files that were removed from the package
+
+-------------------------------------------------------------------
 Thu Mar 16 10:04:16 UTC 2023 - pgajdos@suse.com
 
 - ship %{_docdir}/groff/pdf also in groff-doc [bsc#1208498]

@@ -8,22 +8,18 @@ Subject: [PATCH] documentation for the locale keyword
  man/groff_font.5.man |    8 +++++++-
  2 files changed, 34 insertions(+), 2 deletions(-)
 
-diff --git a/doc/groff.texi b/doc/groff.texi
-index 7b09e0f..1cff7b4 100644
+Index: b/doc/groff.texi
+===================================================================
 --- a/doc/groff.texi
 +++ b/doc/groff.texi
-@@ -16530,7 +16530,7 @@ types @code{A0}-@code{A7}, @code{B0}-@code{B7}, @code{C0}-@code{C7},
- significant for @var{string} if it holds predefined paper types.
- Alternatively, @var{string} can be a file name (e.g.@:
- @file{/etc/papersize}); if the file can be opened, @code{groff} reads
--the first line and tests for the above paper sizes.  Finally,
-+the first line and tests for the above paper sizes.  Or,
- @var{string} can be a custom paper size in the format
- @code{@var{length},@var{width}} (no spaces before and after the comma).
- Both @var{length} and @var{width} must have a unit appended; valid
-@@ -16540,6 +16540,32 @@ which starts with a digit is always treated as a custom paper format.
- @code{papersize} sets both the vertical and horizontal dimension of the
- output medium.
+@@ -18404,10 +18404,36 @@ for points, and @samp{P} for picas.  Exa
+ argument that starts with a digit is always treated as a custom paper
+ format.
+ 
+-Finally, the argument can be a file name (e.g., @file{/etc/papersize});
++Or, the argument can be a file name (e.g., @file{/etc/papersize});
+ if the file can be opened, the first line is read and a match attempted
+ against each of the other forms.  No comment syntax is supported.
  
 +Finally, @var{string} can be a keyword @code{locale}. In this case groff will
 +determine the default paper size from the country code of @code{LC_PAPER}. For
@@ -51,25 +47,25 @@ index 7b09e0f..1cff7b4 100644
 +@end group
 +@end example
 +
- More than one argument can be specified; @code{groff} scans from left to
- right and uses the first valid paper specification.
+ More than one argument can be specified;
+ each is scanned in turn and the first valid paper specification used.
  
-diff --git a/man/groff_font.5.man b/man/groff_font.5.man
-index 64bd212..29a7136 100644
+Index: b/man/groff_font.5.man
+===================================================================
 --- a/man/groff_font.5.man
 +++ b/man/groff_font.5.man
-@@ -150,7 +150,7 @@ can be a file name (e.g.\& `/etc/papersize'); if the file can be opened,
- .B groff
- reads the first line and tests for the above paper sizes.
+@@ -286,7 +286,7 @@ format.
  .
+ .
+ .IP
 -Finally,
-+or,
- .I string
- can be a custom paper size in the format
- .IB length , width
-@@ -172,7 +172,13 @@ format.
- .B papersize
- sets both the vertical and horizontal dimension of the output medium.
++Or,
+ the argument can be a file name
+ (e.g.,
+ .IR /etc/papersize );
+@@ -296,7 +296,13 @@ the first line is read and a match attem
+ No comment syntax is supported.
+ .
  .
 +Finally
 +.I string
@@ -79,8 +75,5 @@ index 64bd212..29a7136 100644
  .IP
 +.
  More than one argument can be specified;
- .B groff
- scans from left to right and uses the first valid paper specification.
--- 
-1.7.6.3
-
+ each is scanned in turn and the first valid paper specification used.
+ .

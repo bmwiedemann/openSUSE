@@ -1,17 +1,16 @@
-Index: groff-1.22.4/tmac/tty.tmac
+Index: b/tmac/tty.tmac
 ===================================================================
---- groff-1.22.4.orig/tmac/tty.tmac
-+++ groff-1.22.4/tmac/tty.tmac
-@@ -68,8 +68,11 @@
- .fchar \[.j] j
- .fchar \[bq] ,
+--- a/tmac/tty.tmac
++++ b/tmac/tty.tmac
+@@ -70,6 +70,11 @@
+ .fchar \[radicalex] \[rn]
+ .fchar \[sqrtex] \[rn]
  .
--.if '\*[.T]'utf8' \
 +.if '\*[.T]'utf8' \{\
- .  mso unicode.tmac
 +.\" use ascii hyphenation characters - bnc#68385
 +.  shc -
 +.\}
- .
++.
  .\" color definitions
  .defcolor black rgb #000000
+ .defcolor red rgb #ff0000

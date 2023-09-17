@@ -1,0 +1,40 @@
+From 742dfac36f1fd23e17d27dbf83e3793d3f3a063d Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Fri, 14 Jul 2023 12:42:26 +0100
+Subject: Map CW to R for nroff
+
+Bug-Debian: https://bugs.debian.org/1040975
+Last-Update: 2023-07-14
+
+Patch-Name: nroff-map-CW-to-R.patch
+---
+ tmac/man.local  | 2 +-
+ tmac/mdoc.local | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tmac/man.local b/tmac/man.local
+index 0bb667bd4..1aaaadd6a 100644
+--- a/tmac/man.local
++++ b/tmac/man.local
+@@ -12,7 +12,7 @@
+ .\" Uncomment this to suppress warnings produced by such pages.  This
+ .\" test remaps the font to roman ("R") on nroff (terminal) devices. You
+ .\" might prefer to remap it to bold ("B") instead.
+-.\" .if n .ftr CW R
++.if n .ftr CW R
+ .\"
+ .\" A de facto standard URL format for man pages is recognized
+ .\" everywhere except Apple, where different macOS applications expect
+diff --git a/tmac/mdoc.local b/tmac/mdoc.local
+index 94688aba0..66dcc423d 100644
+--- a/tmac/mdoc.local
++++ b/tmac/mdoc.local
+@@ -6,7 +6,7 @@
+ .\" Uncomment this to suppress warnings produced by such pages.  This
+ .\" test remaps the font to roman ("R") on nroff (terminal) devices. You
+ .\" might prefer to remap it to bold ("B") instead.
+-.\" .if n .ftr CW R
++.if n .ftr CW R
+ .\"
+ .\" Local Variables:
+ .\" mode: nroff

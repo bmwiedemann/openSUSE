@@ -25,7 +25,7 @@
 %bcond_with full_build
 %endif
 Name:           groff%{name_ext}
-Version:        1.22.4
+Version:        1.23.0
 Release:        0
 Summary:        GNU troff Document Formatting System
 License:        GPL-3.0-or-later
@@ -51,7 +51,7 @@ Patch6:         groff-force-locale-usage.patch
 Patch7:         0004-don-t-use-usr-bin-env-in-shebang.patch
 # Patches from debian
 Patch100:       https://salsa.debian.org/debian/groff/raw/master/debian/patches/bash-scripts.patch
-Patch101:       https://salsa.debian.org/debian/groff/raw/master/debian/patches/sort-perl-hash-keys.patch
+Patch101:       https://salsa.debian.org/debian/groff/raw/master/debian/patches/nroff-map-CW-to-R.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -135,17 +135,13 @@ sed -i \
     Makefile.am
 
 %build
-# bsc#1185613
-sed -i "s:\(doc-volume-operating-system\) BSD:\1 SUSE:" tmac/doc-common-u
-sed -i "s:\(doc-default-operating-system\) BSD:\1 SUSE:" tmac/doc-common-u
-# -----------
 autoreconf -fvi
 # libdir redefined as it is just bunch of perl scripts
 %configure \
     --disable-silent-rules \
     --docdir=%{_defaultdocdir}/groff \
     --libdir=%{_libexecdir} \
-    --with-appresdir=%{_datadir}/X11/app-defaults \
+    --with-appdefdir=%{_datadir}/X11/app-defaults \
     --with-grofferdir=%{_libexecdir}/groff/groffer
 make %{?_smp_mflags}
 
@@ -171,13 +167,13 @@ rm -f %{buildroot}%{_bindir}/tbl
 rm -f %{buildroot}%{_bindir}/troff
 rm -f %{buildroot}%{_libexecdir}/groff/grog/subs.pl
 rm -f %{buildroot}%{_datadir}/groff/current
-rm -f %{buildroot}%{_datadir}/groff/1.22.4/eign
-rm -rf %{buildroot}%{_datadir}/groff/1.22.4/font/devascii
-rm -rf %{buildroot}%{_datadir}/groff/1.22.4/font/devlatin1
-rm -rf %{buildroot}%{_datadir}/groff/1.22.4/font/devps
-rm -rf %{buildroot}%{_datadir}/groff/1.22.4/font/devutf8
-rm -rf %{buildroot}%{_datadir}/groff/1.22.4/pic
-rm -rf %{buildroot}%{_datadir}/groff/1.22.4/tmac
+rm -f %{buildroot}%{_datadir}/groff/1.23.0/eign
+rm -rf %{buildroot}%{_datadir}/groff/1.23.0/font/devascii
+rm -rf %{buildroot}%{_datadir}/groff/1.23.0/font/devlatin1
+rm -rf %{buildroot}%{_datadir}/groff/1.23.0/font/devps
+rm -rf %{buildroot}%{_datadir}/groff/1.23.0/font/devutf8
+rm -rf %{buildroot}%{_datadir}/groff/1.23.0/pic
+rm -rf %{buildroot}%{_datadir}/groff/1.23.0/tmac
 rm -rf %{buildroot}%{_datadir}/groff/site-tmac
 rm -rf %{buildroot}%{_datadir}/groff/site-font
 rm -f %{buildroot}%{_mandir}/man1/eqn.1*
@@ -303,8 +299,6 @@ fi
 %config %{_sysconfdir}/profile.d/zzz-%{name}.*sh
 %{_datadir}/%{name}
 %dir %{_libexecdir}/groff
-%dir %{_libexecdir}/groff/grog
-%{_libexecdir}/groff/grog/subs.pl
 %{_datadir}/groff/current
 
 %else #groff_base_only
@@ -314,14 +308,6 @@ fi
 %dir %{_libexecdir}/groff
 %doc %{_docdir}/groff
 %dir %{_libexecdir}/groff
-%dir %{_libexecdir}/groff/glilypond
-%{_libexecdir}/groff/glilypond/args.pl
-%{_libexecdir}/groff/glilypond/oop_fh.pl
-%{_libexecdir}/groff/glilypond/subs.pl
-%dir %{_libexecdir}/groff/gpinyin
-%{_libexecdir}/groff/gpinyin/subs.pl
-%{_libexecdir}/groff/groff_opts_no_arg.txt
-%{_libexecdir}/groff/groff_opts_with_arg.txt
 %exclude %{_docdir}/groff/html
 %exclude %{_docdir}/groff/examples
 %exclude %{_docdir}/groff/pdf
@@ -336,7 +322,6 @@ fi
 %dir %{_datadir}/groff
 %{_datadir}/groff/%{version}/font
 %{_datadir}/groff/%{version}/oldfont
-%{_libexecdir}/groff/groffer
 
 %files -n groff-doc
 %dir %{_docdir}/groff
