@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 14 15:45:53 CEST 2023 - aschnell@suse.com
+
+- fixed creating files in root dir (gh#openSUSE/snapper#168)
+- version 0.10.6
+
+-------------------------------------------------------------------
+Thu Aug 10 09:20:42 CEST 2023 - aschnell@suse.com
+
+- relax access to info.xml files (gh#openSUSE/snapper#279)
+
+-------------------------------------------------------------------
+Fri Jul 14 14:05:56 CEST 2023 - aschnell@suse.com
+
+- enable snapper-timeline.timer when adjusting config using
+  snapper (gh#openSUSE/snapper#788)
+
+-------------------------------------------------------------------
 Wed Jul 12 09:03:42 CEST 2023 - aschnell@suse.com
 
 - document disadvantage of using network users and order services
