@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 14 11:43:21 UTC 2023 - pgajdos@suse.com
+
+- version update to 2.0.1
+  * Fixed coveralls issues with KeyError and HTTP 422 Unprocessable Entity.
+  * Removed support for Python 2.7, 3.4, 3.5. The minimum required Python version
+    is now 3.6. This was needed in order to add Python type hints (issue #123).
+  * Enabled Github Actions for stable branches.
+  * Addressed new issues of Pylint 2.16.
+  * Added type hints and type checking with MyPy (issue #123).
+  * Resurrected support for byte string keys that was removed in version 1.1.0.
+    (issue #139)
+  * The default casefolding method on Python 3 was changed from `str.lower()`
+    to `str.casefold()`. This changes the matching of the case-insensitive keys.
+    This shold normally be an improvement, but in case you find that you are
+    negatively affected by this change, you can go back to the `str.lower()`
+    method by overriding the `NocaseDict.__casefold__()` method with a method
+    that calls `str.lower()`. (issue #122)
+  * Added support for Python 3.11.
+  * Changed the default casefolding method on Python 3 to be `str.casefold()`
+    in order to improve Unicode support. On Python 2, it remains `str.lower()`.
+    Added support for user-defined casefolding. (issue #122)
+- drop python-six dependency
+
+-------------------------------------------------------------------
 Sat Oct  1 12:59:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.4:
