@@ -17,7 +17,7 @@
 
 
 Name:           libwebp
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Library and tools for the WebP graphics format
 License:        BSD-3-Clause
@@ -28,7 +28,6 @@ Source:         https://storage.googleapis.com/downloads.webmproject.org/release
 Source2:        https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-%version.tar.gz.asc
 Source3:        %name.keyring
 Source4:        baselibs.conf
-Patch1:         0001-Fix-OOB-write-in-BuildHuffmanTable.patch
 
 BuildRequires:  giflib-devel
 BuildRequires:  pkgconfig

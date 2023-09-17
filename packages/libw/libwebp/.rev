@@ -331,4 +331,12 @@ required for http://www.unvanquished.net/wiki/index.php/Compiling_the_source#ope
     <comment>- Add 0001-Fix-OOB-write-in-BuildHuffmanTable.patch [boo#1215231] [CVE-2023-4863]</comment>
     <requestid>1110615</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>a025c66accb82b4e369147542b92d6ba</srcmd5>
+    <version>1.3.2</version>
+    <time>1694971732</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.3.2:</comment>
+    <requestid>1111545</requestid>
+  </revision>
 </revisionlist>
