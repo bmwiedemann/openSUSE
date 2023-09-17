@@ -1,0 +1,75 @@
+Index: doxygen-1.9.6/filesystem/filesystem.hpp
+===================================================================
+--- doxygen-1.9.6.orig/filesystem/filesystem.hpp
++++ doxygen-1.9.6/filesystem/filesystem.hpp
+@@ -5548,12 +5548,13 @@ public:
+     impl(const path& path, directory_options options)
+         : _base(path)
+         , _options(options)
+-        , _dir(nullptr)
++        , _namelist(nullptr)
++        , _namelisti(-1)
+         , _entry(nullptr)
+     {
+         if (!path.empty()) {
+-            _dir = ::opendir(path.native().c_str());
+-            if (!_dir) {
++            _namelisti = _namelistn = ::scandir(path.native().c_str(), &_namelist, NULL, alphasort);
++            if (_namelistn == -1) {
+                 auto error = errno;
+                 _base = filesystem::path();
+                 if ((error != EACCES && error != EPERM) || (options & directory_options::skip_permission_denied) == directory_options::none) {
+@@ -5568,19 +5569,23 @@ public:
+     impl(const impl& other) = delete;
+     ~impl()
+     {
+-        if (_dir) {
+-            ::closedir(_dir);
++        if (_namelist) {
++            for (int i=_namelistn-1; i>=0; i--) {
++	        free(_namelist[i]);
++            }
++            free(_namelist);
++            _namelist = nullptr;
+         }
+     }
+     void increment(std::error_code& ec)
+     {
+-        if (_dir) {
++        if (_namelist) {
+             bool skip;
+             do {
+                 skip = false;
+                 errno = 0;
+-                _entry = ::readdir(_dir);
+-                if (_entry) {
++                if (_namelisti > 0 ) {
++                    _entry = _namelist[--_namelisti];
+                     _dir_entry._path = _base;
+                     _dir_entry._path.append_name(_entry->d_name);
+                     copyToDirEntry();
+@@ -5590,8 +5595,11 @@ public:
+                     }
+                 }
+                 else {
+-                    ::closedir(_dir);
+-                    _dir = nullptr;
++                    for (int i=_namelistn-1; i>=0; i--) {
++                        free(_namelist[i]);
++                    }
++                    free(_namelist);
++                    _namelist = nullptr;
+                     _dir_entry._path.clear();
+                     if (errno) {
+                         ec = detail::make_system_error();
+@@ -5634,7 +5642,9 @@ public:
+     }
+     path _base;
+     directory_options _options;
+-    DIR* _dir;
++    int _namelisti;
++    int _namelistn;
++    struct dirent **_namelist;
+     struct ::dirent* _entry;
+     directory_entry _dir_entry;
+     std::error_code _ec;

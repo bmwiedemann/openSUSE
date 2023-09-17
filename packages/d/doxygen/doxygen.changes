@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 17 17:14:00 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to make doxytags output reproducible (boo#1201579)
+
+-------------------------------------------------------------------
 Mon Apr 24 12:16:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Re-download patches: the server presents them with shorter hash

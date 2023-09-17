@@ -1138,4 +1138,12 @@
     <user>anag+factory</user>
     <comment>https://bugzilla.opensuse.org/1214979</comment>
   </revision>
+  <revision rev="96" vrev="6">
+    <srcmd5>83c28355f2dc50a6f023be51d0b959e7</srcmd5>
+    <version>1.9.6</version>
+    <time>1694971721</time>
+    <user>anag+factory</user>
+    <comment>- Add reproducible.patch to make doxytags output reproducible (boo#1201579)</comment>
+    <requestid>1111060</requestid>
+  </revision>
 </revisionlist>

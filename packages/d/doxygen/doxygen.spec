@@ -39,6 +39,7 @@ Patch20:        https://github.com/doxygen/doxygen/commit/966d69c603b5.patch#/Fi
 Patch21:        https://github.com/doxygen/doxygen/commit/7b2a6027775b.patch#/Fix-boundingbox-parsing_part2.patch
 Patch22:        https://github.com/doxygen/doxygen/commit/f3514d578633.patch#/Fix-boundingbox-parsing_part3.patch
 Patch23:        https://github.com/doxygen/doxygen/commit/8129939c312e.patch#/Fix-boundingbox-parsing_part4.patch
+Patch24:        reproducible.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  flex
@@ -77,6 +78,7 @@ as well.
 %patch21 -p1
 %patch22 -p1
 %patch23 -p1
+%patch24 -p1
 
 %build
 %cmake \
