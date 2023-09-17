@@ -19,7 +19,7 @@
 %define asan_build 0
 %define debug_build 0
 Name:           tiff
-Version:        4.5.1
+Version:        4.6.0
 Release:        0
 Summary:        Tools for Converting from and to the Tagged Image File Format
 License:        HPND
@@ -31,8 +31,6 @@ Source2:        README.SUSE
 Source3:        baselibs.conf
 Source99:       tiff.keyring
 Patch0:         tiff-4.0.3-seek.patch
-# http://bugzilla.maptools.org/show_bug.cgi?id=2442
-Patch1:         tiff-4.0.3-compress-warning.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libjbig-devel
 BuildRequires:  libjpeg-devel
@@ -95,11 +93,6 @@ done
 cp %{SOURCE2} .
 rm -rf %{buildroot}%{_datadir}/doc/tiff*
 find %{buildroot} -type f -name "*.la" -delete -print
-# remove pal2rgb, bsc#1071031
-for tool in pal2rgb; do
-  rm %{buildroot}%{_bindir}/$tool
-  rm %{buildroot}%{_mandir}/man1/$tool.1
-done
 
 %check
 %if %{asan_build}

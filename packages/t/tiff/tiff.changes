@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Sep 15 05:55:34 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 4.6.0:
+  * API/ABI breaks: none
+  * WebP decoder: validate WebP blob width, height, band count against
+    TIFF parameters to avoid use of uninitialized variable, or decoding
+    corrupted content without explicit error (fixes issue #581, issue #582).
+  * WebP codec: turn exact mode when creating lossless files to avoid
+    altering R,G,B values in areas where alpha=0 
+  * Fix TransferFunction writing of only two transfer functions.
+  * TIFFReadDirectoryCheckOrder: avoid integer overflow. When it occurs,
+    it should be harmless in practice though 
+  * tiffcp: remove -i option (ignore errors)
+  * This version removes a big number of utilities that have suffered from
+    lack of maintenance over the years and were the source of various
+    reported security issues:
+    + fax2ps
+    + fax2tiff
+    + pal2rgb
+    + ppm2tiff
+    + raw2tiff
+    + rgb2ycbcr
+    + thumbnail
+    + tiff2bw
+    + tiff2rgba
+    + tiffcmp
+    + tiffcrop
+    + tiffdither
+    + tiffgt
+    + tiffmedian
+    + tiff2ps
+    + tiff2pdf
+- Remove no longer needed tiff-4.0.3-compress-warning.patch.
+
+-------------------------------------------------------------------
 Tue Jun 20 07:16:56 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.5.1:
