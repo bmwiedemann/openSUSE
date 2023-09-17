@@ -1,7 +1,7 @@
 #
 # spec file for package nuspell
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define gcc_ver 10
 %endif
 Name:           nuspell
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 Summary:        A spell checker library and command-line tool
 License:        LGPL-3.0-or-later
