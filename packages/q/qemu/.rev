@@ -3502,4 +3502,14 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1110620</requestid>
   </revision>
+  <revision rev="260" vrev="2">
+    <srcmd5>baf6fc38401186357c47cf3846d86c3f</srcmd5>
+    <version>8.1.0</version>
+    <time>1694971726</time>
+    <user>anag+factory</user>
+    <comment>- Fix bsc#1215311:
+  * roms/ipxe: Backport 0aa2e4ec9635, in preparation of binutils 2.41 (bsc#1215311)
+</comment>
+    <requestid>1111408</requestid>
+  </revision>
 </revisionlist>

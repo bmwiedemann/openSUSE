@@ -149,6 +149,7 @@ BuildRequires:  multipath-tools-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  rdma-core-devel
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
@@ -195,8 +196,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja >= 1.7
-BuildRequires:  python3-base >= 3.6
-BuildRequires:  python3-setuptools
+BuildRequires:  python311-base
 %if %{kvm_available}
 %ifarch %ix86 x86_64
 Requires:       qemu-x86
@@ -488,7 +488,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--libexecdir=%_libexecdir \
 	--localstatedir=%_localstatedir \
 	--prefix=%_prefix \
-        --python=%_bindir/python3 \
+        --python=%_bindir/python3.11 \
 	--sysconfdir=%_sysconfdir \
 	--with-pkgversion="%(echo '%{distro}' | sed 's/ (.*)//')" \
 	--disable-alsa \

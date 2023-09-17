@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 14 13:21:22 UTC 2023 - dfaggioli@suse.com
+
+- Fix the build for SLE/Leap:
+  * [openSUSE][RPM] Make the package buildable on SLE/Leap 15.x
+
+-------------------------------------------------------------------
 Tue Sep 12 12:10:39 UTC 2023 - dfaggioli@suse.com
 
 - Fix bsc#1211000:

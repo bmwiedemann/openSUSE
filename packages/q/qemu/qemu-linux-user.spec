@@ -52,8 +52,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja >= 1.7
 BuildRequires:  perl-Text-Markdown
-BuildRequires:  python3-base >= 3.6
-BuildRequires:  python3-setuptools
+BuildRequires:  python311-base
 
 %description
 QEMU provides CPU emulation along with other related capabilities. This package
@@ -155,7 +154,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--libexecdir=%_libexecdir \
 	--localstatedir=%_localstatedir \
 	--prefix=%_prefix \
-	--python=%_bindir/python3 \
+	--python=%_bindir/python3.11 \
 	--sysconfdir=%_sysconfdir \
 	--with-pkgversion="%(echo '%{distro}' | sed 's/ (.*)//')" \
 	--disable-alsa \
