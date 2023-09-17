@@ -1,7 +1,7 @@
 #
 # spec file for package libev
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?sle_version} >= 150700 || 0%{?suse_version} > 1500
+%bcond_without signify
+%else
+%bcond_with signify
+%endif
 
 %define library_name libev4
 Name:           libev
@@ -33,7 +39,7 @@ Source99:       baselibs.conf
 Patch0:         libev-4.15_compiler_warnings.patch
 Patch1:         libev-4.33-nonvoid-return.patch
 BuildRequires:  pkgconfig
-%if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
+%if %{with signify}
 BuildRequires:  signify
 %endif
 
@@ -72,7 +78,7 @@ available.
 This package holds the development files for libev.
 
 %prep
-%if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
+%if %{with signify}
 signify -V -p %{SOURCE3} -m %{SOURCE0}
 %endif
 %setup -q
