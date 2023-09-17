@@ -20,7 +20,7 @@
 %define lverp 1_58
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.58.0
+Version:        1.58.1
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -163,7 +163,7 @@ popd
 # Don't include abseil-cpp in sources
 rm -fr third_party/abseil-cpp/*
 # Don't include non-deterministic log in sources
-rm build/CMakeFiles/CMakeConfigureLog.yaml
+rm -f build/CMakeFiles/CMakeConfigureLog.yaml
 
 mkdir -p "%buildroot/%src_install_dir"
 cp -r * "%buildroot/%src_install_dir"

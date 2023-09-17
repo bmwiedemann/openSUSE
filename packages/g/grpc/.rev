@@ -509,4 +509,14 @@ Note: In my home project this only builds on Factory/Tumbleweed. (forwarded requ
   downstream using packages functional again.</comment>
     <requestid>1110898</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>7af5cafca57f33ee83f795cd56c64c0f</srcmd5>
+    <version>1.58.1</version>
+    <time>1694971729</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.58.1
+  * Reintroduced c-ares 1.14 or later support
+- Pass &quot;-f&quot; flag to &quot;rm&quot; when removing CMakeConfigureLog.yaml (forwarded request 1111346 from glaubitz)</comment>
+    <requestid>1111410</requestid>
+  </revision>
 </revisionlist>
