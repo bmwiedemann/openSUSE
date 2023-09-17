@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 14 10:17:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.6:
+  * #11679: Add the :envvar:`!SPHINX_AUTODOC_RELOAD_MODULES`
+    environment variable, which if set reloads modules when
+    using autodoc with ``TYPE_CHECKING = True``.
+  * #11679: Use :py:func:`importlib.reload` to reload modules in
+    autodoc.
+
+-------------------------------------------------------------------
 Thu Sep  7 10:45:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.2.5:
@@ -27,13 +37,13 @@ Wed Aug 30 11:31:33 UTC 2023 - Markéta Machová <mmachova@suse.com>
   * Require sphinxcontrib-serializinghtml 1.1.9.
   * Fix regression in autodoc.Documenter.parse_name().
   * Fix regression in JSON serialisation.
-  * autodoc: Support positional-only parameters in classmethod methods 
+  * autodoc: Support positional-only parameters in classmethod methods
     when autodoc_preserve_defaults is True.
-  * Restore support string methods on path objects. This is deprecated 
-    and will be removed in Sphinx 8. Use os.fspath() to convert Path 
+  * Restore support string methods on path objects. This is deprecated
+    and will be removed in Sphinx 8. Use os.fspath() to convert Path
     objects to strings, or Path’s methods to work with path objects.
   * Fix a regression in the MoveModuleTargets transform.
-  * linkcheck: Resolve hanging tests for timezones west of London and 
+  * linkcheck: Resolve hanging tests for timezones west of London and
     incorrect conversion from UTC to offsets from the UNIX epoch.
 
 -------------------------------------------------------------------
@@ -45,13 +55,13 @@ Wed Aug 23 12:06:50 UTC 2023 - Markéta Machová <mmachova@suse.com>
   * Deprecate sphinx.util.md5 and sphinx.util.sha1. Use hashlib instead.
   * Deprecate sphinx.testing.path. Use os.path or pathlib instead.
   * Support os.PathLike types and pathlib.Path objects in many more places.
-  * Add the :no-typesetting: option to suppress textual output and only 
+  * Add the :no-typesetting: option to suppress textual output and only
     create a linkable anchor.
   * Allow running Sphinx with python -m sphinx build
   * graphviz: Fix relative links from within the graph.
   * pytest: Fail tests on “XPASS”, Set PYTHONWARNINGS=error, set strict config
-  * Restored the the str interface of the asset classes (_CascadingStyleSheet 
-    and _JavaScript), which several extensions relied upon. This will be 
+  * Restored the the str interface of the asset classes (_CascadingStyleSheet
+    and _JavaScript), which several extensions relied upon. This will be
     removed in Sphinx 9.
   * Many more changes (even deprecations), see upstream changelog
 
@@ -717,7 +727,7 @@ Mon Mar 28 08:29:11 UTC 2022 - Martin Liška <mliska@suse.cz>
   * #9924: LaTeX: multi-line :rst:dir:`cpp:function` directive has big vertical
     spacing in Latexpdf
   * #10158: LaTeX: excessive whitespace since v4.4.0 for undocumented
-    variables/structure members 
+    variables/structure members
   * #10175: LaTeX: named footnote reference is linked to an incorrect footnote if
     the name is also used in the different document
   * #10269: manpage: Failed to resolve the title of :ref: cross references
@@ -1015,7 +1025,7 @@ Sat Jul 17 13:23:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 4.1.1:
   * sphinxcontrib-htmlhelp-2.0.0 or above
   * sphinxcontrib-serializinghtml-1.1.5 or above
-  * html: HTML logo or Favicon specified as file not being found on output 
+  * html: HTML logo or Favicon specified as file not being found on output
 
 -------------------------------------------------------------------
 Mon Jul 12 10:14:42 UTC 2021 - Martin Liška <mliska@suse.cz>
@@ -1146,7 +1156,7 @@ Fri Apr 16 07:02:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Tue Apr  6 01:32:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.3:
-  * #8959: using UNIX path separator in image directive confuses Sphinx on Windows 
+  * #8959: using UNIX path separator in image directive confuses Sphinx on Windows
 
 -------------------------------------------------------------------
 Tue Mar 16 10:32:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -1292,7 +1302,7 @@ Tue Mar 16 10:32:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
     inside function type signatures
   * #8780: LaTeX: long words in narrow columns may not be hyphenated
   * #8788: LaTeX: ``\titleformat`` last argument in sphinx.sty should be
-    bracketed, not braced (and is anyhow not needed) 
+    bracketed, not braced (and is anyhow not needed)
   * #8849: LaTex: code-block printed out of margin (see the opt-in LaTeX syntax
     boolean :ref:`verbatimforcewraps <latexsphinxsetupforcewraps>` for use via
     the :ref:`'sphinxsetup' <latexsphinxsetup>` key of ``latex_elements``)
@@ -1358,9 +1368,9 @@ Fri Dec  4 17:19:43 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 - Fix failing graphviz dot calls by including packages for png
   and pdf formats. The png fail was masked by an incorrect use of
   a shell command chain. Fails for pdf format were in the tests.
-- Add sphinx-pr8520-fix-AliasNode-copy.patch to fix failing 
+- Add sphinx-pr8520-fix-AliasNode-copy.patch to fix failing
   manpages build -- gh#sphinx-doc/sphinx#8520
- 
+
 -------------------------------------------------------------------
 Thu Nov 26 09:18:00 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
@@ -1407,7 +1417,7 @@ Tue Nov  3 19:56:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Mon Sep 28 13:45:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- add sphinx-pygments-compat.patch (fix tests with newer pygments) 
+- add sphinx-pygments-compat.patch (fix tests with newer pygments)
 
 -------------------------------------------------------------------
 Tue Aug 18 14:44:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -1488,7 +1498,7 @@ Thu Aug 13 14:02:03 UTC 2020 - Dirk Mueller <dmueller@suse.com>
     contains a hyperlink target
   * #7469: autosummary: "Module attributes" header is not translatable
   * #7940: apidoc: An extra newline is generated at the end of the rst file if a
-    module has submodules 
+    module has submodules
   * #4258: napoleon: decorated special methods are not shown
   * #7799: napoleon: parameters are not escaped for combined params in numpydoc
   * #7780: napoleon: multiple paramaters declaration in numpydoc was wrongly
@@ -1901,14 +1911,14 @@ Mon May  4 10:17:24 UTC 2020 - Jan Zerebecki <jzerebecki@suse.com>
     * #7142: html theme: Add a theme option: ``pygments_dark_style`` to switch the
       style of code-blocks in dark mode
     * The C domain has been rewritten adding for example:
-    
+
       - Cross-referencing respecting the current scope.
       - Possible to document anonymous entities.
       - More specific directives and roles for each type of entitiy,
         e.g., handling scoping of enumerators.
       - New role :rst:role:`c:expr` for rendering expressions and types
         in text.
-    
+
     * Added ``SphinxDirective.get_source_info()``
       and ``SphinxRole.get_source_info()``.
     * #7324: sphinx-build: Emit a warning if multiple files having different file
@@ -2077,7 +2087,7 @@ Mon May  4 10:17:24 UTC 2020 - Jan Zerebecki <jzerebecki@suse.com>
       call ``note_explicit_target()``
     * #7095: dirhtml: Cross references are broken via intersphinx and ``:doc:`` role
     * C++:
-    
+
       - Don't crash when using the ``struct`` role in some cases.
       - Don't warn when using the ``var``/``member`` role for function
         parameters.
@@ -2537,7 +2547,7 @@ Tue Mar  6 11:55:15 UTC 2018 - dmueller@suse.com
 -------------------------------------------------------------------
 Tue Feb 27 14:09:37 UTC 2018 - aplanas@suse.com
 
-- Recommends only on SUSE 
+- Recommends only on SUSE
 
 -------------------------------------------------------------------
 Sat Feb 24 18:31:35 UTC 2018 - arun@gmx.de
@@ -2721,7 +2731,7 @@ Sat Sep 30 16:28:00 UTC 2017 - arun@gmx.de
 -------------------------------------------------------------------
 Mon Sep 18 22:03:24 UTC 2017 - toddrme2178@gmail.com
 
-- Move sphinxcontrib namespace into seperate package to avoid 
+- Move sphinxcontrib namespace into seperate package to avoid
   dependency loop with sphinxcontrib-websupport.
 
 -------------------------------------------------------------------
@@ -3050,13 +3060,13 @@ Wed Sep 16 13:16:01 UTC 2015 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Fri Sep  4 13:27:51 UTC 2015 - toddrme2178@gmail.com
 
-- Split latex-related stuff into its own subpackage so we can 
+- Split latex-related stuff into its own subpackage so we can
   depend on the necessary latex components.
 
 -------------------------------------------------------------------
 Wed Jul 29 13:18:28 UTC 2015 - hpj@urpla.net
 
-- Be explicit about six version requirements 
+- Be explicit about six version requirements
 
 -------------------------------------------------------------------
 Mon Jul 27 09:03:41 UTC 2015 - seife+obs@b1-systems.com
@@ -3094,9 +3104,9 @@ Thu Apr  9 02:29:40 UTC 2015 - termim@gmail.com
 - Update to 1.3
   + Incompatible changes
     * Roles ref, term and menusel now don’t generate emphasis nodes
-      anymore. If you want to keep italic style, adapt your stylesheet. 
+      anymore. If you want to keep italic style, adapt your stylesheet.
     * Role numref uses %s as special character to indicate position of
-      figure numbers instead # symbol. 
+      figure numbers instead # symbol.
     * Dependency requirement updates: docutils 0.11, Pygments 2.0
     * The gettext_enables config value has been renamed to
       gettext_additional_targets.
@@ -3108,10 +3118,10 @@ Thu Apr  9 02:29:40 UTC 2015 - termim@gmail.com
     * Dropped support for docutils versions up to 0.9.
     * Removed the sphinx.ext.oldcmarkup extension.
     * The deprecated config values exclude_trees, exclude_dirnames and
-      unused_docs have been removed. 
+      unused_docs have been removed.
     * A new node, sphinx.addnodes.literal_strong, has been added, for text
       that should appear literally (i.e. no smart quotes) in strong
-      font. Custom writers will have to be adapted to handle this node. 
+      font. Custom writers will have to be adapted to handle this node.
     * PR#269, #1476: replace <tt> tag by <code>. User customized
       stylesheets should be updated If the css contain some styles for tt>
       tag. Thanks to Takeshi Komiya.
@@ -3238,7 +3248,7 @@ Thu Apr  9 02:29:40 UTC 2015 - termim@gmail.com
       documentation.
     * PR#301, #1583: Allow the line numbering of the directive
       literalinclude to match that of the included file, using a new
-      lineno-match option. Thanks to Jeppe Pihl. 
+      lineno-match option. Thanks to Jeppe Pihl.
     * PR#299: add various options to sphinx-quickstart. Quiet mode option
       --quiet will skips wizard mode. Thanks to WAKAYAMA shirou.
     * #1623: Return types specified with :rtype: are now turned into links
@@ -3290,7 +3300,7 @@ Tue Sep  9 16:14:01 UTC 2014 - toddrme2178@gmail.com
     * #508: Sphinx every time exit with zero when is invoked from setup.py command.
       ex. `python setup.py build_sphinx -b doctest` return zero even if doctest
       failed.
-      
+
 -------------------------------------------------------------------
 Thu Mar  6 12:50:16 UTC 2014 - mcihar@suse.cz
 
@@ -3338,7 +3348,7 @@ Fri Nov 15 12:17:12 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Wed Nov 13 14:54:09 UTC 2013 - speilicke@suse.com
 
-- Add sphinx-setup_command_unicode.patch: Backport of 
+- Add sphinx-setup_command_unicode.patch: Backport of
   https://bitbucket.org/birkenfeld/sphinx/pull-request/193/
 
 -------------------------------------------------------------------
@@ -3361,7 +3371,7 @@ Wed Nov  6 08:10:01 UTC 2013 - speilicke@suse.com
   + See CHANGES file
 - Own /etc/alternatives/sphinx-* by ghosting (update-alternatives)
 - Dropped sphinx-docutils-0.10.patch (merged upstream)
-  
+
 -------------------------------------------------------------------
 Thu Oct 24 11:14:54 UTC 2013 - speilicke@suse.com
 
@@ -3397,7 +3407,7 @@ Tue Nov 20 11:42:44 UTC 2012 - saschpe@suse.de
 -------------------------------------------------------------------
 Thu Nov 15 05:29:16 UTC 2012 - saschpe@suse.de
 
-- Revert last "locale" change, it was a false positive 
+- Revert last "locale" change, it was a false positive
 
 -------------------------------------------------------------------
 Tue Nov  6 00:24:32 UTC 2012 - saschpe@suse.de
@@ -3408,7 +3418,7 @@ Tue Nov  6 00:24:32 UTC 2012 - saschpe@suse.de
 -------------------------------------------------------------------
 Wed May 23 16:02:17 UTC 2012 - highwaystar.ru@gmail.com
 
-- python3 package added 
+- python3 package added
 
 -------------------------------------------------------------------
 Wed May 23 12:59:54 UTC 2012 - saschpe@suse.de
@@ -3569,7 +3579,7 @@ Mon Apr 26 14:34:11 UTC 2010 - nix@opensuse.org
 -------------------------------------------------------------------
 Tue Aug 11 10:53:47 CEST 2009 - cfarrell@suse.de
 
-- Update to 0.6.2 and split docs into separate package 
+- Update to 0.6.2 and split docs into separate package
 
 -------------------------------------------------------------------
 Fri Jun  5 21:54:31 CEST 2009 - poeml@suse.de

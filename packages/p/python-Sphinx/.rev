@@ -1173,4 +1173,41 @@
     ``YYYY`` when ``SOURCE_DATE_EPOCH`` is set.</comment>
     <requestid>1109692</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>cc5032a282d7ece6d19eaf08e3ab6789</srcmd5>
+    <version>7.2.6</version>
+    <time>1694971722</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.2.6:
+  * #11679: Add the :envvar:`!SPHINX_AUTODOC_RELOAD_MODULES`
+    environment variable, which if set reloads modules when
+    using autodoc with ``TYPE_CHECKING = True``.
+  * #11679: Use :py:func:`importlib.reload` to reload modules in
+    autodoc.
+
+  * autodoc: Support positional-only parameters in classmethod methods
+  * Restore support string methods on path objects. This is deprecated
+    and will be removed in Sphinx 8. Use os.fspath() to convert Path
+  * linkcheck: Resolve hanging tests for timezones west of London and
+  * Add the :no-typesetting: option to suppress textual output and only
+  * Restored the the str interface of the asset classes (_CascadingStyleSheet
+    and _JavaScript), which several extensions relied upon. This will be
+    variables/structure members
+  * html: HTML logo or Favicon specified as file not being found on output
+  * #8959: using UNIX path separator in image directive confuses Sphinx on Windows
+    bracketed, not braced (and is anyhow not needed)
+- Add sphinx-pr8520-fix-AliasNode-copy.patch to fix failing
+- add sphinx-pygments-compat.patch (fix tests with newer pygments)
+    module has submodules
+- Recommends only on SUSE
+- Move sphinxcontrib namespace into seperate package to avoid
+- Split latex-related stuff into its own subpackage so we can
+- Be explicit about six version requirements
+      anymore. If you want to keep italic style, adapt your stylesheet.
+      figure numbers instead # symbol.
+      unused_docs have been removed.
+      font. Custom writers will have to be adapted to handle this node.
+      lineno-match option. Thanks to Jeppe Pihl.</comment>
+    <requestid>1111065</requestid>
+  </revision>
 </revisionlist>
