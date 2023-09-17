@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 11 14:47:53 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to release 4.2.1
+  * No changelog provided
+- Drop upstream patches:
+  * 0001-pypubsub-Replace-deprecated-inspect.getargspec.patch
+  * 0001-Fix-overflow-check-for-wxUIntPtr-type.patch
+  * 0001-Only-import-attrdict-where-needed.patch
+  * ba0d8cfcec3d3b0112d1c54991853e6003f2fbf6.patch
+
+-------------------------------------------------------------------
 Sat Jan 28 09:38:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add ba0d8cfcec3d3b0112d1c54991853e6003f2fbf6.patch to resolve
