@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.dk/cgit/liburing
 Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.bz2
 Patch0:         test-io_uring_register-fix-errno-confusion-and-new-e.patch
+Patch1:         tests-don-t-expect-multishot-recv-overflow-backloggi.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  procps
@@ -81,7 +82,7 @@ sh ./configure --prefix=%{_prefix} \
 # io_uring syscalls not supported as of qemu 7.0.0 and would test the host
 # kernel anyway not the target kernel..
 %if !0%{?qemu_user_space_build}
-/usr/bin/make runtests
+/usr/bin/make %{?_smp_mflags} runtests
 %endif
 
 %install

@@ -1,0 +1,34 @@
+From: Pavel Begunkov <asml.silence@gmail.com>
+Date: Fri, 11 Aug 2023 13:58:30 +0100
+Subject: tests: don't expect multishot recv overflow backlogging
+Patch-mainline: 2.5
+Git-commit: b73e940c9dd4ffa8ac121db046c0788376691b99
+References: kernel 6.5
+
+Multishots may and are likely to complete when there is no space in CQ,
+don't rely on overflows.
+
+Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
+Link: https://lore.kernel.org/r/d078c0f797322bd01d8c91743d652b734e83e9ba.1691758633.git.asml.silence@gmail.com
+Signed-off-by: Jens Axboe <axboe@kernel.dk>
+Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+---
+ test/recv-multishot.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/test/recv-multishot.c b/test/recv-multishot.c
+index e4a07ce976cc..f66f13198dde 100644
+--- a/test/recv-multishot.c
++++ b/test/recv-multishot.c
+@@ -271,7 +271,7 @@ static int test(struct args *args)
+ 		 */
+ 		bool const early_last = args->early_error == ERROR_EARLY_OVERFLOW &&
+ 					!args->wait_each &&
+-					i == N_CQE_OVERFLOW &&
++					i >= N_CQE_OVERFLOW &&
+ 					!(cqe->flags & IORING_CQE_F_MORE);
+ 
+ 		bool const should_be_last =
+-- 
+2.42.0
+

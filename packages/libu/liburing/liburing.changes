@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 15 05:28:44 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- tests-don-t-expect-multishot-recv-overflow-backloggi.patch (bsc#1215332)
+
+-------------------------------------------------------------------
+Thu Sep 14 08:37:29 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- build tests in parallel (using %{?_smp_mflags})
+
+-------------------------------------------------------------------
 Thu Aug 31 06:57:37 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - add test-io_uring_register-fix-errno-confusion-and-new-e.patch
