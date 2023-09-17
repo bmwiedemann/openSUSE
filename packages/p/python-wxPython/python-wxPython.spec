@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-wxPython
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -81,7 +81,7 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{pprefix}-wxPython
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        The "Phoenix" variant of the wxWidgets Python bindings
 License:        GPL-2.0-or-later
@@ -93,20 +93,12 @@ Source1:        python-wxPython-rpmlintrc
 Source2:        repack
 # PATCH-FIX-OPENSUSE
 Patch1:         use_stl_build.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Only-import-attrdict-where-needed.patch
 # PATCH-FIX-UPSTREAM - https://github.com/wxWidgets/Phoenix/pull/2232
 Patch4:         0003-Make-pip-usage-in-wxget-optional.patch
 # PATCH-FIX-OPENSUSE
 Patch5:         0004-Fix-time_t-ETG-typedef-extend-DateTime.FromTimeT-tes.patch
-# PATCH-FIX-UPSTREAM - fix python 3.11 support
-Patch6:         https://github.com/wxWidgets/Phoenix/commit/ba0d8cfcec3d3b0112d1c54991853e6003f2fbf6.patch
 # PATCH-FIX-OPENSUSE - Test fixes/additions:
 Patch112:       0001-Check-HSV-values-in-image-test.patch
-# PATCH-FIX-UPSTREAM - https://github.com/wxWidgets/Phoenix/pull/2233
-Patch113:       0001-Fix-overflow-check-for-wxUIntPtr-type.patch
-# PATCH-FIX-UPSTREAM - https://github.com/wxWidgets/Phoenix/pull/2228
-Patch114:       0001-pypubsub-Replace-deprecated-inspect.getargspec.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module requests}
