@@ -1641,6 +1641,7 @@ BuildFlags: onlybuild:a52dec
 BuildFlags: onlybuild:aaa_base
 BuildFlags: onlybuild:abseil-cpp
 BuildFlags: onlybuild:acl
+BuildFlags: onlybuild:adobe-sourcesans3-fonts
 BuildFlags: onlybuild:adolc
 BuildFlags: onlybuild:adwaita-icon-theme
 BuildFlags: onlybuild:alsa
