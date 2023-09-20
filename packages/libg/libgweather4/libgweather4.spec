@@ -17,13 +17,13 @@
 
 
 Name:           libgweather4
-Version:        4.3.2
+Version:        4.4.0
 Release:        0
 Summary:        Library to get online weather information
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/LibGWeather
-Source0:        https://download.gnome.org/sources/libgweather/4.3/libgweather-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libgweather/4.4/libgweather-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 16 12:22:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.4.0:
+  + nws: fix null string comparison when reading visibility
+  + Location database changes: Adds Cities from Ukraines
+    Zaporizhzhia Oblast
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Aug  7 14:52:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.3.2:
