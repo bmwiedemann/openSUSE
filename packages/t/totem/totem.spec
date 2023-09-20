@@ -57,6 +57,9 @@ BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  pkgconfig(totem-plparser) >= 3.26.5
 BuildRequires:  pkgconfig(x11)
 
+# Set a hard requires on the new thumbnailer sub-package
+Requires:       totem-video-thumbnailer
+
 # We want a useful set of plugins
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
@@ -106,6 +109,16 @@ Totem is a movie player for the GNOME desktop based on GStreamer.
 
 This package contains developer documentation.
 
+%package video-thumbnailer
+Summary:        Totem video thumbnailer
+Supplements:    (gnome-shell and nautilus)
+Provides:       totem:%{_bindir}/totem-video-thumbnailer
+
+%description video-thumbnailer
+Totem is a movie player for the GNOME desktop based on GStreamer.
+
+This package contains the video thumbnailer.
+
 %lang_package
 
 %prep
@@ -133,7 +146,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Totem.deskt
 %files
 %license COPYING
 %doc %{_datadir}/help/C/%{name}/
-%{_bindir}/*
+%{_bindir}/%{name}
 %{_datadir}/GConf/gsettings/totem.convert
 %{_datadir}/dbus-1/services/org.gnome.Totem.service
 %dir %{_datadir}/metainfo
@@ -142,10 +155,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Totem.deskt
 %{_datadir}/glib-2.0/schemas/org.gnome.totem.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.totem.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/*.svg
-%dir %{_datadir}/thumbnailers
-%{_datadir}/thumbnailers/totem.thumbnailer
 %{_libexecdir}/totem-gallery-thumbnailer
-%{_mandir}/man?/*%{ext_man}
+%{_mandir}/man1/%{name}.1%{ext_man}
 # Own directories for plugins
 %dir %{_libdir}/totem
 %dir %{_libdir}/totem/plugins
@@ -184,5 +195,11 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Totem.deskt
 %{_libdir}/libtotem.so
 %{_libdir}/pkgconfig/totem.pc
 %{_datadir}/gir-1.0/*.gir
+
+%files video-thumbnailer
+%{_bindir}/totem-video-thumbnailer
+%{_mandir}/man1/totem-video-thumbnailer.1%{ext_man}
+%dir %{_datadir}/thumbnailers
+%{_datadir}/thumbnailers/totem.thumbnailer
 
 %changelog

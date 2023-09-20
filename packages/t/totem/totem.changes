@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 13 11:16:47 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add totem:%{_bindir}/totem-video-thumbnailer split-provides to
+  the new thumbnailer subpackage: not really needed, as the
+  sub-package is a hard-dependency to totem anyway, but that might
+  possibly change in the future.
+
+-------------------------------------------------------------------
+Wed Aug 23 19:17:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Split out new sub-package: totem-video-thumbnailer: put the
+  video-thumbnailing functionality into its own package, allowing
+  users not wanting totem installed still keep video thumbnailing
+  functionality in software like nautilus. Add a Supplements
+  (gnome-shell and nautilus) in the sub-package, install
+  automatically when both are present. Also set a hard Requires on
+  the subpackage in the main totem package.
+
+-------------------------------------------------------------------
 Mon Mar 13 18:10:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete and unused intltool, vala and

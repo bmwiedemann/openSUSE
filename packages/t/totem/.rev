@@ -1190,4 +1190,23 @@
     <comment></comment>
     <requestid>1071262</requestid>
   </revision>
+  <revision rev="157" vrev="3">
+    <srcmd5>a689e96ec4d5ae17d22627585d45e422</srcmd5>
+    <version>43.0</version>
+    <time>1695208884</time>
+    <user>dimstar_suse</user>
+    <comment>- Add totem:%{_bindir}/totem-video-thumbnailer split-provides to
+  the new thumbnailer subpackage: not really needed, as the
+  sub-package is a hard-dependency to totem anyway, but that might
+  possibly change in the future.
+
+- Split out new sub-package: totem-video-thumbnailer: put the
+  video-thumbnailing functionality into its own package, allowing
+  users not wanting totem installed still keep video thumbnailing
+  functionality in software like nautilus. Add a Supplements
+  (gnome-shell and nautilus) in the sub-package, install
+  automatically when both are present. Also set a hard Requires on
+  the subpackage in the main totem package.</comment>
+    <requestid>1110885</requestid>
+  </revision>
 </revisionlist>
