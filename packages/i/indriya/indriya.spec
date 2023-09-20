@@ -58,6 +58,7 @@ Group:          Documentation/HTML
 %pom_remove_plugin :jacoco-maven-plugin
 %pom_remove_plugin :maven-surefire-plugin
 %pom_remove_plugin :maven-source-plugin
+%pom_remove_plugin :maven-javadoc-plugin
 
 find . -name "*.java" | xargs sed -i s,'tec.uom.lib.common','tech.uom.lib.common',g
 
