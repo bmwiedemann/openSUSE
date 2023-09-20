@@ -19,15 +19,17 @@
 %define somajor 1
 %define sominor 0
 %define soname libshumate-%{somajor}_%{sominor}-1
+%bcond_with profiling
 
 Name:           libshumate
-Version:        1.0.5
+Version:        1.1.0
 Release:        0
 Summary:        C library providing a GtkWidget to display maps
 License:        LGPL-2.1-or-later
 URL:            https://wiki.gnome.org/Projects/libshumate
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 
+BuildRequires:  gperf
 BuildRequires:  gtk-doc >= 1.9
 BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
@@ -43,6 +45,9 @@ BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0
 BuildRequires:  pkgconfig(sqlite3) >= 1.12.0
 BuildRequires:  pkgconfig(vapigen) >= 0.11.0
+%if %{with profiling}
+BuildRequires:  pkgconfig(sysprof-capture-4)
+%endif
 
 %description
 libshumate is a C library providing a GtkWidget to display maps.
@@ -87,6 +92,7 @@ This package contains development files for %{name}.
 	-D libsoup3=true \
 	-D vector_renderer=true \
 	-D gtk_doc=true \
+	-D sysprof=%{?with_profiling:enabled}%{!?with_profiling:disabled} \
 	%{nil}
 %meson_build
 
