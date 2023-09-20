@@ -822,4 +822,16 @@
     <comment></comment>
     <requestid>1074236</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>56990b279153120a3cdbefb973883f3e</srcmd5>
+    <version>2.78.0</version>
+    <time>1695208889</time>
+    <user>dimstar_suse</user>
+    <comment>Resub - Authors file had gone away
+- Update to version 2.78.0:
+  + Glib: ustring: Add a std::hash&lt;&gt; specialization. Not included
+    by #include &lt;glibmm.h&gt;. Activate with #include
+    &lt;glibmm/ustring_hash.h&gt;. (forwarded request 1110625 from iznogood)</comment>
+    <requestid>1110894</requestid>
+  </revision>
 </revisionlist>
