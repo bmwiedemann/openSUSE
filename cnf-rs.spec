@@ -81,14 +81,18 @@ Provides:       bundled(crate(winapi-i686-pc-windows-gnu)) = 0.4.0
 Provides:       bundled(crate(winapi-x86_64-pc-windows-gnu)) = 0.4.0
 ExclusiveArch:  %{rust_tier1_arches}
 
+Obsoletes:      scout-command-not-found < 0.2.8
+Provides:       command-not-found = %{version}-%{release}
+Provides:       scout-command-not-found = %{version}-%{release}
+
 %description
 A libsolv based command-not-found handler for openSUSE.
 
 %package bash
 Summary:        Integration of %{name} with bash
 Requires:       %{name} = %{version}-%{release}
-Supplements:    (%{name} and bash)
 Obsoletes:      scout-command-not-found < 0.2.8
+Supplements:    (%{name} and bash)
 BuildArch:      noarch
 %if 0%{?sle_version} == 150500 && 0%{?is_opensuse}
 Group:          System/Console
@@ -133,6 +137,10 @@ install -D -m 644 %{SOURCE2} .cargo/config
 # using cargo_install (only supports bindir)
 %{cargo_install}
 
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1215428#c2
+# fish, quite unfortunatelly, depends on a /usr/bin/command-not-found beeing present
+ln -sfr %{buildroot}/%{_bindir}/cnf-rs %{buildroot}/%{_bindir}/command-not-found
+
 # shell integrations
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysconfdir}/bash_command_not_found
 install -D -m 0644 %{SOURCE11} %{buildroot}%{_sysconfdir}/zsh_command_not_found
@@ -154,6 +162,7 @@ install -D -m 0644 cnf-rs.1 %{buildroot}%{_mandir}/man1/%{name}.1
 %license LICENSE
 %doc README.md
 %attr(0755,root,root) %{_bindir}/cnf-rs
+%{_bindir}/command-not-found
 %{_mandir}/man1/cnf-rs*
 
 %files bash
