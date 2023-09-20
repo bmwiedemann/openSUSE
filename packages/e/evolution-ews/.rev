@@ -1175,4 +1175,12 @@
   + Updated translations.</comment>
     <requestid>1089509</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>c0b59e125cbfdbf9d9eaf95c86fccdab</srcmd5>
+    <version>3.50.0</version>
+    <time>1695208904</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 1111480 from iznogood)</comment>
+    <requestid>1111581</requestid>
+  </revision>
 </revisionlist>
