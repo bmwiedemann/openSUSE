@@ -55,4 +55,12 @@
     <comment>maven 3.8.5 / jansi 2.4.0 and fixes for building with them</comment>
     <requestid>977560</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>c27ce858247dcf1b22fbdb61e4ba75f5</srcmd5>
+    <version>1.8.9</version>
+    <time>1695209388</time>
+    <user>dimstar_suse</user>
+    <comment>reproducibility improvements</comment>
+    <requestid>1112264</requestid>
+  </revision>
 </revisionlist>

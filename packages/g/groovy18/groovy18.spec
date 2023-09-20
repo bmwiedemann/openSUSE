@@ -1,7 +1,7 @@
 #
 # spec file for package groovy18
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,6 +45,7 @@ Patch10:        groovy18-asm7.patch
 Patch11:        groovy18-nofork.patch
 Patch12:        groovy18-jansi.patch
 Patch13:        groovy18-jline2.patch
+Patch14:        groovy18-timestamp.patch
 BuildRequires:  ant
 BuildRequires:  ant-antlr
 BuildRequires:  antlr
@@ -141,6 +142,7 @@ cp %{SOURCE3} .
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 
 # build.xml is not compatible with Ant 1.10+
 sed -i "s| depends=\"-excludeLegacyAntVersion\"||" build.xml
