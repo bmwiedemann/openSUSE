@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 14 06:26:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ship libduktape207-32bit: needed by libproxy since version 0.5.
+
+-------------------------------------------------------------------
 Wed Apr 12 03:45:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.7.0:

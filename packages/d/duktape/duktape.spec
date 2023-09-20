@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://duktape.org/
 Source0:        https://duktape.org/%{name}-%{version}.tar.xz
+Source99:       baselibs.conf
 Patch0:         duktape-link-m.patch
 BuildRequires:  gcc
 BuildRequires:  pkgconfig
