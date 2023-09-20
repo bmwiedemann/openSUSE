@@ -1173,4 +1173,12 @@
     <comment></comment>
     <requestid>1069089</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>06db2b5600c81146aff72688c4f382b9</srcmd5>
+    <version>1.51.1</version>
+    <time>1695208880</time>
+    <user>dimstar_suse</user>
+    <comment>Pushing GNOME 45.rc packages (forwarded request 1109853 from iznogood)</comment>
+    <requestid>1110519</requestid>
+  </revision>
 </revisionlist>
