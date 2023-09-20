@@ -1325,4 +1325,12 @@
   + Updated translations.</comment>
     <requestid>1089503</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>848fbddbedb0b4538f23cf06cf9da441</srcmd5>
+    <version>45.0</version>
+    <time>1695208911</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1111540 from iznogood)</comment>
+    <requestid>1111583</requestid>
+  </revision>
 </revisionlist>
