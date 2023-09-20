@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 18 18:45:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  Features:
+  * Add completion files in deb packaging script
+  * Adds filtering for Windows hidden files
+  * Support --mount option on Mac
+  * Lazy loading of a files extended attributes and absolute path
+  Bug Fixes:
+  * Crate can't contain broken symlink
+  * Remove executable flag from fish completion file
+  * Use proc_mounts only on linux
+  * Hotfix harmful documentation
+  * Fix hyperlinks on Windows
+  * Nix flake check also builds the package
+  * [breaking] Change number_huge and unit_huge to match the man page short codes
+
+-------------------------------------------------------------------
 Fri Sep 15 09:45:17 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Add version to provides/obsoletes
