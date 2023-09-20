@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Sep 16 14:01:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Hide the experimental vector map toggle if libshumate is
+    compiled without vector support.
+  + Fix POI browser category labels showing translated strings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  2 19:54:31 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 45.rc:
+  + Enabled experimental vector-based map.
+  + Update OSM edit POI definition.
+  + Increase sidebar width to fit longer translated strings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 25 22:08:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + Use Adw.OverlaySplitView for the routing sidebar. This enables
+    better narrow screen size adaptiveness and using touch gestures
+    to open the sidebar.
+  + Always show phone numbers as links when sandboxed (e.g.
+    Flatpak).
+  + Re-enable animations when going to new places and showing
+    routes.
+  + Use toasts for the OSM zoom in and location service dialogs.
+  + Restrict to using only supported languages for the GraphHopper
+    geocoding (search) service.
+- Add pkgconfig(libportal) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Fri Aug 25 21:08:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.alpha:
+  + Implemented POI explore UI
+  + Move zoom control buttons (back) to overlay
+  + Add rotation button with ability to reset rotation
+  + Make use of Adw.Toast for showing simple messages
+  + Update screenshots
+  + Add support for auth header in OpenTripPlanner plugin
+- Drop gnome-maps-fix-dependency.patch: Still valid, but no longer
+  needed.
+
+-------------------------------------------------------------------
 Fri Aug 25 20:08:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.4:
