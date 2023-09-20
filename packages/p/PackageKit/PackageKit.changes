@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 17 13:28:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add PackageKit-dynamic-export.patch: fix loading of modules when
+  built using glib 2.70 (boo#1213309).
+
+-------------------------------------------------------------------
 Mon Mar 13 02:46:44 UTC 2023 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-fix-pkcon-permission.patch: trivial: Drop

@@ -2014,4 +2014,14 @@ Library portions are LGPL-2.1+ licensed (forwarded request 132611 from dimstar)<
     <comment></comment>
     <requestid>1071264</requestid>
   </revision>
+  <revision rev="234" vrev="10">
+    <srcmd5>58f49ab1fbbad133abbffb7ec62ab4c9</srcmd5>
+    <version>1.2.5</version>
+    <time>1695208867</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1109790 from iznogood
+
+Pushing GNOME 45.rc packages</comment>
+    <requestid>1110395</requestid>
+  </revision>
 </revisionlist>
