@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 20 08:12:08 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.4.0
+ * Added functions for new ISDS services
+ * Added variants of function for services
+ * Added new elements dmVODZ and attsNum into struct isds_envelope.
+ * Added new element ext_files into struct isds_message.
+ * Fixed compilation of simline/server_cli with musl libc.
+ * Favouring xmlBufferDetach() over setting XML_BUFFER_ALLOC_IMMUTABLE.
+
+-------------------------------------------------------------------
 Fri Mar  3 06:07:15 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.3.0
