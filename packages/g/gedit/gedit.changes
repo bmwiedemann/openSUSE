@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Aug 17 18:03:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.1:
+  + Fix a -Wformat-security build issue.
+  + Add a set of warning CFLAGS, and fix the code accordingly.
+  + Flatpak update.
+
+-------------------------------------------------------------------
+Sun Aug 13 14:16:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 46.0:
+  + Adapt for Amtk -> libgedit-amtk rename.
+  + API changes for plugins: see the API docs.
+  + Code refactorings in GeditWindow, and delegate some of its work
+    to new classes: GeditHeaderBar and GeditSidePanel.
+  + Replace GeditMenuStackSwitcher by TeplPanelSwitcherMenu.
+  + Replace GeditStatusMenuButton by TeplStatusMenuButton.
+  + Remove a small feature from the statusbar: the small icons for
+    the window state. You now need to look at each individual tab
+    to know its state.
+  + Build: replace inline_side_panel_switcher option -> headerbar
+    option.
+  + Bug fixes for macOS.
+  + Updated translations.
+- Bump api_ver to 46, following upstreams changes.
+- Replace pkgconfig(amtk-5) with pkgconfig(libgedit-amtk-5)
+  following upstream chamges.
+
+-------------------------------------------------------------------
+Fri Jul 21 07:55:50 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add desktop-file-utils BuildRequires: new dependency to run the
+  desktop test.
+- Bump api_ver to 45, following upstreams changes.
+
+-------------------------------------------------------------------
+Fri Jun 23 18:14:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + User manual: a few improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan 20 18:10:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.2:

@@ -17,21 +17,22 @@
 
 
 %bcond_without  python_bindings
-%define api_ver 44
+%define api_ver 46
 
 Name:           gedit
-Version:        44.2
+Version:        46.1
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit
-Source0:        https://download.gnome.org/sources/gedit/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gedit/46/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE gedit-desktop.patch -- Adds more MIME types.
 Patch0:         gedit-desktop.patch
 # PATCH-FIX-OPENSUSE gedit-plugins-python-env.patch bjorn.lie@gmail.com -- Fix python env
 Patch1:         gedit-plugins-python-env.patch
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 0.9.3
 BuildRequires:  gtk-doc
@@ -41,7 +42,6 @@ BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 3.2.3
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(amtk-5) >= 5.6
 BuildRequires:  pkgconfig(gio-2.0) >= 2.64
 BuildRequires:  pkgconfig(glib-2.0) >= 2.64
 BuildRequires:  pkgconfig(gmodule-2.0)
@@ -49,10 +49,11 @@ BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gspell-1) >= 1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.2
+BuildRequires:  pkgconfig(libgedit-amtk-5)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
-BuildRequires:  pkgconfig(tepl-6) >= 6.4
+BuildRequires:  pkgconfig(tepl-6) >= 6.5.1
 BuildRequires:  pkgconfig(vapigen) >= 0.25.1
 BuildRequires:  pkgconfig(x11)
 Requires:       python3-cairo
@@ -184,8 +185,6 @@ This subpackage contains the header files for creating gedit plugins.
 %{_datadir}/gedit/gir-1.0/
 %{_includedir}/*
 %{_libdir}/pkgconfig/*.pc
-%{_datadir}/vala/vapi/gedit.deps
-%{_datadir}/vala/vapi/gedit.vapi
 
 %files lang -f %{name}.lang
 
