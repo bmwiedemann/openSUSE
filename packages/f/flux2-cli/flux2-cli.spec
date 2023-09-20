@@ -21,7 +21,7 @@
 %define repo_name flux2
 
 Name:           flux2-cli
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        CLI for Flux2CD
 License:        Apache-2.0
@@ -94,12 +94,12 @@ Fish command line completion support for %{name}.
 %build
 cp %{SOURCE11} ./manifests/bases/helm-controller/
 cp %{SOURCE12} ./manifests/bases/helm-controller/
-sed -i 's_https://github.com/fluxcd/helm-controller/releases/download/v0.36.0/__g' manifests/bases/helm-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/helm-controller/releases/download/v0.36.1/__g' manifests/bases/helm-controller/kustomization.yaml
 cat manifests/bases/helm-controller/kustomization.yaml
 
 cp %{SOURCE13} ./manifests/bases/image-automation-controller/
 cp %{SOURCE14} ./manifests/bases/image-automation-controller/
-sed -i 's_https://github.com/fluxcd/image-automation-controller/releases/download/v0.36.0/__g' manifests/bases/image-automation-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/image-automation-controller/releases/download/v0.36.1/__g' manifests/bases/image-automation-controller/kustomization.yaml
 cat manifests/bases/image-automation-controller/kustomization.yaml
 
 cp %{SOURCE15} ./manifests/bases/image-reflector-controller/
@@ -119,7 +119,7 @@ cat manifests/bases/notification-controller/kustomization.yaml
 
 cp %{SOURCE21} ./manifests/bases/source-controller/
 cp %{SOURCE22} ./manifests/bases/source-controller/
-sed -i 's_https://github.com/fluxcd/source-controller/releases/download/v1.1.0/__g' manifests/bases/source-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/source-controller/releases/download/v1.1.1/__g' manifests/bases/source-controller/kustomization.yaml
 cat manifests/bases/source-controller/kustomization.yaml
 
 ./manifests/scripts/bundle.sh

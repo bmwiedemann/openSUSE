@@ -1,7 +1,7 @@
 # Packaging README
 
 1. Adjust new package version in `_service`
-2. Run `osc service disabledrun`
+2. Run `osc service manualrun`
 3. Check the version numbers in all `kustomization.yaml` files in
    `./flux2/manifests/bases/*`.
 4. Run `download_yaml.sh` (this downloads the correct versions of all the

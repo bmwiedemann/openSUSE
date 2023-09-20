@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 19 14:33:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.1.1:
+  * Improve AUR package templates
+    - remove armv6h #4224
+    - unique source name #4224
+    - improve pkgver/_srcver #4224
+    - fix source name in .SRCINFO
+  * chore: remove support armv6h for aur package #4224
+  * tests/azure: update controller dependencies
+  * Update toolkit components
+  * update description of kubeconfig flags
+  * Upgrade github.com/fluxcd/pkg/{git,git/gogit}
+  * build(deps): bump the ci group with 2 updates
+
+-------------------------------------------------------------------
 Thu Aug 24 14:38:58 UTC 2023 - rombert@apache.org
 
 - Update to version 2.1.0:

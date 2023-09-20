@@ -1,14 +1,14 @@
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/fluxcd/flux2</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v2.1.0</param>
+    <param name="revision">v2.1.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
-  <service name="set_version" mode="disabled">
+  <service name="set_version" mode="manual">
     <param name="basename">flux2</param>
   </service>
   <service name="tar" mode="buildtime"/>
@@ -16,7 +16,7 @@
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service name="go_modules" mode="disabled">
-    <param name="archive">flux2-2.1.0.obscpio</param>
+  <service name="go_modules" mode="manual">
+    <param name="archive">flux2-2.1.1.obscpio</param>
   </service>
 </services>
