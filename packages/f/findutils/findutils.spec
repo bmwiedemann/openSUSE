@@ -69,10 +69,6 @@ useful for finding things on your system.
 %patch0
 
 %build
-%if 0%{?qemu_user_space_build}
-# this is a workaround for a qemu-user bug, we hit. A qemu patch is being discussed, but for now ...
-export DEFAULT_ARG_SIZE="(31u * 1024u)"
-%endif
 %configure \
   --libexecdir=%{_libdir}/find \
   --localstatedir=%{_localstatedir}/lib
