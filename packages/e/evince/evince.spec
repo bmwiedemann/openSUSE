@@ -20,13 +20,13 @@
 %define pluginAPI 4
 
 Name:           evince
-Version:        44.3
+Version:        45.0
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Evince
-Source0:        https://download.gnome.org/sources/evince/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evince/45/%{name}-%{version}.tar.xz
 # PATCH-FIX-SLE alarrosa@suse.com - Reverse upstream bump of synctex required version to build with texlive 2017
 Patch0:         0001-reversed-synctex-Annotate-more-functions-that-wraps-formatting-strings.patch
 Patch1:         0002-reversed-synctex-Sync-against-upstream-synctex.patch
@@ -234,10 +234,9 @@ A plugin for Evince to read XPS documents.
 %{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
 %{_datadir}/evince
-%{_datadir}/GConf/gsettings/evince.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.Evince.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Evince*
-%{_datadir}/metainfo/org.gnome.Evince.appdata.xml
+%{_datadir}/metainfo/org.gnome.Evince.metainfo.xml
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/evince.thumbnailer
 # backends directory structure - backends go to their own packages

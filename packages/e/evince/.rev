@@ -1333,4 +1333,12 @@
 New stable release</comment>
     <requestid>1096874</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>f2e70d654d89adb2b92708aaca399595</srcmd5>
+    <version>45.0</version>
+    <time>1695208963</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112203</requestid>
+  </revision>
 </revisionlist>
