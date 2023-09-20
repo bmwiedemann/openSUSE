@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 11 21:33:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Tue Apr 11 21:00:12 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Add avahi-CVE-2023-1981.patch: emit error if requested service

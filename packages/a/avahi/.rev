@@ -1222,4 +1222,14 @@ https://github.com/openSUSE/python-rpm-macros/issues/107 (forwarded request 9273
     <comment></comment>
     <requestid>1078524</requestid>
   </revision>
+  <revision rev="158" vrev="24">
+    <srcmd5>d03465c7f0e1863cf821474761ad4ab4</srcmd5>
+    <version>0.8</version>
+    <time>1695208869</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1109793 from iznogood
+
+Pushing GNOME 45.rc packages</comment>
+    <requestid>1110397</requestid>
+  </revision>
 </revisionlist>

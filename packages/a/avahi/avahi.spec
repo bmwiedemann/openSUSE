@@ -410,17 +410,8 @@ Obsoletes:      avahi-glib2-utils-gtk < %{version}
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
-
-
-
-
-
-
-
-
-
-
 # This is the avahi-discover command, only provided for the primary python3 flavor
+
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python
@@ -537,9 +528,9 @@ intltoolize -f
 export PYTHON=%{_bindir}/$python
 %configure\
 	--disable-static\
-        --with-distro=suse\
-        --enable-xmltoman\
-        --with-dbus-sys=%{_datadir}/dbus-1/system.d \
+	--with-distro=suse\
+	--enable-xmltoman\
+	--with-dbus-sys=%{_datadir}/dbus-1/system.d \
 %if %{build_core}
 	--enable-compat-libdns_sd\
 	--enable-compat-howl\
@@ -571,7 +562,7 @@ export PYTHON=%{_bindir}/$python
 	--disable-qt5\
 %endif
 %ifarch ppc64 ppc64le s390x
-    --disable-monodoc\
+	--disable-monodoc\
 %endif
 	--with-avahi-priv-access-group=avahi\
 	--with-autoipd-user=avahi-autoipd\
@@ -720,27 +711,18 @@ fi
 # Change ownership of /var/lib/avahi-autoipd after upgrade from openSUSE <= 12.3 and SLE <= 11.
 find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:avahi-autoipd {} +
 
-%post -n libavahi-client%{avahi_client_sover} -p /sbin/ldconfig
-%postun -n libavahi-client%{avahi_client_sover} -p /sbin/ldconfig
-%post -n libavahi-common%{avahi_common_sover} -p /sbin/ldconfig
-%postun -n libavahi-common%{avahi_common_sover} -p /sbin/ldconfig
-%post -n libavahi-core%{avahi_core_sover} -p /sbin/ldconfig
-%postun -n libavahi-core%{avahi_core_sover} -p /sbin/ldconfig
-%post -n libavahi-libevent%{avahi_libevent_sover} -p /sbin/ldconfig
-%postun -n libavahi-libevent%{avahi_libevent_sover} -p /sbin/ldconfig
-%post -n libdns_sd -p /sbin/ldconfig
-%postun -n libdns_sd -p /sbin/ldconfig
-%post -n libhowl%{avahi_libhowl_sover} -p /sbin/ldconfig
-%postun -n libhowl%{avahi_libhowl_sover} -p /sbin/ldconfig
-%post -n libavahi-ui-gtk3-%{avahi_gtk3_sover} -p /sbin/ldconfig
-%postun -n libavahi-ui-gtk3-%{avahi_gtk3_sover} -p /sbin/ldconfig
-%post -n libavahi-gobject%{avahi_gobject_sover} -p /sbin/ldconfig
-%postun -n libavahi-gobject%{avahi_gobject_sover} -p /sbin/ldconfig
-%post -n libavahi-glib%{avahi_glib_sover} -p /sbin/ldconfig
-%postun -n libavahi-glib%{avahi_glib_sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libavahi-client%{avahi_client_sover}
+%ldconfig_scriptlets -n libavahi-common%{avahi_common_sover}
+%ldconfig_scriptlets -n libavahi-core%{avahi_core_sover}
+%ldconfig_scriptlets -n libavahi-libevent%{avahi_libevent_sover}
+%ldconfig_scriptlets -n libdns_sd
+%ldconfig_scriptlets -n libhowl%{avahi_libhowl_sover}
+%ldconfig_scriptlets -n libavahi-ui-gtk3-%{avahi_gtk3_sover}
+%ldconfig_scriptlets -n libavahi-gobject%{avahi_gobject_sover}
+%ldconfig_scriptlets -n libavahi-glib%{avahi_glib_sover}
+
 %if %{build_qt5}
-%post -n libavahi-qt5-%{avahi_qt5_sover} -p /sbin/ldconfig
-%postun -n libavahi-qt5-%{avahi_qt5_sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libavahi-qt5-%{avahi_qt5_sover}
 %endif
 
 %post -n python3-avahi-gtk
