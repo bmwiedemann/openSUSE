@@ -7,4 +7,12 @@
     <comment>New package, getting ready for GNOME 45 with introducing new libs as needed</comment>
     <requestid>1103278</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6cf0294725dacbacdb2c9ad0d532b70b</srcmd5>
+    <version>299.0.4</version>
+    <time>1695208877</time>
+    <user>dimstar_suse</user>
+    <comment>Pushing GNOME 45.rc packages (forwarded request 1109843 from iznogood)</comment>
+    <requestid>1110509</requestid>
+  </revision>
 </revisionlist>

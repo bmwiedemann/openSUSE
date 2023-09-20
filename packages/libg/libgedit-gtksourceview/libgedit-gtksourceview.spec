@@ -17,7 +17,7 @@
 
 
 Name:           libgedit-gtksourceview
-Version:        299.0.3
+Version:        299.0.4
 Release:        0
 Summary:        Source code editing widget
 License:        LGPL-2.1-or-later
@@ -55,8 +55,8 @@ The libgedit-gtksourceview shared library.
 
 %package devel
 Summary:        Source code editing widget development headers
-Requires:       typelib-1_0-GtkSource-300 = %{version}
 Requires:       libgedit-gtksourceview-300-0
+Requires:       typelib-1_0-GtkSource-300 = %{version}
 
 %description devel
 Development files related to libgedit-gtksourceview.

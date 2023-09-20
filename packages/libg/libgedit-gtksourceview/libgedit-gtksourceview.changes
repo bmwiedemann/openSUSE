@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 13 14:32:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 299.0.4:
+  + Tools: list-langs, to generate a listing of *.lang files.
+  + Utils: add a function.
+  + Some small maintenance tasks.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jul 21 07:06:41 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Initial package, version 299.0.3.
