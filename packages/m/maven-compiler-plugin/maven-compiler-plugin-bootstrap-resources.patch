@@ -1,6 +1,6 @@
---- maven-compiler-plugin-3.10.1/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-compiler-plugin/plugin-help.xml	1970-01-01 01:00:00.000000000 +0100
-+++ maven-compiler-plugin-3.10.1/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-compiler-plugin/plugin-help.xml	2022-03-11 11:00:04.330573606 +0100
-@@ -0,0 +1,774 @@
+--- maven-compiler-plugin-3.11.0/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-compiler-plugin/plugin-help.xml	1970-01-01 01:00:00.000000000 +0100
++++ maven-compiler-plugin-3.11.0/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-compiler-plugin/plugin-help.xml	2023-09-13 19:54:42.838328420 +0200
+@@ -0,0 +1,898 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +<plugin>
 +  <name>${project.name}</name>
@@ -8,6 +8,7 @@
 +  <groupId>${project.groupId}</groupId>
 +  <artifactId>${project.artifactId}</artifactId>
 +  <version>${project.version}</version>
++  <goalPrefix>compiler</goalPrefix>
 +  <goalPrefix>compiler</goalPrefix>
 +  <mojos>
 +    <mojo>
@@ -89,6 +90,13 @@
 +          <required>false</required>
 +          <editable>true</editable>
 +          <description>Compiles application test sources.</description>
++        </parameter>
++        <parameter>
++          <name>compileSourceRoots</name>
++          <type>java.util.List</type>
++          <required>true</required>
++          <editable>true</editable>
++          <description>Compiles application sources</description>
 +        </parameter>
 +        <parameter>
 +          <name>createMissingPackageInfoClass</name>
@@ -199,8 +207,24 @@
 +          <description>Compiles application sources</description>
 +        </parameter>
 +        <parameter>
++          <name>implicit</name>
++          <type>java.lang.String</type>
++          <since>3.10.2</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Compiles application test sources.</description>
++        </parameter>
++        <parameter>
 +          <name>includes</name>
 +          <type>java.util.Set</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Compiles application sources</description>
++        </parameter>
++        <parameter>
++          <name>incrementalExcludes</name>
++          <type>java.util.Set</type>
++          <since>3.11</since>
 +          <required>false</required>
 +          <editable>true</editable>
 +          <description>Compiles application sources</description>
@@ -277,6 +301,13 @@
 +          <description>Compiles application test sources.</description>
 +        </parameter>
 +        <parameter>
++          <name>showCompilationChanges</name>
++          <type>boolean</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Compiles application test sources.</description>
++        </parameter>
++        <parameter>
 +          <name>showDeprecation</name>
 +          <type>boolean</type>
 +          <required>false</required>
@@ -346,6 +377,7 @@
 +        <compilerId implementation="java.lang.String" default-value="javac">${maven.compiler.compilerId}</compilerId>
 +        <compilerReuseStrategy implementation="java.lang.String" default-value="${reuseCreated}">${maven.compiler.compilerReuseStrategy}</compilerReuseStrategy>
 +        <compilerVersion implementation="java.lang.String">${maven.compiler.compilerVersion}</compilerVersion>
++        <compileSourceRoots implementation="java.util.List" default-value="${project.compileSourceRoots}"/>
 +        <createMissingPackageInfoClass implementation="boolean" default-value="true">${maven.compiler.createMissingPackageInfoClass}</createMissingPackageInfoClass>
 +        <debug implementation="boolean" default-value="true">${maven.compiler.debug}</debug>
 +        <debugFileName implementation="java.lang.String" default-value="javac"/>
@@ -358,20 +390,78 @@
 +        <forceJavacCompilerUse implementation="boolean" default-value="false">${maven.compiler.forceJavacCompilerUse}</forceJavacCompilerUse>
 +        <fork implementation="boolean" default-value="false">${maven.compiler.fork}</fork>
 +        <generatedSourcesDirectory implementation="java.io.File" default-value="${project.build.directory}/generated-sources/annotations"/>
++        <implicit implementation="java.lang.String">${maven.compiler.implicit}</implicit>
 +        <maxmem implementation="java.lang.String">${maven.compiler.maxmem}</maxmem>
 +        <meminitial implementation="java.lang.String">${maven.compiler.meminitial}</meminitial>
 +        <optimize implementation="boolean" default-value="false">${maven.compiler.optimize}</optimize>
 +        <parameters implementation="boolean" default-value="false">${maven.compiler.parameters}</parameters>
 +        <release implementation="java.lang.String">${maven.compiler.release}</release>
++        <showCompilationChanges implementation="boolean" default-value="false">${maven.compiler.showCompilationChanges}</showCompilationChanges>
 +        <showDeprecation implementation="boolean" default-value="false">${maven.compiler.showDeprecation}</showDeprecation>
-+        <showWarnings implementation="boolean" default-value="false">${maven.compiler.showWarnings}</showWarnings>
++        <showWarnings implementation="boolean" default-value="true">${maven.compiler.showWarnings}</showWarnings>
 +        <skipMain implementation="boolean">${maven.main.skip}</skipMain>
 +        <skipMultiThreadWarning implementation="boolean" default-value="false">${maven.compiler.skipMultiThreadWarning}</skipMultiThreadWarning>
-+        <source implementation="java.lang.String" default-value="1.7">${maven.compiler.source}</source>
++        <source implementation="java.lang.String" default-value="1.8">${maven.compiler.source}</source>
 +        <staleMillis implementation="int" default-value="0">${lastModGranularityMs}</staleMillis>
-+        <target implementation="java.lang.String" default-value="1.7">${maven.compiler.target}</target>
++        <target implementation="java.lang.String" default-value="1.8">${maven.compiler.target}</target>
 +        <useIncrementalCompilation implementation="boolean" default-value="true">${maven.compiler.useIncrementalCompilation}</useIncrementalCompilation>
 +        <verbose implementation="boolean" default-value="false">${maven.compiler.verbose}</verbose>
++      </configuration>
++    </mojo>
++    <mojo>
++      <goal>help</goal>
++      <description>Display help information on maven-compiler-plugin.
++Call mvn compiler:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
++      <requiresDirectInvocation>false</requiresDirectInvocation>
++      <requiresProject>false</requiresProject>
++      <requiresReports>false</requiresReports>
++      <aggregator>false</aggregator>
++      <requiresOnline>false</requiresOnline>
++      <inheritedByDefault>true</inheritedByDefault>
++      <implementation>org.apache.maven.plugin.compiler.HelpMojo</implementation>
++      <language>java</language>
++      <instantiationStrategy>per-lookup</instantiationStrategy>
++      <executionStrategy>once-per-session</executionStrategy>
++      <threadSafe>true</threadSafe>
++      <parameters>
++        <parameter>
++          <name>detail</name>
++          <type>boolean</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-compiler-plugin.
++Call mvn compiler:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
++        </parameter>
++        <parameter>
++          <name>goal</name>
++          <type>java.lang.String</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-compiler-plugin.
++Call mvn compiler:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
++        </parameter>
++        <parameter>
++          <name>indentSize</name>
++          <type>int</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-compiler-plugin.
++Call mvn compiler:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
++        </parameter>
++        <parameter>
++          <name>lineLength</name>
++          <type>int</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-compiler-plugin.
++Call mvn compiler:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
++        </parameter>
++      </parameters>
++      <configuration>
++        <detail implementation="boolean" default-value="false">${detail}</detail>
++        <goal implementation="java.lang.String">${goal}</goal>
++        <indentSize implementation="int" default-value="2">${indentSize}</indentSize>
++        <lineLength implementation="int" default-value="80">${lineLength}</lineLength>
 +      </configuration>
 +    </mojo>
 +    <mojo>
@@ -556,6 +646,14 @@
 +          <description>Compiles application test sources.</description>
 +        </parameter>
 +        <parameter>
++          <name>implicit</name>
++          <type>java.lang.String</type>
++          <since>3.10.2</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Compiles application test sources.</description>
++        </parameter>
++        <parameter>
 +          <name>jdkToolchain</name>
 +          <type>java.util.Map</type>
 +          <since>3.6</since>
@@ -614,6 +712,13 @@
 +          <name>release</name>
 +          <type>java.lang.String</type>
 +          <since>3.6</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Compiles application test sources.</description>
++        </parameter>
++        <parameter>
++          <name>showCompilationChanges</name>
++          <type>boolean</type>
 +          <required>false</required>
 +          <editable>true</editable>
 +          <description>Compiles application test sources.</description>
@@ -699,6 +804,14 @@
 +          <description>Compiles application test sources.</description>
 +        </parameter>
 +        <parameter>
++          <name>testIncrementalExcludes</name>
++          <type>java.util.Set</type>
++          <since>3.11</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Compiles application test sources.</description>
++        </parameter>
++        <parameter>
 +          <name>testRelease</name>
 +          <type>java.lang.String</type>
 +          <since>3.6</since>
@@ -731,6 +844,14 @@
 +          <description>Compiles application test sources.</description>
 +        </parameter>
 +        <parameter>
++          <name>useModulePath</name>
++          <type>boolean</type>
++          <since>3.11</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Compiles application test sources.</description>
++        </parameter>
++        <parameter>
 +          <name>verbose</name>
 +          <type>boolean</type>
 +          <required>false</required>
@@ -754,30 +875,33 @@
 +        <forceJavacCompilerUse implementation="boolean" default-value="false">${maven.compiler.forceJavacCompilerUse}</forceJavacCompilerUse>
 +        <fork implementation="boolean" default-value="false">${maven.compiler.fork}</fork>
 +        <generatedTestSourcesDirectory implementation="java.io.File" default-value="${project.build.directory}/generated-test-sources/test-annotations"/>
++        <implicit implementation="java.lang.String">${maven.compiler.implicit}</implicit>
 +        <maxmem implementation="java.lang.String">${maven.compiler.maxmem}</maxmem>
 +        <meminitial implementation="java.lang.String">${maven.compiler.meminitial}</meminitial>
 +        <optimize implementation="boolean" default-value="false">${maven.compiler.optimize}</optimize>
 +        <parameters implementation="boolean" default-value="false">${maven.compiler.parameters}</parameters>
 +        <release implementation="java.lang.String">${maven.compiler.release}</release>
++        <showCompilationChanges implementation="boolean" default-value="false">${maven.compiler.showCompilationChanges}</showCompilationChanges>
 +        <showDeprecation implementation="boolean" default-value="false">${maven.compiler.showDeprecation}</showDeprecation>
-+        <showWarnings implementation="boolean" default-value="false">${maven.compiler.showWarnings}</showWarnings>
++        <showWarnings implementation="boolean" default-value="true">${maven.compiler.showWarnings}</showWarnings>
 +        <skip implementation="boolean">${maven.test.skip}</skip>
 +        <skipMultiThreadWarning implementation="boolean" default-value="false">${maven.compiler.skipMultiThreadWarning}</skipMultiThreadWarning>
-+        <source implementation="java.lang.String" default-value="1.7">${maven.compiler.source}</source>
++        <source implementation="java.lang.String" default-value="1.8">${maven.compiler.source}</source>
 +        <staleMillis implementation="int" default-value="0">${lastModGranularityMs}</staleMillis>
-+        <target implementation="java.lang.String" default-value="1.7">${maven.compiler.target}</target>
++        <target implementation="java.lang.String" default-value="1.8">${maven.compiler.target}</target>
 +        <testRelease implementation="java.lang.String">${maven.compiler.testRelease}</testRelease>
 +        <testSource implementation="java.lang.String">${maven.compiler.testSource}</testSource>
 +        <testTarget implementation="java.lang.String">${maven.compiler.testTarget}</testTarget>
 +        <useIncrementalCompilation implementation="boolean" default-value="true">${maven.compiler.useIncrementalCompilation}</useIncrementalCompilation>
++        <useModulePath implementation="boolean" default-value="true"/>
 +        <verbose implementation="boolean" default-value="false">${maven.compiler.verbose}</verbose>
 +      </configuration>
 +    </mojo>
 +  </mojos>
 +</plugin>
---- maven-compiler-plugin-3.10.1/src/main/filtered-resources/META-INF/maven/plugin.xml	1970-01-01 01:00:00.000000000 +0100
-+++ maven-compiler-plugin-3.10.1/src/main/filtered-resources/META-INF/maven/plugin.xml	2022-03-11 11:00:09.386606429 +0100
-@@ -0,0 +1,1026 @@
+--- maven-compiler-plugin-3.11.0/src/main/filtered-resources/META-INF/maven/plugin.xml	1970-01-01 01:00:00.000000000 +0100
++++ maven-compiler-plugin-3.11.0/src/main/filtered-resources/META-INF/maven/plugin.xml	2023-09-13 19:57:10.102691077 +0200
+@@ -0,0 +1,1133 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +<plugin>
 +  <name>${project.name}</name>
@@ -848,7 +972,7 @@
 +          <name>compileSourceRoots</name>
 +          <type>java.util.List</type>
 +          <required>true</required>
-+          <editable>false</editable>
++          <editable>true</editable>
 +          <description>Compiles application sources</description>
 +        </parameter>
 +        <parameter>
@@ -1006,8 +1130,24 @@
 +          <description>Compiles application sources</description>
 +        </parameter>
 +        <parameter>
++          <name>implicit</name>
++          <type>java.lang.String</type>
++          <since>3.10.2</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Compiles application test sources.</description>
++        </parameter>
++        <parameter>
 +          <name>includes</name>
 +          <type>java.util.Set</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Compiles application sources</description>
++        </parameter>
++        <parameter>
++          <name>incrementalExcludes</name>
++          <type>java.util.Set</type>
++          <since>3.11</since>
 +          <required>false</required>
 +          <editable>true</editable>
 +          <description>Compiles application sources</description>
@@ -1120,6 +1260,13 @@
 +          <description>Compiles application test sources.</description>
 +        </parameter>
 +        <parameter>
++          <name>showCompilationChanges</name>
++          <type>boolean</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Compiles application test sources.</description>
++        </parameter>
++        <parameter>
 +          <name>showDeprecation</name>
 +          <type>boolean</type>
 +          <required>false</required>
@@ -1205,6 +1352,7 @@
 +        <forceJavacCompilerUse implementation="boolean" default-value="false">${maven.compiler.forceJavacCompilerUse}</forceJavacCompilerUse>
 +        <fork implementation="boolean" default-value="false">${maven.compiler.fork}</fork>
 +        <generatedSourcesDirectory implementation="java.io.File" default-value="${project.build.directory}/generated-sources/annotations"/>
++        <implicit implementation="java.lang.String">${maven.compiler.implicit}</implicit>
 +        <maxmem implementation="java.lang.String">${maven.compiler.maxmem}</maxmem>
 +        <meminitial implementation="java.lang.String">${maven.compiler.meminitial}</meminitial>
 +        <mojoExecution implementation="org.apache.maven.plugin.MojoExecution" default-value="${mojoExecution}"/>
@@ -1215,13 +1363,14 @@
 +        <projectArtifact implementation="org.apache.maven.artifact.Artifact" default-value="${project.artifact}"/>
 +        <release implementation="java.lang.String">${maven.compiler.release}</release>
 +        <session implementation="org.apache.maven.execution.MavenSession" default-value="${session}"/>
++        <showCompilationChanges implementation="boolean" default-value="false">${maven.compiler.showCompilationChanges}</showCompilationChanges>
 +        <showDeprecation implementation="boolean" default-value="false">${maven.compiler.showDeprecation}</showDeprecation>
-+        <showWarnings implementation="boolean" default-value="false">${maven.compiler.showWarnings}</showWarnings>
++        <showWarnings implementation="boolean" default-value="true">${maven.compiler.showWarnings}</showWarnings>
 +        <skipMain implementation="boolean">${maven.main.skip}</skipMain>
 +        <skipMultiThreadWarning implementation="boolean" default-value="false">${maven.compiler.skipMultiThreadWarning}</skipMultiThreadWarning>
-+        <source implementation="java.lang.String" default-value="1.7">${maven.compiler.source}</source>
++        <source implementation="java.lang.String" default-value="1.8">${maven.compiler.source}</source>
 +        <staleMillis implementation="int" default-value="0">${lastModGranularityMs}</staleMillis>
-+        <target implementation="java.lang.String" default-value="1.7">${maven.compiler.target}</target>
++        <target implementation="java.lang.String" default-value="1.8">${maven.compiler.target}</target>
 +        <useIncrementalCompilation implementation="boolean" default-value="true">${maven.compiler.useIncrementalCompilation}</useIncrementalCompilation>
 +        <verbose implementation="boolean" default-value="false">${maven.compiler.verbose}</verbose>
 +      </configuration>
@@ -1235,18 +1384,70 @@
 +          <field-name>compilerManager</field-name>
 +        </requirement>
 +        <requirement>
-+          <role>org.apache.maven.repository.RepositorySystem</role>
++          <role>org.eclipse.aether.RepositorySystem</role>
 +          <field-name>repositorySystem</field-name>
-+        </requirement>
-+        <requirement>
-+          <role>org.apache.maven.artifact.resolver.ResolutionErrorHandler</role>
-+          <field-name>resolutionErrorHandler</field-name>
 +        </requirement>
 +        <requirement>
 +          <role>org.apache.maven.toolchain.ToolchainManager</role>
 +          <field-name>toolchainManager</field-name>
 +        </requirement>
 +      </requirements>
++    </mojo>
++    <mojo>
++      <goal>help</goal>
++      <description>Display help information on maven-compiler-plugin.&lt;br&gt;
++Call &lt;code&gt;mvn compiler:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++      <requiresDirectInvocation>false</requiresDirectInvocation>
++      <requiresProject>false</requiresProject>
++      <requiresReports>false</requiresReports>
++      <aggregator>false</aggregator>
++      <requiresOnline>false</requiresOnline>
++      <inheritedByDefault>true</inheritedByDefault>
++      <implementation>org.apache.maven.plugin.compiler.HelpMojo</implementation>
++      <language>java</language>
++      <instantiationStrategy>per-lookup</instantiationStrategy>
++      <executionStrategy>once-per-session</executionStrategy>
++      <threadSafe>true</threadSafe>
++      <parameters>
++        <parameter>
++          <name>detail</name>
++          <type>boolean</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-compiler-plugin.&lt;br&gt;
++Call &lt;code&gt;mvn compiler:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++        </parameter>
++        <parameter>
++          <name>goal</name>
++          <type>java.lang.String</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-compiler-plugin.&lt;br&gt;
++Call &lt;code&gt;mvn compiler:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++        </parameter>
++        <parameter>
++          <name>indentSize</name>
++          <type>int</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-compiler-plugin.&lt;br&gt;
++Call &lt;code&gt;mvn compiler:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++        </parameter>
++        <parameter>
++          <name>lineLength</name>
++          <type>int</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-compiler-plugin.&lt;br&gt;
++Call &lt;code&gt;mvn compiler:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++        </parameter>
++      </parameters>
++      <configuration>
++        <detail implementation="boolean" default-value="false">${detail}</detail>
++        <goal implementation="java.lang.String">${goal}</goal>
++        <indentSize implementation="int" default-value="2">${indentSize}</indentSize>
++        <lineLength implementation="int" default-value="80">${lineLength}</lineLength>
++      </configuration>
 +    </mojo>
 +    <mojo>
 +      <goal>testCompile</goal>
@@ -1451,6 +1652,14 @@
 +          <description>Compiles application test sources.</description>
 +        </parameter>
 +        <parameter>
++          <name>implicit</name>
++          <type>java.lang.String</type>
++          <since>3.10.2</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Compiles application test sources.</description>
++        </parameter>
++        <parameter>
 +          <name>jdkToolchain</name>
 +          <type>java.util.Map</type>
 +          <since>3.6</since>
@@ -1543,6 +1752,13 @@
 +          <description>Compiles application test sources.</description>
 +        </parameter>
 +        <parameter>
++          <name>showCompilationChanges</name>
++          <type>boolean</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Compiles application test sources.</description>
++        </parameter>
++        <parameter>
 +          <name>showDeprecation</name>
 +          <type>boolean</type>
 +          <required>false</required>
@@ -1623,6 +1839,14 @@
 +          <description>Compiles application test sources.</description>
 +        </parameter>
 +        <parameter>
++          <name>testIncrementalExcludes</name>
++          <type>java.util.Set</type>
++          <since>3.11</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Compiles application test sources.</description>
++        </parameter>
++        <parameter>
 +          <name>testPath</name>
 +          <type>java.util.List</type>
 +          <required>false</required>
@@ -1662,6 +1886,14 @@
 +          <description>Compiles application test sources.</description>
 +        </parameter>
 +        <parameter>
++          <name>useModulePath</name>
++          <type>boolean</type>
++          <since>3.11</since>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Compiles application test sources.</description>
++        </parameter>
++        <parameter>
 +          <name>verbose</name>
 +          <type>boolean</type>
 +          <required>false</required>
@@ -1688,6 +1920,7 @@
 +        <forceJavacCompilerUse implementation="boolean" default-value="false">${maven.compiler.forceJavacCompilerUse}</forceJavacCompilerUse>
 +        <fork implementation="boolean" default-value="false">${maven.compiler.fork}</fork>
 +        <generatedTestSourcesDirectory implementation="java.io.File" default-value="${project.build.directory}/generated-test-sources/test-annotations"/>
++        <implicit implementation="java.lang.String">${maven.compiler.implicit}</implicit>
 +        <maxmem implementation="java.lang.String">${maven.compiler.maxmem}</maxmem>
 +        <meminitial implementation="java.lang.String">${maven.compiler.meminitial}</meminitial>
 +        <mojoExecution implementation="org.apache.maven.plugin.MojoExecution" default-value="${mojoExecution}"/>
@@ -1697,18 +1930,20 @@
 +        <project implementation="org.apache.maven.project.MavenProject" default-value="${project}"/>
 +        <release implementation="java.lang.String">${maven.compiler.release}</release>
 +        <session implementation="org.apache.maven.execution.MavenSession" default-value="${session}"/>
++        <showCompilationChanges implementation="boolean" default-value="false">${maven.compiler.showCompilationChanges}</showCompilationChanges>
 +        <showDeprecation implementation="boolean" default-value="false">${maven.compiler.showDeprecation}</showDeprecation>
-+        <showWarnings implementation="boolean" default-value="false">${maven.compiler.showWarnings}</showWarnings>
++        <showWarnings implementation="boolean" default-value="true">${maven.compiler.showWarnings}</showWarnings>
 +        <skip implementation="boolean">${maven.test.skip}</skip>
 +        <skipMultiThreadWarning implementation="boolean" default-value="false">${maven.compiler.skipMultiThreadWarning}</skipMultiThreadWarning>
-+        <source implementation="java.lang.String" default-value="1.7">${maven.compiler.source}</source>
++        <source implementation="java.lang.String" default-value="1.8">${maven.compiler.source}</source>
 +        <staleMillis implementation="int" default-value="0">${lastModGranularityMs}</staleMillis>
-+        <target implementation="java.lang.String" default-value="1.7">${maven.compiler.target}</target>
++        <target implementation="java.lang.String" default-value="1.8">${maven.compiler.target}</target>
 +        <testPath implementation="java.util.List" default-value="${project.testClasspathElements}"/>
 +        <testRelease implementation="java.lang.String">${maven.compiler.testRelease}</testRelease>
 +        <testSource implementation="java.lang.String">${maven.compiler.testSource}</testSource>
 +        <testTarget implementation="java.lang.String">${maven.compiler.testTarget}</testTarget>
 +        <useIncrementalCompilation implementation="boolean" default-value="true">${maven.compiler.useIncrementalCompilation}</useIncrementalCompilation>
++        <useModulePath implementation="boolean" default-value="true"/>
 +        <verbose implementation="boolean" default-value="false">${maven.compiler.verbose}</verbose>
 +      </configuration>
 +      <requirements>
@@ -1721,12 +1956,8 @@
 +          <field-name>compilerManager</field-name>
 +        </requirement>
 +        <requirement>
-+          <role>org.apache.maven.repository.RepositorySystem</role>
++          <role>org.eclipse.aether.RepositorySystem</role>
 +          <field-name>repositorySystem</field-name>
-+        </requirement>
-+        <requirement>
-+          <role>org.apache.maven.artifact.resolver.ResolutionErrorHandler</role>
-+          <field-name>resolutionErrorHandler</field-name>
 +        </requirement>
 +        <requirement>
 +          <role>org.apache.maven.toolchain.ToolchainManager</role>
@@ -1740,13 +1971,13 @@
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-utils</artifactId>
 +      <type>jar</type>
-+      <version>3.3.0</version>
++      <version>4.0.0</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-component-annotations</artifactId>
 +      <type>jar</type>
-+      <version>1.5.5</version>
++      <version>2.1.0</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven.shared</groupId>
@@ -1758,7 +1989,7 @@
 +      <groupId>commons-io</groupId>
 +      <artifactId>commons-io</artifactId>
 +      <type>jar</type>
-+      <version>2.5</version>
++      <version>2.6</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven.shared</groupId>
@@ -1770,7 +2001,7 @@
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-java</artifactId>
 +      <type>jar</type>
-+      <version>1.1.1</version>
++      <version>1.1.2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.ow2.asm</groupId>
@@ -1782,25 +2013,25 @@
 +      <groupId>com.thoughtworks.qdox</groupId>
 +      <artifactId>qdox</artifactId>
 +      <type>jar</type>
-+      <version>2.0.1</version>
++      <version>2.0.3</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-compiler-api</artifactId>
 +      <type>jar</type>
-+      <version>2.11.1</version>
++      <version>2.13.0</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-compiler-manager</artifactId>
 +      <type>jar</type>
-+      <version>2.11.1</version>
++      <version>2.13.0</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-compiler-javac</artifactId>
 +      <type>jar</type>
-+      <version>2.11.1</version>
++      <version>2.13.0</version>
 +    </dependency>
 +  </dependencies>
 +</plugin>

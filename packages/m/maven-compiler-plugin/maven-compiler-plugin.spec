@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-compiler-plugin
-Version:        3.10.1
+Version:        3.11.0
 Release:        0
 Summary:        Maven Compiler Plugin
 License:        Apache-2.0
@@ -35,10 +35,12 @@ Patch0:         %{base_name}-bootstrap-resources.patch
 BuildRequires:  javapackages-local
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
+BuildRequires:  maven-resolver-api
+BuildRequires:  maven-resolver-util
 BuildRequires:  maven-shared-incremental
 BuildRequires:  maven-shared-utils
 BuildRequires:  objectweb-asm
-BuildRequires:  plexus-compiler
+BuildRequires:  plexus-compiler >= 2.13
 BuildRequires:  plexus-languages
 BuildRequires:  unzip
 BuildRequires:  xmvn-install
@@ -56,9 +58,9 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-compiler-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-jar-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-resources-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-surefire-plugin)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 Obsoletes:      %{base_name}-bootstrap
 #!BuildRequires: maven-compiler-plugin-bootstrap
 #!BuildRequires: maven-jar-plugin-bootstrap
@@ -89,32 +91,37 @@ cp %{SOURCE1} build.xml
 
 %pom_remove_dep :::test
 
+# There is nothing to index and this creates a cycle
+%pom_remove_plugin org.eclipse.sisu:sisu-maven-plugin
+
 %pom_xpath_remove pom:project/pom:parent/pom:relativePath
 
 %build
 %if %{with bootstrap}
 mkdir -p lib
 build-jar-repository -s lib \
-	maven/maven-artifact \
-	maven/maven-core \
-	maven/maven-model \
-	maven/maven-plugin-api \
-	maven-plugin-tools/maven-plugin-annotations \
-	maven-shared-incremental/maven-shared-incremental \
-	maven-shared-utils/maven-shared-utils \
-	objectweb-asm/asm-all \
-	plexus-compiler/plexus-compiler-api \
-	plexus-compiler/plexus-compiler-javac \
-	plexus-compiler/plexus-compiler-manager \
-	plexus-languages/plexus-java
+    maven/maven-artifact \
+    maven/maven-core \
+    maven/maven-model \
+    maven/maven-plugin-api \
+    maven-plugin-tools/maven-plugin-annotations \
+    maven-resolver/maven-resolver-api \
+    maven-resolver/maven-resolver-util \
+    maven-shared-incremental/maven-shared-incremental \
+    maven-shared-utils/maven-shared-utils \
+    objectweb-asm/asm-all \
+    plexus-compiler/plexus-compiler-api \
+    plexus-compiler/plexus-compiler-javac \
+    plexus-compiler/plexus-compiler-manager \
+    plexus-languages/plexus-java
 %{ant} -Dtest.skip=true jar
 %else
 xmvn --batch-mode --offline \
-	-Dmaven.test.skip=true \
+    -Dmaven.test.skip=true \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=7 \
+    -Dmaven.compiler.release=8 \
 %endif
-	package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
+    package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
 %endif
 
 %{mvn_artifact} pom.xml target/%{base_name}-%{version}.jar

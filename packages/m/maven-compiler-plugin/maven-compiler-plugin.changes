@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Sep 20 05:09:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 3.11.0
+  * New features and improvements
+    + MCOMPILER-494: Add a useModulePath switch to the testCompile
+      mojo
+    + MCOMPILER-395: Allow dependency exclusions for
+      'annotationProcessorPaths'
+    + MCOMPILER-522: Use maven-resolver to resolve
+      'annotationProcessorPaths' dependencies
+    + MCOMPILER-516: upgrade plexus-compiler to improve compiling
+      message
+    + MCOMPILER-501: compileSourceRoots parameter should be writable
+    + MCOMPILER-457: Change showWarnings to true by default
+    + MCOMPILER-457: Warn about warn-config conflicting values
+    + MCOMPILER-505: Update default source/target from 1.7 to 1.8
+    + MCOMPILER-499: display recompilation causes
+    + MCOMPILER-500: add some parameter to pattern from stale source
+      calculation
+    + MCOMPILER-488: dedicated option for implicit javac flag
+  * Bug Fixes
+    + MCOMPILER-525: Incorrect detection of dependency change
+    + MCOMPILER-523: Test with Maven 3.9.0 and fix the failing IT
+    + MCOMPILER-503: Resolve all annotation processor dependencies
+      together
+    + MCOMPILER-512: Defining maven.compiler.release as empty string
+      ends with NumberFormatException in testCompileMojo
+    + MCOMPILER-495: Fixes missing dirs in
+      createMissingPackageInfoClasses
+    + MCOMPILER-347: Set Xcludes in config passed to actual compiler
+- Modified patch:
+  * maven-compiler-plugin-bootstrap-resources.patch
+    + regenerate in cycle by itself
+
+-------------------------------------------------------------------
 Sat Mar 12 09:36:55 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream release 3.10.1
