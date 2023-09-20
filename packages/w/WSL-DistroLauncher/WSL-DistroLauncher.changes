@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 11 13:19:34 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 0.0.1+git20230111.22db092:
+  * Adding 'WslApiLoader-h.diff' to account for missing HCS_E_HYPERV_NOT_INSTALLED
+    define in WslApiLoader.h
+  * Run yast2-firstboot instead of useradd
+  * refactor QueryUid to be reusable
+  * SUSE adjustments
+  * replace wscanf_s, seems not defined in mingw
+  * Cross compiling the launcher
+  * Add support for Visual Studio 2022 (#100)
+  * Change WSL to use system error string for WSL OC not present (#117)
+  * Microsoft mandatory file
+  * Update README.md
+  * Added explicit error code and message for virtualization not present (#101)
+  * Update README.md
+
+-------------------------------------------------------------------
 Tue Aug 22 14:42:44 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Microsoft prefers Name and distro id to be the same for usage with wsl.exe

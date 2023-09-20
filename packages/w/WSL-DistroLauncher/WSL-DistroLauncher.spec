@@ -18,7 +18,7 @@
 
 Name:           WSL-DistroLauncher
 # no official release yet
-Version:        0.0.1+git20200918.2ed9a93
+Version:        0.0.1+git20230111.22db092
 Release:        0
 Summary:        Windows Subsystem for Linux distro launcher
 License:        MIT
@@ -26,6 +26,7 @@ URL:            https://github.com/openSUSE/WSL-DistroLauncher
 
 Source:         WSL-DistroLauncher-%{version}.tar.xz
 Source1:        icon.ico
+Patch1:         WslApiLoader-h.diff
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -53,7 +54,8 @@ the distribution.
 %_mingw64_debug_package
 
 %prep
-%autosetup -p1
+#%%autosetup -p1
+%autosetup -p0
 
 cp %{S:1} DistroLauncher/icon.ico
 
