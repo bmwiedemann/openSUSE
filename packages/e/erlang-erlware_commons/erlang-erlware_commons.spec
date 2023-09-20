@@ -1,5 +1,5 @@
 #
-# spec file for package erlang-erlware_commons
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -22,7 +22,7 @@ Name:           erlang-%{app_name}
 Version:        1.6.0
 Release:        0
 Summary:        A project focused on all aspects of reusable Erlang components
-License:        MIT
+License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/erlware/erlware_commons
 Source:         %{app_name}-%{version}.tar.xz

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 19 10:38:15 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Correct license to Apache 2.0 and MIT
+  This project contains elements licensed with Apache License, Version 2.0, 
+  as well as elements licensed with The MIT License.
+
+-------------------------------------------------------------------
 Sun Feb 26 16:42:48 UTC 2023 - dmueller@suse.com
 
 - use disabled services to be compatible with factory policy
