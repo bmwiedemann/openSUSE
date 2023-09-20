@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Tue Sep 19 12:58:51 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.19:
+  * wrap up post release 0.0.19
+  * update CHANGELOG.md
+  * update package versions
+  * prepare 0.0.19
+  * disable menu macos
+  * update image example
+  * use TriangleList as PrimitiveTopology
+  * update config with undercased
+  * update fmt dynamic change
+  * dynamic background color
+  * remove renderable trait
+  * update config tests
+  * implementation of image background without opacity
+  * work in progress image rendering
+  * compute fg/bg colors
+  * new docs
+  * teach sugarloaf how render layer image and start docs 2.0
+  * feat: option for ignoring theme foreground selection color (#227)
+  * remove backspace with modifierState
+  * remove DISAMBIGUATE_KEYS from arrows bindings
+  * split update counter per x/y on settings menu
+  * update sugarloaf api for wasm32
+  * map the rest of the configuration
+  * write configuration from settings UI
+  * reuse font reference in all screens (yey) and link font faces to settings
+  * ignore loader on wasm32
+  * incluse font loader to sugarloaf with normalization of the name
+  * font loader
+  * docs: add opensuse linux package (#224)
+  * use fixed font width
+  * update fmt teleypewriter
+  * treat errors from teletypewriter
+  * turn off testing settings route
+  * update character position for column whenever has a selection (related #182)
+  * remove settings representation
+  * settings ui work in progress
+  * remove x icon on error ui
+  * update fmt for &error.report
+  * update window dead context
+  * create dead_context and report now is splitted in two levels warning and error (closes #212)
+  * update env variables
+  * read from working_directory in flatpak
+  * use spawn as default for flatpak
+  * flatpak support
+  * Rename Regular window mode to Windowed (#219)
+  * custom impl Default for Window
+  * add window mode default for mode
+  * fmt window rio-config
+  * add window.rs in rio-config
+  * new window API that allow configure maximized or fullscreen (closes #215)
+  * fmt unix/mod.rs
+  * if runs inside a flatpak sandbox retrieve /bin/zsh from flatpak-spawn
+  * docs: add alpine linux package (#218)
+  * move style code back
+  * teletypewriter validate if is a flatpak sandbox to retrieve SHELL
+  * remove duplicate get_pw_entry calls
+  * retrieve-shell-outside-box-for-flatpak
+  * Add navigation Plain mode (closes #213)
+  * demo/emacs: better screenshot (#211)
+  * disable NavigationHasChanged warn (todo for next release)
+  * fix: change package name from rio to rioterm (#210)
+  * update changelog
+  * update Cargo.toml files and published a rc version to crates.io
+  * has_regained_focus redraw window for idle windows
+  * update rules for blinking cursor
+  * partial support to blinking cursor (has few incosistencies yet like selection and VI mode switchs
+  * add font name variant for cascadia code
+  * fix breadcrumbs id
+  * error UI for fonts
+  * use crate::ui::Error
+  * update target_arch for sugarloaf
+  * minor fixes for docs styles
+  * linux doesn't use .0 since is font_arc straight
+  * clear comments
+  * implementation of event for UI component that shows the error of configuration file (closes #168)
+  * update lock file
+  * make docs and docs-prod
+  * add jekyll-minifier
+  * update CHANGELOG.md
+  * migrated font-kit to fontdb
+  * move scripts to inside misc folder
+  * rename rio_proc_macros to rio-proc-macro and reuse version from workspace
+  * merge config and colors into rio-config
+  * move create toolbar to ui::appkit::mod
+  * remove silkscreen
+  * update images
+  * update website wip
+  * update docs
+  * add top to other sections
+  * go to top button docs
+  * update docs (on-going)
+  * update ui mod (code originally came from madsmtm/menubar
+  * ui kit
+  * add initial support to menubar
+  * block rgba16float to prevent nvidia driver to enable hdr (#209)
+  * adaptive theme support (close #207)
+  * correct std::fmt::Display for Breadcrumb
+  * update settings function
+  * provide settings from builder
+  * finish layout UI for settings
+  * colors and config load version from workspaces
+  * use workspace
+  * update cargo.toml
+  * copa 0.12
+  * update changelog
+  * implemented ScrollPageUp, ScrollPageDown, ScrollHalfPageUp, ScrollHalfPageDown, ScrollToTop, ScrollToBottom, ScrollLineUp, ScrollLineDown (close #206)
+  * support fonts.family to overwrite all other font families
+  * create_native_tab only for macos
+  * fix shift key with arrow
+  * update CHANGELOG.md
+  * connect router with windows and native tabs
+  * welcome screen
+  * use .to_string
+  * update identation
+  * cover legacy modifiers
+  * wip settings ui
+  * update styles for settings ui
+  * mockup settings UI
+  * introduce Router
+  * fix literal with an empty format string
+  * release on enter
+  * update message config
+  * add assistant
+  * NativeTab is MacOS default now
+  * add errors to assistant if have configuration error whenever updating the config
+  * assistant UI
+  * corcovado use Rc instead of Arc due to Sync trait
+  * update lint for rust 1.72
+  * Update CHANGELOG.md
+  * update rust and fix 'Backspace' keypress triggers Ctrl+h keybinding in Zellij (closes #197)
+  * update CHANGELOG.md
+  * implement TERM_PROGRAM and TERM_PROGRAM_VERSION variables
+  * chore: fix typo (#199)
+  * only apply check for native tab deadzone in cursor updates
+  * Whenever native tabs is on disable macos deadzone logic
+  * docs: update the link for Arch Linux package (#195)
+
+-------------------------------------------------------------------
 Sun Sep 10 16:43:45 UTC 2023 - androw95220@gmail.com
 
 - Update to version 0.0.18~0:
