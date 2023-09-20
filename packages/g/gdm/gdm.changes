@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 14 18:27:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0.1:
+  + Fix for the crasher fix.
+- Changes from version 45.0:
+  + Crasher fix.
+  + Updated translations.
+- Rebase gdm-xauthlocalhostname.patch with quilt.
+
+-------------------------------------------------------------------
+Wed Aug 30 07:34:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + A ton of small code clean ups and small leak fixes.
+  + Set gnome-initial-setup dconf profile.
+  + Honor settings configured with a template in AccountsService.
+  + Crash fix from stray udev events.
+  + VT handling fixes.
+  + Work better in presence of simpledrm.
+  + wayland multi-seat support.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Mon Aug 14 03:09:23 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Do not use %autopatch to build on SLE where rpm version is not

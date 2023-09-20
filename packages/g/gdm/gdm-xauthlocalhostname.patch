@@ -1,6 +1,8 @@
---- a/common/gdm-common.c
-+++ b/common/gdm-common.c
-@@ -619,6 +619,8 @@ gdm_get_script_environment (const char *
+Index: gdm-45.0.1/common/gdm-common.c
+===================================================================
+--- gdm-45.0.1.orig/common/gdm-common.c
++++ gdm-45.0.1/common/gdm-common.c
+@@ -623,6 +623,8 @@ gdm_get_script_environment (const char *
  
          if (display_hostname) {
                  g_hash_table_insert (hash, g_strdup ("REMOTE_HOST"), g_strdup (display_hostname));
@@ -9,7 +11,7 @@
          }
  
          /* Runs as root */
-@@ -1085,3 +1087,14 @@ gdm_load_env_d (GdmLoadEnvVarFunc load_e
+@@ -1088,3 +1090,14 @@ gdm_load_env_d (GdmLoadEnvVarFunc load_e
          gdm_load_env_dir (dir, load_env_func, expand_func, user_data);
          g_object_unref (dir);
  }
@@ -24,19 +26,23 @@
 +                return g_strdup ("localhost");
 +        }
 +}
---- a/common/gdm-common.h
-+++ b/common/gdm-common.h
+Index: gdm-45.0.1/common/gdm-common.h
+===================================================================
+--- gdm-45.0.1.orig/common/gdm-common.h
++++ gdm-45.0.1/common/gdm-common.h
 @@ -70,6 +70,7 @@ char          *gdm_generate_random_bytes
+ 
  gboolean       gdm_get_login_window_session_id (const char  *seat_id,
                                                  char       **session_id);
- gboolean       gdm_goto_login_session    (GError **error);
 +char          *gdm_gethostname           (void);
  
- GPtrArray     *gdm_get_script_environment (const char *username,
-                                            const char *display_name,
---- a/daemon/gdm-display-access-file.c
-+++ b/daemon/gdm-display-access-file.c
-@@ -449,13 +449,10 @@ _get_auth_info_for_display (GdmDisplayAc
+ gboolean       gdm_goto_login_session     (GCancellable  *cancellable,
+                                            GError       **error);
+Index: gdm-45.0.1/daemon/gdm-display-access-file.c
+===================================================================
+--- gdm-45.0.1.orig/daemon/gdm-display-access-file.c
++++ gdm-45.0.1/daemon/gdm-display-access-file.c
+@@ -429,13 +429,10 @@ _get_auth_info_for_display (GdmDisplayAc
                   *
                   * https://bugs.freedesktop.org/show_bug.cgi?id=43425
                   */
@@ -53,9 +59,11 @@
          } else {
                  *family = FamilyWild;
                  gdm_display_get_remote_hostname (display, address, NULL);
---- a/daemon/gdm-launch-environment.c
-+++ b/daemon/gdm-launch-environment.c
-@@ -225,6 +225,11 @@ build_launch_environment (GdmLaunchEnvir
+Index: gdm-45.0.1/daemon/gdm-launch-environment.c
+===================================================================
+--- gdm-45.0.1.orig/daemon/gdm-launch-environment.c
++++ gdm-45.0.1/daemon/gdm-launch-environment.c
+@@ -221,6 +221,11 @@ build_launch_environment (GdmLaunchEnvir
                  g_hash_table_insert (hash, g_strdup ("GDM_SEAT_ID"), g_strdup (seat_id));
          }
  
@@ -67,9 +75,11 @@
          g_hash_table_insert (hash, g_strdup ("RUNNING_UNDER_GDM"), g_strdup ("true"));
  
          /* Now populate XDG_DATA_DIRS from env.d if we're running initial setup; this allows
---- a/daemon/gdm-session.c
-+++ b/daemon/gdm-session.c
-@@ -2751,6 +2751,14 @@ set_up_session_environment (GdmSession *
+Index: gdm-45.0.1/daemon/gdm-session.c
+===================================================================
+--- gdm-45.0.1.orig/daemon/gdm-session.c
++++ gdm-45.0.1/daemon/gdm-session.c
+@@ -2770,6 +2770,14 @@ set_up_session_environment (GdmSession *
                  }
          }
  

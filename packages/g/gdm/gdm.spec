@@ -27,14 +27,14 @@
 %endif
 
 Name:           gdm
-Version:        44.1
+Version:        45.0.1
 Release:        0
 Summary:        The GNOME Display Manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GDM
 
-Source0:        https://download.gnome.org/sources/gdm/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gdm/45/%{name}-%{version}.tar.xz
 Source1:        gdm.pamd
 Source2:        gdm-autologin.pamd
 Source3:        gdm-launch-environment.pamd

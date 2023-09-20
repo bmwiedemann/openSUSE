@@ -1979,4 +1979,12 @@
     <comment></comment>
     <requestid>1103889</requestid>
   </revision>
+  <revision rev="257" vrev="1">
+    <srcmd5>6dec32bc0691cf531e26298f610c755d</srcmd5>
+    <version>45.0.1</version>
+    <time>1695208900</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 1111400 from iznogood)</comment>
+    <requestid>1111577</requestid>
+  </revision>
 </revisionlist>
