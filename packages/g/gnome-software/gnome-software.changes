@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Sep 15 07:58:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Fix a crash when downloading resources from the Internet
+  + Fix a crash after cancelled Restart request
+  + Correct safety rating for KDE apps
+  + Correct version history widgets visibility in the details page
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  4 09:26:24 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add with(out) "profiling" build switch and disable it, by
+  default, as profiling isn't meant for general use. This nests
+  pkgconfig(sysprof-capture-4) BuildRequires under an if-with
+  expression and passes profiler=(enabled|disabled) to meson,
+  depending on the profiling switch.
+
+-------------------------------------------------------------------
+Sat Sep  2 20:17:20 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 45.rc:
+  + Fix firmware's 'Restart & Update' to ask for the restart.
+  + Fix app getting unresponsive when loading screenshots.
+  + Improve performance for PackageKit plugin search-by-file.
+  + Improve app license display.
+  + Improve search to also check for 'contains' words.
+  + Various minor styling updates.
+  + Updated translations.
+- Drop deprecated pkgconfig(sysprof-4) BuildRequires and pinpoint
+  pkgconfig(sysprof-capture-4) BuildRequires to 45.rc, as a
+  minimum.
+
+-------------------------------------------------------------------
+Fri Aug  4 09:32:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + Improve error notifications from failed GPG checks
+  + Disable animations in the UI according to the user’s
+    accessibility settings
+  + Fix applying updates which require some packages to be removed
+    to satisfy dependencies
+  + Stop using the software repositories dialog provided by the
+    distribution, and always use GNOME Software’s inbuilt dialog;
+    this will affect Debian and Ubuntu
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  4 09:31:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.alpha:
+  + Indicate when OS updates includes security fixes
+  + Ask whether to clear app storage for Flatpak apps on uninstall
+  + Show a notification when system updates are downloaded
+  + Advertise if an installed Flatpak app has reached end of life
+  + Revamp Safety ratings
+  + Fix slow Repositories dialog open
+  + Fix card view and key navigation in the Explore page
+  + Fix a crash on startup in GNOME OS
+  + Fix navigation between "Other Apps by Developer" in the Details
+    page
+  + Fix a crash when refining a Flatpak app
+  + Fix a state recover after a failed app update
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Aug  4 09:30:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.4:

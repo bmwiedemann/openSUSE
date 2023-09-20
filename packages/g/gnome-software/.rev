@@ -1088,4 +1088,12 @@ New stable release</comment>
 New stable release</comment>
     <requestid>1102518</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>ba2addf3e03019ab78fb03ce57e56352</srcmd5>
+    <version>45.0</version>
+    <time>1695208966</time>
+    <user>dimstar_suse</user>
+    <comment>Update to GNOME 45 release</comment>
+    <requestid>1112406</requestid>
+  </revision>
 </revisionlist>
