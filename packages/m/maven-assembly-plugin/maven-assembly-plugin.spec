@@ -24,6 +24,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/maven-assembly-plugin/
 Source0:        https://downloads.apache.org/maven/plugins/%{name}-%{version}-source-release.zip
+Patch0:         aggregated-timestamp.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -64,6 +65,7 @@ This package provides %{summary}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %pom_remove_dep jaxen:jaxen
 

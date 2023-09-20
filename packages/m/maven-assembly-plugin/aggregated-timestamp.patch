@@ -1,0 +1,15 @@
+--- maven-assembly-plugin-3.6.0/src/main/java/org/apache/maven/plugins/assembly/filter/SimpleAggregatingDescriptorHandler.java	2023-05-11 20:35:38.000000000 +0200
++++ maven-assembly-plugin-3.6.0/src/main/java/org/apache/maven/plugins/assembly/filter/SimpleAggregatingDescriptorHandler.java	2023-09-14 15:46:56.659107385 +0200
+@@ -95,7 +95,11 @@
+             f.deleteOnExit();
+ 
+             try (Writer writer = getWriter(f)) {
+-                writer.write(commentChars + " Aggregated on " + new Date() + " from: ");
++                Date now = new Date();
++                if (System.getenv("SOURCE_DATE_EPOCH") != null) {
++                    now = new Date(1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")));
++                }
++                writer.write(commentChars + " Aggregated on " + now + " from: ");
+ 
+                 for (final String filename : filenames) {
+                     writer.write("\n" + commentChars + " " + filename);
