@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 19 15:57:02 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.40.0:
+  * feat: Implement the path-style flag for status
+  * feat: Add plugin support
+  * feat: Allow overlapping, non-conflicting externals
+  * feat: Add decryption of non-armored files to age command
+  * fix: Use diff pager for all diff output if configured
+  * fix: provide a consistent error for cd to file
+
+-------------------------------------------------------------------
 Wed Sep  6 15:55:24 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.39.1:
