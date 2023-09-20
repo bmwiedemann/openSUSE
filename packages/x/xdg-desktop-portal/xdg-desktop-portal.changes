@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Mon Sep 18 19:45:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.0:
+  + Highlights:
+    - A new config-based portal matching mechanism that gives
+      preciser control over which portal backends are picked for
+      each portal.
+    - New portals: Clipboard and Input Capture.
+    - The settings portal now documents an 'accent-color' key.
+  + New portal APIs:
+    - Introduce a new Clipboard portal. This portal extends the
+      Remote Desktop portal by adding support for sharing clipboard
+      between remote machines.
+    - Introduce a new Input Capture portal. This portal adds
+      mechanisms for taking control of input devices. The primary
+      usage model is centered around the InputLeap and Synergy use
+      cases, where local devices are used to control remote
+      displays.
+    - Add an "accept-label" option the the Print portal. This lets
+      apps suggest a proper label to the print operation.
+    - Document a new 'accent-color' key in the Settings portal.
+      This key represents an arbitrary color in sRGB colorspace.
+      How implementations of the portal provide this key is
+      entirely dependent on their internal policies and design.
+    - Support restoring remote desktop sessions.
+    - Introduce the ReadOne() method in the Settings portal. This
+      method is now preferred over the Read() method, as Read()
+      mistakenly returned a variant inside a variant. The Read()
+      method will continue to exist for compatibility with existing
+      apps, but its usage is deprecated. We recommend apps to port
+      to the ReadOne() method. Apps can decide whether to use
+      ReadOne() or Read() by looking at the version of the Settings
+      portal.
+  + Changes that might be relevant for distributors:
+    - Rework how portal implementations are loaded. This new, more
+      robust system allows selecting specific backends for specific
+      portals, and layering them when necessary. Platforms that
+      provide portals implementation are encouraged to provide a
+      suitable configuration file.
+    - Drop the Autotools build. Meson is now the only supported
+      build system.
+    - The PipeWire dependency is now mandatory.
+    - Bump GLib dependency to 2.66.
+  + Misc changes:
+    - Improve robustness of the OpenURI portal by validating more
+      URIs.
+    - Various small visual tweaks to the generated documentation.
+    - Various fixes to the Global Shortcuts portal.
+    - Stop using the deprecated GTimeVal struct.
+    - Document xdg-desktop-portal versioning scheme.
+    - Fix various issues in the OpenURI portal.
+    - Bump interface version of the Printer portal to 2.
+    - Validate addresses following the HTML specs in the Email
+      portal.
+    - Document minimum version of the new ReadOne() method of the
+      Settings portal.
+    - Add a mapping id property to the ScreenCast portal.
+    - Add activation token parameter to the Email portal.
+    - Test tarball generation in CI.
+    - Updated translations.
+- Add docutils BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Wed Aug  9 10:53:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.17.0:
+  + Drop the Autotools build. Meson is now the only supported build
+    system.
+  + Rework how portal implementations are loaded. This new, more
+    robust system allows selecting specific backends for specific
+    portals, and layering them when necessary. Platforms that
+    provide portals implementation are encouraged to provide a
+    suitable configuration file.
+  + Introduce a new Clipboard portal. This portal extends the
+    Remote Desktop portal by adding support for sharing clipboard
+    between remote machines.
+  + Introduce a new Input Capture portal. This portal adds
+    mechanisms for taking control of input devices. The primary
+    usage model is centered around the InputLeap and Synergy use
+    cases, where local devices are used to control remote displays.
+  + Stop using the deprecated GTimeVal struct
+  + Bump GLib dependency to 2.66
+  + Add an "accept-label" option the the Print portal. This lets
+    apps suggest a proper label to the print operation.
+  + Various fixes to the Global Shortcuts portal.
+  + Support restoring remote desktop sessions.
+  + Improve robustness of the OpenURI portal by validating more
+    URIs.
+  + The PipeWire dependency is now mandatory.
+  + Various improvements for the test suite.
+  + Updated translations.
+- Drop 0001-portal-impl-Only-return-found-implementation-if-it-launched.patch
+  fixed upstream.
+- Switch to meson buildsystem following upstream changes. Add meson
+  BuildRequires and macros.
+
+-------------------------------------------------------------------
 Fri Jun 23 09:54:14 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to avoid creating portals with

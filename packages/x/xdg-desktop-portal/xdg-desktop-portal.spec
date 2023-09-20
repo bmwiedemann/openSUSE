@@ -17,17 +17,16 @@
 
 
 Name:           xdg-desktop-portal
-Version:        1.16.0
+Version:        1.18.0
 Release:        0
 Summary:        A portal frontend service for Flatpak
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://github.com/flatpak/xdg-desktop-portal
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-portal-impl-Only-return-found-implementation-if-it-launched.patch
 
-BuildRequires:  libtool
+BuildRequires:  docutils
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
@@ -75,18 +74,13 @@ This package contains convenience files for developers.
 %autosetup -p1
 
 %build
-export LANG=C.UTF-8
-autoreconf -fiv
-%configure \
-	--enable-geoclue \
-	--enable-pipewire \
-	--docdir=%{_defaultdocdir}/%{name} \
+%meson \
+	-Dpytest=disabled \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-export LANG=C.UTF-8
-%make_install
+%meson_install
 %find_lang %{name} %{?no_lang_C}
 
 %post
@@ -113,9 +107,10 @@ export LANG=C.UTF-8
 %{_userunitdir}/xdg-document-portal.service
 %{_userunitdir}/xdg-permission-store.service
 %{_userunitdir}/xdg-desktop-portal-rewrite-launchers.service
+%{_mandir}/man5/portals.conf.5%{?ext_man}
 
 %files devel
-%doc %{_defaultdocdir}/%{name}/
+%doc %{_datadir}/doc/%{name}/
 %{_datadir}/pkgconfig/%{name}.pc
 
 %files lang -f %{name}.lang
