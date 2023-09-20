@@ -245,4 +245,12 @@
   under LGPL 3.0 or later (forwarded request 1087796 from jsrain)</comment>
     <requestid>1088411</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2e67009b54d27a91edf09fbc6748531a</srcmd5>
+    <version>45.0</version>
+    <time>1695208964</time>
+    <user>dimstar_suse</user>
+    <comment>Version update: 44 -&gt; 45</comment>
+    <requestid>1112396</requestid>
+  </revision>
 </revisionlist>

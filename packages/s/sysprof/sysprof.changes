@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Sun Sep 17 00:57:11 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 45.0:
+  + Ignore swapper/# scheduler details to better show activity.
+  + Update some subsystem name extraction.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Sep  2 21:10:19 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 45.rc:
+  + A Rust demangler is provided which can demangle some newer
+    style Rust symbols.
+  + The C++ and Rust legacy demanger has improved to handle some
+    scenarios where <> and :: should be used.
+  + The D-Bus section has gained support for search filtering.
+  + A busy indicator is now show when callgraphs are being
+    generated or updated to reflect changing view options.
+  + Improvements to sysprof-cli and sysprof-agent to support recent
+    capture features.
+  + sysprof-cli can now specify capture buffer size in number of
+    pages to help in situations where you want to avoid disk
+    spillage.
+  + Zoom controls now stay sticky to the left.
+  + SysprofCollector will now try much harder for the peer to
+    process the mmap ring buffer before bailing so that the leak
+    collector is less likely to drop records.
+  + Sysprof now uses gtktimsort to sort records for a significant
+    speed improvement when loading large captures.
+  + Window titles now include document title.
+  + Reduction in number of samples to normalize for various charts
+    which results in faster loading times. You can continue to zoom
+    in to get better details.
+  + A new scheduler details instrument is provided, which uses
+    tracepoints to track when processes were running and on what
+    CPU.
+  + A new flamegraph is added for viewing profiling results. It is
+    powered by the same callgraph seen in the callgraph view, which
+    means changes to the callgraph can influence the flamegraph.
+    Colorization is provided by stack categorization in callgraphs.
+  + Categorization of Kernel symbols has been fixed.
+  + Callgraphs are now sorted incrementally to help keep the UI
+    responsive while loading the document.
+  + Accounting of weights for callgraphs has been improved to avoid
+    double counting summary values when recursion is used.
+  + A fix for a crash when pivoting to a new root in the callgraph.
+  + A new option to merge similar processes when generating
+    callgraphs.
+  + A new option to filter out kernel processes has been added.
+    This feature is quite rudimentary and involves commandline
+    sniffing. Improvements are requested by those seeking more
+    comprehensive filtering.
+  + Improvements to locating and symbolizing Flatpak processes.
+  + The files section has gained search filter support.
+
+- Changes from version 45.beta:
+  + Sysprof has largely been redesigned and rewriten from the
+    ground up this cycle to provide better GTK 4 integration and
+    more advanced features.
+  + libsysprof-capture: This library is our static library used by
+    many applications and libraries to augment capture collection.
+    It is still installed as libsysprof-capture-4.a as a static
+    library for consumers. The ABI is the same, however some new
+    data types have been added.
+  + libsysprof:
+    - This library has been rewritten around a new document model
+      for captures, which has allowed for many new indexing
+      performance improvements as well as simpler data-binding in
+      the user interface.
+    - Additionally, a new SysprofProfiler API has been added. It
+      has been much simplified and allows for easier implementation
+      of instruments in a race free manner.
+    - The library heavily builds upon libdex for Futures which I
+      created this past window to simplify features in GNOME
+      Builder.
+  + sysprof-cli and sysprof-agent: These tools both provide similar
+    features albeit from a different standpoint. They have both
+    been updated to use the new profiler interface in libsysprof.
+  + sysprofd: Very minimal changes have been made to sysprofd to
+    help ensure that the application and libraries can still work
+    on systems with an older sysprofd installed on the host.
+  + Sysprof: The application has been completely redesigned and is
+    now window focused rather than tabs. The constraint of tabs was
+    becoming too cumbersome to maintain.
+
+- Add libdex-1 and libpanel-1 pkgconfig() BuildRequires, as new
+  introduced dependencies.
+- Add fdupes BuildRequires and call its macro on %install directive
+  against the datadir.
+- Split out the sysprof shared library as libsysprof-6-6 now that
+  it's being versioned (6.0.0).
+- Drop deprecated sysprof-ui libraries and their development files;
+  and add sysprof-ui < 3.49 Obsoletes tag.
+- Drop multibuild facilities now. It is not worth it anymore with
+  the recent changes brought by this release.
+- Drop harden_sysprof2.service.patch. The file it patches
+  (sysprof2.service) no longer exists.
+- Drop no longer needed auto dependencies.
+- Merge sysprof-capture-devel-static into devel sub-package due to
+  compilation issues with other packages that require both
+  sysprof-4 and sysprof-capture-4 pkgconfig modules. Those packages
+  expect to have header files from both sysprof-4 and
+  sysprof-capture-4 libraries (all header files were being packaged
+  into sysprof-devel packages, even sysprof-capture*.h ones), but
+  we can split them -- between sysprof-devel and
+  sysprof-capture-static devel -- because build scripts from
+  packages that only require sysprof-capture-4 libraries expect to
+  find sysprof-4 headers too, without requiring sysprof-4.
+- Add sysprof-capture-devel-static < 3.49 Obsoletes tag.
+
+-------------------------------------------------------------------
 Thu May 18 12:08:37 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - Fix license tag (LGPL version); code under LGPL is licensed

@@ -1,7 +1,7 @@
-Index: sysprof-3.42.1/src/sysprofd/sysprof3.service.in
+Index: b/src/sysprofd/sysprof3.service.in
 ===================================================================
---- sysprof-3.42.1.orig/src/sysprofd/sysprof3.service.in
-+++ sysprof-3.42.1/src/sysprofd/sysprof3.service.in
+--- a/src/sysprofd/sysprof3.service.in
++++ b/src/sysprofd/sysprof3.service.in
 @@ -2,6 +2,18 @@
  Description=Sysprof Daemon
  
