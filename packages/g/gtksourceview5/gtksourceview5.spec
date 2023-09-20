@@ -18,13 +18,13 @@
 
 %define _name   gtksourceview
 Name:           gtksourceview5
-Version:        5.8.0
+Version:        5.10.0
 Release:        0
 Summary:        GTK+ Source Editing Widget
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
-Source0:        https://download.gnome.org/sources/gtksourceview/5.8/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gtksourceview/5.10/%{_name}-%{version}.tar.xz
 Source1:        changes.lang
 
 BuildRequires:  gobject-introspection-devel >= 1.70

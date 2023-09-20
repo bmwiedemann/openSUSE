@@ -97,4 +97,12 @@
     <comment>New stable release (forwarded request 1072731 from iznogood)</comment>
     <requestid>1073180</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2772e0ad4ec23b7b9a00c495ef6b3f9d</srcmd5>
+    <version>5.10.0</version>
+    <time>1695208951</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111892</requestid>
+  </revision>
 </revisionlist>

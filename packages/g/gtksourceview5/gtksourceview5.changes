@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Sep 17 01:20:12 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 5.10.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  3 00:17:57 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 5.9.0:
+  + This is a release candidate for GNOME 45.
+  + Documentation improvements.
+  + Various introspection improvements.
+  + New languages: Blueprint.
+  + Updated languages: C, C++, Rust, Python3, Shell, Java, OCaml.
+  + Updated style schemes: cobalt.
+  + GtkSourceBuffer gained a "loading" property which is toggled
+    when GtkSourceFileLoader is loading the buffer from storage.
+  + More defensiveness improvements in GtkSourceBufferOutputStream.
+  + A leak in Vim emulation has been fixed.
+  + Vim emulation now supports visual replace.
+  + Scheduling of batched workers has been improved with
+    gtk_source_scheduler_add().
+  + Snippets are now initialized from GtkSourceView.constructed()
+    to allow for applications to hook buffer creation.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 17 19:39:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.8.0:
