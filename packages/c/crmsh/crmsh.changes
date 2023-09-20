@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Sep 19 23:02:25 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230920.7a060972:
+  * Dev: workflows: Enable delivery and submit CD stages for branch crmsh-4.6
+
+-------------------------------------------------------------------
+Mon Aug 21 08:35:13 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230821.76d42b85:
+  * Dev: codecov: allow minor drop (< 0.1%) in coverage checks
+  * [crmsh-4.5] Fix: github-actions: add condition to prevent crm-cd.yml running in a forked repo
+
+-------------------------------------------------------------------
+Wed Aug 16 14:26:30 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230816.24bf5f1f:
+  * Dev: utils: strip new line when get_stdout_or_raise_error returns
+
+-------------------------------------------------------------------
+Thu Aug 10 09:15:15 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230810.74b9b4d5:
+  * Fix: codecov: delay notifications until all reports are uploaded
+  * Dev: behave: adjust functional tests for previous changes
+  * Dev: unittest: adjust unittest for previous changes
+  * Fix: prun: setsid to prevent ssh from asking a password from terminal
+  * Fix: upgradeutil: reduce the timeout for getting sequence from remote node (bsc#1213797)
+
+-------------------------------------------------------------------
+Thu Aug 10 02:12:36 UTC 2023 - nicholas.yang@suse.com
+
+- Update to version 4.5.0+20230810.01db025c:
+  * Dev: behave: Adjust functional test based on previous change
+  * Dev: corosync: Enable logging.to_logfile
+
+-------------------------------------------------------------------
 Tue Aug 08 22:45:16 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230809.ddb17a0b:
