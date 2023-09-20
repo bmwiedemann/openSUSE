@@ -120,4 +120,12 @@
     <comment></comment>
     <requestid>1056380</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c79c7dc2764ea4a28b763f38a71c1637</srcmd5>
+    <version>6.8.0</version>
+    <time>1695208882</time>
+    <user>dimstar_suse</user>
+    <comment>Pushing GNOME 45.rc packages (forwarded request 1109861 from iznogood)</comment>
+    <requestid>1110523</requestid>
+  </revision>
 </revisionlist>
