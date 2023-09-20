@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Fri Sep  8 19:58:59 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.78.0:
+  + Bugs fixed:
+    - Error handling of invalid GKeyFile string escape sequences
+      changed in GLib 2.77.3
+    - gdb: Workaround optimized out quark_seq_id
+    - meson: fix `gnetworking.h` install tag
+    - gthread: Annotate g_thread_exit() with G_NORETURN
+    - Fix gutils-user-database unit test
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  4 14:28:48 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 2.77.3:
+  + Bugs fixed:
+    - GSettings schemas default value translations don't work when
+      using l10n=time.
+    - gdbus-codegen eats indentation in RST in XML comments.
+    - g_dbus_connection_export_menu_model() is not thread_safe.
+    - Possible SEGV (null pointer deref) in
+      distribute_method_call().
+    - arg_data  in GOptionEntry is not a list.
+    - Possible SEGV (null pointer deref) in _g_resource_file_new().
+    - glib-unix: Clean up use of O_NONBLOCK.
+    - gnetworkaddress: use reentrant getservbyname_r() if
+      available.
+    - gio-tool-info: Move translator comments so they’re visible.
+    - gregex: set default max stack size for PCRE2 JIT compiler to
+      512KiB.
+    - glib-unix: Accept O_CLOEXEC as well as FD_CLOEXEC in
+      g_unix_open_pipe().
+    - gio: Add gresource.dtd.
+    - gtestutils: Mention not ignoring SIGCHLD in
+      g_test_trap_subprocess() docs.
+    - [th/gchildwatch-fail-message] gmain: improve g_warning() for
+      failure in g_child_watch_dispatch().
+    - [th/use-localtime-r] use localtime_r() in
+      g_log_writer_format_fields().
+    - gregex: if JIT stack limit is reached, fall back to
+      interpretive matching.
+    - glib/gfileutils.c: use 64 bits for value in get_tmp_file().
+    - gkeyfile: Fix overwriting of GError.
+  + Updated translations.
+- Update https://wiki.gnome.org/Projects/GLib URL tag to
+  https://gitlab.gnome.org/GNOME/glib/, as the former points to the
+  latter.
+
+-------------------------------------------------------------------
+Mon Sep  4 14:27:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.77.2:
+  + Bugs fixed:
+    - g_test_trap_subprocess and g_test_subprocess broken in 2.77.1
+    - ci: Don’t run pipeline after merging a MR
+    - Fix typos
+    - GTree: Handle node counter overflow and return it as an
+      unsigned value
+    - gspawn, gdataset: Restore nullable callback functions
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  4 14:26:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.77.1:
+  + Fix some regressions with `GKeyFile` comment handling.
+  + Improve handling of query and fragment components in `file:`
+    URIs.
+  + Various bugs fixed.
+  + Updated transltations.
+- Drop glib2-revert-004f48f4.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Sep  4 14:25:48 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add glib2-revert-004f48f4.patch: This patch reverts the "build/\
+  gmodule-2.0.pc: Move compiler flags from Libs to Cglags" MR
+  (glgo#GNOME/glib!3356), as per agreement discussed in said MR.
+
+-------------------------------------------------------------------
+Mon Sep  4 14:24:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.77.0:
+  + Fix `GSocketClient` connecting to a proxy if the port is not
+    specified
+  + Support using `copy_file_range()` in `g_file_copy()`, if
+    available
+  + Improve handling of comments above groups in key files
+  + Re-upgrade missing attribute debugs to criticals in `GFileInfo`
+  + Do not redefine NULL on C++
+  + Make `g_signal_handlers_block_matched()` work for
+    `G_SIGNAL_MATCH_ID`
+  + Fixes to support building with bionic libc better
+  + Fix potential stack overflow in gspawn on macOS if open file
+    limit is very high
+  + Fix support for `--force-fallback-for libpcre` in meson
+    configuration
+  + Generate specific marshallers in `gdbus-codegen`
+  + Fix build failure on Android with `statx()` support
+  + Improve locking performance of `GSignal`
+  + Improve locking performance of `g_main_context_iterate()`
+  + Add an inline definition of `g_free()` to automatically use
+    `g_free_sized()` if available
+  + Fix race with `waitpid()` and `GChildWatchSource`
+  + Add `glib_valgrind_suppressions` variable to glib pkg-config
+    file
+  + Fix build on macOS SDK 10.11
+  + Switch to using a separate thread pool and support timeouts in
+    `GThreadedResolver`
+  + Track pending `GTask`s if `G_ENABLE_DEBUG` is defined
+  + Support GSignal fast path and more marshallers in
+    `gobject_gdb.py`
+  + Disable the macOS CI because it’s too unreliable — if you rely
+    on GLib working on macOS, please get in touch and do something
+    to help!
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep  4 14:23:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.76.5:

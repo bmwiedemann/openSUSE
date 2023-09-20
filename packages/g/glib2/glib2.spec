@@ -30,13 +30,13 @@
 %define libgthread libgthread-%{libver}
 %bcond_without     systemtap
 Name:           glib2%{psuffix}
-Version:        2.76.5
+Version:        2.78.0
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://wiki.gnome.org/Projects/GLib
-Source0:        https://download.gnome.org/sources/glib/2.76/glib-%{version}.tar.xz
+URL:            https://gitlab.gnome.org/GNOME/glib/
+Source0:        https://download.gnome.org/sources/glib/2.78/glib-%{version}.tar.xz
 Source1:        glib2.sh
 Source2:        glib2.csh
 # Not upstream file. Only proposes upstream packages:
@@ -468,6 +468,7 @@ done
 %dir %{_datadir}/gettext/its/
 %{_datadir}/gettext/its/gschema*
 %dir %{_datadir}/glib-2.0/
+%{_datadir}/glib-2.0/dtds/
 %{_datadir}/glib-2.0/gdb/
 %{_datadir}/glib-2.0/gettext/
 %{_datadir}/glib-2.0/codegen/
