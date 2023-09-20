@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Sep 20 06:06:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.3.1
+  * Bug
+    + MRESOURCES-237: Resource plugin's handling of symbolic links
+      changed in 3.0.x, broke existing behavior
+    + MRESOURCES-265: Resource copying not using specified encoding
+    + MRESOURCES-268: java.nio.charset.MalformedInputException:
+      Input length = 1
+    + MRESOURCES-273: Filtering of Maven properties with long names
+      is not working after transition from 2.6 to 3.2.0
+    + MRESOURCES-275: valid location for directory parameter is
+      always required
+    + MRESOURCES-269: Symlinks cause copying resources to fail
+    + MRESOURCES-289: FileUtils.copyFile() fails with source file
+      having lastModified = 0
+  * New Feature
+    + MRESOURCES-250: Add ability to flatten folder structure into
+      target directory when copying resources
+  * Improvement
+    + MRESOURCES-288: make tests jar reproducible
+    + MRESOURCES-292: describe from and to in "Copying x
+      resources" info message
+  * Task
+    + MRESOURCES-295: Drop plexus legacy
+    + MRESOURCES-297: Update to parent POM 39, reformat sources
+    + MRESOURCES-277: Update plugin (requires Maven 3.2.5+)
+    + MRESOURCES-283: Require Java 8
+  * Dependency upgrade
+    + MRESOURCES-282: Upgrade maven-plugin parent to 36
+    + MRESOURCES-286: Upgrade Maven Filtering to 3.3.0
+    + MRESOURCES-294: Upgrade plexus-utils to 3.5.1
+    + MRESOURCES-296: Upgrade to maven-filtering 3.3.1
+- Modified patch:
+  * maven-resources-plugin-bootstrap-resources.patch
+    + regenerate in cycle
+
+-------------------------------------------------------------------
 Fri Jun 24 09:44:50 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Remove all dependencies with scope test, since a raw xmvn does
