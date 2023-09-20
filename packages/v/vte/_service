@@ -5,13 +5,13 @@
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">refs/tags/0.72.2</param>
+    <param name="revision">refs/tags/0.74.0</param>
     <param name="exclude">doc/vttest.*</param>
   </service>
   <service name="tar" mode="buildtime" />
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">zst</param>
   </service>
   <service name="set_version" mode="manual"/>
 </services>

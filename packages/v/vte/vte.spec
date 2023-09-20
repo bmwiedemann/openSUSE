@@ -27,13 +27,13 @@
 %bcond_with     glade_support
 
 Name:           vte
-Version:        0.72.2
+Version:        0.74.0
 Release:        0
 Summary:        Terminal Emulator Library
 License:        CC-BY-4.0 AND LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
 Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/GNOME/vte
-Source:         %{_name}-%{version}.tar.xz
+Source:         %{_name}-%{version}.tar.zst
 # PATCH-FIX-OPENSUSE vte-enable-build-flag-pie.patch yfjiang@suse.com -- enable PIE flag to be compatible with gcc default linking option
 Patch0:         vte-enable-build-flag-pie.patch
 # PATCH-FIX-SLE vte-revert-back-to-c++17.patch yu.daike@suse.com -- revert c++20 features back to c++17
