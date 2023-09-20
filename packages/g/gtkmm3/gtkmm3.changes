@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 13 16:17:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.8:
+  + Gtk: gtk/gtkmm/base.h: Fix GTK_VERSION_GT_MICRO
+  + Documentation: Remove README.SUN and other obsolete files
+  + Build with Meson:
+    - Detect if we build from a git subtree
+    - Fix the evaluation of is_git_build on Windows
+    - Don't copy files with configure_file()
+
+-------------------------------------------------------------------
 Fri Dec 16 15:17:21 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: there is no known consumer of the -32bit

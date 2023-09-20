@@ -1,7 +1,7 @@
 #
 # spec file for package gtkmm3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _name gtkmm
 
 Name:           gtkmm3
-Version:        3.24.7
+Version:        3.24.8
 Release:        0
 Summary:        C++ Interface for GTK3 (a GUI Library for X)
 License:        LGPL-2.1-or-later
@@ -119,7 +119,7 @@ freely combined to quickly create complex user interfaces.
 %{_libdir}/gtkmm-3.0/
 
 %files doc
-%doc AUTHORS ChangeLog README
+%doc ChangeLog README.md
 %{_datadir}/devhelp/books/gtkmm-3.0/
 %{_datadir}/doc/gtkmm-3.0/
 # Avoid BuildRequires on devhelp
