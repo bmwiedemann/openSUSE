@@ -2,10 +2,8 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/bndtools/bnd.git</param>
-		<param name="revision">5.2.0.REL</param>
-		<param name="match-tag">*.REL</param>
+		<param name="revision">6.3.1</param>
 		<param name="versionformat">@PARENT_TAG@</param>
-		<param name="versionrewrite-pattern">(.*).REL</param>
         <param name="exclude">gradlew*</param>
         <param name="exclude">docs</param>
         <param name="exclude">**.jar</param>

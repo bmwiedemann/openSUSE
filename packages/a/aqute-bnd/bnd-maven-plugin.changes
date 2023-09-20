@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Sep 18 05:23:18 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to aqute-bnd 6.3.1
+  * https://github.com/bndtools/bnd/wiki/Changes-in-6.3.1
+  * https://github.com/bndtools/bnd/wiki/Changes-in-6.3.0
+  * https://github.com/bndtools/bnd/wiki/Changes-in-6.2.0
+  * https://github.com/bndtools/bnd/wiki/Changes-in-6.1.0
+  * https://github.com/bndtools/bnd/wiki/Changes-in-6.0.0
+  * https://github.com/bndtools/bnd/wiki/Changes-in-5.3.0
+- Modified patches:
+  * 0001-Disable-removed-commands.patch
+  * 0003-Port-to-OSGI-7.0.0.patch -> 0002-Port-to-OSGI-7.0.0.patch
+  * 0004-maven-plugin-dependencies.patch ->
+    0003-Remove-unmet-dependencies.patch
+  * reproducible-timestamps.patch
+  * reproducible-packages-list.patch
+    + rediff to changed context
+- Removed patch:
+  * aqute-bnd-java8compat.patch
+    + handled by release=8 in ant javac task
+
+-------------------------------------------------------------------
+Sat Sep 16 10:08:36 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * reproducible-timestamps.patch
+    + set "-reproducible" option to true by default
+    + use SOURCE_DATE_EPOCH for timestamp if available
+  * reproducible-packages-list.patch
+    + make the order of packages to import/export deterministic
+
+-------------------------------------------------------------------
 Wed Apr 26 17:47:47 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Fetch sources using source_service and don't distribute legally

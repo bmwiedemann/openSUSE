@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>biz.aQute.bnd</groupId>
   <artifactId>biz.aQute.bndlib</artifactId>
-  <version>5.2.0</version>
+  <version>6.3.1</version>
   <description>bndlib: A Swiss Army Knife for OSGi</description>
   <name>biz.aQute.bndlib</name>
   <url>https://bnd.bndtools.org/</url>
@@ -23,7 +23,7 @@
     <url>https://github.com/bndtools/bnd</url>
     <connection>scm:git:https://github.com/bndtools/bnd.git</connection>
     <developerConnection>scm:git:git@github.com:bndtools/bnd.git</developerConnection>
-    <tag>5.2.0.REL</tag>
+    <tag>6.3.1</tag>
   </scm>
   <developers>
     <developer>
@@ -41,7 +41,7 @@
     <developer>
       <id>bjhargrave</id>
       <name>BJ Hargrave</name>
-      <email>bj@bjhargrave.com</email>
+      <email>bj@hargrave.dev</email>
       <url>https://github.com/bjhargrave</url>
       <organization>IBM</organization>
       <organizationUrl>https://developer.ibm.com</organizationUrl>
@@ -67,14 +67,32 @@
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>osgi.annotation</artifactId>
-      <version>7.0.0</version>
+      <version>8.1.0</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.osgi</groupId>
-      <artifactId>osgi.core</artifactId>
-      <version>6.0.0</version>
-      <scope>provided</scope>
+      <artifactId>org.osgi.dto</artifactId>
+      <version>1.0.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.resource</artifactId>
+      <version>1.0.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.framework</artifactId>
+      <version>1.8.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.util.tracker</artifactId>
+      <version>1.5.4</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.osgi</groupId>
@@ -104,25 +122,31 @@
       <groupId>org.osgi</groupId>
       <artifactId>org.osgi.service.log</artifactId>
       <version>1.3.0</version>
-      <scope>provided</scope>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>org.osgi.service.repository</artifactId>
       <version>1.1.0</version>
-      <scope>provided</scope>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>org.osgi.util.function</artifactId>
-      <version>1.1.0</version>
-      <scope>provided</scope>
+      <version>1.2.0</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>org.osgi.util.promise</artifactId>
-      <version>1.1.1</version>
-      <scope>provided</scope>
+      <version>1.2.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>biz.aQute.bnd</groupId>
+      <artifactId>biz.aQute.bnd.util</artifactId>
+      <version>6.3.1</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
