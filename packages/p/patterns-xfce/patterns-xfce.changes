@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 19 05:03:23 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Include selection of panel plugins to the main Xfce pattern
+- Created Xfce Extra pattern:
+  Some popular applications such as Libreoffice, Gimp, Thunderbird 
+  and others are now recommended by this pattern.
+
+-------------------------------------------------------------------
+Wed Aug 16 13:54:21 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- Reduce default install size by not recommending office and image
+  programs. Those who really want libreoffice etc know how to find
+  it.
+
+-------------------------------------------------------------------
 Mon Feb 13 11:48:32 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Restore previously removed gnome-packagekit as it is needed so that 

@@ -47,25 +47,54 @@ Provides:       pattern-order() = 1310
 Provides:       pattern-visible()
 Requires:       pattern() = x11
 Requires:       pattern() = xfce_basis
-Recommends:     pattern() = xfce_office
-Recommends:     pattern() = multimedia
-Recommends:     pattern() = imaging
 Provides:       patterns-openSUSE-xfce = %{version}
 Obsoletes:      patterns-openSUSE-xfce < %{version}
 
 # Xfce Recommended applications
 Recommends:     mousepad
+Recommends:     parole
 Recommends:     ristretto
 Recommends:     thunar-plugin-archive
 Recommends:     thunar-plugin-media-tags
+Recommends:     tumbler
 Recommends:     xfce4-dict
 Recommends:     xfce4-panel-profiles
 Recommends:     xfce4-screenshooter
-Recommends:     parole
+Recommends:     xfce4-taskmanager
+Recommends:     xfce4-dict
+Recommends:     gigolo
+
+# Recommended Xfce Panel plugins
+Recommends:     xfce4-calculator-plugin
+Recommends:     xfce4-clipman-plugin
+Recommends:     xfce4-cpufreq-plugin
+Recommends:     xfce4-cpugraph-plugin
+Recommends:     xfce4-diskperf-plugin
+Recommends:     xfce4-docklike-plugin
+Recommends:     xfce4-eyes-plugin
+Recommends:     xfce4-fsguard-plugin
+Recommends:     xfce4-genmon-plugin
+Recommends:     xfce4-kbdleds-plugin
+Recommends:     xfce4-mailwatch-plugin
+Recommends:     xfce4-mount-plugin
+Recommends:     xfce4-mpc-plugin
+Recommends:     xfce4-netload-plugin
+Recommends:     xfce4-notes-plugin
+Recommends:     xfce4-places-plugin
+Recommends:     xfce4-screenshooter-plugin
+Recommends:     xfce4-sensors-plugin
+Recommends:     xfce4-smartbookmark-plugin
+Recommends:     xfce4-stopwatch-plugin
+Recommends:     xfce4-systemload-plugin
+Recommends:     xfce4-timeout-plugin
+Recommends:     xfce4-timer-plugin
+Recommends:     xfce4-verve-plugin
+Recommends:     xfce4-wavelan-plugin
+Recommends:     xfce4-weather-plugin
 
 # Third-party applications
 Recommends:     blueman
-Recommends:     thunar-sendto-blueman
+Recommends:     evince
 Recommends:     file-roller
 Recommends:     galculator
 Recommends:     gnome-disk-utility
@@ -74,22 +103,14 @@ Recommends:     lightdm
 Recommends:     lightdm-gtk-greeter
 Recommends:     lightdm-gtk-greeter-settings
 Recommends:     menulibre
-Recommends:     MozillaThunderbird
 Recommends:     mugshot
-Recommends:     pidgin
 Recommends:     pragha
-Recommends:     remmina
-Recommends:     remmina-plugin-rdp
-Recommends:     remmina-plugin-vnc
-Recommends:     remmina-plugin-xdmcp
 Recommends:     seahorse
-Recommends:     shotwell
 Recommends:     simple-scan
-Recommends:     transmission-gtk
-Recommends:     evince
-# Additional applications
-# ease debugging
-#
+Recommends:     thunar-sendto-blueman
+
+# Additional applications for easy debugging
+
 Recommends:     gdb
 Recommends:     system-config-printer
 Recommends:     system-config-printer-applet
@@ -98,7 +119,7 @@ Recommends:     system-config-printer-applet
 # This is needed so that openQA does not fail (poo#124364) but also in preparation for offline updates method
 Recommends:     gnome-packagekit
 
-# Currently only Leap supports this update method via packagekit
+# Currently only Leap fully supports this update method via packagekit
 %if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
 Recommends:     package-update-indicator
 %endif
@@ -109,9 +130,7 @@ Recommends:     gnome-keyring-pam
 # bnc#1108381
 Recommends:     gcr-ssh-askpass
 Recommends:     opensuse-welcome
-#
-# core desktop functionality
-#
+
 Recommends:     xfce4-taskmanager
 Recommends:     thunar-volman
 Recommends:     tumbler
@@ -133,6 +152,42 @@ Xfce is a lightweight desktop environment for various *NIX systems.
 %{_defaultdocdir}/patterns/xfce.txt
 
 ################################################################################
+
+%package xfce_extra
+%pattern_graphicalenvironments
+Summary:        XFCE extra desktop applications
+Group:          Metapackages
+Provides:       pattern() = xfce_extra
+Provides:       pattern-extends() = xfce
+Provides:       pattern-icon() = pattern-xfce
+Provides:       pattern-visible()
+Provides:       pattern-order() = 1305
+Requires:       pattern() = xfce
+Requires:       pattern() = xfce_basis
+Recommends:     pattern() = office
+Recommends:     pattern() = multimedia
+Recommends:     pattern() = imaging
+Recommends:     libreoffice-gtk3
+Recommends:     MozillaThunderbird
+Recommends:     pidgin
+Recommends:     remmina
+Recommends:     remmina-plugin-rdp
+Recommends:     remmina-plugin-vnc
+Recommends:     remmina-plugin-xdmcp
+Recommends:     shotwell
+Recommends:     transmission-gtk
+Provides:       patterns-openSUSE-xfce_extra = %{version}
+Obsoletes:      patterns-openSUSE-xfce_extra < %{version}
+
+%description xfce_extra
+Extra packages for the XFCE Desktop Environment
+
+%files xfce_extra
+%dir %{_defaultdocdir}/patterns
+%{_defaultdocdir}/patterns/xfce_extra.txt
+
+################################################################################
+
 
 %package xfce_basis
 %pattern_graphicalenvironments
@@ -161,6 +216,7 @@ Requires:       xfdesktop
 Requires:       xfwm4
 Recommends:     pavucontrol
 Recommends:     xfce4-pulseaudio-plugin
+
 #
 # low level functionality
 #
@@ -248,40 +304,13 @@ XFCE Laptop
 
 ################################################################################
 
-%package xfce_office
-%pattern_graphicalenvironments
-Summary:        XFCE Office
-Group:          Metapackages
-Provides:       pattern() = xfce_office
-Provides:       pattern-extends() = office
-Provides:       pattern-icon() = yast-x11
-Provides:       pattern-order() = 2241
-Supplements:    packageand(patterns-xfce-xfce:patterns-office-office)
-Requires:       pattern() = xfce
-Requires:       pattern() = xfce_basis
-Provides:       patterns-openSUSE-xfce_office = %{version}
-Obsoletes:      patterns-openSUSE-xfce_office < %{version}
-
-%ifarch %ix86 x86_64
-Recommends:     libreoffice-gnome
-%endif
-
-%description xfce_office
-XFCE Office
-
-%files xfce_office
-%dir %{_defaultdocdir}/patterns
-%{_defaultdocdir}/patterns/xfce_office.txt
-
-################################################################################
-
 %prep
 
 %build
 
 %install
 mkdir -p %{buildroot}/%{_defaultdocdir}/patterns
-for i in xfce xfce_basis xfce_laptop xfce_office; do
+for i in xfce xfce_basis xfce_laptop xfce_extra; do
 	echo "This file marks the pattern $i to be installed." \
 		>"%{buildroot}/%{_defaultdocdir}/patterns/$i.txt"
 done
