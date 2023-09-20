@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Sep  7 21:33:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.99.2:
+  + Minor code cleanups
+  + option:
+    - Don't try to access stack-based argv within a glib2 mainloop
+    - Allow --version and --help to work without a display server
+      running
+  + data: Reinstate help2man manpage autogeneration
+  + build: Make manpage/help2man requirement more explicit
+  + ci: Add help2man as 'build_fedora' target build dep
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Aug 10 09:04:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.99.1:
+  + question: do not hardcode "Yes" and "No" buttons
+  + Set the default response explicitly for all AdwMessageDialog's
+  + column-view: Widget should go directly in GtkScrolledWindow
+  + msg: Make --ok-label and --cancel-label work for --question
+    dialogs
+  + Add separate case for ZENITY_ESC; don't print junk or crash
+    with extra buttons
+  + Fix --extra-button and delete events for legacy
+    (non-libadwaita) dialogs
+  + filesel: Fix --filename for zenity 4.x
+  + Updated translations.
+- Re-enable help2man BuildRequires, now that no longer fails the
+  build.
+
+-------------------------------------------------------------------
 Wed Jun  7 23:05:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.99.0:

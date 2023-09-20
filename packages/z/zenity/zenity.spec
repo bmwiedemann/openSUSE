@@ -17,7 +17,7 @@
 
 
 Name:           zenity
-Version:        3.99.0
+Version:        3.99.2
 Release:        0
 Summary:        GNOME Command Line Dialog Utility
 License:        LGPL-2.1-or-later
@@ -27,8 +27,7 @@ Source0:        https://download.gnome.org/sources/zenity/3.99/%{name}-%{version
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-# Disabled as it fails the build currently - but needed for man pages.
-#BuildRequires:  help2man
+BuildRequires:  help2man
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
