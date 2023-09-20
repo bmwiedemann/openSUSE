@@ -20,7 +20,7 @@
 %define sover 1
 
 Name:           d-spy
-Version:        1.6.0
+Version:        1.8.0
 Release:        0
 Summary:        A D-Bus explorer for GNOME
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -55,6 +55,8 @@ Requires:       %{name} = %{version}
 %description    devel
 Development/header files for %{name}.
 
+%lang_package
+
 %prep
 %autosetup -p1
 
@@ -65,6 +67,7 @@ Development/header files for %{name}.
 
 %install
 %meson_install
+%find_lang %{name} %{?no_lang_C}
 
 %check
 %meson_test
@@ -89,5 +92,7 @@ Development/header files for %{name}.
 %{_includedir}/dspy-%{sover}
 %{_libdir}/%{libname}.so
 %{_libdir}/pkgconfig/dspy-1.pc
+
+%files lang -f %{name}.lang
 
 %changelog

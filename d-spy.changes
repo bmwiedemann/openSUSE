@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 17 10:00:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Package the new translations, add lang_package macros.
+
+-------------------------------------------------------------------
+Sun Sep 17 01:51:03 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.8.0:
+  + Fixes to support translations properly.
+  + Fixes in introspection path generation.
+
+-------------------------------------------------------------------
 Fri Mar 17 18:29:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.0:
