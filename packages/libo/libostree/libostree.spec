@@ -58,7 +58,7 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  gjs
 %endif
 %if %{with ed25519}
-BuildRequires:  pkgconfig(libsodium) >= 1.0.14
+BuildRequires:  pkgconfig(openssl)
 %endif
 
 # Package was renamed from ostree to libostree with version 2017.2
@@ -142,7 +142,7 @@ of both.
 %endif
 	--with-dracut \
 %if %{with ed25519}
-	--with-ed25519-libsodium \
+	--with-openssl \
 %endif
 	--with-curl \
 	--without-soup \

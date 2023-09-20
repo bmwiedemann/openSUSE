@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 29 09:53:25 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use OpenSSL for ed25519 signatures which automatically uses
+  OpenSSL for SHA256 too (which is faster according to upstream and
+  libcurl already links with openssl). Also, openssl is fips
+  certified unlike libsodium.
+
+-------------------------------------------------------------------
 Fri Aug 25 23:21:50 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 2023.6:
@@ -42,7 +50,8 @@ Fri Jul  7 23:03:35 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
     - prepare-root: Adjust to composefs mount struct changes.
 
 - Changes from version 2023.4:
-  + Notable bugfixe: fix ostree deployment on 64-bit inode fs.
+  + Notable bugfixe: fix ostree deployment on 64-bit inode fs
+    (boo#1214708).
   + New Feauture: Composefs.
   + HTTP/pull fixes:
     - ostree-fetcher-curl: explicitly use HTTP1.1 when HTTP2 is

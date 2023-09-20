@@ -363,4 +363,12 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
     <comment></comment>
     <requestid>1107970</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>278a52ed8797ad08a293bd670c9c4064</srcmd5>
+    <version>2023.6</version>
+    <time>1695208877</time>
+    <user>dimstar_suse</user>
+    <comment>Pushing GNOME 45.rc packages (forwarded request 1109845 from iznogood)</comment>
+    <requestid>1110511</requestid>
+  </revision>
 </revisionlist>
