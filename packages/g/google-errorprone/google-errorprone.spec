@@ -86,6 +86,7 @@ This package contains the API documentation for %{name}.
 %pom_disable_module refaster
 
 %pom_remove_plugin -r :maven-enforcer-plugin
+%pom_remove_plugin -r :maven-javadoc-plugin
 %pom_remove_plugin -r :maven-site-plugin
 %pom_remove_plugin -r :maven-source-plugin
 
