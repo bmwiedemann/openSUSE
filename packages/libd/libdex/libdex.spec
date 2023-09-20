@@ -17,14 +17,15 @@
 
 
 %define soname libdex-1-1
+%bcond_with profiling
 
 Name:           libdex
-Version:        0.2.0
+Version:        0.4.0
 Release:        0
 Summary:        Library supporting "Deferred Execution" for GNOME and GTK
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/chergert/libdex
-Source0:        https://download.gnome.org/sources/%{name}/0.2/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/0.4/%{name}-%{version}.tar.xz
 
 BuildRequires:  c_compiler
 BuildRequires:  meson
@@ -34,8 +35,9 @@ BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(liburing)
-BuildRequires:  pkgconfig(sysprof-4)
+%if %{with profiling}
 BuildRequires:  pkgconfig(sysprof-capture-4)
+%endif
 BuildRequires:  pkgconfig(vapigen)
 
 %description
@@ -93,7 +95,7 @@ applications with libdex.
 %meson \
 	-D docs=true \
 	-D examples=false \
-	-D sysprof=true \
+	-D sysprof=%{?with_profiling:true}%{!?with_profiling:false} \
 	%{nil}
 %meson_build
 

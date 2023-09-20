@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Sun Sep 17 01:09:23 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 0.4.0:
+  + Documentation updates.
+
+-------------------------------------------------------------------
+Wed Sep  6 01:13:35 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Drop pkgconfig(sysprof-4) BuildRequires. This was only needed
+  because sysprof-capture-static-devel was lacking header files,
+  which was mistakenly being packaged with sysprof-devel, and it's
+  fixed now.
+- Add with(out) "profiling" build switch and disable it, by
+  default, as profiling isn't meant for general use. This nests
+  pkgconfig(sysprof-capture-4) BuildRequires under an if-with
+  expression and passes profiler=(true|false) to meson, depending
+  on the profiling switch. Disabling this should also avoid a build
+  cycle introduced by Sysprof 45 by requiring libdex.
+
+-------------------------------------------------------------------
+Thu Aug 10 09:12:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.1:
+  + A new "Infinite" future type which will never resolve or
+    reject.
+  + The gio wrappers will now set debuggable names for their
+    futures.
+  + A `dex_async_pair_set_cancel_on_discard()` function has been
+    added which ensures that the `GCancellable` will not be
+    cancelled when the future is discarded. This can help in
+    situations where you might repeatedly await on a future and do
+    not want intermediate cancellation between attempts to await.
+  + A `dex_input_stream_skip_async()` function has been added to
+    wrap the underlying GIO function.
+  + A `dex_future_disown()` function has been added which
+    simplifies the case where you want a future to run but are not
+    interested in the result.
+
+-------------------------------------------------------------------
+Tue Jul 11 12:20:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.0:
+  + Documentation updates
+  + pkg-config improvements
+  + Build system improvements for GIR
+  + Support for GVariant-based futures
+  + New Future-based wrappers for GDBusConnection
+  + The FD-based AIO API is now public, allowing for use of
+    io_uring on Linux kernels that support it. If unsupported, a
+    threadpool approach is used similar to GIO
+  + Improvements to introspection for language bindings
+  + You can now return NULL for a DexPromise expecting a GObject as
+    as a resolved value
+  + DexFiber will now get static names associated with them when
+    used from C which points to the line of code. This is only
+    enabled when debugging is enabled for libdex through the use of
+    macros
+
+-------------------------------------------------------------------
 Fri Mar 17 19:46:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.2.0:
