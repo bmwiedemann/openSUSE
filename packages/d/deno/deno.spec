@@ -19,7 +19,7 @@
 
 
 Name:           deno
-Version:        1.36.2
+Version:        1.37.0
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -49,6 +49,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(protobuf)
 # deno does not build on 32-bit archs
 ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le s390x
 # PATCH-FIX-OPENSUSE - Disable LTO (to reduce req memory)
@@ -57,7 +58,7 @@ Patch10:        deno-disable-lto.patch
 %endif
 
 %description
-A JavaSript and TypeScript platform built on V8
+A JavaScript and TypeScript platform built on V8
 
 Deno has standard library and has features such as
 a linter, a language server protocol, a code formatter and

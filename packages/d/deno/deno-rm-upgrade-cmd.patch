@@ -16,7 +16,7 @@ diff --git a/cli/args/flags.rs.1 b/cli/args/flags.rs
 index 72841df..1c93da1 100644
 --- a/cli/args/flags.rs.1
 +++ b/cli/args/flags.rs
-@@ -262,7 +253,6 @@ pub enum DenoSubcommand {
+@@ -292,7 +292,6 @@ pub enum DenoSubcommand {
    Task(TaskFlags),
    Test(TestFlags),
    Types,
@@ -24,16 +24,16 @@ index 72841df..1c93da1 100644
    Vendor(VendorFlags),
  }
  
-@@ -579,7 +569,7 @@ impl Flags {
+@@ -686,7 +685,7 @@ impl Flags {
          std::env::current_dir().ok()
        }
        Bundle(_) | Completions(_) | Doc(_) | Fmt(_) | Init(_) | Install(_)
--      | Uninstall(_) | Lsp | Lint(_) | Types | Upgrade(_) | Vendor(_) => None,
-+      | Uninstall(_) | Lsp | Lint(_) | Types | Vendor(_) => None,
+-      | Uninstall(_) | Jupyter(_) | Lsp | Lint(_) | Types | Upgrade(_)
++      | Uninstall(_) | Jupyter(_) | Lsp | Lint(_) | Types
+       | Vendor(_) => None,
      }
    }
- 
-@@ -710,7 +700,6 @@ pub fn flags_from_vec(args: Vec<String>) -> clap::error::Result<Flags> {
+@@ -836,7 +835,6 @@ pub fn flags_from_vec(args: Vec<String>) -> clap::error::Result<Flags> {
        "test" => test_parse(&mut flags, &mut m),
        "types" => types_parse(&mut flags, &mut m),
        "uninstall" => uninstall_parse(&mut flags, &mut m),
@@ -41,7 +41,7 @@ index 72841df..1c93da1 100644
        "vendor" => vendor_parse(&mut flags, &mut m),
        _ => unreachable!(),
      }
-@@ -810,7 +799,6 @@ fn clap_root() -> Command {
+@@ -937,7 +935,6 @@ fn clap_root() -> Command {
          .subcommand(task_subcommand())
          .subcommand(test_subcommand())
          .subcommand(types_subcommand())
@@ -49,7 +49,7 @@ index 72841df..1c93da1 100644
          .subcommand(vendor_subcommand())
      })
      .long_about(DENO_HELP)
-@@ -1864,59 +1852,6 @@ The declaration file could be saved and used for typing information.",
+@@ -2037,59 +2034,6 @@ The declaration file could be saved and used for typing information.",
      )
  }
  
@@ -109,7 +109,7 @@ index 72841df..1c93da1 100644
  fn vendor_subcommand() -> Command {
    Command::new("vendor")
        .about("Vendor remote modules into a local directory")
-@@ -3054,23 +2989,6 @@ fn types_parse(flags: &mut Flags, _matches: &mut ArgMatches) {
+@@ -3453,23 +3397,6 @@ fn types_parse(flags: &mut Flags, _matches: &mut ArgMatches) {
    flags.subcommand = DenoSubcommand::Types;
  }
  
@@ -133,7 +133,7 @@ index 72841df..1c93da1 100644
  fn vendor_parse(flags: &mut Flags, matches: &mut ArgMatches) {
    ca_file_arg_parse(flags, matches);
    config_args_parse(flags, matches);
-@@ -3444,25 +3362,6 @@ mod tests {
+@@ -3886,25 +3813,6 @@ mod tests {
      assert_eq!(flags2, flags);
    }
  
@@ -159,7 +159,7 @@ index 72841df..1c93da1 100644
    #[test]
    fn version() {
      let r = flags_from_vec(svec!["deno", "--version"]);
-@@ -6186,25 +6085,6 @@ mod tests {
+@@ -7086,25 +6994,6 @@ mod tests {
      );
    }
  

@@ -1291,4 +1291,12 @@
 </comment>
     <requestid>1105153</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b77bf8dd956edcb74e3cf16eb228d941</srcmd5>
+    <version>1.37.0</version>
+    <time>1695209476</time>
+    <user>dimstar_suse</user>
+    <comment>upgrade to 1.37.0</comment>
+    <requestid>1112403</requestid>
+  </revision>
 </revisionlist>
