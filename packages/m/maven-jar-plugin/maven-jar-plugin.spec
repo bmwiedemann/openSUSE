@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-jar-plugin
-Version:        3.2.2
+Version:        3.3.0
 Release:        0
 Summary:        Maven JAR Plugin
 License:        Apache-2.0
@@ -42,7 +42,6 @@ BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
 BuildRequires:  plexus-archiver >= 4.2.0
 BuildRequires:  plexus-utils >= 3.3.0
-BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
@@ -104,7 +103,6 @@ build-jar-repository -s lib \
     maven/maven-core \
     maven/maven-plugin-api \
     maven-plugin-tools/maven-plugin-annotations \
-    org.eclipse.sisu.plexus \
     plexus/archiver \
     plexus/utils
 %{ant} -Dtest.skip=true jar

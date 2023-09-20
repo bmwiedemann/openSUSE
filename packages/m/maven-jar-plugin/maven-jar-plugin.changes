@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 20 05:32:35 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.3.0
+  * Bug
+    + MJAR-275: outputTimestamp not applied to module-info; breaks
+      reproducible builds
+  * Task
+    + MJAR-278: Update plugin (requires Maven 3.2.5+)
+    + MJAR-280: Java 8 as minimum
+  * Dependency upgrade
+    + MJAR-283: Upgrade Plexus Utils to 3.3.1
+    + MJAR-284: Remove override for Plexus Archiver to fix order of
+      META-INF/ and META-INF/MANIFEST.MF entries
+    + MJAR-288: Upgrade Parent to 36
+    + MJAR-290: Update Plexus Utils to 3.4.2
+    + MJAR-291: Upgrade Parent to 37
+- Modified patches:
+  * 01-allow-replacing-artifacts.patch
+    + rediff to changed context
+  * maven-jar-plugin-bootstrap-resources.patch
+    + regenerate in cycle
+
+-------------------------------------------------------------------
 Fri Jun 24 09:46:54 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Remove all dependencies with scope test, since a raw xmvn does

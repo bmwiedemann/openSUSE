@@ -1,6 +1,6 @@
---- maven-jar-plugin-3.2.2/src/main/java/org/apache/maven/plugins/jar/AbstractJarMojo.java	2022-03-29 15:50:36.249589766 +0200
-+++ maven-jar-plugin-3.2.2/src/main/java/org/apache/maven/plugins/jar/AbstractJarMojo.java	2022-03-29 15:51:59.054148728 +0200
-@@ -317,7 +317,7 @@
+--- maven-jar-plugin-3.3.0/src/main/java/org/apache/maven/plugins/jar/AbstractJarMojo.java	2023-09-14 08:41:53.495070762 +0200
++++ maven-jar-plugin-3.3.0/src/main/java/org/apache/maven/plugins/jar/AbstractJarMojo.java	2023-09-14 08:46:56.323819346 +0200
+@@ -312,7 +312,7 @@
              {
                  if ( projectHasAlreadySetAnArtifact() )
                  {

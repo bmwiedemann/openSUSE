@@ -1,6 +1,6 @@
---- maven-jar-plugin-3.2.0/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-jar-plugin/plugin-help.xml	1970-01-01 01:00:00.000000000 +0100
-+++ maven-jar-plugin-3.2.0/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-jar-plugin/plugin-help.xml	2019-11-25 18:27:09.361408438 +0100
-@@ -0,0 +1,218 @@
+--- maven-jar-plugin-3.3.0//src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-jar-plugin/plugin-help.xml	1970-01-01 01:00:00.000000000 +0100
++++ maven-jar-plugin-3.3.0/src/main/filtered-resources/META-INF/maven/org.apache.maven.plugins/maven-jar-plugin/plugin-help.xml	2023-09-14 14:04:13.990051552 +0200
+@@ -0,0 +1,274 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +<plugin>
 +  <name>${project.name}</name>
@@ -10,6 +10,62 @@
 +  <version>${project.version}</version>
 +  <goalPrefix>jar</goalPrefix>
 +  <mojos>
++    <mojo>
++      <goal>help</goal>
++      <description>Display help information on maven-jar-plugin.
++Call mvn jar:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
++      <requiresDirectInvocation>false</requiresDirectInvocation>
++      <requiresProject>false</requiresProject>
++      <requiresReports>false</requiresReports>
++      <aggregator>false</aggregator>
++      <requiresOnline>false</requiresOnline>
++      <inheritedByDefault>true</inheritedByDefault>
++      <implementation>org.apache.maven.plugins.jar.HelpMojo</implementation>
++      <language>java</language>
++      <instantiationStrategy>per-lookup</instantiationStrategy>
++      <executionStrategy>once-per-session</executionStrategy>
++      <threadSafe>true</threadSafe>
++      <parameters>
++        <parameter>
++          <name>detail</name>
++          <type>boolean</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-jar-plugin.
++Call mvn jar:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
++        </parameter>
++        <parameter>
++          <name>goal</name>
++          <type>java.lang.String</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-jar-plugin.
++Call mvn jar:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
++        </parameter>
++        <parameter>
++          <name>indentSize</name>
++          <type>int</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-jar-plugin.
++Call mvn jar:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
++        </parameter>
++        <parameter>
++          <name>lineLength</name>
++          <type>int</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-jar-plugin.
++Call mvn jar:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter details.</description>
++        </parameter>
++      </parameters>
++      <configuration>
++        <detail implementation="boolean" default-value="false">${detail}</detail>
++        <goal implementation="java.lang.String">${goal}</goal>
++        <indentSize implementation="int" default-value="2">${indentSize}</indentSize>
++        <lineLength implementation="int" default-value="80">${lineLength}</lineLength>
++      </configuration>
++    </mojo>
 +    <mojo>
 +      <goal>jar</goal>
 +      <description>Build a JAR from the current project.</description>
@@ -219,9 +275,9 @@
 +    </mojo>
 +  </mojos>
 +</plugin>
---- maven-jar-plugin-3.2.0/src/main/filtered-resources/META-INF/maven/plugin.xml	1970-01-01 01:00:00.000000000 +0100
-+++ maven-jar-plugin-3.2.0/src/main/filtered-resources/META-INF/maven/plugin.xml	2019-11-25 18:26:17.657117466 +0100
-@@ -0,0 +1,548 @@
+--- maven-jar-plugin-3.3.0//src/main/filtered-resources/META-INF/maven/plugin.xml	1970-01-01 01:00:00.000000000 +0100
++++ maven-jar-plugin-3.3.0/src/main/filtered-resources/META-INF/maven/plugin.xml	2023-09-14 14:03:04.266238892 +0200
+@@ -0,0 +1,556 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +<plugin>
 +  <name>${project.name}</name>
@@ -233,6 +289,62 @@
 +  <isolatedRealm>false</isolatedRealm>
 +  <inheritedByDefault>true</inheritedByDefault>
 +  <mojos>
++    <mojo>
++      <goal>help</goal>
++      <description>Display help information on maven-jar-plugin.&lt;br&gt;
++Call &lt;code&gt;mvn jar:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++      <requiresDirectInvocation>false</requiresDirectInvocation>
++      <requiresProject>false</requiresProject>
++      <requiresReports>false</requiresReports>
++      <aggregator>false</aggregator>
++      <requiresOnline>false</requiresOnline>
++      <inheritedByDefault>true</inheritedByDefault>
++      <implementation>org.apache.maven.plugins.jar.HelpMojo</implementation>
++      <language>java</language>
++      <instantiationStrategy>per-lookup</instantiationStrategy>
++      <executionStrategy>once-per-session</executionStrategy>
++      <threadSafe>true</threadSafe>
++      <parameters>
++        <parameter>
++          <name>detail</name>
++          <type>boolean</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-jar-plugin.&lt;br&gt;
++Call &lt;code&gt;mvn jar:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++        </parameter>
++        <parameter>
++          <name>goal</name>
++          <type>java.lang.String</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-jar-plugin.&lt;br&gt;
++Call &lt;code&gt;mvn jar:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++        </parameter>
++        <parameter>
++          <name>indentSize</name>
++          <type>int</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-jar-plugin.&lt;br&gt;
++Call &lt;code&gt;mvn jar:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++        </parameter>
++        <parameter>
++          <name>lineLength</name>
++          <type>int</type>
++          <required>false</required>
++          <editable>true</editable>
++          <description>Display help information on maven-jar-plugin.&lt;br&gt;
++Call &lt;code&gt;mvn jar:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp;gt;&lt;/code&gt; to display parameter details.</description>
++        </parameter>
++      </parameters>
++      <configuration>
++        <detail implementation="boolean" default-value="false">${detail}</detail>
++        <goal implementation="java.lang.String">${goal}</goal>
++        <indentSize implementation="int" default-value="2">${indentSize}</indentSize>
++        <lineLength implementation="int" default-value="80">${lineLength}</lineLength>
++      </configuration>
++    </mojo>
 +    <mojo>
 +      <goal>jar</goal>
 +      <description>Build a JAR from the current project.</description>
@@ -511,58 +623,76 @@
 +  </mojos>
 +  <dependencies>
 +    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-plugin-api</artifactId>
++      <groupId>org.eclipse.sisu</groupId>
++      <artifactId>org.eclipse.sisu.plexus</artifactId>
 +      <type>jar</type>
-+      <version>3.1.1</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-model</artifactId>
-+      <type>jar</type>
-+      <version>3.6.2</version>
++      <version>0.9.0.M2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-classworlds</artifactId>
 +      <type>jar</type>
-+      <version>2.6.0</version>
++      <version>2.7.0</version>
 +    </dependency>
 +    <dependency>
-+      <groupId>org.eclipse.sisu</groupId>
-+      <artifactId>org.eclipse.sisu.plexus</artifactId>
++      <groupId>org.apache.maven.resolver</groupId>
++      <artifactId>maven-resolver-spi</artifactId>
 +      <type>jar</type>
-+      <version>0.3.3</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-core</artifactId>
-+      <type>jar</type>
-+      <version>3.1.1</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-settings</artifactId>
-+      <type>jar</type>
-+      <version>3.6.2</version>
++      <version>1.9.10</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven.resolver</groupId>
 +      <artifactId>maven-resolver-util</artifactId>
 +      <type>jar</type>
-+      <version>1.4.1</version>
++      <version>1.9.10</version>
 +    </dependency>
 +    <dependency>
-+      <groupId>org.apache.commons</groupId>
-+      <artifactId>commons-lang3</artifactId>
++      <groupId>org.apache.maven</groupId>
++      <artifactId>maven-settings</artifactId>
 +      <type>jar</type>
-+      <version>3.8.1</version>
++      <version>3.9.2</version>
++    </dependency>
++    <dependency>
++      <groupId>org.slf4j</groupId>
++      <artifactId>slf4j-api</artifactId>
++      <type>jar</type>
++      <version>1.7.36</version>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.maven.resolver</groupId>
++      <artifactId>maven-resolver-api</artifactId>
++      <type>jar</type>
++      <version>1.9.10</version>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.maven</groupId>
++      <artifactId>maven-model-builder</artifactId>
++      <type>jar</type>
++      <version>3.9.2</version>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-component-annotations</artifactId>
++      <type>jar</type>
++      <version>2.1.0</version>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.maven</groupId>
++      <artifactId>maven-resolver-provider</artifactId>
++      <type>jar</type>
++      <version>3.9.2</version>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.maven.shared</groupId>
++      <artifactId>maven-shared-utils</artifactId>
++      <type>jar</type>
++      <version>3.3.4</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.eclipse.sisu</groupId>
 +      <artifactId>org.eclipse.sisu.inject</artifactId>
 +      <type>jar</type>
-+      <version>0.3.3</version>
++      <version>0.9.0.M2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>javax.enterprise</groupId>
@@ -571,10 +701,10 @@
 +      <version>1.1</version>
 +    </dependency>
 +    <dependency>
-+      <groupId>javax.el</groupId>
-+      <artifactId>javax.el-api</artifactId>
++      <groupId>jakarta.inject</groupId>
++      <artifactId>jakarta.inject-api</artifactId>
 +      <type>jar</type>
-+      <version>3.0.0</version>
++      <version>1.0</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.jboss.spec.javax.interceptor</groupId>
@@ -583,52 +713,52 @@
 +      <version>any</version>
 +    </dependency>
 +    <dependency>
-+      <groupId>com.google.inject</groupId>
-+      <artifactId>guice</artifactId>
++      <groupId>org.apache.maven</groupId>
++      <artifactId>maven-builder-support</artifactId>
 +      <type>jar</type>
-+      <version>4.2.1</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>aopalliance</groupId>
-+      <artifactId>aopalliance</artifactId>
-+      <type>jar</type>
-+      <version>1.0</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>cglib</groupId>
-+      <artifactId>cglib</artifactId>
-+      <type>jar</type>
-+      <version>3.2.0</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.ow2.asm</groupId>
-+      <artifactId>asm</artifactId>
-+      <type>jar</type>
-+      <version>5.0.3</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>com.google.guava</groupId>
-+      <artifactId>guava</artifactId>
-+      <type>jar</type>
-+      <version>19.0</version>
++      <version>3.9.2</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-resolver-provider</artifactId>
++      <artifactId>maven-repository-metadata</artifactId>
 +      <type>jar</type>
-+      <version>3.6.2</version>
++      <version>3.9.2</version>
 +    </dependency>
 +    <dependency>
-+      <groupId>org.slf4j</groupId>
-+      <artifactId>slf4j-api</artifactId>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-interpolation</artifactId>
 +      <type>jar</type>
-+      <version>1.7.25</version>
++      <version>1.26</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven.resolver</groupId>
-+      <artifactId>maven-resolver-api</artifactId>
++      <artifactId>maven-resolver-impl</artifactId>
 +      <type>jar</type>
-+      <version>1.4.1</version>
++      <version>1.9.10</version>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.maven.resolver</groupId>
++      <artifactId>maven-resolver-named-locks</artifactId>
++      <type>jar</type>
++      <version>1.9.12</version>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.maven</groupId>
++      <artifactId>maven-settings-builder</artifactId>
++      <type>jar</type>
++      <version>3.9.2</version>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-sec-dispatcher</artifactId>
++      <type>jar</type>
++      <version>2.0</version>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-cipher</artifactId>
++      <type>jar</type>
++      <version>2.0</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>javax.inject</groupId>
@@ -637,70 +767,10 @@
 +      <version>1</version>
 +    </dependency>
 +    <dependency>
-+      <groupId>org.apache.maven.resolver</groupId>
-+      <artifactId>maven-resolver-impl</artifactId>
-+      <type>jar</type>
-+      <version>1.4.1</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-repository-metadata</artifactId>
-+      <type>jar</type>
-+      <version>3.6.2</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven.resolver</groupId>
-+      <artifactId>maven-resolver-spi</artifactId>
-+      <type>jar</type>
-+      <version>1.4.1</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.codehaus.plexus</groupId>
-+      <artifactId>plexus-component-annotations</artifactId>
-+      <type>jar</type>
-+      <version>1.5.5</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-model-builder</artifactId>
-+      <type>jar</type>
-+      <version>3.6.2</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-builder-support</artifactId>
-+      <type>jar</type>
-+      <version>3.6.2</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-settings-builder</artifactId>
-+      <type>jar</type>
-+      <version>3.6.2</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.sonatype.plexus</groupId>
-+      <artifactId>plexus-sec-dispatcher</artifactId>
-+      <type>jar</type>
-+      <version>1.4</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.sonatype.plexus</groupId>
-+      <artifactId>plexus-cipher</artifactId>
-+      <type>jar</type>
-+      <version>1.4</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven</groupId>
-+      <artifactId>maven-artifact</artifactId>
-+      <type>jar</type>
-+      <version>3.1.1</version>
-+    </dependency>
-+    <dependency>
 +      <groupId>org.apache.maven.shared</groupId>
 +      <artifactId>file-management</artifactId>
 +      <type>jar</type>
-+      <version>3.0.0</version>
++      <version>3.1.0</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.apache.maven.shared</groupId>
@@ -709,64 +779,58 @@
 +      <version>3.0.0</version>
 +    </dependency>
 +    <dependency>
++      <groupId>org.apache.maven.wagon</groupId>
++      <artifactId>wagon-provider-api</artifactId>
++      <type>jar</type>
++      <version>2.10</version>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.maven</groupId>
++      <artifactId>maven-compat</artifactId>
++      <type>jar</type>
++      <version>3.0</version>
++    </dependency>
++    <dependency>
 +      <groupId>org.apache.maven</groupId>
 +      <artifactId>maven-archiver</artifactId>
 +      <type>jar</type>
-+      <version>3.5.0</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.codehaus.plexus</groupId>
-+      <artifactId>plexus-interpolation</artifactId>
-+      <type>jar</type>
-+      <version>1.25</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>commons-io</groupId>
-+      <artifactId>commons-io</artifactId>
-+      <type>jar</type>
-+      <version>2.5</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven.shared</groupId>
-+      <artifactId>maven-shared-utils</artifactId>
-+      <type>jar</type>
-+      <version>3.2.1</version>
++      <version>3.6.0</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-archiver</artifactId>
 +      <type>jar</type>
-+      <version>4.2.1</version>
++      <version>4.8.0</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-io</artifactId>
 +      <type>jar</type>
-+      <version>3.2.0</version>
++      <version>3.4.1</version>
 +    </dependency>
 +    <dependency>
-+      <groupId>org.apache.commons</groupId>
-+      <artifactId>commons-compress</artifactId>
++      <groupId>commons-io</groupId>
++      <artifactId>commons-io</artifactId>
 +      <type>jar</type>
-+      <version>1.19</version>
++      <version>2.13.0</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.tukaani</groupId>
 +      <artifactId>xz</artifactId>
 +      <type>jar</type>
-+      <version>1.8</version>
++      <version>1.9</version>
++    </dependency>
++    <dependency>
++      <groupId>org.apache.commons</groupId>
++      <artifactId>commons-compress</artifactId>
++      <type>jar</type>
++      <version>1.23.0</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>org.codehaus.plexus</groupId>
 +      <artifactId>plexus-utils</artifactId>
 +      <type>jar</type>
-+      <version>3.3.0</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>org.apache.maven.wagon</groupId>
-+      <artifactId>wagon-provider-api</artifactId>
-+      <type>jar</type>
-+      <version>3.3.3</version>
++      <version>3.4.2</version>
 +    </dependency>
 +  </dependencies>
 +</plugin>
