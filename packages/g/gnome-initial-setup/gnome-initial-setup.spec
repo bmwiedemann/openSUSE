@@ -17,19 +17,19 @@
 
 
 Name:           gnome-initial-setup
-Version:        44.0
+Version:        45.0
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/OS/InitialSetup
-Source0:        https://download.gnome.org/sources/gnome-initial-setup/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-initial-setup/45/%{name}-%{version}.tar.xz
 
 BuildRequires:  krb5-devel
 BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
-BuildRequires:  vala
 BuildRequires:  sysuser-tools
+BuildRequires:  vala
 BuildRequires:  (pkgconfig(webkit2gtk-5.0) or pkgconfig(webkitgtk-6.0))
 BuildRequires:  pkgconfig(accountsservice)
 BuildRequires:  pkgconfig(fontconfig)
@@ -106,6 +106,11 @@ Initial assistant, helping you to get the system up and running.
 %{_libexecdir}/gnome-initial-setup
 %{_libexecdir}/gnome-initial-setup-copy-worker
 %{_libexecdir}/gnome-initial-setup-goa-helper
+%dir %{_datadir}/dconf
+%dir %{_datadir}/dconf/profile
+%{_datadir}/dconf/profile/gnome-initial-setup
+%dir %{_datadir}/gnome-initial-setup
+%{_datadir}/gnome-initial-setup/initial-setup-dconf-defaults
 #%%{_sysconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
 %{_distconfdir}/xdg/autostart/gnome-initial-setup-copy-worker.desktop
 #%%{_sysconfdir}/xdg/autostart/gnome-initial-setup-first-login.desktop
