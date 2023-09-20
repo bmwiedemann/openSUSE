@@ -15,4 +15,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963721</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ac40c327e860ece92ec0c978b987af03</srcmd5>
+    <version>1.2.1</version>
+    <time>1695209361</time>
+    <user>dimstar_suse</user>
+    <comment>Do not require maven-javadoc-plugin that we don't use</comment>
+    <requestid>1112226</requestid>
+  </revision>
 </revisionlist>

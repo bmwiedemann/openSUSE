@@ -1,7 +1,7 @@
 #
 # spec file for package aho-corasick-double-array-trie
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,7 @@ This package contains javadoc for %{name}.
 cp %{SOURCE1} .
 
 %pom_remove_plugin :maven-source-plugin
+%pom_remove_plugin :maven-javadoc-plugin
 
 %build
 %{mvn_build} -f -- \
