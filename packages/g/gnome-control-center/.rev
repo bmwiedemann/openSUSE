@@ -1953,4 +1953,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
 New stable rel</comment>
     <requestid>1096190</requestid>
   </revision>
+  <revision rev="230" vrev="1">
+    <srcmd5>2177083512e8e76dcef248d1675f14d7</srcmd5>
+    <version>45.0</version>
+    <time>1695208905</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel, resub fixed2 (forwarded request 1111525 from iznogood)</comment>
+    <requestid>1111582</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
-diff --git a/panels/network/cc-network-panel.c b/panels/network/cc-network-panel.c
-index 6a3074ce..40fb0283 100644
---- a/panels/network/cc-network-panel.c
-+++ b/panels/network/cc-network-panel.c
+Index: gnome-control-center-45.alpha/panels/network/cc-network-panel.c
+===================================================================
+--- gnome-control-center-45.alpha.orig/panels/network/cc-network-panel.c
++++ gnome-control-center-45.alpha/panels/network/cc-network-panel.c
 @@ -659,10 +659,24 @@ static void
  panel_check_network_manager_version (CcNetworkPanel *self)
  {
@@ -28,10 +28,10 @@ index 6a3074ce..40fb0283 100644
                  GtkWidget *status_page;
  
                  status_page = adw_status_page_new ();
-@@ -674,9 +688,23 @@ panel_check_network_manager_version (CcNetworkPanel *self)
-                                                  _("NetworkManager needs to be running to view or make "
-                                                    "connections. Contact a system administrator or the "
-                                                    "software vendor."));
+@@ -674,9 +688,23 @@ panel_check_network_manager_version (CcN
+                                                  _("An error has occurred and network cannot be used."
+                                                    "\n Error details: NetworkManager not running."));
+ 
 +        } else if (version == NULL && g_strcmp0 (state, "active") == 0) {
 +                GtkWidget *status_page;
 +
@@ -52,11 +52,11 @@ index 6a3074ce..40fb0283 100644
  }
  
  static void
-diff --git a/panels/network/cc-wifi-panel.c b/panels/network/cc-wifi-panel.c
-index 8e0b17b0..495b5616 100644
---- a/panels/network/cc-wifi-panel.c
-+++ b/panels/network/cc-wifi-panel.c
-@@ -302,21 +302,41 @@ static void
+Index: gnome-control-center-45.alpha/panels/network/cc-wifi-panel.c
+===================================================================
+--- gnome-control-center-45.alpha.orig/panels/network/cc-wifi-panel.c
++++ gnome-control-center-45.alpha/panels/network/cc-wifi-panel.c
+@@ -299,21 +299,41 @@ static void
  check_main_stack_page (CcWifiPanel *self)
  {
    const gchar *nm_version;
@@ -99,14 +99,14 @@ index 8e0b17b0..495b5616 100644
  }
  
  static void
-diff --git a/panels/network/cc-wifi-panel.ui b/panels/network/cc-wifi-panel.ui
-index 722ca3d4..c196f984 100644
---- a/panels/network/cc-wifi-panel.ui
-+++ b/panels/network/cc-wifi-panel.ui
-@@ -226,6 +226,50 @@ Error details: NetworkManager not running.</property>
-                       </object>
-                     </child>
- 
+Index: gnome-control-center-45.alpha/panels/network/cc-wifi-panel.ui
+===================================================================
+--- gnome-control-center-45.alpha.orig/panels/network/cc-wifi-panel.ui
++++ gnome-control-center-45.alpha/panels/network/cc-wifi-panel.ui
+@@ -220,3 +220,47 @@ Error details: NetworkManager not runnin
+     </child>
+   </template>
+ </interface>
 +                    <!-- "Wicked Running" page -->
 +                    <child>
 +                      <object class="GtkStackPage">
@@ -151,13 +151,10 @@ index 722ca3d4..c196f984 100644
 +                      </object>
 +                    </child>
 +
-                   </object>
-                 </child>
- 
-diff --git a/tests/meson.build b/tests/meson.build
-index 69667acb..5f6a932d 100644
---- a/tests/meson.build
-+++ b/tests/meson.build
+Index: gnome-control-center-45.alpha/tests/meson.build
+===================================================================
+--- gnome-control-center-45.alpha.orig/tests/meson.build
++++ gnome-control-center-45.alpha/tests/meson.build
 @@ -1,8 +1,11 @@
  subdir('common')
  #subdir('datetime')
@@ -168,5 +165,5 @@ index 69667acb..5f6a932d 100644
  endif
 +endif
  
- subdir('interactive-panels')
- 
+ # FIXME: this is a workaround because interactive-tests don't work with libadwaita as a subproject. See !1754
+ if not libadwaita_is_subproject

@@ -26,16 +26,16 @@
 %endif
 
 Name:           gnome-control-center
-Version:        44.3
+Version:        45.0
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://apps.gnome.org/app/org.gnome.Settings
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source99:       %{name}-rpmlintrc
 
-# PATCH-FIX-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running WAS:PATCH-FIX-OPENSUSE
+# PATCH-NEEDS-REBASE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running WAS:PATCH-FIX-OPENSUSE
 Patch1:         gnome-control-center-disable-error-message-for-NM.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
@@ -94,6 +94,7 @@ BuildRequires:  pkgconfig(mm-glib) >= 0.7
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
 BuildRequires:  pkgconfig(pwquality) >= 1.2.2
 BuildRequires:  pkgconfig(smbclient)
+BuildRequires:  pkgconfig(tecla)
 BuildRequires:  pkgconfig(udisks2) >= 2.8.2
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.8
 BuildRequires:  pkgconfig(x11)
@@ -113,9 +114,8 @@ Requires:       gnome-settings-daemon >= 41
 Requires:       gnome-themes-accessibility
 Requires:       gnome-version
 Requires:       iso-codes
-# Needed for showing keyboard layout, boo#898096
-# Require the package providing /usr/bin/gkbd-keyboard-display
-Requires:       gnomekbd-tools
+# Needed for showing keyboard layout
+Requires:       tecla-keyboard-layout-viewer
 # For the thunderbolt panel
 Recommends:     bolt
 Recommends:     %{name}-user-faces
@@ -181,7 +181,7 @@ GNOME control center.
 
 %prep
 %setup -q
-%patch1 -p1
+#patch1 -p1
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
@@ -195,6 +195,7 @@ GNOME control center.
 	-Ddocumentation=true \
 	%{!?with_ibus: -Dibus=false} \
 	-Dmalcontent=true \
+	-Dtests=false \
 	%{nil}
 %meson_build
 
