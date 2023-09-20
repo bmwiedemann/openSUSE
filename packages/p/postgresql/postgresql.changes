@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Sep 14 13:03:29 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Bump default to 16 on Factory.
+
+-------------------------------------------------------------------
+Mon Aug  7 13:05:52 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Bump major version to prepare for PostgreSQL 16, but keep
+  default at 15 for now on Factory.
+
+-------------------------------------------------------------------
+Tue May 23 11:45:10 UTC 2023 - Reinhard Max <max@suse.com>
+
+- boo#1122892: Add a sysconfig variable for initdb.
+
+-------------------------------------------------------------------
+Mon May 15 14:17:11 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Overhaul postgresql-README.SUSE and move it from the binary
+  package to the noarch wrapper package.
+- bsc#1179231: Add an explanation for the /tmp -> /run/postgresql
+  move and permission change.
+- Add postgresql-README as a separate source file.
+
+-------------------------------------------------------------------
+Mon Mar 27 17:10:16 UTC 2023 - Reinhard Max <max@suse.com>
+
+- bsc#1209208: Drop hard dependency on systemd
+
+-------------------------------------------------------------------
 Mon Jan  9 09:22:55 UTC 2023 - Reinhard Max <max@suse.com>
 
 - bsc#1206796: Refine the distinction of where to use sysusers and

@@ -49,3 +49,19 @@ POSTGRES_TIMEOUT="600"
 # If unset or empty $RC_LANG from /etc/sysconfig/language is used.
 #
 POSTGRES_LANG=""
+
+## Path:           Applications/PostgreSQL
+## Description:    The PostgreSQL Database System
+## Type:           string()
+## Default:        "--auth=ident"
+## ServiceRestart: ""
+#
+# When PostgreSQL gets started while no database cluster exists under
+# the directory stored in the POSTGRES_DATADIR variable, the initdb
+# tool gets called with that directory to initialize a new cluster.
+# Additional options can be passed to initdb via this variable.
+# Alternatively initdb can be called manually to initialize the
+# database cluster prior to starting the PostgreSQL server for the
+# first time.
+#
+POSTGRES_INITDB_OPTS="--auth=ident"

@@ -5,6 +5,7 @@ test -f $PG_SYSCONFIG && . $PG_SYSCONFIG
 
 eval DATADIR=${POSTGRES_DATADIR:-~postgres/data}
 OPTIONS=${POSTGRES_OPTIONS}
+INITDB_OPTS=${POSTGRES_INITDB_OPTS}
 PIDFILE=$DATADIR/postmaster.pid
 
 # 
@@ -48,8 +49,8 @@ case "$1" in
 	if [ ! -f $DATADIR/PG_VERSION ]; then
 	    test -n "$POSTGRES_LANG" && export LC_ALL="$POSTGRES_LANG"
 	    install -d -m 700 ${DATADIR} &&
-	    echo "Initializing PostgreSQL $VERSION at location ${DATADIR}"
-	    /usr/bin/initdb --auth=ident $DATADIR > initlog 2>&1 || {
+	    echo "Initializing PostgreSQL $VERSION at location ${DATADIR} using options \"$INITDB_OPTS\""
+	    /usr/bin/initdb $INITDB_OPTS $DATADIR > initlog 2>&1 || {
 		echo "Initialisation failed. See $PWD/initlog ."
 		exit 1
 	    }

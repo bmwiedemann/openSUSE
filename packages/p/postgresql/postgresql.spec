@@ -15,8 +15,8 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-%define pgmajor 15
-%define defaultpackage postgresql%pgmajor
+%define pgmajor 16
+%define defaultpackage postgresql16
 
 %if ! %{defined _rpmmacrodir}
 %define _rpmmacrodir %{_rpmconfigdir}/macros.d
@@ -84,6 +84,8 @@ Source6:        postgresql-script
 Source7:        postgresql-install-alternatives
 Source8:        postgresql-extensions-macros
 Source9:        postgresql.sysusers
+Source10:       postgresql-README.SUSE
+Source11:       postgresql-README
 
 %if 0%{?suse_version} > 1100
     %define fwdir /etc/sysconfig/SuSEfirewall2.d/services
@@ -126,7 +128,7 @@ Provides:       postgresql-init = %version.0-%release
 Obsoletes:      postgresql-init < %version.0-%release
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
+%{?systemd_ordering}
 %else
 Requires(postun): %insserv_prereq
 %endif
@@ -322,10 +324,13 @@ and triggers.
 %prep
 
 %build
+
 %if %{with sysusers}
 %sysusers_generate_pre %{SOURCE9} %{name}-server %{name}-server.conf
 %endif
-echo "This is a dummy package to provide a dependency on the default PostgreSQL version." > README
+
+cp %{SOURCE10} README.SUSE
+cp %{SOURCE11} README
 
 %install
 mkdir -p %buildroot/var/lib/pgsql/
@@ -382,6 +387,7 @@ getent passwd postgres > /dev/null ||
 	-c "PostgreSQL Server" -u 26 postgres
 %endif
 %if %{with systemd}
+if test -x /usr/bin/systemctl; then
 %service_add_pre postgresql.service
 
 # Save the "enabled" and "active" state across the transition of
@@ -393,11 +399,13 @@ if [ $1 -ge 1 ]; then \
 	fi
 	systemctl is-active postgresql.service &>/dev/null && touch %aflag ||:
 fi
+fi
 %endif
 
 %post server
 %fillup_only -n postgresql
 %if %{with systemd}
+if test -x /usr/bin/systemctl; then
 PROFILE="/var/lib/pgsql/.bash_profile"
 if test -r "$PROFILE" && test "`cat $PROFILE`" = "/usr/share/postgresql/bash_profile"
 then
@@ -408,21 +416,26 @@ then
 fi
 %tmpfiles_create %_tmpfilesdir/postgresql.conf
 %service_add_post postgresql.service
+fi
 %endif
 
 %preun server
 %if %{with systemd}
+if test -x /usr/bin/systemctl; then
 # Cannot use systemd macros here, because they're doing too much
 /usr/bin/systemctl --no-reload disable postgresql.service || :
+fi
 %else
 %stop_on_removal postgresql
 %endif
 
 %postun server
 %if %{with systemd}
+if test -x /usr/bin/systemctl; then
 # Cannot use systemd macros here, because they're doing too much
 rm -f "/var/lib/systemd/migrated/postgresql"
 /usr/bin/systemctl daemon-reload || :
+fi
 
 %else
 %insserv_cleanup
@@ -430,6 +443,7 @@ rm -f "/var/lib/systemd/migrated/postgresql"
 
 %if %{with systemd}
 %posttrans server
+if test -x /usr/bin/systemctl; then
 # Save the "enabled" and "active" state across the transition of
 # ownership of postgresql.service from postgresql-init to
 # postgresql-server.
@@ -437,15 +451,17 @@ if test -f %eflag; then
 	rm -f %eflag
 	systemctl enable postgresql.service
 fi
+
 if test -f %aflag; then
 	rm -f %aflag
 	systemctl start postgresql.service
+fi
 fi
 %endif
 
 %files
 %defattr(-,root,root,-)
-%doc README
+%doc README.SUSE
 %dir /usr/share/postgresql
 /usr/share/postgresql/install-alternatives
 

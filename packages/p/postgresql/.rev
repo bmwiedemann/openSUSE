@@ -553,4 +553,25 @@
   adapt the %postgresql_has_llvm macro accordingly.</comment>
     <requestid>1057058</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>2a0c3f3035136f0821e756f0eed7a67c</srcmd5>
+    <version>16</version>
+    <time>1695208854</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump default to 16 on Factory.
+
+- Bump major version to prepare for PostgreSQL 16, but keep
+  default at 15 for now on Factory.
+
+- boo#1122892: Add a sysconfig variable for initdb.
+
+- Overhaul postgresql-README.SUSE and move it from the binary
+  package to the noarch wrapper package.
+- bsc#1179231: Add an explanation for the /tmp -&gt; /run/postgresql
+  move and permission change.
+- Add postgresql-README as a separate source file.
+
+- bsc#1209208: Drop hard dependency on systemd</comment>
+    <requestid>1111591</requestid>
+  </revision>
 </revisionlist>
