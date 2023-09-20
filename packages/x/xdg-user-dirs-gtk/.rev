@@ -203,4 +203,13 @@
     <comment></comment>
     <requestid>1074629</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>0bf767a97a1f87ef0979605f4cc7af9e</srcmd5>
+    <version>0.11</version>
+    <time>1695208894</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop passing -Wno-error=deprecated-declarations, no longer
+  needed.</comment>
+    <requestid>1110926</requestid>
+  </revision>
 </revisionlist>

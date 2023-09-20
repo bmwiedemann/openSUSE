@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 12 10:08:59 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop passing -Wno-error=deprecated-declarations, no longer
+  needed.
+
+-------------------------------------------------------------------
 Mon Mar 27 08:16:34 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Build with %optflags

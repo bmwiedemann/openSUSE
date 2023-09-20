@@ -46,7 +46,7 @@ to help move they standard user directories to the correct names.
 
 %build
 NOCONFIGURE=1 ./autogen.sh
-export CFLAGS='%{optflags} -Wno-error=deprecated-declarations -Wno-error=cast-align'
+export CFLAGS='%{optflags} -Wno-error=cast-align'
 %configure
 %make_build
 
