@@ -30,7 +30,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.49
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(amtk-5)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
 BuildRequires:  pkgconfig(glib-2.0)

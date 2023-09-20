@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 20 07:04:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop no longer needed pkgconfig(amtk-5) BuildRequires. It was
+  removed upstream in 0.7.0 release.
+
+-------------------------------------------------------------------
 Sun Jan 22 16:17:19 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 0.7.6:
