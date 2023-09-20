@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed Sep  6 03:27:17 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 45.rc:
+  + Handle 105 key layouts.
+  + Handle keymap variants in commandline arguments.
+  + Fix overeager keymap listener overriding commandline arguments.
+  + Fix included license.
+  + Updated translations.
+- Update GPL-3.0-only License tag to GPL-2.0-only following
+  upstream amend.
+
+-------------------------------------------------------------------
+Fri Aug 11 10:34:53 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + Updated translations.
+- Add lang package macro, package the translations now available.
+
+-------------------------------------------------------------------
+Sat Jul 22 11:47:50 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial release.
