@@ -54,4 +54,18 @@
  * Disabled fatal warnings by default.</comment>
     <requestid>1069080</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b9e715e360458103705aed37a331dd84</srcmd5>
+    <version>0.4.0</version>
+    <time>1695209503</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.0
+ * Added functions for new ISDS services
+ * Added variants of function for services
+ * Added new elements dmVODZ and attsNum into struct isds_envelope.
+ * Added new element ext_files into struct isds_message.
+ * Fixed compilation of simline/server_cli with musl libc.
+ * Favouring xmlBufferDetach() over setting XML_BUFFER_ALLOC_IMMUTABLE.</comment>
+    <requestid>1112484</requestid>
+  </revision>
 </revisionlist>
