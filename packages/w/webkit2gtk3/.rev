@@ -1508,4 +1508,12 @@
     <comment>Expand lang sub-packages unconditionally to handle previous name change of WebKit2GTK-lang to WebKitGTK-lang  (boo#1214835, boo#1214640)</comment>
     <requestid>1108740</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>e720a243c4aff842d2d981be36de42d3</srcmd5>
+    <version>2.42.0</version>
+    <time>1695208914</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111687</requestid>
+  </revision>
 </revisionlist>

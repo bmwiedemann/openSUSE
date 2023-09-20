@@ -72,7 +72,9 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           webkit2%{_gtknamesuffix}
-Version:        2.40.5
+### FIXME ### Drop the disabling of LTO on next release/versionbump
+%define _lto_cflags %{nil}
+Version:        2.42.0
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -118,6 +120,7 @@ BuildRequires:  xdg-dbus-proxy
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(atspi-2) >= 2.5.3
 BuildRequires:  pkgconfig(cairo) >= 1.14.0
+BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(fontconfig) >= 2.8.0
 BuildRequires:  pkgconfig(freetype2) >= 2.4.2
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.4
@@ -148,6 +151,7 @@ BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.18
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavif) >= 0.9.0
+BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsecret-1)
@@ -168,6 +172,7 @@ BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wpe-1.0) >= 1.3.0
 BuildRequires:  pkgconfig(wpebackend-fdo-1.0) >= 1.6.0
+BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
 
@@ -419,7 +424,10 @@ Group:          Development/Tools/Other
 A small test browswer from webkit, useful for testing features.
 
 
+
+
 # Expand %%lang_package to Obsoletes its older-name counterpart
+
 %package -n WebKitGTK-%{_apiver}-lang
 Summary:        Translations for package %{name}
 Group:          System/Localization

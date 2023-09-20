@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Sep 15 19:04:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.42.0:
+  + New renderer based on DMA-BUF shared buffers.
+  + Add new permission request to handle DOM paste access requests.
+  + Add API to configure experimental features at runtime.
+  + Add API to set the percentage of volume space that can be used
+    for data storage.
+  + GBM is no longer required for WebGL implementation.
+
+-------------------------------------------------------------------
+Mon Sep 11 15:02:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.41.92:
+  + Fix render updates after cross origin history navigation with
+    GTK4.
+  + Fix flickering in non accelerated compositing mode.
+  + Fix pixelated accelerated blur filter.
+  + Fix web process launching when xdg-dbus-proxy is not installed.
+  + Pass GBM_BO_USE_RENDERING to gbm_bo_create.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
 Fri Sep  1 19:57:17 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Expand lang sub-package in spec file unconditionally to handle
@@ -7,16 +30,110 @@ Fri Sep  1 19:57:17 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
   WebKit2GTK-%{_apiver}, then getting out of sync of what's being
   required and what's being provided. Now, any sub-package that was
   providing WebKit2GTK-%{_apiver} will provide WebKitGTK-%{_apiver}
-  instead (boo#1214835, boo#1214640).
+  instead (boo#1214835, boo#1214640, boo#1214093).
+
+-------------------------------------------------------------------
+Thu Aug 31 18:53:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add explicit pkgconfig(epoxy) and pkgconfig(xdamage)
+  BuildRequires: meson setup checks for them, so we should list
+  them.
+
+-------------------------------------------------------------------
+Mon Aug 21 21:34:34 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.41.91:
+  + Properly handle toplevel window state changes in GTK4.
+  + Do not keep processing frames while the view is unrealized
+    when using DMA-BUF renderer.
+  + Fallback to first render node returned by DRM when failing to
+    get using EGLDevice.
+  + Fix the build with libjxl < 0.7.0.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
+Sun Aug 13 09:33:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.41.90:
+  + Fix the popup menu always shown in github when logged in.
+  + Add API to replace and retrieve the entire cookie jar.
+  + Apply the device scale factor when changed after web view is
+    created.
+  + Do not expose media devices that can’t be used in
+    enumerateDevices.
+  + Add support for P010 video format.
+  + Fix non-accelerated rendering that broke web inspector.
+  + Fix several crashes and rendering issue
+- Temp disable LTO during build via define.
+
+-------------------------------------------------------------------
+Wed Aug  2 18:25:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.41.6:
+  + Add API to set the percentage of volume space that can be used
+    for data storage.
+  + Do not use GBM and DMA-BUF for WebGL implementation.
+  + Use EGL_MESA_image_dma_buf_export if available when GBM is
+    disabled.
+  + Fix AV1 video with the dav1d decoder when using the DMA-BUF
+    sink.
+  + Use three buffers for DMA-BUF renderer.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.41.5:
+  + Include key modifiers in wheel events.
+  + Remove support for OpenGL API in the web process.
+  + Native DASH support is now opt-in, like HLS.
+  + Fix scrollbar jumping to top when drag released outside window
+    in GTK4.
+  + Fix contents not rendered in new web view when realized after
+    configure and frame with DMA-BUF renderer.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.41.4:
+  + Add new API to configure experimental features at runtime.
+  + Add support for prefers-reduced-motion media query.
+  + Split hardware acceleration information in webkit://gpu.
+  + Fix CPU usage on autoplaying videos.
+  + Fix video rendering when GL is disabled.
+  + Choose amount of painting threads depending on available CPU
+    cores on GTK4.
+  + Add memory usage of images in web inspector memory timeline.
+  + Fix the build with X11 target disabled.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.41.3:
+  + Ensure the same GPU device is used by GBM in all processes.
+  + Fix memory corruption causing glitches in several web sites.
+  + Use more reliable generated application ID.
+  + Show DRM device and render node files when available in
+    webkit://gpu.
+  + Fix the build on i386.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.41.2:
+  + Properly handle the modifier value when exporting/importing
+    DMA-BUF buffers.
+  + Don’t require GApplication for bubblewrap sandbox.
+  + Fix cap height calculation in font metrics.
+  + Fix the build on i386.
+  + Fix the build with libgbm disabled.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Changes from version 2.41.1:
+  + Use DMABuf and WebKit IPC for rendering instead of wpe/x11.
+  + Calculate scroll step depending on scrollable area size when
+    scrolling with the mouse wheel or arrow keys.
+  + Add WebKitClipboardPermissionRequest to handle DOM paste access
+    requests.
+  + Remove support for rendering with GLX in the web process.
+  + Fix several crashes and rendering issues.
+- Add pkgconfig(libjxl) BuildRequires: New dependency.
 
 -------------------------------------------------------------------
 Wed Aug  2 18:25:12 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 2.40.5 (boo#1213905):
+- Update to version 2.40.5 (boo#1213905 boo#1215230):
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2023-38133, CVE-2023-38572, CVE-2023-38592,
-    CVE-2023-38594, CVE-2023-38595, CVE-2023-38597,,
-    CVE-2023-38599,, CVE-2023-38600, CVE-2023-38611.
+    CVE-2023-38594, CVE-2023-38595, CVE-2023-38597, CVE-2023-38599,
+    CVE-2023-38600, CVE-2023-38611, CVE-2023-40397.
 
 -------------------------------------------------------------------
 Fri Jul 21 20:49:06 UTC 2023 - Michael Gorse <mgorse@suse.com>
@@ -85,7 +202,7 @@ Thu Apr 20 14:21:35 UTC 2023 - Michael Gorse <mgorse@suse.com>
   + Fix the build with GCC 13.
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2022-0108, CVE-2023-28205, CVE-2022-32885,
-    CVE-2023-27932, CVE-2023-27954.
+    CVE-2023-27932, CVE-2023-27954, CVE-2023-28198, CVE-2023-32370.
 - Drop regression-fix.patch and fix-gst-crash.patch: fixed
     upstream.
 - Rebase gcc13-fix.patch.
