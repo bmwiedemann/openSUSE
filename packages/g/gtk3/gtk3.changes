@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 12 14:27:25 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use RPM ternary operations to specify true/false arguments based
+  on build conditions (%[%{with FOO} ? "true" : "false"])
+
+-------------------------------------------------------------------
 Mon Aug 14 03:34:22 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Do not use %autopatch to build on SLE where rpm version is not

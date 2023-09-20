@@ -399,11 +399,11 @@ cp -a %{SOURCE1} .
 
 %build
 %meson \
-    -D broadway_backend=%{?with_broadway:true}%{!?with_broadway:false} \
-    -D cloudproviders=%{?with_clouds:true}%{!?with_clouds:false} \
+    -D broadway_backend=%[%{with broadway} ? "true" : "false"] \
+    -D cloudproviders=%[%{with clouds} ? "true" : "false"] \
     -D gtk_doc=true \
     -D man=true \
-    -D tests=%{?with_tests:true}%{!?with_tests:false} \
+    -D tests=%[%{with tests} ? "true" : "false"] \
     -D builtin_immodules=wayland,waylandgtk \
     ;
 %meson_build

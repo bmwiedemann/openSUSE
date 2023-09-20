@@ -1671,4 +1671,13 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
     <comment></comment>
     <requestid>1103890</requestid>
   </revision>
+  <revision rev="188" vrev="3">
+    <srcmd5>a71b8e6826e4bac9b7f2091297150e0b</srcmd5>
+    <version>3.24.38</version>
+    <time>1695208890</time>
+    <user>dimstar_suse</user>
+    <comment>- Use RPM ternary operations to specify true/false arguments based
+  on build conditions (%[%{with FOO} ? &quot;true&quot; : &quot;false&quot;]) (forwarded request 1110637 from dimstar)</comment>
+    <requestid>1110895</requestid>
+  </revision>
 </revisionlist>
