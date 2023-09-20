@@ -18,7 +18,7 @@
 
 %define pgversion 15.4
 %define pgmajor 15
-%define buildlibs 1
+%define buildlibs 0
 %define tarversion %{pgversion}
 %define latest_supported_llvm_ver 15
 

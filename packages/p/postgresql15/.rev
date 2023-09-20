@@ -106,4 +106,12 @@
 - Change the unix domain socket location from /var/run to /run.</comment>
     <requestid>1103837</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>cea93f3878073b95a3e875f5f38553cd</srcmd5>
+    <version>15.4</version>
+    <time>1695208855</time>
+    <user>dimstar_suse</user>
+    <comment>- The libs and mini package are now provided by postgresql16.</comment>
+    <requestid>1111592</requestid>
+  </revision>
 </revisionlist>

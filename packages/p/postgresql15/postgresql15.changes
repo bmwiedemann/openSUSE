@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 14 12:18:06 UTC 2023 - Reinhard Max <max@suse.com>
+
+- The libs and mini package are now provided by postgresql16.
+
+-------------------------------------------------------------------
 Wed Aug  9 09:14:59 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Update to 15.4:
