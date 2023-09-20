@@ -1167,4 +1167,12 @@ https://gitlab.gnome.org/GNOME/vte/commit/7566ad673a12d26293b0a74dd3cb3e5f3d22ed
 New upstream release</comment>
     <requestid>1091208</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>fa3e46027966f3eaab36eb75e58ffc1c</srcmd5>
+    <version>0.74.0</version>
+    <time>1695208921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111862</requestid>
+  </revision>
 </revisionlist>
