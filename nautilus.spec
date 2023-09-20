@@ -17,18 +17,15 @@
 
 
 Name:           nautilus
-Version:        44.2
+Version:        45.0
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/File utilities
 URL:            https://wiki.gnome.org/Apps/Nautilus
-Source0:        https://download.gnome.org/sources/nautilus/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/nautilus/45/%{name}-%{version}.tar.xz
 Source1:        set_trusted.desktop
 Source2:        set_trusted.sh
-
-# PATCH-FIX-UPSTREAM fix-crash-when-closing-tabs.patch -- based on commit 3a931f61
-Patch1:         https://gitlab.gnome.org/GNOME/nautilus/-/commit/3a931f61.patch
 
 # needed for directory ownership
 BuildRequires:  dbus-1
@@ -51,7 +48,7 @@ BuildRequires:  pkgconfig(gnome-autoar-0) >= 0.3.0
 BuildRequires:  pkgconfig(gnome-desktop-4) >= 1.0.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 42
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.9.1
+BuildRequires:  pkgconfig(gtk4) >= 4.11.2
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.beta
 BuildRequires:  pkgconfig(libportal)
 BuildRequires:  pkgconfig(libportal-gtk4)
