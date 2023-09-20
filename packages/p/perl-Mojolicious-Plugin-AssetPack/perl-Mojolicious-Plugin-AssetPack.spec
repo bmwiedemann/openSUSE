@@ -20,11 +20,13 @@
 Name:           perl-Mojolicious-Plugin-AssetPack
 Version:        2.14
 Release:        0
-Summary:        Compress and convert CSS, Less, Sass, JavaScript and CoffeeScript files
 License:        Artistic-2.0
+Summary:        Compress and convert CSS, Less, Sass, JavaScript and CoffeeScript files
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+# PATCH-FIX-UPSTREAM https://github.com/mojolicious/mojo-assetpack/pull/149
+Patch0:         mojolicious-deprecate-spurt.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -36,6 +38,10 @@ Requires:       perl(File::Which) >= 1.21
 Requires:       perl(IPC::Run3) >= 0.048
 Requires:       perl(Mojolicious) >= 9.0
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  perl(Mojolicious) >= 9.34
+Requires:       perl(Mojolicious) >= 9.34
+# MANUAL END
 
 %description
 Mojolicious::Plugin::AssetPack is a Mojolicious plugin for processing
@@ -52,8 +58,9 @@ name). The process of building actual assets from their components is
 delegated to "pipe objects".
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

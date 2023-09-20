@@ -410,4 +410,13 @@
     <comment></comment>
     <requestid>1063835</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>1bc3da6e907cb26cb966ad4ae9cd42ba</srcmd5>
+    <version>2.14</version>
+    <time>1695209501</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mojolicious-deprecate-spurt.patch from
+  https://github.com/mojolicious/mojo-assetpack/pull/149</comment>
+    <requestid>1112340</requestid>
+  </revision>
 </revisionlist>
