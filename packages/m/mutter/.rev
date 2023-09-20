@@ -1852,4 +1852,12 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1109059</requestid>
   </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>2991f3c2b2a78c991ef19fa5f235d9c7</srcmd5>
+    <version>45.0</version>
+    <time>1695208929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111871</requestid>
+  </revision>
 </revisionlist>

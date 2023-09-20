@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Sat Sep 16 22:09:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Fix focus-follows-mouse mode
+  + Optimize applying relative transformation matrix
+  + Add support for P010 YCbCr format
+  + Fix hardware cursor stuttering on Raspberry Pi
+  + Fix input in multi-monitor remote desktop sessions with libei
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Drop mutter-trap-dpms-errors.patch: Fixed upstream.
+- Change compression of tarball in service and spec to zst from xz.
+- Add pkgconfig(libdisplay-info) BuildRequires and pass
+  libdisplay_info=true to meson setup: New optional dependency,
+  build libdisplay-info support.
+
+-------------------------------------------------------------------
+Thu Sep 14 02:51:54 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add mutter-trap-dpms-errors.patch: Apparently DPMSForceLevel()
+  can fail if DPMS is not enabled, so trap errors of DPMS because
+  they are not critical and should not block user session.
+  (bsc#1215273, glgo#GNOME/mutter!3160)
+
+-------------------------------------------------------------------
+Thu Sep  7 22:56:54 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Replace sysprof-4 with sysprof-6 pkgconfig() BuildRequires to
+  follow up the upstream change. And build without the profiler
+  feature (using bcond_with profiler), as it's not meant for
+  general use.
+
+-------------------------------------------------------------------
+Wed Sep  6 19:09:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.rc:
+  + Fix possible redraw freeze in fullscreen windows
+  + Fix restoring focus when leaving the overview
+  + Support alpha-composited window screencasts
+  + Fix some XWayland windows not getting mapped
+  + Fix cursor movement on rotated screens
+  + Avoid global lock in stage signals
+  + Implemented suspended xdg_toplevel state
+  + Support idle_inhibit protocol
+  + Do not trigger repick during relayout
+  + Fix redraw issue when buffer age is unavailable
+  + Add Meta Toolkit (MTK) library
+  + Fix possible window freeze during resize operations
+  + Fixes to tablet cursor visibility on Wayland
+  + Improve support for input capture and emulated input
+  + Use headless mode when seat ID is unset
+  + Fix unresponsive touchscreen after titlebar drag
+  + Fix absolute pointer events on virtual monitor streams
+  + Fix disabling CRTCs in disable-only mode updates
+  + Cache multi-texture shader snippets
+  + Fixed crashes
+  + Plugged leaks
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Drop mutter-fix-clipped-redraw.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Sep  4 17:43:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta.1:
+  + Fix blitting from premultiplied to opaque formats
+  + Fix Super key not going to overview in GNOME Shell
+  + Use ClutterEvent in ClutterActor class event vmethod signatures
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  4 16:43:28 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + Support input capture and emulated input with libei
+  + Add KMS thread
+  + Fix touch move operations on subsurfaces
+  + Fix unexpected cursor changes over non-resizable windows
+  + Improve render time estimates
+  + Fix flickering when DRI driver isn't available
+  + Fix restoring maximized state of SSD windows
+  + Add support for YUV formats
+  + Fix xwayland-allow-byte-swapped-clients setting
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Add pkgconfig(libeis-1.0) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Mon Sep  4 15:32:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.alpha:
+  + Fix DND in some server-side decorated windows
+  + Optionally use libdisplay-info for EDID parsing
+  + Optimize partial surface updates
+  + Fix redrawing regression in non-DMA remote sessions
+  + Avoid race condition in xwayland-on-demand
+  + Do not unminimize windows with initial IconicState
+  + Implement physical pixel rounding of wayland surfaces
+  + Fix mispositioning of some X11 fullscreen windows
+  + Fix legacy fullscreen windows appearing on all monitors
+  + Improve support for display-attached tablets
+  + Fix stuck cursor in some clients
+  + Avoid unexpected orientation changes around suspend/resume
+  + Fix oversized input region around Xwayland windows
+  + Re-enable client modifiers with amdgpu driver
+  + Fix sysprof tracing in non-main threads
+  + Fix X11 client input region issues
+  + Optimize finish-layout step during stage updating
+  + Fix profiling repeatedly
+  + Ensure preferred monitor mode is always included
+  + Fully initialize input device state during init
+  + Forward modifiers to IM alongside regular key events
+  + Fix window focus unexpectedly moving to secondary monitor when
+    changing workspaces
+  + Avoid rapidly toggling dynamic max render time
+  + Fix dynamic max render time blocking with direct scanout
+  + Mirror window placement in RTL locales
+  + Fix screencast with fractionally scaled surfaces
+  + Reipmlement strict focus mode policy
+  + Fixed crashes
+  + Plugged leaks
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Bump api_major to 13 following upstream changes.
+
+-------------------------------------------------------------------
 Mon Sep  4 14:28:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.4:
