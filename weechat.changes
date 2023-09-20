@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Sep 17 22:26:39 UTC 2023 - malcolmlewis@opensuse.org
+
+- Updated to version 4.0.4:
+  * core: fix integer overflow when setting integer option with
+    ++N or --N.
+  * core: fix increment/decrement of options weechat.notify.*.
+  * irc: add missing tags on multiline messages, (issue #1987).
+  * irc: fix redirection of command /list when the reply doesn’t
+    start with message 321 (start of /list).
+  * irc: fix wrong time displayed for CTCP messages received from
+    self nick, (issue #2000).
+  * logger: remove trailing empty line in display of backlog,
+    (issue #2002).
+  * perl: fix display of non-ASCII chars after load of a script
+    with Perl >= 5.38, (issue #1996).
+  * script: adjust scroll after command /script go N.
+- Changes from version 4.0.3:
+  * core: fix input length and crash after delete of line,
+    (issue #1989)
+  * irc: fix display of self CTCP message containing bold
+    attribute, (issue #1981).
+  * irc: fix memory leak in IRC message parser.
+  * irc: fix switch to channel manually joined when server option
+    autojoin_dynamic is on and option
+    irc.look.buffer_switch_autojoin is off, (issue #1982).
+  * irc: fix display of outgoing notice with channel when
+    capability "echo-message" is enabled, (issue #1991).
+  * relay: fix display of IRC CTCP messages received from client,
+    (issue #1986)
+  * doc: display a warning if a locale is missing with fallback
+    to English for auto-generated content, (issue #1985).
+
+-------------------------------------------------------------------
 Sun Jul 16 13:29:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.2:
