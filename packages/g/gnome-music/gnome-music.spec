@@ -17,13 +17,13 @@
 
 
 Name:           gnome-music
-Version:        44.0
+Version:        45.0
 Release:        0
 Summary:        Music Player for GNOME
 License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-music/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-music/45/%{name}-%{version}.tar.xz
 
 #PATCH-FIX-SLE  0001-gnome-music-use-python36.patch yfjiang@suse.com -- disable python 3.7 specific feature to allow gnome-music build and run on python 3.6 for SLE/Leap 15.4.
 Patch0:         0001-gnome-music-use-python36.patch
