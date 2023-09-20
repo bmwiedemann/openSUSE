@@ -658,4 +658,14 @@
 </comment>
     <requestid>1103931</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>026a5f5bb801882ba30e73e5413b5fbe</srcmd5>
+    <version>45.0</version>
+    <time>1695208886</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 45.0:
+  + benchmark-dialog: Silence two maybe-uninitialized warnings.
+  + Updated translations. (forwarded request 1110325 from iznogood)</comment>
+    <requestid>1110889</requestid>
+  </revision>
 </revisionlist>

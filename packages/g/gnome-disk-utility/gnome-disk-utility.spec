@@ -17,13 +17,13 @@
 
 
 Name:           gnome-disk-utility
-Version:        44.0
+Version:        45.0
 Release:        0
 Summary:        Disks application for dealing with storage devices
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://wiki.gnome.org/Apps/Disks
-Source0:        https://download.gnome.org/sources/gnome-disk-utility/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-disk-utility/45/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils

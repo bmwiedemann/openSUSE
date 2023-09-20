@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 10 20:31:18 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 45.0:
+  + benchmark-dialog: Silence two maybe-uninitialized warnings.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Aug 14 07:06:24 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Support build environments like SLE 15 SP5 and Leap 15.5 which
