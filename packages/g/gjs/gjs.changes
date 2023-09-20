@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Sun Sep 17 07:02:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.78.0:
+  + Closed bugs and merge requests:
+    - Improved Console.log Output
+    - `gjs:dbus / Gtk4` unit test fails: Function
+      Gtk.SectionModel.get_section() cannot be called
+
+-------------------------------------------------------------------
+Wed Sep  6 01:06:31 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Drop pkgconfig(sysprof-4) BuildRequires. This was only needed
+  because sysprof-capture-static-devel was lacking header files,
+  which was mistakenly being packaged with sysprof-devel, and it's
+  fixed now.
+- Add with(out) "profiling" build switch and disable it, by
+  default, as profiling isn't meant for general use. This nests
+  pkgconfig(sysprof-capture-4) BuildRequires under an if-with
+  expression and passes profiler=(enabled|disabled) to meson,
+  depending on the profiling switch.
+
+-------------------------------------------------------------------
+Tue Sep  5 09:49:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.77.90:
+  + Building GJS with -fno-exceptions is now the default. To retain
+    the previous behaviour, invoke Meson with -Dcpp_eh=default.
+  + Closed bugs and merge requests:
+    - testEverything fails make check
+    - Using a Gio.Appinfo().launch with context may crash gjs
+    - Fixed-size and Zero-terminated arrays are leaked when used as
+      in or inout arguments with transfer none
+    - Crash due to bad memory usage when calling a function taking
+      an inout array with length parameter and transfer full
+    - Various maintenance
+    - README.MSVC.md: Update for SpiderMonkey-115.x
+    - GJS returns pointers instead of numbers for function with
+      output parameters
+    - Profiler spuriously records GJS.boxed_instance and
+      GJS.boxed_prototype
+    - installed-tests/js/meson: Add tests dependencies to dbus
+      tests
+    - eslint: Make multi-line imports to always include a trailing
+      comma
+    - Make console.error format GError correctly
+    - Gtk:
+      . Throw an error for an invalid Template string
+      . Attempt to load Template from a string, if it appears valid
+    - global: Really enable non-mutating Array methods
+
+-------------------------------------------------------------------
+Sun Aug 13 07:05:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.77.2:
+  + New JavaScript features! This version of GJS is based on
+    SpiderMonkey 115, an upgrade from the previous ESR (Extended
+    Support Release) of SpiderMonkey 102. Here are the highlights
+    of the new JavaScript features. For more information, look them
+    up on MDN or devdocs.io.
+  + New APIs:
+    - Arrays and typed arrays have gained `findLast()` and
+      `findLastIndex()` methods, which act like `find()` and
+      `findIndex()` respectively, but start searching at the end of
+      the array.
+    - Arrays and typed arrays have gained the `with()` method,
+      which returns a copy of the array with one element replaced.
+    - Arrays and typed arrays have gained `toReversed()`,
+      `toSorted()`, and `toSpliced()` methods, which act like
+      `reverse()`, `sort()`, and `splice()` respectively, but
+      return a copy of the array instead of modifying it in-place.
+    - The `Array.fromAsync()` static method acts like
+      `Array.from()` but with async iterables, and returns a
+      Promise that fulfills to the new Array.
+  + It is now possible to build GJS with -fno-exceptions, by
+    invoking Meson with -Dcpp_eh=none.
+  + Closed bugs and merge requests:
+    - Port to mozjs115
+    - Various maintenance
+    - arg: Preserve transfer when freeing out arrays
+    - Some values leak fixes and cleanups
+    - Does not parse hash tables in signals
+    - docs: fix minor URL mistakes and behavioural omissions
+    - gjs: Listen to GMemoryMonitor::low-memory-warning to trigger
+      GC
+    - GSettings override in Gio.js may fail on construction
+    - Gio: Fix constructing Settings with a SettingsSchema object
+- Replace pkgconfig(mozjs-102) with pkgconfig(mozjs-115)
+  BuildRequires following upstreams port.
+
+-------------------------------------------------------------------
+Mon Jul 10 15:21:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.77.1:
+  + Many documentation improvements and cleanups.
+  + New API for C programs embedding GJS:
+    gjs_context_run_in_realm(). This allows using the SpiderMonkey
+    API, for advanced use cases, while having entered the main
+    realm where GJS code runs. Most programs will not need to use
+    this.
+  + Closed bugs and merge requests:
+    - Cleanups: Use more autopointers.
+    - bug(build, tests): broken dependency cycle associated with
+      the `have_gtk4` variable.
+    - Better handling of callbacks during GC.
+    - doc: Add Gio and GLib runAsync overrides.
+    - installed-tests/meson: Add tests dependencies on gjs console
+      and GjsPrivate.
+    - gi/arg: Cleanup handling of C arrays and GValue arrays.
+    - Various maintenance.
+    - doc: Fix http-client.js example.
+    - use `meson setup` instead of ambiguous `meson`.
+    - docs: document `GObject.gtypeNameBasedOnJSPath`.
+    - docs: fix formatting for `Signals.md`.
+    - Provide API to get GTypes defined in a module.
+    - doc: Update inroduction.
+    - gi/args.cpp: Fix build with Visual Studio.
+
+-------------------------------------------------------------------
 Thu Jun 15 07:27:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.76.2:

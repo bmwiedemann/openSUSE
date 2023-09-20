@@ -16,14 +16,16 @@
 #
 
 
+%bcond_with profiling
+
 Name:           gjs
-Version:        1.76.2
+Version:        1.78.0
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Gjs
-Source0:        https://download.gnome.org/sources/gjs/1.76/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gjs/1.78/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  git
@@ -47,10 +49,10 @@ BuildRequires:  pkgconfig(gthread-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libffi)
-BuildRequires:  pkgconfig(mozjs-102)
-# Hack - fix sysprof static devel requires instead
-BuildRequires:  pkgconfig(sysprof-4)
+BuildRequires:  pkgconfig(mozjs-115)
+%if %{with profiling}
 BuildRequires:  pkgconfig(sysprof-capture-4)
+%endif
 Requires:       libgjs0 = %{version}
 ExcludeArch:    s390
 
@@ -100,6 +102,7 @@ Mozilla SpiderMonkey JavaScript engine.
 %build
 %meson \
 	-Dinstalled_tests=false \
+	-Dprofiler=%{?with_profiling:enabled}%{!?with_profiling:disabled} \
 	%{nil}
 %meson_build
 
