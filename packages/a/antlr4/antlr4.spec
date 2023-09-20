@@ -156,6 +156,8 @@ perl -pi -e 's#\\>#>#g' tool/resources/org/antlr/v4/tool/templates/unicodedata.s
 # Don't use graphviz
 %pom_remove_plugin :graphviz-maven-plugin runtime/Java
 
+%pom_remove_plugin -r :maven-javadoc-plugin
+
 %{mvn_package} :antlr4-master antlr4-runtime
 
 %build
