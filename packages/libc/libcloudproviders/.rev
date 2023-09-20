@@ -86,4 +86,12 @@
   + No upstream changes provided.</comment>
     <requestid>1103421</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0085bdee7b12b22e498b8b9ce4b5dcd3</srcmd5>
+    <version>0.3.4</version>
+    <time>1695208876</time>
+    <user>dimstar_suse</user>
+    <comment>Pushing GNOME 45.rc packages (forwarded request 1109841 from iznogood)</comment>
+    <requestid>1110507</requestid>
+  </revision>
 </revisionlist>

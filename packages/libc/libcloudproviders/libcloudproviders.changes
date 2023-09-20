@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep  6 19:32:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.4:
+  + Re-release due to release tarball issue
+- Changes from version 0.3.3:
+  + Use a new way to register providers using .desktop files
+- Drop libcloudproviders-rpmlintrc file/source: No longer needed.
+
+-------------------------------------------------------------------
 Wed Aug  9 15:53:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.3.2:
