@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 19 05:46:14 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix broken TestHebrewCalendarInTemporalLeapYear [boo#1215425]
+  icu4c-73_c-ICU-22512-Fix-broken-TestHebrewCalendarInTemporalLeapYear.patch
+
+-------------------------------------------------------------------
 Wed Jun 14 00:08:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 73.2

@@ -43,6 +43,7 @@ Patch6:         icu-error-reporting.diff
 Patch7:         icu-avoid-x87-excess-precision.diff
 Patch8:         locale.diff
 Patch9:         nan-undefined-conversion.patch
+Patch10:        icu4c-73_c-ICU-22512-Fix-broken-TestHebrewCalendarInTemporalLeapYear.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
