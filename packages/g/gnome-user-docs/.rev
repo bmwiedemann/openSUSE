@@ -753,4 +753,12 @@
 New stable release</comment>
     <requestid>1096875</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>1783e7760225daf90f35557a744359aa</srcmd5>
+    <version>45.0</version>
+    <time>1695208955</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111898</requestid>
+  </revision>
 </revisionlist>
