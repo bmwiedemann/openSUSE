@@ -17,15 +17,13 @@
 
 
 Name:           gnome-calendar
-Version:        44.1
+Version:        45.0
 Release:        0
 Summary:        A calendar application for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://wiki.gnome.org/Design/Apps/Calendar
-Source0:        https://download.gnome.org/sources/gnome-calendar/44/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gnome-calendar-check-for-null-child.patch glgo#GNOME/gnome-calendar/commit/b9d4405e6 bsc#1214188 sckang@suse.com -- views/week-header: Check for NULL child
-Patch0:         gnome-calendar-check-for-null-child.patch
+Source0:        https://download.gnome.org/sources/gnome-calendar/45/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson
