@@ -17,13 +17,13 @@
 
 
 Name:           tracker-miners
-Version:        3.5.2
+Version:        3.6.0
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker-miners/3.5/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tracker-miners/3.6/%{name}-%{version}.tar.xz
 
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE tracker-miners-drop-syscalls-in-seccomp.patch bsc#1192567 qkzhu@suse.com -- Revert some syscalls in seccomp since Leap and SLE do not have them
@@ -100,7 +100,7 @@ This package contains a miner to index files and applications.
 
 # SLE and Leap only patches start at 1000
 %if 0%{?sle_version}
-%patch1000 -p2 
+%patch1000 -p2
 %endif
 
 %build
@@ -120,9 +120,6 @@ This package contains a miner to index files and applications.
 
 %preun
 %systemd_user_preun tracker-extract-3.service tracker-writeback-3.service tracker-miner-fs-3.service tracker-miner-fs-control-3.service
-
-%postun
-%systemd_user_postun_with_restart tracker-extract-3.service tracker-writeback-3.service tracker-miner-fs-3.service tracker-miner-fs-control-3.service
 
 %files
 %license COPYING
