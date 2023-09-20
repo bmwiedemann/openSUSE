@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Fri Sep 15 17:43:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.0:
+  + AdwBreakpointBin: Clarify minimum size warnings
+  + AdwExpanderRow: Improve accessible roles
+  + AdwPreferencesGroup: Set described-by on the listbox
+  + Docs: Fix a property name in breakpoint migration guide
+  + Stylesheet:
+    - Fix toolbar view styles within sidebars
+    - Fix .navigation-sidebar:disabled style when used with
+      GtkListView
+  + Build system fixes
+  + Updated translations.
+- Switch compression in service and spec (tarball produced) to zst.
+
+-------------------------------------------------------------------
+Mon Sep  4 19:13:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.rc:
+  + AdwAboutWindow:
+    - Accessibility fixes
+    - Add a minimum size
+  + AdwExpanderRow: Accessibility fixes
+  + AdwHeaderBar:
+    - Fix missing title fallback for back button tooltip and
+      history menu
+    - Set "Back" as an accessible label for the back button
+    - Clarify docs around :show-back-button
+  + AdwNavigationView: Warn when a navigation page is missing a
+    title
+  + AdwStyleManager: Fix over-releasing a string on macOS
+  + AdwTabButton: Set the correct gettext domain
+  + AdwTabOverview
+    - Set the correct gettext domain
+    - Fix reordered thumbnail being drawn below others
+  + AdwToastOverlay: Set the correct gettext domain
+  + Build: Update pkg-config description field
+  + Demo:
+    - Update screenshot in appdata
+    - Correctly dismiss the last toast in the dialogs demo
+    - Add missing navigation page titles
+  + Stylesheet:
+    - Fix filename entry margins in file chooser
+    - Fix menubutton.card corners
+    - Fix button.card focus ring transition
+    - Avoid background overdraw in GtkColumnView
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  4 19:12:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.beta:
+  + Build:
+    - Depend on GLib 2.76.0
+    - Fix build on Windows
+    - Add a GTK subproject
+  + AdwBreakpointBin:
+    - Mention the correct widget in exceeded size warnings
+    - Fix width-for-height and height-for-width sizing
+  + AdwComboRow: Recreate default factory on expression changes
+  + AdwEnumListModel: Better invalid value for find_position()
+  + AdwHeaderBar:
+    - Fix spacing when there are no start/end children
+    - Fix a memory leak
+    - Fix GtkCenterBox:shrink-center-last usage
+  + AdwLeaflet: Fix back/forward mouse button handling
+  + AdwMessageDialog: Fix shadow style
+  + AdwNavigationView:
+    - Pop the current page when pressing Escape
+    - Make AdwNavigationPage:child-view private
+    - Fix back/forward mouse button handling
+    - Clarify docs
+  + AdwPreferencesWindow: Fix a memory leak
+  + AdwTabOverview
+    - Cull invisible thumbnails
+    - Fix a crash when opening overview before it's mapped
+  + AdwTabView: Fix thumbnail regressions from 1.4.alpha
+  + AdwToastOverlay: Fix width-for-height and height-for-width
+    sizing
+  + AdwToolbarView:
+    - Add ADW_TOOLBAR_RAISED_BORDER style
+    - Fix width-for-height and height-for-width sizing
+    - Clarify docs
+  + AdwViewStack: Add AdwViewStackPages:selected-page
+  + AdwViewSwitcherBar:
+    - Fix disabling reveal animation when using breakpoints
+    - Make sure the height doesn't change with large text
+  + Demo:
+    - Fix view switcher demo minimum height
+    - Set input hints and purpose in the entries
+  + Docs:
+    - Assorted screenshot tool fixes
+    - Fix a deprecation warning in the screenshot tool
+  + Stylesheet:
+    - Make button.osd focus rings blue for better visibility
+    - Fix .card buttons within .osd
+    - Fix button transitions in high contrast mode
+    - Fix single-item menu height
+    - Modernize GtkFileDialog, GtkAppChooserDialog and GtkAssistant
+      styles
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  4 19:11:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.alpha:
+  + Build
+    - Depend on GTK 4.11.3
+    - Depend on libappstream
+    - Add Vala metadata file
+    - Fix gnome.compile_resources() on MSBuild
+    - Fix doc include path
+    - Make metainfo build reproducible
+  + Add AdwBreakpoint and AdwBreakpointBin
+  + Add AdwNavigationView
+  + Add AdwNavigationSplitView
+  + Add AdwOverlaySplitView
+  + Add AdwSpinRow
+  + Add AdwSwitchRow
+  + Add AdwToolbarView
+  + Deprecate AdwFlap, AdwLeaflet, AdwSqueezer and
+    AdwViewSwitcherTitle
+  + AdwAboutWindow
+    - Add new_from_appdata()
+    - Add a missing Since annotation
+    - Fix accessible role on the application icon
+  + AdwActionRow: Fix an inaccuracy in docs
+  + AdwAvatar: Fix a memory leak
+  + AdwBanner:
+    - Allow to ellipsize the button
+    - Clarify title placement in docs
+    - Add a backdrop style
+  + AdwButtonContent: Add :can-shrink
+  + AdwCarousel:
+    - Fix allocation
+    - Fix scrolling to a recently inserted item
+  + AdwClamp/AdwClampLayout/AdwClampScrollable:
+    - Add :unit, default to the sp unit instead of px
+    - Deprecate clamp child  style classes
+  + AdwComboRow:
+    - Add :enable-search
+    - Fix accessible role on the dropdown arrow
+  + AdwExpanderRow: Deprecate add_action(), replace it with
+    add_suffix()
+  + Updated translations.
+- Add pkgconfig(appstream) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Mon Sep  4 19:10:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.3.5:
