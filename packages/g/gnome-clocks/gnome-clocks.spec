@@ -18,13 +18,13 @@
 
 
 Name:           gnome-clocks
-Version:        44.0
+Version:        45.0
 Release:        0
 Summary:        Clock application designed for GNOME 3
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://live.gnome.org/Design/Apps/Clock
-Source0:        https://download.gnome.org/sources/gnome-clocks/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-clocks/45/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
