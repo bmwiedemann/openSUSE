@@ -18,13 +18,13 @@
 
 
 Name:           gsettings-desktop-schemas
-Version:        44.0
+Version:        45.0
 Release:        0
 Summary:        Shared GSettings Schemas for the Desktop
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://gnome.org/
-Source0:        https://download.gnome.org/sources/gsettings-desktop-schemas/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gsettings-desktop-schemas/45/%{name}-%{version}.tar.xz
 # SOURCE-FIX-SLE 00_org.gnome.desktop.peripherals.gschema.override bsc#1171593 alynx.zhou@suse.com -- Change touchpad click method to default
 Source1:        00_org.gnome.desktop.peripherals.gschema.override
 
