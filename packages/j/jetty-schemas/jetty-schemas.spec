@@ -37,6 +37,7 @@ BuildArch:      noarch
 %prep
 %setup -q
 
+%pom_remove_plugin :maven-javadoc-plugin
 %pom_remove_plugin :maven-source-plugin
 
 %build
