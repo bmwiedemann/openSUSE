@@ -252,4 +252,12 @@ please place in same staging as gcompris-qt-voices
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1094680</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>add3d765c963a847154a723a3cf91c37</srcmd5>
+    <version>3.3</version>
+    <time>1695209491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112472</requestid>
+  </revision>
 </revisionlist>

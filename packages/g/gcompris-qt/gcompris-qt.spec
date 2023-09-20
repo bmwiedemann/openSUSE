@@ -21,7 +21,7 @@ Name:           gcompris-qt
 Version:        3.3
 Release:        0
 Summary:        Multiactivity educational software for children aged 2–10 (Qt version)
-License:        AGPL-3.0-or-later
+License:        AGPL-3.0-or-later AND CC-BY-4.0 AND Apache-2.0 AND MPL-2.0 AND OFL-1.1 AND GFDL-1.2-or-later AND MIT AND CC0-1.0 AND BSD-2-Clause AND BSD-3-Clause
 Group:          Amusements/Teaching/Other
 URL:            https://gcompris.net
 Source0:        https://download.kde.org/stable/gcompris/qt/src/%{name}-%{version}.tar.xz
