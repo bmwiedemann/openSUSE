@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Sep 18 03:41:10 UTC 2023 - jun wang <junguo.wang@suse.com>
+
+- Updated to 4.15.5
+ * Noteworthy changes in release 4.15.5 (2023-06-22) [stable]
+ * Bug fixes:
+   - Fix psnup delegation. It was incorrectly changed in 4.14.90.
+   - Fix to read configured paper size correctly with libpaper 1.x.
+   - Fix fixps to use GhostScript’s ps2write device instead of defunct
+     pswrite.
+   - Fix old crash when using --stdin="".
+   - Use “grep -F” rather than obsolete fgrep.
+   - Fix broken a2ps-lpr-wrapper script, and translate to sh for
+     portability.
+ * Build:
+   - Fix a problem building PDF version of manual.
+   - Make configure stop if libpaper is not found.
+   - Enable building the manual for gnu.org.
+ * Build system:
+   - Fix tests when building with libpaper 1.x.
+   - Require gperf for bootstrapping, and use it correctly in build system.
+   - Require a new-enough version of texinfo.
+ * Documentation:
+   - Various minor documentation improvements.
+   - Minor tweaks.
+
+-------------------------------------------------------------------
 Fri Mar 17 13:09:38 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Updated to 4.15

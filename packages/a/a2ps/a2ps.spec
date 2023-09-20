@@ -17,7 +17,7 @@
 
 
 Name:           a2ps
-Version:        4.15
+Version:        4.15.5
 Release:        0
 Summary:        Tool to convert ASCII/Latin Text into PostScript
 License:        GPL-3.0-or-later
@@ -68,13 +68,11 @@ Suggests:       texinfo
 Suggests:       texlive-latex
 Provides:       a2ps-bin
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} > 1220
 BuildRequires:  gperf
 BuildRequires:  groff
 BuildRequires:  makeinfo
 BuildRequires:  texi2html
 BuildRequires:  texinfo
-%endif
 
 %description
 a2ps converts ASCII text into PostScript. This feature is used by
@@ -106,7 +104,7 @@ Latin encodings are supported.
 %lang_package
 
 %prep
-%setup -q -n a2ps-4.15
+%setup -q -n a2ps-4.15.5
 touch -r configure.ac .ref
 %patch2  -p1
 %patch3  -p1
@@ -208,7 +206,7 @@ find -name Makefile.in | xargs touch
    install .libs/liba2ps.so.1.0.0 %{buildroot}%{_libdir}/
    ln -s liba2ps.so.1.0.0 %{buildroot}%{_libdir}/liba2ps.so.1
    ln -s liba2ps.so.1.0.0 %{buildroot}%{_libdir}/liba2ps.so
-   install liba2ps.h %{buildroot}%{_includedir}
+   install -m 0644 liba2ps.h %{buildroot}%{_includedir}
  popd
  for sc in card fixps lp2 pdiff
  do
