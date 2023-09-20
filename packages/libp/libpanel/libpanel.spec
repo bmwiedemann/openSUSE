@@ -19,16 +19,16 @@
 %define libname %{name}1-1
 
 Name:           libpanel
-Version:        1.2.0
+Version:        1.4.0
 Release:        0
 Summary:        IDE paneling library for GTK
 License:        LGPL-3.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/libpanel
-Source:         https://download.gnome.org/sources/%{name}/1.2/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/%{name}/1.4/%{name}-%{version}.tar.xz
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
