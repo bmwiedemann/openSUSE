@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 15 15:11:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.3:
+  + Fix incorrect UTF-8 encoding for params in headers
+  + Numerous HTTP/2 fixes and improvements
+  + Fix possible crashes in connection management
+  + Fix small leak in SoupServer
+  + Fix the possibility of empty HTTP/2 frames being sent
+
+-------------------------------------------------------------------
 Sat Apr 29 19:26:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.4.2:
