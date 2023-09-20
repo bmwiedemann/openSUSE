@@ -1,15 +1,11 @@
-Index: mupdf-1.22.1-source/Makerules
-===================================================================
---- mupdf-1.22.1-source.orig/Makerules
-+++ mupdf-1.22.1-source/Makerules
-@@ -83,8 +83,8 @@ ifeq ($(build),debug)
-   CFLAGS += -pipe -g
+--- mupdf-1.23.3-source/Makerules.orig	2023-09-20 07:55:15.822969071 +0200
++++ mupdf-1.23.3-source/Makerules	2023-09-20 07:55:39.019862276 +0200
+@@ -93,7 +93,7 @@
    LDFLAGS += -g
  else ifeq ($(build),release)
--  CFLAGS += -pipe -O2 -DNDEBUG -fomit-frame-pointer
+   CFLAGS += -pipe -O2 -DNDEBUG
 -  LDFLAGS += $(LDREMOVEUNREACH) -Wl,-s
-+  CFLAGS += -pipe -O2 -DNDEBUG
 +  LDFLAGS += $(LDREMOVEUNREACH)
  else ifeq ($(build),small)
-   CFLAGS += -pipe -Os -DNDEBUG -fomit-frame-pointer
+   CFLAGS += -pipe -Os -DNDEBUG
    LDFLAGS += $(LDREMOVEUNREACH) -Wl,-s
