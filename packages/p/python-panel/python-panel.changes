@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sun Sep 17 00:11:57 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to vesion 1.2.2:
+  * Enhancements:
+    - Add scroll button, auto-scroll and scroll position options
+      to Column (gh#holoviz/panel#5245, gh#holoviz/panel#5365,
+      gh#holoviz/panel#5369, gh#holoviz/panel#5403)
+    - Add cache busting to server CSS resources
+      (gh#holoviz/panel#5414)
+    - Add Tabulator.title_formatters parameter
+      (gh#holoviz/panel#5421)
+    - Provide the the accessed path to authorization checks
+      (gh#holoviz/panel#5386)
+    - Add Perspective click events (gh#holoviz/panel#5430)
+    - Add and improve pn.io.hold and pn.io.immediate_dispatch
+      context managers to control events (gh#holoviz/panel#5444)
+    - Allow to passing basic_login_template argument to panel
+      server (gh#holoviz/panel#5454)
+  * Bug fixes:
+    - Ensure BasicAuth forwards to original URL after login
+      (gh#holoviz/panel#5357)
+    - Correct return types from threading.Thread to
+      panel.io.server.StoppableThread (gh#holoviz/panel#5396)
+    - Various guards and fixes ensuring Tabulator re-renders
+      correctly (gh#holoviz/panel#5410, gh#holoviz/panel#5412)
+    - Avoid extra executions when executing periodic callback with
+      counter (gh#holoviz/panel#5344)
+    - Ensure updates to DataModel are correctly scheduled on the
+      event loop (gh#holoviz/panel#5360)
+    - Fixes for displaying single newlines in Markdown output and
+      add renderer_options (gh#holoviz/panel#5376)
+    - Allow update of Accordion title without updating content
+      (gh#holoviz/panel#5413)
+    - Fix authentication handling when prefix is set
+      (gh#holoviz/panel#5422)
+    - Fix serialization issues affecting TextLayer objects in
+      DeckGL (gh#holoviz/panel#5427)
+    - Fix height responsiveness of Perspective pane
+      (gh#holoviz/panel#5429)
+    - Ensure FileDownload button can be clicked anywhere
+      (gh#holoviz/panel#5431)
+    - Ensure ReactiveHTML children are rendered just like other
+      models (gh#holoviz/panel#5434)
+    - Set Perspective properties correctly to avoid causing
+      unfocus on keypresses (gh#holoviz/panel#5432)
+    - Ensure FloatPanel correctly exposes its children to allow
+      linking (gh#holoviz/panel#5433)
+    - Do no reset Tabulator options if DataFrame indexes are
+      unchanged (gh#holoviz/panel#5436)
+    - Add ability to work around issues when removing series from
+      ECharts (gh#holoviz/panel#5435)
+    - Fix race conditions when initializing and rendering
+      IPyWidgets in notebooks (gh#holoviz/panel#5462)
+    - Tweak Accordion CSS to remove gaps and avoid border overlap
+      (gh#holoviz/panel#5460)
+    - Ensure columns are deleted when updating traces on Plotly
+      pane to avoid corruption (gh#holoviz/panel#5464)
+    - Invalidate layout when TextEditor CSS loads
+      (gh#holoviz/panel#5465)
+    - Ensure FloatPanel reflects closed status
+      (gh#holoviz/panel#5466)
+    - Fix handling of string dtypes on Perspective pane
+      (gh#holoviz/panel#5467)
+  * Documentation updates.
+- Drop panel-pr5185-bokeh3.2.patch: incorporated upstream.
+- Disable test_local_pdf_file since local pdf file missing from
+  tarball.
+
+-------------------------------------------------------------------
 Wed Jul  5 09:12:20 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.1

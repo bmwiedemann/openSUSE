@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 19 05:58:01 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.4:
+  * Add copy hpdf_namedict.h at install [gh#libharu/libharu#265].
+  * Added page boundary support [gh#libharu/libharu#274].
+  * Fixed glyph index to be 16 bit unsigned instead of signed
+    [gh#libharu/libharu#277].
+  * Bug fixes [gh#libharu/libharu#255].
+  * Shared library has an SOVERSION now.
+  * Fixed HPDF_FToA for small values.
+- Drop libharu-so-versioning.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Jun 29 07:07:46 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Move Conflicts against libhpdf2_4_2 to devel package.

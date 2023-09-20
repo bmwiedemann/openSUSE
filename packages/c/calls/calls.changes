@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep  4 01:38:37 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 45.rc.0:
+  + New SIP feature: Support for AES 256 bit crypto suites.
+  + Fixed object life cycle of CallsMMOrigin.
+  + Updated translations.
+
+- Changes from version 45.alpha.0:
+  + New features:
+    - Emergency call numbers provided through ModemManager.
+    - Resolve emergency number types using hardcoded table.
+  + Don't crash on empty/NULL call id.
+  + Properly unregister SIP account on shutdown.
+  + A couple of memory leaks.
+  + Updated libcall-ui to bring in latest fixes and translation
+    updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Jun 11 20:42:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.2:

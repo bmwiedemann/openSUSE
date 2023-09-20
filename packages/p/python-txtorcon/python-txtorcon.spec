@@ -1,7 +1,7 @@
 #
 # spec file for package python-txtorcon
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} %{!?skip_python3:python3-%{**}}}
-%bcond_without python2
 Name:           python-txtorcon
-Version:        22.0.0
+Version:        23.5.0
 Release:        0
 Summary:        Twisted-based asynchronous Tor control protocol implementation
 License:        MIT
@@ -30,21 +28,19 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Automat
 Requires:       python-Twisted-tls >= 15.5.0
+Requires:       python-cryptography
 Requires:       python-incremental
+Requires:       python-six
 Requires:       python-zope.interface >= 3.6.1
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  lsof
 BuildRequires:  %{python_module Automat}
 BuildRequires:  %{python_module Twisted-tls >= 15.5.0}
+BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module incremental}
+BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module zope.interface >= 3.6.1}
-%if %{with python2}
-BuildRequires:  python-ipaddress
-%endif
-# /SECTION
-%ifpython2
-Requires:       python-ipaddress >= 1.0.16
-%endif
 %python_subpackages
 
 %description
@@ -76,6 +72,8 @@ $python -m twisted.trial test
 
 %files %{python_files}
 %license LICENSE docs/*.rst
-%{python_sitelib}/*
+%{python_sitelib}/txtorcon
+%{python_sitelib}/txtorcon-%{version}*-info
+%{python_sitelib}/twisted/plugins/*
 
 %changelog

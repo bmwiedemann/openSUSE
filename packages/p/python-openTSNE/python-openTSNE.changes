@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 14 13:26:03 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.0.0
+  * Given the longtime stability of openTSNE, it is only fitting 
+    that we release a v1.0.0.
+  * Various documentation fixes
+  * Include Python 3.11 in the test and build matrix
+  * Uniform affinity kernel now supports mean and max mode
+- add get-numpy-include.patch
+
+-------------------------------------------------------------------
 Sun Mar 20 19:38:50 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.2

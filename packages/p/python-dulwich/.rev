@@ -711,4 +711,31 @@
     <comment></comment>
     <requestid>1085443</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>b45ce4d44f32574a82777104ea50a5ee</srcmd5>
+    <version>0.21.6</version>
+    <time>1695209330</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.21.6:
+  * index: Handle different stages of conflicted paths.
+  * Improve LCA finding performance. (Kevin Hendricks)
+  * client: Handle Content-Type with encoding set.
+  * Only import _hashlib for type checking.
+  * Update docs regarding building dulwich without c bindings
+  * objects: Define a stricter return type for _parse_message
+  * Raise GitProtocolError when encountering HTTP Errors in
+  * HTTPGitClient.
+
+ * tests: Ignore errors when deleting GNUPG
+ * Fix some stash functions on Python 3.
+    + Add workaround for
+      https://bitbucket.org/pypy/pypy/issues/2499/cpyext-pystring_asstring-doesnt-work,
+    + Properly quote config values with a ‘#’ character in them.
+    + Skip test that requires sync to synchronize filesystems if os.sync is not
+    + Raise exception in Repo.stage() when absolute paths are passed in. Allow
+    + Set bufsize=0 for subprocess interaction with SSH client. Fixes hangs on
+    + Don’t drop first slash for SSH paths, except for those starting with “~”.
+    than a list of revisions.</comment>
+    <requestid>1112077</requestid>
+  </revision>
 </revisionlist>

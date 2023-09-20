@@ -98,4 +98,17 @@
     <comment></comment>
     <requestid>1041204</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a82d2ef024da6d8261d4dbb7a0c53a42</srcmd5>
+    <version>0.10.3</version>
+    <time>1695209163</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.10.3:
+  * Add in missing `_dirty`
+
+- Update to 0.10.2
+  * Adds __eq__ in BaseDict (#344)
+- skip python 3.6 (needs FontTools which needs scipy)</comment>
+    <requestid>1111925</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 19 11:37:34 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Require explicitely artifacts that will not be required
+  automatically any more
+
+-------------------------------------------------------------------
 Thu Sep 14 04:19:53 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

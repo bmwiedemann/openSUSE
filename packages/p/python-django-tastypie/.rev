@@ -167,4 +167,17 @@
     <comment></comment>
     <requestid>1061431</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0469127fd90cec6bc03498008fcb7d9a</srcmd5>
+    <version>0.14.6</version>
+    <time>1695209203</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.6:
+  * Remove unused mock library from test requirements
+  * Django 4.2 compatibility
+  * Fixed crash when missing CSRF token cookie in
+    SessionAuthentication
+  * Fix flake8, update docs, fix RTD builds</comment>
+    <requestid>1111936</requestid>
+  </revision>
 </revisionlist>

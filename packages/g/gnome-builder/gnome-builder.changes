@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Sun Sep 17 01:31:12 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 45.0:
+  + Style fixes to match GNOME 45 Adwaita styling.
+  + Various style scheme color improvements.
+  + Improved hover styling.
+  + Autocompletion fixes for CTags.
+  + Fixes for pipeline failures expecting "flatpak build-init" to
+    run.
+  + Port Flatpak plugin to IdePipelineStateCommand.
+  + Prime initial state of GNetworkMonitor to reduce eroneous
+    values.
+  + Improve LSP "window/logMessage" conformance.
+  + Fixes for typescript-language-server support.
+
+-------------------------------------------------------------------
+Sun Sep  3 22:08:29 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 45.rc:
+  + Improvements to various Meson-based project templates.
+  + Ensure more error messages are translated.
+  + Support for more recent Sysprof features such as scheduler
+    details and D-Bus message recording.
+  + Improve pattern matching for symbol-tree popover and global
+    search integration.
+  + Make sure to run sysprof-agent with --cwd= .
+  + Flatpak runtime will only poke sandbox holes when we think
+    we are performing a profile with sysprof-agent.
+  + Fix cursor placement after formatting with XML indent.
+  + Move 'flatpak build-init' as a fallback pipeline stage
+    during 'BEFORE|AUTOGEN' phase.
+  + Fix mimetype for C++ code.
+  + Updated translations.
+
+- Changes from version 45.beta:
+  + Fix build system discovery with Flatpak.
+  + Increase keywords in the greeter to improve app filtering.
+  + Remove use of libsysprof-gtk, no defunct.
+  + Fix space trimming on last line of file.
+  + Improve tooltips.
+  + Fix some immediate exit of LSPs due to processId pid-namespace
+    mismatches.
+  + Updated valgrind icon.
+  + Add support for meson-lsp and swift-lsp.
+  + Update templates to use metainfo.
+  + Updated documentation.
+
+- Changes from version 45.alpha:
+  + Plugins may now be written using modern JavaScript powered by
+    libpeas-2 and GJS. See GJS documentation for how to write
+    modern GObjects using JavaScript modules.
+  + TODO plugin now does word regex selection to avoid matching
+    symbols containing TODO (or similar).
+  + Various LSP improvements to more closely adhere to LSP
+    protocol.
+  + Builder will now disable text-modifiers during undo/redo
+    operations to avoid confusing the text history stack.
+  + Improvements to style schemes to better match libadwaita.
+  + The valgrind plugin has gained the option to set number of
+    callers to record in stack traces.
+  + Fixes for PHP Intelephense language server integration.
+  + Ctrl+Q will now unload workbenches before exiting to ensure
+    that session state may be saved.
+  + Improvements for SourceKit-LSP integration.
+  + newline-type is properly respected from IdeFileSettings, fixing
+    the initial state found in the statusbar.
+
+- Drop deprecated pkgconfig() modules build requirements:
+  libpcre2-posix, sysprof-ui-5, pygobject-3.0, vapigen, and
+  libdazzle-1.0
+- Add gjs Suggests. GNOME Builder plugins can now be written
+  using modern JS.
+- Add explicit BuildRequires tag on gcc.
+- Replace libpeas-1.0 and sysprof-4 pkgconfig() BuildRequires with
+  libpeas-2 and sysprof-6, as new introduced build requirements.
+
+-------------------------------------------------------------------
 Tue Mar 21 08:19:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:

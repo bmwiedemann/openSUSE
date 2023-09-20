@@ -17,7 +17,7 @@
 
 
 Name:           PrusaSlicer
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 License:        AGPL-3.0-only
@@ -28,12 +28,8 @@ Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version
 Patch0:         up-occt-version.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.6.0-octoprint-name-fix.patch -- cast lambda expression to same type
 Patch1:         PrusaSlicer-2.6.0-octoprint-name-fix.patch
-# PATCH-FIX-UPSTREAM PrusaSlicer-2.6.0-wxWidgets-CheckResizerFlags-assert-fix.patch -- https://github.com/prusa3d/PrusaSlicer/commit/24a5ebd65c9d25a0fd69a3716d079fd1b00eb15c.patch
+# PATCH-FIX-UPSTREAM PrusaSlicer-2.6.0-wxWidgets-CheckResizerFlags-assert-fix.patch -- https://github.com/prusa3d/PrusaSlicer/pull/10811
 Patch2:         PrusaSlicer-2.6.0-wxWidgets-CheckResizerFlags-assert-fix.patch
-# PATCH-FIX-UPSTREAM  PrusaSlicer-drop-wx3.0.patch gh#prusa3d/PrusaSlicer#11027 - wxWidgets >= 3.1.6 is required
-Patch3:         PrusaSlicer-drop-wx3.0.patch
-# PATCH-FIX-UPSTREAM  PrusaSlicer-pr11154-fix-cgal-c++-error.patch gh#prusa3d/PrusaSlicer#11154
-Patch4:         PrusaSlicer-pr11154-fix-cgal-c++-error.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 5.6
@@ -69,7 +65,7 @@ BuildRequires:  openvdb-tools
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-devel >= 3.1.6
+BuildRequires:  wxWidgets-devel >= 3.2
 # need the fltk fork, see deps/NanoSVG/NanoSVG.cmake
 BuildRequires:  nanosvg-devel >= 2022.12.22
 BuildRequires:  pkgconfig(dbus-1)

@@ -143,4 +143,17 @@
 - Update Requires from setup.py (forwarded request 1080759 from glaubitz)</comment>
     <requestid>1082478</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6971b97c7723d8887cd7acafba1b32b7</srcmd5>
+    <version>3.0.0</version>
+    <time>1695209398</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1112279 from glaubitz)</comment>
+    <requestid>1112282</requestid>
+  </revision>
 </revisionlist>

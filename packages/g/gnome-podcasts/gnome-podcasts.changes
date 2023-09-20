@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Apr 11 15:30:53 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.5.1+99:
+  * aboutdialog: Do not allocate devs and designers
+  * cargo:
+    - Require GNOME 44 features
+    - Use 2021 edition
+  * headerbar:
+    - Improve hamburger button
+    - Stop using image-button
+  * player_dialog:
+    - Use gtk::Window
+    - Use image-button css class
+  * Stop using deprecated methods in gtk 4.10
+  * utils: Use gtk::FileDialog
+  * Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 24 22:10:41 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.5.1+75:
+  * empty_view:
+    - Use the non-symbolic color icon on the start screen
+    - Fix wrapping for long text translations
+  * content: Set progress bar in overlay
+  * css: Fix action bar style
+  * Fix clippy lints
+  * headerbar: Improve popover header
+  * meson: Delete custom cargo.sh script
+  * Port to gtk4.
+  * Updated translations.
+- Switch to cargo packaging and gitcheckout via source services.
+  Add cargo-packaging and drop cargo and rust BuildRequires.
+  Add needed cargo-packaging macros.
+- Add desktop-file-utils, pkgconfig(gtk4) and
+  pkgconfig(libadwaita-1), and drop pkgconfig(gtk+-3.0) and
+  pkgconfig(libhandy-1) BuildRequires following upstreams port.
+- Add a _constraints file.
+- Drop patch fixed upstream:
+  + 6614bb62ecbec7c3b18ea7fe44beb50fe7942b27.patch
+
+-------------------------------------------------------------------
 Wed Feb  2 15:16:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 6614bb62ecbec7c3b18ea7fe44beb50fe7942b27.patch: Fix build

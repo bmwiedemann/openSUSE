@@ -1,12 +1,13 @@
-diff -upr google-auth-httplib2-0.1.0.orig/tests/test_google_auth_httplib2.py google-auth-httplib2-0.1.0/tests/test_google_auth_httplib2.py
---- google-auth-httplib2-0.1.0.orig/tests/test_google_auth_httplib2.py	2022-06-08 13:33:16.841483803 +0200
-+++ google-auth-httplib2-0.1.0/tests/test_google_auth_httplib2.py	2022-06-08 13:33:16.845483827 +0200
-@@ -13,7 +13,7 @@
- # limitations under the License.
+Index: google-auth-httplib2-0.1.1/tests/test_google_auth_httplib2.py
+===================================================================
+--- google-auth-httplib2-0.1.1.orig/tests/test_google_auth_httplib2.py
++++ google-auth-httplib2-0.1.1/tests/test_google_auth_httplib2.py
+@@ -16,7 +16,7 @@ import http.client
+ import io
  
  import httplib2
 -import mock
 +from unittest import mock
- import six
- from six.moves import http_client
  
+ import google_auth_httplib2
+ from tests import compliance

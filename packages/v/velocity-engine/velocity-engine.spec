@@ -1,7 +1,7 @@
 #
 # spec file for package velocity-engine
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,8 +50,8 @@ BuildRequires:  fdupes
 BuildRequires:  junit
 BuildRequires:  maven-local
 %if 0%{?rhel} >=9
-BuildRequires:  xmvn-tools
 BuildRequires:  xmvn-minimal
+BuildRequires:  xmvn-tools
 %endif
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(commons-io:commons-io)
@@ -131,10 +131,8 @@ This package contains Javadoc documentation
 %pom_remove_plugin org.codehaus.mojo:templating-maven-plugin velocity-engine-core
 %pom_remove_plugin com.google.code.maven-replacer-plugin:replacer velocity-engine-core
 %pom_remove_plugin :maven-clean-plugin velocity-custom-parser-example
-%if 0%{?rhel}
 %pom_remove_plugin org.apache.maven.plugins:maven-javadoc-plugin
 %pom_remove_parent
-%endif
 %pom_xpath_inject '/pom:project' '<groupId>org.apache.velocity</groupId>'
 %pom_xpath_inject 'pom:plugins/pom:plugin[pom:artifactId/text()="maven-compiler-plugin"]' '<version>3.8.1</version>'
 
@@ -146,7 +144,9 @@ sed -i 's:template:xtemplate:g' \
     velocity-engine-core/src/main/parser/Parser.jjt
 
 %build
-%{mvn_build} -f -s -- -Dsource=8
+%{mvn_build} -f -s -- \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+    -Dsource=8
 
 %install
 %mvn_install

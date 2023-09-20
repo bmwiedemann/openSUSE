@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 18 13:39:54 UTC 2023 - peter czanik <peter@czanik.hu>
+
+- fix boo#1215386 by removing dependency on var-run.service
+  (service is removed in Tumbleweed) 
+
+-------------------------------------------------------------------
 Mon Jul 31 08:28:57 UTC 2023 - peter czanik <peter@czanik.hu>
 
 - update to version 4.3.1

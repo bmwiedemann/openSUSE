@@ -1,0 +1,26 @@
+--- sbt-0.13.18/ivy/src/main/scala/sbt/ProjectResolver.scala	2023-09-14 19:14:50.159288785 +0200
++++ sbt-0.13.18/ivy/src/main/scala/sbt/ProjectResolver.scala	2023-09-17 16:10:27.587598975 +0200
+@@ -38,7 +38,9 @@
+ 
+   def report(revisionId: ModuleRevisionId): MetadataArtifactDownloadReport =
+     {
+-      val artifact = DefaultArtifact.newIvyArtifact(revisionId, new Date)
++      val sde = System.getenv("SOURCE_DATE_EPOCH")
++      val now = if (sde != null) (new Date(1000 * sde.toLong)) else (new Date)
++      val artifact = DefaultArtifact.newIvyArtifact(revisionId, now)
+       val r = new MetadataArtifactDownloadReport(artifact)
+       r.setSearched(false)
+       r.setDownloadStatus(DownloadStatus.FAILED)
+--- sbt-0.13.18/project/Util.scala	2023-09-14 19:14:50.189288995 +0200
++++ sbt-0.13.18/project/Util.scala	2023-09-17 16:10:13.460829055 +0200
+@@ -62,7 +62,9 @@
+       import java.util.{ Date, TimeZone }
+       val formatter = new java.text.SimpleDateFormat("yyyyMMdd'T'HHmmss")
+       formatter.setTimeZone(TimeZone.getTimeZone("GMT"))
+-      val timestamp = formatter.format(new Date)
++      val sde = System.getenv("SOURCE_DATE_EPOCH")
++      val now = if (sde != null) (new Date(1000 * sde.toLong)) else (new Date)
++      val timestamp = formatter.format(now)
+       val content = versionLine(version) + "\ntimestamp=" + timestamp
+       val f = dir / "xsbt.version.properties"
+       if (!f.exists || f.lastModified < lastCompilationTime(analysis) || !containsVersion(f, version)) {

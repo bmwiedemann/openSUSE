@@ -50,4 +50,12 @@
   * python 3.9 enabled</comment>
     <requestid>965203</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>32f1026026deb4cd7ade309274aaac47</srcmd5>
+    <version>3.4.0</version>
+    <time>1695209351</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1112161</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %define skip_python36 1
 Name:           python-pydata-sphinx-theme
-Version:        0.13.1
+Version:        0.14.0
 Release:        0
 Summary:        Bootstrap-based Sphinx theme from the PyData community
 License:        BSD-3-Clause
@@ -30,8 +30,6 @@ Source1:        python-pydata-sphinx-theme-%{version}-vendor.tar.xz
 Source2:        python-pydata-sphinx-theme-%{version}-vendor-licenses.txt
 Source99:       prepare_vendor.sh
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest-regressions}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sphinx-theme-builder}
 BuildRequires:  %{python_module wheel}
@@ -58,6 +56,9 @@ BuildRequires:  %{python_module accessible-pygments}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module pytest-regressions}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  nodejs-default
 BuildRequires:  nodejs-devel
 BuildRequires:  nodejs-packaging

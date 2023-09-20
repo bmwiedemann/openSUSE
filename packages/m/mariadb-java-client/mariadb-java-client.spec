@@ -68,6 +68,7 @@ rm -f src/main/java/org/mariadb/jdbc/internal/com/send/authentication/gssapi/Win
 
 %pom_remove_plugin org.jacoco:jacoco-maven-plugin
 %pom_remove_plugin org.apache.maven.plugins:maven-checkstyle-plugin
+%pom_remove_plugin org.apache.maven.plugins:maven-javadoc-plugin
 %pom_remove_plugin org.apache.maven.plugins:maven-source-plugin
 %pom_remove_plugin org.sonatype.plugins:nexus-staging-maven-plugin
 %pom_remove_plugin pl.project13.maven:git-commit-id-plugin

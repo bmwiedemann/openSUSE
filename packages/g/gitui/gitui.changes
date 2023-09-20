@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Sep 19 20:47:18 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update license based on legaldb review 
+
+-------------------------------------------------------------------
+Sat Sep  9 13:00:14 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.24.3:
+  * log: fix major lag when going beyond last search hit
+  * parallelise log search - performance gain ~100%
+  * search message body/summary separately
+  * fix commit log not updating after branch switch
+  * fix stashlist not updating after pop/drop
+  * fix commit log corruption when tabbing in/out while parsing log
+  * fix performance problem in big repo with a lot of incoming commits
+  * fix error switching to a branch with '/' in the name
+  * search commits by message, author or files in diff 
+  * support 'n'/'p' key to move to the next/prev hunk in diff component
+  * simplify theme overrides
+  * support for sign-off of commits
+  * switched from textwrap to bwrap for text wrapping
+  * more logging diagnostics when a repo cannot be
+  * added to anaconda
+  * visualize empty line substituted with content in diff better 
+  * checkout branch works with non-empty status report
+  * jump to commit by SHA
+  * fix commit dialog char count for multibyte characters
+  * fix wrong hit highlighting in fuzzy find popup
+  * fix symlink support for configuration files
+  * fix expansion of ~ in commit.template
+  * fix hunk (un)staging/reset for # of context lines != 3
+  * fix delay when opening external editor
+
+-------------------------------------------------------------------
 Sun Aug 13 13:26:53 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Replace obsoleted `disabled` option with `manual`

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 14 12:41:24 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.1.0:
+  *  Build against OpenSSL 3.0 instead of 1.1.0 (credit jtesta)
+
+-------------------------------------------------------------------
 Sun Apr 16 17:56:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.16:

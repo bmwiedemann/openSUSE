@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 17 19:14:05 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Rebuild after abseil-cpp update. (boo#1215227)
+
+-------------------------------------------------------------------
 Sat Jul  1 23:35:05 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.0.18

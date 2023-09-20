@@ -338,4 +338,12 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
     <comment></comment>
     <requestid>1076877</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>85a9f7702fd47610f6a91b87f6f61fea</srcmd5>
+    <version>0.24.0</version>
+    <time>1695208983</time>
+    <user>dimstar_suse</user>
+    <comment>Pushing GNOME 45.rc packages (forwarded request 1109789 from iznogood)</comment>
+    <requestid>1110535</requestid>
+  </revision>
 </revisionlist>

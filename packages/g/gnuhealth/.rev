@@ -507,4 +507,17 @@
     <comment>bugfix release</comment>
     <requestid>1077918</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>e5f0653e1ecfa0cea31548679d823abd</srcmd5>
+    <version>4.2.2</version>
+    <time>1695209148</time>
+    <user>dimstar_suse</user>
+    <comment>- version 4.2.2
+  * Fix [bug #64665] Product cost_price needs to be passed as an argument in stock moves
+  * Fix bug #64530: traceback on evaluation page of life if no institution is given
+  * Fix bug #64457: Patient automatic critical information entries should be unique
+  * Fix bug #64432: Gestational weeks show floating point instead of weeks
+</comment>
+    <requestid>1111810</requestid>
+  </revision>
 </revisionlist>

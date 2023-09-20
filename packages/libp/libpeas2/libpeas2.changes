@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Sun Sep  3 03:12:34 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.99.1:
+  + This release corresponds with GNOME 45.rc. It contains various
+    build system improvements that were found when integrating
+    1.99.0 with various distribution channels.
+
+-------------------------------------------------------------------
+Sun Sep  3 00:30:36 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Initial packaging based on upstream version of 1.99.0.

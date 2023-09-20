@@ -230,4 +230,37 @@
     source discovery (#3749)</comment>
     <requestid>1098965</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>321517f1a34458ded08064d6860865dd</srcmd5>
+    <version>23.9.1</version>
+    <time>1695209423</time>
+    <user>dimstar_suse</user>
+    <comment>- remove buildrequires that are not used on sle15
+
+- update to 23.9.1:
+  * Upgrade to mypy 1.5.1 (#3864)
+  * Store raw tuples instead of NamedTuples in Black's cache,
+    improving performance and decreasing the size of the cache
+  * More concise formatting for dummy implementations (#3796)
+  * In stub files, add a blank line between a statement with a
+    body (e.g an `if sys.version_info &gt; (3, x):`) and a
+    function definition on the same level (#3862)
+  * Fix a bug whereby spaces were removed from walrus operators
+    within subscript(#3823)
+  * Black now applies exclusion and ignore logic before resolving
+    symlinks (#3846)
+  * Avoid importing `IPython` if notebook cells do not contain
+    magics (#3782)
+  * Improve caching by comparing file hashes as fallback for
+    mtime and size (#3821)
+  * Fix an issue in `blackd` with single character input (#3558)
+
+    have an extra blank line added when they are right after
+- update to version 22.8.0:
+    + Immediate .gitignore files in source directories given on the command line are now also respected, previously only .gitignore files
+- python-aiohttp_cors is now available --&gt; install blackd
+- Add missing Requires
+    as it turned out to be a bad idea</comment>
+    <requestid>1112329</requestid>
+  </revision>
 </revisionlist>

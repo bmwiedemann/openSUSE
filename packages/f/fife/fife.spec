@@ -1,7 +1,7 @@
 #
 # spec file for package fife
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2011 Nelson Marques <nmarques@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -75,7 +75,6 @@ game using Python interfaces.
 Summary:        Python 3 extensions for the FIFE engine
 Group:          Amusements/Games/Other
 Requires:       python3
-Requires:       python3-future
 
 %description -n python3-%{name}
 FIFE stands for Flexible Isometric Free Engine and is a cross platform

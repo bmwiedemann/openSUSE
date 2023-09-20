@@ -62,8 +62,12 @@ Patch20:        festival-null-fragile.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} > 1600
+Requires(pre):  shadow
+%else
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/useradd
+%endif
 
 %description
 Festival is a multilingual speech synthesis system developed at CSTR.

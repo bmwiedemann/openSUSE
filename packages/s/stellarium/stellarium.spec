@@ -85,6 +85,7 @@ Requires:       qt6-multimedia
 %endif
 %if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libgps)
+BuildRequires:  pkgconfig(Qgpsmm)
 %endif
 
 %description

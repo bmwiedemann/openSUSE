@@ -16,39 +16,43 @@
 #
 
 
+%define eds_version 3.42
+%define folks_version 0.14
+%define glib_version 2.64
+
 Name:           gnome-contacts
-Version:        44.0
+Version:        45.0
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Contacts
-Source0:        https://download.gnome.org/sources/gnome-contacts/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-contacts/45/%{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_4
 BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
-BuildRequires:  vala >= 0.40.10
+BuildRequires:  vala >= 0.56.11
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(folks) >= 0.14
-BuildRequires:  pkgconfig(folks-eds) >= 0.11.4
+BuildRequires:  pkgconfig(folks) >= %{folks_version}
+BuildRequires:  pkgconfig(folks-eds) >= %{folks_version}
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(geocode-glib-1.0) >= 3.15.3
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.58
-BuildRequires:  pkgconfig(gmodule-export-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(gnome-desktop-3.0)
+BuildRequires:  pkgconfig(gio-unix-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(gmodule-export-2.0) >= %{glib_version}
+#BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.6
-BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(libebook-1.2) >= 3.13.90
-BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.30
+BuildRequires:  pkgconfig(gtk4) >= 4.12
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.alpha
+BuildRequires:  pkgconfig(libebook-1.2) >= %{eds_version}
+BuildRequires:  pkgconfig(libedataserver-1.2) >= %{eds_version}
 BuildRequires:  pkgconfig(libportal)
-BuildRequires:  pkgconfig(libportal-gtk4)
-BuildRequires:  pkgconfig(libqrencode)
+BuildRequires:  pkgconfig(libportal-gtk4) >= 0.6
+BuildRequires:  pkgconfig(libqrencode) >= 4.1.1
 
 %description
 The integraded address book for GNOME.

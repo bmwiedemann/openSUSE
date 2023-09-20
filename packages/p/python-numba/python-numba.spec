@@ -57,6 +57,8 @@ Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{v
 Patch0:         numba-pr9105-np1.25.patch
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
 Patch3:         skip-failing-tests.patch
+# PATCH-FIX-UPSTREAM https://github.com/numba/numba/commit/c59e46a177bf7134dec3a9a374ec75aec4576e31 Fix issue with incompatible multiprocessing context in test.
+Patch4:         multiprocessing-context.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver} with %python-numpy-devel < %{max_numpy_ver}}
 BuildRequires:  %{python_module pip}

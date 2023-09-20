@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 17 20:16:03 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 4.2.2
+  * Fix [bug #64665] Product cost_price needs to be passed as an argument in stock moves
+  * Fix bug #64530: traceback on evaluation page of life if no institution is given
+  * Fix bug #64457: Patient automatic critical information entries should be unique
+  * Fix bug #64432: Gestational weeks show floating point instead of weeks
+
+-------------------------------------------------------------------
 Fri Apr  7 20:06:56 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - version 4.2.1

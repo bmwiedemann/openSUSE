@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 13 01:57:32 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded Requires on python3-future. 
+
+-------------------------------------------------------------------
 Mon Oct 11 13:18:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch:

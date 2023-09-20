@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-tastypie
-Version:        0.14.5
+Version:        0.14.6
 Release:        0
 Summary:        A webservice API framework layer for Django
 License:        BSD-3-Clause

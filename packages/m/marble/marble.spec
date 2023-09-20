@@ -33,8 +33,6 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  gpsd-devel
-BuildRequires:  kf5-filesystem
 BuildRequires:  libqt5-qtlocation-devel
 BuildRequires:  libshp-devel
 BuildRequires:  perl
@@ -67,6 +65,8 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(Qgpsmm)
+BuildRequires:  pkgconfig(libgps)
 BuildRequires:  pkgconfig(protobuf)
 Requires:       %{name}-data = %{version}
 Requires:       libastro%{_so_astro} = %{version}

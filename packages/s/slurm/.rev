@@ -1265,4 +1265,41 @@
     <comment>- Create a macro for upgrade dependency to ensure uniform handling. (forwarded request 1110421 from eeich)</comment>
     <requestid>1110422</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>febeb16f7cdf2f22cf99b9677b408780</srcmd5>
+    <version>23.02.5</version>
+    <time>1695209206</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 23.02.5 with the following changes:
+  * Bug Fixes:
+    + Revert a change in 23.02 where `SLURM_NTASKS` was no longer set in the
+      job's environment when `--ntasks-per-node` was requested.
+      The method that is is being set, however, is different and should be more
+      accurate in more situations.
+    + Change pmi2 plugin to honor the `SrunPortRange` option. This matches the
+      new behavior of the pmix plugin in 23.02.0. Note that neither of these
+      plugins makes use of the `MpiParams=ports=` option, and previously
+      were only limited by the systems ephemeral port range.
+    + Fix regression in 23.02.2 that caused slurmctld -R to crash on startup if
+      a node features plugin is configured.
+    + Fix and prevent reoccurring reservations from overlapping.
+    + `job_container/tmpfs` - Avoid attempts to share BasePath between nodes.
+    + With `CR_Cpu_Memory`, fix node selection for jobs that request gres and
+      `--mem-per-cpu`.
+    + Fix a regression from 22.05.7 in which some jobs were allocated too few
+      nodes, thus overcommitting cpus to some tasks.
+    + Fix a job being stuck in the completing state if the job ends while the
+      primary controller is down or unresponsive and the backup controller has
+      not yet taken over.
+    + Fix `slurmctld` segfault when a node registers with a configured
+      `CpuSpecList` while `slurmctld` configuration has the node without
+      `CpuSpecList`.
+    + Fix cloud nodes getting stuck in `POWERED_DOWN+NO_RESPOND` state after
+      not registering by `ResumeTimeout`.
+    + `slurmstepd` - Avoid cleanup of `config.json-less` containers spooldir
+      getting skipped.
+    + Fix scontrol segfault when 'completing' command requested repeatedly in
+      interactive mode.</comment>
+    <requestid>1111943</requestid>
+  </revision>
 </revisionlist>

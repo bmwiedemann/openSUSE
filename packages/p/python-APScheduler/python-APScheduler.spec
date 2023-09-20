@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-APScheduler
-Version:        3.10.1
+Version:        3.10.4
 Release:        0
 Summary:        In-process task scheduler with Cron-like capabilities
 License:        MIT

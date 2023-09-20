@@ -1,7 +1,7 @@
 #
 # spec file for package python-colour
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-colour
 Version:        0.1.5
 Release:        0
@@ -25,9 +25,10 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/vaab/colour
 Source0:        https://files.pythonhosted.org/packages/source/c/colour/colour-%{version}.tar.gz
-BuildRequires:  %{python_module d2to1}
+Source1:        pyproject.toml
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -49,12 +50,15 @@ Python module to convert between color representations:
 %prep
 %setup -q -n colour-%{version}
 rm -rf colour.egg-info
+rm -rf setup*
+rm -rf PKG_INFO
+cp %{SOURCE1} ./
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,6 +67,8 @@ rm -rf colour.egg-info
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/colour.py
+%{python_sitelib}/colour-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/*
 
 %changelog

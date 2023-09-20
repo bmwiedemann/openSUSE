@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 12 04:48:06 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded {Build,}Requires on python3-future. 
+
+-------------------------------------------------------------------
 Tue Jul 25 06:35:09 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 3.32.0:

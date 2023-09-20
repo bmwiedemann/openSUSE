@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 17 15:39:33 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.2.2:
+  * Bug fixes:
+    - (gh#bokeh/bokeh#13265) Merging tools in `gridplot` leads to
+      wrong active state next to tool icon
+    - (gh#bokeh/bokeh#13288) construct_color_bar does not support
+      ImageStack glyph
+    - (gh#bokeh/bokeh#13307) Incorrect file docstrings in
+      tests/support/plugins directory
+    - (gh#bokeh/bokeh#13314) CDS stream broken for larger rollover
+
+-------------------------------------------------------------------
 Mon Jul  3 13:50:36 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.2.0:

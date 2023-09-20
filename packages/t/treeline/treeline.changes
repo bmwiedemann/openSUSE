@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 18 07:23:57 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.1.6:
+
+  * Updates:
+    - Detect external file modifications by checking the file's last modified time just prior to saving.
+    - Preserve the choices in the field format when switching between Choice and Combination field types.
+
+  * Bug Fixes:
+    - Fix a bug that prevented child type limits from being set back to all types.
+    - Preserve the modified status of the config dialog when switching between windows displaying different files.
+    - Fix problems occurring when the escape key is used to close various non-modal dialogs.
+    - Avoid a traceback error message when attempting to import a CSV file with a bad header row.
+    - Fix a bug using child count fields in live HTML exports.
+
+-------------------------------------------------------------------
 Sun Dec  4 14:07:05 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.5:

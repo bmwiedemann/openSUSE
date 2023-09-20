@@ -64,4 +64,12 @@
     <comment>large update to 0.56.16 (from 0.20.0), rework spec file, add shell completion subpackages, ...</comment>
     <requestid>1111434</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d8de33adf17c03a1fd6d094a5f35fb36</srcmd5>
+    <version>0.56.17</version>
+    <time>1695209389</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112268</requestid>
+  </revision>
 </revisionlist>

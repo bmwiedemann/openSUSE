@@ -69,4 +69,14 @@
 </comment>
     <requestid>1096897</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>11fe7c6fda04ee2ae0cc3aabc3c9e7aa</srcmd5>
+    <version>0.8.3</version>
+    <time>1695209201</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.3:
+  * fixes for https://github.com/romis2012/aiohttp-socks/issues/27
+</comment>
+    <requestid>1111942</requestid>
+  </revision>
 </revisionlist>

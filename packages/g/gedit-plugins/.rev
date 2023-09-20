@@ -533,4 +533,14 @@
     <comment></comment>
     <requestid>1060495</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>5015d2b5042b61c4be796aeb18f73172</srcmd5>
+    <version>46.0</version>
+    <time>1695208974</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1109807 from iznogood
+
+Pushing GNOME 45.rc packages</comment>
+    <requestid>1110414</requestid>
+  </revision>
 </revisionlist>

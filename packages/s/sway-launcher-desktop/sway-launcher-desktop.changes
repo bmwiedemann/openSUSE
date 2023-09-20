@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 19 18:35:10 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 1.7.0
+  * fix sway config entry for launcher call
+  * Check autostart condition before launching
+  * Sort desktop files alphabetical by application name
+
+-------------------------------------------------------------------
 Mon May 30 19:56:51 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
 
 - Update to version 1.6.0

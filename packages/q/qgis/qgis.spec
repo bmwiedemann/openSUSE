@@ -67,7 +67,6 @@ BuildRequires:  python3-GDAL
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-OWSLib
 BuildRequires:  python3-PyYAML
-BuildRequires:  python3-future
 BuildRequires:  python3-psycopg2
 BuildRequires:  python3-pygments
 BuildRequires:  python3-pyqt-builder
@@ -132,7 +131,6 @@ Requires:       python3-Jinja2
 Requires:       python3-OWSLib
 Requires:       python3-PyYAML
 Requires:       python3-Pygments
-Requires:       python3-future
 Requires:       python3-numpy
 Requires:       python3-psycopg2
 # Those are not picked by obs

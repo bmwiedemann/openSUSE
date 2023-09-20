@@ -79,6 +79,8 @@ Libraries (JSR 363).
 # we don't have all dependencies to build this module
 %pom_disable_module jackson
 
+%pom_remove_plugin -r :maven-javadoc-plugin
+
 %build
 %{mvn_build} -f -s -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}

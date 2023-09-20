@@ -17,12 +17,12 @@
 
 
 Name:           calls
-Version:        44.2
+Version:        45.rc.0
 Release:        0
 Summary:        A phone dialer and call handler
 License:        GPL-3.0-only AND MIT
 URL:            https://gitlab.gnome.org/GNOME/calls
-Source0:        https://download.gnome.org/sources/calls/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/calls/45/%{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler

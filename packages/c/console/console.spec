@@ -17,9 +17,9 @@
 
 
 Name:           console
-Version:        44.4
+Version:        45.beta
 Release:        0
-Summary:        A simple user-friendly terminal emulator for the GNOME desktop
+Summary:        A terminal emulator for the GNOME desktop
 License:        GPL-3.0-only
 URL:            https://gitlab.gnome.org/GNOME/console
 Source:         %{name}-%{version}.tar.xz
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.72
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.72
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.beta
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4
 BuildRequires:  pkgconfig(libgtop-2.0)
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.32
 BuildRequires:  pkgconfig(vte-2.91-gtk4) >= 0.69.91
@@ -44,7 +44,16 @@ Obsoletes:      nautilus-extension-console < %{version}
 Provides:       nautilus-extension-console = %{version}
 
 %description
-A simple user-friendly terminal emulator for the GNOME desktop.
+A terminal emulator for the GNOME desktop. Some of its distinct
+features:
+
+* blinking block cursor that stops on inactivity
+* hardcoded 16-color palette
+* bright colors can only be triggered with AIX color codes
+* asynchronous desktop notification for when commands in the
+  foreground process group complete, but at the (CPU) cost of parsing
+  most of procfs every two seconds
+* roughly threefold memory footprint of gnome-terminal
 
 %lang_package
 

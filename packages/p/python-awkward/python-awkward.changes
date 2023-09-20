@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Sep 17 15:20:45 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.2:
+  * fix: support placeholder arrays in
+    ArrayModuleNumpyLike.frombuffer (gh#scikit-hep/awkward#2693).
+  * fix: drop zero-cost views of ak.Array
+    (gh#scikit-hep/awkward#2697).
+- Changes from version 2.4.1:
+  * Fix docs version selector
+- Changes from version 2.4.0:
+  * New features:
+    - Form.expected_from_buffers for names/dtypes ak.from_buffers
+      needs (gh#scikit-hep/awkward#2660).
+    - support out-of-band buffers in pickling
+      (gh#scikit-hep/awkward#2665).
+    - add touch_data to ak.typetracer
+      (gh#scikit-hep/awkward#2672).
+    - add support for custom picklers
+      (gh#scikit-hep/awkward#2682).
+    - deprecate forget_length, add parameters to
+      typetracer_with_report (gh#scikit-hep/awkward#2671).
+    - remove deprecations for 1.4.0 release
+      (gh#scikit-hep/awkward#2688).
+  * Bug fixes:
+    - support placeholders in shape-only routines
+      (gh#scikit-hep/awkward#2652).
+    - multiple-output ufuncs e.g. divmod
+      (gh#scikit-hep/awkward#2654).
+    - support unflattening a typetracer-backed array at axis != 0
+      (gh#scikit-hep/awkward#2657).
+    - fix IPython inspection (gh#scikit-hep/awkward#2658).
+    - using numba.core.errors.Numba<Error> instead of Error in a
+      Numba typing context. (gh#scikit-hep/awkward#2659).
+    - raise error for invalid object in from_dlpack
+      (gh#scikit-hep/awkward#2662).
+    - fix/harden broadcasting through tuples
+      (gh#scikit-hep/awkward#2663).
+    - update string to search for in determing parquet column list
+      separator (gh#scikit-hep/awkward#2670).
+    - guard broadcast_and_apply from mixed backends
+      (gh#scikit-hep/awkward#2678).
+    - support typetracer in ak.str. operations
+      (gh#scikit-hep/awkward#2679).
+- Requires python-awkward-cpp = 23.
+
+-------------------------------------------------------------------
 Mon Sep 11 21:23:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.3:

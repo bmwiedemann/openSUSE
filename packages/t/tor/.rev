@@ -1044,4 +1044,12 @@ nicer version with try-reload-or-restart</comment>
     <comment></comment>
     <requestid>1108412</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>1f80db07f76f8e1f19870e436f74b741</srcmd5>
+    <version>0.4.8.6</version>
+    <time>1695209507</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112509</requestid>
+  </revision>
 </revisionlist>

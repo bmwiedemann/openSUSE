@@ -1,7 +1,7 @@
 #
 # spec file for package rancher-cli
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 Name:           rancher-cli
-Version:        2.7.0
+Version:        2.7.7
 Release:        0
 Summary:        Rancher CLI
 License:        Apache-2.0
 URL:            https://github.com/rancher/cli
 Source:         https://github.com/rancher/cli/archive/refs/tags/v%{version}.tar.gz#/cli-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) = 1.16
+BuildRequires:  golang(API) = 1.20
 
 %description
 The Rancher Command Line Interface (CLI) is a unified tool for interacting with your Rancher Server.

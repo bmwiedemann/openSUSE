@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 19 12:16:31 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.5.1
+  - Documentation update
+  - document specs
+  - General documentation overhaul
+  - change TLS demo to use QSC alg
+  - Build a module instead of a shared library.
+  - explain groups in USAGE
+
+-------------------------------------------------------------------
 Tue Jun 13 09:19:27 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.5.0:

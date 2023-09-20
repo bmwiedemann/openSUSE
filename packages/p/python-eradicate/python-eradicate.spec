@@ -1,7 +1,7 @@
 #
 # spec file for package python-eradicate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-eradicate
-Version:        2.1.0
+Version:        2.3.0
 Release:        0
 Summary:        Python utility for removing commented-out code
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/myint/eradicate
 Source:         https://files.pythonhosted.org/packages/source/e/eradicate/eradicate-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/myint/eradicate/v%{version}/test_eradicate.py
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,7 +43,6 @@ which is valid Python syntax, but is probably not code.)
 
 %prep
 %setup -q -n eradicate-%{version}
-cp %{SOURCE1} .
 
 %build
 %python_build

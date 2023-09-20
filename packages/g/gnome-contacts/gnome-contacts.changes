@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Sep 19 23:39:02 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 45.0:
+  + A new implementation of the contact list should lead to much
+    less memory consumption and a small performance increase.
+  + Screen readers should now be able to tell which property of a
+    contact is currently focused.
+  + Several bugs have been fixed when selecting and cropping an
+    avatar. Choosing a file should also be much easier now, as the
+    file picker will filter image files.
+  + Contacts no longer shows a duplicate window when activated from
+    a search result.
+  + The app will try to resize more intuitively.
+  + Updated translations.
+- Comment out BuildRequires on pkgconfig(gnome-desktop-3.0) for
+  now, just like in the meson.build script.
+
+-------------------------------------------------------------------
+Thu Aug 10 15:07:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + Several bugs have been fixed when selecting and cropping an
+    avatar.
+  + Choosing a file should also be much easier now, as the file
+    picker will filter image files.
+  + A new implementation of the contact list should lead to much
+    less memory consumption and a small performance increase
+  + Contacts no longer shows a duplicate window when activated from
+    a search result
+  + The sidebar will resize more intuitively, rather than keeping a
+    fixed width
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar 18 12:40:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:

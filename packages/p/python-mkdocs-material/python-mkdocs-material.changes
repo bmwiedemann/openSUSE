@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 19 07:14:39 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.3.2:
+  * Updated Slovenian translations
+  * Updated Python dependencies in requirements to use minimum
+    versions
+  * Fixed #6017: Code highlighting inconsistent in Community and
+    Insiders edition
+  * Fixed #6001: Contributor avatars display incorrectly in Firefox
+  * Fixed #6000: Blog post drafts are included in navigatio
+
+-------------------------------------------------------------------
 Tue Sep 12 04:58:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.3.1:

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep 18 19:43:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul  7 19:19:28 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.alpha.2:
+  + Fix build.
+- Changes from version 45.alpha.1:
+  + Fix translatable filename.
+- Changes from version 45.alpha:
+  + Fix window size with custom scale factor in x11.
+  + Don't show window before renderer is ready.
+  + Allow keyboard copy shortcuts for evince and text viewers.
+  + Fix crash when switching between audio files.
+  + Fix coverart download.
+  + Add ParentHandle dbus property.
+  + Add development profile.
+
+-------------------------------------------------------------------
 Tue May 30 12:50:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.2:

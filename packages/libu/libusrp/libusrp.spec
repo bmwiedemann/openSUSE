@@ -20,7 +20,7 @@
 %define sover   1
 %define libname libusrp%{sover}
 Name:           libusrp
-Version:        3.4.7
+Version:        3.4.8
 Release:        0
 Summary:        Stand-alone libusrp for USRP1 from old gnuradio.git
 License:        GPL-3.0-or-later

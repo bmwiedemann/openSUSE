@@ -378,4 +378,12 @@
   * @chrisburr added setuptools as a requirement because it</comment>
     <requestid>1110380</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6a6a87921612a689128253d8a7c4b67d</srcmd5>
+    <version>2.4.2</version>
+    <time>1695209229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112026</requestid>
+  </revision>
 </revisionlist>

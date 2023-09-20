@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep  3 19:50:15 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.2.0:
+  + diff: fix user_data parameter type.
+  + ggit_repository_create_commit_from_ids: add safe checks.
+  + Allow to sign commits.
+  + Add mailmap support.
+  + Miscelaneous of bug fixes.
+- Drop bogus python3 BuildRequires: python3-base is sufficient.
+
+-------------------------------------------------------------------
 Fri Jul 22 19:27:24 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.1.0:

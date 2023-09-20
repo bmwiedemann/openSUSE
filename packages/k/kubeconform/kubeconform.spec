@@ -20,7 +20,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           kubeconform
-Version:        0.6.1
+Version:        0.6.3
 Release:        0
 Summary:        A fast Kubernetes manifests validator, with support for custom resources
 License:        Apache-2.0

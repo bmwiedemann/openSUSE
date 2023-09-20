@@ -103,6 +103,7 @@ Patch2:         sbt-0.13.17-lines.patch
 Patch3:         sbt-new-ivy.patch
 Patch4:         sbt-0.13.13-sxr.patch
 Patch5:         sbt-maven-resolver.patch
+Patch6:         reproducible-timestamp.patch
 BuildRequires:  apache-ivy
 #Source650:  https://oss.sonatype.org/service/local/repositories/releases/content/org/scala-sbt/sbt-giter8-resolver/sbt-giter8-resolver_%{scala_short_version}/0.1.0/sbt-giter8-resolver_%{scala_short_version}-0.1.0.jar
 #Source660:  https://oss.sonatype.org/service/local/repositories/releases/content/org/foundweekends/giter8/giter8_%{scala_short_version}/0.7.1/giter8_%{scala_short_version}-0.7.1.jar
@@ -332,6 +333,7 @@ sbt is the simple build tool for Scala and Java projects.
 %endif
 
 %patch5 -p1
+%patch6 -p1
 
 sed -i -e '/% "test"/d' project/Util.scala
 

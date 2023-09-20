@@ -92,4 +92,12 @@
     <comment></comment>
     <requestid>1056383</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>865acb4bb368fea49aedd094bf16c29e</srcmd5>
+    <version>3.46.0</version>
+    <time>1695208976</time>
+    <user>dimstar_suse</user>
+    <comment>Pushing GNOME 45.rc packages (forwarded request 1109821 from iznogood)</comment>
+    <requestid>1110490</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 11 09:09:07 UTC 2023 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- update to version 3.3.1, see:
+  https://www.knot-dns.cz/2023-09-11-version-331.html
+
+-------------------------------------------------------------------
 Tue Aug 29 11:51:26 UTC 2023 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - drop protobuf-c dependency and rely on libprotobuf-c-devel to provide protoc-gen-c

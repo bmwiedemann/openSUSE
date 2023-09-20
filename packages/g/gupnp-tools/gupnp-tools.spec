@@ -17,15 +17,13 @@
 
 
 Name:           gupnp-tools
-Version:        0.12.1
+Version:        0.12.1+3
 Release:        0
 Summary:        UPnP tools to test and debug UPnP devices and control points
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            http://www.gupnp.org/
-# Disabled for now, using source service
-#Source0:        https://download.gnome.org/sources/gupnp-tools/0.10/%%{name}-%%{version}.tar.xz
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
 BuildRequires:  meson

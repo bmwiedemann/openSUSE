@@ -763,4 +763,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1105072</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>786e087d84bd76b81d841fadd8eb62a2</srcmd5>
+    <version>4.12.1</version>
+    <time>1695208969</time>
+    <user>dimstar_suse</user>
+    <comment>Adding versioned library deps is never done in openSUSe/Factory - zypper dup is the only supported way. In a perfect world, upstreams would use versioned symbols, but this won't happen</comment>
+    <requestid>1112453</requestid>
+  </revision>
 </revisionlist>

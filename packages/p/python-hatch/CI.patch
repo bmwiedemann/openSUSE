@@ -1,0 +1,30 @@
+From 4ddbf0a9a720caed18d19c083ff88427c9d2a993 Mon Sep 17 00:00:00 2001
+From: Maximilian Hils <github@maximilianhils.com>
+Date: Thu, 24 Aug 2023 05:30:00 +0200
+Subject: [PATCH] Fix CI (#940)
+
+fix unrelated ci issue
+---
+ tests/cli/config/test_set.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/tests/cli/config/test_set.py b/tests/cli/config/test_set.py
+index 73bb9bc03..cd576feb4 100644
+--- a/tests/cli/config/test_set.py
++++ b/tests/cli/config/test_set.py
+@@ -184,7 +184,6 @@ def test_project_location_basic_set_first_project(hatch, config_file, helpers, t
+         f"""
+         New setting:
+         project = "foo"
+-
+         [projects]
+         foo = "{path}"
+         """
+@@ -206,7 +205,6 @@ def test_project_location_complex_set_first_project(hatch, config_file, helpers,
+         f"""
+         New setting:
+         project = "foo"
+-
+         [projects.foo]
+         location = "{path}"
+         """

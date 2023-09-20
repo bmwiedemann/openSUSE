@@ -885,4 +885,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>fix factory build</comment>
     <requestid>1110988</requestid>
   </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>2ded37ceb97a0955de82303689fc48fa</srcmd5>
+    <version>9.0.75</version>
+    <time>1695209159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111850</requestid>
+  </revision>
 </revisionlist>

@@ -121,4 +121,12 @@
     <comment></comment>
     <requestid>1094775</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8d434716f72114722b80fcca955cce32</srcmd5>
+    <version>14.3.0</version>
+    <time>1695209440</time>
+    <user>dimstar_suse</user>
+    <comment>Another Azure SDK package</comment>
+    <requestid>1112377</requestid>
+  </revision>
 </revisionlist>

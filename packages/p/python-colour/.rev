@@ -32,4 +32,12 @@
     <comment>- Don't use nose, switch to pytest.</comment>
     <requestid>811840</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>da846e39a8b8493e0b7ffb2185c1695a</srcmd5>
+    <version>0.1.5</version>
+    <time>1695209344</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112132</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 17 06:00:04 UTC 2023 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- Replace Requires(pre): "%{_sbindir}/{groupadd,useradd}" with
+  "shadow" to make it possible to pick up in Tumbleweed.
+
+-------------------------------------------------------------------
 Mon Jul 19 02:30:53 UTC 2021 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - Added festival-1.95-audsp-libexec.patch to support new directory

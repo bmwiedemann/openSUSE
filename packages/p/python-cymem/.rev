@@ -7,4 +7,13 @@
     <comment>Manage calls to calloc/free through Cython</comment>
     <requestid>1102748</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>18b56f290dabb9ccfcd2c54acef2c3c6</srcmd5>
+    <version>2.0.8</version>
+    <time>1695209164</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.8:
+  * Python 3.12 support</comment>
+    <requestid>1111927</requestid>
+  </revision>
 </revisionlist>

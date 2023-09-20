@@ -1,7 +1,7 @@
 #
 # spec file for package dconf-editor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           dconf-editor
-Version:        43.0
+Version:        45.0
 Release:        0
 Summary:        Graphical editor for the dconf key-based configuration system
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/DconfEditor
-Source0:        https://download.gnome.org/sources/dconf-editor/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/dconf-editor/45/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils

@@ -20,13 +20,13 @@
 %define govf_libver 0_1
 %define govf_sover 0.1
 Name:           gnome-boxes
-Version:        44.3
+Version:        45.0
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
-Source0:        https://download.gnome.org/sources/gnome-boxes/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-boxes/45/%{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

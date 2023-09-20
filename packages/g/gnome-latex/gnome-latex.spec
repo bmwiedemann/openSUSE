@@ -17,13 +17,13 @@
 
 
 Name:           gnome-latex
-Version:        3.44.0
+Version:        3.46.0
 Release:        0
 Summary:        Integrated LaTeX Environment for the GNOME desktop
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://wiki.gnome.org/Apps/GNOME-LaTeX
-Source0:        https://download.gnome.org/sources/%{name}/3.44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/3.46/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gsettings-desktop-schemas-devel
@@ -34,7 +34,6 @@ BuildRequires:  itstool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.34
-BuildRequires:  pkgconfig(amtk-5) >= 5.6
 BuildRequires:  pkgconfig(dconf)
 BuildRequires:  pkgconfig(gee-0.8) >= 0.10
 BuildRequires:  pkgconfig(gio-2.0) >= 2.56
@@ -43,6 +42,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.30.0
 BuildRequires:  pkgconfig(gspell-1) >= 1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtksourceview-4) >= 3.99.7
+BuildRequires:  pkgconfig(libgedit-amtk-5)
 BuildRequires:  pkgconfig(tepl-6) >= 6.4
 BuildRequires:  pkgconfig(vapigen) >= 0.34
 Requires:       gsettings-desktop-schemas

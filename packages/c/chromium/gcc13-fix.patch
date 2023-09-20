@@ -1,7 +1,7 @@
-Index: chromium-116.0.5845.42/base/check_op.h
+Index: chromium-117.0.5938.22/base/check_op.h
 ===================================================================
---- chromium-116.0.5845.42.orig/base/check_op.h
-+++ chromium-116.0.5845.42/base/check_op.h
+--- chromium-117.0.5938.22.orig/base/check_op.h
++++ chromium-117.0.5938.22/base/check_op.h
 @@ -5,6 +5,7 @@
  #ifndef BASE_CHECK_OP_H_
  #define BASE_CHECK_OP_H_
@@ -9,11 +9,11 @@ Index: chromium-116.0.5845.42/base/check_op.h
 +#include <cstdint>
  #include <cstddef>
  #include <string>
- #include <type_traits>
-Index: chromium-116.0.5845.42/base/debug/profiler.h
+ #include <string_view>
+Index: chromium-117.0.5938.22/base/debug/profiler.h
 ===================================================================
---- chromium-116.0.5845.42.orig/base/debug/profiler.h
-+++ chromium-116.0.5845.42/base/debug/profiler.h
+--- chromium-117.0.5938.22.orig/base/debug/profiler.h
++++ chromium-117.0.5938.22/base/debug/profiler.h
 @@ -8,6 +8,7 @@
  #include <stddef.h>
  #include <stdint.h>
@@ -22,10 +22,10 @@ Index: chromium-116.0.5845.42/base/debug/profiler.h
  #include <string>
  
  #include "base/base_export.h"
-Index: chromium-116.0.5845.42/gpu/config/gpu_feature_info.h
+Index: chromium-117.0.5938.22/gpu/config/gpu_feature_info.h
 ===================================================================
---- chromium-116.0.5845.42.orig/gpu/config/gpu_feature_info.h
-+++ chromium-116.0.5845.42/gpu/config/gpu_feature_info.h
+--- chromium-117.0.5938.22.orig/gpu/config/gpu_feature_info.h
++++ chromium-117.0.5938.22/gpu/config/gpu_feature_info.h
 @@ -7,6 +7,7 @@
  
  #include <stdint.h>
@@ -34,10 +34,10 @@ Index: chromium-116.0.5845.42/gpu/config/gpu_feature_info.h
  #include <string>
  #include <vector>
  
-Index: chromium-116.0.5845.42/net/base/net_export.h
+Index: chromium-117.0.5938.22/net/base/net_export.h
 ===================================================================
---- chromium-116.0.5845.42.orig/net/base/net_export.h
-+++ chromium-116.0.5845.42/net/base/net_export.h
+--- chromium-117.0.5938.22.orig/net/base/net_export.h
++++ chromium-117.0.5938.22/net/base/net_export.h
 @@ -5,6 +5,8 @@
  #ifndef NET_BASE_NET_EXPORT_H_
  #define NET_BASE_NET_EXPORT_H_
@@ -47,10 +47,10 @@ Index: chromium-116.0.5845.42/net/base/net_export.h
  // Defines NET_EXPORT so that functionality implemented by the net module can
  // be exported to consumers, and NET_EXPORT_PRIVATE that allows unit tests to
  // access features not intended to be used directly by real consumers.
-Index: chromium-116.0.5845.42/sandbox/linux/syscall_broker/broker_file_permission.h
+Index: chromium-117.0.5938.22/sandbox/linux/syscall_broker/broker_file_permission.h
 ===================================================================
---- chromium-116.0.5845.42.orig/sandbox/linux/syscall_broker/broker_file_permission.h
-+++ chromium-116.0.5845.42/sandbox/linux/syscall_broker/broker_file_permission.h
+--- chromium-117.0.5938.22.orig/sandbox/linux/syscall_broker/broker_file_permission.h
++++ chromium-117.0.5938.22/sandbox/linux/syscall_broker/broker_file_permission.h
 @@ -5,6 +5,7 @@
  #ifndef SANDBOX_LINUX_SYSCALL_BROKER_BROKER_FILE_PERMISSION_H_
  #define SANDBOX_LINUX_SYSCALL_BROKER_BROKER_FILE_PERMISSION_H_
@@ -59,10 +59,10 @@ Index: chromium-116.0.5845.42/sandbox/linux/syscall_broker/broker_file_permissio
  #include <bitset>
  #include <cstdint>
  #include <string>
-Index: chromium-116.0.5845.42/third_party/abseil-cpp/absl/strings/string_view.h
+Index: chromium-117.0.5938.22/third_party/abseil-cpp/absl/strings/string_view.h
 ===================================================================
---- chromium-116.0.5845.42.orig/third_party/abseil-cpp/absl/strings/string_view.h
-+++ chromium-116.0.5845.42/third_party/abseil-cpp/absl/strings/string_view.h
+--- chromium-117.0.5938.22.orig/third_party/abseil-cpp/absl/strings/string_view.h
++++ chromium-117.0.5938.22/third_party/abseil-cpp/absl/strings/string_view.h
 @@ -27,6 +27,7 @@
  #ifndef ABSL_STRINGS_STRING_VIEW_H_
  #define ABSL_STRINGS_STRING_VIEW_H_
@@ -71,10 +71,10 @@ Index: chromium-116.0.5845.42/third_party/abseil-cpp/absl/strings/string_view.h
  #include <algorithm>
  #include <cassert>
  #include <cstddef>
-Index: chromium-116.0.5845.42/third_party/angle/include/GLSLANG/ShaderVars.h
+Index: chromium-117.0.5938.22/third_party/angle/include/GLSLANG/ShaderVars.h
 ===================================================================
---- chromium-116.0.5845.42.orig/third_party/angle/include/GLSLANG/ShaderVars.h
-+++ chromium-116.0.5845.42/third_party/angle/include/GLSLANG/ShaderVars.h
+--- chromium-117.0.5938.22.orig/third_party/angle/include/GLSLANG/ShaderVars.h
++++ chromium-117.0.5938.22/third_party/angle/include/GLSLANG/ShaderVars.h
 @@ -10,6 +10,7 @@
  #ifndef GLSLANG_SHADERVARS_H_
  #define GLSLANG_SHADERVARS_H_
@@ -83,10 +83,10 @@ Index: chromium-116.0.5845.42/third_party/angle/include/GLSLANG/ShaderVars.h
  #include <algorithm>
  #include <array>
  #include <cstdint>
-Index: chromium-116.0.5845.42/third_party/blink/public/common/bluetooth/web_bluetooth_device_id.h
+Index: chromium-117.0.5938.22/third_party/blink/public/common/bluetooth/web_bluetooth_device_id.h
 ===================================================================
---- chromium-116.0.5845.42.orig/third_party/blink/public/common/bluetooth/web_bluetooth_device_id.h
-+++ chromium-116.0.5845.42/third_party/blink/public/common/bluetooth/web_bluetooth_device_id.h
+--- chromium-117.0.5938.22.orig/third_party/blink/public/common/bluetooth/web_bluetooth_device_id.h
++++ chromium-117.0.5938.22/third_party/blink/public/common/bluetooth/web_bluetooth_device_id.h
 @@ -7,6 +7,7 @@
  
  #include <stdint.h>
@@ -95,22 +95,10 @@ Index: chromium-116.0.5845.42/third_party/blink/public/common/bluetooth/web_blue
  #include <array>
  #include <cstdint>
  #include <functional>
-Index: chromium-116.0.5845.42/third_party/dawn/src/tint/reader/spirv/namer.h
+Index: chromium-117.0.5938.22/third_party/openscreen/src/discovery/dnssd/public/dns_sd_txt_record.h
 ===================================================================
---- chromium-116.0.5845.42.orig/third_party/dawn/src/tint/reader/spirv/namer.h
-+++ chromium-116.0.5845.42/third_party/dawn/src/tint/reader/spirv/namer.h
-@@ -15,6 +15,7 @@
- #ifndef SRC_TINT_READER_SPIRV_NAMER_H_
- #define SRC_TINT_READER_SPIRV_NAMER_H_
- 
-+#include <cstdint>
- #include <string>
- #include <unordered_map>
- #include <vector>
-Index: chromium-116.0.5845.42/third_party/openscreen/src/discovery/dnssd/public/dns_sd_txt_record.h
-===================================================================
---- chromium-116.0.5845.42.orig/third_party/openscreen/src/discovery/dnssd/public/dns_sd_txt_record.h
-+++ chromium-116.0.5845.42/third_party/openscreen/src/discovery/dnssd/public/dns_sd_txt_record.h
+--- chromium-117.0.5938.22.orig/third_party/openscreen/src/discovery/dnssd/public/dns_sd_txt_record.h
++++ chromium-117.0.5938.22/third_party/openscreen/src/discovery/dnssd/public/dns_sd_txt_record.h
 @@ -7,6 +7,7 @@
  
  #include <stdint.h>
@@ -119,10 +107,10 @@ Index: chromium-116.0.5845.42/third_party/openscreen/src/discovery/dnssd/public/
  #include <functional>
  #include <map>
  #include <set>
-Index: chromium-116.0.5845.42/third_party/swiftshader/src/System/LRUCache.hpp
+Index: chromium-117.0.5938.22/third_party/swiftshader/src/System/LRUCache.hpp
 ===================================================================
---- chromium-116.0.5845.42.orig/third_party/swiftshader/src/System/LRUCache.hpp
-+++ chromium-116.0.5845.42/third_party/swiftshader/src/System/LRUCache.hpp
+--- chromium-117.0.5938.22.orig/third_party/swiftshader/src/System/LRUCache.hpp
++++ chromium-117.0.5938.22/third_party/swiftshader/src/System/LRUCache.hpp
 @@ -17,6 +17,7 @@
  
  #include "System/Debug.hpp"
@@ -131,10 +119,10 @@ Index: chromium-116.0.5845.42/third_party/swiftshader/src/System/LRUCache.hpp
  #include <cstddef>
  #include <cstdint>
  #include <functional>
-Index: chromium-116.0.5845.42/third_party/vulkan_memory_allocator/include/vk_mem_alloc.h
+Index: chromium-117.0.5938.22/third_party/vulkan_memory_allocator/include/vk_mem_alloc.h
 ===================================================================
---- chromium-116.0.5845.42.orig/third_party/vulkan_memory_allocator/include/vk_mem_alloc.h
-+++ chromium-116.0.5845.42/third_party/vulkan_memory_allocator/include/vk_mem_alloc.h
+--- chromium-117.0.5938.22.orig/third_party/vulkan_memory_allocator/include/vk_mem_alloc.h
++++ chromium-117.0.5938.22/third_party/vulkan_memory_allocator/include/vk_mem_alloc.h
 @@ -2388,6 +2388,7 @@ VMA_CALL_PRE void VMA_CALL_POST vmaFreeV
  #ifdef VMA_IMPLEMENTATION
  #undef VMA_IMPLEMENTATION
@@ -143,10 +131,10 @@ Index: chromium-116.0.5845.42/third_party/vulkan_memory_allocator/include/vk_mem
  #include <cstdint>
  #include <cstdlib>
  #include <cstring>
-Index: chromium-116.0.5845.42/ui/gfx/geometry/linear_gradient.h
+Index: chromium-117.0.5938.22/ui/gfx/geometry/linear_gradient.h
 ===================================================================
---- chromium-116.0.5845.42.orig/ui/gfx/geometry/linear_gradient.h
-+++ chromium-116.0.5845.42/ui/gfx/geometry/linear_gradient.h
+--- chromium-117.0.5938.22.orig/ui/gfx/geometry/linear_gradient.h
++++ chromium-117.0.5938.22/ui/gfx/geometry/linear_gradient.h
 @@ -7,6 +7,7 @@
  
  #include <stdint.h>
@@ -155,10 +143,10 @@ Index: chromium-116.0.5845.42/ui/gfx/geometry/linear_gradient.h
  #include <array>
  #include <cstddef>
  #include <cstdint>
-Index: chromium-116.0.5845.42/third_party/ruy/src/ruy/profiler/instrumentation.h
+Index: chromium-117.0.5938.22/third_party/ruy/src/ruy/profiler/instrumentation.h
 ===================================================================
---- chromium-116.0.5845.42.orig/third_party/ruy/src/ruy/profiler/instrumentation.h
-+++ chromium-116.0.5845.42/third_party/ruy/src/ruy/profiler/instrumentation.h
+--- chromium-117.0.5938.22.orig/third_party/ruy/src/ruy/profiler/instrumentation.h
++++ chromium-117.0.5938.22/third_party/ruy/src/ruy/profiler/instrumentation.h
 @@ -17,6 +17,7 @@ limitations under the License.
  #define RUY_RUY_PROFILER_INSTRUMENTATION_H_
  
@@ -167,10 +155,10 @@ Index: chromium-116.0.5845.42/third_party/ruy/src/ruy/profiler/instrumentation.h
  #include <cstdio>
  #include <mutex>
  #include <vector>
-Index: chromium-116.0.5845.42/third_party/tflite/src/tensorflow/lite/kernels/internal/spectrogram.h
+Index: chromium-117.0.5938.22/third_party/tflite/src/tensorflow/lite/kernels/internal/spectrogram.h
 ===================================================================
---- chromium-116.0.5845.42.orig/third_party/tflite/src/tensorflow/lite/kernels/internal/spectrogram.h
-+++ chromium-116.0.5845.42/third_party/tflite/src/tensorflow/lite/kernels/internal/spectrogram.h
+--- chromium-117.0.5938.22.orig/third_party/tflite/src/tensorflow/lite/kernels/internal/spectrogram.h
++++ chromium-117.0.5938.22/third_party/tflite/src/tensorflow/lite/kernels/internal/spectrogram.h
 @@ -31,6 +31,7 @@ limitations under the License.
  #ifndef TENSORFLOW_LITE_KERNELS_INTERNAL_SPECTROGRAM_H_
  #define TENSORFLOW_LITE_KERNELS_INTERNAL_SPECTROGRAM_H_
@@ -179,10 +167,10 @@ Index: chromium-116.0.5845.42/third_party/tflite/src/tensorflow/lite/kernels/int
  #include <complex>
  #include <deque>
  #include <vector>
-Index: chromium-116.0.5845.42/base/containers/flat_map.h
+Index: chromium-117.0.5938.22/base/containers/flat_map.h
 ===================================================================
---- chromium-116.0.5845.42.orig/base/containers/flat_map.h
-+++ chromium-116.0.5845.42/base/containers/flat_map.h
+--- chromium-117.0.5938.22.orig/base/containers/flat_map.h
++++ chromium-117.0.5938.22/base/containers/flat_map.h
 @@ -5,6 +5,7 @@
  #ifndef BASE_CONTAINERS_FLAT_MAP_H_
  #define BASE_CONTAINERS_FLAT_MAP_H_
@@ -190,11 +178,11 @@ Index: chromium-116.0.5845.42/base/containers/flat_map.h
 +#include <cstdint>
  #include <functional>
  #include <tuple>
- #include <utility>
-Index: chromium-116.0.5845.42/components/crash/core/app/crash_reporter_client.h
+ #include <type_traits>
+Index: chromium-117.0.5938.22/components/crash/core/app/crash_reporter_client.h
 ===================================================================
---- chromium-116.0.5845.42.orig/components/crash/core/app/crash_reporter_client.h
-+++ chromium-116.0.5845.42/components/crash/core/app/crash_reporter_client.h
+--- chromium-117.0.5938.22.orig/components/crash/core/app/crash_reporter_client.h
++++ chromium-117.0.5938.22/components/crash/core/app/crash_reporter_client.h
 @@ -7,6 +7,7 @@
  
  #include <stdint.h>
@@ -203,10 +191,10 @@ Index: chromium-116.0.5845.42/components/crash/core/app/crash_reporter_client.h
  #include <string>
  
  #include "build/build_config.h"
-Index: chromium-116.0.5845.42/ui/base/prediction/kalman_filter.h
+Index: chromium-117.0.5938.22/ui/base/prediction/kalman_filter.h
 ===================================================================
---- chromium-116.0.5845.42.orig/ui/base/prediction/kalman_filter.h
-+++ chromium-116.0.5845.42/ui/base/prediction/kalman_filter.h
+--- chromium-117.0.5938.22.orig/ui/base/prediction/kalman_filter.h
++++ chromium-117.0.5938.22/ui/base/prediction/kalman_filter.h
 @@ -7,6 +7,8 @@
  
  #include <stdint.h>
@@ -216,10 +204,10 @@ Index: chromium-116.0.5845.42/ui/base/prediction/kalman_filter.h
  #include "base/component_export.h"
  #include "ui/gfx/geometry/matrix3_f.h"
  
-Index: chromium-116.0.5845.42/components/password_manager/core/browser/generation/password_generator.h
+Index: chromium-117.0.5938.22/components/password_manager/core/browser/generation/password_generator.h
 ===================================================================
---- chromium-116.0.5845.42.orig/components/password_manager/core/browser/generation/password_generator.h
-+++ chromium-116.0.5845.42/components/password_manager/core/browser/generation/password_generator.h
+--- chromium-117.0.5938.22.orig/components/password_manager/core/browser/generation/password_generator.h
++++ chromium-117.0.5938.22/components/password_manager/core/browser/generation/password_generator.h
 @@ -7,6 +7,7 @@
  
  #include <stdint.h>
@@ -228,10 +216,10 @@ Index: chromium-116.0.5845.42/components/password_manager/core/browser/generatio
  #include <string>
  
  
-Index: chromium-116.0.5845.42/components/feature_engagement/internal/event_storage_validator.h
+Index: chromium-117.0.5938.22/components/feature_engagement/internal/event_storage_validator.h
 ===================================================================
---- chromium-116.0.5845.42.orig/components/feature_engagement/internal/event_storage_validator.h
-+++ chromium-116.0.5845.42/components/feature_engagement/internal/event_storage_validator.h
+--- chromium-117.0.5938.22.orig/components/feature_engagement/internal/event_storage_validator.h
++++ chromium-117.0.5938.22/components/feature_engagement/internal/event_storage_validator.h
 @@ -7,6 +7,7 @@
  
  #include <stdint.h>
@@ -240,10 +228,10 @@ Index: chromium-116.0.5845.42/components/feature_engagement/internal/event_stora
  #include <string>
  
  namespace feature_engagement {
-Index: chromium-116.0.5845.42/components/feature_engagement/internal/never_event_storage_validator.h
+Index: chromium-117.0.5938.22/components/feature_engagement/internal/never_event_storage_validator.h
 ===================================================================
---- chromium-116.0.5845.42.orig/components/feature_engagement/internal/never_event_storage_validator.h
-+++ chromium-116.0.5845.42/components/feature_engagement/internal/never_event_storage_validator.h
+--- chromium-117.0.5938.22.orig/components/feature_engagement/internal/never_event_storage_validator.h
++++ chromium-117.0.5938.22/components/feature_engagement/internal/never_event_storage_validator.h
 @@ -5,6 +5,7 @@
  #ifndef COMPONENTS_FEATURE_ENGAGEMENT_INTERNAL_NEVER_EVENT_STORAGE_VALIDATOR_H_
  #define COMPONENTS_FEATURE_ENGAGEMENT_INTERNAL_NEVER_EVENT_STORAGE_VALIDATOR_H_
@@ -252,10 +240,10 @@ Index: chromium-116.0.5845.42/components/feature_engagement/internal/never_event
  #include <string>
  
  #include "components/feature_engagement/internal/event_storage_validator.h"
-Index: chromium-116.0.5845.42/third_party/swiftshader/third_party/llvm-10.0/llvm/lib/Support/Unix/Signals.inc
+Index: chromium-117.0.5938.22/third_party/swiftshader/third_party/llvm-10.0/llvm/lib/Support/Unix/Signals.inc
 ===================================================================
---- chromium-116.0.5845.42.orig/third_party/swiftshader/third_party/llvm-10.0/llvm/lib/Support/Unix/Signals.inc
-+++ chromium-116.0.5845.42/third_party/swiftshader/third_party/llvm-10.0/llvm/lib/Support/Unix/Signals.inc
+--- chromium-117.0.5938.22.orig/third_party/swiftshader/third_party/llvm-10.0/llvm/lib/Support/Unix/Signals.inc
++++ chromium-117.0.5938.22/third_party/swiftshader/third_party/llvm-10.0/llvm/lib/Support/Unix/Signals.inc
 @@ -45,6 +45,7 @@
  #include "llvm/Support/SaveAndRestore.h"
  #include "llvm/Support/raw_ostream.h"
@@ -264,10 +252,10 @@ Index: chromium-116.0.5845.42/third_party/swiftshader/third_party/llvm-10.0/llvm
  #include <string>
  #include <sysexits.h>
  #ifdef HAVE_BACKTRACE
-Index: chromium-116.0.5845.42/chrome/browser/privacy_budget/encountered_surface_tracker.h
+Index: chromium-117.0.5938.22/chrome/browser/privacy_budget/encountered_surface_tracker.h
 ===================================================================
---- chromium-116.0.5845.42.orig/chrome/browser/privacy_budget/encountered_surface_tracker.h
-+++ chromium-116.0.5845.42/chrome/browser/privacy_budget/encountered_surface_tracker.h
+--- chromium-117.0.5938.22.orig/chrome/browser/privacy_budget/encountered_surface_tracker.h
++++ chromium-117.0.5938.22/chrome/browser/privacy_budget/encountered_surface_tracker.h
 @@ -7,6 +7,7 @@
  
  #include <stdint.h>
@@ -276,10 +264,10 @@ Index: chromium-116.0.5845.42/chrome/browser/privacy_budget/encountered_surface_
  #include <map>
  
  #include "base/containers/flat_set.h"
-Index: chromium-116.0.5845.42/components/autofill/core/browser/autofill_ablation_study.h
+Index: chromium-117.0.5938.22/components/autofill/core/browser/autofill_ablation_study.h
 ===================================================================
---- chromium-116.0.5845.42.orig/components/autofill/core/browser/autofill_ablation_study.h
-+++ chromium-116.0.5845.42/components/autofill/core/browser/autofill_ablation_study.h
+--- chromium-117.0.5938.22.orig/components/autofill/core/browser/autofill_ablation_study.h
++++ chromium-117.0.5938.22/components/autofill/core/browser/autofill_ablation_study.h
 @@ -7,6 +7,7 @@
  
  #include <stdint.h>
@@ -288,10 +276,10 @@ Index: chromium-116.0.5845.42/components/autofill/core/browser/autofill_ablation
  #include <string>
  
  class GURL;
-Index: chromium-116.0.5845.42/components/omnibox/browser/on_device_head_model.h
+Index: chromium-117.0.5938.22/components/omnibox/browser/on_device_head_model.h
 ===================================================================
---- chromium-116.0.5845.42.orig/components/omnibox/browser/on_device_head_model.h
-+++ chromium-116.0.5845.42/components/omnibox/browser/on_device_head_model.h
+--- chromium-117.0.5938.22.orig/components/omnibox/browser/on_device_head_model.h
++++ chromium-117.0.5938.22/components/omnibox/browser/on_device_head_model.h
 @@ -7,6 +7,7 @@
  
  #include <stdint.h>
@@ -300,10 +288,10 @@ Index: chromium-116.0.5845.42/components/omnibox/browser/on_device_head_model.h
  #include <string>
  #include <utility>
  #include <vector>
-Index: chromium-116.0.5845.42/components/payments/content/utility/fingerprint_parser.h
+Index: chromium-117.0.5938.22/components/payments/content/utility/fingerprint_parser.h
 ===================================================================
---- chromium-116.0.5845.42.orig/components/payments/content/utility/fingerprint_parser.h
-+++ chromium-116.0.5845.42/components/payments/content/utility/fingerprint_parser.h
+--- chromium-117.0.5938.22.orig/components/payments/content/utility/fingerprint_parser.h
++++ chromium-117.0.5938.22/components/payments/content/utility/fingerprint_parser.h
 @@ -5,6 +5,7 @@
  #ifndef COMPONENTS_PAYMENTS_CONTENT_UTILITY_FINGERPRINT_PARSER_H_
  #define COMPONENTS_PAYMENTS_CONTENT_UTILITY_FINGERPRINT_PARSER_H_
@@ -312,10 +300,10 @@ Index: chromium-116.0.5845.42/components/payments/content/utility/fingerprint_pa
  #include <stddef.h>
  #include <stdint.h>
  
-Index: chromium-116.0.5845.42/pdf/document_attachment_info.h
+Index: chromium-117.0.5938.22/pdf/document_attachment_info.h
 ===================================================================
---- chromium-116.0.5845.42.orig/pdf/document_attachment_info.h
-+++ chromium-116.0.5845.42/pdf/document_attachment_info.h
+--- chromium-117.0.5938.22.orig/pdf/document_attachment_info.h
++++ chromium-117.0.5938.22/pdf/document_attachment_info.h
 @@ -7,6 +7,7 @@
  
  #include <stdint.h>
@@ -324,10 +312,10 @@ Index: chromium-116.0.5845.42/pdf/document_attachment_info.h
  #include <string>
  
  
-Index: chromium-116.0.5845.42/third_party/pdfium/constants/annotation_flags.h
+Index: chromium-117.0.5938.22/third_party/pdfium/constants/annotation_flags.h
 ===================================================================
---- chromium-116.0.5845.42.orig/third_party/pdfium/constants/annotation_flags.h
-+++ chromium-116.0.5845.42/third_party/pdfium/constants/annotation_flags.h
+--- chromium-117.0.5938.22.orig/third_party/pdfium/constants/annotation_flags.h
++++ chromium-117.0.5938.22/third_party/pdfium/constants/annotation_flags.h
 @@ -7,6 +7,8 @@
  
  #include <stdint.h>
@@ -337,10 +325,10 @@ Index: chromium-116.0.5845.42/third_party/pdfium/constants/annotation_flags.h
  namespace pdfium {
  namespace annotation_flags {
  
-Index: chromium-116.0.5845.42/third_party/vulkan-deps/vulkan-validation-layers/src/layers/external/vma/vk_mem_alloc.h
+Index: chromium-117.0.5938.22/third_party/vulkan-deps/vulkan-validation-layers/src/layers/external/vma/vk_mem_alloc.h
 ===================================================================
---- chromium-116.0.5845.42.orig/third_party/vulkan-deps/vulkan-validation-layers/src/layers/external/vma/vk_mem_alloc.h
-+++ chromium-116.0.5845.42/third_party/vulkan-deps/vulkan-validation-layers/src/layers/external/vma/vk_mem_alloc.h
+--- chromium-117.0.5938.22.orig/third_party/vulkan-deps/vulkan-validation-layers/src/layers/external/vma/vk_mem_alloc.h
++++ chromium-117.0.5938.22/third_party/vulkan-deps/vulkan-validation-layers/src/layers/external/vma/vk_mem_alloc.h
 @@ -2884,6 +2884,7 @@ static void vma_aligned_free(void* VMA_N
  
  // Define this macro to 1 to enable functions: vmaBuildStatsString, vmaFreeStatsString.
@@ -349,10 +337,10 @@ Index: chromium-116.0.5845.42/third_party/vulkan-deps/vulkan-validation-layers/s
      static inline void VmaUint32ToStr(char* VMA_NOT_NULL outStr, size_t strLen, uint32_t num)
      {
          snprintf(outStr, strLen, "%u", static_cast<unsigned int>(num));
-Index: chromium-116.0.5845.42/chrome/browser/webauthn/authenticator_request_dialog_model.h
+Index: chromium-117.0.5938.22/chrome/browser/webauthn/authenticator_request_dialog_model.h
 ===================================================================
---- chromium-116.0.5845.42.orig/chrome/browser/webauthn/authenticator_request_dialog_model.h
-+++ chromium-116.0.5845.42/chrome/browser/webauthn/authenticator_request_dialog_model.h
+--- chromium-117.0.5938.22.orig/chrome/browser/webauthn/authenticator_request_dialog_model.h
++++ chromium-117.0.5938.22/chrome/browser/webauthn/authenticator_request_dialog_model.h
 @@ -8,6 +8,7 @@
  #include <memory>
  #include <string>
@@ -361,10 +349,10 @@ Index: chromium-116.0.5845.42/chrome/browser/webauthn/authenticator_request_dial
  
  #include "base/containers/span.h"
  #include "base/functional/callback_forward.h"
-Index: chromium-116.0.5845.42/gin/time_clamper.h
+Index: chromium-117.0.5938.22/gin/time_clamper.h
 ===================================================================
---- chromium-116.0.5845.42.orig/gin/time_clamper.h
-+++ chromium-116.0.5845.42/gin/time_clamper.h
+--- chromium-117.0.5938.22.orig/gin/time_clamper.h
++++ chromium-117.0.5938.22/gin/time_clamper.h
 @@ -48,7 +48,7 @@ class GIN_EXPORT TimeClamper {
      const int64_t micros = now_micros % 1000;
      // abs() is necessary for devices with times before unix-epoch (most likely
@@ -374,10 +362,10 @@ Index: chromium-116.0.5845.42/gin/time_clamper.h
        return now_micros / 1000;
      }
      return ClampTimeResolution(now_micros) / 1000;
-Index: chromium-116.0.5845.42/chrome/test/chromedriver/chrome/web_view_impl.cc
+Index: chromium-117.0.5938.22/chrome/test/chromedriver/chrome/web_view_impl.cc
 ===================================================================
---- chromium-116.0.5845.42.orig/chrome/test/chromedriver/chrome/web_view_impl.cc
-+++ chromium-116.0.5845.42/chrome/test/chromedriver/chrome/web_view_impl.cc
+--- chromium-117.0.5938.22.orig/chrome/test/chromedriver/chrome/web_view_impl.cc
++++ chromium-117.0.5938.22/chrome/test/chromedriver/chrome/web_view_impl.cc
 @@ -11,6 +11,7 @@
  #include <queue>
  #include <utility>

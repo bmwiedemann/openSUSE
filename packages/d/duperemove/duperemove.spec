@@ -25,6 +25,10 @@ License:        GPL-2.0-only
 Group:          System/Filesystems
 URL:            https://github.com/markfasheh/duperemove
 Source:         https://github.com/markfasheh/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+%if 0%{?suse_version} <= 1500
+%define req_gcc_ver 12
+BuildRequires:  gcc%{req_gcc_ver}
+%endif
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(glib-2.0)
@@ -47,11 +51,10 @@ Debug/Test tool to exercise a btrfs ioctl for deduplicating file regions.
 %setup -q
 
 %build
-%if 0%{?suse_version} <= 1200
-make %{?_smp_mflags} CFLAGS="%{optflags} -DNO_BTRFS_HEADER"
-%else
-make %{?_smp_mflags} CFLAGS="%{optflags} -fcommon"
+%if 0%{?suse_version} <= 1500
+CC="CC=/usr/bin/gcc-%{req_gcc_ver}"
 %endif
+make %{?_smp_mflags} $CC CFLAGS="%{optflags} -fcommon"
 
 %install
 %make_install PREFIX="%{_prefix}"

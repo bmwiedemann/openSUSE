@@ -18,13 +18,13 @@
 
 %bcond_without  nautilus_extension
 Name:           gnome-terminal
-Version:        3.48.2
+Version:        3.50.0
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/X11/Terminals
 URL:            https://wiki.gnome.org/Apps/Terminal
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -35,16 +35,17 @@ BuildRequires:  gcc-c++
 # we have to take this up with upstream, or just provide search
 # provider interface definition file as source.
 BuildRequires:  gnome-shell
-BuildRequires:  meson
+BuildRequires:  meson >= 0.62.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(dconf) >= 0.14.0
-BuildRequires:  pkgconfig(gio-2.0) >= 2.34.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.52.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
+BuildRequires:  pkgconfig(glib-2.0) >= 2.52
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 0.1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
+BuildRequires:  pkgconfig(libhandy-1)
 %if %{with nautilus_extension}
 BuildRequires:  pkgconfig(libnautilus-extension-4)
 %endif
@@ -57,8 +58,12 @@ Requires(pre):  filesystem
 %description
 This package provides the GNOME terminal emulator application.
 
+GNOME Terminal uses an architecture with a background process
+managing all open terminal windows, which is beneficial to
+memory consumption.
+
 %package -n gnome-shell-search-provider-gnome-terminal
-Summary:        GNOME Terminal -- Search Provider for GNOME Shell
+Summary:        GNOME Terminal Search Provider for GNOME Shell
 Group:          System/X11/Terminals
 Requires:       %{name} = %{version}
 Supplements:    (gnome-shell and %{name})
@@ -69,7 +74,7 @@ This package contains a search provider to enable GNOME Shell to get
 search results from GNOME Terminal.
 
 %package -n nautilus-extension-terminal
-Summary:        Nautilus Extension to Open Terminal in Folders
+Summary:        Nautilus extension adding "Open Terminal" as folder action
 Group:          System/GUI/GNOME
 Supplements:    (nautilus and %{name})
 # nautilus-open-terminal was merged into gnome-terminal source during 3.9 development.

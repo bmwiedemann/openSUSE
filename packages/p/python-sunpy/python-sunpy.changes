@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Thu Sep 14 14:02:59 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.0.1
+  * Fix RHESSI (RHESSIClient) fallback server detection.
+  * Fix bug in get_horizons_coord() when specifying a time range via 
+    a dictionary that could cause the returned times to be slightly different 
+    from the supplied times.
+  * Updated the url of the GBMClient to match on files other than those that 
+    end with version 0
+  * Added missing support to find GOES-18 XRS data in XRSClient.
+- Really drop python-311.patch
+
+-------------------------------------------------------------------
+Fri Aug  4 07:25:16 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.0:
+  * `~sunpy.net.dataretriever.XRSClient` now provides the re-processed
+    GOES-XRS 8-15 data from NOAA.
+  * Changed the output of :func:`sunpy.map.sample_at_coords` to return the
+    sampled values as `~astropy.units.Quantity` with the appropriate units
+    instead of merely numbers.
+  * Able to run the ``sunpy`` tests doing ``python -m sunpy.tests.self_test``.
+  * Able to detect gzip-compressed FITS files even if they don't have the
+    ``.gz`` extension in the filename.
+    `~sunpy.io.detect_filetype` now looks for the right file signature while
+    checking for gzipped FITS files.
+  * Added ``AttrAnd`` and ``AttrOr`` to the namespace in ``sunpy.net.attrs``.
+  * `~sunpy.net.dataretriever.SUVIClient` now provides GOES-18 SUVI data.
+  * The minimum required versions of several core dependencies have been
+    updated:
+    + Python 3.9
+    + astropy 5.0.1
+    + numpy 1.21.0
+  * Added the utility function :func:`sunpy.map.pixelate_coord_path` to
+    fully pixelate a coordinate path according to the pixels of a given map.
+  * Able to download files from REST/TAP Data Providers from the VSO.
+  * Adding data unit into html repr for `sunpy.map.Map`
+  * Joined ``HISTORY`` keys with newline characters when parsing ``HISTORY``
+    cards from FITS header.
+  * Added the ability to query for the GOES-XRS 1 minute average data with
+    the `.XRSClient`.
+  * Increased minimum version of `parfive` to 2.0.0.
+  * Fixed the incorrect calculation in
+    sunpy.map.header_helper.make_fitswcs_header` of the rotation matrix
+    from a rotation angle when the pixels are non-square.
+  * Fixed an issue with loading old EIT fits files with `sunpy.map.Map`
+    where the date could not be parsed.
+  * Fixed a bug where the `~sunpy.map.GenericMap.exposure_time` returned
+    ``None`` when the exposure time key was set to zero.
+  * HMI JPEG2000 files from Helioviewer could not be loaded due to a bug in
+    setting the plotting normalization.
+  * The ``data_manager`` was not raising failed downloads correctly and
+    would continue as if the file existed locally.
+  * `~sunpy.map.sources.XRTMap` will now set the unit for XRT files if
+    the ``BUNIT`` key is missing.
+  * `~sunpy.net.dataretriever.XRSClient` update use the new url for which
+    the GOES-XRS 8-15 data is provided by NOAA.
+  * Updated `~sunpy.database` to be compatible with ``SQLAlchemy``
+    versions >=2.0
+  * When using ``autoalign=True`` when plotting maps, the result was
+    misaligned by half a pixel.
+  * :meth:`sunpy.map.GenericMap.submap` can now handle a
+    `~astropy.coordinates.BaseCoordinateFrame` as input.
+  * Multi-line ``HISTORY`` and ``COMMENT`` keys metadata dictionaries are
+    now correctly split into multiple history and comment cards when writing
+    a FITS file.
+  * Pass in "max_splits" to Parfive to prevent multi connections to JSOC
+    for JSOC only queries.
+  * When converting an `astropy.wcs.WCS` object to a solar coordinate frame
+    the ``DATE-AVG`` key will be used before the ``DATE-OBS`` key, previously
+    only ``DATE-OBS`` was checked.
+  * `sunpy.map.GenericMap.rotation_matrix` now applies the default values if
+    any FITS rotation matrix keywords are missing from the header.
+  * Modified :func:`sunpy.io.special.srs.read_srs` to correctly handle
+    uppercase SRS files and supplementary sections occurring after the main
+    data sections.
+- Drop patch python-311.patch, no longer required.
+- Switch to pyproject macros.
+- Reinstate dask for python311, numba exists now.
+
+-------------------------------------------------------------------
 Thu Mar 23 06:53:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Don't test with dask for python311: No numba yet

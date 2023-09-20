@@ -1,11 +1,32 @@
 -------------------------------------------------------------------
+Sun Sep 17 09:08:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.19:
+  * Added new functions `libdeflate_alloc_compressor_ex()` and
+    `libdeflate_alloc_decompressor_ex()`.  These functions allow
+    specifying a custom memory allocator on a per-compressor basis.
+  * libdeflate now always generates Huffman codes with at least 2
+    codewords. This fixes a compatibility issue where Windows
+    Explorer's ZIP unpacker could not decompress DEFLATE streams
+    created by libdeflate.  libdeflate's behavior was
+  * allowed by the DEFLATE RFC, but not all software was okay
+    with it.  In rare cases, compression ratios can be slightly
+    reduced by this change.
+  * Disabled the use of some compiler intrinsics on MSVC versions
+    where they don't work correctly.
+  * libdeflate can now compress up to the exact size of the
+    output buffer.
+  * Slightly improved compression performance at levels 1-9.
+  * Improved the compression ratio of very short inputs.
+
+-------------------------------------------------------------------
 Thu Apr 27 22:43:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.18:
   * Fixed a bug where the build type didn't default to "Release"
     when using CMake 3.10 or earlier.
   * Fixed a bug where some optimized code wasn't used when
-    building with Clang 15 or later (x86), or with Clang 16 
+    building with Clang 15 or later (x86), or with Clang 16
     or later (aarch64).
   * Fixed build errors with some architecture and compiler
     combos:
@@ -48,7 +69,7 @@ Mon Aug  8 20:57:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 1.13:
   * Changed the 32-bit Windows build of the library to use the default calling
     convention (cdecl) instead of stdcall, reverting a change from libdeflate 1.4.
-  * Fixed a couple macOS compatibility issues with the gzip program. 
+  * Fixed a couple macOS compatibility issues with the gzip program.
 
 -------------------------------------------------------------------
 Tue Jul 12 15:21:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -81,7 +102,7 @@ Mon Feb 14 23:14:56 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 1.10:
   * Added an additional check to the decompressor to make it quickly detect
     certain bad inputs and not try to generate an unbounded amount of output.
-  * Cleaned up a few things in the compression code. 
+  * Cleaned up a few things in the compression code.
 
 -------------------------------------------------------------------
 Mon Jan 24 22:39:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -119,8 +140,8 @@ Tue Jan  4 22:37:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Jan 13 21:46:16 UTC 2021 - andy great <andythe_great@pm.me>
 
-- Add workaround build fail due issue in dwz by deleting 
-  libdeflate-gunzip and replace with symlink libdeflate-gzip to 
+- Add workaround build fail due issue in dwz by deleting
+  libdeflate-gunzip and replace with symlink libdeflate-gzip to
   fix dwz break with hardlink.
   boo#1180984
 

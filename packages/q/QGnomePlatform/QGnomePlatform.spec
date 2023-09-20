@@ -96,7 +96,6 @@ BuildRequires:  cmake(Qt5ThemeSupport)
 BuildRequires:  cmake(Qt5WaylandClient) >= %{qt_min_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt_min_version}
 BuildRequires:  cmake(Qt5XkbCommonSupport)
-Supplements:    (libQt5Gui5 and gnome-session)
 Obsoletes:      QGnomePlatform =< 0.8.4
 Provides:       QGnomePlatform = %{version}
 %endif
@@ -114,7 +113,6 @@ BuildRequires:  cmake(Qt6Gui) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt_min_version}
-Supplements:    (libQt6Gui6 and gnome-session)
 %endif
 #
 # Runtime Dependencies

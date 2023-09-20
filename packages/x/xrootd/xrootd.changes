@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Sep 17 12:57:51 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.6.2:
+  * [XrdHttp] Fix chunked PUT creating empty files
+    (gh#xrootd/xrootd#2058)
+  * [CMake] Update Findlibuuid.cmake to use correct include paths
+  * [Python] Fix inclusion of markdown README file in
+    documentation (gh#xrootd/xrootd#2057)
+  * [Server] Align code with actual documentation for auth idspec
+    (gh#xrootd/xrootd#2061)
+  * [XrdCl] Fix flag check for append in XrdClZipArchive
+  * [XrdCl] Fix promotion of root:// URLs to use TLS encryption
+    (gh#xrootd/xrootd#2078)
+  * [XrdHttp] Correct chunked response for GET with a byte range
+    (gh#xrootd/xrootd#2076)
+  * [XrdHttp] Refactor read issuing during GET and fix read vector
+    too long (gh#xrootd/xrootd#1976)
+  * [XrdSciTokens] Fix logic error in user mapping
+    (gh#xrootd/xrootd#2056)
+  * [XrdSciTokens] Update maximum header size and line length in
+    INI files (gh#xrootd/xrootd#2074)
+  * [XrdSecgsi] Fix crash of xrdgsitest when proxy is not already
+    set
+  * [XrdSecztn] Fix template for default ZTN token location
+    (gh#xrootd/xrootd#2080)
+  * [XrdTls] Change the thread-id returned to openssl 1.0 to
+    improve performance (gh#xrootd/xrootd#2084)
+  * [XrdTls] Insert CRLs containing critical extensions at the end
+    of the bundle (gh#xrootd/xrootd#2065)
+  * [CMake] Always compile XrdOssCsi (compiled only with GCC
+    before)
+  * [CMake] Hide build output for isa-l to not confuse CTest
+  * [CMake] Run tests in parallel and fail build when tests fail
+  * [Python] Allow build customization via environment variable
+    (gh#xrootd/xrootd#2062)
+  * [Python] Check for Development.Module with CMake 3.18 and
+    above
+  * [Server] Add initialiser in one of the XrdScheduler
+    constructors (gh#xrootd/xrootd#2081)
+  * [Server] Default ffdest as per current pmark specification
+  * [Server] Export readv comma separated limits via
+    XRD_READV_LIMITS envar
+  * [Server] Implement Linux epoll maxfd limit
+    (gh#xrootd/xrootd#2063)
+  * [XrdClHttp] Add pgWrite support to the HTTP client plugin
+  * [XrdHttp] Refactor request statemachine for HTTP GET requests
+    (gh#xrootd/xrootd#2072)
+  * [XrdTls] Refactor CASet and CRLSet to open the output file
+    only once before the processing
+
+
+-------------------------------------------------------------------
 Sat Jul 22 21:11:22 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Only build python bindings without private copies of the client

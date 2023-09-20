@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 19 17:00:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 4.3.3
+  * Issues fixed
+    + Loading template group from STGroupDir in app running on
+      Tomcat 8 fails
+    + Trailing slash on the root dir leads to an IOException when
+      calling URL.openstream()
+  * Improvements, features
+    + Shift to Linux DCO
+    + Bazel support
+    + Fix for NPE when Thread.currentThread().getContextClassLoader()
+      is null
+    + Add license to pom.xml
+    + Fix escaping for closing angle brackets
+    + Correctly handle surrogate pairs in StringRenderer.encodeHTML
+    + Updating scala documentation to be more idiomatic and work
+      with ST4
+    + Add test for TypeRegistry
+- Modified patch:
+  * stringtemplate4-generated-sources.patch
+    + regenerate in cycle with antlr3 reproducible build changes
+
+-------------------------------------------------------------------
 Tue Mar 22 14:13:45 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

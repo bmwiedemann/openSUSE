@@ -1,0 +1,59 @@
+[  863s] ../third_party/material_color_utilities/src/cpp/palettes/tones.cc:58:27: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+[  863s]   double smallest_delta = abs(smallest_delta_hct.get_chroma() - chroma);
+[  863s]                           ^
+[  863s] ../third_party/material_color_utilities/src/cpp/palettes/tones.cc:58:27: note: use function 'std::abs' instead
+[  863s]   double smallest_delta = abs(smallest_delta_hct.get_chroma() - chroma);
+[  863s]                           ^~~
+[  863s]                           std::abs
+[  863s] ../third_party/material_color_utilities/src/cpp/palettes/tones.cc:70:9: error: use of undeclared identifier 'round'
+[  863s]     if (round(chroma) == round(smallest_delta_hct.get_chroma())) {
+[  863s]         ^
+[  863s] ../third_party/material_color_utilities/src/cpp/palettes/tones.cc:70:26: error: use of undeclared identifier 'round'
+[  863s]     if (round(chroma) == round(smallest_delta_hct.get_chroma())) {
+[  863s]                          ^
+[  863s] ../third_party/material_color_utilities/src/cpp/palettes/tones.cc:74:28: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+[  863s]     double hct_add_delta = abs(hct_add.get_chroma() - chroma);
+[  863s]                            ^
+[  863s] ../third_party/material_color_utilities/src/cpp/palettes/tones.cc:74:28: note: use function 'std::abs' instead
+[  863s]     double hct_add_delta = abs(hct_add.get_chroma() - chroma);
+[  863s]                            ^~~
+[  863s]                            std::abs
+[  863s] ../third_party/material_color_utilities/src/cpp/palettes/tones.cc:80:33: warning: using integer absolute value function 'abs' when argument is of floating point type [-Wabsolute-value]
+[  863s]     double hct_subtract_delta = abs(hct_subtract.get_chroma() - chroma);
+[  863s]                                 ^
+[  863s] ../third_party/material_color_utilities/src/cpp/palettes/tones.cc:80:33: note: use function 'std::abs' instead
+[  863s]     double hct_subtract_delta = abs(hct_subtract.get_chroma() - chroma);
+[  863s]                                 ^~~
+[  863s]                                 std::abs
+[  863s] 3 warnings and 2 errors generated.
+
+Index: chromium-117.0.5938.22/third_party/material_color_utilities/src/cpp/palettes/tones.cc
+===================================================================
+--- chromium-117.0.5938.22.orig/third_party/material_color_utilities/src/cpp/palettes/tones.cc
++++ chromium-117.0.5938.22/third_party/material_color_utilities/src/cpp/palettes/tones.cc
+@@ -18,6 +18,7 @@
+ 
+ #include "cpp/cam/cam.h"
+ #include "cpp/cam/hct.h"
++#include <cmath>
+ 
+ namespace material_color_utilities {
+ 
+[ 3262s] In file included from ../third_party/ipcz/src/ipcz/route_edge.cc:5:
+[ 3262s] In file included from ../third_party/ipcz/src/ipcz/route_edge.h:8:
+[ 3262s] ../third_party/ipcz/src/ipcz/router_link.h:73:34: error: no template named 'unique_ptr' in namespace 'std'
+[ 3262s]                             std::unique_ptr<Parcel> parcel) = 0;
+[ 3262s]                             ~~~~~^
+[ 3262s] 1 error generated.
+Index: chromium-117.0.5938.22/third_party/ipcz/src/ipcz/router_link.h
+===================================================================
+--- chromium-117.0.5938.22.orig/third_party/ipcz/src/ipcz/router_link.h
++++ chromium-117.0.5938.22/third_party/ipcz/src/ipcz/router_link.h
+@@ -9,6 +9,7 @@
+ #include <functional>
+ #include <string>
+ #include <utility>
++#include <memory>
+ 
+ #include "ipcz/fragment_ref.h"
+ #include "ipcz/link_type.h"

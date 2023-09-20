@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 18 06:54:37 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update to 23.9.16:
+  * add --classmethod-decorators (#405)
+  * fix name collision for node_stack on python 3.12 (#406)
+  * Use pypa/build to build the package (#404)
+
+-------------------------------------------------------------------
 Tue Jul 11 14:10:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.7.10:

@@ -17,13 +17,13 @@
 
 
 Name:           epiphany
-Version:        44.6
+Version:        45.0
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
-Source0:        https://download.gnome.org/sources/epiphany/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/epiphany/45/%{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -45,7 +45,7 @@ BuildRequires:  pkgconfig(hogweed) >= 3.2
 BuildRequires:  pkgconfig(icu-uc) >= 4.6
 BuildRequires:  pkgconfig(iso-codes) >= 0.35
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.6
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.alpha
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libportal-gtk4)
 BuildRequires:  pkgconfig(libsecret-1) >= 0.19.0
@@ -54,8 +54,8 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.12
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(nettle) >= 3.2
 BuildRequires:  pkgconfig(sqlite3) >= 3.22
-BuildRequires:  pkgconfig(webkitgtk-6.0) >= 2.39.90
-BuildRequires:  pkgconfig(webkitgtk-web-process-extension-6.0) >= 2.39.91
+BuildRequires:  pkgconfig(webkitgtk-6.0) >= 2.41.1
+BuildRequires:  pkgconfig(webkitgtk-web-process-extension-6.0) >= 2.41.1
 Requires:       %{name}-branding = %{version}
 Requires:       iso-codes
 Recommends:     ca-certificates

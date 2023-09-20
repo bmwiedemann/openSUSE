@@ -160,4 +160,16 @@
   * Declare support for Python 3.12.</comment>
     <requestid>1098207</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c7c38a73115f2a37bd3aa3941d18e622</srcmd5>
+    <version>23.9.16</version>
+    <time>1695209161</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.9.16:
+  * add --classmethod-decorators (#405)
+  * fix name collision for node_stack on python 3.12 (#406)
+  * Use pypa/build to build the package (#404)
+</comment>
+    <requestid>1111899</requestid>
+  </revision>
 </revisionlist>

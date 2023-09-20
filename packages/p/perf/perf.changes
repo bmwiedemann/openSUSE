@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 18 10:19:26 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- fix build for 6.6
+
+-------------------------------------------------------------------
 Wed Aug 16 14:04:01 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Disable debuginfod integration (boo#1213785)

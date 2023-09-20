@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Sep 16 20:35:51 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.18.0.
+  * The default locality of `Hint` and `Instance` commands was
+    switched to `export`.
+  * The universe unification algorithm can now delay the commitment
+    to a sort (the algorithm used to pick `Type`). Thanks to this
+    feature many `Prop` and `SProp` annotations can be now omitted.
+  * Ltac2 supports array literals, maps and sets of primitive
+    datatypes such as names (of constants, inductive types, etc)
+    and fine-grained control over profiling.
+  * The warning system offers new categories, enabling finer
+    (de)activation of specific warnings. This should be
+    particularly useful to handle deprecations.
+  * Many new lemmas useful for teaching analysis with Coq are now
+    part of the standard library about real numbers.
+  * The `#[deprecated]` attribute can now be applied to definitions.
+
+-------------------------------------------------------------------
 Wed Jun 28 21:03:07 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.17.1.

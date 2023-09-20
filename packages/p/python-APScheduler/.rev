@@ -244,4 +244,31 @@
     <comment></comment>
     <requestid>1104324</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>65321d9ea50825c05674e9f42c4a7e58</srcmd5>
+    <version>3.10.4</version>
+    <time>1695209328</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.10.4:
+  * Fixed incorrect module name being generated for references to
+    class methods via a subclass where the subclass does not
+    override the method
+  * Fixed ``TypeError`` related to entry point iteration on
+    Python 3.9
+  * Ensured consistent support for both PySide and PyQt (v6 to
+    v2) on QtScheduler
+  * Replaced uses of the deprecated ``pkg_resources`` module with
+    ``importlib.metadata``
+  * Fixed scheduling class methods like ``B.methodname`` where
+    the ``B`` class inherits from class ``A`` and ``methodname``
+    is a class method of class ``A``
+  * Fixed scheduler sleeping for too long (and thus jobs missing
+    their scheduled run times) if its wakeup cycle takes too much
+    time
+
+  * Dropped support for Python versions older than 3.6
+- version update to 3.9.1.post1
+  would cause incorrect timing for a cron trigger</comment>
+    <requestid>1112069</requestid>
+  </revision>
 </revisionlist>

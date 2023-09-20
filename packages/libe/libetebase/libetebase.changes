@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Sat Jun 24 14:23:15 UTC 2023 - Bob Haley <fawz@use.startmail.com>
+
+- Clean up recipe.
+- Fix etebase.pc using incorect hard-coded libdir path
+
+-------------------------------------------------------------------
+Tue Jun 20 18:36:54 UTC 2023 - fawz@use.startmail.com
+
+- Update to version 0.5.5~0:
+  * Run clippy and cargo fmt.
+  * Bump etebase-rs and make a release.
+
+-------------------------------------------------------------------
+Sat Apr  8 23:06:53 UTC 2023 - Bob Haley <fawz@use.startmail.com>
+
+- Add devel package
+
+-------------------------------------------------------------------
+Sat Apr  8 16:58:52 UTC 2023 - Bob Haley <fawz@use.startmail.com>
+
+- Initial commit

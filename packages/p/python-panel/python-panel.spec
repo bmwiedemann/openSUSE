@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-panel
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-panel%{psuffix}
-Version:        1.1.1
+Version:        1.2.2
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -34,8 +34,6 @@ Group:          Development/Languages/Python
 URL:            https://panel.holoviz.org
 Source:         https://files.pythonhosted.org/packages/source/p/panel/panel-%{version}.tar.gz
 Source99:       python-panel-rpmlintrc
-# PATCH-FIX-UPSTREAM panel-pr5185-bokeh3.2.patch gh#holoviz/panel#5185
-Patch0:         https://github.com/holoviz/panel/pull/5185.patch#/panel-pr5185-bokeh3.2.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module bokeh >= 3.1.1 with %python-bokeh < 3.3}
@@ -152,6 +150,8 @@ donttest="$donttest or (test_svg_stretch_ and True)"
 donttest="$donttest or test_server_async_callbacks"
 # upstream skips it for win and osx, we skip it because it (flakily) terminates everything on aarch64
 donttest="$donttest or (test_terminal and test_subprocess)"
+# file sample.pdf missing
+donttest="$donttest or test_pdf_local_file"
 # Don't test on 32-bit: asyncio is too flaky
 [ $(getconf LONG_BIT) -eq 32 ] && exit 0
 #

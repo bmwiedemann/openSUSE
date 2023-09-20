@@ -62,4 +62,27 @@
     Bytecode</comment>
     <requestid>1089360</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>58292e04a7e66de851c66932e5abf3c9</srcmd5>
+    <version>0.15.0</version>
+    <time>1695209200</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.0:
+  * Add support for Python 3.12 PR #122
+  * Support for Python 3.12, comes with a number of changes
+    reflecting changes in CPython bytecode itself:
+  * handle the ability of ``LOAD_ATTR`` to replace
+    ``LOAD_METHOD``
+    As a consequence the argument is now a ``tuple[bool, str]``
+    similarly ``LOAD_SUPER_ATTR`` which uses the 2 lowest bits as
+    flag takes a ``tuple[bool, bool, str]`` as argument
+  * ``POP_JUMP_IF_*`` instructions are undirected in Python 3.12
+  * ``YIELD_VALUE`` now takes an argument
+  * Support for ``CALL_INSTRINSIC_1/2`` led to the addition of 2
+    new enums to represent the argument
+
+- Update to 0.14.0
+- initial version 0.11.0, required by python-enaml</comment>
+    <requestid>1111939</requestid>
+  </revision>
 </revisionlist>

@@ -16,16 +16,17 @@
 #
 
 
-%define base_version 44
+%define base_version 45
+%define glib_version 2.74
 
 Name:           gnote
-Version:        44.1
+Version:        45.rc
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gnote
-Source0:        https://download.gnome.org/sources/gnote/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnote/45/%{name}-%{version}.tar.xz
 Source99:       gnote-rpmlintrc
 
 BuildRequires:  appstream-glib
@@ -33,14 +34,17 @@ BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  libboost_test-devel >= 1.5.1
 BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(glibmm-2.4) >= 2.62
-BuildRequires:  pkgconfig(gspell-1) >= 1.6.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.20
-BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.18
+BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(giomm-2.68) >= %{glib_version}
+BuildRequires:  pkgconfig(glibmm-2.68) >= %{glib_version}
+# TODO: Keep an eye on new releases. Upstream temporarily disabled gspell-1 support
+#       with the following notice:
+#         Need updated version that support GTK 4
+# BuildRequires:  pkgconfig(gspell-1) >= 1.6.0
+BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.0.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.8
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)

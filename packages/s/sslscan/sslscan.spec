@@ -17,7 +17,7 @@
 
 
 Name:           sslscan
-Version:        2.0.16
+Version:        2.1.0
 Release:        0
 Summary:        SSL cipher scanning tool
 License:        SUSE-GPL-3.0+-with-openssl-exception
@@ -27,7 +27,7 @@ Source:         https://github.com/rbsec/sslscan/archive/%{version}.tar.gz#/%{na
 #Patches copied from Debian package
 Patch1:         fedora-sslscan-patents.patch
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libssl) >= 1.1.1
+BuildRequires:  pkgconfig(libssl) >= 3.0
 
 %description
 SSLScan determines what ciphers are supported on SSL-based services,

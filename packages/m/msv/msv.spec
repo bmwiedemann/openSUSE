@@ -125,6 +125,7 @@ Requires:       msv-xsdlib
 %setup -q
 
 %pom_remove_plugin :buildnumber-maven-plugin
+%pom_remove_plugin :maven-javadoc-plugin
 
 # Apply patches
 %patch1 -p1

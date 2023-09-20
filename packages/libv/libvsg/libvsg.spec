@@ -22,7 +22,7 @@
 %define glslang_version 20230222+git.e4075496
 
 Name:           libvsg
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        3D graphics toolkit
 License:        MIT

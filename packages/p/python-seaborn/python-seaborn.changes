@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 14 12:40:47 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add inf_as_na.patch to fix tests again, this time with pandas
+
+-------------------------------------------------------------------
 Tue Aug  8 10:53:03 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip broken tests in i586

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 18 13:00:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230916:
+  * This release contains source code to build libuninameslist
+    (with NamesList.txt 15.1), libuninameslist-fr (with
+    ListeDesNoms 15.0), and Python wrapper uninameslist.py
+    (ver0.2).
+  * Version 15.1 is a minor update, adding 627 characters,
+    bringing the total to 149,813 characters.
+  * Details about 15.1 can be found here:
+    http://blog.unicode.org/2023/09/announcing-unicode-standard-
+    version-151.html
+
+-------------------------------------------------------------------
 Mon May 29 19:54:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 20230523:
@@ -17,7 +31,7 @@ Fri Dec  2 21:06:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 20221022:
   * This release contains source code to build libuninameslist (with
     NamesList.txt 15.0), libuninameslist-fr (with ListeDesNoms 14.0), and
-    Python wrapper uninameslist.py (ver0.2). 
+    Python wrapper uninameslist.py (ver0.2).
 
 -------------------------------------------------------------------
 Mon Jul 18 10:30:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -26,7 +40,7 @@ Mon Jul 18 10:30:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
  * Unicode 15.0_Beta (Nameslist.txt 15_Beta for review until Jul12).
  * Biswapriyo Nath added Windows MSYS2 build (used by github tests),
    this also helped identify some more nameslist-dll.h clang fixes.
- * orbea fixed Makefile.am bug fixing Gentoo Bugs 779670 and 792474. 
+ * orbea fixed Makefile.am bug fixing Gentoo Bugs 779670 and 792474.
 
 -------------------------------------------------------------------
 Sat Nov 27 12:45:42 UTC 2021 - Dirk Müller <dmueller@suse.com>

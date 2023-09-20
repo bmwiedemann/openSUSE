@@ -572,4 +572,29 @@ Reduced to applicable license in SPDX format (forwarded request 107670 from dims
     content of any kind (forwarded request 1073096 from iznogood)</comment>
     <requestid>1073230</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>77958617d00d9a91e48a7f356e8b7069</srcmd5>
+    <version>3.2.14</version>
+    <time>1695208978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.14:
+  + Avoid clearing the header list of a GMimeMessage when adding
+    addresses to an address header.
+  + Added the internet_address_list_append_parse() prototype
+    definition to internet-address.h.
+  + Use gtk-doc ulink syntax in doc comments instead of
+    &lt;a href=...&gt;.
+  + Fixed rfc2047 token decoding logic for base64 encodings.
+  + Properly handle GDateTime UTC offsets with non-zero seconds.
+  + Improved introspection data for bindings such as Vala.
+  + Improved address name quoting.
+  + Added a GNotifyDestroy to the GMimeParserOptions callback.
+  + Fixed the URL linkifier logic to properly handle links without
+    a '/' before the query string.
+  + Fixed the URL linkifier logic to handle domains that start
+    with numbers.
+  + Reverted base64 decoder optimizations from 3.2.10 and 3.2.11
+    to support chunked base64. (forwarded request 1109935 from ateixeira)</comment>
+    <requestid>1110530</requestid>
+  </revision>
 </revisionlist>

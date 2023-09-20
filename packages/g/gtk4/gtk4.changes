@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Aug 31 12:51:57 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-add 0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch
+  and rebased/simplified (less correct, but sufficient for us)  for
+  4.12.1.
+
+-------------------------------------------------------------------
+Fri Aug 25 18:14:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.12.1:
+  + GtkGridView: Fix a crash when scrolling
+  + GtkColumnView: Fix a refcounting issue in the new scroll_to api
+  + GtkTreeView: Fix style classes for sort arrows
+  + GtkEntry: Improve tracking of user changes (for undo)
+  + GtkNotebook: Fix a critical when switching pages
+  + GtkColor/FontDialogButton: Make these widgets activatable
+  + GtkMenuButton:
+    - Fix problems with focus handling
+    - Fix problems with DND
+  + Printing: Fix the cpdb backend build
+  + GSK: Fix issues with color matrix nodes
+  + Wayland: Fix a crash with compositors other than gnome-shell
+  + Updated translations.
+- Drop patches fixed upstream:
+  + 0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch
+  + 6af9dc86.patch
+
+-------------------------------------------------------------------
 Mon Aug 21 11:17:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 6af9dc86.patch: print: Revert "Start sorting apart includes"

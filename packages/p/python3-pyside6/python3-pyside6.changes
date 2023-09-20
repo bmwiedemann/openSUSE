@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 18 12:54:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix failure with Python 3.11.5:
+  * 0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch
+
+-------------------------------------------------------------------
 Wed Jul 26 10:48:26 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.2. Check the installed changes-6.5.2 file for the

@@ -50,9 +50,9 @@ Name:           arm-trusted-firmware
 %else
 Name:           arm-trusted-firmware-%{platform}
 %endif
-Version:        2.8.6
+Version:        2.8.8
 Release:        0
-%define srcversion 2.8.6
+%define srcversion 2.8.8
 %define mv_ddr_ver armada-atf-master
 %define mv_bin_ver 10.0.1.0
 %define a3700_utils_ver master

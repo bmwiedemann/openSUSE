@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep 20 05:09:11 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- Update to version 1.4.10:
+  * Enhancements
+    - Adds support for Docker v24.0.x
+    - Add sandbox image to images to pre-pull by @jakefhyde in
+      #3211
+    - Set the default PodSecurityConfiguration value only if the
+      cluster's k8s version is at least 1.23 by @jiaqiluo in #3291
+    - Bump google.golang.org/grpc from 1.48.0 to 1.53.0 by
+      @dependabot in #3281
+    - update README and add troubleshooting doc links by @superseb
+      in #3310
+    - Replace deprecated io/ioutil by @manuelbuil in #3329
+    - [release/v1.4] Security bumps by @macedogm in #3308
+    - switch to release-v2.7 for RKE v1.4.10 release by
+      @HarrisonWAffel in #3380
+  * Bug Fixes
+    - Use correct container name in log by @superseb in #3323
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported
+      Kubernetes versions. If you want to use a different version
+      than listed below, you will need to update Kubernetes using
+      the system images option in your cluster.yml.
+      - Kubernetes version
+        - v1.26.8-rancher1-1 (Default)
+        - v1.25.13-rancher1-1
+        - v1.24.17-rancher1-1
+        - v1.23.16-rancher2-3
+      - Experimental Kubernetes version
+        - N/A
+
+-------------------------------------------------------------------
 Tue Sep 12 04:37:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - BuildRequire go1.20

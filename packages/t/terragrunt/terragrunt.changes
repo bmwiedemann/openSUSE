@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep 20 05:14:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.3:
+  * Add debug log message to print chdir option (#2724)
+
+-------------------------------------------------------------------
+Wed Sep 20 05:08:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.2:
+  * S3 bucket errors handling (#2721)
+
+-------------------------------------------------------------------
+Tue Sep 19 04:45:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.1:
+  * Removes trailing slash appended to the end of
+    `get_path_to_repo_root()` (#2719)
+
+-------------------------------------------------------------------
+Mon Sep 18 05:35:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.0:
+  * Updated to go 1.21 (#2715)
+
+-------------------------------------------------------------------
 Fri Sep 15 09:26:32 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.50.17:

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 16 09:37:31 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.16 release
+  - Beginnings of a DirectMusic revival.
+  - Many fixes and improvements in the regression tests.
+  - Various bug fixes.
+- update staging to 8.16 release
+- solved upstream:
+  - 0001-Revert-loader-Build-the-preloader-as-PIE-on-64-bit.patch
+  - 0002-Revert-loader-Always-build-the-main-loader-as-PIE-if.patch
+  - 0003-Revert-loader-Force-building-the-main-loader-as-PIE-.patch
+  - 0004-Revert-loader-Make-the-loader-position-independent-o.patch
+
+-------------------------------------------------------------------
 Sat Sep  2 06:39:37 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.15 release

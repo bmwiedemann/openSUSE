@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 20 02:46:59 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.0:
+  * Migrate to jsonschema 4.18
+  * Drop support for Python 3.7 due to lack of support under jsonschema>=4.18
+  * Drop support for jsonschema<4.18 due to breaking changes in that
+    libraries interfaces
+- Migrate to pyproject macros
+- Stop using greedy globs in %files
+
+-------------------------------------------------------------------
 Tue Jul 11 13:18:57 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.4.2

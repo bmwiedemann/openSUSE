@@ -58,6 +58,7 @@ This package contains javadoc for %{name}.
 
 %pom_remove_plugin :maven-pmd-plugin
 %pom_remove_plugin :maven-source-plugin
+%pom_remove_plugin :maven-javadoc-plugin
 
 %pom_xpath_remove pom:plugin/pom:configuration/pom:compilerArgs
 %pom_xpath_remove pom:plugin/pom:configuration/pom:annotationProcessorPaths

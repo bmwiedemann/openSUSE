@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-vcrpy
-Version:        4.2.1
+Version:        5.1.0
 Release:        0
 Summary:        Python module to mock and replay HTTP interactions
 License:        MIT
@@ -30,7 +30,6 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.5}
 # gh#kevin1024/vcrpy#688
 BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  %{python_module wheel}
@@ -39,7 +38,6 @@ BuildRequires:  %{python_module yarl}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
-Requires:       python-six >= 1.5
 Requires:       python-urllib3 < 2
 Requires:       python-wrapt
 BuildArch:      noarch
@@ -67,10 +65,9 @@ export LANG=en_US.UTF-8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/vcr
 
 %check
-# Skip TestVCRConnection.testing_connect. Attempts
-# a real connection.
+# Skip online tests
 export LANG=en_US.UTF-8
-%pytest -k "not testing_connect"
+%pytest -k "not (testing_connect or test_get_vcr_with_matcher or test_testcase_playback)"
 
 %files %{python_files}
 %license LICENSE.txt

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep 17 21:08:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Remove GNOME from the app's name.
+  + Porting to GTK4 and the new Adwaita widgets with a completely
+    rewritten graph view.
+  + Normalising the load, so that 100 % now means all threads are
+    in use.
+  + Reducing the re-rendering by making the graphs not scroll
+    continuously – at least by default.
+  + Making sure Usage doesn't think we had no swap just because 0%
+    is left.
+  + Various bug and enhancement fixes.
+  + Updated translations.
+- Dropped pkgconfig(gtk+-3.0), pkgconfig(libdazzle-1.0) and
+  pkgconfig(libhandy-1), added pkgconfig(gee-0.8), pkgconfig(gtk4),
+  pkgconfig(libadwaita-1) and pkgconfig(gio-unix-2.0) following
+  upstreams port to gtk4 and libadwaita.
+
+-------------------------------------------------------------------
 Wed Sep  1 11:56:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.38.1:

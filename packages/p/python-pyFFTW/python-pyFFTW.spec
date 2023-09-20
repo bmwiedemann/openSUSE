@@ -32,6 +32,8 @@ License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/pyFFTW/pyFFTW
 Source:         https://github.com/pyFFTW/pyFFTW/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pyFFTW/pyFFTW/pull/363 Cython 3 updates and test build linker flags
+Patch:          cython3.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module devel}
@@ -66,7 +68,7 @@ A comprehensive unittest suite can be found with the source on the github
 repository.
 
 %prep
-%setup -q -n pyFFTW-%{version}
+%autosetup -p1 -n pyFFTW-%{version}
 
 %build
 export CFLAGS="%{optflags}"

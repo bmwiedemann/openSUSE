@@ -1,0 +1,188 @@
+From f60a10e13b3a6a8d1d27f285d9942b57ab07d0a8 Mon Sep 17 00:00:00 2001
+From: Dmitry Shachnev <mitya57@gmail.com>
+Date: Sun, 6 Aug 2023 15:24:52 +0300
+Subject: [PATCH] Make the tests pass with Sphinx 7.1
+
+Update the expected XML files to match Sphinx 7.1 output, and patch
+Sphinx < 7.1 output to match our new expectations.
+---
+ tests/conftest.py                                           | 6 ++++++
+ tests/test_build/test_basic.xml                             | 2 +-
+ .../test_conditional_assets_html_assets_policy_index_.xml   | 2 +-
+ ...test_conditional_assets_html_assets_policy_no_tabs1_.xml | 2 +-
+ ...test_conditional_assets_html_assets_policy_no_tabs2_.xml | 2 +-
+ tests/test_build/test_conditional_assets_index_.xml         | 2 +-
+ tests/test_build/test_conditional_assets_no_tabs1_.xml      | 2 +-
+ tests/test_build/test_conditional_assets_no_tabs2_.xml      | 2 +-
+ tests/test_build/test_custom_lexer.xml                      | 2 +-
+ tests/test_build/test_disable_closing.xml                   | 2 +-
+ tests/test_build/test_disable_css_loading.xml               | 2 +-
+ tests/test_build/test_nested_markup.xml                     | 2 +-
+ tests/test_build/test_no_tabs.xml                           | 2 +-
+ tests/test_build/test_other_with_assets.xml                 | 2 +-
+ tests/test_build/test_rinohtype_pdf.xml                     | 2 +-
+ 15 files changed, 20 insertions(+), 14 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index b1f0728..f776f49 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -2,6 +2,7 @@
+ import pytest
+ from pathlib import Path
+ from bs4 import BeautifulSoup
++import sphinx
+ from sphinx.testing.path import path
+ 
+ from sphinx_tabs.tabs import FILES
+@@ -123,6 +124,11 @@ def read(app, docname="index", resolve=False, regress=False, replace=None):
+             text = doctree.pformat()  # type: str
+             for find, rep in (replace or {}).items():
+                 text = text.replace(find, rep)
++            if sphinx.version_info < (7, 1):
++                text = text.replace(
++                    '<document source="index.rst">',
++                    "<document source=\"index.rst\" translation_progress=\"{'total': 0, 'translated': 0}\">",
++                )
+             file_regression.check(text, extension=extension)
+ 
+         return doctree
+diff --git a/tests/test_build/test_basic.xml b/tests/test_build/test_basic.xml
+index f1f6d71..1ef24d7 100644
+--- a/tests/test_build/test_basic.xml
++++ b/tests/test_build/test_basic.xml
+@@ -1,4 +1,4 @@
+-<document source="index.rst">
++<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
+     <container classes="sphinx-tabs" type="tab-element">
+         <div aria-label="Tabbed content" classes="closeable" role="tablist">
+             <button aria-controls="panel-0-0-0" aria-selected="true" classes="sphinx-tabs-tab" ids="tab-0-0-0" name="0-0" role="tab" tabindex="0">
+diff --git a/tests/test_build/test_conditional_assets_html_assets_policy_index_.xml b/tests/test_build/test_conditional_assets_html_assets_policy_index_.xml
+index 7fe4f8f..20c4dc9 100644
+--- a/tests/test_build/test_conditional_assets_html_assets_policy_index_.xml
++++ b/tests/test_build/test_conditional_assets_html_assets_policy_index_.xml
+@@ -1,4 +1,4 @@
+-<document source="index.rst">
++<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
+     <compound classes="toctree-wrapper">
+         <toctree caption="True" entries="(None,\ 'no_tabs1') (None,\ 'no_tabs2')" glob="False" hidden="False" includefiles="no_tabs1 no_tabs2" includehidden="False" maxdepth="-1" numbered="0" parent="index" rawentries="" titlesonly="False">
+     <section ids="fruits" names="fruits">
+diff --git a/tests/test_build/test_conditional_assets_html_assets_policy_no_tabs1_.xml b/tests/test_build/test_conditional_assets_html_assets_policy_no_tabs1_.xml
+index 7fe4f8f..20c4dc9 100644
+--- a/tests/test_build/test_conditional_assets_html_assets_policy_no_tabs1_.xml
++++ b/tests/test_build/test_conditional_assets_html_assets_policy_no_tabs1_.xml
+@@ -1,4 +1,4 @@
+-<document source="index.rst">
++<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
+     <compound classes="toctree-wrapper">
+         <toctree caption="True" entries="(None,\ 'no_tabs1') (None,\ 'no_tabs2')" glob="False" hidden="False" includefiles="no_tabs1 no_tabs2" includehidden="False" maxdepth="-1" numbered="0" parent="index" rawentries="" titlesonly="False">
+     <section ids="fruits" names="fruits">
+diff --git a/tests/test_build/test_conditional_assets_html_assets_policy_no_tabs2_.xml b/tests/test_build/test_conditional_assets_html_assets_policy_no_tabs2_.xml
+index 7fe4f8f..20c4dc9 100644
+--- a/tests/test_build/test_conditional_assets_html_assets_policy_no_tabs2_.xml
++++ b/tests/test_build/test_conditional_assets_html_assets_policy_no_tabs2_.xml
+@@ -1,4 +1,4 @@
+-<document source="index.rst">
++<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
+     <compound classes="toctree-wrapper">
+         <toctree caption="True" entries="(None,\ 'no_tabs1') (None,\ 'no_tabs2')" glob="False" hidden="False" includefiles="no_tabs1 no_tabs2" includehidden="False" maxdepth="-1" numbered="0" parent="index" rawentries="" titlesonly="False">
+     <section ids="fruits" names="fruits">
+diff --git a/tests/test_build/test_conditional_assets_index_.xml b/tests/test_build/test_conditional_assets_index_.xml
+index 7fe4f8f..20c4dc9 100644
+--- a/tests/test_build/test_conditional_assets_index_.xml
++++ b/tests/test_build/test_conditional_assets_index_.xml
+@@ -1,4 +1,4 @@
+-<document source="index.rst">
++<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
+     <compound classes="toctree-wrapper">
+         <toctree caption="True" entries="(None,\ 'no_tabs1') (None,\ 'no_tabs2')" glob="False" hidden="False" includefiles="no_tabs1 no_tabs2" includehidden="False" maxdepth="-1" numbered="0" parent="index" rawentries="" titlesonly="False">
+     <section ids="fruits" names="fruits">
+diff --git a/tests/test_build/test_conditional_assets_no_tabs1_.xml b/tests/test_build/test_conditional_assets_no_tabs1_.xml
+index 7fe4f8f..20c4dc9 100644
+--- a/tests/test_build/test_conditional_assets_no_tabs1_.xml
++++ b/tests/test_build/test_conditional_assets_no_tabs1_.xml
+@@ -1,4 +1,4 @@
+-<document source="index.rst">
++<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
+     <compound classes="toctree-wrapper">
+         <toctree caption="True" entries="(None,\ 'no_tabs1') (None,\ 'no_tabs2')" glob="False" hidden="False" includefiles="no_tabs1 no_tabs2" includehidden="False" maxdepth="-1" numbered="0" parent="index" rawentries="" titlesonly="False">
+     <section ids="fruits" names="fruits">
+diff --git a/tests/test_build/test_conditional_assets_no_tabs2_.xml b/tests/test_build/test_conditional_assets_no_tabs2_.xml
+index 7fe4f8f..20c4dc9 100644
+--- a/tests/test_build/test_conditional_assets_no_tabs2_.xml
++++ b/tests/test_build/test_conditional_assets_no_tabs2_.xml
+@@ -1,4 +1,4 @@
+-<document source="index.rst">
++<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
+     <compound classes="toctree-wrapper">
+         <toctree caption="True" entries="(None,\ 'no_tabs1') (None,\ 'no_tabs2')" glob="False" hidden="False" includefiles="no_tabs1 no_tabs2" includehidden="False" maxdepth="-1" numbered="0" parent="index" rawentries="" titlesonly="False">
+     <section ids="fruits" names="fruits">
+diff --git a/tests/test_build/test_custom_lexer.xml b/tests/test_build/test_custom_lexer.xml
+index 53edcc4..a481a88 100644
+--- a/tests/test_build/test_custom_lexer.xml
++++ b/tests/test_build/test_custom_lexer.xml
+@@ -1,4 +1,4 @@
+-<document source="index.rst">
++<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
+     <container classes="sphinx-tabs" type="tab-element">
+         <div aria-label="Tabbed content" classes="closeable" role="tablist">
+             <button aria-controls="panel-0-QllP" aria-selected="true" classes="sphinx-tabs-tab code-tab group-tab" ids="tab-0-QllP" name="QllP" role="tab" tabindex="0">
+diff --git a/tests/test_build/test_disable_closing.xml b/tests/test_build/test_disable_closing.xml
+index 91d1744..32c0985 100644
+--- a/tests/test_build/test_disable_closing.xml
++++ b/tests/test_build/test_disable_closing.xml
+@@ -1,4 +1,4 @@
+-<document source="index.rst">
++<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
+     <container classes="sphinx-tabs" type="tab-element">
+         <div aria-label="Tabbed content" role="tablist">
+             <button aria-controls="panel-0-0-0" aria-selected="true" classes="sphinx-tabs-tab" ids="tab-0-0-0" name="0-0" role="tab" tabindex="0">
+diff --git a/tests/test_build/test_disable_css_loading.xml b/tests/test_build/test_disable_css_loading.xml
+index f1f6d71..1ef24d7 100644
+--- a/tests/test_build/test_disable_css_loading.xml
++++ b/tests/test_build/test_disable_css_loading.xml
+@@ -1,4 +1,4 @@
+-<document source="index.rst">
++<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
+     <container classes="sphinx-tabs" type="tab-element">
+         <div aria-label="Tabbed content" classes="closeable" role="tablist">
+             <button aria-controls="panel-0-0-0" aria-selected="true" classes="sphinx-tabs-tab" ids="tab-0-0-0" name="0-0" role="tab" tabindex="0">
+diff --git a/tests/test_build/test_nested_markup.xml b/tests/test_build/test_nested_markup.xml
+index f9856ec..be7f38a 100644
+--- a/tests/test_build/test_nested_markup.xml
++++ b/tests/test_build/test_nested_markup.xml
+@@ -1,4 +1,4 @@
+-<document source="index.rst">
++<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
+     <section ids="markup-in-tab-titles" names="markup\ in\ tab\ titles">
+         <title>
+             Markup in Tab Titles
+diff --git a/tests/test_build/test_no_tabs.xml b/tests/test_build/test_no_tabs.xml
+index 08886a7..b86ae09 100644
+--- a/tests/test_build/test_no_tabs.xml
++++ b/tests/test_build/test_no_tabs.xml
+@@ -1,3 +1,3 @@
+-<document source="index.rst">
++<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
+     <paragraph>
+         There are no tabs here
+diff --git a/tests/test_build/test_other_with_assets.xml b/tests/test_build/test_other_with_assets.xml
+index 6d286b9..1f6ba32 100644
+--- a/tests/test_build/test_other_with_assets.xml
++++ b/tests/test_build/test_other_with_assets.xml
+@@ -1,4 +1,4 @@
+-<document source="index.rst">
++<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
+     <container classes="sphinx-tabs" type="tab-element">
+         <div aria-label="Tabbed content" classes="closeable" role="tablist">
+             <button aria-controls="panel-0-Qysr" aria-selected="true" classes="sphinx-tabs-tab code-tab group-tab" ids="tab-0-Qysr" name="Qysr" role="tab" tabindex="0">
+diff --git a/tests/test_build/test_rinohtype_pdf.xml b/tests/test_build/test_rinohtype_pdf.xml
+index 8b33c88..bc915b1 100644
+--- a/tests/test_build/test_rinohtype_pdf.xml
++++ b/tests/test_build/test_rinohtype_pdf.xml
+@@ -1,4 +1,4 @@
+-<document source="index.rst">
++<document source="index.rst" translation_progress="{'total': 0, 'translated': 0}">
+     <section ids="testing-pdf" names="testing\ pdf">
+         <title>
+             TESTING PDF

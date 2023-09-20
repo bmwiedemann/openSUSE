@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 19 16:52:36 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.8.6:
+  * onion service: Fix a reliability issue where services were
+    expiring their introduction points every consensus update.
+    This caused connectivity issues for clients caching the old
+    descriptor and intro points
+  * Log the input and output buffer sizes when we detect a potential
+    compression bomb
+  * Disable multiple BUG warnings of a missing relay identity key when
+    starting an instance of Tor compiled without relay support
+  * When reporting a pseudo-networkstatus as a bridge authority, or
+    answering "ns/purpose/*" controller requests, include accurate
+    published-on dates from our list of router descriptors
+  * Use less frightening language and lower the log-level of our
+    run-time ABI compatibility check message in our Zstd
+    compression subsystem
+
+-------------------------------------------------------------------
 Wed Aug 30 18:50:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.8.5:

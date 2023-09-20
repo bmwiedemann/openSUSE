@@ -44,6 +44,8 @@ Patch3:         0001-Backport-Fix-GLES-builds.patch
 # PATCH-FIX-UPSTREAM python-3.11-compatibility.patch
 Patch4:         python-3.11-compatibility.patch
 %endif
+# PATCH-FIX-UPSTREAM
+Patch5:         0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch
 # Provide the PyPI names
 Provides:       python3-PySide2 = %{version}-%{release}
 Provides:       python3-shiboken2 = %{version}-%{release}

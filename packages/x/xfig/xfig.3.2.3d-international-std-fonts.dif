@@ -1,7 +1,11 @@
+---
+ src/main.c |   32 ++++++++++++++++++++++++++++++--
+ 1 file changed, 30 insertions(+), 2 deletions(-)
+
 --- src/main.c
-+++ src/main.c	2013-12-10 13:40:27.062735528 +0000
-@@ -378,8 +378,36 @@ static XtResource application_resources[
-        XtOffset(appresPtr, always_use_fontset), XtRBoolean, (caddr_t) & false},
++++ src/main.c	2023-09-13 09:37:09.600980464 +0000
+@@ -366,8 +366,36 @@ static XtResource application_resources[
+        XtOffset(appresPtr, font_menu_language), XtRString, (caddr_t) ""},
      {"fixedFontSet", "FontSet", XtRFontSet, sizeof(XFontSet),
         XtOffset(appresPtr, fixed_fontset), XtRString,
 -       (caddr_t) "-*-times-medium-r-normal--16-*-*-*-*-*-*-*,"

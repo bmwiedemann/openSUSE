@@ -17,19 +17,20 @@
 
 
 Name:           gnome-characters
-Version:        44.0
+Version:        45.0
 Release:        0
 Summary:        Character Map
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/CharacterMap
-Source0:        https://download.gnome.org/sources/gnome-characters/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-characters/45/%{name}-%{version}.tar.xz
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  intltool >= 0.50.1
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  xorg-x11-server-Xvfb
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.43.3
@@ -73,6 +74,11 @@ search results from GNOME Characters.
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Characters.desktop
+# test suite newly requires X display
+export DISPLAY=:98
+Xvfb :98 >& Xvfb.log &
+trap "kill $! || true" EXIT
+sleep 10
 %meson_test
 
 %files

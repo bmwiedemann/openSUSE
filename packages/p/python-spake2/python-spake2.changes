@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 19 11:12:39 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Fix missing dep on hkdf
+- enable tests
+
+-------------------------------------------------------------------
 Tue Dec  4 12:54:31 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

@@ -297,4 +297,12 @@ into sibling directories. (forwarded request 163507 from Andreas_Schwab)</commen
     <comment></comment>
     <requestid>906972</requestid>
   </revision>
+  <revision rev="41" vrev="9">
+    <srcmd5>9eaad588438997e071543d3532ba7ebb</srcmd5>
+    <version>2.5.0</version>
+    <time>1695209114</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111716</requestid>
+  </revision>
 </revisionlist>

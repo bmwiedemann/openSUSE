@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 18 10:03:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.6:
+  * Remove unused mock library from test requirements
+  * Django 4.2 compatibility
+  * Fixed crash when missing CSRF token cookie in
+    SessionAuthentication
+  * Fix flake8, update docs, fix RTD builds
+
+-------------------------------------------------------------------
 Thu Jan 26 22:57:43 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Dropped pr_1642_chunk.patch and python-django-tastypie-no-mock.patch

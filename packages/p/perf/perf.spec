@@ -155,13 +155,12 @@ make -f Makefile.perf V=1 PYTHON=python3 EXTRA_CFLAGS="%{optflags}" \
 	%{_perf_unwind} \
 	install install-doc
 
+# === remove this (and in %%files below) when 6.6 hits factory
+%if %{version_pure} == 65
 mkdir -p %{buildroot}/%{_docdir}/perf/examples/bpf
-# === remove this when 6.2 hits factory
-%if %{version_pure} == 61
-mv %{buildroot}%{_prefix}/lib/perf/include/bpf/* %{buildroot}/%{_docdir}/perf/examples/bpf
+mv %{buildroot}%{_prefix}/lib/perf/examples/bpf/* %{buildroot}/%{_docdir}/perf/examples/bpf
 %endif
 # === up to here
-mv %{buildroot}%{_prefix}/lib/perf/examples/bpf/* %{buildroot}/%{_docdir}/perf/examples/bpf
 
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 mv %{buildroot}%{_sysconfdir}/bash_completion.d/perf %{buildroot}%{_datadir}/bash-completion/completions/
@@ -182,9 +181,11 @@ rm -rf %{buildroot}/%{_libdir}/traceevent
 %{_prefix}/lib/%{name}-core
 %{_datadir}/%{name}-core
 %{_mandir}/man1/perf*
+%if %{version_pure} == 65
 %dir %{_docdir}/perf/examples
 %dir %{_docdir}/perf/examples/bpf
 %{_docdir}/perf/examples/bpf/*
+%endif
 
 %files gtk
 %{_libdir}/libperf-gtk.so

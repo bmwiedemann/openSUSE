@@ -1,7 +1,7 @@
 #
 # spec file for package string-template-maven-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.antlr:ST4)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-enforcer-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
@@ -61,6 +59,10 @@ cp %{SOURCE1} .
 %pom_change_dep org.sonatype.aether: org.eclipse.aether:
 perl -pi -e 's#org\.sonatype\.aether#org.eclipse.aether#g' \
 	src/main/java/com/webguys/maven/plugin/st/Controller.java
+
+%pom_remove_plugin :maven-enforcer-plugin
+%pom_remove_plugin :maven-javadoc-plugin
+%pom_remove_plugin :maven-source-plugin
 
 %build
 %{mvn_build} -f -- \

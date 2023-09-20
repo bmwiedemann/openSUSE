@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 16 16:29:06 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.26
+  * Fix a bug where the header bar keeps hiding even when a menu 
+    is open.
+  * Use toasts instead of dialog to report mpv errors.
+  * Change default screenshot format to PNG.
+  * Fix crash that happens when the mpv-config-file key in 
+    GSettings contains a path rather than a URI.
+  * Expose the Position MPRIS property.
+  * Use the numeric style class for the time/duration label, 
+    which stops it from jumping around as it changes.
+
+-------------------------------------------------------------------
 Sat Sep  2 08:09:08 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Set version requirement for libadwaita-1

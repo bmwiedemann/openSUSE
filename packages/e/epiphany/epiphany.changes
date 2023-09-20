@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Sep 15 19:00:53 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Fix password manager JS error on certain websites
+  + Fix windows detached from tab bar not being destroyed properly
+  + Fix spinners not running properly when restoring tabs
+  + Fix keyboard navigation in bookmarks popover
+  + Ctrl+Shift+o shortcut now toggles tab overview instead of only
+    opening it
+  + Fix untranslatable strings (not yet translated)
+  + Fix window restored at incorrect size
+  + Fix crash when closing last tab while displaying tab overview
+  + Assert shell and all windows are destroyed
+  + Fix changes to bookmarks not being saved
+  + Improve URL bar padding in mobile mode
+  + Don't force OpenURI portal to always display its user interface
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 31 09:36:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + Hide Sync Now button when Firefox Sync is disabled, avoiding
+    crash.
+  + Don't try to restore window position from session.
+  + Don't show spinner on placeholder tabs after session is
+    restored.
+  + Hide "Search the Web for" context menu item in web app mode.
+  + Fix Save Password? permission requests, broken since 44.4.
+  + Fix unencoded % characters in URLs causing session to fail to
+    save.
+  + Fix web views not being destroyed when window is closed.
+  + Hopefully fix crash in ephy_sqlite_connection_create_statement.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 31 09:36:11 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.alpha:
+  + Fancy new tab overview replaces the tab list dropdown
+  + Use newer libadwaita and GTK APIs
+  + Use header capitalization for buttons on Firefox Sync dialog
+  + Temporarily remove the bookmarks sync feature due to issue
+  + Update to highlight.js 1.8.0
+  + Support clipboard access permission request
+  + Clarify storage access and save password permission prompts
+  + Make address bar dropdown use full screen width in narrow mode
+  + Allow New Window action in web app mode
+  + Hopefully speed up loading bookmarks popover
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jul 31 09:36:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.6:

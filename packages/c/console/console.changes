@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 19 20:56:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Let the description point out details distinguishing this
+  terminal emulator from others.
+
+-------------------------------------------------------------------
+Sun Aug  6 10:38:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + New preferences window, for setting a custom font and altering
+    bell behaviour.
+  + Some bugs in notifications, drag'n'drop, and assorted visual
+    glitches were resolved. Detaching/closing tabs had some minor
+    correctness issues that have now been mitigated, and tabs
+    always have a label in switchers.
+  + Keep up with changes in Adwaita and Gtk.
+  + Zoom with Ctrl-Scroll.
+  + Improved keyboard shortcuts for managing tabs.
+  + Telnet as a ‘remote’ type.
+
+-------------------------------------------------------------------
 Sun Aug  6 10:33:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.4:

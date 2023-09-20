@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 18 19:58:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * This is the last release with Python2 support:
+  * True Windows support
+  * New console script
+
+-------------------------------------------------------------------
 Tue Jun 13 09:06:31 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

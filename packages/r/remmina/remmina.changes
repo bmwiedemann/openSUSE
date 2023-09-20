@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Sep 17 08:14:03 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to remmina version 1.4.32:
+  * [REM2916] Added option to kill async process started by
+    exec plugin on tab close
+  * Fix search bar toggle behavior
+  * Fix memory leaks
+  * [REM-2920] Password visibility can now be toggled on remmina_message_panels
+  * Remove SSH file paths from remmina file when unchecking box in profile edit
+  * Solved issue #2910 - Added support for IPv6 with fallback to IPv4 for ssh
+  * Fix UI bugs in Remmina Preferences set new password
+  * Fix memory leaks and change GTK critical errors to remmina warnings
+    for null icon autostart file
+  * [REM-2926] Added ability to set a fixed aspect ratio for vnc connections
+  * [REM-2936] Fix crash related to unmap events 
+  * [REM-2938] Improved ordering of tray icon menu items
+  * Fix memory leaks in remmina_plugin_manager_init with g_free and g_ptr_array_free
+  * Remote assistance
+  * Spelling: Various strings for assistance mode
+  * Fix some compiler warnings
+  * Ability to SPICE connect to unix domain socket 
+  * update multi monitor icon
+  * Save toggle options when duplicating connection
+  * New feature: Allow user to specify use of modifiers when changing key preferences
+  * [REM-2914] Alert user of unexpected disconnect instead of immediately closing
+    the connection window 
+  * Fix Remmina not using @REMMINA_BINARY_PATH@
+  * Highlight top bar when Grab all keyboard events is enabled
+  * [REM-2850] Add ability to automatically move mouse to keep RDP connections alive
+  * Remove unnecessary parameters from remmina_public_get_server_port_wrapper 
+  * Fix freeze that occurs when loading in python modules properly
+  * [REM-1923] Fix handling of pause break key for RDP connections
+  * [REM-2971] When quiting Remmina from the system tray the are you sure
+    prompt now functions properly 
+
+-------------------------------------------------------------------
 Fri Jun  9 11:22:44 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to remmina version 1.4.31:

@@ -18,7 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 39
-%define ver 23.02.4
+%define ver 23.02.5
 %define _ver _23_02
 #%%define rc_v 0rc1
 %define dl_ver %{ver}
@@ -1321,7 +1321,7 @@ rm -rf /srv/slurm-testsuite/src /srv/slurm-testsuite/testsuite \
 %{_mandir}/man5/cgroup.*
 %{_mandir}/man5/gres.*
 %{_mandir}/man5/helpers.*
-%{_mandir}/man5/nonstop.conf.5.*
+#%%{_mandir}/man5/nonstop.conf.5.*
 %{_mandir}/man5/oci.conf.5.gz
 %{_mandir}/man5/topology.*
 %{_mandir}/man5/knl.conf.5.*

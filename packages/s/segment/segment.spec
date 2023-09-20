@@ -1,7 +1,7 @@
 #
 # spec file for package segment
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,7 @@ This package contains the API documentation for %{name}.
 %pom_remove_parent
 %pom_remove_plugin :maven-release-plugin
 %pom_remove_plugin :maven-source-plugin
+%pom_remove_plugin :maven-javadoc-plugin
 %pom_remove_plugin :maven-jar-plugin
 
 %{mvn_build} -f -- \

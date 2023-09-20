@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Sep 17 08:13:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 12 13:36:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-enable test suite:
+  + BuildRequire xorg-x11-server-Xvfb: the tests require a
+    graphical environment.
+  + Configure the tests to run using Xvfb.
+
+-------------------------------------------------------------------
+Fri Jul  7 19:02:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.alpha:
+  + Update for Unicode 15.0.1
+  + Add support for new Unicode CJK extensions
+  + Bugs fixed:
+    - Unable to search and display the character "䷿" U+4DFF
+    - The "Latin Small Letter Long S" (ſ — U+017F) is missing from
+      the application
+    - Nonspacing marks should not be considered invisible
+    - 44.rc: search provider crashes on shutdown
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 31 05:40:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace noto-coloremoji-fonts  with google-noto-coloremoji-fonts

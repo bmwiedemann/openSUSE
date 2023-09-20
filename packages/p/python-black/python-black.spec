@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-black
-Version:        23.7.0
+Version:        23.9.1
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
@@ -39,7 +39,9 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs >= 2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tomli >= 1.1.0}
-BuildRequires:  %{python_module typing_extensions >= 3.10.0.0 if %python-base < 3.10}
+%if 0%{?suse_version} > 1500
+BuildRequires:  %{python_module typing_extensions >= 3.10.0.0 if %python-base < 3.11}
+%endif
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,7 +57,7 @@ Requires:       python-tomli >= 1.1.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
-%if 0%{?python_version_nodots} < 310
+%if 0%{?python_version_nodots} < 311
 Requires:       python-typing_extensions >= 3.10.0.0
 %endif
 %python_subpackages

@@ -135,6 +135,7 @@ find . -name \*.jar -print0 | xargs -0 rm
 
 %pom_remove_plugin :maven-release-plugin
 %pom_remove_plugin :maven-deploy-plugin
+%pom_remove_plugin :maven-javadoc-plugin
 
 # Disable modules where we lack dependencies
 for m in simpleclient_caffeine \

@@ -410,4 +410,12 @@
     <comment></comment>
     <requestid>1106238</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>bd2d145087435d135232fd44cdd058d7</srcmd5>
+    <version>4.1.0</version>
+    <time>1695209327</time>
+    <user>dimstar_suse</user>
+    <comment>ugrep 4.1.0 (forwarded request 1112058 from AndreasStieger)</comment>
+    <requestid>1112059</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libgit2-glib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libgit2-glib
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        GLib wrapper library around libgit2
 License:        LGPL-2.1-or-later
@@ -28,7 +28,6 @@ Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3
 BuildRequires:  python3-base
 # Needed to create the vala bindings
 BuildRequires:  vala

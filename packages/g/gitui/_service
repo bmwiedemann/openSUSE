@@ -1,9 +1,11 @@
 <services>
   <service mode="manual" name="download_files" />
   <service name="cargo_vendor" mode="manual">
-     <param name="srctar">gitui-0.23.0.tar.gz</param>
+     <param name="srctar">gitui-0.24.3.tar.gz</param>
      <param name="update">true</param>
   </service>
-  <service name="cargo_audit" mode="manual" />
+  <service name="cargo_audit" mode="manual">
+     <param name="srcdir">gitui-0.24.3</param>
+  </service>
 </services>
 

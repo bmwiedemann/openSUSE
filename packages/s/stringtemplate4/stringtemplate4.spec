@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name stringtemplate4
-Version:        4.3
+Version:        4.3.3
 Release:        0
 Summary:        A Java template engine
 License:        BSD-3-Clause
@@ -96,7 +96,7 @@ rm -r test/org/stringtemplate/v4/test/TestEarlyEvaluation.java
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%doc CHANGES.txt contributors.txt README.md
+%doc CHANGES.txt README.md
 %license LICENSE.txt
 
 %if %{without bootstrap}

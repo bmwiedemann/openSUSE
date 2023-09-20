@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 18 14:44:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Look for the Qgpsmm pkgconfig file which is going to be
+  split from libgps-devel (boo#1215444)
+
+-------------------------------------------------------------------
 Sun Jul  2 18:26:28 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 23.2:

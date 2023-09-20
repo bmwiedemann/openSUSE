@@ -26,7 +26,7 @@
 %endif
 
 Name:           coq
-Version:        8.17.1
+Version:        8.18.0
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -201,6 +201,7 @@ rm -r %{buildroot}%{_docdir}/%{name}/refman/{.buildinfo,.doctrees,_sources}
 %{_bindir}/coqdoc
 %{_bindir}/coqnative
 %{_bindir}/coqpp
+%{_bindir}/coqtimelog2html
 %{_bindir}/coqtop
 %{_bindir}/coqtop.byte
 %{_bindir}/coqtop.opt

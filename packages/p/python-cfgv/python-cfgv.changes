@@ -1,14 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep 12 07:06:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.0:
+  * add a custom display name for loading from file
+  * require python 3.8
+
+-------------------------------------------------------------------
 Sun Mar 27 14:52:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.1:
-  * python 3.9 enabled 
+  * python 3.9 enabled
 
 -------------------------------------------------------------------
 Wed Aug  5 01:05:34 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.2.0:
-  * No upstream changelog 
+  * No upstream changelog
 
 -------------------------------------------------------------------
 Mon Mar 30 13:55:49 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>

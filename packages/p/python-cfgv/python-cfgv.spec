@@ -1,7 +1,7 @@
 #
 # spec file for package python-cfgv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-cfgv
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        Configuration validator producing human readable error messages
 License:        MIT
 URL:            https://github.com/asottile/cfgv
 Source:         https://github.com/asottile/cfgv/archive/v%{version}.tar.gz#/cfgv-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,10 +42,10 @@ A configuration validator for Python that produce human readable error messages.
 %setup -q -n cfgv-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 18 20:10:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21.6:
+  * index: Handle different stages of conflicted paths.
+  * Improve LCA finding performance. (Kevin Hendricks)
+  * client: Handle Content-Type with encoding set.
+  * Only import _hashlib for type checking.
+  * Update docs regarding building dulwich without c bindings
+  * objects: Define a stricter return type for _parse_message
+  * Raise GitProtocolError when encountering HTTP Errors in
+  * HTTPGitClient.
+
+-------------------------------------------------------------------
 Mon May  8 06:49:41 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
@@ -80,7 +93,7 @@ Mon Sep 12 20:10:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
  * Ensure configuration is loaded when
    running "dulwich clone".
  * Build 32 bit wheels for Windows.
- * tests: Ignore errors when deleting GNUPG 
+ * tests: Ignore errors when deleting GNUPG
    home directory. Fixes spurious errors racing
    gnupg-agent. Thanks, Matěj Cepl. Fixes #1000
  * config: Support closing brackets in quotes in section
@@ -266,7 +279,7 @@ Tue Dec 29 13:32:51 UTC 2020 - Dirk Müller <dmueller@suse.com>
 Sun Dec 20 09:26:43 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.14:
- * Fix some stash functions on Python 3. 
+ * Fix some stash functions on Python 3.
  * Fix handling of relative paths in alternates files on Python 3.
  * Add py.typed to allow type checking.
  * Add tests demonstrating a bug in the walker code.
@@ -451,10 +464,10 @@ Mon May  1 07:49:02 UTC 2017 - develop7@develop7.info
 
 - update to 0.17.2
   * BUG FIXES
-    + Add workaround for 
-      https://bitbucket.org/pypy/pypy/issues/2499/cpyext-pystring_asstring-doesnt-work, 
+    + Add workaround for
+      https://bitbucket.org/pypy/pypy/issues/2499/cpyext-pystring_asstring-doesnt-work,
       fixing Dulwich when used with C extensions on pypy < 5.6. (Victor Stinner)
-    + Properly quote config values with a ‘#’ character in them. 
+    + Properly quote config values with a ‘#’ character in them.
       (Jelmer Vernooij, #511)
 - update to 0.17.1
   * IMPROVEMENTS
@@ -463,20 +476,20 @@ Mon May  1 07:49:02 UTC 2017 - develop7@develop7.info
     + Cope with existing submodules during pull. (Jelmer Vernooĳ, #505)
 - update to 0.17.0
   * TEST FIXES
-    + Skip test that requires sync to synchronize filesystems if os.sync is not 
+    + Skip test that requires sync to synchronize filesystems if os.sync is not
       available. (Koen Martens)
   * IMPROVEMENTS
     + Implement MemoryRepo.{set_description,get_description}. (Jelmer Vernooĳ)
-    + Raise exception in Repo.stage() when absolute paths are passed in. Allow 
+    + Raise exception in Repo.stage() when absolute paths are passed in. Allow
       passing in relative paths to porcelain.add().(Jelmer Vernooij)
   * BUG FIXES
     + Handle multi-line quoted values in config files. (Jelmer Vernooĳ, #495)
     + Allow porcelain.clone of repository without HEAD. (Jelmer Vernooĳ, #501)
     + Support passing tag ids to Walker()’s include argument. (Jelmer Vernooĳ)
     + Don’t strip trailing newlines from extra headers. (Nicolas Dandrimont)
-    + Set bufsize=0 for subprocess interaction with SSH client. Fixes hangs on 
+    + Set bufsize=0 for subprocess interaction with SSH client. Fixes hangs on
       Python 3. (René Stern, #434)
-    + Don’t drop first slash for SSH paths, except for those starting with “~”. 
+    + Don’t drop first slash for SSH paths, except for those starting with “~”.
       (Jelmer Vernooij, René Stern, #463)
     + Properly log off after retrieving just refs. (Jelmer Vernooij)
 - source verfication added
@@ -811,7 +824,7 @@ Fri Nov  1 11:32:29 UTC 2013 - p.drouand@gmail.com
   + Enforce determine_wants returning an empty list rather than None.
   + In the server, support pushes just removing refs.
   + Support passing a single revision to BaseRepo.get_walker() rather
-    than a list of revisions. 
+    than a list of revisions.
   + Add `Repo.get_description` method.
   + Support thin packs in Pack.iterobjects() and Pack.get_raw().
   + Add `MemoryObjectStore.add_pack` and `MemoryObjectStore.add_thin_pack` methods.

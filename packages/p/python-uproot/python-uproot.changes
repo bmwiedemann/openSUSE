@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 17 16:00:00 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.11:
+  * Support reading from S3 [gh#scikit-hep/uproot#916].
+  * fix: pandas and double nested vectors issue 885
+    [gh#scikit-hep/uproot#912].
+  * fix: don't assume Uproot is in global scope in TPython::Eval
+    [gh#scikit-hep/uproot#927].
+  * fix: expressions failing in pandas issue 922
+    [gh#scikit-hep/uproot#930].
+
+-------------------------------------------------------------------
 Mon Jul  3 13:47:02 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.0.9:

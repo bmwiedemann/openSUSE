@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep 19 14:51:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove buildrequires that are not used on sle15
+
+-------------------------------------------------------------------
+Tue Sep 12 07:11:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.9.1:
+  * Upgrade to mypy 1.5.1 (#3864)
+  * Store raw tuples instead of NamedTuples in Black's cache,
+    improving performance and decreasing the size of the cache
+  * More concise formatting for dummy implementations (#3796)
+  * In stub files, add a blank line between a statement with a
+    body (e.g an `if sys.version_info > (3, x):`) and a
+    function definition on the same level (#3862)
+  * Fix a bug whereby spaces were removed from walrus operators
+    within subscript(#3823)
+  * Black now applies exclusion and ignore logic before resolving
+    symlinks (#3846)
+  * Avoid importing `IPython` if notebook cells do not contain
+    magics (#3782)
+  * Improve caching by comparing file hashes as fallback for
+    mtime and size (#3821)
+  * Fix an issue in `blackd` with single character input (#3558)
+
+-------------------------------------------------------------------
 Sun Jul 16 14:00:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.7.0:
@@ -43,7 +69,7 @@ Mon Apr  3 18:49:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.3.0:
   * Import lines with `# fmt: skip` and `# fmt: off` no longer
-    have an extra blank line added when they are right after 
+    have an extra blank line added when they are right after
     another import line (#3610)
   * Added support for formatting files with invalid type comments
   * Document that only the most recent release is supported for
@@ -64,7 +90,7 @@ Mon Apr  3 18:49:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Sep  9 14:42:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- update to version 22.8.0: 
+- update to version 22.8.0:
   * Highlights
     + Python 3.11 is now supported, except for blackd as aiohttp does not support 3.11 as of publishing (#3234)
     + This is the last release that supports running Black on Python 3.6 (formatting 3.6 code will continue to be supported until further notice)
@@ -84,7 +110,7 @@ Fri Sep  9 14:42:55 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   * Configuration
     + Black now uses the presence of debug f-strings to detect target version (#3215)
     + Fix misdetection of project root and verbose logging of sources in cases involving --stdin-filename (#3216)
-    + Immediate .gitignore files in source directories given on the command line are now also respected, previously only .gitignore files 
+    + Immediate .gitignore files in source directories given on the command line are now also respected, previously only .gitignore files
       in the project root and automatically discovered directories were respected (#3237)
   * Documentation
     + Recommend using BlackConnect in IntelliJ IDEs (#3150)
@@ -371,12 +397,12 @@ Fri Sep  4 12:19:10 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
     flag while it's being worked on; this is an undocumented and
     unsupported feature
   * Vim plugin prefer virtualenv packages over global packages
- 
+
 -------------------------------------------------------------------
 Mon Aug 24 21:56:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - update URL
-- python-aiohttp_cors is now available --> install blackd 
+- python-aiohttp_cors is now available --> install blackd
 - skip python2 test on big endian platforms gh#psf/black#1109
 - drop fix-tests.patch
 
@@ -388,7 +414,7 @@ Wed May 27 09:36:28 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 -------------------------------------------------------------------
 Wed Nov 13 11:25:32 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- Add missing Requires 
+- Add missing Requires
 
 -------------------------------------------------------------------
 Mon Nov 11 14:14:38 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -433,7 +459,7 @@ Wed Oct  3 12:40:28 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
  * fixed formatting of lambda expressions with default arguments
  * fixed async for statements: Black no longer breaks them into separate lines
  * note: the Vim plugin stopped registering ,= as a default chord
-    as it turned out to be a bad idea 
+    as it turned out to be a bad idea
 
 -------------------------------------------------------------------
 Wed Aug 29 10:31:11 UTC 2018 - tchvatal@suse.com

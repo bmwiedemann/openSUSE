@@ -23,7 +23,7 @@ Summary:        Command-line benchmarking tool
 License:        Apache-2.0 OR MIT
 Group:          System/Benchmark
 URL:            https://github.com/sharkdp/%{name}
-Source0:        %{name}-%{version}.tar.zst
+Source0:        https://github.com/sharkdp/hyperfine/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging

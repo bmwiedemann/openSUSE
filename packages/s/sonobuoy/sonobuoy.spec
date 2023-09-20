@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           sonobuoy
-Version:        0.56.16
+Version:        0.56.17
 Release:        0
 Summary:        Conformance test suite for diagnosing a Kubernetes cluster
 License:        Apache-2.0

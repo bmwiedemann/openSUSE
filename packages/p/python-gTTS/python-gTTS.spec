@@ -17,7 +17,7 @@
 
 
 Name:           python-gTTS
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Python module to create MP3 files from spoken text via the Google TTS API
 License:        MIT
@@ -26,9 +26,7 @@ URL:            https://github.com/pndurette/gTTS
 Source:         https://github.com/pndurette/gTTS/archive/refs/tags/v%{version}.tar.gz#/gTTS-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module gTTS-token >= 1.1.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.9}
 BuildRequires:  %{python_module requests}
@@ -39,12 +37,8 @@ BuildRequires:  %{python_module testfixtures}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-beautifulsoup4
 Requires:       python-click
-Requires:       python-gTTS-token >= 1.1.3
 Requires:       python-requests
-Requires:       python-setuptools
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch

@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(Clutter|St\\)
 %global alt_name GPaste
 Name:           gpaste
-Version:        44.1
+Version:        45
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
@@ -28,7 +28,8 @@ Group:          System/GUI/GNOME
 URL:            https://github.com/Keruspe/GPaste
 # Source url disabled as we are using a git checkout
 # Source0:        http://www.imagination-land.org/files/%%{name}/%%{alt_name}-%%{version}.tar.xz
-Source0:        %{alt_name}-%{version}.tar.xz
+Source0:        %{alt_name}-%{version}.tar.zst
+
 # For directory ownership
 BuildRequires:  gnome-shell >= 3.28
 BuildRequires:  gobject-introspection-devel >= 1.58.0
@@ -51,7 +52,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mutter-clutter-12)
+BuildRequires:  pkgconfig(mutter-clutter-13)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vapigen) >= 0.42
 BuildRequires:  pkgconfig(x11)

@@ -38,6 +38,7 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.inject)
 BuildRequires:  mvn(org.slf4j:slf4j-nop)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
+#!BuildIgnore:  maven-javadoc-plugin maven-javadoc-plugin-bootstrap
 BuildArch:      noarch
 
 %description

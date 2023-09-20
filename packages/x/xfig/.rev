@@ -519,4 +519,36 @@ SPDX compliant license short name. MIT chosen as majority of files are under thi
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>921733</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>f2747c39becd06803d23b38be56717bd</srcmd5>
+    <version>3.2.9</version>
+    <time>1695209420</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to xfig 3.2.9
+  o Text objects are rendered using the xft library, querying fontconfig.
+  o Relative, not absolute paths to embedded picture files are written
+    to .fig files. This makes it easier to move and share .fig files.
+  o Fig files are saved as utf-8 encoded unicode and all bytes, except
+    backslash, are printed as is. Backslashes are escaped by a second
+    backslash. The second line of generated fig files is exactly
+    &quot;#encoding: UTF-8&quot;.
+    Previously, bytes with a value larger than expressable with 7 bits
+    were printed as backslash-escaped three-digit octal value.
+  o Remove application resources save8bit, latinKeyboard, scaleablefonts,
+    fig2devLocalizeOption, encoding, eucEncoding, localeEncoding.
+  Ticket numbers refer to https://sourceforge.net/p/mcj/tickets/#.
+  o Compounds keep their their size after editing or updating, ticket #51.
+  o Avoid crashing for large scaling, e.g., xfig -userscale 100, #144.
+  o Fix crashing when embedding a pdf as the first picture, ticket #143.
+- Remove obsolete patch xfig.3.2.5-urw-fonts.dif
+- Add patch xfig-3.2.9-dingbats.dif to better support Symbol and Dingbats
+  fonts as otherwise no glyphs will be seen
+- Port the patches
+  * xfig-3.2.6.dif
+  * xfig.3.2.3d-international-std-fonts.dif
+  * xfig.3.2.5b-fixes.dif
+  * xfig.3.2.5b-locale.dif
+  * xfig.3.2.5b-null.dif</comment>
+    <requestid>1112310</requestid>
+  </revision>
 </revisionlist>

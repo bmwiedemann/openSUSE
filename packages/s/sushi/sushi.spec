@@ -19,13 +19,13 @@
 %global __requires_exclude typelib\\(LOKDocView\\)
 
 Name:           sushi
-Version:        44.2
+Version:        45.0
 Release:        0
 Summary:        Quick Previewer for Nautilus
 License:        SUSE-GPL-2.0-with-plugin-exception
 Group:          Productivity/File utilities
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/sushi/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/sushi/45/%{name}-%{version}.tar.xz
 Source99:       sushi-rpmlintrc
 
 BuildRequires:  meson
@@ -74,7 +74,7 @@ Sushi is a quick previewer for Nautilus, the GNOME desktop file manager.
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %{_bindir}/%{name}
 %{_datadir}/dbus-1/services/org.gnome.NautilusPreviewer.service
 %{_datadir}/metainfo/org.gnome.NautilusPreviewer.appdata.xml

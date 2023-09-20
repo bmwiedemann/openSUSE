@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 19 19:06:25 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-timestamp.patch
+    + use SOURCE_DATE_EPOCH for timestamps if it is set
+
+-------------------------------------------------------------------
 Wed Sep  6 15:13:42 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with new sisu-mojos

@@ -411,4 +411,27 @@
 </comment>
     <requestid>1095883</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5c00d37ae5c55ff53bf8115d1bd8918c</srcmd5>
+    <version>8.18.0</version>
+    <time>1695209112</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.18.0.
+  * The default locality of `Hint` and `Instance` commands was
+    switched to `export`.
+  * The universe unification algorithm can now delay the commitment
+    to a sort (the algorithm used to pick `Type`). Thanks to this
+    feature many `Prop` and `SProp` annotations can be now omitted.
+  * Ltac2 supports array literals, maps and sets of primitive
+    datatypes such as names (of constants, inductive types, etc)
+    and fine-grained control over profiling.
+  * The warning system offers new categories, enabling finer
+    (de)activation of specific warnings. This should be
+    particularly useful to handle deprecations.
+  * Many new lemmas useful for teaching analysis with Coq are now
+    part of the standard library about real numbers.
+  * The `#[deprecated]` attribute can now be applied to definitions.
+</comment>
+    <requestid>1111685</requestid>
+  </revision>
 </revisionlist>

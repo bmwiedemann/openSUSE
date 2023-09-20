@@ -1,7 +1,7 @@
 #
 # spec file for package xfig
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xfig
-Version:        3.2.8a
+Version:        3.2.9
 Release:        0
 Summary:        Facility for Interactive Generation of Figures under the X Window System
 License:        MIT
@@ -29,13 +29,13 @@ URL:            https://sourceforge.net/projects/mcj/
 # tar -f xfig-3.2.8a.tar --delete xfig-3.2.8a/Libraries/Examples/aircraft.fig
 # <compress> xfig-3.2.8a.tar
 #
-#Source:        http://sourceforge.net/projects/mcj/files/xfig-%{version}.tar.xz/download#/xfig-%{version}.tar.xz
+#Source:        https://sourceforge.net/projects/mcj/files/xfig-%{version}.tar.xz/download#/xfig-%{version}.tar.xz
 Source:         xfig-%{version}.tar.xz
 Source1:        font-test.fig
 Source3:        xfig.sh
 Source4:        xfig.desktop
 Patch0:         xfig-3.2.6.dif
-Patch1:         xfig.3.2.5-urw-fonts.dif
+Patch1:         xfig-3.2.9-dingbats.dif
 Patch3:         xfig.3.2.3d-international-std-fonts.dif
 # PATCH-FIX-UPSTREAM xfig.3.2.5b-mediaboxrealnb.dif [debian#530898]
 Patch5:         xfig.3.2.5b-null.dif
@@ -50,24 +50,21 @@ BuildRequires:  libpng-devel
 BuildRequires:  netpbm
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-%if 0%{?suse_version} > 1310
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(ijs)
+BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw3d)
 BuildRequires:  pkgconfig(xaw6)
+BuildRequires:  pkgconfig(xft)
+BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xt)
-%else
-BuildRequires:  xaw3d-devel
-BuildRequires:  xorg-x11-devel
-BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%endif
 Requires:       efont-unicode
+Requires:       fontconfig
 Requires:       ghostscript-fonts-std
 Requires:       ifnteuro
-Requires:       mkfontdir
-Requires:       mkfontscale
 Requires:       netpbm
 Requires:       transfig
 Requires:       xorg-x11-fonts
@@ -98,7 +95,7 @@ find -type f | while read file; do
 done
 set -x
 %patch0
-%patch1   -b .urw-fonts
+%patch1   -b .dingbats
 %patch3   -b .international-std-fonts
 %patch5   -b .null
 %patch6   -b .locale
@@ -107,34 +104,15 @@ cp %{SOURCE1} .
 test ! -e Libraries/Examples/aircraft.fig || { echo forbidden file found 1>&2; exit 1; }
 
 %build
-%if 0%{?suse_version} <= 1310
-cat > xaw3d.pc <<-'EOF'
-	prefix=%{_prefix}
-	exec_prefix=%{_prefix}
-	libdir=%{_prefix}/lib
-	includedir=%{_includedir}
-Name:           Xaw3d
-	Description: X 3D Athena Widgets Library
-Version:        1.5E
-Requires:       xmu
-Requires:       xproto
-Requires:       xt
-	Requires.private: x11 xext
-	Cflags: -I${includedir}  -DXAW_INTERNATIONALIZATION -DXAW_MULTIPLANE_PIXMAPS -DXAW_GRAY_BLKWHT_STIPPLES -DXAW_ARROW_SCROLLBARS
-	Libs: -L${libdir} -lXaw3d
-EOF
-PKG_CONFIG_PATH=%{_datadir}/pkgconfig:%{_prefix}/lib/pkgconfig:${PWD}
-export PKG_CONFIG_PATH
-%endif
 CC=gcc
-CFLAGS="%{optflags} -fno-strict-aliasing -w -D_GNU_SOURCE -std=gnu99 -DUSE_XPM -DUSE_SPLASH"
-CFLAGS="$CFLAGS -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -DMAXNUMPTS=50000 -DBSDLPR -DGSBIT"
+CFLAGS="%{optflags} -w -D_GNU_SOURCE -std=gnu99 -DUSE_XPM -DUSE_SPLASH"
+CFLAGS="$CFLAGS $(getconf LFS_CFLAGS) -DMAXNUMPTS=50000"
 export CC CFLAGS
 chmod +x configure
 %configure \
     --docdir=%{_defaultdocdir}/%{name} \
-    --enable-cache-size=512 \
     --enable-tablet \
+    --enable-splash \
     --with-x \
     --with-xaw3d1_5e \
     --with-xaw3d

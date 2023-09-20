@@ -28,22 +28,20 @@ Source:         https://files.pythonhosted.org/packages/source/s/seaborn/seaborn
 Patch0:         numpy-1.25.patch
 # PATCH-FIX-UPSTREAM statsmodels-0.14.patch gh#mwaskom/seaborn#3356
 Patch1:         statsmodels-0.14.patch
+# PATCH-FIX-UPSTREAM inf_as_na.patch gh#mwaskom/seaborn#3424
+Patch2:         inf_as_na.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module matplotlib >= 3.1}
 BuildRequires:  %{python_module numpy-devel >= 1.17}
 BuildRequires:  %{python_module pandas >= 0.25}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module typing-extensions if %python-base < 3.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildConflicts: python-buildservice-tweak
 Requires:       python-matplotlib >= 3.1
 Requires:       python-numpy >= 1.17
 Requires:       python-pandas >= 0.25
-%if %{python_version_nodots} < 38
-Requires:       python-typing-extensions
-%endif
 Recommends:     python-fastcluster
 Recommends:     python-scipy >= 1.3
 Recommends:     python-statsmodels >= 0.10

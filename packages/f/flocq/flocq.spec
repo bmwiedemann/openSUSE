@@ -19,7 +19,7 @@
 
 
 Name:           flocq
-Version:        4.1.1
+Version:        4.1.3
 Release:        0
 Summary:        Formalization of floating point numbers for Coq
 Group:          Productivity/Scientific/Math
@@ -66,10 +66,14 @@ This package contains the HTML documentation for flocq.
 
 # Make the documentation point to coq-doc if possible.
 grep "\-\-coqlib_url http://coq.inria.fr/distrib/current/stdlib" Remakefile.in &&
+%if %{pkg_vcmp coq >= 8.18}
+sed -i "s|--coqlib_url http://coq.inria.fr/distrib/current/stdlib|--coqlib %{_libdir}/coq --coqlib_url %{_defaultdocdir}/coq/stdlib|" Remakefile.in
+%else
 %if %{pkg_vcmp coq >= 8.14}
 sed -i "s|--coqlib_url http://coq.inria.fr/distrib/current/stdlib|--coqlib %{_libdir}/coq-core --coqlib_url %{_defaultdocdir}/coq/stdlib|" Remakefile.in
 %else
 sed -i "s|--coqlib_url http://coq.inria.fr/distrib/current/stdlib|--coqlib %{_libdir}/coq-core|" Remakefile.in
+%endif
 %endif
 
 %build

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-podcasts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,23 +17,23 @@
 #
 
 
-%define commit de438a4d62196bddd134bb155a812fe1
+%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           gnome-podcasts
-Version:        0.5.1
+Version:        0.5.1+99
 Release:        0
 Summary:        Podcast app for GNOME
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/World/podcasts
-Source0:        %{url}/uploads/%{commit}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 6614bb62ecbec7c3b18ea7fe44beb50fe7942b27.patch -- Fix build with meson 0.60 and newer
-Patch0:         https://gitlab.gnome.org/World/podcasts/-/commit/6614bb62ecbec7c3b18ea7fe44beb50fe7942b27.patch
+Source:         %{name}-%{version}.tar.xz
+Source2:        vendor.tar.zst
+Source3:        cargo_config
 
-BuildRequires:  cargo
+BuildRequires:  cargo-packaging
+BuildRequires:  desktop-file-utils
 BuildRequires:  libxml2-tools
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  rust
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.56
@@ -46,8 +46,8 @@ BuildRequires:  pkgconfig(gstreamer-player-1.0) >= 1.16
 BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= 1.16
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.16
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.16
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.11
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(openssl) >= 1.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.20
 
@@ -58,15 +58,19 @@ A Podcast application for GNOME.
 Listen to your favorite podcasts, right from your desktop.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a2
+mkdir .cargo
+cp %{SOURCE3} .cargo/config
 
 %build
+export RUSTFLAGS=%{rustflags}
 %meson \
 	-Dprofile=default \
 	%{nil}
 %meson_build
 
 %install
+export RUSTFLAGS=%{rustflags}
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 

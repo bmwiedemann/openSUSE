@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Sep 17 19:45:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.rc:
+  + Update manual section for TOC plugin.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 10 20:40:39 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 45.beta:
+  + Fix crash when showing synchronization conflict dialog.
+  + Fix gvfs synchronization setup when using Google Drive.
+  + Update manual screenshots.
+  + Updated translations.
+
+- Changes from version 45.alpha:
+  + New Features:
+    - Limit tab max width and add tab scroll.
+    - Use highlight color that is readable in both light and dark
+      modes.
+  + Fixes: Fix occasional crash when renaming link.
+  + Updated translations.
+
+- Replace BuildRequires on glibmm-2.4 and gtkmm-3.0 with
+  glibmm-2.68 and gtkmm-4.0, both being pkgconfig modules.
+- Add explicit BuildRequires on gio-2.0 and giomm-2.68, both being
+  pkgconfig modules. These were previously being pulled in
+  (giomm-2.4, in case of giomm) along with glibmm-2.4, since they
+  all come from the same package.
+- Drop deprecated BuildRequires on pkgconfig(gtk+-3.0) and
+  libboost_test-devel (dropped on 3.23.0 release).
+
+-------------------------------------------------------------------
 Sat Jul 22 08:59:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:

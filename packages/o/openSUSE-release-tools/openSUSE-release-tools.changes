@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 18 12:34:52 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230918.9d6c197:
+  * check_source.py: Don't skip various checks and reviews for non-spec packages
+
+-------------------------------------------------------------------
 Tue Sep 12 21:09:58 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230912.fe4936c:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 19 12:03:14 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+
+-------------------------------------------------------------------
 Thu Apr 20 09:18:39 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

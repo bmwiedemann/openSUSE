@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-bokeh
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -29,7 +29,7 @@
 %bcond_with testexamples
 
 Name:           python-bokeh%{psuffix}
-Version:        3.2.0
+Version:        3.2.2
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause

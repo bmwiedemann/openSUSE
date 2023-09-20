@@ -1,0 +1,122 @@
+-------------------------------------------------------------------
+Sat Sep 16 08:35:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2:
+  * Better grapheme support for hundreds of new languages
+    as part of Wilderness project
+  * Also includes updated G2P rules for indic
+- add flite-2.2-lto.patch (build with LTO)
+- add flite-2.2-texinfo-7.0.patch (build with newer texinfo)
+
+-------------------------------------------------------------------
+Sun Jan 17 19:01:05 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.0.0
+* No changelog provided
+
+-------------------------------------------------------------------
+Tue Apr  7 11:17:51 UTC 2015 - vodoo@vakw.ch
+
+- add patch for doc/Makefile, changed option -number to -number-sections
+  to avoid option error
+
+-------------------------------------------------------------------
+Thu Mar 26 16:07:46 UTC 2015 - adrian@suse.de
+
+- fix build for factory, adding texi2html build requires
+
+-------------------------------------------------------------------
+Mon Dec 26 16:26:20 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant sections
+
+-------------------------------------------------------------------
+Thu Dec 15 22:07:52 UTC 2011 - chris@computersalat.de
+
+- rework shlibs patch
+  * add -lm ti linker flags
+- fix deps
+  * BuildReq: autoconf
+- spec-cleanup
+- fix changes file
+
+-------------------------------------------------------------------
+Sun Mar 14 22:12:27 UTC 2010 - chris@computersalat.de
+
+- update to version 1.4
+  o crude multi-voice selection support (may change)
+  o 4 basic voices are included 3 clustergen (awb, rms and slt)
+    plus the kal diphone database
+  o CMULEX now uses maximum onset for syllabification
+  o alsa support
+  o Clustergen support (including mlpg with mixed excitation)
+    But is still slow on limited processors
+  o Windows support with Visual Studio (specifically for the
+    Olympus Spoken Dialog System)
+  o WinCE support is redone with cegcc/mingw32ce with example
+    example TTS app: Fluwm: Flite on Windows Mobile
+  o Speed-ups in feature interpretation limiting calls to alloc
+  o Speed-ups (and fixes) for converting clunits festvox voices
+- removed obsolete sources/patches
+  o README-ALSA.txt
+  o flite-1.3-alsa_support.patch
+- reworked patches
+  o flite-1.3-sharedlibs.patch > flite-1.4-sharedlibs.patch
+- cleanup spec
+  o added header
+  o sort TAGS
+  o bzipped Source
+  o macros
+- changelog to changes file
+
+-------------------------------------------------------------------
+Tue Nov 14 13:55:50 CET 2006 - faucamp@csir.co.za
+
+- Added comment to %%build stating why "_smp_flags" isn't used with make
+
+-------------------------------------------------------------------
+Mon Nov 13 17:59:20 CET 2006 - faucamp@csir.co.za
+
+- Modified alsa support patch file to patch "configure.in" instead of "configure"
+- Added "autoconf" step to %%build
+- Added BuildRequires: autoconf
+- Fixed patch backup file suffixes
+- Renamed patch files to a more standard format
+- Moved header files from /usr/include to /usr/include/flite
+- Added -p option to all cp operations (to preserve timestamps)
+
+-------------------------------------------------------------------
+Sun Nov 12 16:11:49 CET 2006 - faucamp@csir.co.za
+
+- Recreated patch to allow shared libraries to build correctly (sharedlibs.patch)
+- "flite" and "flite_time" binaries now link to flite shared libraries (sharedlibs.patch)
+- Simplified the documentation patch filename
+- Modified patch steps in %%prep to create backup files with different suffixes
+- Removed "_smp_flags" macro from %%build for all archs
+
+-------------------------------------------------------------------
+Fri Oct 20 05:22:46 CET 2006 - faucamp@csir.co.za
+
+- Modified "build" so that "_smp_flags" is only used for i386 arch
+
+-------------------------------------------------------------------
+Mon Oct 10 07:26:59 CET 2006 - faucamp@csir.co.za
+
+- Removed "_smp_flags" macro from "build" for x86_64 arch
+
+-------------------------------------------------------------------
+Tue Sep 26 12:32:17 CET 2006 - faucamp@csir.co.za
+
+- Added README-ALSA.txt (Source1)
+- Removed subpackage: flite-devel-static
+- Modified shared libraries patch (Patch0) to prevent building static libraries
+- Renamed patch files: Patch0, Patch1
+- Added flite 1.3 ALSA patch (Patch2) by Lukas Loehrer - thanks Anthony Green for pointing it out
+- Added configure option: --with-audio=alsa
+- Added BuildRequires: alsa-lib-devel
+
+-------------------------------------------------------------------
+Fri Sep 22 12:58:06 CET 2006 - faucamp@csir.co.za
+
+- Initial RPM build
+

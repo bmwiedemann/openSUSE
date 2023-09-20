@@ -1,8 +1,8 @@
-Index: b/src/slic3r/Utils/OctoPrint.cpp
+Index: PrusaSlicer-version_2.6.1/src/slic3r/Utils/OctoPrint.cpp
 ===================================================================
---- a/src/slic3r/Utils/OctoPrint.cpp
-+++ b/src/slic3r/Utils/OctoPrint.cpp
-@@ -746,7 +746,7 @@ bool PrusaLink::get_storage(wxArrayStrin
+--- PrusaSlicer-version_2.6.1.orig/src/slic3r/Utils/OctoPrint.cpp
++++ PrusaSlicer-version_2.6.1/src/slic3r/Utils/OctoPrint.cpp
+@@ -751,7 +751,7 @@ bool PrusaLink::get_storage(wxArrayStrin
                  if (path && (!available || *available)) {
                      StorageInfo si;
                      si.path = boost::nowide::widen(*path);

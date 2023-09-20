@@ -1150,4 +1150,17 @@ and CVE references,
     <comment></comment>
     <requestid>1103106</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>d20ef15951e908a4faa575b8217b9a8b</srcmd5>
+    <version>6.3</version>
+    <time>1695209436</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.3:
+  - Bug 5294: ERR_CANNOT_FORWARD returned instead of ERR_DNS_FAIL
+  - Bug 4981: Work around in-call job invalidation bugs
+  - basic_smb_lm_auth: fix 'no previous declaration' warnings
+  - CacheManager: require /squid-internal-mgr/ URL path prefix
+  - ESI: Fix build [-Wsingle-bit-bitfield-constant-conversion]</comment>
+    <requestid>1112346</requestid>
+  </revision>
 </revisionlist>

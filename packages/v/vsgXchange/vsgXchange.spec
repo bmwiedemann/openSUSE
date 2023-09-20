@@ -19,7 +19,7 @@
 %define _vsg_so_nr 1
 
 Name:           vsgXchange
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        3D graphics toolkit
 License:        MIT

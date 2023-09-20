@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 18 18:17:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.1.0:
+  * fix -Z fuzzy matching when character deletions are solely
+    specified with a minus sign
+  * fix --pager when a regex syntax error occurs
+  * update --pager to use $PAGER
+  * update --ignore-files for compliance with git and ag gitignore
+    rules
+  * update -Q TUI ctrl-S and ctrl-W to jump to context group
+    separators when context options -ABC are specified
+  * update -o for GNU grep compatibility with "empty-matching"
+    patterns
+  * update POSIX [[:space:]] and \s to exclude newline \n matching
+  * improve performance: faster -c and line matching
+  * improve performance: faster "empty-matching" pattern search
+
+-------------------------------------------------------------------
 Mon Aug 28 04:46:13 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.0.5:

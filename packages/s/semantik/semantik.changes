@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  7 15:51:56 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.2.10:
+  * Install the missing markdown template file 
+  * Disable the fullscreen toggle due to incompatibilities 
+  * Fix a bug in diagram creation
+
+-------------------------------------------------------------------
 Tue Apr 18 15:30:06 UTC 2023 - Max Lin <mlin@suse.com>
 
 - Use python3 as the script interpreter in wscript file

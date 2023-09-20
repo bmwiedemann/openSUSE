@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 18 06:03:34 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * tomcat-9.0-osgi-build.patch
+    + make it more robust to change in number of artifacts in bnd
+    + do not enumerate jars, just take all jars from the aqute-bnd
+      directory into the classpath
+
+-------------------------------------------------------------------
 Tue Sep 12 11:30:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Require(pre) shadow because groupadd is needed early

@@ -1,14 +1,47 @@
 -------------------------------------------------------------------
+Sun Sep 17 18:32:50 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.6.3:
+  * Add test validating using CRD that misses explicit draft version
+  * Force Draft version of JsonSchema
+  * Update Readme.md to add `fullgroup` explanation (#220)
+  * Fix #130 in a backward-compatible way (#219)
+  * Update Readme.md
+  * fix: add missing output formats in error message (#213)
+
+-------------------------------------------------------------------
+Sun Sep 17 18:16:35 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.6.2:
+  * Fix for 196: Multi-architecture image (#204)
+  * Fix anchored link on Readme.md (#205)
+  * Revert "Add support for Arm64 Docker images (#201)"
+  * Add support for Arm64 Docker images (#201)
+  * Move cfg parsing out of realmain, rename realmain to kubeconform
+  * Add JSON/YAML annotations to Config struct
+  * Do not hardcode output stream in pkg/output
+  * Add support for "pretty" output (#195)
+  * docs: Add winget as installation method on Windows (#192)
+  * Fix CI badge image (#184)
+
+-------------------------------------------------------------------
+Sun Sep 17 18:12:17 UTC 2023 - jkowalczyk@suse.com
+
+- _service change disabled to manual per osc deprecation warning:
+  WARNING: Command 'disabledrun/dr' is obsolete, please convert
+  your _service to use 'manual' and then 'manualrun/mr' instead.
+
+-------------------------------------------------------------------
 Mon Mar 27 06:42:35 UTC 2023 - andrea.manzini@suse.com
 
 - Update to version 0.6.1:
-  * fix: expose error instance path instead of schema path 
-  * support disabling ssl validation in openapi2jsonschema.py 
-  * Try to expose JSON paths 
-  * feat: support to set an alternative image owner 
-  * Documenting Helm support via 3rd party repo 
+  * fix: expose error instance path instead of schema path
+  * support disabling ssl validation in openapi2jsonschema.py
+  * Try to expose JSON paths
+  * feat: support to set an alternative image owner
+  * Documenting Helm support via 3rd party repo
   * Update LICENSE
-  * Add opencontainers label 
+  * Add opencontainers label
   * Add informations how to use Kubeconform in Gitlab-CI
 
 -------------------------------------------------------------------

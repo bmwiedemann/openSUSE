@@ -2448,4 +2448,15 @@
     <comment>New stable rel (forwarded request 1102589 from iznogood)</comment>
     <requestid>1102938</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>16814d6fadd0e6e110b11db68ee1e9f2</srcmd5>
+    <version>3.50.0</version>
+    <time>1695208967</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1112343 from jengelh
+
+- Let the description point out details distinguishing this
+  terminal emulator from others.</comment>
+    <requestid>1112408</requestid>
+  </revision>
 </revisionlist>

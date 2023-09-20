@@ -1,5 +1,6 @@
---- src/CodeGenerator.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ src/CodeGenerator.tokens	2020-04-02 15:05:32.083265957 +0200
+diff -urEbwBN src/main/java/CodeGenerator.tokens src/main/java/CodeGenerator.tokens
+--- src/main/java/CodeGenerator.tokens	1970-01-01 01:00:00.000000000 +0100
++++ src/main/java/CodeGenerator.tokens	2023-09-16 09:51:34.457267791 +0200
 @@ -0,0 +1,79 @@
 +RBRACK=17
 +LBRACK=16
@@ -80,8 +81,9 @@
 +'@'=33
 +'@end'=34
 +'/'=38
---- src/Group.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ src/Group.tokens	2020-04-02 15:05:32.083265957 +0200
+diff -urEbwBN src/main/java/Group.tokens src/main/java/Group.tokens
+--- src/main/java/Group.tokens	1970-01-01 01:00:00.000000000 +0100
++++ src/main/java/Group.tokens	2023-09-16 09:51:34.560601828 +0200
 @@ -0,0 +1,44 @@
 +T__16=16
 +T__17=17
@@ -127,10 +129,11 @@
 +'implements'=28
 +'import'=29
 +'true'=14
---- src/org/stringtemplate/v4/compiler/CodeGenerator.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/stringtemplate/v4/compiler/CodeGenerator.java	2020-04-02 15:05:32.083265957 +0200
+diff -urEbwBN src/main/java/org/stringtemplate/v4/compiler/CodeGenerator.java src/main/java/org/stringtemplate/v4/compiler/CodeGenerator.java
+--- src/main/java/org/stringtemplate/v4/compiler/CodeGenerator.java	1970-01-01 01:00:00.000000000 +0100
++++ src/main/java/org/stringtemplate/v4/compiler/CodeGenerator.java	2023-09-16 09:51:34.457267791 +0200
 @@ -0,0 +1,2595 @@
-+// $ANTLR 3.5.2 org/stringtemplate/v4/compiler/CodeGenerator.g 2020-04-02 13:04:44
++// $ANTLR 3.5.3 org/stringtemplate/v4/compiler/CodeGenerator.g 2022-03-22 00:00:00
 +
 +/*
 + * [The "BSD license"]
@@ -2725,10 +2728,11 @@
 +	public static final BitSet FOLLOW_expr_in_listElement1091 = new BitSet(new long[]{0x0000000000000002L});
 +	public static final BitSet FOLLOW_NULL_in_listElement1095 = new BitSet(new long[]{0x0000000000000002L});
 +}
---- src/org/stringtemplate/v4/compiler/GroupLexer.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/stringtemplate/v4/compiler/GroupLexer.java	2020-04-02 15:05:32.083265957 +0200
+diff -urEbwBN src/main/java/org/stringtemplate/v4/compiler/GroupLexer.java src/main/java/org/stringtemplate/v4/compiler/GroupLexer.java
+--- src/main/java/org/stringtemplate/v4/compiler/GroupLexer.java	1970-01-01 01:00:00.000000000 +0100
++++ src/main/java/org/stringtemplate/v4/compiler/GroupLexer.java	2023-09-16 09:51:34.623935593 +0200
 @@ -0,0 +1,1310 @@
-+// $ANTLR 3.5.2 org/stringtemplate/v4/compiler/Group.g 2020-04-02 13:04:44
++// $ANTLR 3.5.3 org/stringtemplate/v4/compiler/Group.g 2022-03-22 00:00:00
 +
 +/*
 + * [The "BSD license"]
@@ -4038,10 +4042,11 @@
 +	}
 +
 +}
---- src/org/stringtemplate/v4/compiler/GroupParser.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/stringtemplate/v4/compiler/GroupParser.java	2020-04-02 15:05:32.083265957 +0200
+diff -urEbwBN src/main/java/org/stringtemplate/v4/compiler/GroupParser.java src/main/java/org/stringtemplate/v4/compiler/GroupParser.java
+--- src/main/java/org/stringtemplate/v4/compiler/GroupParser.java	1970-01-01 01:00:00.000000000 +0100
++++ src/main/java/org/stringtemplate/v4/compiler/GroupParser.java	2023-09-16 09:51:34.560601828 +0200
 @@ -0,0 +1,1420 @@
-+// $ANTLR 3.5.2 org/stringtemplate/v4/compiler/Group.g 2020-04-02 13:04:44
++// $ANTLR 3.5.3 org/stringtemplate/v4/compiler/Group.g 2022-03-22 00:00:00
 +
 +/*
 + * [The "BSD license"]
@@ -5461,10 +5466,11 @@
 +	public static final BitSet FOLLOW_RBRACK_in_keyValue755 = new BitSet(new long[]{0x0000000000000002L});
 +	public static final BitSet FOLLOW_ID_in_keyValue768 = new BitSet(new long[]{0x0000000000000002L});
 +}
---- src/org/stringtemplate/v4/compiler/STParser.java	1970-01-01 01:00:00.000000000 +0100
-+++ src/org/stringtemplate/v4/compiler/STParser.java	2020-04-02 15:05:32.083265957 +0200
+diff -urEbwBN src/main/java/org/stringtemplate/v4/compiler/STParser.java src/main/java/org/stringtemplate/v4/compiler/STParser.java
+--- src/main/java/org/stringtemplate/v4/compiler/STParser.java	1970-01-01 01:00:00.000000000 +0100
++++ src/main/java/org/stringtemplate/v4/compiler/STParser.java	2023-09-16 09:51:34.297266701 +0200
 @@ -0,0 +1,5613 @@
-+// $ANTLR 3.5.2 org/stringtemplate/v4/compiler/STParser.g 2020-04-02 13:04:43
++// $ANTLR 3.5.3 org/stringtemplate/v4/compiler/STParser.g 2022-03-22 00:00:00
 +
 +package org.stringtemplate.v4.compiler;
 +import org.stringtemplate.v4.misc.ErrorManager;
@@ -6732,7 +6738,7 @@
 +
 +
 +			// AST REWRITE
-+			// elements: ID, template, template, ID, i
++			// elements: ID, ID, i, template, template
 +			// token labels: i
 +			// rule labels: retval
 +			// token list labels: 
@@ -6934,7 +6940,7 @@
 +
 +
 +			// AST REWRITE
-+			// elements: template, ids
++			// elements: ids, template
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: ids
@@ -7318,7 +7324,7 @@
 +
 +
 +			// AST REWRITE
-+			// elements: ELSE, IF, c2, i, ELSE, IF, c2, c1, ELSEIF, t3, t3, t1, ELSEIF, c1, t2, t2, t1
++			// elements: ELSE, ELSE, ELSEIF, ELSEIF, IF, IF, c1, c1, c2, c2, i, t1, t1, t2, t2, t3, t3
 +			// token labels: i
 +			// rule labels: t1, c1, retval, t3
 +			// token list labels: 
@@ -7352,7 +7358,7 @@
 +				stream_t1.reset();
 +
 +				// org/stringtemplate/v4/compiler/STParser.g:129:41: ( ^( 'elseif' $c2 $t2) )*
-+				while ( stream_ELSEIF.hasNext()||stream_t2.hasNext()||stream_c2.hasNext() ) {
++				while ( stream_ELSEIF.hasNext()||stream_c2.hasNext()||stream_t2.hasNext() ) {
 +					// org/stringtemplate/v4/compiler/STParser.g:129:41: ^( 'elseif' $c2 $t2)
 +					{
 +					CommonTree root_3 = (CommonTree)adaptor.nil();
@@ -7364,8 +7370,8 @@
 +
 +				}
 +				stream_ELSEIF.reset();
-+				stream_t2.reset();
 +				stream_c2.reset();
++				stream_t2.reset();
 +
 +				// org/stringtemplate/v4/compiler/STParser.g:129:62: ( ^( 'else' ( $t3)? ) )?
 +				if ( stream_ELSE.hasNext()||stream_t3.hasNext() ) {
@@ -7408,7 +7414,7 @@
 +				stream_t1.reset();
 +
 +				// org/stringtemplate/v4/compiler/STParser.g:130:41: ( ^( 'elseif' $c2 $t2) )*
-+				while ( stream_c2.hasNext()||stream_t2.hasNext()||stream_ELSEIF.hasNext() ) {
++				while ( stream_ELSEIF.hasNext()||stream_c2.hasNext()||stream_t2.hasNext() ) {
 +					// org/stringtemplate/v4/compiler/STParser.g:130:41: ^( 'elseif' $c2 $t2)
 +					{
 +					CommonTree root_2 = (CommonTree)adaptor.nil();
@@ -7419,12 +7425,12 @@
 +					}
 +
 +				}
++				stream_ELSEIF.reset();
 +				stream_c2.reset();
 +				stream_t2.reset();
-+				stream_ELSEIF.reset();
 +
 +				// org/stringtemplate/v4/compiler/STParser.g:130:62: ( ^( 'else' ( $t3)? ) )?
-+				if ( stream_t3.hasNext()||stream_ELSE.hasNext() ) {
++				if ( stream_ELSE.hasNext()||stream_t3.hasNext() ) {
 +					// org/stringtemplate/v4/compiler/STParser.g:130:62: ^( 'else' ( $t3)? )
 +					{
 +					CommonTree root_2 = (CommonTree)adaptor.nil();
@@ -7439,8 +7445,8 @@
 +					}
 +
 +				}
-+				stream_t3.reset();
 +				stream_ELSE.reset();
++				stream_t3.reset();
 +
 +				adaptor.addChild(root_0, root_1);
 +				}
@@ -7824,7 +7830,7 @@
 +
 +
 +					// AST REWRITE
-+					// elements: prop, notConditionalExpr
++					// elements: notConditionalExpr, prop
 +					// token labels: prop
 +					// rule labels: retval
 +					// token list labels: 
@@ -7872,7 +7878,7 @@
 +
 +
 +					// AST REWRITE
-+					// elements: notConditionalExpr, mapExpr
++					// elements: mapExpr, notConditionalExpr
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -8109,7 +8115,7 @@
 +					stream_exprNoComma.add(exprNoComma73.getTree());
 +
 +					// AST REWRITE
-+					// elements: ID, EQUALS, exprNoComma
++					// elements: EQUALS, ID, exprNoComma
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -8270,7 +8276,7 @@
 +					stream_mapTemplateRef.add(mapTemplateRef76.getTree());
 +
 +					// AST REWRITE
-+					// elements: memberExpr, mapTemplateRef
++					// elements: mapTemplateRef, memberExpr
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -8498,7 +8504,7 @@
 +					stream_mapTemplateRef.add(mapTemplateRef80.getTree());
 +
 +					// AST REWRITE
-+					// elements: memberExpr, mapTemplateRef
++					// elements: mapTemplateRef, memberExpr
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -8775,7 +8781,7 @@
 +
 +
 +					// AST REWRITE
-+					// elements: qualifiedId, args
++					// elements: args, qualifiedId
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -10012,7 +10018,7 @@
 +
 +
 +					// AST REWRITE
-+					// elements: SLASH, ID
++					// elements: ID, SLASH
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -10063,7 +10069,7 @@
 +
 +
 +					// AST REWRITE
-+					// elements: qualifiedId, SLASH, r
++					// elements: SLASH, qualifiedId, r
 +					// token labels: r
 +					// rule labels: retval
 +					// token list labels: 
@@ -10543,7 +10549,7 @@
 +			stream_arg.add(arg150.getTree());
 +
 +			// AST REWRITE
-+			// elements: ID, arg, EQUALS
++			// elements: EQUALS, ID, arg
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -11077,8 +11083,9 @@
 +	public static final BitSet FOLLOW_RBRACK_in_list1862 = new BitSet(new long[]{0x0000000000000002L});
 +	public static final BitSet FOLLOW_exprNoComma_in_listElement1882 = new BitSet(new long[]{0x0000000000000002L});
 +}
---- src/STParser.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ src/STParser.tokens	2020-04-02 15:05:32.083265957 +0200
+diff -urEbwBN src/main/java/STParser.tokens src/main/java/STParser.tokens
+--- src/main/java/STParser.tokens	1970-01-01 01:00:00.000000000 +0100
++++ src/main/java/STParser.tokens	2023-09-16 09:51:34.300600057 +0200
 @@ -0,0 +1,79 @@
 +RBRACK=17
 +LBRACK=16

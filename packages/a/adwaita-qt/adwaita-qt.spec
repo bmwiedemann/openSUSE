@@ -78,12 +78,6 @@ Summary:        Adwaita Qt5 theme
 %if 0%{?qt6}
 Summary:        Adwaita Qt6 theme
 %endif
-%if 0%{?qt5}
-Supplements:    (libQt5Core5 and gnome-session)
-%endif
-%if 0%{?qt6}
-Supplements:    (libQt6Core6 and gnome-session)
-%endif
 
 %description -n adwaita-%{flavor}
 %if 0%{?qt5}

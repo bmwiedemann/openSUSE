@@ -208,4 +208,17 @@
 - Update Requires from setup.py (forwarded request 1091847 from glaubitz)</comment>
     <requestid>1091882</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>7d71e1cbd2c2e2ec2cdfeb3a7ef77b7a</srcmd5>
+    <version>4.14.0</version>
+    <time>1695209506</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.14.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1111587 from glaubitz)</comment>
+    <requestid>1112523</requestid>
+  </revision>
 </revisionlist>

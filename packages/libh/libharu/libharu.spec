@@ -16,18 +16,16 @@
 #
 
 
-%define relver 2
+%define relver 2_4
 %define lname   libhpdf%{relver}
 Name:           libharu
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        Library for generating PDF files
 License:        Zlib
 Group:          Productivity/Office/Other
 URL:            http://libharu.org
 Source0:        https://github.com/libharu/libharu/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM libharu-so-versioning.patch gh#libharu/libharu#284 badshah400@gmail.com -- Add correct versioning to shared object libhpdf.so
-Patch0:         libharu-so-versioning.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libpng-devel
@@ -48,7 +46,6 @@ It supports the following features:
 %package -n %{lname}
 Summary:        Library for generating PDF files
 Group:          System/Libraries
-
 
 %description -n %{lname}
 libHaru is a library for generating PDF files.

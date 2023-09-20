@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Sep 20 05:18:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 2.13.0
+  * New features and improvements
+    + fully ignore any possible jdk bug
+    + MCOMPILER-402: Add implicitOption to CompilerConfiguration
+    + Add a custom compile argument
+      replaceProcessorPathWithProcessorModulePath to force the
+      plugin replace processorPath with processormodulepath
+    + describe compiler configuration on run
+    + simplify "Compiling" info message: display relative path
+  * Bug Fixes
+    + Respect CompilerConfiguration.sourceFiles in
+      EclipseJavaCompiler
+    + Avoid NPE in AspectJCompilerTest on AspectJ 1.9.8+
+  * Dependency updates
+    + Bump maven-surefire-plugin from 3.0.0-M5 to 3.0.0-M6
+    + Bump error_prone_core from 2.11.0 to 2.13.1
+    + Bump github/codeql-action from 1 to 2
+    + Bump ecj from 3.28.0 to 3.29.0
+    + Bump release-drafter/release-drafter from 5.18.1 to 5.19.0
+    + Bump ecj from 3.29.0 to 3.30.0
+    + Bump maven-invoker-plugin from 3.2.2 to 3.3.0
+    + Bump maven-enforcer-plugin from 3.0.0 to 3.1.0
+    + Bump error_prone_core from 2.13.1 to 2.14.0
+    + Bump maven-surefire-plugin from 3.0.0-M6 to 3.0.0-M7
+    + Bump ecj from 3.31.0 to 3.32.0
+    + Bump junit-bom from 5.9.0 to 5.9.1
+    + Bump ecj from 3.30.0 to 3.31.0
+    + Bump groovy from 3.0.12 to 3.0.13
+    + Bump groovy-json from 3.0.12 to 3.0.13
+    + Bump groovy-xml from 3.0.12 to 3.0.13
+    + Bump animal-sniffer-maven-plugin from 1.21 to 1.22
+    + Bump error_prone_core from 2.14.0 to 2.15.0
+    + Bump junit-bom from 5.8.2 to 5.9.0
+    + Bump groovy-xml from 3.0.11 to 3.0.12
+    + Bump groovy-json from 3.0.11 to 3.0.12
+    + Bump groovy from 3.0.11 to 3.0.12
+  * Maintenance
+    + Require Maven 3.2.5
+    + add it for issue #183 but using javac compiler, use properties
+      for versions in its
+    + cleanup deprecated unused code
+  * Build
+    + use shared release drafter
+
+    Bump maven-surefire-plugin from 3.0.0-M5 to 3.0.0-M6
+    Bump error_prone_core from 2.11.0 to 2.13.1
+    Bump github/codeql-action from 1 to 2
+    Bump ecj from 3.28.0 to 3.29.0
+    Bump release-drafter/release-drafter from 5.18.1 to 5.19.0
+
+-------------------------------------------------------------------
 Sat May 21 19:49:23 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Plexus testing is a dependency with scope test

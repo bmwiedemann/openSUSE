@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 19 12:02:42 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 23.5.0
+  * Fix a bug with CONTROLLER_WAIT events
+  * drop python2 support
+  * Added support for Python 3.11.
+  * No more ipaddress dependency
+
+-------------------------------------------------------------------
 Tue Jun 21 21:03:14 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Actually requires twisted[tls]: python-Twisted-tls

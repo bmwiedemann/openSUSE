@@ -1,7 +1,7 @@
 #
 # spec file for package morris
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           morris
-Version:        0.2
+Version:        0.3
 Release:        0
 Summary:        Nine men's morris game
 License:        GPL-3.0-only
@@ -26,14 +26,14 @@ Group:          Amusements/Games/Strategy/Other
 URL:            http://nine-mens-morris.net/index.html
 Source:         http://nine-mens-morris.net/data/%{name}-%{version}.tar.bz2
 Source1:        morris.6
-Patch0:         boost-signals.patch
-Patch1:         gsettings-port.patch
-Patch2:         workaround_autotools.patch
-Patch3:         localedir.patch
+Patch0:         workaround_autotools.patch
+Patch1:         localedir.patch
 BuildRequires:  automake
 BuildRequires:  boost-devel
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
+BuildRequires:  libicu-devel
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
@@ -73,8 +73,6 @@ Furthermore, the game supports:
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
 export CXXFLAGS="%{optflags} -Wno-return-type"

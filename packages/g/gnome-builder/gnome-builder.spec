@@ -17,16 +17,17 @@
 
 
 # Update this on every major/minor bump
-%define basever 44
+%define basever 45
+%define glib_version 2.75
 
 Name:           gnome-builder
-Version:        44.1
+Version:        45.0
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Builder
-Source0:        https://download.gnome.org/sources/gnome-builder/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-builder/45/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
 # PATCH-FIX-OPENSUSE Dirty-quick-hackfix-typelibs.patch -- Nuke away bogus typelibs dependencies
@@ -35,42 +36,38 @@ Patch0:         Dirty-quick-hackfix-typelibs.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  llvm-clang-devel >= 3.5
-BuildRequires:  meson >= 0.59.1
+BuildRequires:  meson >= 0.60
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-gobject
 BuildRequires:  (pkgconfig(webkit2gtk-5.0) or pkgconfig(webkitgtk-6.0))
-BuildRequires:  pkgconfig(dspy-1)
+BuildRequires:  pkgconfig(dspy-1) >= 1.4.0
 BuildRequires:  pkgconfig(editorconfig)
 BuildRequires:  pkgconfig(enchant-2)
-BuildRequires:  pkgconfig(flatpak) >= 0.8.0
+BuildRequires:  pkgconfig(flatpak) >= 1.10.2
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.61.2
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.71
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.48.0
-BuildRequires:  pkgconfig(gtk4) >= 4.7
-BuildRequires:  pkgconfig(gtksourceview-5) >= 5.7.2
+BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(gio-unix-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.74
+BuildRequires:  pkgconfig(gtk4) >= 4.10
+BuildRequires:  pkgconfig(gtksourceview-5) >= 5.8
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(jsonrpc-glib-1.0) >= 3.43.0
-BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(libcmark)
-BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.37.0
-BuildRequires:  pkgconfig(libdex-1) >= 0.1.1
-BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 0.25.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4
+BuildRequires:  pkgconfig(libcmark) >= 0.29.0
+BuildRequires:  pkgconfig(libdex-1) >= 0.2
+BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 1.1.0
 BuildRequires:  pkgconfig(libpanel-1) >= 1.1.2
-BuildRequires:  pkgconfig(libpcre2-posix)
-BuildRequires:  pkgconfig(libpeas-1.0) >= 1.32.0
+BuildRequires:  pkgconfig(libpeas-2) >= 1.99.0
 BuildRequires:  pkgconfig(libportal-gtk4)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
-BuildRequires:  pkgconfig(pygobject-3.0) >= 3.21.0
-BuildRequires:  pkgconfig(sysprof-4) >= 3.42.0
-BuildRequires:  pkgconfig(sysprof-capture-4) >= 3.42.0
-BuildRequires:  pkgconfig(sysprof-ui-5) >= 3.42.0
+BuildRequires:  pkgconfig(sysprof-6)
+BuildRequires:  pkgconfig(sysprof-capture-4) >= 45.0
 BuildRequires:  pkgconfig(template-glib-1.0) >= 3.36.1
-BuildRequires:  pkgconfig(vapigen) >= 0.30.0.55
 BuildRequires:  pkgconfig(vte-2.91-gtk4) >= 0.70.0
 Requires:       autoconf
 Requires:       automake
@@ -80,6 +77,7 @@ Requires:       typelib(Jsonrpc) = 1.0
 Recommends:     %{name}-doc
 Recommends:     flatpak
 Recommends:     flatpak-builder
+Suggests:       gjs
 Obsoletes:      gnome-builder-plugin-beautifier < 3.27.4
 Obsoletes:      gnome-builder-plugin-clang < 43.alpha
 Obsoletes:      gnome-builder-plugin-cmake < 43.alpha

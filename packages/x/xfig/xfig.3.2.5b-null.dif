@@ -5,9 +5,9 @@
  3 files changed, 9 insertions(+)
 
 --- src/w_dir.c
-+++ src/w_dir.c	2016-09-22 08:47:20.164004194 +0000
-@@ -130,6 +130,8 @@ FileSelected(Widget w, XtPointer client_
- {
++++ src/w_dir.c	2023-09-13 09:39:27.454515496 +0000
+@@ -151,6 +151,8 @@ FileSelected(Widget w, XtPointer client_
+ 
      XawListReturnStruct *ret_struct = (XawListReturnStruct *) call_data;
  
 +    if (!ret_struct)
@@ -15,8 +15,8 @@
      strcpy(CurrentSelectionName, ret_struct->string);
      FirstArg(XtNstring, CurrentSelectionName);
      if (browse_up) {
-@@ -161,6 +163,8 @@ DirSelected(Widget w, XtPointer client_d
- {
+@@ -185,6 +187,8 @@ DirSelected(Widget w, XtPointer client_d
+ 
      XawListReturnStruct *ret_struct = (XawListReturnStruct *) call_data;
  
 +    if (!ret_struct)
@@ -25,8 +25,8 @@
      DoChangeDir(CurrentSelectionName);
  }
 --- src/w_library.c
-+++ src/w_library.c	2016-09-22 08:47:20.164004194 +0000
-@@ -476,6 +476,8 @@ NewObjectSel(Widget w, XtPointer closure
++++ src/w_library.c	2023-09-13 09:38:05.523980529 +0000
+@@ -514,6 +514,8 @@ NewObjectSel(Widget w, XtPointer closure
      int		    new_obj;
      XawListReturnStruct *ret_struct = (XawListReturnStruct *) call_data;
  
@@ -36,9 +36,9 @@
      if (icons_made) {
  	/* unhighlight the current view icon */
 --- src/w_srchrepl.c
-+++ src/w_srchrepl.c	2016-09-22 08:47:20.164004194 +0000
-@@ -883,6 +883,9 @@ spell_select_word(Widget widget, XtPoint
- {
++++ src/w_srchrepl.c	2023-09-13 09:40:26.341462455 +0000
+@@ -918,6 +918,9 @@ spell_select_word(Widget widget, XtPoint
+ 	(void)widget; (void)closure;
      XawListReturnStruct *ret_struct = (XawListReturnStruct *) call_data;
  
 +    if (!ret_struct)

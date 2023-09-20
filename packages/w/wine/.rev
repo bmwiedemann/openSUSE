@@ -4908,4 +4908,21 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 8.15 release</comment>
     <requestid>1108545</requestid>
   </revision>
+  <revision rev="420" vrev="1">
+    <srcmd5>1c59930c1cdb71bff6cfe155a33c8bd5</srcmd5>
+    <version>8.16</version>
+    <time>1695209166</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 8.16 release
+  - Beginnings of a DirectMusic revival.
+  - Many fixes and improvements in the regression tests.
+  - Various bug fixes.
+- update staging to 8.16 release
+- solved upstream:
+  - 0001-Revert-loader-Build-the-preloader-as-PIE-on-64-bit.patch
+  - 0002-Revert-loader-Always-build-the-main-loader-as-PIE-if.patch
+  - 0003-Revert-loader-Force-building-the-main-loader-as-PIE-.patch
+  - 0004-Revert-loader-Make-the-loader-position-independent-o.patch</comment>
+    <requestid>1111929</requestid>
+  </revision>
 </revisionlist>

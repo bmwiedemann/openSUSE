@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 18 09:19:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.10.3:
+  * Add in missing `_dirty`
+
+-------------------------------------------------------------------
 Wed Dec  7 17:55:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 0.10.2 
+- Update to 0.10.2
   * Create a new glyphset from the provided reader by @typemytype in #409
 
 -------------------------------------------------------------------
@@ -41,12 +47,12 @@ Fri Mar 19 01:52:35 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
   * Resets glyph set on save (#297)
   * Gives Anchors and Guidelines a glyph attribute (#325)
   * Dispatcher enhancements (#337)
-  * Adds __eq__ in BaseDict (#344) 
+  * Adds __eq__ in BaseDict (#344)
 
 -------------------------------------------------------------------
 Sat Feb 13 10:25:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- skip python 3.6 (needs FontTools which needs scipy) 
+- skip python 3.6 (needs FontTools which needs scipy)
 
 -------------------------------------------------------------------
 Mon Jun 15 05:47:09 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>

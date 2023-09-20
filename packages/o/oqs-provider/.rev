@@ -44,4 +44,18 @@
   - Removal of SIKE/SIDH and Rainbow level I due to cryptographic breaks (forwarded request 1092833 from msmeissn)</comment>
     <requestid>1092835</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2ab0047ae073aa5054608623561d928f</srcmd5>
+    <version>0.5.1</version>
+    <time>1695209411</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.5.1
+  - Documentation update
+  - document specs
+  - General documentation overhaul
+  - change TLS demo to use QSC alg
+  - Build a module instead of a shared library.
+  - explain groups in USAGE (forwarded request 1112298 from msmeissn)</comment>
+    <requestid>1112299</requestid>
+  </revision>
 </revisionlist>

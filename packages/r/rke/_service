@@ -1,9 +1,9 @@
 <services>
-  <service name="tar_scm" mode="manual">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/rancher/rke</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.4.9</param>
+    <param name="revision">v1.4.10</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">disable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
@@ -11,11 +11,10 @@
   <service name="set_version" mode="manual">
     <param name="basename">rke</param>
   </service>
-  <service name="recompress" mode="manual">
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service name="go_modules" mode="manual">
-    <param name="archive">rke-1.4.9.tar.gz</param>
-  </service>
+  <service name="go_modules" mode="manual"/>
 </services>

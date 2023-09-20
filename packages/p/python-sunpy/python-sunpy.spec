@@ -17,7 +17,7 @@
 
 
 Name:           python-sunpy
-Version:        4.1.3
+Version:        5.0.1
 Release:        0
 Summary:        SunPy core package: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -26,60 +26,61 @@ Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{v
 Source100:      python-sunpy-rpmlintrc
 # PATCH-FIX-OPENSUSE use custom hypothesis profile for slow OBS executions
 Patch1:         sunpy-obs-profile.patch
-# PATCH-FIX-UPSTREAM python-311.patch gh#sunpy/sunpy#6512
-Patch2:         python-311.patch
 BuildRequires:  %{python_module aioftp}
-BuildRequires:  %{python_module astropy >= 4.2.1}
-BuildRequires:  %{python_module base => 3.8}
-BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module numpy-devel > 1.17.0}
+BuildRequires:  %{python_module astropy >= 5.0.1}
+BuildRequires:  %{python_module base => 3.9}
+BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module numpy-devel >= 1.21.0}
 BuildRequires:  %{python_module packaging >= 19}
-BuildRequires:  %{python_module parfive >= 1.2.0}
+BuildRequires:  %{python_module parfive >= 2.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aioftp >= 0.17.1
-Requires:       python-astropy >= 4.2.1
-Requires:       python-numpy > 1.17.0
+Requires:       python-astropy >= 5.0.1
+Requires:       python-numpy > 1.21.0
 Requires:       python-packaging >= 19
-Requires:       python-parfive >= 1.2.0
+Requires:       python-parfive >= 2.0.0
 # SECTION extras_require:asdf
 Recommends:     python-asdf >= 2.8
 Recommends:     python-asdf-astropy >= 0.1.1
 # /SECTION
 # SECTION extras_require:dask
-Suggests:       python-dask-array >= 2.0
+Suggests:       python-dask-array >= 2201.4
 # /SECTION
 # SECTION extras_require:database
 Recommends:     python-SQLAlchemy >= 1.3.4
 # /SECTION
 # SECTION extras_require:image
 Recommends:     python-scikit-image
-Recommends:     python-scipy > 1.3.0
+Recommends:     python-scipy > 1.7.0
 # /SECTION
 # SECTION extras_require:jpeg2000
 Recommends:     python-Glymur >= 0.8.18
+Recommends:     python-lxml >= 4.8
 # /SECTION
 # SECTION extras_require:map
-Recommends:     python-matplotlib >= 3.3.0
+Recommends:     python-matplotlib >= 3.5.0
 Recommends:     python-mpl-animators >= 1.0.0
 Recommends:     python-reproject
 # scipy
 # /SECTION
 # SECTION extras_require:net
-Recommends:     python-beautifulsoup4 >= 4.0.0
+Recommends:     python-beautifulsoup4 >= 4.8.0
 Recommends:     python-drms >= 0.6.1
 Recommends:     python-python-dateutil >= 2.8.0
 Recommends:     python-tqdm >= 4.32.1
 Recommends:     python-zeep >= 3.4.0
 # /SECTION
 # SECTION extras_require:timeseries
-Recommends:     python-cdflib >= 0.3.19
+Recommends:     python-cdflib >= 0.3.20
 Conflicts:      python-cdflib = 0.4.0
 Recommends:     python-h5netcdf
 Recommends:     python-h5py
-Recommends:     python-pandas >= 1
+Recommends:     python-pandas >= 1.2
 #               matplotlib
 # /SECTION
 # SECTION test requirements (and extras)
@@ -89,19 +90,19 @@ BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module SQLAlchemy >= 1.3.4}
 BuildRequires:  %{python_module asdf >= 2.8}
 BuildRequires:  %{python_module asdf-astropy >= 0.1.1}
-BuildRequires:  %{python_module beautifulsoup4 >= 4.0.0}
-BuildRequires:  %{python_module cdflib >= 0.3.19}
-# no numba, no dask for Py 3.11 yet
-BuildRequires:  %{python_module dask-array if %python-base < 3.11}
+BuildRequires:  %{python_module beautifulsoup4 >= 4.8.0}
+BuildRequires:  %{python_module cdflib >= 0.3.20}
+BuildRequires:  %{python_module dask-array >= 2021.4}
 BuildRequires:  %{python_module drms >= 0.6.1}
 BuildRequires:  %{python_module extension-helpers}
 BuildRequires:  %{python_module h5netcdf}
 BuildRequires:  %{python_module h5py >= 3.1.0}
 BuildRequires:  %{python_module hypothesis >= 6.0.0}
 BuildRequires:  %{python_module jplephem}
-BuildRequires:  %{python_module matplotlib >= 3.1.0}
+BuildRequires:  %{python_module lxml >= 4.8}
+BuildRequires:  %{python_module matplotlib >= 3.5.0}
 BuildRequires:  %{python_module mpl-animators >= 1.0.0}
-BuildRequires:  %{python_module pandas >= 0.24.0}
+BuildRequires:  %{python_module pandas >= 1.2.0}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module pytest-astropy >= 0.8}
 BuildRequires:  %{python_module pytest-doctestplus >= 0.5}
@@ -110,8 +111,8 @@ BuildRequires:  %{python_module pytest-mpl >= 0.12}
 BuildRequires:  %{python_module pytest-xdist >= 2}
 BuildRequires:  %{python_module reproject >= 0.9}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module scikit-image >= 0.16.0}
-BuildRequires:  %{python_module scipy >= 1.3.0}
+BuildRequires:  %{python_module scikit-image >= 0.18.0}
+BuildRequires:  %{python_module scipy >= 1.7.0}
 BuildRequires:  %{python_module tox}
 BuildRequires:  %{python_module zeep >= 3.4.0}
 BuildRequires:  python3-opencv
@@ -127,10 +128,10 @@ sed -i -e '/^#!\//, 1d' sunpy/extern/appdirs.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand #
 sed -i -e 's@^#!/usr/bin/env python@#!%__$python@' %{buildroot}%{$python_sitearch}/sunpy/extern/distro.py
 chmod +x %{buildroot}%{$python_sitearch}/sunpy/extern/distro.py
@@ -157,6 +158,6 @@ popd
 %doc README.rst CHANGELOG.rst
 %license LICENSE.rst licenses/*
 %{python_sitearch}/sunpy
-%{python_sitearch}/sunpy-%{version}*-info
+%{python_sitearch}/sunpy-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 18 11:25:25 UTC 2023 - pgajdos@suse.com
+
+- version update to 5.1.0
+  * Use ruff for linting (instead of current flake8/isort/pyflakes) - thanks @jairhenrique
+  * Enable rule B (flake8-bugbear) on ruff - thanks @jairhenrique
+  * Configure read the docs V2 - thanks @jairhenrique
+  * Fix typo in docs - thanks @quasimik
+  * Make json.loads of Python >=3.6 decode bytes by itself - thanks @hartwork
+  * Fix body matcher for chunked requests (fixes #734) - thanks @hartwork
+  * Fix query param filter for aiohttp (fixes #517) - thanks @hartwork and @salomvary
+  * Remove unnecessary dependency on six. - thanks @charettes
+  * build(deps): update sphinx requirement from <7 to <8 - thanks @jairhenrique
+  * Add action to validate docs - thanks @jairhenrique
+  * Add editorconfig file - thanks @jairhenrique
+  * Drop iscoroutinefunction fallback function for unsupported python thanks @jairhenrique
+- for changelog for older releases refer to https://github.com/kevin1024/vcrpy/releases
+- six is not required
+
+-------------------------------------------------------------------
 Thu Jun 15 11:58:24 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

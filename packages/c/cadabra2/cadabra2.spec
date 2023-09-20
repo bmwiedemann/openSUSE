@@ -1,7 +1,7 @@
 #
 # spec file for package cadabra2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           cadabra2
-Version:        2.4.3.2
+Version:        2.4.4.1
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
@@ -108,6 +108,7 @@ This package provides the GUI for %{name} and it's desktop menu integration.
 Summary:        A computer algebra system for solving problems in field theory
 Group:          Productivity/Scientific/Math
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description examples
 Cadabra2 is a computer algebra system (CAS) designed specifically for
@@ -120,6 +121,7 @@ Summary:        A computer algebra system for solving problems in field theory
 Group:          Documentation/HTML
 Obsoletes:      cadabra-doc < 2.0
 Provides:       cadabra-doc = %{version}
+BuildArch:      noarch
 
 %description doc
 Cadabra2 is a computer algebra system (CAS) designed specifically for
@@ -174,6 +176,8 @@ sed -E -i "s|^#!/usr/bin/env python3|#!/usr/bin/python3|" %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_datadir}/texmf/tex/latex/cadabra2/
 ln %{buildroot}%{_datadir}/cadabra2/latex/* %{buildroot}%{_datadir}/texmf/tex/latex/cadabra2/
 
+# Disable testing for 32-bit due to tolerance issues https://github.com/kpeeters/cadabra2/issues/280
+%ifnarch %ix86
 %if %{with tests}
 %check
 export PATH=${PATH}:%{buildroot}%{_bindir}
@@ -182,6 +186,7 @@ export PYTHONDONTWRITEBYTECODE=1
 # write config files to home dir to run without perm issues
 export HOME=`pwd`
 %ctest
+%endif
 %endif
 
 %files
@@ -198,10 +203,10 @@ export HOME=`pwd`
 %{_bindir}/%{name}html
 %{_datadir}/%{name}/
 %{_datadir}/texmf
-%{python3_sitelib}/cadabra2*.so
-%{python3_sitelib}/cadabra2_defaults.py
-%{python3_sitelib}/cdb_appdirs.py
-%{python3_sitelib}/cdb/
+%{python3_sitearch}/cadabra2*.so
+%{python3_sitearch}/cadabra2_defaults.py
+%{python3_sitearch}/cdb_appdirs.py
+%{python3_sitearch}/cdb/
 %{_mandir}/man1/cadabra*.1%{?ext_man}
 
 %files gui
@@ -214,8 +219,8 @@ export HOME=`pwd`
 
 %files -n jupyter-cadabra2-kernel
 %license doc/license.txt
-%{python3_sitelib}/cadabra2_jupyter/
-%{python3_sitelib}/notebook/
+%{python3_sitearch}/cadabra2_jupyter/
+%{python3_sitearch}/notebook/
 %{_jupyter_kernel_dir}/cadabra2/
 
 %files examples

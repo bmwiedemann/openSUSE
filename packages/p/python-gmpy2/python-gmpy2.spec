@@ -24,6 +24,10 @@ Summary:        GMP/MPIR, MPFR, and MPC interface to Python 2.6+ and 3x
 License:        LGPL-3.0-only
 URL:            https://github.com/aleaxit/gmpy
 Source:         https://files.pythonhosted.org/packages/source/g/gmpy2/gmpy2-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/aleaxit/gmpy/pull/422 Update MPFR to 4.2.1 in build scripts & fix test failures on new version
+Patch:          mpfr421.patch
+# PATCH-FIX-UPSTREAM file included in https://github.com/aleaxit/gmpy/issues/418#issuecomment-1706721394
+Patch:          gmpy2_cache.c.diff
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -43,7 +47,7 @@ rounded real floating-point arithmetic) and MPC (correctly
 rounded complex floating-point arithmetic) libraries.
 
 %prep
-%setup -q -n gmpy2-%{version}
+%autosetup -p1 -n gmpy2-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -64,6 +68,7 @@ popd
 %files %{python_files}
 %doc README
 %license COPYING COPYING.LESSER
-%{python_sitearch}/*
+%{python_sitearch}/gmpy2
+%{python_sitearch}/gmpy2-%{version}*-info
 
 %changelog

@@ -18,13 +18,13 @@
 
 
 Name:           gedit-plugins
-Version:        44.1
+Version:        46.0
 Release:        0
 Summary:        A collection of plugins for gedit
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit/PluginsLists
-Source0:        https://download.gnome.org/sources/gedit-plugins/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gedit-plugins/46/%{name}-%{version}.tar.xz
 Source1:        gedit-plugins.SUSE
 # PATCH-FIX-UPSTREAM bracketcompletion-use-key-release-event-to-work-wi.patch boo#1027448 bgo#778737 hillwood@opensuse.org -- Switch to use key release event for ibus pinyin input method
 Patch0:         bracketcompletion-use-key-release-event-to-work-wi.patch
@@ -39,7 +39,7 @@ BuildRequires:  vala >= 0.28.0
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(dbus-python) >= 0.82
-BuildRequires:  pkgconfig(gedit) >= 44.0
+BuildRequires:  pkgconfig(gedit) >= 46.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.9.0
@@ -48,14 +48,13 @@ BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 0.0.6
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.7.0
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.7.0
 BuildRequires:  pkgconfig(vte-2.91)
-Requires:       gedit >= 43.0
+Requires:       gedit >= 46.0
 Recommends:     %{name}-data
 Suggests:       gedit-plugin-bookmarks
 Suggests:       gedit-plugin-bracketcompletion
 Suggests:       gedit-plugin-charmap
 Suggests:       gedit-plugin-codecomment
 Suggests:       gedit-plugin-colorpicker
-Suggests:       gedit-plugin-colorschemer
 Suggests:       gedit-plugin-drawspaces
 Suggests:       gedit-plugin-git
 Suggests:       gedit-plugin-joinlines
@@ -69,6 +68,10 @@ Enhances:       gedit
 Obsoletes:      gedit-plugin-dashboard <= %{version}
 # Zeitgeist plugin was removed with version 3.35.90
 Obsoletes:      gedit-plugin-zeitgeist < 3.35.90
+# gedit-plugin-colorschemer was removed with version 45.alpha
+Obsoletes:      gedit-plugin-colorschemer < 45.alpha
+# Synctex plugin was removed with version 45.0
+Obsoletes:      gedit-plugin-synctex < 45.0
 
 %description
 This package contains a number of plugins for gedit, such as:
@@ -141,15 +144,6 @@ Provides:       gedit-plugins:%{_libdir}/gedit/plugins/colorpicker.plugin
 %description -n gedit-plugin-colorpicker
 The gedit colorpicker plugin.
 
-%package -n gedit-plugin-colorschemer
-Summary:        Gedit colorschemer plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/colorschemer.plugin
-
-%description -n gedit-plugin-colorschemer
-The gedit colorschemer plugin.
-
 %package -n gedit-plugin-drawspaces
 Summary:        Gedit drawspaces plugin
 Group:          Productivity/Text/Editors
@@ -204,15 +198,6 @@ Provides:       gedit-plugins:%{_libdir}/gedit/plugins/session-saver.plugin
 %description -n gedit-plugin-session-saver
 The gedit session-saver plugin
 
-%package -n gedit-plugin-synctex
-Summary:        Gedit synctex plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/synctex.plugin
-
-%description -n gedit-plugin-synctex
-The gedit synctex plugin
-
 %package -n gedit-plugin-terminal
 Summary:        Gedit terminal plugin
 Group:          Productivity/Text/Editors
@@ -244,8 +229,6 @@ The gedit wordcompletion plugin
 
 %prep
 %autosetup -p1
-sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' plugins/synctex/synctex/evince_dbus.py*
-sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' plugins/colorschemer/schemer/*.py
 install -m644 %{SOURCE1} .
 
 %build
@@ -298,13 +281,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gedit/plugins/colorpicker.plugin
 %{_libdir}/gedit/plugins/colorpicker.py*
 
-%files -n gedit-plugin-colorschemer
-# colorschemer
-%{_datadir}/metainfo/gedit-colorschemer.metainfo.xml
-%{_libdir}/gedit/plugins/colorschemer.plugin
-%{_datadir}/gedit/plugins/colorschemer/
-%{_libdir}/gedit/plugins/colorschemer/
-
 %files -n gedit-plugin-drawspaces
 # drawspaces
 %{_datadir}/metainfo/gedit-drawspaces.metainfo.xml
@@ -341,12 +317,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gedit/plugins/sessionsaver/
 %{_libdir}/gedit/plugins/sessionsaver.plugin
 %{_libdir}/gedit/plugins/sessionsaver/
-
-%files -n gedit-plugin-synctex
-# synctex
-%{_datadir}/metainfo/gedit-synctex.metainfo.xml
-%{_libdir}/gedit/plugins/synctex.plugin
-%{_libdir}/gedit/plugins/synctex/
 
 %files -n gedit-plugin-terminal
 # terminal

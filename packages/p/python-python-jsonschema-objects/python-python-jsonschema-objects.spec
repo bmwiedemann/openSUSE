@@ -16,26 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python-jsonschema-objects
-Version:        0.4.2
+Version:        0.5.0
 Release:        0
 Summary:        An object wrapper for JSON Schema definitions
 License:        MIT
 URL:            https://python-jsonschema-objects.readthedocs.org/
 Source:         https://files.pythonhosted.org/packages/source/p/python_jsonschema_objects/python_jsonschema_objects-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Markdown >= 2.4
 Requires:       python-inflection >= 0.2
+Requires:       python-jsonschema >= 4.18
 Requires:       python-six >= 1.5.2
-Requires:       (python-jsonschema >= 2.3 with python-jsonschema < 4.18)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Markdown >= 2.4}
 BuildRequires:  %{python_module inflection >= 0.2}
-BuildRequires:  %{python_module jsonschema < 4.18}
+BuildRequires:  %{python_module jsonschema >= 4.18}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.5.2}
@@ -49,10 +51,10 @@ An object wrapper for JSON Schema definitions
 %autosetup -p1 -n python_jsonschema_objects-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/python_jsonschema_objects/examples/
 %fdupes %{buildroot}%{$python_sitelib}
 }
@@ -63,6 +65,7 @@ An object wrapper for JSON Schema definitions
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/python_jsonschema_objects
+%{python_sitelib}/python_jsonschema_objects-%{version}.dist-info
 
 %changelog

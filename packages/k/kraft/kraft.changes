@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Sep 16 19:51:41 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to version 1.1
+
+  * updated nl translations of the manual
+  * update the app translations
+  * Fix the application icon
+  * Fix the changed Akonadi Prefix, added build switch AKONADI_LEGACY_BUILD
+  * More Akonadi related ifdefs
+  * Few fixes and improvements to cmake files (eg. #205)
+  * cleanup of code and remove endl which removes lots of warnings
+  * Allow Macros in pre- and post text, to support date calculations and
+    sum calculation (incl. tax) based on tags
+  * more tests
+  * Add Button to Allow to insert template pre- and post texts rather than
+    replace the entire text #167
+
+-------------------------------------------------------------------
+Sun Sep 10 15:34:14 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to version 1.1 RC1
+- Remove patch fixakonadi.patch because it went upstream 
+
+-------------------------------------------------------------------
 Sat Apr 29 08:33:55 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
 
 - Made the patch of the cmake files a bit more clean 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 19 02:50:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.36
+  * Improved CHM loading speed and switched to using the default
+    wxWidgets font picker dialog.
+
+-------------------------------------------------------------------
 Mon Feb  6 19:33:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.35

@@ -1,7 +1,7 @@
 #
 # spec file for package python-openTSNE
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-openTSNE
-Version:        0.6.2
+Version:        1.0.0
 Release:        0
 Summary:        Extensible, parallel implementations of t-SNE
 License:        BSD-3-Clause
@@ -27,6 +27,8 @@ URL:            https://github.com/pavlin-policar/openTSNE
 # tests are not packaged in the PyPI sdist, use GitHub instead
 Source:         %{url}/archive/v%{version}.tar.gz#/openTSNE-%{version}-gh.tar.gz
 Patch0:         python-openTSNE-disable-CPU-autodetection.patch
+# PATCH-FIX-UPSTREAM https://github.com/pavlin-policar/openTSNE/commit/07d8ad1f89356dc77a503071a16516873f4d4e30 Fix #248: get_numpy_include class error in new pip
+Patch1:         get-numpy-include.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel >= 1.16.6}

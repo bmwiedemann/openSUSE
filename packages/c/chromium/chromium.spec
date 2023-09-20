@@ -55,8 +55,10 @@
 %define gcc_version 12
 %if 0%{?suse_version} < 1699
 %bcond_with system_re2
+%bcond_with system_webp
 %else
 %bcond_without system_re2
+%bcond_without system_webp
 %endif
 %bcond_with is_beta # CHANNEL SWITCH
 %bcond_with system_avif
@@ -83,7 +85,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        116.0.5845.187
+Version:        117.0.5938.88
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -119,7 +121,6 @@ Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch62:        chromium-93-ffmpeg-4.4.patch
 Patch68:        chromium-94-ffmpeg-roll.patch
 Patch87:        chromium-98-gtk4-build.patch
-Patch90:        chromium-100-InMilliseconds-constexpr.patch
 Patch98:        chromium-102-regex_pattern-array.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
@@ -130,18 +131,18 @@ Patch210:       chromium-110-system-libffi.patch
 Patch211:       gcc13-fix.patch
 Patch214:       chromium-113-webview-namespace.patch
 Patch215:       chromium-113-webauth-include-variant.patch
-Patch217:       chromium-115-workaround_clang_bug-structured_binding.patch
+Patch217:       chromium-117-workaround_clang_bug-structured_binding.patch
 Patch218:       chromium-114-lld-argument.patch
 Patch221:       chromium-115-lp155-typename.patch
-Patch222:       chromium-115-Qt-moc-version.patch
-Patch223:       chromium-115-emplace_back_on_vector-c++20.patch
+Patch223:       chromium-117-emplace_back_on_vector-c++20.patch
 Patch224:       chromium-115-compiler-SkColor4f.patch
-Patch227:       chromium-116-profile-view-utils-vector-include.patch
-Patch228:       chromium-116-blink-variant-include.patch
 Patch229:       chromium-116-lp155-url_load_stats-size-t.patch
-Patch231:       chromium-116-abseil-limits-include.patch
 Patch232:       chromium-116-lp155-typenames.patch
-Patch237:       chromium-116-lp155-constuctors.patch
+Patch237:       chromium-117-lp155-constructors.patch
+Patch238:       chromium-117-blink-BUILD-mnemonic.patch
+Patch239:       chromium-117-includes.patch
+Patch240:       chromium-117-string-convert.patch
+Patch241:       chromium-117-lp155-typename.patch
 BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
 BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  SDL-devel
@@ -211,7 +212,6 @@ BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libva)
-BuildRequires:  pkgconfig(libwebp) >= 0.4.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(menu)
@@ -329,6 +329,9 @@ BuildRequires:  pkgconfig(Qt6Widgets)
 %if %{with system_re2}
 BuildRequires:  pkgconfig(re2) >= 11
 %endif
+%if %{with system_webp}
+BuildRequires:  pkgconfig(libwebp) >= 0.4.0
+%endif
 %if %{with clang}
 %if 0%{?suse_version} < 1550
 BuildRequires:  clang%{llvm_version}
@@ -406,11 +409,6 @@ export PYTHON=python3
 ln -sfn %{_bindir}/$PYTHON $HOME/bin/python
 export PATH="$HOME/bin/:$PATH"
 
-# qt
-%if %{with qt6}
-ln -s %{?_qt6_libexecdir}/moc $HOME/bin/moc-qt6
-%endif
-
 # use our wrapper
 rm chrome/installer/linux/common/wrapper
 cp %{SOURCE106} chrome/installer/linux/common/wrapper
@@ -442,7 +440,6 @@ keeplibs=(
     third_party/angle/src/common/third_party/xxhash
     third_party/angle/src/third_party/ceval
     third_party/angle/src/third_party/libXNVCtrl
-    third_party/angle/src/third_party/systeminfo
     third_party/angle/src/third_party/volk
     third_party/apple_apsl
     third_party/axe-core
@@ -499,6 +496,7 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/marked
     third_party/devtools-frontend/src/front_end/third_party/puppeteer
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/mitt
+    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/rxjs
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
     third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n
     third_party/devtools-frontend/src/third_party
@@ -577,7 +575,6 @@ keeplibs=(
     third_party/pdfium/third_party/lcms
     third_party/pdfium/third_party/libopenjpeg
     third_party/pdfium/third_party/libtiff
-    third_party/pdfium/third_party/skia_shared
     third_party/perfetto
     third_party/perfetto/protos/third_party/chromium
     third_party/pffft
@@ -637,6 +634,7 @@ keeplibs=(
     third_party/xcbproto
     third_party/xnnpack
     third_party/zlib/google
+    third_party/zstd
     third_party/zxcvbn-cpp
     url/third_party/mozilla
     v8/src/third_party/siphash
@@ -683,6 +681,9 @@ keeplibs+=(
 )
 %if !%{with system_re2}
 keeplibs+=( third_party/re2 )
+%endif
+%if !%{with system_webp}
+keeplibs+=( third_party/libwebp )
 %endif
 build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 
@@ -766,7 +767,6 @@ gn_system_libraries=(
     libjpeg
     libpng
     libusb
-    libwebp
     libxml
     libxslt
     opus
@@ -798,6 +798,9 @@ gn_system_libraries+=( libavif )
 %endif
 %if %{with system_re2}
 gn_system_libraries+=( re2 )
+%endif
+%if %{with system_webp}
+gn_system_libraries+=( libwebp )
 %endif
 build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries[@]}
 
@@ -836,7 +839,6 @@ myconf_gn+=" fatal_linker_warnings=false"
 myconf_gn+=" use_allocator_shim=true"
 myconf_gn+=" use_partition_alloc=true"
 myconf_gn+=" disable_fieldtrial_testing_config=true"
-myconf_gn+=" use_gnome_keyring=false"
 myconf_gn+=" use_unofficial_version_number=false"
 myconf_gn+=" use_vaapi=true"
 myconf_gn+=" use_sysroot=false"
@@ -853,9 +855,12 @@ myconf_gn+=" gtk_version=4"
 %endif
 %if %{without qt}
 myconf_gn+=" use_qt=false"
+%else
+myconf_gn+=" moc_qt5_path=\"%{_libqt5_bindir}\""
 %endif
 %if %{with qt6}
 myconf_gn+=" use_qt6=true"
+myconf_gn+=" moc_qt6_path=\"%{?_qt6_libexecdir}\""
 %endif
 # See dependency logic in third_party/BUILD.gn
 %if %{with system_harfbuzz}

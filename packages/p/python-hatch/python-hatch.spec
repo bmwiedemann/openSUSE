@@ -37,6 +37,8 @@ Source:         https://github.com/pypa/hatch/archive/refs/tags/hatch-v%{version
 Patch0:         fix-sdist-target.patch
 # PATCH-FIX-UPSTREAM hatch-pr828-pth-tests.patch, gh#pypa/hatch#828
 Patch1:         hatch-pr828-pth-tests.patch
+# PATCH-FIX-UPSTREAM CI.patch, gh#pypa/hatch#940
+Patch2:         CI.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling >= 1.14}
 BuildRequires:  %{python_module pip}

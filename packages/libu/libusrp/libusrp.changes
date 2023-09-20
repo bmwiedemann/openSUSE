@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 14 22:36:14 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 3.4.8
+  * configure: abort if SDCC is not found
+  * Cosmetic: contrib/jenkins.sh: fix typo
+  * linter: Don't check header files
+  * cosmetic: fx2regs.h: Fix trailing whitespace
+  * Fix compilation with newer sdcc
+ 
+-------------------------------------------------------------------
 Mon Mar  6 23:48:59 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 3.4.7:

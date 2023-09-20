@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep 17 12:35:39 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45:
+  + Port to gnome 45
+  + Add setting to open ui window centered
+  + Updated translations.
+- Drop gpaste-bump-mutter-dep.patch: fixed upstream.
+- Switch compression to zst in both service and tarball produced.
+
+-------------------------------------------------------------------
+Sat Aug 19 11:18:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gpaste-bump-mutter-dep.patch: Bump mutter-clutter dependency
+  to version 13. Following this replace
+  pkgconfig(mutter-clutter-12) with pkgconfig(mutter-clutter-13)
+  BuildRequires.
+
+-------------------------------------------------------------------
 Mon Jul 17 09:22:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:

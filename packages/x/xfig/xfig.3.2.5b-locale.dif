@@ -1,65 +1,45 @@
 ---
- src/main.c    |   18 ++++++++++++------
- src/u_print.c |    1 +
- 2 files changed, 13 insertions(+), 6 deletions(-)
+ src/main.c |   11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
-Index: src/main.c
-===================================================================
---- src/main.c.orig
-+++ src/main.c
-@@ -44,6 +44,8 @@
- #include <X11/xpm.h>
- #ifdef I18N
- #include <X11/keysym.h>
-+#include <locale.h>
-+#include <langinfo.h>
- #endif
- #ifdef USE_TAB		/* input extensions for an input tablet */
- #include <X11/extensions/XInput.h>
-@@ -818,11 +820,6 @@ main(int argc, char **argv)
- 	}
-     }
+--- src/main.c
++++ src/main.c	2023-09-13 10:32:19.633436763 +0000
+@@ -23,6 +23,7 @@
  
--#ifdef I18N
--    setlocale(LC_ALL, "");
--    XtSetLanguageProc(NULL, NULL, NULL);
--#endif  /* I18N */
+ #include <errno.h>
+ #include <locale.h>
++#include <langinfo.h>
+ #include <signal.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -805,9 +806,6 @@ main(int argc, char **argv)
+ 		}
+ 	}
+ 
+-	setlocale(LC_ALL, "");
+-	XtSetLanguageProc(NULL, NULL, NULL);
 -
-     /*
-      * save the command line arguments
-      */
-@@ -924,6 +921,10 @@ main(int argc, char **argv)
+ 	/*
+ 	 * save the command line arguments
+ 	 */
+@@ -914,6 +912,10 @@ main(int argc, char **argv)
+ 	else
  		setup_icons_big();
  
- #ifdef I18N
-+    if (NULL == strcasestr(nl_langinfo(CODESET),"ANSI") &&
-+	NULL == strcasestr(nl_langinfo(CODESET),"ISO-8859-"))
-+	appres.international = True;
++	if (NULL == strcasestr(nl_langinfo(CODESET),"ANSI") &&
++	    NULL == strcasestr(nl_langinfo(CODESET),"ISO-8859-"))
++		appres.international = True;
 +
-     /************************************************************/
-     /* if the international option has been set, set the locale */
-     /************************************************************/
-@@ -1644,6 +1645,11 @@ setup_visual(int *argc_p, char **argv, A
+ 	/*************************************************/
+ 	/* indicate if the international option is unset */
+ 	/*************************************************/
+@@ -1663,6 +1665,9 @@ setup_visual(int *argc_p, char **argv, A
  	 */
- 	tool = XtAppInitialize (&tool_app, "Fig", options, XtNumber (options), argc_p, argv,
- 			       (String *) NULL, args, 0);
-+#ifdef I18N
+ 	tool = XtAppInitialize (&tool_app, "Fig", options, XtNumber (options),
+ 			argc_p, argv, fallback_resources, args, 0);
 +	setlocale(LC_ALL, "");
-+	setlocale(LC_NUMERIC, "C");
 +	XtSetLanguageProc(tool_app, NULL, NULL);
-+#endif  /* I18N */
++
  	/* save important info */
  	tool_d = XtDisplay(tool);
  	tool_s = XtScreen(tool);
-Index: src/u_print.c
-===================================================================
---- src/u_print.c.orig
-+++ src/u_print.c
-@@ -16,6 +16,7 @@
-  *
-  */
- 
-+#include <locale.h>
- #include "fig.h"
- #include "resources.h"
- #include "object.h"

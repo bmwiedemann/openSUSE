@@ -543,4 +543,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
   + Updated translations. (forwarded request 1104468 from iznogood)</comment>
     <requestid>1105008</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>c744878834f58950ffaf04d15e5c8e33</srcmd5>
+    <version>45.beta</version>
+    <time>1695208979</time>
+    <user>dimstar_suse</user>
+    <comment>Pushing GNOME 45.rc packages (forwarded request 1109787 from iznogood)</comment>
+    <requestid>1110533</requestid>
+  </revision>
 </revisionlist>

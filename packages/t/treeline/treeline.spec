@@ -1,7 +1,7 @@
 #
 # spec file for package treeline
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           treeline
-Version:        3.1.5
+Version:        3.1.6
 Release:        0
 Summary:        Versatile Tree-Style Outliner for Defining Custom Data Schemas
 License:        GPL-2.0-or-later
@@ -27,7 +27,6 @@ Source0:        https://github.com/doug-101/TreeLine/releases/download/v%{versio
 Source1:        x-%{name}.desktop
 Source2:        x-%{name}-gz.desktop
 Source3:        x-treepad.desktop
-Source99:       treeline-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  perl
 BuildRequires:  python3-devel
@@ -78,14 +77,14 @@ python3 install.py -x \
 
 python3 -c "import compileall; compileall.compile_dir('%{buildroot}%{_libexecdir}/treeline',2,ddir='%{_libexecdir}/treeline')"
 
+%suse_update_desktop_file -i treeline Office ProjectManagement
+
 install -d "%{buildroot}%{_datadir}/mimelnk/application"
 install -m0644 \
     "%{SOURCE1}" \
     "%{SOURCE2}" \
     "%{SOURCE3}" \
     "%{buildroot}%{_datadir}/mimelnk/application/"
-
-%suse_update_desktop_file -i treeline Office ProjectManagement
 
 %fdupes -s "%{buildroot}%{_datadir}"
 

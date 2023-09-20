@@ -1,0 +1,253 @@
+Index: sphinx-tabs-3.4.1/tests/test_build/test_conditional_assets_html_assets_policy_index_.html
+===================================================================
+--- sphinx-tabs-3.4.1.orig/tests/test_build/test_conditional_assets_html_assets_policy_index_.html
++++ sphinx-tabs-3.4.1/tests/test_build/test_conditional_assets_html_assets_policy_index_.html
+@@ -18,7 +18,7 @@
+    <section id="fruits">
+     <h1>
+      Fruits
+-     <a class="headerlink" href="#fruits" title="Permalink to this heading">
++     <a class="headerlink" href="#fruits" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -54,7 +54,7 @@
+    <section id="luminaries">
+     <h1>
+      Luminaries
+-     <a class="headerlink" href="#luminaries" title="Permalink to this heading">
++     <a class="headerlink" href="#luminaries" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -82,7 +82,7 @@
+    <section id="code-tabs">
+     <h1>
+      Code Tabs
+-     <a class="headerlink" href="#code-tabs" title="Permalink to this heading">
++     <a class="headerlink" href="#code-tabs" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -182,7 +182,7 @@
+    <section id="group-tabs">
+     <h1>
+      Group Tabs
+-     <a class="headerlink" href="#group-tabs" title="Permalink to this heading">
++     <a class="headerlink" href="#group-tabs" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+Index: sphinx-tabs-3.4.1/tests/test_build/test_conditional_assets_html_assets_policy_no_tabs1_.html
+===================================================================
+--- sphinx-tabs-3.4.1.orig/tests/test_build/test_conditional_assets_html_assets_policy_no_tabs1_.html
++++ sphinx-tabs-3.4.1/tests/test_build/test_conditional_assets_html_assets_policy_no_tabs1_.html
+@@ -18,7 +18,7 @@
+    <section id="fruits">
+     <h1>
+      Fruits
+-     <a class="headerlink" href="#fruits" title="Permalink to this heading">
++     <a class="headerlink" href="#fruits" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -54,7 +54,7 @@
+    <section id="luminaries">
+     <h1>
+      Luminaries
+-     <a class="headerlink" href="#luminaries" title="Permalink to this heading">
++     <a class="headerlink" href="#luminaries" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -82,7 +82,7 @@
+    <section id="code-tabs">
+     <h1>
+      Code Tabs
+-     <a class="headerlink" href="#code-tabs" title="Permalink to this heading">
++     <a class="headerlink" href="#code-tabs" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -182,7 +182,7 @@
+    <section id="group-tabs">
+     <h1>
+      Group Tabs
+-     <a class="headerlink" href="#group-tabs" title="Permalink to this heading">
++     <a class="headerlink" href="#group-tabs" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+Index: sphinx-tabs-3.4.1/tests/test_build/test_conditional_assets_html_assets_policy_no_tabs2_.html
+===================================================================
+--- sphinx-tabs-3.4.1.orig/tests/test_build/test_conditional_assets_html_assets_policy_no_tabs2_.html
++++ sphinx-tabs-3.4.1/tests/test_build/test_conditional_assets_html_assets_policy_no_tabs2_.html
+@@ -18,7 +18,7 @@
+    <section id="fruits">
+     <h1>
+      Fruits
+-     <a class="headerlink" href="#fruits" title="Permalink to this heading">
++     <a class="headerlink" href="#fruits" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -54,7 +54,7 @@
+    <section id="luminaries">
+     <h1>
+      Luminaries
+-     <a class="headerlink" href="#luminaries" title="Permalink to this heading">
++     <a class="headerlink" href="#luminaries" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -82,7 +82,7 @@
+    <section id="code-tabs">
+     <h1>
+      Code Tabs
+-     <a class="headerlink" href="#code-tabs" title="Permalink to this heading">
++     <a class="headerlink" href="#code-tabs" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -182,7 +182,7 @@
+    <section id="group-tabs">
+     <h1>
+      Group Tabs
+-     <a class="headerlink" href="#group-tabs" title="Permalink to this heading">
++     <a class="headerlink" href="#group-tabs" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+Index: sphinx-tabs-3.4.1/tests/test_build/test_conditional_assets_index_.html
+===================================================================
+--- sphinx-tabs-3.4.1.orig/tests/test_build/test_conditional_assets_index_.html
++++ sphinx-tabs-3.4.1/tests/test_build/test_conditional_assets_index_.html
+@@ -18,7 +18,7 @@
+    <section id="fruits">
+     <h1>
+      Fruits
+-     <a class="headerlink" href="#fruits" title="Permalink to this heading">
++     <a class="headerlink" href="#fruits" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -54,7 +54,7 @@
+    <section id="luminaries">
+     <h1>
+      Luminaries
+-     <a class="headerlink" href="#luminaries" title="Permalink to this heading">
++     <a class="headerlink" href="#luminaries" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -82,7 +82,7 @@
+    <section id="code-tabs">
+     <h1>
+      Code Tabs
+-     <a class="headerlink" href="#code-tabs" title="Permalink to this heading">
++     <a class="headerlink" href="#code-tabs" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -182,7 +182,7 @@
+    <section id="group-tabs">
+     <h1>
+      Group Tabs
+-     <a class="headerlink" href="#group-tabs" title="Permalink to this heading">
++     <a class="headerlink" href="#group-tabs" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+Index: sphinx-tabs-3.4.1/tests/test_build/test_conditional_assets_no_tabs1_.html
+===================================================================
+--- sphinx-tabs-3.4.1.orig/tests/test_build/test_conditional_assets_no_tabs1_.html
++++ sphinx-tabs-3.4.1/tests/test_build/test_conditional_assets_no_tabs1_.html
+@@ -18,7 +18,7 @@
+    <section id="fruits">
+     <h1>
+      Fruits
+-     <a class="headerlink" href="#fruits" title="Permalink to this heading">
++     <a class="headerlink" href="#fruits" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -54,7 +54,7 @@
+    <section id="luminaries">
+     <h1>
+      Luminaries
+-     <a class="headerlink" href="#luminaries" title="Permalink to this heading">
++     <a class="headerlink" href="#luminaries" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -82,7 +82,7 @@
+    <section id="code-tabs">
+     <h1>
+      Code Tabs
+-     <a class="headerlink" href="#code-tabs" title="Permalink to this heading">
++     <a class="headerlink" href="#code-tabs" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -182,7 +182,7 @@
+    <section id="group-tabs">
+     <h1>
+      Group Tabs
+-     <a class="headerlink" href="#group-tabs" title="Permalink to this heading">
++     <a class="headerlink" href="#group-tabs" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+Index: sphinx-tabs-3.4.1/tests/test_build/test_conditional_assets_no_tabs2_.html
+===================================================================
+--- sphinx-tabs-3.4.1.orig/tests/test_build/test_conditional_assets_no_tabs2_.html
++++ sphinx-tabs-3.4.1/tests/test_build/test_conditional_assets_no_tabs2_.html
+@@ -18,7 +18,7 @@
+    <section id="fruits">
+     <h1>
+      Fruits
+-     <a class="headerlink" href="#fruits" title="Permalink to this heading">
++     <a class="headerlink" href="#fruits" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -54,7 +54,7 @@
+    <section id="luminaries">
+     <h1>
+      Luminaries
+-     <a class="headerlink" href="#luminaries" title="Permalink to this heading">
++     <a class="headerlink" href="#luminaries" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -82,7 +82,7 @@
+    <section id="code-tabs">
+     <h1>
+      Code Tabs
+-     <a class="headerlink" href="#code-tabs" title="Permalink to this heading">
++     <a class="headerlink" href="#code-tabs" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+@@ -182,7 +182,7 @@
+    <section id="group-tabs">
+     <h1>
+      Group Tabs
+-     <a class="headerlink" href="#group-tabs" title="Permalink to this heading">
++     <a class="headerlink" href="#group-tabs" title="Link to this heading">
+       ¶
+      </a>
+     </h1>
+Index: sphinx-tabs-3.4.1/tests/test_build/test_nested_markup.html
+===================================================================
+--- sphinx-tabs-3.4.1.orig/tests/test_build/test_nested_markup.html
++++ sphinx-tabs-3.4.1/tests/test_build/test_nested_markup.html
+@@ -4,7 +4,7 @@
+    <section id="markup-in-tab-titles">
+     <h1>
+      Markup in Tab Titles
+-     <a class="headerlink" href="#markup-in-tab-titles" title="Permalink to this heading">
++     <a class="headerlink" href="#markup-in-tab-titles" title="Link to this heading">
+       ¶
+      </a>
+     </h1>

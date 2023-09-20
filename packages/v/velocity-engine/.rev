@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>975155</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>eadb7e5a3ccba513df1ab68f93a8536c</srcmd5>
+    <version>2.3</version>
+    <time>1695209384</time>
+    <user>dimstar_suse</user>
+    <comment>Reproducible build improvements</comment>
+    <requestid>1112258</requestid>
+  </revision>
 </revisionlist>

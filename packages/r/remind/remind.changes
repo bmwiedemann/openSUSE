@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Sep 12 20:12:40 UTC 2023 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 4.2 Patch 6 - 2023-09-12
+
+- NEW FEATURE: remind: The "nonomitted()" function takes an optional
+  extra INT argument called "step".  See man page for details.  Also
+  allows the "start" argument to be greater than the "end" argument,
+  in which case they are effectively swapped.
+
+- NEW FEATURE: remind: The "slide()" function takes an optional extra
+  INT argument called "step", similar to "nonomitted()".  See man page
+  for details.
+
+- NEW FEATURE: remind: Added the $ParseUntriggered system variable;
+  see the man page for details.  You almost certainly will never need
+  to use this.
+
+- NEW FILE: holidays/ie.rem: Added Irish holidays, courtesy of
+  Amy de Buitléir.
+
+- CHANGE: remind: The "-tn" option sets all REM statement deltas to
+  ++n rather than adding n to any existing REM statement's delta.
+  Additionally, the corresponding system variable $DeltaOffset has
+  been renamed to $DeltaOverride.
+
+- NEW OPTION: remind: Add the "-tz" option to explicitly set all
+  REM statement deltas to zero.
+
+- DOCUMENTATION FIX: remind: various documentation improvements.
+
+- BUG FIX: Correct some errors in Italian localization, courtesy of
+  Emanuele Torre
+
+-------------------------------------------------------------------
 Tue Apr 11 13:40:47 UTC 2023 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 4.2 Patch 5 - 2023-04-11

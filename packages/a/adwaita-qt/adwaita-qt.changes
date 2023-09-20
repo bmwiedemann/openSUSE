@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 13 09:59:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop (libQt5Core5 and gnome-session) and
+  (libQt6Core6 and gnome-session) Supplements: No longer install
+  automatically when the above conditions are met. Upstream have
+  stopped maintenance of these packages, and are considered
+  obsolete.
+
+-------------------------------------------------------------------
 Thu Mar  2 12:59:52 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use the qt6 %cmake macros when building the qt6 flavor which

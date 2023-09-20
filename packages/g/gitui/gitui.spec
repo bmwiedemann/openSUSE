@@ -17,10 +17,10 @@
 
 
 Name:           gitui
-Version:        0.23.0
+Version:        0.24.3
 Release:        0
 Summary:        Terminal UI for git
-License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Artistic-2.0 OR CC0-1.0) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CDDL-1.0 AND ISC AND MIT AND MIT
+License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Artistic-2.0 OR CC0-1.0) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CDDL-1.0 AND ISC AND MIT AND MIT AND CC-BY-3.0 AND MPL-2.0 AND SUSE-GPL-2.0-with-linking-exception
 URL:            https://github.com/extrawurst/gitui
 Source0:        https://github.com/extrawurst/gitui/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst

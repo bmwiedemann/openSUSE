@@ -34,6 +34,8 @@ URL:            https://www.qt.io
 Source:         https://www.nic.funet.fi/pub/mirrors/download.qt-project.org/official_releases/QtForPython/pyside6/PySide6-%{version}-src/%{tar_name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Always-link-to-python-libraries.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  fdupes

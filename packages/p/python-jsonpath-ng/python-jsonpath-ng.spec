@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonpath-ng
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jsonpath-ng
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        JSONPath for Python
 License:        Apache-2.0
@@ -31,13 +30,13 @@ BuildRequires:  python-rpm-macros
 Requires:       python-decorator
 Requires:       python-ply
 Requires:       python-six
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module ply}
 #
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  python3-oslotest
 # /SECTION
 %python_subpackages

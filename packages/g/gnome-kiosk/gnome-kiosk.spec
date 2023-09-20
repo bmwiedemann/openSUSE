@@ -16,21 +16,21 @@
 #
 
 
-%define mutter_api 12
+%define mutter_api 13
 
 Name:           gnome-kiosk
-Version:        44.0
+Version:        45.0
 Release:        0
 Summary:        Mutter based compositor for kiosks
 License:        GPL-2.0-or-later
 URL:            https://gitlab.gnome.org/GNOME/gnome-kiosk
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gnome-desktop-3.0)
+BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libmutter-%{mutter_api})

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cymem
-Version:        2.0.7
+Version:        2.0.8
 Release:        0
 Summary:        Manage calls to calloc/free through Cython
 License:        MIT

@@ -5,7 +5,7 @@
 PKG_DIR="$(pwd)"
 PKG_PATH=pydata-sphinx-theme
 PKG_NAME=python-pydata-sphinx-theme
-PKG_VERSION=0.13.1
+PKG_VERSION=0.14.0
 
 cleanup_tmpdir() {
     popd 2>/dev/null

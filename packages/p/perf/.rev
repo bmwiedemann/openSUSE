@@ -630,4 +630,12 @@
     <comment></comment>
     <requestid>1105196</requestid>
   </revision>
+  <revision rev="73" vrev="82">
+    <srcmd5>27e61dda51400a8668537f206e9f6615</srcmd5>
+    <version>MACRO</version>
+    <time>1695209204</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build for 6.6</comment>
+    <requestid>1111941</requestid>
+  </revision>
 </revisionlist>

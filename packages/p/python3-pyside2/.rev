@@ -266,4 +266,13 @@
     <comment></comment>
     <requestid>1102204</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>91c3abbcef4bd81261a668ec1aa0275d</srcmd5>
+    <version>5.15.10</version>
+    <time>1695209215</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix failure with Python 3.11.5:
+  * 0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch</comment>
+    <requestid>1111993</requestid>
+  </revision>
 </revisionlist>

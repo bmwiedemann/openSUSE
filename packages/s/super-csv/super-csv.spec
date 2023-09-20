@@ -30,7 +30,6 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
@@ -66,6 +65,8 @@ find -name '*.jar' -print -delete
 %pom_remove_plugin -r :maven-release-plugin
 %pom_remove_plugin -r :maven-scm-publish-plugin
 %pom_remove_plugin -r :maven-site-plugin
+%pom_remove_plugin -r :maven-source-plugin
+%pom_remove_plugin -r :maven-javadoc-plugin
 
 # Empty artifact, only for testing
 %pom_disable_module %{name}-benchmark

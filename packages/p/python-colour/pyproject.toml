@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "colour"
+version = "0.1.5"
+description = "converts and manipulates various color representation (HSL, RVB, web, X11, ...)"
+readme = "README.rst"
+authors = [{name = "Valentin LAB", email = "valentin.lab@kalysto.org"}]
+license = {text = "BSD 3-Clause License"}
+classifiers = [
+    "Programming Language :: Python",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: BSD License",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 2",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.3",
+    "Programming Language :: Python :: 3.4",
+    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
+]
+urls = {Homepage = "http://github.com/vaab/colour"}

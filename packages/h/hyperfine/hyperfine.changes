@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 10 13:51:57 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Use upstream tarball hyperfine-0.17.0.tar.gz
+- Remove hyperfine-0.17.0.tar.zst
+- Update vendored tarball vendor.tar.zst
+
+-------------------------------------------------------------------
 Sun Aug 13 13:26:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Replace obsoleted `disabled` option with `manual`

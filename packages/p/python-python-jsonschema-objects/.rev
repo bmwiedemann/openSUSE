@@ -56,4 +56,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1099288</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b286a17bdf90966d6a10a6d523e3e507</srcmd5>
+    <version>0.5.0</version>
+    <time>1695209479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * Migrate to jsonschema 4.18
+  * Drop support for Python 3.7 due to lack of support under jsonschema&gt;=4.18
+  * Drop support for jsonschema&lt;4.18 due to breaking changes in that
+    libraries interfaces
+- Migrate to pyproject macros
+- Stop using greedy globs in %files</comment>
+    <requestid>1112409</requestid>
+  </revision>
 </revisionlist>

@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>979938</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3bc29de3beab26b1a983908f30c8b59b</srcmd5>
+    <version>1.7.0</version>
+    <time>1695209449</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1112360 from jlkDE
+
+Update to version 1.7.0</comment>
+    <requestid>1112362</requestid>
+  </revision>
 </revisionlist>

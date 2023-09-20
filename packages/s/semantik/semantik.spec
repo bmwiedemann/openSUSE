@@ -17,7 +17,7 @@
 
 
 Name:           semantik
-Version:        1.2.9
+Version:        1.2.10
 Release:        0
 Summary:        A mindmapping-like tool
 License:        GPL-2.0-only AND GPL-3.0-only

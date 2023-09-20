@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 19 11:01:55 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add CI.patch to fix tests
+
+-------------------------------------------------------------------
 Wed Jun 21 08:39:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add hatch-pr828-pth-tests.patch, gh#pypa/hatch#828 fixing

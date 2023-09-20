@@ -40,4 +40,19 @@
     <comment>- Trim Summary to not exceed 79 characters (forwarded request 1068150 from glaubitz)</comment>
     <requestid>1068179</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fa462f1590579694fe442546ed45b5ce</srcmd5>
+    <version>1.1.0</version>
+    <time>1695209458</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ
+- Update Requires from setup.py (forwarded request 1112300 from glaubitz)</comment>
+    <requestid>1112378</requestid>
+  </revision>
 </revisionlist>

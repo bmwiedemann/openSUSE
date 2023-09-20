@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 17 13:22:25 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.58.0:
+  * [Bazel] Enable grpcio-reflection to be used via Bazel
+    (gh#grpc/grpc#31013).
+  * [packaging] Publish xds-protos as part of the standard package
+    pipeline (gh#grpc/grpc#33797).
+
+-------------------------------------------------------------------
 Wed Aug 30 17:07:21 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.57.0:

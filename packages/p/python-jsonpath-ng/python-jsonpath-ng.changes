@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Sep 15 08:51:59 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.6.0
+  1.6.0 / 2023-09-13
+  *  Enclose field names containing literals in quotes
+  *  Add note about extensions
+  *  Remove documentation status link
+  *  Update supported versions in setup.py
+  *  Add LICENSE file
+  *  Code cleanup
+  *  Remove dependency on six
+  *  Update build status badge
+  *  (origin/github-actions, github-actions) Remove testscenarios dependency
+  *  Remove pytest version constraints
+  *  Add testing with GitHub actions
+  *  Escape back slashes in tests to avoid DeprecationWarning.
+  *  Use raw strings for regular expressions to avoid DeprecationWarning.
+  *  refactor(package): remove dependency for decorator
+  *  Merge pull request #128 from michaelmior/hashable
+  *  (origin/hashable, hashable) Make path instances hashable
+  *  Merge pull request #122 from snopoke/snopoke-patch-1
+  *  Add more detail to filter docs.
+  *  remove incorrect parenthesis in filter examples
+  *  Merge pull request #119 from snopoke/patch-1
+  *  add 'sub' line with function param names
+  *  readme formatting fixes
+  *  chore(history): update
+  *  Update __init__.py
+  1.5.3 / 2021-07-05
+  * Update __init__.py
+  * Update setup.py
+  * Merge pull request #72 from kaapstorm/find_or_create
+  * Tests
+  * Add `update_or_create()` method
+  * Merge pull request #68 from kaapstorm/example_tests
+  * Merge pull request #70 from kaapstorm/exceptions
+  * Add/fix `__eq__()`
+  * Add tests based on Stefan Goessner's examples
+  * Tests
+  * Allow callers to catch JSONPathErrors
+- six and decorator are not required
+
+-------------------------------------------------------------------
 Wed Nov  3 08:28:31 UTC 2021 - pgajdos@suse.com
 
 - version update to 1.5.2

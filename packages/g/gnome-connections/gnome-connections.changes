@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Sep 16 22:46:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Update gtk-frdp: Avoid files copy redundancy by using FUSE for
+    pasting files
+  - Update CI dependencies
+  - Update flatpak modules
+  + Updated translations.
+- Add pkgconfig(fuse3) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Sun Sep  3 12:14:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug  8 08:14:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + Close onboarding dialog when pressing ESC.
+  + Add mnemonics to Close/No Thanks button to onboarding.
+  + Update gtk-frdp:
+    - Desktop resize fixes.
+    - Clipboard channel support.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Apr 24 09:00:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:

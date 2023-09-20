@@ -1,7 +1,7 @@
 #
 # spec file for package python-spake2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-spake2
 Version:        0.8
 Release:        0
@@ -25,9 +24,12 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            http://github.com/warner/python-spake2
 Source:         https://files.pythonhosted.org/packages/source/s/spake2/spake2-%{version}.tar.gz
+BuildRequires:  %{python_module hkdf}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-hkdf
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,8 +46,12 @@ SPAKE2 password-authenticated key exchange.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%pytest
+
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/spake2
+%{python_sitelib}/spake2-%{version}*-info
 
 %changelog

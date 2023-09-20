@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Aug 28 12:40:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
 
-- Update to 9.25.0 (PED-5842)
+- Update to 9.25.0 (jsc#PED-6362)
  * drbdsetup,v9,show: fix meta disk format for json
  * drbdmeta: {hex,}dump superblock
  * drbdmon: major rewrite

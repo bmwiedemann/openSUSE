@@ -18,13 +18,13 @@
 
 %define full_name org.gnome.Weather
 Name:           gnome-weather
-Version:        44.0
+Version:        45.0
 Release:        0
 Summary:        Weather App for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://apps.gnome.org/app/org.gnome.Weather
-Source0:        https://download.gnome.org/sources/gnome-weather/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-weather/45/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-UPSTREAM gnome-weather-BackgroundService-service-fails-to-start.patch bsc#1209391 glgo#GNOME/gnome-weather!132 xwang@suse.com -- org.gnome.Weather.BackgroundService fails to start
 Patch0:         gnome-weather-BackgroundService-service-fails-to-start.patch
@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.9
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gweather4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.4.alpha
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.3.1
 BuildArch:      noarch
 

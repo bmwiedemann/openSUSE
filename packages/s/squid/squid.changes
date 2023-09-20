@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 19 16:20:19 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- update to 6.3:
+  - Bug 5294: ERR_CANNOT_FORWARD returned instead of ERR_DNS_FAIL
+  - Bug 4981: Work around in-call job invalidation bugs
+  - basic_smb_lm_auth: fix 'no previous declaration' warnings
+  - CacheManager: require /squid-internal-mgr/ URL path prefix
+  - ESI: Fix build [-Wsingle-bit-bitfield-constant-conversion]
+
+-------------------------------------------------------------------
 Wed Aug  9 07:48:25 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 6.2:

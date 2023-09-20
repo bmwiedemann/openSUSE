@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 15 09:08:13 UTC 2023 - pgajdos@suse.com
+
+- version update to 2.3.2
+  * Add new error helper for when using a custom (non-.com) TLD results in a 404 (5a860ed)
+  * cli: Add deprecated language fallback support to CLI (5a860ed)
+  * cli: Fix older invalid example (5a860ed)
+
+-------------------------------------------------------------------
 Sat Feb  4 18:39:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.3.1:

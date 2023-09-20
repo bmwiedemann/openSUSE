@@ -239,4 +239,17 @@
 - Update Requires from setup.py (forwarded request 1085649 from glaubitz)</comment>
     <requestid>1085770</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1ccc25b302af8a6a2a913b1e7c23b2da</srcmd5>
+    <version>7.0.0</version>
+    <time>1695209210</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1111920 from glaubitz)</comment>
+    <requestid>1111985</requestid>
+  </revision>
 </revisionlist>

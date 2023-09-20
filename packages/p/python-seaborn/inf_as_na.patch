@@ -1,0 +1,96 @@
+From 23860365816440b050e9211e1c395a966de3c403 Mon Sep 17 00:00:00 2001
+From: Matthew Roeschke <10647082+mroeschke@users.noreply.github.com>
+Date: Sat, 19 Aug 2023 03:41:57 -1000
+Subject: [PATCH] Address inf_as_na pandas deprecation (#3424)
+
+* Address inf_as_na pandas deprecation
+
+* Add -np.inf, add import
+
+* flake8
+
+* Make copy
+
+* Use mask instead of replace
+---
+ seaborn/_base.py      | 14 +++++++-------
+ seaborn/_core/plot.py | 34 +++++++++++++++++++---------------
+ 2 files changed, 26 insertions(+), 22 deletions(-)
+
+Index: seaborn-0.12.2/seaborn/_oldcore.py
+===================================================================
+--- seaborn-0.12.2.orig/seaborn/_oldcore.py
++++ seaborn-0.12.2/seaborn/_oldcore.py
+@@ -1116,13 +1116,13 @@ class VectorPlotter:
+                 parts = []
+                 grouped = self.plot_data[var].groupby(self.converters[var], sort=False)
+                 for converter, orig in grouped:
+-                    with pd.option_context('mode.use_inf_as_na', True):
+-                        orig = orig.dropna()
+-                        if var in self.var_levels:
+-                            # TODO this should happen in some centralized location
+-                            # it is similar to GH2419, but more complicated because
+-                            # supporting `order` in categorical plots is tricky
+-                            orig = orig[orig.isin(self.var_levels[var])]
++                    orig = orig.mask(orig.isin([np.inf, -np.inf]), np.nan)
++                    orig = orig.dropna()
++                    if var in self.var_levels:
++                        # TODO this should happen in some centralized location
++                        # it is similar to GH2419, but more complicated because
++                        # supporting `order` in categorical plots is tricky
++                        orig = orig[orig.isin(self.var_levels[var])]
+                     comp = pd.to_numeric(converter.convert_units(orig))
+                     if converter.get_scale() == "log":
+                         comp = np.log10(comp)
+Index: seaborn-0.12.2/seaborn/_core/plot.py
+===================================================================
+--- seaborn-0.12.2.orig/seaborn/_core/plot.py
++++ seaborn-0.12.2/seaborn/_core/plot.py
+@@ -20,6 +20,7 @@ import matplotlib as mpl
+ from matplotlib.axes import Axes
+ from matplotlib.artist import Artist
+ from matplotlib.figure import Figure
++import numpy as np
+ 
+ from seaborn._marks.base import Mark
+ from seaborn._stats.base import Stat
+@@ -1488,21 +1489,24 @@ class Plotter:
+ 
+                 axes_df = self._filter_subplot_data(df, view)
+ 
+-                with pd.option_context("mode.use_inf_as_na", True):
+-                    if keep_na:
+-                        # The simpler thing to do would be x.dropna().reindex(x.index).
+-                        # But that doesn't work with the way that the subset iteration
+-                        # is written below, which assumes data for grouping vars.
+-                        # Matplotlib (usually?) masks nan data, so this should "work".
+-                        # Downstream code can also drop these rows, at some speed cost.
+-                        present = axes_df.notna().all(axis=1)
+-                        nulled = {}
+-                        for axis in "xy":
+-                            if axis in axes_df:
+-                                nulled[axis] = axes_df[axis].where(present)
+-                        axes_df = axes_df.assign(**nulled)
+-                    else:
+-                        axes_df = axes_df.dropna()
++                axes_df_inf_as_nan = axes_df.copy()
++                axes_df_inf_as_nan = axes_df_inf_as_nan.mask(
++                    axes_df_inf_as_nan.isin([np.inf, -np.inf]), np.nan
++                )
++                if keep_na:
++                    # The simpler thing to do would be x.dropna().reindex(x.index).
++                    # But that doesn't work with the way that the subset iteration
++                    # is written below, which assumes data for grouping vars.
++                    # Matplotlib (usually?) masks nan data, so this should "work".
++                    # Downstream code can also drop these rows, at some speed cost.
++                    present = axes_df_inf_as_nan.notna().all(axis=1)
++                    nulled = {}
++                    for axis in "xy":
++                        if axis in axes_df:
++                            nulled[axis] = axes_df[axis].where(present)
++                    axes_df = axes_df_inf_as_nan.assign(**nulled)
++                else:
++                    axes_df = axes_df_inf_as_nan.dropna()
+ 
+                 subplot_keys = {}
+                 for dim in ["col", "row"]:

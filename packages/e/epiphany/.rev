@@ -1684,4 +1684,12 @@ New stable release</comment>
 New stable rel</comment>
     <requestid>1102249</requestid>
   </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>9c22c62534f880886588dd9f6ceb142e</srcmd5>
+    <version>45.0</version>
+    <time>1695208995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111884</requestid>
+  </revision>
 </revisionlist>

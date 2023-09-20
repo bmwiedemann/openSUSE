@@ -117,4 +117,43 @@ Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1105492</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>de95527fd157481a61586cdd7eb8f93e</srcmd5>
+    <version>0.2.4+g960</version>
+    <time>1695209131</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.4+g960:
+  * wlr-output-management: apply adaptive sync state
+  * ci: Use meson setup command
+  * View: fix pointer comparison in notifyTitle()
+  * rivertile: fix code to disallow 0 main count
+  * session-lock: wait for present before locking
+  * session-lock: fix assertion failure due to race
+  * session-lock: fix assertion failure on abnormal client behavior
+  * render: fix rounding for fractional scaling
+  * deps: update to Zig 0.10
+  * flags: further cleanup after Zig 0.10
+  * deps: update zig-wayland to fix build on aarch64
+  * Seat: rework Xwayland Override Redirect focus
+  * command/layout: fix a memory leak
+  * session-lock: properly handle disabled outputs
+  * idle-inhibit: fix use-after-free
+  * wlr-output-management: leverage new wlroots APIs
+  * session-lock: fix assertion failure on hot-plug while locked
+  * wlr-output-management: fix bug due to zig miscompilation
+  * docs: fix typos in riverctl man page
+  * docs: remove repology badge from readme
+  * Seat: guard setFocusRaw() usage while locked
+  * deps: update to latest zig-wayland/zig-wlroots
+  * deps: update to latest zig-wayland/zig-wlroots
+  * Keyboard: fix keyboard-layout mapping crash
+  * pointer-constraints: remove protocol
+  * render: remove damage tracking
+  * wlr-foreign-toplevel-management: remove protocol
+  * render: use wlr_scene to render views
+  * Cursor: remove surfaceAt()
+  * session-lock: use the scene graph
+</comment>
+    <requestid>1111752</requestid>
+  </revision>
 </revisionlist>

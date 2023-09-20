@@ -1,8 +1,8 @@
-Index: sunpy-4.0.2/sunpy/conftest.py
+Index: sunpy-5.0.0/sunpy/conftest.py
 ===================================================================
---- sunpy-4.0.2.orig/sunpy/conftest.py
-+++ sunpy-4.0.2/sunpy/conftest.py
-@@ -3,6 +3,7 @@ import logging
+--- sunpy-5.0.0.orig/sunpy/conftest.py
++++ sunpy-5.0.0/sunpy/conftest.py
+@@ -4,6 +4,7 @@ import pathlib
  import tempfile
  import importlib
  
@@ -10,9 +10,9 @@ Index: sunpy-4.0.2/sunpy/conftest.py
  import pytest
  
  import astropy
-@@ -31,6 +32,14 @@ HAVE_REMOTEDATA = remotedata_spec is not
- # Do not collect the sample data file because this would download the sample data.
- collect_ignore = ["data/sample.py"]
+@@ -34,6 +35,14 @@ collect_ignore = ["data/sample.py"]
+ console_logger = logging.getLogger()
+ console_logger.setLevel('INFO')
  
 +hypothesis.settings.register_profile(
 +    'obs',
@@ -23,5 +23,5 @@ Index: sunpy-4.0.2/sunpy/conftest.py
 +# 'default' there.
 +hypothesis.settings.load_profile('obs')
  
- console_logger = logging.getLogger()
- console_logger.setLevel('INFO')
+ @pytest.fixture
+ def jsoc_test_email():

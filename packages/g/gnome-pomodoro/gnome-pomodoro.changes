@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 28 09:48:46 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.0:
+  * Marked extension as compatible with GNOME Shell 45 with no
+    backwards compatibility
+  * Fixed alignment of the indicator menu
+  * Changed the default view in the app to Timer
+- Drop 0001-Mark-extension-as-compatible-with-GNOME-Shell-45.patch
+
+-------------------------------------------------------------------
+Wed Aug 23 11:07:03 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 0001-Mark-extension-as-compatible-with-GNOME-Shell-45.patch:
+  mark extension as compatible with GNOME 45
+  (gh#gnome-pomodoro/gnome-pomodoro#667)
+
+-------------------------------------------------------------------
+Wed Aug 23 10:24:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Bump the dependency on gnome-shell to allow gnome-shell 45.
+
+-------------------------------------------------------------------
 Fri Mar 31 15:34:23 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.23.1:

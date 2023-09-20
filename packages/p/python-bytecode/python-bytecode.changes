@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 18 10:14:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.0:
+  * Add support for Python 3.12 PR #122
+  * Support for Python 3.12, comes with a number of changes
+    reflecting changes in CPython bytecode itself:
+  * handle the ability of ``LOAD_ATTR`` to replace
+    ``LOAD_METHOD``
+    As a consequence the argument is now a ``tuple[bool, str]``
+    similarly ``LOAD_SUPER_ATTR`` which uses the 2 lowest bits as
+    flag takes a ``tuple[bool, bool, str]`` as argument
+  * ``POP_JUMP_IF_*`` instructions are undirected in Python 3.12
+  * ``YIELD_VALUE`` now takes an argument
+  * Support for ``CALL_INSTRINSIC_1/2`` led to the addition of 2
+    new enums to represent the argument
+
+-------------------------------------------------------------------
 Sat May 27 21:36:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.2:
@@ -25,7 +42,7 @@ Thu Dec 15 22:44:00 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Fri Dec  9 17:16:11 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 0.14.0 
+- Update to 0.14.0
   * New features:
   Removed the peephole optimizer PR #107
   Basically changes in Python 3.11 made it hard to port and the maintenance cost exceeded the perceived use. It could be re-added if there is a demand for it.
@@ -88,5 +105,5 @@ Tue Aug 31 11:04:29 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Thu Apr  9 11:29:55 UTC 2020 - pgajdos@suse.com
 
-- initial version 0.11.0, required by python-enaml 
+- initial version 0.11.0, required by python-enaml
 

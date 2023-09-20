@@ -455,4 +455,18 @@
     <comment>New upstream release (forwarded request 994395 from iznogood)</comment>
     <requestid>994792</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7e00336dcbd5e4e7e3707ce22c1f0b4b</srcmd5>
+    <version>1.2.0</version>
+    <time>1695208984</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0:
+  + diff: fix user_data parameter type.
+  + ggit_repository_create_commit_from_ids: add safe checks.
+  + Allow to sign commits.
+  + Add mailmap support.
+  + Miscelaneous of bug fixes.
+- Drop bogus python3 BuildRequires: python3-base is sufficient.</comment>
+    <requestid>1110832</requestid>
+  </revision>
 </revisionlist>

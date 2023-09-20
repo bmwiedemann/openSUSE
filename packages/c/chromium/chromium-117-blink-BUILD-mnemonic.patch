@@ -1,0 +1,22 @@
+[  332s] ERROR at //third_party/blink/renderer/core/BUILD.gn:1697:14: Assignment had no effect.
+[  332s]   mnemonic = "ELOC_PROTO"
+[  332s]              ^-----------
+[  332s] You set the variable "mnemonic" here and it was unused before it went
+[  332s] out of scope.
+[  332s] See //BUILD.gn:1166:7: which caused the file to be included.
+[  332s]       "//third_party/blink/renderer/core:gen_files_for_web_tests",
+[  332s]       ^----------------------------------------------------------
+
+Index: chromium-117.0.5938.22/third_party/blink/renderer/core/BUILD.gn
+===================================================================
+--- chromium-117.0.5938.22.orig/third_party/blink/renderer/core/BUILD.gn
++++ chromium-117.0.5938.22/third_party/blink/renderer/core/BUILD.gn
+@@ -1694,8 +1694,6 @@ action_foreach("element_locator_test_pro
+   python_path_root = "${root_out_dir}/pyproto"
+   python_path_proto = "${python_path_root}/third_party/blink/renderer/core/lcp_critical_path_predictor"
+ 
+-  mnemonic = "ELOC_PROTO"
+-
+   source_dir = "lcp_critical_path_predictor/test_proto"
+   sources = rebase_path([ "lcp_image_id.asciipb" ], "", source_dir)
+ 

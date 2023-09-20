@@ -1258,4 +1258,13 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1096334</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>852b3795159bbc406626ec56c5d6e627</srcmd5>
+    <version>1.0.18</version>
+    <time>1695209010</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebuild after abseil-cpp update. (boo#1215227)
+</comment>
+    <requestid>1111805</requestid>
+  </revision>
 </revisionlist>

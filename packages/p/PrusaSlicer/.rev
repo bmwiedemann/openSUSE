@@ -298,4 +298,12 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
   * Fixes error on CGAL 5.6 (forwarded request 1107871 from bnavigator)</comment>
     <requestid>1107872</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fcf2fc72e7fe884abd9d9f2a7b3e036a</srcmd5>
+    <version>2.6.1</version>
+    <time>1695209013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111617</requestid>
+  </revision>
 </revisionlist>

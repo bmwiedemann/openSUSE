@@ -1,0 +1,33 @@
+From 07d8ad1f89356dc77a503071a16516873f4d4e30 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pavlin=20Poli=C4=8Dar?= <pavlin.g.p@gmail.com>
+Date: Sat, 19 Aug 2023 11:29:35 +0200
+Subject: [PATCH] Fix #248: get_numpy_include class error in new pip
+
+---
+ setup.py | 13 +++----------
+ 1 file changed, 3 insertions(+), 10 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 0f6a3d5..e44111c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -55,16 +55,9 @@ def run(self):
+             writer.write(body, resources, nb_name)
+ 
+ 
+-class get_numpy_include:
+-    """Helper class to determine the numpy include path
+-
+-    The purpose of this class is to postpone importing numpy until it is
+-    actually installed, so that the ``get_include()`` method can be invoked.
+-
+-    """
+-    def __str__(self):
+-        import numpy
+-        return numpy.get_include()
++def get_numpy_include():
++    import numpy
++    return numpy.get_include()
+ 
+ 
+ def get_include_dirs():

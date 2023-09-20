@@ -95,4 +95,12 @@
     <comment>more reproducibility stuff</comment>
     <requestid>1110990</requestid>
   </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>9cd383bf037f6f7a216dccdf3d61defd</srcmd5>
+    <version>1.6.0</version>
+    <time>1695209386</time>
+    <user>dimstar_suse</user>
+    <comment>Explicit requires</comment>
+    <requestid>1112263</requestid>
+  </revision>
 </revisionlist>

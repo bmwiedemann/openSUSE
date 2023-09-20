@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Mon Sep  4 09:47:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.rc:
+  * Use default RDP and VNC ports again.
+  * Use libei for input event plumbing.
+  * Updated translations.
+- Add pkgconfig(libei-1.0) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Tue Aug 08 07:59:54 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 45.beta:
+  * build:
+    - Add an option to enable or disable tests
+    - Use meson to setup tests environment
+  * ci: Simplify test code by just running meson test
+  * context: Add getter for runtime mode
+  * daemon: Fix acquiring screen_cast & remote_desktop proxies
+  * egl-thread: Properly initialize egl_image
+  * rdp-audio-playback: Fix type of PCM samples
+  * rdp-dsp: Fix error condition when AAC encoder could not be
+    created
+  * rdp-fuse-clipboard: Check data size before dereferencing
+    pointer
+  * rdp-gfx-surface: Stop direct usage of RDP surface attributes
+  * rdp-graphics-pipeline:
+    - Always reset RFX context
+    - Remove superfluous condition check
+    - Use surface mapping to map surface to output
+  * rdp-layout-manager:
+    - Add API to invalidate surfaces
+    - Also set surface mapping
+    - Always invalidate surfaces when changing the layout
+    - Duplicate virtual monitor in surface context
+    - Ensure that the correct desktop size is always used
+    - Fix calculation of surface position
+    - Output debug message when disposing virtual monitors
+    - Output debug message when preparing virtual monitor
+  * rdp-monitor-config:
+    - Also determine layout offset
+    - Remove superfluous size sanitization
+    - Short a few lines a bit
+    - Tighten up primary monitor determination
+  * rdp:
+    - Move surface resize handling to stream class
+    - Simplify encode handling
+    - Use virtual monitor size instead of surface size for layout
+      updates
+  * rdp-pipewire-stream:
+    - Add signal to indicate that video size changed
+    - Fix race condition when stream is destroyed
+    - Remove superfluous attribute set
+    - Remove superfluous condition
+  * rdp-surface:
+    - Add APIs to set and get surface mapping
+    - Add API to invalidate surface
+    - Remove unused output_origin_[x,y] attributes
+  * session-rdp:
+    - Adapt to the new invalidate_surface API
+    - Add API to notify a new frame
+    - Add API to notify new desktop size
+    - Allow multimonitor configs in headless sessions
+    - Don't advertise handling for the RefreshRect
+    - Fix incomplete warning message
+    - Ignore SuppressOutput PDUs when session is not ready yet
+    - Reduce direct usage of surface attributes a bit
+    - Remove checks that are never hit
+    - Remove duplicated handling for resizing the desktop
+- Pass tests=false to meson, do not build tests (brings in a lot
+  of dependencies we can avoid with not building it).
+
+-------------------------------------------------------------------
+Fri Jul 07 18:55:44 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 45.alpha:
+  * clipboard: Add suffix to MAX_READ_TIME indicating the time unit
+  * clipboard-rdp: Add suffix to MAX_WAIT_TIME indicating the time
+    unit
+  * daemon: Make daemon an abstract class
+  * daemon-user: Remove unnecessary includes
+  * dbus: Add prefix Mutter to dbus names
+  * rdp:
+    - Adapt to layout manager
+    - Add layout manager
+    - Add stream owner class
+    - Do not include monitor config header in session-rdp header
+    - Ensure PipeWire buffers to be queued before destroying them
+    - Fix assertion hit, when monitor layout PDU contains no
+      monitors
+  * rdp-audio-playback: Don't dereference RDPSND context when it is
+    NULL
+  * rdp-fuse-clipboard: Remove duplicate assignment
+  * rdp-gfx-frame-controller: Use render GSource of surface
+  * rdp-layout-manager:
+    - Fix render sources not being triggered when wanted
+    - Handle surface reduction in layout changes
+    - Recreate mirror-primary streams when streams close
+  * rdp-monitor-config:
+    - Fix calculation of the desktop size
+    - Fix naming of the graphics output buffer size
+  * rdp-pipewire-stream:
+    - Emit closed signal when source node is removed
+    - Lock buffer mutex before removing buffer entry
+    - Use error signal on PipeWire core errors
+  * rdp-surface:
+    - Add APIs to allow inhibit rendering
+    - Add API to set surface size
+    - Add API to trigger pending render operations
+    - Add getter for width and height
+    - Specify target refresh rate directly at surface creation
+  * rdp-telemetry: Remove protocol timeout source
+  * session:
+    - Add debug message when remote desktop session is closed
+    - Move stream management to backends
+  * session-rdp:
+    - Add APIs to acquire and release stream ids
+    - Add error info for failed stream creations
+    - Handle pointer cache size properly
+    - Rename take_or_encode_frame
+    - Stop ignoring mouse movement on mouse button presses
+    - Zero initialize events array
+  * session:
+    - Silence failed message when mutter vanishes
+    - Use stream path instead of stream for abs pointer motion
+      events
+  * settings: Make settings an abstract class
+  * settings-user: Fix copyright year
+  * stream:
+    - Also save stream id for easier identification
+    - Remove unused context argument
+    - Remove unused signal
+  * tests:
+    - Also output return value of test client, in case of an error
+    - Do not attempt to wait twice on test client
+  * vnc: Ensure PipeWire buffers to be queued before destroying
+    them
+  * vnc-pipewire-stream: Lock buffer mutex before removing buffer
+    entry
+  * Updated translations.
+
+-------------------------------------------------------------------
 Sun May 28 09:20:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.2:

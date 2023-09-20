@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Sep 17 18:43:36 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- ungoogled-chromium 117.0.5938.88 (boo#1215279)
+  * CVE-2023-4900: Inappropriate implementation in Custom Tabs
+  * CVE-2023-4901: Inappropriate implementation in Prompts
+  * CVE-2023-4902: Inappropriate implementation in Input
+  * CVE-2023-4903: Inappropriate implementation in Custom Mobile Tabs
+  * CVE-2023-4904: Insufficient policy enforcement in Downloads
+  * CVE-2023-4905: Inappropriate implementation in Prompts
+  * CVE-2023-4906: Insufficient policy enforcement in Autofill
+  * CVE-2023-4907: Inappropriate implementation in Intents
+  * CVE-2023-4908: Inappropriate implementation in Picture in Picture
+  * CVE-2023-4909: Inappropriate implementation in Interstitials
+  * CVE-2023-4863: build with the bundled library on Leap (boo#1215231)
+- drop patches:
+  * chromium-100-InMilliseconds-constexpr.patch
+  * chromium-115-Qt-moc-version.patch
+  * chromium-116-profile-view-utils-vector-include.patch
+  * chromium-116-blink-variant-include.patch
+  * chromium-116-abseil-limits-include.patch
+  * chromium-116-lp155-constuctors.patch
+  * chromium-115-workaround_clang_bug-structured_binding.patch
+  * chromium-115-emplace_back_on_vector-c++20.patch
+- add patches:
+  * chromium-117-blink-BUILD-mnemonic.patch
+  * chromium-117-includes.patch
+  * chromium-117-lp155-constructors.patch
+  * chromium-117-string-convert.patch
+  * chromium-117-lp155-typename.patch
+  * chromium-117-workaround_clang_bug-structured_binding.patch
+  * chromium-117-emplace_back_on_vector-c++20.patch
+
+-------------------------------------------------------------------
 Tue Sep 12 15:49:26 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
 
 - ungoogled-chromium 116.0.5845.187 (boo#1215231):

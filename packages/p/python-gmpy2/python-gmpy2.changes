@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 19 09:03:02 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream mpfr421.patch and gmpy2_cache.c.diff to fix build
+  with mpfr 4.2.1
+
+-------------------------------------------------------------------
 Sat Jun 10 17:36:09 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

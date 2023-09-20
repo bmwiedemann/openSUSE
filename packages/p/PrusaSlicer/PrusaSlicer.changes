@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 15 19:03:08 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.6.1
+  * When renaming a preset to a name containing non-ASCII
+    characters, the encoding was mangled. This is now fixed
+    (#11232).
+  * Supports are no longer shown when using the clipping plane in
+    SLA supports tool.
+  * Fixed a crash when displaying command line help (#11060).
+  * Two tooltips in the Cut tool dialog were shown with mangled
+    encoding in some languages (#11236).
+  * The Help menu in PrusaSlicer was extended with "Sample G-codes
+    and Models" item, which navigates the user to the respective
+    page on our website where these assets can be downloaded.
+  * The Help menu was extended with "Quick Start" item, which
+    navigates the user to the beginner's guide on our website.
+- Drop PrusaSlicer-pr11154-fix-cgal-c++-error.patch
+- Drop PrusaSlicer-drop-wx3.0.patch
+
+-------------------------------------------------------------------
 Tue Aug 29 07:23:22 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add PrusaSlicer-pr11154-fix-cgal-c++-error.patch

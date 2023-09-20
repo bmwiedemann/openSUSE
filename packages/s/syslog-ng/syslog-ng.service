@@ -1,8 +1,6 @@
 [Unit]
 Description=System Logging Service
-Requires=var-run.mount
-# Requires=syslog.socket
-After=var-run.mount network.target
+After=network.target
 Conflicts=rsyslog.service syslogd.service
 
 [Service]

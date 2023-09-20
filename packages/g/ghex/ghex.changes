@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 22 06:45:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + hex-dialog: Prevent decimal display widgets from getting
+    truncated.
+  + widget: Make paste overwrite when not in insert mode.
+
+-------------------------------------------------------------------
 Thu Aug 17 19:43:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.2:
