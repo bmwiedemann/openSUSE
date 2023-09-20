@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 19 05:59:00 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.7.0
+  + firstboot: apply the grub.cfg change immediately
+  + fde-tpm-helper for bootloader RPMs to update the sealed key
+    automatically
+  + Fix the find command of 'make dist'
+  + Clean up the repo
+  + Make the system flags configurable
+  + fde-tpm-helper: specify the bootloaders in %post
+- Add two new subpackages for the bootloader RPMs to update the
+  sealed key: fde-tpm-helper and fde-tpm-helper-rpm-macros
+- Remove ExclusiveArch and set the system directories for 'make'
+  and 'make install'
+
+-------------------------------------------------------------------
 Tue Aug 29 07:56:44 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 0.6.9

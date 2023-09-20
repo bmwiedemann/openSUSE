@@ -17,7 +17,7 @@
 
 
 Name:           fde-tools
-Version:        0.6.9
+Version:        0.7.0
 Release:        0
 Summary:        Tools required for Full Disk Encryption
 License:        GPL-2.0-only
@@ -33,17 +33,16 @@ Requires:       cryptsetup
 Requires:       mokutil
 Requires:       pcr-oracle >= 0.4.5
 Requires:       util-linux-systemd
-ExclusiveArch:  aarch64 s390x ppc64le x86_64 riscv64
+
+%description
+This package provides several components required to support Full Disk
+Encryption.
 
 %package -n fde-firstboot
 Summary:        Full Disk Encryption for images
 Group:          System/Boot
 Requires:       fde-tools
 Requires:       jeos-firstboot
-
-%description
-This package provides several components required to support Full Disk
-Encryption.
 
 %description -n fde-firstboot
 This package contains the scripts necessary to plug Full Disk Encryption
@@ -60,14 +59,41 @@ BuildArch:      noarch
 %description bash-completion
 Bash shell completions for fde-tools
 
+%package -n fde-tpm-helper
+Summary:        TPM helper for fde-tools
+Group:          System/Boot
+
+%description -n fde-tpm-helper
+This package contains the TPM helper script for the bootloader packages
+to update the signature in the sealed key.
+
+%package -n fde-tpm-helper-rpm-macros
+Summary:        RPM macros for fde-tools
+Group:          Development/Tools/Building
+
+%description -n fde-tpm-helper-rpm-macros
+This package contains the RPM macros for the bootloader packages to
+update the signature in the sealed key.
+
 %prep
 %autosetup -p1
 
 %build
-%make_build
+%make_build \
+	CCFLAGS="%optflags" \
+	LIBDIR="%{_libdir}" \
+	LIBEXECDIR="%{_libexecdir}" \
+	SBINDIR="%{_sbindir}" \
+	DATADIR="%{_datadir}" \
+	SYSCONFDIR="%{_sysconfdir}"
 
 %install
-%make_install
+%make_install \
+	LIBDIR="%{_libdir}" \
+	LIBEXECDIR="%{_libexecdir}" \
+	SBINDIR="%{_sbindir}" \
+	DATADIR="%{_datadir}" \
+	SYSCONFDIR="%{_sysconfdir}"
 
 mkdir -p %{buildroot}%{_fillupdir}
 mv %{buildroot}/etc/sysconfig/fde-tools %{buildroot}%{_fillupdir}/sysconfig.fde-tools
@@ -92,7 +118,7 @@ cp %{S:1} %{buildroot}%{_unitdir}/fde-tpm-enroll.service
 %{_sbindir}/fdectl
 %{_sbindir}/fde-token
 %{_sbindir}/fdectl-grub-tpm2
-%dir /etc/fde
+%dir %{_sysconfdir}/fde
 %{_fillupdir}/sysconfig.*
 %{_datadir}/fde
 %{_unitdir}/fde-tpm-enroll.service
@@ -107,5 +133,12 @@ cp %{S:1} %{buildroot}%{_unitdir}/fde-tpm-enroll.service
 %dir %{_datadir}/jeos-firstboot
 %dir %{_datadir}/jeos-firstboot/modules
 %{_datadir}/jeos-firstboot/modules/fde
+
+%files -n fde-tpm-helper
+%dir %{_libexecdir}/fde
+%{_libexecdir}/fde/fde-tpm-helper
+
+%files -n fde-tpm-helper-rpm-macros
+%config %{_sysconfdir}/rpm/macros.fde-tpm-helper
 
 %changelog
