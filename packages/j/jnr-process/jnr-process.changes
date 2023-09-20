@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 19 11:04:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not require maven-javadoc-plugin that we don't use
+
+-------------------------------------------------------------------
 Sun Dec 18 06:44:29 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v0.4.12

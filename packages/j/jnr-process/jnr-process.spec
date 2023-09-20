@@ -48,6 +48,9 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+
+%pom_remove_plugin :maven-javadoc-plugin
+
 %{mvn_file} : %{cluster}/%{name}
 
 %build
