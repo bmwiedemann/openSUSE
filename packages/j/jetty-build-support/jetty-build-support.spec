@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-build-support
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,8 @@ Group:          Documentation/HTML
 %setup -q
 cp %{SOURCE1} .
 cp %{SOURCE2} .
+
+%pom_remove_plugin :maven-javadoc-plugin
 
 %build
 %{mvn_build} -f -- -Dsource=8
