@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 19 19:03:22 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-p2_timestamp.patch
+    + make the p2.timestamp in artifacts.xml file correspond to
+      SOURCE_DATE_EPOCH environmental variable if it is set
+
+-------------------------------------------------------------------
 Sat Sep  2 22:00:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with osgi-core 8.0.0

@@ -1,0 +1,48 @@
+diff -urEbwB eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.artifact.repository/src/org/eclipse/equinox/internal/p2/artifact/repository/CompositeArtifactRepository.java eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.artifact.repository/src/org/eclipse/equinox/internal/p2/artifact/repository/CompositeArtifactRepository.java
+--- eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.artifact.repository/src/org/eclipse/equinox/internal/p2/artifact/repository/CompositeArtifactRepository.java	2023-09-19 09:52:43.226140542 +0200
++++ eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.artifact.repository/src/org/eclipse/equinox/internal/p2/artifact/repository/CompositeArtifactRepository.java	2023-09-19 10:01:45.193553381 +0200
+@@ -482,7 +482,7 @@
+ 				os = new JarOutputStream(new FileOutputStream(jarFile));
+ 				((JarOutputStream) os).putNextEntry(new JarEntry(new Path(artifactsFile.getAbsolutePath()).lastSegment()));
+ 			}
+-			super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.currentTimeMillis()));
++			super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.getenv("SOURCE_DATE_EPOCH") != null ? 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")) : System.currentTimeMillis()));
+ 			new CompositeRepositoryIO().write(toState(), os, PI_REPOSITORY_TYPE);
+ 		} catch (IOException e) {
+ 			LogHelper.log(new Status(IStatus.ERROR, Activator.ID, ProvisionException.REPOSITORY_FAILED_WRITE, NLS.bind(Messages.io_failedWrite, getLocation()), e));
+diff -urEbwB eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.artifact.repository/src/org/eclipse/equinox/internal/p2/artifact/repository/simple/SimpleArtifactRepository.java eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.artifact.repository/src/org/eclipse/equinox/internal/p2/artifact/repository/simple/SimpleArtifactRepository.java
+--- eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.artifact.repository/src/org/eclipse/equinox/internal/p2/artifact/repository/simple/SimpleArtifactRepository.java	2023-09-19 09:52:43.226140542 +0200
++++ eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.artifact.repository/src/org/eclipse/equinox/internal/p2/artifact/repository/simple/SimpleArtifactRepository.java	2023-09-19 10:01:27.826755022 +0200
+@@ -1314,7 +1314,7 @@
+ 					os = new JarOutputStream(new FileOutputStream(jarFile));
+ 					((JarOutputStream) os).putNextEntry(new JarEntry(new Path(artifactsFile.getAbsolutePath()).lastSegment()));
+ 				}
+-				super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.currentTimeMillis()), new NullProgressMonitor());
++				super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.getenv("SOURCE_DATE_EPOCH") != null ? 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")) : System.currentTimeMillis()), new NullProgressMonitor());
+ 				new SimpleArtifactRepositoryIO(getProvisioningAgent()).write(this, os);
+ 			} catch (IOException e) {
+ 				// TODO proper exception handling
+diff -urEbwB eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.metadata.repository/src/org/eclipse/equinox/internal/p2/metadata/repository/CompositeMetadataRepository.java eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.metadata.repository/src/org/eclipse/equinox/internal/p2/metadata/repository/CompositeMetadataRepository.java
+--- eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.metadata.repository/src/org/eclipse/equinox/internal/p2/metadata/repository/CompositeMetadataRepository.java	2023-09-19 09:52:43.236140615 +0200
++++ eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.metadata.repository/src/org/eclipse/equinox/internal/p2/metadata/repository/CompositeMetadataRepository.java	2023-09-19 10:00:57.393190912 +0200
+@@ -312,7 +312,7 @@
+ 				output = new JarOutputStream(new FileOutputStream(jarFile));
+ 				((JarOutputStream) output).putNextEntry(jarEntry);
+ 			}
+-			super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.currentTimeMillis()));
++			super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.getenv("SOURCE_DATE_EPOCH") != null ? 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")) : System.currentTimeMillis()));
+ 			new CompositeRepositoryIO().write(toState(), output, PI_REPOSITORY_TYPE);
+ 		} catch (IOException e) {
+ 			LogHelper.log(new Status(IStatus.ERROR, Constants.ID, ProvisionException.REPOSITORY_FAILED_WRITE, NLS.bind(Messages.io_failedWrite, getLocation()), e));
+diff -urEbwB eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.metadata.repository/src/org/eclipse/equinox/internal/p2/metadata/repository/LocalMetadataRepository.java eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.metadata.repository/src/org/eclipse/equinox/internal/p2/metadata/repository/LocalMetadataRepository.java
+--- eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.metadata.repository/src/org/eclipse/equinox/internal/p2/metadata/repository/LocalMetadataRepository.java	2023-09-19 09:52:43.236140615 +0200
++++ eclipse-platform-sources-I20200305-0155/rt.equinox.p2/bundles/org.eclipse.equinox.p2.metadata.repository/src/org/eclipse/equinox/internal/p2/metadata/repository/LocalMetadataRepository.java	2023-09-19 10:02:58.610776767 +0200
+@@ -279,7 +279,7 @@
+ 				output = new JarOutputStream(new FileOutputStream(jarFile));
+ 				((JarOutputStream) output).putNextEntry(jarEntry);
+ 			}
+-			super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.currentTimeMillis()), new NullProgressMonitor());
++			super.setProperty(IRepository.PROP_TIMESTAMP, Long.toString(System.getenv("SOURCE_DATE_EPOCH") != null ? 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")) : System.currentTimeMillis()), new NullProgressMonitor());
+ 			new MetadataRepositoryIO(getProvisioningAgent()).write(this, output);
+ 		} catch (IOException e) {
+ 			LogHelper.log(new Status(IStatus.ERROR, Constants.ID, ProvisionException.REPOSITORY_FAILED_WRITE, "Error saving metadata repository: " + getLocation(), e)); //$NON-NLS-1$

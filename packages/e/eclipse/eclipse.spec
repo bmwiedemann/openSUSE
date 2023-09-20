@@ -120,6 +120,7 @@ Patch34:        eclipse-libkeystorelinuxnative.patch
 # PATCH-FIX-UPSTREAM bsc#1183728 CVE-2020-27225 Help Subsystem does not authenticate active help requests
 Patch35:        eclipse-CVE-2020-27225.patch
 Patch36:        eclipse-ant.patch
+Patch37:        reproducible-p2_timestamp.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  ant-antlr
 BuildRequires:  ant-apache-bcel
@@ -531,6 +532,7 @@ tar --strip-components=1 -xf %{SOURCE1}
 %patch34 -p1
 %patch35 -p1
 %patch36 -p1
+%patch37 -p1
 
 # Extend the objectweb-asm requirements
 sed -i -e 's/org\.objectweb\.asm\.tree;bundle-version="\[6\.0\.0,8\.0\.0)"/org\.objectweb\.asm\.tree;bundle-version="\[6\.0\.0,10\.0\.0)"/g' \
@@ -810,12 +812,13 @@ mv eclipse.jdt.debug/org.eclipse.jdt.launching.javaagent/target/javaagent-shaded
 # Qualifier generated from last modification time of source tarball
 QUALIFIER=$(date -u -d"$(stat --format=%%y %{SOURCE0})" +v%%Y%%m%%d-%%H%%M)
 %{mvn_build} -j -f -- -e -DforceContextQualifier=$QUALIFIER \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
 %if %{with bootstrap}
-   -P !api-generation,!build-docs \
+    -P !api-generation,!build-docs \
 %endif
-   -Declipse.javadoc=%{_jvmdir}/java/bin/javadoc -Dnative=gtk.linux.%{eclipse_arch} \
-   -Dtycho.local.keepTarget \
-   -Dfedora.p2.repos=$(pwd)/.m2/p2/repo-sdk/plugins -DbuildType=X
+    -Declipse.javadoc=%{_jvmdir}/java/bin/javadoc -Dnative=gtk.linux.%{eclipse_arch} \
+    -Dtycho.local.keepTarget \
+    -Dfedora.p2.repos=$(pwd)/.m2/p2/repo-sdk/plugins -DbuildType=X
 
 # Location that the product is materialised
 product="eclipse.platform.releng.tychoeclipsebuilder/platform/target/products/org.eclipse.platform.ide/linux/gtk/%{eclipse_arch}"

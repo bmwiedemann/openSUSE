@@ -167,4 +167,12 @@
     <comment>Fix build with osgi-core 8.0.0</comment>
     <requestid>1108671</requestid>
   </revision>
+  <revision rev="22" vrev="11">
+    <srcmd5>c4f353ae2cfa2c377284201776aecfea</srcmd5>
+    <version>4.15</version>
+    <time>1695209443</time>
+    <user>dimstar_suse</user>
+    <comment>Reproducible timestamp in xml files</comment>
+    <requestid>1112366</requestid>
+  </revision>
 </revisionlist>
