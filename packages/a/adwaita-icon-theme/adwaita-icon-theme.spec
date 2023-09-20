@@ -17,17 +17,18 @@
 
 
 Name:           adwaita-icon-theme
-Version:        44.0
+Version:        45.0
 Release:        0
 Summary:        GNOME Icon Theme
 License:        CC-BY-SA-3.0 OR LGPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/adwaita-icon-theme
-Source0:        https://download.gnome.org/sources/adwaita-icon-theme/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/adwaita-icon-theme/45/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  gtk3-tools >= 3.24.2
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 # To make sure the icon theme cache gets generated
 Requires(post): (gtk3-tools if libgtk-3-0)
@@ -42,11 +43,11 @@ The default GNOME icon theme, Adwaita.
 %autosetup
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 # Those folders disappeared in the upgrade from 2.28.0 -> 2.29.0
 # FIXME: eventually no application should install any files there
 mkdir -p %{buildroot}%{_datadir}/icons/Adwaita/scalable/actions

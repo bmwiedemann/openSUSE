@@ -280,4 +280,12 @@
     <comment>New stable release (forwarded request 1073082 from iznogood)</comment>
     <requestid>1073221</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>42304e1382b25969fb8047adc9d6f5bd</srcmd5>
+    <version>45.0</version>
+    <time>1695208957</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 1111954 from iznogood)</comment>
+    <requestid>1111966</requestid>
+  </revision>
 </revisionlist>
