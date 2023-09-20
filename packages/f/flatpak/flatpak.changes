@@ -1,4 +1,148 @@
 -------------------------------------------------------------------
+Wed Aug  2 20:23:29 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add update-user-flatpaks service and timer Systemd units - based
+  on update-system-flatpaks.{service,timer} - to help users keep
+  their user installed flatpaks up to date.
+- Prefix /etc/flatpak/remotes.d/flathub.flatpakrepo with %config
+  macro to mark it as a configuration file.
+
+-------------------------------------------------------------------
+Fri Mar 17 16:20:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.15.4 (CVE-2023-28101, CVE-2023-28100):
+  + Escape special characters when displaying permissions and
+    metadata, preventing malicious apps from manipulating the
+    appearance of the permissions list using crafted metadata
+    (CVE-2023-28101).
+  + If a Flatpak app is run on a Linux virtual console (tty1, tty2,
+    etc.), don't allow copy/paste via the TIOCLINUX ioctl
+    (CVE-2023-28100). Note that this is specific to virtual
+    consoles: Flatpak is not vulnerable to this if run from a
+    graphical terminal emulator such as xterm, gnome-terminal or
+    Konsole.
+  + Document the path used for flatpak override.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 17 10:06:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.15.3:
+  + Build system: Building this version of Flatpak with Meson is
+    recommended. The source release flatpak-1.15.3.tar.xz no longer
+    contains Autotools-generated files, although this version can
+    still be built using Autotools after running ./autogen.sh.
+    Future versions are likely to remove the Autotools buildsystem.
+  + Bug fixes:
+    - When splitting an upgrade into two steps (download without
+      installing, and then upgrade without allowing further
+      downloads) like GNOME Software does, if an app is marked EOL
+      and superseded by a replacement, don't remove the superseded
+      app in the first step, which would result in the replacement
+      incorrectly not being installed.
+    - Fix a crash when --socket=gpg-agent is used.
+    - Fix a crash when listing apps if one of them is broken or
+      misconfigured.
+    - If an app has invalid syntax in its overrides or metadata,
+      mention the filename in the error message.
+    - Unset $GDK_BACKEND for apps, ensuring GTK apps with
+      --socket=fallback-x11 can work.
+    - Fix a deprecation warning when compiled with curl >= 7.85.
+  + Updated translations.
+  + Internal changes: Better diagnostic messages for why runtimes
+    are or are not considered unused.
+- Changes from version 1.15.2:
+  + Bug fixes:
+    - Never try to export a parent of reserved directories as a
+      --filesystem, for example /run, which would prevent the app
+      from starting.
+    - Never try to export a --filesystem below /run/flatpak or
+      /run/host, which could similarly prevent the app from
+      starting.
+    - The above change also fixes apps not starting if a
+      --filesystem is a symlink to the root directory.
+    - Show a warning when the --filesystem exists but cannot be
+      shared with the sandbox.
+    - Display the intended messages for flatpak repair.
+    - Exporting an app to an existing repository on a CIFS
+      filesystem now works as intended.
+    - Unset $GIO_EXTRA_MODULES for apps, avoiding misbehaviour in
+      some GLib apps when set to a path on the host.
+    - Unset $XKB_CONFIG_ROOT for apps, avoiding crashes in GTK and
+      Qt apps under Wayland when this variable is set to a path not
+      available in the sandbox.
+    - When using the fish shell, avoid duplicate XDG_DATA_DIRS
+      entries if the profile script is sourced more than once.
+    - Update included copy of bubblewrap to 0.7.0 for better error
+      messages.
+    - Install SELinux files correctly when building with Meson
+  + Internal changes:
+    - Update included copy of libglnx
+    - flatpak -v now uses the INFO log level, and flatpak -vv uses
+      the DEBUG log level in the flatpak log domain. Previously,
+      the extra messages that were logged by flatpak -vv were in a
+      separate "flatpak2" log domain. G_MESSAGES_DEBUG=flatpak
+      previously had an effect similar to flatpak -v, and is now
+      more similar to flatpak -vv.
+- Changes from version 1.15.1:
+  + Dependencies: When building with Meson, gpgme 1.8.0 is now
+    required. Older versions can still be used by building with
+    Autotools.
+  + Features: If an old temporary deploy directory was leaked by
+    versions before #5146, clean it up the next time the same app
+    is updated.
+  + Bug fixes:
+    - If an app update is blocked by parental controls policies,
+      clean up the temporary deploy directory.
+    - Fix Autotools build with versions of gpgme that no longer
+      provide gpgme-config(1).
+    - Fix a possible parallel build failure with Meson.
+    - Fix a compiler warning on 32-bit architectures.
+    - When building with Autotools, be more consistent about
+      applying compiler warning flags.
+    - Unset $TEMP, $TEMPDIR and $TMP for apps, the same as $TMPDIR.
+    - Treat /efi the same as /boot/efi.
+- Changes from version 1.15.0:
+  + Build system:
+    - Flatpak can now be compiled using Meson instead of Autotools.
+      This requires Meson 0.53.0 or later, and Python 3.5 or later.
+    - The Autotools build system is likely to be removed during
+      either the 1.15.x or 1.17.x cycle.
+  + New features:
+    - Allow the modify_ldt system call as part of
+      --allow=multiarch. This increases attack surface, but is
+      required when running 16-bit executables in some versions of
+      Wine.
+    - Share gssproxy socket, which acts like a portal for Kerberos
+      authentication. This lets apps use Kerberos authentication
+      without needing a sandbox hole.
+    - Add a httpbackend variable to flatpak.pc, allowing dependent
+      projects like GNOME Software to detect whether they are
+      compatible with libflatpak.
+  + Bug fixes:
+    - Terminate the flatpak-session-helper and flatpak-portal
+      services when the session ends, so that applications will not
+      inherit outdated Wayland and X11 socket addresses.
+    - When using fish shell, don't overwrite a previously-set
+      XDG_DATA_DIRS.
+    - Don't try to enable HTTP 2 if linked to a libcurl version
+      that doesn't support it.
+    - Stop systemd reporting the session-helper as failed when
+      terminated by a signal.
+    - Fix a warning when listing a document with no permissions.
+    - Fix compilation with GLib 2.66.x (as used in Debian 11).
+    - Fix compilation with GLib 2.58.x (as used in Debian 10).
+    - Make generated files more reproducible.
+  + Internal changes:
+    - Update project logo in README.
+    - Update libglnx subproject.
+  + Updated translations.
+- Add libtool BuildRequires and pass autogen.sh, bootstrapping
+  build is now needed.
+- Add gtk-doc and xmlto BuildRequires and pass enable-documentation
+  and enable-gtk-doc to configure, building documentation manually.
+
+-------------------------------------------------------------------
 Thu Mar 16 16:15:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.14.4 (CVE-2023-28101, CVE-2023-28100):

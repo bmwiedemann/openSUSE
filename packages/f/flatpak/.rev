@@ -846,4 +846,14 @@ two places:   gtk-doc --&gt; python3-Pygments -/-&gt; python3-setuptools -/-&gt;
     <comment></comment>
     <requestid>1072674</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>013645702bca17d94d8747c1c88ffee5</srcmd5>
+    <version>1.15.4</version>
+    <time>1695208870</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1109804 from iznogood
+
+Pushing GNOME 45.rc packages</comment>
+    <requestid>1110410</requestid>
+  </revision>
 </revisionlist>

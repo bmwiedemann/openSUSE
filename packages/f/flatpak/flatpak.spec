@@ -34,7 +34,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.14.4
+Version:        1.15.4
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -43,22 +43,27 @@ URL:            https://flatpak.github.io/
 Source0:        https://github.com/flatpak/flatpak/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        update-system-flatpaks.service
 Source2:        update-system-flatpaks.timer
-Source3:        https://flathub.org/repo/flathub.flatpakrepo
+Source3:        update-user-flatpaks.service
+Source4:        update-user-flatpaks.timer
+Source5:        https://flathub.org/repo/flathub.flatpakrepo
 # PATCH-FEATURE-OPENSUSE polkit_rules_usability.patch -- Make the rules comply with openSUSE expectations
 Patch0:         polkit_rules_usability.patch
 
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= %{bubblewrap_version}
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  gtk-doc
 BuildRequires:  intltool >= 0.35.0
 BuildRequires:  libcap-devel
 BuildRequires:  libgpg-error-devel
 BuildRequires:  libgpgme-devel >= 1.1.8
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-pyparsing
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  xdg-dbus-proxy >= %{xdg_dbus_proxy_version}
+BuildRequires:  xmlto
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(appstream) >= 0.12.0
 BuildRequires:  pkgconfig(dconf) >= 0.26
@@ -177,6 +182,7 @@ fi
 sed -i -e '1s,#!%{_bindir}/env python3,#!%{_bindir}/python3,' scripts/flatpak-*
 
 %build
+./autogen.sh
 %configure \
 	--disable-silent-rules \
 	--with-system-bubblewrap \
@@ -187,6 +193,8 @@ sed -i -e '1s,#!%{_bindir}/env python3,#!%{_bindir}/python3,' scripts/flatpak-*
 %if !%{support_environment_generators}
 	--enable-gdm-env-file \
 %endif
+	--enable-documentation \
+	--enable-gtk-doc \
 	%{nil}
 %make_build
 %sysusers_generate_pre system-helper/flatpak.conf system-user-flatpak flatpak.conf
@@ -208,12 +216,16 @@ rm -Rf %{buildroot}%{_systemd_user_env_generator_dir}
 rm -Rf %{buildroot}%{_systemd_system_env_generator_dir}
 %endif
 
-install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/update-system-flatpaks.service
-install -D -m 644 %{SOURCE2} %{buildroot}%{_unitdir}/update-system-flatpaks.timer
+# System update Systemd service and timer units
+install -D -m 644 -t %{buildroot}%{_unitdir} %{SOURCE1}
+install -D -m 644 -t %{buildroot}%{_unitdir} %{SOURCE2}
 
-mkdir -p %{buildroot}%{_sysconfdir}/flatpak/remotes.d
-# Flathub
-install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/flatpak/remotes.d
+# User update Systemd service and timer units
+install -D -m 644 -t %{buildroot}%{_userunitdir} %{SOURCE3}
+install -D -m 644 -t %{buildroot}%{_userunitdir} %{SOURCE4}
+
+# Flathub remote repository
+install -D -m 644 -t %{buildroot}%{_sysconfdir}/flatpak/remotes.d %{SOURCE5}
 
 %find_lang %{name}
 
@@ -284,8 +296,8 @@ fi
 %dir %{_sysconfdir}/flatpak
 %dir %{_sysconfdir}/flatpak/remotes.d
 %{_unitdir}/flatpak-system-helper.service
-%{_unitdir}/update-system-flatpaks.service
-%{_unitdir}/update-system-flatpaks.timer
+%{_unitdir}/update-system-flatpaks.{service,timer}
+%{_userunitdir}/update-user-flatpaks.{service,timer}
 %{_sbindir}/rcflatpak-system-helper
 %{_userunitdir}/flatpak-session-helper.service
 %{_userunitdir}/flatpak-portal.service
@@ -325,6 +337,9 @@ fi
 %files devel
 %license COPYING
 %doc %{_datadir}/gtk-doc/html/flatpak
+%dir %{_datadir}/doc/flatpak
+%doc %{_datadir}/doc/flatpak/docbook.css
+%doc %{_datadir}/doc/flatpak/flatpak-docs.html
 %{_bindir}/flatpak-bisect
 %{_bindir}/flatpak-coredumpctl
 %{_libdir}/pkgconfig/flatpak.pc
@@ -333,6 +348,6 @@ fi
 %{_datadir}/gir-1.0/Flatpak-1.0.gir
 
 %files remote-flathub
-%{_sysconfdir}/flatpak/remotes.d/flathub.flatpakrepo
+%config %{_sysconfdir}/flatpak/remotes.d/flathub.flatpakrepo
 
 %changelog

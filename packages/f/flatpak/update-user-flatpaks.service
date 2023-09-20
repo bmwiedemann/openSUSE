@@ -1,0 +1,12 @@
+[Unit]
+Description=Update user Flatpaks
+Documentation=man:flatpak-update(1)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/flatpak --user update -y --noninteractive
+
+[Install]
+WantedBy=default.target
