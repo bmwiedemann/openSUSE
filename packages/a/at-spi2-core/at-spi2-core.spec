@@ -16,16 +16,20 @@
 #
 
 
+# TODO: Double check whether we really need bundled fonts such as:
+#         /usr/share/doc/libatspi/RedHatText-Regular.woff2
+#         /usr/share/doc/libatspi/SourceCodePro-It.ttf.woff
+#
 %define atspiconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}
 
 Name:           at-spi2-core
-Version:        2.48.4
+Version:        2.50.0
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org/
-Source0:        https://download.gnome.org/sources/at-spi2-core/2.48/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/at-spi2-core/2.50/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  fdupes
@@ -143,7 +147,7 @@ The package contains a ATK/D-Bus bridge library.
 %install
 %meson_install
 %find_lang %{name}
-%fdupes %{buildroot}%{_datadir}/gtk-doc/html/
+%fdupes %{buildroot}%{_datadir}
 # Move autostart file to /usr/etc
 mkdir -p %{buildroot}%{atspiconfdir}/xdg/autostart
 mkdir -p %{buildroot}%{atspiconfdir}/xdg/Xwayland-session.d

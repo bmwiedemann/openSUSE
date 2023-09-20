@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Sep 18 01:14:03 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Adjust %fdupes parameter value to %{buildroot}%{_datadir}, one of
+  the parent directories of the former parameter, to symlink other
+  duplicate files under the datadir.
+
+-------------------------------------------------------------------
+Fri Sep 15 22:57:28 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.50.0:
+  + Fix at-spi2-atk test when running under a non-English locale.
+
+-------------------------------------------------------------------
+Mon Sep  4 18:22:58 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 2.49.91:
+  + collection: Avoid locking up if an object has a very large
+    child count.
+  + Fix possible NULL pointer dereference when deregistering an
+    event listener.
+  + Various fixes for the new key grabbing API.
+  + Don't wait for a reply when registering or deregistering
+    keystroke listeners.
+
+-------------------------------------------------------------------
+Mon Sep  4 18:21:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.49.90:
+  + Fix a test failure/timeout.
+  + Add atspi_get_version() to return the runtime version of the
+    library.
+  + Collection: fix match testing for attributes.
+  + Fix a NULL pointer dereference when deregistering an event
+    listener that doesn't include a detail.
+  + Fix the documentation for interfaces in collection match rules.
+  + Add an AtspiLive enum to specify the politeness level for live
+    regions, and document that this should be used for Announcement
+    signals. Also add a notification signal in atk to replace the
+    announcement signal that lacks the politeness information.
+  + Add an asynchronous version of atspi_generate_mouse_event.
+
+-------------------------------------------------------------------
 Mon Sep  4 18:20:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.48.4:
@@ -16,6 +58,16 @@ Thu Aug  3 02:46:25 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Support build environments like SLE 15 SP5 and Leap 15.5 which
   had %{_distconfdir) not defined yet.
+
+-------------------------------------------------------------------
+Tue Jul 18 10:10:28 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.49.1:
+  + TableCell.xml: Add Get{Column,Row}HeaderCells methods.
+  + atspi_accessible_get_localized_role_name: Use internal names
+    when possible.
+  + Add a non-recursive function to clear a single object's cache.
+  + Code clean-ups.
 
 -------------------------------------------------------------------
 Sun May 28 09:12:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
