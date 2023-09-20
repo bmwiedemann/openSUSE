@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-logs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           gnome-logs
-Version:        43.0
+Version:        45.beta
 Release:        0
 Summary:        GNOME System Log Viewer
 License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
 URL:            https://wiki.gnome.org/Apps/Logs
-Source0:        https://download.gnome.org/sources/gnome-logs/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-logs/45/%{name}-%{version}.tar.xz
 
 
 BuildRequires:  docbook-xsl-stylesheets
@@ -71,12 +71,10 @@ A utility for viewing detailed event logs for the system.
 %doc %{_datadir}/help/C/gnome-logs/
 %{_bindir}/%{name}
 %{_datadir}/metainfo/org.gnome.Logs.appdata.xml
-%dir %{_datadir}/gnome-logs
-%{_datadir}/gnome-logs/gl-style.css
 %{_datadir}/applications/org.gnome.Logs.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.Logs.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.Logs.gschema.xml
-%dir %{_datadir}/icons/hicolor/
+%dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/*
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Logs*.svg
 %{_mandir}/man1/%{name}.1%{?ext_man}

@@ -320,4 +320,12 @@
     <comment></comment>
     <requestid>1006639</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0200e723d1bff0146423e1957fbde6dc</srcmd5>
+    <version>45.beta</version>
+    <time>1695208875</time>
+    <user>dimstar_suse</user>
+    <comment>Pushing GNOME 45.rc packages (forwarded request 1109822 from iznogood)</comment>
+    <requestid>1110491</requestid>
+  </revision>
 </revisionlist>
