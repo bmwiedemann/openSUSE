@@ -1,7 +1,7 @@
 #
 # spec file for package polari
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           polari
-Version:        43.0
+Version:        45.0
 Release:        0
 Summary:        An IRC Client for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/IRC
 URL:            https://wiki.gnome.org/Apps/Polari
-Source0:        https://download.gnome.org/sources/polari/43/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/polari/45/%{name}-%{version}.tar.xz
 Source99:       polari-rpmlintrc
 
 BuildRequires:  appstream-glib
