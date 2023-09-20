@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Sep 18 21:26:47 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.0.5:
+  * Bugfixes:
+    - Fix segfault when using libxrandr (#544, Display, Linux)
+    - Don't print 0px (#544, Cursor)
+  * Features:
+    - Add option --disk-use-available (#543)
+    - Add option --disk-show-readonly
+- Removed config.conf to fix build
+
+-------------------------------------------------------------------
+Tue Aug 22 02:50:15 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 2.0.1:
+  * Changes:
+    - Unescape strings only when parsing .conf files
+        - Previously: $ NO_CONFIG=1 fastfetch --os-key \\\\ -s os -l none prints \: *. 
+          Note the backslashs are unescaped twice (once by shell and once by fastfetch).
+        - Now: $ NO_CONFIG=1 fastfetch --os-key \\\\ -s os -l none prints \\: *
+    - Remove option shortcut -c (alias of --color), which is more commonly used as alias of --config
+    - Rename --recache to --logo-recache (which is used for regenerate image logo cache). Remove option shortcut -r (alias of --recache).
+    - Detecting brightness of external displays with DDC/CI is no longer guarded behind --allow-slow-operations (Brightness)
+  * Features:
+    - Add --key-width for aligning the left edge of values, supported both for global --key-width and specific module --module-key-width
+    - Add --bar-char-elapsed, --bar-char-total, --bar-width and --bar-border options
+    - Add CMake option ENABLE_SYSTEM_YYJSON, which allow building fastfetch with system-provided yyjson (for package managers)
+    - Add new module Version, which prints fastfetch version (like fastfetch --version)
+  * Bugfixes:
+    - Fix label detection. Use --disk-key 'Disk ({2})' to display it (Disk, Linux)
+    - Fix some module options were not inited
+    - Fix terminal version and font detection on NixOS (Terminal, Linux)
+
+-------------------------------------------------------------------
 Fri Jul 21 07:30:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.2:
