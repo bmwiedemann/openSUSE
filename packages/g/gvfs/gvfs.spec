@@ -18,13 +18,13 @@
 
 %bcond_without  cdda
 Name:           gvfs
-Version:        1.50.5
+Version:        1.52.0
 Release:        0
 Summary:        Virtual File System functionality for GLib
 License:        GPL-3.0-only AND LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/gvfs
-Source0:        https://download.gnome.org/sources/gvfs/1.50/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gvfs/1.52/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 ### NOTE: Please, keep SLE-only patches at bottom (starting on 1000).
@@ -157,6 +157,7 @@ Summary:        Development files for the GNOME Virtual file system
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description devel
 gvfs GNOME's userspace virtual filesystem designed to work with the

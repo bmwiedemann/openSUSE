@@ -1442,4 +1442,12 @@ Also wanted for 13.1</comment>
 New stable rel</comment>
     <requestid>1096194</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>1f97b4ef614fd7ea71ad946462477939</srcmd5>
+    <version>1.52.0</version>
+    <time>1695208913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111609</requestid>
+  </revision>
 </revisionlist>
