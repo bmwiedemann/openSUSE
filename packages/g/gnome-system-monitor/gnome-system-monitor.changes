@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Sep 16 16:22:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  3 12:09:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0.1:
+  + GTK4 port preparations.
+  + Remove visible property from window.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 16 19:35:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Fixed dconf error handling.
+  + Avoid network spike when monitored interfaces change.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  4 09:40:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + Settings write should be async and delayed.
+  + Use Terminate instead of End process.
+  + Make affinity strings translatable.
+  + Fixed gschema descriptions to match column names.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 11 12:10:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.alpha:
+  + Add placeholder text to the search entry
+  + Remove unused ctime_r check
+  + Don't move main window to left/top screen on start on
+    multi-screen
+  + Use action-name properties
+  + Fixed issue with displaying wrong icon proceeding process name
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 17 20:25:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:

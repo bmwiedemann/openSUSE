@@ -850,4 +850,12 @@
     <comment>New stable release (forwarded request 1072744 from iznogood)</comment>
     <requestid>1073185</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>7affadcf97264865312361d62bce3797</srcmd5>
+    <version>45.0.2</version>
+    <time>1695208936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111875</requestid>
+  </revision>
 </revisionlist>
