@@ -1,8 +1,8 @@
---- maven-javadoc-plugin-3.3.2/src/main/java/org/apache/maven/plugins/javadoc/StaleHelper.java	2022-02-07 20:52:42.000000000 +0100
-+++ maven-javadoc-plugin-3.3.2/src/main/java/org/apache/maven/plugins/javadoc/StaleHelper.java	2022-03-14 07:46:55.466835949 +0100
-@@ -43,6 +43,19 @@
- public class StaleHelper
- {
+--- maven-javadoc-plugin-3.5.0/src/main/java/org/apache/maven/plugins/javadoc/StaleHelper.java	2023-09-14 14:20:14.049981880 +0200
++++ maven-javadoc-plugin-3.5.0/src/main/java/org/apache/maven/plugins/javadoc/StaleHelper.java	2023-09-14 14:25:18.258705774 +0200
+@@ -41,6 +41,19 @@
+  */
+ public class StaleHelper {
  
 +    private static Charset getDataCharset()
 +    {
@@ -20,34 +20,33 @@
      /**
       * Compute the data used to detect a stale javadoc
       *
-@@ -61,16 +74,7 @@
+@@ -56,13 +69,7 @@
              String[] args = cmd.getArguments();
-             Collections.addAll( options, args );
-             
+             Collections.addAll(options, args);
+ 
 -            final Charset cs;
--            if ( JavaVersion.JAVA_SPECIFICATION_VERSION.isAtLeast( "9" )
--                && JavaVersion.JAVA_SPECIFICATION_VERSION.isBefore( "12" ) )
--            {
+-            if (JavaVersion.JAVA_SPECIFICATION_VERSION.isAtLeast("9")
+-                    && JavaVersion.JAVA_SPECIFICATION_VERSION.isBefore("12")) {
 -                cs = StandardCharsets.UTF_8;
--            }
--            else
--            {
+-            } else {
 -                cs = Charset.defaultCharset();
 -            }
 +            final Charset cs = getDataCharset();
-             
-             for ( String arg : args )
-             {
-@@ -141,9 +145,11 @@
-     {
-         try
-         {
+ 
+             for (String arg : args) {
+                 if (arg.startsWith("@")) {
+@@ -116,9 +123,11 @@
+      */
+     public static void writeStaleData(Commandline cmd, Path path) throws MavenReportException {
+         try {
 +            final Charset cs = getDataCharset();
-+            
-             String curdata = getStaleData( cmd );
-             Files.createDirectories( path.getParent() );
--            Files.write( path, Collections.singleton( curdata ), Charset.defaultCharset() );
-+            Files.write( path, Collections.singleton( curdata ), cs);
++
+             String curdata = getStaleData(cmd);
+             Files.createDirectories(path.getParent());
+-            Files.write(path, Collections.singleton(curdata), Charset.defaultCharset());
++            Files.write(path, Collections.singleton(curdata), cs);
+         } catch (IOException e) {
+             throw new MavenReportException("Error checking stale data", e);
          }
-         catch ( IOException e )
-         {
+Only in maven-javadoc-plugin-3.5.0/src/main/java/org/apache/maven/plugins/javadoc: StaleHelper.java.orig
+Only in maven-javadoc-plugin-3.5.0/src/main/java/org/apache/maven/plugins/javadoc: StaleHelper.java.rej

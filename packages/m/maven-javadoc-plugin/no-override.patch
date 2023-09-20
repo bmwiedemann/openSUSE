@@ -1,0 +1,10 @@
+--- maven-javadoc-plugin-3.5.0/src/main/java/org/apache/maven/plugins/javadoc/JavadocReport.java	2023-09-14 14:27:44.286360008 +0200
++++ maven-javadoc-plugin-3.5.0/src/main/java/org/apache/maven/plugins/javadoc/JavadocReport.java	2023-09-14 14:34:08.848960654 +0200
+@@ -118,7 +118,6 @@
+     }
+ 
+     /** {@inheritDoc} */
+-    @Override
+     public void generate(org.codehaus.doxia.sink.Sink sink, Locale locale) throws MavenReportException {
+         generate(sink, null, locale);
+     }

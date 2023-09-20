@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,17 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-javadoc-plugin
-Version:        3.3.2
+Version:        3.6.0
 Release:        0
 Summary:        Maven plugin for creating javadocs
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/plugins/maven-javadoc-plugin
+URL:            https://maven.apache.org/plugins/maven-javadoc-plugin
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{base_name}/%{version}/%{base_name}-%{version}-source-release.zip
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
 Patch1:         stale-data-encoding.patch
-Patch2:         maven-javadoc-plugin-ioexception.patch
+Patch2:         no-override.patch
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
@@ -47,7 +47,6 @@ BuildRequires:  httpcomponents-core
 BuildRequires:  javapackages-local
 BuildRequires:  jdom2
 BuildRequires:  maven-archiver
-BuildRequires:  maven-artifact-transfer
 BuildRequires:  maven-common-artifact-filters
 BuildRequires:  maven-doxia-core
 BuildRequires:  maven-doxia-logging-api
@@ -58,6 +57,8 @@ BuildRequires:  maven-invoker
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
 BuildRequires:  maven-reporting-api >= 3.1.0
+BuildRequires:  maven-resolver-api
+BuildRequires:  maven-resolver-util
 BuildRequires:  maven-shared-utils
 BuildRequires:  maven-wagon-provider-api
 BuildRequires:  objectweb-asm
@@ -94,6 +95,7 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-resources-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-surefire-plugin)
 BuildRequires:  mvn(org.codehaus.modello:modello-maven-plugin)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
+BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
 Obsoletes:      %{base_name}-bootstrap
 #!BuildRequires: maven-compiler-plugin-bootstrap
 #!BuildRequires: maven-jar-plugin-bootstrap
@@ -132,58 +134,59 @@ cp %{SOURCE1} build.xml
 %if %{with bootstrap}
 mkdir -p lib
 build-jar-repository -s lib \
-	apache-commons-lang3 \
-	apache-commons-text \
-	atinject \
-	commons-cli \
-	commons-io \
-	guava/guava \
-	guice/google-guice-no_aop \
-	httpcomponents/httpclient \
-	httpcomponents/httpcore \
-	jdom2/jdom2 \
-	maven-archiver/maven-archiver \
-	maven-artifact-transfer/maven-artifact-transfer \
-	maven-common-artifact-filters/maven-common-artifact-filters \
-	maven-doxia/doxia-core \
-	maven-doxia/doxia-logging-api \
-	maven-doxia/doxia-module-xhtml \
-	maven-doxia/doxia-module-xhtml5 \
-	maven-doxia/doxia-sink-api \
-	maven-doxia-sitetools/doxia-site-renderer \
-	maven-invoker/maven-invoker \
-	maven/maven-artifact \
-	maven/maven-core \
-	maven/maven-model \
-	maven/maven-model-builder \
-	maven/maven-plugin-api \
-	maven/maven-settings \
-	maven-plugin-tools/maven-plugin-annotations \
-	maven-reporting-api/maven-reporting-api \
-	maven-shared-utils/maven-shared-utils \
-	maven-wagon/provider-api \
-	objectweb-asm/asm \
-	org.eclipse.sisu.inject \
-	org.eclipse.sisu.plexus \
-	plexus/archiver \
-	plexus-classworlds \
-	plexus/cli \
-	plexus-containers/plexus-component-annotations \
-	plexus/interactivity-api \
-	plexus/io \
-	plexus-languages/plexus-java \
-	plexus-metadata-generator \
-	plexus/utils \
-	qdox \
-	xbean/xbean-reflect
+    apache-commons-lang3 \
+    apache-commons-text \
+    atinject \
+    commons-cli \
+    commons-io \
+    guava/guava \
+    guice/google-guice-no_aop \
+    httpcomponents/httpclient \
+    httpcomponents/httpcore \
+    jdom2/jdom2 \
+    maven-archiver/maven-archiver \
+    maven-common-artifact-filters/maven-common-artifact-filters \
+    maven-doxia/doxia-core \
+    maven-doxia/doxia-logging-api \
+    maven-doxia/doxia-module-xhtml \
+    maven-doxia/doxia-module-xhtml5 \
+    maven-doxia/doxia-sink-api \
+    maven-doxia-sitetools/doxia-site-renderer \
+    maven-invoker/maven-invoker \
+    maven/maven-artifact \
+    maven/maven-core \
+    maven/maven-model \
+    maven/maven-model-builder \
+    maven/maven-plugin-api \
+    maven/maven-settings \
+    maven-plugin-tools/maven-plugin-annotations \
+    maven-resolver/maven-resolver-api \
+    maven-resolver/maven-resolver-util \
+    maven-reporting-api/maven-reporting-api \
+    maven-shared-utils/maven-shared-utils \
+    maven-wagon/provider-api \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject \
+    org.eclipse.sisu.plexus \
+    plexus/archiver \
+    plexus-classworlds \
+    plexus/cli \
+    plexus-containers/plexus-component-annotations \
+    plexus/interactivity-api \
+    plexus/io \
+    plexus-languages/plexus-java \
+    plexus-metadata-generator \
+    plexus/utils \
+    qdox \
+    xbean/xbean-reflect
 %{ant} -Dtest.skip=true jar
 %else
 xmvn --batch-mode --offline \
-	-Dmaven.test.skip=true -DmavenVersion=3.5.0 \
+    -Dmaven.test.skip=true -DmavenVersion=3.5.0 \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=8 \
+    -Dmaven.compiler.release=8 \
 %endif
-	package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
+    package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
 %endif
 
 %{mvn_artifact} pom.xml target/%{base_name}-%{version}.jar

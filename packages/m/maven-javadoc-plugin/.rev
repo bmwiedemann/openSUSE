@@ -80,4 +80,12 @@
     <comment>fix build with plexus-utils 3.5.0</comment>
     <requestid>1031161</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9fb89f50f91d0edc8a09feae4693f759</srcmd5>
+    <version>3.6.0</version>
+    <time>1695209495</time>
+    <user>dimstar_suse</user>
+    <comment>3.6.0</comment>
+    <requestid>1112488</requestid>
+  </revision>
 </revisionlist>

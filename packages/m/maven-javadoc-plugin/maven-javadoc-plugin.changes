@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Wed Sep 20 07:04:26 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.6.0
+  * Bug
+    + MJAVADOC-642: Setting maven.javadoc.isoffline seems to have no
+      effect
+    + MJAVADOC-701: javadoc site is broken for projects that contain
+      modules
+    + MJAVADOC-733: Alternative doclet page points to an SEO spammy
+      page
+    + MJAVADOC-742: [REGRESSION] Transitive dependencies of
+      docletArtifact missing
+    + MJAVADOC-757: Unresolvable link in javadoc tag with value
+      ResourcesBundleMojo#getAttachmentClassifier() found in
+      ResourcesBundleMojo
+    + MJAVADOC-758: IOException --> NullPointerException in
+      JavadocUtil.copyResource
+    + MJAVADOC-763: JavadocReportTest.testExceptions is broken
+    + MJAVADOC-767: javadoc creates invalid --patch-module
+      statements
+    + MJAVADOC-769: javadoc plugin can not deal with transitive
+      filename based modules
+  * Improvement
+    + MJAVADOC-755: Clean up deprecated and unpreferred methods in
+      JavadocUtil
+    + MJAVADOC-760: Cleanup dependency declarations as best possible
+    + MJAVADOC-770: Allow building javadoc "the old fashioned way"
+      after Java 8
+  * Task
+    + MJAVADOC-743: Drop use of deprecated localRepository mojo
+      parameter
+    + MJAVADOC-765: Make build pass with Java 20
+    + MJAVADOC-772: Refresh download page
+  * Dependency upgrade
+    + MJAVADOC-761: Update to commons-io 2.13.0
+    + MJAVADOC-766: Update plexus-archiver from 4.7.1 to 4.8.0
+    + MJAVADOC-771: Upgrade Parent to 40
+- Modified patches:
+  * maven-javadoc-plugin-bootstrap-resources.patch
+    + regenerate in cycle
+  * no-override.patch
+  * stale-data-encoding.patch
+    + rediff to changed line-endings
+
+-------------------------------------------------------------------
+Wed Sep 20 06:25:32 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.5.0
+  * Bug
+    + MJAVADOC-696: Invalid anchors in Javadoc and plugin mojo
+    + MJAVADOC-700: Plugin duplicates classes in Java 8 all-classes
+      lists
+    + MJAVADOC-702: javadoc site creation ignores configuration
+      parameters
+  * Improvement
+    + MJAVADOC-685: Deprecate parameter "stylesheet"
+    + MJAVADOC-721: Parse stderr output and suppress informational
+      lines
+    + MJAVADOC-729: Link to Javadoc references from JDK 17
+    + MJAVADOC-731: Migrate components to JSR 330, get rid of
+      maven-artifact-transfer, update to parent 37
+  * Task
+    + MJAVADOC-712: Remove remains of org.codehaus.doxia.sink.Sink
+  * Dependency upgrade
+    + MJAVADOC-711: Upgrade plugins in ITs
+    + MJAVADOC-714: Upgrade to Maven 3.2.5
+    + MJAVADOC-719: Update Maven Archiver to 3.6.0
+    + MJAVADOC-723: Upgrade Maven Reporting API to 3.1.1/Complete
+      with Maven Reporting Impl 3.2.0
+    + MJAVADOC-738: Upgrade commons-text to 1.10.0
+    + MJAVADOC-740: Upgrade Parent to 39
+    + MJAVADOC-741: Upgrade plugins and components
+- Modified patches:
+  * maven-javadoc-plugin-bootstrap-resources.patch
+    + regenerate in cycle
+  * stale-data-encoding.patch
+    + rediff to changed context
+- Added patch:
+  * no-override.patch
+    + allow building with older version of maven-reporting-api
+- Removed patch:
+  * maven-javadoc-plugin-ioexception.patch
+    + not necessary with this version
+
+-------------------------------------------------------------------
 Tue Oct 25 14:16:58 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
