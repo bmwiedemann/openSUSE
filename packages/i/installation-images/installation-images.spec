@@ -494,7 +494,8 @@ BuildRequires:  util-linux
 BuildRequires:  util-linux-systemd
 BuildRequires:  valgrind
 BuildRequires:  vim-small
-BuildRequires:  wget
+# libproxy1 requires libpxbackend-1_0; to counter cycles, this exists also as mini (bsc#215290)
+#!BuildConflicts: libpxbackend-1_0-mini
 BuildRequires:  wicked
 BuildRequires:  wicked-nbft
 BuildRequires:  wireless-tools
@@ -669,7 +670,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.93
+Version:        17.95
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

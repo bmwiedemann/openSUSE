@@ -1,4 +1,31 @@
 --------------------------------------------------------------------
+Mon Sep 18 11:37:18 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#661
+- etc: update module.config to match 6.6
+- 17.95
+
+--------------------------------------------------------------------
+Mon Sep 18 11:36:56 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#660
+- Add kernel modules for Lenovo X13s (bsc#1215326)
+
+--------------------------------------------------------------------
+Mon Sep 18 11:36:35 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#662
+- avoid using libpxbackend-1_0-mini (bsc#1215290)
+- BuildConflict libpxbackend-1_0-mini (bsc#1215290)
+
+--------------------------------------------------------------------
+Wed Sep 13 10:54:51 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#659
+- drop unused wget (bsc#1215290)
+- 17.94
+
+--------------------------------------------------------------------
 Mon Aug 28 10:18:34 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#654
