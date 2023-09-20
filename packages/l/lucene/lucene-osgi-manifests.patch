@@ -279,10 +279,10 @@
          <attribute name="X-Compile-Source-JDK" value="${javac.release}"/>
 --- lucene-8.5.0/core/build.xml	2020-03-13 10:35:55.000000000 +0100
 +++ lucene-8.5.0/core/build.xml	2020-04-06 14:20:59.688149345 +0200
-@@ -194,6 +194,24 @@
+@@ -97,6 +97,24 @@
      </sequential>
    </macrodef>
-   
+ 
 +  <target name="jar-core" depends="compile-core">
 +    <jarify>
 +	  <jarify-additional-manifest-attributes>
@@ -301,9 +301,9 @@
 +	</jarify>
 +  </target>
 +
-   <condition property="-ignore-test-lock-factory">
-     <or>
-       <!-- We ignore our ant-based lock factory test, if user applies test filtering: -->
+   <target name="createPackedIntSources">
+     <exec dir="src/java/org/apache/lucene/util/packed"
+           executable="${python2.exe}" failonerror="true">
 --- lucene-8.5.0/demo/build.xml	2020-03-13 10:35:55.000000000 +0100
 +++ lucene-8.5.0/demo/build.xml	2020-04-06 14:24:28.413294729 +0200
 @@ -58,4 +58,22 @@

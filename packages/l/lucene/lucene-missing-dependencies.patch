@@ -83,17 +83,6 @@
      <property name="flexmark.version" value="0.42.6"/>
      <ivy:cachepath transitive="true" resolveId="flexmark" pathid="markdown.classpath">
        <ivy:dependency org="com.vladsch.flexmark" name="flexmark" rev="${flexmark.version}" conf="default" />
---- lucene-8.5.0/core/build.xml	2020-04-06 12:09:05.497250615 +0200
-+++ lucene-8.5.0/core/build.xml	2020-04-06 12:22:08.761487819 +0200
-@@ -222,7 +222,7 @@
-     </or>
-   </condition>
-   
--  <target name="test-lock-factory" depends="resolve-groovy,compile-core" unless="-ignore-test-lock-factory"
-+  <target name="test-lock-factory" depends="compile-core" unless="-ignore-test-lock-factory"
-     description="Run LockStressTest with multiple JVMs">
-     <property name="lockverifyserver.host" value="127.0.0.1"/>
-     <property name="lockverify.delay" value="1"/>
 --- lucene-8.5.0/demo/build.xml	2020-04-06 12:09:05.497250615 +0200
 +++ lucene-8.5.0/demo/build.xml	2020-04-06 12:36:38.322189334 +0200
 @@ -56,7 +56,7 @@

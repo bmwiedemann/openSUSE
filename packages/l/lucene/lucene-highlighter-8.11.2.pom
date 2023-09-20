@@ -23,18 +23,18 @@
   <parent>
     <groupId>org.apache.lucene</groupId>
     <artifactId>lucene-parent</artifactId>
-    <version>8.5.0</version>
+    <version>8.11.2</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>org.apache.lucene</groupId>
-  <artifactId>lucene-queryparser</artifactId>
+  <artifactId>lucene-highlighter</artifactId>
   <packaging>jar</packaging>
-  <name>Lucene QueryParsers</name>
-  <description>Lucene QueryParsers module</description>
+  <name>Lucene Highlighter</name>
+  <description>
+    This is the highlighter for apache lucene java
+  </description>
   <properties>
-    <module-directory>lucene/queryparser</module-directory>
-    <relative-top-level>../../..</relative-top-level>
-    <module-path>${relative-top-level}/${module-directory}</module-path>
+    <module-directory>lucene/highlighter</module-directory>
   </properties>
   <scm>
     <connection>scm:git:${vc-anonymous-base-url}</connection>
@@ -42,60 +42,18 @@
     <url>${vc-browse-base-url};f=${module-directory}</url>
   </scm>
   <dependencies>
-    <dependency> 
-      <!-- lucene-test-framework dependency must be declared before lucene-core -->
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-test-framework</artifactId>
-      <scope>test</scope>
-    </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-memory</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-queries</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-sandbox</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-codecs</artifactId>
-      <scope>test</scope>
     </dependency>
 
   </dependencies>
-  <build>
-    <sourceDirectory>${module-path}/src/java</sourceDirectory>
-    <resources>
-      <resource>
-        <directory>${module-path}/src/resources</directory>
-      </resource>
-    </resources>
-    <testSourceDirectory>${module-path}/src/test</testSourceDirectory>
-    <testResources>
-      <testResource>
-        <directory>${project.build.testSourceDirectory}</directory>
-        <excludes>
-          <exclude>**/*.java</exclude>
-        </excludes>
-      </testResource>
-    </testResources>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>test-jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
 </project>

@@ -23,55 +23,39 @@
   <parent>
     <groupId>org.apache.lucene</groupId>
     <artifactId>lucene-parent</artifactId>
-    <version>8.5.0</version>
+    <version>8.11.2</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>org.apache.lucene</groupId>
-  <artifactId>lucene-spatial3d</artifactId>
+  <artifactId>lucene-classification</artifactId>
   <packaging>jar</packaging>
-  <name>Lucene Spatial 3D</name>
-  <description>
-    Lucene Spatial shapes implemented using 3D planar geometry
-  </description>
+  <name>Lucene Classification</name>
+  <description>Lucene Classification</description>
   <properties>
-    <module-directory>lucene/spatial3d</module-directory>
-    <relative-top-level>../../..</relative-top-level>
-    <module-path>${relative-top-level}/${module-directory}</module-path>
+    <module-directory>lucene/classification</module-directory>
   </properties>
+  <scm>
+    <connection>scm:git:${vc-anonymous-base-url}</connection>
+    <developerConnection>scm:git:${vc-dev-base-url}</developerConnection>
+    <url>${vc-browse-base-url};f=${module-directory}</url>
+  </scm>
   <dependencies>
     <dependency>
-      <!-- lucene-test-framework dependency must be declared before lucene-core -->
       <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-test-framework</artifactId>
-      <scope>test</scope>
+      <artifactId>lucene-analyzers-common</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-codecs</artifactId>
-      <scope>test</scope>
+      <artifactId>lucene-grouping</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-queries</artifactId>
     </dependency>
 
   </dependencies>
-  <build>
-    <sourceDirectory>${module-path}/src/java</sourceDirectory>
-    <testSourceDirectory>${module-path}/src/test</testSourceDirectory>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>test-jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
 </project>

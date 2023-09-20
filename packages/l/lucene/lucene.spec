@@ -17,7 +17,7 @@
 
 
 Name:           lucene
-Version:        8.5.0
+Version:        8.11.2
 Release:        0
 Summary:        Text search engine
 License:        Apache-2.0
@@ -41,12 +41,13 @@ Source15:       https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzer
 Source16:       https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-smartcn/%{version}/lucene-analyzers-smartcn-%{version}.pom
 Source17:       https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-stempel/%{version}/lucene-analyzers-stempel-%{version}.pom
 Source18:       https://repo1.maven.org/maven2/org/apache/lucene/lucene-core/%{version}/lucene-core-%{version}.pom
+Source19:       https://repo1.maven.org/maven2/org/apache/lucene/lucene-parent/%{version}/lucene-parent-%{version}.pom
 Patch0:         0001-Disable-ivy-settings.patch
 Patch1:         0002-Dependency-generation.patch
-Patch2:         lucene-java8compat.patch
-Patch3:         lucene-osgi-manifests.patch
-Patch4:         lucene-missing-dependencies.patch
-Patch5:         lucene-nodoclint.patch
+Patch2:         lucene-osgi-manifests.patch
+Patch3:         lucene-missing-dependencies.patch
+Patch4:         lucene-nodoclint.patch
+Patch5:         lucene-timestamps.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  ant-junit >= 1.6
 BuildRequires:  antlr-java
@@ -60,7 +61,7 @@ BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javacc
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  junit
 BuildRequires:  regexp
 BuildRequires:  zip
@@ -94,9 +95,6 @@ multi-index searches.
 %package queryparser
 Summary:        Queryparser module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
-Requires:       mvn(org.apache.lucene:lucene-queries)
-Requires:       mvn(org.apache.lucene:lucene-sandbox)
 BuildArch:      noarch
 
 %description queryparser
@@ -108,7 +106,6 @@ This package provides the "queryparser" module for lucene.
 %package join
 Summary:        Join module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
 BuildArch:      noarch
 
 %description join
@@ -120,7 +117,6 @@ This package provides the "join" module for lucene.
 %package queries
 Summary:        Queries module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
 BuildArch:      noarch
 
 %description queries
@@ -132,10 +128,6 @@ This package provides the "queries" module for lucene.
 %package classification
 Summary:        Classification module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
-Requires:       mvn(org.apache.lucene:lucene-core)
-Requires:       mvn(org.apache.lucene:lucene-grouping)
-Requires:       mvn(org.apache.lucene:lucene-queries)
 BuildArch:      noarch
 
 %description classification
@@ -147,7 +139,6 @@ This package provides the "classification" module for Lucene.
 %package codecs
 Summary:        Codecs module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
 BuildArch:      noarch
 
 %description codecs
@@ -159,7 +150,6 @@ This package provides the "codecs" module for Lucene.
 %package backward-codecs
 Summary:        Backward-codecs module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
 BuildArch:      noarch
 
 %description backward-codecs
@@ -171,8 +161,6 @@ This package provides the "backward-codecs" module for Lucene.
 %package grouping
 Summary:        Grouping module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
-Requires:       mvn(org.apache.lucene:lucene-queries)
 BuildArch:      noarch
 
 %description grouping
@@ -184,9 +172,6 @@ This package provides the "grouping" module for Lucene.
 %package highlighter
 Summary:        Highlighter module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
-Requires:       mvn(org.apache.lucene:lucene-join)
-Requires:       mvn(org.apache.lucene:lucene-memory)
 BuildArch:      noarch
 
 %description highlighter
@@ -198,7 +183,6 @@ This package provides the "highlighter" module for Lucene.
 %package memory
 Summary:        Memory module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
 BuildArch:      noarch
 
 %description memory
@@ -210,7 +194,6 @@ This package provides the "memory" module for Lucene.
 %package misc
 Summary:        Misc module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
 
 %description misc
 Apache Lucene is a full-text search engine written entirely in Java.
@@ -221,7 +204,6 @@ This package provides the "misc" module for Lucene.
 %package sandbox
 Summary:        Sandbox module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
 BuildArch:      noarch
 
 %description sandbox
@@ -233,7 +215,6 @@ This package provides the "sandbox" module for Lucene.
 %package spatial3d
 Summary:        Spatial3d module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
 BuildArch:      noarch
 
 %description spatial3d
@@ -245,10 +226,6 @@ This package provides the "spatial3d" module for Lucene.
 %package monitor
 Summary:        Spatial module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
-Requires:       mvn(org.apache.lucene:lucene-core)
-Requires:       mvn(org.apache.lucene:lucene-memory)
-Requires:       mvn(org.apache.lucene:lucene-queryparser)
 BuildArch:      noarch
 
 %description monitor
@@ -260,7 +237,6 @@ This package provides the "monitor" module for Lucene.
 %package analyzers-common
 Summary:        Analyzers-common module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
 Provides:       %{name}-analysis = %{version}-%{release}
 Obsoletes:      %{name}-analysis < %{version}-%{release}
 BuildArch:      noarch
@@ -274,8 +250,6 @@ This package provides the "analyzers-common" module for Lucene.
 %package analyzers-smartcn
 Summary:        Analyzers-smartcn module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
-Requires:       mvn(org.apache.lucene:lucene-core)
 BuildArch:      noarch
 
 %description analyzers-smartcn
@@ -287,8 +261,6 @@ This package provides the "analyzers-smartcn" module for Lucene.
 %package analyzers-stempel
 Summary:        Analyzers-stempel module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
-Requires:       mvn(org.apache.lucene:lucene-core)
 BuildArch:      noarch
 
 %description analyzers-stempel
@@ -301,8 +273,6 @@ This package provides the "analyzers-stempel" module for Lucene.
 %package facet
 Summary:        Facet module for lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
-Requires:       mvn(org.apache.lucene:lucene-queries)
 BuildArch:      noarch
 
 %description facet
@@ -314,9 +284,6 @@ This package provides the "facet" module for Lucene.
 %package analyzers-icu
 Summary:        Lucene ICU Analysis Components
 Group:          Development/Libraries/Java
-Requires:       mvn(com.ibm.icu:icu4j)
-Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
-Requires:       mvn(org.apache.lucene:lucene-core)
 BuildArch:      noarch
 
 %description analyzers-icu
@@ -328,8 +295,6 @@ stronger Unicode and internationalization support.
 %package analyzers-kuromoji
 Summary:        Lucene Kuromoji Japanese Morphological Analyzer
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
-Requires:       mvn(org.apache.lucene:lucene-core)
 BuildArch:      noarch
 
 %description analyzers-kuromoji
@@ -340,11 +305,6 @@ Lucene Kuromoji Japanese Morphological Analyzer.
 %package analyzers-morfologik
 Summary:        Lucene Morfologik Polish Lemmatizer
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
-Requires:       mvn(org.apache.lucene:lucene-core)
-Requires:       mvn(org.carrot2:morfologik-fsa)
-Requires:       mvn(org.carrot2:morfologik-polish)
-Requires:       mvn(org.carrot2:morfologik-stemming)
 BuildArch:      noarch
 
 %description analyzers-morfologik
@@ -356,9 +316,6 @@ annotations).
 %package analyzers-phonetic
 Summary:        Lucene Phonetic Filters
 Group:          Development/Libraries/Java
-Requires:       mvn(commons-codec:commons-codec)
-Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
-Requires:       mvn(org.apache.lucene:lucene-core)
 BuildArch:      noarch
 
 %description analyzers-phonetic
@@ -369,11 +326,6 @@ Provides phonetic encoding via Commons Codec.
 %package analyzers-uima
 Summary:        Lucene UIMA Analysis Components
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
-Requires:       mvn(org.apache.lucene:lucene-core)
-Requires:       mvn(org.apache.uima:Tagger)
-Requires:       mvn(org.apache.uima:WhitespaceTokenizer)
-Requires:       mvn(org.apache.uima:uimaj-core)
 BuildArch:      noarch
 
 %description analyzers-uima
@@ -386,21 +338,6 @@ sentences, concepts, named entities, etc.).
 %package benchmark
 Summary:        Lucene Benchmarking Module
 Group:          Development/Libraries/Java
-Requires:       mvn(com.ibm.icu:icu4j)
-Requires:       mvn(net.sourceforge.nekohtml:nekohtml)
-Requires:       mvn(org.apache.commons:commons-compress)
-Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
-Requires:       mvn(org.apache.lucene:lucene-codecs)
-Requires:       mvn(org.apache.lucene:lucene-core)
-Requires:       mvn(org.apache.lucene:lucene-facet)
-Requires:       mvn(org.apache.lucene:lucene-highlighter)
-Requires:       mvn(org.apache.lucene:lucene-join)
-Requires:       mvn(org.apache.lucene:lucene-memory)
-Requires:       mvn(org.apache.lucene:lucene-queries)
-Requires:       mvn(org.apache.lucene:lucene-queryparser)
-Requires:       mvn(org.apache.lucene:lucene-spatial-extras)
-Requires:       mvn(org.locationtech.spatial4j:spatial4j)
-Requires:       mvn(xerces:xercesImpl)
 BuildArch:      noarch
 
 %description benchmark
@@ -411,13 +348,6 @@ Lucene Benchmarking Module.
 %package demo
 Summary:        Lucene Demo Module
 Group:          Development/Libraries/Java
-Requires:       mvn(javax.servlet:servlet-api)
-Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
-Requires:       mvn(org.apache.lucene:lucene-core)
-Requires:       mvn(org.apache.lucene:lucene-expressions)
-Requires:       mvn(org.apache.lucene:lucene-facet)
-Requires:       mvn(org.apache.lucene:lucene-queries)
-Requires:       mvn(org.apache.lucene:lucene-queryparser)
 BuildArch:      noarch
 
 %description
@@ -428,10 +358,6 @@ Demo for Apache Lucene Java.
 %package expressions
 Summary:        Lucene Expressions Module
 Group:          Development/Libraries/Java
-Requires:       mvn(org.antlr:antlr4-runtime)
-Requires:       mvn(org.apache.lucene:lucene-core)
-Requires:       mvn(org.ow2.asm:asm)
-Requires:       mvn(org.ow2.asm:asm-commons)
 BuildArch:      noarch
 
 %description expressions
@@ -443,18 +369,6 @@ grammar.
 %package replicator
 Summary:        Lucene Replicator Module
 Group:          Development/Libraries/Java
-Requires:       mvn(commons-logging:commons-logging)
-Requires:       mvn(javax.servlet:javax.servlet-api)
-Requires:       mvn(org.apache.httpcomponents:httpclient)
-Requires:       mvn(org.apache.httpcomponents:httpcore)
-Requires:       mvn(org.apache.lucene:lucene-core)
-Requires:       mvn(org.apache.lucene:lucene-facet)
-Requires:       mvn(org.eclipse.jetty:jetty-continuation)
-Requires:       mvn(org.eclipse.jetty:jetty-http)
-Requires:       mvn(org.eclipse.jetty:jetty-io)
-Requires:       mvn(org.eclipse.jetty:jetty-server)
-Requires:       mvn(org.eclipse.jetty:jetty-servlet)
-Requires:       mvn(org.eclipse.jetty:jetty-util)
 BuildArch:      noarch
 
 %description replicator
@@ -465,9 +379,6 @@ Lucene Replicator Module.
 %package spatial-extras
 Summary:        Spatial Strategies for Apache Lucene
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-core)
-Requires:       mvn(org.apache.lucene:lucene-spatial3d)
-Requires:       mvn(org.locationtech.spatial4j:spatial4j)
 BuildArch:      noarch
 
 %description spatial-extras
@@ -478,8 +389,6 @@ Spatial Strategies for Apache Lucene.
 %package suggest
 Summary:        Lucene Suggest Module
 Group:          Development/Libraries/Java
-Requires:       mvn(org.apache.lucene:lucene-analyzers-common)
-Requires:       mvn(org.apache.lucene:lucene-core)
 BuildArch:      noarch
 
 %description suggest
@@ -490,10 +399,6 @@ Lucene Suggest Module.
 %package test-framework
 Summary:        Apache Lucene Java Test Framework
 Group:          Development/Libraries/Java
-Requires:       mvn(com.carrotsearch.randomizedtesting:randomizedtesting-runner)
-Requires:       mvn(junit:junit)
-Requires:       mvn(org.apache.lucene:lucene-codecs)
-Requires:       mvn(org.apache.lucene:lucene-core)
 BuildArch:      noarch
 
 %description test-framework
@@ -563,10 +468,7 @@ for mod in $noarch_modules
 do
   install -p -m 0644 build/${mod}/%{name}-$mod-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-$mod.jar
   ln -sf %{name}/%{name}-$mod.jar %{buildroot}%{_javadir}/%{name}-$mod.jar
-  cp %{_sourcedir}/%{name}-${mod}-%{version}.pom build/${mod}/pom.xml
-  %pom_remove_parent build/${mod}
-  %pom_xpath_inject "pom:project" "<version>%{version}</version>" build/${mod}
-  install -p -m 0644 build/${mod}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${mod}.pom
+  %{mvn_install_pom} %{_sourcedir}/%{name}-${mod}-%{version}.pom %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${mod}.pom
   %add_maven_depmap %{name}/%{name}-${mod}.pom %{name}/%{name}-${mod}.jar -f ${mod}
   echo %{_javadir}/%{name}-$mod.jar >> .mfiles-${mod}
 done
@@ -576,10 +478,7 @@ for mod in $arch_modules
 do
   install -p -m 0644 build/${mod}/%{name}-$mod-%{version}.jar %{buildroot}%{_jnidir}/%{name}/%{name}-$mod.jar
   ln -sf %{name}/%{name}-$mod.jar %{buildroot}%{_jnidir}/%{name}-$mod.jar
-  cp %{_sourcedir}/%{name}-${mod}-%{version}.pom build/${mod}/pom.xml
-  %pom_remove_parent build/${mod}
-  %pom_xpath_inject "pom:project" "<version>%{version}</version>" build/${mod}
-  install -p -m 0644 build/${mod}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${mod}.pom
+  %{mvn_install_pom} %{_sourcedir}/%{name}-${mod}-%{version}.pom %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${mod}.pom
   %add_maven_depmap %{name}/%{name}-${mod}.pom %{name}/%{name}-${mod}.jar -f ${mod}
   echo %{_jnidir}/%{name}-$mod.jar >> .mfiles-${mod}
 done
@@ -589,18 +488,9 @@ for mod in $modanalyzers
 do
   install -p -m 0644 build/analysis/$mod/%{name}-analyzers-$mod-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-analyzers-${mod}.jar
   ln -sf %{name}/%{name}-analyzers-$mod.jar %{buildroot}%{_javadir}/%{name}-analyzers-$mod.jar
-  cp %{_sourcedir}/lucene-analyzers-${mod}-%{version}.pom build/analysis/$mod/pom.xml
-  %pom_remove_parent build/analysis/$mod
-  %pom_xpath_inject "pom:project" "<version>%{version}</version>" build/analysis/$mod
-  install -p -m 0644 build/analysis/$mod/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-analyzers-${mod}.pom
+  %{mvn_install_pom} %{_sourcedir}/lucene-analyzers-${mod}-%{version}.pom %{buildroot}%{_mavenpomdir}/%{name}/%{name}-analyzers-${mod}.pom
   %add_maven_depmap %{name}/%{name}-analyzers-${mod}.pom %{name}/%{name}-analyzers-${mod}.jar -f analyzers-${mod}
   echo %{_javadir}/%{name}-analyzers-$mod.jar >> .mfiles-analyzers-${mod}
 done
-
-# javadoc DOES NOT BUILD BECAUSE OF MISSING MVN DEPS
-# javadoc
-#install -d -m 0755 %%{buildroot}%%{_javadocdir}/%%{name}
-#cp -pr build/docs/api/* \
-#  %%{buildroot}%%{_javadocdir}/%%{name}
 
 %changelog

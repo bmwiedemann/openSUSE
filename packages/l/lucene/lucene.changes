@@ -1,4 +1,555 @@
 -------------------------------------------------------------------
+Tue Sep 19 17:09:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 8.11.2
+  * API Changes
+    + LUCENE-9265: SimpleFSDirectory is deprecated in favor of
+      NIOFSDirectory.
+    + LUCENE-9304: Removed ability to set
+      DocumentsWriterPerThreadPool on IndexWriterConfig.
+      The DocumentsWriterPerThreadPool is a packaged protected final
+      class which made it impossible to customize.
+    + LUCENE-9339: MergeScheduler#merge doesn't accept a parameter
+      if a new merge was found anymore.
+    + LUCENE-9330: SortFields are now responsible for writing
+      themselves into index headers if they are used as index sorts.
+    + LUCENE-9340: Deprecate SimpleBindings#add(SortField).
+    + LUCENE-9345: MergeScheduler is now decoupled from IndexWriter.
+      Instead it accepts a MergeSource interface that offers the
+      basic methods to acquire pending merges, run the merge and do
+      accounting around it.
+    + LUCENE-9349: QueryVisitor.consumeTermsMatching() now takes a
+      Supplier<ByteRunAutomaton> to enable queries that build large
+      automata to provide them lazily. TermsInSetQuery switches to
+      using this method to report matching terms.
+    + LUCENE-9366: DocValues.emptySortedNumeric() no longer takes a
+      maxDoc parameter
+    + LUCENE-7822: CodecUtil#checkFooter(IndexInput, Throwable) now
+      throws a CorruptIndexException if checksums mismatch or if
+      checksums can't be verified.
+    + LUCENE-7020: TieredMergePolicy#setMaxMergeAtOnceExplicit is
+      deprecated and the number of segments that get merged via
+      explicit merges is unlimited by default.
+    + LUCENE-9437: Lucene's facet module's
+      DocValuesOrdinalsReader.decode method is now public, making it
+      easier for applications to decode facet ordinals into their
+      corresponding labels
+    + LUCENE-9449: Field comparators for numeric fields and _doc
+      were moved to their own package. TopFieldCollector sets
+      TotalHits.relation to GREATER_THAN_OR_EQUAL_TO, as soon as the
+      requested total hits threshold is reached, even though in some
+      cases no skipping optimization is applied and all hits are
+      collected.
+    + LUCENE-9515: IndexingChain now accepts individual primitives
+      rather than a DocumentsWriterPerThread instance in order to
+      create a new DocConsumer.
+    + LUCENE-9680: Removed deprecation warning from
+      IndexWriter#getFieldNames().
+    + LUCENE-9902: Change the getValue method from IntTaxonomyFacets
+      to be protected instead of private. Users can now access the
+      count of an ordinal directly without constructing an extra
+      FacetLabel. Also use variable length arguments for the
+      getOrdinal call in TaxonomyReader.
+    + LUCENE-9962: DrillSideways allows sub-classes to provide
+      "drill down" FacetsCollectors. They may provide a null
+      collector if they choose to bypass "drill down" facet
+      collection.
+    + LUCENE-10027: Add a new Directory reader open API from
+      indexCommit and a custom comparator for sorting leaf readers
+    + LUCENE-10036: Replaced the ScoreCachingWrappingScorer ctor
+      with a static factory method that ensures unnecessary wrapping
+      doesn't occur.
+  * New Features
+    + LUCENE-7889: Grouping by range based on values from
+      DoubleValuesSource and LongValuesSource
+    + LUCENE-8962: Add IndexWriter merge-on-commit feature to
+      selectively merge small segments on commit, subject to a
+      configurable timeout, to improve search performance by
+      reducing the number of small segments for searching
+    + LUCENE-8962: Add IndexWriter merge-on-refresh feature to
+      selectively merge small segments on getReader, subject to a
+      configurable timeout, to improve search performance by
+      reducing the number of small segments for searching.
+    + LUCENE-9378: Doc values now allow configuring how to trade
+      compression for retrieval speed.
+    + LUCENE-9385: Add FacetsConfig option to control which
+      drill-down terms are indexed for a FacetLabel
+    + LUCENE-9386: RegExpQuery added case insensitive matching
+      option.
+    + LUCENE-9413: Add CJKWidthCharFilter and its factory
+    + LUCENE-9444: Add utility class to retrieve facet labels from
+      the taxonomy index for a facet field so such fields do not
+      also have to be redundantly stored
+    + LUCENE-9484: Allow sorting an index after it was created.
+      With SortingCodecReader, existing unsorted segments can be
+      wrapped and merged into a fresh index using
+      IndexWriter#addIndices API.
+    + LUCENE-9507: Custom order for leaves in IndexReader and
+      IndexWriter
+    + LUCENE-9537: Added smoothingScore method and default
+      implementation to Scorable abstract class. The smoothing score
+      allows scorers to calculate a score for a document where the
+      search term or subquery is not present. The smoothing score
+      acts like an idf so that documents that do not have terms or
+      subqueries that are more frequent in the index are not
+      penalized as much as documents that do not have less frequent
+      terms or subqueries and prevents scores which are the product
+      or terms or subqueries from going to zero. Added the
+      implementation of the Indri AND and the
+      IndriDirichletSimilarity from the academic Indri search
+      engine: http://www.lemurproject.org/indri.php.
+    + LUCENE-9552: New LatLonPoint query that accepts an array of
+      LatLonGeometries.
+    + LUCENE-9553: New XYPoint query that accepts an array of
+      XYGeometries.
+    + LUCENE-9572: TypeAsSynonymFilter has been enhanced support
+      ignoring some types, and to allow the generated synonyms to
+      copy some or all flags from the original token
+    + LUCENE-9574 A token filter to drop tokens that match all
+      specified flags.
+    + LUCENE-9575: PatternTypingFilter has been added to allow
+      setting a type attribute on tokens based on a configured set
+      of regular expressions
+    + LUCENE-9594: FeatureField supports newLinearQuery that for
+      scoring uses raw indexed values of features without any
+      transformation.
+    + LUCENE-9641: LatLonPoint query support for spatial
+      relationships.
+    + LUCENE-9694: New tool for creating a deterministic index to
+      enable benchmarking changes on a consistent multi-segment
+      index even when they require re-indexing.
+    + LUCENE-9950: New facet counting implementation for general
+      string doc value fields (SortedSetDocValues / SortedDocValues)
+      not created through FacetsConfig
+    + LUCENE-10035: The SimpleText codec now writes skip lists.
+    + LUCENE-10083: Analyzer and stemmer for Telugu language
+  * Improvements
+    + LUCENE-9276: Use same code-path for updateDocuments and
+      updateDocument in IndexWriter and DocumentsWriter.
+    + LUCENE-9279: Update dictionary version for Ukrainian analyzer
+      to 4.9.1
+    + LUCENE-8050: PerFieldDocValuesFormat should not get the
+      DocValuesFormat on a field that has no doc values.
+    + LUCENE-9304: Removed ThreadState abstraction from
+      DocumentsWriter which allows pooling of DWPT directly and
+      improves the approachability of the IndexWriter code.
+    + LUCENE-9324: Add an ID to SegmentCommitInfo in order to
+      compare commits for equality and make snapshots incremental on
+      generational files.
+    + LUCENE-9342: TotalHits' relation will be EQUAL_TO when the
+      number of hits is lower than TopDocsColector's numHits
+    + LUCENE-9353: Metadata of the terms dictionary moved to its own
+      file, with the '.tmd' extension. This allows checksums of
+      metadata to be verified when opening indices and helps save
+      seeks when opening an index.
+    + LUCENE-9359: SegmentInfos#readCommit now always returns a
+      CorruptIndexException if the content of the file is invalid.
+    + LUCENE-9393: Make FunctionScoreQuery use ScoreMode.COMPLETE
+      for creating the inner query weight when ScoreMode.TOP_DOCS
+      is requested.
+    + LUCENE-9392: Make FacetsConfig.DELIM_CHAR publicly accessible
+    + LUCENE-9397: UniformSplit supports encodable fields metadata.
+    + LUCENE-9396: Improved truncation detection for points.
+    + LUCENE-9402: Let MultiCollector handle minCompetitiveScore
+    + LUCENE-8574: Add a new ExpressionValueSource which will
+      enforce only one value per name per hit in dependencies,
+      ExpressionFunctionValues will no longer recompute already
+      computed values
+    + LUCENE-9416: Fix CheckIndex to print an invalid non-zero norm
+      as unsigned long when detecting corruption.
+    + LUCENE-9440: FieldInfo#checkConsistency called twice from
+      Lucene50(60)FieldInfosFormat#read; Removed the (redundant?)
+      assert and do these checks for real.
+    + LUCENE-9446: In BooleanQuery rewrite, always remove
+      MatchAllDocsQuery filter clauses when possible.
+    + LUCENE-9501: Improve coverage for Asserting* test classes:
+      make sure to handle singleton doc values, and sometimes
+      exercise Weight#scorer instead of Weight#bulkScorer for
+      top-level queries.
+    + LUCENE-9511: Include StoredFieldsWriter in DWPT accounting
+      to ensure that it's heap consumption is taken into account
+      when IndexWriter stalls or should flush DWPTs.
+    + LUCENE-9514: Include TermVectorsWriter in DWPT accounting to
+      ensure that it's heap consumption is taken into account when
+      IndexWriter stalls or should flush DWPTs.
+    + LUCENE-9523: In query shapes over shape fields, skip points
+      while traversing the BKD tree when the relationship with the
+      document is already known.
+    + LUCENE-9539: Use more compact datastructures to represent
+      sorted doc-values in memory when sorting a segment before
+      flush and in SortingCodecReader.
+    + LUCENE-9458: WordDelimiterGraphFilter should order tokens at
+      the same position by endOffset to emit longer tokens first.
+      The same graph is produced.
+    + LUCENE-5309: Optimize facet counting for single-valued
+      SSDV / StringValueFacetCounts.
+    + LUCENE-9023: GlobalOrdinalsWithScore should not compute
+      occurrences when the provided min is 1.
+    + LUCENE-9177: ICUNormalizer2CharFilter no longer requires
+      normalization-inert characters as boundaries for incremental
+      processing, vastly improving worst-case performance.
+    + LUCENE-9455: ExitableTermsEnum should sample timeout and
+      interruption check before calling next().
+    + LUCENE-9662: Make CheckIndex concurrent by parallelizing
+      index check across segments.
+    + LUCENE-9663: Add compression to terms dict from
+      SortedSet/Sorted DocValues.
+    + LUCENE-9675: Binary doc values fields now expose their
+      configured compression mode in the attributes of the field
+      info.
+    + LUCENE-9725: BM25FQuery was extended to handle similarities
+      beyond BM25Similarity. It was renamed to CombinedFieldQuery to
+      reflect its more general scope.
+    + LUCENE-9877: Reduce index size by increasing allowable
+      exceptions in PForUtil from 3 to 7.
+    + LUCENE-9687: Hunspell support improvements: add API for
+      spell-checking and suggestions, support compound words, fix
+      various behavior differences between Java and C++
+      implementations, improve performance
+    + LUCENE-9917: The BEST_SPEED compression mode now trades more
+      compression ratio in exchange of faster reads.
+    + LUCENE-9935: Enable bulk merge for stored fields with index sort.
+    + LUCENE-9944: Allow DrillSideways users to provide their own
+      CollectorManager without also requiring them to provide an
+      ExecutorService.
+    + LUCENE-9945: Extend DrillSideways to support exposing
+      FacetCollectors directly.
+    + LUCENE-9946: Support for multi-value fields in
+      LongRangeFacetCounts and DoubleRangeFacetCounts.
+    + LUCENE-9965: Added QueryProfilerIndexSearcher and
+      ProfilerCollector to support debugging query execution
+      strategy and timing.
+    + LUCENE-9981: Operations.getCommonSuffix/Prefix(Automaton) is
+      now much more efficient, from a worst case exponential down to
+      quadratic cost in the number of states + transitions in the
+      Automaton. These methods no longer use the costly determinize
+      method, removing the risk of TooComplexToDeterminizeException
+    + LUCENE-9981: Operations.determinize now throws
+      TooComplexToDeterminizeException based on too much "effort"
+      spent determinizing rather than a precise state count on the
+      resulting returned automaton, to better handle adversarial
+      cases like det(rev(regexp("(.*a){2000}"))) that spend lots of
+      effort but result in smallish eventual returned automata.
+    + LUCENE-9983: Stop sorting determinize powersets unnecessarily.
+    + LUCENE-10030: Lazily evaluate score in
+      DrillSidewaysScorer.doQueryFirstScoring
+    + LUCENE-10043: Decrease default for LRUQueryCache's
+      skipCacheFactor to 10. This prevents caching a query clause
+      when it is much more expensive than running the top-level
+      query.
+    + LUCENE-10103: Make QueryCache respect Accountable queries
+  * Optimizations
+    + LUCENE-9254: UniformSplit keeps FST off-heap.
+    + LUCENE-8103: DoubleValuesSource and QueryValueSource now use a
+      TwoPhaseIterator if one is provided by the Query.
+    + LUCENE-9287: UsageTrackingQueryCachingPolicy no longer caches
+      DocValuesFieldExistsQuery.
+    + LUCENE-9286: FST.Arc.BitTable reads directly FST bytes. Arc is
+      lightweight again and FSTEnum traversal faster.
+    + LUCENE-7788: fail precommit on unparameterised log messages
+      and examine for wasted work/objects
+    + LUCENE-9273: Speed up geometry queries by specialising
+      Component2D spatial operations. Instead of using a generic
+      relate method for all relations, we use specialize methods for
+      each one. In addition, the type of triangle is computed at
+      deserialization time, therefore we can be more selective when
+      decoding points of a triangle.
+    + LUCENE-9087: Build always trees with full leaves and lower the
+      default value for maxPointsPerLeafNode to 512.
+    + LUCENE-9148: Points now write their index in a separate file.
+    + LUCENE-9280: Add an ability for field comparators to skip
+      non-competitive documents. Creating a TopFieldCollector with
+      totalHitsThreshold less than Integer.MAX_VALUE instructs
+      Lucene to skip non-competitive documents whenever possible.
+      For numeric sort fields the skipping functionality works when
+      the same field is indexed both with doc values and points.
+      To indicate that the same data is stored in these points and
+      doc values SortField#setCanUsePoints method should be used.
+    + LUCENE-9395: ConstantValuesSource now shares a single
+      DoubleValues instance across all segments
+    + LUCENE-9447, LUCENE-9486: Stored fields now get higer
+      compression ratios on highly compressible data.
+    + LUCENE-9373: FunctionMatchQuery now accepts a "matchCost"
+      optimization hint.
+    + LUCENE-9510: Indexing with an index sort is now faster by not
+      compressing temporary representations of the data.
+    + LUCENE-9449: Enhance DocComparator to provide an iterator over
+      competitive documents when searching with "after". This
+      iterator can quickly position on the desired "after" document
+      skipping all documents and segments before "after".
+    + LUCENE-9021: QueryParser: re-use the LookaheadSuccess
+      exception.
+    + LUCENE-9346: WANDScorer now supports queries that have a
+      'minimumNumberShouldMatch' configured.
+    + LUCENE-9536: Reduced memory usage for OrdinalMap when a
+      segment has all values.
+    + LUCENE-9636: Faster decoding of postings for some numbers of
+      bits per value.
+    + LUCENE-9673: Substantially improve RAM efficiency of how
+      MemoryIndex stores postings in memory, and reduced a bit of
+      RAM overhead in IndexWriter's internal postings book-keeping
+    + LUCENE-9827: Speed up merging of stored fields and term
+      vectors for smaller segments.
+    + LUCENE-9932: Performance improvement for BKD index building
+    + LUCENE-9996: Improved memory efficiency of IndexWriter's RAM
+      buffer, in particular in the case of many fields and many
+      indexing threads.
+    + LUCENE-10014: Lucene90DocValuesFormat was using too many bits
+      per value when compressing via gcd, unnecessarily wasting
+      index storage.
+    + LUCENE-10022: Rewrite empty DisjunctionMaxQuery to
+      MatchNoDocsQuery.
+    + LUCENE-10031: Slightly faster segment merging for sorted
+      indices.
+    + LUCENE-10196: Improve IntroSorter with 3-ways partitioning
+    + LUCENE-10481: FacetsCollector will not request scores if it
+      does not use them
+  * Bug Fixes
+    + LUCENE-9300: Fix corruption of the new gen field infos when
+      doc values updates are applied on a segment created externally
+      and added to the index with IndexWriter#addIndexes(Directory).
+    + LUCENE-9350: Partial reversion of LUCENE-9068; holding
+      levenshtein automata on FuzzyQuery can end up blowing up query
+      caches which use query objects as cache keys, so building the
+      automata is now delayed to search time again.
+    + LUCENE-9259: Fix wrong NGramFilterFactory argument name for
+      preserveOriginal option
+    + LUCENE-8849: DocValuesRewriteMethod.visit wasn't visiting its
+      embedded query
+    + LUCENE-9258: DocTermsIndexDocValues assumed it was operating
+      on a SortedDocValues (single valued) field when it could be
+      multi-valued used with a SortedSetSelector
+    + LUCENE-9164: Ensure IW processes all internal events before it
+      closes itself on a rollback.
+    + LUCENE-8908: Return default value from objectVal when doc
+      doesn't match the query in QueryValueSource
+    + LUCENE-9133: Fix for potential NPE in TermFilteredPresearcher
+      for empty fields
+    + LUCENE-9309: Wait for #addIndexes merges when aborting merges.
+    + LUCENE-9337: Ensure CMS updates it's thread accounting
+      datastructures consistently. CMS today releases it's lock
+      after finishing a merge before it re-acquires it to update the
+      thread accounting datastructures. This causes threading issues
+      where concurrently finishing threads fail to pick up pending
+      merges causing potential thread starvation on forceMerge calls
+    + LUCENE-9314: Single-document monitor runs were using the less
+      efficient MultiDocumentBatch implementation.
+    + LUCENE-9362: Fix equality check in
+      ExpressionValueSource#rewrite. This fixes rewriting of inner
+      value sources.
+    + LUCENE-9405: IndexWriter incorrectly calls closeMergeReaders
+      twice when the merged segment is 100% deleted.
+    + LUCENE-9400: Tessellator might build illegal polygons when
+      several holes share the shame vertex.
+    + LUCENE-9417: Tessellator might build illegal polygons when
+      several holes share are connected to the same vertex.
+    + LUCENE-9418: Fix ordered intervals over interleaved terms
+    + LUCENE-9443: The UnifiedHighlighter was closing the underlying
+      reader when there were multiple term-vector fields. This was a
+      regression in 8.6.0.
+    + LUCENE-9478: Prevent DWPTDeleteQueue from referencing itself
+      and leaking memory. The queue passed an implicit this
+      reference to the next queue instance on flush which leaked
+      about 500byte of memory on each full flush, commit or
+      getReader call.
+    + LUCENE-9427: Fix a regression where the unified highlighter
+      didn't produce highlights on fuzzy queries that correspond to
+      exact matches.
+    + LUCENE-9467: Fix NRTCachingDirectory to use
+      Directory#fileLength to check if a file already exists instead
+      of opening an IndexInput on the file which might throw a
+      AccessDeniedException in some Directory implementations.
+    + LUCENE-9501: Fix a bug in
+      IndexSortSortedNumericDocValuesRangeQuery where it could
+      violate the DocIdSetIterator contract.
+    + LUCENE-9401: Include field in ComplexPhraseQuery's toString()
+    + LUCENE-9578: Fix TermRangeQuery when there is no upper bound
+      and the lower bound is the empty string excluded. This would
+      previously match no strings at all while it should match all
+      non-empty strings.
+    + LUCENE-9524: Fix NPE in SpanWeight#explain when no scoring is
+      required and SpanWeight has null Similarity.SimScorer.
+    + LUCENE-9508: DocumentsWriter was only stalling threads for 1
+      second allowing documents to be indexed even the
+      DocumentsWriter wasn't able to keep up flushing. Unless IW
+      can't make progress due to an ill behaving DWPT this issue
+      was barely noticeable.
+    + LUCENE-9581: Japanese tokenizer should discard the compound
+      token instead of disabling the decomposition of long tokens
+      when discardCompoundToken is activated.
+    + LUCENE-9595: Make Component2D#withinPoint implementations
+      consistent with ShapeQuery logic.
+    + LUCENE-9606: Wrap boolean queries generated by shape fields
+      with a Constant score query.
+    + LUCENE-9617: Fix per-field memory leak in
+      IndexWriter.deleteAll(). Reset next available internal field
+      number to 0 on FieldInfos.clear(), to avoid wasting FieldInfo
+      references.
+    + LUCENE-9635: BM25FQuery - Mask encoded norm long value in
+      array lookup.
+    + LUCENE-9642: When encoding triangles in ShapeField, make sure
+      generated triangles are CCW by rotating triangle points before
+      checking triangle orientation.
+    + LUCENE-9661: Fix deadlock in TermsEnum.EMPTY that occurs when
+      trying to initialize TermsEnum and BaseTermsEnum at the same
+      time
+    + LUCENE-9744: NPE on a degenerate query in
+      MinimumShouldMatchIntervalsSource
+      $MinimumMatchesIterator.getSubMatches().
+    + LUCENE-9762: DoubleValuesSource.fromQuery (also used by
+      FunctionScoreQuery.boostByQuery) could throw an exception when
+      the query implements TwoPhaseIterator and when the score is
+      requested repeatedly.
+    + LUCENE-9791: BytesRefHash.equals/find is now thread safe,
+      fixing a Luwak/Monitor bug causing registered queries to
+      sometimes fail to match.
+    + LUCENE-9870: Fix Circle2D intersectsLine t-value (distance)
+      range clamp
+    + LUCENE-9887: Fixed parameter use in RadixSelector.
+    + LUCENE-9953: LongValueFacetCounts should count each document
+      at most once when determining the total count for a dimension.
+      Prior to this fix, multi-value docs could contribute a > 1
+      count to the dimension count.
+    + LUCENE-9958: Fixed performance regression for boolean queries
+      that configure a minimum number of matching clauses.
+    + LUCENE-9963: FlattenGraphFilter is now more robust when
+      handling incoming holes in the input token graph
+    + LUCENE-9964: Duplicate long values in a document field should
+      only be counted once when using SortedNumericDocValuesFields
+    + LUCENE-9967: Do not throw NullPointerException while trying
+      to handle another exception in ReplicaNode.start
+    + LUCENE-9988: Fix DrillSideways correctness bug introduced in
+      LUCENE-9944
+    + LUCENE-9991: Fix edge case failure in
+      TestStringValueFacetCounts
+    + LUCENE-9999: CombinedFieldQuery can fail with an exception
+      when document is missing some fields.
+    + LUCENE-10008: Respect ignoreCase in CommonGramsFilterFactory
+    + LUCENE-10020: DocComparator should not skip docs with the same
+      docID on multiple sorts with search after
+    + LUCENE-10026: Fix CombinedFieldQuery equals and hashCode,
+      which ensures query rewrites don't drop CombinedFieldQuery
+      clauses.
+    + LUCENE-10039: Correct CombinedFieldQuery scoring when there is
+      a single field.
+    + LUCENE-10046: Counting bug fixed in StringValueFacetCounts.
+    + LUCENE-10060: Ensure DrillSidewaysQuery instances never get
+      cached.
+    + LUCENE-10070 Skip deleted docs when accumulating facet counts
+      for all docs
+    + LUCENE-10081: KoreanTokenizer should check the max backtrace
+      gap on whitespaces.
+    + LUCENE-10106: Sort optimization can wrongly skip the first
+      document of each segment
+    + LUCENE-10110: MultiCollector now handles single leaf collector
+      that wants to skip low-scoring hits but the combined score
+      mode doesn't allow it
+    + LUCENE-10111: Missing calculating the bytes used of
+      DocsWithFieldSet in NormValuesWriter
+    + LUCENE-10116: Missing calculating the bytes used of
+      DocsWithFieldSet and currentValues in
+      SortedSetDocValuesWriter
+    + LUCENE-10119: Sort optimization with search_after can wrongly
+      skip documents whose values are equal to the last value of the
+      previous page
+    + LUCENE-10126: Sort optimization with a chunked bulk scorer can
+      wrongly skip documents
+    + LUCENE-10134: ConcurrentSortedSetDocValuesFacetCounts
+      shouldn't share liveDocs Bits across threads
+    + LUCENE-10154: NumericLeafComparator to define getPointValues
+    + LUCENE-10208: Ensure that the minimum competitive score does
+      not decrease in concurrent search
+    + LUCENE-10477: Highlighter:
+      WeightedSpanTermExtractor.extractWeightedSpanTerms to
+      Query#rewrite multiple times if necessary
+    + LUCENE-10564: Make sure SparseFixedBitSet#or updates
+      ramBytesUsed
+  * Documentation
+    + LUCENE-9424: Add a performance warning to
+      AttributeSource.captureState javadocs
+  * Changes in runtime behaviour
+    + LUCENE-9539: SortingCodecReader now doesn't cache doc values
+      fields anymore. Previously, SortingCodecReader used to cache
+      all doc values fields after they were loaded into memory.
+      This reader should only be used to sort segments after the
+      fact using IndexWriter#addIndices.
+  * Other
+    + LUCENE-9257: Always keep FST off-heap. FSTLoadMode, Reader
+      attributes and openedFromWriter removed.
+    + LUCENE-9272: Checksums of the terms index are now verified
+      when LeafReader#checkIntegrity is called rather than when
+      opening the index.
+    + LUCENE-9270: Update Javadoc about normalizeEntry in the
+      Kuromoji DictionaryBuilder.
+    + LUCENE-9275: Make TestLatLonMultiPolygonShapeQueries more
+      resilient for CONTAINS queries.
+    + LUCENE-9244: Adjust
+      TestLucene60PointsFormat#testEstimatePointCount2Dims so it
+      does not fail when a point is shared by multiple leaves.
+    + LUCENE-9271: ByteBufferIndexInput was refactored to work on
+      top of the ByteBuffer API.
+    + LUCENE-9191: Make LineFileDocs's random seeking more
+      efficient, making tests using LineFileDocs faster
+    + LUCENE-9338: Refactors SimpleBindings to improve type safety
+      and cycle detection
+    + LUCENE-9358: Change the way the multi-dimensional BKD tree
+      builder generates the intermediate tree representation to be
+      equal to the one dimensional case to avoid unnecessary tree
+      and leaves rotation.
+    + LUCENE-9288: poll_mirrors.py release script can handle HTTPS
+      mirrors.
+    + LUCENE-9232: Fix or suppress 13 resource leak precommit
+      warnings in lucene/replicator
+    + LUCENE-9398: Always keep BKD index off-heap. BKD reader does
+      not implement Accountable any more.
+    + LUCENE-9292: Refactor BKD point configuration into its own
+      class.
+    + LUCENE-9470: Make TestXYMultiPolygonShapeQueries more
+      resilient for CONTAINS queries.
+    + LUCENE-9512: Move LockFactory stress test to be a
+      unit/integration test.
+    + LUCENE-9637: Removes some unused code and replaces the Point
+      implementation on ShapeField/ShapeQuery random tests.
+    + LUCENE-9836: Removed the pure Maven build. It is no longer
+      possible to build artifacts using Maven (this feature was no
+      longer working correctly). Due to migration to Gradle for
+      Lucene/Solr 9.0, the maintenance of the Maven build was no
+      longer reasonable. POM files are generated for deployment to
+      Maven Central only. Please use "ant generate-maven-artifacts"
+      to produce and deploy artifacts to any repository.
+    + LUCENE-9836: Migrate Maven tasks to use
+      "maven-resolver-ant-tasks" instead of the no longer maintained
+      "maven-ant-tasks".
+    + LUCENE-9985: Upgrade jetty to 9.4.41
+    + LUCENE-9976: Fix WANDScorer assertion error.
+    + LUCENE-10098: Add docs/links to GermanAnalyzer describing how
+      to decompound nouns
+    + SOLR-14995: Update Jetty to 9.4.34
+  * Build
+    + Upgrade forbiddenapis to version 3.0.1.
+    + LUCENE-9376: Fix or suppress 20 resource leak precommit
+      warnings in lucene/search
+    + LUCENE-9380: Fix auxiliary class warnings in Lucene
+    + LUCENE-9389: Enhance gradle logging calls validation:
+      eliminate getMessage()
+    + Upgrade forbiddenapis to version 3.1.
+    + LUCENE-10104, SOLR-15631: Upgrade forbiddenapis to version 3.2
+- Removed patch:
+  * lucene-java8compat.patch
+    + not needed in this version, since the compatibility is handled
+      by --release option for javac versions that support it
+- Added patch:
+  * lucene-timestamps.patch
+    + use SOURCE_DATE_EPOCH for timestamps and for pseudo-random
+      seeds
+    + improves reproducibility of builds using lucene for indexing
+- Modified patches:
+  * lucene-missing-dependencies.patch
+  * lucene-nodoclint.patch
+  * lucene-osgi-manifests.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Mon Aug 21 23:13:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Avoid xerces-j2 on classpath
