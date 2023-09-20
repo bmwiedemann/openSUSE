@@ -7,4 +7,12 @@
     <comment>new package mesheryctl: CLI for meshery, the cloud native manager</comment>
     <requestid>1110978</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4a6502eb7da129d7cf67efb2d304076d</srcmd5>
+    <version>0.6.142</version>
+    <time>1695209174</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112455</requestid>
+  </revision>
 </revisionlist>
