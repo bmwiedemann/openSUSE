@@ -19,13 +19,13 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-shell-extensions
-Version:        44.0
+Version:        45.0
 Release:        0
 Summary:        A collection of extensions for GNOME Shell
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell/Extensions
-Source0:        https://download.gnome.org/sources/gnome-shell-extensions/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-shell-extensions/45/%{name}-%{version}.tar.xz
 Source1:        README.SUSE
 
 # PATCH-FEATURE-OPENSUSE gnome-shell-add-app-to-desktop.patch bnc#870580 dliang@suse.com --  allow adding app shortcut to desktop easily.
@@ -70,9 +70,9 @@ This package provides files common to several GNOME Shell Extensions
 %package -n gnome-shell-classic
 Summary:        A collection of extensions for Gnome-shell classic
 Group:          System/GUI/GNOME
-Requires:       gnome-shell-extension-desktop-icons
 Requires:       gnome-shell-extensions-common
-Obsoletes:      gnome-shell-classic-session < %{versoin}
+Obsoletes:      gnome-shell-classic-session < %{version}
+Obsoletes:      gnome-shell-extension-desktop-icons < %{version}
 BuildArch:      noarch
 
 %description -n gnome-shell-classic
@@ -95,7 +95,8 @@ to pick system installed themes or even themes installed in the user's home.
 
 %prep
 %setup -q
-%patch1 -p1
+# Needs rebase
+#patch1 -p1
 
 # In openSUSE GNOME, we don't launch gnome-session directly, but wrap this through a shell script, /usr/bin/gnome
 sed -i "s:Exec=gnome-session:Exec=gnome:g" data/gnome-classic.desktop.in
@@ -142,10 +143,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_datadir}/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/
 %dir %{_datadir}/gnome-shell/modes
 %{_datadir}/gnome-shell/modes/classic.json
-%dir %{_datadir}/gnome-shell/theme/
-%{_datadir}/gnome-shell/theme/classic-process-working.svg
-%{_datadir}/gnome-shell/theme/gnome-classic-high-contrast.css
-%{_datadir}/gnome-shell/theme/gnome-classic.css
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/gnome-classic-wayland.desktop
 %{_datadir}/wayland-sessions/gnome-classic.desktop

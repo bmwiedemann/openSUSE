@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Sep 16 22:20:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 15 11:59:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gnome-shell-extension-desktop-icons Requires from the
+  gnome-shell-classic package, and add a Obsoletes. Upstream have
+  stagnated since two releases back, and does currently not work.
+- Fix a typo in an old Obsoletes.
+
+-------------------------------------------------------------------
+Wed Sep  6 19:31:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.rc:
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug  9 00:50:13 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable gnome-shell-add-app-to-desktop.patch for now: patch needs
+  to be rebased.
+
+-------------------------------------------------------------------
+Tue Aug  8 13:48:39 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + Port extensions to ESM
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul 15 14:45:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.alpha:
+  + window-list: Modernize default styling
+  + Replace classic styling with built-in light style
+  + window-list: Add tooltip for long window titles
+  + light-style: New extension
+  + Misc. bug fixes and cleanups
+
+-------------------------------------------------------------------
 Sun Mar 19 12:44:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:
