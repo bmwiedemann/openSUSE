@@ -1,8 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 19 15:50:13 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Add mojolicious-deprecate-spurt.patch from
+  https://github.com/mojolicious/mojo-assetpack/pull/149
+
+-------------------------------------------------------------------
 Wed Feb  8 10:32:17 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - updated to 2.14
 * added support for retry during download assets
+
+-------------------------------------------------------------------
+Sat Jan 28 03:08:49 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.14
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-AssetPack/Changes
+
+  2.14  2023-01-27
+    - Added support for multiple download attempts for assets that need to be fetched.
 
 -------------------------------------------------------------------
 Sun Mar 14 03:09:39 UTC 2021 - Tina Müller <timueller+perl@suse.de>
