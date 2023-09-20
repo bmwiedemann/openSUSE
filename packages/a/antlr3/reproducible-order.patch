@@ -1,0 +1,18 @@
+--- antlr3-3.5.3/tool/src/main/antlr3/org/antlr/grammar/v3/CodeGenTreeWalker.g	2023-09-15 20:06:39.620275234 +0200
++++ antlr3-3.5.3/tool/src/main/antlr3/org/antlr/grammar/v3/CodeGenTreeWalker.g	2023-09-16 06:38:17.929360459 +0200
+@@ -56,6 +56,7 @@
+ import java.util.HashSet;
+ import java.util.Set;
+ import java.util.Collection;
++import java.util.Collections;
+ import org.antlr.runtime.BitSet;
+ import org.antlr.runtime.DFA;
+ import org.stringtemplate.v4.ST;
+@@ -284,6 +285,7 @@
+         }
+         labels.add( label );
+     }
++    Collections.sort(labels); // ensure reproducible order
+     return labels;
+ }
+ 

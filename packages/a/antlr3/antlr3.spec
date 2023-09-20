@@ -37,6 +37,8 @@ Source0:        https://github.com/antlr/antlr3/archive/%{antlr_version}.tar.gz
 Patch0:         antlr3-java8-fix.patch
 # Generate OSGi metadata
 Patch1:         antlr3-osgi-manifest.patch
+Patch2:         reproducible-order.patch
+Patch3:         reproducible-timestamp.patch
 Patch100:       antlr3-generated_sources.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -128,9 +130,11 @@ BuildArch:      noarch
 %pom_remove_plugin :antlr3-maven-plugin tool
 %endif
 
-sed -i "s,\${buildNumber},`cat %{_sysconfdir}/fedora-release` `date`," tool/src/main/resources/org/antlr/antlr.properties
+sed -i "s,\${buildNumber},`date -u -d@${SOURCE_DATE_EPOCH:-$(date +%%s)}`," tool/src/main/resources/org/antlr/antlr.properties
 %patch0 -p1
 %patch1
+%patch2 -p1
+%patch3 -p1
 
 # remove pre-built artifacts
 find -type f -a -name *.jar -delete
@@ -149,7 +153,7 @@ find -type f -a -name *.class -delete
 %endif
 
 %pom_remove_plugin :maven-source-plugin
-%pom_remove_plugin :maven-javadoc-plugin
+%pom_remove_plugin -r :maven-javadoc-plugin
 %pom_remove_plugin :maven-enforcer-plugin
 
 # compile for target 1.8
@@ -182,6 +186,7 @@ sed -i 's/jsr14/1.8/' antlr3-maven-archetype/src/main/resources/archetype-resour
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
 	-Dmaven.compiler.release=8 \
 %endif
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dsource=8
 
 %if %{without runtime} &&  %{without bootstrap}

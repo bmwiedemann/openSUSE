@@ -39,4 +39,12 @@
     <comment>Remove unnecessary dependency</comment>
     <requestid>1072520</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f0a3ca5c60743ed4c065d359a717ed01</srcmd5>
+    <version>3.5.3</version>
+    <time>1695209429</time>
+    <user>dimstar_suse</user>
+    <comment>reproducible build changes</comment>
+    <requestid>1112494</requestid>
+  </revision>
 </revisionlist>

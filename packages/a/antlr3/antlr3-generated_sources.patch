@@ -1,12 +1,12 @@
 --- tool/src/main/java/ActionAnalysis.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/ActionAnalysis.tokens	2019-04-04 17:22:25.480181488 +0200
++++ tool/src/main/java/ActionAnalysis.tokens	2023-09-16 07:24:37.353550331 +0200
 @@ -0,0 +1,4 @@
 +ID=4
 +X=5
 +X_Y=6
 +Y=7
 --- tool/src/main/java/ActionTranslator.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/ActionTranslator.tokens	2019-04-04 17:22:25.480181488 +0200
++++ tool/src/main/java/ActionTranslator.tokens	2023-09-16 07:24:38.166867305 +0200
 @@ -0,0 +1,34 @@
 +ACTION=4
 +ARG=5
@@ -43,7 +43,7 @@
 +UNKNOWN_SYNTAX=36
 +WS=37
 --- tool/src/main/java/ANTLR.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/ANTLR.tokens	2019-04-04 17:22:25.480181488 +0200
++++ tool/src/main/java/ANTLR.tokens	2023-09-16 07:24:36.620231748 +0200
 @@ -0,0 +1,114 @@
 +ACTION=4
 +ACTION_CHAR_LITERAL=5
@@ -160,7 +160,7 @@
 +'throws'=92
 +'tree'=95
 --- tool/src/main/java/ANTLRTreePrinter.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/ANTLRTreePrinter.tokens	2019-04-04 17:22:25.480181488 +0200
++++ tool/src/main/java/ANTLRTreePrinter.tokens	2023-09-16 07:24:37.273551941 +0200
 @@ -0,0 +1,114 @@
 +ACTION=4
 +ACTION_CHAR_LITERAL=5
@@ -277,7 +277,7 @@
 +'throws'=92
 +'tree'=95
 --- tool/src/main/java/ANTLRv3.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/ANTLRv3.tokens	2019-04-04 17:22:25.480181488 +0200
++++ tool/src/main/java/ANTLRv3.tokens	2023-09-16 07:24:37.636877965 +0200
 @@ -0,0 +1,128 @@
 +T__67=67
 +T__68=68
@@ -408,7 +408,7 @@
 +'}'=92
 +'~'=93
 --- tool/src/main/java/ANTLRv3Tree.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/ANTLRv3Tree.tokens	2019-04-04 17:22:25.480181488 +0200
++++ tool/src/main/java/ANTLRv3Tree.tokens	2023-09-16 07:24:38.943518349 +0200
 @@ -0,0 +1,128 @@
 +T__67=67
 +T__68=68
@@ -539,7 +539,7 @@
 +'}'=92
 +'~'=93
 --- tool/src/main/java/AssignTokenTypesWalker.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/AssignTokenTypesWalker.tokens	2019-04-04 17:22:25.480181488 +0200
++++ tool/src/main/java/AssignTokenTypesWalker.tokens	2023-09-16 07:24:38.693523378 +0200
 @@ -0,0 +1,115 @@
 +ACTION=4
 +ACTION_CHAR_LITERAL=5
@@ -657,7 +657,7 @@
 +'throws'=92
 +'tree'=95
 --- tool/src/main/java/CodeGenTreeWalker.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/CodeGenTreeWalker.tokens	2019-04-04 17:22:25.480181488 +0200
++++ tool/src/main/java/CodeGenTreeWalker.tokens	2023-09-16 07:24:38.350196951 +0200
 @@ -0,0 +1,114 @@
 +ACTION=4
 +ACTION_CHAR_LITERAL=5
@@ -774,7 +774,7 @@
 +'throws'=92
 +'tree'=95
 --- tool/src/main/java/DefineGrammarItemsWalker.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/DefineGrammarItemsWalker.tokens	2019-04-04 17:22:25.480181488 +0200
++++ tool/src/main/java/DefineGrammarItemsWalker.tokens	2023-09-16 07:24:38.596858656 +0200
 @@ -0,0 +1,114 @@
 +ACTION=4
 +ACTION_CHAR_LITERAL=5
@@ -891,7 +891,7 @@
 +'throws'=92
 +'tree'=95
 --- tool/src/main/java/LeftRecursiveRuleWalker.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/LeftRecursiveRuleWalker.tokens	2019-04-04 17:22:25.480181488 +0200
++++ tool/src/main/java/LeftRecursiveRuleWalker.tokens	2023-09-16 07:24:38.470194537 +0200
 @@ -0,0 +1,114 @@
 +ACTION=4
 +ACTION_CHAR_LITERAL=5
@@ -1008,9 +1008,9 @@
 +'throws'=92
 +'tree'=95
 --- tool/src/main/java/org/antlr/grammar/v3/ActionAnalysis.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ActionAnalysis.java	2019-04-04 17:22:25.476181469 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/ActionAnalysis.java	2023-09-16 07:24:37.353550331 +0200
 @@ -0,0 +1,442 @@
-+// $ANTLR 3.5.2 org/antlr/grammar/v3/ActionAnalysis.g 2019-04-04 15:18:49
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ActionAnalysis.g 2023-09-15 00:00:00
 +
 +package org.antlr.grammar.v3;
 +import org.antlr.runtime.*;
@@ -1453,9 +1453,9 @@
 +
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/ActionTranslator.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ActionTranslator.java	2019-04-04 17:22:25.476181469 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/ActionTranslator.java	2023-09-16 07:24:38.166867305 +0200
 @@ -0,0 +1,3600 @@
-+// $ANTLR 3.5.2 org/antlr/grammar/v3/ActionTranslator.g 2019-04-04 15:18:50
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ActionTranslator.g 2023-09-15 00:00:00
 +
 +package org.antlr.grammar.v3;
 +import org.stringtemplate.v4.ST;
@@ -5056,9 +5056,9 @@
 +
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/ANTLRLexer.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ANTLRLexer.java	2019-04-04 17:22:25.476181469 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/ANTLRLexer.java	2023-09-16 07:24:37.100222094 +0200
 @@ -0,0 +1,3520 @@
-+// $ANTLR 3.5.2 org/antlr/grammar/v3/ANTLR.g 2019-04-04 15:18:49
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLR.g 2023-09-15 00:00:00
 +
 +package org.antlr.grammar.v3;
 +import org.antlr.tool.ErrorManager;
@@ -8579,9 +8579,9 @@
 +
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/ANTLRParser.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ANTLRParser.java	2019-04-04 17:22:25.476181469 +0200
-@@ -0,0 +1,10497 @@
-+// $ANTLR 3.5.2 org/antlr/grammar/v3/ANTLR.g 2019-04-04 15:18:49
++++ tool/src/main/java/org/antlr/grammar/v3/ANTLRParser.java	2023-09-16 07:24:36.616898482 +0200
+@@ -0,0 +1,10551 @@
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLR.g 2023-09-15 00:00:00
 +
 +package org.antlr.grammar.v3;
 +import org.antlr.tool.ErrorManager;
@@ -9260,8 +9260,9 @@
 +			EOF4=(Token)match(input,EOF,FOLLOW_EOF_in_grammar_409); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_EOF.add(EOF4);
 +
++
 +			// AST REWRITE
-+			// elements: r, scopes, cmt, ig, gr, a, gid, ts, optionsSpec
++			// elements: a, cmt, gid, gr, ig, optionsSpec, r, scopes, ts
 +			// token labels: cmt
 +			// rule labels: a, r, gid, scopes, gr, ig, retval, ts
 +			// token list labels: 
@@ -9431,6 +9432,7 @@
 +					if ( state.backtracking==0 ) stream_GRAMMAR.add(gr);
 +
 +					if ( state.backtracking==0 ) {grammarType=Grammar.LEXER; grammar.type = Grammar.LEXER;}
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -9464,6 +9466,7 @@
 +					if ( state.backtracking==0 ) stream_GRAMMAR.add(gr);
 +
 +					if ( state.backtracking==0 ) {grammarType=Grammar.PARSER; grammar.type = Grammar.PARSER;}
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -9497,6 +9500,7 @@
 +					if ( state.backtracking==0 ) stream_GRAMMAR.add(gr);
 +
 +					if ( state.backtracking==0 ) {grammarType=Grammar.TREE_PARSER; grammar.type = Grammar.TREE_PARSER;}
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -9527,6 +9531,7 @@
 +					if ( state.backtracking==0 ) stream_GRAMMAR.add(gr);
 +
 +					if ( state.backtracking==0 ) {grammarType=Grammar.COMBINED; grammar.type = Grammar.COMBINED;}
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -9842,6 +9847,7 @@
 +					l=(Token)match(input,LEXER,FOLLOW_LEXER_in_actionScopeName620); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_LEXER.add(l);
 +
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -9870,6 +9876,7 @@
 +					{
 +					p=(Token)match(input,PARSER,FOLLOW_PARSER_in_actionScopeName634); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_PARSER.add(p);
++
 +
 +					// AST REWRITE
 +					// elements: 
@@ -10217,6 +10224,7 @@
 +					if ( state.backtracking==0 ) stream_STAR.add(ss);
 +
 +					if ( state.backtracking==0 ) {retval.value = "*";}
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -11241,8 +11249,9 @@
 +
 +			}
 +
++
 +			// AST REWRITE
-+			// elements: ruleAltList, scopes, throwsSpec, ex, optionsSpec, p1, ruleActions, p3, aa, p2, ruleName, p4, rt
++			// elements: aa, ex, optionsSpec, p1, p2, p3, p4, rt, ruleActions, ruleAltList, ruleName, scopes, throwsSpec
 +			// token labels: aa, p1, p2, rt, p3, p4
 +			// rule labels: ex, ruleName, scopes, retval
 +			// token list labels: 
@@ -11735,8 +11744,9 @@
 +				}
 +			}
 +
++
 +			// AST REWRITE
-+			// elements: idList, ruleActions, ACTION
++			// elements: ACTION, idList, ruleActions
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -11839,6 +11849,7 @@
 +			// org/antlr/grammar/v3/ANTLR.g:649:4: ( -> BLOCK[input.LT(-1),\"BLOCK\"] )
 +			// org/antlr/grammar/v3/ANTLR.g:649:6: 
 +			{
++
 +			// AST REWRITE
 +			// elements: 
 +			// token labels: 
@@ -11881,6 +11892,7 @@
 +			if (state.failed) return retval;
 +			if ( state.backtracking==0 ) stream_rewrite.add(r1.getTree());
 +			if ( state.backtracking==0 ) {if (LA(1)==OR||(LA(2)==QUESTION||LA(2)==PLUS||LA(2)==STAR)) prefixWithSynPred((a1!=null?((GrammarAST)a1.getTree()):null));}
++
 +			// AST REWRITE
 +			// elements: a1, r1
 +			// token labels: 
@@ -11961,8 +11973,9 @@
 +							if (state.failed) return retval;
 +							if ( state.backtracking==0 ) stream_rewrite.add(r2.getTree());
 +							if ( state.backtracking==0 ) {if (LA(1)==OR||(LA(2)==QUESTION||LA(2)==PLUS||LA(2)==STAR)) prefixWithSynPred((a2!=null?((GrammarAST)a2.getTree()):null));}
++
 +							// AST REWRITE
-+							// elements: r2, ruleAltList, a2
++							// elements: a2, r2, ruleAltList
 +							// token labels: 
 +							// rule labels: r2, a2, retval
 +							// token list labels: 
@@ -12012,6 +12025,7 @@
 +					break;
 +
 +			}
++
 +
 +			// AST REWRITE
 +			// elements: ruleAltList
@@ -12119,6 +12133,7 @@
 +			{
 +			lp=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_block1500); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_LPAREN.add(lp);
++
 +
 +			// AST REWRITE
 +			// elements: 
@@ -12277,8 +12292,9 @@
 +			rp=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_block1616); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_RPAREN.add(rp);
 +
++
 +			// AST REWRITE
-+			// elements: alternative, ACTION, ruleActions, optionsSpec, block
++			// elements: ACTION, alternative, block, optionsSpec, ruleActions
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -12426,6 +12442,7 @@
 +						cnt40++;
 +					}
 +
++
 +					// AST REWRITE
 +					// elements: element
 +					// token labels: 
@@ -12467,6 +12484,7 @@
 +				case 2 :
 +					// org/antlr/grammar/v3/ANTLR.g:713:3: 
 +					{
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -14502,6 +14520,7 @@
 +					QUESTION120=(Token)match(input,QUESTION,FOLLOW_QUESTION_in_ebnf2126); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_QUESTION.add(QUESTION120);
 +
++
 +					// AST REWRITE
 +					// elements: block
 +					// token labels: 
@@ -14537,6 +14556,7 @@
 +					{
 +					STAR121=(Token)match(input,STAR,FOLLOW_STAR_in_ebnf2144); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_STAR.add(STAR121);
++
 +
 +					// AST REWRITE
 +					// elements: block
@@ -14574,6 +14594,7 @@
 +					PLUS122=(Token)match(input,PLUS,FOLLOW_PLUS_in_ebnf2162); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_PLUS.add(PLUS122);
 +
++
 +					// AST REWRITE
 +					// elements: block
 +					// token labels: 
@@ -14609,6 +14630,7 @@
 +					{
 +					IMPLIES123=(Token)match(input,IMPLIES,FOLLOW_IMPLIES_in_ebnf2180); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_IMPLIES.add(IMPLIES123);
++
 +
 +					// AST REWRITE
 +					// elements: block
@@ -14651,6 +14673,7 @@
 +					ROOT124=(Token)match(input,ROOT,FOLLOW_ROOT_in_ebnf2216); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_ROOT.add(ROOT124);
 +
++
 +					// AST REWRITE
 +					// elements: ROOT, block
 +					// token labels: 
@@ -14687,6 +14710,7 @@
 +					BANG125=(Token)match(input,BANG,FOLLOW_BANG_in_ebnf2233); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_BANG.add(BANG125);
 +
++
 +					// AST REWRITE
 +					// elements: BANG, block
 +					// token labels: 
@@ -14720,6 +14744,7 @@
 +				case 7 :
 +					// org/antlr/grammar/v3/ANTLR.g:814:4: 
 +					{
++
 +					// AST REWRITE
 +					// elements: block
 +					// token labels: 
@@ -14883,8 +14908,9 @@
 +					c2=(Token)match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_range2286); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_CHAR_LITERAL.add(c2);
 +
++
 +					// AST REWRITE
-+					// elements: c2, c1
++					// elements: c1, c2
 +					// token labels: c1, c2
 +					// rule labels: retval
 +					// token list labels: 
@@ -14993,6 +15019,7 @@
 +							ErrorManager.syntaxError(
 +								ErrorManager.MSG_RANGE_OP_ILLEGAL,grammar,r,null,null);
 +							}
++
 +					// AST REWRITE
 +					// elements: t
 +					// token labels: t
@@ -15970,6 +15997,7 @@
 +			// org/antlr/grammar/v3/ANTLR.g:890:4: ( -> BLOCK[$elemAST.getToken(), \"BLOCK\"] )
 +			// org/antlr/grammar/v3/ANTLR.g:890:6: 
 +			{
++
 +			// AST REWRITE
 +			// elements: 
 +			// token labels: 
@@ -15997,6 +16025,7 @@
 +			// org/antlr/grammar/v3/ANTLR.g:893:3: ( -> ^( ALT[$elemAST.getToken(), \"ALT\"] EOA[\"<end-of-alt>\"] ) )
 +			// org/antlr/grammar/v3/ANTLR.g:894:4: 
 +			{
++
 +			// AST REWRITE
 +			// elements: 
 +			// token labels: 
@@ -16064,6 +16093,7 @@
 +					QUESTION155=(Token)match(input,QUESTION,FOLLOW_QUESTION_in_ebnfSuffix2700); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_QUESTION.add(QUESTION155);
 +
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -16092,6 +16122,7 @@
 +					{
 +					STAR156=(Token)match(input,STAR,FOLLOW_STAR_in_ebnfSuffix2714); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_STAR.add(STAR156);
++
 +
 +					// AST REWRITE
 +					// elements: 
@@ -16122,6 +16153,7 @@
 +					PLUS157=(Token)match(input,PLUS,FOLLOW_PLUS_in_ebnfSuffix2728); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_PLUS.add(PLUS157);
 +
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -16147,6 +16179,7 @@
 +					break;
 +
 +			}
++
 +
 +			// AST REWRITE
 +			// elements: ebnfSuffix
@@ -16401,6 +16434,7 @@
 +					TOKEN_REF162=(Token)match(input,TOKEN_REF,FOLLOW_TOKEN_REF_in_id2809); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_TOKEN_REF.add(TOKEN_REF162);
 +
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -16429,6 +16463,7 @@
 +					{
 +					RULE_REF163=(Token)match(input,RULE_REF,FOLLOW_RULE_REF_in_id2821); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_RULE_REF.add(RULE_REF163);
++
 +
 +					// AST REWRITE
 +					// elements: 
@@ -16559,8 +16594,9 @@
 +					state._fsp--;
 +					if (state.failed) return retval;
 +					if ( state.backtracking==0 ) stream_rewrite_alternative.add(rewrite_alternative166.getTree());
++
 +					// AST REWRITE
-+					// elements: rewrite_with_sempred, REWRITE, rewrite_alternative
++					// elements: REWRITE, rewrite_alternative, rewrite_with_sempred
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -16740,6 +16776,7 @@
 +			if ( state.backtracking==0 ) stream_rewrite_alternative.add(rewrite_alternative171.getTree());
 +			RPAREN172=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_rewrite_block2903); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN172);
++
 +
 +			// AST REWRITE
 +			// elements: rewrite_alternative
@@ -16984,6 +17021,7 @@
 +						cnt85++;
 +					}
 +
++
 +					// AST REWRITE
 +					// elements: rewrite_element
 +					// token labels: 
@@ -17038,6 +17076,7 @@
 +				case 3 :
 +					// org/antlr/grammar/v3/ANTLR.g:957:3: 
 +					{
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -17175,6 +17214,7 @@
 +					state._fsp--;
 +					if (state.failed) return retval;
 +					if ( state.backtracking==0 ) stream_rewrite_atom.add(t.getTree());
++
 +					// AST REWRITE
 +					// elements: t
 +					// token labels: 
@@ -17214,6 +17254,7 @@
 +							state._fsp--;
 +							if (state.failed) return retval;
 +							if ( state.backtracking==0 ) stream_ebnfSuffix.add(subrule.getTree());
++
 +							// AST REWRITE
 +							// elements: subrule
 +							// token labels: 
@@ -17268,6 +17309,7 @@
 +					state._fsp--;
 +					if (state.failed) return retval;
 +					if ( state.backtracking==0 ) stream_rewrite_tree.add(tr.getTree());
++
 +					// AST REWRITE
 +					// elements: tr
 +					// token labels: 
@@ -17307,6 +17349,7 @@
 +							state._fsp--;
 +							if (state.failed) return retval;
 +							if ( state.backtracking==0 ) stream_ebnfSuffix.add(subrule.getTree());
++
 +							// AST REWRITE
 +							// elements: subrule
 +							// token labels: 
@@ -17667,6 +17710,7 @@
 +					TOKEN_REF185=(Token)match(input,TOKEN_REF,FOLLOW_TOKEN_REF_in_label3186); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_TOKEN_REF.add(TOKEN_REF185);
 +
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -17695,6 +17739,7 @@
 +					{
 +					RULE_REF186=(Token)match(input,RULE_REF,FOLLOW_RULE_REF_in_label3196); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_RULE_REF.add(RULE_REF186);
++
 +
 +					// AST REWRITE
 +					// elements: 
@@ -17809,6 +17854,7 @@
 +					QUESTION187=(Token)match(input,QUESTION,FOLLOW_QUESTION_in_rewrite_ebnf3220); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_QUESTION.add(QUESTION187);
 +
++
 +					// AST REWRITE
 +					// elements: b
 +					// token labels: 
@@ -17846,6 +17892,7 @@
 +					STAR188=(Token)match(input,STAR,FOLLOW_STAR_in_rewrite_ebnf3239); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_STAR.add(STAR188);
 +
++
 +					// AST REWRITE
 +					// elements: b
 +					// token labels: 
@@ -17882,6 +17929,7 @@
 +					{
 +					PLUS189=(Token)match(input,PLUS,FOLLOW_PLUS_in_rewrite_ebnf3258); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_PLUS.add(PLUS189);
++
 +
 +					// AST REWRITE
 +					// elements: b
@@ -18118,6 +18166,7 @@
 +					state._fsp--;
 +					if (state.failed) return retval;
 +					if ( state.backtracking==0 ) stream_rewrite_template_head.add(rewrite_template_head194.getTree());
++
 +					// AST REWRITE
 +					// elements: rewrite_template_head
 +					// token labels: 
@@ -18292,8 +18341,9 @@
 +			RPAREN200=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_rewrite_template_head3417); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN200);
 +
++
 +			// AST REWRITE
-+			// elements: rewrite_template_args, id
++			// elements: id, rewrite_template_args
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -18398,6 +18448,7 @@
 +			if ( state.backtracking==0 ) stream_rewrite_template_args.add(rewrite_template_args204.getTree());
 +			RPAREN205=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_rewrite_indirect_template_head3461); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN205);
++
 +
 +			// AST REWRITE
 +			// elements: ACTION, rewrite_template_args
@@ -18529,6 +18580,7 @@
 +						}
 +					}
 +
++
 +					// AST REWRITE
 +					// elements: rewrite_template_arg
 +					// token labels: 
@@ -18569,6 +18621,7 @@
 +				case 2 :
 +					// org/antlr/grammar/v3/ANTLR.g:1061:3: 
 +					{
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -18654,8 +18707,9 @@
 +			ACTION210=(Token)match(input,ACTION,FOLLOW_ACTION_in_rewrite_template_arg3531); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_ACTION.add(ACTION210);
 +
++
 +			// AST REWRITE
-+			// elements: id, ACTION
++			// elements: ACTION, id
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -19079,9 +19133,9 @@
 +	public static final BitSet FOLLOW_ruleref_in_synpred1_ANTLR1936 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/ANTLRTreePrinter.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ANTLRTreePrinter.java	2019-04-04 17:22:25.476181469 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/ANTLRTreePrinter.java	2023-09-16 07:24:37.273551941 +0200
 @@ -0,0 +1,3622 @@
-+// $ANTLR 3.5.2 org/antlr/grammar/v3/ANTLRTreePrinter.g 2019-04-04 15:18:49
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLRTreePrinter.g 2023-09-15 00:00:00
 +
 +package org.antlr.grammar.v3;
 +import org.antlr.tool.*;
@@ -22704,9 +22758,9 @@
 +	public static final BitSet FOLLOW_BANG_in_ast_suffix1807 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Lexer.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Lexer.java	2019-04-04 17:22:25.476181469 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Lexer.java	2023-09-16 07:24:38.060202784 +0200
 @@ -0,0 +1,3357 @@
-+// $ANTLR 3.5.2 org/antlr/grammar/v3/ANTLRv3.g 2019-04-04 15:18:50
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLRv3.g 2023-09-15 00:00:00
 +
 +    package org.antlr.grammar.v3;
 +
@@ -26064,9 +26118,9 @@
 +
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Parser.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Parser.java	2019-04-04 17:22:25.476181469 +0200
-@@ -0,0 +1,9768 @@
-+// $ANTLR 3.5.2 org/antlr/grammar/v3/ANTLRv3.g 2019-04-04 15:18:50
++++ tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Parser.java	2023-09-16 07:24:37.633544699 +0200
+@@ -0,0 +1,9847 @@
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLRv3.g 2023-09-15 00:00:00
 +
 +    package org.antlr.grammar.v3;
 +
@@ -26498,8 +26552,9 @@
 +			EOF12=(Token)match(input,EOF,FOLLOW_EOF_in_grammarDef489); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_EOF.add(EOF12);
 +
++
 +			// AST REWRITE
-+			// elements: action, optionsSpec, DOC_COMMENT, attrScope, rule, tokensSpec, id
++			// elements: DOC_COMMENT, action, attrScope, id, optionsSpec, rule, tokensSpec
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -26651,6 +26706,7 @@
 +
 +			char_literal15=(Token)match(input,92,FOLLOW_92_in_tokensSpec555); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_92.add(char_literal15);
++
 +
 +			// AST REWRITE
 +			// elements: TOKENS, tokenSpec
@@ -26807,8 +26863,9 @@
 +
 +					}
 +
++
 +					// AST REWRITE
-+					// elements: lit, LABEL_ASSIGN, TOKEN_REF
++					// elements: LABEL_ASSIGN, TOKEN_REF, lit
 +					// token labels: lit
 +					// rule labels: retval
 +					// token list labels: 
@@ -26842,6 +26899,7 @@
 +				case 2 :
 +					// org/antlr/grammar/v3/ANTLRv3.g:115:16: 
 +					{
++
 +					// AST REWRITE
 +					// elements: TOKEN_REF
 +					// token labels: 
@@ -26933,8 +26991,9 @@
 +			ACTION21=(Token)match(input,ACTION,FOLLOW_ACTION_in_attrScope644); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_ACTION.add(ACTION21);
 +
++
 +			// AST REWRITE
-+			// elements: SCOPE, ACTION, id
++			// elements: ACTION, SCOPE, id
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -27072,8 +27131,9 @@
 +			ACTION26=(Token)match(input,ACTION,FOLLOW_ACTION_in_action678); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_ACTION.add(ACTION26);
 +
++
 +			// AST REWRITE
-+			// elements: id, ACTION, AT, actionScopeName
++			// elements: ACTION, AT, actionScopeName, id
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -27200,6 +27260,7 @@
 +					l=(Token)match(input,84,FOLLOW_84_in_actionScopeName711); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_84.add(l);
 +
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -27228,6 +27289,7 @@
 +					{
 +					p=(Token)match(input,85,FOLLOW_85_in_actionScopeName728); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_85.add(p);
++
 +
 +					// AST REWRITE
 +					// elements: 
@@ -27346,8 +27408,9 @@
 +			char_literal31=(Token)match(input,92,FOLLOW_92_in_optionsSpec753); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_92.add(char_literal31);
 +
++
 +			// AST REWRITE
-+			// elements: option, OPTIONS
++			// elements: OPTIONS, option
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -27444,8 +27507,9 @@
 +			state._fsp--;
 +			if (state.failed) return retval;
 +			if ( state.backtracking==0 ) stream_optionValue.add(optionValue34.getTree());
++
 +			// AST REWRITE
-+			// elements: id, LABEL_ASSIGN, optionValue
++			// elements: LABEL_ASSIGN, id, optionValue
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -27620,6 +27684,7 @@
 +					{
 +					s=(Token)match(input,70,FOLLOW_70_in_optionValue851); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_70.add(s);
++
 +
 +					// AST REWRITE
 +					// elements: 
@@ -28011,8 +28076,9 @@
 +
 +			}
 +
++
 +			// AST REWRITE
-+			// elements: ruleScopeSpec, RET, arg, id, ruleAction, throwsSpec, optionsSpec, altList, rt, exceptionGroup
++			// elements: RET, altList, arg, exceptionGroup, id, optionsSpec, rt, ruleAction, ruleScopeSpec, throwsSpec
 +			// token labels: rt, arg
 +			// rule labels: retval
 +			// token list labels: 
@@ -28164,6 +28230,7 @@
 +			ACTION53=(Token)match(input,ACTION,FOLLOW_ACTION_in_ruleAction1068); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_ACTION.add(ACTION53);
 +
++
 +			// AST REWRITE
 +			// elements: ACTION, AT, id
 +			// token labels: 
@@ -28281,6 +28348,7 @@
 +					break loop26;
 +				}
 +			}
++
 +
 +			// AST REWRITE
 +			// elements: 89, id
@@ -28452,8 +28520,9 @@
 +					ACTION59=(Token)match(input,ACTION,FOLLOW_ACTION_in_ruleScopeSpec1122); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_ACTION.add(ACTION59);
 +
++
 +					// AST REWRITE
-+					// elements: SCOPE, ACTION
++					// elements: ACTION, SCOPE
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -28524,6 +28593,7 @@
 +
 +					char_literal64=(Token)match(input,76,FOLLOW_76_in_ruleScopeSpec1146); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_76.add(char_literal64);
++
 +
 +					// AST REWRITE
 +					// elements: SCOPE, id
@@ -28611,8 +28681,9 @@
 +					char_literal71=(Token)match(input,76,FOLLOW_76_in_ruleScopeSpec1177); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_76.add(char_literal71);
 +
++
 +					// AST REWRITE
-+					// elements: id, SCOPE, ACTION
++					// elements: ACTION, SCOPE, id
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -28787,8 +28858,9 @@
 +			rp=(Token)match(input,69,FOLLOW_69_in_block1250); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_69.add(rp);
 +
++
 +			// AST REWRITE
-+			// elements: optionsSpec, altpair
++			// elements: altpair, optionsSpec
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -28978,6 +29050,7 @@
 +				}
 +			}
 +
++
 +			// AST REWRITE
 +			// elements: altpair
 +			// token labels: 
@@ -29112,6 +29185,7 @@
 +						cnt34++;
 +					}
 +
++
 +					// AST REWRITE
 +					// elements: element
 +					// token labels: 
@@ -29153,6 +29227,7 @@
 +				case 2 :
 +					// org/antlr/grammar/v3/ANTLRv3.g:218:9: 
 +					{
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -29381,8 +29456,9 @@
 +			ACTION87=(Token)match(input,ACTION,FOLLOW_ACTION_in_exceptionHandler1448); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_ACTION.add(ACTION87);
 +
++
 +			// AST REWRITE
-+			// elements: 81, ARG_ACTION, ACTION
++			// elements: 81, ACTION, ARG_ACTION
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -29465,8 +29541,9 @@
 +			ACTION89=(Token)match(input,ACTION,FOLLOW_ACTION_in_finallyClause1480); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_ACTION.add(ACTION89);
 +
++
 +			// AST REWRITE
-+			// elements: ACTION, 82
++			// elements: 82, ACTION
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -29866,8 +29943,9 @@
 +							state._fsp--;
 +							if (state.failed) return retval;
 +							if ( state.backtracking==0 ) stream_ebnfSuffix.add(ebnfSuffix92.getTree());
++
 +							// AST REWRITE
-+							// elements: id, atom, ebnfSuffix, labelOp
++							// elements: atom, ebnfSuffix, id, labelOp
 +							// token labels: labelOp
 +							// rule labels: retval
 +							// token list labels: 
@@ -29924,8 +30002,9 @@
 +						case 2 :
 +							// org/antlr/grammar/v3/ANTLRv3.g:237:8: 
 +							{
++
 +							// AST REWRITE
-+							// elements: id, labelOp, atom
++							// elements: atom, id, labelOp
 +							// token labels: labelOp
 +							// rule labels: retval
 +							// token list labels: 
@@ -30037,8 +30116,9 @@
 +							state._fsp--;
 +							if (state.failed) return retval;
 +							if ( state.backtracking==0 ) stream_ebnfSuffix.add(ebnfSuffix95.getTree());
++
 +							// AST REWRITE
-+							// elements: id, labelOp, ebnfSuffix, block
++							// elements: block, ebnfSuffix, id, labelOp
 +							// token labels: labelOp
 +							// rule labels: retval
 +							// token list labels: 
@@ -30095,8 +30175,9 @@
 +						case 2 :
 +							// org/antlr/grammar/v3/ANTLRv3.g:241:8: 
 +							{
++
 +							// AST REWRITE
-+							// elements: id, block, labelOp
++							// elements: block, id, labelOp
 +							// token labels: labelOp
 +							// rule labels: retval
 +							// token list labels: 
@@ -30166,8 +30247,9 @@
 +							state._fsp--;
 +							if (state.failed) return retval;
 +							if ( state.backtracking==0 ) stream_ebnfSuffix.add(ebnfSuffix97.getTree());
++
 +							// AST REWRITE
-+							// elements: ebnfSuffix, atom
++							// elements: atom, ebnfSuffix
 +							// token labels: 
 +							// rule labels: retval
 +							// token list labels: 
@@ -30215,6 +30297,7 @@
 +						case 2 :
 +							// org/antlr/grammar/v3/ANTLRv3.g:245:8: 
 +							{
++
 +							// AST REWRITE
 +							// elements: atom
 +							// token labels: 
@@ -30301,6 +30384,7 @@
 +							g=(Token)match(input,78,FOLLOW_78_in_element1728); if (state.failed) return retval; 
 +							if ( state.backtracking==0 ) stream_78.add(g);
 +
++
 +							// AST REWRITE
 +							// elements: 
 +							// token labels: 
@@ -30327,6 +30411,7 @@
 +						case 2 :
 +							// org/antlr/grammar/v3/ANTLRv3.g:249:46: 
 +							{
++
 +							// AST REWRITE
 +							// elements: SEMPRED
 +							// token labels: 
@@ -30389,8 +30474,9 @@
 +							state._fsp--;
 +							if (state.failed) return retval;
 +							if ( state.backtracking==0 ) stream_ebnfSuffix.add(ebnfSuffix102.getTree());
++
 +							// AST REWRITE
-+							// elements: treeSpec, ebnfSuffix
++							// elements: ebnfSuffix, treeSpec
 +							// token labels: 
 +							// rule labels: retval
 +							// token list labels: 
@@ -30438,6 +30524,7 @@
 +						case 2 :
 +							// org/antlr/grammar/v3/ANTLRv3.g:252:8: 
 +							{
++
 +							// AST REWRITE
 +							// elements: treeSpec
 +							// token labels: 
@@ -30653,6 +30740,7 @@
 +
 +							}
 +
++
 +							// AST REWRITE
 +							// elements: op, range
 +							// token labels: op
@@ -30687,6 +30775,7 @@
 +						case 2 :
 +							// org/antlr/grammar/v3/ANTLRv3.g:259:9: 
 +							{
++
 +							// AST REWRITE
 +							// elements: range
 +							// token labels: 
@@ -30781,6 +30870,7 @@
 +
 +							}
 +
++
 +							// AST REWRITE
 +							// elements: notSet, op
 +							// token labels: op
@@ -30815,6 +30905,7 @@
 +						case 2 :
 +							// org/antlr/grammar/v3/ANTLRv3.g:263:9: 
 +							{
++
 +							// AST REWRITE
 +							// elements: notSet
 +							// token labels: 
@@ -30925,8 +31016,9 @@
 +
 +							}
 +
++
 +							// AST REWRITE
-+							// elements: op, ARG_ACTION, RULE_REF
++							// elements: ARG_ACTION, RULE_REF, op
 +							// token labels: op
 +							// rule labels: retval
 +							// token list labels: 
@@ -30965,8 +31057,9 @@
 +						case 2 :
 +							// org/antlr/grammar/v3/ANTLRv3.g:267:9: 
 +							{
++
 +							// AST REWRITE
-+							// elements: RULE_REF, ARG_ACTION
++							// elements: ARG_ACTION, RULE_REF
 +							// token labels: 
 +							// rule labels: retval
 +							// token list labels: 
@@ -31107,6 +31200,7 @@
 +
 +					}
 +
++
 +					// AST REWRITE
 +					// elements: 93, elementOptions, notTerminal
 +					// token labels: 
@@ -31171,8 +31265,9 @@
 +
 +					}
 +
++
 +					// AST REWRITE
-+					// elements: elementOptions, block, 93
++					// elements: 93, block, elementOptions
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -31421,6 +31516,7 @@
 +					char_literal116=(Token)match(input,79,FOLLOW_79_in_elementOptions2056); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_79.add(char_literal116);
 +
++
 +					// AST REWRITE
 +					// elements: qid
 +					// token labels: 
@@ -31493,6 +31589,7 @@
 +
 +					char_literal121=(Token)match(input,79,FOLLOW_79_in_elementOptions2085); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_79.add(char_literal121);
++
 +
 +					// AST REWRITE
 +					// elements: option
@@ -31594,8 +31691,9 @@
 +			state._fsp--;
 +			if (state.failed) return retval;
 +			if ( state.backtracking==0 ) stream_optionValue.add(optionValue124.getTree());
++
 +			// AST REWRITE
-+			// elements: optionValue, LABEL_ASSIGN, id
++			// elements: LABEL_ASSIGN, id, optionValue
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -31717,6 +31815,7 @@
 +			char_literal128=(Token)match(input,69,FOLLOW_69_in_treeSpec2142); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_69.add(char_literal128);
 +
++
 +			// AST REWRITE
 +			// elements: element
 +			// token labels: 
@@ -31834,8 +31933,9 @@
 +
 +			}
 +
++
 +			// AST REWRITE
-+			// elements: elementOptions, c1, c2
++			// elements: c1, c2, elementOptions
 +			// token labels: c1, c2
 +			// rule labels: retval
 +			// token list labels: 
@@ -31996,6 +32096,7 @@
 +
 +					}
 +
++
 +					// AST REWRITE
 +					// elements: CHAR_LITERAL, elementOptions
 +					// token labels: 
@@ -32075,8 +32176,9 @@
 +
 +					}
 +
++
 +					// AST REWRITE
-+					// elements: elementOptions, ARG_ACTION, TOKEN_REF
++					// elements: ARG_ACTION, TOKEN_REF, elementOptions
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -32142,8 +32244,9 @@
 +
 +					}
 +
++
 +					// AST REWRITE
-+					// elements: elementOptions, STRING_LITERAL
++					// elements: STRING_LITERAL, elementOptions
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -32203,6 +32306,7 @@
 +
 +					}
 +
++
 +					// AST REWRITE
 +					// elements: 73, elementOptions
 +					// token labels: 
@@ -32257,6 +32361,7 @@
 +					char_literal140=(Token)match(input,ROOT,FOLLOW_ROOT_in_terminal2321); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_ROOT.add(char_literal140);
 +
++
 +					// AST REWRITE
 +					// elements: ROOT, terminal
 +					// token labels: 
@@ -32293,8 +32398,9 @@
 +					char_literal141=(Token)match(input,BANG,FOLLOW_BANG_in_terminal2342); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_BANG.add(char_literal141);
 +
++
 +					// AST REWRITE
-+					// elements: terminal, BANG
++					// elements: BANG, terminal
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -32441,6 +32547,7 @@
 +					op=(Token)match(input,80,FOLLOW_80_in_ebnf2393); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_80.add(op);
 +
++
 +					// AST REWRITE
 +					// elements: block
 +					// token labels: 
@@ -32476,6 +32583,7 @@
 +					{
 +					op=(Token)match(input,70,FOLLOW_70_in_ebnf2410); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_70.add(op);
++
 +
 +					// AST REWRITE
 +					// elements: block
@@ -32513,6 +32621,7 @@
 +					op=(Token)match(input,71,FOLLOW_71_in_ebnf2427); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_71.add(op);
 +
++
 +					// AST REWRITE
 +					// elements: block
 +					// token labels: 
@@ -32548,6 +32657,7 @@
 +					{
 +					string_literal143=(Token)match(input,78,FOLLOW_78_in_ebnf2444); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_78.add(string_literal143);
++
 +
 +					// AST REWRITE
 +					// elements: block
@@ -32588,6 +32698,7 @@
 +				case 5 :
 +					// org/antlr/grammar/v3/ANTLRv3.g:334:13: 
 +					{
++
 +					// AST REWRITE
 +					// elements: block
 +					// token labels: 
@@ -32701,6 +32812,7 @@
 +					char_literal144=(Token)match(input,80,FOLLOW_80_in_ebnfSuffix2529); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_80.add(char_literal144);
 +
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -32730,6 +32842,7 @@
 +					char_literal145=(Token)match(input,70,FOLLOW_70_in_ebnfSuffix2541); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_70.add(char_literal145);
 +
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -32758,6 +32871,7 @@
 +					{
 +					char_literal146=(Token)match(input,71,FOLLOW_71_in_ebnfSuffix2554); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_71.add(char_literal146);
++
 +
 +					// AST REWRITE
 +					// elements: 
@@ -32909,8 +33023,9 @@
 +					state._fsp--;
 +					if (state.failed) return retval;
 +					if ( state.backtracking==0 ) stream_rewrite_alternative.add(last.getTree());
++
 +					// AST REWRITE
-+					// elements: predicated, rew, rew2, preds, last
++					// elements: last, predicated, preds, rew, rew2
 +					// token labels: rew2
 +					// rule labels: last, retval
 +					// token list labels: rew, preds
@@ -32928,7 +33043,7 @@
 +					// 357:9: -> ( ^( $rew $preds $predicated) )* ^( $rew2 $last)
 +					{
 +						// org/antlr/grammar/v3/ANTLRv3.g:357:12: ( ^( $rew $preds $predicated) )*
-+						while ( stream_predicated.hasNext()||stream_rew.hasNext()||stream_preds.hasNext() ) {
++						while ( stream_predicated.hasNext()||stream_preds.hasNext()||stream_rew.hasNext() ) {
 +							// org/antlr/grammar/v3/ANTLRv3.g:357:12: ^( $rew $preds $predicated)
 +							{
 +							CommonTree root_1 = (CommonTree)adaptor.nil();
@@ -32940,8 +33055,8 @@
 +
 +						}
 +						stream_predicated.reset();
-+						stream_rew.reset();
 +						stream_preds.reset();
++						stream_rew.reset();
 +
 +						// org/antlr/grammar/v3/ANTLRv3.g:357:40: ^( $rew2 $last)
 +						{
@@ -33376,6 +33491,7 @@
 +				case 3 :
 +					// org/antlr/grammar/v3/ANTLRv3.g:365:29: 
 +					{
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -33468,6 +33584,7 @@
 +			if ( state.backtracking==0 ) stream_rewrite_tree_alternative.add(rewrite_tree_alternative149.getTree());
 +			char_literal150=(Token)match(input,69,FOLLOW_69_in_rewrite_tree_block2705); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_69.add(char_literal150);
++
 +
 +			// AST REWRITE
 +			// elements: rewrite_tree_alternative
@@ -33573,6 +33690,7 @@
 +				}
 +				cnt74++;
 +			}
++
 +
 +			// AST REWRITE
 +			// elements: rewrite_tree_element
@@ -33943,8 +34061,9 @@
 +					state._fsp--;
 +					if (state.failed) return retval;
 +					if ( state.backtracking==0 ) stream_ebnfSuffix.add(ebnfSuffix154.getTree());
++
 +					// AST REWRITE
-+					// elements: rewrite_tree_atom, ebnfSuffix
++					// elements: ebnfSuffix, rewrite_tree_atom
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -34023,6 +34142,7 @@
 +							state._fsp--;
 +							if (state.failed) return retval;
 +							if ( state.backtracking==0 ) stream_ebnfSuffix.add(ebnfSuffix156.getTree());
++
 +							// AST REWRITE
 +							// elements: ebnfSuffix, rewrite_tree
 +							// token labels: 
@@ -34072,6 +34192,7 @@
 +						case 2 :
 +							// org/antlr/grammar/v3/ANTLRv3.g:384:5: 
 +							{
++
 +							// AST REWRITE
 +							// elements: rewrite_tree
 +							// token labels: 
@@ -34251,8 +34372,9 @@
 +
 +					}
 +
++
 +					// AST REWRITE
-+					// elements: TOKEN_REF, ARG_ACTION
++					// elements: ARG_ACTION, TOKEN_REF
 +					// token labels: 
 +					// rule labels: retval
 +					// token list labels: 
@@ -34325,6 +34447,7 @@
 +					state._fsp--;
 +					if (state.failed) return retval;
 +					if ( state.backtracking==0 ) stream_id.add(id163.getTree());
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -34422,6 +34545,7 @@
 +			state._fsp--;
 +			if (state.failed) return retval;
 +			if ( state.backtracking==0 ) stream_ebnfSuffix.add(ebnfSuffix166.getTree());
++
 +			// AST REWRITE
 +			// elements: ebnfSuffix, rewrite_tree_block
 +			// token labels: 
@@ -34543,6 +34667,7 @@
 +
 +			char_literal170=(Token)match(input,69,FOLLOW_69_in_rewrite_tree2985); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_69.add(char_literal170);
++
 +
 +			// AST REWRITE
 +			// elements: rewrite_tree_atom, rewrite_tree_element
@@ -34696,8 +34821,9 @@
 +
 +					}
 +
++
 +					// AST REWRITE
-+					// elements: rewrite_template_args, id, str
++					// elements: id, rewrite_template_args, str
 +					// token labels: str
 +					// rule labels: retval
 +					// token list labels: 
@@ -34840,6 +34966,7 @@
 +			char_literal179=(Token)match(input,69,FOLLOW_69_in_rewrite_template_ref3105); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_69.add(char_literal179);
 +
++
 +			// AST REWRITE
 +			// elements: id, rewrite_template_args
 +			// token labels: 
@@ -34946,6 +35073,7 @@
 +			if ( state.backtracking==0 ) stream_rewrite_template_args.add(rewrite_template_args183.getTree());
 +			char_literal184=(Token)match(input,69,FOLLOW_69_in_rewrite_indirect_template_head3143); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_69.add(char_literal184);
++
 +
 +			// AST REWRITE
 +			// elements: ACTION, rewrite_template_args
@@ -35077,6 +35205,7 @@
 +						}
 +					}
 +
++
 +					// AST REWRITE
 +					// elements: rewrite_template_arg
 +					// token labels: 
@@ -35117,6 +35246,7 @@
 +				case 2 :
 +					// org/antlr/grammar/v3/ANTLRv3.g:456:4: 
 +					{
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -35202,8 +35332,9 @@
 +			ACTION190=(Token)match(input,ACTION,FOLLOW_ACTION_in_rewrite_template_arg3209); if (state.failed) return retval; 
 +			if ( state.backtracking==0 ) stream_ACTION.add(ACTION190);
 +
++
 +			// AST REWRITE
-+			// elements: id, ACTION
++			// elements: ACTION, id
 +			// token labels: 
 +			// rule labels: retval
 +			// token list labels: 
@@ -35390,6 +35521,7 @@
 +					TOKEN_REF194=(Token)match(input,TOKEN_REF,FOLLOW_TOKEN_REF_in_id3247); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_TOKEN_REF.add(TOKEN_REF194);
 +
++
 +					// AST REWRITE
 +					// elements: 
 +					// token labels: 
@@ -35418,6 +35550,7 @@
 +					{
 +					RULE_REF195=(Token)match(input,RULE_REF,FOLLOW_RULE_REF_in_id3257); if (state.failed) return retval; 
 +					if ( state.backtracking==0 ) stream_RULE_REF.add(RULE_REF195);
++
 +
 +					// AST REWRITE
 +					// elements: 
@@ -35835,9 +35968,9 @@
 +	public static final BitSet FOLLOW_rewrite_tree_alternative_in_synpred2_ANTLRv32659 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Tree.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Tree.java	2019-04-04 17:22:25.480181488 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/ANTLRv3Tree.java	2023-09-16 07:24:38.943518349 +0200
 @@ -0,0 +1,3771 @@
-+// $ANTLR 3.5.2 org/antlr/grammar/v3/ANTLRv3Tree.g 2019-04-04 15:18:50
++// $ANTLR 3.5.3 org/antlr/grammar/v3/ANTLRv3Tree.g 2023-09-15 00:00:00
 +
 +package org.antlr.grammar.v3;
 +
@@ -39609,9 +39742,9 @@
 +	public static final BitSet FOLLOW_ID_in_qid1436 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000200L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/AssignTokenTypesWalker.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/AssignTokenTypesWalker.java	2019-04-04 17:22:25.480181488 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/AssignTokenTypesWalker.java	2023-09-16 07:24:38.693523378 +0200
 @@ -0,0 +1,2936 @@
-+// $ANTLR 3.5.2 org/antlr/grammar/v3/AssignTokenTypesWalker.g 2019-04-04 15:18:50
++// $ANTLR 3.5.3 org/antlr/grammar/v3/AssignTokenTypesWalker.g 2023-09-15 00:00:00
 +
 +package org.antlr.grammar.v3;
 +
@@ -42548,9 +42681,9 @@
 +	public static final BitSet FOLLOW_atom_in_atom1152 = new BitSet(new long[]{0x0000000000000008L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/CodeGenTreeWalker.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/CodeGenTreeWalker.java	2019-04-04 17:22:25.476181469 +0200
-@@ -0,0 +1,5303 @@
-+// $ANTLR 3.5.2 org/antlr/grammar/v3/CodeGenTreeWalker.g 2019-04-04 15:18:50
++++ tool/src/main/java/org/antlr/grammar/v3/CodeGenTreeWalker.java	2023-09-16 07:24:38.350196951 +0200
+@@ -0,0 +1,5305 @@
++// $ANTLR 3.5.3 org/antlr/grammar/v3/CodeGenTreeWalker.g 2023-09-15 00:00:00
 +
 +package org.antlr.grammar.v3;
 +
@@ -42562,6 +42695,7 @@
 +import java.util.HashSet;
 +import java.util.Set;
 +import java.util.Collection;
++import java.util.Collections;
 +import org.antlr.runtime.BitSet;
 +import org.antlr.runtime.DFA;
 +import org.stringtemplate.v4.ST;
@@ -42945,6 +43079,7 @@
 +	        }
 +	        labels.add( label );
 +	    }
++	    Collections.sort(labels); // ensure reproducible order
 +	    return labels;
 +	}
 +
@@ -42957,7 +43092,7 @@
 +
 +
 +	// $ANTLR start "grammar_"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:298:1: public grammar_[Grammar g,\n\t\tST recognizerST,\n\t\tST outputFileST,\n\t\tST headerFileST] : ( ^( LEXER_GRAMMAR grammarSpec ) | ^( PARSER_GRAMMAR grammarSpec ) | ^( TREE_GRAMMAR grammarSpec ) | ^( COMBINED_GRAMMAR grammarSpec ) ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:300:1: public grammar_[Grammar g,\n\t\tST recognizerST,\n\t\tST outputFileST,\n\t\tST headerFileST] : ( ^( LEXER_GRAMMAR grammarSpec ) | ^( PARSER_GRAMMAR grammarSpec ) | ^( TREE_GRAMMAR grammarSpec ) | ^( COMBINED_GRAMMAR grammarSpec ) ) ;
 +	public final void grammar_(Grammar g, ST recognizerST, ST outputFileST, ST headerFileST) throws RecognitionException {
 +
 +			if ( state.backtracking == 0 )
@@ -42989,10 +43124,10 @@
 +			}
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:332:2: ( ( ^( LEXER_GRAMMAR grammarSpec ) | ^( PARSER_GRAMMAR grammarSpec ) | ^( TREE_GRAMMAR grammarSpec ) | ^( COMBINED_GRAMMAR grammarSpec ) ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:332:4: ( ^( LEXER_GRAMMAR grammarSpec ) | ^( PARSER_GRAMMAR grammarSpec ) | ^( TREE_GRAMMAR grammarSpec ) | ^( COMBINED_GRAMMAR grammarSpec ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:334:2: ( ( ^( LEXER_GRAMMAR grammarSpec ) | ^( PARSER_GRAMMAR grammarSpec ) | ^( TREE_GRAMMAR grammarSpec ) | ^( COMBINED_GRAMMAR grammarSpec ) ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:334:4: ( ^( LEXER_GRAMMAR grammarSpec ) | ^( PARSER_GRAMMAR grammarSpec ) | ^( TREE_GRAMMAR grammarSpec ) | ^( COMBINED_GRAMMAR grammarSpec ) )
 +			{
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:332:4: ( ^( LEXER_GRAMMAR grammarSpec ) | ^( PARSER_GRAMMAR grammarSpec ) | ^( TREE_GRAMMAR grammarSpec ) | ^( COMBINED_GRAMMAR grammarSpec ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:334:4: ( ^( LEXER_GRAMMAR grammarSpec ) | ^( PARSER_GRAMMAR grammarSpec ) | ^( TREE_GRAMMAR grammarSpec ) | ^( COMBINED_GRAMMAR grammarSpec ) )
 +			int alt1=4;
 +			switch ( input.LA(1) ) {
 +			case LEXER_GRAMMAR:
@@ -43023,7 +43158,7 @@
 +			}
 +			switch (alt1) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:332:6: ^( LEXER_GRAMMAR grammarSpec )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:334:6: ^( LEXER_GRAMMAR grammarSpec )
 +					{
 +					match(input,LEXER_GRAMMAR,FOLLOW_LEXER_GRAMMAR_in_grammar_67); if (state.failed) return;
 +					match(input, Token.DOWN, null); if (state.failed) return;
@@ -43036,7 +43171,7 @@
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:333:5: ^( PARSER_GRAMMAR grammarSpec )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:335:5: ^( PARSER_GRAMMAR grammarSpec )
 +					{
 +					match(input,PARSER_GRAMMAR,FOLLOW_PARSER_GRAMMAR_in_grammar_79); if (state.failed) return;
 +					match(input, Token.DOWN, null); if (state.failed) return;
@@ -43049,7 +43184,7 @@
 +					}
 +					break;
 +				case 3 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:334:5: ^( TREE_GRAMMAR grammarSpec )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:336:5: ^( TREE_GRAMMAR grammarSpec )
 +					{
 +					match(input,TREE_GRAMMAR,FOLLOW_TREE_GRAMMAR_in_grammar_91); if (state.failed) return;
 +					match(input, Token.DOWN, null); if (state.failed) return;
@@ -43062,7 +43197,7 @@
 +					}
 +					break;
 +				case 4 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:335:5: ^( COMBINED_GRAMMAR grammarSpec )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:337:5: ^( COMBINED_GRAMMAR grammarSpec )
 +					{
 +					match(input,COMBINED_GRAMMAR,FOLLOW_COMBINED_GRAMMAR_in_grammar_103); if (state.failed) return;
 +					match(input, Token.DOWN, null); if (state.failed) return;
@@ -43093,16 +43228,16 @@
 +
 +
 +	// $ANTLR start "attrScope"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:339:1: attrScope : ^( 'scope' ID ( ^( AMPERSAND ( . )* ) )* ACTION ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:341:1: attrScope : ^( 'scope' ID ( ^( AMPERSAND ( . )* ) )* ACTION ) ;
 +	public final void attrScope() throws RecognitionException {
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:340:2: ( ^( 'scope' ID ( ^( AMPERSAND ( . )* ) )* ACTION ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:340:4: ^( 'scope' ID ( ^( AMPERSAND ( . )* ) )* ACTION )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:342:2: ( ^( 'scope' ID ( ^( AMPERSAND ( . )* ) )* ACTION ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:342:4: ^( 'scope' ID ( ^( AMPERSAND ( . )* ) )* ACTION )
 +			{
 +			match(input,SCOPE,FOLLOW_SCOPE_in_attrScope124); if (state.failed) return;
 +			match(input, Token.DOWN, null); if (state.failed) return;
 +			match(input,ID,FOLLOW_ID_in_attrScope126); if (state.failed) return;
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:340:18: ( ^( AMPERSAND ( . )* ) )*
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:342:18: ( ^( AMPERSAND ( . )* ) )*
 +			loop3:
 +			while (true) {
 +				int alt3=2;
@@ -43113,12 +43248,12 @@
 +
 +				switch (alt3) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:340:20: ^( AMPERSAND ( . )* )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:342:20: ^( AMPERSAND ( . )* )
 +					{
 +					match(input,AMPERSAND,FOLLOW_AMPERSAND_in_attrScope131); if (state.failed) return;
 +					if ( input.LA(1)==Token.DOWN ) {
 +						match(input, Token.DOWN, null); if (state.failed) return;
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:340:32: ( . )*
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:342:32: ( . )*
 +						loop2:
 +						while (true) {
 +							int alt2=2;
@@ -43132,7 +43267,7 @@
 +
 +							switch (alt2) {
 +							case 1 :
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:340:32: .
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:342:32: .
 +								{
 +								matchAny(input); if (state.failed) return;
 +								}
@@ -43173,17 +43308,17 @@
 +
 +
 +	// $ANTLR start "grammarSpec"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:343:1: grammarSpec : name= ID (cmt= DOC_COMMENT )? ( ^( OPTIONS ( . )* ) )? ( ^( IMPORT ( . )* ) )? ( ^( TOKENS ( . )* ) )? ( attrScope )* ( ^( AMPERSAND ( . )* ) )* rules[recognizerST] ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:345:1: grammarSpec : name= ID (cmt= DOC_COMMENT )? ( ^( OPTIONS ( . )* ) )? ( ^( IMPORT ( . )* ) )? ( ^( TOKENS ( . )* ) )? ( attrScope )* ( ^( AMPERSAND ( . )* ) )* rules[recognizerST] ;
 +	public final void grammarSpec() throws RecognitionException {
 +		GrammarAST name=null;
 +		GrammarAST cmt=null;
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:344:2: (name= ID (cmt= DOC_COMMENT )? ( ^( OPTIONS ( . )* ) )? ( ^( IMPORT ( . )* ) )? ( ^( TOKENS ( . )* ) )? ( attrScope )* ( ^( AMPERSAND ( . )* ) )* rules[recognizerST] )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:344:6: name= ID (cmt= DOC_COMMENT )? ( ^( OPTIONS ( . )* ) )? ( ^( IMPORT ( . )* ) )? ( ^( TOKENS ( . )* ) )? ( attrScope )* ( ^( AMPERSAND ( . )* ) )* rules[recognizerST]
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:346:2: (name= ID (cmt= DOC_COMMENT )? ( ^( OPTIONS ( . )* ) )? ( ^( IMPORT ( . )* ) )? ( ^( TOKENS ( . )* ) )? ( attrScope )* ( ^( AMPERSAND ( . )* ) )* rules[recognizerST] )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:346:6: name= ID (cmt= DOC_COMMENT )? ( ^( OPTIONS ( . )* ) )? ( ^( IMPORT ( . )* ) )? ( ^( TOKENS ( . )* ) )? ( attrScope )* ( ^( AMPERSAND ( . )* ) )* rules[recognizerST]
 +			{
 +			name=(GrammarAST)match(input,ID,FOLLOW_ID_in_grammarSpec157); if (state.failed) return;
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:345:3: (cmt= DOC_COMMENT )?
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:347:3: (cmt= DOC_COMMENT )?
 +			int alt4=2;
 +			int LA4_0 = input.LA(1);
 +			if ( (LA4_0==DOC_COMMENT) ) {
@@ -43191,7 +43326,7 @@
 +			}
 +			switch (alt4) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:345:5: cmt= DOC_COMMENT
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:347:5: cmt= DOC_COMMENT
 +					{
 +					cmt=(GrammarAST)match(input,DOC_COMMENT,FOLLOW_DOC_COMMENT_in_grammarSpec165); if (state.failed) return;
 +					if ( state.backtracking==0 ) {
@@ -43210,7 +43345,7 @@
 +						recognizerST.add("scopes", grammar.getGlobalScopes());
 +						headerFileST.add("scopes", grammar.getGlobalScopes());
 +					}
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:358:3: ( ^( OPTIONS ( . )* ) )?
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:360:3: ( ^( OPTIONS ( . )* ) )?
 +			int alt6=2;
 +			int LA6_0 = input.LA(1);
 +			if ( (LA6_0==OPTIONS) ) {
@@ -43218,12 +43353,12 @@
 +			}
 +			switch (alt6) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:358:5: ^( OPTIONS ( . )* )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:360:5: ^( OPTIONS ( . )* )
 +					{
 +					match(input,OPTIONS,FOLLOW_OPTIONS_in_grammarSpec186); if (state.failed) return;
 +					if ( input.LA(1)==Token.DOWN ) {
 +						match(input, Token.DOWN, null); if (state.failed) return;
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:358:15: ( . )*
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:360:15: ( . )*
 +						loop5:
 +						while (true) {
 +							int alt5=2;
@@ -43237,7 +43372,7 @@
 +
 +							switch (alt5) {
 +							case 1 :
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:358:15: .
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:360:15: .
 +								{
 +								matchAny(input); if (state.failed) return;
 +								}
@@ -43256,7 +43391,7 @@
 +
 +			}
 +
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:359:3: ( ^( IMPORT ( . )* ) )?
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:361:3: ( ^( IMPORT ( . )* ) )?
 +			int alt8=2;
 +			int LA8_0 = input.LA(1);
 +			if ( (LA8_0==IMPORT) ) {
@@ -43264,12 +43399,12 @@
 +			}
 +			switch (alt8) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:359:5: ^( IMPORT ( . )* )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:361:5: ^( IMPORT ( . )* )
 +					{
 +					match(input,IMPORT,FOLLOW_IMPORT_in_grammarSpec200); if (state.failed) return;
 +					if ( input.LA(1)==Token.DOWN ) {
 +						match(input, Token.DOWN, null); if (state.failed) return;
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:359:14: ( . )*
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:361:14: ( . )*
 +						loop7:
 +						while (true) {
 +							int alt7=2;
@@ -43283,7 +43418,7 @@
 +
 +							switch (alt7) {
 +							case 1 :
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:359:14: .
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:361:14: .
 +								{
 +								matchAny(input); if (state.failed) return;
 +								}
@@ -43302,7 +43437,7 @@
 +
 +			}
 +
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:360:3: ( ^( TOKENS ( . )* ) )?
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:362:3: ( ^( TOKENS ( . )* ) )?
 +			int alt10=2;
 +			int LA10_0 = input.LA(1);
 +			if ( (LA10_0==TOKENS) ) {
@@ -43310,12 +43445,12 @@
 +			}
 +			switch (alt10) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:360:5: ^( TOKENS ( . )* )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:362:5: ^( TOKENS ( . )* )
 +					{
 +					match(input,TOKENS,FOLLOW_TOKENS_in_grammarSpec214); if (state.failed) return;
 +					if ( input.LA(1)==Token.DOWN ) {
 +						match(input, Token.DOWN, null); if (state.failed) return;
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:360:14: ( . )*
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:362:14: ( . )*
 +						loop9:
 +						while (true) {
 +							int alt9=2;
@@ -43329,7 +43464,7 @@
 +
 +							switch (alt9) {
 +							case 1 :
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:360:14: .
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:362:14: .
 +								{
 +								matchAny(input); if (state.failed) return;
 +								}
@@ -43348,7 +43483,7 @@
 +
 +			}
 +
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:361:3: ( attrScope )*
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:363:3: ( attrScope )*
 +			loop11:
 +			while (true) {
 +				int alt11=2;
@@ -43359,7 +43494,7 @@
 +
 +				switch (alt11) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:361:4: attrScope
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:363:4: attrScope
 +					{
 +					pushFollow(FOLLOW_attrScope_in_grammarSpec226);
 +					attrScope();
@@ -43373,7 +43508,7 @@
 +				}
 +			}
 +
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:362:3: ( ^( AMPERSAND ( . )* ) )*
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:364:3: ( ^( AMPERSAND ( . )* ) )*
 +			loop13:
 +			while (true) {
 +				int alt13=2;
@@ -43384,12 +43519,12 @@
 +
 +				switch (alt13) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:362:5: ^( AMPERSAND ( . )* )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:364:5: ^( AMPERSAND ( . )* )
 +					{
 +					match(input,AMPERSAND,FOLLOW_AMPERSAND_in_grammarSpec235); if (state.failed) return;
 +					if ( input.LA(1)==Token.DOWN ) {
 +						match(input, Token.DOWN, null); if (state.failed) return;
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:362:17: ( . )*
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:364:17: ( . )*
 +						loop12:
 +						while (true) {
 +							int alt12=2;
@@ -43403,7 +43538,7 @@
 +
 +							switch (alt12) {
 +							case 1 :
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:362:17: .
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:364:17: .
 +								{
 +								matchAny(input); if (state.failed) return;
 +								}
@@ -43445,7 +43580,7 @@
 +
 +
 +	// $ANTLR start "rules"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:366:1: rules[ST recognizerST] : ( ( options {k=1; } :{...}? =>rST= rule | ^( RULE ( . )* ) | ^( PREC_RULE ( . )* ) ) )+ ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:368:1: rules[ST recognizerST] : ( ( options {k=1; } :{...}? =>rST= rule | ^( RULE ( . )* ) | ^( PREC_RULE ( . )* ) ) )+ ;
 +	public final void rules(ST recognizerST) throws RecognitionException {
 +		TreeRuleReturnScope rST =null;
 +
@@ -43454,10 +43589,10 @@
 +			boolean generated = grammar.generateMethodForRule(ruleName);
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:372:2: ( ( ( options {k=1; } :{...}? =>rST= rule | ^( RULE ( . )* ) | ^( PREC_RULE ( . )* ) ) )+ )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:372:4: ( ( options {k=1; } :{...}? =>rST= rule | ^( RULE ( . )* ) | ^( PREC_RULE ( . )* ) ) )+
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:374:2: ( ( ( options {k=1; } :{...}? =>rST= rule | ^( RULE ( . )* ) | ^( PREC_RULE ( . )* ) ) )+ )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:374:4: ( ( options {k=1; } :{...}? =>rST= rule | ^( RULE ( . )* ) | ^( PREC_RULE ( . )* ) ) )+
 +			{
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:372:4: ( ( options {k=1; } :{...}? =>rST= rule | ^( RULE ( . )* ) | ^( PREC_RULE ( . )* ) ) )+
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:374:4: ( ( options {k=1; } :{...}? =>rST= rule | ^( RULE ( . )* ) | ^( PREC_RULE ( . )* ) ) )+
 +			int cnt17=0;
 +			loop17:
 +			while (true) {
@@ -43469,9 +43604,9 @@
 +
 +				switch (alt17) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:372:6: ( options {k=1; } :{...}? =>rST= rule | ^( RULE ( . )* ) | ^( PREC_RULE ( . )* ) )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:374:6: ( options {k=1; } :{...}? =>rST= rule | ^( RULE ( . )* ) | ^( PREC_RULE ( . )* ) )
 +					{
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:372:6: ( options {k=1; } :{...}? =>rST= rule | ^( RULE ( . )* ) | ^( PREC_RULE ( . )* ) )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:374:6: ( options {k=1; } :{...}? =>rST= rule | ^( RULE ( . )* ) | ^( PREC_RULE ( . )* ) )
 +					int alt16=3;
 +					int LA16_0 = input.LA(1);
 +					if ( (LA16_0==RULE) ) {
@@ -43497,7 +43632,7 @@
 +
 +					switch (alt16) {
 +						case 1 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:373:5: {...}? =>rST= rule
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:375:5: {...}? =>rST= rule
 +							{
 +							if ( !((generated)) ) {
 +								if (state.backtracking>0) {state.failed=true; return;}
@@ -43518,12 +43653,12 @@
 +							}
 +							break;
 +						case 2 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:383:6: ^( RULE ( . )* )
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:385:6: ^( RULE ( . )* )
 +							{
 +							match(input,RULE,FOLLOW_RULE_in_rules305); if (state.failed) return;
 +							if ( input.LA(1)==Token.DOWN ) {
 +								match(input, Token.DOWN, null); if (state.failed) return;
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:383:13: ( . )*
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:385:13: ( . )*
 +								loop14:
 +								while (true) {
 +									int alt14=2;
@@ -43537,7 +43672,7 @@
 +
 +									switch (alt14) {
 +									case 1 :
-+										// org/antlr/grammar/v3/CodeGenTreeWalker.g:383:13: .
++										// org/antlr/grammar/v3/CodeGenTreeWalker.g:385:13: .
 +										{
 +										matchAny(input); if (state.failed) return;
 +										}
@@ -43554,12 +43689,12 @@
 +							}
 +							break;
 +						case 3 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:384:6: ^( PREC_RULE ( . )* )
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:386:6: ^( PREC_RULE ( . )* )
 +							{
 +							match(input,PREC_RULE,FOLLOW_PREC_RULE_in_rules317); if (state.failed) return;
 +							if ( input.LA(1)==Token.DOWN ) {
 +								match(input, Token.DOWN, null); if (state.failed) return;
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:384:18: ( . )*
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:386:18: ( . )*
 +								loop15:
 +								while (true) {
 +									int alt15=2;
@@ -43573,7 +43708,7 @@
 +
 +									switch (alt15) {
 +									case 1 :
-+										// org/antlr/grammar/v3/CodeGenTreeWalker.g:384:18: .
++										// org/antlr/grammar/v3/CodeGenTreeWalker.g:386:18: .
 +										{
 +										matchAny(input); if (state.failed) return;
 +										}
@@ -43632,7 +43767,7 @@
 +
 +
 +	// $ANTLR start "rule"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:397:1: rule returns [ST code=null] : ^( RULE id= ID (mod= modifier )? ^( ARG ( ARG_ACTION )? ) ^( RET ( ARG_ACTION )? ) ( throwsSpec )? ( ^( OPTIONS ( . )* ) )? ( ruleScopeSpec )? ( ^( AMPERSAND ( . )* ) )* b= block[\"ruleBlock\", dfa, null] ( exceptionGroup[$code] )? EOR ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:399:1: rule returns [ST code=null] : ^( RULE id= ID (mod= modifier )? ^( ARG ( ARG_ACTION )? ) ^( RET ( ARG_ACTION )? ) ( throwsSpec )? ( ^( OPTIONS ( . )* ) )? ( ruleScopeSpec )? ( ^( AMPERSAND ( . )* ) )* b= block[\"ruleBlock\", dfa, null] ( exceptionGroup[$code] )? EOR ) ;
 +	public final CodeGenTreeWalker.rule_return rule() throws RecognitionException {
 +		CodeGenTreeWalker.rule_return retval = new CodeGenTreeWalker.rule_return();
 +		retval.start = input.LT(1);
@@ -43663,14 +43798,14 @@
 +			String description = "";
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:420:2: ( ^( RULE id= ID (mod= modifier )? ^( ARG ( ARG_ACTION )? ) ^( RET ( ARG_ACTION )? ) ( throwsSpec )? ( ^( OPTIONS ( . )* ) )? ( ruleScopeSpec )? ( ^( AMPERSAND ( . )* ) )* b= block[\"ruleBlock\", dfa, null] ( exceptionGroup[$code] )? EOR ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:420:4: ^( RULE id= ID (mod= modifier )? ^( ARG ( ARG_ACTION )? ) ^( RET ( ARG_ACTION )? ) ( throwsSpec )? ( ^( OPTIONS ( . )* ) )? ( ruleScopeSpec )? ( ^( AMPERSAND ( . )* ) )* b= block[\"ruleBlock\", dfa, null] ( exceptionGroup[$code] )? EOR )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:422:2: ( ^( RULE id= ID (mod= modifier )? ^( ARG ( ARG_ACTION )? ) ^( RET ( ARG_ACTION )? ) ( throwsSpec )? ( ^( OPTIONS ( . )* ) )? ( ruleScopeSpec )? ( ^( AMPERSAND ( . )* ) )* b= block[\"ruleBlock\", dfa, null] ( exceptionGroup[$code] )? EOR ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:422:4: ^( RULE id= ID (mod= modifier )? ^( ARG ( ARG_ACTION )? ) ^( RET ( ARG_ACTION )? ) ( throwsSpec )? ( ^( OPTIONS ( . )* ) )? ( ruleScopeSpec )? ( ^( AMPERSAND ( . )* ) )* b= block[\"ruleBlock\", dfa, null] ( exceptionGroup[$code] )? EOR )
 +			{
 +			match(input,RULE,FOLLOW_RULE_in_rule359); if (state.failed) return retval;
 +			match(input, Token.DOWN, null); if (state.failed) return retval;
 +			id=(GrammarAST)match(input,ID,FOLLOW_ID_in_rule363); if (state.failed) return retval;
 +			if ( state.backtracking==0 ) {assert currentRuleName == (id!=null?id.getText():null);}
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:422:4: (mod= modifier )?
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:424:4: (mod= modifier )?
 +			int alt18=2;
 +			int LA18_0 = input.LA(1);
 +			if ( (LA18_0==FRAGMENT||(LA18_0 >= PRIVATE && LA18_0 <= PUBLIC)) ) {
@@ -43678,7 +43813,7 @@
 +			}
 +			switch (alt18) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:422:5: mod= modifier
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:424:5: mod= modifier
 +					{
 +					pushFollow(FOLLOW_modifier_in_rule376);
 +					mod=modifier();
@@ -43692,7 +43827,7 @@
 +			match(input,ARG,FOLLOW_ARG_in_rule384); if (state.failed) return retval;
 +			if ( input.LA(1)==Token.DOWN ) {
 +				match(input, Token.DOWN, null); if (state.failed) return retval;
-+				// org/antlr/grammar/v3/CodeGenTreeWalker.g:423:10: ( ARG_ACTION )?
++				// org/antlr/grammar/v3/CodeGenTreeWalker.g:425:10: ( ARG_ACTION )?
 +				int alt19=2;
 +				int LA19_0 = input.LA(1);
 +				if ( (LA19_0==ARG_ACTION) ) {
@@ -43700,7 +43835,7 @@
 +				}
 +				switch (alt19) {
 +					case 1 :
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:423:11: ARG_ACTION
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:425:11: ARG_ACTION
 +						{
 +						match(input,ARG_ACTION,FOLLOW_ARG_ACTION_in_rule387); if (state.failed) return retval;
 +						}
@@ -43714,7 +43849,7 @@
 +			match(input,RET,FOLLOW_RET_in_rule396); if (state.failed) return retval;
 +			if ( input.LA(1)==Token.DOWN ) {
 +				match(input, Token.DOWN, null); if (state.failed) return retval;
-+				// org/antlr/grammar/v3/CodeGenTreeWalker.g:424:10: ( ARG_ACTION )?
++				// org/antlr/grammar/v3/CodeGenTreeWalker.g:426:10: ( ARG_ACTION )?
 +				int alt20=2;
 +				int LA20_0 = input.LA(1);
 +				if ( (LA20_0==ARG_ACTION) ) {
@@ -43722,7 +43857,7 @@
 +				}
 +				switch (alt20) {
 +					case 1 :
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:424:11: ARG_ACTION
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:426:11: ARG_ACTION
 +						{
 +						match(input,ARG_ACTION,FOLLOW_ARG_ACTION_in_rule399); if (state.failed) return retval;
 +						}
@@ -43733,7 +43868,7 @@
 +				match(input, Token.UP, null); if (state.failed) return retval;
 +			}
 +
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:425:4: ( throwsSpec )?
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:427:4: ( throwsSpec )?
 +			int alt21=2;
 +			int LA21_0 = input.LA(1);
 +			if ( (LA21_0==THROWS) ) {
@@ -43741,7 +43876,7 @@
 +			}
 +			switch (alt21) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:425:5: throwsSpec
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:427:5: throwsSpec
 +					{
 +					pushFollow(FOLLOW_throwsSpec_in_rule408);
 +					throwsSpec();
@@ -43752,7 +43887,7 @@
 +
 +			}
 +
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:426:4: ( ^( OPTIONS ( . )* ) )?
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:428:4: ( ^( OPTIONS ( . )* ) )?
 +			int alt23=2;
 +			int LA23_0 = input.LA(1);
 +			if ( (LA23_0==OPTIONS) ) {
@@ -43760,12 +43895,12 @@
 +			}
 +			switch (alt23) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:426:6: ^( OPTIONS ( . )* )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:428:6: ^( OPTIONS ( . )* )
 +					{
 +					match(input,OPTIONS,FOLLOW_OPTIONS_in_rule418); if (state.failed) return retval;
 +					if ( input.LA(1)==Token.DOWN ) {
 +						match(input, Token.DOWN, null); if (state.failed) return retval;
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:426:16: ( . )*
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:428:16: ( . )*
 +						loop22:
 +						while (true) {
 +							int alt22=2;
@@ -43779,7 +43914,7 @@
 +
 +							switch (alt22) {
 +							case 1 :
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:426:16: .
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:428:16: .
 +								{
 +								matchAny(input); if (state.failed) return retval;
 +								}
@@ -43798,7 +43933,7 @@
 +
 +			}
 +
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:427:4: ( ruleScopeSpec )?
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:429:4: ( ruleScopeSpec )?
 +			int alt24=2;
 +			int LA24_0 = input.LA(1);
 +			if ( (LA24_0==SCOPE) ) {
@@ -43806,7 +43941,7 @@
 +			}
 +			switch (alt24) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:427:5: ruleScopeSpec
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:429:5: ruleScopeSpec
 +					{
 +					pushFollow(FOLLOW_ruleScopeSpec_in_rule431);
 +					ruleScopeSpec();
@@ -43817,7 +43952,7 @@
 +
 +			}
 +
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:428:4: ( ^( AMPERSAND ( . )* ) )*
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:430:4: ( ^( AMPERSAND ( . )* ) )*
 +			loop26:
 +			while (true) {
 +				int alt26=2;
@@ -43828,12 +43963,12 @@
 +
 +				switch (alt26) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:428:6: ^( AMPERSAND ( . )* )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:430:6: ^( AMPERSAND ( . )* )
 +					{
 +					match(input,AMPERSAND,FOLLOW_AMPERSAND_in_rule441); if (state.failed) return retval;
 +					if ( input.LA(1)==Token.DOWN ) {
 +						match(input, Token.DOWN, null); if (state.failed) return retval;
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:428:18: ( . )*
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:430:18: ( . )*
 +						loop25:
 +						while (true) {
 +							int alt25=2;
@@ -43847,7 +43982,7 @@
 +
 +							switch (alt25) {
 +							case 1 :
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:428:18: .
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:430:18: .
 +								{
 +								matchAny(input); if (state.failed) return retval;
 +								}
@@ -43922,7 +44057,7 @@
 +								retval.code.add("memoize", memo!=null && memo.equals("true"));
 +							}
 +						}
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:480:4: ( exceptionGroup[$code] )?
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:482:4: ( exceptionGroup[$code] )?
 +			int alt27=2;
 +			int LA27_0 = input.LA(1);
 +			if ( (LA27_0==CATCH||LA27_0==FINALLY) ) {
@@ -43930,7 +44065,7 @@
 +			}
 +			switch (alt27) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:480:5: exceptionGroup[$code]
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:482:5: exceptionGroup[$code]
 +					{
 +					pushFollow(FOLLOW_exceptionGroup_in_rule468);
 +					exceptionGroup(retval.code);
@@ -43994,13 +44129,13 @@
 +
 +
 +	// $ANTLR start "modifier"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:515:1: modifier : ( 'protected' | 'public' | 'private' | 'fragment' );
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:517:1: modifier : ( 'protected' | 'public' | 'private' | 'fragment' );
 +	public final CodeGenTreeWalker.modifier_return modifier() throws RecognitionException {
 +		CodeGenTreeWalker.modifier_return retval = new CodeGenTreeWalker.modifier_return();
 +		retval.start = input.LT(1);
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:516:2: ( 'protected' | 'public' | 'private' | 'fragment' )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:518:2: ( 'protected' | 'public' | 'private' | 'fragment' )
 +			// org/antlr/grammar/v3/CodeGenTreeWalker.g:
 +			{
 +			if ( input.LA(1)==FRAGMENT||(input.LA(1) >= PRIVATE && input.LA(1) <= PUBLIC) ) {
@@ -44030,15 +44165,15 @@
 +
 +
 +	// $ANTLR start "throwsSpec"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:522:1: throwsSpec : ^( 'throws' ( ID )+ ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:524:1: throwsSpec : ^( 'throws' ( ID )+ ) ;
 +	public final void throwsSpec() throws RecognitionException {
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:523:2: ( ^( 'throws' ( ID )+ ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:523:4: ^( 'throws' ( ID )+ )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:525:2: ( ^( 'throws' ( ID )+ ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:525:4: ^( 'throws' ( ID )+ )
 +			{
 +			match(input,THROWS,FOLLOW_THROWS_in_throwsSpec526); if (state.failed) return;
 +			match(input, Token.DOWN, null); if (state.failed) return;
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:523:15: ( ID )+
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:525:15: ( ID )+
 +			int cnt28=0;
 +			loop28:
 +			while (true) {
@@ -44050,7 +44185,7 @@
 +
 +				switch (alt28) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:523:15: ID
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:525:15: ID
 +					{
 +					match(input,ID,FOLLOW_ID_in_throwsSpec528); if (state.failed) return;
 +					}
@@ -44083,16 +44218,16 @@
 +
 +
 +	// $ANTLR start "ruleScopeSpec"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:526:1: ruleScopeSpec : ^( 'scope' ( ^( AMPERSAND ( . )* ) )* ( ACTION )? ( ID )* ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:528:1: ruleScopeSpec : ^( 'scope' ( ^( AMPERSAND ( . )* ) )* ( ACTION )? ( ID )* ) ;
 +	public final void ruleScopeSpec() throws RecognitionException {
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:527:2: ( ^( 'scope' ( ^( AMPERSAND ( . )* ) )* ( ACTION )? ( ID )* ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:527:4: ^( 'scope' ( ^( AMPERSAND ( . )* ) )* ( ACTION )? ( ID )* )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:529:2: ( ^( 'scope' ( ^( AMPERSAND ( . )* ) )* ( ACTION )? ( ID )* ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:529:4: ^( 'scope' ( ^( AMPERSAND ( . )* ) )* ( ACTION )? ( ID )* )
 +			{
 +			match(input,SCOPE,FOLLOW_SCOPE_in_ruleScopeSpec543); if (state.failed) return;
 +			if ( input.LA(1)==Token.DOWN ) {
 +				match(input, Token.DOWN, null); if (state.failed) return;
-+				// org/antlr/grammar/v3/CodeGenTreeWalker.g:527:15: ( ^( AMPERSAND ( . )* ) )*
++				// org/antlr/grammar/v3/CodeGenTreeWalker.g:529:15: ( ^( AMPERSAND ( . )* ) )*
 +				loop30:
 +				while (true) {
 +					int alt30=2;
@@ -44103,12 +44238,12 @@
 +
 +					switch (alt30) {
 +					case 1 :
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:527:17: ^( AMPERSAND ( . )* )
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:529:17: ^( AMPERSAND ( . )* )
 +						{
 +						match(input,AMPERSAND,FOLLOW_AMPERSAND_in_ruleScopeSpec548); if (state.failed) return;
 +						if ( input.LA(1)==Token.DOWN ) {
 +							match(input, Token.DOWN, null); if (state.failed) return;
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:527:29: ( . )*
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:529:29: ( . )*
 +							loop29:
 +							while (true) {
 +								int alt29=2;
@@ -44122,7 +44257,7 @@
 +
 +								switch (alt29) {
 +								case 1 :
-+									// org/antlr/grammar/v3/CodeGenTreeWalker.g:527:29: .
++									// org/antlr/grammar/v3/CodeGenTreeWalker.g:529:29: .
 +									{
 +									matchAny(input); if (state.failed) return;
 +									}
@@ -44144,7 +44279,7 @@
 +					}
 +				}
 +
-+				// org/antlr/grammar/v3/CodeGenTreeWalker.g:527:36: ( ACTION )?
++				// org/antlr/grammar/v3/CodeGenTreeWalker.g:529:36: ( ACTION )?
 +				int alt31=2;
 +				int LA31_0 = input.LA(1);
 +				if ( (LA31_0==ACTION) ) {
@@ -44152,7 +44287,7 @@
 +				}
 +				switch (alt31) {
 +					case 1 :
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:527:37: ACTION
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:529:37: ACTION
 +						{
 +						match(input,ACTION,FOLLOW_ACTION_in_ruleScopeSpec558); if (state.failed) return;
 +						}
@@ -44160,7 +44295,7 @@
 +
 +				}
 +
-+				// org/antlr/grammar/v3/CodeGenTreeWalker.g:527:46: ( ID )*
++				// org/antlr/grammar/v3/CodeGenTreeWalker.g:529:46: ( ID )*
 +				loop32:
 +				while (true) {
 +					int alt32=2;
@@ -44171,7 +44306,7 @@
 +
 +					switch (alt32) {
 +					case 1 :
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:527:48: ID
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:529:48: ID
 +						{
 +						match(input,ID,FOLLOW_ID_in_ruleScopeSpec564); if (state.failed) return;
 +						}
@@ -44205,7 +44340,7 @@
 +
 +
 +	// $ANTLR start "block"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:530:1: block[String blockTemplateName, org.antlr.analysis.DFA dfa, GrammarAST label] returns [ST code=null] options {k=1; } : ({...}? => setBlock | ^( BLOCK ( ^( OPTIONS ( . )* ) )? (alt= alternative[$label] rew= rewrite )+ EOB ) );
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:532:1: block[String blockTemplateName, org.antlr.analysis.DFA dfa, GrammarAST label] returns [ST code=null] options {k=1; } : ({...}? => setBlock | ^( BLOCK ( ^( OPTIONS ( . )* ) )? (alt= alternative[$label] rew= rewrite )+ EOB ) );
 +	public final CodeGenTreeWalker.block_return block(String blockTemplateName, org.antlr.analysis.DFA dfa, GrammarAST label) throws RecognitionException {
 +		CodeGenTreeWalker.block_return retval = new CodeGenTreeWalker.block_return();
 +		retval.start = input.LT(1);
@@ -44243,7 +44378,7 @@
 +			}
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:562:2: ({...}? => setBlock | ^( BLOCK ( ^( OPTIONS ( . )* ) )? (alt= alternative[$label] rew= rewrite )+ EOB ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:564:2: ({...}? => setBlock | ^( BLOCK ( ^( OPTIONS ( . )* ) )? (alt= alternative[$label] rew= rewrite )+ EOB ) )
 +			int alt36=2;
 +			int LA36_0 = input.LA(1);
 +			if ( (LA36_0==BLOCK) ) {
@@ -44266,7 +44401,7 @@
 +
 +			switch (alt36) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:562:4: {...}? => setBlock
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:564:4: {...}? => setBlock
 +					{
 +					if ( !((((GrammarAST)retval.start).getSetValue()!=null)) ) {
 +						if (state.backtracking>0) {state.failed=true; return retval;}
@@ -44282,11 +44417,11 @@
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:567:4: ^( BLOCK ( ^( OPTIONS ( . )* ) )? (alt= alternative[$label] rew= rewrite )+ EOB )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:569:4: ^( BLOCK ( ^( OPTIONS ( . )* ) )? (alt= alternative[$label] rew= rewrite )+ EOB )
 +					{
 +					match(input,BLOCK,FOLLOW_BLOCK_in_block618); if (state.failed) return retval;
 +					match(input, Token.DOWN, null); if (state.failed) return retval;
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:568:4: ( ^( OPTIONS ( . )* ) )?
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:570:4: ( ^( OPTIONS ( . )* ) )?
 +					int alt34=2;
 +					int LA34_0 = input.LA(1);
 +					if ( (LA34_0==OPTIONS) ) {
@@ -44294,12 +44429,12 @@
 +					}
 +					switch (alt34) {
 +						case 1 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:568:6: ^( OPTIONS ( . )* )
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:570:6: ^( OPTIONS ( . )* )
 +							{
 +							match(input,OPTIONS,FOLLOW_OPTIONS_in_block626); if (state.failed) return retval;
 +							if ( input.LA(1)==Token.DOWN ) {
 +								match(input, Token.DOWN, null); if (state.failed) return retval;
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:568:16: ( . )*
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:570:16: ( . )*
 +								loop33:
 +								while (true) {
 +									int alt33=2;
@@ -44313,7 +44448,7 @@
 +
 +									switch (alt33) {
 +									case 1 :
-+										// org/antlr/grammar/v3/CodeGenTreeWalker.g:568:16: .
++										// org/antlr/grammar/v3/CodeGenTreeWalker.g:570:16: .
 +										{
 +										matchAny(input); if (state.failed) return retval;
 +										}
@@ -44332,7 +44467,7 @@
 +
 +					}
 +
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:569:4: (alt= alternative[$label] rew= rewrite )+
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:571:4: (alt= alternative[$label] rew= rewrite )+
 +					int cnt35=0;
 +					loop35:
 +					while (true) {
@@ -44344,7 +44479,7 @@
 +
 +						switch (alt35) {
 +						case 1 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:569:6: alt= alternative[$label] rew= rewrite
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:571:6: alt= alternative[$label] rew= rewrite
 +							{
 +							pushFollow(FOLLOW_alternative_in_block643);
 +							alt=alternative(label);
@@ -44416,7 +44551,7 @@
 +
 +
 +	// $ANTLR start "setBlock"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:599:1: setBlock returns [ST code=null] : ^(s= BLOCK ( . )* ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:601:1: setBlock returns [ST code=null] : ^(s= BLOCK ( . )* ) ;
 +	public final CodeGenTreeWalker.setBlock_return setBlock() throws RecognitionException {
 +		CodeGenTreeWalker.setBlock_return retval = new CodeGenTreeWalker.setBlock_return();
 +		retval.start = input.LT(1);
@@ -44439,13 +44574,13 @@
 +			}
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:616:2: ( ^(s= BLOCK ( . )* ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:616:4: ^(s= BLOCK ( . )* )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:618:2: ( ^(s= BLOCK ( . )* ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:618:4: ^(s= BLOCK ( . )* )
 +			{
 +			s=(GrammarAST)match(input,BLOCK,FOLLOW_BLOCK_in_setBlock697); if (state.failed) return retval;
 +			if ( input.LA(1)==Token.DOWN ) {
 +				match(input, Token.DOWN, null); if (state.failed) return retval;
-+				// org/antlr/grammar/v3/CodeGenTreeWalker.g:616:14: ( . )*
++				// org/antlr/grammar/v3/CodeGenTreeWalker.g:618:14: ( . )*
 +				loop37:
 +				while (true) {
 +					int alt37=2;
@@ -44459,7 +44594,7 @@
 +
 +					switch (alt37) {
 +					case 1 :
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:616:14: .
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:618:14: .
 +						{
 +						matchAny(input); if (state.failed) return retval;
 +						}
@@ -44522,15 +44657,15 @@
 +
 +
 +	// $ANTLR start "setAlternative"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:651:1: setAlternative : ^( ALT ( setElement )+ EOA ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:653:1: setAlternative : ^( ALT ( setElement )+ EOA ) ;
 +	public final void setAlternative() throws RecognitionException {
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:652:2: ( ^( ALT ( setElement )+ EOA ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:652:4: ^( ALT ( setElement )+ EOA )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:654:2: ( ^( ALT ( setElement )+ EOA ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:654:4: ^( ALT ( setElement )+ EOA )
 +			{
 +			match(input,ALT,FOLLOW_ALT_in_setAlternative717); if (state.failed) return;
 +			match(input, Token.DOWN, null); if (state.failed) return;
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:652:10: ( setElement )+
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:654:10: ( setElement )+
 +			int cnt38=0;
 +			loop38:
 +			while (true) {
@@ -44542,7 +44677,7 @@
 +
 +				switch (alt38) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:652:10: setElement
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:654:10: setElement
 +					{
 +					pushFollow(FOLLOW_setElement_in_setAlternative719);
 +					setElement();
@@ -44579,10 +44714,10 @@
 +
 +
 +	// $ANTLR start "exceptionGroup"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:655:1: exceptionGroup[ST ruleST] : ( ( exceptionHandler[$ruleST] )+ ( finallyClause[$ruleST] )? | finallyClause[$ruleST] );
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:657:1: exceptionGroup[ST ruleST] : ( ( exceptionHandler[$ruleST] )+ ( finallyClause[$ruleST] )? | finallyClause[$ruleST] );
 +	public final void exceptionGroup(ST ruleST) throws RecognitionException {
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:656:2: ( ( exceptionHandler[$ruleST] )+ ( finallyClause[$ruleST] )? | finallyClause[$ruleST] )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:658:2: ( ( exceptionHandler[$ruleST] )+ ( finallyClause[$ruleST] )? | finallyClause[$ruleST] )
 +			int alt41=2;
 +			int LA41_0 = input.LA(1);
 +			if ( (LA41_0==CATCH) ) {
@@ -44601,9 +44736,9 @@
 +
 +			switch (alt41) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:656:4: ( exceptionHandler[$ruleST] )+ ( finallyClause[$ruleST] )?
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:658:4: ( exceptionHandler[$ruleST] )+ ( finallyClause[$ruleST] )?
 +					{
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:656:4: ( exceptionHandler[$ruleST] )+
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:658:4: ( exceptionHandler[$ruleST] )+
 +					int cnt39=0;
 +					loop39:
 +					while (true) {
@@ -44615,7 +44750,7 @@
 +
 +						switch (alt39) {
 +						case 1 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:656:6: exceptionHandler[$ruleST]
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:658:6: exceptionHandler[$ruleST]
 +							{
 +							pushFollow(FOLLOW_exceptionHandler_in_exceptionGroup737);
 +							exceptionHandler(ruleST);
@@ -44633,7 +44768,7 @@
 +						cnt39++;
 +					}
 +
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:656:35: ( finallyClause[$ruleST] )?
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:658:35: ( finallyClause[$ruleST] )?
 +					int alt40=2;
 +					int LA40_0 = input.LA(1);
 +					if ( (LA40_0==FINALLY) ) {
@@ -44641,7 +44776,7 @@
 +					}
 +					switch (alt40) {
 +						case 1 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:656:36: finallyClause[$ruleST]
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:658:36: finallyClause[$ruleST]
 +							{
 +							pushFollow(FOLLOW_finallyClause_in_exceptionGroup744);
 +							finallyClause(ruleST);
@@ -44655,7 +44790,7 @@
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:657:4: finallyClause[$ruleST]
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:659:4: finallyClause[$ruleST]
 +					{
 +					pushFollow(FOLLOW_finallyClause_in_exceptionGroup752);
 +					finallyClause(ruleST);
@@ -44679,14 +44814,14 @@
 +
 +
 +	// $ANTLR start "exceptionHandler"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:660:1: exceptionHandler[ST ruleST] : ^( 'catch' ARG_ACTION ACTION ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:662:1: exceptionHandler[ST ruleST] : ^( 'catch' ARG_ACTION ACTION ) ;
 +	public final void exceptionHandler(ST ruleST) throws RecognitionException {
 +		GrammarAST ACTION2=null;
 +		GrammarAST ARG_ACTION3=null;
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:661:2: ( ^( 'catch' ARG_ACTION ACTION ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:661:4: ^( 'catch' ARG_ACTION ACTION )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:663:2: ( ^( 'catch' ARG_ACTION ACTION ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:663:4: ^( 'catch' ARG_ACTION ACTION )
 +			{
 +			match(input,CATCH,FOLLOW_CATCH_in_exceptionHandler766); if (state.failed) return;
 +			match(input, Token.DOWN, null); if (state.failed) return;
@@ -44714,13 +44849,13 @@
 +
 +
 +	// $ANTLR start "finallyClause"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:668:1: finallyClause[ST ruleST] : ^( 'finally' ACTION ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:670:1: finallyClause[ST ruleST] : ^( 'finally' ACTION ) ;
 +	public final void finallyClause(ST ruleST) throws RecognitionException {
 +		GrammarAST ACTION4=null;
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:669:2: ( ^( 'finally' ACTION ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:669:4: ^( 'finally' ACTION )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:671:2: ( ^( 'finally' ACTION ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:671:4: ^( 'finally' ACTION )
 +			{
 +			match(input,FINALLY,FOLLOW_FINALLY_in_finallyClause788); if (state.failed) return;
 +			match(input, Token.DOWN, null); if (state.failed) return;
@@ -44751,7 +44886,7 @@
 +
 +
 +	// $ANTLR start "alternative"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:676:1: alternative[GrammarAST label] returns [ST code] : ^(a= ALT (e= element[$label,null] )+ EOA ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:678:1: alternative[GrammarAST label] returns [ST code] : ^(a= ALT (e= element[$label,null] )+ EOA ) ;
 +	public final CodeGenTreeWalker.alternative_return alternative(GrammarAST label) throws RecognitionException {
 +		CodeGenTreeWalker.alternative_return retval = new CodeGenTreeWalker.alternative_return();
 +		retval.start = input.LT(1);
@@ -44779,12 +44914,12 @@
 +			}
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:697:2: ( ^(a= ALT (e= element[$label,null] )+ EOA ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:697:4: ^(a= ALT (e= element[$label,null] )+ EOA )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:699:2: ( ^(a= ALT (e= element[$label,null] )+ EOA ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:699:4: ^(a= ALT (e= element[$label,null] )+ EOA )
 +			{
 +			a=(GrammarAST)match(input,ALT,FOLLOW_ALT_in_alternative820); if (state.failed) return retval;
 +			match(input, Token.DOWN, null); if (state.failed) return retval;
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:698:4: (e= element[$label,null] )+
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:700:4: (e= element[$label,null] )+
 +			int cnt42=0;
 +			loop42:
 +			while (true) {
@@ -44796,7 +44931,7 @@
 +
 +				switch (alt42) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:699:5: e= element[$label,null]
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:701:5: e= element[$label,null]
 +					{
 +					pushFollow(FOLLOW_element_in_alternative833);
 +					e=element(label, null);
@@ -44848,7 +44983,7 @@
 +
 +
 +	// $ANTLR start "element"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:715:1: element[GrammarAST label, GrammarAST astSuffix] returns [ST code=null] options {k=1; } : ( ^( ROOT e= element[$label,$ROOT] ) | ^( BANG e= element[$label,$BANG] ) | ^(n= NOT ne= notElement[$n, $label, $astSuffix] ) | ^( ASSIGN alabel= ID e= element[$alabel,$astSuffix] ) | ^( PLUS_ASSIGN label2= ID e= element[$label2,$astSuffix] ) | ^( CHAR_RANGE a= CHAR_LITERAL b= CHAR_LITERAL ) | ({...}? ( BLOCK | OPTIONAL | CLOSURE | POSITIVE_CLOSURE ) )=> ebnf[$label] | atom[null, $label, $astSuffix] | tree_ | element_action | (sp= SEMPRED |sp= GATED_SEMPRED ) | SYN_SEMPRED | ^( SYNPRED ( . )* ) | ^( BACKTRACK_SEMPRED ( . )* ) | EPSILON );
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:717:1: element[GrammarAST label, GrammarAST astSuffix] returns [ST code=null] options {k=1; } : ( ^( ROOT e= element[$label,$ROOT] ) | ^( BANG e= element[$label,$BANG] ) | ^(n= NOT ne= notElement[$n, $label, $astSuffix] ) | ^( ASSIGN alabel= ID e= element[$alabel,$astSuffix] ) | ^( PLUS_ASSIGN label2= ID e= element[$label2,$astSuffix] ) | ^( CHAR_RANGE a= CHAR_LITERAL b= CHAR_LITERAL ) | ({...}? ( BLOCK | OPTIONAL | CLOSURE | POSITIVE_CLOSURE ) )=> ebnf[$label] | atom[null, $label, $astSuffix] | tree_ | element_action | (sp= SEMPRED |sp= GATED_SEMPRED ) | SYN_SEMPRED | ^( SYNPRED ( . )* ) | ^( BACKTRACK_SEMPRED ( . )* ) | EPSILON );
 +	public final CodeGenTreeWalker.element_return element(GrammarAST label, GrammarAST astSuffix) throws RecognitionException {
 +		CodeGenTreeWalker.element_return retval = new CodeGenTreeWalker.element_return();
 +		retval.start = input.LT(1);
@@ -44873,7 +45008,7 @@
 +			GrammarAST ast = null;
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:722:2: ( ^( ROOT e= element[$label,$ROOT] ) | ^( BANG e= element[$label,$BANG] ) | ^(n= NOT ne= notElement[$n, $label, $astSuffix] ) | ^( ASSIGN alabel= ID e= element[$alabel,$astSuffix] ) | ^( PLUS_ASSIGN label2= ID e= element[$label2,$astSuffix] ) | ^( CHAR_RANGE a= CHAR_LITERAL b= CHAR_LITERAL ) | ({...}? ( BLOCK | OPTIONAL | CLOSURE | POSITIVE_CLOSURE ) )=> ebnf[$label] | atom[null, $label, $astSuffix] | tree_ | element_action | (sp= SEMPRED |sp= GATED_SEMPRED ) | SYN_SEMPRED | ^( SYNPRED ( . )* ) | ^( BACKTRACK_SEMPRED ( . )* ) | EPSILON )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:724:2: ( ^( ROOT e= element[$label,$ROOT] ) | ^( BANG e= element[$label,$BANG] ) | ^(n= NOT ne= notElement[$n, $label, $astSuffix] ) | ^( ASSIGN alabel= ID e= element[$alabel,$astSuffix] ) | ^( PLUS_ASSIGN label2= ID e= element[$label2,$astSuffix] ) | ^( CHAR_RANGE a= CHAR_LITERAL b= CHAR_LITERAL ) | ({...}? ( BLOCK | OPTIONAL | CLOSURE | POSITIVE_CLOSURE ) )=> ebnf[$label] | atom[null, $label, $astSuffix] | tree_ | element_action | (sp= SEMPRED |sp= GATED_SEMPRED ) | SYN_SEMPRED | ^( SYNPRED ( . )* ) | ^( BACKTRACK_SEMPRED ( . )* ) | EPSILON )
 +			int alt46=15;
 +			int LA46_0 = input.LA(1);
 +			if ( (LA46_0==ROOT) ) {
@@ -44947,7 +45082,7 @@
 +
 +			switch (alt46) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:722:4: ^( ROOT e= element[$label,$ROOT] )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:724:4: ^( ROOT e= element[$label,$ROOT] )
 +					{
 +					ROOT5=(GrammarAST)match(input,ROOT,FOLLOW_ROOT_in_element886); if (state.failed) return retval;
 +					match(input, Token.DOWN, null); if (state.failed) return retval;
@@ -44961,7 +45096,7 @@
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:725:4: ^( BANG e= element[$label,$BANG] )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:727:4: ^( BANG e= element[$label,$BANG] )
 +					{
 +					BANG6=(GrammarAST)match(input,BANG,FOLLOW_BANG_in_element903); if (state.failed) return retval;
 +					match(input, Token.DOWN, null); if (state.failed) return retval;
@@ -44975,7 +45110,7 @@
 +					}
 +					break;
 +				case 3 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:728:4: ^(n= NOT ne= notElement[$n, $label, $astSuffix] )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:730:4: ^(n= NOT ne= notElement[$n, $label, $astSuffix] )
 +					{
 +					n=(GrammarAST)match(input,NOT,FOLLOW_NOT_in_element923); if (state.failed) return retval;
 +					match(input, Token.DOWN, null); if (state.failed) return retval;
@@ -44989,7 +45124,7 @@
 +					}
 +					break;
 +				case 4 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:731:4: ^( ASSIGN alabel= ID e= element[$alabel,$astSuffix] )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:733:4: ^( ASSIGN alabel= ID e= element[$alabel,$astSuffix] )
 +					{
 +					match(input,ASSIGN,FOLLOW_ASSIGN_in_element942); if (state.failed) return retval;
 +					match(input, Token.DOWN, null); if (state.failed) return retval;
@@ -45004,7 +45139,7 @@
 +					}
 +					break;
 +				case 5 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:734:4: ^( PLUS_ASSIGN label2= ID e= element[$label2,$astSuffix] )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:736:4: ^( PLUS_ASSIGN label2= ID e= element[$label2,$astSuffix] )
 +					{
 +					match(input,PLUS_ASSIGN,FOLLOW_PLUS_ASSIGN_in_element965); if (state.failed) return retval;
 +					match(input, Token.DOWN, null); if (state.failed) return retval;
@@ -45019,7 +45154,7 @@
 +					}
 +					break;
 +				case 6 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:737:4: ^( CHAR_RANGE a= CHAR_LITERAL b= CHAR_LITERAL )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:739:4: ^( CHAR_RANGE a= CHAR_LITERAL b= CHAR_LITERAL )
 +					{
 +					match(input,CHAR_RANGE,FOLLOW_CHAR_RANGE_in_element987); if (state.failed) return retval;
 +					match(input, Token.DOWN, null); if (state.failed) return retval;
@@ -45041,7 +45176,7 @@
 +					}
 +					break;
 +				case 7 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:750:4: ({...}? ( BLOCK | OPTIONAL | CLOSURE | POSITIVE_CLOSURE ) )=> ebnf[$label]
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:752:4: ({...}? ( BLOCK | OPTIONAL | CLOSURE | POSITIVE_CLOSURE ) )=> ebnf[$label]
 +					{
 +					pushFollow(FOLLOW_ebnf_in_element1024);
 +					ebnf7=ebnf(label);
@@ -45051,7 +45186,7 @@
 +					}
 +					break;
 +				case 8 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:753:4: atom[null, $label, $astSuffix]
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:755:4: atom[null, $label, $astSuffix]
 +					{
 +					pushFollow(FOLLOW_atom_in_element1035);
 +					atom8=atom(null, label, astSuffix);
@@ -45061,7 +45196,7 @@
 +					}
 +					break;
 +				case 9 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:756:4: tree_
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:758:4: tree_
 +					{
 +					pushFollow(FOLLOW_tree__in_element1046);
 +					tree_9=tree_();
@@ -45071,7 +45206,7 @@
 +					}
 +					break;
 +				case 10 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:759:4: element_action
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:761:4: element_action
 +					{
 +					pushFollow(FOLLOW_element_action_in_element1056);
 +					element_action10=element_action();
@@ -45081,9 +45216,9 @@
 +					}
 +					break;
 +				case 11 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:762:6: (sp= SEMPRED |sp= GATED_SEMPRED )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:764:6: (sp= SEMPRED |sp= GATED_SEMPRED )
 +					{
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:762:6: (sp= SEMPRED |sp= GATED_SEMPRED )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:764:6: (sp= SEMPRED |sp= GATED_SEMPRED )
 +					int alt43=2;
 +					int LA43_0 = input.LA(1);
 +					if ( (LA43_0==SEMPRED) ) {
@@ -45102,13 +45237,13 @@
 +
 +					switch (alt43) {
 +						case 1 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:762:7: sp= SEMPRED
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:764:7: sp= SEMPRED
 +							{
 +							sp=(GrammarAST)match(input,SEMPRED,FOLLOW_SEMPRED_in_element1071); if (state.failed) return retval;
 +							}
 +							break;
 +						case 2 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:762:18: sp= GATED_SEMPRED
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:764:18: sp= GATED_SEMPRED
 +							{
 +							sp=(GrammarAST)match(input,GATED_SEMPRED,FOLLOW_GATED_SEMPRED_in_element1075); if (state.failed) return retval;
 +							}
@@ -45125,18 +45260,18 @@
 +					}
 +					break;
 +				case 12 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:770:4: SYN_SEMPRED
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:772:4: SYN_SEMPRED
 +					{
 +					match(input,SYN_SEMPRED,FOLLOW_SYN_SEMPRED_in_element1086); if (state.failed) return retval;
 +					}
 +					break;
 +				case 13 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:772:4: ^( SYNPRED ( . )* )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:774:4: ^( SYNPRED ( . )* )
 +					{
 +					match(input,SYNPRED,FOLLOW_SYNPRED_in_element1094); if (state.failed) return retval;
 +					if ( input.LA(1)==Token.DOWN ) {
 +						match(input, Token.DOWN, null); if (state.failed) return retval;
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:772:14: ( . )*
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:774:14: ( . )*
 +						loop44:
 +						while (true) {
 +							int alt44=2;
@@ -45150,7 +45285,7 @@
 +
 +							switch (alt44) {
 +							case 1 :
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:772:14: .
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:774:14: .
 +								{
 +								matchAny(input); if (state.failed) return retval;
 +								}
@@ -45167,12 +45302,12 @@
 +					}
 +					break;
 +				case 14 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:774:4: ^( BACKTRACK_SEMPRED ( . )* )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:776:4: ^( BACKTRACK_SEMPRED ( . )* )
 +					{
 +					match(input,BACKTRACK_SEMPRED,FOLLOW_BACKTRACK_SEMPRED_in_element1105); if (state.failed) return retval;
 +					if ( input.LA(1)==Token.DOWN ) {
 +						match(input, Token.DOWN, null); if (state.failed) return retval;
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:774:24: ( . )*
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:776:24: ( . )*
 +						loop45:
 +						while (true) {
 +							int alt45=2;
@@ -45186,7 +45321,7 @@
 +
 +							switch (alt45) {
 +							case 1 :
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:774:24: .
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:776:24: .
 +								{
 +								matchAny(input); if (state.failed) return retval;
 +								}
@@ -45203,7 +45338,7 @@
 +					}
 +					break;
 +				case 15 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:776:6: EPSILON
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:778:6: EPSILON
 +					{
 +					match(input,EPSILON,FOLLOW_EPSILON_in_element1117); if (state.failed) return retval;
 +					}
@@ -45229,7 +45364,7 @@
 +
 +
 +	// $ANTLR start "element_action"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:779:1: element_action returns [ST code=null] : (act= ACTION |act2= FORCED_ACTION );
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:781:1: element_action returns [ST code=null] : (act= ACTION |act2= FORCED_ACTION );
 +	public final CodeGenTreeWalker.element_action_return element_action() throws RecognitionException {
 +		CodeGenTreeWalker.element_action_return retval = new CodeGenTreeWalker.element_action_return();
 +		retval.start = input.LT(1);
@@ -45238,7 +45373,7 @@
 +		GrammarAST act2=null;
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:780:2: (act= ACTION |act2= FORCED_ACTION )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:782:2: (act= ACTION |act2= FORCED_ACTION )
 +			int alt47=2;
 +			int LA47_0 = input.LA(1);
 +			if ( (LA47_0==ACTION) ) {
@@ -45257,7 +45392,7 @@
 +
 +			switch (alt47) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:780:4: act= ACTION
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:782:4: act= ACTION
 +					{
 +					act=(GrammarAST)match(input,ACTION,FOLLOW_ACTION_in_element_action1134); if (state.failed) return retval;
 +					if ( state.backtracking==0 ) {
@@ -45267,7 +45402,7 @@
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:785:4: act2= FORCED_ACTION
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:787:4: act2= FORCED_ACTION
 +					{
 +					act2=(GrammarAST)match(input,FORCED_ACTION,FOLLOW_FORCED_ACTION_in_element_action1145); if (state.failed) return retval;
 +					if ( state.backtracking==0 ) {
@@ -45293,7 +45428,7 @@
 +
 +
 +	// $ANTLR start "notElement"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:792:1: notElement[GrammarAST n, GrammarAST label, GrammarAST astSuffix] returns [ST code=null] : (assign_c= CHAR_LITERAL |assign_s= STRING_LITERAL |assign_t= TOKEN_REF | ^(assign_st= BLOCK ( . )* ) ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:794:1: notElement[GrammarAST n, GrammarAST label, GrammarAST astSuffix] returns [ST code=null] : (assign_c= CHAR_LITERAL |assign_s= STRING_LITERAL |assign_t= TOKEN_REF | ^(assign_st= BLOCK ( . )* ) ) ;
 +	public final ST notElement(GrammarAST n, GrammarAST label, GrammarAST astSuffix) throws RecognitionException {
 +		ST code = null;
 +
@@ -45312,10 +45447,10 @@
 +			}
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:802:2: ( (assign_c= CHAR_LITERAL |assign_s= STRING_LITERAL |assign_t= TOKEN_REF | ^(assign_st= BLOCK ( . )* ) ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:802:4: (assign_c= CHAR_LITERAL |assign_s= STRING_LITERAL |assign_t= TOKEN_REF | ^(assign_st= BLOCK ( . )* ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:804:2: ( (assign_c= CHAR_LITERAL |assign_s= STRING_LITERAL |assign_t= TOKEN_REF | ^(assign_st= BLOCK ( . )* ) ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:804:4: (assign_c= CHAR_LITERAL |assign_s= STRING_LITERAL |assign_t= TOKEN_REF | ^(assign_st= BLOCK ( . )* ) )
 +			{
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:802:4: (assign_c= CHAR_LITERAL |assign_s= STRING_LITERAL |assign_t= TOKEN_REF | ^(assign_st= BLOCK ( . )* ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:804:4: (assign_c= CHAR_LITERAL |assign_s= STRING_LITERAL |assign_t= TOKEN_REF | ^(assign_st= BLOCK ( . )* ) )
 +			int alt49=4;
 +			switch ( input.LA(1) ) {
 +			case CHAR_LITERAL:
@@ -45346,7 +45481,7 @@
 +			}
 +			switch (alt49) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:802:6: assign_c= CHAR_LITERAL
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:804:6: assign_c= CHAR_LITERAL
 +					{
 +					assign_c=(GrammarAST)match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_notElement1174); if (state.failed) return code;
 +					if ( state.backtracking==0 ) {
@@ -45364,7 +45499,7 @@
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:815:5: assign_s= STRING_LITERAL
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:817:5: assign_s= STRING_LITERAL
 +					{
 +					assign_s=(GrammarAST)match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_notElement1187); if (state.failed) return code;
 +					if ( state.backtracking==0 ) {
@@ -45382,7 +45517,7 @@
 +					}
 +					break;
 +				case 3 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:828:5: assign_t= TOKEN_REF
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:830:5: assign_t= TOKEN_REF
 +					{
 +					assign_t=(GrammarAST)match(input,TOKEN_REF,FOLLOW_TOKEN_REF_in_notElement1200); if (state.failed) return code;
 +					if ( state.backtracking==0 ) {
@@ -45392,12 +45527,12 @@
 +					}
 +					break;
 +				case 4 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:833:5: ^(assign_st= BLOCK ( . )* )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:835:5: ^(assign_st= BLOCK ( . )* )
 +					{
 +					assign_st=(GrammarAST)match(input,BLOCK,FOLLOW_BLOCK_in_notElement1214); if (state.failed) return code;
 +					if ( input.LA(1)==Token.DOWN ) {
 +						match(input, Token.DOWN, null); if (state.failed) return code;
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:833:23: ( . )*
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:835:23: ( . )*
 +						loop48:
 +						while (true) {
 +							int alt48=2;
@@ -45411,7 +45546,7 @@
 +
 +							switch (alt48) {
 +							case 1 :
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:833:23: .
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:835:23: .
 +								{
 +								matchAny(input); if (state.failed) return code;
 +								}
@@ -45469,7 +45604,7 @@
 +
 +
 +	// $ANTLR start "ebnf"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:855:1: ebnf[GrammarAST label] returns [ST code=null] : (blk= block[\"block\", dfa, $label] | ^( OPTIONAL blk= block[\"optionalBlock\", dfa, $label] ) | ^( CLOSURE blk= block[\"closureBlock\", dfa, $label] ) | ^( POSITIVE_CLOSURE blk= block[\"positiveClosureBlock\", dfa, $label] ) ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:857:1: ebnf[GrammarAST label] returns [ST code=null] : (blk= block[\"block\", dfa, $label] | ^( OPTIONAL blk= block[\"optionalBlock\", dfa, $label] ) | ^( CLOSURE blk= block[\"closureBlock\", dfa, $label] ) | ^( POSITIVE_CLOSURE blk= block[\"positiveClosureBlock\", dfa, $label] ) ) ;
 +	public final CodeGenTreeWalker.ebnf_return ebnf(GrammarAST label) throws RecognitionException {
 +		CodeGenTreeWalker.ebnf_return retval = new CodeGenTreeWalker.ebnf_return();
 +		retval.start = input.LT(1);
@@ -45482,10 +45617,10 @@
 +			GrammarAST eob = b.getLastChild(); // loops will use EOB DFA
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:862:2: ( (blk= block[\"block\", dfa, $label] | ^( OPTIONAL blk= block[\"optionalBlock\", dfa, $label] ) | ^( CLOSURE blk= block[\"closureBlock\", dfa, $label] ) | ^( POSITIVE_CLOSURE blk= block[\"positiveClosureBlock\", dfa, $label] ) ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:862:4: (blk= block[\"block\", dfa, $label] | ^( OPTIONAL blk= block[\"optionalBlock\", dfa, $label] ) | ^( CLOSURE blk= block[\"closureBlock\", dfa, $label] ) | ^( POSITIVE_CLOSURE blk= block[\"positiveClosureBlock\", dfa, $label] ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:864:2: ( (blk= block[\"block\", dfa, $label] | ^( OPTIONAL blk= block[\"optionalBlock\", dfa, $label] ) | ^( CLOSURE blk= block[\"closureBlock\", dfa, $label] ) | ^( POSITIVE_CLOSURE blk= block[\"positiveClosureBlock\", dfa, $label] ) ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:864:4: (blk= block[\"block\", dfa, $label] | ^( OPTIONAL blk= block[\"optionalBlock\", dfa, $label] ) | ^( CLOSURE blk= block[\"closureBlock\", dfa, $label] ) | ^( POSITIVE_CLOSURE blk= block[\"positiveClosureBlock\", dfa, $label] ) )
 +			{
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:862:4: (blk= block[\"block\", dfa, $label] | ^( OPTIONAL blk= block[\"optionalBlock\", dfa, $label] ) | ^( CLOSURE blk= block[\"closureBlock\", dfa, $label] ) | ^( POSITIVE_CLOSURE blk= block[\"positiveClosureBlock\", dfa, $label] ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:864:4: (blk= block[\"block\", dfa, $label] | ^( OPTIONAL blk= block[\"optionalBlock\", dfa, $label] ) | ^( CLOSURE blk= block[\"closureBlock\", dfa, $label] ) | ^( POSITIVE_CLOSURE blk= block[\"positiveClosureBlock\", dfa, $label] ) )
 +			int alt50=4;
 +			switch ( input.LA(1) ) {
 +			case BLOCK:
@@ -45516,7 +45651,7 @@
 +			}
 +			switch (alt50) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:862:6: blk= block[\"block\", dfa, $label]
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:864:6: blk= block[\"block\", dfa, $label]
 +					{
 +					if ( state.backtracking==0 ) { dfa = ((GrammarAST)retval.start).getLookaheadDFA(); }
 +					pushFollow(FOLLOW_block_in_ebnf1261);
@@ -45527,7 +45662,7 @@
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:865:5: ^( OPTIONAL blk= block[\"optionalBlock\", dfa, $label] )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:867:5: ^( OPTIONAL blk= block[\"optionalBlock\", dfa, $label] )
 +					{
 +					if ( state.backtracking==0 ) { dfa = ((GrammarAST)retval.start).getLookaheadDFA(); }
 +					match(input,OPTIONAL,FOLLOW_OPTIONAL_in_ebnf1280); if (state.failed) return retval;
@@ -45542,7 +45677,7 @@
 +					}
 +					break;
 +				case 3 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:868:5: ^( CLOSURE blk= block[\"closureBlock\", dfa, $label] )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:870:5: ^( CLOSURE blk= block[\"closureBlock\", dfa, $label] )
 +					{
 +					if ( state.backtracking==0 ) { dfa = eob.getLookaheadDFA(); }
 +					match(input,CLOSURE,FOLLOW_CLOSURE_in_ebnf1305); if (state.failed) return retval;
@@ -45557,7 +45692,7 @@
 +					}
 +					break;
 +				case 4 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:871:5: ^( POSITIVE_CLOSURE blk= block[\"positiveClosureBlock\", dfa, $label] )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:873:5: ^( POSITIVE_CLOSURE blk= block[\"positiveClosureBlock\", dfa, $label] )
 +					{
 +					if ( state.backtracking==0 ) { dfa = eob.getLookaheadDFA(); }
 +					match(input,POSITIVE_CLOSURE,FOLLOW_POSITIVE_CLOSURE_in_ebnf1330); if (state.failed) return retval;
@@ -45600,7 +45735,7 @@
 +
 +
 +	// $ANTLR start "tree_"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:882:1: tree_ returns [ST code] : ^( TREE_BEGIN el= element[null,rootSuffix] ( ( element_action )=>act= element_action )* (el= element[null,null] )* ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:884:1: tree_ returns [ST code] : ^( TREE_BEGIN el= element[null,rootSuffix] ( ( element_action )=>act= element_action )* (el= element[null,null] )* ) ;
 +	public final CodeGenTreeWalker.tree__return tree_() throws RecognitionException {
 +		CodeGenTreeWalker.tree__return retval = new CodeGenTreeWalker.tree__return();
 +		retval.start = input.LT(1);
@@ -45631,8 +45766,8 @@
 +			}
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:906:2: ( ^( TREE_BEGIN el= element[null,rootSuffix] ( ( element_action )=>act= element_action )* (el= element[null,null] )* ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:906:4: ^( TREE_BEGIN el= element[null,rootSuffix] ( ( element_action )=>act= element_action )* (el= element[null,null] )* )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:908:2: ( ^( TREE_BEGIN el= element[null,rootSuffix] ( ( element_action )=>act= element_action )* (el= element[null,null] )* ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:908:4: ^( TREE_BEGIN el= element[null,rootSuffix] ( ( element_action )=>act= element_action )* (el= element[null,null] )* )
 +			{
 +			match(input,TREE_BEGIN,FOLLOW_TREE_BEGIN_in_tree_1372); if (state.failed) return retval;
 +			match(input, Token.DOWN, null); if (state.failed) return retval;
@@ -45647,7 +45782,7 @@
 +											  (el!=null?((GrammarAST)el.start):null).getCharPositionInLine() + 1
 +											  );
 +						}
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:918:4: ( ( element_action )=>act= element_action )*
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:920:4: ( ( element_action )=>act= element_action )*
 +			loop51:
 +			while (true) {
 +				int alt51=2;
@@ -45669,7 +45804,7 @@
 +
 +				switch (alt51) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:918:6: ( element_action )=>act= element_action
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:920:6: ( element_action )=>act= element_action
 +					{
 +					pushFollow(FOLLOW_element_action_in_tree_1416);
 +					act=element_action();
@@ -45690,7 +45825,7 @@
 +				}
 +			}
 +
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:928:4: (el= element[null,null] )*
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:930:4: (el= element[null,null] )*
 +			loop52:
 +			while (true) {
 +				int alt52=2;
@@ -45701,7 +45836,7 @@
 +
 +				switch (alt52) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:928:7: el= element[null,null]
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:930:7: el= element[null,null]
 +					{
 +					pushFollow(FOLLOW_element_in_tree_1438);
 +					el=element(null, null);
@@ -45746,7 +45881,7 @@
 +
 +
 +	// $ANTLR start "atom"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:941:1: atom[GrammarAST scope, GrammarAST label, GrammarAST astSuffix] returns [ST code=null] : ( ^(r= RULE_REF (rarg= ARG_ACTION )? ) | ^(t= TOKEN_REF (targ= ARG_ACTION )? ) |c= CHAR_LITERAL |s= STRING_LITERAL |w= WILDCARD | ^( DOT ID a= atom[$ID, label, astSuffix] ) | set[label,astSuffix] );
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:943:1: atom[GrammarAST scope, GrammarAST label, GrammarAST astSuffix] returns [ST code=null] : ( ^(r= RULE_REF (rarg= ARG_ACTION )? ) | ^(t= TOKEN_REF (targ= ARG_ACTION )? ) |c= CHAR_LITERAL |s= STRING_LITERAL |w= WILDCARD | ^( DOT ID a= atom[$ID, label, astSuffix] ) | set[label,astSuffix] );
 +	public final CodeGenTreeWalker.atom_return atom(GrammarAST scope, GrammarAST label, GrammarAST astSuffix) throws RecognitionException {
 +		CodeGenTreeWalker.atom_return retval = new CodeGenTreeWalker.atom_return();
 +		retval.start = input.LT(1);
@@ -45788,7 +45923,7 @@
 +			}
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:969:2: ( ^(r= RULE_REF (rarg= ARG_ACTION )? ) | ^(t= TOKEN_REF (targ= ARG_ACTION )? ) |c= CHAR_LITERAL |s= STRING_LITERAL |w= WILDCARD | ^( DOT ID a= atom[$ID, label, astSuffix] ) | set[label,astSuffix] )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:971:2: ( ^(r= RULE_REF (rarg= ARG_ACTION )? ) | ^(t= TOKEN_REF (targ= ARG_ACTION )? ) |c= CHAR_LITERAL |s= STRING_LITERAL |w= WILDCARD | ^( DOT ID a= atom[$ID, label, astSuffix] ) | set[label,astSuffix] )
 +			int alt55=7;
 +			switch ( input.LA(1) ) {
 +			case RULE_REF:
@@ -45834,12 +45969,12 @@
 +			}
 +			switch (alt55) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:969:6: ^(r= RULE_REF (rarg= ARG_ACTION )? )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:971:6: ^(r= RULE_REF (rarg= ARG_ACTION )? )
 +					{
 +					r=(GrammarAST)match(input,RULE_REF,FOLLOW_RULE_REF_in_atom1488); if (state.failed) return retval;
 +					if ( input.LA(1)==Token.DOWN ) {
 +						match(input, Token.DOWN, null); if (state.failed) return retval;
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:969:20: (rarg= ARG_ACTION )?
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:971:20: (rarg= ARG_ACTION )?
 +						int alt53=2;
 +						int LA53_0 = input.LA(1);
 +						if ( (LA53_0==ARG_ACTION) ) {
@@ -45847,7 +45982,7 @@
 +						}
 +						switch (alt53) {
 +							case 1 :
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:969:21: rarg= ARG_ACTION
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:971:21: rarg= ARG_ACTION
 +								{
 +								rarg=(GrammarAST)match(input,ARG_ACTION,FOLLOW_ARG_ACTION_in_atom1493); if (state.failed) return retval;
 +								}
@@ -45904,12 +46039,12 @@
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1014:4: ^(t= TOKEN_REF (targ= ARG_ACTION )? )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1016:4: ^(t= TOKEN_REF (targ= ARG_ACTION )? )
 +					{
 +					t=(GrammarAST)match(input,TOKEN_REF,FOLLOW_TOKEN_REF_in_atom1511); if (state.failed) return retval;
 +					if ( input.LA(1)==Token.DOWN ) {
 +						match(input, Token.DOWN, null); if (state.failed) return retval;
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:1014:19: (targ= ARG_ACTION )?
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:1016:19: (targ= ARG_ACTION )?
 +						int alt54=2;
 +						int LA54_0 = input.LA(1);
 +						if ( (LA54_0==ARG_ACTION) ) {
@@ -45917,7 +46052,7 @@
 +						}
 +						switch (alt54) {
 +							case 1 :
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:1014:20: targ= ARG_ACTION
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:1016:20: targ= ARG_ACTION
 +								{
 +								targ=(GrammarAST)match(input,ARG_ACTION,FOLLOW_ARG_ACTION_in_atom1516); if (state.failed) return retval;
 +								}
@@ -45998,7 +46133,7 @@
 +					}
 +					break;
 +				case 3 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1083:4: c= CHAR_LITERAL
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1085:4: c= CHAR_LITERAL
 +					{
 +					c=(GrammarAST)match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_atom1532); if (state.failed) return retval;
 +					if ( state.backtracking==0 ) {
@@ -46027,7 +46162,7 @@
 +					}
 +					break;
 +				case 4 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1108:4: s= STRING_LITERAL
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1110:4: s= STRING_LITERAL
 +					{
 +					s=(GrammarAST)match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_atom1544); if (state.failed) return retval;
 +					if ( state.backtracking==0 ) {
@@ -46061,7 +46196,7 @@
 +					}
 +					break;
 +				case 5 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1138:4: w= WILDCARD
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1140:4: w= WILDCARD
 +					{
 +					w=(GrammarAST)match(input,WILDCARD,FOLLOW_WILDCARD_in_atom1556); if (state.failed) return retval;
 +					if ( state.backtracking==0 ) {
@@ -46071,7 +46206,7 @@
 +					}
 +					break;
 +				case 6 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1144:4: ^( DOT ID a= atom[$ID, label, astSuffix] )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1146:4: ^( DOT ID a= atom[$ID, label, astSuffix] )
 +					{
 +					match(input,DOT,FOLLOW_DOT_in_atom1567); if (state.failed) return retval;
 +					match(input, Token.DOWN, null); if (state.failed) return retval;
@@ -46086,7 +46221,7 @@
 +					}
 +					break;
 +				case 7 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1147:4: set[label,astSuffix]
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1149:4: set[label,astSuffix]
 +					{
 +					pushFollow(FOLLOW_set_in_atom1586);
 +					set12=set(label, astSuffix);
@@ -46112,10 +46247,10 @@
 +
 +
 +	// $ANTLR start "ast_suffix"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1151:1: ast_suffix : ( ROOT | BANG );
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1153:1: ast_suffix : ( ROOT | BANG );
 +	public final void ast_suffix() throws RecognitionException {
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1152:2: ( ROOT | BANG )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1154:2: ( ROOT | BANG )
 +			// org/antlr/grammar/v3/CodeGenTreeWalker.g:
 +			{
 +			if ( input.LA(1)==BANG||input.LA(1)==ROOT ) {
@@ -46144,7 +46279,7 @@
 +
 +
 +	// $ANTLR start "set"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1156:1: set[GrammarAST label, GrammarAST astSuffix] returns [ST code=null] : ^(s= BLOCK ( . )* ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1158:1: set[GrammarAST label, GrammarAST astSuffix] returns [ST code=null] : ^(s= BLOCK ( . )* ) ;
 +	public final ST set(GrammarAST label, GrammarAST astSuffix) throws RecognitionException {
 +		ST code = null;
 +
@@ -46159,13 +46294,13 @@
 +			}
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1165:2: ( ^(s= BLOCK ( . )* ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1165:4: ^(s= BLOCK ( . )* )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1167:2: ( ^(s= BLOCK ( . )* ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1167:4: ^(s= BLOCK ( . )* )
 +			{
 +			s=(GrammarAST)match(input,BLOCK,FOLLOW_BLOCK_in_set1631); if (state.failed) return code;
 +			if ( input.LA(1)==Token.DOWN ) {
 +				match(input, Token.DOWN, null); if (state.failed) return code;
-+				// org/antlr/grammar/v3/CodeGenTreeWalker.g:1165:14: ( . )*
++				// org/antlr/grammar/v3/CodeGenTreeWalker.g:1167:14: ( . )*
 +				loop56:
 +				while (true) {
 +					int alt56=2;
@@ -46179,7 +46314,7 @@
 +
 +					switch (alt56) {
 +					case 1 :
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:1165:14: .
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:1167:14: .
 +						{
 +						matchAny(input); if (state.failed) return code;
 +						}
@@ -46220,10 +46355,10 @@
 +
 +
 +	// $ANTLR start "setElement"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1178:1: setElement : ( CHAR_LITERAL | TOKEN_REF | STRING_LITERAL | ^( CHAR_RANGE CHAR_LITERAL CHAR_LITERAL ) );
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1180:1: setElement : ( CHAR_LITERAL | TOKEN_REF | STRING_LITERAL | ^( CHAR_RANGE CHAR_LITERAL CHAR_LITERAL ) );
 +	public final void setElement() throws RecognitionException {
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1179:2: ( CHAR_LITERAL | TOKEN_REF | STRING_LITERAL | ^( CHAR_RANGE CHAR_LITERAL CHAR_LITERAL ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1181:2: ( CHAR_LITERAL | TOKEN_REF | STRING_LITERAL | ^( CHAR_RANGE CHAR_LITERAL CHAR_LITERAL ) )
 +			int alt57=4;
 +			switch ( input.LA(1) ) {
 +			case CHAR_LITERAL:
@@ -46254,25 +46389,25 @@
 +			}
 +			switch (alt57) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1179:4: CHAR_LITERAL
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1181:4: CHAR_LITERAL
 +					{
 +					match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_setElement1651); if (state.failed) return;
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1180:4: TOKEN_REF
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1182:4: TOKEN_REF
 +					{
 +					match(input,TOKEN_REF,FOLLOW_TOKEN_REF_in_setElement1656); if (state.failed) return;
 +					}
 +					break;
 +				case 3 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1181:4: STRING_LITERAL
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1183:4: STRING_LITERAL
 +					{
 +					match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_setElement1661); if (state.failed) return;
 +					}
 +					break;
 +				case 4 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1182:4: ^( CHAR_RANGE CHAR_LITERAL CHAR_LITERAL )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1184:4: ^( CHAR_RANGE CHAR_LITERAL CHAR_LITERAL )
 +					{
 +					match(input,CHAR_RANGE,FOLLOW_CHAR_RANGE_in_setElement1667); if (state.failed) return;
 +					match(input, Token.DOWN, null); if (state.failed) return;
@@ -46302,7 +46437,7 @@
 +
 +
 +	// $ANTLR start "rewrite"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1187:1: rewrite returns [ST code=null] : ( ^( REWRITES ( ^(r= REWRITE (pred= SEMPRED )? alt= rewrite_alternative ) )* ) |);
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1189:1: rewrite returns [ST code=null] : ( ^( REWRITES ( ^(r= REWRITE (pred= SEMPRED )? alt= rewrite_alternative ) )* ) |);
 +	public final CodeGenTreeWalker.rewrite_return rewrite() throws RecognitionException {
 +		CodeGenTreeWalker.rewrite_return retval = new CodeGenTreeWalker.rewrite_return();
 +		retval.start = input.LT(1);
@@ -46360,7 +46495,7 @@
 +			}
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1237:2: ( ^( REWRITES ( ^(r= REWRITE (pred= SEMPRED )? alt= rewrite_alternative ) )* ) |)
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1239:2: ( ^( REWRITES ( ^(r= REWRITE (pred= SEMPRED )? alt= rewrite_alternative ) )* ) |)
 +			int alt60=2;
 +			int LA60_0 = input.LA(1);
 +			if ( (LA60_0==REWRITES) ) {
@@ -46379,12 +46514,12 @@
 +
 +			switch (alt60) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1237:4: ^( REWRITES ( ^(r= REWRITE (pred= SEMPRED )? alt= rewrite_alternative ) )* )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1239:4: ^( REWRITES ( ^(r= REWRITE (pred= SEMPRED )? alt= rewrite_alternative ) )* )
 +					{
 +					match(input,REWRITES,FOLLOW_REWRITES_in_rewrite1696); if (state.failed) return retval;
 +					if ( input.LA(1)==Token.DOWN ) {
 +						match(input, Token.DOWN, null); if (state.failed) return retval;
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:1238:4: ( ^(r= REWRITE (pred= SEMPRED )? alt= rewrite_alternative ) )*
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:1240:4: ( ^(r= REWRITE (pred= SEMPRED )? alt= rewrite_alternative ) )*
 +						loop59:
 +						while (true) {
 +							int alt59=2;
@@ -46395,12 +46530,12 @@
 +
 +							switch (alt59) {
 +							case 1 :
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:1239:5: ^(r= REWRITE (pred= SEMPRED )? alt= rewrite_alternative )
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:1241:5: ^(r= REWRITE (pred= SEMPRED )? alt= rewrite_alternative )
 +								{
 +								if ( state.backtracking==0 ) {rewriteRuleRefs = new HashSet<Object>();}
 +								r=(GrammarAST)match(input,REWRITE,FOLLOW_REWRITE_in_rewrite1717); if (state.failed) return retval;
 +								match(input, Token.DOWN, null); if (state.failed) return retval;
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:1240:18: (pred= SEMPRED )?
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:1242:18: (pred= SEMPRED )?
 +								int alt58=2;
 +								int LA58_0 = input.LA(1);
 +								if ( (LA58_0==SEMPRED) ) {
@@ -46408,7 +46543,7 @@
 +								}
 +								switch (alt58) {
 +									case 1 :
-+										// org/antlr/grammar/v3/CodeGenTreeWalker.g:1240:19: pred= SEMPRED
++										// org/antlr/grammar/v3/CodeGenTreeWalker.g:1242:19: pred= SEMPRED
 +										{
 +										pred=(GrammarAST)match(input,SEMPRED,FOLLOW_SEMPRED_in_rewrite1722); if (state.failed) return retval;
 +										}
@@ -46453,7 +46588,7 @@
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1261:2: 
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1263:2: 
 +					{
 +					}
 +					break;
@@ -46474,7 +46609,7 @@
 +
 +
 +	// $ANTLR start "rewrite_block"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1263:1: rewrite_block[String blockTemplateName] returns [ST code=null] : ^( BLOCK alt= rewrite_alternative EOB ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1265:1: rewrite_block[String blockTemplateName] returns [ST code=null] : ^( BLOCK alt= rewrite_alternative EOB ) ;
 +	public final ST rewrite_block(String blockTemplateName) throws RecognitionException {
 +		ST code = null;
 +
@@ -46493,8 +46628,8 @@
 +			}
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1275:2: ( ^( BLOCK alt= rewrite_alternative EOB ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1275:4: ^( BLOCK alt= rewrite_alternative EOB )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1277:2: ( ^( BLOCK alt= rewrite_alternative EOB ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1277:4: ^( BLOCK alt= rewrite_alternative EOB )
 +			{
 +			BLOCK13=(GrammarAST)match(input,BLOCK,FOLLOW_BLOCK_in_rewrite_block1771); if (state.failed) return code;
 +			if ( state.backtracking==0 ) {
@@ -46532,7 +46667,7 @@
 +
 +
 +	// $ANTLR start "rewrite_alternative"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1291:1: rewrite_alternative returns [ST code=null] : ({...}? ^(a= ALT ( (el= rewrite_element )+ | EPSILON ) EOA ) |{...}? rewrite_template | ETC );
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1293:1: rewrite_alternative returns [ST code=null] : ({...}? ^(a= ALT ( (el= rewrite_element )+ | EPSILON ) EOA ) |{...}? rewrite_template | ETC );
 +	public final ST rewrite_alternative() throws RecognitionException {
 +		ST code = null;
 +
@@ -46542,7 +46677,7 @@
 +		ST rewrite_template14 =null;
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1292:2: ({...}? ^(a= ALT ( (el= rewrite_element )+ | EPSILON ) EOA ) |{...}? rewrite_template | ETC )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1294:2: ({...}? ^(a= ALT ( (el= rewrite_element )+ | EPSILON ) EOA ) |{...}? rewrite_template | ETC )
 +			int alt63=3;
 +			switch ( input.LA(1) ) {
 +			case ALT:
@@ -46668,7 +46803,7 @@
 +			}
 +			switch (alt63) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1292:4: {...}? ^(a= ALT ( (el= rewrite_element )+ | EPSILON ) EOA )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1294:4: {...}? ^(a= ALT ( (el= rewrite_element )+ | EPSILON ) EOA )
 +					{
 +					if ( !((generator.grammar.buildAST())) ) {
 +						if (state.backtracking>0) {state.failed=true; return code;}
@@ -46677,7 +46812,7 @@
 +					a=(GrammarAST)match(input,ALT,FOLLOW_ALT_in_rewrite_alternative1823); if (state.failed) return code;
 +					if ( state.backtracking==0 ) {code =templates.getInstanceOf("rewriteElementList");}
 +					match(input, Token.DOWN, null); if (state.failed) return code;
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1294:4: ( (el= rewrite_element )+ | EPSILON )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1296:4: ( (el= rewrite_element )+ | EPSILON )
 +					int alt62=2;
 +					int LA62_0 = input.LA(1);
 +					if ( (LA62_0==ACTION||LA62_0==CHAR_LITERAL||LA62_0==CLOSURE||LA62_0==LABEL||LA62_0==OPTIONAL||LA62_0==POSITIVE_CLOSURE||LA62_0==RULE_REF||LA62_0==STRING_LITERAL||LA62_0==TOKEN_REF||LA62_0==TREE_BEGIN) ) {
@@ -46696,9 +46831,9 @@
 +
 +					switch (alt62) {
 +						case 1 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1294:6: (el= rewrite_element )+
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1296:6: (el= rewrite_element )+
 +							{
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1294:6: (el= rewrite_element )+
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1296:6: (el= rewrite_element )+
 +							int cnt61=0;
 +							loop61:
 +							while (true) {
@@ -46710,7 +46845,7 @@
 +
 +								switch (alt61) {
 +								case 1 :
-+									// org/antlr/grammar/v3/CodeGenTreeWalker.g:1295:6: el= rewrite_element
++									// org/antlr/grammar/v3/CodeGenTreeWalker.g:1297:6: el= rewrite_element
 +									{
 +									pushFollow(FOLLOW_rewrite_element_in_rewrite_alternative1841);
 +									el=rewrite_element();
@@ -46737,7 +46872,7 @@
 +							}
 +							break;
 +						case 2 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1303:6: EPSILON
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1305:6: EPSILON
 +							{
 +							match(input,EPSILON,FOLLOW_EPSILON_in_rewrite_alternative1862); if (state.failed) return code;
 +							if ( state.backtracking==0 ) {code.addAggr("elements.{el,line,pos}",
@@ -46757,7 +46892,7 @@
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1314:4: {...}? rewrite_template
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1316:4: {...}? rewrite_template
 +					{
 +					if ( !((generator.grammar.buildTemplate())) ) {
 +						if (state.backtracking>0) {state.failed=true; return code;}
@@ -46771,7 +46906,7 @@
 +					}
 +					break;
 +				case 3 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1318:3: ETC
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1320:3: ETC
 +					{
 +					match(input,ETC,FOLLOW_ETC_in_rewrite_alternative1904); if (state.failed) return code;
 +					}
@@ -46797,7 +46932,7 @@
 +
 +
 +	// $ANTLR start "rewrite_element"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1321:1: rewrite_element returns [ST code=null] : ( rewrite_atom[false] | rewrite_ebnf | rewrite_tree );
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1323:1: rewrite_element returns [ST code=null] : ( rewrite_atom[false] | rewrite_ebnf | rewrite_tree );
 +	public final CodeGenTreeWalker.rewrite_element_return rewrite_element() throws RecognitionException {
 +		CodeGenTreeWalker.rewrite_element_return retval = new CodeGenTreeWalker.rewrite_element_return();
 +		retval.start = input.LT(1);
@@ -46811,7 +46946,7 @@
 +			GrammarAST ast = null;
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1327:2: ( rewrite_atom[false] | rewrite_ebnf | rewrite_tree )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1329:2: ( rewrite_atom[false] | rewrite_ebnf | rewrite_tree )
 +			int alt64=3;
 +			switch ( input.LA(1) ) {
 +			case ACTION:
@@ -46844,7 +46979,7 @@
 +			}
 +			switch (alt64) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1327:4: rewrite_atom[false]
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1329:4: rewrite_atom[false]
 +					{
 +					pushFollow(FOLLOW_rewrite_atom_in_rewrite_element1924);
 +					rewrite_atom15=rewrite_atom(false);
@@ -46854,7 +46989,7 @@
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1329:4: rewrite_ebnf
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1331:4: rewrite_ebnf
 +					{
 +					pushFollow(FOLLOW_rewrite_ebnf_in_rewrite_element1934);
 +					rewrite_ebnf16=rewrite_ebnf();
@@ -46864,7 +46999,7 @@
 +					}
 +					break;
 +				case 3 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1331:4: rewrite_tree
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1333:4: rewrite_tree
 +					{
 +					pushFollow(FOLLOW_rewrite_tree_in_rewrite_element1943);
 +					rewrite_tree17=rewrite_tree();
@@ -46894,7 +47029,7 @@
 +
 +
 +	// $ANTLR start "rewrite_ebnf"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1335:1: rewrite_ebnf returns [ST code=null] : ( ^( OPTIONAL rewrite_block[\"rewriteOptionalBlock\"] ) | ^( CLOSURE rewrite_block[\"rewriteClosureBlock\"] ) | ^( POSITIVE_CLOSURE rewrite_block[\"rewritePositiveClosureBlock\"] ) );
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1337:1: rewrite_ebnf returns [ST code=null] : ( ^( OPTIONAL rewrite_block[\"rewriteOptionalBlock\"] ) | ^( CLOSURE rewrite_block[\"rewriteClosureBlock\"] ) | ^( POSITIVE_CLOSURE rewrite_block[\"rewritePositiveClosureBlock\"] ) );
 +	public final CodeGenTreeWalker.rewrite_ebnf_return rewrite_ebnf() throws RecognitionException {
 +		CodeGenTreeWalker.rewrite_ebnf_return retval = new CodeGenTreeWalker.rewrite_ebnf_return();
 +		retval.start = input.LT(1);
@@ -46904,7 +47039,7 @@
 +		ST rewrite_block20 =null;
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1336:2: ( ^( OPTIONAL rewrite_block[\"rewriteOptionalBlock\"] ) | ^( CLOSURE rewrite_block[\"rewriteClosureBlock\"] ) | ^( POSITIVE_CLOSURE rewrite_block[\"rewritePositiveClosureBlock\"] ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1338:2: ( ^( OPTIONAL rewrite_block[\"rewriteOptionalBlock\"] ) | ^( CLOSURE rewrite_block[\"rewriteClosureBlock\"] ) | ^( POSITIVE_CLOSURE rewrite_block[\"rewritePositiveClosureBlock\"] ) )
 +			int alt65=3;
 +			switch ( input.LA(1) ) {
 +			case OPTIONAL:
@@ -46930,7 +47065,7 @@
 +			}
 +			switch (alt65) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1336:4: ^( OPTIONAL rewrite_block[\"rewriteOptionalBlock\"] )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1338:4: ^( OPTIONAL rewrite_block[\"rewriteOptionalBlock\"] )
 +					{
 +					match(input,OPTIONAL,FOLLOW_OPTIONAL_in_rewrite_ebnf1964); if (state.failed) return retval;
 +					match(input, Token.DOWN, null); if (state.failed) return retval;
@@ -46949,7 +47084,7 @@
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1343:4: ^( CLOSURE rewrite_block[\"rewriteClosureBlock\"] )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1345:4: ^( CLOSURE rewrite_block[\"rewriteClosureBlock\"] )
 +					{
 +					match(input,CLOSURE,FOLLOW_CLOSURE_in_rewrite_ebnf1984); if (state.failed) return retval;
 +					match(input, Token.DOWN, null); if (state.failed) return retval;
@@ -46968,7 +47103,7 @@
 +					}
 +					break;
 +				case 3 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1350:4: ^( POSITIVE_CLOSURE rewrite_block[\"rewritePositiveClosureBlock\"] )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1352:4: ^( POSITIVE_CLOSURE rewrite_block[\"rewritePositiveClosureBlock\"] )
 +					{
 +					match(input,POSITIVE_CLOSURE,FOLLOW_POSITIVE_CLOSURE_in_rewrite_ebnf2004); if (state.failed) return retval;
 +					match(input, Token.DOWN, null); if (state.failed) return retval;
@@ -47007,7 +47142,7 @@
 +
 +
 +	// $ANTLR start "rewrite_tree"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1359:1: rewrite_tree returns [ST code] : ^( TREE_BEGIN r= rewrite_atom[true] (el= rewrite_element )* ) ;
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1361:1: rewrite_tree returns [ST code] : ^( TREE_BEGIN r= rewrite_atom[true] (el= rewrite_element )* ) ;
 +	public final CodeGenTreeWalker.rewrite_tree_return rewrite_tree() throws RecognitionException {
 +		CodeGenTreeWalker.rewrite_tree_return retval = new CodeGenTreeWalker.rewrite_tree_return();
 +		retval.start = input.LT(1);
@@ -47025,8 +47160,8 @@
 +			}
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1370:2: ( ^( TREE_BEGIN r= rewrite_atom[true] (el= rewrite_element )* ) )
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1370:4: ^( TREE_BEGIN r= rewrite_atom[true] (el= rewrite_element )* )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1372:2: ( ^( TREE_BEGIN r= rewrite_atom[true] (el= rewrite_element )* ) )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1372:4: ^( TREE_BEGIN r= rewrite_atom[true] (el= rewrite_element )* )
 +			{
 +			match(input,TREE_BEGIN,FOLLOW_TREE_BEGIN_in_rewrite_tree2039); if (state.failed) return retval;
 +			match(input, Token.DOWN, null); if (state.failed) return retval;
@@ -47041,7 +47176,7 @@
 +											   (r!=null?((GrammarAST)r.start):null).getCharPositionInLine() + 1
 +											  );
 +						}
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1379:4: (el= rewrite_element )*
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1381:4: (el= rewrite_element )*
 +			loop66:
 +			while (true) {
 +				int alt66=2;
@@ -47052,7 +47187,7 @@
 +
 +				switch (alt66) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1380:6: el= rewrite_element
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1382:6: el= rewrite_element
 +					{
 +					pushFollow(FOLLOW_rewrite_element_in_rewrite_tree2066);
 +					el=rewrite_element();
@@ -47102,7 +47237,7 @@
 +
 +
 +	// $ANTLR start "rewrite_atom"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1398:1: rewrite_atom[boolean isRoot] returns [ST code=null] : (r= RULE_REF | ( ^(tk= TOKEN_REF (arg= ARG_ACTION )? ) |cl= CHAR_LITERAL |sl= STRING_LITERAL ) | LABEL | ACTION );
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1400:1: rewrite_atom[boolean isRoot] returns [ST code=null] : (r= RULE_REF | ( ^(tk= TOKEN_REF (arg= ARG_ACTION )? ) |cl= CHAR_LITERAL |sl= STRING_LITERAL ) | LABEL | ACTION );
 +	public final CodeGenTreeWalker.rewrite_atom_return rewrite_atom(boolean isRoot) throws RecognitionException {
 +		CodeGenTreeWalker.rewrite_atom_return retval = new CodeGenTreeWalker.rewrite_atom_return();
 +		retval.start = input.LT(1);
@@ -47116,7 +47251,7 @@
 +		GrammarAST ACTION22=null;
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1399:2: (r= RULE_REF | ( ^(tk= TOKEN_REF (arg= ARG_ACTION )? ) |cl= CHAR_LITERAL |sl= STRING_LITERAL ) | LABEL | ACTION )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1401:2: (r= RULE_REF | ( ^(tk= TOKEN_REF (arg= ARG_ACTION )? ) |cl= CHAR_LITERAL |sl= STRING_LITERAL ) | LABEL | ACTION )
 +			int alt69=4;
 +			switch ( input.LA(1) ) {
 +			case RULE_REF:
@@ -47149,7 +47284,7 @@
 +			}
 +			switch (alt69) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1399:6: r= RULE_REF
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1401:6: r= RULE_REF
 +					{
 +					r=(GrammarAST)match(input,RULE_REF,FOLLOW_RULE_REF_in_rewrite_atom2111); if (state.failed) return retval;
 +					if ( state.backtracking==0 ) {
@@ -47190,9 +47325,9 @@
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1437:3: ( ^(tk= TOKEN_REF (arg= ARG_ACTION )? ) |cl= CHAR_LITERAL |sl= STRING_LITERAL )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1439:3: ( ^(tk= TOKEN_REF (arg= ARG_ACTION )? ) |cl= CHAR_LITERAL |sl= STRING_LITERAL )
 +					{
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1437:3: ( ^(tk= TOKEN_REF (arg= ARG_ACTION )? ) |cl= CHAR_LITERAL |sl= STRING_LITERAL )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1439:3: ( ^(tk= TOKEN_REF (arg= ARG_ACTION )? ) |cl= CHAR_LITERAL |sl= STRING_LITERAL )
 +					int alt68=3;
 +					switch ( input.LA(1) ) {
 +					case TOKEN_REF:
@@ -47218,12 +47353,12 @@
 +					}
 +					switch (alt68) {
 +						case 1 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1437:5: ^(tk= TOKEN_REF (arg= ARG_ACTION )? )
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1439:5: ^(tk= TOKEN_REF (arg= ARG_ACTION )? )
 +							{
 +							tk=(GrammarAST)match(input,TOKEN_REF,FOLLOW_TOKEN_REF_in_rewrite_atom2128); if (state.failed) return retval;
 +							if ( input.LA(1)==Token.DOWN ) {
 +								match(input, Token.DOWN, null); if (state.failed) return retval;
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:1437:20: (arg= ARG_ACTION )?
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:1439:20: (arg= ARG_ACTION )?
 +								int alt67=2;
 +								int LA67_0 = input.LA(1);
 +								if ( (LA67_0==ARG_ACTION) ) {
@@ -47231,7 +47366,7 @@
 +								}
 +								switch (alt67) {
 +									case 1 :
-+										// org/antlr/grammar/v3/CodeGenTreeWalker.g:1437:21: arg= ARG_ACTION
++										// org/antlr/grammar/v3/CodeGenTreeWalker.g:1439:21: arg= ARG_ACTION
 +										{
 +										arg=(GrammarAST)match(input,ARG_ACTION,FOLLOW_ARG_ACTION_in_rewrite_atom2133); if (state.failed) return retval;
 +										}
@@ -47245,13 +47380,13 @@
 +							}
 +							break;
 +						case 2 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1438:5: cl= CHAR_LITERAL
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1440:5: cl= CHAR_LITERAL
 +							{
 +							cl=(GrammarAST)match(input,CHAR_LITERAL,FOLLOW_CHAR_LITERAL_in_rewrite_atom2144); if (state.failed) return retval;
 +							}
 +							break;
 +						case 3 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1439:5: sl= STRING_LITERAL
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1441:5: sl= STRING_LITERAL
 +							{
 +							sl=(GrammarAST)match(input,STRING_LITERAL,FOLLOW_STRING_LITERAL_in_rewrite_atom2152); if (state.failed) return retval;
 +							}
@@ -47301,7 +47436,7 @@
 +					}
 +					break;
 +				case 3 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1481:4: LABEL
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1483:4: LABEL
 +					{
 +					LABEL21=(GrammarAST)match(input,LABEL,FOLLOW_LABEL_in_rewrite_atom2166); if (state.failed) return retval;
 +					if ( state.backtracking==0 ) {
@@ -47366,7 +47501,7 @@
 +					}
 +					break;
 +				case 4 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1542:4: ACTION
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1544:4: ACTION
 +					{
 +					ACTION22=(GrammarAST)match(input,ACTION,FOLLOW_ACTION_in_rewrite_atom2176); if (state.failed) return retval;
 +					if ( state.backtracking==0 ) {
@@ -47395,7 +47530,7 @@
 +
 +
 +	// $ANTLR start "rewrite_template"
-+	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1553:1: public rewrite_template returns [ST code=null] : ( ^( ALT EPSILON EOA ) | ^( TEMPLATE (id= ID |ind= ACTION ) ^( ARGLIST ( ^( ARG arg= ID a= ACTION ) )* ) ( DOUBLE_QUOTE_STRING_LITERAL | DOUBLE_ANGLE_STRING_LITERAL )? ) |act= ACTION );
++	// org/antlr/grammar/v3/CodeGenTreeWalker.g:1555:1: public rewrite_template returns [ST code=null] : ( ^( ALT EPSILON EOA ) | ^( TEMPLATE (id= ID |ind= ACTION ) ^( ARGLIST ( ^( ARG arg= ID a= ACTION ) )* ) ( DOUBLE_QUOTE_STRING_LITERAL | DOUBLE_ANGLE_STRING_LITERAL )? ) |act= ACTION );
 +	public final ST rewrite_template() throws RecognitionException {
 +		ST code = null;
 +
@@ -47409,7 +47544,7 @@
 +		GrammarAST DOUBLE_ANGLE_STRING_LITERAL24=null;
 +
 +		try {
-+			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1554:2: ( ^( ALT EPSILON EOA ) | ^( TEMPLATE (id= ID |ind= ACTION ) ^( ARGLIST ( ^( ARG arg= ID a= ACTION ) )* ) ( DOUBLE_QUOTE_STRING_LITERAL | DOUBLE_ANGLE_STRING_LITERAL )? ) |act= ACTION )
++			// org/antlr/grammar/v3/CodeGenTreeWalker.g:1556:2: ( ^( ALT EPSILON EOA ) | ^( TEMPLATE (id= ID |ind= ACTION ) ^( ARGLIST ( ^( ARG arg= ID a= ACTION ) )* ) ( DOUBLE_QUOTE_STRING_LITERAL | DOUBLE_ANGLE_STRING_LITERAL )? ) |act= ACTION )
 +			int alt73=3;
 +			switch ( input.LA(1) ) {
 +			case ALT:
@@ -47435,7 +47570,7 @@
 +			}
 +			switch (alt73) {
 +				case 1 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1554:4: ^( ALT EPSILON EOA )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1556:4: ^( ALT EPSILON EOA )
 +					{
 +					match(input,ALT,FOLLOW_ALT_in_rewrite_template2199); if (state.failed) return code;
 +					match(input, Token.DOWN, null); if (state.failed) return code;
@@ -47447,11 +47582,11 @@
 +					}
 +					break;
 +				case 2 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1555:4: ^( TEMPLATE (id= ID |ind= ACTION ) ^( ARGLIST ( ^( ARG arg= ID a= ACTION ) )* ) ( DOUBLE_QUOTE_STRING_LITERAL | DOUBLE_ANGLE_STRING_LITERAL )? )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1557:4: ^( TEMPLATE (id= ID |ind= ACTION ) ^( ARGLIST ( ^( ARG arg= ID a= ACTION ) )* ) ( DOUBLE_QUOTE_STRING_LITERAL | DOUBLE_ANGLE_STRING_LITERAL )? )
 +					{
 +					match(input,TEMPLATE,FOLLOW_TEMPLATE_in_rewrite_template2214); if (state.failed) return code;
 +					match(input, Token.DOWN, null); if (state.failed) return code;
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1555:16: (id= ID |ind= ACTION )
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1557:16: (id= ID |ind= ACTION )
 +					int alt70=2;
 +					int LA70_0 = input.LA(1);
 +					if ( (LA70_0==ID) ) {
@@ -47470,13 +47605,13 @@
 +
 +					switch (alt70) {
 +						case 1 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1555:17: id= ID
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1557:17: id= ID
 +							{
 +							id=(GrammarAST)match(input,ID,FOLLOW_ID_in_rewrite_template2219); if (state.failed) return code;
 +							}
 +							break;
 +						case 2 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1555:23: ind= ACTION
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1557:23: ind= ACTION
 +							{
 +							ind=(GrammarAST)match(input,ACTION,FOLLOW_ACTION_in_rewrite_template2223); if (state.failed) return code;
 +							}
@@ -47504,7 +47639,7 @@
 +					match(input,ARGLIST,FOLLOW_ARGLIST_in_rewrite_template2236); if (state.failed) return code;
 +					if ( input.LA(1)==Token.DOWN ) {
 +						match(input, Token.DOWN, null); if (state.failed) return code;
-+						// org/antlr/grammar/v3/CodeGenTreeWalker.g:1574:5: ( ^( ARG arg= ID a= ACTION ) )*
++						// org/antlr/grammar/v3/CodeGenTreeWalker.g:1576:5: ( ^( ARG arg= ID a= ACTION ) )*
 +						loop71:
 +						while (true) {
 +							int alt71=2;
@@ -47515,7 +47650,7 @@
 +
 +							switch (alt71) {
 +							case 1 :
-+								// org/antlr/grammar/v3/CodeGenTreeWalker.g:1574:7: ^( ARG arg= ID a= ACTION )
++								// org/antlr/grammar/v3/CodeGenTreeWalker.g:1576:7: ^( ARG arg= ID a= ACTION )
 +								{
 +								match(input,ARG,FOLLOW_ARG_in_rewrite_template2246); if (state.failed) return code;
 +								match(input, Token.DOWN, null); if (state.failed) return code;
@@ -47542,7 +47677,7 @@
 +						match(input, Token.UP, null); if (state.failed) return code;
 +					}
 +
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1586:4: ( DOUBLE_QUOTE_STRING_LITERAL | DOUBLE_ANGLE_STRING_LITERAL )?
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1588:4: ( DOUBLE_QUOTE_STRING_LITERAL | DOUBLE_ANGLE_STRING_LITERAL )?
 +					int alt72=3;
 +					int LA72_0 = input.LA(1);
 +					if ( (LA72_0==DOUBLE_QUOTE_STRING_LITERAL) ) {
@@ -47553,7 +47688,7 @@
 +					}
 +					switch (alt72) {
 +						case 1 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1586:6: DOUBLE_QUOTE_STRING_LITERAL
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1588:6: DOUBLE_QUOTE_STRING_LITERAL
 +							{
 +							DOUBLE_QUOTE_STRING_LITERAL23=(GrammarAST)match(input,DOUBLE_QUOTE_STRING_LITERAL,FOLLOW_DOUBLE_QUOTE_STRING_LITERAL_in_rewrite_template2287); if (state.failed) return code;
 +							if ( state.backtracking==0 ) {
@@ -47565,7 +47700,7 @@
 +							}
 +							break;
 +						case 2 :
-+							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1593:6: DOUBLE_ANGLE_STRING_LITERAL
++							// org/antlr/grammar/v3/CodeGenTreeWalker.g:1595:6: DOUBLE_ANGLE_STRING_LITERAL
 +							{
 +							DOUBLE_ANGLE_STRING_LITERAL24=(GrammarAST)match(input,DOUBLE_ANGLE_STRING_LITERAL,FOLLOW_DOUBLE_ANGLE_STRING_LITERAL_in_rewrite_template2300); if (state.failed) return code;
 +							if ( state.backtracking==0 ) {
@@ -47584,7 +47719,7 @@
 +					}
 +					break;
 +				case 3 :
-+					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1603:4: act= ACTION
++					// org/antlr/grammar/v3/CodeGenTreeWalker.g:1605:4: act= ACTION
 +					{
 +					act=(GrammarAST)match(input,ACTION,FOLLOW_ACTION_in_rewrite_template2324); if (state.failed) return code;
 +					if ( state.backtracking==0 ) {
@@ -47612,8 +47747,8 @@
 +
 +	// $ANTLR start synpred1_CodeGenTreeWalker
 +	public final void synpred1_CodeGenTreeWalker_fragment() throws RecognitionException {
-+		// org/antlr/grammar/v3/CodeGenTreeWalker.g:750:4: ({...}? ( BLOCK | OPTIONAL | CLOSURE | POSITIVE_CLOSURE ) )
-+		// org/antlr/grammar/v3/CodeGenTreeWalker.g:750:5: {...}? ( BLOCK | OPTIONAL | CLOSURE | POSITIVE_CLOSURE )
++		// org/antlr/grammar/v3/CodeGenTreeWalker.g:752:4: ({...}? ( BLOCK | OPTIONAL | CLOSURE | POSITIVE_CLOSURE ) )
++		// org/antlr/grammar/v3/CodeGenTreeWalker.g:752:5: {...}? ( BLOCK | OPTIONAL | CLOSURE | POSITIVE_CLOSURE )
 +		{
 +		if ( !((((GrammarAST)input.LT(1)).getSetValue()==null)) ) {
 +			if (state.backtracking>0) {state.failed=true; return;}
@@ -47636,8 +47771,8 @@
 +
 +	// $ANTLR start synpred2_CodeGenTreeWalker
 +	public final void synpred2_CodeGenTreeWalker_fragment() throws RecognitionException {
-+		// org/antlr/grammar/v3/CodeGenTreeWalker.g:918:6: ( element_action )
-+		// org/antlr/grammar/v3/CodeGenTreeWalker.g:918:7: element_action
++		// org/antlr/grammar/v3/CodeGenTreeWalker.g:920:6: ( element_action )
++		// org/antlr/grammar/v3/CodeGenTreeWalker.g:920:7: element_action
 +		{
 +		pushFollow(FOLLOW_element_action_in_synpred2_CodeGenTreeWalker1405);
 +		element_action();
@@ -47854,9 +47989,9 @@
 +	public static final BitSet FOLLOW_element_action_in_synpred2_CodeGenTreeWalker1405 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/DefineGrammarItemsWalker.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/DefineGrammarItemsWalker.java	2019-04-04 17:22:25.476181469 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/DefineGrammarItemsWalker.java	2023-09-16 07:24:38.596858656 +0200
 @@ -0,0 +1,4468 @@
-+// $ANTLR 3.5.2 org/antlr/grammar/v3/DefineGrammarItemsWalker.g 2019-04-04 15:18:50
++// $ANTLR 3.5.3 org/antlr/grammar/v3/DefineGrammarItemsWalker.g 2023-09-15 00:00:00
 +
 +package org.antlr.grammar.v3;
 +import org.antlr.tool.*;
@@ -52325,9 +52460,9 @@
 +	public static final BitSet FOLLOW_dotLoop_in_synpred1_DefineGrammarItemsWalker1222 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/LeftRecursiveRuleWalker.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/LeftRecursiveRuleWalker.java	2019-04-04 17:22:25.476181469 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/LeftRecursiveRuleWalker.java	2023-09-16 07:24:38.466861270 +0200
 @@ -0,0 +1,3240 @@
-+// $ANTLR 3.5.2 org/antlr/grammar/v3/LeftRecursiveRuleWalker.g 2019-04-04 15:18:50
++// $ANTLR 3.5.3 org/antlr/grammar/v3/LeftRecursiveRuleWalker.g 2023-09-15 00:00:00
 +
 +package org.antlr.grammar.v3;
 +
@@ -55568,9 +55703,9 @@
 +	public static final BitSet FOLLOW_suffix_in_synpred5_LeftRecursiveRuleWalker704 = new BitSet(new long[]{0x0000000000000002L});
 +}
 --- tool/src/main/java/org/antlr/grammar/v3/TreeToNFAConverter.java	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/org/antlr/grammar/v3/TreeToNFAConverter.java	2019-04-04 17:22:25.480181488 +0200
++++ tool/src/main/java/org/antlr/grammar/v3/TreeToNFAConverter.java	2023-09-16 07:24:38.846853627 +0200
 @@ -0,0 +1,4395 @@
-+// $ANTLR 3.5.2 org/antlr/grammar/v3/TreeToNFAConverter.g 2019-04-04 15:18:50
++// $ANTLR 3.5.3 org/antlr/grammar/v3/TreeToNFAConverter.g 2023-09-15 00:00:00
 +
 +package org.antlr.grammar.v3;
 +
@@ -59966,7 +60101,7 @@
 +	public static final BitSet FOLLOW_testSetElement_in_testSetElement2000 = new BitSet(new long[]{0x0000000000000008L});
 +}
 --- tool/src/main/java/TreeToNFAConverter.tokens	1970-01-01 01:00:00.000000000 +0100
-+++ tool/src/main/java/TreeToNFAConverter.tokens	2019-04-04 17:22:25.480181488 +0200
++++ tool/src/main/java/TreeToNFAConverter.tokens	2023-09-16 07:24:38.846853627 +0200
 @@ -0,0 +1,114 @@
 +ACTION=4
 +ACTION_CHAR_LITERAL=5
