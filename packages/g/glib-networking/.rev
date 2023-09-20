@@ -693,4 +693,12 @@ a newer version not fitting</comment>
 New stable rel</comment>
     <requestid>1096191</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>63d9b37d1937455a4fbf8fc4aa4655df</srcmd5>
+    <version>2.78.0</version>
+    <time>1695208943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111882</requestid>
+  </revision>
 </revisionlist>
