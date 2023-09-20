@@ -20,7 +20,7 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.56.3
+Version:        2.57.0
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT
@@ -161,7 +161,9 @@ export RUSTFLAGS="%{build_rustflags}"
 %ifarch x86_64 %{?x86_64}
 # 2023-01-15: the pdf-related tests are failing (bsc#1207167)
 # 2023-03-17 cairo-1.17.8 filter_morphology svg test is failing
-%{cargo_test} -- --skip pdf_has_text --skip pdf_has_link --skip filter_morphology_from_reference_page_svg
+%{cargo_test} -- \
+--skip pdf_has_text --skip pdf_has_link \
+--skip filter_morphology_from_reference_page_svg --skip bugs_bug668_small_caps_svg
 %endif
 
 %post -n librsvg-2-%{librsvg_sover} -p /sbin/ldconfig

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Sep 14 08:45:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.57.0:
+  + rsvg-convert can now output PDF versions 1.4, 1.5, 1.6, in
+    addition to the default 1.7, especially for LaTeX users. See
+    the rsvg-convert(1) man page for options like --format=pdf1.4
+  + Support the image-rendering property.
+  + For consistency with other command-line tools, rsvg-convert now
+    supports an argument "-" to specify the standard input. This is
+    in addition to the already-supported syntax of not specifying
+    an input file at all.
+  + Partial support for the edgeMode attribute in feGaussianBlur,
+    only for small blurs right now.
+  + The minimum supported Rust version (MSRV) is 1.70.0.
+
+-------------------------------------------------------------------
+Tue Sep 12 11:38:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Skip bugs_bug668_small_caps_svg test, started failing with
+  harfbuzz-8.2.0
+
+-------------------------------------------------------------------
+Tue Aug 15 11:45:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.56.92:
+  + Fix the build for aarch64.
+  + More extensive logging for filter primitives.
+  + Update gtk-rs-core to 0.18.
+  + Update dependencies.
+  + Include license text in packaged crates.
+  + The minimum supported Rust version (MSRV) is 1.70.0, due to the
+    gtk-rs-core update.
+
+-------------------------------------------------------------------
 Fri Jul 21 10:17:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.56.3:
