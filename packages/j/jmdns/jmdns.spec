@@ -46,6 +46,8 @@ Summary:        API documentation for %{name}
 %setup -q
 chmod -x README.md
 
+%pom_remove_plugin :maven-javadoc-plugin
+
 %{mvn_alias} :jmdns javax.jmdns:
 
 %build
