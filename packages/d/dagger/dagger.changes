@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Sep 19 04:55:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.7:
+  * Add v0.8.7 release notes (#5798)
+  * engine: remove syncedCacheMount check for cache manager (#5797)
+  * Remove redundant return & go fmt
+  * doc(codegen): document how to bump engine dependency
+  * feat(codegen): add schema for dagger engine 0.8.3 and 0.8.4
+  * fix(codegen): clarify codegen plugin parameters and Dagger
+    version in generated code
+  * fix: Fix NPE when CLI download fails and log error
+  * fix(doc): fix javadoc for field parameters in generated code
+  * fix: Add a static 'from' method to instanciate a Scalar from a
+    String literal
+  * fix: replace deprecated API calls in tests - Container.fs ->
+    Container.rootfs - Container.exec -> Container.withExec
+  * build: fix maven versions plugin groupId
+  * fix: fix coding style for linter
+  * build: Add schema for 0.6.4
+  * fix: correctly return the dagger CLI path in codegen plugin and
+    fix some log messages
+  * build: set development version to 1.0.0-SNAPSHOT. Add "release"
+    profile dedicated to deployment
+  * build: add linter plugin and lint current code
+  * build(codegen): add introspection query in the codegen plugin
+    resources and use it when schema is not available. Inject the
+    CLI version in the code at build time
+  * build: rename package name from 'org.chelonix.dagger.*' to
+    'io.dagger.*'
+  * build: package jar with dependencies and upload artifacts in
+    github (#11)
+  * build(workflow): enable build on linux and macos (#9)
+  * fix: client hangs on close (#8)
+  * fix: support macos arm64 architure by cli downloader (#7)
+  * feat(log): add debug log when response is contains errors. (#5)
+  * fix: add missing sample in the sample code demo app (#4)
+  * build: support dependency caching in github action (#3)
+  * Clean up build process & better samples (#2)
+  * Initial version (#1)
+  * Initial commit
+
+-------------------------------------------------------------------
+Tue Sep 19 04:46:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.6:
+  * Add v0.8.6 release notes (#5794)
+  * engine: record seen cache volumes at resolver level (#5786)
+  * fix: GitLab labels (#5790)
+  * Fix name of TUI experimental ENV variable (#5789)
+  * chore(deps): bump github.com/rs/zerolog from 1.29.1 to 1.30.0
+    (#5740)
+  * chore(deps): bump go.opentelemetry.io/proto/otlp from 0.19.0 to
+    1.0.0 (#5738)
+
+-------------------------------------------------------------------
 Thu Sep 14 04:49:41 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.8.5:
