@@ -1,0 +1,20 @@
+--- a/src/java.base/share/conf/security/java.security
++++ b/src/java.base/share/conf/security/java.security
+@@ -307,6 +307,8 @@ keystore.type.compat=true
+ #
+ package.access=sun.misc.,\
+                sun.reflect.,\
++               org.GNOME.Accessibility.,\
++               org.GNOME.Bonobo.,\
+ 
+ #
+ # List of comma-separated packages that start with or equal this string
+@@ -319,6 +321,8 @@ package.access=sun.misc.,\
+ #
+ package.definition=sun.misc.,\
+                    sun.reflect.,\
++                   org.GNOME.Accessibility.,\
++                   org.GNOME.Bonobo.,\
+ 
+ #
+ # Determines whether this properties file can be appended to
