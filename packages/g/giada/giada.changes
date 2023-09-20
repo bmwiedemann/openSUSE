@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 19 20:28:07 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Correction of license based on legaldb review 
+
+-------------------------------------------------------------------
 Sun Jun 18 19:53:34 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
 
 - remove 001-Fix-build-with-fmt-9-GCC-12.patch (now upstream)

@@ -22,7 +22,7 @@ Name:           giada
 Version:        0.25.0
 Release:        0
 Summary:        Sampler Audio Tool
-License:        GPL-3.0-or-later
+License:        GPL-3.0-or-later and LGPL-2.1-or-later WITH GCC-exception-2.0 and OFL-1.1 and Zlib and (GPL-2.0+ OR AGPL-3.0 OR Commercial)
 URL:            https://giadamusic.com
 Source0:        %{name}-%{version}.tar.xz
 Patch2:         002-fix-include-cstdint.patch
