@@ -38,6 +38,7 @@ BuildRequires:  mvn(javax.xml.bind:jaxb-api)
 BuildRequires:  mvn(joda-time:joda-time)
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.httpcomponents:httpclient)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
 BuildArch:      noarch
 
 %description

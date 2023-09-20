@@ -63,4 +63,12 @@
     <comment>reproducible</comment>
     <requestid>1110608</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>d205b1d6d12f751b445a71455e14707f</srcmd5>
+    <version>1.11.3</version>
+    <time>1695209363</time>
+    <user>dimstar_suse</user>
+    <comment>Explicitely require maven-javadoc-plugin</comment>
+    <requestid>1112228</requestid>
+  </revision>
 </revisionlist>

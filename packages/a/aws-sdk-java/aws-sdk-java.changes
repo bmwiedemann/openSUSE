@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 19 10:58:36 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Explicitely require maven-javadoc-plugin
+
+-------------------------------------------------------------------
 Tue Sep 12 12:27:52 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
