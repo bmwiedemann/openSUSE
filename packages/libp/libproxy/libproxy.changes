@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Wed Sep 13 09:06:58 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libpxbackend-1_0 to baselibs.conf: required by libproxy.so.1.
+
+-------------------------------------------------------------------
+Wed Aug 16 07:28:37 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Generate libpxbackend-1_0-mini to be used inside OBS: the backend
+  is built without additional dependencies like cURL. So there is
+  no wpad/pac support in this variant. Helps break a build cycle.
+
+-------------------------------------------------------------------
+Thu Jul 13 14:16:36 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.5.3:
+  + Fix crash querying URLs without a host.
+  + Web: Update application page.
+  + Add appplication info about apt and python requests.
+
+-------------------------------------------------------------------
+Fri Jun 16 15:05:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.5.2:
+  + Link with libsocket where needed.
+  + Remove libsoup from doc and CI.
+  + Fix coverity findings.
+  + Add a comment that docs option needs introspection.
+  + Set pac data after download only.
+  + Fix race condition in px_manager_get_proxies_sync.
+  + Update gobject dependency in pkgconfig file.
+  + Reread env variables in each get_config call.
+
+-------------------------------------------------------------------
+Fri Jun  2 11:44:56 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.5.1:
+  + Guard PxManager test with pacrunner-duktape option.
+  + Install libpxbackend into pkglibdir.
+  + Move glib2 inclusion out of c++ protection.
+  + Replace libsoup with glib socket service functions.
+  + Use glib-object header instead of gio.
+  + Fix libproxy rpath.
+  + Draft: Improve ignore checks.
+- Drop pkgconfig(libpeas-1.0) BuildRequires: libpeas is no longer
+  needed.
+- Add pkgconfig(gobject-introspection-1.0) BuildRequires: this was
+  used before, but pulled in by libpeas.
+
+-------------------------------------------------------------------
+Fri Jun  2 10:04:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.5.0:
+  + Complete rewrite, now actively maintained by Volkswagen.
+- Drop libproxy-perl-cflags.patch: no longer applicable as the
+  bindings were ported to gobject-introspection.
+- Adjusted build dependencies:
+  + Dropped cmake, gcc-c++, netcfg, pkgconfig, zlib-devel,
+    NetworkManager-devel, dbus-1-devel, perl, python-rpm-macros,
+    python3-devel, python-devel, pkgconfig(gio-2.0) >= 2.26,
+    pkgconfig(gobject-2.0), pkgconfig(javascriptcoregtk-4.0),
+    libKF5ConfigCore5, pkgconfig(mozjs-38), mono-devel.
+  + Added meson, sysuser-tools, vala, pkgconfig(glib-2.0),
+    pkgconfig(libpeas-1.0), pkgconfig(gi-docgen),
+    pkgconfig(gsettings-desktop-schemas), pkgconfig(libcurl),
+    pkgconfig(libsoup-3.0).
+- Change multibuild flavors to build a client library
+  (libproxy.so.1 plus consumer include files) and a backend flavor
+  (pxbackend, linked against cURL, duktape; the lib doing the
+  actual work. The split is needed to break up build cycles with
+  curl).
+- Drop no longer existing subpackages libproxy1-config-kde,
+  libproxy1-config-gnome3, libproxy1-config-pacrunner,
+  libproxy1-networkmanager, libproxy1-pacrunner-duktape,
+  libproxy1-pacrunner-webkit, libproxy1-pacrunner-mozjs,
+  python-libproxy, python3-libproxy, perl-Net-Libproxy,
+  libproxy-sharp. All the language bindings are now handled by
+  gobject-introspection.
+- Introduce the new sub packages typelib-1_0-Libproxy-1_0,
+  libpxbackend-1_0, and libproxy-devel-doc.
+
+
+-------------------------------------------------------------------
 Thu Jun  1 12:43:25 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Only build mono support on openSUSE, not SLE nor SUSE ALP.

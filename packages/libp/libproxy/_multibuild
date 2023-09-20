@@ -1,4 +1,5 @@
 <multibuild>
-  <package>plugins</package>
+  <package>client</package>
+  <package>backend</package>
 </multibuild>
 
