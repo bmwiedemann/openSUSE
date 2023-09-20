@@ -20,7 +20,7 @@
 %bcond_without akonadi
 %bcond_with qpdfview
 Name:           kraft
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        KDE software to manage office documents in the office
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -34,6 +34,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5Codecs)
 BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5ContactEditor)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(Qt5Core) >= 5.5.0
@@ -62,7 +63,6 @@ BuildRequires:  cmake(KF5AkonadiContact)
 %endif
 %endif
 # PATCH-FIX-UPSTREAM fixakonadi.patch Use new Akonadi Prefix
-Patch1:         fixakonadi.patch
 
 %description
 Kraft is KDE software to help to create and manage office documents such as
@@ -78,9 +78,14 @@ See the website http://volle-kraft-voraus.de for more information.
 %if %{with qpdfview}
 %patch0 -p1
 %endif
-%patch1 -p1
 
 %build
+
+# Create the .tag file that is read by cmake with the version.
+# Workaround since the github created tarball does not contain the .tag file with
+# the latest commit.
+
+[ -f .tag ] && echo ".tag file exists in tarball." || echo "%{version}" > .tag
 
 %if 0%{?suse_version} > 1500
 %cmake_kf5 -d build
