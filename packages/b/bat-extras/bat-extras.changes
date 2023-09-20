@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 19 18:38:24 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 2023.09.19
+  * batman: Split short options
+  * batdiff: Show error when not in git repo
+  * batdiff: Support filtering diffs by directory
+  * batdiff: Check delta version for --hunk-style
+  * batman: Document issues with non-default themes
+  * batpipe: Add support for gzipped and bzipped tar files
+  * batpipe: Extract batpipe_archive_header() helper function
+  * all: Use eza instead of exa
+
+-------------------------------------------------------------------
 Sat Jun 17 12:47:47 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to release 2023-06-16

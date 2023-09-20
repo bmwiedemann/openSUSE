@@ -33,4 +33,14 @@ As I noticed the man pages where not installed correctly which is fixed now.</co
     <comment></comment>
     <requestid>1093582</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7ab7ae7b90359ae69403b40bf55702df</srcmd5>
+    <version>2023.09.19</version>
+    <time>1695209452</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1112361 from jlkDE
+
+Update to version 2023-09-19</comment>
+    <requestid>1112363</requestid>
+  </revision>
 </revisionlist>
