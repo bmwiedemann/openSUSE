@@ -28,18 +28,22 @@
 %global __requires_exclude typelib\\(%%namespaces\\)
 %global __requires_exclude_from ^%{_libdir}/python.*/site-packages/gi/__init__.py$
 %define _name   pygobject
+%define glib_version 2.64.0
+%define gi_version 1.64.0
+%define pycairo_version 1.16.0
+%define libffi_version 3.0
 %{?sle15_python_module_pythons}
 Name:           python-gobject
-Version:        3.44.1
+Version:        3.46.0
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://wiki.gnome.org/Projects/PyGObject/
-Source0:        https://download.gnome.org/sources/pygobject/3.44/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/pygobject/3.46/%{_name}-%{version}.tar.xz
 
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pycairo >= 1.16.0}
+BuildRequires:  %{python_module pycairo >= %{pycairo_version}}
 BuildRequires:  %{python_module pycairo-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -47,11 +51,14 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cairo-gobject)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 # build cycle!
 # BuildRequires:  pkgconfig(gdk-3.0) >= 2.38.0
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.46.0
+BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(gmodule-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(gobject-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= %{gi_version}
+BuildRequires:  pkgconfig(libffi) >= %{libffi_version}
 # Trigger an automatic installation of python(2|3.*)-gobject when python and libgirepository are installed.
 Supplements:    (python and %{introspection_real_package})
 %python_subpackages
@@ -103,9 +110,9 @@ addon libraries such as pygtk.
 %package -n %{name}-common-devel
 Summary:        Shared development files for GObject's Python bindings
 Group:          Development/Languages/Python
-Requires:       glib2-devel >= 2.56.0
-Requires:       gobject-introspection-devel >= 1.56.0
-Requires:       libffi-devel >= 3.0.0
+Requires:       glib2-devel >= %{glib_version}
+Requires:       gobject-introspection-devel >= %{gi_version}
+Requires:       libffi-devel >= %{libffi_version}
 Requires:       pkgconfig(cairo)
 Requires:       pkgconfig(cairo-gobject)
 Provides:       %{python_module gobject-common-devel = %{version}}
@@ -130,6 +137,9 @@ export CFLAGS="%{optflags}"
 # Later flavors installed the correct files into lib64 as well
 if [ "%{_libdir}" != "%{_prefix}/lib" -a -d %{buildroot}%{_prefix}/lib/pkgconfig ]; then
   rm -r  %{buildroot}%{_prefix}/lib/pkgconfig
+else
+  echo 'Removing %{buildroot}%{_prefix}/lib/pkgconfig is no longer needed.' \
+       'Please fix the spec.'
 fi
 
 %{python_expand # delete unwanted python scripts and their compiled cache files

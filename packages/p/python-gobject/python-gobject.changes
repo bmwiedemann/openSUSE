@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep 10 19:51:54 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 3.46.0:
+  + Add support for Python 3.12.
+  + Drop GTK 2 support.
+  + Complete the PEP-451 implementation in gi.importer.
+  + Replace usage of deprecated FFI closure API.
+  + Fix invalid marshalling in some cases for boxed values, for
+    example with Gtk.StyleContext.get_property().
+  + Consistent setting of enum and flag property.
+  + Fix docstring for methods that return an array and have a
+    length (out) argument.
+  + Overrides:
+    - Fix incompatibility for CssProvider.load_from_data() (GTK
+      4.10).
+    - Allow Gdk.{Color,RGBA} instances to be compared with other
+      objects.
+    - Add overrides for Gdk.FileList in Gdk-4.0.
+  + Updated documentation.
+- Add explicit BuildRequires on pkgconfig(libffi). This is looked
+  by the build scripts and was already being pulled in by something
+  else.
+
+-------------------------------------------------------------------
 Sat Jun 10 10:10:50 UTC 2023 - ecsos <ecsos@oensuse.org>
 
 - Add %{?sle15_python_module_pythons}: build additional python

@@ -770,4 +770,31 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
   flavors besides the 'default' when building for SLE15.</comment>
     <requestid>1094329</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>87ab20c676eef0de0e4b6603afd34b61</srcmd5>
+    <version>3.46.0</version>
+    <time>1695208888</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.46.0:
+  + Add support for Python 3.12.
+  + Drop GTK 2 support.
+  + Complete the PEP-451 implementation in gi.importer.
+  + Replace usage of deprecated FFI closure API.
+  + Fix invalid marshalling in some cases for boxed values, for
+    example with Gtk.StyleContext.get_property().
+  + Consistent setting of enum and flag property.
+  + Fix docstring for methods that return an array and have a
+    length (out) argument.
+  + Overrides:
+    - Fix incompatibility for CssProvider.load_from_data() (GTK
+      4.10).
+    - Allow Gdk.{Color,RGBA} instances to be compared with other
+      objects.
+    - Add overrides for Gdk.FileList in Gdk-4.0.
+  + Updated documentation.
+- Add explicit BuildRequires on pkgconfig(libffi). This is looked
+  by the build scripts and was already being pulled in by something
+  else. (forwarded request 1110326 from iznogood)</comment>
+    <requestid>1110890</requestid>
+  </revision>
 </revisionlist>
