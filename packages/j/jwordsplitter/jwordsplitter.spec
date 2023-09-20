@@ -1,7 +1,7 @@
 #
 # spec file for package jwordsplitter
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,7 @@ This package contains javadoc for %{name}.
 %prep
 %setup -q
 %pom_remove_plugin :nexus-staging-maven-plugin
+%pom_remove_plugin :maven-javadoc-plugin
 %pom_remove_plugin :maven-source-plugin
 
 rm -f \
@@ -62,7 +63,6 @@ mkdir -p tmp/de/danielnaber/jwordsplitter
 java -cp target/classes de.danielnaber.jwordsplitter.converter.SerializeDict \
 	src/main/resources/de/danielnaber/jwordsplitter/all-words.txt \
 	tmp/de/danielnaber/jwordsplitter/wordsGerman.ser
-
 
 %install
 %mvn_install
