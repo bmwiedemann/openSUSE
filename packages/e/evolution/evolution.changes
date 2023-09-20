@@ -1,4 +1,157 @@
 -------------------------------------------------------------------
+Fri Sep 15 08:02:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.50.0:
+  + itip-formatter: Skip well-known read-only sources
+  + EHeaderBarButton: Can be half-sensitive with set menu
+  + EColorCombo: Don't set own default palette
+  + ci: Rename org.gnome.evolution.nightly to
+    org.gnome.Evolution.Devel
+  + Bugs fixed:
+    - Backspace in preedit mode can delete extra letters
+    - Mail: Signed attachment causes hide of unsigned body
+    - Mail: Duplicate items in the popup menu
+    - Change default response in 'Add Attachment' dialog
+    - Fix typos ("begining", "ineficient") in code comments
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  3 14:37:59 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.49.3:
+  + Replace internal functions with new functions from libecal
+  + alarm-notify: Drop dependency on the evolution-calendar part
+  + Tweak how long to wait for a 'connected' state when opening an
+    EClient
+  + evolution-util: Declare build dependency on libsecret
+  + Force icon size for categories
+  + itip: Export to HTML without category icons
+  + Composer: Do not send 'Autocrypt' headers larger than 10KB
+  + Always use attachments for 'Forward as iCalendar'
+  + CompEditor: Cannot move memo/task between lists
+  + Calendar: Ask for deletion notice only for attendees
+  + Postpone some operations from GtkWidget::size_allocate() to
+    idle callback
+  + test-web-view-jsc: Adapt tests to WebKitGTK 2.40.3 behavior
+    changes
+  + test-markdown: Fix a memory leak
+  + Bugs fixed:
+    - CompEditor: Attendees dialogs out of sync in Schedule and
+      General tab
+    - ESrvConfigLookup: Consider mail configuration complete
+    - Mail: Add option to hide unread count in folder tree
+    - Preferences: Network proxy port not always saved
+    - Calendar: Disallow change of target client for existing
+      components
+    - Error message only half readable (insufficient panel height)
+    - Pair backup process window with the main application
+    - Composer: HTML formatting left after mode change to Plain
+      Text
+    - ESpinner: Cache working.png into memory
+    - mail-to-task: Extract text also from HTML-only messages
+    - Correct color of expand/collapse buttons in preview in Dark
+      mode
+    - itip: Limit headers in multipart/alternative part
+    - Calendar: Change how categories are exported into preview
+    - itip-formatter: Rename Send reply to Sender -> Organizer
+    - CompEditor: Enhance time re-calculation on overlap change
+    - Mail: Detect which images WebKitGTK can show
+    - Calendar: Minicalendar blocks sidebar shrink
+    - Add Move / Copy to folder into message preview context menu
+    - Shell: Add option to prefer symbolic icons
+    - First-Run Assistant: Set file filter to backup file chooser
+    - Mail: Add filter condition for iCalendar attachment
+    - ITip formatter ignores Dark mode preference for text/plain
+      MIME parts
+    - Calendar: Hard to read meeting time selector header in Dark
+      mode
+    - mail-to-task: Do not create all day events
+    - Mail: Add option to auto-show insecure parts
+    - CompEditor: Ignore abbreviated date format
+    - Only headers visible for unsigned emails attached to signed
+      emails
+    - Calendar: Import only valid iCalendar files
+    - Add "Send after 1 minute" option to composer's "Send through
+      Outbox"
+    - "Next" in Collection Account setup can be disabled for no
+      valid reason
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  4 12:46:32 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.49.2:
+  + Calendar: Indicate detached instance of a recurring event.
+  + Mail: Correct function prototype declaration
+    (-Wenum-int-mismatch).
+  + MessageList: Remove unused code.
+  + itip-formatter: Allow writing user response comments for all
+    calendars.
+  + itip-formatter: Disable send of iTip messages when disabled by
+    the user.
+  + CompEditor: Show source full name for existing components.
+  + EMeetingStore: Avoid runtime warning when setting NULL time
+    zone.
+  + Composer: Clear old alerts before sending a message.
+  + Bugs fixed:
+    - Sorting Contacts in the 'Address cards' view
+    - itip-formatter: Send meeting invitations as
+      multipart/alternative
+    - Improve handling of suspiciously signed/encrypted emails
+      (multiparts)
+    - Support Autocrypt
+    - Calendar: Use user-configured date format in the editor
+    - Option to get Delivery Status Notification (DSN)
+    - Allow to save forwarded mails in the original message folder
+    - ETimezoneEntry: Enable completion by timezone location
+    - Add save e-mails individually as eml format
+    - Mail: Allow to import PGP keys
+    - Calendar: Disallow change of target client for existing
+      components
+    - Composer: Offer to send without encryption when key is
+      missing
+    - CompEditor: Open map from Location field
+    - Mail: Add option to group messages into flat threads
+    - CompEditor: Allow unset recurrence for uneditable recurrences
+    - alarm-notify: Detect format change in settings
+    - Contacts: Add columns for mailing address fields
+    - Composer: Format change can discard message text
+    - Ability to update / overwrite a template when saving it
+    - "Archive…" direct action should not have ellipsis dots at the
+      end
+    - The "Select Address Book" dialog has disabled OK button after
+      open
+    - Calendar: Use meeting's timezone in the comp editor Schedule
+      tab
+    - Re-enable contact maps feature
+    - Calendar: Disallow save for all instances on a detached
+      instance
+    - Calendar does not remember selected weeks when scrolling via
+      button
+    - Calendar: Missing events in Month view print out
+    - Correct wording of mail composer's external attachments
+      warning infobar
+    - Composer: Change Max Line Length to RFC 2822 Limits
+    - CalDAV: Allow to disable schedule reply on remove
+    - Add option to reduce book/cal data usage when on a metered
+      connection
+    - Calendar: Add option to (not) delete "Declined" meeting
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 16 13:51:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.49.1:
+  + Bugs Fixed:
+    - Mail: Cannot change the search domain with active search
+    - iTip formatter: Hide the read-only calendars in the list
+    - Alternative Reply: Regroup the reply options related to
+      quoting
+    - Allow to Search Contact's Phone With Numbers Only
+    - Option to disable saving a copy of sent messages
+    - Mail: Warn when adding an existing label
+
+-------------------------------------------------------------------
 Fri Jun 30 08:32:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.48.4:

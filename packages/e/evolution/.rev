@@ -2501,4 +2501,12 @@ New stable release</comment>
 New stable rel</comment>
     <requestid>1096193</requestid>
   </revision>
+  <revision rev="271" vrev="1">
+    <srcmd5>e487bdf05fe85bd34bdcee0cf3cd7228</srcmd5>
+    <version>3.50.0</version>
+    <time>1695208902</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 1111478 from iznogood)</comment>
+    <requestid>1111580</requestid>
+  </revision>
 </revisionlist>
