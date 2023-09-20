@@ -16,16 +16,17 @@
 #
 
 
-%define basever 44
+%define basever 45
 
 Name:           gnome-session
-Version:        44.0
+Version:        45.0
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-session/44/%{name}-%{version}.tar.xz
+#Source0:        https://download.gnome.org/sources/gnome-session/44/%%{name}-%%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        gnome
 Source2:        gnome.desktop
 # PATCH-FIX-UPSTREAM gnome-session-better-handle-empty-xdg_session_type.patch bsc#1084756 bgo#794256 yfjiang@suse.com -- solution provided by msrb@suse.com using a more reasonable way to handle gpu acceleration check
@@ -188,6 +189,8 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_datadir}/glib-2.0/schemas/org.gnome.SessionManager.gschema.xml
 %dir %{_datadir}/gnome-session
 %dir %{_datadir}/gnome-session/sessions
+%dir %{_datadir}/xdg-desktop-portal
+%{_datadir}/xdg-desktop-portal/gnome-portals.conf
 %{_mandir}/man1/gnome-session.1%{?ext_man}
 %{_mandir}/man1/gnome-session-inhibit.1%{?ext_man}
 %{_mandir}/man1/gnome-session-quit.1%{?ext_man}

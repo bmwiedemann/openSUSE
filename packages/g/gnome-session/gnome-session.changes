@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Sep 17 12:05:59 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Two crashers fixes.
+  + Fix inverted boolean in the "null" system backend.
+  + Updated translations.
+- Drop gnome-session-Fix-inhibit-DBus.patch: Fixed upstream.
+- Bump basever define to 45 following upstream changes.
+
+-------------------------------------------------------------------
+Thu Sep 14 07:27:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add gnome-session-Fix-inhibit-DBus.patch: gsm-manager: Fix
+  Inhibit DBus method handler (glgo#gnome-session!97).
+
+-------------------------------------------------------------------
+Mon Sep 11 17:41:17 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 44.0+10:
+  + gnome-session: Bind more LC_* variables to REGION
+  + gsm-system: make return_false actually return FALSE
+  + data: Add gnome-portals.conf
+  + DOAP: Fix 'bug-database' value to point to GNOME GitLab Issues
+  + Updated translations.
+- Switch compression to zst, both in service and tarball produced.
+
+-------------------------------------------------------------------
 Thu May  4 11:11:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(dbus-glib-1) BuildRequires: Only needed when
