@@ -20,7 +20,7 @@ fi
 }
 
 function split_name_version2 {
-  symbol=$(echo $1 | awk -F: '{print $1}' | sed "s:[' ]::g")
+  symbol=$(echo $1 | awk -F: '{sub(/^.*{/, "", $1); print $1}' | sed "s:[' ]::g")
   version=$(echo $1 | awk -F: '{print $2}' | sed "s:[' ]::g")
 }
 
@@ -149,7 +149,7 @@ oldIFS=$IFS
 IFS=:
 for file in "$jspkg"; do
 	IFS=$'\n'
-	PKGS=$(pcre2grep -M "pkg.require\\(([^;])*" $file | grep -o "'.*': '.*'")
+	PKGS=$(pcre2grep -M "pkg.require\\(([^;])*" $file | grep -o -E "'?.*'?: '.*'")
 	for pkg in $PKGS; do
 		split_name_version2 $pkg
 		found=0

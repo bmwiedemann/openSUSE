@@ -17,7 +17,7 @@
 
 
 Name:           gobject-introspection
-Version:        1.76.1
+Version:        1.78.1
 Release:        0
 # FIXME: Find a way to identify if we need python3-gobject or python-gobject from gi-find-deps.sh.
 Summary:        GObject Introspection Tools
@@ -25,7 +25,7 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.76/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.78/%{name}-%{version}.tar.xz
 # gi-find-deps.sh is a rpm helper for Provides and Requires. Script creates typelib()-style Provides/Requires.
 Source1:        gi-find-deps.sh
 Source2:        gobjectintrospection.attr
