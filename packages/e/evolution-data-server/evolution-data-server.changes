@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Fri Sep 15 08:00:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.50.0:
+  + Correct test-cal-backend-sexp expected arguments
+  + Add e_util_guess_source_is_readonly() utility function
+  + Bugs fixed:
+    - addressbook-export: Do not translate `--format` arg
+      description
+    - Disable building tests in CMake
+    - Fix a typo (begining) in an openldap-extract.h comment
+    - Allow to use the flatpak manifest directly from GNOME Builder
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  3 14:18:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.49.3:
+  + libecal: Move some basic utility functions from Evolution
+  + build: Do not depend on libsecret-unstable
+  + Harmonize `sizeof` keyword use
+  + CamelGgpContext: Strip unneeded information from keys on export
+  + ECalComponentText: Fix compiler warning from type-check of
+    const object
+  + Bugs fixed:
+    - IMAPx: Messages unexpectedly deleted from Inbox
+    - docs: Move the gi-docgen documentation to the parent folder
+    - Use collection source also when it has no auth method set
+    - IMAP: Cache does not refresh after UIDVALIDITY changes
+    - reminder-watcher: Default to system set 24-hour format
+    - docs: Add more dependencies to the gi-docgen generated
+      documentation
+    - Refine the pkgconfig and .gir dependencies
+    - Add "Unset Label" action in filter rules
+    - OAuth2: Provide detailed error on access token refresh
+      failure
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  4 12:41:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.49.2:
+  + ECalMetaBackend: Error when trying to modify all instances from
+    a detached instance.
+  + ESoupSession: Setup GSSAPI/NTLM authentication also for
+    insecure connections.
+  + Calendar: Correct function prototype declarations
+    (-Wenum-int-mismatch).
+  + IMAPx: Remove unused argument from
+    imapx_update_message_info_flags().
+  + Camel: Add functions related to GPG key import/info.
+  + IMAPx: Disable "Single client mode" by default.
+  + Fix a memory leak in EDataBookViewWatcher-s.
+  + libedata-book: Querying in aux tables fails with an SQLite
+    error.
+  + libedata-book: Treat "contains" query with empty value as
+    "exists".
+  + EDataBookViewWatcher-s: Claim runtime warning when fails to get
+    contacts.
+  + Bugs fixed:
+    - CalDAV: Allow to disable schedule reply on remove.
+    - Add option to reduce book/cal data usage when on a metered
+      connection.
+    - CalDAV: Zimbra has incorrect OPTIONS response for shared
+      calendars.
+    - Calendar: Add option to (not) delete "Declined" meeting.
+    - Camel MIME utils: fix aliasing issue in datetok.
+    - ECollator: Always include Latin/English letters.
+    - Camel: Filtering Search folder leaves changed messages in the
+      result.
+    - EBookMetaBackend: Changes from refresh() not propagated to
+      the opened views.
+    - ci: Export the documentation with GitLab Pages.
+    - docs: Add gi-docgen based documentation for all the
+      libraries.
+    - Add functions to set and support Autocrypt for mail messages.
+    - Calendar: Use user-configured date format in the editor
+    - Option to get Delivery Status Notification (DSN).
+    - CamelCipherContext: Add a specific error code for missing
+      public key.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jul 16 13:50:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.49.1:
+  + Bugs Fixed: IMAP: Overriding "[Gmail]" namespace doesn't work.
+
+-------------------------------------------------------------------
 Fri Jun 30 08:30:27 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.48.4:

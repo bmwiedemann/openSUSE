@@ -32,13 +32,13 @@
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.48.4
+Version:        3.50.0
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
-Source0:        https://download.gnome.org/sources/evolution-data-server/3.48/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution-data-server/3.50/%{name}-%{version}.tar.xz
 
 BuildRequires:  cmake
 BuildRequires:  db-devel
