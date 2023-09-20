@@ -1,7 +1,7 @@
 #
 # spec file for package PackageKit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,7 @@ Patch7:         PackageKit-zypp-disable-upgrade-system-in-sle.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-restore-pool-status-after-simulating-update.patch gh#PackageKit/PackageKit/commit/2b61a6649, bsc#1199895 sckang@suse.com -- zypp: restore pool status after simulating an update
 Patch8:         PackageKit-zypp-restore-pool-status-after-simulating-update.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-fix-is-tumbleweed-check.patch gh#PackageKit/PackageKit/commit/146890153 sckang@suse.com -- zypp: build the pool before calling is_tumbleweed()
-Patch9:        PackageKit-zypp-fix-is-tumbleweed-check.patch
+Patch9:         PackageKit-zypp-fix-is-tumbleweed-check.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-update-libzypp-dependency-version.patch gh#PackageKit/PackageKit/commit/58c7c0285, bsc#1199895 sckang@suse.com -- zypp: update libzypp dependency version
 Patch10:        PackageKit-zypp-update-libzypp-dependency-version.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-dont-refresh-before-searching.patch gh#PackageKit/PackageKit/commit/7e700e217, bsc#1202796 sckang@suse.com -- zypp: Don't refresh repos before searching
@@ -74,6 +74,8 @@ Patch13:        PackageKit-zypp-add-repo-in-packageid.patch
 Patch14:        PackageKit-zypp-fix-ambiguous-filesystem-reference.patch
 # PATCH-FIX-UPSTREAM PackageKit-fix-pkcon-permission.patch gh#PackageKit/PackageKit/commit/47b7f97bc, bsc#1209138 sckang@suse.com -- trivial: Drop unnecessary x permission
 Patch15:        PackageKit-fix-pkcon-permission.patch
+# PATCH-FIX-UPSTREAM PackageKit-dynamic-export.patch boo#1213309 dimstar@opensuse.org -- Fix loading modules when built with glib 2.70
+Patch16:        PackageKit-dynamic-export.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
