@@ -16,12 +16,12 @@
 #
 
 
-%global __requires_exclude typelib\\(Meta|MetaTest|Soup|St|Cogl|Clutter\\)
-%define mutter_api 12
-%define mutter_req 44.beta
+%global __requires_exclude typelib\\(Meta|MetaTest|Soup|St|Cogl|Clutter|TelepathyGlib\\)
+%define mutter_api 13
+%define mutter_req 45.beta
 
 Name:           gnome-shell
-Version:        44.4
+Version:        45.0
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -30,7 +30,7 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell
 # Source url disabled as we are using a git checkout via source service
 #Source0:        https://download.gnome.org/sources/gnome-shell/41/%%{name}-%%{version}.tar.xz
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 # SOURCE-FEATURE-SLE aboutMenu fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
 Source1:        aboutMenu.js
@@ -234,6 +234,10 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %license COPYING
 %doc README.md NEWS
 %{_bindir}/gnome-shell
+%{_bindir}/gnome-extensions
+%{_bindir}/gnome-shell-extension-prefs
+%{_bindir}/gnome-shell-extension-tool
+%{_bindir}/gnome-shell-test-tool
 %dir %{_libdir}/gnome-shell
 %dir %{_libexecdir}/gnome-shell
 %exclude %{_libexecdir}/gnome-shell/gnome-shell-calendar-server
@@ -241,12 +245,12 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_libexecdir}/gnome-shell/gnome-shell-perf-helper
 %{_libexecdir}/gnome-shell/gnome-shell-portal-helper
 %{_libdir}/gnome-shell/Gvc-1.0.typelib
-%{_libdir}/gnome-shell/Shell-12.typelib
-%{_libdir}/gnome-shell/St-12.typelib
+%{_libdir}/gnome-shell/Shell-%{mutter_api}.typelib
+%{_libdir}/gnome-shell/St-%{mutter_api}.typelib
 %{_libdir}/gnome-shell/libgnome-shell-menu.so
-%{_libdir}/gnome-shell/libshell-12.so
+%{_libdir}/gnome-shell/libshell-%{mutter_api}.so
 %{_libdir}/gnome-shell/libgvc.so
-%{_libdir}/gnome-shell/libst-12.so
+%{_libdir}/gnome-shell/libst-%{mutter_api}.so
 %{_datadir}/applications/org.gnome.Shell.desktop
 %{_datadir}/applications/org.gnome.Shell.PortalHelper.desktop
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Introspect.xml
@@ -296,11 +300,6 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/gnome-shell/org.gnome.ScreenSaver
 %{_datadir}/gnome-shell/org.gnome.ScreenSaver.src.gresource
 
-%{_bindir}/gnome-shell-extension-tool
-%{_bindir}/gnome-shell-perf-tool
-
-%{_bindir}/gnome-extensions
-%{_bindir}/gnome-shell-extension-prefs
 %{_mandir}/man?/gnome-extensions.?%{ext_man}
 %{_datadir}/bash-completion/completions/gnome-extensions
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Shell.Extensions.svg

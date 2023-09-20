@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Sat Sep 16 22:16:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Fix exposing window previews on lock screen via keyboard
+    shortcuts
+  + Improve handling of latched vs. locked modes in OSK
+  + Fix regression in workspace state tracking
+  + Update extensions immediately on startup after major upgrades
+  + Reverse slider direction in RTL locales
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Change compression of tarball in service and spec to zst from xz.
+
+-------------------------------------------------------------------
+Wed Sep  6 19:26:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.rc:
+  + Allow notification dismissal with backspace
+  + Add workspace indicators in activities button
+  + Add extension hook to add quick settings items
+  + Fix legibility issue in calendar
+  + Fix three-finger swipes on touchscreens
+  + Add more options to `gnome-extensions create`
+  + Fix scrolling regression in ScrollView
+  + Fix broken workspace animation with swipe gesture
+  + Restore focus indication in system entries
+  + Use UUID as fallback extension gettext domain
+  + Reflect core app change in default "Utilities" folder
+  + Support OWE networks in status menu
+  + Show immediate feedback when toggling bluetooth
+  + Switch workspaces when scrolling over activities button
+  + Wrap around when navigating menus with arrow keys
+  + Fix background apps menu showing up empty
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  4 17:46:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta.1:
+  + Fix input handling in alt-tab and several other components
+  + Fix screenshot tool
+  + Export notification source classes for extensions
+  + Finishing ESM porting touches
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  4 16:46:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + Load extensions as modules
+  + Run "perf" tests as external scripts
+  + Remove toLocaleFormat() from date
+  + Use Tecla for keyboard layout previews
+  + Fix accessibility of quick settings sliders
+  + Port to EcmaScript modules
+  + Overhaul ExtensionUtils API for modules
+  + Add a camera indicator
+  + Add keyboard backlight quick toggle
+  + Hide popup menu ornaments by default
+  + Improve light style variant
+  + Add InjectionManager convenience API for extensions
+  + Use per-direction labels on ring/strip tablet actions
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Add TelepathyGlib to global typelibs exclude.
+
+-------------------------------------------------------------------
+Mon Sep  4 15:44:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.alpha:
+  + Improve background apps menu
+  + Complete GTK4 port
+  + Use user-defined names in bluetooth menu
+  + Improve the built-in screen recorder
+  + Remove the app menu
+  + Fix stuck authentication dialog in remote sessions
+  + Provide generated toolbox images for development
+  + Fix glitches in calendar when using large-text option
+  + Use icons for ornaments in popup menus
+  + Improve calendar styling
+  + Fix IM popup getting stuck on engine changes
+  + Support color-scheme setting for default stylesheet
+  + Remove Soup2 support
+  + Expose public functions for search provider registration
+  + Updated translations.
+- Bump mutter_api 13 and mutter_req 45.alpha following upstream
+  changes.
+
+-------------------------------------------------------------------
 Mon Sep  4 14:31:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.4:
