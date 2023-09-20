@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Sep 16 16:20:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0.2:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep  3 12:11:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0.1:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 16 20:03:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Search provider performance improvements.
+  + Use numeric font instead of monospace.
+  + Fixed electron-volt unit abbreviation.
+  + Fixed erroneous Joule unit name.
+  + Fixed missing build dependency.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug  4 09:38:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + Fixed variable and function popover reverse typing.
+  + Better left/right cursor key handling.
+  + Improved toolbar using Adwaita library.
+  + Flatpak build improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jul 11 12:07:50 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.alpha:
+  + Remember window size
+  + Allow opening Main Menu by pressing F10
+  + Extend bit-shifting limit
+  + Added new energy units
+  + Added TWD support via Bank of Canada rates
+  + Added legal section for exchange rate source attribution
+  + Added United Nations Treasury exchange rate datasource
+  + Added Jamaican Dollar currency
+  + Added Ukrainian hryvnia currency
+  + Added Nigerian Naira currency
+  + Changed symbolic icon to C on the clear button
+  + Dropped VEF currency support
+  + Use new vala-nightly SDK extension for flatpak
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 17 20:23:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:
