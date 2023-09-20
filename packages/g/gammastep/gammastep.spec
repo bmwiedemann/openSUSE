@@ -1,7 +1,7 @@
 #
 # spec file for package gammastep
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           gammastep
 Version:        2.0.9
 Release:        0
 Summary:        Adjusts the color temperature of your screen according to time of day
-License:        GPL-3.0-or-later
+License:        0BSD AND GPL-3.0-or-later AND MIT
 URL:            https://gitlab.com/chinstrap/gammastep
 Source0:        %{url}/-/archive/v%{version}/%{name}-v%{version}.tar.gz
 BuildRequires:  appstream-glib
