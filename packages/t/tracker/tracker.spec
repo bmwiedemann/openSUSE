@@ -21,13 +21,13 @@
 %define RPMTrackerAPI 3_0
 
 Name:           tracker
-Version:        3.5.3
+Version:        3.6.0
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker/3.5/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tracker/3.6/%{name}-%{version}.tar.xz
 
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
@@ -195,7 +195,6 @@ mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 %files -n tracker-data-files
 %dir %{_datadir}/tracker3/domain-ontologies
 %{_datadir}/tracker3/ontologies/
-%{_datadir}/tracker3/stop-words/
 
 %files -n libtracker-sparql-%{RPMTrackerAPI}-0
 %{_libdir}/libtracker-sparql*.so.*

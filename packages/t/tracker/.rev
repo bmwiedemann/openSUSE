@@ -1339,4 +1339,12 @@
   doesn't contain any binaries. (forwarded request 1090301 from iznogood)</comment>
     <requestid>1090367</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>357b1579930ab67f61cddc7965aeee4a</srcmd5>
+    <version>3.6.0</version>
+    <time>1695208939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111878</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Sep 16 15:35:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.6.0:
+  + Use BM25 as ranking algorithm.
+  + Better and more cohesive documentation.
+  + Add tracker_batch_add_rdf() API call to insert RDF data as part
+    of an update batch.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  6 03:34:06 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 3.6.rc:
+  + Updated documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Aug 11 10:54:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.6.beta:
+  + Use BM25 as FTS ranking algorithm.
+  + Add tracker_batch_add_rdf() call to add RDF as a batch
+    operation.
+  + Fix warnings with newer glib.
+  + Adapt tests to SQLite >= 3.42.
+  + Build improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul  7 19:07:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.6.alpha:
+  + Improved threading guarantees of TrackerNotifier signal
+    callbacks.
+  + Add tracker-await-file tool to trackertestutils.
+  + A number of build system fixes.
+
+-------------------------------------------------------------------
 Thu Jun  1 14:24:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.5.3:
