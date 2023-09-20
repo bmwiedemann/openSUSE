@@ -45,6 +45,7 @@ This package contains API documentation for %{name}.
 %setup -q
 %patch0 -p1
 
+%pom_remove_plugin :maven-javadoc-plugin
 %pom_remove_plugin :maven-source-plugin
 
 %build
