@@ -1466,4 +1466,12 @@ work. (forwarded request 640069 from iznogood)</comment>
   the relevant color management has been moved to mutter. (forwarded request 1102332 from yfjiang)</comment>
     <requestid>1102933</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>a207fa8ca4b179b099c75ecee26e5cbc</srcmd5>
+    <version>45.0</version>
+    <time>1695208941</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1111879</requestid>
+  </revision>
 </revisionlist>

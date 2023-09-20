@@ -1,7 +1,8 @@
-diff -urp gnome-settings-daemon-3.33.90.orig/plugins/media-keys/gsd-media-keys-manager.c gnome-settings-daemon-3.33.90/plugins/media-keys/gsd-media-keys-manager.c
---- gnome-settings-daemon-3.33.90.orig/plugins/media-keys/gsd-media-keys-manager.c	2019-08-05 18:40:19.000000000 -0500
-+++ gnome-settings-daemon-3.33.90/plugins/media-keys/gsd-media-keys-manager.c	2019-08-31 06:38:56.889827801 -0500
-@@ -374,7 +374,7 @@ get_key_string (MediaKey *key)
+Index: b/plugins/media-keys/gsd-media-keys-manager.c
+===================================================================
+--- a/plugins/media-keys/gsd-media-keys-manager.c
++++ b/plugins/media-keys/gsd-media-keys-manager.c
+@@ -350,7 +350,7 @@ get_key_string (MediaKey *key)
  	else if (key->custom_path != NULL)
  		return g_strdup_printf ("custom:%s", key->custom_path);
  	else
@@ -10,7 +11,7 @@ diff -urp gnome-settings-daemon-3.33.90.orig/plugins/media-keys/gsd-media-keys-m
  }
  
  static GStrv
-@@ -416,7 +416,7 @@ get_bindings (GsdMediaKeysManager *manag
+@@ -392,7 +392,7 @@ get_bindings (GsdMediaKeysManager *manag
                                                  key->custom_path);
  		binding = g_settings_get_string (settings, "binding");
  	} else
@@ -19,9 +20,10 @@ diff -urp gnome-settings-daemon-3.33.90.orig/plugins/media-keys/gsd-media-keys-m
  
          array = g_ptr_array_new ();
          g_ptr_array_add (array, binding);
-diff -urp gnome-settings-daemon-3.33.90.orig/plugins/rfkill/rfkill-glib.c gnome-settings-daemon-3.33.90/plugins/rfkill/rfkill-glib.c
---- gnome-settings-daemon-3.33.90.orig/plugins/rfkill/rfkill-glib.c	2019-08-05 18:40:19.000000000 -0500
-+++ gnome-settings-daemon-3.33.90/plugins/rfkill/rfkill-glib.c	2019-08-31 06:39:55.674139424 -0500
+Index: b/plugins/rfkill/rfkill-glib.c
+===================================================================
+--- a/plugins/rfkill/rfkill-glib.c
++++ b/plugins/rfkill/rfkill-glib.c
 @@ -268,7 +268,7 @@ op_to_string (unsigned int op)
  	case RFKILL_OP_CHANGE_ALL:
  		return "CHANGE_ALL";
@@ -31,10 +33,11 @@ diff -urp gnome-settings-daemon-3.33.90.orig/plugins/rfkill/rfkill-glib.c gnome-
  	}
  }
  
-diff -urp gnome-settings-daemon-3.33.90.orig/plugins/xsettings/xsettings-manager.c gnome-settings-daemon-3.33.90/plugins/xsettings/xsettings-manager.c
---- gnome-settings-daemon-3.33.90.orig/plugins/xsettings/xsettings-manager.c	2019-08-05 18:40:19.000000000 -0500
-+++ gnome-settings-daemon-3.33.90/plugins/xsettings/xsettings-manager.c	2019-08-31 06:40:54.030448794 -0500
-@@ -268,7 +268,7 @@ xsettings_get_typecode (GVariant *value)
+Index: b/plugins/xsettings/xsettings-manager.c
+===================================================================
+--- a/plugins/xsettings/xsettings-manager.c
++++ b/plugins/xsettings/xsettings-manager.c
+@@ -271,7 +271,7 @@ xsettings_get_typecode (GVariant *value)
      case G_VARIANT_CLASS_TUPLE:
        return XSETTINGS_TYPE_COLOR;
      default:

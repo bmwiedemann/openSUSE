@@ -27,16 +27,16 @@
 %bcond_without wacom
 %endif
 
-%define base_ver 44
+%define base_ver 45
 
 Name:           gnome-settings-daemon
-Version:        44.1
+Version:        45.0
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-settings-daemon
-Source0:        https://download.gnome.org/sources/gnome-settings-daemon/44/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-settings-daemon/45/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-initial-keyboard.patch bsc#979051 boo#1009515 federico@suse.com -- Deal with the default keyboard being set from xkb instead of GNOME
 Patch1:         gnome-settings-daemon-initial-keyboard.patch
@@ -83,7 +83,6 @@ BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib) >= 2.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.36.2
 BuildRequires:  pkgconfig(mm-glib) >= 1.0
-BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(pango) >= 1.20.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.114
 BuildRequires:  pkgconfig(systemd)
@@ -103,6 +102,9 @@ Requires:       gsettings-desktop-schemas
 Requires:       /usr/bin/pkexec
 # For housekeeping plugin, that uses the nautilus dbus service
 Recommends:     nautilus
+%if %{with smartcard}
+BuildRequires:  pkgconfig(gck-2)
+%endif
 %if %{with wacom}
 BuildRequires:  pkgconfig(libwacom) >= 0.7
 %endif

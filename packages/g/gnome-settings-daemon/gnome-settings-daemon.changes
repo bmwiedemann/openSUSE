@@ -1,10 +1,49 @@
 -------------------------------------------------------------------
+Sat Sep 16 15:31:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep  6 03:06:15 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 45.rc:
+  + Smartcards: Rewrite to use p11-kit backend via Gck API.
+  + Updated translations.
+- Replace BuildRequires on pkgconfig(nss) with pkgconfig(gck-2),
+  following upstream change. And nest it under if-with "smartcard",
+  as it's only required when building with smartcard support.
+- Refresh patches with Quilt.
+
+-------------------------------------------------------------------
+Fri Aug 11 10:37:50 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + Fix linkage of GResources.
+  + USB protection: Change wording of notification.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Aug  4 09:04:02 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Do not use %autopatch to build on SLE where rpm version is not
   ready for the macro.
 - Drop patch gnome-settings-daemon-bnc873545-hide-warnings.patch:
   the relevant color management has been moved to mutter.
+
+-------------------------------------------------------------------
+Fri Jul  7 19:14:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.alpha:
+  + Housekeeping: Clean up x-large and xx-large thumbnails.
+  + Power:
+    - Respect the "nothing" power-button-action for VMs.
+    - Expose number of supported steps for keyboard backlight.
+  + Screensaver: Better explain why out-of-spec D-Bus methods don't
+    work.
+  + USB protection: Fix race conditions and other general
+    improvements.
+  + Updated translations.
 
 -------------------------------------------------------------------
 Tue Apr 18 14:40:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
