@@ -1,7 +1,7 @@
 #
 # spec file for package QtPass
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           QtPass
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        A multi-platform gui for pass
 License:        GPL-3.0-only
@@ -28,7 +28,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5.7.0
+BuildRequires:  pkgconfig(Qt5Core) >= 5.10.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -38,6 +38,7 @@ Requires:       password-store
 Recommends:     git-core
 Recommends:     gpg2
 Recommends:     pwgen
+Provides:       qtpass
 
 %description
 QtPass is a multi-platform GUI for pass, the standard unix password manager.
@@ -54,6 +55,7 @@ export QT_HASH_SEED=0
 %qmake5_install
 %suse_update_desktop_file -i qtpass
 install -Dpm644 artwork/icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/qtpass-icon.svg
+install -Dpm644 qtpass.appdata.xml %{buildroot}%{_datadir}/appdata/qtpass.appdata.xml
 install -Dpm644 qtpass.1 %{buildroot}%{_mandir}/man1/qtpass.1
 
 # do not ship tests
@@ -64,6 +66,7 @@ rm -rf %{buildroot}%{_prefix}%{_prefix}/tests
 %doc README.md
 %{_bindir}/qtpass
 %{_datadir}/applications/qtpass.desktop
+%{_datadir}/appdata/qtpass.appdata.xml
 %{_datadir}/icons/hicolor/scalable/apps/qtpass-icon.svg
 %{_mandir}/man1/qtpass.1%{?ext_man}
 

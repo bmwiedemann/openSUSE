@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue Sep 19 15:44:06 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.4.0
+  * What's Changed
+    - Don't use a deprecated method in #491
+    - Issue #402: 'deselect()' on clearing filter in #490
+    - Don't base pass-otp availability decision on hardcoded /usr/lib in #499
+    - Use new stable version of install-qt-action.  in #502
+    - Enable out-of-source build in #503
+    - Enable ubuntu, windows and macOS based builds for CI in #508
+    - Spelling: Git pull, Git push in #516
+    - Fix blurry icons when fractional scaling is enabled in #526
+    - Update minimum Qt version in #527
+    - #514 Show password with a monospace font in #528
+    - Clear search on profile change in #529
+    - Move MainWindow to the screen the cursor is on in #547
+    - Fix issues with renaming passwords and moving folders in #532
+    - Explicitly only remove ".gpg" when renaming files in #558
+    - Keep suffices when moving (to) a directory while imitiating pass in #559
+    - Fix keys created/expires dates in the users dialog window (fix: 571) in #572
+    - Fix installation instructions in README.md in #565
+    - Delete context menu after exec in #578
+    - Add more options for the password displaying in #587
+    - Fix accidental deletion of entire passwordstore in #604
+    - Install QT in codeql workflow in #608
+    - Super Linter added and fixing findings in #610
+    - Removed travis (no longer free) and lgtm (migrated to Github) in #612
+    - fix the unintended "running" of the entropy window in the keygen dial… in #640
+    - Restore licensing info for QProgressIndicator in #642
+    - Add pass store signing key feature in #634
+    - Fix taborder and add buddies in keygen dialog in #643
+    - Clazy cleanup and other minor fixes in #641
+    - fix bug => clipboard was not cleared when using primary selection in #615
+    - super-linter ENV variables in shared location for local and automated in #616
+    - clang-format -i src/.cpp src/.h in #645
+    - Version bump and cleanup in #646
+  * Wording and localisation
+    - Spelling: Git, GPG, PWGen, etc. in #492
+    - Spelling: Keylist missing, Could not fetch, GPG in #493
+    - Spelling: Search for users, , in #495
+    - Translations update from Weblate in #530
+    - Translations update from Weblate in #531
+    - Translations update from Weblate in #535
+    - Translations update from Weblate in #541
+    - Translations update from Weblate in #548
+    - Translations update from Weblate in #552
+    - Translations update from Weblate in #553
+    - Translations update from Weblate in #554
+    - Translations update from Weblate in #560
+    - Translations update from Weblate in #562
+    - Translations update from Weblate in #563
+    - Correct a typo in pass.cpp in #570
+    - Translations update from Weblate in #573
+    - Translations update from Hosted Weblate in #576
+    - Translations updated in #605
+    - Translation cleanup in #606
+    - Translations update from Hosted Weblate in #607
+    - New Transifex integration yml in #609
+    - Translations update from Hosted Weblate in #611
+    - Translations update from Hosted Weblate in #613
+    - Translations update from Hosted Weblate in #614
+    - Translations update from Hosted Weblate in #617
+    - Translations update from Hosted Weblate in #618
+    - Document "Using profiles" in #619
+    - markdownlint --fix && textlint --fix in #621
+    - Translations update from Hosted Weblate in #622
+    - Translations update from Hosted Weblate in #626
+    - Translations update from Hosted Weblate in #627
+    - Translations update from Hosted Weblate in #628
+    - Translations update from Hosted Weblate in #629
+    - Translations update from Hosted Weblate in #632
+    - Translations update from Hosted Weblate in #633
+    - Translations update from Hosted Weblate in #636
+    - Translations update from Hosted Weblate in #644
+    - Translations update from Hosted Weblate in #647
+    - Translations update from Hosted Weblate in #648
+    - Added Serbian and Estonian to project file in #649
+    - Translations update from Hosted Weblate in #650
+    - Natural language fixes in #654
+    - Initial Korean from Weblate in #655
+
+-------------------------------------------------------------------
+Sun Apr 12 09:15:42 UTC 2020 - ecsos@opensuse.org
+
+- Add qtpass.appdata.xml.
+
+-------------------------------------------------------------------
 Wed Oct  9 18:54:58 UTC 2019 - ecsos@opensuse.org
 
 - Update to 1.3.2
