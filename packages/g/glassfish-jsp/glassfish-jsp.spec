@@ -75,6 +75,8 @@ Group:          Documentation/HTML
 %pom_add_dep org.eclipse.jdt:core::provided
 %pom_add_dep org.apache.ant:ant::provided
 
+%pom_remove_plugin :maven-javadoc-plugin
+
 cp -p %{SOURCE1} .
 cp -p %{SOURCE2} .
 
