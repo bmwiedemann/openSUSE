@@ -991,4 +991,12 @@ https://github.com/harfbuzz/harfbuzz/issues/3216</comment>
 New stable rel</comment>
     <requestid>1102256</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>1242a523f9dbb28f5c9945391050dc44</srcmd5>
+    <version>8.2.1</version>
+    <time>1695208960</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1112200</requestid>
+  </revision>
 </revisionlist>

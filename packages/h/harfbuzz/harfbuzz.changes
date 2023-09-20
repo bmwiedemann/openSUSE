@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 18 19:54:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 8.2.1:
+  + Unicode 15.1 support.
+
+-------------------------------------------------------------------
+Fri Sep  8 20:14:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 8.2.0:
+  + Various build and fuzzing fixes
+  + Improvements to COLRv1 painting.
+  + New API:
+    - hb_paint_color_glyph_func_t
+    - hb_paint_funcs_set_color_glyph_func
+    - hb_paint_color_glyph
+
+-------------------------------------------------------------------
 Thu Aug  3 09:17:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 8.1.1:
