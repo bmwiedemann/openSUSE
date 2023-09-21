@@ -1196,4 +1196,12 @@ removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
           No other changes</comment>
     <requestid>1093737</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>c471a1d6d05b4a48ef82ec140a5f26f9</srcmd5>
+    <version>5.4.9</version>
+    <time>1695327192</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1112274</requestid>
+  </revision>
 </revisionlist>

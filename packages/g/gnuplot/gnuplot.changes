@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 12 10:39:22 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to gnuplot 5.4.9
+  * NEW   qt:  support building with Qt6
+  * CHANGE check plugin version at time of import                       Bug #2629
+  * FIX   prevent segfault if GNUPLOT_DRIVER_DIR is invalid
+  * FIX   (regression) only y autoscale yerrorbars to points in xrange  Bug #2631
+  * FIX   possible memory corruption if clipping causes 0-size polygons
+  * FIX   wxt: initialization of key box toggle state
+  * FIX   post: handle pixmaps                                          Bug #2644
+
+-------------------------------------------------------------------
 Mon Jun 19 06:55:17 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Update to gnuplot 5.4.8
