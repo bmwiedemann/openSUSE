@@ -6394,4 +6394,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.5.3 &amp; uring fix &amp; X13 fixes &amp; other fixes</comment>
     <requestid>1111049</requestid>
   </revision>
+  <revision rev="705" vrev="1">
+    <srcmd5>db8a6c2cadac546fa35a15ddf8e307c1</srcmd5>
+    <version>6.5.4</version>
+    <time>1695327215</time>
+    <user>anag+factory</user>
+    <comment>6.5.4 &amp; SCSI/ATA=m &amp; other fixes</comment>
+    <requestid>1112479</requestid>
+  </revision>
 </revisionlist>

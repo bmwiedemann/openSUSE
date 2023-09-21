@@ -17,7 +17,7 @@
 # needsrootforbuild
 
 
-%define patchversion 6.5.3
+%define patchversion 6.5.4
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -32,9 +32,9 @@ ExclusiveArch:  aarch64 armv6hl armv7hl ppc64le riscv64 s390x x86_64
 Summary:        Basic QA tests for the kernel
 License:        GPL-2.0-only
 Group:          SLES
-Version:        6.5.3
+Version:        6.5.4
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g786e0d6
+Release:        <RELEASE>.gfdd7e9e
 %else
 Release:        0
 %endif
