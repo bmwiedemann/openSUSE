@@ -184,6 +184,7 @@ BuildRequires:  pkgconfig(cairo) >= 1.6
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dirac) >= 1.0.0
 BuildRequires:  pkgconfig(dri)
+BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac++)
 BuildRequires:  pkgconfig(form)
