@@ -71,7 +71,7 @@ if grep -q "%OS_" ${files[@]}; then
 	# Extract the content
 	tempdir=$(mktemp -d)
 	trap "rm -r ${tempdir}" EXIT
-	rpm2cpio "${relpkgs[0]}" | cpio -idD "${tempdir}"
+	rpm2cpio "${relpkgs[0]}" | (cd "${tempdir}" && cpio -id)
 
 	# And source it
 	[ -f "${tempdir}/usr/lib/os-release" ] && . "${tempdir}/usr/lib/os-release"

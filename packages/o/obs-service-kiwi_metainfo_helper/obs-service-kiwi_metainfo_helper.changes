@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 15 13:08:03 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- cpio on SLE12 does not support -D option, emulate it.
+
+-------------------------------------------------------------------
 Tue Dec  6 17:10:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not ever use "%setup -n .": rpm 4.18 tries to be cleaner and
