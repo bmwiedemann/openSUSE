@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 21 04:46:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230920T152231Z:
+  * perf net: Show the error with the bandwidth results (#4688)
+  * add exclude-storageclass flag for mirror (#4684)
+  * Support multiple policies in 'mc admin user policy' command
+    (#4685)
+  * hide all old deprecate heal options (#4682)
+  * Add download links (#4681)
+
+-------------------------------------------------------------------
 Mon Sep 18 05:36:06 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230913T230858Z:
