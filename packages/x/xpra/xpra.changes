@@ -1,4 +1,180 @@
 -------------------------------------------------------------------
+Wed Sep 13 12:25:45 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20230913.0f036f0b:
+  * better backwards compatibility
+  * #3956 prefer Gtk.StatusIcon on every X11 desktop except gnome
+  * restore 'help' handling for video options
+  * minor ruff warnings
+  * forgot to include the cuda build script
+  * unbreak the CI
+  * #3808 build CUDA kernels in advance
+  * move check to a function
+  * require Cython 3 (fix check)
+  * #3995 send the modified packet
+  * don't setup ssh agent forwarding when proxing
+  * no more string vs bytes problems here
+  * simplify adding the 'Compressed' wrapper
+  * doh: use the new-value supplied
+  * use dedicated flag for pings
+  * #3956 try Gtk.StatusIcon first on non-gnome/kde xorg sessions
+  * simplify: use lists without None values
+  * cannot follow a tray
+  * remove unused subclass
+  * #3995 match new exception type
+  * support prefixed encoding caps
+  * don't send cursors without a matching encoding
+  * #3999 safer automatic recursion
+  * all supported versions have these features
+  * Refactor pulseaudio '--load=module arg1=value1 ...' option creation
+  * Create Xpra-Mic-Source pulseaudio remapped source for Chromium
+  * Fix computation of microphone_enabled when "on:device" flag is provided
+  * Parse "Monitor of Sink" instead of device.class when it is not reported
+  * Clear props before processing each pactl output block unconditionally
+  * assume the clipboard is enabled if we have caps
+  * drop legacy keymap caps
+  * even 3.x already had this flag
+  * support legacy dpi caps for html5 client
+  * #3987 expose more specific session-types
+  * #3997 ignore missing cwd
+  * only clone the video helper when needed
+  * prevent race condition
+  * #3582 don't include codec version info by default
+  * all versions supported have 'ping-echo-sourceid'
+  * simplify threaded init server-source callback
+  * simplify
+  * constify
+  * avoid warnings with older clients
+  * now safe to use more structured data
+  * simplify compatibility
+  * remove unused function
+  * handle namespaced proxy caps
+  * simplify: 'control_commands' is a list of strings
+  * newer servers require a qualified value
+  * remove legacy encryption caps
+  * require namespace for encryption caps
+  * remove unused mode
+  * try not no flatten caps
+  * remove legacy flattened caps
+  * add type hints
+  * we do have a command line option for this
+  * bail out early
+  * remove legacy 'deflate' packet
+  * unit tests need an 'after_handshake' dummy function
+  * oops, fixup 141e01705f25d4448201be624f091de32efa6774: only for python3
+  * #3956 wait for handshake to generate the menu
+  * remove unused imports
+  * never send None values
+  * better formatting
+  * #2197 suggest the gnome package
+  * don't install python3-cups unless we're going to use it
+  * #2197 add a 'xpra-client-gnome' package
+  * there are no python prefixed cups packages
+  * we need setuptools to build with python3.12+
+  * we can't build pycuda for non-default python versions
+  * update unit test to match new code requirements
+  * remove more legacy options
+  * remove more legacy flags
+  * remove legacy flag
+  * remove more legacy flags
+  * lowest version we aim to be compatible for is v5
+  * all supported client versions have namespaced caps
+  * drop support for non generic requests
+  * all supported versions should set capability flags
+  * all supported versions have 'connection-data'
+  * assume all servers can change bandwidth limit
+  * more useful settings?
+  * #3943 add dpi settings in manifest file
+  * move cuda workarounds together
+  * bail out early
+  * #3959 the default cursor data already includes the encoding
+  * remove broken test file
+  * #3988 polymorphic functions are hard
+  * #3930 use dataclass
+  * #3930 simplify
+  * #3930 Python 3.8+ provides this function
+  * save space: remove unused codec DLLs
+  * #3711 tray restart fixes
+  * cosmetic
+  * we don't need numpy without cuda
+  * strict type fixes
+  * fix warning so ruff can run
+  * we don't need numpy unless we enable the nvidia codecs
+  * simplify
+  * missed from refactoring
+  * can't use bare types
+  * stricter argtypes and restype
+  * #3711 add debug logging of event numbers
+  * #3988 silence modify_font warnings
+  * #3988 silence get_pointer warnings
+  * #3988 add arguments to ctypes definition
+  * Add gtk3 and groff to mingw dependencies.
+  * packets don't use strings any more
+  * add debug logging
+  * #3985 must initialize to False
+  * unused import
+  * minor refactoring fixups
+  * remove 'u' string workaround function
+  * fix: warn once per unkown preset
+  * #3873 workaround the deprecated presets
+  * use f-strings, remove 'engs'
+  * #3873 preparatory refactoring
+  * #3929 CI now needs it as well
+  * we don't use ffmpeg anymore
+  * #3929 use pkg-config to find xxhash lib
+  * #3929 install xxhash for MS Windows builds
+  * #3929 build against the system xxhash libs
+  * more refactoring forgotten by pycharm (cython files)
+  * same as 0b19be6ef716a2af7988d15d433ae4fc5e8095d4 but for arm64
+  * don't build openh264 on Fedora-riscv64
+  * simplify
+  * #3592 also build openh264 DEB codec
+  * missed x264 from codecs!
+  * forgot to update packaging file list
+  * #3592 we want at least one h264 decoder enabled
+  * #3930 all supported clients handle the flush flag
+  * simplify: always enable notifications actions
+  * vsock is now a submodule
+  * pycharm refactoring missed these
+  * remove debug logging
+  * assorted refactoring fixups
+  * one more redundant prefix
+  * pycharm missed this during refactoring
+  * move cuda bits to their own submodule
+  * forgot to add the renamed files
+  * remove more redundant prefixes
+  * fixup class merge
+  * forgot to remove yaml here
+  * add flow info
+  * match simplified packet types from 5dd1336a5cc9f7863f796b5ca399f460c775a676
+  * remove redundant superclass
+  * oops: fixup 5dd1336a5cc9f7863f796b5ca399f460c775a676
+  * #3930 use prefixed capability for webcam
+  * #3930 use the same prefix for all subsystem packets
+  * remove redundant prefixes
+  * #3930 rename for consistency with prefix
+  * oops: attribute has been removed
+  * #3981 add webcam subsystem
+  * #3981 more subsystems docs
+  * #3930 remove unused legacy flags
+
+-------------------------------------------------------------------
+Tue Sep  5 20:01:08 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Converting python3-* items to %{python_ver}-*
+
+-------------------------------------------------------------------
+Sun Sep  3 15:20:31 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Leap 15.5 and 15.6 _can_ build again with Python3.11
+  * Need to have the following packages available:
+    * python3[11]-Cython      v3.0.2
+    * python3[11]-flit-core   v3.8.0
+    * python3[11]-wheel       v0.40.0
+  * The versions from devel:languages:python work, but until those
+    are part of the Leap images, this isn't possible
+
+-------------------------------------------------------------------
 Fri Sep 01 16:50:53 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version v6.0+git20230901.77211231:

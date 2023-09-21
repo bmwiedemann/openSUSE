@@ -26,6 +26,9 @@
 # Xpra version 4.4
 #%%define xpra_ver 4.4
 %define xpra_ver 6.0
+%define python_ver python311
+%define python_short_ver 3.11
+%define python_bin python3.11
 # ----
 %if 0%{?suse_version} >= 1550
 %define ffmpeg_ver 6
@@ -36,7 +39,7 @@
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.0+git20230901.77211231
+Version:        6.0+git20230913.0f036f0b
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -74,11 +77,11 @@ BuildRequires:  pam-devel
 BuildRequires:  pandoc
 %endif
 BuildRequires:  pkgconfig
-BuildRequires:  python3-Cython >= 0.20.0
-BuildRequires:  python3-devel
-BuildRequires:  python3-gobject-devel
-BuildRequires:  python3-pyxdg
-BuildRequires:  python3-setuptools
+BuildRequires:  %{python_ver}-Cython
+BuildRequires:  %{python_ver}-devel
+BuildRequires:  %{python_ver}-gobject-devel
+BuildRequires:  %{python_ver}-pyxdg
+BuildRequires:  %{python_ver}-setuptools
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libavcodec) >= 58
@@ -87,6 +90,7 @@ BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libswscale) >= 5
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwebp) >= 0.4
+BuildRequires:  pkgconfig(libxxhash)
 # TW can do this, 15.4 can't ...
 #BuildRequires:  pkgconfig(pam)
 #BuildRequires:  pkgconfig(pam_misc)
@@ -103,6 +107,7 @@ BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(xtst)
+BuildRequires:  python-rpm-macros
 Requires:       dbus-1-x11
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
@@ -113,15 +118,15 @@ Requires:       pulseaudio
 Requires:       pulseaudio-daemon
 %endif
 Requires:       pulseaudio-utils
-Requires:       python3-Pillow
-Requires:       python3-cairo
-Requires:       python3-dbus-python
-Requires:       python3-gobject-Gdk
-Requires:       python3-gst
-###Requires:       python3-lz4
-###Requires:       python3-opencv
-Requires:       python3-pycups
-Requires:       python3-rencode
+Requires:       %{python_ver}-Pillow
+Requires:       %{python_ver}-cairo
+Requires:       %{python_ver}-dbus-python
+Requires:       %{python_ver}-gobject-Gdk
+Requires:       %{python_ver}-gst
+#Requires:       python3-lz4
+#Requires:       python3-opencv
+Requires:       %{python_ver}-pycups
+Requires:       %{python_ver}-rencode
 Requires:       shared-mime-info
 Requires:       xf86-video-dummy
 Requires:       xorg-x11-xauth
@@ -129,27 +134,27 @@ Requires(post): %fillup_prereq
 Recommends:     lsb-release
 Recommends:     pinentry
 Recommends:     pulseaudio-module-x11
-###Recommends:     python3-asn1crypto
-###Recommends:     python3-cffi
-Recommends:     python3-cryptography
-###Recommends:     python3-decorator
-Recommends:     python3-dnspython
-###Recommends:     python3-idna
-###Recommends:     python3-ipaddress
-Recommends:     python3-netifaces
-Recommends:     python3-opencv
-Recommends:     python3-opengl
-Recommends:     python3-opengl-accelerate
-###Recommends:     python3-packaging
-Recommends:     python3-paramiko
-###Recommends:     python3-pyasn1
-###Recommends:     python3-pycparser
-Recommends:     python3-pyinotify
-###Recommends:     python3-pynacl
-###Recommends:     python3-pyparsing
-Recommends:     python3-pyxdg
-###Recommends:     python3-setuptools
-###Recommends:     python3-six
+#Recommends:     python3-asn1crypto
+#Recommends:     python3-cffi
+Recommends:     %{python_ver}-cryptography
+#Recommends:     python3-decorator
+Recommends:     %{python_ver}-dnspython
+#Recommends:     python3-idna
+#Recommends:     python3-ipaddress
+Recommends:     %{python_ver}-netifaces
+Recommends:     %{python_ver}-opencv
+Recommends:     %{python_ver}-opengl
+Recommends:     %{python_ver}-opengl-accelerate
+#Recommends:     python3-packaging
+Recommends:     %{python_ver}-paramiko
+#Recommends:     python3-pyasn1
+#Recommends:     python3-pycparser
+Recommends:     %{python_ver}-pyinotify
+#Recommends:     python3-pynacl
+#Recommends:     python3-pyparsing
+Recommends:     %{python_ver}-pyxdg
+#Recommends:     python3-setuptools
+#Recommends:     python3-six
 Recommends:     xdg-menu
 # Overflow errors on 32-bit
 ExcludeArch:    %ix86
@@ -194,7 +199,7 @@ export CFLAGS="%{optflags}"
 #%%if 0%%{?suse_version} <= 1500
 export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
 #%%endif
-python3 setup.py clean
+%{python_bin} setup.py clean
 
 ### These don't appear available anymore:
 #  --with-enc_ffmpeg \
@@ -204,7 +209,7 @@ python3 setup.py clean
 ### Not sure how to incorporate this from: Open H.264 Codec
 #  --with-openh264 \
 #####
-python3 setup.py build \
+%{python_bin} setup.py build \
   --verbose \
   --with-vpx \
   --with-webp \
@@ -217,7 +222,8 @@ python3 setup.py build \
 %if !%{with pandoc}
   --without-docs \
 %endif
-  --without-nvfbc
+  --without-nvfbc \
+  --without-nvidia
 #%%if %%{ffmpeg_ver} == 4
 #  --without-nvfbc
 #%%endif
@@ -230,13 +236,14 @@ python3 setup.py build \
 #%%endif
 
 %install
-python3 setup.py install \
+%{python_bin} setup.py install \
   --skip-build \
   --root %{buildroot} \
   --prefix %{_prefix} \
   --with-service \
   --with-Xdummy \
   --with-Xdummy_wrapper \
+  --without-nvidia \
 %if !%{with pandoc}
   --without-docs \
 %endif
@@ -331,8 +338,12 @@ done
 %{_libexecdir}/xpra/xpra_signal_listener
 %{_libexecdir}/xpra/xpra_udev_product_version
 %{_sbindir}/rc%{name}
-%{python3_sitearch}/xpra
-%{python3_sitearch}/%{name}-%{xpra_ver}-py%{python3_version}.egg-info
+### Leap 15.[5,6] need to use >= Python3.10, so these have to be called out directly.
+#%%{python3_sitearch}/xpra
+%{_libdir}/%{python_bin}/site-packages/%{name}
+#%%{python3_sitearch}/%%{name}-%%{xpra_ver}-py%%{python3_version}.egg-info
+%{_libdir}/%{python_bin}/site-packages/%{name}-%{xpra_ver}-py%{python_short_ver}.egg-info
+#####
 %{_datadir}/applications/xpra-gui.desktop
 %{_datadir}/applications/xpra-launcher.desktop
 %{_datadir}/applications/xpra-shadow.desktop
