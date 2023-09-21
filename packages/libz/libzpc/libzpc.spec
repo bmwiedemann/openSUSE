@@ -1,7 +1,7 @@
 #
 # spec file for package libzpc
 #
-# Copyright (c) 2022-2023 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libzpc
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        IBM Z Protected-key Crypto library
 License:        Apache-2.0

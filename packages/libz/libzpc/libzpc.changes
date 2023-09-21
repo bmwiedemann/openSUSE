@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 20 06:46:33 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Version 1.1.1 (jsc#PED-5214)
+  * Exploit PKEY_KBLOB2PROTK2 for AES EP11 version 6 keys
+
+-------------------------------------------------------------------
 Wed Feb  8 16:19:14 UTC 2023 - Mark Post <mpost@suse.com>
 
 - Upgrade to version 1.1.0 (jsc#PED-582)
