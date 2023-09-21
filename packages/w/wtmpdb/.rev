@@ -79,4 +79,12 @@
   - Fix printf format specifier on 32bit (forwarded request 1105295 from kukuk)</comment>
     <requestid>1105296</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>55763409afcdbc2e55ffa64708ec3107</srcmd5>
+    <version>0.9.2</version>
+    <time>1695327185</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112164</requestid>
+  </revision>
 </revisionlist>

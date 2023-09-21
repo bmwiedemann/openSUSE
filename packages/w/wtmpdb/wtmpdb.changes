@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 19 07:53:57 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Update to version 0.9.2
+  - Set busy timeout for DB access: The process is waiting until
+    5 seconds for DB connection if the DB is locked by another
+    process.
+
+-------------------------------------------------------------------
 Tue Aug 22 13:47:10 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Fix last.1 manual page reference
