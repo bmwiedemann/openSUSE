@@ -156,6 +156,7 @@ Patch5:         multiple-pkcs11-library-init.patch
 Patch8:         zero-ranges.patch
 # From icedtea: Increase default memory limits
 Patch10:        memory-limits.patch
+Patch11:        reproducible-properties.patch
 # Fix use of unintialized memory in adlc parser
 Patch12:        adlc-parser.patch
 # Fix: implicit-pointer-decl
@@ -394,6 +395,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch5 -p1
 %patch8 -p1
 %patch10 -p1
+%patch11 -p1
 %patch12 -p1
 %patch13 -p1
 

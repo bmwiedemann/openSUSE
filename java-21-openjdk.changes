@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 21 11:14:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-properties.patch
+    + use SOURCE_DATE_EPOCH for timestamp in properties files if
+      it is set
+
+-------------------------------------------------------------------
 Tue Sep 19 10:46:38 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of OpenJDK 21 release
