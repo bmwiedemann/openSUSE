@@ -177,6 +177,7 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dirac) >= 1.0.0
 BuildRequires:  pkgconfig(dri)
 BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(flac++)
 BuildRequires:  pkgconfig(form)
 BuildRequires:  pkgconfig(formw)

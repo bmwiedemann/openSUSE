@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 20 13:59:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Add explicit build dependency on libepoxy for Tumbleweed
+
+-------------------------------------------------------------------
 Sun Sep 17 18:43:36 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
 
 - ungoogled-chromium 117.0.5938.88 (boo#1215279)
