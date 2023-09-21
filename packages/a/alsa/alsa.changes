@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 18 12:18:55 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- More upstream fix for incosistent compile conditions:
+  0004-reshuffle-included-files-to-include-config.h-as-firs.patch
+
+-------------------------------------------------------------------
 Sat Sep  9 15:49:43 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Upstream fix backport:
