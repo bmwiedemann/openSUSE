@@ -347,4 +347,12 @@
     <comment>- Update to release 7.2.1</comment>
     <requestid>1034895</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b529275d599db0a024b7785c52257044</srcmd5>
+    <version>7.4.1</version>
+    <time>1695327770</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 7.4.1</comment>
+    <requestid>1112701</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 21 02:13:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.4.1
+  * Response status codes other than 200 and 204 are now considered
+    errors for ESI fragments.
+  * Support for abstract AF_LOCAL sockets.
+  * HTTP/2 header field validation is now more strict with respect
+    to allowed characters.
+  * VCL tracing now needs to be explicitly activated by setting the
+    req.trace or bereq.trace VCL variables.
+
+-------------------------------------------------------------------
 Wed Nov  9 17:16:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.2.1

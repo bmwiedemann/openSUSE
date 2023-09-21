@@ -1,7 +1,7 @@
 #
 # spec file for package varnish
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define _fillupdir %_localstatedir/adm/fillup-templates
 %endif
 Name:           varnish
-Version:        7.2.1
+Version:        7.4.1
 Release:        0
 Summary:        Accelerator for HTTP services
 License:        BSD-2-Clause
@@ -41,15 +41,14 @@ Source9:        varnish_reload_vcl
 Patch2:         uninit.patch
 BuildRequires:  libxslt-devel
 BuildRequires:  ncurses-devel
-BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-docutils
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
+BuildRequires:  pkgconfig(libpcre2-8)
 Requires:       c_compiler
-Requires(pre):  %_sbindir/groupadd
-Requires(pre):  %_sbindir/useradd
+Requires(pre):  shadow
 Recommends:     logrotate
 
 %description
