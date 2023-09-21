@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,11 +17,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %define base_name python-barcode
 Name:           python-%{base_name}
-Version:        0.14.0
+Version:        0.15.1
 Release:        0
 Summary:        Library to create Barcodes with Python
 License:        MIT
