@@ -4992,4 +4992,14 @@ I cannot test locally unfortunately.
     <comment></comment>
     <requestid>1110767</requestid>
   </revision>
+  <revision rev="317" vrev="1">
+    <srcmd5>6526f59ed31fa0497ca7493b8f5ee5e9</srcmd5>
+    <version>115.2.3</version>
+    <time>1695327758</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 115.2.3
+  Bugfix release:
+  https://www.thunderbird.net/en-US/thunderbird/115.2.3/releasenotes</comment>
+    <requestid>1112694</requestid>
+  </revision>
 </revisionlist>
