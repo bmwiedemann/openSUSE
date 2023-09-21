@@ -119,6 +119,7 @@ Requires:       %{mypython}-zope.configuration
 Requires:       %{mypython}-zope.event
 Requires:       %{mypython}-zope.interface >= 5.0
 Requires:       logrotate
+Requires(pre):  /usr/sbin/groupadd
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       mailman = %{version}
