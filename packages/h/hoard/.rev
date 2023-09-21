@@ -60,4 +60,12 @@
   * Fix sec vulnerabilities from out of date dependency #279</comment>
     <requestid>1102593</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e3f39eaa98de6603260f71ad16bc121d</srcmd5>
+    <version>v.1.4.2~0</version>
+    <time>1695327228</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112507</requestid>
+  </revision>
 </revisionlist>

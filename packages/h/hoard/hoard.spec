@@ -20,7 +20,7 @@ Name:           hoard
 Version:        v.1.4.2~0
 Release:        0
 Summary:        CLI command organizer
-License:        MIT
+License:        Apache-2.0 AND BSD-3-Clause AND GPL-2.0-only AND ISC AND MIT AND OpenSSL AND BSD-4-Clause AND CC-BY-3.0 AND CC-BY-SA-4.0 AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND MPL-2.0 AND Zlib AND CC0-1.0
 Group:          Productivity/File utilities
 URL:            https://hyde46.github.io/hoard/
 Source0:        %{name}-%{version}.tar.xz
