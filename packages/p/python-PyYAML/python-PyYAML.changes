@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 19 16:25:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- cleanup
+
+-------------------------------------------------------------------
 Sun Aug 13 18:57:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.1:
-  * pin Cython to < 3.0 
+  * pin Cython to < 3.0
 
 -------------------------------------------------------------------
 Fri Apr 21 12:21:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -140,7 +145,7 @@ Sat Sep  3 19:26:05 UTC 2016 - mardnh@gmx.de
     affect the base loader (fixes issue #57).
   - Uniform representation for OrderedDict? across different
     versions of Python (fixes issue #61).
-  - Fixed comparison to None warning (closes issue #64). 
+  - Fixed comparison to None warning (closes issue #64).
 - fix Source URL
 
 -------------------------------------------------------------------
@@ -153,12 +158,12 @@ Wed Jul 30 09:02:32 UTC 2014 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Wed Feb  5 14:35:22 CET 2014 - ro@suse.de
 
-- increase file-descriptor-count for s390 to make tests happy 
+- increase file-descriptor-count for s390 to make tests happy
 
 -------------------------------------------------------------------
 Tue Mar  5 23:39:24 UTC 2013 - dvaleev@suse.com
 
-- increase file-descriptor-count for ppc to make tests happy 
+- increase file-descriptor-count for ppc to make tests happy
 
 -------------------------------------------------------------------
 Thu Jan 10 19:06:25 UTC 2013 - p.drouand@gmail.com

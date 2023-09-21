@@ -275,4 +275,17 @@
   * pin Cython to &lt; 3.0</comment>
     <requestid>1103712</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>99f206559635ceac2fac8e965324cbfd</srcmd5>
+    <version>6.0.1</version>
+    <time>1695327207</time>
+    <user>anag+factory</user>
+    <comment>- cleanup
+
+  * pin Cython to &lt; 3.0
+  - Fixed comparison to None warning (closes issue #64).
+- increase file-descriptor-count for s390 to make tests happy
+- increase file-descriptor-count for ppc to make tests happy</comment>
+    <requestid>1112345</requestid>
+  </revision>
 </revisionlist>
