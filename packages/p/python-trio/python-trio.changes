@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 19 14:51:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove buildrequires that are not used on sle15
+
+-------------------------------------------------------------------
 Fri Apr 21 12:37:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -161,19 +166,19 @@ Sun Oct 11 15:36:02 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
     hook such as `abc.Instrument.before_task_step`, then Trio doesn't
     waste any effort on checking its instruments when the event
     corresponding to that hook occurs.
-    
+
 -------------------------------------------------------------------
 Thu Jul 23 12:46:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.16.0
-  * If you want to use Trio, but are stuck with some other event loop 
+  * If you want to use Trio, but are stuck with some other event loop
     like Qt or PyGame, then good news: now you can have both.
   * To speed up `trio.to_thread.run_sync`, Trio now caches and re-uses
     worker threads.
   * Tasks spawned with `nursery.start() <trio.Nursery.start>` aren't treated as
     direct children of their nursery until they call ``task_status.started()``.
   * Some bugfixes and deprecations
-  
+
 -------------------------------------------------------------------
 Tue Jun  9 07:36:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
@@ -190,7 +195,7 @@ Sat Jan 11 12:01:37 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.13.0
  * Use slots for memory channel state and statistics which should make
-    memory channels slightly smaller and faster. 
+    memory channels slightly smaller and faster.
  * OpenSSL has a bug in its handling of TLS 1.3 session tickets that can cause
     deadlocks or data loss in some rare edge cases. These edge cases most frequently
     happen during tests.

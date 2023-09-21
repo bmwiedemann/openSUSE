@@ -171,4 +171,15 @@
     <comment></comment>
     <requestid>1081734</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>3d9d4576c6964caaa2ac188b6939f539</srcmd5>
+    <version>0.22.0</version>
+    <time>1695327199</time>
+    <user>anag+factory</user>
+    <comment>- remove buildrequires that are not used on sle15
+
+  * If you want to use Trio, but are stuck with some other event loop
+    memory channels slightly smaller and faster.</comment>
+    <requestid>1112325</requestid>
+  </revision>
 </revisionlist>

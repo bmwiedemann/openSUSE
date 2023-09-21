@@ -28,7 +28,9 @@ BuildRequires:  %{python_module astor >= 0.8}
 BuildRequires:  %{python_module async_generator >= 1.9}
 BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module base >= 3.7}
+%if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module exceptiongroup >= 1.0.0~rc9 if %python-base < 3.11}
+%endif
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module outcome}
 BuildRequires:  %{python_module pyOpenSSL}
