@@ -147,4 +147,14 @@
   * Use correct assertion method.</comment>
     <requestid>1104007</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>00c80d40b5a3215141782af07cda47d7</srcmd5>
+    <version>0.9.0</version>
+    <time>1695327626</time>
+    <user>anag+factory</user>
+    <comment>- Include in SLE-15 (bsc#1159018, jsc#PM-1507)
+
+- remove pytest test, enable other test frameworks</comment>
+    <requestid>1112726</requestid>
+  </revision>
 </revisionlist>
