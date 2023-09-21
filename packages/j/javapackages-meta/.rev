@@ -31,4 +31,12 @@
     <comment>Removal of gradle-local sub-package that is not needed and does not have dependencies</comment>
     <requestid>1034836</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a78b2724ce084e720c9c9326b72b8393</srcmd5>
+    <version>6.2.0</version>
+    <time>1695327237</time>
+    <user>anag+factory</user>
+    <comment>Sync with javapackages-tools 6.2.0</comment>
+    <requestid>1112540</requestid>
+  </revision>
 </revisionlist>

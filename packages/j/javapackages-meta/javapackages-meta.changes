@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 15 02:54:32 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Syncing the version with javapackages-tools 6.2.0
+- Remove unnecessary dependencies 
+
+-------------------------------------------------------------------
 Wed Nov  9 08:41:16 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - The gradle-local meta-package is not needed any more

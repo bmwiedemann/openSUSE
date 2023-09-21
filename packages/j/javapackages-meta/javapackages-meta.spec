@@ -1,7 +1,7 @@
 #
 # spec file for package javapackages-meta
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           javapackages-meta
 # Sync the version with javapackages-tools package
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        Meta-packages for different local modes of Java builds
 License:        BSD-3-Clause
@@ -52,24 +52,15 @@ Summary:        Local mode for Maven
 Group:          Development/Languages/Java
 Requires:       javapackages-local >= %{version}
 Requires:       javapackages-tools >= %{version}
-# Tests based on JUnit are very common and JUnit itself is small.
-# Include JUnit and JUnit provider for Surefire just for convenience.
-Requires:       mvn(junit:junit)
-# Common Maven plugins required by almost every build. It wouldn't make
-# sense to explicitly require them in every package built with Maven.
-Requires:       mvn(org.apache.maven.plugins:maven-compiler-plugin)
-Requires:       mvn(org.apache.maven.plugins:maven-jar-plugin)
-Requires:       mvn(org.apache.maven.plugins:maven-javadoc-plugin)
-Requires:       mvn(org.apache.maven.plugins:maven-resources-plugin)
-Requires:       mvn(org.apache.maven.plugins:maven-surefire-plugin)
-Requires:       mvn(org.apache.maven.surefire:surefire-junit4)
-Requires:       mvn(org.apache.maven.surefire:surefire-testng)
-# testng is quite common as well
-Requires:       xmvn-connector-aether
+Requires:       xmvn-connector
 Requires:       xmvn-install
 Requires:       xmvn-minimal
 Requires:       xmvn-mojo
 Requires:       xmvn-resolve
+Requires:       mvn(org.apache.maven.plugins:maven-compiler-plugin)
+Requires:       mvn(org.apache.maven.plugins:maven-jar-plugin)
+Requires:       mvn(org.apache.maven.plugins:maven-resources-plugin)
+Requires:       mvn(org.apache.maven.plugins:maven-surefire-plugin)
 
 %description -n maven-local
 This meta-package pulls in macros, scripts and dependencies
