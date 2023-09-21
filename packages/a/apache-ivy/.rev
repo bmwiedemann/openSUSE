@@ -205,4 +205,12 @@
     <comment>2.5.2 - CVE-2022-46751 - bsc#1214422</comment>
     <requestid>1105156</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>9eee0294bfe72ae543c28e44d40e5cc9</srcmd5>
+    <version>2.5.2</version>
+    <time>1695327191</time>
+    <user>anag+factory</user>
+    <comment>Reproducible build improvements</comment>
+    <requestid>1112266</requestid>
+  </revision>
 </revisionlist>

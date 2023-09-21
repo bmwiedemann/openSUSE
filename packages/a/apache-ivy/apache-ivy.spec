@@ -31,11 +31,12 @@ Source0:        https://archive.apache.org/dist/ant/ivy/%{version}/%{name}-%{ver
 Source1:        ivy.1
 Source2:        https://repo1.maven.org/maven2/org/apache/ivy/ivy/%{version}/ivy-%{version}.pom
 Patch0:         apache-ivy-global-settings.patch
+Patch1:         apache-ivy-publication-date.patch
 BuildRequires:  ant
 BuildRequires:  bouncycastle-pg
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsch
 BuildRequires:  oro
 BuildConflicts: java-devel >= 14
@@ -75,10 +76,9 @@ JavaDoc documentation for %{name}
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 cp %{SOURCE2} pom.xml
-
-%pom_remove_parent .
 
 %pom_remove_dep :jsch.agentproxy
 
@@ -151,7 +151,7 @@ install -p -m644 build/artifact/jars/ivy.jar %{buildroot}%{_javadir}/ivy.jar
 ln -sf ../ivy.jar %{buildroot}%{_javadir}/%{name}/ivy.jar
 
 install -d -m 0755 %{buildroot}/%{_mavenpomdir}/
-install -m 0644 pom.xml %{buildroot}/%{_mavenpomdir}/JPP-ivy.pom
+%{mvn_install_pom} pom.xml %{buildroot}/%{_mavenpomdir}/JPP-ivy.pom
 # Maven depmap
 %add_maven_depmap JPP-ivy.pom ivy.jar
 

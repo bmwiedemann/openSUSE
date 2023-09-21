@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 19 11:31:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * apache-ivy-publication-date.patch
+    + Use SOURCE_DATE_EPOCH for publication date in ivy artifacts
+
+-------------------------------------------------------------------
 Mon Aug 21 23:30:17 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.5.2 (bsc#1214422)
