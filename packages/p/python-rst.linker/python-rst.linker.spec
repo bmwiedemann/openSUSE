@@ -26,7 +26,6 @@ License:        MIT
 URL:            https://github.com/jaraco/rst.linker
 Source:         https://files.pythonhosted.org/packages/source/r/%{_name}/%{_name}-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module importlib-metadata if %python-version < 3.8}
 BuildRequires:  %{python_module path}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -38,6 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 %if 0%{python_version_nodots} < 38
+BuildRequires:  %{python_module importlib-metadata if %python-version < 3.8}
 Requires:       python-importlib-metadata
 %endif
 Requires:       python-python-dateutil
