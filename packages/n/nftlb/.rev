@@ -26,4 +26,12 @@
     environment variable. Zero length keys will be ignored. (forwarded request 1040003 from dirkmueller)</comment>
     <requestid>1040011</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d0d2d3601563f3a997896078b0b84e83</srcmd5>
+    <version>1.0.9</version>
+    <time>1695327227</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.0.9</comment>
+    <requestid>1112498</requestid>
+  </revision>
 </revisionlist>
