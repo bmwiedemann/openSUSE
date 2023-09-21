@@ -16,13 +16,18 @@
 #
 
 
+%define sover 1_0-0
+
 Name:           msitools
-Version:        0.102
+Version:        0.103
 Release:        0
 Summary:        Tools to inspect and build Windows Installer (.MSI) files
 License:        GPL-2.0-or-later
 URL:            https://wiki.gnome.org/msitools
 Source:         https://download.gnome.org/sources/msitools/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE msitools-set-explicit-bash.patch -- Set bash to be the explicit interpreter
+Patch:          msitools-set-explicit-bash.patch
+
 BuildRequires:  bison
 BuildRequires:  intltool
 BuildRequires:  meson
@@ -43,11 +48,11 @@ write .MSI files.
 msitools plans to be a solution for packaging and deployment of
 cross-compiled Windows applications.
 
-%package -n libmsi0
+%package -n libmsi-%{sover}
 Summary:        Library to inspect and build Windows Installer (.MSI) files
 License:        LGPL-2.1-or-later
 
-%description -n libmsi0
+%description -n libmsi-%{sover}
 libmsi is a port of (and a subset of) Wine's implementation of the Windows
 Installer.
 
@@ -63,7 +68,7 @@ Installer.
 Summary:        Development files for libmsi, a library to inspect and build .msi files
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}
-Requires:       libmsi0 = %{version}
+Requires:       libmsi-%{sover} = %{version}
 Requires:       typelib-1_0-Libmsi-1_0 = %{version}
 
 %description devel
@@ -78,7 +83,7 @@ cross-compiled Windows applications.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson
@@ -88,8 +93,7 @@ cross-compiled Windows applications.
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 
-%post -n libmsi0 -p /sbin/ldconfig
-%postun -n libmsi0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libmsi-%{sover}
 
 %files
 %license copyright
@@ -106,15 +110,15 @@ cross-compiled Windows applications.
 
 %files lang -f %{name}.lang
 
-%files -n libmsi0
-%{_libdir}/libmsi.so.0*
+%files -n libmsi-%{sover}
+%{_libdir}/libmsi-1.0.so.0*
 
 %files -n typelib-1_0-Libmsi-1_0
 %{_libdir}/girepository-1.0/Libmsi-1.0.typelib
 
 %files devel
 %{_includedir}/libmsi-1.0/
-%{_libdir}/libmsi.so
+%{_libdir}/libmsi-1.0.so
 %{_libdir}/pkgconfig/libmsi-1.0.pc
 %{_datadir}/gir-1.0/*.gir
 %{_datadir}/vala/vapi/

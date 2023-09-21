@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 19 14:58:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.103:
+  + Renamed libmsi to libmsi-1.0
+  + Change GUINT_FROM_LE to GUINT16_FROM_LE
+  + Fedora 39 *.wxi fixes
+  + Build fixes.
+- Add sover define and set it to 1_0-0 following upstreams rename.
+  Following this, the subpackage libmsi0 is renamed libmsi-1_0-0.
+- Add msitools-set-explicit-bash.patch: Set bash to be the explicit
+  interpreter
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Tue Jun 20 18:40:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.102:
