@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Thu Sep 21 04:39:02 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.4.0:
+  * Release 13.4.0 (#32179)
+  * [v13] Revise desktop access-Active Directory script-driven
+    (#32156)
+  * Leave access intact if access list has not been reviewed by
+    review date. (#32261)
+  * Fix the userloginstate generator if the user has no traits.
+    (#32258)
+  * [v13] Omit WithError for "proxy already claimed" (#32242)
+  * Fix variable in Azure AD docs (#32247)
+  * [v13] convert protobuf's zero time into go's zero time (#32127)
+  * Add access list to default allow editor preset role (#32253)
+  * Add systemd instructions to the Jamf Pro guide (#32244)
+  * docs: include postgresql in ha docs (#32239)
+  * Prevent zombie sessions being left behind for web sessions
+    (#32200)
+  * Fix incorrcect use of apostrophe in discover UI (#32149)
+  * Stop implicitly loading global tsh config on Windows (#32223)
+  * Validate SAMLIdPServiceProviders ACS endpoints (#32220)
+  * Verify expected token properties in WithProvisionTokenAuth.
+    (#32215)
+  * Manually create the users HOME rather than letting useradd do
+    it (#32210)
+  * [v13] pgbk: specify the schema name in wal2json's add-tables
+    (#32198)
+  * Respect MongoDB max message size (#31963) (#32144)
+  * chore: Bump OpenSSL to 3.0.11 (#32160)
+  * [v13] AWS OIDC: command to configure IAM for listing databases
+    (#31980)
+  * Update e (#32177)
+  * [v13] docs: Trusted cluster root certificates for access to
+    leaf clusters security issue (#32152)
+  * [v13] docs: rewrite trusted clusters overview, how-to, and
+    related topics (#32154)
+  * [v13] support discovered name match in tbot outputs (#32111)
+  * Web: Fix user signup flow and auto focus login form transition
+    issues (#31510) (#31965)
+  * Add btmp support for user accounting (#32054)
+  * Add error to Attempt in useAsync (#32118)
+  * helm: fix deletion hook serviceAccount in the agent chart
+    (#31877)
+  * Update helm-deployments.mdx (#32041)
+  * [v13] Fix Kubernetes selected cluster (#32087)
+  * [v13] tsh kube ls ux (#32084)
+  * [v13] handle discovery renaming when listing resource in `tctl`
+    text … (#32083)
+  * [v13] Deflake `TestListKube` (#32082)
+  * Updated OS package repo docs (#31541) (#32103)
+  * Fix issues in GCP auto-discovery docs (#31826) (#31976)
+  * docs: mention how to register a Windows desktop with tctl
+    (#31986)
+  * fix awsoidc tests (#32003)
+  * Prevent trusted clusters in Cloud (#31874)
+  * [v13] Apply various small BPF refactors (#31995)
+  * Remove unused bot_token.create event (#31973)
+  * Upgrade node-abi to 3.47.0 (#31960)
+  * Fix focus background in passwordless user prompt in Connect
+    (#31934)
+  * correct tsh recording command description (#31949)
+  * Make LogWriter's not implemented error message more obvious
+    (#31930)
+  * [v13] pgbk: add change_feed_conn_string option (#31938)
+  * [v13] WebAPI: Include new DB RDS fields (vpc and subnet)
+    (#31817)
+  * [v13] Fix directory sharing for non-ascii directory names
+    (#31924)
+  * Fix typo in HSM docs (#31910)
+  * Ignore Vagrant folder (#31908)
+  * [v13] Fix JSON marshalling for Audit struct (#31329)
+  * [v13] Add AccessList with member upserting functionality
+    (#31608)
+  * Web: Add new supported aws region (il-central-1) to selector
+    (#31840)
+  * Update Electron to 26.2.1 (#31802) (#31860)
+  * [v13] document OIDC connector 'max_age' field (#31887)
+  * Extend EC2 joining for `Okta`, `Discovery` and `MDM` services
+    (#31894)
+  * [v13] AWS OIDC - List RDS: add Subnet and VPC for aurora
+    clusters (#31879)
+  * [v13] Update e ref. (#31884)
+  * return an error when attempting to join a session of an OpenSSH
+    node (#31844)
+  * Add access list audit events. (#31443) (#31872)
+  * [v13] Use builtin auth checker for upsert app server. (#31782)
+  * [v13] Validate unknown AWS regions from discovery matchers
+    (#31830)
+  * Expose aggregating.ClearAlert() for use by e (#31848)
+  * athena: modify time range when query with keyset (#31864)
+  * [v13] AWS OIDC: Set up integration with a single command
+    (#31790)
+  * Wait for headless watcher to initialize in tests instead of
+    using a retry mechanism. (#30060) (#31851)
+  * [v13] docs: Rough draft of troubleshooting for apps (#31823)
+  * Update config.json (#31820)
+  * Update upcoming-releases.mdx (#31807)
+  * add device enroll and license limit event to prehog (#31779)
+  * Increase timeout on usage event check (#31785)
+  * [v13] Bump github.com/jackc/pgx/v5 to a real release (#31795)
+  * [v13] AWS OIDC - List SecurityGroups: add Inbound and Outbound
+    Rules (#31624)
+  * Validate desktop names (#31766)
+  * fix: device trust enroll current device command (#31757)
+  * Switch from `mozilla.org/pkcs7` to `digitorus/pkcs7` (#30704)
+    (#30717)
+  * Remove internal access list object members field in spec.
+    (#31665)
+  * Make the WebAuthn error message a bit more explicit (#31632)
+  * [v13] Kubernetes External Joining: `static_jwks` implementation
+    (#30225) (#31703)
+  * Increase lock release timeout in RunWhileLocked (#31742)
+  * [v13] [buddy] docs: Machine ID with ansible, use
+    CanonicalDomain (#31734)
+  * [v13] pgbk: derive ID from revision (#31692)
+  * [v13] integrations/operator: Add pprof support (#31707)
+  * [v13] differentiate discovered resource names (#30456)
+  * Increase timeout on usage event assertions (#31726)
+  * [v13] [Docs] Update documentation for max duration feature in
+    access requests (#31680)
+  * Improve logging for the upload completer (#31571)
+  * [v13] Docs: Update terraform docs to 13.3.8 release (#31696)
+  * Deflake TestTeleportProcessAuthVersionCheck (#31710)
+  * Use the regions in teleport config instead of ENV for bootstrap
+    (#31701)
+  * Update the auto-discovery and discovery installers to support
+    SUSE (#31428)
+  * [v13] Upgrade Node.js to v18 (#31626)
+  * Fix incorrect autofill in safari (#31611)
+  * React to version updates faster (#31651)
+  * [v13] Update e ref. (#31639)
+  * Remove members from access list spec. (#31635)
+  * Make `TestIntegrations/ReconcileLabels` a unit test (#31124)
+    (#31594)
+  * Make internal changelog links relative (#31305)
+  * [v13] Edit the app access DynamoDB guide (#30781)
+  * [v13] helm: Optionally add publicAddr to cert-manager
+    certificate requests (#31603)
+  * Adds default Github API urls to SSO connector. (#31480)
+  * post-release: specify base branch for docs PR (#31499) (#31575)
+  * Make sure Teleport sessions use the user login state. (#31363)
+    (#31614)
+  * [v13] Deflake `TestIntegrations/Discovery` (#31595)
+  * fix terminal resizing (#31586)
+  * Fix typo in teleport-kube-agent Chart Reference (#31536)
+  * docs: minor updates to aws opensearch and azure sql server
+    guides (#31531)
+  * [v13] Ensures the canvas stays at a fixed size (#31524)
+  * Perform rate limiting on all user-initiated LLM calls in assist
+    (#31438) (#31567)
+  * Fix not being able to search for locks in table (#31581)
+  * docs: update docker image versions (#31562)
+  * [v13] Bump cloud version (#31551)
+  * remove margin on OIDC/SAML connectors (#31503)
+  * [v13] update ToolTipNoPermBadge component (#31488)
+  * Edit Server Access intro guide architecture info (#31493)
+  * [v13] Azure HA Teleport deployment guide (#31501)
+  * [v13] chore: Bump Go to v1.20.8 (#31506)
+  * [auto] docs: Update version to v13.3.8 (#31473)
+  * [v13] Update download links on support page (#31492)
+  * AWS OIDC - DeployService: add optional Security Groups (#31268)
+  * [v13] pgbk: partial backports #31358 #31426 (#31449)
+  * [v13] docs: use branch link instead of master (#31467)
+  * docs: include sudo for example commands (#31463)
+  * docs: Fix typo in JSON (#31452)
+  * [v13] docs: include ent cloud version for faq question on sso
+    (#31455)
+
+-------------------------------------------------------------------
 Wed Sep 06 05:23:21 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.3.8:
