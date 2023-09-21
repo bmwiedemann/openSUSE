@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 21 10:55:56 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 3.22 (jsc#PED-3361)
+  * openCryptoki 3.22
+    - CCA: Add support for the AES-XTS key type using CPACF protected keys
+    - p11sak: Add support for managing certificate objects
+    - p11sak: Add support for public sessions (no-login option)
+    - p11sak: Add support for logging in as SO (security Officer)
+    - p11sak: Add support for importing/exporting Edwards and Montgomery keys
+    - p11sak: Add support for importing of RSA-PSS keys and certificates
+    - CCA/EP11/Soft/ICA: Ensure that the 2 key parts of an AES-XTS key are different
+  * Bug fixes
+
+-------------------------------------------------------------------
 Fri May 26 06:55:10 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Update to version 3.21 (jsc#PED-3360, jsc#PED-3361)
