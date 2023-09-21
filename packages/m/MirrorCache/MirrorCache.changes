@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 14 06:49:28 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.064:
+  * Remove must-revalidate from cache-control (#407)
+  * Add handling x-metalink-limit request header (#407)
+  * Add handling x-country-code request header (#407)
+  * Fix escaping in regexps (#406)
+
+-------------------------------------------------------------------
 Thu Aug 31 07:36:54 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.063:
