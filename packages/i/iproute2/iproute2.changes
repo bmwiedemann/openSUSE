@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 12 14:22:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.5
+  * rdma: Report device protocol
+  * ip: error out if iplink does not consume all options
+
+-------------------------------------------------------------------
 Fri Jul 14 11:44:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.4
