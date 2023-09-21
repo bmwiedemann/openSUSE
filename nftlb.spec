@@ -1,7 +1,7 @@
 #
 # spec file for package nftlb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           nftlb
-Version:        1.0.7
+Version:        1.0.9
 Release:        0
 Summary:        nftables load balancer
 License:        AGPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.zevenet.com/knowledge-base/nftlb/what-is-nftlb/
-#Git-Clone:     https://github.com/zevenet/nftlb
-Source:         https://github.com/zevenet/nftlb/archive/v%version.tar.gz
+#Git-Clone:     https://github.com/relianoid/nftlb
+Source:         https://github.com/relianoid/nftlb/archive/v%version.tar.gz
 
 BuildRequires:  libtool
 BuildRequires:  pkg-config
