@@ -122,11 +122,13 @@ BuildRequires:  kernel-syms-rt
 %if 0%{?suse_version} >= 1130
 BuildRequires:  kernel-devel
 %endif
+%if %{defined kernel_module_package_buildreqs}
 BuildRequires:  %kernel_module_package_buildreqs
+%endif
 BuildRequires:  module-init-tools
 %endif
 
-%if 0%{?build_kmp}
+%if 0%{?build_kmp} && %{defined suse_kernel_module_package}
 %suse_kernel_module_package -n crash -p %_sourcedir/%{name}-kmp-preamble um
 %define arch %_target_cpu
 %define kmp_pkg KMP
