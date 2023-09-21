@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep 12 20:50:21 UTC 2023 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to upstream release 6.5
+  * Feature: register dump for hns3 driver (-d)
+  * Fix: fix fallback to ioctl for sset (-s)
+  * Fix: fix empty slot search in rmgr (-N)
+
+-------------------------------------------------------------------
+Sun Jul  1 22:25:36 UTC 2023 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to upstream release 6.4
+  * Feature: get/set Tx push buffer length (-G)
+  * Feature: sff-8636 and cmis: report LOL / LOS / Tx Fault (-m)
+  * Fix: fix duplex setting parser (-s)
+  * Misc: check and require C11 language standard
+  * Misc: clean up obsolete pre-build checks
+
+-------------------------------------------------------------------
+Sat Jul  1 22:01:19 UTC 2023 - Michal Kubecek <mkubecek@suse.cz>
+
+- make ethtool-bash-completion noarch
+
+-------------------------------------------------------------------
 Mon May  8 21:05:45 UTC 2023 - Michal Kubeček <mkubecek@suse.cz>
 
 - update to upstream release 6.3

@@ -17,7 +17,7 @@
 
 
 Name:           ethtool
-Version:        6.3
+Version:        6.5
 Release:        0
 Summary:        Utility for examining and tuning Ethernet-based network interfaces
 License:        GPL-2.0-only
@@ -47,6 +47,7 @@ Supplements:    (%{name} and bash-completion)
 %else
 Supplements:    packageand(%{name}:bash-completion)
 %endif
+BuildArch:      noarch
 
 %description bash-completion
 bash command line completion support for ethtool.
@@ -56,9 +57,6 @@ bash command line completion support for ethtool.
 
 %build
 export CFLAGS="%optflags -Wall -Wextra -Wstrict-prototypes -Wformat-security -Wpointer-arith"
-%if 0%{?suse_version} < 1500
-CFLAGS="$CFLAGS -std=c11"
-%endif
 %configure
 make %{?_smp_mflags}
 
