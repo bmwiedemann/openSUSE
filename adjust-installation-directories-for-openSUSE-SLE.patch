@@ -5,28 +5,29 @@ Patch-mainline: Never, SUSE specific
 
 Match the directory layout of openSUSE and SLE.
 ---
- Makefile       | 4 ++--
- netem/Makefile | 5 +++--
- tc/q_netem.c   | 2 +-
- 3 files changed, 6 insertions(+), 5 deletions(-)
+ Makefile       |    6 +++---
+ netem/Makefile |    5 +++--
+ tc/q_netem.c   |    2 +-
+ 3 files changed, 7 insertions(+), 6 deletions(-)
 
-Index: iproute2-6.3.0/Makefile
+Index: iproute2-6.5.0/Makefile
 ===================================================================
---- iproute2-6.3.0.orig/Makefile
-+++ iproute2-6.3.0/Makefile
-@@ -15,9 +15,9 @@ MAKEFLAGS += --no-print-directory
+--- iproute2-6.5.0.orig/Makefile
++++ iproute2-6.5.0/Makefile
+@@ -15,10 +15,10 @@ MAKEFLAGS += --no-print-directory
  endif
  
  PREFIX?=/usr
 -SBINDIR?=/sbin
 +SBINDIR?=/usr/sbin
- CONFDIR?=/etc/iproute2
+ CONF_ETC_DIR?=/etc/iproute2
+ CONF_USR_DIR?=$(PREFIX)/lib/iproute2
 -NETNS_RUN_DIR?=/var/run/netns
 +NETNS_RUN_DIR?=/run/netns
  NETNS_ETC_DIR?=/etc/netns
  DATADIR?=$(PREFIX)/share
  HDRDIR?=$(PREFIX)/include/iproute2
-@@ -32,7 +32,7 @@ DBM_INCLUDE:=$(DESTDIR)/usr/include
+@@ -33,7 +33,7 @@ DBM_INCLUDE:=$(DESTDIR)/usr/include
  
  SHARED_LIBS = y
  
@@ -35,10 +36,10 @@ Index: iproute2-6.3.0/Makefile
  ifneq ($(SHARED_LIBS),y)
  DEFINES+= -DNO_SHARED_LIBS
  endif
-Index: iproute2-6.3.0/netem/Makefile
+Index: iproute2-6.5.0/netem/Makefile
 ===================================================================
---- iproute2-6.3.0.orig/netem/Makefile
-+++ iproute2-6.3.0/netem/Makefile
+--- iproute2-6.5.0.orig/netem/Makefile
++++ iproute2-6.5.0/netem/Makefile
 @@ -7,6 +7,7 @@ DISTDATA = normal.dist pareto.dist paret
  HOSTCC ?= $(CC)
  CCOPTS  = $(CBUILD_CFLAGS)
@@ -59,10 +60,10 @@ Index: iproute2-6.3.0/netem/Makefile
  	done
  
  clean:
-Index: iproute2-6.3.0/tc/q_netem.c
+Index: iproute2-6.5.0/tc/q_netem.c
 ===================================================================
---- iproute2-6.3.0.orig/tc/q_netem.c
-+++ iproute2-6.3.0/tc/q_netem.c
+--- iproute2-6.5.0.orig/tc/q_netem.c
++++ iproute2-6.5.0/tc/q_netem.c
 @@ -130,7 +130,7 @@ static int get_distribution(const char *
  	char *line = NULL;
  	char name[128];

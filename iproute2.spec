@@ -18,7 +18,7 @@
 
 %define _buildshell /bin/bash
 Name:           iproute2
-Version:        6.4
+Version:        6.5
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
@@ -74,9 +74,9 @@ New programs should use libmnl-devel instead.
 Summary:        Bash completion for iproute
 License:        GPL-2.0-or-later
 Group:          System/Shells
-Requires:       %{name}
+Requires:       %name
 Requires:       bash-completion
-Supplements:    (%{name} and bash-completion)
+Supplements:    (%name and bash-completion)
 
 %description bash-completion
 bash command line completion support for iproute.
@@ -85,7 +85,7 @@ bash command line completion support for iproute.
 Summary:        Userspace ARP daemon
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Routing
-Provides:       iproute2:/usr/sbin/arpd
+Provides:       iproute2:%_sbindir/arpd
 
 %description arpd
 The arpd daemon collects gratuitous ARP information, saving it on
@@ -166,8 +166,7 @@ EOF
 %_mandir/man7/*
 %_mandir/man8/*
 %exclude %_mandir/man8/arpd.8*
-%dir %_sysconfdir/iproute2
-%config(noreplace) %_sysconfdir/iproute2/*
+/usr/lib/iproute2
 %_libdir/tc/
 %_datadir/tc/
 %_docdir/%name/
