@@ -60,7 +60,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.79
+Version:        0.3.80
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -70,10 +70,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
-Patch1:         0001-pulse-server-allow-monitors-when-selecting-source-by-index.patch
-Patch2:         0001-Revert-v4l2-handle-inotify-errors.patch
-Patch3:         0002-Revert-v4l2-dont-set-inotify-on-_dev.patch
-Patch4:         0003-spa-v4l2-use-a-separate-watch-for-each-device.patch
 
 BuildRequires:  docutils
 BuildRequires:  doxygen
@@ -139,7 +135,7 @@ BuildRequires:  pkgconfig(sbc)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vulkan)
-BuildRequires:  pkgconfig(webrtc-audio-processing)
+BuildRequires:  pkgconfig(webrtc-audio-processing-1)
 BuildRequires:  pkgconfig(x11)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 BuildRequires:  pkgconfig(xfixes)
@@ -387,10 +383,6 @@ JACK libraries.
 sed -ie "s/version : '0.3.72'/version : '%{version}'/" %{P:0}
 %patch0 -p1
 %endif
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
@@ -593,6 +585,9 @@ fi
 %{_bindir}/pipewire
 %{_bindir}/pipewire-avb
 %{_bindir}/pipewire-aes67
+%if %{with_vulkan}
+%{_bindir}/pipewire-vulkan
+%endif
 %{_userunitdir}/pipewire.service
 %{_userunitdir}/pipewire.socket
 %{_userunitdir}/filter-chain.service
@@ -606,6 +601,9 @@ fi
 %{_datadir}/pipewire/filter-chain/*.conf
 %{_datadir}/pipewire/pipewire-avb.conf
 %{_datadir}/pipewire/pipewire-aes67.conf
+%if %{with_vulkan}
+%{_datadir}/pipewire/pipewire-vulkan.conf
+%endif
 %ghost %dir %{_localstatedir}/lib/pipewire/
 %ghost %{_localstatedir}/lib/pipewire/pipewire_post_workaround
 
