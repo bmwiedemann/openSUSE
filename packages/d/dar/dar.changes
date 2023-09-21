@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep 17 19:04:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.12:
+  * fixed bug avoid restoration of binary patch when it was based
+    on another binary patch.
+  * fixing bug in testing routine that lead regression unseen and
+    released in 2.7.11.
+  * removed set_unexpected() invocation (not useful for years in
+    libdar and incompatible with C++17)
+  * fixed generated dynamic libdar binary to include all its
+    dependent libraries
+  * modified default block size for binary deltas, to be closer
+    to what rsync uses (more details in man page).
+  * adding support for ronna (10^27) and quetta (10^30) new SI
+    prefixes, R and Q respectively
+  * fixing bug in infinint class met when extending underlying
+    storage by zero bytes
+  * avoiding delta sig block size calculation when not necessary
+
+-------------------------------------------------------------------
 Mon Jul  3 08:40:44 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.7.10:
@@ -28,7 +48,7 @@ Thu Jun 15 09:42:57 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
   * fixed bug in tuyau_global class that lead to seeking at a wrong
   in sequential read mode and the unability to properly rely on a
   isolated catalogue to read (test/extract/diff) an backup in sequential
-  read mode, leading dar to report CRC error. 
+  read mode, leading dar to report CRC error.
 
 -------------------------------------------------------------------
 Wed Dec  7 22:27:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -62,7 +82,7 @@ Mon Aug  8 21:01:26 UTC 2022 - Dirk Müller <dmueller@suse.com>
   accommodate tape support used with slices (at the opposite of dar_split)
   * fixing few typos in doc
   * making libdar more tolerant when calls to fadvise fail
- 
+
 -------------------------------------------------------------------
 Tue Jul  5 20:41:57 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
 
@@ -117,7 +137,7 @@ Fri Dec 18 07:45:45 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 -------------------------------------------------------------------
 Wed Dec 16 15:36:49 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
-- update to 2.6.13: 
+- update to 2.6.13:
   - fixed compilation warning in testing routine (outside libdar and dar)
   - due to change in autoconf, the --sysconfdir path (which defaults to
     ${prefix}/etc) was read as an empty string, leading dar to look for
@@ -171,7 +191,7 @@ Mon Aug 17 12:33:57 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 Wed Apr 15 13:45:47 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.6.9
-  * too many changes to list, see ChangeLog file 
+  * too many changes to list, see ChangeLog file
 - Drop dar-use-libc-xattr.patch (fixed upstream)
 - Drop Group tag
 - Spec cleanup
@@ -278,40 +298,40 @@ Thu Jan  5 15:58:23 UTC 2017 - mpluskal@suse.com
 Mon Dec 21 12:10:09 UTC 2015 - mpluskal@suse.com
 
 - Update to 2.4.20
-	* fixed display bug in dar_manager met when using -o option and 
-		adding options for dar that does not exist for dar_manager 
+	* fixed display bug in dar_manager met when using -o option and
+		adding options for dar that does not exist for dar_manager
 		(like -R option)
-	* reactivating disabled (by mistake) optimization for some 
+	* reactivating disabled (by mistake) optimization for some
 		read-only dar manager database operations
 	* fixing compilation issue with dar against gcc 4.9.2
 	* fixing syntax error in dar_manager message
-	* fixing bug that avoided creating an archive at the root of the 
+	* fixing bug that avoided creating an archive at the root of the
 		filesystem
 - Changes for 2.4.19
-	* fixed missing quote in dar_par.dcf which is called by the par2 
+	* fixed missing quote in dar_par.dcf which is called by the par2
 		directive
-	* fixed bug in dar_manager's -u option, not displaying most 
-		recent files of an archive when they have been marked as 
-		removed in a more recent archive of the same dar_manager 
+	* fixed bug in dar_manager's -u option, not displaying most
+		recent files of an archive when they have been marked as
+		removed in a more recent archive of the same dar_manager
 		database.
-	* fixed bug met while restoring in sequential read mode a file 
-		having several copies (was modified at the time it was saved 
+	* fixed bug met while restoring in sequential read mode a file
+		having several copies (was modified at the time it was saved
 		and retry-on-change was set).
 
 -------------------------------------------------------------------
 Sat Sep 19 10:39:48 UTC 2015 - mpluskal@suse.com
 
 - Update to 2.4.18
-  * Initial Vector used for strong encryption was set with 
-    pseudo-random data generated using SHA1 message digest and 
-    blowfish cipher, which are not available when ligcrypt is 
-    running in FIPS mode. Since 2.4.18 we now use SHA256 and AES256 
-    for IV assignment in order to have libdar compatible with FIPS 
-    mode. For data encryption nothing changes: the cipher specified 
+  * Initial Vector used for strong encryption was set with
+    pseudo-random data generated using SHA1 message digest and
+    blowfish cipher, which are not available when ligcrypt is
+    running in FIPS mode. Since 2.4.18 we now use SHA256 and AES256
+    for IV assignment in order to have libdar compatible with FIPS
+    mode. For data encryption nothing changes: the cipher specified
     (-K, -J, -$ options on CLI) are used as before.
-  * fixing bug met when performing archive isolation in 
-    sequential-read mode, If an archive corruption or truncated 
-    archive leads an inode to not have its CRC readable, dar aborts 
+  * fixing bug met when performing archive isolation in
+    sequential-read mode, If an archive corruption or truncated
+    archive leads an inode to not have its CRC readable, dar aborts
     and issues a BUG report.
 
 -------------------------------------------------------------------
@@ -322,7 +342,7 @@ Sat Mar  7 08:59:55 UTC 2015 - mpluskal@suse.com
 -------------------------------------------------------------------
 Tue Mar  3 16:12:45 UTC 2015 - mpluskal@suse.com
 
-- Add changelog to sources (necessary for _DATE_ and _TIME_ 
+- Add changelog to sources (necessary for _DATE_ and _TIME_
   macros substitution removal)
 
 -------------------------------------------------------------------
@@ -333,10 +353,10 @@ Sun Mar  1 13:17:54 UTC 2015 - mpluskal@suse.com
 - Add gpg signature
 - Get rid of _DATE_ and _TIME macros
 - Update to 2.4.17
-  * fixing issue when case insensitive comparison was requested 
-    and invalid wide char for the current local was met in a 
-    filename. In such situation the corresponding file was never 
-    saved before (considering a filesystem error for that file), 
+  * fixing issue when case insensitive comparison was requested
+    and invalid wide char for the current local was met in a
+    filename. In such situation the corresponding file was never
+    saved before (considering a filesystem error for that file),
     while now the ASCII case insensitivity is used as fallback.
 
 -------------------------------------------------------------------
@@ -368,7 +388,7 @@ Sat Jun 14 10:55:03 UTC 2014 - tchvatal@suse.com
 -------------------------------------------------------------------
 Mon Jun  2 02:05:39 UTC 2014 - crrodriguez@opensuse.org
 
-- Also drop libattr from the -devel package requires 
+- Also drop libattr from the -devel package requires
 
 -------------------------------------------------------------------
 Mon Jun  2 01:08:27 UTC 2014 - crrodriguez@opensuse.org
@@ -475,7 +495,7 @@ Fri Sep  3 00:00:00 MST 2010 - tkedwards@fastmail.com.au
 -------------------------------------------------------------------
 Wed Jan 14 00:11:15 CET 2009 - crrodriguez@suse.de
 
-- remove static libraries and "la" files 
+- remove static libraries and "la" files
 
 -------------------------------------------------------------------
 Sat Feb  2 13:24:31 CET 2008 - aj@suse.de
@@ -543,7 +563,7 @@ Fri Jul  6 12:56:56 CEST 2007 - adrian@suse.de
 -------------------------------------------------------------------
 Mon Jun 18 00:43:29 CEST 2007 - ro@suse.de
 
-- avoid string compare with char literal 
+- avoid string compare with char literal
 
 -------------------------------------------------------------------
 Mon Apr  2 09:44:45 CEST 2007 - adrian@suse.de
@@ -554,7 +574,7 @@ Mon Apr  2 09:44:45 CEST 2007 - adrian@suse.de
 -------------------------------------------------------------------
 Sat Mar 31 18:20:09 CEST 2007 - rguenther@suse.de
 
-- add zlib-devel BuildRequires 
+- add zlib-devel BuildRequires
 
 -------------------------------------------------------------------
 Tue Jan 16 12:32:25 CET 2007 - adrian@suse.de
@@ -660,7 +680,7 @@ Sun Jan 22 00:14:39 CET 2006 - cthiel@suse.de
 -------------------------------------------------------------------
 Mon Jan 16 20:17:42 CET 2006 - dmueller@suse.de
 
-- 2.2.5 update 
+- 2.2.5 update
 
 -------------------------------------------------------------------
 Mon Sep 26 22:58:27 CEST 2005 - mls@suse.de
@@ -675,7 +695,7 @@ Mon Jul 25 20:48:16 CEST 2005 - mmj@suse.de
 -------------------------------------------------------------------
 Fri Jul 15 22:59:39 CEST 2005 - dmueller@suse.de
 
-- 2.2.2 update 
+- 2.2.2 update
 
 -------------------------------------------------------------------
 Mon Apr 25 12:12:22 CEST 2005 - adrian@suse.de
