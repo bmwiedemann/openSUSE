@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 %define sover 2_7
 Name:           ulfius
-Version:        2.7.12
+Version:        2.7.14
 Release:        0
 Summary:        Web Framework for REST Applications in C
 License:        MIT
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(jansson) >= 2.1
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmicrohttpd) >= 0.9.51
 BuildRequires:  pkgconfig(liborcania) >= 2.3.2
-BuildRequires:  pkgconfig(libyder) >= 1.4.19
+BuildRequires:  pkgconfig(libyder) >= 1.4.20
 BuildRequires:  pkgconfig(zlib)
 
 %description

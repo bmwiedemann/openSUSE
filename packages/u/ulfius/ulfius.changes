@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 18 14:55:33 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.14
+  * Set protocols to http and https only in send requests.
+  * Fix static analyzer warnings.
+  * Minor improvements.
+  * cmake: remove DownloadProject feature, now dependencies must
+    be previously installed.
+- Update to version 2.7.13
+  * Websockets client: fix case where server sends a 0-length
+    packet.
+  * Minor improvements.
+
+-------------------------------------------------------------------
 Thu Jan 12 07:59:52 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.7.12
