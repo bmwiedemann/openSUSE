@@ -19,7 +19,7 @@
 %global pkg_name tasty-hunit
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.10.0.3
+Version:        0.10.1
 Release:        0
 Summary:        HUnit support for the Tasty test framework
 License:        MIT
