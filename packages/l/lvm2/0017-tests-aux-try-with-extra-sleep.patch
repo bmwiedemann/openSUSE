@@ -1,0 +1,26 @@
+From cf8a0c94fff754e4b6a504a430e53439d67b6ca0 Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Wed, 13 Sep 2023 23:27:55 +0200
+Subject: [PATCH 17/24] tests: aux try with extra sleep
+
+Since udev_wait is not really adding any major delay to wait
+for any udev worker processing - add extra sleep .1.
+---
+ test/lib/aux.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/test/lib/aux.sh b/test/lib/aux.sh
+index 4474dc72c..816a13223 100644
+--- a/test/lib/aux.sh
++++ b/test/lib/aux.sh
+@@ -424,6 +424,7 @@ teardown_devs_prefixed() {
+ 
+ 			test "$progress" = 1 || break
+ 
++			sleep .1
+ 			udev_wait
+ 			wait
+ 			progress=0
+-- 
+2.35.3
+

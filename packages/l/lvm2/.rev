@@ -1304,4 +1304,12 @@
 </comment>
     <requestid>1104870</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>c1fe59233555732fb21e7002bbe64eab</srcmd5>
+    <version>2.03.22</version>
+    <time>1695327184</time>
+    <user>anag+factory</user>
+    <comment>Update lvm2 from LVM2.2.03.16 to LVM2.2.03.22 (jsc#PED-6339)</comment>
+    <requestid>1112146</requestid>
+  </revision>
 </revisionlist>

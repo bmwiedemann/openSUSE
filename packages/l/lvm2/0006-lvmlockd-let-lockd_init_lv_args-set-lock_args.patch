@@ -1,0 +1,63 @@
+From ae13074a0a6ea7997cdb370cdd2185801646b2c5 Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Wed, 16 Aug 2023 13:24:36 -0500
+Subject: [PATCH 06/24] lvmlockd: let lockd_init_lv_args set lock_args
+
+Set the lock_args string in addition to doing initialization.
+lvconvert calls lockd_init_lv_args() directly, skipping
+the normal lockd_init_lv() which usually sets lock_args.
+---
+ lib/locking/lvmlockd.c |  9 +++++++--
+ tools/lvconvert.c      | 15 +++------------
+ 2 files changed, 10 insertions(+), 14 deletions(-)
+
+diff --git a/lib/locking/lvmlockd.c b/lib/locking/lvmlockd.c
+index d44b7333a..627aa2625 100644
+--- a/lib/locking/lvmlockd.c
++++ b/lib/locking/lvmlockd.c
+@@ -2938,8 +2938,13 @@ int lockd_init_lv_args(struct cmd_context *cmd, struct volume_group *vg,
+ 		       struct logical_volume *lv,
+ 		       const char *lock_type, const char **lock_args)
+ {
+-	/* sanlock is the only lock type that sets per-LV lock_args. */
+-	if (!strcmp(lock_type, "sanlock"))
++	if (!lock_type)
++		return 1;
++	if (!strcmp(lock_type, "dlm"))
++		*lock_args = "dlm";
++	else if (!strcmp(lock_type, "idm"))
++		*lock_args = "idm";
++	else if (!strcmp(lock_type, "sanlock"))
+ 		return _init_lv_sanlock(cmd, vg, lv->name, &lv->lvid.id[1], lock_args);
+ 	return 1;
+ }
+diff --git a/tools/lvconvert.c b/tools/lvconvert.c
+index 7c9540712..40e7a6871 100644
+--- a/tools/lvconvert.c
++++ b/tools/lvconvert.c
+@@ -3471,19 +3471,10 @@ static int _lvconvert_to_pool(struct cmd_context *cmd,
+ 		metadata_lv->lock_args = NULL;
+ 
+ 		if (!to_cachepool) {
+-			if (!strcmp(vg->lock_type, "sanlock")) {
+-				if (!lockd_init_lv_args(cmd, vg, pool_lv,
+-							vg->lock_type, &pool_lv->lock_args)) {
+-					log_error("Cannot allocate lock for new pool LV.");
+-					goto_bad;
+-				}
+-				pool_lv->new_lock_args = 1; /* tells vg_revert to lockd_free_lv */
+-			} else if (!strcmp(vg->lock_type, "dlm")) {
+-				pool_lv->lock_args = "dlm";
+-			} else if (!strcmp(vg->lock_type, "idm")) {
+-				pool_lv->lock_args = "idm";
++			if (!lockd_init_lv_args(cmd, vg, pool_lv, vg->lock_type, &pool_lv->lock_args)) {
++				log_error("Cannot allocate lock for new pool LV.");
++				goto_bad;
+ 			}
+-
+ 			if (lock_active_pool) {
+ 			       	if (!lockd_lv(cmd, pool_lv, "ex", LDLV_PERSISTENT)) {
+ 					log_error("Failed to lock new pool LV %s.", display_lvname(pool_lv));
+-- 
+2.35.3
+

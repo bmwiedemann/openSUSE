@@ -11,6 +11,13 @@ line. One of usecases is in rescue mode, disabling lvm2 will
 allow user to enable lvm2 devices by manual.
 
 Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+
+2023-09-07:
+The file udev/69-dm-lvm-metad.rules.in has been removed since v2_03_19.
+So remove the change of above file. 
+
+Signed-off-by: Glass Su <glass.su@suse.com>
+
 ---
 
 diff -Nupr a/scripts/lvm2-pvscan.service.in b/scripts/lvm2-pvscan.service.in
@@ -24,19 +31,6 @@ diff -Nupr a/scripts/lvm2-pvscan.service.in b/scripts/lvm2-pvscan.service.in
  
  [Service]
  Type=oneshot
-diff -Nupr a/udev/69-dm-lvm-metad.rules.in b/udev/69-dm-lvm-metad.rules.in
---- a/udev/69-dm-lvm-metad.rules.in	2022-09-02 14:04:42.618917180 +0800
-+++ b/udev/69-dm-lvm-metad.rules.in	2022-09-02 14:03:39.707191529 +0800
-@@ -12,6 +12,9 @@ SUBSYSTEM!="block", GOTO="lvm_end"
- 
- ENV{DM_UDEV_DISABLE_OTHER_RULES_FLAG}=="1", GOTO="lvm_end"
- 
-+IMPORT{cmdline}="nolvm"
-+ENV{nolvm}=="?*", GOTO="lvm_end"
-+
- # Detect removed PV label by comparing previous ID_FS_TYPE value with current one.
- ENV{.ID_FS_TYPE_NEW}="$env{ID_FS_TYPE}"
- IMPORT{db}="ID_FS_TYPE"
 diff -Nupr a/udev/69-dm-lvm.rules.in b/udev/69-dm-lvm.rules.in
 --- a/udev/69-dm-lvm.rules.in	2022-09-02 14:04:51.074880312 +0800
 +++ b/udev/69-dm-lvm.rules.in	2022-09-02 14:07:19.978230990 +0800

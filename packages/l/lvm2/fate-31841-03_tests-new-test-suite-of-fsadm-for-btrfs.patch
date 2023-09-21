@@ -1,27 +1,29 @@
-From 17b99e3950eb4457ab2d063fe3c4c93aeb13894a Mon Sep 17 00:00:00 2001
+From 24ec9af4513890b2ab1a6f3683e8aba007a3c983 Mon Sep 17 00:00:00 2001
 From: Heming Zhao <heming.zhao@suse.com>
 Date: Wed, 30 Jun 2021 18:41:42 +0800
-Subject: [PATCH 3/3] tests: new test suite of fsadm for btrfs
-To: lvm-devel@redhat.com,
-    zkabelac@redhat.com,
-    teigland@redhat.com
+Subject: [PATCH] tests: new test suite of fsadm for btrfs
 
 refer legacy patche:
 - Ondrej Kozina <okozina@redhat.com>
   https://listman.redhat.com/archives/lvm-devel/2012-November/msg00055.html
 
 Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+
+2023-09-08:
+LVs should be resized to 64M after each test.
+
+Signed-off-by: Su Yue <glass.su@suse.com>
 ---
- test/shell/fsadm-btrfs.sh | 165 ++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 165 insertions(+)
+ test/shell/fsadm-btrfs.sh | 176 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 176 insertions(+)
  create mode 100644 test/shell/fsadm-btrfs.sh
 
 diff --git a/test/shell/fsadm-btrfs.sh b/test/shell/fsadm-btrfs.sh
 new file mode 100644
-index 000000000000..cd83a95ace41
+index 000000000000..c1b65036efb2
 --- /dev/null
 +++ b/test/shell/fsadm-btrfs.sh
-@@ -0,0 +1,165 @@
+@@ -0,0 +1,176 @@
 +#!/usr/bin/env bash
 +
 +# Copyright (C) 2012 Red Hat, Inc. All rights reserved.
@@ -65,6 +67,14 @@ index 000000000000..cd83a95ace41
 +	umount "$mount_dir" || true
 +	umount "$mount_space_dir" || true
 +	aux teardown
++}
++
++reset_lvs()
++{
++	# Since we call mkfs.btrfs with '-f', lvreduce to 64M is enough
++	lvreduce -L64M -nf $vg_lv || true
++	lvreduce -L64M -nf $vg_lv2 || true
++	lvreduce -L64M -nf $vg_lv3 || true
 +}
 +
 +check_missing_btrfs()
@@ -183,10 +193,13 @@ index 000000000000..cd83a95ace41
 +if check_missing_btrfs; then
 +
 +	single_device_test
++	# after each test, reset_lv_size should be called to make sure
++	# all lvs are in same state/size.
++	reset_lvs
 +	multiple_devices_test
 +fi
 +
 +vgremove -ff $vg
 -- 
-1.8.3.1
+2.35.3
 

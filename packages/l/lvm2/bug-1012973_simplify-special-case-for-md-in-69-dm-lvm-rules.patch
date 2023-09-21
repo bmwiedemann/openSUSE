@@ -1,7 +1,7 @@
-From 0913b597d61b9b430654d7ab06528cdfcfaf06f4 Mon Sep 17 00:00:00 2001
+From 5633a8ad6522f0f1340ef35c2f3943a3b20cc200 Mon Sep 17 00:00:00 2001
 From: NeilBrown <neilb@suse.com>
 Date: Wed, 4 Jan 2017 14:20:53 +1100
-Subject: [PATCH] Simplify special-case for md in 69-dm-lvm-metadata.rules
+Subject: [PATCH] Simplify special-case for md in 69-dm-lvm.rules.in
 
 This special casing brings little value.  It appears to attempt to
 determine if the array is active yet or not, and to skip
@@ -28,15 +28,24 @@ So replace the special handling with code that simply jumps to lvm_scan
 on any 'add' or 'change' event.
 
 Signed-off-by: NeilBrown <neilb@suse.com>
----
- udev/69-dm-lvm-metad.rules.in | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/udev/69-dm-lvm-metad.rules.in b/udev/69-dm-lvm-metad.rules.in
-index bd75fc8efcd5..fcbb7f755eba 100644
---- a/udev/69-dm-lvm-metad.rules.in
-+++ b/udev/69-dm-lvm-metad.rules.in
-@@ -54,13 +54,11 @@ ENV{DM_UDEV_PRIMARY_SOURCE_FLAG}=="1", ENV{DM_ACTIVATION}=="1", GOTO="lvm_scan"
+2023-09-18:
+udev/69-dm-lvm-metadata.rules was removed in v2_03_09 and 69-dm-lvm.rules.in
+should be modified instead. The subject of this patch should be modified too.
+NOTE: the updated patch may let shell/duplicate-pvs-md0.sh fail because
+we change timing of lvm_scan in the rule file.
+
+Signed-off-by: Glass Su <glass.su@suse.com>
+
+---
+ udev/69-dm-lvm.rules.in | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/udev/69-dm-lvm.rules.in b/udev/69-dm-lvm.rules.in
+index 3ec50a5cb878..45fdad444562 100644
+--- a/udev/69-dm-lvm.rules.in
++++ b/udev/69-dm-lvm.rules.in
+@@ -35,12 +35,11 @@ ENV{DM_UDEV_PRIMARY_SOURCE_FLAG}=="1", ENV{DM_ACTIVATION}=="1", GOTO="lvm_scan"
  GOTO="lvm_end"
  
  # MD device:
@@ -47,12 +56,11 @@ index bd75fc8efcd5..fcbb7f755eba 100644
 -ACTION=="add", ENV{LVM_MD_PV_ACTIVATED}=="1", GOTO="lvm_scan"
 -ACTION=="change", ENV{LVM_MD_PV_ACTIVATED}!="1", TEST=="md/array_state", ENV{LVM_MD_PV_ACTIVATED}="1", GOTO="lvm_scan"
 -ACTION=="add", KERNEL=="md[0-9]*p[0-9]*", GOTO="lvm_scan"
--ENV{LVM_MD_PV_ACTIVATED}!="1", ENV{SYSTEMD_READY}="0"
 +ACTION=="add", GOTO="lvm_scan"
 +ACTION=="change", GOTO="lvm_scan"
  GOTO="lvm_end"
  
  # Loop device:
 -- 
-2.11.0
+2.42.0
 

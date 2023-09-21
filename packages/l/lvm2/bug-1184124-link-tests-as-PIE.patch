@@ -1,10 +1,10 @@
-Index: LVM2.2.03.10/test/Makefile.in
-===================================================================
---- LVM2.2.03.10.orig/test/Makefile.in
-+++ LVM2.2.03.10/test/Makefile.in
+diff --git a/test/Makefile.in b/test/Makefile.in
+index 20e97ebd0f4d..d4d3ce9f6dc7 100644
+--- a/test/Makefile.in
++++ b/test/Makefile.in
 @@ -31,6 +31,7 @@ LVM_TEST_RESULTS ?= results
- SOURCES = lib/not.c lib/harness.c lib/dmsecuretest.c
- CXXSOURCES = lib/runner.cpp
+ SOURCES := lib/not.c lib/harness.c lib/dmsecuretest.c
+ CXXSOURCES := lib/runner.cpp
  CXXFLAGS += $(EXTRA_EXEC_CFLAGS)
 +LDFLAGS += -pie
  

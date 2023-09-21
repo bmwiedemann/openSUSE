@@ -1,0 +1,34 @@
+From 33b804a80e24d58e57936f7c5a6cbe7c77981483 Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Thu, 17 Aug 2023 21:50:03 +0200
+Subject: [PATCH 08/24] lvconvert: run error path code only for shared VG
+
+Error path for locking only for share VG.
+---
+ tools/lvconvert.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/tools/lvconvert.c b/tools/lvconvert.c
+index 7d5057254..49e9248a6 100644
+--- a/tools/lvconvert.c
++++ b/tools/lvconvert.c
+@@ -3566,10 +3566,12 @@ static int _lvconvert_to_pool(struct cmd_context *cmd,
+ 	 * committed should not exit here.  There is some cleanup missing here.
+ 	 */
+ bad:
+-	if (lock_active_pool_done)
+-		lockd_lv(cmd, pool_lv, "un", LDLV_PERSISTENT);
+-	if (pool_lv && pool_lv->lock_args && pool_lv->new_lock_args)
+-		lockd_free_lv(cmd, vg, pool_lv->name, &pool_lv->lvid.id[1], pool_lv->lock_args);
++	if (vg_is_shared(vg)) {
++		if (lock_active_pool_done)
++			lockd_lv(cmd, pool_lv, "un", LDLV_PERSISTENT);
++		if (pool_lv && pool_lv->lock_args && pool_lv->new_lock_args)
++			lockd_free_lv(cmd, vg, pool_lv->name, &pool_lv->lvid.id[1], pool_lv->lock_args);
++	}
+ 
+ 	if (policy_settings)
+ 		dm_config_destroy(policy_settings);
+-- 
+2.35.3
+

@@ -1,0 +1,27 @@
+From cb34be9ba90613cd49f4822fc118cecfc93ac897 Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Thu, 14 Sep 2023 01:41:45 +0200
+Subject: [PATCH 18/24] tests: aux using singl lvmconf call
+
+lvmconf can handle multiple options in a single pass.
+---
+ test/lib/aux.sh | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/test/lib/aux.sh b/test/lib/aux.sh
+index 816a13223..20dbecec2 100644
+--- a/test/lib/aux.sh
++++ b/test/lib/aux.sh
+@@ -1444,8 +1444,7 @@ extend_filter_md() {
+ 	for rx in "$@"; do
+ 		filter=$(echo "$filter" | sed -e "s:\\[:[ \"$rx\", :")
+ 	done
+-	lvmconf "$filter"
+-	lvmconf "devices/scan = [ \"$DM_DEV_DIR\", \"/dev\" ]"
++	lvmconf "$filter" "devices/scan = [ \"$DM_DEV_DIR\", \"/dev\" ]"
+ }
+ 
+ extend_filter_LVMTEST() {
+-- 
+2.35.3
+

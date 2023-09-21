@@ -21,11 +21,11 @@
 %define libname_event libdevmapper-event1_03
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define cmdlib liblvm2cmd2_03
-%define lvm2_version              2.03.16
+%define lvm2_version              2.03.22
 # For device_mapper_version, it's package version, see bsc#1199074.
 # Also note there is another dm version on below "sed -ie ... VERSION_DM".
-%define upstream_device_mapper_version  1.02.185
-%define device_mapper_version           %{lvm2_version}_1.02.185
+%define upstream_device_mapper_version  1.02.196
+%define device_mapper_version           %{lvm2_version}_1.02.196
 %define thin_provisioning_version 0.7.0
 %define _supportsanlock 1
 %define dlm_version     4.0.9
@@ -71,22 +71,30 @@ Source42:       ftp://sourceware.org/pub/lvm2/LVM2.%{version}.tgz.asc
 Source99:       baselibs.conf
 
 # Upstream patches
-Patch0001:      0001-devices-file-move-clean-up-after-command-is-run.patch
-Patch0002:      0002-devices-file-fail-if-devicesfile-filename-doesn-t-ex.patch
-Patch0003:      0003-filter-mpath-handle-other-wwid-types-in-blacklist.patch
-Patch0004:      0004-filter-mpath-get-wwids-from-sysfs-vpd_pg83.patch
-Patch0005:      0005-pvdisplay-restore-reportformat-option.patch
-Patch0006:      0006-exit-with-error-when-devicesfile-name-doesn-t-exist.patch
-Patch0007:      0007-report-fix-pe_start-column-type-from-NUM-to-SIZ.patch
-Patch0008:      0008-_vg_read_raw_area-fix-segfault-caused-by-using-null-.patch
-Patch0009:      0009-mm-remove-libaio-from-being-skipped.patch
-Patch0010:      0010-dmsetup-check-also-for-ouf-of-range-value.patch
-Patch0011:      0011-devices-drop-double-from-sysfs-path.patch
-Patch0012:      0012-devices-file-fix-pvcreate-uuid-matching-pvid-entry-w.patch
-Patch0013:      0013-vgimportdevices-change-result-when-devices-are-not-a.patch
-Patch0014:      0014-vgimportdevices-fix-locking-when-creating-devices-fi.patch
-Patch0015:      bug-1203216_lvmlockd-purge-the-lock-resources-left-in-previous-l.patch
-Patch0016:      bug-1212613_apply-multipath_component_detection-0-to-duplicate-P.patch
+Patch0001:      0001-lvconvert-swapmetadata-fix-lvmlockd-locking.patch
+Patch0002:      0002-lvconvert-fix-ret-values-fro-integrity-remove.patch
+Patch0003:      0003-lvconvert-fix-regresion-from-integrity-check.patch
+Patch0004:      0004-gcc-cleanup-warnings.patch
+Patch0005:      0005-lvmlockd-fix-thick-to-thin-lv-conversion.patch
+Patch0006:      0006-lvmlockd-let-lockd_init_lv_args-set-lock_args.patch
+Patch0007:      0007-lvmlockd-fix-lvconvert-to-thin-pool.patch
+Patch0008:      0008-lvconvert-run-error-path-code-only-for-shared-VG.patch
+Patch0009:      0009-vgchange-acquire-an-exclusive-VG-lock-for-refresh.patch
+Patch0010:      0010-lvmlockd-client-mutex-ordering.patch
+Patch0011:      0011-filesystem-move-stat-after-open-check.patch
+Patch0012:      0012-tests-check-for-writecache.patch
+Patch0013:      0013-lvresize-fix-32-bit-overflow-in-size-calculation.patch
+Patch0014:      0014-gcc-fix-warnings-for-x32-architecture.patch
+Patch0015:      0015-gcc-warning-missing-braces-around-initializer.patch
+Patch0016:      0016-test-improve-aux-teardown.patch
+Patch0017:      0017-tests-aux-try-with-extra-sleep.patch
+Patch0018:      0018-tests-aux-using-singl-lvmconf-call.patch
+Patch0019:      0019-tests-missing-to-check-for-writecache-support.patch
+Patch0020:      0020-tests-pvmove-large-disk-area.patch
+Patch0021:      0021-tests-enforce-full-fs-check.patch
+Patch0022:      0022-tests-update-for-work-in-fake-dev-environment.patch
+Patch0023:      0023-tests-skip-test-when-lvmdbusd-runs-on-the-system.patch
+Patch0024:      0024-tests-better-slowdown.patch
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
@@ -99,7 +107,7 @@ Patch1007:      fate-31841-02_man-add-support-for-btrfs.patch
 Patch1008:      fate-31841-03_tests-new-test-suite-of-fsadm-for-btrfs.patch
 Patch1009:      bug-1214071-blkdeactivate_calls_wrong_mountpoint.patch
 # SUSE patches 2000+ for device mapper, udev rules
-Patch2001:      bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-metadata.patch
+Patch2001:      bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-rules.patch
 # SUSE patches 3000+ for test code
 Patch3001:      bug-1184124-link-tests-as-PIE.patch
 # SUSE patches 4000+ for lvm2.spec
@@ -162,6 +170,14 @@ Volume Manager.
 %patch0014 -p1
 %patch0015 -p1
 %patch0016 -p1
+%patch0017 -p1
+%patch0018 -p1
+%patch0019 -p1
+%patch0020 -p1
+%patch0021 -p1
+%patch0022 -p1
+%patch0023 -p1
+%patch0024 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
@@ -227,6 +243,7 @@ sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
     --enable-pkgconfig \
     --with-usrlibdir=%{_libdir} \
     --with-usrsbindir=%{_sbindir} \
+    --with-libexecdir=%{_libexecdir} \
     --with-default-dm-run-dir=/run \
     --with-tmpfilesdir=%{_tmpfilesdir} \
     --with-thin=internal \
@@ -555,6 +572,7 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 # Main binaries
 %{_sbindir}/blkdeactivate
 %{_sbindir}/fsadm
+%{_libexecdir}/lvresize_fs_helper
 %{_sbindir}/lvm
 %{_sbindir}/lvmconfig
 %{_sbindir}/lvmdevices
