@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.28
+Version:        1.31
 Release:        0
 Summary:        A reusable library providing the core functionality of hledger
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Decimal-devel
 BuildRequires:  ghc-Decimal-prof
@@ -40,6 +39,8 @@ BuildRequires:  ghc-ansi-terminal-devel
 BuildRequires:  ghc-ansi-terminal-prof
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-array-prof
+BuildRequires:  ghc-base-compat-devel
+BuildRequires:  ghc-base-compat-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-blaze-markup-devel
@@ -54,6 +55,8 @@ BuildRequires:  ghc-cassava-megaparsec-prof
 BuildRequires:  ghc-cassava-prof
 BuildRequires:  ghc-cmdargs-devel
 BuildRequires:  ghc-cmdargs-prof
+BuildRequires:  ghc-colour-devel
+BuildRequires:  ghc-colour-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-data-default-devel
@@ -80,6 +83,8 @@ BuildRequires:  ghc-microlens-th-devel
 BuildRequires:  ghc-microlens-th-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-pager-devel
+BuildRequires:  ghc-pager-prof
 BuildRequires:  ghc-parser-combinators-devel
 BuildRequires:  ghc-parser-combinators-prof
 BuildRequires:  ghc-pretty-simple-devel
@@ -97,6 +102,10 @@ BuildRequires:  ghc-tasty-hunit-prof
 BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-template-haskell-prof
+BuildRequires:  ghc-terminal-size-devel
+BuildRequires:  ghc-terminal-size-prof
+BuildRequires:  ghc-text-ansi-devel
+BuildRequires:  ghc-text-ansi-prof
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-devel
@@ -156,7 +165,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
