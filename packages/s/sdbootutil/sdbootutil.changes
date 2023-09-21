@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 17 12:02:02 UTC 2023 - lnussel@suse.de
+
+- Update to version 1+git20230817.2a3cd34:
+  * Ignore errors from efibootmgr
+  * Update spec file
+  * Add marker to flag installation using sdbootutil
+  * Refactor and fix boot entry installation
+  * Don't exit in warn()
+  * feat: use arg_esp_path directly
+  * fix: get esp_device from bootctl
+  * fix: only install shim for secure boot
+  * feat: create only non-existing entries & pass correct ESP partition
+  * fix: make efibootmgr silent
+  * feat: create boot menu entries when installed
+
+-------------------------------------------------------------------
 Mon Aug 14 13:24:43 UTC 2023 - lnussel@suse.com
 
 - Update to version 1+git20230814.38973c7:

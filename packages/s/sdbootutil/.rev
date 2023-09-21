@@ -36,4 +36,23 @@
   * Remove debug logging (forwarded request 1103881 from lnussel)</comment>
     <requestid>1103882</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e08ef475567f57f7199a538afdc69d02</srcmd5>
+    <version>1+git20230817.2a3cd34</version>
+    <time>1695327246</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1+git20230817.2a3cd34:
+  * Ignore errors from efibootmgr
+  * Update spec file
+  * Add marker to flag installation using sdbootutil
+  * Refactor and fix boot entry installation
+  * Don't exit in warn()
+  * feat: use arg_esp_path directly
+  * fix: get esp_device from bootctl
+  * fix: only install shim for secure boot
+  * feat: create only non-existing entries &amp; pass correct ESP partition
+  * fix: make efibootmgr silent
+  * feat: create boot menu entries when installed (forwarded request 1112549 from lnussel)</comment>
+    <requestid>1112550</requestid>
+  </revision>
 </revisionlist>
