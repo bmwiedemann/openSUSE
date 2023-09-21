@@ -24,7 +24,9 @@ Summary:        RFC-compliant FQDN validation and manipulation for Python
 License:        MPL-2.0
 URL:            https://github.com/ypcrts/fqdn
 Source:         https://github.com/ypcrts/fqdn/archive/refs/tags/v%{version}.tar.gz#/fqdn-%{version}-gh.tar.gz
+%if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module cached-property if %python-base < 3.8}
+%endif
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

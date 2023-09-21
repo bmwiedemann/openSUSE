@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1081916</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>79527ec5366ae2815e7464e486fdb3da</srcmd5>
+    <version>1.5.1</version>
+    <time>1695327202</time>
+    <user>anag+factory</user>
+    <comment>- remove buildrequires that are not used on sle15</comment>
+    <requestid>1112334</requestid>
+  </revision>
 </revisionlist>
