@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 21 08:26:17 CEST 2023 - aschnell@suse.com
+
+- allow to not add file systems in /etc/fstab
+- version 0.2.2
+
+-------------------------------------------------------------------
 Wed May 31 11:47:15 CEST 2023 - aschnell@suse.com
 
 - handle unsupported partition ids during loading of devicegraph
