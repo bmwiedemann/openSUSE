@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 10 00:17:00 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update tasty-rerun to version 1.1.19.
+  # 1.1.19
+
+  * Support tasty 1.5.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:32 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
