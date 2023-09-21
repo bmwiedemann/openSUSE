@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           gnu-unifont-fonts
-Version:        15.0.01
+Version:        15.1.01
 Release:        0
 Summary:        GNU Unifont fonts
 License:        GPL-2.0-or-later OR OFL-1.1

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 19 20:31:35 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 15.1.01:
+  * Aligned with Unicode 15.1.0 changes
+  * Update to multiple glyphs
+  * Full GB 18030-2022 Implementation Level 2 support
+
+-------------------------------------------------------------------
 Wed Feb 15 21:14:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add pcf font to SRPM

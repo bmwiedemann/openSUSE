@@ -15,4 +15,12 @@
     <comment>- Add pcf font to SRPM (forwarded request 1066118 from jengelh)</comment>
     <requestid>1067164</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>615bdda33b188a63c6980834f9962e9a</srcmd5>
+    <version>15.1.01</version>
+    <time>1695327213</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112470</requestid>
+  </revision>
 </revisionlist>
