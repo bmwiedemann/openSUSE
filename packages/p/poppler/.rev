@@ -2051,4 +2051,12 @@ New upstream release</comment>
   * pdfsig: Describe signature dump format in manual page</comment>
     <requestid>1098804</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>11f52fe02650b5010e35ab86789fd075</srcmd5>
+    <version>23.09.0</version>
+    <time>1695327209</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112446</requestid>
+  </revision>
 </revisionlist>

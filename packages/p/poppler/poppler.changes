@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Sep 19 18:45:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 23.09.0:
+  * core:
+    - Add Android-specific font matching functionality
+    - Fix digital signatures for NeedAppearance=true
+    - Forms: Don't look up same glyph multiple times
+    - Provide the key location for certificates you can sign with
+    - Add ToUnicode support for similarequal
+    - Fix crash on malformed files
+  * qt5:
+    - Provide the key location for certificates you can sign with
+    - Allow to force a rasterized overprint preview during PS
+      conversion
+  * qt6:
+    - Provide the key location for certificates you can sign with
+    - Allow to force a rasterized overprint preview during PS
+      conversion
+  * pdfsig:
+    - Provide the key location for certificates you can sign with
+- Changes from version 23.08.0:
+  * core:
+    - Fix GWG 19.2 - DeviceN Overprint (White)
+    - Splash: avoid bogus memory allocation size in
+      doTilingPatternFill
+    - Fix use-of-uninitialized-value in XRef
+    - Fix float-cast-overflow error in Catalog
+    - Cleanup gpgme backend code
+    - Version symbols in poppler core
+  * glib:
+    - Improve poppler_get_available_signing_certificates
+    - Add new members to PopplerCertificateInfo
+  * utils:
+    - pdftotext: small improvement to man page
+- Bump poppler_sover to 131 following upstream changes.
+
+-------------------------------------------------------------------
 Sat Jul 15 14:47:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.07.0:
