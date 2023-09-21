@@ -143,4 +143,12 @@
     <comment>Reproducible fixes</comment>
     <requestid>1112367</requestid>
   </revision>
+  <revision rev="19" vrev="17">
+    <srcmd5>eaf8c97c3d484bdaf22c6848760ba30a</srcmd5>
+    <version>0.13.18</version>
+    <time>1695327822</time>
+    <user>anag+factory</user>
+    <comment>fix build with maven 3.9.4 and maven-resolver 1.9.15</comment>
+    <requestid>1112806</requestid>
+  </revision>
 </revisionlist>

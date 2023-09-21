@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 21 12:21:39 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- fix build with maven 3.9.4 and maven-resolver 1.9.15
+
+-------------------------------------------------------------------
 Tue Sep 19 19:06:25 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
