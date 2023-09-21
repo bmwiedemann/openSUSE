@@ -54,6 +54,12 @@ Patch5:         qpaeq-shebang.patch
 Patch6:         pulseaudio-old-systemd-workaround.patch
 # PATCH-FIX-OPENSUSE Workaround for suse-module-tools directory
 Patch7:         pulseaudio-dump-module-Ignore-invalid-module-init-tools.patch
+# PATCH-FIX-UPSTREAM fix for webrtc-audioprocessing 1.3
+Patch8:         echo-cancel-add-webrtc-AEC3-support.patch
+# PATCH-FIX-UPSTREAM fix for webrtc-audioprocessing 1.3
+Patch9:         build-sys-Bump-cpp_std-to-c-17.patch
+# PATCH-FIX-UPSTREAM fix for webrtc-audioprocessing 1.3
+Patch10:        build-sys-Bump-webrtc-audio-processing-dependency.patch
 BuildRequires:  alsa-devel >= 1.0.19
 BuildRequires:  bluez-devel >= 5
 BuildRequires:  fdupes
@@ -68,7 +74,7 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  libsndfile-devel >= 1.0.18
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(libudev) >= 143
-BuildRequires:  libwebrtc_audio_processing-devel >= 0.3
+BuildRequires:  pkgconfig(webrtc-audio-processing-1) >= 1.0
 BuildRequires:  orc >= 0.4.9
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
@@ -330,6 +336,9 @@ System user for PulseAudio
 %patch6 -p1
 %endif
 %patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 %build
 %meson \

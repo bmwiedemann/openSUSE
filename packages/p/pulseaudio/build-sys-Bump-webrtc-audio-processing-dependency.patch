@@ -1,0 +1,29 @@
+From 84c53066c65439deb42d29bba8c6899a4fa0e318 Mon Sep 17 00:00:00 2001
+From: Arun Raghavan <arun@asymptotic.io>
+Date: Tue, 20 Oct 2020 17:29:55 -0400
+Subject: [PATCH] build-sys: Bump webrtc-audio-processing dependency
+
+The package name and versioning are changing upstream, so prepare for
+that.
+
+Part-of: <https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/395>
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index b678bb531aad..a1652e4d3094 100644
+--- a/meson.build
++++ b/meson.build
+@@ -728,7 +728,7 @@ if get_option('daemon')
+     cdata.set('HAVE_SOXR', 1)
+   endif
+ 
+-  webrtc_dep = dependency('webrtc-audio-processing', version : '>= 0.2', required : get_option('webrtc-aec'))
++  webrtc_dep = dependency('webrtc-audio-processing-1', version : '>= 1.0', required : get_option('webrtc-aec'))
+   if webrtc_dep.found()
+     cdata.set('HAVE_WEBRTC', 1)
+   endif
+-- 
+2.35.3
+
