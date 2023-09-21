@@ -577,4 +577,27 @@
     <comment></comment>
     <requestid>1073047</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>21ad874d18e8e9222242292b8f4b3ba8</srcmd5>
+    <version>3.2.9</version>
+    <time>1695327198</time>
+    <user>anag+factory</user>
+    <comment>- Update to fig2dev version 3.2.9 (Aug 2023)
+  o Write utf8-encoded postscript and tex-outputs.
+    Ticket numbers refer to https://sourceforge.net/p/mcj/tickets/#.
+  o Include sys/wait.h to build on some bsds.
+  o Process crafted input files, tickets #142, #145, #146, #147, #148,
+    and #152.
+  o Correctly scale dxf output, ticket #91.
+  o Correct a typo causing incorrect eps import, ticket #137.
+  o Regression, pass driver names to driver, ticket #139.
+- Port and rename patch transfig-3.2.8.dif which is now transfig-3.2.9.dif
+- Port patches
+  * fig2dev-3.2.6-fig2mpdf.patch
+  * transfig-fix-afl.patch
+- Remove patches now upstream
+  * 0001-Make-ModDate-and-CreationDate-in-PDF-reproducible.patch
+  * 1b09a8.patch</comment>
+    <requestid>1112311</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 15 07:41:38 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to fig2dev version 3.2.9 (Aug 2023)
+  o Write utf8-encoded postscript and tex-outputs.
+    Ticket numbers refer to https://sourceforge.net/p/mcj/tickets/#.
+  o Include sys/wait.h to build on some bsds.
+  o Process crafted input files, tickets #142, #145, #146, #147, #148,
+    and #152.
+  o Correctly scale dxf output, ticket #91.
+  o Correct a typo causing incorrect eps import, ticket #137.
+  o Regression, pass driver names to driver, ticket #139.
+- Port and rename patch transfig-3.2.8.dif which is now transfig-3.2.9.dif
+- Port patches
+  * fig2dev-3.2.6-fig2mpdf.patch
+  * transfig-fix-afl.patch
+- Remove patches now upstream
+  * 0001-Make-ModDate-and-CreationDate-in-PDF-reproducible.patch
+  * 1b09a8.patch
+
+-------------------------------------------------------------------
 Sat Mar 18 04:27:12 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Drop obsolete fig2dev-3.2.6a-RGBFILE.patch.

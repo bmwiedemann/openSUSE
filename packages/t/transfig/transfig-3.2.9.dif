@@ -1,0 +1,110 @@
+---
+ configure              |    2 +-
+ fig2dev/dev/genps.c    |   34 ++++++++++++++++++++++------------
+ fig2dev/fig2ps2tex.csh |    2 +-
+ transfig/transfig.c    |    2 ++
+ 4 files changed, 26 insertions(+), 14 deletions(-)
+
+--- configure
++++ configure	2023-09-15 07:11:23.442594968 +0000
+@@ -2340,7 +2340,7 @@ ac_c_conftest_c99_main='
+   int dynamic_array[ni.number];
+   dynamic_array[0] = argv[0][0];
+   dynamic_array[ni.number - 1] = 543;
+-
++  free(ia);
+   // work around unused variable warnings
+   ok |= (!success || bignum == 0LL || ubignum == 0uLL || newvar[0] == '\''x'\''
+ 	 || dynamic_array[ni.number - 1] != 543);
+--- fig2dev/dev/genps.c
++++ fig2dev/dev/genps.c	2023-09-15 07:31:46.828409272 +0000
+@@ -53,6 +53,7 @@
+ #include <ctype.h>	/* tolower() */
+ #include <sys/stat.h>	/* struct stat */
+ #include <locale.h>
++#include <langinfo.h>
+ 
+ #include "fig2dev.h"	/* includes bool.h and object.h */
+ //#include "object.h"	/* NUMSHADES, NUMTINTS */
+@@ -1363,10 +1364,10 @@ append(const char *restrict infilename,
+ static bool
+ append_find_composite(FILE *restrict out)
+ {
+-	char	*libdir, *locale;
+-	char	localefile_buf[128];
+-	char	*localefile = localefile_buf;
++	char	*libdir, *locale, *codeset;
++	char	*localefile = NULL;
+ 	FILE	*in;
++        int	ret;
+ 
+ 	libdir = getenv("FIG2DEV_LIBDIR");
+ #ifdef I18N_DATADIR
+@@ -1378,18 +1379,28 @@ append_find_composite(FILE *restrict out
+ 		fputs(COMPOSITE_ERRMSG, stderr);
+ 		return false;
+ 	}
+-	if (strlen(libdir) + strlen(locale) + 5 > sizeof localefile_buf &&
+-		!(localefile = malloc(strlen(libdir) + strlen(locale) + 5))) {
+-		put_msg(Err_mem);
++	codeset = nl_langinfo(CODESET);
++retry:
++	ret = asprintf(&localefile, "%s/%s.ps", libdir, locale);
++        if (ret < 0) {
++		err_msg("Unable to open postscript prologue file %s");
+ 		return false;
+ 	}
+-
+-	sprintf(localefile, "%s/%s.ps", libdir, locale);
+ 	/* get filename like /usr/local/lib/fig2dev/japanese.ps */
+ 	if (!(in = fopen(localefile, "rb"))) {
+-		err_msg("Unable to open postscript prologue file %s");
+-		if (localefile != localefile_buf)
++		size_t	llen = strcspn(locale, ".@");
++		if (strlen(locale) != llen) {
++			free(localefile);
++			locale[llen] = '\0';
++			goto retry;
++		}
++		if (codeset && locale != codeset) {
+ 			free(localefile);
++			locale = codeset;
++			goto retry;
++		}
++		err_msg("Unable to open postscript prologue file %s");
++		free(localefile);
+ 		return false;
+ 	}
+ 
+@@ -1443,8 +1454,7 @@ append_find_composite(FILE *restrict out
+ 		put_msg("The output might be broken.");
+ 	}
+ 
+-	if (localefile != localefile_buf)
+-		free(localefile);
++	free(localefile);
+ 	return found;
+ }
+ 
+--- fig2dev/fig2ps2tex.csh
++++ fig2dev/fig2ps2tex.csh	2023-09-15 07:11:23.442594968 +0000
+@@ -22,7 +22,7 @@
+ # 2016-07-07  Thomas Loimer
+ #	* use here-document, instead of echo
+ #
+-
++set echo_style = bsd
+ set bbox = `grep "^%%BoundingBox:" $1`
+ 
+ set xsp = `echo "3k $bbox[4] $bbox[2] - 72 / p" | dc`
+--- transfig/transfig.c
++++ transfig/transfig.c	2023-09-15 07:11:23.442594968 +0000
+@@ -26,6 +26,8 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
+ #include "transfig.h"
+ 
+ extern void sysmv(char *file);					/* sys.c */

@@ -17,7 +17,7 @@
 
 
 Name:           transfig
-Version:        3.2.8b
+Version:        3.2.9
 Release:        0
 Summary:        Graphic Converter
 #  www.xfig.org is dead
@@ -26,12 +26,10 @@ License:        MIT
 Group:          Productivity/Graphics/Convertors
 #Source:        http://sourceforge.net/projects/mcj/files/fig2dev-%%{version}.tar.xz/download#/fig2dev-%%{version}.tar.xz
 Source:         fig2dev-%{version}.tar.xz
-Patch0:         transfig-3.2.8.dif
-Patch1:         1b09a8.patch
+Patch0:         transfig-3.2.9.dif
 Patch4:         transfig-fix-afl.patch
 Patch43:        fig2dev-3.2.6-fig2mpdf.patch
 Patch44:        fig2dev-3.2.6-fig2mpdf-doc.patch
-Patch46:        0001-Make-ModDate-and-CreationDate-in-PDF-reproducible.patch
 Patch47:        0001-Use-native-fig2dev-pdf-output-instead-of-epstopdf.patch
 BuildRequires:  fdupes
 BuildRequires:  libjpeg-devel
@@ -70,11 +68,9 @@ releases, this command was implemented as a shell script.
 %setup -q -n fig2dev-%{version}
 find -type f -exec chmod a-x,go-w '{}' \;
 %patch0 -p0 -b .0
-%patch1 -p0 -b .1
 %patch4 -p1 -b .afl
 %patch43 -p1 -b .mpdf
 %patch44 -p1 -b .mpdfdoc
-%patch46 -p1 -b .pdfmark
 %patch47 -p1 -b .epstopdf
 # remove obsolete libc fallback implementations
 rm fig2dev/lib/*.c
