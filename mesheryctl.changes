@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep 21 05:01:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.143:
+  * General
+    - Update messages and logs to designs from patterns @Chadha93
+      (#8800)
+    - handle nil checks @MUzairS15 (#8844)
+    - watchtower label is added @zakisk (#8789)
+  * - Meshery CLI
+    - run error util for mesheryctl error codes replacement
+      @MUzairS15 (#8846)
+  * - Meshery UI
+    - [chore] Make MeshSyncEvents GraphQL Subscription Configurable
+      @theBeginner86 (#8841)
+    - [Servre] Graphql/directives @MUzairS15 (#8836)
+    - [UI] Add Validation and Error Boundaries @aabidsofi19 (#8833)
+    - Added Debug log for extension component @senali-d (#8845)
+    - fix pagination in meshmodel browser @sudhanshutech (#8838)
+    - converted class based dashboard component to functional
+      component @EraKin575 (#8724)
+  * - Bug Fixes
+    - [bug] Fix failing API docs build @theBeginner86 (#8850)
+  * - Documentation
+    - [bug] Fix failing API docs build @theBeginner86 (#8850)
+    - [Server] Added environments in Meshery @Yashsharma1911
+      (#8723)
+
+-------------------------------------------------------------------
 Wed Sep 20 06:06:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.6.142:
