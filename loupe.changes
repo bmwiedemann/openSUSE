@@ -1,0 +1,143 @@
+-------------------------------------------------------------------
+Sun Sep 17 17:25:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Always ask which program to use for "Open With…"
+  + SVG: Force minimum tile size of 1000x1000
+  + SVG: Don't render first tiles with zoom=1
+  + Empty state: Use flat headerbar
+  + Fix non-native files with path cannot be deleted
+  + Update screenshots
+  + Drag and Drop: Only expect sources of type FileList
+  + Update SlidingView after removing unsupported image
+
+-------------------------------------------------------------------
+Fri Sep 15 16:02:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta.1:
+  + Reload images when the file is replaced by moving another file
+    at it's place
+  + Update dependencies
+- Change compression in service and tarball produced to zst.
+- Update URL to new home on GNOME proper.
+
+-------------------------------------------------------------------
+Wed Aug 23 20:53:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add glycin-loaders Requires: Ensure that we have the loaders in
+  place.
+
+-------------------------------------------------------------------
+Thu Aug 17 19:50:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + Newly designed print dialog
+  + Added sandboxing for SVG rendering by using glycin
+  + Use RaisedBorder for HeaderBar to avoid shadow over images
+  + Fix browsing images on SMB shares not working
+  + Fix touchscreen gestures not working when zoomed in
+  + Fix touchscreen swipe only working on second attempt
+  + Added JpegXL support via new glycin version
+  + Added overshoot for swipe gesture
+  + New custom style for drop targets
+  + Changed name to Image Viewer
+
+-------------------------------------------------------------------
+Mon Jul 24 12:33:53 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add back cargo_audit in _service, now that it is back in working
+  order.
+
+-------------------------------------------------------------------
+Sun Jul 16 13:39:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.alpha:
+  + Add help
+  + Disable trashing for non-native files
+  + Give toast for latest deleted file priority over the others
+  + Only list supported image formats in file chooser
+  + Do not guess a potentially different background color for
+    opaque images
+  + Fix incorrect updates when deleting or changing images
+  + Fix SVG zooming with high-res scroll-wheels
+  + Use glycin for sandboxed extendable image loading expect for
+    SVG
+  + Remove backspace as a trash shortcut
+  + Change command line to open all given images in one window
+  + Do not show "Set as Background" if operation was aborted
+  + Let the user select multiple files to open in file chooser
+  + Support forward and back mouse buttons
+  + Correctly align right-click menu
+- Drop loupe-revert-gtk4-unstable-bump.patch: No longer needed.
+- Add itstool BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Wed Jun 28 09:49:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use %build_rustflags instead of the deprecated
+  %__rustflags macro. Requires at least cargo-packaging 1.2.0+3.
+
+-------------------------------------------------------------------
+Sun Apr 23 19:02:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.2:
+  + Use GFile instead of direct file access
+  + Do not crash when monitor info is not available
+  + Get rid of many unwraps and report issues to UI instead, just
+    to be safe
+  + Fix displayed times are wrong because they do not respect
+    timezones
+  + Add basic support for ICC color profiles
+  + Support opening multiple files via drag and drop
+  + Fix textures and background color not updating when image data
+    changed
+  + Fix not defaulting to light background color in light theme
+  + Fix thumbnail is broken for auto-rotated (EXIF) images
+  + Fix high-res scroll wheel issues
+  + Fix 100%/200% shortcuts ending up at best-fit when window size
+    close to 100%/200%
+  + Add printing support
+  + Center new tilings in the viewport, making the first rendered
+    tile cover the viewport already
+  + Allow dragging (panning) the image with middle button
+  + Generate list of mime types in meson and fix list of formats
+  + Set actions enabled state based on UI property status, not
+    manually everywhere
+  + Add and update license headers with script based on commit info
+  + Hide overlay controls after inactivity
+  + Remove OSD from HeaderBar in fullscreen
+  + Drop AdwFlap for HeaderBar
+  + Make properties button insensitive if no image shown/loading
+  + Move 'toggle fullscreen' button from inner to outer position
+  + Add 'all files' filter option to file chooser
+- Add pkgconfig(lcms2) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
+Wed Apr 12 09:01:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use rustflags export also in check section.
+
+-------------------------------------------------------------------
+Tue Apr 11 20:59:05 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Drop %rustflags macro definition out of the spec file and use
+  %__rustflags from cargo-packaging package instead. There's no
+  need to define it on every spec anymore.
+
+-------------------------------------------------------------------
+Thu Apr  6 22:14:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Bump GTK dependency to 4.11.1 because of required fixes for
+    scaled texture
+  + Drop gtk-macros (crate) dependency since it is not needed and
+    lacking a LICENSE files
+  + Fix WebP support for still images
+  + Fix not detecting HEIC files
+- Add loupe-revert-gtk4-unstable-bump.patch: Revert bump to
+  unstable gtk4 dependency.
+
+-------------------------------------------------------------------
+Wed Apr  5 12:17:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial packaging for openSUSE.
