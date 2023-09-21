@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 20 12:15:33 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.35.0:
+  * Cleanup release create around new --notes-from-tag flag (#8016)
+  * Document when gh auth login writes oauth token to plain text (#7781)
+  * Show full permissions URL in `gh cs create` (#7983)
+  * build(deps): bump goreleaser/goreleaser-action from 4 to 5
+  * moved remoteTagExists under if NotesFromTag exists and added three tests
+  * Clarify list repo behavior (#7964)
+  * Reinforce not opening PRs without approval on an issue
+  * Delete local tag when running `gh release delete --cleanup-tag` (#7884)
+  * Add `--all` flag to `alias delete` command (#7900)
+  * Move homebrew bump fork to personal repo
+  * Revert "Add a test workflow for homebrew bump investigations (#7951)"
+  * Add a test workflow for homebrew bump investigations (#7951)
+  * Add `gh release create [<tag>] --notes-from-tag`
+
+-------------------------------------------------------------------
 Thu Sep 07 05:18:42 UTC 2023 - pdostal@suse.com
 
 - Update to version 2.34.0:

@@ -19,7 +19,7 @@
 %define goflags "-buildmode=pie -trimpath -mod=vendor -modcacherw"
 %define sname cli
 Name:           gh
-Version:        2.34.0
+Version:        2.35.0
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
@@ -40,6 +40,7 @@ Summary:        Bash Completion for %{name}
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (gh and bash-completion)
+BuildArch:      noarch
 
 %description bash-completion
 Bash command line completion support for %{name}.
