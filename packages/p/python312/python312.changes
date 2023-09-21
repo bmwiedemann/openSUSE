@@ -1,4 +1,275 @@
 -------------------------------------------------------------------
+Wed Sep 20 07:14:17 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.12.0rc3:
+  - Core and Builtins
+    - gh-109496: On a Python built in debug mode, Py_DECREF() now
+      calls _Py_NegativeRefcount() if the object is a dangling pointer
+      to deallocated memory: memory filled with 0xDD “dead byte” by
+      the debug hook on memory allocators. The fix is to check the
+      reference count before checking for _Py_IsImmortal(). Patch by
+      Victor Stinner.
+    - gh-109371: Deopted instructions correctly for tool
+      initialization and modified the incorrect assertion in
+      instrumentation, when a previous tool already sets INSTRUCTION
+      events
+    - gh-105658: Fix bug where the line trace of an except block
+      ending with a conditional includes an excess event with the line
+      of the conditional expression.
+    - gh-109219: Fix compiling type param scopes that use a name which
+      is also free in an inner scope.
+    - gh-109341: Fix crash when compiling an invalid AST involving a
+      ast.TypeAlias.
+    - gh-109195: Fix source location for the LOAD_* instruction
+      preceding a LOAD_SUPER_ATTR to load the super global (or
+      shadowing variable) so that it encompasses only the name super
+      and not the following parentheses.
+    - gh-109118: Disallow nested scopes (lambdas, generator
+      expressions, and comprehensions) within PEP 695 annotation
+      scopes that are nested within classes.
+    - gh-109114: Relax the detection of the error message for invalid
+      lambdas inside f-strings to not search for arbitrary replacement
+      fields to avoid false positives. Patch by Pablo Galindo
+    - gh-109118: Fix interpreter crash when a NameError is raised
+      inside the type parameters of a generic class.
+    - gh-108976: Fix crash that occurs after de-instrumenting a code
+      object in a monitoring callback.
+    - gh-108732: Make iteration variables of module- and class-scoped
+      comprehensions visible to pdb and other tools that use
+      frame.f_locals again.
+    - gh-108959: Fix caret placement for error locations for subscript
+      and binary operations that involve non-semantic parentheses and
+      spaces. Patch by Pablo Galindo
+  - Library
+    - gh-108682: Enum: require names=() or type=... to create an empty
+      enum using the functional syntax.
+    - gh-108843: Fix an issue in ast.unparse() when unparsing
+      f-strings containing many quote types.
+  - Documentation
+    - gh-102823: Document the return type of x // y when x and y have
+      type float.
+  - Tests
+    - gh-109396: Fix test_socket.test_hmac_sha1() in FIPS mode. Use a
+      longer key: FIPS mode requires at least of at least 112 bits.
+      The previous key was only 32 bits. Patch by Victor Stinner.
+    - gh-104736: Fix test_gdb on Python built with LLVM clang 16 on
+      Linux ppc64le (ex: Fedora 38). Search patterns in gdb “bt”
+      command output to detect when gdb fails to retrieve the
+      traceback. For example, skip a test if Backtrace stopped: frame
+      did not save the PC is found. Patch by Victor Stinner.
+    - gh-109237: Fix test_site.test_underpth_basic() when the working
+      directory contains at least one non-ASCII character: encode the
+      ._pth file to UTF-8 and enable the UTF-8 Mode to use UTF-8 for
+      the child process stdout. Patch by Victor Stinner.
+    - gh-109230: Fix test_pyexpat.test_exception(): it can now be run
+      from a directory different than Python source code directory.
+      Before, the test failed in this case. Skip the test if
+      Modules/pyexpat.c source is not available. Skip also the test on
+      Python implementations other than CPython. Patch by Victor
+      Stinner.
+    - gh-109015: Fix test_asyncio, test_imaplib and test_socket tests
+      on FreeBSD if the TCP blackhole is enabled (sysctl
+      net.inet.tcp.blackhole). Skip the few tests which failed with
+      ETIMEDOUT which such non standard configuration. Currently, the
+      FreeBSD GCP image enables TCP and UDP blackhole (sysctl
+      net.inet.tcp.blackhole=2 and sysctl net.inet.udp.blackhole=1).
+      Patch by Victor Stinner.
+    - gh-91960: Skip test_gdb if gdb is unable to retrieve Python
+      frame objects: if a frame is <optimized out>. When Python is
+      built with “clang -Og”, gdb can fail to retrive the frame
+      parameter of _PyEval_EvalFrameDefault(). In this case, tests
+      like py_bt() are likely to fail. Without getting access to
+      Python frames, python-gdb.py is mostly clueless on retrieving
+      the Python traceback. Moreover, test_gdb is no longer skipped on
+      macOS if Python is built with Clang. Patch by Victor Stinner.
+    - gh-108962: Skip test_tempfile.test_flags() if chflags() fails
+      with “OSError: [Errno 45] Operation not supported” (ex: on
+      FreeBSD 13). Patch by Victor Stinner.
+    - gh-108851: Fix test_tomllib recursion tests for WASI buildbots:
+      reduce the recursion limit and compute the maximum nested
+      array/dict depending on the current available recursion limit.
+      Patch by Victor Stinner.
+    - gh-108851: Add get_recursion_available() and
+      get_recursion_depth() functions to the test.support module.
+      Patch by Victor Stinner.
+    - gh-108834: Add --fail-rerun option option to regrtest: if a test
+      failed when then passed when rerun in verbose mode, exit the
+      process with exit code 2 (error), instead of exit code 0
+      (success). Patch by Victor Stinner.
+    - gh-108834: Rename regrtest --verbose2 option (-w) to --rerun.
+      Keep --verbose2 as a deprecated alias. Patch by Victor Stinner.
+    - gh-108834: When regrtest reruns failed tests in verbose mode
+      (./python -m test --rerun), tests are now rerun in fresh worker
+      processes rather than being executed in the main process. If a
+      test does crash or is killed by a timeout, the main process can
+      detect and handle the killed worker process. Tests are rerun in
+      parallel if the -jN option is used to run tests in parallel.
+      Patch by Victor Stinner.
+    - gh-103186: Suppress and assert expected RuntimeWarnings in
+      test_sys_settrace.py
+  - Build
+    - gh-108740: Fix a race condition in make regen-all. The
+      deepfreeze.c source and files generated by Argument Clinic are
+      now generated or updated before generating “global objects”.
+      Previously, some identifiers may miss depending on the order in
+      which these files were generated. Patch by Victor Stinner.
+- Python 3.12.0 release candidate 2:
+  - Security
+    - gh-108310: Fixed an issue where instances of ssl.SSLSocket were
+      vulnerable to a bypass of the TLS handshake and included
+      protections (like certificate verification) and treating sent
+      unencrypted data as if it were post-handshake TLS encrypted
+      data. Security issue reported as CVE-2023-40217 by Aapo Oksman.
+      Patch by Gregory P. Smith.
+    - gh-107774: PEP 669 specifies that
+      sys.monitoring.register_callback will generate an audit event.
+      Pre-releases of Python 3.12 did not generate the audit event.
+      This is now fixed.
+  - Core and Builtins
+    - gh-108520: Fix
+      multiprocessing.synchronize.SemLock.__setstate__() to properly
+      initialize multiprocessing.synchronize.SemLock._is_fork_ctx.
+      This fixes a regression when passing a SemLock accross nested
+      processes.
+    - Rename multiprocessing.synchronize.SemLock.is_fork_ctx to
+      multiprocessing.synchronize.SemLock._is_fork_ctx to avoid
+      exposing it as public API.
+    - gh-108654: Restore locals shadowed by an inlined comprehension
+      if the comprehension raises an exception.
+    - gh-108487: Change an assert that would cause a spurious crash in
+      a devious case that should only trigger deoptimization.
+    - gh-106176: Use a WeakValueDictionary to track the lists
+      containing the modules each thread is currently importing. This
+      helps avoid a reference leak from keeping the list around longer
+      than necessary. Weakrefs are used as GC can’t interrupt the
+      cleanup.
+    - gh-107901: Fix missing line number on JUMP_BACKWARD at the end
+      of a for loop.
+    - gh-108390: Raise an exception when setting a non-local event
+      (RAISE, EXCEPTION_HANDLED, etc.) in
+      sys.monitoring.set_local_events.
+    - Fixes crash when tracing in recursive calls to Python classes.
+    - gh-91051: Fix abort / segfault when using all eight type watcher
+      slots, on platforms where char is signed by default.
+    - gh-107724: In pre-release versions of 3.12, up to rc1, the
+      sys.monitoring callback function for the PY_THROW event was
+      missing the third, exception argument. That is now fixed.
+    - gh-107080: Trace refs builds (--with-trace-refs) were crashing
+      when used with isolated subinterpreters. The problematic global
+      state has been isolated to each interpreter. Other fixing the
+      crashes, this change does not affect users.
+    - gh-77377: Ensure that multiprocessing synchronization objects
+      created in a fork context are not sent to a different process
+      created in a spawn context. This changes a segfault into an
+      actionable RuntimeError in the parent process.
+  - Library
+    - gh-108469: ast.unparse() now supports new f-string syntax
+      introduced in Python 3.12. Note that the f-string quotes are
+      reselected for simplicity under the new syntax. (Patch by Steven
+      Sun)
+    - gh-108682: Enum: raise TypeError if super().__new__() is called
+      from a custom __new__.
+    - gh-108295: Fix crashes related to use of weakrefs on
+      typing.TypeVar.
+    - gh-64662: Fix support for virtual tables in
+      sqlite3.Connection.iterdump(). Patch by Aviv Palivoda.
+    - gh-108111: Fix a regression introduced in gh-101251 for 3.12,
+      resulting in an incorrect offset calculation in
+      gzip.GzipFile.seek().
+    - gh-105736: Harmonized the pure Python version of OrderedDict
+      with the C version. Now, both versions set up their internal
+      state in __new__. Formerly, the pure Python version did the set
+      up in __init__.
+    - gh-108083: Fix bugs in the constructor of sqlite3.Connection and
+      sqlite3.Connection.close() where exceptions could be leaked.
+      Patch by Erlend E. Aasland.
+    - gh-107963: Fix multiprocessing.set_forkserver_preload() to check
+      the given list of modules names. Patch by Dong-hee Na.
+    - gh-106242: Fixes os.path.normpath() to handle embedded null
+      characters without truncating the path.
+    - gh-107913: Fix possible losses of errno and winerror values in
+      OSError exceptions if they were cleared or modified by the
+      cleanup code before creating the exception object.
+    - gh-107845: tarfile.data_filter() now takes the location of
+      symlinks into account when determining their target, so it will
+      no longer reject some valid tarballs with
+      LinkOutsideDestinationError.
+    - gh-107805: Fix signatures of module-level generated functions in
+      turtle.
+    - gh-107715: Fix doctest.DocTestFinder.find() in presence of class
+      names with special characters. Patch by Gertjan van Zwieten.
+    - gh-100814: Passing a callable object as an option value to a
+      Tkinter image now raises the expected TclError instead of an
+      AttributeError.
+    - gh-106684: Close asyncio.StreamWriter when it is not closed by
+      application leading to memory leaks. Patch by Kumar Aditya.
+    - gh-107396: tarfiles; Fixed use before assignment of
+      self.exception for gzip decompression
+    - gh-106052: re module: fix the matching of possessive quantifiers
+      in the case of a subpattern containing backtracking.
+    - gh-100061: Fix a bug that causes wrong matches for regular
+      expressions with possessive qualifier.
+    - gh-99203: Restore following CPython <= 3.10.5 behavior of
+      shutil.make_archive(): do not create an empty archive if
+      root_dir is not a directory, and, in that case, raise
+      FileNotFoundError or NotADirectoryError regardless of format
+      choice. Beyond the brought-back behavior, the function may now
+      also raise these exceptions in dry_run mode.
+  - Documentation
+    - gh-105052: Update timeit doc to specify that time in seconds is just the default.
+  - Tests
+    - gh-89392: Removed support of test_main() function in tests. They
+      now always use normal unittest test runner.
+    - gh-108388: Convert test_concurrent_futures to a package of 7
+      sub-tests. Patch by Victor Stinner.
+    - gh-108388: Split test_multiprocessing_fork,
+      test_multiprocessing_forkserver and test_multiprocessing_spawn
+      into test packages. Each package is made of 4 sub-tests:
+      processes, threads, manager and misc. It allows running more
+      tests in parallel and so reduce the total test duration. Patch
+      by Victor Stinner.
+    - gh-105776: Fix test_cppext when the C compiler command -std=c11
+      option: remove -std= options from the compiler command. Patch by
+      Victor Stinner.
+    - gh-107178: Add the C API test for functions in the Mapping
+      Protocol, the Sequence Protocol and some functions in the Object
+      Protocol.
+  - Build
+    - gh-63760: Fix Solaris build: no longer redefine the
+      gethostname() function. Solaris defines the function since 2005.
+      Patch by Victor Stinner, original patch by Jakub Kulík.
+    - gh-107814: When calling find_python.bat with -q it did not
+      properly silence the output of nuget. That is now fixed.
+  - Windows
+    - gh-107565: Update Windows build to use OpenSSL 3.0.10.
+    - gh-106242: Fixes realpath() to behave consistently when passed a
+      path containing an embedded null character on Windows. In strict
+      mode, it now raises OSError instead of the unexpected
+      ValueError, and in non-strict mode will make the path absolute.
+    - gh-106844: Fix integer overflow and truncating by the null
+      character in _winapi.LCMapStringEx() which affects
+      ntpath.normcase().
+  - macOS
+    - gh-107565: Update macOS installer to use OpenSSL 3.0.10.
+  - Tools/Demos
+    - gh-107565: Update multissltests and GitHub CI workflows to use
+      OpenSSL 1.1.1v, 3.0.10, and 3.1.2.
+    - gh-95065: Argument Clinic now supports overriding automatically
+      generated signature by using directive @text_signature.
+  - C API
+    - gh-107916: C API functions PyErr_SetFromErrnoWithFilename(),
+      PyErr_SetExcFromWindowsErrWithFilename() and
+      PyErr_SetFromWindowsErrWithFilename() save now the error code
+      before calling PyUnicode_DecodeFSDefault().
+    - gh-107915: Such C API functions as PyErr_SetString(),
+      PyErr_Format(), PyErr_SetFromErrnoWithFilename() and many others
+      no longer crash or ignore errors if it failed to format the
+      error message or decode the filename. Instead, they keep a
+      corresponding error.
+    - gh-107810: Improve DeprecationWarning for uses of PyType_Spec
+      with metaclasses that have custom tp_new.
+
+-------------------------------------------------------------------
 Thu Aug 10 09:33:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - restrict PEP668 to ALP/Tumbleweed 
