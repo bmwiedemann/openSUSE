@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Sep 21 12:03:34 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade tu upstream version 3.9.4
+  * Bug
+    + MNG-7705: Sporadic failures on multiple builds sharing the
+      same local repo when writing the .lastUpdated file
+    + MNG-7786: Maven Plugin Validation message is misleading
+    + MNG-7795: IllegalArgumentException: 'other' has different root
+      during plugin validation
+    + MNG-7796: Top directory cannot be computed
+    + MNG-7799: Plugin validation falsely reports there are issues
+      (but shows none)
+    + MNG-7811: Plugins verification - reports are inconsistent
+    + MNG-7818: [REGRESSION] maven improperly excludes hamcrest-core
+      from junit
+    + MNG-7819: Create IT that exercise file locking with snapshots
+    + MNG-7846: endless loop in DefaultExceptionHandler.getMessage()
+  * Improvement
+    + MNG-7698: Allow comments in .mvn/maven.config
+    + MNG-7785: Clean usage of SessionData
+    + MNG-7787: Introduce new options for plugin validation
+    + MNG-7788: Plugin Validation Report should be printed before
+      build summary
+    + MNG-7789: Plugin Dependency Validations use wrong data set
+    + MNG-7806: Plugins verification - remove used in module(s)
+      report
+    + MNG-7823: Make plugin validation level parsing more consistent
+  * Task
+    + MNG-5987: Document the algorithm calculating the order of
+      plugin executions inside a phase.
+    + MNG-7743: Make the build work on JDK 20
+    + MNG-7790: Update lifecycle plugins
+    + MNG-7791: Split validation issues into "user actionable" and
+      "plugin dev actionable"
+    + MNG-7797: Return BRIEF mode, simply map it onto SUMMARY
+    + MNG-7807: Update Super POM plugins
+  * Dependency upgrade
+    + MNG-7800: Upgrade to Maven Resolver 1.9.13
+    + MNG-7816: Bump maven parent from 39 to 40
+    + MNG-7828: Bump guava from 31.1-jre to 32.0.1-jre
+    + MNG-7847: Upgrade to Resolver 1.9.14
+
+-------------------------------------------------------------------
 Tue Sep 12 12:55:07 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: do not output build number
