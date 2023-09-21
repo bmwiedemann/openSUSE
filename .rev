@@ -728,4 +728,41 @@
     <comment>- update to 1.25.9 (bsc#1177120, CVE-2020-26137):</comment>
     <requestid>1109358</requestid>
   </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>7fe04c8ff3b25a24eefe4cb8f63a788f</srcmd5>
+    <version>2.0.4</version>
+    <time>1695327625</time>
+    <user>anag+factory</user>
+    <comment>  * Changed HTTPConnection.request_chunked() to not erroneously emit multiple
+  * Added ``urllib3.util.SKIP_HEADER`` for skipping ``User-Agent``, ``Accept-Encoding``,
+- Add missing dependency on python-six (bsc#1150895)
+- update to 1.25 (bsc#1132663, bsc#1129071, CVE-2019-9740, CVE-2019-11236):
+ * Allow providing a list of headers to strip from requests when redirecting
+    without repeatedly flushing the decoder, to function better on
+  * Accept ca_cert_dir for SSL-related PoolManager configuration.
+- add python-pyOpenSSL, python-certifi and python-pyasn1 requirements
+- Comment out test requirements, as tests are disabled anyway, and
+  * Add support for directories of certificate authorities, as
+  * New exception: NewConnectionError, raised when we fail to
+- Update 0001-Don-t-pin-dependency-to-exact-version.patch
+  * Shuffled around development-related files.
+    If you're maintaining a distro package of urllib3, you may need
+  * Unverified HTTPS requests will trigger a warning on the first
+  * New retry logic and urllib3.util.retry.Retry configuration
+  * All raised exceptions should now wrapped in a
+    urllib3.exceptions.HTTPException-extending exception.
+    urllib3.exceptions.MaxRetryError, including timeout-related
+    exceptions which were previously exempt. Underlying error is
+  * urllib3.exceptions.ConnectionError renamed to
+  * Requesting an empty host will raise
+  * Catch read timeouts over SSL connections as
+  * Fix TLS verification when using a proxy in Python 3.4.1.
+  * Add disable_cache option to urllib3.util.make_headers.
+  * Wrap socket.timeout exception with
+  * Fixed proxy-related bug where connections were being reused
+  * Added socket_options keyword parameter which allows to define
+  * Removed HTTPConnection.tcp_nodelay in favor of
+  * Don't install dummyserver into site-packages as it's only</comment>
+    <requestid>1112725</requestid>
+  </revision>
 </revisionlist>

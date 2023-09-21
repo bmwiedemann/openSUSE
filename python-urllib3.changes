@@ -208,7 +208,7 @@ Tue Jul 13 10:53:07 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to 1.26.6
   * Deprecated the urllib3.contrib.ntlmpool module.
-  * Changed HTTPConnection.request_chunked() to not erroneously emit multiple 
+  * Changed HTTPConnection.request_chunked() to not erroneously emit multiple
     Transfer-Encoding headers in the case that one is already specified.
   * Fixed typo in deprecation message to recommend Retry.DEFAULT_ALLOWED_METHODS.
 
@@ -290,7 +290,7 @@ Thu Nov 26 09:02:30 UTC 2020 - Dirk Mueller <dmueller@suse.com>
     ``Retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT``, and ``Retry(allowed_methods=...)``
     (Pull #2000) **Starting in urllib3 v2.0: Deprecated options will be removed**
   * Added default ``User-Agent`` header to every request (Pull #1750)
-  * Added ``urllib3.util.SKIP_HEADER`` for skipping ``User-Agent``, ``Accept-Encoding``, 
+  * Added ``urllib3.util.SKIP_HEADER`` for skipping ``User-Agent``, ``Accept-Encoding``,
     and ``Host`` headers from being automatically emitted with requests (Pull #2018)
   * Collapse ``transfer-encoding: chunked`` request data and framing into
     the same ``socket.send()`` call (Pull #1906)
@@ -443,6 +443,7 @@ Wed May 29 08:59:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 Wed May 29 08:20:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Unbundle the six, rfc3986, and backports.ssl_match_hostname
+- Add missing dependency on python-six (bsc#1150895)
 
 -------------------------------------------------------------------
 Fri May 24 19:16:21 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
@@ -473,7 +474,7 @@ Tue Apr 23 10:27:36 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 -------------------------------------------------------------------
 Tue Apr 23 04:04:50 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 
-- update to 1.25 (bsc#1132663, CVE-2019-9740, CVE-2019-11236):
+- update to 1.25 (bsc#1132663, bsc#1129071, CVE-2019-9740, CVE-2019-11236):
   * Require and validate certificates by default when using HTTPS
   * Upgraded ``urllib3.utils.parse_url()`` to be RFC 3986 compliant.
   * Added support for ``key_password`` for ``HTTPSConnectionPool`` to use
@@ -583,7 +584,7 @@ Sun Jul 15 22:30:26 UTC 2018 - mimi.vx@gmail.com
 - add 1414.patch - fix tests with new tornado
 - refresh python-urllib3-recent-date.patch
 - drop urllib3-test-no-coverage.patch
- * Allow providing a list of headers to strip from requests when redirecting 
+ * Allow providing a list of headers to strip from requests when redirecting
    to a different host. Defaults to the Authorization header. Different
    headers can be set via Retry.remove_headers_on_redirect.
  * Fix util.selectors._fileobj_to_fd to accept long
@@ -931,9 +932,9 @@ Tue Jan  5 14:40:22 UTC 2016 - hpj@urpla.net
   * pyopenssl: Support for TLSv1.1 and TLSv1.2. (Issue #696)
   * Close connections more defensively on exception. (Issue #734)
   * Adjusted read_chunked to handle gzipped, chunk-encoded bodies
-    without repeatedly flushing the decoder, to function better on 
+    without repeatedly flushing the decoder, to function better on
     Jython. (Issue #743)
-  * Accept ca_cert_dir for SSL-related PoolManager configuration. 
+  * Accept ca_cert_dir for SSL-related PoolManager configuration.
     (Issue #758)
 
 - removed ready-event.patch: applied upstream
@@ -973,12 +974,12 @@ Wed Oct 14 09:35:30 UTC 2015 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Tue Oct  6 15:03:05 UTC 2015 - hpj@urpla.net
 
-- add python-pyOpenSSL, python-certifi and python-pyasn1 requirements 
+- add python-pyOpenSSL, python-certifi and python-pyasn1 requirements
 
 -------------------------------------------------------------------
 Tue Oct  6 12:46:25 UTC 2015 - hpj@urpla.net
 
-- Comment out test requirements, as tests are disabled anyway, and 
+- Comment out test requirements, as tests are disabled anyway, and
   one of these packages depend on python-requests, which depends on
   this package resulting in a circular dependency for openSUSE <= 13.1
 
@@ -988,9 +989,9 @@ Fri Sep 25 11:24:49 UTC 2015 - p.drouand@gmail.com
 - Update to version 1.12
   * Rely on six for importing httplib to work around conflicts with
     other Python 3 shims. (Issue #688)
-  * Add support for directories of certificate authorities, as 
+  * Add support for directories of certificate authorities, as
     supported by OpenSSL. (Issue #701)
-  * New exception: NewConnectionError, raised when we fail to 
+  * New exception: NewConnectionError, raised when we fail to
     establish a new connection, usually ECONNREFUSED socket error.
 - Fix version dependencies
 - Add new build requirements following upstream changes
@@ -998,7 +999,7 @@ Fri Sep 25 11:24:49 UTC 2015 - p.drouand@gmail.com
   * python-tox
   * python-twine
   * python-wheel
-- Update 0001-Don-t-pin-dependency-to-exact-version.patch 
+- Update 0001-Don-t-pin-dependency-to-exact-version.patch
 - Disable tests for now, as there require network
 
 -------------------------------------------------------------------
@@ -1008,42 +1009,42 @@ Thu Sep 11 12:38:13 UTC 2014 - toddrme2178@gmail.com
 - Rebase 0001-Don-t-pin-dependency-to-exact-version.patch and
   urllib3-test-no-coverage.patch
 - Update to version 1.9 (2014-07-04)
-  * Shuffled around development-related files. 
-    If you're maintaining a distro package of urllib3, you may need 
+  * Shuffled around development-related files.
+    If you're maintaining a distro package of urllib3, you may need
     to tweak things. (Issue #415)
-  * Unverified HTTPS requests will trigger a warning on the first 
+  * Unverified HTTPS requests will trigger a warning on the first
     request. See our new security documentation for details.
     (Issue #426)
-  * New retry logic and urllib3.util.retry.Retry configuration 
+  * New retry logic and urllib3.util.retry.Retry configuration
     object. (Issue #326)
-  * All raised exceptions should now wrapped in a 
-    urllib3.exceptions.HTTPException-extending exception. 
+  * All raised exceptions should now wrapped in a
+    urllib3.exceptions.HTTPException-extending exception.
     (Issue #326)
   * All errors during a retry-enabled request should be wrapped in
-    urllib3.exceptions.MaxRetryError, including timeout-related 
-    exceptions which were previously exempt. Underlying error is 
+    urllib3.exceptions.MaxRetryError, including timeout-related
+    exceptions which were previously exempt. Underlying error is
     accessible from the .reason propery. (Issue #326)
-  * urllib3.exceptions.ConnectionError renamed to 
+  * urllib3.exceptions.ConnectionError renamed to
     urllib3.exceptions.ProtocolError. (Issue #326)
   * Errors during response read (such as IncompleteRead) are now
     wrapped in urllib3.exceptions.ProtocolError. (Issue #418)
-  * Requesting an empty host will raise 
+  * Requesting an empty host will raise
     urllib3.exceptions.LocationValueError. (Issue #417)
-  * Catch read timeouts over SSL connections as 
+  * Catch read timeouts over SSL connections as
     urllib3.exceptions.ReadTimeoutError. (Issue #419)
   * Apply socket arguments before connecting. (Issue #427)
 - Update to version 1.8.3 (2014-06-23)
-  * Fix TLS verification when using a proxy in Python 3.4.1. 
+  * Fix TLS verification when using a proxy in Python 3.4.1.
     (Issue #385)
-  * Add disable_cache option to urllib3.util.make_headers. 
+  * Add disable_cache option to urllib3.util.make_headers.
     (Issue #393)
-  * Wrap socket.timeout exception with 
+  * Wrap socket.timeout exception with
     urllib3.exceptions.ReadTimeoutError. (Issue #399)
-  * Fixed proxy-related bug where connections were being reused 
+  * Fixed proxy-related bug where connections were being reused
     incorrectly. (Issues #366, #369)
-  * Added socket_options keyword parameter which allows to define 
+  * Added socket_options keyword parameter which allows to define
     setsockopt configuration of new sockets. (Issue #397)
-  * Removed HTTPConnection.tcp_nodelay in favor of 
+  * Removed HTTPConnection.tcp_nodelay in favor of
     HTTPConnection.default_socket_options. (Issue #397)
   * Fixed TypeError bug in Python 2.6.4. (Issue #411)
 - Update to version 1.8.2 (2014-04-17)
@@ -1051,7 +1052,7 @@ Thu Sep 11 12:38:13 UTC 2014 - toddrme2178@gmail.com
 - Update to version 1.8.1 (2014-04-17)
   * Fix AppEngine bug of HTTPS requests going out as HTTP.
     (Issue #356)
-  * Don't install dummyserver into site-packages as it's only 
+  * Don't install dummyserver into site-packages as it's only
     needed for the test suite. (Issue #362)
   * Added support for specifying source_address. (Issue #352)
 
