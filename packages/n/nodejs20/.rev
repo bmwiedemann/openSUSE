@@ -159,4 +159,22 @@ versioned.patch: refreshed</comment>
   somewhat circular fashion ending up with multiple executions.</comment>
     <requestid>1109713</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0d7603e309b51ba9a9519624d03547e8</srcmd5>
+    <version>20.7.0</version>
+    <time>1695327204</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20.7.0:
+  * src: support multiple --env-file declarations
+  * deps: upgrade npm to 10.1.0
+  * doc: move and rename loaders section
+  * lib: add api to detect whether source-maps are enabled
+  * src,permission: add multiple allow-fs-* flags
+  * test_runner: expose location of tests
+- z13.patch: upstreamed
+
+- Update to 20.6.1:
+  * f0ff63fbc32ea55f3d92c5c89fdb91ec47786859.patch: removed, upstreamed</comment>
+    <requestid>1112341</requestid>
+  </revision>
 </revisionlist>

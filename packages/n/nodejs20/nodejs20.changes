@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 19 14:40:13 UTC 2023 - Adam Majer <adam.majer@suse.de> - 20.7.0
+
+- Update to 20.7.0:
+  * src: support multiple --env-file declarations
+  * deps: upgrade npm to 10.1.0
+  * doc: move and rename loaders section
+  * lib: add api to detect whether source-maps are enabled
+  * src,permission: add multiple allow-fs-* flags
+  * test_runner: expose location of tests
+
+- z13.patch: upstreamed
+
+-------------------------------------------------------------------
+Mon Sep 18 10:08:42 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Update to 20.6.1:
+  * f0ff63fbc32ea55f3d92c5c89fdb91ec47786859.patch: removed, upstreamed
+
+-------------------------------------------------------------------
 Fri Sep  8 10:46:20 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - f0ff63fbc32ea55f3d92c5c89fdb91ec47786859.patch: fixes issues with

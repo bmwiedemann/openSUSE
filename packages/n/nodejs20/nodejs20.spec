@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs20
-Version:        20.6.0
+Version:        20.7.0
 Release:        0
 
 # Double DWZ memory limits
@@ -94,7 +94,7 @@ Release:        0
 %bcond_without intree_cares
 %endif
 
-%if 0%{?sle_version} != 150600 && ( 0%{?suse_version} >= 1330 || 0%{?fedora_version} >= 35 )
+%if 0%{?suse_version} >= 1330 || 0%{?fedora_version} >= 35
 %bcond_with    intree_icu
 %else
 %bcond_without intree_icu
@@ -172,8 +172,6 @@ Patch200:       versioned.patch
 Patch305:       qemu_timeouts_arches.patch
 Patch308:       node-gyp-config.patch
 Patch309:       gcc13.patch
-Patch311:       z13.patch
-Patch312:       f0ff63fbc32ea55f3d92c5c89fdb91ec47786859.patch
 
 BuildRequires:  pkg-config
 BuildRequires:  fdupes
@@ -421,7 +419,7 @@ Requires:       nodejs-common
 Requires:       nodejs20 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
-Provides:       npm(npm) = 9.8.1
+Provides:       npm(npm) = 10.1.0
 Provides:       npm = %{version}
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
@@ -433,7 +431,8 @@ Provides:       bundled(node-abbrev) = 1.1.1
 Provides:       bundled(node-abbrev) = 2.0.0
 Provides:       bundled(node-abort-controller) = 3.0.0
 Provides:       bundled(node-agent-base) = 6.0.2
-Provides:       bundled(node-agentkeepalive) = 4.3.0
+Provides:       bundled(node-agent-base) = 7.1.0
+Provides:       bundled(node-agentkeepalive) = 4.5.0
 Provides:       bundled(node-aggregate-error) = 3.1.0
 Provides:       bundled(node-ansi-regex) = 5.0.1
 Provides:       bundled(node-ansi-regex) = 6.0.1
@@ -451,7 +450,8 @@ Provides:       bundled(node-brace-expansion) = 1.1.11
 Provides:       bundled(node-brace-expansion) = 2.0.1
 Provides:       bundled(node-buffer) = 6.0.3
 Provides:       bundled(node-builtins) = 5.0.1
-Provides:       bundled(node-cacache) = 17.1.3
+Provides:       bundled(node-cacache) = 17.1.4
+Provides:       bundled(node-cacache) = 18.0.0
 Provides:       bundled(node-chalk) = 5.3.0
 Provides:       bundled(node-chownr) = 2.0.0
 Provides:       bundled(node-ci-info) = 3.8.0
@@ -473,7 +473,6 @@ Provides:       bundled(node-cssesc) = 3.0.0
 Provides:       bundled(node-debug) = 4.3.4
 Provides:       bundled(node-defaults) = 1.0.4
 Provides:       bundled(node-delegates) = 1.0.0
-Provides:       bundled(node-depd) = 2.0.0
 Provides:       bundled(node-diff) = 5.1.0
 Provides:       bundled(node-eastasianwidth) = 0.2.0
 Provides:       bundled(node-emoji-regex) = 8.0.0
@@ -487,20 +486,22 @@ Provides:       bundled(node-exponential-backoff) = 3.1.1
 Provides:       bundled(node-fastest-levenshtein) = 1.0.16
 Provides:       bundled(node-foreground-child) = 3.1.1
 Provides:       bundled(node-fs-minipass) = 2.1.0
-Provides:       bundled(node-fs-minipass) = 3.0.2
+Provides:       bundled(node-fs-minipass) = 3.0.3
 Provides:       bundled(node-fs.realpath) = 1.0.0
 Provides:       bundled(node-function-bind) = 1.1.1
 Provides:       bundled(node-gauge) = 4.0.4
 Provides:       bundled(node-gauge) = 5.0.1
-Provides:       bundled(node-glob) = 10.2.7
+Provides:       bundled(node-glob) = 10.3.3
 Provides:       bundled(node-glob) = 7.2.3
 Provides:       bundled(node-graceful-fs) = 4.2.11
 Provides:       bundled(node-has) = 1.0.3
 Provides:       bundled(node-has-unicode) = 2.0.1
-Provides:       bundled(node-hosted-git-info) = 6.1.1
+Provides:       bundled(node-hosted-git-info) = 7.0.0
 Provides:       bundled(node-http-cache-semantics) = 4.1.1
 Provides:       bundled(node-http-proxy-agent) = 5.0.0
+Provides:       bundled(node-http-proxy-agent) = 7.0.0
 Provides:       bundled(node-https-proxy-agent) = 5.0.1
+Provides:       bundled(node-https-proxy-agent) = 7.0.1
 Provides:       bundled(node-humanize-ms) = 1.2.1
 Provides:       bundled(node-iconv-lite) = 0.6.3
 Provides:       bundled(node-ieee754) = 1.2.1
@@ -510,7 +511,7 @@ Provides:       bundled(node-indent-string) = 4.0.0
 Provides:       bundled(node-inflight) = 1.0.6
 Provides:       bundled(node-inherits) = 2.0.4
 Provides:       bundled(node-ini) = 4.1.1
-Provides:       bundled(node-init-package-json) = 5.0.0
+Provides:       bundled(node-init-package-json) = 6.0.0
 Provides:       bundled(node-ip) = 2.0.0
 Provides:       bundled(node-ip-regex) = 4.3.0
 Provides:       bundled(node-is-cidr) = 4.0.2
@@ -518,33 +519,36 @@ Provides:       bundled(node-is-core-module) = 2.12.1
 Provides:       bundled(node-is-fullwidth-code-point) = 3.0.0
 Provides:       bundled(node-is-lambda) = 1.0.1
 Provides:       bundled(node-isexe) = 2.0.0
+Provides:       bundled(node-isexe) = 3.1.1
 Provides:       bundled(node-jackspeak) = 2.2.1
 Provides:       bundled(node-json-parse-even-better-errors) = 3.0.0
 Provides:       bundled(node-json-stringify-nice) = 1.1.4
 Provides:       bundled(node-jsonparse) = 1.3.1
 Provides:       bundled(node-just-diff) = 6.0.2
 Provides:       bundled(node-just-diff-apply) = 5.5.0
-Provides:       bundled(node-libnpmaccess) = 7.0.2
-Provides:       bundled(node-libnpmdiff) = 5.0.19
-Provides:       bundled(node-libnpmexec) = 6.0.3
-Provides:       bundled(node-libnpmfund) = 4.0.19
-Provides:       bundled(node-libnpmhook) = 9.0.3
-Provides:       bundled(node-libnpmorg) = 5.0.4
-Provides:       bundled(node-libnpmpack) = 5.0.19
-Provides:       bundled(node-libnpmpublish) = 7.5.0
-Provides:       bundled(node-libnpmsearch) = 6.0.2
-Provides:       bundled(node-libnpmteam) = 5.0.3
-Provides:       bundled(node-libnpmversion) = 4.0.2
+Provides:       bundled(node-libnpmaccess) = 8.0.0
+Provides:       bundled(node-libnpmdiff) = 6.0.1
+Provides:       bundled(node-libnpmexec) = 7.0.1
+Provides:       bundled(node-libnpmfund) = 4.1.1
+Provides:       bundled(node-libnpmhook) = 10.0.0
+Provides:       bundled(node-libnpmorg) = 6.0.0
+Provides:       bundled(node-libnpmpack) = 6.0.1
+Provides:       bundled(node-libnpmpublish) = 9.0.0
+Provides:       bundled(node-libnpmsearch) = 7.0.0
+Provides:       bundled(node-libnpmteam) = 6.0.0
+Provides:       bundled(node-libnpmversion) = 5.0.0
+Provides:       bundled(node-lru-cache) = 10.0.1
 Provides:       bundled(node-lru-cache) = 6.0.0
 Provides:       bundled(node-lru-cache) = 7.18.3
-Provides:       bundled(node-lru-cache) = 9.1.1
 Provides:       bundled(node-make-fetch-happen) = 11.1.1
+Provides:       bundled(node-make-fetch-happen) = 13.0.0
 Provides:       bundled(node-minimatch) = 3.1.2
 Provides:       bundled(node-minimatch) = 9.0.3
 Provides:       bundled(node-minipass) = 3.3.6
 Provides:       bundled(node-minipass) = 5.0.0
+Provides:       bundled(node-minipass) = 7.0.3
 Provides:       bundled(node-minipass-collect) = 1.0.2
-Provides:       bundled(node-minipass-fetch) = 3.0.3
+Provides:       bundled(node-minipass-fetch) = 3.0.4
 Provides:       bundled(node-minipass-flush) = 1.0.5
 Provides:       bundled(node-minipass-json-stream) = 1.0.1
 Provides:       bundled(node-minipass-pipeline) = 1.2.4
@@ -558,26 +562,26 @@ Provides:       bundled(node-negotiator) = 0.6.3
 Provides:       bundled(node-node-gyp) = 9.4.0
 Provides:       bundled(node-nopt) = 6.0.0
 Provides:       bundled(node-nopt) = 7.2.0
-Provides:       bundled(node-normalize-package-data) = 5.0.0
+Provides:       bundled(node-normalize-package-data) = 6.0.0
 Provides:       bundled(node-npm-audit-report) = 5.0.0
 Provides:       bundled(node-npm-bundled) = 3.0.0
-Provides:       bundled(node-npm-install-checks) = 6.1.1
+Provides:       bundled(node-npm-install-checks) = 6.2.0
 Provides:       bundled(node-npm-normalize-package-bin) = 3.0.1
-Provides:       bundled(node-npm-package-arg) = 10.1.0
-Provides:       bundled(node-npm-packlist) = 7.0.4
-Provides:       bundled(node-npm-pick-manifest) = 8.0.1
-Provides:       bundled(node-npm-profile) = 7.0.1
-Provides:       bundled(node-npm-registry-fetch) = 14.0.5
+Provides:       bundled(node-npm-package-arg) = 11.0.0
+Provides:       bundled(node-npm-packlist) = 8.0.0
+Provides:       bundled(node-npm-pick-manifest) = 9.0.0
+Provides:       bundled(node-npm-profile) = 9.0.0
+Provides:       bundled(node-npm-registry-fetch) = 16.0.0
 Provides:       bundled(node-npm-user-validate) = 2.0.0
 Provides:       bundled(node-npmlog) = 6.0.2
 Provides:       bundled(node-npmlog) = 7.0.1
 Provides:       bundled(node-once) = 1.4.0
 Provides:       bundled(node-p-map) = 4.0.0
-Provides:       bundled(node-pacote) = 15.2.0
+Provides:       bundled(node-pacote) = 17.0.4
 Provides:       bundled(node-parse-conflict-json) = 3.0.1
 Provides:       bundled(node-path-is-absolute) = 1.0.1
 Provides:       bundled(node-path-key) = 3.1.1
-Provides:       bundled(node-path-scurry) = 1.9.2
+Provides:       bundled(node-path-scurry) = 1.10.1
 Provides:       bundled(node-postcss-selector-parser) = 6.0.13
 Provides:       bundled(node-proc-log) = 3.0.0
 Provides:       bundled(node-process) = 0.11.10
@@ -589,7 +593,7 @@ Provides:       bundled(node-promzard) = 1.0.0
 Provides:       bundled(node-qrcode-terminal) = 0.12.0
 Provides:       bundled(node-read) = 2.1.0
 Provides:       bundled(node-read-cmd-shim) = 4.0.0
-Provides:       bundled(node-read-package-json) = 6.0.4
+Provides:       bundled(node-read-package-json) = 7.0.0
 Provides:       bundled(node-read-package-json-fast) = 3.0.2
 Provides:       bundled(node-readable-stream) = 3.6.2
 Provides:       bundled(node-readable-stream) = 4.4.0
@@ -603,15 +607,16 @@ Provides:       bundled(node-shebang-command) = 2.0.0
 Provides:       bundled(node-shebang-regex) = 3.0.0
 Provides:       bundled(node-signal-exit) = 3.0.7
 Provides:       bundled(node-signal-exit) = 4.0.2
-Provides:       bundled(node-sigstore) = 1.7.0
+Provides:       bundled(node-sigstore) = 2.1.0
 Provides:       bundled(node-smart-buffer) = 4.2.0
 Provides:       bundled(node-socks) = 2.7.1
 Provides:       bundled(node-socks-proxy-agent) = 7.0.0
+Provides:       bundled(node-socks-proxy-agent) = 8.0.1
 Provides:       bundled(node-spdx-correct) = 3.2.0
 Provides:       bundled(node-spdx-exceptions) = 2.3.0
 Provides:       bundled(node-spdx-expression-parse) = 3.0.1
 Provides:       bundled(node-spdx-license-ids) = 3.0.13
-Provides:       bundled(node-ssri) = 10.0.4
+Provides:       bundled(node-ssri) = 10.0.5
 Provides:       bundled(node-string_decoder) = 1.3.0
 Provides:       bundled(node-string-width) = 4.2.3
 Provides:       bundled(node-string-width) = 5.1.2
@@ -622,7 +627,7 @@ Provides:       bundled(node-tar) = 6.1.15
 Provides:       bundled(node-text-table) = 0.2.0
 Provides:       bundled(node-tiny-relative-date) = 1.3.0
 Provides:       bundled(node-treeverse) = 3.0.0
-Provides:       bundled(node-tuf-js) = 1.1.7
+Provides:       bundled(node-tuf-js) = 2.1.0
 Provides:       bundled(node-unique-filename) = 3.0.0
 Provides:       bundled(node-unique-slug) = 4.0.0
 Provides:       bundled(node-util-deprecate) = 1.0.2
@@ -631,7 +636,7 @@ Provides:       bundled(node-validate-npm-package-name) = 5.0.0
 Provides:       bundled(node-walk-up-path) = 3.0.1
 Provides:       bundled(node-wcwidth) = 1.0.1
 Provides:       bundled(node-which) = 2.0.2
-Provides:       bundled(node-which) = 3.0.1
+Provides:       bundled(node-which) = 4.0.0
 Provides:       bundled(node-wide-align) = 1.1.5
 Provides:       bundled(node-wrap-ansi) = 7.0.0
 Provides:       bundled(node-wrap-ansi) = 8.1.0
@@ -722,8 +727,6 @@ popd
 
 %patch305 -p1
 %patch309 -p1
-%patch311 -p1
-%patch312 -p1
 
 %if %{node_version_number} == 12
 # minimist security update - patch50
