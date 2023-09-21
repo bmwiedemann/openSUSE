@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 20 06:23:44 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
+
+- CVE-2023-43115.patch is
+  https://git.ghostscript.com/?p=ghostpdl.git;a=commit;h=e59216049cac290fb437a04c4f41ea46826cfba5
+  that fixes CVE-2023-43115 "remote code execution
+  via crafted PostScript documents in gdevijs.c"
+  see https://bugs.ghostscript.com/show_bug.cgi?id=707051
+  (bsc#1215466)
+
+-------------------------------------------------------------------
 Wed Jul 26 09:35:33 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
 
 - CVE-2023-38559.patch fixes CVE-2023-38559

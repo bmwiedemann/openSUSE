@@ -76,6 +76,14 @@ Patch103:       CVE-2023-36664.patch
 # as the already fixed CVE-2020-16305 in devices/gdevpcx.c
 # see https://bugs.ghostscript.com/show_bug.cgi?id=701819
 Patch104:       CVE-2023-38559.patch
+# Patch105 CVE-2023-43115.patch is
+# https://git.ghostscript.com/?p=ghostpdl.git;a=commit;h=e59216049cac290fb437a04c4f41ea46826cfba5
+# that fixes CVE-2023-43115
+# "remote code execution via crafted PostScript documents in gdevijs.c"
+# see https://bugs.ghostscript.com/show_bug.cgi?id=707051
+# and https://bugzilla.suse.com/show_bug.cgi?id=1215466
+Patch105:       CVE-2023-43115.patch
+# Build Requirements:
 BuildRequires:  freetype2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
@@ -303,6 +311,13 @@ This package contains the development files for Ghostscript.
 # as the already fixed CVE-2020-16305 in devices/gdevpcx.c
 # see https://bugs.ghostscript.com/show_bug.cgi?id=701819
 %patch104
+# Patch105 CVE-2023-43115.patch is
+# https://git.ghostscript.com/?p=ghostpdl.git;a=commit;h=e59216049cac290fb437a04c4f41ea46826cfba5
+# that fixes CVE-2023-43115
+# "remote code execution via crafted PostScript documents in gdevijs.c"
+# see https://bugs.ghostscript.com/show_bug.cgi?id=707051
+# and https://bugzilla.suse.com/show_bug.cgi?id=1215466
+%patch105
 # Remove patch backup files to avoid packaging
 # cf. https://build.opensuse.org/request/show/581052
 rm -f Resource/Init/*.ps.orig
