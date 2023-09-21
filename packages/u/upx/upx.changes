@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 21 11:26:11 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update license based on legal review
+  Skipping "Simplified license" WITH LZMA-exception due to missing
+  matching license identifier for now
+
+-------------------------------------------------------------------
 Tue Aug  8 10:42:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.1
