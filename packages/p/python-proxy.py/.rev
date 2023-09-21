@@ -182,4 +182,14 @@
 </comment>
     <requestid>1085022</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a1ad3a706832d82c6630f693d3070dbd</srcmd5>
+    <version>2.4.3</version>
+    <time>1695327186</time>
+    <user>anag+factory</user>
+    <comment>- Add patch fix-assertion-call.patch, fix a mock call that fails under
+  Python 3.12
+- Add patch no-ssl-wrap-socket.patch, do not use removed ssl.wrap_socket</comment>
+    <requestid>1112170</requestid>
+  </revision>
 </revisionlist>

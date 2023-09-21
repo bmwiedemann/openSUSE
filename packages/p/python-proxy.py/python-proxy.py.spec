@@ -28,6 +28,8 @@ URL:            https://github.com/abhinavsingh/proxy.py
 Source:         https://github.com/abhinavsingh/proxy.py/archive/refs/tags/v%{version}.tar.gz#/proxy.py-%{version}-gh.tar.gz
 # PATCH-FIX-OPENSUSE proxy.py-command.patch -- deconflict with libproxy, code@bnavigator.de
 Patch0:         proxy.py-command.patch
+Patch1:         fix-assertion-call.patch
+Patch2:         no-ssl-wrap-socket.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -54,6 +56,7 @@ Note: On SUSE distributions, the command is installed as proxy-py not as proxy.
 
 %prep
 %autosetup -p1 -n proxy.py-%{version}
+find . -name '.gitignore' -delete
 
 %build
 %pyproject_wheel
@@ -77,6 +80,6 @@ Note: On SUSE distributions, the command is installed as proxy-py not as proxy.
 %license LICENSE
 %python_alternative %{_bindir}/proxy-py
 %{python_sitelib}/proxy
-%{python_sitelib}/proxy.py-%{version}*-info
+%{python_sitelib}/proxy.py-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 19 08:30:35 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch fix-assertion-call.patch, fix a mock call that fails under
+  Python 3.12
+- Add patch no-ssl-wrap-socket.patch, do not use removed ssl.wrap_socket
+
+-------------------------------------------------------------------
 Fri May  5 08:59:59 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.4.3:
