@@ -17,7 +17,7 @@
 
 
 Name:           asar
-Version:        3.2.3
+Version:        3.2.5
 Release:        0
 Summary:        Creating atom-shell (electron) app packages
 License:        MIT and ISC
@@ -25,7 +25,7 @@ Group:          Development/Languages/NodeJS
 Url:            https://github.com/electron/asar
 Source0:        https://github.com/electron/asar/archive/refs/tags/v%{version}.tar.gz
 # Created by prepare-vendor.sh
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        prepare_vendor.sh
 
 BuildArch:      noarch
@@ -33,7 +33,12 @@ BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  jq
 BuildRequires:  nodejs-packaging
+%if 0%{?fedora} >= 37
+BuildRequires:  nodejs-npm
+%else
 BuildRequires:  npm
+%endif
+BuildRequires:  zstd
 
 %global __requires_exclude ^npm(.*)$
 Provides: nodejs-asar = %{version}
@@ -91,7 +96,7 @@ find -name '.releaserc*' -type f -print -delete
 %defattr(-,root,root)
 %doc CHANGELOG.md README.md
 %license LICENSE.md
-/usr/bin/asar
+%{_bindir}/asar
 %{nodejs_sitelib}
 
 %changelog

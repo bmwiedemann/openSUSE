@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 19 17:12:27 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream version 3.2.5
+  * properly handle rejections on `createPackageWithOptions`
+
+-------------------------------------------------------------------
 Tue Jan 17 21:50:31 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream version 3.2.3
   * fix bad output on unknown CLI command

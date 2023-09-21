@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 # shellcheck disable=2181
 
 ASAR_PKGDIR="$(pwd)"
@@ -41,7 +41,7 @@ pushd "$ASAR_PATH" || cleanup_and_exit 1
 
 
 echo ">>>>>> Install npm modules"
-yarn install --pure-lockfile --ignore-engines --ignore-scripts --production
+yarn install --pure-lockfile --ignore-engines --ignore-scripts --production --link-duplicates
 ret=$?
 if [ $ret -ne 0 ]; then
     echo "ERROR: yarn install failed"
@@ -53,6 +53,7 @@ find node_modules/ -name "*.node" -print -delete
 find node_modules/ -name "*.wasm" -print -delete
 find node_modules/ -name "*.jar" -print -delete
 find node_modules/ -name "*.dll" -print -delete
+find node_modules/ -name "*.exe" -print -delete
 find node_modules/ -name "*.dylib" -print -delete
 find node_modules/ -name "*.so" -print -delete
 find node_modules/ -name "*.o" -print -delete
@@ -68,12 +69,12 @@ find . -type f| sponge |\
 
 
 echo ">>>>>> Package vendor files"
-rm -f "${ASAR_PKGDIR}/vendor.tar.xz"
-XZ_OPT="-T$(nproc) -e9 -vv" tar -vvJcf "${ASAR_PKGDIR}/vendor.tar.xz" node_modules
+rm -f "${SIGNAL_PKGDIR}/vendor.tar.zst"
+ZSTD_CLEVEL=19 ZSTD_NBTHREADS=$(nproc) tar --zstd --sort=name -vvScf "${ASAR_PKGDIR}/vendor.tar.zst" node_modules
 if [ $? -ne 0 ]; then
     cleanup_and_exit 1
 fi
-echo "vendor $(du -sh "${ASAR_PKGDIR}/vendor.tar.xz")"
+echo "vendor $(du -sh "${ASAR_PKGDIR}/vendor.tar.zst")"
 
 
 popd || cleanup_and_exit 1
