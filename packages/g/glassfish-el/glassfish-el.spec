@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-el
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,7 @@ The main goals are:
 
 %package api
 Summary:        Expression Language 3.0 API
-License:        (CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0) AND Apache-2.0
+License:        Apache-2.0 AND (CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0)
 Group:          Development/Libraries/Java
 
 %description api
@@ -63,7 +63,7 @@ Expression Language 3.0 API.
 
 %package javadoc
 Summary:        Javadoc for %{name}
-License:        (CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0) AND Apache-2.0
+License:        Apache-2.0 AND (CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0)
 Group:          Documentation/HTML
 
 %description javadoc
