@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Sep 21 12:10:01 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.9.15
+  * Bug
+    + MRESOLVER-373: Remove lock upgrading code
+    + MRESOLVER-375: Several key aspects are broken in provided and
+      trusted checksum feature
+    + MRESOLVER-376: StackOverflowError at
+      BfDependencyCollector.processDependency
+    + MRESOLVER-380: Lock diagnostic: attempted lock step is
+      recorded, but on failed attempt is not removed
+    + MRESOLVER-393: Transport HTTP does not retain last modified as
+      sent by remote end
+  * Improvement
+    + MRESOLVER-220: Modify signaling for unsupported operations
+    + MRESOLVER-382: Define local outgoing (bind) address
+    + MRESOLVER-385: Reduce default value for
+      aether.connector.http.connectionMaxTtl
+  * Task
+    + MRESOLVER-378: Update parent POM to 40
+    + MRESOLVER-381: Undo MRESOLVER-373 as it was fixed by other
+      means
+    + MRESOLVER-386: Make all injected ctors public, deprecate all
+      def ctors
+    + MRESOLVER-388: Transport HTTP old codec proper override
+
+-------------------------------------------------------------------
 Mon Jun 19 15:06:45 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.9.12
