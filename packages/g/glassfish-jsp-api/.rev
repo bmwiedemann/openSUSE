@@ -31,4 +31,12 @@
     <comment>new alias</comment>
     <requestid>982583</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>312a459fb263dceb765c434a71cde204</srcmd5>
+    <version>2.3.3</version>
+    <time>1695327784</time>
+    <user>anag+factory</user>
+    <comment>fix build with java &gt;= 20</comment>
+    <requestid>1112750</requestid>
+  </revision>
 </revisionlist>
