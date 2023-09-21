@@ -7,7 +7,7 @@ clean:
 	rm -f $(NAME)-*.tar $(NAME)-*.tar.gz web-ui-*.tar.gz npm_licenses.tar.bz2 vendor.tar.gz
 
 tar:
-	osc service disabledrun
+	osc service manualrun
 	@version=$$( awk '/^Version:/ {print $$2;exit;}' $(SPEC) ) && \
 	echo "Package version is $$version" && \
 	basename=$(NAME)-$$version && \
