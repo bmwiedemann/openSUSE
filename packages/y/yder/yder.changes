@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 18 14:56:57 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.20
+  * cmake: remove DownloadProject feature, now dependencies must
+    be previously installed
+
+-------------------------------------------------------------------
 Thu Jan 12 08:12:24 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.19

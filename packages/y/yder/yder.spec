@@ -19,7 +19,7 @@
 
 %define sover 1_4
 Name:           yder
-Version:        1.4.19
+Version:        1.4.20
 Release:        0
 Summary:        Logging library written in C
 # Example programs in subfolder examples/ are licensed under MIT
