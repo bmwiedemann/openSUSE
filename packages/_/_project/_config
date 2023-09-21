@@ -3355,6 +3355,7 @@ Prefer: java-11-openjdk-devel java-11-openjdk java-11-openjdk-headless java-11-o
 Prefer: java-1_8_0-openj9-devel java-1_8_0-openj9 java-1_8_0-openj9-headless
 %endif
 Prefer: java-1_8_0-openjdk-devel java-1_8_0-openjdk java-1_8_0-openjdk-headless java-1_8_0-openjdk-javadoc
+Prefer: java-21-openjdk-devel java-21-openjdk java-21-openjdk-headless java-21-openjdk-javadoc
 Prefer: java-20-openjdk-devel java-20-openjdk java-20-openjdk-headless java-20-openjdk-javadoc
 
 %ifarch x86_64 ppc64 s390x sparc64
