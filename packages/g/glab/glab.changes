@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 21 04:41:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.33.0:
+  * feat: prefill scope parameter for PAT generation
+  * chore: Update which docs files are linted
+  * fix(check-update): remove auth for check-update
+  * docs: Add feature design guidelines
+  * docs(mr delete): change close to delete
+  * fix(auth login): encode scopes for oauth url
+  * docs(config): add check_update and display_hyperlinks
+  * fix: Fix errors which show up when running `make check'
+  * fix: glab ci status needs terminal on stdin
+  * chore: update golangci-lint image
+  * docs: Add note about maintainership
+
+-------------------------------------------------------------------
 Tue Aug 22 07:44:39 UTC 2023 - pdostal@suse.com
 
 - Update to version 1.32.0:
