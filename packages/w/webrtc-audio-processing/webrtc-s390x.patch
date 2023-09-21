@@ -1,6 +1,6 @@
---- webrtc/typedefs.h
-+++ webrtc/typedefs.h
-@@ -53,6 +53,12 @@
+--- a/webrtc/rtc_base/system/arch.h.orig
++++ b/webrtc/rtc_base/system/arch.h
+@@ -63,6 +63,12 @@
  #elif defined(__powerpc__)
  #define WEBRTC_ARCH_BIG_ENDIAN
  #define WEBRTC_ARCH_32_BITS
@@ -11,5 +11,8 @@
 +#define WEBRTC_ARCH_BIG_ENDIAN
 +#define WEBRTC_ARCH_32_BITS
  #else
- /* instead of failing, use typical unix defines... */
- #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+ #error Please add support for your architecture in rtc_base/system/arch.h
+ #endif
+# #else
+# /* instead of failing, use typical unix defines... */
+# #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
