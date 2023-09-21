@@ -66,8 +66,10 @@
 
 %if 0%{?suse_version} >= 1550
 %bcond_without microdns
+%bcond_without webrtc_audio_processing_1
 %else
 %bcond_with microdns
+%bcond_with webrtc_audio_processing_1
 %endif
 
 Name:           gstreamer-plugins-bad
@@ -86,6 +88,8 @@ Patch0:         fix-build-with-srt-1.3.4.patch
 Patch2:         spandsp3.patch
 # PATCH-FIX-SLE reduce-required-meson.patch alarrosa@suse.com -- Reduce the required meson version to build in SLE
 Patch3:         reduce-required-meson.patch
+# PATCH-FIX-UPSTREAM 0001-Update-code-for-webrtc-audio-processing-1.patch alarrosa@suse.com -- Update code to use webrtc-audio-processing-1
+Patch4:         0001-Update-code-for-webrtc-audio-processing-1.patch
 
 %if %{with fdk_aac}
 BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
@@ -184,9 +188,12 @@ BuildRequires:  pkgconfig(wayland-cursor) >= 1.0
 BuildRequires:  pkgconfig(wayland-egl) >= 9.0
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.4
 BuildRequires:  pkgconfig(wayland-scanner) >= 1.4.0
+%if %{with webrtc_audio_processing_1}
+BuildRequires:  pkgconfig(webrtc-audio-coding-1) >= 1.0
+BuildRequires:  pkgconfig(webrtc-audio-processing-1) >= 1.0
+%else
 BuildRequires:  pkgconfig(webrtc-audio-processing) >= 0.2
-# FIXME we do not have pkgconfig(webrtc-audio-coding-1) in openSUSE yet -- remove -D
-#BuildRequires:  pkgconfig(webrtc-audio-coding-1)
+%endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb) >= 1.10
 BuildRequires:  pkgconfig(xkbcommon)
@@ -734,6 +741,9 @@ sed -ie "/subdir('decklink')/d" sys/meson.build
 %patch2 -p1
 %endif
 %patch3 -p1
+%if %{with webrtc_audio_processing_1}
+%patch4 -p3
+%endif
 
 %build
 %global optflags %{optflags} -fcommon

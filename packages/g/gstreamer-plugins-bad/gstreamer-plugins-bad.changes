@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 19 07:39:17 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to build the package with
+  webrtc-audio-processing-1 in Tumbleweed:
+  * 0001-Update-code-for-webrtc-audio-processing-1.patch
+
+-------------------------------------------------------------------
 Tue Jul 25 11:09:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.5:
