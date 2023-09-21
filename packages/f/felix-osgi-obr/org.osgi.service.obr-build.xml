@@ -14,7 +14,7 @@
   
   <property name="bundle.version" value="1"/>
 
-  <property name="compiler.source" value="1.7"/>
+  <property name="compiler.source" value="1.8"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>

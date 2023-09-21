@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 21 05:40:26 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source/target levels 8
+
+-------------------------------------------------------------------
 Fri Mar 18 14:03:56 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of felix-osgi-obr 1.0.2
