@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 21 10:00:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.4:
+  * fix: make `auto-init` respect `-no-color` flag (#2722)
+  * Add built-in function `get_default_retryable_errors` (#2725)
+
+-------------------------------------------------------------------
 Wed Sep 20 05:14:16 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.51.3:
