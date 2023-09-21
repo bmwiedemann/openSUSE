@@ -1,7 +1,7 @@
 cabal-version:       1.14
 name:                HsYAML
 version:             0.2.1.1
-x-revision:          5
+x-revision:          6
 
 synopsis:            Pure Haskell YAML 1.2 processor
 homepage:            https://github.com/haskell-hvr/HsYAML
@@ -155,6 +155,6 @@ test-suite tests
                  , containers
                  , mtl
                    -- non-inherited
-                 , QuickCheck == 2.14.*
-                 , tasty == 1.4.*
+                 , QuickCheck       == 2.14.*
+                 , tasty            >= 1.4    && < 1.6
                  , tasty-quickcheck == 0.10.*
