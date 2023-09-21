@@ -51,18 +51,18 @@ Provides:       patterns-openSUSE-xfce = %{version}
 Obsoletes:      patterns-openSUSE-xfce < %{version}
 
 # Xfce Recommended applications
+Recommends:     gigolo
 Recommends:     mousepad
 Recommends:     parole
 Recommends:     ristretto
 Recommends:     thunar-plugin-archive
 Recommends:     thunar-plugin-media-tags
+Recommends:     thunar-volman
 Recommends:     tumbler
 Recommends:     xfce4-dict
 Recommends:     xfce4-panel-profiles
 Recommends:     xfce4-screenshooter
 Recommends:     xfce4-taskmanager
-Recommends:     xfce4-dict
-Recommends:     gigolo
 
 # Recommended Xfce Panel plugins
 Recommends:     xfce4-calculator-plugin
@@ -131,10 +131,6 @@ Recommends:     gnome-keyring-pam
 Recommends:     gcr-ssh-askpass
 Recommends:     opensuse-welcome
 
-Recommends:     xfce4-taskmanager
-Recommends:     thunar-volman
-Recommends:     tumbler
-
 # from data/COMMON-DESKTOP-OPT
 # packages a GTK application
 Recommends:     gutenprint
@@ -155,13 +151,13 @@ Xfce is a lightweight desktop environment for various *NIX systems.
 
 %package xfce_extra
 %pattern_graphicalenvironments
-Summary:        XFCE extra desktop applications
+Summary:        XFCE Extra Applications
 Group:          Metapackages
 Provides:       pattern() = xfce_extra
 Provides:       pattern-extends() = xfce
 Provides:       pattern-icon() = pattern-xfce
 Provides:       pattern-visible()
-Provides:       pattern-order() = 1305
+Provides:       pattern-order() = 1315
 Requires:       pattern() = xfce
 Requires:       pattern() = xfce_basis
 Recommends:     pattern() = office
@@ -178,6 +174,10 @@ Recommends:     shotwell
 Recommends:     transmission-gtk
 Provides:       patterns-openSUSE-xfce_extra = %{version}
 Obsoletes:      patterns-openSUSE-xfce_extra < %{version}
+Provides:       patterns-openSUSE-xfce_office = %{version}
+Obsoletes:      patterns-openSUSE-xfce_office < %{version}
+Provides:       patterns-xfce-xfce_office = %{version}
+Obsoletes:      patterns-xfce-xfce_office < %{version}
 
 %description xfce_extra
 Extra packages for the XFCE Desktop Environment

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 20 10:16:23 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
+
+- Ensure the new pattern xfce_extra properly obsoletes the pattern
+  xfce_office
+- Fixed pattern xfce_extra name and order in Yast
+
+-------------------------------------------------------------------
 Tue Sep 19 05:03:23 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Include selection of panel plugins to the main Xfce pattern
