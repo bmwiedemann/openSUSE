@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep  3 08:16:28 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hledger to version 1.31.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-1.31/src/CHANGES.md
+
+-------------------------------------------------------------------
 Sat Jul  1 17:07:50 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update hledger to version 1.28 revision 1.
