@@ -1223,7 +1223,7 @@ Wed Sep 30 07:13:22 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 Tue Sep 22 16:40:40 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix upgrade from older distro versions which did not package
-  f2py using update-alternatives (catched by openQA, boo#1176832).
+  f2py using update-alternatives (catched by openQA, bsc#1166678, boo#1176832).
 
 -------------------------------------------------------------------
 Fri Sep 18 08:19:50 UTC 2020 - Egbert Eich <eich@suse.com>

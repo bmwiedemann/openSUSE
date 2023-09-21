@@ -1195,4 +1195,12 @@ The Python versions supported in this release are 3.9-3.11.
   * Numerous performance improvements in various areas, most</comment>
     <requestid>1110295</requestid>
   </revision>
+  <revision rev="121" vrev="3">
+    <srcmd5>3fea3a245343fed555d5102006046380</srcmd5>
+    <version>1.25.2</version>
+    <time>1695327626</time>
+    <user>anag+factory</user>
+    <comment>  f2py using update-alternatives (catched by openQA, bsc#1166678, boo#1176832).</comment>
+    <requestid>1112791</requestid>
+  </revision>
 </revisionlist>
