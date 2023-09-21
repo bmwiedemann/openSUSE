@@ -160,4 +160,12 @@
   via dhcp (forwarded request 1068459 from mslacken)</comment>
     <requestid>1068460</requestid>
   </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>e87b03bbac94d74d484c9f486e1f50a1</srcmd5>
+    <version>4.4.0</version>
+    <time>1695327824</time>
+    <user>anag+factory</user>
+    <comment>- removed the upstream ipxe binaries</comment>
+    <requestid>1112815</requestid>
+  </revision>
 </revisionlist>

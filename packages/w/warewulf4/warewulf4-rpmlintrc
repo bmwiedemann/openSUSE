@@ -8,3 +8,6 @@ addFilter("non-executable-script /var/lib/warewulf/overlays/.*")
 addFilter("statically-linked-binary /var/lib/warewulf/overlays/system/default/warewulf/bin/wwclient")
 # go binaries are hard to strip
 addFilter("unstripped-binary-or-object.*")
+# ignore the binary in /usr/share as this binary will to the nodes and not run on
+# the host where the rpm is installed
+addFilter("arch-dependent-file-in-usr-share")

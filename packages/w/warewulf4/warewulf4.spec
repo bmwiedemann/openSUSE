@@ -84,15 +84,6 @@ Summary:        Contains the service for the warewulf rest API
 %description api
 Containts the binaries for the access of warewulf through a rest API and from the commandline from an external host.
 
-%package ipxe
-Summary:        Binaries of iPXE for ww4 installation
-BuildArch:      noarch
-
-%description ipxe
-For the boot of the nodes iPXE binaries are needed. As these package includes these files for
-x86, i386 and ARM.
-These are the binaries from the upstream project.
-
 %package slurm
 Summary:        Configuration template for slurm
 Requires:       %{name} = %{version}
@@ -176,6 +167,8 @@ mkdir -p %{buildroot}%{_datadir}/warewulf/overlays/generic/etc/slurm
 cat >  %{buildroot}%{_datadir}/warewulf/overlays/generic/etc/slurm/slurm.conf.ww <<EOF
 {{ Include "/etc/slurm/slurm.conf" }}
 EOF
+# remove upstream ipxe stuff
+rm -r %{buildroot}/%{_datadir}/ipxe
 
 %pre -f %{name}.pre
 %service_add_pre warewulfd.service
@@ -221,9 +214,6 @@ EOF
 %exclude  %{_datadir}/warewulf/overlays/host/etc/slurm
 %exclude  %{_datadir}/warewulf/overlays/generic/etc/slurm
 %exclude  %{_datadir}/warewulf/overlays/generic/etc/munge
-
-%files ipxe
-%{_datadir}/ipxe
 
 %files api
 %{_bindir}/wwapic
