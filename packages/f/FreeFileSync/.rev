@@ -194,4 +194,22 @@ It would be nice to have this application available in the default repos. </comm
 </comment>
     <requestid>1101985</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>62a777c942b6b290ac4633b011bfce0e</srcmd5>
+    <version>13.0</version>
+    <time>1695327788</time>
+    <user>anag+factory</user>
+    <comment>- Update to 13.0:
+  * Rename (multiple) files manually (F2 key)
+  * Configure individual directions for DB-based sync
+  * Detect moved files with &quot;Update&quot; sync variant (requires sync.ffs_db files)
+  * Update variant: Do not restore files that were deleted on target
+  * Distinguish file renames from file moves and simplify grid display
+  * Fixed ERROR_NOT_SUPPORTED when copying files with NTFS extended attributes
+  * Fixed error during process initialization while connecting with quick launch
+  * Avoid redundant file reopen when setting file times during copy
+  * Set working directory to match FFS configuration file when double-clicking (Linux)
+</comment>
+    <requestid>1112735</requestid>
+  </revision>
 </revisionlist>
