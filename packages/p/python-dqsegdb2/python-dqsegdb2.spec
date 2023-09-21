@@ -21,7 +21,7 @@
 
 %global modname dqsegdb2
 Name:           python-dqsegdb2
-Version:        1.1.4
+Version:        1.2.1
 Release:        0
 Summary:        Simplified python interface to the DQSEGDB API
 License:        GPL-3.0-only
@@ -60,7 +60,8 @@ requests to DQSEGDB.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test_query requires network
+%pytest -k 'not test_query'
 
 %files %{python_files}
 %doc README.md
