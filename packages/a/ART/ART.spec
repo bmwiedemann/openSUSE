@@ -26,7 +26,11 @@ Source:         https://bitbucket.org/agriggio/art/downloads/%{name}-%{version}.
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+%if 0%{?suse_version} < 1590
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  glibmm2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
@@ -86,6 +90,11 @@ export CC=gcc
 export CXX=gcc
 
 %cmake \
+%if 0%{?suse_version} < 1590
+    -DCMAKE_CXX_COMPILER=%{_bindir}/g++-11 \
+%else
+    -DCMAKE_CXX_COMPILER=%{_bindir}/g++ \
+%endif
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
     -DCMAKE_C_FLAGS="$CFLAGS" \
