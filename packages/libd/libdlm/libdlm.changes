@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Sep 20 02:59:00 UTC 2023 - heming.zhao@suse.com
+
+- update libdlm to latest code (e5ca08c20e6f) (jsc#PED-6362)
+  * remove patches which replaced by upstream patch
+    - 0007-Revert-treewide-add-fcf-protection-full-to-CFLAGS.patch
+
+  * change patch name
+    - 0006-dlm_controld-remove-unnecessary-header-include.patch
+    + bug-1212767-dlm_controld-remove-unnecessary-header-include.patch
+
+  * add upstream patch
+    + 0001-Revert-treewide-add-fcf-protection-full-to-CFLAGS.patch
+    + 0002-dlm_controld-increase-uevent-recv-buffer.patch
+    + 0003-dlm_controld-constify-lsnames.patch
+    + 0004-dlm_controld-better-uevent-filtering.patch
+    + 0005-libdlm_lt-fix-pc-file.patch
+    + 0006-dlm_tool-add-fail-functionality-if-dump-failed.patch
+    + 0007-dlm_controld-always-create-logdir.patch
+    + 0008-dlm_controld-move-processing-of-saved-messages-to-pl.patch
+    + 0009-dlm_controld-remove-ls-parameter.patch
+    + 0010-dlm_controld-constify-timeval-of-dt_usec.patch
+    + 0011-dlm_controld-add-gcc-format-printf-attribute-to-log_.patch
+    + 0012-dlm_controld-use-write_result.patch
+    + 0013-dlm_controld-be-sure-we-stop-lockspaces-before-shutd.patch
+    + 0014-dlm_controld-constify-name_in-in-log_level.patch
+    + 0015-dlm_controld-initialize-waiter-flags.patch
+    + 0016-dlm_controld-get-rid-of-unnecessary-memset.patch
+    + 0017-dlm_controld-remove-unnecessary-list_empty-check.patch
+    + 0018-dlm_controld-set-posix_lock-flags-to-zero.patch
+    + 0019-dlm_controld-init-plocks_data-to-zero.patch
+    + 0020-dlm_tool-fix-missing-fclose-calls.patch
+
+  * WHAT'S NEW for this update
+    + dlm_tool: fix missing fclose calls
+    + dlm_controld: init plocks_data to zero
+    + dlm_controld: set posix_lock flags to zero
+    + dlm_controld: remove unnecessary list_empty check
+    + dlm_controld: get rid of unnecessary memset
+    + dlm_controld: initialize waiter->flags
+    + dlm_controld: be sure we stop lockspaces before shutdown
+    + dlm_controld: use write_result()
+    + dlm_controld: remove ls parameter
+    + dlm_controld: move processing of saved messages to plock level
+    + dlm_controld: always create logdir
+    + dlm_tool: add fail functionality if dump failed
+    + libdlm_lt: fix pc file
+    + dlm_controld: better uevent filtering
+    + dlm_controld: increase uevent recv buffer
+
+-------------------------------------------------------------------
 Tue Jun 27 12:44:30 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update to v4.2.0 
