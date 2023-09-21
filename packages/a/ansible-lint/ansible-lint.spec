@@ -40,7 +40,7 @@
 %global lib_name ansiblelint
 %{?python_enable_dependency_generator}
 Name:           ansible-lint
-Version:        6.19.0
+Version:        6.20.0
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -55,7 +55,7 @@ BuildRequires:  fdupes
 
 # SECTION tests
 BuildRequires:  %{ansible_python}-flaky >= 3.7.0
-BuildRequires:  %{ansible_python}-pytest
+BuildRequires:  %{ansible_python}-pytest >= 7.2.2
 BuildRequires:  %{ansible_python}-pytest-cov
 BuildRequires:  %{ansible_python}-pytest-xdist >= 2.1.0
 BuildRequires:  %{ansible_python}-psutil
@@ -90,7 +90,7 @@ Requires:       ansible-core >= 2.15.0
 Requires:       %{ansible_python}-ansible-compat >= 4.1.10
 Requires:       %{ansible_python}-black >= 22.8.0
 Requires:       %{ansible_python}-bracex >= 2.2.1
-Requires:       %{ansible_python}-enrich >= 1.2.6
+Requires:       %{ansible_python}-enrich >= 1.2.7
 Requires:       %{ansible_python}-filelock  >= 3.3.0
 Requires:       %{ansible_python}-jsonschema >= 4.17.3
 Requires:       %{ansible_python}-packaging >= 23.1
