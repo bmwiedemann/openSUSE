@@ -1,0 +1,11 @@
+--- Telegram/lib_base/base/platform/linux/base_network_reachability_linux.cpp.orig	2023-08-31 20:40:42.000000000 +0200
++++ Telegram/lib_base/base/platform/linux/base_network_reachability_linux.cpp	2023-09-13 17:12:47.816243460 +0200
+@@ -20,7 +20,7 @@ public:
+ 	, _available(_monitor->get_network_available()) {
+ 		_monitor->property_network_available(
+ 		).signal_changed(
+-		).connect(sigc::track_object([=] {
++		).connect(sigc::track_obj([=] {
+ 			_available = _monitor->get_network_available();
+ 		}, *this));
+ 	}

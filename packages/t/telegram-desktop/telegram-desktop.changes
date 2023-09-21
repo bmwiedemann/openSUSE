@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Wed Sep 20 10:20:01 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to 4.9.9.
+  * Add support for Emoji 15.
+  * Several crash fixes.
+
+-------------------------------------------------------------------
+Sun Sep 17 08:13:52 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to 4.9.8.
+  * Fix t.me/botname?startapp=token deeplinks.
+  * Fix a possible crash in media viewer on Wayland.
+
+-------------------------------------------------------------------
+Thu Sep 14 13:56:41 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Require the same version of glib2 used to *build* the package
+
+-------------------------------------------------------------------
+Thu Sep 14 08:00:16 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to 4.9.7.
+  * Fix direct bot web app links handling.
+  * Close main menu when opening a web app.
+  * Bump libwebp revision.
+
+- Updated to 4.9.6.
+  * Some bot web-app improvements.
+  * Bug fixes and other minor improvements.
+
+- Update 0002-use-bundled-rnnoise-expected-gsl-ranges-webrtc.patch
+
+-------------------------------------------------------------------
+Thu Sep 14 06:11:12 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Requires glib-2.0 >= 2.77
+- Requires glibmm-2.68 >= 2.77
+
+-------------------------------------------------------------------
+Wed Sep 13 15:33:25 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to 4.9.5.
+  * Several new bot web-app features.
+  * Bug fixes and other minor improvements.
+- Update tg_owt-master.zip
+- Add 0006-sigc-track_obj.patch
+- Relax usage of openssl versions
+
+- Updated to 4.9.4.
+  * Default private chats / groups / channels notification settings.
+  * Forwarded / reply-to-a-story icon in chats list message preview.
+  * Bug fixes and other minor improvements.
+
+- Updated to 4.9.3.
+  * Fix audio output on macOS.
+
+- Updated to 4.9.2.
+  * Remove single recently used emoji or reset the list from context menu.
+  * Change all emoji skin colors from Emoji & People section.
+  * Connected Websites section in Settings > Advanced.
+  * Bug fixes and other minor improvements.
+
+- Updated to 4.9.1.
+  * Fix a crash in reply area ripple animation.
+  * Fix a crash on start in some Linux distributions.
+
+- Updated to 4.9.0.
+  * Gradual stories rollout.
+
+- Updated to 4.8.12.
+  * Fix crash by a full rebuild on macOS.
+
+- Updated to 4.8.11.
+  * Fix initial video playback speed.
+  * Use native window resize on Windows 11.
+  * Fix memory leak in Direct3D 11 media viewer on Windows.
+
+- Updated to 4.8.10.
+  * Send story sharing comments as separate messages.
+  * Fix stories explanation tooltip ordering.
+
+- Updated to 4.8.9.
+  * Bug fixes and other minor improvements.
+
+- Updated to 4.8.8.
+  * Several crash fixes and story viewer improvements.
+
+- Updated to 4.8.7.
+  * Several crash fixes and small stories improvements.
+
+- Updated to 4.8.6.
+  * Fix langpack keys by a full rebuild on macOS.
+
+- Updated to 4.8.5.
+  * Bug fixes and other minor improvements. And stories preview.
+
+-------------------------------------------------------------------
 Tue Aug 15 14:08:09 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Rectify build requirements for the upcoming openSUSE Leap 15.6

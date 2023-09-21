@@ -26,13 +26,6 @@
 # gcc10 or higher is required
 %if 0%{?suse_version} && ( 0%{?suse_version} < 1500 || ( 0%{?is_opensuse} && 0%{?suse_version} == 1500 && 0%{?sle_version} && 0%{?sle_version} <= 150600 ) )
 %bcond_without  compiler_upgrade
-%else
-%if 0%{?suse_version} > 01500
-# gcc13 is too new on Tumbleweed
-%bcond_without  compiler_downgrade
-%else
-%bcond_with     compiler_upgrade
-%endif
 %endif
 
 %define _dwz_low_mem_die_limit  40000000
@@ -41,7 +34,7 @@
 %define qt_major_version 6
 
 Name:           telegram-desktop
-Version:        4.8.4
+Version:        4.9.9
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -70,6 +63,7 @@ Patch4:         0004-use-dynamic-x-libraries.patch
 # that would affect all ILP32 platforms.
 # PATCH-FIX-OPENSUSE
 Patch5:         0005-qt6-fixes.patch
+Patch6:         0006-sigc-track_obj.patch
 ExcludeArch:    %ix86 aarch64_ilp32 ppc riscv32
 BuildRequires:  appstream-glib
 BuildRequires:  chrpath
@@ -132,15 +126,14 @@ BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-qtwayland-private-headers-devel
 BuildRequires:  pkgconfig(dbusmenu-qt%{qt_major_version})
 %endif
-BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.76
-BuildRequires:  pkgconfig(glibmm-2.68) >= 2.76
+BuildRequires:  pkgconfig(glib-2.0) >= 2.77
+BuildRequires:  pkgconfig(glibmm-2.68) >= 2.77
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(harfbuzz)
@@ -170,6 +163,7 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(mtdev)
 BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(opusurl)
@@ -205,6 +199,8 @@ BuildRequires:  pkgconfig(zlib)
 # Runtime requirements
 Requires:       hicolor-icon-theme
 Requires:       icu
+# Require the same version of glib2 used to *build* the package:
+Requires:       glib2 >= 2.77
 %if %{qt_major_version} >= 6
 Requires:       qt%{qt_major_version}-imageformats
 Recommends:     qt%{qt_major_version}-wayland
@@ -229,6 +225,7 @@ The service also provides APIs to independent developers.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p0
+%patch6 -p0
 mkdir ../Libraries
 
 # If not TW, unpack rnnoise source
@@ -324,6 +321,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.metainf
 %doc README.md changelog.txt
 %{_bindir}/%{name}
 %{_datadir}/applications/*.desktop
+%{_datadir}/dbus-1/services/org.telegram.desktop.service
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/metainfo/*.metainfo.xml
 
