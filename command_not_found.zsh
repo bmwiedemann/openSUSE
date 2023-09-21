@@ -5,10 +5,10 @@
 #  - one to be generic command_not_found_handler() and to be hooked
 #  - one to be available when command_not_found_handler() is redefined
 function command_not_found_handler cnf_handler {
-    if [ -x /usr/bin/cnf-rs ]; then
+    if [ -x /usr/bin/cnf ]; then
         # take first parameter and remove quotes if there were any so
         # $ 'foo'
         # will search for foo
-        /usr/bin/cnf-rs "${(Q)1}"
+        /usr/bin/cnf "${(Q)1}"
     fi
 }

@@ -19,4 +19,14 @@
   * moved scout Obsoletes from bash/zsh subpackages to main one</comment>
     <requestid>1112082</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>19890d814c94cf4caeff7382ff1dad1d</srcmd5>
+    <version>0.5.2~0</version>
+    <time>1695327196</time>
+    <user>anag+factory</user>
+    <comment>- install binary as /usr/bin/cnf
+  * openQA fail boo#1215546
+  * https://github.com/vyskocilm/cnf-rs/issues/21</comment>
+    <requestid>1112720</requestid>
+  </revision>
 </revisionlist>

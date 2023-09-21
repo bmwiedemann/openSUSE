@@ -137,9 +137,13 @@ install -D -m 644 %{SOURCE2} .cargo/config
 # using cargo_install (only supports bindir)
 %{cargo_install}
 
+# https://github.com/vyskocilm/cnf-rs/issues/21
+# the cnf-rs naming is unfortunate and as this replaces the old cout package, install it as cnf
+mv %{buildroot}%{_bindir}/%{name} %{buildroot}%{_bindir}/cnf
+
 # https://bugzilla.opensuse.org/show_bug.cgi?id=1215428#c2
 # fish, quite unfortunatelly, depends on a /usr/bin/command-not-found beeing present
-ln -sfr %{buildroot}/%{_bindir}/cnf-rs %{buildroot}/%{_bindir}/command-not-found
+ln -sfr %{buildroot}/%{_bindir}/cnf %{buildroot}/%{_bindir}/command-not-found
 
 # shell integrations
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysconfdir}/bash_command_not_found
@@ -161,7 +165,7 @@ install -D -m 0644 cnf-rs.1 %{buildroot}%{_mandir}/man1/%{name}.1
 %files
 %license LICENSE
 %doc README.md
-%attr(0755,root,root) %{_bindir}/cnf-rs
+%attr(0755,root,root) %{_bindir}/cnf
 %{_bindir}/command-not-found
 %{_mandir}/man1/cnf-rs*
 

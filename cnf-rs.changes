@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 21 08:03:43 UTC 2023 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- install binary as /usr/bin/cnf
+  * openQA fail boo#1215546
+  * https://github.com/vyskocilm/cnf-rs/issues/21
+
+-------------------------------------------------------------------
 Mon Sep 18 20:57:00 UTC 2023 - Michal Vyskocil <michal.vyskocil@gmail.com>
 
 - add Obsoletes back to please the Factory staginh installcheck 

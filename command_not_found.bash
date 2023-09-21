@@ -5,7 +5,7 @@ command_not_found_handle() {
     #FIXME: locales
     #export TEXTDOMAINDIR=/usr/share/locale
     #export TEXTDOMAIN=command-not-found
-    local cnf_bin=${COMMAND_NOT_FOUND_BIN:-/usr/bin/cnf-rs}
+    local cnf_bin=${COMMAND_NOT_FOUND_BIN:-/usr/bin/cnf}
 
     local cmd state rest
     local -i pid ppid pgrp session tty_nr tpgid
