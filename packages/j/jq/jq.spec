@@ -1,7 +1,7 @@
 #
 # spec file for package jq
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,23 @@
 
 
 Name:           jq
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        A lightweight and flexible command-line JSON processor
 License:        CC-BY-3.0 AND MIT
 Group:          Productivity/Text/Utilities
-URL:            https://stedolan.github.io/jq/
-Source:         https://github.com/stedolan/jq/releases/download/jq-%{version}/jq-%{version}.tar.gz
+URL:            https://github.com/jqlang
+Source:         https://github.com/jqlang/jq/archive/refs/tags/jq-%{version}/jq-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  chrpath
-BuildRequires:  flex
+BuildRequires:  libtool
+#BuildRequires:  flex
 BuildRequires:  oniguruma-devel
+Requires:       libjq1 = %{version}
 %ifnarch riscv64
 BuildRequires:  valgrind
 %endif
-Requires:       libjq1 = %{version}
 
 %description
 A lightweight and flexible command-line JSON processor. jq is like sed for
@@ -54,16 +57,17 @@ Requires:       libjq1 = %{version}
 Development files (headers and libraries for jq).
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{name}-%{version}
 
 %build
+autoreconf -fiv
 %configure \
   --disable-static \
 %ifarch riscv64
   --disable-valgrind \
 %endif
   --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -79,7 +83,7 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 
 %check
 %if "%{qemu_user_space_build}" == "0"
-make %{?_smp_mflags} check
+%make_build check
 %endif
 
 %post -n libjq1 -p /sbin/ldconfig
@@ -87,7 +91,7 @@ make %{?_smp_mflags} check
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README.md
+%doc AUTHORS ChangeLog NEWS.md README.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
@@ -98,5 +102,6 @@ make %{?_smp_mflags} check
 %{_includedir}/jq.h
 %{_includedir}/jv.h
 %{_libdir}/libjq.so
+%{_libdir}/pkgconfig/libjq.pc
 
 %changelog

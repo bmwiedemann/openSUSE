@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Sep  7 13:42:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7
+  * Make object key color configurable using JQ_COLORS environment
+    variable.
+  * Change the default color of null to Bright Black.
+  * Respect NO_COLOR environment variable to disable color output.
+  * Improved --help output. Now mentions all options and nicer
+    order.
+  * Fix multiple issues of exit code using --exit-code/-e option.
+  * Add --raw-output0 for NUL (zero byte) separated output.
+  * Fix assert crash and validate JSON for --jsonarg.
+  * Remove deprecated --argfile option.
+  Language changes
+  * Use decimal number literals to preserve precision. Comparison
+    operations respects precision but arithmetic operations might
+    truncate.
+  * Adds new builtin pick(stream) to emit a projection of the
+    input object or array.
+  * Adds new builtin debug(msgs) that works like debug but applies
+    a filter on the input before writing to stderr.
+  * Adds new builtin scan($re; $flags). Was documented but not
+    implemented.
+  * Adds new builtin abs to get absolute value. This potentially
+    allows the literal value of numbers to be preserved as length
+    and fabs convert to float.
+  * Allow if without else-branch. When skipped the else-branch
+    will be . (identity).
+  * Allow use of $binding as key in object literals.
+  * Allow dot between chained indexes when using .["index"]
+  * Allow dot for chained value iterator .[], .[]?
+  * Fix try/catch catches more than it should.
+  * Speed up and refactor some builtins, also remove
+    scalars_or_empty/0.
+  * Now halt and halt_error exit immediately instead of continuing
+    to the next input.
+  * Fix issue converting string to number after previous convert
+    error.
+  * Fix issue representing large numbers on some platforms causing
+    invalid JSON output.
+  * Fix deletion using assigning empty against arrays.
+  * Allow keywords to be used as binding name in more places.
+  * Allow using nan as NaN in JSON.
+  * Expose a module's function names in modulemeta.
+  * Fix contains/1 to handle strings with NUL.
+  * Fix stderr/0 to output raw text without any decoration.
+  * Fix nth/2 to emit empty on index out of range.
+  * Fix implode to not assert and instead replace invalid unicode
+    codepoints.
+  * Fix indices/1 and rindex/1 in case of overlapping matches in
+    strings.
+  * Fix sub/3 to resolve issues involving global search-and-replace
+    (gsub) operations.
+  * Fix empty regular expression matches.
+  * Fix overflow exception of the modulo operator.
+  * Fix string multiplication by 0 (and less than 1) to emit empty
+    string.
+  * Fix segfault when using libjq and threads.
+  * Fix constant folding of division and reminder with zero
+    divisor.
+  * Fix error/0, error/1 to throw null error.
+  * Simpler and faster transpose.
+  * Simple and efficient implementation of walk/1.
+  * Remove deprecated filters leaf_paths, recurse_down.
+- Adjust URL/Source - new upstream
+  https://github.com/stedolan/jq -> https://github.com/jqlang
+
+-------------------------------------------------------------------
 Fri Sep 23 16:16:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - build without valgrind on riscv64 - does not exist (yet)
