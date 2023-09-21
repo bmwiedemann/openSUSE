@@ -1,7 +1,7 @@
 #
 # spec file for package jrosetta
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           jrosetta
 Version:        1.0.4
 Release:        0
 Summary:        API and graphical components for console
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Libraries/Java
-Url:            http://dev.artenum.com/projects/JRosetta
+URL:            http://dev.artenum.com/projects/JRosetta
 Source0:        http://maven.artenum.com/content/groups/public/com/artenum/jrosetta/%{version}/jrosetta-%{version}-sources.jar
 Source1:        jrosetta-build-ant-1.0.4.tar.gz
 BuildRequires:  ant
