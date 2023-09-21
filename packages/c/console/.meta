@@ -1,8 +1,0 @@
-<package name="console" project="openSUSE:Factory">
-  <title>A simple user-friendly terminal emulator for the GNOME desktop</title>
-  <description>A simple user-friendly terminal emulator for the GNOME desktop.
-
-</description>
-  <devel project="GNOME:Factory" package="console"/>
-  <url>https://gitlab.gnome.org/GNOME/console</url>
-</package>
