@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Sep 20 05:57:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.11.2:
+  * Revert "fix: String additional empty line from generated
+    README.md"
+  * chore: update github actions to be able to reproduce using act
+  * chore: adding todo to refactor main test
+  * fix: removing goreleaser project env var to be able to test
+    locally
+  * fix: remove var env dependency by moving tests
+  * chore: change readme to trigger ci
+
+-------------------------------------------------------------------
+Wed Sep 20 05:44:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.11.1:
+  * chore: change readme to trigger ci
+  * Update pkg/helm/chart_info.go
+  * fix: change error to err to not conflict with builtin interface
+  * fix: update goreleaser and way to get env
+  * fix: update actions
+  * Fixed GoReleaser
+  * Fixing build
+  * Fixed deprecation
+  * Fixing GoReleaser deprecated action
+  * Introducing options from the CLI and unit test to confirm
+    strict linting of documentation comments
+  * fix: String additional empty line from generated README.md
+  * chore: updates example chart READMEs for v1.11.0
+
+-------------------------------------------------------------------
 Wed Jun 29 11:19:32 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.11.0:

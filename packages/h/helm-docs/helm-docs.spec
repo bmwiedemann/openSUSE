@@ -1,7 +1,7 @@
 #
 # spec file for package helm-docs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           helm-docs
-Version:        1.11.0
+Version:        1.11.2
 Release:        0
 Summary:        A tool for automatically generating markdown documentation for helm charts
 License:        GPL-3.0-only
