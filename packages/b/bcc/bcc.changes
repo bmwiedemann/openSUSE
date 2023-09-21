@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Sep 21 09:42:47 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Disable bcc-lua until luajit issue is resolved
+- Explicitly add python3-setuptools and zip as a build requirement
+- Update to version 0.28.0
+  + Support for kernel up to 6.3.
+  + new libbpf tool: tcppktlat.
+  + bcc tool updates: funcslower, wakeuptime, profile, offcputime, deadlock,
+    funccount, argdist, kvmexit, runqlen and cpuunclaimed.
+  + libbpf tool update: memleak, tcprtt, tcpconnlat, funclatency, syscount,
+    cpufreq, biosnoop.
+  + support ringbuf_query for bcc tools.
+  + handle '[uprobes]' memory mapped file properly during stack tracing.
+  + Fix maximum allowed index for print_linear_hist for bcc tools.
+  + add module kfunc/kretfunc support.
+  + clang rewriter: initialize only the requested parameters
+  + filter with available_filter_functions to make multi-functions kprobes more
+    robust for both bcc and libbpf tools.
+  + doc update, other bug fixes and tools improvement
+- Update to version 0.27.0
+  + Support for kernel up to 6.2
+  + bcc tool updates for ttysnoop, slabratetop, readahead, nfsslower, cpudist,
+    cachetop, cachestat, etc.
+  + libbpf-tools updates for mdflush, drsnoop, statsnoop, ttysnoop, softirqs,
+    wakeuptime, cachestat, numamove, etc.
+  + fix for incomplete static libraries
+  + implement zip archive support
+  + upgrade to use c++14 standard
+  + new libbpf-tools: memleak
+  + add loongarch support in libbpft-tools
+  + doc update, bug fixes and other tools improvement
+
+-------------------------------------------------------------------
 Wed Jan 11 07:07:28 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Force specific versioning of LLVM in preparation of Leap 15.5/SLES 15-SP5

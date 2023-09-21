@@ -16,15 +16,8 @@
 #
 
 
-%if 0%{?suse_version} > 1500
-%ifarch %ix86 x86_64
-%{!?with_lua: %global with_lua 1}
-%else
+# /usr/bin/luajit -bg bcc.lua bcc.o fails with "/usr/bin/luajit: unknown luaJIT command or jit.* modules not installed", temporarily disable it
 %{!?with_lua: %global with_lua 0}
-%endif
-%else
-%{!?with_lua: %global with_lua 0}
-%endif
 
 # Use the latest supported LLVM version, but Leap < 15.5 only has a slightly
 # older one so just use whatever version is available.
@@ -35,7 +28,7 @@
 %endif
 
 Name:           bcc
-Version:        0.26.0
+Version:        0.28.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
@@ -61,6 +54,8 @@ BuildRequires:  luajit-devel
 %endif
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
+BuildRequires:  python3-setuptools
+BuildRequires:  zip
 
 %description
 BCC is a toolkit for creating efficient kernel tracing and manipulation
