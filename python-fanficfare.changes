@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Sep 21 06:13:12 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.27.0:
+  - AO3: Real fix for adult string change, revert earlier attempted fixes.
+- Update to 4.26.1:
+  - Fix for extratags not being picked up by include_in_subjects
+- Update to 4.26.0:
+  - adapter_royalroadcom: user found a story with no chapters
+  - base_efiction: .string -> stripHTML for nested tags Closes
+    #984
+  - Fix fanfiktionde status parsing #980 - thanks, burny2!
+  - AO3: Make subscribed, markedforlater True/False to match
+    bookmarked/bookmarkprivate/bookmarkrec
+  - Add title replace_metadata(commented) for literotica Ch/Pt
+    titles
+  - AO3: Add subscribed, markedforlater
+  - Filter cookies for flaresolverr
+  - Add _LIST option to
+    include_subject_tags(/extra_subject_tags), refactor
+  - AO3 fix for protected email addr in chapter name breaking
+    chapter datetime
+  - Fix for #979, AO3 Get URLs from Page
+  - adapter_storiesofardacom: Fix for detecting adult question on
+    indiv chapters.
+  - New Site: sunnydaleafterdark.com, thanks inklesspen!
+  - Add anthology_merge_keepsingletocs option, requires new
+    EpubMerge.
+  - Apply mark_new_chapters to new story chapters in
+    Anthologies. #977
+  - Allow mark_new_chapters when 1 chapter in case it changes.
+  - Increase sleep times between cache checks using
+    open_pages_in_browser.
+  - adapter_literotica: 'Fix' clean_chapter_titles for titles
+    ending with Pt or Ch
+  - Fix for ficbook.net date change. Closes #973
+
+-------------------------------------------------------------------
 Tue Jul 11 19:41:34 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.25.0:
