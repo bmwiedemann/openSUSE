@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-jmespath
 Version:        1.0.1
 Release:        0

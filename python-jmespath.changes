@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 14:05:39 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Feb 10 09:10:10 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - We actually don't need simplejson at all, it is just for 2.6
