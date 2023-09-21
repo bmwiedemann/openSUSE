@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 20 05:56:41 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.4.1:
+  * Fix handling of links.
+
+-------------------------------------------------------------------
 Sat Jul 15 22:25:26 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
 - Fix build by adding libcurl to BuildRequires

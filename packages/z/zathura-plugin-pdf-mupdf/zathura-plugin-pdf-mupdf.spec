@@ -18,7 +18,7 @@
 
 %define realname zathura-pdf-mupdf
 Name:           zathura-plugin-pdf-mupdf
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Zathura PDF support through MuPDF
 License:        Zlib
