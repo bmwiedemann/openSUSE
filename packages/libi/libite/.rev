@@ -90,4 +90,12 @@
   * `copyfile()` does not properly create destination dir</comment>
     <requestid>1083360</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0edc9395b2b266803ab993627f4878da</srcmd5>
+    <version>2.6.0</version>
+    <time>1695327245</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112555</requestid>
+  </revision>
 </revisionlist>
