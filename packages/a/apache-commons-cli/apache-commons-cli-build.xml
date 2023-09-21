@@ -43,10 +43,10 @@
            debug="true" 
            optimize="false" 
            deprecation="true" 
-           target="7" 
+           target="8" 
            verbose="false" 
            fork="false" 
-           source="7">
+           source="8">
       <src>
         <pathelement location="${build.srcDir}"/>
       </src>
@@ -85,7 +85,7 @@
              nonavbar="false" 
              serialwarn="false" 
              charset="ISO-8859-1" 
-             source="7" 
+             source="8" 
              linksource="true" 
              breakiterator="false">
       <link href="http://java.sun.com/javase/7/docs/api/"/>
