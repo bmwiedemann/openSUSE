@@ -237,4 +237,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1096599 from glaubitz)</comment>
     <requestid>1096628</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6c984816448f1b273dfb25422ab4b95b</srcmd5>
+    <version>0.1.0b3096118</version>
+    <time>1695327230</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 0.1.0b3096118
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1112512 from glaubitz)</comment>
+    <requestid>1112526</requestid>
+  </revision>
 </revisionlist>
