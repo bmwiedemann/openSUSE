@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>1077255</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>306f79cda067e2976b3f31de3b348795</srcmd5>
+    <version>2.0.1</version>
+    <time>1695327240</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.1:
+  * More robust handling of tags
+
+- require changelog-generator-data
+- require rubygem-changelog_generator</comment>
+    <requestid>1112561</requestid>
+  </revision>
 </revisionlist>
