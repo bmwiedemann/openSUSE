@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 21 09:22:22 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Apply "CVE-2023-38745.patch" to complete the fix of the arbitrary
+  file write issue discovered earlier. The previous patch did not
+  cover all attack vectors. [bsc#1213622, CVE-2023-38745]
+
+-------------------------------------------------------------------
 Fri Jul 14 18:45:26 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Apply "CVE-2023-35936.patch" to fix an arbitrary file write issue

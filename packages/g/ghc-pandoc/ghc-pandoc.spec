@@ -27,6 +27,7 @@ License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 Patch1:         CVE-2023-35936.patch
+Patch2:         CVE-2023-38745.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Glob-devel
 BuildRequires:  ghc-Glob-prof
