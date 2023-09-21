@@ -350,4 +350,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1100364 from glaubitz)</comment>
     <requestid>1100386</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e096e3f6d1a31ddff0460f8b3d9812c1</srcmd5>
+    <version>30.2.0</version>
+    <time>1695327232</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 30.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1112501 from glaubitz)</comment>
+    <requestid>1112528</requestid>
+  </revision>
 </revisionlist>
