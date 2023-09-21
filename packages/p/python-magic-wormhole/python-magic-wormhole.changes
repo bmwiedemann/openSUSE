@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 19 10:58:25 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.13.0
+- drop python-magic-wormhole-no-mock.patch
+ + Python 2.7 support is dropped
+ + Python 3.5 and 3.6 are past their EOL date and support is droppe
+ + SECURITY: Replace "weird" characters in receiver's display
+ + SECURITY: all past binary signatures are now in Git
+ + Use the HKDF primitive from "cryptography"
+ + wormhole receive now accepts --allocate-code so that a sender can use --code to send them a file
+ + Stream to disk after 10MB on directory receive
+ + Handle SSH keys with comments properly
+ + Properly parse IPv6 Transit address
+
+-------------------------------------------------------------------
 Fri Oct  7 10:43:17 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use %pytest macro instead of plain pytest command for testing
