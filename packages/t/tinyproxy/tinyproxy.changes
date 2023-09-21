@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 21 01:54:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- The %pre scriptlet exercises shadow, so add a Requires for it.
+
+-------------------------------------------------------------------
 Wed Oct  5 18:21:13 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Ship COPYING file

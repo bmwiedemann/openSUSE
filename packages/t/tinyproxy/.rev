@@ -123,4 +123,14 @@
     <comment>- Ship COPYING file</comment>
     <requestid>1008285</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>209f62349332719cc1d61d9d8f4e1b59</srcmd5>
+    <version>1.11.1</version>
+    <time>1695327723</time>
+    <user>anag+factory</user>
+    <comment>resolve build failure
+
+- The %pre scriptlet exercises shadow, so add a Requires for it.</comment>
+    <requestid>1112659</requestid>
+  </revision>
 </revisionlist>

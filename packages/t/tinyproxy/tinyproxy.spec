@@ -1,7 +1,7 @@
 #
 # spec file for package tinyproxy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Patch1:         0001-prevent-junk-from-showing-up-in-error-page-in-invali.patch
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 Requires:       logrotate
+Requires(pre):  shadow
 
 %description
 Tinyproxy is a light-weight HTTP/HTTPS proxy daemon for POSIX
