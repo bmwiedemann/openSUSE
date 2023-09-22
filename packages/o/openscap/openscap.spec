@@ -23,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openscap
-Version:        1.3.8
+Version:        1.3.9
 Release:        0
 Summary:        A Set of Libraries for Integration with SCAP
 License:        LGPL-2.1-or-later
@@ -69,7 +69,6 @@ BuildRequires:  libxslt-devel
 BuildRequires:  libyaml-devel
 BuildRequires:  lua
 BuildRequires:  openldap2-devel
-BuildRequires:  pcre-devel
 BuildRequires:  perl-XML-Parser
 BuildRequires:  perl-XML-XPath
 BuildRequires:  pkgconfig
@@ -85,6 +84,7 @@ BuildRequires:  xmlsec1-devel
 BuildRequires:  xmlsec1-openssl-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(systemd)
 # remove extra packages from version 1.2.9 and older
 Obsoletes:      openscap-engine-sce < %{version}
@@ -184,11 +184,16 @@ This package contains the Script Checking Engine Library (SCE) for OpenSCAP.
 %autosetup -p1
 
 %build
-%if 0%{?with_bindings}
-%cmake -DENABLE_DOCS=TRUE -DCMAKE_SHARED_LINKER_FLAGS="" -DENABLE_OSCAP_REMEDIATE_SERVICE=TRUE
-%else
-%cmake -DENABLE_DOCS=TRUE -DENABLE_PYTHON3=FALSE -DENABLE_PERL=FALSE -DCMAKE_SHARED_LINKER_FLAGS="" -DENABLE_OSCAP_REMEDIATE_SERVICE=TRUE
+%cmake \
+	-DENABLE_DOCS=TRUE \
+	-DCMAKE_SHARED_LINKER_FLAGS="" \
+	-DENABLE_OSCAP_REMEDIATE_SERVICE=TRUE \
+	-DWITH_PCRE2=ON \
+%if !0%{?with_bindings}
+	-DENABLE_PYTHON3=FALSE \
+	-DENABLE_PERL=FALSE \
 %endif
+%{nil}
 %if 0%{?sle_version} > 150100 || 0%{?suse_version} == 1599
 %cmake_build
 %else
