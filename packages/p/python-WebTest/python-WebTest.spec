@@ -26,6 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://docs.pylonsproject.org/projects/webtest/
 Source:         https://files.pythonhosted.org/packages/source/W/WebTest/WebTest-%{version}.tar.gz
 Patch0:         sphinx-7-fix.patch
+# PATCH-FIX-UPSTREAM https://github.com/Pylons/webtest/commit/d82ec5bd2cf3c7109a1d49ad9fa802ae1eae1763 Replace deprecated unittest aliases for Python 3.12
+Patch1:         py312.patch
 BuildRequires:  %{python_module PasteDeploy}
 BuildRequires:  %{python_module WSGIProxy2}
 BuildRequires:  %{python_module WebOb >= 1.2}
@@ -62,8 +64,7 @@ Provides:       %{python_module WebTest-doc = %{version}}
 This package contains documentation files for %{name}.
 
 %prep
-%setup -q -n WebTest-%{version}
-%patch0 -p1
+%autosetup -p1 -n WebTest-%{version}
 
 %build
 %python_build
