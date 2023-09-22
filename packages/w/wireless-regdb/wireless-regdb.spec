@@ -16,6 +16,8 @@
 #
 
 
+%{?!_firmwaredir:%define _firmwaredir /lib/firmware}
+
 Name:           wireless-regdb
 Version:        20230901
 Release:        0

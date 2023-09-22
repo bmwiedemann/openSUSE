@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 18 10:24:11 UTC 2023 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Define %{_firmwaredir} if not defined. This fixes RPM build errors.
+
+-------------------------------------------------------------------
 Thu Sep  7 08:26:03 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20230901:

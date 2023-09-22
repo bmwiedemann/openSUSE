@@ -595,4 +595,12 @@ The license in the LICENSE file is ISC, not MIT (http://www.spdx.org/licenses/IS
   * wireless-regdb: Update regulatory rules for Australia (AU) for June 2023</comment>
     <requestid>1109459</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>c4b84bdba87568fa7ea5f7dbbe2e3a7f</srcmd5>
+    <version>20230901</version>
+    <time>1695412015</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112062</requestid>
+  </revision>
 </revisionlist>
