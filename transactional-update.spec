@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -306,7 +306,7 @@ done
 %license COPYING gpl-2.0.txt
 %{_sbindir}/tukitd
 %{_unitdir}/tukitd.service
-%{_prefix}/share/dbus-1/system-services/tukitd.d-bus.service
+%{_prefix}/share/dbus-1/system-services/org.opensuse.tukit.service
 %{_prefix}/share/dbus-1/system.d/org.opensuse.tukit.conf
 %{_prefix}/share/dbus-1/interfaces/org.opensuse.tukit.Snapshot.xml
 %{_prefix}/share/dbus-1/interfaces/org.opensuse.tukit.Transaction.xml
