@@ -212,4 +212,12 @@
     <comment>2.0.3</comment>
     <requestid>1086861</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>fadbc5b988476d17b4c8e6e8e8ba7a7b</srcmd5>
+    <version>2.0.3</version>
+    <time>1695412042</time>
+    <user>anag+factory</user>
+    <comment>fix build with java &gt;= 20</comment>
+    <requestid>1112746</requestid>
+  </revision>
 </revisionlist>
