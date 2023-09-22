@@ -308,4 +308,12 @@
   * osc reports service mode disabled as obsolete (forwarded request 1104490 from jfkw)</comment>
     <requestid>1104492</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5cf902e9bdc2aa5324edad5252e05c98</srcmd5>
+    <version>2.7.4</version>
+    <time>1695412214</time>
+    <user>anag+factory</user>
+    <comment>Switch to sysusers</comment>
+    <requestid>1113040</requestid>
+  </revision>
 </revisionlist>

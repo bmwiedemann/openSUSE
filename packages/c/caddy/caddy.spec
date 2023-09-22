@@ -40,10 +40,13 @@ Source3:        caddy.service
 Source4:        index.html
 Source5:        bash-completion
 Source6:        zsh-completion
+Source7:        caddy.sysusers
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  golang(API) >= 1.20
 %{?systemd_requires}
+%{sysusers_requires}
 %{go_provides}
 # Make sure that the binary is not getting stripped.
 %{go_nostrip}
@@ -68,6 +71,8 @@ CGO_ENABLED=0
 
 go build -v -buildmode=pie -mod=vendor -ldflags "-s -w" -o caddy cmd/caddy/main.go
 
+%sysusers_generate_pre %{SOURCE7} %{name} %{name}.conf
+
 %install
 install -d %{buildroot}/%{_sbindir}
 install -D -p -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
@@ -78,6 +83,7 @@ install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/Caddyfile
 # service
 install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+install -Dpm0644 %{SOURCE7} %{buildroot}%{_sysusersdir}/%{name}.conf
 
 # data directory
 install -d -m 0750 %{buildroot}%{_sharedstatedir}/%{name}
@@ -89,9 +95,7 @@ install -D -p -m 0644 %{SOURCE4} %{buildroot}%{_datadir}/%{name}/index.html
 install -D -p -m 0644 %{SOURCE5} %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 install -D -p -m 0644 %{SOURCE6} %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
-%pre
-getent group %{name} >/dev/null || %{_sbindir}/groupadd -r %{name}
-getent passwd %{name} >/dev/null || %{_sbindir}/useradd -r -g %{name} -d %{_sharedstatedir}/%{name} -s /bin/false -c "Caddy web server" %{name}
+%pre -f %{name}.pre
 %service_add_pre %{name}.service
 
 %post
@@ -109,10 +113,9 @@ getent passwd %{name} >/dev/null || %{_sbindir}/useradd -r -g %{name} -d %{_shar
 %doc AUTHORS README.md
 %{_bindir}/%{name}
 %{_datadir}/%{name}
-
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
-
+%{_sysusersdir}/%{name}.conf
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/Caddyfile
 %attr(0750,%{name},%{name}) %dir %{_sharedstatedir}/%{name}

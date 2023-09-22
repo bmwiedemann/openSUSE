@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 21 14:20:37 UTC 2023 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Switch to sysuser for user setup
+
+-------------------------------------------------------------------
 Thu Aug 17 22:55:36 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 2.7.4:
