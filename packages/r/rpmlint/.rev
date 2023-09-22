@@ -4536,4 +4536,66 @@ oddjob-gpupdate isn't blocked)</comment>
   * Move metadata from setup.py to pyproject.toml</comment>
     <requestid>1104675</requestid>
   </revision>
+  <revision rev="455" vrev="1">
+    <srcmd5>7c863019765efa0d4ca70e0e752770b3</srcmd5>
+    <version>2.4.0+git20230918.4498739</version>
+    <time>1695412010</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.4.0+git20230918.4498739:
+  * dbus-services: sddm-qt6 whitelisting (bsc#1215441)
+- Update to version 2.4.0+git20230918.02ed553:
+  * Fix time report function output string creation
+- Update to version 2.4.0+git20230915.acb9f8b2:
+  * polkit, sudoers whitelist: add gnome-branding-Aeon (bsc#1215276)
+- Update to version 2.4.0+git20230915.ac23757:
+  * dbus-services: update tukitd (bsc#1215216)
+  * FileDigestCheck: do not use hash as variable name
+  * FileDigestCheck: Adapt fstrings to python3.12 check
+  * test: Remove real_files opotional parameter
+  * Add 'nats' user for NATS Server
+  * Add 'signaling' user for Nextcloud Talk Signaling Server
+  * Add 'otobo' user and group, successor app for OTRS
+  * PythonCheck: Add python-sphinx-doctrees-leftover
+  * test: Allow external file content definition
+  * test: Allow list of files in get_tested_mock_package
+  * test: add test documentation
+  * test: each file now default to empty content
+  * test: mocked test_config_files
+  * test: mocked newly added multiple-pyc-version tests
+  * test: mocked test_duplicates tests
+  * Refactored FakePkg with a new helper method for cleaner code in get_tested_mock_package
+  * moved _gather_dep_info and _gather_aux to AbstractPkg
+  * CI: removed GSoC23 branch for CI workflow
+  * test: mocked python dependencies leftovers; and removed 2 binaries
+  * copied _gather_deps_info and _gather_aux functions to FakePkg class
+  * test: mocked test_python_dependencies_missing; also removed its two rpm binaries
+  * test: removed binaries used for testing python package dependencies from metadata and requires.txt
+  * test: mocked another metadata test that supports complex dependency statements
+  * test: mocked test for metadata check in python package
+  * test: mocked complex dependencies from metadata
+  * test: mocked test for python dependencies from requires.txt
+  * test: mocked test for python dependencies from metadata
+  * modified if condition in add_file_with_content function
+  * test: distutil test for python packages is mocked
+  * tests: Refactored Python package tests using mocking for docs, src, and tests
+  * test: Remove binary RPM packages with Python docs and docs modules
+  * test: modified test_python_doc_module_in_package with mocking
+  * test: mocked test_python_doc_in_package
+  * flake8: fixed flake8 warnings
+  * Flake8 suggestion
+  * Update main.yml for GitHub Actions on branch GSoC23
+  * No need to import FakePkg
+  * changes as suggested
+  * As suggested, I have made changes to to get_tested_mock_package to use API, instead of just kwargs
+  * Tried to mock a test: test_binary.py
+  * CI: Use pipx to install external dependencies
+  * flake8: ignored double quotes with a comment
+  * flake8: remove double quotes
+  * add flake8 extra plugins
+  * Use python-magic API when available
+  * test: Skip test_executable_stack when ldd-failed
+  * PythonCheck: Add check for *.pyc different version
+</comment>
+    <requestid>1111991</requestid>
+  </revision>
 </revisionlist>
