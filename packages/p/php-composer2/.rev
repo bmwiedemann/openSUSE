@@ -244,4 +244,12 @@
   * Fixed authentication issue when downloading several files from private Bitbucket in parallel (#11464) (forwarded request 1101051 from Ishwon)</comment>
     <requestid>1105263</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>20c7e1e86ba257cc97ed0f30e119dcce</srcmd5>
+    <version>2.5.8</version>
+    <time>1695412183</time>
+    <user>anag+factory</user>
+    <comment>  * [bsc#1198494]</comment>
+    <requestid>1112968</requestid>
+  </revision>
 </revisionlist>
