@@ -1,6 +1,7 @@
 #
 # spec file for package python-pynxos
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017-2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,25 +17,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pynxos
 Version:        0.0.5
 Release:        0
 Summary:        A library for managing Cisco NX-OS devices through NX-API
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/networktocode/pynxos/
 Source:         pynxos-%{version}.tar.xz
+Patch0:         remove-future-requirement.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-future
 Requires:       python-requests
 Requires:       python-scp
 BuildArch:      noarch
 # SECTION test requirements
-#BuildRequires:  %%{python_module future}
-#BuildRequires:  %%{python_module mock}
 #BuildRequires:  %%{python_module pytest}
 #BuildRequires:  %%{python_module requests}
 #BuildRequires:  %%{python_module scp}
@@ -45,23 +44,23 @@ BuildArch:      noarch
 A library for managing Cisco NX-OS devices through NX-API
 
 %prep
-%setup -q -n pynxos-%{version}
+%autosetup -p1 -n pynxos-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # Tests are known to be broken - disable for now
 #%%pytest
 
-
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pynxos
+%{python_sitelib}/pynxos-%{version}.dist-info
 
 %changelog
