@@ -38,7 +38,6 @@ BuildRequires:  %{python_module pyOpenSSL >= 17.0.0}
 BuildRequires:  %{python_module pyasn1-modules}
 BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,7 +45,6 @@ Requires:       python-attrs >= 19.1.0
 Requires:       python-cryptography
 Requires:       python-pyasn1
 Requires:       python-pyasn1-modules
-Requires:       python-six
 Recommends:     python-idna
 Recommends:     python-pyOpenSSL
 BuildArch:      noarch
