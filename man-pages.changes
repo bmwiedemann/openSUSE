@@ -109,6 +109,7 @@ Mon Nov  2 08:57:55 UTC 2020 - pgajdos@suse.com
   http://linux-man-pages.blogspot.com/2020/11/man-pages-509-is-released.html
 - modified patches
   % man-pages-openat2.h-location.patch (refreshed)
+- [bsc#1185534]
 
 -------------------------------------------------------------------
 Thu Aug 13 12:46:18 UTC 2020 - pgajdos@suse.com
@@ -190,6 +191,7 @@ Wed Jun 10 06:37:13 UTC 2020 - pgajdos@suse.com
           Document /proc/sys/fs/aio-max-nr and /proc/sys/fs/aio-nr
 - deleted patches
   - man-pages-remove-ioctl_list-reference.patch (upstreamed)
+- jsc#SLE-16566 jsc#SLE-15188
 
 -------------------------------------------------------------------
 Tue Apr 14 07:52:12 UTC 2020 - pgajdos@suse.com
