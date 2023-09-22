@@ -1,0 +1,60 @@
+--- a/test/test.cmake	2022-06-17 19:46:18.000000000 +0200
++++ b/test/test.cmake	2022-08-30 12:26:32.563379100 +0200
+@@ -14,6 +14,7 @@
+ set(AOM_TEST_TEST_CMAKE_ 1)
+ 
+ include(ProcessorCount)
++find_package(PkgConfig REQUIRED)
+ 
+ include("${AOM_ROOT}/test/test_data_util.cmake")
+ 
+@@ -362,34 +363,21 @@
+     set(CMAKE_MACOSX_RPATH 1)
+   endif()
+ 
+-  add_library(
+-    aom_gtest STATIC
+-    "${AOM_ROOT}/third_party/googletest/src/googletest/src/gtest-all.cc")
+-  set_property(TARGET aom_gtest PROPERTY FOLDER ${AOM_IDE_TEST_FOLDER})
+-  target_include_directories(
+-    aom_gtest
+-    PUBLIC "${AOM_ROOT}/third_party/googletest/src/googletest/include"
+-    PRIVATE "${AOM_ROOT}/third_party/googletest/src/googletest")
+-
+-  # The definition of GTEST_HAS_PTHREAD must be public, since it's checked by
+-  # interface headers, not just by the implementation.
+-  if(NOT (MSVC OR WIN32))
+-    if(CONFIG_MULTITHREAD AND CMAKE_USE_PTHREADS_INIT)
+-      target_compile_definitions(aom_gtest PUBLIC GTEST_HAS_PTHREAD=1)
+-    else()
+-      target_compile_definitions(aom_gtest PUBLIC GTEST_HAS_PTHREAD=0)
+-    endif()
+-  endif()
+-
+-  add_library(
+-    aom_gmock STATIC
+-    "${AOM_ROOT}/third_party/googletest/src/googlemock/src/gmock-all.cc")
+-  set_property(TARGET aom_gmock PROPERTY FOLDER ${AOM_IDE_TEST_FOLDER})
+-  target_include_directories(
+-    aom_gmock
+-    PUBLIC "${AOM_ROOT}/third_party/googletest/src/googlemock/include"
+-    PRIVATE "${AOM_ROOT}/third_party/googletest/src/googlemock")
+-  target_link_libraries(aom_gmock ${AOM_LIB_LINK_TYPE} aom_gtest)
++  pkg_check_modules(gtest REQUIRED gtest)
++  add_library(aom_gtest INTERFACE)
++  target_link_libraries(aom_gtest INTERFACE ${gtest_LIBRARIES})
++  target_link_directories(aom_gtest INTERFACE ${gtest_LIBRARY_DIRS})
++  target_link_options(aom_gtest INTERFACE ${gtest_LDFLAGS_OTHER})
++  target_include_directories(aom_gtest INTERFACE ${gtest_INCLUDE_DIRS})
++  target_compile_options(aom_gtest INTERFACE ${gtest_CFLAGS_OTHER})
++
++  pkg_check_modules(gmock REQUIRED gmock)
++  add_library(aom_gmock INTERFACE)
++  target_link_libraries(aom_gmock INTERFACE ${gmock_LIBRARIES})
++  target_link_directories(aom_gmock INTERFACE ${gmock_LIBRARY_DIRS})
++  target_link_options(aom_gmock INTERFACE ${gmock_LDFLAGS_OTHER})
++  target_include_directories(aom_gmock INTERFACE ${gmock_INCLUDE_DIRS})
++  target_compile_options(aom_gmock INTERFACE ${gmock_CFLAGS_OTHER})
+ endif()
+ 
+ # Setup testdata download targets, test build targets, and test run targets. The

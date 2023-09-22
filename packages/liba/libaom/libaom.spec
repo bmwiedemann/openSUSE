@@ -15,33 +15,65 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == ""
+%define psuffix %{nil}
+%else
+%define psuffix -devel-doc
+%endif
 
 %define sover 3
 %define __builder ninja
 %define __builddir _build
-Name:           libaom
-Version:        3.6.1
+Name:           libaom%{psuffix}
+Version:        3.7.0
 Release:        0
+%if "%{flavor}" == ""
 Summary:        AV1 codec library
-License:        BSD-2-Clause
 Group:          Productivity/Multimedia/Other
+%endif
+%if "%{flavor}" == "doc"
+Summary:        Documentation for the libaom API
+Group:          Documentation/HTML
+BuildArch:      noarch
+%endif
+License:        BSD-2-Clause
 URL:            https://aomedia.googlesource.com/aom/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        libaom-%{version}.tar.xz
 Source99:       baselibs.conf
 Patch0:         libaom-0001-Do-not-disable-_FORTIFY_SOURCE.patch
+Patch1:         system-gtest.patch
+Patch2:         system-yuv.patch
 
-BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.6
+BuildRequires:  ninja
+BuildRequires:  c++_compiler
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libyuv)
+%ifarch x86_64 %ix86
+BuildRequires:  yasm
+%endif
+
+
+%if "%{flavor}" == "doc"
 BuildRequires:  doxygen
 BuildRequires:  graphviz
-BuildRequires:  ninja
-BuildRequires:  pkgconfig
-BuildRequires:  yasm
+BuildRequires:  graphviz-gnome
+%endif
+
 
 %description
+%if "%{flavor}" == ""
 This is a library for AOMedia Video 1 (AV1), an open, royalty-free
 video coding format designed for video transmissions over the Internet.
+%endif
+%if "%{flavor}" == "doc"
+This package contains the API documentation for libaom, a library
+for the AOMedia Video 1 (AV1) video coding format.
+%endif
 
+
+%if "%{flavor}" == ""
 %package -n %{name}%{sover}
 Summary:        AV1 codec library
 Group:          System/Libraries
@@ -53,20 +85,11 @@ video coding format designed for video transmissions over the Internet.
 %package devel
 Summary:        Development files for libaom, an AV1 codec library
 Group:          Development/Languages/C and C++
-Requires:       %{name}%{sover} = %{version}
+Requires:       %{name}%{sover}%{_isa} = %{version}
 
 %description devel
 This package contains the development headers and library files for
 libaom, a library for the AOMedia Video 1 (AV1) video coding format.
-
-%package devel-doc
-Summary:        Documentation for the libaom API
-Group:          Documentation/HTML
-BuildArch:      noarch
-
-%description devel-doc
-This package contains the API documentation for libaom, a library
-for the AOMedia Video 1 (AV1) video coding format.
 
 %package -n aom-tools
 Summary:        AV1 Codec Library Tools
@@ -75,39 +98,65 @@ Group:          Productivity/Multimedia/Other
 %description -n aom-tools
 This package contains tools included with libaom, a library for
 the AOMedia Video 1 (AV1) video coding format.
+%endif
 
 %prep
-%autosetup -p1
+%autosetup -n libaom-%{version} -p1
+# Remove vendored dependencies
+rm -rf third_party/{googletest,libyuv}
+sed -E -i 's|#include "third_party/googletest/src/googletest/include/([^"]*)"|#include <\1>|' test/*.{cc,h}
 
 %build
-
 %cmake \
+    -DAOM_AS_FLAGS=-gdwarf2 \
+%if "%{flavor}" == ""
+    -DENABLE_DOCS=OFF \
+%endif
+`# Do not build unit tests, they require non-free external files.` \
+    -DENABLE_TESTS=OFF \
+    -DENABLE_TESTDATA=OFF \
+\
 	-DCONFIG_LOWBITDEPTH=1 \
 	-DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
-%ifnarch aarch64 %{arm} %{ix86} x86_64
+%ifnarch aarch64 %arm %ix86 x86_64 %x86_64 ppc %power64
 	-DAOM_TARGET_CPU=generic \
 %endif
-%ifarch %{arm}
-	-DAOM_TARGET_CPU=arm \
-%ifarch armv3l armv4b armv4l armv4tl armv5tl armv5tel armv5tejl armv6l armv6hl armv7l armv7hl armv7hnl
-	-DENABLE_NEON=OFF \
-%endif
+%ifarch %arm
+`# see regex in build/cmake/rtcd.pl (this actually work for armv6hl too)` \
+	-DAOM_TARGET_CPU=armv7 \
+`# Fix missing flag for neon code` \
+`# See aom_ports/arm_cpudetect.c` \
+	-DENABLE_NEON=ON \
+	-DAOM_NEON_INTRIN_FLAG=-mfpu=neon \
 %endif
 %ifarch aarch64
 	-DAOM_TARGET_CPU=arm64 \
 %endif
-%ifarch %{ix86}
+%ifarch ppc %power64
+	-DAOM_TARGET_CPU=ppc \
+%endif
+%ifarch %ix86
 	-DAOM_TARGET_CPU=x86 \
 %endif
-%ifarch x86_64
+%ifarch x86_64 %x86_64
 	-DAOM_TARGET_CPU=x86_64 \
 %endif
 	%{nil}
+
+%if "%{flavor}" == ""
 %cmake_build
+%endif
+
+%if "%{flavor}" == "doc"
+%cmake_build docs
+%endif
 
 %install
+%if "%{flavor}" == ""
 %cmake_install
 rm %{buildroot}%{_libdir}/%{name}.a
+
+
 
 %ldconfig_scriptlets -n %{name}%{sover}
 
@@ -121,11 +170,15 @@ rm %{buildroot}%{_libdir}/%{name}.a
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/aom.pc
 
-%files devel-doc
-%doc %{__builddir}/docs/html/*
-
 %files -n aom-tools
 %{_bindir}/aomdec
 %{_bindir}/aomenc
+
+%endif
+
+%if "%{flavor}" == "doc"
+%files
+%doc %{__builddir}/docs/html/*
+%endif
 
 %changelog

@@ -1,0 +1,78 @@
+--- a/CMakeLists.txt.old	2022-06-17 19:46:18.000000000 +0200
++++ b/CMakeLists.txt	2022-08-30 12:58:06.276718500 +0200
+@@ -457,11 +457,14 @@
+ endif()
+ 
+ if(CONFIG_LIBYUV OR CONFIG_TUNE_BUTTERAUGLI)
+-  add_library(yuv OBJECT ${AOM_LIBYUV_SOURCES})
+-  if(NOT MSVC)
+-    target_compile_options(yuv PRIVATE -Wno-shadow)
+-  endif()
+-  include_directories("${AOM_ROOT}/third_party/libyuv/include")
++  find_package(PkgConfig REQUIRED)
++  pkg_check_modules(libyuv REQUIRED libyuv)
++  add_library(system_libyuv INTERFACE)
++  target_link_libraries(system_libyuv INTERFACE ${libyuv_LIBRARIES})
++  target_link_directories(system_libyuv INTERFACE ${libyuv_LIBRARY_DIRS})
++  target_link_options(system_libyuv INTERFACE ${libyuv_LDFLAGS_OTHER})
++  target_include_directories(system_libyuv INTERFACE ${libyuv_INCLUDE_DIRS})
++  target_compile_options(system_libyuv INTERFACE ${libyuv_CFLAGS_OTHER})
+ endif()
+ 
+ if(CONFIG_AV1_ENCODER)
+@@ -579,10 +583,10 @@
+       set_target_properties(aom_static PROPERTIES LINKER_LANGUAGE CXX)
+     endif()
+ 
+-    list(APPEND AOM_LIB_TARGETS yuv)
+-    target_sources(aom PRIVATE $<TARGET_OBJECTS:yuv>)
++    list(APPEND AOM_LIB_TARGETS system_libyuv)
++    target_link_libraries(aom PRIVATE system_libyuv)
+     if(BUILD_SHARED_LIBS)
+-      target_sources(aom_static PRIVATE $<TARGET_OBJECTS:yuv>)
++      target_link_libraries(aom_static PRIVATE system_libyuv)
+     endif()
+   endif()
+ 
+@@ -732,7 +736,7 @@
+   if(CONFIG_LIBYUV)
+     # Add to existing targets.
+     foreach(aom_app ${AOM_APP_TARGETS})
+-      target_sources(${aom_app} PRIVATE $<TARGET_OBJECTS:yuv>)
++      target_link_libraries(${aom_app} PRIVATE system_libyuv)
+       set_property(TARGET ${aom_app} PROPERTY LINKER_LANGUAGE CXX)
+     endforeach()
+   endif()
+--- a/test/test.cmake
++++ b/test/test.cmake
+@@ -458,7 +458,7 @@
+   target_link_libraries(test_libaom ${AOM_LIB_LINK_TYPE} aom aom_gtest)
+
+   if(CONFIG_LIBYUV)
+-    target_sources(test_libaom PRIVATE $<TARGET_OBJECTS:yuv>)
++    target_link_libraries(test_libaom PRIVATE system_libyuv)
+   endif()
+   if(CONFIG_WEBM_IO)
+     target_sources(test_libaom PRIVATE $<TARGET_OBJECTS:webm>)
+--- a/apps/aomdec.c
++++ b/apps/aomdec.c
+@@ -44,7 +44,7 @@
+ #include "common/y4menc.h"
+ 
+ #if CONFIG_LIBYUV
+-#include "third_party/libyuv/include/libyuv/scale.h"
++#include <libyuv/scale.h>
+ #endif
+ 
+ static const char *exec_name;
+--- a/apps/aomenc.c
++++ b/apps/aomenc.c
+@@ -47,7 +47,7 @@
+ #include "stats/rate_hist.h"
+ 
+ #if CONFIG_LIBYUV
+-#include "third_party/libyuv/include/libyuv/scale.h"
++#include <libyuv/scale.h>
+ #endif
+ 
+ /* Swallow warnings about unused results of fread/fwrite */
