@@ -1,7 +1,7 @@
 #
 # spec file for package xz-java
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Peter Conrad
 #
 # All modifications and additions to the file contributed by third parties
@@ -51,6 +51,7 @@ This package contains the API documentation of xz-java.
 
 %build
 sed -i 's/linkoffline="[^"]*"//;/extdoc_/d' build.xml
+sed -i 's/sourcever = 7/sourcever = 8/g' build.properties
 ant -Dant.build.javac.{source,target}=8 clean jar doc maven
 
 %install
