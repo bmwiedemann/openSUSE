@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep 21 20:31:24 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.2.5:
+  * Explain the calculation of the score
+  * Fix deprecation warning
+  * Fix empty Value property value
+  * Rework the OVAL test details
+  * Resolve references to OVAL endpoints
+- includes changes from 0.2.4:
+  * Show references and identifier as plain text when href is unavailable
+  * Implement clear button for search bar
+  * Explain OVAL and CPE AL operators
+  * Various output updates
+- includes changes from 0.2.3:
+  * Add support for the check-fact-ref element in CPE-AL
+  * Explanation of the result mapping between XCCDF and OVAL
+  * Add multi-check rules
+  * Change loading of OVAL result reports
+  * Discover upstream in tmt
+
+-------------------------------------------------------------------
 Thu Jun 15 12:55:06 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix building against other python versions than 3.10.

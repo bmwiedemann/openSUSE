@@ -15,4 +15,12 @@
     <comment>- Fix building against other python versions than 3.10. (forwarded request 1093306 from dimstar)</comment>
     <requestid>1093320</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e6d98d55a3f66f64753f973882adff21</srcmd5>
+    <version>0.2.5</version>
+    <time>1695412182</time>
+    <user>anag+factory</user>
+    <comment>openscap-report 0.2.5 (forwarded request 1112904 from AndreasStieger)</comment>
+    <requestid>1112948</requestid>
+  </revision>
 </revisionlist>
