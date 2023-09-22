@@ -62,8 +62,7 @@ automata (particularly deterministic finite-state transducers).
 
 %prep
 %setup -q -n Automat-%{version}
-# we don't care about the long_description, avoid unmaintained m2r
-sed -i "/'m2r'/d" setup.py
+sed -i "/six/d" setup.py
 
 %build
 %python_build
