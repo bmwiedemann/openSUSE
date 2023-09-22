@@ -1,0 +1,49 @@
+From 03d62c97fcafffa5cdbe4bb55b2a8d17a62eca33 Mon Sep 17 00:00:00 2001
+From: Aymeric Augustin <aymeric.augustin@fractalideas.com>
+Date: Thu, 18 May 2023 16:52:39 +0200
+Subject: [PATCH] Fix server shutdown on Python 3.12.
+
+Ref https://github.com/python/cpython/issues/79033.
+
+Fix #1356.
+---
+ src/websockets/legacy/server.py | 13 +++++--------
+ 1 file changed, 5 insertions(+), 8 deletions(-)
+
+Index: websockets-11.0.3/src/websockets/legacy/server.py
+===================================================================
+--- websockets-11.0.3.orig/src/websockets/legacy/server.py
++++ websockets-11.0.3/src/websockets/legacy/server.py
+@@ -765,18 +765,13 @@ class WebSocketServer:
+         # Stop accepting new connections.
+         self.server.close()
+ 
+-        # Wait until self.server.close() completes.
+-        await self.server.wait_closed()
+-
+         # Wait until all accepted connections reach connection_made() and call
+         # register(). See https://bugs.python.org/issue34852 for details.
+         await asyncio.sleep(0, **loop_if_py_lt_38(self.get_loop()))
+ 
+         if close_connections:
+-            # Close OPEN connections with status code 1001. Since the server was
+-            # closed, handshake() closes OPENING connections with an HTTP 503
+-            # error. Wait until all connections are closed.
+-
++            # Close OPEN connections with close code 1001. After server.close(),
++            # handshake() closes OPENING connections with an HTTP 503 error.
+             close_tasks = [
+                 asyncio.create_task(websocket.close(1001))
+                 for websocket in self.websockets
+@@ -789,8 +784,10 @@ class WebSocketServer:
+                     **loop_if_py_lt_38(self.get_loop()),
+                 )
+ 
+-        # Wait until all connection handlers are complete.
++        # Wait until all TCP connections are closed.
++        await self.server.wait_closed()
+ 
++        # Wait until all connection handlers terminate.
+         # asyncio.wait doesn't accept an empty first argument.
+         if self.websockets:
+             await asyncio.wait(

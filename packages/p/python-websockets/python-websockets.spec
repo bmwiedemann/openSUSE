@@ -25,6 +25,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/aaugustin/websockets
 Source:         https://github.com/aaugustin/websockets/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/python-websockets/websockets/commit/03d62c97fcafffa5cdbe4bb55b2a8d17a62eca33 Fix server shutdown on Python 3.12.
+Patch:          py312-shutdown.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

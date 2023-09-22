@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 20 14:58:11 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add py312-shutdown.patch to fix server shutdown on Python 3.12
+
+-------------------------------------------------------------------
 Wed May 24 11:10:45 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Run tests with pytest

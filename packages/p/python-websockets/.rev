@@ -437,4 +437,12 @@
     <comment>- Include in SLE-15 (bsc#1199282, jsc#PM-3243, jsc#SLE-24629)</comment>
     <requestid>1109360</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>6bedb0919a12b5e9fbd4a66fbec7247b</srcmd5>
+    <version>11.0.3</version>
+    <time>1695412036</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112605</requestid>
+  </revision>
 </revisionlist>
