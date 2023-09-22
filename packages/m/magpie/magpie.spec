@@ -16,7 +16,7 @@
 #
 
 %define api_major 0
-%bcond_without profiler
+%bcond_with profiler
 Name:           magpie
 Version:        0.9.3+0
 Release:        0

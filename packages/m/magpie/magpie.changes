@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 22 10:17:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch profiler bcond to with from without, disable profiler
+  support, sysprof-4 is no longer available.
+
+-------------------------------------------------------------------
 Thu Aug 31 12:08:49 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Remove wayland build dependencies: not needed until 1.0 ABI
