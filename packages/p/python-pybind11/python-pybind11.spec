@@ -35,7 +35,7 @@
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-pybind11%{psuffix}
-Version:        2.10.4
+Version:        2.11.1
 Release:        0
 Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause
