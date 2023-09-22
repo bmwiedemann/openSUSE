@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 17 16:15:24 UTC 2023 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- gnulib-readutmp-under-gdm.patch: Add upstream gnulib patch to fix crash
+  of who/uptime when gdm is in use. [bsc#1215361]
+- gnulib-readutmp.patch: Update with upstream patch.
+
+-------------------------------------------------------------------
 Thu Aug 31 09:56:48 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to 9.4:

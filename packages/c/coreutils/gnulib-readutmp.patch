@@ -1,3 +1,30 @@
+This squashes 2 consecutive upstream gnulib commits
+to fix gnulib seg.faults if there is no session:
+
+https://debbugs.gnu.org/cgi/bugreport.cgi?bug=65617
+
+Upstream gnulib commit 3af1d7b0ce3a8e3ae565e7cea10cee6fd7cb8109
+
+2023-08-31  Bruno Haible  <bruno@clisp.org>
+
+	readutmp: Fix memory leak introduced by last commit.
+	* lib/readutmp.c (read_utmp_from_systemd): If num_sessions == 0 and
+	sessions != NULL, do call free (sessions).
+
+Upstream gnulib commit 1e6a26f9312bb47e070f94b17b14dc1a6ffbb74f
+
+2023-08-30  Paul Eggert  <eggert@cs.ucla.edu>
+
+	readutmp: fix core dump if --enable-systemd
+	Problem reported by Thorsten Kukuk <https://bugs.gnu.org/65617>.
+	* lib/readutmp.c (read_utmp_from_systemd):
+	Don’t assume session_ptr != NULL if num_sessions == 0.
+	In practice it can be null, and the man page OKs this behavior.
+
+---
+ lib/readutmp.c | 2 +-
+ 1 files changed, 1 insertions(+), 1 deletion(-)
+
 diff --git a/lib/readutmp.c b/lib/readutmp.c
 index 0173b7e0c1..e99158677c 100644
 --- a/lib/readutmp.c
@@ -7,7 +34,10 @@ index 0173b7e0c1..e99158677c 100644
        char **sessions;
        int num_sessions = sd_get_sessions (&sessions);
 -      if (num_sessions >= 0)
-+      if (num_sessions > 0)
++      if (num_sessions >= 0 && sessions != NULL)
          {
            char **session_ptr;
            for (session_ptr = sessions; *session_ptr != NULL; session_ptr++)
+-- 
+2.42.0
+

@@ -50,9 +50,12 @@ Patch100:       coreutils-build-timeout-as-pie.patch
 Patch112:       coreutils-getaddrinfo.patch
 # Assorted fixes
 Patch113:       coreutils-misc.patch
-# gnulib seg.faults if there is no session
+# Upstream gnulib commits (squashed) to fix gnulib seg.faults
+# if there is no session:
 # https://debbugs.gnu.org/cgi/bugreport.cgi?bug=65617
 Patch114:       gnulib-readutmp.patch
+# Upstream gnulib patch to fix crash when gdm is in use. [bsc#1215361]
+Patch115:       gnulib-readutmp-under-gdm.patch
 # Skip 2 valgrind'ed sort tests on ppc/ppc64 which would fail due to
 # a glibc issue in mkstemp.
 Patch300:       coreutils-skip-some-sort-tests-on-ppc.patch
@@ -155,6 +158,7 @@ This package contains the documentation for the GNU Core Utilities.
 %patch112
 %patch113
 %patch114 -p1
+%patch115 -p1
 
 %patch300
 
