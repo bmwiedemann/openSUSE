@@ -27,7 +27,7 @@ index 6dbc8b806dc4..ce658bac6fab 100644
 --- a/third_party/electron_node/src/node_http_parser.cc
 +++ b/third_party/electron_node/src/node_http_parser.cc
 @@ -1148,28 +1148,51 @@ void ConnectionsList::Expired(const FunctionCallbackInfo<Value>& args) {
- };
+ }
  
  const llhttp_settings_t Parser::settings = {
 -  Proxy<Call, &Parser::on_message_begin>::Raw,

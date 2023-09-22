@@ -117,11 +117,12 @@ python3 src/tools/download_optimization_profile.py \
     --output_name=src/chrome/android/profiles/afdo.prof \
     --gs_url_base=chromeos-prebuilt/afdo-job/llvm
 
-echo ">>>>>> Download pgo profiles"
-python3 src/tools/update_pgo_profiles.py \
-    --target=linux \
-    update \
-    --gs-url-base=chromium-optimization-profiles/pgo_profiles
+# it hangs as of electron 23 and we don't use it anyway (needs clang)
+#echo ">>>>>> Download pgo profiles"
+#python3 src/tools/update_pgo_profiles.py \
+#    --target=linux \
+#    update \
+#    --gs-url-base=chromium-optimization-profiles/pgo_profiles
 
 
 # Needed to get typescript compiler
@@ -169,11 +170,10 @@ keeplibs=(
     net/third_party/uri_template #Derived code, not vendored dependency.
     third_party/abseil-cpp #15.4 and fc36 too old.
     third_party/angle  # ANGLE is an integral part of chrome and is not available as a shared library.
-    third_party/angle/src/common/third_party/base #Derived code, not vendored dependency.
-    third_party/angle/src/common/third_party/smhasher ##Derived code, not vendored dependency.
+    third_party/angle/src/third_party/ceval #not in any distro
     third_party/angle/src/third_party/libXNVCtrl #Not in 15.4
-    third_party/angle/src/third_party/trace_event #Does not seem to be a separate library.
-    third_party/angle/src/third_party/volk #Not in Factory or Rawhide. Debian has it as vulkan-volk, CONSIDER UNBUNDLING when we have it
+    third_party/angle/src/third_party/systeminfo #Derived code, not vendored dep.
+    third_party/angle/src/third_party/volk #replacement vulkan loader. Drop it when Leap has new enough libvulkan
     third_party/blink #Integral part of chrome
     third_party/boringssl #Factory has an ancient version, but upstream seems to have gave up on making it a shared library
     third_party/boringssl/src/third_party/fiat #Not in any distro
@@ -206,7 +206,9 @@ keeplibs=(
     third_party/dawn/third_party/gn/webgpu-cts #Integral part of chrome, Needed even if you're building chrome without webgpu
     third_party/devtools-frontend #Javascript code, integral part of chrome
     third_party/devtools-frontend/src/front_end/third_party #various javascript code compiled into chrome, see README.md
+    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/mitt
     third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n # javascript
+    third_party/devtools-frontend/src/third_party/i18n #javascript
     third_party/devtools-frontend/src/third_party/typescript #Chromium added code
     third_party/distributed_point_functions #not in any distro
     third_party/dom_distiller_js #javascript
@@ -214,7 +216,7 @@ keeplibs=(
     third_party/electron_node #Integral part of electron
     third_party/emoji-segmenter #not available as a shared library
     third_party/fdlibm #derived code, not vendored dep
-    third_party/highway #Not in 15.4. Needed by libjxl
+    third_party/highway #Not in 15.4
     third_party/hunspell #heavily forked version
     third_party/iccjpeg #not in any distro
     third_party/inspector_protocol #integral part of chrome
@@ -231,15 +233,14 @@ keeplibs=(
     third_party/libaom/source/libaom/third_party/x86inc
     third_party/libavif #leap too old
     #third_party/libgav1 #Usage of private headers (ObuFrameHeader from utils/types.h) in VAAPI code only
-    third_party/libjxl #not in Leap
     third_party/libphonenumber #Depends on protobuf which cannot be unbundled
     third_party/libsrtp #Use of private headers. they were public in libsrtp1
     third_party/libsync #not yet in any distro
     third_party/libudev #Headers for a optional delay-loaded dependency
     third_party/liburlpattern #Derived code, not vendored dep.
     third_party/libva_protected_content #ChromeOS header not available separately. needed for build.
-    #third_party/libvpx #Use of private headers in VAAPI code only.
-    #third_party/libvpx/source/libvpx/third_party/x86inc
+    third_party/libvpx #15.5/FC37 too old
+    third_party/libvpx/source/libvpx/third_party/x86inc
     third_party/libwebm #Usage of private headers (mkvparser/mkvmuxer)
     third_party/libx11 #Derived code, not vendored dep
     third_party/libxcb-keysyms #Derived code, not vendored dep
@@ -250,10 +251,12 @@ keeplibs=(
     #third_party/maldoca #integral part of chrome, but not used in electron.
     #third_party/maldoca/src/third_party
     third_party/markupsafe #ImportError: cannot import name 'soft_unicode' from 'markupsafe' (/usr/lib64/python3.10/site-packages/markupsafe/__init__.py). CONSIDER UNBUNDLING when jinja is fixed
+    third_party/material_color_utilities #not in any distro
     third_party/mesa_headers #ui/gl/gl_bindings.cc depends on GL_KHR_robustness not being defined.
     third_party/metrics_proto #integral part of chrome
     third_party/modp_b64 #not in Factory or Rawhide. pkgconfig(stringencoders) Mageia, AltLinux, Debian have it
     third_party/node #javascript code
+    third_party/omnibox_proto #integral part of chrome
     third_party/one_euro_filter #not in any distro
     third_party/openscreen #Integral part of chrome, needed even if you're building without.
     third_party/openscreen/src/third_party/mozilla #derived code, not vendored dependency
@@ -304,7 +307,6 @@ keeplibs=(
     third_party/webrtc/rtc_base/third_party/sigslot #derived code, not vendored dep
     third_party/webrtc_overrides #Integral part of chrome
     third_party/widevine #Integral part of chrome. Needed.
-    third_party/wayland/stubs #added chromium code
     third_party/wayland/wayland_scanner_wrapper.py #wrapper script
     third_party/wayland-protocols/gtk/gdk/wayland/protocol #Imagine downloading 100MB of gtk source just to get one file.
     third_party/wayland-protocols/mesa #egl-wayland-devel (Fedora) / libnvidia-egl-wayland1 (Tumbleweed). 15.4 has an old version that misses the file we need.

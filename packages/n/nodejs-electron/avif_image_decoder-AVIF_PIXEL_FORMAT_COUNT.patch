@@ -60,11 +60,12 @@ index c24bf8e0446d3..6ccc4bcfe2c36 100644
        NOTREACHED();
        return media::PIXEL_FORMAT_UNKNOWN;
    }
-@@ -300,6 +301,7 @@ cc::YUVSubsampling AVIFImageDecoder::GetYUVSubsampling() const {
-     case AVIF_PIXEL_FORMAT_YUV400:
+@@ -300,7 +301,7 @@ cc::YUVSubsampling AVIFImageDecoder::GetYUVSubsampling() const {
+       // AVIF_PIXEL_FORMAT_NONE.
+       CHECK(!IsDecodedSizeAvailable());
        return cc::YUVSubsampling::kUnknown;
-     case AVIF_PIXEL_FORMAT_NONE:
 +    case AVIF_PIXEL_FORMAT_COUNT:
-       NOTREACHED();
-       return cc::YUVSubsampling::kUnknown;
+-    default:
+       break;
    }
+   NOTREACHED_NORETURN() << "Invalid YUV format: " << avif_yuv_format_;

@@ -125,3 +125,14 @@ Also excluding markupsafe, because jinja2 needs an ancient version. “ImportErr
  ../../build/scripts/blinkbuild/__init__.py
  ../../build/scripts/blinkbuild/name_style_converter.py
  validate_web_idl.py
+--- a/mojo/public/tools/bindings/mojom.gni
++++ b/mojo/public/tools/bindings/mojom.gni
+@@ -699,7 +699,7 @@
+       allow_remote = true
+       custom_processor = "mojom_parser"
+       script = mojom_parser_script
+-      inputs = mojom_parser_sources + ply_sources + [ build_metadata_filename ]
++      inputs = mojom_parser_sources + [ build_metadata_filename ]
+       sources = sources_list
+       public_deps = parser_deps
+       outputs = []

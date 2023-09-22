@@ -1,0 +1,98 @@
+From 5fcaeafcab5460ea65e4a7bdee6589002adf74d2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dominik=20R=C3=B6ttsches?= <drott@chromium.org>
+Date: Mon, 13 Feb 2023 13:26:16 +0000
+Subject: [PATCH] Use hb::unique_ptr instead of custom HbScopedPointer
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This was an earlier local RAII implementation that we no longer need now
+that HarfBuzz provides helpers for this.
+
+Change-Id: Idc47ce2717c75556acb03e2ccccb50ec87ed3cca
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4239980
+Reviewed-by: Munira Tursunova <moonira@google.com>
+Commit-Queue: Dominik Röttsches <drott@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1104453}
+---
+ .../platform/fonts/shaping/harfbuzz_shaper.cc | 39 ++++---------------
+ 1 file changed, 7 insertions(+), 32 deletions(-)
+
+diff --git a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_shaper.cc b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_shaper.cc
+index c165a1703395a..dc1377a90a9f7 100644
+--- a/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_shaper.cc
++++ b/third_party/blink/renderer/platform/fonts/shaping/harfbuzz_shaper.cc
+@@ -35,6 +35,7 @@
+ #include <unicode/uchar.h>
+ #include <unicode/uscript.h>
+ #include <algorithm>
++#include <hb-cplusplus.hh>
+ #include <memory>
+ #include <utility>
+ 
+@@ -190,32 +191,6 @@ struct ReshapeQueueItem {
+       : action_(action), start_index_(start), num_characters_(num) {}
+ };
+ 
+-template <typename T>
+-class HarfBuzzScopedPtr {
+-  STACK_ALLOCATED();
+-
+- public:
+-  typedef void (*DestroyFunction)(T*);
+-
+-  HarfBuzzScopedPtr(T* ptr, DestroyFunction destroy)
+-      : ptr_(ptr), destroy_(destroy) {
+-    DCHECK(destroy_);
+-  }
+-  HarfBuzzScopedPtr(const HarfBuzzScopedPtr&) = delete;
+-  HarfBuzzScopedPtr& operator=(const HarfBuzzScopedPtr&) = delete;
+-  ~HarfBuzzScopedPtr() {
+-    if (ptr_)
+-      (*destroy_)(ptr_);
+-  }
+-
+-  T* Get() { return ptr_; }
+-  void Set(T* ptr) { ptr_ = ptr; }
+-
+- private:
+-  T* ptr_;
+-  DestroyFunction destroy_;
+-};
+-
+ struct RangeData {
+   STACK_ALLOCATED();
+ 
+@@ -908,8 +883,8 @@ scoped_refptr<ShapeResult> HarfBuzzShaper::Shape(const Font* font,
+   scoped_refptr<ShapeResult> result =
+       ShapeResult::Create(font, start, length, direction);
+ 
+-  HarfBuzzScopedPtr<hb_buffer_t> buffer(hb_buffer_create(), hb_buffer_destroy);
+-  RangeData range_data = CreateRangeData(font, direction, buffer.Get());
++  hb::unique_ptr<hb_buffer_t> buffer(hb_buffer_create());
++  RangeData range_data = CreateRangeData(font, direction, buffer.get());
+   range_data.start = start;
+   range_data.end = end;
+ 
+@@ -965,8 +940,8 @@ scoped_refptr<ShapeResult> HarfBuzzShaper::Shape(
+   scoped_refptr<ShapeResult> result =
+       ShapeResult::Create(font, start, length, direction);
+ 
+-  HarfBuzzScopedPtr<hb_buffer_t> buffer(hb_buffer_create(), hb_buffer_destroy);
+-  RangeData range_data = CreateRangeData(font, direction, buffer.Get());
++  hb::unique_ptr<hb_buffer_t> buffer(hb_buffer_create());
++  RangeData range_data = CreateRangeData(font, direction, buffer.get());
+ 
+   for (const RunSegmenter::RunSegmenterRange& segmented_range : ranges) {
+     DCHECK_GE(segmented_range.end, segmented_range.start);
+@@ -1001,8 +976,8 @@ scoped_refptr<ShapeResult> HarfBuzzShaper::Shape(
+   scoped_refptr<ShapeResult> result =
+       ShapeResult::Create(font, start, length, direction);
+ 
+-  HarfBuzzScopedPtr<hb_buffer_t> buffer(hb_buffer_create(), hb_buffer_destroy);
+-  RangeData range_data = CreateRangeData(font, direction, buffer.Get());
++  hb::unique_ptr<hb_buffer_t> buffer(hb_buffer_create());
++  RangeData range_data = CreateRangeData(font, direction, buffer.get());
+   range_data.start = start;
+   range_data.end = end;
+ 

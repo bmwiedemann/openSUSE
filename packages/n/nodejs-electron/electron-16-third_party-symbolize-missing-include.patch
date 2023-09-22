@@ -3,8 +3,8 @@ Index: electron-16.0.9/base/third_party/symbolize/symbolize.h
 --- electron-16.0.9.orig/base/third_party/symbolize/symbolize.h	2022-02-16 17:58:59.209168086 +0100
 +++ electron-16.0.9/base/third_party/symbolize/symbolize.h	2022-02-17 08:39:25.070959581 +0100
 @@ -54,6 +54,8 @@
- #ifndef BASE_SYMBOLIZE_H_
- #define BASE_SYMBOLIZE_H_
+ 
+ #include <sys/types.h>  // for ssize_t
  
 +#include <utility>
 +

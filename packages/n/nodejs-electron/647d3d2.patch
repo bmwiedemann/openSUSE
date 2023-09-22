@@ -25,9 +25,9 @@ index d3dbdb9..fad747a 100644
  	if(optimizationLevel > 0)
  	{
 +#if LLVM_VERSION_MAJOR >= 16
-+		fpm.addPass(llvm::SROAPass(llvm::SROAOptions::PreserveCFG));
+		fpm.addPass(llvm::SROAPass(llvm::SROAOptions::PreserveCFG));
 +#else
- 		fpm.addPass(llvm::SROAPass());
++ 		fpm.addPass(llvm::SROAPass());
 +#endif
  		fpm.addPass(llvm::InstCombinePass());
  	}

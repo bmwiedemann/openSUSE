@@ -1,11 +1,12 @@
 --- chromium-79.0.3945.29/build/linux/unbundle/replace_gn_files.py.system-dav1d	2019-11-09 14:30:17.297016975 +0100
 +++ chromium-79.0.3945.29/build/linux/unbundle/replace_gn_files.py	2019-11-10 09:40:19.694662891 +0100
-@@ -40,6 +40,8 @@ import sys
+@@ -40,6 +40,9 @@ import sys
    'double-conversion': 'base/third_party/double_conversion/BUILD.gn',
    'ffmpeg': 'third_party/ffmpeg/BUILD.gn',
    'flac': 'third_party/flac/BUILD.gn',
 +  'flatbuffers': 'third_party/flatbuffers/BUILD.gn',
 +  'libsecret' : 'third_party/libsecret/BUILD.gn',
++  'highway' : 'third_party/highway/BUILD.gn',
    'fontconfig': 'third_party/fontconfig/BUILD.gn',
    'freetype': 'build/config/freetype/freetype.gni',
    'harfbuzz-ng': 'third_party/harfbuzz-ng/harfbuzz.gni',

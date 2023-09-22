@@ -12,7 +12,7 @@ Index: electron-17.1.0/build/config/BUILDCONFIG.gn
    is_clang = current_os != "linux" ||
               (current_cpu != "s390x" && current_cpu != "s390" &&
 @@ -352,6 +354,12 @@ default_compiler_configs = [
-   "//electron/build/config:mas_build",
+   "//build/config/sanitizers:default_sanitizer_flags",
  ]
  
 +if (gcc_lto) {
@@ -38,6 +38,4 @@ Index: electron-17.1.0/build/config/compiler/BUILD.gn
 +
  config("default_stack_frames") { }
  config("xdefault_stack_frames") {
-   if (is_posix || is_fuchsia) {
-Index: electron-17.1.0/sandbox/linux/BUILD.gn
-===================================================================
+   if (!is_win) {

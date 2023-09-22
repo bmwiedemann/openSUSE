@@ -1,18 +1,3 @@
-Index: electron-17.1.0/third_party/perfetto/src/trace_processor/containers/string_pool.cc
-===================================================================
---- electron-17.1.0.orig/third_party/perfetto/src/trace_processor/containers/string_pool.cc	2022-03-07 17:28:24.814737660 +0100
-+++ electron-17.1.0/third_party/perfetto/src/trace_processor/containers/string_pool.cc	2022-03-09 08:25:10.346569313 +0100
-@@ -14,9 +14,9 @@
-  * limitations under the License.
-  */
- 
-+#include <limits>
- #include "src/trace_processor/containers/string_pool.h"
- 
--#include <limits>
- 
- #include "perfetto/base/logging.h"
- #include "perfetto/ext/base/utils.h"
 Index: electron-17.1.0/third_party/perfetto/src/trace_processor/db/column.cc
 ===================================================================
 --- electron-17.1.0.orig/third_party/perfetto/src/trace_processor/db/column.cc	2022-03-07 17:28:24.814737660 +0100
@@ -25,58 +10,7 @@ Index: electron-17.1.0/third_party/perfetto/src/trace_processor/db/column.cc
  #include "src/trace_processor/db/column.h"
  
  #include "src/trace_processor/db/compare.h"
-Index: electron-17.1.0/third_party/perfetto/src/trace_processor/types/variadic.cc
-===================================================================
---- electron-17.1.0.orig/third_party/perfetto/src/trace_processor/types/variadic.cc	2022-03-07 17:28:24.838737758 +0100
-+++ electron-17.1.0/third_party/perfetto/src/trace_processor/types/variadic.cc	2022-03-09 08:25:10.346569313 +0100
-@@ -14,6 +14,7 @@
-  * limitations under the License.
-  */
- 
-+#include <limits>
- #include "src/trace_processor/types/variadic.h"
- 
- namespace perfetto {
-Index: electron-17.1.0/ui/accessibility/platform/ax_platform_atk_hyperlink.cc
-===================================================================
---- electron-17.1.0.orig/ui/accessibility/platform/ax_platform_atk_hyperlink.cc	2022-03-07 17:20:48.460884710 +0100
-+++ electron-17.1.0/ui/accessibility/platform/ax_platform_atk_hyperlink.cc	2022-03-09 08:25:10.346569313 +0100
-@@ -245,7 +245,7 @@ static void AXPlatformAtkHyperlinkInit(A
- }
- 
- GType ax_platform_atk_hyperlink_get_type() {
--  static volatile gsize type_volatile = 0;
-+  static gsize type_volatile = 0;
- 
-   AXPlatformNodeAuraLinux::EnsureGTypeInit();
- 
-Index: electron-17.1.0/ui/accessibility/platform/ax_platform_node_auralinux.cc
-===================================================================
---- electron-17.1.0.orig/ui/accessibility/platform/ax_platform_node_auralinux.cc	2022-03-07 17:20:48.460884710 +0100
-+++ electron-17.1.0/ui/accessibility/platform/ax_platform_node_auralinux.cc	2022-03-09 08:25:10.346569313 +0100
-@@ -2275,7 +2275,7 @@ void ClassInit(gpointer class_pointer, g
- GType GetType() {
-   AXPlatformNodeAuraLinux::EnsureGTypeInit();
- 
--  static volatile gsize type_volatile = 0;
-+  static gsize type_volatile = 0;
-   if (g_once_init_enter(&type_volatile)) {
-     static const GTypeInfo type_info = {
-         sizeof(AXPlatformNodeAuraLinuxClass),  // class_size
 Index: electron-17.1.0/ui/gtk/gtk_key_bindings_handler.cc
-===================================================================
---- electron-17.1.0.orig/ui/gtk/gtk_key_bindings_handler.cc	2022-03-07 17:20:48.816886156 +0100
-+++ electron-17.1.0/ui/gtk/gtk_key_bindings_handler.cc	2022-03-09 08:25:10.346569313 +0100
-@@ -120,7 +120,7 @@ void GtkKeyBindingsHandler::HandlerClass
- }
- 
- GType GtkKeyBindingsHandler::HandlerGetType() {
--  static volatile gsize type_id_volatile = 0;
-+  static gsize type_id_volatile = 0;
-   if (g_once_init_enter(&type_id_volatile)) {
-     GType type_id = g_type_register_static_simple(
-         GTK_TYPE_TEXT_VIEW, g_intern_static_string("GtkKeyBindingsHandler"),
-Index: electron-17.1.0/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc
 ===================================================================
 --- electron-17.1.0.orig/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc	2022-03-07 17:20:31.788817015 +0100
 +++ electron-17.1.0/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc	2022-03-09 08:25:10.346569313 +0100
@@ -88,18 +22,6 @@ Index: electron-17.1.0/chrome/browser/ui/bookmarks/bookmark_tab_helper.cc
  #include "chrome/browser/ui/bookmarks/bookmark_tab_helper.h"
  
  #include "base/observer_list.h"
-Index: electron-17.1.0/components/bookmarks/browser/bookmark_expanded_state_tracker.cc
-===================================================================
---- electron-17.1.0.orig/components/bookmarks/browser/bookmark_expanded_state_tracker.cc	2022-03-07 17:20:33.308823187 +0100
-+++ electron-17.1.0/components/bookmarks/browser/bookmark_expanded_state_tracker.cc	2022-03-09 08:25:10.346569313 +0100
-@@ -2,6 +2,7 @@
- // Use of this source code is governed by a BSD-style license that can be
- // found in the LICENSE file.
- 
-+#include <cstddef>
- #include "components/bookmarks/browser/bookmark_expanded_state_tracker.h"
- 
- #include <stdint.h>
 Index: electron-17.1.0/components/bookmarks/browser/base_bookmark_model_observer.cc
 ===================================================================
 --- electron-17.1.0.orig/components/bookmarks/browser/base_bookmark_model_observer.cc	2022-03-07 17:20:33.308823187 +0100

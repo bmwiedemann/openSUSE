@@ -1,0 +1,10 @@
+--- src/electron/shell/browser/electron_browser_context.h.old	2023-08-31 17:37:41.299415900 +0000
++++ src/electron/shell/browser/electron_browser_context.h	2023-09-03 09:51:24.663398000 +0000
+@@ -8,6 +8,7 @@
+ #include <map>
+ #include <memory>
+ #include <string>
++#include <variant>
+ #include <vector>
+ 
+ #include "base/memory/weak_ptr.h"

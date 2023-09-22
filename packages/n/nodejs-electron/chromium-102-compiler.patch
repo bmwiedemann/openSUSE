@@ -58,12 +58,18 @@ index d40843b..b92f03b 100644
  
      if (!is_clang) {
        # Use pipes for communicating between sub-processes. Faster.
-@@ -527,31 +527,6 @@
+@@ -527,37 +527,6 @@
      ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
    }
  
 -  if (is_clang && !is_nacl && current_os != "zos") {
 -    cflags += [ "-fcrash-diagnostics-dir=" + clang_diagnostic_dir ]
+-    if (save_reproducers_on_lld_crash && use_lld) {
+-      ldflags += [
+-        "-fcrash-diagnostics=all",
+-        "-fcrash-diagnostics-dir=" + clang_diagnostic_dir,
+-      ]
+-    }
 -
 -    # TODO(hans): Remove this once Clang generates better optimized debug info
 -    # by default. https://crbug.com/765793
@@ -87,9 +93,9 @@ index d40843b..b92f03b 100644
 -    }
 -  }
 -
-   # Rust compiler setup (for either clang or rustc).
-   if (enable_rust) {
-     defines += [ "RUST_ENABLED" ]
+   # C11/C++11 compiler flags setup.
+   # ---------------------------
+   if (is_linux || is_chromeos || is_android || (is_nacl && is_clang) ||
 @@ -862,7 +837,8 @@
  # without using everything that "compiler" brings in.  Options that
  # tweak code generation for a particular CPU do not belong here!
@@ -175,8 +181,8 @@ index d40843b..b92f03b 100644
 -      cflags += [ "-Wextra" ]
 -    }
  
-     # In Chromium code, we define __STDC_foo_MACROS in order to get the
-     # C99 macros on Mac and Linux.
+     if (treat_warnings_as_errors) {
+       # Turn rustc warnings into the "deny" lint level, which produce compiler
 @@ -1618,16 +1552,6 @@
        "__STDC_FORMAT_MACROS",
      ]
@@ -191,9 +197,9 @@ index d40843b..b92f03b 100644
 -      defines += [ "_FORTIFY_SOURCE=2" ]
 -    }
 -
-     if (is_mac) {
-       cflags_objc = [ "-Wobjc-missing-property-synthesis" ]
-       cflags_objcc = [ "-Wobjc-missing-property-synthesis" ]
+     if (is_apple) {
+       cflags_objc = [ "-Wimplicit-retain-self" ]
+       cflags_objcc = [ "-Wimplicit-retain-self" ]
 @@ -1841,7 +1841,6 @@
  config("export_dynamic") {
    # TODO(crbug.com/1052397): Revisit after target_os flip is completed.
@@ -219,7 +225,7 @@ index d40843b..b92f03b 100644
 -config("default_stack_frames") {
 +config("default_stack_frames") { }
 +config("xdefault_stack_frames") {
-   if (is_posix || is_fuchsia) {
+   if (!is_win) {
      if (enable_frame_pointers) {
        cflags = [ "-fno-omit-frame-pointer" ]
 @@ -2017,7 +1943,8 @@
@@ -279,9 +285,9 @@ index d40843b..b92f03b 100644
 -config("symbols") {
 +config("symbols") { cflags = ["-g2"] }
 +config("xsymbols") {
+   rustflags = []
    if (is_win) {
      if (is_clang) {
-       cflags = [ "/Z7" ]  # Debug information in the .obj files.
 @@ -2398,7 +2330,8 @@
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user

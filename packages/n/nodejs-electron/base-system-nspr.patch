@@ -30,9 +30,9 @@
      "thread_annotations.h",
      "threading/hang_watcher.cc",
 @@ -1414,6 +1417,7 @@
-     "//build/config/compiler:prevent_unsafe_narrowing",
      "//build/config/compiler:wexit_time_destructors",
      "//build/config/compiler:wglobal_constructors",
+     "//electron/build/config:mas_build",
 +    ":system_nspr",
    ]
  

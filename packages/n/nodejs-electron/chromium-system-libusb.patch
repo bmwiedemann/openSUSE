@@ -32,8 +32,8 @@ Index: electron-16.0.6/build/linux/unbundle/replace_gn_files.py
 --- electron-16.0.6.orig/build/linux/unbundle/replace_gn_files.py	2022-01-10 16:06:45.861270275 +0100
 +++ electron-16.0.6/build/linux/unbundle/replace_gn_files.py	2022-01-13 16:02:37.237389046 +0100
 @@ -25,6 +25,7 @@ REPLACEMENTS = {
+   'libevent': 'third_party/libevent/BUILD.gn',
    'libjpeg': 'third_party/libjpeg.gni',
-   'libjxl' : 'third_party/libjxl/BUILD.gn',
    'libpng': 'third_party/libpng/BUILD.gn',
 +  'libusb': 'third_party/libusb/BUILD.gn',
    'libvpx': 'third_party/libvpx/BUILD.gn',

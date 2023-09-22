@@ -1,6 +1,6 @@
 --- src/sandbox/linux/BUILD.gn.old	2022-10-12 18:06:31.399406000 +0200
 +++ src/sandbox/linux/BUILD.gn	2022-10-22 11:55:59.621396300 +0200
-@@ -196,6 +196,28 @@
+@@ -196,6 +196,27 @@
    }
  }
  
@@ -17,7 +17,6 @@
 +  deps = [
 +    ":sandbox_services",
 +    "//base",
-+    "//base/third_party/dynamic_annotations",
 +    "//build:chromeos_buildflags",
 +    "//sandbox:sandbox_buildflags",
 +  ]
@@ -44,5 +43,5 @@
      ":sandbox_services",
 +    ":seccomp_bpf_asm",
      "//base",
-     "//base/third_party/dynamic_annotations",
      "//build:chromeos_buildflags",
+     "//sandbox:sandbox_buildflags",

@@ -28,18 +28,6 @@ Cr-Commit-Position: refs/heads/main@{#81286}
 
 diff --git a/src/init/heap-symbols.h b/src/init/heap-symbols.h
 index da2cdccf1d5..c00e2c45097 100644
---- a/v8/src/init/heap-symbols.h
-+++ b/v8/src/init/heap-symbols.h
-@@ -8,6 +8,7 @@
- #ifdef V8_INTL_SUPPORT
- #define INTERNALIZED_STRING_LIST_GENERATOR_INTL(V, _)               \
-   V(_, adoptText_string, "adoptText")                               \
-+  V(_, approximatelySign_string, "approximatelySign")               \
-   V(_, baseName_string, "baseName")                                 \
-   V(_, accounting_string, "accounting")                             \
-   V(_, breakType_string, "breakType")                               \
-diff --git a/src/objects/intl-objects.cc b/src/objects/intl-objects.cc
-index 93f7000bf5d..25cc4fdd04a 100644
 --- a/v8/src/objects/intl-objects.cc
 +++ b/v8/src/objects/intl-objects.cc
 @@ -2744,6 +2744,9 @@ Handle<String> Intl::NumberFieldToType(Isolate* isolate,

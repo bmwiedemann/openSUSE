@@ -38,8 +38,8 @@ index b2f7cd8ed0788f..272b933bab9625 100644
    while (re->Match(*arg, start, arg->size(), re2::RE2::Anchor::UNANCHORED,
 diff --git a/components/feedback/redaction_tool/redaction_tool.cc b/components/feedback/redaction_tool/redaction_tool.cc
 index 876e8da509aa74..c81806e0fb029f 100644
---- a/components/feedback/redaction_tool.cc
-+++ b/components/feedback/redaction_tool.cc
+--- a/components/feedback/redaction_tool/redaction_tool.cc
++++ b/components/feedback/redaction_tool/redaction_tool.cc
 @@ -1081,7 +1081,7 @@ std::string RedactionTool::RedactCustomPatternWithContext(
    // Keep consuming, building up a result string as we go.
    re2::StringPiece text(input);
@@ -54,7 +54,7 @@ index 6d516e86c9f1ed..cf73709add6d68 100644
 --- a/extensions/browser/api/web_request/form_data_parser.cc
 +++ b/extensions/browser/api/web_request/form_data_parser.cc
 @@ -372,8 +372,7 @@ std::unique_ptr<FormDataParser> FormDataParser::CreateFromContentTypeHeader(
- FormDataParser::FormDataParser() {}
+ FormDataParser::FormDataParser() = default;
  
  FormDataParserUrlEncoded::FormDataParserUrlEncoded()
 -    : source_(nullptr),
@@ -86,8 +86,8 @@ Cr-Commit-Position: refs/heads/main@{#1146625}
 
 diff --git a/components/feedback/redaction_tool/redaction_tool.cc b/components/feedback/redaction_tool/redaction_tool.cc
 index f130fe7013a002..a623db131d2f48 100644
---- a/components/feedback/redaction_tool.cc
-+++ b/components/feedback/redaction_tool.cc
+--- a/components/feedback/redaction_tool/redaction_tool.cc
++++ b/components/feedback/redaction_tool/redaction_tool.cc
 @@ -815,7 +815,8 @@ std::string RedactionTool::RedactAndroidAppStoragePaths(
      // - Otherwise, remove all the characters in the component but the first
      //   one.
@@ -151,8 +151,8 @@ index 3bb5af9c1c56c6..3012f275be4793 100644
  
 diff --git a/components/feedback/redaction_tool/redaction_tool.cc b/components/feedback/redaction_tool/redaction_tool.cc
 index a623db131d2f48..07d19502f8d23b 100644
---- a/components/feedback/redaction_tool.cc
-+++ b/components/feedback/redaction_tool.cc
+--- a/components/feedback/redaction_tool/redaction_tool.cc
++++ b/components/feedback/redaction_tool/redaction_tool.cc
 @@ -703,11 +703,11 @@ std::string RedactionTool::RedactMACAddresses(
      if (detected != nullptr) {
        (*detected)[PIIType::kMACAddress].insert(mac);
@@ -164,9 +164,9 @@ index a623db131d2f48..07d19502f8d23b 100644
  
 -  text.AppendToString(&result);
 +  result.append(text.data(), text.size());
-   return result;
- }
  
+   UMA_HISTOGRAM_ENUMERATION(kFeedbackRedactionToolHistogramName,
+                             PIIType::kMACAddress);
 @@ -733,8 +733,8 @@ std::string RedactionTool::RedactHashes(
    re2::StringPiece skipped, pre_whitespace, hash_prefix, hash_suffix;
    while (FindAndConsumeAndGetSkipped(&text, *hash_re, &skipped, &pre_whitespace,
@@ -195,9 +195,9 @@ index a623db131d2f48..07d19502f8d23b 100644
  
 -  text.AppendToString(&result);
 +  result.append(text.data(), text.size());
-   return result;
- }
  
+   UMA_HISTOGRAM_ENUMERATION(kFeedbackRedactionToolHistogramName,
+                             PIIType::kStableIdentifier);
 @@ -806,8 +806,8 @@ std::string RedactionTool::RedactAndroidAppStoragePaths(
    while (FindAndConsumeAndGetSkipped(&text, *path_re, &skipped, &path_prefix,
                                       &pre_data, &post_data, &app_specific)) {
@@ -215,9 +215,9 @@ index a623db131d2f48..07d19502f8d23b 100644
  
 -  text.AppendToString(&result);
 +  result.append(text.data(), text.size());
-   return result;
- #else
-   return input;
+ 
+   UMA_HISTOGRAM_ENUMERATION(kFeedbackRedactionToolHistogramName,
+                             PIIType::kAndroidAppStoragePath);
 @@ -1089,12 +1089,12 @@ std::string RedactionTool::RedactCustomPatternWithContext(
      if (detected != nullptr) {
        (*detected)[pattern.pii_type].insert(matched_id_as_string);
@@ -232,9 +232,9 @@ index a623db131d2f48..07d19502f8d23b 100644
    }
 -  text.AppendToString(&result);
 +  result.append(text.data(), text.size());
-   return result;
- }
  
+   UMA_HISTOGRAM_ENUMERATION(kFeedbackRedactionToolHistogramName,
+                             pattern.pii_type);
 @@ -1176,8 +1176,8 @@ std::string RedactionTool::RedactCustomPatternWithoutContext(
    re2::StringPiece matched_id;
    while (FindAndConsumeAndGetSkipped(&text, *re, &skipped, &matched_id)) {
@@ -267,9 +267,9 @@ index a623db131d2f48..07d19502f8d23b 100644
    }
 -  text.AppendToString(&result);
 +  result.append(text.data(), text.size());
-   return result;
- }
  
+   UMA_HISTOGRAM_ENUMERATION(kFeedbackRedactionToolHistogramName,
+                             pattern.pii_type);
 From eee5a88144edad47597163db8f26687a5bd24915 Mon Sep 17 00:00:00 2001
 From: Paul Wankadia <junyer@chromium.org>
 Date: Tue, 23 May 2023 18:42:42 +0000
@@ -292,17 +292,17 @@ Cr-Commit-Position: refs/heads/main@{#1148060}
 
 diff --git a/components/feedback/redaction_tool/redaction_tool.cc b/components/feedback/redaction_tool/redaction_tool.cc
 index 07d19502f8d23b..814ac96d80a5a5 100644
---- a/components/feedback/redaction_tool.cc
-+++ b/components/feedback/redaction_tool.cc
+--- a/components/feedback/redaction_tool/redaction_tool.cc
++++ b/components/feedback/redaction_tool/redaction_tool.cc
 @@ -1105,7 +1105,7 @@ std::string RedactionTool::RedactCustomPatternWithContext(
  bool IsUrlExempt(re2::StringPiece url,
                   const char* const* first_party_extension_ids) {
    // We do not exempt anything with a query parameter.
--  if (url.contains("?"))
-+  if (url.find("?") != re2::StringPiece::npos)
+-  if (url.contains("?")) {
++  if (url.find("?") != re2::StringPiece::npos) {
      return false;
+   }
  
-   // Last part of an SELinux context is misdetected as a URL.
 From bbe41e215c64baf22faf257e7a9f8ce7bf7bc337 Mon Sep 17 00:00:00 2001
 From: Paul Wankadia <junyer@chromium.org>
 Date: Fri, 19 May 2023 19:13:27 +0000

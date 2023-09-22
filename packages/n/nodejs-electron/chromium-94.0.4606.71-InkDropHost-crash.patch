@@ -1,6 +1,6 @@
 diff -up chromium-94.0.4606.71/ui/views/animation/ink_drop_host_view.h.InkDropHost-crash chromium-94.0.4606.71/ui/views/animation/ink_drop_host_view.h
---- chromium-94.0.4606.71/ui/views/animation/ink_drop_host_view.h.InkDropHost-crash	2021-10-05 16:04:46.313586509 -0400
-+++ chromium-94.0.4606.71/ui/views/animation/ink_drop_host_view.h	2021-10-05 16:05:12.213732558 -0400
+--- chromium-94.0.4606.71/ui/views/animation/ink_drop_host.h.InkDropHost-crash	2021-10-05 16:04:46.313586509 -0400
++++ chromium-94.0.4606.71/ui/views/animation/ink_drop_host.h	2021-10-05 16:05:12.213732558 -0400
 @@ -228,6 +228,11 @@ class VIEWS_EXPORT InkDropHost {
    // Used to observe View and inform the InkDrop of host-transform changes.
    ViewLayerTransformObserver host_view_transform_observer_;

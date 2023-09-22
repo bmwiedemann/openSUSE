@@ -4,11 +4,14 @@ since we compile everything with -fasynchronous-unwind-tables anyway.
 
 --- src/third_party/electron_node/common.gypi.old	2022-11-09 21:21:10.595238137 +0100
 +++ src/third_party/electron_node/common.gypi	2022-11-09 22:07:29.480041964 +0100
-@@ -243,9 +243,6 @@
+@@ -243,12 +243,6 @@
              # increase performance, number from experimentation
              'cflags': [ '-qINLINE=::150:100000' ]
            }],
 -          ['OS!="mac" and OS!="win" and OS!="zos"', {
+-            # -fno-omit-frame-pointer is necessary for the --perf_basic_prof
+-            # flag to work correctly. perf(1) gets confused about JS stack
+-            # frames otherwise, even with --call-graph dwarf.
 -            'cflags': [ '-fno-omit-frame-pointer' ],
 -          }],
            ['OS=="linux"', {

@@ -19,8 +19,8 @@ Index: chromium-98.0.4758.80/ui/ozone/platform/drm/gpu/crtc_controller.h
 --- chromium-98.0.4758.80.orig/ui/ozone/platform/drm/gpu/crtc_controller.h
 +++ chromium-98.0.4758.80/ui/ozone/platform/drm/gpu/crtc_controller.h
 @@ -11,7 +11,7 @@
- #include <xf86drmMode.h>
  
+ #include "base/memory/raw_ref.h"
  #include "base/memory/weak_ptr.h"
 -#include "third_party/libdrm/src/include/drm/drm_fourcc.h"
 +#include <drm_fourcc.h>
@@ -32,8 +32,8 @@ Index: chromium-98.0.4758.80/ui/ozone/platform/drm/gpu/hardware_display_controll
 --- chromium-98.0.4758.80.orig/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
 +++ chromium-98.0.4758.80/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
 @@ -20,7 +20,7 @@
+ #include "base/metrics/histogram_macros.h"
  #include "base/ranges/algorithm.h"
- #include "base/strings/stringprintf.h"
  #include "base/trace_event/typed_macros.h"
 -#include "third_party/libdrm/src/include/drm/drm_fourcc.h"
 +#include <drm_fourcc.h>
@@ -45,7 +45,7 @@ Index: chromium-98.0.4758.80/media/gpu/chromeos/video_decoder_pipeline_unittest.
 --- chromium-98.0.4758.80.orig/media/gpu/chromeos/video_decoder_pipeline_unittest.cc
 +++ chromium-98.0.4758.80/media/gpu/chromeos/video_decoder_pipeline_unittest.cc
 @@ -23,7 +23,7 @@
- #include "media/gpu/chromeos/mailbox_video_frame_converter.h"
+ #include "media/gpu/chromeos/dmabuf_video_frame_pool.h"
  #include "testing/gmock/include/gmock/gmock.h"
  #include "testing/gtest/include/gtest/gtest.h"
 -#include "third_party/libdrm/src/include/drm/drm_fourcc.h"

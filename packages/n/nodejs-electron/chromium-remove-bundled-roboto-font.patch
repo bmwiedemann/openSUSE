@@ -2,38 +2,36 @@ This font is already available in opensuse and can be installed systemwide
 
 --- a/ui/webui/resources/BUILD.gn	2022-06-15 15:58:23.822426713 +0200
 +++ b/ui/webui/resources/BUILD.gn	2022-06-21 15:51:23.647223308 +0200
-@@ -36,17 +36,6 @@
-     "$root_gen_dir/third_party/jstemplate/resources.grdp",
-   ]
+@@ -36,16 +36,6 @@
+   input_files = [ "test_loader.html" ]
+   input_files_base_dir = rebase_path(".", "//")
  
 -  if (!is_chromeos_ash && !is_android) {
 -    # Roboto Font. Roboto-Regular and Roboto-Light is already available on
 -    # Android, and Roboto-Medium is not used on Android. All 6 weights of
 -    # Roboto are available on Chrome OS.
--    input_files_base_dir = rebase_path(".", "//")
--    input_files = [
+-    input_files += [
 -      "roboto/roboto-bold.woff2",
 -      "roboto/roboto-medium.woff2",
 -      "roboto/roboto-regular.woff2",
 -    ]
 -  }
  
-   if (include_polymer) {
-     public_deps += [
+   public_deps = [
+     "cr_elements:build_grdp",
 'roboto.css' -> 'roboto.css.new'
 --- a/ui/webui/resources/css/roboto.css	2022-06-15 15:58:23.846426661 +0200
 +++ b/ui/webui/resources/css/roboto.css	2022-06-21 15:53:08.931243442 +0200
-@@ -2,28 +2,3 @@
+@@ -2,26 +2,3 @@
   * Use of this source code is governed by a BSD-style license that can be
   * found in the LICENSE file. */
  
--<if expr="not chromeos_ash and not is_android">
 -@font-face {
 -  font-family: 'Roboto';
 -  font-style: normal;
 -  font-weight: 400;
 -  src: local('Roboto'), local('Roboto-Regular'),
--      url(chrome://resources/roboto/roboto-regular.woff2) format('woff2');
+-      url(//resources/roboto/roboto-regular.woff2) format('woff2');
 -}
 -
 -@font-face {
@@ -41,7 +39,7 @@ This font is already available in opensuse and can be installed systemwide
 -  font-style: normal;
 -  font-weight: 500;
 -  src: local('Roboto Medium'), local('Roboto-Medium'),
--      url(chrome://resources/roboto/roboto-medium.woff2) format('woff2');
+-      url(//resources/roboto/roboto-medium.woff2) format('woff2');
 -}
 -
 -@font-face {
@@ -49,6 +47,5 @@ This font is already available in opensuse and can be installed systemwide
 -  font-style: normal;
 -  font-weight: 700;
 -  src: local('Roboto Bold'), local('Roboto-Bold'),
--      url(chrome://resources/roboto/roboto-bold.woff2) format('woff2');
+-      url(//resources/roboto/roboto-bold.woff2) format('woff2');
 -}
--</if>

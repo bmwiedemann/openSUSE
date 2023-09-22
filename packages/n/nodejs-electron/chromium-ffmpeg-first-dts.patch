@@ -114,7 +114,7 @@ index c147309d6f..48a8f6ad8c 100644
 +  int64_t first_dts_;
    int64_t last_packet_pos_;
    int64_t last_packet_dts_;
- };
+   // Requested buffer count. The actual returned buffer count could be less
 -- 
 2.35.1
 
