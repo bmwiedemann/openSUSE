@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-servlet-api
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           glassfish-servlet-api
 Version:        3.1.0
 Release:        0
 Summary:        Java Servlet API
-License:        (CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0) AND Apache-2.0
+License:        Apache-2.0 AND (CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0)
 Group:          Development/Libraries/Java
 URL:            http://servlet-spec.java.net
 Source0:        https://github.com/javaee/servlet-spec/archive/%{version}.tar.gz

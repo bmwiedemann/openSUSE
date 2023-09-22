@@ -17,4 +17,12 @@
 </comment>
     <requestid>693093</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c1db5f663e89198c920335a2666c628a</srcmd5>
+    <version>3.1.0</version>
+    <time>1695412042</time>
+    <user>anag+factory</user>
+    <comment>fix build with java &gt;= 20</comment>
+    <requestid>1112749</requestid>
+  </revision>
 </revisionlist>

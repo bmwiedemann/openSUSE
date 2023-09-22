@@ -49,10 +49,10 @@
            optimize="false" 
            deprecation="true" 
            encoding="${project.build.sourceEncoding}"
-           target="1.7" 
+           target="1.8" 
            verbose="false" 
            fork="false" 
-           source="1.7">
+           source="1.8">
       <src>
         <pathelement location="${build.srcDir.0}"/>
       </src>
@@ -83,7 +83,7 @@
              version="true" 
              use="true" 
              encoding="${project.build.sourceEncoding}"
-             source="1.7" 
+             source="1.8" 
              author="true" 
              splitindex="false" 
              windowtitle="Java Servlet 3.1" 
