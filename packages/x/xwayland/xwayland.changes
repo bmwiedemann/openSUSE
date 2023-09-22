@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 20 08:53:56 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 23.2.1:
+  * glamor: Ignore destination alpha as necessary for composite operation
+  * xtest: Check whether there is a sendEventsProc to call
+- supersedes xwayland-glamor-Ignore-destination-alpha-as-necessary-for-com.patch
+
+-------------------------------------------------------------------
+Mon Sep 18 15:22:57 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- xwayland-glamor-Ignore-destination-alpha-as-necessary-for-com.patch
+  * Fix when vncviewer fades to white on xwayland (bsc#1215385,
+    https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/1154)
+
+------------------------------------------------------------------
 Sat Aug 26 04:14:45 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - enable libei and libdecor only for TW, since it does not exist

@@ -24,7 +24,7 @@
 %endif
 
 Name:           xwayland
-Version:        23.2.0
+Version:        23.2.1
 Release:        0
 URL:            http://xorg.freedesktop.org
 Summary:        Xwayland Xserver
@@ -33,6 +33,7 @@ Group:          System/X11/Servers/XF86_4
 Source0:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz
 Source1:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz.sig
 Source2:        xwayland.keyring
+
 
 BuildRequires:  meson
 BuildRequires:  ninja
