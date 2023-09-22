@@ -22,7 +22,7 @@
 %define elspec 3.0
 %define major_version 9
 %define minor_version 0
-%define micro_version 75
+%define micro_version 80
 %define packdname apache-tomcat-%{version}-src
 # FHS 2.3 compliant tree structure - http://www.pathname.com/fhs/2.3/
 %global basedir /srv/%{name}
@@ -66,7 +66,7 @@ Source33:       tomcat-serverxml-tool.tar.gz
 Source34:       tomcat-serverxml-tool.sh.in
 Source1000:     tomcat-rpmlintrc
 Source1001:     https://archive.apache.org/dist/tomcat/tomcat-%{major_version}/v%{version}/src/%{packdname}.tar.gz.asc
-Source1002:     %{name}.keyring
+Source1002:     https://downloads.apache.org/tomcat/tomcat-9/KEYS#/%{name}.keyring
 #PATCH-FIX-UPSTREAM: from jpackage.org package
 Patch0:         %{name}-%{major_version}.%{minor_version}-bootstrap-MANIFEST.MF.patch
 #PATCH-FIX-UPSTREAM: from jpackage.org package
@@ -639,7 +639,7 @@ fi
 %postun servlet-4_0-api
 if [ $1 -eq 0 ] ; then
     if [ ! -f %{_sysconfdir}/alternatives/servlet ]; then
-        # /etc/alternatives/servlet was removed on uninstall.
+        # %{_sysconfdir}/alternatives/servlet was removed on uninstall.
         # Create a broken symlink to make sure update-alternatives works correctly and falls back
         # to servletapi5 or servletapi4 if they're installed.
         ln -s %{_javadir}/%{name}-servlet-%{servletspec}-api.jar %{_sysconfdir}/alternatives/servlet

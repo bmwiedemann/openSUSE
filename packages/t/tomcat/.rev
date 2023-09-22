@@ -893,4 +893,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment></comment>
     <requestid>1111850</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>38444acb7ebb2d129661d177ef1bd80e</srcmd5>
+    <version>9.0.80</version>
+    <time>1695412055</time>
+    <user>anag+factory</user>
+    <comment>9.0.80, CVE-2023-41080, bsc#1214666</comment>
+    <requestid>1112902</requestid>
+  </revision>
 </revisionlist>

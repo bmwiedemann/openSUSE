@@ -1,4 +1,181 @@
 -------------------------------------------------------------------
+Thu Sep 21 16:41:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to Tomcat 9.0.80
+  * Catalina
+    + Add RateLimitFilter which can be used to mitigate DoS and
+      Brute Force attacks
+    + Move the management of the utility executor from the
+      init()/destroy() methods of components to the start()/stop()
+      methods.
+    + Add org.apache.catalina.core.StandardVirtualThreadExecutor,
+      a virtual thread based executor that may be used with one or
+      more Connectors to process requests received by those
+      Connectors using virtual threads. This Executor requires a
+      minimum Java version of Java 21.
+    + 66513: Add a per session Semaphore to the PersistentValve that
+      ensures that, within a single Tomcat instance, there is no
+      more than one concurrent request per session. Also expand the
+      debug logging to include whether a request bypasses the Valve
+      and the reason if a request fails to obtain the per session
+      Semaphore.
+    + 66609: Ensure that the default servlet correctly escapes file
+      names in directory listings when using XML output.
+    + 66618: Add a numeric last modified field to the XML directory
+      listings produced by the default servlet to enable sorting in
+      the XSLT.
+    + 66621: Attempts to lock a collection with WebDAV may
+      incorrectly fail if a child collection has an expired lock.
+    + 66622: Deprecate the xssProtectionEnabled setting from the
+      HttpHeaderSecurityFilter and change the default value to false
+      as support for the associated HTTP header has been removed
+      from all major browsers.
+    + 59232: Add org.apache.catalina.core.ContextNamingInfoListener,
+      a listener which creates context naming information
+      environment entries.
+    + 66665: Add
+      org.apache.catalina.core.PropertiesRoleMappingListener, a
+      listener which populates the context's role mapping from a
+      properties file.
+    + Fix an edge case where intra-web application symlinks would be
+      followed if the web applications were deliberately crafted to
+      allow it even when allowLinking was set to false.
+    + Add utility config file resource lookup on Context to allow
+      looking up resources from the webapp (prefixed with webapp:)
+      and make the resource lookup API more visible.
+    + Fix potential database connection leaks in
+      DataSourceUserDatabase identified by Coverity Scan.
+    + Make parsing of ExtendedAccessLogValve patterns more robust.
+    + Fix failure trying to persist configuration for an internal
+      credential handler.
+    + 66680: When serializing a session during the session
+      presistence process, do not log a warning that null Principals
+      are not serializable.
+    + Catch NamingException in JNDIRealm#getPrincipal. It is used in
+      Java up to 17 to signal closed connections.
+    + 66822: Use the same naming format in log messages for
+      Connector instances as the associated ProtocolHandler instance.
+    + The parts count should also lower the actual maxParameterCount
+      used for parsing parameters if parts are parsed first.
+    + If an application or library sets both a non-500 error code
+      and the javax.servlet.error.exception request attribute, use
+      the provided error code during error page processing rather
+      than assuming an error code of 500.
+    + Update code comments and Tomcat output to use MiB for
+      1024 * 1024 bytes and KiB for 1024 bytes rather than
+      MB and kB.
+    + Avoid protocol relative redirects in FORM authentication
+      (CVE-2023-41080, bsc#1214666).
+  * Coyote
+    + Update the HTTP/2 implementation to use the prioritization
+      scheme defined in RFC 9218 rather than the one defined in
+      RFC 7540.
+    + 66602: not sending WINDOW_UPDATE when dataLength is ZERO on
+      call SwallowedDataFramePayload.
+    + 66627: Restore the documented behaviour of
+      MessageBytes.getType() that it returns the type of the
+      original content rather than reflecting the most recent
+      conversion.
+    + 66635: Correct certificate logging on start-up so it
+      differentiates between keystore based keys/certificates and
+      PEM file based keys/certificates and logs the relevant
+      information for each.
+    + Refactor blocking reads and writes for the NIO connector to
+      remove code paths that could allow a notification from the
+      Poller to be missed resuting in a timeout rather than the
+      expected read or write.
+    + Refactor waiting for an HTTP/2 stream or connection window
+      update to handle spurious wake-ups during the wait.
+    + Correct a regression introduced in 9.0.78 and use the correct
+      constant when constructing the default value for the
+      certificateKeystoreFile attribute of an
+      SSLHostConfigCertificate instance.
+    + Refactor HTTP/2 implementation to reduce pinning when using
+      virtual threads.
+    + Pass through ciphers referring to an OpenSSL profile, such as
+      PROFILE=SYSTEM instead of producing an error trying to parse
+      it.
+    + 66841: Ensure that AsyncListener.onError() is called after an
+      error during asynchronous processing with HTTP/2.
+    + 66842: When using asynchronous I/O (the default for NIO and
+      NIO2), include DATA frames when calculating the HTTP/2
+      overhead count to ensure that connections are not prematurely
+      terminated.
+    + Correct a race condition that could cause spurious RST
+      messages to be sent after the response had been written to an
+      HTTP/2 stream.
+  * WebSocket
+    + 66548: Expand the validation of the value of the
+      Sec-Websocket-Key header in the HTTP upgrade request that
+      initiates a WebSocket connection. The value is not decoded but
+      it is checked for the correct length and that only valid
+      characters from the base64 alphabet are used.
+    + Improve handling of error conditions for the WebSocket server,
+      particularly during Tomcat shutdown.
+    + Correct a regression in the fix for 66574 that meant the
+      WebSocket session could return false for onOpen() before the
+      onClose() event had been completed.
+    + 66681: Fix a NullPointerException when flushing batched
+      messages with compression enabled using permessage-deflate.
+  * Web applications
+    + Documentation. Expand the security guidance to cover the
+      embedded use case and add notes on the uses made of the
+      java.io.tmpdir system property.
+    + 66662: Documentation. Fix a typo in the name of the algorithms
+      attribute in the configuration section for the Digest
+      authentication value.
+    + Documentation. Update documentation to use MiB for
+      1024 * 1024 bytes and KiB for 1024 bytes rather than
+      MB and kB.
+  * jdbc-pool
+    + Fix the releaseIdleCounter does not increment when testAllIdle
+      releases them.
+    + Fix the ConnectionState state will be inconsistent with actual
+      state on the connection when an exception occurs while
+      writing.
+  * Other
+    + Update to Commons Daemon 1.3.4.
+    + Improvements to French translations.
+    + Update Checkstyle to 10.12.0.
+    + Update the packaged version of the Apache Tomcat Native
+      Library to 1.2.37 to pick up the Windows binaries built with
+      with OpenSSL 1.1.1u.
+    + Include the Windows specific binary distributions in the files
+      uploaded to Maven Central.
+    + Improvements to French translations.
+    + Improvements to Japanese translations.
+    + Update UnboundID to 6.0.9.
+    + Update Checkstyle to 10.12.1.
+    + Update BND to 6.4.1.
+    + Update JSign to 5.0.
+    + Correct properties for JSign dependency.
+    + Align documentation for maxParameterCount to match hard-coded
+      defaults.
+    + Update NSIS to 3.0.9.
+    + Update Checkstyle to 10.12.2.
+    + Improvements to French translations.
+    + Improvements to Japanese translations.
+    + 66829: Fix quoting so users can use the _RUNJAVA environment
+      variable as intended on Windows when the path to the Java
+      executable contains spaces.
+    + Update Tomcat Native to 1.2.38 to pick up Windows binaries
+      built with OpenSSL 1.1.1v.
+    + Improvements to Chinese translations.
+    + Improvements to French translations.
+    + Improvements to Japanese translations
+- Removed patch:
+  * tomcat-9.0.75-CVE-2023-41080.patch
+    + integrated in this version
+
+-------------------------------------------------------------------
+Thu Sep 21 13:19:54 UTC 2023 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Fixed CVEs:
+  * CVE-2023-41080: Avoid protocol relative redirects in FORM authentication. (bsc#1214666)
+- Added patches:
+  * tomcat-9.0.75-CVE-2023-41080.patch
+
+-------------------------------------------------------------------
 Mon Sep 18 06:03:34 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
