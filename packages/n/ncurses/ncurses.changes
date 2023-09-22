@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 12 08:44:25 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230909
+  + improve formatting of manpages (patches by Branden Robinson).
+  > patches by Nicholas Marriott:
+    + use string-hacks in alloc_entry.c, alloc_type.c and hardscroll.c,
+      overlooked due to compiler changes in recent OpenBSD releases.
+    + add "-6" option to ncu2openbsd script.
+- Add ncurses patch 20230902
+  + improve description of search rules for terminal descriptions in
+    terminfo manpage (report by Sven Joachim).
+- Add ncurses patch 20230826
+  + fixes for compiler-warnings.
+  + update config.guess, config.sub
+
+-------------------------------------------------------------------
 Mon Aug 21 06:02:33 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20230819
