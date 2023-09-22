@@ -121,15 +121,11 @@ BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(umockdev-1.0)
 BuildRequires:  pkgconfig(xmlb) >= 0.1.13
 %if %{with efi_fw_update}
-BuildRequires:  gnu-efi
 BuildRequires:  pkgconfig(efiboot)
 BuildRequires:  pkgconfig(efivar) >= 33
 %endif
 %ifarch %{ix86} x86_64
 BuildRequires:  pkgconfig(libsmbios_c) >= 2.3.0
-%endif
-%if 0%{?suse_version} < 1550
-BuildRequires:  protobuf-c
 %endif
 %if %{with efi_fw_update}
 Obsoletes:      dbxtool <= 8

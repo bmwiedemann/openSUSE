@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 15 07:32:14 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove protobuf-c BR: SLE now matches TW package layout
+- Remove gnu-efi BR: efi binary is in fwupd-efi
+
+-------------------------------------------------------------------
 Sat Jul 22 12:25:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.8.17:
