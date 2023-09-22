@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 20 10:18:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes to fix issues with the google resource
+  (boo#1214714, kde#470820)
+  * 0001-Revert-Revert-Use-config-plugin-instead-of-out-of-pr.patch
+  * 0002-Revert-Revert-Fix-race-condition-when-building.patch
+  * 0003-Actually-start-job-to-read-secret-key.patch
+
+-------------------------------------------------------------------
 Tue Sep 12 11:55:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1

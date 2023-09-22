@@ -899,4 +899,16 @@
     <comment>KDE release gear 23.08.1 (forwarded request 1110807 from krop)</comment>
     <requestid>1111155</requestid>
   </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>2b29b8bf52902fa6922651266887981f</srcmd5>
+    <version>23.08.1</version>
+    <time>1695412028</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream changes to fix issues with the google resource
+  (boo#1214714, kde#470820)
+  * 0001-Revert-Revert-Use-config-plugin-instead-of-out-of-pr.patch
+  * 0002-Revert-Revert-Fix-race-condition-when-building.patch
+  * 0003-Actually-start-job-to-read-secret-key.patch</comment>
+    <requestid>1112533</requestid>
+  </revision>
 </revisionlist>
