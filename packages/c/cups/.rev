@@ -1281,4 +1281,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>Fix for CVE-2023-34241 use-after-free in cupsdAcceptClient() bsc#1212230 (forwarded request 1094634 from jsmeix)</comment>
     <requestid>1094635</requestid>
   </revision>
+  <revision rev="169" vrev="7">
+    <srcmd5>c19ea54335dc2315461ac6fd8fc5c817</srcmd5>
+    <version>2.4.2</version>
+    <time>1695412029</time>
+    <user>anag+factory</user>
+    <comment>Security fixes CVE-2023-4504 bsc#1215204 and CVE-2023-32360 bsc#1214254 for CUPS (forwarded request 1112569 from jsmeix)</comment>
+    <requestid>1112570</requestid>
+  </revision>
 </revisionlist>

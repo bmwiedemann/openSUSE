@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 20 13:01:03 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
+
+- cups-2.4.2-CVE-2023-4504.patch fixes CVE-2023-4504
+  "CUPS PostScript Parsing Heap Overflow"
+  https://github.com/OpenPrinting/cups/security/advisories/GHSA-pf5r-86w9-678h
+  bsc#1215204
+
+-------------------------------------------------------------------
+Wed Sep 20 11:55:35 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
+
+- cups-2.4.2-CVE-2023-32360.patch fixes CVE-2023-32360
+  "Information leak through Cups-Get-Document operation"
+  by requiring authentication for CUPS-Get-Document in cupsd.conf
+  https://github.com/OpenPrinting/cups/commit/a0c8b9c9556882f00c68b9727a95a1b6d1452913
+  https://github.com/OpenPrinting/cups/security/advisories/GHSA-7pv4-hx8c-gr4g
+  bsc#1214254
+- cups-2.4.2-additional_policies.patch is an updated version
+  of cups-2.0.3-additional_policies.patch that replaces it
+  to add the 'allowallforanybody' policy to cupsd.conf
+  after cups-2.4.2-CVE-2023-32360.patch was applied
+
+-------------------------------------------------------------------
 Thu Jun 22 10:50:34 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
 
 - cups-2.4.2-CVE-2023-34241.patch fixes CVE-2023-34241

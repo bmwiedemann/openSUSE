@@ -1,6 +1,6 @@
---- conf/cupsd.conf.in.orig	2014-04-02 18:52:53.000000000 +0200
-+++ conf/cupsd.conf.in	2015-07-01 14:39:58.000000000 +0200
-@@ -127,3 +127,45 @@ WebInterface @CUPS_WEBIF@
+--- conf/cupsd.conf.in.CVE-2023-32360.patched	2023-09-20 13:39:53.316719260 +0200
++++ conf/cupsd.conf.in	2023-09-20 13:46:48.474661749 +0200
+@@ -196,3 +196,45 @@ IdleExitTimeout @EXIT_TIMEOUT@
      Order deny,allow
    </Limit>
  </Policy>
@@ -15,7 +15,7 @@
 +# print jobs from an internal network to any external destination, see
 +# http://en.opensuse.org/SDB:CUPS_in_a_Nutshell
 +# For documentation regarding 'Managing Operation Policies' see
-+# http://www.cups.org/documentation.php/doc-1.7/policies.html
++# https://openprinting.github.io/cups/doc/policies.html
 +<Policy allowallforanybody>
 +  # Allow anybody to access job's private values:
 +  JobPrivateAccess all

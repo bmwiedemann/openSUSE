@@ -80,9 +80,6 @@ Patch11:        cups-2.1.0-default-webcontent-path.patch
 # Patch100...Patch999 is for private patches from SUSE which are not intended for upstream:
 # Patch100 cups-pam.diff adds conf/pam.suse regarding support for PAM for SUSE:
 Patch100:       cups-pam.diff
-# Patch101 cups-2.0.3-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
-# see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
-Patch101:       cups-2.0.3-additional_policies.patch
 # Patch103 cups-1.4-do_not_strip_recommended_from_PPDs.patch
 # reverts the change which was added by Michael Sweet in Jan 2007
 # which strips the word "recommended" from NickName in PPDs because
@@ -112,6 +109,19 @@ Patch109:       cups-2.4.2-CVE-2023-32324.patch
 # https://github.com/OpenPrinting/cups/security/advisories/GHSA-qjgh-5hcq-5f25
 # https://bugzilla.suse.com/show_bug.cgi?id=1212230
 Patch110:       cups-2.4.2-CVE-2023-34241.patch
+# Patch111 cups-2.4.2-CVE-2023-32360.patch
+# fixes CVE-2023-32360 "Information leak through Cups-Get-Document operation"
+# https://github.com/OpenPrinting/cups/security/advisories/GHSA-7pv4-hx8c-gr4g
+# https://bugzilla.suse.com/show_bug.cgi?id=1214254
+Patch111:       cups-2.4.2-CVE-2023-32360.patch
+# Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
+# see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
+Patch112:       cups-2.4.2-additional_policies.patch
+# Patch113 cups-2.4.2-CVE-2023-4504.patch
+# fixes CVE-2023-4504 "CUPS PostScript Parsing Heap Overflow"
+# https://github.com/OpenPrinting/cups/security/advisories/GHSA-pf5r-86w9-678h
+# https://bugzilla.suse.com/show_bug.cgi?id=1215204
+Patch113:       cups-2.4.2-CVE-2023-4504.patch
 # Build Requirements:
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
@@ -317,9 +327,6 @@ printer drivers for CUPS.
 # Patch100...Patch999 is for private patches from SUSE which are not intended for upstream:
 # Patch100 cups-pam.diff adds conf/pam.suse regarding support for PAM for SUSE:
 %patch100 -b cups-pam.orig
-# Patch101 cups-2.0.3-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
-# see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
-%patch101 -b additional_policies.orig
 # Patch103 cups-1.4-do_not_strip_recommended_from_PPDs.patch
 # reverts the change which was added by Michael Sweet in Jan 2007
 # which strips the word "recommended" from NickName in PPDs because
@@ -349,6 +356,19 @@ printer drivers for CUPS.
 # https://github.com/OpenPrinting/cups/security/advisories/GHSA-qjgh-5hcq-5f25
 # https://bugzilla.suse.com/show_bug.cgi?id=1212230
 %patch110 -b cups-2.4.2-CVE-2023-34241.orig
+# Patch111 cups-2.4.2-CVE-2023-32360.patch
+# fixes CVE-2023-32360 "Information leak through Cups-Get-Document operation"
+# https://github.com/OpenPrinting/cups/security/advisories/GHSA-7pv4-hx8c-gr4g
+# https://bugzilla.suse.com/show_bug.cgi?id=1214254
+%patch111 -b cups-2.4.2-CVE-2023-32360.orig
+# Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
+# see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
+%patch112 -b cups-2.4.2-additional_policies.orig
+# Patch113 cups-2.4.2-CVE-2023-4504.patch
+# fixes CVE-2023-4504 "CUPS PostScript Parsing Heap Overflow"
+# https://github.com/OpenPrinting/cups/security/advisories/GHSA-pf5r-86w9-678h
+# https://bugzilla.suse.com/show_bug.cgi?id=1215204
+%patch113 -b cups-2.4.2-CVE-2023-4504.orig
 
 %build
 # Remove ".SILENT" rule for verbose build output
