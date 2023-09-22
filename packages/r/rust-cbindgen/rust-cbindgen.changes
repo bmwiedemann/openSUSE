@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 13 23:31:17 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.26.0+git0:
+  * v0.26.0
+  * Update MSRV in Readme
+  * Add support for out-of-line bitfields declarations
+  * Update URLs
+  * Bump clippy msrv to 1.64
+  * Handle bitflags bits method calls
+  * CHANGES: Note #[deprecated] support.
+  * utilities: annotation: Clean-up deprecated parsing and getter.
+  * Add support for #[deprecated].
+  * Support "C-unwind" ABI
+
+-------------------------------------------------------------------
 Mon Sep 04 23:21:09 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.25.0+git0:
