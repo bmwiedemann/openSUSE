@@ -40,6 +40,17 @@ Fri Jul 21 02:48:58 UTC 2023 - Simon Lees <sflees@suse.de>
 
 
 -------------------------------------------------------------------
+Wed Jun 21 12:14:54 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable old lastlog, we use pam_lastlog2
+- openssh-8.4p1-pam_motd.patch: adjust to remove PrintLastLog
+
+-------------------------------------------------------------------
+Thu Jun 15 07:05:38 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- logind_set_tty.patch: tell systemd-logind our current TTY
+
+-------------------------------------------------------------------
 Thu May 11 07:01:54 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to openssh 9.3p1:

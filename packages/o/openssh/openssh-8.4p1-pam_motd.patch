@@ -1,19 +1,13 @@
-Gemeinsame Unterverzeichnisse: openssh-8.4p1.orig/contrib und openssh-8.4p1/contrib.
-Gemeinsame Unterverzeichnisse: openssh-8.4p1.orig/.github und openssh-8.4p1/.github.
-Gemeinsame Unterverzeichnisse: openssh-8.4p1.orig/m4 und openssh-8.4p1/m4.
-Gemeinsame Unterverzeichnisse: openssh-8.4p1.orig/openbsd-compat und openssh-8.4p1/openbsd-compat.
-Gemeinsame Unterverzeichnisse: openssh-8.4p1.orig/regress und openssh-8.4p1/regress.
 diff -u openssh-8.4p1.orig/sshd_config openssh-8.4p1/sshd_config
 --- openssh-8.4p1.orig/sshd_config	2020-09-27 09:25:01.000000000 +0200
 +++ openssh-8.4p1/sshd_config	2021-05-18 19:15:39.190701511 +0200
-@@ -88,8 +88,8 @@
+@@ -88,8 +88,7 @@
  #X11DisplayOffset 10
  #X11UseLocalhost yes
  #PermitTTY yes
 -#PrintMotd yes
 -#PrintLastLog yes
 +PrintMotd no
-+PrintLastLog no
  #TCPKeepAlive yes
  #PermitUserEnvironment no
  #Compression delayed

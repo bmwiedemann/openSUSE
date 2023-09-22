@@ -1683,4 +1683,12 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
      may circumvent this restriction. (forwarded request 1099810 from simotek)</comment>
     <requestid>1099856</requestid>
   </revision>
+  <revision rev="166" vrev="2">
+    <srcmd5>a594eb0c2a62c8a67d0eba10c5d9a700</srcmd5>
+    <version>9.3p2</version>
+    <time>1695412018</time>
+    <user>anag+factory</user>
+    <comment>Teach openssh to tell logind the TTY, else tools like wall will stop working now with the new systemd v254 and util-linux (and who, w, ... will not show a tty) (forwarded request 1110800 from kukuk)</comment>
+    <requestid>1112087</requestid>
+  </revision>
 </revisionlist>

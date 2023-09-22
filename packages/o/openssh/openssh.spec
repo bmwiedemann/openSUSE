@@ -115,6 +115,7 @@ Patch48:        openssh-8.4p1-pam_motd.patch
 Patch49:        openssh-do-not-send-empty-message.patch
 Patch50:        openssh-openssl-3.patch
 Patch51:        wtmpdb.patch
+Patch52:        logind_set_tty.patch
 Patch100:       fix-missing-lz.patch
 BuildRequires:  audit-devel
 BuildRequires:  automake
@@ -317,6 +318,10 @@ export LDFLAGS CFLAGS CXXFLAGS CPPFLAGS
     --with-libedit \
 %if %{with wtmpdb}
     --with-wtmpdb \
+%endif
+%if 0%{?suse_version} >= 1550
+    --disable-lastlog \
+    --with-logind \
 %endif
     --with-security-key-builtin \
     --target=%{_target_cpu}-suse-linux
