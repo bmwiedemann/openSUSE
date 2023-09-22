@@ -2248,4 +2248,14 @@ let build start it or we will get libvirt errors.
     <comment></comment>
     <requestid>1108398</requestid>
   </revision>
+  <revision rev="141" vrev="5">
+    <srcmd5>5de4e66344d0bfc1e0e7fc290cea779e</srcmd5>
+    <version>3006.0</version>
+    <time>1695412033</time>
+    <user>anag+factory</user>
+    <comment>- Fix inconsistency in reported version by egg-info metadata (bsc#1215489)
+- Added:
+  * write-salt-version-before-building-when-using-with-s.patch</comment>
+    <requestid>1112589</requestid>
+  </revision>
 </revisionlist>

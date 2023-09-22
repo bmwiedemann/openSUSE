@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 20 12:17:44 UTC 2023 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix inconsistency in reported version by egg-info metadata (bsc#1215489)
+
+- Added:
+  * write-salt-version-before-building-when-using-with-s.patch
+
+-------------------------------------------------------------------
 Fri Sep  1 07:33:18 UTC 2023 - Victor Zhestkov <vzhestkov@suse.com>
 
 - Revert usage of long running REQ channel to prevent possible
