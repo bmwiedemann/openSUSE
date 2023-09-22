@@ -1229,4 +1229,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1111052</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>416ed4f173b94a00f6590b2aa3f5c192</srcmd5>
+    <version>7.4.2</version>
+    <time>1695412011</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.4.2:
+  * Fix doctest collection of
+    `functools.cached_property` objects.
+  * Fixed bug using
+    ``--importmode=importlib`` which would cause package
+    ``__init__.py`` files to be imported more than once in some
+    cases.
+  * Fixed bug where `user_properties`
+    where not being saved in the JUnit XML file if a fixture
+    failed during teardown.
+  * Fixed crash when parsing long
+    command line arguments that might be interpreted as files.
+  * Improved Documentation
+  * Improved disclaimer on pytest
+    plugin reference page to better indicate this is an
+    automated, non-curated listing.
+
+- drop fix-test-raising-repr.patch, fix-tests-pygments-2.14.0.patch:
+    https://docs.pytest.org/en/7.1.x/changelog.html for details
+        assert actual == pytest.approx(expected)
+  * pytest used to create directories under /tmp with world-readable
+    permissions. This means that any user in the system was able to
+    read information written by tests in temporary directories (such
+    as those created by the tmp_path/tmpdir fixture). Now the
+  * #8152: Fixed &quot;(&lt;Skipped instance&gt;)&quot; being shown as a skip reason in the
+  * #8249: Fix the faulthandler plugin for occasions when running with
+  * The @pytest.yield_fixture decorator/function is now deprecated.
+  * Verbose mode now shows the reason that a test was skipped in the
+  * pytest now warns about unraisable exceptions and unhandled thread
+  * New pytester fixture, which is identical to testdir but its methods</comment>
+    <requestid>1112015</requestid>
+  </revision>
 </revisionlist>
