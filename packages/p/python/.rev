@@ -4019,4 +4019,22 @@ However, upstream development now focuses on 3.x series.
     (bsc#1214692, CVE-2023-40217)</comment>
     <requestid>1110909</requestid>
   </revision>
+  <revision rev="188" vrev="39">
+    <srcmd5>3c73ca04285568cc6d0a4c73374e062a</srcmd5>
+    <version>2.7.18</version>
+    <time>1695412000</time>
+    <user>anag+factory</user>
+    <comment>- (bsc#1214691, CVE-2022-48566) Add
+  CVE-2022-48566-compare_digest-more-constant.patch to make
+  compare_digest more constant-time.
+
+- (bsc#1214685, CVE-2022-48565) Add
+  CVE-2022-48565-plistlib-XML-vulns.patch (from
+  gh#python/cpython#86217) reject XML entity declarations in
+  plist files.
+- Remove BOTH CVE-2023-27043-email-parsing-errors.patch and
+  Revert-gh105127-left-tests.patch (as per discussion on
+  bsc#1210638).</comment>
+    <requestid>1111680</requestid>
+  </revision>
 </revisionlist>

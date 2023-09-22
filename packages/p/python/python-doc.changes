@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Sep 16 12:40:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- (bsc#1214691, CVE-2022-48566) Add
+  CVE-2022-48566-compare_digest-more-constant.patch to make
+  compare_digest more constant-time.
+
+-------------------------------------------------------------------
+Thu Sep 14 20:45:36 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- (bsc#1214685, CVE-2022-48565) Add
+  CVE-2022-48565-plistlib-XML-vulns.patch (from
+  gh#python/cpython#86217) reject XML entity declarations in
+  plist files.
+- Remove BOTH CVE-2023-27043-email-parsing-errors.patch and
+  Revert-gh105127-left-tests.patch (as per discussion on
+  bsc#1210638).
+
+-------------------------------------------------------------------
 Tue Sep 12 07:55:52 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add CVE-2023-40217-avoid-ssl-pre-close.patch fixing

@@ -148,15 +148,18 @@ Patch75:        CVE-2023-24329-blank-URL-bypass.patch
 # PATCH-FIX-OPENSUSE PygmentsBridge-trime_doctest_flags.patch mcepl@suse.com
 # Build documentation even without PygmentsBridge.trim_doctest_flags
 Patch76:        PygmentsBridge-trime_doctest_flags.patch
-# PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
-# Detect email address parsing errors and return empty tuple to
-# indicate the parsing error (old API)
-Patch77:        CVE-2023-27043-email-parsing-errors.patch
-# PATCH-FIX-UPSTREAM Revert-gh105127-left-tests.patch bsc#1210638 mcepl@suse.com
-# Partially revert previous patch
-Patch78:        Revert-gh105127-left-tests.patch
+# # PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
+# # Detect email address parsing errors and return empty tuple to
+# # indicate the parsing error (old API)
+# Patch77:        CVE-2023-27043-email-parsing-errors.patch
+# PATCH-FIX-UPSTREAM CVE-2022-48565-plistlib-XML-vulns.patch bsc#1214685 mcepl@suse.com
+# Reject entity declarations in plists
+Patch78:        CVE-2022-48565-plistlib-XML-vulns.patch
 # PATCH-FIX-UPSTREAM CVE-2023-40217-avoid-ssl-pre-close.patch gh#python/cpython#108315
 Patch79:        CVE-2023-40217-avoid-ssl-pre-close.patch
+# PATCH-FIX-UPSTREAM CVE-2022-48566-compare_digest-more-constant.patch bsc#1214691 mcepl@suse.com
+# Make compare_digest more constant-time
+Patch80:        CVE-2022-48566-compare_digest-more-constant.patch
 # COMMON-PATCH-END
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -364,9 +367,10 @@ that rely on earlier non-verification behavior.
 %endif
 %patch75 -p1
 %patch76 -p1
-%patch77 -p1
+# %%patch77 -p1
 %patch78 -p1
 %patch79 -p1
+%patch80 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar
