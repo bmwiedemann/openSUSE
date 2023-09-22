@@ -38,11 +38,11 @@ BuildRequires:  python3-pip
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-wheel
+BuildRequires:  sysuser-tools
 Requires(post): %fillup_prereq
 BuildArch:      noarch
-%if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
 BuildRequires:  python3-Sphinx
-%endif
+%sysusers_requires
 
 %description
 Transparent proxy server that works as a poor man's VPN. Forwards over ssh.
@@ -63,23 +63,19 @@ sshuttle is a program that solves the following case:
 %patch0
 
 %build
-%if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
 (
 cd docs/;
 sed -i '/_scm/d' conf.py
 sed -ri 's/(version = )get_version.*/\1 "%{version}"/g' conf.py
 %make_build man
 )
-%endif
 %pyproject_wheel
 
 %install
 %pyproject_install
 
-%if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
 install -d -m 755 %{buildroot}%{_mandir}/man1
 install -m0644 docs/_build/man/%{name}.1 %{buildroot}/%{_mandir}/man1/
-%endif
 
 %fdupes %{buildroot}/%{python3_sitelib}/%{name}/
 
@@ -114,9 +110,7 @@ install -d -m 755 -o %{name} -g %{name} %{_localstatedir}/lib/%{name}
 %files
 %{python3_sitelib}/%{name}*
 %{_bindir}/%{name}
-%if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
 %{_mandir}/man1/%{name}.1%{?ext_man}
-%endif
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
 %{_fillupdir}/sysconfig.%{name}

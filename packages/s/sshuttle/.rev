@@ -179,4 +179,21 @@ Doesn't require admin. Works with Linux and MacOS. Supports DNS tunneling.</comm
     <comment></comment>
     <requestid>1096793</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>3e9a26e72dc6972ad7c72a0e9f202c6d</srcmd5>
+    <version>1.1.1</version>
+    <time>1695412049</time>
+    <user>anag+factory</user>
+    <comment>- add sysusers-requires
+- remove sle12 specific conditionals
+
+  settings from service file as they imply NNP, which doesn't work
+- switch to pep517 build for better shebangs
+- depend on setuptools_scm also on older dists
+- Sshuttle service should be started after firewalld
+- only build for main python3 version, this is not a module
+- moved upstream from apenwarr/sshuttle to (pip) sshuttle/sshuttle
+- fixed outdated licence string</comment>
+    <requestid>1112896</requestid>
+  </revision>
 </revisionlist>

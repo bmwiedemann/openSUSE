@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 21 18:44:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sysusers-requires
+- remove sle12 specific conditionals
+
+-------------------------------------------------------------------
 Tue Jul  4 08:17:54 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Remove
@@ -9,13 +15,13 @@ Tue Jul  4 08:17:54 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
   * ProtectKernelModules=true
   * ProtectKernelLogs=true
   * RestrictRealtime=true
-  settings from service file as they imply NNP, which doesn't work 
+  settings from service file as they imply NNP, which doesn't work
   with the sudo setup sshuttle uses (bsc#1212949)
 
 -------------------------------------------------------------------
 Mon Jun 12 22:28:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- switch to pep517 build for better shebangs 
+- switch to pep517 build for better shebangs
 
 -------------------------------------------------------------------
 Sat Dec  3 20:54:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -39,7 +45,7 @@ Sat Dec  3 20:54:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed May  4 18:41:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- depend on setuptools_scm also on older dists 
+- depend on setuptools_scm also on older dists
 
 -------------------------------------------------------------------
 Mon Apr 25 09:38:47 UTC 2022 - pgajdos@suse.com
@@ -67,7 +73,7 @@ Fri Nov 26 12:31:59 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 -------------------------------------------------------------------
 Fri Jun 18 10:08:51 UTC 2021 - Loic Devulder <ldevulder@suse.com>
 
-- Sshuttle service should be started after firewalld 
+- Sshuttle service should be started after firewalld
 
 -------------------------------------------------------------------
 Thu Jun 10 16:24:33 UTC 2021 - Loic Devulder <ldevulder@suse.com>
@@ -84,7 +90,7 @@ Wed Jun  9 14:25:01 UTC 2021 - Loic Devulder <ldevulder@suse.com>
 -------------------------------------------------------------------
 Fri Feb 19 00:09:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- only build for main python3 version, this is not a module 
+- only build for main python3 version, this is not a module
 
 -------------------------------------------------------------------
 Mon Jan  4 08:41:19 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
@@ -240,7 +246,7 @@ Tue May  9 20:54:10 UTC 2017 - matthias.eliasson@gmail.com
 -------------------------------------------------------------------
 Tue Nov  8 09:45:16 UTC 2016 - boris@steki.net
 
-- moved upstream from apenwarr/sshuttle to (pip) sshuttle/sshuttle 
+- moved upstream from apenwarr/sshuttle to (pip) sshuttle/sshuttle
   ( brianmay is maintaning fork and original updates anyway)
 - upgrade to 0.78.1
   + moved to semantic versioning
@@ -261,7 +267,7 @@ Wed Apr  1 13:37:17 UTC 2015 - wagner-thomas@gmx.at
 
 - upgrade to 0.6.1
 - added building the man page
-- fixed outdated licence string 
+- fixed outdated licence string
 
 -------------------------------------------------------------------
 Wed May 04 05:23:37 CET 2011 - pascal.bleser@opensuse.org
