@@ -1749,4 +1749,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <user>dimstar_suse</user>
     <comment>Re-enable mirror policy for x86_64</comment>
   </revision>
+  <revision rev="245" vrev="243">
+    <srcmd5>e6bc2f6ae7b8a481256fbb1382f9739b</srcmd5>
+    <version>unknown</version>
+    <time>1695376244</time>
+    <user>dimstar_suse</user>
+    <comment>Add mozjs115 / i686 to the media for LegacyX86</comment>
+  </revision>
 </revisionlist>
