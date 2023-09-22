@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 19 06:10:10 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros
+- Add patch support-python-312.patch, don't call a removed assertion
+  function
+- Skip some recalcitrant tests
+- Clean up some old Python 3 version requirements
+
+-------------------------------------------------------------------
 Fri Apr 21 12:25:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -155,4 +155,16 @@
     <comment></comment>
     <requestid>1081910</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>65dc9c208e22475ba1d74fa91c1ca8c1</srcmd5>
+    <version>2.4.16</version>
+    <time>1695412022</time>
+    <user>anag+factory</user>
+    <comment>- Switch to autosetup and pyproject macros
+- Add patch support-python-312.patch, don't call a removed assertion
+  function
+- Skip some recalcitrant tests
+- Clean up some old Python 3 version requirements</comment>
+    <requestid>1112131</requestid>
+  </revision>
 </revisionlist>

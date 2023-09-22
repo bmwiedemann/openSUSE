@@ -1,0 +1,25 @@
+From f6f260f97df29500a531baf1b370c3e4e4f3dc76 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Hrn=C4=8Diar?= <thrnciar@redhat.com>
+Date: Thu, 23 Mar 2023 13:23:12 +0100
+Subject: [PATCH] Replace TestCase method aliases removed in Python 3.12
+
+Fixes: #568
+---
+ CHANGELOG.md    | 2 ++
+ CONTRIBUTORS.md | 1 +
+ fs/test.py      | 2 +-
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+
+Index: fs-2.4.16/fs/test.py
+===================================================================
+--- fs-2.4.16.orig/fs/test.py
++++ fs-2.4.16/fs/test.py
+@@ -1082,7 +1082,7 @@ class FSTestCases(object):
+         self.fs.makedirs("foo/bar/baz/")
+ 
+         error_msg = "resource 'foo/bar/egg/test.txt' not found"
+-        assertRaisesRegex = getattr(self, "assertRaisesRegex", self.assertRaisesRegexp)
++        assertRaisesRegex = getattr(self, "assertRaisesRegex", self.assertRaisesRegex)
+         with assertRaisesRegex(errors.ResourceNotFound, error_msg):
+             self.fs.remove("foo/bar/egg/test.txt")
+ 

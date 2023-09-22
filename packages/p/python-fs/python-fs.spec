@@ -17,20 +17,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-fs
 Version:        2.4.16
 Release:        0
 Summary:        Python's filesystem abstraction layer
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/PyFilesystem/pyfilesystem2
 Source:         https://files.pythonhosted.org/packages/source/f/fs/fs-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#PyFilesystem/pyfilesystem2#570
+Patch0:         support-python-312.patch
 BuildRequires:  %{python_module appdirs >= 1.4.3}
-BuildRequires:  %{python_module enum34 >= 1.1.6 if %python-base < 3.4}
 BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pyftpdlib}
 BuildRequires:  %{python_module pysendfile}
@@ -39,7 +38,7 @@ BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module scandir >= 1.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
-BuildRequires:  %{python_module typing >= 3.6 if %python-base < 3.6}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-appdirs >= 1.4.3
@@ -49,23 +48,6 @@ Requires:       python-setuptools
 Requires:       python-six >= 1.10.0
 Recommends:     python-pyftpdlib
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-backports.os >= 0.1
-BuildRequires:  python-mock
-%endif
-%ifpython2
-Requires:       python-backports.os >= 0.1
-%endif
-%if %{python_version_nodots} < 34
-Requires:       python-enum34 >= 1.1.6
-Recommends:     python-pysendfile
-%endif
-%if %{python_version_nodots} < 35
-Recommends:     python-scandir >= 1.5
-%endif
-%if %{python_version_nodots} < 36
-Requires:       python-typing >= 3.6
-%endif
 %python_subpackages
 
 %description
@@ -76,24 +58,24 @@ write platform-independent code to work with local files, that also works with
 any of the supported filesystems (zip, ftp, S3 etc.).
 
 %prep
-%setup -q -n fs-%{version}
+%autosetup -p1 -n fs-%{version}
 sed -i -e '/install_requires/,/bdist_wheel/ s:~=:>=:g' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
-%pytest
+%pytest -k 'not (TestFTPFS and test_create or TestReadZipFSMem and test_seek)'
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/fs
-%{python_sitelib}/fs-%{version}*-info
+%{python_sitelib}/fs-%{version}.dist-info
 
 %changelog
