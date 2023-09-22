@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 21 19:04:03 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version v2.3
+  * Support for NVMe Boot Firmware Table (NBFT) as configuration source
+  * Optimization of udev handling (bsc#1214078)
+  * Bug fixes and optimizations
+
+-------------------------------------------------------------------
 Mon Aug 21 13:30:51 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version v2.3-rc4:
