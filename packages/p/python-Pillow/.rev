@@ -658,4 +658,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
 </comment>
     <requestid>1101368</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>35ba34217955dc9ec0a1a155ae99bfa3</srcmd5>
+    <version>10.0.1</version>
+    <time>1695412019</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112103</requestid>
+  </revision>
 </revisionlist>

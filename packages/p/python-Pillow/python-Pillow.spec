@@ -21,13 +21,13 @@
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-Pillow
-Version:        9.5.0
+Version:        10.0.1
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND
 URL:            https://python-pillow.org/
 Source:         https://files.pythonhosted.org/packages/source/P/Pillow/Pillow-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module olefile}
 BuildRequires:  %{python_module pytest >= 4.0}
 BuildRequires:  %{python_module setuptools}
