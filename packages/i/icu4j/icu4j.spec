@@ -35,6 +35,7 @@ Patch0:         icu4j-jdk10plus.patch
 Patch1:         improve-osgi-manifest.patch
 Patch2:         icu4j-70.1-java8compat.patch
 Patch3:         icu4j-javadoc.patch
+Patch4:         icu4j-detectjava21.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel
@@ -85,6 +86,7 @@ API documentation for %{name}.
 %patch1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 sed -i 's/\r//' APIChangeReport.html
 sed -i 's/\r//' readme.html

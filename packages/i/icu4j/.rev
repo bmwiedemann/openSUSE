@@ -187,4 +187,12 @@
     <comment>73.1</comment>
     <requestid>1083171</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>dcf2b9116e1b2c9e71b8edc62ab5777f</srcmd5>
+    <version>73.1</version>
+    <time>1695412040</time>
+    <user>anag+factory</user>
+    <comment>fix build with java &gt;= 20</comment>
+    <requestid>1112745</requestid>
+  </revision>
 </revisionlist>

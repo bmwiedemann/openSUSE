@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 21 06:30:35 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * icu4j-detectjava21.patch
+    + detect java 20 and 21 when running ant
+
+-------------------------------------------------------------------
 Thu Apr 20 08:33:20 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Upgrade to version 73.1
