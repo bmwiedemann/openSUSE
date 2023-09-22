@@ -1,0 +1,48 @@
+Index: python-dateutil-2.8.2/dateutil/tz/tz.py
+===================================================================
+--- python-dateutil-2.8.2.orig/dateutil/tz/tz.py
++++ python-dateutil-2.8.2/dateutil/tz/tz.py
+@@ -34,7 +34,7 @@ except ImportError:
+ from warnings import warn
+ 
+ ZERO = datetime.timedelta(0)
+-EPOCH = datetime.datetime.utcfromtimestamp(0)
++EPOCH = datetime.datetime.fromtimestamp(0, tz=datetime.timezone.utc)
+ EPOCHORDINAL = EPOCH.toordinal()
+ 
+ 
+@@ -1809,9 +1809,9 @@ def resolve_imaginary(dt):
+ def _datetime_to_timestamp(dt):
+     """
+     Convert a :class:`datetime.datetime` object to an epoch timestamp in
+-    seconds since January 1, 1970, ignoring the time zone.
++    seconds since January 1, 1970, forcing to UTC.
+     """
+-    return (dt.replace(tzinfo=None) - EPOCH).total_seconds()
++    return (dt.replace(tzinfo=datetime.timezone.utc) - EPOCH).total_seconds()
+ 
+ 
+ if sys.version_info >= (3, 6):
+Index: python-dateutil-2.8.2/dateutil/test/test_tz.py
+===================================================================
+--- python-dateutil-2.8.2.orig/dateutil/test/test_tz.py
++++ python-dateutil-2.8.2/dateutil/test/test_tz.py
+@@ -10,6 +10,7 @@ from datetime import tzinfo
+ from six import PY2
+ from io import BytesIO, StringIO
+ import unittest
++import warnings
+ 
+ import sys
+ import base64
+@@ -2809,3 +2810,10 @@ def test_resolve_imaginary(tzi, dt, dt_e
+     assert dt_r == dt_exp
+     assert dt_r.tzname() == dt_exp.tzname()
+     assert dt_r.utcoffset() == dt_exp.utcoffset()
++
++
++def test_epoch():
++    # We're really try to see that no warnings are raised
++    with warnings.catch_warnings():
++        warnings.simplefilter("error")
++        assert tz.EPOCH - tz.EPOCH == timedelta(0)

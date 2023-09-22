@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 18 04:39:14 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-utcfromtimestamp.patch, stop using a deprecated function.
+- Switch to pyproject and autosetup macros.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -34,9 +33,12 @@ Summary:        A Python Datetime Library
 License:        Apache-2.0 OR BSD-3-Clause
 URL:            https://dateutil.readthedocs.org/en/latest/
 Source0:        https://files.pythonhosted.org/packages/source/p/python-dateutil/python-dateutil-%{version}.tar.gz
+Patch0:         no-utcfromtimestamp.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 24.3}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module six >= 1.5}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -86,16 +88,16 @@ datetime module.
 Orthodox or Julian algorithms.
 
 %prep
-%setup -q -n python-dateutil-%{version}
+%autosetup -p1 -n python-dateutil-%{version}
 #cleanup and MSdos style end of line separators
 dos2unix LICENSE NEWS PKG-INFO README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -110,7 +112,8 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc NEWS PKG-INFO README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/dateutil
+%{python_sitelib}/python_dateutil-%{version}.dist-info
 %endif
 
 %changelog

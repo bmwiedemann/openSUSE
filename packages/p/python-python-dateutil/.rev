@@ -159,4 +159,14 @@
     <comment></comment>
     <requestid>1081587</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>043fb35ae6bfc20346031d3cef369da9</srcmd5>
+    <version>2.8.2</version>
+    <time>1695412002</time>
+    <user>anag+factory</user>
+    <comment>- Add patch no-utcfromtimestamp.patch, stop using a deprecated function.
+- Switch to pyproject and autosetup macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1111822</requestid>
+  </revision>
 </revisionlist>
