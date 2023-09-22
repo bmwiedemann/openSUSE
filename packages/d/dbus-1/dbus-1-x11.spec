@@ -23,7 +23,7 @@
 %endif
 %bcond_without selinux
 Name:           dbus-1-x11
-Version:        1.14.8
+Version:        1.14.10
 Release:        0
 Summary:        D-Bus Message Bus System
 License:        AFL-2.1 OR GPL-2.0-or-later

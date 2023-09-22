@@ -1521,4 +1521,12 @@ Thu Jan  9 17:33:31 UTC 2014 - fridrich.strba@suse.com
   * Fix syntax of a code sample in dbus-api-design</comment>
     <requestid>1092691</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>394d28da41cd19d786ae5ebdfd97f1d1</srcmd5>
+    <version>1.14.10</version>
+    <time>1695412027</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1112496</requestid>
+  </revision>
 </revisionlist>

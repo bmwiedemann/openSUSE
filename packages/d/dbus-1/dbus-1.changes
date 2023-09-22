@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 13 08:45:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.10:
+  * Avoid a dbus-daemon crash if re-creating a connection's policy
+    fails. If it isn't possible to re-create its policy (for
+    example if it belongs to a user account that has been deleted
+    or if the Name Service Switch is broken, on a system not
+    supporting SO_PEERGROUPS), we now log a warning, continue to
+    use its current policy, and continue to reload other
+    connections' policies.
+  * If getting the groups from a user ID fails, report the error
+    correctly, instead of logging "(null)"
+  * Return the primary group ID in GetConnectionCredentials()'
+    UnixGroupIDs field for processes with a valid-but-empty
+    supplementary group list
+
+-------------------------------------------------------------------
 Mon Jun 12 21:14:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.8 (bsc#1212126, CVE-2023-34969):
@@ -129,7 +146,7 @@ Wed Oct 26 08:53:48 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Oct 13 07:29:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- Disable asserts (bsc#1087072) 
+- Disable asserts (bsc#1087072)
 
 -------------------------------------------------------------------
 Wed Jun  8 12:36:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -162,7 +179,7 @@ Thu Mar 17 21:00:39 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 -------------------------------------------------------------------
 Mon Mar 14 10:46:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- set runstatedir correctly 
+- set runstatedir correctly
 
 -------------------------------------------------------------------
 Fri Mar  4 19:36:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -312,7 +329,7 @@ Wed Aug  4 10:03:46 UTC 2021 - Stefan Schubert <schubi@suse.de>
 -------------------------------------------------------------------
 Wed Apr  7 22:35:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- avoid listing cmake directory - owned by cmake package 
+- avoid listing cmake directory - owned by cmake package
 
 -------------------------------------------------------------------
 Fri Dec  4 07:50:57 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
@@ -385,7 +402,7 @@ Sun Jan 19 01:53:25 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 Fri Jan 17 13:02:10 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove left overs from blocking restart on update from May 29th 2019
-- Use sysusers.d to create messagebus user 
+- Use sysusers.d to create messagebus user
 
 -------------------------------------------------------------------
 Tue Dec  3 01:16:18 UTC 2019 - Simon Lees <sflees@suse.de>
