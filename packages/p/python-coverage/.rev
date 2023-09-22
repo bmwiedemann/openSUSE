@@ -655,4 +655,22 @@ update to latest version</comment>
     <comment>- Update in SLE-15 (bsc#1195916, bsc#1196696, jsc#PM-3356, jsc#SLE-23972)</comment>
     <requestid>1109341</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>6b81e966a2bd7f0e32b44ed925ec61fb</srcmd5>
+    <version>7.3.1</version>
+    <time>1695412006</time>
+    <user>anag+factory</user>
+    <comment>- update to 7.3.1:
+  * The semantics of stars in file patterns has been clarified in
+    the docs.  A leading or trailing star matches any number of path
+    components, like a double star would.  This is different than
+    the behavior of a star in the middle of a pattern.
+
+    since 6.4.3.
+- Handle cases where python2 is disabled
+- add LICENSE.txt
+- python3 package added
+- minor spec improvement (files section)</comment>
+    <requestid>1111926</requestid>
+  </revision>
 </revisionlist>

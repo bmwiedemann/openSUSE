@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 18 09:20:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.3.1:
+  * The semantics of stars in file patterns has been clarified in
+    the docs.  A leading or trailing star matches any number of path
+    components, like a double star would.  This is different than
+    the behavior of a star in the middle of a pattern.
+
+-------------------------------------------------------------------
 Mon Aug 14 16:00:52 UTC 2023 - Matthias Fehring <buschmann23@opensuse.org>
 
 - specfile
@@ -148,7 +157,7 @@ Sat Jan 28 13:38:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Added: the debug output file can now be specified with ``[run]
     debug_file`` in the configuration file.  Closes `issue 1319`_.
   * Performance: fixed a slowdown with dynamic contexts that's been around
-    since 6.4.3. 
+    since 6.4.3.
   * Typing: all product and test code has type annotations.
   * Fix: On Python 3.7, a file with type annotations but no ``from
     __future__ import annotations`` would be missing statements in
@@ -264,7 +273,7 @@ Mon Oct  3 15:48:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
   .. _issue 1425: https://github.com/nedbat/coveragepy/issues/1425
   .. _pull 1438: https://github.com/nedbat/coveragepy/pull/1438
   .. _issue 1449: https://github.com/nedbat/coveragepy/issues/1449
-  
+
 -------------------------------------------------------------------
 Sat Sep 10 15:31:21 UTC 2022 - Arun Persaud <arun@gmx.de>
 
@@ -841,7 +850,7 @@ Wed Oct  4 15:47:22 UTC 2017 - arun@gmx.de
 -------------------------------------------------------------------
 Fri Aug 11 15:25:50 UTC 2017 - toddrme2178@gmail.com
 
-- Handle cases where python2 is disabled 
+- Handle cases where python2 is disabled
   (needed for SLE backports compatibility)
 
 -------------------------------------------------------------------
@@ -955,7 +964,7 @@ Mon Dec 28 12:16:34 UTC 2015 - marec@detebe.org
 -------------------------------------------------------------------
 Sat Oct 31 07:50:25 UTC 2015 - dmueller@suse.com
 
-- add LICENSE.txt 
+- add LICENSE.txt
 
 -------------------------------------------------------------------
 Fri Oct 16 09:23:35 UTC 2015 - bgeuken@suse.com
@@ -991,7 +1000,7 @@ Thu May  8 11:37:39 UTC 2014 - toddrme2178@gmail.com
   - Improved the speed of HTML report generation by about 20%.
   - Fixed the mechanism for finding OS-installed static files for the HTML report
     so that it will actually find OS-installed static files.
-    
+
 -------------------------------------------------------------------
 Thu Oct 24 13:40:56 UTC 2013 - speilicke@suse.com
 
@@ -1087,8 +1096,8 @@ Thu May 24 11:47:40 UTC 2012 - cfarrell@suse.com
 -------------------------------------------------------------------
 Wed May 23 07:30:26 UTC 2012 - highwaystar.ru@gmail.com
 
-- python3 package added 
-- minor spec improvement (files section) 
+- python3 package added
+- minor spec improvement (files section)
 
 -------------------------------------------------------------------
 Sat Mar 10 16:54:01 UTC 2012 - saschpe@gmx.de
