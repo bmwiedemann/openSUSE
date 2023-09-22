@@ -2210,4 +2210,59 @@ New Features
 </comment>
     <requestid>1110323</requestid>
   </revision>
+  <revision rev="202" vrev="1">
+    <srcmd5>b5fc8d3eaa7f71fd82089e9df5d26e09</srcmd5>
+    <version>9.18.19</version>
+    <time>1695412030</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 9.18.19
+  Security Fixes:
+  * Previously, sending a specially crafted message over the
+    control channel could cause the packet-parsing code to run out
+    of available stack memory, causing named to terminate
+    unexpectedly. This has been fixed. (CVE-2023-3341)
+    [bsc#1215472]
+  * A flaw in the networking code handling DNS-over-TLS queries
+    could cause named to terminate unexpectedly due to an assertion
+    failure under significant DNS-over-TLS query load. This has
+    been fixed. (CVE-2023-4236)
+    [bsc#1215471]
+  Removed Features:
+  * The dnssec-must-be-secure option has been deprecated and will
+    be removed in a future release.
+  Feature Changes:
+  * If the server command is specified, nsupdate now honors the
+    nsupdate -v option for SOA queries by sending both the UPDATE
+    request and the initial query over TCP.
+  Bug Fixes:
+  * The value of the If-Modified-Since header in the statistics
+    channel was not being correctly validated for its length,
+    potentially allowing an authorized user to trigger a buffer
+    overflow. Ensuring the statistics channel is configured
+    correctly to grant access exclusively to authorized users is
+    essential (see the statistics-channels block definition and
+    usage section).
+  * The Content-Length header in the statistics channel was lacking
+    proper bounds checking. A negative or excessively large value
+    could potentially trigger an integer overflow and result in an
+    assertion failure.
+  * Several memory leaks caused by not clearing the OpenSSL error
+    stack were fixed.
+  * The introduction of krb5-subdomain-self-rhs and
+    ms-subdomain-self-rhs UPDATE policies accidentally caused named
+    to return SERVFAIL responses to deletion requests for
+    non-existent PTR and SRV records. This has been fixed.
+  * The stale-refresh-time feature was mistakenly disabled when the
+    server cache was flushed by rndc flush. This has been fixed.
+  * BIND’s memory consumption has been improved by implementing
+    dedicated jemalloc memory arenas for sending buffers. This
+    optimization ensures that memory usage is more efficient and
+    better manages the return of memory pages to the operating
+    system.
+  * Previously, partial writes in the TLS DNS code were not
+    accounted for correctly, which could have led to DNS message
+    corruption. This has been fixed.
+</comment>
+    <requestid>1112571</requestid>
+  </revision>
 </revisionlist>
