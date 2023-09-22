@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -eu
 
 # dnf install curl gzip jq npm patch tar wget
 
@@ -46,8 +46,4 @@ find . -type d -empty -print -delete
 
 echo ">>>>>> Create tarball"
 ZSTD_CLEVEL=19 ZSTD_NBTHREADS=$(nproc) tar --zstd --sort=name -vvScf "${PKGDIR}/node-vendor.tar.zst" node_modules
-if [ $? -ne 0 ]; then
-    echo "ERROR: tar cf failed"
-    cleanup_and_exit 1
-fi
 

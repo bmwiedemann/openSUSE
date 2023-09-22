@@ -18,7 +18,7 @@
 #
 
 Name:       bitwarden
-Version:    2023.8.3
+Version:    2023.9.0
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -202,7 +202,7 @@ export CXXFLAGS="%{optflags} -fpic -fno-semantic-interposition -fvisibility=hidd
 export LDFLAGS="%{?build_ldflags}"
 
 %if 0%{?suse_version}
-auditable=auditable
+auditable='auditable -vv'
 %endif
 
 
