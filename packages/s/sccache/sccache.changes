@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 22 03:08:33 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.5.4~2:
+  * sccache fails to build on non x86_64/aarch64 arches
+
+-------------------------------------------------------------------
 Wed Aug 16 23:00:09 UTC 2023 - William Brown <william.brown@suse.com>
 
 - Update to use openssl 3
