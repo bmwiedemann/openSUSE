@@ -171,4 +171,16 @@
     <comment></comment>
     <requestid>1081657</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>f8d0f1429796aca003ea68cd80378ffe</srcmd5>
+    <version>1.5.7</version>
+    <time>1695412021</time>
+    <user>anag+factory</user>
+    <comment>- Add patch support-python-312.patch, support Python 3.12+
+- Stop using greedy globs in %files
+- Switch to autosetup and pyproject macros
+- Remove Python 2 leftovers
+- Enable running the tests again</comment>
+    <requestid>1112115</requestid>
+  </revision>
 </revisionlist>

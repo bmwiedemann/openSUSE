@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 19 05:14:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-312.patch, support Python 3.12+
+- Stop using greedy globs in %files
+- Switch to autosetup and pyproject macros
+- Remove Python 2 leftovers
+- Enable running the tests again
+
+-------------------------------------------------------------------
 Fri Apr 21 12:30:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
