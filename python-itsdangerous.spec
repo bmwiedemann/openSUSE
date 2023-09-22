@@ -16,21 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-%global skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-itsdangerous
 Version:        2.1.2
 Release:        0
 Summary:        Various helpers to pass trusted data to untrusted environments and back
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://itsdangerous.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/i/itsdangerous/itsdangerous-%{version}.tar.gz
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -53,10 +51,10 @@ Also I plan to add some extra things.  Work in progress.
 %setup -q -n itsdangerous-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +63,7 @@ Also I plan to add some extra things.  Work in progress.
 %files %{python_files}
 %license LICENSE.rst
 %doc CHANGES.rst README.rst
-%{python_sitelib}/*
+%{python_sitelib}/itsdangerous
+%{python_sitelib}/itsdangerous-%{version}.dist-info
 
 %changelog
