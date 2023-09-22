@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 18 04:57:23 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to version 1.22.0.
+  The full changelog is very large. Please check it here:
+  https://git.dpkg.org/cgit/dpkg/dpkg.git/tree/debian/changelog?h=1.22.0
+- Refresh openssl.patch so it works on 1.22.0.
+
+-------------------------------------------------------------------
 Thu Jul 20 11:25:20 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - openssl.patch: use openssl library for MD5 calculation instead

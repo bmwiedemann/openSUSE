@@ -441,4 +441,12 @@ The link of update-alternatives should also be changed from deb to dpkg.</commen
 - require Perl 5.28.1 or later</comment>
     <requestid>1099739</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>da12532e0c3254f86cedaa861d1972e9</srcmd5>
+    <version>1.22.0</version>
+    <time>1695411991</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112845</requestid>
+  </revision>
 </revisionlist>

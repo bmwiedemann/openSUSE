@@ -1,10 +1,10 @@
-Index: dpkg-1.21.22/configure.ac
+Index: dpkg-1.22.0/configure.ac
 ===================================================================
---- dpkg-1.21.22.orig/configure.ac
-+++ dpkg-1.21.22/configure.ac
-@@ -94,6 +94,13 @@ AC_SYS_LARGEFILE
- 
+--- dpkg-1.22.0.orig/configure.ac
++++ dpkg-1.22.0/configure.ac
+@@ -97,6 +97,13 @@ AC_SYS_LARGEFILE
  # Checks for libraries.
+ DPKG_LIB_RT
  DPKG_LIB_MD
 +AS_IF([test "x$have_libmd" = "xno"], [
 +  DPKG_LIB_OPENSSL
@@ -16,7 +16,7 @@ Index: dpkg-1.21.22/configure.ac
  DPKG_LIB_Z
  DPKG_LIB_BZ2
  DPKG_LIB_LZMA
-@@ -286,6 +293,7 @@ Configuration:
+@@ -308,6 +315,7 @@ Configuration:
      libkvm  . . . . . . . . . . . : ${have_libkvm:-no}
      libselinux  . . . . . . . . . : $have_libselinux
      libmd . . . . . . . . . . . . : $have_libmd
@@ -24,12 +24,12 @@ Index: dpkg-1.21.22/configure.ac
      libz  . . . . . . . . . . . . : $have_libz_impl
      liblzma . . . . . . . . . . . : $have_liblzma
      libzstd . . . . . . . . . . . : $have_libzstd
-Index: dpkg-1.21.22/lib/dpkg/Makefile.am
+Index: dpkg-1.22.0/lib/dpkg/Makefile.am
 ===================================================================
---- dpkg-1.21.22.orig/lib/dpkg/Makefile.am
-+++ dpkg-1.21.22/lib/dpkg/Makefile.am
-@@ -36,7 +36,7 @@ libdpkg_la_LDFLAGS += \
- 	-Wl,--version-script=$(srcdir)/libdpkg.map \
+--- dpkg-1.22.0.orig/lib/dpkg/Makefile.am
++++ dpkg-1.22.0/lib/dpkg/Makefile.am
+@@ -50,7 +50,7 @@ EXTRA_libdpkg_la_DEPENDENCIES += \
+ 	libdpkg.sym \
  	# EOL
  endif
 -libdpkg_la_LDFLAGS += $(MD_LIBS)
@@ -37,10 +37,10 @@ Index: dpkg-1.21.22/lib/dpkg/Makefile.am
  libdpkg_la_LIBADD = \
  	../compat/libcompat.la \
  	# EOL
-Index: dpkg-1.21.22/lib/dpkg/buffer.c
+Index: dpkg-1.22.0/lib/dpkg/buffer.c
 ===================================================================
---- dpkg-1.21.22.orig/lib/dpkg/buffer.c
-+++ dpkg-1.21.22/lib/dpkg/buffer.c
+--- dpkg-1.22.0.orig/lib/dpkg/buffer.c
++++ dpkg-1.22.0/lib/dpkg/buffer.c
 @@ -23,10 +23,18 @@
  #include <config.h>
  #include <compat.h>
@@ -61,10 +61,10 @@ Index: dpkg-1.21.22/lib/dpkg/buffer.c
  #include <string.h>
  #include <unistd.h>
  #include <stdlib.h>
-Index: dpkg-1.21.22/m4/dpkg-libs.m4
+Index: dpkg-1.22.0/m4/dpkg-libs.m4
 ===================================================================
---- dpkg-1.21.22.orig/m4/dpkg-libs.m4
-+++ dpkg-1.21.22/m4/dpkg-libs.m4
+--- dpkg-1.22.0.orig/m4/dpkg-libs.m4
++++ dpkg-1.22.0/m4/dpkg-libs.m4
 @@ -20,11 +20,26 @@ AC_DEFUN([DPKG_LIB_MD], [
        MD_LIBS="$ac_cv_search_MD5Init"
      ])
