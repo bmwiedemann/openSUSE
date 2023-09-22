@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 20 13:53:18 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Feb 28 16:39:19 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Correct BR from python3-jinja2 to python3-Jinja2, fixes
