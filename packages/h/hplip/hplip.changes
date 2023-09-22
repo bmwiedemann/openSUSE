@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Sep 15 16:09:11 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to hplip 3.23.5
+  * added new CUPS filter hpcdmfax
+- Support for new printers:
+  * HP Smart Tank 520_540 series
+  * HP Smart Tank 580-590 series
+  * HP Smart Tank 5100 series
+  * HP Smart Tank 210-220 series
+  * HP Color LaserJet Enterprise 6700dn
+  * HP Color LaserJet Enterprise 6700
+  * HP Color LaserJet Enterprise 6701dn
+  * HP Color LaserJet Enterprise 6701
+  * HP Color LaserJet Enterprise X654dn
+  * HP Color LaserJet Enterprise X65455dn
+  * HP Color LaserJet Enterprise X654
+  * HP Color LaserJet Enterprise X65465dn
+  * HP Color LaserJet Enterprise X654 65 PPM
+  * HP Color LaserJet Enterprise X654 55 to 65ppm License
+  * HP Color LaserJet Enterprise X654 Down License
+  * HP Color LaserJet Enterprise MFP 6800dn
+  * HP Color LaserJet Enterprise Flow MFP 6800zf
+  * HP Color LaserJet Enterprise Flow MFP 6800zfsw
+  * HP Color LaserJet Enterprise Flow MFP 6800zfw+
+  * HP Color LaserJet Enterprise MFP 6800
+  * HP Color LaserJet Enterprise MFP 6801
+  * HP Color LaserJet Enterprise MFP 6801 zfsw
+  * HP Color LaserJet Enterprise Flow MFP 6801zfw+
+  * HP Color LaserJet Enterprise MFP X677 55 to 65ppm License
+  * HP Color LaserJet Enterprise MFP X677 65ppm
+  * HP Color LaserJet Enterprise MFP X677s
+  * HP Color LaserJet Enterprise Flow MFP X677z
+  * HP Color LaserJet Enterprise MFP X67765dn
+  * HP Color LaserJet Enterprise Flow MFP X67765zs
+  * HP Color LaserJet Enterprise Flow MFP X67765z+
+  * HP Color LaserJet Enterprise MFP X677
+  * HP Color LaserJet Enterprise MFP X67755dn
+  * HP Color LaserJet Enterprise Flow MFP X67755zs
+  * HP Color LaserJet Enterprise Flow MFP X67755z+
+  * HP Color LaserJet Enterprise MFP X677dn
+  * HP Color LaserJet Enterprise Flow MFP X677zs
+  * HP Color LaserJet Enterprise Flow MFP X677z+
+  * HP Color LaserJet Enterprise 5700dn	
+  * HP Color LaserJet Enterprise 5700		
+  * HP Color LaserJet Enterprise X55745dn	
+  * HP Color LaserJet Enterprise X55745		
+  * HP Color LaserJet Enterprise MFP 5800dn	
+  * HP Color LaserJet Enterprise MFP 5800f	
+  * HP Color LaserJet Enterprise Flow MFP 5800zf	
+  * HP Color LaserJet Enterprise MFP 5800		
+  * HP Color LaserJet Enterprise MFP X57945	
+  * HP Color LaserJet Enterprise Flow MFP X57945zs	
+  * HP Color LaserJet Enterprise MFP X57945dn	
+  * HP Color LaserJet Enterprise Flow MFP X57945z
+
+-------------------------------------------------------------------
 Wed Mar 29 04:59:28 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to fix hplip applying printf string format parsing to

@@ -1342,4 +1342,41 @@
     <comment></comment>
     <requestid>1075225</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>f13710067a873b20ef34db600eefc338</srcmd5>
+    <version>3.23.5</version>
+    <time>1695411998</time>
+    <user>anag+factory</user>
+    <comment>- Update to hplip 3.23.5
+  * added new CUPS filter hpcdmfax
+- Support for new printers:
+  * HP Smart Tank 520_540 series
+  * HP Smart Tank 580-590 series
+  * HP Smart Tank 5100 series
+  * HP Smart Tank 210-220 series
+  * HP Color LaserJet Enterprise 6700dn
+  * HP Color LaserJet Enterprise 6700
+  * HP Color LaserJet Enterprise 6701dn
+  * HP Color LaserJet Enterprise 6701
+  * HP Color LaserJet Enterprise X654dn
+  * HP Color LaserJet Enterprise X65455dn
+  * HP Color LaserJet Enterprise X654
+  * HP Color LaserJet Enterprise X65465dn
+  * HP Color LaserJet Enterprise X654 65 PPM
+  * HP Color LaserJet Enterprise X654 55 to 65ppm License
+  * HP Color LaserJet Enterprise X654 Down License
+  * HP Color LaserJet Enterprise MFP 6800dn
+  * HP Color LaserJet Enterprise Flow MFP 6800zf
+  * HP Color LaserJet Enterprise Flow MFP 6800zfsw
+  * HP Color LaserJet Enterprise Flow MFP 6800zfw+
+  * HP Color LaserJet Enterprise MFP 6800
+  * HP Color LaserJet Enterprise MFP 6801
+  * HP Color LaserJet Enterprise MFP 6801 zfsw
+  * HP Color LaserJet Enterprise Flow MFP 6801zfw+
+  * HP Color LaserJet Enterprise MFP X677 55 to 65ppm License
+  * HP Color LaserJet Enterprise MFP X677 65ppm
+  * HP Color LaserJet Enterprise MFP X677s
+  * HP Color LaserJet Enterprise Flow MFP X677z</comment>
+    <requestid>1111603</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,20 @@
-diff -urEbwB hplip-3.20.9/common/utils.c hplip-3.20.9.new/common/utils.c
---- hplip-3.20.9/common/utils.c	2020-09-23 07:24:09.000000000 +0200
-+++ hplip-3.20.9.new/common/utils.c	2020-11-23 12:21:21.471541779 +0100
+From d52301159a5add137b46e7183970ea1f1cbfe8ac Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 15 Sep 2023 18:27:13 +0200
+Subject: [PATCH 04/19] add missing includes and define GNU_SOURCE
+
+---
+ common/utils.c      | 5 +++++
+ io/hpmud/jd.c       | 1 +
+ protocol/hp_ipp.c   | 4 ++++
+ scan/sane/bb_ledm.c | 1 +
+ scan/sane/sclpml.c  | 5 +++++
+ 5 files changed, 16 insertions(+)
+
+diff --git a/common/utils.c b/common/utils.c
+index d8ecee9..6f5cef9 100644
+--- a/common/utils.c
++++ b/common/utils.c
 @@ -1,9 +1,14 @@
 +#ifndef _GNU_SOURCE
 +#define _GNU_SOURCE
@@ -16,9 +30,10 @@ diff -urEbwB hplip-3.20.9/common/utils.c hplip-3.20.9.new/common/utils.c
  
  extern int errno;
  
-diff -urEbwBN hplip-3.20.9/io/hpmud/jd.c hplip-3.20.9.new/io/hpmud/jd.c
---- hplip-3.20.9/io/hpmud/jd.c	2020-09-23 07:24:10.000000000 +0200
-+++ hplip-3.20.9.new/io/hpmud/jd.c	2020-11-23 12:12:14.920243467 +0100
+diff --git a/io/hpmud/jd.c b/io/hpmud/jd.c
+index be3c823..c15ed9c 100644
+--- a/io/hpmud/jd.c
++++ b/io/hpmud/jd.c
 @@ -31,6 +31,7 @@
  #endif
  
@@ -27,22 +42,25 @@ diff -urEbwBN hplip-3.20.9/io/hpmud/jd.c hplip-3.20.9.new/io/hpmud/jd.c
  #include "hpmud.h"
  #include "hpmudi.h"
  
-diff -urEbwBN hplip-3.20.9/protocol/hp_ipp.c hplip-3.20.9.new/protocol/hp_ipp.c
---- hplip-3.20.9/protocol/hp_ipp.c	2020-09-23 07:24:16.000000000 +0200
-+++ hplip-3.20.9.new/protocol/hp_ipp.c	2020-11-23 12:12:21.624283957 +0100
-@@ -18,6 +18,9 @@
+diff --git a/protocol/hp_ipp.c b/protocol/hp_ipp.c
+index 8b72c65..9b05f5e 100644
+--- a/protocol/hp_ipp.c
++++ b/protocol/hp_ipp.c
+@@ -18,6 +18,10 @@ Boston, MA 02110-1301, USA.
  
  \******************************************************************************/
  
 +#ifndef _GNU_SOURCE
 +#define _GNU_SOURCE
 +#endif
- 
++
  #include <cups/cups.h>
  #include <cups/language.h>
-diff -urEbwBN hplip-3.20.9/scan/sane/bb_ledm.c hplip-3.20.9.new/scan/sane/bb_ledm.c
---- hplip-3.20.9/scan/sane/bb_ledm.c	2020-09-23 07:24:20.000000000 +0200
-+++ hplip-3.20.9.new/scan/sane/bb_ledm.c	2020-11-23 12:12:21.628283981 +0100
+ #include <cups/ppd.h>
+diff --git a/scan/sane/bb_ledm.c b/scan/sane/bb_ledm.c
+index 4b18af8..eaf1299 100644
+--- a/scan/sane/bb_ledm.c
++++ b/scan/sane/bb_ledm.c
 @@ -27,6 +27,7 @@
  # include "xml.h"
  # include <stdlib.h>
@@ -51,9 +69,10 @@ diff -urEbwBN hplip-3.20.9/scan/sane/bb_ledm.c hplip-3.20.9.new/scan/sane/bb_led
  # include <stdint.h>
  
  # define _STRINGIZE(x) #x
-diff -urEbwBN hplip-3.20.9/scan/sane/sclpml.c hplip-3.20.9.new/scan/sane/sclpml.c
---- hplip-3.20.9/scan/sane/sclpml.c	2020-09-23 07:24:20.000000000 +0200
-+++ hplip-3.20.9.new/scan/sane/sclpml.c	2020-11-23 12:12:21.628283981 +0100
+diff --git a/scan/sane/sclpml.c b/scan/sane/sclpml.c
+index 9a5975f..3250541 100644
+--- a/scan/sane/sclpml.c
++++ b/scan/sane/sclpml.c
 @@ -25,11 +25,16 @@
  
  \************************************************************************************/
@@ -71,3 +90,6 @@ diff -urEbwBN hplip-3.20.9/scan/sane/sclpml.c hplip-3.20.9.new/scan/sane/sclpml.
  #include "sane.h"
  #include "saneopts.h"
  #include "common.h"
+-- 
+2.42.0
+

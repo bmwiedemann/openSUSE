@@ -1,7 +1,17 @@
-diff -urEbwBN hplip-3.20.9/protocol/hp_ipp.h hplip-3.20.9.new/protocol/hp_ipp.h
---- hplip-3.20.9/protocol/hp_ipp.h	2020-09-23 07:24:16.000000000 +0200
-+++ hplip-3.20.9.new/protocol/hp_ipp.h	2020-11-23 12:17:09.178020748 +0100
-@@ -149,6 +149,7 @@
+From 10fe460cca9536dbb52c30fa8bec5c6a01e94ea0 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 15 Sep 2023 18:28:47 +0200
+Subject: [PATCH 09/19] hp_ipp.h: add missing prototypes
+
+---
+ protocol/hp_ipp.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/protocol/hp_ipp.h b/protocol/hp_ipp.h
+index 032be9a..518d0ae 100644
+--- a/protocol/hp_ipp.h
++++ b/protocol/hp_ipp.h
+@@ -149,6 +149,7 @@ int auth_cancel_req = 0;  // 0--> authentication cancel is not requested,
  
  
  http_t*    acquireCupsInstance();
@@ -9,8 +19,8 @@ diff -urEbwBN hplip-3.20.9/protocol/hp_ipp.h hplip-3.20.9.new/protocol/hp_ipp.h
  const char *getCupsErrorString(int status);
  void freePrinterList(printer_t *list);
   
-@@ -162,6 +163,11 @@
- ipp_t * networkDoRequest(ipp_t *request, char* device_uri);
+@@ -163,6 +164,11 @@ ipp_t *usbDoFileRequest(ipp_t *request, int iFileHandle,char *device_uri, const
+ ipp_t * networkDoRequest(ipp_t *request, char* device_uri,const char *resource);
  ipp_t * getDeviceStatusAttributes(char* device_uri,char* printer_name, int *count);
  int     getCupsPrinters(printer_t **printer_list);
 +int addCupsPrinter(char *name, char *device_uri, char *location, char *ppd_file,
@@ -20,4 +30,7 @@ diff -urEbwBN hplip-3.20.9/protocol/hp_ipp.h hplip-3.20.9.new/protocol/hp_ipp.h
 +int controlCupsPrinter(char *pr_name, int op);
  
  HPIPP_RESULT parseResponseHeader(char* header, int *content_length, int *chunked, int* header_size);
- HPIPP_RESULT prepend_http_header(raw_ipp *raw_request);
+ HPIPP_RESULT prepend_http_header(raw_ipp *raw_request,const char *resource);
+-- 
+2.42.0
+

@@ -1,8 +1,17 @@
-Index: hplip-3.22.10/protocol/hp_ipp.c
-===================================================================
---- hplip-3.22.10.orig/protocol/hp_ipp.c
-+++ hplip-3.22.10/protocol/hp_ipp.c
-@@ -43,6 +43,12 @@ Boston, MA 02110-1301, USA.
+From 0bd5dd829e6f5509fda6cb09430ff14faa432941 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 15 Sep 2023 18:32:08 +0200
+Subject: [PATCH 19/19] hplip: fix printer attributes parsing
+
+---
+ protocol/hp_ipp.c | 21 ++++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
+
+diff --git a/protocol/hp_ipp.c b/protocol/hp_ipp.c
+index 9b05f5e..3ba83fa 100644
+--- a/protocol/hp_ipp.c
++++ b/protocol/hp_ipp.c
+@@ -43,6 +43,13 @@ Boston, MA 02110-1301, USA.
  #define _STRINGIZE(x) #x
  #define STRINGIZE(x) _STRINGIZE(x)
  
@@ -12,19 +21,20 @@ Index: hplip-3.22.10/protocol/hp_ipp.c
 +		dst[size - 1] = '\0'; \
 +    } while (0)
 +
- 
- http_t* acquireCupsInstance()
++
+ http_t *acquireCupsInstance()
  {
-@@ -113,7 +119,7 @@ int addCupsPrinter(char *name, char *dev
-      }
+     if (http == NULL)
+@@ -113,7 +120,7 @@ int addCupsPrinter(char *name, char *device_uri, char *location, char *ppd_file,
+     }
  
       if ( info == NULL )
 -        snprintf( info,sizeof(info), name );
 +        hplip_strlcpy( info, name, sizeof(info));
  
-      sprintf( printer_uri, "ipp://localhost/printers/%s", name );
+     sprintf(printer_uri, "ipp://localhost/printers/%s", name);
  
-@@ -514,27 +520,27 @@ int __parsePrinterAttributes(ipp_t *resp
+@@ -518,27 +525,27 @@ int __parsePrinterAttributes(ipp_t *response, printer_t **printer_list)
  
               if ( strcmp(attr_name, "printer-name") == 0 &&
                                          val_tag == IPP_TAG_NAME ) {
@@ -58,3 +68,6 @@ Index: hplip-3.22.10/protocol/hp_ipp.c
               } 
               else if ( strcmp(attr_name, "printer-state") == 0 &&
                                               val_tag == IPP_TAG_ENUM ) {
+-- 
+2.42.0
+
