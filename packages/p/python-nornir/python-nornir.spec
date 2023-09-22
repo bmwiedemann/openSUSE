@@ -1,8 +1,8 @@
 #
 # spec file for package python-nornir
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2019-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-nornir
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        Network automation framework written in Python
 License:        Apache-2.0
@@ -32,12 +30,12 @@ BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-mypy_extensions >= 0.4.1
+Requires:       python-importlib-metadata
 Requires:       python-ruamel.yaml >= 0.17
-Requires:       python-typing_extensions >= 4.1
 # SECTION test requirements
 BuildRequires:  %{python_module decorator}
-BuildRequires:  %{python_module mypy_extensions >= 0.4.1}
+BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module mypy_extensions}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module ruamel.yaml >= 0.17}
@@ -73,6 +71,6 @@ plugins if you aren't happy with the ones we ship.
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/nornir*
 
 %changelog

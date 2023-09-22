@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 21 14:25:27 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.4.0
+  * Added plugins architecture image to plugins docs.
+  * Fix wrongly return True when a comparison returns
+    NotImplemented.
+  * Log number of hosts to run on correctly.
+
+-------------------------------------------------------------------
 Tue Jul  5 07:46:50 UTC 2022 - Daniel García Moreno <dani@danigm.net>
 
 - Update to version 3.3.0 
