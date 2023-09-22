@@ -72,9 +72,9 @@ BuildRequires:  clang-devel >= 5
 %endif
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.17
+Version:        2.53.17.1
 Release:        0
-%define releasedate 20230804000000
+%define releasedate 20230921000000
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers

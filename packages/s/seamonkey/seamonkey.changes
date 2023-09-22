@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 21 15:58:45 UTC 2023 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.17.1
+  * Upstream libwebp security fix bug 1852749.
+  * CVE-2023-4863: Heap buffer overflow in libwebp bug 1852649.
+  * Fix bad string encoded in ansi. l10n fr problem only bug 1847887.
+  * SeaMonkey 2.53.17 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.17 shares most parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.8.0 release notes for
+    specific security fixes in this release.
+  * Additional important security fixes up to Current Firefox 115.3
+    and Thunderbird 115.3 ESR plus many enhancements have been
+    backported. We will continue to enhance SeaMonkey security in
+    subsequent 2.53.x beta and release versions as fast as we are able
+    to.
+- request inclusion in Leap 15.4 and 15.5:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=
+
+-------------------------------------------------------------------
 Fri Aug 04 13:04:12 UTC 2023 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.17
