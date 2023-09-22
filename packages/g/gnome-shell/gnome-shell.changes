@@ -8,7 +8,7 @@ Sat Sep 16 22:16:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix regression in workspace state tracking
   + Update extensions immediately on startup after major upgrades
   + Reverse slider direction in RTL locales
-  + Misc. bug fixes and cleanups
+  + Misc. bug fixes and cleanups (CVE-2023-43090).
   + Updated translations.
 - Change compression of tarball in service and spec to zst from xz.
 
