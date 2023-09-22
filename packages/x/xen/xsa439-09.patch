@@ -1,0 +1,207 @@
+Subject: x86/spec-ctrl: Mitigate the Zen1 DIV leakage
+From: Andrew Cooper andrew.cooper3@citrix.com Wed Aug 30 20:24:25 2023 +0100
+Date: Mon Sep 18 16:43:01 2023 +0100:
+Git: b5926c6ecf05c28ee99c6248c42d691ccbf0c315
+
+In the Zen1 microarchitecure, there is one divider in the pipeline which
+services uops from both threads.  In the case of #DE, the latched result from
+the previous DIV to execute will be forwarded speculatively.
+
+This is an interesting covert channel that allows two threads to communicate
+without any system calls.  In also allows userspace to obtain the result of
+the most recent DIV instruction executed (even speculatively) in the core,
+which can be from a higher privilege context.
+
+Scrub the result from the divider by executing a non-faulting divide.  This
+needs performing on the exit-to-guest paths, and ist_exit-to-Xen.
+
+Alternatives in IST context is believed safe now that it's done in NMI
+context.
+
+This is XSA-439 / CVE-2023-20588.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/docs/misc/xen-command-line.pandoc
++++ b/docs/misc/xen-command-line.pandoc
+@@ -2315,7 +2315,7 @@ By default SSBD will be mitigated at run
+ >              {msr-sc,rsb,md-clear,ibpb-entry}=<bool>|{pv,hvm}=<bool>,
+ >              bti-thunk=retpoline|lfence|jmp, {ibrs,ibpb,ssbd,psfd,
+ >              eager-fpu,l1d-flush,branch-harden,srb-lock,
+->              unpriv-mmio,gds-mit}=<bool> ]`
++>              unpriv-mmio,gds-mit,div-scrub}=<bool> ]`
+ 
+ Controls for speculative execution sidechannel mitigations.  By default, Xen
+ will pick the most appropriate mitigations based on compiled in support,
+@@ -2437,6 +2437,10 @@ has elected not to lock the configuratio
+ GDS with.  Otherwise, Xen will mitigate by disabling AVX, which blocks the use
+ of the AVX2 Gather instructions.
+ 
++On all hardware, the `div-scrub=` option can be used to force or prevent Xen
++from mitigating the DIV-leakage vulnerability.  By default, Xen will mitigate
++DIV-leakage on hardware believed to be vulnerable.
++
+ ### sync_console
+ > `= <boolean>`
+ 
+--- a/xen/arch/x86/hvm/svm/entry.S
++++ b/xen/arch/x86/hvm/svm/entry.S
+@@ -74,6 +74,7 @@ __UNLIKELY_END(nsvm_hap)
+ 1:          /* No Spectre v1 concerns.  Execution will hit VMRUN imminently. */
+         .endm
+         ALTERNATIVE "", svm_vmentry_spec_ctrl, X86_FEATURE_SC_MSR_HVM
++        ALTERNATIVE "", DO_SPEC_CTRL_DIV, X86_FEATURE_SC_DIV
+ 
+         pop  %r15
+         pop  %r14
+--- a/xen/arch/x86/include/asm/cpufeatures.h
++++ b/xen/arch/x86/include/asm/cpufeatures.h
+@@ -35,7 +35,7 @@ XEN_CPUFEATURE(SC_RSB_HVM,        X86_SY
+ XEN_CPUFEATURE(XEN_SELFSNOOP,     X86_SYNTH(20)) /* SELFSNOOP gets used by Xen itself */
+ XEN_CPUFEATURE(SC_MSR_IDLE,       X86_SYNTH(21)) /* Clear MSR_SPEC_CTRL on idle */
+ XEN_CPUFEATURE(XEN_LBR,           X86_SYNTH(22)) /* Xen uses MSR_DEBUGCTL.LBR */
+-/* Bits 23 unused. */
++XEN_CPUFEATURE(SC_DIV,            X86_SYNTH(23)) /* DIV scrub needed */
+ XEN_CPUFEATURE(SC_RSB_IDLE,       X86_SYNTH(24)) /* RSB overwrite needed for idle. */
+ XEN_CPUFEATURE(SC_VERW_IDLE,      X86_SYNTH(25)) /* VERW used by Xen for idle */
+ XEN_CPUFEATURE(XEN_SHSTK,         X86_SYNTH(26)) /* Xen uses CET Shadow Stacks */
+--- a/xen/arch/x86/include/asm/spec_ctrl_asm.h
++++ b/xen/arch/x86/include/asm/spec_ctrl_asm.h
+@@ -177,6 +177,19 @@
+ .L\@_verw_skip:
+ .endm
+ 
++.macro DO_SPEC_CTRL_DIV
++/*
++ * Requires nothing
++ * Clobbers %rax
++ *
++ * Issue a DIV for its flushing side effect (Zen1 uarch specific).  Any
++ * non-faulting DIV will do; a byte DIV has least latency, and doesn't clobber
++ * %rdx.
++ */
++    mov $1, %eax
++    div %al
++.endm
++
+ .macro DO_SPEC_CTRL_ENTRY maybexen:req
+ /*
+  * Requires %rsp=regs (also cpuinfo if !maybexen)
+@@ -279,6 +292,8 @@
+     ALTERNATIVE "", DO_SPEC_CTRL_EXIT_TO_GUEST, X86_FEATURE_SC_MSR_PV
+ 
+     DO_SPEC_CTRL_COND_VERW
++
++    ALTERNATIVE "", DO_SPEC_CTRL_DIV, X86_FEATURE_SC_DIV
+ .endm
+ 
+ /*
+@@ -391,6 +406,8 @@ UNLIKELY_DISPATCH_LABEL(\@_serialise):
+     verw STACK_CPUINFO_FIELD(verw_sel)(%r14)
+ .L\@_skip_verw:
+ 
++    ALTERNATIVE "", DO_SPEC_CTRL_DIV, X86_FEATURE_SC_DIV
++
+ .L\@_skip_ist_exit:
+ .endm
+ 
+--- a/xen/arch/x86/spec_ctrl.c
++++ b/xen/arch/x86/spec_ctrl.c
+@@ -79,6 +79,7 @@ static int8_t __initdata opt_srb_lock =
+ static bool __initdata opt_unpriv_mmio;
+ static bool __ro_after_init opt_fb_clear_mmio;
+ static int8_t __initdata opt_gds_mit = -1;
++static int8_t __initdata opt_div_scrub = -1;
+ 
+ static int __init cf_check parse_spec_ctrl(const char *s)
+ {
+@@ -133,6 +134,7 @@ static int __init cf_check parse_spec_ct
+             opt_srb_lock = 0;
+             opt_unpriv_mmio = false;
+             opt_gds_mit = 0;
++            opt_div_scrub = 0;
+         }
+         else if ( val > 0 )
+             rc = -EINVAL;
+@@ -285,6 +287,8 @@ static int __init cf_check parse_spec_ct
+             opt_unpriv_mmio = val;
+         else if ( (val = parse_boolean("gds-mit", s, ss)) >= 0 )
+             opt_gds_mit = val;
++        else if ( (val = parse_boolean("div-scrub", s, ss)) >= 0 )
++            opt_div_scrub = val;
+         else
+             rc = -EINVAL;
+ 
+@@ -485,7 +489,7 @@ static void __init print_details(enum in
+                "\n");
+ 
+     /* Settings for Xen's protection, irrespective of guests. */
+-    printk("  Xen settings: BTI-Thunk %s, SPEC_CTRL: %s%s%s%s%s, Other:%s%s%s%s%s\n",
++    printk("  Xen settings: BTI-Thunk %s, SPEC_CTRL: %s%s%s%s%s, Other:%s%s%s%s%s%s\n",
+            thunk == THUNK_NONE      ? "N/A" :
+            thunk == THUNK_RETPOLINE ? "RETPOLINE" :
+            thunk == THUNK_LFENCE    ? "LFENCE" :
+@@ -510,6 +514,7 @@ static void __init print_details(enum in
+            opt_l1d_flush                             ? " L1D_FLUSH" : "",
+            opt_md_clear_pv || opt_md_clear_hvm ||
+            opt_fb_clear_mmio                         ? " VERW"  : "",
++           opt_div_scrub                             ? " DIV" : "",
+            opt_branch_harden                         ? " BRANCH_HARDEN" : "");
+ 
+     /* L1TF diagnostics, printed if vulnerable or PV shadowing is in use. */
+@@ -967,6 +972,45 @@ static void __init srso_calculations(boo
+         setup_force_cpu_cap(X86_FEATURE_SRSO_NO);
+ }
+ 
++/*
++ * The Div leakage issue is specific to the AMD Zen1 microarchitecure.
++ *
++ * However, there's no $FOO_NO bit defined, so if we're virtualised we have no
++ * hope of spotting the case where we might move to vulnerable hardware.  We
++ * also can't make any useful conclusion about SMT-ness.
++ *
++ * Don't check the hypervisor bit, so at least we do the safe thing when
++ * booting on something that looks like a Zen1 CPU.
++ */
++static bool __init has_div_vuln(void)
++{
++    if ( !(boot_cpu_data.x86_vendor &
++           (X86_VENDOR_AMD | X86_VENDOR_HYGON)) )
++        return false;
++
++    if ( boot_cpu_data.x86 != 0x17 && boot_cpu_data.x86 != 0x18 )
++        return false;
++
++    return is_zen1_uarch();
++}
++
++static void __init div_calculations(bool hw_smt_enabled)
++{
++    bool cpu_bug_div = has_div_vuln();
++
++    if ( opt_div_scrub == -1 )
++        opt_div_scrub = cpu_bug_div;
++
++    if ( opt_div_scrub )
++        setup_force_cpu_cap(X86_FEATURE_SC_DIV);
++
++    if ( opt_smt == -1 && !cpu_has_hypervisor && cpu_bug_div && hw_smt_enabled )
++        warning_add(
++            "Booted on leaky-DIV hardware with SMT/Hyperthreading\n"
++            "enabled.  Please assess your configuration and choose an\n"
++            "explicit 'smt=<bool>' setting.  See XSA-439.\n");
++}
++
+ static void __init ibpb_calculations(void)
+ {
+     bool def_ibpb_entry = false;
+@@ -1726,6 +1770,8 @@ void __init init_speculation_mitigations
+ 
+     ibpb_calculations();
+ 
++    div_calculations(hw_smt_enabled);
++
+     /* Check whether Eager FPU should be enabled by default. */
+     if ( opt_eager_fpu == -1 )
+         opt_eager_fpu = should_use_eager_fpu();

@@ -1,0 +1,77 @@
+Subject: x86/spec-ctrl: Issue VERW during IST exit to Xen
+From: Andrew Cooper andrew.cooper3@citrix.com Wed Sep 13 13:53:33 2023 +0100
+Date: Mon Sep 18 16:43:01 2023 +0100:
+Git: 3ee6066bcd737756b0990d417d94eddc0b0d2585
+
+There is a corner case where e.g. an NMI hitting an exit-to-guest path after
+SPEC_CTRL_EXIT_TO_* would have run the entire NMI handler *after* the VERW
+flush to scrub potentially sensitive data from uarch buffers.
+
+In order to compensate, issue VERW when exiting to Xen from an IST entry.
+
+SPEC_CTRL_EXIT_TO_XEN already has two reads of spec_ctrl_flags off the stack,
+and we're about to add a third.  Load the field into %ebx, and list the
+register as clobbered.
+
+%r12 has been arranged to be the ist_exit signal, so add this as an input
+dependency and use it to identify when to issue a VERW.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/include/asm/spec_ctrl_asm.h
++++ b/xen/arch/x86/include/asm/spec_ctrl_asm.h
+@@ -357,10 +357,12 @@ UNLIKELY_DISPATCH_LABEL(\@_serialise):
+  */
+ .macro SPEC_CTRL_EXIT_TO_XEN
+ /*
+- * Requires %r14=stack_end
+- * Clobbers %rax, %rcx, %rdx
++ * Requires %r12=ist_exit, %r14=stack_end
++ * Clobbers %rax, %rbx, %rcx, %rdx
+  */
+-    testb $SCF_ist_sc_msr, STACK_CPUINFO_FIELD(spec_ctrl_flags)(%r14)
++    movzbl STACK_CPUINFO_FIELD(spec_ctrl_flags)(%r14), %ebx
++
++    testb $SCF_ist_sc_msr, %bl
+     jz .L\@_skip_sc_msr
+ 
+     /*
+@@ -371,7 +373,7 @@ UNLIKELY_DISPATCH_LABEL(\@_serialise):
+      */
+     xor %edx, %edx
+ 
+-    testb $SCF_use_shadow, STACK_CPUINFO_FIELD(spec_ctrl_flags)(%r14)
++    testb $SCF_use_shadow, %bl
+     jz .L\@_skip_sc_msr
+ 
+     mov STACK_CPUINFO_FIELD(shadow_spec_ctrl)(%r14), %eax
+@@ -380,8 +382,16 @@ UNLIKELY_DISPATCH_LABEL(\@_serialise):
+ 
+ .L\@_skip_sc_msr:
+ 
+-    /* TODO VERW */
++    test %r12, %r12
++    jz .L\@_skip_ist_exit
++
++    /* Logically DO_SPEC_CTRL_COND_VERW but without the %rsp=cpuinfo dependency */
++    testb $SCF_verw, %bl
++    jz .L\@_skip_verw
++    verw STACK_CPUINFO_FIELD(verw_sel)(%r14)
++.L\@_skip_verw:
+ 
++.L\@_skip_ist_exit:
+ .endm
+ 
+ #endif /* __ASSEMBLY__ */
+--- a/xen/arch/x86/x86_64/entry.S
++++ b/xen/arch/x86/x86_64/entry.S
+@@ -680,7 +680,7 @@ UNLIKELY_START(ne, exit_cr3)
+ UNLIKELY_END(exit_cr3)
+ 
+         /* WARNING! `ret`, `call *`, `jmp *` not safe beyond this point. */
+-        SPEC_CTRL_EXIT_TO_XEN     /* Req: %r14=end, Clob: acd */
++        SPEC_CTRL_EXIT_TO_XEN     /* Req: %r12=ist_exit %r14=end, Clob: abcd */
+ 
+         RESTORE_ALL adj=8
+         iretq

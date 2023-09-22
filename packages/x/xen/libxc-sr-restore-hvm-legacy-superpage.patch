@@ -438,7 +438,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +        return -1;
 +
 +    do {
-+        if ( sp.count >= BITS_PER_LONG ) {
++        if ( sp.count >= BITS_PER_LONG && (sp.count % BITS_PER_LONG) == 0 ) {
 +            sp.count -= BITS_PER_LONG;
 +            ctx->restore.tot_pages += BITS_PER_LONG;
 +            pfn_set_long_allocated(ctx, sp.base_pfn + sp.count);

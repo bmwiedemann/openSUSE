@@ -1,0 +1,73 @@
+Subject: x86/spec-ctrl: Turn the remaining SPEC_CTRL_{ENTRY,EXIT}_* into asm macros
+From: Andrew Cooper andrew.cooper3@citrix.com Fri Sep 1 11:38:44 2023 +0100
+Date: Mon Sep 18 16:43:01 2023 +0100:
+Git: 7125429aafb9e3c9c88fc93001fc2300e0ac2cc8
+
+These have grown more complex over time, with some already having been
+converted.
+
+Provide full Requires/Clobbers comments, otherwise missing at this level of
+indirection.
+
+No functional change.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/include/asm/spec_ctrl_asm.h
++++ b/xen/arch/x86/include/asm/spec_ctrl_asm.h
+@@ -231,26 +231,45 @@
+ .endm
+ 
+ /* Use after an entry from PV context (syscall/sysenter/int80/int82/etc). */
+-#define SPEC_CTRL_ENTRY_FROM_PV                                         \
++.macro SPEC_CTRL_ENTRY_FROM_PV
++/*
++ * Requires %rsp=regs/cpuinfo, %rdx=0
++ * Clobbers %rax, %rcx, %rdx
++ */
+     ALTERNATIVE "", __stringify(DO_SPEC_CTRL_COND_IBPB maybexen=0),     \
+-        X86_FEATURE_IBPB_ENTRY_PV;                                      \
+-    ALTERNATIVE "", DO_OVERWRITE_RSB, X86_FEATURE_SC_RSB_PV;            \
++        X86_FEATURE_IBPB_ENTRY_PV
++
++    ALTERNATIVE "", DO_OVERWRITE_RSB, X86_FEATURE_SC_RSB_PV
++
+     ALTERNATIVE "", __stringify(DO_SPEC_CTRL_ENTRY maybexen=0),         \
+         X86_FEATURE_SC_MSR_PV
++.endm
+ 
+ /* Use in interrupt/exception context.  May interrupt Xen or PV context. */
+-#define SPEC_CTRL_ENTRY_FROM_INTR                                       \
++.macro SPEC_CTRL_ENTRY_FROM_INTR
++/*
++ * Requires %rsp=regs, %r14=stack_end, %rdx=0
++ * Clobbers %rax, %rcx, %rdx
++ */
+     ALTERNATIVE "", __stringify(DO_SPEC_CTRL_COND_IBPB maybexen=1),     \
+-        X86_FEATURE_IBPB_ENTRY_PV;                                      \
+-    ALTERNATIVE "", DO_OVERWRITE_RSB, X86_FEATURE_SC_RSB_PV;            \
++        X86_FEATURE_IBPB_ENTRY_PV
++
++    ALTERNATIVE "", DO_OVERWRITE_RSB, X86_FEATURE_SC_RSB_PV
++
+     ALTERNATIVE "", __stringify(DO_SPEC_CTRL_ENTRY maybexen=1),         \
+         X86_FEATURE_SC_MSR_PV
++.endm
+ 
+ /* Use when exiting to PV guest context. */
+-#define SPEC_CTRL_EXIT_TO_PV                                            \
+-    ALTERNATIVE "",                                                     \
+-        DO_SPEC_CTRL_EXIT_TO_GUEST, X86_FEATURE_SC_MSR_PV;              \
++.macro SPEC_CTRL_EXIT_TO_PV
++/*
++ * Requires %rax=spec_ctrl, %rsp=regs/info
++ * Clobbers %rcx, %rdx
++ */
++    ALTERNATIVE "", DO_SPEC_CTRL_EXIT_TO_GUEST, X86_FEATURE_SC_MSR_PV
++
+     DO_SPEC_CTRL_COND_VERW
++.endm
+ 
+ /*
+  * Use in IST interrupt/exception context.  May interrupt Xen or PV context.

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Sep 18 11:36:39 MDT 2023 - carnold@suse.com
+
+- bsc#1215474 - VUL-0: CVE-2023-20588: xen: AMD CPU transitional
+  execution leak via division by zero (XSA-439)
+  xsa439-00.patch
+  xsa439-01.patch
+  xsa439-02.patch
+  xsa439-03.patch
+  xsa439-04.patch
+  xsa439-05.patch
+  xsa439-06.patch
+  xsa439-07.patch
+  xsa439-08.patch
+  xsa439-09.patch
+
+-------------------------------------------------------------------
+Fri Sep  8 10:10:18 MDT 2023 - carnold@suse.com
+
+- bsc#1215145 - VUL-0: CVE-2023-34322: xen: top-level shadow
+  reference dropped too early for 64-bit PV guests (XSA-438)
+  xsa438.patch
+
+-------------------------------------------------------------------
+Sun Aug 13 13:13:13 UTC 2023 - ohering@suse.de
+
+- Handle potential unaligned access to bitmap in
+  libxc-sr-restore-hvm-legacy-superpage.patch
+  If setting BITS_PER_LONG at once, the initial bit must be aligned
+
+-------------------------------------------------------------------
 Thu Aug 10 11:10:00 CEST 2023 - jbeulich@suse.com
 
 - bsc#1212684 - xentop fails with long interface name

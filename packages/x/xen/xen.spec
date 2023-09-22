@@ -119,7 +119,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.17.2_02
+Version:        4.17.2_04
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -160,6 +160,17 @@ Patch2:         643e3810-CONFIG_DEBUG_INFO-no-EXPERT.patch
 Patch3:         643e387f-xen-update-CONFIG_DEBUG_INFO-help-text.patch
 Patch4:         6447a8fd-x86-EFI-permit-crash-dump-analysis.patch
 Patch5:         64d33a57-libxenstat-Linux-nul-terminate-string.patch
+Patch9:         xsa438.patch
+Patch10:        xsa439-00.patch
+Patch11:        xsa439-01.patch
+Patch12:        xsa439-02.patch
+Patch13:        xsa439-03.patch
+Patch14:        xsa439-04.patch
+Patch15:        xsa439-05.patch
+Patch16:        xsa439-06.patch
+Patch17:        xsa439-07.patch
+Patch18:        xsa439-08.patch
+Patch19:        xsa439-09.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch

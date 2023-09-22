@@ -2862,4 +2862,12 @@
     <comment>Security and maintenance update for Xen</comment>
     <requestid>1103355</requestid>
   </revision>
+  <revision rev="336" vrev="1">
+    <srcmd5>296c66f49f387bf7638ca5c35970238d</srcmd5>
+    <version>4.17.2_04</version>
+    <time>1695412034</time>
+    <user>anag+factory</user>
+    <comment>Security and Maintenance Update for Xen</comment>
+    <requestid>1112599</requestid>
+  </revision>
 </revisionlist>

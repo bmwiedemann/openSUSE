@@ -1,0 +1,73 @@
+Subject: x86/entry: Track the IST-ness of an entry for the exit paths
+From: Andrew Cooper andrew.cooper3@citrix.com Wed Sep 13 12:20:12 2023 +0100
+Date: Mon Sep 18 16:43:01 2023 +0100:
+Git: 21bdc25b05a0f8ab6bc73520a9ca01327360732c
+
+Use %r12 to hold an ist_exit boolean.  This register is zero elsewhere in the
+entry/exit asm, so it only needs setting in the IST path.
+
+As this is subtle and fragile, add check_ist_exit() to be used in debugging
+builds to cross-check that the ist_exit boolean matches the entry vector.
+
+Write check_ist_exit() it in C, because it's debug only and the logic more
+complicated than I care to maintain in asm.
+
+For now, we only need to use this signal in the exit-to-Xen path, but some
+exit-to-guest paths happen in IST context too.  Check the correctness in all
+exit paths to avoid the logic bit-rotting.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/traps.c
++++ b/xen/arch/x86/traps.c
+@@ -2315,6 +2315,19 @@ void asm_domain_crash_synchronous(unsign
+         do_softirq();
+ }
+ 
++#ifdef CONFIG_DEBUG
++void check_ist_exit(const struct cpu_user_regs *regs, bool ist_exit)
++{
++    const unsigned int ist_mask =
++        (1U << X86_EXC_NMI) | (1U << X86_EXC_DB) |
++        (1U << X86_EXC_DF)  | (1U << X86_EXC_MC);
++    uint8_t ev = regs->entry_vector;
++    bool is_ist = (ev < TRAP_nr) && ((1U << ev) & ist_mask);
++
++    ASSERT(is_ist == ist_exit);
++}
++#endif
++
+ /*
+  * Local variables:
+  * mode: C
+--- a/xen/arch/x86/x86_64/entry.S
++++ b/xen/arch/x86/x86_64/entry.S
+@@ -659,8 +659,15 @@ ENTRY(early_page_fault)
+         .section .text.entry, "ax", @progbits
+ 
+         ALIGN
+-/* No special register assumptions. */
++/* %r12=ist_exit */
+ restore_all_xen:
++
++#ifdef CONFIG_DEBUG
++        mov   %rsp, %rdi
++        mov   %r12, %rsi
++        call  check_ist_exit
++#endif
++
+         /*
+          * Check whether we need to switch to the per-CPU page tables, in
+          * case we return to late PV exit code (from an NMI or #MC).
+@@ -1091,6 +1098,10 @@ handle_ist_exception:
+ .L_ist_dispatch_done:
+         mov   %r15, STACK_CPUINFO_FIELD(xen_cr3)(%r14)
+         mov   %bl, STACK_CPUINFO_FIELD(use_pv_cr3)(%r14)
++
++        /* This is an IST exit */
++        mov   $1, %r12d
++
+         cmpb  $TRAP_nmi,UREGS_entry_vector(%rsp)
+         jne   ret_from_intr
+ 

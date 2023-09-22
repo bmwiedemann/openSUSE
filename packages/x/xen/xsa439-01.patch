@@ -1,0 +1,61 @@
+Subject: x86/spec-ctrl: Fix confusion between SPEC_CTRL_EXIT_TO_XEN{,_IST}
+From: Andrew Cooper andrew.cooper3@citrix.com Tue Sep 12 15:06:49 2023 +0100
+Date: Mon Sep 18 16:43:01 2023 +0100:
+Git: 1c18d73774533a55ba9d1cbee8bdace03efdb5e7
+
+c/s 3fffaf9c13e9 ("x86/entry: Avoid using alternatives in NMI/#MC paths")
+dropped the only user, leaving behind the (incorrect) implication that Xen had
+split exit paths.
+
+Delete the unused SPEC_CTRL_EXIT_TO_XEN and rename SPEC_CTRL_EXIT_TO_XEN_IST
+to SPEC_CTRL_EXIT_TO_XEN for consistency.
+
+No functional change.
+
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+
+--- a/xen/arch/x86/include/asm/spec_ctrl_asm.h
++++ b/xen/arch/x86/include/asm/spec_ctrl_asm.h
+@@ -79,7 +79,6 @@
+  *  - SPEC_CTRL_ENTRY_FROM_PV
+  *  - SPEC_CTRL_ENTRY_FROM_INTR
+  *  - SPEC_CTRL_ENTRY_FROM_INTR_IST
+- *  - SPEC_CTRL_EXIT_TO_XEN_IST
+  *  - SPEC_CTRL_EXIT_TO_XEN
+  *  - SPEC_CTRL_EXIT_TO_PV
+  *
+@@ -268,11 +267,6 @@
+     ALTERNATIVE "", __stringify(DO_SPEC_CTRL_ENTRY maybexen=1),         \
+         X86_FEATURE_SC_MSR_PV
+ 
+-/* Use when exiting to Xen context. */
+-#define SPEC_CTRL_EXIT_TO_XEN                                           \
+-    ALTERNATIVE "",                                                     \
+-        DO_SPEC_CTRL_EXIT_TO_XEN, X86_FEATURE_SC_MSR_PV
+-
+ /* Use when exiting to PV guest context. */
+ #define SPEC_CTRL_EXIT_TO_PV                                            \
+     ALTERNATIVE "",                                                     \
+@@ -339,8 +333,8 @@ UNLIKELY_DISPATCH_LABEL(\@_serialise):
+     UNLIKELY_END(\@_serialise)
+ .endm
+ 
+-/* Use when exiting to Xen in IST context. */
+-.macro SPEC_CTRL_EXIT_TO_XEN_IST
++/* Use when exiting to Xen context. */
++.macro SPEC_CTRL_EXIT_TO_XEN
+ /*
+  * Requires %rbx=stack_end
+  * Clobbers %rax, %rcx, %rdx
+--- a/xen/arch/x86/x86_64/entry.S
++++ b/xen/arch/x86/x86_64/entry.S
+@@ -673,7 +673,7 @@ UNLIKELY_START(ne, exit_cr3)
+ UNLIKELY_END(exit_cr3)
+ 
+         /* WARNING! `ret`, `call *`, `jmp *` not safe beyond this point. */
+-        SPEC_CTRL_EXIT_TO_XEN_IST /* Req: %rbx=end, Clob: acd */
++        SPEC_CTRL_EXIT_TO_XEN     /* Req: %rbx=end, Clob: acd */
+ 
+         RESTORE_ALL adj=8
+         iretq
