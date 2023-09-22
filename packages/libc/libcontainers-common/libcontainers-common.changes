@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 13 12:48:43 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Require libcontainers-sles-mounts for *all* SLE products,
+  and not just SLES. (bsc#1215291)
+
+-------------------------------------------------------------------
 Wed Sep 13 06:13:53 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - New release 20230913

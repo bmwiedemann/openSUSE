@@ -55,7 +55,7 @@ Source12:       openSUSE-policy.json
 BuildRequires:  go-go-md2man
 Requires(post): %{_bindir}/sed
 # add SLE-specific mounts for only SLES systems
-Requires:       (libcontainers-sles-mounts if sles-release)
+Requires:       (libcontainers-sles-mounts if product(SUSE_SLE))
 Requires:       libcontainers-policy >= %{version}
 Suggests:       (libcontainers-policy-openSUSE if openSUSE-release)
 Provides:       libcontainers-image = %{version}
