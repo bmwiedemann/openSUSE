@@ -6,7 +6,8 @@
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="revision">v2.3-rc4</param>
     <param name="versionrewrite-pattern">v(\d+.\d+(\.d+)?)(-rc(\d+))?</param>
-    <param name="versionrewrite-replacement">\1\2~\4</param>
+    <!-- <param name="versionrewrite-replacement">\1\2~\4</param> -->
+    <param name="versionrewrite-replacement">\1\2</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="manual">

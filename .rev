@@ -136,4 +136,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1107771</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>33c5b47b433ca94d97169c5937f1f6a9</srcmd5>
+    <version>2.3</version>
+    <time>1695412057</time>
+    <user>anag+factory</user>
+    <comment>- Update to version v2.3
+  * Support for NVMe Boot Firmware Table (NBFT) as configuration source
+  * Optimization of udev handling (bsc#1214078)
+  * Bug fixes and optimizations</comment>
+    <requestid>1112898</requestid>
+  </revision>
 </revisionlist>
