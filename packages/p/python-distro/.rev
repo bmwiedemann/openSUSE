@@ -198,4 +198,13 @@
     <comment></comment>
     <requestid>1085107</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>7db9eaf9770614292bfaa561b3df6203</srcmd5>
+    <version>1.8.0</version>
+    <time>1695412014</time>
+    <user>anag+factory</user>
+    <comment>- Remove duplicate files calling %fdupes
+</comment>
+    <requestid>1112048</requestid>
+  </revision>
 </revisionlist>

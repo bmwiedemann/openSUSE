@@ -30,6 +30,7 @@ Source:         https://files.pythonhosted.org/packages/source/d/distro/distro-%
 Patch0:         assert_locale.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -58,6 +59,7 @@ sed -i '1{/\/usr\/bin\/env python/d;}' src/distro/distro.py
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/distro
+%python_expand %fdupes %{buildroot}%{$python_sitelib}/distro
 
 %if %{with test}
 %check
@@ -74,7 +76,8 @@ export LANG=C.UTF-8
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %python_alternative %{_bindir}/distro
-%{python_sitelib}/*
+%{python_sitelib}/distro
+%{python_sitelib}/distro-%{version}*-info
 %%license LICENSE
 
 %changelog
