@@ -1299,7 +1299,6 @@ unsorted:
   - bcc-devel 
   - bcc-docs 
   - bcc-examples 
-  - bcc-lua 
   - bcc-tools 
   - bcel 
   - bcel-javadoc 
@@ -2409,8 +2408,6 @@ unsorted:
   - connman-test 
   - conntrack-tools 
   - conntrackd 
-  - console 
-  - console-lang 
   - console-setup 
   - consoleet-darwin-fonts 
   - consoleet-fixedsys-fonts 
@@ -5111,6 +5108,10 @@ unsorted:
   - ghc-deepseq-devel 
   - ghc-deepseq-doc 
   - ghc-deepseq-prof 
+  - ghc-deferred-folds 
+  - ghc-deferred-folds-devel 
+  - ghc-deferred-folds-doc 
+  - ghc-deferred-folds-prof 
   - ghc-dense-linear-algebra 
   - ghc-dense-linear-algebra-devel 
   - ghc-dense-linear-algebra-doc 
@@ -5499,6 +5500,10 @@ unsorted:
   - ghc-isocline-devel 
   - ghc-isocline-doc 
   - ghc-isocline-prof 
+  - ghc-isomorphism-class 
+  - ghc-isomorphism-class-devel 
+  - ghc-isomorphism-class-doc 
+  - ghc-isomorphism-class-prof 
   - ghc-iwlib 
   - ghc-iwlib-devel 
   - ghc-iwlib-doc 
@@ -5696,6 +5701,10 @@ unsorted:
   - ghc-ordered-containers-devel 
   - ghc-ordered-containers-doc 
   - ghc-ordered-containers-prof 
+  - ghc-pager 
+  - ghc-pager-devel 
+  - ghc-pager-doc 
+  - ghc-pager-prof 
   - ghc-pandoc 
   - ghc-pandoc-devel 
   - ghc-pandoc-doc 
@@ -6056,6 +6065,18 @@ unsorted:
   - ghc-texmath-doc 
   - ghc-texmath-prof 
   - ghc-text 
+  - ghc-text-ansi 
+  - ghc-text-ansi-devel 
+  - ghc-text-ansi-doc 
+  - ghc-text-ansi-prof 
+  - ghc-text-builder 
+  - ghc-text-builder-dev 
+  - ghc-text-builder-dev-devel 
+  - ghc-text-builder-dev-doc 
+  - ghc-text-builder-dev-prof 
+  - ghc-text-builder-devel 
+  - ghc-text-builder-doc 
+  - ghc-text-builder-prof 
   - ghc-text-conversions 
   - ghc-text-conversions-devel 
   - ghc-text-conversions-doc 
@@ -6651,6 +6672,7 @@ unsorted:
   - gluegen2-devel 
   - glusterfs 
   - glusterfs-devel 
+  - glycin-loaders 
   - glyr-devel 
   - glyrc 
   - gmavenplus-plugin 
@@ -9117,12 +9139,9 @@ unsorted:
   - kio_iso 
   - kio_perldoc 
   - kio_perldoc-lang 
-  - kirigami 
   - kirigami-addons-devel 
-  - kirigami-devel 
   - kirigami-gallery 
   - kirigami-gallery-lang 
-  - kirigami-lang 
   - kirigami2-devel 
   - kiriki 
   - kiriki-lang 
@@ -9391,6 +9410,7 @@ unsorted:
   - kubeaudit-fish-completion 
   - kubeaudit-zsh-completion 
   - kubeconform 
+  - kubectl-capacity 
   - kubectl-explore 
   - kubectl-foreach 
   - kubectl-neat 
@@ -13345,7 +13365,7 @@ unsorted:
   - libmruby3_1_0 
   - libmruby_core3_1_0 
   - libmsgpackc2 
-  - libmsi0 
+  - libmsi-1_0-0 
   - libmsiecf-devel 
   - libmsiecf-tools 
   - libmsiecf1 
@@ -14086,7 +14106,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler130-32bit 
+  - libpoppler131-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -14854,8 +14874,6 @@ unsorted:
   - libsigc-2_0-0-32bit 
   - libsignal-protocol-c-devel 
   - libsignal-protocol-c2 
-  - libsignon-glib-devel 
-  - libsignon-glib2 
   - libsignon-qt5-devel 
   - libsignon-qt5-docs 
   - libsigrok-data 
@@ -15215,7 +15233,6 @@ unsorted:
   - libtecla_r1 
   - libteec1 
   - libtelepathy-farstream3 
-  - libtelepathy-logger-qt5 
   - libtelepathy-qt5-0 
   - libtelepathy-qt5-farstream0 
   - libtelepathy-qt5-service1 
@@ -15691,9 +15708,13 @@ unsorted:
   - libwebpdecoder3-32bit 
   - libwebpdemux2-32bit 
   - libwebpmux3-32bit 
-  - libwebrtc_audio_processing-devel 
-  - libwebrtc_audio_processing-devel-static 
-  - libwebrtc_audio_processing1-32bit 
+  - libwebrtc-audio-coding-1-3 
+  - libwebrtc-audio-coding-1-3-32bit 
+  - libwebrtc-audio-coding-devel 
+  - libwebrtc-audio-coding-devel-static 
+  - libwebrtc-audio-processing-1-3-32bit 
+  - libwebrtc-audio-processing-devel 
+  - libwebrtc-audio-processing-devel-static 
   - libwebsockets-devel 
   - libwebsockets19 
   - libweston-12 
@@ -16344,6 +16365,8 @@ unsorted:
   - lookbook-lang 
   - loook 
   - loudmouth-devel 
+  - loupe 
+  - loupe-lang 
   - lout 
   - love 
   - love-0_7_2 
@@ -22813,7 +22836,6 @@ unsorted:
   - python3-libprelude 
   - python3-libpreludedb 
   - python3-librepo 
-  - python3-libsignon-glib 
   - python3-libsoc 
   - python3-libstoragemgmt 
   - python3-libtorrent-rasterbar 
@@ -23524,6 +23546,7 @@ unsorted:
   - python310-azure-mgmt-containerservicefleet 
   - python310-azure-mgmt-core 
   - python310-azure-mgmt-cosmosdb 
+  - python310-azure-mgmt-cosmosdbforpostgresql 
   - python310-azure-mgmt-costmanagement 
   - python310-azure-mgmt-customproviders 
   - python310-azure-mgmt-dashboard 
@@ -23566,6 +23589,7 @@ unsorted:
   - python310-azure-mgmt-hdinsight 
   - python310-azure-mgmt-healthcareapis 
   - python310-azure-mgmt-hybridcompute 
+  - python310-azure-mgmt-hybridconnectivity 
   - python310-azure-mgmt-hybridkubernetes 
   - python310-azure-mgmt-hybridnetwork 
   - python310-azure-mgmt-imagebuilder 
@@ -23585,6 +23609,7 @@ unsorted:
   - python310-azure-mgmt-machinelearningcompute 
   - python310-azure-mgmt-machinelearningservices 
   - python310-azure-mgmt-maintenance 
+  - python310-azure-mgmt-managedapplications 
   - python310-azure-mgmt-managednetworkfabric 
   - python310-azure-mgmt-managedservices 
   - python310-azure-mgmt-managementgroups 
@@ -23963,7 +23988,6 @@ unsorted:
   - python310-cymruwhois 
   - python310-cytoolz 
   - python310-czifile 
-  - python310-d2to1 
   - python310-daemonize 
   - python310-daiquiri 
   - python310-dasbus 
@@ -26989,6 +27013,7 @@ unsorted:
   - python311-azure-mgmt-containerservicefleet 
   - python311-azure-mgmt-core 
   - python311-azure-mgmt-cosmosdb 
+  - python311-azure-mgmt-cosmosdbforpostgresql 
   - python311-azure-mgmt-costmanagement 
   - python311-azure-mgmt-customproviders 
   - python311-azure-mgmt-dashboard 
@@ -27031,6 +27056,7 @@ unsorted:
   - python311-azure-mgmt-hdinsight 
   - python311-azure-mgmt-healthcareapis 
   - python311-azure-mgmt-hybridcompute 
+  - python311-azure-mgmt-hybridconnectivity 
   - python311-azure-mgmt-hybridkubernetes 
   - python311-azure-mgmt-hybridnetwork 
   - python311-azure-mgmt-imagebuilder 
@@ -27050,6 +27076,7 @@ unsorted:
   - python311-azure-mgmt-machinelearningcompute 
   - python311-azure-mgmt-machinelearningservices 
   - python311-azure-mgmt-maintenance 
+  - python311-azure-mgmt-managedapplications 
   - python311-azure-mgmt-managednetworkfabric 
   - python311-azure-mgmt-managedservices 
   - python311-azure-mgmt-managementgroups 
@@ -27414,7 +27441,6 @@ unsorted:
   - python311-cymruwhois 
   - python311-cytoolz 
   - python311-czifile 
-  - python311-d2to1 
   - python311-daemonize 
   - python311-daiquiri 
   - python311-dasbus 
@@ -30367,6 +30393,7 @@ unsorted:
   - python39-azure-mgmt-containerservicefleet 
   - python39-azure-mgmt-core 
   - python39-azure-mgmt-cosmosdb 
+  - python39-azure-mgmt-cosmosdbforpostgresql 
   - python39-azure-mgmt-costmanagement 
   - python39-azure-mgmt-customproviders 
   - python39-azure-mgmt-dashboard 
@@ -30409,6 +30436,7 @@ unsorted:
   - python39-azure-mgmt-hdinsight 
   - python39-azure-mgmt-healthcareapis 
   - python39-azure-mgmt-hybridcompute 
+  - python39-azure-mgmt-hybridconnectivity 
   - python39-azure-mgmt-hybridkubernetes 
   - python39-azure-mgmt-hybridnetwork 
   - python39-azure-mgmt-imagebuilder 
@@ -30428,6 +30456,7 @@ unsorted:
   - python39-azure-mgmt-machinelearningcompute 
   - python39-azure-mgmt-machinelearningservices 
   - python39-azure-mgmt-maintenance 
+  - python39-azure-mgmt-managedapplications 
   - python39-azure-mgmt-managednetworkfabric 
   - python39-azure-mgmt-managedservices 
   - python39-azure-mgmt-managementgroups 
@@ -30807,7 +30836,6 @@ unsorted:
   - python39-cymruwhois 
   - python39-cytoolz 
   - python39-czifile 
-  - python39-d2to1 
   - python39-daemonize 
   - python39-daiquiri 
   - python39-dasbus 
@@ -35532,12 +35560,10 @@ unsorted:
   - telegraf 
   - telegram-desktop 
   - telegram-theme-adapta 
-  - telepathy-accounts-signon 
   - telepathy-farstream-devel 
   - telepathy-glib-devel 
   - telepathy-glib-doc 
   - telepathy-logger-devel 
-  - telepathy-logger-qt5-devel 
   - telepathy-mission-control-devel 
   - telepathy-qt5-devel 
   - telepathy-rakia 
@@ -45038,7 +45064,6 @@ unsorted:
   - typelib-1_0-RygelRenderer-2_8 
   - typelib-1_0-RygelRendererGst-2_8 
   - typelib-1_0-RygelServer-2_8 
-  - typelib-1_0-Signon-2_0 
   - typelib-1_0-Skk-1_0 
   - typelib-1_0-Soup-2_4 
   - typelib-1_0-TelepathyFarstream-0_6 
@@ -45240,6 +45265,17 @@ unsorted:
   - urlscan 
   - urlview 
   - urlwatch 
+  - urw-base35-fonts 
+  - urw-base35-fonts-C059 
+  - urw-base35-fonts-D050000L 
+  - urw-base35-fonts-NimbusMonoPS 
+  - urw-base35-fonts-NimbusRoman 
+  - urw-base35-fonts-NimbusSans 
+  - urw-base35-fonts-P052 
+  - urw-base35-fonts-StandardSymbolsPS 
+  - urw-base35-fonts-URWBookman 
+  - urw-base35-fonts-URWGothic 
+  - urw-base35-fonts-Z003 
   - urxvt-font-size 
   - urxvt-perls 
   - us428control 
@@ -45611,7 +45647,6 @@ unsorted:
   - warewulf-vnfs 
   - warewulf4 
   - warewulf4-api 
-  - warewulf4-ipxe 
   - warewulf4-overlay 
   - warewulf4-slurm 
   - warp 
