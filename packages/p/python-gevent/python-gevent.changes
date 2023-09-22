@@ -1,9 +1,49 @@
 -------------------------------------------------------------------
+Mon Sep 18 19:07:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.9.0 (CVE-2023-41419):
+  * Make ``gevent.select.select`` accept arbitrary iterables, not
+    just sequences. That is, you can now pass in a generator of file
+    descriptors instead of a realized list. Internally, arbitrary
+    iterables are copied into lists. This better matches what the
+    standard library does.
+  * On Python 3.11 and newer, opt out of Cython's fast exception
+    manipulation, which *may* be causing problems in certain
+    circumstances when combined with greenlets.
+  * On all versions of Python, adjust some error handling in the
+    default * -based loop. This fixes several assertion failures
+    on debug versions of CPython. Hopefully it has a positive
+    impact under real conditions.
+  * Make ``gevent.pywsgi`` comply more closely with the HTTP
+    specification for chunked transfer encoding. In particular,
+    we are much stricter about trailers, and trailers that are
+    invalid (too long or featuring disallowed characters) forcibly
+    close the connection to the client *after* the results have
+    been sent.
+  * Trailers otherwise continue to be ignored and are not
+    available to the WSGI application.
+    Previously, carefully crafted invalid trailers in chunked
+    requests on keep-alive connections might appear as two
+    requests to ``gevent.pywsgi``. Because this was handled
+    exactly as a normal keep-alive connection with two requests,
+    the WSGI application should handle it normally. However, if
+    you were counting on some upstream server to filter incoming
+    requests based on paths or header fields, and the upstream
+    server simply passed trailers through without
+    validating them, then this embedded second request would
+    bypass those checks.
+    (If the upstream server validated that the trailers
+    meet the* HTTP specification, this could not occur,
+    because characters that are required in an HTTP request,
+    like a space, are not allowed in trailers.) CVE-2023-41419
+    was reserved for this.
+
+-------------------------------------------------------------------
 Mon Aug 14 09:20:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.7.0:
   * Add preliminary support for Python 3.12, using greenlet
-    3.0a1. 
+    3.0a1.
   * Update the bundled c-ares version to 1.19.1.
   * Fix an edge case connecting a non-blocking ``SSLSocket`` that
     could result in an AttributeError. In a change to match
@@ -35,19 +75,19 @@ Fri Jun  9 08:08:57 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 Thu Jun  1 07:05:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - handle-python-ssl-changes.patch: refresh to handle ssl.shared_ciphers()
-  behavior change in python 3.11 as well 
+  behavior change in python 3.11 as well
 
 -------------------------------------------------------------------
 Mon May 15 14:18:03 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch handle-python-ssl-changes.patch:
   * Handle Python 3.10 changes where ssl.shared_ciphers() changes
-    behaviour. 
+    behaviour.
 
 -------------------------------------------------------------------
 Mon May 15 13:44:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- skip one more test from testsuite 
+- skip one more test from testsuite
 
 -------------------------------------------------------------------
 Thu May  4 20:28:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -93,7 +133,7 @@ Sun Oct 16 17:41:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
                    and 3.6, will be ending soon. The
                    maintenance burden has become too great and the
                    maintainer's time is too limited.
-  
+
                    Ideally, there will be a release of gevent compatible
                    with a final release of greenlet 2.0 that still
                    supports those legacy versions, but that may not be
@@ -1272,7 +1312,7 @@ Sun Nov 12 16:56:47 UTC 2017 - arun@gmx.de
 -------------------------------------------------------------------
 Wed May 31 19:30:52 UTC 2017 - dmueller@suse.com
 
-- adjust buildrequirements for singlespec building on SLE_12 
+- adjust buildrequirements for singlespec building on SLE_12
 
 -------------------------------------------------------------------
 Wed Apr 19 20:55:27 UTC 2017 - toddrme2178@gmail.com
@@ -1581,7 +1621,7 @@ Fri Oct 26 16:23:38 UTC 2012 - douglarek@outlook.com
 
     *  Fixed issue #80: gevent.httplib failed with RequestFailed errors because timeout was reset to 1s. Patch by Tomasz Prus.
     *  core: fix compilation with the latest Cython: remove emit_ifdef/emit_else/emit_endif.
-    *  Fixed issue #132: gevent.socket.gethostbyname(<unicode>) now does ascii encoding and uses gevent's resolver rather than 
+    *  Fixed issue #132: gevent.socket.gethostbyname(<unicode>) now does ascii encoding and uses gevent's resolver rather than
     calling built-in resolver. Patch by Alexey Borzenkov.
 
 

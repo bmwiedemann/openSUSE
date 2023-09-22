@@ -690,4 +690,41 @@
 - drop skip-tests-in-leap.patch handle-python-ssl-changes.patch (obsolete)</comment>
     <requestid>1103820</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a82d0fb3a77246a5b8e8cf15af16b113</srcmd5>
+    <version>23.9.0</version>
+    <time>1695412016</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.9.0 (CVE-2023-41419):
+  * Make ``gevent.select.select`` accept arbitrary iterables, not
+    just sequences. That is, you can now pass in a generator of file
+    descriptors instead of a realized list. Internally, arbitrary
+    iterables are copied into lists. This better matches what the
+    standard library does.
+  * On Python 3.11 and newer, opt out of Cython's fast exception
+    manipulation, which *may* be causing problems in certain
+    circumstances when combined with greenlets.
+  * On all versions of Python, adjust some error handling in the
+    default * -based loop. This fixes several assertion failures
+    on debug versions of CPython. Hopefully it has a positive
+    impact under real conditions.
+  * Make ``gevent.pywsgi`` comply more closely with the HTTP
+    specification for chunked transfer encoding. In particular,
+    we are much stricter about trailers, and trailers that are
+    invalid (too long or featuring disallowed characters) forcibly
+    close the connection to the client *after* the results have
+    been sent.
+  * Trailers otherwise continue to be ignored and are not
+    available to the WSGI application.
+    Previously, carefully crafted invalid trailers in chunked
+    requests on keep-alive connections might appear as two
+    requests to ``gevent.pywsgi``. Because this was handled
+    exactly as a normal keep-alive connection with two requests,
+    the WSGI application should handle it normally. However, if
+    you were counting on some upstream server to filter incoming
+    requests based on paths or header fields, and the upstream
+    server simply passed trailers through without
+    validating them, then this embedded second request would</comment>
+    <requestid>1112068</requestid>
+  </revision>
 </revisionlist>

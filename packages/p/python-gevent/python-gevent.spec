@@ -25,7 +25,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-gevent
-Version:        23.7.0
+Version:        23.9.0
 Release:        0
 Summary:        Python network library that uses greenlet and libevent
 License:        MIT
