@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 14 08:01:32 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.7.4:
+  - Support request size negotiation and increased throughput on
+    high-latency connections
+  - Supports connecting to vsock (7) via shfs -o vsock=CID:PORT
+    @g-easy
+  - README in markdown instead of rst
+  - Various test fixes @neunenak
+- Remove sshfs.keyring … upstream doesn’t provide checksums again
+  (gh#deadbeefsociety/sshfs#12).
+
+-------------------------------------------------------------------
 Thu May 26 13:53:15 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - sshfs 3.7.3:
