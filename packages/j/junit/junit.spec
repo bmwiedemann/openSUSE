@@ -110,7 +110,7 @@ class test {
 
 }
 EOF
-javac -cp %{buildroot}/%{_javadir}/%{name}.jar test.java
+javac -source 8 -target 8 -cp %{buildroot}/%{_javadir}/%{name}.jar test.java
 java -cp %{buildroot}/%{_javadir}/%{name}.jar: test 2>&1 | \
    grep 'Exception in thread "main" java.lang.AssertionError: Hello world from junit'
 

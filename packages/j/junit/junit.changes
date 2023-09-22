@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 21 07:53:02 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Let ant build with --release 8 if the compiler knows that option.
+  This allows us to avoid incompatible exception declarations
+  in ObjectInputStream.GetField.get(String,Object) in java >= 20
+
+-------------------------------------------------------------------
 Thu Mar 23 17:18:10 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Conditionalize the spec file so that junit can be built with

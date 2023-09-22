@@ -224,4 +224,12 @@
     <comment>Conditionalize the spec file a bit</comment>
     <requestid>1074021</requestid>
   </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>0c68396a9c92542bea9b9790c95c7d37</srcmd5>
+    <version>4.13.2</version>
+    <time>1695412039</time>
+    <user>anag+factory</user>
+    <comment>fix build with java &gt;= 20</comment>
+    <requestid>1112743</requestid>
+  </revision>
 </revisionlist>

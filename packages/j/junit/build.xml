@@ -36,7 +36,8 @@
 
   <property name="maven.deploy.goal" value="org.apache.maven.plugins:maven-gpg-plugin:1.1:sign-and-deploy-file" />
   
-  <property name="compiler.source" value="1.8" />
+  <property name="compiler.release" value="8" />
+  <property name="compiler.source" value="1.${compiler.release}" />
   <property name="compiler.target" value="${compiler.source}" />
 
   <target name="init">
@@ -76,6 +77,7 @@
           debug="on"
           classpath="@{classpath}"
           includeantruntime="false"
+          release="${compiler.release}"
           source="${compiler.source}"
           target="${compiler.target}"
           >
