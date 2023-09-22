@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-pp</param>
-    <param name="revision">5a42badeac6da93c1978ddb6f23d0299eab62312</param>
+    <param name="revision">83b68c740f21acdcfe54436355ab328372871357</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml-dune/pp.git</param>
