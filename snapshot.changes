@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Sat Sep 16 12:29:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + Various Bugfixes
+  + Use pipewire node description to name cameras
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Aug 19 08:58:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.beta:
+  + Improve Video Player controller.
+  + Improved accessibility.
+  + Update styles throughout the app.
+  + Squash various bugs.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Jul 24 12:38:11 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add back cargo_audit to _service, now that it is back in working
+  order.
+
+-------------------------------------------------------------------
+Tue Jul 11 19:15:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.alpha:
+  + Minor release with updates to various dependencies.
+  + Update Aperture to v0.2, update Rust to 1.70
+  + Update to Libadwaita 1.4, use new adaptive components
+  + Show all window controls on the top of the window
+  + Improved accessibility
+  + Squash various bugs
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon May 22 23:16:06 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 44.2:
+  + Many improvements and fixes.
+  + Updated translations.
+- Add gstreamer-plugins-bad-1.0 pkgconfig module as a new build
+  requirement for camerabin.
+
+-------------------------------------------------------------------
+Fri Mar 31 19:07:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial packaging for openSUSE.
