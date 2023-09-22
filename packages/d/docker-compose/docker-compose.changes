@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Sep 22 05:35:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.22.0:
+  * config --xx don't need `env_file` being parsed
+  * remove --timeout=0 flag to cleanup function of watch e2e test
+    compose down command need the watch process to be killed to
+    succeed
+  * move watch from alpha to main command
+  * TestWatch to use new  `develop` section
+  * implement publish
+  * watch: use official `develop` section (#11026)
+  * build(deps): bump github.com/opencontainers/image-spec
+  * build(deps): bump github.com/moby/buildkit from 0.12.1 to
+    0.12.2
+  * build(deps): bump gotest.tools/v3 from 3.5.0 to 3.5.1
+  * build(deps): bump google.golang.org/grpc from 1.58.0 to 1.58.1
+  * build(deps): bump github.com/containerd/containerd from 1.7.3
+    to 1.7.6
+  * introduce pull --missing flag to only pull images not present
+    in cache
+  * resolve service reference into container based on observed
+    state
+  * don't rely on depends_on to resolve volume_from, better use
+    observed state
+  * update to go1.21.1
+  * correct scale error messages formatting
+  * add scale command
+  * ci: tweak restricted imports in linter (#10992)
+  * deps: upgrade Moby to v24.0.6 and gRPC to v1.58.0 (#10991)
+  * cli: fix `--build` flag for `create` (#10982)
+  * otel: add args & flags to cli traces (#10974)
+  * watch: build & launch the project at start (#10957)
+  * pull OCI remote resource
+  * introduce publish (alpha) command
+  * doc: updated README.md to remove broken link
+  * migrate to github.com/distribution/reference
+  * Enable service explicitly requested to be restarted
+  * build: pass BuildOptions around explicitly & fix multi-platform
+    issues
+  * up: fix various race/deadlock conditions on exit (#10934)
+  * pkg/api: replace uuid for basic random id
+
+-------------------------------------------------------------------
 Tue Sep 05 14:28:51 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.21.0:
