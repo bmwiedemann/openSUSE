@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 18 13:55:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Split the Qt5 wrapper from gpsd-devel to avoid installing
+  unneeded dependencies when building plasma 6 packages
+  (boo#1215444)
+
+-------------------------------------------------------------------
 Wed Jan 11 17:49:30 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 3.25

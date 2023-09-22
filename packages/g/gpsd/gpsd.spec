@@ -91,7 +91,6 @@ and replugged.
 %package devel
 Summary:        Client libraries in C and Python for talking to a running gpsd or GPS
 Group:          Development/Libraries/C and C++
-Requires:       %{libQgps}
 Requires:       %{libgps}
 Requires:       %{name} = %{version}
 Requires:       pkgconfig
@@ -102,6 +101,19 @@ Requires:       python3-gpsd = %{version}
 This package provides C header files for the gpsd shared libraries that
 manage access to a GPS for applications and debugging tools. You will
 need to have gpsd installed for it to work.
+
+%package qt5-devel
+Summary:        Development files for libQgpsmm
+Group:          Development/Libraries/C and C++
+Requires:       %{libQgps}
+Requires:       gpsd-devel = %{version}
+# TODO: 2023-09-18 The Qt5 wrapper was split from gpsd-devel, replace the
+# following line with: 'Conflicts: gpsd-devel < %%{version}' when a new release
+# is available
+Conflicts:      gpsd-devel < %{version}-%{release}
+
+%description qt5-devel
+This package provides headers files for the gpsd Qt5 library.
 
 %package -n %{libgps}
 Summary:        Shared library for GPS applications
@@ -333,8 +345,6 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_mandir}/man1/gpsdecode.1%{?ext_man}
 %{_mandir}/man1/gpsprof.1%{?ext_man}
 %{_mandir}/man3/libgps.3%{?ext_man}
-%{_mandir}/man3/libgpsmm.3%{?ext_man}
-%{_mandir}/man3/libQgpsmm.3%{?ext_man}
 %{_mandir}/man5/gpsd_json.5%{?ext_man}
 %{_bindir}/gpsfake
 %{_bindir}/gpscat
@@ -342,10 +352,14 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_bindir}/gpsdecode
 %{_bindir}/gpsprof
 %{_includedir}/gps.h
-%{_includedir}/libgpsmm.h
 %{_libdir}/libgps.so
 %{_libdir}/libgpsdpacket.so
 %{_libdir}/pkgconfig/libgps.pc
+
+%files qt5-devel
+%{_mandir}/man3/libgpsmm.3%{?ext_man}
+%{_mandir}/man3/libQgpsmm.3%{?ext_man}
+%{_includedir}/libgpsmm.h
 %{_libdir}/libQgpsmm.so
 %{_libdir}/libQgpsmm.prl
 %{_libdir}/pkgconfig/Qgpsmm.pc
