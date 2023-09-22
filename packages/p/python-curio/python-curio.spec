@@ -25,6 +25,7 @@ License:        BSD-Source-Code
 URL:            https://github.com/dabeaz/curio
 Source:         https://github.com/dabeaz/curio/archive/%{version}.tar.gz#/curio-%{version}.tar.gz
 Patch0:         make-tests-reproducible.patch
+Patch1:         py312.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

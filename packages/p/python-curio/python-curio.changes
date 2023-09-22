@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 20 12:56:27 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add py312.patch to fix python3.12 compatibility 
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
