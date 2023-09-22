@@ -25,4 +25,36 @@ python-librosa will be the first to use it</comment>
     <comment></comment>
     <requestid>1093060</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7bbaf5bd3152c7627f425fa54838dc5b</srcmd5>
+    <version>1.7.0</version>
+    <time>1695412023</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.7.0:
+  * Bug fixes:
+    + Make archive extraction always take members into account
+    + Figshare downloaders fetch the correct version, instead of always
+      the latest one.
+    + Fix bug when unpacking an entire subfolder from an archive.
+    + Add a pytest mark for tests accessing the network so that they can
+      be easily excluded when testing offline
+  * Enhancements:
+    + Add support for Python 3.10
+    + Point to the user's code for the file_hash warning
+  * New features:
+    + Allow spaces in filenames in registry files
+    + Refactor Pooch.is_available to use downloaders
+    + Add support for downloading files from Dataverse DOIs
+    + Add a new Pooch.load_registry_from_doi method that populates the Pooch
+      registry using DOI-based data repositories
+    + Support urls for Zenodo repositories created through the GitHub
+      integration service
+    + Automatically add a trailing slash to base_url on pooch.create
+  * Maintenance:
+    + Replace versioneer with setuptools-scm
+    + Drop support for Python 3.6
+    + Port from deprecated appdirs to platformdirs
+- Switch to pyproject macros</comment>
+    <requestid>1112134</requestid>
+  </revision>
 </revisionlist>
