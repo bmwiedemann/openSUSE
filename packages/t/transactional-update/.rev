@@ -1104,4 +1104,27 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
 </comment>
     <requestid>1095846</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>9cbbefafad9f5dbd45a21d8e62690abf</srcmd5>
+    <version>4.4.0</version>
+    <time>1695411997</time>
+    <user>anag+factory</user>
+    <comment>Requires https://build.opensuse.org/request/show/1111466.
+
+- Version 4.4.0
+  - t-u: Introduce setup-fips command [jsc#SMO-194]
+  - libtukit: Always set a cleanup algorithm for snapshots - when
+    using API, D-Bus interface or tukit the snapshots will be
+    automatically cleaned up by snapper after some time now; in the
+    past only snapshots created by the transactional-update shell
+    script would be cleanup after, and only after a `t-u cleanup`
+    run.
+  - tukit: enable kexec's syscall detection feature
+  - tukit: Don't throw exceptions from the child process after fork
+  - tukitd: Rename service file to org.opensuse.tukit.service
+  - tukitd: Allow querying DBus Properties [boo#1214707]
+  - t-u: Add support for fully written-out update commands
+  - t-u: Improve detection of existing kernel parameters</comment>
+    <requestid>1111543</requestid>
+  </revision>
 </revisionlist>
