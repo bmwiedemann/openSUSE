@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        6.26.0
+Version:        6.27.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only

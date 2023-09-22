@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Sep 22 05:23:46 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.27.0
+  * New Features
+    - Kobo driver: Support updated firmware
+    - Nook driver: Add support for Nook Glowlight Plus 2023
+    - Data files manager: Allow drag and drop of files onto the
+      list of files to add new files
+    - Support 7z archives in addition to ZIP and RAR for automatic
+      ebook extraction when adding to calibre
+    - Linux/macOS: Fix detection of the Kindle Scribe with MTP
+      firmware
+    - E-book viewer: Allow clearing list of recently opened books
+      from the open button's popup menu itself
+    - E-book viewer: Add a link to show the currently viewed book
+      in the calibre library (Go to->Metadata in the viewer
+      controls to access it)
+  * Bug Fixes
+    - Book information dialog: Fix a regression that caused
+      incorrect color for titles in dark mode
+    - E-book viewer: Fix searching does not jump to first match if
+      all matches are before current position in book
+    - EPUB Output: Fix duplicated title page entry in spine for
+      books that define a title page that ends up getting split
+    - Allow for-light/dark-theme icon overrides to work for plugin
+      icons placed by the user in the override folder
+    - PDF Output: Fix background image + text not rendering
+      correctly if the same background image is used with different
+      text multiple times
+    - E-book viewer: Fix section titles in highlights panel being
+      incorrectly expanded to full titles when the section has
+      multiple highlights
+    - Prevent Quickview window from opening in the background
+    - Edit book: Fix a regression in the previous release that
+      caused an error when doing text based searches
+
+-------------------------------------------------------------------
 Fri Sep  8 05:33:02 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 6.26.0
