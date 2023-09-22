@@ -703,4 +703,15 @@
   + libraw-CVE-2023-1729.patch</comment>
     <requestid>1084055</requestid>
   </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>dcb86bd86ebefec1ec29cc557a5c9399</srcmd5>
+    <version>0.21.1</version>
+    <time>1695412005</time>
+    <user>anag+factory</user>
+    <comment>- security update
+- added patches
+  fix CVE-2020-22628 [bsc#1215308], stretch() function in libraw/src/postprocessing/aspect_ratio.cpp
+  + libraw-CVE-2020-22628.patch</comment>
+    <requestid>1111919</requestid>
+  </revision>
 </revisionlist>

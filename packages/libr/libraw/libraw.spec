@@ -34,6 +34,8 @@ Source0:        https://www.libraw.org/data/%tar_name-%version.tar.gz
 Source1:        baselibs.conf
 # CVE-2023-1729 [bsc#1210720], a heap-buffer-overflow in raw2image_ex()
 Patch0:         libraw-CVE-2023-1729.patch
+# CVE-2020-22628 [bsc#1215308], stretch() function in librawsrcpostprocessingspect_ratio.cpp
+Patch1:         libraw-CVE-2020-22628.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes

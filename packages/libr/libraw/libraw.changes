@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 14 14:57:19 UTC 2023 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2020-22628 [bsc#1215308], stretch() function in libraw/src/postprocessing/aspect_ratio.cpp
+  + libraw-CVE-2020-22628.patch
+
+-------------------------------------------------------------------
 Tue May  2 13:49:55 UTC 2023 - pgajdos@suse.com
 
 - security update
