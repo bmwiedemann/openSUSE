@@ -87,4 +87,37 @@
   * Set tarfile.data_filter if available.</comment>
     <requestid>1085246</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>585eac1a40681d70b7315dfe5965cd51</srcmd5>
+    <version>1.0.3</version>
+    <time>1695412027</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.0.3:
+  * Avoid CPython 3.8.17, 3.9.17, 3.10.12, and 3.11.4 tarfile symlink bug
+    triggered by adding data_filter in 1.0.0.
+  * Removed the toml library fallback; toml can no longer be used as a
+    substitute for tomli
+  * Added runner parameter to util.project_wheel_metadata
+  * Modified ProjectBuilder constructor signature, added alternative
+    ProjectBuilder.from_env constructor, redefined env.IsolatedEnv interface,
+    and exposed env.DefaultIsolatedEnv, replacing env.IsolatedEnvBuilder.
+  * virtualenv is no longer imported when using -n, for faster builds
+  * The SDist now contains the repository contents, including tests.
+    Flit-core 3.8+ required.
+  * The minimum version of importlib-metadata has been increased to 4.6 and
+    Python 3.10 due to a bug in the standard library version with URL
+    requirements in extras.
+  * Tests now contain a network marker
+  * Config-settings are now passed to get_requires* hooks, fixing a long
+    standing bug.
+  * Test on Python 3.12 betas/RCs
+  * Filter out malicious files when extracting tar archives when Python
+    supports it
+  * Specify encoding, fixing issues when PYTHONWARNDEFAULTENCODING is set.
+- Drop patches 589-colorized-pip23.patch, 609-filter-out-malicious.patch:
+  * Included upstream.
+- Add runtests.py which chdirs before running tests, but after the macros
+  have polluted the current working directory, avoiding test failures.</comment>
+    <requestid>1112478</requestid>
+  </revision>
 </revisionlist>

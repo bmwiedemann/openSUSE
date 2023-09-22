@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Sep 20 07:50:56 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.3:
+  * Avoid CPython 3.8.17, 3.9.17, 3.10.12, and 3.11.4 tarfile symlink bug
+    triggered by adding data_filter in 1.0.0.
+  * Removed the toml library fallback; toml can no longer be used as a
+    substitute for tomli
+  * Added runner parameter to util.project_wheel_metadata
+  * Modified ProjectBuilder constructor signature, added alternative
+    ProjectBuilder.from_env constructor, redefined env.IsolatedEnv interface,
+    and exposed env.DefaultIsolatedEnv, replacing env.IsolatedEnvBuilder.
+  * virtualenv is no longer imported when using -n, for faster builds
+  * The SDist now contains the repository contents, including tests.
+    Flit-core 3.8+ required.
+  * The minimum version of importlib-metadata has been increased to 4.6 and
+    Python 3.10 due to a bug in the standard library version with URL
+    requirements in extras.
+  * Tests now contain a network marker
+  * Config-settings are now passed to get_requires* hooks, fixing a long
+    standing bug.
+  * Test on Python 3.12 betas/RCs
+  * Filter out malicious files when extracting tar archives when Python
+    supports it
+  * Specify encoding, fixing issues when PYTHONWARNDEFAULTENCODING is set.
+- Drop patches 589-colorized-pip23.patch, 609-filter-out-malicious.patch:
+  * Included upstream.
+- Add runtests.py which chdirs before running tests, but after the macros
+  have polluted the current working directory, avoiding test failures.
+
+-------------------------------------------------------------------
 Sat May  6 16:59:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Renamed patches support-pip-23.patch and

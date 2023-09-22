@@ -29,24 +29,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-build%{psuffix}
-Version:        0.10.0
+Version:        1.0.3
 Release:        0
 Summary:        Simple PEP517 package builder
 License:        MIT
 URL:            https://github.com/pypa/build
 Source0:        https://github.com/pypa/build/archive/%{version}.tar.gz#/build-%{version}.tar.gz
-# Needs the wheels for wheel, flit-core, pytoml, and tomli for testing
+# Needs the wheels for wheel, flit-core, and tomli for testing
 Source10:       https://files.pythonhosted.org/packages/py2.py3/w/wheel/wheel-0.37.1-py2.py3-none-any.whl
 Source11:       https://files.pythonhosted.org/packages/py3/f/flit-core/flit_core-3.8.0-py3-none-any.whl
 Source12:       https://files.pythonhosted.org/packages/py3/t/tomli/tomli-2.0.1-py3-none-any.whl
-# PATCH-FIX-UPSTREAM 589-colorized-pip23.patch gh#pypa/build#587 mcepl@suse.com
-# Different style of colouring in pip 23 (actually I see it even with pip 22)
-Patch0:         589-colorized-pip23.patch
-# PATCH-FIX-UPSTREAM 609-filter-out-malicious.patch gh#pypa/build!609 mcepl@suse.com
-# With new tarfile filters, there is now new warning
-Patch1:         609-filter-out-malicious.patch
+Source14:       runtests.py
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module flit-core >= 3.4}
+BuildRequires:  %{python_module flit-core >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -67,7 +62,6 @@ BuildRequires:  %{python_module pytest-rerunfailures >= 9.1}
 BuildRequires:  %{python_module pytest-xdist >= 1.34}
 BuildRequires:  %{python_module setuptools >= 42 if %python-base < 3.10}
 BuildRequires:  %{python_module setuptools >= 56 if %python-base >= 3.11}
-BuildRequires:  %{python_module toml >= 0.10.0}
 BuildRequires:  %{python_module wheel >= 0.36}
 BuildRequires:  python3-setuptools-wheel
 %endif
@@ -79,8 +73,6 @@ It is a simple build tool and does not perform any dependency management.
 
 %prep
 %autosetup -p1 -n build-%{version}
-# until we have gh#pypa/build#609
-sed -i '/"error",/ a \  "ignore::DeprecationWarning:tarfile",' pyproject.toml
 
 %if !%{with test}
 %build
@@ -94,12 +86,11 @@ sed -i '/"error",/ a \  "ignore::DeprecationWarning:tarfile",' pyproject.toml
 
 %if %{with test}
 %check
+cp %{SOURCE14} .
 mkdir -p wheels
 cp %{SOURCE10} %{SOURCE11} %{SOURCE12} wheels/
 export PIP_FIND_LINKS="%{python3_sitelib}/../wheels $PWD/wheels"
-pushd tests
-%pytest -n auto
-popd
+%python_exec runtests.py
 %endif
 
 %if !%{with test}
