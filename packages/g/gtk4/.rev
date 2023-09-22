@@ -771,4 +771,31 @@ New upstream release</comment>
     <comment>Adding versioned library deps is never done in openSUSe/Factory - zypper dup is the only supported way. In a perfect world, upstreams would use versioned symbols, but this won't happen</comment>
     <requestid>1112453</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>a65562d9a329db701efda45bb928958e</srcmd5>
+    <version>4.12.2</version>
+    <time>1695412037</time>
+    <user>anag+factory</user>
+    <comment>Resub - typofix
+
+- Update to version 4.12.2:
+  + GtkTooltip: Don't cross native boundaries when looking for
+    tooltips.
+  + GtkCenterLayout, GtkEntry, GtkSearchEntry: Fix some issues with
+    baseline handling.
+  + GtkSwitch: Respect text direction.
+  + Theme: Use relative font sizes.
+  + GSK:
+    - Make repeated gradients match between GL and cairo.
+    - Make rounded rect shrinking match between Vulkan, GL and
+      cairo.
+    - Fix parsing of text nodes with color glyphs.
+    - Restrict an optimization to the cases where it is correct.
+    - Fix rendering of shadows with opacity.
+  + Updated translations.
+- Drop merged upstream patch: e001b421.patch.
+- Add e001b421.patch: tooltip: don't cross native boundaries.
+</comment>
+    <requestid>1112722</requestid>
+  </revision>
 </revisionlist>
