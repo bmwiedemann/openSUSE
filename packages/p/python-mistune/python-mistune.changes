@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Sep 15 15:15:40 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 3.0.1:
+ - Add py.typed for mypy
+ - Add tests, docs for sdist
+ - Support renderer="ast" for rendering AST
+- update to version 3.0.0:
+ - Do not strip leading unicode spaces like emsp
+ - Ensure new line at end of the text
+- update to version 3.0.0rc5
+ - Fix fenced directives
+ - Fix inline link parser
+ - Fix block math plugin for multiple lines
+ - Fix empty list item for markdown renderer
+- update to version 3.0.0rc4:
+ - Fix plugin footnotes when there is no newline at the end
+ - Move safe HTML entities to HTMLRenderer
+ - Redesign directives parsing
+ - Add Image and Figure directive
+- update to version 3.0.0rc3:
+ - Render inline math with \( and \)
+ - Added RSTRenderer, and MarkdownRenderer
+ - Fix toc_hook method
+ - Breaking change, rename RstDirective to RSTDirective
+- update to version 3.0.0rc2:
+ - Add spoiler plugin
+ - Add collapse option for TableOfContents directive
+ - Breaking change on directive design, added fenced directive
+- update to version 3.0.0rc1:
+ - Add superscript plugin
+- update to version 3.0.0a3:
+ - Fix ruby plugin
+ - Change toc parameter depth to level
+- update to version 3.0.0a2:
+ - Escape block code in HTMLRenderer
+ - Fix parsing links
+- update to version 3.0.0a1:
+ - redesigned mistune
+ - plugins
+ - directives
+
+-------------------------------------------------------------------
 Mon Jun 12 08:24:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - cleanup
