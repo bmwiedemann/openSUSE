@@ -1,7 +1,7 @@
 #
 # spec file for package python-pooch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,26 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pooch
-Version:        1.3.0
+Version:        1.7.0
 Release:        0
 Summary:        Manager for Python libraries' sample data files
 License:        BSD-3-Clause
 URL:            https://github.com/fatiando/pooch
 Source:         https://files.pythonhosted.org/packages/source/p/pooch/pooch-%{version}.tar.gz
-BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module platformdirs}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-appdirs
 Requires:       python-packaging
+Requires:       python-platformdirs
 Requires:       python-requests
 Suggests:       python-paramiko
 Suggests:       python-tqdm
@@ -49,41 +51,25 @@ and checks for corruption.
 %autosetup -p1 -n pooch-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # These test the online functionality
-donttest+=" or (test_core and test_retrieve)"
-donttest+=" or (test_core and test_retrieve_fname)"
-donttest+=" or (test_core and test_retrieve_default_path)"
-donttest+=" or (test_core and test_pooch_custom_url)"
-donttest+=" or (test_core and test_pooch_download)"
-donttest+=" or (test_core and test_pooch_download_retry_off_by_default)"
-donttest+=" or (test_core and test_pooch_download_retry)"
-donttest+=" or (test_core and test_pooch_download_retry_fails_eventually)"
-donttest+=" or (test_core and test_pooch_logging_level)"
-donttest+=" or (test_core and test_pooch_update)"
-donttest+=" or (test_core and test_pooch_corrupted)"
+donttest+=" or (test_core and test_load_registry_from_doi)"
 donttest+=" or (test_core and test_check_availability)"
-donttest+=" or (test_core and test_check_availability_on_ftp)"
-donttest+=" or (test_core and test_fetch_with_downloader)"
-donttest+=" or (test_core and test_stream_download)"
-donttest+=" or (test_integration and test_create_and_fetch)"
-donttest+=" or (test_processors and test_decompress)"
-donttest+=" or (test_processors and test_extractprocessor_fails)"
-donttest+=" or (test_processors and Unzip or Untar)"
-donttest+=" or (test_processors and test_processor_multiplefiles)"
-donttest+=" or (test_downloaders and test_ftp_downloader)"
-%pytest -k "not (${donttest:4})"
+donttest+=" or (test_downloaders and test_doi)"
+donttest+=" or (test_downloaders and test_figshare)"
+donttest+=" or (test_downloaders and test_invalid_doi_repository)"
+%pytest -k "not (${donttest:4})" -m 'not network'
 
 %files %{python_files}
-%doc AUTHORS.md README.rst
+%doc AUTHORS.md README.md
 %license LICENSE.txt
 %{python_sitelib}/pooch
-%{python_sitelib}/pooch-%{version}*-info
+%{python_sitelib}/pooch-%{version}.dist-info
 
 %changelog
