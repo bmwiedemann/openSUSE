@@ -4150,6 +4150,8 @@ unsorted:
   - framel 
   - framel-devel 
   - frameworkintegration-devel 
+  - francis 
+  - francis-lang 
   - fred 
   - free-ttf-fonts 
   - freealut-devel 
@@ -6777,7 +6779,6 @@ unsorted:
   - gnome-settings-daemon-devel 
   - gnome-shell-devel 
   - gnome-shell-extension-customize-ibus 
-  - gnome-shell-extension-desktop-icons 
   - gnome-shell-extension-gpaste 
   - gnome-shell-extension-hamster-time-tracker 
   - gnome-shell-extension-onboard 
@@ -7147,6 +7148,7 @@ unsorted:
   - gpsd 
   - gpsd-clients 
   - gpsd-devel 
+  - gpsd-qt5-devel 
   - gptfdisk-fixparts 
   - gputils 
   - gputils-doc 
@@ -8415,13 +8417,6 @@ unsorted:
   - java-1_8_0-openjdk-headless 
   - java-1_8_0-openjdk-javadoc 
   - java-1_8_0-openjdk-src 
-  - java-20-openjdk 
-  - java-20-openjdk-demo 
-  - java-20-openjdk-devel 
-  - java-20-openjdk-headless 
-  - java-20-openjdk-javadoc 
-  - java-20-openjdk-jmods 
-  - java-20-openjdk-src 
   - java-21-openjdk-demo 
   - java-21-openjdk-devel 
   - java-21-openjdk-javadoc 
@@ -34970,6 +34965,8 @@ unsorted:
   - snallygaster 
   - snapper-testsuite 
   - snappy-devel 
+  - snapshot 
+  - snapshot-lang 
   - snd 
   - snd_sf2 
   - sndio 
