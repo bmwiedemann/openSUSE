@@ -686,6 +686,8 @@ unsorted:
   - apache-commons-compress-javadoc 
   - apache-commons-configuration 
   - apache-commons-configuration-javadoc 
+  - apache-commons-configuration2 
+  - apache-commons-configuration2-javadoc 
   - apache-commons-csv 
   - apache-commons-csv-javadoc 
   - apache-commons-daemon 
@@ -2118,7 +2120,6 @@ unsorted:
   - civetweb-devel 
   - cjs 
   - cjs-devel 
-  - cjs-tests 
   - ck-devel 
   - ckb-next 
   - ckermit 
@@ -3120,7 +3121,6 @@ unsorted:
   - distcc-server 
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
-  - distribution-logos-openSUSE-Kubic 
   - distribution-registry 
   - dita 
   - diy-devel 
@@ -6704,6 +6704,7 @@ unsorted:
   - gnome-bluetooth-devel 
   - gnome-boxes 
   - gnome-boxes-lang 
+  - gnome-branding-MicroOS 
   - gnome-builder 
   - gnome-builder-doc 
   - gnome-builder-lang 
@@ -7190,9 +7191,7 @@ unsorted:
   - grantlee-editor 
   - grantlee-editor-lang 
   - grantlee5-devel 
-  - grantleetheme 
   - grantleetheme-devel 
-  - grantleetheme-lang 
   - graphite2 
   - graphite2-devel 
   - graphviz 
@@ -8820,6 +8819,7 @@ unsorted:
   - jwordsplitter 
   - jwordsplitter-javadoc 
   - jwt_verify_lib-source 
+  - jxl-thumbnailer 
   - jxrlib 
   - jxrlib-devel 
   - jython 
@@ -8924,9 +8924,7 @@ unsorted:
   - kbreakout-lang 
   - kbuild 
   - kcalendarcore-devel 
-  - kcalutils 
   - kcalutils-devel 
-  - kcalutils-lang 
   - kccmp 
   - kchmviewer 
   - kclock 
@@ -10856,17 +10854,16 @@ unsorted:
   - libbd_btrfs-devel 
   - libbd_crypto-devel 
   - libbd_dm-devel 
-  - libbd_dm2 
+  - libbd_dm3 
   - libbd_fs-devel 
-  - libbd_kbd-devel 
-  - libbd_kbd2 
   - libbd_loop-devel 
   - libbd_lvm-dbus-devel 
-  - libbd_lvm-dbus2 
+  - libbd_lvm-dbus3 
   - libbd_lvm-devel 
   - libbd_mdraid-devel 
   - libbd_mpath-devel 
-  - libbd_mpath2 
+  - libbd_mpath3 
+  - libbd_nvme-devel 
   - libbd_part-devel 
   - libbd_swap-devel 
   - libbd_utils-devel 
@@ -11400,7 +11397,6 @@ unsorted:
   - libcroco-devel 
   - libcrossguid0 
   - libcryptmount-devel 
-  - libcrypto50 
   - libcryptopp-devel 
   - libcryptopp8_8_0 
   - libcryptsetup-devel 
@@ -14665,7 +14661,6 @@ unsorted:
   - libreproc14 
   - librepute1 
   - libresprite 
-  - libressl 
   - libressl-devel 
   - libressl-devel-doc 
   - librest-0_7-0 
@@ -15018,7 +15013,6 @@ unsorted:
   - libssh2-1-32bit 
   - libssh2-devel 
   - libssh4-32bit 
-  - libssl53 
   - libssr-glinject 
   - libsss_certmap-devel 
   - libsss_idmap-devel 
@@ -15280,7 +15274,6 @@ unsorted:
   - libtinyxml2-9 
   - libtirpc-devel 
   - libtirpc3-32bit 
-  - libtls26 
   - libtntdb-devel 
   - libtntdb5 
   - libtolua++-5_1-1 
@@ -15405,10 +15398,8 @@ unsorted:
   - libudf0 
   - libudf0-32bit 
   - libudisks2-0-devel 
-  - libudisks2-0_bcache 
   - libudisks2-0_lsm 
   - libudisks2-0_lvm2 
-  - libudisks2-0_zram 
   - libudisks2-qt5-0 
   - libudns0 
   - libudt-devel 
@@ -16975,8 +16966,6 @@ unsorted:
   - maven-archiver-javadoc 
   - maven-artifact 
   - maven-artifact-manager 
-  - maven-artifact-resolver 
-  - maven-artifact-resolver-javadoc 
   - maven-artifact-transfer 
   - maven-artifact-transfer-javadoc 
   - maven-assembly-plugin 
@@ -19276,7 +19265,6 @@ unsorted:
   - openSUSE-e-X-Icons 
   - openSUSE-e-X-Neon-Icons 
   - openSUSE-e-X-Oliveleaf-Icons 
-  - openSUSE-release-appliance 
   - openSUSE-release-appliance-docker 
   - openSUSE-release-appliance-hyperv 
   - openSUSE-release-appliance-kvm 
@@ -22593,7 +22581,6 @@ unsorted:
   - python-mpld3-doc 
   - python-murmurhash-devel 
   - python-nautilus-common-devel 
-  - python-nautilus-common-files 
   - python-ncclient-doc 
   - python-networkx-doc 
   - python-neutronclient-doc 
@@ -22721,6 +22708,7 @@ unsorted:
   - python3-boost_parallel_mpi1_82_0 
   - python3-botan 
   - python3-bump2version 
+  - python3-bytesize 
   - python3-caca 
   - python3-capng 
   - python3-capstone 
@@ -22816,7 +22804,6 @@ unsorted:
   - python3-lensfun 
   - python3-libaccounts 
   - python3-libblockdev 
-  - python3-libbytesize 
   - python3-libcec 
   - python3-libcomps 
   - python3-libdnf 
@@ -25322,6 +25309,7 @@ unsorted:
   - python310-py 
   - python310-py-cpuinfo 
   - python310-py-espeak-ng 
+  - python310-py-gitea-opensuse-org 
   - python310-py-moneyed 
   - python310-py-multihash 
   - python310-py-partiql-parser 
@@ -28390,7 +28378,6 @@ unsorted:
   - python311-napalm-digineo-procurve 
   - python311-napalm-procurve 
   - python311-natsort 
-  - python311-nautilus 
   - python311-nautilus-devel 
   - python311-nbclassic 
   - python311-nbclient 
@@ -28704,8 +28691,10 @@ unsorted:
   - python311-purl 
   - python311-py-cpuinfo 
   - python311-py-espeak-ng 
+  - python311-py-gitea-opensuse-org 
   - python311-py-moneyed 
   - python311-py-multihash 
+  - python311-py-obs 
   - python311-py-partiql-parser 
   - python311-py-radix 
   - python311-py-ubjson 
@@ -29345,6 +29334,8 @@ unsorted:
   - python311-sklearn-pandas 
   - python311-slack-sdk 
   - python311-slimit 
+  - python311-slip 
+  - python311-slip-dbus 
   - python311-slixmpp 
   - python311-sly 
   - python311-slycot 
@@ -32167,6 +32158,7 @@ unsorted:
   - python39-py 
   - python39-py-cpuinfo 
   - python39-py-espeak-ng 
+  - python39-py-gitea-opensuse-org 
   - python39-py-moneyed 
   - python39-py-multihash 
   - python39-py-partiql-parser 
@@ -35459,7 +35451,6 @@ unsorted:
   - systemd-sysvcompat 
   - systemd-testsuite 
   - systemd-ui 
-  - systemd-zram-service 
   - systemtap 
   - systemtap-docs 
   - systemtap-dtrace 
@@ -44878,7 +44869,7 @@ unsorted:
   - typelib-1_0-AyatanaIdo3-0_4 
   - typelib-1_0-Babl-0_1 
   - typelib-1_0-Bamf-3_0 
-  - typelib-1_0-BlockDev-2_0 
+  - typelib-1_0-BlockDev-3_0 
   - typelib-1_0-BraseroBurn-3_2_0 
   - typelib-1_0-BraseroMedia-3_2_0 
   - typelib-1_0-Budgie-1_0 
@@ -45043,7 +45034,6 @@ unsorted:
   - typelib-1_0-Modulemd-2_0 
   - typelib-1_0-Muffin-0_0 
   - typelib-1_0-NMA-1_0 
-  - typelib-1_0-Nautilus-4_0 
   - typelib-1_0-Nemo-3_0 
   - typelib-1_0-Nice-0_1 
   - typelib-1_0-OSTree-1_0 

@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230922" schemaversion="4.1">
+<image name="OBS__MicroOS___20230925" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230922</productvar>
+      <productvar name="VERSION">20230925</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230922,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230925,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230922/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230925/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -388,6 +388,7 @@
       <repopackage name="gdb"/>
       <repopackage name="gdbm-lang"/>
       <repopackage name="gdk-pixbuf-lang"/>
+      <repopackage name="gdk-pixbuf-loader-jxl"/>
       <repopackage name="gdk-pixbuf-loader-libheif"/>
       <repopackage name="gdk-pixbuf-loader-rsvg"/>
       <repopackage name="gdk-pixbuf-query-loaders"/>
@@ -422,7 +423,7 @@
       <repopackage name="gmenudbusmenuproxy"/>
       <repopackage name="gnome-bluetooth"/>
       <repopackage name="gnome-bluetooth-lang"/>
-      <repopackage name="gnome-branding-MicroOS"/>
+      <repopackage name="gnome-branding-Aeon"/>
       <repopackage name="gnome-browser-connector"/>
       <repopackage name="gnome-calculator"/>
       <repopackage name="gnome-calculator-lang"/>
@@ -889,19 +890,20 @@
       <repopackage name="libb2-1"/>
       <repopackage name="libbase"/>
       <repopackage name="libbasicobjects0"/>
-      <repopackage name="libbd_btrfs2"/>
-      <repopackage name="libbd_crypto2"/>
-      <repopackage name="libbd_fs2"/>
-      <repopackage name="libbd_loop2"/>
-      <repopackage name="libbd_lvm2"/>
-      <repopackage name="libbd_mdraid2"/>
-      <repopackage name="libbd_part2"/>
-      <repopackage name="libbd_swap2"/>
-      <repopackage name="libbd_utils2"/>
+      <repopackage name="libbd_btrfs3"/>
+      <repopackage name="libbd_crypto3"/>
+      <repopackage name="libbd_fs3"/>
+      <repopackage name="libbd_loop3"/>
+      <repopackage name="libbd_lvm3"/>
+      <repopackage name="libbd_mdraid3"/>
+      <repopackage name="libbd_nvme3"/>
+      <repopackage name="libbd_part3"/>
+      <repopackage name="libbd_swap3"/>
+      <repopackage name="libbd_utils3"/>
       <repopackage name="libblas3"/>
       <repopackage name="libblkid1"/>
       <repopackage name="libblockdev"/>
-      <repopackage name="libblockdev2"/>
+      <repopackage name="libblockdev3"/>
       <repopackage name="libblogger2"/>
       <repopackage name="libbluetooth3"/>
       <repopackage name="libbluray2"/>
@@ -2513,8 +2515,6 @@
       <repopackage name="python311-setuptools"/>
       <repopackage name="python311-simplejson"/>
       <repopackage name="python311-six"/>
-      <repopackage name="python311-slip"/>
-      <repopackage name="python311-slip-dbus"/>
       <repopackage name="python311-sniffio"/>
       <repopackage name="python311-SQLAlchemy"/>
       <repopackage name="python311-tornado6"/>
@@ -2677,6 +2677,7 @@
       <repopackage name="systemd-default-settings-branding-SLE"/>
       <repopackage name="systemd-doc"/>
       <repopackage name="systemd-lang"/>
+      <repopackage name="systemd-presets-branding-Aeon"/>
       <repopackage name="systemd-presets-branding-MicroOS"/>
       <repopackage name="systemd-presets-branding-openSUSE"/>
       <repopackage name="systemd-presets-common-SUSE"/>
@@ -2796,6 +2797,7 @@
       <repopackage name="udev"/>
       <repopackage name="udev-configure-printer"/>
       <repopackage name="udisks2"/>
+      <repopackage name="udisks2-bash-completion"/>
       <repopackage name="udisks2-lang"/>
       <repopackage name="unar"/>
       <repopackage name="unzip"/>
