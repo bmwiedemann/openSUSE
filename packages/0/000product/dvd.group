@@ -528,6 +528,7 @@
     <package name="gdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gdbm-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gdk-pixbuf-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="gdk-pixbuf-loader-jxl" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gdk-pixbuf-loader-libheif" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gdk-pixbuf-loader-libopenraw" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gdk-pixbuf-loader-rsvg" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -554,6 +555,7 @@
     <package name="gigolo-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gimp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gimp-plugin-aa" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="gimp-plugin-jxl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gio-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="girepository-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="git" supportstatus="unsupported"/> <!-- reason: dvd:git -->
@@ -694,6 +696,8 @@
     <package name="gpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="gptfdisk" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="grantlee5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="grantleetheme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="grantleetheme-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="grep" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="grep-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="grilo-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -943,6 +947,8 @@
     <package name="kcachegrind-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="kcalc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcalc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kcalutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kcalutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcharselect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcharselect-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kcm_flatpak" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1596,20 +1602,21 @@
     <package name="libbabl-0_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbase" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libbasicobjects0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libbd_btrfs2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libbd_crypto2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libbd_fs2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libbd_loop2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libbd_lvm2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libbd_mdraid2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libbd_part2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libbd_swap2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libbd_utils2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libbd_btrfs3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libbd_crypto3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libbd_fs3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libbd_loop3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libbd_lvm3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libbd_mdraid3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libbd_nvme3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libbd_part3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libbd_swap3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libbd_utils3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libblack_hole_solver1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libblas3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libblkid1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libblockdev" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libblockdev2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libblockdev3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbluray2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2309,7 +2316,7 @@
     <package name="libnumbertext-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnumbertext-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libnvme-mi1" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
-    <package name="libnvme1" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
+    <package name="libnvme1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="liboauth0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libobjc4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libodbc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3581,8 +3588,6 @@
     <package name="python311-setuptools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python311-simplejson" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-six" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="python311-slip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="python311-slip-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python311-sniffio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python311-sortedcontainers" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="python311-text-unidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -4221,7 +4226,7 @@
     <package name="systemd-default-settings-branding-SLE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-default-settings-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="systemd-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="systemd-presets-branding-MicroOS" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="systemd-presets-branding-Aeon" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="systemd-presets-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="systemd-presets-branding-transactional-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="systemd-presets-common-SUSE" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -4401,7 +4406,9 @@
     <package name="udev" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="udev-configure-printer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="udisks2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="udisks2-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="udisks2-lang" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="udisks2-zsh-completion" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="umbrello" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="umbrello-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="un-fonts" supportstatus="unsupported"/> <!-- reason: dvd:un-fonts -->

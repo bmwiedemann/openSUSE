@@ -3,18 +3,18 @@
   <products>
     <product>
       <vendor>openSUSE</vendor>
-      <name>MicroOS</name>
-      <releasepkgname>MicroOS-release</releasepkgname>
+      <name>Aeon</name>
+      <releasepkgname>Aeon-release</releasepkgname>
       <endoflife/>
       <version>20230925</version>
       <!-- release is no longer optional -->
       <release>0</release>
-      <productline>MicroOS</productline>
+      <productline>Aeon</productline>
 
-      <summary>openSUSE MicroOS</summary>
-      <shortsummary>openSUSE MicroOS</shortsummary>
-      <description>openSUSE MicroOS combines the benefits of a rolling OS with a read-only root filesystem with transactional updates. It is a modern Linux Operating System, designed for single-service installations, such as container hosts. It is optimized for large, clustered deployments.
-        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and reliable distribution.
+      <summary>openSUSE Aeon</summary>
+      <shortsummary>openSUSE Aeon</shortsummary>
+      <description>openSUSE Aeon bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
+        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and opinionated desktop.
       </description>
 
       <linguas>
@@ -27,7 +27,7 @@
 
       <buildconfig>
         <!-- This section is needed to generate the installation media -->
-        <producttheme>MicroOS</producttheme>
+        <producttheme>Aeon</producttheme>
         <create_flavors>true</create_flavors>
       </buildconfig>
 
@@ -51,44 +51,18 @@
   <xi:include href="defaults-repositories.include"/>
 
   <mediasets>
-    <media
-      type="dvd5"
-      flavor="dvd"
-      name="openSUSE-MicroOS-DVD"
-      sourcemedia="0"
-      firmware="uefi"
-      mediastyle="tumbleweed"
-      run_hybridiso="true"
-      run_media_check="true"
-      use_undecided="false"
-      create_pattern="false"
-      use_required="true"
-      use_recommended="true"
-      use_suggested="false">
-      <archsets>
-        <archset ref="x86_64"/>
-      </archsets>
-      <metadata>
-        <package name="skelcd-installer-MicroOS"/>
-        <!--package name="skelcd-control-MicroOS"/-->
-        <package name="skelcd-openSUSE"/>
-      </metadata>
-      <use group="opensuse_microos" create_pattern="false"/>
-      <use group="opensuse_microos.x86_64" create_pattern="false"/>
-    </media>
-
     <!-- BEWARE: do not touch the naming here without adapting ftp upload scripts ! -->
     <media type="image"
          flavor="appliance"
          mediastyle="tumbleweed"
-         name="openSUSE-MicroOS-appliance" >
+         name="openSUSE-Aeon-self-installer" >
     <!-- Create no product media, but a flavor release subpackage -->
     </media>
 
   </mediasets>
 
 
-  <xi:include href="opensuse_microos.group"/>
+  <xi:include href="opensuse_aeon.group"/>
 
 </productdefinition>
 
