@@ -1232,4 +1232,14 @@ https://github.com/openSUSE/python-rpm-macros/issues/107 (forwarded request 9273
 Pushing GNOME 45.rc packages</comment>
     <requestid>1110397</requestid>
   </revision>
+  <revision rev="159" vrev="25">
+    <srcmd5>26b9b39e7d1b902b2c62ea6409702ede</srcmd5>
+    <version>0.8</version>
+    <time>1695664795</time>
+    <user>anag+factory</user>
+    <comment>- Don't require sudo. There is no indication it's actually used for
+  anything.
+</comment>
+    <requestid>1113079</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 20 08:51:09 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- Don't require sudo. There is no indication it's actually used for
+  anything.
+
+-------------------------------------------------------------------
 Tue Apr 11 21:33:48 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Use ldconfig_scriptlets macro.
