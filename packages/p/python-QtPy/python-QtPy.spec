@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ BuildArch:      noarch
 
 %{?sle15_python_module_pythons}
 Name:           python-QtPy%{psuffix}
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Abstraction layer on top of Qt bindings
 License:        MIT
@@ -46,7 +46,9 @@ URL:            https://github.com/spyder-ide/qtpy
 Source:         https://files.pythonhosted.org/packages/source/Q/QtPy/QtPy-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging
@@ -122,11 +124,13 @@ sed -i '/skipif.*not PYSIDE2/ d' qtpy/tests/test_qtcharts.py
 sed -i '/addopts/ {s/--cov=.*//; s/--color=yes//}' pytest.ini
 
 %build
-%python_build
+%if ! %{with test}
+%pyproject_wheel
+%endif
 
 %install
 %if ! %{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/qtpy
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
@@ -139,9 +143,11 @@ mkdir empty
 pushd empty
 # expects an unset FORCE_QT_API
 donttest_qt_api="test_qt_api_environ"
+# too wide in our setup (and upstream doesn't care: https://github.com/spyder-ide/qtpy/issues/371)
+donttest=" or test_qfontmetrics_width"
 %ifarch %{arm} aarch64
 # no QtOpenGL for these platforms
-donttest=" or test_qtopengl"
+donttest+=" or test_qtopengl"
 %endif
 %if %{with pyqt5}
 # no QtSensors in our PyQt5
@@ -167,8 +173,10 @@ export QT_API=pyside2 FORCE_QT_API=1
 pytest-%{python3_bin_suffix} -rwEfs -v ../qtpy -k "not ($donttest_qt_api $donttest)"
 %endif
 %if %{with pyside6}
+# no pyside6-uic
+donttest_pyside6=" or test_load_ui_type"
 export QT_API=pyside6 FORCE_QT_API=1
-pytest-%{python3_bin_suffix} -rwEfs -v ../qtpy -k "not ($donttest_qt_api $donttest)"
+pytest-%{python3_bin_suffix} -rwEfs -v ../qtpy -k "not ($donttest_qt_api $donttest $donttest_pyside6)"
 %endif
 # Default backend
 unset QT_API
@@ -189,7 +197,7 @@ popd
 %license LICENSE.txt
 %{python_sitelib}/qtpy
 %exclude %{python_sitelib}/qtpy/tests
-%{python_sitelib}/QtPy-%{version}*-info
+%{python_sitelib}/QtPy-%{version}.dist-info
 %python_alternative %{_bindir}/qtpy
 
 %files %{python_files test}

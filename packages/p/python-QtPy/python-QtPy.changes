@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sun Sep 24 18:51:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.0
+  * Add missing issue closed for v2.3.1 changelog entry by
+    @dalthviz in #419
+  * Symmetrize path and location of QLibraryInfo by @StSav012 in
+    #420
+  * Improve import modularity between QtGui, QtWidgets and
+    QtOpenGL* related modules by @DaelonSuzuka in #387
+  * Make CI jobs much faster & less flaky w/Mamba, 1-pass solve &
+    other tweaks by @CAM-Gerlach in #425
+  * Symmetrize QDateTime.toPython and toPyDateTime, etc. by
+    @StSav012 in #421
+  * Use static calls of exec_ elsewhere where needed, and test them
+    by @StSav012 in #422
+  * Enable more tests on CI by @Czaki in #434
+  * Add wrapers to fix argument name in QFileDialog get*methods by
+    @Czaki in #433
+  * Rename utils.py to _utils.py to make it private by @StSav012 in
+    #431
+  * Make exec() for PySide2 by @StSav012 in #438
+  * Replace custom implementation with loadUiType from PySide6 by
+    @JaRoSchm in #440
+  * Update bindings upper bound version to 6.5 and ignore
+    DeprecationWarning (CI) by @dalthviz in #443
+  * Make QMenu.addAction and QToolBar.addAction compatible with Qt6
+    arguments' order by @StSav012 in #437
+  * Restore Qt.ItemFlags access as Qt.ItemFlag alias (PyQt6) by
+    @dalthviz in #444
+  * Add mappings for deprecated QDropEvent pos and posF methods by
+    @dalthviz in #445
+  * Restore QtWidgets.QFileDialog.Options access as
+    QtWidgets.QFileDialog.Option alias (PyQt6) by @dalthviz in #448
+  * Add QEnum macro for PyQt bindings by @phil65 in #424
+  * Improve enum to flags aliasing for PyQt6 and PySide6 > 6.3 and
+    QFileDialog static methods kwarg compatibility by @dalthviz in
+    #449
+  * Update README with information on Pyright/Pylance integration
+    and add CLI subcommand to help generate the related config by
+    @wkrasnicki in #450
+  * Test using PyQt extra packages by @dalthviz in #446
+- Release 2.3.1
+  * Use raise from None when raising QtBindingsNotFoundError in
+    init by @CAM-Gerlach in #391
+  * Fix LibraryLocation -> LibraryPath renaming due to deprecation
+    with Qt6 by @StSav012 in #393
+  * Make warning usage consistant and refine messages by
+    @CAM-Gerlach in #398
+  * Don't make QTextStreamManipulator.exec_ on PyQt5/6 by @StSav012
+    in #404
+  * Remove patch that may be limited to PySide-5.11a1 only by
+    @StSav012 in #407
+  * Add mappings for QMouseEvent methods by @StSav012 in #408
+  * Improve compatibility for QtWidgets and QtGui modules between
+    Qt5 and Qt6 bindings by @StSav012 in #410
+  * Make QtBindingsNotFoundError also inherit from ImportError by
+    @cbrnr in #413
+  * Add compatibility mappings between bindings for all children of
+    QSinglePointEvent by @StSav012 in #417
+
+-------------------------------------------------------------------
 Sat Jun 10 09:43:32 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
