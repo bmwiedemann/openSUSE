@@ -621,4 +621,14 @@
     <comment></comment>
     <requestid>1108993</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>2e7500cd60eabfac0c7a1744f85ddfed</srcmd5>
+    <version>48.0</version>
+    <time>1695664793</time>
+    <user>anag+factory</user>
+    <comment>- Update to v48.0
+  - No release notes available.
+- Drop missing-quoting.patch which was fixed upstream.</comment>
+    <requestid>1113063</requestid>
+  </revision>
 </revisionlist>

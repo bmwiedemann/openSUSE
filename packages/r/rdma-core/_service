@@ -8,7 +8,7 @@
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">ccb120cc7b7faceca90cfa55189a1b35b0adc78d</param>
+    <param name="revision">3e039515b959fea70356b010ed093e43cf360e99</param>
 	<param name="extract">suse/rdma-core.spec</param>
   </service>
   <service name="recompress" mode="disabled">

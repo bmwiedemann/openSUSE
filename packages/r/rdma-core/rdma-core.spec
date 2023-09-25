@@ -30,9 +30,9 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 
-%define         git_ver .0.ccb120cc7b7f
+%define         git_ver .0.3e039515b959
 Name:           rdma-core
-Version:        47.0
+Version:        48.0
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -75,7 +75,6 @@ Source4:        rdma-core-rpmlintrc
 Source5:        gen-pandoc.sh
 Source6:        get_build.py
 Patch0:         disable-rdma-interface-renaming.patch
-Patch1:         missing-quoting.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -238,7 +237,6 @@ Device-specific plug-in ibverbs userspace drivers are included:
 - libefa: Amazon Elastic Fabric Adapter
 - libhfi1: Intel Omni-Path HFI
 - libhns: HiSilicon Hip06 SoC
-- libi40iw: Intel Ethernet Connection X722 RDMA
 - libipathverbs: QLogic InfiniPath HCA
 - libirdma: Intel Ethernet Connection RDMA
 - libmana: Microsoft Azure Network Adapter
@@ -427,7 +425,6 @@ easy, object-oriented access to IB verbs.
 #Extract prebuilt pandoc file in the buildlib directory
 (cd buildlib && tar -xf %{S:3})
 %patch0
-%patch1
 
 %build
 

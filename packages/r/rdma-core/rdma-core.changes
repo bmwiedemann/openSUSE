@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 22 11:46:06 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v48.0
+  - No release notes available.
+- Drop missing-quoting.patch which was fixed upstream.
+
+-------------------------------------------------------------------
 Wed Aug 23 11:19:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add missing-quoting.patch
