@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 23 11:08:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add MapProxy-pr749-shapely2.patch
+  * gh#mapproxy/mapproxy#611
+  * gh#mapproxy/mapproxy#749
+- Add MapProxy-pr750-Pillow10.patch
+  * gh#mapproxy/mapproxy#750
+
+-------------------------------------------------------------------
 Tue Aug 29 12:37:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.16.0

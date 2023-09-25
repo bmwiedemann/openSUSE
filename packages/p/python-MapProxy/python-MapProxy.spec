@@ -30,6 +30,10 @@ Source0:        https://files.pythonhosted.org/packages/source/M/MapProxy/MapPro
 Source1:        https://github.com/mapproxy/mapproxy/raw/%{version}/mapproxy/test/system/fixture/cache.gpkg
 Source2:        https://github.com/mapproxy/mapproxy/raw/%{version}/mapproxy/test/unit/polygons/polygons.geojson
 Source99:       python-MapProxy-rpmlintrc
+# PATCH-FIX-UPSTREAM MapProxy-pr749-shapely2.patch gh#mapproxy/mapproxy#749
+Patch0:         MapProxy-pr749-shapely2.patch
+# PATCH-FIX-UPSTREAM MapProxy-pr750-Pillow10.patch gh#mapproxy/mapproxy#750
+Patch1:         MapProxy-pr750-Pillow10.patch
 BuildRequires:  %{python_module GDAL}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML >= 3.0}
@@ -41,7 +45,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
 BuildRequires:  %{python_module Paste}
-BuildRequires:  %{python_module Shapely}
+BuildRequires:  %{python_module Shapely >= 2}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module boto3}
@@ -61,6 +65,7 @@ Requires:       libgeos_c1
 Requires:       proj
 Requires:       python-Pillow
 Requires:       python-PyYAML >= 3.0
+Recommends:     python-Shapely >= 1.8
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -72,7 +77,7 @@ accelerates and transforms data from existing map services and
 serves any desktop or web GIS client.
 
 %prep
-%setup -q -n MapProxy-%{version}
+%autosetup -p1 -n MapProxy-%{version}
 # Source1 required twice
 cp %{SOURCE1} mapproxy/test/system/fixture/
 mkdir -p mapproxy/test/unit/fixture/

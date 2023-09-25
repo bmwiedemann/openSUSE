@@ -80,4 +80,16 @@
   * mapproxy-util export - derive image format from cache config</comment>
     <requestid>1107940</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9a08a95e29fa8f52ef01abe3e1227557</srcmd5>
+    <version>1.16.0</version>
+    <time>1695664931</time>
+    <user>anag+factory</user>
+    <comment>- Add MapProxy-pr749-shapely2.patch
+  * gh#mapproxy/mapproxy#611
+  * gh#mapproxy/mapproxy#749
+- Add MapProxy-pr750-Pillow10.patch
+  * gh#mapproxy/mapproxy#750</comment>
+    <requestid>1113210</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,53 @@
+diff -ur MapProxy-1.16.0.orig/doc/install.rst MapProxy-1.16.0/doc/install.rst
+--- MapProxy-1.16.0.orig/doc/install.rst	2023-09-23 13:29:24.276700414 +0200
++++ MapProxy-1.16.0/doc/install.rst	2023-09-23 13:45:05.044736623 +0200
+@@ -90,7 +90,7 @@
+ 
+ Shapely and GEOS *(optional)*
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-You will need Shapely to use the :doc:`coverage feature <coverages>` of MapProxy. Shapely offers Python bindings for the GEOS library. You need Shapely (``python-shapely``) and GEOS (``libgeos-dev``). You can install Shapely as a Python package with ``pip install Shapely`` if you system does not provide a recent (>= 1.2.0) version of Shapely.
++You will need Shapely to use the :doc:`coverage feature <coverages>` of MapProxy. Shapely offers Python bindings for the GEOS library. You need Shapely (``python-shapely``) and GEOS (``libgeos-dev``). You can install Shapely as a Python package with ``pip install Shapely`` if you system does not provide a recent (>= 2.0) version of Shapely.
+ 
+ GDAL *(optional)*
+ ~~~~~~~~~~~~~~~~~
+diff -ur MapProxy-1.16.0.orig/mapproxy/test/unit/test_geom.py MapProxy-1.16.0/mapproxy/test/unit/test_geom.py
+--- MapProxy-1.16.0.orig/mapproxy/test/unit/test_geom.py	2023-09-23 13:29:24.296700984 +0200
++++ MapProxy-1.16.0/mapproxy/test/unit/test_geom.py	2023-09-23 13:47:35.062488445 +0200
+@@ -22,11 +22,7 @@
+ import pytest
+ import shapely
+ import shapely.prepared
+-try:
+-    # shapely >=1.6
+-    from shapely.errors import ReadingError
+-except ImportError:
+-    from shapely.geos import ReadingError
++from shapely.errors import ReadingError
+ 
+ from mapproxy.srs import SRS, bbox_equals
+ from mapproxy.util.geom import (
+diff -ur MapProxy-1.16.0.orig/mapproxy/util/geom.py MapProxy-1.16.0/mapproxy/util/geom.py
+--- MapProxy-1.16.0.orig/mapproxy/util/geom.py	2023-09-23 13:29:24.296700984 +0200
++++ MapProxy-1.16.0/mapproxy/util/geom.py	2023-09-23 13:40:07.882521741 +0200
+@@ -32,11 +32,7 @@
+     import shapely.geometry
+     import shapely.ops
+     import shapely.prepared
+-    try:
+-        # shapely >=1.6
+-        from shapely.errors import ReadingError
+-    except ImportError:
+-        from shapely.geos import ReadingError
++    from shapely.errors import ReadingError
+     geom_support = True
+ except ImportError:
+     geom_support = False
+@@ -234,7 +230,7 @@
+ 
+ def transform_multipolygon(transf, multipolygon):
+     transformed_polygons = []
+-    for polygon in multipolygon:
++    for polygon in multipolygon.geoms:
+         transformed_polygons.append(transform_polygon(transf, polygon))
+     return shapely.geometry.MultiPolygon(transformed_polygons)
+ 
