@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-core
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        Poetry PEP 517 Build Backend
 License:        Apache-2.0 AND BSD-2-Clause AND MIT AND Python-2.0
@@ -26,13 +26,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/python-poetry/poetry-core
 # Only the github archive provides the tests
 Source:         %{url}/archive/%{version}.tar.gz#/poetry-core-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{python_version_nodots} < 38
-Requires:       python-importlib-metadata >= 1.7.0
-%endif
 BuildArch:      noarch
 # SECTION these are all test dependencies, including python-devel and git-core
 BuildRequires:  %{python_module devel}
@@ -61,7 +58,6 @@ cp src/poetry/core/_vendor/packaging/LICENSE.APACHE  vendoredlicenses/packaging.
 cp src/poetry/core/_vendor/packaging/LICENSE.BSD     vendoredlicenses/packaging.LICENSE.BSD
 cp src/poetry/core/_vendor/pyrsistent/LICENSE.mit    vendoredlicenses/pyrsistent.LICENSE.mit
 cp src/poetry/core/_vendor/tomli/LICENSE             vendoredlicenses/tomli.LICENSE
-cp src/poetry/core/_vendor/typing_extensions.LICENSE vendoredlicenses/typing_extensions.LICENSE
 
 %build
 %pyproject_wheel

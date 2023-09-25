@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Sep 23 10:06:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.7.0
+  ## Added
+  * Optionally use resolved references when converting a VCS
+    dependency to a PEP 508 dependency specification (#603).
+  * Improve performance of marker handling (#609).
+  ## Changed
+  * Drop support for Python 3.7 (#566).
+  * Remove deprecated poetry.core.constraints.generic and
+    poetry.core.semver (#601).
+  * Allow | as a value separator in markers with the operators in
+    and not in (#608).
+  * Put pretty name (instead of normalized name) in metadata
+    (#620).
+  * Update list of supported licenses (#623).
+  ## Fixed
+  * Fix an issue where the encoding was not handled correctly when
+    calling a subprocess (#602).
+  * Fix an issue where caret constraints with additional whitespace
+    could not be parsed (#606).
+  * Fix an issue where PEP 508 dependency specifications with names
+    starting with a digit could not be parsed (#607).
+  * Fix an issue where Poetry considered an unrelated .gitignore
+    file resulting in an empty wheel (#611).
+
+-------------------------------------------------------------------
 Mon May 29 17:00:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.6.1
