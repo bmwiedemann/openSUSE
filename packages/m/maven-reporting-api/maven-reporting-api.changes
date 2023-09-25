@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 24 01:57:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.1.1
+  * Task:
+    + MSHARED-1118 - Restore binary compat for MavenReport
+      (partially revert MSHARED-1024)
+
+-------------------------------------------------------------------
 Sun Mar 20 20:11:02 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8
