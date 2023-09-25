@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Wed Aug 23 01:16:38 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 3.0.2:
+  * Use ntfsinfo instead of ntfscluster for faster
+    bd_fs_ntfs_get_info.
+  * Restrict list of exported symbols via -export-symbols-regex.
+  * lib: Silence the missing DEFAULT_CONF_DIR_PATH.
+  * loop: Report BD_LOOP_ERROR_DEVICE on empty loop devices.
+  * fs: Fix unused error in extract_e2fsck_progress.
+  * fs: Use read-only mount where possible for generic FS
+    functions.
+  * fs: Document that generic functions can mount filesystems.
+  * fs: Avoid excess logging in extract_e2fsck_progress.
+- Restructure all sub-packages in the spec file to enhance
+  maintainability.
+
+-------------------------------------------------------------------
+Fri Jun 30 10:16:53 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.1:
+  * New bugfix release of the libblockdev library with multiple
+    fixes.
+  * loop: Define LOOP_SET_BLOCK_SIZE is not defined. And remove
+    bd_loop_get_autoclear definition.
+  * crypto: Remove stray struct redefinition.
+  * fs: Simplify struct BDFSInfo. And add missing copy and free
+    functions to the header file.
+  * vdo_stats: Remove unused libparted include.
+  * lvm: Make _vglock_start_stop static. Fix declaration for
+    bd_lvm_vdolvpoolname. And add bd_lvm_segdata_copy/free to the
+    header file.
+  * Make the conf.d directory versioned.
+- Changes from version 3.0.0:
+  * New major release of the libblockdev library. This release
+    contains a large API overhaul.
+  * VDO a KBD plugins were removed.
+  * New NVMe plugin was added.
+  * Runtime dependencies are no longer checked during plugin
+    initialization.
+  * Part plugin was rewritten to use libfdisk instead of libparted
+  * Crypto plugin API went through an extensive rewrite.
+  * Support for new technologies was added to the crypto plugin:
+    FileVault2 encryption, DM Integrity, LUKS2 tokens.
+  * Filesystem plugin adds support for btrfs, F2FS, NILFS2, exFAT
+    and UDF.
+  * Support for new filesystem operations was added to the plugin:
+    setting label and UUID, generic mkfs function and API for
+    getting feature support for filesystems.
+  * dmraid support was removed from the DM plugin.
+  * Python 2 support was dropped.
+- Drop no longer needed libblockdev-fix-libkmod-include.patch
+- Drop no longer supported sub-packages with their dependencies,
+  and their configure options, following upstream changes: python2
+  (python-devel), bcache, dmraid (dmraid-devel BuildRequires) and
+  kbd.
+- Add (gcc >= 11 or gcc11) boolean BuildRequires to ensure the
+  package is buildable on Leap 15.5, where the gcc meta-package is
+  of version 7.
+- Bump the SO version to 3 for the shared library and GI bindings
+  sub-packages.
+- Add ext2fs, fdisk, and libkeyutils pkgconfig() BuildRequires.
+  The first is a new dependency for the FS plugin. The second, for
+  the PART plugin. And the latter, for the CRYPTO plugin (before,
+  the explicit_bzero() function would be searched for).
+- Add libnvme-devel >= 1.3 BuildRequires, and pass --with-nvme to
+  configure, needed for the NVMe plugin (new upstream addition).
+- Pass --with-tools to configure, ensuring we keep building the
+  libblockdev tools.
+
+-------------------------------------------------------------------
 Fri Oct  7 12:08:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.28:
