@@ -147,4 +147,13 @@
     <comment></comment>
     <requestid>1106051</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e2d0612772a3d35a3811b5c51295e390</srcmd5>
+    <version>0.17.4</version>
+    <time>1695664954</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.17.4
+  * no upstream changelog</comment>
+    <requestid>1113220</requestid>
+  </revision>
 </revisionlist>

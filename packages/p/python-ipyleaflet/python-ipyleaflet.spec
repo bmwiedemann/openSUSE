@@ -17,7 +17,7 @@
 
 
 Name:           python-ipyleaflet
-Version:        0.17.3
+Version:        0.17.4
 Release:        0
 Summary:        A Jupyter widget for dynamic Leaflet maps
 License:        MIT
@@ -25,7 +25,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-widgets/ipyleaflet
 Source:         https://files.pythonhosted.org/packages/source/i/ipyleaflet/ipyleaflet-%{version}.tar.gz
 BuildRequires:  %{python_module jupyter_packaging >= 0.12 with %python-jupyter_packaging < 1}
-BuildRequires:  %{python_module jupyterlab >= 3}
+BuildRequires:  %{python_module jupyterlab >= 3.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.8}
 BuildRequires:  %{python_module wheel}
