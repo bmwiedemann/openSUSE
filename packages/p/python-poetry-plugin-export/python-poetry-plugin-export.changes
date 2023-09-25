@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 23 10:12:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.5.0
+  ## Changed
+  * Drop support for Python 3.7 (#189).
+  * Improve warning when the lock file is not consistent with
+    pyproject.toml (#215).
+  ## Fixed
+  * Fix an issue where markers for dependencies required by an
+    extra were not generated correctly (#209).
+
+-------------------------------------------------------------------
 Mon May 29 17:05:59 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.4.0

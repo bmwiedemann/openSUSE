@@ -27,15 +27,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-plugin-export%{psuffix}
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Poetry plugin to export the dependencies to various formats
 License:        MIT
 URL:            https://python-poetry.org/
 # RepositorySource: https://github.com/python-poetry/poetry-plugin-export
 Source:         https://files.pythonhosted.org/packages/source/p/poetry-plugin-export/poetry_plugin_export-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.3.0}
+BuildRequires:  %{python_module poetry-core >= 1.6.0}
 # No buildtime requirement of poetry: avoid build dep cycles!
 BuildRequires:  python-rpm-macros
 %if %{with test}
@@ -47,8 +48,8 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 %endif
 BuildRequires:  fdupes
-Requires:       python-poetry >= 1.3.0
-Requires:       python-poetry-core >= 1.3.0
+Requires:       python-poetry >= 1.5.0
+Requires:       python-poetry-core >= 1.6.0
 Provides:       python-poetry_plugin_export = %{version}-%{release}
 BuildArch:      noarch
 %python_subpackages

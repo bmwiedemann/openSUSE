@@ -48,4 +48,19 @@ fix multibuild</comment>
     generated for sources with priority explicit (#205).</comment>
     <requestid>1089622</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c49fc2f0320aab3e22425813c04eece2</srcmd5>
+    <version>1.5.0</version>
+    <time>1695664939</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.5.0
+  ## Changed
+  * Drop support for Python 3.7 (#189).
+  * Improve warning when the lock file is not consistent with
+    pyproject.toml (#215).
+  ## Fixed
+  * Fix an issue where markers for dependencies required by an
+    extra were not generated correctly (#209).</comment>
+    <requestid>1113186</requestid>
+  </revision>
 </revisionlist>
