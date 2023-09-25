@@ -17,7 +17,7 @@
 
 
 Name:           maven-plugin-tools
-Version:        3.6.0
+Version:        3.9.0
 Release:        0
 Summary:        Maven Plugin Tools
 License:        Apache-2.0
@@ -25,40 +25,36 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugin-tools/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-tools/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
-Patch0:         0001-Avoid-duplicate-MOJO-parameters.patch
-Patch1:         0002-Deal-with-nulls-from-getComment.patch
-Patch2:         0003-Port-to-plexus-utils-3.0.24.patch
-Patch3:         0004-Remove-dependency-on-jtidy.patch
+Patch0:         0002-Remove-dependency-on-jtidy.patch
 BuildRequires:  ant
-BuildRequires:  apache-commons-cli
 BuildRequires:  atinject
 BuildRequires:  bsh2
 BuildRequires:  fdupes
-BuildRequires:  google-guice
-BuildRequires:  guava
+BuildRequires:  httpcomponents-client
+BuildRequires:  httpcomponents-core
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  jdom2
-BuildRequires:  junit
+BuildRequires:  jsoup
 BuildRequires:  maven-lib
 BuildRequires:  maven-reporting-api
+BuildRequires:  maven-resolver-api
+BuildRequires:  maven-wagon-provider-api
 BuildRequires:  modello >= 2.0.0
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-ant-factory
 BuildRequires:  plexus-archiver
 BuildRequires:  plexus-bsh-factory
 BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
-BuildRequires:  plexus-metadata-generator
+BuildRequires:  plexus-languages
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity
 BuildRequires:  qdox
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
+BuildRequires:  slf4j
 BuildRequires:  unzip
 BuildRequires:  velocity
-BuildRequires:  xbean
 BuildArch:      noarch
 
 %description
@@ -152,9 +148,6 @@ API documentation for %{name}.
 %prep
 %setup -q -a1
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
 
@@ -165,59 +158,56 @@ API documentation for %{name}.
 # Remove test dependencies because tests are skipped anyways.
 %pom_xpath_remove "pom:dependency[pom:scope='test']"
 
-%pom_change_dep org.easymock:easymock:: :::test maven-plugin-tools-annotations
-
 %pom_remove_dep net.sf.jtidy:jtidy maven-plugin-tools-generators
 
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-	ant \
-	ant-launcher \
-	atinject \
-	bsh2/bsh \
-	commons-cli \
-	guava/guava \
-	guice/google-guice-no_aop \
-	jdom2/jdom2 \
-	junit \
-	maven/maven-artifact \
-	maven/maven-compat \
-	maven/maven-core \
-	maven/maven-model \
-	maven/maven-plugin-api \
-	maven-reporting-api/maven-reporting-api \
-	objectweb-asm/asm \
-	objectweb-asm/asm-commons \
-	org.eclipse.sisu.inject \
-	org.eclipse.sisu.plexus \
-	plexus/ant-factory \
-	plexus/archiver \
-	plexus/bsh-factory \
-	plexus-classworlds \
-	plexus/cli \
-	plexus-containers/plexus-component-annotations \
-	plexus-metadata-generator \
-	plexus/utils \
-	plexus-velocity/plexus-velocity \
-	qdox \
-	velocity \
-	xbean/xbean-reflect
+    ant \
+    atinject \
+    bsh2/bsh \
+    httpcomponents/httpclient \
+    httpcomponents/httpcore \
+    jsoup/jsoup \
+    maven/maven-artifact \
+    maven/maven-core \
+    maven/maven-model \
+    maven/maven-plugin-api \
+    maven/maven-settings \
+    maven-reporting-api/maven-reporting-api \
+    maven-resolver/maven-resolver-api \
+    maven-wagon/provider-api \
+    objectweb-asm/asm \
+    objectweb-asm/asm-commons \
+    objectweb-asm/asm-util \
+    org.eclipse.sisu.inject \
+    org.eclipse.sisu.plexus \
+    plexus/ant-factory \
+    plexus/archiver \
+    plexus/bsh-factory \
+    plexus-classworlds \
+    plexus-containers/plexus-component-annotations \
+    plexus-languages/plexus-java \
+    plexus/utils \
+    plexus-velocity/plexus-velocity \
+    qdox \
+    slf4j/api \
+    velocity
 
 %{ant} \
-	-Dtest.skip=true \
-	package javadoc
+    -Dtest.skip=true \
+    package javadoc
 
 %install
 install -dm 0755 %{buildroot}%{_javadir}/%{name}
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 for i in \
-	maven-plugin-annotations \
-	maven-plugin-tools-annotations \
-	maven-plugin-tools-api \
-	maven-plugin-tools-generators \
-	maven-plugin-tools-java; do
+    maven-plugin-annotations \
+    maven-plugin-tools-annotations \
+    maven-plugin-tools-api \
+    maven-plugin-tools-generators \
+    maven-plugin-tools-java; do
   install -pm 0644 ${i}/target/${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/${i}.jar
   %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f ${i}
@@ -226,11 +216,11 @@ for i in \
   fi
 done
 for i in \
-	maven-plugin-tools-ant \
-	maven-plugin-tools-beanshell \
-	maven-plugin-tools-model \
-	maven-script-ant \
-	maven-script-beanshell; do
+    maven-plugin-tools-ant \
+    maven-plugin-tools-beanshell \
+    maven-plugin-tools-model \
+    maven-script-ant \
+    maven-script-beanshell; do
   install -pm 0644 maven-script/${i}/target/${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/${i}.jar
   %{mvn_install_pom} maven-script/${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
   %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f ${i}

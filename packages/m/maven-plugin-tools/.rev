@@ -72,4 +72,12 @@
     <comment>cleanup + fix build with javapackages-local 6.2.0</comment>
     <requestid>1108705</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a079e096893d86d36a98df913d12ca97</srcmd5>
+    <version>3.9.0</version>
+    <time>1695664918</time>
+    <user>anag+factory</user>
+    <comment>3.9.0</comment>
+    <requestid>1113344</requestid>
+  </revision>
 </revisionlist>
