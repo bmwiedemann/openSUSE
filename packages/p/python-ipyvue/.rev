@@ -53,4 +53,16 @@
     <comment>- Suggest primary python package -- boo#1214354</comment>
     <requestid>1104439</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b3aedb62d01a42c9c5f6e740dc98dedd</srcmd5>
+    <version>1.10.1</version>
+    <time>1695664993</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.10.1
+  * no upstream release notes, listing significant commit messages
+  * feat: support serialization of more event data
+  * fix: non Event objects do not need processing before
+    serialization</comment>
+    <requestid>1113292</requestid>
+  </revision>
 </revisionlist>

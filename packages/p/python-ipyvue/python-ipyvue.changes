@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 24 17:44:12 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.10.1
+  * no upstream release notes, listing significant commit messages
+  * feat: support serialization of more event data
+  * fix: non Event objects do not need processing before
+    serialization
+
+-------------------------------------------------------------------
 Thu Aug 17 15:46:21 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Suggest primary python package -- boo#1214354
