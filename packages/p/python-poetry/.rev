@@ -372,4 +372,41 @@
      lot of memory (#7987).</comment>
     <requestid>1089626</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1f6d54183b99b5f620ee90b4f6127eec</srcmd5>
+    <version>1.6.1</version>
+    <time>1695664940</time>
+    <user>anag+factory</user>
+    <comment>- Fix dependencies
+
+- add build-1.patch to fix compatibility with python-build-1.0+
+- update to 1.6.1
+  * Add support for repositories that do not provide a supported
+    hash algorithm
+  * Add full support for duplicate dependencies with overlapping
+    markers
+  * Improve performance of poetry lock for certain edge cases
+  * Improve performance of poetry install
+  * poetry check validates that specified readme files do exist
+  * Add a downgrading note when updating to an older version
+  * Add support for vox in the xonsh shell
+  * Add support for pre-commit hooks for projects where the
+    pyproject.toml file is located in a subfolder
+  * Add support for the git+http:// scheme
+  * Drop support for Python 3.7
+  * Move poetry lock --check to poetry check --lock and
+    deprecate the former
+  * Change future warning that PyPI will only be disabled
+    automatically if there are no primary sources
+  * Update the minimum required version of requests
+  * Fix an issue where build-system.requires were not respected
+    for projects with build scripts
+  * Fix an issue where the encoding was not handled correctly
+    when calling a subprocess
+  * Fix an issue where poetry show --top-level did not show top
+    level dependencies with extras
+  * Fix an issue where poetry init handled projects with src
+    layout incorrectly</comment>
+    <requestid>1113187</requestid>
+  </revision>
 </revisionlist>

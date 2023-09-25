@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry%{psuffix}
-Version:        1.5.1
+Version:        1.6.1
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -35,40 +35,40 @@ Group:          Development/Languages/Python
 URL:            https://python-poetry.org/
 # PyPI sdist doesnt contain tests
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+Patch0:         build-1.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core = 1.6.1}
+BuildRequires:  %{python_module poetry-core = 1.7.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-CacheControl >= 0.12.9
-Requires:       python-build >= 0.10.0
+# SECTION cachecontrol[filecache]
+Requires:       python-CacheControl >= 0.13
+Requires:       python-filelock >= 3.8.0
+# /SECTION
+Requires:       python-build >= 1.0.3
 Requires:       python-cleo >= 2.0.0
 Requires:       python-crashtest >= 0.4.1
 Requires:       python-dulwich >= 0.21.2
-Requires:       python-filelock >= 3.8.0
-Requires:       python-html5lib >= 1.0
-Requires:       python-poetry-core = 1.6.1
-Requires:       python-poetry-plugin-export >= 1.4.0
+Requires:       python-poetry-core = 1.7.0
+Requires:       python-poetry-plugin-export >= 1.5.0
 %if 0%{?python_version_nodots} < 310
 Requires:       python-importlib-metadata >= 4.4
 %endif
 Requires:       python-installer >= 0.7.0
-Requires:       python-jsonschema >= 4.10.0
-Requires:       python-keyring >= 23.9.0
-Requires:       python-lockfile >= 0.12.2
+Requires:       python-keyring >= 24.0
 Requires:       python-packaging >= 20.4
 Requires:       python-pexpect >= 4.7.0
 Requires:       python-pkginfo >= 1.9.4
 Requires:       python-platformdirs >= 3.0.0
 Requires:       python-pyproject-hooks >= 1.0.0
-Requires:       python-requests >= 2.18
+Requires:       python-requests >= 2.26
 Requires:       python-shellingham >= 1.5
+Requires:       (python-jsonschema >= 4.10.0 with python-jsonschema < 4.18)
 Requires:       (python-requests-toolbelt >= 0.9.1 with python-requests-toolbelt < 2)
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 2.0.1
 %endif
 Requires:       python-trove-classifiers >= 2022.5.19
-Requires:       python-urllib3 >= 1.26.0
 Requires:       python-virtualenv >= 20.22
 Requires:       (python-tomlkit >= 0.11.4 with python-tomlkit < 1.0)
 Requires(post): update-alternatives

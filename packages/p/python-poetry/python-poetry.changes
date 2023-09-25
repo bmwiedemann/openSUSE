@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Sep 23 10:03:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix dependencies
+
+-------------------------------------------------------------------
+Thu Sep 21 10:10:30 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add build-1.patch to fix compatibility with python-build-1.0+
+- update to 1.6.1
+  * Add support for repositories that do not provide a supported
+    hash algorithm
+  * Add full support for duplicate dependencies with overlapping
+    markers
+  * Improve performance of poetry lock for certain edge cases
+  * Improve performance of poetry install
+  * poetry check validates that specified readme files do exist
+  * Add a downgrading note when updating to an older version
+  * Add support for vox in the xonsh shell
+  * Add support for pre-commit hooks for projects where the
+    pyproject.toml file is located in a subfolder
+  * Add support for the git+http:// scheme
+  * Drop support for Python 3.7
+  * Move poetry lock --check to poetry check --lock and
+    deprecate the former
+  * Change future warning that PyPI will only be disabled
+    automatically if there are no primary sources
+  * Update the minimum required version of requests
+  * Fix an issue where build-system.requires were not respected
+    for projects with build scripts
+  * Fix an issue where the encoding was not handled correctly
+    when calling a subprocess
+  * Fix an issue where poetry show --top-level did not show top
+    level dependencies with extras
+  * Fix an issue where poetry init handled projects with src
+    layout incorrectly
+  * Fix an issue where Poetry wrote .pth files with the wrong
+    encoding
+  * Fix an issue where poetry install did not respect the source
+    if the same version of a package has been locked from
+    different sources
+  * Document official Poetry badge
+  * Add a warning about pip ignoring lock files
+  * Clarify the use of the virtualenvs.in-project setting.
+  * Fix command for listing installed plugins
+  * Mention the nox-poetry package
+  * Add an example with a PyPI source in the pyproject.toml file
+  * Use reference instead of deprecated callable in the scripts example
+
+-------------------------------------------------------------------
 Mon May 29 17:02:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.5.1
