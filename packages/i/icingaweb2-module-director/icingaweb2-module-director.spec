@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2-module-director
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source90:       README.SUSE
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 BuildRequires:  systemd-rpm-macros
+Requires(pre):  pwdutils
 Requires:       icinga2 >= 2.8.0
 Requires:       icingaweb2 >= 2.8.0
 Requires:       icingaweb2-module-incubator >= 0.18.0
@@ -77,8 +78,8 @@ chmod 754 %{buildroot}%{basedir}/modules/director/contrib/linux-agent-installer/
 
 %pre
 %service_add_pre %{name}.service
-/usr/bin/getent group %{icingawebgroup} >/dev/null || /usr/sbin/groupadd -r %{icingawebgroup}
-/usr/bin/getent passwd icingadirector >/dev/null || /usr/sbin/useradd -c "Icinga2 director" -s /sbin/nologin -r -d %{_localstatedir}/lib/%{name} -g %{icingawebgroup} icingadirector
+/usr/bin/getent group %{icingawebgroup} >/dev/null || /usr/sbin/groupadd -r %{icingawebgroup} ||:
+/usr/bin/getent passwd icingadirector >/dev/null || /usr/sbin/useradd -c "Icinga2 director" -s /sbin/nologin -r -d %{_localstatedir}/lib/%{name} -g %{icingawebgroup} icingadirector || :
 
 %preun
 %service_del_preun %{name}.service
