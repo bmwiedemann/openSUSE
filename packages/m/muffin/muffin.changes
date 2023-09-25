@@ -1,11 +1,91 @@
 -------------------------------------------------------------------
+Tue Jul 18 05:21:31 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 5.8.1: 
+- drop  muffin-svid-default-source.patch
+
+-------------------------------------------------------------------
+Sat Jul  15 12:00:38 UTC 2023 - sb56637 <mxoo28j7@duck.com>
+
+- Building on Dead Mozay's work; update to version 5.8.1:
+
+-------------------------------------------------------------------
+Thu Jun  8 16:09:38 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 5.8.0: 
+
+-------------------------------------------------------------------
 Fri Jun  2 21:19:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.1:
   * Fix window centering calculations, and now include the frame
-    if there is one.
+     if there is one.
   * constraints: Fix inability to drag c-s-d windows up beyond
-    their titlebars.
+     their titlebars.
+
+-------------------------------------------------------------------
+Wed May  3 16:57:15 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 5.6.4:
+  * meta-gpu-xrandr: Account for the current user text scale 
+    factor when calculating the crtc scale based on Xft.dpi.
+  * window.c: Allow meta_window_get_xwindow() to be used with introspection.
+  * window.c: Restore property notify for the tile mode property.
+  * place.c: Add missing import.
+  * display.c: Make meta_display_get_pointer_window() available to cinnamon again.
+  * clutter-text.c: Remove redundant clutter_text_set_buffer call in finalize.
+  * compositor: Fix possible crash when restarting Cinnamon (#655)
+  * tiling: Skip the resize effect for tiled windows during user grabs.
+  * tiling: Remove unnecessary update_edge_constraints().
+  * Add tilix and qterminal to the new-window focus list.
+  * window activation: Detect a couple of conditions that might 
+    cause initial window focus and stacking to be wrong 
+    (mostly because of bad timestamps), and correct them.
+  * window.c: Improve the test for checking if an 'above' 
+    window may cover a new window.
+  * Disable automaximize by default.
+  * Bring back window placement-mode  (#649)
+  * tooltips: ensure tooltips are viewable.
+  * window-props: Change a warning to a debug message.
+  * meta-input-settings: Re-apply settings once the display is done setting up.
+  * Support multiple key bindings for 'locate-pointer-key' (#638)
+  * Revert renaming of the X11 atoms wm_name and gnome_wm_keybindings
+  * keybindings: Fix workspace navigation while dragging a window with the mouse.
+  * tiling: Try to tile to the default size if a match exists, 
+    but is impossible to satisfy due to min/max size constraints.
+  * tiling: Fix tile top/maximize tests.
+  * window.c: Remove unused code.
+  * tiling: Make it easier to debug.
+  * Relocate bring-windows-to-current-workspace from org.cinnamon to org.cinnamon.muffin.
+  * prefs.c: Restore the locate pointer functionality
+  * tiling: Skip the resize effect for tiled windows during user grabs.
+  * clutter: Bail out and warn on reentry into mapping/unmapping cycle
+  * fix a spelling error spotted by lintian
+  * window.c: Allow tiling in any monitor orientataion.
+  * tiling: Disable drag-to-maximize behavior if tiling is disabled, 
+    fix drag re-tile/maximize behavior in all scenarios.
+  * workspace.c: Don't abort when requesting the index of an invalid workspace.
+  * Enable tablet support.
+  * keybindings.c: Make sure we can tile before we attempt to (#624)
+  * tiling: Treat a maximized window as tiled for the purposes of determining 
+    whether or not to save the window's original position and size.
+  * tiling: When tiling at the end of a grab, use the initial position 
+    and size from when the grab began instead of it's last position before tiling.
+  * Fix placement of transient children of fullscreen windows
+  * frames.c: Re-implement directional maximization when double-clicking the frame edges.
+  * theme.c: Don't suppress the invisible border for non-tile/maximized non-resizable windows.
+  * Restore the 'bring windows which require attention to the current workspace' feature.
+  * window.c: Make opacity a public property.
+  * Fix "Center window in screen" behavior (#623)
+  * frames.c: Fix calculations for determining resize zones in a tiled state.
+  * tiling: re-maximize previously-maximized windows when dragging, 
+    regardless of the tile-maximize preference.
+  * grabs: Fix restoration of window state when resize or move actions 
+    are cancelled via Escape.
+  * window.c: If maximizing a tiled window via titlebar, 
+    use the window's current, not its unconstrained position and 
+    size to pass to the constraints call.
+  * compositor: Add a MetaSizeChange value for tiling.
 
 -------------------------------------------------------------------
 Fri Nov 26 12:23:29 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>

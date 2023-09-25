@@ -21,21 +21,16 @@
 %define typelib typelib-1_0-Muffin-0_0
 %define _lto_cflags %{nil}
 Name:           muffin
-Version:        5.2.1
+Version:        5.8.1
 Release:        0
 Summary:        Cinnamon Desktop default window manager
 License:        GPL-2.0-or-later AND MIT
 Group:          System/GUI/Other
 URL:            https://github.com/linuxmint/muffin
 Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE muffin-svid-default-source.patch marguerite@opensuse.org -- Change _SVID_SOURCE to _DEFAULT_SOURCE.
-Patch0:         %{name}-svid-default-source.patch
-BuildRequires:  autoconf
-BuildRequires:  autoconf-archive
-BuildRequires:  automake
+BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
-BuildRequires:  intltool
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  mutter-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  zenity
@@ -44,11 +39,14 @@ BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gnome-doc-utils)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-doc)
+BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libinput)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libwacom)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xkeyboard-config)
@@ -100,26 +98,14 @@ This package provides the development files.
 %prep
 %autosetup -p1
 
-NOCONFIGURE=1 ./autogen.sh
-
 %build
-%configure --disable-static \
-           --enable-startup-notification=yes \
-           --enable-compile-warnings=minimum \
-           --disable-wayland-egl-platform \
-           --disable-wayland-egl-server \
-           --disable-kms-egl-platform \
-           --disable-wayland \
-           --disable-native-backend \
-           --disable-clutter-doc
-
-%make_build V=1
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name}
 %suse_update_desktop_file %{name}
-find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}
 
 %if 0%{?suse_version} < 1500
@@ -136,14 +122,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING
-%doc AUTHORS README README* rationales.txt debian/changelog
+%doc NEWS README* debian/changelog
 %{_bindir}/muffin
 %{_libdir}/%{name}/
 %{_libexecdir}/muffin-restart-helper
 %exclude %{_libdir}/%{name}/*.typelib
 %exclude %{_libdir}/%{name}/*.gir
-%dir %{_datadir}/muffin/
-%{_datadir}/muffin/theme/
 %{_datadir}/applications/%{name}.desktop
 %{_mandir}/man1/muffin.1.*
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
@@ -152,24 +136,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n %{soname}%{sover}
 %{_libdir}/%{soname}.so.%{sover}*
-%{_libdir}/%{soname}-clutter-%{sover}.so
-%{_libdir}/%{soname}-cogl-%{sover}.so
-%{_libdir}/%{soname}-cogl-pango-%{sover}.so
-%{_libdir}/%{soname}-cogl-path-%{sover}.so
 
 %files -n typelib-1_0-Muffin-0_0
 %{_libdir}/%{name}/*.typelib
 
 %files devel
-%{_bindir}/muffin-message
-%{_bindir}/muffin-theme-viewer
-%{_bindir}/muffin-window-demo
-%{_datadir}/muffin/icons/
-%{_datadir}/gtk-doc/html/muffin/
 %{_includedir}/muffin/
 %{_libdir}/libmuffin.so
 %{_libdir}/muffin/*.gir
 %{_libdir}/pkgconfig/*
-%{_mandir}/man1/muffin-*
 
 %changelog
