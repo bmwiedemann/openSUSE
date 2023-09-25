@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 23 16:44:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.25.2
+  * Make iostream shutdown more robust #1143 (@blink1073)
+  * Don't call QApplication.setQuitOnLastWindowClosed(False). #1142
+    (@anntzer)
+  * Avoid starting IOPub background thread after it's been stopped
+    #1137 (@minrk)
+
+-------------------------------------------------------------------
 Wed Aug 23 08:18:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Fix spec-cleaner: The stupid sle15 python reset macro needs to

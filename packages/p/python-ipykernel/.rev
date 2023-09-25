@@ -478,4 +478,18 @@
   be before python_module calls</comment>
     <requestid>1105430</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>a93432d0554569f8e7166f04437cff38</srcmd5>
+    <version>6.25.2</version>
+    <time>1695664963</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.25.2
+  * Make iostream shutdown more robust #1143 (@blink1073)
+  * Don't call QApplication.setQuitOnLastWindowClosed(False). #1142
+    (@anntzer)
+  * Avoid starting IOPub background thread after it's been stopped
+    #1137 (@minrk)
+</comment>
+    <requestid>1113234</requestid>
+  </revision>
 </revisionlist>
