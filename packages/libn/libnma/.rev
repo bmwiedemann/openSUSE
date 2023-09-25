@@ -157,4 +157,12 @@
 - Package libnma-glib-schema sub-package as noarch. (forwarded request 1057637 from iznogood)</comment>
     <requestid>1058168</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b3330c73f4f18a8efbbd3f42efd652e6</srcmd5>
+    <version>1.10.6</version>
+    <time>1695664799</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113236</requestid>
+  </revision>
 </revisionlist>

@@ -73,6 +73,7 @@ It is required by libnma
 
 %package -n     %{name}-gtk4-%{sover}
 Summary:        Shared library for NetworkManager-applet. Gtk4 version
+Requires:       %{name}-glib-schema >= %{version}
 Requires:       mobile-broadband-provider-info
 
 %description -n %{name}-gtk4-%{sover}
