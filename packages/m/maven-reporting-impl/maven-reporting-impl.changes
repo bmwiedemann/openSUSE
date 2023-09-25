@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 24 01:58:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.2.0
+  * Improvement:
+    + MSHARED-1099 - Render with a skin when report is run in
+      standalone mode
+  * Dependency upgrades:
+    + MSHARED-1120 - Upgrade Maven Reporting API to 3.1.1
+    + MSHARED-1121 - Upgrade plugins and components in project and
+      ITs
+- Modified patch:
+  * 0001-Remove-dependency-on-junit-addons.patch
+    + rediff
+
+-------------------------------------------------------------------
 Wed Sep  6 22:31:19 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove unnecessary dependency on xmvn tools and parent pom

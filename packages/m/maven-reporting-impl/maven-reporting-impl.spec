@@ -17,7 +17,7 @@
 
 
 Name:           maven-reporting-impl
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Abstract classes to manage report generation
 License:        Apache-2.0
@@ -37,7 +37,7 @@ BuildRequires:  maven-doxia-sink-api
 BuildRequires:  maven-doxia-sitetools
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
-BuildRequires:  maven-reporting-api
+BuildRequires:  maven-reporting-api >= 3.1.1
 BuildRequires:  maven-shared-utils
 BuildRequires:  plexus-utils
 BuildRequires:  unzip
@@ -63,8 +63,6 @@ API documentation for %{name}.
 cp %{SOURCE1} build.xml
 %patch0 -p1
 
-%pom_remove_parent
-
 # integration tests try to download stuff from the internet
 # and therefore they don't work in Build Service
 %pom_remove_plugin :maven-invoker-plugin
@@ -72,22 +70,25 @@ cp %{SOURCE1} build.xml
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-	maven-doxia/doxia-core \
-	maven-doxia/doxia-logging-api \
-	maven-doxia/doxia-module-xhtml \
-	maven-doxia/doxia-module-xhtml5 \
-	maven-doxia/doxia-sink-api \
-	maven-doxia-sitetools/doxia-decoration-model \
-	maven-doxia-sitetools/doxia-site-renderer \
-	maven/maven-core \
-	maven/maven-plugin-api \
-	maven-plugin-tools/maven-plugin-annotations \
-	maven-reporting-api/maven-reporting-api \
-	maven-shared-utils/maven-shared-utils \
-	plexus/utils
+    maven-doxia/doxia-core \
+    maven-doxia/doxia-logging-api \
+    maven-doxia/doxia-module-xhtml \
+    maven-doxia/doxia-module-xhtml5 \
+    maven-doxia/doxia-sink-api \
+    maven-doxia-sitetools/doxia-decoration-model \
+    maven-doxia-sitetools/doxia-integration-tools \
+    maven-doxia-sitetools/doxia-site-renderer \
+    maven/maven-artifact \
+    maven/maven-compat \
+    maven/maven-core \
+    maven/maven-plugin-api \
+    maven-plugin-tools/maven-plugin-annotations \
+    maven-reporting-api/maven-reporting-api \
+    maven-shared-utils/maven-shared-utils \
+    plexus/utils
 
 %{ant} \
-	jar javadoc
+    jar javadoc
 
 %install
 # jar

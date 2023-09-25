@@ -1,7 +1,20 @@
---- maven-reporting-impl-3.1.0/pom.xml	2022-03-10 17:08:29.894389771 +0100
-+++ maven-reporting-impl-3.1.0/pom.xml	2022-03-10 17:09:12.654649105 +0100
-@@ -140,12 +140,6 @@
-       <version>4.13.1</version>
+From b087582c8bbe88ac8fd3a59c129d4bd7953a720f Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Wed, 9 Feb 2022 14:37:18 -0700
+Subject: [PATCH] Remove dependency on junit-addons
+
+---
+ pom.xml                                                |  6 ------
+ .../maven/reporting/AbstractMavenReportRenderer.java   |  2 +-
+ .../reporting/AbstractMavenReportRendererTest.java     | 10 ++--------
+ 3 files changed, 3 insertions(+), 15 deletions(-)
+
+diff --git a/pom.xml b/pom.xml
+index d46a817..6b6295c 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -151,12 +151,6 @@
+       <version>4.13.2</version>
        <scope>test</scope>
      </dependency>
 -    <dependency>
@@ -13,9 +26,11 @@
    </dependencies>
  
    <build>
---- maven-reporting-impl-3.1.0/src/main/java/org/apache/maven/reporting/AbstractMavenReportRenderer.java	2022-03-10 17:08:29.894389771 +0100
-+++ maven-reporting-impl-3.1.0/src/main/java/org/apache/maven/reporting/AbstractMavenReportRenderer.java	2022-03-10 17:09:12.654649105 +0100
-@@ -599,7 +599,7 @@
+diff --git a/src/main/java/org/apache/maven/reporting/AbstractMavenReportRenderer.java b/src/main/java/org/apache/maven/reporting/AbstractMavenReportRenderer.java
+index 4c9a07c..4693e1d 100644
+--- a/src/main/java/org/apache/maven/reporting/AbstractMavenReportRenderer.java
++++ b/src/main/java/org/apache/maven/reporting/AbstractMavenReportRenderer.java
+@@ -599,7 +599,7 @@ public abstract class AbstractMavenRepor
       * @param text a text with or without the pattern <code>{text, url}</code>
       * @return a map of text/href
       */
@@ -24,9 +39,11 @@
      {
          if ( StringUtils.isEmpty( text ) )
          {
---- maven-reporting-impl-3.1.0/src/test/java/org/apache/maven/reporting/AbstractMavenReportRendererTest.java	2022-03-10 17:08:29.898389795 +0100
-+++ maven-reporting-impl-3.1.0/src/test/java/org/apache/maven/reporting/AbstractMavenReportRendererTest.java	2022-03-10 17:09:12.654649105 +0100
-@@ -24,7 +24,8 @@
+diff --git a/src/test/java/org/apache/maven/reporting/AbstractMavenReportRendererTest.java b/src/test/java/org/apache/maven/reporting/AbstractMavenReportRendererTest.java
+index cdb9299..e8dce8f 100644
+--- a/src/test/java/org/apache/maven/reporting/AbstractMavenReportRendererTest.java
++++ b/src/test/java/org/apache/maven/reporting/AbstractMavenReportRendererTest.java
+@@ -24,7 +24,8 @@ import java.util.List;
  
  import junit.framework.Assert;
  import junit.framework.TestCase;
@@ -36,7 +53,7 @@
  
  /**
   * Test case for some public method in AbstractMavenReportRenderer.
-@@ -32,13 +33,6 @@
+@@ -32,13 +33,6 @@ import junitx.util.PrivateAccessor;
  public class AbstractMavenReportRendererTest
      extends TestCase
  {
@@ -50,3 +67,5 @@
      private static void checkPattern( String pattern, String[] expectedResult ) throws Throwable
      {
          List<String> result = applyPattern( pattern );
+-- 
+2.34.1
