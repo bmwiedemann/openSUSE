@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 24 08:36:46 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.1.4
+  * bugfix: set correct fullscreen resolution for non-16:9
+  * fixed switched shrink/expand extras in editor
+  * don't overwrite saved game when testing levels
+  * properly fill new window with black
+  * show viewport size if used on non-16:9 monitors
+
+-------------------------------------------------------------------
 Sat May 13 16:37:06 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 1.1.3
