@@ -448,4 +448,12 @@ Security fix: Bug 865854, CVE-2014-0004. (forwarded request 225422 from pwieczor
     <comment></comment>
     <requestid>1040240</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>723a918e10e66f725efa33f9b5a03d74</srcmd5>
+    <version>2.10.0</version>
+    <time>1695664786</time>
+    <user>anag+factory</user>
+    <comment>Version update: 2.9.4 -&gt; 2.10.0</comment>
+    <requestid>1111372</requestid>
+  </revision>
 </revisionlist>

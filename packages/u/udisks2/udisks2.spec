@@ -1,7 +1,7 @@
 #
 # spec file for package udisks2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,34 @@
 #
 
 
-%define somajor 0
-%define libudisks lib%{name}-%{somajor}
-%define libblockdev_version 2.19
-# valid options are 'luks1' or 'luks2' - Note, remove this and the sed call, as upstream moves to luks2 as default
-%define default_luks_encryption luks2
+%define soversion 0
+%define libblockdev_version 3.0
 
 Name:           udisks2
-Version:        2.9.4
+Version:        2.10.0
 Release:        0
 Summary:        Disk Manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://github.com/storaged-project/udisks
 Source0:        %{url}/releases/download/udisks-%{version}/udisks-%{version}.tar.bz2
-Patch0:         harden_udisks2-zram-setup@.service.patch
-Patch1:         harden_udisks2.service.patch
-Patch2:         0001-udiskslinuxmountoptions-Do-not-free-static-daemon-re.patch
-Patch3:         0001-udisksata-Move-the-low-level-PM-state-call.patch
-Patch4:         0001-udiskslinuxfilesystem-Make-the-size-property-retriev.patch
-Patch5:         0001-udiskslinuxprovider-Only-update-related-objects-on-u.patch
+
+# Upstream First - Policy:
+# Never add any patches to this package without the upstream commit id
+# in the patch. Any patches added here without a very good reason to make
+# an exception will be silently removed with the next version update.
+
+Patch0:         harden_udisks2.service.patch
+
 BuildRequires:  chrpath
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel >= 0.6.2
 BuildRequires:  libacl-devel
-BuildRequires:  libblockdev-btrfs-devel >= %{libblockdev_version}
 BuildRequires:  libblockdev-crypto-devel >= %{libblockdev_version}
 BuildRequires:  libblockdev-fs-devel >= %{libblockdev_version}
-BuildRequires:  libblockdev-kbd-devel >= %{libblockdev_version}
 BuildRequires:  libblockdev-loop-devel >= %{libblockdev_version}
-BuildRequires:  libblockdev-lvm-dbus-devel >= %{libblockdev_version}
-BuildRequires:  libblockdev-lvm-devel >= %{libblockdev_version}
 BuildRequires:  libblockdev-mdraid-devel >= %{libblockdev_version}
+BuildRequires:  libblockdev-nvme-devel >= %{libblockdev_version}
 BuildRequires:  libblockdev-part-devel >= %{libblockdev_version}
 BuildRequires:  libblockdev-swap-devel >= %{libblockdev_version}
 BuildRequires:  lvm2-devel
@@ -60,8 +56,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.50
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 165
 BuildRequires:  pkgconfig(libatasmart) >= 0.17
-BuildRequires:  pkgconfig(libconfig) >= 1.3.2
-BuildRequires:  pkgconfig(libstoragemgmt) >= 1.3.0
 BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(mount) >= 2.30
 BuildRequires:  pkgconfig(polkit-agent-1) >= 0.102
@@ -69,7 +63,8 @@ BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.102
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(uuid)
-Requires:       %{libudisks} = %{version}
+
+Requires:       libudisks2-%{soversion} = %{version}
 # For LUKS devices
 Requires:       cryptsetup
 # Needed to pull in the system bus daemon
@@ -89,6 +84,7 @@ Requires:       libblockdev-crypto >= %{libblockdev_version}
 Requires:       libblockdev-fs >= %{libblockdev_version}
 Requires:       libblockdev-loop >= %{libblockdev_version}
 Requires:       libblockdev-mdraid >= %{libblockdev_version}
+Requires:       libblockdev-nvme >= %{libblockdev_version}
 Requires:       libblockdev-part >= %{libblockdev_version}
 Requires:       libblockdev-swap >= %{libblockdev_version}
 # Needed to pull in the udev daemon
@@ -97,25 +93,24 @@ Requires:       udev >= 208
 Requires:       util-linux
 # For mkfs.xfs, xfs_admin
 Requires:       xfsprogs
-Recommends:     %{libudisks}_btrfs
-# Add Obsoletes to ease removal of deprecated standalone vdo module
+
+Recommends:     libudisks2-%{soversion}_btrfs
+
+# Drop deprecated modules from end users' systems upon system upgrade
 Obsoletes:      libudisks2-0_vdo <= 2.9.4
-%{?systemd_requires}
-# Upstream First - Policy:
-# Never add any patches to this package without the upstream commit id
-# in the patch. Any patches added here without a very good reason to make
-# an exception will be silently removed with the next version update.
+Obsoletes:      libudisks2-0_bcache < 2.10
+Obsoletes:      libudisks2-0_zram < 2.10
 
 %description
 The Udisks project provides a daemon, tools and libraries to access and
 manipulate disks, storage devices and technologies.
 
-%package -n %{libudisks}
+%package -n libudisks2-%{soversion}
 Summary:        Dynamic library to access the UDisksd daemon
 License:        LGPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n %{libudisks}
+%description -n libudisks2-%{soversion}
 This package contains the dynamic library, which provides
 access to the UDisksd daemon.
 
@@ -131,13 +126,13 @@ for managing disks and storage devices.
 This package provides the GObject Introspection bindings for
 the UDisks client library.
 
-%package -n %{libudisks}-devel
+%package -n libudisks2-%{soversion}-devel
 Summary:        Development files for UDisks
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{libudisks} >= %{version}
+Requires:       libudisks2-%{soversion} >= %{version}
 
-%description -n %{libudisks}-devel
+%description -n libudisks2-%{soversion}-devel
 This package contains the development files for the library libUDisks2, a
 dynamic library, which provides access to the UDisksd daemon.
 
@@ -148,77 +143,76 @@ BuildArch:      noarch
 %description docs
 This package contains developer documentation for %{name}.
 
-%package -n %{libudisks}_bcache
-Summary:        UDisks module for Bcache
-License:        GPL-2.0-or-later
-Group:          System/Libraries
-Requires:       %{libudisks} >= %{version}
-Requires:       libblockdev-kbd >= %{libblockdev_version}
-
-%description -n %{libudisks}_bcache
-This package contains the UDisks module for bcache support.
-
-%package -n %{libudisks}_btrfs
+%package -n libudisks2-%{soversion}_btrfs
 Summary:        UDisks module for btrfs
-License:        GPL-2.0-or-later
+License:        LGPL-2.0-or-later
 Group:          System/Libraries
-Requires:       %{libudisks} >= %{version}
+BuildRequires:  libblockdev-btrfs-devel >= %{libblockdev_version}
 Requires:       libblockdev-btrfs >= %{libblockdev_version}
+Requires:       libudisks2-%{soversion} >= %{version}
 
-%description -n %{libudisks}_btrfs
+%description -n libudisks2-%{soversion}_btrfs
 This package contains the UDisks module for btrfs support.
 
-%package -n %{libudisks}_lsm
+%package -n libudisks2-%{soversion}_lsm
 Summary:        UDisks module for LSM
-License:        GPL-2.0-or-later
+License:        LGPL-2.0-or-later
 Group:          System/Libraries
-Requires:       %{libudisks} >= %{version}
+BuildRequires:  pkgconfig(libconfig) >= 1.3.2
+BuildRequires:  pkgconfig(libstoragemgmt) >= 1.3.0
 Requires:       libstoragemgmt >= 1.3.0
+Requires:       libudisks2-%{soversion} >= %{version}
 
-%description -n %{libudisks}_lsm
+%description -n libudisks2-%{soversion}_lsm
 This package contains the UDisks module for LSM support.
 
-%package -n %{libudisks}_lvm2
+%package -n libudisks2-%{soversion}_lvm2
 Summary:        UDisks module for LVM2
-License:        GPL-2.0-or-later
+License:        LGPL-2.0-or-later
 Group:          System/Libraries
-Requires:       %{libudisks} >= %{version}
+BuildRequires:  libblockdev-lvm-devel >= %{libblockdev_version}
 Requires:       libblockdev-lvm >= %{libblockdev_version}
+Requires:       libudisks2-%{soversion} >= %{version}
 Requires:       lvm2
 
-%description -n %{libudisks}_lvm2
+%description -n libudisks2-%{soversion}_lvm2
 This package contains the UDisks module for LVM2 support.
 
-%package -n %{libudisks}_zram
-Summary:        UDisks module for Zram
-License:        GPL-2.0-or-later
-Group:          System/Libraries
-Requires:       %{libudisks} = %{version}
-Requires:       libblockdev-kbd >= %{libblockdev_version}
-Requires:       libblockdev-swap >= %{libblockdev_version}
+%package bash-completion
+Summary:        Bash Completion for udisksctl
+BuildRequires:  bash-completion
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
 
-%description -n %{libudisks}_zram
-This package contains the UDisks module for zram support.
+%description bash-completion
+Bash command line completion support for the udisksctl command.
+
+%package zsh-completion
+Summary:        Zsh Completion for udisksctl
+BuildRequires:  zsh
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+Zsh command line completion support for the udisksctl command.
 
 %lang_package
 
 %prep
 %autosetup -p1 -n udisks-%{version}
-# Move to luks2 as default
-sed -i udisks/udisks2.conf.in -e "s/encryption=luks1/encryption=%{default_luks_encryption}/"
 
 %build
 %configure \
 	--disable-static \
 	--disable-gtk-doc \
 	--docdir=%{_docdir}/%{name} \
-	--enable-bcache \
 	--enable-btrfs \
 	--enable-lsm \
 	--enable-lvm2 \
-	--enable-lvmcache \
-	--enable-zram \
-	--disable-vdo \
 	%{nil}
 %make_build
 
@@ -236,10 +230,11 @@ ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rc%{name}
 
 # Move example config file to docs
 mkdir -p %{buildroot}%{_docdir}/%{name}
-mv -v %{buildroot}%{_sysconfdir}/udisks2/mount_options.conf.example %{buildroot}%{_docdir}/%{name}/mount_options.conf.example
+mv -v %{buildroot}%{_sysconfdir}/udisks2/mount_options.conf.example \
+    %{buildroot}%{_docdir}/%{name}/mount_options.conf.example
 
-%post -n %{libudisks} -p /sbin/ldconfig
-%postun -n %{libudisks} -p /sbin/ldconfig
+%post -n libudisks2-%{soversion} -p /sbin/ldconfig
+%postun -n libudisks2-%{soversion} -p /sbin/ldconfig
 
 %pre -n %{name}
 %service_add_pre udisks2.service
@@ -255,18 +250,6 @@ mv -v %{buildroot}%{_sysconfdir}/udisks2/mount_options.conf.example %{buildroot}
 %postun -n %{name}
 %service_del_postun udisks2.service
 
-%pre -n %{libudisks}_zram
-%service_add_pre udisks2-zram-setup@.service
-
-%post -n %{libudisks}_zram
-%service_add_post udisks2-zram-setup@.service
-
-%preun -n %{libudisks}_zram
-%service_del_preun udisks2-zram-setup@.service
-
-%postun -n %{libudisks}_zram
-%service_del_postun udisks2-zram-setup@.service
-
 %files
 %doc AUTHORS NEWS
 %{_bindir}/udisksctl
@@ -277,11 +260,9 @@ mv -v %{buildroot}%{_sysconfdir}/udisks2/mount_options.conf.example %{buildroot}
 %doc %{_docdir}/%{name}/mount_options.conf.example
 %{_tmpfilesdir}/udisks2.conf
 %ghost %{_rundir}/media
-%{_datadir}/bash-completion/completions/udisksctl
 %{_unitdir}/udisks2.service
 %dir %{_udevrulesdir}
 %{_udevrulesdir}/80-udisks2.rules
-%{_udevrulesdir}/90-udisks2-zram.rules
 %{_sbindir}/rc%{name}
 %{_sbindir}/umount.udisks2
 %dir %{_libexecdir}/udisks2
@@ -297,43 +278,35 @@ mv -v %{buildroot}%{_sysconfdir}/udisks2/mount_options.conf.example %{buildroot}
 # about e.g. mounts to unprivileged users
 %attr(0700,root,root) %dir %{_localstatedir}/lib/udisks2
 
-%files -n %{libudisks}
+%files -n libudisks2-%{soversion}
 %license COPYING
 %{_libdir}/libudisks2.so.*
 
 %files -n typelib-1_0-UDisks-2_0
 %{_libdir}/girepository-1.0/UDisks-2.0.typelib
 
-%files -n %{libudisks}-devel
+%files -n libudisks2-%{soversion}-devel
 %doc HACKING README.md
 %{_libdir}/libudisks2.so
 %dir %{_includedir}/udisks2
 %dir %{_includedir}/udisks2/udisks
 %{_includedir}/udisks2/udisks/*.h
 %{_libdir}/pkgconfig/udisks2.pc
-%{_libdir}/pkgconfig/udisks2-bcache.pc
 %{_libdir}/pkgconfig/udisks2-btrfs.pc
 %{_libdir}/pkgconfig/udisks2-lsm.pc
 %{_libdir}/pkgconfig/udisks2-lvm2.pc
-%{_libdir}/pkgconfig/udisks2-zram.pc
 %{_datadir}/gir-1.0/UDisks-2.0.gir
 
 %files docs
 %doc %{_datadir}/gtk-doc/html/udisks2/
 
-%files -n %{libudisks}_bcache
-%dir %{_libdir}/udisks2
-%dir %{_libdir}/udisks2/modules
-%{_libdir}/udisks2/modules/libudisks2_bcache.so
-%{_datadir}/polkit-1/actions/org.freedesktop.UDisks2.bcache.policy
-
-%files -n %{libudisks}_btrfs
+%files -n libudisks2-%{soversion}_btrfs
 %dir %{_libdir}/udisks2
 %dir %{_libdir}/udisks2/modules
 %{_libdir}/udisks2/modules/libudisks2_btrfs.so
 %{_datadir}/polkit-1/actions/org.freedesktop.UDisks2.btrfs.policy
 
-%files -n %{libudisks}_lsm
+%files -n libudisks2-%{soversion}_lsm
 %dir %{_sysconfdir}/udisks2/modules.conf.d
 %attr(0600,root,root) %config %{_sysconfdir}/udisks2/modules.conf.d/udisks2_lsm.conf
 %dir %{_libdir}/udisks2
@@ -342,18 +315,18 @@ mv -v %{buildroot}%{_sysconfdir}/udisks2/mount_options.conf.example %{buildroot}
 %{_datadir}/polkit-1/actions/org.freedesktop.UDisks2.lsm.policy
 %{_mandir}/man5/udisks2_lsm.conf.5%{?ext_man}
 
-%files -n %{libudisks}_lvm2
+%files -n libudisks2-%{soversion}_lvm2
 %dir %{_libdir}/udisks2
 %dir %{_libdir}/udisks2/modules
 %{_libdir}/udisks2/modules/libudisks2_lvm2.so
 %{_datadir}/polkit-1/actions/org.freedesktop.UDisks2.lvm2.policy
 
-%files -n %{libudisks}_zram
-%dir %{_libdir}/udisks2
-%dir %{_libdir}/udisks2/modules
-%{_libdir}/udisks2/modules/libudisks2_zram.so
-%{_datadir}/polkit-1/actions/org.freedesktop.UDisks2.zram.policy
-%{_unitdir}/udisks2-zram-setup@.service
+%files bash-completion
+%{_datadir}/bash-completion/completions/udisksctl
+
+%files zsh-completion
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_udisks2
 
 %files lang -f udisks2.lang
 

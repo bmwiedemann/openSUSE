@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue Aug 29 20:28:56 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Add Obsoletes tags for libudisks2-0_bcache and libudisks2-0_zram
+  modules, dropped on latest version bump, so they get removed from
+  end users' systems upon system upgrade.
+- Drop unnecessary/discouraged %{?systemd_requires} from spec file.
+
+-------------------------------------------------------------------
+Wed Aug 16 23:33:19 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 2.10.0:
+  + This release brings large number of internal changes, while
+    keeping the promise of API stability. This development cycle
+    was mostly driven by libblockdev 3.0 API overhaul.
+  + Partitioning was ported to libfdisk.
+  + The kbd and vdo libblockdev plugins were removed and so were
+    zram, bcache and vdo udisks modules.
+  + Definition of supported filesystems was moved to libblockdev
+    and filesystem operations were unified.
+  + Native NVMe support has been added through libnvme.
+  + Syntax of configurable mount options was extended to separate
+    filesystem signature and filesystem driver used for mounting.
+  + A number of workarounds was placed around the
+    org.freedesktop.UDisks2.Filesystem.Size property value
+    retrieval to avoid excessive I/O traffic whenever possible.
+  + Bash and Zsh completion enhancements.
+  + lvm2 module uevent handling improvements.
+  + ATA Secure Erase is now allowed only on top-level block
+    objects.
+  + Extra iSCSI node parameters are now honoured properly.
+  + FIPS mode fixes.
+  + Added support for resolving devices by PARTLABEL and PARTUUID.
+  + Full support for setting filesystem and partition UUIDs.
+  + Dynamic mountpoint name sanitization and ACL fixes.
+  + Added support for LVM2 RAID.
+  + UUID of Bitlocker volumes is now properly exposed.
+  + Added an option to force/avoid creation of mdraid write-intent
+    bitmap.
+  + Updated translations.
+- Drop default_luks_encryption macro definition. It's no longer
+  needed as upstream defaults to LUKS2 now.
+- Drop bcache, vdo and zram sub-packages, following upstream
+  changes, and libblockdev-kbd(-devel) BuildRequires/Requires.
+- Drop bogus build requirement on libblockdev-lvm-dbus-devel, and
+  move libblockdev-lvm-devel BuildRequires to the lvm2 module
+  sub-package.
+- Move libconfig and libstoragemgmt pkgconfig() BuildRequires to
+  the lsm module sub-package, and libblockdev-btrfs-devel
+  BuildRequires to the btrfs modules sub-package, which is where
+  they belong.
+- Add libblockdev-nvme-devel BuildRequires and libblockdev-nvme
+  Requires as new required dependencies.
+- Drop harden_udisks2-zram-setup@.service.patch: It's unneeded now
+  that the zram module has been deprecated.
+- Drop merged upstream patches:
+  0001-udisksata-Move-the-low-level-PM-state-call.patch,
+  0001-udiskslinuxfilesystem-Make-the-size-property-retriev.patch,
+  0001-udiskslinuxmountoptions-Do-not-free-static-daemon-re.patch,
+  0001-udiskslinuxprovider-Only-update-related-objects-on-u.patch.
+- Split Bash and Zsh (new to this release) completion scripts to
+  sub-packages of their own.
+- Amend GPL-2.0-or-later License tags to LGPL-2.0-or-later for the
+  btrfs, lvm2 and lsm UDisks modules sub-packages. This correction
+  is based on what's explicitly stated on the source code from
+  UDisks modules' folders under the modules/ top-level directory.
+
+-------------------------------------------------------------------
 Tue Nov 22 08:21:22 UTC 2022 - Thomas Blume <thomas.blume@suse.com>
 
 - avoid wakening spun-down disks on unrelated events (bsc#1120608)
