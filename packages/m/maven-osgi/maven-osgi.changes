@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 25 09:48:28 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to the last tag before retiring and name it 0.3.0, since
+  the version in pom file is 0.3.0-SNAPSHOT
+  * no changelog provided
+  * ported from plexus-maven-plugin to plexus-component-metadata
+- Remove dependency on the old maven2 package
+- Fetch source code from git using source service and clean it of
+  the bundled jars
+
+-------------------------------------------------------------------
 Tue Mar 22 13:32:28 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

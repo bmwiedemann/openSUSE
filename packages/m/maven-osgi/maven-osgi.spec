@@ -1,7 +1,7 @@
 #
 # spec file for package maven-osgi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,12 @@
 
 
 Name:           maven-osgi
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Library for Maven-OSGi integration
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/shared/maven-osgi
-# svn export http://svn.apache.org/repos/asf/maven/shared/tags/maven-osgi-0.2.0 maven-osgi-0.2.0
-# find -name *.jar -delete
-# tar caf maven-osgi-0.2.0.tar.xz maven-osgi-0.2.0/
 Source0:        %{name}-%{version}.tar.xz
 # ASL mandates that the licence file be included in redistributed source
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
@@ -35,7 +32,7 @@ BuildRequires:  maven-local
 BuildRequires:  xz
 BuildRequires:  mvn(biz.aQute:bndlib)
 BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
-BuildRequires:  mvn(org.apache.maven:maven-project)
+BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 BuildArch:      noarch
 
@@ -55,11 +52,10 @@ API documentation for %{name}.
 %setup -q
 cp -p %{SOURCE1} LICENSE
 
-sed -i 's/import aQute\.lib\.osgi/import aQute.bnd.osgi/g' src/main/java/org/apache/maven/shared/osgi/DefaultMaven2OsgiConverter.java
+%pom_change_dep :maven-project :maven-core:3.9.3:provided
+%pom_xpath_set pom:project/pom:version %{version}
 
-# Replace plexus-maven-plugin with plexus-component-metadata
-%pom_xpath_set "pom:plugin[pom:artifactId[text()='plexus-maven-plugin']]//pom:goal[text()='descriptor']" generate-metadata
-%pom_xpath_set "pom:artifactId[text()='plexus-maven-plugin']" plexus-component-metadata
+sed -i 's/import aQute\.lib\.osgi/import aQute.bnd.osgi/g' src/main/java/org/apache/maven/shared/osgi/DefaultMaven2OsgiConverter.java
 
 %build
 %{mvn_build} -f -- \
