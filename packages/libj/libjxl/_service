@@ -1,0 +1,11 @@
+<services>
+	<service name="tar_scm" mode="manual">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/libjxl/libjxl.git/</param>
+		<param name="submodules">enable</param>
+		<param name="subdir">third_party/skcms</param>
+		<param name="revision">v0.8.2</param>
+		<param name="filename">skcms</param>
+		<param name="version">_none_</param>
+	</service>
+</services>

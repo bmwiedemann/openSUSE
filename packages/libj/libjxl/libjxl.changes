@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 21 13:34:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch from LCMS to SKCMS: libjxl core can use either, but
+  plugins can only use SKCMS. Exercising two CMS simultaneously
+  also is silly. Delete 0001-Remove-LCMS-mutex.patch .
+
+-------------------------------------------------------------------
+Sat Sep 16 06:58:55 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build plugins:
+  * Add _service file to generate skcms tarball (needed to build
+    plugins).
+  * Add skcms tarball as source and copy extracted dir to
+    ./third_party/ so cmake can find it.
+  * Split out new packages:
+  * gdk-pixbuf-loader-jxl: Pixbuf loader for supported apps.
+  * gimp-plugin-jxl: Plugin to allow gimp to work with JPEG XL
+    files.
+  * jxl-thumbnailer: Thumbnailer and mime files to allow
+    generating thumbnails for JPEG XL files.
+
+-------------------------------------------------------------------
 Wed Jun 14 13:00:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.8.2
