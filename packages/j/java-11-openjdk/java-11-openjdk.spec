@@ -210,7 +210,8 @@ Patch10:        memory-limits.patch
 Patch12:        adlc-parser.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
-#
+# Use SOURCE_DATE_EPOCH in timestamp when writing properties
+Patch14:        reproducible-properties.patch
 Patch15:        system-pcsclite.patch
 Patch16:        missing-return.patch
 Patch17:        nss-security-provider.patch
@@ -490,6 +491,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch10 -p1
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 
 %if %{with_system_pcsc}
 %patch15 -p1

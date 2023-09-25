@@ -519,4 +519,12 @@
     <comment>Emergency regresion fix after July 2023 CPU</comment>
     <requestid>1105408</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>d8d6514bbcbda759008a82b2089c0114</srcmd5>
+    <version>11.0.20.1</version>
+    <time>1695664848</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1112713</requestid>
+  </revision>
 </revisionlist>
