@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 24 17:51:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.3.1
+  * Support external kernels #961 (@davidbrochart)
+  * Make cache_ports configurable with default value of False. #956
+    (@jkitchin)
+
+-------------------------------------------------------------------
 Sat Jul  1 16:35:08 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.3.0

@@ -341,4 +341,16 @@ Update to 5.3.4</comment>
   * Allow kwargs when writting connection_file #953 (@fecet)</comment>
     <requestid>1096305</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a7f8765f690a3f48d74c9d79d2bf9533</srcmd5>
+    <version>8.3.1</version>
+    <time>1695664997</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.3.1
+  * Support external kernels #961 (@davidbrochart)
+  * Make cache_ports configurable with default value of False. #956
+    (@jkitchin)
+</comment>
+    <requestid>1113300</requestid>
+  </revision>
 </revisionlist>
