@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-reportlab
-Version:        3.6.12
+Version:        3.6.13
 Release:        0
 Summary:        The Reportlab Toolkit
 License:        BSD-3-Clause

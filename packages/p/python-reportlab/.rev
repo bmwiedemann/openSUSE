@@ -395,4 +395,12 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1101085</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>dedb96ea3bf8931b4ff282aee24569eb</srcmd5>
+    <version>3.6.13</version>
+    <time>1695664794</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113068</requestid>
+  </revision>
 </revisionlist>

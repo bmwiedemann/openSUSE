@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 21 18:01:40 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.6.13
+  * fixes for python 3.12.0a1
+  * tables.py error improvement
+  * allow exclusions in tests in runAll.py and setup.py
+  * implement a safer toColor with rl_config.toColorCanUse option
+
+-------------------------------------------------------------------
 Thu Jul 27 13:03:29 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
