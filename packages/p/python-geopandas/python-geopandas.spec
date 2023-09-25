@@ -25,25 +25,25 @@
 %bcond_with test
 %endif
 Name:           python-geopandas%{psuffix}
-Version:        0.13.2
+Version:        0.14.0
 Release:        0
 Summary:        Geographic pandas extensions
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://geopandas.org
 Source:         https://files.pythonhosted.org/packages/source/g/geopandas/geopandas-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       proj
-Requires:       python-Fiona >= 1.8.19
+Requires:       python-Fiona >= 1.8.21
 Requires:       python-packaging
-Requires:       python-pandas >= 1.1.0
-Requires:       python-pyproj >= 3.0.1
-Requires:       python-shapely >= 1.7.1
+Requires:       python-pandas >= 1.4.0
+Requires:       python-pyproj >= 3.3.0
+Requires:       python-shapely >= 1.8.0
 Recommends:     python-geopy
 Recommends:     python-matplotlib
 BuildArch:      noarch
@@ -53,7 +53,7 @@ BuildRequires:  %{python_module folium}
 BuildRequires:  %{python_module fsspec}
 BuildRequires:  %{python_module geopandas = %{version}}
 BuildRequires:  %{python_module geopy}
-BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module matplotlib >= 3.5.0}
 BuildRequires:  %{python_module psycopg2}
 BuildRequires:  %{python_module pyarrow}
 BuildRequires:  %{python_module pygeos >= 0.10}
@@ -95,6 +95,9 @@ donttest="$donttest or (test_arrow and (test_read_versioned_file or test_read_gd
 # wrong shapely type
 donttest="$donttest or (test_geom_methods and test_sample_points_array)"
 donttest="$donttest or (test_random and test_uniform and geom)"
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+  donttest="$donttest or test_explode or test_get_coordinates_parts"
+fi
 %pytest -rsfE -k "not ($donttest)"
 %endif
 
