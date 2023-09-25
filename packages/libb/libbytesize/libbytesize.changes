@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 23 01:07:32 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Rename python3-libbytesize sub-package to python3-bytesize. This
+  is the expected name by its consumers.
+
+-------------------------------------------------------------------
 Wed Aug 30 19:40:43 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 2.9:

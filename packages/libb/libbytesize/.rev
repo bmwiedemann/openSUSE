@@ -100,4 +100,12 @@
     <comment></comment>
     <requestid>1108363</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7042628f26f5a2085bbe0ce524761fa0</srcmd5>
+    <version>2.9</version>
+    <time>1695664788</time>
+    <user>anag+factory</user>
+    <comment>Rename Python sub-package to pyton3-bytesize</comment>
+    <requestid>1113087</requestid>
+  </revision>
 </revisionlist>

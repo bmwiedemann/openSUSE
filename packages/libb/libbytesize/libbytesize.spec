@@ -71,13 +71,13 @@ Requires:       libbytesize%{soversion} = %{version}
 This package contains header files and pkg-config files needed for development
 with the LibBytesize library.
 
-%package -n python3-%{name}
+%package -n python3-bytesize
 Summary:        Python 3 bindings for LibBytesize
 Group:          Development/Libraries/Python
 Requires:       libbytesize%{soversion} = %{version}
 Requires:       python3-six
 
-%description -n python3-%{name}
+%description -n python3-bytesize
 This package contains Python 3 bindings for LibBytesize making the use of
 the library from Python 3 easier and more convenient.
 
@@ -119,7 +119,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/bytesize/bs_size.h
 %{_libdir}/pkgconfig/bytesize.pc
 
-%files -n python3-%{name}
+%files -n python3-bytesize
 %dir %{python3_sitearch}/bytesize
 %{python3_sitearch}/bytesize/*
 
