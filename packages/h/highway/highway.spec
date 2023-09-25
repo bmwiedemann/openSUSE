@@ -19,10 +19,10 @@
 %define lname libhwy1
 
 Name:           highway
-Version:        1.0.5
+Version:        1.0.7
 Release:        0
 Summary:        C++ library providing SIMD/vector intrinsics
-License:        Apache-2.0
+License:        Apache-2.0 OR BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/highway
 Source:         https://github.com/google/highway/archive/refs/tags/%version.tar.gz

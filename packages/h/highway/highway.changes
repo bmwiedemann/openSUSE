@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 22 01:30:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.7
+  * Add LoadNOr, GatherIndexN, ScatterIndexN
+  * Add additional float<->int conversions
+  * Codegen improvements for 8-bit shift, PPC Compress/Expand
+
+-------------------------------------------------------------------
+Fri Aug 11 15:57:12 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.6
+  * Add MaskedGatherIndex, MaskedScatterIndex, LoadN, StoreN,
+    SatWidenMulPairwiseAdd, SumOfMulQuadAccumulate,
+    PromoteUpperLowerTo.
+  * Add F64 for Wasm, F64 AbsDiff
+  * Validate all D args in x86 function signatures
+
+-------------------------------------------------------------------
 Wed Jul 19 16:33:36 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.5
