@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 20 12:26:03 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20230920.74aeded:
+  * udisks2: add additional NVME action (bsc#1214897)
+
+-------------------------------------------------------------------
 Tue Sep 12 08:13:05 UTC 2023 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20230912.0978001:
