@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 24 18:34:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.9 with jupyter-js-widgets 8.0.9
+  * no own release notes, see ipywidgets 8.1.1: Raise error when
+    copy method is used on base widget class by @mmc1718 in #3780
+
+-------------------------------------------------------------------
 Sat Aug 26 14:37:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Avoid notebook 7: use nbclassic or notebook < 6

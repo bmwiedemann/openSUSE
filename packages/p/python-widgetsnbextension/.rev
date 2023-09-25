@@ -121,4 +121,15 @@
     <comment>- Avoid notebook 7: use nbclassic or notebook &lt; 6 (forwarded request 1106055 from bnavigator)</comment>
     <requestid>1106056</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>85dbc88892007d51f3ae69356b33a08f</srcmd5>
+    <version>4.0.9</version>
+    <time>1695665001</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.9 with jupyter-js-widgets 8.0.9
+  * no own release notes, see ipywidgets 8.1.1: Raise error when
+    copy method is used on base widget class by @mmc1718 in #3780
+</comment>
+    <requestid>1113307</requestid>
+  </revision>
 </revisionlist>
