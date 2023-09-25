@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 23 21:30:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.3
+  * Freebusy is determined using mapi_getuserfreebusy PHP
+    function introdued in Gromox-2.11
+  * The Menu key is now usable to call up thecontext menu in the
+    content table
+  * Copy-to-trash had erroneously moved the mail
+  * Rules dialog no longer hides shared stores
+
+-------------------------------------------------------------------
 Fri Apr 21 08:37:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 3.2.43.7ebf7d9

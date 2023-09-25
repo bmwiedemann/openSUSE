@@ -21,7 +21,7 @@
 %endif
 
 Name:           grommunio-web
-Version:        3.2.43.7ebf7d9
+Version:        3.3.0.f7738a0
 Release:        0
 Summary:        Web client for access to grommunio features from the web
 License:        AGPL-3.0-or-later AND GPL-3.0-only AND LGPL-2.1-only AND MIT
@@ -88,7 +88,7 @@ Requires:       php-xml
 %endif
 
 Requires(pre):  user(groweb)
-Requires:       gromox >= 1.27
+Requires:       gromox >= 2.11
 BuildRequires:  mapi-header-php
 Requires:       mapi-header-php
 
