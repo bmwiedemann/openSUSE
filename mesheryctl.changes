@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Sep 24 08:04:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.147:
+  * Meshery UI
+    - Revert "[Fix] k8s-switcher select-all" @theBeginner86 (#8898)
+
+-------------------------------------------------------------------
+Sun Sep 24 07:30:24 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.146:
+  * General
+    - MeshKit v0.6.67 @leecalcote (#8897)
+  * - Meshery UI
+    - [UI] Notification Center: Increase size of unread indicator
+      @leecalcote (#8891)
+    - [extensions] fix error msg @theBeginner86 (#8892)
+    - changed smi_results.js @EraKin575 (#8868)
+    - Connections row expand data with styling @senali-d (#8840)
+    - [Fix] k8s-switcher select-all @aabidsofi19 (#8876)
+    - [CI] e2e test job improvements @MarioArriaga92 (#8643)
+  * - Maintenance
+    - updating node versions workflow actions @Philip-21 (#8856)
+    - [CI] e2e test job improvements @MarioArriaga92 (#8643)
+
+-------------------------------------------------------------------
+Sun Sep 24 07:11:52 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.145:
+  no changes apparently
+
+-------------------------------------------------------------------
+Sun Sep 24 06:51:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.144:
+  * General
+    - add docs for component generation and updater scripts
+      @MUzairS15 (#8860)
+    - Fixed Meshary Integration Updater @ptdatta (#8774)
+  * - Meshery UI
+    - [Designs] Fixes And Enhancements @aabidsofi19 (#8861)
+    - Fix Notification center bell icon toggle btn @aabidsofi19
+      (#8875)
+    - [UI] Enhancements :Notification center @aabidsofi19 (#8872)
+    - [UI] Fix cluster resources dashboard not getting populated
+      with data @MUzairS15 (#8873)
+    - [chore] Improve events for Server @MUzairS15 (#8864)
+    - [UI] Notification inverse read indicator @aabidsofi19 (#8865)
+    - [UI] Remove old store for notification center @aabidsofi19
+      (#8858)
+    - Fix typo in `component-svg/_.txt` @eltociear (#8830)
+    - [UI] Enhance Error Handling @aabidsofi19 (#8851)
+  * - Bug Fixes
+    - [bug] Fix API docs build @theBeginner86 (#8852)
+  * - Documentation
+    - [bug] Fix API docs build @theBeginner86 (#8852)
+
+-------------------------------------------------------------------
 Thu Sep 21 05:01:49 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.6.143:
