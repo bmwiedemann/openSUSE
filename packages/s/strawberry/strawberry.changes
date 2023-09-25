@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Sep 24 21:28:11 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.0.20
+
+  + Fixed appdata validation.
+
+- Update to version 1.0.19
+
+  + Bugfixes:
+   + Use shared pointers for objects to fix potential crashes on exit (#1239).
+   + Fixed smart playlist search not matching unrated songs (#1244).
+   + Fixed reading FMPS_Playcount for MP3 ID3v2 tags (#1248).
+   + Always stop playing after 100 errors to prevent flooding the error dialog (#1220).
+   + Fixed volume going to 100% when decreasing volume beyond zero (#1262).
+   + Fixed error dialog sometimes showing empty.
+  + Enhancements:
+   + Add Mpris2 property to read/write rating (#1246).
+   + Capitalize playlist column names (#1264).
+   + Added lyrics from songlyrics.com, azlyrics.com, elyrics.net and lyricsmode.com.
+  + New features:
+   + Support performing song loudness analysis using `libebur128` (#1216).
+   + Support song playback loudness normalization, as per EBU R 128 (#1216).
+  + Other:
+   + Removed last.fm HTTPS workaround and GnuTLS dependency
+   + Removed broken lyrics.com lyrics provider.
+
+-------------------------------------------------------------------
 Sun Sep 17 19:14:05 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Rebuild after abseil-cpp update. (boo#1215227)

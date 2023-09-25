@@ -1267,4 +1267,32 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1111805</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>1e43d3f90525b2886be0aec66de2f93a</srcmd5>
+    <version>1.0.20</version>
+    <time>1695665006</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.20
+  + Fixed appdata validation.
+- Update to version 1.0.19
+  + Bugfixes:
+   + Use shared pointers for objects to fix potential crashes on exit (#1239).
+   + Fixed smart playlist search not matching unrated songs (#1244).
+   + Fixed reading FMPS_Playcount for MP3 ID3v2 tags (#1248).
+   + Always stop playing after 100 errors to prevent flooding the error dialog (#1220).
+   + Fixed volume going to 100% when decreasing volume beyond zero (#1262).
+   + Fixed error dialog sometimes showing empty.
+  + Enhancements:
+   + Add Mpris2 property to read/write rating (#1246).
+   + Capitalize playlist column names (#1264).
+   + Added lyrics from songlyrics.com, azlyrics.com, elyrics.net and lyricsmode.com.
+  + New features:
+   + Support performing song loudness analysis using `libebur128` (#1216).
+   + Support song playback loudness normalization, as per EBU R 128 (#1216).
+  + Other:
+   + Removed last.fm HTTPS workaround and GnuTLS dependency
+   + Removed broken lyrics.com lyrics provider.
+</comment>
+    <requestid>1113316</requestid>
+  </revision>
 </revisionlist>
