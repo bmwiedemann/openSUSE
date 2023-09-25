@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 29 13:36:01 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to version 5.8.0
+  * GObject: Handle versions of GLib without GBindingGroup 
+  * switch to mozjs102
+
+-------------------------------------------------------------------
 Thu May 27 19:52:13 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 5.0.0.
