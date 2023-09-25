@@ -1,7 +1,7 @@
 #
 # spec file for package javacc-maven-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,9 +37,9 @@ BuildRequires:  mvn(org.apache.maven.doxia:doxia-site-renderer)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-api)
 BuildRequires:  mvn(org.apache.maven.reporting:maven-reporting-impl)
+BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-project)
 BuildRequires:  mvn(org.codehaus.mojo:mojo-parent:pom:)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildArch:      noarch
@@ -58,6 +58,10 @@ API documentation for %{name}.
 %setup -q
 %patch0 -b .sav
 cp -p %{SOURCE1} .
+
+# migrate to maven 3
+%pom_xpath_set pom:prerequisites/pom:maven 3.8.6
+%pom_change_dep :maven-project :maven-core
 
 %build
 %{mvn_build} -f -- \
