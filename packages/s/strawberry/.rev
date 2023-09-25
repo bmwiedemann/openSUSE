@@ -1295,4 +1295,13 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1113316</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>4b265e801d8b158c2ac14f49a48f9429</srcmd5>
+    <version>1.0.20</version>
+    <time>1695758506</time>
+    <user>anag+factory</user>
+    <comment>- Add libebur128: enabling song playback loudness normalization
+</comment>
+    <requestid>1113540</requestid>
+  </revision>
 </revisionlist>
