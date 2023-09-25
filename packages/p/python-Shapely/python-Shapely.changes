@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Sep 23 09:08:05 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.1
+  ## Bug fixes:
+  * Fix regression in the Polygon() constructor taking a sequence
+    of Points (#1662).
+  * Fix regression in the geometry constructors when passing
+    decimal.Decimal coordinate values (#1707).
+  * Fix STRtree() to not make the passed geometry array immutable
+    as side-effect of the constructor (#1714).
+  * Fix the directed keyword in shapely.ops.linemerge() (#1695).
+  ## Improvements:
+  * Expose the function to get a matplotlib Patch object from a
+    (Multi)Polygon (without already plotting it) publicly as
+    :func:shapely.plotting.patch_from_polygon (#1704).
+- Release 2.0.0
+  * Shapely version 2.0.0 is a major release featuring a complete
+    refactor of the internals and new vectorized (element-wise)
+    array operations providing considerable performance
+    improvements (based on the developments in the PyGEOS package),
+    along with several breaking API changes and many feature
+    improvements.
+  - Full release notes and detailed description:
+    * https://shapely.readthedocs.io/en/latest/release/2.x.html
+
+-------------------------------------------------------------------
 Sat Oct  1 21:19:48 UTC 2022 - andy great <andythe_great@pm.me>
 
 - Update to version 1.8.4.

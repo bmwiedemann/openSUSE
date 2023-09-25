@@ -1,7 +1,7 @@
 #
 # spec file for package python-Shapely
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,31 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%bcond_without test
-%define skip_python2 1
 Name:           python-Shapely
-Version:        1.8.4
+Version:        2.0.1
 Release:        0
 Summary:        Geospatial geometries, predicates, and operations
 License:        BSD-3-Clause
 URL:            https://github.com/shapely/shapely
-Source:         https://files.pythonhosted.org/packages/source/S/Shapely/Shapely-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel >= 3.6}
-BuildRequires:  %{python_module numpy-devel}
-BuildRequires:  %{python_module pytest}
+Source:         https://files.pythonhosted.org/packages/source/s/shapely/shapely-%{version}.tar.gz
+BuildRequires:  %{python_module Cython >= 0.29 with %python-Cython < 3}
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module numpy-devel >= 1.16}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+# SECTION test
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module matplotlib}
+# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  geos-devel >= 3.5
 BuildRequires:  python-rpm-macros
-%if 0%{?suse_version} > 1320
-BuildRequires:  %{python_module matplotlib}
-%endif
 # Shapely calls the GEOS libs libgeos and libgeos_c via ctypes in python scripts, undetected by rpm ld analyzer.
 # (libgeos_c1 is detected due to some Cython optimized lib, but libgeos3 is not)
 # use requires_eq in order to be detectable by the python_subpackages rewriter
 %requires_eq    %(rpm -q --requires geos-devel | grep libgeos)
-Recommends:     python-numpy
+Requires:       python-numpy >= 1.16
 Provides:       python-shapely = %{version}-%{release}
 Obsoletes:      python-shapely < %{version}-%{release}
 %python_subpackages
@@ -55,21 +54,15 @@ but can be readily integrated with packages that are like WorldMill
 and pyproj.
 
 %prep
-%autosetup -p1 -n Shapely-%{version}
+%autosetup -p1 -n shapely-%{version}
 
 %build
 CFLAGS="%{optflags} `geos-config --cflags` LDFLAGS=`geos-config --clibs`"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-
-# Those are just needed to build cython extension
-# Not for distribute
-rm -fv %{buildroot}%{_prefix}/shapely/_geos.pxi
-rm -frv %{buildroot}%{_prefix}/shapely
-%python_expand rm %{buildroot}%{$python_sitearch}/shapely/*/*.c
 
 %check
 # make sure not to import the source dir without compiled shapely.vectorized during tests
@@ -83,6 +76,6 @@ popd
 %license LICENSE.txt
 %doc CREDITS.txt README.rst docs/*
 %{python_sitearch}/shapely
-%{python_sitearch}/Shapely-%{version}*-info
+%{python_sitearch}/shapely-%{version}.dist-info
 
 %changelog
