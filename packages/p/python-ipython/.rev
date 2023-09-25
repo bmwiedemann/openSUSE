@@ -1368,4 +1368,29 @@
 </comment>
     <requestid>1092420</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>b7aea35c513d074bcec9346bec6fb58c</srcmd5>
+    <version>8.15.0</version>
+    <time>1695664796</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.15.0
+  * Improve compatibility with future version of Python 3.12/3.13
+    :ghpull:`14107`, gh#`14139`,
+  * Improve support for ExceptionGroups, gh#`14108`
+  * Fix hangs in %gui osx, gh#`14125`
+  * Fix memory lead with %reset, gh#`14133`
+  * Unstable config option to modify traceback highlighting that is
+    sometime hard to read gh#`14138`
+  * Support . in ipdb as an argument to the list command gh#`14121`
+  * Workroud parso showing warning message when the default logger
+    level is changed gh#`14119`
+  * Fix multiple issues with matplotlib interactive mode, qt5/qt6
+    gh#`14128`
+  ## Whatsnew
+  * Support for PEP-678 Exception Notes
+  * Native fallback for displaying ExceptionGroup
+  * AST-based macros
+  * Allow IPdb/Pdb to move between chained exceptions</comment>
+    <requestid>1113222</requestid>
+  </revision>
 </revisionlist>

@@ -35,7 +35,7 @@
 # See whatsnew of 8.14
 %define skip_python312 1
 Name:           python-ipython%{psuffix}
-Version:        8.14.0
+Version:        8.15.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -64,6 +64,9 @@ Requires:       python-traitlets >= 5
 Requires:       (python-prompt_toolkit >= 3.0.38 with python-prompt_toolkit < 3.1)
 %if %{python_version_nodots} < 310
 Requires:       python-typing-extensions
+%endif
+%if %{python_version_nodots} < 311
+Requires:       python-exceptiongroup
 %endif
 Recommends:     jupyter
 Recommends:     python-ipykernel
