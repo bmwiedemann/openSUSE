@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 21 00:12:05 UTC 2023 - William Brown <william.brown@suse.com>
+
+Version 1.72.1 (2023-09-19)
+===========================
+
+- [Adjust codegen change to improve LLVM codegen](https://github.com/rust-lang/rust/pull/115236)
+- [rustdoc: Fix self ty params in objects with lifetimes](https://github.com/rust-lang/rust/pull/115276)
+- [Fix regression in compile times](https://github.com/rust-lang/rust/pull/114948)
+- Resolve some ICE regressions in the compiler:
+  - [#115215](https://github.com/rust-lang/rust/pull/115215)
+  - [#115559](https://github.com/rust-lang/rust/pull/115559)
+
+-------------------------------------------------------------------
 Sun Aug 27 23:08:15 UTC 2023 - William Brown <william.brown@suse.com>
 
 - bsc#1214689 - CVE-2023-40030 - fix minor non-exploited issue in cargo
