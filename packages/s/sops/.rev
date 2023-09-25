@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>982372</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>376675d525691fe8bb80877da797cf5c</srcmd5>
+    <version>3.8.0</version>
+    <time>1695665026</time>
+    <user>anag+factory</user>
+    <comment>update to 3.8.0 (forwarded request 1113386 from ojkastl_buildservice)</comment>
+    <requestid>1113387</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package sops
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) specCURRENT_YEAR SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,10 @@
 #
 
 
+%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
+
 Name:           sops
-Version:        3.7.3
+Version:        3.8.0
 Release:        0
 Summary:        Simple and flexible tool for managing secrets
 License:        MPL-2.0
@@ -38,17 +40,14 @@ Simple and flexible tool for managing secrets
 %setup -q -T -D -a 1
 
 %build
-export GOFLAGS=-mod=vendor
-%{goprep} go.mozilla.org/sops/v3/cmd/sops
-%{gobuild} .
-
-#%%check
-#export GOFLAGS=-mod=vendor
-#%%{gotest} github.com/mozilla/sops/...
+go build \
+   -mod=vendor \
+   -buildmode=pie \
+   -o bin/sops
 
 %install
-%{goinstall}
-rm -rf %{buildroot}/%{_libdir}/go/contrib
+# Install the binary.
+install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
 
 %files
 %license LICENSE
