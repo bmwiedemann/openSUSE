@@ -70,6 +70,12 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Test)
 %endif
 %if %{with qt6}
+%if 0%{?suse_version} < 1550
+# The default compiler is too old for Qt6, use the newest
+# version available in the :Update repo
+BuildRequires:  gcc12-c++
+BuildRequires:  gcc12-PIE
+%endif
 BuildRequires:  pkgconfig(Qt6Core) >= 6.4.0
 BuildRequires:  pkgconfig(Qt6Test)
 %endif
@@ -254,6 +260,10 @@ languages="cpp qt"
 
 %if %{with qt6}
 languages="cpp qt6"
+%if 0%{?suse_version} < 1550
+# Qt6 needs full c++-17 support
+export CXX=g++-12 CC=gcc-12 CPP=cpp-12
+%endif
 %endif
 
 %configure \
@@ -290,12 +300,12 @@ GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $
 %ldconfig_scriptlets -n libqgpgmeqt6-15
 %endif
 
-%if !%{with qt} && !%{with qt6}
+%if %{without qt} && %{without qt6}
 %ldconfig_scriptlets -n libgpgme11
 %ldconfig_scriptlets -n libgpgmepp6
 %endif
 
-%if !%{with qt} && !%{with qt6}
+%if %{without qt} && %{without qt6}
 %files
 %license COPYING COPYING.LESSER LICENSES
 %doc AUTHORS ChangeLog ChangeLog-2011 README NEWS THANKS TODO VERSION

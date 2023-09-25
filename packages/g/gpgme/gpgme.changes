@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 23 23:26:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Use GCC 12 for building the Qt6 library on Leap 15. The
+  default compiler is too old.
+- Use '%{without xxx}' rather than '!%{with xxx}' in spec file
+
+-------------------------------------------------------------------
+Sat Sep 23 23:26:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Use GCC 12 for building the Qt6 library. The default compiler
+  is too old.
+- Use '%{without xxx}' rather than '!%{with xxx}' in spec file
+
+-------------------------------------------------------------------
 Tue Aug 22 08:31:50 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix builds with qt and qt6 [T6673]:
