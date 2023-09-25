@@ -56,4 +56,12 @@
 (this time actually, due to an OBS *bug*/bad design the previous request was just 0.29.0)</comment>
     <requestid>1108727</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c058beb14acd3294894d92c50ca2e843</srcmd5>
+    <version>0.30.0</version>
+    <time>1695664926</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113171</requestid>
+  </revision>
 </revisionlist>

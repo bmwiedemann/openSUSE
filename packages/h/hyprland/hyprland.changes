@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Sat Sep 23 08:11:28 UTC 2023 - Florian <packaging@sp1rit.anonaddy.me>
+
+- Update to version 0.30.0:
+  + New Hyprland update guys wake up!
+    Shoutout to the entire country of Romania and @fufexan, and the
+    top Gs pumping out more MRs than I can physically review @memchr
+    @Dickby @MightyPlaza @thejch and more :)
+  + New features:
+    - config: add wildcard handling in source= (#3276)
+    - doc: Add a CoC (#3366)
+    - dwindle: add proper movement for window move binds
+    - feat: add a new movewindoworgroup dispatcher (#3006)
+    - input/config: add button scroll lock (#3189)
+    - layout: add direction parameter to onWindowCreated and friends
+      (#3269)
+    - layout: add missing groupbar decoration to the window (#3235)
+    - master: Add mfact dispatcher (#3298)
+    - master: Add orientationcycle command on MasterLayout (#3128)
+    - master: Add smart resizing option for master layout (#3210)
+    - misc: add disable_hypr_chan option (#3343)
+    - socket2: add renameWorkspace event
+    - socket2: added "activespecial" IPC event (#3163)
+    - varlist: move to a separate header, add join
+    - windowrules: add % to resizeparams (#3246)
+    - windowrules: add on-screen constraint to wrv2 'move' (#3247)
+    - windowrules: add rule group to map windows grouped (#3279)
+  + Fixes:
+    - Vector2D: fix typo in include
+    - config: fix relative path resolution (#3308)
+    - dwindle: fix moving windows on special
+    - dwindle: fix: don't merge groups when moving window (#3302)
+    - fix(layout): remove focusWindow calls from
+      onWindowCreatedTiling (#3233)
+    - fix: focusWindow on hidden workspace triggers another
+      focusWindow. (#3216)
+    - fix: inconsistent behaviour where last workspace was not saved
+      (#3261)
+    - hyprctl: fix missing comma in getopt -j
+    - input: Various constraint handling fixes (#3381)
+    - input: minor constraint fixes
+    - internal: Fix wlr output management (#3234)
+    - master: Fix the wrong resize speed in master layout center
+      orientation (#3289)
+    - master: partially revert 0e64dd2 and fix the animation (#3327)
+    - refactor: fix missed middle() call in CKeybindManager
+    - renderer: Fix blur for passes set to 0. (#3181)
+    - renderer: fix missing dontRound check in renderSurface
+    - windowrules: Monitor rule fix (#3157)
+    - windowrules: fix workspace exec rule with special (#3316)
+    - windowrules: fix workspace rule separation
+  + Other:
+    - animatedvariable: don't reset timers on duplicate setters
+    - animationmgr: Optimize CAnimationManager::scheduleTick a bit.
+      (#3172)
+    - animationmgr: guard monitor ptr in animationSlide
+    - bezier: Optimize CBezierCurve::getYForPoint (#3321)
+    - bezier: Remove Todo about N-Point bezier curves. (#3352)
+    - build: use PCH to reduce compile time (#3095)
+    - config/input: Improve fallback behavior for unset device
+      config values (#3184)
+    - config: Integrate HASCONFIG into
+      CConfigManager::getConfigValueSafeDevice (#3195)
+    - config: disable blur special by default
+    - config: don't enable vrr 2 for maximized workspaces
+    - config: loosen restrictions around animation keywords
+    - hyprctl: Make device configs queryable (#3226)
+    - hyprctl: print monitor IDs as int64
+    - input: do not process mouse in unsafe state
+    - input: don't refocus on switched workspace on the same monitor
+    - input: don't warp region constraints
+    - input: guard constraint in unconstrainMouse
+    - input: lock focus to last surface on buttons held
+    - input: simplify fullscreen workspace input calculations
+    - internal: Make part of CCompositor::focusWindow a bit easier
+      to read. (#3356)
+    - internal: Remove all .c_str() calls when using std::vformat
+      (#3198)
+    - keybinds: Do not suppress pass and mouse release (#3219)
+    - keybinds: avoid onWindowRemoved & onWindowCreated when group
+      has one member (#3286)
+    - keybinds: focus last window on workspace change to another mon
+    - keybinds: ignore conditions on special release
+    - keybinds: ignore mods on release of special binds
+    - keybinds: implement pushactivetobottom dispacher (#3217)
+    - keybinds: movewindow to screen edge for floating windows
+      (#3245)
+    - keybinds: simulate movement on empty focus after workspace
+      change
+    - keybinds: track pressed special binds
+    - keybinds: unify changeworkspace dispatcher (#3250)
+    - keybinds: warp cursor to correct window in
+      moveWindowOutOfGroup (#3290)
+    - layout: Allow the layout to control how windows are raised in
+      groups (#3275)
+    - logging/format: use std::format_string to catch formatting
+      string errors at compile time (#3377)
+    - logging: implement std::formatter for some types (#3380)
+    - master: respect the resizing animation option in master layout
+      (#3300)
+    - monitor: ignore no-op workspace changes
+    - monitor: minor adjustments
+    - refactor: flatten nesting ifs in layout window creation method
+      (#3294)
+    - refactor: manually resets singletons (#3395)
+    - refactor: replace lambdas with CKeybindManager::switchToWindow
+      (#3229)
+    - refactor: replace manual iteration of CWindow with existing
+      methods (#3147)
+    - refactor: utilize 'middle()' method for window/montior center
+      (#3253)
+    - renderer: cleanup drm format selection
+    - renderer: damage monitor on special workspace change
+    - renderer: separate workspace window render logic
+    - screencopy: log renderer_begin_with_buffer failures
+    - socket2: emit lockgroups event (#3317)
+    - varlist: cleanup unintuitive string splitting (#3369)
+    - window: recalculate layout on swallow in map
+    - wlroots: disable wlr vulkan support
+    - xdgoutput: do not destroy resources on monitorRemoved
+    - xwayland: adjust coord calculation
+    - xwaylandmgr: find closest output in xwayland coord translation
+
+-------------------------------------------------------------------
 Sun Sep  3 17:30:30 UTC 2023 - Florian <packaging@sp1rit.anonaddy.me>
 
 - Update to version 0.29.1:
