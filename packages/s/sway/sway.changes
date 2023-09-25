@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 25 02:46:09 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- XDP 0.18.0 requires desktop and other environments to have their own portals.conf
+  by adding sway-portals.conf, we will avoid some of the problems for portals for
+  * File picker -> We default to xdp-gtk since xdp-wlr does not have it.
+  * For screenshots/screenshare, we use the wlr supplied interfaces
+
+  For more information, see https://github.com/flatpak/xdg-desktop-portal/issues/1077
+  and the release statement for 0.18.0
+
+  This is a workaround for boo#1215641
+
+-------------------------------------------------------------------
 Thu Jul  6 17:37:10 UTC 2023 - Joan Torres <joan.torres@suse.com>
 
 - Recommend xdg-desktop-portal-wlr instead of requires.

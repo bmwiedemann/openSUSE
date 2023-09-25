@@ -26,6 +26,7 @@ URL:            https://github.com/swaywm/sway
 Source0:        https://github.com/swaywm/sway/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/swaywm/sway/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
 Source2:        https://emersion.fr/.well-known/openpgpkey/hu/dj3498u4hyyarh35rkjfnghbjxug6b19#/%{name}.keyring
+Source3:        sway-portals.conf
 # PATCH-FIX-UPSTREAM dee032d0a0ecd958c902b88302dc59703d703c7f.patch -- ipc: add LIBINPUT_CONFIG_ACCEL_PROFILE_CUSTOM entry
 Patch0:         https://github.com/swaywm/sway/commit/dee032d0a0ecd958c902b88302dc59703d703c7f.patch
 
@@ -63,6 +64,9 @@ Recommends:     xorg-x11-server-wayland
 Recommends:     swaybar
 Recommends:     swaynag
 Recommends:     xdg-desktop-portal-wlr
+
+# For file picker and other stuff and for the sway-portal.conf
+Recommends:     xdg-desktop-portal-gtk
 
 %description
 "SirCmpwn's Wayland window manager" is a work in progress i3-compatible window
@@ -139,6 +143,9 @@ install -Dpm 0755 contrib/autoname-workspaces.py \
 install -Dpm 0755 contrib/inactive-windows-transparency.py \
     %{buildroot}%{_bindir}/inactive-windows-transparency
 
+# XDP >= 0.18.0 requires a portal for the environment and onwards
+install -Dpm 0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/ %{SOURCE3}
+
 %files
 %license LICENSE
 %doc README.md CONTRIBUTING.md
@@ -161,6 +168,8 @@ install -Dpm 0755 contrib/inactive-windows-transparency.py \
 %{_datadir}/fish/vendor_completions.d/swaymsg.fish
 %{_datadir}/zsh/site-functions/_sway
 %{_datadir}/zsh/site-functions/_swaymsg
+%dir %{_datadir}/xdg-desktop-portal
+%{_datadir}/xdg-desktop-portal/sway-portals.conf
 
 %files branding-upstream
 %dir %{_sysconfdir}/sway
