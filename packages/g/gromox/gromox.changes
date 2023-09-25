@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 23 20:54:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.13
+  * emsmdb: eliminiate duplicate message appearing when copying
+    to a private non-default / shared store
+  * EWS: support the {Create,Delete,Move,Copy,Update,Empty}Folder
+    operation(s)
+  * EWS: support the {Copy,Move}Item operation(s)
+
+-------------------------------------------------------------------
 Mon Sep  4 16:42:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.12

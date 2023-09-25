@@ -127,4 +127,12 @@
     <comment>- Update to release 2.12</comment>
     <requestid>1108945</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dcc5ada5fdd09db4e91c20edc7764071</srcmd5>
+    <version>2.13</version>
+    <time>1695664964</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.13</comment>
+    <requestid>1113238</requestid>
+  </revision>
 </revisionlist>
