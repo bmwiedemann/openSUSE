@@ -34,7 +34,7 @@ BuildArch:      noarch
 %bcond_with libalternatives
 %endif
 Name:           python-notebook%{psuffix}
-Version:        7.0.2
+Version:        7.0.4
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause
@@ -42,8 +42,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/notebook
 Source0:        https://files.pythonhosted.org/packages/source/n/notebook/notebook-%{version}.tar.gz
 Source100:      python-notebook-rpmlintrc
-# PATCH-FIX-UPSTREAM notebook-issue7014-fixtests.patch gh#jupyter/notebook#7014
-Patch0:         notebook-issue7014-fixtests.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch-jupyter-builder >= 0.2}
 BuildRequires:  %{python_module hatchling >= 1.11}
@@ -56,9 +54,6 @@ Requires:       (python-jupyter-server >= 2.4 with python-jupyter-server < 3)
 Requires:       (python-jupyterlab >= 4.0.2 with python-jupyterlab < 5)
 Requires:       (python-jupyterlab-server >= 2.22.1 with python-jupyterlab-server < 3)
 Requires:       (python-notebook-shim >= 0.2 with python-notebook-shim < 0.3)
-%if 0%{?python_version_nodots} < 39
-Requires:       python-importlib-resources >= 5
-%endif
 Provides:       python-jupyter_notebook = %{version}-%{release}
 Obsoletes:      python-jupyter_notebook < %{version}-%{release}
 %if !%{with test}
@@ -75,9 +70,8 @@ Requires(postun):update-alternatives
 %endif
 %endif
 %if %{with test}
+BuildRequires:  %{python_module importlib_resources >= 5 if %python-base < 3.10}
 BuildRequires:  %{python_module ipykernel}
-# See Patch0
-BuildRequires:  %{python_module importlib_resources >= 5}
 BuildRequires:  %{python_module jupyter-server-test >= 2.4.0 with %python-jupyter-server-test < 3}
 BuildRequires:  %{python_module jupyterlab-server-test >= 2.22.1 with %python-jupyterlab-server-test < 3}
 BuildRequires:  %{python_module nbval}

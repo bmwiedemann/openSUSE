@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 24 18:10:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.0.4
+  * Update to JupyterLab 4.0.6 #7049 (@jtpio)
+  * Fix app_version #7061 (@jtpio)
+  * fix trusted status indication #7036 (@adigaboy)
+- Release 7.0.3
+  * Require importlib_resources for testing on Python < 3.10 #7016 (@bnavigator)
+  * Fix Python 3.12 compatibility #6965 (@frenzymadness)
+- Drop notebook-issue7014-fixtests.patch
+
+-------------------------------------------------------------------
 Sat Aug 19 08:39:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.0.2

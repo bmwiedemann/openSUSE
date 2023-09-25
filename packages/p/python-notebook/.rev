@@ -279,4 +279,20 @@
     <comment></comment>
     <requestid>1106075</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>04536b91fd102fc83bf2323e26f077ab</srcmd5>
+    <version>7.0.4</version>
+    <time>1695665000</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.0.4
+  * Update to JupyterLab 4.0.6 #7049 (@jtpio)
+  * Fix app_version #7061 (@jtpio)
+  * fix trusted status indication #7036 (@adigaboy)
+- Release 7.0.3
+  * Require importlib_resources for testing on Python &lt; 3.10 #7016 (@bnavigator)
+  * Fix Python 3.12 compatibility #6965 (@frenzymadness)
+- Drop notebook-issue7014-fixtests.patch
+</comment>
+    <requestid>1113305</requestid>
+  </revision>
 </revisionlist>
