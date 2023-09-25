@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 24 18:39:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.0
+  * Add source to dist for sourcemaps #182 (@vidartf)
+  * Create awareness interface #171 (@hbcarlos)
+
+-------------------------------------------------------------------
 Tue Jun 13 20:44:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Kill nodejs in between pytest runs

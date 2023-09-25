@@ -59,4 +59,14 @@
   gh#jupyter-server/jupyter_ydoc#168</comment>
     <requestid>1092986</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>953dbe439a91a11b7590c7212ea3dfac</srcmd5>
+    <version>1.1.0</version>
+    <time>1695664996</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.1.0
+  * Add source to dist for sourcemaps #182 (@vidartf)
+  * Create awareness interface #171 (@hbcarlos) (forwarded request 1113298 from bnavigator)</comment>
+    <requestid>1113299</requestid>
+  </revision>
 </revisionlist>
