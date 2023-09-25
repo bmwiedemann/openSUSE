@@ -32,4 +32,15 @@
 </comment>
     <requestid>1063297</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>73d7fbf2ac5a7d63f8d8d1d78f4e3f76</srcmd5>
+    <version>0.6.0</version>
+    <time>1695664997</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.0
+  * Add test for Jep #65 #134 (@Hind-M)
+  * Drop Python 3.7 support #135 (@blink1073)
+</comment>
+    <requestid>1113301</requestid>
+  </revision>
 </revisionlist>

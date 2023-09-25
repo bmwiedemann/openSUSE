@@ -17,13 +17,13 @@
 
 
 Name:           python-jupyter-kernel-test
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        A tool for testing Jupyter kernels
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/jupyter_kernel_test
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_kernel_test/jupyter_kernel_test-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes

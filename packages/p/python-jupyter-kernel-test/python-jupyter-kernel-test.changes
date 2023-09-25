@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 24 18:02:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.0
+  * Add test for Jep #65 #134 (@Hind-M)
+  * Drop Python 3.7 support #135 (@blink1073)
+
+-------------------------------------------------------------------
 Sun Feb  5 16:05:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.5.0
