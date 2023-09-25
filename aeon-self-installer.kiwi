@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<image schemaversion="7.2" name="opensuse-aeon" displayname="openSUSE Aeon">
+    <description type="system">
+        <author>Richard Brown</author>
+        <contact>sysrich@linux.com</contact>
+	<specification>openSUSE Aeon</specification>
+    </description>
+    <preferences>
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="oem"
+            filesystem="btrfs"
+            firmware="uefi"
+            initrd_system="dracut"
+            installiso="true"
+            bootpartition="false"
+            bootkernel="custom"
+            devicepersistency="by-uuid"
+            btrfs_root_is_snapshot="true"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="true"
+        >
+            <bootloader name="grub2" console="gfxterm" timeout="10" />
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+		<volume name="usr/local"/>
+                 <volume name="boot/grub2/i386-pc"/>
+                <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
+                <volume name="boot/writable"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <oemconfig>
+                <oem-device-filter>/dev/ram</oem-device-filter>
+                <oem-multipath-scan>false</oem-multipath-scan>
+            </oemconfig>
+            <machine memory="512" guestOS="suse" HWversion="4">
+                <vmdisk id="0" controller="ide"/>
+                <vmnic driver="e1000" interface="0" mode="bridged"/>
+            </machine>
+        </type>
+    </preferences>
+    <repository type="rpm-md" >
+        <source path='obsrepositories:/'/>
+    </repository>
+    <packages type="image">
+        <package name="live-add-yast-repos"/>
+        <!-- Apparently zypper (?) doesn't like having multiple patterns with the same name,
+             so avoid using namedCollection at least for basesystem -->
+	<package name="patterns-aeon-base"/>
+	<package name="dracut-kiwi-oem-repart"/>
+        <package name="dracut-kiwi-oem-dump"/>
+    </packages>
+    <packages type="bootstrap">
+        <!-- Avoid that zypper picks the busybox-foo variant for those, that would fail later -->
+        <package name="coreutils"/>
+        <package name="gawk"/>
+        <package name="gzip"/>
+        <package name="hostname"/>
+        <!-- Avoid libressl -->
+        <package name="openssl"/>
+        <package name="filesystem"/>
+        <package name="glibc-locale-base"/>
+        <!-- So that https repos work for image package downloads -->
+        <package name="ca-certificates-mozilla"/>
+  </packages>
+</image>
