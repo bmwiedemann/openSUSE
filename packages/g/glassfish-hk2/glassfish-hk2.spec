@@ -347,6 +347,9 @@ rm hk2-runlevel/src/test/java/org/glassfish/hk2/runlevel/tests/listener/Listener
 %pom_remove_dep -r :jboss-logging
 %pom_remove_dep -r :classmate
 
+%pom_add_dep org.apache.maven:maven-core:3.9.0:provided maven-plugins/osgiversion-maven-plugin
+%pom_add_dep org.apache.maven:maven-core:3.9.0:provided maven-plugins/consolidatedbundle-maven-plugin
+
 # Disable security policy that interferes with tests
 %pom_xpath_remove "pom:plugin[pom:artifactId ='maven-surefire-plugin']/pom:configuration" hk2-api
 %pom_xpath_remove "pom:plugin[pom:artifactId ='maven-surefire-plugin']/pom:configuration" hk2-locator

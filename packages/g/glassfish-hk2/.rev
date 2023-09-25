@@ -47,4 +47,12 @@
     <comment>reproducibility improvements</comment>
     <requestid>1110690</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>548d8b3f2da1f512b73e1d555bc25623</srcmd5>
+    <version>2.5.0</version>
+    <time>1695665035</time>
+    <user>anag+factory</user>
+    <comment>Remove dependency on maven2</comment>
+    <requestid>1113415</requestid>
+  </revision>
 </revisionlist>
