@@ -1,7 +1,7 @@
 #
 # spec file for package maven-ant-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,12 +32,12 @@ BuildRequires:  mvn(org.apache.ant:ant)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
-BuildRequires:  mvn(org.apache.maven:maven-artifact:2.2.1)
+BuildRequires:  mvn(org.apache.maven:maven-artifact)
+BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-core)
-BuildRequires:  mvn(org.apache.maven:maven-model:2.2.1)
+BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-project)
-BuildRequires:  mvn(org.apache.maven:maven-settings:2.2.1)
+BuildRequires:  mvn(org.apache.maven:maven-settings)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(xalan:xalan)
 BuildRequires:  mvn(xml-apis:xml-apis)
@@ -55,6 +55,10 @@ API documentation for %{name}.
 
 %prep
 %setup -q
+
+# migrate to maven 3
+%pom_xpath_set //pom:mavenVersion 3.8.6
+%pom_change_dep :maven-project :maven-compat
 
 %build
 %{mvn_build} -f -- \
