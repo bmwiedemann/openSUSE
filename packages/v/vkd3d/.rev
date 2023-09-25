@@ -111,4 +111,41 @@
     <comment></comment>
     <requestid>1104174</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>10001b4d082a4f9e52e98cb2649cb99c</srcmd5>
+    <version>1.9</version>
+    <time>1695665022</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.9:
+  - libvkd3d
+    Copying between depth/stencil and colour formats in
+    ID3D12GraphicsCommandList::CopyResource() is supported.
+    The ID3D12Fence1 interface is supported.
+  - libvkd3d-shader
+    vkd3d_shader_scan() supports retrieving descriptor information for d3dbc'
+    shaders. This is one of the requirements for eventual SPIR-V generation
+    from d3dbc' sources.
+    New features for the HLSL source type:
+    Support for the following intrinsic functions: clip(), ddx_coarse(),
+    ddy_coarse(), ddx_fine(), ddy_fine(), tex1D(), tex2D(), texCUBE(), and
+    tex3D()
+    Constant folding support for more expression types. In particular:
+    comparison operators, floating-point min(), max(), logical and' and or',
+    dot products, square roots and logarithms
+    Support for multi-sample texture object declarations without explicit
+    sample counts in shader model 4.1 and later shaders.
+    Support for using constant expressions as sample counts in multi-sample
+    texture object declarations.
+    Support for variable initialisers using variables declared earlier in the
+    same declaration list. E.g., `float a = 1, b = a, c = b + 1;'.
+    The GetDimensions() texture object method is implemented.
+    Matrix swizzles are implemented.
+    Parser support for if-statement attributes like [branch]' and [flatten]'.
+    Support for the `inline' function modifier.
+    Previously, vkd3d_shader_compile() would in some cases return VKD3D_OK
+    despite compilation failing when targeting legacy Direct3D bytecode. These
+    cases have been fixed.
+    Various HLSL preprocessor fixes for edge cases related to stringification. (forwarded request 1113211 from tobijk)</comment>
+    <requestid>1113366</requestid>
+  </revision>
 </revisionlist>

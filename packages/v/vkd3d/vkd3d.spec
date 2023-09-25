@@ -34,7 +34,7 @@ URL:            https://winehq.org/
 Summary:        Direct3D 12 to Vulkan translation library
 License:        LGPL-2.1-or-later
 Group:          System/X11/Utilities
-Version:        1.8
+Version:        1.9
 Release:        0
 Source0:        https://dl.winehq.org/vkd3d/source/vkd3d-%version.tar.xz
 Source1:        https://dl.winehq.org/vkd3d/source/vkd3d-%version.tar.xz.sign
@@ -124,6 +124,7 @@ rm %buildroot/%_libdir/*.la
 %_libdir/pkgconfig/libvkd3d-shader.pc
 %_libdir/pkgconfig/libvkd3d-utils.pc
 %_bindir/vkd3d-compiler
+%_bindir/vkd3d-dxbc
 
 %post -n libvkd3d%{major} -p /sbin/ldconfig
 %postun -n libvkd3d%{major} -p /sbin/ldconfig
