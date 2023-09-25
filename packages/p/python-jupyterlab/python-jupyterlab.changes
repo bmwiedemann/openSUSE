@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Sep 23 09:48:09 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.6
+  ## Enhancements made
+  * Add more LSP request types #15064 (@krassowski)
+  * Expose processedItemsCache as a protected in CompleterModel
+    #15025 (@krassowski)
+  * Fix filebrowser.open and add ability to provide a factory
+    #14983 (@fcollonval)
+  * Use config compatible with notebook 7 #14978 (@fcollonval)
+  ## Bugs fixed
+  * Fix return type of getMimeTypeByLanguage() #15101 (@krassowski)
+  * Fix documentation panel display logic of the completer #15106
+    (@trungleduc)
+  * Check applicable provider in ProviderReconciliator #15094
+    (@trungleduc)
+  * Completer: switch renderer & model on update, update on
+    providers change #15065 (@krassowski)
+  * Fix _updateConstraints missing protected/private classifier.
+    #15066 (@krassowski)
+  * HoverBox: adjust right when moving node to fit within window
+    #15052 (@krassowski)
+  * fixes codemirror settings #15009 (@andrewfulton9)
+  * Pass completion context to shouldShowContinuousHint() #15015
+    (@krassowski)
+  * Fix translation syntax to extract it by the parser #14979
+    (@fcollonval)
+  * added title to Close tab icon #14973 (@j264415)
+  ## Maintenance and upkeep improvements
+  * Install playwright browser in jupyterlab.browser_check #15117
+    (@brichet)
+  * Enable Playwright trace #15087 (@jtpio)
+  * Bump ruff from 0.0.282 to 0.0.286 #15056 (@dependabot[bot])
+  * React on galata update comment, fix binder URL in docs #15070
+    (@krassowski)
+  * Deprecate LSP adapter getEditorIndexAt() method #15028
+    (@krassowski)
+  * Fix pepy.tech links #14982 (@fcollonval)
+  * simplify binder python baseline #14971 (@bollwyvl)
+  * Restore welcome test #14946 (@fcollonval)
+  * Bump black[jupyter] from 23.3.0 to 23.7.0 #14893
+    (@dependabot[bot])
+  ## API and Breaking Changes
+  * Check applicable provider in ProviderReconciliator #15094
+    (@trungleduc)
+
+-------------------------------------------------------------------
 Thu Aug 17 14:25:22 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Demote primary flavor recommendation to suggestion

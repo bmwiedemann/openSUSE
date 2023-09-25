@@ -526,4 +526,41 @@
     <comment></comment>
     <requestid>1104431</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f9c57288fadecb02773f23de2102ec38</srcmd5>
+    <version>4.0.6</version>
+    <time>1695664932</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.6
+  ## Enhancements made
+  * Add more LSP request types #15064 (@krassowski)
+  * Expose processedItemsCache as a protected in CompleterModel
+    #15025 (@krassowski)
+  * Fix filebrowser.open and add ability to provide a factory
+    #14983 (@fcollonval)
+  * Use config compatible with notebook 7 #14978 (@fcollonval)
+  ## Bugs fixed
+  * Fix return type of getMimeTypeByLanguage() #15101 (@krassowski)
+  * Fix documentation panel display logic of the completer #15106
+    (@trungleduc)
+  * Check applicable provider in ProviderReconciliator #15094
+    (@trungleduc)
+  * Completer: switch renderer &amp; model on update, update on
+    providers change #15065 (@krassowski)
+  * Fix _updateConstraints missing protected/private classifier.
+    #15066 (@krassowski)
+  * HoverBox: adjust right when moving node to fit within window
+    #15052 (@krassowski)
+  * fixes codemirror settings #15009 (@andrewfulton9)
+  * Pass completion context to shouldShowContinuousHint() #15015
+    (@krassowski)
+  * Fix translation syntax to extract it by the parser #14979
+    (@fcollonval)
+  * added title to Close tab icon #14973 (@j264415)
+  ## Maintenance and upkeep improvements
+  * Install playwright browser in jupyterlab.browser_check #15117
+    (@brichet)
+  * Enable Playwright trace #15087 (@jtpio)</comment>
+    <requestid>1113181</requestid>
+  </revision>
 </revisionlist>
