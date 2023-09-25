@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 23 07:06:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.2.0:
+  * text user inerface improvements
+  * improve recursive search performance
+  * improve compatibility with GNU grep
+  * improve detection of special devices to avoid searching them
+
+-------------------------------------------------------------------
 Mon Sep 18 18:17:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.1.0:
