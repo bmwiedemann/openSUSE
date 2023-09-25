@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 15 12:29:49 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.2+git7:
+  * Try the KIWI selfinstall .iso as fallback config source (jsc#PED-6587, jsc#SMO-271)
+
+-------------------------------------------------------------------
 Tue Sep 12 15:04:25 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.2+git6:
