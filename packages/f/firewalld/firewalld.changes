@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 25 01:29:47 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- python3-dbus isn't correct either, it's python3-dbus-python. 
+
+-------------------------------------------------------------------
+Thu Sep 21 06:26:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct Requires, python3-slip-dbus -> python3-dbus. 
+
+-------------------------------------------------------------------
 Tue Aug 22 10:47:06 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
 - fix(cli): all --list-all-zones output identical (boo#1213609) 

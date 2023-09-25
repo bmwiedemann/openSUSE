@@ -78,9 +78,9 @@ firewall with a D-Bus interface.
 Summary:        Python3 bindings for FirewallD
 Group:          Productivity/Networking/Security
 Requires:       dbus-1-python3
+Requires:       python3-dbus-python
 Requires:       python3-decorator
 Requires:       python3-gobject
-Requires:       python3-slip-dbus
 
 %description -n python3-firewall
 The python3 bindings for firewalld.
