@@ -36,6 +36,7 @@ Requires:       grep
 Requires:       mailx
 Requires:       perl
 Requires:       perl-Date-Manip
+Requires:       perl-HTML-Parser
 Requires:       sh-utils
 Requires:       textutils
 BuildArch:      noarch
