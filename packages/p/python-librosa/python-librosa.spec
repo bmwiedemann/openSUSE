@@ -40,7 +40,7 @@ BuildRequires:  %{python_module msgpack >= 1.0}
 BuildRequires:  %{python_module numba >= 0.51.0}
 BuildRequires:  %{python_module numpy >= 1.22.3}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pooch >= 1.0 with %python-pooch < 1.7}
+BuildRequires:  %{python_module pooch >= 1.0}
 BuildRequires:  %{python_module scikit-learn >= 0.20.0}
 BuildRequires:  %{python_module scipy >= 1.2.0}
 BuildRequires:  %{python_module setuptools}
@@ -57,11 +57,11 @@ Requires:       python-lazy_loader >= 0.1
 Requires:       python-msgpack >= 1.0
 Requires:       python-numba >= 0.51.0
 Requires:       python-numpy >= 1.22.3
+Requires:       python-pooch >= 1.0
 Requires:       python-scikit-learn >= 0.20.0
 Requires:       python-scipy >= 1.2.0
 Requires:       python-soxr >= 0.3.2
 Requires:       python-typing_extensions >= 4.1.1
-Requires:       (python-pooch >= 1.0 with python-pooch < 1.7)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib >= 3.3.0}

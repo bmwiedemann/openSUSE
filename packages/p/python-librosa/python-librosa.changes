@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 24 17:38:22 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Remove pooch upper pin, upstream removed it already for last
+  version (gh#librosa/librosa#1727)
+
+-------------------------------------------------------------------
 Sun Aug 20 16:24:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.10.1
