@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 23 09:27:12 UTC 2023 - Dmitry Roshchin <dmitry_r@opensuse.org>
+
+- Updated to 4.10.0
+  * Stories for Channels.
+  * Reaction Stickers in Stories.
+- Drop 0005-qt6-fixes.patch
+- Drop 0006-sigc-track_obj.patch 
+
+-------------------------------------------------------------------
 Wed Sep 20 10:20:01 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to 4.9.9.

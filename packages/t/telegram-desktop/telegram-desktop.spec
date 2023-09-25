@@ -34,7 +34,7 @@
 %define qt_major_version 6
 
 Name:           telegram-desktop
-Version:        4.9.9
+Version:        4.10.0
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -61,9 +61,6 @@ Patch4:         0004-use-dynamic-x-libraries.patch
 # https://github.com/desktop-app/lib_base.git 3582bca53a1e195a31760978dc41f67ce44fc7e4
 # but tdesktop itself still falls short, and it looks to be something
 # that would affect all ILP32 platforms.
-# PATCH-FIX-OPENSUSE
-Patch5:         0005-qt6-fixes.patch
-Patch6:         0006-sigc-track_obj.patch
 ExcludeArch:    %ix86 aarch64_ilp32 ppc riscv32
 BuildRequires:  appstream-glib
 BuildRequires:  chrpath
@@ -88,7 +85,6 @@ BuildRequires:  glibc-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblz4-devel
-BuildRequires:  libwebrtc_audio_processing-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
@@ -108,6 +104,7 @@ BuildRequires:  cmake(Qt%{qt_major_version}Quick)
 BuildRequires:  cmake(Qt%{qt_major_version}Svg)
 BuildRequires:  cmake(Qt%{qt_major_version}WaylandClient)
 BuildRequires:  cmake(Qt%{qt_major_version}Widgets)
+BuildRequires:  pkgconfig(webrtc-audio-processing-1)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xdamage)
@@ -224,8 +221,6 @@ The service also provides APIs to independent developers.
 %patch1 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p0
-%patch6 -p0
 mkdir ../Libraries
 
 # If not TW, unpack rnnoise source
