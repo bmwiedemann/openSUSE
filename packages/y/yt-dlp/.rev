@@ -212,4 +212,12 @@
   * [bellmedia] Add support for cp24.com clip URLs (forwarded request 1110370 from dirkmueller)</comment>
     <requestid>1110391</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0cbe2c29c4bb77374f1b8e454be6f484</srcmd5>
+    <version>2023.09.24</version>
+    <time>1695664969</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2023.09.24</comment>
+    <requestid>1113250</requestid>
+  </revision>
 </revisionlist>

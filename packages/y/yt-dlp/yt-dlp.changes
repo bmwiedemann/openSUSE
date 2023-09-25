@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 24 02:41:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.09.24
+  * Extract subtitles from SMIL manifests
+  * fb: Add dash manifest URL
+  * crunchyroll: Remove initial state extraction
+  * youtube: Add player_params extractor arg
+
+-------------------------------------------------------------------
 Mon Sep 11 20:46:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - remove suggests on brotlicffi - this is only for != cpython

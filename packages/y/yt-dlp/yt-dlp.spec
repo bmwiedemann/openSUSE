@@ -17,7 +17,7 @@
 
 
 Name:           yt-dlp
-Version:        2023.07.06
+Version:        2023.09.24
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
 License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
@@ -26,7 +26,7 @@ URL:            https://github.com/yt-dlp/yt-dlp
 Source:         https://github.com/yt-dlp/yt-dlp/releases/download/%version/yt-dlp.tar.gz
 BuildRequires:  make >= 4
 %if 0%{?suse_version} > 1500
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.8
 %else
 %if 0%{?sle_version} > 150400
 BuildRequires:  python311-devel
@@ -42,7 +42,7 @@ BuildRequires:  zip
 BuildArch:      noarch
 Requires:       ffmpeg
 %if 0%{?suse_version} > 1500
-Requires:       python3
+Requires:       python3 >= 3.8
 Suggests:       python3-Brotli
 Suggests:       python3-certifi
 Suggests:       python3-mutagen
