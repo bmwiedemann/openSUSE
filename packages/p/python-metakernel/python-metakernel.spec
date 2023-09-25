@@ -17,7 +17,7 @@
 
 
 Name:           python-metakernel
-Version:        0.29.5
+Version:        0.30.1
 Release:        0
 Summary:        Metakernel for Jupyter
 License:        BSD-3-Clause

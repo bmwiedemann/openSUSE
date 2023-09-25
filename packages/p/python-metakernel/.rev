@@ -162,4 +162,18 @@
     <comment></comment>
     <requestid>1102512</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2e5dc09bd57814eccb8e4d0c107f90ec</srcmd5>
+    <version>0.30.1</version>
+    <time>1695664999</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.30.1
+  * Adapt to Python 3.12.0rc2 #272 (@ellert)
+- Release 0.30.0
+  * Updated dot magic, with tests #268 (@dsblank)
+  * Update tests.yml #270 (@dsblank)
+  * Fix magic completion #269 (@dsblank)
+</comment>
+    <requestid>1113303</requestid>
+  </revision>
 </revisionlist>
