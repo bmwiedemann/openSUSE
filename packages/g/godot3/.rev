@@ -23,4 +23,13 @@
     <comment>Require the mbedtls-devel version to be lower than 3</comment>
     <requestid>1084773</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b596d01bb93948cb617208c6b758dcbc</srcmd5>
+    <version>3.5.2</version>
+    <time>1695664994</time>
+    <user>anag+factory</user>
+    <comment>- removed scons_regression.patch - scons 4.5.2 is deployed
+- added improve_linker_detection.patch for pck embedding with runner</comment>
+    <requestid>1113294</requestid>
+  </revision>
 </revisionlist>

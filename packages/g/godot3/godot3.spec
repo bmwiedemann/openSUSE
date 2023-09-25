@@ -46,7 +46,8 @@ Patch1:         certs_fallback.patch
 Patch2:         tinyexr_thirdparty_upstream.patch
 # branch specific seperate config files and so on
 Patch3:         rename_to_godot3.patch
-Patch4:         scons_regression.patch
+# better linker version detection for pck embedding with runner
+Patch4:         improve_linker_detection.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
