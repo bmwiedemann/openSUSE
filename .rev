@@ -148,4 +148,15 @@ Thanks for the SR</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>897279</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>244715007de4d8adc679b0cc3e652ed1</srcmd5>
+    <version>5.8.0</version>
+    <time>1695664948</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.8.0
+  * GObject: Handle versions of GLib without GBindingGroup 
+  * switch to mozjs102
+</comment>
+    <requestid>1113201</requestid>
+  </revision>
 </revisionlist>

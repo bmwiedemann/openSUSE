@@ -1,7 +1,7 @@
 #
 # spec file for package cjs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define typelib typelib-1_0-CjsPrivate-1_0
 %define __requires_exclude_from ^.*installed-tests.*$
 Name:           cjs
-Version:        5.0.0
+Version:        5.8.0
 Release:        0
 Summary:        JavaScript module used by Cinnamon
 License:        (GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later) AND MIT
@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 BuildRequires:  pkgconfig(libffi)
-BuildRequires:  pkgconfig(mozjs-78)
+BuildRequires:  pkgconfig(mozjs-102)
 BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(sysprof-capture-4)
 
@@ -84,15 +84,6 @@ Cinnamon Desktop.
 
 This package contains development files for cjs.
 
-%package tests
-Summary:        Tests for the cjs package
-Group:          System/GUI/Other
-Requires:       %{name} = %{version}
-
-%description tests
-The cjs-tests package contains tests that can be used to verify
-the functionality of the installed cjs package.
-
 %prep
 %setup -q
 
@@ -111,7 +102,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING*
-%doc README debian/changelog
+%doc README.md debian/changelog
 %{_bindir}/%{name}*
 
 %files -n %{soname}%{sover}
@@ -127,10 +118,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{soname}.so
 %{_libdir}/pkgconfig/%{name}*.pc
 %{_datadir}/%{name}-1.0/
-
-%files tests
-%{_libdir}/%{name}/installed-tests/
-%{_datadir}/installed-tests/
-%{_datadir}/glib-2.0/schemas/org.cinnamon.CjsTest.gschema.xml
 
 %changelog
