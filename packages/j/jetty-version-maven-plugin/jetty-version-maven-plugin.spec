@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-version-maven-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@ BuildRequires:  maven-local
 BuildRequires:  xz
 BuildRequires:  mvn(org.apache.commons:commons-lang3)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
+BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-project)
 BuildRequires:  mvn(org.eclipse.jetty.toolchain:jetty-toolchain:pom:)
 BuildArch:      noarch
 
@@ -47,6 +47,8 @@ Group:          Documentation/HTML
 
 %prep
 %setup -q
+%pom_change_dep org.apache.maven::2.2.1 ::3.9.0:provided
+%pom_change_dep :maven-project :maven-core
 
 # we have java.util stuff in JVM directly now
 # https://bugs.eclipse.org/bugs/show_bug.cgi?id=401163
