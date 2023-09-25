@@ -1,7 +1,7 @@
 #
 # spec file for package buildnumber-maven-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,10 +42,10 @@ BuildRequires:  mvn(org.apache.maven.scm:maven-scm-provider-perforce)
 BuildRequires:  mvn(org.apache.maven.scm:maven-scm-provider-starteam)
 BuildRequires:  mvn(org.apache.maven.scm:maven-scm-provider-svn-commons)
 BuildRequires:  mvn(org.apache.maven.scm:maven-scm-provider-svnexe)
+BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-project)
-BuildRequires:  mvn(org.apache.maven:maven-settings:2.0.6)
+BuildRequires:  mvn(org.apache.maven:maven-settings)
 BuildRequires:  mvn(org.codehaus.mojo:mojo-parent:pom:)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
@@ -79,15 +79,21 @@ API documentation for %{name}.
 %setup -q
 cp -p %{SOURCE1} .
 
+# migrate to maven 3
+%pom_xpath_set pom:properties/pom:maven.api.version 3.8.6
+%pom_change_dep :maven-project :maven-compat
+
+%pom_xpath_set pom:properties/pom:maven.compiler.source 1.8
+%pom_xpath_set pom:properties/pom:maven.compiler.target 1.8
+%pom_xpath_set pom:properties/pom:mojo.java.target 8
+
 %pom_remove_dep com.google.code.maven-scm-provider-svnjava:maven-scm-provider-svnjava
 %pom_remove_dep org.tmatesoft.svnkit:svnkit
 %pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :maven-invoker-plugin
 
 %build
-%{mvn_build} -f -- \
-	-Dsource=8 -Dmaven.compiler.source=8 \
-	-Dmaven.compiler.target=8 -Dmojo.java.target=8
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
