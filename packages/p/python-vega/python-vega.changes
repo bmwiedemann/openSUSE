@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 23 08:50:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Disable altair entrypoint tests: altair 5 removed the vega
+  wrappers
+  * gh#altair-viz/altair#2829
+  * gh#vega/ipyvega#509
+
+-------------------------------------------------------------------
 Wed May 31 10:14:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Replace poetry build backend with poetry-core

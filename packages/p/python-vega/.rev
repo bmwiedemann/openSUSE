@@ -102,4 +102,15 @@
 </comment>
     <requestid>1089991</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>ff52d755c1baf795ef91d42f19a5cf46</srcmd5>
+    <version>4.0.0</version>
+    <time>1695664928</time>
+    <user>anag+factory</user>
+    <comment>- Disable altair entrypoint tests: altair 5 removed the vega
+  wrappers
+  * gh#altair-viz/altair#2829
+  * gh#vega/ipyvega#509</comment>
+    <requestid>1113173</requestid>
+  </revision>
 </revisionlist>

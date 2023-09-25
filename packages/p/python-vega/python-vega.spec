@@ -43,7 +43,6 @@ Provides:       jupyter-vega = %{version}-%{release}
 Obsoletes:      jupyter-vega < %{version}-%{release}
 %endif
 # SECTION test requirements
-BuildRequires:  %{python_module altair >= 4.0.1}
 BuildRequires:  %{python_module ipytablewidgets >= 0.3.0}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module jupyterlab}
@@ -71,7 +70,9 @@ sed -i s/poetry.masonry/poetry.core.masonry/ pyproject.toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# altair 5 not compatible with vega
+ignoretests="--ignore vega/tests/test_entrypoint.py"
+%pytest $ignoretests
 
 %files %{python_files}
 %license LICENSE
