@@ -996,4 +996,34 @@ run -osc service localrun format_spec_file to fix copyright
     than the (empty) title (#2451) (blankie)</comment>
     <requestid>1095315</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8bf2597204c1953ccc0fac58972b67fb</srcmd5>
+    <version>2.33</version>
+    <time>1695665017</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.33:
+  Added:
+  * Support for 0..9 keys in dialog overview. If you never used dialog
+    overview, it's invoked by V key by default and is very useful if you also
+    employ ^V/^G/^X to keep multiple dialogs open within Newsboat (Dennis
+    van der Schagt)
+  * Support importing OPML 2.0 with --import-from-opml (#2448)
+  Changed:
+  * Image enclosures are now displayed at the start of the article. This improves
+    support for Mastodon feeds (#2305, #2495)
+  * In feeds that lack title and whose URLs end entirely in digits, use the
+    description as a title instead. This improves support for Mastodon feeds and
+    hopefully doesn't break others (#2530)
+  * Taught contrib/image-preview/nbrun to take Newsboat's CLI arguments
+  * Updated translations
+  * Bumped minimum supported Rust version to 1.68.2
+  Fixed:
+  * Hanging if scripts used by filter:, bookmark-cmd, or html-renderer
+    process their input in a streaming fashion rather than reading it entirely
+    before outputting anything
+  * Slowness in opening and navigating feeds that contain many items (#229)
+  * --export-to-opml producing invalid OPML documents (missing text attribute)
+    (#2518)</comment>
+    <requestid>1113348</requestid>
+  </revision>
 </revisionlist>
