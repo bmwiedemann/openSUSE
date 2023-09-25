@@ -17,27 +17,27 @@
 
 
 Name:           python-anywidget
-Version:        0.6.3
+Version:        0.6.5
 Release:        0
 Summary:        Custom jupyter widgets made easy
 License:        MIT
 URL:            https://github.com/manzt/anywidget
 Source:         https://files.pythonhosted.org/packages/source/a/anywidget/anywidget-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  jupyter-rpm-macros
+BuildRequires:  %{python_module hatch-jupyter-builder}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module jupyterlab >= 3}
-BuildRequires:  %{python_module hatch-jupyter-builder}
 BuildRequires:  %{python_module pip}
+BuildRequires:  jupyter-rpm-macros
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module ipywidgets >= 7.6.0}
-BuildRequires:  %{python_module psygnal >= 0.8.1}
-BuildRequires:  %{python_module typing-extensions >= 4.2.0}
 BuildRequires:  %{python_module msgspec}
+BuildRequires:  %{python_module psygnal >= 0.8.1}
 BuildRequires:  %{python_module pydantic}
-BuildRequires:  %{python_module watchfiles}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing-extensions >= 4.2.0}
+BuildRequires:  %{python_module watchfiles}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-ipywidgets >= 7.6.0
@@ -90,13 +90,13 @@ This package provides the jupyter notebook extensions.
 %pytest
 
 %files %{python_files}
-%doc CHANGELOG.md README.md
+%doc README.md
 %license LICENSE
 %{python_sitelib}/anywidget
 %{python_sitelib}/anywidget-%{version}.dist-info
 
 %files -n jupyter-anywidget
-%doc CHANGELOG.md README.md
+%doc README.md
 %license LICENSE
 %_jupyter_config %{_jupyter_nb_notebook_confdir}/anywidget.json
 %{_jupyter_prefix}/labextensions/anywidget

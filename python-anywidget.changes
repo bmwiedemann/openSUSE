@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 23 16:38:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.5
+  * fix: disable auto-reloading in dist-packages (#276)
+  * When the package is located in dist-packages, auto-reloading is
+    now disabled. This prevents unnecessary warnings when the
+    package is used in environments like Google Colab which are
+    likely non-development installs.
+- Release 0.6.4
+  * fix: Keep support for binary traitlets (#274)
+  * Uses structuredClone to ensure binary data is automatically
+    serialized, correctly. Applies changes reverted in ipywidgets
+    8.1.1.
+
+-------------------------------------------------------------------
 Mon Sep  4 02:51:32 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.6.3. 
