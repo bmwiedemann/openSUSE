@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 14 07:58:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-properties.patch
+    + use SOURCE_DATE_EPOCH for timestamp in the generated
+      properties files
+
+-------------------------------------------------------------------
 Wed Aug 23 06:27:50 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-17.0.8.1+1 (August 2023 emergency
