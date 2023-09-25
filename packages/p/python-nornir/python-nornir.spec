@@ -18,7 +18,7 @@
 
 
 Name:           python-nornir
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        Network automation framework written in Python
 License:        Apache-2.0
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
+Requires:       python-mypy_extensions
 Requires:       python-ruamel.yaml >= 0.17
 # SECTION test requirements
 BuildRequires:  %{python_module decorator}
