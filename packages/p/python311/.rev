@@ -1165,4 +1165,13 @@ C API
 </comment>
     <requestid>1109225</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>35bf6e32ad8b7a7816539e655fcef7ff</srcmd5>
+    <version>3.11.5</version>
+    <time>1695664836</time>
+    <user>anag+factory</user>
+    <comment>      characters without truncating the path (bsc#1214693,
+      CVE-2023-41105).</comment>
+    <requestid>1113067</requestid>
+  </revision>
 </revisionlist>

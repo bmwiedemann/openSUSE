@@ -50,7 +50,8 @@ Wed Sep  6 07:52:11 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
     - gh-107963: Fix multiprocessing.set_forkserver_preload() to check
       the given list of modules names. Patch by Dong-hee Na.
     - gh-106242: Fixes os.path.normpath() to handle embedded null
-      characters without truncating the path.
+      characters without truncating the path (bsc#1214693,
+      CVE-2023-41105).
     - gh-107845: tarfile.data_filter() now takes the location of
       symlinks into account when determining their target, so it will
       no longer reject some valid tarballs with
