@@ -29,10 +29,8 @@ Source0:        https://github.com/vapoursynth/vapoursynth/archive/R%{version}.t
 Patch0:         vapoursynth-version.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python3-Cython
 BuildRequires:  pkgconfig(Magick++) >= 7.0
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libass)
@@ -51,6 +49,14 @@ Obsoletes:      plugin-removegrain
 Obsoletes:      plugin-subtext
 Obsoletes:      plugin-vinverse
 Obsoletes:      plugin-vivtc
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc11-PIE
+BuildRequires:  gcc11-c++
+BuildRequires:  python3-Cython
+%else
+BuildRequires:  gcc-c++
+BuildRequires:  python3-Cython0
+%endif
 
 %description
 VapourSynth is a library for video manipulation. It has a core
@@ -103,6 +109,11 @@ VapourSynth.
 %patch0 -p1
 
 %build
+%if 0%{?suse_version} <= 1500
+export CC="gcc-11"
+export CXX="g++-11"
+%endif
+
 autoreconf -fiv
 %configure \
   --disable-static
