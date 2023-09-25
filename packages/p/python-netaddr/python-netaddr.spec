@@ -1,7 +1,7 @@
 #
 # spec file for package python-netaddr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-netaddr
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Pythonic manipulation of IPv4, IPv6, CIDR, EUI and MAC network addresses
 License:        BSD-3-Clause
@@ -83,7 +83,7 @@ sed -i "1d" netaddr/{cli,ip/iana,eui/ieee,tests/__init__}.py # Fix non-executabl
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS CHANGELOG COPYRIGHT README.rst
-%{python_sitelib}/*
+%{python_sitelib}/netaddr*
 %{_bindir}/netaddr-%{python_bin_suffix}
 %python_alternative %{_bindir}/netaddr
 
