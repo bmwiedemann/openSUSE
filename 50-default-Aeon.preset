@@ -1,0 +1,19 @@
+enable transactional-update.timer
+enable create-dirs-from-rpmdb.service
+enable rebootmgr.service
+enable issue-add-ssh-keys.service
+enable sshd.service
+enable cloud-config.service
+enable cloud-final.service
+enable cloud-init-local.service
+enable cloud-init.service
+enable health-checker.service
+enable kubelet.service
+enable container-image-prune.timer
+disable purge-kernels.service
+# optional packages
+enable lastlog2-import.service
+enable man-db-create.service
+# Aeon packages
+enable systemd-homed.service
+enable zramswap.service

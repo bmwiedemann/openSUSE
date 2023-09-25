@@ -1,0 +1,2 @@
+enable transactional-update-notifier.service
+enable distrobox-upgrade-all.timer
