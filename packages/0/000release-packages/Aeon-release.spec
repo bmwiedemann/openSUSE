@@ -1,5 +1,5 @@
 #
-# spec file for package openSUSE-MicroOS-release.spec
+# spec file for package openSUSE-Aeon-release.spec
 #
 # Copyright (c) 2020 SUSE LLC
 #
@@ -16,10 +16,10 @@
 #
 
 
-Name:           MicroOS-release
+Name:           Aeon-release
 Version:        20230925
 Release:        0
-Summary:        openSUSE MicroOS 
+Summary:        openSUSE Aeon 
 License:        GPL-2.0-or-later
 Group:          System/Fhs
 Source100:      weakremovers.inc
@@ -29,25 +29,20 @@ PreReq:         glibc >= 2.19
 # in rare cases, 'ln' is not found...
 Requires(post): coreutils
 Suggests:       branding-openSUSE
-Suggests:       distribution-logos-openSUSE-MicroOS
+Suggests:       distribution-logos-openSUSE-Aeon
 Suggests:       openSUSE-build-key
-Suggests:       openSUSE-repos-MicroOS
+Suggests:       openSUSE-repos-Aeon
 Conflicts:      distribution-release
 Conflicts:      kernel < 4.4
 Provides:       distribution-release
-# MicroOS is a SUSE Linux type distribution
+# Aeon is a SUSE Linux type distribution
 Provides:       suse-release = %{version}-%{release}
 Provides:       suse-release-oss = %{version}-%{release}
-# MicroOS-release replaces Tumbleweed-Kubic-release
-Provides:       openSUSE-Tumbleweed-Kubic-release
-Obsoletes:      openSUSE-Tumbleweed-Kubic-release <= 20190324
-Provides:       openSUSE-MicroOS-release = %{version}
-Obsoletes:      openSUSE-MicroOS-release <= %{version}
 # Give zypp a hint that this product must be kept up-to-date using zypper dup, not up (boo#1061384)
 Provides:       product-update() = dup
 # With more than one product in the FTP tree, yast needs to know which products are installable
 # The name is referenced by the control file as well
-Provides:       system-installation() = MicroOS
+Provides:       system-installation() = Aeon
 # bnc#826592
 Provides:       weakremover(kernel-default) < 3.11
 Provides:       weakremover(kernel-desktop) < 4.2
@@ -176,51 +171,35 @@ Provides:       weakremover(openssl-debuginfo)
 ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
 %include %{SOURCE100}
 Provides:       %name-%version
-Provides:       product() = MicroOS
-Provides:       product(MicroOS) = 20230925-0
-Provides:       product-label() = openSUSE%20MicroOS
-Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Amicroos%3A20230925
+Provides:       product() = Aeon
+Provides:       product(Aeon) = 20230925-0
+Provides:       product-label() = openSUSE%20Aeon
+Provides:       product-cpeid() = cpe%3A%2Fo%3Aopensuse%3Aaeon%3A20230925
 Provides:       product-url(releasenotes) = http%3A%2F%2Fdoc.opensuse.org%2Frelease%2Dnotes%2Fx86_64%2FopenSUSE%2FTumbleweed%2Frelease%2Dnotes%2DopenSUSE.rpm
 Provides:       product-endoflife()
-Requires:       product_flavor(MicroOS)
+Requires:       product_flavor(Aeon)
 
 
 
 %description
-openSUSE MicroOS combines the benefits of a rolling OS with a read-only root filesystem with transactional updates. It is a modern Linux Operating System, designed for single-service installations, such as container hosts. It is optimized for large, clustered deployments.
-        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and reliable distribution.
+openSUSE Aeon bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
+        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and opinionated desktop.
 
-%package -n MicroOS-release-dvd
-License:        BSD-3-Clause
-Group:          System/Fhs
-Provides:       product_flavor()
-Provides:       flavor(dvd)
-Provides:       product_flavor(MicroOS) = 20230925-0
-Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
-
-%description dvd
-openSUSE MicroOS combines the benefits of a rolling OS with a read-only root filesystem with transactional updates. It is a modern Linux Operating System, designed for single-service installations, such as container hosts. It is optimized for large, clustered deployments.
-        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and reliable distribution.
-
-%files dvd
-%defattr(-,root,root)
-%doc %{_defaultdocdir}/MicroOS-release-dvd
-
-%package -n MicroOS-release-appliance
+%package -n Aeon-release-appliance
 License:        BSD-3-Clause
 Group:          System/Fhs
 Provides:       product_flavor()
 Provides:       flavor(appliance)
-Provides:       product_flavor(MicroOS) = 20230925-0
-Summary:        openSUSE MicroOS%{?betaversion: %{betaversion}}
+Provides:       product_flavor(Aeon) = 20230925-0
+Summary:        openSUSE Aeon%{?betaversion: %{betaversion}}
 
 %description appliance
-openSUSE MicroOS combines the benefits of a rolling OS with a read-only root filesystem with transactional updates. It is a modern Linux Operating System, designed for single-service installations, such as container hosts. It is optimized for large, clustered deployments.
-        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and reliable distribution.
+openSUSE Aeon bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
+        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and opinionated desktop.
 
 %files appliance
 %defattr(-,root,root)
-%doc %{_defaultdocdir}/MicroOS-release-appliance
+%doc %{_defaultdocdir}/Aeon-release-appliance
 
 
 
@@ -238,26 +217,26 @@ fi
 %install
 mkdir -p %{buildroot}%{_sysconfdir} %{buildroot}%{_prefix}/lib/issue.d %{buildroot}/run
 
-echo -e "\nWelcome to openSUSE MicroOS (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
+echo -e "\nWelcome to openSUSE Aeon (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
 echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-OS
 
 VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
 # note: VERSION is an optional field and has no meaning other than informative on a rolling distro
 # We do thus not add it to the os-release file
 cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
-NAME="openSUSE MicroOS"
+NAME="openSUSE Aeon"
 # VERSION="%{version}%{?betaversion: %{betaversion}}"
-ID="opensuse-microos"
-ID_LIKE="suse opensuse opensuse-tumbleweed"
+ID="opensuse-aeon"
+ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos"
 VERSION_ID="$VERSION_ID"
-PRETTY_NAME="openSUSE MicroOS"
+PRETTY_NAME="openSUSE Aeon"
 ANSI_COLOR="0;32"
-CPE_NAME="cpe:/o:opensuse:microos:%{version}"
+CPE_NAME="cpe:/o:opensuse:aeon:%{version}"
 BUG_REPORT_URL="https://bugzilla.opensuse.org"
 SUPPORT_URL="https://bugs.opensuse.org"
-HOME_URL="https://www.opensuse.org/"
-DOCUMENTATION_URL="https://en.opensuse.org/Portal:MicroOS"
-LOGO="distributor-logo-MicroOS"
+HOME_URL="https://www.aeondesktop.org/"
+DOCUMENTATION_URL="https://en.opensuse.org/Portal:Aeon"
+LOGO="distributor-logo-Aeon"
 EOF
 ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
 
@@ -271,17 +250,17 @@ for i in *; do
 done
 
 mkdir -p %{buildroot}%{_sysconfdir}/products.d
-cat >%{buildroot}%{_sysconfdir}/products.d/MicroOS.prod << EOF
+cat >%{buildroot}%{_sysconfdir}/products.d/Aeon.prod << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <product schemeversion="0">
   <vendor>openSUSE</vendor>
-  <name>MicroOS</name>
+  <name>Aeon</name>
   <version>20230925</version>
   <release>0</release>
   <endoflife></endoflife>
   <arch>%{_target_cpu}</arch>
-  <cpeid>cpe:/o:opensuse:microos:20230925</cpeid>
-  <productline>MicroOS</productline>
+  <cpeid>cpe:/o:opensuse:aeon:20230925</cpeid>
+  <productline>Aeon</productline>
   <register>
     <pool>
     </pool>
@@ -290,10 +269,10 @@ cat >%{buildroot}%{_sysconfdir}/products.d/MicroOS.prod << EOF
   </register>
   <repositories>
   </repositories>
-  <summary>openSUSE MicroOS</summary>
-  <shortsummary>openSUSE MicroOS</shortsummary>
-  <description>openSUSE MicroOS combines the benefits of a rolling OS with a read-only root filesystem with transactional updates. It is a modern Linux Operating System, designed for single-service installations, such as container hosts. It is optimized for large, clustered deployments.
-        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and reliable distribution.</description>
+  <summary>openSUSE Aeon</summary>
+  <shortsummary>openSUSE Aeon</shortsummary>
+  <description>openSUSE Aeon bundles the benefits of a rolling OS and a read-only root filesystem in a polished Desktop platform. It is a modern Linux Operating System, designed for minimal maintenance and tinkering.
+        It inherits the benefits of openSUSE Tumbleweed while redefining the operating system into a small, efficient and opinionated desktop.</description>
   <linguas>
     <language>en_US</language>
   </linguas>
@@ -301,7 +280,7 @@ cat >%{buildroot}%{_sysconfdir}/products.d/MicroOS.prod << EOF
     <url name="releasenotes">http://doc.opensuse.org/release-notes/x86_64/openSUSE/Tumbleweed/release-notes-openSUSE.rpm</url>
   </urls>
   <buildconfig>
-    <producttheme>MicroOS</producttheme>
+    <producttheme>Aeon</producttheme>
     <create_flavors>true</create_flavors>
   </buildconfig>
   <installconfig>
@@ -318,14 +297,8 @@ cat >%{buildroot}%{_sysconfdir}/products.d/MicroOS.prod << EOF
 
 EOF
 
-mkdir -p %{buildroot}%{_defaultdocdir}/MicroOS-release-dvd
-cat >%{buildroot}%{_defaultdocdir}/MicroOS-release-dvd/README << EOF
-This package only exists for providing the product flavor 'dvd'.
-
-EOF
-
-mkdir -p %{buildroot}%{_defaultdocdir}/MicroOS-release-appliance
-cat >%{buildroot}%{_defaultdocdir}/MicroOS-release-appliance/README << EOF
+mkdir -p %{buildroot}%{_defaultdocdir}/Aeon-release-appliance
+cat >%{buildroot}%{_defaultdocdir}/Aeon-release-appliance/README << EOF
 This package only exists for providing the product flavor 'appliance'.
 
 EOF
@@ -333,17 +306,6 @@ EOF
 
 
 %post
-# Update from openSUSE-Tumbleweed-Kubic to openSUSE-MicroOS
-# Fix the baseproduct symlink and make sure, it exists
-if [ -L %{_sysconfdir}/products.d/baseproduct ] ; then
-    PRODLINK=$(basename $(readlink -f %{_sysconfdir}/products.d/baseproduct))
-    if [ "$PRODLINK"  = "openSUSE-Tumbleweed-Kubic.prod" -o "$PRODLINK"  = "openSUSE-MicroOS.prod" ]; then
-      rm -f %{_sysconfdir}/products.d/baseproduct
-    fi
-fi
-if [ ! -e %{_sysconfdir}/products.d/baseproduct ]; then
-    ln -sf MicroOS.prod %{_sysconfdir}/products.d/baseproduct
-fi
 
 %files
 %defattr(644,root,root,755)
