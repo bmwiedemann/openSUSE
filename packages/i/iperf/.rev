@@ -295,4 +295,29 @@
     <comment></comment>
     <requestid>1099784</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d57f85753fdbece60e38c12ee2f6a5bc</srcmd5>
+    <version>3.15</version>
+    <time>1695664958</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.15:
+  * Several bugs that could allow the iperf3 server to hang waiting
+    for input on the control connection has been fixed
+    (ESnet Software Security Advisory ESNET-SECADV-2023-0002)
+  * A bug that caused garbled output with UDP tests on 32-bit hosts
+    has been fixed (PR #1554, PR #1556). This bug was introduced in
+    iperf-3.14.
+  * A bug in counting UDP messages has been fixed
+
+    JSON output on CentOS 6
+  * This maintenance release adds a -1 flag to make the iperf3
+    execute a single test and exit, needed for an upcoming bwctl
+    there is only one stream.
+version developed at NLANR/DAST. iperf3 is a new implementation from scratch,
+with the goal of a smaller, simpler code base, and a library version of the
+functionality that can be used in other programs. iperf3 also a number of
+features found in other tools such as nuttcp and netperf, but were missing
+from the original iperf. These include, for example, a zero-copy mode and</comment>
+    <requestid>1113223</requestid>
+  </revision>
 </revisionlist>

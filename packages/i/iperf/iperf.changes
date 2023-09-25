@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 23 11:06:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.15:
+  * Several bugs that could allow the iperf3 server to hang waiting
+    for input on the control connection has been fixed
+    (ESnet Software Security Advisory ESNET-SECADV-2023-0002)
+  * A bug that caused garbled output with UDP tests on 32-bit hosts
+    has been fixed (PR #1554, PR #1556). This bug was introduced in
+    iperf-3.14.
+  * A bug in counting UDP messages has been fixed
+
+-------------------------------------------------------------------
 Thu Jul 20 12:01:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.14 (bsc#1213430, CVE-2023-38403):
@@ -138,7 +150,7 @@ Sat Jul 11 09:45:53 UTC 2020 - Michal Svec <msvec@suse.com>
   * Minor bugfixes and enhancements
 - don't apply the profiling patch any more
   (removed iperf-disable-profiling.patch)
-  
+
 -------------------------------------------------------------------
 Thu Nov 14 21:32:57 UTC 2019 - Michal Svec <msvec@suse.com>
 
@@ -173,7 +185,7 @@ Fri Jul  6 07:22:31 UTC 2018 - liedke@rz.uni-mannheim.de
   * A compile fix for Solaris 10 was added.
   * Some minor bug fixes for JSON output.  In particular, warnings for
     debug and/or verbose modes with --json output and a fix for
-    JSON output on CentOS 6 
+    JSON output on CentOS 6
 
 -------------------------------------------------------------------
 Mon Mar 12 14:49:17 UTC 2018 - msvec@suse.com
@@ -264,8 +276,8 @@ Mon Nov 30 21:11:15 UTC 2015 - p.drouand@gmail.com
 Sun Apr  5 21:17:52 UTC 2015 - aj@ajaissle.de
 
 - iperf 3.0.11
-  * This maintenance release adds a -1 flag to make the iperf3 
-    execute a single test and exit, needed for an upcoming bwctl 
+  * This maintenance release adds a -1 flag to make the iperf3
+    execute a single test and exit, needed for an upcoming bwctl
     release. A few other bugs are also fixed.
 
 -------------------------------------------------------------------
@@ -303,7 +315,7 @@ Wed Mar 26 19:30:51 UTC 2014 - andreas.stieger@gmx.de
 
 - iperf 3.0.3
   * Summary structures in the JSON output are now included, even if
-    there is only one stream. 
+    there is only one stream.
   * A possible buffer overflow in iperf_error.c has been fixed
     (replaced iperf-3.0.2_strncat_bufferoverflow.patch)
   * Example programs now build correctly
@@ -317,11 +329,11 @@ Tue Mar 25 11:24:38 UTC 2014 - aj@ajaissle.de
 
 - Update to 3.0.2
 This version, sometimes referred to as iperf3, is a redesign of an original
-version developed at NLANR/DAST. iperf3 is a new implementation from scratch, 
-with the goal of a smaller, simpler code base, and a library version of the 
-functionality that can be used in other programs. iperf3 also a number of 
-features found in other tools such as nuttcp and netperf, but were missing 
-from the original iperf. These include, for example, a zero-copy mode and 
+version developed at NLANR/DAST. iperf3 is a new implementation from scratch,
+with the goal of a smaller, simpler code base, and a library version of the
+functionality that can be used in other programs. iperf3 also a number of
+features found in other tools such as nuttcp and netperf, but were missing
+from the original iperf. These include, for example, a zero-copy mode and
 optional JSON output.
 
 Note that iperf3 is NOT backwards compatible with the original iperf.
