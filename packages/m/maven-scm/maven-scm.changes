@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 25 09:42:43 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on maven2
+
+-------------------------------------------------------------------
 Wed Sep  6 15:09:51 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove unresolved plugin version which creates a validation

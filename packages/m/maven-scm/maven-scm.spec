@@ -44,7 +44,7 @@ BuildRequires:  mvn(org.apache.maven.shared:file-management)
 BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-settings:2.2.1)
+BuildRequires:  mvn(org.apache.maven:maven-settings)
 BuildRequires:  mvn(org.codehaus.modello:modello-maven-plugin)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
@@ -52,13 +52,13 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit)
 BuildRequires:  mvn(org.eclipse.jgit:org.eclipse.jgit.ssh.jsch)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-sec-dispatcher)
+#!BuildRequires: jgit
+BuildArch:      noarch
 %ifarch %{ix86}
 BuildConflicts: java >= 12
 BuildConflicts: java-devel >= 12
 BuildConflicts: java-headless >= 12
 %endif
-#!BuildRequires: jgit
-BuildArch:      noarch
 
 %description
 Maven SCM supports Maven plugins (e.g. maven-release-plugin) and other
