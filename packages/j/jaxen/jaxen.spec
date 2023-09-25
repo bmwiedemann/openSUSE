@@ -23,8 +23,7 @@
 %else
 %bcond_with bootstrap
 %endif
-%bcond_without dom4j
-Version:        1.2.0
+Version:        2.0.0
 Release:        0
 Summary:        An XPath engine written in Java
 License:        BSD-3-Clause
@@ -34,8 +33,6 @@ Source1:        %{base_name}-build.xml
 BuildRequires:  ant
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jdom
-BuildRequires:  xerces-j2
-BuildRequires:  xml-apis
 BuildArch:      noarch
 %if %{with bootstrap}
 Name:           %{base_name}-bootstrap
@@ -79,46 +76,48 @@ Summary:        Javadoc for %{name}
 
 %prep
 %setup -q -n %{base_name}-%{version}
-cp %{SOURCE1} build.xml
+cp %{SOURCE1} core/build.xml
 
 %if %{with bootstrap}
-rm -rf src/java/main/org/jaxen/dom4j
-%pom_remove_dep dom4j:dom4j
+rm -rf core/src/java/main/org/jaxen/dom4j
+%pom_remove_dep -r dom4j:dom4j
 
-rm -rf src/java/main/org/jaxen/xom
-%pom_remove_dep xom:xom
+rm -rf core/src/java/main/org/jaxen/xom
+%pom_remove_dep -r xom:xom
 %endif
 
 %build
-mkdir -p lib
-build-jar-repository -s lib xml-apis xerces-j2 jdom
+mkdir -p core/lib
+build-jar-repository -s core/lib jdom
 %if %{without bootstrap}
-build-jar-repository -s lib dom4j xom
+build-jar-repository -s core/lib dom4j xom
 %endif
+pushd core
 %{ant} jar
 %if %{without bootstrap}
 %{ant} javadoc
 %endif
+popd
 
 %install
 # jar
 install -dm 0755 %{buildroot}%{_javadir}
-install -pm 0644 target/%{base_name}-%{version}.jar %{buildroot}%{_javadir}/%{base_name}.jar
+install -pm 0644 core/target/%{base_name}-%{version}.jar %{buildroot}%{_javadir}/%{base_name}.jar
 
 %if %{without bootstrap}
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{base_name}.pom
+%{mvn_install_pom} core/pom.xml %{buildroot}%{_mavenpomdir}/%{base_name}.pom
 %add_maven_depmap %{base_name}.pom %{base_name}.jar
 
 # demo
 install -d -m 755 %{buildroot}%{_datadir}/%{base_name}/samples
-cp -pr src/java/samples/* %{buildroot}%{_datadir}/%{base_name}/samples
+cp -pr core/src/java/samples/* %{buildroot}%{_datadir}/%{base_name}/samples
 %fdupes -s %{buildroot}%{_datadir}/%{base_name}
 
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{base_name}
-cp -r target/site/apidocs %{buildroot}%{_javadocdir}/%{base_name}
+cp -r core/target/site/apidocs %{buildroot}%{_javadocdir}/%{base_name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{base_name}
 
 %files -f .mfiles

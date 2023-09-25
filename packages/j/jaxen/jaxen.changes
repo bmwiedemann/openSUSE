@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 22 00:52:28 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.0
+  * Changes:
+    + Despite the major version bump, this should be a drop in
+      replacement for almost every project, The two major possible
+      incompatibilities are:
+      ° The minimum supported Java version is now 1.5, up from 1.4
+        in 1.2.0 and 1.3 in 1.1.6.
+      ° dom4j, XOM, and JDOM are now optional dependencies so if a
+        project was depending on them to be loaded transitively it
+        will need to add explicit dependencies to build.
+    + On the plus side, this makes classpaths much smaller and less
+      complex, and will shut up a lot of noise from static analysis
+      tools.
+    + In addition the Jaxen core code is also a little smaller and
+      has fixed a few minor bugs in XPath evaluation, mostly weird
+      cases found by fuzzing that are unlikely to arise in practice.
+
+-------------------------------------------------------------------
 Thu Aug 24 10:01:18 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Move to a jaxen multibuild package where the *-bootstrap version
@@ -38,5 +58,5 @@ Wed May 20 14:12:03 CEST 2009 - mvyskocil@suse.cz
 -------------------------------------------------------------------
 Tue May 12 11:02:21 CEST 2009 - mvyskocil@suse.cz
 
-- Initial packaging of jaxen-bootstrap in SUSE (from jpp 5.0) 
+- Initial packaging of jaxen-bootstrap in SUSE (from jpp 5.0)
 
