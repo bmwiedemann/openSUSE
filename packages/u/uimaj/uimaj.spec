@@ -1,7 +1,7 @@
 #
 # spec file for package uimaj
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ BuildRequires:  unzip
 BuildRequires:  mvn(ant-contrib:ant-contrib)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
 BuildRequires:  mvn(commons-io:commons-io)
+BuildRequires:  mvn(jakarta-regexp:jakarta-regexp)
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.ant:ant-apache-regexp)
@@ -39,7 +40,6 @@ BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-project)
 BuildRequires:  mvn(org.apache.uima:parent-pom:pom:)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
@@ -133,6 +133,9 @@ rm -r %{name}-tools/src/test/java/org/apache/uima/tools/viewer/CasAnnotationView
 sed -i 's/\r//' NOTICE README
 
 %pom_xpath_set "pom:dependency[pom:artifactId = 'log4j']/pom:version" 1.2.17 %{name}-core
+
+%pom_change_dep :maven-project :maven-core:3.0.3 PearPackagingMavenPlugin
+%pom_change_dep org.apache.maven: :::provided PearPackagingMavenPlugin jcasgen-maven-plugin
 
 %{mvn_package} :PearPackagingMavenPlugin uima-pear-maven-plugin
 %{mvn_package} :jcasgen-maven-plugin jcasgen-maven-plugin
