@@ -320,4 +320,13 @@ features found in other tools such as nuttcp and netperf, but were missing
 from the original iperf. These include, for example, a zero-copy mode and</comment>
     <requestid>1113223</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>50456de135624ab013529d1e3f41a13b</srcmd5>
+    <version>3.15</version>
+    <time>1695758455</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.15 (bsc#1215662, ESNET-SECADV-2023-0002):
+  * obsoletes CVE-2023-38403.patch in older dists</comment>
+    <requestid>1113658</requestid>
+  </revision>
 </revisionlist>
