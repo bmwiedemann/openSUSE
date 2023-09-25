@@ -36,7 +36,6 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-project)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
 BuildRequires:  mvn(org.eclipse.jetty.toolchain:jetty-toolchain:pom:)
 BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-engine)
@@ -59,6 +58,9 @@ cp %{SOURCE1} .
 cp %{SOURCE2} .
 
 %pom_remove_plugin :maven-javadoc-plugin
+
+%pom_xpath_set pom:properties/pom:maven.version 3.8.1
+%pom_remove_dep :maven-project
 
 %build
 %{mvn_build} -f -- -Dsource=8
