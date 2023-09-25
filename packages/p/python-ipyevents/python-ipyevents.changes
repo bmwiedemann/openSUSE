@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 23 16:42:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.3
+  * no upstream changelog
+  * new wheel: notebook extension moved to python sitelib
+
+-------------------------------------------------------------------
 Thu Aug 17 15:32:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Suggest primary python package -- boo#1214354

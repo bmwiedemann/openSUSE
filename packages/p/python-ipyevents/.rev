@@ -49,4 +49,15 @@
     <comment>- Suggest primary python package -- boo#1214354</comment>
     <requestid>1104434</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8d68eb4c4bd8190730371b06ff65a168</srcmd5>
+    <version>2.0.2</version>
+    <time>1695665005</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.0.3
+  * no upstream changelog
+  * new wheel: notebook extension moved to python sitelib
+</comment>
+    <requestid>1113311</requestid>
+  </revision>
 </revisionlist>
