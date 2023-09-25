@@ -11,7 +11,7 @@ diff --git a/doxia-site-renderer/src/main/java/org/apache/maven/doxia/siterender
 index c31688d..58058b3 100644
 --- a/doxia-site-renderer/src/main/java/org/apache/maven/doxia/siterenderer/DefaultSiteRenderer.java
 +++ b/doxia-site-renderer/src/main/java/org/apache/maven/doxia/siterenderer/DefaultSiteRenderer.java
-@@ -76,31 +76,11 @@ import org.apache.maven.doxia.parser.module.ParserModuleNotFoundException;
+@@ -76,31 +76,11 @@ import org.apache.maven.doxia.parser.mod
  import org.apache.maven.doxia.siterenderer.sink.SiteRendererSink;
  import org.apache.maven.doxia.util.XmlValidator;
  import org.apache.velocity.Template;
@@ -44,7 +44,7 @@ index c31688d..58058b3 100644
  import org.codehaus.plexus.PlexusContainer;
  import org.codehaus.plexus.component.annotations.Component;
  import org.codehaus.plexus.component.annotations.Requirement;
-@@ -481,41 +461,7 @@ public class DefaultSiteRenderer
+@@ -495,41 +475,7 @@ public class DefaultSiteRenderer
       */
      protected Context createToolManagedVelocityContext( SiteRenderingContext siteRenderingContext )
      {

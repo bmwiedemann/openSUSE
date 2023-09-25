@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Sep 23 18:10:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.11.1
+  * Bug
+    + DOXIASITETOOLS-221:  CLIRR can't find previous version
+  * Improvement
+    + DOXIASITETOOLS-228:  Remove all &#xA0; in
+      default-site-macros.vm and replace by a space
+    + DOXIASITETOOLS-234:  improve documentation on site.xml
+      inheritance vs interpolation
+  * Task
+    + DOXIASITETOOLS-236:  Deprecate Doxia Sitetools Doc Renderer
+  * Dependency upgrade
+    + DOXIASITETOOLS-219:  fix javadoc issues with JDK 8 when
+      generating documentation
+    + DOXIASITETOOLS-223:  wrong coordinates for jai_core: hyphen
+      should be underscore
+    + DOXIASITETOOLS-226:  Use latest JUnit version 4.13.2
+    + DOXIASITETOOLS-231:  Upgrade Plexus Utils to 3.3.0
+    + DOXIASITETOOLS-232:  Upgrade Plexus Interpolation to 1.26
+    + DOXIASITETOOLS-233:  Upgrade Maven Doxia to 1.10
+    + DOXIASITETOOLS-237:  Upgrade Maven Doxia to 1.11.1
+- Modified patch:
+  * 0002-Remove-dependency-on-velocity-tools.patch
+    + rediff to changes context
+- Removed patch:
+  * 0001-Port-to-plexus-utils-3.0.24.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Fri May 13 09:12:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with modello 2.0.0

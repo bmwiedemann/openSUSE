@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global parent maven-doxia
 %global subproj sitetools
 Name:           %{parent}-%{subproj}
-Version:        1.9.2
+Version:        1.11.1
 Release:        0
 Summary:        Doxia content generation framework
 License:        Apache-2.0
@@ -27,40 +27,39 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/doxia/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/doxia/doxia-sitetools/%{version}/doxia-%{subproj}-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
-Patch0:         0001-Port-to-plexus-utils-3.0.24.patch
 Patch1:         0002-Remove-dependency-on-velocity-tools.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-collections
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
+BuildRequires:  atinject
 BuildRequires:  fdupes
+BuildRequires:  google-guice
 BuildRequires:  guava
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  jdom2
-BuildRequires:  maven-artifact
-BuildRequires:  maven-artifact-manager
 BuildRequires:  maven-doxia-core
 BuildRequires:  maven-doxia-logging-api
 BuildRequires:  maven-doxia-module-fo
 BuildRequires:  maven-doxia-module-xhtml
 BuildRequires:  maven-doxia-sink-api
 BuildRequires:  maven-lib
-BuildRequires:  maven-project
 BuildRequires:  maven-reporting-api
 BuildRequires:  modello >= 2.0.0
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
-BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-i18n
 BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity
 BuildRequires:  qdox
+BuildRequires:  sisu-inject
+BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 BuildRequires:  velocity
 BuildRequires:  xbean
@@ -90,12 +89,15 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n doxia-%{subproj}-%{version} -a1
-%patch0 -p1
 %patch1 -p1
+
+# migrate to maven 3
+%pom_xpath_set //pom:mavenVersion 3.8.6 doxia-integration-tools
+%pom_change_dep :maven-artifact-manager :maven-core doxia-integration-tools
+%pom_change_dep :maven-project :maven-compat doxia-integration-tools
 
 # complains
 %pom_remove_plugin :apache-rat-plugin
-%pom_remove_plugin :maven-enforcer-plugin
 
 %pom_remove_plugin org.codehaus.mojo:clirr-maven-plugin
 %pom_remove_dep net.sourceforge.htmlunit:htmlunit doxia-site-renderer/pom.xml
@@ -104,13 +106,6 @@ API documentation for %{name}.
 %pom_xpath_inject "pom:plugin[pom:artifactId[text()='modello-maven-plugin']]/pom:configuration" \
     "<useJava5>true</useJava5>" doxia-decoration-model
 
-# There are two backends for generating PDFs: one based on iText and
-# one using FOP.  iText module is broken and only brings additional
-# dependencies.  Besides that upstream admits that iText support will
-# likely removed in future versions of Doxia.
-#
-# See also: http://maven.apache.org/doxia/faq.html#How_to_export_in_PDF
-# http://lists.fedoraproject.org/pipermail/java-devel/2013-April/004742.html
 rm -rf $(find -type d -name itext)
 %pom_remove_dep -r :doxia-module-itext
 
@@ -121,38 +116,39 @@ rm -rf $(find -type d -name itext)
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-	apache-commons-collections \
-	apache-commons-lang3 \
-	commons-cli \
-	commons-io \
-	guava/guava \
-	jdom2/jdom2 \
-	maven-doxia/doxia-core \
-	maven-doxia/doxia-logging-api \
-	maven-doxia/doxia-module-fo \
-	maven-doxia/doxia-module-xhtml \
-	maven-doxia/doxia-module-xhtml5 \
-	maven-doxia/doxia-sink-api \
-	maven/maven-artifact \
-	maven/maven-artifact-2.0.2 \
-	maven/maven-artifact-manager \
-	maven/maven-model \
-	maven/maven-plugin-api \
-	maven/maven-project \
-	maven-reporting-api/maven-reporting-api \
-	objectweb-asm/asm \
-	plexus-classworlds \
-	plexus/cli \
-	plexus-containers/plexus-component-annotations \
-	plexus-containers/plexus-container-default \
-	plexus-i18n/plexus-i18n \
-	plexus/interpolation \
-	plexus-metadata-generator \
-	plexus/utils \
-	plexus-velocity/plexus-velocity \
-	qdox \
-	velocity \
-	xbean/xbean-reflect
+    atinject \
+    apache-commons-collections \
+    apache-commons-lang3 \
+    commons-cli \
+    commons-io \
+    guava/guava \
+    guice/google-guice \
+    jdom2/jdom2 \
+    maven-doxia/doxia-core \
+    maven-doxia/doxia-logging-api \
+    maven-doxia/doxia-module-fo \
+    maven-doxia/doxia-module-xhtml \
+    maven-doxia/doxia-module-xhtml5 \
+    maven-doxia/doxia-sink-api \
+    maven/maven-artifact \
+    maven/maven-core \
+    maven/maven-plugin-api \
+    maven/maven-project \
+    maven-reporting-api/maven-reporting-api \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject \
+    org.eclipse.sisu.plexus \
+    plexus-classworlds \
+    plexus/cli \
+    plexus-containers/plexus-component-annotations \
+    plexus-i18n/plexus-i18n \
+    plexus/interpolation \
+    plexus-metadata-generator \
+    plexus/utils \
+    plexus-velocity/plexus-velocity \
+    qdox \
+    velocity \
+    xbean/xbean-reflect
 # tests can't run because of missing deps
 %{ant} -Dtest.skip=true package javadoc
 
