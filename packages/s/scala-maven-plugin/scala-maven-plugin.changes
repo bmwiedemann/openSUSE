@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 25 09:46:19 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on maven2
+
+-------------------------------------------------------------------
 Wed Mar 23 10:53:28 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

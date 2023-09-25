@@ -1,7 +1,7 @@
 #
 # spec file for package scala-maven-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,10 +41,10 @@ BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-project)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-archiver)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-classworlds)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.scala-sbt:compile)
 #!BuildRequires: sbt
 BuildArch:      noarch
 
@@ -67,6 +67,7 @@ This package contains javadoc for %{name}.
 %pom_remove_plugin :nexus-staging-maven-plugin
 %pom_remove_plugin :maven-javadoc-plugin
 
+%pom_remove_dep :maven-project
 %pom_add_dep org.scala-sbt:compile
 
 %build
