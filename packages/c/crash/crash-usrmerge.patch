@@ -9,9 +9,11 @@ Upstream: to be done (must not break Red Hat)
  symbols.c |    4 ++--
  3 files changed, 4 insertions(+), 4 deletions(-)
 
+Index: b/defs.h
+===================================================================
 --- a/defs.h
 +++ b/defs.h
-@@ -406,7 +406,7 @@ struct number_option {
+@@ -413,7 +413,7 @@ struct number_option {
  #define PIPE_OPTIONS (FROM_COMMAND_LINE | FROM_INPUT_FILE | REDIRECT_TO_PIPE | \
                        REDIRECT_TO_STDPIPE | REDIRECT_TO_FILE)
  
@@ -20,9 +22,11 @@ Upstream: to be done (must not break Red Hat)
  
  #define MEMORY_DRIVER_MODULE        "crash"
  #define MEMORY_DRIVER_DEVICE        "/dev/crash"
+Index: b/help.c
+===================================================================
 --- a/help.c
 +++ b/help.c
-@@ -9445,7 +9445,7 @@ README_ENTER_DIRECTORY,
+@@ -9649,7 +9649,7 @@ README_ENTER_DIRECTORY,
  README_MEMORY_DRIVER,
  "",
  "  If the kernel file is stored in /boot, /, /boot/efi, or in any /usr/src",
@@ -31,6 +35,8 @@ Upstream: to be done (must not break Red Hat)
  "  are required -- the first kernel found that matches /proc/version will be",
  "  used as the namelist.",
  "  ",
+Index: b/symbols.c
+===================================================================
 --- a/symbols.c
 +++ b/symbols.c
 @@ -299,7 +299,7 @@ check_gnu_debuglink(bfd *bfd)

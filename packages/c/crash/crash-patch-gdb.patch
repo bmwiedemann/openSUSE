@@ -14,9 +14,11 @@ Signed-off-by: Petr Tesarik <ptesarik@suse.cz>
  Makefile |    7 +++++--
  1 file changed, 5 insertions(+), 2 deletions(-)
 
+Index: b/Makefile
+===================================================================
 --- a/Makefile
 +++ b/Makefile
-@@ -263,6 +263,11 @@ gdb_unzip:
+@@ -293,6 +293,11 @@ gdb_unzip:
  gdb_patch:
  	if [ -f ${GDB}.patch ] && [ -s ${GDB}.patch ]; then \
  		patch -p0 < ${GDB}.patch; cp ${GDB}.patch ${GDB}; fi

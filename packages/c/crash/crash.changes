@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Sep 20 16:58:00 UTC 2023 - David Mair <dmair@suse.com>
+
+- On initialization crash verifies the core based on the text
+  referenced by the linux_banner symbol in the supplied core. It
+  chooses how to get the address of the text based on the symbol
+  type decoded with gdb. For some compressed kernels with an
+  accessible debuginfo file the type is not supported (bss segment
+  found, data reference expected) but the symbol and it's value are
+  valid. This causes the linux_banner text to be used as the
+  "address" of the linux_banner and that's an invalid address for
+   the coredump causing crash to fail to load reporting something
+  like:
+
+  WARNING: invalid linux_banner pointer: 65762078756e694c
+
+  where the address is obviously ASCII text used as a number. A
+  SUSE patch to support compressed kernel binaries introduces the
+  behavior, it does not happen for upstream crash source as-is. The
+  difference is whether the symbol details are obtained from the
+  kernel binary or debuginfo (fails for some debuginfos).
+
+  * crash-get-linux_banner-without-using-syment-type.patch
+  In verify_version(), choose how to obtain the linux_banner address
+  based on the result of get_symbol_type() instead. TYPE_CODE_ARRAY
+  causes the value of the symbol obtained from gdb to be used.
+  TYPE_CODE_PTR causes the sybol data to be read to get the address.
+  Default is unrecognized type but a warning is shown and the value
+  obtained from gdb used as a best case choice.
+  (bsc#1190434 c#24)
+
+-------------------------------------------------------------------
 Tue Aug 15 18:47:26 UTC 2023 - David Mair <dmair@suse.com>
 
 - crash has it's own definitions of some glibc functions, including

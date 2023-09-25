@@ -85,6 +85,7 @@ Patch4:         %{name}-sles9-time.patch
 Patch9:         %{name}-debuginfo-compressed.patch
 Patch10:        %{name}_enable_lzo_support.patch
 Patch11:        %{name}-compressed-booted-kernel.patch
+Patch12:        %{name}-get-linux_banner-without-using-syment-type.patch
 Patch13:        %{name}-patch-gdb.patch
 Patch15:        %{name}_enable_snappy_support.patch
 Patch18:        %{name}-stop_read_error_when_intent_is_retry.patch
@@ -237,6 +238,7 @@ ln -s %{SOURCE1} .
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 %patch13 -p1
 %patch18 -p1
 %patch21 -p1

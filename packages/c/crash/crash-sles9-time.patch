@@ -18,7 +18,7 @@ Index: b/defs.h
 ===================================================================
 --- a/defs.h
 +++ b/defs.h
-@@ -741,6 +741,7 @@ struct kernel_table {
+@@ -764,6 +764,7 @@ struct kernel_table {
  		ulong p2m_missing;
  	} pvops_xen;
  	int highest_irq;
@@ -26,7 +26,7 @@ Index: b/defs.h
  #define IKCONFIG_AVAIL	0x1	/* kernel contains ikconfig data */
  #define IKCONFIG_LOADED	0x2	/* ikconfig data is currently loaded */
  	int ikconfig_flags;
-@@ -6888,6 +6889,13 @@ extern struct lkcd_environment *lkcd;
+@@ -7589,6 +7590,13 @@ extern struct lkcd_environment *lkcd;
  
  #endif  /* LKCD_COMMON */
  
@@ -44,7 +44,7 @@ Index: b/kernel.c
 ===================================================================
 --- a/kernel.c
 +++ b/kernel.c
-@@ -297,6 +297,12 @@ kernel_init()
+@@ -304,6 +304,12 @@ kernel_init()
  
  	verify_version();
  
@@ -57,7 +57,7 @@ Index: b/kernel.c
  	if (symbol_exists("__per_cpu_offset")) {
  		if (LKCD_KERNTYPES())
  			i = get_cpus_possible();
-@@ -5617,7 +5623,7 @@ get_uptime(char *buf, ulonglong *j64p)
+@@ -5793,7 +5799,7 @@ get_uptime(char *buf, ulonglong *j64p)
  
  	if (symbol_exists("jiffies_64")) {
  		get_symbol_data("jiffies_64", sizeof(ulonglong), &jiffies_64);
@@ -66,7 +66,7 @@ Index: b/kernel.c
  			wrapped = (jiffies_64 & 0xffffffff00000000ULL);
  			if (wrapped) {
  				wrapped -= 0x100000000ULL;
-@@ -6213,6 +6219,7 @@ no_cpu_flags:
+@@ -6391,6 +6397,7 @@ no_cpu_flags:
  			fprintf(fp, "            p2m_mid_missing: %lx\n", kt->pvops_xen.p2m_mid_missing);
  		fprintf(fp, "                p2m_missing: %lx\n", kt->pvops_xen.p2m_missing);
  	}
@@ -78,7 +78,7 @@ Index: b/task.c
 ===================================================================
 --- a/task.c
 +++ b/task.c
-@@ -4631,6 +4631,12 @@ start_time_timespec(void)
+@@ -4678,6 +4678,12 @@ start_time_timespec(void)
  	default:
  		break;
  	}
@@ -91,7 +91,7 @@ Index: b/task.c
  
  	tt->flags |= NO_TIMESPEC;
  
-@@ -4667,6 +4673,11 @@ convert_start_time(ulonglong start_time,
+@@ -4701,6 +4707,11 @@ convert_start_time(ulonglong start_time,
  	ulong tmp1, tmp2;
  	ulonglong wrapped;
  

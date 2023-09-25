@@ -10,11 +10,11 @@ to only occur if no retries are intended.
 
 ---
 
-Index: crash-7.2.8/memory.c
+Index: b/memory.c
 ===================================================================
---- crash-7.2.8.orig/memory.c
-+++ crash-7.2.8/memory.c
-@@ -2320,8 +2320,6 @@ readmem(ulonglong addr, int memtype, voi
+--- a/memory.c
++++ b/memory.c
+@@ -2423,8 +2423,6 @@ readmem(ulonglong addr, int memtype, voi
                          goto readmem_error;
  
  		case READ_ERROR:
@@ -23,7 +23,7 @@ Index: crash-7.2.8/memory.c
  			if ((pc->flags & DEVMEM) && (kt->flags & PRE_KERNEL_INIT) &&
  			    !(error_handle & NO_DEVMEM_SWITCH) && devmem_is_restricted() && 
  			    switch_to_proc_kcore()) {
-@@ -2329,6 +2327,8 @@ readmem(ulonglong addr, int memtype, voi
+@@ -2432,6 +2430,8 @@ readmem(ulonglong addr, int memtype, voi
  				return(readmem(addr, memtype, bufptr, size,
  					type, error_handle));
  			}
