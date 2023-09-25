@@ -17,4 +17,22 @@
   vendor/github.com/google/renameio (forwarded request 1110619 from lkocman)</comment>
     <requestid>1110781</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f579d149cb2967320601734592b4f783</srcmd5>
+    <version>1.0.1</version>
+    <time>1695665008</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.1:
+  * all: go get golang.org/x/tools@74c255b
+  * internal/scan: change the way convert mode works
+  * internal/scan: add -version flag
+  * internal/vulncheck/internal/gosym: fix typo
+  * internal/gosym: update binary mode version parsing
+  * internal/scan: refactor to remove redundant code
+  * vulncheck/internal/gosym: add support for go versions &gt; 1.20
+  * internal/vulncheck/internal/buildinfo: skip failing tests
+  * cmd/govulncheck: skip TestCommand in short mode
+- _service add setversion to automatically update spec Version (forwarded request 1113318 from jfkw)</comment>
+    <requestid>1113319</requestid>
+  </revision>
 </revisionlist>

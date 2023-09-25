@@ -1,10 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep 24 23:15:41 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.0.1:
+  * all: go get golang.org/x/tools@74c255b
+  * internal/scan: change the way convert mode works
+  * internal/scan: add -version flag
+  * internal/vulncheck/internal/gosym: fix typo
+  * internal/gosym: update binary mode version parsing
+  * internal/scan: refactor to remove redundant code
+  * vulncheck/internal/gosym: add support for go versions > 1.20
+  * internal/vulncheck/internal/buildinfo: skip failing tests
+  * cmd/govulncheck: skip TestCommand in short mode
+- _service add setversion to automatically update spec Version
+
+-------------------------------------------------------------------
 Tue Sep 12 13:13:23 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Correction of license based on legaldb scan
   Add Apache 2.0 for google/go-cmdtest and
   vendor/github.com/google/renameio
-   
 
 -------------------------------------------------------------------
 Tue Jul 18 22:43:11 UTC 2023 - jkowalczyk@suse.com
