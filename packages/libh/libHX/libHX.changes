@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 24 05:13:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.15
+  * Add functions to compute Least Positive Residue (HX_flpr, HX_flprf)
+  * Make HX_strrtrim work on strings longer than INT_MAX
+
+-------------------------------------------------------------------
 Fri Jul 14 13:04:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.14
