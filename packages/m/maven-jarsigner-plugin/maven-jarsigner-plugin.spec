@@ -1,7 +1,7 @@
 #
 # spec file for package maven-jarsigner-plugin
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        Plugin to sign/verify a project artifact and attachments using j
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://maven.apache.org/plugins/%{name}/
-Source0:        http://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -33,8 +33,9 @@ BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
 BuildRequires:  mvn(org.apache.maven.shared:maven-jarsigner)
 BuildRequires:  mvn(org.apache.maven.shared:maven-shared-utils)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
+BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-project)
+BuildRequires:  mvn(org.apache.maven:maven-settings)
 BuildRequires:  mvn(org.sonatype.plexus:plexus-sec-dispatcher)
 BuildArch:      noarch
 
@@ -61,12 +62,11 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q
 
+%pom_xpath_set pom:properties/pom:javaVersion "8"
+
 %build
 %{mvn_file} :%{name} %{name}
-%{mvn_build} -f \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=7
-%endif
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
