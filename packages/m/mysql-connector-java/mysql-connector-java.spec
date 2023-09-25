@@ -127,22 +127,19 @@ export CLASSPATH=$(build-classpath \
 install -d -m 755 %{buildroot}%{_javadir}
 
 install build/%{new_name}-%{version}-SNAPSHOT/%{new_name}-%{version}-SNAPSHOT.jar %{buildroot}%{_javadir}/%{new_name}.jar
+ln -sf %{_javadir}/%{new_name}.jar %{buildroot}%{_javadir}/%{name}.jar
 
 rm -rf %{buildroot}%{new_name}-%{version}/docs/release-test-output
 
 install -d -m 755 %{buildroot}%{_mavenpomdir}
 
 # Install the Maven build information as new name
-install -pm 644 build/%{new_name}-%{version}-SNAPSHOT/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{new_name}.pom
+%mvn_install_pom build/%{new_name}-%{version}-SNAPSHOT/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{new_name}.pom
 sed -i 's/-SNAPSHOT//' %{buildroot}%{_mavenpomdir}/JPP-%{new_name}.pom
-%add_maven_depmap JPP-%{new_name}.pom %{new_name}.jar
-
-# Provide poms with "old name" mysql-connector-java (now it's mysql-connector-j)
-install -pm 644 build/%{new_name}-%{version}-SNAPSHOT/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-sed -i 's/-SNAPSHOT//' %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-%add_maven_depmap JPP-%{name}.pom %{new_name}.jar
+%add_maven_depmap JPP-%{new_name}.pom %{new_name}.jar -a com.mysql:%{name}
 
 %files -f .mfiles
+%{_javadir}/%{name}.jar
 %license LICENSE
 %doc CHANGES README
 

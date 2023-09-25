@@ -391,4 +391,12 @@
     <comment>8.1.0</comment>
     <requestid>1109564</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>e6c0f7d6c39bc2d6517bdee57244e82f</srcmd5>
+    <version>8.1.0</version>
+    <time>1695665042</time>
+    <user>anag+factory</user>
+    <comment>Avoid producing dupplicate maven data</comment>
+    <requestid>1113426</requestid>
+  </revision>
 </revisionlist>
