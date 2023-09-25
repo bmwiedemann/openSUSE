@@ -4734,4 +4734,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>- Add explicit build dependency on libepoxy for Tumbleweed</comment>
     <requestid>1112583</requestid>
   </revision>
+  <revision rev="399" vrev="1">
+    <srcmd5>dc6456690de3e3df80c1936cc10475c8</srcmd5>
+    <version>117.0.5938.92</version>
+    <time>1695664860</time>
+    <user>anag+factory</user>
+    <comment>chromium 117.0.5938.92</comment>
+    <requestid>1112940</requestid>
+  </revision>
 </revisionlist>

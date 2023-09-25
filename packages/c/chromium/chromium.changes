@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 22 06:27:24 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 117.0.5938.92:
+  * stability improvements
+
+-------------------------------------------------------------------
 Wed Sep 20 13:59:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Add explicit build dependency on libepoxy for Tumbleweed
