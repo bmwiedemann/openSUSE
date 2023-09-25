@@ -25,7 +25,7 @@
 
 Name:           gnuhealth
 
-Version:        %{majorver}.2
+Version:        %{majorver}.3
 Release:        0
 URL:            https://health.gnu.org
 Summary:        A Health and Hospital Information System

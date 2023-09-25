@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 24 19:20:07 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 4.2.3
+  * Fix bug #64706: Error saving party with photo due to PIL deprecation of ANTIALIAS
+
+-------------------------------------------------------------------
 Sun Sep 17 20:16:03 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - version 4.2.2

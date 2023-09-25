@@ -520,4 +520,14 @@
 </comment>
     <requestid>1111810</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>12b755feba9ff24849e9cde469709d3d</srcmd5>
+    <version>4.2.3</version>
+    <time>1695665004</time>
+    <user>anag+factory</user>
+    <comment>- version 4.2.3
+  * Fix bug #64706: Error saving party with photo due to PIL deprecation of ANTIALIAS
+</comment>
+    <requestid>1113309</requestid>
+  </revision>
 </revisionlist>
