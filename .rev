@@ -23,4 +23,16 @@
     options parsing corner cases.</comment>
     <requestid>1111775</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c1372bd3956da08e3cef85fc1c5ad6fd</srcmd5>
+    <version>2.27.0~0</version>
+    <time>1695665002</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.27.0:
+  * Fix crash when you remove a line starting with &quot;--&quot; and passed
+    the diff to riff, riff would crash #51
+    As a side effect, riff will now be pickier with its input. If
+    you modify your diffs manually, beware.</comment>
+    <requestid>1113297</requestid>
+  </revision>
 </revisionlist>
