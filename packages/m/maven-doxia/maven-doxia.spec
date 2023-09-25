@@ -1,7 +1,7 @@
 #
 # spec file for package maven-doxia
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-doxia
-Version:        1.9.1
+Version:        1.12.0
 Release:        0
 Summary:        Content generation framework
 License:        Apache-2.0
@@ -25,15 +25,16 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/doxia/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/doxia/doxia/%{version}/doxia-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
-# Build against iText 2.x
-# https://issues.apache.org/jira/browse/DOXIA-53
-Patch1:         0001-Fix-itext-dependency.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-collections
 BuildRequires:  apache-commons-configuration
+BuildRequires:  apache-commons-lang
 BuildRequires:  apache-commons-lang3
+BuildRequires:  apache-commons-text
+BuildRequires:  atinject
 BuildRequires:  fdupes
+BuildRequires:  google-guice
 BuildRequires:  guava
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
@@ -46,10 +47,11 @@ BuildRequires:  pegdown
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
-BuildRequires:  plexus-containers-container-default
 BuildRequires:  plexus-metadata-generator
 BuildRequires:  plexus-utils
 BuildRequires:  qdox
+BuildRequires:  sisu-inject
+BuildRequires:  sisu-plexus
 BuildRequires:  unzip
 BuildRequires:  xbean
 BuildRequires:  xmlgraphics-commons
@@ -57,7 +59,6 @@ BuildRequires:  xmlgraphics-fop
 BuildRequires:  xmlunit
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
-# Runtime dependency of doxia-module-fo
 BuildRequires:  mvn(log4j:log4j)
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildArch:      noarch
@@ -184,18 +185,12 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n doxia-%{version} -a1
-%patch1 -p1
 
 # we don't have clirr-maven-plugin
 %pom_remove_plugin org.codehaus.mojo:clirr-maven-plugin pom.xml
 
 # complains
 %pom_remove_plugin :apache-rat-plugin
-
-# use java 5 generics in modello plugin
-%pom_xpath_inject "pom:plugin[pom:artifactId[text()='modello-maven-plugin']]"\
-"/pom:executions/pom:execution/pom:configuration" \
-"<useJava5>true</useJava5>" doxia-modules/doxia-module-fml/pom.xml
 
 # requires network
 rm doxia-core/src/test/java/org/apache/maven/doxia/util/XmlValidatorTest.java
@@ -210,27 +205,31 @@ rm doxia-core/src/test/java/org/apache/maven/doxia/util/XmlValidatorTest.java
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-	apache-commons-lang3 \
-	apache-commons-lang \
-	commons-cli \
-	commons-configuration \
-	guava/guava \
-	httpcomponents/httpclient \
-	httpcomponents/httpcore \
-	jdom2/jdom2 \
-	objectweb-asm/asm \
-	parboiled/core \
-	pegdown \
-	plexus-classworlds \
-	plexus/cli \
-	plexus-containers/plexus-component-annotations \
-	plexus-containers/plexus-container-default \
-	plexus-metadata-generator \
-	plexus/utils \
-	qdox \
-	xbean/xbean-reflect \
-	xmlgraphics-commons \
-	xmlgraphics-fop
+    atinject \
+    apache-commons-lang3 \
+    apache-commons-text \
+    commons-cli \
+    commons-configuration \
+    commons-lang \
+    guava/guava \
+    guice/google-guice \
+    httpcomponents/httpclient \
+    httpcomponents/httpcore \
+    jdom2/jdom2 \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject \
+    org.eclipse.sisu.plexus \
+    parboiled/core \
+    pegdown \
+    plexus-classworlds \
+    plexus/cli \
+    plexus-containers/plexus-component-annotations \
+    plexus-metadata-generator \
+    plexus/utils \
+    qdox \
+    xbean/xbean-reflect \
+    xmlgraphics-commons \
+    xmlgraphics-fop
 
 %{ant} -Dtest.skip=true \
     package javadoc
