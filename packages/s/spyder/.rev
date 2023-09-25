@@ -650,4 +650,13 @@ rename the package from spyder3 to spyder.
     <comment>- Raise jedi pin to &lt;0.20 (forwarded request 1105913 from bnavigator)</comment>
     <requestid>1105914</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>82a072533454b677486d1f2b65a868fe</srcmd5>
+    <version>5.4.5</version>
+    <time>1695664941</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.4.5
+  * Fix Editor scrollflags error on Python 3.7</comment>
+    <requestid>1113196</requestid>
+  </revision>
 </revisionlist>

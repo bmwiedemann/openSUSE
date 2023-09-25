@@ -21,7 +21,7 @@
 # your live system before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        5.4.4
+Version:        5.4.5
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
