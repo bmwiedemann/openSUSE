@@ -30,9 +30,9 @@
 %bcond_with libalternatives
 %endif
 # X.X.0 gets abbreviated by pythondistdeps
-%define shortversion 7.7.3
+%define shortversion 7.8
 Name:           python-nbconvert%{psuffix}
-Version:        7.7.3
+Version:        7.8.0
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT

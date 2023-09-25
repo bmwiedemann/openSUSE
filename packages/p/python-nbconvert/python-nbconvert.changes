@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep 24 18:09:21 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.8.0
+  * MermaidJS 10.3.1, accessibility features, handle MIME #2034
+    (@bollwyvl)
+  * Fix: Prevent error from all whitespace lang string #2036
+    (@Adamtaranto)
+
+-------------------------------------------------------------------
+Sat Aug 26 13:25:22 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.7.4
+  * Give main tag a height of 100% in css for reveal html #2032
+    (@lkeegan)
+
+-------------------------------------------------------------------
 Thu Aug 17 16:02:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Suggest primary python package -- boo#1214354

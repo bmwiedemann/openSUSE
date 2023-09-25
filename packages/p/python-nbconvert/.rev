@@ -343,4 +343,20 @@
     <comment>- Suggest primary python package -- boo#1214354</comment>
     <requestid>1104447</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>116756554bb69a5b350303000c78fdf6</srcmd5>
+    <version>7.8.0</version>
+    <time>1695664999</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.8.0
+  * MermaidJS 10.3.1, accessibility features, handle MIME #2034
+    (@bollwyvl)
+  * Fix: Prevent error from all whitespace lang string #2036
+    (@Adamtaranto)
+- Update to 7.7.4
+  * Give main tag a height of 100% in css for reveal html #2032
+    (@lkeegan)
+</comment>
+    <requestid>1113304</requestid>
+  </revision>
 </revisionlist>
