@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 24 17:49:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.1.1
+  * Raise error when copy method is used on base widget class by
+    @mmc1718 in #3780
+  * Reverts #3689 and #3738 back to the original working codebase
+    by @martinRenou in #3830
+
+-------------------------------------------------------------------
 Fri Aug 18 18:01:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.1.0

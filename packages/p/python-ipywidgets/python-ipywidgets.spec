@@ -17,7 +17,7 @@
 
 
 Name:           python-ipywidgets
-Version:        8.1.0
+Version:        8.1.1
 Release:        0
 Summary:        IPython HTML widgets for Jupyter
 License:        BSD-3-Clause

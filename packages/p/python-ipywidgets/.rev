@@ -173,4 +173,16 @@ The failing packages have been resolved</comment>
   * Fix tab widget with JupyterLab 4 by @martinRenou in #3787 (forwarded request 1104761 from bnavigator)</comment>
     <requestid>1104764</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>98eca616e5f779d38b63cf9cd8686ff1</srcmd5>
+    <version>8.1.1</version>
+    <time>1695664993</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.1.1
+  * Raise error when copy method is used on base widget class by
+    @mmc1718 in #3780
+  * Reverts #3689 and #3738 back to the original working codebase
+    by @martinRenou in #3830</comment>
+    <requestid>1113293</requestid>
+  </revision>
 </revisionlist>
