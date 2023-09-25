@@ -35,6 +35,8 @@ Source2:        frameworks.keyring
 %endif
 # PATCH-FIX-OPENSUSE kio_help-fallback-to-kde4-docs.patch -- allow kio_help to see into kde4 documentation, needed especially for khelpcenter5
 Patch0:         kio_help-fallback-to-kde4-docs.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Don-t-crash-if-KMountPoint-gives-nothing-back-while-.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 # gcc7 is too old for std::transform_reduce

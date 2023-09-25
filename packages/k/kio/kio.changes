@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 18 18:44:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream crash fix (kde#474451)
+  * 0001-Don-t-crash-if-KMountPoint-gives-nothing-back-while-.patch
+
+-------------------------------------------------------------------
 Wed Sep  6 12:24:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.110.0

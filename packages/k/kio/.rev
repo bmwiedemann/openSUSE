@@ -1235,4 +1235,13 @@ I'd vote for Leap 15.0 as well... (forwarded request 604374 from wolfi323)</comm
     <comment>KDE Frameworks 5.110.0 (forwarded request 1109602 from krop)</comment>
     <requestid>1110086</requestid>
   </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>aa6f49e67ca32ddd47db9f4a4d433a25</srcmd5>
+    <version>5.110.0</version>
+    <time>1695664809</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream crash fix (kde#474451)
+  * 0001-Don-t-crash-if-KMountPoint-gives-nothing-back-while-.patch</comment>
+    <requestid>1112067</requestid>
+  </revision>
 </revisionlist>
