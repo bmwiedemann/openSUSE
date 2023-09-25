@@ -156,4 +156,19 @@ Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
 </comment>
     <requestid>1111752</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>0348eec267dddba801364f9a46d12a9d</srcmd5>
+    <version>0.2.4+g960</version>
+    <time>1695665013</time>
+    <user>anag+factory</user>
+    <comment>- XDP 0.18.0 requires desktop and other environments to have their own portals.conf
+  by adding river-portals.conf, we will avoid some of the problems for portals for
+  * File picker -&gt; We default to xdp-gtk since xdp-wlr does not have it.
+  * For screenshots/screenshare, we use the wlr supplied interfaces
+  For more information, see https://github.com/flatpak/xdg-desktop-portal/issues/1077
+  and the release statement for 0.18.0
+  This is a workaround for boo#1215641
+</comment>
+    <requestid>1113341</requestid>
+  </revision>
 </revisionlist>

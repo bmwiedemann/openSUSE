@@ -24,6 +24,7 @@ License:        GPL-3.0-only
 URL:            https://github.com/riverwm/river
 Source:         river-%{version}.tar.zst
 Source1:        river-run.sh
+Source2:        river-portals.conf
 BuildRequires:  libevdev-devel
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  pkgconfig
@@ -55,6 +56,11 @@ Recommends:     libqt5-qtwayland-32bit
 Requires:       river-riverctl
 Requires:       river-rivertile
 Recommends:     river-contrib
+# For file picker and other stuff and for the sway-portal.conf
+Recommends:     xdg-desktop-portal-gtk
+
+# Users may want to use XDP-hyprland
+# Only suggest XDP-wlroots since river-portals.conf requires it
 Suggests:       xdg-desktop-portal-wlr
 
 ExclusiveArch:  x86_64 aarch64 riscv64 %{mips64}
@@ -143,12 +149,15 @@ mkdir -p %{buildroot}%{_datadir}/river
 
 # Installing the desktop file for easy login manager access
 sed -i 's|Exec=river|Exec=river-run.sh|' contrib/river.desktop
-install -D -m 0644 contrib/river.desktop %{buildroot}%{_datadir}/wayland-sessions
+install -Dpm 0644 contrib/river.desktop %{buildroot}%{_datadir}/wayland-sessions
 cp -rv contrib %{buildroot}%{_datadir}/river/contrib
 cp -v %{SOURCE1} %{buildroot}%{_datadir}/river/contrib/
 
 # Install convenient script to run river
-install -Dm 0755 %{SOURCE1} %{buildroot}%{_bindir}
+install -Dpm 0755 %{SOURCE1} %{buildroot}%{_bindir}
+
+# XDP >= 0.18.0 requires a portal for the environment and onwards
+install -Dpm 0644 -t %{buildroot}%{_datadir}/xdg-desktop-portal/ %{SOURCE2}
 
 %files
 %license LICENSE
@@ -158,6 +167,8 @@ install -Dm 0755 %{SOURCE1} %{buildroot}%{_bindir}
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/river.desktop
 %{_mandir}/man1/river.1%{?ext_man}
+%dir %{_datadir}/xdg-desktop-portal
+%{_datadir}/xdg-desktop-portal/%{name}-portals.conf
 
 %files  riverctl
 %{_bindir}/riverctl
