@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 25 07:51:11 UTC 2023 - emiliano.langella@suse.com
+
+- Update to version 4.6.1+git0.8785767:
+  * prepare for 4.6.1
+  * return back dbms_alert_defered_signal header necessary for upgrade - #231
+
+-------------------------------------------------------------------
 Fri Sep 08 13:49:42 UTC 2023 - emiliano.langella@suse.com
 
 - Update to version 4.6.0+git0.6020b1e:
