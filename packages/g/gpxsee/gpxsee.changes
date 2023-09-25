@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 24 23:36:15 CEST 2023 - tumic@cbox.cz
+
+- Update to version 13.9
+  * Fixed storing of WMTS tiles with file system incompatible tile
+    matrix names.
+  * Improved/fixed TrekBuddy maps/atlases support.
+  * Improved ENC maps rendering style.
+
+-------------------------------------------------------------------
 Thu Sep  7 22:22:05 CEST 2023 - tumic@cbox.cz
 
 - Update to version 13.8

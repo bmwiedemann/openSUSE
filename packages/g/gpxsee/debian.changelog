@@ -1,3 +1,12 @@
+gpxsee (13.9) stable; urgency=low
+
+  * Fixed storing of WMTS tiles with file system incompatible tile
+    matrix names.
+  * Improved/fixed TrekBuddy maps/atlases support.
+  * Improved ENC maps rendering style.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 24 Sep 2023 23:45:47 +0200
+
 gpxsee (13.8) stable; urgency=low
 
   * Added support for ENC atlases (catalogues).
