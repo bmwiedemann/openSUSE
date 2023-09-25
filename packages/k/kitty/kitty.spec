@@ -19,7 +19,7 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.29.2
+Version:        0.30.0
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -31,7 +31,8 @@ Source2:        kitty-rpmlintrc
 # PATCH-FIX-OPENSUSE optional-disable-docs.diff -- Optionally disable building documentation files
 Patch0:         optional-disable-docs.diff
 # PATCH-FIX-OPENSUSE fix-librsync-leap.diff -- Fix for Leap, as librsync header is missing the stdio.h header for FILE*
-Patch1:         fix-librsync-leap.diff
+# Seems ./kittens/transfer/rsync.c is gone
+#Patch1:         fix-librsync-leap.diff
 Patch2:         go-buildmode-pie.diff
 BuildRequires:  ImageMagick-devel
 BuildRequires:  Mesa-libGL-devel
@@ -51,13 +52,13 @@ BuildRequires:  librsync-devel
 #BuildRequires:  libwayland-egl-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  libxkbcommon-x11-devel
-BuildRequires:  openssl-devel
-# for 'tic'
 BuildRequires:  ncurses-devel
+BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  terminfo
 BuildRequires:  wayland-devel
 BuildRequires:  wayland-protocols-devel
+BuildRequires:  xxhash-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(dbus-1)
 # Python requirements for Factory and Leap
@@ -111,7 +112,7 @@ shell-integration [bash,fish,zsh] file(s) for the Kitty terminal; this package c
 #%%autosetup -p1 -a 1
 %setup -a 1
 %patch0
-%patch1 -p1
+#%%patch1 -p1
 %patch2
 
 %if 0%{?suse_version} > 1500

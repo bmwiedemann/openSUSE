@@ -1,3 +1,4 @@
 addFilter("non-executable-script *");
+addFilter("python-bytecode-inconsistent-mtime *");
 addFilter("potential-bashisms /usr/lib64/kitty/shell-integration/ssh/bootstrap-utils.sh");
 addFilter("hidden-file-or-dir /usr/lib64/kitty/shell-integration/zsh/.zshenv");

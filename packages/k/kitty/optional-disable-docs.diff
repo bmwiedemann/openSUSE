@@ -1,6 +1,6 @@
---- setup.py.smb	2023-07-10 10:36:07.831578320 -0400
-+++ setup.py	2023-07-10 10:40:20.503925434 -0400
-@@ -61,6 +61,7 @@
+--- setup.py.smb	2023-09-21 01:30:53.606748707 -0400
++++ setup.py	2023-09-21 01:36:16.627212417 -0400
+@@ -143,6 +143,7 @@
      verbose: int = 0
      sanitize: bool = False
      prefix: str = './linux-package'
@@ -8,8 +8,8 @@
      dir_for_static_binaries: str = 'build/static'
      skip_code_generation: bool = False
      clean_for_cross_compile: bool = False
-@@ -1158,12 +1159,13 @@
-         c(base_path, ddir='', rx=exclude, force=True, optimize=optimize, quiet=1, workers=num_workers)
+@@ -1149,12 +1150,13 @@
+         invalidation_mode=py_compile.PycInvalidationMode.UNCHECKED_HASH, ddir='')
  
  
 -def create_linux_bundle_gunk(ddir: str, libdir_name: str) -> None:
@@ -28,7 +28,7 @@
      for (icdir, ext) in {'256x256': 'png', 'scalable': 'svg'}.items():
          icdir = os.path.join(ddir, 'share', 'icons', 'hicolor', icdir, 'apps')
          safe_makedirs(icdir)
-@@ -1541,7 +1543,7 @@
+@@ -1536,7 +1538,7 @@
      if not for_freeze and not bundle_type.startswith('macos-'):
          build_static_kittens(args, launcher_dir=launcher_dir)
      if not is_macos:
@@ -37,7 +37,7 @@
  
      if bundle_type.startswith('macos-'):
          create_macos_bundle_gunk(ddir, for_freeze, args)
-@@ -1644,6 +1646,12 @@
+@@ -1640,6 +1642,12 @@
          help='Where to create the linux package'
      )
      p.add_argument(

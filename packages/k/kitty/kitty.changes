@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Sep 21 05:01:36 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Removing fix-librsync-leap.diff (no longer needed)
+- Updating optional-disable-docs.diff for changes to setup.py
+- Updating go vendor tarball
+- Update to 0.30.0:
+  * A new transfer kitten that can be used to transfer files efficiently over
+    the TTY device
+  * ssh kitten: A new configuration directive to automatically forward the
+    kitty remote control socket
+  * Allow easily building kitty from source needing the installation of only
+    C and Go compilers. All other dependencies are automatically vendored
+  * kitten @ set-user-vars: New remote control command to set user variables
+    on a window (#6502)
+  * kitten @ ls: Add user variables set on windows to the output (#6502)
+  * kitten @ ls: Allow limiting output to matched windows/tabs (#6520)
+  * kitten icat: Fix image being displayed one cell to the right when using
+    both --place and --unicode-placeholder (#6556)
+  * kitten run-shell: Make kitty terminfo database available if needed before
+    starting the shell
+  * macOS: Fix keyboard shortcuts in the Apple global menubar not being
+    changed when reloading the config
+  * Fix a crash when resizing an OS Window that is displaying more than one
+    image and the new size is smaller than the image needs (#6555)
+  * Remote control: Allow using a random TCP port as the remote control
+    socket and also allow using TCP sockets in listen_on
+  * unicode_input kitten: Add an option to specify the startup tab (#6552)
+  * X11: Print an error to STDERR instead of refusing to start when the user
+    sets a custom window icon larger than 128x128 (#6507)
+  * Remote control: Allow matching by neighbor of active window. Useful for
+    navigation plugins like vim-kitty-navigator
+  * Fix a regression that caused changing text_fg_override_threshold or
+    text_composition_strategy via config reload causing incorrect rendering (#6559)
+  * When running a shell for --hold set the env variable KITTY_HOLD=1 to allow
+    users to customize what happens (#6587)
+  * When multiple confirmable close requests are made focus the existing close
+    confirmation window instead of opening a new one for each request (#6601)
+  * Config file format: allow splitting lines by starting subsequent lines
+    with a backslash (#6603)
+  * ssh kitten: Fix a regression causing hostname directives in ssh.conf not
+    matching when username is specified (#6609)
+  * diff kitten: Add support for files that are identical apart from mode
+    changes (#6611)
+  * Wayland: Do not request idle inhibition for full screen windows (#6613)
+  * Adjust the workaround for non-linear blending of transparent pixels in
+    compositors to hopefully further reduce fringing around text with certain
+    color issues (#6534)
+
+-------------------------------------------------------------------
 Thu Jul 27 06:36:40 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.29.2:
