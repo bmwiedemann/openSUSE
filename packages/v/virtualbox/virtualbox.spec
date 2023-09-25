@@ -217,6 +217,7 @@ BuildRequires:  python3-devel
 BuildRequires:  rpm
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  update-desktop-files
 BuildRequires:  which
 BuildRequires:  xorg-x11-server
@@ -247,7 +248,6 @@ BuildRequires:  pkgconfig(xrandr)
 Requires:       %{name}-kmp = %{version}
 Requires(pre):  %fillup_prereq
 Requires(pre):  permissions
-Requires(pre):  shadow
 Recommends:     %{name}-gui = %{version}
 # package i4l-vbox from source package i4l-base shares the directory /etc/vbox
 # with us, but with different owner.
@@ -256,6 +256,7 @@ Conflicts:      i4l-vbox
 Provides:       %{name}-ose = %{version}
 Obsoletes:      %{name}-ose < %{version}
 %{?systemd_ordering}
+%{?sysusers_requires}
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
 %else
@@ -337,6 +338,7 @@ Obsoletes:      xorg-x11-driver-virtualbox-ose < %{version}
 %if ! 0%{?suse_version} > 1325
 Requires(pre):  net-tools-deprecated
 %endif
+%{?sysusers_requires}
 
 %description guest-tools
 VirtualBox guest addition tools.
@@ -529,6 +531,23 @@ echo "build VNC extension pack"
 # tar must use GNU, not POSIX, format here
 sed -i 's/tar /tar --format=gnu /' src/VBox/ExtPacks/VNC/Makefile.kmk
 kmk -C src/VBox/ExtPacks/VNC packing
+
+######################################################
+# system users and groups
+cat >> vbox.conf << EOF
+g vboxusers - - - -
+EOF
+
+cat >> vbox-guest-tools.conf << EOF
+g vboxguest - - - -
+g vboxsf - - - -
+%if 0%{?suse_version} <= 1500
+g vboxvideo - - - -
+%endif
+EOF
+
+%sysusers_generate_pre vbox.conf vbox vbox.conf
+%sysusers_generate_pre vbox-guest-tools.conf vbox-guest-tools vbox-guest-tools.conf
 
 %install
 #################################
@@ -735,6 +754,11 @@ done
 popd
 #
 ######################################################
+# system users and groups
+
+install -Dm0644 vbox.conf %{buildroot}%{_sysusersdir}/vbox.conf
+install -Dm0644 vbox-guest-tools.conf %{buildroot}%{_sysusersdir}/vbox-guest-tools.conf
+######################################################
 # run fdupes
 ######################################################
 #run fdupes because we lost link for virtualbox/components directory
@@ -750,18 +774,11 @@ popd
 # scriptlets - pre
 ######################################################
 
-%pre
-getent group vboxusers >/dev/null || groupadd -r vboxusers
+%pre -f vbox.pre
 %service_add_pre vboxdrv.service
 %service_add_pre vboxautostart-service.service
 
-%pre guest-tools
-# Add groups for seamless mode and shared folders:
-getent group vboxguest >/dev/null || groupadd -r vboxguest
-getent group vboxsf >/dev/null || groupadd -r vboxsf
-%if 0%{?suse_version} <= 1500
-getent group vboxvideo >/dev/null || groupadd -r vboxvideo
-%endif
+%pre guest-tools -f vbox-guest-tools.pre
 %service_add_pre vboxadd-service.service
 
 %pre websrv
@@ -940,6 +957,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_unitdir}/multi-user.target.wants/vboxweb-service.service
 %{_unitdir}/multi-user.target.wants/vboxdrv.service
 %{_unitdir}/multi-user.target.wants/vboxautostart-service.service
+%{_sysusersdir}/vbox.conf
 %{_sbindir}/rcvboxdrv
 %{_sbindir}/rcvboxautostart
 %{_sbindir}/vboxconfig
@@ -1006,6 +1024,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_sysconfdir}/X11/xinit/xinitrc.d/98vboxadd-xclient
 %{_unitdir}/vboxclient.service
 %{_unitdir}/vboxservice.service
+%{_sysusersdir}/vbox-guest-tools.conf
 %dir %{_sysconfdir}/xdg
 %dir %{_sysconfdir}/xdg/autostart
 %{_sysconfdir}/xdg/autostart/vboxclient.desktop

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 22 12:19:15 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Convert to systemd-sysusers
+
+-------------------------------------------------------------------
+Wed Sep 20 22:06:33 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix problems wiith 6.5 kernels and shared folders. boo#1215463.
+  Fix build errors for Leap 15.4, 15.5, and 15.6 due to gso.h not found.
+
+-------------------------------------------------------------------
 Fri Aug 18 18:18:19 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 
 - An additional fix was needed to handle flexible arrays in kernel 6.5+.

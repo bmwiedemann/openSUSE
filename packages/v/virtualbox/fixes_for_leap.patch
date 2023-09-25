@@ -2,7 +2,7 @@ Index: VirtualBox-7.0.10/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.
 ===================================================================
 --- VirtualBox-7.0.10.orig/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
 +++ VirtualBox-7.0.10/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.c
-@@ -89,6 +89,17 @@
+@@ -89,6 +89,21 @@
  #define VBOXNETFLT_OS_SPECFIC 1
  #include "../VBoxNetFltInternal.h"
  
@@ -14,7 +14,11 @@ Index: VirtualBox-7.0.10/src/VBox/HostDrivers/VBoxNetFlt/linux/VBoxNetFlt-linux.
 +# endif
 +
 +#if !defined(skb_gso_segment)
++#if defined(CONFIG_SUSE_VERSION) && (CONFIG_SUSE_VERSION == 15)
++//#include <config/net/mpls/gso.h>
++#else
 +#include <net/gso.h>
++#endif
 +#endif
 +
  typedef struct VBOXNETFLTNOTIFIER {

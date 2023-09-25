@@ -116,3 +116,121 @@ Index: VirtualBox-7.0.10/include/VBox/VBoxGuest.h
      } u;
  } VBGLIOCLOG, RT_FAR *PVBGLIOCLOG;
  /** @} */
+Index: VirtualBox-7.0.10/src/VBox/Additions/linux/sharedfolders/regops.c
+===================================================================
+--- VirtualBox-7.0.10.orig/src/VBox/Additions/linux/sharedfolders/regops.c
++++ VirtualBox-7.0.10/src/VBox/Additions/linux/sharedfolders/regops.c
+@@ -1,4 +1,4 @@
+-/* $Id: regops.c $ */
++/* $Id: regops.c 100799 2023-08-04 18:04:14Z vboxsync $ */
+ /** @file
+  * vboxsf - VBox Linux Shared Folders VFS, regular file inode and file operations.
+  */
+@@ -58,6 +58,14 @@
+ # define SEEK_END 2
+ #endif
+ 
++#if RTLNX_VER_MIN(6,4,0)
++# define VBOX_ITER_IOV_ADDR(a_iter)  iter_iov_addr(a_iter)
++#elif RTLNX_VER_MIN(3,19,0)
++# define VBOX_ITER_IOV_ADDR(a_iter)  (a_iter->kvec->iov_base + a_iter->iov_offset)
++#else
++# define VBOX_ITER_IOV_ADDR(a_iter)  (a_iter->iov->iov_base  + a_iter->iov_offset)
++#endif
++
+ #if RTLNX_VER_MAX(3,16,0)
+ # define iter_is_iovec(a_pIter) ( !((a_pIter)->type & ITER_KVEC) )
+ #elif RTLNX_VER_MAX(3,19,0)
+@@ -96,6 +104,14 @@
+ # define VBSF_GET_ITER_IOV(_iter) iter->iov
+ #endif
+ 
++/** @def  VBOX_IOV_ITER_IS_KVEC
++ * Test if iov iter type is ITER_KVEC. */
++#if RTLNX_VER_MIN(4,20,0)
++# define VBOX_IOV_ITER_IS_KVEC(a_iter)  iov_iter_is_kvec(a_iter)
++#else
++# define VBOX_IOV_ITER_IS_KVEC(a_iter)  (VBSF_GET_ITER_TYPE(iter) & ITER_KVEC)
++#endif
++
+ 
+ /*********************************************************************************************************************************
+ *   Structures and Typedefs                                                                                                      *
+@@ -254,7 +270,11 @@ static ssize_t vbsf_iov_iter_get_pages(s
+             size_t              cPagesLocked;
+ 
+             down_read(&pTask->mm->mmap_sem);
+-            cPagesLocked = get_user_pages(pTask, pTask->mm, uPtrFrom, cPages, iter->v_write, 1 /*force*/, papPages, NULL);
++            cPagesLocked = get_user_pages(pTask, pTask->mm, uPtrFrom, cPages, iter->v_write, 1 /*force*/, papPages,
++# if RTLNX_VER_MAX(6, 5, 0)
++					  NULL
++# endif
++					  );
+             up_read(&pTask->mm->mmap_sem);
+             if (cPagesLocked == cPages) {
+                 size_t cbRet = (cPages << PAGE_SHIFT) - offPg0;
+@@ -367,8 +387,8 @@ static size_t copy_from_iter(uint8_t *pb
+                 if (cbThisCopy > cbToCopy)
+                     cbThisCopy = cbToCopy;
+                 if (pSrcIter->type & ITER_KVEC)
+-                    memcpy(pbDst, (void *)pSrcIter->iov->iov_base + pSrcIter->iov_offset, cbThisCopy);
+-                else if (copy_from_user(pbDst, pSrcIter->iov->iov_base + pSrcIter->iov_offset, cbThisCopy) != 0)
++                    memcpy(pbDst, (void *)VBOX_ITER_IOV_ADDR(pSrcIter), cbThisCopy);
++                else if (copy_from_user(pbDst, VBOX_ITER_IOV_ADDR(pSrcIter), cbThisCopy) != 0)
+                     break;
+                 pbDst    += cbThisCopy;
+                 cbToCopy -= cbThisCopy;
+@@ -406,8 +426,8 @@ static size_t copy_to_iter(uint8_t const
+                 if (cbThisCopy > cbToCopy)
+                     cbThisCopy = cbToCopy;
+                 if (pDstIter->type & ITER_KVEC)
+-                    memcpy((void *)pDstIter->iov->iov_base + pDstIter->iov_offset, pbSrc, cbThisCopy);
+-                else if (copy_to_user(pDstIter->iov->iov_base + pDstIter->iov_offset, pbSrc, cbThisCopy) != 0) {
++                    memcpy((void *)VBOX_ITER_IOV_ADDR(pDstIter), pbSrc, cbThisCopy);
++                else if (copy_to_user(VBOX_ITER_IOV_ADDR(pDstIter), pbSrc, cbThisCopy) != 0) {
+                     break;
+                 }
+                 pbSrc    += cbThisCopy;
+@@ -1462,12 +1482,16 @@ DECLINLINE(int) vbsf_lock_user_pages(uin
+     ssize_t cPagesLocked = get_user_pages_unlocked(current, current->mm, uPtrFrom, cPages, papPages,
+                                                    fWrite ? FOLL_WRITE | FOLL_FORCE : FOLL_FORCE);
+ # elif RTLNX_VER_MIN(4,0,0)
+-    ssize_t cPagesLocked = get_user_pages_unlocked(current, current->mm, uPtrFrom, cPages, fWrite, 1 /*force*/, papPages);
+-# else
++	    ssize_t cPagesLocked = get_user_pages_unlocked(current, current->mm, uPtrFrom, cPages, fWrite, 1 /*force*/, papPages);
++	# else
+     struct task_struct *pTask = current;
+     ssize_t cPagesLocked;
+     down_read(&pTask->mm->mmap_sem);
+-    cPagesLocked = get_user_pages(pTask, pTask->mm, uPtrFrom, cPages, fWrite, 1 /*force*/, papPages, NULL);
++    cPagesLocked = get_user_pages(pTask, pTask->mm, uPtrFrom, cPages, fWrite, 1 /*force*/, papPages,
++# if RTLNX_VER_MAX(6, 5, 0)
++    NULL
++#endif
++    );
+     up_read(&pTask->mm->mmap_sem);
+ # endif
+     *pfLockPgHack = false;
+@@ -2152,7 +2176,8 @@ static int vbsf_iter_lock_pages(struct i
+     int    rc       = 0;
+ 
+     Assert(iov_iter_count(iter) + pStash->cb > 0);
+-    if (!(VBSF_GET_ITER_TYPE(iter) & ITER_KVEC)) {
++    if (!VBOX_IOV_ITER_IS_KVEC(iter))
++    {
+         /*
+          * Do we have a stashed page?
+          */
+@@ -2309,11 +2334,7 @@ static int vbsf_iter_lock_pages(struct i
+                 cbSeg = iov_iter_single_seg_count(iter);
+             }
+ 
+-# if RTLNX_VER_MIN(3,19,0)
+-            pbBuf    = iter->kvec->iov_base + iter->iov_offset;
+-# else
+-            pbBuf    = iter->iov->iov_base  + iter->iov_offset;
+-# endif
++            pbBuf = VBOX_ITER_IOV_ADDR(iter);
+             offStart = (uintptr_t)pbBuf & PAGE_OFFSET_MASK;
+             if (!cPages)
+                 offPage0 = offStart;

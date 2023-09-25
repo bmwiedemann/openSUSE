@@ -811,7 +811,7 @@ Index: VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_drv.h
 ===================================================================
 --- VirtualBox-7.0.10.orig/src/VBox/Additions/linux/drm/vbox_drv.h
 +++ VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_drv.h
-@@ -88,6 +88,12 @@
+@@ -87,6 +87,12 @@
  #else
  # define RTLNX_RHEL_MAX(a_iMajor, a_iMinor) (0)
  #endif
