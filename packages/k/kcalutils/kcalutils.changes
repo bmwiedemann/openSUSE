@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 22 07:09:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Fix runtime dependencies (boo#1215517)
+
+-------------------------------------------------------------------
 Tue Sep 12 11:55:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1

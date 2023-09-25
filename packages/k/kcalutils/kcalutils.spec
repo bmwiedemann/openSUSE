@@ -51,7 +51,7 @@ applications access and use calendar data via the KCalCore library.
 
 %package -n libKPim5CalendarUtils5
 Summary:        Library with utility functions for handling calendar data
-%requires_eq    kcalutils
+Requires:       kcalutils = %{version}
 
 %description  -n libKPim5CalendarUtils5
 This library provides a set of utility functions that help
