@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 23 04:33:42 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.38.2:
+  * fix(terminal): wrap lines when adding characters in
+    alternate screen
+
+-------------------------------------------------------------------
 Sat Sep  9 13:59:14 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Add session-manager and fixture-tests plugins.

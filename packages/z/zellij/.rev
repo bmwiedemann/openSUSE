@@ -215,4 +215,15 @@
 </comment>
     <requestid>1110146</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>970adf5c0a7bd198ba5fafba5e3f4b51</srcmd5>
+    <version>0.38.2</version>
+    <time>1695664934</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.38.2:
+  * fix(terminal): wrap lines when adding characters in
+    alternate screen
+</comment>
+    <requestid>1113179</requestid>
+  </revision>
 </revisionlist>
