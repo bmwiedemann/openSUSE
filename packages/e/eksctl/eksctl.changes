@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 22 14:24:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.158.0:
+  * Release notes for 0.158.0
+  * Bump `github.com/cloudflare/cfssl` to fix indirect deps DOS
+    vulnerability (#7067)
+  * Upgrade goproxy to fix DoS vulnerability
+  * Call `kubectl version` command with `--output=json` flag
+    (#7032)
+  * Update README.md
+  * Corrected Chocolatey Install Command
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Fri Sep 15 10:41:45 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.157.0:

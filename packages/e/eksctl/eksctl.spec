@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           eksctl
-Version:        0.157.0
+Version:        0.158.0
 Release:        0
 Summary:        The official CLI for Amazon EKS
 License:        Apache-2.0
@@ -34,8 +34,7 @@ eksctl is a simple CLI tool for creating clusters on EKS - Amazon's new managed 
 You can create a cluster in minutes with just one command – eksctl create cluster!
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p1 -a 1
 
 %build
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
