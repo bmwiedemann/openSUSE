@@ -26,7 +26,7 @@
 %endif
 %define lname   libmpv2
 Name:           mpv
-Version:        0.36.0+git20230826.83c0e980
+Version:        0.36.0+git20230923.140d0185
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later

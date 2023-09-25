@@ -1,4 +1,236 @@
 -------------------------------------------------------------------
+Sat Sep 23 18:56:16 UTC 2023 - llyyr.public@gmail.com
+
+- Update to version 0.36.0+git20230923.140d0185:
+  * ci/mingw: drop old workarounds for vulkan-headers
+  * m_config_core: remove mp_read_option_raw
+  * cuda: move --cuda-device to cuda_opts group
+  * opengl/context_win: move opengl-dwmflush to wingl_opts group
+  * libmpv_gl: replace mp_read_option_raw call
+  * video/out/gpu: replace mp_read_option_raw call
+  * stream: remove unneeded mp_read_option_raw call
+  * options: rename some opt structs to *_opts instead of *_params
+  * stream_bluray: move --bluray-device to stream_bluray_opts
+  * stream_cdda: move cdrom-device to cdda_params
+  * demuxer: remove several mp_read_option_raw calls
+  * demux: make demux opts public
+  * options: move some demux-specific opts to demux opts
+  * demux_lavf: set duration to -1 if unknown
+  * DOCS/options: remove some stray tabs
+  * win32: don't remove WS_CAPTION from style
+  * win32: enable custom WM_NCHITTEST also when title bar is hidden
+  * win32: set window_corners to default for fullscreen
+  * win32: add --window-corners
+  * win32: fix fit_window_on_screen to account for invisible borders
+  * win32: reduce top border thickness to imitate DWM invisible borders
+  * win32: add an option to control window title bar state
+  * win32: add an option to change window affinity
+  * wayland: ensure at least a scale factor of 1 when drawing cursor
+  * github/workflows: comment PR artifacts links
+  * win32: explicitly guard dark mode calls by Windows version
+  * vo_gpu_next: use proper color for subtitles
+  * {github/workflows,ci}: install and enable libplacebo in macOS CI
+  * github/workflows: add macOS 13 build
+  * vo_gpu: don't override scaler options with default ones
+  * builtin.conf: remove unneeded vlang/alang/slang lines
+  * vo_gpu: allow deband-iterations to be 0
+  * drm: remove selecting the card number with --drm-connector
+  * options: remove --vf-defaults and --af-defaults
+  * options: remove deprecated --record-file option
+  * vo_sixel: change exit-clear handling to OPT_REPLACED
+  * options: remove a few options marked with .deprecation_message
+  * command: stop restarting playback when writing to playlist-pos
+  * command: remove some old deprecated properities
+  * options: remove ancient option fallbacks/deprecation
+  * builtin.conf: remove deprecated opengl-hq profile
+  * demux_playlist: add --directory-mode=auto
+  * various: add missing include in header flles
+  * sub/ass_mp: filters/f_lavfi: forward declare mp_log
+  * sd_ass: use directive instead of writing magic constants
+  * vo_dmabuf_wayland: support osd rendering when there's no video
+  * mp_image: add force_window field
+  * demux_mf: detect svg
+  * sdl_gamepad: fix button detection on modern controllers
+  * TOOLS/autocrop.lua: switch to auto-copy hwdec during cropdetect
+  * TOOLS/autocrop.lua: cleanup timers correctly
+  * vo_gpu_next: fix unscaled screenshot with --blend-subtitles
+  * TOOLS/autocrop.lua: use VO crop always
+  * options: make video-crop validation more strict
+  * player/video: don't try to restore old crop when invalid were provided
+  * vo_gpu: match libplacebo debanding defaults
+  * vo_gpu: match libplacebo peak detection defaults
+  * DOCS: update notes about new profiles
+  * vo_gpu: default to dscale=hermite
+  * DOCS/options: document hermite scaler
+  * DOCS/options: remove potentially offensive language
+  * DOCS/options: remove spline36 section
+  * DOCS/options: change wording to be less inflammatory
+  * af_scaletempo2: fix missing variable init, remove redundant init
+  * af_scaletempo2: truncate final packet to expected length
+  * af_scaletempo2: fix processing of final packet
+  * af_scaletempo2: calculate latency by center of search block
+  * af_scaletempo2: restore exact audio sync on return to 1x speed
+  * af_scaletempo2: fix speed change latency and pts spikes
+  * af_scaletempo2: fix audio artifact on initial WSOLA iteration
+  * af_scaletempo2: fix audio offset when playing back at 1x speed
+  * af_scaletempo2: fix inconsistent search block position after init
+  * af_scaletempo2: move latency calculation to internal function
+  * af_scaletempo2: fix missing dereference when processing final packet
+  * af_scaletempo2: fix audio-video de-sync caused by speed changes
+  * DOCS/vo: remove some dated deprecation warnings about --vo=rpi
+  * meson: enable cplugins on Windows
+  * cplugin: allow loading mpv_* symbols dynamically
+  * libmpv: remove not used mpv.pc.in
+  * osdep/io: provide dlopen, etc. abstraction wrappers for windows
+  * scripting: dll cplugins
+  * builtin.conf: modernize internal profiles
+  * vo: change tscale to oversample by default
+  * vo: make cscale follow scale by default
+  * vo: enable correct-downscaling, linear-downscaling, sigmoid-upscaling
+  * vo: avoid unnecessary redraws when the OSD shows
+  * demux: prepend some cache options with demuxer
+  * filter_kernels: remove bcspline filter
+  * filter_kernels: fix bcspline params
+  * filter_kernels: add hermite filter
+  * vo_gpu_next: fix blur and taper values being zero
+  * vo_dmabuf_wayland: support 90 degree rotations
+  * DOCS/vo: remove outdated reference to --vo-vaapi-deinit-mode
+  * demux_mkv: support ProjectionPoseRoll element
+  * demux_mkv: support PixelCrop* elements
+  * TOOLS/matroska.py: add PixelCrop* elements
+  * demux: add crop to mp_codec_params
+  * win32: remove noisy debug log
+  * osc: add scrolling to audio/sub buttons
+  * vo_gpu: remove --scale-wblur etc
+  * filter_kernels: add ewa_lanczos4sharpest
+  * filter_kernels: refine ewa_lanczossharp/soft constants
+  * filter_kernels: use true jinc radius
+  * filter_kernels: replace magic jinc radius by constant (cosmetic)
+  * filter_kernels: properly sharpen/blur filter radius
+  * vo_gpu: slight bump to hard-coded option size limits
+  * vo_gpu_next: remove ewa_lanczossharp nag
+  * TOOLS/lua/autoload: rename local variable to lowercase
+  * TOOLS/lua/autoload: pass extensions to recursive call
+  * hwtransfer: make probe_formats logging less spammy
+  * vo_gpu: vo_gpu_next: support --icc-3dlut-size=auto
+  * vo_gpu_next: update for new ICC profile API
+  * present_sync: allow future timestamps
+  * vo_gpu_next: map --scaler-resizes-only
+  * TOOLS/lua/autoload: change EXTENSIONS_TARGET to a local variable
+  * TOOLS/lua/autoload: fix specify loading only one type of files
+  * TOOLS/lua/autoload: add directory_mode option
+  * TOOLS/lua/autoload: add recursive directory loading
+  * TOOLS/lua/autoload: avoid adding entries to the playlist more then once
+  * TOOLS/lua/autoload: support directories
+  * meson: check vulkan version
+  * stream: accept dav:// and davs:// urls
+  * meson: rename last feature with underscore
+  * DOCS/options: add catmull_rom as an example for --scale
+  * sd_lavc: fix subtitle presentation time
+  * Revert "sub: add auto option to --sub-fix-timing"
+  * vd_lavc: by default enable cropping by decoder
+  * DOCS/lua.rst: fix typo
+  * player: redo --subs-fallback-forced
+  * vo: change vsync_interval to double
+  * sd_lavc: account for floating point inaccuracy
+  * player/video: apply crop for all frames in vo_frame
+  * screenshot: support crop with --screenshot-sw
+  * vo_gpu_next: support --blend-subtitles when taking screenshoot
+  * vo_gpu: support crop in gl_video_screenshot
+  * vo_gpu_next: support crop in video_screenshot
+  * vo_gpu_next: forwards compatibility with pl_cache
+  * vd_lavc: disable cropping by decoder
+  * mp_image: add missing crop initialization
+  * video: allow overriding container crop if it is present
+  * stats.lua: don't display full frame crop
+  * player/command: mark video-params/crop- unavailable if empty
+  * m_option: return empty rect when no width/height is available
+  * autocrop.lua: enable vo_crop mode by default
+  * autocrop.lua: don't remove crop on startup/exit
+  * autocrop.lua: detect if crop is enabled based on prop
+  * m_option: make m_rect_apply center based
+  * sub: add auto option to --sub-fix-timing
+  * Revert "sd_lavc: use SUB_GAP_THRESHOLD for overlaps/gaps"
+  * path-{darwin,unix}: save cache to subdir when using non-XDG path
+  * meson: add -Bsymbolic for libmpv
+  * vo: vulkan: allow picking devices by UUID
+  * meson: include our local copy of libavutil uuid if ffmpeg is too old
+  * misc: add copy of uuid from ffmpeg
+  * {zsh,bash}-completion: use config when autocompleting profiles
+  * stream/dvbin: recommend to use specific channels.conf file names
+  * stream/dvbin: drop too verbose messages
+  * stream/dvbin: add some helpful verbose output
+  * stream/dvbin: detect ZAP channel configs looking like VDR configs
+  * stream/dvbin: do not forget channel list for multiply delivery systems
+  * stream/dvbin: add support for delivery system ISDB-T
+  * vo_gpu_next: don't rotate gamut visualization
+  * demux_lavf: get total duration from track durations
+  * {zsh,bash}-completion: add missing --no-config flags
+  * options: remove unnecessary clamping on video-pan-x/y
+  * Revert "aspect: change --video-pan-x/y to be relative to the destination rect"
+  * osc: add scrolling to the seekbar
+  * ci/lint: ignore subject length for revert commits
+  * vo_gpu: remove --tone-mapping-mode
+  * loadfile: fix forced subtitles not respecting slang
+  * builtin.conf: add --allow-delayed-peak-detect=no to gpu-hq
+  * win32: allow heap cache optimization and memory decommit
+  * win32: add BASE_SEARCH_PATH_PERMANENT to SetSearchPathMode
+  * win32: don't load dynamically always available functions
+  * win32/displayconfig: remove custom struct redefinition
+  * osc: remove toggle for forced only subpictures
+  * stats.lua: display --video-crop values when used
+  * man/input: remove trailing spaces
+  * player/command: add video-params/crop-[w,h,x,y]
+  * autocrop.lua: use new --video-crop
+  * vo: add --video-crop
+  * player/video: don't copy mp_image_params when not needed
+  * m_option: add OPT_RECT
+  * mp_image: add image crop rect to mp_image_params
+  * aspect: don't override src_start/src_end
+  * common: constify mp_rect_equals
+  * player/command: remove video-aspect property
+  * demux_playlist: default to --directory-mode=lazy
+  * stats.lua: enable --tone-mapping-visualize while stats shown
+  * vo_gpu_next: improve --tonemapping-visualize
+  * stats.lua: display hdr metadata and peak detection
+  * command: add hdr-metadata property
+  * vo_gpu_next: add support for VOCTRL_HDR_METADATA
+  * vo: add VOCTRL_HDR_METADATA to get mp_hdr_metadata
+  * csputils: add mp_hdr_metadata
+  * input.conf: swap wheel up/down with wheel left/right
+  * loadfile: fix --no-subs-with-matching-audio with --slang
+  * osc: replace sub-forced-only with sub-forced-events-only
+  * command: remove sub-forced-only-cur property
+  * player: rename --sub-forced-only to --sub-forced-events-only
+  * player: remove auto choice from sub-forced-only
+  * ci/mingw: attempt to enable Vulkan Video Decoding
+  * README: update minimum windows version and clarify
+  * stats.lua: add hints about scrolling
+  * stats.lua: refactor video params display
+  * stats.lua: remove dummy new lines from headers
+  * stats.lua: display actual output video size after anamorphic correction
+  * player: add always to --subs-fallback-forced
+  * player: add --subs-match-os-language option
+  * loadfile: simplify default track selection a bit
+  * player: remove special auto option from alang/slang/vlang
+  * playlist: remove unused code to track redirects
+  * player: always write redirect entries for resuming playback
+  * vo_dmabuf_wayland: unmap osd surface when not needed
+  * vo_gpu_next: fix --target-contrast=inf
+  * README: replace outdated xinerama reference with xpresent
+  * f_lavfi: don't reject dynamic lavfi ins/outs
+  * osc: fix margin for forced-only subs toggle in bar layout
+  * osc: only add sub forced-only toggle to layout for DVD/PGS subs
+  * input: add missing windows multimedia keys
+  * command: add `sub-ass-extradata` property
+  * vo_gpu_next: update tmp params before rendering frame
+  * vo_gpu_next: make option shim consistent with new API
+  * vo_gpu_next: avoid duplicate code (cosmetic)
+  * vo_gpu_next: correctly set params.frame_mixer
+  * vo_gpu_next: don't nuke main options state in video_screenshot
+  * vo_gpu_next: don't override main options in draw_frame
+
+-------------------------------------------------------------------
 Sun Aug 27 10:19:59 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
 - Disable mujs backend for Leap because it's not available there
