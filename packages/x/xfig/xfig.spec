@@ -32,7 +32,6 @@ URL:            https://sourceforge.net/projects/mcj/
 #Source:        https://sourceforge.net/projects/mcj/files/xfig-%{version}.tar.xz/download#/xfig-%{version}.tar.xz
 Source:         xfig-%{version}.tar.xz
 Source1:        font-test.fig
-Source3:        xfig.sh
 Source4:        xfig.desktop
 Patch0:         xfig-3.2.6.dif
 Patch1:         xfig-3.2.9-dingbats.dif
@@ -63,10 +62,14 @@ BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xt)
 Requires:       efont-unicode
 Requires:       fontconfig
+%if 0%{?suse_version} >= 1699
+Requires:       (ghostscript-fonts-std or urw-base35-fonts)
+%else
 Requires:       ghostscript-fonts-std
+%endif
 Requires:       ifnteuro
 Requires:       netpbm
-Requires:       transfig
+Requires:       transfig >= %{version}
 Requires:       xorg-x11-fonts
 Requires:       xorg-x11-fonts-core
 Provides:       xfig.3.2.3d

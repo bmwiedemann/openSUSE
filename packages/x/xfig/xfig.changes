@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 25 06:55:31 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Allow more uptodate urw-base35-fonts instead ghostscript-fonts-std-converted
+- Require uptodate fig2dev aka transfig package to see multi byte characters
+- Remove not used xfig.sh
+
+-------------------------------------------------------------------
 Thu Sep 14 07:30:23 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Update to xfig 3.2.9

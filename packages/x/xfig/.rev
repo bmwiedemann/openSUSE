@@ -551,4 +551,14 @@ SPDX compliant license short name. MIT chosen as majority of files are under thi
   * xfig.3.2.5b-null.dif</comment>
     <requestid>1112310</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>9d91dc67db49cea53b7f6e0b95385599</srcmd5>
+    <version>3.2.9</version>
+    <time>1695665021</time>
+    <user>anag+factory</user>
+    <comment>- Allow more uptodate urw-base35-fonts instead ghostscript-fonts-std-converted
+- Require uptodate fig2dev aka transfig package to see multi byte characters
+- Remove not used xfig.sh</comment>
+    <requestid>1113365</requestid>
+  </revision>
 </revisionlist>
