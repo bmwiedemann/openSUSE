@@ -259,4 +259,20 @@
 - Fix bug in spec file (was missing /run/s3backer-ndb)</comment>
     <requestid>991825</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>28b8a134e7320eb861278ad842d29604</srcmd5>
+    <version>2.1.0</version>
+    <time>1695664950</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to release 2.1.0
+  + Avoid sending an empty Accept-Encoding header (issue #208)
+  + Use fallocate(FALLOC_FL_PUNCH_HOLE) for empty disk cache blocks (issue #200)
+  + Made sync(1) work on s3backer file to flush cached data (issue #197)
+  + Fixed bug where s3b_compress=deflate NDB flag would fail (issue #195)
+  + Fixed bug in zero cache &quot;current_cache_size&quot; stats value (issue #204)
+  + Reuse cURL handles after normal HTTP error codes (issue #199)
+  + Run modprobe(8) if needed when starting with the --nbd flag (issue #203)
+  + Use newer OpenSSL 3.0 API functions when available</comment>
+    <requestid>1113218</requestid>
+  </revision>
 </revisionlist>

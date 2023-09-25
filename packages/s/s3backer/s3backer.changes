@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 23 15:39:07 UTC 2023 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 2.1.0
+  + Avoid sending an empty Accept-Encoding header (issue #208)
+  + Use fallocate(FALLOC_FL_PUNCH_HOLE) for empty disk cache blocks (issue #200)
+  + Made sync(1) work on s3backer file to flush cached data (issue #197)
+  + Fixed bug where s3b_compress=deflate NDB flag would fail (issue #195)
+  + Fixed bug in zero cache "current_cache_size" stats value (issue #204)
+  + Reuse cURL handles after normal HTTP error codes (issue #199)
+  + Run modprobe(8) if needed when starting with the --nbd flag (issue #203)
+  + Use newer OpenSSL 3.0 API functions when available
+
+-------------------------------------------------------------------
 Sat Jul 30 18:16:05 UTC 2022 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Don't try to build with NBD until 15.3 or later
