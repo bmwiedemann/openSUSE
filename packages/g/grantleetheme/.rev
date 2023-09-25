@@ -727,4 +727,12 @@
     <comment>KDE release gear 23.08.1 (forwarded request 1110807 from krop)</comment>
     <requestid>1111110</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>93e3097d5a214ca2e33880200185d004</srcmd5>
+    <version>23.08.1</version>
+    <time>1695664856</time>
+    <user>anag+factory</user>
+    <comment>- Fix runtime dependencies (boo#1212455, boo#1215517)</comment>
+    <requestid>1112942</requestid>
+  </revision>
 </revisionlist>

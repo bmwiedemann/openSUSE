@@ -50,9 +50,7 @@ the grantleetheme library adds Grantlee theme support for PIM applications.
 %package -n libKPim5GrantleeTheme5
 Summary:        GrantleeTheme library for KDE PIM applications
 License:        LGPL-2.1-or-later
-%if %{with released}
-%requires_eq    grantleetheme
-%endif
+Requires:       grantleetheme = %{version}
 
 %description -n libKPim5GrantleeTheme5
 The GrantleeTheme library
