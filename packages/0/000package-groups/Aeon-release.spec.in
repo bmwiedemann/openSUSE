@@ -1,0 +1,243 @@
+#
+# spec file for package openSUSE-Aeon-release.spec
+#
+# Copyright (c) 2020 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+Name:           Aeon-release
+Version:        ___VERSION___
+Release:        0
+Summary:        ___SUMMARY___ ___BETA_VERSION___
+License:        GPL-2.0-or-later
+Group:          System/Fhs
+Source100:      weakremovers.inc
+BuildRequires:  skelcd-openSUSE
+# Make sure we are at SLES12 SP2 level
+PreReq:         glibc >= 2.19
+# in rare cases, 'ln' is not found...
+Requires(post): coreutils
+Suggests:       branding-openSUSE
+Suggests:       distribution-logos-openSUSE-Aeon
+Suggests:       openSUSE-build-key
+Suggests:       openSUSE-repos-Aeon
+Conflicts:      distribution-release
+Conflicts:      kernel < 4.4
+Provides:       distribution-release
+# Aeon is a SUSE Linux type distribution
+Provides:       suse-release = %{version}-%{release}
+Provides:       suse-release-oss = %{version}-%{release}
+# Give zypp a hint that this product must be kept up-to-date using zypper dup, not up (boo#1061384)
+Provides:       product-update() = dup
+# With more than one product in the FTP tree, yast needs to know which products are installable
+# The name is referenced by the control file as well
+Provides:       system-installation() = Aeon
+# bnc#826592
+Provides:       weakremover(kernel-default) < 3.11
+Provides:       weakremover(kernel-desktop) < 4.2
+Provides:       weakremover(kernel-ec2) < 3.11
+Provides:       weakremover(kernel-pae) < 3.11
+Provides:       weakremover(kernel-vanilla) < 3.11
+Provides:       weakremover(kernel-xen) < 3.11
+# migrated from MANUAL_OBSOLETES/packages
+Provides:       weakremover(boost-license1_56_0)
+Provides:       weakremover(boost-license1_59_0)
+Provides:       weakremover(gpg-pubkey-3d25d3d9-36e12d04)
+Provides:       weakremover(lib++dfb-1_7-6)
+Provides:       weakremover(libastro-qt5-1)
+Provides:       weakremover(libboost_atomic1_59_0)
+Provides:       weakremover(libboost_atomic1_60_0)
+Provides:       weakremover(libboost_atomic1_62_0)
+Provides:       weakremover(libboost_atomic1_63_0)
+Provides:       weakremover(libboost_chrono1_59_0)
+Provides:       weakremover(libboost_chrono1_60_0)
+Provides:       weakremover(libboost_chrono1_62_0)
+Provides:       weakremover(libboost_chrono1_63_0)
+Provides:       weakremover(libboost_container1_59_0)
+Provides:       weakremover(libboost_container1_60_0)
+Provides:       weakremover(libboost_container1_62_0)
+Provides:       weakremover(libboost_container1_63_0)
+Provides:       weakremover(libboost_context1_59_0)
+Provides:       weakremover(libboost_context1_60_0)
+Provides:       weakremover(libboost_context1_62_0)
+Provides:       weakremover(libboost_context1_63_0)
+Provides:       weakremover(libboost_coroutine1_59_0)
+Provides:       weakremover(libboost_coroutine1_60_0)
+Provides:       weakremover(libboost_coroutine1_62_0)
+Provides:       weakremover(libboost_coroutine1_63_0)
+Provides:       weakremover(libboost_date_time1_59_0)
+Provides:       weakremover(libboost_date_time1_60_0)
+Provides:       weakremover(libboost_date_time1_62_0)
+Provides:       weakremover(libboost_date_time1_63_0)
+Provides:       weakremover(libboost_filesystem1_59_0)
+Provides:       weakremover(libboost_filesystem1_60_0)
+Provides:       weakremover(libboost_filesystem1_62_0)
+Provides:       weakremover(libboost_filesystem1_63_0)
+Provides:       weakremover(libboost_graph1_59_0)
+Provides:       weakremover(libboost_graph1_60_0)
+Provides:       weakremover(libboost_graph1_62_0)
+Provides:       weakremover(libboost_graph1_63_0)
+Provides:       weakremover(libboost_iostreams1_59_0)
+Provides:       weakremover(libboost_locale1_59_0)
+Provides:       weakremover(libboost_log1_59_0)
+Provides:       weakremover(libboost_log1_60_0)
+Provides:       weakremover(libboost_log1_62_0)
+Provides:       weakremover(libboost_log1_63_0)
+Provides:       weakremover(libboost_math1_59_0)
+Provides:       weakremover(libboost_program_options1_59_0)
+Provides:       weakremover(libboost_python1_59_0)
+Provides:       weakremover(libboost_random1_59_0)
+Provides:       weakremover(libboost_regex1_59_0)
+Provides:       weakremover(libboost_regex1_60_0)
+Provides:       weakremover(libboost_regex1_62_0)
+Provides:       weakremover(libboost_regex1_63_0)
+Provides:       weakremover(libboost_serialization1_59_0)
+Provides:       weakremover(libboost_signals1_59_0)
+Provides:       weakremover(libboost_system1_56_0)
+Provides:       weakremover(libboost_system1_59_0)
+Provides:       weakremover(libboost_test1_59_0)
+Provides:       weakremover(libboost_thread1_56_0)
+Provides:       weakremover(libboost_thread1_59_0)
+Provides:       weakremover(libboost_timer1_59_0)
+Provides:       weakremover(libboost_wave1_59_0)
+Provides:       weakremover(libcamel-1_2-54)
+Provides:       weakremover(libdialog12)
+Provides:       weakremover(libdirectfb-1_7-6)
+Provides:       weakremover(libdns146)
+Provides:       weakremover(libdns160)
+Provides:       weakremover(libdns161)
+Provides:       weakremover(libgdict-1_0-9)
+Provides:       weakremover(libgit2-23)
+Provides:       weakremover(libgpaste4)
+Provides:       weakremover(libhdf5-11)
+Provides:       weakremover(libhdf5_hl11)
+Provides:       weakremover(libicu54_1)
+Provides:       weakremover(libicu54_1-ledata)
+Provides:       weakremover(libicu55_1)
+Provides:       weakremover(libicu55_1-ledata)
+Provides:       weakremover(libicu56_1)
+Provides:       weakremover(libicu56_1-ledata)
+Provides:       weakremover(libimobiledevice5)
+Provides:       weakremover(libisc142)
+Provides:       weakremover(libisc148)
+Provides:       weakremover(libisl13)
+Provides:       weakremover(libixion-0_10-0)
+Provides:       weakremover(liblmdb-0_9_16)
+Provides:       weakremover(libmicrohttpd11)
+Provides:       weakremover(libminiupnpc15)
+Provides:       weakremover(libnis1)
+Provides:       weakremover(libntfs-3g86)
+Provides:       weakremover(liborcus-0_10-0)
+Provides:       weakremover(libpoppler47)
+Provides:       weakremover(libpoppler48)
+Provides:       weakremover(libpoppler49)
+Provides:       weakremover(libpoppler50)
+Provides:       weakremover(libpoppler51)
+Provides:       weakremover(libpoppler52)
+Provides:       weakremover(libpoppler53)
+Provides:       weakremover(libpoppler54)
+Provides:       weakremover(libpoppler55)
+Provides:       weakremover(libpoppler56)
+Provides:       weakremover(libpoppler57)
+Provides:       weakremover(libpoppler58)
+Provides:       weakremover(libpoppler59)
+Provides:       weakremover(libpoppler61)
+Provides:       weakremover(libpoppler62)
+Provides:       weakremover(libpoppler63)
+Provides:       weakremover(libpoppler64)
+Provides:       weakremover(libpoppler65)
+Provides:       weakremover(libprocps4)
+Provides:       weakremover(libprocps5)
+Provides:       weakremover(libpsl0)
+Provides:       weakremover(libsgutils2-1_40-2)
+Provides:       weakremover(libsgutils2-1_41-2)
+Provides:       weakremover(libvpx2)
+Provides:       weakremover(libxtables11)
+Provides:       weakremover(libzip4)
+Provides:       weakremover(mt_st)
+Provides:       weakremover(openssl-debuginfo)
+# this package should only be available for the "basearchs" of a product
+ExclusiveArch:  %ix86 x86_64 ppc64le s390x aarch64 %arm
+%include %{SOURCE100}
+___PRODUCT_PROVIDES___
+___PRODUCT_DEPENDENCIES___
+
+%description
+___DESCRIPTION___
+
+___FLAVOR_PACKAGES___
+
+%prep
+%setup -qcT
+mkdir license
+if [ -f /CD1/license.tar.gz ]; then
+  tar -C license -xzf /CD1/license.tar.gz
+elif [ -f %{_prefix}/lib/skelcd/CD1/license.tar.gz ]; then
+  tar -C license -xzf %{_prefix}/lib/skelcd/CD1/license.tar.gz
+fi
+
+%build
+
+%install
+mkdir -p %{buildroot}%{_sysconfdir} %{buildroot}%{_prefix}/lib/issue.d %{buildroot}/run
+
+echo -e "\nWelcome to ___SUMMARY___ (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
+echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-OS
+
+VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
+# note: VERSION is an optional field and has no meaning other than informative on a rolling distro
+# We do thus not add it to the os-release file
+cat > %{buildroot}%{_prefix}/lib/os-release <<EOF
+NAME="openSUSE Aeon"
+# VERSION="%{version}%{?betaversion: %{betaversion}}"
+ID="opensuse-aeon"
+ID_LIKE="suse opensuse opensuse-tumbleweed opensuse-microos"
+VERSION_ID="$VERSION_ID"
+PRETTY_NAME="openSUSE Aeon"
+ANSI_COLOR="0;32"
+CPE_NAME="cpe:/o:opensuse:aeon:%{version}"
+BUG_REPORT_URL="https://bugzilla.opensuse.org"
+SUPPORT_URL="https://bugs.opensuse.org"
+HOME_URL="https://www.aeondesktop.org/"
+DOCUMENTATION_URL="https://en.opensuse.org/Portal:Aeon"
+LOGO="distributor-logo-Aeon"
+EOF
+ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
+
+# Put EULA into correct place
+install -D -d -m 755 "%{buildroot}%_defaultlicensedir/product/base"
+install -D -d -m 755 "%{buildroot}%_defaultlicensedir"
+cp -a license "%{buildroot}%_defaultlicensedir/%name"
+pushd license
+for i in *; do
+	ln -s "%_defaultlicensedir/%name/$i" %{buildroot}%_defaultlicensedir/product/base/$i
+done
+
+___CREATE_PRODUCT_FILES___
+
+%post
+
+%files
+%defattr(644,root,root,755)
+%dir %_defaultlicensedir/product
+%_defaultlicensedir/product/base
+%license license/*
+%{_sysconfdir}/os-release
+%{_prefix}/lib/os-release
+%dir %{_sysconfdir}/products.d
+%{_sysconfdir}/products.d/*
+%dir %{_prefix}/lib/issue.d
+%{_prefix}/lib/issue.d/*-OS
+
+%changelog

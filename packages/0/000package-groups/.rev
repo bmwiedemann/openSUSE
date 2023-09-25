@@ -1756,4 +1756,12 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <user>dimstar_suse</user>
     <comment>Add mozjs115 / i686 to the media for LegacyX86</comment>
   </revision>
+  <revision rev="246" vrev="244">
+    <srcmd5>d8a84281c80755c5f2d5e44cb7acea74</srcmd5>
+    <version>unknown</version>
+    <time>1695664805</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110586</requestid>
+  </revision>
 </revisionlist>

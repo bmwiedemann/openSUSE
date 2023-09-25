@@ -18,6 +18,12 @@ OUTPUT:
         - common_locks
         - opensuse_microos
         - opensuse_microos_desktop
+  - opensuse_aeon:
+      recommends: true
+      require_all: true
+      includes:
+        - common_locks
+        - opensuse_aeon
 
 common_locks:
   - dummy-release: [locked]
@@ -439,3 +445,6 @@ opensuse_microos_desktop:
   - patterns-microos-desktop-kde: [aarch64,ppc64le,x86_64]
   - patterns-microos-desktop-gnome: [aarch64,ppc64le,x86_64]
 
+opensuse_aeon:
+  - Aeon-release: [x86_64]
+  - patterns-aeon-base: [x86_64]
