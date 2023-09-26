@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 23 09:27:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Limit to Cython 0: gh#mpi4py/mpi4py#383
+- PEP517: build wheel instead of deprecated setup.py install
+
+-------------------------------------------------------------------
 Thu Nov 10 11:56:43 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable current broken tests for i586. gh#mpi4py/mpi4py#279
