@@ -18,7 +18,7 @@
 
 
 %undefine _build_create_debug
-%global openssl_version 1.1.1t
+%global openssl_version 3.0.9
 %global softfloat_version b64af41c3276f
 %if 0%{?suse_version} < 1599
 %bcond_with build_riscv64
@@ -27,15 +27,15 @@
 %endif
 
 Name:           ovmf
-Version:        202305
+Version:        202308
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
 Group:          System/Emulators/PC
 URL:            https://github.com/tianocore/edk2
 Source0:        edk2-edk2-stable%{version}.tar.gz
-Source1:        https://www.openssl.org/source/old/1.1.1/openssl-%{openssl_version}.tar.gz
-Source111:      https://www.openssl.org/source/old/1.1.1/openssl-%{openssl_version}.tar.gz.asc
+Source1:        https://www.openssl.org/source/old/3.0/openssl-%{openssl_version}.tar.gz
+Source111:      https://www.openssl.org/source/old/3.0/openssl-%{openssl_version}.tar.gz.asc
 Source112:      openssl.keyring
 Source113:      openssl.keyring.README
 Source2:        README
@@ -67,7 +67,6 @@ Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.pat
 Patch9:         %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
 # Bug 1209266 - OVMF firmware hangs when booting SEV or SEV-ES guest
 Patch10:        %{name}-Revert-OvmfPkg-PlatformPei-Update-ReserveEmuVariable.patch
-Patch11:        ovmf-riscv64-missing-memcpy.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -204,7 +203,6 @@ rm -rf $PKG_TO_REMOVE
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%patch11 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
@@ -258,6 +256,7 @@ FLAVORS_X86=("ovmf-ia32")
 BUILD_OPTIONS_X86=" \
 	$OVMF_FLAGS \
 	-D FD_SIZE_2MB \
+	-D BUILD_SHELL=FALSE
 	-a IA32 \
 	-p OvmfPkg/OvmfPkgIa32.dsc \
 	-b DEBUG \
@@ -466,10 +465,8 @@ export ${TOOL_CHAIN}_RISCV64_PREFIX="riscv64-suse-linux-"
 # Build the UEFI image without keys
 build $BUILD_OPTIONS_RV64
 
-cp Build/RiscVVirtQemu/DEBUG_GCC*/FV/RISCV_VIRT.fd qemu-uefi-riscv64.bin
-dd of="ovmf-riscv64-code.bin" if="/dev/zero" bs=1M count=32
-dd of="ovmf-riscv64-code.bin" if="qemu-uefi-riscv64.bin" conv=notrunc
-dd of="ovmf-riscv64-vars.bin" if="/dev/zero" bs=1M count=32
+cp Build/RiscVVirtQemu/DEBUG_GCC*/FV/RISCV_VIRT_CODE.fd ovmf-riscv64-code.bin
+cp Build/RiscVVirtQemu/DEBUG_GCC*/FV/RISCV_VIRT_VARS.fd ovmf-riscv64-vars.bin
 
 # Remove the temporary build files to reduce the disk usage (bsc#1178244)
 rm -rf Build/RiscVVirtQemu/
@@ -670,7 +667,6 @@ rm %{buildroot}%{_datadir}/qemu/firmware/*-riscv64*.json
 %files -n qemu-uefi-riscv64
 %license License.txt
 %dir %{_datadir}/qemu/
-%{_datadir}/qemu/qemu-uefi-riscv64.bin
 %{_datadir}/qemu/ovmf-riscv64-code.bin
 %{_datadir}/qemu/ovmf-riscv64-vars.bin
 %dir %{_datadir}/qemu/firmware

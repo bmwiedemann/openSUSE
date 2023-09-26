@@ -61,3 +61,25 @@ gpg:                 aka "Richard Levitte <levitte@openssl.org>" [unknown]
 
 Please maintain the openssl.keyring file in ovmf package with new openssl
 tarball and signature. 
+
+Take the key of signature from gpg server
+----------------------------------------- 
+
+Sometimes that the gpg key will be removed or changed from otc.html on
+www.openssl.org, you can NOT find the key for tarball verification.
+
+Another way for getting the gpg key is from key server.
+e.g.
+gpg --keyserver 'keys.openpgp.org' --recv-keys 'DC7032662AF885E2F47F243F527466A21CA79E6D'
+
+The above command will download the key from gpg key server to your local
+machine. Then you can use it to verify openssl source code tarball:
+
+gpg --verify openssl-1.1.1u.tar.gz.asc openssl-1.1.1u.tar.gz
+
+If you confirmed that the key can be used to verify tarball. Then you can
+export it to openssl.keyring file for uploading to OBS/IBS: 
+
+gpg2 -a --export DC7032662AF885E2F47F243F527466A21CA79E6D > openssl.keyring
+
+
