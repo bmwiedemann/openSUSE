@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 26 05:14:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-build.patch
+    + keep PropertyDefinitions sorted to achieve reproducible order
+      of getters/setters in generated class files
+
+-------------------------------------------------------------------
 Mon Sep 25 09:45:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Avoid producing dupplicate maven data

@@ -37,6 +37,7 @@ Patch0:         javac-check.patch
 #   The patch doesn't remove the file AuthenticationOciClient.java
 #   therefore it's removed during prep phase
 Patch1:         %{name}-remove-oci-support.patch
+Patch2:         reproducible-build.patch
 BuildRequires:  ant
 BuildRequires:  ant-contrib
 BuildRequires:  apache-commons-logging
@@ -80,6 +81,7 @@ set that supports the capabilities of MySQL.
 %setup -q -n mysql-connector-j-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150200
 # ship protobuf generated files compatible with protobuf 3.9.2
