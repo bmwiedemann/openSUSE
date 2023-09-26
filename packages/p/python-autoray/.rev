@@ -53,4 +53,12 @@
   * fix fancy indexing of `LazyArray` objects</comment>
     <requestid>1079777</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>15efc682d77ea92f065bc66f87388195</srcmd5>
+    <version>0.6.6</version>
+    <time>1695758514</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113556</requestid>
+  </revision>
 </revisionlist>

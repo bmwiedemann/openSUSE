@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 25 02:48:25 UTC 2023 - jun wang <junguo.wang@suse.com>
+
+- update to 0.6.6
+  * autoray.lazy: allow more functions to work on pytrees
+  * Fix importlib import error and update tensorflow CI
+  * add multi-dispatch for a few more relevant functions
+  * change plot_history_functions default style to scatter
+  * ensure composed function names are kept
+  * add autoray.size
+  * added docs
+  * autoray.lazy.LazyArray support all fancy indexing
+  * add experimental complexity cost tracing
+  * fix: matmul shape for lazy by @yangguohao in #16 
+
+-------------------------------------------------------------------
 Sun Apr 16 17:00:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.3:

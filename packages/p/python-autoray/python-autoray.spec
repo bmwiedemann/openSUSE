@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-autoray
-Version:        0.6.3
+Version:        0.6.6
 Release:        0
 Summary:        A lightweight python automatic-array library
 License:        Apache-2.0
@@ -29,6 +29,7 @@ BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module opt-einsum}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools_scm}
