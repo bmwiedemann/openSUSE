@@ -2150,6 +2150,9 @@ unsorted:
   - clang15-doc 
   - clang16-devel 
   - clang16-doc 
+  - clang17 
+  - clang17-devel 
+  - clang17-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -3178,8 +3181,6 @@ unsorted:
   - docbook_5 
   - docbook_5-doc 
   - docker-bench-security 
-  - docker-client-java 
-  - docker-client-java-javadoc 
   - docker-compose 
   - docker-compose-switch 
   - docker-credential-secretservice 
@@ -5280,6 +5281,10 @@ unsorted:
   - ghc-ghci-devel 
   - ghc-ghci-doc 
   - ghc-ghci-prof 
+  - ghc-git-lfs 
+  - ghc-git-lfs-devel 
+  - ghc-git-lfs-doc 
+  - ghc-git-lfs-prof 
   - ghc-githash 
   - ghc-githash-devel 
   - ghc-githash-doc 
@@ -5822,6 +5827,10 @@ unsorted:
   - ghc-psqueues-devel 
   - ghc-psqueues-doc 
   - ghc-psqueues-prof 
+  - ghc-quote-quot 
+  - ghc-quote-quot-devel 
+  - ghc-quote-quot-doc 
+  - ghc-quote-quot-prof 
   - ghc-random 
   - ghc-random-devel 
   - ghc-random-doc 
@@ -6080,6 +6089,10 @@ unsorted:
   - ghc-text-builder-dev-prof 
   - ghc-text-builder-devel 
   - ghc-text-builder-doc 
+  - ghc-text-builder-linear 
+  - ghc-text-builder-linear-devel 
+  - ghc-text-builder-linear-doc 
+  - ghc-text-builder-linear-prof 
   - ghc-text-builder-prof 
   - ghc-text-conversions 
   - ghc-text-conversions-devel 
@@ -8354,9 +8367,6 @@ unsorted:
   - jakarta-commons-vfs-javadoc 
   - jakarta-mail 
   - jakarta-mail-javadoc 
-  - jakarta-poi 
-  - jakarta-poi-javadoc 
-  - jakarta-poi-manual 
   - jakarta-servlet 
   - jakarta-servlet-javadoc 
   - jakarta-slide-webdavclient 
@@ -8538,7 +8548,6 @@ unsorted:
   - jemalloc-devel 
   - jemmy 
   - jemmy-javadoc 
-  - jenkins-json-lib 
   - jeos-firstboot 
   - jeromq 
   - jeromq-javadoc 
@@ -8717,8 +8726,6 @@ unsorted:
   - jsch-javadoc 
   - jshon 
   - json-glib-devel 
-  - json-lib 
-  - json-lib-javadoc 
   - json-table 
   - json4s-ast 
   - json4s-core 
@@ -9718,8 +9725,6 @@ unsorted:
   - ld10k1-devel 
   - ldacBT-devel 
   - ldap-proxy 
-  - ldap-sdk 
-  - ldap-sdk-javadoc 
   - ldap-yp-tools 
   - ldapfuse 
   - ldapvi 
@@ -10043,12 +10048,14 @@ unsorted:
   - libLLVM15 
   - libLLVM15-32bit 
   - libLLVM16-32bit 
+  - libLLVM17-32bit 
   - libLLVMSPIRVLib-devel 
-  - libLLVMSPIRVLib16 
+  - libLLVMSPIRVLib17 
   - libLTO13 
   - libLTO14 
   - libLTO15 
   - libLTO16 
+  - libLTO17 
   - libLibreGraphAPI1 
   - libLimeSuite22_09-1 
   - libMagick++-7_Q16HDRI5 
@@ -11292,6 +11299,7 @@ unsorted:
   - libclang-cpp15 
   - libclang-cpp15-32bit 
   - libclang-cpp16-32bit 
+  - libclang-cpp17-32bit 
   - libclastfm-devel 
   - libclaw-devel 
   - libclaw-doc 
@@ -12108,7 +12116,8 @@ unsorted:
   - libgda-ui-6_0-plugins 
   - libgda-ui-6_0-tools 
   - libgda-xslt-6_0-6_0_0 
-  - libgdal32 
+  - libgdal-drivers 
+  - libgdal33 
   - libgdata-devel 
   - libgdbm6-32bit 
   - libgdbm_compat4-32bit 
@@ -13043,6 +13052,7 @@ unsorted:
   - liblldb14 
   - liblldb15 
   - liblldb16 
+  - liblldb17 
   - liblldpctl4 
   - liblmdb-0_9_30-32bit 
   - liblms7002m-devel 
@@ -13660,6 +13670,7 @@ unsorted:
   - libomp14-devel 
   - libomp15-devel 
   - libomp16-devel 
+  - libomp17-devel 
   - libonnx 
   - libonnx_proto 
   - libonnxifi_dummy 
@@ -14016,7 +14027,7 @@ unsorted:
   - libpkcs11-helper1-32bit 
   - libpkgconf-devel 
   - libplacebo-devel 
-  - libplacebo292-32bit 
+  - libplacebo338-32bit 
   - libplacebo5-devel 
   - libplanarity0 
   - libplank1 
@@ -15522,7 +15533,7 @@ unsorted:
   - libvamp-hostsdk3-32bit 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit 
-  - libvapoursynth-63 
+  - libvapoursynth-64 
   - libvapoursynth-script0 
   - libvarnishapi3 
   - libvbr2 
@@ -16237,6 +16248,7 @@ unsorted:
   - lld14 
   - lld15 
   - lld16 
+  - lld17 
   - lldb 
   - lldb-devel 
   - lldb13 
@@ -16247,6 +16259,8 @@ unsorted:
   - lldb15-devel 
   - lldb16 
   - lldb16-devel 
+  - lldb17 
+  - lldb17-devel 
   - lldpd 
   - lldpd-devel 
   - llmnrd 
@@ -16300,10 +16314,23 @@ unsorted:
   - llvm16 
   - llvm16-devel 
   - llvm16-doc 
+  - llvm16-libc++-devel 
+  - llvm16-libc++1 
+  - llvm16-libc++abi-devel 
+  - llvm16-libc++abi1 
+  - llvm16-libclang13 
   - llvm16-opt-viewer 
   - llvm16-polly 
   - llvm16-polly-devel 
   - llvm16-vim-plugins 
+  - llvm17 
+  - llvm17-devel 
+  - llvm17-doc 
+  - llvm17-gold 
+  - llvm17-opt-viewer 
+  - llvm17-polly 
+  - llvm17-polly-devel 
+  - llvm17-vim-plugins 
   - lmarbles 
   - lmdb 
   - lmdb-devel 
@@ -17018,6 +17045,7 @@ unsorted:
   - maven-doxia-test-docs 
   - maven-enforcer 
   - maven-enforcer-api 
+  - maven-enforcer-extension 
   - maven-enforcer-javadoc 
   - maven-enforcer-plugin 
   - maven-enforcer-rules 
@@ -22724,6 +22752,7 @@ unsorted:
   - python3-clang14 
   - python3-clang15 
   - python3-clang16 
+  - python3-clang17 
   - python3-cliff 
   - python3-clingo 
   - python3-clinkgrammar 
@@ -22829,6 +22858,7 @@ unsorted:
   - python3-lldb14 
   - python3-lldb15 
   - python3-lldb16 
+  - python3-lldb17 
   - python3-logreduce 
   - python3-lttngust 
   - python3-magnumclient 
@@ -44632,7 +44662,6 @@ unsorted:
   - tomcat-lib 
   - tomcat-servlet-4_0-api 
   - tomcat-webapps 
-  - tomcatjss 
   - toml11-devel 
   - tomoe 
   - tomoe-devel 

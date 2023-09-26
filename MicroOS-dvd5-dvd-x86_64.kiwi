@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230926" schemaversion="4.1">
+<image name="OBS__MicroOS___20230927" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230926</productvar>
+      <productvar name="VERSION">20230927</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230926,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230927,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230926/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230927/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1408,7 +1408,7 @@
       <repopackage name="libldb2"/>
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblldp_clif1"/>
-      <repopackage name="libLLVM16"/>
+      <repopackage name="libLLVM17"/>
       <repopackage name="liblmdb-0_9_30"/>
       <repopackage name="libloader"/>
       <repopackage name="liblouis-data"/>
@@ -1554,7 +1554,7 @@
       <repopackage name="libpixman-1-0"/>
       <repopackage name="libpkcs11-helper1"/>
       <repopackage name="libpkgconf3"/>
-      <repopackage name="libplacebo292"/>
+      <repopackage name="libplacebo338"/>
       <repopackage name="libplist-2_0-4"/>
       <repopackage name="libply-splash-core5"/>
       <repopackage name="libply-splash-graphics5"/>
@@ -2496,7 +2496,6 @@
       <repopackage name="python311-pyserial"/>
       <repopackage name="python311-pysmbc"/>
       <repopackage name="python311-PySocks"/>
-      <repopackage name="python311-python-dateutil"/>
       <repopackage name="python311-pytz"/>
       <repopackage name="python311-pyudev"/>
       <repopackage name="python311-PyYAML"/>
