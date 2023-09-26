@@ -1,7 +1,7 @@
 #
 # spec file for package python-WTForms
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-WTForms
 Version:        3.0.1
 Release:        0
@@ -24,11 +23,12 @@ Summary:        A flexible forms validation and rendering library for Python web
 License:        BSD-3-Clause
 URL:            https://github.com/wtforms/wtforms
 Source:         https://files.pythonhosted.org/packages/source/W/WTForms/WTForms-%{version}.tar.gz
-# Source:         wtforms-%%{version}.tar.gz
-BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module MarkupSafe}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module email-validator}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-MarkupSafe
@@ -60,7 +60,6 @@ Documentation for WTForms, which is a forms validation and rendering library for
 
 %package lang
 Summary:        Translations for builtin WTForms messages
-Group:          System/Localization
 Requires:       %{name} = %{version}
 Provides:       python-WTForms-lang = %{version}
 Obsoletes:      python-WTForms-lang < %{version}
@@ -75,26 +74,26 @@ WTForms is a forms validation and rendering library for Python web development.
 
 %build
 %python_exec setup.py compile_catalog
-%python_build
+%pyproject_wheel
 # Fix wrong EOL-encoding
 sed -i "s/\r//" CHANGES.rst
 # remove reference to ../CHANGES.rst
 rm docs/changes.rst
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_find_lang wtforms
 
 %check
-# Excluded tests because of gh#wtforms/wtforms#697
-%pytest -k 'not (test_us_translation or test_defaults or test_override_languages or test_ngettext or test_cache or test_typeerror or test_formatting or test_parsing)'
+%pytest
 
 %files %{python_files}
 %license LICENSE.rst
 %doc CHANGES.rst README.rst
-%{python_sitelib}/*
 %exclude %{python_sitelib}/wtforms/locale
+%{python_sitelib}/wtforms
+%{python_sitelib}/WTForms-%{version}.dist-info
 
 %files -n %{name}-doc
 %doc docs/*.rst

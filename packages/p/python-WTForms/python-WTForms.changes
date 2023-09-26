@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 26 03:05:55 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- We no longer need to skip any tests.
+
+-------------------------------------------------------------------
 Tue Apr 19 17:56:40 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Follow the change of the email_validator -> email-validator
