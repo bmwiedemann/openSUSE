@@ -119,4 +119,12 @@
     <comment></comment>
     <requestid>1109057</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0005b3c23e27354273252ec918027401</srcmd5>
+    <version>102.15.1</version>
+    <time>1695758527</time>
+    <user>anag+factory</user>
+    <comment>New stable rel (forwarded request 1113503 from iznogood)</comment>
+    <requestid>1113610</requestid>
+  </revision>
 </revisionlist>
