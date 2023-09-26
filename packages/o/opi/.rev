@@ -497,4 +497,16 @@
 - docs: add config options, update opi help page</comment>
     <requestid>1108126</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>011c375e8ad179e53b53679c96685760</srcmd5>
+    <version>3.5.0</version>
+    <time>1695758487</time>
+    <user>anag+factory</user>
+    <comment>- Version 3.5.0
+- Expand releasever for local repo names
+- Make resilio comment shorter
+- Add option to skip plugins
+- Update repo URL for MEGASync</comment>
+    <requestid>1113461</requestid>
+  </revision>
 </revisionlist>
