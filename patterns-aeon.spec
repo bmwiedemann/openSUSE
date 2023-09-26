@@ -52,37 +52,37 @@ Requires:       build-key
 Requires:       distribution-release
 Requires:       filesystem
 
-#### Packages formerly provided by bootloader
-#Requires:       (grub2-snapper-plugin if snapper)
-#Requires:       grub2
-#%ifarch x86_64
-## XXX: not sure this really belongs here. More like a kernel
-## rather than bootloader related thing?
-#Requires:       biosdevname
-#%endif
-#%ifnarch s390x ppc64 ppc64le
-#%if 0%{?is_opensuse}
-#Requires:       (grub2-branding-openSUSE if branding-openSUSE)
-#%else
-#%if 0%{?sle_version}
-#Requires:       (grub2-branding-SLE if branding-SLE)
-#%endif
-#%endif
-#%endif
-#%ifarch x86_64
-#Requires:       grub2-x86_64-efi
-#%endif
-#%ifarch aarch64
-#Requires:       grub2-arm64-efi
-#%endif
-#%ifarch armv7l armv7hl
-#Requires:       grub2-arm-efi
-#Requires:       grub2-arm-uboot
-#%endif
-#%ifarch aarch64 x86_64
-#Requires:       mokutil
-#Requires:       shim
-#%endif
+### Packages formerly provided by bootloader
+Requires:       (grub2-snapper-plugin if snapper)
+Requires:       grub2
+%ifarch x86_64
+# XXX: not sure this really belongs here. More like a kernel
+# rather than bootloader related thing?
+Requires:       biosdevname
+%endif
+%ifnarch s390x ppc64 ppc64le
+%if 0%{?is_opensuse}
+Requires:       (grub2-branding-openSUSE if branding-openSUSE)
+%else
+%if 0%{?sle_version}
+Requires:       (grub2-branding-SLE if branding-SLE)
+%endif
+%endif
+%endif
+%ifarch x86_64
+Requires:       grub2-x86_64-efi
+%endif
+%ifarch aarch64
+Requires:       grub2-arm64-efi
+%endif
+%ifarch armv7l armv7hl
+Requires:       grub2-arm-efi
+Requires:       grub2-arm-uboot
+%endif
+%ifarch aarch64 x86_64
+Requires:       mokutil
+Requires:       shim
+%endif
 
 ### Packages formerly provided by base/basesystem
 Requires:       /usr/bin/hostname

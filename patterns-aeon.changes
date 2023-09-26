@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 26 09:03:51 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Uncomment grub-less experiment that shouldn't have been committed 
+
+-------------------------------------------------------------------
 Thu Sep 21 13:33:04 UTC 2023 - Richard Brown <rbrown@suse.com>
 
 - Correct pattern dependency to Aeon-release from aeon-release 

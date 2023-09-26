@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1112821</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>32b5fbc0a1909ecaf0eba1247385a641</srcmd5>
+    <version>5.0</version>
+    <time>1695758551</time>
+    <user>anag+factory</user>
+    <comment>- Uncomment grub-less experiment that shouldn't have been committed</comment>
+    <requestid>1113635</requestid>
+  </revision>
 </revisionlist>
