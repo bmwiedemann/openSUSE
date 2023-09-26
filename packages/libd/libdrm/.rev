@@ -1680,4 +1680,16 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   * test/amdgpu/hotunplug: add apu check for hotplug test</comment>
     <requestid>1106054</requestid>
   </revision>
+  <revision rev="168" vrev="2">
+    <srcmd5>6ceeb8997b3b1c2eb4e97e0cf449da97</srcmd5>
+    <version>2.4.116</version>
+    <time>1695758441</time>
+    <user>anag+factory</user>
+    <comment>- provide/obsolete dropped packages libkms1/libkms-devel (bsc#1215526) 
+
+- adjusted n_libdrm-drop-valgrind-dep-generic.patch,
+  n_libdrm-drop-valgrind-dep-intel.patch to generated 2.4.116
+  pkgconfig files in order to fix build against sle15/Leap 15.x</comment>
+    <requestid>1112779</requestid>
+  </revision>
 </revisionlist>

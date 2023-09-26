@@ -93,6 +93,9 @@ Requires:       libdrm_intel1 = %{version}
 Obsoletes:      libdrm-devel-64bit < %{version}
 Provides:       libdrm-devel-64bit = %{version}
 %endif
+# bsc#1215526
+Obsoletes:      libkms-devel < %{version}-%{release}
+Provides:       libkms-devel = %{version}-%{release}
 
 %description devel
 libdrm is a library for accessing the Direct Rendering Manager on
@@ -108,6 +111,9 @@ in libdrm2.
 %package -n libdrm2
 Summary:        Userspace Interface for Kernel DRM Services
 Group:          System/Libraries
+# bsc#1215526
+Obsoletes:      libkms1 < %{version}-%{release}
+Provides:       libkms1 = %{version}-%{release}
 
 %description -n libdrm2
 libdrm is a library for accessing the Direct Rendering Manager on

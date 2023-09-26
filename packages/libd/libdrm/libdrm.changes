@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 21 08:29:29 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- provide/obsolete dropped packages libkms1/libkms-devel (bsc#1215526) 
+
+-------------------------------------------------------------------
+Wed Sep 20 14:10:11 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- adjusted n_libdrm-drop-valgrind-dep-generic.patch,
+  n_libdrm-drop-valgrind-dep-intel.patch to generated 2.4.116
+  pkgconfig files in order to fix build against sle15/Leap 15.x
+
+-------------------------------------------------------------------
 Sat Aug 26 14:35:14 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 2.4.116
