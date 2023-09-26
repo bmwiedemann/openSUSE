@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep 20 21:26:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add d1d4b0ac316a27c739ff91e6c4153f1154e96e5a.patch: Fix probing
+  of C_GetInterface.
+
+-------------------------------------------------------------------
+Wed Sep 20 08:49:47 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.25.0:
+  * add PKCS#11 3.0 support
+  * add support for profile objects
+  * add ability to adjust module and config paths at run-time via
+    system environmental exports
+  * make terminal output nicer
+  * p11-kit: add command to print merged configuration
+  * p11-kit: add commands to list, add and delete profiles of a token
+  * trust: add command to check format of .p11-kit files
+  * virtual: fix libffi type signatures for PKCS#11 3.0 functions
+  * server: fix umask setting when --group is specified
+  * server: check SHELL only when neither --sh nor --csh is specified
+  * rpc: use space string in C_InitToken
+  * rpc: fix two off-by-one errors identified by asan
+  * modules: make logging message more translatable
+  * pkcs11.h: support CRYPTOKI_GNU for IBM vendor mechanisms
+  * pkcs11.h: add IBM specific mechanism and attributes
+  * pkcs11.h: add ChaCha20/Salsa20 and Poly1305 mechanisms
+  * pkcs11.h: add AES-GCM mechanism parameters for message-based encryption
+  * po: update translations from Transifex
+- Update upstream p11-kit.keyring file
+- Add missing lang files
+- Switch to using Meson as the build system
+
+-------------------------------------------------------------------
 Mon Aug  8 16:03:57 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip testsuite on qemu arches, it fails 

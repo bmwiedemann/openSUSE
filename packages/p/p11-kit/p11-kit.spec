@@ -1,7 +1,7 @@
 #
 # spec file for package p11-kit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,17 +21,25 @@
 %define trustdir_cfg     %{pkidir_cfg}/trust
 %define trustdir_static  %{pkidir_static}/trust
 Name:           p11-kit
-Version:        0.24.1
+Version:        0.25.0
 Release:        0
 Summary:        Library to work with PKCS#11 modules
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://p11-glue.freedesktop.org/p11-kit.html
-Source0:        https://github.com/p11-glue/p11-kit/releases/download/%{version}/p11-kit-%{version}.tar.xz
-Source1:        https://github.com/p11-glue/p11-kit/releases/download/%{version}/p11-kit-%{version}.tar.xz.sig
-Source98:       p11-kit.keyring
+Source0:        https://github.com/p11-glue/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://github.com/p11-glue/%{name}/releases/download/%{version}/p11-kit-%{version}.tar.xz.sig
+Source98:       https://p11-glue.github.io/p11-glue/%{name}/%{name}-release-keyring.gpg#/%{name}.keyring
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM d1d4b0ac316a27c739ff91e6c4153f1154e96e5a.patch -- Fix probing of C_GetInterface
+Patch0:         https://github.com/p11-glue/p11-kit/commit/d1d4b0ac316a27c739ff91e6c4153f1154e96e5a.patch
 BuildRequires:  gtk-doc
+%if 0%{?suse_version} >= 1600
+BuildRequires:  libtasn1-tools
+%else
+BuildRequires:  libtasn1
+%endif
+BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libffi) >= 3.0.0
 BuildRequires:  pkgconfig(libsystemd)
@@ -98,17 +106,16 @@ Command line tools that enable to export PKCS#11 modules through a
 Unix domain socket.  Note that this feature is still experimental.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-%configure \
-  --with-trust-paths=%{trustdir_cfg}:%{trustdir_static} \
-  --with-systemd \
-  --enable-doc
-%make_build
+%meson -Dtrust_paths=%{trustdir_cfg}:%{trustdir_static} \
+       -Dbash_completion=disabled \
+       -Dgtk_doc=true -Dman=true
+%meson_build
 
 %install
-%make_install
+%meson_install
 #
 install -d m 755 %{buildroot}%{trustdir_cfg}/{anchors,blocklist}
 install -d m 755 %{buildroot}%{trustdir_static}/{anchors,blocklist}
@@ -118,7 +125,8 @@ install -d %{buildroot}%{_sysconfdir}/pkcs11/modules
 # Remove sample config away to doc folder. Having the sample there would conflict
 # with future versions of the library on file level. As replacement, we package
 # the file as documentation file.
-rm %{buildroot}%{_sysconfdir}/pkcs11/pkcs11.conf.example
+install -d m 755 %{buildroot}%{_docdir}/libp11-kit0
+mv %{buildroot}%{_sysconfdir}/pkcs11/pkcs11.conf.example %{buildroot}%{_docdir}/libp11-kit0
 find %{buildroot} -type f -name "*.la" -delete -print
 #
 install -d -m 755 %{buildroot}%{_rpmmacrodir}
@@ -137,16 +145,17 @@ ln -s %{_libdir}/pkcs11/p11-kit-trust.so %{buildroot}%{_libdir}/libnssckbi.so
 rm %{buildroot}%{_libexecdir}/%{name}/trust-extract-compat
 ln -s ../../sbin/update-ca-certificates %{buildroot}%{_libexecdir}/%{name}/p11-kit-extract-trust
 export NO_BRP_STALE_LINK_ERROR=yes # *grr*
+%find_lang %{name}
 
 %if !0%{?qemu_user_space_build}
 %check
-%make_build check
+%meson_test
 %endif
 
 %post -n libp11-kit0 -p /sbin/ldconfig
 %postun -n libp11-kit0 -p /sbin/ldconfig
 
-%files
+%files -f %{name}.lang
 %dir %{_libdir}/pkcs11
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/modules
@@ -168,7 +177,7 @@ export NO_BRP_STALE_LINK_ERROR=yes # *grr*
 %license COPYING
 # Package the example conf file as documentation. Like this we're sure that we will
 # not introduce conflicts with this version of the library and future ones.
-%doc p11-kit/pkcs11.conf.example
+%doc pkcs11.conf.example
 %doc AUTHORS ChangeLog NEWS README
 %dir %{_sysconfdir}/pkcs11
 %dir %{_sysconfdir}/pkcs11/modules/
