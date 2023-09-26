@@ -28,7 +28,7 @@ BuildArch:      noarch
 %endif
 
 Name:           python-datashader%{psuffix}
-Version:        0.15.1
+Version:        0.15.2
 Release:        0
 Summary:        Data visualization toolchain based on aggregating into a grid
 License:        BSD-3-Clause
@@ -36,6 +36,8 @@ URL:            https://datashader.org
 # SourceRepository: https://github.com/holoviz/datashader
 Source0:        https://files.pythonhosted.org/packages/source/d/datashader/datashader-%{version}.tar.gz
 Source100:      python-datashader-rpmlintrc
+# PATCH-FIX-UPSTREAM https://github.com/holoviz/datashader/pull/1276 Support pandas 2.1
+Patch:          pd21.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module param}
@@ -59,10 +61,10 @@ Requires:       python-xarray
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %if %{with test}
-BuildRequires:  %{python_module bokeh}
+BuildRequires:  %{python_module bokeh >= 3.1}
 BuildRequires:  %{python_module datashader = %{version}}
 BuildRequires:  %{python_module fastparquet}
-BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module matplotlib >= 3.3}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module nbsmoke >= 0.5.0}
