@@ -960,6 +960,9 @@ Prefer: libpulse0-32bit libsane1-32bit -pipewire-pulseaudio
 Prefer: vtk-java
 Prefer: eclipse-swt
 
+# have choice for distribution-release: Aeon-release openSUSE-release
+Prefer: -Aeon-release
+
 # have choice for pkgconfig(libplacebo) >= 4.157: libplacebo-devel libplacebo5-devel
 Prefer: -libplacebo5-devel
 

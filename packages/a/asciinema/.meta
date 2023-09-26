@@ -1,5 +1,6 @@
 <package name="asciinema" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
+  <title>Terminal session recorder</title>
+  <description>Record of terminal sessions and sharing them on the web.</description>
   <devel project="network" package="asciinema"/>
+  <url>https://asciinema.org</url>
 </package>
