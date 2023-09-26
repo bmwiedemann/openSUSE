@@ -52,7 +52,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.6.1.1
+Version:        7.6.1.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -486,6 +486,8 @@ manage lists in spreadsheets by using LibreOffice office suite.
 Summary:        LibreOffice Draw
 Group:          Productivity/Office/Suite
 Requires:       %{name} = %{version}
+# libreoffice-draw requires libreoffice-impress from 7.5 onwards, bsc#1215595
+Requires:       %{name}-impress
 Supplements:    %{name}
 
 %description  draw

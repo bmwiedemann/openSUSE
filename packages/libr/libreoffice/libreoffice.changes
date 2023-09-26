@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 22 10:39:01 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- libreoffice-draw requires libreoffice-impress from 7.5 onwards, bsc#1215595
+
+-------------------------------------------------------------------
+Fri Sep  8 14:19:13 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.6.1.2:
+  https://wiki.documentfoundation.org/Releases/7.6.1/RC2
+
+-------------------------------------------------------------------
 Wed Aug 30 15:17:53 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 7.6.1.1:
