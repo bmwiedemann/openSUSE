@@ -21,7 +21,7 @@
 %bcond_with webextensions
 
 Name:           nyxt
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Keyboard-oriented, Common Lisp extensible web-browser
 License:        BSD-3-Clause

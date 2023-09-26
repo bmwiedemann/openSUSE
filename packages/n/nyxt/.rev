@@ -62,4 +62,12 @@ These issues are now fixed with a patch, hence this new submission.</comment>
     <comment>Update to version 3.7.0</comment>
     <requestid>1110273</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d2c6191da398271d10c12c26ed3d4e32</srcmd5>
+    <version>3.8.0</version>
+    <time>1695758542</time>
+    <user>anag+factory</user>
+    <comment>Update to version 3.8.0</comment>
+    <requestid>1113616</requestid>
+  </revision>
 </revisionlist>

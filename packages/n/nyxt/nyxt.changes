@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 25 16:04:34 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 3.8.0:
+  * Features
+    - Add new slots hints-offset-x and hints-offset-y, to change
+      the position of hint overlays
+  * Bug fixes
+    - Fix bug with subsequent invocations of define-configuration
+      on the same class and slot being overwritten by the first
+  * UI/UX
+    - Keybindings are shown in a more user-friendly way, when using the CUA keyscheme
+    - Modes in the status area are shown vertically in their tooltip to improve readability
+    - Stylistic review of the help system pages to improve readability
+  * Programming interface
+    - Fix Nyxt connection via commands start-slynk and start-swank on the Flatpak distribution
+    - Fix warning signaling when a mismatch between the history file and
+      the current Nyxt version exists. It is only raised when the major version differs
+    - Buffers of type editor-buffer have plaintext-editor-mode enabled by default 
+
+-------------------------------------------------------------------
 Mon Sep 11 09:46:33 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 3.7.0:
