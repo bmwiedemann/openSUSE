@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 26 09:27:38 UTC 2023 - pgajdos@suse.com
+
+- add missing references to rpm changelog
+- 15sp4 only:
+  [bsc#1200772], [jsc#SLE-24723] add pecl, pear
+  [jsc#SLE-23639] version update
+
+-------------------------------------------------------------------
 Fri Sep  1 07:25:37 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use %make_build macro
@@ -50,6 +58,7 @@ Thu Jun 22 13:49:44 UTC 2023 - pgajdos@suse.com
   % php-date-regenerate-lexers.patch (refreshed)
   % php-ini.patch (refreshed)
   % php-systzdata-v23.patch (refreshed)
+- CVE-2023-3247 [bsc#1212349]
 
 -------------------------------------------------------------------
 Tue May 30 16:59:37 UTC 2023 - pgajdos@suse.com
@@ -210,7 +219,7 @@ Mon Oct 31 14:25:55 UTC 2022 - pgajdos@suse.com
 
 - version update to 8.1.12
   * This is a security release.
-  * fixed: CVE-2022-31630, CVE-2022-37454
+  * fixed: CVE-2022-31630 [bsc#1204979], CVE-2022-37454 [bsc#1204577]
   * https://www.php.net/ChangeLog-8.php#8.1.12
 
 -------------------------------------------------------------------
@@ -218,7 +227,7 @@ Thu Sep 29 18:43:59 UTC 2022 - pgajdos@suse.com
 
 - version update to 8.1.11
   * This is a security release.
-  * CVEs fixed: CVE-2022-31628, CVE-2022-31629
+  * CVEs fixed: CVE-2022-31628 [bsc#1203867], CVE-2022-31629 [bsc#1203870]
     https://www.php.net/ChangeLog-8.php#8.1.11
 
 -------------------------------------------------------------------
@@ -249,6 +258,8 @@ Fri Jun 10 03:54:53 UTC 2022 - pgajdos@suse.com
 - version update to 8.1.7
   * This is a security release.
   https://www.php.net/ChangeLog-8.php#8.1.7
+  * CVE-2022-31625 [bsc#1200645]
+  * CVE-2022-31626 [bsc#1200628]
 
 -------------------------------------------------------------------
 Wed May 25 08:13:35 UTC 2022 - pgajdos@suse.com
@@ -263,6 +274,7 @@ Wed Apr 20 17:46:22 UTC 2022 - pgajdos@suse.com
 - version update to 8.1.5:
   * This is a bug fix release.
     https://www.php.net/ChangeLog-8.php#8.1.5
+  * [bsc#1197644]
 
 -------------------------------------------------------------------
 Mon Apr 11 19:41:50 UTC 2022 - pgajdos@suse.com
@@ -296,7 +308,7 @@ Fri Feb 25 12:43:46 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Fri Feb 18 07:09:11 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
-- updated to 8.1.3: This is a security release (CVE-2021-21708)
+- updated to 8.1.3: This is a security release (CVE-2021-21708 [bsc#1196252])
   which also contains several bug fixes.
   See https://www.php.net/ChangeLog-8.php#8.1.3
 
@@ -364,14 +376,14 @@ Wed Dec  1 21:44:34 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 -------------------------------------------------------------------
 Fri Nov 19 06:27:37 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
-- updated to 8.0.13: This is a security release (CVE-2021-21707)
+- updated to 8.0.13: This is a security release (CVE-2021-21707 [bsc#1193041])
   which also contains several bug fixes.
   See https://www.php.net/ChangeLog-8.php#8.0.13
 
 -------------------------------------------------------------------
 Thu Oct 21 17:09:08 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
-- updated to 8.0.12: This is a security release (CVE-2021-21703)
+- updated to 8.0.12: This is a security release (CVE-2021-21703 [bsc#1192050])
   which also contains several bug fixes.
   See https://www.php.net/ChangeLog-8.php#8.0.12
 
