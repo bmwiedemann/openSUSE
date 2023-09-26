@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Mon Sep 18 15:01:33 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2023.7
+  * Activity: Allow to style SDL stereotype.
+  * Activity: Allow post-positioned stereotype style.
+  * specifying full-width digits with the "as" keyword in timing
+    diagrams.
+  * force notes to use inner namespaces not global namespace only.
+  * teoz: Support notes on references.
+  * Activity diagram, Case statement, arrow label missing.
+  * When connecting attributes between object graphs, the
+    connection error.
+- Update to version 1.2023.6
+  * Gantt Milestone with Multiline Text Placement.
+  * Start and end nodes can only be styled globally in CSS style.
+  * Gantt diagram - Can't close day in the period of opened days.
+  * Support notes on references.
+  * [gantt] make it possible to color last day.
+  * Automatic font color with gradient participant background
+    creates UnsupportedOperationException.
+  * ConditionStyle InsideDiamond not working for elseif.
+  * StateBackgroundColor transparent is not effective.
+  * Multible breaks in one repeat.
+- Update to version 1.2023.5
+  * Error in generating State Diagram.
+  * Bug - Crowfoot notation on ERD rendering buggy.
+  * Regarding the February update with intermediate
+    namespaces.
+  * Malformed layout and missing arrows on large amount of
+    edges.
+  * Smetana and ELK: Improve arrow position and suppress empty
+    space.
+  * [Class] Note on field is considered unlinked.
+  * 'help preprocessors' command is not working.
+  * JSON diagram SVG has misplaced arrows when containing
+    newlines.
+  * [Smetana] Allow notes (or comments) on lines or links.
+  * ClassAttributeFont(Style|Size|...) overrides
+    ClassFontStyle(Style|Size|...).
+  * The command help themes to list all the themes of PlantUML
+    seems broken.
+  * Note and position not rendering correctly on CheerpJ.
+  * Notes linked to messages in Sequence Diagrams.
+  * !global $variable ?= "default variable" produces error "a001".
+  * Allow only one underscore when escaping.
+  * Using end if as an alias for endif in Activity diagrams.
+  * Drastic Behavior Change of "as" Parsing with "." (period).
+  * nwdiag bug: group causes element to incorrectly connect to
+    network
+- Update to version 1.2023.4
+  * Improve backward compatibility about package and namespace
+    simplification.
+  * Allow only one underscore when escaping.
+  * Using end if as an alias for endif in Activity diagrams.
+  * Ability to hide empty fields for object diagrams.
+  * Namespace association class connection point outside namespace.
+  * Dotted arrow --> is also the close of comment blocks
+
+-------------------------------------------------------------------
+Mon Feb 27 13:48:06 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2023.2
+  * package and namespace simplification
+  * .repx file generation
+  * Cannot set long name arrow label in repeat statement with break
+  * together behaves different starting from 1.2023.0
+  * Possible regression with class alias declaration
+  * The footer is not displayed at the footer
+  * latex and package: no perpendicular corners
+  * Allow full style on label of Port, Point, Pin
+  * Structs do not function properly within a namespace
+  * Nwdiag problem with address label position on peer network
+  * Update tupadr3 in the stdlib
+-------------------------------------------------------------------
 Sun Jan 29 20:36:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2023.1
