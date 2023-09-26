@@ -1,7 +1,7 @@
 #
 # spec file for package protonvpn-gui
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       gtk3
 Requires:       python3-gobject-Gdk
-Requires:       python3-protonvpn-nm-lib >= 3.4.0
+Requires:       python3-protonvpn-nm-lib >= 3.16.0
 Requires:       python3-psutil
 Provides:       protonvpn = %{version}
 BuildArch:      noarch
