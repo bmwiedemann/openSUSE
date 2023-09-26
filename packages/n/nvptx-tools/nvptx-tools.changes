@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Sep 26 07:13:08 UTC 2023 - rguenther@suse.com
+
+- Update to version 1.0+git.20230913.c321f1a:
+  * as: Allow for arbitrary number of tokens in a 'stmt'
+  * Ensure :VAR_MAP and :FUNC_MAP are output in order, part II [#29]
+  * Ensure :VAR_MAP and :FUNC_MAP are output in order: add more test cases [#29]
+  * as: Pass 'Vis' into 'parse_line_nosemi'
+  * as: Inline 'alloc_comment'
+  * as: When tokenizing a block comment, don't lose a preceding end of line marker
+  * as: Add 'test/as/block_comment-1.test'
+  * Bump architecture baseline from sm_35 to sm_50 [#30]
+  * as: Remove unused 'FUNC_MAP', 'VAR_MAP' scanning
+  * as: Clean up 'symbol's via C++ destructor
+  * Enable 'test/as/ptxas/missing-1.test' also if 'ptxas' is available
+  * Adjust for 'pex_run' error message change in "Update imported files: GCC, 2018-10-29 [#1, #42]"
+  * Update imported files: GCC, 2023-06-16 [#1, #42]
+  * Update imported files: GCC, 2022-05-18, II [#1, #42]
+  * Update imported files: GCC, 2022-05-18 [#1, #42]
+  * Update imported files: GCC, 2022-04-06 [#1, #42]
+  * Update imported files: GCC, 2022-03-20 [#1, #42]
+  * Switch to Autoconf 2.69, Automake 1.15.1 [#42]
+  * Update imported files: GCC, 2018-10-31 [#1, #42]
+  * Update imported files: GCC, 2018-10-29 [#1, #42]
+  * Update imported files: GCC, 2016-07-29 [#1, #42]
+  * Update imported files: GCC, 2014-05-01 [#1, #42]
+  * Note "Imported Files" in 'README-development' [#1]
+  * Add 'move-if-change' [#1]
+  * Remove 'acinclude.m4'
+  * Don't use 'gcc_AC_PROG_INSTALL'; use standard 'AC_PROG_INSTALL'
+  * Don't use 'gcc_AC_PROG_LN_S'; assume that 'ln -s' does work
+  * Have 'aclocal.m4' be "generated automatically by aclocal"
+  * Move 'ACX_PKGVERSION', 'ACX_BUGURL' into 'config/acx.m4'
+  * Regenerate 'configure'
+  * Ensure :VAR_MAP and :FUNC_MAP are output in order
+
+-------------------------------------------------------------------
 Fri Jul 21 12:00:05 UTC 2023 - rguenther@suse.com
 
 - Update to version 1.0+git.20230718.bbb6fe6:
