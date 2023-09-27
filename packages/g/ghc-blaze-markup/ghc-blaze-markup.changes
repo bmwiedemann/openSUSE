@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 25 11:44:33 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update blaze-markup to version 0.8.3.0.
+  - 0.8.3.0 (2023-09-25)
+      * Add `ToMarkup` and `ToValue` instances for `NonEmpty Char`
+      * Bump `bytestring` upper bound to 0.13
+      * Bump `text` upper bound to 2.1
+
+-------------------------------------------------------------------
 Sun Jul 16 19:19:30 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update blaze-markup to version 0.8.2.8 revision 5.
