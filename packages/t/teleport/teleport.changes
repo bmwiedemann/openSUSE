@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Wed Sep 27 04:37:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.4.1:
+  * Release 13.4.1 (#32594)
+  * [v13] Remove unused FIPS infrastructure (#32539)
+  * Remove mention of reversetunnel_connected_proxies (#32573)
+  * [v13] docs: add faq answer for using oss or ent release for
+    agents (#32521)
+  * Add gRPC error interceptors to API client. (#31009)
+  * Correct grammar error in PagerDuty integration notification
+    (#32538)
+  * [v13] Add support for Protobuf Enums into Operator CRDs
+    (#32556)
+  * fix(regular): combine static and dynamic labels for session
+    metadata (#32383)
+  * Allow sudoer files to be created without host users (#32404)
+  * `compareSemVers` should return 0 if values are equal (#32315)
+    (#32462)
+  * [v13] Updated packer version to fix tag builds (#32527)
+  * docs: helm install agent updates (#32508)
+  * docs: Flip Github connector examples for OSS vs Commercial
+    (#32506)
+  * [v13] Update reduce-blast-radius.mdx (#32396)
+  * [v13] docs: Root access is insecure: draft for expanded
+    security admin topics (#32424)
+  * [v13] docs: remove v10 references (#32492)
+  * [v13] Update e ref. (#32497)
+  * Remove gravitational/configure dependency (#32488)
+  * Secure File Removal Improvements (#32260) (#32437)
+  * [v13] docs: remove duplicate warning (#32479)
+  * [v13] Prevent duplicate Access List owners. (#32480)
+  * Fix incorrect CA in Machine ID database access guide (#32466)
+  * [v13] Improve AWS CLI Access performance by caching AWS session
+    credentials (#32414)
+  * Fix data race when calling Uploader's `Close` and `Serve`
+    simultaneously (#30360) (#32395)
+  * Enforce use of IMDSv2 for AMI builds (#32419)
+  * Support AWS EC2 IMDSv2 for installer and inventory metadata
+    (#31134)
+  * docs: remove guidance on version warning older than v11
+    (#32410)
+  * [v13] Use the instance role for the upload completer (#32346)
+  * [v13] Provide error message if process file is unavailable due
+    to permissions for teleport start (#32349)
+  * [v13] ci: clarify failure on `go mod tidy` (#32390)
+  * Upgrade TypeScript to 5.2.2 (#32376)
+  * Application access header rewrites should be a list (#32339)
+  * Add interactive tonal primary colors (#32007) (#32320)
+  * [v13] Fix repeated ServiceAccount in `teleport-kube-agent`
+    chart (#32337)
+  * [v13] update e (#32367)
+  * Add Access List usage events, emit event for userloginstate
+    Generator. (#32298)
+  * Make access list membership check fn public (#31355) (#32362)
+  * [v13] Define and add `IneligibleStatus` fields for access list
+    members and owners (#31857) (#32279)
+  * Bump UI Role version to `v6` (#32335)
+  * Update token parameter description to be consistent (#32331)
+  * pgbk: docs for change_feed_conn_string and warning against OLAP
+    workloads (#32079) (#32284)
+  * Allow including only traits when doing a JWT rewrite (#32290)
+  * docs: include SLES install with zypper repo in ent install
+    (#32306)
+  * [docs] fix Postgres auto-user provisioning role group (#31968)
+  * Fix double counting of auth server (#32269)
+  * [auto] docs: Update version to v13.4.0 (#32276)
+
+-------------------------------------------------------------------
 Thu Sep 21 04:39:02 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.4.0:
