@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           helmify
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        Creates Helm chart from Kubernetes yaml
 License:        MIT
 URL:            https://github.com/arttor/helmify
 Source:         helmify-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.18
+BuildRequires:  go >= 1.21
 
 %description
 CLI that creates Helm charts from kubernetes yamls.
@@ -36,8 +36,7 @@ Helmify reads a list of supported k8s objects from stdin and converts it to a he
 Supports Helm >=v3.6.0
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p1 -a 1
 
 %build
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
