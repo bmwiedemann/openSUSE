@@ -1169,6 +1169,11 @@ Provides: weakremover(sssd-common-32bit)
 Provides: weakremover(unified-installer-release)
 Provides: weakremover(warewulf-provision-aarch64-initramfs)
 Provides: weakremover(yast2-migration-sle)
+# 15.4:update
+Provides: weakremover(tftpboot-installation-openSUSE-Leap-15.4-aarch64)
+Provides: weakremover(tftpboot-installation-openSUSE-Leap-15.4-ppc64le)
+Provides: weakremover(tftpboot-installation-openSUSE-Leap-15.4-s390x)
+Provides: weakremover(tftpboot-installation-openSUSE-Leap-15.4-x86_64)
 # factory
 Provides: weakremover(7kaa-music)
 Provides: weakremover(96BoardsGPIO-common)
