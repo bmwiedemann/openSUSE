@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 21 16:39:54 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.55.0:
+  * Pull request 283: upd quic-go and golibs
+  * Pull request 281: use hostsfile
+  * Pull request 282: 350 fix dns64 validation
+  * Pull request: AG-24891: lint code imp
+  * Pull request: AG-24891: skel-scripts
+  * Pull request 278: Log upstream error
+  * Pull request 277: upd quic-go
+
+-------------------------------------------------------------------
 Thu Aug 17 22:06:06 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Revert Use make for building as specified in the upstream

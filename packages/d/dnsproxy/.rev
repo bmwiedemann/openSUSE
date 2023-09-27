@@ -98,4 +98,19 @@
   packaging, or that may not work inside OBS e.g. network access. (forwarded request 1104486 from jfkw)</comment>
     <requestid>1104487</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>932cedb06b29746a2bbf81c103cb2d0c</srcmd5>
+    <version>0.55.0</version>
+    <time>1695853523</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.55.0:
+  * Pull request 283: upd quic-go and golibs
+  * Pull request 281: use hostsfile
+  * Pull request 282: 350 fix dns64 validation
+  * Pull request: AG-24891: lint code imp
+  * Pull request: AG-24891: skel-scripts
+  * Pull request 278: Log upstream error
+  * Pull request 277: upd quic-go (forwarded request 1112876 from VaiTon)</comment>
+    <requestid>1113766</requestid>
+  </revision>
 </revisionlist>
