@@ -991,6 +991,9 @@ Prefer: -indi-devel
 # have choice for mbedtls-devel needed by bctoolbox-devel: mbedtls-2-devel mbedtls-devel
 Prefer: -mbedtls-2-devel
 
+# have choice for findutils-locate needed by catfish: mlocate plocate
+Prefer: -plocate
+
 # 32bit -devel packages contain .pc files and cause a 'have choice' for OBS. unfavor the -32bit variants
 Prefer: -ColPack-devel-32bit
 Prefer: -FAudio-devel-32bit
@@ -2870,6 +2873,7 @@ BuildFlags: onlybuild:python-scipy
 BuildFlags: onlybuild:python-semantic_version
 BuildFlags: onlybuild:python-service_identity
 BuildFlags: onlybuild:python-setuptools
+BuildFlags: onlybuild:python-setuptools:wheel
 BuildFlags: onlybuild:python-setuptools-rust
 BuildFlags: onlybuild:python-setuptools_scm
 BuildFlags: onlybuild:python-sip
