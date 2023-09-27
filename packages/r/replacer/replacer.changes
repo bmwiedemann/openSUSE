@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 26 21:36:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Port from commons-lang to commons-lang3
+
+-------------------------------------------------------------------
 Wed Mar 23 10:20:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8

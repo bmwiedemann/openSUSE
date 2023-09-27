@@ -23,4 +23,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>964234</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f2f435585f0375ebc14519fe1514db8b</srcmd5>
+    <version>1.6</version>
+    <time>1695853517</time>
+    <user>dimstar_suse</user>
+    <comment>remove dependency on old apache-commons-lang</comment>
+    <requestid>1113758</requestid>
+  </revision>
 </revisionlist>
