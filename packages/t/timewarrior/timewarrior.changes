@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 27 06:53:15 UTC 2023 - Benedikt Fein <benedikt.fein@gmail.com>
+
+- Update to 1.6.0
+  * #529    Fix summary truncating multibyte characters in long annotations
+  * #531    Update CONTRIBUTING.md to use branch 'develop' instead of 'dev'
+  * #535    Adding completion for fish shell
+  * #538    Fix man page build for out-of-source builds
+  * #540    reports should end at current time if a task is still running
+  * #547    AtomicFile: Operate on the target of symlinks
+  * #551    Add retag command
+  * #552    Extend XDG support to macOS
+  * #553    Configurability of CMake install directories
+  * #554    Update documentation for command 'retag'
+  *         Use local man pages in tests
+  *         Cleanup CMake files
+  *         Update project to C++17
+- Drop timewarrior-out-of-source-man-pages.patch since it has been integrated
+  upstream with #538.
+
+-------------------------------------------------------------------
 Wed May  3 18:51:57 UTC 2023 - Benedikt Fein <benedikt.fein@gmail.com>
 
 - Update to 1.5.0

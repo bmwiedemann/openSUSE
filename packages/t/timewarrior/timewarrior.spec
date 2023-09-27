@@ -17,7 +17,7 @@
 
 
 Name:           timewarrior
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Command line time tracker
 License:        MIT
@@ -25,8 +25,6 @@ Group:          Productivity/Office/Organizers
 URL:            http://taskwarrior.org/docs/timewarrior/
 Source:         https://github.com/GothenburgBitFactory/timewarrior/releases/download/v%{version}/timew-%{version}.tar.gz
 Patch0:         timewarrior-build-compare.patch
-# Submitted upstream in https://github.com/GothenburgBitFactory/timewarrior/pull/538
-Patch1:         timewarrior-out-of-source-man-pages.patch
 BuildRequires:  %{rubygem asciidoctor}
 BuildRequires:  cmake >= 2.8
 BuildRequires:  gcc-c++ >= 6.1
@@ -38,7 +36,6 @@ record time spent on activities.
 %prep
 %setup -q -n timew-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 %cmake \
@@ -50,8 +47,8 @@ record time spent on activities.
 %cmake_install
 pushd %{buildroot}%{_datadir}/%{name}
 rm -fv AUTHORS ChangeLog COPYING DCO INSTALL LICENSE README.md docker-compose.yml
-chmod -v a+x ext/* doc/holidays/refresh
-sed -i 's|#!/usr/bin/env python3|#!/usr/bin/python3|' ext/* doc/holidays/refresh
+chmod -v a+x ext/* holidays/refresh
+sed -i 's|#!/usr/bin/env python3|#!/usr/bin/python3|' ext/* holidays/refresh
 popd
 
 %files
