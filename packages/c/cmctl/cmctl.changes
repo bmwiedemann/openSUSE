@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 27 11:22:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.13.1:
+  * import latest release-1.13 commit in cmctl
+  * fix go-restful 'DO NOT USE' version
+
+-------------------------------------------------------------------
 Wed Sep 13 04:53:50 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.13.0:

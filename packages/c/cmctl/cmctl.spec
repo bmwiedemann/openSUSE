@@ -21,7 +21,7 @@
 %define archive_name cert-manager
 
 Name:           cmctl
-Version:        1.13.0
+Version:        1.13.1
 Release:        0
 Summary:        CLI tool that can help you to manage cert-manager resources inside your cluster
 License:        Apache-2.0
@@ -36,8 +36,7 @@ cmctl is a CLI tool that can help you to manage cert-manager resources inside yo
 While also available as a kubectl plugin, it is recommended to use as a stand alone binary as this allows the use of command auto-completion.
 
 %prep
-%setup -q -n cert-manager-%{version}
-%setup -q -n cert-manager-%{version} -T -D -a 1
+%autosetup -p1 -a 1 -n cert-manager-%{version}
 cp %{S:2} .
 
 %build
