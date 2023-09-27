@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 26 13:06:49 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- switch to python3.10
+
+-------------------------------------------------------------------
 Mon Jun 27 13:45:48 UTC 2022 - Adrian Schröter <adrian@suse.de>
 
 - fix runtime crashes with python 3.10

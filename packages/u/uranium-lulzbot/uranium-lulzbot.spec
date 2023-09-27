@@ -1,7 +1,7 @@
 #
 # spec file for package uranium-lulzbot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define pythons 310
+
 Name:           uranium-lulzbot
 Conflicts:      uranium
 Version:        3.6.21
@@ -28,8 +31,8 @@ Source0:        Uranium-%{version}.tar.xz
 Patch1:         fix-build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  python3-devel >= 3.5.0
-Recommends:     python3-numpy-stl
+BuildRequires:  python310-devel
+Recommends:     python310-numpy-stl
 
 %description
 Cura is an engine for processing 3D models
@@ -45,8 +48,7 @@ Uranium is the Python framework for the Cura UI.
 %build
 CFLAGS="%{optflags}"
 export CFLAGS
-sed -i 's/PythonInterp 3.5.0/PythonInterp 3.4.0/' CMakeLists.txt
-%cmake
+%cmake -DPYTHON_EXECUTABLE=/usr/bin/python3.10
 make %{?_smp_mflags}
 
 %install
@@ -74,7 +76,7 @@ mv %{buildroot}/%{_datadir}/cmake* %{buildroot}/%{_datadir}/cmake
 %files -f %{name}.lang
 %doc docs README.md
 %license LICENSE
-%{python3_sitelib}/UM
+/usr/lib/python3.10/site-packages/UM
 %{_prefix}/lib/uranium
 %dir %{_datadir}/uranium
 %{_datadir}/uranium/resources

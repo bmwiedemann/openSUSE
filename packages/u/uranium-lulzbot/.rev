@@ -113,4 +113,12 @@
     <comment>- fix runtime crashes with python 3.10</comment>
     <requestid>985334</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>6cfeb230560a43b69d105d4eeb93fbe9</srcmd5>
+    <version>3.6.21</version>
+    <time>1695853513</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to python3.10</comment>
+    <requestid>1113680</requestid>
+  </revision>
 </revisionlist>
