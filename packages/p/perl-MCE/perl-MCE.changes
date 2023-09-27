@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 14 03:07:12 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.889
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.889 Wed Sep 13 18:00:00 EST 2023
+
+    * Add Android support. Thank you, Dimitrios Kechagias.
+    * Revert defer signal-handling in MCE::Channel (send2 method).
+    * Improve mutex synchronize (aka enter) with guard capability.
+      Thank you, José Joaquín Atria.
+    * Fix mutex re-entrant lock on the Windows platform.
+    * Add mutex guard_lock method.
+
+-------------------------------------------------------------------
 Thu Jun 22 03:07:15 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.888
