@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           eksctl
-Version:        0.158.0
+Version:        0.159.0
 Release:        0
 Summary:        The official CLI for Amazon EKS
 License:        Apache-2.0
 URL:            https://github.com/weaveworks/eksctl
 Source:         eksctl-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.17
+BuildRequires:  go >= 1.20
 
 %description
 eksctl is a simple CLI tool for creating clusters on EKS - Amazon's new managed Kubernetes service for EC2. It is written in Go, and uses CloudFormation.

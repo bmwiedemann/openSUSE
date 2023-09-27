@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 26 14:19:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.159.0:
+  * Add release notes for 0.159.0 (#7091)
+  * updated more actions and deps
+  * Update github actions and tidy up
+  * Allow managed suite specs to run in parallel (#7065)
+  * Fix doc example for bottlerocket bootstrap container
+  * Replace deprecated functions, fix lint errors
+  * Update to Go 1.20
+  * Prepare for next development iteration
+- BuildRequire go1.20
+
+-------------------------------------------------------------------
 Fri Sep 22 14:24:51 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.158.0:
