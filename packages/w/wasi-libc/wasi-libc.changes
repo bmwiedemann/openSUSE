@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 22 17:06:06 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version (wasi-sdk-)20.
+  * Compatibility with Clang 16.
+  * Rename triple wasm32-wasi-pthread to wasm32-wasi-threads.
+  * Implement support for spinlock.
+  * Improve performance in dlmalloc.
+- Rebase workaround-broken-makefile.patch.
+- Drop obsolete undefine-gcc-macros.patch. (Has been solved
+  upstream in gh#WebAssembly/wasi-libc#379.)
+- Add ignore-fpclass-macros.patch to ignore __FPCLASS_* macros that
+  are new with Clang 17.
+
+-------------------------------------------------------------------
 Wed Mar 22 22:23:36 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version (wasi-sdk-)19.
