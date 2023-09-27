@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 25 12:33:45 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Don't use obsolete method Dir.exists? (bsc#1215637)
+- 5.0.1 
+
+-------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (#bsc1185510)
+
+-------------------------------------------------------------------
 Tue Jul 25 11:04:17 UTC 2023 - Michal Filka <mfilka@suse.com>
 
 - bsc#1211583

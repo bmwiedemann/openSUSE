@@ -1922,4 +1922,15 @@
     <comment>Upgrade again, -firstboot is fixed</comment>
     <requestid>1101323</requestid>
   </revision>
+  <revision rev="261" vrev="1">
+    <srcmd5>1761e2ae1a922a85f3c79a8032e67bb4</srcmd5>
+    <version>5.0.1</version>
+    <time>1695853493</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use obsolete method Dir.exists? (bsc#1215637)
+- 5.0.1 
+
+- 5.0.0 (#bsc1185510)</comment>
+    <requestid>1113640</requestid>
+  </revision>
 </revisionlist>
