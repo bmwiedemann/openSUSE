@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 22 08:27:34 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- AutoYaST: official support for LUKS2 (jsc#PED-3878, jsc#PED-5518)
+- 5.0.1
+
+-------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (#bsc1185510)
+
+-------------------------------------------------------------------
 Wed Jul  5 13:42:12 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Ensure adding storage support software packages for MicroOS
