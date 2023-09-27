@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 23 10:38:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + This release removes several features now found in GNOME
+    Settings. There are also some small interface refreshments in
+    preparation for the GTK4 upgrade. More significantly, the core
+    interface has been refactored to use layout files.
+  + Updated translations.
+- Switch compression to zst both in service and tarball produced.
+
+-------------------------------------------------------------------
 Wed Mar 22 21:44:59 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 42.beta+60:

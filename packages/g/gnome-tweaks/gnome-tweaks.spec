@@ -18,13 +18,13 @@
 
 
 Name:           gnome-tweaks
-Version:        42.beta+60
+Version:        45.0
 Release:        0
 Summary:        A tool to customize advanced GNOME 3 options
 License:        CC0-1.0 AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Tweaks
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
 # GI is needed to have typelib() Requires
@@ -84,7 +84,6 @@ rm -rf %{buildroot}/%{python3_sitelib}/gtweak/tweaks/__pycache__/*.pyc
 %{_datadir}/applications/org.gnome.tweaks.desktop
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/*/apps/org.gnome.tweak*
-%{_libexecdir}/gnome-tweak-tool-lid-inhibitor
 %{_datadir}/glib-2.0/schemas/org.gnome.tweaks.gschema.xml
 
 %files lang -f %{name}.lang
