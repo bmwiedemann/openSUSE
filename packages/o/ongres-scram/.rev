@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>959509</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>70d8346ec93acf7ff26059797e73639c</srcmd5>
+    <version>MACRO</version>
+    <time>1695853542</time>
+    <user>dimstar_suse</user>
+    <comment>Remove dependency of findbugs</comment>
+    <requestid>1113803</requestid>
+  </revision>
 </revisionlist>
