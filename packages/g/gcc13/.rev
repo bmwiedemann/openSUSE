@@ -200,4 +200,16 @@
     length stack allocations on aarch64.  [bsc#1214052] (CVE-2023-4039)</comment>
     <requestid>1110686</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>818afb60e33a17c615b39c7df3ac2e62</srcmd5>
+    <version>13.2.1+git7813</version>
+    <time>1695853464</time>
+    <user>dimstar_suse</user>
+    <comment>- add pr111411.patch (bsc#1215427)
+
+- Bump included newlib to version 4.3.0.
+- Update to GCC trunk head (r13-5254-g05b9868b182bb9)
+- Redo floatn fixinclude pick-up to simply keep what is there. (forwarded request 1112960 from dirkmueller)</comment>
+    <requestid>1113437</requestid>
+  </revision>
 </revisionlist>

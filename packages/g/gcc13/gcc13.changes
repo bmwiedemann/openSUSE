@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 22 08:07:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add pr111411.patch (bsc#1215427)
+
+-------------------------------------------------------------------
 Tue Sep 12 17:52:25 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Bump to b96e66fd4ef3e36983969fb8cdd1956f551a074b, git7831
@@ -182,12 +187,12 @@ Mon Jan 23 15:19:53 UTC 2023 - Richard Biener <rguenther@suse.com>
 -------------------------------------------------------------------
 Mon Jan 23 08:45:24 UTC 2023 - Richard Biener <rguenther@suse.com>
 
-- Bump included newlib to version 4.3.0. 
+- Bump included newlib to version 4.3.0.
 
 -------------------------------------------------------------------
 Thu Jan 19 11:34:00 UTC 2023 - Richard Biener <rguenther@suse.com>
 
-- Update to GCC trunk head (r13-5254-g05b9868b182bb9) 
+- Update to GCC trunk head (r13-5254-g05b9868b182bb9)
   * pulls Go frontend fix to fix build fail on s390x
   * pulls upstream fix for PR107678, obsoleting gcc13-pr107678.patch
 - Also package libhwasan_preinit.o on aarch64.
@@ -233,7 +238,7 @@ Mon Dec 19 14:59:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Dec 14 07:52:36 UTC 2022 - Richard Biener <rguenther@suse.com>
 
-- Redo floatn fixinclude pick-up to simply keep what is there. 
+- Redo floatn fixinclude pick-up to simply keep what is there.
 
 -------------------------------------------------------------------
 Tue Dec 13 10:34:35 UTC 2022 - Richard Biener <rguenther@suse.com>
