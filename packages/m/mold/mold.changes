@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Sep 26 20:11:13 UTC 2023 - Martin Liška <martin.liska@hey.com>
+
+- Add build-blake-3-as-static.patch that builts BLAKE 3 support as static library
+  into mold. The library is not provided in openSUSE yet.
+
+-------------------------------------------------------------------
+Sun Sep 24 17:50:53 UTC 2023 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.2.0
+  * We now use BLAKE3 as a cryptographic hash function instead of SHA256. This
+    change has made --build-id a few percent faster. libssl is no longer a build
+    dependency. (7f7a744)
+  * mold is now a few percent faster than the previous version due to an
+    optimization of string merging code path. (1a13c50)
+  * mold now emits slightly optimized code for thread-local variable accesses.
+    (f057fda, d56f528)
+  * [RISC-V] mold now supports TLSDESC relocations. TLSDESC is a new mechanism for
+    faster thread-local variable access. We (@ishitatsuyuki) actually led the effort
+    to ratify the specification (riscv-non-isa/riscv-elf-psabi-doc#373) and
+    implement it to compiler toolchain including GCC, GNU binutils and, of course,
+    mold. (141556d)
+  * mold no longer marks an as-needed .so as "needed" if the .so file is not
+    directly used by the output file. Previously, mold marked a .so file as "needed"
+    if the .so file was used by another "needed" .so file. (f02db0f)
+  * [PPC64] --execute-only now works on 64-bit PowerPC. (ac20d87, 51fec5f)
+- Remove openssl dependency.
+
+-------------------------------------------------------------------
 Sun Aug 13 19:37:35 UTC 2023 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.1.0
