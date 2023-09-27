@@ -20,7 +20,7 @@
 # _tmpfilesdir is not defined in systemd macros up to openSUSE 13.2
 %{!?_tmpfilesdir: %global _tmpfilesdir %{_libexecdir}/tmpfiles.d }
 Name:           libteam
-Version:        1.31
+Version:        1.32
 Release:        0
 Summary:        Utilities for controlling 802.1AX team network device
 License:        LGPL-2.1-or-later
@@ -35,8 +35,6 @@ Patch3:         ignore_ebusy_for_team_hwaddr_set.patch
 Patch4:         0001-allow-send_interface-dbus.patch
 Patch5:         harden_teamd@.service.patch
 Patch6:         better_handle_failures_to_chown.patch
-# PATCH-FIX-UPSTREAM jsc#PED-2209 Add option to change link-watchers logic
-Patch7:         0001-teamd-Add-option-to-change-evaluation-logic-of-multi.patch
 BuildRequires:  doxygen
 BuildRequires:  libcap-devel
 BuildRequires:  libtool

@@ -190,4 +190,12 @@
   Add 0001-teamd-Add-option-to-change-evaluation-logic-of-multi.patch (forwarded request 1095530 from ohollmann)</comment>
     <requestid>1095531</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cb977f8cd5f33e8e23a6e0321da180f7</srcmd5>
+    <version>1.32</version>
+    <time>1695853510</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.32:</comment>
+    <requestid>1113705</requestid>
+  </revision>
 </revisionlist>
