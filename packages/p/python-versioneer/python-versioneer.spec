@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-versioneer
-Version:        0.28
+Version:        0.29
 Release:        0
 Summary:        VCS-based management of project version strings
 License:        Unlicense
@@ -34,7 +34,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %python_subpackages
 

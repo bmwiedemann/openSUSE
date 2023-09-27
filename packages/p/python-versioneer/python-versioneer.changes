@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 25 06:39:53 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.29
+ * FIX: Add error output when pyproject.toml is malformed
+ * FIX: Add name to setup.py to work around a github dependency graph bug.
+ * ENH: Add basic type information throughout project.
+ * ENH: Detect pyproject.toml as project root (to support PDM).
+ * MNT: Overwrite version file instead of delete/unlink.
+ * MNT: Use https for the unlicense url.
+
+-------------------------------------------------------------------
 Fri May 26 20:12:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.28
