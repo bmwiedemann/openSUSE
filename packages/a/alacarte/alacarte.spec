@@ -17,13 +17,13 @@
 
 
 Name:           alacarte
-Version:        3.44.3
+Version:        3.50.0
 Release:        0
 Summary:        Menu editor for GNOME
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/alacarte
-Source:         https://download.gnome.org/sources/alacarte/3.44/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/alacarte/3.50/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gettext
@@ -70,7 +70,7 @@ fi
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %{_bindir}/alacarte
 %{_datadir}/alacarte
 %{_datadir}/applications/alacarte.desktop

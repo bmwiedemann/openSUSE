@@ -32,6 +32,9 @@ Patch0:         %{name}-build.patch
 Patch1:         %{name}-dont-validate-pom.patch
 Patch2:         %{name}-cachedir.patch
 Patch3:         %{name}-fix-tty-detection.patch
+Patch4:         %{name}-reproducible-now.patch
+Patch5:         %{name}-reproducible-builds.patch
+Patch6:         %{name}-java8compat.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  antlr3-java

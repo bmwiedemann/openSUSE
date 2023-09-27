@@ -1,7 +1,7 @@
 #
 # spec file for package stoken
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define         soname libstoken1
 Name:           stoken
-Version:        0.92
+Version:        0.93
 Release:        0
 Summary:        Token code generator compatible with RSA SecurID 128-bit (AES) token
-License:        LGPL-2.0-or-later AND BSD-3-Clause
+License:        BSD-3-Clause AND LGPL-2.0-or-later
 Group:          Productivity/Security
-Url:            http://stoken.sf.net
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-Source1:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz.asc
+URL:            https://github.com/stoken-dev/stoken
+Source:         https://github.com/stoken-dev/stoken/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  desktop-file-utils
@@ -79,14 +78,14 @@ endorsed by RSA Security.
 This package contains the graphical interface program for %{name}.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 autoreconf -fvi
 %configure \
     --with-gtk \
     --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

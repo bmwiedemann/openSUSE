@@ -25,28 +25,28 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-Flask
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        A microframework based on Werkzeug, Jinja2 and good intentions
 License:        BSD-3-Clause
 URL:            https://flask.palletsprojects.com
-Source0:        https://files.pythonhosted.org/packages/source/F/Flask/Flask-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/f/flask/flask-%{version}.tar.gz
 Source1:        python-Flask-rpmlintrc
 BuildRequires:  %{python_module Jinja2 >= 3.1.2}
-BuildRequires:  %{python_module Werkzeug >= 2.3.3}
+BuildRequires:  %{python_module Werkzeug >= 2.3.7}
 BuildRequires:  %{python_module blinker >= 1.6.2}
 BuildRequires:  %{python_module click >= 8.1.3}
 BuildRequires:  %{python_module contextvars}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module importlib-metadata >= 3.6.0 if %python-base < 3.10}
 BuildRequires:  %{python_module itsdangerous >= 2.1.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.2.4}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-Jinja2 >= 3.1.2
-Requires:       python-Werkzeug >= 2.3.3
+Requires:       python-Werkzeug >= 2.3.7
 Requires:       python-blinker >= 1.6.2
 Requires:       python-click >= 8.1.3
 Requires:       python-itsdangerous >= 2.1.2
@@ -80,7 +80,7 @@ This package contains HTML documentation, including tutorials and API
 reference for python-Flask.
 
 %prep
-%autosetup -p1 -n Flask-%{version}
+%autosetup -p1 -n flask-%{version}
 find . -name '.gitignore' -delete
 
 %build
@@ -112,7 +112,7 @@ export LANG=en_US.UTF-8
 %python_alternative %{_bindir}/flask
 %{_bindir}/flask-%{python_bin_suffix}
 %{python_sitelib}/flask
-%{python_sitelib}/Flask-%{version}.dist-info
+%{python_sitelib}/flask-%{version}.dist-info
 
 %files %{python_files doc}
 %doc docs/

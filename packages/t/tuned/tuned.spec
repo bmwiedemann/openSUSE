@@ -18,7 +18,7 @@
 
 %define         profile_dir %{_prefix}/lib/%{name}
 Name:           tuned
-Version:        2.20.0.18+git.7b1a20b
+Version:        2.21.0.0+git.670541d
 Release:        0
 Summary:        A dynamic adaptive system tuning daemon
 License:        GPL-2.0-or-later
@@ -215,7 +215,7 @@ rm %{buildroot}%{_mandir}/man7/tuned-profiles-sap-hana.7
 
 %files
 %license COPYING
-%doc AUTHORS README
+%doc AUTHORS README.md
 %{_datadir}/bash-completion/completions/tuned-adm
 %{_datadir}/polkit-1/actions/com.redhat.tuned.policy
 %{python3_sitelib}/tuned
@@ -235,6 +235,7 @@ rm %{buildroot}%{_mandir}/man7/tuned-profiles-sap-hana.7
 %if 0%{?sle_version} && %{?suse_version} < 1599
 %exclude %{_prefix}/lib/tuned/sap-netweaver
 %exclude %{_prefix}/lib/tuned/sap-hana
+%exclude %{_prefix}/lib/tuned/sap-hana-kvm-guest
 %exclude %{_mandir}/man7/tuned-profiles-sap.7%{?ext_man}
 %exclude %{_mandir}/man7/tuned-profiles-sap-hana.7%{?ext_man}
 %endif
@@ -302,6 +303,7 @@ rm %{buildroot}%{_mandir}/man7/tuned-profiles-sap-hana.7
 
 %files profiles-sap-hana
 %{profile_dir}/sap-hana
+%{profile_dir}/sap-hana-kvm-guest
 %{_mandir}/man7/tuned-profiles-sap-hana.7%{?ext_man}
 %endif
 

@@ -17,7 +17,7 @@
 
 
 Name:           ddnet
-Version:        17.2
+Version:        17.2.1
 Release:        0
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 License:        Apache-2.0 AND CC-BY-SA-3.0 AND Zlib AND MIT AND SUSE-Public-Domain

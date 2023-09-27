@@ -32,6 +32,7 @@ Source100:      mount-rootfs-and-chroot.sh
 Source101:      README
 
 # Patches
+Patch0:         Omit-file--S-option-on-older-distros-that-lack-support.patch
 
 BuildRequires:  bison
 BuildRequires:  file-devel
@@ -325,6 +326,7 @@ BuildRequires:  parted
 BuildRequires:  psmisc
 BuildRequires:  sg3_utils
 BuildRequires:  strace
+BuildRequires:  sysconfig-netconfig
 %ifarch %ix86 x86_64
 BuildRequires:  syslinux
 %endif

@@ -19,23 +19,19 @@
 %define build_xcb_backend 1
 
 Name:           cairo
-Version:        1.17.8
+Version:        1.18.0
 Release:        0
 Summary:        Vector Graphics Library with Cross-Device Output Support
 License:        LGPL-2.1-or-later OR MPL-1.1
 Group:          Development/Libraries/C and C++
-URL:            https://cairographics.org/
-Source0:        https://cairographics.org/snapshots/%{name}-%{version}.tar.xz
+URL:            https://cairographics.org
+Source0:        %{url}/releases/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 # PATCH-FIX-UPSTREAM cairo-xlib-endianness.patch fdo#63461 bnc#882951 fcrozat@suse.com -- Fix crash when client and server have different endianness
 Patch0:         cairo-xlib-endianness.patch
 # PATCH-FIX-UPSTREAM cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff alarrosa@suse.com -- Fix segfault in get_bitmap_surface
 Patch1:         cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff
-# PATCH-FIX-UPSTREAM cairo-1.17.8-fix-tee-compilation.patch --  https://gitlab.freedesktop.org/cairo/cairo/-/issues/634 tee: Fix cairo wrapper functions
-Patch2:         cairo-1.17.8-fix-tee-compilation.patch
-# PATCH-FIX-UPSTREAM cairo-1.17.8-ft-font-missing-glyph.patch -- https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/467 ft: Use normal font size when detecting the format
-Patch3:         cairo-1.17.8-ft-font-missing-glyph.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
@@ -158,7 +154,6 @@ cairo.
 	-D tee=enabled \
 	-D tests=disabled \
 	-D xlib=enabled \
-	-D xml=disabled
 	%{nil}
 %meson_build
 
@@ -182,11 +177,9 @@ cairo.
 
 %files tools
 %license util/cairo-trace/COPYING util/cairo-trace/COPYING-GPL-3
-%{_bindir}/cairo-sphinx
 %{_bindir}/cairo-trace
 %dir %{_libdir}/cairo
 %{_libdir}/cairo/libcairo-fdr.so
-%{_libdir}/cairo/libcairo-sphinx.so
 %{_libdir}/cairo/libcairo-trace.so
 
 %files devel

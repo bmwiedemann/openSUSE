@@ -20,7 +20,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           yq
-Version:        4.34.2
+Version:        4.35.2
 Release:        0
 Summary:        A portable command-line YAML processor
 License:        MIT
@@ -35,7 +35,7 @@ Conflicts:      python3dist(yq)
 %else
 Conflicts:      python3-yq
 %endif
-BuildRequires:  golang(API) = 1.19
+BuildRequires:  golang(API) = 1.21
 
 %description
 A lightweight and portable command-line YAML processor. yq uses jq like syntax

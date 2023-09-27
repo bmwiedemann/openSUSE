@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 22 15:13:11 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Downgrade openssh dependency to recommends (bsc#1215533)
+
+-------------------------------------------------------------------
 Wed Aug 23 19:03:38 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.42.0:

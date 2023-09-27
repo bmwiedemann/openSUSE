@@ -1,0 +1,40 @@
+diff --git a/src/org/python/modules/posix/PosixModule.java b/src/org/python/modules/posix/PosixModule.java
+index e3a8dd9..07d4b43 100644
+--- a/src/org/python/modules/posix/PosixModule.java
++++ b/src/org/python/modules/posix/PosixModule.java
+@@ -1144,7 +1144,7 @@ public class PosixModule implements ClassDictInit {
+         if (times == Py.None) {
+             // FIXME dynamically bind to java.time.Instant, available in Java 8,
+             // to potentially get higher resolution (nanosecond) time
+-            atime = mtime = FileTime.from(
++            atime = mtime = FileTime.from(System.getenv("SOURCE_DATE_EPOCH") != null ? 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")) :
+                     System.currentTimeMillis(), TimeUnit.MILLISECONDS);
+         } else if (times instanceof PyTuple && times.__len__() == 2) {
+             atime = getFileTime(times.__getitem__(0));
+diff --git a/src/org/python/modules/random/PyRandom.java b/src/org/python/modules/random/PyRandom.java
+index f5ea8d9..0dc4881 100644
+--- a/src/org/python/modules/random/PyRandom.java
++++ b/src/org/python/modules/random/PyRandom.java
+@@ -45,7 +45,7 @@ public class PyRandom extends PyObject {
+     final void Random_seed(PyObject seed) {
+         long n;
+         if (seed == null) {
+-            seed = new PyLong(System.currentTimeMillis());
++            seed = new PyLong(System.getenv("SOURCE_DATE_EPOCH") != null ? 1000 * Long.parseLong(System.getenv("SOURCE_DATE_EPOCH")) : System.currentTimeMillis());
+         }
+         if (seed instanceof PyLong) {
+             PyLong max = new PyLong(Long.MAX_VALUE);
+diff --git a/src/org/python/modules/time/Time.java b/src/org/python/modules/time/Time.java
+index ebd9871..cf2218d 100644
+--- a/src/org/python/modules/time/Time.java
++++ b/src/org/python/modules/time/Time.java
+@@ -131,6 +131,9 @@ public class Time implements ClassDictInit
+     }
+ 
+     public static double time() {
++        if (System.getenv("SOURCE_DATE_EPOCH") != null) {
++            return Long.parseLong(System.getenv("SOURCE_DATE_EPOCH"));
++        }
+         return System.currentTimeMillis()/1000.0;
+     }
+ 

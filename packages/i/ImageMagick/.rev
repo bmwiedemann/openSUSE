@@ -3659,4 +3659,36 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   - ImageMagick-CVE-2023-3428.patch (upstreamed)</comment>
     <requestid>1105419</requestid>
   </revision>
+  <revision rev="279" vrev="1">
+    <srcmd5>52c50bcd25043cb95e3da9c0bf46c932</srcmd5>
+    <version>7.1.1.17</version>
+    <time>1695758427</time>
+    <user>anag+factory</user>
+    <comment>- version update to 7.1.1.17
+  * upstream changelog:
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#711-17---2023-09-19
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+- follow upstream, create open, limited, secure and websafe alternative
+  configuration packages with different policy.xml
+- removing p7zip redundant dependency
+
+ * [bsc#1200389] CVE-2022-32546
+ * [bsc#1211792] CVE-2023-34153
+ * [bsc#1211791] CVE-2023-34151
+- [bsc#1209141] CVE-2023-1289
+- [bsc#1207982] CVE-2022-44267
+- [bsc#1207983] CVE-2022-44268
+- [bsc#1203450] CVE-2022-3213
+- CVE-2022-2719 [bsc#1202250]
+- [bsc#1199350] CVE-2022-28463
+- [bsc#1200387] CVE-2022-32547
+  * CVE-2022-1115 [bsc#1198701]
+  * [bsc#1200389] (CVE-2022-32546
+  * CVE-2022-1114 [bsc#1198700]
+  * [bsc#1200388] CVE-2022-32545
+  * CVE-2022-0284 [bsc#1195563]
+  * CVE-2021-4219 [bsc#1196337]</comment>
+    <requestid>1112966</requestid>
+  </revision>
 </revisionlist>

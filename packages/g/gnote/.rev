@@ -761,4 +761,12 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
     <comment></comment>
     <requestid>1111860</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>a2c1da8eab8a882f7de7764d192ca66b</srcmd5>
+    <version>45.0</version>
+    <time>1695758553</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1113535 from iznogood)</comment>
+    <requestid>1113645</requestid>
+  </revision>
 </revisionlist>

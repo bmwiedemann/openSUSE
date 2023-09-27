@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 25 15:59:45 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable grub2-branding on ppc64le. patterns-microos-base has
+  Requires (grub2-branding-openSUSE if grub2). So we need the
+  branding.
+
+-------------------------------------------------------------------
 Wed Aug 30 06:56:27 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Remove grub2 BuildRequires in grub2-branding (bsc#1214769)

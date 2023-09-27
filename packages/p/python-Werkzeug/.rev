@@ -777,4 +777,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1110948</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>421d9f9a3172b7acce2c86f7090e5aa3</srcmd5>
+    <version>2.3.7</version>
+    <time>1695758443</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.3.7:
+  * Use ``flit_core`` instead of ``setuptools`` as build backend.
+  * Fix parsing of multipart bodies.
+    Adjust index of last newline in data start.
+  * ``_plain_int`` and ``_plain_float`` strip whitespace before type
+    enforcement.
+  * Fix empty file streaming when testing.
+  * Clearer error message when URL rule does not start with slash.
+  * ``Accept`` ``q`` value can be a float without a decimal part.
+- Drop captialisation again.</comment>
+    <requestid>1113325</requestid>
+  </revision>
 </revisionlist>

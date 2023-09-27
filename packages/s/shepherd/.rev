@@ -65,4 +65,12 @@ conflicting man pages moved to shepherd-bins so conflict should be gone</comment
 </comment>
     <requestid>850996</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b9a3b6862cd18f9ca44182966c304fce</srcmd5>
+    <version>0.10.2</version>
+    <time>1695758484</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113462</requestid>
+  </revision>
 </revisionlist>

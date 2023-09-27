@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1081961</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>6ca4898ea98c1ca18cdfa8f71e132752</srcmd5>
+    <version>15.1.0</version>
+    <time>1695758473</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+- use unbundled versioneer to build package 
+</comment>
+    <requestid>1113464</requestid>
+  </revision>
 </revisionlist>

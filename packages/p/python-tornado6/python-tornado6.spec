@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define         skip_python2 1
 Name:           python-tornado6
-Version:        6.3.2
+Version:        6.3.3
 Release:        0
 Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
 License:        Apache-2.0
@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/t/tornado/tornado
 Source99:       python-tornado6-rpmlintrc
 # PATCH-FIX-OPENSUSE ignore-resourcewarning-doctests.patch -- ignore resource warnings on OBS
 Patch0:         ignore-resourcewarning-doctests.patch
+# PATCH-FIX-UPSTREAM https://github.com/tornadoweb/tornado/commit/4d4d80c1d076dcb4e051c969ae4b66557d3856b8 Adapt to deprecation of datetime utc methods
+Patch:          py312-datetime.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}

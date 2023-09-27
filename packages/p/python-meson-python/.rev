@@ -69,4 +69,28 @@
     <comment></comment>
     <requestid>1105266</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>87e32eef16d03d9f3346956667293321</srcmd5>
+    <version>0.14.0</version>
+    <time>1695758420</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.0:
+  * Do not run ``meson install`` to build a wheel.
+  * Obey the ``--skip-subprojects`` when specified for the ``meson
+    install`` command.
+  * Implement support for the ``exclude_directories`` and
+    ``exclude_files`` arguments to Meson ``install_subdir()`` function
+    and similar installation functions. This requires Meson version
+    1.1.0 or later.
+  * Implement support for building wheels targeting the Python limited API.
+  * When ``pyproject.toml`` does not contain a ``version`` field and
+    ``version`` is not declared dynamic, raise an error instead of
+    silently using the version declared in ``meson.build``.
+  * Fix the mtime of source files in the sdist tarball.
+  * Add ``objc`` and ``objcpp`` compilers to the cross file generated
+    when the ``$ARCHFLAGS`` is set.
+- Add patch no-build-isolation-in-test.patch, don't use an isolated
+  environment.</comment>
+    <requestid>1112687</requestid>
+  </revision>
 </revisionlist>

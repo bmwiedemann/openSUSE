@@ -1,4 +1,14 @@
 --------------------------------------------------------------------
+Mon Sep 25 07:31:40 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#663
+- Add Qualcomm's GPU clk, LCD backlight, and power-related [spmi &
+  pmic] modules required for booting installer on Lenovo X13s.
+  (bsc#1215326)
+- Add more boot-required modules for Lenovo X13s
+- 17.96
+
+--------------------------------------------------------------------
 Mon Sep 18 11:37:18 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#661

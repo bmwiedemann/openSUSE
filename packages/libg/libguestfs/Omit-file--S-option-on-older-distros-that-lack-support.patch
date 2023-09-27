@@ -1,0 +1,125 @@
+Subject: daemon: Omit 'file -S' option on older distros that lack support
+From: Richard W.M. Jones rjones@redhat.com Thu Sep 21 12:32:50 2023 +0100
+Date: Thu Sep 21 15:09:14 2023 +0100:
+Git: c95d8c4cf64142bb707b42c32cf3e1ba3c4a5eb1
+
+OpenSUSE LEAP 15 lacks support for this option, so test for it before
+using it.
+
+See also:
+https://listman.redhat.com/archives/libguestfs/2023-September/032613.html
+
+Reported-by: Olaf Hering
+Fixes: commit 23986d3c4f4d1f9cbac44cc743d3e6af721e4237
+Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+
+--- a/daemon/Makefile.am
++++ b/daemon/Makefile.am
+@@ -280,6 +280,7 @@ SOURCES_MLI = \
+ 	devsparts.mli \
+ 	file.mli \
+ 	filearch.mli \
++	file_helper.mli \
+ 	findfs.mli \
+ 	inspect.mli \
+ 	inspect_fs.mli \
+@@ -321,6 +322,7 @@ SOURCES_ML = \
+ 	btrfs.ml \
+ 	cryptsetup.ml \
+ 	devsparts.ml \
++	file_helper.ml \
+ 	file.ml \
+ 	filearch.ml \
+ 	isoinfo.ml \
+--- a/daemon/file.ml
++++ b/daemon/file.ml
+@@ -43,7 +43,10 @@ let file path =
+     | S_SOCK -> "socket"
+     | S_REG ->
+        (* Regular file, so now run [file] on it. *)
+-       let out = command "file" ["-zSb"; Sysroot.sysroot_path path] in
++       let file_options =
++         sprintf "-z%sb"
++           (if File_helper.file_has_S_option () then "S" else "") in
++       let out = command "file" [file_options; Sysroot.sysroot_path path] in
+ 
+        (*  We need to remove the trailing \n from output of file(1).
+         *
+@@ -54,6 +57,9 @@ let file path =
+        String.trimr out
+   )
+   else (* it's a device *) (
+-    let out = command "file" ["-zSbsL"; path] in
++    let file_options =
++      sprintf "-z%sbsL"
++        (if File_helper.file_has_S_option () then "S" else "") in
++    let out = command "file" [file_options; path] in
+     String.trimr out
+   )
+--- /dev/null
++++ b/daemon/file_helper.ml
+@@ -0,0 +1,28 @@
++(* libguestfs daemon
++ * Copyright (C) 2009-2023 Red Hat Inc.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, write to the Free Software Foundation, Inc.,
++ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
++ *)
++
++open Std_utils
++
++(* Does [file] support the [-S] / [--no-sandbox] option
++ * (not on OpenSUSE LEAP 15).
++ *)
++let test_option = lazy (
++  let out = Utils.command "file" ["--help"] in
++  String.find out "--no-sandbox" >= 0
++)
++let file_has_S_option () = Lazy.force test_option
+--- /dev/null
++++ b/daemon/file_helper.mli
+@@ -0,0 +1,19 @@
++(* libguestfs daemon
++ * Copyright (C) 2009-2023 Red Hat Inc.
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, write to the Free Software Foundation, Inc.,
++ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
++ *)
++
++val file_has_S_option : unit -> bool
+--- a/daemon/filearch.ml
++++ b/daemon/filearch.ml
+@@ -128,7 +128,10 @@ and cpio_arch magic orig_path path =
+         | bin :: bins ->
+            let bin_path = tmpdir // bin in
+            if is_regular_file bin_path then (
+-             let out = command "file" ["-zSb"; bin_path] in
++             let file_options =
++               sprintf "-z%sb"
++                 (if File_helper.file_has_S_option () then "S" else "") in
++             let out = command "file" [file_options; bin_path] in
+              file_architecture_of_magic out orig_path bin_path
+            )
+            else

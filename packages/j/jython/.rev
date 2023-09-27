@@ -235,4 +235,12 @@ Use SPDX format (forwarded request 109062 from babelworx)</comment>
     <comment>2.7.3</comment>
     <requestid>1095810</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>30214033687e4b7e668b501417101b6c</srcmd5>
+    <version>2.7.3</version>
+    <time>1695758501</time>
+    <user>anag+factory</user>
+    <comment>reproducible builds</comment>
+    <requestid>1113522</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  4 18:18:06 UTC 2023 - Cliff Zhao <qzhao@suse.com>
+
+- Update brise.spec: 
+  * Add Conflicts condition to insure brise could update successfully
+    from brise binary rpm, for SUSE:SLE-SP6 update.
+  * Replace rime-schema-all dependence to real package name to
+    avoid 2 level of virtual packages when it installed.
+
+-------------------------------------------------------------------
 Sat Jun  3 07:29:19 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - update brise 20230603+git.5fdd2d6

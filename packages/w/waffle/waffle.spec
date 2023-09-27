@@ -20,7 +20,7 @@
 %define _minorVersion 0
 %define libname lib%{name}-%{_majorVersion}-%{_minorVersion}
 Name:           waffle
-Version:        1.7.2
+Version:        1.8.0
 Release:        0
 Summary:        C library defering selection of GL API and window system until runtime
 License:        BSD-2-Clause
@@ -29,10 +29,12 @@ URL:            https://people.freedesktop.org/~chadversary/waffle/index.html
 Source0:        https://gitlab.freedesktop.org/mesa/waffle/-/raw/website/files/release/%{name}-%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(wayland-client) >= 1.10
 BuildRequires:  pkgconfig(wayland-egl) >= 9.1
@@ -76,44 +78,33 @@ develop Waffle applications.
 %autosetup -p1
 
 %build
-%cmake \
-  -Dwaffle_has_glx=1 \
-  -Dwaffle_has_gbm=1 \
-  -Dwaffle_has_x11_egl=1 \
-  -Dwaffle_build_tests=1 \
-  -DCMAKE_INSTALL_DOCDIR=%{_docdir}/waffle-%{_majorVersion}
-%cmake_build
+%meson
+%meson_build
 
 %install
-%cmake_install
-
-%check
-%ctest
+%meson_install
+mv examples examples.orig
+mv $RPM_BUILD_ROOT/%{_datadir}/doc/waffle1 .
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%dir %{_docdir}/waffle-%{_majorVersion}
-%{_docdir}/waffle-%{_majorVersion}/*.txt
-%{_docdir}/waffle-%{_majorVersion}/README.md
-%dir %{_docdir}/waffle-%{_majorVersion}/release-notes
-%{_docdir}/waffle-%{_majorVersion}/release-notes/*.txt
-%{_docdir}/waffle-%{_majorVersion}/release-notes/waffle-1.6.*.md
-%{_docdir}/waffle-%{_majorVersion}/release-notes/waffle-1.7.*.md
+%doc waffle1/*.txt
+%doc waffle1/*.md
+%doc waffle1/release-notes/
 %{_bindir}/wflinfo
 %{_datadir}/bash-completion/completions/wflinfo
+%{_datadir}/zsh/site-functions/_wflinfo
 
 %files -n %{libname}
 %{_libdir}/libwaffle-1.so.*
 
 %files devel
 %{_libdir}/libwaffle-1.so
-%dir %{_docdir}/waffle-%{_majorVersion}/examples
-%{_docdir}/waffle-%{_majorVersion}/examples/*
+%doc waffle1/examples/
 %dir %{_includedir}/waffle-%{_majorVersion}
 %{_includedir}/waffle-%{_majorVersion}/*.h
 %{_libdir}/pkgconfig/waffle-%{_majorVersion}.pc
-%{_libdir}/cmake/Waffle
 
 %changelog

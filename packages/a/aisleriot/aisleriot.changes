@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 25 11:58:52 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.22.30:
+  + Revert "game: Provide a clean environment for each game"
+    (glgo#GNOME/aisleriot#961).
+
+-------------------------------------------------------------------
 Tue May  2 13:29:57 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.22.29:

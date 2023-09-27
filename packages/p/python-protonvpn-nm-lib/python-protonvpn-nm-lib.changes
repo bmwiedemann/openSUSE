@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 25 14:37:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file
+- Add exclude-tests.patch (from gh#ProtonVPN/protonvpn-nm-lib!25)
+
+-------------------------------------------------------------------
+Mon Sep 25 12:51:55 UTC 2023 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update to 3.16.0
+  * Fix connectivity issue if protonstatus is down
+  * Update openvpn template
+
+-------------------------------------------------------------------
 Mon Nov 28 14:07:39 UTC 2022 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Update to 3.14.0

@@ -1046,4 +1046,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1098403</requestid>
   </revision>
+  <revision rev="95" vrev="5">
+    <srcmd5>d617f9bc506b3e6e1f5490aa3c9dc393</srcmd5>
+    <version>1.50.1</version>
+    <time>1695758510</time>
+    <user>anag+factory</user>
+    <comment>Fixes for bsc#1215543, bsc#1215461, bsc#1215586, bsc#1215664</comment>
+    <requestid>1113550</requestid>
+  </revision>
 </revisionlist>

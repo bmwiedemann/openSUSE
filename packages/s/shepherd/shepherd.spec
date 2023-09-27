@@ -1,7 +1,8 @@
 #
 # spec file for package shepherd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2023 Jonathan Brielmaier <jbrielmaier@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           shepherd
-Version:        0.8.1
+Version:        0.10.2
 Release:        0
 Summary:        Init and service manager
 License:        GPL-3.0-or-later
@@ -25,11 +26,12 @@ Group:          System/Base
 URL:            https://www.gnu.org/software/shepherd/
 Source0:        https://ftp.gnu.org/gnu/shepherd/shepherd-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/shepherd/shepherd-%{version}.tar.gz.sig
-Source2:        shepherd-rpmlintrc
-BuildRequires:  guile-devel >= 2.0.13
-BuildRequires:  pkg-config
+Source2:        %{name}.keyring
+BuildRequires:  guile-devel >= 2.1.17
+BuildRequires:  guile-fibers >= 1.1.0
+BuildRequires:  pkgconfig
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description
 The GNU Daemon Shepherd or GNU Shepherd, formerly known as GNU dmd, is
@@ -40,7 +42,6 @@ for use on GNU/Hurd, but it is supposed to work on every POSIX-like
 system where Guile is available. In particular, it is used as PID 1 by
 GNU Guix.
 
-
 %package bins
 Summary:        Shepherd's init binaries
 Group:          System/Base
@@ -48,13 +49,25 @@ Conflicts:      systemd-sysvinit
 
 %description bins
 Binaries of shepherd conflicting with other init systems.
+BuildArch:      noarch
+
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Base
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (shepherd and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash completion script for %{name}.
 
 %prep
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%configure --with-bash-completion-dir=%{_datadir}/bash-completion/completions
+%make_build
 
 %install
 %make_install
@@ -73,14 +86,17 @@ make %{?_smp_mflags}
 %{_libdir}/guile
 %{_libdir}/shepherd
 %{_datadir}/guile
-%doc %{_infodir}/%{name}.info.gz
-%doc %{_mandir}/man*/*
+%{_infodir}/%{name}.info%{?ext_info}
+%{_mandir}/man*/*
 %exclude %{_mandir}/man8/reboot.8.*
 %exclude %{_mandir}/man8/halt.8.*
 
+%files bash-completion
+%{_datadir}/bash-completion/completions/herd
+
 %files bins
 %{_sbindir}/*
-%doc %{_mandir}/man8/reboot.8.*
-%doc %{_mandir}/man8/halt.8.*
+%{_mandir}/man8/reboot.8%{?ext_man}
+%{_mandir}/man8/halt.8%{?ext_man}
 
 %changelog

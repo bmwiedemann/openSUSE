@@ -573,4 +573,14 @@
     <comment></comment>
     <requestid>1084081</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>17d42a15dd5960e82bac30ce5f6f49f8</srcmd5>
+    <version>3.22.30</version>
+    <time>1695758526</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.22.30:
+  + Revert &quot;game: Provide a clean environment for each game&quot;
+    (glgo#GNOME/aisleriot#961). (forwarded request 1113447 from dimstar)</comment>
+    <requestid>1113606</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 25 02:04:19 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.7:
+  * Use ``flit_core`` instead of ``setuptools`` as build backend.
+  * Fix parsing of multipart bodies.
+    Adjust index of last newline in data start.
+  * ``_plain_int`` and ``_plain_float`` strip whitespace before type
+    enforcement.
+  * Fix empty file streaming when testing.
+  * Clearer error message when URL rule does not start with slash.
+  * ``Accept`` ``q`` value can be a float without a decimal part.
+- Drop captialisation again.
+
+-------------------------------------------------------------------
 Mon Jun 19 06:24:50 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 2.3.6:

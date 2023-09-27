@@ -1,0 +1,45 @@
+From fc7b1ad2c422e4148d6419f1eec56189a7a578ac Mon Sep 17 00:00:00 2001
+From: Joel Colledge <joel.colledge@linbit.com>
+Date: Fri, 1 Sep 2023 11:04:49 +0200
+Subject: [PATCH 09/20] drbd: reduce "net_ee not empty" info to a dynamic debug
+ print
+
+This situation is known and harmless. No need to print a worrying
+"killed N entries" message when it occurs.
+
+A similar comment explaining that this is harmless was introduced in
+commit:
+31e0f1250f17 on disconnect, just give up all references on pages from net_ee
+
+But the comment got lost in some refactoring:
+0b220db6109e drbd: move {active,read,sync,done}_ee lists from device to connection
+
+Bring the comment back, slightly simplified.
+---
+ drbd/drbd_receiver.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/drbd/drbd_receiver.c b/drbd/drbd_receiver.c
+index 2e2ed4699a94..223353b1081c 100644
+--- a/drbd/drbd_receiver.c
++++ b/drbd/drbd_receiver.c
+@@ -8664,9 +8664,15 @@ static void conn_disconnect(struct drbd_connection *connection)
+ 	i = drbd_free_peer_reqs(connection, &connection->sync_ee);
+ 	if (i)
+ 		drbd_info(connection, "sync_ee not empty, killed %u entries\n", i);
++
++	/*
++	 * tcp_close and release of sendpage pages can be deferred. We don't
++	 * care for exactly when the network stack does its put_page(), but
++	 * release our reference on these pages right here.
++	 */
+ 	i = drbd_free_peer_reqs(connection, &connection->net_ee);
+ 	if (i)
+-		drbd_info(connection, "net_ee not empty, killed %u entries\n", i);
++		dynamic_drbd_dbg(connection, "net_ee not empty, killed %u entries\n", i);
+ 
+ 	cleanup_unacked_peer_requests(connection);
+ 	cleanup_peer_ack_list(connection);
+-- 
+2.35.3
+

@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-constantly
 Version:        15.1.0
@@ -27,6 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/twisted/constantly
 Source:         https://files.pythonhosted.org/packages/source/c/constantly/constantly-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module versioneer}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
@@ -38,16 +39,19 @@ Originally ``twisted.python.constants`` from the `Twisted <https://twistedmatrix
 
 %prep
 %setup -q -n constantly-%{version}
+rm -rf versioneer.py
 
 %build
 %python_build
 
 %install
 %python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/constantly
+%{python_sitelib}/constantly-%{version}*-info
 
 %changelog

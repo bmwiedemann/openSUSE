@@ -17,17 +17,15 @@
 
 
 Name:           xsnow
-Version:        3.7.4
+Version:        3.7.5
 Release:        0
 Summary:        A Christmas Animation
 License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
 URL:            https://www.ratrabbit.nl/ratrabbit/xsnow
 Source:         https://www.ratrabbit.nl/downloads/xsnow/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE xsnow-desktop_file.patch -- Fix desktop categories
-Patch0:         xsnow-desktop_file.patch
 # PATCH-FIX-OPENSUSE xsnow-bindir.patch -- Install in /usr/bin instead /usr/games
-Patch1:         xsnow-bindir.patch
+Patch0:         xsnow-bindir.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)

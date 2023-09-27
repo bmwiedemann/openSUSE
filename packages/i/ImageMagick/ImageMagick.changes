@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 21 15:26:22 UTC 2023 - pgajdos@suse.com
+
+- version update to 7.1.1.17
+  * upstream changelog:
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#711-17---2023-09-19
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+- follow upstream, create open, limited, secure and websafe alternative
+  configuration packages with different policy.xml
+- removing p7zip redundant dependency
+
+-------------------------------------------------------------------
 Tue Aug 22 13:11:14 UTC 2023 - pgajdos@suse.com
 
 - version update to 7.1.1.15
@@ -23,6 +35,9 @@ Tue May 30 08:33:42 UTC 2023 - pgajdos@suse.com
 - version update to 7.1.1.11
   * upstream changelog:
   https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#711-11---2023-05-29
+ * [bsc#1200389] CVE-2022-32546
+ * [bsc#1211792] CVE-2023-34153
+ * [bsc#1211791] CVE-2023-34151
 
 -------------------------------------------------------------------
 Thu May 25 08:05:03 UTC 2023 - pgajdos@suse.com
@@ -66,6 +81,7 @@ Tue Mar 14 13:30:28 UTC 2023 - pgajdos@suse.com
   https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
 - modified patches
   % ImageMagick-library-installable-in-parallel.patch (refreshed)
+- [bsc#1209141] CVE-2023-1289
 
 -------------------------------------------------------------------
 Mon Mar 13 08:45:26 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
@@ -150,6 +166,8 @@ Wed Oct 26 09:27:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * latest automake configuration
   * fix undefined-shift in ReadTGAImage @ https://oss-fuzz.com/testcase?key=5129864151957504
   * prevent divide by zero exception
+- [bsc#1207982] CVE-2022-44267
+- [bsc#1207983] CVE-2022-44268
 
 -------------------------------------------------------------------
 Wed Oct 12 08:06:39 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
@@ -158,6 +176,7 @@ Wed Oct 12 08:06:39 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
   upstream changelog:
   https://raw.githubusercontent.com/ImageMagick/Website/main/ChangeLog.md
 - rebae ImageMagick-library-installable-in-parallel.patch
+- [bsc#1203450] CVE-2022-3213
 
 -------------------------------------------------------------------
 Wed Sep 28 14:10:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -358,6 +377,9 @@ Tue Apr 19 13:37:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fixes #4985: 4e+26 is outside the range of representable values of type
     'unsigned long' at
 - fix typo on update-alternatives call
+- CVE-2022-2719 [bsc#1202250]
+- [bsc#1199350] CVE-2022-28463
+- [bsc#1200387] CVE-2022-32547
 
 -------------------------------------------------------------------
 Sun Apr 17 12:36:12 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
@@ -370,6 +392,8 @@ Thu Apr  7 07:29:22 UTC 2022 - pgajdos@suse.com
 - version update to 7.1.0.29
   see ChangeLog.md for details
   (https://github.com/ImageMagick/ImageMagick/blob/main/ChangeLog.md)
+  * CVE-2022-1115 [bsc#1198701]
+  * [bsc#1200389] (CVE-2022-32546
 
 -------------------------------------------------------------------
 Wed Mar 23 21:46:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -379,6 +403,8 @@ Wed Mar 23 21:46:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * fix PS and EPS %%BoundingBox not being parsed
   * fix stack based buffer overflow in _TIFFVGetField (https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=42549)
   * fix heap buffer overflow in dcm image reading (https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=45640)
+  * CVE-2022-1114 [bsc#1198700]
+  * [bsc#1200388] CVE-2022-32545
 
 -------------------------------------------------------------------
 Tue Mar 15 11:34:13 UTC 2022 - pgajdos@suse.com
@@ -438,6 +464,7 @@ Wed Feb  2 13:08:44 UTC 2022 - pgajdos@suse.com
     https://github.com/ImageMagick/ImageMagick/discussions/4533).
   * Add support for formatted text (reference
     https://github.com/ImageMagick/ImageMagick/discussions/4515).
+  * CVE-2022-0284 [bsc#1195563]
 
 -------------------------------------------------------------------
 Thu Dec 30 09:38:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -446,6 +473,7 @@ Thu Dec 30 09:38:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * support -integral option.
   * possible DoS for certain SVG constructs (reference
     https://github.com/ImageMagick/ImageMagick/issues/4626).
+  * CVE-2021-4219 [bsc#1196337]
 
 -------------------------------------------------------------------
 Tue Dec 21 23:12:27 UTC 2021 - Dirk Müller <dmueller@suse.com>

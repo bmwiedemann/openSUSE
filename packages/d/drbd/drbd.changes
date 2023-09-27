@@ -1,4 +1,32 @@
 ------------------------------------------------------------------
+Tue Sep 26 03:35:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
+
+- drbd: fix build error against kernel v6.5.4 (boo#1215699)
+  * add upstream patch
+    + 0001-drbd-allow-transports-to-take-additional-krefs-on-a-.patch
+    + 0002-drbd-improve-decision-about-marking-a-failed-disk-Ou.patch
+    + 0003-drbd-fix-error-path-in-drbd_get_listener.patch
+    + 0004-drbd-build-fix-spurious-re-build-attempt-of-compat.p.patch
+    + 0005-drbd-log-error-code-when-thread-fails-to-start.patch
+    + 0006-drbd-log-numeric-value-of-drbd_state_rv-as-well-as-s.patch
+    + 0007-drbd-stop-defining-__KERNEL_SYSCALLS__.patch
+    + 0008-compat-block-introduce-holder-ops.patch
+    + 0009-drbd-reduce-net_ee-not-empty-info-to-a-dynamic-debug.patch
+    + 0010-drbd-do-not-send-P_CURRENT_UUID-to-DRBD-8-peer-when-.patch
+    + 0011-compat-block-pass-a-gendisk-to-open.patch
+    + 0012-drbd-Restore-DATA_CORKED-and-CONTROL_CORKED-bits.patch
+    + 0013-drbd-remove-unused-extern-for-conn_try_outdate_peer.patch
+    + 0014-drbd-include-source-of-state-change-in-log.patch
+    + 0015-compat-block-use-the-holder-as-indication-for-exclus.patch
+    + 0016-drbd-Fix-net-options-set-defaults-to-not-clear-the-t.patch
+    + 0017-drbd-propagate-exposed-UUIDs-only-into-established-c.patch
+    + 0018-drbd-rework-autopromote.patch
+    + 0019-compat-block-remove-the-unused-mode-argument-to-rele.patch
+    + 0020-drbd-do-not-allow-auto-demote-to-be-interrupted-by-s.patch
+  * add suse special patch
+    + bsc-1215699_fix-build-error-against-kernel-v6.5.4.patch
+
+------------------------------------------------------------------
 Mon Sep 04 11:35:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
 
 - Update DRBD version from 9.0.30+ to 9.1.16 (PED-6362)

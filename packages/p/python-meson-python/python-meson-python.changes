@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep 21 06:01:08 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.14.0:
+  * Do not run ``meson install`` to build a wheel.
+  * Obey the ``--skip-subprojects`` when specified for the ``meson
+    install`` command.
+  * Implement support for the ``exclude_directories`` and
+    ``exclude_files`` arguments to Meson ``install_subdir()`` function
+    and similar installation functions. This requires Meson version
+    1.1.0 or later.
+  * Implement support for building wheels targeting the Python limited API.
+  * When ``pyproject.toml`` does not contain a ``version`` field and
+    ``version`` is not declared dynamic, raise an error instead of
+    silently using the version declared in ``meson.build``.
+  * Fix the mtime of source files in the sdist tarball.
+  * Add ``objc`` and ``objcpp`` compilers to the cross file generated
+    when the ``$ARCHFLAGS`` is set.
+- Add patch no-build-isolation-in-test.patch, don't use an isolated
+  environment.
+
+-------------------------------------------------------------------
 Thu Aug 17 12:57:55 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.13.2

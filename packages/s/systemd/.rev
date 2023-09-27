@@ -6805,4 +6805,17 @@ handle manual pages that consist only of a .so directive such as
 - fixlet-systemd-post.sh: fix invalid use of rpm macro %{_localstatedir}</comment>
     <requestid>1111019</requestid>
   </revision>
+  <revision rev="402" vrev="3">
+    <srcmd5>8ac7759f3b91f154e766ad8c5c89f22e</srcmd5>
+    <version>254.3</version>
+    <time>1695758441</time>
+    <user>anag+factory</user>
+    <comment>- systemd.spec: during package updates, restart localed, timedated and hostnamed
+  if they're running.
+
+- systemd.spec: when enabling units prefer enabling service units over socket
+  ones for socket activable services. The services shipped by systemd
+  automatically redirect the enablement request to the socket unit.</comment>
+    <requestid>1113047</requestid>
+  </revision>
 </revisionlist>

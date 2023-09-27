@@ -18,19 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-traitlets
-Version:        5.9.0
+Version:        5.10.0
 Release:        0
 Summary:        Traitlets Python configuration system
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/traitlets
 Source:         https://files.pythonhosted.org/packages/source/t/traitlets/traitlets-%{version}.tar.gz
 Source99:       python-traitlets.rpmlintrc
-BuildRequires:  %{python_module argcomplete >= 2.0}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module argcomplete >= 3.0.3}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -56,7 +56,7 @@ sed -i 's/--color yes//' pyproject.toml
 %files %{python_files}
 %doc README.md
 %doc examples/
-%license COPYING.md
+%license LICENSE
 %{python_sitelib}/traitlets/
 %{python_sitelib}/traitlets-%{version}*-info
 

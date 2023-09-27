@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 25 14:57:10 UTC 2023 - Julio González Gil <jgonzalez@suse.com>
+
+- Fix API Key leak (bsc#1215718)
+- Add:
+  * 188-fix-api-key-leak.diff
+
+-------------------------------------------------------------------
 Wed Dec 21 08:41:46 UTC 2022 - Julio González Gil <jgonzalez@suse.com>
 
 - Update to 3.2.0:

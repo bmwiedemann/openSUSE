@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 22 15:04:54 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: during package updates, restart localed, timedated and hostnamed
+  if they're running.
+
+-------------------------------------------------------------------
+Fri Sep 22 14:23:38 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: when enabling units prefer enabling service units over socket
+  ones for socket activable services. The services shipped by systemd
+  automatically redirect the enablement request to the socket unit.
+
+-------------------------------------------------------------------
 Thu Sep 14 06:33:05 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - systemd.spec: %regenerate_initrd_post is only used by udev sub-package hence

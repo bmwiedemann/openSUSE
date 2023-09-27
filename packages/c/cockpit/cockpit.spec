@@ -70,6 +70,7 @@ Patch101:       hide-pcp.patch
 Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
 # For anything based on SLES 15 codebase (including Leap, SLE Micro)
 Patch103:       0004-leap-gnu18-removal.patch
+Patch104:       selinux_libdir.patch
 
 %if 0%{?fedora} >= 38 || 0%{?rhel} >= 9
 %define cockpit_enable_python 1
@@ -244,6 +245,7 @@ BuildRequires:  python3-tox-current-env
 # For anything based on SLES 15 codebase (including Leap, SLEM)
 %if 0%{?suse_version} == 1500
 %patch103 -p1
+%patch104 -p0
 %endif
 
 cp %SOURCE1 tools/cockpit.pam

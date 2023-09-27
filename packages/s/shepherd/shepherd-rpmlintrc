@@ -1,2 +1,0 @@
-# Guiles .go files are special
-addFilter("W: shared-lib-without-dependency-information /usr/lib64/guile/*.*/site-ccache/shepherd*")

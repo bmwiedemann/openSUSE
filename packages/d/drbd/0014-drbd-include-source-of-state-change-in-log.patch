@@ -1,0 +1,1480 @@
+From d6bbb1b1635b9912d77d1a26aba3f380a2ed986d Mon Sep 17 00:00:00 2001
+From: Joel Colledge <joel.colledge@linbit.com>
+Date: Mon, 11 Sep 2023 16:45:27 +0200
+Subject: [PATCH 14/20] drbd: include source of state change in log
+
+This is useful for understanding why a state change occurs. In
+particular, whether it was triggered by userspace.
+---
+ drbd/drbd_int.h      |  10 ++--
+ drbd/drbd_main.c     |  12 ++---
+ drbd/drbd_nl.c       | 103 ++++++++++++++++++++------------------
+ drbd/drbd_receiver.c |  77 +++++++++++++++-------------
+ drbd/drbd_req.c      |   6 +--
+ drbd/drbd_sender.c   |  25 ++++++----
+ drbd/drbd_state.c    | 116 ++++++++++++++++++++++++-------------------
+ drbd/drbd_state.h    |  40 +++++++++++----
+ 8 files changed, 224 insertions(+), 165 deletions(-)
+
+diff --git a/drbd/drbd_int.h b/drbd/drbd_int.h
+index f6e7c3ac2629..b705f26e71a4 100644
+--- a/drbd/drbd_int.h
++++ b/drbd/drbd_int.h
+@@ -1876,7 +1876,8 @@ extern void drbd_destroy_resource(struct kref *kref);
+ 
+ extern void drbd_destroy_device(struct kref *kref);
+ 
+-extern int set_resource_options(struct drbd_resource *resource, struct res_opts *res_opts);
++extern int set_resource_options(struct drbd_resource *resource, struct res_opts *res_opts,
++		const char *tag);
+ extern struct drbd_connection *drbd_create_connection(struct drbd_resource *resource,
+ 						      struct drbd_transport_class *tc);
+ extern void drbd_transport_shutdown(struct drbd_connection *connection, enum drbd_tr_free_op op);
+@@ -1931,7 +1932,9 @@ extern void resync_after_online_grow(struct drbd_peer_device *);
+ extern void drbd_reconsider_queue_parameters(struct drbd_device *device,
+ 			struct drbd_backing_dev *bdev);
+ extern bool barrier_pending(struct drbd_resource *resource);
+-extern enum drbd_state_rv drbd_set_role(struct drbd_resource *, enum drbd_role, bool, struct sk_buff *);
++extern enum drbd_state_rv
++drbd_set_role(struct drbd_resource *resource, enum drbd_role role, bool force, const char *tag,
++		struct sk_buff *reply_skb);
+ extern void conn_try_outdate_peer_async(struct drbd_connection *connection);
+ extern int drbd_maybe_khelper(struct drbd_device *, struct drbd_connection *, char *);
+ extern int drbd_create_peer_device_default_config(struct drbd_peer_device *peer_device);
+@@ -1943,7 +1946,8 @@ extern int drbd_worker(struct drbd_thread *thi);
+ enum drbd_ret_code drbd_resync_after_valid(struct drbd_device *device, int o_minor);
+ void drbd_resync_after_changed(struct drbd_device *device);
+ extern bool drbd_stable_sync_source_present(struct drbd_peer_device *, enum which_state);
+-extern void drbd_start_resync(struct drbd_peer_device *, enum drbd_repl_state);
++extern void drbd_start_resync(struct drbd_peer_device *peer_device, enum drbd_repl_state side,
++		const char *tag);
+ extern void resume_next_sg(struct drbd_device *device);
+ extern void suspend_other_sg(struct drbd_device *device);
+ extern void drbd_resync_finished(struct drbd_peer_device *, enum drbd_disk_state);
+diff --git a/drbd/drbd_main.c b/drbd/drbd_main.c
+index 6bb618909aa0..4b0b967c2c97 100644
+--- a/drbd/drbd_main.c
++++ b/drbd/drbd_main.c
+@@ -2505,7 +2505,7 @@ static int try_to_promote(struct drbd_device *device, long timeout, bool ndelay)
+ 		unsigned long start = jiffies;
+ 		long t;
+ 
+-		rv = drbd_set_role(resource, R_PRIMARY, false, NULL);
++		rv = drbd_set_role(resource, R_PRIMARY, false, "auto-promote", NULL);
+ 		timeout -= jiffies - start;
+ 
+ 		if (ndelay || rv >= SS_SUCCESS || timeout <= 0) {
+@@ -2854,7 +2854,7 @@ static void drbd_release(struct gendisk *gd, fmode_t mode)
+ 		    open_rw_cnt == 0 &&
+ 		    resource->role[NOW] == R_PRIMARY &&
+ 		    !test_bit(EXPLICIT_PRIMARY, &resource->flags)) {
+-			rv = drbd_set_role(resource, R_SECONDARY, false, NULL);
++			rv = drbd_set_role(resource, R_SECONDARY, false, "auto-demote", NULL);
+ 			if (rv < SS_SUCCESS)
+ 				drbd_warn(resource, "Auto-demote failed: %s (%d)\n",
+ 					  drbd_set_st_err_str(rv), rv);
+@@ -2866,7 +2866,7 @@ static void drbd_release(struct gendisk *gd, fmode_t mode)
+ 
+ 		begin_state_change(resource, &irq_flags, CS_VERBOSE);
+ 		resource->fail_io[NEW] = false;
+-		end_state_change(resource, &irq_flags);
++		end_state_change(resource, &irq_flags, "release");
+ 	}
+ 
+ 	/* if the open counts are 0, we free the whole list, otherwise we remove the specific pid */
+@@ -3349,7 +3349,7 @@ static void wake_all_device_misc(struct drbd_resource *resource)
+ 	rcu_read_unlock();
+ }
+ 
+-int set_resource_options(struct drbd_resource *resource, struct res_opts *res_opts)
++int set_resource_options(struct drbd_resource *resource, struct res_opts *res_opts, const char *tag)
+ {
+ 	struct drbd_connection *connection;
+ 	cpumask_var_t new_cpu_mask;
+@@ -3414,7 +3414,7 @@ int set_resource_options(struct drbd_resource *resource, struct res_opts *res_op
+ 
+ 	if (force_state_recalc) {
+ 		begin_state_change(resource, &irq_flags, CS_VERBOSE | CS_FORCE_RECALC);
+-		end_state_change(resource, &irq_flags);
++		end_state_change(resource, &irq_flags, tag);
+ 	}
+ 
+ 	if (wake_device_misc)
+@@ -3491,7 +3491,7 @@ struct drbd_resource *drbd_create_resource(const char *name,
+ 	}
+ 	resource->pp_vacant = page_pool_count;
+ 
+-	if (set_resource_options(resource, res_opts))
++	if (set_resource_options(resource, res_opts, "create-resource"))
+ 		goto fail_free_pages;
+ 
+ 	list_add_tail_rcu(&resource->resources, &drbd_resources);
+diff --git a/drbd/drbd_nl.c b/drbd/drbd_nl.c
+index cb5cdb184824..b7e9e43312f9 100644
+--- a/drbd/drbd_nl.c
++++ b/drbd/drbd_nl.c
+@@ -768,7 +768,7 @@ static bool intentional_diskless(struct drbd_resource *resource)
+ 	return intentional_diskless;
+ }
+ 
+-static bool conn_try_outdate_peer(struct drbd_connection *connection)
++static bool conn_try_outdate_peer(struct drbd_connection *connection, const char *tag)
+ {
+ 	struct drbd_resource *resource = connection->resource;
+ 	unsigned long last_reconnect_jif;
+@@ -792,7 +792,7 @@ static bool conn_try_outdate_peer(struct drbd_connection *connection)
+ 	    !(disk_state == D_DISKLESS && intentional_diskless(resource))) {
+ 		begin_state_change_locked(resource, CS_VERBOSE | CS_HARD);
+ 		__change_io_susp_fencing(connection, false);
+-		end_state_change_locked(resource);
++		end_state_change_locked(resource, tag);
+ 		read_unlock_irq(&resource->state_rwlock);
+ 		return false;
+ 	}
+@@ -862,7 +862,7 @@ static bool conn_try_outdate_peer(struct drbd_connection *connection)
+ 		goto abort;
+ 	}
+ 
+-	end_state_change(resource, &irq_flags);
++	end_state_change(resource, &irq_flags, tag);
+ 
+ 	goto out;
+  abort:
+@@ -875,7 +875,7 @@ static int _try_outdate_peer_async(void *data)
+ {
+ 	struct drbd_connection *connection = (struct drbd_connection *)data;
+ 
+-	conn_try_outdate_peer(connection);
++	conn_try_outdate_peer(connection, "outdate-async");
+ 
+ 	kref_debug_put(&connection->kref_debug, 4);
+ 	kref_put(&connection->kref, drbd_destroy_connection);
+@@ -1014,7 +1014,8 @@ static bool wait_up_to_date(struct drbd_resource *resource)
+ }
+ 
+ enum drbd_state_rv
+-drbd_set_role(struct drbd_resource *resource, enum drbd_role role, bool force, struct sk_buff *reply_skb)
++drbd_set_role(struct drbd_resource *resource, enum drbd_role role, bool force, const char *tag,
++		struct sk_buff *reply_skb)
+ {
+ 	struct drbd_device *device;
+ 	int vnr, try = 0;
+@@ -1042,7 +1043,7 @@ retry:
+ 			err_str = NULL;
+ 		}
+ 		rv = stable_state_change(resource,
+-			change_role(resource, role, flags, &err_str));
++			change_role(resource, role, flags, tag, &err_str));
+ 
+ 		if (rv == SS_TIMEOUT || rv == SS_CONCURRENT_ST_CHG) {
+ 			long timeout = twopc_retry_timeout(resource, try);
+@@ -1104,7 +1105,7 @@ retry:
+ 					if (device->disk_state[NOW] != D_CONSISTENT)
+ 						continue;
+ 
+-					if (conn_try_outdate_peer(connection))
++					if (conn_try_outdate_peer(connection, tag))
+ 						fenced_peers = true;
+ 					else
+ 						any_fencing_failed = true;
+@@ -1140,7 +1141,7 @@ retry:
+ 
+ 			up(&resource->state_sem); /* Allow connect while fencing */
+ 			for_each_connection_ref(connection, im, resource) {
+-				bool outdated_peer = conn_try_outdate_peer(connection);
++				bool outdated_peer = conn_try_outdate_peer(connection, tag);
+ 				if (!outdated_peer && force) {
+ 					drbd_warn(connection, "Forced into split brain situation!\n");
+ 					flags |= CS_FP_LOCAL_UP_TO_DATE;
+@@ -1331,7 +1332,9 @@ int drbd_adm_set_role(struct sk_buff *skb, struct genl_info *info)
+ 	new_role = info->genlhdr->cmd == DRBD_ADM_PRIMARY ? R_PRIMARY : R_SECONDARY;
+ 	rv = drbd_set_role(adm_ctx.resource,
+ 				new_role,
+-				parms.force, adm_ctx.reply_skb);
++				parms.force,
++				new_role == R_PRIMARY ? "primary" : "secondary",
++				adm_ctx.reply_skb);
+ 
+ 	if (new_role == R_PRIMARY) {
+ 		if (rv >= SS_SUCCESS)
+@@ -3093,7 +3096,7 @@ int drbd_adm_attach(struct sk_buff *skb, struct genl_info *info)
+ 	drbd_flush_workqueue(&resource->work);
+ 
+ 	rv = stable_state_change(resource,
+-		change_disk_state(device, D_ATTACHING, CS_VERBOSE | CS_SERIALIZE, NULL));
++		change_disk_state(device, D_ATTACHING, CS_VERBOSE | CS_SERIALIZE, "attach", NULL));
+ 	retcode = (enum drbd_ret_code)rv;
+ 	if (rv >= SS_SUCCESS)
+ 		update_resource_dagtag(resource, nbc);
+@@ -3353,8 +3356,8 @@ int drbd_adm_attach(struct sk_buff *skb, struct genl_info *info)
+ 
+ 	/* change_disk_state uses disk_state_from_md(device); in case D_NEGOTIATING not
+ 	   necessary, and falls back to a local state change */
+-	rv = stable_state_change(resource,
+-		change_disk_state(device, D_NEGOTIATING, CS_VERBOSE | CS_SERIALIZE, NULL));
++	rv = stable_state_change(resource, change_disk_state(device,
++				D_NEGOTIATING, CS_VERBOSE | CS_SERIALIZE, "attach", NULL));
+ 
+ 	if (rv < SS_SUCCESS) {
+ 		if (rv == SS_CW_FAILED_BY_PEER)
+@@ -3385,7 +3388,7 @@ int drbd_adm_attach(struct sk_buff *skb, struct genl_info *info)
+  force_diskless_dec:
+ 	put_ldev(device);
+  force_diskless:
+-	change_disk_state(device, D_DISKLESS, CS_HARD, NULL);
++	change_disk_state(device, D_DISKLESS, CS_HARD, "attach", NULL);
+  fail:
+ 	mutex_unlock_cond(&resource->conf_update, &have_conf_update);
+ 	drbd_backing_dev_free(device, nbc);
+@@ -3406,7 +3409,7 @@ static enum drbd_disk_state get_disk_state(struct drbd_device *device)
+ }
+ 
+ static int adm_detach(struct drbd_device *device, bool force, bool intentional_diskless,
+-		      struct sk_buff *reply_skb)
++		      const char *tag, struct sk_buff *reply_skb)
+ {
+ 	const char *err_str = NULL;
+ 	int ret, retcode;
+@@ -3414,7 +3417,7 @@ static int adm_detach(struct drbd_device *device, bool force, bool intentional_d
+ 	device->device_conf.intentional_diskless = intentional_diskless;
+ 	if (force) {
+ 		set_bit(FORCE_DETACH, &device->flags);
+-		change_disk_state(device, D_DETACHING, CS_HARD, NULL);
++		change_disk_state(device, D_DETACHING, CS_HARD, tag, NULL);
+ 		retcode = SS_SUCCESS;
+ 		goto out;
+ 	}
+@@ -3422,7 +3425,7 @@ static int adm_detach(struct drbd_device *device, bool force, bool intentional_d
+ 	drbd_suspend_io(device, READ_AND_WRITE); /* so no-one is stuck in drbd_al_begin_io */
+ 	retcode = stable_state_change(device->resource,
+ 		change_disk_state(device, D_DETACHING,
+-			CS_VERBOSE | CS_WAIT_COMPLETE | CS_SERIALIZE, &err_str));
++			CS_VERBOSE | CS_WAIT_COMPLETE | CS_SERIALIZE, tag, &err_str));
+ 	/* D_DETACHING will transition to DISKLESS. */
+ 	drbd_resume_io(device);
+ 	ret = wait_event_interruptible(device->misc_wait,
+@@ -3473,7 +3476,7 @@ int drbd_adm_detach(struct sk_buff *skb, struct genl_info *info)
+ 
+ 	mutex_lock(&adm_ctx.resource->adm_mutex);
+ 	retcode = (enum drbd_ret_code)adm_detach(adm_ctx.device, parms.force_detach,
+-			parms.intentional_diskless_detach, adm_ctx.reply_skb);
++			parms.intentional_diskless_detach, "detach", adm_ctx.reply_skb);
+ 	mutex_unlock(&adm_ctx.resource->adm_mutex);
+ 
+ out:
+@@ -4385,7 +4388,7 @@ int drbd_adm_connect(struct sk_buff *skb, struct genl_info *info)
+ 		drbd_md_mark_dirty(device);
+ 	}
+ 
+-	rv = change_cstate(connection, C_UNCONNECTED, CS_VERBOSE);
++	rv = change_cstate_tag(connection, C_UNCONNECTED, CS_VERBOSE, "connect", NULL);
+ 	drbd_adm_finish(&adm_ctx, info, rv);
+ 	return 0;
+ out:
+@@ -4535,7 +4538,7 @@ int drbd_open_ro_count(struct drbd_resource *resource)
+ }
+ 
+ static enum drbd_state_rv conn_try_disconnect(struct drbd_connection *connection, bool force,
+-					      struct sk_buff *reply_skb)
++					      const char *tag, struct sk_buff *reply_skb)
+ {
+ 	struct drbd_resource *resource = connection->resource;
+ 	enum drbd_conn_state cstate;
+@@ -4545,7 +4548,7 @@ static enum drbd_state_rv conn_try_disconnect(struct drbd_connection *connection
+ 	long t;
+ 
+     repeat:
+-	rv = change_cstate_es(connection, C_DISCONNECTING, flags, &err_str);
++	rv = change_cstate_tag(connection, C_DISCONNECTING, flags, tag, &err_str);
+ 	switch (rv) {
+ 	case SS_CW_FAILED_BY_PEER:
+ 	case SS_NEED_CONNECTION:
+@@ -4571,7 +4574,7 @@ static enum drbd_state_rv conn_try_disconnect(struct drbd_connection *connection
+ 		break;
+ 	case SS_IS_DISKLESS:
+ 	case SS_LOWER_THAN_OUTDATED:
+-		rv = change_cstate(connection, C_DISCONNECTING, CS_HARD);
++		rv = change_cstate_tag(connection, C_DISCONNECTING, CS_HARD, tag, NULL);
+ 		break;
+ 	case SS_NO_QUORUM:
+ 		if (!(flags & CS_VERBOSE)) {
+@@ -4597,7 +4600,7 @@ static enum drbd_state_rv conn_try_disconnect(struct drbd_connection *connection
+ 
+ /* this can only be called immediately after a successful
+  * peer_try_disconnect, within the same resource->adm_mutex */
+-static void del_connection(struct drbd_connection *connection)
++static void del_connection(struct drbd_connection *connection, const char *tag)
+ {
+ 	struct drbd_resource *resource = connection->resource;
+ 	struct drbd_peer_device *peer_device;
+@@ -4619,7 +4622,7 @@ static void del_connection(struct drbd_connection *connection)
+ 	 * after drbd_receiver() returned.  Typically, we should be
+ 	 * C_STANDALONE already, now, and this becomes a no-op.
+ 	 */
+-	rv2 = change_cstate(connection, C_STANDALONE, CS_VERBOSE | CS_HARD);
++	rv2 = change_cstate_tag(connection, C_STANDALONE, CS_VERBOSE | CS_HARD, tag, NULL);
+ 	if (rv2 < SS_SUCCESS)
+ 		drbd_err(connection,
+ 			"unexpected rv2=%d in del_connection()\n",
+@@ -4654,6 +4657,7 @@ static int adm_disconnect(struct sk_buff *skb, struct genl_info *info, bool dest
+ 	struct drbd_connection *connection;
+ 	enum drbd_state_rv rv;
+ 	enum drbd_ret_code retcode;
++	const char *tag = destroy ? "del-peer" : "disconnect";
+ 
+ 	retcode = drbd_adm_prepare(&adm_ctx, skb, info, DRBD_ADM_NEED_CONNECTION);
+ 	if (!adm_ctx.reply_skb)
+@@ -4671,10 +4675,10 @@ static int adm_disconnect(struct sk_buff *skb, struct genl_info *info, bool dest
+ 
+ 	connection = adm_ctx.connection;
+ 	mutex_lock(&adm_ctx.resource->adm_mutex);
+-	rv = conn_try_disconnect(connection, parms.force_disconnect, adm_ctx.reply_skb);
++	rv = conn_try_disconnect(connection, parms.force_disconnect, tag, adm_ctx.reply_skb);
+ 	if (rv >= SS_SUCCESS && destroy) {
+ 		mutex_lock(&connection->resource->conf_update);
+-		del_connection(connection);
++		del_connection(connection, tag);
+ 		mutex_unlock(&connection->resource->conf_update);
+ 	}
+ 	if (rv < SS_SUCCESS)
+@@ -4721,10 +4725,10 @@ void resync_after_online_grow(struct drbd_peer_device *peer_device)
+ 
+ 	if (!sync_source && connection->agreed_pro_version < 110) {
+ 		stable_change_repl_state(peer_device, L_WF_SYNC_UUID,
+-					 CS_VERBOSE | CS_SERIALIZE);
++					 CS_VERBOSE | CS_SERIALIZE, "online-grow");
+ 		return;
+ 	}
+-	drbd_start_resync(peer_device, sync_source ? L_SYNC_SOURCE : L_SYNC_TARGET);
++	drbd_start_resync(peer_device, sync_source ? L_SYNC_SOURCE : L_SYNC_TARGET, "online-grow");
+ }
+ 
+ sector_t drbd_local_max_size(struct drbd_device *device) __must_hold(local)
+@@ -4956,7 +4960,7 @@ int drbd_adm_resource_opts(struct sk_buff *skb, struct genl_info *info)
+ 		goto fail;
+ 	}
+ 
+-	err = set_resource_options(adm_ctx.resource, &res_opts);
++	err = set_resource_options(adm_ctx.resource, &res_opts, "resource-options");
+ 	if (err) {
+ 		retcode = ERR_INVALID_REQUEST;
+ 		if (err == -ENOMEM)
+@@ -4976,11 +4980,11 @@ static enum drbd_state_rv invalidate_resync(struct drbd_peer_device *peer_device
+ 
+ 	drbd_flush_workqueue(&peer_device->connection->sender_work);
+ 
+-	rv = change_repl_state(peer_device, L_STARTING_SYNC_T, CS_SERIALIZE);
++	rv = change_repl_state(peer_device, L_STARTING_SYNC_T, CS_SERIALIZE, "invalidate");
+ 
+ 	if (rv < SS_SUCCESS && rv != SS_NEED_CONNECTION)
+ 		rv = stable_change_repl_state(peer_device, L_STARTING_SYNC_T,
+-			CS_VERBOSE | CS_SERIALIZE);
++			CS_VERBOSE | CS_SERIALIZE, "invalidate");
+ 
+ 	wait_event_interruptible(resource->state_wait,
+ 				 peer_device->repl_state[NOW] != L_STARTING_SYNC_T);
+@@ -5005,7 +5009,7 @@ static enum drbd_state_rv invalidate_no_resync(struct drbd_device *device) __mus
+ 		}
+ 	}
+ 	__change_disk_state(device, D_INCONSISTENT);
+-	rv = end_state_change(resource, &irq_flags);
++	rv = end_state_change(resource, &irq_flags, "invalidate");
+ 
+ 	if (rv >= SS_SUCCESS) {
+ 		drbd_bitmap_io(device, &drbd_bmio_set_all_n_write,
+@@ -5080,7 +5084,8 @@ int drbd_adm_invalidate(struct sk_buff *skb, struct genl_info *info)
+ 			retcode = invalidate_resync(sync_from_peer_device);
+ 		} else {
+ 			retcode = change_repl_state(sync_from_peer_device, L_WF_BITMAP_T,
+-					CS_VERBOSE | CS_CLUSTER_WIDE | CS_WAIT_COMPLETE | CS_SERIALIZE);
++					CS_VERBOSE | CS_CLUSTER_WIDE | CS_WAIT_COMPLETE |
++					CS_SERIALIZE, "invalidate");
+ 		}
+ 	} else {
+ 		int retry = 3;
+@@ -5103,7 +5108,8 @@ int drbd_adm_invalidate(struct sk_buff *skb, struct genl_info *info)
+ 					}
+ 					retcode = change_repl_state(peer_device, L_WF_BITMAP_T,
+ 								CS_VERBOSE | CS_CLUSTER_WIDE |
+-								CS_WAIT_COMPLETE | CS_SERIALIZE);
++								CS_WAIT_COMPLETE | CS_SERIALIZE,
++								"invalidate");
+ 				}
+ 				if (retcode >= SS_SUCCESS)
+ 					goto out;
+@@ -5140,13 +5146,15 @@ static int full_sync_from_peer(struct drbd_peer_device *peer_device)
+ 	struct drbd_resource *resource = device->resource;
+ 	int retcode; /* enum drbd_ret_code rsp. enum drbd_state_rv */
+ 
+-	retcode = stable_change_repl_state(peer_device, L_STARTING_SYNC_S, CS_SERIALIZE);
++	retcode = stable_change_repl_state(peer_device, L_STARTING_SYNC_S, CS_SERIALIZE,
++			"invalidate-remote");
+ 	if (retcode < SS_SUCCESS) {
+ 		if (retcode == SS_NEED_CONNECTION && resource->role[NOW] == R_PRIMARY) {
+ 			/* The peer will get a resync upon connect anyways.
+ 			 * Just make that into a full resync. */
+ 			retcode = change_peer_disk_state(peer_device, D_INCONSISTENT,
+-							 CS_VERBOSE | CS_WAIT_COMPLETE | CS_SERIALIZE);
++					CS_VERBOSE | CS_WAIT_COMPLETE | CS_SERIALIZE,
++					"invalidate-remote");
+ 			if (retcode >= SS_SUCCESS) {
+ 				if (drbd_bitmap_io(device, &drbd_bmio_set_susp_al,
+ 						   "set_n_write from invalidate_peer",
+@@ -5155,7 +5163,7 @@ static int full_sync_from_peer(struct drbd_peer_device *peer_device)
+ 			}
+ 		} else {
+ 			retcode = stable_change_repl_state(peer_device, L_STARTING_SYNC_S,
+-							   CS_VERBOSE | CS_SERIALIZE);
++					CS_VERBOSE | CS_SERIALIZE, "invalidate-remote");
+ 		}
+ 	}
+ 
+@@ -5214,7 +5222,8 @@ int drbd_adm_invalidate_peer(struct sk_buff *skb, struct genl_info *info)
+ 		retcode = full_sync_from_peer(peer_device);
+ 	} else {
+ 		retcode = change_repl_state(peer_device, L_WF_BITMAP_S,
+-				CS_VERBOSE | CS_CLUSTER_WIDE | CS_WAIT_COMPLETE | CS_SERIALIZE);
++				CS_VERBOSE | CS_CLUSTER_WIDE | CS_WAIT_COMPLETE | CS_SERIALIZE,
++				"invalidate-remote");
+ 	}
+ 	drbd_resume_io(device);
+ 
+@@ -5329,7 +5338,7 @@ int drbd_adm_resume_io(struct sk_buff *skb, struct genl_info *info)
+ 		__change_io_susp_fencing(connection, false);
+ 
+ 	__change_io_susp_quorum(resource, false);
+-	retcode = end_state_change(resource, &irq_flags);
++	retcode = end_state_change(resource, &irq_flags, "resume-io");
+ 	drbd_resume_io(device);
+ 	mutex_unlock(&adm_ctx.resource->adm_mutex);
+ 	drbd_adm_finish(&adm_ctx, info, retcode);
+@@ -5348,7 +5357,7 @@ int drbd_adm_outdate(struct sk_buff *skb, struct genl_info *info)
+ 
+ 	retcode = stable_state_change(adm_ctx.device->resource,
+ 		change_disk_state(adm_ctx.device, D_OUTDATED,
+-				  CS_VERBOSE | CS_WAIT_COMPLETE | CS_SERIALIZE, NULL));
++				  CS_VERBOSE | CS_WAIT_COMPLETE | CS_SERIALIZE, "outdate", NULL));
+ 
+ 	mutex_unlock(&adm_ctx.resource->adm_mutex);
+ 	drbd_adm_finish(&adm_ctx, info, retcode);
+@@ -6010,7 +6019,7 @@ int drbd_adm_start_ov(struct sk_buff *skb, struct genl_info *info)
+ 	drbd_suspend_io(device, READ_AND_WRITE);
+ 	wait_event(device->misc_wait, !atomic_read(&device->pending_bitmap_work.n));
+ 	rv = stable_change_repl_state(peer_device,
+-		L_VERIFY_S, CS_VERBOSE | CS_WAIT_COMPLETE | CS_SERIALIZE);
++		L_VERIFY_S, CS_VERBOSE | CS_WAIT_COMPLETE | CS_SERIALIZE, "verify");
+ 	drbd_resume_io(device);
+ 
+ 	mutex_unlock(&adm_ctx.resource->adm_mutex);
+@@ -6082,7 +6091,7 @@ int drbd_adm_new_c_uuid(struct sk_buff *skb, struct genl_info *info)
+ 		unsigned long irq_flags;
+ 		begin_state_change(device->resource, &irq_flags, CS_VERBOSE);
+ 		__change_disk_state(device, D_UP_TO_DATE);
+-		end_state_change(device->resource, &irq_flags);
++		end_state_change(device->resource, &irq_flags, "new-c-uuid");
+ 
+ 		for_each_peer_device(peer_device, device) {
+ 			if (NODE_MASK(peer_device->node_id) & nodes) {
+@@ -6122,7 +6131,7 @@ int drbd_adm_new_c_uuid(struct sk_buff *skb, struct genl_info *info)
+ 			if (NODE_MASK(peer_device->node_id) & diskful)
+ 				__change_peer_disk_state(peer_device, D_UP_TO_DATE);
+ 		}
+-		end_state_change(device->resource, &irq_flags);
++		end_state_change(device->resource, &irq_flags, "new-c-uuid");
+ 	}
+ 
+ 	drbd_md_sync_if_dirty(device);
+@@ -6353,7 +6362,7 @@ static enum drbd_ret_code adm_del_minor(struct drbd_device *device)
+ 
+ 	for_each_peer_device_ref(peer_device, im, device)
+ 		stable_change_repl_state(peer_device, L_OFF,
+-					 CS_VERBOSE | CS_WAIT_COMPLETE);
++					 CS_VERBOSE | CS_WAIT_COMPLETE, "del-minor");
+ 
+ 	/* If drbd_ldev_destroy() is pending, wait for it to run before
+ 	 * unregistering the device. */
+@@ -6465,7 +6474,7 @@ int drbd_adm_down(struct sk_buff *skb, struct genl_info *info)
+ 	mutex_lock(&resource->adm_mutex);
+ 	set_bit(DOWN_IN_PROGRESS, &resource->flags);
+ 	/* demote */
+-	retcode = drbd_set_role(resource, R_SECONDARY, false, adm_ctx.reply_skb);
++	retcode = drbd_set_role(resource, R_SECONDARY, false, "down", adm_ctx.reply_skb);
+ 	if (retcode < SS_SUCCESS) {
+ 		opener_info(adm_ctx.resource, adm_ctx.reply_skb, retcode);
+ 		goto out;
+@@ -6474,10 +6483,10 @@ int drbd_adm_down(struct sk_buff *skb, struct genl_info *info)
+ 	for_each_connection_ref(connection, im, resource) {
+ 		retcode = SS_SUCCESS;
+ 		if (connection->cstate[NOW] > C_STANDALONE)
+-			retcode = conn_try_disconnect(connection, 0, adm_ctx.reply_skb);
++			retcode = conn_try_disconnect(connection, 0, "down", adm_ctx.reply_skb);
+ 		if (retcode >= SS_SUCCESS) {
+ 			mutex_lock(&resource->conf_update);
+-			del_connection(connection);
++			del_connection(connection, "down");
+ 			mutex_unlock(&resource->conf_update);
+ 		} else {
+ 			kref_debug_put(&connection->kref_debug, 13);
+@@ -6491,7 +6500,7 @@ int drbd_adm_down(struct sk_buff *skb, struct genl_info *info)
+ 	idr_for_each_entry(&resource->devices, device, i) {
+ 		kref_get(&device->kref);
+ 		rcu_read_unlock();
+-		retcode = adm_detach(device, 0, 0, adm_ctx.reply_skb);
++		retcode = adm_detach(device, 0, 0, "down", adm_ctx.reply_skb);
+ 		mutex_lock(&resource->conf_update);
+ 		ret = adm_del_minor(device);
+ 		mutex_unlock(&resource->conf_update);
+diff --git a/drbd/drbd_receiver.c b/drbd/drbd_receiver.c
+index 223353b1081c..0c3ab0fd486c 100644
+--- a/drbd/drbd_receiver.c
++++ b/drbd/drbd_receiver.c
+@@ -920,7 +920,7 @@ static void apply_local_state_change(struct drbd_connection *connection, enum ao
+ 			resource->role[NEW] = R_SECONDARY;
+ 		}
+ 	}
+-	end_state_change(resource, &irq_flags);
++	end_state_change(resource, &irq_flags, "connect-failed");
+ }
+ 
+ static int connect_work(struct drbd_work *work, int cancel)
+@@ -945,8 +945,9 @@ static int connect_work(struct drbd_work *work, int cancel)
+ 			rv = SS_CONCURRENT_ST_CHG;
+ 			break;
+ 		}
+-		rv = change_cstate(connection, C_CONNECTED, CS_SERIALIZE |
+-				   CS_ALREADY_SERIALIZED | CS_VERBOSE | CS_DONT_RETRY);
++		rv = change_cstate_tag(connection, C_CONNECTED, CS_SERIALIZE |
++				   CS_ALREADY_SERIALIZED | CS_VERBOSE | CS_DONT_RETRY,
++				   "connected", NULL);
+ 		up(&resource->state_sem);
+ 		if (rv != SS_PRIMARY_READER)
+ 			break;
+@@ -1011,7 +1012,8 @@ static bool conn_connect(struct drbd_connection *connection)
+ start:
+ 	have_mutex = false;
+ 	clear_bit(DISCONNECT_EXPECTED, &connection->flags);
+-	if (change_cstate(connection, C_CONNECTING, CS_VERBOSE) < SS_SUCCESS) {
++	if (change_cstate_tag(connection, C_CONNECTING, CS_VERBOSE, "connecting", NULL)
++			< SS_SUCCESS) {
+ 		/* We do not have a network config. */
+ 		return false;
+ 	}
+@@ -3697,7 +3699,8 @@ static enum sync_strategy drbd_asb_recover_1p(struct drbd_peer_device *peer_devi
+ 			 /* drbd_change_state() does not sleep while in SS_IN_TRANSIENT_STATE,
+ 			  * we might be here in L_OFF which is transient.
+ 			  * we do not need to wait for the after state change work either. */
+-			rv2 = change_role(resource, R_SECONDARY, CS_VERBOSE, NULL);
++			rv2 = change_role(resource, R_SECONDARY, CS_VERBOSE,
++					"after-sb-1pri", NULL);
+ 			if (rv2 != SS_SUCCESS) {
+ 				drbd_maybe_khelper(device, connection, "pri-lost-after-sb");
+ 			} else {
+@@ -3750,7 +3753,8 @@ static enum sync_strategy drbd_asb_recover_2p(struct drbd_peer_device *peer_devi
+ 			 /* drbd_change_state() does not sleep while in SS_IN_TRANSIENT_STATE,
+ 			  * we might be here in L_OFF which is transient.
+ 			  * we do not need to wait for the after state change work either. */
+-			rv2 = change_role(device->resource, R_SECONDARY, CS_VERBOSE, NULL);
++			rv2 = change_role(device->resource, R_SECONDARY, CS_VERBOSE,
++					"after-sb-2pri", NULL);
+ 			if (rv2 != SS_SUCCESS) {
+ 				drbd_maybe_khelper(device, connection, "pri-lost-after-sb");
+ 			} else {
+@@ -5500,6 +5504,7 @@ static void drbd_resync(struct drbd_peer_device *peer_device,
+ 	enum sync_rule rule;
+ 	int peer_node_id;
+ 	enum drbd_state_rv rv;
++	const char *tag = reason == AFTER_UNSTABLE ? "after-unstable" : "diskless-primary";
+ 
+ 	strategy = drbd_handshake(peer_device, &rule, &peer_node_id, reason == DISKLESS_PRIMARY);
+ 	if (strategy == SPLIT_BRAIN_AUTO_RECOVER && reason == AFTER_UNSTABLE)
+@@ -5529,11 +5534,11 @@ static void drbd_resync(struct drbd_peer_device *peer_device,
+ 		   as well. */
+ 		drbd_info(peer_device, "Upgrading local disk to %s after unstable/weak (and no resync).\n",
+ 			  drbd_disk_str(peer_disk_state));
+-		change_disk_state(peer_device->device, peer_disk_state, CS_VERBOSE, NULL);
++		change_disk_state(peer_device->device, peer_disk_state, CS_VERBOSE, tag, NULL);
+ 		return;
+ 	}
+ 
+-	rv = change_repl_state(peer_device, new_repl_state, CS_VERBOSE);
++	rv = change_repl_state(peer_device, new_repl_state, CS_VERBOSE, tag);
+ 	if ((rv == SS_NOTHING_TO_DO || rv == SS_RESYNC_RUNNING) &&
+ 	    (new_repl_state == L_WF_BITMAP_S || new_repl_state == L_WF_BITMAP_T)) {
+ 		/* Those events might happen very quickly. In case we are still processing
+@@ -5633,7 +5638,7 @@ static int __receive_uuids(struct drbd_peer_device *peer_device, u64 node_mask)
+ 			begin_state_change(device->resource, &irq_flags, CS_VERBOSE);
+ 			__change_disk_state(device, D_UP_TO_DATE);
+ 			__change_peer_disk_state(peer_device, D_UP_TO_DATE);
+-			end_state_change(device->resource, &irq_flags);
++			end_state_change(device->resource, &irq_flags, "skip-initial-sync");
+ 			updated_uuids = 1;
+ 			propagate_skip_initial_to_diskless(device);
+ 		}
+@@ -5668,7 +5673,7 @@ static int __receive_uuids(struct drbd_peer_device *peer_device, u64 node_mask)
+ 	if (device->disk_state[NOW] == D_DISKLESS && uuid_match &&
+ 	    peer_device->disk_state[NOW] == D_CONSISTENT) {
+ 		drbd_info(peer_device, "Peer is on same UUID now\n");
+-		change_peer_disk_state(peer_device, D_UP_TO_DATE, CS_VERBOSE);
++		change_peer_disk_state(peer_device, D_UP_TO_DATE, CS_VERBOSE, "receive-uuids");
+ 	}
+ 
+ 	if (updated_uuids)
+@@ -5855,7 +5860,7 @@ static void check_resync_source(struct drbd_device *device, u64 weak_nodes)
+ 	return;
+ abort:
+ 	drbd_info(peer_device, "My sync source became a weak node, aborting resync!\n");
+-	change_repl_state(peer_device, L_ESTABLISHED, CS_VERBOSE);
++	change_repl_state(peer_device, L_ESTABLISHED, CS_VERBOSE, "abort-resync");
+ 	drbd_flush_workqueue(&device->resource->work);
+ 
+ 	wait_event_interruptible(device->misc_wait,
+@@ -6091,7 +6096,7 @@ retry:
+ 
+ 	if (is_connect && connection->agreed_pro_version >= 117)
+ 		apply_connect(connection, (flags & CS_PREPARED) && !abort);
+-	rv = end_state_change(resource, &irq_flags);
++	rv = end_state_change(resource, &irq_flags, "remote");
+ out:
+ 
+ 	if ((rv == SS_NO_UP_TO_DATE_DISK && resource->role[NOW] != R_PRIMARY) ||
+@@ -6144,7 +6149,7 @@ change_peer_device_state(struct drbd_peer_device *peer_device,
+ 	rv = __change_connection_state(connection, mask, val, flags);
+ 	if (rv < SS_SUCCESS)
+ 		goto fail;
+-	rv = end_state_change(connection->resource, &irq_flags);
++	rv = end_state_change(connection->resource, &irq_flags, "remote");
+ out:
+ 	return rv;
+ fail:
+@@ -6375,7 +6380,7 @@ far_away_change(struct drbd_connection *connection,
+ 	}
+ 
+ 	/* even if no outdate happens, CS_FORCE_RECALC might be set here */
+-	return end_state_change(resource, &irq_flags);
++	return end_state_change(resource, &irq_flags, "far-away");
+ }
+ 
+ static void handle_neighbor_demotion(struct drbd_connection *connection,
+@@ -6630,17 +6635,18 @@ cont:
+ 						/* peer is secondary */
+ 						resync = L_SYNC_SOURCE;
+ 					}
+-					drbd_start_resync(peer_device, resync);
++					drbd_start_resync(peer_device, resync, "resize");
+ 				} else {
+ 					if (tr->diskful_primary_nodes & NODE_MASK(peer_device->node_id))
+-						drbd_start_resync(peer_device, L_SYNC_TARGET);
++						drbd_start_resync(peer_device, L_SYNC_TARGET,
++								"resize");
+ 					/* else  no resync */
+ 				}
+ 			} else {
+ 				if (resource->twopc_parent_nodes & NODE_MASK(peer_device->node_id))
+-					drbd_start_resync(peer_device, L_SYNC_TARGET);
++					drbd_start_resync(peer_device, L_SYNC_TARGET, "resize");
+ 				else if (nodes_to_reach & NODE_MASK(peer_device->node_id))
+-					drbd_start_resync(peer_device, L_SYNC_SOURCE);
++					drbd_start_resync(peer_device, L_SYNC_SOURCE, "resize");
+ 				/* else  no resync */
+ 			}
+ 		}
+@@ -7101,7 +7107,7 @@ void drbd_try_to_get_resynced(struct drbd_device *device)
+ 	peer_device = best_peer_device;
+ 
+ 	if (best_strategy == NO_SYNC) {
+-		change_disk_state(device, D_UP_TO_DATE, CS_VERBOSE, NULL);
++		change_disk_state(device, D_UP_TO_DATE, CS_VERBOSE, "get-resync", NULL);
+ 	} else if (peer_device) {
+ 		drbd_resync(peer_device, DISKLESS_PRIMARY);
+ 		drbd_send_uuids(peer_device, UUID_FLAG_RESYNC | UUID_FLAG_DISKLESS_PRIMARY, 0);
+@@ -7225,7 +7231,7 @@ static void diskless_with_peers_different_current_uuids(struct drbd_peer_device
+ 					   CS_VERBOSE | CS_HARD | CS_FS_IGN_OPENERS);
+ 			resource->role[NEW] = R_SECONDARY;
+ 			/* resource->fail_io[NEW] gets set via CS_FS_IGN_OPENERS */
+-			end_state_change(resource, &irq_flags);
++			end_state_change(resource, &irq_flags, "peer-state");
+ 		}
+ 		set_bit(CONN_HANDSHAKE_RETRY, &connection->flags);
+ 	} else if (data_successor && resource->role[NOW] == R_SECONDARY) {
+@@ -7278,7 +7284,7 @@ static int receive_state(struct drbd_connection *connection, struct packet_info
+ 		if (peer_state.role == R_SECONDARY) {
+ 			begin_state_change(resource, &irq_flags, CS_HARD | CS_VERBOSE);
+ 			__change_peer_role(connection, R_SECONDARY);
+-			rv = end_state_change(resource, &irq_flags);
++			rv = end_state_change(resource, &irq_flags, "peer-state");
+ 			if (rv < SS_SUCCESS)
+ 				goto fail;
+ 		}
+@@ -7374,7 +7380,7 @@ static int receive_state(struct drbd_connection *connection, struct packet_info
+ 	/* Start resync after AHEAD/BEHIND */
+ 	if (connection->agreed_pro_version >= 110 &&
+ 	    peer_state.conn == L_SYNC_SOURCE && old_peer_state.conn == L_BEHIND) {
+-		drbd_start_resync(peer_device, L_SYNC_TARGET);
++		drbd_start_resync(peer_device, L_SYNC_TARGET, "resync-after-behind");
+ 		return 0;
+ 	}
+ 
+@@ -7519,7 +7525,7 @@ static int receive_state(struct drbd_connection *connection, struct packet_info
+ 		begin_state_change(resource, &irq_flags, CS_HARD);
+ 		__change_cstate(connection, C_PROTOCOL_ERROR);
+ 		__change_io_susp_user(resource, false);
+-		end_state_change(resource, &irq_flags);
++		end_state_change(resource, &irq_flags, "abort-connect");
+ 		return -EIO;
+ 	}
+ 
+@@ -7581,7 +7587,7 @@ static int receive_state(struct drbd_connection *connection, struct packet_info
+ 	if (repl_state[OLD] < L_ESTABLISHED && repl_state[NEW] >= L_ESTABLISHED)
+ 		resource->state_change_flags |= CS_HARD;
+ 
+-	rv = end_state_change(resource, &irq_flags);
++	rv = end_state_change(resource, &irq_flags, "peer-state");
+ 	new_repl_state = peer_device->repl_state[NOW];
+ 
+ 	if (rv < SS_SUCCESS)
+@@ -7635,7 +7641,7 @@ static int receive_sync_uuid(struct drbd_connection *connection, struct packet_i
+ 		_drbd_uuid_set_bitmap(peer_device, 0UL);
+ 
+ 		drbd_print_uuids(peer_device, "updated sync uuid");
+-		drbd_start_resync(peer_device, L_SYNC_TARGET);
++		drbd_start_resync(peer_device, L_SYNC_TARGET, "peer-sync-uuid");
+ 
+ 		put_ldev(device);
+ 	} else
+@@ -7935,17 +7941,18 @@ static int receive_bitmap(struct drbd_connection *connection, struct packet_info
+ 		/* We have entered drbd_start_resync() since starting the bitmap exchange. */
+ 		drbd_warn(peer_device, "Received bitmap more than once; ignoring\n");
+ 	} else if (repl_state == L_WF_BITMAP_S) {
+-		drbd_start_resync(peer_device, L_SYNC_SOURCE);
++		drbd_start_resync(peer_device, L_SYNC_SOURCE, "receive-bitmap");
+ 	} else if (repl_state == L_WF_BITMAP_T) {
+ 		if (connection->agreed_pro_version < 110) {
+ 			enum drbd_state_rv rv;
+ 
+ 			/* Omit CS_WAIT_COMPLETE and CS_SERIALIZE with this state
+ 			 * transition to avoid deadlocks. */
+-			rv = stable_change_repl_state(peer_device, L_WF_SYNC_UUID, CS_VERBOSE);
++			rv = stable_change_repl_state(peer_device, L_WF_SYNC_UUID, CS_VERBOSE,
++					"receive-bitmap");
+ 			D_ASSERT(device, rv == SS_SUCCESS);
+ 		} else {
+-			drbd_start_resync(peer_device, L_SYNC_TARGET);
++			drbd_start_resync(peer_device, L_SYNC_TARGET, "receive-bitmap");
+ 		}
+ 	} else {
+ 		/* admin may have requested C_DISCONNECTING,
+@@ -8139,7 +8146,7 @@ static int receive_peer_dagtag(struct drbd_connection *connection, struct packet
+ 			__change_repl_state(peer_device, new_repl_state);
+ 			set_bit(RECONCILIATION_RESYNC, &peer_device->flags);
+ 		}
+-		rv = end_state_change(resource, &irq_flags);
++		rv = end_state_change(resource, &irq_flags, "receive-peer-dagtag");
+ 		if (rv == SS_SUCCESS)
+ 			drbd_info(connection, "Reconciliation resync because \'%s\' disappeared. (o=%d)\n",
+ 				  lost_peer->transport.net_conf->name, (int)dagtag_offset);
+@@ -8248,7 +8255,8 @@ static int receive_current_uuid(struct drbd_connection *connection, struct packe
+ 			if (resource->remote_state_change)
+ 				set_bit(OUTDATE_ON_2PC_COMMIT, &device->flags);
+ 			else
+-				change_disk_state(device, D_OUTDATED, CS_VERBOSE, NULL);
++				change_disk_state(device, D_OUTDATED, CS_VERBOSE,
++						"receive-current-uuid", NULL);
+ 		}
+ 		put_ldev(device);
+ 	} else if (device->disk_state[NOW] == D_DISKLESS && resource->role[NOW] == R_PRIMARY) {
+@@ -8328,7 +8336,7 @@ static int receive_rs_deallocated(struct drbd_connection *connection, struct pac
+ 
+ static int receive_disconnect(struct drbd_connection *connection, struct packet_info *pi)
+ {
+-	change_cstate(connection, C_DISCONNECTING, CS_HARD);
++	change_cstate_tag(connection, C_DISCONNECTING, CS_HARD, "receive-disconnect", NULL);
+ 	return 0;
+ }
+ 
+@@ -8594,7 +8602,7 @@ static void conn_disconnect(struct drbd_connection *connection)
+ 	 * Usually we should be in some network failure state already,
+ 	 * but just in case we are not, we fix it up here.
+ 	 */
+-	change_cstate(connection, C_NETWORK_FAILURE, CS_HARD);
++	change_cstate_tag(connection, C_NETWORK_FAILURE, CS_HARD, "disconnected", NULL);
+ 
+ 	del_connect_timer(connection);
+ 
+@@ -8707,10 +8715,11 @@ static void conn_disconnect(struct drbd_connection *connection)
+ 		/* drbd_receiver() has to be restarted after it returns */
+ 		drbd_thread_restart_nowait(&connection->receiver);
+ 	}
+-	end_state_change(resource, &irq_flags);
++	end_state_change(resource, &irq_flags, "disconnected");
+ 
+ 	if (oc == C_DISCONNECTING)
+-		change_cstate(connection, C_STANDALONE, CS_VERBOSE | CS_HARD | CS_LOCAL_ONLY);
++		change_cstate_tag(connection, C_STANDALONE, CS_VERBOSE | CS_HARD | CS_LOCAL_ONLY,
++				"disconnected", NULL);
+ }
+ 
+ /*
+diff --git a/drbd/drbd_req.c b/drbd/drbd_req.c
+index af2ae66f51b5..41950e46ec27 100644
+--- a/drbd/drbd_req.c
++++ b/drbd/drbd_req.c
+@@ -2688,7 +2688,7 @@ void request_timer_fn(struct timer_list *t)
+ 			continue;
+ 		begin_state_change(resource, &irq_flags, CS_VERBOSE | CS_HARD);
+ 		__change_cstate(connection, C_TIMEOUT);
+-		end_state_change(resource, &irq_flags);
++		end_state_change(resource, &irq_flags, "timeout");
+ 		kref_put(&connection->kref, drbd_destroy_connection);
+ 	}
+ 
+@@ -2723,7 +2723,7 @@ void drbd_handle_io_error_(struct drbd_device *device,
+ 			if (device->disk_state[NOW] > D_INCONSISTENT) {
+ 				begin_state_change_locked(device->resource, CS_HARD);
+ 				__change_disk_state(device, D_INCONSISTENT);
+-				end_state_change_locked(device->resource);
++				end_state_change_locked(device->resource, "local-io-error");
+ 			}
+ 			break;
+ 		}
+@@ -2740,7 +2740,7 @@ void drbd_handle_io_error_(struct drbd_device *device,
+ 		if (device->disk_state[NOW] > D_FAILED) {
+ 			begin_state_change_locked(device->resource, CS_HARD);
+ 			__change_disk_state(device, D_FAILED);
+-			end_state_change_locked(device->resource);
++			end_state_change_locked(device->resource, "local-io-error");
+ 			drbd_err(device,
+ 				"Local IO failed in %s. Detaching...\n", where);
+ 		}
+diff --git a/drbd/drbd_sender.c b/drbd/drbd_sender.c
+index 93a460dae190..0beeb5f3cb54 100644
+--- a/drbd/drbd_sender.c
++++ b/drbd/drbd_sender.c
+@@ -472,7 +472,7 @@ int w_resync_timer(struct drbd_work *w, int cancel)
+ 			unsigned long irq_flags;
+ 			begin_state_change(resource, &irq_flags, 0);
+ 			peer_device->resync_active[NEW] = false;
+-			end_state_change(resource, &irq_flags);
++			end_state_change(resource, &irq_flags, "resync-inactive");
+ 		}
+ 		break;
+ 	}
+@@ -1155,7 +1155,7 @@ static void resync_again(struct drbd_device *device, u64 source_m, u64 target_m)
+ 				peer_device->resync_again--;
+ 				begin_state_change_locked(device->resource, CS_VERBOSE);
+ 				__change_repl_state(peer_device, new_repl_state);
+-				end_state_change_locked(device->resource);
++				end_state_change_locked(device->resource, "resync-again");
+ 			}
+ 		}
+ 	}
+@@ -1225,7 +1225,7 @@ found:
+ 	}
+ 
+ 	drbd_send_uuids(peer_device, 0, 0);
+-	drbd_start_resync(peer_device, L_SYNC_TARGET);
++	drbd_start_resync(peer_device, L_SYNC_TARGET, "resync-from-primary");
+ }
+ 
+ static void queue_resync_finished(struct drbd_peer_device *peer_device, enum drbd_disk_state new_peer_disk_state)
+@@ -1428,7 +1428,7 @@ void drbd_resync_finished(struct drbd_peer_device *peer_device,
+ 	}
+ 
+ out_unlock:
+-	end_state_change_locked(device->resource);
++	end_state_change_locked(device->resource, "resync-finished");
+ 
+ 	put_ldev(device);
+ 
+@@ -1920,7 +1920,8 @@ static bool drbd_pause_after(struct drbd_device *device)
+ 			if (!__drbd_may_sync_now(other_peer_device))
+ 				__change_resync_susp_dependency(other_peer_device, true);
+ 		}
+-		if (end_state_change_locked(other_device->resource) != SS_NOTHING_TO_DO)
++		if (end_state_change_locked(other_device->resource, "resync-after") !=
++				SS_NOTHING_TO_DO)
+ 			changed = true;
+ 	}
+ 	rcu_read_unlock();
+@@ -1957,7 +1958,8 @@ static bool drbd_resume_next(struct drbd_device *device)
+ 			    __drbd_may_sync_now(other_peer_device))
+ 				__change_resync_susp_dependency(other_peer_device, false);
+ 		}
+-		if (end_state_change_locked(other_device->resource) != SS_NOTHING_TO_DO)
++		if (end_state_change_locked(other_device->resource, "resync-after") !=
++				SS_NOTHING_TO_DO)
+ 			changed = true;
+ 	}
+ 	rcu_read_unlock();
+@@ -2125,7 +2127,7 @@ static void do_start_resync(struct drbd_peer_device *peer_device)
+ 		return;
+ 	}
+ 
+-	drbd_start_resync(peer_device, peer_device->start_resync_side);
++	drbd_start_resync(peer_device, peer_device->start_resync_side, "postponed-resync");
+ 	clear_bit(AHEAD_TO_SYNC_SOURCE, &peer_device->flags);
+ }
+ 
+@@ -2149,7 +2151,7 @@ static void handle_congestion(struct drbd_peer_device *peer_device)
+ 			else if (on_congestion == OC_DISCONNECT)
+ 				__change_cstate(peer_device->connection, C_DISCONNECTING);
+ 		}
+-		end_state_change(resource, &irq_flags);
++		end_state_change(resource, &irq_flags, "congestion");
+ 	}
+ 	rcu_read_unlock();
+ 
+@@ -2163,7 +2165,8 @@ static void handle_congestion(struct drbd_peer_device *peer_device)
+  * This function might bring you directly into one of the
+  * C_PAUSED_SYNC_* states.
+  */
+-void drbd_start_resync(struct drbd_peer_device *peer_device, enum drbd_repl_state side)
++void drbd_start_resync(struct drbd_peer_device *peer_device, enum drbd_repl_state side,
++		const char *tag)
+ {
+ 	struct drbd_device *device = peer_device->device;
+ 	struct drbd_connection *connection = peer_device->connection;
+@@ -2258,7 +2261,7 @@ skip_helper:
+ 		init_resync_stable_bits(peer_device);
+ 	finished_resync_pdsk = peer_device->resync_finished_pdsk;
+ 	peer_device->resync_finished_pdsk = D_UNKNOWN;
+-	r = end_state_change_locked(device->resource);
++	r = end_state_change_locked(device->resource, tag);
+ 	repl_state = peer_device->repl_state[NOW];
+ 
+ 	if (repl_state < L_ESTABLISHED)
+@@ -2339,7 +2342,7 @@ static void go_diskless(struct drbd_device *device)
+ 	}
+ 
+ 	drbd_md_sync_if_dirty(device);
+-	change_disk_state(device, D_DISKLESS, CS_HARD, NULL);
++	change_disk_state(device, D_DISKLESS, CS_HARD, "go-diskless", NULL);
+ }
+ 
+ static int do_md_sync(struct drbd_device *device)
+diff --git a/drbd/drbd_state.c b/drbd/drbd_state.c
+index 23eab7f867aa..22cd134be962 100644
+--- a/drbd/drbd_state.c
++++ b/drbd/drbd_state.c
+@@ -74,8 +74,8 @@ struct change_disk_state_context {
+ static bool lost_contact_to_peer_data(enum drbd_disk_state *peer_disk_state);
+ static bool peer_returns_diskless(struct drbd_peer_device *peer_device,
+ 				  enum drbd_disk_state os, enum drbd_disk_state ns);
+-static void print_state_change(struct drbd_resource *resource, const char *prefix);
+-static void finish_state_change(struct drbd_resource *);
++static void print_state_change(struct drbd_resource *resource, const char *prefix, const char *tag);
++static void finish_state_change(struct drbd_resource *, const char *tag);
+ static int w_after_state_change(struct drbd_work *w, int unused);
+ static enum drbd_state_rv is_valid_soft_transition(struct drbd_resource *);
+ static enum drbd_state_rv is_valid_transition(struct drbd_resource *resource);
+@@ -774,7 +774,7 @@ static void queue_after_state_change_work(struct drbd_resource *resource,
+ }
+ 
+ static enum drbd_state_rv ___end_state_change(struct drbd_resource *resource, struct completion *done,
+-					      enum drbd_state_rv rv)
++					      enum drbd_state_rv rv, const char *tag)
+ {
+ 	enum chg_state_flags flags = resource->state_change_flags;
+ 	struct drbd_connection *connection;
+@@ -793,14 +793,14 @@ static enum drbd_state_rv ___end_state_change(struct drbd_resource *resource, st
+ 		if (flags & CS_VERBOSE) {
+ 			drbd_err(resource, "State change failed: %s (%d)\n",
+ 					drbd_set_st_err_str(rv), rv);
+-			print_state_change(resource, "Failed: ");
++			print_state_change(resource, "Failed: ", tag);
+ 		}
+ 		goto out;
+ 	}
+ 	if (flags & CS_PREPARE)
+ 		goto out;
+ 
+-	finish_state_change(resource);
++	finish_state_change(resource, tag);
+ 	update_members(resource);
+ 
+ 	/* Check whether we are establishing a connection before applying the change. */
+@@ -939,9 +939,9 @@ void begin_state_change_locked(struct drbd_resource *resource, enum chg_state_fl
+ 	__begin_state_change(resource);
+ }
+ 
+-enum drbd_state_rv end_state_change_locked(struct drbd_resource *resource)
++enum drbd_state_rv end_state_change_locked(struct drbd_resource *resource, const char *tag)
+ {
+-	return ___end_state_change(resource, NULL, SS_SUCCESS);
++	return ___end_state_change(resource, NULL, SS_SUCCESS, tag);
+ }
+ 
+ void begin_state_change(struct drbd_resource *resource, unsigned long *irq_flags, enum chg_state_flags flags)
+@@ -952,7 +952,8 @@ void begin_state_change(struct drbd_resource *resource, unsigned long *irq_flags
+ 
+ static enum drbd_state_rv __end_state_change(struct drbd_resource *resource,
+ 					     unsigned long *irq_flags,
+-					     enum drbd_state_rv rv)
++					     enum drbd_state_rv rv,
++					     const char *tag)
+ {
+ 	enum chg_state_flags flags = resource->state_change_flags;
+ 	struct completion __done, *done = NULL;
+@@ -961,26 +962,27 @@ static enum drbd_state_rv __end_state_change(struct drbd_resource *resource,
+ 		done = &__done;
+ 		init_completion(done);
+ 	}
+-	rv = ___end_state_change(resource, done, rv);
++	rv = ___end_state_change(resource, done, rv, tag);
+ 	__state_change_unlock(resource, irq_flags, rv >= SS_SUCCESS ? done : NULL);
+ 	return rv;
+ }
+ 
+-enum drbd_state_rv end_state_change(struct drbd_resource *resource, unsigned long *irq_flags)
++enum drbd_state_rv end_state_change(struct drbd_resource *resource, unsigned long *irq_flags,
++		const char *tag)
+ {
+-	return __end_state_change(resource, irq_flags, SS_SUCCESS);
++	return __end_state_change(resource, irq_flags, SS_SUCCESS, tag);
+ }
+ 
+ void abort_state_change(struct drbd_resource *resource, unsigned long *irq_flags)
+ {
+ 	resource->state_change_flags &= ~CS_VERBOSE;
+-	__end_state_change(resource, irq_flags, SS_UNKNOWN_ERROR);
++	__end_state_change(resource, irq_flags, SS_UNKNOWN_ERROR, NULL);
+ }
+ 
+ void abort_state_change_locked(struct drbd_resource *resource)
+ {
+ 	resource->state_change_flags &= ~CS_VERBOSE;
+-	___end_state_change(resource, NULL, SS_UNKNOWN_ERROR);
++	___end_state_change(resource, NULL, SS_UNKNOWN_ERROR, NULL);
+ }
+ 
+ static void begin_remote_state_change(struct drbd_resource *resource, unsigned long *irq_flags)
+@@ -1159,15 +1161,19 @@ static int scnprintf_io_suspend_flags(char *buffer, size_t size,
+ 	return b - buffer;
+ }
+ 
+-static void print_state_change(struct drbd_resource *resource, const char *prefix)
++static void print_state_change(struct drbd_resource *resource, const char *prefix, const char *tag)
+ {
+ 	char buffer[150], *b, *end = buffer + sizeof(buffer);
++	char tag_buffer[30] = "";
+ 	struct drbd_connection *connection;
+ 	struct drbd_device *device;
+ 	enum drbd_role *role = resource->role;
+ 	bool *fail_io = resource->fail_io;
+ 	int vnr;
+ 
++	if (tag)
++		scnprintf(tag_buffer, 30, " [%s]", tag);
++
+ 	b = buffer;
+ 	if (role[OLD] != role[NEW])
+ 		b += scnprintf(b, end - b, "role( %s -> %s ) ",
+@@ -1186,7 +1192,7 @@ static void print_state_change(struct drbd_resource *resource, const char *prefi
+ 			       fail_io[NEW] ? "yes" : "no");
+ 	if (b != buffer) {
+ 		*(b-1) = 0;
+-		drbd_info(resource, "%s%s\n", prefix, buffer);
++		drbd_info(resource, "%s%s%s\n", prefix, buffer, tag_buffer);
+ 	}
+ 
+ 	for_each_connection(connection, resource) {
+@@ -1205,7 +1211,7 @@ static void print_state_change(struct drbd_resource *resource, const char *prefi
+ 
+ 		if (b != buffer) {
+ 			*(b-1) = 0;
+-			drbd_info(connection, "%s%s\n", prefix, buffer);
++			drbd_info(connection, "%s%s%s\n", prefix, buffer, tag_buffer);
+ 		}
+ 	}
+ 
+@@ -1225,7 +1231,7 @@ static void print_state_change(struct drbd_resource *resource, const char *prefi
+ 				       have_quorum[NEW] ? "yes" : "no");
+ 		if (b != buffer) {
+ 			*(b-1) = 0;
+-			drbd_info(device, "%s%s\n", prefix, buffer);
++			drbd_info(device, "%s%s%s\n", prefix, buffer, tag_buffer);
+ 		}
+ 
+ 		for_each_peer_device(peer_device, device) {
+@@ -1253,7 +1259,7 @@ static void print_state_change(struct drbd_resource *resource, const char *prefi
+ 
+ 			if (b != buffer) {
+ 				*(b-1) = 0;
+-				drbd_info(peer_device, "%s%s\n", prefix, buffer);
++				drbd_info(peer_device, "%s%s%s\n", prefix, buffer, tag_buffer);
+ 			}
+ 		}
+ 	}
+@@ -2543,7 +2549,7 @@ static bool should_try_become_up_to_date(struct drbd_device *device, enum drbd_d
+ /**
+  * finish_state_change  -  carry out actions triggered by a state change
+  */
+-static void finish_state_change(struct drbd_resource *resource)
++static void finish_state_change(struct drbd_resource *resource, const char *tag)
+ {
+ 	enum drbd_role *role = resource->role;
+ 	struct drbd_device *device;
+@@ -2557,7 +2563,7 @@ static void finish_state_change(struct drbd_resource *resource)
+ 	bool unfreeze_io = false;
+ 	int vnr;
+ 
+-	print_state_change(resource, "");
++	print_state_change(resource, "", tag);
+ 
+ 	resource_suspended[OLD] = resource_is_suspended(resource, OLD);
+ 	resource_suspended[NEW] = resource_is_suspended(resource, NEW);
+@@ -3025,7 +3031,7 @@ static void abw_start_sync(struct drbd_device *device,
+ 
+ 	if (rv) {
+ 		drbd_err(device, "Writing the bitmap failed not starting resync.\n");
+-		stable_change_repl_state(peer_device, L_ESTABLISHED, CS_VERBOSE);
++		stable_change_repl_state(peer_device, L_ESTABLISHED, CS_VERBOSE, "start-sync");
+ 		return;
+ 	}
+ 
+@@ -3039,12 +3045,13 @@ static void abw_start_sync(struct drbd_device *device,
+ 		rcu_read_unlock();
+ 
+ 		if (peer_device->connection->agreed_pro_version < 110)
+-			stable_change_repl_state(peer_device, L_WF_SYNC_UUID, CS_VERBOSE);
++			stable_change_repl_state(peer_device, L_WF_SYNC_UUID, CS_VERBOSE,
++					"start-sync");
+ 		else
+-			drbd_start_resync(peer_device, L_SYNC_TARGET);
++			drbd_start_resync(peer_device, L_SYNC_TARGET, "start-sync");
+ 		break;
+ 	case L_STARTING_SYNC_S:
+-		drbd_start_resync(peer_device, L_SYNC_SOURCE);
++		drbd_start_resync(peer_device, L_SYNC_SOURCE, "start-sync");
+ 		break;
+ 	default:
+ 		break;
+@@ -3531,7 +3538,7 @@ static void check_may_resume_io_after_fencing(struct drbd_state_change *state_ch
+ 		rcu_read_unlock();
+ 		begin_state_change(resource, &irq_flags, CS_VERBOSE);
+ 		__change_io_susp_fencing(connection, false);
+-		end_state_change(resource, &irq_flags);
++		end_state_change(resource, &irq_flags, "after-fencing");
+ 	}
+ 	/* case2: The connection was established again: */
+ 	if (all_peer_disks_connected) {
+@@ -3543,7 +3550,7 @@ static void check_may_resume_io_after_fencing(struct drbd_state_change *state_ch
+ 		rcu_read_unlock();
+ 		begin_state_change(resource, &irq_flags, CS_VERBOSE);
+ 		__change_io_susp_fencing(connection, false);
+-		end_state_change(resource, &irq_flags);
++		end_state_change(resource, &irq_flags, "after-fencing");
+ 	}
+ }
+ 
+@@ -4191,7 +4198,7 @@ static int w_after_state_change(struct drbd_work *w, int unused)
+ 
+ 		begin_state_change(resource, &irq_flags, CS_VERBOSE);
+ 		resource->susp_uuid[NEW] = false;
+-		end_state_change(resource, &irq_flags);
++		end_state_change(resource, &irq_flags, "susp-uuid");
+ 	}
+ 
+ 	if (try_become_up_to_date)
+@@ -4673,7 +4680,7 @@ static void twopc_phase2(struct drbd_resource *resource,
+  */
+ static enum drbd_state_rv
+ change_cluster_wide_state(bool (*change)(struct change_context *, enum change_phase),
+-			  struct change_context *context)
++			  struct change_context *context, const char *tag)
+ {
+ 	struct drbd_resource *resource = context->resource;
+ 	unsigned long irq_flags;
+@@ -4692,11 +4699,11 @@ change_cluster_wide_state(bool (*change)(struct change_context *, enum change_ph
+ 	if (local_state_change(context->flags)) {
+ 		/* Not a cluster-wide state change. */
+ 		change(context, PH_LOCAL_COMMIT);
+-		return end_state_change(resource, &irq_flags);
++		return end_state_change(resource, &irq_flags, tag);
+ 	} else {
+ 		if (!change(context, PH_PREPARE)) {
+ 			/* Not a cluster-wide state change. */
+-			return end_state_change(resource, &irq_flags);
++			return end_state_change(resource, &irq_flags, tag);
+ 		}
+ 		rv = try_state_change(resource);
+ 		if (rv != SS_SUCCESS) {
+@@ -4704,7 +4711,7 @@ change_cluster_wide_state(bool (*change)(struct change_context *, enum change_ph
+ 			/* abort_state_change(resource, &irq_flags); */
+ 			if (rv == SS_NOTHING_TO_DO)
+ 				resource->state_change_flags &= ~CS_VERBOSE;
+-			return __end_state_change(resource, &irq_flags, rv);
++			return __end_state_change(resource, &irq_flags, rv, tag);
+ 		}
+ 		/* Really a cluster-wide state change. */
+ 	}
+@@ -4720,12 +4727,12 @@ change_cluster_wide_state(bool (*change)(struct change_context *, enum change_ph
+ 		}
+ 		if (rv >= SS_SUCCESS)
+ 			change(context, PH_84_COMMIT);
+-		return __end_state_change(resource, &irq_flags, rv);
++		return __end_state_change(resource, &irq_flags, rv, tag);
+ 	}
+ 
+ 	if (!expect(resource, context->flags & CS_SERIALIZE)) {
+ 		rv = SS_CW_FAILED_BY_PEER;
+-		return __end_state_change(resource, &irq_flags, rv);
++		return __end_state_change(resource, &irq_flags, rv, tag);
+ 	}
+ 
+ 	rcu_read_lock();
+@@ -4740,7 +4747,7 @@ change_cluster_wide_state(bool (*change)(struct change_context *, enum change_ph
+ 
+     retry:
+ 	if (current == resource->worker.task && resource->remote_state_change)
+-		return __end_state_change(resource, &irq_flags, SS_CONCURRENT_ST_CHG);
++		return __end_state_change(resource, &irq_flags, SS_CONCURRENT_ST_CHG, tag);
+ 
+ 	complete_remote_state_change(resource, &irq_flags);
+ 	start_time = jiffies;
+@@ -4756,7 +4763,7 @@ change_cluster_wide_state(bool (*change)(struct change_context *, enum change_ph
+ 		connection = drbd_get_connection_by_node_id(resource, context->target_node_id);
+ 		if (!connection) {
+ 			rv = SS_NEED_CONNECTION;
+-			return __end_state_change(resource, &irq_flags, rv);
++			return __end_state_change(resource, &irq_flags, rv, tag);
+ 		}
+ 		kref_debug_get(&connection->kref_debug, 8);
+ 
+@@ -4768,7 +4775,7 @@ change_cluster_wide_state(bool (*change)(struct change_context *, enum change_ph
+ 
+ 			kref_debug_put(&connection->kref_debug, 8);
+ 			kref_put(&connection->kref, drbd_destroy_connection);
+-			return __end_state_change(resource, &irq_flags, rv);
++			return __end_state_change(resource, &irq_flags, rv, tag);
+ 		}
+ 		target_connection = connection;
+ 
+@@ -4959,7 +4966,7 @@ change_cluster_wide_state(bool (*change)(struct change_context *, enum change_ph
+ 	clear_bit(TWOPC_STATE_CHANGE_PENDING, &resource->flags);
+ 	if (rv >= SS_SUCCESS) {
+ 		change(context, PH_COMMIT);
+-		rv = end_state_change(resource, &irq_flags);
++		rv = end_state_change(resource, &irq_flags, tag);
+ 		if (rv < SS_SUCCESS)
+ 			drbd_err(resource, "FATAL: Local commit of already committed %u failed! \n",
+ 				 request.tid);
+@@ -5276,6 +5283,7 @@ static bool do_change_role(struct change_context *context, enum change_phase pha
+ enum drbd_state_rv change_role(struct drbd_resource *resource,
+ 			       enum drbd_role role,
+ 			       enum chg_state_flags flags,
++			       const char *tag,
+ 			       const char **err_str)
+ {
+ 	struct change_context role_context = {
+@@ -5310,7 +5318,7 @@ enum drbd_state_rv change_role(struct drbd_resource *resource,
+ 		}
+ 		role_context.change_local_state_last = true;
+ 	}
+-	rv = change_cluster_wide_state(do_change_role, &role_context);
++	rv = change_cluster_wide_state(do_change_role, &role_context, tag);
+ out:
+ 	if (got_state_sem)
+ 		up(&resource->state_sem);
+@@ -5330,7 +5338,7 @@ enum drbd_state_rv change_io_susp_user(struct drbd_resource *resource,
+ 
+ 	begin_state_change(resource, &irq_flags, flags);
+ 	__change_io_susp_user(resource, value);
+-	return end_state_change(resource, &irq_flags);
++	return end_state_change(resource, &irq_flags, value ? "suspend-io" : "resume-io");
+ }
+ 
+ void __change_io_susp_no_data(struct drbd_resource *resource, bool value)
+@@ -5465,7 +5473,7 @@ enum drbd_state_rv twopc_after_lost_peer(struct drbd_resource *resource,
+ 	/* The other nodes get the request for an empty state change. I.e. they
+ 	   will agree to this change request. At commit time we know where to
+ 	   go from the D_CONSISTENT, since we got the primary mask. */
+-	return change_cluster_wide_state(do_twopc_after_lost_peer, &context);
++	return change_cluster_wide_state(do_twopc_after_lost_peer, &context, "lost-peer");
+ }
+ 
+ static bool do_change_disk_state(struct change_context *context, enum change_phase phase)
+@@ -5496,6 +5504,7 @@ static bool do_change_disk_state(struct change_context *context, enum change_pha
+ enum drbd_state_rv change_disk_state(struct drbd_device *device,
+ 				     enum drbd_disk_state disk_state,
+ 				     enum chg_state_flags flags,
++				     const char *tag,
+ 				     const char **err_str)
+ {
+ 	struct change_disk_state_context disk_state_context = {
+@@ -5513,7 +5522,7 @@ enum drbd_state_rv change_disk_state(struct drbd_device *device,
+ 	};
+ 
+ 	return change_cluster_wide_state(do_change_disk_state,
+-					 &disk_state_context.context);
++					 &disk_state_context.context, tag);
+ }
+ 
+ void __change_cstate(struct drbd_connection *connection, enum drbd_conn_state cstate)
+@@ -5683,11 +5692,11 @@ static bool do_change_cstate(struct change_context *context, enum change_phase p
+  * peer disks depending on the fencing policy.  This cannot easily be split
+  * into two state changes.
+  */
+-enum drbd_state_rv change_cstate_es(struct drbd_connection *connection,
++enum drbd_state_rv change_cstate_tag(struct drbd_connection *connection,
+ 				    enum drbd_conn_state cstate,
+ 				    enum chg_state_flags flags,
+-				    const char **err_str
+-	)
++				    const char *tag,
++				    const char **err_str)
+ {
+ 	struct change_cstate_context cstate_context = {
+ 		.context = {
+@@ -5717,7 +5726,7 @@ enum drbd_state_rv change_cstate_es(struct drbd_connection *connection,
+ 	if (!(flags & CS_HARD))
+ 		cstate_context.context.flags |= CS_SERIALIZE;
+ 
+-	return change_cluster_wide_state(do_change_cstate, &cstate_context.context);
++	return change_cluster_wide_state(do_change_cstate, &cstate_context.context, tag);
+ }
+ 
+ void __change_peer_role(struct drbd_connection *connection, enum drbd_role peer_role)
+@@ -5759,7 +5768,8 @@ static bool do_change_repl_state(struct change_context *context, enum change_pha
+ 
+ enum drbd_state_rv change_repl_state(struct drbd_peer_device *peer_device,
+ 				     enum drbd_repl_state new_repl_state,
+-				     enum chg_state_flags flags)
++				     enum chg_state_flags flags,
++				     const char *tag)
+ {
+ 	struct change_repl_context repl_context = {
+ 		.context = {
+@@ -5776,15 +5786,16 @@ enum drbd_state_rv change_repl_state(struct drbd_peer_device *peer_device,
+ 	if (new_repl_state == L_WF_BITMAP_S || new_repl_state == L_VERIFY_S)
+ 		repl_context.context.change_local_state_last = true;
+ 
+-	return change_cluster_wide_state(do_change_repl_state, &repl_context.context);
++	return change_cluster_wide_state(do_change_repl_state, &repl_context.context, tag);
+ }
+ 
+ enum drbd_state_rv stable_change_repl_state(struct drbd_peer_device *peer_device,
+ 					    enum drbd_repl_state repl_state,
+-					    enum chg_state_flags flags)
++					    enum chg_state_flags flags,
++					    const char *tag)
+ {
+ 	return stable_state_change(peer_device->device->resource,
+-		change_repl_state(peer_device, repl_state, flags));
++		change_repl_state(peer_device, repl_state, flags, tag));
+ }
+ 
+ void __change_peer_disk_state(struct drbd_peer_device *peer_device, enum drbd_disk_state disk_state)
+@@ -5807,14 +5818,15 @@ void __downgrade_peer_disk_states(struct drbd_connection *connection, enum drbd_
+ 
+ enum drbd_state_rv change_peer_disk_state(struct drbd_peer_device *peer_device,
+ 					  enum drbd_disk_state disk_state,
+-					  enum chg_state_flags flags)
++					  enum chg_state_flags flags,
++					  const char *tag)
+ {
+ 	struct drbd_resource *resource = peer_device->device->resource;
+ 	unsigned long irq_flags;
+ 
+ 	begin_state_change(resource, &irq_flags, flags);
+ 	__change_peer_disk_state(peer_device, disk_state);
+-	return end_state_change(resource, &irq_flags);
++	return end_state_change(resource, &irq_flags, tag);
+ }
+ 
+ void __change_resync_susp_user(struct drbd_peer_device *peer_device,
+@@ -5832,7 +5844,7 @@ enum drbd_state_rv change_resync_susp_user(struct drbd_peer_device *peer_device,
+ 
+ 	begin_state_change(resource, &irq_flags, flags);
+ 	__change_resync_susp_user(peer_device, value);
+-	return end_state_change(resource, &irq_flags);
++	return end_state_change(resource, &irq_flags, value ? "pause-sync" : "resume-sync");
+ }
+ 
+ void __change_resync_susp_peer(struct drbd_peer_device *peer_device,
+diff --git a/drbd/drbd_state.h b/drbd/drbd_state.h
+index 6942f85123dd..952dea156697 100644
+--- a/drbd/drbd_state.h
++++ b/drbd/drbd_state.h
+@@ -56,12 +56,13 @@ extern void state_change_lock(struct drbd_resource *, unsigned long *, enum chg_
+ extern void state_change_unlock(struct drbd_resource *, unsigned long *);
+ 
+ extern void begin_state_change(struct drbd_resource *, unsigned long *, enum chg_state_flags);
+-extern enum drbd_state_rv end_state_change(struct drbd_resource *, unsigned long *);
++extern enum drbd_state_rv end_state_change(struct drbd_resource *resource, unsigned long *irq_flags,
++		const char *tag);
+ extern void abort_state_change(struct drbd_resource *, unsigned long *);
+ extern void abort_state_change_locked(struct drbd_resource *resource);
+ 
+ extern void begin_state_change_locked(struct drbd_resource *, enum chg_state_flags);
+-extern enum drbd_state_rv end_state_change_locked(struct drbd_resource *);
++extern enum drbd_state_rv end_state_change_locked(struct drbd_resource *resource, const char *tag);
+ 
+ extern void clear_remote_state_change(struct drbd_resource *resource);
+ extern void __clear_remote_state_change(struct drbd_resource *resource);
+@@ -89,7 +90,11 @@ extern enum drbd_state_rv nested_twopc_request(struct drbd_resource *res, struct
+ extern bool drbd_twopc_between_peer_and_me(struct drbd_connection *connection);
+ extern bool cluster_wide_reply_ready(struct drbd_resource *);
+ 
+-extern enum drbd_state_rv change_role(struct drbd_resource *, enum drbd_role, enum chg_state_flags, const char **);
++extern enum drbd_state_rv change_role(struct drbd_resource *resource,
++			       enum drbd_role role,
++			       enum chg_state_flags flags,
++			       const char *tag,
++			       const char **err_str);
+ 
+ extern void __change_io_susp_user(struct drbd_resource *, bool);
+ extern enum drbd_state_rv change_io_susp_user(struct drbd_resource *, bool, enum chg_state_flags);
+@@ -99,27 +104,44 @@ extern void __change_io_susp_quorum(struct drbd_resource *, bool);
+ 
+ extern void __change_disk_state(struct drbd_device *, enum drbd_disk_state);
+ extern void __downgrade_disk_states(struct drbd_resource *, enum drbd_disk_state);
+-extern enum drbd_state_rv change_disk_state(struct drbd_device *, enum drbd_disk_state, enum chg_state_flags, const char **);
++extern enum drbd_state_rv change_disk_state(struct drbd_device *device,
++				     enum drbd_disk_state disk_state,
++				     enum chg_state_flags flags,
++				     const char *tag,
++				     const char **err_str);
+ 
+ extern void __change_cstate(struct drbd_connection *, enum drbd_conn_state);
+-extern enum drbd_state_rv change_cstate_es(struct drbd_connection *, enum drbd_conn_state, enum chg_state_flags, const char **);
++extern enum drbd_state_rv change_cstate_tag(struct drbd_connection *connection,
++				    enum drbd_conn_state cstate,
++				    enum chg_state_flags flags,
++				    const char *tag,
++				    const char **err_str);
+ static inline enum drbd_state_rv change_cstate(struct drbd_connection *connection,
+ 					       enum drbd_conn_state cstate,
+ 					       enum chg_state_flags flags)
+ {
+-	return change_cstate_es(connection, cstate, flags, NULL);
++	return change_cstate_tag(connection, cstate, flags, NULL, NULL);
+ }
+ 
+ extern void __change_peer_role(struct drbd_connection *, enum drbd_role);
+ 
+ extern void __change_repl_state(struct drbd_peer_device *, enum drbd_repl_state);
+-extern enum drbd_state_rv change_repl_state(struct drbd_peer_device *, enum drbd_repl_state, enum chg_state_flags);
+-extern enum drbd_state_rv stable_change_repl_state(struct drbd_peer_device *, enum drbd_repl_state, enum chg_state_flags);
++extern enum drbd_state_rv change_repl_state(struct drbd_peer_device *peer_device,
++				     enum drbd_repl_state new_repl_state,
++				     enum chg_state_flags flags,
++				     const char *tag);
++extern enum drbd_state_rv stable_change_repl_state(struct drbd_peer_device *peer_device,
++					    enum drbd_repl_state repl_state,
++					    enum chg_state_flags flags,
++					    const char *tag);
+ 
+ extern void __change_peer_disk_state(struct drbd_peer_device *, enum drbd_disk_state);
+ extern void __downgrade_peer_disk_states(struct drbd_connection *, enum drbd_disk_state);
+ extern void __outdate_myself(struct drbd_resource *resource);
+-extern enum drbd_state_rv change_peer_disk_state(struct drbd_peer_device *, enum drbd_disk_state, enum chg_state_flags);
++extern enum drbd_state_rv change_peer_disk_state(struct drbd_peer_device *peer_device,
++					  enum drbd_disk_state disk_state,
++					  enum chg_state_flags flags,
++					  const char *tag);
+ 
+ enum drbd_state_rv twopc_after_lost_peer(struct drbd_resource *resource, enum chg_state_flags);
+ 
+-- 
+2.35.3
+

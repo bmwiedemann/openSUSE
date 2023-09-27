@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  5 09:41:29 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- Adapt code for changes in yast2-bootloader done for systemd-boot
+  experimental support (jsc#PED-1906)
+- 5.0.1
+
+-------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (#bsc1185510)
+
+-------------------------------------------------------------------
 Tue Aug 15 08:42:50 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Require awk for use in startup scripts (bsc#1214277)

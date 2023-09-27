@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Sep 22 06:44:08 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.10.2:
+  * loads configuration file asynchronously
+  * keeps going upon configuration file errors
+  * The ‘service’ form supports a new #:respawn-limit parameter to specify per-service respawn limits.
+  * Fix: Disabled services are truly disabled
+  * Signals are properly handled after ‘daemonize’
+  * New ‘unregister-services’ procedure
+  * A Bash completion file is now installed, providing tab completion for the ‘herd’ command.
+  * ‘herd’ shows a hint when the service and action are likely swapped
+  * Updated translations: de, ro, sv, uk
+
+- added bash completion package
+
+-------------------------------------------------------------------
+Sun Jun 18 09:33:20 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.10.1:
+  * Major internal overhaul (in 0.9.x): usage of Guile Fibers to
+    allow concurrency, which enables a lot of new features around
+    services
+  Changes in 0.10.1:
+  * Configurable number of ‘bind’ attempts for endpoints
+  * New ‘default-respawn-limit’ parameter
+  * ‘herd restart SERVICE’ starts the replacement, not the original service
+  * ‘herd restart SERVICE’ does not restart transient services
+- remove no longer needed shepherd-rpmlintrc
+- add shepherd.keyring for signature check
+- dependent on guile-fibers
+- support for Guile 2.0 was dropped (because of fibers requirements)
+
+-------------------------------------------------------------------
 Tue Nov 24 22:08:42 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to 0.8.1:

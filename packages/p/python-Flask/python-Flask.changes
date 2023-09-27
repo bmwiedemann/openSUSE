@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 25 02:32:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.3:
+  * Python 3.12 compatibility.
+  * Require Werkzeug >= 2.3.7.
+  * Use ``flit_core`` instead of ``setuptools`` as build backend.
+  * Refactor how an app's root and instance paths are determined.
+- Fiddle with captialisation again, I look forward to this flipping back
+  to Flask at some point.
+
+-------------------------------------------------------------------
 Wed Aug  2 06:48:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.3.2:

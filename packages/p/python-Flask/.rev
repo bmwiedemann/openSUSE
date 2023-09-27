@@ -438,4 +438,18 @@
     <comment>- drops CVE-2023-30861-always-vary-cookie.patch in older dists</comment>
     <requestid>1109078</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0c00e7be5513885a1d29cff8bf3ff94f</srcmd5>
+    <version>2.3.3</version>
+    <time>1695758443</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.3.3:
+  * Python 3.12 compatibility.
+  * Require Werkzeug &gt;= 2.3.7.
+  * Use ``flit_core`` instead of ``setuptools`` as build backend.
+  * Refactor how an app's root and instance paths are determined.
+- Fiddle with captialisation again, I look forward to this flipping back
+  to Flask at some point.</comment>
+    <requestid>1113337</requestid>
+  </revision>
 </revisionlist>

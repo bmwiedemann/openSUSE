@@ -1,6 +1,7 @@
-diff -up dlt-daemon-2.18.8/src/daemon/dlt.conf.orig dlt-daemon-2.18.8/src/daemon/dlt.conf
---- dlt-daemon-2.18.8/src/daemon/dlt.conf.orig	2022-02-22 14:49:44.990640557 +0100
-+++ dlt-daemon-2.18.8/src/daemon/dlt.conf	2022-02-22 15:00:04.074142174 +0100
+Index: dlt-daemon-2.18.9/src/daemon/dlt.conf
+===================================================================
+--- dlt-daemon-2.18.9.orig/src/daemon/dlt.conf
++++ dlt-daemon-2.18.9/src/daemon/dlt.conf
 @@ -32,7 +32,7 @@ ECUId = ECU1
  SharedMemorySize = 100000
  
@@ -10,16 +11,16 @@ diff -up dlt-daemon-2.18.8/src/daemon/dlt.conf.orig dlt-daemon-2.18.8/src/daemon
  
  # The logging console for internal logging of dlt-daemon (Default: 0)
  # 0 = log to stdout
-@@ -46,7 +46,7 @@ LoggingMode = 0
- LoggingLevel = 6
- 
+@@ -48,7 +48,7 @@ LoggingLevel = 6
  # The logging filename if internal logging mode is log to file (Default: /tmp/dlt.log)
+ # If access to the file is not possible, the daemon will fall back to syslog
+ # if WITH_DLT_FILE_LOGGING_SYSLOG_FALLBACK is set as compile flag
 -LoggingFilename = /tmp/dlt.log
 +LoggingFilename = /var/lib/dlt-daemon/dlt.log
  
- # Timeout on send to client (sec)
- TimeOutOnSend = 4
-@@ -98,14 +98,14 @@ RingbufferStepSize = 500000
+ # Indicate whether size of logging file(s) is limited (Default: 0)
+ EnableLoggingFileLimit = 0
+@@ -109,14 +109,14 @@ RingbufferStepSize = 500000
  ########################################################################
  # Control Application                                                  #
  ########################################################################
@@ -36,9 +37,10 @@ diff -up dlt-daemon-2.18.8/src/daemon/dlt.conf.orig dlt-daemon-2.18.8/src/daemon
  
  # Maximum size in bytes of one trace file (Default: 1000000)
  # OfflineTraceFileSize = 1000000
-diff -up dlt-daemon-2.18.8/systemd/dlt.service.cmake.orig dlt-daemon-2.18.8/systemd/dlt.service.cmake
---- dlt-daemon-2.18.8/systemd/dlt.service.cmake.orig	2022-02-22 15:01:59.608929579 +0100
-+++ dlt-daemon-2.18.8/systemd/dlt.service.cmake	2022-02-22 15:02:04.434878925 +0100
+Index: dlt-daemon-2.18.9/systemd/dlt.service.cmake
+===================================================================
+--- dlt-daemon-2.18.9.orig/systemd/dlt.service.cmake
++++ dlt-daemon-2.18.9/systemd/dlt.service.cmake
 @@ -24,6 +24,7 @@ ExecStart=@CMAKE_INSTALL_PREFIX@/bin/dlt
  WatchdogSec=@DLT_WatchdogSec@
  NotifyAccess=main

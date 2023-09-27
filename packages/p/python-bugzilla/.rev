@@ -299,4 +299,14 @@
   * 106-basic-auth.diff</comment>
     <requestid>1044082</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>34f313bada6137874679b87cec30a0dd</srcmd5>
+    <version>3.2.0</version>
+    <time>1695758430</time>
+    <user>anag+factory</user>
+    <comment>- Fix API Key leak (bsc#1215718)
+- Add:
+  * 188-fix-api-key-leak.diff</comment>
+    <requestid>1113660</requestid>
+  </revision>
 </revisionlist>

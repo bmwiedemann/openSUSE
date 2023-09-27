@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.1
-%define mfr_revision   15
+%define mfr_revision   17
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -84,11 +84,6 @@ BuildRequires:  pkgconfig(libwebpmux)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lqr-1)
 BuildRequires:  pkgconfig(pango)
-%if 0%{?suse_version} > 1500
-BuildRequires:  p7zip-full
-%else
-BuildRequires:  p7zip
-%endif
 %if %{with djvu}
 BuildRequires:  pkgconfig(ddjvuapi)
 %endif
@@ -162,15 +157,38 @@ Summary:        Document Files for ImageMagick Library
 Group:          Documentation/HTML
 BuildArch:      noarch
 
-%package %{config_spec}-upstream
-Summary:        Upstream Configuration Files
+%package %{config_spec}-upstream-open
+Summary:        Open ImageMagick Security Policy
+Group:          Development/Libraries/C and C++
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+Provides:       imagick-%{config_spec}
+Obsoletes:      %{config_spec}-upstream < %{version}
+Provides:       %{config_spec}-upstream = %{version}
+
+%package %{config_spec}-upstream-limited
+Summary:        Limited ImageMagick Security Policy
+Group:          Development/Libraries/C and C++
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+Provides:       imagick-%{config_spec}
+
+%package %{config_spec}-upstream-secure
+Summary:        Secure ImageMagick Security Policy
+Group:          Development/Libraries/C and C++
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+Provides:       imagick-%{config_spec}
+
+%package %{config_spec}-upstream-websafe
+Summary:        Web-safe ImageMagick Security Policy
 Group:          Development/Libraries/C and C++
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       imagick-%{config_spec}
 
 %package %{config_spec}-SUSE
-Summary:        Upstream Configuration Files
+Summary:        SUSE Provided Configuration
 Group:          Development/Libraries/C and C++
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -274,20 +292,56 @@ support multiple generations of an image in memory at one time.
 %description doc
 HTML documentation for ImageMagick library and scene examples.
 
-%description %{config_spec}-upstream
-ImageMagick configuration as supplied by upstream. It does not
-provide any security restrictions. ImageMagick will be vulnerable
-for example by ImageTragick or PS/PDF coder issues. It should
-be used in trusted environment. Version or maintenance updates
-will not overwrite user changes in system configuration.
+%description %{config_spec}-upstream-open
+This policy is designed for usage in secure settings like those
+protected by firewalls or within Docker containers. Within this framework,
+ImageMagick enjoys broad access to resources and functionalities. This policy
+provides convenient and adaptable options for image manipulation. However,
+it's important to note that it might present security vulnerabilities in
+less regulated conditions. Thus, organizations should thoroughly assess
+the appropriateness of the open policy according to their particular use
+case and security prerequisites.
+
+%description %{config_spec}-upstream-limited
+The primary objective of the limited security policy is to find a
+middle ground between convenience and security. This policy involves the
+deactivation of potentially hazardous functionalities, like specific coders
+such as SVG or HTTP. Furthermore, it establishes several constraints on
+the utilization of resources like memory, storage, and processing duration,
+all of which are adjustable. This policy proves advantageous in situations
+where there's a need to mitigate the potential threat of handling possibly
+malicious or demanding images, all while retaining essential capabilities
+for prevalent image formats.
+
+%description %{config_spec}-upstream-secure
+This stringent security policy prioritizes the implementation of
+rigorous controls and restricted resource utilization to establish a
+profoundly secure setting while employing ImageMagick. It deactivates
+conceivably hazardous functionalities, including specific coders like
+SVG or HTTP. The policy promotes the tailoring of security measures to
+harmonize with the requirements of the local environment and the guidelines
+of the organization. This protocol encompasses explicit particulars like
+limitations on memory consumption, sanctioned pathways for reading and
+writing, confines on image sequences, the utmost permissible duration of
+workflows, allocation of disk space intended for image data, and even an
+undisclosed passphrase for remote connections. By adopting this robust
+policy, entities can elevate their overall security stance and alleviate
+potential vulnerabilities.
+
+%description %{config_spec}-upstream-websafe
+This security protocol designed for web-safe usage focuses on situations
+where ImageMagick is applied in publicly accessible contexts, like websites.
+It deactivates the capability to read from or write to any image formats
+other than web-safe formats like GIF, JPEG, and PNG. Additionally, this
+policy prohibits the execution of image filters and indirect reads, thereby
+thwarting potential security breaches. By implementing these limitations,
+the web-safe policy fortifies the safeguarding of systems accessible to
+the public, reducing the risk of exploiting ImageMagick's capabilities
+for potential attacks.
 
 %description %{config_spec}-SUSE
-ImageMagick configuration as provide by SUSE. It is more security
-aware than config-upstream variant. It does disable some coders,
-that are insecure by design to prevent user to use them
-inadvertently. Configuration can be subject of change by future
-version and maintenance updates and system changes will not be
-preserved.
+ImageMagick configuration as provide by SUSE. It is upstream 'secure'
+policy plus disable few other coders for reading and/or writing.
 
 %prep
 %setup -q -n ImageMagick-%{source_version}
@@ -363,9 +417,9 @@ cp -r Magick++/demo Magick++/examples
 cp -r PerlMagick/demo PerlMagick/examples
 # other improvements
 chmod -x PerlMagick/demo/*.pl
+exit 0
 
 %check
-exit 0
 %if %{debug_build} || %{asan_build}
 # testsuite does not succeed for some reason
 # research TODO
@@ -390,8 +444,12 @@ cd ..
 %make_install pkgdocdir=%{_defaultdocdir}/%{name}-%{maj}/
 # configuration magic
 mv -t %{buildroot}%{_sysconfdir}/%{name}* %{buildroot}%{_datadir}/%{name}*/*.xml
-mv %{buildroot}%{_sysconfdir}/%{config_dir}{,-upstream}
-cp -r %{buildroot}%{_sysconfdir}/%{config_dir}{-upstream,-SUSE}
+for policy in open limited secure websafe; do
+  cp -r %{buildroot}%{_sysconfdir}/%{config_dir}{,-upstream-$policy}
+  cp config/policy-$policy.xml %{buildroot}%{_sysconfdir}/%{config_dir}-upstream-$policy
+done
+mv %{buildroot}%{_sysconfdir}/%{config_dir}{,-SUSE}
+cp config/policy-secure.xml %{buildroot}%{_sysconfdir}/%{config_dir}-SUSE
 patch --fuzz=0 --dir %{buildroot}%{_sysconfdir}/%{config_dir}-SUSE < %{PATCH0}
 mkdir -p  %{buildroot}%{_sysconfdir}/alternatives/
 ln -sf %{_sysconfdir}/alternatives/%{config_dir} %{buildroot}%{_sysconfdir}/%{config_dir}
@@ -421,7 +479,32 @@ sed -i 's:%{buildroot}::' %{buildroot}/%{_libdir}/ImageMagick-%{mfr_version}/con
 %postun -n libMagickWand%{libspec}%{cwandver} -p /sbin/ldconfig
 %post -n libMagick++%{libspec}%{cxxlibver} -p /sbin/ldconfig
 %postun -n libMagick++%{libspec}%{cxxlibver} -p /sbin/ldconfig
-%pretrans %{config_spec}-upstream -p <lua>
+
+%post %{config_spec}-upstream-open
+%{_sbindir}/update-alternatives --quiet --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-upstream-open  1
+
+%postun %{config_spec}-upstream-open
+if [ ! -d %{_sysconfdir}/%{config_dir}-upstream ] ; then
+    %{_sbindir}/update-alternatives --quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-upstream
+fi
+
+%post %{config_spec}-upstream-limited
+%{_sbindir}/update-alternatives --quiet --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-upstream-limited  5
+
+%postun %{config_spec}-upstream-limited
+if [ ! -d %{_sysconfdir}/%{config_dir}-upstream ] ; then
+    %{_sbindir}/update-alternatives --quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-upstream-limited
+fi
+
+%post %{config_spec}-upstream-secure
+%{_sbindir}/update-alternatives --quiet --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-upstream-secure  10
+
+%postun %{config_spec}-upstream-secure
+if [ ! -d %{_sysconfdir}/%{config_dir}-upstream ] ; then
+    %{_sbindir}/update-alternatives --quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-upstream-secure
+fi
+
+%pretrans %{config_spec}-upstream-open -p <lua>
 -- this %pretrans to be removed soon [bug#1122033#c37]
 path = "%{_sysconfdir}/%{config_dir}"
 st = posix.stat(path)
@@ -430,13 +513,22 @@ if st and st.type == "directory" then
   os.rename(path, path .. ".rpmmoved")
 end
 
-%post %{config_spec}-upstream
-%{_sbindir}/update-alternatives --quiet --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-upstream  1
-
-%postun %{config_spec}-upstream
-if [ ! -d %{_sysconfdir}/%{config_dir}-upstream ] ; then
-    %{_sbindir}/update-alternatives --quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-upstream
-fi
+%pretrans %{config_spec}-upstream-limited -p <lua>
+-- this %pretrans to be removed soon [bug#1122033#c37]
+path = "%{_sysconfdir}/%{config_dir}"
+st = posix.stat(path)
+if st and st.type == "directory" then
+  os.remove(path .. ".rpmmoved")
+  os.rename(path, path .. ".rpmmoved")
+end
+%pretrans %{config_spec}-upstream-secure -p <lua>
+-- this %pretrans to be removed soon [bug#1122033#c37]
+path = "%{_sysconfdir}/%{config_dir}"
+st = posix.stat(path)
+if st and st.type == "directory" then
+  os.remove(path .. ".rpmmoved")
+  os.rename(path, path .. ".rpmmoved")
+end
 
 %pretrans %{config_spec}-SUSE -p <lua>
 -- this %pretrans to be removed soon [bug#1122033#c37]
@@ -447,12 +539,29 @@ if st and st.type == "directory" then
   os.rename(path, path .. ".rpmmoved")
 end
 
+%pretrans %{config_spec}-upstream-websafe -p <lua>
+-- this %pretrans to be removed soon [bug#1122033#c37]
+path = "%{_sysconfdir}/%{config_dir}"
+st = posix.stat(path)
+if st and st.type == "directory" then
+  os.remove(path .. ".rpmmoved")
+  os.rename(path, path .. ".rpmmoved")
+end
+
 %post %{config_spec}-SUSE
-%{_sbindir}/update-alternatives --quiet --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-SUSE      10
+%{_sbindir}/update-alternatives --quiet --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-SUSE      15
 
 %postun %{config_spec}-SUSE
 if [ ! -d %{_sysconfdir}/%{config_dir}-SUSE ] ; then
     %{_sbindir}/update-alternatives --quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-SUSE
+fi
+
+%post %{config_spec}-upstream-websafe
+%{_sbindir}/update-alternatives --quiet --install %{_sysconfdir}/%{config_dir}  %{config_dir}   %{_sysconfdir}/%{config_dir}-upstream-websafe  20
+
+%postun %{config_spec}-upstream-websafe
+if [ ! -d %{_sysconfdir}/%{config_dir}-upstream ] ; then
+    %{_sbindir}/update-alternatives --quiet --remove %{config_dir}  %{_sysconfdir}/%{config_dir}-upstream-websafe
 fi
 
 %files
@@ -534,15 +643,33 @@ fi
 %files doc
 %{_defaultdocdir}/%{name}-%{maj}
 
-%files %{config_spec}-upstream
-%dir %{_sysconfdir}/ImageMagick*-upstream/
-%config(noreplace) %{_sysconfdir}/ImageMagick*-upstream/*
+%files %{config_spec}-upstream-open
+%dir %{_sysconfdir}/ImageMagick*-upstream-open/
+%config(noreplace) %{_sysconfdir}/ImageMagick*-upstream-open/*
+%{_sysconfdir}/%{config_dir}
+%ghost %{_sysconfdir}/alternatives/%{config_dir}
+
+%files %{config_spec}-upstream-limited
+%dir %{_sysconfdir}/ImageMagick*-upstream-limited/
+%config(noreplace) %{_sysconfdir}/ImageMagick*-upstream-limited/*
+%{_sysconfdir}/%{config_dir}
+%ghost %{_sysconfdir}/alternatives/%{config_dir}
+
+%files %{config_spec}-upstream-secure
+%dir %{_sysconfdir}/ImageMagick*-upstream-secure/
+%config(noreplace) %{_sysconfdir}/ImageMagick*-upstream-secure/*
 %{_sysconfdir}/%{config_dir}
 %ghost %{_sysconfdir}/alternatives/%{config_dir}
 
 %files %{config_spec}-SUSE
 %dir %{_sysconfdir}/ImageMagick*-SUSE/
 %config %{_sysconfdir}/ImageMagick*-SUSE/*
+%{_sysconfdir}/%{config_dir}
+%ghost %{_sysconfdir}/alternatives/%{config_dir}
+
+%files %{config_spec}-upstream-websafe
+%dir %{_sysconfdir}/ImageMagick*-upstream-websafe/
+%config(noreplace) %{_sysconfdir}/ImageMagick*-upstream-websafe/*
 %{_sysconfdir}/%{config_dir}
 %ghost %{_sysconfdir}/alternatives/%{config_dir}
 

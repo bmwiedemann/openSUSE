@@ -18,7 +18,7 @@
 
 
 Name:           bittwist
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        A libpcap-based Ethernet packet generator
 License:        GPL-2.0-only

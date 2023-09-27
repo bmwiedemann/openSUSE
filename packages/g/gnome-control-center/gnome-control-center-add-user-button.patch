@@ -1,0 +1,13 @@
+diff --git a/panels/user-accounts/cc-user-panel.c b/panels/user-accounts/cc-user-panel.c
+index 3fdfe961e..fa3af01f8 100644
+--- a/panels/user-accounts/cc-user-panel.c
++++ b/panels/user-accounts/cc-user-panel.c
+@@ -830,7 +830,7 @@ show_user (ActUser *user, CcUserPanel *self)
+         gtk_widget_set_visible (GTK_WIDGET (self->back_button), !show);
+         show_or_hide_back_button(self);
+         gtk_widget_set_visible (GTK_WIDGET (self->other_users), other_user_show);
+-        gtk_widget_set_visible (GTK_WIDGET (self->add_user_button), show && is_admin);
++        gtk_widget_set_sensitive (GTK_WIDGET (self->add_user_button), is_admin);
+ 
+         on_permission_changed (self);
+ }

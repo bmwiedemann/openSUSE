@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 20 08:45:39 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- version update to 28.1.0
+  * too many changes, please refer to the CHANGELOG.md in documentation OR at
+  https://github.com/kubernetes-client/python/blob/release-28.0/CHANGELOG.md
+- cleanup: alpha-sorted the `BuildRequires` and `Requires` fields
+- added following, per requirements.txt at https://github.com/kubernetes-client/python/blob/v28.1.0/requirements.txt: 
+  *`BuildRequires:  %{python_module oauthlib >= 3.2.2}`
+  *`Requires: python-oauthlib >= 3.2.2` 
+
+-------------------------------------------------------------------
 Wed Jul 19 06:15:59 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - version update to 27.2.0

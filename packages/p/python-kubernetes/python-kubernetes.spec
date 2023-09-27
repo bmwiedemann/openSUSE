@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-kubernetes
-Version:        27.2.0
+Version:        28.1.0
 Release:        0
 Summary:        Kubernetes python client
 License:        Apache-2.0
@@ -29,6 +29,7 @@ BuildRequires:  %{python_module PyYAML >= 5.4.1}
 BuildRequires:  %{python_module Sphinx >= 1.3.1}
 BuildRequires:  %{python_module certifi >= 14.05.14}
 BuildRequires:  %{python_module google-auth >= 1.0.1}
+BuildRequires:  %{python_module oauthlib >= 3.2.2}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.5.3}
@@ -44,6 +45,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.4.1
 Requires:       python-certifi >= 14.05.14
 Requires:       python-google-auth >= 1.0.1
+Requires:       python-oauthlib >= 3.2.2
 Requires:       python-python-dateutil >= 2.5.3
 Requires:       python-requests
 Requires:       python-requests-oauthlib

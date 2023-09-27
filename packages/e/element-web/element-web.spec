@@ -17,7 +17,7 @@
 
 
 Name:           element-web
-Version:        1.11.38
+Version:        1.11.43
 Release:        0
 Summary:        A glossy Matrix collaboration client - web files
 License:        Apache-2.0
@@ -55,7 +55,7 @@ yarn install --offline --pure-lockfile
 
 mkdir -p webapp
 cp %{SOURCE2} ./webapp/jitsi_external_api.min.js
-echo 'return;' > scripts/build-jitsi.js
+echo > scripts/build-jitsi.ts
 
 DIST_VERSION=%{version} ./scripts/package.sh
 

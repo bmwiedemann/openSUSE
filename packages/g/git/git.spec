@@ -120,9 +120,9 @@ Group:          Development/Tools/Version Control
 Requires:       less
 Obsoletes:      git-remote-helpers < %{version}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
-Requires:       openssh-clients
+Recommends:     openssh-clients
 %else
-Requires:       openssh
+Recommends:     openssh
 %endif
 
 %description core

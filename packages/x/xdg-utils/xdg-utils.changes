@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 21 05:47:59 UTC 2023 - jslaby@suse.cz
+
+- Update to version 1.1.3+20230831:
+  * Revert putting process in background from !55
+- revert _service to the original state
+- revert drop of xdg-terminal-don-t-run-kreadconfig-if-KDE_SESSION_VE.patch
+  (bsc#1215384)
+
+-------------------------------------------------------------------
 Thu Aug 31 18:12:21 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to 1.1.3+20230830

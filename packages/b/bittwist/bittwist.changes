@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 22 08:58:49 UTC 2023 - Ming Li <mli@suse.com>
+
+- Update to version 3.8
+  * bumped from gcc -O2 to -O3 optimization flag:
+    https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html#index-O3
+  bittwist (generator)
+  * added RFC 2544 benchmark data generator and benchmark page
+  * improved actual inter-packet gap replay by using token bucket algorithm for
+    short IPG and self-regulated timer for long IPG
+
+-------------------------------------------------------------------
 Sun Jul  2 11:53:58 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.7

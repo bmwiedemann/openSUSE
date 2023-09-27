@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 20 16:17:59 UTC 2023 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Port SLE selinux bug fix from SLE Micro 5.5
+  * Copied selinux_libdir.patch from SLEM package
+
+-------------------------------------------------------------------
 Fri Sep  8 12:53:26 UTC 2023 - Adam Majer <adam.majer@suse.de> - 300.1
 
 - new version 300.1

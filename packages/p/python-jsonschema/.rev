@@ -360,4 +360,12 @@
     <comment>- update to version 3.2.0 (jsc#SLE-18756):</comment>
     <requestid>1109350</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>aa9fda56339eb974065d2f6cf6583e3c</srcmd5>
+    <version>4.19.1</version>
+    <time>1695758421</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112882</requestid>
+  </revision>
 </revisionlist>

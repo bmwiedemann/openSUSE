@@ -760,12 +760,14 @@ systemctl is-active -q apparmor && systemctl reload apparmor ||:
 %if %{with pam}
 
 %post -n pam_apparmor
-pam-config -a --apparmor
-pam-config --update
+if [ $1 -eq 1 ]; then
+        pam-config --add --apparmor || :
+fi
 
 %postun -n pam_apparmor
-pam-config -d --apparmor
-pam-config --update
+if [ $1 -eq 0 ]; then
+        pam-config --delete --apparmor || :
+fi
 %endif
 
 %changelog

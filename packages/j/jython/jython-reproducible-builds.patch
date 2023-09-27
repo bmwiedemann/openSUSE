@@ -1,0 +1,43 @@
+diff --git a/build.xml b/build.xml
+index 52dfe71..0d41bdf 100644
+--- a/build.xml
++++ b/build.xml
+@@ -721,8 +721,12 @@ The text for an official release would continue like ...
+             <arg path="${out}"/>
+             <arg value="-lib"/>
+             <arg path="${out}"/>
+-            <arg file="${basedir}/grammar/Python.g"/>
+-            <arg file="${basedir}/grammar/PythonPartial.g"/>
++            <!-- Reproducible builds
++                 Replace 'arg file=...' with 'arg value=...' to prevent using
++                 the absolute filename, because these filenames are inserted
++                 into the antlr generated getGrammar* methods -->
++            <arg value="grammar/Python.g"/>
++            <arg value="grammar/PythonPartial.g"/>
+             <classpath refid="main.classpath"/>
+         </java>
+ 
+@@ -1151,7 +1155,10 @@ The text for an official release would continue like ...
+     </target>
+ 
+     <target name="copy-lib" depends="common-dirs, copy-cpythonlib">
+-        <copy todir="${dist.dir}/Lib">
++        <!-- Reproducible builds
++             Use attribute preservelastmodified="true" because these files'
++             mtime are stored into the generated $py.class files -->
++        <copy todir="${dist.dir}/Lib" preservelastmodified="true">
+             <fileset dir="${basedir}/Lib">
+                 <exclude name="**/*.class"/>
+             </fileset>
+@@ -1175,7 +1182,10 @@ The text for an official release would continue like ...
+         <copy file="${basedir}/lib-python/LICENSE.txt"
+               tofile="${dist.dir}/LICENSE_CPython.txt"
+               preservelastmodified="true" />
+-        <copy todir="${dist.dir}/Lib">
++        <!-- Reproducible builds
++             Use attribute preservelastmodified="true" because these files'
++             mtime are stored into the generated $py.class files -->
++        <copy todir="${dist.dir}/Lib" preservelastmodified="true">
+             <fileset dir="${python.lib}" excludes="**/*.pyc, **/*.pyo" includesfile="${basedir}/CPythonLib.includes">
+                 <!-- The include file gets all of lib-python/2.7's test directory, but we only want the ones from Jython's Lib.   -->
+                 <present present="srconly" targetdir="${basedir}/Lib"/>

@@ -1,7 +1,7 @@
 #
 # spec file for package tlp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %{!?_udevrulesdir: %define _udevrulesdir %{_udevdir}/rules.d}
 
 Name:           tlp
-Version:        1.5.0
+Version:        1.6.1
 Release:        0
 Summary:        Tools to save battery power on laptops
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -94,8 +94,6 @@ make install-man      DESTDIR=%{buildroot}
 make install-man-rdw  DESTDIR=%{buildroot}
 
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rctlp
-mkdir -p %{buildroot}%{_prefix}/lib/NetworkManager/dispatcher.d
-mv %{buildroot}%{_sysconfdir}/NetworkManager/dispatcher.d/99tlp-rdw-nm %{buildroot}%{_prefix}/lib/NetworkManager/dispatcher.d/99tlp-rdw-nm
 
 %pre
 %service_add_pre tlp.service
@@ -128,6 +126,8 @@ fi
 %dir %{_datadir}/metainfo/
 %dir %{_datadir}/bash-completion/
 %dir %{_datadir}/bash-completion/completions/
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %config(noreplace) %{_sysconfdir}/%{name}.d/00-template.conf
 %{_sysconfdir}/%{name}.d/README
@@ -148,6 +148,8 @@ fi
 %{_localstatedir}/lib/%{name}/
 %{_datadir}/bash-completion/completions/*
 %exclude %{_datadir}/bash-completion/completions/tlp-rdw
+%{_datadir}/zsh/site-functions/*
+%exclude %{_datadir}/zsh/site-functions/_tlp-rdw
 %{_mandir}/man?/*.?%{?ext_man}
 %exclude %{_mandir}/man8/%{name}-rdw.8%{?ext_man}
 
@@ -160,5 +162,6 @@ fi
 %{_udevdir}/%{name}-rdw-udev
 %{_mandir}/man8/%{name}-rdw.8%{?ext_man}
 %{_datadir}/bash-completion/completions/%{name}-rdw
+%{_datadir}/zsh/site-functions/_%{name}-rdw
 
 %changelog

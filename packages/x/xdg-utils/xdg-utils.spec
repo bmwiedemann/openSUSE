@@ -17,7 +17,7 @@
 
 
 Name:           xdg-utils
-Version:        1.1.3+20230830
+Version:        1.1.3+20230831
 Release:        0
 Summary:        Utilities to uniformly interface desktop environments
 License:        MIT
@@ -27,6 +27,7 @@ URL:            https://www.freedesktop.org/wiki/Software/xdg-utils/
 Source:         xdg-utils-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE install-some-more-scripts.diff jslaby@suse.cz
 Patch0:         install-some-more-scripts.diff
+Patch1:         xdg-terminal-don-t-run-kreadconfig-if-KDE_SESSION_VE.patch
 BuildRequires:  make
 # for xmlto to be able to generate text from html
 BuildRequires:  w3m

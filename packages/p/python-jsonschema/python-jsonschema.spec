@@ -33,7 +33,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonschema%{psuffix}
-Version:        4.18.6
+Version:        4.19.1
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT

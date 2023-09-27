@@ -6,7 +6,7 @@ Wed Apr 27 07:14:43 UTC 2022 - Marcus Meissner <meissner@suse.com>
 -------------------------------------------------------------------
 Sat Apr 23 21:44:18 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
-- Fix version of package: 20171227 is the upstream version number
+- Fix version of package: 20190702 is the upstream version number
   of the package
 - Replaced optflags.patch with adjust-makefile.patch, the
   patch will now also allow to set the file permissions of installed

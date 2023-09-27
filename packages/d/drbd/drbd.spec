@@ -34,8 +34,33 @@ Source1:        preamble
 Source2:        Module.supported
 Source3:        drbd_git_revision
 
-Patch1:         bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
-Patch99:        suse-coccinelle.patch
+########################
+# upstream patch
+Patch0001:   0001-drbd-allow-transports-to-take-additional-krefs-on-a-.patch
+Patch0002:   0002-drbd-improve-decision-about-marking-a-failed-disk-Ou.patch
+Patch0003:   0003-drbd-fix-error-path-in-drbd_get_listener.patch
+Patch0004:   0004-drbd-build-fix-spurious-re-build-attempt-of-compat.p.patch
+Patch0005:   0005-drbd-log-error-code-when-thread-fails-to-start.patch
+Patch0006:   0006-drbd-log-numeric-value-of-drbd_state_rv-as-well-as-s.patch
+Patch0007:   0007-drbd-stop-defining-__KERNEL_SYSCALLS__.patch
+Patch0008:   0008-compat-block-introduce-holder-ops.patch
+Patch0009:   0009-drbd-reduce-net_ee-not-empty-info-to-a-dynamic-debug.patch
+Patch0010:   0010-drbd-do-not-send-P_CURRENT_UUID-to-DRBD-8-peer-when-.patch
+Patch0011:   0011-compat-block-pass-a-gendisk-to-open.patch
+Patch0012:   0012-drbd-Restore-DATA_CORKED-and-CONTROL_CORKED-bits.patch
+Patch0013:   0013-drbd-remove-unused-extern-for-conn_try_outdate_peer.patch
+Patch0014:   0014-drbd-include-source-of-state-change-in-log.patch
+Patch0015:   0015-compat-block-use-the-holder-as-indication-for-exclus.patch
+Patch0016:   0016-drbd-Fix-net-options-set-defaults-to-not-clear-the-t.patch
+Patch0017:   0017-drbd-propagate-exposed-UUIDs-only-into-established-c.patch
+Patch0018:   0018-drbd-rework-autopromote.patch
+Patch0019:   0019-compat-block-remove-the-unused-mode-argument-to-rele.patch
+Patch0020:   0020-drbd-do-not-allow-auto-demote-to-be-interrupted-by-s.patch
+# suse special patch
+Patch1001:   bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
+Patch1002:   suse-coccinelle.patch
+Patch1003:   bsc-1215699_fix-build-error-against-kernel-v6.5.4.patch
+########################
 
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle >= 1.0.8
@@ -70,8 +95,29 @@ installed kernel.
 
 %prep
 %setup -q -n drbd-%{version}
-%patch1 -p1
-%patch99 -p1
+%patch0001 -p1
+%patch0002 -p1
+%patch0003 -p1
+%patch0004 -p1
+%patch0005 -p1
+%patch0006 -p1
+%patch0007 -p1
+%patch0008 -p1
+%patch0009 -p1
+%patch0010 -p1
+%patch0011 -p1
+%patch0012 -p1
+%patch0013 -p1
+%patch0014 -p1
+%patch0015 -p1
+%patch0016 -p1
+%patch0017 -p1
+%patch0018 -p1
+%patch0019 -p1
+%patch0020 -p1
+%patch1001 -p1
+%patch1002 -p1
+%patch1003 -p1
 
 mkdir source
 cp -a drbd/. source/. || :

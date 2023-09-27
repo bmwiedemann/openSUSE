@@ -1,7 +1,7 @@
 #
 # spec file for package 7kaa
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,18 @@
 
 %define base_version 2.15
 Name:           7kaa
-Version:        %{base_version}.5
+Version:        %{base_version}.6
 Release:        0
 Summary:        Seven Kingdoms: Ancient Adversaries
 License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Real Time
 URL:            https://7kfans.com/
-Source0:        https://github.com/the3dfxdude/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source0:        https://github.com/the3dfxdude/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.png
 Source2:        %{name}.desktop
+BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
+BuildRequires:  automake
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -34,7 +37,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libenet)
 BuildRequires:  pkgconfig(openal)
-BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sdl2) >= 2.24.0
 Recommends:     %{name}-music >= %{base_version}
 
 %description
@@ -58,6 +61,8 @@ the GPL v2.
 %setup -q
 
 %build
+autoreconf -if
+./autogen.sh
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %configure --docdir=%{_docdir}/%{name}
 %make_build

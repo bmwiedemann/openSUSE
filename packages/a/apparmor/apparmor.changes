@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 25 14:07:39 UTC 2023 - David Disseldorp <ddiss@suse.com>
+
+- Fix pam_apparmor %post and %postun scripts to handle pam-config errors
+  (bsc#1215596)
+
+-------------------------------------------------------------------
 Tue Jul 25 09:28:33 UTC 2023 - David Disseldorp <ddiss@suse.com>
 
 - Add pam_apparmor README, referenced from online cha-apparmor-pam.html

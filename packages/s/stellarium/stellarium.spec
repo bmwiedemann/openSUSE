@@ -23,7 +23,7 @@
 %endif
 
 Name:           stellarium
-Version:        23.2
+Version:        23.3
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
@@ -84,8 +84,8 @@ BuildRequires:  pkgconfig(Qt6Widgets)
 Requires:       qt6-multimedia
 %endif
 %if 0%{?is_opensuse}
-BuildRequires:  pkgconfig(libgps)
 BuildRequires:  pkgconfig(Qgpsmm)
+BuildRequires:  pkgconfig(libgps)
 %endif
 
 %description

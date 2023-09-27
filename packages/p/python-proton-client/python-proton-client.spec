@@ -1,7 +1,7 @@
 #
 # spec file for package python-proton-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-proton-client
 Version:        0.7.1
@@ -26,11 +25,13 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/ProtonMail/proton-python-client
 Source:         https://github.com/ProtonMail/proton-python-client/archive/refs/tags/%{version}.tar.gz#/proton-python-client-%{version}.tar.gz
+Patch1:         urllib3-v2-migration.patch
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module gnupg}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -47,14 +48,14 @@ This package, originally forked from python-srp module implements a simple
 wrapper to Proton Technologies API, abstracting from the SRP authentication.
 
 %prep
-%setup -q -n proton-python-client-%{version}
+%autosetup -n proton-python-client-%{version} -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{python_sitelib}/proton
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # skip test_tlspinning.py as OBS has no network access
@@ -64,6 +65,6 @@ wrapper to Proton Technologies API, abstracting from the SRP authentication.
 %license LICENSE
 %doc README.md
 %{python_sitelib}/proton
-%{python_sitelib}/proton_client-*-py*.*-info
+%{python_sitelib}/proton_client-%{version}*-info
 
 %changelog

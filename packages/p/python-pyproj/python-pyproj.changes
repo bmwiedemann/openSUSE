@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 24 20:01:29 UTC 2023 - Libor Pechacek <lpechacek@gmx.com>
+
+- Update to 3.6.1
+  * WHL: Update to PROJ 9.3 by @snowman2 in #1334
+  * DEP: Add Python 3.12 support by @snowman2 in #1341
+  * BUG: Cython 3 compatibility fixes by @snowman2 in #1322
+  * BUG: Remove pkg_resources from setup.py by @snowman2 in #1314
+  * DOC: Fixed typos by @djm93dev in #1305 & #1306
+  * DOC: Fix logo view on Pypi by @cyschneck in #1308
+  * DOC: Spelling permimeter -> perimeter by @zanejgr in #1310
+
+-------------------------------------------------------------------
 Tue Aug 29 11:48:28 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Limit to Cython <3 gh#pyproj4/pyproj#1321

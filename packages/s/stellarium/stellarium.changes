@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 25 18:55:37 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 23.3:
+  * New plugin: Missing Stars
+  * Allow semitransparent landscapes
+  * Added discovery circumstances for Solar system bodies
+  * Improve orbit drawing for minor bodies
+  * Show named impact features as ellipses
+  * Major changes in Navigational Stars plugin
+  * Observing List fixes
+  * Unambiguous comet names
+
+-------------------------------------------------------------------
 Mon Sep 18 14:44:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Look for the Qgpsmm pkgconfig file which is going to be

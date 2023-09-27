@@ -1,0 +1,185 @@
+From e3ef0e229a6ae88346164d1507697ae1b397cdf9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Moritz=20=22WanzenBug=22=20Wanzenb=C3=B6ck?=
+ <moritz.wanzenboeck@linbit.com>
+Date: Tue, 12 Sep 2023 10:17:08 +0200
+Subject: [PATCH 18/20] drbd: rework autopromote
+
+With upstream commit ae220766d87c we lost the ability to keep separate
+counts for RW and RO openers. Instead, we keep track of openers using a
+single count, and a flag indicating if the device was opened RW once.
+
+Once a device was opened RW, it will stay "writable" for DRBD, until all
+openers are gone. This should offer a good compromise between keeping
+the old auto-promote behaviour, and the changed device interface.
+---
+ drbd/drbd_int.h   |  3 ++-
+ drbd/drbd_main.c  | 38 +++++++++++++++++++++-----------------
+ drbd/drbd_nl.c    |  9 +++++----
+ drbd/drbd_state.c |  7 ++++---
+ 4 files changed, 32 insertions(+), 25 deletions(-)
+
+diff --git a/drbd/drbd_int.h b/drbd/drbd_int.h
+index b705f26e71a4..cf593c09cda1 100644
+--- a/drbd/drbd_int.h
++++ b/drbd/drbd_int.h
+@@ -1399,7 +1399,8 @@ struct drbd_device {
+ 
+ 	struct drbd_bitmap *bitmap;
+ 
+-	int open_rw_cnt, open_ro_cnt;
++	int open_cnt;
++	bool writable;
+ 	/* FIXME clean comments, restructure so it is more obvious which
+ 	 * members are protected by what */
+ 
+diff --git a/drbd/drbd_main.c b/drbd/drbd_main.c
+index 4b0b967c2c97..bb05b2215dfb 100644
+--- a/drbd/drbd_main.c
++++ b/drbd/drbd_main.c
+@@ -2579,10 +2579,9 @@ static enum ioc_rv inc_open_count(struct drbd_device *device, fmode_t mode)
+ 		r = IOC_ABORT;
+ 	else if (!resource->remote_state_change) {
+ 		r = IOC_OK;
++		device->open_cnt++;
+ 		if (mode & FMODE_WRITE)
+-			device->open_rw_cnt++;
+-		else
+-			device->open_ro_cnt++;
++			device->writable = true;
+ 	}
+ 	read_unlock_irq(&resource->state_rwlock);
+ 
+@@ -2756,8 +2755,10 @@ void drbd_open_counts(struct drbd_resource *resource, int *rw_count_ptr, int *ro
+ 
+ 	rcu_read_lock();
+ 	idr_for_each_entry(&resource->devices, device, vnr) {
+-		rw_count += device->open_rw_cnt;
+-		ro_count += device->open_ro_cnt;
++		if (device->writable)
++			rw_count += device->open_cnt;
++		else
++			ro_count += device->open_cnt;
+ 	}
+ 	rcu_read_unlock();
+ 	*rw_count_ptr = rw_count;
+@@ -2825,33 +2826,35 @@ static void drbd_release(struct gendisk *gd, fmode_t mode)
+ {
+ 	struct drbd_device *device = gd->private_data;
+ 	struct drbd_resource *resource = device->resource;
++	bool was_writable = device->writable;
+ 	int open_rw_cnt, open_ro_cnt;
+ 
+ 	mutex_lock(&resource->open_release);
+-	if (mode & FMODE_WRITE)
+-		device->open_rw_cnt--;
+-	else
+-		device->open_ro_cnt--;
++	device->open_cnt--;
+ 
+ 	drbd_open_counts(resource, &open_rw_cnt, &open_ro_cnt);
+ 
+-	/* last one to close will be responsible for write-out of all dirty pages */
+-	if (mode & FMODE_WRITE && device->open_rw_cnt == 0)
++	/* last one to close will be responsible for write-out of all dirty pages.
++	 * We also reset the writable flag for this device here:  later code may
++	 * check if the device is still opened for writes to determine things
++	 * like auto-demote.
++	 */
++	if (was_writable && device->open_cnt == 0) {
+ 		drbd_fsync_device(device);
++		device->writable = false;
++	}
+ 
+ 	if (open_ro_cnt == 0)
+ 		wake_up_all(&resource->state_wait);
+ 
+-	if (test_bit(UNREGISTERED, &device->flags) &&
+-	    device->open_rw_cnt == 0 && device->open_ro_cnt == 0 &&
++	if (test_bit(UNREGISTERED, &device->flags) && device->open_cnt == 0 &&
+ 	    !test_and_set_bit(DESTROYING_DEV, &device->flags))
+ 		call_rcu(&device->rcu, drbd_reclaim_device);
+ 
+ 	if (resource->res_opts.auto_promote) {
+ 		enum drbd_state_rv rv;
+ 
+-		if (mode & FMODE_WRITE &&
+-		    open_rw_cnt == 0 &&
++		if (was_writable && open_rw_cnt == 0 &&
+ 		    resource->role[NOW] == R_PRIMARY &&
+ 		    !test_bit(EXPLICIT_PRIMARY, &resource->flags)) {
+ 			rv = drbd_set_role(resource, R_SECONDARY, false, "auto-demote", NULL);
+@@ -2869,9 +2872,10 @@ static void drbd_release(struct gendisk *gd, fmode_t mode)
+ 		end_state_change(resource, &irq_flags, "release");
+ 	}
+ 
+-	/* if the open counts are 0, we free the whole list, otherwise we remove the specific pid */
++	/* if the open count is 0, we free the whole list, otherwise we remove the specific pid */
+ 	prune_or_free_openers(device,
+-			(open_ro_cnt == 0 && open_rw_cnt == 0) ? 0 : task_pid_nr(current));
++			      (open_ro_cnt == 0 && open_rw_cnt == 0) ?
++			      0 : task_pid_nr(current));
+ 
+ 	mutex_unlock(&resource->open_release);
+ 
+diff --git a/drbd/drbd_nl.c b/drbd/drbd_nl.c
+index b0a1e6fa46f1..71ed4272614e 100644
+--- a/drbd/drbd_nl.c
++++ b/drbd/drbd_nl.c
+@@ -4541,8 +4541,10 @@ int drbd_open_ro_count(struct drbd_resource *resource)
+ 	int vnr, open_ro_cnt = 0;
+ 
+ 	read_lock_irq(&resource->state_rwlock);
+-	idr_for_each_entry(&resource->devices, device, vnr)
+-		open_ro_cnt += device->open_ro_cnt;
++	idr_for_each_entry(&resource->devices, device, vnr) {
++		if (!device->writable)
++			open_ro_cnt += device->open_cnt;
++	}
+ 	read_unlock_irq(&resource->state_rwlock);
+ 
+ 	return open_ro_cnt;
+@@ -6394,8 +6396,7 @@ static enum drbd_ret_code adm_del_minor(struct drbd_device *device)
+ 	notify_device_state(NULL, 0, device, NULL, NOTIFY_DESTROY);
+ 	mutex_unlock(&notification_mutex);
+ 
+-	if (device->open_ro_cnt == 0 && device->open_rw_cnt == 0 &&
+-	    !test_and_set_bit(DESTROYING_DEV, &device->flags))
++	if (device->open_cnt == 0 && !test_and_set_bit(DESTROYING_DEV, &device->flags))
+ 		call_rcu(&device->rcu, drbd_reclaim_device);
+ 
+ 	return ret;
+diff --git a/drbd/drbd_state.c b/drbd/drbd_state.c
+index 22cd134be962..fa70507df425 100644
+--- a/drbd/drbd_state.c
++++ b/drbd/drbd_state.c
+@@ -1634,7 +1634,7 @@ handshake_found:
+ 				return SS_TWO_PRIMARIES;
+ 			if (!fail_io[NEW]) {
+ 				idr_for_each_entry(&resource->devices, device, vnr) {
+-					if (device->open_ro_cnt)
++					if (!device->writable && device->open_cnt)
+ 						return SS_PRIMARY_READER;
+ 					/*
+ 					 * One might be tempted to add "|| open_rw_cont" here.
+@@ -1661,7 +1661,7 @@ handshake_found:
+ 		     (disk_state[OLD] > D_DETACHING && disk_state[NEW] == D_DETACHING)))
+ 			return SS_IN_TRANSIENT_STATE;
+ 
+-		if (role[OLD] == R_PRIMARY && role[NEW] == R_SECONDARY && device->open_rw_cnt &&
++		if (role[OLD] == R_PRIMARY && role[NEW] == R_SECONDARY && device->writable &&
+ 		    !(resource->state_change_flags & CS_FS_IGN_OPENERS))
+ 			return SS_DEVICE_IN_USE;
+ 
+@@ -1693,7 +1693,8 @@ handshake_found:
+ 			return SS_NO_UP_TO_DATE_DISK;
+ 
+ 		/* Prevent detach or disconnect while held open read only */
+-		if (device->open_ro_cnt && any_disk_up_to_date[OLD] && !any_disk_up_to_date[NEW])
++		if (!device->writable && device->open_cnt &&
++		    any_disk_up_to_date[OLD] && !any_disk_up_to_date[NEW])
+ 			return SS_NO_UP_TO_DATE_DISK;
+ 
+ 		if (disk_state[NEW] == D_NEGOTIATING)
+-- 
+2.35.3
+

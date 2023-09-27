@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>69069b4ed6bbae47545221ce031b35ba</srcmd5>
+    <version>1.1.19</version>
+    <time>1695758498</time>
+    <user>anag+factory</user>
+    <comment>plocate is vastly superior (speed and database size) to mlocate while still being compatible. Mlocate is not developed since years, most major distributions switched to plocate a long time ago.
+The idea is to replace mlocate eventually. This submission has &quot;provides:&quot; and &quot;obsoletes:&quot; for mlocate and findutils-locate, as other packages depend on them. When upgrading from mlocate to plocate, the user has to manually activate the systemd timer, as this is not done per default.
+Otherwise, this SR should be completely compatible with mlocate and can replace it.
+It is not possible to have a coexistence of plocate and mlocate, as some files have name conflicts.</comment>
+    <requestid>1113489</requestid>
+  </revision>
+</revisionlist>

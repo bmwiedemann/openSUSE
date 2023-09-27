@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 25 13:35:41 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Disable building of tests file
+  + Remove zip from build requirements as it is no longer needed
+
+-------------------------------------------------------------------
+Fri Sep 22 04:34:22 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Mention boo#1215592 in spec file, which tracks the problem with luajit
+  that require temporarily disabling bcc-lua
+
+-------------------------------------------------------------------
 Thu Sep 21 09:42:47 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Disable bcc-lua until luajit issue is resolved

@@ -1,0 +1,55 @@
+diff --git a/build.xml b/build.xml
+index 52dfe71..43d7649 100644
+--- a/build.xml
++++ b/build.xml
+@@ -91,8 +91,8 @@ informix.jar = ../support/jdbc-4.10.12.jar
+ 
+         <property file="${user.home}/ant.properties" />
+         <property file="${basedir}/ant.properties" />
+-        <property name="jython.java.version" value="1.8" />
+-        <property name="jdk.source.version" value="1.8" />
++        <property name="jython.java.version" value="8" />
++        <property name="jdk.source.version" value="8" />
+ 
+         <!-- Designate the official release encoded in parts. In normal times, this is the *next*
+              official release, e.g. 2.7.2b2 while working towards 2.7.2b2, and sys.version will be
+@@ -681,6 +681,7 @@ The text for an official release would continue like ...
+                 destdir="${compile.dir}"
+                 target="${jdk.target.version}"
+                 source="${jdk.source.version}"
++                release="${jdk.target.version}"
+                 debug="${debug}"
+                 deprecation="${deprecation}"
+                 nowarn="${nowarn}"
+@@ -743,6 +744,7 @@ The text for an official release would continue like ...
+         <javac destdir="${compile.dir}"
+                target="${jdk.target.version}"
+                source="${jdk.source.version}"
++               release="${jdk.target.version}"
+                debug="${debug}"
+                deprecation="${deprecation}"
+                nowarn="${nowarn}"
+@@ -763,6 +765,7 @@ The text for an official release would continue like ...
+                destdir="${compile.dir}"
+                target="${jdk.target.version}"
+                source="${jdk.source.version}"
++               release="${jdk.target.version}"
+                debug="${debug}"
+                deprecation="${deprecation}"
+                nowarn="${nowarn}"
+@@ -795,6 +798,7 @@ The text for an official release would continue like ...
+                destdir="${test.compile.dir}"
+                target="${jdk.target.version}"
+                source="${jdk.source.version}"
++               release="${jdk.target.version}"
+                debug="${debug}"
+                deprecation="${deprecation}"
+                nowarn="${nowarn}"
+@@ -1209,6 +1213,7 @@ The text for an official release would continue like ...
+                destdir="${compile.dir}"
+                target="${jdk.target.version}"
+                source="${jdk.source.version}"
++               release="${jdk.target.version}"
+                debug="${debug}"
+                deprecation="${deprecation}"
+                nowarn="${nowarn}"

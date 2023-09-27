@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Sep 15 15:27:32 UTC 2023 - trenn@suse.de
+
+- Update to version 2.21.0.0+git.670541d:
+  * new release (2.21.0)
+  * api: fixed stop method not to require any parameter
+  * new release (2.21.0-rc.1)
+  * gui: multiple fixes and warnings removal
+  * gui: fixed inconsistent tabs and spaces, introduced by #516
+  * Serialize SIGHUP processing
+  * No errors when physical_package_id file does not exist
+  * Update tests: disable systemd rate limiting.
+  * network-latency: enable rcu_normal_after_boot=1 kernel parameter
+  * remove ktimer_lockless_check sysfs setting from realtime-virtual profiles
+  * move rtentsk to network-latency profile
+  * move "tsc=reliable" setting from realtime to network-latency tuned configuration
+  * unify common sysctl settings between realtime and cpu-partitioning profiles
+  * Rename rollback-related constants and variables
+  * Add rollback option to tuned-main.conf
+  * Recast README into MarkDown with various minor corrections and improvements
+  * Remove setting ip forwarding via openshift profile
+  * Fix logging in [scheduler] plug-in
+  * fixed sap-hana docu regarding processor power settings
+  *     Added sap-hana-kvm-guest profile
+  * tests/beakerlib: Add new test which covers socket API.
+  * plugin_net: expand variables properly
+  * fix typo
+  * add error dialog when no active profile set
+
+-------------------------------------------------------------------
 Fri Apr 14 13:12:27 UTC 2023 - trenn@suse.de
 
 - New polkit interface has been reviewed by security bsc#1185418

@@ -1,19 +1,53 @@
 -------------------------------------------------------------------
+Tue Sep 26 08:39:36 UTC 2023 - Pavel Zhukov <pavel.zhukov1@suse.com>
+
+- Obsolete renamed subpackages 
+
+-------------------------------------------------------------------
+Wed Sep 20 21:04:27 UTC 2023 - Pavel Zhukov <pavel.zhukov1@suse.com>
+
+-  Update to 2.18.10
+   * See: https://github.com/COVESA/dlt-daemon/releases/tag/v2.18.10
+-  Added dlt-daemon-cmp0002.patch: Fix cmake build
+
+-------------------------------------------------------------------
+Wed Sep 20 21:02:52 UTC 2023 - Pavel Zhukov <pavel.zhukov1@suse.com>
+
+- Address review comments 
+
+-------------------------------------------------------------------
+Tue May  2 15:22:09 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.18.8:
+  See https://github.com/COVESA/dlt-daemon/releases/tag/v2.18.9.
+- Drop CVE-2023-26257.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jan 26 12:37:50 UTC 2023 - Pavel Zhukov <pavel.zhukov1@suse.com>
+
+rename dlt-libs to libsdlt2 to comply with guidelines and linter
+
+-------------------------------------------------------------------
+Thu Jan 26 11:39:18 UTC 2023 - Pavel Zhukov <pavel.zhukov1@suse.com>
+
+Add missing rc links
+
+-------------------------------------------------------------------
 Thu Jan 26 08:57:48 UTC 2023 - Pavel Zhukov <pavel.zhukov1@suse.com>
 
-Do not build on ix86 because pandoc is not available 
+Do not build on ix86 because pandoc is not available
 
 -------------------------------------------------------------------
 Tue Jan 24 13:26:24 UTC 2023 - Pavel Zhukov <pavel.zhukov1@suse.com>
 
-Cleanup specfile 
+Cleanup specfile
 
 -------------------------------------------------------------------
 Tue Jan 24 07:29:37 UTC 2023 - Pavel Zhukov <pavel.zhukov1@suse.com>
 
-Fix rpmlint errors 
+Fix rpmlint errors
 
 -------------------------------------------------------------------
 Tue Jan 24 07:09:40 UTC 2023 - Pavel Zhukov <pavel.zhukov1@suse.com>
 
-Initial packaging 
+Initial packaging

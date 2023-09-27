@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 17 03:09:18 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add ksshaskpass5 (boo#1215407) 
+
+-------------------------------------------------------------------
 Wed Sep 13 07:11:56 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Install grub2-branding-openSUSE if grub2 will be used.

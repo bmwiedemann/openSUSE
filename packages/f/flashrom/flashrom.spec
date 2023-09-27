@@ -1,7 +1,7 @@
 #
 # spec file for package flashrom
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           flashrom
-Version:        1.2
+Version:        1.3.0
 Release:        0
 Summary:        A universal flash programming utility
 License:        GPL-2.0-only
@@ -27,16 +27,11 @@ Source0:        https://download.flashrom.org/releases/%{name}-v%{version}.tar.b
 Source1:        https://download.flashrom.org/releases/%{name}-v%{version}.tar.bz2.asc#/%{name}-%{version}.tar.bz2.sig
 # Got the key from David Hendricks
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM https://github.com/flashrom/flashrom/commit/7aea04f7099ad4dde7b1f5900b54ef603eadf25e
-Patch1:         flashrom-install-man-file.patch
-# PATCH-FIX-UPSTREAM https://github.com/flashrom/flashrom/commit/13a356815d2438103689a6ea1ac7e58d4d508ddb
-Patch2:         flashrom-j-link-spi.patch
-BuildRequires:  meson >= 0.47.0
+BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(libftdi1)
-%ifarch %{ix86} x86_64
 BuildRequires:  pkgconfig(libjaylink)
-%endif
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libusb)
 BuildRequires:  pkgconfig(zlib)
@@ -83,35 +78,15 @@ This package contains the headers needed to compile against libflashrom.
 
 %build
 %meson \
-%ifarch %{ix86} x86_64
-  -Dconfig_jlink_spi=true \
-  -Dconfig_internal=true \
-%else
-  -Dconfig_atahpt=false \
-  -Dconfig_atapromise=false \
-  -Dconfig_atavia=false \
-  -Dconfig_drkaiser=false \
-  -Dconfig_gfxnvidia=false \
-  -Dconfig_it8212=false \
-  -Dconfig_jlink_spi=false \
-  -Dconfig_nic3com=false \
-  -Dconfig_nicintel_eeprom=false \
-  -Dconfig_nicintel=false \
-  -Dconfig_nicintel_spi=false \
-  -Dconfig_nicnatsemi=false \
-  -Dconfig_nicrealtek=false \
-  -Dconfig_ogp_spi=false \
-  -Dconfig_rayer_spi=false \
-  -Dconfig_satamv=false \
-  -Dconfig_satasii=false \
-  -Dconfig_internal=false \
-%endif
-  %{nil}
-
+    -Dtests=disabled
 %meson_build
 
 %install
 %meson_install
+rm %{buildroot}%{_libdir}/libflashrom.a
+
+%post -n libflashrom1 -p /sbin/ldconfig
+%postun -n libflashrom1 -p /sbin/ldconfig
 
 %files
 %license COPYING

@@ -165,4 +165,16 @@
     <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
     <requestid>1084413</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7abda2a210cd71abd3ac0ab4624adce8</srcmd5>
+    <version>5.10.0</version>
+    <time>1695758442</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.10.0
+  * Added type hints to HasTraits.observe() and friends. #834
+    (@scholer)
+  * feat: trait typing #818 (@maartenbreddels)
+</comment>
+    <requestid>1113306</requestid>
+  </revision>
 </revisionlist>

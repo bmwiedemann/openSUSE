@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sat Sep 23 08:25:01 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 17.2.1:
+  * [Client] Multiview spectating
+  * [Client] Improved font selection using fonts/index.json,
+    updated fonts
+  * [Client] 100 times faster text rendering, better space use
+  * [Client] Add goto_switch and goto_tele commands
+  * [Client] Add Galician language
+  * [Client] Select storage locations in demo browser
+  * [Editor] Support bezier envelope curves in maps
+  * [Editor] Zoomable envelope editor
+  * [Editor] Multiple selection in envelope editor, add grid,
+    box selection
+  * [Client] Render message when qutting/restarting client
+  * [Client] Support ./DDNet "connect
+    tw-0.6+udp://ger2.ddnet.org:8303"
+  * [Client] Implement elasticity tuning values
+    (ground_elasticity_x/y)
+  * [Client] Execute CFGFLAG_GAME configs from map load on client
+  * [Client] No delay for direction arrows and aim line toggle
+  * [Client] Improve demo/video renderer UI
+  * [Client] Connect to server faster
+  * [Client] Fix HUD weapons rendering
+  * [Client] Make online clan friends removable
+  * [Client] Fix prediction of pickup
+  * [Client] Fix text wrapping with long strings
+  * [Client] Fix enter in server browser
+  * [Client] Fix invalid texture crash in Vulkan
+  * [Client] Don't load RGB images
+  * [Client] Support selecting text in both consoles
+  * [Client] Fix emotes being shown for other tee
+  * [Editor] Allow saving map which is running in server
+  * [Editor] Show message when player is moved ingame
+  * [Editor] Selectable quadpoints
+  * [Editor] Keep selection when moving layers
+  * [Editor] Use temporary file when saving map to prevent
+    corruption
+  * [Editor] Support deleting/renaming folders
+  * [Editor] Perform sanity check and show errors when loading map
+  * [Editor] Fix hookthrough not being fully removed when
+    filling selection
+  * [Editor] Fix crashes with popup menus
+  * [Editor] Improve font scaling and ellipsis
+  * [Editor] Fix hotkeys while editboxes are active
+  * [Editor] Fix quadpoint selection, easier point selection
+  * [Editor] Fix inaccurate envelope calculation
+  * [Editor] Set default name when saving map under new name
+    or as copy
+  * [Server & Client] Allow server to redirect clients
+  * [Server] Separate log levels for each output
+    (console/stdout_output_level)
+  * [Server] Fix killfeed for teams
+  * [Server] Prevent /swap with paused players
+  * [Server] Fix crash with DNSBL
+
+-------------------------------------------------------------------
 Mon Aug 14 17:26:48 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 17.2:

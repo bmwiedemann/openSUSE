@@ -1,0 +1,35 @@
+From 0666bc5b014049b6aa184b5a8fdb60481b9c8717 Mon Sep 17 00:00:00 2001
+From: Philipp Reisner <philipp.reisner@linbit.com>
+Date: Fri, 22 Sep 2023 15:09:07 +0200
+Subject: [PATCH 17/20] drbd: propagate exposed UUIDs only into established
+ connections
+
+Sending into connections in C_CONNECTING state while we exchange the
+feature and auth packets might interfere with exchanging those. I also
+witnessed that it might block unexpectedly long (2 - 6 seconds),
+holding the `connection->mutex[DATA_STREAM]` mutex and again causing
+troubles with establishing connections.
+
+This is a fix for commit 772e5b21d from April 2023
+"drbd: Consider outdating a disk when more recent data is behind a diskless"
+Released with of 9.1.15 and 9.2.4.
+---
+ drbd/drbd_receiver.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drbd/drbd_receiver.c b/drbd/drbd_receiver.c
+index 0c3ab0fd486c..bfd265b86b43 100644
+--- a/drbd/drbd_receiver.c
++++ b/drbd/drbd_receiver.c
+@@ -7206,7 +7206,7 @@ static void propagate_exposed_uuid(struct drbd_device *device)
+ 	u64 im;
+ 
+ 	for_each_peer_device_ref(peer_device, im, device) {
+-		if (peer_device->connection->cstate[NOW] < C_CONNECTING)
++		if (!test_bit(INITIAL_STATE_SENT, &peer_device->flags))
+ 			continue;
+ 		drbd_send_current_uuid(peer_device, device->exposed_data_uuid, 0);
+ 	}
+-- 
+2.35.3
+

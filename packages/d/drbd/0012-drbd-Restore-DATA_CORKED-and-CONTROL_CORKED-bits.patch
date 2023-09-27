@@ -1,0 +1,67 @@
+From 88bf7f95dc359f4901f08ac8fb8ffc7dfceca9c1 Mon Sep 17 00:00:00 2001
+From: Philipp Reisner <philipp.reisner@linbit.com>
+Date: Wed, 13 Sep 2023 17:50:37 +0200
+Subject: [PATCH 12/20] drbd: Restore DATA_CORKED and CONTROL_CORKED bits
+
+They were removed with 9072e1d1b6b3 in January 2022.
+
+Since then, the CONTROL_CORKED mapped onto C_UNREGISTERED.
+
+I think that had a negligible impact because C_UNREGISTERED indicates
+if a connection was deleted before. It is no longer connected when it
+is time to delete a connection. Therefore, the corking code can not
+set that double-used bit.
+
+The other user of C_UNREGISTERED is when iterating over connections. A
+wrongly set C_UNREGISTERED causes another iteration over the
+connections list - no further harm.
+
+Still, I am fixing this by allocating dedicated bits for corking in
+the flags word.
+---
+ drbd/drbd_debugfs.c | 2 ++
+ drbd/drbd_int.h     | 2 ++
+ drbd/drbd_main.c    | 1 +
+ 3 files changed, 5 insertions(+)
+
+diff --git a/drbd/drbd_debugfs.c b/drbd/drbd_debugfs.c
+index 778a995018d7..b8e4f2cde426 100644
+--- a/drbd/drbd_debugfs.c
++++ b/drbd/drbd_debugfs.c
+@@ -839,6 +839,8 @@ static int connection_debug_show(struct seq_file *m, void *ignored)
+ 	pretty_print_bit(CONN_DRY_RUN);
+ 	pretty_print_bit(DISCONNECT_EXPECTED);
+ 	pretty_print_bit(BARRIER_ACK_PENDING);
++	pretty_print_bit(DATA_CORKED);
++	pretty_print_bit(CONTROL_CORKED);
+ 	pretty_print_bit(C_UNREGISTERED);
+ 	pretty_print_bit(RECONNECT);
+ 	pretty_print_bit(CONN_DISCARD_MY_DATA);
+diff --git a/drbd/drbd_int.h b/drbd/drbd_int.h
+index 17be90e7d8fa..4f3228d5a4d1 100644
+--- a/drbd/drbd_int.h
++++ b/drbd/drbd_int.h
+@@ -755,6 +755,8 @@ enum connection_flag {
+ 	DISCONNECT_EXPECTED,
+ 	BARRIER_ACK_PENDING,
+ 	CORKED,
++	DATA_CORKED = CORKED,	/* used as computed value CORKED + DATA_STREAM */
++	CONTROL_CORKED,		/* used as computed value CORKED + CONTROL_STREAM */
+ 	C_UNREGISTERED,
+ 	RECONNECT,
+ 	CONN_DISCARD_MY_DATA,
+diff --git a/drbd/drbd_main.c b/drbd/drbd_main.c
+index 53cb4c9e7db3..6bb618909aa0 100644
+--- a/drbd/drbd_main.c
++++ b/drbd/drbd_main.c
+@@ -1039,6 +1039,7 @@ int __send_command(struct drbd_connection *connection, int vnr,
+ 	struct drbd_send_buffer *sbuf = &connection->send_buffer[drbd_stream];
+ 	struct drbd_transport *transport = &connection->transport;
+ 	struct drbd_transport_ops *tr_ops = transport->ops;
++	/* CORKED + drbd_stream is either DATA_CORKED or CONTROL_CORKED */
+ 	bool corked = test_bit(CORKED + drbd_stream, &connection->flags);
+ 	bool flush = stream_and_flags & SFLAG_FLUSH;
+ 	int err;
+-- 
+2.35.3
+

@@ -47,4 +47,17 @@
     <comment></comment>
     <requestid>1039120</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cf43f4922e2ffb0db728a7f1730eaf8b</srcmd5>
+    <version>3.16.0</version>
+    <time>1695758512</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+- Add exclude-tests.patch (from gh#ProtonVPN/protonvpn-nm-lib!25)
+
+- Update to 3.16.0
+  * Fix connectivity issue if protonstatus is down
+  * Update openvpn template</comment>
+    <requestid>1113558</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,45 @@
+From 15cf257c277020e1ba76eff7aa99ed08d44f7d3c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Moritz=20=22WanzenBug=22=20Wanzenb=C3=B6ck?=
+ <moritz.wanzenboeck@linbit.com>
+Date: Fri, 8 Sep 2023 11:45:48 +0200
+Subject: [PATCH 07/20] drbd: stop defining __KERNEL_SYSCALLS__
+
+See also upstream Linux kernel commit
+d519df00938e ("drbd: stop defining __KERNEL_SYSCALLS__")
+
+Original message:
+
+__KERNEL_SYSCALLS__ hasn't been needed since Linux 2.6.19 so stop
+defining it.
+---
+ drbd/drbd_main.c     | 1 -
+ drbd/drbd_receiver.c | 1 -
+ 2 files changed, 2 deletions(-)
+
+diff --git a/drbd/drbd_main.c b/drbd/drbd_main.c
+index e26cf7e2b008..ccf0f72829db 100644
+--- a/drbd/drbd_main.c
++++ b/drbd/drbd_main.c
+@@ -36,7 +36,6 @@
+ #include <linux/notifier.h>
+ #include <linux/workqueue.h>
+ #include <linux/kthread.h>
+-#define __KERNEL_SYSCALLS__
+ #include <linux/unistd.h>
+ #include <linux/vmalloc.h>
+ #include <linux/device.h>
+diff --git a/drbd/drbd_receiver.c b/drbd/drbd_receiver.c
+index 2162d13cb25e..2e2ed4699a94 100644
+--- a/drbd/drbd_receiver.c
++++ b/drbd/drbd_receiver.c
+@@ -26,7 +26,6 @@
+ #include <linux/slab.h>
+ #include <linux/pkt_sched.h>
+ #include <uapi/linux/sched/types.h>
+-#define __KERNEL_SYSCALLS__
+ #include <linux/unistd.h>
+ #include <linux/vmalloc.h>
+ #include <linux/random.h>
+-- 
+2.35.3
+

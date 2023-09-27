@@ -20,7 +20,7 @@
 Name:           distribution-logos-openSUSE
 Summary:        Logos for openSUSE Distros
 License:        CC-BY-SA-4.0
-Version:        20220322
+Version:        20230921
 Release:        0
 Url:            https://github.com/openSUSE/distribution-logos
 Source:         distribution-logos-main.zip
@@ -100,6 +100,19 @@ BuildArch:      noarch
 %description MicroOS
 Logos for openSUSE MicroOS
 
+%package Aeon
+Summary:        Logos for openSUSE Aeon
+
+Obsoletes:      distribution-logos
+Provides:       distribution-logos
+Conflicts:      distribution-logos
+
+RemovePathPostfixes: .Aeon
+BuildArch:      noarch
+
+%description Aeon
+Logos for openSUSE Aeon
+
 %endif
 
 %package icons
@@ -129,7 +142,7 @@ mkdir -p %{buildroot}%{_datadir}/icons/hicolor/{scalable,symbolic}/apps
 %if 0%{?sle_version}
 for distro in Leap LeapMicro; do \
 %else
-for distro in Tumbleweed Kubic MicroOS; do \
+for distro in Tumbleweed Kubic MicroOS Aeon; do \
 %endif
 for file in `ls ${distro}`; do \
 cp -r ${distro}/${file} %{buildroot}%{_datadir}/pixmaps/distribution-logos/${file}.${distro}; \
@@ -161,6 +174,9 @@ ln -sf %{_datadir}/pixmaps/distribution-logos/square-symbolic.svg %{buildroot}%{
 
 %files MicroOS
 %{_datadir}/pixmaps/distribution-logos/*.MicroOS
+
+%files Aeon
+%{_datadir}/pixmaps/distribution-logos/*.Aeon
 
 %endif
 

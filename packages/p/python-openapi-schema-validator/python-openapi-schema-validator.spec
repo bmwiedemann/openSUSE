@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openapi-schema-validator
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        OpenAPI schema validator for Python
 License:        BSD-3-Clause
@@ -35,7 +35,7 @@ Requires:       python-rfc3339-validator
 Requires:       (python-jsonschema >= 4.18 with python-jsonschema < 5)
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module jsonschema >= 4.18 with %python-jsonschema < 5}
+BuildRequires:  %{python_module jsonschema >= 4.19.1 with %python-jsonschema < 5}
 BuildRequires:  %{python_module jsonschema-specifications >= 2023.5.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rfc3339-validator}

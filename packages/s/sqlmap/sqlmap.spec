@@ -17,7 +17,7 @@
 
 
 Name:           sqlmap
-Version:        1.7.7
+Version:        1.7.9
 Release:        0
 Summary:        Automatic SQL injection and database takeover tool
 License:        GPL-2.0-or-later

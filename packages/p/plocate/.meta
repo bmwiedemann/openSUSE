@@ -1,0 +1,7 @@
+<package name="plocate" project="openSUSE:Factory">
+  <title>A much faster locate(1)</title>
+  <description>plocate is a locate based on posting lists, completely replacing mlocate
+with a much faster (and smaller) index. It is suitable as a default locate
+on your system.</description>
+  <devel project="server:search" package="plocate"/>
+</package>

@@ -27,16 +27,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Werkzeug%{psuffix}
-Version:        2.3.6
+Version:        2.3.7
 Release:        0
 Summary:        The Swiss Army knife of Python web development
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://werkzeug.palletsprojects.com
-Source:         https://files.pythonhosted.org/packages/source/W/Werkzeug/Werkzeug-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/w/werkzeug/werkzeug-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 %if %{with test}
 BuildRequires:  %{python_module Werkzeug = %{version}}
@@ -76,7 +75,7 @@ on as many server environments as possible (such as blogs, wikis,
 bulletin boards, etc.).
 
 %prep
-%autosetup -p1 -n Werkzeug-%{version}
+%autosetup -p1 -n werkzeug-%{version}
 
 sed -i "1d" examples/manage-{i18nurls,simplewiki,shorty,couchy,cupoftee,webpylike,plnt,coolmagic}.py # Fix non-executable scripts
 
@@ -101,7 +100,7 @@ export LANG=en_US.UTF-8
 %license LICENSE.rst
 %doc CHANGES.rst README.rst
 %{python_sitelib}/werkzeug
-%{python_sitelib}/Werkzeug-%{version}*-info
+%{python_sitelib}/werkzeug-%{version}.dist-info
 %endif
 
 %changelog

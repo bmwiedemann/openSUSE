@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Sep  4 06:40:19 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Fixed testsuite for architectures other than x86_64.
+- 5.0.2
+
+-------------------------------------------------------------------
+Thu Aug 31 07:35:22 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Supporting systemd-boot for architecture x86_64.
+  This feature can be enabled/disabled by the "enable_systemd_boot"
+  flag in the product description file for each product
+  (default is disabled).
+- 5.0.1
+
+-------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (#bsc1185510)
+
+-------------------------------------------------------------------
+Mon Aug  7 09:02:48 UTC 2023 - Steffen Winterfeldt <snwint@suse.com>
+
+- support 32 bit UEFI firmware on x86_64/i386 architecture (bsc#1208003,
+  jsc#PED-2569)
+- 4.6.3
+
+-------------------------------------------------------------------
 Thu Jun 15 09:51:19 UTC 2023 - José Iván López González <jlopez@suse.com>
 
 - Persist zfcp.allow_lun_scan kernel option for s390 arch

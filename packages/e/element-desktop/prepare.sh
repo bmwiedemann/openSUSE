@@ -22,7 +22,8 @@ wget -c https://github.com/vector-im/element-desktop/archive/v${version}.tar.gz 
 tar xzvf element-desktop-${version}.tar.gz
 cd element-desktop-${version}
 
-changes=$(grep "^=============" -B10000 -m2 CHANGELOG.md | head -n -3 | tail -n +4)
+last_packaged_version=$(osc cat devel:languages:nodejs/element-desktop/element-desktop.spec | grep "^Version:" | awk '{print $NF}')
+changes=$(grep "^Changes in \[$last_packaged_version\]" -B10000 CHANGELOG.md |  head -n -2 | sed -e '/^==*$/d' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/Changes in \[\([^\[]*\)\].*/- Version \1/' -e 's/^\([^-].*\)$/  \1/')
 
 echo 'yarn-offline-mirror "./npm-packages-offline-cache"' > .yarnrc
 yarn cache clean

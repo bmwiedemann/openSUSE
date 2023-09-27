@@ -43,4 +43,19 @@
   * See CHANGES for details</comment>
     <requestid>629594</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4a3473e2101aa3adc58c61c0ad5247a9</srcmd5>
+    <version>0.93</version>
+    <time>1695758450</time>
+    <user>anag+factory</user>
+    <comment>- Version update to 0.93:
+  * upstream moved to github
+  * Drop support for versions of nettle older than 2014 
+  * Further v4 token work 
+  * fixes in README
+  * Add --both option to print current and next token
+  * Support for v4 token decode 
+  * Remove bashisms (Alon Bar-Lev) (forwarded request 1113400 from amanzini)</comment>
+    <requestid>1113410</requestid>
+  </revision>
 </revisionlist>

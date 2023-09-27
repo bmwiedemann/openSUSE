@@ -16,7 +16,7 @@
 #
 
 
-# /usr/bin/luajit -bg bcc.lua bcc.o fails with "/usr/bin/luajit: unknown luaJIT command or jit.* modules not installed", temporarily disable it
+# Re-enable bcc-lua on supported architectures once boo#1215592 is resolved
 %{!?with_lua: %global with_lua 0}
 
 # Use the latest supported LLVM version, but Leap < 15.5 only has a slightly
@@ -55,7 +55,6 @@ BuildRequires:  luajit-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-setuptools
-BuildRequires:  zip
 
 %description
 BCC is a toolkit for creating efficient kernel tracing and manipulation
@@ -172,6 +171,7 @@ CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" cmake \
 %ifarch %arm || %ix86
 	-DENABLE_USDT=OFF \
 %endif
+	-DENABLE_TESTS=OFF \
 	..
 make %{?_smp_mflags} VERBOSE=1
 popd

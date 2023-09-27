@@ -590,6 +590,9 @@ Requires:       konsole
 # Add KDE Partition Manager to install pattern (boo#1212925)
 Requires:       partitionmanager
 
+# Add ksshaskpass5 (boo#1215407)
+Requires:       ksshaskpass5
+
 # Recommended by kde_plasma
 Requires:       bluedevil5
 Requires:       breeze5-wallpapers

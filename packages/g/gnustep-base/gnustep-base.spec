@@ -1,7 +1,7 @@
 #
 # spec file for package gnustep-base
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,12 +39,13 @@ BuildRequires:  gmp-devel
 BuildRequires:  gnustep-make
 BuildRequires:  gnutls
 BuildRequires:  libffi-devel >= 3.0.9
-BuildRequires:  libicu-devel
 BuildRequires:  libxml2-devel >= 2.3.0
 BuildRequires:  libxslt-devel
 BuildRequires:  openssl-devel
+BuildRequires:  pkg-config
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(icu-uc)
 Requires:       gnustep-make
 #Handle different package names on fedora and suse
 %if 0%{?suse_version}

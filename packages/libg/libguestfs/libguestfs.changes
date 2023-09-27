@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 25 14:51:13 MDT 2023 - carnold@suse.com
+
+- bsc#1215543 - guestfs regression: file: Use -S option with -z
+  Omit-file--S-option-on-older-distros-that-lack-support.patch
+  See also bsc#1215461
+- bsc#1215586 - guestfs regression: non functional network due to
+  missing sysconfig-netconfig
+  libguestfs.spec
+
+-------------------------------------------------------------------
 Wed Jul  5 11:32:37 MDT 2023 - carnold@suse.com
 
 - bsc#1212972 - cannot find any suitable libguestfs supermin
-  libguestfs.spec
+  libguestfs.spec (see also bsc#1215664)
 
 -------------------------------------------------------------------
 Thu Mar 23 15:49:09 UTC 2023 - Martin Liška <mliska@suse.cz>

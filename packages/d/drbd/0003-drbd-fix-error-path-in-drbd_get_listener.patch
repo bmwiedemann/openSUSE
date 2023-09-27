@@ -1,0 +1,32 @@
+From fbfb92d11e64daec167b24521c715ceab505b55d Mon Sep 17 00:00:00 2001
+From: Philipp Reisner <philipp.reisner@linbit.com>
+Date: Thu, 7 Sep 2023 10:36:29 +0200
+Subject: [PATCH 03/20] drbd: fix error path in drbd_get_listener()
+
+When initializing a listener fails do not access the fields of the
+listener struct after giving up the reference.
+---
+ drbd/drbd_transport.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drbd/drbd_transport.c b/drbd/drbd_transport.c
+index 416a50499046..2aefd71ee395 100644
+--- a/drbd/drbd_transport.c
++++ b/drbd/drbd_transport.c
+@@ -207,11 +207,11 @@ int drbd_get_listener(struct drbd_transport *transport, struct drbd_path *path,
+ 
+ 	if (needs_init) {
+ 		err = init_listener(transport, addr, &init_net, listener);
++		listener->err = err;
++		complete_all(&listener->ready);
+ 		if (err)
+ 			drbd_put_listener(path);
+ 
+-		listener->err = err;
+-		complete_all(&listener->ready);
+ 		return err;
+ 	}
+ 
+-- 
+2.35.3
+

@@ -112,4 +112,47 @@ Mon Sep 29 21:54:09 UTC 2014 - nemysis@gmx.ch
     <comment></comment>
     <requestid>974335</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>be004ff38b54f0144b3e2a7ccbdb7ebd</srcmd5>
+    <version>2.15.6</version>
+    <time>1695758545</time>
+    <user>anag+factory</user>
+    <comment>- switch build to official release file
+- Update to 2.15.6
+  * Fixed bugs related to rebelling
+  * Improved AI on handling rebellions
+  * Fixed several crash bugs
+  * Fixed small graphic update bugs
+  * Fixed bug when assigning to ship
+  * Fixed AI declare war bug
+  * Fixed AI give tribute bug
+  * Greatly improved AI sea based missions
+  * Improved AI on training and recruiting
+  * Cleaned up some deinit code
+  * Improved handling of town migration with workers
+  * Improved AI to be move aggressive in attack missions
+  * Improved validation of attack actions
+  * Added display of the land mass size in the F10 menu
+  * Enabled town peasant migration
+  * Created button for markets to control stocking type 
+  * Added Phoenix vision on fryhtan lairs
+  * Improved AI at building harbors
+  * Fixed bugs related to AI surrenders
+  * Improved locale code
+  * Made English the default language on Windows
+  * Increased the max number of raw resource sites to 10
+  * Fixed bug on trade ship docking and exiting
+  * Reduced penalty on trade unit destruction
+  * Improved distance calculating so placing buildings and towns
+    on any side is treated the same
+  * Fixed some path finding issues
+  * Enabled the ability for AI to scout the map
+  * Fixed screen edge mouse handling bug
+  * Fixed exploit when spying on an enemy nation report
+  * Improved AI handling on granting money to towns and recruiting
+  * Increased the speed of speed level 9
+- Update BuildRequires pkgconfig(sdl2) &gt;= 2.24.0
+</comment>
+    <requestid>1113629</requestid>
+  </revision>
 </revisionlist>

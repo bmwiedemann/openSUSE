@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 24 18:19:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.10.0
+  * Added type hints to HasTraits.observe() and friends. #834
+    (@scholer)
+  * feat: trait typing #818 (@maartenbreddels)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:37:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

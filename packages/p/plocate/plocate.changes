@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Aug 30 07:39:31 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
+
+- adjust patch disable-visibility.patch by also changeing permission settings
+- add compat symlink for man page
+
+-------------------------------------------------------------------
+Fri Aug 25 14:36:19 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Initial rpm setup:
+  * remove set-group bit of plocate and use RUN_UPDATEDB_AS mechanism from mlocate package
+  * disable visibility check by default and make database file world readable
+  * add apparmor profiles similar to mlocate package
+  * create systemd units
+  * use similar /etc/updatedb.conf config file as mlocate package
+  * make package provide fake mlocate and findutils-locate version aliases

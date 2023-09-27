@@ -352,4 +352,15 @@
 - Re-add pwscore dependency for SLE</comment>
     <requestid>1109728</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>995f5a0742b907e423c9df66fd7661b2</srcmd5>
+    <version>300.1</version>
+    <time>1695758434</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1112609 from malikirri
+
+- Port SLE selinux bug fix from SLE Micro 5.5
+  * Copied selinux_libdir.patch from SLEM package</comment>
+    <requestid>1112773</requestid>
+  </revision>
 </revisionlist>

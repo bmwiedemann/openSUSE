@@ -18,7 +18,7 @@
 
 %define _protocol_version 0.2
 Name:           xdg-desktop-portal-hyprland
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Extended xdg-desktop-portal backend for Hyprland
 License:        MIT
@@ -49,7 +49,7 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
-Patch0:         0000-sdbus-c++-cmake-lists.patch
+
 # Screencasting won't work without pipewire, but it's not a hard dependency.
 Recommends:     pipewire >= 0.3.41
 
@@ -58,9 +58,6 @@ Recommends:     pipewire >= 0.3.41
 Recommends:     qt6-wayland
 
 Requires:       xdg-desktop-portal
-
-# As this is a fork of XDPW, installing this will conflict with XDPH
-Conflicts:      xdg-desktop-portal-wlr
 
 %description
 A fork of xdg-desktop-portal backend for wlroots for Hyprland. It supports
@@ -92,18 +89,14 @@ popd
 %meson
 %meson_build
 
-# Hyprland Share Picker
-%cmake
-%cmake_build
-
 %install
-%meson_install
-install -Dm0755 -t %{buildroot}%{_bindir} 								./build/hyprland-share-picker/hyprland-share-picker
 
-# Install it as well
+# Install the protocols
 pushd subprojects/hyprland-protocols
 %meson_install
 popd
+
+%meson_install
 
 %pre
 %systemd_user_pre %{name}.service

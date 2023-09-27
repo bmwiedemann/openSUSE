@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 21 13:30:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.19.1:
+	* Allow single label hostname in format string by @swaeberle in
+    #1164
+
+-------------------------------------------------------------------
+Thu Sep  7 06:16:46 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.19.0:
+  * Importing the |Validator| protocol directly from the package
+    root is deprecated. Import it from
+    |jsonschema.protocols.Validator| instead.
+  * Automatic retrieval of remote references (which is still
+    deprecated) now properly succeeds even if the retrieved
+    resource does not declare which version of JSON Schema it uses.
+    Such resources are assumed to be 2020-12 schemas. This more
+    closely matches the pre-|referencing| library behavior.
+
+-------------------------------------------------------------------
 Thu Aug  3 18:38:22 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.18.6:

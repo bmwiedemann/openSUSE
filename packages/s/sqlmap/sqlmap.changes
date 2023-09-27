@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 14 12:48:25 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.7.9:
+  * Removing support for lol FORKZ
+  * Fixes #5476
+  * Fixes #5481
+  * Fixes #5479
+  * Fixes #5477
+  * Potential fix for #5485
+  * Patch for #5485
+  * Fixes #5493
+  * Fixes #5492
+  * Fixes #5483
+  * Add SQLite AND boolean-based blind payload (#5501)
+  * Fixes #5510
+  * Implements option --union-values (#5508)
+
+-------------------------------------------------------------------
 Wed Jul 19 19:24:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.7:

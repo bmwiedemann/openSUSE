@@ -1,0 +1,86 @@
+Author: Heming Zhao <heming.zhao@suse.com>
+Date:   Thu Sep 28 11:12:00 2023 +0800
+Subject: drbd: fix build error against kernel v6.5.4
+
+Below two upstream commits broken drbd v9.1 building
+
+(belonging to v6.5-rc1)
+```
+commit dc97391e661009eab46783030d2404c9b6e6f2e7
+Author: David Howells <dhowells@redhat.com>
+Date:   Fri Jun 23 23:55:12 2023 +0100
+
+    sock: Remove ->sendpage*() in favour of sendmsg(MSG_SPLICE_PAGES)
+
+
+commit 0733ad8002916b9dbbbcfe6e92ad44d2657de1c1
+Author: Christoph Hellwig <hch@lst.de>
+Date:   Thu Jun 8 13:02:58 2023 +0200
+
+    fs: remove the now unused FMODE_* flags
+```
+
+This patch fix the build error.
+
+---
+
+diff -Nupr a/drbd/drbd_main.c b/drbd/drbd_main.c
+--- a/drbd/drbd_main.c	2023-09-26 11:08:57.142974614 +0800
++++ b/drbd/drbd_main.c	2023-09-26 11:07:53.646071680 +0800
+@@ -2569,7 +2569,7 @@ enum ioc_rv {
+ static enum ioc_rv inc_open_count(struct drbd_device *device, fmode_t mode)
+ {
+ 	struct drbd_resource *resource = device->resource;
+-	enum ioc_rv r = mode & FMODE_NDELAY ? IOC_ABORT : IOC_SLEEP;
++	enum ioc_rv r = mode & BLK_OPEN_NDELAY ? IOC_ABORT : IOC_SLEEP;
+ 
+ 	if (test_bit(DOWN_IN_PROGRESS, &resource->flags))
+ 		return IOC_ABORT;
+@@ -2695,12 +2695,12 @@ static int drbd_open(struct gendisk *gd,
+ 
+ 		if (mode & FMODE_WRITE) {
+ 			if (resource->role[NOW] == R_SECONDARY) {
+-				rv = try_to_promote(device, timeout, (mode & FMODE_NDELAY));
++				rv = try_to_promote(device, timeout, (mode & BLK_OPEN_NDELAY));
+ 				if (rv < SS_SUCCESS)
+ 					drbd_info(resource, "Auto-promote failed: %s (%d)\n",
+ 						  drbd_set_st_err_str(rv), rv);
+ 			}
+-		} else if ((mode & FMODE_NDELAY) == 0) {
++		} else if ((mode & BLK_OPEN_NDELAY) == 0) {
+ 			/* Double check peers
+ 			 *
+ 			 * Some services may try to first open ro, and only if that
+@@ -2741,7 +2741,7 @@ out:
+ 	mutex_unlock(&resource->open_release);
+ 	if (err) {
+ 		drbd_release(gd);
+-		if (err == -EAGAIN && !(mode & FMODE_NDELAY))
++		if (err == -EAGAIN && !(mode & BLK_OPEN_NDELAY))
+ 			err = -EMEDIUMTYPE;
+ 	}
+ 
+diff -Nupr a/drbd/drbd_transport_tcp.c b/drbd/drbd_transport_tcp.c
+--- a/drbd/drbd_transport_tcp.c	2023-09-26 11:09:04.016333505 +0800
++++ b/drbd/drbd_transport_tcp.c	2023-09-26 11:07:59.132758771 +0800
+@@ -1193,6 +1193,8 @@ static int dtt_send_page(struct drbd_tra
+ 	struct drbd_tcp_transport *tcp_transport =
+ 		container_of(transport, struct drbd_tcp_transport, transport);
+ 	struct socket *socket = tcp_transport->stream[stream];
++	struct msghdr msghdr = { .msg_flags = MSG_SPLICE_PAGES|msg_flags, };
++	struct bio_vec bvec;
+ 	int len = size;
+ 	int err = -EIO;
+ 
+@@ -1204,7 +1206,10 @@ static int dtt_send_page(struct drbd_tra
+ 	do {
+ 		int sent;
+ 
+-		sent = socket->ops->sendpage(socket, page, offset, len, msg_flags);
++		//sent = socket->ops->sendpage(socket, page, offset, len, msg_flags);
++		bvec_set_page(&bvec, page, offset, len);
++		iov_iter_bvec(&msghdr.msg_iter, ITER_SOURCE, &bvec, 1, len);
++		sent = sock_sendmsg(socket, &msghdr);
+ 		if (sent <= 0) {
+ 			if (sent == -EAGAIN) {
+ 				if (drbd_stream_send_timed_out(transport, stream))

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs-material
-Version:        9.3.2
+Version:        9.4.2
 Release:        0
 Summary:        Material theme for mkdocs
 License:        MIT
@@ -42,13 +42,15 @@ BuildRequires:  %{python_module setuptools}
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L21
 BuildRequires:  %{python_module Jinja2 >= 3.1}
 BuildRequires:  %{python_module Markdown >= 3.4}
-BuildRequires:  %{python_module mkdocs >= 1.5}
-BuildRequires:  %{python_module mkdocs-material-extensions >= 1.1}
+BuildRequires:  %{python_module mkdocs >= 1.5.3}
+BuildRequires:  %{python_module mkdocs-material-extensions >= 1.2}
 BuildRequires:  %{python_module pygments >= 2.16}
 BuildRequires:  %{python_module pymdown-extensions >= 10.3}
 # Requirements for plugins
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L29
+BuildRequires:  %{python_module Babel >= 2.10}
 BuildRequires:  %{python_module colorama >= 0.4}
+BuildRequires:  %{python_module paginate >= 0.5}
 BuildRequires:  %{python_module regex => 2023.8}
 BuildRequires:  %{python_module requests >= 2.31}
 BuildRequires:  fdupes
@@ -63,7 +65,9 @@ Requires:       python-pygments >= 2.16
 Requires:       python-pymdown-extensions >= 10.3
 # Requirements for plugins
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L29
+Requires:       python-Babel >= 2.10
 Requires:       python-colorama >= 0.4
+Requires:       python-paginate >= 0.5
 Requires:       python-regex => 2023.8
 Requires:       python-requests >= 2.31
 

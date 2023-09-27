@@ -739,4 +739,12 @@ Upstream: https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/114 (forwa
   + cairo-1.17.8-ft-font-missing-glyph.patch (forwarded request 1072675 from iznogood)</comment>
     <requestid>1073167</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>6c986c5c42803a5bdfe778f7733a2523</srcmd5>
+    <version>1.18.0</version>
+    <time>1695758452</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1113272 from iznogood)</comment>
+    <requestid>1113452</requestid>
+  </revision>
 </revisionlist>

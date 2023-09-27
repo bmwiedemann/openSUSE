@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 25 14:17:51 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- use pkgconfig(icu-uc) to use the current libicu. (jsc#PED-6193)
+
+-------------------------------------------------------------------
 Sun Jan 15 15:06:11 UTC 2023 - Fred kiefer <fredkiefer@gmx.de>
 
 - Update to version 1.29.0

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Sep 25 13:37:59 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.119.0:
+  * docs: Even more about images.Process
+  * docs: More about images.Process
+  * common: Remove unused constants
+  * docs: Regen docshelper
+  * Add images.Process filter
+  * Add $image.Process
+  * google_analytics_async.html: Add deprecation warning
+  * build(deps): bump golang.org/x/tools from 0.12.0 to 0.13.0
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.8.0 to 2.9.1
+  * build(deps): bump github.com/evanw/esbuild from 0.19.2 to 0.19.3
+  * Add images.Opacity filter
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.44.314 to 1.45.14
+  * build(deps): bump github.com/getkin/kin-openapi from 0.118.0 to 0.120.0
+  * build(deps): bump golang.org/x/image from 0.11.0 to 0.12.0
+  * Upgrade to Go 1.21.1
+  * commands: Update CLI docs with the important -u flag in hugo mod get
+  * create/skeletons: Improve viewport meta tag
+  * Fix tests for Go 1.21.1
+  * commands/gen: Remove default highlight style
+  * Fix recently broken benchmark
+  * Adjust baseline benchmarks
+  * commands: Print language code after web server address info
+
+-------------------------------------------------------------------
 Thu Sep 07 22:11:04 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.118.2:

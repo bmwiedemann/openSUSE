@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 23 10:37:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.1
+  * Jsonschema package keywords module rename fix #132
+
+-------------------------------------------------------------------
 Sat Jul 29 21:58:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Fix requirements

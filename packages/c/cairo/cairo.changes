@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Sep 23 17:18:14 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.0:
+  + The first stable cairo release in five years should be cause
+    for celebration.
+  + All the API added in the 1.17 development cycle is now
+    considered stable, and will not change.
+  + Many thanks to all the contributors for this release.
+  + The cairo-sphinx tool has been removed; we could not find any
+    instruction on how to use it, and no user answered our call for
+    help. If you were using cairo-sphinx, please reach out to the
+    cairo maintainers.
+  + Cairo now implements Type 3 color fonts for PDF.
+  + Multiple documentation fixes, to ensure that the cairo API
+    reference is up to date. Also fixed multiple compiler warnings
+    generated when building cairo.
+  + The XML surface has been removed; it was disabled by default
+    when building cairo, and we could not find any downstream
+    distributor that would enable it.
+  + The Tee surface is now automatically enabled. Downstream
+    distributors of cairo have been enabling for years it in order
+    to build Firefox.
+  + Fixed multiple issues with the DWrite font backend.
+  + Improved the Quartz surface; mainly, Quartz surfaces now use
+    the main display ColorSpace, speeding up rendering operations.
+  + Cairo now hides all private symbols by default on every
+    platform; the old "slim" symbols hack to alias internally used
+    symbols has been dropped, in favor of using
+    `-Bsymbolic-functions` with toolchains that support it.
+  + Fixed multiple memory leaks in the code base and test suite,
+    and general maintenance.
+  + Added new API to expose the Pixman dithering filter to cairo
+    patterns; this is currently implemented only for image
+    surfaces.
+- Drop patches fixed upstream:
+  + cairo-1.17.8-fix-tee-compilation.patch
+  + cairo-1.17.8-ft-font-missing-glyph.patch
+- Rebase patches with quilt.
+- Stop passing xml=disabled to meson setup, xml backend is dropped.
+
+-------------------------------------------------------------------
 Fri Mar 17 13:27:04 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.17.8:

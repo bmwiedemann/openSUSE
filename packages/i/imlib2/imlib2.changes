@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep 23 17:14:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.1:
+  * Fix some clang complaints
+  * scaling: MMX asm scaling causes segv, disable for now
+  * loading: Call module exit function also when not
+    dlclosing module on unload
+  * loaders: Fix build with -m32 --enable-debug
+  * test_load_2: Add forgotten xeyes.png
+  * test_save: Fix for jxl loader on ix86
+  * test_scale: MMX scaling is disabled
+  * RAW loader: Don't unload loader
+  * loaders: Fix CPPFLAGS order
+  * imlib2_grab, imlib2_view: Unset context colormap
+  * x11_grab: Use correct depth when grabbing
+
+-------------------------------------------------------------------
 Thu Aug 31 13:05:14 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Disable MMX code, it's broken in 1.12.0 (boo#1214528)
@@ -71,8 +88,8 @@ Thu Aug 17 18:02:04 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
 Mon Jun 19 10:28:47 UTC 2023 - Simon Lees <sflees@suse.de>
 
 - Changelog update only
-- integer overflow (with resultant invalid memory allocations and 
-  out-of-bounds reads) via an icon with many colors in its color 
+- integer overflow (with resultant invalid memory allocations and
+  out-of-bounds reads) via an icon with many colors in its color
   map was fixed in 1.7.0 (bsc#1171472, CVE-2020-12761)
 
 -------------------------------------------------------------------
@@ -601,7 +618,7 @@ Fri Oct  5 00:56:21 UTC 2017 - sflees@suse.de
   * Fix potential OOB memory access if border elements are negative
     or sizes exceed image dimensions
   * Expose XImage cache control functions
-  * Various enhancements, maintenance. 
+  * Various enhancements, maintenance.
 
 -------------------------------------------------------------------
 Wed May 10 00:56:21 UTC 2017   * sflees@suse.de

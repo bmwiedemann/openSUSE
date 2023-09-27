@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-meson-python
-Version:        0.13.2
+Version:        0.14.0
 Release:        0
 Summary:        Meson Python build backend (PEP 517)
 License:        MIT
@@ -33,6 +33,8 @@ Source4:        https://files.pythonhosted.org/packages/py3/t/typing_extensions/
 Patch11:        mesonpy-trim-deps.patch
 # PATCH-FEATURE-OPENSUSE mesonpy-no-wheel-rebuild.patch code@bnavigator.de
 Patch12:        mesonpy-no-wheel-rebuild.patch
+# PATCH-FEATURE-OPENSUSE
+Patch14:        no-build-isolation-in-test.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyproject-metadata >= 0.7.1}
@@ -44,6 +46,9 @@ BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
 Requires:       meson >= 0.63.3
 Requires:       python-pyproject-metadata >= 0.7.1
+%if 0%{python_version_nodots} >= 312
+Requires:       python-setuptools
+%endif
 %if 0%{python_version_nodots} < 311
 Requires:       python-tomli >= 1.0.0
 %endif
@@ -57,6 +62,7 @@ BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools-wheel}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  patchelf
 # /SECTION
@@ -78,6 +84,7 @@ Python build backend (PEP 517) for Meson projects.
 
 %check
 export MESONPY_FORCE_LOCAL_LIB=1
+export PIP_FIND_LINKS="%{python3_sitelib}/../wheels"
 %python_expand cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} build/
 %pytest
 

@@ -212,4 +212,22 @@
     <comment>- Make selinux optional to allow building this package for Leap, too. (forwarded request 1093513 from manfred-h)</comment>
     <requestid>1096892</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1a98c7755ee189f5c64a740658d762fc</srcmd5>
+    <version>0.8.1</version>
+    <time>1695758432</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.8.1:
+  - swtpm:
+    -   Restore logging to stderr on log open failure
+  - swtpm_setup:
+    -   Exit with '0' upon --version rather than '1'.
+    -   Initialized @argv in get_swtpm_capabilities()
+  - swtpm_localca:
+    -   Add missing NULL option to end of array
+  - SELinux:
+    -   Add rules for user_tpm_t:sockfile to allow unlink
+    -   Add rules for sock_file on user_tmp_t (forwarded request 1111637 from msmeissn)</comment>
+    <requestid>1111638</requestid>
+  </revision>
 </revisionlist>

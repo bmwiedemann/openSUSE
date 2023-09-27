@@ -142,4 +142,26 @@
   * wgl: remove unused dummy wgl_error.[ch]</comment>
     <requestid>1069489</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e328d00daae8ff700879d5841f3b741f</srcmd5>
+    <version>1.8.0</version>
+    <time>1695758505</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.8.0
+  * meson: require meson v0.53, various wayland-scanner fixes
+  * cmake: deprecate in favour of meson
+  * ci: add lint stage, resolve intermittent Xvfb failures
+  * nacl: remove the backend, error out if requested at build
+  * cgl: fix warnings and compilation issues
+  * wflinfo: add zsh completion, simplify the bash completion
+  * tests: rework and de-duplicate the per-platform handling
+- switched to meson for build
+
+- Update to release 1.7.3
+  * Use a static waffle.def
+  * meson: drop the libwaffle-1.dll lib prefix on windows
+  * Fix build on macOS by fixing a typo
+  * Add cflag to fix macOS build</comment>
+    <requestid>1113539</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep 25 18:44:30 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 1.8.0
+  * meson: require meson v0.53, various wayland-scanner fixes
+  * cmake: deprecate in favour of meson
+  * ci: add lint stage, resolve intermittent Xvfb failures
+  * nacl: remove the backend, error out if requested at build
+  * cgl: fix warnings and compilation issues
+  * wflinfo: add zsh completion, simplify the bash completion
+  * tests: rework and de-duplicate the per-platform handling
+- switched to meson for build
+
+-------------------------------------------------------------------
+Mon Sep 25 18:42:06 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 1.7.3
+  * Use a static waffle.def
+  * meson: drop the libwaffle-1.dll lib prefix on windows
+  * Fix build on macOS by fixing a typo
+  * Add cflag to fix macOS build
+
+-------------------------------------------------------------------
 Sun Mar  5 21:31:46 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to release 1.7.2

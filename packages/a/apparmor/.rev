@@ -2643,4 +2643,13 @@ samba-4-17.patch fix we're carrying in 15.5 and dropping for 15.6
 thanks to the upstream 926 merge. (forwarded request 1108011 from dmdiss)</comment>
     <requestid>1108110</requestid>
   </revision>
+  <revision rev="197" vrev="5">
+    <srcmd5>92dceb2e23c018d93d8ea56fb495f03d</srcmd5>
+    <version>3.1.6</version>
+    <time>1695758429</time>
+    <user>anag+factory</user>
+    <comment>- Fix pam_apparmor %post and %postun scripts to handle pam-config errors
+  (bsc#1215596) (forwarded request 1113476 from dmdiss)</comment>
+    <requestid>1113527</requestid>
+  </revision>
 </revisionlist>

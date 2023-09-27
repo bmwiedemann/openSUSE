@@ -25,7 +25,7 @@
 %bcond_with svg
 %bcond_with postscript
 Name:           imlib2
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        Image handling and conversion library
 License:        BSD-3-Clause

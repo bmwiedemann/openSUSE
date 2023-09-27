@@ -25,7 +25,7 @@ Name:           gmsh
 Version:        4.11.1
 Release:        0
 Summary:        A three-dimensional finite element mesh generator
-License:        GPL-2.0-or-later
+License:        Apache-2.0 AND GPL-2.0-or-later AND (GPL-2.0-or-later OR LGPL-3.0-or-later) AND LGPL-2.1-or-later AND MPL-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND CC0-1.0 AND X11
 Group:          Productivity/Scientific/Math
 URL:            https://gmsh.info/
 Source0:        https://gmsh.info/src/gmsh-%{version}-source.tgz

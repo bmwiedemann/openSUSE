@@ -964,4 +964,12 @@
     <comment></comment>
     <requestid>1108348</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>c7d86dac5e19f9b0ffd1cc5d345662f0</srcmd5>
+    <version>3.12.3</version>
+    <time>1695758552</time>
+    <user>anag+factory</user>
+    <comment>ADd refs for Leap 15.4 bugs (forwarded request 1113520 from mgorse)</comment>
+    <requestid>1113644</requestid>
+  </revision>
 </revisionlist>

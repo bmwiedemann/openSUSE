@@ -17,22 +17,23 @@
 
 
 Name:           dlt-daemon
-Version:        2.18.8
-Release:        4%{?dist}
+Version:        2.18.10
+Release:        1%{?dist}
 Summary:        DLT - Diagnostic Log and Trace
 License:        MPL-2.0-no-copyleft-exception
 Group:          Development/Tools/Other
 URL:            https://github.com/COVESA/dlt-daemon
 Source0:        https://github.com/COVESA/dlt-daemon/archive/refs/tags/v%{version}/%{name}-%{version}.tar.gz
 Patch0:         dlt-daemon-config.patch
+Patch1:		dlt-daemon-cmp0002.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pandoc
 BuildRequires:  systemd
 BuildRequires:  systemd-devel
+BuildRequires:	zlib-devel
 Requires(pre):  shadow
 ExcludeArch:    %{ix86}
-
 
 %description
 This component provides a standardised log and trace interface, based on the
@@ -45,17 +46,21 @@ logging facility providing
 - the DLT client console utilities
 - the DLT test applications
 
-%package -n dlt-libs-devel
+%package -n dlt-daemon-devel
 Summary:        DLT - Diagnostic Log and Trace: Development files
-Requires:       dlt-libs = %{version}-%{release}
+Requires:       libdlt2 = %{version}-%{release}
+Provides:	dlt-libs-devel = %version-%release
+Obsoletes:	dlt-libs-devel < %version-%release
 
-%description -n dlt-libs-devel
+%description -n dlt-daemon-devel
 %{summary}.
 
-%package -n dlt-libs
+%package -n libdlt2
 Summary:        DLT - Diagnostic Log and Trace: Libraries
+Provides:       dlt-libs = %version-%release
+Obsoletes:      dlt-libs < %version-%release
 
-%description -n dlt-libs
+%description -n libdlt2
 %{summary}.
 
 %package -n dlt-tools
@@ -73,8 +78,7 @@ Requires:       %{name} = %{version}-%{release}
 %{summary}.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 mkdir -p build
@@ -98,6 +102,15 @@ mkdir -p %{buildroot}%{_bindir}
 
 # Home directory for the 'dlt-daemon' user
 mkdir -p %{buildroot}%{_localstatedir}/lib/dlt-daemon
+mkdir -p %{buildroot}%{_sbindir}
+pushd %{buildroot}%{_sbindir}
+ln -s service rcdlt-example-user
+ln -s service rcdlt
+ln -s service rcdlt-system
+ln -s service rcdlt-adaptor-udp
+ln -s service rcdlt-receive
+
+popd
 
 %pre
 ## This creates the users that are needed for /var/lib/dlt-daemon
@@ -145,7 +158,7 @@ exit 0
 %service_del_postun dlt-adaptor-udp.service dlt-receive.service
 %service_del_postun dlt-system.service
 
-%ldconfig_scriptlets -n dlt-libs
+%ldconfig_scriptlets -n libdlt2
 
 %files
 %license LICENSE
@@ -154,6 +167,7 @@ exit 0
 %config(noreplace) %{_sysconfdir}/dlt.conf
 %config(noreplace) %{_sysconfdir}/dlt_gateway.conf
 %{_unitdir}/dlt.service
+%{_sbindir}/rcdlt
 %attr(0755,root,root)
 %{_bindir}/dlt-daemon
 %{_mandir}/man1/dlt-daemon.1%{?ext_man}
@@ -167,6 +181,7 @@ exit 0
 %{_bindir}/dlt-test-*
 %{_datadir}/dlt-filetransfer
 %{_unitdir}/dlt-example-user.service
+%{_sbindir}/rcdlt-example-user
 
 %files -n dlt-tools
 %{_bindir}/dlt-adaptor-stdin
@@ -180,8 +195,11 @@ exit 0
 %{_bindir}/dlt-system
 %config(noreplace) %{_sysconfdir}/dlt-system.conf
 %{_unitdir}/dlt-adaptor-udp.service
+%{_sbindir}/rcdlt-adaptor-udp
 %{_unitdir}/dlt-receive.service
+%{_sbindir}/rcdlt-receive
 %{_unitdir}/dlt-system.service
+%{_sbindir}/rcdlt-system
 %{_mandir}/man1/dlt-adaptor-stdin.1%{?ext_man}
 %{_mandir}/man1/dlt-adaptor-udp.1%{?ext_man}
 %{_mandir}/man1/dlt-control.1%{?ext_man}
@@ -193,10 +211,10 @@ exit 0
 %{_mandir}/man1/dlt-system.1%{?ext_man}
 %{_mandir}/man5/dlt-system.conf.5%{?ext_man}
 
-%files -n dlt-libs
+%files -n libdlt2
 %{_libdir}/libdlt.so.*
 
-%files -n dlt-libs-devel
+%files -n dlt-daemon-devel
 %{_includedir}/dlt
 %{_libdir}/pkgconfig/automotive-dlt.pc
 %{_libdir}/libdlt.so

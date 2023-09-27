@@ -1,7 +1,7 @@
 #
 # spec file for package python-bugzilla
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,9 @@ Source:         https://files.pythonhosted.org/packages/source/p/python-bugzilla
 # PATCH-FIX-UPSTREAM 106-basic-auth.diff bsc#1098219 mcepl@suse.com
 # Fix basic authentication on bugzilla.suse.com
 Patch0:         106-basic-auth.diff
+# PATCH-FIX-UPSTREAM pending https://github.com/python-bugzilla/python-bugzilla/pull/188
+# Fix API Key leak
+Patch1:         188-fix-api-key-leak.diff
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}

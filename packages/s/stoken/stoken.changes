@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 25 09:16:16 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Version update to 0.93:
+  * upstream moved to github
+  * Drop support for versions of nettle older than 2014 
+  * Further v4 token work 
+  * fixes in README
+  * Add --both option to print current and next token
+  * Support for v4 token decode 
+  * Remove bashisms (Alon Bar-Lev)
+
+-------------------------------------------------------------------
 Wed Aug  8 21:11:31 UTC 2018 - tchvatal@suse.com
 
 - Version update to 0.92:

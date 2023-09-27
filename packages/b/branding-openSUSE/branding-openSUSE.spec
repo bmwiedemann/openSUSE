@@ -26,7 +26,7 @@
 %define gfxboot 1
 %endif
 
-%ifarch %{arm} aarch64 %{ix86} x86_64 riscv64
+%ifarch %{arm} aarch64 %{ix86} x86_64 riscv64 ppc64le
 %define grub2 1
 %endif
 

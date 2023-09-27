@@ -37,6 +37,8 @@ Source99:       %{name}-rpmlintrc
 
 # PATCH-NEEDS-REBASE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running WAS:PATCH-FIX-OPENSUSE
 Patch1:         gnome-control-center-disable-error-message-for-NM.patch
+# PATCH-FIX-UPSTREAM gnome-control-center-add-user-button.patch bsc#1215556 glgo#GNOME/Settings!1927 xwang@suse.com -- Show add user button
+Patch2:         gnome-control-center-add-user-button.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
@@ -182,6 +184,7 @@ GNOME control center.
 %prep
 %setup -q
 #patch1 -p1
+%patch2 -p1
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000

@@ -1,0 +1,80 @@
+From c34a13c3df85352124e94456f81e3d4ba4f52440 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Moritz=20=22WanzenBug=22=20Wanzenb=C3=B6ck?=
+ <moritz.wanzenboeck@linbit.com>
+Date: Fri, 8 Sep 2023 12:20:10 +0200
+Subject: [PATCH 08/20] compat: block: introduce holder ops
+
+See also upstream Linux kernel commit
+0718afd47f70 ("block: introduce holder ops")
+
+Original message:
+
+Add a new blk_holder_ops structure, which is passed to blkdev_get_by_* and
+installed in the block_device for exclusive claims.  It will be used to
+allow the block layer to call back into the user of the block device for
+thing like notification of a removed device or a device resize.
+---
+ .../cocci/blkdev_get_by_path__no_has_holder_ops.cocci      | 6 ++++++
+ drbd/drbd-kernel-compat/gen_patch_names.c                  | 3 +++
+ .../tests/blkdev_get_by_path_has_holder_ops.c              | 7 +++++++
+ drbd/drbd_nl.c                                             | 3 ++-
+ 4 files changed, 18 insertions(+), 1 deletion(-)
+ create mode 100644 drbd/drbd-kernel-compat/cocci/blkdev_get_by_path__no_has_holder_ops.cocci
+ create mode 100644 drbd/drbd-kernel-compat/tests/blkdev_get_by_path_has_holder_ops.c
+
+diff --git a/drbd/drbd-kernel-compat/cocci/blkdev_get_by_path__no_has_holder_ops.cocci b/drbd/drbd-kernel-compat/cocci/blkdev_get_by_path__no_has_holder_ops.cocci
+new file mode 100644
+index 000000000000..050d89e6fe0d
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/cocci/blkdev_get_by_path__no_has_holder_ops.cocci
+@@ -0,0 +1,6 @@
++@@
++expression path, mode, holder, ops;
++@@
++  blkdev_get_by_path(path, mode, holder
++-  	, ops
++  )
+diff --git a/drbd/drbd-kernel-compat/gen_patch_names.c b/drbd/drbd-kernel-compat/gen_patch_names.c
+index 959bbc351e1b..7071a0a4c5ec 100644
+--- a/drbd/drbd-kernel-compat/gen_patch_names.c
++++ b/drbd/drbd-kernel-compat/gen_patch_names.c
+@@ -556,6 +556,9 @@ int main(int argc, char **argv)
+ 	patch(1, "__bio_add_page", true, false,
+ 	      COMPAT_HAVE___BIO_ADD_PAGE, "present");
+ 
++	patch(1, "blkdev_get_by_path", true, false,
++	      COMPAT_BLKDEV_GET_BY_PATH_HAS_HOLDER_OPS, "has_holder_ops");
++
+ /* #define BLKDEV_ISSUE_ZEROOUT_EXPORTED */
+ /* #define BLKDEV_ZERO_NOUNMAP */
+ 
+diff --git a/drbd/drbd-kernel-compat/tests/blkdev_get_by_path_has_holder_ops.c b/drbd/drbd-kernel-compat/tests/blkdev_get_by_path_has_holder_ops.c
+new file mode 100644
+index 000000000000..02a560782f37
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/tests/blkdev_get_by_path_has_holder_ops.c
+@@ -0,0 +1,7 @@
++/* { "version": "v6.5-rc1", "commit": "0718afd47f70cf46877c39c25d06b786e1a3f36c", "comment": "block: introduce holder ops", "author": "Christoph Hellwig <hch@lst.de>", "date": "Thu Jun 1 11:44:52 2023 +0200" } */
++#include <linux/blkdev.h>
++
++struct block_device *foo(const char *bdev_path, struct blk_holder_ops *ops)
++{
++	return blkdev_get_by_path(bdev_path, 0, NULL, ops);
++}
+diff --git a/drbd/drbd_nl.c b/drbd/drbd_nl.c
+index 0fc1d84a996f..0a67bfa4ca52 100644
+--- a/drbd/drbd_nl.c
++++ b/drbd/drbd_nl.c
+@@ -2560,7 +2560,8 @@ static struct block_device *open_backing_dev(struct drbd_device *device,
+ 		const char *bdev_path, void *claim_ptr)
+ {
+ 	struct block_device *bdev = blkdev_get_by_path(bdev_path,
+-				  FMODE_READ | FMODE_WRITE | FMODE_EXCL, claim_ptr);
++				  FMODE_READ | FMODE_WRITE | FMODE_EXCL,
++				  claim_ptr, NULL);
+ 	if (IS_ERR(bdev)) {
+ 		drbd_err(device, "open(\"%s\") failed with %ld\n",
+ 				bdev_path, PTR_ERR(bdev));
+-- 
+2.35.3
+

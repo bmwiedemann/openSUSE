@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 24 09:27:02 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.7.5
+  * data/xsnow.desktop.in: add 'Simulation' to categories
+  * main.c: make 'settings->lift snow on bottom', -offsets working
+    it appears that xdo_search uses the name argument as
+    a regular expression, so use ^pcmanfm$ and ^Desktop$. 
+- Drop xsnow-desktop_file.patch, fixed upstream
+
+-------------------------------------------------------------------
 Thu Apr 27 16:24:17 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.7.4

@@ -782,6 +782,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         -Doomd=%{when experimental} \
         -Drepart=%{when experimental} \
         -Dsysupdate=%{when experimental} \
+        -Dukify=%{when experimental} \
         \
         -Dtests=%{when testsuite unsafe} \
         -Dinstall-tests=%{when testsuite}
@@ -932,8 +933,8 @@ touch %{buildroot}%{_localstatedir}/lib/systemd/catalog/database
 
 %fdupes -s %{buildroot}%{_mandir}
 
-# Make sure to disable all services by default. The SUSE branding presets
-# package takes care of defining the right policies.
+# Make sure to disable all services by default. The branding presets package
+# takes care of defining the SUSE policies.
 rm -f %{buildroot}%{_presetdir}/*.preset
 echo 'disable *' >%{buildroot}%{_presetdir}/99-default.preset
 echo 'disable *' >%{buildroot}%{_userpresetdir}/99-default.preset
@@ -1007,17 +1008,15 @@ rm -fr %{buildroot}%{_docdir}/systemd
 # installation images uses a hardcoded list of packages with a %%pre that needs
 # to be run during the build and complains if it can't find one.
 %pre
-if [ $1 -gt 1 ]; then
-        # We keep these just in case we're upgrading from an old version that
-        # was missing one of these units. During package installation, these
-        # macros are NOPs for the main package (the branding preset package
-        # takes care of applying the presets in its %%posttrans in this case).
-        %systemd_pre remote-fs.target
-        %systemd_pre getty@.service
-        %systemd_pre systemd-timesyncd.service
-        %systemd_pre systemd-journald-audit.socket
-        %systemd_pre systemd-userdbd.socket
-fi
+# We don't really need to enable these units explicitely since during
+# installation `systemctl preset-all` is executed at the end of the install
+# transaction by the branding preset package. However it might be needed when
+# upgrading from a previous version of systemd that didn't ship one of these
+# units.
+%systemd_pre remote-fs.target
+%systemd_pre getty@.service
+%systemd_pre systemd-journald-audit.socket
+%systemd_pre systemd-userdbd.service
 
 %post
 if [ $1 -eq 1 ]; then
@@ -1054,14 +1053,11 @@ systemd-tmpfiles --create || :
 journalctl --update-catalog || :
 %endif
 
-if [ $1 -gt 1 ]; then
-        # See comments for %%systemd_pre in %%pre.
-        %systemd_post remote-fs.target
-        %systemd_post getty@.service
-        %systemd_post systemd-timesyncd.service
-        %systemd_post systemd-journald-audit.socket
-        %systemd_post systemd-userdbd.socket
-fi
+# See the comment in %%pre about why we need to call %%systemd_pre.
+%systemd_post remote-fs.target
+%systemd_post getty@.service
+%systemd_post systemd-journald-audit.socket
+%systemd_post systemd-userdbd.service
 
 # Run the hacks/fixups to clean up the old stuff left by (very) old versions of
 # systemd.
@@ -1069,8 +1065,10 @@ fi
 
 %postun
 # Avoid restarting logind until fixed upstream (issue #1163)
+%systemd_postun_with_restart systemd-hostnamed.service
 %systemd_postun_with_restart systemd-journald.service
-%systemd_postun_with_restart systemd-timesyncd.service
+%systemd_postun_with_restart systemd-localed.service
+%systemd_postun_with_restart systemd-timedated.service
 %systemd_postun_with_restart systemd-userdbd.service
 
 %pre -n udev%{?mini}
@@ -1078,6 +1076,7 @@ fi
 # setting.
 %systemd_pre remote-cryptsetup.target
 %systemd_pre systemd-pstore.service
+%systemd_pre systemd-timesyncd.service
 
 # New installations uses the last compat symlink generation number (currently at
 # 2), which basically disables all compat symlinks. On old systems, the file
@@ -1096,10 +1095,12 @@ fi
 %endif
 %systemd_post remote-cryptsetup.target
 %systemd_post systemd-pstore.service
+%systemd_post systemd-timesyncd.service
 
 %preun -n udev%{?mini}
 %systemd_preun systemd-udevd.service systemd-udevd-{control,kernel}.socket
 %systemd_preun systemd-pstore.service
+%systemd_preun systemd-timesyncd.service
 
 %postun -n udev%{?mini}
 %regenerate_initrd_post
@@ -1119,6 +1120,7 @@ fi
 # frame where no socket will be listening to the events sent by the kernel, no
 # matter if the socket unit is restarted in first or not.
 %systemd_postun_with_restart systemd-udevd.service systemd-udevd-{control,kernel}.socket
+%systemd_postun_with_restart systemd-timesyncd.service
 %systemd_postun systemd-pstore.service
 
 %posttrans -n udev%{?mini}
@@ -1159,26 +1161,26 @@ fi
 
 %if %{with journal_remote}
 %pre journal-remote
-%systemd_pre systemd-journal-gatewayd.socket systemd-journal-gatewayd.service
-%systemd_pre systemd-journal-remote.socket systemd-journal-remote.service
+%systemd_pre systemd-journal-gatewayd.service
+%systemd_pre systemd-journal-remote.service
 %systemd_pre systemd-journal-upload.service
 
 %post journal-remote
 # Assume that all files shipped by systemd-journal-remove are owned by root.
 %sysusers_create systemd-remote.conf
-%systemd_post systemd-journal-gatewayd.socket systemd-journal-gatewayd.service
-%systemd_post systemd-journal-remote.socket systemd-journal-remote.service
+%systemd_post systemd-journal-gatewayd.service
+%systemd_post systemd-journal-remote.service
 %systemd_post systemd-journal-upload.service
 
 %preun journal-remote
-%systemd_preun systemd-journal-gatewayd.socket systemd-journal-gatewayd.service
-%systemd_preun systemd-journal-remote.socket systemd-journal-remote.service
+%systemd_preun systemd-journal-gatewayd.service
+%systemd_preun systemd-journal-remote.service
 %systemd_preun systemd-journal-upload.service
 
 %postun journal-remote
-%systemd_postun systemd-journal-gatewayd.socket systemd-journal-gatewayd.service
-%systemd_postun systemd-journal-remote.socket systemd-journal-remote.service
-%systemd_postun systemd-journal-upload.service
+%systemd_postun_with_restart systemd-journal-gatewayd.service
+%systemd_postun_with_restart systemd-journal-remote.service
+%systemd_postun_with_restart systemd-journal-upload.service
 %endif
 
 %if %{with networkd} || %{with resolved}

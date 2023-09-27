@@ -1,0 +1,202 @@
+From 3b9fcc2cfaa32766724f371cc2054e057adbc425 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Moritz=20=22WanzenBug=22=20Wanzenb=C3=B6ck?=
+ <moritz.wanzenboeck@linbit.com>
+Date: Mon, 11 Sep 2023 13:36:07 +0200
+Subject: [PATCH 15/20] compat: block: use the holder as indication for
+ exclusive opens
+
+See also upstream Linux kernel commit
+2736e8eeb0cc ("block: use the holder as indication for exclusive opens")
+Original message:
+
+The current interface for exclusive opens is rather confusing as it
+requires both the FMODE_EXCL flag and a holder.  Remove the need to pass
+FMODE_EXCL and just key off the exclusive open off a non-NULL holder.
+
+For blkdev_put this requires adding the holder argument, which provides
+better debug checking that only the holder actually releases the hold,
+but at the same time allows removing the now superfluous mode argument.
+---
+ .../cocci/blkdev_put__no_has_holder.cocci     | 38 +++++++++++++++++++
+ drbd/drbd-kernel-compat/gen_patch_names.c     |  3 ++
+ .../tests/blkdev_put_has_holder.c             | 17 +++++++++
+ drbd/drbd_nl.c                                | 28 ++++++++------
+ 4 files changed, 75 insertions(+), 11 deletions(-)
+ create mode 100644 drbd/drbd-kernel-compat/cocci/blkdev_put__no_has_holder.cocci
+ create mode 100644 drbd/drbd-kernel-compat/tests/blkdev_put_has_holder.c
+
+diff --git a/drbd/drbd-kernel-compat/cocci/blkdev_put__no_has_holder.cocci b/drbd/drbd-kernel-compat/cocci/blkdev_put__no_has_holder.cocci
+new file mode 100644
+index 000000000000..c903bc2d529c
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/cocci/blkdev_put__no_has_holder.cocci
+@@ -0,0 +1,38 @@
++@@
++expression path, mode;
++@@
++  blkdev_get_by_path(
++  	path,
++- 	mode,
+++ 	mode | FMODE_EXCL,
++  	...
++  )
++
++@@
++expression bdev, holder;
++@@
++  blkdev_put(
++  	bdev,
++- 	holder
+++ 	FMODE_READ | FMODE_WRITE | FMODE_EXCL
++  )
++
++@@
++identifier device, bdev, holder, do_bd_unlink;
++@@
++  void close_backing_dev(
++  	struct drbd_device *device,
++  	struct block_device *bdev,
++-  	void *holder,
++  	bool do_bd_unlink
++  ) { ... }
++
++@@
++expression device, bdev, holder, do_bd_unlink;
++@@
++  close_backing_dev(
++  	device,
++  	bdev,
++- 	holder,
++  	do_bd_unlink
++  )
+diff --git a/drbd/drbd-kernel-compat/gen_patch_names.c b/drbd/drbd-kernel-compat/gen_patch_names.c
+index 6e4f06d9a3a7..4761c1ef7d0c 100644
+--- a/drbd/drbd-kernel-compat/gen_patch_names.c
++++ b/drbd/drbd-kernel-compat/gen_patch_names.c
+@@ -562,6 +562,9 @@ int main(int argc, char **argv)
+ 	patch(1, "block_device_operations_open", true, false,
+ 	      COMPAT_BLOCK_DEVICE_OPERATIONS_OPEN_TAKES_GENDISK, "takes_gendisk");
+ 
++	patch(1, "blkdev_put", true, false,
++	      COMPAT_BLKDEV_PUT_HAS_HOLDER, "has_holder");
++
+ /* #define BLKDEV_ISSUE_ZEROOUT_EXPORTED */
+ /* #define BLKDEV_ZERO_NOUNMAP */
+ 
+diff --git a/drbd/drbd-kernel-compat/tests/blkdev_put_has_holder.c b/drbd/drbd-kernel-compat/tests/blkdev_put_has_holder.c
+new file mode 100644
+index 000000000000..d5f0c5dd0355
+--- /dev/null
++++ b/drbd/drbd-kernel-compat/tests/blkdev_put_has_holder.c
+@@ -0,0 +1,17 @@
++/* { "version": "v6.5-rc1", "commit": "ae220766d87cd6799dbf918fea10613ae14c0654", "comment": "block: remove the unused mode argument to ->release", "author": "Christoph Hellwig <hch@lst.de>", "date": "Thu Jun 8 13:02:37 2023 +0200" } */
++#include <linux/blkdev.h>
++
++#ifndef __same_type
++# define __same_type(a, b) __builtin_types_compatible_p(typeof(a), typeof(b))
++#endif
++
++void foo_blkdev_put(struct block_device *bdev, void *holder)
++{
++}
++
++
++void foo(void)
++{
++	BUILD_BUG_ON(!(__same_type(&blkdev_put, &foo_blkdev_put)));
++}
++
+diff --git a/drbd/drbd_nl.c b/drbd/drbd_nl.c
+index b7e9e43312f9..8c968cf252ca 100644
+--- a/drbd/drbd_nl.c
++++ b/drbd/drbd_nl.c
+@@ -2536,13 +2536,13 @@ bool want_bitmap(struct drbd_peer_device *peer_device)
+ }
+ 
+ static void close_backing_dev(struct drbd_device *device, struct block_device *bdev,
+-	bool do_bd_unlink)
++	void *holder, bool do_bd_unlink)
+ {
+ 	if (!bdev)
+ 		return;
+ 	if (do_bd_unlink)
+ 		bd_unlink_disk_holder(bdev, device->vdisk);
+-	blkdev_put(bdev, FMODE_READ | FMODE_WRITE | FMODE_EXCL);
++	blkdev_put(bdev, holder);
+ }
+ 
+ void drbd_backing_dev_free(struct drbd_device *device, struct drbd_backing_dev *ldev)
+@@ -2552,8 +2552,11 @@ void drbd_backing_dev_free(struct drbd_device *device, struct drbd_backing_dev *
+ 
+ 	drbd_dax_close(ldev);
+ 
+-	close_backing_dev(device, ldev->md_bdev, ldev->md_bdev != ldev->backing_bdev);
+-	close_backing_dev(device, ldev->backing_bdev, true);
++	close_backing_dev(device,
++			  ldev->md_bdev,
++			  ldev->md.meta_dev_idx < 0 ? (void *)device : (void *)drbd_m_holder,
++			  ldev->md_bdev != ldev->backing_bdev);
++	close_backing_dev(device, ldev->backing_bdev, device, true);
+ 
+ 	kfree(ldev->disk_conf);
+ 	kfree(ldev);
+@@ -2563,7 +2566,7 @@ static struct block_device *open_backing_dev(struct drbd_device *device,
+ 		const char *bdev_path, void *claim_ptr)
+ {
+ 	struct block_device *bdev = blkdev_get_by_path(bdev_path,
+-				  FMODE_READ | FMODE_WRITE | FMODE_EXCL,
++				  FMODE_READ | FMODE_WRITE,
+ 				  claim_ptr, NULL);
+ 	if (IS_ERR(bdev)) {
+ 		drbd_err(device, "open(\"%s\") failed with %ld\n",
+@@ -2588,6 +2591,7 @@ static int open_backing_devices(struct drbd_device *device,
+ 		struct drbd_backing_dev *nbc)
+ {
+ 	struct block_device *bdev;
++	void *meta_claim_ptr;
+ 	int err;
+ 
+ 	bdev = open_backing_dev(device, new_disk_conf->backing_dev, device);
+@@ -2597,12 +2601,17 @@ static int open_backing_devices(struct drbd_device *device,
+ 	err = link_backing_dev(device, new_disk_conf->backing_dev, bdev);
+ 	if (err) {
+ 		/* close without unlinking; otherwise error path will try to unlink */
+-		close_backing_dev(device, bdev, false);
++		close_backing_dev(device, bdev, device, false);
+ 		return ERR_OPEN_DISK;
+ 	}
+ 
+ 	nbc->backing_bdev = bdev;
+ 
++	/* meta_claim_ptr: device, if claimed exclusively; shared drbd_m_holder,
++	 * if potentially shared with other drbd minors
++	 */
++	meta_claim_ptr = (new_disk_conf->meta_dev_idx < 0) ?
++		(void *)device : (void *)drbd_m_holder;
+ 	/*
+ 	 * meta_dev_idx >= 0: external fixed size, possibly multiple
+ 	 * drbd sharing one meta device.  TODO in that case, paranoia
+@@ -2611,10 +2620,7 @@ static int open_backing_devices(struct drbd_device *device,
+ 	 * should check it for you already; but if you don't, or
+ 	 * someone fooled it, we need to double check here)
+ 	 */
+-	bdev = open_backing_dev(device, new_disk_conf->meta_dev,
+-		/* claim ptr: device, if claimed exclusively; shared drbd_m_holder,
+-		 * if potentially shared with other drbd minors */
+-			(new_disk_conf->meta_dev_idx < 0) ? (void*)device : (void*)drbd_m_holder);
++	bdev = open_backing_dev(device, new_disk_conf->meta_dev, meta_claim_ptr);
+ 	if (IS_ERR(bdev))
+ 		return ERR_OPEN_MD_DISK;
+ 
+@@ -2624,7 +2630,7 @@ static int open_backing_devices(struct drbd_device *device,
+ 		err = link_backing_dev(device, new_disk_conf->meta_dev, bdev);
+ 		if (err) {
+ 			/* close without unlinking; otherwise error path will try to unlink */
+-			close_backing_dev(device, bdev, false);
++			close_backing_dev(device, bdev, meta_claim_ptr, false);
+ 			return ERR_OPEN_MD_DISK;
+ 		}
+ 	}
+-- 
+2.35.3
+

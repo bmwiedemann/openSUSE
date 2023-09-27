@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 25 21:46:16 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove 0000-sdbus-c++-cmake-lists.patch
+- Remove conflicts with XDG-wlr. XDP 0.18.0 introduces flexible
+  configuration of portals.
+- Update to version 1.1.0:
+  * core: rework event loop for polling and C++-style awaits
+  * internal: make frame callbacks log a trace
+  * internal: add a notification on missing qt-wayland packages
+  * drop unused dependencies
+  * fix build system
+  * add double escaping
+
+-------------------------------------------------------------------
 Sat Sep  9 15:41:00 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Add back cmake. Seems they forgotten share picker on the meson.build

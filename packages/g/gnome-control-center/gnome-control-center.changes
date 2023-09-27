@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 22 03:30:16 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gnome-control-center-add-user-button.patch:
+  Show add user button when user is a normal user
+  (bsc#1215556 glgo#GNOME/Settings!1927).
+
+-------------------------------------------------------------------
 Fri Sep 15 10:22:39 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:

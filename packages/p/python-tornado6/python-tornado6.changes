@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 21 10:04:28 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.3.3
+  * The Content-Length header and chunked Transfer-Encoding sizes 
+    are now parsed more strictly (according to the relevant RFCs) 
+    to avoid potential request-smuggling vulnerabilities when 
+    deployed behind certain proxies.
+- Add py312-datetime.patch to fix build with Python 3.12
+
+-------------------------------------------------------------------
 Tue May 30 08:04:10 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 6.3.2 (bsc#1211741, CVE-2023-28370)

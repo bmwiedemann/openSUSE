@@ -297,4 +297,12 @@ A tuned_differ_x86_and_other_archs_in_cpu_plugin.patch
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1081801</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>25a20034868b5c7ad5da0ff72e4649d6</srcmd5>
+    <version>2.21.0.0+git.670541d</version>
+    <time>1695758518</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113605</requestid>
+  </revision>
 </revisionlist>

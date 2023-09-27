@@ -1,29 +1,15 @@
---- ImageMagick-7.1.0-43/config/policy.xml
-+++ ImageMagick-7.1.0-43/config/policy.xml
-@@ -79,5 +79,26 @@
-   <!-- <policy domain="cache" name="synchronize" value="true"/> -->
-   <!-- <policy domain="system" name="shred" value="1"/> -->
-   <!-- <policy domain="system" name="font" value="/path/to/unicode-font.ttf"/> -->
-+
-+  <!-- Disable insecure coders by default -->
-+  <!-- https://bugzilla.suse.com/show_bug.cgi?id=978061 -->
-+  <policy domain="coder" rights="none" pattern="EPHEMERAL" />
-+  <policy domain="coder" rights="none" pattern="URL" />
-+  <policy domain="coder" rights="none" pattern="HTTPS" />
-+  <policy domain="coder" rights="none" pattern="MVG" />
-+  <policy domain="coder" rights="none" pattern="MSL" />
-+  <policy domain="coder" rights="none" pattern="TEXT" />
-+  <policy domain="coder" rights="none" pattern="SHOW" />
-+  <policy domain="coder" rights="none" pattern="WIN" />
-+  <policy domain="coder" rights="none" pattern="PLT" />
-+  <policy domain="coder" rights="write" pattern="PS" />
-+  <policy domain="coder" rights="write" pattern="PS2" />
-+  <policy domain="coder" rights="write" pattern="PS3" />
-+  <policy domain="coder" rights="write" pattern="PDF" />
-+  <policy domain="coder" rights="write" pattern="XPS" />
-+  <policy domain="coder" rights="write" pattern="EPI" />
-+  <policy domain="coder" rights="write" pattern="EPS" />
-+  <policy domain="coder" rights="write" pattern="PCL" />
-+  <policy domain="path" rights="none" pattern="@*"/>
-   <policy domain="Undefined" rights="none"/>
- </policymap>
+--- a/config/policy-secure.xml
++++ b/config/policy-secure.xml
+@@ -92,8 +92,10 @@
+   <policy domain="path" rights="none" pattern="/etc/*"/>
+   <!-- Indirect reads are not permitted. -->
+   <policy domain="path" rights="none" pattern="@*"/>
++  <!-- These image types can expose risks on read and write -->
++  <policy domain="module" rights="none" pattern="{EPHEMERAL,URL,HTTPS,MVG,MSL,TEXT,SHOW,WIN,PLT}"/>
+   <!-- These image types are security risks on read, but write is fine -->
+-  <policy domain="module" rights="write" pattern="{MSL,MVG,PS,SVG,URL,XPS}"/>
++  <policy domain="module" rights="write" pattern="{MSL,MVG,PS,SVG,URL,XPS,PDF,EPI,EPS,PCL,PS1,PS2,PS3}"/>
+   <!-- This policy sets the number of times to replace content of certain
+        memory buffers and temporary files before they are freed or deleted. -->
+   <policy domain="system" name="shred" value="1"/>
+

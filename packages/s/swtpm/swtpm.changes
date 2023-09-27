@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 16 10:10:45 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Update to version 0.8.1:
+  - swtpm:
+    -   Restore logging to stderr on log open failure
+  - swtpm_setup:
+    -   Exit with '0' upon --version rather than '1'.
+    -   Initialized @argv in get_swtpm_capabilities()
+  - swtpm_localca:
+    -   Add missing NULL option to end of array
+  - SELinux:
+    -   Add rules for user_tpm_t:sockfile to allow unlink
+    -   Add rules for sock_file on user_tmp_t
+
+-------------------------------------------------------------------
 Fri Jun 16 11:32:11 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Make selinux optional to allow building this package for Leap, too.

@@ -139,4 +139,12 @@
     <comment>- New upstream release 6.3.2 (bsc#1211741, CVE-2023-28370)</comment>
     <requestid>1102687</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>aaee0e07c61e9f0c012ff275ed58b796</srcmd5>
+    <version>6.3.3</version>
+    <time>1695758421</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1112880</requestid>
+  </revision>
 </revisionlist>

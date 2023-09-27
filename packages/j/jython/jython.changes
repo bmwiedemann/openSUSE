@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 25 16:49:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * jython-java8compat.patch
+    + use release=8 on compilers that support it
+  * jython-reproducible-builds.patch
+    + preserve mtimes of files since they get embedded in the
+      resultiong class files
+    + use relative paths of files that get included in antlr
+      getGrammar* methods
+  * jython-reproducible-now.patch
+    + use SOURCE_DATE_EPOCH for "now" if the variable is set
+
+-------------------------------------------------------------------
 Wed Jun 28 10:40:43 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 2.7.3: [bsc#1186065]
