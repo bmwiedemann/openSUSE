@@ -1,0 +1,72 @@
+--- doxia-1.12.0/doxia-modules/doxia-module-fo/pom.xml.orig	2023-01-09 21:09:18.000000000 -0700
++++ doxia-1.12.0/doxia-modules/doxia-module-fo/pom.xml	2023-06-12 15:58:35.171254714 -0600
+@@ -71,9 +71,9 @@ under the License.
+ 
+     <!-- misc -->
+     <dependency>
+-      <groupId>commons-configuration</groupId>
+-      <artifactId>commons-configuration</artifactId>
+-      <version>1.10</version>
++      <groupId>org.apache.commons</groupId>
++      <artifactId>commons-configuration2</artifactId>
++      <version>2.9.0</version>
+     </dependency>
+     <dependency>
+       <groupId>commons-collections</groupId>
+--- doxia-1.12.0/doxia-modules/doxia-module-fo/src/main/java/org/apache/maven/doxia/module/fo/FoConfiguration.java.orig	2023-01-09 21:09:18.000000000 -0700
++++ doxia-1.12.0/doxia-modules/doxia-module-fo/src/main/java/org/apache/maven/doxia/module/fo/FoConfiguration.java	2023-06-12 17:00:19.630450286 -0600
+@@ -20,14 +20,16 @@ package org.apache.maven.doxia.module.fo
+  */
+ 
+ import java.io.File;
++import java.io.FileReader;
+ import java.io.IOException;
+ import java.util.List;
+ 
+ import javax.swing.text.MutableAttributeSet;
+ import javax.swing.text.SimpleAttributeSet;
+ 
+-import org.apache.commons.configuration.ConfigurationException;
+-import org.apache.commons.configuration.XMLConfiguration;
++import org.apache.commons.configuration2.XMLConfiguration;
++import org.apache.commons.configuration2.ex.ConfigurationException;
++import org.apache.commons.configuration2.io.FileLocatorUtils;
+ import org.apache.maven.doxia.sink.impl.SinkUtils;
+ import org.codehaus.plexus.util.ReaderFactory;
+ 
+@@ -55,9 +57,6 @@ public class FoConfiguration
+     {
+         this.config = new XMLConfiguration();
+ 
+-        // necessary because some attributes contain commas:
+-        config.setDelimiterParsingDisabled( true );
+-
+         loadDefaultConfig();
+     }
+ 
+@@ -75,10 +74,11 @@ public class FoConfiguration
+             throws IOException
+     {
+         config.clear();
++        config.initFileLocator( FileLocatorUtils.fileLocator().basePath( configFile.getParent() ).fileName( configFile.getName() ).create() );
+ 
+         try
+         {
+-            config.load( configFile );
++            config.read( new FileReader(configFile) );
+         }
+         catch ( ConfigurationException cex )
+         {
+@@ -182,9 +182,11 @@ public class FoConfiguration
+     /** Load the default fo configuration file. */
+     private void loadDefaultConfig()
+     {
++        config.initFileLocator( FileLocatorUtils.fileLocator().sourceURL( getClass().getResource( "/fo-styles.xslt" ) ).create() );
++
+         try
+         {
+-            config.load( ReaderFactory.newXmlReader( getClass().getResourceAsStream( "/fo-styles.xslt" ) ) );
++            config.read( ReaderFactory.newXmlReader( getClass().getResourceAsStream( "/fo-styles.xslt" ) ) );
+         }
+         catch ( ConfigurationException | IOException cex )
+         {
