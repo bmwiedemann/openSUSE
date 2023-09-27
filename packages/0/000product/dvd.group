@@ -376,6 +376,7 @@
     <package name="dracut" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="dracut-transactional-update" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="drbd-kmp-default" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drbd-utils" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="drkonqi5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="drkonqi5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2106,8 +2107,6 @@
     <package name="libjasper7" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libjavascriptcoregtk-4_0-18" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libjavascriptcoregtk-4_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libjaylink" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libjaylink0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libjbig2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libjcat1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libjemalloc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2948,8 +2947,8 @@
     <package name="mjpegtools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mkfontscale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mkisofs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="mlocate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="mlocate-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="mlocate" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="mlocate-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="mlterm-common" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mlterm-fcitx" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mlterm-sdl2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3360,6 +3359,7 @@
     <package name="plasma5-workspace-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma5-workspace-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma5-workspace-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="plocate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="plymouth" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="plymouth-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="plymouth-dracut" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
