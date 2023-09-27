@@ -17,17 +17,15 @@
 #
 
 
-%define sover   16
+%define sover   17
 Name:           spirv-llvm-translator
-Version:        16.0.0
+Version:        17.0.0
 Release:        0
 Summary:        LLVM/SPIR-V Bi-Directional Translator library
 License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/KhronosGroup/SPIRV-LLVM-Translator
 Source:         https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v%{version}.tar.gz#/SPIRV-LLVM-Translator-%{version}.tar.gz
-Patch1:         Revert-Add-support-for-LLVM_LINK_LLVM_DYLIB.patch
-Patch2:         Revert-added-translator-support-for-SPIRV_INTEL.patch
 BuildRequires:  cmake >= 3.3
 BuildRequires:  gcc-c++
 BuildRequires:  llvm%{sover}-devel
@@ -62,8 +60,6 @@ the LLVM/SPIR-V Bi-Directional Translator library.
 
 %prep
 %setup -q -n SPIRV-LLVM-Translator-%{version}
-%patch1 -p1
-%patch2 -p1
 
 %build
 %cmake \

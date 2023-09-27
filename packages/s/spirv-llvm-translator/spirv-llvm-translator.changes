@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 19 21:57:02 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 17.0.0.
+  * Compatibility with LLVM 17.
+- Drop Revert-Add-support-for-LLVM_LINK_LLVM_DYLIB.patch: the
+  problematic change was reverted upstream.
+- Drop Revert-added-translator-support-for-SPIRV_INTEL.patch: the
+  corresponding change to spirv-headers has landed in the meantime.
+
+-------------------------------------------------------------------
 Wed Mar 22 22:40:42 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 16.0.0.
