@@ -1050,4 +1050,12 @@ Fixes:
     <comment></comment>
     <requestid>1102340</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>dcc2f7358d012f01550c8a2663802ca5</srcmd5>
+    <version>6.338.0</version>
+    <time>1695853474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1113669</requestid>
+  </revision>
 </revisionlist>
