@@ -933,4 +933,12 @@ confusing &quot;failed to try-restart&quot; error message. [bsc#1093179, bsc#101
     <comment></comment>
     <requestid>1108895</requestid>
   </revision>
+  <revision rev="87" vrev="12">
+    <srcmd5>552cdd73873989be7865ef083ba666c5</srcmd5>
+    <version>3.0.5</version>
+    <time>1695853472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1113665</requestid>
+  </revision>
 </revisionlist>

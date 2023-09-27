@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 26 09:20:33 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Enable crypto-policies support: [bsc#1211301]
+  * Add vsftpd-use-system-wide-crypto-policy.patch
+
+-------------------------------------------------------------------
 Fri Aug 25 15:06:06 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use pam macros to install pam config in /usr/lib/pam.d
