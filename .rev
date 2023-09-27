@@ -1,0 +1,29 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6fbe4c4e656b0186e260cb0288cbc7a7</srcmd5>
+    <version>17.0.1</version>
+    <time>1695853460</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial release based on version 17.0.1.
+  * For details, see the release notes:
+    - https://releases.llvm.org/17.0.1/docs/ReleaseNotes.html
+    - https://releases.llvm.org/17.0.1/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/17.0.1/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/17.0.1/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/17.0.1/tools/lld/docs/ReleaseNotes.html
+- Rebase patches:
+  * libcxx-test-library-path.patch
+  * llvm_build_tablegen_component_as_shared_library.patch
+  * llvm-do-not-install-static-libraries.patch
+  * llvm-normally-versioned-libllvm.patch
+  * llvm-remove-clang-only-flags.patch
+  * opt-viewer-Find-style-css-in-usr-share.patch
+- Simplify check-no-llvm-exegesis.patch by removing test directory.
+- Drop patches that have landed upstream:
+  * openmp-drop-rpath.patch
+- Add openmp-dont-run-gpu-arch.patch: the binaries are not
+  available in our build, and neither are the toolchains they test
+  for (NV CUDA and AMD HSA).</comment>
+    <requestid>1112901</requestid>
+  </revision>
+</revisionlist>
