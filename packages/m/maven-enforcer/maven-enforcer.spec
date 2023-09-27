@@ -1,7 +1,7 @@
 #
 # spec file for package maven-enforcer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,39 +17,34 @@
 
 
 Name:           maven-enforcer
-Version:        1.4.1
+Version:        3.4.1
 Release:        0
 Summary:        A build rule execution framework
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/enforcer
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/enforcer/enforcer/%{version}/enforcer-%{version}-source-release.zip
-# TODO forward upstream
-# https://issues.apache.org/jira/browse/MENFORCER-267
-Patch0:         0001-Port-to-Maven-3-API.patch
-Patch1:         0002-Port-to-artifact-transfer-0.11.0.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
-BuildRequires:  mvn(commons-lang:commons-lang)
-BuildRequires:  mvn(org.apache.maven.plugin-testing:maven-plugin-testing-harness)
+BuildRequires:  mvn(commons-codec:commons-codec)
+BuildRequires:  mvn(commons-io:commons-io)
+BuildRequires:  mvn(javax.annotation:javax.annotation-api)
+BuildRequires:  mvn(org.apache.commons:commons-lang3)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
-BuildRequires:  mvn(org.apache.maven.shared:maven-artifact-transfer)
-BuildRequires:  mvn(org.apache.maven.shared:maven-common-artifact-filters)
-BuildRequires:  mvn(org.apache.maven.shared:maven-dependency-tree)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
-BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.beanshell:bsh)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-container-default)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-i18n)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.eclipse.aether:aether-api)
+BuildRequires:  mvn(org.eclipse.aether:aether-util)
+BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
+BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildArch:      noarch
 
 %description
@@ -82,30 +77,37 @@ Summary:        Enforcer Rules
 Group:          Development/Libraries/Java
 
 %description plugin
-This component contains the standard Enforcer Rules.
+The Enforcer plugin provides goals to control certain environmental
+constraints such as Maven version, JDK version and OS family along
+with many more built-in rules and user created rules.
+
+%package extension
+Summary:        Maven Enforcer Extension
+Group:          Development/Libraries/Java
+
+%description extension
+The Enforcer Extension provides a way to globally define rules without
+making use of pom inheritence. This way you don't have to adjust the
+pom.xml, but you can enforce a set of rules.
 
 %prep
 %setup -q -n enforcer-%{version}
-%patch0 -p1
-%patch1 -p1
 
-# Avoid dependency cycle
-%pom_xpath_inject pom:build/pom:pluginManagement/pom:plugins "
-    <plugin>
-      <artifactId>maven-enforcer-plugin</artifactId>
-      <version>SYSTEM</version>
-    </plugin>"
+find -name '*.java' -exec sed -i 's/\r//' {} +
 
-# Replace plexus-maven-plugin with plexus-component-metadata
-sed -e "s|<artifactId>plexus-maven-plugin</artifactId>|<artifactId>plexus-component-metadata</artifactId>|" \
-    -e "s|<goal>descriptor</goal>|<goal>generate-metadata</goal>|" \
-    -i enforcer-{api,rules}/pom.xml
+%pom_remove_dep org.junit:junit-bom
+
+%pom_add_dep javax.annotation:javax.annotation-api maven-enforcer-plugin
+
+%pom_add_plugin org.eclipse.sisu:sisu-maven-plugin maven-enforcer-plugin
 
 %build
 %{mvn_build} -s -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
+    -Dversion.maven-enforcer-plugin=SYSTEM \
+    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dsource=8
 
 %install
@@ -123,6 +125,8 @@ sed -e "s|<artifactId>plexus-maven-plugin</artifactId>|<artifactId>plexus-compon
 %files rules -f .mfiles-enforcer-rules
 
 %files plugin -f .mfiles-maven-enforcer-plugin
+
+%files extension -f .mfiles-maven-enforcer-extension
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE
