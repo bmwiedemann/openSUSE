@@ -19,7 +19,7 @@
 %global pkg_name text-ansi
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.2.1.1
+Version:        0.3.0
 Release:        0
 Summary:        Text styling for ANSI terminals
 License:        BSD-3-Clause
@@ -29,8 +29,8 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-text-builder-devel
-BuildRequires:  ghc-text-builder-prof
+BuildRequires:  ghc-text-builder-linear-devel
+BuildRequires:  ghc-text-builder-linear-prof
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 ExcludeArch:    %{ix86}

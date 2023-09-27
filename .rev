@@ -7,4 +7,12 @@
     <comment>new dependency of hledger</comment>
     <requestid>1112785</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7037d9afcaf03bf176a048804b23cbdb</srcmd5>
+    <version>0.3.0</version>
+    <time>1695853578</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1113899</requestid>
+  </revision>
 </revisionlist>
