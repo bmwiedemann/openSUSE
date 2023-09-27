@@ -1163,4 +1163,20 @@
     <comment>submit new version 4.6.11</comment>
     <requestid>1091235</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>8cb4218d7af44c095dc20ccf90ce665b</srcmd5>
+    <version>4.6.12</version>
+    <time>1689175574</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.6.12</comment>
+    <requestid>1098088</requestid>
+  </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>0661d99d996fb863d8346537c556519a</srcmd5>
+    <version>5.0.1</version>
+    <time>1695853493</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 5.0.1</comment>
+    <requestid>1113646</requestid>
+  </revision>
 </revisionlist>

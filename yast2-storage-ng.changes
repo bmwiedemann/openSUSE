@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep 22 08:27:34 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- AutoYaST: official support for LUKS2 (jsc#PED-3878, jsc#PED-5518)
+- 5.0.1
+
+-------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (#bsc1185510)
+
+-------------------------------------------------------------------
+Wed Jul  5 13:42:12 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Ensure adding storage support software packages for MicroOS
+  which uses its custom partitions_proposal client, not the 
+  standard inst_disk_proposal client (bsc#1212452)
+  https://github.com/yast/yast-storage-ng/pull/1351
+- 4.6.12
+
+-------------------------------------------------------------------
+Thu Jun 29 11:42:21 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Honor encryption settings if they are set into ProductFeatures
+  by the Common Critera role (jsc#PED-4166, jsc#PED-4474).
+
+-------------------------------------------------------------------
 Wed Jun  7 08:03:52 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Prevent setting the volume label for a mounted btrfs or swap
