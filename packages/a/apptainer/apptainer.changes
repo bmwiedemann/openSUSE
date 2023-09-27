@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep 27 10:17:11 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- removed CRYPTOGAMS license as not known in OBS and OpenSSL is 
+  also valid
+
+-------------------------------------------------------------------
+Mon Sep 25 08:57:57 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- updated to 1.2.3 with following changes:
+  * The apptainer push/pull commands now show a progress bar for the oras
+    protocol like there was for docker and library protocols.
+  * The --nv and --rocm flags can now be used simultaneously.
+  * Fix the use of APPTAINER_CONFIGDIR with apptainer instance start and action
+    commands that refer to instance://.
+  * Fix the issue that apptainer would not read credentials from the Docker
+    fallback path ~/.docker/config.json if missing in the apptainer
+    credentials.
+   
+-------------------------------------------------------------------
+Tue Aug 29 15:34:36 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update license for the package to cover also OpenSSL and CRYPTOGAMS 
+  part of chacha_ppc64le.s
+
+-------------------------------------------------------------------
 Fri Jul 28 13:39:30 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - updated to 1.2.2 with following changes:

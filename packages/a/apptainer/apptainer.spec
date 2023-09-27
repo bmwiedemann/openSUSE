@@ -23,10 +23,12 @@
 #%%define vers_suffix -rc.1
 
 Summary:        Application and environment virtualization
-License:        BSD-3-Clause-LBNL
+# CRYPTOGAMS isn't known in OBS
+#License:        BSD-3-Clause-LBNL and (OpenSSL or CRYPTOGAMS)
+License:        BSD-3-Clause-LBNL AND OpenSSL
 Group:          Productivity/Clustering/Computing
 Name:           apptainer
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://apptainer.org
