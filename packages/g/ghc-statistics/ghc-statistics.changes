@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 21 18:43:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update statistics to version 0.16.2.1.
+  ## Changes in 0.16.2.1
+
+   * Unnecessary constraint dropped from `tStatisticsPaired`.
+
+   * Compatibility with QuickCheck-2.14. Test suite doesn't fail every time.
+
+-------------------------------------------------------------------
 Fri Apr  7 17:07:55 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update statistics to version 0.16.2.0.
