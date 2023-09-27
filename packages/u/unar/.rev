@@ -55,4 +55,13 @@
     <comment></comment>
     <requestid>792501</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1dfa87a64fb55992190f399404da687e</srcmd5>
+    <version>1.10.7</version>
+    <time>1695853514</time>
+    <user>dimstar_suse</user>
+    <comment>- use pkgconfig(icu-uc) to use the current libicu. (jsc#PED-6193)
+</comment>
+    <requestid>1113701</requestid>
+  </revision>
 </revisionlist>

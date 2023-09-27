@@ -1,7 +1,7 @@
 #
 # spec file for package unar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,11 @@ BuildRequires:  gcc-objc
 BuildRequires:  gnustep-base-devel
 BuildRequires:  gnustep-make
 BuildRequires:  libbz2-devel
-BuildRequires:  libicu-devel
+BuildRequires:  pkg-config
 BuildRequires:  unzip
 BuildRequires:  wavpack-devel
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(icu-uc)
 
 %description
 The Unarchiver is originally a Mac OS X application. This package
