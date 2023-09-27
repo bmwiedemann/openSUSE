@@ -36,7 +36,6 @@ BuildRequires:  glib2-devel >= 2.52.0
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  graphviz
 BuildRequires:  intltool
-BuildRequires:  libicu-devel >= 4.8.1.1
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -47,6 +46,7 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gi-docgen)
+BuildRequires:  pkgconfig(icu-i18n) > 4.8.1.1
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.0
 BuildRequires:  pkgconfig(libseccomp) >= 2.0
 BuildRequires:  pkgconfig(libsoup-3.0) >= 2.99.2

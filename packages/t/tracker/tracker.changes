@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 18 11:50:17 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- use pkgconfig(icu-i18n) to use the current libicu. (jsc#PED-6193)
+
+-------------------------------------------------------------------
 Sat Sep 16 15:35:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.6.0:

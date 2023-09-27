@@ -1347,4 +1347,12 @@
     <comment></comment>
     <requestid>1111878</requestid>
   </revision>
+  <revision rev="160" vrev="2">
+    <srcmd5>4e94a42d4c8abcdf03189c4b1893c7ad</srcmd5>
+    <version>3.6.0</version>
+    <time>1695853491</time>
+    <user>dimstar_suse</user>
+    <comment>- use pkgconfig(icu-i18n) to use the current libicu. (jsc#PED-6193)</comment>
+    <requestid>1113615</requestid>
+  </revision>
 </revisionlist>
