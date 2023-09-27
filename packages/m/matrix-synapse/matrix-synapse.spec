@@ -21,17 +21,14 @@
 # NOTE: Keep this is in the same order as pyproject.toml.
 %if %{with use_poetry_for_dependencies}
 %global Jinja2_version                3.1.2
-# TODO: 10.0.0
-%global Pillow_version                9.5.0
-# TODO: 6.0.1
-%global PyYAML_version                6.0
+%global Pillow_version                10.0.1
+%global PyYAML_version                6.0.1
 %global Twisted_version               22.10.0
 %global attrs_version                 23.1.0
 %global bcrypt_version                4.0.1
 %global bleach_version                5.0.1
 %global canonicaljson_version         2.0.0
-# TODO: 41.0.3
-%global cryptography_version          41.0.2
+%global cryptography_version          41.0.3
 %global immutabledict_version         3.0.0
 %global idna_version                  3.4
 %global ijson_version                 3.2.3
@@ -41,15 +38,14 @@
 %global matrix_common_max_version     2
 %global msgpack_version               1.0.5
 %global netaddr_version               0.8.0
-# TODO: 8.13.14
+# TODO: 8.13.19
 %global phonenumbers_version          8.13.18
 # TODO: 0.17.1
 %global prometheus_client_version     0.17.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             23.0.0
 %global pyasn1_version                0.5.0
-# TODO 0.3.0
-%global pyasn1_modules_version        0.2.8
+%global pyasn1_modules_version        0.3.0
 %global pymacaroons_version           0.13.0
 %global service_identity_version      23.1.0
 %global signedjson_version            1.1.4
@@ -61,13 +57,12 @@
 %global unpaddedbase64_version        2.1.0
 %global matrix_synapse_ldap3_version  0.2.2
 %global packaging_version             23.1
-%global psycopg2_version              2.9.6
+%global psycopg2_version              2.9.7
 # TODO             7.3.1
 %global pysaml2_version               7.2.1
 %global Authlib_version               1.2.1
-# TODO             4.9.3
-%global lxml_version                  4.9.2
-%global sentry_sdk_version            1.29.2
+%global lxml_version                  4.9.3
+%global sentry_sdk_version            1.30.0
 %global PyJWT_version                 2.4.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
@@ -76,12 +71,11 @@
 %global txredisapi_version            1.4.9
 %global Pympler_version               1.0.1
 %global pydantic_version              1.9.1
-# TODO: 2.10.2
-%global pyicu_version                 2.10.2
+%global pyicu_version                 2.11
 %else
 # some version locks based on poetry.lock
 %global Jinja2_version                3.0
-%global Pillow_version                5.4.0
+%global Pillow_version                10.0.1
 %global PyYAML_version                3.13
 %global Twisted_version               18.9.0
 %global attrs_version                 21.1.1
@@ -160,7 +154,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.91.2
+Version:        1.93.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -194,11 +188,11 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  unzip
-BuildRequires:  (%{use_python}-poetry-core >= 1.0.0 with %{use_python}-poetry-core =< 1.7.0)
+BuildRequires:  (%{use_python}-poetry-core >= 1.1.0 with %{use_python}-poetry-core =< 1.7.0)
 %{?systemd_ordering}
 %{sysusers_requires}
 %requires_peq   %{use_python}-base
-BuildRequires:  (%{use_python}-setuptools-rust >= 1.3 with %{use_python}-setuptools-rust =< 1.6.0)
+BuildRequires:  (%{use_python}-setuptools-rust >= 1.3 with %{use_python}-setuptools-rust =< 1.7.0)
 # NOTE: Keep this is in the same order as pyproject.toml.
 # some version locks based on poetry.lock
 BuildRequires:  %{use_python}-Jinja2 >= %{Jinja2_version}

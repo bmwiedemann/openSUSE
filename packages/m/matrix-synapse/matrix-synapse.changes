@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Tue Sep 26 17:35:26 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.93.0
+  The following issues are fixed in 1.93.0 (and RCs).
+
+  GHSA-4f74-84v3-j9q5 / CVE-2023-41335 — Low Severity
+  https://github.com/matrix-org/synapse/security/advisories/GHSA-4f74-84v3-j9q5
+
+  Temporary storage of plaintext passwords during password changes.
+
+  GHSA-7565-cq32-vx2x / CVE-2023-42453 — Low Severity
+  https://github.com/matrix-org/synapse/security/advisories/GHSA-7565-cq32-vx2x
+
+  Improper validation of receipts allows forged read receipts.
+
+  See the advisories for more details. If you have any questions, email security@matrix.org.
+
+
+  - Features
+    - Add automatic purge after all users have forgotten a room.
+      (#15488)
+    - Restore room purge/shutdown after a Synapse restart. (#15488)
+    - Support resolving homeservers using matrix-fed DNS SRV
+      records from MSC4040. (#16137)
+    - Add the ability to use G (GiB) and T (TiB) suffixes in
+      configuration options that refer to numbers of bytes.
+      (#16219)
+    - Add span information to requests sent to appservices.
+      Contributed by MTRNord. (#16227)
+    - Add the ability to enable/disable registrations when using
+      CAS. Contributed by Aurélien Grimpard. (#16262)
+    - Allow the /notifications endpoint to be routed to workers.
+      (#16265)
+    - Enable users to easily unsubscribe to notifications emails
+      via the List-Unsubscribe header. (#16274)
+    - Report whether a user is locked in the List Accounts admin
+      API, and exclude locked users by default. (#16328)
+  - Bugfixes
+    - Fix a long-standing bug where multi-device accounts could
+      cause high load due to presence. (#16066, #16170, #16171,
+      #16172, #16174)
+    - Fix a long-standing bug where appservices using MSC2409 to
+      receive to_device messages would only get messages for one
+      user. (#16251)
+    - Fix bug when using workers where Synapse could end up
+      re-requesting the same remote device repeatedly. (#16252)
+    - Fix long-standing bug where we kept re-requesting a remote
+      server's key repeatedly, potentially causing delays in
+      receiving events over federation. (#16257)
+    - Avoid temporary storage of sensitive information. (#16272)
+    - Fix bug introduced in Synapse 1.49.0 when using dehydrated
+      devices (MSC2697) and refresh tokens. Contributed by Hanadi.
+      (#16288)
+    - Fix a long-standing bug where invalid receipts would be
+      accepted. (#16327)
+    - Use standard name for UTF-8 charset in emails. (#16329)
+    - Don't try refetching device lists for users on remote hosts
+      that are marked as "down". (#16298)
+  - Improved Documentation
+    - Fix typos in the documentation. (#16282)
+    - Link to the Alpine Linux community package for Synapse.
+      (#16304)
+    - Use string for federation_client_minimum_tls_version
+      documentation examples. Contributed by @jcgruenhage. (#16353)
+  - Internal Changes
+    - Allow modules to delete rooms. (#15997)
+    - Add GCC and GNU Make to the Nix flake development environment
+      so that ruff can be compiled. (#16090, #16263)
+    - Fix type checking when using the new version of Twisted.
+      (#16235)
+    - Delete device messages asynchronously and in staged batches
+      using the task scheduler. (#16240, #16311, #16312, #16313)
+    - Bump minimum supported Rust version to 1.61.0. (#16248)
+    - Update rust to version 1.71.1 in the nix development
+      environment. (#16260)
+    - Simplify server key storage. (#16261)
+    - Reduce CPU overhead of change password endpoint. (#16264)
+    - Stop purging from tables slated for removal. (#16273)
+    - Improve type hints. (#16276, #16301, #16325, #16326)
+    - Raise setuptools_rust version cap to 1.7.0. (#16277)
+    - Fix using the new task scheduler causing lots of CPU to be
+      used. (#16278)
+    - Upgrade CI run of Python 3.12 from rc1 to rc2. (#16280)
+    - Include values in SQL debug when using execute_values with
+      Postgres. (#16281)
+    - Enable additional linting checks. (#16283)
+    - Refactor receipts_graph Postgres transactions to stop error
+      messages. (#16299)
+    - Small improvements to logging in replication code. (#16309)
+    - Remove a reference cycle in background processes. (#16314)
+    - Only use literal strings for background process names.
+      (#16315)
+    - Refactor get_user_by_id. (#16316)
+    - Speed up task to delete to-device messages. (#16318)
+    - Avoid patching code in tests. (#16349)
+    - Test against PostgreSQL 16. (#16351)
+
+-------------------------------------------------------------------
+Mon Sep 25 23:09:42 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.92.3
+  This release does not affect openSUSE as we do not use the intree
+  libwebp
+
+  Upstream changes:
+  This is again a security update targeted at mitigating
+  CVE-2023-4863. It turns out that libwebp is bundled statically in
+  Pillow wheels so we need to update this dependency instead of
+  libwebp package at the OS level.
+
+  Unlike what was advertised in 1.92.2 changelog this release also
+  impacts PyPI wheels and Debian packages from matrix.org.
+
+  We encourage admins to upgrade as soon as possible.
+
+  Internal Changes
+  - Pillow 10.0.1 is now mandatory because of libwebp
+    CVE-2023-4863, since Pillow provides libwebp in the wheels.
+    (#16347)
+- bump all the dependencies which are not available in tumbleweed.
+
+-------------------------------------------------------------------
+Fri Sep 15 13:57:20 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.92.2
+  Only fix in this is actually changing the upstream docker
+  configuration to mitigate the webp security bug. Does not affect
+  our package.
+
+-------------------------------------------------------------------
+Tue Sep 12 20:21:04 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.92.1
+  - Bugfixes
+    - Revert MSC3861 introspection cache, admin impersonation and
+      account lock. (#16258)
+  - Internal Changes
+    - Fix incorrect docstring for Ratelimiter. (#16255)
+    - Update the release script to work on macOS. (#16266)
+    - Stop building Ubuntu Kinetic since it is EOL and repos seem
+      to be dead.
+
+-------------------------------------------------------------------
 Wed Sep  6 20:43:15 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.91.2
