@@ -1,7 +1,7 @@
 #
 # spec file for package python-smartypants
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-smartypants
 Version:        2.0.1
@@ -26,7 +25,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/leohemsted/smartypants.py
 Source:         https://github.com/leohemsted/smartypants.py/archive/v%{version}.tar.gz#/smartypants-%{version}.tar.gz
-Patch1:         use-sys-executable.patch
+Patch0:         use-sys-executable.patch
+Patch1:         fix-312.patch
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module setuptools}
@@ -44,8 +44,7 @@ which translates plain ASCII punctuation characters into smart
 typographic punctuation HTML entities.
 
 %prep
-%setup -q -n smartypants.py-%{version}
-%patch1 -p1
+%autosetup -p1 -n smartypants.py-%{version}
 
 %build
 %python_build
@@ -70,6 +69,8 @@ typographic punctuation HTML entities.
 %license COPYING
 %doc README.rst docs/*.rst
 %python_alternative %{_bindir}/smartypants
-%{python_sitelib}/*
+%{python_sitelib}/smartypants.py
+%{python_sitelib}/smartypants-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/*
 
 %changelog
