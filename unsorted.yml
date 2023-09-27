@@ -77,7 +77,10 @@ unsorted:
   - HyperKitty-web 
   - HyperKitty-web-uwsgi 
   - IccXML 
-  - ImageMagick-config-7-upstream 
+  - ImageMagick-config-7-upstream-limited 
+  - ImageMagick-config-7-upstream-open 
+  - ImageMagick-config-7-upstream-secure 
+  - ImageMagick-config-7-upstream-websafe 
   - ImageMagick-devel 
   - ImageMagick-devel-32bit 
   - ImageMagick-doc 
@@ -3121,6 +3124,7 @@ unsorted:
   - distcc-server 
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
+  - distribution-logos-openSUSE-Kubic 
   - distribution-registry 
   - dita 
   - diy-devel 
@@ -3134,9 +3138,8 @@ unsorted:
   - dkms 
   - dlpack-devel 
   - dlt-daemon 
+  - dlt-daemon-devel 
   - dlt-examples 
-  - dlt-libs 
-  - dlt-libs-devel 
   - dlt-tools 
   - dlt-viewer 
   - dm-zoned-tools 
@@ -3255,7 +3258,6 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
-  - drbd-kmp-default 
   - drc 
   - drc-doc 
   - driverctl 
@@ -6717,6 +6719,8 @@ unsorted:
   - gnome-common 
   - gnome-connections 
   - gnome-connections-lang 
+  - gnome-console 
+  - gnome-console-lang 
   - gnome-control-center-devel 
   - gnome-devel-docs 
   - gnome-devel-docs-lang 
@@ -11397,6 +11401,7 @@ unsorted:
   - libcroco-devel 
   - libcrossguid0 
   - libcryptmount-devel 
+  - libcrypto50 
   - libcryptopp-devel 
   - libcryptopp8_8_0 
   - libcryptsetup-devel 
@@ -11568,6 +11573,7 @@ unsorted:
   - libdisplay-info-devel 
   - libdjvulibre-devel 
   - libdlm-devel 
+  - libdlt2 
   - libdmapsharing-3_0-2 
   - libdmapsharing-devel 
   - libdmapsharing3-devel 
@@ -12790,7 +12796,9 @@ unsorted:
   - libjasper7-32bit 
   - libjavamapscript 
   - libjavascriptcoregtk-4_0-18-32bit 
+  - libjaylink 
   - libjaylink-devel 
+  - libjaylink0 
   - libjbig-devel 
   - libjbig-devel-32bit 
   - libjbig2-32bit 
@@ -14661,6 +14669,7 @@ unsorted:
   - libreproc14 
   - librepute1 
   - libresprite 
+  - libressl 
   - libressl-devel 
   - libressl-devel-doc 
   - librest-0_7-0 
@@ -15013,6 +15022,7 @@ unsorted:
   - libssh2-1-32bit 
   - libssh2-devel 
   - libssh4-32bit 
+  - libssl53 
   - libssr-glinject 
   - libsss_certmap-devel 
   - libsss_idmap-devel 
@@ -15274,6 +15284,7 @@ unsorted:
   - libtinyxml2-9 
   - libtirpc-devel 
   - libtirpc3-32bit 
+  - libtls26 
   - libtntdb-devel 
   - libtntdb5 
   - libtolua++-5_1-1 
@@ -16964,8 +16975,6 @@ unsorted:
   - maven-archetype-plugin 
   - maven-archiver 
   - maven-archiver-javadoc 
-  - maven-artifact 
-  - maven-artifact-manager 
   - maven-artifact-transfer 
   - maven-artifact-transfer-javadoc 
   - maven-assembly-plugin 
@@ -17042,8 +17051,6 @@ unsorted:
   - maven-local 
   - maven-mapping 
   - maven-mapping-javadoc 
-  - maven-model 
-  - maven-monitor 
   - maven-native 
   - maven-native-components 
   - maven-native-javadoc 
@@ -17053,11 +17060,9 @@ unsorted:
   - maven-plugin-annotations 
   - maven-plugin-build-helper 
   - maven-plugin-build-helper-javadoc 
-  - maven-plugin-descriptor 
   - maven-plugin-plugin 
   - maven-plugin-plugin-bootstrap 
   - maven-plugin-plugin-javadoc 
-  - maven-plugin-registry 
   - maven-plugin-testing 
   - maven-plugin-testing-harness 
   - maven-plugin-testing-javadoc 
@@ -17070,8 +17075,6 @@ unsorted:
   - maven-plugin-tools-java 
   - maven-plugin-tools-javadoc 
   - maven-plugin-tools-model 
-  - maven-profile 
-  - maven-project 
   - maven-remote-resources-plugin 
   - maven-remote-resources-plugin-javadoc 
   - maven-reporting-api 
@@ -17103,7 +17106,6 @@ unsorted:
   - maven-script-beanshell 
   - maven-script-interpreter 
   - maven-script-interpreter-javadoc 
-  - maven-settings 
   - maven-shade-plugin 
   - maven-shade-plugin-javadoc 
   - maven-shared-incremental 
@@ -17129,7 +17131,6 @@ unsorted:
   - maven-surefire-report-plugin 
   - maven-surefire-report-plugin-bootstrap 
   - maven-test-tools 
-  - maven-toolchain 
   - maven-verifier 
   - maven-verifier-javadoc 
   - maven-wagon-file 
@@ -17142,7 +17143,6 @@ unsorted:
   - maven-wagon-ssh 
   - maven-wagon-ssh-common 
   - maven-wagon-ssh-external 
-  - maven2-javadoc 
   - mawk 
   - maxima 
   - maxima-exec-clisp 
@@ -25102,6 +25102,7 @@ unsorted:
   - python310-packaging 
   - python310-padaos 
   - python310-padatious 
+  - python310-paginate 
   - python310-paho-mqtt 
   - python310-pako 
   - python310-palettable 
@@ -28495,6 +28496,7 @@ unsorted:
   - python311-pa-ringbuffer 
   - python311-padaos 
   - python311-padatious 
+  - python311-paginate 
   - python311-paho-mqtt 
   - python311-pako 
   - python311-palettable 
@@ -31951,6 +31953,7 @@ unsorted:
   - python39-packaging 
   - python39-padaos 
   - python39-padatious 
+  - python39-paginate 
   - python39-paho-mqtt 
   - python39-pako 
   - python39-palettable 
@@ -34779,6 +34782,7 @@ unsorted:
   - sharpfont-devel 
   - shells-cli 
   - shepherd 
+  - shepherd-bash-completion 
   - shepherd-bins 
   - shfmt 
   - shibboleth-sp 
