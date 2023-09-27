@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 22 10:25:35 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Added several LUKS-related elements to the partitioning schema
+  (jsc#PED-3878, jsc#PED-5518).
+- 5.0.1
+
+-------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (#bsc1185510)
+
+-------------------------------------------------------------------
 Tue May 23 12:31:41 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Properly install the selected products, do not lose them after
