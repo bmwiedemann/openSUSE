@@ -211,4 +211,24 @@
     <comment></comment>
     <requestid>1113183</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0c3bdf4b3651ca468836aa74d5f75aa9</srcmd5>
+    <version>64</version>
+    <time>1695853571</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 64:
+  * fixed compilation on osx where the default standard library
+    doesn't have a full implementation of std::from_chars
+  * fixed SAR adjustment in resizer when source cropping is used
+  * added -- as an alternate to . to indicate no output in vspipe
+    since shells have a tendency to expand .
+  * added json output of video frame properties to vspipe
+  * fixed clearMap function, previously it would forget to properly
+    clear the error state in maps which could cause
+  * crashes in frameeval and other filters
+  * 32 bit binaries are no longer provided for windows
+  * updated zimg to fix issues on zen4 cpus
+  * added support for cython 3.x</comment>
+    <requestid>1113880</requestid>
+  </revision>
 </revisionlist>
