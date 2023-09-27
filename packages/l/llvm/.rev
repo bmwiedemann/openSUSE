@@ -2276,4 +2276,19 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1093451</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>c25e53081af1f3b7008cc758baa452cc</srcmd5>
+    <version>17.0.1</version>
+    <time>1695853457</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 17.0.1.
+  * For details, see the release notes:
+    - https://releases.llvm.org/17.0.1/docs/ReleaseNotes.html
+    - https://releases.llvm.org/17.0.1/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/17.0.1/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/17.0.1/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/17.0.1/tools/lld/docs/ReleaseNotes.html
+</comment>
+    <requestid>1112844</requestid>
+  </revision>
 </revisionlist>

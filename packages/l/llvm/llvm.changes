@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 19 21:21:37 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 17.0.1.
+  * For details, see the release notes:
+    - https://releases.llvm.org/17.0.1/docs/ReleaseNotes.html
+    - https://releases.llvm.org/17.0.1/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/17.0.1/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/17.0.1/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/17.0.1/tools/lld/docs/ReleaseNotes.html
+
+-------------------------------------------------------------------
 Thu Jun 15 21:53:08 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 16.0.6.
