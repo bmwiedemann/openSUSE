@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-MariaDB
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name DBD-MariaDB
 Name:           perl-DBD-MariaDB
-Version:        1.22
+Version:        1.230.0
 Release:        0
+%define cpan_version 1.23
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        MariaDB and MySQL driver for the Perl5 Database Interface (DBI)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PA/PALI/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PA/PALI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        test-setup.sh
 Source2:        test-clean.sh
 Source3:        cpanspec.yml
@@ -36,6 +37,8 @@ BuildRequires:  perl(Devel::CheckLib) >= 1.12
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 0.90
 Requires:       perl(DBI) >= 1.608
+Provides:       perl(DBD::MariaDB) = 1.230.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  libmariadb-devel
@@ -77,7 +80,7 @@ provided by this programming API are supported. Some rarely used functions
 are missing, mainly because no-one ever requested them.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 # fails to detect the paths since perl 5.32

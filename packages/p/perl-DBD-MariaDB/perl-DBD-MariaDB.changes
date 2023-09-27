@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Sep 11 03:07:04 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.23
+   see /usr/share/doc/packages/perl-DBD-MariaDB/Changes
+
+  1.23 2023-09-10
+   - Add a missing break
+     (https://github.com/perl5-dbi/DBD-MariaDB/issues/163)
+   - Signal error if mariadb_db_async_result() fails
+     (https://github.com/perl5-dbi/DBD-MariaDB/issues/162)
+   - Update links to project website, issues and years
+   - Fix compilation with some MariaDB client library 10.2 and 10.3 versions
+   - Fix mariadb_use_result attribute
+     (https://github.com/perl5-dbi/DBD-MariaDB/issues/173)
+   - Fix statements with multiple result sets in asynchronous mode
+   - Fix mariadb_sockfd attribute for Windows
+   - Croaks when changing AutoCommit attribute fails
+     (https://github.com/perl5-dbi/dbi/issues/104)
+   - Various documentation and tests fixes
+   - Fix support for MariaDB Connector/C prior to 3.1.3 version
+   - Fix usage of Win32::GetShortPathName() in Makefile.PL
+   - Build release tarball in TAR format (instead of PAX)
+   - Allow to query and change mariadb_multi_statements attribute
+   - Add connect option mariadb_auth_plugin for specifying auth plugin
+   - Fix support for MySQL 8.0+ client library
+     (https://github.com/perl5-dbi/DBD-MariaDB/issues/191)
+     (https://github.com/perl5-dbi/DBD-mysql/issues/329)
+   - Add Github Actions CI and Cirrus CI (FreeBSD) for automated testing
+
+-------------------------------------------------------------------
 Mon Apr 25 11:15:13 UTC 2022 - Tina Müller <tina.mueller@suse.com>
 
 - Update patch perl-DBD-MariaDB-fix_c_32x_test.patch
