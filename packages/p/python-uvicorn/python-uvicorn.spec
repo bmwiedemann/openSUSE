@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uvicorn
-Version:        0.22.0
+Version:        0.23.2
 Release:        0
 Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
@@ -30,11 +30,13 @@ BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions >= 4 if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 7.0
 Requires:       python-h11 >= 0.8.0
+Requires:       (python-typing-extensions >= 4 if python-base < 3.11)
 Recommends:     python-PyYAML >= 5.1
 Recommends:     python-httptools >= 0.4.0
 Recommends:     python-websockets >= 8.0
@@ -47,7 +49,6 @@ Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.1}
-BuildRequires:  %{python_module asgiref >= 3.4}
 BuildRequires:  %{python_module click >= 7.0}
 BuildRequires:  %{python_module h11 >= 0.8.0}
 BuildRequires:  %{python_module httptools >= 0.4.0}
@@ -74,7 +75,6 @@ It supports HTTP/1.1 and WebSockets only.
 
 %prep
 %autosetup -p1 -n uvicorn-%{version}
-rm setup.cfg
 
 %build
 %pyproject_wheel
