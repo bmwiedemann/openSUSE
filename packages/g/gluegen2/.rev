@@ -140,4 +140,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment>riscv64 support</comment>
     <requestid>952107</requestid>
   </revision>
+  <revision rev="16" vrev="10">
+    <srcmd5>5c071f7e589919f9d63fd31efbc7cdb9</srcmd5>
+    <version>2.3.2</version>
+    <time>1695853543</time>
+    <user>dimstar_suse</user>
+    <comment>Remove dependency of findbugs</comment>
+    <requestid>1113818</requestid>
+  </revision>
 </revisionlist>

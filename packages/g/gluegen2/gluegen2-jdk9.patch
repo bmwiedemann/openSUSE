@@ -118,7 +118,7 @@
 +      <condition property="java.lib.dir.platform" value="${java.home.dir}/lib">
 +         <available file="${java.home.dir}/lib/libjawt.so"/>
 +      </condition>
-       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/arm" />
+       <property name="java.lib.dir.platform"         value="${java.home.dir}/jre/lib/aarch64" />
      </target>
  
 @@ -1513,6 +1532,9 @@

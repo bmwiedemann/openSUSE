@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 27 08:01:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on findbugs
+- Modified patches:
+  * gluegen2-jdk9.patch
+  * gluegen2-riscv64.patch
+    + rediff to changed context
+  * gluegen2-jar-paths.patch
+    -> gluegen2-0005-use-system-antlib.patch
+  * gluegen2-add-ppc64-aarch64.patch
+    -> gluegen2-0007-add-ppc64-aarch64.patch
+  * gluegen2-no-static-libstdc++.patch
+    -> gluegen2-0006-disable-static-libgcc.patch
+    + rediff and rename
+- Added patch:
+  * gluegen2-0008-jcpp-remove-javax-api.patch
+    + remove code quality annotations not necessary for our build
+
+-------------------------------------------------------------------
 Sun Feb  6 20:59:05 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Added patch:

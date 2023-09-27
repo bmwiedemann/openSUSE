@@ -1,0 +1,41 @@
+--- a/make/jogamp-androidtasks.xml
++++ b/make/jogamp-androidtasks.xml
+@@ -1,11 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project name="jogamp-androidtasks" basedir=".">
+     <dirname property="jogamp-androidtasks.basedir" file="${ant.file.jogamp-androidtasks}"/>
+-    <taskdef resource="net/sf/antcontrib/antlib.xml">
+-      <classpath> 
+-        <pathelement location="${jogamp-androidtasks.basedir}/lib/ant-contrib-1.0b3.jar"/> 
+-      </classpath>
+-    </taskdef>
++    <taskdef resource="net/sf/antcontrib/antlib.xml" />
+ 
+     <target name="test.regexp1" >
+         <property name="jarbasename" value="gluegen-rt-android" />
+--- a/make/gluegen-cpptasks.xml
++++ b/make/gluegen-cpptasks.xml
+@@ -20,7 +20,7 @@
+ 
+   <!-- import cpptasks -->
+   <!--typedef resource="net/sf/antcontrib/cpptasks/antlib.xml" classpath="${gluegen.root}/make/lib/cpptasks.jar;${gluegen.root}/make/lib/CppTasksGCCNamespaceHack.jar"/-->
+-  <typedef resource="net/sf/antcontrib/cpptasks/antlib.xml" classpath="${gluegen.root}/make/lib/cpptasks.jar"/>
++  <typedef resource="net/sf/antcontrib/cpptasks/antlib.xml" />
+ 
+   <!-- 0 fetch environment variable GLUEGEN_CPPTASKS_FILE -> gluegen-cpptasks.file -->
+   <property environment="env" />
+--- a/make/jogamp-archivetasks.xml
++++ b/make/jogamp-archivetasks.xml
+@@ -1,11 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project name="jogamp-archivetasks" basedir=".">
+     <dirname property="jogamp-archivetasks.basedir" file="${ant.file.jogamp-archivetasks}"/>
+-    <taskdef resource="net/sf/antcontrib/antlib.xml">
+-      <classpath> 
+-        <pathelement location="${jogamp-archivetasks.basedir}/lib/ant-contrib-1.0b3.jar"/> 
+-      </classpath>
+-    </taskdef>
++    <taskdef resource="net/sf/antcontrib/antlib.xml" />
+ 
+     <macrodef name="archive.7z">
+       <attribute name="basedir" />

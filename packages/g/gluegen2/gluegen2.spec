@@ -1,7 +1,7 @@
 #
 # spec file for package gluegen2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,19 +26,17 @@ Release:        0
 Summary:        Tool for automatic generation the Java and JNI code
 License:        BSD-2-Clause
 Group:          Development/Libraries/Java
-URL:            http://jogamp.org/gluegen/www/
+URL:            https://jogamp.org/gluegen/www/
 Source0:        http://jogamp.org/deployment/v%{version}/archive/Sources/%{src_name}.tar.xz
 Source1:        http://jogamp.org/deployment/v%{version}/archive/Sources/%{jcppsrc_name}.tar.xz
-Patch0:         gluegen2-jar-paths.patch
-Patch1:         gluegen2-0001-renamed-library.patch
-Patch2:         gluegen2-0003-disable-executable-tmp-tests.patch
-Patch3:         gluegen2-0004-add-antlr-jar-to-all-targets.patch
-# FIXME: Disable all junit tests because it requires packages not yet packaged in obs
-# PATCH-FIX-OPENSUSE gluegen2-disable-tests.patch badshah400@gmail.com -- Remove junit tests from the "all" targets as this requires additional dependencies (jardiff)
-Patch5:         gluegen2-disable-tests.patch
-Patch6:         gluegen2-add-ppc64-aarch64.patch
-# PATCH-FIX-UPSTREAM gluegen2-no-static-libstdc++.patch badshah400@gmail.com -- Do not use -static-libstdc++ option for linker, causes build failures
-Patch7:         gluegen2-no-static-libstdc++.patch
+Patch0:         gluegen2-0001-renamed-library.patch
+Patch1:         gluegen2-0003-disable-executable-tmp-tests.patch
+Patch2:         gluegen2-0004-add-antlr-jar-to-all-targets.patch
+Patch3:         gluegen2-0005-use-system-antlib.patch
+Patch4:         gluegen2-0006-disable-static-libgcc.patch
+Patch5:         gluegen2-0007-add-ppc64-aarch64.patch
+Patch6:         gluegen2-0008-jcpp-remove-javax-api.patch
+Patch7:         gluegen2-disable-tests.patch
 Patch8:         gluegen2-0001-Remove-version-overrides-for-memcpy.patch
 Patch9:         gluegen2-jdk9.patch
 Patch10:        gluegen2-jdk10.patch
@@ -46,7 +44,6 @@ Patch11:        gluegen2-riscv64.patch
 BuildRequires:  ant >= 1.9.8
 BuildRequires:  ant-antlr
 BuildRequires:  ant-contrib
-BuildRequires:  ant-findbugs
 BuildRequires:  ant-junit
 BuildRequires:  cpptasks
 BuildRequires:  java-devel >= 1.8
@@ -88,6 +85,7 @@ rm -rf src/java/net/highteq/nativetaglet/
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
@@ -140,8 +138,12 @@ sed -i 's/executable="mvn"/executable="true"/' make/build.xml
 %build
 cd make
 ant -Djava.version=1.8 -Dant.java.version=1.8 \
-    -Djavacdebug=true \
+    -Djavacdebug=false \
     -Djavacdebuglevel=lines,vars,source \
+    -Dantlr.jar=$(find-jar antlr) \
+    -Djunit.jar=$(find-jar junit) \
+    -Dant.jar=$(find-jar ant) \
+    -Dant-junit.jar=$(find-jar ant/ant-junit) \
     -Dc.compiler.debug=true \
     all
 
@@ -167,13 +169,13 @@ chmod -x %{buildroot}%{_datadir}/%{name}/make/Manifest*
 chmod -x %{buildroot}%{_datadir}/%{name}/make/gluegen.properties
 
 %files
-%doc LICENSE.txt
+%license LICENSE.txt
 %{_javadir}/%{name}-rt.jar
 %{_jnidir}/%{name}-rt-natives.jar
 %{_libdir}/lib%{name}-rt.so
 
 %files devel
-%doc LICENSE.txt
+%license LICENSE.txt
 %{_javadir}/%{name}.jar
 %{gluegen_devel_dir}/
 
