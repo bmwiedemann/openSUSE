@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 27 08:42:55 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * bootclasspath.patch
+    + allow building with java versions > 8
+
+-------------------------------------------------------------------
 Mon Sep 11 08:40:53 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: avoid timestamps in generated manifest

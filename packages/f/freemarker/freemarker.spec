@@ -37,6 +37,7 @@ Patch4:         enable-jdom.patch
 Patch5:         javacc-7.patch
 Patch6:         no-doctype.patch
 Patch7:         reproducible-javadoc.patch
+Patch8:         bootclasspath.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-logging
 BuildRequires:  apache-parent
@@ -55,10 +56,6 @@ BuildRequires:  junit
 BuildRequires:  log4j-over-slf4j
 BuildRequires:  slf4j
 BuildRequires:  xalan-j2 >= 2.7.0
-BuildConflicts: java-devel >= 9
-BuildConflicts: java-devel-openj9
-BuildConflicts: java-headless >= 9
-BuildConflicts: java-headless-openj9
 BuildArch:      noarch
 %if %{without jp_minimal}
 BuildRequires:  dom4j
@@ -94,6 +91,7 @@ find -type f -name "*.class" -delete
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 echo "-reproducible: true" >> osgi.bnd
 echo "-noextraheaders: true" >> osgi.bnd

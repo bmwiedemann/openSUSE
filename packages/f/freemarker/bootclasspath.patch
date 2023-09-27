@@ -1,0 +1,171 @@
+diff -ur freemarker-2.3.31.orig/build.xml freemarker-2.3.31/build.xml
+--- freemarker-2.3.31.orig/build.xml	2023-09-27 10:33:40.129433231 +0200
++++ freemarker-2.3.31/build.xml	2023-09-27 10:33:55.616196658 +0200
+@@ -43,34 +43,8 @@
+   <property name="server.ivy.repo.root" value="${basedir}/build/dummy-server-ivy-repo" />
+   
+   <property file="build.properties"/>
+-  <condition property="has.explicit.boot.classpath.j2se1.7">
+-    <isset property="boot.classpath.j2se1.7"/>
+-  </condition>
+-  <condition property="has.explicit.boot.classpath.j2se1.8">
+-    <isset property="boot.classpath.j2se1.8"/>
+-  </condition>
+-  <condition property="has.all.explicit.boot.classpaths">
+-    <and>
+-      <isset property="has.explicit.boot.classpath.j2se1.8"/>
+-    </and>
+-  </condition>
+   <available property="atLeastJDK8" classname="java.util.function.Predicate"/>
+ 
+-  <!-- When boot.classpath.j2se* is missing, these will be the defaults: -->
+-  <!-- Note: Target "dist" doesn't allow using these. -->
+-  <property name="boot.classpath.j2se1.7" value="${sun.boot.class.path}" />
+-  <property name="boot.classpath.j2se1.8" value="${sun.boot.class.path}" />
+-  
+-  <!-- For checking the correctness of the boot.classpath.j2se* -->
+-  <available classpath="${boot.classpath.j2se1.7}"
+-    classname="java.nio.file.Path" ignoresystemclasses="true" 
+-    property="boot.classpath.j2se1.7.correct"
+-  />
+-  <available classpath="${boot.classpath.j2se1.8}"
+-    classname="java.time.Instant" ignoresystemclasses="true" 
+-    property="boot.classpath.j2se1.8.correct"
+-  />
+-  
+   <!-- Set up version/timestamp filters and the version property: -->
+   <tstamp>
+     <format property="timestampNice" pattern="yyyy-MM-dd'T'HH:mm:ss'Z'"
+@@ -204,24 +178,6 @@
+   </target>
+    
+   <target name="compile" depends="javacc">
+-    <fail unless="boot.classpath.j2se1.7.correct"><!--
+-      -->The "boot.classpath.j2se1.7" property value (${boot.classpath.j2se1.7}) <!--
+-      -->seems to be an incorrect boot classpath. Please fix it in <!--
+-      -->the &lt;projectDir>/build.properties file, or wherever you <!--
+-      -->set it.<!--
+-    --></fail>
+-    <fail unless="boot.classpath.j2se1.8.correct"><!--
+-      -->The "boot.classpath.j2se1.8" property value (${boot.classpath.j2se1.8}) <!--
+-      -->seems to be an incorrect boot classpath. Please fix it in <!--
+-      -->the &lt;projectDir>/build.properties file, or wherever you <!--
+-      -->set it.<!--
+-    --></fail>
+-    <echo level="info"><!--
+-      -->Using boot classpaths: <!--
+-      -->Java 7: ${boot.classpath.j2se1.7};<!--
+-      -->Java 8: ${boot.classpath.j2se1.8}<!--
+-    --></echo>
+-
+     <!-- Comment out @SuppressFBWarnings, as it causes compilation warnings in dependent Gradle projects -->    
+     <delete dir="build/src-main-java-filtered" />
+     <mkdir dir="build/src-main-java-filtered" />
+@@ -249,7 +205,6 @@
+       debug="on" optimize="off" target="1.7" source="1.7" encoding="utf-8"
+       includeantruntime="false"
+       classpathref="ivy.dep"
+-      bootclasspath="${boot.classpath.j2se1.7}"
+       excludes="
+         freemarker/ext/beans/JRebelClassChangeNotifier.java
+         freemarker/core/_Java?*Impl.java,
+@@ -272,22 +227,14 @@
+       debug="on" optimize="off" target="1.8" source="1.8" encoding="utf-8"
+       includeantruntime="false"
+       classpathref="ivy.dep"
+-      bootclasspath="${boot.classpath.j2se1.8}"
+       includes="freemarker/core/_Java8Impl.java"
+     />
+     
+-    <rmic
+-      base="build/classes" includes="freemarker/debug/impl/Rmi*Impl.class"
+-      classpathref="ivy.dep"
+-      verify="yes" stubversion="1.2"
+-    />
+-
+     <ivy:cachepath conf="build.jsp2.1" pathid="ivy.dep.jsp2.1" />
+     <javac srcdir="build/src-main-java-filtered" destdir="build/classes" deprecation="off" 
+       debug="on" optimize="off" target="1.7" source="1.7" encoding="utf-8"
+       includeantruntime="false"
+       classpathref="ivy.dep.jsp2.1"
+-      bootclasspath="${boot.classpath.j2se1.7}"
+       includes="
+         freemarker/ext/jsp/**,
+         freemarker/ext/servlet/**,
+@@ -304,7 +251,6 @@
+       debug="on" optimize="off" target="1.7" source="1.7" encoding="utf-8"
+       includeantruntime="false"
+       classpathref="ivy.dep.jsp2.1"
+-      bootclasspath="${boot.classpath.j2se1.7}"
+       includes="
+         freemarker/ext/jsp/_FreeMarkerPageContext21.java,
+         freemarker/ext/jsp/FreeMarkerJspFactory21.java,
+@@ -316,16 +262,10 @@
+       debug="on" optimize="off" target="1.7" source="1.7" encoding="utf-8"
+       includeantruntime="false"
+       classpathref="ivy.dep.jython2.5"
+-      bootclasspath="${boot.classpath.j2se1.7}"
+       includes="
+         freemarker/ext/jython/_Jython25VersionAdapter.java"
+     />
+     
+-    <rmic base="build/classes" classpathref="ivy.dep"
+-      includes="build/src-main-java-filtered/freemarker/debug/impl/Rmi*Impl.class"
+-      verify="yes" stubversion="1.2"
+-    />
+-    
+     <copy toDir="build/classes">
+       <fileset dir="src/main/resources"
+         excludes="
+@@ -353,7 +293,6 @@
+       includeantruntime="false"
+       classpath="build/classes"
+       classpathref="ivy.dep.build.test"
+-      bootclasspath="${boot.classpath.j2se1.8}"
+     />
+     <copy toDir="build/test-classes">
+       <fileset dir="src/test/resources"
+@@ -448,9 +387,24 @@
+         <exclude name="**/template/EmptyMap.java" />
+         <exclude name="**/log/SLF4JLoggerFactory.java" />
+         <exclude name="**/log/CommonsLoggingLoggerFactory.java" />
++        <exclude name="**/beans/JRebelClassChangeNotifier.java" />
+       </fileset>
+     </copy>
+     
++    <!-- Comment out @SuppressFBWarnings, as it causes compilation warnings in dependent Gradle projects -->    
++    <replaceregexp
++        flags="gs" encoding="utf-8"
++        match='(@SuppressFBWarnings\(.+?"\s*\))' replace="/*\1*/"
++    >
++      <fileset dir="build/javadoc-sources" includes="**/*.java" />
++    </replaceregexp>
++    <replaceregexp
++        flags="gs" encoding="utf-8"
++        match='(import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;)' replace="// \1"
++    >
++      <fileset dir="build/javadoc-sources" includes="**/*.java" />
++    </replaceregexp>
++    
+     <!-- conf="IDE": as that has to contain all depedencies -->
+     <ivy:cachepath conf="IDE" pathid="ivy.dep" />
+     <javadoc
+@@ -473,7 +427,6 @@
+       locale="en_US"
+       additionalparam="-notimestamp"
+     >
+-      <link href="http://docs.oracle.com/javase/8/docs/api/"/>
+     </javadoc>
+     <delete dir="build/javadoc-sources" />
+   </target>
+@@ -593,10 +547,6 @@
+   <target name="dist"
+     description="Build the FreeMarker distribution files"
+   >
+-    <fail
+-      unless="has.all.explicit.boot.classpaths"
+-      message="All boot.classpath properties must be set in build.properties for dist!"
+-    />
+     <fail unless="atLeastJDK8" message="The release should be built with JDK 8+ (you may need to set JAVA_HOME)" />
+     <antcall target="clean" />  <!-- To improve the reliability -->
+     <antcall target="_dist" />
