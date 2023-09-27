@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 20 13:57:46 UTC 2023 - lars@linux-schulserver.de - 6.14.1
+
+- update to 6.14.1
+  + Fix default Percent_Lifetime_Remain threshold handling when -w 
+    is given by @ymartin-ovh , see #93
+  + Fix debug output of raw check list when using -l or 
+    ssd-lifetime, see #94
+  + Fix --hide-sn when combined with --debug (the smartctl output 
+    still showed the serial number), see #94
+
+-------------------------------------------------------------------
 Sun Apr 30 13:44:12 UTC 2023 - lars@linux-schulserver.de - 6.14.0
 
 - Update to 6.14.0

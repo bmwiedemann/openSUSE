@@ -129,4 +129,12 @@
 * Add user 'icinga' to sudoers file (audit was in bsc#1211003)</comment>
     <requestid>1085776</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>81caa32df36b3ebac56abb52a74aee93</srcmd5>
+    <version>6.14.1</version>
+    <time>1695853580</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1113908</requestid>
+  </revision>
 </revisionlist>
