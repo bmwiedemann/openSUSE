@@ -1,7 +1,7 @@
 #
 # spec file for package velocity
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,33 +27,14 @@ Source0:        https://archive.apache.org/dist/velocity/engine/%{version}/%{nam
 Source1:        %{name}-%{version}.pom
 Patch0:         velocity-build_xml.patch
 Patch1:         velocity-1.7-CVE-2020-13936.patch
-BuildRequires:  ant >= 1.6.5
-BuildRequires:  ant-junit
-BuildRequires:  antlr
-BuildRequires:  avalon-logkit
+Patch2:         velocity-1.7-commons-lang3.patch
+Patch3:         velocity-1.7-log-chute.patch
+BuildRequires:  ant
 BuildRequires:  commons-collections
-BuildRequires:  commons-lang
-BuildRequires:  commons-logging
+BuildRequires:  commons-lang3
 BuildRequires:  fdupes
-BuildRequires:  hsqldb
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
-BuildRequires:  jdom >= 1.0-1
-BuildRequires:  junit
-BuildRequires:  oro
-BuildRequires:  plexus-classworlds
-BuildRequires:  reload4j
-BuildRequires:  servletapi4
-BuildRequires:  werken-xpath
-Requires:       avalon-logkit
-Requires:       commons-collections
-Requires:       commons-lang
-Requires:       java >= 1.8
-Requires:       jdom >= 1.0-1
-Requires:       oro
-Requires:       reload4j
-Requires:       servletapi4
-Requires:       werken-xpath
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -155,48 +136,38 @@ applications to be developed according to a true MVC model.
 
 %prep
 %setup -q
-# Remove all binary libs used in compiling the package.
-# Note that velocity has some jar files containing macros under
-# examples and test that should not be removed.
-#find build -name '*.jar' -exec rm -f \{\} \;
-for j in $(find . -name "*.jar" | grep -v /test/); do
-    mv $j $j.no
-done
+cp %{SOURCE1} pom.xml
 %patch0 -b .sav0
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
-cp %{SOURCE1} pom.xml
+find . -name '*.jar' -print -delete
+find . -name '*.class' -print -delete
 
-%pom_remove_parent pom.xml
+# Disable unneeded features
+rm -r src/java/org/apache/velocity/{anakia,texen,servlet,convert}
+rm src/java/org/apache/velocity/runtime/log/{Avalon,Log4J}Log{Chute,System}.java
+rm src/java/org/apache/velocity/runtime/log/{CommonsLog,Servlet}LogChute.java
+rm src/java/org/apache/velocity/runtime/log/SimpleLog4JLogSystem.java
+rm src/java/org/apache/velocity/runtime/log/VelocityFormatter.java
+rm src/java/org/apache/velocity/app/event/implement/Escape{Html,JavaScript,Sql,Xml,}Reference.java
+
+%pom_remove_dep :oro
+%pom_remove_dep :jdom
+%pom_remove_dep :commons-logging
+%pom_remove_dep :log4j
+%pom_remove_dep :servlet-api
+%pom_remove_dep :logkit
+%pom_remove_dep :ant
+%pom_remove_dep :werken-xpath
 
 %build
-# Use servletapi4 instead of servletapi5 in CLASSPATH
-mkdir -p bin/test-lib
-pushd bin/test-lib
-ln -sf $(build-classpath hsqldb)
-ln -sf $(build-classpath junit)
-popd
 mkdir -p bin/lib
-pushd bin/lib
-ln -sf $(build-classpath ant)
-ln -sf $(build-classpath antlr)
-ln -sf $(build-classpath avalon-logkit)
-ln -sf $(build-classpath commons-collections)
-ln -sf $(build-classpath commons-lang)
-ln -sf $(build-classpath commons-logging)
-ln -sf $(build-classpath jdom)
-ln -sf $(build-classpath reload4j/reload4j)
-ln -sf $(build-classpath oro)
-# Use servletapi4 instead of servletapi5 in CLASSPATH
-ln -sf $(build-classpath servletapi4)
-ln -sf $(build-classpath werken-xpath)
-ln -sf $(build-classpath plexus/classworlds)
-popd
-export CLASSPATH=$(build-classpath jdom commons-collections commons-lang werken-xpath antlr)
-CLASSPATH=$CLASSPATH:$(pwd)/test/texen-classpath/test.jar
-export OPT_JAR_LIST="ant/ant-junit junit"
-#FIXME: tests failed on CommonsExtPropTestCase
-#but resulting files seems to be same
+build-jar-repository -s -p bin/lib commons-collections commons-lang3
+
+export CLASSPATH=$(build-classpath commons-collections commons-lang3)
+
 ant \
   -Djavac.source=1.8 -Djavac.target=1.8 \
   -buildfile build/build.xml \
@@ -208,7 +179,7 @@ install -d -m 755 %{buildroot}%{_javadir}
 install -p -m 644 bin/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml \
+%{mvn_install_pom} pom.xml \
     %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 %add_maven_depmap -a velocity:velocity
 

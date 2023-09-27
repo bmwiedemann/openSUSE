@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 27 04:36:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reduce considerably the dependencies graph
+- Added patches:
+  * velocity-1.7-commons-lang3.patch
+    + port from apache-commons-lang to apache-commons-lang3
+  * velocity-1.7-log-chute.patch
+    + make JDK's own logging provider as default so that the others
+      can be removed and dependencies on other logging frameworks
+      with them
+
+-------------------------------------------------------------------
 Tue Mar 22 15:13:03 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

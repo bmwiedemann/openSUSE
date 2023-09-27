@@ -202,4 +202,12 @@
     <comment>Build with source and target levels 8</comment>
     <requestid>963983</requestid>
   </revision>
+  <revision rev="27" vrev="12">
+    <srcmd5>b45f9b9ca850fc160276408427de9aac</srcmd5>
+    <version>1.7</version>
+    <time>1695853524</time>
+    <user>dimstar_suse</user>
+    <comment>Reduce considerably the dependency graph</comment>
+    <requestid>1113771</requestid>
+  </revision>
 </revisionlist>
