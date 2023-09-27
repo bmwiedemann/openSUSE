@@ -18,31 +18,58 @@
 
 %define cpan_name Mojo-IOLoop-ReadWriteProcess
 Name:           perl-Mojo-IOLoop-ReadWriteProcess
-Version:        0.33
+Version:        0.340.0
 Release:        0
+%define cpan_version 0.34
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Execute external programs or internal code blocks as separate process
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SZ/SZARATE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SZ/SZARATE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-# PATCH-FIX-UPSTREAM https://github.com/openSUSE/Mojo-IOLoop-ReadWriteProcess/pull/51
-Patch0:         deprecated-spurt.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IPC::SharedMem)
 BuildRequires:  perl(Module::Build) >= 0.4005
-BuildRequires:  perl(Mojolicious)
+BuildRequires:  perl(Mojolicious) >= 9.340.0
 BuildRequires:  perl(Test::Exception)
 Requires:       perl(IPC::SharedMem)
-Requires:       perl(Mojolicious)
+Requires:       perl(Mojolicious) >= 9.340.0
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess) = 0.340.0
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v1)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v1::Cpuacct)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v1::Cpuset)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v1::Devices)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v1::Freezer)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v1::Memory)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v1::Netcls)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v1::Netprio)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v1::PID)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v1::RDMA)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v2)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v2::CPU)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v2::IO)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v2::Memory)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v2::PID)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::CGroup::v2::RDMA)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::Container)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::Exception)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::Namespace)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::Pool)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::Queue)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::Session)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::Shared::Lock)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::Shared::Memory)
+Provides:       perl(Mojo::IOLoop::ReadWriteProcess::Shared::Semaphore)
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
 Mojo::IOLoop::ReadWriteProcess is yet another process manager.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
