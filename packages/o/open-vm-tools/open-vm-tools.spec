@@ -69,7 +69,7 @@ BuildRequires:  pam-devel
 BuildRequires:  pcre-devel
 BuildRequires:  procps-devel
 BuildRequires:  update-desktop-files
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 BuildRequires:  containerd-devel
 BuildRequires:  grpc-devel
 BuildRequires:  libcurl-devel
@@ -243,7 +243,7 @@ Requires:       libvmtools0 = %{version}
 Those are the development headers for libvmtools. They are needed
 if you intend to create own plugins for vmtoolsd.
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %package        containerinfo
 Summary:        Container Info Plugin
 Group:          System Environment/Libraries
@@ -457,7 +457,7 @@ systemctl try-restart vmtoolsd.service || :
 
 %postun -n libvmtools0 -p /sbin/ldconfig
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %post containerinfo
 systemctl try-restart vmtoolsd.service || :
 
@@ -593,7 +593,7 @@ systemctl try-restart vmtoolsd.service || :
 %{_includedir}/libDeployPkg
 %{_libdir}/pkgconfig/libDeployPkg.pc
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %files containerinfo
 %{_libdir}/%{name}/plugins/vmsvc/libcontainerInfo.so
 %endif

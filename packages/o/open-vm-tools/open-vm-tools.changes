@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 21 14:02:20 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- open-vm-tools is built with containerinfo plugin from 15 sp3 onwards
+
+-------------------------------------------------------------------
 Wed Sep  6 15:52:41 UTC 2023 - Kirk Allan <kallan@suse.com>
 
 - Update to 12.3.0 (build 22234872) (boo#1214850)
