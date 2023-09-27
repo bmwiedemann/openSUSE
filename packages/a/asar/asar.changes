@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 27 04:34:29 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream version 3.2.7
+  * ensure that files/folders whose names are properties of Object.prototype are packaged/extracted correctly
+
+-------------------------------------------------------------------
 Tue Sep 26 09:13:12 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream version 3.2.6

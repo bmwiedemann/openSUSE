@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>1113637</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9f1711d4946aeb730a29c6b9fa29858a</srcmd5>
+    <version>3.2.7</version>
+    <time>1695853538</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream version 3.2.7
+  * ensure that files/folders whose names are properties of Object.prototype are packaged/extracted correctly
+</comment>
+    <requestid>1113779</requestid>
+  </revision>
 </revisionlist>
