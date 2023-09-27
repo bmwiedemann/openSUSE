@@ -238,4 +238,27 @@
     unavailable and the --fakeroot option is not selected. (forwarded request 1101200 from mslacken)</comment>
     <requestid>1101201</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2d3dc85167ae17d4c229700dffc1aa3f</srcmd5>
+    <version>1.2.3</version>
+    <time>1695853500</time>
+    <user>dimstar_suse</user>
+    <comment>- removed CRYPTOGAMS license as not known in OBS and OpenSSL is 
+  also valid
+
+- updated to 1.2.3 with following changes:
+  * The apptainer push/pull commands now show a progress bar for the oras
+    protocol like there was for docker and library protocols.
+  * The --nv and --rocm flags can now be used simultaneously.
+  * Fix the use of APPTAINER_CONFIGDIR with apptainer instance start and action
+    commands that refer to instance://.
+  * Fix the issue that apptainer would not read credentials from the Docker
+    fallback path ~/.docker/config.json if missing in the apptainer
+    credentials.
+   
+
+- Update license for the package to cover also OpenSSL and CRYPTOGAMS 
+  part of chacha_ppc64le.s</comment>
+    <requestid>1113853</requestid>
+  </revision>
 </revisionlist>
