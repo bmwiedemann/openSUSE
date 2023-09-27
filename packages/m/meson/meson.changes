@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 23 20:58:26 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Port back get_llvm_tool_names-llvm17.patch to accept LLVM 17.
+
+-------------------------------------------------------------------
 Tue Aug  8 14:35:16 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.2.1:
