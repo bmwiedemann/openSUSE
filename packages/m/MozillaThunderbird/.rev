@@ -5002,4 +5002,27 @@ I cannot test locally unfortunately.
   https://www.thunderbird.net/en-US/thunderbird/115.2.3/releasenotes</comment>
     <requestid>1112694</requestid>
   </revision>
+  <revision rev="318" vrev="1">
+    <srcmd5>d7297f432ef1ce2a2d29f1eaff98812a</srcmd5>
+    <version>115.3.0</version>
+    <time>1695853551</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 115.3.0
+  https://www.thunderbird.net/en-US/thunderbird/115.3.0/releasenotes
+  MFSA 2023-43 (bsc#1215575)
+  * CVE-2023-5168 (bmo#1846683)
+    Out-of-bounds write in FilterNodeD2D1
+  * CVE-2023-5169 (bmo#1846685)
+    Out-of-bounds write in PathOps
+  * CVE-2023-5171 (bmo#1851599)
+    Use-after-free in Ion Compiler
+  * CVE-2023-5174 (bmo#1848454)
+    Double-free in process spawning on Windows
+  * CVE-2023-5176 (bmo#1836353, bmo#1842674, bmo#1843824,
+    bmo#1843962, bmo#1848890, bmo#1850180, bmo#1850983,
+    bmo#1851195)
+    Memory safety bugs fixed in Firefox 118, Firefox ESR 115.3,
+    and Thunderbird 115.3</comment>
+    <requestid>1113844</requestid>
+  </revision>
 </revisionlist>

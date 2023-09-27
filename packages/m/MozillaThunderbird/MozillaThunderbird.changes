@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 26 07:15:31 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 115.3.0
+  https://www.thunderbird.net/en-US/thunderbird/115.3.0/releasenotes
+  MFSA 2023-43 (bsc#1215575)
+  * CVE-2023-5168 (bmo#1846683)
+    Out-of-bounds write in FilterNodeD2D1
+  * CVE-2023-5169 (bmo#1846685)
+    Out-of-bounds write in PathOps
+  * CVE-2023-5171 (bmo#1851599)
+    Use-after-free in Ion Compiler
+  * CVE-2023-5174 (bmo#1848454)
+    Double-free in process spawning on Windows
+  * CVE-2023-5176 (bmo#1836353, bmo#1842674, bmo#1843824,
+    bmo#1843962, bmo#1848890, bmo#1850180, bmo#1850983,
+    bmo#1851195)
+    Memory safety bugs fixed in Firefox 118, Firefox ESR 115.3,
+    and Thunderbird 115.3
+
+-------------------------------------------------------------------
 Wed Sep 20 06:27:29 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 115.2.3
