@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 26 17:36:33 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20230926.
+  git-annex (10.20230926) upstream; urgency=medium
+
+    * Fix more breakage caused by git's fix for CVE-2022-24765, this time
+      involving a remote (either local or ssh) that is a repository not owned
+      by the current user.
+    * Fix using git remotes that are bare when git is configured with
+      safe.bareRepository = explicit.
+    * Fix linker optimisation in linux standalone tarballs.
+    * adb: Avoid some problems with unusual characters in exporttree
+      filenames that confuse adb shell commands.
+    * push: When on an adjusted branch, propagate changes to parent branch
+      before updating export remotes.
+    * lookupkey: Added --ref option.
+    * enableremote: Avoid overwriting existing git remote when passed the uuid
+      of a specialremote that was earlier initialized with the same name.
+    * Support being built with crypton rather than the no-longer maintained
+      cryptonite.
+    * Removed the vendored git-lfs and the GitLfs build flag.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 26 Sep 2023 13:23:37 -0400
+
+-------------------------------------------------------------------
 Mon Aug 28 17:04:40 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20230828.
