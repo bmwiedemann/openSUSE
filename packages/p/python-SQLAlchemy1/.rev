@@ -24,4 +24,15 @@
     <comment></comment>
     <requestid>1085868</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8534c657b3ba9ed4f48d7f07d5a292ca</srcmd5>
+    <version>1.4.49</version>
+    <time>1695853492</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.49
+  * support for python3.12
+  * see https://docs.sqlalchemy.org/en/20/changelog/changelog_14.html#change-1.4.49
+</comment>
+    <requestid>1113619</requestid>
+  </revision>
 </revisionlist>
