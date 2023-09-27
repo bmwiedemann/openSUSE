@@ -1,5 +1,5 @@
 <package name="kquickimageeditor" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="KDE:Extra" package="kquickimageeditor"/>
+  <devel project="KDE:Applications" package="kquickimageeditor"/>
 </package>
