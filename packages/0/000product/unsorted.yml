@@ -1433,6 +1433,7 @@ unsorted:
   - bluez-obexd 
   - bluez-qt-devel 
   - bluez-test 
+  - bluez-zsh-completion 
   - bmake 
   - bmkdep 
   - bmon 
@@ -1598,6 +1599,7 @@ unsorted:
   - btop 
   - btrfs-extent-same 
   - btrfsprogs-static 
+  - bubblewrap-zsh-completion 
   - bucklespring 
   - buckygen 
   - budgie-app-launcher-applet 
@@ -2139,6 +2141,7 @@ unsorted:
   - clang 
   - clang-devel 
   - clang-doc 
+  - clang-tools 
   - clang13 
   - clang13-devel 
   - clang13-doc 
@@ -2148,8 +2151,12 @@ unsorted:
   - clang15 
   - clang15-devel 
   - clang15-doc 
+  - clang16 
   - clang16-devel 
   - clang16-doc 
+  - clang17 
+  - clang17-devel 
+  - clang17-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -2163,6 +2170,7 @@ unsorted:
   - claws-mail 
   - claws-mail-devel 
   - claws-mail-lang 
+  - clazy 
   - cld2-devel 
   - cldr-emoji-annotation 
   - cldr-emoji-annotation-devel 
@@ -2250,6 +2258,7 @@ unsorted:
   - cmus-plugin-vorbis 
   - cmus-plugin-wavpack 
   - cmus-plugins-all 
+  - cnf-rs-zsh 
   - cni-plugin-dnsname 
   - cni-plugin-flannel 
   - cntlm 
@@ -2505,6 +2514,7 @@ unsorted:
   - cpp-httplib-devel 
   - cpp12 
   - cpp7 
+  - cppcheck 
   - cppcheck-gui 
   - cpphs 
   - cppi 
@@ -3178,8 +3188,6 @@ unsorted:
   - docbook_5 
   - docbook_5-doc 
   - docker-bench-security 
-  - docker-client-java 
-  - docker-client-java-javadoc 
   - docker-compose 
   - docker-compose-switch 
   - docker-credential-secretservice 
@@ -3204,6 +3212,7 @@ unsorted:
   - dolphin-emu-lang 
   - dolphin-plugins 
   - dolphin-plugins-lang 
+  - dolphin-zsh-completion 
   - dom2-core-tests 
   - dom4j 
   - dom4j-bootstrap 
@@ -3999,6 +4008,7 @@ unsorted:
   - firewall-macros 
   - firewalld-rpcbind-helper 
   - firewalld-test 
+  - firewalld-zsh-completion 
   - fish 
   - fish-devel 
   - fityk 
@@ -4033,6 +4043,7 @@ unsorted:
   - flatpak-devel 
   - flatpak-spawn 
   - flatpak-xdg-utils 
+  - flatpak-zsh-completion 
   - flawfinder 
   - fldigi 
   - fldigi-lang 
@@ -4347,6 +4358,7 @@ unsorted:
   - gcad3d 
   - gcal 
   - gcal-lang 
+  - gcc 
   - gcc-32bit 
   - gcc-PIE 
   - gcc-ada 
@@ -5280,6 +5292,10 @@ unsorted:
   - ghc-ghci-devel 
   - ghc-ghci-doc 
   - ghc-ghci-prof 
+  - ghc-git-lfs 
+  - ghc-git-lfs-devel 
+  - ghc-git-lfs-doc 
+  - ghc-git-lfs-prof 
   - ghc-githash 
   - ghc-githash-devel 
   - ghc-githash-doc 
@@ -5822,6 +5838,10 @@ unsorted:
   - ghc-psqueues-devel 
   - ghc-psqueues-doc 
   - ghc-psqueues-prof 
+  - ghc-quote-quot 
+  - ghc-quote-quot-devel 
+  - ghc-quote-quot-doc 
+  - ghc-quote-quot-prof 
   - ghc-random 
   - ghc-random-devel 
   - ghc-random-doc 
@@ -6080,6 +6100,10 @@ unsorted:
   - ghc-text-builder-dev-prof 
   - ghc-text-builder-devel 
   - ghc-text-builder-doc 
+  - ghc-text-builder-linear 
+  - ghc-text-builder-linear-devel 
+  - ghc-text-builder-linear-doc 
+  - ghc-text-builder-linear-prof 
   - ghc-text-builder-prof 
   - ghc-text-conversions 
   - ghc-text-conversions-devel 
@@ -6520,6 +6544,7 @@ unsorted:
   - git-subrepo 
   - git-subrepo-bash-completion 
   - git-subrepo-zsh-completion 
+  - git-svn 
   - git-sync 
   - git-test 
   - gitg 
@@ -7688,7 +7713,10 @@ unsorted:
   - health-checker-plugins-caasp 
   - health-checker-plugins-kubic 
   - health-checker-testing 
+  - heaptrack 
   - heaptrack-devel 
+  - heaptrack-gui 
+  - heaptrack-lang 
   - hedgewars 
   - hedgewars-data 
   - heimdall 
@@ -8354,9 +8382,6 @@ unsorted:
   - jakarta-commons-vfs-javadoc 
   - jakarta-mail 
   - jakarta-mail-javadoc 
-  - jakarta-poi 
-  - jakarta-poi-javadoc 
-  - jakarta-poi-manual 
   - jakarta-servlet 
   - jakarta-servlet-javadoc 
   - jakarta-slide-webdavclient 
@@ -8538,7 +8563,6 @@ unsorted:
   - jemalloc-devel 
   - jemmy 
   - jemmy-javadoc 
-  - jenkins-json-lib 
   - jeos-firstboot 
   - jeromq 
   - jeromq-javadoc 
@@ -8717,8 +8741,6 @@ unsorted:
   - jsch-javadoc 
   - jshon 
   - json-glib-devel 
-  - json-lib 
-  - json-lib-javadoc 
   - json-table 
   - json4s-ast 
   - json4s-core 
@@ -8963,6 +8985,7 @@ unsorted:
   - kdebugsettings-lang 
   - kdeclarative-devel 
   - kdeclarative-tools 
+  - kdeconnect-kde-zsh-completion 
   - kded-devel 
   - kded-lang 
   - kdegames-carddecks-other 
@@ -8979,13 +9002,17 @@ unsorted:
   - kdesignerplugin-lang 
   - kdesu-devel 
   - kdesvn 
+  - kdevelop5 
+  - kdevelop5-lang 
   - kdevelop5-pg-qt 
   - kdevelop5-plugin-php 
   - kdevelop5-plugin-php-devel 
   - kdevelop5-plugin-php-lang 
   - kdevelop5-plugin-python3 
   - kdevelop5-plugin-python3-lang 
+  - kdevplatform 
   - kdevplatform-devel 
+  - kdevplatform-lang 
   - kdf 
   - kdf-lang 
   - kdiagram-devel 
@@ -9268,6 +9295,7 @@ unsorted:
   - konqueror-plugins 
   - konquest 
   - konquest-lang 
+  - konsole-zsh-completion 
   - konstraint 
   - kontactinterface-devel 
   - kontrast 
@@ -9718,8 +9746,6 @@ unsorted:
   - ld10k1-devel 
   - ldacBT-devel 
   - ldap-proxy 
-  - ldap-sdk 
-  - ldap-sdk-javadoc 
   - ldap-yp-tools 
   - ldapfuse 
   - ldapvi 
@@ -10008,6 +10034,7 @@ unsorted:
   - libIlmThread-3_1-30-32bit 
   - libImath-3_1-29-32bit 
   - libIrrlicht1_8 
+  - libKChart2 
   - libKDb3-4 
   - libKF5Emoticons5 
   - libKF5JSApi5 
@@ -10035,6 +10062,7 @@ unsorted:
   - libKPublicTransportOnboard1 
   - libKReport3-4 
   - libKSeExpr4 
+  - libKasten4 
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_4 
@@ -10042,13 +10070,16 @@ unsorted:
   - libLLVM14 
   - libLLVM15 
   - libLLVM15-32bit 
+  - libLLVM16 
   - libLLVM16-32bit 
+  - libLLVM17-32bit 
   - libLLVMSPIRVLib-devel 
-  - libLLVMSPIRVLib16 
+  - libLLVMSPIRVLib17 
   - libLTO13 
   - libLTO14 
   - libLTO15 
   - libLTO16 
+  - libLTO17 
   - libLibreGraphAPI1 
   - libLimeSuite22_09-1 
   - libMagick++-7_Q16HDRI5 
@@ -10087,6 +10118,7 @@ unsorted:
   - libOgreTerrain13_5 
   - libOgreVolume-devel 
   - libOgreVolume13_5 
+  - libOkteta3 
   - libOpenCL1 
   - libOpenCL1-32bit 
   - libOpenCOLLADABaseUtils0_3 
@@ -11020,6 +11052,7 @@ unsorted:
   - libboost_numpy-py3-1_82_0-devel 
   - libboost_numpy3-devel 
   - libboost_program_options-devel 
+  - libboost_program_options1_82_0 
   - libboost_program_options1_82_0-32bit 
   - libboost_program_options1_82_0-devel 
   - libboost_program_options1_82_0-x86-64-v3 
@@ -11291,7 +11324,11 @@ unsorted:
   - libclang-cpp14 
   - libclang-cpp15 
   - libclang-cpp15-32bit 
+  - libclang-cpp16 
   - libclang-cpp16-32bit 
+  - libclang-cpp17 
+  - libclang-cpp17-32bit 
+  - libclang13 
   - libclastfm-devel 
   - libclaw-devel 
   - libclaw-doc 
@@ -12108,7 +12145,8 @@ unsorted:
   - libgda-ui-6_0-plugins 
   - libgda-ui-6_0-tools 
   - libgda-xslt-6_0-6_0_0 
-  - libgdal32 
+  - libgdal-drivers 
+  - libgdal33 
   - libgdata-devel 
   - libgdbm6-32bit 
   - libgdbm_compat4-32bit 
@@ -12840,12 +12878,14 @@ unsorted:
   - libkadm5clnt7 
   - libkadm5srv8 
   - libkafs0 
+  - libkasten-lang 
   - libkate-devel 
   - libkate-tools 
   - libkcapi-devel 
   - libkcapi-tools 
   - libkcapi1 
   - libkcddb-devel 
+  - libkchart-lang 
   - libkcompactdisc-devel 
   - libkdc2 
   - libkdcraw-devel 
@@ -12854,6 +12894,7 @@ unsorted:
   - libkdecoration2-devel 
   - libkdegames-devel 
   - libkdepim-devel 
+  - libkdevplatform512 
   - libkdsoap-qt6-2 
   - libkdsoap-server-qt6-2 
   - libkdsoap-server2 
@@ -13043,6 +13084,7 @@ unsorted:
   - liblldb14 
   - liblldb15 
   - liblldb16 
+  - liblldb17 
   - liblldpctl4 
   - liblmdb-0_9_30-32bit 
   - liblms7002m-devel 
@@ -13644,6 +13686,7 @@ unsorted:
   - liboil-0_3-0 
   - liboil-devel 
   - liboil-doc 
+  - libokteta-lang 
   - liboldX-devel 
   - liboldX6 
   - libolecf-devel 
@@ -13660,6 +13703,7 @@ unsorted:
   - libomp14-devel 
   - libomp15-devel 
   - libomp16-devel 
+  - libomp17-devel 
   - libonnx 
   - libonnx_proto 
   - libonnxifi_dummy 
@@ -14016,7 +14060,7 @@ unsorted:
   - libpkcs11-helper1-32bit 
   - libpkgconf-devel 
   - libplacebo-devel 
-  - libplacebo292-32bit 
+  - libplacebo338-32bit 
   - libplacebo5-devel 
   - libplanarity0 
   - libplank1 
@@ -14841,6 +14885,7 @@ unsorted:
   - libsepol-utils 
   - libsepol2-32bit 
   - libserd-0-0-32bit 
+  - libserf-1-1 
   - libserf-devel 
   - libserialdv1 
   - libserializer-javadoc 
@@ -15032,10 +15077,12 @@ unsorted:
   - libstaroffice-tools 
   - libstatgrab-devel 
   - libstatgrab10 
+  - libstdc++-devel 
   - libstdc++-devel-32bit 
   - libstdc++6-32bit 
   - libstdc++6-devel-gcc12 
   - libstdc++6-devel-gcc12-32bit 
+  - libstdc++6-devel-gcc13 
   - libstdc++6-devel-gcc13-32bit 
   - libstdc++6-devel-gcc7 
   - libstdc++6-devel-gcc7-32bit 
@@ -15157,6 +15204,8 @@ unsorted:
   - libsvm-devel 
   - libsvm-java 
   - libsvm3 
+  - libsvn_auth_gnome_keyring-1-0 
+  - libsvn_auth_kwallet-1-0 
   - libsword-1_8_1 
   - libswresample3_9-32bit 
   - libswresample4-32bit 
@@ -15484,6 +15533,7 @@ unsorted:
   - libusrsctp2 
   - libut1 
   - libutempter0-32bit 
+  - libutf8proc2 
   - libuuid-devel 
   - libuuid-devel-32bit 
   - libuuid-devel-static 
@@ -15522,7 +15572,7 @@ unsorted:
   - libvamp-hostsdk3-32bit 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit 
-  - libvapoursynth-63 
+  - libvapoursynth-64 
   - libvapoursynth-script0 
   - libvarnishapi3 
   - libvbr2 
@@ -16237,6 +16287,7 @@ unsorted:
   - lld14 
   - lld15 
   - lld16 
+  - lld17 
   - lldb 
   - lldb-devel 
   - lldb13 
@@ -16247,6 +16298,8 @@ unsorted:
   - lldb15-devel 
   - lldb16 
   - lldb16-devel 
+  - lldb17 
+  - lldb17-devel 
   - lldpd 
   - lldpd-devel 
   - llmnrd 
@@ -16300,10 +16353,24 @@ unsorted:
   - llvm16 
   - llvm16-devel 
   - llvm16-doc 
+  - llvm16-gold 
+  - llvm16-libc++-devel 
+  - llvm16-libc++1 
+  - llvm16-libc++abi-devel 
+  - llvm16-libc++abi1 
+  - llvm16-libclang13 
   - llvm16-opt-viewer 
   - llvm16-polly 
   - llvm16-polly-devel 
   - llvm16-vim-plugins 
+  - llvm17 
+  - llvm17-devel 
+  - llvm17-doc 
+  - llvm17-gold 
+  - llvm17-opt-viewer 
+  - llvm17-polly 
+  - llvm17-polly-devel 
+  - llvm17-vim-plugins 
   - lmarbles 
   - lmdb 
   - lmdb-devel 
@@ -17018,6 +17085,7 @@ unsorted:
   - maven-doxia-test-docs 
   - maven-enforcer 
   - maven-enforcer-api 
+  - maven-enforcer-extension 
   - maven-enforcer-javadoc 
   - maven-enforcer-plugin 
   - maven-enforcer-rules 
@@ -18809,6 +18877,7 @@ unsorted:
   - nvimpager 
   - nvimpager-zsh-completion 
   - nvme-cli-regress-script 
+  - nvme-cli-zsh-completion 
   - nvme-stas 
   - nvmetcli 
   - nvptx-tools 
@@ -19170,6 +19239,7 @@ unsorted:
   - ohcount 
   - oidentd 
   - okteta 
+  - okteta-data 
   - okteta-devel 
   - okteta-lang 
   - okteta-part 
@@ -22724,6 +22794,7 @@ unsorted:
   - python3-clang14 
   - python3-clang15 
   - python3-clang16 
+  - python3-clang17 
   - python3-cliff 
   - python3-clingo 
   - python3-clinkgrammar 
@@ -22829,6 +22900,7 @@ unsorted:
   - python3-lldb14 
   - python3-lldb15 
   - python3-lldb16 
+  - python3-lldb17 
   - python3-logreduce 
   - python3-lttngust 
   - python3-magnumclient 
@@ -35261,8 +35333,11 @@ unsorted:
   - subunit-devel 
   - subunit-filters 
   - subunit-shell 
+  - subversion 
+  - subversion-bash-completion 
   - subversion-devel 
   - subversion-doc 
+  - subversion-perl 
   - subversion-python 
   - subversion-ruby 
   - subversion-server 
@@ -44632,7 +44707,6 @@ unsorted:
   - tomcat-lib 
   - tomcat-servlet-4_0-api 
   - tomcat-webapps 
-  - tomcatjss 
   - toml11-devel 
   - tomoe 
   - tomoe-devel 
@@ -45124,6 +45198,7 @@ unsorted:
   - udiskie-lang 
   - udisks2-docs 
   - udisks2-qt5-devel 
+  - udisks2-zsh-completion 
   - udns 
   - udns-devel 
   - udp2raw-tunnel 
@@ -46541,6 +46616,7 @@ unsorted:
   - zpaqfranz 
   - zps 
   - zram-generator 
+  - zsh 
   - zsh-htmldoc 
   - zsh-sh 
   - zstd-gzip 
