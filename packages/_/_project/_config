@@ -246,7 +246,7 @@ FileProvides: /usr/bin/chmod busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/chown busybox-coreutils coreutils coreutils-single
 FileProvides: /usr/bin/chsh shadow
 FileProvides: /usr/bin/cksum busybox-coreutils coreutils coreutils-single
-FileProvides: /usr/bin/clang clang11 clang12 clang13 clang14 clang15 clang16
+FileProvides: /usr/bin/clang clang11 clang12 clang13 clang14 clang15 clang16 clang17
 FileProvides: /usr/bin/clear busybox-ncurses-utils ncurses-utils
 FileProvides: /usr/bin/clisp clisp
 FileProvides: /usr/bin/cmp busybox-diffutils diffutils
@@ -917,7 +917,7 @@ Prefer: apache2-mod_%{php_pref}
 Prefer: php8:php8-cli
 
 # have choice for libomp.so()(64bit) needed by libispcrt1: libomp15-devel libomp16-devel
-Prefer: -libomp15-devel
+Prefer: -libomp15-devel -libomp16-devel
 
 # have choice for python3dist(jupyterlab) = 3.6.2 needed by jupyter-jupyterlab: python310-jupyterlab python311-jupyterlab python38-jupyterlab python39-jupyterlab
 Prefer: -python310-jupyterlab -python39-jupyterlab
@@ -2263,6 +2263,7 @@ BuildFlags: onlybuild:lksctp-tools
 BuildFlags: onlybuild:llvm
 BuildFlags: onlybuild:llvm15
 BuildFlags: onlybuild:llvm16
+BuildFlags: onlybuild:llvm17
 BuildFlags: onlybuild:lmdb
 BuildFlags: onlybuild:lockdev
 BuildFlags: onlybuild:logrotate
@@ -3493,7 +3494,7 @@ Macros:
 %postgresql_default_ver 16
 
 # define which llvm package builds the system libraries
-%product_libs_llvm_ver 16
+%product_libs_llvm_ver 17
 
 # define which gcc package builds the system libraries
 %product_libs_gcc_ver 13
