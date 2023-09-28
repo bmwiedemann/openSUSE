@@ -17,13 +17,14 @@
 
 
 Name:           mold
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        MIT
 Group:          Development/Tools/Building
 URL:            https://github.com/rui314/mold
 Source:         https://github.com/rui314/mold/archive/v%{version}/mold-%{version}.tar.gz
+Patch0:         build-blake-3-as-static.patch
 BuildRequires:  cmake
 %if %{suse_version} < 1550
 BuildRequires:  gcc11-c++
@@ -42,7 +43,6 @@ BuildRequires:  gcc-32bit
 BuildRequires:  gdb
 BuildRequires:  glibc-devel-static
 BuildRequires:  libzstd-devel
-BuildRequires:  openssl-devel
 %ifnarch ppc64
 BuildRequires:  valgrind
 %endif

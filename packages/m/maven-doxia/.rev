@@ -74,4 +74,12 @@
     <comment>1.12.0</comment>
     <requestid>1113314</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c6a06ede79563f4698b80d27f1f61be6</srcmd5>
+    <version>1.12.0</version>
+    <time>1695853516</time>
+    <user>dimstar_suse</user>
+    <comment>remove dependency on old apache-commons-lang</comment>
+    <requestid>1113754</requestid>
+  </revision>
 </revisionlist>

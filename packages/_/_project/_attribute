@@ -16,14 +16,14 @@
   boo#1207386: '20230416'
   boo#1207390: '20230925'
   boo#1207892: '20230306'
-  boo#1207940: '20230925'
+  boo#1207940: '20230926'
   boo#1208170: '20230313'
   boo#1208822: '20230329'
   boo#1208920: '20230307'
   boo#1208963: '20230306'
   boo#1209037: '20230413'
   boo#1209043: '20230310'
-  boo#1209053: '20230925'
+  boo#1209053: '20230926'
   boo#1209105: '20230823'
   boo#1209177: '20230319'
   boo#1209179: '20230531'
@@ -33,7 +33,7 @@
   boo#1209682: '20230521'
   boo#1209694: '20230324'
   boo#1209727: '20230508'
-  boo#1209728: '20230921'
+  boo#1209728: '20230926'
   boo#1210027: '20230422'
   boo#1210033: '20230417'
   boo#1210479: '20230508'
@@ -71,13 +71,13 @@
   boo#1214057: '20230807'
   boo#1214143: '20230809'
   boo#1214786: '20230917'
-  boo#1214834: '20230925'
+  boo#1214834: '20230926'
   boo#1214875: '20230906'
-  boo#1215283: '20230925'
-  boo#1215383: '20230925'
-  boo#1215465: '20230925'
+  boo#1215283: '20230926'
+  boo#1215383: '20230926'
+  boo#1215465: '20230926'
   boo#1215546: '20230920'
-  boo#1215556: '20230925'
+  boo#1215556: '20230926'
   bsc#1198101: '20230715'
   bsc#1205897: '20230925'
   gh#os-autoinst/opensuse-jobgroups#342: '20230621'
@@ -104,7 +104,7 @@
   poo#128069: '20230420'
   poo#128213: '20230426'
   poo#128249: '20230502'
-  poo#128384: '20230925'
+  poo#128384: '20230926'
   poo#128387: '20230502'
   poo#128402: '20230628'
   poo#128549: '20230509'
@@ -112,7 +112,7 @@
   poo#128678: '20230510'
   poo#129029: '20230509'
   poo#129121: '20230520'
-  poo#129133: '20230925'
+  poo#129133: '20230926'
   poo#129304: '20230606'
   poo#129622: '20230703'
   poo#130036: '20230606'
@@ -124,7 +124,7 @@
   poo#131024: '20230724'
   poo#131411: '20230925'
   poo#132155: '20230713'
-  poo#132191: '20230925'
+  poo#132191: '20230926'
   poo#132677: '20230807'
   poo#132686: '20230715'
   poo#132755: '20230717'
@@ -142,11 +142,11 @@
   poo#134813: '20230917'
   poo#134951: '20230913'
   poo#135017: '20230904'
-  poo#135722: '20230925'
+  poo#135722: '20230926'
   poo#135842: '20230917'
-  poo#136208: '20230925'
-  poo#136211: '20230925'
-  poo#136229: '20230925'
+  poo#136208: '20230926'
+  poo#136211: '20230926'
+  poo#136229: '20230926'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -196,7 +196,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20230926</value>
+    <value>20230927</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -358,6 +358,8 @@ products:
   - prometheus-webhook-snmp-image:
     - x86_64
   - tumbleweed-busybox-image:
+    - x86_64
+  - aeon-self-installer:
     - x86_64
   - busybox-image:
     - x86_64
@@ -589,10 +591,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20230926'
 published: '20230925'
 publishing: '20230925'
-testing: '20230925'
+testing: '20230926'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">

@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 23.1.7
+%define _version 23.1.8
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -64,7 +64,7 @@
   %define vdpau_virtio_gpu 1
 %endif
 
-%ifarch %{ix86} x86_64 %{arm} aarch64
+%ifarch %{ix86} x86_64
   %define with_nine 1
 %endif
 
@@ -123,7 +123,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        23.1.7
+Version:        23.1.8
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -138,6 +138,9 @@ Source4:        manual-pages.tar.bz2
 Source6:        Mesa-rpmlintrc
 Source7:        Mesa.keyring
 Patch2:         n_add-Mesa-headers-again.patch
+# Patches for LLVM 17, should all be in 23.2.
+Patch3:         U_llvmpipe-only-include-old-Transform-includes-when-ne.patch
+Patch4:         U_clover-llvm-move-to-modern-pass-manager.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
@@ -770,6 +773,8 @@ programs against the XA state tracker.
 rm -rf docs/README.{VMS,WIN32,OS2}
 
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
 # no longer needed since gstreamer-plugins-vaapi 1.18.4
 %if 0%{?suse_version} < 1550
 %patch54 -p1

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 26 14:47:59 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- update to 1.32:
+  * teamd: Add option to change evaluation logic of multiple
+    link-watchers
+  * teamd: lacp: don't move the port state from disabled when admin
+    state
+  * teamd: lacp: set port to disabled state during removal
+  * libteam: clear changed bits in case of TEAM_IFINFO_CHANGE
+  * teamd: stop iterating callbacks when a loop restart is
+    requested
+  * teamd: do no remove the ports on shutdown with -N
+  * binding/python: ifindex 0 is invalid so do not process it
+  * libteamdctl: validate the bus name before using it
+  * teamd: lacp: increase "min_ports" upper limit to 1024
+  * teamd: increase the waitting time for daemon killing
+  * Do regard current state when considering port enablement
+- Remove 0001-teamd-Add-option-to-change-evaluation-logic-of-multi.patch
+
+-------------------------------------------------------------------
 Mon Jun 26 13:28:06 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Add option to change evaluation logic of multiple link-watchers (jsc@PED2209)

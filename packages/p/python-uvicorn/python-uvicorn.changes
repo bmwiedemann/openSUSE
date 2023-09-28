@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 26 14:13:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.2:
+  * Maintain the same behavior of `websockets` from 10.4 on 11.0
+  * Add `typing_extensions` for Python 3.10 and lower (#2053)
+  * Add `--ws-max-queue` parameter WebSockets (#2033) 10/07/23
+  * Drop support for Python 3.7 (#1996) 19/06/23
+  * Remove `asgiref` as typing dependency (#1999) 08/06/23
+  * Set `scope["scheme"]` to `ws` or `wss` instead of `http` or
+    `https` on `ProxyHeadersMiddleware` for WebSockets (#2043)
+    12/07/23
+  * Raise `ImportError` on circular import (#2040) 09/07/23
+  * Use `logger.getEffectiveLevel()` instead of `logger.level` to
+    check if log level is `TRACE` (#1966) 01/06/23
+
+-------------------------------------------------------------------
 Thu Jun 22 15:25:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - limit to newer python versions, older are no longer needed
@@ -83,7 +99,7 @@ Thu Apr 13 22:45:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Thu Mar 16 08:13:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- skip optional uvloop test dependency for SLE15 
+- skip optional uvloop test dependency for SLE15
 
 -------------------------------------------------------------------
 Thu Feb 16 15:27:53 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
@@ -114,7 +130,7 @@ Thu Feb 16 15:27:53 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
   * Remove cyclic references on HTTP implementations. (#1604) 24/08/22
   * `reload_delay` default changed from `None` to `0.25` on `uvicorn.run()` and `Config`.
     `None` is not an acceptable value anymore. (#1545) 02/07/22
-- Remove upstreamed patch uvicorn-pr1537-no-watchgod-tests.patch 
+- Remove upstreamed patch uvicorn-pr1537-no-watchgod-tests.patch
 
 -------------------------------------------------------------------
 Fri Aug  5 09:51:32 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -178,7 +194,7 @@ Mon Jul 18 20:17:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Feb  1 05:38:09 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Add missing Requires on python-asgiref. 
+- Add missing Requires on python-asgiref.
 
 -------------------------------------------------------------------
 Mon Jan 24 09:51:06 UTC 2022 - kkaempf@suse.com
@@ -240,7 +256,7 @@ Mon Jan 24 09:51:06 UTC 2022 - kkaempf@suse.com
     - Fix gunicorn worker not running if extras not installed (#901) 5/28/21
     - Fix socket port 0 (#975) 3/5/21
     - Prevent garbage collection of main lifespan task (#972) 3/4/21
-        
+
 - Update to version 0.13.0:
   * Add --factory flag to support factory-style application imports.
     (#875) 2020-12-07 50fc0d1

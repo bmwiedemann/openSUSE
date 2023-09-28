@@ -16,7 +16,7 @@
 #
 
 
-%define _sonum 16
+%define _sonum 17
 %ifarch aarch64 x86_64
 %define has_lldb 1
 # python3-lldb%{_sonum} is only built with these distributions (see llvm%{_sonum} package)
@@ -34,12 +34,13 @@ Obsoletes:      %{1}12%{?2:-%{2}} \
 Obsoletes:      %{1}13%{?2:-%{2}} \
 Obsoletes:      %{1}14%{?2:-%{2}} \
 Obsoletes:      %{1}15%{?2:-%{2}} \
+Obsoletes:      %{1}16%{?2:-%{2}} \
 Obsoletes:      %{1}7%{?2:-%{2}} \
 Obsoletes:      %{1}8%{?2:-%{2}} \
 Obsoletes:      %{1}9%{?2:-%{2}}
 
 Name:           llvm
-Version:        16.0.6
+Version:        17.0.1
 Release:        0
 Summary:        Low Level Virtual Machine
 License:        Apache-2.0 WITH LLVM-exception OR NCSA

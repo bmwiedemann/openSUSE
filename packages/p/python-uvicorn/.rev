@@ -184,4 +184,27 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1096010</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e2bc63ccf82484a963a1512f7da8f843</srcmd5>
+    <version>0.23.2</version>
+    <time>1695853475</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.23.2:
+  * Maintain the same behavior of `websockets` from 10.4 on 11.0
+  * Add `typing_extensions` for Python 3.10 and lower (#2053)
+  * Add `--ws-max-queue` parameter WebSockets (#2033) 10/07/23
+  * Drop support for Python 3.7 (#1996) 19/06/23
+  * Remove `asgiref` as typing dependency (#1999) 08/06/23
+  * Set `scope[&quot;scheme&quot;]` to `ws` or `wss` instead of `http` or
+    `https` on `ProxyHeadersMiddleware` for WebSockets (#2043)
+    12/07/23
+  * Raise `ImportError` on circular import (#2040) 09/07/23
+  * Use `logger.getEffectiveLevel()` instead of `logger.level` to
+    check if log level is `TRACE` (#1966) 01/06/23
+
+- skip optional uvloop test dependency for SLE15
+- Remove upstreamed patch uvicorn-pr1537-no-watchgod-tests.patch
+- Add missing Requires on python-asgiref.</comment>
+    <requestid>1113682</requestid>
+  </revision>
 </revisionlist>

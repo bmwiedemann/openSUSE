@@ -30,12 +30,12 @@ URL:            https://grpc.io
 Source:         https://files.pythonhosted.org/packages/source/g/grpcio/grpcio-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM python-grpcio-cython3-compat.patch gh#grpc/grpc#33918 badshah400@gmail.com -- Fix noexcept errors upon compiling with Cython 3+
 Patch0:         python-grpcio-cython3-compat.patch
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython >= 0.29.8}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  abseil-cpp-devel
+BuildRequires:  %{python_module wheel >= 0.29}
+BuildRequires:  abseil-cpp-devel >= 20220623.0
 BuildRequires:  ca-certificates
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

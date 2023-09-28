@@ -271,4 +271,14 @@
   * Enable redis7 support by @cunla in #42</comment>
     <requestid>1110364</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>eaa0108ba392675c1fb87d0b22020ce2</srcmd5>
+    <version>2.19.0</version>
+    <time>1695853497</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.19.0:
+  * Implement Bloom filters commands #239
+  * Fix error on blocking XREADGROUP #237</comment>
+    <requestid>1113668</requestid>
+  </revision>
 </revisionlist>

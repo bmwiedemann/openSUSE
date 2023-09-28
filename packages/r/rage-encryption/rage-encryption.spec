@@ -31,7 +31,7 @@ License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apa
 Group:          Productivity/Security
 URL:            https://github.com/str4d/rage
 Source0:        rage-%{version}.tar.gz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 %if %{suse_version} > 1500
 BuildRequires:  cargo-packaging

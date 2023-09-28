@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 25 14:18:37 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.4.49
+  * support for python3.12
+  * see https://docs.sqlalchemy.org/en/20/changelog/changelog_14.html#change-1.4.49
+
+-------------------------------------------------------------------
 Tue May  9 13:30:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Properly advertise this package also as python-SQLAlchemy.

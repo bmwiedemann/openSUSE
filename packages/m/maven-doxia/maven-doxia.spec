@@ -25,11 +25,11 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/doxia/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/doxia/doxia/%{version}/doxia-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
+Patch0:         0002-Commons-configuration2.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-collections
-BuildRequires:  apache-commons-configuration
-BuildRequires:  apache-commons-lang
+BuildRequires:  apache-commons-configuration2
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-text
 BuildRequires:  atinject
@@ -185,6 +185,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n doxia-%{version} -a1
+%patch0 -p1
 
 # we don't have clirr-maven-plugin
 %pom_remove_plugin org.codehaus.mojo:clirr-maven-plugin pom.xml
@@ -206,11 +207,10 @@ rm doxia-core/src/test/java/org/apache/maven/doxia/util/XmlValidatorTest.java
 mkdir -p lib
 build-jar-repository -s lib \
     atinject \
-    apache-commons-lang3 \
     apache-commons-text \
     commons-cli \
-    commons-configuration \
-    commons-lang \
+    commons-configuration2 \
+    commons-lang3 \
     guava/guava \
     guice/google-guice \
     httpcomponents/httpclient \

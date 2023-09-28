@@ -1,7 +1,7 @@
 #
 # spec file for package gpg2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gpg2
-Version:        2.3.8
+Version:        2.4.0
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -39,14 +39,20 @@ Patch7:         gnupg-2.2.16-secmem.patch
 Patch8:         gnupg-accept_subkeys_with_a_good_revocation_but_no_self-sig_during_import.patch
 Patch9:         gnupg-add-test-cases-for-import-without-uid.patch
 Patch10:        gnupg-allow-import-of-previously-known-keys-even-without-UIDs.patch
+#PATCH-FIX-SUSE Allow 8192 bit RSA keys in keygen UI when large_rsa is set
+Patch11:        gnupg-allow-large-rsa.patch
+#PATCH-FIX-SUSE Revert the rfc4880bis features default of key generation
+Patch12:        gnupg-revert-rfc4880bis.patch
+#PATCH-FIX-UPSTREAM Fix tests/gpgme for in-source-tree builds
+Patch13:        gnupg-tests-Fix-tests-gpgme-for-in-source-tree-builds.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
 BuildRequires:  ibmswtpm2
 BuildRequires:  ibmtss-devel
 BuildRequires:  libassuan-devel >= 2.5.0
 BuildRequires:  libgcrypt-devel >= 1.9.1
-BuildRequires:  libgpg-error-devel >= 1.41
-BuildRequires:  libksba-devel >= 1.3.4
+BuildRequires:  libgpg-error-devel >= 1.46
+BuildRequires:  libksba-devel >= 1.6.3
 BuildRequires:  makeinfo
 BuildRequires:  npth-devel >= 1.2
 BuildRequires:  openldap2-devel
@@ -131,34 +137,45 @@ date=$(date -u +%%Y-%%m-%%dT%%H:%%M+0000 -r %{SOURCE99})
 %install
 %make_install
 mkdir -p %{buildroot}%{_sysconfdir}/gnupg/
-# bnc#391347
+# install gpgconf.conf bnc#391347
 install -m 644 doc/examples/gpgconf.conf %{buildroot}%{_sysconfdir}/gnupg
 # delete to prevent fdupes from creating cross-partition hardlink
 rm -rf %{buildroot}%{_docdir}/gpg2/examples/gpgconf.conf
+
+# remove info dir
 rm %{buildroot}%{_infodir}/dir
+
 # compat symlinks
 ln -sf gpg2 %{buildroot}%{_bindir}/gpg
 ln -sf gpgv2 %{buildroot}%{_bindir}/gpgv
 ln -sf gpg2.1 %{buildroot}%{_mandir}/man1/gpg.1
 ln -sf gpgv2.1 %{buildroot}%{_mandir}/man1/gpgv.1
+
 # fix rpmlint invalid-lc-messages-dir:
 rm -rf %{buildroot}/%{_datadir}/locale/en@{bold,}quot
+
 # install scdaemon to %%{_bindir} (bnc#863645)
 mv %{buildroot}%{_libdir}/scdaemon %{buildroot}%{_bindir}
 mv %{buildroot}%{_libdir}/dirmngr_ldap %{buildroot}%{_bindir}
+
 # install tpm2daemon
 mv %{buildroot}%{_libdir}/tpm2daemon %{buildroot}%{_bindir}
+
 # install udev rules for scdaemon
 install -Dm 0644 %{SOURCE4} %{buildroot}%{_udevrulesdir}/60-scdaemon.rules
+
+# Move the systemd user units to appropriate directory
+install -d -m 755 %{buildroot}%{_userunitdir}
+mv %{buildroot}%{_docdir}/%{name}/examples/systemd-user/*.s* %{buildroot}%{_userunitdir}
 
 %find_lang gnupg2
 %fdupes -s %{buildroot}
 
 %check
 # Run only localy, fails in OBS
-#%%if ! 0%%{?qemu_user_space_build}
-#make %%{?_smp_mflags} check
-#%%endif
+%if ! 0%{?qemu_user_space_build}
+%make_build -j1 check || :
+%endif
 
 %post
 %udev_rules_update
@@ -166,17 +183,14 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_udevrulesdir}/60-scdaemon.rules
 %files lang -f gnupg2.lang
 
 %files
-%{_infodir}/gnupg*
-%exclude %{_mandir}/*/dirmngr*%{ext_man}
-%{_mandir}/*/*%{ext_man}
 %license COPYING*
-%doc AUTHORS ChangeLog NEWS THANKS TODO doc/FAQ
-%exclude %{_docdir}/%{name}/examples/systemd-user/dirmngr.*
+%doc AUTHORS ChangeLog NEWS THANKS TODO doc/FAQ README
+%{_infodir}/gnupg*
+%{_mandir}/*/[agsw]*%{ext_man}
 %doc %{_docdir}/%{name}
-%exclude %{_bindir}/dirmngr*
-%exclude %{_bindir}/tpm2daemon*
-%{_bindir}/*
-%{_libdir}/[^d]*
+%{_bindir}/[gksw]*
+%{_libdir}/g*
+%{_libdir}/k*
 %{_sbindir}/addgnupghome
 %{_sbindir}/applygnupgdefaults
 %{_sbindir}/g13-syshelp
@@ -184,14 +198,16 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_udevrulesdir}/60-scdaemon.rules
 %{_datadir}/gnupg
 %dir %{_sysconfdir}/gnupg
 %config(noreplace) %{_sysconfdir}/gnupg/gpgconf.conf
+%{_userunitdir}/gpg-agent*
 
 %files -n dirmngr
 %license COPYING*
 %{_mandir}/*/dirmngr*%{ext_man}
-%{_docdir}/%{name}/examples/systemd-user/dirmngr.*
 %{_bindir}/dirmngr*
+%{_userunitdir}/dirmngr.*
 
 %files tpm
+%license COPYING*
 %{_bindir}/tpm2daemon*
 
 %changelog

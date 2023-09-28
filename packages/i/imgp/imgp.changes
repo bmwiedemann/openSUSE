@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 27 06:55:33 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.9
+  * Support converting P mode PNGs
+  *  Fix AttributeError: module 'PIL.Image' has no attribute 'Resampling'
+  * Fix ANTIALIAS is deprecated and will be removed in Pillow 10
+  * Add Python 3.11 support
+  * Remove support for Python 3.7 (EOL)
+
+- ran spec-cleaner
+
+-------------------------------------------------------------------
 Wed Dec  2 07:08:39 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.8

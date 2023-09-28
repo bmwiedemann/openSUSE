@@ -16,9 +16,9 @@
 #
 
 
-%define sover   292
+%define sover   338
 Name:           libplacebo
-Version:        6.292.1
+Version:        6.338.0
 Release:        0
 Summary:        Library for GPU-accelerated video/image rendering primitives
 License:        LGPL-2.1-or-later
@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libunwind)
+BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(vulkan)

@@ -17,7 +17,7 @@
 
 
 Name:           maven-dependency-tree
-Version:        3.0.1
+Version:        3.2.1
 Release:        0
 Summary:        Maven dependency tree artifact
 License:        Apache-2.0
@@ -26,27 +26,14 @@ URL:            https://maven.apache.org/
 Source0:        https://archive.apache.org/dist/maven/shared/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 BuildRequires:  ant
-BuildRequires:  apache-commons-cli
 BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  google-guice
-BuildRequires:  guava
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  jdom2
 BuildRequires:  maven-lib
 BuildRequires:  maven-resolver-api
 BuildRequires:  maven-resolver-util
-BuildRequires:  objectweb-asm
-BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-cli
-BuildRequires:  plexus-containers-component-annotations
-BuildRequires:  plexus-metadata-generator
-BuildRequires:  plexus-utils
-BuildRequires:  qdox
 BuildRequires:  sisu-inject
-BuildRequires:  sisu-plexus
 BuildRequires:  unzip
-BuildRequires:  xbean
 BuildArch:      noarch
 
 %description
@@ -63,30 +50,17 @@ This package contains javadoc for %{name}.
 %setup -q
 cp %{SOURCE1} build.xml
 
-find -name Maven3DependencyGraphBuilder.java -delete
-%pom_remove_dep org.sonatype.aether:
-
 %build
 mkdir -p lib
 build-jar-repository -s lib \
   atinject \
-  commons-cli \
-  guice/google-guice-no_aop \
-  guava/guava \
-  jdom2/jdom2 \
   maven/maven-artifact \
   maven/maven-core \
+  maven/maven-model \
   maven-resolver/maven-resolver-api \
   maven-resolver/maven-resolver-util \
-  objectweb-asm/asm org.eclipse.sisu.inject \
-  org.eclipse.sisu.plexus \
-  plexus-classworlds \
-  plexus/cli \
-  plexus-containers/plexus-component-annotations \
-  plexus-metadata-generator \
-  plexus/utils \
-  qdox \
-  xbean/xbean-reflect
+  org.eclipse.sisu.inject \
+  slf4j/api
 
 %{ant} \
   -Dtest.skip=true \

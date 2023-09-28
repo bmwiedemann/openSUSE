@@ -20,7 +20,7 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-SQLAlchemy1
-Version:        1.4.46
+Version:        1.4.49
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT

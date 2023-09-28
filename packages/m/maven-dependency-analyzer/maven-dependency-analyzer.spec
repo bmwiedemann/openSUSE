@@ -17,7 +17,7 @@
 
 
 Name:           maven-dependency-analyzer
-Version:        1.10
+Version:        1.13.2
 Release:        0
 Summary:        Maven dependency analyzer
 License:        Apache-2.0
@@ -26,26 +26,16 @@ URL:            https://maven.apache.org/shared/maven-dependency-analyzer/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 BuildRequires:  ant
-BuildRequires:  apache-commons-cli
+BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
 BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  google-guice
-BuildRequires:  guava
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  jdom2
 BuildRequires:  maven-lib
 BuildRequires:  objectweb-asm
-BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-cli
-BuildRequires:  plexus-containers-component-annotations
-BuildRequires:  plexus-metadata-generator
-BuildRequires:  plexus-utils
-BuildRequires:  qdox
 BuildRequires:  sisu-inject
-BuildRequires:  sisu-plexus
+BuildRequires:  slf4j
 BuildRequires:  unzip
-BuildRequires:  xbean
 BuildArch:      noarch
 
 %description
@@ -67,35 +57,22 @@ Group:          Documentation/HTML
 %setup -q
 cp %{SOURCE1} build.xml
 
-# Do not require maven2
-%pom_change_dep :maven-project :maven-core
-
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-	apache-commons-lang3 \
-	atinject \
-	commons-cli \
-	guava/guava \
-	guice/google-guice-no_aop \
-	jdom2/jdom2 \
-	maven/maven-artifact \
-	maven/maven-core \
-	maven/maven-model \
-	objectweb-asm/asm \
-	org.eclipse.sisu.inject \
-	org.eclipse.sisu.plexus \
-	plexus-classworlds \
-	plexus/cli \
-	plexus-containers/plexus-component-annotations \
-	plexus-metadata-generator \
-	plexus/utils \
-	qdox \
-	xbean/xbean-reflect
+    apache-commons-lang3 \
+    atinject \
+    commons-io \
+    maven/maven-artifact \
+    maven/maven-core \
+    maven/maven-model \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject \
+    slf4j/api
 
 %{ant} \
-	-Dtest.skip=true \
-	jar javadoc
+    -Dtest.skip=true \
+    jar javadoc
 
 %install
 # jar

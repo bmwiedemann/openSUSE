@@ -65,4 +65,12 @@
 - Make calling of %{sle15modernpython} optional.</comment>
     <requestid>1082309</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>046867f41251247ef967e49cfaf4d377</srcmd5>
+    <version>2.4.0</version>
+    <time>1695853477</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1113542</requestid>
+  </revision>
 </revisionlist>

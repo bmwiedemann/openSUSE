@@ -16,7 +16,7 @@
 #
 
 
-%define soversion 32
+%define soversion 33
 %define sourcename gdal
 # Uppercase GDAL is the canonical name for this package in Python
 %define pypi_package_name GDAL
@@ -31,7 +31,7 @@
 %bcond_with deflate_support
 %bcond_with tests_support
 Name:           gdal
-Version:        3.6.3
+Version:        3.7.1
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND SUSE-Public-Domain
@@ -64,6 +64,8 @@ BuildRequires:  libzstd-devel
 BuildRequires:  mysql-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-base
+BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
 %if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
@@ -89,6 +91,7 @@ BuildRequires:  pkgconfig(expat) >= 1.95.0
 BuildRequires:  pkgconfig(freexl)
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(json-c)
+BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libgeotiff) >= 1.2.1
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblz4)
@@ -162,12 +165,21 @@ Provides:       lib%{name}-devel = %{version}
 Development Libraries for the GDAL file format library
 
 %package -n lib%{name}%{soversion}
+Requires:       lib%{name}-drivers >= %{version}
 Summary:        GDAL static libraries
 
 %description -n lib%{name}%{soversion}
 GDAL and OGR are translator libraries for raster and vector geospatial data
 formats. As a library, it presents a single abstract data model to the calling
 application for all supported formats.
+
+%package -n lib%{name}-drivers
+Summary:        GDAL static libraries drivers files
+# soversion 32 contained the drivers file and thus will cause a conflict
+Conflicts:      lib%{name}32
+
+%description -n lib%{name}-drivers
+Drivers information for library
 
 %package -n python3-%{pypi_package_name}
 Summary:        GDAL Python3 module
@@ -195,7 +207,8 @@ bash command line completion support for GDAL
 # Prepare tests
 tar -xf %{S:2}
 # Delete bundled libraries
-rm -rv frmts/zlib
+# keep zlib due to missing frmts/zlib/contrib/infback9 in our package
+# rm -rv frmts/zlib
 rm -rv frmts/png/libpng
 rm -rv frmts/gif/giflib
 rm -rv frmts/jpeg/libjpeg
@@ -331,6 +344,8 @@ popd
 %license LICENSE.TXT
 %{_libdir}/*.so.%{soversion}.*
 %{_libdir}/*.so.%{soversion}
+
+%files -n lib%{name}-drivers
 %dir %{_libdir}/gdalplugins
 %{_libdir}/gdalplugins/drivers.ini
 
@@ -363,6 +378,7 @@ popd
 %{_bindir}/ogrinfo
 %{_bindir}/ogrlineref
 %{_bindir}/ogrtindex
+%{_bindir}/sozip
 %{_datadir}/gdal
 %{_mandir}/man1/gdal_contour.1%{?ext_man}
 %{_mandir}/man1/gdal_create.1%{?ext_man}
@@ -388,6 +404,7 @@ popd
 %{_mandir}/man1/ogrinfo.1%{?ext_man}
 %{_mandir}/man1/ogrlineref.1%{?ext_man}
 %{_mandir}/man1/ogrtindex.1%{?ext_man}
+%{_mandir}/man1/sozip.1%{?ext_man}
 # 20201104 We keep all binaries in gdal and requires python3-GDAL
 %{_bindir}/gdalattachpct.py
 %{_bindir}/gdal2tiles.py

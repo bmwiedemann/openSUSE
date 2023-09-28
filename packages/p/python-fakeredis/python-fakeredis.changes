@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 26 13:23:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.0:
+  * Implement Bloom filters commands #239
+  * Fix error on blocking XREADGROUP #237
+
+-------------------------------------------------------------------
 Mon Sep 11 20:38:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18.1:

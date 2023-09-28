@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Sep 27 11:15:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.2.1
+  * Bug
+    + MSHARED-994:  DependencyCollectorBuilder does not collect
+      dependencies when artifact has 'war' packaging
+    + MSHARED-1016:  Transitive provided dependencies are not
+      removed from collected dependency graph
+  * New Feature
+    + MSHARED-1158:  DependencyCollectorBuilder more configurable
+  * Improvement
+    + MSHARED-339:  DependencyGraphBuilder does not provide verbose
+      tree
+    + MSHARED-491:  DependencyGraphBuilders shouldn't need
+      reactorProjects for resolving dependencies
+    + MSHARED-519:  Maven31DependencyGraphBuilder (and others?)
+      should not download dependencies other than the pom
+    + MSHARED-657:  plexus-component-annotation in line with
+      plexus-component-metadata
+    + MSHARED-691:  Upgrade parent to 31
+    + MSHARED-788:  Add functionality to collect raw dependencies
+      in Maven 3+
+    + MSHARED-816:  Annotate DependencyNodes with dependency
+      management metadata
+    + MSHARED-825:  Require Java 8
+    + MSHARED-850:  Upgrade org.eclipse.aether:aether-util
+      dependency in org.apache.maven.shared:maven-dependency-tree
+    + MSHARED-852:  Add Exclusions to DependencyNode
+    + MSHARED-853:  make build Reproducible
+    + MSHARED-1070:  Migrate plexus component to JSR-330
+    + MSHARED-1071:  Drop maven 3.0 compatibility
+  * Dependency upgrade
+    + MSHARED-771:  Upgrade shared-component to version 33
+    + MSHARED-1069:  Upgrade Parent to 36
+    + MSHARED-1114:  Bump maven-shared-components from 36 to 37
+
+-------------------------------------------------------------------
 Wed Sep  6 18:48:23 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove unnecessary dependency on xmvn tools and parent pom

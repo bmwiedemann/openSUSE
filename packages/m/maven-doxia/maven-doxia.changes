@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 26 21:09:43 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0002-Commons-configuration2.patch
+    + port to commons-configuration2 in order to remove dependency
+      on old commons-lang
+
+-------------------------------------------------------------------
 Sat Sep 23 17:46:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.12.0

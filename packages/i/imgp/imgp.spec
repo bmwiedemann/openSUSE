@@ -1,7 +1,7 @@
 #
 # spec file for package imgp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           imgp
-Version:        2.8
+Version:        2.9
 Release:        0
 Summary:        Image resizer and rotator
 License:        GPL-3.0-or-later
@@ -42,7 +42,7 @@ Summary:        Bash Completion for %{name}
 Group:          Productivity/Graphics/Convertors
 Requires:       %{name} = %{version}
 Requires:       bash-completion
-Supplements:    packageand(imgp:bash)
+Supplements:    (imgp and bash)
 BuildArch:      noarch
 
 %description    bash-completion
@@ -54,7 +54,7 @@ Release:        0
 Summary:        Fish Completion for %{name}
 Group:          Productivity/Graphics/Convertors
 Requires:       %{name} = %{version}
-Supplements:    packageand(imgp:fish)
+Supplements:    (imgp and fish)
 BuildArch:      noarch
 
 %description    fish-completion
@@ -64,7 +64,7 @@ Fish command line completion support for %{name}.
 Summary:        ZSH Completion for %{name}
 Group:          Productivity/Graphics/Convertors
 Requires:       %{name} = %{version}
-Supplements:    packageand(imgp:zsh)
+Supplements:    (imgp and zsh)
 BuildArch:      noarch
 
 %description    zsh-completion
@@ -89,7 +89,7 @@ install -m0644 auto-completion/zsh/_%{name} -t %{buildroot}%{_datadir}/zsh/site-
 %doc CHANGELOG README.md
 %license LICENSE
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/%{name}-completion.bash

@@ -1,7 +1,7 @@
 #
-# spec file for package ongres-scram
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ URL:            https://github.com/ongres/%{upstream_name}
 Source0:        https://github.com/ongres/%{upstream_name}/archive/%{upstream_version}/%{upstream_name}-%{upstream_version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.google.code.findbugs:annotations)
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(com.ongres.stringprep:saslprep)
 BuildArch:      noarch
@@ -63,6 +62,9 @@ find \( -name '*.jar' -o -name '*.class' \) -delete
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :maven-dependency-plugin client
 %pom_remove_plugin -r :maven-javadoc-plugin
+
+%pom_remove_dep com.google.code.findbugs:annotations
+sed -i 's/.*SuppressFBWarnings.*//' common/src/main/java/com/ongres/scram/common/message/ServerFinalMessage.java
 
 %build
 %{mvn_build} -s -f -- -Dsource=8

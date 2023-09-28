@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-alembic
-Version:        1.11.2
+Version:        1.12.0
 Release:        0
 Summary:        A database migration tool for SQLAlchemy
 License:        MIT
@@ -28,17 +28,17 @@ BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module SQLAlchemy >= 2.0.0}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.9}
 BuildRequires:  %{python_module importlib-resources if %python-base < 3.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing-extensions >= 4}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Mako
 Requires:       python-SQLAlchemy >= 2.0.0
-Requires:       python-python-dateutil
 Requires:       python-typing-extensions >= 4
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -67,10 +67,10 @@ offers the following functionality:
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/alembic
 

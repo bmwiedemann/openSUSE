@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Sep 27 10:34:26 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.13.2
+  * Changes
+    + MSHARED-761: Make mvn dependency:analyze work with OpenJDK 11
+    + MSHARED-786: jdk8 incompatibility at runtime
+      (NoSuchMethodError)
+    + MSHARED-870: Upgrade asm to 8.0.1
+    + use try with resources to avoid leaks
+    + MDEP-708: dependency:analyze recommends test scope for
+      test-only artifacts that have non-test scope
+    + remove reference to deprecated public mutable field
+    + MDEP-712: update JIRA URL
+    + MDEP-708: dependency:analyze should recommend narrower scope
+      where possible
+    + MSHARED-932: remove dependency on jmock
+    + MDEP-753: inline deprecated field
+    + MDEP-753: add more JavaDoc
+    + MDEP-753: handle different classes from same artifact used by
+      model and test code
+    + MDEP-779: include class names in used undeclared dependencies
+    + MSHARED-997: Check maximum allowed Maven version
+    + MSHARED-1035: Get rid of maven-plugin-testing-tools for IT
+      test
+    + Require Maven 3.2.5+
+    + MSHARED-1036: Analyze project classes only once
+    + MSHARED-1039: Fix array parsing
+    + MSHARED-1037: CONSTANT_METHOD_TYPE should not add to classes
+    + MSHARED-1038: Inner classes are in same compilation unit as
+      container class
+    + MSHARED-1085: Upgrade Parent to 36
+    + MSHARED-1119: Cleanup IT tests
+    + MSHARED-894: replace Codehaus Plexus utils with
+      java.nio.file.Files and Apache Commons
+    + MDEP-757: bug with "non-test scoped test only dependencies
+      found"
+    + MSHARED-1218: Bump asm from 9.4 to 9.5
+    + MSHARED-1220: Refresh download page
+    + MSHARED-1219: Upgrade Parent to 39
+    + MSHARED-1205: Build on JDK 19, 20
+    + MSHARED-1224: Prefer JDK classes to Plexus utils
+    + MSHARED-1149: Replace System.out by logger
+    + MSHARED-1247: java.lang.RuntimeException: Unknown constant
+      pool type
+    + MSHARED-1249: Switch to JUnit 5
+    + MSHARED-1250: Dependency improvements
+
+-------------------------------------------------------------------
 Wed Sep  6 18:40:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove unnecessary dependency on xmvn tools and parent pom

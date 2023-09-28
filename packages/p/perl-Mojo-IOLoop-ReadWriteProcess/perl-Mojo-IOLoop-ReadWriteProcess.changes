@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep 26 19:16:19 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Remove deprecated-spurt.patch, fixed upstream
+
+-------------------------------------------------------------------
+Tue Sep 19 03:07:36 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.34
+   see /usr/share/doc/packages/perl-Mojo-IOLoop-ReadWriteProcess/Changes
+
+  0.34 2023-09-18T15:47:18Z
+   - Adapt to deprecation of spurt in upstream Mojolicious
+   - Make git work in github workflow
+   - Turn warnings "Sleeping inside locked section" into notes
+   - Avoid warnings about using undefined value as file handle
+
+-------------------------------------------------------------------
 Fri Sep 15 10:32:21 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Add patch deprecated-spurt.patch

@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Wed Sep 27 08:22:26 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#949
+- reduce manual memory handing
+- 4.5.143
+
+--------------------------------------------------------------------
+Fri Sep 22 11:03:09 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#948
+- fixed memory leak
+- more consistent function naming
+- 4.5.142
+
+--------------------------------------------------------------------
 Sat Sep 9 03:30:04 UTC 2023 - bittin@opensuse.org
 
 - Translated using Weblate (Swedish) (bsc#1149754)

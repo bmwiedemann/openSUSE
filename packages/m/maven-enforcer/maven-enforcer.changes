@@ -1,4 +1,166 @@
 -------------------------------------------------------------------
+Wed Sep 27 11:39:13 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.4.1
+  * Bug
+    + MENFORCER-168: In a multi module project "bannedDependencies"
+      rule tries to resolve project artifacts from external
+      repository
+    + MENFORCER-185: Require Release Dependencies ignorant about
+      aggregator build
+    + MENFORCER-301: banDuplicatePomDependencyVersions does not
+      check managementDependencies
+    + MENFORCER-336: Beanshell rule is not thread-safe
+    + MENFORCER-346: RequireSnapshotVersion not compatible with CI
+      Friendly Versions (${revision})
+    + MENFORCER-351: NPE when using new <?m2e execute ?> syntax with
+      maven-enforcer-plugin
+    + MENFORCER-352: Broken links on Maven Enforcer Plugin site
+    + MENFORCER-357: RequirePluginVersions not recognizing
+      versions-from-properties
+    + MENFORCER-359: [REGRESSION] RequirePluginVersions fails when
+      versions are inherited
+    + MENFORCER-364: requireFilesExist rule should be case sensitive
+    + MENFORCER-366: Broken Links on Project Home Page
+    + MENFORCER-373: TestRequireOS uses hamcrest via transitive
+      dependency
+    + MENFORCER-374: plexus-container-default in enforcer-api is
+      very outdated
+    + MENFORCER-381: classifier not included in output of failed
+      RequireUpperBoundDeps test
+    + MENFORCER-389: Exclusions are not considered when looking at
+      parent for requireReleaseDeps
+    + MENFORCER-391: requireUpperBoundDeps does not fail when
+      packaging is 'war'
+    + MENFORCER-394: DependencyConvergence in 3.0.0 fails on
+      provided scoped dependencies
+    + MENFORCER-395: NPE on requireReleaseDeps with non-matching
+      includes
+    + MENFORCER-402: RequireUpperBoundDeps now follow scope provided
+      transitive dependencies
+    + MENFORCER-421: Use currently build artifacts in IT tests
+    + MENFORCER-378: requireReleaseDeps does not support optional
+      dependencies or runtime scope
+    + MENFORCER-407: Enforcer 3.0.0 breaks with Maven 3.8.4
+    + MENFORCER-434: Version 3.1.0 is not enforcing
+      bannedDependencies rules
+    + MENFORCER-437: DependencyConvergence treats provided
+      dependencies are runtime dependencies
+    + MENFORCER-459: Plugin shouldn't use NullPointerException for
+      non-exceptional code flow
+    + MENFORCER-461: NPE in RequirePluginVersions
+    + MENFORCER-462: ReactorModuleConvergence not cached in reactor
+    + MENFORCER-466: RequireUpperBoundDeps fails on provided
+      dependencies since 3.2.1
+    + MENFORCER-467: Problematic dependency resolution by new
+      'banDynamicVersions' rule
+    + MENFORCER-469: banTransitiveDependencies: failing if a
+      transitive dependencies has another version than the resolved
+      one
+    + MENFORCER-474: Filtering dependency tree by scope
+    + MENFORCER-393: Upgrading to 3.0.0 causes 'Could not build
+      dependency tree' with repositories some unknown protocol
+    + MENFORCER-426: DependencyConvergence in 3.1.0 fails when using
+      version ranges
+    + MENFORCER-480: Semantics of 'ignores' parameter of
+      'banDynamicVersions' is inverted
+    + MENFORCER-481: Omission of 'excludedScopes' parameter of
+      'banDynamicVersions' causes NPE
+    + MENFORCER-491: ENFORCER: plugin-info and mojo pages not found
+  * New Feature
+    + MENFORCER-358: requireUpperBounds deps should have includes
+    + MENFORCER-361: Introduce RequireTextFileChecksum with line
+      separator normalization
+    + MENFORCER-397: allow no rules
+    + MENFORCER-398: show rules processed
+    + MENFORCER-411: DependencyConvergence should support
+      including/excluding certain dependencies
+    + MENFORCER-422: Support declaring external banned dependencies
+      in an external file/URL
+    + MENFORCER-423: Maven enforcer rule which checks that all
+      dependencies have an explicit scope set
+    + MENFORCER-424: Maven enforcer rule which checks that all
+      dependencies in dependencyManagement don't have an explicit
+      scope set
+    + MENFORCER-427: Rule for no version ranges, version
+      placeholders or SNAPSHOT versions
+    + MENFORCER-430: Allow one of many files in RequireFiles rules
+      to pass
+    + MENFORCER-431: Skip specific rules
+    + MENFORCER-455: New Enforcer API
+    + MENFORCER-456: New Enforcer API - RuleConfigProvider
+    + MENFORCER-458: Move Built-In Rules to new API
+  * Improvement
+    + MENFORCER-211: wildcard ignore in requireReleaseDeps
+    + MENFORCER-245: Improve documentation about writing own
+      Enforcer Rule
+    + MENFORCER-257: RequireActiveProfile should respect inherited
+      activated profiles
+    + MENFORCER-277: Upgrade maven-dependency-tree to 3.x
+    + MENFORCER-304: Improve dependency resolving in multiple
+      modules project
+    + MENFORCER-313: requireUpperBoundDeps: add [<scope>] and colors
+      to the output
+    + MENFORCER-329: Example for writing a custom rule should be
+      upgraded
+    + MENFORCER-338: Along with JavaVersion, allow enforcement of
+      the JavaVendor
+    + MENFORCER-349: Include Java vendor in display-info output
+    + MENFORCER-350: requireMavenVersion x.y.z is processed as
+      (,x.y.z] instead of [x.y.z,)
+    + MENFORCER-353: Consistently format artifacts same as
+      dependency:tree
+    + MENFORCER-355: make build Reproducible
+    + MENFORCER-376: Add support for excludes/includes in
+      requireJavaVendor rule
+    + MENFORCER-384: Introduce Maven Enforcer Extension
+    + MENFORCER-388: Extends RequirePluginVersions with
+      banMavenDefaults
+    + MENFORCER-404: Shared GitHub Actions
+    + MENFORCER-409: Log at ERROR level when <fail> is set
+    + MENFORCER-420: Reuse getDependenciesToCheck results across
+      rules
+    + MENFORCER-415: Violation messages can be really hard to find
+      in a multi module project
+    + MENFORCER-425: Clarify class loading for custom Enforcer rules
+    + MENFORCER-428: Using junit jupiter bom instead of single
+      artifacts.
+    + MENFORCER-435: Get rid of maven-dependency-tree dependency
+    + MENFORCER-440: Allow 8 as JDK version for requireJavaVersion
+    + MENFORCER-444: Improve error message for rule
+      "requireJavaVersion"
+    + MENFORCER-445: Include Java Home in Message for Java Rule
+      Failures
+    + MENFORCER-452: Manage all Maven Core dependencies as provided
+    + MENFORCER-453: Mange rules configuration by plugin
+    + MENFORCER-454: Deprecate 'rules' property and introduce
+      'enforcer.rules' as a replacement
+    + MENFORCER-463: Change success message from executed to passed
+    + MENFORCER-488: EnforcerLogger: Provide isDebugEnabled(),
+      isErrorEnabled(), isWarnEnabled() and isInfoEnabled()
+    + MENFORCER-490: Properly declare dependencies
+  * Test
+    + MENFORCER-408: Regression test for dependency convergence
+      problem fixed in 3.0.0
+  * Task
+    + MENFORCER-377: Remove reference to travis or switch to
+      travis.com
+    + MENFORCER-380: Fix maven assembly links
+    + MENFORCER-387: Require Java 8
+    + MENFORCER-447: Verify working with Maven 4
+    + MENFORCER-450: Code cleanup
+    + MENFORCER-451: Refresh download page
+    + MENFORCER-460: Deprecate display-info mojo
+    + MENFORCER-464: Refresh site descriptors
+    + MENFORCER-465: Superfluous blanks in
+      BanDuplicatePomDependencyVersions
+    + MENFORCER-476: Rename ResolveUtil to ResolverUtil
+- Removed patches:
+  * 0001-Port-to-Maven-3-API.patch
+  * 0002-Port-to-artifact-transfer-0.11.0.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Tue Mar 22 13:03:03 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build with java source and target levels 8

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 27 10:25:26 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add minimum required versions for Cython, wheel and abseil-cpp.
+
+-------------------------------------------------------------------
 Sun Sep 17 13:22:25 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.58.0:

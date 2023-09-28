@@ -23,4 +23,12 @@
     <comment>upgrade</comment>
     <requestid>862351</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>30ea4c8cf38c27a9efc9e3e3a94aa633</srcmd5>
+    <version>3.6.0</version>
+    <time>1695853566</time>
+    <user>dimstar_suse</user>
+    <comment>3.6.0</comment>
+    <requestid>1113871</requestid>
+  </revision>
 </revisionlist>

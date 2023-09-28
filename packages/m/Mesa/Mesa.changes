@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 21 15:13:11 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Backport upstream patches for compatibility with LLVM 17:
+  * U_llvmpipe-only-include-old-Transform-includes-when-ne.patch
+    removes unneeded includes of header files that no longer exist.
+  * U_clover-llvm-move-to-modern-pass-manager.patch migrates Clover
+    to the new pass manager, since the old PM has been removed.
+
+-------------------------------------------------------------------
+Thu Sep 21 10:26:36 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- disable nine on arm/aarch64 in the hope to fix build on this
+  platform; there is no need for Direct3D/Wine for arm/aarch64
+  anyway ...
+
+-------------------------------------------------------------------
+Thu Sep 21 08:05:24 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 23.1.8:
+  --> https://docs.mesa3d.org/relnotes/23.1.8.html
+
+-------------------------------------------------------------------
 Thu Sep  7 07:02:41 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to bugfix release 23.1.7:

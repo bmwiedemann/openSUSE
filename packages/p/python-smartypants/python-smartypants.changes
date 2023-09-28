@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 25 08:24:56 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add fix-312.patch to fix python3.12 build  
+
+-------------------------------------------------------------------
 Fri Apr 21 12:34:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -1369,4 +1369,12 @@ https://bugzilla.opensuse.org/show_bug.cgi?id=1211444
 Still valid</comment>
     <requestid>1091340</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>062351388a3c8929e9497f89205336cb</srcmd5>
+    <version>2.4.0</version>
+    <time>1695853496</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1113652</requestid>
+  </revision>
 </revisionlist>
