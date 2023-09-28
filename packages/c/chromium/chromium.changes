@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 27 21:39:34 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 117.0.5938.132 (boo#1215776):
+  * CVE-2023-5217: Heap buffer overflow in vp8 encoding in libvpx (boo#1215778)
+  * CVE-2023-5186: Use after free in Passwords
+  * CVE-2023-5187: Use after free in Extensions
+
+-------------------------------------------------------------------
 Fri Sep 22 06:27:24 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 117.0.5938.92:

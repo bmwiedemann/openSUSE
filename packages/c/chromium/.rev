@@ -4742,4 +4742,16 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>chromium 117.0.5938.92</comment>
     <requestid>1112940</requestid>
   </revision>
+  <revision rev="400" vrev="1">
+    <srcmd5>ab7ca08d69377fe87c1612d736c8f28c</srcmd5>
+    <version>117.0.5938.132</version>
+    <time>1695889679</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 117.0.5938.132 (boo#1215776):
+  * CVE-2023-5217: Heap buffer overflow in vp8 encoding in libvpx (boo#1215778)
+  * CVE-2023-5186: Use after free in Passwords
+  * CVE-2023-5187: Use after free in Extensions
+</comment>
+    <requestid>1113938</requestid>
+  </revision>
 </revisionlist>
