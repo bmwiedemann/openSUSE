@@ -54,6 +54,7 @@ PyXDG is a python library to access freedesktop.org standards. Currently support
 %setup -q -n pyxdg-%{version} -b 1
 %autopatch -p1
 cp -r ../pyxdg-rel-%{version}-test-example/test/example test/
+sed -i 's/imp /importlib /' test/test_basedirectory.py
 
 %build
 %python_build

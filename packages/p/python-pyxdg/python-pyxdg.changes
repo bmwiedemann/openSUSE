@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 26 08:43:46 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Don't import deprecated imp module
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
