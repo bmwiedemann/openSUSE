@@ -1771,4 +1771,10 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <user>dimstar_suse</user>
     <comment>Add mozjs115 for i686</comment>
   </revision>
+  <revision rev="248" vrev="246">
+    <srcmd5>1e84bfb754ee9e591411a2e6a0551008</srcmd5>
+    <version>unknown</version>
+    <time>1695971303</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
