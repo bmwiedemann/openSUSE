@@ -716,4 +716,12 @@ This is exactly like request 221664, just Source URI was fixed and ENABLE_IPMI w
     <comment></comment>
     <requestid>1097023</requestid>
   </revision>
+  <revision rev="76" vrev="4">
+    <srcmd5>38fe52067e0bb5a896995faf99cf5e50</srcmd5>
+    <version>2.8.0</version>
+    <time>1689083811</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1097962</requestid>
+  </revision>
 </revisionlist>

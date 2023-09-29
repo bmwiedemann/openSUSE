@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  6 20:29:12 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix nut.system-sleep script to allow NUT usage with sleep and
+  hibernation (bsc#1188990)
+
+-------------------------------------------------------------------
 Fri Jun 30 21:03:35 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Rerelease of package and switch to GPG signed package
