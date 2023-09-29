@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 26 19:02:23 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.68
+  * sync dr_mp3 with mainstream
+  * Add null check to SDL_LoadWAV_RW to avoid crashes
+  * Add quirk entry: deactivate GL scaling for Trine (2011 Humble
+    Bundle version) and Mark of the Ninja (HB)
+  * Add quirk entry: set Hyperspace Delivery Boy to run in 16bpp mode
+  * Add quirk handling: add ability to force XInitThreads before
+    main()
+  * Allocate the video surface object statically as a global
+  * Add a hint to clamp the reported screen bit depth
+
+-------------------------------------------------------------------
 Fri May 26 08:13:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.64
