@@ -28,7 +28,9 @@ Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://lsp-plug.in/
+
 Source0:        https://github.com/sadko4u/lsp-plugins/releases/download/%{version}/%{name}-src-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         01-Fixed-double-free-of-generated-port-metadata.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa
@@ -139,7 +141,7 @@ Development files for Linux Studio Plugins
 
 %prep
 %setup -qn %{name}
-%autopatch -p1
+%patch0 -p1 -d modules/lsp-plugin-fw
 
 %build
 export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"

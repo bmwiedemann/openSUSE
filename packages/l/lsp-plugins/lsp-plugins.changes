@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 28 20:32:32 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add 01-Fixed-double-free-of-generated-port-metadata.patch
+  from upstream fixing crashes
+
+-------------------------------------------------------------------
 Sun Sep 10 19:56:44 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - update to 1.2.11
