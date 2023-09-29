@@ -1,8 +1,7 @@
-Index: pgbackrest-release-2.47/CODING.md
-===================================================================
---- pgbackrest-release-2.47.orig/CODING.md
-+++ pgbackrest-release-2.47/CODING.md
-@@ -268,11 +268,11 @@ Continuation characters should be aligne
+diff --color -ur pgbackrest-release-2.48.orig/CODING.md pgbackrest-release-2.48/CODING.md
+--- pgbackrest-release-2.48.orig/CODING.md	2023-09-25 15:32:15.000000000 +0200
++++ pgbackrest-release-2.48/CODING.md	2023-09-28 09:22:26.157150420 +0200
+@@ -268,11 +268,11 @@
  
  This function can be called without variable parameters:
  ```c
@@ -16,11 +15,10 @@ Index: pgbackrest-release-2.47/CODING.md
  ```
  If the majority of functions in a module or object are variadic it is best to provide macros for all functions even if they do not have variable parameters. Do not use the base function when variadic macros exist.
  
-Index: pgbackrest-release-2.47/doc/resource/git-history.cache
-===================================================================
---- pgbackrest-release-2.47.orig/doc/resource/git-history.cache
-+++ pgbackrest-release-2.47/doc/resource/git-history.cache
-@@ -6792,7 +6792,7 @@
+diff --color -ur pgbackrest-release-2.48.orig/doc/resource/git-history.cache pgbackrest-release-2.48/doc/resource/git-history.cache
+--- pgbackrest-release-2.48.orig/doc/resource/git-history.cache	2023-09-25 15:32:15.000000000 +0200
++++ pgbackrest-release-2.48/doc/resource/git-history.cache	2023-09-28 09:23:13.150991027 +0200
+@@ -7030,7 +7030,7 @@
      {
          "commit": "a1365b26d4c2383eaacea3714eeb521435ca79aa",
          "date": "2021-01-18 23:41:09 -0500",
@@ -29,7 +27,7 @@ Index: pgbackrest-release-2.47/doc/resource/git-history.cache
      },
      {
          "commit": "8322dfd7af97e307b952cfb37e6a65b65f55be0f",
-@@ -9608,8 +9608,8 @@
+@@ -9846,8 +9846,8 @@
      {
          "commit": "3fbfcba811499a59b943dd893eef9ff52090f7b6",
          "date": "2020-03-16 17:27:01 -0400",
@@ -40,7 +38,7 @@ Index: pgbackrest-release-2.47/doc/resource/git-history.cache
      },
      {
          "commit": "46911c64c19dc8ff76d2a6ff4548fc01647043e0",
-@@ -11509,7 +11509,7 @@
+@@ -11747,7 +11747,7 @@
          "commit": "45881c74aeff4bb25559ec0254fa7fc1960d9cab",
          "date": "2019-10-08 12:06:30 -0400",
          "subject": "Allow most unit tests to run outside of a container.",
@@ -49,7 +47,7 @@ Index: pgbackrest-release-2.47/doc/resource/git-history.cache
      },
      {
          "commit": "77b0c6c993a0e6ff45a6a99f343c3709a016d152",
-@@ -19996,7 +19996,7 @@
+@@ -20234,7 +20234,7 @@
          "commit": "18fd25233b1db7b3197f5d8dc537d239dcfc7aba",
          "date": "2016-04-14 09:30:54 -0400",
          "subject": "New simpler configuration and consistent project/exe/path naming.",
@@ -58,11 +56,10 @@ Index: pgbackrest-release-2.47/doc/resource/git-history.cache
      },
      {
          "commit": "885797e4b58a675487a3531ba16908c1d1e9f970",
-Index: pgbackrest-release-2.47/doc/xml/coding.xml
-===================================================================
---- pgbackrest-release-2.47.orig/doc/xml/coding.xml
-+++ pgbackrest-release-2.47/doc/xml/coding.xml
-@@ -365,13 +365,13 @@ void storagePathCreate(const Storage *th
+diff --color -ur pgbackrest-release-2.48.orig/doc/xml/coding.xml pgbackrest-release-2.48/doc/xml/coding.xml
+--- pgbackrest-release-2.48.orig/doc/xml/coding.xml	2023-09-25 15:32:15.000000000 +0200
++++ pgbackrest-release-2.48/doc/xml/coding.xml	2023-09-28 09:24:48.345351857 +0200
+@@ -365,13 +365,13 @@
              <p>This function can be called without variable parameters:</p>
  
              <code-block type="c">
@@ -78,24 +75,22 @@ Index: pgbackrest-release-2.47/doc/xml/coding.xml
              </code-block>
  
              <p>If the majority of functions in a module or object are variadic it is best to provide macros for all functions even if they do not have variable parameters. Do not use the base function when variadic macros exist.</p>
-Index: pgbackrest-release-2.47/doc/xml/release.xml
-===================================================================
---- pgbackrest-release-2.47.orig/doc/xml/release.xml
-+++ pgbackrest-release-2.47/doc/xml/release.xml
-@@ -11285,7 +11285,7 @@
-                             <release-item-contributor id="david.steele"/>
-                         </release-item-contributor-list> -->
+diff --color -ur pgbackrest-release-2.48.orig/doc/xml/release/2016/1.00.xml pgbackrest-release-2.48/doc/xml/release/2016/1.00.xml
+--- pgbackrest-release-2.48.orig/doc/xml/release/2016/1.00.xml	2023-09-25 15:32:15.000000000 +0200
++++ pgbackrest-release-2.48/doc/xml/release/2016/1.00.xml	2023-09-28 09:25:26.135759754 +0200
+@@ -43,7 +43,7 @@
+                     <release-item-contributor id="david.steele"/>
+                 </release-item-contributor-list> -->
  
--                        <p>Lock files are now stored in <path>/tmp/pgbackrest</path> by default. These days <path>/run/pgbackrest</path> is the preferred location but that would require init scripts which are not part of this release. The <setting>lock-path</setting> option can be used to configure the lock directory.</p>
-+                        <p>Lock files are now stored in <path>/run/pgbackrest</path> by default. These days <path>/run/pgbackrest</path> is the preferred location but that would require init scripts which are not part of this release. The <setting>lock-path</setting> option can be used to configure the lock directory.</p>
-                     </release-item>
+-                <p>Lock files are now stored in <path>/tmp/pgbackrest</path> by default. These days <path>/run/pgbackrest</path> is the preferred location but that would require init scripts which are not part of this release. The <setting>lock-path</setting> option can be used to configure the lock directory.</p>
++                <p>Lock files are now stored in <path>/run/pgbackrest</path> by default. These days <path>/run/pgbackrest</path> is the preferred location but that would require init scripts which are not part of this release. The <setting>lock-path</setting> option can be used to configure the lock directory.</p>
+             </release-item>
  
-                     <release-item>
-Index: pgbackrest-release-2.47/src/build/config/config.yaml
-===================================================================
---- pgbackrest-release-2.47.orig/src/build/config/config.yaml
-+++ pgbackrest-release-2.47/src/build/config/config.yaml
-@@ -834,7 +834,7 @@ option:
+             <release-item>
+diff --color -ur pgbackrest-release-2.48.orig/src/build/config/config.yaml pgbackrest-release-2.48/src/build/config/config.yaml
+--- pgbackrest-release-2.48.orig/src/build/config/config.yaml	2023-09-25 15:32:15.000000000 +0200
++++ pgbackrest-release-2.48/src/build/config/config.yaml	2023-09-28 09:26:03.226162015 +0200
+@@ -844,7 +844,7 @@
    lock-path:
      section: global
      type: path
@@ -104,11 +99,10 @@ Index: pgbackrest-release-2.47/src/build/config/config.yaml
      command:
        annotate: {}
        archive-get: {}
-Index: pgbackrest-release-2.47/src/config/parse.auto.c.inc
-===================================================================
---- pgbackrest-release-2.47.orig/src/config/parse.auto.c.inc
-+++ pgbackrest-release-2.47/src/config/parse.auto.c.inc
-@@ -11,7 +11,7 @@ Rule Strings
+diff --color -ur pgbackrest-release-2.48.orig/src/config/parse.auto.c.inc pgbackrest-release-2.48/src/config/parse.auto.c.inc
+--- pgbackrest-release-2.48.orig/src/config/parse.auto.c.inc	2023-09-25 15:32:15.000000000 +0200
++++ pgbackrest-release-2.48/src/config/parse.auto.c.inc	2023-09-28 09:26:36.286522454 +0200
+@@ -11,7 +11,7 @@
  
  static const StringPub parseRuleValueStr[] =
  {
@@ -117,11 +111,10 @@ Index: pgbackrest-release-2.47/src/config/parse.auto.c.inc
      PARSE_RULE_STRPUB("/var/lib/pgbackrest"),                                                                             // val/str
      PARSE_RULE_STRPUB("/var/log/pgbackrest"),                                                                             // val/str
      PARSE_RULE_STRPUB("/var/spool/pgbackrest"),                                                                           // val/str
-Index: pgbackrest-release-2.47/test/ci.pl
-===================================================================
---- pgbackrest-release-2.47.orig/test/ci.pl
-+++ pgbackrest-release-2.47/test/ci.pl
-@@ -202,8 +202,8 @@ eval
+diff --color -ur pgbackrest-release-2.48.orig/test/ci.pl pgbackrest-release-2.48/test/ci.pl
+--- pgbackrest-release-2.48.orig/test/ci.pl	2023-09-25 15:32:15.000000000 +0200
++++ pgbackrest-release-2.48/test/ci.pl	2023-09-28 09:27:15.690285382 +0200
+@@ -202,8 +202,8 @@
              $strPackage .= " libdbd-pg-perl";
          }
  
@@ -132,11 +125,10 @@ Index: pgbackrest-release-2.47/test/ci.pl
          processEnd();
  
          processBegin('install test packages');
-Index: pgbackrest-release-2.47/test/src/module/command/helpTest.c
-===================================================================
---- pgbackrest-release-2.47.orig/test/src/module/command/helpTest.c
-+++ pgbackrest-release-2.47/test/src/module/command/helpTest.c
-@@ -244,7 +244,7 @@ testRun(void)
+diff --color -ur pgbackrest-release-2.48.orig/test/src/module/command/helpTest.c pgbackrest-release-2.48/test/src/module/command/helpTest.c
+--- pgbackrest-release-2.48.orig/test/src/module/command/helpTest.c	2023-09-25 15:32:15.000000000 +0200
++++ pgbackrest-release-2.48/test/src/module/command/helpTest.c	2023-09-28 09:27:41.610567970 +0200
+@@ -244,7 +244,7 @@
              "                                      [default=n]\n"
              "  --io-timeout                        I/O timeout [default=60]\n"
              "  --lock-path                         path where lock files are stored\n"
@@ -145,11 +137,10 @@ Index: pgbackrest-release-2.47/test/src/module/command/helpTest.c
              "  --neutral-umask                     use a neutral umask [default=y]\n"
              "  --process-max                       max processes to use for\n"
              "                                      compress/transfer [default=1]\n"
-Index: pgbackrest-release-2.47/test/Vagrantfile
-===================================================================
---- pgbackrest-release-2.47.orig/test/Vagrantfile
-+++ pgbackrest-release-2.47/test/Vagrantfile
-@@ -54,12 +54,12 @@ Vagrant.configure(2) do |config|
+diff --color -ur pgbackrest-release-2.48.orig/test/Vagrantfile pgbackrest-release-2.48/test/Vagrantfile
+--- pgbackrest-release-2.48.orig/test/Vagrantfile	2023-09-25 15:32:15.000000000 +0200
++++ pgbackrest-release-2.48/test/Vagrantfile	2023-09-28 09:28:30.327765777 +0200
+@@ -54,12 +54,12 @@
              sudo /etc/init.d/virtualbox-guest-utils stop
              sudo /usr/sbin/VBoxService --timesync-set-on-restore --timesync-interval 5000 --timesync-set-threshold 1
  

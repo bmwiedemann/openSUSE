@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep 28 07:31:44 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.48
+  * Bug Fixes:
+    + Fix issue restoring block incremental without a block list. 
+    + [doc] Fix configuration reference example for the tls-server-address option.
+    + [doc] Fix command reference example for the filter option.
+
+  * Features:
+    + Add --repo-storage-tag option to create object tags. 
+    + Add known hosts checking for SFTP storage driver. 
+    + Support for dual stack connections. 
+    + Add backup size completed/total to info command JSON output. 
+
+  * Improvements:
+    + Multi-stanza check command.
+    + Retry reads of pg_control until checksum is valid. 
+    + Optimize WAL segment check after successful backup. 
+    + Improve GCS multi-part performance. 
+    + Allow archive-get command to run when stanza is stopped.
+    + Accept leading tilde in paths for SFTP public/private keys.
+    + Reload GCS credentials before renewing authentication token. 
+
+  * Test Suite Improvements
+
+- refreshed patches; release.xml has been splitted into individual files
+
+-------------------------------------------------------------------
 Mon Aug  7 06:11:25 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to version 2.47
