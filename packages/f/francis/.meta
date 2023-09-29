@@ -1,0 +1,8 @@
+<package name="francis" project="openSUSE:Factory">
+  <title>Productivity tool</title>
+  <description>Francis uses the well-known pomodoro technique to help you get more productive.
+
+</description>
+  <devel project="KDE:Extra" package="francis"/>
+  <url>https://apps.kde.org/francis</url>
+</package>
