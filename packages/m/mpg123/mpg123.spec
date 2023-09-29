@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           mpg123
-Version:        1.31.3
+Version:        1.32.2
 Release:        0
 Summary:        Console MPEG audio player and decoder library
 License:        LGPL-2.1-only
@@ -166,12 +166,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libmpg123-%{sover}
 %license COPYING
+%doc NEWS.libmpg123
 %{_libdir}/libmpg123.so.*
 
 %files -n libout123-%{sover}
+%doc NEWS.libout123
 %{_libdir}/libout123.so.*
 
 %files -n libsyn123-%{sover}
+%doc NEWS.libsyn123
 %{_libdir}/libsyn123.so.*
 
 %files devel

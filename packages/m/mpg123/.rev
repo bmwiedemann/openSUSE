@@ -379,4 +379,97 @@
     <comment></comment>
     <requestid>1073078</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b1f425a83fc191bee9bead3eb2e95ee9</srcmd5>
+    <version>1.32.2</version>
+    <time>1696014751</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.32.2
+  * libmpg123: Re-introduce _64 symbols on native 64 bit offset
+    platforms. This was a regression since 1.31 series. Sorry,
+    too much cleanup, not enough testing.
+  * build:
+    + Better O_LARGEFILE logic, avoiding redefintion.
+  * ports/cmake:
+    + Require C99 (bug 360, among other points, thanks to Ozkan
+      Sezer).
+    + Fix broken O_LARGEFILE logic (bug 360).
+    + Typo fix and cleanup, also manual SSE switch for Android
+      on old x86 (bug 359).
+- Update to version 1.32.1
+  * Include man pages again in tarball and install. We cannot
+    avoid the empty man directory when disabling programs with
+    autoconf.
+  * Fix signal handler prototype, avoiding some justified warnings.
+  * ports/cmake:
+    + Include CheckTypeSize, which seems to be needed sometimes
+    + Avoid O_LARGEFILE redefinition, logic closer to autoconf.
+- Update to version 1.32.0
+  * build
+    + Move version handling out of configure.ac to ease other 
+      build systems.
+    + Include &quot;fmt123.h&quot; instead of &lt;fmt123.h&gt; in main API 
+      headers to make it more likely the correct one is
+      included (at least gcc picks the one in the same directory
+      as the including header first).
+    + All headers are build-independent now.
+    + Fix build for picky linkers by avoiding definition of 
+      wrap_getcpuflags() where it is not used (spurious linker
+      error to non-exitent getcpuflags(), bug 353).
+    + Handle deprecation of C99 detection macro in autoconf 2.70.
+    + No use of AC_SYS_LARGEFILE anymore for explicit handling 
+      and differing choice for the libraries and frontend programs.
+    + Added --enable-portable and --disable-largefile to 
+      configure, removing the other largefile-related options.
+    + Added --disable-components --enable-libmpg123 to only 
+      build libmpg123 (and likewise --enable-libout123,
+      --enable-libout123-modules,  --enable-libsyn123) to autoconf
+      build. CMake build has something  similar with BUILD_PROGRAMS
+      and BUILD_LIBOUT123, which leave only libmpg123 and libsyn123
+      if disabled). 
+    + Consistent formatting of ./configure --help with 
+      AS_HELP_STRING().
+  * mpg123
+    + Added --libversion.
+    + Added proper A-B looping with terminal control key 'o', 
+      renamed --pauseloop to --presetloop.
+    + Really get rid of mpg123_position() usage. (It was all 
+      lies before!)
+    + Fix terminal progress info when seeking in stopped mode 
+      (1.31 regression).
+    + Patch up interaction of output buffer with generic remote 
+      control, adding non-interruptible drain after P 3, and
+      dropping buffer on QUIT.
+    + Uppercase some generic control replies for consinstency: 
+      SILENCE, PROGRESS, MUTE, UNMUTE
+  * libmpg123, libout123, libsyn123
+    + Bumped API version for version query functions.
+    + Replaced nearly all symbol renames with explicit INT123_ 
+      prefix declarations (intsym.h close to empty now).
+  * libout123
+    + Add sleep builtin output module (silent, but proper 
+      timing).
+  * libsyn123
+    + Introduced SYN123_PORTABLE_API for an API without off_t 
+      and ssize_t (see NEWS.libsyn123).
+  * libmpg123
+    + Internal I/O using explicit largefile support via off64_t, 
+      lseek64, fallback to plain 32 bit off_t.
+    + Added explicit 64 bit API with 64 suffix (mpg123_tell64(), 
+      not mpg123_tell_64()).
+      This allows full avoidance of ambiguus off_t. The API is 
+      always using 64 bit integers, regardless of internal
+      implementation.
+    + Introduced MPG123_PORTABLE_API for an API subset without 
+      off_t and ssize_t.
+    + Made mpg123_seek() and friends ignore offset sign for 
+      SEEK_END (always seeking towards beginning, assuming
+      negative offset) to make lseek()-conforming usage
+      possible. Seeking beyond the end never made sense, so no 
+      loss of valid functionality.
+  * Overall use of INT123_strerror(), trying to use thread-safe 
+    strerror_l() if possible.
+</comment>
+    <requestid>1113956</requestid>
+  </revision>
 </revisionlist>
