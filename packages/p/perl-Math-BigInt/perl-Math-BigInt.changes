@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Sep 28 03:07:38 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.999842
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  1.999842 2023-09-27
+   * Fix a bug causing Math::BigInt and Math::BigFloat to be caught in an endless
+     recursion. The bug was introduced when trying to fix
+     https://github.com/pjacklam/p5-Math-BigInt/issues/8
+   * Allow div_scale to be 0. It is not documented what div_scale <= 0 means, but
+     there are modules that set div_scale to 0 (e.g., Astro::Units) and fail
+     their tests if this is not supported.
+  1.999841 2023-09-21
+   * Remove development files that were accidentally included in the
+     distribution.
+  1.999840 2023-09-18
+   * Add methods bblsft() and bbrsft(), which do bitwise left and right shift,
+     respectively. The binary operators for bitwise left and right shift, "<<"
+     and ">>", now call the methods bblsft() and bbrsft(), respectively.
+     While this behaviour is consistent with how "<<" and ">>" work on floating
+     point numbers in core Perl, it changes how "<<" and ">>" worked on
+     Math::BigFloat objects. This is a corner case, but any code currently using
+     "<<" and ">>" on Math::BigFloat objects might need to be modified as follows
+         $x >>= $y    should be changed to    $x -> brsft($y)
+         $x <<= $y    should be changed to    $x -> blsft($y)
+         $x >>  $y    should be changed to    $x -> copy() -> brsft($y)
+         $x <<  $y    should be changed to    $x -> copy() -> blsft($y)
+   * Improve blsft() and brsft(). They now support negative shift values, an
+     arbitrarily large base, and have better handling of cases involving NaN.
+
+-------------------------------------------------------------------
 Sat Jul 15 03:08:21 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.999839

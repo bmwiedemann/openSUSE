@@ -18,7 +18,7 @@
 
 %define cpan_name Math-BigInt
 Name:           perl-Math-BigInt
-Version:        1.999839
+Version:        1.999842
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Arbitrary size integer math package
@@ -34,11 +34,6 @@ BuildRequires:  perl(Math::Complex) >= 1.36
 BuildRequires:  perl(Test::More) >= 0.94
 Requires:       perl(Carp) >= 1.22
 Requires:       perl(Math::Complex) >= 1.36
-Provides:       perl(Math::BigFloat) = 1.999839
-Provides:       perl(Math::BigInt) = 1.999839
-Provides:       perl(Math::BigInt::Calc) = 1.999839
-Provides:       perl(Math::BigInt::Lib) = 1.999839
-%define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
 Recommends:     perl(bignum) >= 0.22
