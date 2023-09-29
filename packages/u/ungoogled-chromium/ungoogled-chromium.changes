@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 28 22:22:34 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- ungoogled-chromium 117.0.5938.132 (boo#1215776):
+  * CVE-2023-5217: Heap buffer overflow in vp8 encoding in libvpx (boo#1215778)
+  * CVE-2023-5186: Use after free in Passwords
+  * CVE-2023-5187: Use after free in Extensions
+
+-------------------------------------------------------------------
+Mon Sep 25 00:30:35 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- ungoogled-chromium 117.0.5938.92:
+  * stability improvements
+
+-------------------------------------------------------------------
 Wed Sep 20 13:59:22 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Add explicit build dependency on libepoxy for Tumbleweed

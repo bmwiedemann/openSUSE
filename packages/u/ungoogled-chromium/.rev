@@ -247,4 +247,18 @@
     <comment></comment>
     <requestid>1112598</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e66bd7f6373d5290a7f5c9a92a655392</srcmd5>
+    <version>117.0.5938.132</version>
+    <time>1695980585</time>
+    <user>anag+factory</user>
+    <comment>- ungoogled-chromium 117.0.5938.132 (boo#1215776):
+  * CVE-2023-5217: Heap buffer overflow in vp8 encoding in libvpx (boo#1215778)
+  * CVE-2023-5186: Use after free in Passwords
+  * CVE-2023-5187: Use after free in Extensions
+- ungoogled-chromium 117.0.5938.92:
+  * stability improvements
+</comment>
+    <requestid>1114163</requestid>
+  </revision>
 </revisionlist>

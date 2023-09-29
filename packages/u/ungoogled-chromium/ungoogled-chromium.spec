@@ -77,7 +77,7 @@
 %endif
 # Package names
 Name:           ungoogled-chromium
-Version:        117.0.5938.88
+Version:        117.0.5938.132
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -86,7 +86,7 @@ Source0:        https://commondatastorage.googleapis.com/chromium-browser-offici
 Source1:        esbuild.tar.gz
 Source3:        README.SUSE
 Source4:        ffmpeg-new-channel-layout.patch
-Source5:        ungoogled-chromium-%{version}-1.tar.gz
+Source5:        https://github.com/ungoogled-software/ungoogled-chromium/archive/refs/tags/%{version}-1.tar.gz
 Source6:        ungoogled-chromium.patch
 # Toolchain definitions
 Source30:       master_preferences
@@ -176,8 +176,8 @@ BuildRequires:  pkgconfig(cairo) >= 1.6
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dirac) >= 1.0.0
 BuildRequires:  pkgconfig(dri)
-BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(epoxy)
+BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac++)
 BuildRequires:  pkgconfig(form)
 BuildRequires:  pkgconfig(formw)
