@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 14 03:09:44 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.017
+   see /usr/share/doc/packages/perl-Term-Table/Changes
+
+  0.017     2023-09-13 10:41:08-07:00 America/Los_Angeles
+
+      - Remove 'Importer' dependency
+
+-------------------------------------------------------------------
 Tue Jan  4 03:07:31 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.016

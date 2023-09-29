@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Term-Table
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,26 @@
 
 %define cpan_name Term-Table
 Name:           perl-Term-Table
-Version:        0.016
+Version:        0.17.0
 Release:        0
-Summary:        Format a header and rows into a table
+%define cpan_version 0.017
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Format a header and rows into a table
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/EX/EXODIST/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/EX/EXODIST/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Importer) >= 0.024
 BuildRequires:  perl(Test2::Tools::Tiny) >= 1.302097
-Requires:       perl(Importer) >= 0.024
+Provides:       perl(Term::Table) = 0.17.0
+Provides:       perl(Term::Table::Cell) = 0.17.0
+Provides:       perl(Term::Table::CellStack) = 0.17.0
+Provides:       perl(Term::Table::HashBase) = 0.17.0
+Provides:       perl(Term::Table::LineBreak) = 0.17.0
+Provides:       perl(Term::Table::Spacer) = 0.17.0
+Provides:       perl(Term::Table::Util) = 0.17.0
+%define         __perllib_provides /bin/true
 Recommends:     perl(Term::Size::Any) >= 0.002
 Recommends:     perl(Unicode::GCString) >= 2013.10
 Recommends:     perl(Unicode::LineBreak) >= 2015.06
@@ -41,7 +48,7 @@ This is used by some failing tests to provide diagnostics about what has
 gone wrong. This module is able to generic format rows of data into tables.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -56,7 +63,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc appveyor.yml Changes README README.md
+%doc Changes README README.md
 %license LICENSE
 
 %changelog
