@@ -22,7 +22,6 @@
 %define _lto_cflags %{nil}
 %define rname   mscore
 %define version_lesser 4.1
-%define revision 5485621
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
@@ -65,7 +64,12 @@ Source5:        README.SUSE
 Patch0:         use-qtmake-qt5.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150500
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libqt5-qtbase-private-headers-devel
 %ifarch ppc64 ppc64le
@@ -111,6 +115,9 @@ Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
 Requires:       ( alsa-plugins-pulse if pulseaudio )
 Requires:       ( pipewire-alsa      if pipewire )
+# For the following arch build fails in the crashpad client,
+# Maybe repairable? Disabled until a solution is found by someone.
+ExcludeArch:    aarch64 ppc64 ppc64le
 
 %description
 MuseScore is a graphical music typesetter. It allows for note entry on a
@@ -158,6 +165,11 @@ mv -f tmpfile thirdparty/rtf2html/README.ru
 %limit_build -m 2000
 %endif
 
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150500
+export CC=gcc-12
+export CXX=g++-12
+%endif
+
 %define __builddir build.release
 # TODO:
 # find out what those do:
@@ -167,13 +179,12 @@ mv -f tmpfile thirdparty/rtf2html/README.ru
 %cmake \
        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DMUSESCORE_BUILD_CONFIGURATION=app \
-       -DMUSESCORE_BUILD_CONFIG=release \
+       -DMUSESCORE_BUILD_MODE=release \
        -DBUILD_UNIT_TESTS=OFF \
        -DUSE_SYSTEM_FREETYPE=ON \
        -DBUILD_JACK:BOOL=ON \
        -DBUILD_UPDATE_MODULE:BOOL=OFF \
        -DBUILD_CRASHPAD_CLIENT=OFF \
-       -DMUSESCORE_REVISION=%{revision} \
        -Wno-dev
 %cmake_build
 
