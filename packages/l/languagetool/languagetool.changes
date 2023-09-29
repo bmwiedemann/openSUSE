@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 28 08:27:37 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Fix too restrictive permissions on aggregated
+  language-module.properties file
+
+-------------------------------------------------------------------
 Wed Sep 13 05:18:53 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp

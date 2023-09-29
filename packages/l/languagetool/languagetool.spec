@@ -211,6 +211,8 @@ This package contains javadoc for %{name}.
 
 install -dm 0755 %{buildroot}%{_datadir}/%{name}
 cp -r languagetool-standalone/target/LanguageTool-%{version}/LanguageTool-%{version}/* %{buildroot}%{_datadir}/%{name}
+# the file-aggregator creates a file with too restrictive permissions
+chmod 0644 %{buildroot}%{_datadir}/%{name}/META-INF/org/languagetool/language-module.properties
 xmvn-subst -R %{buildroot} -s %{buildroot}%{_datadir}/%{name}/libs
 %fdupes -s %{buildroot}%{_datadir}/%{name}
 
