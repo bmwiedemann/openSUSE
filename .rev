@@ -2560,4 +2560,13 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment></comment>
     <requestid>1097663</requestid>
   </revision>
+  <revision rev="146" vrev="3">
+    <srcmd5>6f794e00cac03fd36dd7d2aad77b9c57</srcmd5>
+    <version>5.15.10+kde129</version>
+    <time>1696014771</time>
+    <user>anag+factory</user>
+    <comment>- switch icu-devel requires to pkgconfig to allow switching libicu
+  versions (forwarded request 1114077 from msmeissn)</comment>
+    <requestid>1114081</requestid>
+  </revision>
 </revisionlist>

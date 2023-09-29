@@ -95,7 +95,8 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  pkgconfig(glesv2)
 %endif
-BuildRequires:  libicu-devel
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  tslib-devel
 %if %{vulkan}
 BuildRequires:  vulkan-devel

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 28 09:45:53 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- switch icu-devel requires to pkgconfig to allow switching libicu
+  versions
+
+-------------------------------------------------------------------
 Wed Jun 28 16:18:03 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change %_libqt5_libexecdir to %_libexecdir/qt5 (bsc#1174075)
