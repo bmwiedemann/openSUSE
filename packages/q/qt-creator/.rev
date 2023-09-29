@@ -214,4 +214,12 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
   * 0001-ClangTools-Add-support-for-yaml-cpp-0.8.patch</comment>
     <requestid>1105930</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3ebc830082287dd87b0099c5ef1bb830</srcmd5>
+    <version>11.0.3</version>
+    <time>1696014841</time>
+    <user>anag+factory</user>
+    <comment>Update to 11.0.3 (forwarded request 1114096 from krop)</comment>
+    <requestid>1114097</requestid>
+  </revision>
 </revisionlist>
