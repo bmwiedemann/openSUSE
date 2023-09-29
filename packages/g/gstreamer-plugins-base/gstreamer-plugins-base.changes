@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 22 11:36:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.6:
+  + audio: Make sure to stop ringbuffer on error
+  + decodebin3:
+    - Avoid identity, sinkpad, parsebin leakage when reset input
+    - Ensure the slot is unlinked before linking to decoder
+  + sdp:
+    - Fix wrong debug log error message for missing clock-rate in
+      caps
+    - Parse zero clock-rate as default
+- Rebase reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Tue Jul 25 11:05:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.5:
