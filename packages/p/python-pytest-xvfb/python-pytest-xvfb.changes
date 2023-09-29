@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 27 10:03:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.0
+  * New --xvfb-backend argument, which can be used to run Xephyr or
+    Xvnc in place of Xvfb (e.g. for visual inspection but on a
+    remote system or a consistent screen size needed).
+  * Support for Python 3.5 and 3.6 is now dropped, while official
+    support for 3.9, 3.10 and 3.11 was added (with no code chances
+    required).
+  * The Xvfb instance is now no longer saved in pytest's config
+    object as config.xvfb anymore, and only available via the xvfb
+    fixture.
+  * Xvfb is now shut down as late as possible (via an atexit hook
+    registered at import time), seemingly avoiding errors such as
+    "XIO: fatal IO error 0 (Success)".
+  * Code reformatting using black/shed.
+  * Packaging refresh using pyproject.toml.
+
+-------------------------------------------------------------------
 Sat Jun 10 09:42:19 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -18,21 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-xvfb
-Version:        2.0.0
+Version:        3.0.0
 Release:        0
 Summary:        Pytest plugin to run Xvfb for tests
 License:        MIT
 URL:            https://github.com/The-Compiler/pytest-xvfb
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-xvfb/pytest-xvfb-%{version}.tar.gz
-# https://github.com/The-Compiler/pytest-xvfb/pull/26
-Source1:        https://raw.githubusercontent.com/The-Compiler/pytest-xvfb/master/LICENSE
-BuildRequires:  %{python_module PyVirtualDisplay >= 0.3}
+BuildRequires:  %{python_module PyVirtualDisplay >= 1.3}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 2.8.1}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
-Requires:       python-PyVirtualDisplay >= 0.3
+Requires:       python-PyVirtualDisplay >= 1.3
 Requires:       python-pytest >= 2.8.1
 Requires:       xdpyinfo
 Recommends:     xorg-x11-server
@@ -57,22 +58,24 @@ benefits of Xvfb locally.
 %prep
 %setup -q -n pytest-xvfb-%{version}
 rm tests/test_xvfb_windows.py
-cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_failing_start fails on i586
-%pytest -k 'not test_failing_start'
+# can't test this on obs
+donttest="test_empty_display or test_no_xvfb_marker or test_xvfb_with_xauth"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pytest_xvfb.py
+%pycache_only %{python_sitelib}/__pycache__/pytest_xvfb*.pyc
+%{python_sitelib}/pytest_xvfb-%{version}.dist-info
 
 %changelog
