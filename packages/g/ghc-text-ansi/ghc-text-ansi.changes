@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Sun Sep 24 15:55:44 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update text-ansi to version 0.3.0.
+  ## [0.3.0] - 2023-09-24
+
+  - Switch the underlying text builder from `text-builder` to `text-builder-linear`. This also affects the API provided by
+    `Text.Builder.ANSI`; users that were relying on the `Buidler` type from `text-builder` specificially are encouraged
+    to simply use older versions of this package until they are able to update their own code to use `text-builder-linear`
+    instead.
+
+    The motivation for this change is performance and encoraging the ecosystem to move in the right direction. See the
+    `text-builder-linear` project for more details. In a nutshell, it is the superior builder type ;)
+
+-------------------------------------------------------------------
+Thu May 11 14:37:45 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Add text-ansi at version 0.2.1.1.
+
