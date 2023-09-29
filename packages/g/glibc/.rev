@@ -2876,4 +2876,12 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
     <comment>- Add cross-ppc64le package (forwarded request 1107913 from Andreas_Schwab)</comment>
     <requestid>1107915</requestid>
   </revision>
+  <revision rev="279" vrev="3">
+    <srcmd5>4c27790cacf2f5750af4a3af3173f4fa</srcmd5>
+    <version>2.38</version>
+    <time>1696014739</time>
+    <user>anag+factory</user>
+    <comment>- fstat-implementation.patch: io: Do not implement fstat with fstatat (forwarded request 1114022 from Andreas_Schwab)</comment>
+    <requestid>1114023</requestid>
+  </revision>
 </revisionlist>

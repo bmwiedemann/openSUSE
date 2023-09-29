@@ -1,0 +1,165 @@
+From 551101e8240b7514fc646d1722f8b79c90362b8f Mon Sep 17 00:00:00 2001
+From: Adhemerval Zanella <adhemerval.zanella@linaro.org>
+Date: Mon, 11 Sep 2023 10:25:48 -0300
+Subject: [PATCH] io: Do not implement fstat with fstatat
+
+AT_EMPTY_PATH is a requirement to implement fstat over fstatat,
+however it does not prevent the kernel to read the path argument.
+It is not an issue, but on x86-64 with SMAP-capable CPUs the kernel is
+forced to perform expensive user memory access.  After that regular
+lookup is performed which adds even more overhead.
+
+Instead, issue the fstat syscall directly on LFS fstat implementation
+(32 bit architectures will still continue to use statx, which is
+required to have 64 bit time_t support).  it should be even a
+small performance gain on non x86_64, since there is no need
+to handle the path argument.
+
+Checked on x86_64-linux-gnu.
+---
+ sysdeps/unix/sysv/linux/fstat64.c       | 37 +++++++++++++++++++++++--
+ sysdeps/unix/sysv/linux/fstatat64.c     | 12 ++------
+ sysdeps/unix/sysv/linux/internal-stat.h | 31 +++++++++++++++++++++
+ 3 files changed, 68 insertions(+), 12 deletions(-)
+ create mode 100644 sysdeps/unix/sysv/linux/internal-stat.h
+
+diff --git a/sysdeps/unix/sysv/linux/fstat64.c b/sysdeps/unix/sysv/linux/fstat64.c
+index 124384e57f..a291f0825b 100644
+--- a/sysdeps/unix/sysv/linux/fstat64.c
++++ b/sysdeps/unix/sysv/linux/fstat64.c
+@@ -19,20 +19,53 @@
+ #define __fstat __redirect___fstat
+ #define fstat   __redirect_fstat
+ #include <sys/stat.h>
++#undef __fstat
++#undef fstat
+ #include <fcntl.h>
+-#include <kernel_stat.h>
+-#include <stat_t64_cp.h>
++#include <internal-stat.h>
+ #include <errno.h>
+ 
+ int
+ __fstat64_time64 (int fd, struct __stat64_t64 *buf)
+ {
++#if !FSTATAT_USE_STATX
++# if XSTAT_IS_XSTAT64
++#  ifdef __NR_fstat
++  /* 64-bit kABI, e.g. aarch64, ia64, powerpc64*, s390x, riscv64, and
++     x86_64.  */
++  return INLINE_SYSCALL_CALL (fstat, fd, buf);
++#  elif defined __NR_fstat64
++#   if STAT64_IS_KERNEL_STAT64
++  /* 64-bit kABI outlier, e.g. alpha  */
++  return INLINE_SYSCALL_CALL (fstat64, fd, buf);
++#   else
++  /* 64-bit kABI outlier, e.g. sparc64.  */
++  struct kernel_stat64 kst64;
++  int r = INLINE_SYSCALL_CALL (fstat64, fd, &kst64);
++  if (r == 0)
++    __cp_stat64_kstat64 (buf, &kst64);
++  return r;
++#   endif /* STAT64_IS_KERNEL_STAT64 */
++#  endif
++# else /* XSTAT_IS_XSTAT64 */
++  /* 64-bit kabi outlier, e.g. mips64 and mips64-n32.  */
++  struct kernel_stat kst;
++  int r = INLINE_SYSCALL_CALL (fstat, fd, &kst);
++  if (r == 0)
++    __cp_kstat_stat64_t64 (&kst, buf);
++  return r;
++# endif
++#else /* !FSTATAT_USE_STATX  */
++  /* All kABIs with non-LFS support and with old 32-bit time_t support
++     e.g. arm, csky, i386, hppa, m68k, microblaze, nios2, sh, powerpc32,
++     and sparc32.  */
+   if (fd < 0)
+     {
+       __set_errno (EBADF);
+       return -1;
+     }
+   return __fstatat64_time64 (fd, "", buf, AT_EMPTY_PATH);
++#endif
+ }
+ #if __TIMESIZE != 64
+ hidden_def (__fstat64_time64)
+diff --git a/sysdeps/unix/sysv/linux/fstatat64.c b/sysdeps/unix/sysv/linux/fstatat64.c
+index 3509d3ca6d..127c6ff601 100644
+--- a/sysdeps/unix/sysv/linux/fstatat64.c
++++ b/sysdeps/unix/sysv/linux/fstatat64.c
+@@ -21,12 +21,10 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <string.h>
+-#include <kernel_stat.h>
+ #include <sysdep.h>
+ #include <time.h>
+-#include <kstat_cp.h>
+-#include <stat_t64_cp.h>
+ #include <sys/sysmacros.h>
++#include <internal-stat.h>
+ 
+ #if __TIMESIZE == 64 \
+      && (__WORDSIZE == 32 \
+@@ -40,11 +38,7 @@ _Static_assert (sizeof (__blkcnt_t) == sizeof (__blkcnt64_t),
+                 "__blkcnt_t and __blkcnt64_t must match");
+ #endif
+ 
+-#if (__WORDSIZE == 32 \
+-     && (!defined __SYSCALL_WORDSIZE || __SYSCALL_WORDSIZE == 32)) \
+-     || defined STAT_HAS_TIME32 \
+-     || (!defined __NR_newfstatat && !defined __NR_fstatat64)
+-# define FSTATAT_USE_STATX 1
++#if FSTATAT_USE_STATX
+ 
+ static inline int
+ fstatat64_time64_statx (int fd, const char *file, struct __stat64_t64 *buf,
+@@ -79,8 +73,6 @@ fstatat64_time64_statx (int fd, const char *file, struct __stat64_t64 *buf,
+ 
+   return r;
+ }
+-#else
+-# define FSTATAT_USE_STATX 0
+ #endif
+ 
+ /* Only statx supports 64-bit timestamps for 32-bit architectures with
+diff --git a/sysdeps/unix/sysv/linux/internal-stat.h b/sysdeps/unix/sysv/linux/internal-stat.h
+new file mode 100644
+index 0000000000..e3b0569853
+--- /dev/null
++++ b/sysdeps/unix/sysv/linux/internal-stat.h
+@@ -0,0 +1,31 @@
++/* Internal stat definitions.
++   Copyright (C) 2023 Free Software Foundation, Inc.
++   This file is part of the GNU C Library.
++
++   The GNU C Library is free software; you can redistribute it and/or
++   modify it under the terms of the GNU Lesser General Public
++   License as published by the Free Software Foundation; either
++   version 2.1 of the License, or (at your option) any later version.
++
++   The GNU C Library is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++   Lesser General Public License for more details.
++
++   You should have received a copy of the GNU Lesser General Public
++   License along with the GNU C Library; if not, see
++   <https://www.gnu.org/licenses/>.  */
++
++#include <sysdep.h>
++#include <stat_t64_cp.h>
++#include <kernel_stat.h>
++#include <kstat_cp.h>
++
++#if (__WORDSIZE == 32 \
++     && (!defined __SYSCALL_WORDSIZE || __SYSCALL_WORDSIZE == 32)) \
++     || defined STAT_HAS_TIME32 \
++     || (!defined __NR_newfstatat && !defined __NR_fstatat64)
++# define FSTATAT_USE_STATX 1
++#else
++# define FSTATAT_USE_STATX 0
++#endif
+-- 
+2.42.0
+

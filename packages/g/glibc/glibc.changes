@@ -1,3 +1,51 @@
+-------------------------------------------------------------------
+Wed Sep 27 14:08:48 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- fstat-implementation.patch: io: Do not implement fstat with fstatat
+
+-------------------------------------------------------------------
+Mon Sep 25 07:58:08 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- getaddrinfo-memory-leak.patch: Fix leak in getaddrinfo introduced by the
+  fix for CVE-2023-4806 (CVE-2023-5156, bsc#1215714, BZ #30884)
+
+-------------------------------------------------------------------
+Mon Sep 18 08:48:59 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- getcanonname-use-after-free.patch: getaddrinfo: Fix use after free in
+  getcanonname (CVE-2023-4806, bsc#1215281, BZ #30843)
+- Do not build any cross packages in SLES
+
+-------------------------------------------------------------------
+Wed Sep 13 12:25:56 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- no-aaaa-read-overflow.patch: Stack read overflow with large TCP
+  responses in no-aaaa mode (CVE-2023-4527, bsc#1215280, BZ #30842)
+
+-------------------------------------------------------------------
+Tue Sep 12 12:52:55 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Add systemd to passwd, group and shadow lookups (jsc#PED-5188)
+
+-------------------------------------------------------------------
+Mon Sep 11 09:20:07 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- ppc64-flock-fob64.patch: io: Fix record locking contants for powerpc64
+  with __USE_FILE_OFFSET64 (BZ #30804)
+- libio-io-vtables.patch: libio: Fix oversized __io_vtables
+- call-init-proxy-objects.patch: elf: Do not run constructors for proxy
+  objects
+- dtors-reverse-ctor-order.patch: elf: Always call destructors in reverse
+  constructor order (BZ #30785)
+
+-------------------------------------------------------------------
+Tue Sep  5 11:13:13 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- intl-c-utf-8-like-c-locale.patch: intl: Treat C.UTF-8 locale like C
+  locale (BZ #16621)
+- glibc-disable-gettext-for-c-utf8.patch: Removed
+
+-------------------------------------------------------------------
 Mon Aug 28 11:56:10 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Add cross-ppc64le package

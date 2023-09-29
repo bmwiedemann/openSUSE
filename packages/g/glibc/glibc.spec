@@ -96,6 +96,9 @@ ExclusiveArch:  do_not_build
 %define build_cross 1
 %undefine _build_create_debug
 ExcludeArch:    %{cross_arch}
+%if 0%{?suse_version} < 1600
+ExclusiveArch:  do_not_build
+%endif
 %endif
 %define host_arch %{?cross_cpu}%{!?cross_cpu:%{_target_cpu}}
 
@@ -287,8 +290,6 @@ Patch100:       add-locales.patch
 Patch102:       glibc-2.4.90-no_NO.diff
 # PATCH-FIX-OPENSUSE -- Renames for China
 Patch103:       glibc-2.4-china.diff
-# PATCH-FIX-OPENSUSE -- Disable gettext for C.UTF-8 locale
-Patch104:       glibc-disable-gettext-for-c-utf8.patch
 
 ### Network related patches
 # PATCH-FIX-OPENSUSE Warn about usage of mdns in resolv.conv
@@ -307,6 +308,24 @@ Patch1001:      cache-amd-legacy.patch
 Patch1002:      cache-intel-shared.patch
 # PATCH-FIX-UPSTREAM malloc: Enable merging of remainders in memalign, remove bin scanning from memalign (BZ #30723)
 Patch1003:      posix-memalign-fragmentation.patch
+# PATCH-FIX-UPSTREAM intl: Treat C.UTF-8 locale like C locale (BZ #16621)
+Patch1004:      intl-c-utf-8-like-c-locale.patch
+# PATCH-FIX-UPSTREAM io: Fix record locking contants for powerpc64 with __USE_FILE_OFFSET64 (BZ #30804)
+Patch1005:      ppc64-flock-fob64.patch
+# PATCH-FIX-UPSTREAM libio: Fix oversized __io_vtables
+Patch1006:      libio-io-vtables.patch
+# PATCH-FIX-UPSTREAM elf: Do not run constructors for proxy objects
+Patch1007:      call-init-proxy-objects.patch
+# PATCH-FIX-UPSTREAM elf: Always call destructors in reverse constructor order (BZ #30785)
+Patch1008:      dtors-reverse-ctor-order.patch
+# PATCH-FIX-UPSTREAM Stack read overflow with large TCP responses in no-aaaa mode (CVE-2023-4527, BZ #30842)
+Patch1009:      no-aaaa-read-overflow.patch
+# PATCH-FIX-UPSTREAM getaddrinfo: Fix use after free in getcanonname (CVE-2023-4806, BZ #30843)
+Patch1010:      getcanonname-use-after-free.patch
+# PATCH-FIX-UPSTREAM Fix leak in getaddrinfo introduced by the fix for CVE-2023-4806 (CVE-2023-5156, BZ #30884)
+Patch1011:      getaddrinfo-memory-leak.patch
+# PATCH-FIX-UPSTREAM io: Do not implement fstat with fstatat
+Patch1012:      fstat-implementation.patch
 
 ###
 # Patches awaiting upstream approval
@@ -524,7 +543,6 @@ library in a cross compilation setting.
 %patch100 -p1
 %patch102 -p1
 %patch103 -p1
-%patch104 -p1
 
 %patch304 -p1
 %patch306 -p1
@@ -534,6 +552,15 @@ library in a cross compilation setting.
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
+%patch1004 -p1
+%patch1005 -p1
+%patch1006 -p1
+%patch1007 -p1
+%patch1008 -p1
+%patch1009 -p1
+%patch1010 -p1
+%patch1011 -p1
+%patch1012 -p1
 %endif
 
 %patch2000 -p1
