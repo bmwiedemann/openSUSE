@@ -18,9 +18,9 @@
 
 %define cpan_name Perl-Tidy
 Name:           perl-Perl-Tidy
-Version:        20230909.0.0
+Version:        20230912.0.0
 Release:        0
-%define cpan_version 20230909
+%define cpan_version 20230912
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Indent and reformat perl scripts
@@ -30,20 +30,20 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Provides:       perl(Perl::Tidy) = 20230909.0.0
-Provides:       perl(Perl::Tidy::Debugger) = 20230909.0.0
-Provides:       perl(Perl::Tidy::Diagnostics) = 20230909.0.0
-Provides:       perl(Perl::Tidy::FileWriter) = 20230909.0.0
-Provides:       perl(Perl::Tidy::Formatter) = 20230909.0.0
-Provides:       perl(Perl::Tidy::HtmlWriter) = 20230909.0.0
-Provides:       perl(Perl::Tidy::IOScalar) = 20230909.0.0
-Provides:       perl(Perl::Tidy::IOScalarArray) = 20230909.0.0
-Provides:       perl(Perl::Tidy::IndentationItem) = 20230909.0.0
-Provides:       perl(Perl::Tidy::Logger) = 20230909.0.0
-Provides:       perl(Perl::Tidy::Tokenizer) = 20230909.0.0
-Provides:       perl(Perl::Tidy::VerticalAligner) = 20230909.0.0
-Provides:       perl(Perl::Tidy::VerticalAligner::Alignment) = 20230909.0.0
-Provides:       perl(Perl::Tidy::VerticalAligner::Line) = 20230909.0.0
+Provides:       perl(Perl::Tidy) = 20230912.0.0
+Provides:       perl(Perl::Tidy::Debugger) = 20230912.0.0
+Provides:       perl(Perl::Tidy::Diagnostics) = 20230912.0.0
+Provides:       perl(Perl::Tidy::FileWriter) = 20230912.0.0
+Provides:       perl(Perl::Tidy::Formatter) = 20230912.0.0
+Provides:       perl(Perl::Tidy::HtmlWriter) = 20230912.0.0
+Provides:       perl(Perl::Tidy::IOScalar) = 20230912.0.0
+Provides:       perl(Perl::Tidy::IOScalarArray) = 20230912.0.0
+Provides:       perl(Perl::Tidy::IndentationItem) = 20230912.0.0
+Provides:       perl(Perl::Tidy::Logger) = 20230912.0.0
+Provides:       perl(Perl::Tidy::Tokenizer) = 20230912.0.0
+Provides:       perl(Perl::Tidy::VerticalAligner) = 20230912.0.0
+Provides:       perl(Perl::Tidy::VerticalAligner::Alignment) = 20230912.0.0
+Provides:       perl(Perl::Tidy::VerticalAligner::Line) = 20230912.0.0
 %define         __perllib_provides /bin/true
 %{perl_requires}
 

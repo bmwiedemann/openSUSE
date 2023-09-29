@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 13 03:08:55 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20230912
+   see /usr/share/doc/packages/perl-Perl-Tidy/CHANGES.md
+
+  ## 2023 09 12
+
+      - Fix for git #124: remove a syntax error check which could cause
+        an incorrect error message when List::Gather::gather was used.
+
+-------------------------------------------------------------------
 Sat Sep  9 03:08:04 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20230909
