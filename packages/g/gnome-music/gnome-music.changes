@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 26 12:09:52 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly create the pycache/.pyc files, not relying on the
+  generation done by meson. Should make the package reproducible.
+
+-------------------------------------------------------------------
 Sat Sep 16 22:02:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:

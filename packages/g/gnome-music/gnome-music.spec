@@ -98,6 +98,9 @@ sed -i -e 's|#!%{_bindir}/env python3|#!%{_bindir}/python3|' gnome-music.in
 
 %install
 %meson_install
+# Explicitly create the pycache/.pyc files, not relying on the
+# generation done by meson. Should make the package reproducible.
+%py3_compile %{buildroot}%{python3_sitelib}/gnomemusic
 %find_lang %{name} %{?no_lang_C}
 %find_lang org.gnome.Music %{?no_lang_C} %{name}.lang
 %fdupes %{buildroot}%{python3_sitelib}/gnomemusic
