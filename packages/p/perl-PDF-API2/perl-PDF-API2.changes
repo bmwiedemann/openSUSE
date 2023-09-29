@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 26 03:07:19 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.045
+   see /usr/share/doc/packages/perl-PDF-API2/Changes
+
+  2.045     2023-09-25
+      - Fixed documentation error in synopsis for QR codes.
+      - Fixed date validation when timezone offset minute contains a trailing
+        apostrophe, which is required by the Adobe PDF specifications and
+        prohibited by the ISO PDF specifications.  PDF::API2 now accepts either
+        version as valid (report by Johan Vromans).
+      - Fixed passing a GD object to $pdf->image() (reported by Hakon Hagland).
+      - Fixed a crash when object numbers contain leading zeroes.
+
+-------------------------------------------------------------------
 Thu Nov 17 03:07:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.044
