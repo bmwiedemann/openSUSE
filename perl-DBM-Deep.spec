@@ -18,15 +18,13 @@
 
 %define cpan_name DBM-Deep
 Name:           perl-DBM-Deep
-Version:        2.0016
+Version:        2.0017
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Pure perl multi-level hash/array DBM that supports transactions
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SP/SPROUT/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DC/DCANTRELL/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-# PATCH-FIX-UPSTREAM deprecated package separator https://rt.cpan.org/Public/Bug/Display.html?id=148417
-Patch0:         package-separator-perl5.38.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -47,7 +45,7 @@ around a C-based DBM. Out-of-the-box compatibility with Unix, Mac OS X and
 Windows.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Build.PL --installdirs=vendor
