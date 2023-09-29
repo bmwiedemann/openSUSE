@@ -22,7 +22,7 @@
 %define man_suffix 3ssl
 Name:           openssl-3
 # Don't forget to update the version in the "openssl" meta-package!
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        Apache-2.0
