@@ -182,4 +182,15 @@
     <comment></comment>
     <requestid>1106774</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4f4f80771ea54ed75e67dc347ecd7c8b</srcmd5>
+    <version>2.12.0</version>
+    <time>1696014795</time>
+    <user>anag+factory</user>
+    <comment>- drop pg 12. not supported. no pg 16 support yet either.
+
+- Update to version 2.12.0
+  https://github.com/timescale/timescaledb/releases/tag/2.12.0</comment>
+    <requestid>1113709</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 26 17:43:42 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop pg 12. not supported. no pg 16 support yet either.
+
+-------------------------------------------------------------------
+Tue Sep 26 17:42:44 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.12.0
+  https://github.com/timescale/timescaledb/releases/tag/2.12.0 
+
+-------------------------------------------------------------------
 Thu Aug 17 20:01:36 UTC 2023 - Emiliano Langella <emiliano.langella@suse.com>
 
 - Update to version 2.11.2
