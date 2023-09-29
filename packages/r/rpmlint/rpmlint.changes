@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 27 10:26:53 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.4.0+git20230927.bf3988d:
+  * Add whitelisting for 90-kubeadm.conf (bsc#1215542)
+  * sysctl-whitelist: remove old microos-tools entry
+
+-------------------------------------------------------------------
 Mon Sep 18 12:58:36 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 2.4.0+git20230918.4498739:
