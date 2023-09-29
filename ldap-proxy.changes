@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Sat Sep 09 00:13:36 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.1.0~6:
+  * Remove incorrectly added cargo config
+  * Add support for allowing all dns to bind through the proxy
+
+-------------------------------------------------------------------
+Wed Sep 06 02:33:30 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.1.0~2:
+  * Update to latest ldap3
+
+-------------------------------------------------------------------
+Tue Sep 05 07:12:48 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.1.0~1:
+  * Add example config and unit file
+
+-------------------------------------------------------------------
+Tue Sep  5 06:54:59 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Initial commit
