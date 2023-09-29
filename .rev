@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1095403</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>68d40aae5150650271f6a37cd6853d64</srcmd5>
+    <version>4.24.0</version>
+    <time>1689175631</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.24.0:
+  * Drop Python 3.7 support.</comment>
+    <requestid>1098184</requestid>
+  </revision>
 </revisionlist>
