@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 29 10:09:59 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1695896472.1c9ce39:
+  * Add VNC depth support to the generalhw backend
+  * Require Mojolicious 9.340.0
+  * script/os-autoinst-setup-multi-machine: Drop unnecessary setcap on qemu
+  * ssh_screen: Log SSH read errors
+  * Fix return context check in mocked SSH error method in unit test
+
+-------------------------------------------------------------------
 Mon Sep 25 12:28:25 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1695644896.26abc02:
