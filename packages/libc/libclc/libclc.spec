@@ -16,7 +16,7 @@
 #
 
 
-%define _libclc_llvm_ver 16.0.0
+%define _libclc_llvm_ver 17.0.1
 %define _version %_libclc_llvm_ver%{?_rc:rc%_rc}
 %define _tagver %_libclc_llvm_ver%{?_rc:-rc%_rc}
 
