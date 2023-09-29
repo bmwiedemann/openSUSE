@@ -17,5 +17,7 @@ curl $verbose \
      --data "{\"name\":\"$name\",\"description\":\"$description\", \"namespace\": \"$namespace\", \"wait\": \"true\"}" \
      https://code.opensuse.org/api/0/new
 
+sleep 5
 scripts/pagure-set-projectoptions $name
 scripts/pagure-modify-acls $name
+scripts/pagure-set-projectoptions $name
