@@ -4049,6 +4049,7 @@
     <package name="screen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="sddm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sddm-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="sddm-greeter-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sddm-theme-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="seahorse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="seahorse-daemon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

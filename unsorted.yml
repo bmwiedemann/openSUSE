@@ -473,6 +473,7 @@ unsorted:
   - afterburn 
   - afterburn-dracut 
   - agama-cli 
+  - agama-dbus-server 
   - age 
   - agenda 
   - agenda-lang 
@@ -623,7 +624,6 @@ unsorted:
   - ant-contrib 
   - ant-contrib-javadoc 
   - ant-contrib-manual 
-  - ant-findbugs 
   - ant-imageio 
   - ant-jakartamail 
   - ant-javamail 
@@ -687,8 +687,6 @@ unsorted:
   - apache-commons-collections4-javadoc 
   - apache-commons-compress 
   - apache-commons-compress-javadoc 
-  - apache-commons-configuration 
-  - apache-commons-configuration-javadoc 
   - apache-commons-configuration2 
   - apache-commons-configuration2-javadoc 
   - apache-commons-csv 
@@ -3704,8 +3702,6 @@ unsorted:
   - eza-bash-completion 
   - eza-fish-completion 
   - eza-zsh-completion 
-  - ezmorph 
-  - ezmorph-javadoc 
   - ezstream 
   - f2c 
   - f2c-devel 
@@ -3980,11 +3976,8 @@ unsorted:
   - finalcut-bitmap-fonts 
   - finch 
   - finch-devel 
-  - findbugs 
   - findbugs-bcel 
   - findbugs-bcel-javadoc 
-  - findbugs-javadoc 
-  - findbugs-tools 
   - finger 
   - finger-server 
   - fio 
@@ -8403,8 +8396,6 @@ unsorted:
   - jarjar 
   - jarjar-javadoc 
   - jasper 
-  - jatl 
-  - jatl-javadoc 
   - java-11-openj9 
   - java-11-openj9-demo 
   - java-11-openj9-devel 
@@ -15762,6 +15753,9 @@ unsorted:
   - libwebrtc-audio-processing-1-3-32bit 
   - libwebrtc-audio-processing-devel 
   - libwebrtc-audio-processing-devel-static 
+  - libwebrtc_audio_processing-devel 
+  - libwebrtc_audio_processing-devel-static 
+  - libwebrtc_audio_processing1 
   - libwebsockets-devel 
   - libwebsockets19 
   - libweston-12 
@@ -22147,7 +22141,6 @@ unsorted:
   - postgresql12-server 
   - postgresql12-server-devel 
   - postgresql12-test 
-  - postgresql12-timescaledb 
   - postgresql13 
   - postgresql13-contrib 
   - postgresql13-devel 
@@ -26067,8 +26060,6 @@ unsorted:
   - python310-skyfield 
   - python310-slack-sdk 
   - python310-slimit 
-  - python310-slip 
-  - python310-slip-dbus 
   - python310-slixmpp 
   - python310-sly 
   - python310-slycot 
@@ -29408,8 +29399,6 @@ unsorted:
   - python311-sklearn-pandas 
   - python311-slack-sdk 
   - python311-slimit 
-  - python311-slip 
-  - python311-slip-dbus 
   - python311-slixmpp 
   - python311-sly 
   - python311-slycot 
@@ -32918,8 +32907,6 @@ unsorted:
   - python39-skyfield 
   - python39-slack-sdk 
   - python39-slimit 
-  - python39-slip 
-  - python39-slip-dbus 
   - python39-slixmpp 
   - python39-sly 
   - python39-slycot 
@@ -34765,6 +34752,9 @@ unsorted:
   - sdcc-libc-sources 
   - sdcv 
   - sddm-branding-upstream 
+  - sddm-greeter-qt6 
+  - sddm-qt6 
+  - sddm-qt6-branding-upstream 
   - sdl-asylum 
   - sdl-ball 
   - sdl12_compat-devel 
@@ -45737,6 +45727,7 @@ unsorted:
   - waybar 
   - waybar-branding-openSUSE 
   - waybar-branding-upstream 
+  - waycheck 
   - wayland-devel 
   - wayland-devel-32bit 
   - wayland-protocols-devel 
