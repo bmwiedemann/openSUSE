@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Mon Sep 25 09:06:27 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Tune up polkit/sudo drop in permissions, require/buildrequire
+  sudo/polkit to avoid needing to own their drop-in folders
+
+-------------------------------------------------------------------
+Thu Sep  7 11:40:52 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Add polkit rule to match sudo behaviour on Aeon 
+
+-------------------------------------------------------------------
+Thu Sep  7 08:18:12 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Add gnome-background-properties xml 
+
+-------------------------------------------------------------------
+Wed Sep  6 15:02:13 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Add favourite settings 
+
+-------------------------------------------------------------------
+Tue Sep  5 14:54:57 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Add distrobox-upgrade-all timer and service
+- 20231005 
+
+-------------------------------------------------------------------
+Sat Jun 17 12:41:44 UTC 2023 - Richard Brown <rbrown@suse.de>
+
+- Rename to gnome-branding-Aeon
+- 20230617 
+
+-------------------------------------------------------------------
+Thu Apr 20 10:47:48 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Remove unneeded cleanup of desktop drop-in
+- 20230420 
+
+-------------------------------------------------------------------
+Wed Apr 19 16:04:49 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Correct location for Desktop drop-in config
+- Clean up invalid desktop drop-in file
+- 20230419 
+
+-------------------------------------------------------------------
+Fri Mar 24 16:26:45 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Use new transactional-update drop-in config for Desktop
+  notification configuration
+- 20230323
+
+-------------------------------------------------------------------
+Thu Jan 26 12:02:13 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Correct the transactional-update reboot method for GNOME Desktop
+- 20230126 
+
+-------------------------------------------------------------------
+Fri Sep 23 16:31:32 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- Add zenity as an hard-dep, as we need it for mod-firstboot 
+
+-------------------------------------------------------------------
+Thu Aug  4 17:21:54 UTC 2022 - Shawn Dunn <sfalken@cloverleaf-linux.org>
+
+- Add Conflicts: plasma-branding-MicroOS
+
+-------------------------------------------------------------------
+Sat Jan 29 11:43:01 UTC 2022 - Dario Faggioli <dfaggioli@suse.com>
+
+- fix firstboot script: we should not go over 100% as anything that is
+  after "echo 100", will just be ignored (currently, it was the cleanup)
+
+-------------------------------------------------------------------
+Mon Jan 12 14:00:00 UTC 2022 - Syds Bearda <opensuse@syds.eu>
+
+- added an extra flatpak to Manage Extensions so a rpm based chromium or firefox browser is no longer necessary "com.mattjakeman.ExtensionManager"
+
+-------------------------------------------------------------------
+Mon Oct 11 13:53:03 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Use "Text Editor" instead of the less-supported "gEdit"
+
+-------------------------------------------------------------------
+Tue Apr 27 23:37:33 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
+
+- Wait for Internet connectivity before proceeding with next steps.
+  Before this change, the mod-firstboot script was failing when:
+  * there was no network configured on the first boot (happens
+    when using NetworkManager, since it's not configured by YaST
+    during installation)
+  * the script started before wifi connection was properly
+    established
+- 20210427
+
+-------------------------------------------------------------------
+Mon Mar 22 10:21:05 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Initial Package 
