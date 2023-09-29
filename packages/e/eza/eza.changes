@@ -1,0 +1,145 @@
+-------------------------------------------------------------------
+Mon Sep 25 14:21:59 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.1:
+  Bug Fixes:
+  * Typo this -> that
+  * Error for missed semicolon
+  * More than 3 bools in a struct
+  * Major and minor device on MacOS
+  * Linux uses u32 for major/minor device numbers
+  * Respect spec on Windows and make it for with Konsole
+  * Don’t show color when color is disabled
+  * Enable rustfmt by removing .rustfmt.toml which disables it
+  * Replace rustfmt::skip on expressions because experimental
+  * Remove unnecessary rustfmt::skip's in windows code
+  * Add src/options/flags.rs to rustfmt.excludes
+  * Left-over merge conflict in src/output/table
+  Documentation:
+  * Update README.md
+  * Update --mounts option to include MacOS
+  * Documenting --only-files
+  Features:
+  * Listing files only using '--only-files' flag
+    Add EXA_COLOR bindings for un-themed items
+  * Add EZA_ environment variables with fallback to EXA_
+  * Add rustfmt check to unit-tests workflow
+  Miscellaneous Tasks:
+  * Add completion for --only-fies (zsh,fish)
+
+-------------------------------------------------------------------
+Mon Sep 18 18:45:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  Features:
+  * Add completion files in deb packaging script
+  * Adds filtering for Windows hidden files
+  * Support --mount option on Mac
+  * Lazy loading of a files extended attributes and absolute path
+  Bug Fixes:
+  * Crate can't contain broken symlink
+  * Remove executable flag from fish completion file
+  * Use proc_mounts only on linux
+  * Hotfix harmful documentation
+  * Fix hyperlinks on Windows
+  * Nix flake check also builds the package
+  * [breaking] Change number_huge and unit_huge to match the man page short codes
+
+-------------------------------------------------------------------
+Fri Sep 15 09:45:17 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Add version to provides/obsoletes
+
+-------------------------------------------------------------------
+Fri Sep 15 05:31:45 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.0:
+  Bug Fixes:
+  * Expand --all help
+  * RUSTSEC-2020-0071
+  * Generalize gitignore to ignore all eza deb packages
+  * Canonicalize errors when the destination of a symbolic link is bad
+  * Handle other canonicalize errors in hyperlinks and git
+  * Fix windows build when canonicalize returns an error
+  * Change trycmd config to use test/itest folder for testing
+  * Revert to old apt install command suggestion and add hint
+  * Remove stray backslashes
+  * Is_some_and is an unstable Rust feature until 1.70
+  * Revert "Support for Windows Hidden Files"
+  * Shellcheck warnings
+  * Revert "Support for Windows Hidden Files"
+  * Shellcheck warnings
+  * Exit 13 on os error 13
+  * Rewrite comment
+  * Improve trace strings
+  * Tracing typo
+  Documentation:
+  * Expand --all documentation
+  * Add pthorpe92 gist
+  * Remove xtests section from readme
+  * Add deprecation warning to xtests/readme
+  * Add deprecation warning to just xtest commands
+  * Add deprecation warning to vagrantfile
+  * Add MacPorts install info
+  * Add gentoo
+  * Fix gentoo install
+  * Add docs for --git-repos & --git-repos-no-status
+  * Fix gpg armor flag for deb release in readme
+  * Add better explanation of git repos + no status
+  * Add scoop install info
+  * Remove color specifications. change unknown git repo status to ~
+  * Fix missing color specification from man page
+  Features
+  * Add audit workflow
+  * Add trycmd as dev-dependency
+  * Add minimal trycmd binary
+  * Add a few trycmd tests as example
+  * Document and change output for --git-repos
+  * Add apt installation workflow
+  * Adds filtering on Windows hidden files
+  * Adds filtering on Windows hidden files
+  * Adds filtering on Windows hidden files
+  * Added shellcheck to treefmt
+  * Adds filtering on Windows hidden files
+  * Add PERMISSION_DENIED exit code
+
+-------------------------------------------------------------------
+Mon Sep 11 10:39:22 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Add Provides/Obsoletes exa
+  Since exa seems not maintained and eza wants to continue
+  its work
+
+-------------------------------------------------------------------
+Mon Sep 11 09:10:57 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.1:
+  Bug Fixes:
+  * Add vendored-libgit2 feature to git2 dependency
+  * Filename escaping (last character lost sometimes, no hyperlink)
+  * Build for Windows with chrono
+  Documentation:
+  * Explain vendored-libgit2
+  * Add homebrew, misc fixes
+  * Fix code of conduct link
+  * Update archlinux
+  * Add star history
+  * Add informaton about lazy_static
+  * Remove broken dependabot link
+  * Add bright color options in man pages
+  * Add bright color support in readme changelog
+  Features:
+  * Add highlighting of mounted directories (Linux only)
+  * Add backlog of icons from various exa pull requests and others
+  * Mark .git as ignored, which hides it when using --git-ignore
+  * Add backlog of icons from various exa issues
+  * Expose git2 feature vendored-libgit2
+  * Add build commands to deb-package.sh
+  * Support the MSRV of Rust (1.65.0)
+  * Add bright colour options, change punctuation default
+  * Use chrono crate to handle datetime-related features
+
+-------------------------------------------------------------------
+Thu Sep  7 17:42:59 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Initial package for eza 0.11.0 for openSUSE

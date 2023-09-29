@@ -1,0 +1,100 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>807e1cb7d0fbfc24e363b68aadd3af68</srcmd5>
+    <version>0.11.1~0</version>
+    <time>1694460154</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1110287</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d8c43719188c62b7e3a2c679ef064eba</srcmd5>
+    <version>0.12.0~0</version>
+    <time>1694808314</time>
+    <user>anag+factory</user>
+    <comment>- Add version to provides/obsoletes
+
+- Update to 0.12.0:
+  Bug Fixes:
+  * Expand --all help
+  * RUSTSEC-2020-0071
+  * Generalize gitignore to ignore all eza deb packages
+  * Canonicalize errors when the destination of a symbolic link is bad
+  * Handle other canonicalize errors in hyperlinks and git
+  * Fix windows build when canonicalize returns an error
+  * Change trycmd config to use test/itest folder for testing
+  * Revert to old apt install command suggestion and add hint
+  * Remove stray backslashes
+  * Is_some_and is an unstable Rust feature until 1.70
+  * Revert &quot;Support for Windows Hidden Files&quot;
+  * Shellcheck warnings
+  * Revert &quot;Support for Windows Hidden Files&quot;
+  * Shellcheck warnings
+  * Exit 13 on os error 13
+  * Rewrite comment
+  * Improve trace strings
+  * Tracing typo
+  Documentation:
+  * Expand --all documentation
+  * Add pthorpe92 gist
+  * Remove xtests section from readme
+  * Add deprecation warning to xtests/readme
+  * Add deprecation warning to just xtest commands
+  * Add deprecation warning to vagrantfile
+  * Add MacPorts install info</comment>
+    <requestid>1111515</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>62c6baa9ede6834204c7847c04d60349</srcmd5>
+    <version>0.13.0~0</version>
+    <time>1695209249</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.13.0:
+  Features:
+  * Add completion files in deb packaging script
+  * Adds filtering for Windows hidden files
+  * Support --mount option on Mac
+  * Lazy loading of a files extended attributes and absolute path
+  Bug Fixes:
+  * Crate can't contain broken symlink
+  * Remove executable flag from fish completion file
+  * Use proc_mounts only on linux
+  * Hotfix harmful documentation
+  * Fix hyperlinks on Windows
+  * Nix flake check also builds the package
+  * [breaking] Change number_huge and unit_huge to match the man page short codes</comment>
+    <requestid>1112066</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e07f96e07a261bacf5c3d52976d87dd7</srcmd5>
+    <version>0.13.1~0</version>
+    <time>1695758495</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.13.1:
+  Bug Fixes:
+  * Typo this -&gt; that
+  * Error for missed semicolon
+  * More than 3 bools in a struct
+  * Major and minor device on MacOS
+  * Linux uses u32 for major/minor device numbers
+  * Respect spec on Windows and make it for with Konsole
+  * Don’t show color when color is disabled
+  * Enable rustfmt by removing .rustfmt.toml which disables it
+  * Replace rustfmt::skip on expressions because experimental
+  * Remove unnecessary rustfmt::skip's in windows code
+  * Add src/options/flags.rs to rustfmt.excludes
+  * Left-over merge conflict in src/output/table
+  Documentation:
+  * Update README.md
+  * Update --mounts option to include MacOS
+  * Documenting --only-files
+  Features:
+  * Listing files only using '--only-files' flag
+    Add EXA_COLOR bindings for un-themed items
+  * Add EZA_ environment variables with fallback to EXA_
+  * Add rustfmt check to unit-tests workflow
+  Miscellaneous Tasks:
+  * Add completion for --only-fies (zsh,fish)</comment>
+    <requestid>1113490</requestid>
+  </revision>
+</revisionlist>
