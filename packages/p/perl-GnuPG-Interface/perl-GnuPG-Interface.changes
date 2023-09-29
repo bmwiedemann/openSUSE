@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 26 19:52:54 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Add permission fix for tests
+
+-------------------------------------------------------------------
+Sat Sep 16 03:06:20 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.03
+   see /usr/share/doc/packages/perl-GnuPG-Interface/Changes
+
+  1.03 - 2023-09-14
+   - Add fix for running in taint mode for Perl 5.38.0(thanks to Andrew Ruthven)
+
+-------------------------------------------------------------------
 Tue Apr 13 21:18:48 UTC 2021 - lars@linux-schulserver.de - 1.02
 
 - update to 1.02:
