@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 28 11:26:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.3:
+  * test.py: use valid values for jsonargs. Fixes #172
+  * Allow editing toml in place (#171)
+  * Documentation improvements
+
+-------------------------------------------------------------------
 Thu Jul 27 09:49:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - switch to wheels and opt into SLE15 python311 stack

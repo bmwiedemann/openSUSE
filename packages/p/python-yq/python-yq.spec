@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yq
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        Command-line YAML processor - jq wrapper for YAML documents
 License:        Apache-2.0
