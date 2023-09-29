@@ -129,4 +129,14 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment></comment>
     <requestid>1099759</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4f591138b8a840da838f6c0628b66ad1</srcmd5>
+    <version>6.5.2</version>
+    <time>1696014848</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.5.2
+  * Added the missing NativeGesture, Quit, EnterEditFocus and
+    LeaveEditFocus members of QEventType.</comment>
+    <requestid>1114143</requestid>
+  </revision>
 </revisionlist>

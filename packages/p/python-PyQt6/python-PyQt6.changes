@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 27 09:15:27 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.5.2
+  * Added the missing NativeGesture, Quit, EnterEditFocus and
+    LeaveEditFocus members of QEventType.
+
+-------------------------------------------------------------------
 Thu Jul 20 10:57:34 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.5.1

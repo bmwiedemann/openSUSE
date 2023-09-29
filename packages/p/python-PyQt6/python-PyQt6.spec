@@ -21,7 +21,7 @@
 %define pyqt_build_for_qt6 1
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}
-Version:        6.5.1
+Version:        6.5.2
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
