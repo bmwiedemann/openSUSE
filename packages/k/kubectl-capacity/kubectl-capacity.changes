@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Wed Sep 20 05:11:38 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework %prep section, trim Summary
+
+-------------------------------------------------------------------
+Mon Sep 18 13:38:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package kubectl-capacity: CLI that provides an overview of
+  the resource requests, limits, and utilization in a Kubernetes
+  cluster

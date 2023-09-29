@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fd3a288e5fbe4814081764538a9ce222</srcmd5>
+    <version>0.7.4</version>
+    <time>1695327219</time>
+    <user>anag+factory</user>
+    <comment>new package kubectl-capacity: CLI that provides an overview of the resource requests, limits, and utilization in a Kubernetes cluster</comment>
+    <requestid>1112415</requestid>
+  </revision>
+</revisionlist>
