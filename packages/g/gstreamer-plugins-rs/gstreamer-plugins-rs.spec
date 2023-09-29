@@ -29,14 +29,14 @@
 %endif
 
 Name:           gstreamer-plugins-rs
-Version:        0.10.11
+Version:        1.22.6
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs
 
-Source:         %{_name}-%{version}.tar.xz
+Source:         %{_name}-%{version}.tar.zst
 Source2:        vendor.tar.zst
 Source3:        cargo_config
 Source4:        gstreamer-plugins-rs.appdata.xml

@@ -3,18 +3,15 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git</param>
     <param name="filename">gst-plugins-rs</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="versionrewrite-pattern">(.*)\+0</param>
-    <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">refs/tags/0.10.11</param>
-<!--    <param name="changesgenerate">enable</param> -->
+    <param name="versionformat">1.22.6</param>
+    <param name="revision">refs/tags/gstreamer-1.22.6</param>
     <param name="scm">git</param>
   </service>
   <service name="set_version" mode="manual"/>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
-    <param name="compression">xz</param>
+    <param name="compression">zst</param>
   </service>
   <service name="cargo_vendor" mode="manual">
   <param name="srcdir">gst-plugins-rs</param>
