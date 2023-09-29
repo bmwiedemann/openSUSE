@@ -77,4 +77,28 @@
     See https://dino.im/security/cve-2023-28686</comment>
     <requestid>1074095</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0bc59564dc671c1acfd6805947b39ab4</srcmd5>
+    <version>0.4.3</version>
+    <time>1689000006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.3:
+  * Fix video for cameras with rotated image
+  * Fix call window controlls hiding 
+  * Fix call window styling 
+  * Fix empty alias being handled different than none 
+  * Fix crash on NS_URI call when own server has no MAM;
+    drop broken mam: 1 &quot;support&quot; #1405
+  * Focus ChatInput textbox after selecting emoji 
+  * Fix character counting for fallbacks #1420
+  * Fix chat input status having a fixed width requirement #1439
+  * Fix chat input for IME #1419
+  * Fix reactions being made to the wrong message #1426
+  * data: Set X-Purism-FormFactor in .desktop file 
+  * Ignore non-DTLS data before handshake is complete 
+  * Do not send DTLS datagrams to RTP even after handshake 
+  * Fix certificate start time
+  * Fix potential crash in video calls</comment>
+    <requestid>1097860</requestid>
+  </revision>
 </revisionlist>

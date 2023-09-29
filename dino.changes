@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul 10 05:42:08 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.3:
+  * Fix video for cameras with rotated image
+  * Fix call window controlls hiding 
+  * Fix call window styling 
+  * Fix empty alias being handled different than none 
+  * Fix crash on NS_URI call when own server has no MAM;
+    drop broken mam: 1 "support" #1405
+  * Focus ChatInput textbox after selecting emoji 
+  * Fix character counting for fallbacks #1420
+  * Fix chat input status having a fixed width requirement #1439
+  * Fix chat input for IME #1419
+  * Fix reactions being made to the wrong message #1426
+  * data: Set X-Purism-FormFactor in .desktop file 
+  * Ignore non-DTLS data before handshake is complete 
+  * Do not send DTLS datagrams to RTP even after handshake 
+  * Fix certificate start time
+  * Fix potential crash in video calls
+
+-------------------------------------------------------------------
 Fri Mar 24 07:49:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.2:
