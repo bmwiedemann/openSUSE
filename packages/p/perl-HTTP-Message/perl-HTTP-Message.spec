@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Message
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name HTTP-Message
 Name:           perl-HTTP-Message
-Version:        6.44
+Version:        6.450.0
 Release:        0
+%define cpan_version 6.45
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP style message (base class)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -62,8 +63,19 @@ Requires:       perl(IO::Uncompress::RawInflate)
 Requires:       perl(LWP::MediaTypes) >= 6
 Requires:       perl(URI) >= 1.10
 Requires:       perl(parent)
-Recommends:     perl(IO::Compress::Brotli) >= 0.004001
-Recommends:     perl(IO::Uncompress::Brotli) >= 0.004001
+Provides:       perl(HTTP::Config) = 6.450.0
+Provides:       perl(HTTP::Headers) = 6.450.0
+Provides:       perl(HTTP::Headers::Auth) = 6.450.0
+Provides:       perl(HTTP::Headers::ETag) = 6.450.0
+Provides:       perl(HTTP::Headers::Util) = 6.450.0
+Provides:       perl(HTTP::Message) = 6.450.0
+Provides:       perl(HTTP::Request) = 6.450.0
+Provides:       perl(HTTP::Request::Common) = 6.450.0
+Provides:       perl(HTTP::Response) = 6.450.0
+Provides:       perl(HTTP::Status) = 6.450.0
+%define         __perllib_provides /bin/true
+Recommends:     perl(IO::Compress::Brotli) >= 0.4.1
+Recommends:     perl(IO::Uncompress::Brotli) >= 0.4.1
 %{perl_requires}
 
 %description
@@ -381,7 +393,7 @@ these methods:
     $mess->proxy_authorization_basic
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

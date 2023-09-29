@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 28 03:06:30 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.45
+   see /usr/share/doc/packages/perl-HTTP-Message/Changes
+
+  6.45      2023-09-27 14:27:31Z
+      - Allow for file ownership conflicts with Docker and GitHub Actions
+        (GH#193) (Olaf Alders)
+      - Add the 'status_code' function for getting all status codes as hash
+        (GH#194) (Dai Okabayashi)
+
+-------------------------------------------------------------------
 Thu Oct 27 03:07:31 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.44
