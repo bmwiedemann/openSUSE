@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Sep 29 06:50:26 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 118.0.1
+  MFSA 2023-44 (bsc#1215814)
+  * CVE-2023-5217 (bmo#1855550),
+    Heap buffer overflow in libvpx
+
+-------------------------------------------------------------------
+Mon Sep 25 06:35:49 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 118.0
+  MFSA 2023-41 (bsc#1215575)
+  * CVE-2023-5168 (bmo#1846683)
+    Out-of-bounds write in FilterNodeD2D1
+  * CVE-2023-5169 (bmo#1846685)
+    Out-of-bounds write in PathOps
+  * CVE-2023-5170 (bmo#1846686)
+    Memory leak from a privileged process
+  * CVE-2023-5171 (bmo#1851599)
+    Use-after-free in Ion Compiler
+  * CVE-2023-5172 (bmo#1852218)
+    Memory Corruption in Ion Hints
+  * CVE-2023-5173 (bmo#1823172)
+    Out-of-bounds write in HTTP Alternate Services
+  * CVE-2023-5174 (bmo#1848454)
+    Double-free in process spawning on Windows
+  * CVE-2023-5175 (bmo#1849704)
+    Use-after-free of ImageBitmap during process shutdown
+  * CVE-2023-5176 (bmo#1836353, bmo#1842674, bmo#1843824, bmo#1843962,
+    bmo#1848890, bmo#1850180, bmo#1850983, bmo#1851195)
+    Memory safety bugs fixed in Firefox 118, Firefox ESR 115.3,
+    and Thunderbird 115.3
+- requires NSS 3.93
+- add mozilla-bmo1822730.patch
+- deactivated KDE integration temporarily
+  (removed mozilla-kde.patch and firefox-kde.patch for now)
+
+-------------------------------------------------------------------
 Tue Sep 12 17:04:01 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 117.0.1

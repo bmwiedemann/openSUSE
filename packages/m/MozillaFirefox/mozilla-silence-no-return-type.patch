@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  505c5ac5cad0268fe81c67d39f70cbab3bff616a
+# Parent  f809af927a59e945c76f51c25b1044fb42748c24
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -722,7 +722,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_st
 diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
 --- a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
-@@ -54,16 +54,18 @@ std::vector<float> PreprocessWeights(rtc
+@@ -55,16 +55,18 @@ std::vector<float> PreprocessWeights(rtc
  rtc::FunctionView<float(float)> GetActivationFunction(
      ActivationFunction activation_function) {
    switch (activation_function) {
@@ -948,12 +948,12 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b
 +  return "";
  }
  
- constexpr char kIncludeCaptureClockOffset[] =
-     "WebRTC-IncludeCaptureClockOffset";
- 
  }  // namespace
  
  RTPSenderAudio::RTPSenderAudio(Clock* clock, RTPSender* rtp_sender)
+     : clock_(clock),
+       rtp_sender_(rtp_sender),
+       absolute_capture_time_sender_(clock) {
 diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
 --- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
 +++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
