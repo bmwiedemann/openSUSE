@@ -28,7 +28,8 @@ License:        Apache-2.0 AND MPL-2.0
 Group:          Productivity/Publishing/XML
 URL:            https://www.saxonica.com/
 Source0:        https://github.com/Saxonica/Saxon-HE/raw/main/%{saxon_version}/source/saxon%{saxon_version}-%{saxon_release}source.zip
-Source1:        https://github.com/Saxonica/Saxon-HE/raw/main/%{saxon_version}/resources/saxon-resources-%{saxon_version}.zip
+# %{name}-generate-tarball.sh
+Source1:        saxon-resources-%{saxon_version}-cleaned.zip
 Source2:        https://repo1.maven.org/maven2/net/sf/saxon/Saxon-HE/%{saxon_version}.%{saxon_release}/Saxon-HE-%{saxon_version}.%{saxon_release}.pom
 Source3:        %{name}.build.xml
 Source10:       %{name}.saxon.script
@@ -37,6 +38,8 @@ Source12:       %{name}.gizmo.script
 Source20:       %{name}.saxon.pod
 Source21:       %{name}.saxonq.pod
 Source22:       %{name}.gizmo.pod
+# run saxon10-generate-tarball.sh script to remove potential nonfree content from saxon-resources-10.zip.
+Source100:      %{name}-generate-tarball.sh
 BuildRequires:  ant
 BuildRequires:  dom4j
 BuildRequires:  dos2unix
@@ -53,6 +56,8 @@ BuildRequires:  unzip
 BuildRequires:  xml-commons-apis
 BuildRequires:  xml-commons-resolver
 BuildRequires:  xom
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     %{name}-scripts
 Provides:       jaxp_transform_impl = %{version}
 BuildArch:      noarch

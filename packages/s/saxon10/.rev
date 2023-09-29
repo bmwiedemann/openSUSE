@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>1104920</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eab80bc3724de1520ae16e19dd8dbad3</srcmd5>
+    <version>10.9</version>
+    <time>1696014767</time>
+    <user>anag+factory</user>
+    <comment>Remove nonfree code from javadoc</comment>
+    <requestid>1114058</requestid>
+  </revision>
 </revisionlist>
