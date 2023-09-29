@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 28 09:11:05 UTC 2023 - Denys Kondratenko <stdden@opensuse.org>
+
+- fix portal config typo (see https://github.com/emersion/xdg-desktop-portal-wlr/pull/269)
+
+-------------------------------------------------------------------
 Mon Sep 25 02:46:09 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - XDP 0.18.0 requires desktop and other environments to have their own portals.conf
