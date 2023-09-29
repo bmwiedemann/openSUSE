@@ -1,7 +1,7 @@
 #
 # spec file for package sphinx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ URL:            https://sphinxsearch.com/
 Source0:        https://sphinxsearch.com/files/%{name}-%{version}-release.tar.gz
 Source1:        %{daemon}.service
 Source2:        %{daemon}.init
+Source3:        %{name}-user.conf
 Patch0:         obs.patch
 Patch2:         sphinx-default_listen.patch
 Patch3:         reproducible.patch
@@ -43,18 +44,19 @@ BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  libmariadb-devel
 BuildRequires:  pkgconfig
+BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libecpg) >= 9.6
 BuildRequires:  pkgconfig(libecpg_compat) >= 9.6
 BuildRequires:  pkgconfig(libpgtypes) >= 9.6
 BuildRequires:  pkgconfig(libpq) >= 9.6
 Requires:       logrotate
-Requires(pre):  %{_bindir}/getent
-Requires(pre):  %{_sbindir}/useradd
+Requires(pre):  %fillup_prereq
 Provides:       %{daemon}
 %{?systemd_ordering}
-Requires(post): %fillup_prereq
+%sysusers_requires
 
 %description
 Sphinx is a standalone search engine providing size-efficient and
@@ -89,12 +91,9 @@ Pure C searchd client API library
 Sphinx search engine, http://sphinxsearch.com/
 
 
-
-
 # Comment
 # we don't package api language java,ruby,php,python
 # upstream don't recommend their usage.
-
 %prep
 %setup -q -n "%{name}-%{version}-release"
 %autopatch -p1
@@ -102,6 +101,7 @@ Sphinx search engine, http://sphinxsearch.com/
 find -type d -name CVS -exec rm -Rf {} +
 
 %build
+%sysusers_generate_pre %{SOURCE3} %{name} %{name}-user.conf
 #@todo we should move it to cmake
 set -x
 export pg_includes="$(pkg-config --cflags --libs libpq | sed 's,^-I,,g')"
@@ -113,11 +113,11 @@ export pg_includes="$(pkg-config --cflags --libs libpq | sed 's,^-I,,g')"
     --with-pgsql-includes="${pg_includes}" \
     --with-pgsql-libs="%{_libdir}"
 
-%make_build VERBOSE=1
+%make_build
 
 pushd api/libsphinxclient
  %configure --sysconfdir=%{_sysconfdir}/%{name}/
- %make_build VERBOSE=1 -j1
+ %make_build -j1
 popd
 
 %install
@@ -180,6 +180,10 @@ mkdir -p %{buildroot}%{_sbindir}
 install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/%{daemon}.service
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{daemon}
 
+# install user
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
+
 %pre
 getent group %{sphinx_group} >/dev/null || groupadd -r %{sphinx_group}
 getent passwd %{sphinx_user} >/dev/null || \
@@ -204,6 +208,7 @@ useradd -r -g %{sphinx_group} -d %{sphinx_home} -s /bin/sh \
 %files
 %defattr(750,root,root,-)
 %config %dir %{_sysconfdir}/%{name}
+%{_sysusersdir}/%{name}-user.conf
 # Restrict rights access to conf files they can contain sql db credentials
 %defattr(640,root,%{sphinx_group},-)
 %config %{_sysconfdir}/%{name}/example.sql
