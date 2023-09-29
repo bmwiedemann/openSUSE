@@ -172,4 +172,26 @@
 - Fix version ranges for GNOME shell extension</comment>
     <requestid>1093837</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>3ae7d2c30b942666287fb0195af29253</srcmd5>
+    <version>unknown</version>
+    <time>1696014833</time>
+    <user>anag+factory</user>
+    <comment>- Update GNOME extension for GNOME shell 45 support
+  (older GNOME shell is not supported any more)
+  * add 0162-README.rst-add-info-about-restarting-the-extension.patch
+  * add 0163-TotalTimeWidget-port-to-JS6-classes.patch
+  * add 0164-prefs.js-Remove-display-of-extension-version.patch
+  * add 0165-settings-schema-fix-description-for-panel-placement-.patch
+  * add 0166-README.rst-simplify-installation-instructions.patch
+  * add 0167-panelWidget-add-button-to-open-extension-settings.patch
+  * add 0168-Use-ECMAScript-import-export-statements.patch
+  * add 0169-extension.js-adapt-to-GNOME-45.patch
+  * add 0170-prefs.js-re-implement-for-GNOME-45.patch
+  * add 0171-metadata.json.in-GNOME-45-support.patch
+  * add 0172-README.rst-fixup-GNOME-shell-compatiblility.patch
+  * add 0173-Replace-global.log-by-console.log.patch
+  * del 0133-Bump-latest-validated-gnome-shell-version-1.patch (empty)</comment>
+    <requestid>1114055</requestid>
+  </revision>
 </revisionlist>

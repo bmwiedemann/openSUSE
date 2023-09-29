@@ -1,0 +1,29 @@
+From 2b3257b3c9530c7ef12c1ada9be53afc2cc088d2 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 25 Sep 2023 17:02:48 +0200
+Subject: [PATCH 167/173] panelWidget: add button to open extension settings
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ extension/widgets/panelWidget.js | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/extension/widgets/panelWidget.js b/extension/widgets/panelWidget.js
+index 0d9e870..4a15dd6 100644
+--- a/extension/widgets/panelWidget.js
++++ b/extension/widgets/panelWidget.js
+@@ -125,6 +125,11 @@ class PanelWidget extends PanelMenu.Button {
+         SettingMenuItem.connect('activate', this._onOpenSettings.bind(this));
+         this.menu.addMenuItem(SettingMenuItem);
+ 
++        let ExtSettingMenuItem = new PopupMenu.PopupMenuItem(_("Extension Settings"));
++        ExtSettingMenuItem.connect('activate',
++				   () => this._controller.openPreferences());
++        this.menu.addMenuItem(ExtSettingMenuItem);
++
+         // focus menu upon display
+         this.menu.connect('open-state-changed',
+             function(menu, open) {
+-- 
+2.42.0
+

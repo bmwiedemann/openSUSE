@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 27 21:07:24 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update GNOME extension for GNOME shell 45 support
+  (older GNOME shell is not supported any more)
+  * add 0162-README.rst-add-info-about-restarting-the-extension.patch
+  * add 0163-TotalTimeWidget-port-to-JS6-classes.patch
+  * add 0164-prefs.js-Remove-display-of-extension-version.patch
+  * add 0165-settings-schema-fix-description-for-panel-placement-.patch
+  * add 0166-README.rst-simplify-installation-instructions.patch
+  * add 0167-panelWidget-add-button-to-open-extension-settings.patch
+  * add 0168-Use-ECMAScript-import-export-statements.patch
+  * add 0169-extension.js-adapt-to-GNOME-45.patch
+  * add 0170-prefs.js-re-implement-for-GNOME-45.patch
+  * add 0171-metadata.json.in-GNOME-45-support.patch
+  * add 0172-README.rst-fixup-GNOME-shell-compatiblility.patch
+  * add 0173-Replace-global.log-by-console.log.patch
+  * del 0133-Bump-latest-validated-gnome-shell-version-1.patch (empty)
+
+-------------------------------------------------------------------
 Mon Jun 19 15:50:30 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 3.0.3~20 (git d10ae12):

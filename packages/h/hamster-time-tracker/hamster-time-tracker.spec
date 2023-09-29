@@ -21,8 +21,8 @@
 # ext_gnome_version: latest GNOME shell version supported
 # min_gnome_version: earliest GNOME shell version supported
 %if 0%{?suse_version} >= 1550
-%global ext_gnome_version 44
-%global min_gnome_version 3.34
+%global ext_gnome_version 45
+%global min_gnome_version 45
 %else
 %if 0%{?sle_version} >= 150400
 %global ext_gnome_version 41
@@ -93,7 +93,6 @@ Patch129:       0129-README.rst-mention-the-GNOME-extensions-tool.patch
 Patch130:       0130-README.rst-Add-a-section-about-UUID-changing.patch
 Patch131:       0131-metadata.json.in-fix-json-syntax-error.patch
 Patch132:       0132-Update-README.st.patch
-Patch133:       0133-Bump-latest-validated-gnome-shell-version-1.patch
 Patch134:       0134-README-mention-GNOME-shell-compatibility-of-this-ver.patch
 Patch135:       0135-README.rst-document-GNOME-shell-compatibility.patch
 Patch136:       0136-ongoingFactEntry-stop-using-deprecated-Clutter-key-s.patch
@@ -125,6 +124,19 @@ Patch158:       0158-Add-basic-gnome-44-support.patch
 Patch159:       0159-Report-errors-in-DBUS-calls.patch
 Patch160:       0160-Report-errors-on-initial-DBUS-connection.patch
 Patch161:       0161-Gracefully-handle-hamster-DBUS-disappearing.patch
+# GNOME 45
+Patch162:       0162-README.rst-add-info-about-restarting-the-extension.patch
+Patch163:       0163-TotalTimeWidget-port-to-JS6-classes.patch
+Patch164:       0164-prefs.js-Remove-display-of-extension-version.patch
+Patch165:       0165-settings-schema-fix-description-for-panel-placement-.patch
+Patch166:       0166-README.rst-simplify-installation-instructions.patch
+Patch167:       0167-panelWidget-add-button-to-open-extension-settings.patch
+Patch168:       0168-Use-ECMAScript-import-export-statements.patch
+Patch169:       0169-extension.js-adapt-to-GNOME-45.patch
+Patch170:       0170-prefs.js-re-implement-for-GNOME-45.patch
+Patch171:       0171-metadata.json.in-GNOME-45-support.patch
+Patch172:       0172-README.rst-fixup-GNOME-shell-compatiblility.patch
+Patch173:       0173-Replace-global.log-by-console.log.patch
 
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -222,7 +234,6 @@ cd hamster-shell-extension-%{ext_version}
 %patch130 -p1
 %patch131 -p1
 %patch132 -p1
-%patch133 -p1
 %patch134 -p1
 %patch135 -p1
 %patch136 -p1
@@ -251,6 +262,21 @@ cd hamster-shell-extension-%{ext_version}
 %patch159 -p1
 %patch160 -p1
 %patch161 -p1
+%endif
+%if 0%{?suse_version} >= 1600
+# TW: GNOME 45 support
+%patch162 -p1
+%patch163 -p1
+%patch164 -p1
+%patch165 -p1
+%patch166 -p1
+%patch167 -p1
+%patch168 -p1
+%patch169 -p1
+%patch170 -p1
+%patch171 -p1
+%patch172 -p1
+%patch173 -p1
 %endif
 %endif
 
