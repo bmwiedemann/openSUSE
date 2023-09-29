@@ -7,10 +7,10 @@
 #sources:
 #  - source1
 #  - source2
-patches:
+#patches:
 #  foo.patch: -p1
 #  bar.patch:
-  package-separator-perl5.38.patch: -p1 PATCH-FIX-UPSTREAM deprecated package separator https://rt.cpan.org/Public/Bug/Display.html?id=148417
+#  package-separator-perl5.38.patch: -p1 PATCH-FIX-UPSTREAM deprecated package separator https://rt.cpan.org/Public/Bug/Display.html?id=148417
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-

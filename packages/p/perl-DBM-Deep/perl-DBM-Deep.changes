@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 26 19:20:20 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Remove package-separator-perl5.38.patch, fixed upstream
+
+-------------------------------------------------------------------
+Tue Sep  5 16:45:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.0017
+   see /usr/share/doc/packages/perl-DBM-Deep/Changes
+
+  2.0017    2023-09-01
+
+  - get rid of old perl4-style ' package separator and use :: instead
+    for compatibility with perl 5.38
+
+-------------------------------------------------------------------
 Wed Aug  9 10:39:24 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Add package-separator-perl5.38.patch, see
