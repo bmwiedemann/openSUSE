@@ -14,6 +14,12 @@ Mon Sep  4 13:06:10 UTC 2023 - pgajdos@suse.com
       ``copyForeignObject`` (which explicitly doesn't allow this).
 
 -------------------------------------------------------------------
+Tue Jul 25 11:50:29 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Don't build doc for Leap. Will break building of packages.
+  Only build doc for Tumbleweed.
+
+-------------------------------------------------------------------
 Thu Jul 13 11:54:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 11.5.0:

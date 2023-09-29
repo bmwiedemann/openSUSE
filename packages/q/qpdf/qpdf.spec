@@ -53,6 +53,7 @@ only used to create PDF files with special characteristics starting
 from other PDF files or to inspect or extract information from
 existing PDF files.
 
+%if 0%{?suse_version} > 1500
 %package htmldoc
 Summary:        Documentation files for qpdf
 Group:          Documentation/HTML
@@ -60,6 +61,7 @@ BuildArch:      noarch
 
 %description htmldoc
 This package contains the documentation for qpdf
+%endif
 
 %package devel
 Summary:        Development files for qpdf PDF manipulation library
@@ -86,10 +88,12 @@ package.
 %build
 %global optflags %optflags -fexcess-precision=fast
 %cmake \
+%if 0%{?suse_version} > 1500
   -DBUILD_DOC=ON \
   -DBUILD_DOC_DIST=ON \
   -DBUILD_DOC_HTML=ON \
   -DBUILD_DOC_PDF=ON \
+%endif
   -DCMAKE_INSTALL_DOCDIR='${datarootdir}'share/doc/packages/%{name}
 %cmake_build
 
@@ -98,6 +102,7 @@ make -C build test
 
 %install
 %cmake_install
+%if 0%{?suse_version} > 1500
 mkdir -m755 -p %{buildroot}%{_docdir}/%{name}/html
 mkdir -m755 -p %{buildroot}%{_docdir}/%{name}/singlehtml
 pushd build/manual/doc-dist
@@ -105,6 +110,7 @@ pushd build/manual/doc-dist
   cp -a manual-single-page-html/* %{buildroot}%{_docdir}/%{name}/singlehtml/
   install -Dm644 qpdf-manual.pdf %{buildroot}%{_docdir}/%{name}/qpdf-manual.pdf
 popd
+%endif
 
 # create symlinks for html and singlehtml duplicate docs
 %fdupes -s %{buildroot}%{_docdir}/%{name}
@@ -113,15 +119,23 @@ popd
 %postun -n libqpdf%{so_version} -p /sbin/ldconfig
 
 %files
+%if 0%{?suse_version} > 1500
+%doc qpdf-manual.pdf
+%endif
 %dir %{_docdir}/%{name}
-%doc ChangeLog README-doc.txt qpdf-manual.pdf
+%doc ChangeLog README-doc.txt
+%if 0%{?suse_version} > 1500
+%doc qpdf-manual.pdf
+%endif
 %license Artistic-2.0 LICENSE.txt
 %{_bindir}/*
 %{_mandir}/man1/*
 
+%if 0%{?suse_version} > 1500
 %files htmldoc
 %doc %{_docdir}/%{name}/html
 %doc %{_docdir}/%{name}/singlehtml
+%endif
 
 %files -n libqpdf%{so_version}
 %{_libdir}/libqpdf.so.%{so_version}*
