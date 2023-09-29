@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="commons-configuration2-from-maven" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property file="build.properties"/>
+  
+  <property name="javacc.home" value="lib"/>
+  
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
+  <property name="compiler.target" value="${compiler.source}"/>
+  
+  <property name="project.groupId" value="org.apache.commons"/>
+  <property name="project.artifactId" value="commons-configuration2"/>
+
+  <property name="spec.version" value="2.9"/>
+  <property name="project.version" value="${spec.version}.0"/>
+  <property name="bundle.version" value="${project.version}"/>
+
+  <property name="project.name" value="Apache Commons Configuration"/>
+  <property name="project.description" value="Tools to assist in the reading of configuration/preferences files in various formats"/>
+  <property name="project.url" value="https://commons.apache.org/proper/commons-configuration/"/>
+  <property name="project.license.url" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
+  <property name="project.organization.name" value="The Apache Software Foundation"/>
+  <property name="project.organization.id" value="org.apache"/>
+
+  <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.javaccDir" value="src/main/javacc"/>
+  <property name="build.javaccOutputDir" value="${build.dir}/generated-sources/javacc"/>
+  <property name="build.resourceDir" value="src/main/resources"/>
+  <property name="build.resourceDir.1" value="."/>
+
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath">
+    <fileset dir="lib">
+      <include name="**/*"/>
+    </fileset>
+  </path>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Source generation target                                               -->
+  <!-- ====================================================================== -->
+
+  <target name="gen-sources" description="Generate the sources using javacc">
+    <mkdir dir="${build.javaccOutputDir}/org/apache/commons/configuration2/plist"/>
+    <javacc target="${build.javaccDir}/PropertyListParser.jj"
+            outputdirectory="${build.javaccOutputDir}/org/apache/commons/configuration2/plist"
+            javacchome="${javacc.home}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" depends="gen-sources" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}" 
+           encoding="iso-8859-1" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           release="${compiler.release}" 
+           target="${compiler.target}" 
+           verbose="false" 
+           fork="false" 
+           source="${compiler.source}">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+        <pathelement location="${build.javaccOutputDir}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </javac>
+    <copy todir="${build.outputDir}">
+      <fileset dir="${build.resourceDir}"/>
+    </copy>
+    <mkdir dir="${build.outputDir}/META-INF"/>
+    <copy todir="${build.outputDir}/META-INF">
+      <fileset dir="${build.resourceDir.1}">
+        <include name="NOTICE.txt"/>
+        <include name="LICENSE.txt"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" depends="gen-sources" description="Generates the Javadoc of the application">
+    <javadoc packagenames="*" 
+             destdir="${reporting.outputDirectory}/apidocs" 
+             access="protected" 
+             classpathref="build.classpath" 
+             verbose="false" 
+             encoding="iso-8859-1" 
+             version="true" 
+             use="true" 
+             author="true" 
+             splitindex="false" 
+             nodeprecated="false" 
+             nodeprecatedlist="false" 
+             notree="false" 
+             noindex="false" 
+             nohelp="false" 
+             nonavbar="false" 
+             serialwarn="false" 
+             source="${compiler.source}" 
+             breakiterator="false">
+      <fileset dir="${build.srcDir}"/>
+      <fileset dir="${build.javaccOutputDir}"/>
+      <link href="https://docs.oracle.com/javase/8/docs/api/"/>
+      <link href="https://docs.spring.io/spring/docs/4.3.26.RELEASE/javadoc-api/"/>
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar" 
+         compress="true" 
+         index="false" 
+         basedir="${build.outputDir}" 
+         excludes="**/package.html">
+      <manifest>
+        <attribute name="Automatic-Module-Name" value="org.apache.commons.configuration2"/>
+        <attribute name="Bundle-Description" value="${project.description}"/>
+        <attribute name="Bundle-DocURL" value="${project.url}"/>
+        <attribute name="Bundle-License" value="${project.license.url}"/>
+        <attribute name="Bundle-ManifestVersion" value="2"/>
+        <attribute name="Bundle-Name" value="${project.name}"/>
+        <attribute name="Bundle-SymbolicName" value="${project.groupId}.${project.artifactId}"/>
+        <attribute name="Bundle-Vendor" value="${project.organization.name}"/>
+        <attribute name="Bundle-Version" value="${bundle.version}"/>
+        <attribute name="Export-Package" value="org.apache.commons.configuration2.beanutils;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.builder.combined;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.builder.fluent;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.builder;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.convert;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.event;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.ex;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.interpol;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.io;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.plist;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.reloading;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.resolver;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.sync;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.tree.xpath;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.tree;version=&quot;${project.version}&quot;,org.apache.commons.configuration2.web;version=&quot;${project.version}&quot;,org.apache.commons.configuration2;version=&quot;${project.version}&quot;"/>
+        <attribute name="Implementation-Title" value="${project.name}"/>
+        <attribute name="Implementation-Vendor" value="${project.organization.name}"/>
+        <attribute name="Implementation-Version" value="${project.version}"/>
+		<attribute name="Import-Package" value="com.fasterxml.jackson.databind.type;resolution:=optional,com.fasterxml.jackson.databind;resolution:=optional,javax.naming,javax.servlet;resolution:=optional,javax.sql,javax.xml.parsers,javax.xml.transform,javax.xml.transform.dom,javax.xml.transform.stream,org.apache.commons.beanutils;resolution:=optional,org.apache.commons.codec.binary;resolution:=optional,org.apache.commons.jexl2;resolution:=optional,org.apache.commons.jxpath.ri.compiler;resolution:=optional,org.apache.commons.jxpath.ri.model;resolution:=optional,org.apache.commons.jxpath.ri;resolution:=optional,org.apache.commons.jxpath;resolution:=optional,org.apache.commons.lang3,org.apache.commons.lang3.builder,org.apache.commons.lang3.concurrent,org.apache.commons.lang3.mutable,org.apache.commons.logging,org.apache.commons.logging.impl,org.apache.commons.text,org.apache.commons.text.lookup,org.apache.commons.text.translate,org.apache.commons.vfs2.provider;resolution:=optional,org.apache.commons.vfs2;resolution:=optional,org.apache.xml.resolver.helpers;resolution:=optional,org.apache.xml.resolver.readers;resolution:=optional,org.apache.xml.resolver.tools;resolution:=optional,org.apache.xml.resolver;resolution:=optional,org.w3c.dom,org.xml.sax,org.xml.sax.helpers,org.yaml.snakeyaml.constructor;resolution:=optional,org.yaml.snakeyaml.representer;resolution:=optional,org.yaml.snakeyaml;resolution:=optional"/>
+		<attribute name="Include-Resource" value="PropertyList-1.0.dtd=src/main/resources/PropertyList-1.0.dtd,properties.dtd=src/main/resources/properties.dtd,META-INF/LICENSE.txt=LICENSE.txt,META-INF/NOTICE.txt=NOTICE.txt"/>
+        <attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
+        <attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
+        <attribute name="JavaPackages-Version" value="${project.version}"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+        <attribute name="Specification-Title" value="${project.name}"/>
+        <attribute name="Specification-Vendor" value="${project.organization.name}"/>
+        <attribute name="Specification-Version" value="${spec.version}"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>
