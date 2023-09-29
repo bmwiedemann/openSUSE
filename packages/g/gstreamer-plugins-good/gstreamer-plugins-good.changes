@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep 22 11:40:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.6:
+  + adaptivedemux2: fix memory leak
+  + pulsedeviceprovider: fix incorrect usage of GST_ELEMENT_ERROR
+  + qt:
+    - Unbreak build with qt-egl enabled but viv_fb missing
+    - Fix searching of qt5/qt6 tools with qmake in Meson
+  + qtdemux:
+    - Fix premature EOS when some files are played in push mode
+    - Attach cbcs crypt info at the right moment
+  + rtpjitterbuffer: Avoid integer overflow in max saveable packets
+    calculation with negative offset
+  + videoflip: fix concurrent access when modifying the tag list
+  + v4l2:
+    - allocator: Don't close foreign dmabuf
+    - bufferpool:
+      . Fix large encoded stream regression
+      . Problems when checking for truncated buffer
+    - Fix support for left and top padding
+  + v4l2object: clear format lists if source change event is
+    received
+- Rebase reduce-required-meson.patch
+- Add libqt5-linguist BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Tue Jul 25 11:10:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.5:
