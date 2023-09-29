@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Thu Sep 21 08:03:43 UTC 2023 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- install binary as /usr/bin/cnf
+  * openQA fail boo#1215546
+  * https://github.com/vyskocilm/cnf-rs/issues/21
+
+-------------------------------------------------------------------
+Mon Sep 18 20:57:00 UTC 2023 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- add Obsoletes back to please the Factory staginh installcheck 
+
+-------------------------------------------------------------------
+Mon Sep 18 11:51:08 UTC 2023 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- fix boo#1215428
+  * add a compatibility symlink /usr/bin/command-not-found for fish
+  * moved scout Obsoletes from bash/zsh subpackages to main one 
+
+-------------------------------------------------------------------
+Thu Sep 14 14:49:56 UTC 2023 - michal.vyskocil@gmail.com
+
+- Update to version 0.5.2~0:
+  * rework CI pipeline
+  * fix a portability issue on aarch64
+
+-------------------------------------------------------------------
+Mon Jul 03 08:50:21 UTC 2023 - michal.vyskocil@gmail.com
+
+- Update to version 0.5.1~0:
+  * Comparsion with an existing tool
+  * Problem: shows paths like /etc/nvim
+
+-------------------------------------------------------------------
+Tue Jun 27 13:01:14 UTC 2023 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- Update to version 0.5.0~4:
+ * call msgfmt directly in oder to produce mo files
+
+-------------------------------------------------------------------
+Mon Jun 26 10:13:22 UTC 2023 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- Update to version 0.5.0~0:
+  * man page
+  * i18n: import all translations from af up to zu (#8)
+  * translate all happy path strings via tr!
+  * remove configparser dependency
+
+-------------------------------------------------------------------
+Wed Apr 19 21:07:31 UTC 2023 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- Initial packaging of cnf-rs for openSUSE 
