@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Tue Sep 12 10:42:27 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.4:
+  This tag contains a snapshot of the ansible-documentation
+  stable-2.15 branch at the time of the ansible-core 2.15.4
+  release.
+
+-------------------------------------------------------------------
+Fri Sep  8 05:08:47 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package ansible-documentation
