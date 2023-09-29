@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Tue Sep 26 15:57:08 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 4
+
+-------------------------------------------------------------------
+Tue Sep 19 11:14:42 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Do not automatically probe after selecting a new product
+  (gh#openSUSE/agama#748).
+
+-------------------------------------------------------------------
+Thu Sep 14 09:04:29 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use a single D-Bus service to expose the manager and the users
+  settings (gh#openSUSE/agama#753, follow-up of
+  gh#openSUSE/agama#729).
+
+-------------------------------------------------------------------
+Tue Sep 12 12:27:33 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not crash when it is not possible to handle a product change
+  in the manager service (related to bsc#1215197).
+- When selecting the product, do not perform any change if the
+  product is still the same.
+
+-------------------------------------------------------------------
+Mon Sep 11 11:28:05 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- The software and the storage services do not dispatch actions
+  during progress reporting anymore (related to bsc#1215197).
+
+-------------------------------------------------------------------
+Wed Sep  6 08:02:35 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- New storage proposal settings (gh#openSUSE/agama#738).
+
+-------------------------------------------------------------------
+Fri Sep  1 07:32:59 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Extend the Ruby-based services logs with information about
+  each step (gh#openSUSE/agama#732).
+- Raise the D-Bus service start timeout for troubleshoting purposes
+  (related to bsc#1214737).
+
+-------------------------------------------------------------------
+Thu Aug 31 10:36:53 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Adapt the locale and questions clients to use the same D-Bus
+  service (gh#openSUSE/agama#729).
+
+-------------------------------------------------------------------
+Wed Aug 30 12:39:18 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- Respect UI locale in dbus services (gh#openSUSE/agama#725)
+
+-------------------------------------------------------------------
+Mon Aug 28 07:59:26 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Copy the proxy configuration to the target system when needed
+  (bsc#1212677, gh#openSUSE/agama#711).
+
+-------------------------------------------------------------------
+Wed Aug 23 10:39:46 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Install the ppc64-diag package when running on ppc64le (related
+  to bsc#1206898).
+
+-------------------------------------------------------------------
+Mon Aug 21 11:15:50 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Set the manager service as busy during the startup phase
+  (bsc#1213194).
+
+-------------------------------------------------------------------
+Fri Aug 18 14:17:13 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Add proxy setup support (bsc#1212677, gh#openSUSE/agama#696).
+
+-------------------------------------------------------------------
 Mon Aug  7 10:52:35 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not consider the architecture when filtering the configuration
