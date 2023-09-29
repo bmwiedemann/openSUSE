@@ -1,0 +1,111 @@
+--- a/src/java.base/share/classes/java/time/zone/TzdbZoneRulesProvider.java
++++ b/src/java.base/share/classes/java/time/zone/TzdbZoneRulesProvider.java
+@@ -74,6 +74,7 @@ import java.util.HashSet;
+ import java.util.List;
+ import java.util.Map;
+ import java.util.NavigableMap;
++import java.util.Properties;
+ import java.util.Set;
+ import java.util.TreeMap;
+ import java.util.concurrent.ConcurrentHashMap;
+@@ -106,7 +107,14 @@ final class TzdbZoneRulesProvider extends ZoneRulesProvider {
+      */
+     public TzdbZoneRulesProvider() {
+         try {
+-            String libDir = StaticProperty.javaHome() + File.separator + "lib";
++            final String homeDir = StaticProperty.javaHome();
++            if (homeDir == null) {
++                throw new Error("java.home is not set");
++            }
++            String libDir = homeDir + File.separator + "lib";
++            String otherDir = getZoneInfoDir(homeDir);
++            if (otherDir != null)
++                libDir = otherDir;
+             try (DataInputStream dis = new DataInputStream(
+                      new BufferedInputStream(new FileInputStream(
+                          new File(libDir, "tzdb.dat"))))) {
+@@ -117,6 +125,28 @@ final class TzdbZoneRulesProvider extends ZoneRulesProvider {
+         }
+     }
+ 
++    private static String getZoneInfoDir(final String homeDir) {
++        try {
++            File f = new File(homeDir + File.separator + "conf" +
++                              File.separator + "tz.properties");
++            if (!f.exists())
++                return null;
++            BufferedInputStream bin = new BufferedInputStream(new FileInputStream(f));
++            Properties props = new Properties();
++            props.load(bin);
++            bin.close();
++            String dir = props.getProperty("sun.zoneinfo.dir");
++            if (dir == null)
++                return null;
++            File tzdbdat = new File(dir, "tzdb.dat");
++            if (tzdbdat.exists())
++                return dir;
++            return null;
++        } catch (Exception x) {
++            return null;
++        }
++    }
++
+     @Override
+     protected Set<String> provideZoneIds() {
+         return new HashSet<>(regionIds);
+--- a/src/java.base/share/classes/sun/util/calendar/ZoneInfoFile.java
++++ b/src/java.base/share/classes/sun/util/calendar/ZoneInfoFile.java
+@@ -45,6 +45,7 @@ import java.util.HashMap;
+ import java.util.List;
+ import java.util.Locale;
+ import java.util.Map;
++import java.util.Properties;
+ import java.util.SimpleTimeZone;
+ import java.util.concurrent.ConcurrentHashMap;
+ import java.util.zip.CRC32;
+@@ -256,7 +257,15 @@ public final class ZoneInfoFile {
+         AccessController.doPrivileged(new PrivilegedAction<Void>() {
+             public Void run() {
+                 try {
+-                    String libDir = StaticProperty.javaHome() + File.separator + "lib";
++                    final String homeDir = StaticProperty.javaHome();
++                    if (homeDir == null) {
++                        throw new Error("java.home is not set");
++                    }
++                    String libDir = homeDir + File.separator + "lib";
++                    String otherDir = getZoneInfoDir(homeDir);
++                    if (otherDir != null)
++                        libDir = otherDir;
++
+                     try (DataInputStream dis = new DataInputStream(
+                              new BufferedInputStream(new FileInputStream(
+                                  new File(libDir, "tzdb.dat"))))) {
+@@ -270,6 +279,28 @@ public final class ZoneInfoFile {
+         });
+     }
+ 
++    private static String getZoneInfoDir(final String homeDir) {
++        try {
++            File f = new File(homeDir + File.separator + "conf" +
++                              File.separator + "tz.properties");
++            if (!f.exists())
++                return null;
++            BufferedInputStream bin = new BufferedInputStream(new FileInputStream(f));
++            Properties props = new Properties();
++            props.load(bin);
++            bin.close();
++            String dir = props.getProperty("sun.zoneinfo.dir");
++            if (dir == null)
++                return null;
++            File tzdbdat = new File(dir, "tzdb.dat");
++            if (tzdbdat.exists())
++                return dir;
++            return null;
++        } catch (Exception x) {
++            return null;
++        }
++    }
++
+     private static void addOldMapping() {
+         for (String[] alias : oldMappings) {
+             aliases.put(alias[0], alias[1]);

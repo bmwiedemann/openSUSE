@@ -1,0 +1,28 @@
+--- a/src/hotspot/cpu/zero/stack_zero.hpp
++++ b/src/hotspot/cpu/zero/stack_zero.hpp
+@@ -97,7 +97,7 @@ class ZeroStack {
+   int shadow_pages_size() const {
+     return _shadow_pages_size;
+   }
+-  int abi_stack_available(Thread *thread) const;
++  ssize_t abi_stack_available(Thread *thread) const;
+ 
+  public:
+   void overflow_check(int required_words, TRAPS);
+--- a/src/hotspot/cpu/zero/stack_zero.inline.hpp
++++ b/src/hotspot/cpu/zero/stack_zero.inline.hpp
+@@ -46,11 +46,11 @@ inline void ZeroStack::overflow_check(int required_words, TRAPS) {
+ // This method returns the amount of ABI stack available for us
+ // to use under normal circumstances.  Note that the returned
+ // value can be negative.
+-inline int ZeroStack::abi_stack_available(Thread *thread) const {
++inline ssize_t ZeroStack::abi_stack_available(Thread *thread) const {
+   assert(Thread::current() == thread, "should run in the same thread");
+-  int stack_used = thread->stack_base() - (address) &stack_used
++  ssize_t stack_used = thread->stack_base() - (address) &stack_used
+     + (StackOverflow::stack_guard_zone_size() + StackOverflow::stack_shadow_zone_size());
+-  int stack_free = thread->stack_size() - stack_used;
++  ssize_t stack_free = thread->stack_size() - stack_used;
+   return stack_free;
+ }
+ 

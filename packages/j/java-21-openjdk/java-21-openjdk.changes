@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Thu Sep 21 11:14:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-properties.patch
+    + use SOURCE_DATE_EPOCH for timestamp in properties files if
+      it is set
+
+-------------------------------------------------------------------
+Tue Sep 19 10:46:38 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of OpenJDK 21 release
+- Highlight of changes to OpenJDK 17 LTS
+  * Additions
+    + HotSpot JVM
+      JEP-422: Linux/RISC-V Port (19)
+      ° Garbage Collectors
+      JEP-439: Generational ZGC (21)
+      ° Serviceability
+      JEP-451: Prepare to Disallow the Dynamic Loading of Agents (21)
+    + Language
+      JEP-441: Pattern Matching for switch (21)
+      JEP-440: Record Patterns (21)
+    + Libraries
+      JEP-444: Virtual Threads (21)
+      ° Collections
+      JEP-431: Sequenced Collections (21)
+      ° Cryptography
+      JEP-452: Key Encapsulation Mechanism API (21)
+      ° I/O
+      JEP-400: UTF-8 by Default (18)
+      ° Networking
+      JEP-418: Internet-Address Resolution SPI (18)
+      JEP-408: Simple Web Server (18)
+      ° Reflection & Method Handles
+      JEP-416: Reimplement Core Reflection with Method Handles (18)
+    + Tools
+      ° JavaDoc
+      JEP-413: Code Snippets in Java API Documentation (18)
+  * Preview & Incubating
+    + Language
+      JEP-430: String Templates (Preview) (21)
+      JEP-445: Unnamed Classes and Instance Main Methods (Preview) (21)
+      JEP-443: Unnamed Patterns and Variables (Preview) (21)
+    + Libraries
+      JEP-442: Foreign Function & Memory API (Third Preview) (21)
+      JEP-446: Scoped Values (Preview) (21)
+      JEP-453: Structured Concurrency (Preview) (21)
+      JEP-448: Vector API (Sixth Incubator) (21)
+  * Deprecations
+    + HotSpot JVM
+      JEP-449: Deprecate the Windows 32-bit x86 Port for Removal (21)
+    + Libraries
+      JEP-421: Deprecate Finalization for Removal (18)
