@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Tue Sep  5 13:20:00 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Drop $ignition_firstboot and selfinstallreboot.service, no longer
+  needed with the new firstboot detection mechanism in combustion 1.2 
+
+-------------------------------------------------------------------
+Tue Sep  5 11:10:15 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Remove systemd-boot, gets in the way of oem install 
+
+-------------------------------------------------------------------
+Tue Sep  5 10:59:46 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Remove LUKS2 experiments, attempt systemd-boot 
+
+-------------------------------------------------------------------
+Tue Jun  6 13:32:32 UTC 2023 - Richard Brown <rbrown@suse.de>
+
+- Experiment with LUKS2 with cipher_null encryption 
+
+-------------------------------------------------------------------
+Tue May 30 15:10:42 UTC 2023 - Richard Brown <rbrown@suse.de>
+
+- Inital image 
