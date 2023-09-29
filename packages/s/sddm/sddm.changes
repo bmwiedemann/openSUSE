@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Sep 20 06:34:37 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Remove unnecessary Requires(post*)
+
+-------------------------------------------------------------------
+Tue Sep 19 17:04:26 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Config file changes:
+  * No longer own sddm.conf. The migration for this conflicts with
+    the other migration code, so:
+  * Drop code for migrating from Current=maui (Leap <= 42.2)
+    and the monolithic /etc/sddm.conf (Leap <= 42.3)
+
+-------------------------------------------------------------------
+Thu Sep 14 16:50:58 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch and drop unnecessary BuildRequirements of
+  extra-cmake-modules and kf5-filesystem:
+  * 0001-Drop-unnecessary-ECM-dependency-and-dead-uninstall-t.patch
+- Split the greeter into a subpackage and use _multibuild to build
+  both daemon and greeter for Qt 5 and Qt 6. Add patches to allow
+  for greeter coinstallation:
+  * 0002-Make-sddm-greeter-for-Qt-5-and-Qt-6-coinstallable.patch
+  * 0003-Let-themes-specify-the-used-version-of-Qt.patch
+- Refresh 0001-Read-the-DISPLAYMANAGER_AUTOLOGIN-value-from-sysconf.patch
+- Don't set CMAKE_BUILD_TYPE=Release
+- Make branding packages noarch
+- Add %check
+
+-------------------------------------------------------------------
 Fri Jun 30 09:37:44 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patches to allow dropping InputMethod= from 11-kwin_wayland.conf

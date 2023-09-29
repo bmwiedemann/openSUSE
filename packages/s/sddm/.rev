@@ -746,4 +746,12 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
     <comment></comment>
     <requestid>1096111</requestid>
   </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>66f7a635b08008dcc2d1534e1b6101dc</srcmd5>
+    <version>0.20.0</version>
+    <time>1696014748</time>
+    <user>anag+factory</user>
+    <comment>- Remove unnecessary Requires(post*) (forwarded request 1112456 from Vogtinator)</comment>
+    <requestid>1112525</requestid>
+  </revision>
 </revisionlist>
