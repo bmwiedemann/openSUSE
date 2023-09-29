@@ -17,12 +17,13 @@
 
 
 Name:           ocserv
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        OpenConnect VPN Server
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
-URL:            http://www.infradead.org/ocserv
+URL:            https://ocserv.gitlab.io/www/
+#Git-Clone:     https://gitlab.com/openconnect/ocserv.git
 Source:         ftp://ftp.infradead.org/pub/ocserv/%{name}-%{version}.tar.xz
 Source1:        ftp://ftp.infradead.org/pub/ocserv/%{name}-%{version}.tar.xz.sig
 Source2:        ca.tmpl
@@ -40,15 +41,14 @@ Patch2:         %{name}.config.patch
 Patch3:         %{name}-LZ4_compress_default.patch
 BuildRequires:  autogen
 BuildRequires:  dbus-1-devel
-%if 0%{suse_version} >= 1500
 BuildRequires:  firewall-macros
-%endif
 BuildRequires:  freeradius-client-devel
 BuildRequires:  gperf
 BuildRequires:  gpg2
 BuildRequires:  libev-devel
 #!BuildIgnore:  libevent-devel
 BuildRequires:  libgnutls-devel >= 3.1.10
+BuildRequires:  liblz4-devel
 BuildRequires:  libmaxminddb-devel
 BuildRequires:  libnl3-devel
 BuildRequires:  libprotobuf-c-devel
@@ -64,11 +64,7 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  rubygem(ronn)
 # /usr/bin/certtool for generating certificates
 Requires:       gnutls >= 3.1.10
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
-%if 0%{?suse_version} > 1310
-BuildRequires:  liblz4-devel
-%endif
 
 %description
 OpenConnect server (ocserv) is an SSL VPN server. Its purpose is to
@@ -110,9 +106,7 @@ make V=1 %{?_smp_mflags}
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
 
 install -Dm 0755 %{SOURCE5} %{buildroot}%{_sbindir}/ocserv-forwarding
-%if 0%{suse_version} >= 1500
 install -D -m 644 %{SOURCE6} %{buildroot}%{_prefix}/lib/firewalld/services/ocserv.xml
-%endif
 
 install -d %{buildroot}%{_sysconfdir}/ocserv/certificates
 install -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/ocserv/certificates
@@ -136,9 +130,7 @@ sed -i '/^\[Service\].*/a ExecStartPre=%{_sbindir}/ocserv-forwarding --enable' %
 
 %post
 %service_add_post ocserv.service ocserv.socket
-%if 0%{suse_version} >= 1500
 %firewalld_reload
-%endif
 
 %preun
 %service_del_preun ocserv.service ocserv.socket
@@ -151,11 +143,9 @@ sed -i '/^\[Service\].*/a ExecStartPre=%{_sbindir}/ocserv-forwarding --enable' %
 %doc AUTHORS NEWS README.md
 %license COPYING
 %config %{_sysconfdir}/ocserv
-%if 0%{suse_version} >= 1500
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
 %{_prefix}/lib/firewalld/services/ocserv.xml
-%endif
 %{_bindir}/occtl
 %{_bindir}/ocpasswd
 %{_bindir}/ocserv-script

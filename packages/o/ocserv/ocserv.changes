@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 25 08:41:26 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.2
+  * Fix session and accounting data tracking of ocserv. This
+  reverts fix for #444 (#541)
+  * No longer account ICMP and IGMP data for idle session detection
+- Update URL
+
+-------------------------------------------------------------------
 Tue Aug 29 12:37:56 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.1
