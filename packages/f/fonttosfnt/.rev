@@ -103,4 +103,22 @@
   * fix for recent versions that mixed up font size with font height.</comment>
     <requestid>900104</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>621f8fd09f2aadddb0cff7b031b318db</srcmd5>
+    <version>1.2.3</version>
+    <time>1696014768</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.2.3
+  * Build xz tarballs instead of bzip2
+  * gitlab CI: enable commit &amp; merge request checks
+  * gitlab CI: enable gitlab's builtin static analysis
+  * Variable scope reductions as recommended by cppcheck
+  * args_copy variable is unused if HAVE_DECL_VA_COPY is not defined
+  * makeBitmap: declare raster parameter const as recommended by cppcheck
+  * Remove unused function findIndex
+  * Allow inlining makeName
+  * Use C99 compound literals to initialize newly allocated structs
+  * Add CI tests</comment>
+    <requestid>1114060</requestid>
+  </revision>
 </revisionlist>

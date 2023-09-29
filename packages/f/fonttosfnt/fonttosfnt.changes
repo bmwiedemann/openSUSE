@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 28 10:47:13 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 1.2.3
+  * Build xz tarballs instead of bzip2
+  * gitlab CI: enable commit & merge request checks
+  * gitlab CI: enable gitlab's builtin static analysis
+  * Variable scope reductions as recommended by cppcheck
+  * args_copy variable is unused if HAVE_DECL_VA_COPY is not defined
+  * makeBitmap: declare raster parameter const as recommended by cppcheck
+  * Remove unused function findIndex
+  * Allow inlining makeName
+  * Use C99 compound literals to initialize newly allocated structs
+  * Add CI tests
+
+-------------------------------------------------------------------
 Tue Jun 15 09:00:18 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 1.2.2
