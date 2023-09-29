@@ -65,10 +65,10 @@ export CGO_CXXFLAGS="${CGO_CFLAGS}"
 export CGO_LDFLAGS="$(pkg-config --libs libsass) $(pkg-config --libs libwebp)"
 
 # Build the binary.
-go build \
-   -mod=vendor \
-   -tags extended \
-   -buildmode=pie
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build -tags extended
 
 %install
 # Install the binary.

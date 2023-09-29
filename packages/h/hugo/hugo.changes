@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 28 04:43:41 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+
+-------------------------------------------------------------------
 Mon Sep 25 13:37:59 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.119.0:

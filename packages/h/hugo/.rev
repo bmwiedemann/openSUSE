@@ -814,4 +814,17 @@
   * commands: Print language code after web server address info (forwarded request 1113468 from jfkw)</comment>
     <requestid>1113469</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>457a9132d3b4ed9cf95da48a1f52f63f</srcmd5>
+    <version>0.119.0</version>
+    <time>1696014816</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS=&quot;-buildmode=pie&quot; %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable (forwarded request 1113964 from jfkw)</comment>
+    <requestid>1113965</requestid>
+  </revision>
 </revisionlist>
