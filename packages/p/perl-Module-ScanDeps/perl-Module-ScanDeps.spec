@@ -18,9 +18,9 @@
 
 %define cpan_name Module-ScanDeps
 Name:           perl-Module-ScanDeps
-Version:        1.330.0
+Version:        1.340.0
 Release:        0
-%define cpan_version 1.33
+%define cpan_version 1.34
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Recursively scan Perl code for dependencies
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -28,12 +28,13 @@ Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/%{cpan_name}-%
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(IPC::Run3) >= 0.048
 BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Test::Requires)
 BuildRequires:  perl(version)
 Requires:       perl(Module::Metadata)
 Requires:       perl(version)
-Provides:       perl(Module::ScanDeps) = 1.330.0
+Provides:       perl(Module::ScanDeps) = 1.340.0
 Provides:       perl(Module::ScanDeps::Cache)
 %define         __perllib_provides /bin/true
 %{perl_requires}
