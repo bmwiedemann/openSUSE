@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Sep 26 15:57:21 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 4
+
+-------------------------------------------------------------------
+Tue Sep 19 19:11:12 UTC 2023 - Balsa Asanovic <balsaasanovic95@gmail.com>
+
+- Allow users to show password values (gh#openSUSE/agama#750).
+
+-------------------------------------------------------------------
+Tue Sep 19 11:18:05 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Explicitly call to probe after selecting a new product
+  (gh#openSUSE/agama#748).
+
+-------------------------------------------------------------------
+Thu Sep 14 10:09:07 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use a single D-Bus service to connect to the manager and the
+  users API (gh#openSUSE/agama#753, follow-up of
+  gh#openSUSE/agama#729).
+
+-------------------------------------------------------------------
+Mon Sep 11 11:56:56 UTC 2023 - David Diaz <dgonzalez@suse.com>
+
+- Fix the download logs action in the web UI (gh#openSUSE/agama#697)
+
+-------------------------------------------------------------------
+Wed Sep  6 08:04:13 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Adapt storage to new proposal settings (gh#openSUSE/agama#738).
+
+-------------------------------------------------------------------
+Thu Aug 31 10:37:50 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Adapt the locale and questions clients to use the same D-Bus
+  service (gh#openSUSE/agama#729).
+
+-------------------------------------------------------------------
+Sat Aug 12 11:35:12 UTC 2023 - Balsa Asanovic <balsaasanovic95@gmail.com>
+
+- Added scroll up functionality to the discover iSCSI form when
+  the warning shows up after the submit action
+  (gh#openSUSE/agama#468).
+
+-------------------------------------------------------------------
+Wed Aug  2 18:59:16 UTC 2023 - Balsa Asanovic <balsaasanovic95@gmail.com>
+
+- Introduced functionality to close Dropdown automatically
+  when the user clicks outside of it.
+  (gh#openSUSE/agama#552).
+
+-------------------------------------------------------------------
 Wed Aug  2 10:03:23 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Version 3
