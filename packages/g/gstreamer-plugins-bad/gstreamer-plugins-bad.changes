@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Sep 22 11:44:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.6:
+  + audiolatency: Forward latency query and event upstream
+  + av1parser: Fix segmentation params update
+  + codecparsers: Fix MPEG-1 aspect ratio table
+  + d3d11convert: Passthrough allocation query on same caps
+  + h264decoder: Update latency dynamically
+  + h265parser:
+    - Allow partially broken hvcC data
+    - Fix possible overflow using max_sub_layers_minus1
+  + hlssink2: Always use forward slash separator
+  + mdns: Fix a crash on context error
+  + mxfdemux: Fix integer overflow causing out of bounds writes
+    when handling invalid uncompressed video and check channels for
+    AES3
+  + nvencoder: Fix negotiation error when interlace-mode is
+    unspecified
+  + rtmp2: Allow NULL flash version, omitting the field
+  + rtmp2sink: fix crash if message conversion failed
+  + transcodebin: Fixes for upstream selectable support
+  + va: Fix in error logs functions mismatches
+  + waylandsink:
+    - Crop surfaces to their display width height
+    - Fix cropping for video with non-square aspect ratio
+  + webrtc: Fix docs for create-data-channel action signal
+- Rebase reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Tue Sep 19 07:39:17 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to build the package with
