@@ -20,7 +20,7 @@
 %define git_commit 3a31588ad33fe3b89af5a2a54ee1d25bfe6eaa5e
 %define git_dirty clean
 Name:           helm
-Version:        3.12.3
+Version:        3.13.0
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0

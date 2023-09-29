@@ -1,4 +1,191 @@
 -------------------------------------------------------------------
+Thu Sep 28 04:47:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.13.0:
+  * bump version to v3.13.0
+  * Fix leaking goroutines in Install
+  * chore(deps): bump github.com/containerd/containerd from 1.7.3
+    to 1.7.6
+  * chore(deps): bump github/codeql-action from 2.21.5 to 2.21.7
+  * Update Helm to use k8s 1.28.2 libraries
+  * chore(deps): bump github.com/cyphar/filepath-securejoin
+  * make the dependabot k8s.io group explicit
+  * use dependabot's group support for k8s.io dependencies
+  * chore(deps): bump
+    transparencylog/github-releases-asset-transparency-verify-action
+  * chore(deps): bump github/codeql-action from 2.21.4 to 2.21.5
+  * doc:Executing helm rollback release 0 will roll back to the
+    previous release
+  * add check if all migrations already applied
+  * chore(deps): bump github.com/moby/term
+  * chore(deps): bump actions/checkout from 3.5.3 to 3.6.0
+  * chore(deps): bump golang.org/x/term from 0.10.0 to 0.11.0
+  * Use labels instead of selectorLabels for pod labels
+  * fix(helm): fix GetPodLogs, the hooks should be sorted before
+    get the logs of each hook
+  * chore(deps): bump github.com/rubenv/sql-migrate from 1.5.1 to
+    1.5.2
+  * add rollback unit test
+  * fix: helm rollback err tips
+  * chore(deps): bump github.com/containerd/containerd from 1.7.0
+    to 1.7.3
+  * Add Ian Zink (z4ce) as triage maintainer
+  * chore(deps): bump github/codeql-action from 2.21.3 to 2.21.4
+  * chore: HTTPGetter add default timeout
+  * fix: precedence typo
+  * Avoid nil dereference if passing a nil resolver
+  * Add required changes after merge
+  * goimports
+  * Fix #3352, add support for --ignore-not-found just like kubectl
+    delete
+  * chore(deps): bump github/codeql-action from 2.21.2 to 2.21.3
+  * chore(deps): bump actions/setup-go from 4.0.1 to 4.1.0
+  * Fix helm may identify achieve of the application/x-gzip as
+    application/vnd.ms-fontobject
+  * Restore `helm get metadata` command
+  * Revert "Add `helm get metadata` command"
+  * Update pkg/action/install.go
+  * test: replace `ensure.TempDir` with `t.TempDir`
+  * chore(deps): bump github/codeql-action from 2.21.0 to 2.21.2
+  * use json api url + report curl/wget error on fail
+  * Added error in case try to supply custom label with name of
+    system label during install/upgrade
+  * Updated per feedback from gjenkins8
+  * fix(main): fix basic auth for helm pull or push
+  * chore(deps): bump github.com/sirupsen/logrus from 1.9.0 to
+    1.9.3
+  * cmd: support generating index in JSON format
+  * repo: detect JSON and unmarshal efficiently
+  * Tweaking new dry-run internal handling
+  * chore(deps): bump github/codeql-action from 2.20.3 to 2.21.0
+  * chore(deps): bump github.com/stretchr/testify from 1.8.2 to
+    1.8.4
+  * chore(deps): bump github.com/BurntSushi/toml from 1.2.1 to
+    1.3.2
+  * chore(deps): bump github.com/opencontainers/image-spec
+  * bump kubernetes modules to v0.27.3
+  * chore(deps): bump actions/checkout from 3.2.0 to 3.5.3
+  * chore(deps): bump actions/setup-go from 3.5.0 to 4.0.1
+  * chore(deps): bump github/codeql-action from 2.1.37 to 2.20.3
+  * chore(deps): bump github.com/spf13/cobra from 1.6.1 to 1.7.0
+  * chore(deps): bump golang.org/x/crypto from 0.5.0 to 0.11.0
+  * chore(deps): bump golang.org/x/text from 0.9.0 to 0.11.0
+  * chore(deps): bump k8s.io/klog/v2 from 2.90.1 to 2.100.1
+  * chore(deps): bump github.com/docker/docker
+  * Remove warning for template directory not found.
+  * Add gjenkins8 as triage maintainer
+  * Added tests for created OCI annotation time format
+  * Add created OCI annotation
+  * Fix multiple bugs in values handling
+  * chore: fix a typo in `manager.go`
+  * chore(deps): bump github.com/rubenv/sql-migrate from 1.3.1 to
+    1.5.1
+  * add GetRegistryClient method
+  * chore(deps): bump oras.land/oras-go from 1.2.2 to 1.2.3
+  * oci: add tests for plain HTTP and insecure HTTPS registries
+  * chore(deps): bump github.com/opencontainers/runc from 1.1.4 to
+    1.1.5
+  * oci: Add flag `--plain-http` to enable working with HTTP
+    registries
+  * docs: add an example for using the upgrade command with
+    existing values
+  * Replace `fmt.Fprintf` with `fmt.Fprint` in get_metadata.go
+  * Replace `fmt.Fprintln` with `fmt.Fprintf` in get_metadata.go
+  * update kubernetes dependencies from v0.27.0 to v0.27.1
+  * Add ClientOptResolver to test util file
+  * Check that missing keys are still handled in tpl
+  * chore(deps): bump github.com/docker/distribution
+  * tests: change crd golden file to match after #11870
+  * Adding details on the Factory interface
+  * move Joe Julian to maintainer
+  * update autoscaling/v2beta1 to autoscaling/v2 in skeleton chart
+  * chore(deps): bump github.com/Masterminds/squirrel from 1.5.3 to
+    1.5.4
+  * chore(deps): bump github.com/lib/pq from 1.10.7 to 1.10.9
+  * chore(deps): bump github.com/Masterminds/semver/v3 from 3.2.0
+    to 3.2.1
+  * bump version to v3.12.0
+  * feat(helm): add ability for --dry-run to do lookup functions
+    When a helm command is run with the --dry-run flag, it will try
+    to connect to the cluster to be able to render lookup
+    functions. Closes #8137
+  * Updating the Helm maintainers
+  * strip trailing newline from Files.Lines
+  * add some test case
+  * fix comment grammar error.
+  * bugfix:(#11391) helm lint infinite loop  when malformed
+    template object
+  * pkg/engine: fix nil-dereference
+  * pkg/chartutil: fix nil-dereference
+  * pkg/action: fix nil-dereference
+  * full source path when output-dir is not provided
+  * Update cmd/helm/upgrade.go
+  * Update cmd/helm/install.go
+  * added Contributing.md section and ref link in the README
+  * fix: add podLabels
+  * feat(helm): add ability for --dry-run to do lookup functions
+    When a helm command is run with the --dry-run flag, it will try
+    to connect to the cluster if the value is 'server' to be able
+    to render lookup functions. Closes #8137
+  * feat(helm): add ability for --dry-run to do lookup functions
+  * Add `CHART`, `VERSION` and `APP_VERSION` fields to `get all`
+    command output
+  * Adjust `get` command description to account metadata
+  * fix typo: mountPath
+  * add volumes and volumeMounts in chartutil
+  * Seed a default switch to control `automountServiceAccountToken`
+  * Avoid confusing error when passing in '--version X.Y.Z'
+  * Use errors.Is to compare
+  * Add `helm get metadata` command
+  * Use wrapped error so that ErrNoObjectsVisited can be compared
+    after return.
+  * Add exact version test. See also #7563 Signed-off-by: Igor
+    Manushin <igor.manushin@gmail.com>
+  * Update dependabot config to include github actions
+  * strict file permissions of repository.yaml
+  * Check redefinition of define and include in tpl
+  * Check that `.Template` is passed through `tpl`
+  * Make sure empty `tpl` values render empty.
+  * Pick the test improvement out of PR#8371
+  * #11369 Use the correct index repo cache directory in the
+    `parallelRepoUpdate` method as well
+  * #11369 Add a test case to prove the bug and its resolution
+  * ref(helm): export DescriptorPullSummary fields
+  * feat(helm): add 'ClientOptResolver' ClientOption
+  * Fix flaky TestSQLCreate test by making sqlmock ignore order of
+    sql requests
+  * Fixing tests after adding labels to release fixture
+  * Make default release fixture contain custom labels to make
+    tests check that labels are not lost
+  * Added support for storing custom labels in SQL storage driver
+  * Adding support merging new custom labels with original release
+    labels during upgrade
+  * Added note to install/upgrade commands that original release
+    labels wouldn't be persisted in upgraded release
+  * Added unit tests for implemented install/upgrade labels logic
+  * Remove redudant types from util_test.go
+  * Added tests for newly introduced util.go functions
+  * Fix broken tests for SQL storage driver
+  * Fix broken tests for configmap and secret storage drivers
+  * Make superseded releases keep labels
+  * Support configmap storage driver for install/upgrade actions
+    --labels argument
+  * Added upgrade --install labels argument support
+  * Add labels support for install action with secret storage
+    backend
+  * test: added tests to load plugin from home dir with space
+  * fix: plugin does not load when helm base dir contains space
+  * Add priority class to kind sorter
+  * Fixes #10566
+  * test(search): add mixedCase test case
+  * fix(search): print repo search result in original case
+  * Adjust error message wrongly claiming that there is a resource
+    conflict
+  * Throw an error from jobReady() if the job exceeds its
+    BackoffLimit
+  * github: add Asset Transparency action for GitHub releases
+
+-------------------------------------------------------------------
 Fri Aug 11 07:18:44 UTC 2023 - dmueller@suse.com
 
 - Update to version 3.12.3:
