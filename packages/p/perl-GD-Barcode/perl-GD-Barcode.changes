@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 14 03:06:15 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.00
+   see /usr/share/doc/packages/perl-GD-Barcode/Changes
+
+  2.00 2023-09-13
+          - 'Production' release, no changes to 1.99_03
+  1.99_03 2022-01-10 (DEVELOPMENT RELEASE)
+          - Fix cpantesters test for Business::ISBN failing
+            seemingly because of broken version of Business::ISBN:
+            require Business::ISBN 3.007 or later
+  1.99_02 2021-12-20 (DEVELOPMENT RELEASE)
+          - Fix issue with Code39 barcodes that prevent rendering white
+            background in some cases by Boris Zentner
+          - Add unit tests
+          - Modernize code
+  1.99_01 2016-10-23 (DEVELOPMENT RELEASE)
+          - Moved modules to lib/
+          - Specified correct dependencies.
+          - Fixed RT#20297 - Auto-size with 'Version'.
+
+-------------------------------------------------------------------
 Thu Nov 17 13:41:10 UTC 2011 - coolo@suse.com
 
 - regenerate spec file
