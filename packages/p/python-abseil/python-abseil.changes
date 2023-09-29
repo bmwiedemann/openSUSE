@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 27 10:24:36 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu May 25 07:35:04 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - version update to 1.4.0

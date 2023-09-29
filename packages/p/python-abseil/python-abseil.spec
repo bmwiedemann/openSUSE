@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-abseil
 Version:        1.4.0
 Release:        0
