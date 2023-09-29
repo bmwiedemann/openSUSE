@@ -16,12 +16,12 @@
 #
 
 
-%define internal_ver 0.6.9-1
+%define internal_ver %{version}
 %define imgui_ver 1.81
 %define imgui_wrap 1
 %define vulkan_ver 1.2.158
 Name:           mangohud
-Version:        0.6.9~1
+Version:        0.7.0
 Release:        0
 Summary:        A Vulkan and OpenGL overlay for monitoring
 License:        MIT
@@ -111,6 +111,7 @@ export CXX=g++-12
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
+%{_bindir}/mangoplot
 %{_bindir}/%{name}ctl
 %{_libdir}/%{name}/
 %{_datadir}/doc/%{name}/

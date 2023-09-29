@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Sep 29 04:11:09 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.0:
+  * Parameters:
+    - gpu_fan displays the gpu fan RPM, only works on AMD.
+    - gpu_junction_temp displays the junction temperature on AMD GPUs.
+    - removed io_stats, just use io_read and io_write instead.
+    - engine_short_names shortens the names of engines, e.g VULKAN 
+      becomes VK.
+    - text_outline adds a colored outline around all text.
+    - text_outline_color sets the color of the outline, 
+      default: 000000.
+    - text_outline_thickness sets the thickness of the outline,
+      default: 1.5.
+    - temp_fahrenheit changes all temps to fahrenheit from celsius.
+    - dynamic_frame_timing dynamically changes the range of the 
+      frametime graph.
+    - duration displays the time since mangohud initialized.
+    - gpu_voltage shows the current gpu voltage, only works on AMD.
+    - fps_text override fps text.
+    - horizontal_stretch sets the background to stretch across 
+      width of application (enabled by default).
+    - core_bars turns core_load into a histogram.
+    - device_battery Shows battery level of wireless devices, 
+      accepts gamepad mouse.
+    - device_battery_icon shows battery icon instead of percent.
+  * preset: This parameter allows you to choose from a number 
+    of config presets.
+    - 0: no display
+    - 1: only fps.
+    - 2: horizontal.
+    - 3: more detailed default layout
+    - 4: full
+  * Changes:
+    - Removed MANGOHUD_DLSYM because it's redundant.
+    - Fixed core mhz when Cool'n'Quiet and similar is disabled 
+      in bios.
+    - Added /etc/MangoHud.conf as a possible config location.
+    - Add CPU architecture to vulkan manifest name.
+    - mangoplot is a python script that graphs one or more mangohud 
+      csv logs.
+    - mangoapp: resolved issue where different sized displays 
+      caused rendering issues.
+    - mangohud script: guard so we don't add mangohud 
+      lib to LD_PRELOAD multiple times.
+    - split mangohud into two shared libraries, one for vulkan and 
+      one for opengl. This should resolve issues where mangohud 
+      would init vulkan and opengl at the same time.
+    - statically link stdc++. This fixed a lot of crashing issues 
+      when MANGOHUD=1 was set before starting steam.
+    - added support for zenergy kernel driver.
+    - fixed alpha param that stopped working at some point.
+    - added --version to mangohud script.
+    - When using horizontal layout set table_columns param to 
+      current count of table_columns instead of manually.
+    - Intel GPU: use fdinfo for GPU load.
+    - logging: calculate fps data using frametime.
+    - AMDGPU: get core clock from hwmon instead of gpu_metrics.
+    - gamepad_battery is now deprecated 
+      use device_battery= mouse or gamepad.
+    - logging: added process RSS and swap usage.
+    - Fixed a memory leak when resizing vulkan windows.
+  * Blacklist:
+    - blacklist: if blacklisted application is hardcoded, 
+      don't proceed to load config blacklists.
+    - blacklist: only print blacklist info message once.
+    + blacklist: added more hardcoded entries:
+      - tabtip.exe
+      - steam.exe
+      - wine64-preloader
+      - explorer.exe
+      - wine-preloader
+      - iexplore.exe
+      - rundll32.exe
+
+-------------------------------------------------------------------
 Mon Apr 17 22:44:19 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Drop 0001-fix-gcc13-build.patch and instead do the same with sed
