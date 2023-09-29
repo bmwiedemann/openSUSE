@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Sep 19 22:04:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0~rc3:
+  * Fix an intermittent error during process termination on some
+    platforms (GCC/Linux/libstdc++).
+  * Fix some potential bugs (assertion failures and memory leaks) in
+    previously-untested error handling code. In some cases, this means
+    that the process will execute a controlled ``abort()`` after severe
+    trouble when previously the process might have continued for some
+    time with a corrupt state. It is unlikely those errors occurred in
+    practice.
+  * Fix some assertion errors and potential bugs with re-entrant
+    switches.
+  * Fix a potential crash when certain compilers compile greenlet with
+    high levels of optimization. The symptom would be that switching to
+    a greenlet for the first time immediately crashes.
+  * Fix a potential crash when the callable object passed to the
+    greenlet constructor (or set as the ``greenlet.run`` attribute) has
+    a destructor attached to it that switches. Typically, triggering
+    this issue would require an unlikely subclass of
+    ``greenlet.greenlet``.
+  * Python 3.11+: Fix rare switching errors that could occur when a
+    garbage collection was triggered during the middle of a switch, and
+    Python-level code in ``__del__`` or weakref callbacks switched to a
+    different greenlet and ultimately switched back to the original
+    greenlet. This often manifested as a ``SystemError``: "switch
+    returned NULL without an exception set."
+  * Python 3.12: Fix walking the frame stack of suspended greenlets.
+    Previously accessing ``glet.gr_frame.f_back`` would crash due to
+    `changes in CPython's undocumented internal frame handling
+  * Make the platform-specific low-level C/assembly snippets stop using
+    the ``register`` storage class. Newer versions of standards remove
+    this storage class, and it has been generally ignored by many
+    compilers for some time. See `PR 347
+    <https://github.com/python-greenlet/greenlet/pull/347>`_ from Khem
+    Raj.
+  * Add initial support for Python 3.12. See `issue
+    <https://github.com/python-greenlet/greenlet/issues/323>`_ and `PR
+    <https://github.com/python-greenlet/greenlet/pull/327>`_; thanks go
+    to (at least) Michael Droettboom, Andreas Motl, Thomas A Caswell,
+    raphaelauv, Hugo van Kemenade, Mark Shannon, and Petr Viktorin.
+  * Remove support for end-of-life Python versions, including Python
+    2.7, Python 3.5 and Python 3.6.
+  * Require a compiler that supports ``noinline`` directives. See
+    `issue 271
+    <https://github.com/python-greenlet/greenlet/issues/266>`_.
+  * Require a compiler that supports C++11.
+
+-------------------------------------------------------------------
 Thu May  4 14:37:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:
@@ -63,7 +112,7 @@ Thu Jan  5 07:41:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 Mon Sep 12 20:13:22 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.3:
-  * Add support for Python 3.11. 
+  * Add support for Python 3.11.
 
 -------------------------------------------------------------------
 Sat Oct 16 19:07:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -107,13 +156,13 @@ Mon Feb  1 22:13:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * Require setuptools to build from source.
   * Stop asking setuptools to build both .tar.gz and .zip
     sdists. PyPI has standardized on .tar.gz for all platforms.
-  * Publish the change log to https://greenlet.readthedocs.io 
+  * Publish the change log to https://greenlet.readthedocs.io
 
 -------------------------------------------------------------------
 Mon Sep 28 10:54:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.4.17:
-  - Support for PEP 567 ContextVars 
+  - Support for PEP 567 ContextVars
 
 -------------------------------------------------------------------
 Mon Jun  8 19:32:54 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -218,7 +267,7 @@ Thu Nov  6 04:56:09 UTC 2014 - tserong@suse.com
 -------------------------------------------------------------------
 Mon Nov  3 22:19:05 UTC 2014 - dvaleev@suse.com
 
-- build with -fno-tree-dominator-opts (boo#902146) 
+- build with -fno-tree-dominator-opts (boo#902146)
 
 -------------------------------------------------------------------
 Fri Sep 12 21:22:30 UTC 2014 - dmueller@suse.com
@@ -264,7 +313,7 @@ Thu Oct 24 11:06:14 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Thu Aug  8 10:54:47 UTC 2013 - dvaleev@suse.com
 
-- run tests we optflags. Stuff got compiled in %check again. 
+- run tests we optflags. Stuff got compiled in %check again.
 
 -------------------------------------------------------------------
 Tue Aug  6 12:34:48 UTC 2013 - speilicke@suse.com
@@ -356,12 +405,12 @@ Fri Nov 23 12:05:16 UTC 2012 - saschpe@suse.de
 Tue Jul  3 09:53:32 UTC 2012 - dvaleev@suse.com
 
 - add ppc64 platform support
-- fix ppc platform 
+- fix ppc platform
 
 -------------------------------------------------------------------
 Fri Dec 23 13:20:47 UTC 2011 - idonmez@suse.com
 
-- Add upstream commits 25bf29f4d3b7 and 2d5b17472757 (bnc#738431) 
+- Add upstream commits 25bf29f4d3b7 and 2d5b17472757 (bnc#738431)
 - Implement %check
 
 -------------------------------------------------------------------

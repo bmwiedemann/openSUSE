@@ -19,13 +19,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-greenlet
-Version:        2.0.2
+Version:        3.0.0~rc3
 Release:        0
 Summary:        Lightweight in-process concurrent programming
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/python-greenlet/greenlet
-Source0:        https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-3.0.0rc3.tar.gz
 Source9:        python-greenlet-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module objgraph}
@@ -54,7 +54,7 @@ BuildArch:      noarch
 This package contains header files required for C modules development.
 
 %prep
-%autosetup -p1 -n greenlet-%{version}
+%autosetup -p1 -n greenlet-3.0.0rc3
 
 %build
 export CFLAGS="%{optflags} -fno-tree-dominator-opts -fno-strict-aliasing"
