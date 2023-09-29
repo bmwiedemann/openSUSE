@@ -1,0 +1,23 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="filename">go-mod-upgrade</param>
+    <param name="url">https://github.com/oligot/go-mod-upgrade.git</param>
+    <param name="scm">git</param>
+    <param name="revision">main</param>
+    <param name="version">v0.9.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+	<param name="changesgenerate">enable</param>
+  </service>
+
+  <service name="set_version" mode="disabled"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="go_modules" mode="disabled">
+    <param name="compression">gz</param>
+  </service>
+</services>
