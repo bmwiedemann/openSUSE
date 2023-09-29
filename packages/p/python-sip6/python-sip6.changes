@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 27 09:01:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.7.11
+  * Bug fixes.
+- Release 6.7.10
+  * Added the --minimum-glibc-version command line option to
+    sip-wheel.
+  * The latest version of ABI v13 is v13.5.2.
+  * The latest version of ABI v12 is v12.12.2.
+  * Bug fixes.
+
+-------------------------------------------------------------------
 Thu May 25 15:59:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - for SLE15, package documentation in devel package

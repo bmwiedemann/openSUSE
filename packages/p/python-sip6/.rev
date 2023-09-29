@@ -203,4 +203,19 @@
     <comment></comment>
     <requestid>1089147</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7b3925500a6367d866b584c0e18391e1</srcmd5>
+    <version>6.7.11</version>
+    <time>1696014784</time>
+    <user>anag+factory</user>
+    <comment>- Update to 6.7.11
+  * Bug fixes.
+- Release 6.7.10
+  * Added the --minimum-glibc-version command line option to
+    sip-wheel.
+  * The latest version of ABI v13 is v13.5.2.
+  * The latest version of ABI v12 is v12.12.2.
+  * Bug fixes.</comment>
+    <requestid>1114147</requestid>
+  </revision>
 </revisionlist>
