@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 29 07:52:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove bogus runtime dependency on apache-commons-lang
+
+-------------------------------------------------------------------
 Tue Mar  1 09:53:04 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Don't package /usr/lib/debug

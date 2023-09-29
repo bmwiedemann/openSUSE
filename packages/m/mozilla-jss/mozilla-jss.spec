@@ -1,7 +1,7 @@
 #
 # spec file for package mozilla-jss
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ BuildRequires:  slf4j-jdk14
 
 BuildRequires:  junit
 
-Requires:       apache-commons-lang
+Requires:       apache-commons-lang3
 Requires:       java-headless
 Requires:       jpackage-utils
 Requires:       mozilla-nss >= 3.44
