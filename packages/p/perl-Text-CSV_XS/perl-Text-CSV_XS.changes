@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 22 03:08:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.52
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+
+  1.52	- 2023-09-21, H.Merijn Brand
+      * Fix possible coredump in cache on non-IO parse (issue 49)
+
+-------------------------------------------------------------------
 Tue Aug  8 03:10:51 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.51
