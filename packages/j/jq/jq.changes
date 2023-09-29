@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 27 04:32:39 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- switch to bootstrapped upstream tarball to fix version output
+  [boo#1215737]
+
+-------------------------------------------------------------------
 Thu Sep  7 13:42:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7

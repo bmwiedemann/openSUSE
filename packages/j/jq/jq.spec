@@ -16,6 +16,7 @@
 #
 
 
+%define jq_sover 1
 Name:           jq
 Version:        1.7
 Release:        0
@@ -23,14 +24,12 @@ Summary:        A lightweight and flexible command-line JSON processor
 License:        CC-BY-3.0 AND MIT
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/jqlang
-Source:         https://github.com/jqlang/jq/archive/refs/tags/jq-%{version}/jq-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
+Source:         https://github.com/jqlang/jq/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  chrpath
-BuildRequires:  libtool
-#BuildRequires:  flex
-BuildRequires:  oniguruma-devel
-Requires:       libjq1 = %{version}
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(oniguruma)
+# https://github.com/stedolan/jq/issues/1904
+Requires:       libjq%{jq_sover} = %{version}
 %ifnarch riscv64
 BuildRequires:  valgrind
 %endif
@@ -41,32 +40,31 @@ JSON data – you can use it to slice and filter and map and transform
 structured data with the same ease that sed, awk, grep and friends let
 you play with text.
 
-%package -n libjq1
+%package -n libjq%{jq_sover}
 Summary:        Library for a lightweight and flexible command-line JSON processor
 Group:          System/Libraries
 
-%description -n libjq1
+%description -n libjq%{jq_sover}
 Library for a lightweight and flexible command-line JSON processor.
 
 %package -n libjq-devel
 Summary:        Development files for jq
 Group:          Development/Languages/C and C++
-Requires:       libjq1 = %{version}
+Requires:       libjq%{jq_sover} = %{version}
 
 %description -n libjq-devel
 Development files (headers and libraries for jq).
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%autosetup -p1
 
 %build
-autoreconf -fiv
 %configure \
   --disable-static \
 %ifarch riscv64
   --disable-valgrind \
 %endif
-  --disable-silent-rules
+%{nil}
 %make_build
 
 %install
@@ -86,8 +84,7 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 %make_build check
 %endif
 
-%post -n libjq1 -p /sbin/ldconfig
-%postun -n libjq1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libjq%{jq_sover}
 
 %files
 %license COPYING
@@ -95,10 +92,12 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
-%files -n libjq1
-%{_libdir}/libjq.so.1*
+%files -n libjq%{jq_sover}
+%license COPYING
+%{_libdir}/libjq.so.%{jq_sover}*
 
 %files -n libjq-devel
+%license COPYING
 %{_includedir}/jq.h
 %{_includedir}/jv.h
 %{_libdir}/libjq.so
