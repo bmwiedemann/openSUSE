@@ -1,5 +1,4 @@
 <package name="icinga-php-common" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="server:monitoring" package="icinga-php-common"/>
 </package>
