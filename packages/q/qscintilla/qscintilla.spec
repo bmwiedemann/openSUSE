@@ -51,7 +51,7 @@ ExclusiveArch:  do_not_build
 %define debug_package_requires libqscintilla2_qt5-%{sonum} = %{version}-%{release}
 %define sonum   15
 Name:           qscintilla%{?psuffix}
-Version:        2.13.4
+Version:        2.14.1
 Release:        0
 Summary:        C++ Editor Class Library
 License:        GPL-3.0-only
