@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fastjsonschema
-Version:        2.17.1
+Version:        2.18.0
 Release:        0
 Summary:        Fastest Python implementation of JSON schema
 License:        BSD-3-Clause
