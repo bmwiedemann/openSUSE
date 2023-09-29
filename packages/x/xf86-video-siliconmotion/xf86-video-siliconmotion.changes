@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 28 10:37:54 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.7.10
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Build xz tarballs instead of bzip2
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * constify some char * declarations
+  * Quiet -Wempty-body warning
+  * Replace malloc()+snprintf() with Xasprintf()
+  * Replace malloc()+memset() with calloc()
+  * Remove "All rights reserved" from Oracle copyright notices
+  * gitlab CI: ensure libtool is installed in build container
+  * autogen.sh: Implement GNOME Build API
+  * autogen.sh: use quoted string variables
+  * autogen: add default patch prefix
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: use exec instead of waiting for configure to finish
+
+-------------------------------------------------------------------
 Mon Jan 20 14:14:21 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add %arm to ExcludeArch, build fails since glibc dropped outb/inb

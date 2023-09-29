@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-siliconmotion
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xf86-video-siliconmotion
-Version:        1.7.9
+Version:        1.7.10
 Release:        0
 Summary:        Silicon Motion video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-#Source1:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
+URL:            http://xorg.freedesktop.org/
+Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.xz
 Source2:        %{name}.keyring
 Patch0:         u_siliconmotion_fix_segfault_on_xorg_server_1.19.patch
 BuildRequires:  pkg-config
@@ -65,7 +64,8 @@ find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README
+%doc ChangeLog README.md
+%license COPYING
 %dir %{_libdir}/xorg/modules/drivers
 %{_libdir}/xorg/modules/drivers/siliconmotion_drv.so
 %{_datadir}/man/man4/siliconmotion.4%{?ext_man}
