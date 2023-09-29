@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri Sep 15 07:46:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire rust >= 1.67 as indicated by upstream
+  - this leads to builds for 15.4 being unresolvable instead of
+    failing...
+
+-------------------------------------------------------------------
+Fri Sep 15 07:28:37 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add BuildRequires for python3-base
+
+-------------------------------------------------------------------
+Wed Jul 19 19:00:14 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.0
+  New Features:
+  * A ys command to copy unescaped string literals to the
+    clipboard.
+  * A family of printing p commands, analogous to the y commands,
+    that print simply content to the screen. Useful for viewing
+    long string values, or if the clipboard functionality isn't
+    working.
+  * Line numbers! Both absolute and relative.
+  * C and E commands, analogous to the existing c and e commands,
+    for deeply collapsing/expanding values
+- Use cargo-packaging instead of rust-packaging
+
+-------------------------------------------------------------------
+Tue Sep 27 16:08:33 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.8.0
