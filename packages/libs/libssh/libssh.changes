@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 25 09:09:25 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Enable crypto-policies support: [bsc#1211301]
+  * Rebase libssh_client.config libssh_server.config
+
+-------------------------------------------------------------------
 Fri Aug  4 13:12:05 UTC 2023 - malcolmlewis@opensuse.org
 
 - Add fix to spec file for the incorrect include path as a result
