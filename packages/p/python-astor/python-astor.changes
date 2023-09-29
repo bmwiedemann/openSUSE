@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 28 12:10:03 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip same tests for python-3.12
+
+-------------------------------------------------------------------
 Fri Apr 21 12:22:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

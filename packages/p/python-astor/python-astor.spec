@@ -87,6 +87,7 @@ python38_donttest="test_huge_int"
 python39_donttest="${python38_donttest} or test_convert_stdlib"
 python310_donttest=${python39_donttest}
 python311_donttest=${python310_donttest}
+python312_donttest=${python311_donttest}
 %pytest tests ${$python_donttest:+ -k "not (${$python_donttest})"}
 
 %files %{python_files}
