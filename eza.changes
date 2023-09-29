@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Sep 25 14:21:59 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.1:
+  Bug Fixes:
+  * Typo this -> that
+  * Error for missed semicolon
+  * More than 3 bools in a struct
+  * Major and minor device on MacOS
+  * Linux uses u32 for major/minor device numbers
+  * Respect spec on Windows and make it for with Konsole
+  * Don’t show color when color is disabled
+  * Enable rustfmt by removing .rustfmt.toml which disables it
+  * Replace rustfmt::skip on expressions because experimental
+  * Remove unnecessary rustfmt::skip's in windows code
+  * Add src/options/flags.rs to rustfmt.excludes
+  * Left-over merge conflict in src/output/table
+  Documentation:
+  * Update README.md
+  * Update --mounts option to include MacOS
+  * Documenting --only-files
+  Features:
+  * Listing files only using '--only-files' flag
+    Add EXA_COLOR bindings for un-themed items
+  * Add EZA_ environment variables with fallback to EXA_
+  * Add rustfmt check to unit-tests workflow
+  Miscellaneous Tasks:
+  * Add completion for --only-fies (zsh,fish)
+
+-------------------------------------------------------------------
 Mon Sep 18 18:45:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13.0:
