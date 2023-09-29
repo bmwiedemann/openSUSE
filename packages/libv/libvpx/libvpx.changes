@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 28 09:27:46 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- Fixing CVE-2023-5217 heap buffer overflow (boo#1215778)
+  added CVE-2023-5217.patch
+
+-------------------------------------------------------------------
 Tue Feb 14 12:31:04 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.13.0:

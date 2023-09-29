@@ -515,4 +515,13 @@
     <comment></comment>
     <requestid>1065873</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>c2a83522a284fce80bc717da07533d0f</srcmd5>
+    <version>1.13.0</version>
+    <time>1696014763</time>
+    <user>anag+factory</user>
+    <comment>- Fixing CVE-2023-5217 heap buffer overflow (boo#1215778)
+  added CVE-2023-5217.patch</comment>
+    <requestid>1114051</requestid>
+  </revision>
 </revisionlist>
