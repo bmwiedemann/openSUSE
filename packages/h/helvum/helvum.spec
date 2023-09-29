@@ -16,20 +16,21 @@
 #
 
 
-%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %define app_id org.pipewire.Helvum
 Name:           helvum
-Version:        0.4.0
+Version:        0.5.1
 Release:        0
 Summary:        A GTK patchbay for pipewire
-License:        (Apache-2.0 OR BSL-1.0) AND GPL-3.0-only AND (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND ISC AND MIT
+License:        GPL-3.0-only AND ( (MIT OR Apache-2.0) AND Unicode-DFS-2016 ) AND ( Apache-2.0 OR MIT ) AND ( Unlicense OR MIT ) AND Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND ISC AND MIT AND
 URL:            https://gitlab.freedesktop.org/pipewire/helvum
-Source:         https://gitlab.freedesktop.org/pipewire/helvum/uploads/2b68fb86bf4b988c3183de123dfd1065/%{name}-%{version}.tar.xz
-BuildRequires:  cargo
+Source:         https://gitlab.freedesktop.org/pipewire/helvum/uploads/f523a2c71046fb21a7584fca80fc0ee9/%{name}-%{version}.tar.xz
+BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
-BuildRequires:  gtk4-devel
-BuildRequires:  pipewire-devel
-ExcludeArch:    s390 s390x ppc ppc64 ppc64le %{ix86}
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66
+BuildRequires:  pkgconfig(gtk4) >= 4.4.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.3
+BuildRequires:  pkgconfig(libpipewire-0.3)
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 Helvum is a GTK-based patchbay for pipewire, inspired by the JACK tool catia.
@@ -38,10 +39,10 @@ Helvum is a GTK-based patchbay for pipewire, inspired by the JACK tool catia.
 %setup -q
 
 %build
-RUSTFLAGS=%{rustflags} cargo build --release
+%{cargo_build}
 
 %install
-RUSTFLAGS=%{rustflags} cargo install --no-track --root=%{buildroot}%{_prefix} --path .
+%{cargo_install}
 sed 's/@icon@/%{app_id}/g' data/%{app_id}.desktop.in > data/%{app_id}.desktop
 install -D -m0644 -t %{buildroot}%{_datadir}/applications/ data/%{app_id}.desktop
 install -D -m0644 -t %{buildroot}%{_datadir}/icons/hicolor/scalable/apps data/icons/%{app_id}.svg

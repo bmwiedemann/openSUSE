@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Sep 28 14:12:34 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.5.1
+  - Fix an issue where the headerbar is overly large
+- update to 0.5.0
+  - Helvum has been ported to libadwaita, and now requires libadwaita >= 1.3 to
+    build.
+  - The graph UI has been redesigned to fit the libadwaita style and to improve
+    usability and looks. Nodes now have a background, ports are split into a
+    label and a round handle, and more minor changes.
+  - Ports are now added and removed more reliably from nodes, and are sorted by
+    name.
+  - An "About" window has been added, and can be opened using the new primary
+    menu, opened by a button in the headerbar.
+  - The application no longer enters an unusable state if the app can't connect
+    to the pipewire server, or loses connection. Instead, the app will attempt
+    to reconnect on an interval, and display a banner in the UI to notify the
+    user that the app is not connected.
+- started using cargo-packaging
+
+-------------------------------------------------------------------
+Mon Aug 21 15:01:19 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 0.4.1
+  - Nodes are now allocated their proper size when the graph is zoomed, so that
+    they do not become smaller when the graph is zoomed in.
+  - When dragging a port to create a link, a link is now drawn from the port to
+    the cursor position to visualize the linking process. If hovering over a
+    compatible port, the link snaps to that port.
+  - Multiple internal improvements.
+
+-------------------------------------------------------------------
 Mon Feb 13 08:21:08 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 0.4.0
