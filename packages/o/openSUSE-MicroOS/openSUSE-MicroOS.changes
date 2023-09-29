@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 20 12:59:51 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Replace reference to the obsoleted ignition-dracut-grub2 package
+
+-------------------------------------------------------------------
 Thu Sep  7 11:34:33 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Use ignition platform autodection for the SelfInstall flavor

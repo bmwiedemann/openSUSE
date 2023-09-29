@@ -616,4 +616,12 @@
 - Use ignition platform autodection for the SelfInstall flavor (forwarded request 1109553 from favogt)</comment>
     <requestid>1109554</requestid>
   </revision>
+  <revision rev="65" vrev="65">
+    <srcmd5>6f2ded27068f6fd650138836e7a0944e</srcmd5>
+    <version>16.0.0</version>
+    <time>1696014793</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1113882</requestid>
+  </revision>
 </revisionlist>

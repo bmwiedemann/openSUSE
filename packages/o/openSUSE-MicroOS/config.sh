@@ -212,7 +212,7 @@ STARTMODE='auto'
 EOF
 
 	# Workaround: Force network-legacy, network-wicked is not usable (boo#1182227)
-	if rpm -q ignition-dracut-grub2; then
+	if rpm -q combustion; then
 		# Modify module-setup.sh, but undo the modification on the first call
 		mv /usr/lib/dracut/modules.d/40network/module-setup.sh{,.orig}
 		sed 's#echo "kernel-network-modules $network_handler"$#echo kernel-network-modules network-legacy; mv /usr/lib/dracut/modules.d/40network/module-setup.sh{.orig,}#' \
