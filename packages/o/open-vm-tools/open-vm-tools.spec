@@ -314,7 +314,7 @@ make
 %install
 %make_install
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 mkdir -p  %buildroot%_modulesloaddir
 echo vmw_vsock_vmci_transport > %buildroot%_modulesloaddir/vmw_vsock_vmci_transport.conf
 %endif
@@ -466,7 +466,7 @@ systemctl try-restart vmtoolsd.service || :
 %endif
 
 %files
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %_modulesloaddir/vmw_vsock_vmci_transport.conf
 %endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 0120300

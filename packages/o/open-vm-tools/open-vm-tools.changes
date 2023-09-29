@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 28 17:47:50 UTC 2023 - Kirk Allan <kallan@suse.com>
+
+- 15 sp4 currently uses open-vm-tools rpms from 15 sp3.  As such, enable
+  the spec file fix for bug (bsc#1205927) for 15 sp3 onwards.
+
+-------------------------------------------------------------------
 Thu Sep 21 14:02:20 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - open-vm-tools is built with containerinfo plugin from 15 sp3 onwards
