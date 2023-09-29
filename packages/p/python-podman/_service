@@ -1,4 +1,4 @@
 <services>
-  <service name="download_files" mode="disabled">
+  <service name="download_files" mode="manual">
   </service>
 </services>

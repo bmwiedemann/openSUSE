@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Sep 28 04:38:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.6.0:
+  * Bump version to v4.6.0 by @umohnani8 in #303
+  * Packit: mention downstream_package_name: python-podman in
+    config by @lsm5 in #306
+  * Bump version on main to 4.7.0-dev by @umohnani8 in #304
+  * Add read_write_tmpfs by @msisj in #302
+  * Update dependency containers/automation_images to v20230807 by
+    @renovate in #308
+  * remove direct logging to sys.stderr by @chnrxn in #311
+  * packit: Build PRs into default packit COPRs by @martinpitt in
+    #310
+  * Update dependency ubuntu to v22 by @renovate in #313
+  * Update dependency containers/automation_images to v20230809 by
+    @renovate in #314
+  * [skip-ci] Update tim-actions/commit-message-checker-with-regex
+    action to v0.3.2 by @renovate in #317
+  * Fix assertation error in manifest.py by @umohnani8 in #320
+  * Update dependency containers/automation_images to v20230816 by
+    @renovate in #316
+  * Fixes the secrets parameter, adds the secret_env parameter by
+    @andryyy in #319
+  * Fix image SCP when not providing quiet by @hpvb in #321
+  * Change default value for tty in exec_run by @maxi0604 in #324
+
+-------------------------------------------------------------------
 Mon Jul 24 13:21:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - use new Build macros
