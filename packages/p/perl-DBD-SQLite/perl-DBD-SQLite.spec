@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-SQLite
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name DBD-SQLite
 Name:           perl-DBD-SQLite
-Version:        1.72
+Version:        1.740.0
 Release:        0
+%define cpan_version 1.74
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Self Contained SQLite RDBMS in a DBI Driver
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 # PATCH-FIX-OPENSUSE use system sqlite
 Patch0:         perl-DBD-SQLite-use-external-sqlite3.patch
@@ -33,7 +34,16 @@ BuildRequires:  perl(DBI) >= 1.57
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.48
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(DBI) >= 1.57
-Requires:       perl(Test::More) >= 0.88
+Provides:       perl(DBD::SQLite) = 1.740.0
+Provides:       perl(DBD::SQLite::Constants)
+Provides:       perl(DBD::SQLite::GetInfo)
+Provides:       perl(DBD::SQLite::VirtualTable) = 1.740.0
+Provides:       perl(DBD::SQLite::VirtualTable::Cursor)
+Provides:       perl(DBD::SQLite::VirtualTable::FileContent)
+Provides:       perl(DBD::SQLite::VirtualTable::FileContent::Cursor)
+Provides:       perl(DBD::SQLite::VirtualTable::PerlData)
+Provides:       perl(DBD::SQLite::VirtualTable::PerlData::Cursor)
+%define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
 %if 0%{?sle_version} >= 140000 && 0%{?sle_version} <= 150400
@@ -79,7 +89,8 @@ currently many statement attributes are not implemented or are limited by
 the typeless nature of the SQLite database.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
 # MANUAL BEGIN
 %if 0%{?sle_version} >= 140000 && 0%{?sle_version} <= 150400
 patch -p1 --reverse <%{PATCH0}

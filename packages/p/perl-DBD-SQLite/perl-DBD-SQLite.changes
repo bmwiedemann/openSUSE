@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 20 03:06:10 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.74
+   see /usr/share/doc/packages/perl-DBD-SQLite/Changes
+
+  1.74 2023-09-20
+      - Switched to a production version
+
+  1.73_01 2023-07-09
+      - Upgraded SQLite to 3.42.0
+      - Add missing possible table_type values to POD (GH#105, dboehmer++)
+
+-------------------------------------------------------------------
 Wed Nov 23 17:38:35 UTC 2022 - Tina Müller <tina.mueller@suse.com>
 
 - Update perl-DBD-SQLite-use-external-sqlite3.patch (remove metadata
