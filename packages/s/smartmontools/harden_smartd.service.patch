@@ -1,8 +1,8 @@
-Index: smartmontools-7.2/smartd.service.in
+Index: smartmontools-7.4/smartd.service.in
 ===================================================================
---- smartmontools-7.2.orig/smartd.service.in
-+++ smartmontools-7.2/smartd.service.in
-@@ -4,6 +4,16 @@ Documentation=man:smartd(8) man:smartd.c
+--- smartmontools-7.4.orig/smartd.service.in
++++ smartmontools-7.4/smartd.service.in
+@@ -7,6 +7,16 @@ Documentation=man:smartd(8) man:smartd.c
  ConditionVirtualization=no
  
  [Service]
@@ -18,4 +18,4 @@ Index: smartmontools-7.2/smartd.service.in
 +# end of automatic additions 
  Type=notify
  EnvironmentFile=-/usr/local/etc/sysconfig/smartmontools
- ExecStart=/usr/local/sbin/smartd -n $smartd_opts
+ ExecStart=/usr/local/sbin/smartd -n -q never $smartd_opts

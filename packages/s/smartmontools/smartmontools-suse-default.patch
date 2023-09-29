@@ -1,7 +1,7 @@
 Index: smartd.conf
 ===================================================================
---- smartd.conf
-+++ smartd.conf
+--- a/smartd.conf
++++ b/smartd.conf
 @@ -9,6 +9,15 @@
  # device per line. Text after a hash (#) is ignored, and you may use
  # spaces and tabs for white space. You may use '\' to continue lines.

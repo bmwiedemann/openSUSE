@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 22 07:41:12 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Do not quit with an error when no drives to monitor are available (bsc#990406 bsc#1167051).
+- Add smartd_service_dont_quit.patch
+- Refresh harden_smartd.service.patch
+- Run through spec-cleaner, use autosetup
+
+-------------------------------------------------------------------
 Wed Aug  9 18:37:28 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 7.4:

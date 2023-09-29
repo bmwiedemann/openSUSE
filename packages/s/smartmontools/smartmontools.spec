@@ -20,10 +20,13 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
 %endif
-
 Name:           smartmontools
 Version:        7.4
 Release:        0
+Summary:        Monitor for SMART devices
+License:        GPL-2.0-or-later
+Group:          Hardware/Other
+URL:            https://www.smartmontools.org/
 Source:         https://sourceforge.net/projects/smartmontools/files/smartmontools/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://sourceforge.net/projects/smartmontools/files/smartmontools/%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        smartmontools.sysconfig
@@ -41,21 +44,19 @@ Source9:        smartd_generate_opts.service
 Patch4:         smartmontools-suse-default.patch
 # PATCH-FIX-OPENSUSE smartmontools-var-lock-subsys.patch sbrabec@suse.cz -- Do not use unsupported /var/lock/subsys.
 Patch10:        smartmontools-var-lock-subsys.patch
-Patch11:        harden_smartd.service.patch
+# PATCH-FIX-SLE smartd_service_dont_quit.patch bsc990406 bsc1167051 msuchanek@suse.de -- Do not quit when no drives are available.
+Patch11:        smartd_service_dont_quit.patch
+Patch12:        harden_smartd.service.patch
+BuildRequires:  gcc-c++
+BuildRequires:  libcap-ng-devel
+BuildRequires:  libselinux-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(systemd)
 Requires(pre):  %fillup_prereq
 # Needed by generate_smartd_opt:
 Requires(pre):  coreutils
-URL:            https://www.smartmontools.org/
-BuildRequires:  gcc-c++
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  libcap-ng-devel
-BuildRequires:  libselinux-devel
-BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
-Summary:        Monitor for SMART devices
-License:        GPL-2.0-or-later
-Group:          Hardware/Other
 
 %description
 SMARTmontools controls and monitors storage devices using the
@@ -71,13 +72,10 @@ specific" and "reserved" information as possible about disk drives. The
 commands man smartctl and man smartd will provide more information.
 
 %prep
-%setup -q
+%autosetup -p1
 cp -a %{SOURCE2} %{SOURCE5} .
 # Following line is handled by smartmontools-drivedb_h-update.sh.
 #cp -a %{SOURCE7} drivedb.h.new
-%patch4
-%patch10 -p1
-%patch11 -p1
 #
 # PATCH-FEATURE-OPENSUSE (sed on smartd.service.in) sbrabec@suse.cz -- Use generated smartd_opts (from SUSE sysconfig file). Systemd smartd.service cannot be smart enough to parse SUSE sysconfig file and generate smartd_opts on fly. And we do not want to launch shell just for it in every boot.
 sed "s:/usr/local/etc/sysconfig/smartmontools:%{_localstatedir}/lib/smartmontools/smartd_opts:" <smartd.service.in >smartd.service.in.new
@@ -114,12 +112,12 @@ export LDFLAGS="-pie"
 	--with-attributelog \
 	--with-nvme-devicescan
 
-make %{?_smp_mflags} BUILD_INFO='"(SUSE RPM)"'
-SERVICE=/usr/sbin/service
+%make_build BUILD_INFO='"(SUSE RPM)"'
+SERVICE=%{_sbindir}/service
 sed "s:@prefix@:%{_prefix}:g;s:@localstatedir@:%{_localstatedir}:g;s:@SERVICE@:$SERVICE:" <smartmontools.generate_smartd_opts.in >generate_smartd_opts
 
 %install
-%makeinstall
+%make_install
 mkdir -p %{buildroot}%{_prefix}/lib/smartmontools
 mkdir -p %{buildroot}%{_fillupdir}
 cp smartmontools.sysconfig %{buildroot}%{_fillupdir}/sysconfig.smartmontools
@@ -157,7 +155,7 @@ grep -q "^default_branch=\"[^\"]*\"$" update-smart-drivedb
 # Extract drivedb.h branch for installed version. We will need it in %%post.
 if test -f %{_sbindir}/update-smart-drivedb ; then
     BRANCH=
-    eval $(grep "^BRANCH=\"[^\"]*\"$" /usr/sbin/update-smart-drivedb)
+    eval $(grep "^BRANCH=\"[^\"]*\"$" %{_sbindir}/update-smart-drivedb)
     if test -n "$BRANCH" ; then
 	echo -n "$BRANCH" >%{_datadir}/smartmontools/drivedb.h.branch.rpmtemp
     fi
@@ -172,10 +170,10 @@ fi
 
 %post
 # First prepare sysconfig.
-%{fillup_only}
+%fillup_only
 # Up to Leap 42.3 and SLE 15 SP3 Maintenance Update there was a "Command" meta comment in the sysconfig file.
 # It is not needed any more, but fillup does not delete it. Do it explicitly. (bsc#1195785, bsc#1196103)
-sed -i '\@^##[[:space:]]*Command:[[:space:]]*/usr/lib/smartmontools/generate_smartd_opts$@d' /etc/sysconfig/smartmontools
+sed -i '\@^##[[:space:]]*Command:[[:space:]]*%{_prefix}/lib/smartmontools/generate_smartd_opts$@d' %{_sysconfdir}/sysconfig/smartmontools
 # Then generate initial %%{_localstatedir}/lib/smartmontools/smartd_opts needed by smartd.service.
 SMARTD_SKIP_INIT=1 %{_prefix}/lib/smartmontools/generate_smartd_opts
 # No start by default here.. belongs to -presets packages
@@ -190,7 +188,7 @@ if test -f %{_datadir}/smartmontools/drivedb.h.rpmsave ; then
     if test "$DRIVEDB_H_RELEASE_RPM" -lt "${DRIVEDB_H_RELEASE_SAVED:-0}" ; then
 	# If it is an update to the new branch, always replace the database.
 	# Extract drivedb.h branch for the new version to default_branch.
-	eval $(grep "^default_branch=\"[^\"]*\"$" /usr/sbin/update-smart-drivedb)
+	eval $(grep "^default_branch=\"[^\"]*\"$" %{_sbindir}/update-smart-drivedb)
 	OLD_BRANCH=
 	if test -f %{_datadir}/smartmontools/drivedb.h.branch.rpmtemp ; then
 	    OLD_BRANCH=$(<%{_datadir}/smartmontools/drivedb.h.branch.rpmtemp)
@@ -232,14 +230,13 @@ if test "$1" = 0 ; then
 fi
 
 %files
-%defattr(-, root, root)
 %doc %{_docdir}/%{name}
 %dir %{_datadir}/smartmontools
 %verify(not md5 size mtime) %{_datadir}/smartmontools/drivedb.h
 %ghost %{_datadir}/smartmontools/drivedb.h.error
 %ghost %{_datadir}/smartmontools/drivedb.h.lastcheck
 %ghost %{_datadir}/smartmontools/drivedb.h.old
-%doc %{_mandir}/man*/*
+%{_mandir}/man*/*
 %dir %{_localstatedir}/lib/smartmontools
 %ghost %{_localstatedir}/lib/smartmontools/smartd_opts
 %{_prefix}/lib/smartmontools
