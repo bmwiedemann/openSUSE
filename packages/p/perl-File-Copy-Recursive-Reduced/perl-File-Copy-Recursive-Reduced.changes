@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 17 03:06:52 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.007
+   see /usr/share/doc/packages/perl-File-Copy-Recursive-Reduced/Changes
+
+  0.007 Sat Sep 16 07:48:17 AM EDT 2023
+      - Corrections to better accommodate Windows path separators, mostly
+        provided by Håkon Hægland.
+
+-------------------------------------------------------------------
 Wed Apr  3 07:47:25 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - initial package 0.006

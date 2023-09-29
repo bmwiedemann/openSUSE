@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Copy-Recursive-Reduced
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,22 @@
 #
 
 
-Name:           perl-File-Copy-Recursive-Reduced
-Version:        0.006
-Release:        0
 %define cpan_name File-Copy-Recursive-Reduced
-Summary:        Recursive copying of files and directories within Perl 5 toolchain
+Name:           perl-File-Copy-Recursive-Reduced
+Version:        0.7.0
+Release:        0
+%define cpan_version 0.007
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/J/JK/JKEENAN/%{cpan_name}-%{version}.tar.gz
+Summary:        Recursive copying of files and directories within Perl 5 toolchain
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/J/JK/JKEENAN/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny)
 BuildRequires:  perl(Path::Tiny)
+Provides:       perl(File::Copy::Recursive::Reduced) = 0.7.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -42,11 +43,11 @@ library provides methods similar enough to that distribution's 'fcopy()',
 distributions often described as being part of the Perl toolchain.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -57,7 +58,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README Todo
 %license LICENSE
 
