@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 27 09:04:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to ABI version 12.12.2
+  * Match python-sip6-devel 6.7.10+
+
+-------------------------------------------------------------------
 Sat Jun 10 09:46:33 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
