@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 22 03:06:28 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.71
+   see /usr/share/doc/packages/perl-Graphics-Toolkit-Color/Changes
+
+  1.71     2023-09-21    lichtkind
+  -------
+      * = doc fixes
+      * ? typos mispellings, boken sentence
+      * ? added range def explanation
+      * ? simplified HEADINGS
+      * ? removed doc of deprecated methods
+
+-------------------------------------------------------------------
 Fri Aug 11 03:06:58 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.53
