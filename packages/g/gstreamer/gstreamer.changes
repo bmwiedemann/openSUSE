@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Sep 22 11:31:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.6:
+  + Highlighted bugfixes:
+    - Security fixes for the MXF demuxer and H.265 video parser
+    - Fix latency regression in H.264 hardware decoder base class
+    - androidmedia: fix HEVC codec profile registration and fix
+      coded_data handling
+    - decodebin3: fix switching from a raw stream to an encoded
+      stream
+    - gst-inspect: prettier and more correct signal and action
+      signals printing
+    - rtmp2: Allow NULL flash version, omitting the field, for
+      better RTMP server compatibility
+    - rtspsrc: better compatibility with buggy RTSP servers that
+      don't set a clock-rate
+    - rtpjitterbuffer: fix integer overflow that led to more
+      packets being declared lost than have been lost
+    - v4l2: fix video encoding regression on RPi and fix support
+      for left and top padding
+    - waylandsink: Crop surfaces to their display width height
+    - cerbero: Recognise Manjaro; add Rust support for MSVC ARM64;
+      cmake detection fixes
+    - Various bug fixes, memory leak fixes, and other stability and
+      reliability improvements
+  + gstreamer:
+    - gst-inspect: prettier and more correct signal printing, and
+      print action signals in g_signal_emit_by_name() format
+    - gst-launch: Disable fault signal handlers on macOS
+- Rebase reduce-required-meson.patch
+
+-------------------------------------------------------------------
 Tue Jul 25 11:02:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.5:
