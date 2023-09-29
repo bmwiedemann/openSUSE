@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 28 01:52:52 UTC 2023 - Tony Jones <tonyj@suse.com>
+
+- Fix build error,  change user/group pre handling to procedure specified
+  at https://en.opensuse.org/Packaging/Users_And_Groups
+
+-------------------------------------------------------------------
 Sun Apr 30 17:19:41 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Fix linking on Tumbleweed:

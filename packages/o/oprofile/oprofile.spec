@@ -46,8 +46,7 @@ BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  zlib-devel
-Requires(pre):  %{_sbindir}/groupadd
-Requires(pre):  %{_sbindir}/useradd
+Requires(pre):  pwdutils
 %ifarch ppc ppc64 ppc64le
 BuildRequires:  libpfm-devel >= 4.3.0
 %endif
@@ -129,12 +128,11 @@ rm -f %{buildroot}%{_libdir}/oprofile/libopagent.*a
 %fdupes %{buildroot}/%{_prefix}
 
 %pre
-getent group oprofile >/dev/null || \
-	%{_sbindir}/groupadd -r oprofile
+getent group oprofile >/dev/null || groupadd -r oprofile 2> /dev/null
 getent passwd oprofile >/dev/null || \
-	%{_sbindir}/useradd -r -g oprofile -d %{_localstatedir}/lib/empty \
+	useradd -r -g oprofile -d %{_localstatedir}/lib/empty \
 	-s /bin/false -c "Special user account to be used by OProfile" \
-	oprofile
+	oprofile 2> /dev/null
 
 %post -n libopagent1 -p /sbin/ldconfig
 %postun -n libopagent1 -p /sbin/ldconfig
