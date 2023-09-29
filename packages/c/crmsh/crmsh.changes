@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 28 03:29:51 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230928.7e006329:
+  * Fix: report: Pick 'gzip' as the first compress prog for cross-platform compatibility(bsc#1215438)
+
+-------------------------------------------------------------------
+Fri Sep 22 09:58:56 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230922.100fb67b:
+  * Fix: constants: Add several resource meta attributes (bsc#1215319)
+
+-------------------------------------------------------------------
 Tue Sep 19 23:02:25 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230920.7a060972:
