@@ -1725,4 +1725,12 @@ fixes its regression.
     <comment></comment>
     <requestid>1101935</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>31d83697f98524c4d7323300b0202331</srcmd5>
+    <version>3.1.3</version>
+    <time>1696014742</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.3</comment>
+    <requestid>1113789</requestid>
+  </revision>
 </revisionlist>
