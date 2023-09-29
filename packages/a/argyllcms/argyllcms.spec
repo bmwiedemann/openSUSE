@@ -1,7 +1,7 @@
 #
 # spec file for package argyllcms
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define tarname Argyll
 
 Name:           argyllcms
-Version:        2.3.1
+Version:        3.0.0
 Release:        0
 Summary:        ICC compatible color management system
 License:        AGPL-3.0-only AND GPL-2.0-or-later AND MIT
@@ -74,6 +74,7 @@ Summary:        Argyll CMS documentation
 # Does not really make sense without Argyll CMS itself
 Group:          System/X11/Utilities
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description doc
 The Argyll color management system supports accurate ICC profile creation for

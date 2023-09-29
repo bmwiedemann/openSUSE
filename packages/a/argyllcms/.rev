@@ -362,4 +362,50 @@ The spec file changes were made by obs-service-format_spec_file... (forwarded re
     <comment></comment>
     <requestid>1042305</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>63eb41daa07c9695c471e8f1cdfb0047</srcmd5>
+    <version>3.0.0</version>
+    <time>1696014785</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.0:
+  * Updated ccast/axTLS to get ChromCast working again with latest Google CC
+    operating software.
+  * Extensive re-write/re-factor of icclib to make it more future-proof.
+    See https://www.argyllcms.com/doc/ChangesSummary.html for details.
+  * Added ref/ColorCheckerPassport.ti2 and ref/ColorCheckerHalfPassport.ti2
+    to allow measuring ColorCheckerPassport with instrument.
+  * Fixed bug in Munki spectro hi-res mode with some instruments. Luminance
+    matching between normal and hi-res was sometimes quite poor.
+  * Added ARGYLL_CREATE_DISPLAY_PROFILE_WITHOUT_CHAD environment variable.
+  * Changed colprof -U flag to -u. Changed dispcal -J flag to -K to accommodate
+    a potential new flag for colprof and dispcal.
+  * Added workaround for bug in madHcNet64.dll32/64.dll which sometimes causes
+    failure.
+  * Added delay after USB set_config on OS X to help Spyder 3/4 on Ventura OS.
+  * Added -Y parameter to dispwin to override automatic patch delay.
+  * Changed i1d3 driver to cope with Rev. B &quot;0x83&quot; error robustly. This should 
+    fix any issues measuring low level Red only patch values on OLED displays,
+    but with slower measurements when this occurs.
+  * Added spotread -Y S option to save spectral sensitivity curves and added
+    corresponding support in i1d3 driver. This allows for comparison of different
+    instruments factory calibrations.
+  * Added a -h scale parameter to dispread, to allow the automatic instrument
+    calibration test patch values to be scaled down from their default 100%
+    value. This is useful with HDR displays.
+  * Added manifest to MSWindows executables to use UTF-8 code pages on Windows
+    1903 and later. This should improve non-ASCII filename and path handling.
+  * Added a Violet colorant to the targen colorant list.
+  * Fixed problem with OS X 64 bit backwards compatibility where it failed to
+    locate serial instruments when the binaries are run on OS X V12 or latter
+    machines.
+  * Fixed bug in i1Pro3 driver where it was not returning the correct
+    measurement conditions enum.
+  * Fixed spotread so that ambient measure for monochrome sources doesn't error
+    out due to bad CCT/VCT/VDT. Also change -T so that it suppresses CCT etc. if
+    ambient mode is used.
+  * Added hacky workaround to strange Mac M2/rosetta bug in del_i1proimp().
+- Make the argyllcms-doc package noarch.
+</comment>
+    <requestid>1113752</requestid>
+  </revision>
 </revisionlist>
