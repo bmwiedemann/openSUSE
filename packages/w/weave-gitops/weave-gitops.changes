@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Sep 28 04:51:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.33.0:
+  * Update README to point download link to 0.33.0
+  * Update docs for release 0.33.0
+  * Update the helm reference
+  * Update helm chart to 4.0.31 to use gitops 0.33.0
+  * Update javascript library version to 0.33.0
+  * Add templates to explorer supported kinds docs (#4042)
+  * Fixes the OIDC return_url param when a subpath is configured
+    (#4041)
+  * Implement style updates to Alert (#4039)
+  * increate height of the nav item to have padding on double line
+    item
+  * revert padding changes and wrap text to two lines instead of
+    one
+  * App page secrets error (#4021)
+  * reduce nav items padding to fit long term ex. progressive
+    delivery
+  * Resolves skipped backporting between versions 0.29.0 and 0.30.0
+    (#4037)
+  * Link clusterName in image automation details (#4035)
+  * Fix Suspend button width if the status message on a Source
+    details page is too short.
+  * Removes error, adds info (#4031)
+  * Add noText prop to kubeStatusIndicator (#4029)
+  * Fix 'cluster not found' error when requesting source from
+    automation `sourceRef` (#4028)
+  * Import `ImageAutomation` components to be used in EE (#4025)
+  * updating explorer kind docs to reflect latest changes
+  * Document group and user prefix configuration. (#4026)
+  * Fix the OIDC login button when using a RoutePrefix. (#4022)
+  * Add GitOpsSets documentation. (#3991)
+  * Preserve format when copy/paste yaml file (#4009)
+  * Move Docs link from sidebar to top of page (#4015)
+  * Adds badge and updates links
+  * ci: Add OpenSSF GH action
+  * Updates for 0.32.0 (#4010)
+
+-------------------------------------------------------------------
 Thu Sep 14 04:54:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.32.0:

@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           weave-gitops
-Version:        0.32.0
+Version:        0.33.0
 Release:        0
 Summary:        Weave Gitops CLI
 License:        MPL-2.0
@@ -73,8 +73,7 @@ BuildArch:      noarch
 Fish command line completion support for %{name}.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p1 -a 1
 
 %build
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
