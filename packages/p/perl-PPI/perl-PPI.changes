@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 23 03:09:22 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.277
+   see /usr/share/doc/packages/perl-PPI/Changes
+
+  1.277   2023-09-22 09:12:48Z
+  	Summary:
+  	- Parse prototypes as literal quotes, enables parens and newlines in protos
+  	- Fix false positive detection of labels (GH#289) (Dan Church)
+
+  	Details:
+  	- Wrapped most Document->new calls in tests with automatic checks
+
+-------------------------------------------------------------------
 Wed Jul 20 03:07:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.276
