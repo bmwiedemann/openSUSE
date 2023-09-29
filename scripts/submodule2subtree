@@ -7,6 +7,7 @@ test -d $p || exit 2
 rm -rf $p
 git rm $p
 git commit -m "Drop $pkg submodule"
+grep '"$pkg"' /home/opensuserabbit/dumprabbit.json | tail -1 | scripts/rabbithandle-single.py
 git subtree add -P $p https://code.opensuse.org/package/$pkg master
-(cd /data/openSUSE-test/$p/ && git pull )
+(cd /data/openSUSE-test/$p/ && rm -rf $p && git pull )
 cp -a /data/openSUSE-test/$p/.git $p/
