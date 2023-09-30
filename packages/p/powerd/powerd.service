@@ -1,0 +1,23 @@
+[Unit]
+Description=Power Daemon
+Documentation=man:powerd(8)
+ConditionPathExists=/etc/powerd.conf
+
+[Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
+Type=forking
+PIDFile=/var/run/powerd.pid
+ExecStart=/sbin/powerd
+
+[Install]
+WantedBy=multi-user.target
