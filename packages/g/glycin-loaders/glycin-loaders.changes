@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon Sep 18 22:31:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.1:
+  + Distribute correct Cargo.lock for glycin-loaders tarballs.
+
+-------------------------------------------------------------------
+Fri Sep 15 09:31:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to full cargo packaging, add service and setup vendoring.
+
+-------------------------------------------------------------------
+Thu Sep 14 18:31:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.0:
+  + Update dependencies.
+
+-------------------------------------------------------------------
+Sun Sep  3 21:28:52 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 0.1.rc:
+  + No visible changes for the user.
+
+-------------------------------------------------------------------
+Wed Aug 23 18:54:59 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.1.beta.4:
+  + Relicense under MPL-2.0 OR LGPL-2.1-or-later
+  + Add symlinks for license files in crates
+  + Add cairo dependency for svg loader
+  + HEIC: Fix filetype detection in config
+  + tests:
+    - Add HEIC tests
+    - Add option to skip image formats in tests
+    - Run required install before tests (can be disabled)
+- Add pkgconfig(cairo) BuildRequires, new dependency.
+- Pass explicit
+  loaders=glycin-heif,glycin-image-rs,glycin-jxl,glycin-svg to
+  meson, ensure we build all the loaders.
+- Update License tag following upstreams relicense.
+
+-------------------------------------------------------------------
+Tue Aug 22 14:01:24 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Initial package, version 0.1.beta.3.
