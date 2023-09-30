@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d4c70a7cc409943ace5e9f951d4718f</srcmd5>
+    <version>1.26.9+rke2r1</version>
+    <time>1695209415</time>
+    <user>dimstar_suse</user>
+    <comment>new package rke2-1.26: rke2 package that stays on Kubernetes version 1.26.x</comment>
+    <requestid>1112320</requestid>
+  </revision>
+</revisionlist>
