@@ -1,0 +1,60 @@
+#!/bin/sh
+(
+echo "# Waiting for Internet connection"
+until /usr/bin/ping -q -c 1 flathub.org; do sleep 1; done
+echo "10"
+
+echo "# Adding Flathub Repository"
+/usr/bin/flatpak remote-add --user --if-not-exists flathub /usr/share/aeon/flathub.flatpakrepo
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Adding Flathub Repo Failed"
+        exit 1
+fi
+echo "20"
+
+echo "# Installing Firefox"
+/usr/bin/flatpak install --user --noninteractive flathub org.mozilla.firefox
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Firefox Failed"
+        exit 1
+fi
+
+echo "40"
+echo "# Installing Calculator"
+/usr/bin/flatpak install --user --noninteractive flathub org.gnome.Calculator
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Calculator Failed"
+        exit 1
+fi
+
+echo "60"
+echo "# Installing Text Editor"
+/usr/bin/flatpak install --user --noninteractive flathub org.gnome.TextEditor
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Text Editor Failed"
+        exit 1
+fi
+
+echo "80"
+echo "# Installing Extension Manager"
+/usr/bin/flatpak install --user --noninteractive flathub com.mattjakeman.ExtensionManager
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Extension Manager Failed"
+        exit 1
+fi
+
+echo "100"
+echo "# Cleaning up"
+rm ~/.config/autostart/aeon-firstboot.desktop
+) |
+        zenity --progress --title="Aeon Firstboot" --percentage=0 --auto-close --no-cancel --width=300
+
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Firstboot Configuration Error"
+fi

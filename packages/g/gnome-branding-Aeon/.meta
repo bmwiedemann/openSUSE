@@ -1,0 +1,5 @@
+<package name="gnome-branding-Aeon" project="openSUSE:Factory">
+  <title>Aeon Default Settings</title>
+  <description>This branding-style package sets default applications in Aeon</description>
+  <devel project="devel:microos:aeon" package="gnome-branding-Aeon"/>
+</package>
