@@ -1,0 +1,6 @@
+<package name="tecla-keyboard-layout-viewer" project="openSUSE:Factory">
+  <title>Tecla is a keyboard layout viewer</title>
+  <description>A keyboard layout viewer from the GNOME project.</description>
+  <devel project="GNOME:Factory" package="tecla-keyboard-layout-viewer"/>
+  <url>https://gitlab.gnome.org/GNOME/tecla</url>
+</package>
