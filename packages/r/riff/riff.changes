@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Sun Sep 24 18:20:49 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.27.0:
+  * Fix crash when you remove a line starting with "--" and passed
+    the diff to riff, riff would crash #51
+    As a side effect, riff will now be pickier with its input. If
+    you modify your diffs manually, beware.
+
+-------------------------------------------------------------------
+Sun Sep 17 12:34:14 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.26.0:
+  * Add -f flag for specifying a diff file to highlight
+  * With this release there are two ways of highlighting a particular
+    diff file:
+    + riff < file.diff
+    + riff --file=file.diff
+  * Command line parsing has been updated to use Clap, which will
+    make help output look somewhat different. Should also fix some
+    options parsing corner cases.
+
+-------------------------------------------------------------------
+Mon Sep 11 15:26:01 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of riff 2.25.2 for openSUSE
