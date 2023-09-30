@@ -2,7 +2,11 @@
 pkg=$1
 [ -n "$1" ] || exit 1
 first=$(echo $pkg | cut -c1)
-p=packages/$first/$pkg #FIXME lib*
+p=packages/$first/$pkg
+if ! test -d $p ; then # handle lib*
+    first=$(echo $pkg | cut -c1-4)
+    p=packages/$first/$pkg
+fi
 test -d $p || exit 2
 rm -rf $p
 git rm $p

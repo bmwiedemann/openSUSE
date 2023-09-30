@@ -38,5 +38,6 @@ for i in 1 ; do git pushf -u origin master ||: ; done
 popd
 scripts/pagure-set-projectoptions $pkg
 rm -rf ~/openSUSE/$p/.git
+mkdir -p ~/openSUSE/$p
 cp -al $p/.git ~/openSUSE/$p
 git pull --rebase prod master
