@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3aad7cf00bed7e5ad787ba92a19b6941</srcmd5>
+    <version>0.15</version>
+    <time>1695209431</time>
+    <user>dimstar_suse</user>
+    <comment>This package is required for openQA OCR capabilities. C.f. https://github.com/os-autoinst/os-autoinst/pull/2276</comment>
+    <requestid>1112337</requestid>
+  </revision>
+</revisionlist>
