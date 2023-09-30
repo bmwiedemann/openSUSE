@@ -1,0 +1,5 @@
+<package name="chezscheme" project="openSUSE:Factory">
+  <title>Chez Scheme</title>
+  <description>Chez Scheme is both a programming language and an implementation of that language, with supporting tools and documentation. </description>
+  <devel project="devel:languages:misc" package="chezscheme"/>
+</package>

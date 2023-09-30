@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Mon Sep 11 15:48:00 UTC 2023 - Xu Zhao <i@xuzhao.net>
+
+- update to version 9.6.2
+  * Updates and bug fixes since April 25, 2022.
+
+-------------------------------------------------------------------
+Sun Jul 23 23:48:16 UTC 2023 - Xu Zhao <i@xuzhao.net>
+
+- update to version 9.5.8a
+  * Updates and bug fixes since November 5, 2021.
+
+-------------------------------------------------------------------
+Mon May 30 03:07:07 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- update to version 9.5.8
+
+-------------------------------------------------------------------
+Tue Mar 29 12:11:43 UTC 2022 - Xu Zhao <i@xuzhao.net>
+
+- update to version 9.5.6
+
+-------------------------------------------------------------------
+Mon Nov 16 13:45:19 UTC 2020 - Xu Zhao <i@xuzhao.net>
+
+- update to version 9.5.4
+
+-------------------------------------------------------------------
+Mon May 13 22:49:11 UTC 2019 - Rony Reis <reis@sapo.pt>
+
+- updated version to 9.5.2
+
+-------------------------------------------------------------------
+Sun Jan 13 18:29:15 UTC 2019 - Xu Zhao <i@xuzhao.net>
+
+- updated version to 9.5
+- updated release notes and fixed user's guide overfull hbox.
+  * release-notes.stex, syntax.stex
+- updated install target to do something more sensible release_notes/Makefile
+
