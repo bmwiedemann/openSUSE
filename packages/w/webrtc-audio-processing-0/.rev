@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50bed665ff886f41a6b8a88c0523b1c9</srcmd5>
+    <version>0.3.1</version>
+    <time>1696014854</time>
+    <user>anag+factory</user>
+    <comment>Old 0.3.1 version of webrtc-audio-processing for some
+packages in Factory (dino and baresip at least) which
+don't work with webrtc-audio-processing 1.x</comment>
+    <requestid>1114291</requestid>
+  </revision>
+</revisionlist>
