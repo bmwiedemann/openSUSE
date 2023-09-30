@@ -1,0 +1,5 @@
+<package name="sirilic" project="openSUSE:Factory">
+  <title></title>
+  <description>SiriLic (Siril Image Converter) is a software for preparing acquisition files (raw, Offset, Flat and Dark) for processing with SiriL software.</description>
+  <devel project="Application:Astrophotography" package="sirilic"/>
+</package>
