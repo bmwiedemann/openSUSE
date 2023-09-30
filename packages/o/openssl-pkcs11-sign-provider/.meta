@@ -1,0 +1,5 @@
+<package name="openssl-pkcs11-sign-provider" project="openSUSE:Factory">
+  <title></title>
+  <description>OpenSSL Provider for asymmetric operations with private PKCS#11 keys</description>
+  <devel project="security:tls" package="openssl-pkcs11-sign-provider"/>
+</package>
