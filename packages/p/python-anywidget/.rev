@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7ad6a3691ce2824f27ec200ece70b898</srcmd5>
+    <version>0.6.3</version>
+    <time>1694113984</time>
+    <user>anag+factory</user>
+    <comment>- Initial release of 0.6.3.</comment>
+    <requestid>1109382</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2bc323e756242e6c8fe4e45efc433c0c</srcmd5>
+    <version>0.6.5</version>
+    <time>1695664953</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.5
+  * fix: disable auto-reloading in dist-packages (#276)
+  * When the package is located in dist-packages, auto-reloading is
+    now disabled. This prevents unnecessary warnings when the
+    package is used in environments like Google Colab which are
+    likely non-development installs.
+- Release 0.6.4
+  * fix: Keep support for binary traitlets (#274)
+  * Uses structuredClone to ensure binary data is automatically
+    serialized, correctly. Applies changes reverted in ipywidgets
+    8.1.1.</comment>
+    <requestid>1113219</requestid>
+  </revision>
+</revisionlist>
