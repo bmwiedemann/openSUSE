@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Thu Sep 14 06:13:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package operator-sdk: SDK for building Kubernetes
+  applications. Provides high level APIs, useful abstractions, and
+  project scaffolding.
