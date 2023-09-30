@@ -1,0 +1,184 @@
+-------------------------------------------------------------------
+Thu Sep  7 16:32:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.4
+  * Fixed an issue with DNS-SD advertisements when the server name
+    was set to "localhost".
+  * Fixed an issue with hostname change detection when using
+    mDNSResponder.
+  * Fixed an issue with authentication cookie comparisons for
+    simple password mode.
+  * Updated TLS certificate generation to support more types of
+    certificates and to use modern OpenSSL/GNU TLS APIs.
+
+-------------------------------------------------------------------
+Sat May  6 19:11:17 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.2
+  * Fixed PWG ImageBox values in raster page header.
+  * Fixed a bug in the "ipp-attribute-fidelity" support.
+  * Fixed printing of 1/2/4-bit grayscale PNG images.
+  * Fixed a potential buffer overflow in the logging code.
+  * Fixed reporting of "xxx-k-octet-supported" attributes.
+  * Updated the Wi-Fi configuration page to support hidden networks
+    and to reload after 30 seconds.
+
+-------------------------------------------------------------------
+Sat Dec 31 17:25:45 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.1
+  * Fixed auto-add of USB printers
+  * Updated "ipp-attribute-fidelity" support
+  * Reduced sleep interval for USB gadget initialization
+
+-------------------------------------------------------------------
+Fri Dec  2 15:37:17 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.0
+  * Added debug logging for device management.
+  * Added support for job hold and release.
+  * Added papplLocGetDefaultMediaSizeName function to get the
+    default media size for the current country.
+  * Added support for localized banners at the top of printer and
+    system web pages.
+  * Added support for PNG image scaling using embedded resolution
+    information.
+  * Added timer APIs to manage periodic tasks, APIs to limit the
+    max size of JPEG/PNG.
+  * Added support for network configuration via callbacks,
+  * Updated PAPPL to conform to the new prototype PWG 5100.13
+    specification
+
+-------------------------------------------------------------------
+Thu Oct 13 09:45:15 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.3
+  * Fixed a bug in the TLS upgrade logic.
+  * Fixed a potential memory underflow with USB device IDs.
+  * Fixed web interface support for vendor text options.
+
+-------------------------------------------------------------------
+Wed Sep 21 23:54:54 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.2
+  * Added debug logging for device management.
+  * Fixed a device race condition with job processing.
+  * Fixed a potential value overflow when reading SNMP OIDs.
+  * Fixed more CUPS 2.2.x compatibility issues.
+  * Fixed a 100% CPU usage bug when cleaning the job history.
+  * Fixed the default values of --with-papplstatedir and
+    --with-papplsockdir to use the localstatedir value.
+  * Fixed a initialization timing issue with USB gadgets on newer
+    Linux kernels.
+
+-------------------------------------------------------------------
+Thu May 26 19:50:23 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.1
+  * Fixed a bug in the max-clients support code.
+  * Fixed corruption in the English localization file.
+
+-------------------------------------------------------------------
+Mon May 16 11:02:57 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * Added `papplMainloopShutdown` API to trigger a shutdown of the
+    system that was started by `papplMainloop`.
+  * Fixed mapping of MIME media types to IEEE-1284 Command Set values.
+  * Fixed a crash bug when no printers are added.
+  * Fixed compatibility issues with libcups3.
+- Drop 0001-Define-_FILE_OFFSET_BITS-64-on-linux-Issue-193.patch
+  (merged)
+
+-------------------------------------------------------------------
+Mon Mar  7 18:27:49 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-Define-_FILE_OFFSET_BITS-64-on-linux-Issue-193.patch
+
+-------------------------------------------------------------------
+Sun Feb 13 23:21:17 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.0
+  * Support for Wi-Fi configuration, IPP-USB, printer driver
+    lookup and auto-add functionality.
+
+-------------------------------------------------------------------
+Mon Jun 14 16:11:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.3
+  * Fixed using the "auto" driver without an IEEE-1284 device ID
+    string.
+  * The DNS-SD support functions did not handle when the Avahi
+    daemon is not running.
+
+-------------------------------------------------------------------
+Sat Dec 12 04:55:54 UTC 2020 - aloisio@gmx.com
+
+- Update to version 1.0.0
+  * papplSystemLoadState would not load printers whose device
+     IDs contained the # character.
+  * Passing "auto" for the driver name would cause a crash if
+    there was no auto-add callback.
+  * Added papplPrinterGetPath API to get the path for a
+    printer web page.
+  * The papplPrinterAddLink and papplSystemAddLink functions
+    now accept an "options" argument instead of the "secure"
+    boolean in order to allow links to be added to multiple
+    places on the web interface in addition to requesting a
+    secure (HTTPS) link.
+  version 1.0rc1:
+  * Added IEEE-1284 device ID to argument list for printer
+    driver callbacks.
+  * Documentation updated
+  * Printers discovered via DNS-SD now report their IEEE-1284
+    device ID string.
+  * The "auto-add" callback is now part of the system's printer
+    driver interface, allowing IPP, web, and command-line
+    clients to access it.
+  * Now save state after deleting a printer.
+  * Now check whether a named printer already exists.
+  * Support for "output-bin-default" was missing from the web
+    interface.
+  * Fixed support for vendor options at the command-line.
+  * The main loop now shows an error message if an option is
+    provided after "-o" without a space.
+  * Fixed test page and identify buttons.
+  * Code cleanup.
+  * Boolean vendor options are now shown as checkboxes.
+  * Made several improvements to the web interface for adding
+    printers.
+  * papplSystemLoadState no longer crashes when it cannot
+    create a printer.
+  * Fixed a crash bug in the "autoadd" command provided by
+    papplMainloop.
+  * Added a printer creation callback to
+    papplSystemSetPrinterDrivers that is run after a printer
+    is created.
+  * Added the "path" value for the DNS-SD printer web page, and
+    added a registration for the system web page in multi-queue
+    mode.
+  * papplDeviceRead now has a 100ms timeout for USB and
+    network connections.
+  * Implemented back-channel and status updates for the USB
+    printer gadget.
+  * Finished implementation of test suite for major code
+    paths/job processing functionality.
+  * Fixed a bug in the log rotation code.
+  * Fixed some threading bugs with the various object lists
+    managed by the system.
+
+-------------------------------------------------------------------
+Thu Nov 12 07:52:25 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0b1
+  * Drop 10-second timeout for USB data.
+  * Add start of USB ethernet & mass storage gadget support.
+  * Make sure an unknown number of pages does not disable
+    duplex printing.
+  * Pad/crop PWG/Apple raster data rather than erroring out.
+
+-------------------------------------------------------------------
+Tue Oct 13 21:40:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 0~git378 / 2c2b86eb9e9)
+  for build.opensuse.org.
