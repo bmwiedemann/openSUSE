@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Sep 14 04:55:23 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.0:
+  * Minor Changes
+    - Add config option for ANSIBLE_COLLECTIONS_PATH (#163)
+      @Ruchip16
+    - Add tests for inventory (#164) @Ruchip16
+    - Handle test markers (#167) @Ruchip16
+    - todo fixes & __getattr__ method fix (#162) @Ruchip16
+  * Bugfixes
+    - Precommit update reqs (#172) @cidrblock
+    - Handle test markers (#167) @Ruchip16
+
+-------------------------------------------------------------------
+Thu Sep  7 10:26:45 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-pytest-ansible: A pytest plugin that enables
+  the use of ansible in tests, enables the use of pytest as a
+  collection unit test runner, and exposes molecule scnearios
+  through a pytest fixture
