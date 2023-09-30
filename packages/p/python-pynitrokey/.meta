@@ -1,0 +1,18 @@
+<package name="python-pynitrokey" project="openSUSE:Factory">
+  <title>Python Library for Nitrokey devices</title>
+  <description>A command line interface for the Nitrokey FIDO2, Nitrokey Start, Nitrokey 3 and NetHSM.
+
+## Quickstart
+$ nitropy --help                                                                                                                                                                             
+
+## Documentation
+
+The user documentation for the `nitropy` CLI is available on [docs.nitrokey.com](https://docs.nitrokey.com/software/nitropy/index.html). See also the product documentation for more information on the available commands:
+
+- [Nitrokey 3](https://docs.nitrokey.com/nitrokey3/index.html)
+- [Nitrokey FIDO2](https://docs.nitrokey.com/fido2/index.html)
+- [Nitrokey Start](https://docs.nitrokey.com/start/index.html)
+- [NetHSM](https://docs.nitrokey.com/nethsm/index.html)</description>
+  <devel project="security" package="python-pynitrokey"/>
+  <url>https://github.com/Nitrokey/pynitrokey</url>
+</package>
