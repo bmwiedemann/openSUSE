@@ -701,4 +701,12 @@ source service setup which messed up my spec file.
   * wm2: Update for usrmerge (boo#1214428) (forwarded request 1109138 from mwilck)</comment>
     <requestid>1109139</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>bdd3b865f9093967b2b127c73ee2aefb</srcmd5>
+    <version>16.0.36</version>
+    <time>1696188105</time>
+    <user>anag+factory</user>
+    <comment>* modprobe.d: Blacklist cls_tcindex module (bsc#1210335, CVE-2023-1829) (forwarded request 1114420 from mwilck)</comment>
+    <requestid>1114421</requestid>
+  </revision>
 </revisionlist>
