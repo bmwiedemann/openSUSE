@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 27 12:10:42 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.19
+  - Add .acquire_read_lock, .release_read_lock, .acquire_write_lock,
+    and .release_write_lock methods to the inter thread
+    ReaderWriterLock as was promised in the README.
+  - Remove support for python 3.7 and pypy 3.7. It should still work,
+    but is no longer tested.
+  - Add support for pypy 3.10 and python 3.11
+- Changes from 0.18
+  - Reshuffle the process lock code and properly document it.
+  - Revamp the docs and switch from sphinx to mkdocs
+  - Remove difficult to use tread lock features from docs
+  - Bring back support for eventlet spawn_n
+  - Remove support for python3.6. It should still work, but is no
+    longer tested.
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Sep 19 08:15:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.17.3:

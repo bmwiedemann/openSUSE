@@ -105,4 +105,12 @@
   * Move from nosetest to pytest and cleanup testing infrastructure</comment>
     <requestid>1004619</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>643a1b60bad8bb6a45f5236997ad91ff</srcmd5>
+    <version>0.19</version>
+    <time>1696188131</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114014</requestid>
+  </revision>
 </revisionlist>
