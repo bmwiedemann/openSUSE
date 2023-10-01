@@ -1,7 +1,7 @@
 #
 # spec file for package nbdkit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64
 
 Name:           nbdkit
-Version:        1.32.2
+Version:        1.36.0
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -116,6 +116,7 @@ Provides:       %{name}-info-plugin = %{version}-%{release}
 Provides:       %{name}-memory-plugin = %{version}-%{release}
 Provides:       %{name}-null-plugin = %{version}-%{release}
 Provides:       %{name}-ondemand-plugin = %{version}-%{release}
+Provides:       %{name}-ones-plugin = %{version}-%{release}
 Provides:       %{name}-partitioning-plugin = %{version}-%{release}
 Provides:       %{name}-pattern-plugin = %{version}-%{release}
 Provides:       %{name}-random-plugin = %{version}-%{release}
@@ -147,6 +148,8 @@ nbdkit-memory-plugin        A virtual memory plugin.
 nbdkit-null-plugin          A null (bitbucket) plugin.
 
 nbdkit-ondemand-plugin      Creates filesystems on demand.
+
+nbdkit-ones-plugin          Fill disk with repeated 0xff or other bytes.
 
 nbdkit-pattern-plugin       Fixed test pattern.
 
@@ -181,6 +184,7 @@ This package contains example plugins for %{name}.
 
 # The plugins below have non-trivial dependencies are so are
 # packaged separately.
+
 %package cdi-plugin
 Summary:        Containerized Data Import plugin for %{name}
 
@@ -285,6 +289,7 @@ Provides:       %{name}-cow-filter = %{version}-%{release}
 Provides:       %{name}-ddrescue-filter = %{version}-%{release}
 Provides:       %{name}-delay-filter = %{version}-%{release}
 Provides:       %{name}-error-filter = %{version}-%{release}
+Provides:       %{name}-evil-filter = %{version}-%{release}
 Provides:       %{name}-exitlast-filter = %{version}-%{release}
 Provides:       %{name}-exitwhen-filter = %{version}-%{release}
 Provides:       %{name}-exportname-filter = %{version}-%{release}
@@ -335,6 +340,8 @@ nbdkit-ddrescue-filter      Filter for serving from ddrescue dump.
 nbdkit-delay-filter         Injects read and write delays.
 
 nbdkit-error-filter         Injects errors.
+
+nbdkit-evil-filter          Add random data corruption to reads.
 
 nbdkit-exitlast-filter      Exits on last client connection.
 
@@ -500,6 +507,8 @@ for f in cc cdi torrent; do
 done
 rm -f %{buildroot}/%{_libdir}/%{name}/plugins/nbdkit-S3-plugin
 rm -f %{buildroot}/%{_mandir}/man1/nbdkit-S3-plugin.1*
+rm -f %{buildroot}/%{_libdir}/%{name}/filters/nbdkit-qcow2dec-filter.so
+rm -f %{buildroot}/%{_mandir}/man1/nbdkit-qcow2dec-filter.1*
 
 %check
 # exit 0
@@ -561,6 +570,7 @@ export PATH=/usr/sbin:$PATH
 %{_libdir}/%{name}/plugins/nbdkit-memory-plugin.so
 %{_libdir}/%{name}/plugins/nbdkit-null-plugin.so
 %{_libdir}/%{name}/plugins/nbdkit-ondemand-plugin.so
+%{_libdir}/%{name}/plugins/nbdkit-ones-plugin.so
 %{_libdir}/%{name}/plugins/nbdkit-partitioning-plugin.so
 %{_libdir}/%{name}/plugins/nbdkit-pattern-plugin.so
 %{_libdir}/%{name}/plugins/nbdkit-random-plugin.so
@@ -577,6 +587,7 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-memory-plugin.1*
 %{_mandir}/man1/nbdkit-null-plugin.1*
 %{_mandir}/man1/nbdkit-ondemand-plugin.1*
+%{_mandir}/man1/nbdkit-ones-plugin.1*
 %{_mandir}/man1/nbdkit-partitioning-plugin.1*
 %{_mandir}/man1/nbdkit-pattern-plugin.1*
 %{_mandir}/man1/nbdkit-random-plugin.1*
@@ -635,6 +646,7 @@ export PATH=/usr/sbin:$PATH
 %{_libdir}/%{name}/filters/nbdkit-ddrescue-filter.so
 %{_libdir}/%{name}/filters/nbdkit-delay-filter.so
 %{_libdir}/%{name}/filters/nbdkit-error-filter.so
+%{_libdir}/%{name}/filters/nbdkit-evil-filter.so
 %{_libdir}/%{name}/filters/nbdkit-exitlast-filter.so
 %{_libdir}/%{name}/filters/nbdkit-exitwhen-filter.so
 %{_libdir}/%{name}/filters/nbdkit-exportname-filter.so
@@ -672,6 +684,7 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-ddrescue-filter.1*
 %{_mandir}/man1/nbdkit-delay-filter.1*
 %{_mandir}/man1/nbdkit-error-filter.1*
+%{_mandir}/man1/nbdkit-evil-filter.1*
 %{_mandir}/man1/nbdkit-exitlast-filter.1*
 %{_mandir}/man1/nbdkit-exitwhen-filter.1*
 %{_mandir}/man1/nbdkit-exportname-filter.1*

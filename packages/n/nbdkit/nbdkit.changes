@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 29 17:40:05 UTC 2023 - jfehlig@suse.com
+
+- Update to version 1.36.0:
+  * Version 1.36.0.
+  * evil: Fix typo in man page
+  * tests: Rename test-curl-options.sh and add more tests
+  * docs: Finalize release notes for release tomorrow
+  * curl: Use new curl_multi_get_handles API to simplify code
+  * curl: Store pointer from curl easy handle to our struct curl_handle
+  * README: Recommend new syntax for ASAN_OPTIONS
+  * fuzzing/README: Remove advice to set ASAN_OPTIONS
+  * docs: Small tweaks to the release notes
+  * docs: Add outline release notes for forthcoming nbdkit 1.36
+  * tests: Add some consistency checks of the tests themselves
+  * tests/test-evil-cosmic.sh: Use requires_nbdcopy
+  * tests/test-nozero.sh: Test uses nbdsh -u but does not declare requirement
+  * tests: Fix a couple more tests that are missing requires_run
+  * docs: Expand Network Block Device (for NBD) in title
+
+-------------------------------------------------------------------
 Thu Oct 13 21:21:00 UTC 2022 - jfehlig@suse.com
 
 - Update to version 1.32.2:

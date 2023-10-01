@@ -102,4 +102,27 @@ near future.</comment>
     <comment></comment>
     <requestid>1011046</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f15838359e09c55d43848c869de4fa46</srcmd5>
+    <version>1.36.0</version>
+    <time>1696188142</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.36.0:
+  * Version 1.36.0.
+  * evil: Fix typo in man page
+  * tests: Rename test-curl-options.sh and add more tests
+  * docs: Finalize release notes for release tomorrow
+  * curl: Use new curl_multi_get_handles API to simplify code
+  * curl: Store pointer from curl easy handle to our struct curl_handle
+  * README: Recommend new syntax for ASAN_OPTIONS
+  * fuzzing/README: Remove advice to set ASAN_OPTIONS
+  * docs: Small tweaks to the release notes
+  * docs: Add outline release notes for forthcoming nbdkit 1.36
+  * tests: Add some consistency checks of the tests themselves
+  * tests/test-evil-cosmic.sh: Use requires_nbdcopy
+  * tests/test-nozero.sh: Test uses nbdsh -u but does not declare requirement
+  * tests: Fix a couple more tests that are missing requires_run
+  * docs: Expand Network Block Device (for NBD) in title</comment>
+    <requestid>1114450</requestid>
+  </revision>
 </revisionlist>
