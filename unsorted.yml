@@ -2476,6 +2476,8 @@ unsorted:
   - coredns-for-k8s1.26-extras 
   - coredns-for-k8s1.27 
   - coredns-for-k8s1.27-extras 
+  - coredns-for-k8s1.28 
+  - coredns-for-k8s1.28-extras 
   - corepack20 
   - coreutils-single 
   - coreutils-testsuite 
@@ -3638,6 +3640,7 @@ unsorted:
   - etcd-for-k8s1.25 
   - etcd-for-k8s1.26 
   - etcd-for-k8s1.27 
+  - etcd-for-k8s1.28 
   - etcdctl 
   - etcdutl 
   - etckeeper 
@@ -9552,6 +9555,17 @@ unsorted:
   - kubernetes1.27-kubelet-common 
   - kubernetes1.27-proxy 
   - kubernetes1.27-scheduler 
+  - kubernetes1.28-apiserver 
+  - kubernetes1.28-client 
+  - kubernetes1.28-client-bash-completion 
+  - kubernetes1.28-client-common 
+  - kubernetes1.28-client-fish-completion 
+  - kubernetes1.28-controller-manager 
+  - kubernetes1.28-kubeadm 
+  - kubernetes1.28-kubelet 
+  - kubernetes1.28-kubelet-common 
+  - kubernetes1.28-proxy 
+  - kubernetes1.28-scheduler 
   - kubescape 
   - kubeseal 
   - kubesec 
