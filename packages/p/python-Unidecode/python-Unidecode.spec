@@ -1,7 +1,7 @@
 #
 # spec file for package python-Unidecode
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Unidecode
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        ASCII transliterations of Unicode text
 License:        GPL-2.0-or-later
@@ -97,7 +96,8 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog README.rst
-%{python_sitelib}/*
+%{python_sitelib}/Unidecode-%{version}*-info
+%{python_sitelib}/unidecode
 %python_alternative %{_bindir}/unidecode
 
 %changelog

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep 26 18:42:26 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.3.7:
+  * Add missing replacements for katakana punctuation (thanks to
+    Emil Hammarberg)
+  * Fix replacement for U+1F19C "SQUARED SECOND SCREEN".
+  * Fix replacement for U+1F1A9 "SQUARED LOSSLESS".
+  * Add more replacements for symbols in the U+21xx and U+1F1xx
+    pages (thanks to @cheznewa on GitHub)
+  * Remove old __init__.pyi from the Wheel package that was
+    included due to a bug in the build script.
+- remove python_module macro definition:
+  already provided by python-rpm-macros
+- declare a more specific file list to avoid packaging unwanted
+  files
+
+-------------------------------------------------------------------
 Thu Oct 27 21:24:50 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.3.6: 
