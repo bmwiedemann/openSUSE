@@ -16,21 +16,24 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-mpmath
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Python library for arbitrary-precision floating-point arithmetic
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/fredrik-johansson/mpmath
 Source:         https://files.pythonhosted.org/packages/source/m/mpmath/mpmath-%{version}.tar.gz
-BuildRequires:  %{python_module gmpy2}
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module gmpy2 >= 2.1.0a4}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-gmpy2
+Requires:       python >= 3.8
+Requires:       python-gmpy2 >= 2.1.0a4
 BuildArch:      noarch
 %python_subpackages
 
@@ -63,7 +66,7 @@ export PYTHONDONTWRITEBYTECODE=1
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES
+%doc README.rst
 %dir %{python_sitelib}/mpmath
 %{python_sitelib}/mpmath
 %{python_sitelib}/mpmath-%{version}-py*.egg-info

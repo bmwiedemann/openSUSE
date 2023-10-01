@@ -40,4 +40,34 @@
 </comment>
     <requestid>1057590</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6cfcb34c33aa3bbfa045a0086a3ecfae</srcmd5>
+    <version>1.3.0</version>
+    <time>1696188134</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.3.0 (bsc#1215804, CVE-2021-29063):
+  * Security issues:
+    - Fixed ReDOS vulnerability in mpmathify() (CVE-2021-29063)
+  * Features:
+    - Added quadsubdiv() for numerical integration with adaptive path splitting
+    - Added the Cohen algorithm for inverse Laplace transforms
+    - Some speedup of matrix multiplication
+    - Optimizations to Carlson elliptic integrals
+    - Added signal functions (squarew(), trianglew(), sawtoothw(), unit_triangle()
+    sigmoidw())
+  * Bug fixes:
+    - Correct mpf initialization from tuple for finf and fninf
+    - Support QR decomposition for matrices of width 0 and 1
+    - Fixed some cases where elliprj() gave inaccurate results
+    - Fixed cases where digamma() hangs for complex input
+    - Fixed cases of polylog() with integer-valued parameter with complex type
+    - Fixed fp.nsum() with Euler-Maclaurin algorithm
+  * Maintenance:
+    - Dropped support for Python 3.4
+    - Documentation cleanup
+    - Removed obsolete files
+    - Added options to runtests.py to skip tests and exit on failure
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1114257</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep 27 08:47:23 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.3.0 (bsc#1215804, CVE-2021-29063):
+  * Security issues:
+    - Fixed ReDOS vulnerability in mpmathify() (CVE-2021-29063)
+  * Features:
+    - Added quadsubdiv() for numerical integration with adaptive path splitting
+    - Added the Cohen algorithm for inverse Laplace transforms
+    - Some speedup of matrix multiplication
+    - Optimizations to Carlson elliptic integrals
+    - Added signal functions (squarew(), trianglew(), sawtoothw(), unit_triangle()
+    sigmoidw())
+  * Bug fixes:
+    - Correct mpf initialization from tuple for finf and fninf
+    - Support QR decomposition for matrices of width 0 and 1
+    - Fixed some cases where elliprj() gave inaccurate results
+    - Fixed cases where digamma() hangs for complex input
+    - Fixed cases of polylog() with integer-valued parameter with complex type
+    - Fixed fp.nsum() with Euler-Maclaurin algorithm
+  * Maintenance:
+    - Dropped support for Python 3.4
+    - Documentation cleanup
+    - Removed obsolete files
+    - Added options to runtests.py to skip tests and exit on failure
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Jan 10 09:22:45 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Replace python-gmpy dependecy with python-gmpy2
