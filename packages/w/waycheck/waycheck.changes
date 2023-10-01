@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 28 19:59:06 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to v0.2.0
+  + Add KDE and Weston protocols
+  + Use a tabbed view with separate tables for each protocol group
+  + Fix contrast issues
+  + Update icon
+  + Prevent editing table cells
+  + Only allow selecting one cell at a time
+  + Fix icon not showing in window decorations on KDE Plasma
+
+-------------------------------------------------------------------
 Thu Sep 28 02:39:45 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
 
 - Initial packaging based on Fedora package
