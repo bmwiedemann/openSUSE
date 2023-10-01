@@ -18,7 +18,7 @@
 
 
 Name:           aerc
-Version:        0.15.2
+Version:        0.16.0
 Release:        0
 Summary:        An email client for terminals
 License:        MIT
@@ -29,7 +29,7 @@ Patch0:         fix-script-interpreter.patch
 BuildRequires:  gcc
 BuildRequires:  go
 BuildRequires:  make
-BuildRequires:  notmuch-devel
+BuildRequires:  notmuch-devel >= 0.37
 BuildRequires:  scdoc
 Recommends:     dante
 Recommends:     w3m
@@ -55,13 +55,16 @@ aerc is an email client that runs in terminals.
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_bindir}/%{name}
+%{_bindir}/carddav-query
 %{_libexecdir}/%{name}
 %{_mandir}/man1/aerc.1.gz
 %{_mandir}/man1/aerc-search.1.gz
+%{_mandir}/man1/carddav-query.1.gz
 %{_mandir}/man5/aerc-accounts.5.gz
 %{_mandir}/man5/aerc-binds.5.gz
 %{_mandir}/man5/aerc-config.5.gz
 %{_mandir}/man5/aerc-imap.5.gz
+%{_mandir}/man5/aerc-jmap.5.gz
 %{_mandir}/man5/aerc-maildir.5.gz
 %{_mandir}/man5/aerc-sendmail.5.gz
 %{_mandir}/man5/aerc-notmuch.5.gz
