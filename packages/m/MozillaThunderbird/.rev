@@ -5025,4 +5025,16 @@ I cannot test locally unfortunately.
     and Thunderbird 115.3</comment>
     <requestid>1113844</requestid>
   </revision>
+  <revision rev="319" vrev="1">
+    <srcmd5>ffd3d36c22818482bde40000df95bc43</srcmd5>
+    <version>115.3.1</version>
+    <time>1696188160</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 115.3.1
+  MFSA 2023-45 (bsc#1215814)
+  * CVE-2023-5217 (bmo#1855550)
+    Heap buffer overflow in libvpx
+- Add mozilla-bmo1846703.patch</comment>
+    <requestid>1114452</requestid>
+  </revision>
 </revisionlist>
