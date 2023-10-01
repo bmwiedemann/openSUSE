@@ -611,4 +611,14 @@
 - updated to 8.0.12: This is a security release (CVE-2021-21703 [bsc#1192050])</comment>
     <requestid>1113638</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>ef5f8b626fabe59159d44c66249b7991</srcmd5>
+    <version>8.2.11</version>
+    <time>1696188111</time>
+    <user>anag+factory</user>
+    <comment>- version update to 8.2.11
+  * This is a bug fix release.
+  * https://www.php.net/ChangeLog-8.php#8.2.11</comment>
+    <requestid>1114306</requestid>
+  </revision>
 </revisionlist>

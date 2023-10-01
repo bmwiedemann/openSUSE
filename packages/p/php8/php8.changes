@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 29 09:38:07 UTC 2023 - pgajdos@suse.com
+
+- version update to 8.2.11
+  * This is a bug fix release.
+  * https://www.php.net/ChangeLog-8.php#8.2.11
+
+-------------------------------------------------------------------
 Tue Sep 26 09:27:38 UTC 2023 - pgajdos@suse.com
 
 - add missing references to rpm changelog
