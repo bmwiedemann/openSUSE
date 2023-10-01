@@ -1833,4 +1833,20 @@ Now one could consider building emacs with gsettings support (both debian and fe
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1104659</requestid>
   </revision>
+  <revision rev="177" vrev="4">
+    <srcmd5>e98a1c07db23741e85b7c5f701230bb8</srcmd5>
+    <version>29.1</version>
+    <time>1696188108</time>
+    <user>anag+factory</user>
+    <comment>- For GNUS: Use message-user-fqdn instead of gnus-local-organization
+
+- Now with changed pdump.patch patch from bjorn.bidar@thaodan.de
+- Build also wayland gtk based binary
+- Support wayland binary by checking for XDG_SESSION_TYPE
+- Provide eln native shared binaries for all emacs program binaries
+
+- Pass libdir to configure so native Emacs lisp files are installed
+  correctly on 64bit systems</comment>
+    <requestid>1114250</requestid>
+  </revision>
 </revisionlist>

@@ -5,9 +5,10 @@
 # The environment variable EMACS_TOOLKIT is used to determine
 # the prefered GUI. Possible values/types of EMACS_TOOLKIT are
 #
-#   nox -- for pure console based GNU Emacs 
-#   gtk -- for full GTK2/3  based GNU Emacs
-#   x11 -- for full LUCID   based GNU Emacs (used Xaw3d)
+#   nox     -- for pure console based GNU Emacs 
+#   gtk     -- for full GTK2/3  based GNU Emacs (for real X11)
+#   wayland -- for full GTK2/3  based GNU Emacs (for wayland)
+#   x11     -- for full LUCID   based GNU Emacs (used Xaw3d)
 #
 # Should work but remember history
 #   bnc#345669 -- Emacs doesn't un-maximize in KDE/KWin
@@ -21,11 +22,22 @@
 #     esac
 # fi
 #
-: ${EMACS_TOOLKIT:=gtk}
+if test -n "${XDG_SESSION_TYPE}"
+then
+    if test "${XDG_SESSION_TYPE}" = wayland -a -x ${0}-wayland
+    then
+        : ${EMACS_TOOLKIT:=wayland}
+    else
+	: ${EMACS_TOOLKIT:=gtk}
+    fi
+else
+    : ${EMACS_TOOLKIT:=gtk}
+fi
 #
 # Enabled again
 #
-if test "$EMACS_TOOLKIT" = gtk; then
+if test "$EMACS_TOOLKIT" = gtk -o "$EMACS_TOOLKIT" = wayland
+then
     # Currently (2013/05/24) the parser of the GNOME libs
     # are broken that is it is not independent from locale
     LC_NUMERIC=POSIX

@@ -148,6 +148,7 @@ BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
+BuildRequires:  pkgconfig(xwayland)
 BuildRequires:  pkgconfig(xxf86vm)
 URL:            http://www.gnu.org/software/emacs/
 Version:        29.1
@@ -256,6 +257,8 @@ Requires:       gnu-unifont-bitmap-fonts
 Requires:       ifnteuro
 Requires:       xorg-x11-fonts
 Requires:       xorg-x11-fonts-core
+Requires:       (ghostscript-fonts-std or urw-base35-fonts)
+%glib2_gsettings_schema_requires
 Enhances:       libX11-6
 Summary:        GNU Emacs: Emacs binary with X Window System Support
 Group:          Productivity/Text/Editors
@@ -278,8 +281,6 @@ Support.
 Requires:       emacs-el = %{version}
 Summary:        GNU Emacs-nox: Emacs Lisp native compiled binary files
 Group:          Productivity/Text/Editors
-
-%define _libeln %{_prefix}/lib
 
 %description -n emacs-eln
 Emacs Lisp (Elisp) is the Lisp dialect used by the Emacs text editor
@@ -354,6 +355,7 @@ popd
 %endif
 
 %build
+umask 022
 %if %{without autoconf}
 # We don't want to run autoconf
 if test configure.ac -nt aclocal.m4 -o m4/gnulib-comp.m4 -nt aclocal.m4 ; then
@@ -444,6 +446,7 @@ export CC CFLAGS LANG LC_CTYPE LDFLAGS
 	 --sharedstatedir=%{_localstatedir}/lib \
 	 --libexecdir=%{_libexecdir} \
 	 --with-file-notification=yes \
+	 --libdir=%{_libdir} \
 	 --enable-locallisppath=%{_datadir}/emacs/%{version}/site-lisp:%{_datadir}/emacs/site-lisp
 "
 DESKTOP="--with-x \
@@ -463,6 +466,7 @@ DESKTOP="--with-x \
 "
     GTK="${DESKTOP} \
 	 --with-x-toolkit=gtk3 \
+	 --without-pgtk \
 	 --with-toolkit-scroll-bars \
 	 --x-includes=%{_x11inc} \
 	 --x-libraries=%{_x11lib} \
@@ -470,11 +474,6 @@ DESKTOP="--with-x \
 	 --with-m17n-flt \
 %if %{with cairo}
 	 --with-cairo \
-%endif
-%if %{with nativecomp}
-	 --with-native-compilation \
-%else
-	 --without-native-compilation \
 %endif
 	 --with-xwidgets \
 "
@@ -485,7 +484,6 @@ DESKTOP="--with-x \
 	 --x-libraries=%{_x11lib}:%{_x11data} \
 	 --without-libotf \
 	 --without-m17n-flt \
-	 --without-native-compilation \
 "
   NOX11="--with-gpm \
 	 --without-x \
@@ -502,7 +500,6 @@ DESKTOP="--with-x \
 	 --without-libotf \
 	 --without-m17n-flt \
 	 --without-harfbuzz \
-	 --without-native-compilation \
 "
    COMP="--disable-build-details \
 %if %{with mailutils}
@@ -510,6 +507,11 @@ DESKTOP="--with-x \
 	 --with-mailutils
 %else
 	 --with-pop \
+%endif
+%if %{with nativecomp}
+	 --with-native-compilation \
+%else
+	 --without-native-compilation \
 %endif
 	 --without-hesiod \
 	 --with-gameuser=:games \
@@ -533,27 +535,45 @@ fi
 ac_cv_lib_gif_EGifPutExtensionLast=yes
 export ac_cv_lib_gif_EGifPutExtensionLast
 
+parking=$(mktemp -p ${PWD} -d parking.XXXXXX)
 CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-nox\"'" ./configure ${COMP} ${PREFIX} ${NOX11} ${SYS} --with-dumping=pdumper
 %make_build V=1
 make -C lisp/ updates compile V=1
 for i in $(find site-lisp/ -name '*.el'); do
     EMACSLOADPATH='' src/emacs -batch -q --no-site -f batch-byte-compile $i
 done
-cp src/emacs emacs-nox
-cp src/emacs.pdmp emacs-nox.pdmp
+cp -p src/emacs src/emacs-nox
+cp -p src/emacs.pdmp src/emacs-nox.pdmp
+%if %{with nativecomp}
+find native-lisp -type d -exec mkdir -p             "${parking}%{_libdir}/emacs/%{version}/{}" \;
+find native-lisp -type f -exec install -m 0644 "{}" "${parking}%{_libdir}/emacs/%{version}/{}" \;
+%endif
 make distclean
 #
 CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-x11\"'" ./configure ${COMP} ${PREFIX} ${X11} ${SYS} --with-dumping=pdumper
 %make_build
-cp src/emacs emacs-x11
-cp src/emacs.pdmp emacs-x11.pdmp
+cp -p src/emacs src/emacs-x11
+cp -p src/emacs.pdmp src/emacs-x11.pdmp
+%if %{with nativecomp}
+find native-lisp -type d -exec mkdir -p             "${parking}%{_libdir}/emacs/%{version}/{}" \;
+find native-lisp -type f -exec install -m 0644 "{}" "${parking}%{_libdir}/emacs/%{version}/{}" \;
+%endif
 make distclean
 #
 CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-gtk\"'" ./configure ${COMP} ${PREFIX} ${GTK} ${SYS} --with-dumping=pdumper
 %make_build
-cp src/emacs emacs-gtk
-cp src/emacs.pdmp emacs-gtk.pdmp
-find -name '*.eln'
+cp src/emacs src/emacs-gtk
+cp src/emacs.pdmp src/emacs-gtk.pdmp
+%if %{with nativecomp}
+find native-lisp -type d -exec mkdir -p             "${parking}%{_libdir}/emacs/%{version}/{}" \;
+find native-lisp -type f -exec install -m 0644 "{}" "${parking}%{_libdir}/emacs/%{version}/{}" \;
+%endif
+make distclean
+#
+CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-wayland\"'" ./configure ${COMP} ${PREFIX} ${GTK//--without-pgtk/--with-pgtk} ${SYS} --with-dumping=pdumper
+%make_build
+cp src/emacs src/emacs-wayland
+cp src/emacs.pdmp src/emacs-wayland.pdmp
 
 %if %{with tex4pdf}
 #
@@ -568,6 +588,7 @@ rm -vf site-start.el.orig
 popd
 
 %install
+umask 022
 #
 PATH=/sbin:$PATH
 ##
@@ -578,12 +599,24 @@ mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}
 make install DESTDIR=%{buildroot} systemdunitdir=%{_userunitdir}
 rm -vf %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/*.pdmp
-install -m 0755 emacs-nox %{buildroot}%{_bindir}
-install -m 0755 emacs-gtk %{buildroot}%{_bindir}
-install -m 0755 emacs-x11 %{buildroot}%{_bindir}
-install -m 0644 emacs-nox.pdmp %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/
-install -m 0644 emacs-gtk.pdmp %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/
-install -m 0644 emacs-x11.pdmp %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/
+%if %{with nativecomp}
+pushd native-lisp/
+    ln -sf ../parking.*/usr/lib64/emacs/29.1/native-lisp/* .
+popd
+%endif
+for pdmp in emacs-nox emacs-gtk emacs-x11 emacs-wayland
+do
+    install -m 0755 src/${pdmp}      %{buildroot}%{_bindir}
+    install -m 0644 src/${pdmp}.pdmp %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/
+    ln -sf ${pdmp}.pdmp %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/${pdmp}-$(src/${pdmp} --fingerprint).pdmp
+done
+%if %{with nativecomp}
+pushd parking.*/%{_libdir}/emacs/%{version}/
+    find native-lisp -type d -exec mkdir -p             "%{buildroot}%{_libdir}/emacs/%{version}/{}" \;
+    find native-lisp -type f -exec install -m 0644 "{}" "%{buildroot}%{_libdir}/emacs/%{version}/{}" \;
+popd
+%endif
+rm -rf parking.*
 rm -vf %{buildroot}/usr/bin/emacs
 rm -vf %{buildroot}%{_libexecdir}/emacs/%{version}/${configuration}/emacs.pdmp
 install -p %{S:5} %{buildroot}/usr/bin/emacs
@@ -723,19 +756,19 @@ ln -sf %{_sysconfdir}/alternatives/ctags.1%{ext_man}	%{buildroot}%{_mandir}/man1
 
 %if %{with nativecomp}
 touch eln.list
-for eln in %{buildroot}%{_libeln}/emacs/%{version}/native-lisp/%{version}-*/*.eln
+for eln in %{buildroot}%{_libdir}/emacs/%{version}/native-lisp/%{version}-*/*.eln
 do
    if test -e $eln
    then
-	echo '%%{_libeln}/emacs/%%{version}/native-lisp/%%{version}-*/*.eln' >> eln.list
+	echo '%%{_libdir}/emacs/%%{version}/native-lisp/%%{version}-*/*.eln' >> eln.list
    fi
    break
 done
-for eln in %{buildroot}%{_libeln}/emacs/%{version}/native-lisp/%{version}-*/preloaded/*.eln
+for eln in %{buildroot}%{_libdir}/emacs/%{version}/native-lisp/%{version}-*/preloaded/*.eln
 do
    if test -e $eln
    then
-	echo '%%{_libeln}/emacs/%%{version}/native-lisp/%%{version}-*/preloaded/*.eln' >> eln.list
+	echo '%%{_libdir}/emacs/%%{version}/native-lisp/%%{version}-*/preloaded/*.eln' >> eln.list
    fi
    break
 done
@@ -770,6 +803,10 @@ if test -e usr/share/emacs/site-lisp/auctex/font-latex.elc ; then
     TeX-auto-global "<none>")' -f batch-byte-compile font-latex.el > /dev/null 2>&1
   cd $owd
 fi
+%glib2_gsettings_schema_post
+
+%postun -n emacs-x11
+%glib2_gsettings_schema_postun
 
 %if 0%{?suse_version} <= 1500
 %post info
@@ -982,7 +1019,7 @@ fi
 %{_datadir}/emacs/%{version}/etc/charsets/symbol.map
 %{_datadir}/emacs/%{version}/etc/compilation.txt
 %{_datadir}/emacs/%{version}/etc/emacs_lldb.py
-%{_datadir}/emacs/%{version}/etc/org.gnu.emacs.defaults.gschema.xml
+%{_datadir}/emacs/%{version}/etc/org.gnu.emacs.defaults.gschema.*
 %dir %{_datadir}/emacs/%{version}/etc/org/
 %dir %{_datadir}/emacs/%{version}/etc/org/csl/
 %{_datadir}/emacs/%{version}/etc/org/csl/README
@@ -3438,17 +3475,20 @@ fi
 %files       -n emacs-nox
 %defattr(-, root, root)
 %{_bindir}/emacs-nox
-%{_libexecdir}/emacs/%{version}/*-suse-linux*/emacs-nox.pdmp
+%{_libexecdir}/emacs/%{version}/*-suse-linux*/emacs-nox*.pdmp
 
 %files       -n emacs-x11
 %defattr(-, root, root)
 %{_bindir}/emacs-x11
 %{_bindir}/emacs-gtk
-%{_libexecdir}/emacs/%{version}/*-suse-linux*/emacs-x11.pdmp
-%{_libexecdir}/emacs/%{version}/*-suse-linux*/emacs-gtk.pdmp
+%{_bindir}/emacs-wayland
+%{_libexecdir}/emacs/%{version}/*-suse-linux*/emacs-x11*.pdmp
+%{_libexecdir}/emacs/%{version}/*-suse-linux*/emacs-gtk*.pdmp
+%{_libexecdir}/emacs/%{version}/*-suse-linux*/emacs-wayland*.pdmp
 %dir %{appDefaultsDir}
 %{appDefaultsFile}
 %{_datadir}/applications/emacs*.desktop
+%{_datadir}/glib-2.0/schemas/org.gnu.emacs.defaults.gschema.xml
 %{_datadir}/icons/hicolor/128x128/apps/emacs.png
 %{_datadir}/icons/hicolor/16x16/apps/emacs.png
 %{_datadir}/icons/hicolor/24x24/apps/emacs.png
@@ -3467,11 +3507,11 @@ fi
 %if %{with nativecomp}
 %files       -n emacs-eln -f eln.list
 %defattr(-, root, root)
-%dir %{_libeln}/emacs/
-%dir %{_libeln}/emacs/%{version}/
-%dir %{_libeln}/emacs/%{version}/native-lisp/
-%dir %{_libeln}/emacs/%{version}/native-lisp/%{version}-*/
-%dir %{_libeln}/emacs/%{version}/native-lisp/%{version}-*/preloaded/
+%dir %{_libdir}/emacs/
+%dir %{_libdir}/emacs/%{version}/
+%dir %{_libdir}/emacs/%{version}/native-lisp/
+%dir %{_libdir}/emacs/%{version}/native-lisp/%{version}-*/
+%dir %{_libdir}/emacs/%{version}/native-lisp/%{version}-*/preloaded/
 %endif
 
 %files       -n emacs-info

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 28 11:53:14 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- For GNUS: Use message-user-fqdn instead of gnus-local-organization
+
+-------------------------------------------------------------------
+Tue Sep 26 12:37:30 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Now with changed pdump.patch patch from bjorn.bidar@thaodan.de
+- Build also wayland gtk based binary
+- Support wayland binary by checking for XDG_SESSION_TYPE
+- Provide eln native shared binaries for all emacs program binaries
+
+-------------------------------------------------------------------
+Tue Sep 26 00:11:46 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Pass libdir to configure so native Emacs lisp files are installed
+  correctly on 64bit systems
+
+-------------------------------------------------------------------
 Fri Aug 11 10:33:54 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Require bwrap at build time as some tools requires it if checks
