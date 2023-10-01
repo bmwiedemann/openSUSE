@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Sep 29 18:39:29 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix single singlespec: Can't use python_subpackages rewriter
+
+-------------------------------------------------------------------
+Fri Sep 29 18:03:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Remove dependencies which are not used at runtime anywhere
+  * only CairoSVG is reqired for PNG charts since at least
+    pygal 1.7:
+    https://github.com/Kozea/pygal/blob/1.6.2/setup.py#L70
+  * remove-obsolete-deps.patch
+
+-------------------------------------------------------------------
+Fri Sep 29 16:31:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Back to singlespec for a single flavor in order to
+  use sle15_python_module_pythons
+
+-------------------------------------------------------------------
+Fri Sep 29 16:13:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix BuildRequirements
+- Fix doc package duplicate file warning
+- Remove stray singlespec
+
+-------------------------------------------------------------------
+Wed Sep 27 15:26:22 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- Version 2.0.0
+  * complete rewrite based on Kivy (instead Kirigami)
+  * For Details see CHANGELOG
+  * doc_path.diff removed
+  * shebang.diff removed
+  
+-------------------------------------------------------------------
 Fri Mar 11 11:44:11 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - License string corrected

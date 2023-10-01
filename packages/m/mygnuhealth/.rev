@@ -73,4 +73,12 @@ the _link needed to be removed as the .spec file got out of sync</comment>
     <comment>license string corrected</comment>
     <requestid>961068</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0a54474c2b67a2811ae367e558124908</srcmd5>
+    <version>2.0.0</version>
+    <time>1696188135</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114438</requestid>
+  </revision>
 </revisionlist>
