@@ -35,6 +35,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/xdg-desktop-po
 Source1:        https://download.kde.org/stable/plasma/%{version}/xdg-desktop-portal-kde-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+#PATCH_FIX_UPSTREAM 0001-kde_portals.patch kde#474746
+Patch0:         0001-kde_portals.patch
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  libQt5PrintSupport-private-headers-devel
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}

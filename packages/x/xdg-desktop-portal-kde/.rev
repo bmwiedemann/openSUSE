@@ -972,4 +972,14 @@
   * Add a method using QScreen to create a screencasting stream</comment>
     <requestid>1110818</requestid>
   </revision>
+  <revision rev="120" vrev="2">
+    <srcmd5>5516642469cc2508071a55412c445e63</srcmd5>
+    <version>5.27.8</version>
+    <time>1696188106</time>
+    <user>anag+factory</user>
+    <comment>- Add: 0001-kde_portals.patch (kde#474746)
+  * Add a fallback to the GTK portal for settings. This makes sure
+    that GTK apps always get valid fonts and related settings. (forwarded request 1114443 from sfalken)</comment>
+    <requestid>1114447</requestid>
+  </revision>
 </revisionlist>
