@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 28 18:55:55 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.3.1
+  * Fixed infinite save loop in `Phalcon\Mvc\Model::save()` [#16395]
+  * Fixed undefined column with columnMap and model caching [#16420]
+  * Fixed memory leak in `Phalcon\Mvc\Router::handle()` [#16431]
+
+-------------------------------------------------------------------
 Thu Aug 17 20:14:30 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.3.0
