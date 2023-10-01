@@ -55,7 +55,7 @@
    <property name="scalacheck.jar"          value="${lib.dir}/scalacheck.jar"/>
  
    <!-- Sets location of build folders -->
-@@ -181,91 +180,57 @@
+@@ -181,91 +180,54 @@
    </target>
  
    <target name="boot" depends="desired.jars.uptodate" unless="lib.jars.uptodate">
@@ -182,9 +182,6 @@
 +    <taskdef name="same"
 +             classpathref="scalabootstrap.classpath"
 +             classname="scala.tools.ant.Same"/>
-+    <taskdef name="pack200"
-+             classpathref="scalabootstrap.classpath"
-+             classname="scala.tools.ant.Pack200Task"/>
 +    
 +    <typedef resource="aQute/bnd/ant/taskdef.properties" 
 +	     classpath="/usr/share/java/aqute-bnd.jar" />

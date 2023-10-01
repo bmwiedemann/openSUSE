@@ -57,23 +57,21 @@ Patch8:         scala-2.10.4-build_xml.patch
 # Stop scaladoc from trying to bundle non-existent resources that were
 # removed due to being in object form only, whithout sources
 Patch9:         scala-2.10.6-scaladoc-resources.patch
-Patch10:        scala-2.10.7-source6.patch
+Patch10:        scala-2.10.7-source8.patch
 Patch11:        scala-2.10.7-lines.patch
 Patch12:        scala-2.10.7-java8compat.patch
+Patch13:        scala-2.10.7-jdk15.patch
 BuildRequires:  ant
 BuildRequires:  ant-contrib
 BuildRequires:  ant-junit
 BuildRequires:  aqute-bnd
 BuildRequires:  graphviz
-BuildRequires:  java-devel >= 1.7
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  jline >= 2.10
 BuildRequires:  junit
-BuildConflicts: java >= 9
-BuildConflicts: java-devel >= 9
-BuildConflicts: java-headless >= 9
 Requires:       jansi
-Requires:       java-headless >= 1.7
+Requires:       java-headless >= 1.8
 # Require full javapackages-tools since scripts use
 # /usr/share/java-utils/java-functions
 Requires:       javapackages-tools
@@ -115,7 +113,7 @@ reference and API documentation for the Scala programming language.
 Summary:        The swing library for the Scala programming languages
 Group:          Development/Libraries/Java
 Requires:       %{name} = %{version}-%{release}
-Requires:       java >= 1.7
+Requires:       java >= 1.8
 BuildArch:      noarch
 %if %{without bootstrap}
 Obsoletes:      %{base_name}-bootstrap-swing
@@ -154,8 +152,11 @@ the Scala ant tasks.
 %patch10 -p1 -b .source6
 %patch11 -p1 -b .jdk11
 %patch12 -p1 -b .java8compat
+%patch13 -p1 -b .jdk15
 
 echo "starr.version=2.10.4\nstarr.use.released=0" > starr.number
+
+rm -f src/compiler/scala/tools/ant/Pack200Task.scala
 
 pushd src
 rm -rf jline

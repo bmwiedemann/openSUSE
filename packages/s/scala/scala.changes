@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 29 06:45:12 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Allow building with jdk >= 9 too
+- Added patch:
+  * scala-2.10.7-jdk15.patch
+    + do not build pack200 ant task since Pack200 was removed in
+      jdk15
+    + implement a new method added in jdk15
+- Modified patches:
+  * scala-2.10.4-build_xml.patch
+    + do not try to instantiate the pack200 ant task
+  * scala-2.10.7-source6.patch -> scala-2.10.7-source8.patch
+    + build with source/target 8 levels
+
+-------------------------------------------------------------------
 Mon Sep 11 13:07:40 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: do not generate non-reproducible entries

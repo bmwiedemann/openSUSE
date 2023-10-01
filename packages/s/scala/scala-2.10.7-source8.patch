@@ -7,7 +7,7 @@ Index: scala-2.10.7/build.xml
            classpath="${@{project}-classes}"
            includes="**/*.java"
 -          target="1.6" source="1.5"
-+          target="1.6" source="1.6"
++          target="1.8" source="1.8"
            compiler="javac1.6"
  	  includeantruntime="false" >
              <compilerarg line="${javac.args} @{args}"/>
@@ -16,7 +16,7 @@ Index: scala-2.10.7/build.xml
          excludes="@{excludes}"
  	includeantruntime="false"
 -        target="1.6" source="1.5">
-+        target="1.6" source="1.6">
++        target="1.8" source="1.8">
            <compilerarg line="${javac.args} @{args}"/>
            <classpath refid="@{stage}.@{destproject}.build.path"/>
        </javac>
