@@ -89,4 +89,22 @@ near future.</comment>
     <comment></comment>
     <requestid>1074037</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>504f23b19ab09522580bb02e4a10bdf8</srcmd5>
+    <version>1.18.0</version>
+    <time>1696188141</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.18.0:
+  * CVE-2023-5215 (bsc#1215799)
+  * docs: Add link to nbd_get_size announcement in release notes
+  * docs: Add URL to list post on nbd_get_size security
+  * docs: Update release notes for nbd_get_size backport to 1.16.5
+  * docs: Finalize release notes for release tomorrow
+  * dump: Add more examples of running subprocesses from nbddump
+  * info: Tolerate missing size
+  * block_status: Fix assertion on bad 64-bit block status reply
+  * block_status: Fix assertion with large server size
+  * api: Sanitize sizes larger than INT64_MAX</comment>
+    <requestid>1114449</requestid>
+  </revision>
 </revisionlist>
