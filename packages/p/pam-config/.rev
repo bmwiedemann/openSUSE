@@ -779,4 +779,13 @@
 - Both are required for [bsc#1214885]</comment>
     <requestid>1109700</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>526dc1c4c1a3cc5eeba476136126803a</srcmd5>
+    <version>2.9</version>
+    <time>1696188114</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.9
+  - Add support for kanidm</comment>
+    <requestid>1114381</requestid>
+  </revision>
 </revisionlist>
