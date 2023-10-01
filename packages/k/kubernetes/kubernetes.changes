@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 20 19:24:45 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Bump meta package versions:
+  * kubernetes (baseversion) - 1.28
+  * kubernetes (version) - 1.28.2
+  * kubernetes (baseversionminus1) - 1.27
+  * kubernetes (versionminus1) - 1.27.6
+  * kubernetes (baseversionminus2) - 1.26
+  * kubernetes (versionminus1) - 1.26.9
+  * kubernetes (baseversionminus1) - 1.25
+  * kubernetes (versionminus1) - 1.25.14
+  * Etcd (etcdversion) - 3.5.9
+  * Etcd (etcdversionminus1) - 3.5.7
+  * CoreDNS (corednsversionminus1) - 1.10.1
+  * CoreDNS (corednsversionminus3) - 1.9.3
+
+-------------------------------------------------------------------
 Mon Aug  7 07:20:20 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Added support for tracking Kubernetes minor versions
