@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 28 16:02:58 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- go 1.19 EOL, swith to go >= 1.20
+   * [bsc#1215806]
+
+-------------------------------------------------------------------
 Wed Sep  6 05:41:47 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Update to version 2.1.8:

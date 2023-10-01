@@ -25,7 +25,7 @@ Group:          System/Management
 URL:            https://github.com/containers/conmon
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
-BuildRequires:  golang(API) = 1.19
+BuildRequires:  golang(API) >= 1.20
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsystemd)

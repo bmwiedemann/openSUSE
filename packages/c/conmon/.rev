@@ -247,4 +247,12 @@
     <comment></comment>
     <requestid>1109240</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>be009dddb2df768aba12a6d5d200fbd2</srcmd5>
+    <version>2.1.8</version>
+    <time>1696188107</time>
+    <user>anag+factory</user>
+    <comment>go1.19 is EOL, swith to go&gt;=1.20 [bsc#1215806] (forwarded request 1114120 from vlefebvre)</comment>
+    <requestid>1114247</requestid>
+  </revision>
 </revisionlist>
