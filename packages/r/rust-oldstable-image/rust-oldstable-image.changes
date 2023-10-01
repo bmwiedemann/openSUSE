@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 28 14:29:10 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- add copyright and description header
+
+-------------------------------------------------------------------
+Thu Sep 21 10:47:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update oldstable to rust 1.71
+
+-------------------------------------------------------------------
 Wed Jul 26 09:38:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - oldstable is rust 1.70 now
