@@ -17,30 +17,17 @@
 
 
 Name:           clazy
-Version:        1.11
+Version:        1.11git.20230920T205027~2965bc3
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://www.kdab.com/clazy-video/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
-Source1:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        clazy.keyring
-# Upstream changes on top of clazy 1.11
-Patch0:         0001-Limit-the-clang-AST-crash-workaround-to-clang-7.0.patch
-Patch1:         0001-Fix-crash-when-Q_PROPERTY-contents-is-empty.patch
-Patch2:         0001-Allow-passing-no-check-in-plugin-arg-clazy-commandli.patch
-Patch3:         0001-Build-fixes-for-LLVM-Clang-15.0.0.patch
-Patch4:         0001-Adapt-to-API-changes-in-clang-llvm-16.patch
 BuildRequires:  clang
 BuildRequires:  clang-devel >= 8.0
 BuildRequires:  cmake >= 3.7
-%if 0%{?suse_version} == 1500
-# C++17 is required
-BuildRequires:  gcc10-c++
-%else
 BuildRequires:  libstdc++-devel
-%endif
 %requires_eq    clang%{_llvm_sonum}
 
 %description
@@ -61,7 +48,7 @@ allocations to misusage of API, including fix-its for automatic refactoring.
 %install
 %cmake_install
 
-sed -i 's#%{_bindir}/env sh#/bin/sh#' %{buildroot}%{_bindir}/clazy
+sed -i 's#%{_bindir}/env sh$#/bin/sh#' %{buildroot}%{_bindir}/clazy
 
 %files
 %license COPYING-LGPL2.txt

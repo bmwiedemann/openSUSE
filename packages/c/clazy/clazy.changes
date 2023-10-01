@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 29 13:14:32 UTC 2023 - christophe@krop.fr
+
+- Update to version 1.11git.20230920T205027~2965bc3:
+  * add missing PrintSupport module for no-module-include check (kde#474657)
+  * Allow `clazy --list` to print the new no-module-include check
+  * Add new no-module-include check in checks.json (kde#474706)
+  * add new no-module-include check
+  * Add sanitize-inline-keyword check
+  * clazy-standalone: improve --ignore-included-files help message
+  * Fix compilation with LLVM 17.0.0 (rc2)
+- Drop patch, now upstream:
+  * 0001-Limit-the-clang-AST-crash-workaround-to-clang-7.0.patch
+  * 0001-Fix-crash-when-Q_PROPERTY-contents-is-empty.patch
+  * 0001-Allow-passing-no-check-in-plugin-arg-clazy-commandli.patch
+  * 0001-Build-fixes-for-LLVM-Clang-15.0.0.patch
+  * 0001-Adapt-to-API-changes-in-clang-llvm-16.patch
+
+-------------------------------------------------------------------
 Fri Mar 31 17:02:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change to fix build with clang 16:

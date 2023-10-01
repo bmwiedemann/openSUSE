@@ -179,4 +179,12 @@
     <comment></comment>
     <requestid>1076544</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>43479f8616fd6bf4450f91ec53544198</srcmd5>
+    <version>1.11git.20230920T205027~2965bc3</version>
+    <time>1696188140</time>
+    <user>anag+factory</user>
+    <comment>build fix for clang 17</comment>
+    <requestid>1114382</requestid>
+  </revision>
 </revisionlist>
