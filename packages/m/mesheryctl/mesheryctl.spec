@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           mesheryctl
-Version:        0.6.147
+Version:        0.6.151
 Release:        0
 Summary:        CLI for the meshery cloud native management plane
 License:        Apache-2.0
@@ -67,8 +67,7 @@ BuildArch:      noarch
 zsh command line completion support for %{name}.
 
 %prep
-%setup -q -n meshery-%{version}
-%setup -q -T -D -a 1 -n meshery-%{version}
+%autosetup -p1 -a 1 -n meshery-%{version}
 
 %build
 go build \
