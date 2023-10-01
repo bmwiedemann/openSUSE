@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 28 14:29:10 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- add copyright and description header
+
+-------------------------------------------------------------------
+Thu Sep 21 10:47:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update stable to Rust 1.72
+
+-------------------------------------------------------------------
 Wed Jul 26 09:39:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - stable is rust 1.71 now

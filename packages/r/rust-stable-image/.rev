@@ -23,4 +23,12 @@
     <comment>- stable is rust 1.71 now</comment>
     <requestid>1102647</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0b3e014e5b601785ea0ddf614ab1f917</srcmd5>
+    <version>unknown</version>
+    <time>1696188126</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1114209</requestid>
+  </revision>
 </revisionlist>
