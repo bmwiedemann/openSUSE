@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Sep 20 18:12:25 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- fixes for bsc#1214406
+- update `Wants` directive in [Unit] section of `kubelet.service`:
+  * add: `containerd.service`
+  * remove: `docker.service`
+- updating container runtime prerequisites:
+  (Refer: k8s.io/docs/setup/production-environment/container-runtimes/#install-and-configure-prerequisites)
+  * update `90-kubeadm.conf` to add below iptables rules:
+    - net.bridge.bridge-nf-call-iptables = 1
+    - net.bridge.bridge-nf-call-ip6tables = 1
+  * update `kubeadm.conf` to add `overlay` kernel module
+  * update .spec file to:
+    - add post-installation scriptlet for `kubeadm` package to enable iptables rules defined in `90-kubeadm.conf` using sysctl
+    - add conditional checks to load kernel modules (br_netfilter, overlay) in `kubelet-common` package post-installation scriptlet
+    - update `kubelet-common` post scriptlet to correctly update `KUBELET_VER` var in `/etc/sysconfig/kubelet` file based on fillup template
+- add below to `kubelet` subpackage to recommend installing correct version of package providing `kubernetes-kubelet-common` :
+  * `Recommends: kubernetes-kubelet-common = %{version}`
+- add below to `kubeadm` subpackage to recommend installing correct version of `kubelet` and `kubelet-common` packages:
+  * `Recommends: kubernetes%{baseversion}-kubelet`
+
+-------------------------------------------------------------------
+Tue Sep 12 12:37:34 UTC 2023 - priyanka.saggu@suse.com
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.20.7`
+- Update to version 1.24.17:
+  * Release commit for Kubernetes v1.24.17
+  * Use environment varaibles for parameters in Powershell
+  * Use env varaibles for passing path
+  * Fix capture loop vars in parallel or ginkgo tests
+  * Update protoc check for verify-generated-kms
+  * [release-1.24] releng/go: Bump images, versions and deps to use Go 1.20.7
+  * Update CHANGELOG/CHANGELOG-1.24.md for v1.24.16
+  * kmsv1: attempt AES-GCM before AES-CBC on reads
+
+-------------------------------------------------------------------
 Wed Jul 26 10:06:30 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update: `BuildRequires:  go >= 1.20.6`
