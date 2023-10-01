@@ -46,6 +46,7 @@ Patch0:         reduce-boost-required-version.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gtk-doc
 BuildRequires:  libboost_headers-devel >= 1.66
+BuildRequires:  libgpgmepp-devel >= 1.19
 BuildRequires:  openjpeg2
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -228,6 +229,7 @@ export CXX=g++-12
 export LD_LIBRARY_PATH=$(pwd)/build
 %cmake \
 	-DENABLE_GTK_DOC=ON \
+	-DENABLE_GPGME=ON \
 	-DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
 	-DENABLE_ZLIB=ON \
 	-DENABLE_LIBCURL=ON \

@@ -2059,4 +2059,35 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1112446</requestid>
   </revision>
+  <revision rev="198" vrev="2">
+    <srcmd5>33f2625a94165f11e0d4b0870999de9f</srcmd5>
+    <version>23.09.0</version>
+    <time>1696188110</time>
+    <user>anag+factory</user>
+    <comment>- build with gpgmepp for signing documents (bsc#1215632)
+
+- Update to 21.05.0:
+    * pdftoppm: Fix regression when using single scaleTo.
+    - SplashOutputDev: Add the invisible character check
+    - Fix issues with malformed documents.
+    - Expose more image modes, add option to select mode in
+    - pdffonts: Minor formatting changes in the man page.
+    - Fix PDFDoc::checkHeader() for PDFs smaller than 1 KiB.
+    - Fix issues with on malformed documents.
+    - Fix crash in invalid files that define a &lt;= 0 bits per image
+    - TextOutputDev: Use page size for max value in
+- disable hinting -- patch moved from xpdf splash copy to
+  poppler's splash, reason:
+  + Qt frontend:
+ * Do not return unknown field type for signature form fields for
+  * Support for Opening/Closing page actions
+  as another part of the fix for bug #201739
+- moved man pages to the poppler-tools subpackage [#201739]
+- many bug fixes
+- fix extra qualifications in installed headers
+- Required by evince update for GNOME 2.12
+- Remove uptreamed patchs
+- Update to version 0.3.3</comment>
+    <requestid>1114272</requestid>
+  </revision>
 </revisionlist>

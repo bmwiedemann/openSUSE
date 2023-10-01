@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 29 07:54:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build with gpgmepp for signing documents (bsc#1215632)
+
+-------------------------------------------------------------------
 Tue Sep 19 18:45:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 23.09.0:
@@ -504,7 +509,7 @@ Sat Jun 19 14:46:12 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
 -------------------------------------------------------------------
 Tue May  4 15:39:12 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to 21.05.0: 
+- Update to 21.05.0:
   core:
     * Fix crashes in malformed files
     * Export SplashFont* symbols used by Scribus
@@ -515,7 +520,7 @@ Tue May  4 15:39:12 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
     * Make sure new signatures are always properly oriented
     * Allow to pass the border width when signing
   utils:
-    * pdftoppm: Fix regression when using single scaleTo. 
+    * pdftoppm: Fix regression when using single scaleTo.
 - Drop Export-SplashFont-symbols-used-by-Scribus.patch as the change
   was upstreamed
 
@@ -668,7 +673,7 @@ Wed Dec  2 13:08:44 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
         ICC profile
       . for splashModeCMYK8 and language level >=2 activate
         overprint emulation
-  
+
 -------------------------------------------------------------------
 Tue Oct 27 09:50:08 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
@@ -1311,16 +1316,16 @@ Thu Jul  5 13:51:31 UTC 2018 - ecsos@opensuse.org
     - Fix compilation with some strict compilers
 - Changes from version 0.65.0:
   + core:
-    - SplashOutputDev: Add the invisible character check 
+    - SplashOutputDev: Add the invisible character check
       beginType3Char. (fdo#106244)
     - XRef: Fix runtime undefined behaviour. (fdo#105970)
-    - Fix issues with malformed documents. 
+    - Fix issues with malformed documents.
       (fdo#104942), (fdo#103238)
     - Remove GooHash after replacing it by std::unordered_map
     - Add conversion methods between GooString and std::string.
   + cpp:
     - Add newline after error message
-    - Expose more image modes, add option to select mode in 
+    - Expose more image modes, add option to select mode in
       renderer. (fdo#105558)
   + build system:
     - Fix compilation with libc++
@@ -1328,7 +1333,7 @@ Thu Jul  5 13:51:31 UTC 2018 - ecsos@opensuse.org
   + qt5:
     - Add widget annot actions to FormFields
   + utils:
-    - pdffonts: Minor formatting changes in the man page. 
+    - pdffonts: Minor formatting changes in the man page.
       (fdo#105194)
 - Changes from version 0.64.0:
   + core:
@@ -1338,11 +1343,11 @@ Thu Jul  5 13:51:31 UTC 2018 - ecsos@opensuse.org
     - Add support for Link Hide action
     - Add support for Next actions in Links
     - Fix parsing of Annot focus out actions
-    - Fix PDFDoc::checkHeader() for PDFs smaller than 1 KiB. 
+    - Fix PDFDoc::checkHeader() for PDFs smaller than 1 KiB.
       (fdo#105674)
     - Add const to several classes and members
     - gfile: Fix build on some platforms
-    - Fix issues with on malformed documents. 
+    - Fix issues with on malformed documents.
       (fdo#105972), (fdo#105969), (fdo#106059), (fdo#106061)
     - Several small code improvements
   + qt5:
@@ -2736,10 +2741,10 @@ Fri Jan  4 12:01:11 UTC 2013 - hrvoje.senjan@gmail.com
 
 - Update to version 0.22.0:
   + core:
-    - Fix crash in invalid files that define a <= 0 bits per image 
+    - Fix crash in invalid files that define a <= 0 bits per image
       value
     - Fix a few issues in JPX decoding when not using OpenJPEG
-    - TextOutputDev: Use page size for max value in 
+    - TextOutputDev: Use page size for max value in
       TextPage::visitSelection
     - Fix typo in error message
   + utils:
@@ -3878,19 +3883,19 @@ Tue Jul 28 11:23:27 CEST 2009 - coolo@novell.com
     * Do not create the GfxColorTransform if the lcms could not be created. Bug #20108
     * Give an error when using level1sep in pdftops without having CMYK support. Bug #22026
     * Kill support for specifying extension in openTmpFile. Bug #21713
-        
+
    glib:
     * Add poppler_annot_markup_has_popup()
     * Hyphenate UTF-8 and UTF-16BE. Bug #21953
     * Use g_strerror instead of strerror. Bug #22095
     * Fix a crash when a destination points to an invalid page
     * Improvements to the demo
-        
+
    Qt4:
     * Add LinkDestination::destinationName()
     * Do not try to resolve named destinations for GoTo links pointing to external documents
     * Add Page::thumbnail()
-        
+
 -------------------------------------------------------------------
 Thu May 21 11:15:48 CEST 2009 - pgajdos@suse.cz
 
@@ -3971,8 +3976,8 @@ Mon Mar 30 15:44:18 CEST 2009 - pgajdos@suse.cz
 -------------------------------------------------------------------
 Tue Mar 24 12:54:44 CET 2009 - pgajdos@suse.cz
 
-- disable hinting -- patch moved from xpdf splash copy to 
-  poppler's splash, reason: 
+- disable hinting -- patch moved from xpdf splash copy to
+  poppler's splash, reason:
     xpdf is going to use splash from poppler instead of own and
     unmaintained copy of splash. Without it, the xpdf rendering
     of pdf is very poor, when pdf font is small (e. g. document
@@ -4235,7 +4240,7 @@ Fri Jan 25 11:16:33 CST 2008 - maw@suse.de
     * Fix crash in extra debug code
   + glib frontend:
     * Make sure passwords are passed correctly to poppler core
-  + Qt frontend: 
+  + Qt frontend:
     * Improved documentation
     * Fix crash on documents that specify an empty date
   + Misc build improvements
@@ -4278,7 +4283,7 @@ Tue Oct 23 02:53:12 CEST 2007 - jpr@suse.de
  * Avoid double free with qt4
  * Fix memory leak when dealing with embedded files in qt4
  * Fix build with --disable-cairo-output for glib
- * Do not return unknown field type for signature form fields for 
+ * Do not return unknown field type for signature form fields for
    glib
  * Support automake-1.10
  * More compatible sh code in qt.m4
@@ -4313,7 +4318,7 @@ Mon Oct  8 15:55:52 CEST 2007 - sbrabec@suse.cz
   * Merge xpdf 3.02 changes
   * Qt4 frontend is not marked anymore as unstable
   * Support for Sound objects
-  * Support for Opening/Closing page actions 
+  * Support for Opening/Closing page actions
   * Support for page duration
   * Improve PS Tokenizer performance thanks
   * Various speed ups
@@ -4387,12 +4392,12 @@ Tue Dec 19 18:51:25 CET 2006 - sbrabec@suse.cz
 Thu Oct 26 22:46:52 CEST 2006 - jhargadon@suse.de
 
 - added --sysconfdir=/etc option to ./configure in the specfile
-  as another part of the fix for bug #201739 
+  as another part of the fix for bug #201739
 
 -------------------------------------------------------------------
 Wed Oct  4 17:28:42 CEST 2006 - jhargadon@suse.de
 
-- moved man pages to the poppler-tools subpackage [#201739] 
+- moved man pages to the poppler-tools subpackage [#201739]
 
 -------------------------------------------------------------------
 Wed Sep 27 18:10:44 CEST 2006 - jhargadon@suse.de
@@ -4401,7 +4406,7 @@ Wed Sep 27 18:10:44 CEST 2006 - jhargadon@suse.de
 - Automatically read in CJK encoding files if they're installed
 - Speed ups
 - Patch from Dom Lachowicz to let the utils take input on stdin
-- many bug fixes 
+- many bug fixes
 
 -------------------------------------------------------------------
 Mon Sep  4 13:20:46 CEST 2006 - sbrabec@suse.cz
@@ -4487,25 +4492,25 @@ Mon Oct 24 15:43:47 CEST 2005 - stbinner@suse.de
 -------------------------------------------------------------------
 Tue Oct 18 14:35:09 CEST 2005 - dmueller@suse.de
 
-- fix extra qualifications in installed headers 
+- fix extra qualifications in installed headers
 
 -------------------------------------------------------------------
 Fri Sep  2 19:00:14 CEST 2005 - gekker@suse.de
 
 - Update to version 0.4.2
 - Fixes to work with new cairo version
-- Required by evince update for GNOME 2.12 
+- Required by evince update for GNOME 2.12
 
 -------------------------------------------------------------------
 Thu Aug 18 21:14:55 CEST 2005 - gekker@suse.de
 
 - Update to version 0.4.0
-- Remove uptreamed patchs 
+- Remove uptreamed patchs
 
 -------------------------------------------------------------------
 Thu Jul 21 23:32:57 CEST 2005 - gekker@suse.de
 
-- Update to version 0.3.3 
+- Update to version 0.3.3
 
 -------------------------------------------------------------------
 Mon Jun 27 10:23:01 CEST 2005 - meissner@suse.de
