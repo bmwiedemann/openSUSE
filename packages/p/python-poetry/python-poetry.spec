@@ -33,24 +33,28 @@ Summary:        Python dependency management and packaging
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://python-poetry.org/
-# PyPI sdist doesnt contain tests
+# PyPI sdist doesn't contain tests
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM build-1.patch gh#python-poetry/poetry#8400
 Patch0:         build-1.patch
+# PATCH-FIX-UPSTREAM poetry-pr8447-fastjsonschema.patch gh#python-poetry/poetry#8447
+Patch1:         poetry-pr8447-fastjsonschema.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core = 1.7.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-build >= 1.0.3
+Requires:       python-poetry-core = 1.7.0
+Requires:       python-poetry-plugin-export >= 1.5.0
 # SECTION cachecontrol[filecache]
 Requires:       python-CacheControl >= 0.13
 Requires:       python-filelock >= 3.8.0
 # /SECTION
-Requires:       python-build >= 1.0.3
 Requires:       python-cleo >= 2.0.0
 Requires:       python-crashtest >= 0.4.1
 Requires:       python-dulwich >= 0.21.2
-Requires:       python-poetry-core = 1.7.0
-Requires:       python-poetry-plugin-export >= 1.5.0
+Requires:       python-fastjsonschema >= 2.18.0
 %if 0%{?python_version_nodots} < 310
 Requires:       python-importlib-metadata >= 4.4
 %endif
@@ -63,7 +67,6 @@ Requires:       python-platformdirs >= 3.0.0
 Requires:       python-pyproject-hooks >= 1.0.0
 Requires:       python-requests >= 2.26
 Requires:       python-shellingham >= 1.5
-Requires:       (python-jsonschema >= 4.10.0 with python-jsonschema < 4.18)
 Requires:       (python-requests-toolbelt >= 0.9.1 with python-requests-toolbelt < 2)
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 2.0.1

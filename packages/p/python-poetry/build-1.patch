@@ -10,11 +10,11 @@ Subject: [PATCH] Support build 1.0 (#8400)
  src/poetry/installation/chef.py | 19 +++++++++++++------
  4 files changed, 36 insertions(+), 19 deletions(-)
 
-diff --git a/poetry.lock b/poetry.lock
-index 19b9c5d8120..fbb506a7cc0 100644
---- a/poetry.lock
-+++ b/poetry.lock
-@@ -20,25 +20,26 @@ tests-no-zope = ["cloudpickle", "hypothesis", "mypy (>=1.1.1)", "pympler", "pyte
+Index: poetry-1.6.1/poetry.lock
+===================================================================
+--- poetry-1.6.1.orig/poetry.lock
++++ poetry-1.6.1/poetry.lock
+@@ -20,25 +20,26 @@ tests-no-zope = ["cloudpickle", "hypothe
  
  [[package]]
  name = "build"
@@ -87,16 +87,16 @@ index 19b9c5d8120..fbb506a7cc0 100644
      {file = "PyYAML-6.0.1-cp39-cp39-win32.whl", hash = "sha256:faca3bdcf85b2fc05d06ff3fbc1f83e1391b3e724afa3feba7d13eeab355484c"},
      {file = "PyYAML-6.0.1-cp39-cp39-win_amd64.whl", hash = "sha256:510c9deebc5c0225e8c96813043e62b680ba2f9c50a08d3724c7f28a747d1486"},
      {file = "PyYAML-6.0.1.tar.gz", hash = "sha256:bfdf460b1736c775f2ba9f6a92bca30bc2095067b8a9d77876d1fad6cc3b4a43"},
-@@ -1668,4 +1679,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
+@@ -1668,4 +1679,4 @@ testing = ["big-O", "jaraco.functools",
  [metadata]
  lock-version = "2.0"
  python-versions = "^3.8"
 -content-hash = "368d5dce2e2375400d677b575523352c47f89070355aaf6ade29360ca7bdb5e2"
 +content-hash = "12ff5da9d9bc41c06665f74354ba6f2a4383ea54665e9aa873d983a8b105c4cf"
-diff --git a/pyproject.toml b/pyproject.toml
-index 8f5db44f8a7..73e31be5de7 100644
---- a/pyproject.toml
-+++ b/pyproject.toml
+Index: poetry-1.6.1/pyproject.toml
+===================================================================
+--- poetry-1.6.1.orig/pyproject.toml
++++ poetry-1.6.1/pyproject.toml
 @@ -34,7 +34,7 @@ python = "^3.8"
  
  poetry-core = "1.7.0"
@@ -106,11 +106,11 @@ index 8f5db44f8a7..73e31be5de7 100644
  cachecontrol = { version = "^0.13.0", extras = ["filecache"] }
  cleo = "^2.0.0"
  crashtest = "^0.4.1"
-diff --git a/src/poetry/inspection/info.py b/src/poetry/inspection/info.py
-index d1461d4ed76..e45046dceea 100644
---- a/src/poetry/inspection/info.py
-+++ b/src/poetry/inspection/info.py
-@@ -46,11 +46,10 @@
+Index: poetry-1.6.1/src/poetry/inspection/info.py
+===================================================================
+--- poetry-1.6.1.orig/src/poetry/inspection/info.py
++++ poetry-1.6.1/src/poetry/inspection/info.py
+@@ -46,11 +46,10 @@ import pyproject_hooks
  source = '{source}'
  dest = '{dest}'
  
@@ -125,7 +125,7 @@ index d1461d4ed76..e45046dceea 100644
          runner=pyproject_hooks.quiet_subprocess_runner,
      )
      env.install(builder.build_system_requires)
-@@ -58,7 +57,7 @@
+@@ -58,7 +57,7 @@ with build.env.IsolatedEnvBuilder() as e
      builder.metadata_path(dest)
  """
  
@@ -134,10 +134,10 @@ index d1461d4ed76..e45046dceea 100644
  
  
  class PackageInfoError(ValueError):
-diff --git a/src/poetry/installation/chef.py b/src/poetry/installation/chef.py
-index da8679df21f..bcbb77d5ba1 100644
---- a/src/poetry/installation/chef.py
-+++ b/src/poetry/installation/chef.py
+Index: poetry-1.6.1/src/poetry/installation/chef.py
+===================================================================
+--- poetry-1.6.1.orig/src/poetry/installation/chef.py
++++ poetry-1.6.1/src/poetry/installation/chef.py
 @@ -1,5 +1,6 @@
  from __future__ import annotations
  
@@ -145,7 +145,7 @@ index da8679df21f..bcbb77d5ba1 100644
  import tarfile
  import tempfile
  import zipfile
-@@ -43,12 +44,19 @@ def __init__(self, env: Env, pool: RepositoryPool) -> None:
+@@ -43,12 +44,19 @@ class IsolatedEnv(BaseIsolatedEnv):
          self._pool = pool
  
      @property
@@ -169,7 +169,7 @@ index da8679df21f..bcbb77d5ba1 100644
  
      def install(self, requirements: Collection[str]) -> None:
          from cleo.io.null_io import NullIO
-@@ -109,8 +117,7 @@ def _prepare(
+@@ -109,8 +117,7 @@ class Chef:
              env = IsolatedEnv(venv, self._pool)
              builder = ProjectBuilder(
                  directory,
