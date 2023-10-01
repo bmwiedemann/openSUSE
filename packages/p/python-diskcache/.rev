@@ -107,4 +107,12 @@
   * Fix peek when value is so large that a file is used</comment>
     <requestid>1108927</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>3a8507ecf0fcc8550c54995c667ca049</srcmd5>
+    <version>5.6.3</version>
+    <time>1696188130</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114013</requestid>
+  </revision>
 </revisionlist>

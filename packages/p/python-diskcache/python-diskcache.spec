@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-diskcache
 Version:        5.6.3
 Release:        0
