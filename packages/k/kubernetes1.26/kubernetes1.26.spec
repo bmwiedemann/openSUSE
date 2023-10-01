@@ -22,7 +22,7 @@
 %define baseversionminus1 1.25
 
 Name:           kubernetes%{baseversion}
-Version:        1.26.7
+Version:        1.26.9
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -51,7 +51,7 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.20.6
+BuildRequires:  go >= 1.20.8
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
@@ -75,8 +75,11 @@ for management and discovery.
 
 
 
-# packages to build containerized control plane
 
+
+
+
+# packages to build containerized control plane
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
@@ -122,6 +125,7 @@ Summary:        Kubernetes kubelet daemon
 Group:          System/Management
 Requires:       cri-runtime
 Requires:       kubernetes-kubelet-common
+Recommends:     kubernetes-kubelet-common = %{version}
 Provides:       kubernetes-kubelet%{baseversion} = %{version}
 Obsoletes:      kubernetes-kubelet%{baseversion} < %{version}
 %{?systemd_requires}
@@ -156,6 +160,7 @@ Requires:       kubernetes-kubeadm-criconfig
 Requires:       socat
 Requires(pre):  shadow
 Requires:       (kubernetes%{baseversion}-kubelet or kubernetes%{baseversionminus1}-kubelet)
+Recommends:     kubernetes%{baseversion}-kubelet
 
 %description kubeadm
 Manage a cluster of Linux containers as a single system to accelerate Dev and simplify Ops.
@@ -356,7 +361,18 @@ fi
 
 %post kubelet-common
 %fillup_only -an kubelet
+# Check if /etc/sysconfig/kubelet exists
+if [ -e "/etc/sysconfig/kubelet" ]; then
+  # Extract the value from the fillup file
+  UPDATED_KUBELET_VER=$(grep '^KUBELET_VER=' %{_fillupdir}/sysconfig.kubelet-kubernetes%{baseversion} | cut -d '=' -f2)
+  # Update the value in the sysconfig file
+  sed -i "s/^KUBELET_VER=.*/KUBELET_VER=$UPDATED_KUBELET_VER/" /etc/sysconfig/kubelet
+fi
 %service_add_post kubelet.service
+if [ $1 -eq 1 ]; then
+    # Check if modprobe command is available
+    [ ! -x /sbin/modprobe ] || { /sbin/modprobe br_netfilter && /sbin/modprobe overlay; } || true
+fi
 %if 0%{?suse_version} < 1500
 # create some subvolumes needed by CNI
 if [ ! -e %{_localstatedir}/lib/cni ]; then
@@ -372,6 +388,13 @@ fi
 
 %postun kubelet-common
 %service_del_postun kubelet.service
+
+%post kubeadm
+# Check if sysctl command is available
+if [ -x /usr/sbin/sysctl ]; then
+    # Run sysctl --system after the package installation
+    /usr/sbin/sysctl -p %{_sysctldir}/90-kubeadm.conf || true
+fi
 
 %files kubelet-common
 %doc README.md CONTRIBUTING.md CHANGELOG-%{baseversion}.md

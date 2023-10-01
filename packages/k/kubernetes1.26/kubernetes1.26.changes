@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Wed Sep 20 18:00:04 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- fixes for bsc#1214406
+- update `Wants` directive in [Unit] section of `kubelet.service`:
+  * add: `containerd.service`
+  * remove: `docker.service`
+- updating container runtime prerequisites:
+  (Refer: k8s.io/docs/setup/production-environment/container-runtimes/#install-and-configure-prerequisites)
+  * update `90-kubeadm.conf` to add below iptables rules:
+    - net.bridge.bridge-nf-call-iptables = 1
+    - net.bridge.bridge-nf-call-ip6tables = 1
+  * update `kubeadm.conf` to add `overlay` kernel module
+  * update .spec file to:
+    - add post-installation scriptlet for `kubeadm` package to enable iptables rules defined in `90-kubeadm.conf` using sysctl
+    - add conditional checks to load kernel modules (br_netfilter, overlay) in `kubelet-common` package post-installation scriptlet
+    - update `kubelet-common` post scriptlet to correctly update `KUBELET_VER` var in `/etc/sysconfig/kubelet` file based on fillup template
+- add below to `kubelet` subpackage to recommend installing correct version of package providing `kubernetes-kubelet-common` :
+  * `Recommends: kubernetes-kubelet-common = %{version}`
+- add below to `kubeadm` subpackage to recommend installing correct version of `kubelet` and `kubelet-common` packages:
+  * `Recommends: kubernetes%{baseversion}-kubelet`
+
+-------------------------------------------------------------------
+Wed Sep 20 09:25:03 UTC 2023 - priyanka.saggu@suse.com
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.20.8`
+- Update to version 1.26.9:
+  * Release commit for Kubernetes v1.26.9
+  * [go] Bump images, versions and deps to use Go 1.20.8
+  * Automated cherry pick of #119776: Fix a job quota related deadlock (#120321)
+  * TopologyAwareHints: Take lock in HasPopulatedHints
+  * Mark Job onPodConditions as optional in pod failure policy
+  * Update CHANGELOG/CHANGELOG-1.26.md for v1.26.8
+  * Incorporating feedback on 119341
+  * check for overflow
+  * Fix CEL cost handling of zero length replacement strings
+  * generate ReportingInstance and ReportingController in Event
+  * Pass Pinned field to kubecontainer.Image
+  * update otelhttp to v0.35.1
+  * prep for go1.21: use -e in go list
+  * Skip apiserver_admission_webhook_request_total during context-canceled
+  * Ignore context canceled from validate and mutate webhook failopen metric
+  * kubeadm: fix nil pointer when etcd member is already removed
+  * update to golangci-lint v1.54.1 + go-ruleguard v0.4.0
+  * fix: when PreFilter returns UnschedulableAndUnresolvable, copy the state in all nodes in statusmap
+  * Issue 4230: remove readiness check for cache exclusion
+  * run dummy command return status 0
+  * unit test not requiring priviledge
+  * Revert "Revert #114605: its unit test requires root permission"
+  * node: devicemgr: topomgr: add logs
+  * e2e: node: add test to check device-requiring pods are cleaned up
+  * e2e: node: devices: improve the node reboot test
+  * e2e: node: devicemanager: update tests
+  * kubelet: devices: skip allocation for running pods
+  * Add test coverage of result size of string operations
+  * Bump cel-go to v0.12.7
+
+-------------------------------------------------------------------
+Tue Sep 12 12:24:26 UTC 2023 - priyanka.saggu@suse.com
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.20.7`
+- Update to version 1.26.8:
+  * Release commit for Kubernetes v1.26.8
+  * Use environment varaibles for parameters in Powershell
+  * Use env varaibles for passing path
+  * Avoid returning nil responseKind in v1beta1 aggregated discovery
+  * [release-1.26] releng/go: Bump images, versions and deps to use Go 1.20.7 and update protoc
+  * e2e_node: move getSampleDevicePluginPod to device_plugin_test.go
+  * fix 'pod' in kubelet prober metrics
+  * priority & fairness: support dynamically configuring work estimator max seats
+  * events: fix EventSeries starting count discrepancy
+  * tools/events: fix data race when emitting series
+  * tools/events: retry on AlreadyExist for Series
+  * kubeadm: backdate generated CAs by 5 minutes
+  * client-go: allow to set NotBefore in NewSelfSignedCACert()
+  * Fix a data race in TopologyCache
+  * Fix TopologyAwareHint not working when zone label is added after Node creation
+
+-------------------------------------------------------------------
 Tue Aug  1 12:55:16 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Restore the correct content of the  kublet wrapper script (boo#1213829).
