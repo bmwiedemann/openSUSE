@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep 29 07:04:36 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 25.8.4
+  * Detect system dark theme preference via xdg settings portal on Linux.
+  * Fix heap buffer overflow in libvpx (CVE-2023-5217) (only Fedora 37 and Leap)
+- Do not build webextensions support which we do not use
+  * add backported build-without-extensions.patch
+
+-------------------------------------------------------------------
+Thu Sep 28 09:13:23 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 25.8.3
+  * Fixed a redundant permission popup while fetching screens and windows using desktopCapturer.getSources() on Wayland
+  * Fixed crash on shutdown in tls sockets with Node.js HTTP/2 connections.
+
+-------------------------------------------------------------------
+Mon Sep 25 16:53:17 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Use icu 73 on Leap
+  * drop NumberFormat-icu71-incrementExact.patch
+  * drop intl-objects-icu71-UNUM_APPROXIMATELY_SIGN_FIELD.patch
+  * drop v8-regexp-parser-UCHAR_BASIC_EMOJI.patch
+  * drop v8-icu69-FormattedNumberRange-no-default-constructible.patch
+- Fix unresolvable build on Leap 15.6
+
+-------------------------------------------------------------------
 Thu Sep 21 17:34:33 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 25.8.2

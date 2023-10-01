@@ -94,7 +94,7 @@ BuildArch:      i686
 %ifnarch %ix86 %arm aarch64
 # OBS does not have enough powerful machines to build with LTO on aarch64.
 
-%if (0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora})
+%if (0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora})
 %bcond_without lto
 %else
 %bcond_with lto
@@ -125,23 +125,21 @@ BuildArch:      i686
 %endif
 
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
 %bcond_without harfbuzz_5
 %bcond_without link_vulkan
 %bcond_without system_avif
-%bcond_without icu_71
 %bcond_without ffmpeg_5
 %bcond_without system_spirv
 %else
 %bcond_with harfbuzz_5
 %bcond_with link_vulkan
 %bcond_with system_avif
-%bcond_with icu_71
 %bcond_with ffmpeg_5
 %bcond_with system_spirv
 %endif
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 38
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora} >= 38
 %bcond_without system_aom
 %bcond_without system_vpx
 %else
@@ -170,20 +168,15 @@ BuildArch:      i686
 
 # Abseil is broken in Leap
 # enable this when boo#1203378 and boo#1203379 get fixed
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 37
-%if %{without clang}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora} >= 37
 %bcond_without system_abseil
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora} >= 39
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora} >= 39
 %bcond_without abseil_2023
 %else
 %bcond_with abseil_2023
 %endif
 
-%else
-# Clang has several problems with std::optional used by system abseil
-%bcond_with system_abseil
-%endif
 %else
 %bcond_with system_abseil
 %endif
@@ -204,7 +197,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        25.8.2
+Version:        25.8.4
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -224,10 +217,6 @@ Source52:       highway.gn
 # Reverse upstream changes to be able to build against ffmpeg-4
 Source400:      ffmpeg-new-channel-layout.patch
 Source401:      audio_file_reader-ffmpeg-AVFrame-duration.patch
-# …and against icu-69
-Source410:      NumberFormat-icu71-incrementExact.patch
-Source411:      intl-objects-icu71-UNUM_APPROXIMATELY_SIGN_FIELD.patch
-Source412:      v8-regexp-parser-UCHAR_BASIC_EMOJI.patch
 # and against harfbuzz 4
 Source415:      harfbuzz-replace-chromium-scoped-type.patch
 Source416:      harfbuzz-replace-HbScopedPointer.patch
@@ -309,7 +298,6 @@ Patch2022:      electron-13-fix-base-check-nomerge.patch
 # Fix electron patched code
 Patch2024:      electron-16-std-vector-non-const.patch
 Patch2029:      electron-16-webpack-fix-openssl-3.patch
-Patch2030:      v8-icu69-FormattedNumberRange-no-default-constructible.patch
 Patch2031:      partition_alloc-no-lto.patch
 Patch2032:      seccomp_bpf-no-lto.patch
 # adjust to llhttp 8 api changes
@@ -351,6 +339,8 @@ Patch3207:      absl-uint128-do-not-assume-abi.patch
 Patch3208:      mojo_ukm_recorder-missing-WrapUnique.patch
 Patch3209:      electron_browser_context-missing-variant.patch
 Patch3210:      electron_api_app-GetPathConstant-non-constexpr.patch
+# https://github.com/electron/electron/pull/40032
+Patch3211:      build-without-extensions.patch
 
 %if %{with clang}
 BuildRequires:  clang
@@ -510,20 +500,7 @@ BuildRequires:  pkgconfig(harfbuzz) >= 3
 %if %{with harfbuzz_5}
 BuildRequires:  pkgconfig(harfbuzz) >= 5
 %endif
-
-
-%if %{with icu_71}
 BuildRequires:  pkgconfig(icu-i18n) >= 71
-%else
-
-%if 0%{?fedora}
-BuildRequires:  libicu-devel < 70
-%else
-BuildRequires:  icu.691-devel
-%endif
-
-%endif
-
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(krb5)
 %if %{with ffmpeg_5}
@@ -584,6 +561,10 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Widgets)
 %endif
 BuildRequires:  pkgconfig(re2)
+%if %{without system_abseil}
+#re2-11 has abseil as a public dependency. The headers collide with the bundled ones, causing linker errors.
+BuildRequires:  cmake(re2) < 11
+%endif
 %if %{with system_spirv}
 %if 0%{?suse_version}
 BuildRequires:  spirv-headers
@@ -608,7 +589,7 @@ BuildRequires:  libjpeg-turbo-devel
 BuildRequires:  pkgconfig(vpx) >= 1.13~
 %endif
 %if %{without clang}
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
 BuildRequires:  gcc >= 12
 BuildRequires:  gcc-c++ >= 12
 %else
@@ -649,14 +630,6 @@ Group:          Development/Libraries/C and C++
 Requires:       nodejs-electron%{?_isa} = %{version}
 Requires:       pkgconfig(zlib)
 
-%if %{without icu_71}
-#SUSE patched code includes icu headers
-%if 0%{?fedora}
-Requires:       libicu-devel%{?_isa}
-%else
-Requires:       icu.691-devel%{?_isa}
-%endif
-%endif
 
 %description devel
 Development headers for Electron projects.
@@ -699,14 +672,6 @@ patch -R -p1 < %SOURCE400
 %if %{without harfbuzz_5}
 patch -R -p1 < %SOURCE415
 patch -R -p1 < %SOURCE416
-%endif
-
-%if %{without icu_71}
-patch -R -p1 < %SOURCE410
-patch -R -p1 < %SOURCE411
-patch -R -p1 < %SOURCE412
-%else
-patch -R -p1 < %PATCH2030
 %endif
 
 
@@ -843,7 +808,7 @@ export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory"
 %endif #ifarch ix86 arm
 
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
 export CC=gcc
 export CXX=g++
 export AR=gcc-ar
@@ -1108,7 +1073,8 @@ myconf_gn+=" enable_basic_printing=false"
 myconf_gn+=" enable_plugins=false"
 myconf_gn+=" enable_ppapi=false"
 
-
+#do not build webextensions support
+myconf_gn+=' enable_electron_extensions=false'
 
 # The option below get overriden by whatever is in CFLAGS/CXXFLAGS, so they affect only C++ code.
 # symbol_level=2 is full debug
