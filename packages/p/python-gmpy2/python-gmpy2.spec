@@ -25,9 +25,9 @@ License:        LGPL-3.0-only
 URL:            https://github.com/aleaxit/gmpy
 Source:         https://files.pythonhosted.org/packages/source/g/gmpy2/gmpy2-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/aleaxit/gmpy/pull/422 Update MPFR to 4.2.1 in build scripts & fix test failures on new version
-Patch:          mpfr421.patch
+Patch0:         mpfr421.patch
 # PATCH-FIX-UPSTREAM file included in https://github.com/aleaxit/gmpy/issues/418#issuecomment-1706721394
-Patch:          gmpy2_cache.c.diff
+Patch1:         gmpy2_cache.c.diff
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
