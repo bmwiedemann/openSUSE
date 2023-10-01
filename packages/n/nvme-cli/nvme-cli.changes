@@ -1,4 +1,219 @@
 -------------------------------------------------------------------
+Fri Sep 29 11:49:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 2.6:
+  * nvme: allocate payload buffer in create-ns command
+  * nvme-print-stdout: Add CAP.CPS and CAP.NSSS human readable outputs
+  * nvme: Add output-format default option instead of argconfig json option
+  * nvme: fw-download offset only describes FW offset, not file offset
+  * unit: add locale number test
+  * util: handle utf-8 thousend separators correctly
+  * nvme: Change to use NVME_ARGS verbose default option from OPT_ARGS
+  * fabrics: Fix NVMF_ARGS macro to use parameter n correctly
+  * nvme: Add verbose default option to show command debug output
+  * util: Fix to set argconfig output format json option correctly
+  * util: Split argconfig output format json function to set and get
+  * nvme: Spport Phy Rx Eye Opening Measurement Log
+  * nvme: Introduce nvme_realloc function
+  * nvme: Fix for fdpa reserved field printing
+  * completion: add 'version' and 'help' to list
+  * udev-rule: apply round-robin iopolicy on i/o subsystems alone
+  * nvme: Add support for the OAQD ID controller field
+  * plugins/solidigm: use static log macro to calc bitmask
+  * plugins/ocp: Rename FW activation history command
+  * nvme: auto free nvme_dev resource
+  * nvme: allocate aligned payloads for all nvme commands
+  * nvme: introduce alloc helper with alignment support
+  * util: add cleanup function for generic memory allocations
+  * nvme: append huge to nvme_{alloc|free} function
+  * nvme: fw_download use nvme_alloc only
+  * fabrics: Removing duplicate code and moving to libnvme
+  * nvme-print: omit size of protection information
+  * tree: Modify label name close_fd to close_dev
+  * fabrics: For TCP/RDMA, compare IP addresses with nvme_ipaddrs_eq()
+  * fabrics: lookup_discovery_ctrl() must look under host and not root
+  * nvme: Do not map status to errno codes
+  * completions: Add bash completion for DSSD Power state feature(FID: C7h)
+  * Documentation: Add document for DSSD Power state feature(FID: C7h)
+  * plugins/ocp: Add DSSD Power state feature(FID: C7h)
+  * avoid casting pointer arguments to argconfig functions
+  * nvme-print: Add support for EGFEAT, Domain Identifier, TEGCAP and UEGCAP
+  * nvme-print: Fix endurance_log whitespace changes
+  * nvme: Fix retrieval of telemetry log up to specified data area.
+  * nvme: Update list secondary command
+  * wdc: Add support for SN861 drive
+  * util: Set errno to 0 before strtol/stroul call
+  * nvme: Revert passthru and submit_io to print status to stderr from stdout
+  * plugins/zns: Fix offset in report zones
+  * nvme-rpmb: Fix nvme_show_id_ctrl_rpmbs() definition error
+  * fabrics: Use corresponding hostid when hostnqn is generated
+  * json: fix seg. fault converting NULL to JSON string
+  * nvme-cli: fix extended metadata size calculation
+  * nvme-print: Show subsystem iopolicy
+  * nvme-print-stdout: Do not show non reachable ns in namespace topology
+  * nvme-print: Fix show-topolocy for ctrls
+  * doc: Fix typo in documentation
+  * nvme-print-stdout: fix storage tag size label
+  * nvme-print-stdout: List only ctrls which are part of ns
+  * nvme-print-stdout: Support subsys reachable from several hosts
+  * ccan: Add htable, strset and dependencies
+  * ccan: Remove unused documentation
+  * nvme-print: Split max power flags
+  * nvme-print: fix counter while looping through uuid_list
+  * fabrics: only look for matching ctrl on same host
+  * README: Correct hugetlbfs spelling error
+  * util: Delete unused CFG_BOOL argconfig type as duplicated with CFG_FLAG
+  * util: Set LC_ALL=C as default if -H option is not used
+  * nvme: Add support for create-ns command endg-id option parameter
+  * nvme-print: fix argument order for show functions
+  * plugins/solidigm: Added Marketing Name Log support for Solidigm.
+  * nvme-print: Remove left overs from refactoring
+  * nvme-print: Move num argument parsing into callbacks
+  * nvme-print: Fix typo in callback definition
+  * scripts: Make release script project neutral
+  * scripts: Update update-docs.sh scripts
+  * scripts: Execute the scripts from toplevel directory
+  * scripts: Move helper scripts to a central place
+  * docs: Update file modes
+  * doc: Add information on --context
+  * nvmf-autoconnect: Annotate the context to autoconnect
+  * fabrics: Add support for volatile configuration
+  * plugins/solidigm: Formated log page directory table consistently with "nvme list" format.
+  * plugins/solidigm: Added Identify controller VU extensions parsing.
+  * nvme-print-json: Print PCI pysical slot number for controller
+  * nvme-print-stdout: Print PCI physical slot number for controller
+  * libnvme.wrap: Bump to 42ac453
+  * plugins/nbft: Use common code to parse print flags
+  * fabrics: Do not print device on connect per default
+  * fabrics: Revert 'fabrics: prevent 'nvme connect' to well-known discovery NQN'
+  * nvme-print: fix wrong list-subsys output when ns are attached to different ctrls
+  * plugins/micron: Correct NULL pointer checking error
+  * plugins/innogrit: Add vendor command get-eventlog and get-cdump
+  * nvme: Use correct data buffer size
+  * nvme: Fix quoted string split across lines to use quoted newline
+  * plugins/zns: Fix zns.c linux kernel check patch errors and warnings
+  * plugins/ymtc: Fix ymtc-nvme.c linux kernel check patch warning
+  * plugins/ymtc: Fix ymtc-nvme.c space indentation to tab indentation
+  * plugins/virtium: Fix virtium-nvme.c linux kernel check patch errors and warnings
+  * plugins/transcend: Fix transcend-nvme.c linux kernel check patch errors and warnings
+  * plugins/solidigm: Fix linux kernel check patch errors and warnings
+  * plugins/shannon: Fix shannon-nvme.c linux kernel check patch errors and warnings
+  * plugins/seagate: Fix seagate-nvme.c linux kernel check patch warnings
+  * plugins/scaleflux: Fix sfx-nvme.c linux kernel check patch errors and warnings
+  * plugins/netapp: Fix netapp-nvme.c linux kernel check patch errors and warnings
+  * plugins/nbft: Fix nbft-plugin.c linux kernel check patch warnings
+  * plugins/micron: Fix micron-nvme.c linux kernel check patch errors and warnings
+  * plugins/micron: Fix micron-nvme.c space indentation to tab indentation
+  * plugins/memblaze: Fix memblaze-nvme.c linux kernel check patch errors and warnings
+  * plugins/memblaze: Fix memblaze-utils.h space indentation to tab indentation
+  * plugins/memblaze: Fix memblaze-nvme.c space indentation to tab indentation
+  * plugins/intel: Fix intel-nvme.c linux kernel check patch errors and warnings
+  * plugins/inspur: Fix inspur-nvme.c linux kernel check patch warnings
+  * plugins/inspur: Fix inspur-nvme.c space indentation to tab indentation
+  * plugins/innogrit: Fix innogrit-nvme.c linux kernel check patch errors
+  * plugins/huawei: Fix huawei-nvme.c linux kernel check patch errors and warnings
+  * plugins/fdb: Fix fdb.c linux kernel check patch warnings
+  * plugins/dera: Fix dera-nvme.c linux kernel check patch errors and warnings
+  * plugins/amzn: Fix amzn-nvme.c linux kernel check patch error and warnings
+  * plugins/wdc: Fix wdc-utils.c linux kernel check patch errors and warnings
+  * plugins/wdc: Refactor wdc-nvme.c for linux kernel check patch errors and warnings
+  * util: Move falltrhough feature check to meson.builds
+  * ocp: Add eol plp failure mode json outputs
+  * nvme-print: Add nvme show result function
+  * nvme-print-json: Add json output result function
+  * nvme-print: Fix nvme_show_error() to call va_end() for json output format
+  * nvme: Fix nvme format block-size option handling
+  * Revert "nvme: Masks SSTAT in sanize-log output"
+  * fabrics: Fix NVMF_ARGS macro indentation error
+  * Documentation: Add document for OCP Device capability(LID: 0xC4) log page
+  * completions: Add bash completion for OCP Device capability(LID: 0xC4) log page
+  * plugins/ocp: Add Device capability(LID: 0xC4) log page
+  * udev: fix warning reported by udevadm verify
+  * fabrics: fix conditions in nvmf-autoconnect.service
+  * fabrics: Change NVMF_OPTS as NVMF_ARGS to fix linux kernel check patch error
+  * nvme: Split passthru commands read output
+  * nvme: Fix io-passthru command read metadata output
+  * plugin/ocp: Added implementation for 0xC1 log page
+  * util: Fix suffix_si_parse to parse no decimal point but suffix value correctly
+  * completions: Add zsh option values handling for sanitize command action
+  * completions: Add ocp sub commands zsh completion
+  * completions: Add ocp commands zsh completion
+  * completions: Add ocp commands bash completion
+  * nvmf-autoconnect: restart service to avoid dropping AEN
+  * solidigm: Reduce memory usage in supported log pages feature
+  * solidigm: Changes to supported log pages feature requested by review
+  * solidigm: Add supported log pages log feature to Solidigm plugin
+  * plugins/ocp: Added ocp unsupported requirements log page
+  * completions: Add bash option values handling for sanitize command action
+  * doc: Correct nvme-show-hostnqn command NAME description
+  * completions: Add missing zsh commands descriptions
+  * plugins/wdc: Extend SN530 support.
+  * Fix incorrect article 'an' as 'a' to use for descriptions and message
+  * nvme: Set effects-log command csi option help message string
+  * completions: bash: Delete unsupported id-iocs command options
+  * completions: bash: Add id-domain command
+  * completions: Fix nvm-id-ns-lba-format command zsh definition
+  * completions: Add json command option
+  * nvme: Fix get-feature command sel parameter check to allow value 8
+  * util: Delete unnecessary argconfig definitions OPT_VAL and CFG_VAL
+  * util: Delete argconfig value type to add option value as va lists instead
+  * util: Split to set argconfig option value
+  * util: Delete argconfig value length to calcurate instead
+  * nvme: Change sanitize command action option to use argconfig parse value
+  * util: Add argconfig parse value function
+  * util: Delete unused argconfig subopts type
+  * util: Delete unused argconfig file types
+  * util: Delete unused argconfig help function
+  * nvme-wrap: do_admin_args_op should not clear args timeout
+  * nvme: Fix linux kernel check patch warnings
+  * nvme: Fix linux kernel check patch errors
+  * plugins/ocp: Add telemetry-log command to OCP plugin
+  * plugins/ocp: Add OCP set latency monitor feature command
+  * plugins/ocp: Fix endianness in Latency Monitor Log output
+  * plugins/ocp: Add missing fields in Latency Monitor Log
+  * plugins/ocp: Fix typos in Latency Monitor Log
+  * plugins/ocp: Reorganize OCP plugin source code
+  * tests: Add tests for controller reset
+  * plugin/solidigm: Added vs-internal-log command.
+  * nvme: Add nvme_show_perror to use instead of perror for json output
+  * nvme-print-json: Use vasprintf instead of vsnprintf to allocate string
+  * nvme: fix rnlpt to_string() values.
+  * nvme: fix io_mgmt args parse error
+  * fdp: set-events feature is saveable
+  * fabrics: Return errno value as negative
+  * fabrics: Fix linux kernel check patch errors and warnings
+  * nbft: add the nbft show plugin
+  * nbft: added NBFT v1.0 table support
+  * nbft: make lookup_ctrl function public
+  * nvme: Fix indentation errors around nvme show error API
+  * nvme: Check validate output format err value instead of flags
+  * nvme: Use nvme show error API to outptu stderr messages for json format
+  * util: Check output format json for json error message output
+  * nvme-printf: Add show error function for nvme list command json output
+  * nvme: Add zns specfic field for create ns
+  * nvme: Add ns-mgmt host software specified fields
+  * nvme: Add dtype, dspec on write-zeroes, write-uncor
+  * nvme-print: Add new fields print on id directive
+  * nvme-print: Add VWCNP on NSFEAT of id-ns
+  * nvme: Fix format command to skip to reread NSID all block device
+  * plugins/solidigm: Fixes and clean-up of Telemetry parse code. Fixed parsing of 64 bit values. Fixed COD field name. Fixed compilation warnings when compiling for 32 bit. Added missing free(). Consolidated single entry function to telemetry parser. Consolidated use of integer types.
+  * doc: Documentations maintenance changes
+  * doc: Add nvme-mi-send command documentation
+  * doc: Add nvme-mi-recv command documentation
+  * doc: Add clear-pcie-correctable-error-counters command documentation
+  * doc: Add eol-plp-failure-mode command documentation
+  * plugins/solidigm: Add firmware activation history log to Solidigm plugin
+  * plugins/ocp: Add firmware activation history log to OCP plugin
+  * nvme-print: Use enum nvme_print_flags for nvme_show_id_ctrl
+  * nvme: Add support for NVMe-MI send command
+  * nvme: Use stdout for passthru and submit_io commands success messages
+  * nvme: Fix passthru command function indentation errors
+  * nvme: Add support for NVMe-MI receive command
+  * fabrics: fix fc config JSON file handling
+- Refresh 0100-harden_nvmf-connect@.service.patch
+- Fix install path for nvme-regress script
+
+-------------------------------------------------------------------
 Fri Mar 31 15:44:20 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.4:

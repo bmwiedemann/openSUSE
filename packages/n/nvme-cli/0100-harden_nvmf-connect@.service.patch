@@ -1,4 +1,7 @@
-Subject: systemd hardening effort
+From a4fe9c98d74447ca96ba59610368486640fdbfd6 Mon Sep 17 00:00:00 2001
+From: Daniel Wagner <dwagner@suse.de>
+Date: Fri, 29 Sep 2023 14:28:16 +0200
+Subject: [PATCH] systemd hardening effort
 
 https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 
@@ -7,12 +10,14 @@ Apply the recommended hardening settings but without
 
 Signed-off-by: Daniel Wagner <dwagner@suse.de>
 ---
- nvmf-autoconnect/systemd/nvmf-connect@.service.in |    8 ++++++++
+ nvmf-autoconnect/systemd/nvmf-connect@.service.in | 8 ++++++++
  1 file changed, 8 insertions(+)
 
+diff --git a/nvmf-autoconnect/systemd/nvmf-connect@.service.in b/nvmf-autoconnect/systemd/nvmf-connect@.service.in
+index 5ba708..129cb4 100644
 --- a/nvmf-autoconnect/systemd/nvmf-connect@.service.in
 +++ b/nvmf-autoconnect/systemd/nvmf-connect@.service.in
-@@ -9,6 +9,14 @@ PartOf=nvmf-connect.target
+@@ -11,6 +11,14 @@ PartOf=nvmf-connect.target
  Requires=nvmf-connect.target
  
  [Service]
@@ -26,4 +31,7 @@ Signed-off-by: Daniel Wagner <dwagner@suse.de>
 +RestrictRealtime=true
  Type=simple
  Environment="CONNECT_ARGS=%i"
- ExecStart=/bin/sh -c "@SBINDIR@/nvme connect-all --quiet `/bin/echo -e '${CONNECT_ARGS}'`"
+ ExecStart=/bin/sh -c "@SBINDIR@/nvme connect-all --context=autoconnect --quiet `/bin/echo -e '${CONNECT_ARGS}'`"
+-- 
+2.42.0
+

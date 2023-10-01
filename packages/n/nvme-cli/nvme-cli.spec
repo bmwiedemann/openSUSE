@@ -17,7 +17,7 @@
 
 
 Name:           nvme-cli
-Version:        2.4
+Version:        2.6
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
@@ -98,7 +98,7 @@ install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/discovery.conf
 rm %{buildroot}%{_sysconfdir}/dracut/dracut.conf.d/70-nvmf-autoconnect.conf
 
 # for subpackage nvme-cli-regress-script:
-install -m 744 -D regress %{buildroot}%{_sbindir}/nvme-regress
+install -m 744 -D scripts/regress %{buildroot}%{_sbindir}/nvme-regress
 
 mkdir -p %{buildroot}%{_sbindir}
 pushd %{buildroot}%{_sbindir}

@@ -634,4 +634,12 @@
     <user>anag+factory</user>
     <comment>https://bugzilla.suse.com/show_bug.cgi?id=1213712</comment>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>55b451275216a603ef2bef79af77e486</srcmd5>
+    <version>2.6</version>
+    <time>1696188104</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114411</requestid>
+  </revision>
 </revisionlist>
