@@ -1403,4 +1403,41 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     Bug fix release.</comment>
     <requestid>1110464</requestid>
   </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>b7d210a04fb3f441f9cc649c62587237</srcmd5>
+    <version>2.2.12</version>
+    <time>1696188138</time>
+    <user>anag+factory</user>
+    <comment>- Submit latest mutt 2.2.12 to SLE-15-SP6 for jira#PED-5580
+  * Drop patches for boo#1172906, boo#1172935, CVE-2020-14093,
+    and CVE-2020-14154 now upstream
+    - 3e88866dc60b5fa6aaba6fd7c1710c12c1c3cd01.patch
+      + Prevent possible IMAP MITM via PREAUTH response.
+    - mutt-1.10.1-backport-mutt_ssl_gnutls-1.14.3.dif
+      to port mutt_ssl_gnutls.c from mutt 1.14.3 back
+      + expired certs not properly rejected with GnuTLS
+      + Side effect is support of TLSv1_3 is supported by gnutls
+  * Drop patch for bsc#1173197 c547433cdf2e79191b15c6932c57f1472bfb5ff4.dif
+    now upstream
+    - Fix CVE-2020-14954: STARTTLS buffering issue allowing man
+      in the middle attack of IMAP, SMTP and POP3
+  * Drop patch for bsc#1179035, CVE-2020-28896.patch now upstream
+    - incomplete connection termination could lead to sending
+      credentials over unencrypted connections 
+  * Drop patch for bsc#1179113 and boo#1179461 nofreeze-c72f740a.patch
+    now upstream
+    - Avoid that message with a million tiny parts can freeze MUA
+      for several minutes
+  * Drop patch for bsc#1181221, CVE-2021-3181 mutt-colon.patch now
+    upstream
+    - recipient parsing memory leak. This patch combines three
+      smaller commits 
+  * Drop patch for bsc#1198518, CVE-2022-1328 uudecode-e5ed080c.patch
+    - fix a buffer overflow in uudecoder
+  * Drop patches now upstream
+    - CVE-2023-4874-part1.patch (bsc#1215189 for CVE-2023-4874)
+    - CVE-2023-4874-part2.patch (bsc#1215189 for CVE-2023-4874)
+    - CVE-2023-4875.patch (bsc#1215191 for CVE-2023-4875)</comment>
+    <requestid>1114300</requestid>
+  </revision>
 </revisionlist>
