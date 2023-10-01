@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libnvme
-Version:        1.4
+Version:        1.6
 Release:        0
 Summary:        Linux-native nvme device management library
 License:        LGPL-2.1-or-later

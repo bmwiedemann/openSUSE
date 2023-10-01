@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Fri Sep 29 11:42:15 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.6:
+  * docs: Fix Read-the-Docs configuration (deprecated config param)
+  * mi-mctp: Fix free() in error path of mi_open_mctp
+  * types: Use NVME_SET for status type mask to get status value
+  * types: Define FLBAS MASK and SHIFT to use NVME_GET
+  * types: Support Phy Rx Eye Opening Measurement Log
+  * log: Add nvme root global variable to set for default output
+  * types: Add support for the OAQD ID controller field
+  * test: use non deprecated API
+  * test: add tests for Get/Set Features functions
+  * ioctl: implement nvme_set_features_lba_range()
+  * ioctl: pass NSID in Get/Set Features commands that use it
+  * ioctl: fix swapped parameters in nvme_set_features_host_id()
+  * ioctl: export nvme_{g,s}et_features_iocs_profile()
+  * ioctl: pass ENDGID in nvme_get_features_endurance_event_cfg()
+  * ioctl: don't set SAVE bit on unsaveable features
+  * ioctl: avoid sending uninitialized timestamp
+  * ioctl: pass data for Get/Set Features commands
+  * ioctl: set correct bits in Set Features commands
+  * ioctl: correct feature IDs in Get/Set Features commands
+  * tree: Add 2 new public functions to lookup existing controllers
+  * ioctl: Add debugging feature to show command outputs
+  * Fix incorrect article 'an' as 'a' to use for a description
+  * linux: Added functions to enable faster telemetry data retrieval. Moved telemetry data area support detection into separate function. Added possibility to modify data transfer chunk size. Enable telemetry extraction up to specified data area. Removed some printf() and perror().
+  * test: account for discovery log page entry stripping
+  * fabrics: unconditionally strip discovery entry strings
+  * fabrics: only look for spaces in strchomp()
+  * tree: Use early return instead of else statements
+  * test: fix lookup test case
+  * test: make all function static
+  * test: add tests for new tcp controller matching algorithm
+  * tree: Improve TCP controller matching algorithm
+  * util: Add functions to parse the system's interfaces
+  * types: Add support for EGFEAT, Domain Identifier, TEGCAP and UEGCAP
+  * mi: remove nsid from nvme_mi_admin_identify_secondary_ctrl_list()
+  * test: add tests for nvme_ctrl_get_src_addr()
+  * tree: Add nvme_ctrl_get_src_addr() to get the controller's src_addr
+  * util: Split _nvme_ipaddrs_eq() from nvme_ipaddrs_eq()
+  * test: add tests for Identify functions
+  * ioctl: use available Identify helper functions
+  * test: pass a large enough buffer to nvme_identify_ns_descs()
+  * ioctl: remove nsid from nvme_identify_secondary_ctrl_list()
+  * meson: Don't hard-code path to "internal/config.h"
+  * fabrics: Do not pass disable_sqflow if not supported
+  * fabrics: Read the supported options lazy
+  * test: add discovery log page tests
+  * test: add infra for mocking passthru ioctls
+  * tree: fix segfault in nvme_scan_subsystem()
+  * src/nvme/tree.c: make __nvme_scan_subsystem() returning bool
+  * doc: fix minor mistake in README.md about dependencies
+  * nvme-tree: avoid warning in 'list-subsys'
+  * tree: Add getter for subsystem iopolicy
+  * fabrics: Consider also all hosts settings for context match
+  * tree: Scan all subsystems
+  * doc: Fixing compile instruction in README
+  * mi: allow non-4-byte-aligned responses
+  * mi-mctp: use a linear response buffer
+  * mi: implement length and offset alignment checks in admin_xfer()
+  * tree: Don't open nvme devices until it's absolutely required
+  * tree: missing closedir() causes fd leak for "/sys/bus/pci/slots"
+  * mi: don't return from mi_mctp_submit with a tag held
+  * util: Provide empty nvme_ipaddrs_eq for static builds
+  * fabrics: Relax match on well known disc ctrl lookup
+  * tree: Ignore NULL address pointer for phy slot lookup
+  * fabrics: Filter discovery ctrls out during application context check
+  * util: Add ignored error code
+  * json: Use memory block allocated by realloc() instead printbuf
+  * util: Use HAVE_NETDB instead of HAVE_LIBNSS
+  * tree: Add PCI physical slot number for controller
+  * tree: Use nvme_ipaddrs_eq() to compare IP addresses
+  * fabrics: Add EADDRNOTAVAIL error mapping
+  * fabrics: filter out subsystems with non-matching application string
+  * libnvme: add 'application' setting to nvme_root
+  * libnvme: add 'application' setting to the subsystem
+  * test: Add more code coverage for nvme_ipaddrs_eq()
+  * util: rename ipaddrs_eq() to nvme_ipaddrs_eq() and make public.
+  * util: Add ipaddrs_eq() to check whether two IP addresses are equal
+  * test: Add unit test for ctrl lookups
+  * ioctl: fix RAE bit on last Get Log Page command
+  * fabrics: check genctr after getting discovery entries
+  * fabrics: handle /dev/nvme-fabrics read failure
+  * fabrics: fix potential invalid memory access in __nvmf_supported_option()
+  * Python: Fix crash during garbage collection
+  * python/swig: Check swig version to determine whether -py3 is needed
+  * python/swig: Wrap swig-sensitive struct inside #ifwdef SWIG
+  * mi: Add nvme_mi_ctrl_id to retrieve controller ID
+  * Python: Suppress swig warnings about unnamed struct
+  * examples: fix incorrect controller status in MI info output
+  * ioctl: Explicitly initialize all members of struct nvme_ns_mgmt_args
+  * Python: make NBFT data more pythonic
+  * ioctl: io management send, receive args fix
+  * python: Update test data
+  * NBFT: Remove documentation from nbft.c since it's also in nbft.h
+  * Python: Add NBFT support
+  * nbft: Doc typo - Use nvme_nbft_free() instead of nbft_free()
+  * nbft: Parse the {HOSTID,HOSTNQN}_CONFIGURED flags
+  * nbft: Fix nbft_ssns_flags endianness test
+  * nbft: Add a simple unit test
+  * doc: Update README
+  * build: Simple muon build configuration
+  * build: Extend summary section
+  * build: Make json-c dependency lookup not fail
+  * nbft: Move added symbols to LIBNVME_1_5
+  * build: Update wrap mode defaults
+  * build: Disable fallback on default
+  * tree: Fix offset argument check in nvme_bytes_to_lba
+  * nbft: add NBFT v1.0 table support
+  * types: Add IO command set specific field on nsmgmt
+  * fabrics: Do not pass unsupported options to kernel
+  * types: Add ns-mgmt host software specified fields
+  * types.h: Add FDP related Status Code
+  * tree: Fix argument check in nvme_bytes_to_lba
+
+-------------------------------------------------------------------
 Thu Jul 27 13:10:34 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Fix build with meson 1.2.0 
