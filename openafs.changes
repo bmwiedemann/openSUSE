@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  2 07:29:50 UTC 2023 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- apply upstream-patches for kernel 6.5: 
+  * 63801cf.diff
+  * d15c7ab.diff
+  * fef2457.diff
+  * 538f450.diff
+  * 474750a.diff
+
+-------------------------------------------------------------------
 Mon Jul 10 10:24:31 UTC 2023 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - update to official openafs-1.8.10

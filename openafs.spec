@@ -61,7 +61,7 @@
 
 Name:           openafs
 
-Version:        1.8.10
+Version:        1.8.10.1
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
@@ -102,6 +102,13 @@ Source57:       openafs.ThisCell
 Source58:       openafs.cacheinfo
 Source98:       kmp_only.files
 Source99:       openafs.changes
+
+# PATCH-FIX-UPSTREAM fix build with kernel 6.5
+Patch1:         fef2457.diff
+Patch2:         d15c7ab.diff
+Patch3:         63801cf.diff
+Patch4:         538f450.diff
+Patch5:         474750a.diff
 
 #	GENERAL BuildRequires and Requires
 #
@@ -312,6 +319,11 @@ for src_file in %{S:0}  %{S:1}; do
 done
 
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 ./regen.sh
 
