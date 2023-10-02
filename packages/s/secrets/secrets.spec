@@ -17,12 +17,12 @@
 
 
 Name:           secrets
-Version:        7.3
+Version:        8.0
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-or-later
 URL:            https://gitlab.gnome.org/World/secrets
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -31,7 +31,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 3.7.0
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
-BuildRequires:  python3-pykeepass >= 4.0.3
+BuildRequires:  python3-pykeepass >= 4.0.6
 BuildRequires:  python3-pyotp >= 2.4.0
 BuildRequires:  python3-pytest
 BuildRequires:  python3-validators
@@ -73,12 +73,14 @@ sed -i -e '1{s,^#!@PYTHON@,,}' gsecrets/const.py.in
 
 %build
 %meson \
-	-D tests=true \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
+# Explicitly create the pycache/.pyc files, not relying on the
+# generation done by meson. Should make the package reproducible.
+%py3_compile %{buildroot}%{python3_sitelib}/gsecrets
 %find_lang %{name} %{?no_lang_C}
 
 %check
