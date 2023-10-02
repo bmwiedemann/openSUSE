@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of rmt-server-image</comment>
     <requestid>1105178</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fabbc2995271d89432748af1d0854961</srcmd5>
+    <version>unknown</version>
+    <time>1696269889</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1114206</requestid>
+  </revision>
 </revisionlist>
