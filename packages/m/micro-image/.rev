@@ -39,4 +39,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1101540</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>9102346a7d1c6b9789d6d1cd04e2033a</srcmd5>
+    <version>2023</version>
+    <time>1696269874</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1114180</requestid>
+  </revision>
 </revisionlist>
