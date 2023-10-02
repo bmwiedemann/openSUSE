@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.5.2
+%define real_version 6.5.3
 %define short_version 6.5
 %define tar_name qtspeech-everywhere-src
 %define tar_suffix %{nil}
@@ -27,12 +27,12 @@
 %endif
 #
 Name:           qt6-speech%{?pkg_suffix}
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        Qt 6 TextToSpeech Library and Plugin
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
-Source:         https://www.nic.funet.fi/pub/mirrors/download.qt-project.org/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
