@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 28 09:03:33 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Remove unneded requires and buildrequires icinga-php-common.
+- Add missing requires.
+
+-------------------------------------------------------------------
+Fri Sep 22 12:42:07 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.13.0
+  - No changelog from upstream.
+
+-------------------------------------------------------------------
 Sun Jul 16 08:12:48 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.12.0

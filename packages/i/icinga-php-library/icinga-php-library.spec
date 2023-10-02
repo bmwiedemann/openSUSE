@@ -20,7 +20,7 @@
 %global module_name icinga-php-library
 %global basedir %{_datadir}/icinga-php/ipl
 Name:           %{module_name}
-Version:        0.12.0
+Version:        0.13.0
 Release:        %{revision}%{?dist}
 Summary:        Icinga PHP Library for Icinga Web 2
 License:        MIT
@@ -28,10 +28,16 @@ Group:          System/Monitoring
 URL:            https://icinga.com
 Source0:        https://github.com/Icinga/%{module_name}/archive/v%{version}/%{module_name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
-BuildArch:      noarch
 BuildRequires:  fdupes
-BuildRequires:  icinga-php-common
-Requires:       icinga-php-common
+Requires:       php-gettext
+Requires:       php-intl
+Requires:       php-json
+Requires:       php-openssl
+Requires:       php-pdo
+Obsoletes:      icinga-php-common < %{version}
+Obsoletes:      icinga-php-common > %{version}
+Provides:       icinga-php-common = %{version}
+BuildArch:      noarch
 
 %description
 This project bundles all Icinga PHP libraries into one
@@ -56,6 +62,7 @@ cp -vr VERSION %{buildroot}%{basedir}
 %files
 %doc README.md
 %license LICENSE
+%dir %{_datadir}/icinga-php
 %{basedir}
 
 %changelog
