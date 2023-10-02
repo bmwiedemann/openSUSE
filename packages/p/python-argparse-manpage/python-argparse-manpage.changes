@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  2 09:23:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5:
+  * We newly provide build_manpages.build_py and build_manpages.install
+    command classes that are re-usable from pyproject.toml.
+    No need to provide setup.py because of argparse-manpage.
+  * The prog= specifier (in setup.py/setup.cfg/pyproject.toml) is
+    now better handled so it doesn't conflict with
+    ArgumentParser(prog=..).
+
+-------------------------------------------------------------------
 Thu Jun 15 09:42:01 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.3:
@@ -20,7 +31,7 @@ Sun Apr 16 17:02:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Nov  7 20:46:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v4 
+- Update to v4
   News in v4
   The manual page generator logic is now separated from the 'build_manpages'
   module (which provides setup.py integration helpers). Therefore the

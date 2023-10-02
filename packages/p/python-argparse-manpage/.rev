@@ -126,4 +126,20 @@ tools.</comment>
   * Skip pip install tests for now.</comment>
     <requestid>1093250</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cdefbc8d0b6806a72eb30797a1a3a8a3</srcmd5>
+    <version>4.5</version>
+    <time>1696270035</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.5:
+  * We newly provide build_manpages.build_py and build_manpages.install
+    command classes that are re-usable from pyproject.toml.
+    No need to provide setup.py because of argparse-manpage.
+  * The prog= specifier (in setup.py/setup.cfg/pyproject.toml) is
+    now better handled so it doesn't conflict with
+    ArgumentParser(prog=..).
+
+- Update to v4</comment>
+    <requestid>1114782</requestid>
+  </revision>
 </revisionlist>
