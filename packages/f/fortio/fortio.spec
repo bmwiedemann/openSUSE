@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           fortio
-Version:        1.60.1
+Version:        1.60.2
 Release:        0
 Summary:        Load testing library, command line tool, advanced echo server and web UI
 License:        Apache-2.0
@@ -42,8 +42,7 @@ Fortio is a fast, small (3Mb docker image, minimal dependencies), reusable, embe
 Fortio also includes a set of server side features (similar to httpbin) to help debugging and testing: request echo back including headers, adding latency or error codes with a probability distribution, tcp echoing, tcp proxying, http fan out/scatter and gather proxy server, GRPC echo/health in addition to http, etc...
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p1 -a 1
 
 %build
 go build \
