@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1112991</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>78b66314da2905f7cdef5b261d420d5b</srcmd5>
+    <version>unknown</version>
+    <time>1696269880</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1114188</requestid>
+  </revision>
 </revisionlist>
