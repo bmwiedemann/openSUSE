@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 28 14:29:09 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- add copyright and description header
+
+-------------------------------------------------------------------
 Fri Jul  7 10:47:40 UTC 2023 - Dirk Mueller <dmueller@suse.com>
 
 - Add the php8-readline package, which is required for interactive mode
