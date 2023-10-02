@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 29 11:08:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.160.0:
+  * Release notes for 0.160.0
+  * Bump dependencies
+  * Add support for EKS 1.28
+  * Prepare for next development iteration (#7093)
+
+-------------------------------------------------------------------
 Tue Sep 26 14:19:57 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.159.0:
