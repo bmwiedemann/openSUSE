@@ -17,8 +17,6 @@
 
 
 %define binaries csvclean csvcut csvformat csvgrep csvjoin csvjson csvlook csvpy csvsort csvsql csvstack csvstat in2csv sql2csv
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-csvkit
 Version:        1.1.1
 Release:        0
@@ -28,26 +26,19 @@ Group:          Development/Languages/Python
 URL:            https://github.com/wireservice/csvkit
 Source0:        https://files.pythonhosted.org/packages/source/c/csvkit/csvkit-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/wireservice/csvkit/5f22e664121b13d9ff005a9206873a8f97431dca/examples/testdbf_converted.csv
-BuildRequires:  %{python_module SQLAlchemy >= 0.9.3 with %python-SQLAlchemy < 2}
-BuildRequires:  %{python_module Sphinx >= 1.0.7}
-BuildRequires:  %{python_module aenum}
 BuildRequires:  %{python_module agate >= 1.6.1}
 BuildRequires:  %{python_module agate-dbf >= 0.2.0}
 BuildRequires:  %{python_module agate-excel >= 0.2.2}
 BuildRequires:  %{python_module agate-sql >= 0.5.3}
-BuildRequires:  %{python_module dbf >= 0.9.3}
-BuildRequires:  %{python_module et_xmlfile}
-BuildRequires:  %{python_module jdcal}
-BuildRequires:  %{python_module openpyxl >= 2.2.0.b1}
-BuildRequires:  %{python_module python-dateutil >= 2.2}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.10}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module xlrd >= 0.9.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-agate
 Requires:       python-agate-dbf
 Requires:       python-agate-excel
 Requires:       python-agate-sql
+Requires:       (python-importlib-metadata if python-base < 3.10)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -79,7 +70,7 @@ done
 
 %check
 export LANG=en_US.UTF-8
-%python_exec -m unittest discover -s tests/ -v
+%pyunittest discover -s tests/ -v
 
 %post
 %{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do

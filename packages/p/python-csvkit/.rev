@@ -438,4 +438,12 @@
     <comment>- require sqlalchemy &lt; 2 due to agate-sql</comment>
     <requestid>1089744</requestid>
   </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>95a8de0df0e75a1f4962604b3fcbf324</srcmd5>
+    <version>1.1.1</version>
+    <time>1696269975</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114540</requestid>
+  </revision>
 </revisionlist>

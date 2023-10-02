@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 29 13:18:54 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+-  cleanup package requires and buildrequires
+
+-------------------------------------------------------------------
 Tue May 30 08:21:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - require sqlalchemy < 2 due to agate-sql 
