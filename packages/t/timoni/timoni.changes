@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Oct 02 08:39:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.0:
+  * Enable dark mode for docs website
+  * Remove `--source` flag from `timoni mod push` The source
+    annotation is now set automatically from Git metadata. The
+    source can also be explicitly set using `timoni mod push
+    --annotation='org.opencontainers.image.source=<URL>`.
+  * Document artifact media types and annotations
+  * Consolidate artifact annotations
+    - Use the OCI version annotation for modules
+    - Set the source, revision and created annotation from Git
+      metadata
+    - Rename `--annotations` to `--annotation` arg in `timoni mod
+      push`
+    - Allow overriding the source and revision values with the
+      `--annotation` flags
+  * Document bundle distribution
+  * Add artifact commands to docs index
+  * Add `artifact list` command
+  * Add `ArtifactReference` to API
+  * Store the module's schemas is dedicated layer
+  * Test artifacts operations
+  * Refactor artifacts operations
+  * Add registry login/logout to docs
+  * Add registry login/logout commands
+  * Refactor artifacts operations
+  * Push Timoni schemas to GCHR
+  * Add cmd for pulling generic artifacts
+  * Add cmd for pushing generic artifacts
+  * Add debug values to init module
+  * Document Kubernetes APIs and CRDs vendoring
+  * Bump the ci group with 1 update
+  * Vendor Kubernetes GA APIs into minimal
+  * Update the docs with the core schemas
+  * Push schemas to `ghcr.io/stefanprodan/timoni/schemas`
+  * Use `timoni.sh/core/v1alpha1` schemas in minimal
+  * Introduce Timoni's core schemas
+    - `#Image` defines the schema for an OCI image reference.
+    - `#Metadata` defines the schema for the Kubernetes object
+      metadata.
+    - `#Selector` defines the schema for Kubernetes pod label
+      selector used in Deployments, Services, Jobs, etc.
+  * Add commands for vendoring CUE schemas - `timoni mod vendor
+    k8s` - `timoni mod vendor crds -f`
+  * Refactor examples
+    - Move podinfo module to
+      https://github.com/stefanprodan/podinfo/tree/master/timoni/podinfo
+    - Update Redis module to v7.2.1
+    - Update Minimal module to nginx v1.25.2
+    - Update docs to point to the new example modules versions
+  * Add cmd for importing Kubernetes API schemas
+  * Add spinner to mod import crd
+  * Fetch CRDs over HTTPS
+  * Extract CRDs from multi-doc YAMLs This allows importing CRDs
+    from multi-doc YAML files that contain other Kubernetes
+    resources besides just CRDs.
+  * engine: Refactor the CRD importer Add a top level function for
+    converting multi-doc YAML files to CUE definition. The function
+    returns key value pairs, contain a unique identifier in the
+    format `<group>/<kind>/<version>` and the contents of the CUE
+    definition.
+  * Bump the ci group with 2 updates
+  * Add tests for `mod import crd`
+  * Implement Kubernetes CRD import command
+  * engine: Remove status from CRD cue gen
+  * Bump the ci group with 2 updates
+  * docs: Add the Runtime API to comparison doc
+  * bundle: Fix values merge with module defaults
+
+-------------------------------------------------------------------
 Mon Sep 11 05:01:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.13.1:
