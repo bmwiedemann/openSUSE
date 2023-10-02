@@ -643,4 +643,16 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
 </comment>
     <requestid>1095563</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>078d3e81f822425e5790946dde4c5625</srcmd5>
+    <version>3.4</version>
+    <time>1696270074</time>
+    <user>anag+factory</user>
+    <comment>- Poedit 3.4:
+  * Added support for syncing with Localazy translation platform.
+  * Added support for new features of GNU gettext 0.22.
+  * Assorted UI improvements/fixes.
+</comment>
+    <requestid>1114812</requestid>
+  </revision>
 </revisionlist>

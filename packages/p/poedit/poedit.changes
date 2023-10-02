@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  2 09:27:17 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Poedit 3.4:
+  * Added support for syncing with Localazy translation platform.
+  * Added support for new features of GNU gettext 0.22.
+  * Assorted UI improvements/fixes.
+
+-------------------------------------------------------------------
 Tue Jun 27 08:56:40 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Poedit 3.3.2:
