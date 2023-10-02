@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.5.2
+%define real_version 6.5.3
 %define short_version 6.5
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -38,7 +38,7 @@ Summary:        Qt 6 Tools libraries and tools
 # 'GPL-3.0-only WITH Qt-GPL-exception-1.0' files in this folder are only used on Windows.
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-3.0-only WITH Qt-GPL-exception-1.0
 URL:            https://www.qt.io
-Source:         https://www.nic.funet.fi/pub/mirrors/download.qt-project.org/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source10:       org.qt.designer6.desktop
 Source11:       org.qt.linguist6.desktop
 Source12:       org.qt.qdbusviewer6.desktop
