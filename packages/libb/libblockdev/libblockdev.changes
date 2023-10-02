@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 29 07:48:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.0.3:
+  * Always use "--fs ignore" with lvresize
+  * nvme:
+    - Use interim buffer for nvme_get_log_sanitize()
+    - Generate HostID when missing
+  * tests:
+    - Specificy required versions when importing GLib and BlockDev
+      introspection
+    - Minor NVMe HostNQN fixes
+    - Replace deprecated unittest assert calls
+  * fs:
+    - Fix leaking directories with temporary mounts
+    - Fix memory leak
+  * crypto: Correctly convert passphrases from Python to C
+
+-------------------------------------------------------------------
 Wed Aug 23 01:16:38 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to version 3.0.2:
