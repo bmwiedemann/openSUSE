@@ -1,0 +1,171 @@
+From 9fbca2df22a8e71e3116a576e26cf9b3d7915c08 Mon Sep 17 00:00:00 2001
+From: Ben Clayton <bclayton@google.com>
+Date: Mon, 24 Jul 2023 18:15:26 +0100
+Subject: [PATCH] LLVMReactor: Support LLVM 17+
+
+Change-Id: I9263c16450f0cd68ce472f8735cefc9de0dc0d53
+Reviewed-on: https://swiftshader-review.googlesource.com/c/SwiftShader/+/72128
+Tested-by: Ben Clayton <bclayton@google.com>
+Commit-Queue: Ben Clayton <bclayton@google.com>
+Reviewed-by: Geoff Lang <geofflang@google.com>
+Reviewed-by: Shahbaz Youssefi <syoussefi@google.com>
+Presubmit-Ready: Ben Clayton <bclayton@google.com>
+Kokoro-Result: kokoro <noreply+kokoro@google.com>
+---
+ src/Reactor/LLVMJIT.cpp     | 33 +++++++++++++++++++------
+ src/Reactor/LLVMReactor.cpp | 49 ++++++++++++++-----------------------
+ 2 files changed, 44 insertions(+), 38 deletions(-)
+
+diff --git a/src/Reactor/LLVMJIT.cpp b/src/Reactor/LLVMJIT.cpp
+index 07dc65440c..0f61e07a11 100644
+--- a/third_party/swiftshader/src/Reactor/LLVMJIT.cpp
++++ b/third_party/swiftshader/src/Reactor/LLVMJIT.cpp
+@@ -258,8 +258,12 @@ JITGlobals *JITGlobals::get()
+ #endif
+ 
+ 		// Reactor's MemorySanitizer support depends on intercepting __emutls_get_address calls.
++#if LLVM_VERSION_MAJOR < 17
+ 		ASSERT(!__has_feature(memory_sanitizer) || (jitTargetMachineBuilder.getOptions().ExplicitEmulatedTLS &&
+ 		                                            jitTargetMachineBuilder.getOptions().EmulatedTLS));
++#else
++		ASSERT(!__has_feature(memory_sanitizer) || jitTargetMachineBuilder.getOptions().EmulatedTLS);
++#endif
+ 
+ 		auto dataLayout = jitTargetMachineBuilder.getDefaultDataLayoutForTarget();
+ 		ASSERT_MSG(dataLayout, "JITTargetMachineBuilder::getDefaultDataLayoutForTarget() failed");
+@@ -660,13 +664,25 @@ class ExternalSymbolGenerator : public llvm::orc::JITDylib::DefinitionGenerator
+ 			auto unmangled = *name;
+ #endif
+ 
++#if LLVM_VERSION_MAJOR < 17
++			auto toSymbol = [](void *ptr) {
++				return llvm::JITEvaluatedSymbol(
++				    static_cast<llvm::JITTargetAddress>(reinterpret_cast<uintptr_t>(ptr)),
++				    llvm::JITSymbolFlags::Exported);
++			};
++#else
++			auto toSymbol = [](void *ptr) {
++				return llvm::orc::ExecutorSymbolDef{
++					llvm::orc::ExecutorAddr(reinterpret_cast<uintptr_t>(ptr)),
++					llvm::JITSymbolFlags::Exported,
++				};
++			};
++#endif
++
+ 			auto it = resolver.functions.find(unmangled.str());
+ 			if(it != resolver.functions.end())
+ 			{
+-				symbols[name] = llvm::JITEvaluatedSymbol(
+-				    static_cast<llvm::JITTargetAddress>(reinterpret_cast<uintptr_t>(it->second)),
+-				    llvm::JITSymbolFlags::Exported);
+-
++				symbols[name] = toSymbol(it->second);
+ 				continue;
+ 			}
+ 
+@@ -681,10 +697,7 @@ class ExternalSymbolGenerator : public llvm::orc::JITDylib::DefinitionGenerator
+ 
+ 			if(address)
+ 			{
+-				symbols[name] = llvm::JITEvaluatedSymbol(
+-				    static_cast<llvm::JITTargetAddress>(reinterpret_cast<uintptr_t>(address)),
+-				    llvm::JITSymbolFlags::Exported);
+-
++				symbols[name] = toSymbol(address);
+ 				continue;
+ 			}
+ #endif
+@@ -866,7 +879,11 @@ class JITRoutine : public rr::Routine
+ 			}
+ 			else  // Successful compilation
+ 			{
++#if LLVM_VERSION_MAJOR < 17
+ 				addresses[i] = reinterpret_cast<void *>(static_cast<intptr_t>(symbol->getAddress()));
++#else
++				addresses[i] = reinterpret_cast<void *>(static_cast<intptr_t>(symbol->getAddress().getValue()));
++#endif
+ 			}
+ 		}
+ 
+diff --git a/src/Reactor/LLVMReactor.cpp b/src/Reactor/LLVMReactor.cpp
+index fde64762df..aa4aaaa49a 100644
+--- a/third_party/swiftshader/src/Reactor/LLVMReactor.cpp
++++ b/third_party/swiftshader/src/Reactor/LLVMReactor.cpp
+@@ -68,6 +68,15 @@ llvm::llvm_shutdown_obj llvmShutdownObj;
+ // for destructing objects at exit. See crbug.com/1074222
+ thread_local rr::JITBuilder *jit = nullptr;
+ 
++auto getNumElements(llvm::FixedVectorType *vec)
++{
++#if LLVM_VERSION_MAJOR >= 11
++	return vec->getElementCount();
++#else
++	return vec->getNumElements();
++#endif
++}
++
+ llvm::Value *lowerPAVG(llvm::Value *x, llvm::Value *y)
+ {
+ 	llvm::VectorType *ty = llvm::cast<llvm::VectorType>(x->getType());
+@@ -142,13 +151,8 @@ llvm::Value *lowerPCMP(llvm::ICmpInst::Predicate pred, llvm::Value *x,
+ 	llvm::Constant *one;
+ 	if(llvm::FixedVectorType *vectorTy = llvm::dyn_cast<llvm::FixedVectorType>(ty))
+ 	{
+-		one = llvm::ConstantVector::getSplat(
+-#if LLVM_VERSION_MAJOR >= 11
+-		    vectorTy->getElementCount(),
+-#else
+-		    vectorTy->getNumElements(),
+-#endif
+-		    llvm::ConstantFP::get(vectorTy->getElementType(), 1));
++		one = llvm::ConstantVector::getSplat(getNumElements(vectorTy),
++		                                     llvm::ConstantFP::get(vectorTy->getElementType(), 1));
+ 	}
+ 	else
+ 	{
+@@ -165,39 +169,24 @@ llvm::Value *lowerPCMP(llvm::ICmpInst::Predicate pred, llvm::Value *x,
+ [[maybe_unused]] llvm::Value *lowerVectorShl(llvm::Value *x, uint64_t scalarY)
+ {
+ 	llvm::FixedVectorType *ty = llvm::cast<llvm::FixedVectorType>(x->getType());
+-	llvm::Value *y = llvm::ConstantVector::getSplat(
+-#if LLVM_VERSION_MAJOR >= 11
+-	    ty->getElementCount(),
+-#else
+-	    ty->getNumElements(),
+-#endif
+-	    llvm::ConstantInt::get(ty->getElementType(), scalarY));
++	llvm::Value *y = llvm::ConstantVector::getSplat(getNumElements(ty),
++	                                                llvm::ConstantInt::get(ty->getElementType(), scalarY));
+ 	return jit->builder->CreateShl(x, y);
+ }
+ 
+ [[maybe_unused]] llvm::Value *lowerVectorAShr(llvm::Value *x, uint64_t scalarY)
+ {
+ 	llvm::FixedVectorType *ty = llvm::cast<llvm::FixedVectorType>(x->getType());
+-	llvm::Value *y = llvm::ConstantVector::getSplat(
+-#if LLVM_VERSION_MAJOR >= 11
+-	    ty->getElementCount(),
+-#else
+-	    ty->getNumElements(),
+-#endif
+-	    llvm::ConstantInt::get(ty->getElementType(), scalarY));
++	llvm::Value *y = llvm::ConstantVector::getSplat(getNumElements(ty),
++	                                                llvm::ConstantInt::get(ty->getElementType(), scalarY));
+ 	return jit->builder->CreateAShr(x, y);
+ }
+ 
+ [[maybe_unused]] llvm::Value *lowerVectorLShr(llvm::Value *x, uint64_t scalarY)
+ {
+ 	llvm::FixedVectorType *ty = llvm::cast<llvm::FixedVectorType>(x->getType());
+-	llvm::Value *y = llvm::ConstantVector::getSplat(
+-#if LLVM_VERSION_MAJOR >= 11
+-	    ty->getElementCount(),
+-#else
+-	    ty->getNumElements(),
+-#endif
+-	    llvm::ConstantInt::get(ty->getElementType(), scalarY));
++	llvm::Value *y = llvm::ConstantVector::getSplat(getNumElements(ty),
++	                                                llvm::ConstantInt::get(ty->getElementType(), scalarY));
+ 	return jit->builder->CreateLShr(x, y);
+ }
+ 

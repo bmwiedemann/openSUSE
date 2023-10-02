@@ -288,7 +288,15 @@ Patch1077:      system-wayland.patch
 # PATCHES to fix interaction with third-party software
 Patch2004:      chromium-gcc11.patch
 Patch2010:      chromium-93-ffmpeg-4.4.patch
+
+#Since ffmpeg 5, there is no longer first_dts member in AVFormat. Chromium upstream (and Tumbleweed) patches ffmpeg to add a av_stream_get_first_dts function.
+#This workaround is only used on Fedora. It is known to break some H264 videos produced by Apple® iPhone™ camera. Further testing is needed.
+#Upstream ref: https://chromium-review.googlesource.com/c/chromium/src/+/3525614
 Patch2011:      chromium-ffmpeg-first-dts.patch
+#This patch is only for Leap which uses ffmpeg 4. It makes chromium use the old api and does not work with ffmpeg 5.
+Patch2012:      chromium-94-ffmpeg-roll.patch
+#Tumbleweed needs neither of these.
+
 # Fixe builds with older clang versions that do not allow
 # nomerge attributes on declaration. Otherwise, the following error
 # is produced:
@@ -327,8 +335,6 @@ Patch3080:      compact_enc_det_generated_tables-Wnarrowing.patch
 Patch3096:      remove-date-reproducible-builds.patch
 Patch3106:      vulkan_memory_allocator-vk_mem_alloc-missing-snprintf.patch
 Patch3121:      services-network-optional-explicit-constructor.patch
-# PATCH-FIX-UPSTREAM - https://swiftshader-review.googlesource.com/c/SwiftShader/+/70328
-Patch3201:      647d3d2.patch
 Patch3202:      mojom-python3.12-imp.patch
 # https://src.fedoraproject.org/rpms/qt6-qtwebengine/blob/rawhide/f/Partial-migration-from-imp-to-importlib.patch
 Patch3203:      Partial-migration-from-imp-to-importlib.patch
@@ -341,6 +347,8 @@ Patch3209:      electron_browser_context-missing-variant.patch
 Patch3210:      electron_api_app-GetPathConstant-non-constexpr.patch
 # https://github.com/electron/electron/pull/40032
 Patch3211:      build-without-extensions.patch
+Patch3212:      swiftshader-llvm17.patch
+
 
 %if %{with clang}
 BuildRequires:  clang
@@ -397,7 +405,7 @@ BuildRequires:  llhttp-devel < 8
 BuildRequires:  lld
 %endif
 %if %{with swiftshader} && %{without subzero}
-BuildRequires:  llvm-devel
+BuildRequires:  llvm-devel >= 16
 %endif
 BuildRequires:  memory-constraints
 %if %{with mold}
@@ -665,8 +673,14 @@ patch -R -p1 < %PATCH1076
 patch -R -p1 < %PATCH1054
 %endif
 
-%if %{without ffmpeg_5}
+%if %{with ffmpeg_5}
+patch -R -p1 < %PATCH2012
+%else
 patch -R -p1 < %SOURCE400
+%endif
+
+%if 0%{?suse_version}
+patch -R -p1 < %PATCH2011
 %endif
 
 %if %{without harfbuzz_5}

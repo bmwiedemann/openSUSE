@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct  1 16:22:35 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Add backported swiftshader-llvm17.patch to fix ftbfs on arm64
+- Drop 647d3d2.patch no longer relevant
+
+-------------------------------------------------------------------
+Sat Sep 30 16:09:25 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Disable chromium-ffmpeg-first-dts.patch on openSUSE as it breaks playback of some videos and is no longer needed.
+  * In its place add chromium-94-ffmpeg-roll.patch for Leap only. 
+
+-------------------------------------------------------------------
 Fri Sep 29 07:04:36 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 25.8.4
