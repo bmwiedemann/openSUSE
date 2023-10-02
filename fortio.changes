@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 29 08:45:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.60.2:
+  * add new -pprof on flag to explictly allow pprof, off by
+    default. (#845)
+  * Bump google.golang.org/grpc from 1.58.1 to 1.58.2 (#842)
+  * Bump actions/checkout from 4.0.0 to 4.1.0 (#843)
+
+-------------------------------------------------------------------
 Fri Sep 15 09:29:21 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.60.1:
