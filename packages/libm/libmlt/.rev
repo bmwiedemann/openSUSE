@@ -808,4 +808,13 @@ Only build sdl2 module.
     <comment></comment>
     <requestid>1092808</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>0a2bb182cf47594bdb96939833ffacfe</srcmd5>
+    <version>7.18.0</version>
+    <time>1696270058</time>
+    <user>anag+factory</user>
+    <comment>- Disabled rtaudio due to build fail against new rtaudio abi
+- Update to 7.18.0</comment>
+    <requestid>1114798</requestid>
+  </revision>
 </revisionlist>

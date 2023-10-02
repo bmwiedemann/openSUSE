@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,20 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.16.0
+%define lversion 7.18.0
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.16.0
+%define lversion_pp 7.18.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
 %bcond_without Qt6
+# FIXME: for some reason the build fails in multimedia:libs but nowhere else due to rtaudio issues
+#
+%bcond_without rtaudio
 Name:           %{libname}
-Version:        7.16.0
+Version:        7.18.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
@@ -63,6 +66,7 @@ BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(frei0r)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(icu-io)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libavcodec) >= 58
@@ -81,7 +85,9 @@ BuildRequires:  pkgconfig(opencv4)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(python3)
+%if %{with rtaudio}
 BuildRequires:  pkgconfig(rtaudio)
+%endif
 BuildRequires:  pkgconfig(rubberband)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sdl2)
