@@ -250,4 +250,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1096434</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>57617d7be401a99778824c3a75f3c15a</srcmd5>
+    <version>0.103.2</version>
+    <time>1696269849</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.103.2
+ * support Pydantic2 2.4 (forwarded request 1114615 from mimi_vx)</comment>
+    <requestid>1114616</requestid>
+  </revision>
 </revisionlist>

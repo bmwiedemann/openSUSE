@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct  1 15:35:20 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.103.2
+ * support Pydantic2 2.4
+
+-------------------------------------------------------------------
+Tue Sep 26 07:23:15 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.103.1
+ * dd support for openapi_examples in all FastAPI parameters. 
+ * Refactor tests for new Pydantic 2.2.1
+ * Add ResponseValidationError printable details, to show up in server error logs.
+ * Replace MultHostUrl to AnyUrl for compatibility with older versions of Pydantic v1.
+ * Support for Pydantic v2
+
+-------------------------------------------------------------------
 Sun Jun 25 17:54:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.98.0:

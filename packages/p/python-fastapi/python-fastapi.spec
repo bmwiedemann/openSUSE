@@ -19,7 +19,7 @@
 # Keep extra test requirements out of Ring1
 %bcond_with ringdisabled
 Name:           python-fastapi
-Version:        0.98.0
+Version:        0.103.2
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -41,9 +41,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module Flask >= 1.1.2}
 BuildRequires:  %{python_module PyYAML >= 5.3.1}
 BuildRequires:  %{python_module anyio >= 3.2.1}
+BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module httpx >= 0.23.0}
 BuildRequires:  %{python_module python-multipart >= 0.0.5}
-BuildRequires:  %{python_module sqlalchemy >= 1.3.18 with %python-sqlalchemy < 2.0}
+BuildRequires:  %{python_module sqlalchemy < 2.0}
 BuildRequires:  %{python_module trio}
 %if !%{with ringdisabled}
 BuildRequires:  %{python_module aiosqlite}
