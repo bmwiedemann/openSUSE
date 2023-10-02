@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Sun Oct  1 22:45:15 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.8.1
+  * WebP security update for CVE-2023-4863
+  * Depthwise convolution 5x5 performance regression fix
+- update to 4.8.0, highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version480
+  Highlights of this release:
+  * DNN module patches:
+    + TFLite models support, including int8 quantized models.
+    + Enabled DNN module build without Protobuf dependency.
+    + Improved layers => supported more models:
+      - ONNX: Layer normalization, GELU and QLinearSoftmax.
+      - Fixes in CANN backend:
+        * support ONNX Split, Slice, Clip (Relu6) and
+          Conv with auto_pad.
+        * support ONNX Sub, PRelu, ConvTranspose.
+      - Reduce Refactor for robustness and potential
+        follow-up improvements.
+      - Fixes for Segment Anything Model by Meta.
+      - Fixes in nary element wise layer about broadcast:
+        * Fixes in CPU.
+        * and Fixes in CUDA backend.
+      - Further increased DNN speed on ARM and X86 by improving
+        convolution, covering 1D and 3D cases, supporting
+        convolution+element-wise op fusion.
+      - Added full FP16 computation branch on ARMv8 platform, 1.5x
+        faster than FP32 (FP16 Winograd is still pending).
+      - Vulkan backend refactor for better performance and
+        robustness. It runs 4X faster than before.
+      - Added API blobFromImageParam to build network inputs
+        with pre-processings.
+      - Modern OpenVINO support.
+  * G-API module:
+    + Intel® OpenVINO™ inference backend:
+      - Streamlined preprocessing in OpenVINO
+        Inference Engine (ie) API 1.0 backend. Note: this backend
+        will be deprecated after OpenVINO removes the API 1.0
+        support in its subsequent releases.
+      - Aligned OpenVINO IE API 1.0 backend with the latest
+        OpenVINO 2023.0 (as some features were removed there).
+      - Introduced a brand new OpenVINO API 2.0 backend.
+      - Implemented the required inference operations for
+        the OpenVINO API 2.0 backend.
+    + Python bindings:
+      - Exposed varions normalization options for ONNX RT
+        backend in Python bindings.
+      - Exposed Fluid kernels and kernel package manipulation
+        functions (combine()) in Python.
+      - Fixed issues in Stateful Python kernel state
+        handling; also fixed various issues in Python tests.
+      - Fixed issue with opaque kernel output information
+        handling which broke Python custom kernels.
+    + Samples:
+      - Introduced a new Segmentation demo with desync() to enable
+        slow-running networks in the real-time.
+      - Updated stats calculation in the G-API-based pipeline
+        modelling tool.
+    + Other changes and fixes:
+      - Fixed tolerance in Fluid resize tests to avoid issues
+        on ARM.
+      - Fluid backend: extended Merge3 kernel with more
+        supported data types.
+      - Fixed standalone mode compilation issues.
+  * Objdetect module:
+    + FaceDetectorYN upgrade for better performance,
+      accuracy and facial landmarks support.
+    + New QR code detection algorithm based on ArUco code.
+    + Bar code detector and decoder moved from Contrib to
+      main repository.
+    + Introduced common API for all graphical codes like bar
+      codes and QR codes.
+    + Added flag for legacy pre-4.6.0 ChAruco boards support.
+    + Multiple bug fixes and improvements in QR code detection
+      and decoding pipelines.
+    + Multiple bug fixes and improvements in ArUco based pipelines.
+  * Calibration module:
+    + USAC framework improvements.
+    + Fixed stddev estimation in camera calibration pipelines.
+    + Fixed incorrect pixel grid generation in icvGetRectangles
+      that improves accuracy of getOptimalNewCameraMatrix,
+      stereoRectify and some other calibration functions.
+      Charuco board support in patterns generator, interactive
+      calibration tool and calibration samples.
+  * Image processing module:
+    + Various fixes in line segments detector.
+    + Fixed even input dimensions for INTER_NEAREST_EXACT
+      in resize.
+    + Optimise local cost computation in
+      IntelligentScissorsMB::buildMap.
+    + Keep inliers for linear remap with BORDER_TRANSPARENT
+    + Fix distransform to work with large images.
+  * Features2d module:
+    + SIFT accuracy improvements.
+  * Core module:
+    + Added REDUCE_SUM2 option to cv::reduce.
+    + Introduced cv::hasNonZero function.
+    + Update IPP binaries update to version 20230330.
+    + Improved RISC-V RVV vector extensions support.
+      - Support RVV v0.11 intrinsics available in LLVM 16
+        and GCC 13
+      - Support build with T-Head RISC-V toolchain
+        (RVV 0.7.1 and 1.0)
+    + Several OpenCL vendor and version handling improvements.
+  * Multimedia:
+    + Added AVIF support through libavif.
+    + Orbbec Femto Mega cameras support.
+    + HEVC/H265 support in VideoWriter with MS Media
+      Foundation backend.
+    + Fixed FPS computation on some videos for FFmpeg backend.
+    + Added support for VideoCapture CAP_PROP_AUTO_WB and
+      CV_CAP_PROP_WHITE_BALANCE_BLUE_U for DShow backend.
+    + Fixes OBS Virtual Camera capture.
+    + CV_32S encoding support with tiff.
+  * Python Bindings:
+    + Python typing stubs.
+    + Fix reference counting errors in registerNewType.
+    + Fixed ChAruco and diamond boards detector bindings.
+    + Added bindings to allow GpuMat and Stream objects to
+      be initialized from memory initialized in other libraries
+    + np.float16 support.
+    + Python bindings for RotatedRect, CV_MAKETYPE, CV_8UC(n).
+  * JavaScript bindings:
+    + Added possibility for disabling inlining wasm in opencv.js
+    + Extended JS bindings for Aruco, Charuco, QR codes and
+      bar codes.
+  * Other:
+    + Several critical issue fixes in wechat_qrcode module
+      (opencv_contrib)
+
+-------------------------------------------------------------------
 Thu Dec 29 09:59:55 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.7.0, highlights below, for details check
