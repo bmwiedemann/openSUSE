@@ -1,7 +1,7 @@
 #
 # spec file for package screen
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define rundir %{_localstatedir}/run
 %endif
 Name:           screen
-Version:        4.9.0
+Version:        4.9.1
 Release:        0
 Summary:        A program to allow multiple screens on a VT100/ANSI Terminal
 License:        GPL-3.0-or-later

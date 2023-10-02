@@ -525,4 +525,37 @@ Changelog updated and bug reported upstream here: https://savannah.gnu.org/bugs/
     <comment></comment>
     <requestid>1043751</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>d055da83ac9fb81f13a02efbde1fd867</srcmd5>
+    <version>4.9.1</version>
+    <time>1696269838</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.9.1 (bsc#1210272, CVE-2023-24626):
+  * Support stop/parity bits on serial port
+  * Add needed system headers in checks and return values
+    for implicit function declarations
+  * Avoid zombies after shell exit
+  * Missed signal sending permission check on failed
+    query messages (CVE-2023-24626)
+  * manpage fixes
+  * source code fixes during cleanup
+  * UTF-8 encoding can emit invalid UTF-8 sequences
+  * for out of range unicode values
+
+  update.
+  * CVE-2021-26937: possible denial of service via a crafted UTF-8
+    (boo#1182092)
+  * Fix: a lot of manpage fixes and cleanups
+- drop upstreamed 0001-Follow-up-to-bc5ea98-fix-texinfo-syntax-errors.patch
+  * fix loging screen API (bnc#1020870)
+   parameter '-L'.
+ * This is a bug fix release.
+ * Visible content get messed up after window resize
+- Add build dependency on makeinfo
+  of gethostbyname(3)
+- A few lines added to docu explaining login-shells and
+- removed bogus self-provides
+- fix for root compromise using configurable visual bell string</comment>
+    <requestid>1114265</requestid>
+  </revision>
 </revisionlist>

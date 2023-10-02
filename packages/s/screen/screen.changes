@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 13 12:01:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.9.1 (bsc#1210272, CVE-2023-24626):
+  * Support stop/parity bits on serial port
+  * Add needed system headers in checks and return values
+    for implicit function declarations
+  * Avoid zombies after shell exit
+  * Missed signal sending permission check on failed
+    query messages (CVE-2023-24626)
+  * manpage fixes
+  * source code fixes during cleanup
+  * UTF-8 encoding can emit invalid UTF-8 sequences
+  * for out of range unicode values
+
+-------------------------------------------------------------------
 Fri Dec 16 22:18:05 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %_pam_vendordir
@@ -8,7 +23,7 @@ Mon Dec 12 14:28:14 UTC 2022 - Stefan Schubert <schubi@suse.com>
 
 - Migration PAM settings to /usr/etc: Saving user changed
   configuration files in /etc and restoring them while an RPM
-  update.  
+  update.
 
 -------------------------------------------------------------------
 Sat Feb 26 11:08:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
@@ -16,9 +31,9 @@ Sat Feb 26 11:08:20 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 - GNU Screen 4.9.0:
   * Hardstatus option for used encoding (escape string '%e')
   * fix combining char handling that could lead to a segfault
-  * CVE-2021-26937: possible denial of service via a crafted UTF-8 
+  * CVE-2021-26937: possible denial of service via a crafted UTF-8
     character sequence, upstream fix replacing dropped combchar.diff
-    (boo#1182092) 
+    (boo#1182092)
   * make screen exit code be 0 when checking --help
   * session names limit is 80 symbols
   * option -X ignores specified user in multiuser env
@@ -72,7 +87,7 @@ Wed Oct 02 09:09:20 UTC 2019 - alexander_naumov@opensuse.org
   * Adds support for OSC 11
   * Updates Unicode ambiguous and wide tables to 12.1.0
   * Fix: cross-compilation support (bug #43223)
-  * Fix: a lot of manpage fixes and cleanups 
+  * Fix: a lot of manpage fixes and cleanups
 
 -------------------------------------------------------------------
 Fri Feb 15 23:31:00 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
@@ -129,7 +144,7 @@ Thu Jun 29 12:24:55 UTC 2017 - alexander_naumov@opensuse.org
   * Migrate from fifos to sockets
   * Start viewing scrollback at first line of output
 
-- drop upstreamed 0001-Follow-up-to-bc5ea98-fix-texinfo-syntax-errors.patch 
+- drop upstreamed 0001-Follow-up-to-bc5ea98-fix-texinfo-syntax-errors.patch
 
 -------------------------------------------------------------------
 Thu May 11 15:46:12 UTC 2017 - jengelh@inai.de
@@ -151,7 +166,7 @@ Sat Feb 25 20:34:40 UTC 2017 - astieger@suse.com
 Fri Jan 27 22:32:17 UTC 2017 - alexander_naumov@opensuse.org
 
 - Add fix_enable_logfile.patch
-  * fix loging screen API (bnc#1020870) 
+  * fix loging screen API (bnc#1020870)
   * fix privilege escalation
 
 -------------------------------------------------------------------
@@ -159,7 +174,7 @@ Thu Jan 17 23:11:38 UTC 2017 - alexander_naumov@opensuse.org
 
 - GNU Screen 4.5.0:
  * It's possible to specify logfile's name via command line
-   parameter '-L'. 
+   parameter '-L'.
 
  Fixes:
  * broken handling of "bind u digraph U+"
@@ -198,8 +213,8 @@ Wed Jul  1 10:13:31 UTC 2015 - trenn@suse.de
 Wed Jul 01 09:48:45 UTC 2015 - alexander_naumov@opensuse.org
 
 - GNU screen 4.3.1
- * This is a bug fix release. 
- * Visible content get messed up after window resize 
+ * This is a bug fix release.
+ * Visible content get messed up after window resize
 
 -------------------------------------------------------------------
 Mon Jun 15 09:28:15 UTC 2015 - alexander_naumov@opensuse.org
@@ -340,7 +355,7 @@ Thu Sep 13 13:52:04 CEST 2012 - mls@suse.de
 -------------------------------------------------------------------
 Sat Sep  8 11:07:44 UTC 2012 - idonmez@suse.com
 
-- Add build dependency on makeinfo 
+- Add build dependency on makeinfo
 
 -------------------------------------------------------------------
 Wed Aug  8 19:56:19 CEST 2012 - mls@suse.de
@@ -423,7 +438,7 @@ Wed Dec 16 00:26:00 CET 2009 - jengelh@medozas.de
 Fri Jul 31 02:17:31 CEST 2009 - crrodriguez@suse.de
 
 - add fedora patch for IPv6 support, this removes usage
-  of gethostbyname(3) 
+  of gethostbyname(3)
 
 -------------------------------------------------------------------
 Tue May 26 14:22:07 CEST 2009 - mls@suse.de
@@ -433,7 +448,7 @@ Tue May 26 14:22:07 CEST 2009 - mls@suse.de
 -------------------------------------------------------------------
 Wed May 14 15:31:04 CEST 2008 - jw@suse.de
 
-- A few lines added to docu explaining login-shells and 
+- A few lines added to docu explaining login-shells and
   starting with '-'  trick.
 
 -------------------------------------------------------------------
@@ -561,7 +576,7 @@ Tue Oct  1 14:30:55 MEST 2002 - mls@suse.de
 -------------------------------------------------------------------
 Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Thu Sep  5 14:11:31 MEST 2002 - mls@suse.de
@@ -658,7 +673,7 @@ Fri Apr 27 19:46:46 MEST 2001 - mls@suse.de
 -------------------------------------------------------------------
 Mon Sep  4 18:13:20 CEST 2000 - uli@suse.de
 
-- fix for root compromise using configurable visual bell string 
+- fix for root compromise using configurable visual bell string
 
 -------------------------------------------------------------------
 Fri Feb 25 15:16:50 CET 2000 - kukuk@suse.de
