@@ -5,8 +5,8 @@
     <param name="package-meta">no</param>
     <param name="exclude">.git</param>
     <param name="filename">perftest</param>
-    <param name="version">4.5-0.17</param>
-    <param name="revision">e63987c4223b08f8c67390c7f60836ad2bf4a6e0</param>
+    <param name="version">23.07.0-0.27</param>
+    <param name="revision">abf6dd964acb93a6c1c45bf658161d691c74de5f</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*perftest*.tar</param>

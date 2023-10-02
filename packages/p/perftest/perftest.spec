@@ -1,7 +1,7 @@
 #
 # spec file for package perftest
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define extra_version 0.17
+%define extra_version 0.27
 Name:           perftest
-Version:        4.5
+Version:        23.07.0
 Release:        0
 Summary:        IB Performance tests
 License:        BSD-3-Clause OR GPL-2.0-or-later
@@ -69,5 +69,6 @@ chmod -x runme
 %{_bindir}/raw_ethernet_lat
 %{_bindir}/run_perftest_loopback
 %{_bindir}/run_perftest_multi_devices
+%{_mandir}/man1/*
 
 %changelog

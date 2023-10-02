@@ -124,4 +124,12 @@ This patch is applied during compilation as perftest-license.patch</comment>
     <comment></comment>
     <requestid>1007233</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4ba182703d95385ff7b3a1437f647584</srcmd5>
+    <version>23.07.0</version>
+    <time>1696270031</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114731</requestid>
+  </revision>
 </revisionlist>
