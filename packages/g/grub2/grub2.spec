@@ -161,6 +161,14 @@ BuildRequires:  grub2-branding
 BuildRequires:  squashfs
 %endif
 
+# For ALP and Tumbleweed
+%if 0%{?suse_version} >= 1600
+# Only include the macros for the architectures with the newer UEFI and TCG protocol
+%ifarch x86_64 aarch64 riscv64
+BuildRequires:  fde-tpm-helper-rpm-macros
+%endif
+%endif
+
 Version:        2.12~rc1
 Release:        0
 Summary:        Bootloader with support for Linux, Multiboot and more
@@ -374,6 +382,7 @@ Patch186:       0002-cryptodisk-Fallback-to-passphrase.patch
 Patch187:       0003-cryptodisk-wipe-out-the-cached-keys-from-protectors.patch
 Patch188:       0004-diskfilter-look-up-cryptodisk-devices-first.patch
 Patch189:       grub2-mkconfig-riscv64.patch
+Patch190:       arm64-Use-proper-memory-type-for-kernel-allocation.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -497,6 +506,7 @@ Requires(post): %{name} = %{version}
 Requires:       perl-Bootloader >= 0.706
 Requires(post): perl-Bootloader >= 0.706
 %endif
+%{?fde_tpm_update_requires}
 Provides:       %{name}-efi = %{version}-%{release}
 Obsoletes:      %{name}-efi < %{version}-%{release}
 
@@ -1147,6 +1157,10 @@ fi
 %ifarch %{efi}
 
 %post %{grubefiarch}
+%if 0%{?fde_tpm_update_post:1}
+%fde_tpm_update_post grub2-efi
+%endif
+
 %if 0%{?update_bootloader_check_type_reinit_post:1}
 %update_bootloader_check_type_reinit_post grub2-efi
 %else
@@ -1182,6 +1196,7 @@ exit 0
 
 %posttrans %{grubefiarch}
 %{?update_bootloader_posttrans}
+%{?fde_tpm_update_posttrans}
 
 %endif
 

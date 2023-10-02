@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Sep 27 03:37:10 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Only build with fde-tpm-helper-rpm-macros for the architectures
+  supporting the newer UEFI and TPM 2.0.
+  * Also correct the location of %fde_tpm_update_requires
+
+-------------------------------------------------------------------
+Wed Sep 20 07:54:05 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix a boot delay regression in PowerPC PXE boot (bsc#1201300)
+  * 0001-ieee1275-ofdisk-retry-on-open-and-read-failure.patch
+
+-------------------------------------------------------------------
+Tue Sep 19 06:31:43 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add the new BuildRequires for EFI builds for the better FDE
+  support: fde-tpm-helper-rpm-macros
+  + Also add the the macros to %post and %posttrans
+
+-------------------------------------------------------------------
+Mon Sep 11 13:17:20 UTC 2023 - Chester Lin <clin@suse.com>
+
+- Correct the type of allocated EFI pages for ARM64 kernel (bsc#1215151)
+  * arm64-Use-proper-memory-type-for-kernel-allocation.patch
+
+-------------------------------------------------------------------
 Thu Aug 31 19:09:33 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - grub2-mkconfig-riscv64.patch: Handle riscv64 in mkconfig
