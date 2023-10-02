@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define basedir	%{_datadir}/icingaweb2
 %define module_name incubator
 Name:           icingaweb2-module-%{module_name}
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Bleeding edge Icinga Web 2 libraries
 License:        MIT

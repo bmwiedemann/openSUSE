@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 22 13:17:14 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.20.0
+  - improved am/pm formatting
+  - support db expressions in filter rendering
+  - fix background in action bar dropdowns
+  - JsonRPC no supports proxy handlers
+  - dbstore improved modification detection
+
+-------------------------------------------------------------------
 Wed Nov 16 10:28:33 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.19.0
