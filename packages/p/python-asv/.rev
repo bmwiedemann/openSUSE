@@ -64,4 +64,25 @@
   * Fixed ``install_timeout`` for ``conda`` (#1310)</comment>
     <requestid>1108925</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7881160b970b46679275e615b37c3582</srcmd5>
+    <version>0.6.1</version>
+    <time>1696270022</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.1:
+  * ``pip`` dependencies in ``environment.yml`` files for the
+    ``mamba`` plugin are handled correctly (#1326)
+  * ``asv.config.json`` matrix requirements no longer need
+    ``pip+`` set explicitly for calling the ``pip`` solver for
+    ``virtualenv``
+  * ``asv`` will now use ``conda_environment_file`` if it exists
+    (#1325)
+  * ``asv`` timestamps via ``datetime`` are now Python 3.12
+    compatible (#1331)
+  * ``asv`` now provides ``asv[virtualenv]`` as an installable
+    target
+  * ``asv`` now uses Github Actions exclusively for Windows and
+    Linux</comment>
+    <requestid>1114693</requestid>
+  </revision>
 </revisionlist>

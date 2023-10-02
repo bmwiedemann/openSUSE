@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct  2 07:17:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.1:
+  * ``pip`` dependencies in ``environment.yml`` files for the
+    ``mamba`` plugin are handled correctly (#1326)
+  * ``asv.config.json`` matrix requirements no longer need
+    ``pip+`` set explicitly for calling the ``pip`` solver for
+    ``virtualenv``
+  * ``asv`` will now use ``conda_environment_file`` if it exists
+    (#1325)
+  * ``asv`` timestamps via ``datetime`` are now Python 3.12
+    compatible (#1331)
+  * ``asv`` now provides ``asv[virtualenv]`` as an installable
+    target
+  * ``asv`` now uses Github Actions exclusively for Windows and
+    Linux
+
+-------------------------------------------------------------------
 Mon Sep  4 15:54:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.0:
