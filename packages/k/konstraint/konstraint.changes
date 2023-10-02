@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 02 05:47:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.32.0:
+  * build(deps): bump github.com/open-policy-agent/opa from 0.56.0
+    to 0.57.0 (#437)
+  * build(deps): bump golang.org/x/text from 0.12.0 to 0.13.0
+    (#432)
+  * build(deps): bump golang from 1.21.0-alpine to 1.21.1-alpine
+    (#434)
+  * build(deps): bump k8s.io/apiextensions-apiserver from 0.28.1 to
+    0.28.2 (#435)
+  * build(deps): bump actions/checkout from 3 to 4 (#433)
+
+-------------------------------------------------------------------
 Wed Sep 06 07:54:19 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.31.0:
