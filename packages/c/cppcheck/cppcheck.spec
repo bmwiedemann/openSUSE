@@ -17,21 +17,18 @@
 
 
 Name:           cppcheck
-Version:        2.10.3
+Version:        2.12.1
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
 URL:            https://github.com/danmar/cppcheck
 Source:         https://github.com/danmar/cppcheck/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         disable-some-tests-about-char-signedness.patch
+Patch1:         werror-return-type.patch
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
-%if 0%{?suse_version} > 1500
-BuildRequires:  gcc12-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -82,11 +79,8 @@ doesn't see.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} > 1500
-export CXX=/usr/bin/g++-12
-%endif
 %cmake \
-  -DCMAKE_CXX_FLAGS="-DNDEBUG %{optflags}" \
+  -DCMAKE_CXX_FLAGS="%{optflags} -UNDEBUG" \
   -DFILESDIR="%{_datadir}/%{name}" \
   -DBUILD_GUI=ON \
   -DBUILD_TESTS=ON \

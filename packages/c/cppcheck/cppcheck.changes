@@ -1,11 +1,84 @@
 -------------------------------------------------------------------
+Tue Sep 19 14:21:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12.1:
+  * Support importing projects with project-name
+
+-------------------------------------------------------------------
+Thu Sep 14 11:18:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12.0:
+  * uselessOverride finds overriding functions that either
+    duplicate code from or delegate back to the base class
+    implementation
+  * knownPointerToBool finds pointer to bool conversions that are
+    always true or false
+  * truncLongCastAssignment and truncLongCastReturn check
+    additional types, including float/double/long double
+  * duplInheritedMember also reports duplicated member functions
+  * constParameter*/constVariable* checks find more instances of
+    pointers/references that can be const, e.g. when calling
+    library functions
+  * Write how many checkers was activated after a run
+  * Added --checkers-report that can be used to generate a report
+    in a file that shows what checkers was activated and disabled
+  * The qmake build system has been deprecated and will be
+    removed in a future version.
+  * Command-line option '--template
+- update to 2.11:
+  * pop_back on empty container is UB
+  * Improve useStlAlgorithm check to handle many more conditions
+    in the loop for any_of, all_of and none_of algorithms
+  * ValueFlow can evaluate the return value of functions even
+    when conditionals are used
+  * ValueFlow will now forward the container sizes being returned
+    from a function
+  * ValueFlow can infer possible values from possible symbolic
+    values
+  * Improve valueflow after pushing to container
+  * The new option --check-level= has been added that controls
+    how much checking is made by Cppcheck. The default checking
+    level is "normal". If you feel that you can wait longer on
+    results you can use --check-level=exhaustive.
+  * It is no longer necessary to run "--check-config" to get
+    detailed "missingInclude" and "missingIncludeSystem"
+    messages. They will always be issued in the regular analysis
+    if "missingInclude" is enabled.
+  * "missingInclude" and "missingIncludeSystem" are reported with
+    "-j" is > 1 and processes are used in the backend (default in
+    non-Windows binaries)
+  * "missingInclude" and "missingIncludeSystem" will now cause
+    the "--error-exitcode" to be applied
+  * "--enable=information" will no longer implicitly enable
+    "missingInclude" starting with 2.16. Please enable it
+    explicitly if you require it.
+  * The `constParameter` and `constVariable` checks have been
+    split into 3 different IDs based on if the variable is a
+    pointer, a reference, or local. The different IDs will allow
+    users to suppress different const warning based on variable
+    type.
+  * `constParameter`
+  * `constParameterReference`
+  * `constParameterPointer`
+  * `constVariable`
+  * `constVariableReference`
+  * `constVariablePointer`
+  * More command-line parameters will now check if the given
+    integer argument is actually valid. Several other internal
+    string-to-integer conversions will now be error checked.
+  * scanning projects (with -j1) will now defer the analysis of
+    markup files until the whole code was processed
+- add werror-return-type.patch to fix false warnings where
+  gcc can not properly detect the "noreturn" nature of the function
+
+-------------------------------------------------------------------
 Tue May 30 10:57:47 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
 
 - test suite quirks:
   * Add patch disable-some-tests-about-char-signedness.patch, taken
     from Debian, to disable test "TestCondition::alwaysTrueContainer"
     which fails on "unsigned char" archs (arm, ppc)
-  * Run test suite with "-j1", as TestProcessExecutor test is flaky otherwise 
+  * Run test suite with "-j1", as TestProcessExecutor test is flaky otherwise
 
 -------------------------------------------------------------------
 Wed Mar 29 12:13:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -18,7 +91,7 @@ Wed Mar 29 12:13:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Wed Mar 15 20:23:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.3:
-  * SymbolDatabase: Fix handling of function pointer arguments 
+  * SymbolDatabase: Fix handling of function pointer arguments
 
 -------------------------------------------------------------------
 Mon Feb 27 21:39:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -26,7 +99,7 @@ Mon Feb 27 21:39:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 - update to 2.10.2:
   * GUI: Set proper title for compliance report dialog
   * GUI: Generate compliance report
-  * Tokenizer: tweaked simplification of function pointers 
+  * Tokenizer: tweaked simplification of function pointers
 
 -------------------------------------------------------------------
 Tue Jan 31 18:24:47 UTC 2023 - PragmaticLinux <info@pragmaticlinux.com>
@@ -97,7 +170,7 @@ Sun Jul 17 16:14:50 UTC 2022 - Dirk Müller <dmueller@suse.com>
 - update to 2.8.2:
   * do not allocate std::string when column is -1
   * catch internal error during whole program analysis
-  * fix whole program analysis 
+  * fix whole program analysis
 
 -------------------------------------------------------------------
 Tue Jun  7 21:17:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -127,7 +200,7 @@ Tue Jun  7 21:17:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Tue Apr 19 13:30:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.5:
-  * Import Project: Fix problem with define value with space 
+  * Import Project: Fix problem with define value with space
 
 -------------------------------------------------------------------
 Sat Mar 26 14:06:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -152,7 +225,7 @@ Sun Mar 20 19:22:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Sat Dec 18 08:34:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.3:
-  * Fix execution of executable addons from GUI 
+  * Fix execution of executable addons from GUI
 
 -------------------------------------------------------------------
 Sun Dec  5 20:41:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -204,7 +277,7 @@ Mon May 10 06:49:08 UTC 2021 - Stephan Kulow <coolo@suse.com>
 Wed Mar 24 08:12:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.1:
-  * fix for windows installer, no other changes 
+  * fix for windows installer, no other changes
 
 -------------------------------------------------------------------
 Mon Mar 22 21:23:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -214,7 +287,7 @@ Mon Mar 22 21:23:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * MISRA improvements
   * ImportProject fixes
   * Various bug hunting improvements
-  * Fixes when importing AST from clang 
+  * Fixes when importing AST from clang
 
 -------------------------------------------------------------------
 Sat Dec 12 15:28:36 UTC 2020 - Milan Savić <milsav92@outlook.com>
@@ -279,7 +352,7 @@ Sat Dec 12 15:28:36 UTC 2020 - Milan Savić <milsav92@outlook.com>
   cppcheck-htmlreport:
   * several result files can be combined into 1 output
   Suppressions:
-  * comments can be added at end of suppression in suppressions file 
+  * comments can be added at end of suppression in suppressions file
 
 -------------------------------------------------------------------
 Mon Jul 13 21:16:05 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
@@ -320,17 +393,17 @@ Wed Mar  4 11:32:52 UTC 2020 - Danny Al-Gaaf <opensuse@bisect.de>
 
 - update to version 1.89
   * The default warning message format was changed. The new format
-    is similar to GCC. If you want to get warnings in the old 
+    is similar to GCC. If you want to get warnings in the old
     format, add --template=cppcheck1 to the command line.
   * improved value flow analysis for pointer aliases
   * improved checking for uninitialized variables/structs
   * better checking of smart pointers
   * better checking of global variables
-  * Added Cppcheck annotations cppcheck_low(VALUE) and 
+  * Added Cppcheck annotations cppcheck_low(VALUE) and
     cppcheck_high(VALUE)
   * shadow variables; warn when argument is shadowed
   * warn if local reference variable can be const
-  * Added API01-C: Avoid laying out strings in memory directly 
+  * Added API01-C: Avoid laying out strings in memory directly
     before sensitive data
   * Added MSC24-C: Do not use deprecated or obsolescent functions
   * Added STR11-C: Do not specify the bound of a character array
@@ -344,7 +417,7 @@ Mon Jul  1 08:22:46 UTC 2019 - Martin Liška <mliska@suse.cz>
   * Comparing pointers that point to different objects
   * Address of local variable 'x' is accessed at non-zero index
   * STL usage: unnecessary search before insertion
-  * Duplicate expression for condition and assignment: if (x==3) x=3; 
+  * Duplicate expression for condition and assignment: if (x==3) x=3;
   * Better handling of C++14 and C++17
   * New command line option --addon used to run addons directly from Cppcheck.
   * Some advanced options are only available in GUI:
@@ -363,8 +436,8 @@ Mon Jul  1 08:22:46 UTC 2019 - Martin Liška <mliska@suse.cz>
 Thu Jan  3 18:13:49 UTC 2019 - Nemanja V <nafsub@outlook.com>
 
 - Workaround for CMake lacking a CFGDIR variable.
-  * Patch was submitted (https://github.com/danmar/cppcheck/pull/1554) 
-    and accepted so this change should be reverted and replaced with a CMake compile definition 
+  * Patch was submitted (https://github.com/danmar/cppcheck/pull/1554)
+    and accepted so this change should be reverted and replaced with a CMake compile definition
     -DCFGDIR=\"%{_datadir}/%{name}\" once a new upstream version is released.
 
 -------------------------------------------------------------------
@@ -688,7 +761,7 @@ Thu Jan  8 11:04:07 UTC 2015 - danny.al-gaaf@bisect.de
 
 - update to 1.68:
   * New checks:
-    - Multifile checking for buffer overruns and uninitialized 
+    - Multifile checking for buffer overruns and uninitialized
       variables
   * Improvements:
     - Libraries are now able to contain platform specific types
@@ -699,23 +772,23 @@ Thu Jan  8 11:04:07 UTC 2015 - danny.al-gaaf@bisect.de
     - Improved checking of pointer overflow
     - Support noexcept(false)
     - Support __attribute__((noreturn))
-    - A bunch of additions to several Libraries, especially 
+    - A bunch of additions to several Libraries, especially
       posix.cfg and qt.cfg
-  * Additionally, lots of false positives and bugs have been fixed 
-    and several existing checks have been improved. 
+  * Additionally, lots of false positives and bugs have been fixed
+    and several existing checks have been improved.
 
 -------------------------------------------------------------------
 Wed Oct 22 05:00:02 UTC 2014 - danny.al-gaaf@bisect.de
 
 - update to 1.67:
   * General changes:
-    - Library files have now a 'format' attribute. Format version 
+    - Library files have now a 'format' attribute. Format version
       1 is assumed by default
-    - Cppcheck does no longer abort checking if unhandled 
+    - Cppcheck does no longer abort checking if unhandled
       characters (Non-ASCII) are found
   * New checks:
     - Check for unused return values
-    - Detect shift by too many bits, signed integer overflow and 
+    - Detect shift by too many bits, signed integer overflow and
       dangerous sign conversion
     - Recommend usage of expm1(), log1p(), erfc()
     - Division by sizeof() as parameter to memset/memcpy/
@@ -727,26 +800,26 @@ Wed Oct 22 05:00:02 UTC 2014 - danny.al-gaaf@bisect.de
     -- Using va_list before it is opened
     -- Subsequent calls to va_start/va_copy()
     - Initialization by itself in initializer list
-    - Dead pointer usage when pointer alias local variable that 
+    - Dead pointer usage when pointer alias local variable that
       has gone out of scope
   * Improvements:
     - Support uniform initialization syntax (C++11)
     - Much improvements to value flow analysis
-    - Improved AST creation (support placement new, C++-style 
+    - Improved AST creation (support placement new, C++-style
       casts, templates, operator new[], ...)
     - Improved lambda support
-    - Support GCC extension __attriute__((used)) and MSVC 
+    - Support GCC extension __attriute__((used)) and MSVC
       extension __declspec(property)
-    - Better support for static member variables, inherited 
+    - Better support for static member variables, inherited
       variables and namespaces
-    - Improved typedef support where multiple variables are 
+    - Improved typedef support where multiple variables are
       declared at once
-    - Avoid checking code multiple times by calculating a checksum. 
+    - Avoid checking code multiple times by calculating a checksum.
       Duplicate preprocessor configurations are eliminated by this.
     - Support C++03/C 'auto' keyword
-    - HTML report: display 'verbose' message using clickable 
+    - HTML report: display 'verbose' message using clickable
       expandable divs
-  * Additionally, lots of false positives and bugs have been fixed 
+  * Additionally, lots of false positives and bugs have been fixed
     and several existing checks have been improved.
 
 -------------------------------------------------------------------
@@ -763,19 +836,19 @@ Mon Sep  1 21:03:35 UTC 2014 - danny.al-gaaf@bisect.de
       checking accuracy and performance
     - Checking for self assignment now supports more complex
       expressions
-    - Returning references to literals or references to calculation 
+    - Returning references to literals or references to calculation
       results is detected
-    - Enhanced support for commutative operators in duplicate 
+    - Enhanced support for commutative operators in duplicate
       expression checking
     - Improved template/enum parsing
     - Much improved htmlreport
     - Definition of POD types in .cfg files
-    - Definition of minsize for buffer arguments in .cfg files 
+    - Definition of minsize for buffer arguments in .cfg files
       for buffer overflow checking
-    - Fixed handling of #error: Do not report them if -f and -D 
+    - Fixed handling of #error: Do not report them if -f and -D
       are used together
     - New .cfg file for AVR platform
-    - Generate xml dump of AST/ValueFlow/SymbolDatabase/TokenList 
+    - Generate xml dump of AST/ValueFlow/SymbolDatabase/TokenList
       if --dump is given
     - Improved performance in several cases
 
@@ -784,32 +857,32 @@ Sun May 11 20:56:06 UTC 2014 - danny.al-gaaf@bisect.de
 
 - update to 1.65:
   * General changes:
-    - Cppcheck requires a C++11 compiler supporting the common 
-      subset of features supported by GCC 4.4, Visual Studio 2010 
+    - Cppcheck requires a C++11 compiler supporting the common
+      subset of features supported by GCC 4.4, Visual Studio 2010
       and Clang 2.9
   * Improvements:
-    - Much improved support of complex combinations of function 
+    - Much improved support of complex combinations of function
       pointers, arrays and references
     - Better handling of syntax errors
     - Better detection of stack variables passed to free()
     - Much improved value flow analysis
-    - More robust error detection in several checks due to usage 
+    - More robust error detection in several checks due to usage
       of AST
     - Better handling of unknown Macros in function declarations
-    - Allocation/Deallocation functions can be extend across 
+    - Allocation/Deallocation functions can be extend across
       different .cfg files
-    - Better handling of some C++11 language features like enum 
+    - Better handling of some C++11 language features like enum
       class, in-class member initializers
     - Detect calling (std::)abs() with bool argument
   * New checks:
     - Check for noexcept and __attribute__((nothrow)) correctness
-    - Check for unhandled exceptions when exception specifiers 
+    - Check for unhandled exceptions when exception specifiers
       are used
     - Access to empty STL containers
     - Repositioning operation on a file opened in append mode
     - Find nested redundant if-statements (was experimental before)
-  * Additionally, a large number of false positives and crashs 
-    has been fixed. 
+  * Additionally, a large number of false positives and crashs
+    has been fixed.
 
 -------------------------------------------------------------------
 Thu May  1 21:46:42 UTC 2014 - danny.al-gaaf@bisect.de
@@ -844,28 +917,28 @@ Thu Apr 11 09:30:47 UTC 2013 - dalgaaf@suse.de
 
 - update to 1.59:
  * Commandline/Settings changes:
-   - New option to enable warnings but not style messages: 
+   - New option to enable warnings but not style messages:
      --enable=warning
-   - Cppcheck used to skip includes where the header filename 
-     is enclosed in <>. You can now include these headers also by 
-     using -I. 
+   - Cppcheck used to skip includes where the header filename
+     is enclosed in <>. You can now include these headers also by
+     using -I.
  * New checks:
-   - New POSIX checks: pipe() buffer size, redundant calls of 
-     set/get user id, too big value passed to usleep(), buffer 
+   - New POSIX checks: pipe() buffer size, redundant calls of
+     set/get user id, too big value passed to usleep(), buffer
      overflow when using write()
-   - Storing getc() return value in char variable and comparing 
+   - Storing getc() return value in char variable and comparing
      to EOF.
    - Detect redundant bitand operations
    - Find suspicious equality comparisons like: if(a == 0) a == 1;
    - Warn about using malloc() for classes containing virtual
      methods, std::-objects or constructors
-   - Portability check that warns when using NULL as argument to 
-     variadic function. It has undefined behaviour on some 
+   - Portability check that warns when using NULL as argument to
+     variadic function. It has undefined behaviour on some
      implementations.
  * Improvements:
    - Improved lookup for functions and types
    - Switched to TinyXml2 as XML library
-   - Improved checking for uninitialized struct members, 
+   - Improved checking for uninitialized struct members,
      variable scopes that can be reduced and unused functions
  * GUI:
    - Remember last path in open file dialog
@@ -877,15 +950,15 @@ Fri Feb  8 07:46:59 UTC 2013 - highwaystar.ru@gmail.com
 
 - update to 1.58
  * Commandline/Settings changes:
-  - Added --include to the cppcheck command line client. This forces 
-    inclusion of the given file. This can for instance be used 
+  - Added --include to the cppcheck command line client. This forces
+    inclusion of the given file. This can for instance be used
     instead of --append and will then allow you to use #define etc also.
-  - The threads handling has been improved. Using -jN now works in 
+  - The threads handling has been improved. Using -jN now works in
     windows also.
 
  * Improvements:
-  - NULL pointers: Improved checking of default function 
-    argument values. 
+  - NULL pointers: Improved checking of default function
+    argument values.
 
 -------------------------------------------------------------------
 Wed Dec 26 04:11:57 UTC 2012 - mrdocs@opensuse.org
@@ -922,8 +995,8 @@ Sun Aug 28 11:45:37 UTC 2011 - asn@cryptomilk.org
 -------------------------------------------------------------------
 Mon Aug  8 03:54:42 UTC 2011 - mrdocs@opensuse.org
 - version bump to 1.49
-- full change log 
-  http://raw.github.com/danmar/cppcheck/master/Changelog 
+- full change log
+  http://raw.github.com/danmar/cppcheck/master/Changelog
 
 -------------------------------------------------------------------
 Mon Apr 11 08:46:59 UTC 2011 - asn@cryptomilk.org

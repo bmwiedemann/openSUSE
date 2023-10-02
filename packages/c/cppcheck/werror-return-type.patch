@@ -1,0 +1,35 @@
+Index: cppcheck-2.12.0/lib/keywords.cpp
+===================================================================
+--- cppcheck-2.12.0.orig/lib/keywords.cpp
++++ cppcheck-2.12.0/lib/keywords.cpp
+@@ -165,6 +166,7 @@ const std::unordered_set<std::string>& K
+             return c23_keywords_all;*/
+     }
+     assert(false && "unreachable");
++    __builtin_unreachable();
+ }
+ 
+ // cppcheck-suppress unusedFunction
+@@ -185,6 +187,7 @@ const std::unordered_set<std::string>& K
+         return cpp23_keywords_all;
+     }
+     assert(false && "unreachable");
++    __builtin_unreachable();
+ }
+ 
+ // cppcheck-suppress unusedFunction
+@@ -202,6 +205,7 @@ const std::unordered_set<std::string>& K
+             return c23_keywords_all;*/
+     }
+     assert(false && "unreachable");
++    __builtin_unreachable();
+ }
+ 
+ // cppcheck-suppress unusedFunction
+@@ -223,5 +227,6 @@ const std::unordered_set<std::string>& K
+         return cpp23_keywords;
+     }
+     assert(false && "unreachable");
++    __builtin_unreachable();
+ }
+ 

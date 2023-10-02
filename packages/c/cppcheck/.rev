@@ -360,4 +360,41 @@
     <comment></comment>
     <requestid>1090242</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8f90035aa8ea2bdebc3b1a62cc811ec6</srcmd5>
+    <version>2.12.1</version>
+    <time>1696269899</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.12.1:
+  * Support importing projects with project-name
+
+- update to 2.12.0:
+  * uselessOverride finds overriding functions that either
+    duplicate code from or delegate back to the base class
+    implementation
+  * knownPointerToBool finds pointer to bool conversions that are
+    always true or false
+  * truncLongCastAssignment and truncLongCastReturn check
+    additional types, including float/double/long double
+  * duplInheritedMember also reports duplicated member functions
+  * constParameter*/constVariable* checks find more instances of
+    pointers/references that can be const, e.g. when calling
+    library functions
+  * Write how many checkers was activated after a run
+  * Added --checkers-report that can be used to generate a report
+    in a file that shows what checkers was activated and disabled
+  * The qmake build system has been deprecated and will be
+    removed in a future version.
+  * Command-line option '--template
+- update to 2.11:
+  * pop_back on empty container is UB
+  * Improve useStlAlgorithm check to handle many more conditions
+    in the loop for any_of, all_of and none_of algorithms
+  * ValueFlow can evaluate the return value of functions even
+    when conditionals are used
+  * ValueFlow will now forward the container sizes being returned
+    from a function
+  * ValueFlow can infer possible values from possible symbolic</comment>
+    <requestid>1114263</requestid>
+  </revision>
 </revisionlist>
