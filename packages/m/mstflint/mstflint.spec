@@ -19,7 +19,7 @@
 %define extra_version -1
 
 Name:           mstflint
-Version:        4.24.0
+Version:        4.25.0
 Release:        0
 Summary:        Mellanox Firmware Burning and Diagnostics Tools
 License:        BSD-2-Clause OR GPL-2.0-only

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 28 13:48:49 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 4.25.0
+  https://github.com/Mellanox/mstflint/files/12317054/MSTFLINT.Package.-Firmware.Burning.and.Diagnostics.Tools.Documentation.v4.25.0.pdf
+- Refresh fix-race-condition-during-install.patch to handle new race conditions
+
+-------------------------------------------------------------------
 Mon Jul 17 10:01:00 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to 4.24.0
