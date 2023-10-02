@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.5.2
+%define real_version 6.5.3
 %define short_version 6.5
 %define short_name qtcharts
 %define tar_name qtcharts-everywhere-src
@@ -28,17 +28,18 @@
 %endif
 #
 Name:           qt6-charts%{?pkg_suffix}
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        Qt 6 Charts library
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
-Source:         https://www.nic.funet.fi/pub/mirrors/download.qt-project.org/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-charts-rpmlintrc
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6Multimedia) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGLWidgets) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
