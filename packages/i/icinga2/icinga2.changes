@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Thu Sep 28 07:11:25 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.14.0
+  * Breaking Changes
+    - Remove CheckResultReader (which has been deprecated since v2.9). #9714
+    - Remove StatusDataWriter (which has been deprecated since v2.9). #9715
+    - ElasticsearchWriter: drop support for Elasticsearch < v7. #9812
+    - Consider a checkable unreachable once one Dependency fails.
+      Previously all of them had to fail. (Consult the upgrading docs.) #8218
+    - API: reject config modifications during reload with HTTP status 503. #9445
+    - icinga2 daemon: to reduce config load time, write file needed by
+      icinga2 object list only if --dump-objects is given. #9586 #9591
+    - Default email notification scripts: link to Icinga DB Web,
+      not the monitoring module. (Consult the upgrading docs.) #9742 #9757
+    - API: for security reasons hide TicketSalt in /v1/variables. #7863
+  * Icinga 2 Config DSL
+    - Disallow global variable modification after config commit start (i.e.
+      inside object/apply T "x" { ... }) to reduce config load time. #9740
+    - Forbid Dependency cycles at config load time. #8389
+    - Allow only strings in the arrays Host#groups, Service#groups and
+      User#groups. Needed for consistency, especially by the IDO. #9057
+    - Disallow empty object names. (They worked only partially anyway.) #9409
+  * Enhancements
+    - Significantly reduce config load time of large setups.
+      #8118 #9555 #9557 #9572 #9577 #9603 #9608 #9627 #9648 #9657 #9662
+    - Allow to connect dependencies via redundancy groups. Only parents within
+      one group are assumed to provide redundancy for each other. #8218
+    - Built-in check command ifw-api, communicates directly with the Icinga for
+      Windows REST API. (Doesn't spawn a PowerShell process for that.) #9062
+    - JournaldLogger which logs to systemd journal. #9000
+    - API: POST /v1/objects: allow to discard some previously modified attributes,
+      i.e. to restore the config files' values. #9783
+    - ElasticsearchWriter: support Elasticsearch v8. #9812
+    - Support $env.ENV_VAR_NAME$ macros. #8302
+    - Speed up Icinga DB config dump. #9524
+    - Default mail notification scripts: also print $host.notes$ and $service.notes$. #9713
+    - Enable built-in OpenSSL DH parameters to allow DHE TLS ciphers. #9811
+    - Clean up global default TLS cipher list to improve security. #9809
+    - Influxdb(2)Writer: write more precise timestamps (nanoseconds). #9599
+  * Bugfixes
+    - Icinga DB feature: normalize several Redis data not to crash the Go daemon.
+      #9772 #9775 #9792 #9793 #9794 #9805
+    - Fix parsing of perfdata across multiple lines in plugin output. #8969
+    - icinga check: fix last reload failure time. #8429 #9827
+    - Resolve macros inside custom vars of IcingaApplication. #9779
+    - SELinux: allow Icinga and its plugins to write to syslog. #9688
+    - ElasticsearchWriter: fix data buffer flush race condition during stop. #9810
+    - Trigger flexible downtimes not in the past if checkable is already down. #9726
+    - Send downtime expiration notifications immediately, not after up to a minute. #9726
+  * Cluster
+    - Don't hang in timed out connection attempt. #9711 #9725
+    - Fix lost acknowledgements after re-connect. #9718
+    - cluster-zone check: don't complain about not connected
+      other local zone members if there aren't any. #8595
+    - Allow agent to update executions delegated to it via /v1/actions/execute-command. #8627
+  * API
+    - Disallow breaking inter-object relationships by changing
+      relationship attributes at runtime, e.g. Service#host_name. #9407
+    - Correct several HTTP response status codes. #7958 #9354
+    - Correct Boolean field types previously reported by /v1/types as Number. #9514
+  * CLI
+    - icinga2 daemon: fix -DConfiguration.Concurrency= flag
+      which now allows to override the number of threads. #9643
+    - icinga2 node wizard: avoid unnecessary chown(2) which may fail and abort the wizard. #8744
+    - Correct several log messages. #8895 #8965 #9663
+  * ITL
+    - Add linux_netdev check command. #9045
+    + Command Argument Changes
+      - disk: don't pass -m (disk_megabytes) by default. #9642
+      - disk: pass -X fuse.portal (disk_exclude_type) by default. #9459
+      - http: support multiple -k (http_header) as array. #8574
+      - icmp: double defaults for -w (icmp_wpl) and -c (icmp_cpl). #9041
+      - logfiles: pass --winwarncrit (logfiles_winwarncrit) without argument. #9056
+      - nwc_health: pass SNMPv3-only args only when using SNMPv3. #9095
+      - vmware-esx-dc-runtime-tools and vmware-esx-soap-vm-runtime-tools:
+      - rename --open-vm-tools to --open_vm_tools_ok (vmware_openvmtools). #9611
+
+-------------------------------------------------------------------
 Sun Aug 20 05:48:35 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use fixed hostname string (boo#1084909)
