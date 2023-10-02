@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct 02 05:29:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230929T164122Z:
+  * Add min, max and total request time to top api command (#4702)
+  * Use latest madmin-go (v3.0.21) (#4701)
+  * perf net: Do not show Err: tag if there is no error (#4700)
+
+-------------------------------------------------------------------
+Fri Sep 29 08:46:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230928T174830Z:
+  * change 6->3 decimal resolution, to conserve terminal realestate
+  * Add ART and ATP to 'support top api' command (#4699)
+  * broaden reach of `--no-color` flag (#4697)
+  * Show heal checks performed on missing (#4692)
+
+-------------------------------------------------------------------
 Mon Sep 25 05:52:33 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230922T050746Z:

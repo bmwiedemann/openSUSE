@@ -22,7 +22,7 @@
 %define binary_name minio-client
 
 Name:           minio-client
-Version:        20230922T050746Z
+Version:        20230929T164122Z
 Release:        0
 Summary:        Client for MinIO
 License:        AGPL-3.0-only
@@ -37,8 +37,7 @@ MinIO Client is a replacement for ls, cp, mkdir, diff and rsync commands for fil
 Please note: In contrast to upstream this package provides the executable as `minio-client`.
 
 %prep
-%setup -q -n %{archive_name}-%{version}
-%setup -q -n %{archive_name}-%{version} -T -D -a 1
+%autosetup -p1 -a1 -n %{archive_name}-%{version}
 
 %build
 go build \
