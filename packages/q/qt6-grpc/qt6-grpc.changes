@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 28 07:34:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.3
+  * https://www.qt.io/blog/qt-6.5.3-released
+- Drop patch, merged upstream:
+  * 0002-Remove-protobuf-logging.h-include.patch
+
+-------------------------------------------------------------------
 Thu Jul 20 08:50:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.2

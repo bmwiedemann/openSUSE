@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.5.2
+%define real_version 6.5.3
 %define short_version 6.5
 %define short_name qtgrpc
 %define tar_name qtgrpc-everywhere-src
@@ -28,16 +28,15 @@
 %endif
 #
 Name:           qt6-grpc%{?pkg_suffix}
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        gRPC and Protobuf generator and bindings for Qt framework
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
-Source:         https://www.nic.funet.fi/pub/mirrors/download.qt-project.org/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-include-of-std-set.patch
-Patch1:         0002-Remove-protobuf-logging.h-include.patch
-Patch2:         0003-Add-missing-memory-include.patch
+Patch1:         0003-Add-missing-memory-include.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
