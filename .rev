@@ -79,4 +79,14 @@
     <comment></comment>
     <requestid>998308</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0108a30950776d1d8fff9be5adffe724</srcmd5>
+    <version>1.1.6</version>
+    <time>1696269896</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.6
+  * This release adds a -version option and fixes 
+    https://bugs.debian.org/720266</comment>
+    <requestid>1114273</requestid>
+  </revision>
 </revisionlist>

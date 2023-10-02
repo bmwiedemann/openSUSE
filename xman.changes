@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 29 07:53:58 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.6
+  * This release adds a -version option and fixes 
+    https://bugs.debian.org/720266 
+
+-------------------------------------------------------------------
 Thu Aug 11 08:15:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use gpg for source validation
