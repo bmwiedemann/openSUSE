@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           arkade
-Version:        0.10.7
+Version:        0.10.11
 Release:        0
 Summary:        Open Source Kubernetes Marketplace
 License:        Apache-2.0
@@ -33,8 +33,7 @@ arkade provides a portable marketplace for downloading your favourite devops CLI
 You can also download CLIs like kubectl, kind, kubectx and helm faster than you can type "apt-get/brew update".
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p1 -a 1
 
 %build
 go build \

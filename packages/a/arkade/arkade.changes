@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Oct 02 10:46:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.11:
+  * Fix issue with new version of go-execute
+  * Disable update for windows for the time being
+
+-------------------------------------------------------------------
+Fri Sep 29 19:17:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.10:
+  * Remove temporary files after downloading binaries
+
+-------------------------------------------------------------------
+Fri Sep 29 19:14:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.9:
+  * Fix #117
+  * Update to v3 of YAML package
+  * Initial version of an update-sdk
+  * go mod tidy
+
+-------------------------------------------------------------------
+Fri Sep 29 04:40:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.8:
+  * Alteration to support message
+  * Enable force flag, and add documentation to command
+  * Make digest verification optional
+  * Download and verify SHA digest
+  * Enable self-update for arkade
+  * Update Kafka connector to use brokerHosts
+
+-------------------------------------------------------------------
 Fri Sep 15 09:27:07 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.10.7:
