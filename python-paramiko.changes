@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 29 22:29:46 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- refresh remove-icecream-dep.patch
+- update to 3.3.1
+ detailed changelog: https://www.paramiko.org/changelog.html#
+
+-------------------------------------------------------------------
 Fri May 12 09:27:30 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Delete paramiko-pr1665-remove-pytest-relaxed.patch
