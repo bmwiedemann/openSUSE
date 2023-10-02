@@ -35,7 +35,8 @@ BuildRequires:  flex
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  systemd-rpm-macros
+Requires(pre):  shadow
 Provides:       bird6 = %{version}
 Provides:       bird6:%{_sbindir}/bird6
 Obsoletes:      bird6 < %{version}
@@ -66,7 +67,7 @@ This package holds the HTML documentation.
 %setup -q
 
 %build
-export CFLAGS="${RPM_OPT_FLAGS} -fpic -DPIC -fno-strict-aliasing -Wno-parentheses -Wno-pointer-sign"
+export CFLAGS="%{optflags} -fpic -DPIC -fno-strict-aliasing -Wno-parentheses -Wno-pointer-sign"
 export LDFLAGS="-Wl,-z,relro -pie"
 %configure \
 	--with-runtimedir=%{bird_runtimedir}
@@ -84,7 +85,7 @@ install -D -d -m 0750 %{buildroot}%{bird_home}
 install -D -d -m 0750 %{buildroot}%{_docdir}/%{name}/
 
 %check
-make test
+%make_build test
 
 %pre
 # Create bird user/group

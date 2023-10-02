@@ -127,4 +127,14 @@
     <comment></comment>
     <requestid>1094708</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>02e8d079e52cdb8cdd7257e36d882043</srcmd5>
+    <version>2.13.1</version>
+    <time>1696269901</time>
+    <user>anag+factory</user>
+    <comment>- add 'shadow' to Requires(pre)
+
+- Add -fcommon to allow building against GCC10</comment>
+    <requestid>1114256</requestid>
+  </revision>
 </revisionlist>
