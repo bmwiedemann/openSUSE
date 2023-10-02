@@ -23,4 +23,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1108575</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7667635b1f11abaf0004c252abc565b1</srcmd5>
+    <version>1.31.0</version>
+    <time>1696269970</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.31.0:
+  * Report line and column when using `janet_dobytes`
+  * Add `:unless` loop modifier
+  * Allow calling `reverse` on generators.
+  * Improve performance of a number of core functions including `partition`, `mean`, `keys`, `values`, `pairs`, `interleave`.
+  * Add `lengthable?`
+  * Add `os/sigaction`
+  * Change `every?` and `any?` to behave like the functional versions of the `and` and `or` macros.
+  * Fix bug with garbage collecting threaded abstract types.
+  * Add `:signal` to the `sandbox` function to allow intercepting signals.
+</comment>
+    <requestid>1114542</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 30 13:48:01 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 1.31.0:
+  * Report line and column when using `janet_dobytes`
+  * Add `:unless` loop modifier
+  * Allow calling `reverse` on generators.
+  * Improve performance of a number of core functions including `partition`, `mean`, `keys`, `values`, `pairs`, `interleave`.
+  * Add `lengthable?`
+  * Add `os/sigaction`
+  * Change `every?` and `any?` to behave like the functional versions of the `and` and `or` macros.
+  * Fix bug with garbage collecting threaded abstract types.
+  * Add `:signal` to the `sandbox` function to allow intercepting signals.
+
+-------------------------------------------------------------------
 Sat Aug 26 14:10:22 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.30.0:
