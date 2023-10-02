@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  2 02:24:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.28.4
+  * Enable clipping for zero sized rectangles in the SDL renderer
+  * Notify X11 clipboard managers when the clipboard changes
+  * Fixed sensor timestamps for third-party PS5 controllers
+  * Added detection for Logitech and Simagic racing wheels
+
+-------------------------------------------------------------------
 Fri Sep  1 19:13:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.28.3
