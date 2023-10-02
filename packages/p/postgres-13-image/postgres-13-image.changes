@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 28 14:29:10 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- add copyright and description header
+
+-------------------------------------------------------------------
 Wed Jul 12 12:55:01 UTC 2023 - Dirk Mueller <dmueller@suse.com>
 
 - Remove distribution-release from the package list, it is inherited from the base image
