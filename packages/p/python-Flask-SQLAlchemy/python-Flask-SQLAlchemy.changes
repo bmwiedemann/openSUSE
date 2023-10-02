@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 29 13:25:24 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 3.1.1
+ * Deprecate the __version__ attribute.
+ * Drop support for Python 3.7.
+ *  Add support for the SQLAlchemy 2.x API via model_class parameter.
+ * Bump minimum version of SQLAlchemy to 2.0.16.
+ * Remove previously deprecated code.
+ * Pass extra keyword arguments from get_or_404 to session.get.
+ * Fix bug with finding right bind key for clause statements.
+
+-------------------------------------------------------------------
 Wed Aug  2 07:00:50 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.0.5:

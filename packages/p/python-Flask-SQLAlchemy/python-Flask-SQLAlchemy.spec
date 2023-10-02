@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-SQLAlchemy
-Version:        3.0.5
+Version:        3.1.1
 Release:        0
 Summary:        SQLAlchemy support for Flask
 License:        BSD-3-Clause
@@ -32,11 +32,11 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 2.2
-Requires:       python-SQLAlchemy >= 1.4.18
+Requires:       python-SQLAlchemy >= 2.0.16
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask >= 2.2}
-BuildRequires:  %{python_module SQLAlchemy >= 1.4.18}
+BuildRequires:  %{python_module SQLAlchemy >= 2.0.16}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
