@@ -135,4 +135,17 @@
     <comment>update to upstream release 1.9.1</comment>
     <requestid>1064347</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cebd29eea7178829bed3a77866636b59</srcmd5>
+    <version>1.9.2</version>
+    <time>1696270028</time>
+    <user>anag+factory</user>
+    <comment>- Update to upstream release 1.9.2:
+  * clush/clubak: fix line buffering with Python 3
+  * clush: fix --[r]copy dest when --dest is omitted
+  * NodeUtils: allow null values in cluster.yaml
+  * Topology: check that node groups/wildcards are non-empty
+  * packaging: fix missing xcat.conf.example</comment>
+    <requestid>1114717</requestid>
+  </revision>
 </revisionlist>

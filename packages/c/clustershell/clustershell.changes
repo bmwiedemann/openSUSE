@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  2 07:19:28 UTC 2023 - Stephane Thiell <sthiell@stanford.edu>
+
+- Update to upstream release 1.9.2:
+  * clush/clubak: fix line buffering with Python 3
+  * clush: fix --[r]copy dest when --dest is omitted
+  * NodeUtils: allow null values in cluster.yaml
+  * Topology: check that node groups/wildcards are non-empty
+  * packaging: fix missing xcat.conf.example
+
+-------------------------------------------------------------------
 Sat Feb 11 00:49:02 UTC 2023 - Stephane Thiell <sthiell@stanford.edu>
 
 - Update to upstream release 1.9.1:
