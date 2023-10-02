@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.5.2
+%define real_version 6.5.3
 %define short_version 6.5
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -30,16 +30,15 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
 License:        LGPL-2.1-with-Qt-Company-Qt-exception-1.1 OR LGPL-3.0-only
 URL:            https://www.qt.io
-Source:         https://www.nic.funet.fi/pub/mirrors/download.qt-project.org/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         CVE-2023-38197-qtbase-6.5.diff
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
@@ -779,6 +778,7 @@ sed -i '/zstd CONFIG/d' cmake/FindWrapZSTD.cmake
     -DFEATURE_relocatable:BOOL=OFF \
     -DFEATURE_system_sqlite:BOOL=ON \
     -DFEATURE_system_xcb_xinput:BOOL=ON \
+    -DFEATURE_xcb_native_painting:BOOL=ON \
     -DINPUT_openssl:STRING=linked \
 %if 0%{?with_gles}
     -DINPUT_opengl:STRING=es2 \

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 28 07:34:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.3
+  * https://www.qt.io/blog/qt-6.5.3-released
+- Drop patch, merged upstream:
+  * CVE-2023-38197-qtbase-6.5.diff
+- Enable the experimental native painting feature to improve
+  remote desktop performances (boo#1214915)
+  exporting QT_XCB_NATIVE_PAINTING is required to use the feature.
+
+-------------------------------------------------------------------
 Thu Jul 20 08:34:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Use a mirror to download sources for all Qt packages. Upstream
