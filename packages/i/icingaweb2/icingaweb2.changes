@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 22 11:11:44 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.12.0
+  - Support for PHP 8.2 #4918
+  - Support for Content-Security-Policy #4528
+  - Allow to initiate a refresh with __REFRESH__ #5108
+  - Don't refresh twice upon __CLOSE__ #5106
+  - Add event column-moved #5049
+  - Add copy-to-clipboard behavior #5041
+  - Access Oracle Database via tnsnames.ora / LDAP Naming Services #5062
+  - Reduce risk of crashing the x509 collector daemon #5115
+  - CSV export does not escape double quotes #4910
+  * Full changelog see:
+    https://github.com/Icinga/icingaweb2/milestone/79?closed=1
+- Massive changes in spec needed.
+
+-------------------------------------------------------------------
 Tue Jul  4 07:34:26 UTC 2023 - James Pearson <jamesp@vicidial.com>
 
 - DB schema files are in schema not etc/schema in packaged tarball 
