@@ -205,4 +205,25 @@
   * Update owners (#110) (forwarded request 1108273 from glaubitz)</comment>
     <requestid>1108277</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c25b06ad12142fa07823a1c672979bd7</srcmd5>
+    <version>20230926.00</version>
+    <time>1696269983</time>
+    <user>anag+factory</user>
+    <comment>- update to 20230926.00:
+  * fix suse build
+  * selinux: fix selinux build (#114)
+  * test: align CXX Flags
+  * sshca: Make the implementation more C++ like
+  * sshca: Add a SysLog wrapper
+  * oslogin_utils: introduce AuthorizeUser() API
+  * sshca: move it out of pam dir
+  * pam: start disabling the use of oslogin_sshca
+  * sshca: consider sshca API to assume a cert only
+  * authorized principals: introduce the new command
+  * authorize keys: update to use new APIs
+  * pam modules: remove pam_*_admin and update pam_*_login
+  * cache_refresh: should be catching by reference.</comment>
+    <requestid>1114592</requestid>
+  </revision>
 </revisionlist>

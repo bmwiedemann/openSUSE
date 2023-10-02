@@ -19,7 +19,7 @@
 %{!?_pam_moduledir: %define _pam_moduledir %{_pamdir}}
 
 Name:           google-guest-oslogin
-Version:        20230823.00
+Version:        20230926.00
 Release:        0
 Summary:        Google Cloud Guest OS Login
 License:        Apache-2.0
@@ -86,6 +86,7 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 %{_libdir}/libnss*
 %{_pam_moduledir}/*
 %{_presetdir}/*
+%{_bindir}/google_authorized_principals
 %{_sbindir}/*
 %{_unitdir}/*
 

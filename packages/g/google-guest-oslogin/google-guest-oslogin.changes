@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct  1 08:31:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230926.00:
+  * fix suse build
+  * selinux: fix selinux build (#114)
+  * test: align CXX Flags
+  * sshca: Make the implementation more C++ like
+  * sshca: Add a SysLog wrapper
+  * oslogin_utils: introduce AuthorizeUser() API
+  * sshca: move it out of pam dir
+  * pam: start disabling the use of oslogin_sshca
+  * sshca: consider sshca API to assume a cert only
+  * authorized principals: introduce the new command
+  * authorize keys: update to use new APIs
+  * pam modules: remove pam_*_admin and update pam_*_login
+  * cache_refresh: should be catching by reference.
+
+-------------------------------------------------------------------
 Thu Aug 31 11:46:10 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230823.00
