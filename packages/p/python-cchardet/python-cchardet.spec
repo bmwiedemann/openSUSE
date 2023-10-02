@@ -20,7 +20,7 @@
 %define modname faust-cchardet
 %{?sle15_python_module_pythons}
 Name:           python-cchardet
-Version:        2.1.18
+Version:        2.1.19
 Release:        0
 Summary:        CChardet is high speed universal character encoding detector
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MPL-1.1

@@ -60,4 +60,17 @@
 - Add %{?sle15_python_module_pythons}</comment>
     <requestid>1094472</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e391cba4c0fc4118df4e86d1bbb7b60b</srcmd5>
+    <version>2.1.19</version>
+    <time>1696270021</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.19:
+  * Update pyproject.toml to try building wheels for every Python
+    implementation
+
+- build with cythonize to have working code for python 3.11
+- initial commit</comment>
+    <requestid>1114692</requestid>
+  </revision>
 </revisionlist>
