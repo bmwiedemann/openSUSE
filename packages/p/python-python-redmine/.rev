@@ -73,4 +73,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1061817</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d2788e9684ef5d0ddf13ccc5c8b4abd9</srcmd5>
+    <version>2.4.0</version>
+    <time>1696269898</time>
+    <user>anag+factory</user>
+    <comment>- Add 328.patch to workaround &quot;API key leakage on exception&quot;
+  described in boo#1215722
+  https://github.com/maxtepkeev/python-redmine/issues/330
+  https://github.com/maxtepkeev/python-redmine/pull/328</comment>
+    <requestid>1114261</requestid>
+  </revision>
 </revisionlist>
