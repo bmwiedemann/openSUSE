@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typed-ast
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        A fork of Python 2 and 3 ast modules with type comment support
 License:        Apache-2.0

@@ -214,4 +214,20 @@
     <comment></comment>
     <requestid>1085637</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>319fb0f5727725e7392bc600710c14e0</srcmd5>
+    <version>1.5.5</version>
+    <time>1696269892</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.5:
+  * update project to be end of life
+  * set dev status to inactive
+
+  * Use PyUnicode_DecodeUnicodeEscape directly, rather than wrapping it.
+  * Recommend ast on Python 3.8+
+ * Add a kind field to Bytes as well (#83)
+ * Fix await in functions with type comments (#86)
+ * Put _ast3 and _ast27 in the typed_ast package (#85)</comment>
+    <requestid>1114754</requestid>
+  </revision>
 </revisionlist>
