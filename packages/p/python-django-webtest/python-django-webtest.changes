@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  2 07:19:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.11:
+  * Add support for official Python & Django versions
+  * Do not insert  WebtestAuthentication to the head of
+    DEFAULT_AUTHENTICATION_CLASSES.
+
+-------------------------------------------------------------------
 Wed Jan  4 14:24:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.10:

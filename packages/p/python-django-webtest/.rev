@@ -71,4 +71,15 @@
     WEBTEST_AUTHENTICATION_BACKEND setting.</comment>
     <requestid>1055864</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f1cf1c1fe763a600d59d171f1196d05b</srcmd5>
+    <version>1.9.11</version>
+    <time>1696270023</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.9.11:
+  * Add support for official Python &amp; Django versions
+  * Do not insert  WebtestAuthentication to the head of
+    DEFAULT_AUTHENTICATION_CLASSES.</comment>
+    <requestid>1114696</requestid>
+  </revision>
 </revisionlist>

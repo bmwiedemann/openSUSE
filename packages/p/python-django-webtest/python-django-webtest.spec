@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-webtest
-Version:        1.9.10
+Version:        1.9.11
 Release:        0
 Summary:        Django integration for WebTest
 License:        MIT
