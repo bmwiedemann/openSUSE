@@ -15,4 +15,9 @@ git subtree add -P $p https://code.opensuse.org/package/$pkg master
 #grep '"$pkg"' /home/opensuserabbit/dumprabbit.json | tail -1 | scripts/rabbithandle-single.py
 #scripts/splitone2 "$pkg"
 #(cd /data/openSUSE-test/$p/ && rm -rf $p && git pull )
-cp -a /data/openSUSE-test/$p/.git $p/
+if [ -e /data/openSUSE-test/$p/.git ] ; then
+    cp -a /data/openSUSE-test/$p/.git $p/
+else
+    rm -rf $p
+    git clone https://code.opensuse.org/package/$pkg.git $p
+fi
