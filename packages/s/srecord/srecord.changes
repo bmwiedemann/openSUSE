@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Sep 30 13:17:30 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.65
+  * HP64000 absolute file format contributed by fenugrec. Supports
+    file input, tests and documentation.
+  * Patch by dg1yfe as pulled from github via marcows. Updated man
+    page for srec_ppb. Updated PPB output to match checksum range
+    for output. Updated tests for PPB write and read including
+    files containing holes. Added test for prolog stripping.
+  * Verbose srec_info as suggested by Thomas. Display basic info
+    on the proportion of input files which data/holes.
+  * Bug fix from xiretza for COE generation falsly detecting holes
+    in input.
+  * Remove dependencies on boost moving to std shared_ptr and
+    static_assert. Remove doc references to boost.
+  * Fixed buffer overflow in four packed code output generator.
+  * Marksu Heidelberg <markus.heidelberg@web.de> contributed a
+    patch to fix a bug that he also found with the -generator
+    which resulted in an endless loop.
+  * Completely new build and config system to replace Aegis, Cook
+    and autoconf with cmake & git. Integration with cpack to
+    generate linux and windows packages. Integration with ctest to
+    sustain the regression test suite.
+- Use groff-full required for HTML and PDF generation
+- Clean up spec file
+
+-------------------------------------------------------------------
 Thu Feb  2 14:52:38 UTC 2017 - adam.majer@suse.de
 
 - use individual libboost-*-devel packages instead of boost-devel
