@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 28 18:58:43 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to 6.0.1
+  * Fix memory leak and segfault in Redis::exec
+  * Fix unknown expiration modifier
+  * Update documentation
+
+-------------------------------------------------------------------
 Tue Sep 12 15:45:54 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 6.0.0
