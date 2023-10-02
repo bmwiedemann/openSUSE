@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sun Oct  1 12:53:17 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Rename version from 0.7.0.beta to 0.7.0~beta
+
+-------------------------------------------------------------------
+Thu Sep 28 23:25:50 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Revert to version 0.7.0.beta until blueprint-compiler version 
+  0.10.0 release
+
+-------------------------------------------------------------------
+Tue Sep 26 23:29:23 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Initial package
+
