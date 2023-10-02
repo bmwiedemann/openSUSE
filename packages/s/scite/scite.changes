@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct  1 22:43:41 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.3.8:
+  * Fix compilation with g++ 12.3. Bug #2396.
+
+-------------------------------------------------------------------
 Wed Aug  2 23:55:31 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.3.7:
