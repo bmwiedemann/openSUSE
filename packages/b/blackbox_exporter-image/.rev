@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of blackbox_exporter-image</comment>
     <requestid>1105164</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6d17ed2d2c8a0e51f30289ca5c3b6398</srcmd5>
+    <version>unknown</version>
+    <time>1696269868</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1114171</requestid>
+  </revision>
 </revisionlist>
