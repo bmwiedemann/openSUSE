@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 30 12:37:09 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Backport upstream patch llvm17-precompiled-preamble-build.patch
+  to fix build with LLVM 17.
+- Remove explicit runtime dependency libclang-cpp* when we don't
+  need an exact version, because it will be derived automatically.
+
+-------------------------------------------------------------------
 Thu Mar 30 21:52:42 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Backport upstream patch llvm16-optional-deprecation.patch to fix

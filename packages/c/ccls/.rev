@@ -141,4 +141,16 @@
 </comment>
     <requestid>1075714</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>03c0362d71ddacbd54951116b3d6e807</srcmd5>
+    <version>0.20220729</version>
+    <time>1696269969</time>
+    <user>anag+factory</user>
+    <comment>- Backport upstream patch llvm17-precompiled-preamble-build.patch
+  to fix build with LLVM 17.
+- Remove explicit runtime dependency libclang-cpp* when we don't
+  need an exact version, because it will be derived automatically.
+</comment>
+    <requestid>1114535</requestid>
+  </revision>
 </revisionlist>
