@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 29 23:50:37 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.3.8
+  + Added popup & countdown timer to restore from improper settings
+    ; close
+- Simplify spec source url and requires typelib GtkLayerShell 
+    
+-------------------------------------------------------------------
 Sat Jul 29 01:33:46 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.3.7

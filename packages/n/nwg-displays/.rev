@@ -7,4 +7,16 @@
     <comment>- Initial package for openSUSE</comment>
     <requestid>1101349</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c17cc292d961b4f517cad7f14ee4c093</srcmd5>
+    <version>0.3.8</version>
+    <time>1696269913</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.3.8
+  + Added popup &amp; countdown timer to restore from improper settings ; close
+- Simplify spec source url and requires typelib GtkLayerShell 
+    
+</comment>
+    <requestid>1114464</requestid>
+  </revision>
 </revisionlist>

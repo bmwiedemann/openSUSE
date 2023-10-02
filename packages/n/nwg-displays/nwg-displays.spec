@@ -17,12 +17,12 @@
 
 
 Name:           nwg-displays
-Version:        0.3.7
+Version:        0.3.8
 Release:        0
 Summary:        A GTK3 wrapper to display text on the desktop for wlroots
 License:        MIT
 URL:            https://github.com/nwg-piotr/nwg-displays
-Source0:        https://github.com/nwg-piotr/nwg-displays/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
@@ -31,7 +31,7 @@ Requires:       libgtk-3-0
 Requires:       libgtk-layer-shell0
 Requires:       python3-gobject
 Requires:       python3-i3ipc
-Requires:       typelib-1_0-GtkLayerShell-0_1
+Requires:       typelib(GtkLayerShell)
 Recommends:     wlr-randr
 BuildArch:      noarch
 
