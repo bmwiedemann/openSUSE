@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Sep 27 10:16:45 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 0.4.40:
+  * nethsm: Various updates and improvements (#435, #437, #439,
+    #445)
+  * nk3: Fix "generator didn't stop" update error for LPC55 devices
+    (#394)
+  * nk3 secrets: Add support for updating credentials (#424, #425,
+    #428)
+  * nk3 test: Don’t show touch prompt if PIN is missing (#411)
+  * Update urllib3 (#426)
+- update to 0.4.39:
+  * Improved logging (#399, @Laborratte5)
+  * Cleanup, refactoring and fixes of the fido2 module (#337, #410)
+  * Check pynitrokey version on firmware update (#416,
+    @Laborratte5)
+  * Update dependencies to fix vulnerabilities and installation
+    problems (#364)
+- update to 0.4.38:
+  Secrets App updates: add Password Safe, challenge-response, and
+  improve UI
+  * Implemented enhancements:
+    - Secrets App Password Safe support for Nitrokey 3 #380
+      (szszszsz)
+  * Fixed bugs:
+    - Firmware 1.3.1 update failed for nk3 #368
+  * Closed issues:
+    - nitropy list errors out due to deepmerge not being found (in
+      a version recent enough) #396
+    - Secrets App: improve UI/UX for Password Safe support #392
+- update to 0.4.37:
+  * Features
+    - nk3 status: Add variant (#376)
+    - nk3 secrets: Update Secrets App API (#377)
+    - Add py.typed file (#387)
+  * Bugfixes
+    - nk3 test: Fix provisioner test (#367)
+    - fido2 list-credentials: Handle missing RP name (#359)
+    - fido2 list-credentials: Skip enumerating RPs when empty
+      (#360)
+- remove outdated dependency to deepmerge
+- explicitly require click-aliases and semver
+- build as noarch, as suggested by rpmlint
+
+-------------------------------------------------------------------
 Mon Jul  3 05:13:34 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package python-pynitrokey: Python client for managing Nitrokey devices

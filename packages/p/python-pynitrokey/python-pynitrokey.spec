@@ -15,8 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# only build for the default python on Tumbleweed
-# and for the new python stack on SLES15/Leap15
+
 %if 0%{suse_version} < 1699
 %{?sle15_python_module_pythons}
 %else
@@ -24,21 +23,22 @@
 %endif
 
 Name:           python-pynitrokey
-Version:        0.4.36
+Version:        0.4.40
 Release:        0
 Summary:        Python Library for Nitrokey devices
 License:        MIT
 URL:            https://github.com/Nitrokey/pynitrokey
 Source:         https://files.pythonhosted.org/packages/source/p/pynitrokey/pynitrokey-%{version}.tar.gz
+BuildRequires:  %{python_module click-aliases}
 BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module semver}
 # https://github.com/Nitrokey/pynitrokey/blob/master/pyproject.toml
 BuildRequires:  %{python_module certifi >= 14.5.14}
-BuildRequires:  %{python_module click >= 8.0.0 with %python-click < 9}
 BuildRequires:  %{python_module cffi}
+BuildRequires:  %{python_module click >= 8.0.0 with %python-click < 9}
 # "cryptography >=3.4.4,<37"
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module deepmerge >= 1.1.0}
 BuildRequires:  %{python_module ecdsa}
 # "frozendict ~= 2.3.4"
 BuildRequires:  %{python_module frozendict >= 2.3.4}
@@ -60,37 +60,39 @@ BuildRequires:  %{python_module typing_extensions >= 4.3.0}
 BuildRequires:  %{python_module pyserial}
 # "protobuf >=3.17.3, < 4.0.0"
 BuildRequires:  %{python_module protobuf >= 3.17.3}
-BuildRequires:  intelhex
 BuildRequires:  fdupes
+BuildRequires:  intelhex
 BuildRequires:  python-rpm-macros
 # SECTION test
 BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       intelhex
+Requires:       %{python_module click-aliases}
+Requires:       %{python_module semver}
 Requires:       python-certifi >= 14.5.14
 Requires:       python-cffi
-Requires:       (python-click >= 8.0.0 with python-click < 9)
 Requires:       python-cryptography
-Requires:       python-deepmerge >= 1.1.0
 Requires:       python-ecdsa
 Requires:       python-frozendict >= 2.3.4
-Requires:       (python-fido2 >= 1.1.0 with python-fido2 < 2)
 Requires:       python-nkdfu
+Requires:       python-protobuf >= 3.17.3
+Requires:       python-pyserial
 Requires:       python-python-dateutil >= 2.7.0
 Requires:       python-pyusb
 Requires:       python-requests
 Requires:       python-spsdk >= 1.7.0
-Requires:       python-tqdm
-Requires:       python-urllib3 >= 1.26.7
 Requires:       python-tlv8
+Requires:       python-tqdm
 Requires:       python-typing_extensions >= 4.3.0
-Requires:       python-pyserial
-Requires:       python-protobuf >= 3.17.3
+Requires:       python-urllib3 >= 1.26.7
+Requires:       (python-click >= 8.0.0 with python-click < 9)
+Requires:       (python-fido2 >= 1.1.0 with python-fido2 < 2)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # only build for x86_64, as some dependencies are not available
 # for other architectures
 ExclusiveArch:  x86_64
+BuildArch:      noarch
 Provides:       nitropy = %{version}-%{release}
 %python_subpackages
 
