@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 22 19:46:08 UTC 2023 - scott.bradnick@suse.com
+
+- Adding lpm.c.diff to set LPM_VERSION instead of "unknown"
+- Update to version 1.0.11+git20230917.1a54a85:
+  * Added in borders to table output.
+  * Bugfix.
+  * Added in table output format.
+  * Updated continous tag.
+  * Prioritized remote definitions.
+  * Fixed a number of issues relating to generating READMEs, and running arbitrary lua files.
+  * Fixed issues with constructing symlink bottles.
+  * Reverted is_stub stuff.
+  * Made desribe more modern.
+
+-------------------------------------------------------------------
 Mon Sep 11 17:17:58 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Correction of licenses based on the legaldb report

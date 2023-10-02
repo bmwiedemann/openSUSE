@@ -45,4 +45,12 @@
   like Tumbleweed</comment>
     <requestid>1110353</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>55cf666bcec260f7b84748a26c600225</srcmd5>
+    <version>1.0.11+git20230917.1a54a85</version>
+    <time>1696269982</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1114579</requestid>
+  </revision>
 </revisionlist>

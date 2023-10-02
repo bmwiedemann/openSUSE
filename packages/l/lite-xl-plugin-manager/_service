@@ -10,7 +10,10 @@
     <!--
     <param name="versionrewrite-pattern">v(.*)</param>
     -->
+    <!--
     <param name="versionrewrite-pattern">latest</param>
+    -->
+    <param name="versionrewrite-pattern">continuous</param>
     <param name="versionrewrite-replacement">1.0.11</param>
     <param name="changesgenerate">enable</param>
   </service>
