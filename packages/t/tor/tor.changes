@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 25 20:15:52 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.8.7:
+  * Fix an issue that prevented us from pre-building more conflux
+    sets after existing sets had been used
+
+-------------------------------------------------------------------
 Tue Sep 19 16:52:36 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.8.6:
