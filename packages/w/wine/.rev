@@ -4925,4 +4925,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
   - 0004-Revert-loader-Make-the-loader-position-independent-o.patch</comment>
     <requestid>1111929</requestid>
   </revision>
+  <revision rev="421" vrev="1">
+    <srcmd5>d2aa1ffb958001b40fe97c8918b1ad58</srcmd5>
+    <version>8.17</version>
+    <time>1696269966</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 8.17 release
+  - Bundled vkd3d upgraded to version 1.9.
+  - Initial window management in the Wayland driver.
+  - SoundFont support in DirectMusic.
+  - Various bug fixes.
+- update staging to 8.17 release</comment>
+    <requestid>1114527</requestid>
+  </revision>
 </revisionlist>

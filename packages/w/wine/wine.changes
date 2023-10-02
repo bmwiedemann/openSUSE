@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 30 07:44:37 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.17 release
+  - Bundled vkd3d upgraded to version 1.9.
+  - Initial window management in the Wayland driver.
+  - SoundFont support in DirectMusic.
+  - Various bug fixes.
+- update staging to 8.17 release
+
+-------------------------------------------------------------------
 Sat Sep 16 09:37:31 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.16 release
