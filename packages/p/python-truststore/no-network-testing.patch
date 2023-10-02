@@ -3,27 +3,66 @@
  test_truststore.py |    7 +++----
  2 files changed, 6 insertions(+), 4 deletions(-)
 
---- a/pyproject.toml
-+++ b/pyproject.toml
-@@ -26,3 +26,6 @@ Home = "https://github.com/sethmlarson/t
- [tool.pytest.ini_options]
- asyncio_mode = "strict"
- filterwarnings = ["error"]
+Index: truststore-0.8.0/pyproject.toml
+===================================================================
+--- truststore-0.8.0.orig/pyproject.toml
++++ truststore-0.8.0/pyproject.toml
+@@ -26,6 +26,9 @@ classifiers = [
+ ]
+ dynamic = ["version", "description"]
+ requires-python = ">= 3.10"
 +markers = [
 +    "network: test case requires network connection",
 +]
---- a/test_truststore.py
-+++ b/test_truststore.py
-@@ -21,7 +21,7 @@ import truststore
- # if the client drops the connection due to a cert verification error
- socket.setdefaulttimeout(10)
+ 
+ [project.urls]
+ Source = "https://github.com/sethmlarson/truststore"
+@@ -38,3 +41,6 @@ filterwarnings = [
+   # See: aio-libs/aiohttp#7545
+   "ignore:.*datetime.utcfromtimestamp().*:DeprecationWarning",
+ ]
++markers = [
++   "network: test case requires network connection",
++]
+Index: truststore-0.8.0/tests/conftest.py
+===================================================================
+--- truststore-0.8.0.orig/tests/conftest.py
++++ truststore-0.8.0/tests/conftest.py
+@@ -18,7 +18,7 @@ SUBPROCESS_TIMEOUT = 5
+ original_SSLContext = ssl.SSLContext
+ 
  
 -successful_hosts = pytest.mark.parametrize("host", ["example.com", "1.1.1.1"])
 +successful_hosts = pytest.mark.network
  
+ logger = logging.getLogger("aiohttp.web")
+ 
+Index: truststore-0.8.0/tests/test_api.py
+===================================================================
+--- truststore-0.8.0.orig/tests/test_api.py
++++ truststore-0.8.0/tests/test_api.py
+@@ -27,8 +27,8 @@ pytestmark = pytest.mark.flaky
+ # if the client drops the connection due to a cert verification error
+ socket.setdefaulttimeout(10)
+ 
+-successful_hosts = pytest.mark.parametrize("host", ["example.com", "1.1.1.1"])
+ 
++successful_hosts = pytest.mark.network
  
  @dataclass
-@@ -113,9 +113,7 @@ if platform.system() != "Linux":
+ class FailureHost:
+@@ -118,9 +118,7 @@ failure_hosts_list = [
+     ),
+ ]
+ 
+-failure_hosts_no_revocation = pytest.mark.parametrize(
+-    "failure", failure_hosts_list.copy(), ids=attrgetter("host")
+-)
++failure_hosts_no_revocation = pytest.mark.network
+ 
+ if platform.system() != "Linux":
+     failure_hosts_list.append(
+@@ -139,9 +137,7 @@ if platform.system() != "Linux":
          )
      )
  
@@ -34,11 +73,41 @@
  
  
  @pytest.fixture(scope="session")
-@@ -242,6 +240,7 @@ def test_trustme_cert_loaded_via_capath(
+@@ -317,7 +313,7 @@ def test_trustme_cert_loaded_via_capath(
+         assert resp.status == 200
          assert len(resp.data) > 0
  
- 
+-
 +@pytest.mark.network
  def test_trustme_cert_still_uses_system_certs(trustme_ca):
      ctx = truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
      trustme_ca.configure_trust(ctx)
+Index: truststore-0.8.0/tests/test_sslcontext.py
+===================================================================
+--- truststore-0.8.0.orig/tests/test_sslcontext.py
++++ truststore-0.8.0/tests/test_sslcontext.py
+@@ -7,7 +7,7 @@ from urllib3.exceptions import InsecureR
+ 
+ import truststore
+ 
+-
++@pytest.mark.network
+ def test_minimum_maximum_version():
+     ctx = truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+     ctx.maximum_version = ssl.TLSVersion.TLSv1_2
+@@ -24,6 +24,7 @@ def test_minimum_maximum_version():
+     assert ctx.maximum_version == ssl.TLSVersion.TLSv1_2
+ 
+ 
++@pytest.mark.network
+ def test_check_hostname_false():
+     ctx = truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+     assert ctx.check_hostname is True
+@@ -35,6 +36,7 @@ def test_check_hostname_false():
+         assert "match" in str(e.value)
+ 
+ 
++@pytest.mark.network
+ def test_verify_mode_cert_none():
+     ctx = truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+     assert ctx.check_hostname is True

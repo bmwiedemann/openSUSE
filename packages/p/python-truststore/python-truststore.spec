@@ -1,7 +1,7 @@
 #
 # spec file for package python-truststore
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,9 @@
 #
 
 
-%define skip_python2 1
-%define skip_python38 1
 %define skip_python39 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-truststore
-Version:        0.4.0
+Version:        0.8.0
 Release:        0
 Summary:        Verify certificates using OS trust stores
 License:        MIT
@@ -31,11 +28,14 @@ Source:         https://github.com/sethmlarson/truststore/archive/refs/tags/v%{v
 # skip tests requiring network access
 Patch0:         no-network-testing.patch
 BuildRequires:  %{python_module aiohttp}
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-httpserver}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module wheel}
