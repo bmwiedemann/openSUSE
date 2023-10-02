@@ -16,18 +16,18 @@
 #
 
 
-%define real_version 6.5.2
+%define real_version 6.5.3
 %define short_version 6.5
 %define tar_name qttranslations-everywhere-src
 %define tar_suffix %{nil}
 #
 Name:           qt6-translations
-Version:        6.5.2
+Version:        6.5.3
 Release:        0
 Summary:        Qt 6 Translations
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
 URL:            https://www.qt.io
-Source:         https://www.nic.funet.fi/pub/mirrors/download.qt-project.org/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6LinguistTools) = %{real_version}
