@@ -1,7 +1,7 @@
-Index: fedora-crypto-policies-20230614.5f3458e/fips-mode-setup
+Index: fedora-crypto-policies-20230920.570ea89/fips-mode-setup
 ===================================================================
---- fedora-crypto-policies-20230614.5f3458e.orig/fips-mode-setup
-+++ fedora-crypto-policies-20230614.5f3458e/fips-mode-setup
+--- fedora-crypto-policies-20230920.570ea89.orig/fips-mode-setup
++++ fedora-crypto-policies-20230920.570ea89/fips-mode-setup
 @@ -81,6 +81,19 @@ if [ "$(id -u)" != 0 ]; then
  	exit 1
  fi
@@ -22,7 +22,7 @@ Index: fedora-crypto-policies-20230614.5f3458e/fips-mode-setup
  
  # Detect 1: kernel FIPS flag
  fips_kernel_enabled=$(cat /proc/sys/crypto/fips_enabled)
-@@ -203,9 +216,22 @@ else
+@@ -204,9 +217,22 @@ else
          fi
  fi
  
@@ -48,7 +48,7 @@ Index: fedora-crypto-policies-20230614.5f3458e/fips-mode-setup
  fi
  
  echo "FIPS mode will be $(enable2txt $enable_fips)."
-@@ -216,15 +242,19 @@ if test $boot_config = 0 ; then
+@@ -217,15 +243,19 @@ if test $boot_config = 0 ; then
  	echo "Now you need to configure the bootloader to add kernel options \"$fipsopts\""
  	echo "and reboot the system for the setting to take effect."
  else
@@ -77,37 +77,40 @@ Index: fedora-crypto-policies-20230614.5f3458e/fips-mode-setup
  	echo "Please reboot the system for the setting to take effect."
  fi
  
-Index: fedora-crypto-policies-20230614.5f3458e/fips-finish-install
+Index: fedora-crypto-policies-20230920.570ea89/fips-finish-install
 ===================================================================
---- fedora-crypto-policies-20230614.5f3458e.orig/fips-finish-install
-+++ fedora-crypto-policies-20230614.5f3458e/fips-finish-install
-@@ -23,7 +23,16 @@ fi
+--- fedora-crypto-policies-20230920.570ea89.orig/fips-finish-install
++++ fedora-crypto-policies-20230920.570ea89/fips-finish-install
+@@ -24,6 +24,15 @@ fi
  
  umask 022
  
--trap "rm -f $dracut_cfg" ERR
-+# trap "rm -f $dracut_cfg" ERR
-+
 +# Install required packages: patterns-base-fips and perl-Bootloader
 +if test ! -f $dracut_cfg && test ! -x "$(command -v pbl)" ; then
-+	zypper -n install patterns-base-fips perl-Bootloader
++       zypper -n install patterns-base-fips perl-Bootloader
 +elif test ! -f $dracut_cfg ; then
-+	zypper -n install patterns-base-fips
++       zypper -n install patterns-base-fips
 +elif test ! -x "$(command -v pbl)" ; then
-+	zypper -n install perl-Bootloader
++       zypper -n install perl-Bootloader
 +fi
- 
++
  if test ! -d $dracut_cfg_d -o ! -d /boot -o "$is_ostree_system" = 1 ; then
  	# No dracut configuration or boot directory present, do not try to modify it.
-@@ -32,23 +41,23 @@ if test ! -d $dracut_cfg_d -o ! -d /boot
+ 	# Also, on OSTree systems, we currently rely on the initrd already including
+@@ -31,28 +40,28 @@ if test ! -d $dracut_cfg_d -o ! -d /boot
  	exit 0
  fi
  
--cat >$dracut_cfg <<EOF
+-if test x"$1" == x--complete; then
+-	trap "rm -f $dracut_cfg" ERR
+-	cat >$dracut_cfg <<EOF
 -# turn on fips module
 -
 -add_dracutmodules+=" fips "
 -EOF
+-elif test x"$1" == x--undo; then
+-	rm -f $dracut_cfg
+-fi
 -
 -echo "Kernel initramdisks are being regenerated. This might take some time."
 -
@@ -123,16 +126,21 @@ Index: fedora-crypto-policies-20230614.5f3458e/fips-finish-install
 -		echo '`zipl` execution has been skipped: `zipl` not found.'
 -	fi
 -fi
-+# cat >$dracut_cfg <<EOF
++# if test x"$1" == x--complete; then
++# 	trap "rm -f $dracut_cfg" ERR
++# 	cat >$dracut_cfg <<EOF
 +# # turn on fips module
-+#
++
 +# add_dracutmodules+=" fips "
 +# EOF
-+#
++# elif test x"$1" == x--undo; then
++# 	rm -f $dracut_cfg
++# fi
++
 +# echo "Kernel initramdisks are being regenerated. This might take some time."
-+#
++
 +# dracut -f --regenerate-all
-+#
++
 +# # This is supposed to be a fast and safe operation that's always good to run.
 +# # Regenerating an initrd and skipping it might render the system unbootable
 +# # (RHBZ#2013195).
@@ -143,10 +151,10 @@ Index: fedora-crypto-policies-20230614.5f3458e/fips-finish-install
 +# 		echo '`zipl` execution has been skipped: `zipl` not found.'
 +# 	fi
 +# fi
-Index: fedora-crypto-policies-20230614.5f3458e/fips-mode-setup.8.txt
+Index: fedora-crypto-policies-20230920.570ea89/fips-mode-setup.8.txt
 ===================================================================
---- fedora-crypto-policies-20230614.5f3458e.orig/fips-mode-setup.8.txt
-+++ fedora-crypto-policies-20230614.5f3458e/fips-mode-setup.8.txt
+--- fedora-crypto-policies-20230920.570ea89.orig/fips-mode-setup.8.txt
++++ fedora-crypto-policies-20230920.570ea89/fips-mode-setup.8.txt
 @@ -45,6 +45,23 @@ Then the command modifies the boot loade
  When disabling the system FIPS mode the system crypto policy is switched
  to DEFAULT and the kernel command line option 'fips=0' is set.

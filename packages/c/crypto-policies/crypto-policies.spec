@@ -22,7 +22,7 @@
 %bcond_with manbuild
 %global _python_bytecompile_extra 0
 Name:           crypto-policies
-Version:        20230614.5f3458e
+Version:        20230920.570ea89
 Release:        0
 Summary:        System-wide crypto policies
 License:        LGPL-2.1-or-later
@@ -35,8 +35,6 @@ Source3:        update-crypto-policies.8.gz
 Source4:        fips-mode-setup.8.gz
 Source5:        fips-finish-install.8.gz
 Source6:        crypto-policies-rpmlintrc
-# BSI TR-02102 encoded for jsc#PED-4933 (customer request to have BSI TR-02102 policies)
-Source7:        BSI.pol
 %if %{without manbuild}
 #PATCH-FIX-OPENSUSE Manpages build cycles and dependencies
 # To reduce the build dependencies in Ring0, we have to compile the
@@ -55,6 +53,8 @@ Patch4:         crypto-policies-revert-rh-allow-sha1-signatures.patch
 Patch5:         crypto-policies-pylint.patch
 #PATCH-FIX-OPENSUSE Adpat the fips-mode-setup script for SUSE/openSUSE [jsc#PED-4578]
 Patch6:         crypto-policies-FIPS.patch
+#PATCH-FIX-OPENSUSE Skip NSS policy check if not installed mozilla-nss-tools [bsc#1211301]
+Patch7:         crypto-policies-nss.patch
 BuildRequires:  python3-base >= 3.6
 # The sequoia stuff needs python3-toml, removed until needed
 # BuildRequires:  python3-toml
@@ -69,7 +69,7 @@ BuildRequires:  gnutls >= 3.6.0
 BuildRequires:  java-devel
 BuildRequires:  krb5-devel
 BuildRequires:  libxslt
-#BuildRequires:  mozilla-nss-tools
+BuildRequires:  mozilla-nss-tools
 BuildRequires:  openssl
 BuildRequires:  perl
 BuildRequires:  python3-coverage
@@ -82,7 +82,9 @@ BuildRequires:  perl(File::Temp)
 BuildRequires:  perl(File::Which)
 BuildRequires:  perl(File::pushd)
 %endif
+%if 0%{?primary_python:1}
 Recommends:     crypto-policies-scripts
+%endif
 Conflicts:      gnutls < 3.7.3
 #Conflicts:      libreswan < 3.28
 Conflicts:      nss < 3.90.0
@@ -138,9 +140,6 @@ mkdir -p -m 755 %{buildroot}%{_bindir}
 
 make DESTDIR=%{buildroot} DIR=%{_datarootdir}/crypto-policies MANDIR=%{_mandir} %{?_smp_mflags} install
 
-# BSI.pol
-install -c -m 644 %{SOURCE7} %{buildroot}/%{_datarootdir}/crypto-policies/policies/
-
 install -p -m 644 default-config %{buildroot}%{_sysconfdir}/crypto-policies/config
 touch %{buildroot}%{_sysconfdir}/crypto-policies/state/current
 touch %{buildroot}%{_sysconfdir}/crypto-policies/state/CURRENT.pol
@@ -166,7 +165,7 @@ rm -rf %{buildroot}%{_datarootdir}/crypto-policies/GOST-ONLY
 rm -rf %{buildroot}%{_datarootdir}/crypto-policies/*FEDORA*
 
 # Create back-end configs for mounting with read-only /etc/
-for d in LEGACY DEFAULT FUTURE FIPS ; do
+for d in LEGACY DEFAULT FUTURE FIPS BSI ; do
     mkdir -p -m 755 %{buildroot}%{_datarootdir}/crypto-policies/back-ends/$d
     for f in %{buildroot}%{_datarootdir}/crypto-policies/$d/* ; do
         ln $f %{buildroot}%{_datarootdir}/crypto-policies/back-ends/$d/$(basename $f .txt).config
@@ -241,6 +240,7 @@ end
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/gnutls.config
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/openssl.config
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/opensslcnf.config
+%ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/openssl_fips.config
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/openssh.config
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/opensshserver.config
 %ghost %config(missingok,noreplace) %verify(not mode) %{_sysconfdir}/crypto-policies/back-ends/nss.config
@@ -262,6 +262,7 @@ end
 %{_datarootdir}/crypto-policies/DEFAULT
 %{_datarootdir}/crypto-policies/FUTURE
 %{_datarootdir}/crypto-policies/FIPS
+%{_datarootdir}/crypto-policies/BSI
 %{_datarootdir}/crypto-policies/EMPTY
 %{_datarootdir}/crypto-policies/back-ends
 %{_datarootdir}/crypto-policies/default-config

@@ -1,8 +1,8 @@
-Index: fedora-crypto-policies-20230614.5f3458e/python/policygenerators/__init__.py
+Index: fedora-crypto-policies-20230920.570ea89/python/policygenerators/__init__.py
 ===================================================================
---- fedora-crypto-policies-20230614.5f3458e.orig/python/policygenerators/__init__.py
-+++ fedora-crypto-policies-20230614.5f3458e/python/policygenerators/__init__.py
-@@ -8,15 +8,15 @@ from .gnutls import GnuTLSGenerator
+--- fedora-crypto-policies-20230920.570ea89.orig/python/policygenerators/__init__.py
++++ fedora-crypto-policies-20230920.570ea89/python/policygenerators/__init__.py
+@@ -8,7 +8,7 @@ from .gnutls import GnuTLSGenerator
  from .java import JavaGenerator
  from .java import JavaSystemGenerator
  from .krb5 import KRB5Generator
@@ -11,9 +11,10 @@ Index: fedora-crypto-policies-20230614.5f3458e/python/policygenerators/__init__.
  from .libssh import LibsshGenerator
  from .nss import NSSGenerator
  from .openssh import OpenSSHClientGenerator
- from .openssh import OpenSSHServerGenerator
+@@ -16,8 +16,8 @@ from .openssh import OpenSSHServerGenera
  from .openssl import OpenSSLConfigGenerator
  from .openssl import OpenSSLGenerator
+ from .openssl import OpenSSLFIPSGenerator
 -from .sequoia import SequoiaGenerator
 -from .sequoia import RPMSequoiaGenerator
 +# from .sequoia import SequoiaGenerator
@@ -21,7 +22,7 @@ Index: fedora-crypto-policies-20230614.5f3458e/python/policygenerators/__init__.
  
  __all__ = [
      'BindGenerator',
-@@ -24,13 +24,14 @@ __all__ = [
+@@ -25,7 +25,6 @@ __all__ = [
      'JavaGenerator',
      'JavaSystemGenerator',
      'KRB5Generator',
@@ -29,13 +30,14 @@ Index: fedora-crypto-policies-20230614.5f3458e/python/policygenerators/__init__.
      'LibsshGenerator',
      'NSSGenerator',
      'OpenSSHClientGenerator',
-     'OpenSSHServerGenerator',
+@@ -33,6 +32,8 @@ __all__ = [
      'OpenSSLConfigGenerator',
      'OpenSSLGenerator',
+     'OpenSSLFIPSGenerator',
 -    'SequoiaGenerator',
 -    'RPMSequoiaGenerator',
  ]
 +
-+#    'LibreswanGenerator',
-+#    'SequoiaGenerator',
-+#    'RPMSequoiaGenerator',
++#   'LibreswanGenerator',
++#   'SequoiaGenerator',
++#   'RPMSequoiaGenerator',

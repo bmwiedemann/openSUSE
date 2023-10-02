@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Sep 27 10:54:17 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- nss: Skip the NSS policy check if the mozilla-nss-tools package
+  is not installed. This avoids adding more dependencies in ring0.
+  * Add crypto-policies-nss.patch [bsc#1211301]
+
+-------------------------------------------------------------------
+Fri Sep 22 10:27:53 UTC 2023 -  Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20230920.570ea89:
+  * fips-mode-setup: more thorough --disable, still unsupported
+  * FIPS:OSPP: tighten beyond reason for OSPP 4.3
+  * krb5: sort enctypes mac-first, cipher-second, prioritize SHA-2 ones
+  * openssl: implement relaxing EMS in FIPS (NO-ENFORCE-EMS)
+  * gnutls: prepare for tls-session-hash option coming
+  * nss: prepare for TLS-REQUIRE-EMS option coming
+  * NO-ENFORCE-EMS: add subpolicy
+  * FIPS: set __ems = ENFORCE
+  * cryptopolicies: add enums and __ems tri-state
+  * docs: replace `FIPS 140-2` with just `FIPS 140`
+  * .gitlab-ci: remove forcing OPENSSH_MIN_RSA_SIZE
+  * cryptopolicies: add comments on dunder options
+  * nss: retire NSS_OLD and replace with NSS_LAX 3.80 check
+  * BSI: start a BSI TR 02102 policy [jsc#PED-4933]
+  * Rebase patches:
+    - crypto-policies-policygenerators.patch
+    - crypto-policies-revert-rh-allow-sha1-signatures.patch
+    - crypto-policies-FIPS.patch
+
+-------------------------------------------------------------------
+Fri Sep 15 11:23:06 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Conditionally recommend the crypto-policies-scripts package
+  when python is not installed in the system [bsc#1215201]
+
+-------------------------------------------------------------------
 Thu Aug 31 12:17:44 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Tests: Fix pylint versioning for TW and fix the parsing of the
@@ -11,7 +47,7 @@ Tue Aug  1 12:23:33 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Adapt the fips-mode-setup script to use the pbl command
   from the perl-Bootloader package to replace grubby. Add a note
-  for transactional systems [jsc#PED-4578].
+  for transactional systems [jsc#PED-5041].
   * Rebase crypto-policies-FIPS.patch
 
 -------------------------------------------------------------------

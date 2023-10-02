@@ -1,0 +1,42 @@
+Index: fedora-crypto-policies-20230920.570ea89/python/policygenerators/nss.py
+===================================================================
+--- fedora-crypto-policies-20230920.570ea89.orig/python/policygenerators/nss.py
++++ fedora-crypto-policies-20230920.570ea89/python/policygenerators/nss.py
+@@ -198,12 +198,20 @@ class NSSGenerator(ConfigGenerator):
+         try:
+             with os.fdopen(fd, 'w') as f:
+                 f.write(config)
+-            try:
+-                ret = call(f'/usr/bin/nss-policy-check {options} {path}'
+-                           '>/dev/null',
+-                           shell=True)
+-            except CalledProcessError:
+-                cls.eprint("/usr/bin/nss-policy-check: Execution failed")
++            if os.path.exists('/usr/bin/nss-policy-check'):
++                # Perform a policy check only if the mozilla-nss-tools
++                # package is installed. This avoids adding more
++                # dependencies to Ring0.
++                try:
++                    ret = call(f'/usr/bin/nss-policy-check {options} {path}'
++                               '>/dev/null', shell=True)
++                except CalledProcessError:
++                    cls.eprint("/usr/bin/nss-policy-check: Execution failed")
++            else:
++                # The mozilla-nss-tools package is not installed and we can
++                # temporarily skip the policy check for mozilla-nss.
++                ret = 3
++
+         finally:
+             os.unlink(path)
+ 
+@@ -211,6 +219,10 @@ class NSSGenerator(ConfigGenerator):
+             cls.eprint("There is a warning in NSS generated policy")
+             cls.eprint(f'Policy:\n{config}')
+             return False
++        elif ret == 3:
++            cls.eprint('Skipping NSS policy check: '
++                       '/usr/bin/nss-policy-check not found')
++            return True
+         elif ret:
+             cls.eprint("There is an error in NSS generated policy")
+             cls.eprint(f'Policy:\n{config}')
