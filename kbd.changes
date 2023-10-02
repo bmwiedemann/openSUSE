@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 22 18:56:15 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 2.6.3:
+  - libkfont:
+    * Don't look for fonts in the current directory.
+  - showkey:
+    * Add parameter to allow to change timeout.
+  - po:
+    * Update po files.
+
+-------------------------------------------------------------------
 Tue Aug 15 20:52:04 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 2.6.2:
