@@ -286,4 +286,12 @@
     <comment>- Update to release 1.4.7</comment>
     <requestid>1008591</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>4878dd55656e7934e0c684fa7383b543</srcmd5>
+    <version>1.4.8</version>
+    <time>1696269911</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.4.8</comment>
+    <requestid>1114328</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 29 11:32:56 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.8
+  * Fix spurious EOPNOSUPP and ENOBUFS errors with -U/--update
+    command.
+  * Fix spurious ENOENT -D/--delete.
+
+-------------------------------------------------------------------
 Thu Oct  6 19:02:32 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.7

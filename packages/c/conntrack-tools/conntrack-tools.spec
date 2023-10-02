@@ -1,7 +1,7 @@
 #
 # spec file for package conntrack-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           conntrack-tools
-Version:        1.4.7
+Version:        1.4.8
 Release:        0
 Summary:        Userspace tools for interacting with the Connection Tracking System
 License:        GPL-2.0-or-later
@@ -30,8 +30,8 @@ Group:          Productivity/Networking/Security
 URL:            http://conntrack-tools.netfilter.org/
 
 #Git-Clone:	git://git.netfilter.org/conntrack-tools
-Source:         https://www.netfilter.org/projects/conntrack-tools/files/conntrack-tools-%version.tar.bz2
-Source2:        https://www.netfilter.org/projects/conntrack-tools/files/conntrack-tools-%version.tar.bz2.sig
+Source:         https://www.netfilter.org/projects/conntrack-tools/files/conntrack-tools-%version.tar.xz
+Source2:        https://www.netfilter.org/projects/conntrack-tools/files/conntrack-tools-%version.tar.xz.sig
 Source3:        %name.keyring
 Source5:        conntrackd.service
 Source6:        conntrackd.README.SUSE
@@ -88,7 +88,7 @@ autoreconf -vif
 # CC       read_config_lex.o
 #read_config_lex.l:24:28: fatal error: read_config_yy.h: No such file or
 #directory
-make %{?_smp_mflags} -j1 V=1
+%make_build -j1
 
 %install
 %make_install
@@ -112,7 +112,7 @@ if [ "$1" -eq 1 -a ! -e "%_sysconfdir/conntrackd/conntrackd.conf" ]; then
 fi
 %service_add_post conntrackd.service
 
-%preun  -n conntrackd
+%preun -n conntrackd
 %service_del_preun conntrackd.service
 
 %postun -n conntrackd
@@ -124,7 +124,7 @@ fi
 %_mandir/man8/conntrack.8*
 %_mandir/man8/nfct.8*
 # Shared betweenn nfct and conntrackd:
-%_libdir/%name
+%_libdir/%name/
 
 %files -n conntrackd
 %_sysconfdir/logrotate.d/conntrackd*
