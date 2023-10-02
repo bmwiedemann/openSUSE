@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 20 14:21:29 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.222:
+  * Allow containers to read/write inherited dri devices
+
+-------------------------------------------------------------------
+Tue Aug 15 05:48:12 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.221:
+  * Allow containers to shutdown sockets inherited from container
+    runtimes
+  * Allow spc_t to use execmod libraries on container file systems
+  * Add boolean to allow containers to read all cert files
+  * More MLS Policy allow rules
+  * Allow container runtimes using pasta bind icmp_socket to port_t
+  * Fix spc_t transitions from container_runtime_domain
+
+-------------------------------------------------------------------
 Tue May 23 07:32:16 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 2.215.0:
