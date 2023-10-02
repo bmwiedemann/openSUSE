@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct  1 10:14:59 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.24:
+  * Fix a bug with graphs in ASCII mode
+  * Show the status of the configuration in the help window
+  * Support ancient compilers #52
+
+-------------------------------------------------------------------
 Tue Jan 24 05:09:40 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.23:

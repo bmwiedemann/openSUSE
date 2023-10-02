@@ -40,4 +40,15 @@
   * fix empty archlinux package by @bokunodev in #46</comment>
     <requestid>1060546</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>31170856b72b8b2cc68afc065e944188</srcmd5>
+    <version>1.24</version>
+    <time>1696269865</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.24:
+  * Fix a bug with graphs in ASCII mode
+  * Show the status of the configuration in the help window
+  * Support ancient compilers #52</comment>
+    <requestid>1114600</requestid>
+  </revision>
 </revisionlist>
