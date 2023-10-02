@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of prometheus-image</comment>
     <requestid>1105173</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d940039df29a61e5c7568af80647c3c3</srcmd5>
+    <version>unknown</version>
+    <time>1696269886</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1114199</requestid>
+  </revision>
 </revisionlist>
