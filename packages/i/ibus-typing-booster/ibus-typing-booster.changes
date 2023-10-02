@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 02 09:13:14 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.24.2
+- improve _return_false() and remove _commit_or_forward_key_event_or_return_false()
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/463)
+- Make characters for Biángbiángmiàn easily searchable
+- emoji-picker: Update default for current Unicode release 15.1
+
+-------------------------------------------------------------------
 Tue Sep 12 09:39:35 UTC 2023 - maiku.fabian@gmail.com
 
 - Update to 2.24.1
