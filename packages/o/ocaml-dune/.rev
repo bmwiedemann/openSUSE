@@ -382,4 +382,12 @@ I will submit the packages one by one once this is accepted.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1104416</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>07e3e6626e62f4cb3530692f18e13b2e</srcmd5>
+    <version>3.11.0</version>
+    <time>1696269971</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1114543</requestid>
+  </revision>
 </revisionlist>
