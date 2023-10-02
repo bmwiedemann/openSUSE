@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct  1 10:12:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8:
+  * Added dual-stack support to the WebSocket server.
+  * Added Debian Bookworm to the official deb repo.
+  * Added Ubuntu Lunar to the official deb repo.
+  * Fixed compiler error on macOS 10.12.
+  * Updated bootstrap to v3.4.
+  * Updated FontAwesome with additional icons for upcoming major release.
+  * Updated Japanese translation.
+  * Updated OS display from Macintosh to macOS.
+  * Updated to D3.js v7 (latest) including charts.js code.
+
+-------------------------------------------------------------------
 Sat Apr  1 07:11:47 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.2:

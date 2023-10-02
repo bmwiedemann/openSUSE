@@ -757,4 +757,21 @@
   * Fixed segfault when parsing a specific XFF specifier.</comment>
     <requestid>1076592</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>afadb322dae848eb61c2e1ebdc9fd639</srcmd5>
+    <version>1.8</version>
+    <time>1696269859</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.8:
+  * Added dual-stack support to the WebSocket server.
+  * Added Debian Bookworm to the official deb repo.
+  * Added Ubuntu Lunar to the official deb repo.
+  * Fixed compiler error on macOS 10.12.
+  * Updated bootstrap to v3.4.
+  * Updated FontAwesome with additional icons for upcoming major release.
+  * Updated Japanese translation.
+  * Updated OS display from Macintosh to macOS.
+  * Updated to D3.js v7 (latest) including charts.js code.</comment>
+    <requestid>1114599</requestid>
+  </revision>
 </revisionlist>
