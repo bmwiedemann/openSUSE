@@ -15,4 +15,12 @@
     <comment>- drop setting of APACHE_ENVVARS as it no longer exists</comment>
     <requestid>1102650</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>95f6eed05b75a4c817c3b757e3a743cf</srcmd5>
+    <version>unknown</version>
+    <time>1696269881</time>
+    <user>anag+factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1114191</requestid>
+  </revision>
 </revisionlist>

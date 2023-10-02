@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 28 14:29:10 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- add copyright and description header
+
+-------------------------------------------------------------------
 Mon Jul 24 13:32:39 UTC 2023 - Dirk Mueller <dmueller@suse.com>
 
 - drop setting of APACHE_ENVVARS as it no longer exists
