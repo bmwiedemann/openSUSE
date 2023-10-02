@@ -24,7 +24,7 @@
 %define legacy_folders amiga,atari,i386,include,mac,ppc,sun
 
 Name:           kbd
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        Keyboard and Font Utilities
 # git: git://git.altlinux.org/people/legion/packages/kbd.git
