@@ -32,7 +32,7 @@ ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 
 %define     pkg ocaml-ppxlib
 Name:           %pkg%nsuffix
-Version:        0.30.0
+Version:        0.31.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Base library and tools for ppx rewriters
