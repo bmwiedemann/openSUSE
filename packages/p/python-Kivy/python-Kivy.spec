@@ -16,7 +16,15 @@
 #
 
 
+%if %{suse_version} > 1500
+%define mypython python3
+%define __mypython %{__python3}
+%else
 %{?sle15_python_module_pythons}
+%define mypython %pythons
+%define __mypython %{expand:%%__%{pythons}}
+%endif
+%define plainpython python
 Name:           python-Kivy
 Version:        2.2.1
 Release:        0
@@ -24,15 +32,19 @@ Summary:        Hardware-accelerated multitouch application library
 License:        Apache-2.0 AND MIT AND LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-3.0-only AND BSD-3-Clause
 URL:            https://kivy.org/
 Source:         https://github.com/kivy/kivy/archive/%{version}.tar.gz#/kivy-%{version}.tar.gz
+Source99:       python-Kivy.rpmlintrc
+BuildRequires:  %{mypython}-Sphinx
 BuildRequires:  %{python_module Cython with %python-Cython < 3}
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyenchant}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-dri
 BuildRequires:  SDL2-devel
@@ -46,17 +58,34 @@ BuildRequires:  gstreamer-plugins-good
 BuildRequires:  mtdev
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Sphinx
 BuildRequires:  xclip
-BuildRequires:  xvfb-run
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(pangoft2)
 Requires:       mtdev
-Requires:       python-Pillow
 Requires:       python-Pygments
 Requires:       python-docutils
-Requires:       python-pyenchant
 Requires:       xclip
+# Not listed in setup.cfg but imported in core/spelling/spelling_enchant.py
+Requires:       python-pyenchant
+# SECTION extra [base] (and [full])
+Requires:       python-Pillow
+Requires:       python-requests
+# /SECTION
+# SECTION test
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest-xvfb}
+BuildRequires:  %{python_module responses}
+# /SECTION
+# Section doc
+BuildRequires:  %{mypython}-Sphinx
+BuildRequires:  %{mypython}-sphinxcontrib-jquery
+#BuildRequires:  %%{mypython}-sphinxcontrib-actdiag
+#BuildRequires:  %%{mypython}-sphinxcontrib-blockdiag
+#BuildRequires:  %%{mypython}-sphinxcontrib-nwdiag
+#BuildRequires:  %%{mypython}-sphinxcontrib-seqdiag
+# /SECTION
 Recommends:     python-opencv
 %python_subpackages
 
@@ -67,6 +96,7 @@ user interfaces, such as multi-touch apps.
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}
+Requires:       %plainpython(abi) = %{python_version}
 
 %description    devel
 Kivy is a library for development of applications that make use of
@@ -76,8 +106,8 @@ This package contains the headers and source files for extending kivy
 
 %package     -n %{name}-doc
 Summary:        Documentation for Kivy, a multitouch application library
-BuildRequires:  %{python_module sphinxcontrib-jquery}
 Provides:       %{python_module Kivy-doc = %{version}}
+BuildArch:      noarch
 
 %description -n %{name}-doc
 Kivy is a library for development of applications that make use of
@@ -85,7 +115,8 @@ user interfaces, such as multi-touch apps.
 
 %prep
 %setup -q -n kivy-%{version}
-sed -i "s|data_file_prefix = 'share/kivy-'|data_file_prefix = '%{_docdir}/%{name}-doc/'|" setup.py
+# remove the legacy garden install script as python requirement, get it from PyPI or https://github.com/kivy-garden/garden/ if you need it
+sed -i '/Kivy-Garden/d' setup.cfg
 # remove shebang
 sed -i '1{ /^#!/d; }' kivy/tools/kviewer.py \
   kivy/tools/pep8checker/pep8.py \
@@ -94,65 +125,63 @@ sed -i '1{ /^#!/d; }' kivy/tools/kviewer.py \
 find examples -type f -executable -exec chmod -x {} \;
 rm examples/demo/pictures/images/.empty # Remove empty file
 rm -r examples/audio # Remove content with non-commercial only license (bnc#749340)
-# do not upper restrict cython dep
-sed -i -e 's:0\.29\.10:1.0.0:' setup.py
 # fix shebang
-sed -i "/^#!/c#!%{__python3}" kivy/tools/image-testsuite/gimp28-testsuite.py
-sed -i "/^#!/c#!`which sh`" kivy/tools/image-testsuite/imagemagick-testsuite.sh
-
+sed -i "/^#!/ c #!%{__mypython}" kivy/tools/image-testsuite/gimp28-testsuite.py
+sed -i "/^#!/ c #!`which sh`" kivy/tools/image-testsuite/imagemagick-testsuite.sh
+# remove benchmark from tests
+sed -i /addopts/d pyproject.toml
 chmod -x kivy/tools/pep8checker/pre-commit.githook
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build bdist
+export KIVY_SPLIT_EXAMPLES=1
+%pyproject_wheel
 # create docs
 pushd doc
-sed -e '/^PYTHON/s/python/python3/' \
+sed -e '/^PYTHON/ s|python|%{__mypython}|' \
     -e '/^SPHINXOPTS	/s/$/ %{?_smp_mflags}/' \
     -i Makefile
 export PYTHONPATH=`ls -d ../build/lib*`
-make %{?_smp_mflags} PYTHON=python3 html && rm -r build/html/.buildinfo
+make %{?_smp_mflags} PYTHON=%{__mypython} html && rm -r build/html/.buildinfo
 popd
 
 %install
-%python_install
+%pyproject_install
+%{python_expand #
+%fdupes %{buildroot}%{$python_sitearch}/kivy
+find %{buildroot}%{$python_sitearch}/kivy -name '*.h' \
+  | sed 's|%{buildroot}||' \
+  | tee kivy-devel-%{$python_bin_suffix}.files \
+  | sed 's|^/|%%exclude /|' > kivy-exclude-devel-%{$python_bin_suffix}.files
+}
 # workaround to make fdupes its magic as if %%doc macro is used
 # would be used after fdupes so rpmlint would complain about duplicates...
-install -dm0755 %{buildroot}%{_defaultdocdir}/%{name}-doc
-cp -a doc/build/html %{buildroot}/%{_defaultdocdir}/%{name}-doc
-rm -rf %{buildroot}%{python3_sitearch}/doc
+install -dm0755 %{buildroot}%{_docdir}/%{name}-doc
+cp -a doc/build/html %{buildroot}/%{_docdir}/%{name}-doc/
+cp -a examples %{buildroot}/%{_docdir}/%{name}-doc/
+%fdupes %{buildroot}%{_docdir}/%{name}-doc
 
-%python_expand %fdupes %{buildroot}%{$python_sitearch}/kivy
-%fdupes %{buildroot}%{_defaultdocdir}/%{name}-doc
+%check
+# we don't care about speed inside obs
+donttest="benchmark"
+# no network (or localhost resolution) in obs
+donttest="$donttest or test_urlrequest_urllib or test_remote_zipsequence"
+# avoid collection errors
+mv kivy kivy.notinpath
+pushd examples
+%pytest_arch --pyargs kivy -k "not ($donttest)"
+popd
 
-# Disable tests, they randomly timeout
-# %%check
-# export DISPLAY=:99.0
-# export KIVY_AUDIO=gstplayer # "unable to find ffpyplayer" otherwise
-# export LANG=en_US.UTF-8
-# %%{python_expand pushd %%{buildroot}%%{$python_sitearch}
-# ln -s %%{buildroot}%%{_defaultdocdir}/%%{name}-doc/examples examples
-# ln -s %%{_builddir}/kivy-%%{version}/doc .
-# xvfb-run --server-args "-screen 0 1920x1080x24" $python %%{_bindir}/nosetests kivy.tests \
-#  -e test_urlrequest -e test_remote_zipsequence
-# rm examples doc results.png
-# popd
-# }
-
-%files %{python_files}
+%files %{python_files} -f kivy-exclude-devel-%{python_bin_suffix}.files
 %license LICENSE
 %doc AUTHORS
 %{python_sitearch}/kivy
-%{python_sitearch}/Kivy-%{version}-py*.egg-info
-%exclude %{python_sitearch}/kivy/include
-%exclude %{python_sitearch}/kivy/tools/gles_compat/gl2.h
+%{python_sitearch}/Kivy-%{version}.dist-info
 
-%files %{python_files devel}
+%files %{python_files devel} -f kivy-devel-%{python_bin_suffix}.files
 %doc doc/sources/changelog.rst
-%{python_sitearch}/kivy/include
-%{python_sitearch}/kivy/tools/gles_compat/gl2.h
 
 %files -n %{name}-doc
-%doc %{_defaultdocdir}/%{name}-doc
+%doc %{_docdir}/%{name}-doc
 
 %changelog

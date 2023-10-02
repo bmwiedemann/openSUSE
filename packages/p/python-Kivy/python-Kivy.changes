@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 30 10:24:22 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add Make sure the docs still build with both Tumbleweed and
+  sle15_pythons_module_pythons in 15.5
+- Move to PEP517
+- Re-enable test suite: it has come a long way since the ancient
+  nosetest times
+
+-------------------------------------------------------------------
 Sun Aug 13 21:28:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.1:

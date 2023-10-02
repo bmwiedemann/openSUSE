@@ -497,4 +497,12 @@
   * Ensures that jQuery is always installed</comment>
     <requestid>1103739</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>cf9c4bdcf6bcafc925a72f6f0b22dcfd</srcmd5>
+    <version>2.2.1</version>
+    <time>1696269978</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114562</requestid>
+  </revision>
 </revisionlist>
