@@ -30,7 +30,7 @@
 %define version_text This is branch 3.x with version specific file locations
 
 Name:           %{original_name}%{branch}
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -42,12 +42,10 @@ Source1:        https://downloads.tuxfamily.org/godotengine/%{version}/%{origina
 Patch0:         linker_pie_flag.patch
 # Use system certificates as fallback for certificates
 Patch1:         certs_fallback.patch
-# Heap-buffer-overflow in bundled tinyexr
-Patch2:         tinyexr_thirdparty_upstream.patch
 # branch specific seperate config files and so on
-Patch3:         rename_to_godot3.patch
+Patch2:         rename_to_godot3.patch
 # better linker version detection for pck embedding with runner
-Patch4:         improve_linker_detection.patch
+Patch3:         improve_linker_detection.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -155,7 +153,7 @@ Provides:       bundled(polypartition)
 Provides:       bundled(pvrtccompressor)
 Provides:       bundled(smaz)
 Provides:       bundled(stb)
-Provides:       bundled(tinyexr)
+Provides:       bundled(tinyexr) = 1.0.5
 Provides:       bundled(vhacd)
 Provides:       bundled(yuv2rgb)
 
@@ -181,7 +179,7 @@ Provides:       bundled(libpng) = 1.6.38
 Provides:       bundled(libzstd)
 Provides:       bundled(zlib)
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.18.2
+Provides:       bundled(mbedtls) = 2.28.4
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
@@ -256,7 +254,6 @@ Bash command line completion support for %{name}, %{name}-headless,
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 cp thirdparty/README.md thirdparty_README.md
 
@@ -267,7 +264,8 @@ if [[ -z "$(desktop-file-validate misc/dist/linux/org.godotengine.Godot.desktop)
  then
   # desktop-file-utils version >= 0.25
   echo desktop-file-utils is up to date and recognizes PrefersNonDefaultGPU.
-  # rpmlint complains nevertheless (on Tumbleweed). A false negative?
+  # rpmlint complains nevertheless with older rpmlint-mini.
+  # Tumbleweed is fixed with update of rpmlint-mini.
   # see https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#recognized-keys
   # Perhaps because rpmlint-mini includes as of today (18.09.2020)
   # desktop-file-utils-0.24 while we checked for available default version >= 0.25

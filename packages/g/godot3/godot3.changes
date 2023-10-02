@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Sep 26 12:00:00 UTC 2023 - cunix@mail.de
+
+- Update to 3.5.3
+
+  Added:
+  * Suggest "class_name" in GDScript autocompletion
+
+  Changed:
+  * GDScriptParser: Don't use index operator on linked list
+
+  Fixed:
+  * TileSet resizing collision shape when vertex is outside the tilesheet
+  * AnimatedSprite normal map loading
+  * AudioEffectRecord circular reference
+  * Trim when importing WAV
+  * Include the follow-viewport-transform into
+    CanvasLayer transform calculations
+  * Moving position indicator out of bounds in FileAccessMemory
+  * Infinite loop on EOF in the command line debugger
+  * Recursion level check for "Array" and "Dictionary" hashing
+  * Recursion level check for "VariantWriter::write()"
+  * Ensure registered classes are declared
+  * Scrolling behavior with zero/low page value
+  * "TextureButton" and "Button" update on texture change
+  * Better handle truncated socket messages
+  * GridMap free navigation RID error spam
+  * Don't use udev for joypad hotloading when running in a sandbox
+  * Use current keyboard layout in "keyboard_get_scancode_from_physical"
+  * Ensure "joy_connection_changed" is emitted on the main thread
+  * Shadows when using 2 directional lights
+
+  And more:
+  https://godotengine.org/article/maintenance-release-godot-3-5-3/
+
+- "tinyexr_thirdparty_upstream.patch" dropped:
+    bundled tinyexr 1.0.5 has patch applied
+
+-------------------------------------------------------------------
 Sat Sep 23 12:00:00 UTC 2023 - cunix@mail.de
 
 - removed scons_regression.patch - scons 4.5.2 is deployed

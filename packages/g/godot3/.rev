@@ -32,4 +32,12 @@
 - added improve_linker_detection.patch for pck embedding with runner</comment>
     <requestid>1113294</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>51b58f9f5ee0aee5a8866e7a3f5d5c48</srcmd5>
+    <version>3.5.3</version>
+    <time>1696269976</time>
+    <user>anag+factory</user>
+    <comment>Update to 3.5.3</comment>
+    <requestid>1114563</requestid>
+  </revision>
 </revisionlist>
