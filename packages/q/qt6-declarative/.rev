@@ -243,4 +243,12 @@
 - Sort license tags</comment>
     <requestid>1104155</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3aa2d0b3b7428860226322a23b7d5031</srcmd5>
+    <version>6.5.3</version>
+    <time>1696269929</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.5.3 (forwarded request 1114130 from krop)</comment>
+    <requestid>1114491</requestid>
+  </revision>
 </revisionlist>
