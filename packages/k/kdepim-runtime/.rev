@@ -911,4 +911,12 @@
   * 0003-Actually-start-job-to-read-secret-key.patch</comment>
     <requestid>1112533</requestid>
   </revision>
+  <revision rev="112" vrev="3">
+    <srcmd5>613f5f854f249dcc84646a445af226a2</srcmd5>
+    <version>23.08.1</version>
+    <time>1696269841</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1113907</requestid>
+  </revision>
 </revisionlist>

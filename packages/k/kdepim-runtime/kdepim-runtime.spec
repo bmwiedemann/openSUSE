@@ -81,6 +81,9 @@ BuildRequires:  cmake(Qt5TextToSpeech)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5XmlPatterns)
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
+BuildRequires:  libetebase-devel
+%endif
 Recommends:     kalendarac
 Requires:       akonadi-plugin-calendar
 Requires:       akonadi-plugin-contacts
@@ -134,6 +137,9 @@ use PIM applications.
 %{_kf5_debugdir}/kdepim-runtime.renamecategories
 %ifarch %{ix86} x86_64 %{arm} aarch64
 %{_kf5_iconsdir}/hicolor/*/apps/akonadi-ews.png
+%endif
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
+%{_kf5_iconsdir}/hicolor/*/apps/akonadi-etesync.png
 %endif
 %{_kf5_iconsdir}/hicolor/*/apps/ox.png
 %{_kf5_libdir}/*.so.*

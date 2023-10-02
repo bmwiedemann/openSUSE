@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 26 11:43:01 UTC 2023 - Bob Haley <fawz@use.startmail.com>
+
+- Add libetebase-devel to BuildRequires to enable the etesync resource for
+  factory builds
+
+-------------------------------------------------------------------
 Wed Sep 20 10:18:14 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream changes to fix issues with the google resource
