@@ -111,4 +111,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1106093</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0a04942fe3b6054b1ee88015fb4148dd</srcmd5>
+    <version>0.4.35</version>
+    <time>1696269914</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.4.35:
+  * added the book.text-direction setting for explicit support for right-to-left
+    languages.
+  * added rel=prefetch to the &quot;next&quot; links to potentially improve browser performance
+  * added a .warning css class which is styled for displaying warning blocks.
+  * better support of the sidebar when JS is disabled.
+</comment>
+    <requestid>1114465</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 30 00:59:33 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.4.35:
+  * added the book.text-direction setting for explicit support for right-to-left
+    languages.
+  * added rel=prefetch to the "next" links to potentially improve browser performance
+  * added a .warning css class which is styled for displaying warning blocks.
+  * better support of the sidebar when JS is disabled.
+
+-------------------------------------------------------------------
 Sun Aug 20 03:13:08 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Replace obsoleted "disabled" with "manual" service option.
