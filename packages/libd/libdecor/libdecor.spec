@@ -1,7 +1,7 @@
 #
 # spec file for package libdecor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%define commit ee5ef0f2c3a4743e8501a855d61cb397
 Name:           libdecor
-Version:        0.1.1
+Version:        0.2.0
 Release:        0
 Summary:        Wayland client side decoration library
 License:        MIT
 Group:          System/GUI/Other
-URL:            https://gitlab.gnome.org/jadahl/libdecor
-Source:         https://gitlab.gnome.org/jadahl/libdecor/uploads/%{commit}/%{name}-%{version}.tar.xz
+URL:            https://gitlab.freedesktop.org/libdecor/libdecor
+Source:         %{url}/-/releases/%{version}/downloads/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  gcc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
@@ -66,8 +66,7 @@ Libraries and header files for developing applications that target libdecor.
 %install
 %meson_install
 
-%post -n libdecor-0-0 -p /sbin/ldconfig
-%postun -n libdecor-0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libdecor-0-0
 
 %files
 %license LICENSE
