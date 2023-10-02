@@ -16,17 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-Chameleon
-Version:        3.10.2
+Version:        4.2.0
 Release:        0
 Summary:        Fast HTML/XML Template Compiler
 License:        BSD-3-Clause AND BSD-4-Clause AND Python-2.0 AND ZPL-2.1
 Group:          Development/Languages/Python
 URL:            https://github.com/malthe/chameleon
 Source:         https://github.com/malthe/chameleon/archive/%{version}.tar.gz#/Chameleon-%{version}.tar.gz
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
@@ -44,10 +46,10 @@ version of Python (2.5 and up, including 3.x and pypy).
 %setup -q -n chameleon-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # Don't ship testsuite
 %python_expand rm -r %{buildroot}%{$python_sitelib}/chameleon/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}

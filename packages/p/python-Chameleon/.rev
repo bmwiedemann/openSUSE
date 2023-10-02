@@ -152,4 +152,41 @@ New dependency of python-Pyramid</comment>
     integration).</comment>
     <requestid>1055881</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>521e35e180d080b4209603389f40fbfd</srcmd5>
+    <version>4.2.0</version>
+    <time>1696270024</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.2.0:
+  * An XML document provided as a string (i.e. decoded) now
+    correctly has its content encoding parsed.
+  * Boolean attributes are now automatically configured for
+    templates in non-XML mode, presuming that we're being used
+    to generate HTML.
+  * This means that the same loading mechanism can be used for
+    both XML-and HTML-based templates.
+  * Boolean attributes (those configured using the optional
+    `boolean_attributes` parameter) now work with $-expression
+    interpolation.
+  * Unlike content and regular attributes, a special check for a
+    falsy value is now done for boolean attributes, such that
+    boolean logic can be used for interpolation expressions
+    (only a truthy value will include the attribute).
+    This reverts a change in behavior introduced in 3.8.0.
+  * Fix format spec applying for f-strings.
+  * Drop support for Python 2.7, 3.5, 3.6.
+  * Add support for set- and dict comprehensions
+  * Remove the following functions resp. modules:
+    ``.utils.text_()``
+    ``.utils.unescape()``
+    ``.compat``
+
+  *  A RepeatDict no longer inherits from dict since it does not actually provide
+  *  Added feature gate enable_comment_interpolation which controls whether
+    Add option restricted_namespace which controls whether to
+    restrict namespaces to those defined and used by the page
+    Fixed attribute HTML entity escaping issue where an entity such
+    Simplify exception tracking, reducing bytecode size</comment>
+    <requestid>1114697</requestid>
+  </revision>
 </revisionlist>
