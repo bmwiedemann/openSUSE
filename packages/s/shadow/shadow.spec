@@ -48,6 +48,8 @@ Patch3:         shadow-login_defs-comments.patch
 Patch4:         shadow-login_defs-suse.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
 Patch5:         disable_new_audit_function.patch
+# PATCH-FIX-SUSE shadow-4.14.0-selinux-labels.patch jsegitz@suse.com -- set proper SELinux labels for new homedirs, gh/shadow-maint/shadow#812
+Patch6:         shadow-4.14.0-selinux-labels.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -116,6 +118,7 @@ Development files for libsubid4.
 %if 0%{?suse_version} < 1330
 %patch5 -p1
 %endif
+%patch6 -p1
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO

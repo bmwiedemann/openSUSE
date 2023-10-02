@@ -1,0 +1,21 @@
+commit e635d8eff074d4e00b2952e1e741cb16ad930ae1
+Author: Johannes Segitz <jsegitz@suse.de>
+Date:   Tue Sep 26 15:14:14 2023 +0200
+
+    useradd: Set proper SELinux labels also for content coming from def_usrtemplate
+    
+    Signed-off-by: Johannes Segitz <jsegitz@suse.com>
+
+diff --git a/src/useradd.c b/src/useradd.c
+index 76a4d649..fe62a051 100644
+--- a/src/useradd.c
++++ b/src/useradd.c
+@@ -2788,7 +2788,7 @@ int main (int argc, char **argv)
+ 		if (home_added) {
+ 			copy_tree (def_template, prefix_user_home, false, true,
+ 			           (uid_t)-1, user_id, (gid_t)-1, user_gid);
+-			copy_tree (def_usrtemplate, prefix_user_home, false, false,
++			copy_tree (def_usrtemplate, prefix_user_home, false, true,
+ 			           (uid_t)-1, user_id, (gid_t)-1, user_gid);
+ 		} else {
+ 			fprintf (stderr,

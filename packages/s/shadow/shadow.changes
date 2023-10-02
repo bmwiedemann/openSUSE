@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 26 13:20:59 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Add shadow-4.14.0-selinux-labels.patch:
+  Set proper SELinux labels for new homedirs.
+  See gh/shadow-maint/shadow#812.
+
+-------------------------------------------------------------------
 Thu Aug 17 10:14:14 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Remove dependency on libbsd:

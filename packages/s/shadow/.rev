@@ -917,4 +917,12 @@
   * useradd/usermod: add --selinux-range argument #698</comment>
     <requestid>1104351</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>b1b7cdc1f5cfa9f317b36f411d5f8c0c</srcmd5>
+    <version>4.14.0</version>
+    <time>1696269857</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114284</requestid>
+  </revision>
 </revisionlist>
