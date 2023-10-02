@@ -37,9 +37,10 @@ Source0:        https://github.com/nmeum/android-tools/releases/download/%{versi
 Source2:        man-pages.tar.gz
 # PATCH-FIX-OPENSUSE fix-install-completion.patch boo#1185883 munix9@googlemail.com -- Simplify completion
 Patch0:         fix-install-completion.patch
+# PATCH-FIX-UPSTREAM fix-add-make_f2fs-tool-for-fastboot.patch -- based on PR 125 (gh#nmeum/android-tools#109)
+Patch1:         fix-add-make_f2fs-tool-for-fastboot.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.12
-BuildRequires:  f2fs-tools
 BuildRequires:  go
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
@@ -54,7 +55,6 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(protobuf)
 Requires:       android-udev-rules
-Requires:       f2fs-tools
 Suggests:       %{name}-mkbootimg = %{version}
 Suggests:       %{name}-partition = %{version}
 Provides:       %{name}-python3 = %{version}-%{release}
@@ -114,9 +114,6 @@ export GOFLAGS="-buildmode=pie -trimpath -ldflags=-buildid="
 
 %install
 %cmake_install
-
-# required by 'fastboot format:f2fs ...'
-ln -s %{_sbindir}/mkfs.f2fs %{buildroot}%{_bindir}/make_f2fs
 
 # fix non-executable-script
 chmod 0755 %{buildroot}%{_datadir}/%{name}/mkbootimg/gki/generate_gki_certificate.py

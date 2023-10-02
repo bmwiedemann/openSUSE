@@ -1,0 +1,122 @@
+From 1bb6013ee4ab1dbc5339552219479cb5acbb7530 Mon Sep 17 00:00:00 2001
+From: Biswapriyo Nath <nathbappai@gmail.com>
+Date: Sat, 16 Sep 2023 11:33:54 +0530
+Subject: [PATCH] CMake: Add make_f2fs tool for fastboot
+
+make_f2fs tool is reqired by fastboot. If the make_f2fs executable is
+not present the following error is shown.
+
+$ fastboot format:f2fs userdata
+/usr/bin/make_f2fs failed with status 1
+fastboot: error: Cannot generate image for userdata
+
+This commit also splits libext2_uuid static library from libext2fs
+---
+ vendor/CMakeLists.f2fstools.txt | 31 +++++++++++++++++++++++++++++++
+ vendor/CMakeLists.mke2fs.txt    | 25 ++++++++++++++++++-------
+ vendor/CMakeLists.txt           |  2 ++
+ 4 files changed, 53 insertions(+), 7 deletions(-)
+ create mode 100644 vendor/CMakeLists.f2fstools.txt
+
+diff --git a/vendor/CMakeLists.f2fstools.txt b/vendor/CMakeLists.f2fstools.txt
+new file mode 100644
+index 0000000..152cc37
+--- /dev/null
++++ b/vendor/CMakeLists.f2fstools.txt
+@@ -0,0 +1,31 @@
++# SPDX-License-Identifier: Apache-2.0
++# CMakeLists.f2fstools.txt: CMake file for f2fs-tools directory
++
++add_library(libf2fs STATIC
++	f2fs-tools/lib/libf2fs.c
++	f2fs-tools/mkfs/f2fs_format.c
++	f2fs-tools/mkfs/f2fs_format_utils.c
++	f2fs-tools/lib/libf2fs_zoned.c
++	f2fs-tools/lib/nls_utf8.c)
++
++target_compile_definitions(libf2fs PUBLIC
++	-DF2FS_MAJOR_VERSION=1
++	-DF2FS_MINOR_VERSION=16
++	-DF2FS_TOOLS_VERSION="1.16.0"
++	-DF2FS_TOOLS_DATE="2023-04-11"
++	-DWITH_ANDROID
++	-DWITH_BLKDISCARD)
++
++target_include_directories(libf2fs PUBLIC
++	core/libsparse/include
++	f2fs-tools/include)
++
++target_link_libraries(libf2fs PUBLIC
++	libext2_uuid)
++
++add_executable(make_f2fs
++	f2fs-tools/lib/libf2fs_io.c
++	f2fs-tools/mkfs/f2fs_format_main.c)
++
++target_link_libraries(make_f2fs PRIVATE
++	libf2fs libsparse z)
+diff --git a/vendor/CMakeLists.mke2fs.txt b/vendor/CMakeLists.mke2fs.txt
+index 5c0708d..3073fe4 100644
+--- a/vendor/CMakeLists.mke2fs.txt
++++ b/vendor/CMakeLists.mke2fs.txt
+@@ -1,3 +1,18 @@
++add_library(libext2_uuid STATIC
++	e2fsprogs/lib/uuid/clear.c
++	e2fsprogs/lib/uuid/compare.c
++	e2fsprogs/lib/uuid/copy.c
++	e2fsprogs/lib/uuid/gen_uuid.c
++	e2fsprogs/lib/uuid/isnull.c
++	e2fsprogs/lib/uuid/pack.c
++	e2fsprogs/lib/uuid/parse.c
++	e2fsprogs/lib/uuid/unpack.c
++	e2fsprogs/lib/uuid/unparse.c
++	e2fsprogs/lib/uuid/uuid_time.c)
++
++target_include_directories(libext2_uuid PUBLIC
++	e2fsprogs/lib)
++
+ add_library(libext2fs STATIC
+ 	e2fsprogs/lib/blkid/cache.c
+ 	e2fsprogs/lib/blkid/dev.c
+@@ -95,18 +110,14 @@ add_library(libext2fs STATIC
+ 	e2fsprogs/lib/support/quotaio.c
+ 	e2fsprogs/lib/support/quotaio_tree.c
+ 	e2fsprogs/lib/support/quotaio_v2.c
+-	e2fsprogs/lib/uuid/clear.c
+-	e2fsprogs/lib/uuid/gen_uuid.c
+-	e2fsprogs/lib/uuid/isnull.c
+-	e2fsprogs/lib/uuid/pack.c
+-	e2fsprogs/lib/uuid/parse.c
+-	e2fsprogs/lib/uuid/unpack.c
+-	e2fsprogs/lib/uuid/unparse.c
+ 	e2fsprogs/misc/create_inode.c)
+ 
+ target_include_directories(libext2fs PRIVATE
+ 	e2fsprogs/lib e2fsprogs/lib/ext2fs core/libsparse/include)
+ 
++target_link_libraries(libext2fs PUBLIC
++	libext2_uuid)
++
+ add_executable("${ANDROID_MKE2FS_NAME}"
+ 	e2fsprogs/misc/default_profile.c
+ 	e2fsprogs/misc/mke2fs.c
+diff --git a/vendor/CMakeLists.txt b/vendor/CMakeLists.txt
+index 0ea7a01..6690dd9 100644
+--- a/vendor/CMakeLists.txt
++++ b/vendor/CMakeLists.txt
+@@ -89,6 +89,7 @@ include(CMakeLists.libandroidfw.txt)
+ include(CMakeLists.adb.txt)
+ include(CMakeLists.sparse.txt)
+ include(CMakeLists.fastboot.txt)
++include(CMakeLists.f2fstools.txt)
+ include(CMakeLists.mke2fs.txt)
+ include(CMakeLists.partition.txt)
+ include(CMakeLists.mkbootimg.txt)
+@@ -107,6 +108,7 @@ install(TARGETS
+ 	lpflash
+ 	lpmake
+ 	lpunpack
++	make_f2fs
+ 	simg2img
+ 	e2fsdroid
+ 	ext2simg
