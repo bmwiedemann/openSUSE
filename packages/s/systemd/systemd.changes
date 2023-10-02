@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Sep 27 13:14:12 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit 9674bb256205e6c643feadbcccfd1ee8feeee684 (merge of v254.5)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/6ed5b11298005e07509832881a0c5ff1a80bf225...9674bb256205e6c643feadbcccfd1ee8feeee684
+
+-------------------------------------------------------------------
+Wed Sep 27 10:12:48 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Make sure to call %sysusers_create only when transfiletrigger is disabled.
+
+-------------------------------------------------------------------
+Wed Sep 27 09:52:33 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: switch to %ldconfig_scriptlets
+
+-------------------------------------------------------------------
+Wed Sep 27 07:31:06 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- systemd.spec: add `%tmpfiles_create systemd-resolve`
+
+  It's only needed by SLE distros since systemd packages rely on
+  transtriggerfiles in Factory.
+
+-------------------------------------------------------------------
+Mon Sep 25 08:05:21 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit 6ed5b11298005e07509832881a0c5ff1a80bf225 (merge of v254.4)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/b6b4e5a8a82d1f13f265a4ef170f2d13be82789a...6ed5b11298005e07509832881a0c5ff1a80bf225
+
+-------------------------------------------------------------------
 Fri Sep 22 15:04:54 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - systemd.spec: during package updates, restart localed, timedated and hostnamed

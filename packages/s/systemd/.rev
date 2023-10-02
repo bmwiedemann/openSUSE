@@ -6818,4 +6818,26 @@ handle manual pages that consist only of a .so directive such as
   automatically redirect the enablement request to the socket unit.</comment>
     <requestid>1113047</requestid>
   </revision>
+  <revision rev="403" vrev="1">
+    <srcmd5>c49839effb0db33810abd8bbd04d3d13</srcmd5>
+    <version>254.5</version>
+    <time>1696269842</time>
+    <user>anag+factory</user>
+    <comment>- Import commit 9674bb256205e6c643feadbcccfd1ee8feeee684 (merge of v254.5)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/6ed5b11298005e07509832881a0c5ff1a80bf225...9674bb256205e6c643feadbcccfd1ee8feeee684
+
+- Make sure to call %sysusers_create only when transfiletrigger is disabled.
+
+- systemd.spec: switch to %ldconfig_scriptlets
+
+- systemd.spec: add `%tmpfiles_create systemd-resolve`
+  It's only needed by SLE distros since systemd packages rely on
+  transtriggerfiles in Factory.
+
+- Import commit 6ed5b11298005e07509832881a0c5ff1a80bf225 (merge of v254.4)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/b6b4e5a8a82d1f13f265a4ef170f2d13be82789a...6ed5b11298005e07509832881a0c5ff1a80bf225</comment>
+    <requestid>1113906</requestid>
+  </revision>
 </revisionlist>

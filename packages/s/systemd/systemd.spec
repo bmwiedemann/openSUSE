@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.3.gb6b4e5a8a8
+%define archive_version +suse.5.g9674bb2562
 
 %define _testsuitedir %{_systemd_util_dir}/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -67,7 +67,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        254.3
+Version:        254.5
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -440,7 +440,7 @@ see nss-mymachines(8) manpage for more details.
 
 %if %{with networkd} || %{with resolved}
 %package network
-Summary:        systemd network and Network Name Resolution managers
+Summary:        Systemd Network And Network Name Resolution Managers
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
@@ -782,7 +782,11 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         -Doomd=%{when experimental} \
         -Drepart=%{when experimental} \
         -Dsysupdate=%{when experimental} \
+%if %{with sd_boot}
         -Dukify=%{when experimental} \
+%else
+        -Dukify=false \
+%endif
         \
         -Dtests=%{when testsuite unsafe} \
         -Dinstall-tests=%{when testsuite}
@@ -1126,11 +1130,8 @@ fi
 %posttrans -n udev%{?mini}
 %regenerate_initrd_posttrans
 
-%post -n libudev%{?mini}1 -p %ldconfig
-%post -n libsystemd0%{?mini} -p %ldconfig
-
-%postun -n libudev%{?mini}1 -p %ldconfig
-%postun -n libsystemd0%{?mini} -p %ldconfig
+%ldconfig_scriptlets -n libsystemd0%{?mini}
+%ldconfig_scriptlets -n libudev%{?mini}1
 
 %if %{with machined}
 %pre container
@@ -1140,23 +1141,25 @@ fi
 %systemd_preun machines.target
 
 %postun container
-%systemd_postun machines.target
 %ldconfig
+%systemd_postun machines.target
 %endif
 
 %post container
 %if %{with machined}
+%ldconfig
 %if %{without filetriggers}
 %tmpfiles_create systemd-nspawn.conf
 %endif
 %systemd_post machines.target
-%ldconfig
 %{_systemd_util_dir}/rpm/fixlet-container-post.sh $1 || :
 %endif
 
 %if %{with coredump}
 %post coredump
+%if %{without filetriggers}
 %sysusers_create systemd-coredump.conf
+%endif
 %endif
 
 %if %{with journal_remote}
@@ -1167,7 +1170,9 @@ fi
 
 %post journal-remote
 # Assume that all files shipped by systemd-journal-remove are owned by root.
+%if %{without filetriggers}
 %sysusers_create systemd-remote.conf
+%endif
 %systemd_post systemd-journal-gatewayd.service
 %systemd_post systemd-journal-remote.service
 %systemd_post systemd-journal-upload.service
@@ -1204,7 +1209,10 @@ fi
 %endif
 %if %{with resolved}
 %ldconfig
+%if %{without filetriggers}
 %sysusers_create systemd-resolve.conf
+%tmpfiles_create systemd-resolve.conf
+%endif
 %systemd_post systemd-resolved.service
 %endif
 
@@ -1271,7 +1279,9 @@ fi
 %systemd_pre systemd-oomd.service systemd-oomd.socket
 
 %post experimental
+%if %{without filetriggers}
 %sysusers_create systemd-oom.conf
+%endif
 %systemd_post systemd-homed.service
 %systemd_post systemd-oomd.service systemd-oomd.socket
 
