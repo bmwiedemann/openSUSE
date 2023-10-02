@@ -1,0 +1,63 @@
+https://github.com/mozilla/gecko-dev/commit/025982b6714051c747dcb9600d6e5c92d2dcaf7b
+
+From 025982b6714051c747dcb9600d6e5c92d2dcaf7b Mon Sep 17 00:00:00 2001
+From: Maxim Cournoyer <maxim.cournoyer@gmail.com>
+Date: Thu, 16 Mar 2023 14:01:58 +0000
+Subject: [PATCH] Bug 1817032 - Honor SOURCE_DATE_EPOCH to build langpacks
+ reproducibly. r=eemeli@mozilla.com
+
+Differential Revision: https://phabricator.services.mozilla.com/D169979
+---
+ .../mozbuild/action/langpack_manifest.py        | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/python/mozbuild/mozbuild/action/langpack_manifest.py b/python/mozbuild/mozbuild/action/langpack_manifest.py
+index f82a329cc..10e42fe99 100644
+--- a/python/mozbuild/mozbuild/action/langpack_manifest.py
++++ b/python/mozbuild/mozbuild/action/langpack_manifest.py
+@@ -16,6 +16,7 @@ import os
+ import json
+ import io
+ import datetime
++import time
+ import requests
+ import mozversioncontrol
+ import mozpack.path as mozpath
+@@ -36,9 +37,17 @@ def write_file(path, content):
+ pushlog_api_url = "{0}/json-rev/{1}"
+ 
+ 
++def get_build_date():
++    """Return the current date or SOURCE_DATE_EPOCH, if set."""
++    return datetime.datetime.utcfromtimestamp(
++        int(os.environ.get("SOURCE_DATE_EPOCH", time.time()))
++    )
++
++
+ ###
+-# Retrievers a UTC datetime of the push for the current commit
+-# from a mercurial clone directory.
++# Retrieves a UTC datetime of the push for the current commit from a
++# mercurial clone directory. The SOURCE_DATE_EPOCH environment
++# variable is honored, for reproducibility.
+ #
+ # Args:
+ #    path (str) - path to a directory
+@@ -54,7 +63,7 @@ def get_dt_from_hg(path):
+     with mozversioncontrol.get_repository_object(path=path) as repo:
+         phase = repo._run("log", "-r", ".", "-T" "{phase}")
+         if phase.strip() != "public":
+-            return datetime.datetime.utcnow()
++            return get_build_date()
+         repo_url = repo._run("paths", "default")
+         repo_url = repo_url.strip().replace("ssh://", "https://")
+         repo_url = repo_url.replace("hg://", "https://")
+@@ -99,7 +108,7 @@ def get_timestamp_for_locale(path):
+         dt = get_dt_from_hg(path)
+ 
+     if dt is None:
+-        dt = datetime.datetime.utcnow()
++        dt = get_build_date()
+ 
+     dt = dt.replace(microsecond=0)
+     return dt.strftime("%Y%m%d%H%M%S")
