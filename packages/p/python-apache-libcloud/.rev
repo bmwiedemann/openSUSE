@@ -508,4 +508,41 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
     <comment></comment>
     <requestid>1096551</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>fd329ab74c68a1d57ce941e98db9fc75</srcmd5>
+    <version>3.8.0</version>
+    <time>1696269843</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.8.0
+  * Compute
+    - Remove obsolete compute driver where the provider is either
+      dead or not offering those services anymore: Bluebox,
+      bsnlcloud, Cloudwatt, Enomaly, ElasticHosts, ElasticStack,
+      GoGrid, Gridspot, HostVirtual, Joyent, Med-1, Nephoscale,
+      1on1, ProfitBricks, ServerLove, SkaliCloud, Softlayer, Voxel.
+      (#1743, #1852)
+    - [Outscale] Fix list_nodes() and list_volumes() method. (#1877)
+    - [Azure ARM] Implement pagination in the list_nodes() method.
+      This fixes a bug which would result in sometimes not all the 
+      nodes being returned. (#1824, #1850)
+    - [Azure ARM] Implement pagination in the list_volumes() method.
+      This fixes a bug which would result in sometimes not all the 
+      volumes nodes being returned. (#1891)
+    - [Azure ARM] Bump DISK_API_VERSION from 2018-06-01 to 2023-01-02
+      to support premium v2 SSDs. (#1904)
+    - [AWS EC2] Add support for the following new arguments to the
+      ex_register_image() method: * boot_mode - control bios vs
+      uefi boot * tpm_support - enable a tpm * uefi_data - provide
+      NV UEFI vars * imds_support - require IMDSv2. (#1906)
+  * Storage
+    - Optimize read_in_chunks() function implementation.
+    - This should result in large performance speedups and lower memory
+      usage when uploading or downloading a large file with a mismatching chunk size.
+    - Keep in mind that this only affects code paths where the function
+      is called with fill_size=True argument
+      (such as in the S3 driver, etc). (#1847)
+    - [Aliyun OSS] Fix upload_object() function. (#1796)
+    - [S3] Support all available storage classes. Previously only</comment>
+    <requestid>1114461</requestid>
+  </revision>
 </revisionlist>

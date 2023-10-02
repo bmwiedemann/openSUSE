@@ -1,6 +1,71 @@
 -------------------------------------------------------------------
-Mon Jul  3 11:38:42 UTC 2023 - ecsosa <ecsos@opensuse.org>
+Tue Sep 26 00:00:00 PM CEST 2023 - ecsosa <ecsos@opensuse.org>
 
+- Update to 3.8.0
+  * Compute
+    - Remove obsolete compute driver where the provider is either
+      dead or not offering those services anymore: Bluebox,
+      bsnlcloud, Cloudwatt, Enomaly, ElasticHosts, ElasticStack,
+      GoGrid, Gridspot, HostVirtual, Joyent, Med-1, Nephoscale,
+      1on1, ProfitBricks, ServerLove, SkaliCloud, Softlayer, Voxel.
+      (#1743, #1852)
+    - [Outscale] Fix list_nodes() and list_volumes() method. (#1877)
+    - [Azure ARM] Implement pagination in the list_nodes() method.
+      This fixes a bug which would result in sometimes not all the 
+      nodes being returned. (#1824, #1850)
+    - [Azure ARM] Implement pagination in the list_volumes() method.
+      This fixes a bug which would result in sometimes not all the 
+      volumes nodes being returned. (#1891)
+    - [Azure ARM] Bump DISK_API_VERSION from 2018-06-01 to 2023-01-02
+      to support premium v2 SSDs. (#1904)
+    - [AWS EC2] Add support for the following new arguments to the
+      ex_register_image() method: * boot_mode - control bios vs
+      uefi boot * tpm_support - enable a tpm * uefi_data - provide
+      NV UEFI vars * imds_support - require IMDSv2. (#1906)
+  * Storage
+    - Optimize read_in_chunks() function implementation.
+    - This should result in large performance speedups and lower memory
+      usage when uploading or downloading a large file with a mismatching chunk size.
+    - Keep in mind that this only affects code paths where the function
+      is called with fill_size=True argument
+      (such as in the S3 driver, etc). (#1847)
+    - [Aliyun OSS] Fix upload_object() function. (#1796)
+    - [S3] Support all available storage classes. Previously only 
+      "standard" and "reduced_redundancy" were supported. (#1875)
+    - [CloudFiles] Fix get_endpoint_url() throwing an exception when
+      being used with use_internal_url=True argument. (#1883, #1884)
+    - [CloudFiles] Update OpenStack connection handling code to only
+      re-connect in case connection details (scheme, host, port) have changed.
+    - This should result in significant performance improvements when
+      downloading objects since the underlying HTTP connection will 
+      be properly re-used. (#1885, #1886)
+    - [Backblaze B2] Fix a bug which would result in an exception
+      when passing extra={"meta_data": {}} argument to the 
+      upload_object() method. (#1916)
+  * Other
+    - Move Python tooling (pytest, bandit, pylint, mypy, coverage)
+      config options from separate config files into single
+      pyproject.yaml config files.
+    - NOTE: This change only affects development process and nothing
+      else. (#1901)
+    - Fix minor typos in the code using codespell package and enforce
+      this check as part of our GHA CI system. (#1923)
+    - Indicate we also support Python 3.12 (beta). (#1920)
+    - Remove unused libcloud.security.SSL_VERSION constant / module 
+      level variable. This variable has been unused and had no affect
+      on the behavior since we switched to the requests library for
+      making HTTP(s) requests in 2016.
+    - Packaging related metadata has been migrated from setup.py to
+      pyproject.yaml file. (#1929)
+    - Deprecated and unsafe setup.py test convenience alias for
+      running tests using pytest has been removed in favor of 
+      running pytest directly. (#1929)
+    - Script for building release artifacts has been updated to
+      utilize build Python package to build release artifacts 
+      (sdist + wheel) in an isolated environment. (#1929)
+
+-------------------------------------------------------------------
+Mon Jul  3 11:38:42 UTC 2023 - ecsosa <ecsos@opensuse.org>
 - Add %{?sle15_python_module_pythons}
 
 -------------------------------------------------------------------

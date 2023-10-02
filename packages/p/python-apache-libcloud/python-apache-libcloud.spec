@@ -18,21 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-apache-libcloud
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Abstraction over multiple cloud provider APIs
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://libcloud.apache.org
-Source0:        https://downloads.apache.org/libcloud/apache-libcloud-%{version}.tar.bz2
-Source1:        https://downloads.apache.org/libcloud/apache-libcloud-%{version}.tar.bz2.asc
+Source0:        https://downloads.apache.org/libcloud/apache-libcloud-%{version}.tar.gz
+Source1:        https://downloads.apache.org/libcloud/apache-libcloud-%{version}.tar.gz.asc
 # https://libcloud.apache.org/downloads.html#package-verification-guide
 Source2:        https://www.apache.org/dist/libcloud/KEYS#/%{name}.keyring
 Patch1:         gce_image_projects.patch
 Patch2:         ec2_create_node.patch
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module fasteners}
 BuildRequires:  %{python_module libvirt-python}
-BuildRequires:  %{python_module lockfile}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pyOpenSSL}
@@ -47,7 +47,7 @@ Requires:       python-lxml
 Requires:       python-requests
 Requires:       python-typing
 Suggests:       python-libvirt-python
-Suggests:       python-lockfile
+Suggests:       python-fastners
 Suggests:       python-paramiko
 Suggests:       python-pysphere
 BuildArch:      noarch
