@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  2 13:22:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230928
+  * Python 3.12 support
+
+-------------------------------------------------------------------
 Tue Aug  1 15:58:03 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - use %{?sle15_python_module_pythons} for opensuse15.5 compatibility

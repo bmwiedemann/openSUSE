@@ -18,7 +18,7 @@
 
 %define lname	liblnk1
 Name:           liblnk
-Version:        20230716
+Version:        20230928
 Release:        0
 Summary:        Library and tools to access the Windows Shortcut File (LNK) format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
