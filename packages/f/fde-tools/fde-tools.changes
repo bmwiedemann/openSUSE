@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  2 08:10:10 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Bring ExclusiveArch back and only enable the build for the
+  architectures with the proper UEFI Secure Boot and TPM 2.0/TCG
+  protocol support: aarch64 x86_64 riscv64
+
+-------------------------------------------------------------------
 Tue Sep 19 05:59:00 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 0.7.0
