@@ -31,7 +31,6 @@ BuildRequires:  fcitx5-lua-devel
 BuildRequires:  fcitx5-qt-devel
 BuildRequires:  fdupes
 BuildRequires:  fmt-devel
-BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Concurrent-devel
 BuildRequires:  libQt5DBus-devel
@@ -44,6 +43,12 @@ BuildRequires:  libqt5-qtwebengine-devel
 BuildRequires:  opencc-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc8
+BuildRequires:  gcc8-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 Supplements:    fcitx5
 Conflicts:      fcitx <= 4.2.9.8
 Provides:       fcitx-cloudpinyin = %{version}
@@ -102,6 +107,10 @@ This package provides development files for fcitx5-chinese-addons.
 %setup -q
 
 %build
+%if 0%{?suse_version} == 1500
+export CC=gcc-8
+export CXX=g++-8
+%endif
 %cmake -DUSE_WEBKIT=OFF
 %make_build
 
