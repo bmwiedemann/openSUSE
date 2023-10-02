@@ -29,6 +29,9 @@ Source2:        https://storage.googleapis.com/downloads.webmproject.org/release
 Source3:        %name.keyring
 Source4:        baselibs.conf
 
+# PATCH-FIX-UPSTREAM 0001-Fix-invalid-incremental-decoding-check.patch boo#1215231 CVE-2023-4863 xwang@suse.com -- Fix invalid incremental decoding check
+Patch2:         0001-Fix-invalid-incremental-decoding-check.patch
+
 BuildRequires:  giflib-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glut)
