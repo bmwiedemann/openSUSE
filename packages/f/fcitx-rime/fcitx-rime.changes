@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 29 07:51:11 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- add fcitx-rime-0.3.2-rime-sync-user-data.patch
+  * rime sync_user_data can't accept argument 
+
+-------------------------------------------------------------------
 Wed Jan 20 00:19:38 UTC 2021 - Dingzhong Chen <wsxy162@gmail.com>
 
 - Remove Requires: brise, since it has been deprecated upstream

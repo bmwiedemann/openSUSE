@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx-rime
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,11 @@ Name:           fcitx-rime
 Version:        0.3.2
 Release:        0
 Summary:        Rime input engine support for Fcitx
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
-Url:            https://github.com/fcitx/fcitx-rime
+URL:            https://github.com/fcitx/fcitx-rime
 Source:         http://download.fcitx-im.org/fcitx-rime/%{name}-%{version}.tar.xz
+Patch:          fcitx-rime-0.3.2-rime-sync-user-data.patch
 BuildRequires:  brise
 BuildRequires:  cmake
 BuildRequires:  fcitx-devel
@@ -51,6 +52,7 @@ This package is the Fcitx implentation of RIME.
 
 %prep
 %setup -q
+%patch -p1
 
 %build
 mkdir -p build

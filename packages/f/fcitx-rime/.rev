@@ -123,4 +123,14 @@
     <comment></comment>
     <requestid>864490</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>126826891843ad4bdbd944f8997387bc</srcmd5>
+    <version>0.3.2</version>
+    <time>1696269904</time>
+    <user>anag+factory</user>
+    <comment>- add fcitx-rime-0.3.2-rime-sync-user-data.patch
+  * rime sync_user_data can't accept argument 
+</comment>
+    <requestid>1114277</requestid>
+  </revision>
 </revisionlist>
