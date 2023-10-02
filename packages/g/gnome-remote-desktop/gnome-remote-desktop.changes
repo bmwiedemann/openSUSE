@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 28 12:22:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 45.0:
+  + vnc: Also include DRM format modifiers when resizing PipeWire
+    stream.
+  + rdp: Also include DRM format modifiers when resizing PipeWire
+    stream.
+  + Updated translations.
+- Change compression of tarball in service and spec to zst from xz.
+- Drop dbus-1-daemon Requires, only needed for tests, and we are
+  not building them currently.
+
+-------------------------------------------------------------------
 Mon Sep  4 09:47:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.rc:

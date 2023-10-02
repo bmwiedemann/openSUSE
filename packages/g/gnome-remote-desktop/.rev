@@ -186,4 +186,12 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
     <comment>Pushing GNOME 45.rc packages (forwarded request 1109824 from iznogood)</comment>
     <requestid>1110492</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0f603d3c68c8b3c05c26a2a9d54bb27e</srcmd5>
+    <version>45.0</version>
+    <time>1696270026</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114709</requestid>
+  </revision>
 </revisionlist>

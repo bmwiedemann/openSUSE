@@ -22,13 +22,13 @@
 %define gstreamer_version  1.10.0
 
 Name:           gnome-remote-desktop
-Version:        45.rc
+Version:        45.0
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://gitlab.gnome.org/GNOME/gnome-remote-desktop
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  asciidoc
 BuildRequires:  meson >= 0.36.0
@@ -67,8 +67,6 @@ BuildRequires:  pkgconfig(xkbcommon) >= 1.0.0
 %{?systemd_ordering}
 
 Requires:       pipewire >= 0.3.0
-# Needed for tests
-Requires:       dbus-1-daemon
 
 %description
 GNOME Remote Desktop is a remote desktop and screen sharing service for the
