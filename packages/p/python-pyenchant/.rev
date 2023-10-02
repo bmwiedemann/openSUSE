@@ -173,4 +173,12 @@
   * Fix ``Dict.__del__`` sometimes raising `TypeError` upon exit.</comment>
     <requestid>934924</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>49f754ae161d23455000044179921927</srcmd5>
+    <version>3.2.2</version>
+    <time>1696269844</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114536</requestid>
+  </revision>
 </revisionlist>

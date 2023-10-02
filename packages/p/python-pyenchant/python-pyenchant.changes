@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 30 09:49:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Move to PEP517
+- Add sle15_python_module_pythons (for mygnuhealth)
+
+-------------------------------------------------------------------
 Wed Dec  1 07:59:05 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.2.2:

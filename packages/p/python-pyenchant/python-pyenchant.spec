@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyenchant
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pyenchant
 Version:        3.2.2
 Release:        0
@@ -25,8 +24,10 @@ Summary:        Python bindings for the Enchant spellchecking system
 License:        LGPL-2.1-or-later
 URL:            https://pyenchant.github.io/pyenchant
 Source:         https://github.com/pyenchant/pyenchant/archive/v%{version}.tar.gz#/pyenchant-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 %if 0%{?suse_version} > 1500
 BuildRequires:  enchant-2-backend-hunspell
 %else
@@ -56,10 +57,10 @@ chmod a-x *.txt
 rm -rf website .github archive tools
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -71,6 +72,6 @@ export LANG=en_US.UTF-8
 %license LICENSE.txt
 %doc README.rst TODO.txt
 %{python_sitelib}/enchant
-%{python_sitelib}/pyenchant-%{version}-py*.egg-info
+%{python_sitelib}/pyenchant-%{version}.dist-info
 
 %changelog
