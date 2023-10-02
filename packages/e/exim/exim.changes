@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  2 05:53:32 UTC 2023 - Peter Wullinger <wullinger@rz.uni-kiel.de>
+
+- security update to exim 4.96.1
+  * fixes CVE-2023-42114 (bsc#1215784)
+  * fixes CVE-2023-42115 (bsc#1215785)
+  * fixes CVE-2023-42116 (bsc#1215786)
+
+-------------------------------------------------------------------
 Tue Mar 28 13:46:34 UTC 2023 - Peter Wullinger <wullinger@rz.uni-kiel.de>
 
 - enable sender rewriting support (SUPPORT_SRS)

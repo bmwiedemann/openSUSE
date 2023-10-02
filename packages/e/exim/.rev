@@ -841,4 +841,16 @@ argument by removing the curly brackets (shell syntax).</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1077219</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>78965e50d79e869e2d7ab1b3c1ab3685</srcmd5>
+    <version>4.96.1</version>
+    <time>1696269912</time>
+    <user>anag+factory</user>
+    <comment>- security update to exim 4.96.1
+  * fixes CVE-2023-42114 (bsc#1215784)
+  * fixes CVE-2023-42115 (bsc#1215785)
+  * fixes CVE-2023-42116 (bsc#1215786)
+</comment>
+    <requestid>1114826</requestid>
+  </revision>
 </revisionlist>
