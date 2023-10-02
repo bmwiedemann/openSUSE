@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-tinydb
 Version:        4.8.0
 Release:        0
@@ -27,22 +26,14 @@ Group:          Productivity/Databases/Servers
 URL:            https://github.com/msiemens/tinydb
 Source:         https://files.pythonhosted.org/packages/source/t/tinydb/tinydb-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-#BuildRequires:  %%{python_module typing-extensions >= 3.10 if %%python-base < 3.7}
-%if 0%{?suse_version} < 1550
-# For submission to 15.4, which still has not the boolean rpm requirements support in prjconf
-BuildRequires:  %{python_module typing-extensions >= 3.10}
-%endif
-%if 0%{?python_version_nodots} < 37
-Requires:       python-typing-extensions >= 3.10
-%endif
 %python_subpackages
 
 %description
