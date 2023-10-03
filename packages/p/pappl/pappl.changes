@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 29 11:34:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relese 1.4.0
+  * Added support for "job-retain-until"
+  * Added new PAPPL-Create-Printers operation, and the PAPPL
+    mainloop API now auto-adds local printers the first time a
+    server is run
+  * Added new papplDeviceRemoveScheme and papplDeviceRemoveTypes
+    APIs to disable unwanted device types
+  * Added support for suspending and resuming jobs at copy boundaries
+  * Added support for server configuration files
+
+-------------------------------------------------------------------
 Thu Sep  7 16:32:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3.4

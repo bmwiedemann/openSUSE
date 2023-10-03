@@ -18,7 +18,7 @@
 
 Name:           pappl
 %define lname   libpappl1
-Version:        1.3.4
+Version:        1.4.0
 Release:        0
 Summary:        A printer application framework
 License:        Apache-2.0
@@ -30,9 +30,9 @@ Source3:        %name.keyring
 BuildRequires:  cups-devel > 2.2.6
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig(avahi-client)
-BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng16)
+BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(zlib)
 
