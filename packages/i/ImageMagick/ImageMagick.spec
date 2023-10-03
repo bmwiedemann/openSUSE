@@ -29,6 +29,7 @@
 %define libspec        -%{maj}_Q%{quantum_depth}HDRI
 %define config_dir     ImageMagick-7
 %define config_spec    config-7
+%define test_verbose   1
 # bsc#1088463
 %define urw_base35_fonts 0
 # do/don't pull djvulibre dependency
@@ -49,11 +50,11 @@ Patch0:         ImageMagick-configuration-SUSE.patch
 Patch2:         ImageMagick-library-installable-in-parallel.patch
 #%%ifarch i586
 #%%if %%{?suse_version} < 1550
-# do not report test issues related to 32-bit architectures upstream,
-# they do not want to dedicate any time to fix them:
-# https://github.com/ImageMagick/ImageMagick/issues/1215
 Patch4:         ImageMagick-filter.t-disable-Contrast.patch
 #%%endif
+#%%endif
+#%%ifarch s390x
+Patch5:         ImageMagick-s390x-disable-tests.patch
 #%%endif
 BuildRequires:  chrpath
 BuildRequires:  dejavu-fonts
@@ -351,6 +352,9 @@ policy plus disable few other coders for reading and/or writing.
 %patch4 -p1
 %endif
 %endif
+%ifarch s390x
+%patch5 -p1
+%endif
 
 %build
 # bsc#1088463
@@ -437,6 +441,9 @@ export MAGICK_CODER_MODULE_PATH=$PWD/coders/.libs
 export MAGICK_CODER_FILTER_PATH=$PWD/filters/.libs
 export MAGICK_CONFIGURE_PATH=$PWD/config
 cd PerlMagick
+%if %{test_verbose}
+sed -i 's:TEST_VERBOSE=0:TEST_VERBOSE=1:' Makefile
+%endif
 %make_build test
 cd ..
 

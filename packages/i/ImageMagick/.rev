@@ -3701,4 +3701,14 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
    https://github.com/ImageMagick/Website/blob/main/ChangeLog.md</comment>
     <requestid>1114325</requestid>
   </revision>
+  <revision rev="281" vrev="2">
+    <srcmd5>e0fc71e7df480236d6e9926ef73cd11c</srcmd5>
+    <version>7.1.1.18</version>
+    <time>1696356896</time>
+    <user>anag+factory</user>
+    <comment>- allow verbose perl tests
+- add ImageMagick-s390x-disable-tests.patch, adjust two and disable
+  one failing test on s390x</comment>
+    <requestid>1114685</requestid>
+  </revision>
 </revisionlist>

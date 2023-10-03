@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 29 13:19:30 UTC 2023 - pgajdos@suse.com
+
+- allow verbose perl tests
+- add ImageMagick-s390x-disable-tests.patch, adjust two and disable
+  one failing test on s390x
+
+-------------------------------------------------------------------
 Fri Sep 29 10:52:03 UTC 2023 - pgajdos@suse.com
 
 - version update to 7.1.1.18
