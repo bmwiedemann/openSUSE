@@ -208,6 +208,7 @@
     <package name="fcitx-table-tw-smart-cangjie6" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="fcitx-zhuyin" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="fcoe-utils" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="fde-tpm-helper" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="fdupes" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="file" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="file-magic" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->

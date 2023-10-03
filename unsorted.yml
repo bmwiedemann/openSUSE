@@ -720,8 +720,6 @@ unsorted:
   - apache-commons-jexl-javadoc 
   - apache-commons-jxpath 
   - apache-commons-jxpath-javadoc 
-  - apache-commons-lang 
-  - apache-commons-lang-javadoc 
   - apache-commons-lang3 
   - apache-commons-lang3-javadoc 
   - apache-commons-math 
@@ -3700,6 +3698,8 @@ unsorted:
   - extreme-tuxracer-data 
   - extundelete 
   - eyeD3 
+  - eyedropper 
+  - eyedropper-lang 
   - ez-ipupdate 
   - eza 
   - eza-bash-completion 
@@ -3853,7 +3853,6 @@ unsorted:
   - fde-firstboot 
   - fde-tools 
   - fde-tools-bash-completion 
-  - fde-tpm-helper 
   - fde-tpm-helper-rpm-macros 
   - fdo-client 
   - fdo-client-devel 
@@ -4242,8 +4241,6 @@ unsorted:
   - fslsfonts 
   - fstl 
   - fstobdf 
-  - fstrcmp 
-  - fstrcmp-devel 
   - fstrm 
   - fstrm-devel 
   - fsverity-utils 
@@ -8010,12 +8007,6 @@ unsorted:
   - icingaweb2-module-ipl 
   - icingaweb2-module-reactbundle 
   - icingaweb2-php-fpm 
-  - icingaweb2-vendor-HTMLPurifier 
-  - icingaweb2-vendor-JShrink 
-  - icingaweb2-vendor-Parsedown 
-  - icingaweb2-vendor-dompdf 
-  - icingaweb2-vendor-lessphp 
-  - icingaweb2-vendor-zf1 
   - icmake 
   - icmpinfo 
   - icmptunnel 
@@ -11758,7 +11749,6 @@ unsorted:
   - libesmtp-devel 
   - libestr-devel 
   - libetebase-devel 
-  - libetebase0 
   - libetonyek-devel 
   - libetonyek-devel-doc 
   - libetonyek-tools 
@@ -12040,7 +12030,6 @@ unsorted:
   - libfsrefs-tools 
   - libfsrefs1 
   - libfst25 
-  - libfstrcmp0 
   - libfsverity0 
   - libfsxfs-devel 
   - libfsxfs-tools 
@@ -12833,7 +12822,7 @@ unsorted:
   - libjack0-32bit 
   - libjacknet0-32bit 
   - libjackserver0-32bit 
-  - libjanet1_30 
+  - libjanet1_31 
   - libjansson-devel 
   - libjasper-devel 
   - libjasper7-32bit 
@@ -13761,18 +13750,18 @@ unsorted:
   - libopencsd_c_api1 
   - libopencsg1 
   - libopencv3_4 
-  - libopencv407 
-  - libopencv_aruco407 
-  - libopencv_face407 
-  - libopencv_gapi407 
-  - libopencv_highgui407 
-  - libopencv_imgcodecs407 
-  - libopencv_objdetect407 
-  - libopencv_optflow407 
-  - libopencv_superres407 
-  - libopencv_videoio407 
-  - libopencv_videostab407 
-  - libopencv_ximgproc407 
+  - libopencv408 
+  - libopencv_aruco408 
+  - libopencv_face408 
+  - libopencv_gapi408 
+  - libopencv_highgui408 
+  - libopencv_imgcodecs408 
+  - libopencv_objdetect408 
+  - libopencv_optflow408 
+  - libopencv_superres408 
+  - libopencv_videoio408 
+  - libopencv_videostab408 
+  - libopencv_ximgproc408 
   - libopendkim11 
   - libopenhpi4 
   - libopenjp2-7-32bit 
@@ -19377,14 +19366,11 @@ unsorted:
   - openSUSE-repos-Tumbleweed-NVIDIA 
   - openSUSE-signkey-cert 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit 
@@ -21662,10 +21648,10 @@ unsorted:
   - phoronix-test-suite 
   - photoqt 
   - photorec 
-  - php-Icinga 
   - php-composer 
   - php-composer2 
   - php-cs-fixer 
+  - php-icinga 
   - php-mapscriptng 
   - php-pear-Auth_SASL 
   - php-pear-MDB2 
