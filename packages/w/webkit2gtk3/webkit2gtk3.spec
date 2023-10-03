@@ -74,7 +74,7 @@ ExclusiveArch:  do-not-build
 Name:           webkit2%{_gtknamesuffix}
 ### FIXME ### Drop the disabling of LTO on next release/versionbump
 %define _lto_cflags %{nil}
-Version:        2.42.0
+Version:        2.42.1
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -106,7 +106,6 @@ BuildRequires:  gcc-c++ >= 8.3
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf >= 3.0.1
 BuildRequires:  hyphen-devel
-BuildRequires:  libicu-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  ninja
 BuildRequires:  openjpeg2
@@ -124,6 +123,7 @@ BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(fontconfig) >= 2.8.0
 BuildRequires:  pkgconfig(freetype2) >= 2.4.2
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.4
+BuildRequires:  pkgconfig(icu-i18n)
 %if %usegcc10
 BuildRequires:  pkgconfig(glproto)
 %endif
@@ -426,8 +426,8 @@ A small test browswer from webkit, useful for testing features.
 
 
 
-# Expand %%lang_package to Obsoletes its older-name counterpart
 
+# Expand %%lang_package to Obsoletes its older-name counterpart
 %package -n WebKitGTK-%{_apiver}-lang
 Summary:        Translations for package %{name}
 Group:          System/Localization
