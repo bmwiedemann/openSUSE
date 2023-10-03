@@ -16,14 +16,16 @@
 #
 
 
+%define tracker_basever 3.6
+
 Name:           tracker-miners
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker-miners/3.6/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tracker-miners/%{tracker_basever}/%{name}-%{version}.tar.xz
 
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE tracker-miners-drop-syscalls-in-seccomp.patch bsc#1192567 qkzhu@suse.com -- Revert some syscalls in seccomp since Leap and SLE do not have them
@@ -73,7 +75,7 @@ Conflicts:      libtracker-common-1_0 < 1.99
 # Make sure tracker is being updated to 1.99 too
 Conflicts:      tracker < 1.99
 Obsoletes:      tracker-miner-rss <= 2.2.2
-Requires:       tracker >= %{version}
+Requires:       tracker >= %{tracker_basever}
 %requires_ge    tracker-data-files
 
 %description

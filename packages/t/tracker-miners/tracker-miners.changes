@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 29 06:01:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.6.1:
+  + Avoid the special thread in tracker-extract-3, and extend the
+    seccomp jail to the full process.
+  + Updated translations.
+- Add a tracker_basever define, and set it to 3.6. We have a hard
+  Requires on what tracker version is needed and it is currently
+  set at the same or newer version, change this to tracker_basever
+  (tracker-miners have never been at a higher patch version
+  before).
+
+-------------------------------------------------------------------
 Sat Sep 16 15:38:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.6.0:
