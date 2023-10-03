@@ -24,7 +24,7 @@
 %define pp_so_ver       12
 %define wand_so_ver     2
 Name:           GraphicsMagick
-Version:        1.3.40
+Version:        1.3.42
 Release:        0
 Summary:        Viewer and Converter for Images
 License:        MIT
@@ -33,7 +33,6 @@ URL:            http://www.GraphicsMagick.org/
 Source:         https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/%{version}/%{name}-%{version}.tar.xz
 Patch0:         GraphicsMagick-perl-linkage.patch
 Patch1:         GraphicsMagick-disable-insecure-coders.patch
-Patch2:         strlcpy-wrong-sizing.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct  2 06:55:47 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.3.42
+Bug fixes:
+  * TIFF: Default the alpha channel to type EXTRASAMPLE_UNASSALPHA(2).
+  * BMP: Many fixes for reading esoteric BMP sub-formats.
+  * TranslateTextEx(): Revert change so now a NULL pointer is returned
+    when given an empty string.  Some algorithms (e.g. montage) were
+    depending on this!.
+  * PAM: Fix reading comments.
+  * PNG: Added Add missing module aliases "PNG00", "PNG48", "PNG64", so
+    it is again possible to request these subformats directly.
+  * TIFF: For common formats with the required number of channels, but
+    one is an 'unspecified' channel, promote unspecified alpha to
+    unassociated alpha so that the alpha channel is not ignored.
+  * "Magick" command line emulation: Eliminate duplicate utility name
+    output in error messages
+New Features:
+* BMP: Added the ability to read and write BMP using JPEG compression.
+  Use '-define bmp:allow-jpeg' to allow use of JPEG compression.
+* BMP: Added support for BI_ALPHABITFIELDS compression
+* BMP: Added support for reading BMP with PNG compression.
+- modified patches
+  % GraphicsMagick-disable-insecure-coders.patch (refreshed)
+- deleted patches
+  - strlcpy-wrong-sizing.patch (upstreamed)
+
+-------------------------------------------------------------------
 Fri Sep  1 13:19:26 UTC 2023 - pgajdos@suse.com
 
 - revert to 1.3.40 [bsc#1214831]
