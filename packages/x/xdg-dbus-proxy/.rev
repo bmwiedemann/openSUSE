@@ -40,4 +40,12 @@ Needed for future versions of flatpak, previously a part of flatpak itself. Resu
     <comment></comment>
     <requestid>1057960</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>74df491a214e835f88ab6c61fd737332</srcmd5>
+    <version>0.1.5</version>
+    <time>1696356899</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114704</requestid>
+  </revision>
 </revisionlist>
