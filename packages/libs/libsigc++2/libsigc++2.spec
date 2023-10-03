@@ -18,12 +18,12 @@
 
 %define _name libsigc++
 Name:           libsigc++2
-Version:        2.12.0
+Version:        2.12.1
 Release:        0
 Summary:        Typesafe Signal Framework for C++
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://libsigc.sourceforge.net/
+URL:            https://libsigcplusplus.github.io/libsigcplusplus/
 Source0:        https://download.gnome.org/sources/libsigc++/2.12/%{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
@@ -85,12 +85,11 @@ export MALLOC_CHECK_=2 MALLOC_PERTURB_=$((${RANDOM:-256} % 256))
 %meson_test
 unset MALLOC_CHECK_ MALLOC_PERTURB_
 
-%post -n libsigc-2_0-0 -p /sbin/ldconfig
-%postun -n libsigc-2_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libsigc-2_0-0
 
 %files -n libsigc-2_0-0
 %license COPYING
-%doc AUTHORS ChangeLog NEWS
+%doc ChangeLog NEWS README.md
 %{_libdir}/libsigc-2.0.so.*
 
 %files devel

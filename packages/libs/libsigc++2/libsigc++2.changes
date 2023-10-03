@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Oct  1 08:15:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.12.1:
+  + Documentation:
+    - slot, signal: Describe the slot<void(int)> syntax more
+    - connection: Improve the class documentation
+    - Improve Visual Studio build documentation
+    - Remove AUTHORS and add general information to README.md
+  + Build:
+    - Meson:
+      . Don't copy files with configure_file()
+      . Fix the evaluation of is_git_build on Windows
+    - Visual Studio: Support static builds
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Update URL to new home.
+
+-------------------------------------------------------------------
 Mon Feb 27 18:07:38 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.12.0:

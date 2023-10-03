@@ -399,4 +399,12 @@
     - Fix build with -Dbuild-deprecated-api=false. (forwarded request 1073121 from iznogood)</comment>
     <requestid>1073242</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>eb3d2c0fbfe7f0e6ca3affeecb7f172e</srcmd5>
+    <version>2.12.1</version>
+    <time>1696356901</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114707</requestid>
+  </revision>
 </revisionlist>
