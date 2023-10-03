@@ -11,9 +11,8 @@
 
 [Unit]
 Description=Postgrey Greylisting Service
-Requires=var-run.mount
 Wants=nss-lookup.target network.target remote-fs.target time-sync.target
-After=var-run.mount nss-lookup.target network.target remote-fs.target time-sync.target
+After=nss-lookup.target network.target remote-fs.target time-sync.target
 Before=mail-transfer-agent.target
 
 [Service]

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 18 08:47:50 UTC 2023 - Joop Boonen <joop.boonen@opensuse.org>
+
+- Remove postgrey.service -> var-run.mount dependency and ordering;
+  systemd 254 doesn't include var-run.mount any more.
+
+-------------------------------------------------------------------
 Tue Oct 19 12:40:19 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
