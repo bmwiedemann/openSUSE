@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Oct  2 07:26:26 UTC 2023 - pgajdos@suse.com
+
+- version update to 4.8.1
+
+  *  Fix besselj() and bessely()
+  *  Fix display of matrices and vectors with complex number form other than
+     rectangular (default)
+  *  Fix conflict between decibel units (e.g. "0dB") and duodecimal 0d… syntax
+     (now requires at least two digits)
+  *  Fixes for title options in plot() function
+  *  Add additional buttons and button menus to general keypad (Qt)
+  *  Add option to show all functions, units, and variables in tool button
+     menus (Qt)
+  *  Add recently used objects to functions, units, and variables menus (Qt)
+  *  Add option to bypass dialog for functions in menu (Qt)
+  *  Add option, in context menu, to display text for tool buttons (Qt)
+  *  Open functions, units, and variables tool button menus using long-press
+     or right-click (in addition to arrow button), and add keyboard shortcuts (Qt)
+  *  Use keypad tool button menu as context menu and show keypad type in
+     title bar of keypad (Qt)
+  *  Auto-update number bases above programming keypad when entering simple
+     integers, even if calculate-as-you-type is deactivated (GTK)
+
+-------------------------------------------------------------------
 Thu Aug 24 13:45:36 UTC 2023 - pgajdos@suse.com
 
 - Version update to 4.8.0
