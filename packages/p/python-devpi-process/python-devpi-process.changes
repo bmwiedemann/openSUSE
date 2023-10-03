@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 26 19:22:07 UTC 2023 - Torsten Gruner <t.gruner@katodev.de>
+
+- update to version 1.0.0
+  * Exclude dependabot and pre-commit ci from release notes
+- version 0.3.1
+  * Add pyproject-fmt
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump deps and tools
+  * Bump pypa/gh-action-pypi-publish 1.8.6
+  * Add ruff
+- split package to prevent build dependency (multibuild)
+
+-------------------------------------------------------------------
 Tue May  9 22:56:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Initial packaging effort for devpi-process 0.3.0.

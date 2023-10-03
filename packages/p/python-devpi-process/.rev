@@ -7,4 +7,12 @@
     <comment>New package required for the update of python-tox.</comment>
     <requestid>1086173</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e0ad24cf6d4f57550b42736f8a14a92a</srcmd5>
+    <version>1.0.0</version>
+    <time>1696356927</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114346</requestid>
+  </revision>
 </revisionlist>

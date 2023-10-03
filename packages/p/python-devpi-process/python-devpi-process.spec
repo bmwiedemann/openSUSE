@@ -1,5 +1,5 @@
 #
-# spec file for package python-devpi-process
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -16,27 +16,43 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-devpi-process
-Version:        0.3.0
+%define skip_python39 1
+Name:           python-devpi-process%{psuffix}
+Version:        1.0.0
 Release:        0
 Summary:        Programmatic API to create and use a devpi server process
 License:        MIT
 URL:            https://github.com/tox-dev/devpi-process
-Source:         https://files.pythonhosted.org/packages/source/d/devpi_process/devpi_process-0.3.0.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/devpi_process/devpi_process-%{version}.tar.gz
+BuildRequires:  %{python_module hatch-vcs >= 0.3}
+BuildRequires:  %{python_module hatchling >= 1.18}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module typing-extensions >= 4.7.1 if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-devpi-client >= 6.0.2
-Requires:       python-devpi-server >= 6.7
-Suggests:       python-httpx >= 0.23.1
+Requires:       python-devpi-client >= 6.0.5
+Requires:       python-devpi-server >= 6.9.2
+Suggests:       python-httpx >= 0.24.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module devpi-client >= 6.0.2}
-BuildRequires:  %{python_module devpi-server >= 6.7}
-BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module pytest >= 7.2}
+%if %{with test}
+BuildRequires:  %{python_module covdefaults >= 2.3}
+BuildRequires:  %{python_module devpi-client >= 6.0.5}
+BuildRequires:  %{python_module devpi-server >= 6.8}
+BuildRequires:  %{python_module httpx >= 0.24.1}
+BuildRequires:  %{python_module pytest >= 7.4}
+BuildRequires:  %{python_module pytest-cov}
+%endif
 # /SECTION
 %python_subpackages
 
@@ -46,10 +62,10 @@ devpi server process.
 
 %prep
 %autosetup -p1 -n devpi_process-%{version}
-
-# Both of these issues are resolved in the upstream master
-sed -i -e '/^license_file =/s/ =/s =/' \
-    -e '/^name/aversion = %{version}' setup.cfg
+# Fix version check for pytest
+sed -i -e '/import devpi_process/a\ \ \ \ from importlib import metadata' tests/test_devpi_process.py
+sed -i "s/^.*assert devpi_process.__version__/    assert metadata.version('devpi_process')/" tests/test_devpi_process.py
+sed -i "s/from ._version import __version__/from ._version import version/" src/devpi_process/__init__.py
 
 %build
 %pyproject_wheel
@@ -59,12 +75,17 @@ sed -i -e '/^license_file =/s/ =/s =/' \
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%if %{with test}
 %pytest
+%python_expand rm -r -f %{buildroot}/usr
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE.txt
 %{python_sitelib}/devpi_process
 %{python_sitelib}/devpi_process-%{version}*-info
+%endif
 
 %changelog
