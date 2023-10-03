@@ -210,4 +210,41 @@
     <comment></comment>
     <requestid>1103427</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f04a1b3d6d128cb906e3ee6c26daf9de</srcmd5>
+    <version>2.15.2</version>
+    <time>1696356924</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.15.2:
+  * The ASDF Standard is at v1.6.0
+  * Add support for python 3.12 [#1641]
+
+- Update to 2.10.1
+- Add multibuild to avoid a build loop.
+- Update to version 2.7.2
+- Fix pytest collection error by importing from source dir
+- Update to version 2.7.1
+  * Fix bug preventing access to copied array data after
+  * Fix bug preventing diff of files containing
+  * Fix bug causing duplicate elements to appear when
+  * Improve validator performance by skipping unnecessary
+  * Fix bug with auto_inline option where inline blocks are
+    not converted to internal when they exceed the threshold.
+  * Fix misinterpretation of byte order of blocks stored in
+  * Improve read performance by skipping unnecessary
+  * Add option to asdf.open and fits_embed.AsdfInFits.open
+  * Fix bugs and code style found by adding F and W flake8
+  * Eliminate warnings in pytest plugin by using
+  * Prevent validation of empty tree when AsdfFile is
+  * All warnings now subclass asdf.exceptions.AsdfWarning.
+  * Improve warning message when falling back to an older
+    schema, and note that fallback behavior will be removed
+  * Stop traversing oneOf and anyOf combiners when filling
+  * Fix bug in version map caching that caused incompatible
+  * Fix bug that corrupted ndarrays when the underlying
+  * Fix bug that produced unreadable ASDF files when an
+    ndarray in the tree was both offset and broadcasted.
+  * Fix bug preventing validation of default values in</comment>
+    <requestid>1114796</requestid>
+  </revision>
 </revisionlist>

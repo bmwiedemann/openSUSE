@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  2 10:04:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15.2:
+  * The ASDF Standard is at v1.6.0
+  * Add support for python 3.12 [#1641]
+
+-------------------------------------------------------------------
 Fri Aug 11 03:06:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.15.1
@@ -157,7 +164,7 @@ Tue Apr 26 11:36:22 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Sun Mar 13 07:57:12 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
-- Update to 2.10.1 
+- Update to 2.10.1
   * Bugfix for circular build dependency for asdf.
   * Fix small bug with handling multiple schema uris per tag.
   * Replace asdf-standard submodule with pypi package. [#1079]
@@ -206,7 +213,7 @@ Mon Dec 13 18:43:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Thu Nov 11 23:33:42 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Add multibuild to avoid a build loop. 
+- Add multibuild to avoid a build loop.
 
 -------------------------------------------------------------------
 Mon Jul 19 16:39:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -241,7 +248,7 @@ Sat Apr 17 14:21:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Thu Feb 11 10:18:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
-- Update to version 2.7.2 
+- Update to version 2.7.2
   * Fix bug causing test collection failures under Python 3.9.
   * Fix bug when decompressing arrays with numpy 1.20.
   * Replace assert statements with raise at the behest
@@ -250,57 +257,57 @@ Thu Feb 11 10:18:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Dec  8 22:37:37 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- Fix pytest collection error by importing from source dir 
+- Fix pytest collection error by importing from source dir
 - Fix rpmlint shebang errors
 
 -------------------------------------------------------------------
 Mon Sep 14 18:11:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- Update to version 2.7.1 
-  * Fix bug preventing access to copied array data after 
+- Update to version 2.7.1
+  * Fix bug preventing access to copied array data after
     AsdfFile is closed. [#869]
 - Changelog for 2.7.0
-  * Fix bug preventing diff of files containing 
+  * Fix bug preventing diff of files containing
     ndarray-1.0.0 objects in simplified form. [#786]
-  * Fix bug causing duplicate elements to appear when 
+  * Fix bug causing duplicate elements to appear when
     calling copy.deepcopy on a TaggedList. [#788]
-  * Improve validator performance by skipping unnecessary 
+  * Improve validator performance by skipping unnecessary
     step of copying schema objects. [#784]
-  * Fix bug with auto_inline option where inline blocks are 
-    not converted to internal when they exceed the threshold. 
+  * Fix bug with auto_inline option where inline blocks are
+    not converted to internal when they exceed the threshold.
     [#802]
-  * Fix misinterpretation of byte order of blocks stored in 
+  * Fix misinterpretation of byte order of blocks stored in
     FITS files. [#810]
-  * Improve read performance by skipping unnecessary 
+  * Improve read performance by skipping unnecessary
     rebuild of tagged tree. [#787]
-  * Add option to asdf.open and fits_embed.AsdfInFits.open 
+  * Add option to asdf.open and fits_embed.AsdfInFits.open
     that disables validation on read. [#792]
-  * Fix bugs and code style found by adding F and W flake8 
+  * Fix bugs and code style found by adding F and W flake8
     checks. [#797]
-  * Eliminate warnings in pytest plugin by using 
+  * Eliminate warnings in pytest plugin by using
     from_parent when available. [#799]
-  * Prevent validation of empty tree when AsdfFile is 
+  * Prevent validation of empty tree when AsdfFile is
     initialized. [#794]
-  * All warnings now subclass asdf.exceptions.AsdfWarning. 
+  * All warnings now subclass asdf.exceptions.AsdfWarning.
     [#804]
-  * Improve warning message when falling back to an older 
-    schema, and note that fallback behavior will be removed 
+  * Improve warning message when falling back to an older
+    schema, and note that fallback behavior will be removed
     in 3.0. [#806]
   * Drop support for jsonschema 2.x. [#807]
-  * Stop traversing oneOf and anyOf combiners when filling 
+  * Stop traversing oneOf and anyOf combiners when filling
     or removing default values. [#811]
-  * Fix bug in version map caching that caused incompatible 
+  * Fix bug in version map caching that caused incompatible
     tags to be written under ASDF Standard 1.0.0. [#821]
-  * Fix bug that corrupted ndarrays when the underlying 
+  * Fix bug that corrupted ndarrays when the underlying
     block array was converted to C order on write. [#827]
-  * Fix bug that produced unreadable ASDF files when an 
-    ndarray in the tree was both offset and broadcasted. 
+  * Fix bug that produced unreadable ASDF files when an
+    ndarray in the tree was both offset and broadcasted.
     [#827]
-  * Fix bug preventing validation of default values in 
+  * Fix bug preventing validation of default values in
     schema.check_schema. [#785]
-  *  Add option to disable validation of schema default 
+  *  Add option to disable validation of schema default
     values in the pytest plugin. [#831]
-  * Prevent errors when extension metadata contains 
+  * Prevent errors when extension metadata contains
     additional properties. [#832]
 
 -------------------------------------------------------------------
