@@ -17,16 +17,14 @@
 
 
 Name:           dLeyna
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Services and D-Bus APIs to access UPnP and DLNA media devices in a network
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/World/dLeyna
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 # PATCH-FIX-UPSTREAM dLeyna-no-python-shebang.patch -- Do not carry /usr/bin/python shebang in python module files
 Patch0:         dLeyna-no-python-shebang.patch
-# PATCH-FIX-UPSTREAM 61d24fdc.patch dimstar@opensuse.org -- Fix typos for Meson 1.2 compatibility
-Patch1:         https://gitlab.gnome.org/World/dLeyna/-/commit/61d24fdc.patch
 
 BuildRequires:  docutils
 BuildRequires:  meson >= 0.54.0
