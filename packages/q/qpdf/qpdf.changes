@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  2 08:48:05 UTC 2023 - pgajdos@suse.com
+
+- version update to 11.6.1
+  * Bug fixes:
+    - Fix a logic error introduced in 11.6.0 in the fix to copyForeignObject.
+      The bug could result in some pages not being copied.
+
+-------------------------------------------------------------------
 Mon Sep  4 13:06:10 UTC 2023 - pgajdos@suse.com
 
 - version update to 11.6.0
