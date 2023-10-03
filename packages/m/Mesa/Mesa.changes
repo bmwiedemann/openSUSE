@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 25 09:46:58 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to Mesa 23.2.0-rc4
+  --> https://lists.freedesktop.org/archives/mesa-announce/2023-September/000731.html
+- supersedes U_llvmpipe-only-include-old-Transform-includes-when-ne.patch
+- disabled u_fix-build-on-ppc64le.patch (no longer needed?)
+- adjusted n_drirc-disable-rgb10-for-chromium-on-amd.patch
+
+-------------------------------------------------------------------
 Thu Sep 21 15:13:11 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Backport upstream patches for compatibility with LLVM 17:

@@ -1,8 +1,8 @@
-Index: mesa-23.0.0/src/util/00-mesa-defaults.conf
+Index: mesa-23.2.0-rc4/src/util/00-mesa-defaults.conf
 ===================================================================
---- mesa-23.0.0.orig/src/util/00-mesa-defaults.conf
-+++ mesa-23.0.0/src/util/00-mesa-defaults.conf
-@@ -892,6 +892,14 @@ TODO: document the other workarounds.
+--- mesa-23.2.0-rc4.orig/src/util/00-mesa-defaults.conf
++++ mesa-23.2.0-rc4/src/util/00-mesa-defaults.conf
+@@ -956,6 +956,14 @@ TODO: document the other workarounds.
          <application name="Rocket League" executable="RocketLeague">
              <option name="radeonsi_zerovram" value="true" />
          </application>
@@ -16,4 +16,4 @@ Index: mesa-23.0.0/src/util/00-mesa-defaults.conf
 +        </application>
          <application name="Gfx Bench" executable="gfxbench_gl">
              <!-- Helps offscreen tests -->
-             <option name="mesa_glthread" value="true"/>
+             <option name="mesa_glthread_app_profile" value="1"/>

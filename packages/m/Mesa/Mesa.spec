@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 23.1.8
+%define _version 23.2.0-rc4
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -123,7 +123,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        23.1.8
+Version:        23.2.0
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -139,7 +139,6 @@ Source6:        Mesa-rpmlintrc
 Source7:        Mesa.keyring
 Patch2:         n_add-Mesa-headers-again.patch
 # Patches for LLVM 17, should all be in 23.2.
-Patch3:         U_llvmpipe-only-include-old-Transform-includes-when-ne.patch
 Patch4:         U_clover-llvm-move-to-modern-pass-manager.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
@@ -773,7 +772,6 @@ programs against the XA state tracker.
 rm -rf docs/README.{VMS,WIN32,OS2}
 
 %patch2 -p1
-%patch3 -p1
 %patch4 -p1
 # no longer needed since gstreamer-plugins-vaapi 1.18.4
 %if 0%{?suse_version} < 1550
@@ -781,7 +779,7 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %endif
 %patch58 -p1
 %patch100 -p1
-%patch200 -p1
+#%patch200 -p1
 %patch400 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
