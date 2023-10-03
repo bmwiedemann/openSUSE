@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Oct  2 05:31:11 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.20.2:
+  * Bugfixes
+    - Do not use github action path for running ansible lint
+      (#3798) @ReenigneArcher
+    - Correct listing of autofix rules in documentation (#3797)
+      @ssbarnea
+    - Make the autofix rule list dynamic in documentation (#3785)
+      @shatakshiiii
+    - Fix documentation links to autofix page (#3796) @ssbarnea
+    - Bump test dependencies (#3795) @ssbarnea
+    - Correct documentation regarding CLI argument precedence
+      (#3792) @ssbarnea
+    - Document autofix ability for rules that supports it (#3791)
+      @ssbarnea
+    - Accept underline prefix when checking var-naming (#3789)
+      @ssbarnea
+    - Correct regression with use of --fix (#3783) @ssbarnea
+
+-------------------------------------------------------------------
+Fri Sep 29 08:48:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.20.1:
+  * Bugfixes
+    - Fix detection of play roles vars missing prefix (#3765)
+      @cavcrosby
+    - Prune reported errors after autofix (#3774) @cidrblock
+    - `--fix` will now default to `all` (#3777) @ajinkyau
+    - Avoid false error caused by TypeError with jinja rule (#3773)
+      @ssbarnea
+    - Sanity Rule Ignore Additions and Updates (#3766) @alisonlhart
+    - Update rulebook schema (name is now required) (#3776)
+      @ssbarnea
+    - Expose rules that have autofix capability in docs (#3770)
+      @shatakshiiii
+    - List all the fixable rules in CLI via `--list-rules` (#3737)
+      @shatakshiiii
+    - Include level in SARIF results (#3758) @ssbarnea
+    - Meta runtime supported version update (#3755) @alisonlhart
+
+-------------------------------------------------------------------
 Wed Sep 20 05:30:20 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.20.0:
