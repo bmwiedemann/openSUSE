@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 29 03:06:17 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.047
+   see /usr/share/doc/packages/perl-Module-Build-Tiny/Changes
+
+  0.047     2023-09-28 17:53:41+02:00 Europe/Brussels
+            - Avoid using empty regex for backwards compatability
+
+-------------------------------------------------------------------
 Tue Jun 13 03:06:40 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.046
