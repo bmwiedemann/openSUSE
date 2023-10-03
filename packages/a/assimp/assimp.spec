@@ -18,7 +18,7 @@
 
 %define sover 5
 Name:           assimp
-Version:        5.2.5
+Version:        5.3.1
 Release:        0
 Summary:        Library to load and process 3D scenes from various data formats
 License:        BSD-3-Clause AND MIT
@@ -69,11 +69,9 @@ engine-specific format for easy and fast every-day-loading.
 %prep
 %autosetup -p1
 
-# Breaks the build with gcc12 (gh#assimp/assimp#4433)
-sed -i '/Werror/d' code/CMakeLists.txt
-
 %build
 %cmake \
+    -DASSIMP_BUILD_ZLIB=OFF \
     -DASSIMP_WARNINGS_AS_ERRORS=OFF \
     -DASSIMP_BUILD_ASSIMP_TOOLS=ON
 

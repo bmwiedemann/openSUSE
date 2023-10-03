@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 29 13:23:52 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 5.3.1
+  * Fixes CVE-2022-38528 (boo#1203187)
+  * Mainly bug fixes
+  * Fix: Use ASCII treeview in assimp-cmd.
+  * Fix: Fix head overflow in MD5-parser.
+  * Fix: C++ std::tuple constexpr initial list on old compiler
+  * Make FBX parser resilient to missing data streams
+  * Fix incorrect documentation of defaults
+  * Fixed issue with clang complaining about sprintf and vsprintf being depreciated
+  * Fix build error: ‘temp’ may be used uninitialized in this function
+  * Fix: Use correct epsilon
+  * Fix: Add missing handling for double export in json
+  * Full change log https://github.com/assimp/assimp/releases/tag/v5.3.0
+
+-------------------------------------------------------------------
 Wed Apr  5 11:29:32 UTC 2023 - Predrag Ivanović <predivan@mts.rs>
 
 - Enable build of CLI tools.
