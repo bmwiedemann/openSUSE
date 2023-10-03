@@ -18,7 +18,7 @@
 
 %define samename btrfs-extent-same
 Name:           duperemove
-Version:        0.12
+Version:        0.13
 Release:        0
 Summary:        Software to find duplicate extents in files and remove them
 License:        GPL-2.0-only
