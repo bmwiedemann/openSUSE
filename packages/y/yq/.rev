@@ -100,4 +100,12 @@ IMO the Conflicts tag is unavoidable, hence adding.
     <comment></comment>
     <requestid>1113662</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9d1a5c3042ceb8090cdfbf8f7baa2f96</srcmd5>
+    <version>4.35.2</version>
+    <time>1696356928</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.35.2 (bsc#1215808):</comment>
+    <requestid>1114399</requestid>
+  </revision>
 </revisionlist>
