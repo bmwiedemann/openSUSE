@@ -804,6 +804,9 @@ Prefer: spamassassin:curl
 # have choice for pkgconfig(catch2): Catch2-2-devel Catch2-devel
 Prefer: -Catch2-2-devel
 
+# have choice for (ghostscript-fonts-std or urw-base35-fonts) needed by emacs-x11: ghostscript-fonts-std urw-base35-fonts
+Prefer: -urw-base35-fonts
+
 # Python3 exists in multiple versions - we currently favor 3.11 (our default):
 Prefer: -python39
 Prefer: -python39-hotdoc
