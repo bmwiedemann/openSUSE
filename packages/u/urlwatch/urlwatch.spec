@@ -30,7 +30,7 @@ Requires:       python3-PyYAML
 Requires:       python3-appdirs
 Requires:       python3-cssselect
 Requires:       python3-lxml
-Requires:       python3-minidb
+Requires:       python3-minidb >= 2.0.6
 Requires:       python3-requests
 Recommends:     python3-keyring
 BuildArch:      noarch
