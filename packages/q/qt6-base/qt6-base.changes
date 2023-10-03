@@ -55,6 +55,8 @@ Wed May 24 07:45:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
   * https://www.qt.io/blog/qt-6.5.1-released
   * Includes fix for a buffer overflow in QTextLayout (boo#1211798,
     CVE-2023-32763).
+  * Includes fix for incorrect parsing of strict-transport-security
+    (HSTS) header (boo#1211797, CVE-2023-32762)
 - Drop patches, merged upstream:
   * 0001-QApplication-Fix-DEPRECATED_VERSION-for-setActiveWin.patch
   * 0001-QVariant-Fix-support-for-metatypes-created-by-Qt-6.5.patch
