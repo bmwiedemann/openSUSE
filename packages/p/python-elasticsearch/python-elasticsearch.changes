@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  2 10:27:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.10.0:
+  * Add the Query rules APIs
+  * Add the Synonyms APIs
+
+-------------------------------------------------------------------
 Fri Sep  1 16:36:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 8.9.0:

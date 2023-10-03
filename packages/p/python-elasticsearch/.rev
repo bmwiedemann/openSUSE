@@ -151,4 +151,14 @@
 - Remove upstreamed python-elasticsearch-no-mock.patch.</comment>
     <requestid>1109633</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1eb27dfc0431b62ec8c6c206bd006243</srcmd5>
+    <version>8.10.0</version>
+    <time>1696356919</time>
+    <user>anag+factory</user>
+    <comment>- update to 8.10.0:
+  * Add the Query rules APIs
+  * Add the Synonyms APIs</comment>
+    <requestid>1114802</requestid>
+  </revision>
 </revisionlist>
