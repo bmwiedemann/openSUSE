@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Warnings
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define cpan_name Test-Warnings
 Name:           perl-Test-Warnings
-Version:        0.031
+Version:        0.32.0
 Release:        0
-Summary:        Test for warnings and the lack of them
+%define cpan_version 0.032
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Test for warnings and the lack of them
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -31,6 +32,8 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.94
 BuildRequires:  perl(parent)
 Requires:       perl(parent)
+Provides:       perl(Test::Warnings) = 0.32.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -60,7 +63,7 @@ It can also be used as a replacement for Test::Warn, if you wish to test
 the content of expected warnings; read on to find out how.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

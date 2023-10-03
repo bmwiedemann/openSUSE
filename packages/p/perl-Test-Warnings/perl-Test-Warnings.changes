@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct  1 03:06:35 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.032
+   see /usr/share/doc/packages/perl-Test-Warnings/Changes
+
+  0.032     2023-09-30 23:36:50Z
+            - new config variable, $ENV{PERL_TEST_WARNINGS_ONLY_REPORT_WARNINGS},
+            for temporarily turning failures into reports
+
+-------------------------------------------------------------------
 Wed Jul 14 03:06:57 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.031
