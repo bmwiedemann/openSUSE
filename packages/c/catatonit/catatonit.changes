@@ -1,10 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct  2 05:48:52 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to catatonit v0.2.0.
+  * Change license to GPL-2.0-or-later.
+- Remove upstreamed patches:
+  - 99bb9048f.patch
+
+-------------------------------------------------------------------
 Mon Apr 11 09:57:33 UTC 2022 - Richard Brown <rbrown@suse.com>
 
 - Update to catatont v0.1.7
 - This release adds the ability for catatonit to be used as the only
 process in a pause container, by passing the -P flag (in this mode no
-subprocess is spawned and thus no signal forwarding is done). 
+subprocess is spawned and thus no signal forwarding is done).
 
 -------------------------------------------------------------------
 Thu Nov 25 14:28:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
