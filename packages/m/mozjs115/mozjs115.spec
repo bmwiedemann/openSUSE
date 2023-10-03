@@ -41,7 +41,7 @@ BuildArch:      i686
 %global big_endian 1
 %endif
 Name:           mozjs%{major}
-Version:        115.2.1
+Version:        115.3.1
 Release:        1%{?dist}
 Summary:        SpiderMonkey JavaScript library
 License:        MPL-2.0

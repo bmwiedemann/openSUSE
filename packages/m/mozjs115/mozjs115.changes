@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct  1 11:40:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 115.3.1:
+  + Security fix: CVE-2023-5217: Heap buffer overflow in libvpx.
+- Changes from version 115.3.0:
+  + Various security fixes and other quality improvements.
+  + CVE-2023-5168: Out-of-bounds write in FilterNodeD2D1
+  + CVE-2023-5169: Out-of-bounds write in PathOps
+  + CVE-2023-5171: Use-after-free in Ion Compiler
+  + CVE-2023-5174: Double-free in process spawning on Windows
+  + CVE-2023-5176: Memory safety bugs fixed in Firefox 118, Firefox
+    ESR 115.3, and Thunderbird 115.3
+
+-------------------------------------------------------------------
 Mon Sep 25 14:52:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 115.2.1:

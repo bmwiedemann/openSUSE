@@ -23,4 +23,12 @@
     <comment>New stable release (forwarded request 1113501 from iznogood)</comment>
     <requestid>1113609</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>295447515c12de4802db51c3c91da29e</srcmd5>
+    <version>115.3.1</version>
+    <time>1696356904</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114710</requestid>
+  </revision>
 </revisionlist>
