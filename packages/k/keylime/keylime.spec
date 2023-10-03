@@ -17,7 +17,6 @@
 
 
 %global srcname keylime
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 # Consolidate _distconfdir and _sysconfdir
 %if 0%{?_distconfdir:1}
@@ -27,7 +26,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           keylime
-Version:        7.5.0
+Version:        7.6.0
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT AND BSD-3-Clause
@@ -50,7 +49,6 @@ BuildRequires:  sysuser-tools
 Requires:       libtss2-tcti-device0
 Requires:       libtss2-tcti-tabrmd0
 Requires:       procps
-Requires:       python3-M2Crypto
 Requires:       python3-PyYAML
 Requires:       python3-SQLAlchemy
 Requires:       python3-alembic
@@ -265,7 +263,8 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_alternative %{_bindir}/%{srcname}_upgrade_config
 %python_alternative %{_bindir}/%{srcname}_userdata_encrypt
 %python_alternative %{_bindir}/%{srcname}_verifier
-%{python_sitelib}/*
+%{python_sitelib}/keylime
+%{python_sitelib}/keylime-%{version}*-info
 
 %files -n %{srcname}-config
 %dir %attr(0700,keylime,tss) %{_distconfdir}/%{srcname}

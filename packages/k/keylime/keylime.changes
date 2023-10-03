@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct 02 07:46:01 UTC 2023 - aplanas@suse.com
+
+- Update to version v7.6.0:
+  * Monthly release (7.6.0)
+  * test-requirements: remove types-atomicwrites
+  * Fixed an inappropriate test expression to remove a logical short circuit
+  * remove prov_db_filename from config
+  * Fix for key parse error in tpm2_objects
+  * Fix mapping.json path in the comments
+  * ima: Emit a warning when a file signature could not be parsed
+  * Initial PR to add support for IDevID and IAK
+  * Implement automatic agent API version bump
+  * tests: avoid fail when epel-release is installed
+
+-------------------------------------------------------------------
+Fri Sep 29 15:22:13 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- M2Crypto is not used anymore.
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
 Thu Aug 24 06:55:14 UTC 2023 - aplanas@suse.com
 
 - Update to version v7.5.0 (CVE-2023-38201, bsc#1213314):
