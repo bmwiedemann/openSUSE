@@ -28,6 +28,8 @@ Source:         https://files.pythonhosted.org/packages/source/b/blockdiag/block
 # PATCH-FIX-UPSTREAM python-blockdiag-nose-to-pytest.patch gh#blockdiag/blockdiag#131 pgajdos@suse.com
 # Remove the last silly dependency on nose
 Patch0:         python-blockdiag-nose-to-pytest.patch
+# PATCH-FIX-UPSTREAM https://github.com/blockdiag/blockdiag/pull/179 Add support for Pillow 10
+Patch1:         pillow10.patch
 BuildRequires:  %{python_module Pillow >= 3}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module funcparserlib >= 1.0.0~a0}
