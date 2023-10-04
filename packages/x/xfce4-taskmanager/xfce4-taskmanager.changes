@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Oct  2 18:03:01 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.5.6
+  * Update copyright year
+  * Rounded legend icons
+  * Reopen process window maximized when closed maximized
+  * Properly finalize global objects in main
+  * Add missing include
+  * Fix more memory leaks
+  * Fix memory leak
+  * Fix CSS related deprecation warnings
+  * Ignore GtkStatusIcon related deprecations
+  * Make libx11 optional, guard x11 code paths
+  * Change type so that memory values are correct (Fixes #65)
+  * settings-dialog: Fix untranslated label
+  * Add icons at missing sizes, clean up SVG metadata
+  * Add minimal support for Wayland
+  * Fix graph drop off on the right side
+  * Change graph peak variable to double
+  * Remove timeout before exiting main loop
+  * build: Add GLib requirement
+  * Do not treat missing swap as error on OpenBSD and NetBSD
+  * Fix process filter crash caused by the use of an uninitialized
+    variable
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Dec 22 16:33:11 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.5.5

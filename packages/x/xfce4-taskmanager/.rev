@@ -352,4 +352,12 @@
     <comment>Update to Xfce 4.18 (forwarded request 1045033 from mauriziogalli)</comment>
     <requestid>1045212</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d51897c1c2228a92b69070e9b7a8bcf6</srcmd5>
+    <version>1.5.6</version>
+    <time>1696451499</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115000</requestid>
+  </revision>
 </revisionlist>
