@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Oct  3 07:10:17 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-tests-hookimpls.patch to fix tests with latest pytest in
+  Factory.
+
+-------------------------------------------------------------------
+Tue Oct  3 06:39:58 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to v20.24.5:
+  - Fix brew cannot copy by @gaborbernat in #2640
+  - Test with 3.12 rc by @gaborbernat in #2641
+  - Upgrade setuptools by @gaborbernat in #2642
+  - GitHub Actions: Add PyPy 3.10 to testing by @cclauss in #2638
+- 20.24.4:
+  - Fix typo found by codespell by @DimitriPapadopoulos in #2624
+  - Updating extend.rst typo by @sagardesai1 in #2626
+- 20.24.3:
+  - Update compatibility docs by @jugmac00 in #2618
+  - fix ResourceWarning on process exit (#2472) by @sigma67 in #2617
+  - added scripts in tasks directory to sdist on build (#2610) by @sigma67 in #2620
+  - Bump wheel by @gaborbernat in #2622
+- 20.24.2:
+  - Bump pip and wheel by @gaborbernat in #2614
+- 20.24.1:
+  - Upgrade pip by @arielkirkwood in #2611
+- 20.24.0:
+  - Fix the CI by @gaborbernat in #2593
+  - Quickstart guide by @AlvesJorge in #2599
+  - Updated CLI documentation with config file name by @nathanczh in #2602
+  - Exclude dependabot and pre-commit ci from release notes by @gaborbernat in #2603
+  - Export VIRTUAL_ENV_PROMPT in activation scripts (#2194) by @jimporter in #2606
+  - Upgrade setuptools by @gaborbernat in #2607
+
+-------------------------------------------------------------------
 Fri Jun 30 15:40:31 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to v20.23.1
