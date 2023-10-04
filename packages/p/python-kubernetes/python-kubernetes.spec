@@ -38,7 +38,7 @@ BuildRequires:  %{python_module requests-oauthlib}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools >= 21.0.0}
 BuildRequires:  %{python_module six >= 1.9.0}
-BuildRequires:  %{python_module urllib3 >= 1.24.2}
+BuildRequires:  %{python_module urllib3 >= 1.24.2 with %python-urllib3 < 2}
 BuildRequires:  %{python_module websocket-client >= 0.32.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,7 +51,7 @@ Requires:       python-requests
 Requires:       python-requests-oauthlib
 Requires:       python-setuptools >= 21.0.0
 Requires:       python-six >= 1.9.0
-Requires:       python-urllib3 >= 1.24.2
+Requires:       python-urllib3 < 2
 Requires:       python-websocket-client >= 0.32.0
 BuildArch:      noarch
 %python_subpackages
