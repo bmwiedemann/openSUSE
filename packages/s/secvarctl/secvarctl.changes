@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 02 13:56:10 UTC 2023 - msuchanek@suse.com
+
+- Update to version 1.0.0~rc1+git0.a180a56:
+  * guest/util: Add crypto id to signature list
+  * secvarctl: guest secure boot variable backend
+  * secvarctl: reorganised host secure boot variable backend
+- Fix installation: secvarctl-install.patch
+
+-------------------------------------------------------------------
 Tue Nov 22 20:10:25 UTC 2022 - msuchanek@suse.com
 
 - Update to version 0.3+git13.76db7a7:
