@@ -252,4 +252,41 @@
     <comment>  * [bsc#1198494]</comment>
     <requestid>1112968</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b255abaa9b8cdb93814fba22b057666e</srcmd5>
+    <version>2.6.4</version>
+    <time>1696451490</time>
+    <user>anag+factory</user>
+    <comment>- version update to 2.6.4
+  * 2.6.4 2023-09-29 [bsc#1215859]
+    - Security: Fixed possible remote code execution vulnerability if composer.phar is publicly accessible,
+      executable as PHP, and register_argc_argv is enabled in php.ini (GHSA-jm6m-4632-36hf / CVE-2023-43655)
+    - Fixed json output of abandoned packages in audit command (#11647)
+    - Performance improvement in pool optimization step (#11638)
+    - Performance improvement in show -a &lt;packagename&gt; (#11659)
+  * 2.6.3 2023-09-15
+    - Added audit.abandoned config setting. Can be set to ignore, report (current default) or fail (future
+      default in 2.7) to make the audit command report abandoned packages as a security problem (#11639)
+    - Added a warning when duplicates files autoload rules are detected (#11109)
+    - Fixed unhandled promise rejection regression (#11620)
+    - Fixed loading of root aliases on path repo packages when doing partial updates (#11632)
+    - Fixed archive command not producing the correct output if the temp dir is a symlink (#11636)
+    - Fixed some replaced packages being incorrectly missing when unlocked in a partial update (#11629)
+  * 2.6.2 2023-09-03
+    - Reverted &quot;Fixed binary proxies causing scripts inspecting $_SERVER['SCRIPT_NAME'] to detect them,
+      they are now more transparent (#11562)&quot; which caused a regression (#11617)
+    - Fixed non-zero exit code on failed audits to only apply to install --audit runs and not implicit
+      audits with require, create-project or update commands (#11616)
+    - Fixed create-project infinite post-install loop in some circumstances (#11613)
+  * 2.6.1 2023-09-01
+    - Reverted &quot;Fixed executability of non-php binaries which are not marked executable (#11557)&quot; which
+      caused a regression (#11612)
+  * 2.6.0 2023-09-01
+    - Added audit.ignore config setting to ignore security advisories by id or CVE id (#11556, #11605)
+    - Added rm alias to the remove command (#11367)
+    - Added runtime platform check to verify the php-64bit requirement is met (#11334)
+    - Added platform package detection for lib-pq-libpq and lib-rdkafka-librdkafka (#11418)
+    - Added --dry-run to dump-autoload command to allow running --strict-psr checks without modifying (forwarded request 1114790 from pgajdos)</comment>
+    <requestid>1114950</requestid>
+  </revision>
 </revisionlist>
