@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  2 17:10:58 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 9.8.0 (jsc#PED-3279)
+  - bsc#1215708
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-8-0-2023-10-02
+
+-------------------------------------------------------------------
 Wed Sep  6 20:01:14 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 9.7.0 (jsc#PED-3279)

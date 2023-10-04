@@ -4451,4 +4451,15 @@ driver is disabled for ALP. Fix it.
 - spec: Disable ESX hypervisor driver in ALP-based products</comment>
     <requestid>1110332</requestid>
   </revision>
+  <revision rev="385" vrev="1">
+    <srcmd5>5f8c88f7c9059ee718bca611013a94f0</srcmd5>
+    <version>9.8.0</version>
+    <time>1696451426</time>
+    <user>anag+factory</user>
+    <comment>- Update to libvirt 9.8.0 (jsc#PED-3279)
+  - bsc#1215708
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-8-0-2023-10-02</comment>
+    <requestid>1114875</requestid>
+  </revision>
 </revisionlist>

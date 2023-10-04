@@ -126,7 +126,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        9.7.0
+Version:        9.8.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -138,6 +138,7 @@ Requires:       %{name}-daemon-config-nwfilter = %{version}-%{release}
 Requires:       %{name}-daemon-driver-libxl = %{version}-%{release}
 %endif
 %if %{with_qemu}
+Requires:       %{name}-client-qemu = %{version}-%{release}
 Requires:       %{name}-daemon-driver-qemu = %{version}-%{release}
 %endif
 %if %{with_vbox}
@@ -205,6 +206,7 @@ BuildRequires:  libapparmor-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  ebtables
 BuildRequires:  iptables
+BuildRequires:  libnbd-devel
 BuildRequires:  polkit >= 0.112
 # For mount/umount in FS driver
 BuildRequires:  util-linux
@@ -599,6 +601,9 @@ Requires:       qemu-uefi-aarch64
 %if %{with_numad}
 Suggests:       numad
 %endif
+Recommends:     nbdkit
+Recommends:     nbdkit-curl-plugin
+Recommends:     nbdkit-ssh-plugin
 
 %description daemon-driver-qemu
 The qemu driver plugin for the libvirtd daemon, providing
@@ -811,8 +816,10 @@ libvirt plugin for NSS for translating domain names into IP addresses.
 %build
 %if %{with_qemu}
     %define arg_qemu -Ddriver_qemu=enabled
+    %define arg_libnbd -Dlibnbd=enabled
 %else
     %define arg_qemu -Ddriver_qemu=disabled
+    %define arg_libnbd -Dlibnbd=disabled
 %endif
 %if %{with_openvz}
     %define arg_openvz -Ddriver_openvz=enabled
@@ -1018,6 +1025,7 @@ libvirt plugin for NSS for translating domain names into IP addresses.
            -Dyajl=enabled \
            %{?arg_sanlock} \
            -Dlibpcap=enabled \
+           %{?arg_libnbd} \
            -Dlibnl=enabled \
            -Daudit=enabled \
            -Ddtrace=enabled \
