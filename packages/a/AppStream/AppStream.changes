@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  3 05:30:07 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Enable vala support when building in SLE-15 SP6
+- Fix condition in files section for the case where vala support
+  is disabled, where some files are being generated but were not
+  included
+
+-------------------------------------------------------------------
 Sat Aug 26 13:12:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.16.3:

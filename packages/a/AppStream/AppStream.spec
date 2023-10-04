@@ -19,7 +19,7 @@
 %define libappstream_sover 4
 %define libAppStreamQt_sover 2
 %define libappstream_compose_sover 0
-%if 0%{?sle_version} >= 150300 && 0%{?is_opensuse} || 0%{?suse_version} > 1500
+%if 0%{?sle_version} >= 150300 && 0%{?is_opensuse} || 0%{?sle_version} >= 150600 || 0%{?suse_version} > 1500
 %bcond_without vala
 %endif
 Name:           AppStream
@@ -246,9 +246,9 @@ rm -r %{buildroot}%{_datadir}/installed-tests
 %dir %{_datadir}/vala/vapi/
 %{_datadir}/vala/vapi/appstream.deps
 %{_datadir}/vala/vapi/appstream.vapi
+%endif
 %{_datadir}/doc/appstream
 %{_mandir}/man1/appstreamcli-compose*.1.gz
-%endif
 
 %files -n typelib-1_0-AppStream-1.0
 %{_libdir}/girepository-1.0/AppStream-1.0.typelib
