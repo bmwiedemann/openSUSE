@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-unikey
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Unikey engine support for Fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
