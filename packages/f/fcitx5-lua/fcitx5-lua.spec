@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-lua
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-lua
-Version:        5.0.10
+Version:        5.0.11
 Release:        0
 Summary:        Lua support for fcitx
 License:        LGPL-2.1-or-later
@@ -27,6 +27,7 @@ BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fcitx5-devel
 BuildRequires:  gcc-c++
+Supplements:    fcitx5
 %if 0%{?suse_version} >= 1550
 BuildRequires:  lua54-devel
 %else
@@ -35,7 +36,6 @@ BuildRequires:  lua53-devel
 %if 0%{?suse_version} <= 1520
 BuildRequires:  appstream-glib-devel
 %endif
-Supplements:    fcitx5
 
 %description
 Lua support for fcitx
