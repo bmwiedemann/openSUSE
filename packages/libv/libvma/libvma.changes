@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct  2 08:10:03 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v9.8.40
+  - RM #3593939 DPCP dependency
+  - RM #3591039 Wrong lwip seqno wrap around condition
+  - RM #3591039 Type overflow during trimming TCP seg
+  - RM #3591039 Ref count for mem_buf chains
+  - RM #3591039 GRO retransmitted TCP stream
+  - RM #3591039 Incorrect pbuf chain split
+  - RM #3604175 Fixing stuck empty rx ring cleanup
+  - RM #3525812 Socketxtreme buffer reclaim leak
+  - RM #3420360 Support for ConnectX-7
+  - RM #3373882 Fix compilation issue for gcc 13.0.1
+  - RM #3321730 Update the copyright statement to 2023
+  - RM #3249310 Support only systemctl for vma service setup/removal
+  - RM #321712 Prevent failure of debian postinst script
+- Drop patch fixed upstream:
+  - issue-3373882-Fix-compilation-issue-for-gcc-13.0.1.patch
+
+-------------------------------------------------------------------
 Wed Mar 29 08:41:11 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add issue-3373882-Fix-compilation-issue-for-gcc-13.0.1.patch for GCC13 support
