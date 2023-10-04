@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed Oct  4 04:32:53 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Drop Requires: golang-packaging. The recommended Go toolchain
+    dependency expression is BuildRequires: golang(API) >= 1.x or
+    optionally the metapackage BuildRequires: go
+  * Update to BuildRequires: golang(API) >= 1.20 matching go.mod
+
+-------------------------------------------------------------------
+Tue Oct 03 11:55:42 UTC 2023 - aplanas@suse.com
+
+- Initial package version 0.3.0+git20230728.955f78d:
+  * cassini- 9312 removed docker from TenantCLI (#88) (#89)
+  * set MarkFlagRequired for update_tenant_settings (#86)
+  * Add compiler flags recommended by SDLE (#85)
+  * Add compiler flags recommended by SDLE (#84)
+  * Update go mod file (#83)
+  * Update policy name error message (#82)
+  * added copyright message (#81)
+  * Add validations for parameters of each command (#80)
+  * Update go version to 1.20.4 (#74)
+  * Fix issue with config file unavailability (#76)
