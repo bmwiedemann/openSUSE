@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  3 07:57:32 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.1
+  * Allow compose key to be used for table/pinyin
+  * Fix exact matching mode for table
+  * fix resolving some scel file
+  * improve the case that cloud pinyin candidate position
+    is the first one. 
+
+-------------------------------------------------------------------
 Sat Sep 30 05:08:53 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - fix build on leap, gcc7 doesn't have charconv

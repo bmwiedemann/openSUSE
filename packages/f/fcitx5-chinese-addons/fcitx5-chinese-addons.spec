@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-chinese-addons
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Pinyin and Table IM support for fcitx5
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -43,12 +43,6 @@ BuildRequires:  libqt5-qtwebengine-devel
 BuildRequires:  opencc-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc8
-BuildRequires:  gcc8-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 Supplements:    fcitx5
 Conflicts:      fcitx <= 4.2.9.8
 Provides:       fcitx-cloudpinyin = %{version}
@@ -79,6 +73,12 @@ Obsoletes:      fcitx-table-cn-wanfeng < 4.2.9.6
 Obsoletes:      fcitx-table-cn-wubi < 4.2.9.6
 Obsoletes:      fcitx-table-cn-wubi-pinyin < 4.2.9.6
 Obsoletes:      fcitx-table-cn-ziran < 4.2.9.6
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc8
+BuildRequires:  gcc8-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 %if 0%{?suse_version} <= 1520
 BuildRequires:  appstream-glib-devel
 %endif
