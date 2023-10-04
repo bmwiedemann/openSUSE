@@ -42,8 +42,8 @@
 # % define build_static_devel 1
 
 %global pname openmpi
-%global vers 4.1.5
-%define _vers 4_1_5
+%global vers 4.1.6
+%define _vers 4_1_6
 %define m_f_ver 4
 %bcond_with ringdisabled
 
@@ -124,7 +124,7 @@ ExclusiveArch:  do_not_build
 %{bcond_with hwloc}
 %endif
 
-%define git_ver .0.42b829b3b319
+%define git_ver .0.439b23db6288
 
 #############################################################################
 #

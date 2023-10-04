@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct  2 07:35:01 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 4.1.6:
+  - Update embedded PMIx to 3.2.5.
+  - Fix issue with buffered sends and MTL-based interfaces (Libfabric,
+    PSM, Portals).
+  - Add missing MPI_F_STATUS_SIZE to mpi.h.
+  - Update Fortran mpi module configure check to be more correct.
+  - Update to properly handle PMIx v>=4.2.3.
+  - Fix minor issues and add some minor performance optimizations with
+    OFI support.
+  - Support the "striping_factor" and "striping_unit" MPI_Info names
+    recomended by the MPI standard for parallel IO.
+  - Fixed some minor issues with UCX support.
+  - Minor optimization for 0-byte MPI_Alltoallw (i.e., make it a no-op).
+
+-------------------------------------------------------------------
 Mon Aug  7 17:02:04 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop support for TrueScale (bsc#1212146)
