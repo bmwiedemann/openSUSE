@@ -17,7 +17,7 @@
 
 
 Name:           irssi
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        Modular IRC Client
 License:        GPL-2.0-or-later
@@ -29,7 +29,6 @@ Source2:        irssi.png
 Source3:        https://github.com/irssi/irssi/releases/download/%{version}/irssi-%{version}.tar.xz.asc
 # https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x7EE65E3082A5FB06AC7C368D00CCB587DDBEF0E1
 Source4:        %{name}.keyring
-Patch0:         https://github.com/irssi/irssi/releases/download/%{version}/perl-ntype.patch
 BuildRequires:  glib2-devel
 BuildRequires:  meson
 BuildRequires:  ncurses-devel
@@ -73,7 +72,6 @@ compile plugins for the irssi package.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %meson \
