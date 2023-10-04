@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Mon Oct 02 17:22:11 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.22:
+  * update CHANGELOG.md
+  * move back 0.0.22 sugarloaf
+  * use 0.0.22-1 for sugarloaf
+  * try to find glyph from font vec
+  * update commands
+  * move sugarloaf fontes to test-fonts folder
+  * update lockfile
+  * prepare 0.0.22
+  * fix wasm builds
+  * format code and fix wasm build
+  * update CHANGELOG regarding support to extra fonts
+  * implement extra fonts
+  * use Ms jhenghei
+  * update windows unicode and symbols fonts
+  * use arial unicode ms for windows
+  * update docs regarding shell program examples
+  * update default examples for shell (ref #263)
+  * bump few more deps
+  * bump few dependencies
+  * update CHANGELOG.md
+  * add scroll actions to bindings/mod.rs (close #265)
+  * move back to font_spec usage
+  * use first of filtered_formats and update CHANGELOG
+  * use queue rendering instead of use staging_belt
+  * update brush and calculator imports
+  * rename glyph_brush and glyph_calculator mods
+  * port glyph-brush into glyph mod.rs
+  * test sugarloaf height
+
+-------------------------------------------------------------------
+Sat Sep 30 09:53:09 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.21:
+  * fmt unsupported_formats.contains
+  * add publish-crates to make
+  * lock to 0.0.21
+  * prepare 0.0.21
+  * move wegpu upgrade to next version bump
+  * rollback with webgpu upgrade
+  * use wgpu 0.17.1
+  * update lockfile
+  * remove comments
+  * use npm ci instead of install for ci
+  * remove index.md of HomepageFeatures
+  * remove working-directory
+  * update docs flow
+  * check if is_srgb
+  * comment ligatures feature for now in docs
+  * update changelog
+  * workflow: automatically deploy documentation site using GitHub Actions (#261)
+  * Hide other applications in MacOS (#262)
+  * implement --working-dir on cli (closes #258)
+  * update broken links in the README
+  * skip_serializing for some fields in navigation
+  * docs: markdown (#257)
+  * update version docs
+  * remove legacy icns icons
+  * use version from workspace
+
+-------------------------------------------------------------------
+Sun Sep 24 13:24:14 UTC 2023 - androw95220@gmail.com
+
+- Update to version 0.0.20:
+  * update changelog.md
+  * prepare 0.0.20
+  * Fix cursor disappearing in the first tab whenever a new tab is created with NativeTab
+  * add log error to not found font
+  * update docs
+  * fmt performer/handler
+  * switch sync escape from DCS to CSI (changes originally implemented in alacritty/vte that's licensed under MIT)
+  * update documentation
+  * update docs with default documentation file and add themes section (close #250)
+  * update colors and remove screen rendering from state mod
+  * update rio-colors
+  * update changelog
+  * remove RIO_CONFIG variable from init (Ref #243)
+  * keep original license and copyright from alacritty take2 #246
+  * update fmt for screen/mod.rs
+  * keep original license and copyright from alacritty #246
+  * update website
+  * migration to docasaurus
+  * select specific dependencies
+  * add fontconfig-parser dep to sugarloaf
+  * add fontconfig-parser dep to sugarloaf
+  * add fontconfig search for unix (non-macos)
+  * add fontconfig
+  * Add ToggleFullscreen Action #229 (#249)
+  * Update configuration-file.md: fix broken link (#248)
+  * fix: Command + H can't hide rio on macOS #240 (#244)
+  * fix fmt for standalone colors
+  * start to use fixed colors for screens (avoid issues with themes and specific configs
+  * update default colors
+  * update colors
+  * [Draft] Docs migration (#241)
+  * fmt LOGO_ICON
+  * update website
+  * update new logo
+  * new logo
+  * updating rust-version to 1.72.1 (#238)
+  * update CHANGELOG.md
+  * use specific version #198
+  * Feature/chocolatey (#239)
+  * refactor: enable full optimizations for release profile (#236)
+  * refactor: enable CPU-specific optimizations on aarch64-apple-darwin (#235)
+  * update docs
+
+-------------------------------------------------------------------
 Tue Sep 19 12:58:51 UTC 2023 - androw95220@gmail.com
 
 - Update to version 0.0.19:
