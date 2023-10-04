@@ -21,7 +21,7 @@
 %define plugin pulseaudio
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        0.4.7
+Version:        0.4.8
 Release:        0
 Summary:        Pulseaudio Volume Control Plugin for the Xfce Panel
 License:        GPL-2.0-or-later

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct  1 16:41:03 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.4.8
+  * MPRIS: Use D-Bus name for identifying players
+  * Fix possible context menu crash with MPRIS playlist
+  * Add option to make mic icon persistent
+  * Check for mic widget visibility
+  * Preserve channel balance when changing sink/source volume
+  * MPRIS: Add option to send multimedia keys to all players
+  * MPRIS: Fix default controlled player by multimedia keys
+  * Remove dead code
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Jun  1 12:27:36 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.4.7
