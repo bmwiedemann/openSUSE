@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  3 16:08:38 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.26:
+  * Fixed the buggy GNU_gama::local::SVG class
+
+-------------------------------------------------------------------
 Sun Aug 27 11:07:32 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.25:
