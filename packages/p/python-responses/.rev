@@ -367,4 +367,12 @@
   * moto needs to stay with urllib3 &lt; 2 due to boto.</comment>
     <requestid>1088655</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>165cf758876b81939eba2b2b0e4b8e48</srcmd5>
+    <version>0.23.3</version>
+    <time>1696451422</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114854</requestid>
+  </revision>
 </revisionlist>

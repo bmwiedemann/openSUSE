@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 30 19:38:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.23.3
+  * Allow urllib3>=1.25.10
+- Release 0.23.2
+  * Updated dependency to urllib3>=2 and requests>=2.30.0. See #635
+  * Fixed issue when custom adapters were sending only positional
+    args. See #642
+  * Expose `unbound_on_send` method in `RequestsMock` class. This
+    method returns new function that is called by `RequestsMock`
+    instead of original `send` method defined by any adapter.
+- Drop unbundle-urllib3.patch
+
+-------------------------------------------------------------------
 Tue May 23 12:47:08 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop patch 636-urllib3-2-compat.patch:
