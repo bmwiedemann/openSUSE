@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  2 17:18:45 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.32.3
+  * libmpg123, libsyn123: always ifdef LFS_LARGEFILE_64 (not
+    just if)
+  * libsyn123: re-introduce _32 wrappers in addition to
+    suffix-less ones (regression from 1.31, bug 363)
+
+-------------------------------------------------------------------
 Thu Sep 28 03:53:06 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.32.2

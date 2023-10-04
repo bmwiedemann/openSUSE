@@ -472,4 +472,17 @@
 </comment>
     <requestid>1113956</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c033964bcf639446249a3bd7106c9205</srcmd5>
+    <version>1.32.3</version>
+    <time>1696451424</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.32.3
+  * libmpg123, libsyn123: always ifdef LFS_LARGEFILE_64 (not
+    just if)
+  * libsyn123: re-introduce _32 wrappers in addition to
+    suffix-less ones (regression from 1.31, bug 363)
+</comment>
+    <requestid>1114858</requestid>
+  </revision>
 </revisionlist>
