@@ -189,4 +189,13 @@
     <comment></comment>
     <requestid>1081843</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>b570827e5169622ce2f98b3afb702dc9</srcmd5>
+    <version>0.8.3</version>
+    <time>1696451428</time>
+    <user>anag+factory</user>
+    <comment>- Switch to pyproject macros.
+- Also skip the recalcitrant test under Python 3.12.</comment>
+    <requestid>1114884</requestid>
+  </revision>
 </revisionlist>

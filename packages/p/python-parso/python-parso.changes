@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  3 02:36:16 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Also skip the recalcitrant test under Python 3.12.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:29:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
