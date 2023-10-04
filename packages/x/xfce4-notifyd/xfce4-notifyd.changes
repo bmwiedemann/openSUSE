@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Sep 25 06:14:08 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 0.9.2:
+  * (Hopefully) actually fix settings migration code
+  * (Hopefully) fix enum setting migration code
+- Add --enable-systemd when calling configure
+
+-------------------------------------------------------------------
+Wed Sep 20 07:36:09 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 0.9.1:
+  * Make the XDG autostart file attempt a systemd start first
+  * Only include the SystemdService= line if systemd support is
+    enabled
+  * Clean up some conditionals in configure.ac
+  * Go back to installing the XDG autostart file by default
+  * Allow installing systemd service file even if systemd is not
+    installed
+
+-------------------------------------------------------------------
+Tue Sep 19 10:30:15 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 0.9.0:
+  * Add missing sanity check
+  * I18n: Update po/LINGUAS list
+  * wayland: put windows on overlay layer, not top
+  * Set window theme before placing window
+  * Set initial window position before realizing windows
+  * Avoid storing NULL app IDs in the app ID count hashtable
+  * Simplify dbus/systemd service dir logic in configure.ac
+  * Fix typos in README
+  * Install D-Bus and systemd files under $prefix by default
+  * Fix distcheck when run as non-root
+  * Use pkg-config to find default systemd user unit directory
+  * Change default systemd user path from /lib/... to /usr/lib/...
+  * Change options for installing startup files
+  * Add positioning options top-center and bottom-center
+  * Simplify notification placement code
+  * Stop using GtkCornerType; migrate setting to enum nick
+  * Move log level settings from int to enum nick string
+  * Move datetime format setting from int to enum nick string
+  * Have a single entry point for setting migrations
+  * Fix incorrect enum value for apps log level
+  * Use registered enum types for config->enum mapping
+  * Move enums to common, use glib-mkenums
+  * Use new XDT feature macros
+  * Don't log duplicate entries when updating an existing notification
+  * Clean up logic in notify_notify()
+  * Correctly update critical notifications while in DnD mode
+  * Fix incorrect casts in GTree foreach functions
+  * Remove expire/fade timeout source removal hacks
+  * Missed a spot to reset fade/slide
+  * Allow slideout when no fadeout
+  * Only start fade timeout if no existing handle
+  * Only start expiration timeout if no existing handle
+  * Ensure timeout sources are removed in _window_dispose()
+  * Move log dbus signal emissions to XfceNotifyDaemonLog
+  * Remove expire and fade sources before emitting closed signal
+  * Emit NotificationClosed when not showing notification
+  * Consolidate the window movement code
+  * Add option to show notifications on all monitors
+  * Migrate the primary-monitor setting to a string-based enum
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Feb 28 09:05:48 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 0.8.2:

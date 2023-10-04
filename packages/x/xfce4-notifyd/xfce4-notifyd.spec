@@ -17,28 +17,32 @@
 
 
 Name:           xfce4-notifyd
-Version:        0.8.2
+Version:        0.9.2
 Release:        0
 Summary:        Simple Notification Daemon for Xfce
 License:        GPL-2.0-only
 Group:          System/Daemons
 URL:            https://docs.xfce.org/apps/notifyd/start
-Source:         https://archive.xfce.org/src/apps/xfce4-notifyd/0.8/%{name}-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/xfce4-notifyd/0.9/%{name}-%{version}.tar.bz2
 Source1:        %{name}.xml
 Source100:      %{name}-rpmlintrc
 BuildRequires:  gettext
+BuildRequires:  systemd >= 245
 BuildRequires:  update-desktop-files
 BuildRequires:  xfce4-dev-tools
+BuildRequires:  pkgconfig(dbus-1) >= 1.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.68.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.68.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.68.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(libnotify) >= 0.7.0
+BuildRequires:  pkgconfig(libsystemd) >= 245
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.14.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.10.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.34
+BuildRequires:  pkgconfig(x11)
 Requires:       libnotify-tools
 Requires:       xfce4-notifyd-branding = %{version}-%{release}
 Recommends:     %{name}-lang = %{version}-%{release}
@@ -70,6 +74,7 @@ This package provides the upstream look and feel for the Xfce Notification Daemo
 # xdt-autogen
 %configure \
     --with-helper-path-prefix=%{_libexecdir} \
+    --enable-systemd \
     --enable-maintainer-mode
 %make_build
 
@@ -101,8 +106,10 @@ rm -rf %{buildroot}
 %dir %{_libexecdir}/xfce4/notifyd
 %{_libexecdir}/xfce4/notifyd/xfce4-notifyd
 %{_libdir}/xfce4/panel/plugins/libnotification-plugin.so
+%{_datadir}/dbus-1/services/org.xfce.xfce4-notifyd.N*.service
 %{_datadir}/xfce4/panel/plugins/notification-plugin.desktop
 %{_sysconfdir}/xdg/autostart/xfce4-notifyd.desktop
+%{_prefix}/lib/systemd/user/xfce4-notifyd.service
 %doc %{_mandir}/man1/xfce4-notifyd-config.1*
 
 %files lang -f %{name}.lang
