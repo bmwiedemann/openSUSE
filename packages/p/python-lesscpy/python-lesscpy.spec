@@ -1,7 +1,7 @@
 #
 # spec file for package python-lesscpy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lesscpy
 Version:        0.15.1
 Release:        0
@@ -24,15 +23,15 @@ Summary:        Lesscss compiler
 License:        MIT
 URL:            https://github.com/lesscpy/lesscpy
 Source:         https://files.pythonhosted.org/packages/source/l/lesscpy/lesscpy-%{version}.tar.gz
+# https://github.com/lesscpy/lesscpy/pull/126
+Patch0:         python-lesscpy-no-six.patch
 BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ply
 Requires:       python-setuptools
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -48,7 +47,7 @@ Some features wil probably never be supported (JavaScript evaluation).
 This program uses PLY (Python Lex-Yacc) to tokenize/parse the input.
 
 %prep
-%setup -q -n lesscpy-%{version}
+%autosetup -p1 -n lesscpy-%{version}
 # remove failing tests, which rely on find_and_load_cases
 rm test/test_{bootstrap3,less,issues}.py
 

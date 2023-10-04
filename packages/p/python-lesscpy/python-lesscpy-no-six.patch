@@ -1,0 +1,274 @@
+diff --git a/lesscpy/lessc/color.py b/lesscpy/lessc/color.py
+index d734233..50aa15d 100644
+--- a/lesscpy/lessc/color.py
++++ b/lesscpy/lessc/color.py
+@@ -9,10 +9,9 @@
+ """
+ 
+ import operator
++import re
+ 
+ import colorsys
+-import re
+-from six import string_types
+ from . import utility
+ from lesscpy.lib import colors
+ 
+@@ -304,7 +303,7 @@ def spin(self, color, degree, *args):
+             str
+         """
+         if color and degree:
+-            if isinstance(degree, string_types):
++            if isinstance(degree, str):
+                 degree = float(degree.strip('%'))
+             h, l, s = self._hextohls(color)
+             h = ((h * 360.0) + degree) % 360.0
+@@ -348,7 +347,7 @@ def mix(self, color1, color2, weight=50, *args):
+             str
+         """
+         if color1 and color2:
+-            if isinstance(weight, string_types):
++            if isinstance(weight, str):
+                 weight = float(weight.strip('%'))
+             weight = ((weight / 100.0) * 2) - 1
+             rgb1 = self._hextorgb(color1)
+@@ -417,7 +416,7 @@ def _hextohls(self, hex):
+         return colorsys.rgb_to_hls(*[c / 255.0 for c in rgb])
+ 
+     def _ophsl(self, color, diff, idx, operation):
+-        if isinstance(diff, string_types):
++        if isinstance(diff, str):
+             diff = float(diff.strip('%'))
+         hls = list(self._hextohls(color))
+         hls[idx] = self._clamp(operation(hls[idx], diff / 100.0))
+diff --git a/lesscpy/lessc/lexer.py b/lesscpy/lessc/lexer.py
+index 38a964f..15c5cbb 100644
+--- a/lesscpy/lessc/lexer.py
++++ b/lesscpy/lessc/lexer.py
+@@ -11,7 +11,6 @@
+ """
+ import re
+ import ply.lex as lex
+-from six import string_types
+ 
+ from lesscpy.lib import dom
+ from lesscpy.lib import css
+@@ -422,7 +421,7 @@ def input(self, file):
+         Load lexer with content from `file` which can be a path or a file
+         like object.
+         """
+-        if isinstance(file, string_types):
++        if isinstance(file, str):
+             with open(file) as f:
+                 self.lexer.input(f.read())
+         else:
+diff --git a/lesscpy/lessc/parser.py b/lesscpy/lessc/parser.py
+index a16a7d8..2621a62 100644
+--- a/lesscpy/lessc/parser.py
++++ b/lesscpy/lessc/parser.py
+@@ -12,13 +12,10 @@
+ .. moduleauthor:: Johann T. Mariusson <jtm@robot.is>
+ """
+ 
+-from __future__ import print_function
+-
+ import os
+ import tempfile
+ import sys
+ import ply.yacc
+-from six import string_types
+ 
+ from . import lexer
+ from . import utility
+@@ -234,7 +231,7 @@ def p_statement_import(self, p):
+         if self.importlvl > 8:
+             raise ImportError(
+                 'Recrusive import level too deep > 8 (circular import ?)')
+-        if isinstance(p[3], string_types):
++        if isinstance(p[3], str):
+             ipath = utility.destring(p[3])
+         elif isinstance(p[3], list):
+             p[3] = Import(p[3], p.lineno(4)).parse(self.scope)
+diff --git a/lesscpy/lessc/scope.py b/lesscpy/lessc/scope.py
+index 05d8ec2..04ab3e1 100644
+--- a/lesscpy/lessc/scope.py
++++ b/lesscpy/lessc/scope.py
+@@ -7,8 +7,6 @@
+     See LICENSE for details.
+ .. moduleauthor:: Johann T. Mariusson <jtm@robot.is>
+ """
+-from six import string_types
+-
+ from . import utility
+ 
+ 
+@@ -190,7 +188,7 @@ def swap(self, name):
+             var = self.variables('@' + name[2:-1])
+             if var is False:
+                 raise SyntaxError('Unknown escaped variable %s' % name)
+-            if isinstance(var.value[0], string_types):
++            if isinstance(var.value[0], str):
+                 var.value[0] = utility.destring(var.value[0])
+         else:
+             var = self.variables(name)
+diff --git a/lesscpy/lessc/utility.py b/lesscpy/lessc/utility.py
+index 9c23d29..cba96ff 100644
+--- a/lesscpy/lessc/utility.py
++++ b/lesscpy/lessc/utility.py
+@@ -8,13 +8,10 @@
+ .. moduleauthor:: Johann T. Mariusson <jtm@robot.is>
+ """
+ 
+-from __future__ import print_function
+-
+ import itertools
+ import math
+ import re
+ import sys
+-from six import string_types
+ 
+ try:
+     from collections.abc import Iterable
+@@ -30,8 +27,7 @@ def flatten(lst):
+         generator
+     """
+     for elm in lst:
+-        if isinstance(elm, Iterable) and not isinstance(
+-                elm, string_types):
++        if isinstance(elm, Iterable) and not isinstance(elm, str):
+             for sub in flatten(elm):
+                 yield sub
+         else:
+@@ -138,7 +134,7 @@ def analyze_number(var, err=''):
+         tuple
+     """
+     n, u = split_unit(var)
+-    if not isinstance(var, string_types):
++    if not isinstance(var, str):
+         return var, u
+     if is_color(var):
+         return var, 'color'
+@@ -168,7 +164,7 @@ def with_unit(number, unit=None):
+         if number.startswith('.'):
+             number = '0' + number
+         return "%s%s" % (number, unit)
+-    return number if isinstance(number, string_types) else str(number)
++    return number if isinstance(number, str) else str(number)
+ 
+ 
+ def is_color(value):
+@@ -178,7 +174,7 @@ def is_color(value):
+     returns:
+         bool
+     """
+-    if not value or not isinstance(value, string_types):
++    if not value or not isinstance(value, str):
+         return False
+     if value[0] == '#' and len(value) in [4, 5, 7, 9]:
+         try:
+@@ -196,7 +192,7 @@ def is_variable(value):
+     returns:
+         bool
+     """
+-    if isinstance(value, string_types):
++    if isinstance(value, str):
+         return value.startswith('@') or value.startswith('-@')
+     elif isinstance(value, tuple):
+         value = ''.join(value)
+@@ -287,7 +283,7 @@ def pc_or_float(s):
+     returns:
+        float
+     """
+-    if isinstance(s, string_types) and '%' in s:
++    if isinstance(s, str) and '%' in s:
+         return float(s.strip('%')) / 100.0
+     return float(s)
+ 
+diff --git a/lesscpy/plib/call.py b/lesscpy/plib/call.py
+index f45d04b..fde8b9d 100644
+--- a/lesscpy/plib/call.py
++++ b/lesscpy/plib/call.py
+@@ -13,7 +13,6 @@
+     from urllib.parse import quote as urlquote
+ except ImportError:
+     from urllib import quote as urlquote
+-from six import string_types
+ from .node import Node
+ import lesscpy.lessc.utility as utility
+ import lesscpy.lessc.color as Color
+@@ -46,7 +45,7 @@ def parse(self, scope):
+         color = Color.Color()
+         args = [
+             t for t in parsed
+-            if not isinstance(t, string_types) or t not in '(),'
++            if not isinstance(t, str) or t not in '(),'
+         ]
+         if hasattr(self, name):
+             try:
+diff --git a/lesscpy/plib/negated_expression.py b/lesscpy/plib/negated_expression.py
+index 60d35d6..25341a6 100644
+--- a/lesscpy/plib/negated_expression.py
++++ b/lesscpy/plib/negated_expression.py
+@@ -7,8 +7,6 @@
+     See LICENSE for details.
+ """
+ 
+-from six import string_types
+-
+ from .node import Node
+ 
+ 
+@@ -17,6 +15,6 @@ class NegatedExpression(Node):
+ 
+     def parse(self, scope):
+         val, = self.process(self.tokens, scope)
+-        if isinstance(val, string_types):
++        if isinstance(val, str):
+             return '-' + val
+         return -val
+diff --git a/test/test_lexer.py b/test/test_lexer.py
+index 8158f6c..df88b37 100644
+--- a/test/test_lexer.py
++++ b/test/test_lexer.py
+@@ -1,11 +1,10 @@
+ """
+ Unit tests for the lexer.
+ """
++from io import StringIO
+ from tempfile import NamedTemporaryFile
+ import unittest
+ 
+-from six import StringIO
+-
+ from lesscpy.lessc.lexer import LessLexer
+ 
+ 
+diff --git a/test/test_parser.py b/test/test_parser.py
+index 7a23605..032e521 100644
+--- a/test/test_parser.py
++++ b/test/test_parser.py
+@@ -2,8 +2,7 @@
+ Unit test for the parser.
+ """
+ import unittest
+-
+-from six import StringIO
++from io import StringIO
+ 
+ from lesscpy.lessc.parser import LessParser
+ 
+diff --git a/test/test_pycompile.py b/test/test_pycompile.py
+index 2ed54aa..1cb2b53 100644
+--- a/test/test_pycompile.py
++++ b/test/test_pycompile.py
+@@ -3,8 +3,7 @@
+ 
+ """
+ import unittest
+-
+-from six import StringIO
++from io import StringIO
+ 
+ from lesscpy import compile
+ 
+

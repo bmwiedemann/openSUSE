@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  2 10:42:43 UTC 2023 - pgajdos@suse.com
+
+- do not require six in the code
+- added patches
+  fix https://github.com/lesscpy/lesscpy/pull/126
+  + python-lesscpy-no-six.patch
+
+-------------------------------------------------------------------
 Fri Oct 28 18:02:02 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to v0.15.1 
