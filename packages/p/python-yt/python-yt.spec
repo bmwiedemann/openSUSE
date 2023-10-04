@@ -27,7 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/yt-project/yt
 Source0:        https://files.pythonhosted.org/packages/source/y/yt/yt-%{version}.tar.gz
 Source100:      python-yt-rpmlintrc
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython < 3}
 BuildRequires:  %{python_module numpy-devel >= 1.10.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}

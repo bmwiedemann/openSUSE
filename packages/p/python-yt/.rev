@@ -161,4 +161,13 @@ https://github.com/yt-project/yt/releases.
     cookbook</comment>
     <requestid>1064246</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8eea5c384ab2198c225d8bfd41b2c9cd</srcmd5>
+    <version>4.1.4</version>
+    <time>1696451507</time>
+    <user>anag+factory</user>
+    <comment>- Fix dependency on Cpython
+</comment>
+    <requestid>1115044</requestid>
+  </revision>
 </revisionlist>
