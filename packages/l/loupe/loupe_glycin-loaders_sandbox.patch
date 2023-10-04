@@ -1,0 +1,27 @@
+From afc1e32c7dc0d36166f8cb200fe37ee9fbc39c02 Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@redhat.com>
+Date: Tue, 26 Sep 2023 17:07:02 -0500
+Subject: [PATCH] Enable the glycin-loaders sandbox
+
+We (presumably accidentally) shipped with the sandbox disabled by
+default, so it's not doing any good. Enable it. Developers who want to
+disable the sandbox can easily set the build option.
+---
+ meson_options.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/meson_options.txt b/meson_options.txt
+index 2a4698c7..70fa9645 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -13,4 +13,5 @@ option(
+   'disable-glycin-sandbox',
+   type: 'boolean',
+   description: 'Disable sandboxing of image loaders in glycin. Only intended for development purposes.',
+-)
+\ No newline at end of file
++  value: false
++)
+-- 
+GitLab
+

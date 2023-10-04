@@ -26,10 +26,16 @@ Source:         %{name}-%{version}.tar.zst
 Source2:        vendor.tar.zst
 Source3:        cargo_config
 
+# PATCH-FIX-UPSTREAM loupe_glycin-loaders_sandbox.patch -- Enable the glycin-loaders sandbox
+Patch:          loupe_glycin-loaders_sandbox.patch
+# PATCH-FIX-UPSTREAM loupe_print_fix.patch -- print: Use same print operation throughout
+Patch2:         loupe_print_fix.patch
+
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging >= 1.2.0+3
 BuildRequires:  desktop-file-utils
-BuildRequires:  meson itstool
+BuildRequires:  itstool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk4) >= 4.10
 BuildRequires:  pkgconfig(gweather4) >= 4.0.0
@@ -81,4 +87,3 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Loupe.deskt
 %files lang -f %{name}.lang
 
 %changelog
-

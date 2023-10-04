@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 29 20:50:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add loupe_glycin-loaders_sandbox.patch: Enable the glycin-loaders
+  sandbox.
+  https://gitlab.gnome.org/GNOME/loupe/-/merge_requests/299
+- Add loupe_print_fix.patch: print: Use same print operation
+  throughout.
+  https://gitlab.gnome.org/GNOME/loupe/-/merge_requests/302
+
+-------------------------------------------------------------------
 Sun Sep 17 17:25:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:
