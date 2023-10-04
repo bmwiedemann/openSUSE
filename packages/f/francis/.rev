@@ -7,4 +7,12 @@
     <comment>Add francis to Factory</comment>
     <requestid>1112995</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>87ee75576ea75152ed9aefebd2b4fb28</srcmd5>
+    <version>1.0.1</version>
+    <time>1696451494</time>
+    <user>anag+factory</user>
+    <comment>- Use GCC 12 for building francis on Leap</comment>
+    <requestid>1114994</requestid>
+  </revision>
 </revisionlist>

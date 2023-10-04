@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  3 12:18:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Use GCC 12 for building francis on Leap
+
+-------------------------------------------------------------------
 Fri Sep 22 07:40:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Init francis.
