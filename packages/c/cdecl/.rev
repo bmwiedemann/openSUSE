@@ -538,4 +538,12 @@
     <comment>- Update to release 14.4</comment>
     <requestid>1109570</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>59fb1bb870e521aa416bb11ed13678f9</srcmd5>
+    <version>15.0</version>
+    <time>1696451461</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 15</comment>
+    <requestid>1114883</requestid>
+  </revision>
 </revisionlist>
