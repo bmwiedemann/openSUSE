@@ -1155,4 +1155,12 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     in older dists</comment>
     <requestid>1109329</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>d8a9e4958a4aea2eb6eb7d64033192a0</srcmd5>
+    <version>2.0.21</version>
+    <time>1696451430</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114908</requestid>
+  </revision>
 </revisionlist>

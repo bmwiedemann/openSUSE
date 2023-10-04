@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 29 15:23:49 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 2.0.21:
+  * Changes from 2.0.21:
+    https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.21
+  * Changes from 2.0.20:
+    https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.20
+- Remove .gitignore files from source tree, removes all rpmlint
+  warnings.
+
+-------------------------------------------------------------------
 Sun Aug 13 21:41:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - use generic Cython >= 3 buildrequires 

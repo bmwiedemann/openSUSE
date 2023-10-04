@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-SQLAlchemy
-Version:        2.0.19
+Version:        2.0.21
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
@@ -75,6 +75,8 @@ reference for python-SQLAlchemy.
 
 rm -rf doc/build # Remove unnecessary scripts for building documentation
 sed -i 's/\r$//' examples/dynamic_dict/dynamic_dict.py
+
+find . -type f -name ".gitignore" -exec rm {} \;
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
