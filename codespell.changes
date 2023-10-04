@@ -1,4 +1,190 @@
 -------------------------------------------------------------------
+Tue Oct  3 06:35:51 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.6:
+  * Test to check our string escape word triggers on its own #2879
+  * feat(dictionary): add additiional additional entry #2882
+  * Add currebtly Misspelling #2881
+  * Add more typos for "approximate" #2884
+  * Add new typos for "load" #2885
+  * Add typos for "accommodate" #2886
+  * Add spelling correction for 'prodive' #2889
+  * Add annhilate Mispelling #2891
+  * Add alternative spelling corrections for "merget" #2890
+  * Add various typos #2887
+  * Add suffixes to existing typos #2895
+  * Add twine As Dev Dependency #2901
+  * frustrum->frustum #2899
+  * Add several spelling corrections #2900
+  * Add suffixes to existing typos, part 2 #2902
+  * Add iamges->images and cannel variants #2893
+  * Add all corrections in #2857 #2898
+  * Add suffixes to typos that start with "a" #2905
+  * Add suffixes to typos from "b" to "ch" #2906
+  * Add suffixes to typos from "cop" to "cy" #2911
+  * Add spelling corrections for upperace and lowerace. #2909
+  * Add suffixes to typos from "ci" to "con" #2907
+  * Add variations of 'check' #2904
+  * Add suffixes to typos that start with "de" #2913
+  * Add suffixes to typos from "di" to "dy" #2914
+  * Add suffixes to typos that start with "e" #2915
+  * Add some spelling corrections #2918
+  * Add suffixes to typos that start with "f" #2916
+  * Add typos for "general", "generate", "generic" #2919
+  * Move dateset to code #2917
+  * Add correction for "distict" #2910
+  * Add several spelling corrections #2908
+  * Add new suggestions for existing typos #2921
+  * Add suffixes to typos that start with "g" or "h" #2922
+  * Dev Container #2903
+  * Add postifx->postfix to code dictionary #2927
+  * Add openes->opens, openness, to dictionary #2930
+  * Add suffixes to typos from "ib" to "im" #2924
+  * Add indepentend->independent #2892
+  * Add several spelling corrections #2926
+  * feat: Add collogue->colleague to dictionary #2923
+  * Typos from OpenSSL 3.0 #2883
+  * Add suffixes to typos from "ip" to "k" #2931
+  * Add suffixes to typos that start with "in" #2925
+  * Add typos discovered in django/deps repository #2932
+  * Add some archaic terms for Muslim to dictionary #2610
+  * Add words from misspell's dictionary (A-1) #2748
+  * Add suffixes to typos that start with "l" #2936
+  * Add typo fix: reacord->record #2941
+  * Add suffixes to typos that start with "m" #2937
+  * Add suffixes to typos that start with "n" #2939
+  * Add suffixes to typos that start with "o" #2940
+  * Improve existing suggestions #2943
+  * Add vulnerabily->vulnerably, vulnerability, spelling correction. #2946
+  * Add suffixes to typos from "pa" to "pl" #2944
+  * Add suffixes to typos from "po" to "pu" #2945
+  * Allow words missing from aspell dictionaries #2933
+  * Add journalling->journaling to GB->EN dict #2371
+  * Use large aspell dictionaries #2947
+  * Add suffixes to typos from "q" to "red" #2948
+  * Add suffixes to typos from "ref" to "rep" #2949
+  * Add suffixes to typos from "req" to "ry" #2950
+  * Add suffixes to typos from "sa" to "se" #2951
+  * Add suffixes to typos from "sh" to "sp" #2952
+  * Add suffixes to typos from "sr" to "st" #2953
+  * Remove a branch from main() to pass Ruff CI check. #2962
+  * Add suffixes to typos from "su" to "sz" #2954
+  * Dictionary fixes #2935
+  * Add Pre-Commit as a dev dependency #2959
+  * Drop support for Python 3.7 #2964
+  * Fix pre-commit issues #2967
+  * Add suffixes to typos that start with "t" #2965
+  * Add suffixes to typos that start with "u" #2966
+  * Add suffixes to typos that start with "v" #2970
+  * Add suffixes to typos from "w" to "z" #2971
+  * Add some new misspellings #2972
+  * Add spelling corrections for defaoult and variants. #2975
+  * Fix the name of the extra word lists we load #2976
+  * Add suffixes to typos from "aa" to "acc" #2974
+  * Add suffixes to typos from "ace" to "ad" #2987
+  * Add suffixes to typos from "af" to "al" #2988
+  * Dictionary fixes #2980
+  * Add suffixes to typos from "am" to "an" #2989
+  * Use pre-commit to sort the dictionaries #2973
+  * Simpler dictionary parsing #2986
+  * [pre-commit.ci] pre-commit autoupdate #2993
+  * Add suffixes to typos that start with "ap" #2991
+  * Half dozen new cases in dictionary.txt #2994
+  * Add suffixes to typos that start with "ar" #2992
+  * Add suffixes to typos that start with "as" #2997
+  * Add suffixes to typos from "at" to "ay" #2998
+  * Add suffixes to typos from "ba" to "be" #2999
+  * Add preperint typo #2978
+  * Add some typos found in a large documentation repo #3001
+  * Add suffixes to typos from "bi" to "bu" #3002
+  * Add suffixes to typos that start with "ca" #3003
+  * Add some misspellings and refinements #3004
+  * Add typo variations of background(s) #3006
+  * Add more typos for "check" and similar #3005
+  * ...ter → ...tor #2990
+  * Add suffixes to typos from "ce" to "ci" #3008
+  * Remove the grave accent (`) from the default word regex #2983
+  * Add typo variations for 'enble'->'enable' to main dictionary #3010
+  * [pre-commit.ci] pre-commit autoupdate #3011
+  * Add suffixes to typos from "cl" to "col" #3009
+  * Generate alternative typos with a translation table #2985
+  * Remove redundant linting CI workflows handled #2969
+  * Fix ruff lint error #3015
+  * Add suffixes to typos that start with "com" #3012
+  * Add spelling correction for information and variant. #3018
+  * Replace local and CI workflow #3020
+  * Add fram->frame and friend #3016
+  * Add typo variations of 'dispatch' #3007
+  * Add more typos for "configure" and similar #3013
+  * Add suffixes to typos from "cona" to "conr" #3023
+  * Add suffixes to typos from "cons" to "conv" #3025
+  * Add more typos for "correspond" and similar #3026
+  * Adding articifial to artificial to dictionary.txt #3024
+  * Move the valid word implementor in rare dictionary #3030
+  * Typos from tcpdump and libpcap #3031
+  * [pre-commit.ci] pre-commit autoupdate #3033
+  * Add suffixes to typos from "coo" to "coy" #3029
+  * Add suffixes to typos from "cp" to "cy" #3032
+  * Add suffixes to typos from "dc" to "den" #3034
+  * Add suffixes to typos from "dep" to "der" #3036
+  * [pre-commit.ci] fix new ruff issue #3042
+  * Add suffixes to typos from "des" to "dev" #3039
+  * Add suffixes to typos that start with "di" #3040
+  * Add suffixes to typos from "do" to "dy" #3043
+  * Add suffixes to typos from "ea" to "en" #3048
+  * Add suffixes to typos from "ep" to "exe" #3049
+  * Add suffixes to typos from "exi" to "exu" #3050
+  * [pre-commit.ci] pre-commit autoupdate #3045
+  * Update dictionary.txt #3035
+  * [pre-commit.ci] pre-commit autoupdate #3051
+  * Add suffixes to typos that start with "f" #3052
+  * Add suffixes to typos from "g" to "h" #3053
+  * Additions to dictionary.txt #3054
+  * Modify structure of dict read from TOML to match dict read from INI #3046
+  * Add suffixes to typos from "id" to "inh" #3055
+  * Add more typos for "initialize" and similar #3056
+  * Add suffixes to typos from "ini" to "it" #3059
+  * Add suffixes to typos from "j" to "l" #3060
+  * Add refinement to 'draing' typo #3062
+  * Add suffixes to typos from "ma" to "me" #3063
+  * Add suffixes to typos from "mi" to "mu" #3064
+  * Add more variations of "except" and "exempt" #3057
+  * [pre-commit.ci] pre-commit autoupdate #3065
+  * Bump actions/checkout from 3 to 4 #3066
+  * Add spelling correction for "exis". #3067
+  * Add followiing->following #3070
+  * Add suffixes to typos that start with "n" #3068
+  * Add suffixes to typos that start with "o" #3069
+  * [pre-commit.ci] pre-commit autoupdate #3074
+  * Add suffixes to typos that start with "pa" #3071
+  * Add suffixes to typos from "pe" to "po" #3073
+  * Get rid of typos with apostrophe replaced #3022
+  * Add suffixes to typos from "pr" to "pu" #3075
+  * Add handlong->handling #3076
+  * Bump codecov/codecov-action from 3 to 4 #3078
+  * Add suffixes to typos from "q" to "rec" #3077
+  * Revert b397a6e / #3078 #3080
+  * Add various typos #3079
+  * Add suffixes to typos from "red" to "rep" #3081
+  * Add suffixes to typos from "req" to "ru" #3083
+  * Dictionary additions #3082
+  * [pre-commit.ci] pre-commit autoupdate #3085
+  * Add suffixes to typos from "sa" to "se" #3084
+  * Add correction for havne't->haven't #3089
+  * Add suffixes to typos from "sh" to "so" #3086
+  * Add suffixes to typos from "sp" to "st" #3087
+  * Add suffixes to typos from "su" to "sy" #3090
+  * Add suffixes to typos from "ta" to "th" #3092
+  * [pre-commit.ci] pre-commit autoupdate #3097
+  * Add suffixes to typos from "ti" to "ty" #3094
+  * Add suffixes to typos that start with "u" #3095
+  * Add suffixes to typos from "v" to "z" #3096
+  * many new typos from different repositories #3021
+  * fixing setuptool_scm dependency because the latest version is broken #3100
+  * More typos #3101
+  * Use f-strings wherever possible #3102
+
+-------------------------------------------------------------------
 Fri Jun 23 10:26:24 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.2.5:

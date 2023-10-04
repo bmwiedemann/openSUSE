@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           codespell
-Version:        2.2.5
+Version:        2.2.6
 Release:        0
 Summary:        Source code checker for common misspellings
 License:        GPL-2.0-only
