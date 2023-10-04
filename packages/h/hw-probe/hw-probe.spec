@@ -18,14 +18,15 @@
 
 
 Name:           hw-probe
-Version:        1.6
+Version:        1.6.5
 Release:        0
 Summary:        Check operability of computer hardware and find drivers
-License:        LGPL-2.0-or-later
+License:        BSD-4-Clause AND LGPL-2.1-or-later
 Group:          Hardware/Other
-BuildArch:      noarch
 URL:            https://github.com/linuxhw/hw-probe
-Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/linuxhw/hw-probe/archive/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  perl
+BuildRequires:  perl(Getopt::Long)
 Requires:       acpica
 Requires:       curl
 Requires:       dmidecode
@@ -41,8 +42,7 @@ Requires:       usbutils
 Requires:       util-linux
 Recommends:     Mesa-demo-x
 Recommends:     mcelog
-BuildRequires:  perl
-BuildRequires:  perl(Getopt::Long)
+BuildArch:      noarch
 
 %description
 A tool to check operability of computer hardware and upload result
@@ -72,10 +72,24 @@ sed -i "s|\#\!\/usr\/bin\/env perl|\#\!\/usr\/bin\/perl|g" hw-probe.pl
 %install
 mkdir -p %{buildroot}%{_prefix}
 make install prefix=%{_prefix} DESTDIR=%{buildroot}
+install -Dm 644 -t "%{buildroot}%{_unitdir}/" periodic/hw-probe.*
+
+%pre
+%service_add_pre %{name}.service %{name}.timer
+
+%post
+%service_add_post %{name}.service %{name}.timer
+
+%preun
+%service_del_preun %{name}.service %{name}.timer
+
+%postun
+%service_del_postun %{name}.service %{name}.timer
 
 %files
 %doc README.md
 %license LICENSE.md
 %{_bindir}/%{name}
+%{_unitdir}/%{name}.*
 
 %changelog
