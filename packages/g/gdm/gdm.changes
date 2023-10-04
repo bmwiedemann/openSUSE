@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  2 08:36:13 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly buildrequire /usr/bin/dbus-run-session: the
+  dbus package is being restructured to be usable with dbus-broker
+  and so far we just relied on implicit dependencies bringing this
+  in. Meson checks for it, so it is correct to BR it though.
+
+-------------------------------------------------------------------
 Thu Sep 14 18:27:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0.1:

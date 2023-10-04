@@ -84,6 +84,7 @@ Patch1001:      gdm-add-runtime-option-to-disable-starting-X-server-as-u.patch
 # PATCH-FIX-SLE gdm-restart-session-when-X-server-restart.patch bsc#1196974 xwang@suse.com -- Fix blank screen when X restarts with GDM_DISABLE_USER_DISPLAY_SERVER=1.
 Patch1002:      gdm-restart-session-when-X-server-restart.patch
 
+BuildRequires:  /usr/bin/dbus-run-session
 BuildRequires:  check-devel
 # dconf and gnome-session-core are needed for directory ownership
 BuildRequires:  dconf
