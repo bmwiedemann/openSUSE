@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct  2 10:43:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.3:
+  * Added support for instant navigation progress indicator
+  * Improved spacing and alignment of tags
+  * Moved back-to-top button into separate partial
+  * Fixed #6104: Indentation for some code blocks lost in search
+  * Fixed #6094: Blog post metadata overlaps with footer on small
+    screens
+  * Fixed #6069: Blog plugin crashes for categories with non-ASCII
+    names
+
+-------------------------------------------------------------------
 Mon Sep 25 09:08:23 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.4.2:
