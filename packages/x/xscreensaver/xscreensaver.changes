@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct  1 19:25:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.07:
+  * New hacks, droste, skulloop, papercube and cubocteversion
+  * xscreensaver-settings was sometimes turning off the DPMS
+    checkbox
+  * Log pid of caller of deactivate command, to give a hint about
+    who is preventing the screen from blanking
+  * Updates to sphereeversion.
+  * Added some new map sources to mapscroller.
+  * Various other minor bug fixes. 
+- leave a nice notice for a very angry upstream developer in
+  xscreensaver-disable-upgrade-nagging-message.patch
+- drop xscreensaver-bsc1204744.patch, included upstream
+
+-------------------------------------------------------------------
 Thu Mar 16 13:18:10 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Drop obsolete patch (bsc#1203594).

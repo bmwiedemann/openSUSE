@@ -1,11 +1,15 @@
-Index: xscreensaver-6.05/driver/dialog.c
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Sun, 01 Oct 2023 21:32:38 +0200
+Subject: beer
+
+Index: xscreensaver-6.07/driver/dialog.c
 ===================================================================
---- xscreensaver-6.05.orig/driver/dialog.c
-+++ xscreensaver-6.05/driver/dialog.c
-@@ -1372,18 +1372,7 @@ window_draw (window_state *ws)
-   lines[i].align = CENTER;
-   i++;
- 
+--- xscreensaver-6.07.orig/driver/dialog.c
++++ xscreensaver-6.07/driver/dialog.c
+@@ -1454,18 +1454,14 @@ window_draw (window_state *ws)
+      disrespect the wishes of the person who wrote all of this software for
+      you -- you are a terrible person.  Kindly go fuck yourself.
+   */
 -  if (time ((time_t *) 0) - XSCREENSAVER_RELEASED > 60*60*24*30*17)
 -    {
 -      lines[i].text  = _("Update available!\nThis version is very old.\n");
@@ -17,8 +21,15 @@ Index: xscreensaver-6.05/driver/dialog.c
 -      lines[i].align = CENTER;
 -      i++;
 -    }
--  else if (strstr (ws->version, "a") ||
-+  if (strstr (ws->version, "a") ||
-       strstr (ws->version, "b"))
+-  else if (strstr (ws->version, "a") || strstr (ws->version, "b"))
++  /*
++   * Jamie, I appreciate your work. But this notice is causing time-
++   * dependet UI test failures, so I am going to patch it out. We made every
++   * effort to direct bug reports to https://bugzilla.opensuse.org/ .
++   * As a token of truce, if you ever make it to Dresden, Germany, I will
++   * buy you a beer -- Andreas
++   */
++  if (strstr (ws->version, "a") || strstr (ws->version, "b"))
      {
        lines[i].text  = _("PRE-RELEASE VERSION");
+       lines[i].font  = ws->error_font;
