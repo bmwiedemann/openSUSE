@@ -353,4 +353,17 @@
     <comment>submit new version 0.23.0.beta2</comment>
     <requestid>1094795</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ed15e2c7ad5338bb7379df49217b0fd1</srcmd5>
+    <version>0.23.1</version>
+    <time>1696451432</time>
+    <user>anag+factory</user>
+    <comment>- 0.23.1
+ API:
+ * Add DBus::Object.dbus_reader_attr_accessor to declare a common use case
+   with a single call (gh#mvidner/ruby-dbus#140).
+ * BusConnection#request_name defaults to the simple use case: single owner
+   without queuing, failing fast; documented the complex use cases.</comment>
+    <requestid>1114915</requestid>
+  </revision>
 </revisionlist>
