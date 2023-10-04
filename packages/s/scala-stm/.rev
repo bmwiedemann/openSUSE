@@ -15,4 +15,12 @@
     <comment>Force building with Java 8</comment>
     <requestid>926151</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9f95d6aa0c0d95faecac597105eb765f</srcmd5>
+    <version>0.7</version>
+    <time>1696451491</time>
+    <user>anag+factory</user>
+    <comment>Remove dependency on sbt and build with simple scalac/scaladoc</comment>
+    <requestid>1114968</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  3 09:31:36 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove dependency on sbt and allow building with java 9+
+
+-------------------------------------------------------------------
 Tue Oct 19 07:46:36 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Force building with Java 8 and add _constraints

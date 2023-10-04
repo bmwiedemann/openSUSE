@@ -1,7 +1,7 @@
 #
 # spec file for package scala-stm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,18 +25,13 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            https://nbronson.github.io/scala-stm/
 Source0:        https://github.com/nbronson/scala-stm/archive/release-%{version}.tar.gz
-BuildRequires:  ant
+Source1:        https://repo1.maven.org/maven2/org/%{name}/%{name}_%{scala_short_version}/%{version}/%{name}_%{scala_short_version}-%{version}.pom
 BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
-BuildRequires:  sbt
+BuildRequires:  scala
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
-BuildRequires:  mvn(org.scala-lang:scala-compiler)
-BuildRequires:  mvn(org.scala-lang:scala-library)
-BuildConflicts: java >= 9
-BuildConflicts: java-devel >= 9
-BuildConflicts: java-headless >= 9
 BuildArch:      noarch
 
 %description
@@ -69,33 +64,22 @@ rm -r lib/*
 # get rid of sbt plugins
 rm project/plugins.sbt
 
-# patch build.sbt
-sed -i -e '/% "test"/d' build.sbt
-sed -i -e '/credentials/d' build.sbt
-sed -i -e 's/\(scalaVersion :=\).*$/scalaVersion := "2.10.7"/' build.sbt
-sed -i -e 's/sbt[.]version=.*/sbt.version=0.13.18/g' project/build.properties
-
 # delete tests due to missing deps
 rm -rf src/test
 rm -rf dep-tests
 
-cp -rL %{_datadir}/sbt/ivy-local .
-mkdir boot
-
 %{mvn_file} org.%{name}:%{name}_%{scala_short_version} %{name}
 
 %build
-
-export SBT_BOOT_DIR=$PWD/boot
-export SBT_IVY_DIR=$PWD/ivy-local
-sbt -Dsbt.log.noformat=true package makePom deliverLocal doc
-
-# No test deps available
+mkdir -p target/classes
+scalac -nobootcp -d target/classes $(find src/main -name \*.scala | xargs)
+jar -cf target/%{name}_%{scala_short_version}-%{version}.jar -C target/classes .
+mkdir -p target/apidoc
+scaladoc -nobootcp -d target/apidoc $(find src/main -name \*.scala | xargs)
 
 %install
-# target/scala-2.10/scala-stm_2.10-0.7.jar
-%{mvn_artifact} target/scala-%{scala_short_version}/%{name}_%{scala_short_version}-%{version}.pom target/scala-%{scala_short_version}/%{name}_%{scala_short_version}-%{version}.jar
-%mvn_install -J target/scala-%{scala_short_version}/api/
+%{mvn_artifact} %{SOURCE1} target/%{name}_%{scala_short_version}-%{version}.jar
+%mvn_install -J target/apidoc/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
