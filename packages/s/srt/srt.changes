@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct  2 08:10:49 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.5.3
+  * New Features
+    - PR #2714: Added maximum BW limit for retransmissions. See SRTO_MAXREXMITBW.
+  * Important Bug Fixes
+    - PR #2632: Use overlapped WSASendTo to avoid UDP sending losses.
+    - PR #2766: Fixed spurious group read-ready epoll events.
+    - PR #2772: Fixed RCV buffer initialization in Rendezvous. ⚠️
+    - PR #2757: Fix memory leak on queuing connection initialization packets.
+    - PR #2745: Fix hang up on not enough space in the RCV buffer.
+    - PR #2740: Fix possible tsbpd() deadlock with processCtrlShutdown().
+    - PR #2692: Rejection not undertaken in rendezvous after KMX failure.
+    - PR #2774: Fix rendezvous connection mode when processing resulted in ACCEPT it was still sending rejection.
+    - PR #2778: Drop unencrypted packets in AES-GCM mode.
+  * Build
+    - PR #2779, #2780: Fix the build for targets without IP_ADD_SOURCE_MEMBERSHIP.
+    - PR #2784: Added missing public header files in Windows binary installer.
+  * Unit Tests
+    - PR #2681: Added custom main with transparent parameters.
+  * Documentation
+    - PR #2765: Updated the explicit information for binding to IPv6 wildcard.
+    - PR #2785: Fixed API doc: SRT_INVALID_SOCK
+  * https://github.com/Haivision/srt/releases/tag/v1.5.3
+
+-------------------------------------------------------------------
 Wed Aug  2 10:29:08 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to 1.5.2: 

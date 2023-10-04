@@ -19,7 +19,7 @@
 %define sover 1_5
 
 Name:           srt
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        Secure Reliable Transport (SRT)
 License:        MPL-2.0
