@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-google-auth
-Version:        2.22.0
+Version:        2.23.2
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
@@ -28,11 +27,11 @@ Source:         https://files.pythonhosted.org/packages/source/g/google-auth/goo
 # https://github.com/googleapis/google-auth-library-python/issues/1055
 Patch1:         python-google-auth-no-mock.patch
 BuildRequires:  %{python_module Flask}
-# START TESTING SECTION
 BuildRequires:  %{python_module aiohttp >= 3.6.2}
 BuildRequires:  %{python_module cachetools >= 2.0.0}
+BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module freezegun}
-BuildRequires:  %{python_module pyOpenSSL >= 20.0.0}
+BuildRequires:  %{python_module pyOpenSSL >= 22.0.0}
 BuildRequires:  %{python_module pyasn1-modules >= 0.2.1}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest}
@@ -41,21 +40,18 @@ BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module rsa >= 3.1.4}
 BuildRequires:  %{python_module setuptools >= 40.3.0}
-BuildRequires:  %{python_module six >= 1.9.0}
-# END TESTING SECTION
+BuildRequires:  %{python_module urllib3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cachetools >= 2.0.0
-Requires:       python-cryptography >= 38.0.3
 Requires:       python-pyasn1-modules >= 0.2.1
 Requires:       python-rsa >= 3.1.4
-Requires:       python-setuptools >= 40.3.0
-Requires:       python-six >= 1.9.0
+Requires:       python-urllib3
 Recommends:     python-aiohttp >= 3.6.2
-Recommends:     python-pyOpenSSL >= 20.0.0
+Recommends:     python-cryptography >= 38.0.3
+Recommends:     python-pyOpenSSL >= 22.0.0
 Recommends:     python-pyu2f >= 0.1.5
 Recommends:     python-requests >= 2.20.0
-Recommends:     python-urllib3
 BuildArch:      noarch
 %python_subpackages
 

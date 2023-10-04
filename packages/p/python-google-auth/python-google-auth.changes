@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct  3 12:48:18 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to 2.23.2
+  * Less restrictive content-type header check for google authentication 
+  * Trust boundary meta header renaming
+  * Support urllib3 2.0
+
+-------------------------------------------------------------------
+Thu Sep 21 12:09:25 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- refresh python-google-auth-no-mock.patch
+- update to 2.23.0
+ * Expose universe domain in credentials
+ * Make external_account resistant to string type 'expires_in' responses from non-compliant services
+ * Missing ssj for impersonate cred ()
+ * Skip checking projectid on cred if env var is set
+ * Add get_bq_config_path() to _cloud_sdk.py 
+
+-------------------------------------------------------------------
 Mon Aug 14 09:05:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - unpin urllib3 to resolve conflict with python-kubernetes 
