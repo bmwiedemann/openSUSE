@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct  2 13:28:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.14.0:
+  * BREAKING CHANGES:
+    + "un" does no longer set color for root user use "uR" instead
+    + "gn" does no longer set color for root group use "gR" instead
+    + This is a change in behaviour from before, and so we
+      have marked it as breaking. In practice, it probably won't break
+      anything except if you're doing something really weird.
+  * We now have --time-style, for date like time formatting
+  * Add quotations around filenames with spaces. exa pr#1165
+  * Added statically linked binaries
+  * Add header to colors-explanation page
+  * Some new icons
+
+-------------------------------------------------------------------
 Mon Sep 25 14:21:59 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13.1:
