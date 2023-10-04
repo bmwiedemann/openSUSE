@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  2 16:25:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build using ant to avoid dependency on scala-maven-plugin
+- Build with source/target 8 so that it eventually can be built
+  using OpenJDK 21
+- Removed patch:
+  * use-python3.patch
+    + not needed any more since we call the python3 from spec file
+
+-------------------------------------------------------------------
 Mon Nov 28 07:22:09 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch use-python3.patch:

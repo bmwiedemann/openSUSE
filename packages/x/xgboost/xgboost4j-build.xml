@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="xgboost4j" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property file="build.properties"/>
+
+  <property name="project.groupId" value="com.fasterxml.jackson.core"/>
+  <property name="project.artifactId" value="xgboost4j"/>
+  <property name="project.version" value="0.90"/>
+
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
+  <property name="compiler.target" value="${compiler.source}"/>
+
+  <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDirJava" value="src/main/java"/>
+  <property name="build.srcDirScala" value="src/main/scala"/>
+  <property name="build.resourceDir" value="src/main/resources"/>
+
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath">
+    <fileset dir="lib">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <target name="init">
+    <taskdef resource="scala/tools/ant/antlib.xml" classpathref="build.classpath"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" depends="init" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <scalac destdir="${build.outputDir}" >
+      <src>
+        <pathelement location="${build.srcDirJava}"/>
+        <pathelement location="${build.srcDirScala}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </scalac>
+    <javac destdir="${build.outputDir}"
+           nowarn="false"
+           debug="true"
+           encoding="UTF-8"
+           optimize="false"
+           deprecation="true"
+           release="${compiler.release}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false"
+           source="${compiler.source}">
+      <src>
+        <pathelement location="${build.srcDirJava}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </javac>
+    <copy todir="${build.outputDir}" >
+      <fileset dir="${build.resourceDir}">
+        <exclude name="**/*.so"/>
+        <exclude name="**/*.dll"/>
+        <exclude name="**/*.dylib"/>
+      </fileset>
+      <filterchain>
+        <expandproperties>
+          <propertyset>
+            <propertyref name="project.version"/>
+          </propertyset>
+        </expandproperties>
+      </filterchain>
+    </copy>
+    <copy todir="${build.outputDir}" >
+      <fileset dir="${build.resourceDir}"/>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" depends="init" description="Generates the Javadoc of the application">
+    <mkdir dir="${reporting.outputDirectory}/apidocs"/>
+    <scaladoc deprecation="yes"
+              unchecked="yes"
+              destdir="${reporting.outputDirectory}/apidocs">
+      <src>
+        <pathelement location="${build.srcDirJava}"/>
+        <pathelement location="${build.srcDirScala}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </scaladoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar" 
+         compress="true" 
+         index="false" 
+         basedir="${build.outputDir}" 
+         excludes="**/package.html"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>

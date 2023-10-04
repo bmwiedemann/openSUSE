@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1038653</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>07f7af83acd39c49f0525aea8afdf36c</srcmd5>
+    <version>0.90</version>
+    <time>1696451447</time>
+    <user>anag+factory</user>
+    <comment>Build with ant to avoid dependency on scala-maven-plugin</comment>
+    <requestid>1114849</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xgboost
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+%global scala_short_version 2.10
+%global scala_version %{scala_short_version}.7
+%global artifactId xgboost4j
 Name:           xgboost
 Version:        0.90
 Release:        0
@@ -23,22 +26,21 @@ Summary:        Gradient Boosting (GBDT, GBRT or GBM) Library
 License:        Apache-2.0
 URL:            https://github.com/dmlc/%{name}
 Source0:        %{name}-%{version}.tar.xz
+Source1:        %{artifactId}-build.xml
 Patch0:         xgboost-fix-big-endian.patch
-Patch1:         use-python3.patch
+BuildRequires:  akka
+BuildRequires:  ant
+BuildRequires:  ant-scala
+BuildRequires:  apache-commons-logging
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  maven-local
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  kryo
+BuildRequires:  objenesis
 BuildRequires:  python3
-BuildRequires:  mvn(com.esotericsoftware.kryo:kryo)
-BuildRequires:  mvn(com.typesafe.akka:akka-actor_2.10)
-BuildRequires:  mvn(commons-logging:commons-logging)
-BuildRequires:  mvn(net.alchim31.maven:scala-maven-plugin)
-BuildRequires:  mvn(org.codehaus.mojo:exec-maven-plugin)
-BuildRequires:  mvn(org.scala-lang:scala-compiler)
-BuildRequires:  mvn(org.scala-lang:scala-library)
-BuildRequires:  mvn(org.scala-lang:scala-reflect)
-#!BuildRequires: sbt
+BuildRequires:  scala
+BuildRequires:  typesafe-config
 
 %description
 Scalable, Portable and Distributed Gradient Boosting (GBDT, GBRT or
@@ -54,42 +56,44 @@ BuildArch:      noarch
 
 %prep
 %setup -q
+cp %{SOURCE1} jvm-packages/%{artifactId}/build.xml
 %ifarch s390x ppc64
 %patch0
 %endif
-%patch1 -p1
 pushd jvm-packages
-%pom_remove_plugin :scalatest-maven-plugin
-%pom_remove_plugin :scalastyle-maven-plugin
-%pom_remove_plugin :maven-checkstyle-plugin
-
-%pom_disable_module xgboost4j-example
-%pom_disable_module xgboost4j-spark
-%pom_disable_module xgboost4j-flink
-
-%pom_xpath_set pom:project/pom:properties/pom:scala.version 2.10.7
-%pom_xpath_set pom:project/pom:properties/pom:scala.binary.version 2.10
+%pom_xpath_set pom:project/pom:properties/pom:scala.version %{scala_version}
+%pom_xpath_set pom:project/pom:properties/pom:scala.binary.version %{scala_short_version}
+popd
 
 %build
 pushd jvm-packages
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-DaddScalacArgs="-nobootcp" -Dmaven.compiler.release=7 \
-%endif
-    -Dsource=7
+python3 create_jni.py
+popd
+pushd jvm-packages/%{artifactId}
+mkdir -p lib
+build-jar-repository -s lib akka kryo commons-logging scala typesafe-config objenesis/objenesis
+%{ant} jar javadoc
 popd
 
 %install
-pushd jvm-packages
-%mvn_install
-rm -f %{buildroot}%{_javadocdir}/%{name}/javadoc.sh
+pushd jvm-packages/%{artifactId}
+install -dm 0755 %{buildroot}%{_jnidir}/%{name}
+install -pm 0644 target/%{artifactId}-%{version}.jar %{buildroot}%{_jnidir}/%{name}/%{artifactId}.jar
+
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifactId}.pom
+%add_maven_depmap %{name}/%{artifactId}.pom %{name}/%{artifactId}.jar
+
+install -dm 0755 %{buildroot}%{_javadocdir}
+cp -r target/site/apidocs %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 popd
 
-%files -f jvm-packages/.mfiles
+%files -f jvm-packages/%{artifactId}/.mfiles
 %license LICENSE
 
-%files javadoc -f jvm-packages/.mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE
 
 %changelog
