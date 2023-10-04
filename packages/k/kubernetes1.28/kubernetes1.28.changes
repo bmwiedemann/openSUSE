@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Wed Sep 20 18:53:22 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.28.2:
+  * fix(queue_test): make sure the first bind failure via counter
+  * [go] Bump images, versions and deps to use Go 1.20.8
+  * scheduler: unit test case for concurrent event with other pod
+  * scheduler: fix tracking of concurrent events
+  * sort stability list of metrics in the shell command
+  * Feature-gate SidecarContainers code in pkg/kubelet/kuberuntime
+  * Add an e2e test for the pod sandbox changed scenario
+  * fix: concurrent map writes in e2e test
+  * Automated cherry pick of #119776: Fix a job quota related deadlock (#120319)
+  * TopologyAwareHints: Take lock in HasPopulatedHints
+  * Fallback to legacy discovery on a wider range of conditions in aggregator
+  * Fix OpenAPI aggregation cleanup
+  * apiextensions-apiserver: generate applyconfigurations
+  * Revert to json-patch 4.12.0
+  * update build cross image to the correct release branch image
+  * Mark Job onPodConditions as optional in pod failure policy
+  * Incorporating feedback on 119341
+  * Release commit for Kubernetes v1.28.1
+  * Add wait for cache sync
+  * check for overflow
+  * Fix CEL cost handling of zero length replacement strings
+  * Use env varaibles for passing path
+  * Use environment varaibles for parameters in Powershell
+  * e2e framework util subtle bug checking endpoints
+  * Pass Pinned field to kubecontainer.Image
+  * prep for go1.21: use -e in go list
+  * kubeadm: fix nil pointer when etcd member is already removed
+  * update to golangci-lint v1.54.1 + go-ruleguard v0.4.0
+  * Make gomaxprocs install optional, limit to tests
+  * Drop [Feature: tag to make sure this tests runs on pre-submits
+  * Statefulset should wait for new replicas when removing .start.ordinal
+  * e2e WaitForServiceEndpointsNum take into account the address family
+  * fix: when PreFilter returns UnschedulableAndUnresolvable, copy the state in all nodes in statusmap
+  * Fix a bug that PostFilter plugin may not function if previous PreFilter plugins return Skip
+  * Add test coverage of result size of string operations
+  * Bump cel-go to v0.16.1
+
+-------------------------------------------------------------------
+Wed Sep 20 18:27:23 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- initial package for Kubernetes v1.28.0 
