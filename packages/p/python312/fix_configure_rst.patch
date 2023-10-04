@@ -3,11 +3,11 @@
  Misc/NEWS               |    2 +-
  2 files changed, 1 insertion(+), 3 deletions(-)
 
-Index: Python-3.12.0rc1/Doc/using/configure.rst
+Index: Python-3.12.0/Doc/using/configure.rst
 ===================================================================
---- Python-3.12.0rc1.orig/Doc/using/configure.rst
-+++ Python-3.12.0rc1/Doc/using/configure.rst
-@@ -599,13 +599,11 @@ macOS Options
+--- Python-3.12.0.orig/Doc/using/configure.rst
++++ Python-3.12.0/Doc/using/configure.rst
+@@ -622,13 +622,11 @@ macOS Options
  
  See ``Mac/README.rst``.
  
@@ -21,11 +21,11 @@ Index: Python-3.12.0rc1/Doc/using/configure.rst
  .. cmdoption:: --enable-framework=INSTALLDIR
  
     Create a Python.framework rather than a traditional Unix install. Optional
-Index: Python-3.12.0rc1/Misc/NEWS
+Index: Python-3.12.0/Misc/NEWS
 ===================================================================
---- Python-3.12.0rc1.orig/Misc/NEWS
-+++ Python-3.12.0rc1/Misc/NEWS
-@@ -11530,7 +11530,7 @@ C API
+--- Python-3.12.0.orig/Misc/NEWS
++++ Python-3.12.0/Misc/NEWS
+@@ -11953,7 +11953,7 @@ C API
  - bpo-40939: Removed documentation for the removed ``PyParser_*`` C API.
  
  - bpo-43795: The list in :ref:`limited-api-list` now shows the public name

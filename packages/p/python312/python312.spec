@@ -105,7 +105,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.12.0rc3
+Version:        3.12.0
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0

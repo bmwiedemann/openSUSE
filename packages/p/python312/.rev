@@ -462,4 +462,96 @@
 </comment>
     <requestid>1112487</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f87e6a9e55a3158070bf391aefa2e4a2</srcmd5>
+    <version>3.12.0</version>
+    <time>1696451453</time>
+    <user>anag+factory</user>
+    <comment>- Update to the final release of 3.12.0:
+  Python 3.12 is the latest stable release of the Python
+  programming language, with a mix of changes to the language and
+  the standard library. The library changes focus on cleaning up
+  deprecated APIs, usability, and correctness. Of note, the
+  distutils package has been removed from the standard library.
+  Filesystem support in os and pathlib has seen a number of
+  improvements, and several modules have better performance.
+  The language changes focus on usability, as f-strings have had
+  many limitations removed and ‘Did you mean …’ suggestions
+  continue to improve. The new type parameter syntax and type
+  statement improve ergonomics for using generic types and type
+  aliases with static type checkers.
+  This article doesn’t attempt to provide a complete
+  specification of all new features, but instead gives
+  a convenient overview. For full details, you should refer to
+  the documentation, such as the Library Reference and Language
+  Reference. If you want to understand the complete
+  implementation and design rationale for a change, refer to the
+  PEP for a particular new feature; but note that PEPs usually
+  are not kept up-to-date once a feature has been fully
+  implemented.
+  - New syntax features:
+      - PEP 695, type parameter syntax and the type statement
+  - New grammar features:
+      - PEP 701, f-strings in the grammar
+  - Interpreter improvements:
+      - PEP 684, a unique per-interpreter GIL
+      - PEP 669, low impact monitoring
+      - Improved ‘Did you mean …’ suggestions for NameError,
+        ImportError, and SyntaxError exceptions
+  - Python data model improvements:
+      - PEP 688, using the buffer protocol from Python
+  - Significant improvements in the standard library:
+      - The pathlib.Path class now supports subclassing
+      - The os module received several improvements for Windows
+        support
+      - A command-line interface has been added to the sqlite3
+        module
+      - isinstance() checks against runtime-checkable protocols
+        enjoy a speed up of between two and 20 times
+      - The asyncio package has had a number of performance
+        improvements, with some benchmarks showing a 75% speed
+        up.
+      - A command-line interface has been added to the uuid
+        module
+      - Due to the changes in PEP 701, producing tokens via the
+        tokenize module is up to up to 64% faster.
+  - Security improvements:
+      - Replace the builtin hashlib implementations of SHA1,
+        SHA3, SHA2-384, SHA2-512, and MD5 with formally verified
+        code from the HACL* project. These builtin
+        implementations remain as fallbacks that are only used
+        when OpenSSL does not provide them.
+  - C API improvements:
+      - PEP 697, unstable C API tier
+      - PEP 683, immortal objects
+  - CPython implementation improvements:
+      - PEP 709, comprehension inlining
+      - CPython support for the Linux perf profiler
+      - Implement stack overflow protection on supported
+        platforms
+  - New typing features:
+      - PEP 692, using TypedDict to annotate **kwargs
+      - PEP 698, typing.override() decorator
+  - Important deprecations, removals or restrictions:
+      - PEP 623: Remove wstr from Unicode objects in Python’s
+        C API, reducing the size of every str object by at least
+        8 bytes.
+      - PEP 632: Remove the distutils package. See the migration
+        guide for advice replacing the APIs it provided. The
+        third-party Setuptools package continues to provide
+        distutils, if you still require it in Python 3.12 and
+        beyond.
+      - gh-95299: Do not pre-install setuptools in virtual
+        environments created with venv. This means that
+        distutils, setuptools, pkg_resources, and easy_install
+        will no longer available by default; to access these run
+        pip install setuptools in the activated virtual
+        environment.
+      - The asynchat, asyncore, and imp modules have been
+        removed, along with several unittest.TestCase method
+        aliases.
+- Refresh bluez-devel-vendor.tar.xz from bluez-devel 5.69-1.1.
+</comment>
+    <requestid>1114870</requestid>
+  </revision>
 </revisionlist>

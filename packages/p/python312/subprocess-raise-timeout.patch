@@ -2,11 +2,11 @@
  Lib/test/test_subprocess.py |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: Python-3.12.0rc1/Lib/test/test_subprocess.py
+Index: Python-3.12.0/Lib/test/test_subprocess.py
 ===================================================================
---- Python-3.12.0rc1.orig/Lib/test/test_subprocess.py
-+++ Python-3.12.0rc1/Lib/test/test_subprocess.py
-@@ -280,7 +280,8 @@ class ProcessTestCase(BaseTestCase):
+--- Python-3.12.0.orig/Lib/test/test_subprocess.py
++++ Python-3.12.0/Lib/test/test_subprocess.py
+@@ -281,7 +281,8 @@ class ProcessTestCase(BaseTestCase):
                       "time.sleep(3600)"],
                      # Some heavily loaded buildbots (sparc Debian 3.x) require
                      # this much time to start and print.

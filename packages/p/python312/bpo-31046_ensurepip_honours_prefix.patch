@@ -13,10 +13,10 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  5 files changed, 34 insertions(+), 9 deletions(-)
  create mode 100644 Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
 
-Index: Python-3.12.0rc1/Doc/library/ensurepip.rst
+Index: Python-3.12.0/Doc/library/ensurepip.rst
 ===================================================================
---- Python-3.12.0rc1.orig/Doc/library/ensurepip.rst
-+++ Python-3.12.0rc1/Doc/library/ensurepip.rst
+--- Python-3.12.0.orig/Doc/library/ensurepip.rst
++++ Python-3.12.0/Doc/library/ensurepip.rst
 @@ -59,8 +59,9 @@ is at least as recent as the one availab
  By default, ``pip`` is installed into the current virtual environment
  (if one is active) or into the system site packages (if there is no
@@ -25,7 +25,7 @@ Index: Python-3.12.0rc1/Doc/library/ensurepip.rst
 +through some additional command line options:
  
 +* ``--prefix <dir>``: Installs ``pip`` using the given directory prefix.
- * ``--root <dir>``: Installs ``pip`` relative to the given root directory
+ * :samp:`--root {dir}`: Installs ``pip`` relative to the given root directory
    rather than the root of the currently active virtual environment (if any)
    or the default root for the current Python installation.
 @@ -92,7 +93,7 @@ Module API
@@ -55,10 +55,10 @@ Index: Python-3.12.0rc1/Doc/library/ensurepip.rst
     .. audit-event:: ensurepip.bootstrap root ensurepip.bootstrap
  
     .. note::
-Index: Python-3.12.0rc1/Lib/ensurepip/__init__.py
+Index: Python-3.12.0/Lib/ensurepip/__init__.py
 ===================================================================
---- Python-3.12.0rc1.orig/Lib/ensurepip/__init__.py
-+++ Python-3.12.0rc1/Lib/ensurepip/__init__.py
+--- Python-3.12.0.orig/Lib/ensurepip/__init__.py
++++ Python-3.12.0/Lib/ensurepip/__init__.py
 @@ -120,27 +120,27 @@ def _disable_pip_configuration_settings(
      os.environ['PIP_CONFIG_FILE'] = os.devnull
  
@@ -121,10 +121,10 @@ Index: Python-3.12.0rc1/Lib/ensurepip/__init__.py
          upgrade=args.upgrade,
          user=args.user,
          verbosity=args.verbosity,
-Index: Python-3.12.0rc1/Lib/test/test_ensurepip.py
+Index: Python-3.12.0/Lib/test/test_ensurepip.py
 ===================================================================
---- Python-3.12.0rc1.orig/Lib/test/test_ensurepip.py
-+++ Python-3.12.0rc1/Lib/test/test_ensurepip.py
+--- Python-3.12.0.orig/Lib/test/test_ensurepip.py
++++ Python-3.12.0/Lib/test/test_ensurepip.py
 @@ -105,6 +105,17 @@ class TestBootstrap(EnsurepipMixin, unit
              unittest.mock.ANY,
          )
@@ -143,10 +143,10 @@ Index: Python-3.12.0rc1/Lib/test/test_ensurepip.py
      def test_bootstrapping_with_user(self):
          ensurepip.bootstrap(user=True)
  
-Index: Python-3.12.0rc1/Makefile.pre.in
+Index: Python-3.12.0/Makefile.pre.in
 ===================================================================
---- Python-3.12.0rc1.orig/Makefile.pre.in
-+++ Python-3.12.0rc1/Makefile.pre.in
+--- Python-3.12.0.orig/Makefile.pre.in
++++ Python-3.12.0/Makefile.pre.in
 @@ -1909,7 +1909,7 @@ install: @FRAMEWORKINSTALLFIRST@ commoni
  			install|*) ensurepip="" ;; \
  		esac; \
@@ -165,9 +165,9 @@ Index: Python-3.12.0rc1/Makefile.pre.in
  	fi
  
  .PHONY: commoninstall
-Index: Python-3.12.0rc1/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
+Index: Python-3.12.0/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
 ===================================================================
 --- /dev/null
-+++ Python-3.12.0rc1/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
++++ Python-3.12.0/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
 @@ -0,0 +1 @@
 +A directory prefix can now be specified when using :mod:`ensurepip`.
