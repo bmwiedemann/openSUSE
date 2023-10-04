@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct  2 19:39:45 UTC 2023 - Olivier Belleux <o.g.m.belleux@gmail.com>
+
+- Remove lines in spec files due "failed to build"
+ * # They deleted it.
+   install -Dm644 texlab.1 -t %%{buildroot}%%{_mandir}/man1/
+ * %{_mandir}/man1/texlab.1%{?ext_man}
+
+-------------------------------------------------------------------
+Sun Oct  1 00:45:25 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 5.10.0:
+  * Allow passing additional arguments to ChkTeX using texlab.chktex.additionalArgs
+  * Fix loading bibliographies from kpathsea search path
+  * Don't report duplicate results when using goto definition on includes
+  * Fix project detection when there exist files with the same name
+  * Do not report parse errors with $ in paths
+
+-------------------------------------------------------------------
 Mon Aug 21 05:27:13 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 5.9.2:
