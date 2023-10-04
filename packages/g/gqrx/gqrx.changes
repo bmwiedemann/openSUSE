@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Oct  2 16:44:52 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.16
+  * New:
+    + plot mode, which displays average of FFT bins.
+    + "Fill" plot mode, which displays both maximum & average of
+      FFT bins.
+    + "Histogram" plot mode, which displays distribution of FFT
+      bins.
+    + Selectable plot scaling: dBFS, dBV/RBW, dbV/√Hz, dBm/RBW, dBm/Hz.
+    + Min hold line in plot.
+    + A/B measurement markers on plot.
+    + Plot tooltip displays delta from demod frequency.
+    + Dropped frames are indicated by red background in 
+      FFT Settigns panel.
+    + "Avg" waterfall mode, which displays average of FFT bins.
+    + "Sync" waterfall mode, which mirrors averaged data from plot.
+    + Support for RTL-SDR Blog V4 in AppImage and DMG releases.
+    + Save FFT plot center frequency in settings.
+  * Improved:
+    + Peak detection algorithm.
+    + Peak detection uses peak hold data when available.
+    + Maximum FFT size increased to 4M.
+    + Maximum frame rate increased to 500.
+    + Averaging slider is consistent across frame rates.
+    + Visibility of text in axes.
+    + Full support for high-DPI screens in plot & waterfall.
+    + Plot & waterfall performance.
+    + Plot can be zoomed & resized while DSP is stopped.
+    + FFT window setting is stored as a string.
+    + Waterfall span setting is stored in milliseconds.
+    + Added 6 dB attenuation to WAV file recordings to prevent
+      clipping.
+    + Use logarithmic scale for frequency zoom slider.
+    + Reduced CPU utilization of demodulators.
+    +  Properly handle smooth scrolling.
+    + Shorten band names to fit in narrow spaces.
+    + Delay plot & waterfall drawing until samples arrive from
+      hardware.
+  * Changed:
+    + Frequency zoom slider zooms around center of display.
+    + Disallow scrolling beyond the FFT frequency limits.
+    + Default narrow FM deviation increased to 5 kHz.
+  * Fixed:
+    + Time on waterfall is calculated correctly.
+    + Frequency is correctly rounded in I/Q filenames.
+    + Crash in AFSK1200 decoder.
+    + Hang when setting a very narrow filter width.
+    + Inconsistent 1-2-5 scaling of amplitude axis.
+  * Removed: "Save waterfall" feature.
+
+-------------------------------------------------------------------
 Sun Apr 30 07:38:58 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Enable lto
