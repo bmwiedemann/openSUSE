@@ -16,13 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %ifarch x86_64 %{ix86}
 %bcond_without  test
 %else
 %bcond_with     test
 %endif
-%bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-psutil
 Version:        5.9.5
@@ -41,6 +39,8 @@ Patch4:         mem-used-bsc1181475.patch
 # PATCH-FIX-UPSTREAM logind_y2038.patch gh#giampaolo/psutil#2300 aplanas@suse.com
 Patch5:         logind_y2038.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,17 +48,11 @@ Requires:       procps
 BuildRequires:  systemd
 BuildRequires:  systemd-devel
 %if %{with test}
+%if 0%{?suse_version} > 1500
 BuildRequires:  /usr/bin/who
+%endif
 BuildRequires:  net-tools
 BuildRequires:  procps
-%if %{with python2}
-BuildRequires:  python-ipaddress
-BuildRequires:  python-mock
-BuildRequires:  python-unittest2
-%endif
-%endif
-%ifpython2
-Requires:       python-ipaddress
 %endif
 %python_subpackages
 
@@ -73,10 +67,10 @@ A graphical interface that lets you easily analyze and introspect unaltered runn
 sed -i "1s/#!.*//" psutil/{__init__.py,_compat.py,_psbsd.py,_pslinux.py,_psosx.py,_psposix.py,_pssunos.py,_pswindows.py}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %{python_expand mkdir -p %{buildroot}%{_docdir}/%{$python_prefix}-psutil
 cp -r scripts %{buildroot}%{_docdir}/%{$python_prefix}-psutil/
@@ -103,6 +97,6 @@ popd
 %{_docdir}/%{python_prefix}-psutil/scripts/
 %{python_sitearch}/psutil/
 %exclude %{python_sitearch}/psutil/tests
-%{python_sitearch}/psutil-%{version}*-info
+%{python_sitearch}/psutil-%{version}.dist-info
 
 %changelog

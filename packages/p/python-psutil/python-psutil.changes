@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 30 19:15:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Require /usr/bin/who only for suse_version > 1500: 15.X does not
+  provide it, but has it in coreutils.
+- PEP517
+- Clean up specfile from obsolete python2 stuff
+
+-------------------------------------------------------------------
 Wed Sep  6 11:23:59 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire /usr/bin/who: called by the test suite. With

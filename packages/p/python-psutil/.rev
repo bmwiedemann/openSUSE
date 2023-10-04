@@ -750,4 +750,12 @@ It does not make sense to double the whole HISTORY of upstream source in .change
     <comment></comment>
     <requestid>1109268</requestid>
   </revision>
+  <revision rev="76" vrev="4">
+    <srcmd5>62e971ba65ea5869a10fc187008e6f0f</srcmd5>
+    <version>5.9.5</version>
+    <time>1696451423</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114855</requestid>
+  </revision>
 </revisionlist>
