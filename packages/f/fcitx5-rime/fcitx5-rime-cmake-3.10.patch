@@ -1,15 +1,15 @@
-Index: fcitx5-rime-5.1.1/CMakeLists.txt
+Index: fcitx5-rime-5.1.2/CMakeLists.txt
 ===================================================================
---- fcitx5-rime-5.1.1.orig/CMakeLists.txt
-+++ fcitx5-rime-5.1.1/CMakeLists.txt
-@@ -21,6 +21,12 @@ if ("${Rime_VERSION}" VERSION_LESS "1.6.
-     add_definitions(-DFCITX_RIME_NO_LOG_LEVEL)
+--- fcitx5-rime-5.1.2.orig/CMakeLists.txt
++++ fcitx5-rime-5.1.2/CMakeLists.txt
+@@ -24,6 +24,12 @@ if ("${Rime_VERSION}" VERSION_LESS "1.3.
+     add_definitions(-DFCITX_RIME_NO_SELECT_CANDIDATE)
  endif()
  
 +if(${CMAKE_VERSION} VERSION_LESS "3.11.0")
-+add_library(PkgConfig::Rime INTERFACE IMPORTED GLOBAL)
-+set_property(TARGET PkgConfig::Rime PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${Rime_INCLUDE_DIR}")
-+set_property(TARGET PkgConfig::Rime PROPERTY INTERFACE_LINK_LIBRARIES "${LIB_INSTALL_DIR}/lib${Rime_LIBRARIES}.so")
++    add_library(PkgConfig::Rime INTERFACE IMPORTED GLOBAL)
++    set_property(TARGET PkgConfig::Rime PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${Rime_INCLUDE_DIR}")
++    set_property(TARGET PkgConfig::Rime PROPERTY INTERFACE_LINK_LIBRARIES "${LIB_INSTALL_DIR}/lib${Rime_LIBRARIES}.so")
 +endif()
 +
  if(NOT DEFINED RIME_DATA_DIR)
