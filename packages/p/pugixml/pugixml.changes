@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct  2 09:32:01 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.14:
+  * Improvements:
+    + xml_attribute::set_name and xml_node::set_name now have overloads that
+      accept pointer to non-null-terminated string and size.
+    + Implement parse_merge_pcdata parsing mode in which PCDATA contents is
+      merged into a single node when original document had comments that were
+      skipped during parsing.
+    + xml_document::load_file now returns a more consistent error status when
+      given a path to a folder.
+  * Bug fixes:
+    + Fix assertion in XPath number->string conversion when using non-English
+      locales.
+  * Compatibility improvements:
+    + Fix GCC 2.95/3.3 builds.
+    + Fix CMake 3.27 deprecation warnings.
+    + Fix clang/gcc warnings -Wweak-vtables, -Wreserved-macro-identifier.
+
+-------------------------------------------------------------------
 Wed Nov  2 19:58:12 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 1.13:
