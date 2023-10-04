@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  1 22:37:39 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.3.7:
+  * For GTK, fix assertion failure on some systems when an
+    INDIC_SQUIGGLEPIXMAP drawn for a zero-width character.
+  * For Qt, allow parent window to handle context menu events by
+    setting as ignored. Bug #2395.
+  * For Qt, fix potential crash when using IME with large amount
+    of text selected.
+
+-------------------------------------------------------------------
 Wed Aug  2 23:45:58 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.3.6:
