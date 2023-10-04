@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  4 05:22:08 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 117.0.5938.149:
+  * CVE-2023-5346: Type Confusion in V8 (boo#1215924)
+
+-------------------------------------------------------------------
 Wed Sep 27 21:39:34 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 117.0.5938.132 (boo#1215776):
