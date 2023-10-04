@@ -54,4 +54,14 @@
     <comment></comment>
     <requestid>1096817</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2b018df535a5a00e8d338d10f3759284</srcmd5>
+    <version>1.0.5</version>
+    <time>1696451450</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.5:
+  * Fix some compatibility with Pytest 7.
+- pytest72.patch dropped (upstream)</comment>
+    <requestid>1114839</requestid>
+  </revision>
 </revisionlist>

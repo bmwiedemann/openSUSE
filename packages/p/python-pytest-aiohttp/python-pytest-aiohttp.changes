@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  2 14:49:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5:
+  * Fix some compatibility with Pytest 7.
+- pytest72.patch dropped (upstream)
+
+-------------------------------------------------------------------
 Tue Jul  4 11:34:16 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

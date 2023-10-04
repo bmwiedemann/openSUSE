@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-aiohttp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %define pyname pytest-aiohttp
 %{?sle15_python_module_pythons}
 Name:           python-pytest-aiohttp
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Python pytest plugin for aiohttp support
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/pytest-aiohttp
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-aiohttp/pytest-aiohttp-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pytest72.patch gh#aio-libs/pytest-aiohttp#49
-Patch0:         pytest72.patch
 BuildRequires:  %{python_module aiohttp >= 3.8.1}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
