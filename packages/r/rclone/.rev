@@ -607,4 +607,247 @@ various additional features.</comment>
     <comment></comment>
     <requestid>1099691</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>cefb3a49ff7d71280ed8bc1301c71624</srcmd5>
+    <version>1.64.0</version>
+    <time>1696451492</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.64.0:
+  * protondrive: make cached keys rclone style and not show with `rclone config redacted`
+  * docs: document release signing and verification
+  * docs: fix typo in rc docs - fixes #7287
+  * protondrive: complete docs with all references to Proton Drive
+  * drive: add --drive-fast-list-bug-fix to control ListR bug workaround
+  * s3: add rclone backend restore-status command
+  * Add Drew Stinnett to contributors
+  * Add David Pedersen to contributors
+  * rc: Add operations/settier to API
+  * protondrive: implement two-password mode (#7279)
+  * vfs: Update parent directory modtimes on vfs actions
+  * hdfs: fix retry &quot;replication in progress&quot; errors when uploading
+  * hdfs: fix uploading to the wrong object on Update with overriden remote name
+  * test_all: remove filefabric from integration tests
+  * Add Oksana and Volodymyr Kit to contributors
+  * quatrix: add backend to support Quatrix
+  * protondrive: fix signature verification logic by accounting for legacy signing scheme (#7278)
+  * vfs: add --vfs-cache-min-free-space to control minimum free space on the disk containing the cache
+  * rc: add core/du to measure local disk usage
+  * Add lib/diskusage to measure used/free on disks
+  * Add zjx20 to contributors
+  * local: rmdir return an error if the path is not a dir
+  * s3: implement backend set command to update running config
+  * protondrive: improves 2fa and draft error messages (#7280)
+  * zoho: remove Range requests workarounds to fix integration tests
+  * fstests: fix PublicLink failing on storj
+  * opendrive: fix List on a just deleted and remade directory
+  * operations: fix TestCopyFileMaxTransfer test to not be quite so fussy
+  * compress: fix ChangeNotify
+  * azureblob: fix purging with directory markers
+  * test_all: ignore Rmdirs test failure on b2 as it fails because of versions
+  * Add @nielash as bisync maintainer
+  * build(deps): bump actions/checkout from 3 to 4
+  * bisync: fix dryRun rc parameter being ignored
+  * bisync: add rc parameters for new flags
+  * compress: fix integration tests by adding missing OpenChunkWriter exclude
+  * cache: fix integration tests by adding missing OpenChunkWriter exclude
+  * cmd: refactor and use sysdnotify in more commands
+  * box: add --box-impersonate to impersonate a user ID - fixes #7267
+  * union: add :writback to act as a simple cache
+  * azureblob: fix creation of directory markers
+  * fstest: fix sftp ssh integration tests
+  * b2: fix ChunkWriter size return
+  * s3: fix multpart streaming uploads of 0 length files
+  * backends: change OpenChunkWriter interface to allow backend concurrency override
+  * Add Alishan Ladhani to contributors
+  * b2: fix rclone link when object path contains special characters
+  * serve dlna: fix MIME type if backend can't identify it
+  * docs: add Storj as a sponsor
+  * Add Bjørn Smith to contributors
+  * jotta: added Telia Sky whitelabel (Norway)
+  * docs: single character remote names in Windows
+  * docs: sftp: add note regarding format of server_command
+  * fshttp: fix --bind 0.0.0.0 allowing IPv6 and --bind ::0 allowing IPv4
+  * box: fix unhelpful decoding of error messages into decimal numbers
+  * cmd/ncdu: fix add keybinding to rescan filesystem
+  * box: add polling support
+  * cmd/ncdu: add keybinding to rescan filesystem
+  * docs: may not -&gt; might not, to remove ambiguity
+  * build: fix lint errors when re-enabling revive var-naming
+  * build: fix lint errors when re-enabling revive exported &amp; package-comments
+  * build: re-enable revive linters
+  * lib/multipart: fix accounting for multipart transfers
+  * s3: fix purging of root directory with --s3-directory-markers - fixes #7247
+  * fstests: add backend integration test for purging root directory #7247
+  * s3: fix accounting for multpart uploads
+  * oracleobjectstorage: fix accounting for multpart uploads
+  * b2: fix accounting for multpart uploads
+  * operations: fix terminology in multi-thread copy
+  * operations: fix accounting for multi-thread transfers
+  * operations: don't buffer when a backend implements OpenWriterAt
+  * lib/pool: add DelayAccounting() to fix accounting when reading hashes
+  * lib/pool: add SetAccounting to RW
+  * oracleobjectstorage: implement OpenChunkWriter and multi-thread uploads #7056
+  * b2: implement OpenChunkWriter and multi-thread uploads #7056
+  * azureblob: implement OpenChunkWriter and multi-thread uploads #7056
+  * operations: document multi-thread copy and tweak defaults
+  * operations: add abort on exit to multithread copy
+  * operations: multipart: don't buffer transfers to local disk #7056
+  * s3: factor generic multipart upload into lib/multipart #7056
+  * fs: add context.Ctx to ChunkWriter methods
+  * operations: fix and tidy multithread code
+  * s3: fix retry logic, logging and error reporting for chunk upload
+  * fs: introduces aliases for OpenWriterAtFn and OpenChunkWriterFn
+  * pool: add page backed reader/writer for multi thread uploads
+  * lib/readers: add NoSeeker to adapt io.Reader to io.ReadSeeker
+  * serve ftp: fix race condition when using the auth proxy
+  * docs: remove contributor's old email
+  * serve ftp: update to goftp.io/server v2.0.1 - fixes #7237
+  * serve sftp: fix hash calculations with --vfs-cache-mode full
+  * Add Roberto Ricci to contributors
+  * vfs: make sure struct field is aligned for atomic access
+  * vfs: use atomic types
+  * lib: use atomic types
+  * fs: use atomic types
+  * cmount: use atomic types
+  * smb: use atomic types
+  * sftp: use atomic types
+  * seafile: use atomic types
+  * local: use atomic types
+  * filefabric: use atomic types
+  * box: use atomic types
+  * union: use atomic types
+  * sftp: fix --sftp-ssh looking for ssh agent - fixes #7235
+  * sftp: fix spurious warning when using --sftp-ssh
+  * sync: fix lockup with --cutoff-mode=soft and --max-duration
+  * ftp: fix 425 &quot;TLS session of data connection not resumed&quot; errors
+  * rmdirs: remove directories concurrently controlled by --checkers
+  * Add hideo aoyama to contributors
+  * Add Jacob Hands to contributors
+  * build: add snap installation
+  * ci: change Winget Releaser job to `ubuntu-latest`
+  * fs: Fix transferTime not being set in JSON logs
+  * fs: Don't stop calculating average transfer speed until the operation is complete
+  * sync: fix erroneous test in TestSyncOverlapWithFilter
+  * Add Vitor Gomes to contributors
+  * Add nielash to contributors
+  * Add alexia to contributors
+  * multithread: refactor multithread operation to use OpenChunkWriter if available #7056
+  * config: add &quot;multi-thread-chunk-size&quot; flag #7056
+  * s3: refactor MultipartUpload to use OpenChunkWriter and ChunkWriter #7056
+  * features: add new interfaces OpenChunkWriter and ChunkWriter #7056
+  * bisync: typo corrections &amp; other doc improvements
+  * bisync: Add support for --create-empty-src-dirs - Fixes #6109
+  * bisync: Add experimental --resilient mode to allow recovery from self-correctable errors
+  * bisync: Add new --ignore-listing-checksum flag to distinguish from --ignore-checksum
+  * bisync: equality check before renaming (leave identical files alone)
+  * bisync: apply filters correctly during deletes
+  * bisync: enforce --check-access during --resync
+  * bisync: dry runs no longer commit filter changes
+  * gitignore: add .DS_Store and remove *.log
+  * fichier: fix error code parsing
+  * build: update to released go1.21
+  * Add antoinetran to contributors
+  * Add James Braza to contributors
+  * Add Masamune3210 to contributors
+  * Add Nihaal Sangha to contributors
+  * protondrive: update the information regarding the advance setting enable_caching (#7202)
+  * docs: clarify --checksum documentation - Fixes #7145
+  * docs: add some more docs on making your own backend
+  * docs: environment variable remote name only supports letters, digits, or underscores
+  * docs: local: fix typo
+  * lib/rest: remove unnecessary nil check
+  * drive: fix typo in docs
+  * oracleobjectstorage: Use rclone's rate limiter in mutipart transfers
+  * accounting: show server side stats in own lines and not as bytes transferred
+  * rclone test info: add --check-base32768 flag to check can store all base32768 characters
+  * Add Raymond Berger to contributors
+  * storj: performance improvement for large file uploads
+  * docs: box client_id creation
+  * docs: add missing comma to overview webdav footnote
+  * build: update to go1.21rc4
+  * Add Julian Lepinski to contributors
+  * docs: add minio as a sponsor
+  * swift: fix HEADing 0-length objects when --swift-no-large-objects set
+  * docs: update command docs to new style
+  * docs: group the global flags and make them appear on command and flags pages
+  * Add rclone completion powershell - basic implementation only
+  * docs: fix rclone config edit docs
+  * build: remove unused package cmd/serve/http/data
+  * Add nielash to contributors
+  * Add Zach to contributors
+  * http: fix webdav OPTIONS response (#6433)
+  * webdav: nextcloud: fix segment violation in low-level retry
+  * sftp: support dynamic --sftp-path-override
+  * ftp,sftp: add socks_proxy support for SOCKS5 proxies
+  * http: CORS should not be send if not set (#6433)
+  * docs: rclone backend restore
+  * build: update dependencies
+  * Add yuudi to contributors
+  * rc: add execute-id for job-id
+  * sftp: add --sftp-ssh to specify an external ssh binary to use
+  * Add Niklas Hambüchen to contributors
+  * protondrive: fix a bug in parsing User metadata (#7174)
+  * docs: dropbox: Explain that Teams needs &quot;Full Dropbox&quot;
+  * fichier: implement DirMove
+  * docs: b2 versions names caveat
+  * serve webdav: fix error: Expecting fs.Object or fs.Directory, got &lt;nil&gt;
+  * docs: s3 versions names caveat
+  * http servers: allow CORS to be set with --allow-origin flag - fixes #5078
+  * sftp: stop uploads re-using the same ssh connection to improve performance
+  * vfs: keep virtual directory status accurate and reduce deadlock potential
+  * vfs: Added cache cleaner for directories to reduce memory usage
+  * Add Edwin Mackenzie-Owen to contributors
+  * Add Tiago Boeing to contributors
+  * Add gabriel-suela to contributors
+  * Add Ricardo D'O. Albanus to contributors
+  * smb: implement multi-threaded writes for copies to smb
+  * docs: mega: update with solution when receiving killed on process
+  * protondrive: fix download signature verification bug (#7169)
+  * protondrive: fix bug in digests parsing (#7164)
+  * protondrive: fix missing file sha1 and appstring issues (#7163)
+  * Add Chun-Hung Tseng to Maintainer (#7162)
+  * cmd: fix log message typo
+  * chunker: Update documentation to mention issue with small files
+  * fix: mount parsing for linux
+  * Add Chun-Hung Tseng to contributors
+  * protondrive: add protondrive backend - fixes #6072
+  * doc: Fix Leviia block
+  * docs: mention Box as base32768 compatible
+  * Add Leviia Object Storage on index.md
+  * Add Object storage to Leviia on README.md
+  * --max-transfer - add new exit code (10)
+  * Changelog updates from Version v1.63.1
+  * build: add new sponsors page to docs
+  * operations: fix overlapping check on case insensitive file systems
+  * Add Benjamin to contributors
+  * s3: add Leviia S3 Object Storage as provider
+  * build: update to go1.21rc3 and make go1.19 the minimum required version
+  * Add darix to contributors
+  * box: fix reconnect failing with HTTP 400 Bad Request
+  * webdav: nextcloud chunking: add more guidance for the user to check the config
+  * operations: fix .rclonelink files not being converted back to symlinks
+  * local: fix partial directory read for corrupted filesystem
+  * smb: fix &quot;Statfs failed: bucket or container name is needed&quot; when mounting
+  * Add Vladislav Vorobev to contributors
+  * docs: no need to disable 2FA for Mail.ru Cloud anymore
+  * rclone config redacted: implement support mechanism for showing redacted config
+  * docs: update the number of providers supported
+  * Add Mahad to contributors
+  * Add BakaWang to contributors
+  * docs: drive: Fix step 4 in &quot;Making your own client_id&quot;
+  * s3: add synology to s3 provider list
+  * docs: remove old donate page
+  * docs: update contact page on website
+  * webdav: nextcloud: fix must use /dav/files/USER endpoint not /webdav error
+  * operations: fix deadlock when using lsd/ls with --progress - Fixes #7102
+  * dirtree: fix performance with large directories of directories and --fast-list
+  * Add Fjodor42 to contributors
+  * Add Dean Attali to contributors
+  * Add Sawada Tsunayoshi to contributors
+  * jottacloud: add Onlime provider
+  * build: fix macos builds for versions &lt; 12
+  * docs: dropbox get client id, clarify you need to click a button
+</comment>
+    <requestid>1114965</requestid>
+  </revision>
 </revisionlist>
