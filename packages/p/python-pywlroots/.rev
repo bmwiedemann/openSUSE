@@ -57,4 +57,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1083639</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>533a72acb387e7eeca2bd03a84105986</srcmd5>
+    <version>0.16.5</version>
+    <time>1696451509</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.16.5:
+  * update wlroots url in README
+  * expose wlr_keyboard_notify_modifiers function
+  * migrated to use PEP517 compatible release process
+</comment>
+    <requestid>1115047</requestid>
+  </revision>
 </revisionlist>

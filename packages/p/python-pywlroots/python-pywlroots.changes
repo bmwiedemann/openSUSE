@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  3 14:23:36 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.16.5:
+  * update wlroots url in README
+  * expose wlr_keyboard_notify_modifiers function
+  * migrated to use PEP517 compatible release process
+
+-------------------------------------------------------------------
 Sat Apr 22 09:43:25 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.16.4:
