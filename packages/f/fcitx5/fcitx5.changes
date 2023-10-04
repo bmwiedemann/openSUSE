@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  3 07:33:20 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.1.1
+  * Add accent color support
+  * SNI tray icon fix, including:
+  * workaround GNOME appindicator extension:
+    https://github.com/ubuntu/gnome-shell-extension-appindicator/issues/468
+  * Fix icon change when menu pops up
+  * Fix some issue caused by zwp_input_method_v1 on chrome/electron
+  * Add support for changing keyboard layout under GNOME. Please note,
+    the input source will be overridden with this feature. 
+
+-------------------------------------------------------------------
 Sun Aug 20 05:44:46 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - Update to 5.1.0
