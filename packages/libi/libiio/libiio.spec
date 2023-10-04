@@ -1,7 +1,7 @@
 #
 # spec file for package libiio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2022-2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver  0
 Name:           libiio
-Version:        0.24
+Version:        0.25
 Release:        0
 Summary:        Industrial I/O tools
 License:        LGPL-2.1-or-later
@@ -127,7 +127,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rciiod
 %files
 %license COPYING.txt
 %doc README.md
-%{_bindir}/iio_adi_xflow_check
 %{_bindir}/iio_attr
 %{_bindir}/iio_genxml
 %{_bindir}/iio_info

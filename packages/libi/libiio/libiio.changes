@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 11 22:43:53 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 0.25
+  * tests: Standardize programs error codes when scanning
+  * Make sure we print out LOG_LEVEL during Cmake
+  * debug.h: Update log macros
+  * iiod: fix the printing of IP addresses inside iiod
+  * iiod: remove test code that slipped in
+  * dnssd: windows: Greatly enhance code
+  * dns-sd: Remove duplicates before probing URIs
+  * CI: add next_stable branch to CI triggers
+  * serial: Pass port name/description as context attributes [ #926 ]
+  * CMake: Bump minimal required version to 3.10
+
+-------------------------------------------------------------------
 Sun Jul 17 09:20:06 UTC 2022 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 0.24
