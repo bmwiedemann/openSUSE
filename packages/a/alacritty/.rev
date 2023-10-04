@@ -310,4 +310,14 @@
     <comment></comment>
     <requestid>1096853</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4da035a06a4b1cd419533c997e1044aa</srcmd5>
+    <version>0.12.3</version>
+    <time>1696451512</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1115066 from jlkDE
+
+Update to version 1.12.3</comment>
+    <requestid>1115068</requestid>
+  </revision>
 </revisionlist>
