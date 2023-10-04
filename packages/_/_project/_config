@@ -729,6 +729,8 @@ Ignore: postgresql16-devel-mini:this-is-only-for-build-envs
 Ignore: systemd-mini-container:this-is-only-for-build-envs
 Ignore: systemd-mini:this-is-only-for-build-envs
 Ignore: udev-mini:this-is-only-for-build-envs
+Ignore: krb5-mini-devel:this-is-only-for-build-envs
+Ignore: krb5-mini:this-is-only-for-build-envs
 
 # Ring0 packages should not pull in 'info' - making the base VM smaller
 Ignore: autoconf:info
