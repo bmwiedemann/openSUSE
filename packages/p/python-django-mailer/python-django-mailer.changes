@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Oct  2 11:03:48 UTC 2023 - pgajdos@suse.com
+
+- version update to 2.3
+  2.3 - 2023-09-25
+  ----------------
+  * Dropped Python 3.7 support.
+  * Added ``runmailer_pg`` - advanced sending method for sending emails without delay
+    immediate, PostgreSQL only.
+  2.2.1 - 2023-09-22
+  ------------------
+  * Added admin action to send messages
+  * Added fix for email address that is a ``NoneType``
+  * Stopped testing on unsupported Python (<3.7) and Django (<2.2) versions
+  * Started testing on Python 3.11 and Django 4.1/4.2
+  * Added setting to limit the amount of retries for deferred messages
+    (``MAILER_EMAIL_MAX_RETRIES``), defaults to ``None`` (unlimited)
+    (See Issue `#161 <https://github.com/pinax/django-mailer/issues/161>`_
+- deleted patches
+  - python-django-mailer-no-mock.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon May  9 15:45:01 UTC 2022 - pgajdos@suse.com
 
 - version update to 2.2

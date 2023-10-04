@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-mailer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-django-mailer
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        A reusable Django app for queuing the sending of email
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pinax/django-mailer/
 Source:         https://files.pythonhosted.org/packages/source/d/django-mailer/django-mailer-%{version}.tar.gz
-# https://github.com/pinax/django-mailer/issues/157
-Patch0:         python-django-mailer-no-mock.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.11
 Requires:       python-lockfile >= 0.8
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module lockfile >= 0.8}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -47,18 +46,17 @@ A reusable Django app for queuing and throttling of email sending, scheduled sen
 consolidation of multiple notifications into single emails and logging of mail failures.
 
 %prep
-%setup -q -n django-mailer-%{version}
-%patch0 -p1
+%autosetup -p1 -n django-mailer-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python runtests.py
+%pytest -v
 
 %files %{python_files}
 %doc AUTHORS CHANGES.rst README.rst
