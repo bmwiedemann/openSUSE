@@ -19,7 +19,7 @@
 %define _name geoclue
 
 Name:           geoclue2
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        GeoLocation Framework
 License:        GPL-2.0-or-later
@@ -38,9 +38,9 @@ BuildRequires:  vala
 BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig(avahi-client) >= 0.6.10
 BuildRequires:  pkgconfig(avahi-glib) >= 0.6.10
-BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.68.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.68.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.68.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.14
 BuildRequires:  pkgconfig(libnotify)
@@ -112,8 +112,7 @@ install -m 644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-srvGeoClue.con
 
 # note: do not use systemd macros for geoclue2.service, they are not meant for dbus unit files.
 %pre -n system-user-srvGeoClue -f srvGeoClue.pre
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING
