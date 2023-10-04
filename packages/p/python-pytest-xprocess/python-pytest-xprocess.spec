@@ -16,11 +16,9 @@
 #
 
 
-%define oldpython python
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pytest-xprocess
-Version:        0.22.2
+Version:        0.23.0
 Release:        0
 Summary:        A pytest plugin for managing processes across test runs
 License:        MIT
@@ -28,12 +26,10 @@ URL:            https://github.com/pytest-dev/pytest-xprocess
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-xprocess/pytest-xprocess-%{version}.tar.gz
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest >= 2.8}
-BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-psutil
-Requires:       python-py
 Requires:       python-pytest >= 2.8
 BuildArch:      noarch
 %python_subpackages

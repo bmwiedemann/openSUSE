@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  2 15:00:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.23.0:
+  * Drop support for Python 3.7
+  * Add support for Python 3.11
+  * Remove dependency on `py`
+
+-------------------------------------------------------------------
 Thu May  4 22:29:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.22.2:
