@@ -23,4 +23,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1064397</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d623e90dec8abb98c7fa2e21b57d66bf</srcmd5>
+    <version>0.4.16</version>
+    <time>1696451509</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.4.16:
+  * update wayland and wayland-protocol versions
+  * update setup.cfg
+  * drop 3.7 wheels
+</comment>
+    <requestid>1115046</requestid>
+  </revision>
 </revisionlist>

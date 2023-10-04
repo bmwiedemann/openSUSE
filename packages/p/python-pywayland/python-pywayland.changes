@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  3 15:05:33 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Update to version 0.4.16:
+  * update wayland and wayland-protocol versions
+  * update setup.cfg
+  * drop 3.7 wheels
+
+-------------------------------------------------------------------
 Sat Feb  4 15:10:50 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Use pkg-config and %optflags to set CFLAGS.

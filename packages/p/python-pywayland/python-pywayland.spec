@@ -19,7 +19,7 @@
 %bcond_without  test
 %define pyname  pywayland
 Name:           python-%{pyname}
-Version:        0.4.15
+Version:        0.4.16
 Release:        0
 Summary:        Python binding to the wayland library using cffi
 License:        NCSA
@@ -55,11 +55,11 @@ Python binding to the wayland library using cffi.
 %build
 export CFLAGS="%optflags $(pkg-config --cflags wayland-client)"
 %python_exec pywayland/ffi_build.py
-%python_build
+%pyproject_wheel
 
 %install
 export CFLAGS="%optflags $(pkg-config --cflags wayland-client)"
-%python_install
+%pyproject_install
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
