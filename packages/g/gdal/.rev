@@ -677,4 +677,12 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment>Ah. Must have been a brain outage.</comment>
     <requestid>1113618</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>ff180a175f44c901aa20dfe6f68ef51c</srcmd5>
+    <version>3.7.2</version>
+    <time>1696451473</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114938</requestid>
+  </revision>
 </revisionlist>
