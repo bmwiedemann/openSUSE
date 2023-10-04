@@ -563,4 +563,12 @@ Update to release 19.04.30.</comment>
     <comment></comment>
     <requestid>1101465</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>ce94a1072857e136a4212cdde64f7550</srcmd5>
+    <version>23.09.29</version>
+    <time>1696451448</time>
+    <user>anag+factory</user>
+    <comment>- Update to 23.09.29 Needs libmlt version 7.18.0 See sr#1114770</comment>
+    <requestid>1114781</requestid>
+  </revision>
 </revisionlist>
