@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  4 09:41:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.20.3:
+  * Bugfixes
+    - Fix wget command arguments in github action (#3806) @ssbarnea
+    - Update some platform versions in meta.json (#3800)
+      @masoud-maghsoudi
+
+-------------------------------------------------------------------
 Mon Oct  2 05:31:11 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.20.2:
