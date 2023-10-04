@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  2 10:55:56 UTC 2023 - pgajdos@suse.com
+
+- version update to 4.0.0
+  * Remove support for Python versions older than 3.8 by @WAKayser in #330
+  * Add GHA tooling by @corydolphin in #331
+
+-------------------------------------------------------------------
 Tue Jun 13 10:49:41 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

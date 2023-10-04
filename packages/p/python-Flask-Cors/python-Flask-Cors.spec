@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Cors
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Cors
-Version:        3.0.10
+Version:        4.0.0
 Release:        0
 Summary:        A Flask extension adding a decorator for CORS support
 License:        MIT
@@ -27,11 +27,9 @@ Source:         https://files.pythonhosted.org/packages/source/F/Flask-Cors/Flas
 BuildRequires:  %{python_module Flask >= 0.9}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 0.9
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
