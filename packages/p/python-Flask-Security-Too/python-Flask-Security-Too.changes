@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  3 06:10:21 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add required python-requests build dependency to fix tests.
+
+-------------------------------------------------------------------
 Thu Aug  3 11:48:11 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 5.3.0:

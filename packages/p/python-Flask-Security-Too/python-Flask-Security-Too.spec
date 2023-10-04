@@ -58,6 +58,7 @@ BuildRequires:  %{python_module phonenumbers}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pony if %python-base < 3.11}
 BuildRequires:  %{python_module pytest >= 6.2.5}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zxcvbn >= 4.4.28}

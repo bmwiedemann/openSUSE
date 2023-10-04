@@ -246,4 +246,12 @@ This is a maintained fork of python-Flask-Security</comment>
 </comment>
     <requestid>1102263</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>e7f62f9de6fdd23e307bb3c750cc9d9b</srcmd5>
+    <version>5.3.0</version>
+    <time>1696451470</time>
+    <user>anag+factory</user>
+    <comment>- Add required python-requests build dependency to fix tests.</comment>
+    <requestid>1114897</requestid>
+  </revision>
 </revisionlist>
