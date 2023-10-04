@@ -17,7 +17,7 @@
 
 
 Name:           libime
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Generic input method implementation
 License:        LGPL-2.1-or-later
@@ -33,6 +33,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_regex-devel
+BuildRequires:  libzstd-devel
 
 %description
 This is a library to support generic input method implementation.

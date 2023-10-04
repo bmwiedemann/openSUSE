@@ -74,4 +74,19 @@
     <comment></comment>
     <requestid>1106099</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>877d2bbf57e49bb0e719d6c661529085</srcmd5>
+    <version>1.1.2</version>
+    <time>1696451482</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.2
+  * Allow table to include words without code
+  * allow table ordering ignore the code length
+  * Allow value to be quoted
+  * Apply ZSTD compression the pinyin/table dict and user history.
+  * fix some performance issue for certain pinyin input
+  * Allow table rule to specify character from backwards. 
+</comment>
+    <requestid>1114957</requestid>
+  </revision>
 </revisionlist>

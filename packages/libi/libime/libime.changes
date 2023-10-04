@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  3 07:45:51 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update to 1.1.2
+  * Allow table to include words without code
+  * allow table ordering ignore the code length
+  * Allow value to be quoted
+  * Apply ZSTD compression the pinyin/table dict and user history.
+  * fix some performance issue for certain pinyin input
+  * Allow table rule to specify character from backwards. 
+
+-------------------------------------------------------------------
 Sun Aug 27 05:40:04 UTC 2023 - Marguerite Su <i@marguerite.su>
 
 - update to 1.1.1
