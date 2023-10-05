@@ -77,4 +77,17 @@
 - Update Requires from setup.py (forwarded request 1089996 from glaubitz)</comment>
     <requestid>1090005</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6dc53bf7b23cedd5d4800b4e0cebdeae</srcmd5>
+    <version>3.1.0</version>
+    <time>1696529024</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 3.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1114976 from glaubitz)</comment>
+    <requestid>1115595</requestid>
+  </revision>
 </revisionlist>
