@@ -631,4 +631,12 @@
 </comment>
     <requestid>1032149</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>567d1e54bb4a7bc672229ffa9ba23cbd</srcmd5>
+    <version>1.13.9</version>
+    <time>1696528965</time>
+    <user>anag+factory</user>
+    <comment>- Buildrequire openssl gem to fix building with Ruby 3.0 (forwarded request 1114817 from mvidner)</comment>
+    <requestid>1115105</requestid>
+  </revision>
 </revisionlist>

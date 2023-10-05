@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-nokogiri
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Release:        0
 %define rb_build_ruby_abis ruby:3.1.0 ruby:2.7.0
 %endif
 BuildRequires:  %{rubygem mini_portile2 >= 2.8}
+BuildRequires:  %{rubygem openssl}
 BuildRequires:  %{rubygem pkg-config}
 BuildRequires:  libxml2-devel >= 2.6.21
 BuildRequires:  libxslt-devel
