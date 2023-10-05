@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 04 09:37:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.13:
+  * Fix chart-upgrade as a result of yaml library upgrade
+
+-------------------------------------------------------------------
+Wed Oct 04 09:36:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.12:
+  * feat: update openfaas-loki to use new OCI repository
+
+-------------------------------------------------------------------
 Mon Oct 02 10:46:19 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.10.11:
