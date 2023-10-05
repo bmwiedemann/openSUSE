@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  4 07:54:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.131
+  * Added new ``SOAP_SSL_SNI_HOST_CHECK`` flag for client-side
+    SSL/TLS configuration with OpenSSL to perform SNI only with a
+    syntactically valid hostname, not with an IP address, for
+    compliance with RFC 3546 RFC 6066.
+
+-------------------------------------------------------------------
 Mon Aug 28 11:59:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.130
