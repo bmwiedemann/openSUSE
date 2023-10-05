@@ -16,6 +16,8 @@
 #
 
 
+%bcond_without check
+
 Name:           nvme-cli
 Version:        2.6
 Release:        0
@@ -26,13 +28,14 @@ URL:            https://github.com/linux-nvme/nvme-cli/
 Source0:        nvme-cli-%{version}.tar.gz
 # downstream patches
 Patch100:       0100-harden_nvmf-connect@.service.patch
+BuildRequires:  asciidoc
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libhugetlbfs-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libnvme-devel
 BuildRequires:  libuuid-devel
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
 BuildRequires:  zlib-devel
@@ -87,8 +90,15 @@ Optional dependency offering zsh completion for NVM Express user space tools
     -Ddracutrulesdir=%{_sysconfdir}/dracut/dracut.conf.d \
     -Dsystemddir=%{_unitdir} \
     -Ddocs=man \
-    -Dsystemctl=%{_bindir}/systemctl
+    %{?_with_docs_build:-Ddocs-build=true} \
+    -Dsystemctl=%{_bindir}/systemctl \
+    -Dversion-tag=%{version}
 %meson_build
+
+%if %{with check}
+%check
+%meson_test
+%endif
 
 %install
 %meson_install

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  4 15:11:19 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Enable test during build
+- Drop minimum version meson dependency
+- Add asciidoc dependency
+- Build documentation when requested
+
+-------------------------------------------------------------------
 Fri Sep 29 11:49:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.6:
