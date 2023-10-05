@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct  4 15:36:01 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.71
+  * CTRL+A/ALT+A keybindings were swapped.
+- Update to version 1.70
+  * Bugfix: Shrink Pattern ("Srnk.") could lead to a pattern
+    length of 0.
+  * Better variable sanitation for some pattern editing routines,
+    may (?) prevent some rare crashes.
+  * CTRL+F5 (Paste Pattern) had wrong button names in its
+    message box when asking to adjust the pattern length after
+    pasting.
+  * Changed the above message box text to be easier to understand.
+  * Removed audio dithering for 16-bit audio bit depth mode. It
+    seemed to be wrongly implemented anyway.
+  * Some small changes done to the about screen.
+  * Code cleanup.
+
+-------------------------------------------------------------------
 Sun Aug 27 13:13:37 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.69
