@@ -170,7 +170,7 @@
 %define is_armv7 1
 %define binext .img
 %endif
-%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched" || "%target" == "starfivevisionfive2"
+%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched" || "%target" == "starfivevisionfive2" || "%target" == "microchipmpfsicicle"
 %define is_riscv64 1
 %if "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched" || "%target" == "starfivevisionfive2"
 %define binext .itb
@@ -180,7 +180,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2023.07
+%define archive_version 2023.10
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -210,7 +210,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2023.07
+Version:        2023.10
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only

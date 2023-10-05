@@ -1919,4 +1919,12 @@ Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2023.
     <comment>Update to 2023.07 + add starfivevisionfive2 flavor</comment>
     <requestid>1098190</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>a02a824a7a54175f36cfcc061cddae5d</srcmd5>
+    <version>2023.10</version>
+    <time>1696528990</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115673</requestid>
+  </revision>
 </revisionlist>
