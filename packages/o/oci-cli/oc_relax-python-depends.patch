@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.33.0.orig/requirements.txt oci-cli-3.33.0/requirements.txt
---- oci-cli-3.33.0.orig/requirements.txt	2023-09-06 11:07:04.000000000 +0200
-+++ oci-cli-3.33.0/requirements.txt	2023-09-11 15:06:18.994505506 +0200
+diff -Nru oci-cli-3.33.3.orig/requirements.txt oci-cli-3.33.3/requirements.txt
+--- oci-cli-3.33.3.orig/requirements.txt	2023-10-03 09:03:20.000000000 +0200
++++ oci-cli-3.33.3/requirements.txt	2023-10-03 15:46:44.652340451 +0200
 @@ -2,47 +2,47 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -18,7 +18,7 @@ diff -Nru oci-cli-3.33.0.orig/requirements.txt oci-cli-3.33.0/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.112.0
+-oci==2.112.3
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.11.0
@@ -38,7 +38,7 @@ diff -Nru oci-cli-3.33.0.orig/requirements.txt oci-cli-3.33.0/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.112.0
++oci>=2.112.3
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.11.0
@@ -87,34 +87,30 @@ diff -Nru oci-cli-3.33.0.orig/requirements.txt oci-cli-3.33.0/requirements.txt
 -urllib3<=1.26.15
 \ No newline at end of file
 +urllib3<=1.26.15
-diff -Nru oci-cli-3.33.0.orig/setup.py oci-cli-3.33.0/setup.py
---- oci-cli-3.33.0.orig/setup.py	2023-09-06 11:07:04.000000000 +0200
-+++ oci-cli-3.33.0/setup.py	2023-09-11 15:05:12.864430046 +0200
+diff -Nru oci-cli-3.33.3.orig/setup.py oci-cli-3.33.3/setup.py
+--- oci-cli-3.33.3.orig/setup.py	2023-10-03 09:03:20.000000000 +0200
++++ oci-cli-3.33.3/setup.py	2023-10-03 15:45:54.142196821 +0200
 @@ -30,23 +30,23 @@
      readme = f.read()
  
  requires = [
--    'oci==2.112.0',
-+    'oci>=2.112.0',
+-    'oci==2.112.3',
++    'oci>=2.112.3',
      'arrow>=1.0.0',
      'certifi',
 -    'click==8.0.4',
--    'cryptography>=3.2.1,<42.0.0',
--    'jmespath==0.10.0',
--    'python-dateutil>=2.5.3,<3.0.0',
 +    'click>=8.0.4',
-+    'cryptography>=3.2.1',
+     'cryptography>=3.2.1,<42.0.0',
+-    'jmespath==0.10.0',
 +    'jmespath>=0.10.0',
-+    'python-dateutil>=2.5.3',
+     'python-dateutil>=2.5.3,<3.0.0',
      'pytz>=2016.10',
      'six>=1.15.0',
 -    'terminaltables==3.1.0',
--    'pyOpenSSL>=17.5.0,<24.0.0',
--    'PyYAML>=5.4,<=6.0.1',
--    'prompt-toolkit==3.0.29'
 +    'terminaltables>=3.1.0',
-+    'pyOpenSSL>=17.5.0',
-+    'PyYAML>=5.4',
+     'pyOpenSSL>=17.5.0,<24.0.0',
+     'PyYAML>=5.4,<=6.0.1',
+-    'prompt-toolkit==3.0.29'
 +    'prompt-toolkit>=3.0.29'
  ]
  
