@@ -553,4 +553,31 @@
   * Fix use of -dead_strip_dylibs for macOS linker</comment>
     <requestid>1103979</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>1db98b73970373bc715e2da3d4f6fad6</srcmd5>
+    <version>2.15.0.1</version>
+    <time>1696529116</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.15.0.1:
+  * The tarball for calc version 2.15.0.0 was missing version.h.
+    The version.h is now listed as part of the calc distribution.
+    See gh/lcn2/calc#112
+
+- Update to 2.15.0.0:
+  * Added the several new trigonometric functions
+  * Added log2(x [,eps]) builtin function
+  * The sign element in a ZVALUE is now of type SIGN, which is either
+    SB32 when MAJOR_VER &lt; 3, or a bool otherwise
+  * Added new logn(x, n [,eps]) builtin to compute logarithms to base n.
+- Add calc-2.15.0.0-versionh.patch to fix build
+  See gh/lcn2/calc#112
+
+- Update to 2.14.3.5:
+  * Under macOS, to reduce dependency chains, we remove functions
+    and data that are unreachable by the entry point or exported
+    symbols.  In particular, the macOS linker is used with both
+    &quot;-dead_strip&quot; and &quot;-dead_strip_dylibs&quot;.
+  * The libcalc shared library is now linked with libcustcalc.</comment>
+    <requestid>1115823</requestid>
+  </revision>
 </revisionlist>
