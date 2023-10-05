@@ -18,18 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ruamel.yaml
-Version:        0.17.31
+Version:        0.17.35
 Release:        0
 Summary:        Python YAML parser
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://sourceforge.net/p/ruamel-yaml
 Source:         https://files.pythonhosted.org/packages/source/r/ruamel.yaml/ruamel.yaml-%{version}.tar.gz
 Patch0:         0000-fix-big-endian-issues.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-ruamel.yaml.clib >= 0.1.2
+Requires:       python-ruamel.yaml.clib >= 0.2.0
 BuildArch:      noarch
 %python_subpackages
 

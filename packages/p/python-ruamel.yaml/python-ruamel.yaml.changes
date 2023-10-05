@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  4 07:57:03 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.17.35
+ * Python 3.12 also loads C version when using `typ='safe'`
+ * initial support for loading invoking `__post_init__` on dataclasses
+    that have that method after loading a registered dataclass
+    (`@yaml.register_class\n@dataclass\nclass ...`)
+ * fix issue with scanner getting stuck in infinite loop
+ * added `flow_seq_start`, `flow_seq_end`, `flow_seq_separator`,
+    `flow_map_start`, `flow_map_end`, `flow_map_separator` **class**
+    attributes to the `Emitter` class so flow style output
+    can more easily be influenced 
+
+-------------------------------------------------------------------
 Thu Jun  1 05:46:10 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.17.31:
