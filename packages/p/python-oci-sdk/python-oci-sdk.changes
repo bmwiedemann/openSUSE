@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct  3 12:53:07 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.112.3
+  * Support for elastic resource pools in the Database service
+  * Support for private endpoints in the Data Science service
+  * Support for File System Service (FSS) as transfer medium for
+    data export and import in the Database Migration service
+  * Support for new optional parameters on replica create,
+    update and list operations in the MySQL Heatwave service
+- from version 2.112.2
+  * Support for listing compute performances and storage
+    performances in Database service
+  * Support for private endpoints for external key managers
+    in Key Management service
+  * Support for additional parameters in vaults and keys for
+    external key managers in Key Management service
+  * Support for domains while creating integration instances
+    in Oracle Integration Cloud service
+
+-------------------------------------------------------------------
 Fri Sep 22 12:47:33 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.112.1
