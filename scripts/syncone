@@ -33,4 +33,5 @@ $ENV{PKG}=$pkg;
 }
 do("./scripts/mappkgs.pl");
 $mappedpkg=(glob("packages/$first*/$pkg"))[0];
+system "git add $mappedpkg";
 rename($tmpgit, "$mappedpkg/.git");
