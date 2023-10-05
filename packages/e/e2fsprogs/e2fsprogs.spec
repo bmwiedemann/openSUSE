@@ -79,6 +79,11 @@ Obsoletes:      e2fsprogs-64bit
 %endif
 #
 # For regenerate_initrd_post macro
+%if 0%{?suse_version} < 1550
+BuildRequires:  suse-module-tools
+%else
+BuildRequires:  rpm-config-SUSE
+%endif
 Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires:       libcom_err2 >= %{version}
 Requires:       libext2fs2 >= %{version}
@@ -282,7 +287,7 @@ done
 %if 0%{?suse_version} <= 1530
 %install_info --info-dir=%{_infodir} %{_infodir}/libext2fs.info.gz
 %endif
-%{?regenerate_initrd_post}
+%{regenerate_initrd_post}
 
 %if %{with systemd}
 %post -n e2fsprogs-scrub
@@ -301,7 +306,7 @@ done
 
 %postun
 /sbin/ldconfig
-%{?regenerate_initrd_post}
+%{regenerate_initrd_post}
 
 %if %{with systemd}
 %postun -n e2fsprogs-scrub
@@ -309,7 +314,7 @@ done
 %endif
 
 %posttrans
-%{?regenerate_initrd_posttrans}
+%{regenerate_initrd_posttrans}
 
 %post -n libext2fs2 -p /sbin/ldconfig
 

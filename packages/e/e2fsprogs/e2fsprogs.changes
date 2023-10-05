@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  4 16:34:10 UTC 2023 - Jan Kara <jack@suse.cz>
+
+- Update specfile to make sure regenerate_initrd_post macro is defined
+
+-------------------------------------------------------------------
 Wed Feb  8 10:14:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.47.0:
