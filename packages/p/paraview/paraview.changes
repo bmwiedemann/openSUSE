@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 30 17:16:04 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.11.2:
+  * User interface:
+    - pqFileDialog: Remove existence check when selecting multiple
+      files 
+    - Avoid crash in Find Data panel if nothing is selected
+  * Remoting:
+    - ArrayListDomain: Fix a potential segfault with empty array
+      name
+    - RangeDomain: fix interval condition
+    - Add sanity checks around several GridAxesRepresentation
+      usage
+  * Filters:
+    - Support jpeg extension for textures. 
+    - vtkHyperTreeGridAxisClip: Fix InsideOut
+  * Readers:
+    - openPMD: The openPMD python module was updated to fix bugs.
+    - Incorrect fetching of rectilinear grid object
+  * Catalyst: Fixing Catalyst2 example to have proper Conduit
+  * spacing names Python:
+    - pythonalgorithm: Fix for smproperty.proxy
+    - Fix --displays gets passed to pvbatch
+
+-------------------------------------------------------------------
 Sat Jul 26 00:00:00 UTC 2023 - vicente.bolea@gmail.com
 
 - Fixes issue that protobuf demands the use of -std=c++17.

@@ -495,4 +495,12 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
     <comment></comment>
     <requestid>1100947</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>1d7b07676fa39e2eca9c109166a079d6</srcmd5>
+    <version>5.11.2</version>
+    <time>1696529089</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115757</requestid>
+  </revision>
 </revisionlist>

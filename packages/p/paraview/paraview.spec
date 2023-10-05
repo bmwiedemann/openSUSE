@@ -46,7 +46,7 @@
 
 %define __builder ninja
 Name:           paraview
-Version:        %{short_ver}.1
+Version:        %{short_ver}.2
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause
@@ -55,8 +55,8 @@ URL:            https://www.paraview.org
 Source0:        https://www.paraview.org/files/v%{short_ver}/ParaView-v%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 # CAUTION: GettingStarted may or may not be updated with each minor version
-Source2:        https://www.paraview.org/files/v%{short_ver}/ParaViewGettingStarted-%{version}.pdf
-Source3:        https://www.paraview.org/files/v%{short_ver}/ParaViewTutorial-%{version}.pdf
+Source2:        https://www.paraview.org/files/v%{short_ver}/ParaViewGettingStarted-%{major_ver}.%{minor_ver}.1.pdf
+Source3:        https://www.paraview.org/files/v%{short_ver}/ParaViewTutorial-%{major_ver}.%{minor_ver}.1.pdf
 # PATCH-FIX-UPSTREAM paraview-desktop-entry-fix.patch badshah400@gmail.com -- Fix desktop menu entry by inserting proper required categories
 Patch0:         paraview-desktop-entry-fix.patch
 # PATCH-FIX-OPENSUSE fix-libharu-missing-m.patch -- missing libraries for linking (gh#libharu/libharu#213)
