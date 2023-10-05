@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 26 09:34:49 UTC 2023 - Noel Power <nopower@suse.com>
+
+-  Update to version 0.15.0
+    * remove py2 ifdefs
+    * python: Safely clear structure members
+    * the tevent_thread_call_depth API is updated
+      in order to allow better tracing.
+    * add tevent_set_max_debug_level() only and don't
+      pass TEVENT_DEBUG_TRACE to tevent_debug() callbacks by default.
+    * Spelling fixes
+    * Make use of epoll_create1() for epoll backend
+    * Optimize overhead in the epoll backend
+
+-------------------------------------------------------------------
 Mon Apr 24 10:07:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
