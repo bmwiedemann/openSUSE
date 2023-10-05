@@ -1,7 +1,7 @@
 #
 # spec file for package netcfg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,9 @@ Release:        0
 Summary:        Network Configuration Files in /etc
 License:        BSD-3-Clause
 Group:          System/Base
-Source0:        defaultdomain
 Source1:        exports
-Source2:        ftpusers
 Source3:        host.conf
 Source4:        hosts
-Source7:        hosts.equiv
-Source8:        hosts.lpd
 Source9:        networks
 Source10:       protocols
 Source11:       services.bz2
@@ -62,7 +58,7 @@ cp %{SOURCE16} .
 
 %install
 mkdir -p %{buildroot}%{_sysconfdir}
-for i in hostname aliases defaultdomain exports ftpusers host.conf hosts hosts.equiv hosts.lpd netgroup ethertypes; do
+for i in hostname aliases exports host.conf hosts netgroup ethertypes; do
   install $RPM_SOURCE_DIR/$i %{buildroot}/%{_sysconfdir}
 done
 mkdir -p %{buildroot}%{_prefix}%{_sysconfdir}
@@ -79,14 +75,10 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/exports.d
 %defattr(644,root,root,755)
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hostname
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/aliases
-%verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/defaultdomain
 %verify(not md5 size mtime)                    %{_prefix}%{_sysconfdir}/ethers
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/exports
-%verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/ftpusers
 %config(noreplace) %{_sysconfdir}/host.conf
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts
-%verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts.equiv
-%verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts.lpd
 %config(noreplace) %{_sysconfdir}/netgroup
 %{_prefix}%{_sysconfdir}/networks
 %{_prefix}%{_sysconfdir}/protocols

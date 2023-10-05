@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  4 09:45:23 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove ftpusers, none of our ftp servers uses that anymore
+- Remove defaultdomain, NIS got dropped
+
+-------------------------------------------------------------------
+Tue Sep 26 16:19:47 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove hosts.equiv and hosts.lpd, the tools using them got
+  dropped long ago.
+
+-------------------------------------------------------------------
 Tue Oct 11 09:33:40 UTC 2022 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Remove hosts.allow and hosts.deny config files as they are only
