@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 30 14:22:48 UTC 2023 - Hannes Braun <apple.hannes@gmail.com>
+
+- Update to 0.16.4:
+  * dJointAddPUTorques() was added to replace orphaned declaration of 
+    dJointAddPUTorque().
+  * Fixed a missing break in a switch statement in demo_jointPU.cpp while
+    handling gravity switching request.
+  * Fixed wrong face index being returned in convex-trimesh libCCD 
+    collision check routine.
+  * Fixed use of potentially outdated AABBs in GIIMPACT cylinder-trimesh
+    collision check routine.
+
+-------------------------------------------------------------------
 Sun Jan 15 21:03:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.3:
