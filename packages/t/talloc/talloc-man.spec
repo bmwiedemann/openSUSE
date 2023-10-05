@@ -35,7 +35,7 @@ BuildRequires:  python3-devel
 #!BuildIgnore:  python
 %endif # build_man
 URL:            http://talloc.samba.org/
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Samba talloc Library
 License:        LGPL-3.0-or-later
