@@ -23,7 +23,7 @@
 %bcond_with devpi_process
 %endif
 Name:           python-tox
-Version:        4.11.1
+Version:        4.11.3
 Release:        0
 Summary:        Virtualenv-based automation of test activities
 License:        MIT

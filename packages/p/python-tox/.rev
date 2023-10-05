@@ -614,4 +614,41 @@ please add to Staging:E, should fix the tox failure</comment>
   - Please check the .changes file for a more complete changelog.</comment>
     <requestid>1109766</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>fda838e1bd22b3553a833492f9ef8842</srcmd5>
+    <version>4.11.3</version>
+    <time>1696529113</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.11.3:
+  * docs(plugin): explain plugin registration
+  * Fix error caused by a bad `base_python` path
+  * Fix typos discovered by codespell
+  * Providing example to make CLI help more helpful for -x,--
+    override
+  * Remove stray colons in `config.rst` left over from #3111
+
+  * on venv cleanup: add explicit check for pypy venv to make it possible to recreate it
+  * --showconfig overhaul
+- Update to 2.1.1:
+  * fix issue258, fix issue248, fix issue253: for non-test commands
+  * fix issue247: tox now passes the LANG variable from the tox invocation
+    invocation environment to the test environment and on Windows
+    on unix additionally ``TMPDIR`` is passed.  If you need to pass
+    execute: the new per-venv &quot;platform&quot; setting allows to specify
+    If platform is set and doesn't match the platform spec in the test
+    for testenv sections.  Can be used from plugins through the
+    call virtualenv through &quot;python -m virtualenv&quot; with the same
+  + fix issue116: make 1.6 introduced behaviour of changing to a
+    per-env HOME directory during install activities dependent
+  + fix issue117: python2.5 fix: don't use ``--insecure`` option because
+    want to support python2.5/pip1.3.1 based test environments you need
+  + fix issue91: python2.5 support by vendoring the virtualenv-1.9.1
+    script and forcing pip&lt;1.4. Also the default [py25] environment
+    to use pip without the &quot;--pre&quot; option which was introduced
+    with pip-1.4 and is now required if you want to install non-stable
+ - make sure test commands are searched first in the virtualenv
+ - show (test) command that is being executed, thanks
+ - depend on virtualenv-1.9.1</comment>
+    <requestid>1115808</requestid>
+  </revision>
 </revisionlist>
