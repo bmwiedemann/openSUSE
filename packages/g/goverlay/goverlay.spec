@@ -1,7 +1,7 @@
 #
 # spec file for package goverlay
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,37 +37,23 @@ Requires:       mangohud
 Requires:       replay-sorcery
 Requires:       vkbasalt
 Requires:       vulkan-tools
+%if 0%{?suse_version} > 1500
+BuildRequires:  lazarus-lcl-qt5
+%endif
 
 %description
 GOverlay is a graphical UI to manage Vulkan/OpenGL overlays.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
-# Manually set build flag as Leap 15.2 does not support %%{set_build_flags} macro unlike TW.
-CFLAGS='-O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type -flto=auto -g'
-export CFLAGS
-CXXFLAGS='-O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type -flto=auto -g'
-export CXXFLAGS
-FFLAGS='-O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type -flto=auto -g'
-export FFLAGS
-FCFLAGS='-O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type -flto=auto -g'
-export FCFLAGS
-LDFLAGS=-flto=auto
-export LDFLAGS
-
+%{set_build_flags}
 %make_build
 
 %install
 %make_install prefix=%{_prefix} libexecdir=/%{_lib}
-
-# Desktop file validation fails in Leap
-# https://github.com/benjamimgois/goverlay/issues/46
-%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150200
 %suse_update_desktop_file -r io.github.benjamimgois.%{name} Development Profiling
-%endif
 
 %check
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
