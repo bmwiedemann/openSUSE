@@ -197,4 +197,15 @@
     <comment>Update to 5.3.1</comment>
     <requestid>1114403</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>1f246e338f594a9ee081beecdf1e5d44</srcmd5>
+    <version>5.3.1</version>
+    <time>1696529040</time>
+    <user>anag+factory</user>
+    <comment>- Disable the collada importer/exporter due to a long standing
+  security issue (boo#1207377, CVE-2022-45748, gh#assimp/assimp#4286)
+- Add patch:
+  * 0001-Don-t-build-the-collada-importer-exporter-tests.patch</comment>
+    <requestid>1115678</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  4 14:14:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Disable the collada importer/exporter due to a long standing
+  security issue (boo#1207377, CVE-2022-45748, gh#assimp/assimp#4286)
+- Add patch:
+  * 0001-Don-t-build-the-collada-importer-exporter-tests.patch
+
+-------------------------------------------------------------------
 Fri Sep 29 13:23:52 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 5.3.1

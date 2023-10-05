@@ -1,0 +1,27 @@
+From a0628aa4b175b6764ac6ea481a5e65f91cd118fa Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Wed, 4 Oct 2023 16:23:17 +0200
+Subject: [PATCH] Don't build the collada importer/exporter tests
+
+---
+ test/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index afe487411..d8f044501 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -141,8 +141,8 @@ SET( IMPORTERS
+   unit/utBlendImportMaterials.cpp
+   unit/utBlenderWork.cpp
+   unit/utBVHImportExport.cpp
+-  unit/utColladaExport.cpp
+-  unit/utColladaImportExport.cpp
++  # unit/utColladaExport.cpp
++  # unit/utColladaImportExport.cpp
+   unit/utCSMImportExport.cpp
+   unit/utB3DImportExport.cpp
+   #unit/utM3DImportExport.cpp
+-- 
+2.42.0
+
