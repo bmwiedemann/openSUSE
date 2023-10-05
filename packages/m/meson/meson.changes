@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Oct  4 07:30:44 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add
+  0007-Revert-rust-apply-global-project-and-environment-C-a.patch:
+  Revert upstream commit (gh#mesonbuild/meson#12326).
+
+-------------------------------------------------------------------
+Mon Oct  2 01:02:34 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.2.2:
+  + ninja backend: fix the automatic restat of outputs when
+    reconfiguring.
+  + Fix completely broken support for static: true with
+    dependency('cuda').
+  + Use cudart_static by default in dependency('cuda').
+  + gnome:
+    - Fix crash in gtkdoc and generate_gir in C++ projects.
+    - Fix glib tool lookup consistency.
+  + compilers: fix compiler detection when the "ccache" string is
+    in the path.
+  + Fix crash when installing a vala library and python sources.
+  + Fix bug with openssl when cmake is missing.
+  + msubprojects: Speedup subproject_dir extraction.
+  + Allow unit test to parse testcase blocks.
+  + Fix assertion raised with invalid option name.
+  + rust:
+    - properly rematerialize static dependencies as well as dynamic
+      ones.
+    - apply global, project, and environment C args to bindgen.
+  + get_llvm_tool_names: add llvm 17.
+  + openmp: add 5.1/5.2, fixes openmp with llvm v17.
+  + Fix bug where all java builds & tests fail to run SanityCheck
+    on JDK11.
+  + Add support for sw_64 CPU family.
+- Drop merged upstream patch: get_llvm_tool_names-llvm17.patch.
+
+-------------------------------------------------------------------
 Sat Sep 23 20:58:26 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Port back get_llvm_tool_names-llvm17.patch to accept LLVM 17.

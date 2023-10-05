@@ -844,4 +844,14 @@
     <comment></comment>
     <requestid>1113283</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>c09e29932f8b6faa3eb2f83f36bb037c</srcmd5>
+    <version>1.2.2</version>
+    <time>1696528940</time>
+    <user>anag+factory</user>
+    <comment>- Add
+  0007-Revert-rust-apply-global-project-and-environment-C-a.patch:
+  Revert upstream commit (gh#mesonbuild/meson#12326). (forwarded request 1115538 from dimstar)</comment>
+    <requestid>1115539</requestid>
+  </revision>
 </revisionlist>

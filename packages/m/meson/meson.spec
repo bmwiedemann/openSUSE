@@ -35,7 +35,7 @@
 %bcond_with     setuptools
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -50,8 +50,9 @@ Patch0:         meson-test-installed-bin.patch
 Patch1:         extend-test-timeout-on-qemu-builds.patch
 # PATCH-FIX-OPENSUSE meson-distutils.patch -- meson is ring0 and therefor setuptools is not available
 Patch2:         meson-distutils.patch
-# PATCH-FIX-UPSTREAM get_llvm_tool_names-llvm17.patch -- Accept LLVM 17.
-Patch3:         get_llvm_tool_names-llvm17.patch
+# PATCH-FIX-UPSTREAM 0007-Revert-rust-apply-global-project-and-environment-C-a.patch gh#mesonbuild/meson#12326 -- Fix Mesa build
+Patch3:         0007-Revert-rust-apply-global-project-and-environment-C-a.patch
+
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
