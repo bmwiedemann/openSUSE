@@ -38,10 +38,10 @@
 %define build_ceph 1
 %endif
 
-%define talloc_version 2.4.0
-%define tevent_version 0.14.1
-%define tdb_version    1.4.8
-%define ldb_version    2.7.1
+%define talloc_version 2.4.1
+%define tevent_version 0.15.0
+%define tdb_version    1.4.9
+%define ldb_version    2.8.0
 
 # This table represents the possible combinations of build macros.
 # They are defined only if not already defined in the build service
@@ -158,7 +158,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.18.6+git.320.cfda27bacb
+Version:        4.19.0+git.306.19d2e214c58
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -1188,6 +1188,7 @@ exit 0
 %{_bindir}/pdbedit
 %{_bindir}/profiles
 %{_bindir}/rpcclient
+%{_bindir}/samba-log-parser
 %{_bindir}/sharesec
 %{_bindir}/smbcacls
 %{_bindir}/smbclient
@@ -1220,6 +1221,7 @@ exit 0
 %{_mandir}/man1/regtree.1.*
 %{_mandir}/man1/rpcclient.1.*
 %{_mandir}/man1/sharesec.1.*
+%{_mandir}/man1/samba-log-parser.1.*
 %{_mandir}/man1/smbcacls.1.*
 %{_mandir}/man1/smbcontrol.1.*
 %{_mandir}/man1/smbclient.1.*
@@ -1231,7 +1233,6 @@ exit 0
 %{_mandir}/man1/mvxattr.1.*
 %{_mandir}/man5/lmhosts.5.*
 %{_mandir}/man5/smb.conf.5.*
-%{_mandir}/man5/smbgetrc.5.*
 %{_mandir}/man7/samba.7.*
 %{_mandir}/man8/cifsdd.8.*
 %{_mandir}/man8/eventlogadm.8.*
@@ -1417,6 +1418,9 @@ exit 0
 %{_libdir}/samba/libads-samba4.so
 %{_libdir}/samba/libasn1util-samba4.so
 %{_libdir}/samba/libauth-samba4.so
+%if %{with_dc}
+%{_libdir}/samba/libauthn-policy-util-samba4.so
+%endif
 %{_libdir}/samba/libauthkrb5-samba4.so
 %{_libdir}/samba/libcli-cldap-samba4.so
 %{_libdir}/samba/libcli-ldap-samba4.so
@@ -1816,8 +1820,12 @@ exit 0
 %{_datadir}/samba/setup/ad-schema/MS-AD_Schema_2K8_R2_Classes.txt
 %{_datadir}/samba/setup/ad-schema/AD_DS_Attributes__Windows_Server_2012_R2.ldf
 %{_datadir}/samba/setup/ad-schema/AD_DS_Attributes__Windows_Server_2016.ldf
+%{_datadir}/samba/setup/ad-schema/AD_DS_Attributes__Windows_Server_v1803.ldf
+%{_datadir}/samba/setup/ad-schema/AD_DS_Attributes_Windows_Server_v1903.ldf
 %{_datadir}/samba/setup/ad-schema/AD_DS_Classes__Windows_Server_2012_R2.ldf
 %{_datadir}/samba/setup/ad-schema/AD_DS_Classes__Windows_Server_2016.ldf
+%{_datadir}/samba/setup/ad-schema/AD_DS_Classes__Windows_Server_v1803.ldf
+%{_datadir}/samba/setup/ad-schema/AD_DS_Classes_Windows_Server_v1903.ldf
 %{_datadir}/samba/setup/ad-schema/Attributes_for_AD_DS__Windows_Server_2008_R2.ldf
 %{_datadir}/samba/setup/ad-schema/Attributes_for_AD_DS__Windows_Server_2012.ldf
 %{_datadir}/samba/setup/ad-schema/Classes_for_AD_DS__Windows_Server_2008_R2.ldf
@@ -1859,6 +1867,7 @@ exit 0
 %if %{with_dc}
 %files ad-dc-libs
 %defattr(-,root,root)
+%{_libdir}/samba/libad-claims-samba4.so
 %{_libdir}/samba/libdb-glue-samba4.so
 %{_libdir}/samba/libdsdb-garbage-collect-tombstones-samba4.so
 %{_libdir}/samba/libscavenge-dns-records-samba4.so

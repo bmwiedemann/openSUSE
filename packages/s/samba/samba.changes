@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Sep 26 08:36:43 UTC 2023 - Noel Power <nopower@suse.com>
+
+- Update to 4.19.0
+  * File doesn't show when user doesn't have permission if
+    aio_pthread is loaded; (bso#15453).
+  * ctdb_killtcp fails to work with --enable-pcap and libpcap ≥
+    1.9.1; (bso#15451).
+  * Logging to stdout/stderr with DEBUG_SYSLOG_FORMAT_ALWAYS can
+    log to syslog; (bso#15460).
+  * ‘samba-tool domain level raise’ fails unless given a URL;
+    (bso#15458).
+  * reply_sesssetup_and_X() can dereference uninitialized tmp
+    pointer; (bso#15420).
+  * missing return in reply_exit_done(); (bso#15430).
+  * TREE_CONNECT without SETUP causes smbd to use uninitialized
+    pointer; (bso#15432).
+  * Avoid infinite loop in initial user sync with Azure AD
+    Connect when synchronising a large Samba AD domain;
+    (bso#15401).
+  * Samba replication logs show (null) DN; (bso#15407).
+  * 2-3min delays at reconnect with
+    smb2_validate_sequence_number: bad message_id 2; (bso#15346).
+  * DCERPC_PKT_CO_CANCEL and DCERPC_PKT_ORPHANED can't be parsed;
+    (bso#15446).
+  * CID 1539212 causes real issue when output contains only
+    newlines; (bso#15438).
+  * KDC encodes INT64 claims incorrectly; (bso#15452).
+  * mdssvc: Do an early talloc_free() in _mdssvc_open();
+    (bso#15449).
+  * Windows client join fails if a second container CN=System
+    exists somewhere; (bso#9959).
+  * regression DFS not working with widelinks = true;
+    (bso#15435).
+  * Heimdal fails to build on 32-bit FreeBSD; (bso#15443).
+  * samba-tool ntacl get segfault if aio_pthread appended;
+    (bso#15441).
+
+-------------------------------------------------------------------
 Mon Aug 21 15:16:35 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 4.18.6
