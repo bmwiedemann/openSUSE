@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Thu Sep 21 05:49:59 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.2.0:
+  * Fixed crash in background extraction samples removing (#1123)
+  * Fixed crash in binning with ushort images (4d4d4878)
+  * Fixed crash in findstar when a large saturated patch was close to border
+  * Fixed memory leaks in deconvolution code (3e122ad7)
+  * Fixed sorting in the rightmost columns in Dynamic PSF window (75586c04)
+  * Added logging typed command in stdout (06f67292)
+  * Improved path-checking and messages for astrometry.net local solver (Windows) (!524)
+  * Prevent crash using recomposition tool eyedroppers without images loaded (!526)
+  * Fixed HaOiii script failure if input image has odd dimensions (!533)
+  * Fixed errors in GNUplot process handling (!538)
+  * Fixed crash with seqextract_HaOIII command (!535)
+  * Fixed crash when trying to export csv from empty plot (#1150)
+  * Fixed deleting RA/Dec info when undoing an astrometry solve (#1119)
+  * Improved error detection and messages for astrometry (!516)
+  * Fixed sampling range specification for siril internal solver (!549)
+  * Fixed all command descriptions (!546)
+  * Fixed SER orientation after AVI conversion (#1120)
+  * Fixed rescaling float images upon loading when not in [0,1] range (#1155)
+  * Fixed initialization of guide image for clamping (#1114)
+  * Fixed disabling weighting in the GUI when widget is not visible (#1158)
+  * Fixed output_norm behavior for stacking to ignore border values (#1159)
+  * Fixed the check for the no space left condition in the conversion (#1108)
+  * Fixed DATE_OBS missing on seqapplyreg if interp was set to NONE (#1156)
+  * Fixed photometry issue with 8-bit .ser file (#1160)
+  * Fixed removing zero values in histogram calculations (#1164)
+  * Fixed pixel sizes after HaOIII extrcation (#1175)
+  * Fixed crash when passing only constants in pm expression (#1176)
+  * Fixed incorrect channel when adding star from selection in RGB vport (#1180)
+  * Allow to access to non-local disk (#1182)
+  * Allow the Star Recomposition UI to scroll when larger than the dialog (#1172)
+  * Fixed wrong Bayer interpretation after FITS-SER conversion (#1193)
+  * Fixed pixelmath argument parsing error (#1189)
+  * Fixed handling of special characters in sequence name during conversion
+  * Fixed crash in seqstarnet when processing single-file sequences (SER, FITSEQ)
+  * Fixed hang in seqstarnet when processing a single-file sequence with no star mask
+  * Fixed using default masters names in calibrate (GUI)
+  * Fixed invoking external programs in CLI mode (Windows only)
+  * Fixed stream setting for all versions of ffmpeg (mp4 export crash)
+  * Fixed crash when doing manual registration of sequence with variable image sizes (now disabled)
+  * Fixed UI and command issues in deconvolution code
+  * Fixed star recomposition issue where LIVETIME and STACKCNT could be doubled when processing
+    the starless and star mask parts of the same image
+  * Fixed “image copy error in previews” bug in asinh transformation
+  * Fixed reset of the viewports when reopening the RGB composition tool after opening a mono sequence
+  * Fixed star detection for undersampled mono images
+  * Fixed sequence cleaning with opened image and resetting the reference image
+  * Fixed photometry with 32bit images from PRISM
+  * Fixed incorrect behaviour when resetting right-hand stretch type in star recomposition tool
+  * Fixed sequence handling when images have different number of layers
+  * Fixed GNUplot terminals so they remain interactive and free resources when closed
+  * Fixed crash that could occur when parsing string keywords that contained forbidden characters
+  * Fixed calling external processes that left too many opened file descriptors
+  * Fixed Stop behavior for starnet and local astrometry.net
+  * Fixed crash when running merge_cfa in headless mode
+  * Fixed console logs output on Windows when messages contained widechars
+  * Fixed networking detection at build-time and made it and exiv2 optional
+  * Fixed bug in NetPBM file import
+  * Changed gnuplot initialization to keep plots open after stopping main process (and fixed leak)
+  * Changed image opening for all images not from Siril (ensures DATAMAX is correct)
+  * Improved parsing of localization data for wider imaging software compatibility
+  * Improved DATE-OBS control and log for solar system features
+  * Improved clipping model in luminance-based GHS stretches
+  * Improved Wayland support
+  * Reviewed and fixed coordinate conversion from WCS to display for annotations, nomad command, pcc
+  * Improved astrometry.net handling on Windows to support more recent cygwin builds
+  * Updated URLs to query online catalogs
+- Drop upstreamed 0001-Fix-compilation-with-Exiv-0.28.patch.
+- Add fix-exiv2.patch.
+
+-------------------------------------------------------------------
 Fri Jun 23 14:36:11 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add 0001-Fix-compilation-with-Exiv-0.28.patch

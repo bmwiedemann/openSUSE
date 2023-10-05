@@ -17,23 +17,25 @@
 
 
 Name:           siril
-Version:        1.0.6
+Version:        1.2.0
 Release:        0
 Summary:        An astronomical image processing software for Linux. (IRIS clone)
 License:        BSL-1.0 AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://www.siril.org/
 Source:         https://gitlab.com/free-astro/siril/-/archive/%{version}/siril-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM -- https://gitlab.com/free-astro/siril/-/commit/a593c2b10c9090b5f991718148d61c0fa156fb41
-Patch0:         0001-Fix-compilation-with-Exiv-0.28.patch
+Patch0:         fix-exiv2.patch
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  meson >= 0.53.0
+BuildRequires:  libheif-devel
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(exiv2) >= 0.25
 BuildRequires:  pkgconfig(ffms2)
 BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.6
