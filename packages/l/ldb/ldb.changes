@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 26 09:52:58 UTC 2023 - Noel Power <nopower@suse.com>
+
+-  Update to 2.8.0
+    * CVE-2023-0614 Not-secret but access controlled LDAP attributes can be discovered (bug 15270)
+    * pyldb: Raise an exception if ldb_dn_get_parent() fails
+    * Implement ldap_whoami in pyldb and add the RFC4532 LDB_EXTENDED_WHOAMI_OID definition
+    * Documentation and spelling fixes
+    * Add ldb_val -> bool,uint64,int64 parsing functions
+    * Split out ldb_val_as_dn() helper function
+    * add LDB_CHANGETYPE_MODRDN support to ldb_ldif_to_pyobject()
+    * add LDB_CHANGETYPE_DELETE support to ldb_ldif_to_pyobject()
+    * let ldb_ldif_parse_modrdn() handle names without 'rdn_name=' prefix
+    * Don't create error string if there is no error
+    * Avoid allocation and memcpy() for every wildcard match candidate
+    * Make ldb_msg_remove_attr O(n)
+    * pyldb: Throw error on invalid controls
+    * pyldb: remove py2 ifdefs
+    * Call tevent_set_max_debug_level(TEVENT_DEBUG_TRACE)
+
+-------------------------------------------------------------------
 Wed Mar 29 15:28:03 UTC 2023 - Noel Power <nopower@suse.com>
 
 - CVE-2023-0614: Access controlled AD LDAP attributes can be

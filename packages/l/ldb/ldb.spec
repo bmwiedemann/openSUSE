@@ -27,9 +27,9 @@
 %endif
 
 %define lmdb_version 0.9.16
-%define talloc_version 2.4.0
-%define tdb_version 1.4.8
-%define tevent_version 0.14.1
+%define talloc_version 2.4.1
+%define tdb_version 1.4.9
+%define tevent_version 0.15.0
 
 Name:           ldb
 BuildRequires:  docbook-xsl-stylesheets
@@ -57,7 +57,7 @@ BuildRequires:  lmdb-devel >= %{lmdb_version}
 %endif
 
 URL:            https://ldb.samba.org/
-Version:        2.7.2
+Version:        2.8.0
 Release:        0
 Summary:        An LDAP-like embedded database
 License:        LGPL-3.0-or-later
