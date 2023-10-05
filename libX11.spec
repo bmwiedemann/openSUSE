@@ -17,7 +17,7 @@
 
 
 Name:           libX11
-Version:        1.8.6
+Version:        1.8.7
 Release:        0
 Summary:        Core X11 protocol client library
 License:        MIT

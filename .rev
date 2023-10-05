@@ -596,4 +596,27 @@ additions, including new UTF-8 compose sequences for:
     <comment></comment>
     <requestid>1098898</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>638c192ee9a4fccb149af77fb860f947</srcmd5>
+    <version>1.8.7</version>
+    <time>1696528962</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.7
+  This release contains fixes for the issues reported in security
+  advisory here: 
+    https://lists.x.org/archives/xorg-announce/2023-October/003424.html
+  * fixes CVE-2023-43785 libX11: out-of-bounds memory access in 
+    _XkbReadKeySyms() (boo#1215683)
+  * fixes CVE-2023-43786 libX11: stack exhaustion from infinite recursion
+   in PutSubImage() (boo#1215684)
+  * fixes CVE-2023-43787 libX11: integer overflow in XCreateImage()
+    leading to a heap overflow (boo#1215685)
+  along with:
+  * Fail XOpenDisplay() if server-provided default visual is invalid (!233)
+  * Bring XKB docs in line with actual implementation (!231, !228)
+  * Xutil.h: declare XEmptyRegion() and XEqualRegion() as Bool (!225)
+  * Assorted updates to en_US.UTF-8 compose keys (!213, !214, !215, !216,
+    !217, !219, !220, !222, !223, !226, !227, !229)</comment>
+    <requestid>1115072</requestid>
+  </revision>
 </revisionlist>
