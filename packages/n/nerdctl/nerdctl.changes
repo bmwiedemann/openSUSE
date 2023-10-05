@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Wed Sep 27 06:21:54 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.6.0:
+  * nerdctl version: skip inspecting rootless daemon if the daemon is not running
+  * docs: add SOCI snapshotter guideline in README.md
+  * build(deps): bump github.com/klauspost/compress from 1.16.7 to 1.17.0
+  * build(deps): bump gotest.tools/v3 from 3.5.0 to 3.5.1
+  * update containerd (1.7.6)
+  * feat: support push with soci
+  * nerdctl compose cp: support rootless
+  * compose: silence "build.config should be relative path" warning
+  * Implement `nerdctl compose exec -T`
+  * docs: fix docs for supported quiet flag of push command
+  * build(deps): bump github.com/opencontainers/image-spec
+  * add feature nerdctl compose cp
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * seccomp: rename "default" to "builtin" to follow Docker 23
+  * update golangci-lint (1.54.2)
+  * update soci-snapshotter (0.4.0)
+  * update Nydus (2.2.3)
+  * update Kubo (0.22.0)
+  * update fuse-overlayfs (1.13)
+  * update slirp4netns (1.2.1)
+  * update RootlessKit (1.1.1)
+  * update imgcrypt (1.1.8)
+  * update BuildKit (0.12.2)
+  * update containerd (1.7.6)
+  * build(deps): bump github.com/containerd/containerd from 1.7.5 to 1.7.6
+  * build(deps): bump docker/login-action from 2.2.0 to 3.0.0
+  * build(deps): bump docker/setup-qemu-action from 2 to 3
+  * build(deps): bump docker/metadata-action from 4.6.0 to 5.0.0
+  * build(deps): bump docker/setup-buildx-action from 2 to 3
+  * build(deps): bump docker/build-push-action from 4.2.1 to 5.0.0
+  * build(deps): bump github.com/compose-spec/compose-go
+  * remove useless option from containerd-rootless-setuptool
+  * build(deps): bump docker/build-push-action from 4.1.1 to 4.2.1
+  * MAINTAINERS: add Kay Yan (yankay) as a REVIEWER
+  * fix bash completion of volume rm
+  * build(deps): bump github.com/cyphar/filepath-securejoin
+  * adjust writers fmt
+  * fix container_create_windows_test
+  * add missing zero-length list check
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/docker/docker
+  * build(deps): bump golang.org/x/net from 0.14.0 to 0.15.0
+  * build(deps): bump golang.org/x/term from 0.11.0 to 0.12.0
+  * build(deps): bump golang.org/x/text from 0.12.0 to 0.13.0
+  * build(deps): bump golang.org/x/sys from 0.11.0 to 0.12.0
+  * build(deps): bump actions/checkout from 3.6.0 to 4.0.0
+  * fix nerdctl run -v when host folder does not exist for bind mounts
+  * build(deps): bump github.com/awslabs/soci-snapshotter
+  * Makefile: install docs
+  * Makefile: fix overriding GO command
+  * Makefile: add GO_BUILD_FLAGS variable
+  * Makefile: derive BINDIR from PREFIX
+  * fix: grammatical errors
+  * fix: succeeded typo
+  * build(deps): bump github.com/containerd/containerd from 1.7.3 to 1.7.5
+  * build(deps): bump actions/checkout from 3.5.3 to 3.6.0
+  * Support copying out of volumes in stopped containers
+  * Fix typo
+  * pkg/version: fulfill fields from `debug/buildinfo`
+  * Fix usage of `errors.Join`
+  * build(deps): bump github.com/compose-spec/compose-go
+  * build(deps): bump github.com/containerd/imgcrypt from 1.1.7 to 1.1.8
+  * build(deps): bump golangci/golangci-lint-action from 3.6.0 to 3.7.0
+  * support test integration docker 23 compatibility
+  * support volume create anonymous
+  * update runc (1.1.9)
+  * Remove dependency on github.com/hashicorp/go-multierror
+  * build(deps): bump github.com/compose-spec/compose-go
+  * build(deps): bump github.com/tidwall/gjson from 1.15.0 to 1.16.0
+  * Update to Go 1.21 in CI
+  * build(deps): bump github.com/fahedouch/go-logrotate from 0.1.3 to 0.2.0
+  * FreeBSD: Linux Container Support and BuildKit Integration
+  * build(deps): bump golang.org/x/net from 0.13.0 to 0.14.0
+  * CI: Windows: enable Hyper-V containers
+  * fix attach help is messed up
+  * build(deps): bump golang.org/x/crypto from 0.11.0 to 0.12.0
+  * CI: move Windows tests to GHA
+  * CI: move FreeBSD tests to GHA
+  * test-integration-docker-compatibility: install Docker 20.10
+  * build(deps): bump github.com/coreos/go-iptables from 0.6.0 to 0.7.0
+  * .cirrus.yml: fix FreeBSD CI failure
+  * build(deps): bump golang.org/x/net from 0.12.0 to 0.13.0
+  * feat: add 'nerdctl container attach'
+  * Bump containerd to 1.7.3
+  * Remove special case for Windows when mounting view
+  * Add lease to prevent containerd GC
+
+-------------------------------------------------------------------
 Tue Aug 08 12:58:24 UTC 2023 - andrea.manzini@suse.com
 
 - Update to version 1.5.0:
