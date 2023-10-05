@@ -1,7 +1,7 @@
 #
 # spec file for package heaptrack
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.26.0
 # Needed for Leap, see boo#468748
 %global __requires_exclude GLIBC_PRIVATE
 %bcond_without released
 Name:           heaptrack
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Heap Memory Allocation Profiler
 License:        LGPL-2.1-or-later
@@ -31,14 +30,7 @@ Source0:        https://download.kde.org/stable/heaptrack/%{version}/%{name}-%{v
 Source1:        https://download.kde.org/stable/heaptrack/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        heaptrack.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-with-gcc-13-by-including-cstdint.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Add-missing-include.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Return-early-when-__libc_dlopen_mode-is-detected.patch
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_container-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
@@ -57,8 +49,9 @@ BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5ThreadWeaver)
-BuildRequires:  cmake(Qt5Core) >= 5.10.0
+BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  pkgconfig(libdw) >= 0.158
 BuildRequires:  pkgconfig(libzstd)
 Suggests:       heaptrack-gui
 
@@ -67,7 +60,7 @@ A memory profiler for Linux, tracking heap allocations.
 
 %package devel
 Summary:        Development files for the Heaptrack API
-Requires:       %{name} = %{version}
+Requires:       heaptrack = %{version}
 
 %description devel
 This package contains files needed to develop for the Heaptrack
@@ -75,7 +68,7 @@ API.
 
 %package gui
 Summary:        GUI Frontend for Heaptrack
-Requires:       %{name} = %{version}
+Requires:       heaptrack = %{version}
 
 %description gui
 A Qt5/KF5 based GUI for Heaptrack.
@@ -113,7 +106,6 @@ extra_opts="-DLIB_SUFFIX=64"
 %{_libdir}/heaptrack/
 
 %files devel
-%license LICENSES/*
 %{_includedir}/heaptrack_api.h
 
 %files gui

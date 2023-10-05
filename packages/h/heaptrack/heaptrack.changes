@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  4 07:50:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.5.0
+  https://www.kdab.com/heaptrack-v1-5-0-released/
+  * Elfutils is now used for symbolizing backtraces
+  * Various QOL improvements to the chart
+  * Various bug fixes and better platform support
+- Drop patches, merged upstream:
+  * 0001-Fix-build-with-gcc-13-by-including-cstdint.patch
+  * 0001-Add-missing-include.patch
+  * 0001-Return-early-when-__libc_dlopen_mode-is-detected.patch
+
+-------------------------------------------------------------------
 Thu Feb 23 10:21:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Try another way to ignore the GLIBC_PRIVATE requirement
