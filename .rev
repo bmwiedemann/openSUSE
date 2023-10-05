@@ -44,4 +44,28 @@
 </comment>
     <requestid>1073698</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>1408754f0bc9e8a985b4c605ec635259</srcmd5>
+    <version>2.2.0</version>
+    <time>1696529039</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.2.0:
+  * Bump version
+  * Removed separate version file now that Setuptools can read without importing.
+  * Ran ruff --fix to clean up some lint.
+  * Remove LICENSE from MANIFEST.in (Setuptools includes it by default now).
+  * Add a pyproject.toml for better packaging support.
+  * Mark failing tests as xfail until someone can investigate.
+  * Moved package metadata to declarative setup.cfg
+  * Remove tests_require
+  * Remove superfluous license field
+  * Remove commented code for deprecated usage.
+  * Port test runner to nose.
+- added patches
+  https://sourceforge.net/p/datadiff/code/merge-requests/3/
+  + python-datadiff-no-six.patch
+- dropped switch-to-pytest.patch (merged upstream)
+</comment>
+    <requestid>1115635</requestid>
+  </revision>
 </revisionlist>
