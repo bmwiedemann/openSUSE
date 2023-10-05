@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  2 12:04:42 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Add nomacs-fix-exiv2-0.28.patch to fix libexiv2 build errors
+
+-------------------------------------------------------------------
 Thu Oct 29 19:29:54 UTC 2020 - Petr Vanek <petr@yarpen.cz>
 
 - QuaZip1 migration

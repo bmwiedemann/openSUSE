@@ -1,7 +1,7 @@
 #
 # spec file for package nomacs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Productivity/Graphics/Viewers
 URL:            https://nomacs.org/
 Source:         https://github.com/nomacs/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         quazip1_cmake_remove_after_new_version.diff
+Patch1:         nomacs-fix-exiv2-0.28.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -56,8 +57,7 @@ differences (e.g. schemes of architects to show the progress).
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 pushd ImageLounge/
