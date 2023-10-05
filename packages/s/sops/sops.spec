@@ -43,7 +43,7 @@ Simple and flexible tool for managing secrets
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -o bin/sops
+   -o bin/sops ./cmd/sops/
 
 %install
 # Install the binary.

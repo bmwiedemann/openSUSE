@@ -31,4 +31,12 @@
     <comment>update to 3.8.0 (forwarded request 1113386 from ojkastl_buildservice)</comment>
     <requestid>1113387</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>1edbec5bb41ad922760a2c0a761b209f</srcmd5>
+    <version>3.8.0</version>
+    <time>1696529084</time>
+    <user>anag+factory</user>
+    <comment>fix broken sops executable (sorry...) (forwarded request 1115684 from ojkastl_buildservice)</comment>
+    <requestid>1115745</requestid>
+  </revision>
 </revisionlist>
