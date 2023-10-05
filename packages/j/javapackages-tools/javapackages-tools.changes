@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  4 07:18:58 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * 0005-Interpolate-properties-also-in-the-current-artifact.patch
+    + interpolate variables also in current artifactId, groupId and
+      version
+  * 0006-Test-variable-expansion-in-artifactId.patch
+    + test previous changes
+  * 0007-Test-that-we-don-t-bomb-on-relativePath.patch
+    + test gracious handling of empty <relativePath/> in parent
+      reference of a pom file
+
+-------------------------------------------------------------------
 Wed Sep 13 13:52:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

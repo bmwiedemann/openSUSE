@@ -53,6 +53,12 @@ Patch4:         0002-Do-not-bomb-on-relativePath-construct.patch
 Patch5:         0003-Reproducible-exclusions-order-in-maven-metadata.patch
 #PATCH-FIX-UPSTREAM: make the aliases and dependencies lists so that the order is kept
 Patch6:         0004-Reproducible-builds-keep-order-of-aliases-and-depend.patch
+#PATCH-FIX-UPSTREAM: substitute variables like _${scala.binary.version} in artifact coordinates
+Patch7:         0005-Interpolate-properties-also-in-the-current-artifact.patch
+#PATCH-FIX-UPSTREAM: test changes from previous patch
+Patch8:         0006-Test-variable-expansion-in-artifactId.patch
+#PATCH-FIX-UPSTREAM: test gracious handling of <relativePath/> construct
+Patch9:         0007-Test-that-we-don-t-bomb-on-relativePath.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  perl

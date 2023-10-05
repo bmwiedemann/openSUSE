@@ -383,4 +383,12 @@
     <comment>More reproducible</comment>
     <requestid>1110919</requestid>
   </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>e36fa97d87bb726787cd3cfff9b51c90</srcmd5>
+    <version>6.2.0</version>
+    <time>1696528970</time>
+    <user>anag+factory</user>
+    <comment>Some more fixes of variable interpolation + tests</comment>
+    <requestid>1115402</requestid>
+  </revision>
 </revisionlist>
