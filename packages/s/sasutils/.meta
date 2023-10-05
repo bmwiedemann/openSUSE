@@ -1,0 +1,5 @@
+<package name="sasutils" project="openSUSE:Factory">
+  <title>Serial Attached SCSI (SAS) utilities</title>
+  <description>sasutils is a set of command-line tools, udev scripts and a Python library to ease the administration of Serial Attached SCSI (SAS) storage devices.</description>
+  <devel project="hardware" package="sasutils"/>
+</package>
