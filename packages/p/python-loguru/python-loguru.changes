@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct  5 08:54:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.2:
+  * Add support for formatting of `ExceptionGroup` errors (#805).
+  * Fix possible `RuntimeError` when using
+    `multiprocessing.set_start_method()` after importing the
+    `logger` (#974).
+  * Fix formatting of possible `__notes__` attached to an
+    `Exception` (#980).
+- update to 0.7.1:
+  * Add a new `context` optional argument to `logger.add()`
+    specifying `multiprocessing` context (like `"spawn"` or
+    `"fork"`) to be used internally instead of the default one
+  * Add support for true colors on Windows using ANSI/VT console
+    when available (#934, thanks @tunaflsh).
+  * Fix possible deadlock when calling `logger.complete()` with
+    concurrent logging of an asynchronous sink (#906).
+  * Fix file possibly rotating too early or too late when re-
+    starting an application around midnight (#894).
+  * Fix inverted `""` and `""` color tags
+  * Fix possible untraceable errors raised when logging non-
+    unpicklable `Exception` instances while using `enqueue=True`
+  * Fix possible errors raised when logging non-picklable
+    `Exception` instances while using `enqueue=True` (#342,
+    thanks @ncoudene).
+  * Fix missing seconds and microseconds when formatting timezone
+    offset that requires such accuracy
+  * Raise `ValueError` if an attempt to use nanosecond precision
+    for time formatting is detected
+
+-------------------------------------------------------------------
 Fri May 12 13:31:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - drop optional mypy testing dependency
@@ -79,7 +110,7 @@ Fri Aug  5 11:11:57 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Thu Dec  9 18:04:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
-- Skip two formatting tests -- gh#Delgan/loguru#550 
+- Skip two formatting tests -- gh#Delgan/loguru#550
 
 -------------------------------------------------------------------
 Sun Apr 18 12:17:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -163,7 +194,7 @@ Thu Jan 21 10:44:04 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Thu Jan 21 06:00:45 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
-- BuildRequire python36-aiocontextvars if building under python 3.6 
+- BuildRequire python36-aiocontextvars if building under python 3.6
 
 -------------------------------------------------------------------
 Sun Feb 16 09:14:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>

@@ -16,12 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-loguru
-Version:        0.7.0
+Version:        0.7.2
 Release:        0
 Summary:        Python logging component with a simple interface
 License:        MIT

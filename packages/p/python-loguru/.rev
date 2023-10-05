@@ -123,4 +123,41 @@
     <comment>- drop optional mypy testing dependency</comment>
     <requestid>1086767</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8784d51ef968db8073392800207b4462</srcmd5>
+    <version>0.7.2</version>
+    <time>1696529093</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.7.2:
+  * Add support for formatting of `ExceptionGroup` errors (#805).
+  * Fix possible `RuntimeError` when using
+    `multiprocessing.set_start_method()` after importing the
+    `logger` (#974).
+  * Fix formatting of possible `__notes__` attached to an
+    `Exception` (#980).
+- update to 0.7.1:
+  * Add a new `context` optional argument to `logger.add()`
+    specifying `multiprocessing` context (like `&quot;spawn&quot;` or
+    `&quot;fork&quot;`) to be used internally instead of the default one
+  * Add support for true colors on Windows using ANSI/VT console
+    when available (#934, thanks @tunaflsh).
+  * Fix possible deadlock when calling `logger.complete()` with
+    concurrent logging of an asynchronous sink (#906).
+  * Fix file possibly rotating too early or too late when re-
+    starting an application around midnight (#894).
+  * Fix inverted `&quot;&quot;` and `&quot;&quot;` color tags
+  * Fix possible untraceable errors raised when logging non-
+    unpicklable `Exception` instances while using `enqueue=True`
+  * Fix possible errors raised when logging non-picklable
+    `Exception` instances while using `enqueue=True` (#342,
+    thanks @ncoudene).
+  * Fix missing seconds and microseconds when formatting timezone
+    offset that requires such accuracy
+  * Raise `ValueError` if an attempt to use nanosecond precision
+    for time formatting is detected
+
+- Skip two formatting tests -- gh#Delgan/loguru#550
+- BuildRequire python36-aiocontextvars if building under python 3.6</comment>
+    <requestid>1115765</requestid>
+  </revision>
 </revisionlist>
