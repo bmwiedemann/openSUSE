@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 28 11:18:25 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- back again to version 17.0.0, since meanwhile llvm17 is available ... 
+
+-------------------------------------------------------------------
+Mon Sep 25 11:48:15 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- back to version 16.0.0, since there is no llvm17 available yet ...
+
+-------------------------------------------------------------------
 Tue Sep 19 21:57:02 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 17.0.0.
