@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct  5 09:47:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12.4:
+  * added ips and issue114 tests
+  * add importlib_resources info for older Python versions
+  * more api endpoints
+  * more twine tweaks
+  * Added cli4 -e option to
+    display example file path names
+  * Add `global_request_timeout` and `max_request_retries`
+    configuration options. Set default request timeout to 5s. Add
+    basic tests instantiating Cloudflare.Cloudflare
+  * more api endpoints
+  * Make RegEx string a raw string literal
+  * more api endpoints
+  * update examples and README to use == for numberic values
+  * more api endpoints
+  * remove --api option and leave --openapi in place
+  * handle quoted strings
+  * handle multipart/form-data
+    correctly for more than one file and with params/data
+  * python keywords not handled correctly at command level
+  * fix: remove future dependency and imports
+  * added after openapi review
+  * added deprecated processing, now shows version
+
+-------------------------------------------------------------------
 Tue Sep  5 03:12:24 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -10,7 +37,7 @@ Mon Sep  4 15:56:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.11.7:
   * more api endpoints
-  * update examples and README to use == for numberic values 
+  * update examples and README to use == for numberic values
 
 -------------------------------------------------------------------
 Tue Jul 11 14:06:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -31,7 +58,7 @@ Sat Jul  1 10:07:10 UTC 2023 - ecsos <ecsos@opensuse.org>
  - add openapi support, delay yaml and jsonlines load to speed up everything, other cleanup
  - add openapi support, delay bs4 load to speed up everything, improve requests imports
  - missing import json, speed up to import requests
-   For full changelog see: 
+   For full changelog see:
    https://github.com/cloudflare/python-cloudflare/blob/master/CHANGELOG.md
 - Add %{?sle15_python_module_pythons}
 
@@ -70,8 +97,8 @@ Sun Jan 23 16:44:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * rules,access/logs,access/apps,etc added
   * api decode and Makefile now consistent - no leading slash
   * moved network functions - but forgot one call - now fixed
-  * moved network functions into their own file - part of splitting up a large file 
- 
+  * moved network functions into their own file - part of splitting up a large file
+
 -------------------------------------------------------------------
 Mon Jul 13 09:00:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
@@ -82,7 +109,7 @@ Thu Jun 25 04:20:35 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.8.3:
   * No upstream changelog
-- Add alternative for new manpage. 
+- Add alternative for new manpage.
 
 -------------------------------------------------------------------
 Wed May 27 09:36:45 UTC 2020 - Petr Gajdos <pgajdos@suse.com>

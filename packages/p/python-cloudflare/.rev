@@ -137,4 +137,39 @@
 - Drop unneeded {Build,}Requires on future.</comment>
     <requestid>1108969</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0e963cef49feb5646757edc423b967fa</srcmd5>
+    <version>2.12.4</version>
+    <time>1696529103</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.12.4:
+  * added ips and issue114 tests
+  * add importlib_resources info for older Python versions
+  * more api endpoints
+  * more twine tweaks
+  * Added cli4 -e option to
+    display example file path names
+  * Add `global_request_timeout` and `max_request_retries`
+    configuration options. Set default request timeout to 5s. Add
+    basic tests instantiating Cloudflare.Cloudflare
+  * more api endpoints
+  * Make RegEx string a raw string literal
+  * more api endpoints
+  * update examples and README to use == for numberic values
+  * more api endpoints
+  * remove --api option and leave --openapi in place
+  * handle quoted strings
+  * handle multipart/form-data
+    correctly for more than one file and with params/data
+  * python keywords not handled correctly at command level
+  * fix: remove future dependency and imports
+  * added after openapi review
+  * added deprecated processing, now shows version
+
+  * update examples and README to use == for numberic values
+   For full changelog see:
+  * moved network functions into their own file - part of splitting up a large file
+- Add alternative for new manpage.</comment>
+    <requestid>1115792</requestid>
+  </revision>
 </revisionlist>
