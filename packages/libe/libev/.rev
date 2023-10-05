@@ -175,4 +175,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1111479</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>8859817a3cfdeb5f37a5b66865cbd3be</srcmd5>
+    <version>4.33</version>
+    <time>1696528958</time>
+    <user>anag+factory</user>
+    <comment>- run signify only on Factory</comment>
+    <requestid>1115043</requestid>
+  </revision>
 </revisionlist>

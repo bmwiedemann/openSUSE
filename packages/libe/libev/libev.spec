@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?sle_version} >= 150700 || 0%{?suse_version} > 1500
+%if 0%{?suse_version} >= 1699
 %bcond_without signify
 %else
 %bcond_with signify
