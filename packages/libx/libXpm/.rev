@@ -213,4 +213,19 @@
   * Fix a memleak in ParsePixels error code path</comment>
     <requestid>1080119</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>73aa7c6980ba5b2c2bda1fd93fe28d10</srcmd5>
+    <version>3.5.17</version>
+    <time>1696528959</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.5.17
+  * This release contains fixes for the libXpm issues reported in
+    security advisory here: 
+    https://lists.x.org/archives/xorg-announce/2023-October/003424.html
+  * fixes CVE-2023-43788 libXpm: out of bounds read in
+    XpmCreateXpmImageFromBuffer() (boo#1215686)
+  * fixes CVE-2023-43789 libXpm: out of bounds read on XPM with
+    corrupted colormap (boo#1215687)</comment>
+    <requestid>1115069</requestid>
+  </revision>
 </revisionlist>

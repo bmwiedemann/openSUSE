@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  3 20:43:14 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 3.5.17
+  * This release contains fixes for the libXpm issues reported in
+    security advisory here: 
+    https://lists.x.org/archives/xorg-announce/2023-October/003424.html
+  * fixes CVE-2023-43788 libXpm: out of bounds read in
+    XpmCreateXpmImageFromBuffer() (boo#1215686)
+  * fixes CVE-2023-43789 libXpm: out of bounds read on XPM with
+    corrupted colormap (boo#1215687)
+
+-------------------------------------------------------------------
 Tue Apr 18 11:28:16 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 3.5.16:
