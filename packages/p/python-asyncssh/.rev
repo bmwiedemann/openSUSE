@@ -425,4 +425,36 @@
     passing a string as a tunnel argument.</comment>
     <requestid>1096323</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>cb7dd1e0518c0c4e2b02cb4aac23049c</srcmd5>
+    <version>2.14.0</version>
+    <time>1696529098</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.14.0:
+  * Added support for a new accept_handler argument when setting
+    up local port forwarding, allowing the client host and port to
+    be validated and/or logged for each new forwarded connection.
+  * Added an option to disable expensive RSA private key checks
+    when using OpenSSL 3.x. Functions that read private keys have
+    been modified to include a new unsafe_skip_rsa_key_validation
+    argument which can be used to avoid these additional checks,
+    if you are loading keys from a trusted source.
+  * Added host information into AsyncSSH exceptions when host key
+    validation fails, and a few other improvements related to
+    X.509 certificate validation errors.
+  * Fixed a regression which prevented keys loaded into an SSH
+    agent with a certificate from working correctly beginning in
+    AsyncSSH after version 2.5.0.
+  * Fixed an issue which was triggering an internal exception
+    when shutting down server sessions with the line editor enabled
+    which could cause some output to be lost on exit, especially when
+    running on Windows.
+  * Fixed a documentation error in SSHClientConnectionOptions and
+    SSHServerConnectionOptions.
+
+    proxy_command, allowing it to be used if the caller
+- Update to 2.12.0
+- Skip more tests that are unstable.</comment>
+    <requestid>1115789</requestid>
+  </revision>
 </revisionlist>

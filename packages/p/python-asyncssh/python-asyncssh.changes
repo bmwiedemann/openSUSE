@@ -1,9 +1,34 @@
 -------------------------------------------------------------------
+Thu Oct  5 09:42:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.0:
+  * Added support for a new accept_handler argument when setting
+    up local port forwarding, allowing the client host and port to
+    be validated and/or logged for each new forwarded connection.
+  * Added an option to disable expensive RSA private key checks
+    when using OpenSSL 3.x. Functions that read private keys have
+    been modified to include a new unsafe_skip_rsa_key_validation
+    argument which can be used to avoid these additional checks,
+    if you are loading keys from a trusted source.
+  * Added host information into AsyncSSH exceptions when host key
+    validation fails, and a few other improvements related to
+    X.509 certificate validation errors.
+  * Fixed a regression which prevented keys loaded into an SSH
+    agent with a certificate from working correctly beginning in
+    AsyncSSH after version 2.5.0.
+  * Fixed an issue which was triggering an internal exception
+    when shutting down server sessions with the line editor enabled
+    which could cause some output to be lost on exit, especially when
+    running on Windows.
+  * Fixed a documentation error in SSHClientConnectionOptions and
+    SSHServerConnectionOptions.
+
+-------------------------------------------------------------------
 Sat Jul  1 20:43:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.2:
   * Fixed an issue with host-based authentication when using
-    proxy_command, allowing it to be used if the caller 
+    proxy_command, allowing it to be used if the caller
     explicitly specifies client_host.
   * Improved handling of signature algorithms for OpenSSH
     certificates so that RSA SHA-2 signatures will work with
@@ -61,7 +86,7 @@ Thu Jan  5 21:06:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Sep 23 02:23:16 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 2.12.0 
+- Update to 2.12.0
   * Fix an issue with SFTP servers which don't support random access I/O
   * Fix "Recceived window change" in log message (#509)
   * Fix forwarding a dynamically allocated port in the server (#512)
@@ -155,7 +180,7 @@ Thu Aug  4 09:02:37 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 -------------------------------------------------------------------
 Mon Jan 31 01:37:54 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Skip more tests that are unstable. 
+- Skip more tests that are unstable.
 
 -------------------------------------------------------------------
 Fri Jan 28 23:45:58 UTC 2022 - Matej Cepl <mcepl@suse.com>
