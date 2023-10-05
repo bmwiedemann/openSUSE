@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  5 06:23:03 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 11.3.0:
+  * Fix. Program incorrect work with pre-emphased disks
+  * Fix. Sometimes the program did not save the output directory
+  * Improved audio file search for multiaudio discs.
+  * For multi-audio discs, a check has been added that the same audio files are not specified for tracks.
+  * Improved delete source dialogue
+  * Minor fixes and improvements
+  * Translations updated
+
+-------------------------------------------------------------------
 Tue Jun 20 12:43:18 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 11.2.0:
