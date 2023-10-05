@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Oct 04 09:40:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.19.1:
+  * Update deps for 1.19.1 (#47129)
+  * Automator: update istio/client-go@release-1.19 dependency in
+    istio/istio@release-1.19 (#47123)
+  * [release-1.19] Push back invalid secret to prevent sds fetching
+    timeout (#47110)
+  * Autheticate crane with DefaultKeychain (#47100)
+  * [release-1.19] Fix issue with dual-stack iptables6 rules when
+    using istio-cni plugin… (#47108)
+  * Automator: update ztunnel@release-1.19 in
+    istio/istio@release-1.19 (#47075)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47062)
+  * Fix issue with emiting uninitialized Guage metrics (#46980)
+  * [release-1.19] fix DNSNoEndpointClusters metric (#46966)
+  * [release-1.19] dedup addressInfo (#46949)
+  * [release-1.19] Add endpoints to proxy-config all output
+    (#46940)
+  * [release-1.19] Gateway API cherrypicks (#46938)
+  * [release-1.19] Fix verify install kinds for kind
+    NetworkAttachmentDefinition (#46944)
+  * Bump github.com/cyphar/filepath-securejoin from 0.2.3 to 0.2.4
+    (#46889)
+  * Automator: update ztunnel@release-1.19 in
+    istio/istio@release-1.19 (#46900)
+  * Cherrypick 46579 (#46896)
+  * Automator: update istio/client-go@release-1.19 dependency in
+    istio/istio@release-1.19 (#46888)
+  * [release-1.19] Update sigs.k8s.io/gateway-api to 0.8.0 (#46677)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#46878)
+  * Automator: update istio/client-go@release-1.19 dependency in
+    istio/istio@release-1.19 (#46873)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#46872)
+  * Automator: update common-files@release-1.19 in
+    istio/istio@release-1.19 (#46871)
+  * [release-1.19] Cherrypick 46429 (#46784)
+  * Automator: update istio/client-go@release-1.19 dependency in
+    istio/istio@release-1.19 (#46853)
+  * [release-1.19] install: fix warning with wrong control plane
+    (#46739)
+  * [release-1.19] Ambient: fix incorrect updates when ambient
+    namespace label is changed (#46715)
+  * [release-1.19] Add ability to install gateway helm chart with
+    dual-stack service def… (#46683)
+  * Remove conditional cleanup from traffic test. (#46819)
+  * respect meshConfig.defaultConfig.sampling (#46735)
+  * Report networkpolicies in bug-report (#46843)
+
+-------------------------------------------------------------------
 Wed Sep 06 05:22:41 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.19.0:
