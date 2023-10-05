@@ -17,17 +17,13 @@
 
 
 Name:           lsvpd
-Version:        1.7.14
+Version:        1.7.15
 Release:        0
 Summary:        VPD Hardware Inventory Utilities for Linux
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://github.com/power-ras/lsvpd
 Source:         https://github.com/power-ras/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         lsvpd-Add-NVME-f1h-log-page-VPD-information-parsing-.patch
-Patch2:         lsvpd-Update-nvme_template-with-logpage-format-for-0.patch
-Patch3:         lsvpd-Update-nvme_templates-with-logpage-format-for-.patch
-Patch4:         lsvpd-Fill-firmware-information-by-recursively-looki.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  librtas-devel

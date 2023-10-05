@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  2 17:43:06 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 1.7.15 (jsc#PED-5074)
+- Drop upstreamed patches
+  * lsvpd-Add-NVME-f1h-log-page-VPD-information-parsing-.patch
+  * lsvpd-Update-nvme_template-with-logpage-format-for-0.patch
+  * lsvpd-Update-nvme_templates-with-logpage-format-for-.patch
+  * lsvpd-Fill-firmware-information-by-recursively-looki.patch
+
+-------------------------------------------------------------------
 Mon Aug 14 07:22:40 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Recursively search for firmware information in sysfs (jsc#PED-3539)
