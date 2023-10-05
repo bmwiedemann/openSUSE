@@ -48,4 +48,14 @@
   * Version of Python &lt;3.7 are no longer supported. [#65]</comment>
     <requestid>1084897</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fc399e9b14a9fa3c44610bf4d33fe06f</srcmd5>
+    <version>0.4.1</version>
+    <time>1696528993</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.1:
+  * Reverting the short option of ``-R`` due to a clash with
+    ``pytest-leaks``.</comment>
+    <requestid>1114845</requestid>
+  </revision>
 </revisionlist>

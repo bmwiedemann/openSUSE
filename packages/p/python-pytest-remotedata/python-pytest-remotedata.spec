@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-remotedata
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Pytest plugin for controlling remote data access
 License:        BSD-3-Clause

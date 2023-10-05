@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  2 15:12:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.1:
+  * Reverting the short option of ``-R`` due to a clash with
+    ``pytest-leaks``.
+
+-------------------------------------------------------------------
 Thu May  4 22:41:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.0:
