@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  5 09:22:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Fix broken documentation link at at pypi
+  * Restructure documentation into multiple pages
+  * Reverse sort changelog
+  * Removes Python 2.7 support
+  * Bumps minimum support Python to Python 3.7
+  * Switches to hatch for project management
+  * Fixes an invalid backslash escape sequence (#34)
+  * Automatically imports subpackages when importing zhon (#31)
+  * Updates documentation about combining diacritic marks (#29)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:39:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

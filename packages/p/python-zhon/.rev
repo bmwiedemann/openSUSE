@@ -31,4 +31,21 @@
     <comment></comment>
     <requestid>1081717</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4837a6b71996f9d86a9b299600ec5237</srcmd5>
+    <version>2.0.2</version>
+    <time>1696529095</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.2:
+  * Fix broken documentation link at at pypi
+  * Restructure documentation into multiple pages
+  * Reverse sort changelog
+  * Removes Python 2.7 support
+  * Bumps minimum support Python to Python 3.7
+  * Switches to hatch for project management
+  * Fixes an invalid backslash escape sequence (#34)
+  * Automatically imports subpackages when importing zhon (#31)
+  * Updates documentation about combining diacritic marks (#29)</comment>
+    <requestid>1115781</requestid>
+  </revision>
 </revisionlist>

@@ -16,18 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-zhon
-Version:        1.1.5
+Version:        2.0.2
 Release:        0
 Summary:        Constants used in Chinese text processing
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/tsroten/zhon
 Source:         https://github.com/tsroten/zhon/archive/v%{version}.tar.gz#/zhon-%{version}.tar.gz
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,14 +41,13 @@ Zhon provides constants used in Chinese text processing.
 %setup -q -n zhon-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-printf "[pytest]\npython_files = test-*.py\n" > pytest.ini
 %pytest
 
 %files %{python_files}
