@@ -21,7 +21,7 @@
 %define archive_name sealed-secrets
 
 Name:           kubeseal
-Version:        0.24.0
+Version:        0.24.1
 Release:        0
 Summary:        CLI for encrypting secrets to SealedSecrets
 License:        Apache-2.0
@@ -36,8 +36,7 @@ Problem: "I can manage all my K8s config in git, except Secrets."
 Solution: Encrypt your Secret into a SealedSecret, which is safe to store - even to a public repository. The SealedSecret can be decrypted only by the controller running in the target cluster and nobody else (not even the original author) is able to obtain the original Secret from the SealedSecret.
 
 %prep
-%setup -q -n %{archive_name}-%{version}
-%setup -q -n %{archive_name}-%{version} -T -D -a 1
+%autosetup -p 1 -a 1 -n %{archive_name}-%{version}
 
 %build
 go build \

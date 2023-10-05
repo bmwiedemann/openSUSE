@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 05 12:27:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.24.1:
+  * Release notes for 0.24.1 (#1339)
+  * fix: remove trailing dashes for multidoc yaml (#1335)
+  * Bump github.com/prometheus/client_golang from 1.16.0 to 1.17.0
+    (#1338)
+  * Bump github.com/onsi/gomega from 1.27.10 to 1.28.0 (#1337)
+  * Bump github.com/onsi/ginkgo/v2 from 2.12.0 to 2.12.1 (#1333)
+  * Bump k8s.io/code-generator from 0.28.1 to 0.28.2 (#1327)
+  * Bump k8s.io/client-go from 0.28.1 to 0.28.2 (#1328)
+  * Bump k8s.io/api from 0.28.1 to 0.28.2 (#1329)
+  * Update carvel package to v2.13.0 (#1325)
+  * Release chart 2.13.0 (#1323)
+
+-------------------------------------------------------------------
 Fri Sep 15 11:07:12 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.24.0:
