@@ -1,7 +1,7 @@
 #
-# spec file for package container-suseconnect
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,11 +32,10 @@ Source0:        %{project}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        container-suseconnect-rpmlintrc
 BuildRequires:  golang-packaging
-BuildRequires:  zstd
 BuildRequires:  libzypp > 9.34
+BuildRequires:  zstd
+BuildRequires:  golang(API) = 1.21
 Requires:       libzypp > 9.34
-%{go_provides}
-%{go_exclusivearch}
 
 %description
 container-suseconnect gives access to package repositories inside containers
@@ -46,18 +45,16 @@ using the host machine entitlements.
 %setup -q -n %{project}-%{version} -a1
 
 %build
-%{goprep} %{import_path}
-%{gobuild} cmd/container-suseconnect
+go build -o %{project} -mod=vendor -buildmode=pie -trimpath -ldflags="-s -w" ./cmd/container-suseconnect
 
 %install
-%{goinstall}
-%{gofilelist}
+install -D -m 755 %{project} %{buildroot}/%{_bindir}/%{project}
 mkdir -p %{buildroot}/%{zypp_services}
 mkdir -p %{buildroot}/%{zypp_urlresolver}
 ln -s %{_bindir}/%{project} %{buildroot}/%{zypp_services}/%{project}-zypp
 ln -s %{_bindir}/%{project} %{buildroot}/%{zypp_urlresolver}/susecloud
 
-%files -f file.lst
+%files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{project}
