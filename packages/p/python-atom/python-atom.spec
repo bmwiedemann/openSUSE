@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-atom
-Version:        0.10.0
+Version:        0.10.3
 Release:        0
 Summary:        Memory efficient Python objects
 License:        BSD-3-Clause

@@ -137,4 +137,19 @@
     <comment>- add sle15_python_module_pythons as it requires python &gt;= 3.8</comment>
     <requestid>1090194</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>35b4375bc6b0fc9098d34f620045a3a1</srcmd5>
+    <version>0.10.3</version>
+    <time>1696529099</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.10.3:
+  * fix a an issue when using add_member to override an existing
+    membe
+  * fix a memory leak caused by Dict, Defaultdict and Set members
+  * add support for Python 3.12 PR #200
+
+    was called
+  * clarify Unicode deprecation warning PR #102</comment>
+    <requestid>1115791</requestid>
+  </revision>
 </revisionlist>
