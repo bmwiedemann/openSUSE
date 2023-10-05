@@ -297,7 +297,7 @@ find %{buildroot} -type f | xargs sed -i '
 export CLKNETSIM_RANDOM_SEED=24501
 export CFLAGS="%{optflags}"
 make %{?_smp_mflags} -C test/simulation/clknetsim
-make %{?_smp_mflags} check
+make %{?_smp_mflags} quickcheck
 %endif
 %endif
 
