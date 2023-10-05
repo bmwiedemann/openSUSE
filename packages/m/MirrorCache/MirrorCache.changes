@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 28 10:12:08 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.065:
+  * ui: Use https when applicable on mirrors report (#411)
+  * ui: Show country flag in mirror report (#411)
+  * ui: Tweak mirrors report (#411)
+  * ui: Remove tidy warnings from openSUSE branding (#411)
+  * ui: Add mirror details page (#411)
+  * Remove dark theme css code for Mirrors page (#408)
+
+-------------------------------------------------------------------
 Thu Sep 14 06:49:28 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.064:
