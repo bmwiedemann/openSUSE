@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  3 13:02:55 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Fix mupdf incompatibility errors by adding mupdf-0.23.0.patch
+
+-------------------------------------------------------------------
+Tue Oct  3 08:24:25 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Add fix-sqlite-memory-leak.patch.
+
+-------------------------------------------------------------------
 Thu Aug 10 08:13:41 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Attempt to fix sioyek build. Resolves bsc#1209453.

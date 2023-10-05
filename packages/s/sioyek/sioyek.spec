@@ -25,6 +25,8 @@ Group:          Productivity/Office/Other
 URL:            https://github.com/ahrm/sioyek
 Source0:        https://github.com/ahrm/sioyek/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         no-link-gumbo.patch
+Patch2:         https://github.com/ahrm/sioyek/pull/694.patch#/fix-sqlite-memory-leak.patch
+Patch3:         https://git.alpinelinux.org/aports/plain/community/sioyek/mupdf-0.23.0.patch?id=86e913eccf19b97a16f25d9b6cdf0f50232f1226#/mupdf-0.23.0.patch
 BuildRequires:  binutils
 BuildRequires:  c++_compiler
 BuildRequires:  libQt5Gui-devel

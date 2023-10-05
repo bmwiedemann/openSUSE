@@ -81,4 +81,14 @@
 </comment>
     <requestid>1103283</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>f3b8f755fa5007c56c24a5c2c8ba6c3d</srcmd5>
+    <version>2.0.0</version>
+    <time>1696528997</time>
+    <user>anag+factory</user>
+    <comment>- Fix mupdf incompatibility errors by adding mupdf-0.23.0.patch
+- Add fix-sqlite-memory-leak.patch.
+</comment>
+    <requestid>1115029</requestid>
+  </revision>
 </revisionlist>
