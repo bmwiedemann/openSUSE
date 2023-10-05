@@ -89,10 +89,12 @@ Source7:        seamonkey-rpmlintrc
 Source11:       seamonkey-appdata.tar.bz2
 Source12:       seamonkey-GNUmakefile
 Patch1:         mozilla-nongnome-proxies.patch
+Patch2:         seamonkey-binutils.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         seamonkey-lto.patch
 Patch5:         seamonkey-man-page.patch
 Patch6:         reproducible.patch
+Patch7:         mozilla-bmo531915.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh coreutils
 Provides:       seamonkey-mail = %{version}
@@ -221,10 +223,12 @@ cd mozilla
 cp %{SOURCE12} GNUmakefile
 
 %patch1 -p1
+%patch2 -p1
 %patch3 -p2
 %patch4 -p1
 %patch5 -p0
 %patch6 -p1
+%patch7 -p1
 
 cat << EOF > .mozconfig
 mk_add_options MOZILLA_OFFICIAL=1
