@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct  4 07:30:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- The sle15_python_module_pythons needs to sit on top of the first
+  use of python_module.
+- Move to PEP517
+
+-------------------------------------------------------------------
+Mon Oct  2 14:51:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * Dropped ``pytest-openfiles`` as dependency. If you still use
+    it, you can install it separately.
+  * ``-R`` is added as a short version for the command-line
+    option ``--remote-data``. [#55]
+  * Require ``pytest-doctestplus`` 1.0.0 or later. [#56]
+  * Require ``pytest-remotedata`` 0.4.1 or later. [#56]
+  * Require ``pytest-astropy-header`` 0.2.2 or later. [#56]
+  * Require ``pytest-arraydiff`` 0.5 or later. [#56]
+  * Require ``pytest-filter-subpackage`` 0.1.2 or later. [#56]
+
+-------------------------------------------------------------------
 Thu May 26 16:28:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.10:

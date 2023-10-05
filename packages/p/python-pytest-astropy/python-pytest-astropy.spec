@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-astropy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,31 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pytest-astropy
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Meta-package containing dependencies for testing
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/pytest-astropy
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-astropy/pytest-astropy-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 19.2.0
 Requires:       python-hypothesis >= 5.1
 Requires:       python-pytest >= 4.6
-Requires:       python-pytest-arraydiff >= 0.1
-Requires:       python-pytest-astropy-header >= 0.1.2
+Requires:       python-pytest-arraydiff >= 0.5
+Requires:       python-pytest-astropy-header >= 0.2.2
 Requires:       python-pytest-cov >= 2.3.1
-Requires:       python-pytest-doctestplus >= 0.11.0
-Requires:       python-pytest-filter-subpackage >= 0.1
+Requires:       python-pytest-doctestplus >= 1.0.0
+Requires:       python-pytest-filter-subpackage >= 0.1.2
 Requires:       python-pytest-mock >= 2.0
-Requires:       python-pytest-openfiles >= 0.3.1
-Requires:       python-pytest-remotedata >= 0.3.1
+Requires:       python-pytest-remotedata >= 0.4.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,16 +59,16 @@ and `-m hugemem`.
 %setup -q -n pytest-astropy-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
 %{python_sitelib}/pytest_astropy
-%{python_sitelib}/pytest_astropy-%{version}*-info
+%{python_sitelib}/pytest_astropy-%{version}.dist-info
 
 %changelog

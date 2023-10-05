@@ -65,4 +65,25 @@
 </comment>
     <requestid>979377</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>434a5f2849f7ce28829626fa4042ca11</srcmd5>
+    <version>0.11.0</version>
+    <time>1696528994</time>
+    <user>anag+factory</user>
+    <comment>- The sle15_python_module_pythons needs to sit on top of the first
+  use of python_module.
+- Move to PEP517
+- update to 0.11.0:
+  * Dropped ``pytest-openfiles`` as dependency. If you still use
+    it, you can install it separately.
+  * ``-R`` is added as a short version for the command-line
+    option ``--remote-data``. [#55]
+  * Require ``pytest-doctestplus`` 1.0.0 or later. [#56]
+  * Require ``pytest-remotedata`` 0.4.1 or later. [#56]
+  * Require ``pytest-astropy-header`` 0.2.2 or later. [#56]
+  * Require ``pytest-arraydiff`` 0.5 or later. [#56]
+  * Require ``pytest-filter-subpackage`` 0.1.2 or later. [#56]
+</comment>
+    <requestid>1115214</requestid>
+  </revision>
 </revisionlist>
