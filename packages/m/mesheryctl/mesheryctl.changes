@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Oct  5 05:48:55 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.154:
+  * General
+    - [Server] Fix race cond in k8s comp registration @MUzairS15
+      (#9015)
+  * Meshery UI
+    - [Server] Add APIs for bulk operations on events @MUzairS15
+      (#8999)
+    - Bump eslint-config-next from 13.4.19 to 13.5.3 in
+      /provider-ui @dependabot (#8987)
+    - UI enhancements and Standardized Data Tables @sudhanshutech
+      (#8939)
+    - Bump eslint-plugin-cypress from 2.14.0 to 2.15.1 in
+      /provider-ui @dependabot (#8986)
+    - Bump cypress from 13.1.0 to 13.3.0 in /provider-ui
+      @dependabot (#8984)
+    - Bump @fortawesome/fontawesome-svg-core from 6.2.0 to 6.4.2 in
+      /ui @dependabot (#8983)
+    - Bump @cypress/code-coverage from 3.11.0 to 3.12.1 in
+      /provider-ui @dependabot (#8985)
+    - Bump next from 13.4.12 to 13.5.3 in /provider-ui @dependabot
+      (#8988)
+  * Maintenance
+    - refactor(server): remove redundant len check @Juneezee
+      (#8992)
+    - Bump eslint-config-next from 13.4.19 to 13.5.3 in
+      /provider-ui @dependabot (#8987)
+    - Bump eslint-plugin-cypress from 2.14.0 to 2.15.1 in
+      /provider-ui @dependabot (#8986)
+    - Bump cypress from 13.1.0 to 13.3.0 in /provider-ui
+      @dependabot (#8984)
+    - Bump @fortawesome/fontawesome-svg-core from 6.2.0 to 6.4.2 in
+      /ui @dependabot (#8983)
+    - Bump @cypress/code-coverage from 3.11.0 to 3.12.1 in
+      /provider-ui @dependabot (#8985)
+    - Bump next from 13.4.12 to 13.5.3 in /provider-ui @dependabot
+      (#8988)
+
+-------------------------------------------------------------------
 Mon Oct  2 06:20:16 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.6.153:
