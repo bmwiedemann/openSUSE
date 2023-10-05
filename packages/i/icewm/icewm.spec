@@ -18,7 +18,7 @@
 
 %global lites icewm icewmhint icewmbg icesh icewm-session
 Name:           icewm
-Version:        3.4.0
+Version:        3.4.3
 Release:        0
 Summary:        Window Manager with a Taskbar
 License:        LGPL-2.1-or-later
@@ -181,10 +181,6 @@ done
   --enable-i18n                      \
   --enable-nls                       \
   --enable-corefonts                 \
-  --enable-guievents                 \
-  --enable-antialiasing              \
-  --enable-gradients                 \
-  --enable-shaped-decorations        \
   --enable-menus-fdo                 \
   --enable-i18n
 %make_build
