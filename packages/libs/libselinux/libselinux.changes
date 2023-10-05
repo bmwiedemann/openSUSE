@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct  1 19:17:31 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Repair initrd libselinux check in selinux-ready
+
+-------------------------------------------------------------------
 Tue Aug  8 06:59:16 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not BuildRequire swig and ruby-devel in the main build phase:

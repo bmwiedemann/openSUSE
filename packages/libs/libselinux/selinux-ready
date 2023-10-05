@@ -102,7 +102,7 @@ check_mkinitrd()
 	else
 	  # looks like we're using dracut/systemd. We can only check if libselinux1
 	  # exists
-	  if [ -f lib64/libselinux.so.1 ]; then
+	  if [ -f usr/lib64/libselinux.so.1 ]; then
 	    # if this exists 
 	    FLG1=0
 	    FLG2=0
