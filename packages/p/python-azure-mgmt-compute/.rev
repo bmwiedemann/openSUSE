@@ -363,4 +363,15 @@
 - Switch source archive format to TAR.GZ (forwarded request 1112501 from glaubitz)</comment>
     <requestid>1112528</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>fdf7c01963ed020203e7e35d61c95812</srcmd5>
+    <version>30.3.0</version>
+    <time>1696529028</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 30.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1114998 from glaubitz)</comment>
+    <requestid>1115600</requestid>
+  </revision>
 </revisionlist>
