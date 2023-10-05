@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  4 06:00:04 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- starting from groff 1.23.0, font/devps/generate/Makefile changed
+  '$@' to '$(OUTDIR)/$@'.
+  then we have to set outdir, or 'AB' will be changed to '/AB'
+  then throw a not writtable error.
+- upstream typo font/devps/generate/zapfdr.sed to apfdr.sed 
+  in generate/Makefile by mistake
+  so we can't link generate directory (hope to be fixed next rel)
+
+-------------------------------------------------------------------
 Mon Feb  1 10:13:58 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Use rpm.vercmp to compare versions
