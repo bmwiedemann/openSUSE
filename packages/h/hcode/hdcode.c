@@ -368,7 +368,7 @@ char *ibuf;
     return 0;
 }
 
-static char *strcasestr(buf, str)
+/*static char *strcasestr(buf, str)
 char *buf;
 char *str;
 {
@@ -380,7 +380,7 @@ char *str;
 	if (strncasecmp(buf, str, lenstr) == 0)
 	    return buf;
     return NULL;
-}
+}*/
 
 static char *get_mpb_string(ibuf)
 char *ibuf;

@@ -99,4 +99,13 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="16" vrev="678">
+    <srcmd5>f68bb5d4ba82cef8505cfd71cecd5a9d</srcmd5>
+    <version>2.1</version>
+    <time>1696529010</time>
+    <user>anag+factory</user>
+    <comment>- fix build: strcasestr now comes with string.h
+</comment>
+    <requestid>1115534</requestid>
+  </revision>
 </revisionlist>
