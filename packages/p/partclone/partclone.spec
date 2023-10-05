@@ -17,8 +17,12 @@
 #
 
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1590
+%global force_gcc_version 12
+%endif
+
 Name:           partclone
-Version:        0.3.25
+Version:        0.3.26
 Release:        0
 Summary:        File System Clone Utilities
 License:        GPL-2.0-or-later
@@ -29,6 +33,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 BuildRequires:  libbtrfs-devel
 BuildRequires:  nilfs-utils-devel
 BuildRequires:  pkgconfig
@@ -49,6 +54,10 @@ ext2/3, reiserfs, reiser4, xfs, hfs+ file systems
 %autosetup
 
 %build
+%if 0%{?force_gcc_version}
+  export CC=gcc-%{?force_gcc_version}
+  export CXX=g++-%{?force_gcc_version}
+%endif
 export CFLAGS="%{optflags} -fcommon"
 autoreconf -fiv
 %configure \

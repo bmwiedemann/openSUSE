@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 29 08:06:50 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 0.3.26:
+  * add the direct-io option for writing data to a TARGET device or file.
+  * correction for item at offset 76 
+  * report used blocks and free space based on bitmap 
+- force higher gcc version on Leap
+
+-------------------------------------------------------------------
 Mon Sep  4 08:10:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.25:
