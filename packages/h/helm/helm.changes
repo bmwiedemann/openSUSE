@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Sep 28 04:47:57 UTC 2023 - kastl@b1-systems.de
 
-- Update to version 3.13.0:
+- Update to version 3.13.0 (bsc#1215588):
   * bump version to v3.13.0
   * Fix leaking goroutines in Install
   * chore(deps): bump github.com/containerd/containerd from 1.7.3
@@ -224,7 +224,7 @@ Thu Jun 15 06:23:40 UTC 2023 - kastl@b1-systems.de
 -------------------------------------------------------------------
 Thu May 11 04:45:07 UTC 2023 - kastl@b1-systems.de
 
-- Update to version 3.12.0:
+- Update to version 3.12.0 (bsc#1215711, CVE-2023-25173):
   * bump version to v3.12.0
   * Attach annotations to OCI artifacts
   * chore: bump k8s.io dependencies to v0.27.1
@@ -304,7 +304,7 @@ Mon Mar 27 17:12:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build against go 1.19 (bsc#1209670)
 - include K8s tags
-- run tests 
+- run tests
 
 -------------------------------------------------------------------
 Thu Mar 09 05:49:04 UTC 2023 - kastl@b1-systems.de
@@ -545,12 +545,12 @@ Mon May 09 11:20:29 UTC 2022 - dmueller@suse.com
 -------------------------------------------------------------------
 Wed Mar  9 16:06:17 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- avoid CGO to workaround missing gold dependency (bsc#1183043) 
+- avoid CGO to workaround missing gold dependency (bsc#1183043)
 
 -------------------------------------------------------------------
 Thu Mar  3 13:23:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- build against go 1.17 similar to how upstream does 
+- build against go 1.17 similar to how upstream does
 
 -------------------------------------------------------------------
 Wed Feb 2 09:47:00 UTC 2022 - Michal Hlavac <miso@hlavki.eu>
@@ -569,7 +569,7 @@ Wed Feb 2 09:47:00 UTC 2022 - Michal Hlavac <miso@hlavki.eu>
 Mon Oct 18 12:37:13 UTC 2021 - Robert Munteanu <rombert@apache.org>
 
 - use 'v' prefix for the version to match upstream builds
-- package fish completions 
+- package fish completions
 
 -------------------------------------------------------------------
 Thu Sep 16 02:32:04 UTC 2021 - jenting.hsiao@suse.com
@@ -1908,7 +1908,7 @@ Thu May 16 04:26:51 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
 -------------------------------------------------------------------
 Wed Dec 19 01:36:13 UTC 2018 - clee@suse.com
 
-- Require golang >= 1.10.6 
+- Require golang >= 1.10.6
   * bsc#1118897 CVE-2018-16873
     go#29230 cmd/go: remote command execution during "go get -u"
   * bsc#1118898 CVE-2018-16874
@@ -1918,7 +1918,7 @@ Wed Dec 19 01:36:13 UTC 2018 - clee@suse.com
 -------------------------------------------------------------------
 Thu Dec 13 04:47:38 UTC 2018 - dorf@suse.com
 
-- Require golang >= 1.10. 
+- Require golang >= 1.10.
 
 -------------------------------------------------------------------
 Tue Aug  7 09:58:51 UTC 2018 - mmeister@suse.com
@@ -1929,7 +1929,7 @@ Tue Aug  7 09:58:51 UTC 2018 - mmeister@suse.com
 -------------------------------------------------------------------
 Tue Jun  5 09:50:49 UTC 2018 - dcassany@suse.com
 
-- Make use of %license macro 
+- Make use of %license macro
 
 -------------------------------------------------------------------
 Tue Mar 13 16:31:32 UTC 2018 - kmacinnes@suse.com

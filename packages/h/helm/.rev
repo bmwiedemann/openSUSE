@@ -567,4 +567,20 @@ See changelog in:
     <comment></comment>
     <requestid>1114007</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>80c98d8f0ec9f6bc226d8f8c42652686</srcmd5>
+    <version>3.13.0</version>
+    <time>1696529007</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.13.0 (bsc#1215588):
+- Update to version 3.12.0 (bsc#1215711, CVE-2023-25173):
+- run tests
+- avoid CGO to workaround missing gold dependency (bsc#1183043)
+- build against go 1.17 similar to how upstream does
+- package fish completions
+- Require golang &gt;= 1.10.6
+- Require golang &gt;= 1.10.
+- Make use of %license macro</comment>
+    <requestid>1115550</requestid>
+  </revision>
 </revisionlist>
