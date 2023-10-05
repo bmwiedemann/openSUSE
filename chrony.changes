@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep  1 14:05:34 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Use make quickcheck instead of make check to avoid >1h build
+  times and failures due to timeouts. This was the default before
+  3.2 but it changed to make tests more reliable. Here a seed is
+  already set to get deterministic execution.
+
+-------------------------------------------------------------------
 Wed Aug  9 17:30:28 UTC 2023 - Reinhard Max <max@suse.com>
 
 - Update to 4.4:
