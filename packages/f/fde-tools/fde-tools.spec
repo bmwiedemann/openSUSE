@@ -26,6 +26,7 @@ URL:            https://github.com/openSUSE/fde-tools
 Source:         https://github.com/openSUSE/%{name}/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source1:        fde-tools.service
 Patch:          fde-tools-firstboot-alp-snapshot.patch
+Patch1:         fde-tools-remove-redundant-2nd-pw-creation.patch
 BuildRequires:  help2man
 BuildRequires:  pkgconfig(libcryptsetup)
 BuildRequires:  pkgconfig(libfido2)

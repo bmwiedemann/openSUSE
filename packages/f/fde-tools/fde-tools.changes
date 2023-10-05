@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  4 07:04:47 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-remove-redundant-2nd-pw-creation.patch to remove
+  the creation of the secondary password in 'add-secondary-key'
+
+-------------------------------------------------------------------
 Mon Oct  2 08:10:10 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Bring ExclusiveArch back and only enable the build for the
