@@ -18,7 +18,7 @@
 
 %define cpan_name Math-BigInt-GMP
 Name:           perl-Math-BigInt-GMP
-Version:        1.6012
+Version:        1.6013
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Backend library for Math::BigInt etc. based on GMP
@@ -29,10 +29,10 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp) >= 1.22
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.58
-BuildRequires:  perl(Math::BigInt) >= 1.999838
+BuildRequires:  perl(Math::BigInt) >= 1.999840
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(Carp) >= 1.22
-Requires:       perl(Math::BigInt) >= 1.999838
+Requires:       perl(Math::BigInt) >= 1.999840
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  gmp-devel
@@ -58,7 +58,7 @@ Math::BigInt::Calc.pm.
 %prep
 %autosetup  -n %{cpan_name}-%{version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
