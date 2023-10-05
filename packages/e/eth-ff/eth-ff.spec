@@ -16,13 +16,13 @@
 #
 
 
-%define git_ver .0.b537315d36c7
+%define git_ver .0.7188a97b9a39
 
 %define pseudo_opt %{_prefix}/lib/eth-tools/
 %define ethsysconfdir %{_sysconfdir}/eth-tools/
 
 Name:           eth-ff
-Version:        11.5.0.0
+Version:        11.5.1.0
 Release:        0
 Summary:        Intel Ethernet Fabric Suite basic tools and libraries for fabric management
 License:        BSD-3-Clause OR GPL-2.0-only

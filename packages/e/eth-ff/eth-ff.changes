@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  4 06:25:51 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v11.5.1.0
+  - improved to support SLES 15.5
+  - replaced fgrep and egrep with grep -F and grep -E
+  - improved ethlinkanalysis/ethfabricanalysis to use first enabled
+    plane when it's not specified
+  - fixed version comparison issue on install script that happens on
+    CUDA version components
+  - improved help text and man page for all tools
+
+-------------------------------------------------------------------
 Tue Jul 25 12:34:19 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to v11.5.0.0
