@@ -52,4 +52,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1111063</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d1a722574f72e05a16fea7cfdaf8d37a</srcmd5>
+    <version>2.2.2</version>
+    <time>1696528992</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.2.2:
+  * fixed Issue #7</comment>
+    <requestid>1114842</requestid>
+  </revision>
 </revisionlist>
