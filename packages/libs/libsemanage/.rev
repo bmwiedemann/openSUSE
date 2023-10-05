@@ -497,4 +497,13 @@ Could not find any LGPL-2.1 &quot;only&quot; licensed files in the pacakge (forw
 - Enable LTO now (boo#1138812).</comment>
     <requestid>1103132</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>38bc8e89832a3bb42cf99f2b0ce4abf0</srcmd5>
+    <version>3.5</version>
+    <time>1696529009</time>
+    <user>anag+factory</user>
+    <comment>- Remove build counter syncing for real
+</comment>
+    <requestid>1115853</requestid>
+  </revision>
 </revisionlist>

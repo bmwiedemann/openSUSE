@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 14 08:07:46 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Remove build counter syncing for real
+
+-------------------------------------------------------------------
 Thu May  4 14:20:40 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add _multibuild to define additional spec files as additional
