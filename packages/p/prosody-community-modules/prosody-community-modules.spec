@@ -1,7 +1,7 @@
 #
-# spec file for package prosody-community-plugins
+# spec file for package prosody-community-modules
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           prosody-community-modules
-Version:        0~hg4900
+Version:        0~hg5664
 Release:        0
 Summary:        Community and experimental modules not distributed as part of Prosody
 License:        MIT
@@ -25,8 +25,8 @@ Group:          Productivity/Networking/Other
 URL:            https://modules.prosody.im/
 Source:         prosody-modules-%version.tar.xz
 BuildRequires:  fdupes
+Requires:       lua54-zlib
 Requires:       prosody
-Requires:       lua51-zlib
 
 %description
 Prosody Community Modules are additional modulse not shipped with the

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 27 12:21:59 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Upgrade to snapshot 0~hg5664
+- Follow prosody's move to Lua 5.4.
+
+-------------------------------------------------------------------
 Tue Feb 22 05:00:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Inital package for build.opensuse.org (version 0~hg4900)
