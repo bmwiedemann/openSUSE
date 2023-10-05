@@ -52,5 +52,6 @@
     <package name="timezone"/>
     <package name="util-linux"/><!-- su is needed for entrypoint.sh -->
     <package name="pwgen"/><!-- pwgen is needed for entrypoint.sh -->
+    <package name="gawk"/><!-- awk is needed for entrypoint.sh -->
   </packages>
 </image>

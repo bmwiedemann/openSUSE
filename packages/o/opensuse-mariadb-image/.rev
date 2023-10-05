@@ -77,4 +77,13 @@
 - Import from github.com/openSUSE/container-images/mariadb (forwarded request 879691 from kukuk)</comment>
     <requestid>879693</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>ada1dee3a75629089cb409a5a5a98a8d</srcmd5>
+    <version>1.0.0</version>
+    <time>1696529112</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1696506425.096c371:
+  * awk is needed for entrypoint.sh</comment>
+    <requestid>1115810</requestid>
+  </revision>
 </revisionlist>
