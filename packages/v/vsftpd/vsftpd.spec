@@ -38,6 +38,7 @@ Source1:        %{name}.pam
 Source2:        %{name}.logrotate
 Source3:        %{name}.init
 Source4:        README.SUSE
+Source5:        %{name}.ftpusers
 Source6:        %{name}.firewall
 Source7:        vsftpd.service
 Source8:        vsftpd@.service
@@ -204,6 +205,7 @@ install -D -m 600 %{name}.conf %{buildroot}%{_sysconfdir}/%{name}.conf
 install -D -m 600 xinetd.d/%{name} %{buildroot}%{_sysconfdir}/xinetd.d/%{name}
 %endif
 install -D -m 644 $RPM_SOURCE_DIR/%{name}.pam %{buildroot}%{_pam_vendordir}/%{name}
+install -D -m 600 %{SOURCE5} $RPM_BUILD_ROOT%{_sysconfdir}/vsftpd/ftpusers
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
 install -D -m 644 $RPM_SOURCE_DIR/%{name}.logrotate %{buildroot}%{_distconfdir}/logrotate.d/%{name}
@@ -300,6 +302,8 @@ done
 %config %{_pam_sysconfdir}/pam.d/%{name}
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %endif
+%dir %{_sysconfdir}/vsftpd
+%config %{_sysconfdir}/vsftpd/ftpusers
 %{_mandir}/man5/%{name}.conf.*
 %{_mandir}/man8/%{name}.*
 %license LICENSE

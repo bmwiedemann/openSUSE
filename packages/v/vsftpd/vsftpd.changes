@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  4 08:00:40 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add vsftpd.ftpusers, the netcfg one is not maintained, outdated
+  and will be removed.
+- vsftpd.pam: use own copy of ftpusers.
+
+-------------------------------------------------------------------
 Tue Sep 26 09:20:33 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Enable crypto-policies support: [bsc#1211301]

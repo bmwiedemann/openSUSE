@@ -3,7 +3,7 @@
 # Uncomment this to achieve what used to be ftpd -A.
 # auth       required     pam_listfile.so item=user sense=allow file=/etc/ftpchroot onerr=fail
 
-auth     required       pam_listfile.so item=user sense=deny file=/etc/ftpusers onerr=succeed
+auth     required       pam_listfile.so item=user sense=deny file=/etc/vftpd/ftpusers onerr=succeed
 # Uncomment the following line for anonymous ftp.
 #auth	 sufficient     pam_ftp.so
 auth     required       pam_shells.so
