@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Sep 01 07:24:44 UTC 2023 - marius.kittler@suse.com
+
+- Update to version 10.1.1:
+  * Features and enhancements
+    - Loki: Remove distinct operation.
+    - Whitelabeling: Add a config option to hide the Grafana
+      edition from the footer.
+    - Alerting: Optimize rule details page data fetching.
+    - Alerting: Optimize external Loki queries.
+  * Bug fixes
+    - Alerting: Limit redis pool size to 5 and make configurable.
+    - Elasticsearch: Fix respecting of precision in geo hash grid.
+    - Dashboard: Fix Variable Dropdown to Enforce Minimum One
+      Selection when 'All' Option is Configured.
+    - Chore: Fix Random Walk scenario for Grafana DS.
+    - AuthProxy: Fix user retrieval through cache.
+    - Alerting: Fix auto-completion snippets for KV properties.
+    - Alerting: Fix incorrect timing meta information for policy.
+    - Alerting: Add new Recording Rule button when the list is
+      empty.
+    - Drawer: Clicking a Select arrow within a Drawer no longer
+      causes it to close.
+    - Logs: Fix log samples not present with empty first frame.
+    - Alerting: Fix Recording Rule QueryEditor builder view.
+    - Transforms: Catch errors while running transforms.
+    - Dashboard: Fix version restore.
+    - Logs: Fix permalinks not scrolling into view.
+    - SqlDataSources: Update metricFindQuery to pass on scopedVars
+      to templateSrv.
+    - Rendering: Fix dashboard screenshot.
+    - Loki: Fix validation of step values to also allow e.g. ms
+      values.
+    - Dashboard: Fix repeated row panel placement with larger
+      number of rows.
+    - CodeEditor: Correctly fires onChange handler.
+    - Drawer: Fix scrolling drawer content on Safari.
+    - Alerting: Remove dump wrapper for yaml config.
+    - Alerting: Always invalidate the AM config after mutation.
+    - Slug: Combine various slugify fixes for special character
+      handling.
+    - Logs: Fix displaying the wrong field as body.
+    - Alerting: Fix "see graph button" for cloud rules.
+
+-------------------------------------------------------------------
 Thu Aug 24 14:00:45 UTC 2023 - marius.kittler@suse.com
 
 - Update to version 10.1.0:
