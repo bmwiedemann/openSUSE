@@ -1,6 +1,7 @@
 #
 # spec file for package gnome-shell-extension-customize-ibus
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022 Hollow Man
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,16 +17,15 @@
 #
 
 
-%global commit 959f1c27c21b76ca98c2a44b03b902d6748feee8
 %global uuid customize-ibus@hollowman.ml
 %global forgeurl https://github.com/openSUSE/Customize-IBus
 Name:           gnome-shell-extension-customize-ibus
-Version:        86
+Version:        88
 Release:        0
 Summary:        Customize IBus extension for GNOME Shell
 License:        GPL-3.0-or-later
 URL:            %{forgeurl}
-Source0:        %{forgeurl}/archive/%{commit}/Customize-IBus-%{commit}.tar.gz
+Source0:        %{forgeurl}/archive/refs/tags/v%{version}.tar.gz#/Customize-IBus-%{version}.tar.gz
 BuildRequires:  gettext
 BuildRequires:  glib2-devel
 BuildRequires:  make
@@ -38,7 +38,7 @@ Full customization of appearance, behavior, system tray and input source indicat
 深度定制 IBus 的外观、行为、系统托盘以及输入指示。
 
 %prep
-%setup -q -n Customize-IBus-%{commit}
+%setup -q -n Customize-IBus-%{version}
 
 %build
 %make_build _build VERSION=%{version}

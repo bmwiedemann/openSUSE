@@ -23,4 +23,18 @@
     <comment></comment>
     <requestid>1071261</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e9fc67940fcc15a16eb32718ca1b7ea1</srcmd5>
+    <version>88</version>
+    <time>1696529052</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1114852 from iznogood
+
+- Update to version V88:
+  + Clean up.
+- Changes from version V87:
+  + Have support for GNOME 45.
+- Drop unneeded extra tarball, PKGBUILD and dsc files.</comment>
+    <requestid>1115707</requestid>
+  </revision>
 </revisionlist>
