@@ -29,31 +29,28 @@ Source2:        http://prosody.im/downloads/source/%{name}-%{version}.tar.gz.asc
 Source3:        %{name}.keyring
 Source4:        %{name}.service
 Source5:        prosody.tmpfile
-Source6:        example.com.key
-Source7:        example.com.crt
-Source8:        localhost.key
-Source9:        localhost.crt
-# Make prosody work on systems that have lua 5.1 AND 5.2 installed
-Patch0:         prosody-lua51coexist.patch
+# Make prosody work on systems that have not only Lua 5.4 installed
+Patch0:         prosody-lua54coexist.patch
 Patch1:         prosody-configure.patch
 # PATCH-FIX-OPENSUSE marguerite@opensuse.org - enable Unix features
 Patch3:         prosody-cfg.patch
 BuildRequires:  libicu-devel
 BuildRequires:  libidn-devel
 BuildRequires:  libopenssl-devel
-BuildRequires:  lua51-devel
+BuildRequires:  lua54-devel
 BuildRequires:  systemd-rpm-macros
-Requires:       lua51
-Requires:       lua51-BitOp
-Requires:       lua51-luaexpat
-Requires:       lua51-luafilesystem
-Requires:       lua51-luasec
-Requires:       lua51-luasocket
+Requires:       lua54
+Requires:       lua54-luaexpat
+Requires:       lua54-luafilesystem
+Requires:       lua54-luasec
+Requires:       lua54-luasocket
+Requires:       lua54-readline
 Requires(pre):  permissions
 Requires(pre):  shadow
-Recommends:     lua51-luadbi
-Recommends:     lua51-luaevent
-Recommends:     lua51-zlib
+Recommends:     lua54-luadbi
+Recommends:     lua54-luaevent
+Recommends:     lua54-luaunbound
+Recommends:     lua54-zlib
 %{?systemd_requires}
 
 %description
@@ -74,7 +71,7 @@ sed -i 's|@@PIDDIR@@|%{_piddir}|g;' prosody.cfg.lua.dist
 %build
 # CFLAGS need to keep -fPIC for shared modules
 ./configure \
-    --lua-suffix="5.1" \
+    --lua-suffix="5.4" \
     %if 0%{?suse_version} >= 1500
     --with-lua-include=%{lua_incdir} \
     --cflags="%{optflags} -fPIC" \
@@ -82,11 +79,10 @@ sed -i 's|@@PIDDIR@@|%{_piddir}|g;' prosody.cfg.lua.dist
     --cflags="%{optflags} -fPIC -std=c99" \
     %endif
     --c-compiler=gcc \
-    --libdir=%{_libdir}
+    --libdir=%{_libdir} \
+    --no-example-certs
 
 make %{?_make_output_sync} %{?_smp_mflags}
-# use pre-generated example certs for reproducible builds
-cp -af %{SOURCE6} %{SOURCE7} %{SOURCE8} %{SOURCE9} certs/
 
 %install
 %make_install

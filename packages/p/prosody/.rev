@@ -661,4 +661,17 @@
   * mod_s2s: Add event where resolver for s2sout can be tweaked</comment>
     <requestid>1109423</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>bdbe7e912039e74784aa71ed5658835a</srcmd5>
+    <version>0.12.4</version>
+    <time>1696529038</time>
+    <user>anag+factory</user>
+    <comment>- Lua 5.1 is deprecated, switch to 5.4.
+- Stop packaging example keys and certificates. It is bad security
+  practice and the examples sometimes interfer with actual
+  configurations.
+- Drop prosody-lua51coexist.patch
+- Add prosody-lua54coexist.patch</comment>
+    <requestid>1115621</requestid>
+  </revision>
 </revisionlist>

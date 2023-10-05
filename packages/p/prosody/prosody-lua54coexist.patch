@@ -3,7 +3,7 @@ diff -bruNE prosody-0.9.11_orig/prosody prosody-0.9.11/prosody
 +++ prosody-0.9.11/prosody	2016-12-14 11:11:33.025945126 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env lua
-+#!/usr/bin/lua5.1
++#!/usr/bin/lua5.4
  -- Prosody IM
  -- Copyright (C) 2008-2010 Matthew Wild
  -- Copyright (C) 2008-2010 Waqas Hussain
@@ -12,7 +12,7 @@ diff -bruNE prosody-0.9.11_orig/prosodyctl prosody-0.9.11/prosodyctl
 +++ prosody-0.9.11/prosodyctl	2016-12-14 11:11:39.469664663 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env lua
-+#!/usr/bin/lua5.1
++#!/usr/bin/lua5.4
  -- Prosody IM
  -- Copyright (C) 2008-2010 Matthew Wild
  -- Copyright (C) 2008-2010 Waqas Hussain
