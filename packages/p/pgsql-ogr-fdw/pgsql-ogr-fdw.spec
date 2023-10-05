@@ -30,10 +30,8 @@ URL:            https://github.com/pramsey/pgsql-ogr-fdw
 Source0:        https://codeload.github.com/pramsey/pgsql-ogr-fdw/tar.gz/v%{version}#/%{ext_name}-%{version}.tar.gz
 BuildRequires:  %{pg_name}-llvmjit-devel
 BuildRequires:  %{pg_name}-server-devel
-BuildRequires:  clang-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gdal-devel
-BuildRequires:  llvm-devel
 BuildRequires:  pkgconfig
 %pg_server_requires
 %if "%{pg_name}" == ""

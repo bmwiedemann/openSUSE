@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 30 15:09:12 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Remove problematic dependencies on clang-devel and llvm-devel:
+  this will use the distribution default version, not the version
+  required by postgresql*-llvmjit. Also the *-devel packages are
+  not needed, only the compiler. In fact postgresql*-llvmjit-devel
+  already requires the correct version of clang/llvm, so we can
+  just rely on that and not bother adding our own dependencies.
+
+-------------------------------------------------------------------
 Mon Aug 14 09:35:01 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Package bitcode only when it exists
