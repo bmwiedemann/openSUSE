@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b19429c9e5986895588896e72e69ac36</srcmd5>
+    <version>0.3.0+git20230728.955f78d</version>
+    <time>1696451515</time>
+    <user>anag+factory</user>
+    <comment>New package amber-cli is a CLI tool for tenants to use and access Amber services. Amber remotely verifies trustworthiness of Intel SGX and Intel TDX TEEs.</comment>
+    <requestid>1115088</requestid>
+  </revision>
+</revisionlist>
