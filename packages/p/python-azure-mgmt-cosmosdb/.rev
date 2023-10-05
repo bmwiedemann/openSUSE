@@ -251,4 +251,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1085647 from glaubitz)</comment>
     <requestid>1085773</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6eddc485836bf5a6b8035d7e30445ac0</srcmd5>
+    <version>9.3.0</version>
+    <time>1696529029</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 9.3.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1115008 from glaubitz)</comment>
+    <requestid>1115604</requestid>
+  </revision>
 </revisionlist>
