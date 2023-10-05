@@ -567,6 +567,7 @@ unsorted:
   - amarok-lang 
   - amazon-ecs-init 
   - amazon-ssm-agent 
+  - amber-cli 
   - amdctl 
   - amfora 
   - aml-devel 
@@ -13775,7 +13776,7 @@ unsorted:
   - libopenmpi_1_10_7-gnu-hpc 
   - libopenmpi_2_1_6-gnu-hpc 
   - libopenmpi_3_1_6-gnu-hpc 
-  - libopenmpi_4_1_5-gnu-hpc 
+  - libopenmpi_4_1_6-gnu-hpc 
   - libopenmpi_5_0_0-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
@@ -17350,7 +17351,6 @@ unsorted:
   - mg 
   - mgdiff 
   - mgetty 
-  - mgp 
   - mhash-devel 
   - mhvtl 
   - mhvtl-kmp-default 
@@ -19535,12 +19535,12 @@ unsorted:
   - openmpi_3_1_6-gnu-hpc-docs 
   - openmpi_3_1_6-gnu-hpc-macros-devel 
   - openmpi_3_1_6-gnu-hpc-testsuite 
-  - openmpi_4_1_5-gnu-hpc 
-  - openmpi_4_1_5-gnu-hpc-devel 
-  - openmpi_4_1_5-gnu-hpc-devel-static 
-  - openmpi_4_1_5-gnu-hpc-docs 
-  - openmpi_4_1_5-gnu-hpc-macros-devel 
-  - openmpi_4_1_5-gnu-hpc-testsuite 
+  - openmpi_4_1_6-gnu-hpc 
+  - openmpi_4_1_6-gnu-hpc-devel 
+  - openmpi_4_1_6-gnu-hpc-devel-static 
+  - openmpi_4_1_6-gnu-hpc-docs 
+  - openmpi_4_1_6-gnu-hpc-macros-devel 
+  - openmpi_4_1_6-gnu-hpc-testsuite 
   - openmpi_5_0_0-gnu-hpc 
   - openmpi_5_0_0-gnu-hpc-devel 
   - openmpi_5_0_0-gnu-hpc-devel-static 
@@ -23947,6 +23947,7 @@ unsorted:
   - python310-cmarkgfm 
   - python310-cmd2 
   - python310-cmdln 
+  - python310-cmyt 
   - python310-coards 
   - python310-codecov 
   - python310-cogapp 
@@ -24293,6 +24294,8 @@ unsorted:
   - python310-eventlet 
   - python310-evilunit 
   - python310-evtx 
+  - python310-ewah-bool-utils 
+  - python310-ewah-bool-utils-devel 
   - python310-exam 
   - python310-exceptiongroup 
   - python310-execnet 
@@ -26140,6 +26143,7 @@ unsorted:
   - python310-sphinxext-opengraph 
   - python310-sphobjinv 
   - python310-spidev 
+  - python310-spin 
   - python310-spotipy 
   - python310-spsdk 
   - python310-spur 
@@ -27406,6 +27410,7 @@ unsorted:
   - python311-cmapfile 
   - python311-cmarkgfm 
   - python311-cmd2 
+  - python311-cmyt 
   - python311-coards 
   - python311-codecov 
   - python311-cogapp 
@@ -27740,6 +27745,8 @@ unsorted:
   - python311-eventlet 
   - python311-evilunit 
   - python311-evtx 
+  - python311-ewah-bool-utils 
+  - python311-ewah-bool-utils-devel 
   - python311-exam 
   - python311-exceptiongroup 
   - python311-execnet 
@@ -29477,6 +29484,7 @@ unsorted:
   - python311-sphinxext-opengraph 
   - python311-sphobjinv 
   - python311-spidev 
+  - python311-spin 
   - python311-spotipy 
   - python311-spsdk 
   - python311-spur 
@@ -30797,6 +30805,7 @@ unsorted:
   - python39-cmarkgfm 
   - python39-cmd2 
   - python39-cmdln 
+  - python39-cmyt 
   - python39-coards 
   - python39-codecov 
   - python39-cogapp 
@@ -31142,6 +31151,8 @@ unsorted:
   - python39-eventlet 
   - python39-evilunit 
   - python39-evtx 
+  - python39-ewah-bool-utils 
+  - python39-ewah-bool-utils-devel 
   - python39-exam 
   - python39-exceptiongroup 
   - python39-execnet 
@@ -32986,6 +32997,7 @@ unsorted:
   - python39-sphinxext-opengraph 
   - python39-sphobjinv 
   - python39-spidev 
+  - python39-spin 
   - python39-spotipy 
   - python39-spsdk 
   - python39-spur 
