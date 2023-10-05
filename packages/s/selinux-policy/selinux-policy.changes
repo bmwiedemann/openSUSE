@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  4 14:40:03 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Use /var/adm/update-scripts in macros.selinux-policy. The rpm state
+  directory doesn't exist on SUSE systems (bsc#1213593)
+
+-------------------------------------------------------------------
+Tue Sep 19 07:57:02 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Modified update.sh to require first parameter "full" to also
+  update container-selinux. For maintenance updates you usually
+  don't want it to be updated
+
+-------------------------------------------------------------------
 Fri Jul 28 14:49:04 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 20230728:

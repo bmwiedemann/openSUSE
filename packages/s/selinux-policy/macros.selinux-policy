@@ -28,7 +28,7 @@
 %_selinux_store_policy_path %{_selinux_store_path}/${_policytype}
 
 %_file_context_file %{_sysconfdir}/selinux/${SELINUXTYPE}/contexts/files/file_contexts
-%_file_context_file_pre /run/rpm-state/file_contexts.pre
+%_file_context_file_pre /var/adm/update-scripts/file_contexts.pre
 
 %_file_custom_defined_booleans %{_selinux_store_policy_path}/rpmbooleans.custom
 %_file_custom_defined_booleans_tmp %{_selinux_store_policy_path}/rpmbooleans.custom.tmp
@@ -92,7 +92,7 @@ if %{_sbindir}/selinuxenabled; then \
     _policytype="targeted" \
   fi \
   if [ "${SELINUXTYPE}" = "${_policytype}" ]; then \
-    mkdir -p /run/rpm-state \
+    mkdir -p $(dirname %{_file_context_file_pre}) \
     [ -f %{_file_context_file_pre} ] || cp -f %{_file_context_file} %{_file_context_file_pre} \
   fi \
 fi \
