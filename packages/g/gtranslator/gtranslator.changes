@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct  2 17:52:47 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 45.2:
+  + Fix sort order infinite recursion bug.
+
+-------------------------------------------------------------------
+Thu Sep 21 08:14:07 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 45.1:
+  + Gtk4 migration and usage of libadwaita.
+  + Usage of libspell for spell checking.
+  + Big code refactoring for the migration.
+- Replace pkgconfig(gspell-1) BuildRequires with
+  pkgconfig(libspelling-1), following upstreams port to libspell.
+- Rep[ace pkgconfig(gtk+-3.0) and pkgconfig(gtksourceview-4)
+  BuildRequires with pkgconfig(gtk4), pkgconfig(libadwaita), and
+  pkgconfig(gtksourceview-5), following the port to GTK4.
+- Ad explicit pkgconfig(gthread-2.0) BuildRequires: verified
+  dependency.
+- Drop pkgconfig(libhandy-1) and pkgconfig(libsoup-2.4)
+  BuildRequires: no longer needed.
+- Remove doc package, the documentation upstream is outdated and
+  doesn't build correctly
+  https://gitlab.gnome.org/GNOME/gtranslator/-/issues/184
+
+-------------------------------------------------------------------
 Thu Apr 21 11:40:08 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move gtksourceview-4/language-specs to -devel package.

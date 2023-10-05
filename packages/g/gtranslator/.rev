@@ -366,4 +366,30 @@
     <comment>Scripted push from GNOME:Next (forwarded request 972163 from dimstar)</comment>
     <requestid>972488</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>2b92d810134a6b747d8d310cf77e938a</srcmd5>
+    <version>45.2</version>
+    <time>1696529004</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 45.2:
+  + Fix sort order infinite recursion bug.
+
+- Update to version 45.1:
+  + Gtk4 migration and usage of libadwaita.
+  + Usage of libspell for spell checking.
+  + Big code refactoring for the migration.
+- Replace pkgconfig(gspell-1) BuildRequires with
+  pkgconfig(libspelling-1), following upstreams port to libspell.
+- Rep[ace pkgconfig(gtk+-3.0) and pkgconfig(gtksourceview-4)
+  BuildRequires with pkgconfig(gtk4), pkgconfig(libadwaita), and
+  pkgconfig(gtksourceview-5), following the port to GTK4.
+- Ad explicit pkgconfig(gthread-2.0) BuildRequires: verified
+  dependency.
+- Drop pkgconfig(libhandy-1) and pkgconfig(libsoup-2.4)
+  BuildRequires: no longer needed.
+- Remove doc package, the documentation upstream is outdated and
+  doesn't build correctly
+  https://gitlab.gnome.org/GNOME/gtranslator/-/issues/184</comment>
+    <requestid>1115467</requestid>
+  </revision>
 </revisionlist>
