@@ -70,6 +70,7 @@ Mon Aug 14 09:20:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Fri Jun  9 08:08:57 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - skip test__util.py in s390x arch
+  bsc#1211861
 
 -------------------------------------------------------------------
 Thu Jun  1 07:05:01 UTC 2023 - Dirk Müller <dmueller@suse.com>

@@ -735,4 +735,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1114303</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>dac114ecc10009333ff513ccf783d3fe</srcmd5>
+    <version>23.9.0</version>
+    <time>1696529006</time>
+    <user>anag+factory</user>
+    <comment>  bsc#1211861</comment>
+    <requestid>1115549</requestid>
+  </revision>
 </revisionlist>
