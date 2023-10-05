@@ -1,0 +1,9 @@
+<package name="python-ewah-bool-utils" project="openSUSE:Factory">
+  <title>EWAH Bool Array utils for yt</title>
+  <description>Features:
+
+* EWAH Bool Array compression stores integer arrays efficient in memory.
+* Can be used for indexing arrays.</description>
+  <devel project="devel:languages:python:numeric" package="python-ewah-bool-utils"/>
+  <url>https://github.com/yt-project/ewah_bool_utils</url>
+</package>
