@@ -278,4 +278,15 @@
 - Switch source archive format to TAR.GZ (forwarded request 1110875 from glaubitz)</comment>
     <requestid>1111370</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d512ee0fcfa1848b23e49b438f5a5cfe</srcmd5>
+    <version>12.18.1</version>
+    <time>1696529026</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.18.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1114984 from glaubitz)</comment>
+    <requestid>1115597</requestid>
+  </revision>
 </revisionlist>
