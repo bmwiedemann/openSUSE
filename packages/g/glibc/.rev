@@ -2884,4 +2884,15 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
     <comment>- fstat-implementation.patch: io: Do not implement fstat with fstatat (forwarded request 1114022 from Andreas_Schwab)</comment>
     <requestid>1114023</requestid>
   </revision>
+  <revision rev="280" vrev="4">
+    <srcmd5>023230cae6ae60c3d77758c6f0338c42</srcmd5>
+    <version>2.38</version>
+    <time>1696528938</time>
+    <user>anag+factory</user>
+    <comment>- setxid-propagate-glibc-tunables.patch: Propagate GLIBC_TUNABLES in
+  setxid binaries
+- tunables-string-parsing.patch: tunables: Terminate if end of input is
+  reached (CVE-2023-4911, bsc#1215501) (forwarded request 1115606 from Andreas_Schwab)</comment>
+    <requestid>1115607</requestid>
+  </revision>
 </revisionlist>

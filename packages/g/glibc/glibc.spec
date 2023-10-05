@@ -326,6 +326,10 @@ Patch1010:      getcanonname-use-after-free.patch
 Patch1011:      getaddrinfo-memory-leak.patch
 # PATCH-FIX-UPSTREAM io: Do not implement fstat with fstatat
 Patch1012:      fstat-implementation.patch
+# PATCH-FIX-UPSTREAM Propagate GLIBC_TUNABLES in setxid binaries
+Patch1013:      setxid-propagate-glibc-tunables.patch
+# PATCH-FIX-UPSTREAM tunables: Terminate if end of input is reached (CVE-2023-4911)
+Patch1014:      tunables-string-parsing.patch
 
 ###
 # Patches awaiting upstream approval
@@ -561,6 +565,8 @@ library in a cross compilation setting.
 %patch1010 -p1
 %patch1011 -p1
 %patch1012 -p1
+%patch1013 -p1
+%patch1014 -p1
 %endif
 
 %patch2000 -p1
