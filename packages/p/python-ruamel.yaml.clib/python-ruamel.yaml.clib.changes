@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  4 08:11:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.2.8
+ * regenerated with Cython 3.0.2 for Python 3.12
+
+-------------------------------------------------------------------
 Fri Apr 21 12:33:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

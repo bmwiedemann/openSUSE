@@ -16,14 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-ruamel.yaml.clib
-Version:        0.2.7
+Version:        0.2.8
 Release:        0
 Summary:        Python YAML parser c-library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://bitbucket.org/ruamel/yaml.clib
 Source:         https://files.pythonhosted.org/packages/source/r/ruamel.yaml.clib/ruamel.yaml.clib-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
