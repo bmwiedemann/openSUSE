@@ -87,4 +87,24 @@
     <comment></comment>
     <requestid>1096024</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f74187db477860ea7e4004b81ef8c171</srcmd5>
+    <version>0.7.1</version>
+    <time>1696529086</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.1:
+  * Fix version requirement for Neat VNC
+
+- Update to 0.7.0:
+  * Each client can now have its own seat, i.e. it's own cursor
+    and separate keyboard focus
+  * A new option to create a websocket instead of a regular TCP socket
+  * Software pixel buffers with fewer bits per pixel than 32 are now supported
+  * A new RSA based authentication method with encryption has been added
+  * A config file can now reference files relative to the directory
+    in which it resides
+  * The unix-socket option is fixed
+  * Various kinks in wayvncctl have been ironed out</comment>
+    <requestid>1115754</requestid>
+  </revision>
 </revisionlist>

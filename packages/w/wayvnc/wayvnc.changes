@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct  5 07:48:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.1:
+  * Fix version requirement for Neat VNC
+
+-------------------------------------------------------------------
+Thu Oct  5 07:48:15 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  * Each client can now have its own seat, i.e. it's own cursor
+    and separate keyboard focus
+  * A new option to create a websocket instead of a regular TCP socket
+  * Software pixel buffers with fewer bits per pixel than 32 are now supported
+  * A new RSA based authentication method with encryption has been added
+  * A config file can now reference files relative to the directory
+    in which it resides
+  * The unix-socket option is fixed
+  * Various kinks in wayvncctl have been ironed out
+
+-------------------------------------------------------------------
 Thu Jun 29 16:31:23 UTC 2023 - Joan Torres <joan.torres@suse.com>
 
 - Drop egl, gegl, gles and glx dependencies which aren't needed
