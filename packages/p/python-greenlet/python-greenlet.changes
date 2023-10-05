@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  4 06:25:18 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.0.0:
+  * No changes from 3.0rc3 aside from the version number.
+- Ignore some slow and flaky tests
+
+-------------------------------------------------------------------
 Tue Sep 19 22:04:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.0~rc3:

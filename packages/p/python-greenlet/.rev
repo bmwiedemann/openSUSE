@@ -453,4 +453,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1113760</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a72cdfd2cc5b459304e8e89474807411</srcmd5>
+    <version>3.0.0</version>
+    <time>1696528967</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.0:
+  * No changes from 3.0rc3 aside from the version number.
+- Ignore some slow and flaky tests
+</comment>
+    <requestid>1115111</requestid>
+  </revision>
 </revisionlist>
