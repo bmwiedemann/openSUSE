@@ -28,13 +28,13 @@
 %endif
 
 Name:           gnucash
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        Personal Finance Manager
 License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
 Group:          Productivity/Office/Finance
 URL:            http://www.gnucash.org/
-Source:         https://github.com/Gnucash/gnucash/releases/download/%{version}/%{name}-%{version}.tar.bz2
+Source:         https://github.com/Gnucash/gnucash/releases/download/%{version}/%{name}-%{version}-1.tar.bz2
 Source1:        %{name}-rpmlintrc
 ## Cpan-warning patch must always be applied.
 # PATCH-FIX-UPSTREAM gnucash-cpan-warning.patch -- Add a warning about the danger of using gnc-fq-update to update the perl modules used by GnuCash.
@@ -43,7 +43,7 @@ Patch0:         gnucash-cpan-warning.patch
 Patch1:         gnucash-libm.patch
 Patch2:         gnucash-4.1-fix-gtest-path.patch
 
-BuildRequires:  cmake >= 3.10
+BuildRequires:  cmake >= 3.14
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
