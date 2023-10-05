@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  3 11:29:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add explicit this-is-only-for-build-envs requires to krb5-mini
+  and krb5-mini-devel: the mini flavors are currently excluded
+  using special hacks from the FTP Tree. In order to eliminate this
+  hack, we need to ensure the packages are not viable for real
+  installations. We achieve this with a dep that is never provided,
+  but ignored by OBS.
+
+-------------------------------------------------------------------
 Thu May  4 13:42:23 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add _multibuild to define additional spec files as additional

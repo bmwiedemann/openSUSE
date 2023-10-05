@@ -52,6 +52,7 @@ BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libverto)
 BuildRequires:  pkgconfig(ncurses)
 Requires(post): %fillup_prereq
+Requires:       this-is-only-for-build-envs
 Conflicts:      krb5
 Conflicts:      krb5-client
 Conflicts:      krb5-mini
@@ -76,6 +77,7 @@ Requires:       pkgconfig(libverto)
 Requires:       pkgconfig(ss)
 Conflicts:      krb5-devel
 Provides:       krb5-devel = %{version}
+Requires:       this-is-only-for-build-envs
 
 %description devel
 Kerberos V5 is a trusted-third-party network authentication system,
