@@ -2,10 +2,10 @@
 # Parent  fa7b175db269546b9408d1af03d9c04dddbc4d9b
 # use system stock icon for XTerm
 
-Index: xterm-373/xterm.desktop
+Index: xterm-385/xterm.desktop
 ===================================================================
---- xterm-373.orig/xterm.desktop
-+++ xterm-373/xterm.desktop
+--- xterm-385.orig/xterm.desktop
++++ xterm-385/xterm.desktop
 @@ -38,7 +38,7 @@ Exec=xterm
  Terminal=false
  Type=Application

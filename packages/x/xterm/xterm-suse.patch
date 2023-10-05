@@ -3,10 +3,10 @@
 # from 7ecf75281e09a29875b61f38bb66920529368050:
 # improve display of chinese letters (bsc#1089049)
 
-Index: xterm-372/UXTerm.ad
+Index: xterm-385/UXTerm.ad
 ===================================================================
---- xterm-372.orig/UXTerm.ad
-+++ xterm-372/UXTerm.ad
+--- xterm-385.orig/UXTerm.ad
++++ xterm-385/UXTerm.ad
 @@ -35,10 +35,20 @@
  ! to set resources for UTF-8 mode with corresponding fonts.
  ! See the uxterm script for an example.
@@ -64,10 +64,10 @@ Index: xterm-372/UXTerm.ad
  
  ! Here is an alternate set of fonts with better support for bold:
  !*VT100.font2:	-efont-biwidth-medium-r-normal--10-100-75-75-p-50-iso10646-1
-Index: xterm-372/XTerm-col.ad
+Index: xterm-385/XTerm-col.ad
 ===================================================================
---- xterm-372.orig/XTerm-col.ad
-+++ xterm-372/XTerm-col.ad
+--- xterm-385.orig/XTerm-col.ad
++++ xterm-385/XTerm-col.ad
 @@ -76,15 +76,15 @@
  *VT100*color1: red3
  *VT100*color2: green3
@@ -87,10 +87,10 @@ Index: xterm-372/XTerm-col.ad
  *VT100*color13: magenta
  *VT100*color14: cyan
  *VT100*color15: white
-Index: xterm-372/XTerm.ad
+Index: xterm-385/XTerm.ad
 ===================================================================
---- xterm-372.orig/XTerm.ad
-+++ xterm-372/XTerm.ad
+--- xterm-385.orig/XTerm.ad
++++ xterm-385/XTerm.ad
 @@ -106,21 +106,37 @@
  *vtMenu*sixelScrolling*Label:  Sixel Scrolling
  *vtMenu*privateColorRegisters*Label:  Private Color Registers
@@ -196,11 +196,11 @@ Index: xterm-372/XTerm.ad
  ! VT100s and similar terminals recognize escape sequences and control
  ! characters to which they reply to the host with other escape sequences,
  ! to provide information.  The "resize" program uses this feature.
-Index: xterm-372/xterm.man
+Index: xterm-385/xterm.man
 ===================================================================
---- xterm-372.orig/xterm.man
-+++ xterm-372/xterm.man
-@@ -5487,9 +5487,13 @@ It is the XIM server's responsibility to
+--- xterm-385.orig/xterm.man
++++ xterm-385/xterm.man
+@@ -5584,9 +5584,13 @@ It is the XIM server's responsibility to
  The XIM client must inform the XIM server of the cursor position.
  For best results, the preedit string must be displayed with a proper font.
  Therefore, \fI\*n\fP informs the XIM server of the proper font.

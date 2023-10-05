@@ -1816,4 +1816,40 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>      (CVE-2023-40359 bsc#1214282)</comment>
     <requestid>1111588</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>399d8a03fdc69811215d1bb54bd7fe75</srcmd5>
+    <version>385</version>
+    <time>1696528956</time>
+    <user>anag+factory</user>
+    <comment>- update to 385:
+  * fixes for ReGIS (report by Ben Wong).
+    + correct conversion from HLS to RGB
+    + improve font-caching performance.
+  * update tables in wcwidth.c based on Unicode 15.1.0
+  * improve fastScroll resource:
+    + suppress screen-refreshes for carriage-returns
+    + add -jf option to simplify use of this resource.
+    + add a control sequence for enabling/disabling the resource.
+    + enable this feature by default
+  * extend  title-stack  feature  to  allow  an additional parameter to
+    directly  access  the  stack, like the XTPUSHCOLORS and XTPOPCOLORS
+    feature.
+  * correct  size  and  position of box shown for double-cell character
+    which  happens  to be missing from the bitmap font (report by Peter
+    Fabinski).
+  * improved configure script:
+    + add  pattern for uClibc-ng to CF_XOPEN_SOURCE (report/patch by
+      Waldemar Brodkorb).
+    + add configure options --with-utmp-path and --with-wtmp-path to
+      override  configure  script's  check  for  utmp/wtmp pathnames
+      which are shown in the manual (Debian #1042767).
+    + CF_XOPEN_SOURCE  provides  for  defining  _DEFAULT_SOURCE  for
+      MinGW32 and MinGW64.
+    + sed expression used to report gcc version now works with MinGW
+  * ensure   that  line-attributes  are  reset  after  drawing  missing
+    character (report by Christian Weisgerber).
+  * update config.guess, config.sub
+- rebased all patches</comment>
+    <requestid>1115035</requestid>
+  </revision>
 </revisionlist>

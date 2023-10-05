@@ -1,11 +1,11 @@
 # HG changeset patch
 # Parent  682df5267f4b25286ab78bfbbfd91fe664cbbd21
 
-Index: xterm-353/fontutils.c
+Index: xterm-385/fontutils.c
 ===================================================================
---- xterm-353.orig/fontutils.c
-+++ xterm-353/fontutils.c
-@@ -857,67 +857,19 @@ is_double_width_font(XFontStruct *fs)
+--- xterm-385.orig/fontutils.c
++++ xterm-385/fontutils.c
+@@ -883,67 +883,19 @@ is_double_width_font(XFontStruct *fs)
  #endif
  
  #if OPT_WIDE_CHARS && OPT_RENDERFONT && defined(HAVE_TYPE_FCCHAR32)

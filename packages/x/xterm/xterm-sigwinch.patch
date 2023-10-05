@@ -1,11 +1,11 @@
 # HG changeset patch
 # Parent  547d2ea5029c2c3edd129a9d23e424877c6f29f0
 
-Index: xterm-372/screen.c
+Index: xterm-385/screen.c
 ===================================================================
---- xterm-372.orig/screen.c
-+++ xterm-372/screen.c
-@@ -2246,7 +2246,7 @@ ScreenResize(XtermWidget xw,
+--- xterm-385.orig/screen.c
++++ xterm-385/screen.c
+@@ -2257,7 +2257,7 @@ ScreenResize(XtermWidget xw,
  
  #ifdef TTYSIZE_STRUCT
      if (update_winsize(screen, rows, cols, height, width) == 0) {

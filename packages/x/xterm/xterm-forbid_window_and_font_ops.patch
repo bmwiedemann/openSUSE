@@ -2,15 +2,11 @@
 # Parent  d5ffae3ffb4d7bccf09feb476eed67e7688d73cf
 # forbid dangerous escape sequences (font loading)
 
-diff --git a/XTerm.ad b/XTerm.ad
---- a/XTerm.ad
-+++ b/XTerm.ad
-@@ -263,16 +263,21 @@
- !*faceSize: 8
- 
- ! Here is a pattern that is useful for double-clicking on a URL:
- !*charClass: 33:48,35:48,37-38:48,43-47:48,58:48,61:48,63-64:48,95:48,126:48
- !
+Index: xterm-385/XTerm.ad
+===================================================================
+--- xterm-385.orig/XTerm.ad
++++ xterm-385/XTerm.ad
+@@ -269,6 +269,11 @@
  ! Alternatively,
  !*on2Clicks: regex [[:alpha:]]+://([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]][[:xdigit:]]))+
  
@@ -22,20 +18,11 @@ diff --git a/XTerm.ad b/XTerm.ad
  !! We want a 8bit clean xterm
  *eightBitInput:        true
  *eightBitOutput:       true
- 
- !! Default Settings
- *termName:             xterm-256color
- *pointerShape:         top_left_arrow
- *scrollKey:            true
-diff --git a/xterm.man b/xterm.man
---- a/xterm.man
-+++ b/xterm.man
-@@ -2091,17 +2091,17 @@ The default is \*(``false\*(''.
- .B "allowColorOps\fP (class\fB AllowColorOps\fP)"
- Specifies whether control sequences that
- set/query the dynamic colors should be allowed.
- ANSI colors are unaffected by this resource setting.
- The default is \*(``true\*(''.
+Index: xterm-385/xterm.man
+===================================================================
+--- xterm-385.orig/xterm.man
++++ xterm-385/xterm.man
+@@ -2277,7 +2277,7 @@ The default is \*(``true\*(''.
  .TP
  .B "allowFontOps\fP (class\fB AllowFontOps\fP)"
  Specifies whether control sequences that set/query the font should be allowed.
@@ -44,8 +31,3 @@ diff --git a/xterm.man b/xterm.man
  .TP
  .B "allowMouseOps\fP (class\fB AllowMouseOps\fP)"
  Specifies whether control sequences that enable \fI\*n\fP to send
- escape sequences to the host on mouse-clicks and movement.
- The default is \*(``true\*(''.
- .TP 8
- .B "allowPasteControls\fP (class\fB AllowPasteControls\fP)"
- If true, allow control characters such as BEL and CAN to be pasted.

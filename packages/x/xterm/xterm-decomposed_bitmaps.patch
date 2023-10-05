@@ -18,15 +18,11 @@ Signed-off-by: Egbert Eich <eich@suse.de>
  xterm-299/misc.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/misc.c b/misc.c
---- a/misc.c
-+++ b/misc.c
-@@ -2350,16 +2350,18 @@ ReportAnsiColorRequest(XtermWidget xw, i
- }
- 
- static void
- getColormapInfo(XtermWidget xw, unsigned *typep, unsigned *sizep)
- {
+Index: xterm-385/misc.c
+===================================================================
+--- xterm-385.orig/misc.c
++++ xterm-385/misc.c
+@@ -2698,6 +2698,8 @@ getColormapInfo(XtermWidget xw, unsigned
      if (getVisualInfo(xw)) {
  	*typep = (unsigned) xw->visInfo->class;
  	*sizep = (unsigned) xw->visInfo->colormap_size;
@@ -35,8 +31,3 @@ diff --git a/misc.c b/misc.c
      } else {
  	*typep = 0;
  	*sizep = 0;
-     }
- }
- 
- #define MAX_COLORTABLE 4096
- 
