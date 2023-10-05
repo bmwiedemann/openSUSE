@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  4 08:49:26 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add pure-ftpd.ftpusers, the netcfg one is not maintained, outdated
+  and will be removed.
+- pure-ftpd.pam: use own copy of ftpusers.
+- Remove hard systemd requires, it's not necessary.
+
+-------------------------------------------------------------------
 Mon Jan 16 11:10:54 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d. 

@@ -29,6 +29,7 @@ Source2:        %{name}.keyring
 Source3:        %{name}.init
 Source4:        %{name}.pamd
 Source5:        %{name}.xinetd
+Source6:        %{name}.ftpusers
 Source8:        %{name}.service
 # PATCH-FEATURE-OPENSUSE %{name}-1.0.20_config.patch -- Custom service configs.
 Patch0:         %{name}-1.0.20_config.patch
@@ -57,7 +58,6 @@ Provides:       pureftpd = %{version}-%{release}
 BuildRequires:  postgresql-server-devel
 %endif
 BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
 Requires(pre):  user(ftp)
 
 %description
@@ -117,7 +117,7 @@ CFLAGS="%{optflags} -I%{_includedir}/mysql"
 install -dD -m 0755 \
     %{buildroot}%{_sysconfdir}/{%{name},%{name}/vhosts,openldap/schema}
 install -m 0644 pure-ftpd.conf  %{buildroot}%{_sysconfdir}/%{name}
-
+install -m 0600 %{SOURCE6} $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/ftpusers
 %if 0%{?suse_version} > 1500
 install -dD -m 0755 %{buildroot}%{_pam_vendordir}
 install -m 0644 %{SOURCE4} %{buildroot}%{_pam_vendordir}/pure-ftpd
@@ -188,6 +188,7 @@ fi
 %config %{_sysconfdir}/pam.d/pure-ftpd
 %endif
 %config(noreplace) %{_sysconfdir}/%{name}/pure-ftpd.conf
+%config(noreplace) %{_sysconfdir}/%{name}/ftpusers
 %config(noreplace) %{_sysconfdir}/apparmor/profiles/extras/usr.sbin.pure-ftpd
 
 %{_unitdir}/%{name}.service
