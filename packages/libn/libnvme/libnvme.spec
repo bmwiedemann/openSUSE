@@ -18,6 +18,8 @@
 
 %define sover 1
 
+%bcond_without check
+
 Name:           libnvme
 Version:        1.6
 Release:        0
@@ -31,8 +33,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  keyutils-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libuuid-devel
-BuildRequires:  make
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson
 BuildRequires:  openssl-devel
 BuildRequires:  python3-devel
 BuildRequires:  swig
@@ -78,8 +79,13 @@ Python binding part.
 
 %build
 export KBUILD_BUILD_TIMESTAMP=@${SOURCE_DATE_EPOCH:-$(date +%s)}
-%meson -Ddocs=man %{?_with_docs_build:-Ddocs-build=true}
+%meson -Ddocs=man %{?_with_docs_build:-Ddocs-build=true} -Dversion-tag=%{version} -Dlibdbus=enabled
 %meson_build
+
+%if %{with check}
+%check
+%meson_test
+%endif
 
 %install
 %meson_install

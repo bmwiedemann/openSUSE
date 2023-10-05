@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  4 14:31:09 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Enable tests during build
+- Set git version tag
+- Drop unused make dependency
+
+-------------------------------------------------------------------
+Wed Oct  4 10:32:55 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Drop unencessary minimum version depedency on meson.
+- Re-enable libdbus feature. Upstream defaults changed.
+
+-------------------------------------------------------------------
 Fri Sep 29 11:42:15 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 1.6:
