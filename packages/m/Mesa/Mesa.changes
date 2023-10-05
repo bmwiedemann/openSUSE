@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct  4 10:11:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to Mesa 23.2.1
+  * Mesa 23.2.1 is a new development release. People who are
+    concerned with stability and reliability should stick with a
+    previous release or wait for Mesa 23.2.2. 
+  * Mesa 23.2.1 is an unusual first stable release due to the
+    accidentl tagging of 23.2.0 durring the rc cycle.
+  * Mesa 23.2.1 implements the OpenGL 4.6 API, but the version
+    reported by glGetString(GL_VERSION) or
+    glGetIntegerv(GL_MAJOR_VERSION) /
+    glGetIntegerv(GL_MINOR_VERSION) depends on the particular
+    driver being used. Some drivers don't support all the features
+    required in OpenGL 4.6. OpenGL 4.6 is **only** available if
+    requested at context creation. Compatibility contexts may
+    report a lower version depending on each driver.
+  * Mesa 23.2.1 implements the Vulkan 1.3 API, but the version
+    reported by the apiVersion property of the
+    VkPhysicalDeviceProperties struct depends on the particular
+    driver being used.
+  * More details in:
+    --> https://gitlab.freedesktop.org/mesa/mesa/-/blob/23.2/docs/relnotes/23.2.1.rst
+
+-------------------------------------------------------------------
 Mon Sep 25 09:46:58 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to Mesa 23.2.0-rc4
