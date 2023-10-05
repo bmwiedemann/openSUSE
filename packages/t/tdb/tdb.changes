@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 26 09:40:31 UTC 2023 - Noel Power <nopower@suse.com>
+
+-  Update to 1.4.9
+    * Remove remaining, but broken python2 support
+    * Spelling fixes
+    * python: Safely clear structure members
+
+-------------------------------------------------------------------
 Fri Mar 17 07:52:46 UTC 2023 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 1.4.8:

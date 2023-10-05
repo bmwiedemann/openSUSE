@@ -468,4 +468,12 @@ the http-&amp;gt;https redirect. (forwarded request 452617 from dmdiss)</comment
   * Support python 3.12</comment>
     <requestid>1074013</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>5b98eb1960efcdd5d2c0ae82365fae59</srcmd5>
+    <version>1.4.9</version>
+    <time>1696528952</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1114972</requestid>
+  </revision>
 </revisionlist>
