@@ -18,18 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-reportlab
-Version:        3.6.13
+Version:        4.0.5
 Release:        0
 Summary:        The Reportlab Toolkit
 License:        BSD-3-Clause
 URL:            https://www.reportlab.com/
 Source0:        https://files.pythonhosted.org/packages/source/r/reportlab/reportlab-%{version}.tar.gz
 Source1:        encryption.gif
-Patch0:         reportlab-missing-includes.patch
+# PATCH-FIX-UPSTREAM importlib.path https://hg.reportlab.com/hg-public/reportlab/rev/18ae86d14b0a
+Patch0:         importlib.patch
 BuildRequires:  %{python_module Pillow >= 9.0.0}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  python-rpm-macros
@@ -40,6 +39,7 @@ Obsoletes:      python-ReportLab < %{version}
 Obsoletes:      %{oldpython}-ReportLab < %{version}
 Provides:       %{oldpython}-ReportLab = %{version}
 %endif
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -55,12 +55,12 @@ export CFLAGS="%{optflags}"
 %python_build --no-download-t1-files
 
 mypython=%{expand:%%__%(pythons="%{pythons}"; echo ${pythons##python* })}
-PYTHONPATH=$(readlink -f build/lib.linux-*/) \
+PYTHONPATH=$(readlink -f build/lib/) \
     $mypython docs/genAll.py
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export CFLAGS="%{optflags}"
@@ -70,14 +70,14 @@ pushd tests
 cp %{SOURCE1} .
 sed -i 's@http://www.reportlab.com/rsrc/@@' test_*.py
 ###
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python runAll.py --verbosity=2
 }
 
 %files %{python_files}
-%license LICENSE.txt
+%license LICENSE
 %doc CHANGES.md README.txt docs/reportlab-userguide.pdf
-%{python_sitearch}/reportlab/
-%{python_sitearch}/reportlab-%{version}-py*.egg-info
+%{python_sitelib}/reportlab/
+%{python_sitelib}/reportlab-%{version}-py*.egg-info
 
 %changelog

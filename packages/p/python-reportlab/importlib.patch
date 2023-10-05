@@ -1,0 +1,35 @@
+--- a/CHANGES.md    Fri Sep 29 16:43:43 2023 +0100
++++ b/CHANGES.md    Fri Sep 29 16:43:56 2023 +0100
+@@ -11,6 +11,11 @@
+ The contributors lists are in no order and apologies to those accidentally not
+ mentioned. If we missed you, please let us know!
+ 
++CHANGES  4.0.6   ??/??/2023
++---------------------------
++    * fix importlib usage in reportlab init, reported by Frank Epperlein and others
++    * add value axes extraMinMaxValues as aid to parallel axes
++
+ CHANGES  4.0.5   12/07/2023
+ ---------------------------
+     * add in test for alpha composite colour
+--- a/src/reportlab/__init__.py    Fri Sep 29 16:43:43 2023 +0100
++++ b/src/reportlab/__init__.py    Fri Sep 29 16:43:56 2023 +0100
+@@ -18,12 +18,15 @@
+     return -1 if a<b else (1 if a>b else 0)
+ 
+ def _fake_import(fn,name):
+-    from importlib import machinery
+-    m = machinery.SourceFileLoader(name,fn)
++    from importlib.util import spec_from_loader, module_from_spec
++    from importlib.machinery import SourceFileLoader 
++    spec = spec_from_loader(name, SourceFileLoader(name, fn))
++    module = module_from_spec(spec)
+     try:
+-        sys.modules[name] = m.load_module(name)
++        spec.loader.exec_module(module)
+     except FileNotFoundError:
+         raise ImportError('file %s not found' % ascii(fn))
++    sys.modules[name] = module
+ 
+ #try to use dynamic modifications from
+ #reportlab.local_rl_mods.py

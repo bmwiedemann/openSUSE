@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct  3 08:31:37 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- drop reportlab-missing-includes.patch
+- add importlib.patch to fix support for python3.12
+- update to 4.0.5:
+ * add in test for alpha composite colour
+ * Added an SvgPath class; as used in github.com/deeplook/svglib
+ * Added a simple log axis ticklabeller class
+ * Allow for strokeWidth in LineSwatch
+ * update extension alias'
+ * allow BalancedColumns to work in a container flowable (ie with no frame)
+ * allow custom styles for inrowsplitStaart & inrowsplitend
+ * setup.py test --failfast works
+ * allow running all tests without renderPM support
+ * AR made some changes to allow running without renderPM support
+ * AR merged accessibility branch and released 4.0.0
+ * initial support for rml ul ol dl tagging
+ * added support for an ol/ul/dl caption paragraph
+ * implement a safer toColor with rl_config.toColorCanUse option and rl_extended_literal_eval
+ * added _ExpandedCellTupleEx for more tagging support
+
+-------------------------------------------------------------------
 Thu Sep 21 18:01:40 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.6.13
