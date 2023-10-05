@@ -111,7 +111,11 @@ This package contains convenience files for developers.
 
 %files devel
 %doc %{_datadir}/doc/%{name}/
+%if %{pkg_vcmp meson < 0.62.0 }
+%{_libdir}/pkgconfig/%{name}.pc
+%else
 %{_datadir}/pkgconfig/%{name}.pc
+%endif
 
 %files lang -f %{name}.lang
 
