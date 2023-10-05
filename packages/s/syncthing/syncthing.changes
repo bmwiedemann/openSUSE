@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  4 08:17:47 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.25.0
+  * Bugfixes:
+    #8274: Usage report transport type is wrong for QUIC
+    #8482: Discovery server keeps duplicate entries
+    #9019: Web GUI loses config changes when doing multiple modifications (e.g. on slow hardware or remotely)
+    #9112: panic: counter cannot decrease in value
+    #9123: Hashed passwords via API are hashed again
+  * Enhancements:
+    #141: Use multiple simultaneous TCP connections
+    #5607: Move footer links to header
+
+-------------------------------------------------------------------
 Tue Sep  5 08:26:30 UTC 2023 - Martchus <martchus@gmx.net>
 
 - Update to 1.24.0
