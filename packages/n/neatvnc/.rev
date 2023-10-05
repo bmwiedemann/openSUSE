@@ -106,4 +106,21 @@
   * Clients no longer linger on exit with TLS</comment>
     <requestid>1060477</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f0122395f0b43a5ab85cd3fffbd18a3b</srcmd5>
+    <version>0.7.0</version>
+    <time>1696529086</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.7.0:
+  * Desktop resizing
+  * Software pixel buffers with less than 32 bits per pixel are now supported
+  * The server may now choose to open a websocket instead of a regular TCP socket
+  * The RSA-AES and RSA-AES-256 security types have now been implemented
+  * A Diffie-Hellman based security type frame Apple is also implemented,
+    although not recommended
+  * Murmurhash in the damage refinery has been replaced with xxHash,
+    which performs much better in my tests so far
+  * Users should now get proper feedback when authentication fails</comment>
+    <requestid>1115753</requestid>
+  </revision>
 </revisionlist>

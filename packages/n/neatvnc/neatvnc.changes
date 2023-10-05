@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  5 07:44:56 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  * Desktop resizing
+  * Software pixel buffers with less than 32 bits per pixel are now supported
+  * The server may now choose to open a websocket instead of a regular TCP socket
+  * The RSA-AES and RSA-AES-256 security types have now been implemented
+  * A Diffie-Hellman based security type frame Apple is also implemented,
+    although not recommended
+  * Murmurhash in the damage refinery has been replaced with xxHash,
+    which performs much better in my tests so far
+  * Users should now get proper feedback when authentication fails
+
+-------------------------------------------------------------------
 Mon Jan 23 16:37:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.0:
