@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Oct 05 04:36:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.9:
+  * Prepare for v0.15.9 release
+  * clustermesh: Adapt clustermesh script to install cilium-dbg
+  * chore(deps): update aws-actions/configure-aws-credentials
+    action to v4.0.1
+  * refactor: Move FeatureSet to a separate package
+  * chore(deps): update docker.io/library/golang:1.21.1-alpine3.18
+    docker digest to d101f4e
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    e718668
+  * Move IPFamily to a separate "features" package
+  * sysdump: Specify default selectors for log collection tasks
+  * install: Avoid using deprecated "tunnel" flag
+  * sysdump: Cache Cilium pods and cilium-config ConfigMap
+  * chore(deps): update module github.com/docker/docker to
+    v23.0.7+incompatible
+  * fix(deps): update all go dependencies main
+  * golangci-lint: enable goheader check
+  * Refactor extractFeaturesFromConfigMap()
+  * utils: export WaitObserver methods into wait package
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    0bc2fda
+  * Clean up the node feature detection logic
+  * connectivity: test referencing nodes by CIDR
+  * sysdump: Collect Tetragon PodInfo custom resources
+  * chore(deps): update actions/checkout action to v4.1.0
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    84f7fcb
+  * fix(deps): update module google.golang.org/grpc to v1.58.2
+  * check: export label prefixes constants
+  * fix(deps): update module google.golang.org/grpc to v1.58.1
+  * check: export ciliumLogs method
+  * chore(deps): update dependency cilium/cilium to v1.14.2
+  * fix(deps): update all go dependencies main
+  * make: use short golangci-lint version format when comparing
+    versions
+  * clustermesh: Add support for service annotations
+  * Update stable release to v0.15.8
+
+-------------------------------------------------------------------
 Wed Sep 13 04:53:29 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.8:
