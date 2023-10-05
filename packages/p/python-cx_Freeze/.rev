@@ -126,4 +126,15 @@
     <comment></comment>
     <requestid>1100873</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4f89ca77c1a4ad4cd90348432a1a6c59</srcmd5>
+    <version>6.15.9</version>
+    <time>1696529099</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.15.9:
+  * https://github.com/marcelotduarte/cx_Freeze/compare/6.15.4...6.15.9
+
+  * Use pytest rather than nose in one test case.</comment>
+    <requestid>1115790</requestid>
+  </revision>
 </revisionlist>
