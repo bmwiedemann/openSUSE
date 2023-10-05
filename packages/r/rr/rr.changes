@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  4 07:14:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.7.0:
+  * This release includes many bug fixes, improvements to system
+    call coverage, and incremental performance improvements.
+    In particular, performance is improved for applications with
+    thousands of threads (partly via the new WaitManager).
+    A lot of rare intermittent bugs have been fixed, partly due
+    to significant reworking of how unexpected task exits are handled.
+- Remove upstream patches:
+  * 2248c85c.patch
+  * 2979c60e.patch
+
+-------------------------------------------------------------------
 Wed May 24 08:05:13 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Drop e32502d0.patch: 

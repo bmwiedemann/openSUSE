@@ -66,4 +66,21 @@
   explicitly including cstdint</comment>
     <requestid>1090819</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>787491836d54f25c14f05362109acbe3</srcmd5>
+    <version>5.7.0</version>
+    <time>1696529003</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.7.0:
+  * This release includes many bug fixes, improvements to system
+    call coverage, and incremental performance improvements.
+    In particular, performance is improved for applications with
+    thousands of threads (partly via the new WaitManager).
+    A lot of rare intermittent bugs have been fixed, partly due
+    to significant reworking of how unexpected task exits are handled.
+- Remove upstream patches:
+  * 2248c85c.patch
+  * 2979c60e.patch</comment>
+    <requestid>1115163</requestid>
+  </revision>
 </revisionlist>

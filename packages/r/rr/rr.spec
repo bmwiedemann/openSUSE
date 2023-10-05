@@ -17,17 +17,15 @@
 
 
 Name:           rr
-Version:        5.6.0
+Version:        5.7.0
 Release:        0
 Summary:        Records nondeterministic executions and debugs them deterministically
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://rr-project.org/
 Source:         https://github.com/mozilla/%{name}/archive/%{version}.tar.gz
-Patch0:         https://github.com/rr-debugger/rr/commit/2979c60e.patch
-Patch1:         https://github.com/rr-debugger/rr/commit/2248c85c.patch
 BuildRequires:  capnproto
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  gdb
 BuildRequires:  libcapnp-devel
