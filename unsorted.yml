@@ -6435,7 +6435,6 @@ unsorted:
   - ghex-lang 
   - ghostscript-devel 
   - ghostscript-fonts 
-  - ghostscript-fonts-grops 
   - ghostscript-mini 
   - ghostscript-mini-devel 
   - ghostview 
@@ -7503,7 +7502,6 @@ unsorted:
   - gtkwave-examples 
   - gtp-echo-responder 
   - gtranslator 
-  - gtranslator-doc 
   - gtranslator-lang 
   - gts 
   - gts-devel 
@@ -11176,7 +11174,7 @@ unsorted:
   - libcairo2-32bit 
   - libcaja-extension1 
   - libcal3d12 
-  - libcalc2_14_3_4 
+  - libcalc2_15_0_1 
   - libcalcium0 
   - libcallaudio0_1-0 
   - libcallback1 
@@ -11512,7 +11510,7 @@ unsorted:
   - libdatovka5 
   - libdatrie-devel 
   - libdatrie1-32bit 
-  - libdav1d6-32bit 
+  - libdav1d7-32bit 
   - libdavix0 
   - libdazzle-devel 
   - libdb-4_8-32bit 
@@ -12330,9 +12328,9 @@ unsorted:
   - libgravatar-devel 
   - libgromacs8 
   - libgromacs_mpi8 
-  - libgrpc++1_58 
-  - libgrpc1_58 
-  - libgrpc35 
+  - libgrpc++1_59 
+  - libgrpc1_59 
+  - libgrpc36 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -12347,7 +12345,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit 
   - libgsmsd8 
-  - libgsoap-2_8_130 
+  - libgsoap-2_8_131 
   - libgssapi3 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
@@ -15022,6 +15020,8 @@ unsorted:
   - libspeechd2-32bit 
   - libspeex1-32bit 
   - libspeexdsp1-32bit 
+  - libspelling-devel 
+  - libspelling1-1 
   - libspf2-2 
   - libspf2-apidocs 
   - libspf2-devel 
@@ -15492,7 +15492,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
-  - libupb35 
+  - libupb36 
   - libupm1 
   - libupnp-devel 
   - libupnpp-devel 
@@ -23680,6 +23680,7 @@ unsorted:
   - python310-azure-mgmt-orbital 
   - python310-azure-mgmt-paloaltonetworksngfw 
   - python310-azure-mgmt-peering 
+  - python310-azure-mgmt-playwrighttesting 
   - python310-azure-mgmt-policyinsights 
   - python310-azure-mgmt-portal 
   - python310-azure-mgmt-powerbidedicated 
@@ -27151,6 +27152,7 @@ unsorted:
   - python311-azure-mgmt-orbital 
   - python311-azure-mgmt-paloaltonetworksngfw 
   - python311-azure-mgmt-peering 
+  - python311-azure-mgmt-playwrighttesting 
   - python311-azure-mgmt-policyinsights 
   - python311-azure-mgmt-portal 
   - python311-azure-mgmt-powerbidedicated 
@@ -30537,6 +30539,7 @@ unsorted:
   - python39-azure-mgmt-orbital 
   - python39-azure-mgmt-paloaltonetworksngfw 
   - python39-azure-mgmt-peering 
+  - python39-azure-mgmt-playwrighttesting 
   - python39-azure-mgmt-policyinsights 
   - python39-azure-mgmt-portal 
   - python39-azure-mgmt-powerbidedicated 
@@ -34577,6 +34580,7 @@ unsorted:
   - sarg 
   - sassc 
   - sassist 
+  - sasutils 
   - sat4j 
   - saweri-fonts 
   - sax3 
@@ -34636,8 +34640,6 @@ unsorted:
   - scala-apidoc 
   - scala-bootstrap 
   - scala-bootstrap-swing 
-  - scala-maven-plugin 
-  - scala-maven-plugin-javadoc 
   - scala-pickling 
   - scala-stm 
   - scala-stm-javadoc 
@@ -45132,6 +45134,7 @@ unsorted:
   - typelib-1_0-RygelServer-2_8 
   - typelib-1_0-Skk-1_0 
   - typelib-1_0-Soup-2_4 
+  - typelib-1_0-Spelling-1 
   - typelib-1_0-TelepathyFarstream-0_6 
   - typelib-1_0-Template-1_0 
   - typelib-1_0-Thunarx-3_0 

@@ -538,6 +538,7 @@
     <package name="geocode-glib" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gettext-runtime" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="ghostscript" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="ghostscript-fonts-grops" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="ghostscript-fonts-other" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="ghostscript-fonts-std" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="ghostscript-fonts-std-converted" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
@@ -1707,7 +1708,7 @@
     <package name="libcurl4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdaemon0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libdatrie1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libdav1d6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libdav1d7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdazzle-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdazzle-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdb-4_8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
