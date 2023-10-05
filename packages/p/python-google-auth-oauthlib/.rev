@@ -135,4 +135,19 @@
     <comment></comment>
     <requestid>1096399</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f7e3d7b6c780617b86d8a02c0f054a80</srcmd5>
+    <version>1.1.0</version>
+    <time>1696529094</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.1.0:
+  * Adding support to specify browser while launching browser to
+    authention (#305) (1a9dca8), closes #303
+  * Pass thru OAuth audience during
+    InstalledAppFlow.run_local_server (#300) (fe08531)
+  * Fix grammar with fetch_token docstring (#273) (b2e3688)
+
+- Update to version 0.5.3</comment>
+    <requestid>1115768</requestid>
+  </revision>
 </revisionlist>
