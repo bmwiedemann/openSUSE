@@ -1,35 +1,41 @@
----
- Makefile.fip                              |   20 ++---
- Makefile.gnu                              |   20 +----
- Source/FreeImage.h                        |   21 ++++-
- Source/FreeImage/J2KHelper.cpp            |    2 
- Source/FreeImage/PSDParser.cpp            |   18 ++--
- Source/FreeImage/Plugin.cpp               |    7 +
- Source/FreeImage/PluginEXR.cpp            |   20 ++---
- Source/FreeImage/PluginJ2K.cpp            |    2 
- Source/FreeImage/PluginJP2.cpp            |    2 
- Source/FreeImage/PluginJPEG.cpp           |  116 ------------------------------
- Source/FreeImage/PluginJXR.cpp            |    2 
- Source/FreeImage/PluginPNG.cpp            |    4 -
- Source/FreeImage/PluginRAW.cpp            |    2 
- Source/FreeImage/PluginTIFF.cpp           |   15 ---
- Source/FreeImage/PluginWebP.cpp           |    6 -
- Source/FreeImage/ZLibInterface.cpp        |    5 -
- Source/FreeImageToolkit/JPEGTransform.cpp |    8 +-
- Source/Metadata/TagConversion.cpp         |    5 +
- Source/Metadata/XTIFF.cpp                 |   87 +++++++++++-----------
- Source/Utilities.h                        |    4 -
- genfipsrclist.sh                          |    3 
- gensrclist.sh                             |    2 
- 22 files changed, 136 insertions(+), 235 deletions(-)
-
-Index: FreeImage/Makefile.fip
+Index: freeimage-3.18.0.1909/genfipsrclist.sh
 ===================================================================
---- FreeImage.orig/Makefile.fip
-+++ FreeImage/Makefile.fip
-@@ -17,20 +17,22 @@ MODULES = $(SRCS:.c=.o)
- MODULES := $(MODULES:.cpp=.o)
- CFLAGS ?= -O3 -fPIC -fexceptions -fvisibility=hidden
+--- freeimage-3.18.0.1909.orig/genfipsrclist.sh
++++ freeimage-3.18.0.1909/genfipsrclist.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-DIRLIST=". Source Source/Metadata Source/FreeImageToolkit Source/LibJPEG Source/LibPNG Source/LibTIFF4 Source/ZLib Source/LibOpenJPEG Source/OpenEXR Source/OpenEXR/Half Source/OpenEXR/Iex Source/OpenEXR/IlmImf Source/OpenEXR/IlmThread Source/OpenEXR/Imath Source/OpenEXR/IexMath Source/LibRawLite Source/LibRawLite/dcraw Source/LibRawLite/internal Source/LibRawLite/libraw Source/LibRawLite/src Source/LibWebP Source/LibJXR Source/LibJXR/common/include Source/LibJXR/image/sys Source/LibJXR/jxrgluelib Wrapper/FreeImagePlus"
++DIRLIST="Wrapper/FreeImagePlus"
+ 
+ 
+ echo "VER_MAJOR = 3" > fipMakefile.srcs
+@@ -19,5 +19,6 @@ echo -n "INCLUDE =" >> fipMakefile.srcs
+ for DIR in $DIRLIST; do
+ 	echo -n " -I$DIR" >> fipMakefile.srcs
+ done
++echo -n " -IDist" >> fipMakefile.srcs
+ echo >> fipMakefile.srcs
+ 
+Index: freeimage-3.18.0.1909/gensrclist.sh
+===================================================================
+--- freeimage-3.18.0.1909.orig/gensrclist.sh
++++ freeimage-3.18.0.1909/gensrclist.sh
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ 
+-DIRLIST=". Source Source/Metadata Source/FreeImageToolkit Source/LibJPEG Source/LibPNG Source/LibTIFF4 Source/ZLib Source/LibOpenJPEG Source/OpenEXR Source/OpenEXR/Half Source/OpenEXR/Iex Source/OpenEXR/IlmImf Source/OpenEXR/IlmThread Source/OpenEXR/Imath Source/OpenEXR/IexMath Source/LibRawLite Source/LibRawLite/dcraw Source/LibRawLite/internal Source/LibRawLite/libraw Source/LibRawLite/src Source/LibWebP Source/LibJXR Source/LibJXR/common/include Source/LibJXR/image/sys Source/LibJXR/jxrgluelib"
++DIRLIST=". Source Source/Metadata Source/FreeImageToolkit"
+ 
+ echo "VER_MAJOR = 3" > Makefile.srcs
+ echo "VER_MINOR = 19.0" >> Makefile.srcs
+Index: freeimage-3.18.0.1909/Makefile.fip
+===================================================================
+--- freeimage-3.18.0.1909.orig/Makefile.fip
++++ freeimage-3.18.0.1909/Makefile.fip
+@@ -19,22 +19,24 @@ MODULES := $(MODULES:.cpp=.o)
+ # C flags
+ CFLAGS ?= -std=c99 -O3 -fPIC -fexceptions -fvisibility=hidden
  # OpenJPEG
 -CFLAGS += -DOPJ_STATIC
 +override CFLAGS += -DOPJ_STATIC
@@ -41,7 +47,9 @@ Index: FreeImage/Makefile.fip
 -CFLAGS += $(INCLUDE)
 +override CFLAGS += -DDISABLE_PERF_MEASUREMENT -D__ANSI__
 +override CFLAGS += $(INCLUDE)
- CXXFLAGS ?= -O3 -fPIC -fexceptions -fvisibility=hidden -Wno-ctor-dtor-privacy
+ 
+ # C++ flags
+ CXXFLAGS ?= -std=c++0x -O3 -fPIC -fexceptions -fvisibility=hidden -Wno-ctor-dtor-privacy
  # LibJXR
 -CXXFLAGS += -D__ANSI__
 -CXXFLAGS += $(INCLUDE)
@@ -58,7 +66,7 @@ Index: FreeImage/Makefile.fip
  endif
  
  TARGET  = freeimageplus
-@@ -68,7 +70,7 @@ $(STATICLIB): $(MODULES)
+@@ -72,7 +74,7 @@ $(STATICLIB): $(MODULES)
  	$(AR) r $@ $(MODULES)
  
  $(SHAREDLIB): $(MODULES)
@@ -67,14 +75,14 @@ Index: FreeImage/Makefile.fip
  
  install:
  	install -d $(INCDIR) $(INSTALLDIR)
-Index: FreeImage/Makefile.gnu
+Index: freeimage-3.18.0.1909/Makefile.gnu
 ===================================================================
---- FreeImage.orig/Makefile.gnu
-+++ FreeImage/Makefile.gnu
-@@ -16,21 +16,11 @@ LIBRARIES = -lstdc++
- MODULES = $(SRCS:.c=.o)
- MODULES := $(MODULES:.cpp=.o)
- CFLAGS ?= -O3 -fPIC -fexceptions -fvisibility=hidden
+--- freeimage-3.18.0.1909.orig/Makefile.gnu
++++ freeimage-3.18.0.1909/Makefile.gnu
+@@ -18,13 +18,8 @@ MODULES := $(MODULES:.cpp=.o)
+ 
+ # C flags
+ CFLAGS ?= -std=c99 -O3 -fPIC -fexceptions -fvisibility=hidden
 -# OpenJPEG
 -CFLAGS += -DOPJ_STATIC
 -# LibRaw
@@ -82,12 +90,13 @@ Index: FreeImage/Makefile.gnu
 -# LibJXR
 -CFLAGS += -DDISABLE_PERF_MEASUREMENT -D__ANSI__
 -CFLAGS += $(INCLUDE)
--CXXFLAGS ?= -O3 -fPIC -fexceptions -fvisibility=hidden -Wno-ctor-dtor-privacy
--# LibJXR
--CXXFLAGS += -D__ANSI__
--CXXFLAGS += $(INCLUDE)
 +override CFLAGS += $(INCLUDE) -D__ANSI__ -I/usr/include/jxrlib $(shell pkg-config --cflags OpenEXR libopenjp2 libraw libpng libtiff-4 libwebp libwebpmux zlib)
 +override LDFLAGS += -ljpeg -ljpegxr -ljxrglue $(shell pkg-config --libs OpenEXR libopenjp2 libraw libpng libtiff-4 libwebp libwebpmux zlib)
+ 
+ # C++ flags
+ CXXFLAGS ?= -std=c++0x -O3 -fPIC -fexceptions -fvisibility=hidden -Wno-ctor-dtor-privacy
+@@ -33,8 +28,7 @@ CXXFLAGS += -D__ANSI__
+ CXXFLAGS += $(INCLUDE)
  
  ifeq ($(shell sh -c 'uname -m 2>/dev/null || echo not'),x86_64)
 -	CFLAGS += -fPIC
@@ -96,7 +105,7 @@ Index: FreeImage/Makefile.gnu
  endif
  
  TARGET  = freeimage
-@@ -61,13 +51,13 @@ FreeImage: $(STATICLIB) $(SHAREDLIB)
+@@ -65,13 +59,13 @@ FreeImage: $(STATICLIB) $(SHAREDLIB)
  	$(CC) $(CFLAGS) -c $< -o $@
  
  .cpp.o:
@@ -112,179 +121,10 @@ Index: FreeImage/Makefile.gnu
  
  install:
  	install -d $(INCDIR) $(INSTALLDIR)
-Index: FreeImage/Source/FreeImage.h
+Index: freeimage-3.18.0.1909/Source/FreeImage/PluginEXR.cpp
 ===================================================================
---- FreeImage.orig/Source/FreeImage.h
-+++ FreeImage/Source/FreeImage.h
-@@ -155,8 +155,11 @@ typedef uint8_t BYTE;
- typedef uint16_t WORD;
- typedef uint32_t DWORD;
- typedef int32_t LONG;
-+// Disable these, they conflict with the (wrong) ones of libraw
-+#if 0
- typedef int64_t INT64;
- typedef uint64_t UINT64;
-+#endif
- #else
- // MS is not C99 ISO compliant
- typedef long BOOL;
-@@ -410,7 +413,12 @@ FI_ENUM(FREE_IMAGE_FORMAT) {
- 	FIF_DDS		= 24,
- 	FIF_GIF     = 25,
- 	FIF_HDR		= 26,
--	FIF_FAXG3	= 27,
-+/* The G3 fax format plugin is deliberately disabled in the Fedora build of
-+   FreeImage as it requires that FreeImage uses a private copy of libtiff
-+   which is a no no because of security reasons. */
-+#if 0
-+ 	FIF_FAXG3	= 27,
-+#endif
- 	FIF_SGI		= 28,
- 	FIF_EXR		= 29,
- 	FIF_J2K		= 30,
-@@ -473,6 +481,10 @@ FI_ENUM(FREE_IMAGE_DITHER) {
- 	FID_BAYER16x16	= 6		//! Bayer ordered dispersed dot dithering (order 4 dithering matrix)
- };
- 
-+/* The FreeImage_JPEGTransform functions are deliberately disabled in the
-+   Fedora build of FreeImage as they require that FreeImage uses a private copy
-+   of libjpeg which is a no no because of security reasons. */
-+#if 0
- /** Lossless JPEG transformations
- Constants used in FreeImage_JPEGTransform
- */
-@@ -486,6 +498,7 @@ FI_ENUM(FREE_IMAGE_JPEG_OPERATION) {
- 	FIJPEG_OP_ROTATE_180	= 6,	//! 180-degree rotation
- 	FIJPEG_OP_ROTATE_270	= 7		//! 270-degree clockwise (or 90 ccw)
- };
-+#endif
- 
- /** Tone mapping operators.
- Constants used in FreeImage_ToneMapping.
-@@ -1088,7 +1101,10 @@ DLL_API const char* DLL_CALLCONV FreeIma
- // --------------------------------------------------------------------------
- // JPEG lossless transformation routines
- // --------------------------------------------------------------------------
--
-+/* The FreeImage_JPEGTransform functions are deliberately disabled in the
-++   Fedora build of FreeImage as they require that FreeImage uses a private copy
-++   of libjpeg which is a no no because of security reasons. */
-+#if 0
- DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransform(const char *src_file, const char *dst_file, FREE_IMAGE_JPEG_OPERATION operation, BOOL perfect FI_DEFAULT(TRUE));
- DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransformU(const wchar_t *src_file, const wchar_t *dst_file, FREE_IMAGE_JPEG_OPERATION operation, BOOL perfect FI_DEFAULT(TRUE));
- DLL_API BOOL DLL_CALLCONV FreeImage_JPEGCrop(const char *src_file, const char *dst_file, int left, int top, int right, int bottom);
-@@ -1097,6 +1113,7 @@ DLL_API BOOL DLL_CALLCONV FreeImage_JPEG
- DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransformCombined(const char *src_file, const char *dst_file, FREE_IMAGE_JPEG_OPERATION operation, int* left, int* top, int* right, int* bottom, BOOL perfect FI_DEFAULT(TRUE));
- DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransformCombinedU(const wchar_t *src_file, const wchar_t *dst_file, FREE_IMAGE_JPEG_OPERATION operation, int* left, int* top, int* right, int* bottom, BOOL perfect FI_DEFAULT(TRUE));
- DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransformCombinedFromMemory(FIMEMORY* src_stream, FIMEMORY* dst_stream, FREE_IMAGE_JPEG_OPERATION operation, int* left, int* top, int* right, int* bottom, BOOL perfect FI_DEFAULT(TRUE));
-+#endif
- 
- 
- // --------------------------------------------------------------------------
-Index: FreeImage/Source/FreeImage/J2KHelper.cpp
-===================================================================
---- FreeImage.orig/Source/FreeImage/J2KHelper.cpp
-+++ FreeImage/Source/FreeImage/J2KHelper.cpp
-@@ -21,7 +21,7 @@
- 
- #include "FreeImage.h"
- #include "Utilities.h"
--#include "../LibOpenJPEG/openjpeg.h"
-+#include <openjpeg.h>
- #include "J2KHelper.h"
- 
- // --------------------------------------------------------------------------
-Index: FreeImage/Source/FreeImage/PSDParser.cpp
-===================================================================
---- FreeImage.orig/Source/FreeImage/PSDParser.cpp
-+++ FreeImage/Source/FreeImage/PSDParser.cpp
-@@ -133,8 +133,8 @@ public:
- template <>
- class PSDGetValue<8> {
- public:
--	static inline UINT64 get(const BYTE * iprBuffer) {
--		UINT64 v = ((const UINT64*)iprBuffer)[0];
-+	static inline uint64_t get(const BYTE * iprBuffer) {
-+		uint64_t v = ((const uint64_t*)iprBuffer)[0];
- #ifndef FREEIMAGE_BIGENDIAN
- 		SwapInt64(&v);
- #endif
-@@ -147,7 +147,7 @@ public:
- 
- // --------------------------------------------------------------------------
- 
--static UINT64
-+static uint64_t
- psdReadSize(FreeImageIO *io, fi_handle handle, const psdHeaderInfo& header) {
- 	if(header._Version == 1) {
- 		BYTE Length[4];
-@@ -199,11 +199,11 @@ public:
- template <>
- class PSDSetValue<8> {
- public:
--	static inline void set(const BYTE * iprBuffer, UINT64 v) {
-+	static inline void set(const BYTE * iprBuffer, uint64_t v) {
- #ifndef FREEIMAGE_BIGENDIAN
- 		SwapInt64(&v);
- #endif
--		((UINT64*)iprBuffer)[0] = v;
-+		((uint64_t*)iprBuffer)[0] = v;
- 	}
- };
- 
-@@ -213,7 +213,7 @@ public:
- // --------------------------------------------------------------------------
- 
- static inline bool
--psdWriteSize(FreeImageIO *io, fi_handle handle, const psdHeaderInfo& header, UINT64 v) {
-+psdWriteSize(FreeImageIO *io, fi_handle handle, const psdHeaderInfo& header, uint64_t v) {
- 	if(header._Version == 1) {
- 		BYTE Length[4];
- 		psdSetLongValue(Length, sizeof(Length), (DWORD)v);
-@@ -1063,10 +1063,10 @@ unsigned psdParser::GetChannelOffset(FIB
- bool psdParser::ReadLayerAndMaskInfoSection(FreeImageIO *io, fi_handle handle)	{
- 	bool bSuccess = true;
- 
--	UINT64 nTotalBytes = psdReadSize(io, handle, _headerInfo);
-+	uint64_t nTotalBytes = psdReadSize(io, handle, _headerInfo);
- 
- 	// Hack to handle large PSB files without using fseeko().
--	if (sizeof(long) < sizeof(UINT64)) {
-+	if (sizeof(long) < sizeof(uint64_t)) {
- 		const long offset = 0x10000000;
- 		while (nTotalBytes > offset) {
- 			if (io->seek_proc(handle, offset, SEEK_CUR) != 0) {
-@@ -1672,7 +1672,7 @@ bool psdParser::WriteLayerAndMaskInfoSec
- 	// Short section with no layers.
- 	BYTE IntValue[4];
- 
--	UINT64 size;
-+	uint64_t size;
- 	if(_headerInfo._Version == 1) {
- 		size = 8;
- 	} else {
-Index: FreeImage/Source/FreeImage/Plugin.cpp
-===================================================================
---- FreeImage.orig/Source/FreeImage/Plugin.cpp
-+++ FreeImage/Source/FreeImage/Plugin.cpp
-@@ -263,7 +263,12 @@ FreeImage_Initialise(BOOL load_local_plu
- 			s_plugins->AddNode(InitDDS);
- 	        s_plugins->AddNode(InitGIF);
- 	        s_plugins->AddNode(InitHDR);
--			s_plugins->AddNode(InitG3);
-+/* The G3 fax format plugin is deliberately disabled in the Fedora build of
-+   FreeImage as it requires that FreeImage uses a private copy of libtiff
-+   which is a no no because of security reasons. */
-+#if 0
-+ 			s_plugins->AddNode(InitG3);
-+#endif
- 			s_plugins->AddNode(InitSGI);
- 			s_plugins->AddNode(InitEXR);
- 			s_plugins->AddNode(InitJ2K);
-Index: FreeImage/Source/FreeImage/PluginEXR.cpp
-===================================================================
---- FreeImage.orig/Source/FreeImage/PluginEXR.cpp
-+++ FreeImage/Source/FreeImage/PluginEXR.cpp
+--- freeimage-3.18.0.1909.orig/Source/FreeImage/PluginEXR.cpp
++++ freeimage-3.18.0.1909/Source/FreeImage/PluginEXR.cpp
 @@ -28,16 +28,16 @@
  #pragma warning (disable : 4800) // ImfVersion.h - 'const int' : forcing value to bool 'true' or 'false' (performance warning)
  #endif 
@@ -312,10 +152,10 @@ Index: FreeImage/Source/FreeImage/PluginEXR.cpp
  
  
  // ==========================================================
-Index: FreeImage/Source/FreeImage/PluginJ2K.cpp
+Index: freeimage-3.18.0.1909/Source/FreeImage/PluginJ2K.cpp
 ===================================================================
---- FreeImage.orig/Source/FreeImage/PluginJ2K.cpp
-+++ FreeImage/Source/FreeImage/PluginJ2K.cpp
+--- freeimage-3.18.0.1909.orig/Source/FreeImage/PluginJ2K.cpp
++++ freeimage-3.18.0.1909/Source/FreeImage/PluginJ2K.cpp
 @@ -21,7 +21,7 @@
  
  #include "FreeImage.h"
@@ -325,10 +165,10 @@ Index: FreeImage/Source/FreeImage/PluginJ2K.cpp
  #include "J2KHelper.h"
  
  // ==========================================================
-Index: FreeImage/Source/FreeImage/PluginJP2.cpp
+Index: freeimage-3.18.0.1909/Source/FreeImage/PluginJP2.cpp
 ===================================================================
---- FreeImage.orig/Source/FreeImage/PluginJP2.cpp
-+++ FreeImage/Source/FreeImage/PluginJP2.cpp
+--- freeimage-3.18.0.1909.orig/Source/FreeImage/PluginJP2.cpp
++++ freeimage-3.18.0.1909/Source/FreeImage/PluginJP2.cpp
 @@ -21,7 +21,7 @@
  
  #include "FreeImage.h"
@@ -338,10 +178,10 @@ Index: FreeImage/Source/FreeImage/PluginJP2.cpp
  #include "J2KHelper.h"
  
  // ==========================================================
-Index: FreeImage/Source/FreeImage/PluginJPEG.cpp
+Index: freeimage-3.18.0.1909/Source/FreeImage/PluginJPEG.cpp
 ===================================================================
---- FreeImage.orig/Source/FreeImage/PluginJPEG.cpp
-+++ FreeImage/Source/FreeImage/PluginJPEG.cpp
+--- freeimage-3.18.0.1909.orig/Source/FreeImage/PluginJPEG.cpp
++++ freeimage-3.18.0.1909/Source/FreeImage/PluginJPEG.cpp
 @@ -35,9 +35,9 @@ extern "C" {
  #undef FAR
  #include <setjmp.h>
@@ -472,23 +312,10 @@ Index: FreeImage/Source/FreeImage/PluginJPEG.cpp
  	Read JPEG_APPD marker (IPTC or Adobe Photoshop profile)
  */
  static BOOL 
-Index: FreeImage/Source/FreeImage/PluginJXR.cpp
+Index: freeimage-3.18.0.1909/Source/FreeImage/PluginPNG.cpp
 ===================================================================
---- FreeImage.orig/Source/FreeImage/PluginJXR.cpp
-+++ FreeImage/Source/FreeImage/PluginJXR.cpp
-@@ -23,7 +23,7 @@
- #include "Utilities.h"
- #include "../Metadata/FreeImageTag.h"
- 
--#include "../LibJXR/jxrgluelib/JXRGlue.h"
-+#include <JXRGlue.h>
- 
- // ==========================================================
- // Plugin Interface
-Index: FreeImage/Source/FreeImage/PluginPNG.cpp
-===================================================================
---- FreeImage.orig/Source/FreeImage/PluginPNG.cpp
-+++ FreeImage/Source/FreeImage/PluginPNG.cpp
+--- freeimage-3.18.0.1909.orig/Source/FreeImage/PluginPNG.cpp
++++ freeimage-3.18.0.1909/Source/FreeImage/PluginPNG.cpp
 @@ -40,8 +40,8 @@
  
  // ----------------------------------------------------------
@@ -500,10 +327,10 @@ Index: FreeImage/Source/FreeImage/PluginPNG.cpp
  
  // ----------------------------------------------------------
  
-Index: FreeImage/Source/FreeImage/PluginRAW.cpp
+Index: freeimage-3.18.0.1909/Source/FreeImage/PluginRAW.cpp
 ===================================================================
---- FreeImage.orig/Source/FreeImage/PluginRAW.cpp
-+++ FreeImage/Source/FreeImage/PluginRAW.cpp
+--- freeimage-3.18.0.1909.orig/Source/FreeImage/PluginRAW.cpp
++++ freeimage-3.18.0.1909/Source/FreeImage/PluginRAW.cpp
 @@ -19,7 +19,7 @@
  // Use at your own risk!
  // ==========================================================
@@ -513,44 +340,10 @@ Index: FreeImage/Source/FreeImage/PluginRAW.cpp
  
  #include "FreeImage.h"
  #include "Utilities.h"
-Index: FreeImage/Source/FreeImage/PluginTIFF.cpp
+Index: freeimage-3.18.0.1909/Source/FreeImage/PluginWebP.cpp
 ===================================================================
---- FreeImage.orig/Source/FreeImage/PluginTIFF.cpp
-+++ FreeImage/Source/FreeImage/PluginTIFF.cpp
-@@ -37,9 +37,9 @@
- 
- #include "FreeImage.h"
- #include "Utilities.h"
--#include "../LibTIFF4/tiffiop.h"
-+#include <tiffio.h>
- #include "../Metadata/FreeImageTag.h"
--#include "../OpenEXR/Half/half.h"
-+#include <OpenEXR/half.h>
- 
- #include "FreeImageIO.h"
- #include "PSDParser.h"
-@@ -193,17 +193,6 @@ TIFFFdOpen(thandle_t handle, const char
- 
- 	return tif;
- }
--
--/**
--Open a TIFF file for reading or writing
--@param name
--@param mode
--*/
--TIFF*
--TIFFOpen(const char* name, const char* mode) {
--	return 0;
--}
--
- // ----------------------------------------------------------
- //   TIFF library FreeImage-specific routines.
- // ----------------------------------------------------------
-Index: FreeImage/Source/FreeImage/PluginWebP.cpp
-===================================================================
---- FreeImage.orig/Source/FreeImage/PluginWebP.cpp
-+++ FreeImage/Source/FreeImage/PluginWebP.cpp
+--- freeimage-3.18.0.1909.orig/Source/FreeImage/PluginWebP.cpp
++++ freeimage-3.18.0.1909/Source/FreeImage/PluginWebP.cpp
 @@ -24,9 +24,9 @@
  
  #include "../Metadata/FreeImageTag.h"
@@ -564,10 +357,79 @@ Index: FreeImage/Source/FreeImage/PluginWebP.cpp
  
  // ==========================================================
  // Plugin Interface
-Index: FreeImage/Source/FreeImage/ZLibInterface.cpp
+Index: freeimage-3.18.0.1909/Source/FreeImage/PSDParser.cpp
 ===================================================================
---- FreeImage.orig/Source/FreeImage/ZLibInterface.cpp
-+++ FreeImage/Source/FreeImage/ZLibInterface.cpp
+--- freeimage-3.18.0.1909.orig/Source/FreeImage/PSDParser.cpp
++++ freeimage-3.18.0.1909/Source/FreeImage/PSDParser.cpp
+@@ -133,8 +133,8 @@ public:
+ template <>
+ class PSDGetValue<8> {
+ public:
+-	static inline UINT64 get(const BYTE * iprBuffer) {
+-		UINT64 v = ((const UINT64*)iprBuffer)[0];
++	static inline uint64_t get(const BYTE * iprBuffer) {
++		uint64_t v = ((const uint64_t*)iprBuffer)[0];
+ #ifndef FREEIMAGE_BIGENDIAN
+ 		SwapInt64(&v);
+ #endif
+@@ -147,7 +147,7 @@ public:
+ 
+ // --------------------------------------------------------------------------
+ 
+-static UINT64
++static uint64_t
+ psdReadSize(FreeImageIO *io, fi_handle handle, const psdHeaderInfo& header) {
+ 	if(header._Version == 1) {
+ 		BYTE Length[4];
+@@ -199,11 +199,11 @@ public:
+ template <>
+ class PSDSetValue<8> {
+ public:
+-	static inline void set(const BYTE * iprBuffer, UINT64 v) {
++	static inline void set(const BYTE * iprBuffer, uint64_t v) {
+ #ifndef FREEIMAGE_BIGENDIAN
+ 		SwapInt64(&v);
+ #endif
+-		((UINT64*)iprBuffer)[0] = v;
++		((uint64_t*)iprBuffer)[0] = v;
+ 	}
+ };
+ 
+@@ -213,7 +213,7 @@ public:
+ // --------------------------------------------------------------------------
+ 
+ static inline bool
+-psdWriteSize(FreeImageIO *io, fi_handle handle, const psdHeaderInfo& header, UINT64 v) {
++psdWriteSize(FreeImageIO *io, fi_handle handle, const psdHeaderInfo& header, uint64_t v) {
+ 	if(header._Version == 1) {
+ 		BYTE Length[4];
+ 		psdSetLongValue(Length, sizeof(Length), (DWORD)v);
+@@ -1063,10 +1063,10 @@ unsigned psdParser::GetChannelOffset(FIB
+ bool psdParser::ReadLayerAndMaskInfoSection(FreeImageIO *io, fi_handle handle)	{
+ 	bool bSuccess = true;
+ 
+-	UINT64 nTotalBytes = psdReadSize(io, handle, _headerInfo);
++	uint64_t nTotalBytes = psdReadSize(io, handle, _headerInfo);
+ 
+ 	// Hack to handle large PSB files without using fseeko().
+-	if (sizeof(long) < sizeof(UINT64)) {
++	if (sizeof(long) < sizeof(uint64_t)) {
+ 		const long offset = 0x10000000;
+ 		while (nTotalBytes > offset) {
+ 			if (io->seek_proc(handle, offset, SEEK_CUR) != 0) {
+@@ -1672,7 +1672,7 @@ bool psdParser::WriteLayerAndMaskInfoSec
+ 	// Short section with no layers.
+ 	BYTE IntValue[4];
+ 
+-	UINT64 size;
++	uint64_t size;
+ 	if(_headerInfo._Version == 1) {
+ 		size = 8;
+ 	} else {
+Index: freeimage-3.18.0.1909/Source/FreeImage/ZLibInterface.cpp
+===================================================================
+--- freeimage-3.18.0.1909.orig/Source/FreeImage/ZLibInterface.cpp
++++ freeimage-3.18.0.1909/Source/FreeImage/ZLibInterface.cpp
 @@ -19,10 +19,9 @@
  // Use at your own risk!
  // ==========================================================
@@ -589,10 +451,79 @@ Index: FreeImage/Source/FreeImage/ZLibInterface.cpp
   	        crc = crc32(crc, source, source_size);
  	        memcpy(target + 4 + dest_len, &crc, 4);
  	        memcpy(target + 8 + dest_len, &source_size, 4);
-Index: FreeImage/Source/FreeImageToolkit/JPEGTransform.cpp
+Index: freeimage-3.18.0.1909/Source/FreeImage.h
 ===================================================================
---- FreeImage.orig/Source/FreeImageToolkit/JPEGTransform.cpp
-+++ FreeImage/Source/FreeImageToolkit/JPEGTransform.cpp
+--- freeimage-3.18.0.1909.orig/Source/FreeImage.h
++++ freeimage-3.18.0.1909/Source/FreeImage.h
+@@ -155,8 +155,11 @@ typedef uint8_t BYTE;
+ typedef uint16_t WORD;
+ typedef uint32_t DWORD;
+ typedef int32_t LONG;
++// Disable these, they conflict with the (wrong) ones of libraw
++#if 0
+ typedef int64_t INT64;
+ typedef uint64_t UINT64;
++#endif
+ #else
+ // MS is not C99 ISO compliant
+ typedef long BOOL;
+@@ -410,7 +413,12 @@ FI_ENUM(FREE_IMAGE_FORMAT) {
+ 	FIF_DDS		= 24,
+ 	FIF_GIF     = 25,
+ 	FIF_HDR		= 26,
+-	FIF_FAXG3	= 27,
++/* The G3 fax format plugin is deliberately disabled in the Fedora build of
++   FreeImage as it requires that FreeImage uses a private copy of libtiff
++   which is a no no because of security reasons. */
++#if 0
++ 	FIF_FAXG3	= 27,
++#endif
+ 	FIF_SGI		= 28,
+ 	FIF_EXR		= 29,
+ 	FIF_J2K		= 30,
+@@ -473,6 +481,10 @@ FI_ENUM(FREE_IMAGE_DITHER) {
+ 	FID_BAYER16x16	= 6		//! Bayer ordered dispersed dot dithering (order 4 dithering matrix)
+ };
+ 
++/* The FreeImage_JPEGTransform functions are deliberately disabled in the
++   Fedora build of FreeImage as they require that FreeImage uses a private copy
++   of libjpeg which is a no no because of security reasons. */
++#if 0
+ /** Lossless JPEG transformations
+ Constants used in FreeImage_JPEGTransform
+ */
+@@ -486,6 +498,7 @@ FI_ENUM(FREE_IMAGE_JPEG_OPERATION) {
+ 	FIJPEG_OP_ROTATE_180	= 6,	//! 180-degree rotation
+ 	FIJPEG_OP_ROTATE_270	= 7		//! 270-degree clockwise (or 90 ccw)
+ };
++#endif
+ 
+ /** Tone mapping operators.
+ Constants used in FreeImage_ToneMapping.
+@@ -1088,7 +1101,10 @@ DLL_API const char* DLL_CALLCONV FreeIma
+ // --------------------------------------------------------------------------
+ // JPEG lossless transformation routines
+ // --------------------------------------------------------------------------
+-
++/* The FreeImage_JPEGTransform functions are deliberately disabled in the
+++   Fedora build of FreeImage as they require that FreeImage uses a private copy
+++   of libjpeg which is a no no because of security reasons. */
++#if 0
+ DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransform(const char *src_file, const char *dst_file, FREE_IMAGE_JPEG_OPERATION operation, BOOL perfect FI_DEFAULT(TRUE));
+ DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransformU(const wchar_t *src_file, const wchar_t *dst_file, FREE_IMAGE_JPEG_OPERATION operation, BOOL perfect FI_DEFAULT(TRUE));
+ DLL_API BOOL DLL_CALLCONV FreeImage_JPEGCrop(const char *src_file, const char *dst_file, int left, int top, int right, int bottom);
+@@ -1097,6 +1113,7 @@ DLL_API BOOL DLL_CALLCONV FreeImage_JPEG
+ DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransformCombined(const char *src_file, const char *dst_file, FREE_IMAGE_JPEG_OPERATION operation, int* left, int* top, int* right, int* bottom, BOOL perfect FI_DEFAULT(TRUE));
+ DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransformCombinedU(const wchar_t *src_file, const wchar_t *dst_file, FREE_IMAGE_JPEG_OPERATION operation, int* left, int* top, int* right, int* bottom, BOOL perfect FI_DEFAULT(TRUE));
+ DLL_API BOOL DLL_CALLCONV FreeImage_JPEGTransformCombinedFromMemory(FIMEMORY* src_stream, FIMEMORY* dst_stream, FREE_IMAGE_JPEG_OPERATION operation, int* left, int* top, int* right, int* bottom, BOOL perfect FI_DEFAULT(TRUE));
++#endif
+ 
+ 
+ // --------------------------------------------------------------------------
+Index: freeimage-3.18.0.1909/Source/FreeImageToolkit/JPEGTransform.cpp
+===================================================================
+--- freeimage-3.18.0.1909.orig/Source/FreeImageToolkit/JPEGTransform.cpp
++++ freeimage-3.18.0.1909/Source/FreeImageToolkit/JPEGTransform.cpp
 @@ -26,10 +26,10 @@ extern "C" {
  #undef FAR
  #include <setjmp.h>
@@ -608,11 +539,11 @@ Index: FreeImage/Source/FreeImageToolkit/JPEGTransform.cpp
  }
  
  #include "FreeImage.h"
-Index: FreeImage/Source/Metadata/TagConversion.cpp
+Index: freeimage-3.18.0.1909/Source/Metadata/TagConversion.cpp
 ===================================================================
---- FreeImage.orig/Source/Metadata/TagConversion.cpp
-+++ FreeImage/Source/Metadata/TagConversion.cpp
-@@ -30,6 +30,11 @@
+--- freeimage-3.18.0.1909.orig/Source/Metadata/TagConversion.cpp
++++ freeimage-3.18.0.1909/Source/Metadata/TagConversion.cpp
+@@ -31,6 +31,11 @@
  
  #define MAX_TEXT_EXTENT	512
  
@@ -624,145 +555,10 @@ Index: FreeImage/Source/Metadata/TagConversion.cpp
  /**
  Convert a tag to a C string
  */
-Index: FreeImage/Source/Metadata/XTIFF.cpp
+Index: freeimage-3.18.0.1909/Source/Utilities.h
 ===================================================================
---- FreeImage.orig/Source/Metadata/XTIFF.cpp
-+++ FreeImage/Source/Metadata/XTIFF.cpp
-@@ -29,13 +29,20 @@
- #pragma warning (disable : 4786) // identifier was truncated to 'number' characters
- #endif
- 
--#include "../LibTIFF4/tiffiop.h"
-+#include <tiffio.h>
- 
- #include "FreeImage.h"
- #include "Utilities.h"
- #include "FreeImageTag.h"
- #include "FIRational.h"
- 
-+#if !defined(TIFFLIB_VERSION) || TIFFLIB_VERSION < 20220520
-+extern "C"
-+{
-+    int _TIFFDataSize(TIFFDataType type);
-+}
-+#endif
-+
- // ----------------------------------------------------------
- //   Extended TIFF Directory GEO Tag Support
- // ----------------------------------------------------------
-@@ -224,6 +231,33 @@ tiff_write_geotiff_profile(TIFF *tif, FI
- //   TIFF EXIF tag reading & writing
- // ----------------------------------------------------------
- 
-+static uint32 exif_tag_ids[] = {
-+  EXIFTAG_EXPOSURETIME, EXIFTAG_FNUMBER, EXIFTAG_EXPOSUREPROGRAM,
-+  EXIFTAG_SPECTRALSENSITIVITY, EXIFTAG_ISOSPEEDRATINGS, EXIFTAG_OECF,
-+  EXIFTAG_EXIFVERSION, EXIFTAG_DATETIMEORIGINAL, EXIFTAG_DATETIMEDIGITIZED,
-+  EXIFTAG_COMPONENTSCONFIGURATION, EXIFTAG_COMPRESSEDBITSPERPIXEL,
-+  EXIFTAG_SHUTTERSPEEDVALUE, EXIFTAG_APERTUREVALUE,
-+  EXIFTAG_BRIGHTNESSVALUE, EXIFTAG_EXPOSUREBIASVALUE,
-+  EXIFTAG_MAXAPERTUREVALUE, EXIFTAG_SUBJECTDISTANCE, EXIFTAG_METERINGMODE,
-+  EXIFTAG_LIGHTSOURCE, EXIFTAG_FLASH, EXIFTAG_FOCALLENGTH,
-+  EXIFTAG_SUBJECTAREA, EXIFTAG_MAKERNOTE, EXIFTAG_USERCOMMENT,
-+  EXIFTAG_SUBSECTIME, EXIFTAG_SUBSECTIMEORIGINAL,
-+  EXIFTAG_SUBSECTIMEDIGITIZED, EXIFTAG_FLASHPIXVERSION, EXIFTAG_COLORSPACE,
-+  EXIFTAG_PIXELXDIMENSION, EXIFTAG_PIXELYDIMENSION,
-+  EXIFTAG_RELATEDSOUNDFILE, EXIFTAG_FLASHENERGY,
-+  EXIFTAG_SPATIALFREQUENCYRESPONSE, EXIFTAG_FOCALPLANEXRESOLUTION,
-+  EXIFTAG_FOCALPLANEYRESOLUTION, EXIFTAG_FOCALPLANERESOLUTIONUNIT,
-+  EXIFTAG_SUBJECTLOCATION, EXIFTAG_EXPOSUREINDEX, EXIFTAG_SENSINGMETHOD,
-+  EXIFTAG_FILESOURCE, EXIFTAG_SCENETYPE, EXIFTAG_CFAPATTERN,
-+  EXIFTAG_CUSTOMRENDERED, EXIFTAG_EXPOSUREMODE, EXIFTAG_WHITEBALANCE,
-+  EXIFTAG_DIGITALZOOMRATIO, EXIFTAG_FOCALLENGTHIN35MMFILM,
-+  EXIFTAG_SCENECAPTURETYPE, EXIFTAG_GAINCONTROL, EXIFTAG_CONTRAST,
-+  EXIFTAG_SATURATION, EXIFTAG_SHARPNESS, EXIFTAG_DEVICESETTINGDESCRIPTION,
-+  EXIFTAG_SUBJECTDISTANCERANGE, EXIFTAG_GAINCONTROL, EXIFTAG_GAINCONTROL,
-+  EXIFTAG_IMAGEUNIQUEID
-+};
-+static int nExifTags = sizeof(exif_tag_ids) / sizeof(exif_tag_ids[0]);
-+
- /**
- Read a single Exif tag
- 
-@@ -575,45 +609,11 @@ tiff_read_exif_tags(TIFF *tif, TagLib::M
- 
- 	// loop over all Core Directory Tags
- 	// ### uses private data, but there is no other way
-+	// -> Fedora: Best we can do without private headers is to hard-code a list of known EXIF tags and read those
- 	if(md_model == TagLib::EXIF_MAIN) {
--		const TIFFDirectory *td = &tif->tif_dir;
--
--		uint32 lastTag = 0;	//<- used to prevent reading some tags twice (as stored in tif_fieldinfo)
--
--		for (int fi = 0, nfi = (int)tif->tif_nfields; nfi > 0; nfi--, fi++) {
--			const TIFFField *fld = tif->tif_fields[fi];
--
--			const uint32 tag_id = TIFFFieldTag(fld);
--
--			if(tag_id == lastTag) {
--				continue;
--			}
--
--			// test if tag value is set
--			// (lifted directly from LibTiff _TIFFWriteDirectory)
--
--			if( fld->field_bit == FIELD_CUSTOM ) {
--				int is_set = FALSE;
--
--				for(int ci = 0; ci < td->td_customValueCount; ci++ ) {
--					is_set |= (td->td_customValues[ci].info == fld);
--				}
--
--				if( !is_set ) {
--					continue;
--				}
--
--			} else if(!TIFFFieldSet(tif, fld->field_bit)) {
--				continue;
--			}
--
--			// process *all* other tags (some will be ignored)
--
--			tiff_read_exif_tag(tif, tag_id, dib, md_model);
--
--			lastTag = tag_id;
-+		for (int i = 0; i < nExifTags; ++i) {
-+			tiff_read_exif_tag(tif, exif_tag_ids[i], dib, md_model);
- 		}
--
- 	}
- 
- 	return TRUE;
-@@ -723,10 +723,9 @@ tiff_write_exif_tags(TIFF *tif, TagLib::
- 	
- 	TagLib& tag_lib = TagLib::instance();
- 	
--	for (int fi = 0, nfi = (int)tif->tif_nfields; nfi > 0; nfi--, fi++) {
--		const TIFFField *fld = tif->tif_fields[fi];
--		
--		const uint32 tag_id = TIFFFieldTag(fld);
-+	for (int fi = 0; fi < nExifTags; fi++) {
-+		const uint32 tag_id = exif_tag_ids[fi];
-+		const TIFFField *fld = TIFFFieldWithTag(tif, tag_id);
- 
- 		if(skip_write_field(tif, tag_id)) {
- 			// skip tags that are already handled by the LibTIFF writing process
-@@ -749,7 +748,11 @@ tiff_write_exif_tags(TIFF *tif, TagLib::
- 				continue;
- 			}
- 			// type of storage may differ (e.g. rationnal array vs float array type)
-+#if !defined(TIFFLIB_VERSION) || TIFFLIB_VERSION < 20220520
- 			if((unsigned)_TIFFDataSize(tif_tag_type) != FreeImage_TagDataWidth(tag_type)) {
-+#else
-+			if(TIFFFieldSetGetSize(fld) != FreeImage_TagDataWidth(tag_type)) {
-+#endif
- 				// skip tag or _TIFFmemcpy will fail
- 				continue;
- 			}
-Index: FreeImage/Source/Utilities.h
-===================================================================
---- FreeImage.orig/Source/Utilities.h
-+++ FreeImage/Source/Utilities.h
+--- freeimage-3.18.0.1909.orig/Source/Utilities.h
++++ freeimage-3.18.0.1909/Source/Utilities.h
 @@ -446,12 +446,12 @@ SwapLong(DWORD *lp) {
  }
   
@@ -778,34 +574,3 @@ Index: FreeImage/Source/Utilities.h
  		DWORD ul[2];
  	} tmp, result;
  	tmp.sv = *arg;
-Index: FreeImage/genfipsrclist.sh
-===================================================================
---- FreeImage.orig/genfipsrclist.sh
-+++ FreeImage/genfipsrclist.sh
-@@ -1,6 +1,6 @@
- #!/bin/sh
- 
--DIRLIST=". Source Source/Metadata Source/FreeImageToolkit Source/LibJPEG Source/LibPNG Source/LibTIFF4 Source/ZLib Source/LibOpenJPEG Source/OpenEXR Source/OpenEXR/Half Source/OpenEXR/Iex Source/OpenEXR/IlmImf Source/OpenEXR/IlmThread Source/OpenEXR/Imath Source/OpenEXR/IexMath Source/LibRawLite Source/LibRawLite/dcraw Source/LibRawLite/internal Source/LibRawLite/libraw Source/LibRawLite/src Source/LibWebP Source/LibJXR Source/LibJXR/common/include Source/LibJXR/image/sys Source/LibJXR/jxrgluelib Wrapper/FreeImagePlus"
-+DIRLIST="Wrapper/FreeImagePlus"
- 
- 
- echo "VER_MAJOR = 3" > fipMakefile.srcs
-@@ -19,5 +19,6 @@ echo -n "INCLUDE =" >> fipMakefile.srcs
- for DIR in $DIRLIST; do
- 	echo -n " -I$DIR" >> fipMakefile.srcs
- done
-+echo -n " -IDist" >> fipMakefile.srcs
- echo >> fipMakefile.srcs
- 
-Index: FreeImage/gensrclist.sh
-===================================================================
---- FreeImage.orig/gensrclist.sh
-+++ FreeImage/gensrclist.sh
-@@ -1,6 +1,6 @@
- #!/bin/sh
- 
--DIRLIST=". Source Source/Metadata Source/FreeImageToolkit Source/LibJPEG Source/LibPNG Source/LibTIFF4 Source/ZLib Source/LibOpenJPEG Source/OpenEXR Source/OpenEXR/Half Source/OpenEXR/Iex Source/OpenEXR/IlmImf Source/OpenEXR/IlmThread Source/OpenEXR/Imath Source/OpenEXR/IexMath Source/LibRawLite Source/LibRawLite/dcraw Source/LibRawLite/internal Source/LibRawLite/libraw Source/LibRawLite/src Source/LibWebP Source/LibJXR Source/LibJXR/common/include Source/LibJXR/image/sys Source/LibJXR/jxrgluelib"
-+DIRLIST=". Source Source/Metadata Source/FreeImageToolkit"
- 
- echo "VER_MAJOR = 3" > Makefile.srcs
- echo "VER_MINOR = 18.0" >> Makefile.srcs

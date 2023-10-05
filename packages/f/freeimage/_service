@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://svn.code.sf.net/p/freeimage/svn/FreeImage/trunk/</param>
+    <param name="scm">svn</param>
+    <param name="filename">freeimage</param>
+    <param name="versionprefix">3.18.0</param>
+    <param name="changesgenerate">enable</param>
+    <param name="exclude">*.sln</param>
+    <param name="exclude">*.vcxproj</param>
+    <param name="exclude">*.vcproj</param>
+    <param name="exclude">*.vcxproj.filters</param>
+    <param name="exclude">*.cygwin</param>
+    <param name="exclude">*.iphone</param>
+    <param name="exclude">*.mingw</param>
+    <param name="exclude">*.minGW</param>
+    <param name="exclude">*.osx</param>
+    <param name="exclude">*.solaris</param>
+    <param name="exclude">Wrapper/FreeImage.NET/*</param>
+    <param name="exclude">Source/LibJPEG/*</param>
+    <param name="exclude">Source/LibPNG/*</param>
+    <param name="exclude">Source/LibJXR/*</param>
+    <param name="exclude">Source/LibOpenJPEG/*</param>
+    <param name="exclude">Source/LibRawLite/*</param>
+    <param name="exclude">Source/LibTIFF4/*</param>
+    <param name="exclude">Source/LibWebP/*</param>
+    <param name="exclude">Source/ZLib/*</param>
+    <param name="exclude">Source/OpenEXR/*</param>
+  </service>
+  <service name="set_version" mode="buildtime"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

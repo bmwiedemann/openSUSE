@@ -1,7 +1,7 @@
-Index: FreeImage/Source/FreeImage/PluginEXR.cpp
+Index: freeimage-3.18.0.1909/Source/FreeImage/PluginEXR.cpp
 ===================================================================
---- FreeImage.orig/Source/FreeImage/PluginEXR.cpp	2021-04-14 13:16:56.226320847 +0200
-+++ FreeImage/Source/FreeImage/PluginEXR.cpp	2021-04-14 13:20:02.683435617 +0200
+--- freeimage-3.18.0.1909.orig/Source/FreeImage/PluginEXR.cpp
++++ freeimage-3.18.0.1909/Source/FreeImage/PluginEXR.cpp
 @@ -37,7 +37,7 @@
  #include <OpenEXR/ImfRgba.h>
  #include <OpenEXR/ImfArray.h>
@@ -39,15 +39,15 @@ Index: FreeImage/Source/FreeImage/PluginEXR.cpp
  		_io->seek_proc(_handle, (unsigned)pos, SEEK_SET);
  	}
  };
-Index: FreeImage/Source/FreeImage/PluginTIFF.cpp
+Index: freeimage-3.18.0.1909/Source/FreeImage/PluginTIFF.cpp
 ===================================================================
---- FreeImage.orig/Source/FreeImage/PluginTIFF.cpp	2021-04-14 13:16:56.254321015 +0200
-+++ FreeImage/Source/FreeImage/PluginTIFF.cpp	2021-04-14 13:16:56.274321135 +0200
+--- freeimage-3.18.0.1909.orig/Source/FreeImage/PluginTIFF.cpp
++++ freeimage-3.18.0.1909/Source/FreeImage/PluginTIFF.cpp
 @@ -39,7 +39,7 @@
  #include "Utilities.h"
- #include <tiffio.h>
+ #include "../LibTIFF4/tiffiop.h"
  #include "../Metadata/FreeImageTag.h"
--#include <OpenEXR/half.h>
+-#include "../OpenEXR/Half/half.h"
 +#include <half.h>
  
  #include "FreeImageIO.h"

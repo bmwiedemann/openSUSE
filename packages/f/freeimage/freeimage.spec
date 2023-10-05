@@ -16,37 +16,30 @@
 #
 
 
+%define tag_ver 3.19.0
 %define so_ver 3
-%define tarver 3180
 Name:           freeimage
-Version:        3.18.0
+Version:        3.18.0.1909
 Release:        0
 Summary:        Multi-format Image Decoder Library
 License:        GPL-2.0-only OR GPL-3.0-only
 URL:            https://freeimage.sourceforge.io/
-Source0:        https://downloads.sourceforge.net/freeimage/FreeImage%{tarver}.zip
+Source0:        %{name}-%{version}.tar.xz
 Patch0:         unbundle.patch
 # PATCH-FIX-OPENSUSE doxygen.patch asterios.dramis@gmail.com -- Fix documentation building (Based on patch from Fedora)
 Patch1:         doxygen.patch
 # PATCH-FIX-OPENSUSE makefiles_fixes.patch asterios.dramis@gmail.com -- Fix CFLAGS and CXXFLAGS, removed -s (strip) option, add missing symlinks for libfreeimageplus, remove root user from install
 Patch3:         makefiles_fixes.patch
-Patch4:         freeimage-no-return-in-nonvoid.patch
-Patch5:         CVE-2019-12211_2019-12213.patch
-Patch6:         bigendian.patch
-# PATCH-FIX-UPSTREAM: compile with libraw 0.20.0 - https://734724.bugs.gentoo.org/attachment.cgi?id=651956
-Patch7:         libraw_0_20.patch
-Patch8:         libraw_0_21.patch
 # build with openexr3
 Patch9:         freeimage-openexr3.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  jxrlib-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  openjpeg2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  unzip
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(libmng)
+BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(libtiff-4)
@@ -87,11 +80,9 @@ graphics image formats like PNG, BMP, JPEG, TIFF and others as needed
 by today's multimedia applications.
 
 %prep
-%autosetup -n FreeImage -p1
+%autosetup -p1
 
 %build
-# Remove bundled libs to make sure these don't get used during compile
-rm -rf Source/LibPNG/ Source/LibRawLite/ Source/OpenEXR/ Source/ZLib/ Source/LibOpenJPEG/ Source/LibJPEG/
 
 # clear files which cannot be built due to dependencies on private headers
 # (see also unbundle patch)
@@ -140,10 +131,10 @@ rm -f %{buildroot}%{_libdir}/*.a
 
 %files -n lib%{name}%{so_ver}
 %{_libdir}/lib%{name}.so.3*
-%{_libdir}/lib%{name}-%{version}.so
+%{_libdir}/lib%{name}-%{tag_ver}.so
 
 %files -n lib%{name}plus%{so_ver}
 %{_libdir}/lib%{name}plus.so.3*
-%{_libdir}/lib%{name}plus-%{version}.so
+%{_libdir}/lib%{name}plus-%{tag_ver}.so
 
 %changelog

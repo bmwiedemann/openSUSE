@@ -93,4 +93,49 @@ freeimage development seems dead and maybe should be replaced if possible.</comm
     <comment></comment>
     <requestid>1059970</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f1b8ff47d757f90f6237149ec8a8b887</srcmd5>
+    <version>3.18.0.1909</version>
+    <time>1696529120</time>
+    <user>anag+factory</user>
+    <comment>- Update to SVN revision 1909:
+  * added the 'ExtraSamples' tag key to the FIMD_EXIF_MAIN
+    &amp; FIMD_EXIF_EXIF metadata models
+  * added support for Exif v2.3.2 tags
+  * improved TIFF compression when using float images with
+    TIFF_ADOBE_DEFLATE or TIFF_LZW flag
+  * improved performance of _MemoryReadProc function (see FreeImageIO.cpp)
+  * improved TIFF validation against Canon CR2 files (CR2 files are no
+    longer recognized as TIFF)
+  * improved TIFF plugin when working with malicious images
+  * improved BMP plugin when working with malicious images
+  * improved FreeImage_LoadFromMemory robustness when working with
+    malicious images
+  * fixed JXR plugin when working under a Linux OS
+  * improved PFM plugin against malicious images
+  * improved JXR plugin against malicious images
+  * improved Targa plugin against malicious images
+  * improved DDS plugin against malicious images
+  * improved PCX plugin against malicious images
+  * improved PNM plugin against malicious images
+  * improved TIFF plugin against malicious images
+  * improved J2K plugin against malicious images
+  * fixed FreeImage_OpenMultiBitmap with usage of filenames longer than
+    255 characters &amp; Windows Long Path disabled
+  * TIFF images saved with TIFF_DEFLATE compression are saved to images
+    with TIFF_ADOBE_DEFLATE compresssion (TIFF_DEFLATE is obsolete)
+  * fixed FreeImage_FlipVertical behavior with very large images
+  * fixed FreeImage_Paste behavior with very large images
+  * fixed FreeImage_SeekMemory behavior with 64-bit malicious images
+- CVE-2019-12211_2019-12213.patch merged upstream
+- libraw_0_20.patch libraw_0_21.patch merged upstream
+- bigendian.patch merged upstream
+- freeimage-no-return-in-nonvoid.patch merged upstream
+- edit unbundle.patch
+- closes boo#1135736 boo#1135731 boo#1214776 boo#1214557 boo#1214555 boo#1214556
+- Fixes CVEs: CVE-2019-12213 CVE-2019-12211 CVE-2020-21426 CVE-2020-21427
+  CVE-2020-21428 CVE-2020-22524
+</comment>
+    <requestid>1115869</requestid>
+  </revision>
 </revisionlist>

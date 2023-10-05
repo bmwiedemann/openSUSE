@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Sep  7 17:28:28 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to SVN revision 1909:
+  * added the 'ExtraSamples' tag key to the FIMD_EXIF_MAIN
+    & FIMD_EXIF_EXIF metadata models
+  * added support for Exif v2.3.2 tags
+  * improved TIFF compression when using float images with
+    TIFF_ADOBE_DEFLATE or TIFF_LZW flag
+  * improved performance of _MemoryReadProc function (see FreeImageIO.cpp)
+  * improved TIFF validation against Canon CR2 files (CR2 files are no
+    longer recognized as TIFF)
+  * improved TIFF plugin when working with malicious images
+  * improved BMP plugin when working with malicious images
+  * improved FreeImage_LoadFromMemory robustness when working with
+    malicious images
+  * fixed JXR plugin when working under a Linux OS
+  * improved PFM plugin against malicious images
+  * improved JXR plugin against malicious images
+  * improved Targa plugin against malicious images
+  * improved DDS plugin against malicious images
+  * improved PCX plugin against malicious images
+  * improved PNM plugin against malicious images
+  * improved TIFF plugin against malicious images
+  * improved J2K plugin against malicious images
+  * fixed FreeImage_OpenMultiBitmap with usage of filenames longer than
+    255 characters & Windows Long Path disabled
+  * TIFF images saved with TIFF_DEFLATE compression are saved to images
+    with TIFF_ADOBE_DEFLATE compresssion (TIFF_DEFLATE is obsolete)
+  * fixed FreeImage_FlipVertical behavior with very large images
+  * fixed FreeImage_Paste behavior with very large images
+  * fixed FreeImage_SeekMemory behavior with 64-bit malicious images
+- CVE-2019-12211_2019-12213.patch merged upstream
+- libraw_0_20.patch libraw_0_21.patch merged upstream
+- bigendian.patch merged upstream
+- freeimage-no-return-in-nonvoid.patch merged upstream
+- edit unbundle.patch
+- closes boo#1135736 boo#1135731 boo#1214776 boo#1214557 boo#1214555 boo#1214556
+- Fixes CVEs: CVE-2019-12213 CVE-2019-12211 CVE-2020-21426 CVE-2020-21427
+  CVE-2020-21428 CVE-2020-22524
+
+-------------------------------------------------------------------
 Thu Jan 19 10:14:37 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libraw_0_21.patch: Fix build against libraw 0.21.
@@ -52,10 +93,10 @@ Tue Sep 11 13:18:49 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
     transparency during conversion
  * added saving support for 32-bit CMYK in JPEG plugin
  * added FreeImage_Validate functions:
-		added FreeImage_Validate
-		added FreeImage_ValidateU
-		added FreeImage_ValidateFromHandle
-		added FreeImage_ValidateFromMemory
+    added FreeImage_Validate
+    added FreeImage_ValidateU
+    added FreeImage_ValidateFromHandle
+    added FreeImage_ValidateFromMemory
  * fixed PCX loader against malicious images with a bad window specification
  * fixed TIFF loader with loading of RGB[A]F float images
  * improved loading speed of PSD plugin
@@ -260,4 +301,3 @@ Sat Jul  2 11:56:15 UTC 2011 - jengelh@medozas.de
 - Remove conflicting %debug_package: OBS deals with that already
 - Remove unnecessary %clean section
 - Use %_smp_mflags
-
