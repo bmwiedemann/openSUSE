@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  4 15:46:58 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 3.8.0
+  * Revised GUI on Wayland
+  * Rewritten folder dialog and revised file dialog
+  * Player rewritten based on gstreamer
+  * Added dark theme for GUI
+  * Hiding the area handles now starts the timer
+  * Added language switcher in GUI
+  * Added support for saving as GIF
+  * Translation updates
+
+-------------------------------------------------------------------
 Sun Jul  2 17:07:57 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 3.7.0

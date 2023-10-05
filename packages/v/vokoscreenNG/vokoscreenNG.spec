@@ -17,7 +17,7 @@
 
 
 Name:           vokoscreenNG
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Screencast creator
 License:        GPL-2.0-only
@@ -49,6 +49,8 @@ Requires:       pulseaudio-daemon
 Requires:       gstreamer-plugins-base
 # Required for mkv, avi, webm, mp4, vp8 video and flac audio
 Requires:       gstreamer-plugins-good
+# Required for gif
+Requires:       gstreamer-plugins-rs
 # Required for x265, av1, camera
 Requires:       gstreamer-plugins-bad
 # Required for x264 and mp3lame
