@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-django-ipware
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Django utility application that returns client's real IP address
 License:        MIT

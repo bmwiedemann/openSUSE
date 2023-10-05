@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  5 09:20:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.1:
+  * Add HTTP_X_CLIENT_IP to defaults.py
+  * feat: support for python/django versions
+  * Add Missing Comma and Extend Private IPv6 Prefix List
+  * add deprecation notice
+
+-------------------------------------------------------------------
 Sun May  7 18:43:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.0:

@@ -33,4 +33,16 @@
   * Drop support for Python 3.6, Django 2.2</comment>
     <requestid>1085331</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c8d772035dd093737a8c9aa3b70b504a</srcmd5>
+    <version>5.0.1</version>
+    <time>1696529096</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.0.1:
+  * Add HTTP_X_CLIENT_IP to defaults.py
+  * feat: support for python/django versions
+  * Add Missing Comma and Extend Private IPv6 Prefix List
+  * add deprecation notice</comment>
+    <requestid>1115779</requestid>
+  </revision>
 </revisionlist>
