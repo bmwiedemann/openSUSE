@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 27 20:41:51 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update tasty-rerun to version 1.1.19 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Sep 10 00:17:00 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update tasty-rerun to version 1.1.19.
