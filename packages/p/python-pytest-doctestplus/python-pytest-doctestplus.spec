@@ -27,11 +27,11 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-doctestplus%{psuffix}
-Version:        0.13.0
+Version:        1.0.0
 Release:        0
 Summary:        Pytest plugin with advanced doctest features
 License:        BSD-3-Clause
-URL:            https://github.com/astropy/pytest-doctestplus
+URL:            https://github.com/scientific-python/pytest-doctestplus
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-doctestplus/pytest-doctestplus-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module packaging >= 17.0}
@@ -56,8 +56,8 @@ BuildArch:      noarch
 
 %description
 This package contains a plugin for the pytest framework that provides
-advanced doctest support and enables the testing of reStructuredText
-(".rst") files.
+advanced doctest support and enables the testing of various text files, such
+as reStructuredText (".rst"), markdown (".md"), and TeX (".tex").
 
 %prep
 %setup -q -n pytest-doctestplus-%{version}
