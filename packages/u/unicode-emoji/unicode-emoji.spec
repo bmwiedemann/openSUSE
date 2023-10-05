@@ -1,7 +1,7 @@
 #
 # spec file for package unicode-emoji
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define long_version 14.0.0
+%define long_version 15.1.0
 Name:           unicode-emoji
-Version:        15.0
+Version:        15.1
 Release:        0
 Summary:        Unicode Emoji Data Files
 License:        Unicode
