@@ -519,4 +519,12 @@ Note: In my home project this only builds on Factory/Tumbleweed. (forwarded requ
 - Pass &quot;-f&quot; flag to &quot;rm&quot; when removing CMakeConfigureLog.yaml (forwarded request 1111346 from glaubitz)</comment>
     <requestid>1111410</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>74491d65fe5c37b4843c0ae3753e907b</srcmd5>
+    <version>1.59.0</version>
+    <time>1696528987</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115660</requestid>
+  </revision>
 </revisionlist>

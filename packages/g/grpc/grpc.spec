@@ -16,11 +16,11 @@
 #
 
 
-%define lver 35
-%define lverp 1_58
+%define lver 36
+%define lverp 1_59
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.58.1
+Version:        1.59.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(openssl) >= 1.0.1
 BuildRequires:  pkgconfig(protobuf) >= 22
 BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(zlib)
-Patch0:         fix_grpconfig_cmake.patch
 
 %description
 The reference implementation of the gRPC protocol, done on top of
