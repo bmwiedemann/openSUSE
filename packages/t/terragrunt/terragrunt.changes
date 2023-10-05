@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 05 04:49:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.9:
+  * Update render-json to include list of dependent modules (#2740)
+  * refactor: fix usage of deprecated calls to io/ioutil package
+    (#2742)
+
+-------------------------------------------------------------------
+Wed Oct 04 09:37:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.51.8:
+  * Add check for aws session before checking S3 bucket (#2739)
+  * docs: removes two errors in the markdown (#2741)
+
+-------------------------------------------------------------------
 Fri Sep 29 19:18:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.51.7:
