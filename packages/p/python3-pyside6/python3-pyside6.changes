@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  4 09:00:16 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a build failure:
+  * 0001-adapt-qC_Debug_Info_Warning_Critical_-for-new-definition.patch
+
+-------------------------------------------------------------------
 Mon Sep 18 12:54:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add patch to fix failure with Python 3.11.5:

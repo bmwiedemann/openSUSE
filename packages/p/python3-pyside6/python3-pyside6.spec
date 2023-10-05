@@ -36,6 +36,8 @@ Source:         https://www.nic.funet.fi/pub/mirrors/download.qt-project.org/off
 Patch0:         0001-Always-link-to-python-libraries.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-adapt-qC_Debug_Info_Warning_Critical_-for-new-definition.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  fdupes

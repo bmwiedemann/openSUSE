@@ -175,4 +175,12 @@
   * 0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch</comment>
     <requestid>1111992</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>c83a572bdcdf5d11599d0187cdb2fb00</srcmd5>
+    <version>6.5.2</version>
+    <time>1696529118</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115844</requestid>
+  </revision>
 </revisionlist>
