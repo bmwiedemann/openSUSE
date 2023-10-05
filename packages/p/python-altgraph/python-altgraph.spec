@@ -1,7 +1,7 @@
 #
 # spec file for package python-altgraph
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-altgraph
-Version:        0.17.3
+Version:        0.17.4
 Release:        0
 Summary:        Python graph (network) package
 License:        MIT
