@@ -1,7 +1,7 @@
 #
 # spec file for package buildah
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ BuildRequires:  libassuan-devel >= 2.5.2
 BuildRequires:  libbtrfs-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
-BuildRequires:  golang(API) >= 1.13
+BuildRequires:  golang(API) >= 1.21
 Requires:       cni
 Requires:       libcontainers-common
 Requires:       libcontainers-image
