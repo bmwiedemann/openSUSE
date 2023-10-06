@@ -1,5 +1,4 @@
 # links to be created
-# Required for FHS 2.1
-spool/mail		/var/mail
 # systemd
 ../run                  /var/run  %ghost
+../run/lock             /var/lock %ghost

@@ -7,6 +7,7 @@
 0755 root root /srv/www
 0755 root root /srv/www/cgi-bin
 0755 root root /srv/www/htdocs
+0755 root root /run/lock
 0555 root root /sys
 0755 root root /usr/local
 0755 root root /usr/local/bin

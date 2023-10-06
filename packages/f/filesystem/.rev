@@ -1379,4 +1379,12 @@
 - minor change for sparc in specfile (bnc#558343)</comment>
     <requestid>1110634</requestid>
   </revision>
+  <revision rev="171" vrev="14">
+    <srcmd5>84364dcb091004791e1c57a12c01bb9d</srcmd5>
+    <version>84.87</version>
+    <time>1696619567</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115620</requestid>
+  </revision>
 </revisionlist>

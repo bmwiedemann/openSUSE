@@ -102,6 +102,20 @@ for i in pairs(ghosts) do
   mkdir_p(i)
   posix.chmod(i, ghosts[i])
 end
+
+local ghost_links = {
+EOF
+# ghost symlinks
+while read SRC DEST ATTR ; do
+	[ "$ATTR" = "%%ghost" ] || continue
+	echo "[\"$DEST\"] = \"$SRC\","
+done < filesystem.links >> pretrans.lua
+cat >> pretrans.lua <<'EOF'
+}
+for i in pairs(ghost_links) do
+  mkdir_p(i:match(".*/"))
+  posix.symlink(ghost_links[i], i)
+end
 EOF
 #
 #
@@ -273,28 +287,6 @@ done < %{SOURCE4}
 
 RPM_INSTALL_PREFIX=$RPM_BUILD_ROOT
 export RPM_BUILD_ROOT
-# check, if all home directories are present.
-UNFOUND=false
-UNFOUND_DIRS=
-OLDIFS="$IFS"
-IFS=":"
-while read LOGIN PASSWD UID_T GID_T NAME HOME_DIR SHELL_T ; do
-    test "$LOGIN" = "abuild" && continue
-    test "$LOGIN" = "icecream" && continue
-    test "$LOGIN" = "vscan" && continue
-    test -n "$HOME_DIR" || continue
-    test "$UID_T" -gt 100 && continue
-    test -d $RPM_BUILD_ROOT/$HOME_DIR && continue
-    echo $HOME_DIR does not exist.
-    UNFOUND=true
-    UNFOUND_DIRS="$UNFOUND_DIRS $HOME_DIR"
-done < /etc/passwd
-IFS=$OLDIFS
-if test "$UNFOUND" = true ; then
-    echo There are home directories defined, which are not present.
-    echo Unfound: $UNFOUND_DIRS
-    exit 1
-fi
 #
 # now check, if all files of aaa_base have a directory in this package
 #

@@ -120,7 +120,6 @@
 0555 root root /var/lib/empty
 0755 root root /var/lib/misc
 0755 root root /var/spool
-1777 root root /var/spool/mail
 1777 root root /var/tmp
 0755 root root /var/log
 0755 root root /var/opt

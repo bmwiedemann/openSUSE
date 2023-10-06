@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 25 08:45:52 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- Add /run/lock (boo#1212926)
+- Remove /var/spool/mail (boo#1179574)
+- Remove obsolete home dir check. The filesystem package is not
+  meant to contain home directories of random system users anymore
+- Create ghost symlinks also in pretrans, needed to get /var/run as
+  link right away
+
+-------------------------------------------------------------------
 Tue Sep 12 12:19:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - remove complex dependency on rpmlib(X-CheckUnifiedSystemdir),
