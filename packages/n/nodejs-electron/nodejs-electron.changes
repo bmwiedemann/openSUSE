@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  5 09:13:46 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 25.9.0
+  * Added support for chrome.scripting extension APIs.
+  * Fixed BrowserView.setBounds calls not painting view in new bounds in some cases.
+  * Fixed an issue where webContents.print could fail when options is a frozen object.
+
+-------------------------------------------------------------------
+Tue Oct  3 17:33:41 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Do not export internal v8 apis used by no known application (v8-hide-private-symbols.patch)
+
+-------------------------------------------------------------------
 Sun Oct  1 16:22:35 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Add backported swiftshader-llvm17.patch to fix ftbfs on arm64
