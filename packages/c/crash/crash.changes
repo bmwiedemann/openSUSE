@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  5 18:12:20 UTC 2023 - David Mair <dmair@suse.com>
+
+- Updated crash gcore extension to current upstream v1.64 dated
+  2023-02-28. It's not updated in each product version and most
+  don't release a crash-gcore rpm now but updated the latest
+  openSUSE package project at this time.
+
+-------------------------------------------------------------------
 Wed Sep 20 16:58:00 UTC 2023 - David Mair <dmair@suse.com>
 
 - On initialization crash verifies the core based on the text

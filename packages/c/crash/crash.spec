@@ -19,7 +19,7 @@
 
 %define whitepaper_version 2003
 %define scripts_version  2008-02-08
-%define gcore_version  2011-09-22
+%define gcore_version  2023-02-28
 
 %if 0%{!?have_snappy:1}
 %if 0%{?suse_version} >= 1310
