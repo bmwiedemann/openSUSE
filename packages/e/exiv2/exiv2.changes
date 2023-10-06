@@ -44,8 +44,8 @@ Tue Jan 24 10:40:48 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 Sat Jan 21 09:21:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.27.6:
-  * Add Nikon3.WhiteBalanceBias2	
-  * Add Nikon LensData v0802	
+  * Add Nikon3.WhiteBalanceBias2
+  * Add Nikon LensData v0802
   * Add some F mount lenses
   * Initial support for OM System MakerNote
   * Add Sony ARW compression to dict
@@ -62,7 +62,7 @@ Sat Jan 21 09:21:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Fix in Jp2 metadata writing & improvements in reading
   * Strip XMP raw packet before decoding
   * Add tiff tags
-  * Add more DNG 1.6 tags	
+  * Add more DNG 1.6 tags
   * Fix bug in iterating over the elements of dateStrings
   * Use memmove in TiffEncoder::updateDirEntry
   * Treat Exif.Sony1.PreviewImage as undefined tag
@@ -96,17 +96,17 @@ Sat Nov 13 12:08:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 0.27.5 (bsc#1189332, CVE-2021-37620,
                     bsc#1189333, CVE-2021-37621,
                     bsc#1189334, CVE-2021-37622,
-                    bsc#1189338, CVE-2021-34334, 
+                    bsc#1189338, CVE-2021-34334,
                     bsc#1189335, CVE-2021-37623,
-                    bsc#1189337, CVE-2021-32815, 
-                    bsc#1189340, CVE-2021-34335, 
-                    bsc#1189341, CVE-2021-37615, 
+                    bsc#1189337, CVE-2021-32815,
+                    bsc#1189340, CVE-2021-34335,
+                    bsc#1189341, CVE-2021-37615,
                     bsc#1185003, CVE-2021-29458):
   * BMFF bug fixes including CR3 previews
   * Security fixes
   * libFuzzer target
   * Exiv2 monitored by oss-fuzz
-  * Minor bugs and fixes 
+  * Minor bugs and fixes
 
 -------------------------------------------------------------------
 Fri Jun 18 15:15:56 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
@@ -133,7 +133,7 @@ Fri Jun 18 12:57:03 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
   - Updated build and test environments
   - Localisation support on Crowdin
   - Revised documentation
-  - Other improvements 
+  - Other improvements
 - drop 1271.patch:
   included in update
 
@@ -182,7 +182,7 @@ Fri Aug  2 06:59:05 UTC 2019 - Martin Liška <mliska@suse.cz>
 -------------------------------------------------------------------
 Mon Jul 29 09:49:08 UTC 2019 - Andreas Schneider <asn@cryptomilk.org>
 
-- Update to 0.27.2 (bsc#1188645, CVE-2020-19716)
+- Update to 0.27.2 (bsc#1188645, CVE-2020-19716, bsc#1214582, CVE-2020-18831)
   * Bug and security fixes
   * Support for Nikon/AutoFocus and Sony/FocusPosition Metadata
   * Documentation and man page revisions
@@ -253,7 +253,7 @@ Thu Nov 22 08:51:04 UTC 2018 - Dirk Mueller <dmueller@suse.com>
 - update to official RC2 tarball release:
   which obsoletes the following patches in previous dists as backports
   that have always been upstream:
-  * obsoletes 0001-PSD-Use-Safe-add-for-preventing-overflows-in-PSD-fil.patch 
+  * obsoletes 0001-PSD-Use-Safe-add-for-preventing-overflows-in-PSD-fil.patch
   * obsoletes 0002-PSD-enforce-Length-of-image-resource-section-file-si.patch (CVE-2018-19108, bsc#1115364)
   * obsoletes 0001-Fix-561.-Use-proper-counter-for-the-idx-variable.patch (CVE-2018-19607, bsc#1117513)
   * obsoletes 0001-Avoid-null-pointer-exception-due-to-NULL-return-valu.patch (bsc#1142684, CVE-2019-13114)
@@ -376,13 +376,13 @@ Tue Jun 23 06:07:21 UTC 2015 - dmueller@suse.com
 Mon Jun 22 12:20:15 UTC 2015 - tittiatcoke@gmail.com
 
 - Update to version 0.25
-  * exivsimple has array index errors when stripping quotes form 
+  * exivsimple has array index errors when stripping quotes form
     trivial input strings
   * Use SVN eol-style LF on all files
   * Access violation on IptcData::operator[] when key is invalid
   * PNG images with tiff tags throw exceptions
   * Plasma kde crashes when specific jpeg is on the Desktop
-  * TIFF parser,Binary array elements should be decoded using the 
+  * TIFF parser,Binary array elements should be decoded using the
     Makernote's endianness, not that of the image
   * Coverity scan : Issue CID 981992 , 981993
   * Wrong key name in output of addmodel sample
@@ -391,9 +391,9 @@ Mon Jun 22 12:20:15 UTC 2015 - tittiatcoke@gmail.com
   * pyexiv2 fails on cifs shares on an Ubuntu client
   * TIFF parser,Parse TIFF PageNumber
   * Add new sample applications exifdata and exivvalue
-  * Add option -K Key (--key Key) to specify one or more keys to 
+  * Add option -K Key (--key Key) to specify one or more keys to
     output
-  * "exiv2 -eX" followed by "exiv2 -iX" produces invalid XMP 
+  * "exiv2 -eX" followed by "exiv2 -iX" produces invalid XMP
     metadata packet
   * Sony NEX Lens Information
   * Handle Pentax makernotes in samsung-rebranded cameras
@@ -409,9 +409,9 @@ Mon Jun 22 12:20:15 UTC 2015 - tittiatcoke@gmail.com
   * See also http://www.exiv2.org/changelog.html
 
 - Dropped the following upstreamed patches:
-   * fix-overflow-in-info-tags-r3264.patch 
-   * fix-video-timescale-handling.patch 
-   * parallel-build-dep.patch 
+   * fix-overflow-in-info-tags-r3264.patch
+   * fix-video-timescale-handling.patch
+   * parallel-build-dep.patch
    * fix-parallel-build.patch
 
 -------------------------------------------------------------------
@@ -725,10 +725,10 @@ Sun Sep 18 14:30:35 UTC 2011 - coolo@suse.com
 Sun Sep 18 14:25:46 UTC 2011 - coolo@suse.com
 
 - update to 0.22
-  This release introduces support for Postscript (EPS) images. 
-  XMP metadata can be read and written from/to EPS images and 
-  previews are accessible. 
-  Further it includes a new build environment for MSVC 64 bit 
+  This release introduces support for Postscript (EPS) images.
+  XMP metadata can be read and written from/to EPS images and
+  previews are accessible.
+  Further it includes a new build environment for MSVC 64 bit
   builds and a number of smaller features and bugfixes.
 
 -------------------------------------------------------------------
@@ -995,7 +995,7 @@ Sat Dec 15 14:34:36 CET 2007 - dmueller@suse.de
 -------------------------------------------------------------------
 Fri Oct  5 01:47:59 CEST 2007 - dmueller@suse.de
 
-- fix build with gcc 4.3 (upstream backport) 
+- fix build with gcc 4.3 (upstream backport)
 
 -------------------------------------------------------------------
 Fri Aug 31 11:36:26 CEST 2007 - dmueller@suse.de
@@ -1008,7 +1008,7 @@ Fri Aug 31 11:36:26 CEST 2007 - dmueller@suse.de
   * Sony Makernote crashes exiv2.
   * Wrong AFPoints mapping for Canon cameras.
   * Minolta G500 RAW format support.
-  * Fix "Since v0.14 the version check macro doesn't work in a precompiler 
+  * Fix "Since v0.14 the version check macro doesn't work in a precompiler
     #if test anymore".
   * [jpeg i/o] Uncouple IPTC and Exif reading.
   * Updated Nikon lens info to v2.30 of Robert Rottmerhusen's lens database.

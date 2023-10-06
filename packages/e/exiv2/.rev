@@ -813,4 +813,35 @@
     <comment></comment>
     <requestid>1099225</requestid>
   </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>df83474b76028adbc358f3704f534af2</srcmd5>
+    <version>0.28.0</version>
+    <time>1696619528</time>
+    <user>anag+factory</user>
+    <comment>  * Add Nikon3.WhiteBalanceBias2
+  * Add Nikon LensData v0802
+  * Add more DNG 1.6 tags
+                    bsc#1189338, CVE-2021-34334,
+                    bsc#1189337, CVE-2021-32815,
+                    bsc#1189340, CVE-2021-34335,
+                    bsc#1189341, CVE-2021-37615,
+  * Minor bugs and fixes
+  - Other improvements
+- Update to 0.27.2 (bsc#1188645, CVE-2020-19716, bsc#1214582, CVE-2020-18831)
+  * obsoletes 0001-PSD-Use-Safe-add-for-preventing-overflows-in-PSD-fil.patch
+  * exivsimple has array index errors when stripping quotes form
+  * TIFF parser,Binary array elements should be decoded using the
+  * Add option -K Key (--key Key) to specify one or more keys to
+  * &quot;exiv2 -eX&quot; followed by &quot;exiv2 -iX&quot; produces invalid XMP
+   * fix-overflow-in-info-tags-r3264.patch
+   * fix-video-timescale-handling.patch
+   * parallel-build-dep.patch
+  This release introduces support for Postscript (EPS) images.
+  XMP metadata can be read and written from/to EPS images and
+  previews are accessible.
+  Further it includes a new build environment for MSVC 64 bit
+- fix build with gcc 4.3 (upstream backport)
+  * Fix &quot;Since v0.14 the version check macro doesn't work in a precompiler</comment>
+    <requestid>1115919</requestid>
+  </revision>
 </revisionlist>
