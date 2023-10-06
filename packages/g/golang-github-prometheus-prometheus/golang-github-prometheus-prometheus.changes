@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  4 13:54:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.47.1:
+  This is a patch release to fix a bug, and to rebuild with Go
+  1.21.1.
+  * [BUGFIX] Fix duplicate sample detection at chunk size limit
+    #12874
+- BuildRequire go1.21 as upstream does
+
+-------------------------------------------------------------------
 Wed Sep  6 15:05:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - use "manual" service instead of "disabled"

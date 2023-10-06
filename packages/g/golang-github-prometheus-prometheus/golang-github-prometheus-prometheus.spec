@@ -27,7 +27,7 @@
 %endif
 
 Name:           golang-github-prometheus-prometheus
-Version:        2.47.0
+Version:        2.47.1
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
@@ -56,7 +56,7 @@ BuildRequires:  firewall-macros
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-github-prometheus-promu >= 0.14.0
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.19
+BuildRequires:  golang(API) >= 1.21
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} >= 1500
 Recommends:     firewalld-prometheus-config
