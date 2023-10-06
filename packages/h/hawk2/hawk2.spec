@@ -108,6 +108,7 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:tilt) >= 2
 BuildRequires:  git
 BuildRequires:  nodejs >= 10
 BuildRequires:  pam-devel
+BuildRequires:  shadow
 
 %description
 A web-based GUI for managing and monitoring the Pacemaker

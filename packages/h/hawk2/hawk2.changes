@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  5 13:43:27 UTC 2023 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Hawk fails to build in Factory (bsc#1215976) 
+
+-------------------------------------------------------------------
 Thu Jun 22 12:35:47 UTC 2023 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Strengthen /usr/share/hawk permissions (bsc#1211848)
