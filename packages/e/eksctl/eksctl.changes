@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct 06 13:17:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.161.0:
+  * Release notes
+  * update css and general cleanup
+  * clean up and add a better image for cluster demo
+  * Added contributors section on homepage
+  * fix links in html
+  * clean up index.md and fix some img links
+  * Clean up styling and updated content
+  * Landing page - initial commit
+  * Update gomarkdown
+  * Upgrade go-restful
+  * Make EKS 1.27 default (#7117)
+  * Fix `deleteAddonsStacksTasks` generator (#7118)
+  * Prepare for next development iteration
+  * Move addons related tasks to actions package (#7077)
+  * Refine log statements using `%w` for better formatting and UX
+
+-------------------------------------------------------------------
 Fri Sep 29 11:08:29 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.160.0:
