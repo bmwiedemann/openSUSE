@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  4 23:12:42 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.16.6:
+  * Support for Python 3.12.
+- Split out -devel package containing C++ headers/sources.
+
+-------------------------------------------------------------------
 Mon Sep  4 16:40:18 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.16.5:

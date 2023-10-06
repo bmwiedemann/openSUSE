@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-healpy
-Version:        1.16.5
+Version:        1.16.6
 Release:        0
 Summary:        Python library to handle pixelated data on the sphere based on HEALPix
 License:        GPL-2.0-only
@@ -70,8 +70,18 @@ healpy provides utilities to:
 * transform maps to Spherical Harmonics space and back using multi-threaded C++ routines
 * compute Auto and Cross Power Spectra from maps and create map realizations from spectra
 
+%package devel
+Summary:        C++ header files and source codes for healpy
+Requires:       python-devel
+Requires:       python-numpy-devel
+Requires:       pkgconfig(healpix_cxx)
+
+%description devel
+This package provides the C++ header files and source codes for healpy.
+
 %prep
 %autosetup -p1 -n healpy-%{version}
+chmod -x healpy/data/planck_*cmap.dat
 
 %build
 export CFLAGS="%{optflags}"
@@ -99,5 +109,9 @@ export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %python_alternative %{_bindir}/healpy_get_wmap_maps.sh
 %{python_sitearch}/healpy/
 %{python_sitearch}/healpy-%{version}*-info/
+%exclude %{python_sitearch}/healpy/src
+
+%files %{python_files devel}
+%{python_sitearch}/healpy/src/
 
 %changelog
