@@ -17,10 +17,9 @@
 #
 
 
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-argcomplete
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0

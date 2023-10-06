@@ -278,4 +278,20 @@
 </comment>
     <requestid>1096831</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>04d0362d469739275d8e89fdf946a27d</srcmd5>
+    <version>3.1.2</version>
+    <time>1696619550</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.2:
+  *Ensure Python 3.12+ compatibility in check_console_script
+
+- fix substitution on tests/test.py to test the current python flavor
+* Don't print args with suppressed help by default; add
+- fixed license, set noarch for build
+- add files in _bindir
+- add python-distribute
+- Initial packaging</comment>
+    <requestid>1115761</requestid>
+  </revision>
 </revisionlist>

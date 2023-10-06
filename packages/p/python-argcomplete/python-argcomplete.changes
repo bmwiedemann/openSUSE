@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  5 08:46:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.2:
+  *Ensure Python 3.12+ compatibility in check_console_script
+
+-------------------------------------------------------------------
 Tue Jul  4 11:24:40 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.1.1
@@ -88,7 +94,7 @@ Thu Mar 16 09:32:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Tue Jan 31 23:49:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- fix substitution on tests/test.py to test the current python flavor 
+- fix substitution on tests/test.py to test the current python flavor
 
 -------------------------------------------------------------------
 Wed Jul  6 10:04:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
@@ -217,7 +223,7 @@ Tue Nov 02 20:50:53 UTC 2016 - achim.herwig@wodca.de
 Sat Dec 12 17:49:43 UTC 2015 - mimi.vx@gmail.com
 
 - update to 1.0.0
-* Don't print args with suppressed help by default; add 
+* Don't print args with suppressed help by default; add
   argcomplete.autocomplete(print_suppressed=True) to control this behavior
 * Fix always_complete_options=False support.
 * Correct doc filename in setup.cfg
@@ -305,15 +311,15 @@ Thu May  2 14:04:51 UTC 2013 - speilicke@suse.com
 -------------------------------------------------------------------
 Mon Apr 29 11:10:08 UTC 2013 - darin@darins.net
 
-- fixed license, set noarch for build 
+- fixed license, set noarch for build
 
 -------------------------------------------------------------------
 Fri Apr 26 20:49:09 UTC 2013 - darin@darins.net
 
-- add files in _bindir 
-- add python-distribute 
+- add files in _bindir
+- add python-distribute
 
 -------------------------------------------------------------------
 Fri Apr 26 20:44:08 UTC 2013 - darin@darins.net
 
-- Initial packaging 
+- Initial packaging
