@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  5 07:41:36 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.5.4
+  This release fixes a bug where an invalid pointer (a pointer to the
+  middle of a buffer returned from malloc() instead of to the beginning
+  of the buffer) could be passed to free() when cleaning up after an
+  out-of-bounds output is found in the response from the X server to
+  XRRGetMonitors().
+
+-------------------------------------------------------------------
 Sun Nov 20 22:58:45 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.5.3

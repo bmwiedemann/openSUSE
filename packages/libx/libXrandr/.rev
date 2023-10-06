@@ -153,4 +153,17 @@
   * Remove unnecessary casts of return values from malloc()</comment>
     <requestid>1036997</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1f4688ce2d0fa5790e2320bf83ac4494</srcmd5>
+    <version>1.5.4</version>
+    <time>1696619549</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.5.4
+  This release fixes a bug where an invalid pointer (a pointer to the
+  middle of a buffer returned from malloc() instead of to the beginning
+  of the buffer) could be passed to free() when cleaning up after an
+  out-of-bounds output is found in the response from the X server to
+  XRRGetMonitors().</comment>
+    <requestid>1115752</requestid>
+  </revision>
 </revisionlist>
