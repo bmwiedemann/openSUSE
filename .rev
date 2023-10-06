@@ -690,4 +690,41 @@
     <comment></comment>
     <requestid>1114537</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>64e0c5dbd4ac848c15899283fb497c00</srcmd5>
+    <version>3.3.1</version>
+    <time>1696619531</time>
+    <user>anag+factory</user>
+    <comment>  * [Feature] #1951: Add SSH config token expansion (eg %h, %p) when
+  * [Support] #2004: (via #2011) Apply unittest skipIf to tests currently
+    using SHA1 in their critical path, to avoid failures on systems starting
+  * [Support] #1838: (via #1870/#2028) Update camelCase method calls
+    against the threading module to be snake_case; this and related tweaks
+  * [Support] #2038: (via #2039) Recent versions of Cryptography have
+    deprecated Blowfish algorithm support; in lieu of an easy method for
+    users to remove it from the list of algorithms Paramiko tries to import
+    and use, we’ve decided to remove it from our “preferred algorithms” list.
+    This will both discourage use of a weak algorithm, and avoid warnings.
+  * [Bug] #2017: OpenSSH 7.7 and older has a bug preventing it from
+    understanding how to perform SHA2 signature verification for RSA
+    certificates (specifically certs - not keys), so when we added SHA2
+    support it broke all clients using RSA certificates with these servers.
+    This has been fixed in a manner similar to what OpenSSH’s own client
+    does: a version check is performed and the algorithm used is downgraded
+  * [Bug] #1933: Align signature verification algorithm with OpenSSH re:
+    zero-padding signatures which don’t match their nominal size/length. This
+    shouldn’t affect most users, but will help Paramiko-implemented SSH
+- Update to 2.10.3 (bsc#1197279, CVE-2022-24302)
+  - [Feature] #1846: Add a prefetch keyword argument to
+  - [Support] #1727: Add missing test suite fixtures directory to
+- Set environment to utf-8 to allow tests to pass on Python 2. (bsc#1178341)
+  * gh#paramiko/paramiko#1655
+- update to 2.7.2 (bsc#1166758, bsc#1166758, bsc#1205132)
+- update to 2.6.0 (bsc#1200603)
+- update to 2.5.0
+  extend timeout in testsuite to pass on ppc64le
+     key-decryption passphrases from password-auth passwords.
+  * Certificate support broke the no-certificate case for Ed25519 keys</comment>
+    <requestid>1116019</requestid>
+  </revision>
 </revisionlist>
