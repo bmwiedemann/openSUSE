@@ -95,4 +95,12 @@
     <comment>Extend the version interval for jsch package</comment>
     <requestid>1090093</requestid>
   </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>af2ab79477b9c086c478c71657b9965b</srcmd5>
+    <version>5.11.0</version>
+    <time>1696619665</time>
+    <user>anag+factory</user>
+    <comment>bsc#1209646</comment>
+    <requestid>1116023</requestid>
+  </revision>
 </revisionlist>

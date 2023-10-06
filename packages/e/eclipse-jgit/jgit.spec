@@ -27,7 +27,6 @@ URL:            https://www.eclipse.org/egit/
 # Use github mirror for now, see: https://bugs.eclipse.org/bugs/show_bug.cgi?id=522144
 Source0:        https://git.eclipse.org/c/jgit/jgit.git/snapshot/jgit-%{gittag}.tar.xz
 # Set the correct classpath for the command line tools
-Patch0:         0001-Ensure-the-correct-classpath-is-set-for-the-jgit-com.patch
 # Switch to feature requirements for third-party bundles, also makes the following changes:
 #  javaewah -> com.googlecode.javaewah.JavaEWAH
 #  org.slf4j.api -> slf4j.api
@@ -69,8 +68,20 @@ BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-simple)
 BuildRequires:  mvn(org.tukaani:xz)
-# This is only optional dependency of commons-compress,
-# But the jgit script needs that jar on classpath
+# All the jars that need to be on the classpath for the script to work
+Requires:       apache-commons-codec
+Requires:       apache-commons-compress
+Requires:       apache-commons-logging
+Requires:       apache-sshd
+Requires:       args4j
+Requires:       ed25519-java
+Requires:       httpcomponents-client
+Requires:       httpcomponents-core
+Requires:       javaewah
+Requires:       javapackages-tools
+Requires:       jsch
+Requires:       jzlib
+Requires:       slf4j
 Requires:       xz-java
 Obsoletes:      %{name}-bootstrap
 BuildArch:      noarch
@@ -88,7 +99,6 @@ Group:          Documentation/HTML
 %prep
 %setup -q -n jgit-%{gittag}
 
-%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -150,8 +160,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # Binary
-install -dm 755 %{buildroot}%{_bindir}
-install -m 755 org.eclipse.jgit.pgm/jgit.sh %{buildroot}%{_bindir}/jgit
+%jpackage_script org.eclipse.jgit.pgm.Main "" "" javaewah:jzlib:jsch:jgit/org.eclipse.jgit:slf4j/api:slf4j/simple:args4j:commons-compress:httpcomponents/httpcore:httpcomponents/httpclient:commons-logging:commons-codec:eddsa:apache-sshd/sshd-osgi:apache-sshd/sshd-sftp %{name}
 
 # Ant task configuration
 install -dm 755 %{buildroot}%{_sysconfdir}/ant.d

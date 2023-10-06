@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  6 11:04:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * 0001-Ensure-the-correct-classpath-is-set-for-the-jgit-com.patch
+    + no need to patch the jgit.sh launcher that we do not use
+
+-------------------------------------------------------------------
+Fri Oct  6 11:00:40 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Craft the jgit script from the real Main class of the jar file
+  instead of using some superfluous jar launcher.
+  Fixes bsc#1209646
+
+-------------------------------------------------------------------
 Wed May 31 19:51:51 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

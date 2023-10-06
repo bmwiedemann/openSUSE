@@ -27,7 +27,6 @@ Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/egit/
 Source0:        https://git.eclipse.org/c/jgit/jgit.git/snapshot/jgit-%{gittag}.tar.xz
 # Set the correct classpath for the command line tools
-Patch0:         0001-Ensure-the-correct-classpath-is-set-for-the-jgit-com.patch
 # Switch to feature requirements for third-party bundles, also makes the following changes:
 #  javaewah -> com.googlecode.javaewah.JavaEWAH
 #  org.slf4j.api -> slf4j.api
@@ -91,7 +90,6 @@ A pure Java implementation of the Git version control system.
 %prep
 %setup -q -n jgit-%{gittag}
 
-%patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
