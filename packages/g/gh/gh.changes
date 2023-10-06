@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct 04 15:31:43 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.36.0:
+  * update(run): Use attempt input when fetching jobs (#7831)
+  * Bubble up return value from inner function calls in runEditItem
+  * Update pkg/cmd/pr/create/create.go
+  * pkg/cmd/root: fix startup panic (#8105)
+  * Split clearing item, updating draft item and updating item values into individual functions for better readability; refactor field ID and project ID presence check into a separate function
+  * Document clear flag in long form help as well
+  * Add clear flag usage example
+  * Move field value flag and clear flag exclusivity one level higher up to RunE
+  * Use camelCase for fields
+  * docs: update the details of fill and fill-first
+  * Forward codespace ports over Dev Tunnels
+  * Update triage.md
+  * Support standard output format flags for secret and deploy-key list
+  * docs: update the flag `--fill` docs
+  * Show cancelled checks (#7960)
+  * Return HTTP errors properly for some commands (#8037)
+  * test: Add unit test for cache.ExportData
+  * cache/delete: percent-encode keys
+  * build(deps): bump mislav/bump-homebrew-formula-action from 2 to 3
+  * Hint adding codespace scope to auth login (#7961)
+  * Tests for the new clear flag
+  * Driveby unrelated update: when both field ID and project ID are missing, specify that it's necessary to update the field value
+  * Introduce clear flag on 'project item-edit' command to remove field value
+  * feat(cache): Add JSON exporting support for cache list
+
+-------------------------------------------------------------------
 Wed Sep 20 12:15:33 UTC 2023 - pdostal@suse.com
 
 - Update to version 2.35.0:
