@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 29 12:03:02 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Adjust license according to legaldb review
+  quite some dual licensing from tests and vendor/vendor/* 
+
+-------------------------------------------------------------------
 Sat Jun 24 14:23:15 UTC 2023 - Bob Haley <fawz@use.startmail.com>
 
 - Clean up recipe.
