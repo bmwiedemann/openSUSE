@@ -115,34 +115,34 @@ Sun Nov 20 18:38:07 UTC 2022 - Ben Greiner <code@bnavigator.de>
 Thu May 26 20:43:45 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - update to 2.11.0
-  * [Feature] #1951: Add SSH config token expansion (eg %h, %p) when 
+  * [Feature] #1951: Add SSH config token expansion (eg %h, %p) when
     parsing ProxyJump directives.
-  * [Support] #2004: (via #2011) Apply unittest skipIf to tests currently 
-    using SHA1 in their critical path, to avoid failures on systems starting 
+  * [Support] #2004: (via #2011) Apply unittest skipIf to tests currently
+    using SHA1 in their critical path, to avoid failures on systems starting
     to disable SHA1 outright in their crypto backends (eg RHEL 9).
-  * [Support] #1838: (via #1870/#2028) Update camelCase method calls 
-    against the threading module to be snake_case; this and related tweaks 
+  * [Support] #1838: (via #1870/#2028) Update camelCase method calls
+    against the threading module to be snake_case; this and related tweaks
     should fix some deprecation warnings under Python 3.10.
-  * [Support] #2038: (via #2039) Recent versions of Cryptography have 
-    deprecated Blowfish algorithm support; in lieu of an easy method for 
-    users to remove it from the list of algorithms Paramiko tries to import 
-    and use, we’ve decided to remove it from our “preferred algorithms” list. 
-    This will both discourage use of a weak algorithm, and avoid warnings. 
+  * [Support] #2038: (via #2039) Recent versions of Cryptography have
+    deprecated Blowfish algorithm support; in lieu of an easy method for
+    users to remove it from the list of algorithms Paramiko tries to import
+    and use, we’ve decided to remove it from our “preferred algorithms” list.
+    This will both discourage use of a weak algorithm, and avoid warnings.
 - update to 2.10.5
   * [Bug] #2008: (via #2010) Windows-native SSH agent support as merged in
     2.10 could encounter Errno 22 OSError exceptions in some scenarios
     (eg server not cleanly closing a relevant named pipe).
     This has been worked around and should be less problematic.
-  * [Bug] #2017: OpenSSH 7.7 and older has a bug preventing it from 
-    understanding how to perform SHA2 signature verification for RSA 
-    certificates (specifically certs - not keys), so when we added SHA2 
-    support it broke all clients using RSA certificates with these servers. 
-    This has been fixed in a manner similar to what OpenSSH’s own client 
-    does: a version check is performed and the algorithm used is downgraded 
+  * [Bug] #2017: OpenSSH 7.7 and older has a bug preventing it from
+    understanding how to perform SHA2 signature verification for RSA
+    certificates (specifically certs - not keys), so when we added SHA2
+    support it broke all clients using RSA certificates with these servers.
+    This has been fixed in a manner similar to what OpenSSH’s own client
+    does: a version check is performed and the algorithm used is downgraded
     if needed.
-  * [Bug] #1933: Align signature verification algorithm with OpenSSH re: 
-    zero-padding signatures which don’t match their nominal size/length. This 
-    shouldn’t affect most users, but will help Paramiko-implemented SSH 
+  * [Bug] #1933: Align signature verification algorithm with OpenSSH re:
+    zero-padding signatures which don’t match their nominal size/length. This
+    shouldn’t affect most users, but will help Paramiko-implemented SSH
     servers handle poorly behaved clients such as PuTTY.
 
 -------------------------------------------------------------------
@@ -167,7 +167,7 @@ Fri Apr  8 07:44:16 UTC 2022 - pgajdos@suse.com
 -------------------------------------------------------------------
 Fri Mar 18 22:52:45 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
-- Update to 2.10.3
+- Update to 2.10.3 (bsc#1197279, CVE-2022-24302)
   Too many changes to be listed here:
   https://www.paramiko.org/changelog.html
 
@@ -175,7 +175,7 @@ Fri Mar 18 22:52:45 UTC 2022 - Michael Ströder <michael@stroeder.com>
 Tue Oct 12 11:03:02 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.8.0
-  - [Feature] #1846: Add a prefetch keyword argument to 
+  - [Feature] #1846: Add a prefetch keyword argument to
     SFTPClient.get/SFTPClient.getfo so users who need to skip SFTP
     prefetching are able to conditionally turn it off.
   - [Bug] #1462: (via #1882) Newer server-side key exchange
@@ -185,7 +185,7 @@ Tue Oct 12 11:03:02 UTC 2021 - ecsos <ecsos@opensuse.org>
     This has been corrected.
   - [Support] #1722: Remove leading whitespace from OpenSSH RSA test
     suite static key fixture, to conform better to spec.
-  - [Support] #1727: Add missing test suite fixtures directory to 
+  - [Support] #1727: Add missing test suite fixtures directory to
     MANIFEST.in, reinstating the ability to run Paramiko’s tests from
     an sdist tarball.
   - [Support]: Update our CI to catch issues with sdist generation,
@@ -207,19 +207,19 @@ Tue Oct 12 11:03:02 UTC 2021 - ecsos <ecsos@opensuse.org>
 -------------------------------------------------------------------
 Mon Dec  7 07:22:31 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Set environment to utf-8 to allow tests to pass on Python 2. (bsc#1178341) 
+- Set environment to utf-8 to allow tests to pass on Python 2. (bsc#1178341)
 
 -------------------------------------------------------------------
 Tue Oct 13 10:51:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - remove dependency on pytest-relaxed
   * paramiko-pr1655-remove-pytest-relaxed.patch
-  * gh#paramiko/paramiko#1655 
+  * gh#paramiko/paramiko#1655
 
 -------------------------------------------------------------------
 Fri Sep  4 06:29:23 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 2.7.2
+- update to 2.7.2 (bsc#1166758, bsc#1166758, bsc#1205132)
 - drop configs.tar.gz
  * Add missing test suite fixtures directory to MANIFEST.in
  * Remove leading whitespace from OpenSSH RSA test suite static key fixture,
@@ -238,7 +238,7 @@ Sat Dec 21 17:11:48 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Tue Jun 25 10:47:26 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 2.6.0
+- update to 2.6.0 (bsc#1200603)
 - drop relaxed.patch and 1311.patch
  * add a new keyword argument to SSHClient.connect <paramiko.client.SSHClient.connect>
      and paramiko.transport.Transport -> disabled_algorithms
@@ -249,7 +249,7 @@ Tue Jun 25 10:47:26 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Tue Jun 11 11:22:32 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 2.5.0 
+- update to 2.5.0
 - dropped 1379.patch
 - refreshed patches:
     paramiko-test_extend_timeout.patch
@@ -312,7 +312,7 @@ Fri Oct  5 08:26:46 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
 Thu Mar 15 18:38:22 CET 2018 - ro@suse.de
 
 - add paramiko-test_extend_timeout.patch (bsc#1085529)
-  extend timeout in testsuite to pass on ppc64le 
+  extend timeout in testsuite to pass on ppc64le
 
 -------------------------------------------------------------------
 Thu Mar 15 07:10:09 UTC 2018 - tbechtold@suse.com
@@ -343,7 +343,7 @@ Thu Nov 16 09:36:24 UTC 2017 - mimi.vx@gmail.com
 - update to 2.4.0
   + new pytest based testsuite
   * dd a new passphrase kwarg to SSHClient.connect so users may disambiguate
-     key-decryption passphrases from password-auth passwords. 
+     key-decryption passphrases from password-auth passwords.
   * Drop Python 2.6 and Python 3.3 support
 
 -------------------------------------------------------------------
@@ -351,18 +351,18 @@ Thu Oct  5 11:12:50 UTC 2017 - mimi.vx@gmail.com
 
 - update to 2.3.1
   + cert_support.tar.gz - missing test certificates for testsuite
-  * Certificate support broke the no-certificate case for Ed25519 keys 
+  * Certificate support broke the no-certificate case for Ed25519 keys
       (symptom is an AttributeError about public_blob.) This went uncaught
-      due to cert autoload behavior (i.e. our test suite never actually ran 
-      the no-cert case, because the cert existed!) Both issues have been fixed. 
+      due to cert autoload behavior (i.e. our test suite never actually ran
+      the no-cert case, because the cert existed!) Both issues have been fixed.
   * Implement basic client-side certificate authentication
       (as per the OpenSSH vendor extension.)
   * Added pre-authentication banner support for the server interface
-      (ServerInterface.get_banner plus related support in Transport/AuthHandler.) 
+      (ServerInterface.get_banner plus related support in Transport/AuthHandler.)
   * Update Ed25519Key so its constructor offers the same file_obj parameter
       as its sibling key classes.
   * Add a gss_trust_dns option to Client and Transport to allow explicitly
-      setting whether or not DNS canonicalization should occur when using GSSAPI. 
+      setting whether or not DNS canonicalization should occur when using GSSAPI.
   * Paramiko originally defaulted to zlib compression level 9
       (when one connects with compression=True; it defaults to off.) This has been
       found to be quite wasteful and tends to cause much longer transfers in most
@@ -392,7 +392,7 @@ Thu Oct  5 10:33:48 UTC 2017 - mimi.vx@gmail.com
   * Fix up host-key checking in our GSSAPI support, which was previously
     using an incorrect API call
   * Fix key exchange (kex) algorithm list for GSSAPI authentication;
-    reviously, the list used solely out-of-date algorithms, and now contains 
+    reviously, the list used solely out-of-date algorithms, and now contains
     newer ones listed preferentially before the old
   * Clean up GSSAPI authentication procedures so they do not prevent normal
     fallback to other authentication methods on failure.
@@ -527,7 +527,7 @@ Fri Feb 24 16:27:00 UTC 2017 - mimi.vx@gmail.com
 
 - update to 2.1.2
 * Fix a bug in server-mode concerning multiple interactive auth steps
-*  SSHClient now gives its internal Transport a handle on itself, preventing 
+*  SSHClient now gives its internal Transport a handle on itself, preventing
     garbage collection of the client until the session is closed. Without this,
     some code which returns stream or transport objects without the client that
     generated them, would result in premature session closure
@@ -539,7 +539,7 @@ Fri Feb 24 16:27:00 UTC 2017 - mimi.vx@gmail.com
 Tue Dec 13 11:50:39 UTC 2016 - mimi.vx@gmail.com
 
 - update to 2.1.1
-* A tweak to the original patch implementing gh#398 was not fully applied, 
+* A tweak to the original patch implementing gh#398 was not fully applied,
     causing calls to ~paramiko.client.SSHClient.invoke_shell to fail with
     AttributeError. This has been fixed.
 * Fix the implementation of PKey.write_private_key_file (this method is only
@@ -570,16 +570,16 @@ Fri Oct  7 09:13:06 UTC 2016 - tbechtold@suse.com
 Sun Jul 31 12:15:25 UTC 2016 - michael@stroeder.com
 
 - update to 2.0.2
-  * [Bug] #758: Apply type definitions to _winapi module from 
-    jaraco.windows 3.6.1. This should address issues on Windows platforms 
-    that often result in errors like ArgumentError: [...] int too long to 
-    convert. Thanks to @swohlerLL for the report and Jason R. Coombs for the 
+  * [Bug] #758: Apply type definitions to _winapi module from
+    jaraco.windows 3.6.1. This should address issues on Windows platforms
+    that often result in errors like ArgumentError: [...] int too long to
+    convert. Thanks to @swohlerLL for the report and Jason R. Coombs for the
     patch.
-  * [Bug] #774: Add a _closed private attribute to Channel objects so that 
-    they continue functioning when used as proxy sockets under Python 3 (e.g. 
+  * [Bug] #774: Add a _closed private attribute to Channel objects so that
+    they continue functioning when used as proxy sockets under Python 3 (e.g.
     as direct-tcpip gateways for other Paramiko connections.)
-  * [Bug] #673: (via #681) Fix protocol banner read errors (SSHException) 
-    which would occasionally pop up when using ProxyCommand gatewaying. 
+  * [Bug] #673: (via #681) Fix protocol banner read errors (SSHException)
+    which would occasionally pop up when using ProxyCommand gatewaying.
     Thanks to @Depado for the initial report and Paul Kapp for the fix.
 
 -------------------------------------------------------------------
@@ -587,12 +587,12 @@ Sat Jul 23 14:20:34 UTC 2016 - michael@stroeder.com
 
 - updated homepage URL
 - update to 2.0.1:
-  * [Bug] #537: Fix a bug in BufferedPipe.set_event which could cause 
-    deadlocks/hangs when one uses select.select against Channel objects (or 
+  * [Bug] #537: Fix a bug in BufferedPipe.set_event which could cause
+    deadlocks/hangs when one uses select.select against Channel objects (or
     otherwise calls Channel.fileno after the channel has closed).
-  * [Bug] #520: (Partial fix) Fix at least one instance of race condition 
-    driven threading hangs at end of the Python interpreter session. 
-    (Includes a docs update as well - always make sure to .close() your 
+  * [Bug] #520: (Partial fix) Fix at least one instance of race condition
+    driven threading hangs at end of the Python interpreter session.
+    (Includes a docs update as well - always make sure to .close() your
     clients!)
 
 -------------------------------------------------------------------
@@ -616,10 +616,10 @@ Sun May  8 21:11:31 UTC 2016 - hpj@urpla.net
     blocks. This has been fixed in a backwards compatible manner (i.e.
     ProxyCommand none continues to appear as a total lack of any
     proxycommand key in parsed config structures).
-  * Fix a backwards incompatibility issue that cropped up in 
-    SFTPFile.prefetch <~paramiko.sftp_file.prefetch> re: the 
-    erroneously non-optional file_size parameter. Should only affect 
-    users who manually call prefetch. 
+  * Fix a backwards incompatibility issue that cropped up in
+    SFTPFile.prefetch <~paramiko.sftp_file.prefetch> re: the
+    erroneously non-optional file_size parameter. Should only affect
+    users who manually call prefetch.
   * Replace PyCrypto with the Python Cryptographic Authority (PyCA)
     'Cryptography' library suite. This improves security,
     installability, and performance; adds PyPy support; and much more.
@@ -627,14 +627,14 @@ Sun May  8 21:11:31 UTC 2016 - hpj@urpla.net
     issues.
   * Fix a Python 3 compatibility issue when handling two-factor
     authentication.
-  * Clean up setup.py to always use setuptools, not doing so was a 
+  * Clean up setup.py to always use setuptools, not doing so was a
     historical artifact from bygone days.
   * Update the module in charge of handling SSH moduli so it's
-    consistent with OpenSSH behavior re: prime number selection. 
-  * Fix up ~paramiko.ssh_exception.NoValidConnectionsError so it 
+    consistent with OpenSSH behavior re: prime number selection.
+  * Fix up ~paramiko.ssh_exception.NoValidConnectionsError so it
     pickles correctly, and fix a related Python 3 compatibility issue.
-  * Update to jaraco.windows 3.4.1 to fix some errors related to 
-    ctypes on Windows platforms. 
+  * Update to jaraco.windows 3.4.1 to fix some errors related to
+    ctypes on Windows platforms.
   * Annotate some public attributes on ~paramiko.channel.Channel such
     as .closed.
   * Fix logic bug in the SFTP client's callback-calling functionality;
@@ -642,14 +642,14 @@ Sun May  8 21:11:31 UTC 2016 - hpj@urpla.net
     at the end of a transfer.
   * Identify & work around a race condition in the test for handshake
     timeouts, which was causing frequent test failures for a subset of
-    contributors as well as Travis-CI (usually, but not always, 
+    contributors as well as Travis-CI (usually, but not always,
     limited to Python 3.5).
-  * Remove whitespace in our setup.py's install_requires as it 
+  * Remove whitespace in our setup.py's install_requires as it
     triggers occasional bugs in some versions of setuptools.
-  * Strip trailing/leading whitespace from lines when parsing SSH 
+  * Strip trailing/leading whitespace from lines when parsing SSH
     config files - this brings things in line with OpenSSH behavior.
-  * Fix behavior of gssapi-with-mic auth requests so they fail 
-    gracefully (allowing followup via other auth methods) instead of 
+  * Fix behavior of gssapi-with-mic auth requests so they fail
+    gracefully (allowing followup via other auth methods) instead of
     raising an exception.
   * Add missing file-like object methods for ~paramiko.file.BufferedFile
     and ~paramiko.sftp_file.SFTPFile.
@@ -723,7 +723,7 @@ Thu Oct  2 16:33:24 UTC 2014 - andrea@opensuse.org
 - new upsteam version 1.15.1
   * fixed from previous version: Bug] #399: SSH agent forwarding
     would hang due to incorrect values passed into the new window
-    size arguments for Transport 
+    size arguments for Transport
   * detailed changelog available on pramiko website:
     http://paramiko-www.readthedocs.org/en/latest/changelog.html
 
@@ -767,7 +767,7 @@ Fri Apr 18 15:10:24 UTC 2014 - rschweikert@suse.com
 -------------------------------------------------------------------
 Mon Nov 25 23:01:56 UTC 2013 - p.drouand@gmail.com
 
-- Update to version 1.12  
+- Update to version 1.12
   * #152: Add tentative support for ECDSA keys. *This adds the ecdsa
     module as a new dependency of Paramiko.* The module is available at
     [warner/python-ecdsa on Github](https://github.com/warner/python-ecdsa) and
@@ -936,4 +936,4 @@ Wed Sep 24 11:44:21 CEST 2008 - kssingvo@suse.de
 
 - initial version 1.7.4 required from bzr
   based on python-paramiko from openSUSE BuildService:
-  devel:languages:python/openSUSE_Factory 
+  devel:languages:python/openSUSE_Factory
