@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct  5 14:23:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change source URL to not generate a superfluous tarball
+
+-------------------------------------------------------------------
+Mon Oct 02 05:29:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.46.0:
+  * build(deps): bump github.com/open-policy-agent/opa from 0.56.0
+    to 0.57.0 (#873)
+  * chore: Update github.com/spdx/tools-golang to current version
+    (#868)
+  * fix: examples documentation (#869)
+  * fix: cover built-in errors with a flag, suppress unless it's
+    passed (#871)
+  * build(deps): bump golang from 1.21.0-alpine to 1.21.1-alpine
+    (#867)
+  * fix: `--strict` flag when using `conftest verify` (#866)
+  * chore: Update dependencies (#863)
+
+-------------------------------------------------------------------
 Tue Sep 05 14:24:06 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.45.0:

@@ -17,12 +17,12 @@
 
 
 Name:           conftest
-Version:        0.45.0
+Version:        0.46.0
 Release:        0
 Summary:        Tool to write tests against structured configuration data
 License:        Apache-2.0
 URL:            https://github.com/open-policy-agent/conftest
-Source0:        https://github.com/open-policy-agent/conftest/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.18
