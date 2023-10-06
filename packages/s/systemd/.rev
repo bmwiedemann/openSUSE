@@ -6840,4 +6840,20 @@ handle manual pages that consist only of a .so directive such as
   https://github.com/openSUSE/systemd/compare/b6b4e5a8a82d1f13f265a4ef170f2d13be82789a...6ed5b11298005e07509832881a0c5ff1a80bf225</comment>
     <requestid>1113906</requestid>
   </revision>
+  <revision rev="404" vrev="2">
+    <srcmd5>e0487a18c5f6725244427d253be19b1e</srcmd5>
+    <version>254.5</version>
+    <time>1696619559</time>
+    <user>anag+factory</user>
+    <comment>- rpmlintrc: allow systemd-network and systemd-container sub-packages to ship
+  shared libs. These are actually NSS plugins and are not really subject to
+  shlib policy.
+
+- Drop 5000-core-manager-run-generators-directly-when-we-are-in-.patch
+  Since dracut-059+suse.447.g9d1fc722, this workaround is not needed anymore.
+
+  This includes the following bug fixes:
+    - upstream commit 3022916b4d2483452c3ddbbac9ee7c4372b1cb46 (bsc#1215241)</comment>
+    <requestid>1115877</requestid>
+  </revision>
 </revisionlist>

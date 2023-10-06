@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  5 15:04:50 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- rpmlintrc: allow systemd-network and systemd-container sub-packages to ship
+  shared libs. These are actually NSS plugins and are not really subject to
+  shlib policy.
+
+-------------------------------------------------------------------
+Wed Oct  4 09:00:32 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Drop 5000-core-manager-run-generators-directly-when-we-are-in-.patch
+
+  Since dracut-059+suse.447.g9d1fc722, this workaround is not needed anymore.
+
+-------------------------------------------------------------------
 Wed Sep 27 13:14:12 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Import commit 9674bb256205e6c643feadbcccfd1ee8feeee684 (merge of v254.5)
@@ -588,6 +602,10 @@ Mon Mar  6 10:08:33 UTC 2023 - Franck Bui <fbui@suse.com>
 - Upgrade to v253.1 (commit 6c327d74aa0d350482e82a247d7018559699798d)
 
   See https://github.com/openSUSE/systemd/blob/SUSE/v253/NEWS for details.
+
+  This includes the following bug fixes:
+
+    - upstream commit 3022916b4d2483452c3ddbbac9ee7c4372b1cb46 (bsc#1215241)
 
   * Rebased 0001-conf-parser-introduce-early-drop-ins.patch
 

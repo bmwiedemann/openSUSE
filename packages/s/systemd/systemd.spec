@@ -206,7 +206,6 @@ Patch5:         0008-sysv-generator-translate-Required-Start-into-a-Wants.patch
 # very few cases, some stuff might be broken in upstream and need to be fixed or
 # worked around quickly. In these cases, the patches are added temporarily and
 # will be removed as soon as a proper fix will be merged by upstream.
-Patch5000:      5000-core-manager-run-generators-directly-when-we-are-in-.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
