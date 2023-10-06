@@ -1,7 +1,7 @@
 #
 # spec file for package kustomize
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%global provider_prefix sigs.k8s.io/kustomize/kustomize/v4
+%global provider_prefix sigs.k8s.io/kustomize/kustomize/v5
 
 Name:           kustomize
-Version:        4.5.7
+Version:        5.1.1
 Release:        0
 Summary:        Customization of kubernetes YAML configurations
 License:        Apache-2.0
@@ -28,7 +28,7 @@ URL:            https://github.com/kubernetes-sigs/kustomize
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.18
+BuildRequires:  golang(API) = 1.20
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 %{go_provides}

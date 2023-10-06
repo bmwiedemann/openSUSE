@@ -1,22 +1,23 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/kubernetes-sigs/kustomize.git</param>
     <param name="scm">git</param>
-    <param name="revision">kustomize/v4.5.7</param>
+    <param name="revision">kustomize/v5.1.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">kustomize/v(.*)</param>
     <!-- only include the kustomize subdir, otherwise go_modules gets confused -->
     <param name="include">kustomize</param>
   </service>
-  <service name="set_version" mode="disabled">
+  <service name="set_version" mode="manual">
     <param name="basename">kustomize</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service name="go_modules" mode="disabled">
+  <service name="go_modules" mode="manual">
+    <param name="subdir">kustomize</param>
   </service>
 </services>
 

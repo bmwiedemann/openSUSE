@@ -1,4 +1,281 @@
 -------------------------------------------------------------------
+Thu Oct 05 14:15:58 UTC 2023 - Guilherme Macedo <guilherme.macedo@suse.com>
+
+- Update to version 5.1.1:
+  * pin to cmd/config and api
+  * pin to kyaml
+  * Fix typo in help for the create subcommand
+  * Add accumulateResources error tests for local files (#5225)
+  * update latest release version
+  * unpin everything
+  * pintoapi
+  * pin to cmd/config
+  * pin to kyaml
+  * Add test for issue #5131
+  * Add accumulateResources remote file error tests
+  * add Anna to maintainers
+  * fix e2econtainer test
+  * update go 1.20
+  * change: components apply after all generators and transformers applied (#5170)
+  * make test-go-mod
+  * Replace gnostic with gnostic-models
+  * update test add KustomizationFile
+  * fix test case handling and update a function comment
+  * fix breaking examples (#5024)
+  * release cleanup
+  * pin to api v0.13.4
+  * pin to kyaml and cmd/config released versions
+  * Revert "Fix using same helm chart with different versions (#4999)"
+  * unpin everything
+  * pin to api 0.13.3
+  * pin to cmd/config v0.11.2
+  * pin to kyaml v0.14.2
+  * Move inactive contributors to emeritus
+  * perf: eliminate unnecessary RNode creation
+  * Fix using same helm chart with different versions (#4999)
+  * Add DeepCopy for ResourceMeta and ObjectMeta
+  * Only override name of core api version
+  * Regression test
+  * Add licence and make script use current year
+  * Add a rich example of fn framework for abstraction
+  * fix using reflect.DeepEqual for check kustomization is empty
+  * add check that kustomization is empty
+  * docker build locally because gcr.io/kustomize-functions/e2econtainerconfig doesn't exist in the public
+  * use test helpers
+  * add another resource for making sure an existing resource isn't affeced by a generator
+  * prevent all uses of YAML aliases from being overwritten by a transformer (#5096)
+  * Only strip surrounding quotes if there are at least two characters.
+  * re-enabled TestFnContainerGenerator with enable-gcp-services
+  * re-enabled TestFnContainerTransformer with e2econtainerconfig container
+  * emove the kyaml/openapi/kubernetesapi/v1_21_2/swagger.pb (#5077)
+  * use enable-all on golangci-lint
+  * Don't swallow helm execution errors
+  * Fix unused error value
+  * Fix lint task in CI
+  * Back to development mode; unpin the modules
+  * Update api to v0.13.2
+  * Update cmd/config to v0.11.1
+  * Update kyaml to v0.14.1
+  * Changes from local test run
+  * Revert strict decoding of Kustomization due to regression in anchor handling (#5073)
+  * perf: Intersection: Avoid callid AllIds inside inner loop
+  * skip unrelevant lint
+  * Revert "use enable-all on golangci-lint"
+  * use enable-all on golangci-lint
+  * update golangci-lint to 1.51.2
+  * Add the test cases for check the file when edit add command
+  * Bump golang.org/x/net in /functions/examples/application-cr/image
+  * Bump golang.org/x/net from 0.4.0 to 0.7.0 in /cmd/depprobcheck
+  * Bump golang.org/x/crypto in /cmd/depprobcheck
+  * Bump golang.org/x/crypto in /functions/examples/application-cr/image
+  * perf: optimize Gvk.ApiVersion()
+  * Remove Log Assignment to Stdout
+  * fix tests
+  * fix error handling and test
+  * Back to development mode; unpin the modules
+  * Update all modules to latest releases
+  * Fix constant reference in instructions
+  * Revert plugin exclusion to name sanity check
+  * Update releasing/README.md
+  * be error when no path match
+  * Fix lint errors
+  * Bespoke mod edits no longer needed if gorepomod pins all modules
+  * Restore previous test-go-mod and commit changes
+  * Improve error message and fix typo in iampolicygenerator module name
+  * add GitHub token to install_kustomize.sh
+  * Update example targets
+  * Allow gorepomod to update plugin mod files
+  * Remove leftover replace statements
+  * Update releasing instructions
+  * Update api to v0.13.1
+  * Fix regression with scp-style urls with only one path element
+  * Bump kustomize module to v5
+  * Allow cloud build to authenticate to gh when generating changelog
+  * Update cmd/config to v0.11.0
+  * Update kyaml in the secondary modules
+  * Update kyaml to v0.14.0
+  * Don't have empty string when no auth info
+  * Allow authenticated Github use in changelog script and improve error messages
+  * Update Versioning to Improve Output (#5000)
+  * Localize helm additionValuesFiles (#5013)
+  * support for more helm template args (#4926)
+  * Add localize command handle (#4959)
+  * make TestResourcesRepoNotFile even less specific
+  * Run test-go-mod unpinned (#5011)
+  * Expose path to localize destination
+  * Localize HelmChartInflationGenerator (#5007)
+  * Warn against partial releases
+  * Localize ConfigMapGenerator, SecretGenerator
+  * fix(kyaml): add lock for schema related globals
+  * Make TestResourcesRepoNotFile Less Specific
+  * Localize helm fields (#4978)
+  * Do not use filepath.Separator for splitting URLs
+  * remove redundant type meta in tests
+  * Fix master
+  * fix(docs): update link to plugin doc
+  * Improve panic error message to include the parse error.
+  * repospec: support ssh urls with ssh certificates
+  * Remove manipulation of .git suffix, which is just a conventional part of the directory name
+  * Localize patch, ReplacementTransformer (#4943)
+  * Refactor parseGitURL to consolidate code paths, improve error handling
+  * Bump k8s.io/kube-openapi to remove archived dependency
+  * remove direct dependency on github/pkg/errors (#4970)
+  * Add uncommitted plugin change and missing makefile dep
+  * Uncommitted updated from running go mod tidy and go work sync
+  * Remove Inventory field from Kustomization
+  * Expose localizer test helpers
+  * Better SCP colon-must-be-after-slash test
+  * Remove unused param
+  * Add test for behaviour of scp-like non-github that incorrectly uses slash
+  * do not validate against http+usernames after all
+  * Allow file paths that look like usernames
+  * Deprecate git:: stripping
+  * Naming changes from rebase
+  * Make Github less special
+  * Add test case from github docs
+  * Show change vs master on accepted but invalid ssh-like urls
+  * Address feedback on correctness of SCP/username validations
+  * Stop handling mysterious gh: prefix in remote URLs
+  * Review feedback
+  * Additional repospec refactoring
+  * Refactor parseHostSpec
+  * Rename Orgrepo and Path (#4922)
+  * fix: all module net and text dependent package CVE-2022-41717 and CVE-2022-32149 vulnerabilities
+  * Update sigs.k8s.io/yaml to 1.3.0
+  * Run go mod tidy on all modules before update
+  * improve error messages
+  * Update api/kv/kv.go
+  * Remove Functionality that Pulls Env Variables from Empty Keys
+  * Localize resources (#4912)
+  * feat: Allow paths starting with slash
+  * Localize legacy fields
+  * Implement locRootPath (#4909)
+  * Localize fields: openapi, configurations, crds (#4907)
+  * fix: correct visitMappingNodeFields
+  * perf: optimize RNode GetAnnotations and GetLabels
+  * refactor: single function to visit mapping node content
+  * Localize PatchTransformer, PatchJson6902Transformer (#4920)
+  * remove deprecated cfg and fn commands (#4930)
+  * refactor Unmarshal Kustomization struct code
+  * remove FixKustomizationPreUnmarshalling
+  * Load legacy kustomization fields for `localize` (#4918)
+  * Localize patchesJson6902, patchesStrategicMerge, replacements (#4904)
+  * resource/api: update test to use a more specific kustomization
+  * docs: Add documentation for namespace transformer
+  * Set go version on github actions from gowork file
+  * Allow name suffix transformer configuration to be overridden
+  * api/resource: add new test for inline options.
+  * api/resource: retain disableNameSuffixHash on merge.
+  * drop support for legacy patches (#4911)
+  * HelmChartInflationGenerator: split on yaml document end markers
+  * Wildcard support for creation in ReplacementTransformer (#4886)
+  * Replacements should throw errors on invalid targets (#4789)
+  * Address peer review
+  * Localize configMapGenerator, secretGenerator fields (#4894)
+  * Make ordering configurable (#4019)
+  * Refactor 7 return values in parseGitUrl to RepoSpec(issue 4866, Task1) (#4900)
+  * Localize components (#4867)
+  * Refactor localizer code
+  * Fix pluginator incompatibility with nolint lines
+  * remove PSP as v1.25 remove it
+  * Remove local-only resources at the last minute
+  * Use Github forms for issue templates
+  * Load built-in plugins for `kustomize localize` (#4869)
+  * Calculate `localize`d path for remote file (#4878)
+  * merge2: preserve explicitly set null values
+  * install_kustomize: support linux/aarch64, with fallback to old behavior (#4619)
+  * Get rid of statik and fix failing tests
+  * Prevent repoSpec path from exiting repo
+  * Add test ensuring user configuration overrides default configuration
+  * Update to Go 1.19
+  * Regenerate token and encrypt without newline
+  * Third try new token without newline
+  * New token, hopefully without trailing whitespace error
+  * Implement `localizeFile()` skeleton for patches (#4865)
+  * Rotate token for cloud build
+  * Improve `localizer` readability (#4860)
+  * chore: upgrade helm version
+  * Fix `RepoSpec` query extraction (#4863)
+  * Implement `localizer` skeleton for `kustomize localize` (#4859)
+  * Improve readability of `ifc.Loader`'s `Repo()` method (#4857)
+  * Address TODO in PR #4652 (#4856)
+  * add koba1t to reviews
+  * fix_failed_lint_on_master
+  * e2econtainerconfig test failure
+  * update dependencies of libs using go workspace mode
+  * Update golangci-lint version (1.49.0 -> 1.50.1) and enable linters dupword and testableexamples
+  * fix `TestRemoteLoad_LocalProtocol` (#4844)
+  * proposal v2.1
+  * proposal v2
+  * Fix krm exec function working dir
+  * Test transformers krm exec function
+  * update kyaml's go.mod and go.sum
+  * update kyaml's dependency swag to v0.22.3
+  * update actions/checkout
+  * Use fewer labels to ease reading
+  * Use WrapPrefixf
+  * Update api/krusty/inlinelabels_test.go
+  * Add support for helm --no-hooks flag
+  * feat: Wrap error
+  * kyaml/yaml: preallocate memory
+  * kyaml/sets: preallocate memory
+  * Add myself to reviewers list
+  * migrate site content: contributing docs (#4709)
+  * convert PrevIds to use apiVersion instead meta
+  * use %w to format errors
+  * use fmt instead of errors
+  * error wraps for linter
+  * add tests for other kinds
+  * separate template specific field specs and use in includeTemplates
+  * fix testcases on runfn_test.go
+  * update golangci-lint v1.49.0
+  * create template/metadata in includeTemplates if not present
+  * add test for resources with no template
+  * Rewrite remoteload_test  integration tests (#4783)
+  * grammar: replace all occurrences of "the the" with "the"
+  * Fix flaky
+  * add newline for fix.go
+  * fix test with t.Run()
+  * Wrap error in exported func
+  * Fix redundant rnode metadata parsing
+  * fix: handle error of remove annotations
+  * fix tests
+  * fix error handling
+  * be build fail when parse failed to FunctionSpec
+  * add a warning to missing field in FunctionSpec
+  * Emit a warning when deprecated fields are used
+  * fix yaml in test
+  * Reinstate #4652 without url-related code
+  * update checker code in patchStrategicMerge
+  * add testcases
+  * expand and clean up repospec_test
+  * Revert "Load and calculate Destination of files for `kustomize localize` (#4652)"
+  * run openapi tests with other krusty tests
+  * Enable SSH tests
+  * Fix broken links
+  * Load and calculate Destination of files for `kustomize localize` (#4652)
+  * Internalize forked code
+  * fix leading newline issue
+  * tests for compactSeqIndent
+  * add defaultSeqIndent method
+  * compact sequence indentation option
+  * Internal copy of go-yaml at f6f7691b1fdeb513f56608cd2c32c51f8194bf51
+  * Commit go.sum updates
+  * Wrap an error and remove a nolint
+  * Improve error message when namespace transformer is given invalid fieldspecs
+  * Getting started guide part 2 (#4748)
+  * Fix other linters on modified lines
+  * Stop using deprecated ioutil functions
+  * Revert "[address #4717] create template/metadata when using includeTemplates if not present"
+  * create template/metadata in includeTemplates if not present
+  * refactor edit fix test cases
+  * support file path patch to patchesStrategicMerge
+  * add edit-fix for patchesStrategicMerge to patches
+  * update openapi scripts to fetch protobuffer schemas (#4582)
+  * Remove dots from short descriptions
+  * docs(examples): Fix URL to installation instructions in examples
+
+-------------------------------------------------------------------
 Tue Dec 13 20:30:28 UTC 2022 - Robert Munteanu <rombert@apache.org>
 
 - Add completions 
