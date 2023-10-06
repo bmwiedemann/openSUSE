@@ -925,4 +925,16 @@
     <comment></comment>
     <requestid>1114284</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>68b92c0ba4f0d23f34dddb054d60339d</srcmd5>
+    <version>4.14.1</version>
+    <time>1696619500</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.14.1:
+  Build system: Merge libshadow and libmisc into a single libshadow.
+  This fixes problems in the linker, which were reported at least
+  in Gentoo. #791
+- Add Alejandro Colomar (new stable branch maintainer) to shadow.keyring</comment>
+    <requestid>1115994</requestid>
+  </revision>
 </revisionlist>

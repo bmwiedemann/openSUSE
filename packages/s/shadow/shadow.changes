@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  6 08:32:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.14.1:
+  Build system: Merge libshadow and libmisc into a single libshadow.
+  This fixes problems in the linker, which were reported at least
+  in Gentoo. #791
+- Add Alejandro Colomar (new stable branch maintainer) to shadow.keyring
+
+-------------------------------------------------------------------
 Tue Sep 26 13:20:59 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Add shadow-4.14.0-selinux-labels.patch:
