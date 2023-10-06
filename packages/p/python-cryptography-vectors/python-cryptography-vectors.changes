@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  5 09:23:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 41.0.4:
+  * Update test vectors to match python-cryptography 41.0.4
+
+-------------------------------------------------------------------
 Tue Aug  8 10:50:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 41.0.3:
@@ -14,7 +20,7 @@ Tue Jul 11 13:37:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Mon Jun 19 20:09:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 41.0.1 (bsc#1212568):
-  * Update test vectors to match python-cryptography 41.0.1 
+  * Update test vectors to match python-cryptography 41.0.1
 
 -------------------------------------------------------------------
 Fri Apr 21 12:23:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -24,7 +30,7 @@ Fri Apr 21 12:23:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sat Apr 15 10:18:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 40.0.2: 
+- update to 40.0.2:
   * Update test vectors to match python-cryptography 40.0.2
 
 -------------------------------------------------------------------
@@ -42,7 +48,7 @@ Sun Mar 26 19:12:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Tue Mar  7 07:32:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 39.0.2:
-  * Update test vectors to match python-cryptography 39.0.2 
+  * Update test vectors to match python-cryptography 39.0.2
 
 -------------------------------------------------------------------
 Thu Feb  9 09:52:29 UTC 2023 - Matej Cepl <mcepl@suse.com>
@@ -54,12 +60,12 @@ Thu Feb  9 09:52:29 UTC 2023 - Matej Cepl <mcepl@suse.com>
 Mon Jan  2 19:34:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 39.0.0
-  * Update test vectors to match python-cryptography 39.0.0 
+  * Update test vectors to match python-cryptography 39.0.0
 
 -------------------------------------------------------------------
 Wed Dec  7 16:49:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 38.0.4 
+- Update to 38.0.4
   * Fixed compilation when using LibreSSL 3.6.0.
   * Fixed error when using py2app to build an application with a cryptography dependency.
 
@@ -74,7 +80,7 @@ Thu Nov  3 19:17:35 UTC 2022 - Matej Cepl <mcepl@suse.com>
 -------------------------------------------------------------------
 Thu Oct 27 22:38:19 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 38.0.2: 
+- Update to 38.0.2:
   * This release was subsequently yanked from PyPI due to a regression in OpenSSL.
   * Updated Windows, macOS, and Linux wheels to be compiled with OpenSSL 3.0.6.
 
@@ -168,7 +174,7 @@ Sun Feb  7 20:09:32 UTC 2021 - Michael Ströder <michael@stroeder.com>
 Sun Dec 20 09:29:45 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.1:
-  * updated vectors for cryptography 3.3.1 
+  * updated vectors for cryptography 3.3.1
 
 -------------------------------------------------------------------
 Wed Dec  9 11:59:25 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
@@ -192,7 +198,7 @@ Mon Oct 26 11:37:44 UTC 2020 - Michael Ströder <michael@stroeder.com>
 Mon Sep 28 10:47:08 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.1.1:
-  * updated vectors for cryptography 3.1.1 
+  * updated vectors for cryptography 3.1.1
 
 -------------------------------------------------------------------
 Fri Sep 18 11:06:01 UTC 2020 - Dirk Mueller <dmueller@suse.com>
