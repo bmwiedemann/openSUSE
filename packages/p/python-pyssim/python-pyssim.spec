@@ -18,7 +18,7 @@
 
 %global skip_python36 1
 Name:           python-pyssim
-Version:        0.5
+Version:        0.6
 Release:        0
 Summary:        Structured Similarity Image Metric (SSIM)
 License:        MIT
@@ -26,8 +26,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jterrace/pyssim
 Source:         https://files.pythonhosted.org/packages/source/p/pyssim/pyssim-%{version}.tar.gz
 Patch0:         Pillow-imports.patch
-# PATCH-FIX-UPSTREAM numpy120.patch gh#jterrace/pyssim#44
-Patch1:         numpy120.patch
+# PATCH-FIX-UPSTREAM https://github.com/jterrace/pyssim/commit/db4296c12ca9c027eb9cd61b52195a78dfcc6711 Replace Image.ANTIALIAS with Image.LANCZOS
+Patch1:         pillow10.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

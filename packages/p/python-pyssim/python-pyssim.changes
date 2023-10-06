@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  5 08:53:32 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.6
+  * support numpy 1.20
+- Drop upstreamed numpy120.patch
+- add upstream pillow10.patch
+
+-------------------------------------------------------------------
 Mon Mar  6 11:17:51 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add numpy120.patch to support numpy 1.20 gh#jterrace/pyssim#44
