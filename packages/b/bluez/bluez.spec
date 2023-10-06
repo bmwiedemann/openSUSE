@@ -383,6 +383,7 @@ done
 %license COPYING
 %{_bindir}/bluemoon
 %{_bindir}/btattach
+%{_bindir}/btmgmt
 %{_bindir}/l2ping
 %{_bindir}/hex2hcd
 %{_bindir}/isotest
@@ -473,7 +474,6 @@ done
 %{_bindir}/l2test
 %{_bindir}/rctest
 %{_bindir}/btgatt-client
-%{_bindir}/btmgmt
 %dir %{_libdir}/bluez
 %{_libdir}/bluez/test
 

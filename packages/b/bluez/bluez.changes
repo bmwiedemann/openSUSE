@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  4 09:51:22 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- Moved btmgmt to main rpm of bluez. (jsc#PED-6216)
+
+-------------------------------------------------------------------
 Tue Aug 29 05:37:54 UTC 2023 - Timo Jyrinki <tjyrinki@suse.com>
 
 - update to 5.69
