@@ -261,4 +261,14 @@
 </comment>
     <requestid>1114163</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d9a546c50d4fccfa120bb7a090c9e5c0</srcmd5>
+    <version>117.0.5938.149</version>
+    <time>1696619572</time>
+    <user>anag+factory</user>
+    <comment>- ungoogled-chromium 117.0.5938.149:
+  * CVE-2023-5346: Type Confusion in V8 (boo#1215924)
+</comment>
+    <requestid>1115837</requestid>
+  </revision>
 </revisionlist>

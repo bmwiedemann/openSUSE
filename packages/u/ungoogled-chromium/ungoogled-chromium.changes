@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  5 11:30:28 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- ungoogled-chromium 117.0.5938.149:
+  * CVE-2023-5346: Type Confusion in V8 (boo#1215924)
+
+-------------------------------------------------------------------
 Thu Sep 28 22:22:34 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
 
 - ungoogled-chromium 117.0.5938.132 (boo#1215776):
