@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct  5 09:49:54 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix reading files from btrfs with "implicit" holes:
+  * 0001-fs-btrfs-Zero-file-data-not-backed-by-extents.patch
+
+-------------------------------------------------------------------
+Mon Oct  2 14:30:49 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update the TPM 2.0 patches to support more RSA and ECC algorithms
+  * 0002-tpm2-Add-TPM-Software-Stack-TSS.patch
+  * 0003-protectors-Add-TPM2-Key-Protector.patch
+  * 0005-util-grub-protect-Add-new-tool.patch
+
+-------------------------------------------------------------------
+Mon Oct  2 08:11:56 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Remove build require for gcc-32bit, target platform didn't rely on libgcc
+  function shipped with compiler but rather using functions supplied in grub
+  directly.
+
+-------------------------------------------------------------------
+Fri Sep 29 08:38:13 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add BuildIgnore to break cycle with the branding package
+
+-------------------------------------------------------------------
 Wed Sep 27 03:37:10 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Only build with fde-tpm-helper-rpm-macros for the architectures

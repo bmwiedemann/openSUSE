@@ -1,7 +1,7 @@
-From ab730e5bc42bae528da62178680284efdd64278e Mon Sep 17 00:00:00 2001
+From 0ecf5ff31a89e061aef5e40ee68f8828e7b5eb81 Mon Sep 17 00:00:00 2001
 From: Hernan Gatta <hegatta@linux.microsoft.com>
 Date: Tue, 1 Feb 2022 05:02:55 -0800
-Subject: [PATCH 3/5] protectors: Add TPM2 Key Protector
+Subject: [PATCH v6 10/20] protectors: Add TPM2 Key Protector
 
 The TPM2 key protector is a module that enables the automatic retrieval
 of a fully-encrypted disk's unlocking key from a TPM 2.0.
@@ -77,18 +77,18 @@ command (modifications to this command are in a different patch).
 For instance, to unseal the raw sealed key file:
 
 tpm2_key_protector_init --keyfile=(hd0,gpt1)/efi/grub2/sealed-1.key
-cryptomount DISK1 -P tpm2
+cryptomount -u <PART1_UUID> -P tpm2
 
 tpm2_key_protector_init --keyfile=(hd0,gpt1)/efi/grub2/sealed-2.key --pcrs=7,11
-cryptomount DISK2 -P tpm2
+cryptomount -u <PART2_UUID> -P tpm2
 
 Or, to unseal the TPM 2.0 Key file:
 
 tpm2_key_protector_init --tpm2key=(hd0,gpt1)/efi/grub2/sealed-1.tpm
-cryptomount DISK1 -P tpm2
+cryptomount -u <PART1_UUID> -P tpm2
 
 tpm2_key_protector_init --tpm2key=(hd0,gpt1)/efi/grub2/sealed-2.tpm --pcrs=7,11
-cryptomount DISK2 -P tpm2
+cryptomount -u <PART2_UUID> -P tpm2
 
 If a user does not initialize the key protector and attempts to use it
 anyway, the protector returns an error.
@@ -117,14 +117,14 @@ Signed-off-by: Hernan Gatta <hegatta@linux.microsoft.com>
 Signed-off-by: Gary Lin <glin@suse.com>
 ---
  grub-core/Makefile.core.def       |   13 +
- grub-core/tpm2/args.c             |  131 ++++
- grub-core/tpm2/module.c           | 1033 +++++++++++++++++++++++++++++
+ grub-core/tpm2/args.c             |  177 +++++
+ grub-core/tpm2/module.c           | 1040 +++++++++++++++++++++++++++++
  grub-core/tpm2/tpm2key.asn        |   31 +
  grub-core/tpm2/tpm2key.c          |  440 ++++++++++++
  grub-core/tpm2/tpm2key_asn1_tab.c |   41 ++
- include/grub/tpm2/internal/args.h |   39 ++
+ include/grub/tpm2/internal/args.h |   41 ++
  include/grub/tpm2/tpm2key.h       |   83 +++
- 8 files changed, 1811 insertions(+)
+ 8 files changed, 1866 insertions(+)
  create mode 100644 grub-core/tpm2/args.c
  create mode 100644 grub-core/tpm2/module.c
  create mode 100644 grub-core/tpm2/tpm2key.asn
@@ -133,12 +133,15 @@ Signed-off-by: Gary Lin <glin@suse.com>
  create mode 100644 include/grub/tpm2/internal/args.h
  create mode 100644 include/grub/tpm2/tpm2key.h
 
+diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
+index 5831d4265..38571119e 100644
 --- a/grub-core/Makefile.core.def
 +++ b/grub-core/Makefile.core.def
-@@ -2599,6 +2599,19 @@
+@@ -2553,6 +2553,19 @@ module = {
+   enable = efi;
  };
  
- module = {
++module = {
 +  name = tpm2;
 +  common = tpm2/args.c;
 +  common = tpm2/buffer.c;
@@ -151,13 +154,15 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +  enable = efi;
 +};
 +
-+module = {
+ module = {
    name = tr;
    common = commands/tr.c;
- };
+diff --git a/grub-core/tpm2/args.c b/grub-core/tpm2/args.c
+new file mode 100644
+index 000000000..274f4fef0
 --- /dev/null
 +++ b/grub-core/tpm2/args.c
-@@ -0,0 +1,131 @@
+@@ -0,0 +1,177 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
@@ -237,12 +242,58 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +}
 +
 +grub_err_t
-+grub_tpm2_protector_parse_asymmetric (const char *value, TPM_ALG_ID *asymmetric)
++grub_tpm2_protector_parse_asymmetric (const char *value,
++				      TPM_ALG_ID *asymmetric,
++				      TPM_KEY_BITS *rsa_bits,
++				      TPM_ECC_CURVE *ecc_curve)
 +{
-+  if (grub_strcasecmp (value, "ECC") == 0)
-+    *asymmetric = TPM_ALG_ECC;
-+  else if (grub_strcasecmp (value, "RSA") == 0)
-+    *asymmetric = TPM_ALG_RSA;
++  if (grub_strcasecmp (value, "ECC") == 0 ||
++      grub_strcasecmp (value, "ECC_NIST_P256") == 0)
++    {
++      *asymmetric = TPM_ALG_ECC;
++      *ecc_curve = TPM_ECC_NIST_P256;
++    }
++  else if (grub_strcasecmp (value, "RSA") == 0 ||
++	   grub_strcasecmp (value, "RSA2048") == 0)
++    {
++      *asymmetric = TPM_ALG_RSA;
++      *rsa_bits = 2048;
++    }
++  else if (grub_strcasecmp (value, "RSA3072") == 0)
++    {
++      *asymmetric = TPM_ALG_RSA;
++      *rsa_bits = 3072;
++    }
++  else if (grub_strcasecmp (value, "RSA4096") == 0)
++    {
++      *asymmetric = TPM_ALG_RSA;
++      *rsa_bits = 4096;
++    }
++  else if (grub_strcasecmp (value, "ECC_NIST_P384") == 0)
++    {
++      *asymmetric = TPM_ALG_ECC;
++      *ecc_curve = TPM_ECC_NIST_P384;
++    }
++  else if (grub_strcasecmp (value, "ECC_NIST_P521") == 0)
++    {
++      *asymmetric = TPM_ALG_ECC;
++      *ecc_curve = TPM_ECC_NIST_P521;
++    }
++  else if (grub_strcasecmp (value, "ECC_BN_P256") == 0)
++    {
++      *asymmetric = TPM_ALG_ECC;
++      *ecc_curve = TPM_ECC_BN_P256;
++    }
++  else if (grub_strcasecmp (value, "ECC_BN_P638") == 0)
++    {
++      *asymmetric = TPM_ALG_ECC;
++      *ecc_curve = TPM_ECC_BN_P638;
++    }
++  else if (grub_strcasecmp (value, "ECC_SM2_P256") == 0)
++    {
++      *asymmetric = TPM_ALG_ECC;
++      *ecc_curve = TPM_ECC_SM2_P256;
++    }
 +  else
 +    return grub_error (GRUB_ERR_OUT_OF_RANGE,
 +		       N_("Value '%s' is not a valid asymmetric key type"),
@@ -289,9 +340,12 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +
 +  return GRUB_ERR_NONE;
 +}
+diff --git a/grub-core/tpm2/module.c b/grub-core/tpm2/module.c
+new file mode 100644
+index 000000000..9605ddbc7
 --- /dev/null
 +++ b/grub-core/tpm2/module.c
-@@ -0,0 +1,1033 @@
+@@ -0,0 +1,1040 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
@@ -352,6 +406,8 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +  grub_uint8_t pcrs[TPM_MAX_PCRS];
 +  grub_uint8_t pcr_count;
 +  TPM_ALG_ID asymmetric;
++  TPM_KEY_BITS rsa_bits;
++  TPM_ECC_CURVE ecc_curve;
 +  TPM_ALG_ID bank;
 +  const char *tpm2key;
 +  const char *keyfile;
@@ -390,7 +446,7 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +      .type     = ARG_TYPE_STRING,
 +      .doc      =
 +	N_("Bank of PCRs used to authorize key release: "
-+	   "SHA1, SHA256 (default), or SHA384."),
++	   "SHA1, SHA256 (default), SHA384 or SHA512."),
 +    },
 +    /* SRK-mode options */
 +    {
@@ -431,7 +487,10 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +      .arg      = NULL,
 +      .type     = ARG_TYPE_STRING,
 +      .doc      =
-+	N_("In SRK mode, the type of SRK: RSA (default) or ECC."),
++	N_("In SRK mode, the type of SRK: RSA (RSA2048), RSA3072, "
++	   "RSA4096, ECC (ECC_NIST_P256), ECC_NIST_P384, "
++	   "ECC_NIST_P521, ECC_BN_P256, ECC_BN_P638, and ECC_SM2_P256. "
++	   "(default is RSA2048)"),
 +    },
 +    /* NV Index-mode options */
 +    {
@@ -696,7 +755,7 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +      inPublic.publicArea.parameters.rsaDetail.symmetric.keyBits.aes = 128;
 +      inPublic.publicArea.parameters.rsaDetail.symmetric.mode.aes = TPM_ALG_CFB;
 +      inPublic.publicArea.parameters.rsaDetail.scheme.scheme = TPM_ALG_NULL;
-+      inPublic.publicArea.parameters.rsaDetail.keyBits = 2048;
++      inPublic.publicArea.parameters.rsaDetail.keyBits = ctx->rsa_bits;
 +      inPublic.publicArea.parameters.rsaDetail.exponent = 0;
 +    }
 +  else if (ctx->asymmetric == TPM_ALG_ECC)
@@ -705,7 +764,7 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +      inPublic.publicArea.parameters.eccDetail.symmetric.keyBits.aes = 128;
 +      inPublic.publicArea.parameters.eccDetail.symmetric.mode.aes = TPM_ALG_CFB;
 +      inPublic.publicArea.parameters.eccDetail.scheme.scheme = TPM_ALG_NULL;
-+      inPublic.publicArea.parameters.eccDetail.curveID = TPM_ECC_NIST_P256;
++      inPublic.publicArea.parameters.eccDetail.curveID = ctx->ecc_curve;
 +      inPublic.publicArea.parameters.eccDetail.kdf.scheme = TPM_ALG_NULL;
 +    }
 +  else
@@ -977,10 +1036,7 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +  /* Get the SRK to unseal the sealed key */
 +  err = grub_tpm2_protector_srk_get (ctx, parent_handle, &srk_handle);
 +  if (err != GRUB_ERR_NONE)
-+    {
-+      grub_error (err, N_("Failed to retrieve the SRK"));
-+      goto exit1;
-+    }
++    goto exit1;
 +
 +  /* Load the sealed key and associate it with the SRK */
 +  authCmd.sessionHandle = TPM_RS_PW;
@@ -1148,7 +1204,10 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +	ctx->srk = TPM2_SRK_HANDLE;
 +
 +      if (!ctx->asymmetric)
-+	ctx->asymmetric = TPM_ALG_RSA;
++        {
++	  ctx->asymmetric = TPM_ALG_RSA;
++	  ctx->rsa_bits = 2048;
++        }
 +    }
 +
 +  return GRUB_ERR_NONE;
@@ -1252,7 +1311,9 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +  if (state[OPTION_ASYMMETRIC].set)  /* asymmetric */
 +    {
 +      err = grub_tpm2_protector_parse_asymmetric (state[OPTION_ASYMMETRIC].arg,
-+						  &grub_tpm2_protector_ctx.asymmetric);
++						  &grub_tpm2_protector_ctx.asymmetric,
++						  &grub_tpm2_protector_ctx.rsa_bits,
++						  &grub_tpm2_protector_ctx.ecc_curve);
 +      if (err != GRUB_ERR_NONE)
 +	return err;
 +    }
@@ -1325,6 +1386,9 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +  grub_unregister_extcmd (grub_tpm2_protector_clear_cmd);
 +  grub_unregister_extcmd (grub_tpm2_protector_init_cmd);
 +}
+diff --git a/grub-core/tpm2/tpm2key.asn b/grub-core/tpm2/tpm2key.asn
+new file mode 100644
+index 000000000..e3b6a03e0
 --- /dev/null
 +++ b/grub-core/tpm2/tpm2key.asn
 @@ -0,0 +1,31 @@
@@ -1359,6 +1423,9 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +}
 +
 +END
+diff --git a/grub-core/tpm2/tpm2key.c b/grub-core/tpm2/tpm2key.c
+new file mode 100644
+index 000000000..62f6d865b
 --- /dev/null
 +++ b/grub-core/tpm2/tpm2key.c
 @@ -0,0 +1,440 @@
@@ -1802,6 +1869,9 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +      grub_free (authpol);
 +    }
 +}
+diff --git a/grub-core/tpm2/tpm2key_asn1_tab.c b/grub-core/tpm2/tpm2key_asn1_tab.c
+new file mode 100644
+index 000000000..551fc46ec
 --- /dev/null
 +++ b/grub-core/tpm2/tpm2key_asn1_tab.c
 @@ -0,0 +1,41 @@
@@ -1846,9 +1916,12 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +  { "privkey", 7, NULL },
 +  { NULL, 0, NULL }
 +};
+diff --git a/include/grub/tpm2/internal/args.h b/include/grub/tpm2/internal/args.h
+new file mode 100644
+index 000000000..58d13e031
 --- /dev/null
 +++ b/include/grub/tpm2/internal/args.h
-@@ -0,0 +1,39 @@
+@@ -0,0 +1,41 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
@@ -1879,7 +1952,9 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +
 +grub_err_t
 +grub_tpm2_protector_parse_asymmetric (const char *value,
-+				      TPM_ALG_ID *asymmetric);
++				      TPM_ALG_ID *asymmetric,
++				      TPM_KEY_BITS *rsa_bits,
++				      TPM_ECC_CURVE *ecc_curve);
 +
 +grub_err_t
 +grub_tpm2_protector_parse_bank (const char *value, TPM_ALG_ID *bank);
@@ -1888,6 +1963,9 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +grub_tpm2_protector_parse_tpm_handle (const char *value, TPM_HANDLE *handle);
 +
 +#endif /* ! GRUB_TPM2_INTERNAL_ARGS_HEADER */
+diff --git a/include/grub/tpm2/tpm2key.h b/include/grub/tpm2/tpm2key.h
+new file mode 100644
+index 000000000..df46203e3
 --- /dev/null
 +++ b/include/grub/tpm2/tpm2key.h
 @@ -0,0 +1,83 @@
@@ -1974,3 +2052,6 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +grub_tpm2key_free_authpolicy_seq (tpm2key_authpolicy_t authpol_seq);
 +
 +#endif /* GRUB_TPM2_TPM2KEY_HEADER */
+-- 
+2.35.3
+

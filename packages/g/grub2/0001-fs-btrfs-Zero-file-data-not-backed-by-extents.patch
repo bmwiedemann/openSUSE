@@ -1,0 +1,33 @@
+From f903b9a9adb64e733e581771d2a24efae7fbe529 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Thu, 5 Oct 2023 11:02:25 +0200
+Subject: [PATCH] fs/btrfs: Zero file data not backed by extents
+
+Implicit holes in file data need to be zeroed explicitly, instead of
+just leaving the data in the buffer uninitialized.
+
+This led to kernels randomly failing to boot in "fun" ways when loaded
+from btrfs with the no_holes feature enabled, because large blocks of
+zeros in the kernel file contained random data instead.
+
+Signed-off-by: Fabian Vogt <fvogt@suse.de>
+---
+ grub-core/fs/btrfs.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/grub-core/fs/btrfs.c b/grub-core/fs/btrfs.c
+index 19bff4610..ba0c58352 100644
+--- a/grub-core/fs/btrfs.c
++++ b/grub-core/fs/btrfs.c
+@@ -1603,6 +1603,8 @@ grub_btrfs_extent_read (struct grub_btrfs_data *data,
+ 	      csize = grub_le_to_cpu64 (key_out.offset) - pos;
+ 	      if (csize > len)
+ 		      csize = len;
++
++	      grub_memset (buf, 0, csize);
+ 	      buf += csize;
+ 	      pos += csize;
+ 	      len -= csize;
+-- 
+2.42.0
+

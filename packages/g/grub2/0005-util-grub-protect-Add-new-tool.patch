@@ -1,7 +1,7 @@
-From 38ebade1341ee99593568d97e0300f5b6aa626f3 Mon Sep 17 00:00:00 2001
+From e5a1c5fe660e74d99d33d7d28914e968077ae603 Mon Sep 17 00:00:00 2001
 From: Hernan Gatta <hegatta@linux.microsoft.com>
 Date: Tue, 1 Feb 2022 05:02:57 -0800
-Subject: [PATCH 5/5] util/grub-protect: Add new tool
+Subject: [PATCH v6 12/20] util/grub-protect: Add new tool
 
 To utilize the key protectors framework, there must be a way to protect
 full-disk encryption keys in the first place. The grub-protect tool
@@ -15,8 +15,8 @@ a new LUKS key slot for this key. Then, the user invokes the grub-protect
 tool to seal this key file to a set of PCRs using the system's TPM 2.0.
 The resulting sealed key file is stored in an unencrypted partition such
 as the EFI System Partition (ESP) so that GRUB may read it. The user also
-ensures the cryptomount command is included in GRUB's boot script and
-that it carries the requisite key protector (-P) parameter.
+has to ensure the cryptomount command is included in GRUB's boot script
+and that it carries the requisite key protector (-P) parameter.
 
 Sample usage:
 
@@ -41,14 +41,12 @@ $ sudo grub-protect --action=add \
 Then, in the boot script, for TPM 2.0 Key File:
 
 tpm2_key_protector_init --tpm2key=(hd0,gpt1)/boot/grub2/sealed.tpm
-cryptomount -u b20f95d0834842bc9197bd78b36732f8 -P tpm2
+cryptomount -u <SDB1_UUID> -P tpm2
 
 Or, for the raw sealed key:
 
 tpm2_key_protector_init --keyfile=(hd0,gpt1)/boot/grub2/sealed.key
-cryptomount -u b20f95d0834842bc9197bd78b36732f8 -P tpm2
-
-where the UUID corresponds to /dev/sdb1.
+cryptomount -u <SDB1_UUID> -P tpm2
 
 Signed-off-by: Hernan Gatta <hegatta@linux.microsoft.com>
 Signed-off-by: Gary Lin <glin@suse.com>
@@ -56,13 +54,15 @@ Signed-off-by: Gary Lin <glin@suse.com>
  .gitignore          |    2 +
  Makefile.util.def   |   22 +
  configure.ac        |    9 +
- util/grub-protect.c | 1508 +++++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 1541 insertions(+)
+ util/grub-protect.c | 1524 +++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 1557 insertions(+)
  create mode 100644 util/grub-protect.c
 
---- a/Makefile.util.def
-+++ b/Makefile.util.def
-@@ -208,6 +208,28 @@
+Index: grub-2.12~rc1/Makefile.util.def
+===================================================================
+--- grub-2.12~rc1.orig/Makefile.util.def
++++ grub-2.12~rc1/Makefile.util.def
+@@ -208,6 +208,28 @@ program = {
  };
  
  program = {
@@ -91,9 +91,11 @@ Signed-off-by: Gary Lin <glin@suse.com>
    name = grub-mkrelpath;
    mansection = 1;
  
---- a/configure.ac
-+++ b/configure.ac
-@@ -76,6 +76,7 @@
+Index: grub-2.12~rc1/configure.ac
+===================================================================
+--- grub-2.12~rc1.orig/configure.ac
++++ grub-2.12~rc1/configure.ac
+@@ -76,6 +76,7 @@ grub_TRANSFORM([grub-mkpasswd-pbkdf2])
  grub_TRANSFORM([grub-mkrelpath])
  grub_TRANSFORM([grub-mkrescue])
  grub_TRANSFORM([grub-probe])
@@ -101,7 +103,7 @@ Signed-off-by: Gary Lin <glin@suse.com>
  grub_TRANSFORM([grub-reboot])
  grub_TRANSFORM([grub-script-check])
  grub_TRANSFORM([grub-set-default])
-@@ -1992,6 +1993,14 @@
+@@ -1992,6 +1993,14 @@ fi
  AC_SUBST([LIBZFS])
  AC_SUBST([LIBNVPAIR])
  
@@ -116,9 +118,11 @@ Signed-off-by: Gary Lin <glin@suse.com>
  LIBS=""
  
  AC_SUBST([FONT_SOURCE])
+Index: grub-2.12~rc1/util/grub-protect.c
+===================================================================
 --- /dev/null
-+++ b/util/grub-protect.c
-@@ -0,0 +1,1508 @@
++++ grub-2.12~rc1/util/grub-protect.c
+@@ -0,0 +1,1524 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2022 Microsoft Corporation
@@ -227,6 +231,8 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +  grub_uint8_t tpm2_pcrs[TPM_MAX_PCRS];
 +  grub_uint8_t tpm2_pcr_count;
 +  TPM_ALG_ID tpm2_asymmetric;
++  TPM_KEY_BITS rsa_bits;
++  TPM_ECC_CURVE ecc_curve;
 +  TPM_ALG_ID tpm2_bank;
 +  TPM_HANDLE tpm2_srk;
 +  const char *tpm2_keyfile;
@@ -280,11 +286,11 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +    {
 +      .name = "tpm2-bank",
 +      .key  = GRUB_PROTECT_OPT_TPM2_BANK,
-+      .arg   = "SHA1|SHA256|SHA384",
++      .arg   = "ALG",
 +      .flags = 0,
 +      .doc   =
 +	N_("Bank of PCRs used to authorize key release: "
-+	   "SHA1, SHA256 (default), or SHA384."),
++	   "SHA1, SHA256 (default), or SHA512."),
 +      .group = 0
 +    },
 +    {
@@ -319,10 +325,13 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +    {
 +      .name = "tpm2-asymmetric",
 +      .key   = GRUB_PROTECT_OPT_TPM2_ASYMMETRIC,
-+      .arg   = "RSA|ECC",
++      .arg   = "TYPE",
 +      .flags = 0,
 +      .doc   =
-+	N_("The type of SRK: RSA (default) or ECC."),
++	N_("The type of SRK: RSA (RSA2048), RSA3072, RSA4096, "
++	   "ECC (ECC_NIST_P256), ECC_NIST_P384, ECC_NIST_P521, "
++	   "ECC_BN_P256, ECC_BN_P638, and ECC_SM2_P256. "
++	   "(default is RSA2048)"),
 +      .group = 0
 +    },
 +    {
@@ -648,6 +657,13 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +      pcr_digest_len = TPM_SHA256_DIGEST_SIZE;
 +      hash_spec = GRUB_MD_SHA256;
 +      break;
++    case TPM_ALG_SHA512:
++      pcr_digest_len = TPM_SHA512_DIGEST_SIZE;
++      hash_spec = GRUB_MD_SHA512;
++      break;
++    /* Although SHA384 can be parsed by grub_tpm2_protector_parse_bank(),
++       it's not supported by the built-in libgcrypt, and we won't be able to
++       calculate the PCR digest, so SHA384 is marked as unsupported. */
 +    default:
 +      return GRUB_ERR_BAD_ARGUMENT;
 +    }
@@ -797,7 +813,7 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +      inPublic.publicArea.parameters.rsaDetail.symmetric.keyBits.aes = 128;
 +      inPublic.publicArea.parameters.rsaDetail.symmetric.mode.aes = TPM_ALG_CFB;
 +      inPublic.publicArea.parameters.rsaDetail.scheme.scheme = TPM_ALG_NULL;
-+      inPublic.publicArea.parameters.rsaDetail.keyBits = 2048;
++      inPublic.publicArea.parameters.rsaDetail.keyBits = args->rsa_bits;
 +      inPublic.publicArea.parameters.rsaDetail.exponent = 0;
 +      break;
 +
@@ -806,7 +822,7 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +      inPublic.publicArea.parameters.eccDetail.symmetric.keyBits.aes = 128;
 +      inPublic.publicArea.parameters.eccDetail.symmetric.mode.aes = TPM_ALG_CFB;
 +      inPublic.publicArea.parameters.eccDetail.scheme.scheme = TPM_ALG_NULL;
-+      inPublic.publicArea.parameters.eccDetail.curveID = TPM_ECC_NIST_P256;
++      inPublic.publicArea.parameters.eccDetail.curveID = args->ecc_curve;
 +      inPublic.publicArea.parameters.eccDetail.kdf.scheme = TPM_ALG_NULL;
 +      break;
 +
@@ -1257,7 +1273,10 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +	args->tpm2_srk = TPM2_SRK_HANDLE;
 +
 +      if (args->tpm2_asymmetric == TPM_ALG_ERROR)
-+	args->tpm2_asymmetric = TPM_ALG_RSA;
++	{
++	  args->tpm2_asymmetric = TPM_ALG_RSA;
++	  args->rsa_bits = 2048;
++	}
 +
 +      if (args->tpm2_bank == TPM_ALG_ERROR)
 +	args->tpm2_bank = TPM_ALG_SHA256;
@@ -1426,7 +1445,8 @@ Signed-off-by: Gary Lin <glin@suse.com>
 +	  return EINVAL;
 +	}
 +
-+      err = grub_tpm2_protector_parse_asymmetric (arg, &args->tpm2_asymmetric);
++      err = grub_tpm2_protector_parse_asymmetric (arg, &args->tpm2_asymmetric,
++						  &args->rsa_bits, &args->ecc_curve);
 +      if (err != GRUB_ERR_NONE)
 +	{
 +	  if (grub_errno != GRUB_ERR_NONE)

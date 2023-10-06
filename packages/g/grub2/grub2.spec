@@ -28,14 +28,6 @@
 %endif
 
 Name:           grub2
-%ifarch x86_64 ppc64
-BuildRequires:  gcc-32bit
-BuildRequires:  glibc-32bit
-BuildRequires:  glibc-devel-32bit
-%else
-BuildRequires:  gcc
-BuildRequires:  glibc-devel
-%endif
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  device-mapper-devel
@@ -43,6 +35,8 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  freetype2-devel
 BuildRequires:  fuse-devel
+BuildRequires:  gcc
+BuildRequires:  glibc-devel
 %if 0%{?suse_version} >= 1140
 BuildRequires:  dejavu-fonts
 BuildRequires:  gnu-unifont
@@ -157,6 +151,9 @@ BuildRequires:  update-bootloader-rpm-macros
 %endif
 
 %ifarch %{efi}
+# The branding package requires grub2. It's not necessary here,
+# so break the dep to avoid a cycle.
+#!BuildIgnore: grub2
 BuildRequires:  grub2-branding
 BuildRequires:  squashfs
 %endif
@@ -383,6 +380,7 @@ Patch187:       0003-cryptodisk-wipe-out-the-cached-keys-from-protectors.patch
 Patch188:       0004-diskfilter-look-up-cryptodisk-devices-first.patch
 Patch189:       grub2-mkconfig-riscv64.patch
 Patch190:       arm64-Use-proper-memory-type-for-kernel-allocation.patch
+Patch191:       0001-fs-btrfs-Zero-file-data-not-backed-by-extents.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
