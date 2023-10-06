@@ -17,7 +17,7 @@
 
 
 Name:           velero
-Version:        1.11.1
+Version:        1.12.0
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        Apache-2.0

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Sep 22 08:29:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.12.0:
+  very big changelog, please find it here:
+  https://github.com/vmware-tanzu/velero/releases/tag/v1.12.0
+
+  * Breaking changes
+    - Prior to v1.12, the parameter uploader-type for Velero
+      installation had a default value of "restic". However,
+      starting from this version, the default value has been
+      changed to "kopia". This means that Velero will now use Kopia
+      as the default path for file system backup.
+    - The ways of setting CSI snapshot time have changed in v1.12.
+      First, the sync waiting time for creating a snapshot handle
+      in the CSI plugin is changed from the fixed 10 minutes into
+      backup.Spec.CSISnapshotTimeout. The second, the async waiting
+      time for VolumeSnapshot and VolumeSnapshotContent's status
+      turning into ReadyToUse in operation uses the operation's
+      timeout. The default value is 4 hours.
+    - As from Velero helm chart v4.0.0, it supports multiple BSL
+      and VSL, and the BSL and VSL have changed from the map into a
+      slice, and this breaking change is not backward compatible.
+      So it would be best to change the BSL and VSL configuration
+      into slices before the Upgrade.
+    - Prior to v1.12, deleting the Velero namespace would easily
+      remove all the resources within it. However, with the
+      introduction of finalizers attached to the Velero CR
+      including restore, dataupload, and datadownload in this
+      version, directly deleting Velero namespace may get stuck
+      indefinitely because the pods responsible for handling the
+      finalizers might be deleted before the resources attached to
+      the finalizers. To avoid this issue, please use the command
+      velero uninstall to delete all the Velero resources or ensure
+      that you handle the finalizer appropriately before deleting
+      the Velero namespace.
+
+  * Limitations/Known issues
+    The Azure plugin supports Azure AD Workload identity way, but
+    it only works for Velero native snapshots. It cannot support
+    filesystem backup and snapshot data mover scenarios.
+
+  * Upgrading
+    https://velero.io/docs/v1.12/upgrade-to-1.12/
+
+-------------------------------------------------------------------
 Thu Sep 07 12:02:38 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.11.1:
