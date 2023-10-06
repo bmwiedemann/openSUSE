@@ -1,0 +1,150 @@
+-------------------------------------------------------------------
+Thu Oct  5 08:57:29 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Cleanup of spec with spec-cleaner so we can add it to Factory
+
+-------------------------------------------------------------------
+Mon Apr 21 21:02:14 UTC 2014 - mardnh@gmx.de
+
+- update to version 2.40
+  and rpm cleanup
+
+  - 2.40 2013-11-06
+      - Fix for minor typo/bug that caused issues with Math::BigInt.
+  - 2.39 2013-06-06
+      - Added Debian patch for Pod encoding. RT #85897.
+        Thanks Gregor Herrmann.
+  - 2.38 2012-22-11
+      Maintenance release. Minor fixes only.
+  
+      - Removed failing testcases to allow S::WE to be tested/packaged
+        on recent perls.
+  
+      - Fix filter_column bug where filter is applied to the wrong column.
+        Merge pull request #4 from blazzy/master.
+  
+      - Enabled set_zoom() for Chart worksheets. It was documented but
+        wasn't working. Reported by Praphull Kumar.
+  
+      - Enabled set_tab_color() for Chart worksheets. It was documented
+        but wasn't working.
+  
+      - Fix typo in docs. Closes RT#70432.
+  
+      - Fix for rounding in test with longdoubles. Fixes RT#68954.
+  
+      - Handle chart sheets with utf8 name. Fixes RT#67014.
+  
+      - Fix for undefined formulas. Fixes RT#61560.
+
+-------------------------------------------------------------------
+Wed Dec  1 11:52:55 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:05 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+* Fri Dec 19 2009 Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+- New version 2.31
+* Sat Apr  4 2009 Holger Manthey <holger.manthey@bertelsmann.de>
+- Build for centos
+* Thu Apr 03 2008 mc@suse.de
+- version 2.21
+  ! Fixed bug where UTF-8 strings in formulas weren't handled.
+  Thanks Sergey Zhuravlev.
+  http://rt.cpan.org/Public/Bug/Display.html?id=30368
+  ! Fixed collapse outlines compatibility with Gnumeric
+  and OpenOffice.org.
+  http://rt.cpan.org/Public/Bug/Display.html?id=33662
+  ! Made pane split optional when calling freeze_panes().
+  Also renamed thaw_panes() as split_panes(). The old
+  method name is still available, but deprecated.
+  ! Renamed write_unicode() and write_unicode_le() methods
+  to the more explicit write_utf16be_string() and
+  write_utf16le_string(). The old method names are
+  still available, but deprecated.
+  + Added document section about rewriting Excel files.
+  + Minor security fix to Format to avoid eval and
+  additional fix for RT 24218.
+  + Added increased compatibility with third party
+  Excel reading applications such as POI.
+  + Added optional compatibility_mode() to fix problems
+  that can occur with Office SP3.
+  + Added set_start_page() method for setting the start page
+  number when printing.
+  + Added autofilter() and filter_column() method and
+  autofilter.pl example.
+  + Added embed_chart() method to allow extracted chart
+  templates to be embedded in a worksheet.
+  + Added the insert_image() method and proper Excel 97
+  style image handling for PNG and BMP.
+  Images now work with Gnumeric and OpenOffice.
+  insert_bitmap() is now deprecated.
+* Mon Apr 16 2007 mc@suse.de
+- version 2.18
+  ! Correct invalid user set_column() calls to prevent
+  crashes after Excel patch KB918419 is applied.
+  ! Fixed bug when writing comments longer than 8219 bytes.
+  ! Fixed bug when using copy() with merged formats.
+  ! Fixed bug where $@ was clobbered during garbage collection.
+  ! Removed all non-ascii characters from main docs to
+  avoid problems with troff and man.
+  + Added autoloading of OLE::Storage_Lite, when available,
+  to create workbooks larger than 7MB. It is no longer
+  required to explicitly use ::Big.
+  + Added handling of Unicode sheet names in formulas
+* Fri Jul 14 2006 mc@suse.de
+- version 2.17
+  + Added set_tab_color() method and example (tab_colors.pl).
+  + Add set_page_view() method for Mac Excel view style
+  and better default worksheet dimensions.
+  + Added simulated row_wrap.pl example.
+  + Added simulated Autofit example (autofit.pl).
+  ! Fixed RT #17801, incorrect close value with filehandles.
+  ! Changed comment font to Excel's default of Tahoma 8.
+  ! Fixed bug that stopped Charts working in 2.16.
+* Wed Jan 25 2006 mls@suse.de
+- converted neededforbuild to BuildRequires
+* Thu Jan 12 2006 mc@suse.de
+- version 2.16
+- Rewrote and reinstated the write_comment() method to take
+  account of the changes in the Excel 97+ comment format.
+  Currently conflicts with insert_bitmap(), see docs.
+- Added standard styles such as comma, percent and currency.
+- Changed write_url() methods to allow numbers or formulas
+  as well as strings as the optional text.
+- Documented use of encoding flag in add_worksheet() to allow
+  handling of UTF-16 sheet names.
+- Added encoding flag to merge_range() method to allow
+  handling of UTF-16 strings.
+  Added merge6.pl example program.
+- Added hide_zero() worksheet method to allow hiding of zero
+  values in cells.
+- Added print_across() worksheet method to allow changing of
+  the default print direction.
+- Added right_to_left() worksheet method to allow changing of
+  the default worksheet direction in eastern versions of Excel.
+- Documented the Worksheet hide() method.
+- Added comments1.pl and comments2.pl example programs.
+- Added tests for the internal methods used by write_comment().
+* Thu Nov 24 2005 mc@suse.de
+- update to version 2.15
+* Tue Nov 15 2005 uli@suse.de
+- no idea why this fails on ARM, but let's just blame it on
+  QEMU...
+* Tue Oct 04 2005 dmueller@suse.de
+- add norootforbuild
+* Sun Jul 31 2005 cthiel@suse.de
+- update to version 2.14
+* Fri Apr 01 2005 mc@suse.de
+- update to version 2.12
+  * Added further Unicode support.
+  * Added chart support via external templates.
+  * many other fixes
+* Mon Aug 09 2004 mc@suse.de
+- update to version 2.03
+* Thu Sep 25 2003 mc@suse.de
+- initial version (0.41)
