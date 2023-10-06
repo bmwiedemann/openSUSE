@@ -25,7 +25,7 @@ Summary:        Parallel programming library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/6.cabal#/%{pkg_name}.cabal
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/7.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-array-prof
@@ -41,14 +41,14 @@ ExcludeArch:    %{ix86}
 %description
 This package provides a library for parallel programming.
 
-For documentation start from the "Control.Parallel.Strategies" module below.
+For documentation, start from the "Control.Parallel.Strategies" module below.
 
 For more tutorial documentation, see the book
-<http://simonmar.github.io/pages/pcph.html Parallel and Concurrent Programming
+<https://simonmar.github.io/pages/pcph.html Parallel and Concurrent Programming
 in Haskell>.
 
 To understand the principles behind the library, see
-<http://simonmar.github.io/bib/papers/strategies.pdf Seq no more: Better
+<https://simonmar.github.io/bib/papers/strategies.pdf Seq no more: Better
 Strategies for Parallel Haskell>.
 
 %package devel
