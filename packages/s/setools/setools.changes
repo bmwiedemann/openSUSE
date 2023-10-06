@@ -57,7 +57,7 @@ Tue Feb 22 09:13:19 UTC 2022 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 Tue Jun  8 11:10:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix dependency of python3-setools: require python3, not python
-  (which is python2).
+  (which is python2) (bsc#1200649).
 
 -------------------------------------------------------------------
 Tue Mar  9 09:24:10 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
