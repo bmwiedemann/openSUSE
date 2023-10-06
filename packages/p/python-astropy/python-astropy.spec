@@ -48,7 +48,7 @@
                       %{?unbundle_wcs}
 
 Name:           python-astropy%{psuffix}
-Version:        5.3.3
+Version:        5.3.4
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -59,7 +59,7 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
 # https://docs.astropy.org/en/v5.3/install.html#requirements
-BuildRequires:  %{python_module Cython >= 0.29.34 with %python-Cython < 3}
+BuildRequires:  %{python_module Cython >= 0.29.36 with %python-Cython < 3}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML >= 3.13}
 BuildRequires:  %{python_module devel >= 3.9}

@@ -1611,4 +1611,39 @@
 - Restrain to Cython &lt; 3 -- gh#astropy/astropy#15315</comment>
     <requestid>1111062</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>8f3e3ac76286517fb2fba4d8b53310d6</srcmd5>
+    <version>5.3.4</version>
+    <time>1696619657</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.3.4
+  ## Bug Fixes
+  ### astropy.io.misc
+  * Updated ``astropy.io.misc.yaml`` so ``dump()` with a numpy
+    object array or ``load()`` with YAML representing a Numpy
+    object array both raise ``TypeError``. This prevents problems
+    like a segmentation fault. [#15373]
+  ### astropy.io.votable
+  * Fixed a bug in ``convert_to_writable_filelike`` where
+    ``GzipFile`` was not closed properly. [#15359]
+  ### astropy.units
+  * In VOUnit, the spaces around the slash were removed in the
+    formatting of fractions, and fractional powers now also use the
+    &quot;**&quot; operator. [#15282]
+  * We now ensure that the unit ``u.cgs.cm`` is just an alias of
+    ``u.si.cm``, instead of a redefinition.  This ensures that
+    ``u.Unit(&quot;cm&quot;) / u.cm`` will reliably cancel to dimensionless
+    (instead of some &quot;cm / cm&quot;). [#15368]
+  ### astropy.utils
+  * For ``Masked``, ``np.ptp`` and the ``.ptp()`` method now
+    properly account for the mask, ensuring the result is identical
+    to subtracting the maximum and minimum (with the same
+    arguments). [#15380]
+  ## Other Changes and Additions
+  * Compatibility with Python 3.12. [#14784]
+  * Replaced the URL of ``IETF_LEAP_SECOND_URL`` because the
+    original is now defunct and IETF now defers to IANA for such
+    look-up. [#15421]</comment>
+    <requestid>1115987</requestid>
+  </revision>
 </revisionlist>
