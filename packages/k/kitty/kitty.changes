@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  5 14:19:42 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.30.1:
+  * Shell integration: Automatically alias sudo to make the kitty terminfo files available in the sudo environment. Can be turned off via shell_integration
+  * ssh kitten: Fix a regression in 0.28.0 that caused using --kitten to override ssh.conf not inheriting settings from ssh.conf (#6639)
+  * themes kitten: Allow absolute paths for --config-file-name (#6638)
+  * Expand environment variables in the shell option (#6511)
+  * macOS: When running the default shell, run it via the login program so that calls to getlogin() work (#6511)
+  * X11: Fix a crash on startup when the ibus service returns errors and the GLFW_IM_MODULE env var is set to ibus (#6650)
+
+-------------------------------------------------------------------
 Thu Sep 21 05:01:36 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Removing fix-librsync-leap.diff (no longer needed)

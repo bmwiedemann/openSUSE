@@ -428,4 +428,18 @@
     <comment></comment>
     <requestid>1113406</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>049f32b88ea67e26b7ec858c5b37c0e5</srcmd5>
+    <version>0.30.1</version>
+    <time>1696619649</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.30.1:
+  * Shell integration: Automatically alias sudo to make the kitty terminfo files available in the sudo environment. Can be turned off via shell_integration
+  * ssh kitten: Fix a regression in 0.28.0 that caused using --kitten to override ssh.conf not inheriting settings from ssh.conf (#6639)
+  * themes kitten: Allow absolute paths for --config-file-name (#6638)
+  * Expand environment variables in the shell option (#6511)
+  * macOS: When running the default shell, run it via the login program so that calls to getlogin() work (#6511)
+  * X11: Fix a crash on startup when the ibus service returns errors and the GLFW_IM_MODULE env var is set to ibus (#6650)</comment>
+    <requestid>1115916</requestid>
+  </revision>
 </revisionlist>
