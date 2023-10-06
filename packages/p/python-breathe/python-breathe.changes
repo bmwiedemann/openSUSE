@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  4 13:47:35 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Make support-sphinx-7.2.patch backwards-compatible
+  * and sent upstream: https://github.com/breathe-doc/breathe/pull/956
+
+-------------------------------------------------------------------
 Tue Aug 29 02:48:53 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Upgrade to 4.35: 
