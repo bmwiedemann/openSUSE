@@ -70,6 +70,8 @@ Source30:       README.SUSE.md
 Patch0:         hyperkitty-settings.patch
 # PATCH-FIX-UPSTREAM fix-elasticsearch8.patch gl#mailman/hyperkitty#468
 Patch1:         fix-elasticsearch8.patch
+# PATCH-FIX-UPSTREAM mistune3.patch gl#mailman/hyperkitty#541
+Patch2:         mistune3.patch
 #
 BuildRequires:  %{python_module django-compressor >= 1.3}
 BuildRequires:  %{python_module Whoosh}
@@ -185,8 +187,7 @@ touch settings_local.py
 # Copy example_project to just build the static files
 rsync -a example_project/* build_static_files
 
-%patch0 -p1
-%patch1 -p1
+%autopatch -p1
 
 %build
 sed -i 's|^#!/usr/bin/env.*|#!%{__mypython}|' \

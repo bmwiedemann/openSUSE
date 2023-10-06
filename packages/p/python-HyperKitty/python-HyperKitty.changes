@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  5 08:21:08 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add mistune3.patch to fix compatibility with mistune 3.0
+
+-------------------------------------------------------------------
 Thu Jul  6 09:33:42 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Add missing dependency to whoosh

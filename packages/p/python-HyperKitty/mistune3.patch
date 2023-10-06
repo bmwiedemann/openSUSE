@@ -1,0 +1,306 @@
+From 2d123efddf474b6cc367b16e59ba9b99e95164e1 Mon Sep 17 00:00:00 2001
+From: Abhilash Raj <raj.abhilash1@gmail.com>
+Date: Wed, 5 Jul 2023 10:15:04 +0530
+Subject: [PATCH 1/6] fix: Update mistune plugin to be compat with 3.0.x
+
+Mistune bump to 3.x updated the plugin API making our current one
+incompatible and requiring changes. This commit makes the required
+changes so we can work with newer version.
+
+This also strictly works on mistune>=3.0 since the older API won't
+work for us anymore.
+---
+ doc/news.rst               |  1 +
+ hyperkitty/lib/haystack.py | 57 ++++++++++++++++++++++++++++++++++++++
+ hyperkitty/lib/renderer.py | 44 +++++++++++++++--------------
+ setup.py                   |  2 +-
+ 4 files changed, 82 insertions(+), 22 deletions(-)
+ create mode 100644 hyperkitty/lib/haystack.py
+
+Index: HyperKitty-1.3.7/hyperkitty/lib/haystack.py
+===================================================================
+--- /dev/null
++++ HyperKitty-1.3.7/hyperkitty/lib/haystack.py
+@@ -0,0 +1,57 @@
++# -*- coding: utf-8 -*-
++#
++# Copyright (C) 2023 by the Free Software Foundation, Inc.
++#
++# This program is free software; you can redistribute it and/or
++# modify it under the terms of the GNU General Public License
++# as published by the Free Software Foundation; either version 2
++# of the License, or (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
++# USA.
++
++"""This module contains Django-haystack backend for SQLlite3."""
++
++from haystack.backends import (
++    BaseEngine, BaseSearchBackend, BaseSearchQuery, SearchNode, log_query)
++
++
++class SqliteSearchBackend(BaseSearchBackend):
++
++    def update(self, index, iterable, commit=True):
++        return super().update(index, iterable, commit)
++
++    def remove(self, obj_or_string):
++        return super().remove(obj_or_string)
++
++    def clear(self, models=None, commit=True):
++        return super().clear(models, commit)
++
++    @log_query
++    def search(self, query_string, **kwargs):
++        return super().search(query_string, **kwargs)
++
++    def prep_value(self, value):
++        return super().prep_value(value)
++
++    def more_like_this(self, model_instance, additional_query_string=None, result_class=None):
++        return super().more_like_this(model_instance, additional_query_string, result_class)
++
++
++class SqliteSearchQuery(BaseSearchQuery):
++
++    def build_query(self):
++        return super().build_query()
++
++
++class SqliteEngine(BaseEngine):
++
++    backend = SqliteSearchBackend
++    query = SqliteSearchQuery
+\ No newline at end of file
+Index: HyperKitty-1.3.7/hyperkitty/lib/renderer.py
+===================================================================
+--- HyperKitty-1.3.7.orig/hyperkitty/lib/renderer.py
++++ HyperKitty-1.3.7/hyperkitty/lib/renderer.py
+@@ -3,8 +3,8 @@ import re
+ from django.conf import settings
+ 
+ import mistune
+-from mistune.plugins.extra import plugin_url
+-from mistune.util import escape_html, escape_url
++from mistune.plugins.url import url
++from mistune.util import safe_entity
+ 
+ 
+ class MyRenderer(mistune.HTMLRenderer):
+@@ -28,11 +28,11 @@ class MyRenderer(mistune.HTMLRenderer):
+             f'<div class="quoted-switch"><a href="#">...</a></div>'
+             f'<blockquote class="blockquote quoted-text">{text}</blockquote>')
+ 
+-    def emphasis(self, marker, text):
++    def emphasis(self, text, marker):
+         """Emphasis with marker included."""
+         return super().emphasis(marker + text + marker)
+ 
+-    def strong(self, marker, text):
++    def strong(self, text, marker):
+         """Strong with marker included."""
+         return super().strong(marker + text + marker)
+ 
+@@ -42,7 +42,7 @@ class MyRenderer(mistune.HTMLRenderer):
+         return '![{alt}]({src} {title})'.format(
+             src=src, title=title, alt=alt)
+ 
+-    def image(self, src, alt_text, title):
++    def image(self, alt, url, title=None):
+         """Render image if configured to do so.
+ 
+         HYPERKITTY_RENDER_INLINE_IMAGE configuration allows for
+@@ -50,25 +50,28 @@ class MyRenderer(mistune.HTMLRenderer):
+         default since embeded images can cause problems.
+         """
+         if getattr(settings, 'HYPERKITTY_RENDER_INLINE_IMAGE', False):
+-            return super().image(src, alt_text, title, )
+-        return self._md_style_img(src, title, alt_text)
++            return super().image(alt, url, title)
++        return self._md_style_img(url, title, alt)
+ 
+-    def link(self, link, text=None, title=None):
++    def link(self, text, url, title=None):
+         """URL link renderer that truncates the length of the URL.
+ 
+         This only does it for the URLs that are not hyperlinks by just literal
+         URLs (text=None) so text is same as URL.
+         It also adds target=“_blank” so that the URLs open in a new tab.
+         """
+-        if text is None:
+-            text = link
++        # text can be none of same as url in case of autolink parsing. This
++        # will truncate the length of the URL in both cases but preserve
++        # the actual URL destination in the hyperlink.
++        if text is None or text == url:
++            text = url
+             if len(text) > 76:
+-                text = link[:76] + '...'
++                text = url[:76] + '...'
+ 
+-        s = '<a target="_blank" href="' + self._safe_url(link) + '"'
++        s = '<a target="_blank" href="' + self.safe_url(url) + '"'
+         if title:
+-            s += ' title="' + escape_html(title) + '"'
+-        return s + '>' + (text or link) + '</a>'
++            s += ' title="' + safe_entity(title) + '"'
++        return s + '>' + (text or url) + '</a>'
+ 
+ 
+ class InlineParser(mistune.inline_parser.InlineParser):
+@@ -79,27 +82,13 @@ class InlineParser(mistune.inline_parser
+     ‘emphasis’ or ‘strong’ node.
+     """
+ 
+-    def tokenize_emphasis(self, m, state):
+-        marker = m.group(1)
+-        text = m.group(2)
+-        if len(marker) == 1:
+-            return 'emphasis', marker, self.render(text, state)
+-        return 'strong', marker, self.render(text, state)
+-
+-    # This is an override for a fix that should be in mistune.
+-    # https://github.com/lepture/mistune/pull/276
+-    def parse_auto_link(self, m, state):
+-        if state.get('_in_link'):
+-            return 'text', m.group(0)
+-
+-        text = m.group(1)
+-        if ('@' in text and
+-            not text.lower().startswith('mailto:') and
+-                not text.lower().startswith('http')):
+-            link = 'mailto:' + text
+-        else:
+-            link = text
+-        return 'link', escape_url(link), text
++    def parse_emphasis(self, m, state):
++        end_pos = super().parse_emphasis(m, state)
++        last_token = state.tokens[-1].copy()
++        marker = m.group(0)
++        last_token['attrs'] = {'marker': marker}
++        state.tokens[-1] = last_token
++        return end_pos
+ 
+ 
+ def remove_header_rules(rules):
+@@ -112,8 +101,8 @@ def remove_header_rules(rules):
+ 
+ class BlockParser(mistune.block_parser.BlockParser):
+     """A copy of Mistune's block parser with header parsing rules removed."""
+-    RULE_NAMES = remove_header_rules(
+-        mistune.block_parser.BlockParser.RULE_NAMES)
++    DEFAULT_RULES = remove_header_rules(
++        mistune.block_parser.BlockParser.DEFAULT_RULES)
+ 
+ 
+ # Signature Plugin looks for signature pattern in email content and converts it
+@@ -141,10 +130,10 @@ def plugin_signature(md):
+ 
+     It only provides an HTML renderer because that is the only one needed.
+     """
+-    md.block.register_rule('signature', SIGNATURE_PATTERN, parse_signature)
++    md.block.register('signature', SIGNATURE_PATTERN, parse_signature)
+ 
+-    md.block.rules.insert(0,  'signature')
+-    if md.renderer.NAME == 'html':
++    # md.block.rules.insert(0,  'signature')
++    if md.renderer and md.renderer.NAME == 'html':
+         md.renderer.register('signature', render_html_signature)
+ 
+ 
+@@ -189,18 +178,18 @@ def plugin_pgp_signature(md):
+     It parses BEGIN PGP SIGNATURE and END PGP SIGNATURE and collapses content
+     in between them.
+     """
+-    md.block.register_rule('pgp', PGP_SIGNATURE_MATCH, parse_pgp_signature)
+-    md.block.rules.append('pgp')
+-    if md.renderer.NAME == 'html':
++    md.block.register('pgp', PGP_SIGNATURE_MATCH, parse_pgp_signature)
++    # md.block.rules.append('pgp')
++    if md.renderer and md.renderer.NAME == 'html':
+         md.renderer.register('pgp', render_pgp_signature)
+ 
+ 
+ renderer = MyRenderer(escape=True)
+ markdown_renderer = mistune.Markdown(
+     renderer=renderer,
+-    inline=InlineParser(renderer, hard_wrap=False),
++    inline=InlineParser(hard_wrap=False),
+     block=BlockParser(),
+-    plugins=[plugin_pgp_signature, plugin_signature, plugin_url])
++    plugins=[plugin_pgp_signature, plugin_signature, url])
+ 
+ 
+ # The only difference between the markdown and this renderer is
+@@ -208,10 +197,10 @@ markdown_renderer = mistune.Markdown(
+ # rules that results in a regularly formatted email.
+ text_renderer = mistune.Markdown(
+     renderer=renderer,
+-    inline=InlineParser(renderer, hard_wrap=False),
++    inline=InlineParser(hard_wrap=False),
+     block=BlockParser(),
+     plugins=[plugin_disable_markdown,
+              plugin_pgp_signature,
+              plugin_signature,
+-             plugin_url,
++             url,
+              ])
+Index: HyperKitty-1.3.7/setup.py
+===================================================================
+--- HyperKitty-1.3.7.orig/setup.py
++++ HyperKitty-1.3.7/setup.py
+@@ -45,7 +45,7 @@ REQUIRES = [
+     "pytz>=2012",
+     "django-compressor>=1.3",
+     "mailmanclient>=3.3.3",
+-    "mistune>=2.0.0,<3.0",
++    "mistune>=3.0",
+     "python-dateutil >= 2.0",
+     "networkx>=2.0",
+     "django-haystack>=2.8.0",
+Index: HyperKitty-1.3.7/hyperkitty/tests/test_templatetags.py
+===================================================================
+--- HyperKitty-1.3.7.orig/hyperkitty/tests/test_templatetags.py
++++ HyperKitty-1.3.7/hyperkitty/tests/test_templatetags.py
+@@ -147,15 +147,13 @@ class TestGravatar(TestCase):
+ 
+ class TestDecorate(TestCase):
+ 
+-    def setUp(self):
+-        pass
+-
+     def test_parse_quote(self):
+         contents = """
+ On Fri, 09.11.12 11:27, Someone wrote:
+ > This is the first quoted line
+ > On Fri 07.25.12, Aperson wrote:
+ >> This is the second quoted line.
++
+ This is the response.
+ """
+         expected = (
+@@ -184,7 +182,7 @@ https://some.url/llasdfjaksdgfjsdfgkjasd
+         result = markdown_renderer(contents)
+         self.assertEqual(
+             result.strip(),
+-            '<p><a target="_blank" href="https://some.url/llasdfjaksdgfjsdfgkjasdfbgksdfjgbsdfkgjbsdflkgjbsdflgksjdhfbgksdfgb">https://some.url/llasdfjaksdgfjsdfgkjasdfbgksdfjgbsdfkgjbsdflkgjbsdflgksjdhf...</a></p>')   # noqa: E501
++            ('<p><a target="_blank" href="https://some.url/llasdfjaksdgfjsdfgkjasdfbgksdfjgbsdfkgjbsdflkgjbsdflgksjdhfbgksdfgb">https://some.url/llasdfjaksdgfjsdfgkjasdfbgksdfjgbsdfkgjbsdflkgjbsdflgksjdhf...</a></p>'))   # noqa: E501
+ 
+     def test_autolink_small_url(self):
+         # Test that autolink doesn't add ... to URLs that aren't truncated.
+@@ -219,6 +217,7 @@ https://some.url/example
+ # This is another sample text.
+ """
+         result = markdown_renderer(contents)
++        print(result)
+         self.assertEqual(
+             result.strip(),
+             '<p># This is another sample text.</p>')
