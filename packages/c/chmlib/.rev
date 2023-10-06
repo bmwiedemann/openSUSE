@@ -138,4 +138,22 @@
     <comment></comment>
     <requestid>900113</requestid>
   </revision>
+  <revision rev="22" vrev="25">
+    <srcmd5>3cbd841e98b2306ec1ef87d5560e00f0</srcmd5>
+    <version>0.40</version>
+    <time>1696619556</time>
+    <user>anag+factory</user>
+    <comment>- drop chmlib-0.39.diff - superseded by
+  chmlib-0001-Patch-to-fix-integer-types-problem-by-Goswin-von-Bre.patch
+- add
+  chmlib-0001-Patch-to-fix-integer-types-problem-by-Goswin-von-Bre.patch,
+  chmlib-0002-Fix-for-extract_chmLib-confusing-empty-files-with-di.patch,
+  chm_http-port-shortopt.patch, chm_http-bind-localhost.patch,
+  chm_http-output-server-address.patch, chmlib-c99.patch: restrict
+  access to localhost to somewhat reduce reach
+
+- remove static libraries and &quot;la&quot; files
+   * all of the dynamically-sized buffers which were allocated on</comment>
+    <requestid>1115793</requestid>
+  </revision>
 </revisionlist>

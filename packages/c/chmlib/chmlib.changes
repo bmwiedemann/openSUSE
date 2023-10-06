@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  5 09:50:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- drop chmlib-0.39.diff - superseded by
+  chmlib-0001-Patch-to-fix-integer-types-problem-by-Goswin-von-Bre.patch
+- add
+  chmlib-0001-Patch-to-fix-integer-types-problem-by-Goswin-von-Bre.patch,
+  chmlib-0002-Fix-for-extract_chmLib-confusing-empty-files-with-di.patch,
+  chm_http-port-shortopt.patch, chm_http-bind-localhost.patch,
+  chm_http-output-server-address.patch, chmlib-c99.patch: restrict
+  access to localhost to somewhat reduce reach
+
+-------------------------------------------------------------------
 Mon Jun 14 11:27:41 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Upgrade old specfile constructs.
@@ -39,7 +51,7 @@ Sun May 24 14:16:05 CEST 2009 - vuntz@novell.com
 -------------------------------------------------------------------
 Fri Feb 27 23:19:57 CET 2009 - crrodriguez@suse.de
 
-- remove static libraries and "la" files 
+- remove static libraries and "la" files
 
 -------------------------------------------------------------------
 Thu Feb  8 10:32:09 CET 2007 - dmueller@suse.de
@@ -50,7 +62,7 @@ Thu Feb  8 10:32:09 CET 2007 - dmueller@suse.de
 Mon Jan 29 15:20:20 CET 2007 - stbinner@suse.de
 
 - update to version 0.39:
-   * all of the dynamically-sized buffers which were allocated on 
+   * all of the dynamically-sized buffers which were allocated on
      the stack before have been changed to heap allocations. This
      circumvents some dangerous security flaws. (#239747)
 

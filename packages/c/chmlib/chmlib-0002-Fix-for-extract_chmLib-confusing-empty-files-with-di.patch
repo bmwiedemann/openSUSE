@@ -1,0 +1,40 @@
+From 5998ff5105a9cd3f684519927e2ac78d3b6a3c30 Mon Sep 17 00:00:00 2001
+From: Jed Wing <jed.wing@gmail.com>
+Date: Wed, 27 May 2009 18:41:10 -0700
+Subject: [PATCH 2/2] Fix for extract_chmLib confusing empty files with
+ directories.
+
+Patch from Paul Wise <pabs@debian.org> via Kartik Mistry, the maintainer of the
+Debian chmlib package.
+---
+ src/extract_chmLib.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/extract_chmLib.c b/src/extract_chmLib.c
+index 078cc35..478c892 100644
+--- a/src/extract_chmLib.c
++++ b/src/extract_chmLib.c
+@@ -102,6 +102,7 @@ int _extract_callback(struct chmFile *h,
+               struct chmUnitInfo *ui,
+               void *context)
+ {
++    LONGUINT64 ui_path_len;
+     char buffer[32768];
+     struct extract_context *ctx = (struct extract_context *)context;
+     char *i;
+@@ -119,7 +120,11 @@ int _extract_callback(struct chmFile *h,
+     if (snprintf(buffer, sizeof(buffer), "%s%s", ctx->base_path, ui->path) > 1024)
+         return CHM_ENUMERATOR_FAILURE;
+ 
+-    if (ui->length != 0)
++    /* Get the length of the path */
++    ui_path_len = strlen(ui->path)-1;
++
++    /* Distinguish between files and dirs */
++    if (ui->path[ui_path_len] != '/' )
+     {
+         FILE *fout;
+         LONGINT64 len, remain=ui->length;
+-- 
+1.8.3.1
+

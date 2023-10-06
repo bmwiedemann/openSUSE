@@ -1,0 +1,25 @@
+From ad27f1981415f9b9df179099e36d793327ce6d8c Mon Sep 17 00:00:00 2001
+From: "FeRD (Frank Dana)" <ferdnyc@gmail.com>
+Date: Thu, 11 Jul 2019 20:57:19 -0400
+Subject: [PATCH] Change the default binding to 127.0.0.1
+
+---
+ src/chm_http.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/chm_http.c b/src/chm_http.c
+index 237e85a..ddffe55 100644
+--- a/src/chm_http.c
++++ b/src/chm_http.c
+@@ -50,7 +50,7 @@
+ #include <getopt.h>
+ 
+ int config_port = 8080;
+-char config_bind[65536] = "0.0.0.0";
++char config_bind[65536] = "127.0.0.1";
+ 
+ static void usage(const char *argv0)
+ {
+-- 
+2.21.0
+

@@ -1,7 +1,7 @@
 #
 # spec file for package chmlib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,18 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.jedrea.com/chmlib/
 Source0:        http://www.jedrea.com/chmlib/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
-Patch0:         %{name}-0.39.diff
+# backported from upstream
+Patch1:         chmlib-0001-Patch-to-fix-integer-types-problem-by-Goswin-von-Bre.patch
+# backported from upstream
+Patch2:         chmlib-0002-Fix-for-extract_chmLib-confusing-empty-files-with-di.patch
+# PATCH-FIX-UPSTREAM: https://github.com/jedwing/CHMLib/pull/10
+Patch3:         chm_http-port-shortopt.patch
+# PATCH-FIX-UPSTREAM: https://github.com/jedwing/CHMLib/pull/11
+Patch4:         chm_http-bind-localhost.patch
+# PATCH-FIX-UPSTREAM: https://github.com/jedwing/CHMLib/pull/12
+Patch5:         chm_http-output-server-address.patch
+# PATCH-FIX-UPSTREAM: https://github.com/jedwing/CHMLib/pull/17
+Patch6:         chmlib-c99.patch
 BuildRequires:  gcc-c++
 
 %description
@@ -61,8 +72,7 @@ This package contains examples built on chmlib which may be useful
 to convert chm files from command line.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fstack-protector"
@@ -79,11 +89,11 @@ export CXXCPP="g++ -E"
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
-%doc AUTHORS COPYING NEWS README
+%license COPYING
+%doc AUTHORS NEWS README
 %{_libdir}/*.so.*
 
 %files devel
