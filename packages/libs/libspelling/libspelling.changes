@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  5 06:51:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add check section, run meson_test macro during build.
+
+-------------------------------------------------------------------
 Sun Sep 17 07:34:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Initial packaging for openSUSE.

@@ -75,6 +75,9 @@ developing applications that use %{name}.
 %install
 %meson_install
 
+%check
+%meson_test
+
 %ldconfig_scriptlets -n libspelling1-1
 
 %files -n libspelling1-1
