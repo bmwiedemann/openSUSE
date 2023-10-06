@@ -643,4 +643,12 @@ Show aggregation and make compatible with Fedora declaration (forwarded request 
   * rescan-scsi-bus: speed large multipath scans (bsc#1207706)</comment>
     <requestid>1061594</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>1bcda52ff092903a3cb273a68e000680</srcmd5>
+    <version>1.48+1.889c3e3</version>
+    <time>1696619562</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1115859</requestid>
+  </revision>
 </revisionlist>

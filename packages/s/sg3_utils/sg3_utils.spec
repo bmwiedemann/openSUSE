@@ -17,7 +17,7 @@
 
 
 Name:           sg3_utils
-Version:        1.48~20221101+1.142dace
+Version:        1.48+1.889c3e3
 %global lname libsgutils2-%(echo %{version} | sed 's/[~+].*//;y/./_/')-2
 Release:        0
 Summary:        A collection of tools that send SCSI commands to devices
@@ -37,6 +37,12 @@ Supplements:    modalias(scsi:t-0x00*)
 Supplements:    modalias(scsi:t-0x07*)
 Supplements:    modalias(scsi:t-0x0e*)
 Obsoletes:      scsi <= 1.7_2.38_1.25_0.19_1.02_0.93
+# For regenerate_initrd_posttrans
+%if 0%{?suse_version} < 1550
+BuildRequires:  suse-module-tools
+%else
+BuildRequires:  rpm-config-SUSE
+%endif
 
 %description
 The sg3_utils package contains utilities that send SCSI commands to
@@ -94,10 +100,11 @@ make %{?_smp_mflags}
 %make_install
 install -m 644 doc/rescan-scsi-bus.sh.8 %{buildroot}/%{_mandir}/man8
 mkdir -p %{buildroot}/%{_udevrulesdir}
+install -m 644 scripts/00-scsi-sg3_config.rules %{buildroot}/%{_udevrulesdir}
+install -m 644 scripts/40-usb-blacklist.rules %{buildroot}/%{_udevrulesdir}
 install -m 644 scripts/54-before-scsi-sg3_id.rules %{buildroot}/%{_udevrulesdir}
 install -m 644 scripts/55-scsi-sg3_id.rules %{buildroot}/%{_udevrulesdir}
 install -m 644 scripts/58-scsi-sg3_symlink.rules %{buildroot}/%{_udevrulesdir}
-install -m 644 scripts/40-usb-blacklist.rules %{buildroot}/%{_udevrulesdir}
 install -m 644 scripts/59-fc-wwpn-id.rules %{buildroot}/%{_udevrulesdir}
 install -m 755 scripts/fc_wwpn_id %{buildroot}/%{_udevrulesdir}/..
 mkdir -p %{buildroot}/usr/lib/dracut/dracut.conf.d
@@ -141,6 +148,7 @@ rm -f %{buildroot}%{_libdir}/*.la
 %_mandir/man8/*.8*
 %dir /usr/lib/udev
 %dir %{_udevrulesdir}
+%{_udevrulesdir}/00-scsi-sg3_config.rules
 %{_udevrulesdir}/40-usb-blacklist.rules
 %{_udevrulesdir}/54-before-scsi-sg3_id.rules
 %{_udevrulesdir}/55-scsi-sg3_id.rules

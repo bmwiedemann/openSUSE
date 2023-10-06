@@ -4,11 +4,16 @@
     <param name="url">https://github.com/openSUSE/sg3_utils</param>
     <param name="filename">sg3_utils</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@.%h</param> 
-    <param name="match-tag">[0-9].[0-9]*.pre.[0-9]*</param>
-    <param name="versionrewrite-pattern">([0-9.]+)\.pre\.([0-9]+)(\+[1-9])?(\+0)?(\.[a-f0-9]+)</param>
-    <param name="versionrewrite-replacement">\1~\2\3\5</param>
+    <!--
+        <param name="versionformat">@PARENT_TAG@</param> 
+	<param name="match-tag">[0-9].[0-9]*.pre.[0-9]*</param>
+	<param name="versionrewrite-pattern">([0-9.]+)\.pre\.([0-9]+)(\+[1-9])?(\+0)?(\.[a-f0-9]+)</param>
+	<param name="versionrewrite-replacement">\1~\2\3\5</param>
+    -->
+    <param name="versionrewrite-pattern">release-([0-9].[0-9]+)</param>
+    <param name="versionrewrite-replacement">\1</param>
     <param name="revision">factory</param>
-    <param name="changesgenerate">enable</param>
+    <param name="changesgenerate">disable</param>
   </service>
   <service name="set_version" mode="manual"/>
   <service name="tar" mode="buildtime"/>

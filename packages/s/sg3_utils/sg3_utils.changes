@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Sep 28 13:34:30 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- udev rules: allow kernel command line overrides with
+  "udev.scsi_id_serial_src=LTVS" and "udev.scsi_symlink_src=LTVS"
+  Try these boot parameters if your system fails to detect SCSI
+  devices after update to sg3_utils 1.48.
+
+-------------------------------------------------------------------
+Wed Sep 27 15:56:57 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- dracut.conf: add 00-scsi-sg3_config.rules (jsc#PED-6226)
+- spec file:
+  * fix build dependencies for regenerate_initrd_posttrans
+  (bsc#1215772)
+  * add missing rules file
+
+-------------------------------------------------------------------
+Thu Sep 21 20:17:46 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 1.48
+  * udev rules: new, configurable scheme for creating symlinks for SCSI devices
+    (jsc#PED-6226)
+    See description of ".SCSI_ID_SERIAL_SRC" /usr/lib/udev/55-scsi-sg3_id.rules
+    and .SCSI_SYMLINK_SRC in /usr/lib/udev/58-scsi_symlink.rules
+  * decoding utilities: add -j/--json[=JO] and --js-file=JFN options
+  * sg_sat_datetime: new tool to access date/time on ATA devices using a SAT layer
+  * sg_z_act_query: new tool for sending zone activate/query commands
+  * sg_rem_rest_elem: new tool for removing or restoring elements
+  * sg_write_attr: support for SPC "Write Attirbute" command (for tapes)
+  * sg_ses: swap meaning of -H and -HH, add json support, use e.g.
+    "0:2" for range indicator
+  * sg_rtpg: fix response truncation
+  * sg_decode_sense: add --nodecode option
+  * sg_logs: fix --list and -lll options
+  * sg_modes: improve handling of ZBC disks
+  * sg_inq: add version descriptors from SPC6r08, add --quiet option
+  * sg_vpd: add --sinq_inraw=RFN option
+  * sg_turs: add --timeout= and --ascq= options
+  * sg_requests: add --timeout= option
+  * sg_sat_read_gplog: add --smart and --ppt options
+  * sgp_dd and sgm_dd: add --progress option
+  * sg_dd: add support for accessing NVMe devices via passthrough
+  * Bug fixes and minor fixes
+- _service: simplify version processing, as we have a clean upstream version again
+
+-------------------------------------------------------------------
 Fri Jan 27 15:45:58 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 1.48~20221101+1.142dace:
@@ -9,7 +55,8 @@ Thu Nov 03 20:15:14 UTC 2022 - mwilck@suse.com
 
 - Update to new upstream version 1.48~20221101.6d3bd26:
   (pre-release sg3_utils-1.48 [20221101] [svn: r978])
-  * sg_read_block_limits: fix granularity value, add --mloi option; sg_lib: add sg_ll_read_block_limits_v2(); sg_logs: json work
+  * sg_read_block_limits: fix granularity value, add --mloi option
+  * sg_lib: add sg_ll_read_block_limits_v2(); sg_logs: json work
   * sg_stream_ctl: --get fix better; sg_rem_rest_elem: cleanup
   * sg_stream_ctl: fix --get indexing; fix some './configure --enable-debug' issues
   * sg_inq+sg_vpd: JSON updates
