@@ -41,4 +41,16 @@
 - Move from tar.xz to zst vor vendor tarball</comment>
     <requestid>1069881</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f9d00923e190eec03f4f7be122ac1ba3</srcmd5>
+    <version>0.14.1</version>
+    <time>1696619670</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.1:
+  * [Added] Also look for a config file in /etc/procs/procs.toml #533
+  * [Added] less compatible keybinding of built-in pager
+  * [Added] show_kthreads config #446
+  * [Fixed] procs -i Pid displays Parent PID, not PID, sometimes #457</comment>
+    <requestid>1116024</requestid>
+  </revision>
 </revisionlist>
