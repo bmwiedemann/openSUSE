@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct  6 05:52:19 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Update to 0.23.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.23.0
+  * Mplex deprecation
+  * Gateway: meaningful CAR responses on Not Found errors
+  * Gateway: added Gateway.DisableHTMLErrors configuration option
+  * Binary characters in file names: no longer works with old clients and new Kubo servers
+  * Self-hosting /routing/v1 endpoint for delegated routing needs
+  * Trustless Gateway Over Libp2p Experiment
+  * Removal of /quic (Draft 29) support
+  * Better Caching of multiaddresses for providers in DHT servers
+  * Fixed FUSE multiblock structures
+
+-------------------------------------------------------------------
 Wed Aug  9 17:14:10 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to 0.22.0 - for details see

@@ -19,4 +19,22 @@ now with fixed build</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1104228</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>81301be573957ccad660a973b930459c</srcmd5>
+    <version>0.23.0</version>
+    <time>1696619654</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.23.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.23.0
+  * Mplex deprecation
+  * Gateway: meaningful CAR responses on Not Found errors
+  * Gateway: added Gateway.DisableHTMLErrors configuration option
+  * Binary characters in file names: no longer works with old clients and new Kubo servers
+  * Self-hosting /routing/v1 endpoint for delegated routing needs
+  * Trustless Gateway Over Libp2p Experiment
+  * Removal of /quic (Draft 29) support
+  * Better Caching of multiaddresses for providers in DHT servers
+  * Fixed FUSE multiblock structures</comment>
+    <requestid>1115959</requestid>
+  </revision>
 </revisionlist>
