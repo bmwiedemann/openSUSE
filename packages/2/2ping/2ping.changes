@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  4 12:10:52 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove dependency on /usr/bin/python3 using %python3_fix_shebang
+  macro, bsc#1212476
+
+-------------------------------------------------------------------
 Fri Oct 15 11:48:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop ProtectClock hardening, can cause issues if other device acceess is needed

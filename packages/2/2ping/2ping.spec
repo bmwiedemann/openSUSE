@@ -1,7 +1,7 @@
 #
 # spec file for package 2ping
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Source1:        https://www.finnie.org/software/2ping/%{name}-%{version}.tar.gz.
 Source2:        %{name}.keyring
 Patch0:         harden_2ping.service.patch
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel >= 3.6
 BuildRequires:  python3-distro
 BuildRequires:  python3-dnspython
@@ -62,6 +63,9 @@ install -Dp -m 0644 doc/2ping.1 %{buildroot}%{_mandir}/man1/2ping6.1
 
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc2ping
+
+# Fix python shebangs
+%python3_fix_shebang
 
 # create symlinks for man pages
 %fdupes -s %{buildroot}%{_mandir}
