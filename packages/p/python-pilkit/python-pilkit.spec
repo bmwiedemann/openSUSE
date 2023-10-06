@@ -1,7 +1,7 @@
 #
 # spec file for package python-pilkit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-pilkit
-Version:        2.0
+Version:        3.0
 Release:        0
 Summary:        A collection of utilities and processors for the Python Imaging Libary
 License:        BSD-3-Clause
 URL:            https://github.com/matthewwithanm/pilkit/
 Source:         https://files.pythonhosted.org/packages/source/p/pilkit/pilkit-%{version}.tar.gz
-Patch0:         pil-fix-test.patch
-Patch1:         switch-to-pytest.patch
-# https://github.com/matthewwithanm/pilkit/issues/54
-Patch2:         python-pilkit-no-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -36,6 +32,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module pytest}
 # /SECTION
+Requires:       python-Pillow
 %python_subpackages
 
 %description
@@ -62,6 +59,7 @@ interface for performing manipulations on PIL images.
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pilkit
+%{python_sitelib}/pilkit-%{version}*-info
 
 %changelog

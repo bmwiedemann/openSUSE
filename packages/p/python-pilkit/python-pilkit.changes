@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct  5 08:36:31 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.0
+  * Create Convert processor and GaussianBlur processor
+  * Updating histogram entropy implementations
+  * Make processors.Resize more memory-efficient
+  * Added WebP as a transparency format
+  * Use pytest instead of nose
+  * Make it compatible with Pillow10
+  * test: use unittest.mock instead of mock
+- Drop merged patches:
+  * switch-to-pytest.patch
+  * python-pilkit-no-mock.patch
+  * pil-fix-test.patch
+
+-------------------------------------------------------------------
 Wed Apr  6 10:37:26 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build
