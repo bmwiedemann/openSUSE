@@ -216,4 +216,16 @@
     <comment></comment>
     <requestid>1081770</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>4c126a811eced23a98865bb1f741f9ce</srcmd5>
+    <version>4.9</version>
+    <time>1696619532</time>
+    <user>anag+factory</user>
+    <comment>- Use libalternatives instead of update-alternatives.
+  * Fix threading issue introduced in 4.7
+- update to 4.7 (CVE-2020-25658 bsc#1178676):
+  * Declare &amp; test support for Python 3.9
+- update to 4.6.0 (CVE-2020-13757 bsc#1172389):</comment>
+    <requestid>1116020</requestid>
+  </revision>
 </revisionlist>
