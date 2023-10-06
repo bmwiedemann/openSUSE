@@ -3711,4 +3711,14 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   one failing test on s390x</comment>
     <requestid>1114685</requestid>
   </revision>
+  <revision rev="282" vrev="1">
+    <srcmd5>7bf9da837d977a92f10a7fe282d5fcbc</srcmd5>
+    <version>7.1.1.19</version>
+    <time>1696619558</time>
+    <user>anag+factory</user>
+    <comment>- version update to 7.1.1.19
+  * https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+  * fixes CVE-2023-5341 [bsc#1215939]</comment>
+    <requestid>1115839</requestid>
+  </revision>
 </revisionlist>

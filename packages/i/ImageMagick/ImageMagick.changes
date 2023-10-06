@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  5 13:02:20 UTC 2023 - pgajdos@suse.com
+
+- version update to 7.1.1.19
+  * https://github.com/ImageMagick/Website/blob/main/ChangeLog.md
+  * fixes CVE-2023-5341 [bsc#1215939]
+
+-------------------------------------------------------------------
 Fri Sep 29 13:19:30 UTC 2023 - pgajdos@suse.com
 
 - allow verbose perl tests
