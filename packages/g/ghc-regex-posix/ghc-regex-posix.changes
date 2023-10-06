@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 28 18:44:30 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update regex-posix to version 0.96.0.1 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Jul  7 19:37:42 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update regex-posix to version 0.96.0.1 revision 2.
