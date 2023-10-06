@@ -26,7 +26,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-rtslib-fb
-Version:        2.1.75
+Version:        2.1.76
 Release:        0%{?dist}
 Summary:        API for Linux kernel SCSI target (aka LIO)
 License:        Apache-2.0

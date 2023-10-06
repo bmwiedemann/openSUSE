@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 05 09:08:31 UTC 2023 - dmueller@suse.com
+
+- Update to version v2.1.76:
+  * version 2.1.76
+  * rtslib: remove the limit of 255 max mapped LUNs
+  * setup.py: match __version__ with optional trailing ".g<hash>".
+  * rtslib: Don't create /var/run on import
+  * Fix inability to create ACLs for some FC cards
+
+-------------------------------------------------------------------
 Fri Apr 21 12:33:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

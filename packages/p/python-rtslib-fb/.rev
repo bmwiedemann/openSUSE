@@ -268,4 +268,17 @@
     <comment></comment>
     <requestid>1081769</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>5c0f37bfb15c7cd2041c260bd84357e3</srcmd5>
+    <version>2.1.76</version>
+    <time>1696619551</time>
+    <user>anag+factory</user>
+    <comment>- Update to version v2.1.76:
+  * version 2.1.76
+  * rtslib: remove the limit of 255 max mapped LUNs
+  * setup.py: match __version__ with optional trailing &quot;.g&lt;hash&gt;&quot;.
+  * rtslib: Don't create /var/run on import
+  * Fix inability to create ACLs for some FC cards</comment>
+    <requestid>1115776</requestid>
+  </revision>
 </revisionlist>
