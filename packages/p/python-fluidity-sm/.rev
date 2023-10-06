@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1081918</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>aa68c9f220e9ac9e1fae3f43ed224aa6</srcmd5>
+    <version>0.2.0</version>
+    <time>1696619530</time>
+    <user>anag+factory</user>
+    <comment>- Include in SLE-15 (bsc#1176785, jsc#ECO-3105, jsc#PM-2352)</comment>
+    <requestid>1115975</requestid>
+  </revision>
 </revisionlist>

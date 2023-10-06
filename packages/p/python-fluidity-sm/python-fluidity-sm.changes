@@ -9,6 +9,11 @@ Thu Apr 13 22:41:23 UTC 2023 - Matej Cepl <mcepl@suse.com>
 - Make calling of %{sle15modernpython} optional.
 
 -------------------------------------------------------------------
+Mon Dec 14 17:46:52 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Include in SLE-15 (bsc#1176785, jsc#ECO-3105, jsc#PM-2352)
+
+-------------------------------------------------------------------
 Sat Aug 11 11:30:47 UTC 2018 - tchvatal@suse.com
 
 - Initial package, required by python-invoke, was bundled
