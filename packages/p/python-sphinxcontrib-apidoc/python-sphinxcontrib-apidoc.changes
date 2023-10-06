@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct  5 09:06:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.0:
+  * Remove docs build
+  * Fix lint issues
+  * Configure trusted publishing
+  * Migrate to Python 3-style type annotations
+  * Bump sphinx minimum
+  * Remove pytest upper cap
+  * Migrate to pre-commit
+  * Drop Python < 3.8 support
+  * Migrate from Travis to GitHub Actions
+  * tests: Handle Sphinx < 7.2
+  * fix tests with Sphinx 7.2
+  * README: Fix typo
+  * travis: Update PyPI password
+- drop sphinx72.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Aug 30 11:27:32 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - add sphinx72.patch to fix tests, sent upstream

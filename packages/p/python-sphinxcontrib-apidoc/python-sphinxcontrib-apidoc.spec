@@ -27,20 +27,18 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-apidoc%{psuffix}
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        A Sphinx extension for running 'sphinx-apidoc' on each build
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://www.sphinx-doc.org/
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-apidoc/sphinxcontrib-apidoc-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM https://github.com/sphinx-contrib/apidoc/pull/18 fix tests with Sphinx 7.2
-Patch:          sphinx72.patch
 BuildRequires:  %{python_module pbr >= 4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx >= 1.6.0
+Requires:       python-Sphinx >= 5.0.0
 Requires:       python-pbr
 BuildArch:      noarch
 # SECTION test requirements

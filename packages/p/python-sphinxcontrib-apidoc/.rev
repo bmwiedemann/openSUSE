@@ -39,4 +39,26 @@
     <comment></comment>
     <requestid>1108099</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>df1481a4a155ab72d2f3e1c904fe0661</srcmd5>
+    <version>0.4.0</version>
+    <time>1696619552</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.0:
+  * Remove docs build
+  * Fix lint issues
+  * Configure trusted publishing
+  * Migrate to Python 3-style type annotations
+  * Bump sphinx minimum
+  * Remove pytest upper cap
+  * Migrate to pre-commit
+  * Drop Python &lt; 3.8 support
+  * Migrate from Travis to GitHub Actions
+  * tests: Handle Sphinx &lt; 7.2
+  * fix tests with Sphinx 7.2
+  * README: Fix typo
+  * travis: Update PyPI password
+- drop sphinx72.patch (upstream)</comment>
+    <requestid>1115778</requestid>
+  </revision>
 </revisionlist>
