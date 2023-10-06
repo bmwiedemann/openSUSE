@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 05 11:18:18 CEST 2023 - aschnell@suse.com
+
+- updated fatresize to version 0.2 which includes a man-page
+  removed patches:
+  - fatresize-fix-getting-dev-name.patch
+
+-------------------------------------------------------------------
 Thu Jun 23 07:34:55 CEST 2022 - aschnell@suse.com
 
 - drop type flag (SUSE specific) to fix bsc#1190847
@@ -1816,7 +1823,7 @@ Thu Jun 27 11:18:53 CEST 2002 - fehr@suse.de
 -------------------------------------------------------------------
 Mon Jun 10 12:55:00 CEST 2002 - fehr@suse.de
 
-- add patch to resize also partitions with unkown fs under YaST2
+- add patch to resize also partitions with unknown fs under YaST2
 
 -------------------------------------------------------------------
 Tue May  7 13:04:28 CEST 2002 - fehr@suse.de

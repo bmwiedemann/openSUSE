@@ -1,7 +1,7 @@
 #
 # spec file for package parted
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source1:        ftp://ftp.gnu.org/gnu/parted/%{name}-%{version}.tar.xz.sig
 # Taken from https://savannah.gnu.org/project/release-gpgkeys.php?group=parted&download=1
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-Source4:        fatresize-0.1.tar.bz2
+Source4:        fatresize-0.2.tar.xz
 # Build patches
 Patch1:         parted-2.4-ncursesw6.patch
 
@@ -67,7 +67,6 @@ Patch39:        type-command.patch
 # bsc#1164907
 # Fatresize
 Patch100:       parted-fatresize-autoconf.patch
-Patch101:       fatresize-fix-getting-dev-name.patch
 # Tests patches
 Patch156:       tests-add-helper-require_swap_.patch
 Patch157:       tests-add-dev-md-check-to-t6100.patch
@@ -161,7 +160,6 @@ to develop applications that require these.
 %patch38 -p1
 %patch39 -p1
 %patch100 -p1
-%patch101 -p1
 %patch156 -p1
 %patch157 -p1
 %patch158 -p1
@@ -204,6 +202,7 @@ rm %{buildroot}%{_libdir}/*.la
 %doc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
 %{_sbindir}/*
 %{_mandir}/man8/part*.8.gz
+%{_mandir}/man8/fatresize.8.gz
 %doc %{_infodir}/*.info*
 
 %files devel
