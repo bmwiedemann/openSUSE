@@ -52,7 +52,7 @@ BuildArch:      noarch
 %if %{with test}
 # dnssec
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module curio >= 1.2}
+# BuildRequires:  %%{python_module curio >= 1.2}
 BuildRequires:  %{python_module h2}
 # doh:
 BuildRequires:  %{python_module httpx}
@@ -61,8 +61,8 @@ BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module requests}
-# curio
-BuildRequires:  %{python_module sniffio >= 1.1}
+# # curio
+# BuildRequires:  %%{python_module sniffio >= 1.1}
 # trio
 BuildRequires:  %{python_module trio >= 0.14.0}
 BuildRequires:  %{python_module typing}

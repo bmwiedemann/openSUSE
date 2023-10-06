@@ -372,4 +372,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1107881</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>581d3235def346d7cacb1590799be5cd</srcmd5>
+    <version>2.4.2</version>
+    <time>1696619566</time>
+    <user>anag+factory</user>
+    <comment>- Don't use curio.
+</comment>
+    <requestid>1115900</requestid>
+  </revision>
 </revisionlist>
