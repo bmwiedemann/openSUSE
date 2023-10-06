@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 19 08:26:26 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 1.11.1:
+  * Revert “plugin/forward: Continue waiting after receiving malformed responses
+  * plugin/dnstap: add support for “extra” field in payload
+  * plugin/cache: fix keepttl parsing
+
+- Update to version 1.11.0:
+  * Adds support for accepting DNS connections over QUIC (doq).
+  * Adds CNAME target rewrites to the rewrite plugin.
+  * Plus many bug fixes, and some security improvements.
+
+  * This release introduces the following backward incompatible changes:
+   + In the kubernetes plugin, we have dropped support for watching Endpoint and Endpointslice v1beta, 
+     since all supported K8s versions now use Endpointslice.
+   + The bufsize plugin changed its default size limit value to 1232
+   + Some changes to forward plugin metrics.
+
+- Update to version 1.10.1:
+  * Corrected architecture labels in multi-arch image manifest
+  * A new plugin timeouts that allows configuration of server listener timeout durations
+  * acl can drop queries as an action
+  * template supports creating responses with extended DNS errors
+  * New weighted policy in loadbalance
+  * Option to serve original record TTLs from cache
+
+-------------------------------------------------------------------
 Tue Nov  1 10:37:02 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.10.0:
