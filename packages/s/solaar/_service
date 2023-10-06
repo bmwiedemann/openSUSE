@@ -1,10 +1,10 @@
 <services>
-    <service name="obs_scm" mode="disabled">
+    <service name="obs_scm" mode="manual">
         <param name="url">https://github.com/pwr-Solaar/Solaar</param>
         <param name="scm">git</param>
         <param name="exclude">.git</param>
-        <param name="revision">1.1.9</param>
-        <param name="version">1.1.9</param>
+        <param name="revision">1.1.10</param>
+        <param name="version">1.1.10</param>
         <param name="changesgenerate">enable</param>
     </service>
     <service name="tar" mode="buildtime" />

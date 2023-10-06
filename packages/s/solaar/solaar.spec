@@ -16,12 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define pythons python3
-%define skip_python2 1
-%define skip_python36 1
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
+%global pythons python311
+%else
+%global pythons python3
+%endif
+
 Name:           solaar
-Version:        1.1.9
+Version:        1.1.10
 Release:        0
 Summary:        Linux devices manager for the Logitech Unifying Receiver
 License:        GPL-2.0-or-later

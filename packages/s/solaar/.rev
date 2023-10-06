@@ -602,4 +602,57 @@
 </comment>
     <requestid>1078468</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e200cf431c68995501f6467b0d62a07f</srcmd5>
+    <version>1.1.10</version>
+    <time>1696619637</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.1.10:
+  * release 1.1.10
+  * pointer to NixOS flake package
+  * release 1.1.10.rc3
+  * release 1.1.10rc2
+  * tools: permit BT devices for hidconsole with hidpp
+  * device: add descriptor for Logitech MX Revolution Mouse M-RCL 124
+  * device: allow return device 00 for BT device ff
+  * device: improve determination of short or long messages
+  * device: add descriptor for G500s
+  * tools: fix bug in scan-registers
+  * rules: add single depress and release options for rule mouse click action
+  * rules: add rule condition for hostname
+  * tools: update keysym generation to current list of keysyms
+  * tools: allow device 0 in hidconsole
+  * Update Arch repository name and link
+  * doc: install recent version before opening issues
+  * device: upgrade messages when no supported device found
+  * Documentation update to mention the gnome extension to get rules working under Wayland (#2103)
+  * Remove udev-acl tag from udev rules
+  * Add support for process condition under wayland using solaar-gnome-extension (#2101)
+  * Updated German Translation
+  * po: update pot-file
+  * po: Update zh_TW Traditional Chinese locale
+  * hidapi: retry open several times with short wait to allow for delay in setting up permissions
+  * Update French translation
+  * Update French translation for 1.1.9 release
+  * Update about.py
+  * device: add new ID for G733 Headset
+  * misc: restore tools/clean.sh
+  * device: add bluetooth keyboard C714
+  * tools: update scan-registers.sh to fix a bug and scan pairing registers
+  * device: remove assertion on last byte of ping responses
+  * ui: add symbolic version of solaar icon
+  * docs: add description of several devices
+  * device: add MX Vertical mouse (#2053)
+  * device: when finding name or codename ping if not known to be online
+  * device: fix bug in decoding G keys notification
+  * docs: Standardise URLs and fix wording in i18n.md
+  * docs: Fix wording in installation.md (#2040)
+  * docs: Fix link and wording in devices.md (#2039)
+  * docs: Add missing word in usage.md (#2038)
+  * ui: put version in initial INFO logging message
+  * ui: rearrange code in tray.py
+- Ensure to only use one python version
+</comment>
+    <requestid>1115878</requestid>
+  </revision>
 </revisionlist>
