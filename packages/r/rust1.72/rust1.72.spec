@@ -26,9 +26,9 @@
 # We may need a minimum gcc version for some linker flags
 # This is especially true on leap/sle
 #
-# ⚠️   11 is required for a number of linker flags to be supported in sle.
+# ⚠️   11 or greater is required for a number of linker flags to be supported in sle.
 #
-%global gcc_version 11
+%global gcc_version 12
 %endif
 
 #KEEP NOSOURCE DEBUGINFO
