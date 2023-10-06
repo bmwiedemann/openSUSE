@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Oct 06 13:02:20 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.29.2:
+  * fix: don't fail when $HOME isn't defined
+  * fix: ignore custom IDs
+  * refactor: use our new glob package
+  * fix: `gobwas/glob` -> `bmatcuk/doublestar`
+  * refactor: rollback case change for now
+  * feat: ensure suggestions match case of token
+- Packaging improvements:
+  * Fix E: summary-too-long Summary: must not exceed 79 characters
+
+-------------------------------------------------------------------
+Fri Oct 06 12:59:54 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.29.1:
+  * fix: don't shift the offset for large files
+  * chore: new action
+
+-------------------------------------------------------------------
+Fri Oct 06 12:56:46 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.29.0:
+  * test: add case for `script` with custom message
+  * fix: fragments should only be assigned for markup
+  * test: add TypeScript case
+  * feat: Add Optional Custom Message to Script Match (#682)
+  * fix: Remove additional `--update` for apk in Dockerfile (#675)
+
+-------------------------------------------------------------------
 Thu Sep 07 22:16:47 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 2.28.3:

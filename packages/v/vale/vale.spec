@@ -17,9 +17,9 @@
 
 
 Name:           vale
-Version:        2.28.3
+Version:        2.29.2
 Release:        0
-Summary:        CLI tool to lint prose text with syntax awareneness and extensible markup format support
+Summary:        CLI tool to lint text with extensible markup format support
 License:        MIT
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/errata-ai/vale
