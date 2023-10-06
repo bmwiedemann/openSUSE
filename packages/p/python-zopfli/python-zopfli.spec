@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zopfli
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Zopfli module for python
 License:        Apache-2.0
 URL:            https://github.com/obp/py-zopfli
 Source:         https://files.pythonhosted.org/packages/source/z/zopfli/zopfli-%{version}.zip
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
