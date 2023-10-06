@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 05 06:32:34 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 0.92.0:
+  * bump deps to latest version
+  * fix: deterministic java purls (#2170)
+
+- Update to version 0.91.0:
+  * fix: prevent errors from clobbering terminal (#2161)
+  * Require ordering of relationships when comparing parser output (#2160)
+  * Add containerd support (#1793)
+  * feat: add dependency information to conan lockfile parser (#2131)
+  * fix: encode and decode FileLicenses and FileContents in Syft JSON (#2083)
+  * feat: add cyclonedx schema version selection (#2123)
+  * fix: allow cyclonedx json input with no components (#2127)
+  * fix source-version typo in flag description (#2126)
+
+- Update to version 0.90.0:
+  * fix(help): power-user help text to indicate it supports file-system (#2113)
+  * fix: update codeql-analysis for go 1.21 (#2108)
+  * feat(cmd/update): add UA header with current ver when check for update (#2100)
+  * fix(cdx): validate external refs before encoding (#2091)
+  * fix: correct group IDs for commons-codec, okhttp, okio, and add integration tests for Java PURL generation (#2075)
+
+-------------------------------------------------------------------
 Tue Sep 05 14:57:48 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.89.0:
