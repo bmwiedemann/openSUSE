@@ -599,9 +599,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20231006'
+    <value>failed: ''
 published: '20231005'
-publishing: '20231005'
+publishing: '20231006'
 testing: '20231006'
 </value>
   </attribute>
