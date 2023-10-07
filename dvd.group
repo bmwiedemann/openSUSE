@@ -2388,8 +2388,8 @@
     <package name="libpotrace0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libpq5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libpresage1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libproc2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
+    <package name="libproc2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
+    <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprotobuf-lite23_4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3371,10 +3371,10 @@
     <package name="prison-qt5-imports" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="procinfo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="procmail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="procps" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
-    <package name="procps-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
-    <package name="procps4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="procps4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="procps" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="procps-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="procps4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
+    <package name="procps4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="psmisc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="psmisc-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="psutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->

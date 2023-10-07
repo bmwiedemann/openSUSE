@@ -4242,6 +4242,8 @@ unsorted:
   - fslsfonts 
   - fstl 
   - fstobdf 
+  - fstrcmp 
+  - fstrcmp-devel 
   - fstrm 
   - fstrm-devel 
   - fsverity-utils 
@@ -12029,6 +12031,7 @@ unsorted:
   - libfsrefs-tools 
   - libfsrefs1 
   - libfst25 
+  - libfstrcmp0 
   - libfsverity0 
   - libfsxfs-devel 
   - libfsxfs-tools 
@@ -21223,6 +21226,7 @@ unsorted:
   - perl-Spreadsheet-Read 
   - perl-Spreadsheet-Read-scripts 
   - perl-Spreadsheet-ReadSXC 
+  - perl-Spreadsheet-WriteExcel 
   - perl-Spreadsheet-XLSX 
   - perl-Starman 
   - perl-Statistics-CaseResampling 
@@ -24526,6 +24530,7 @@ unsorted:
   - python310-hcloud 
   - python310-hdf5storage 
   - python310-healpy 
+  - python310-healpy-devel 
   - python310-helpdev 
   - python310-hepunits 
   - python310-hetzner 
@@ -27964,6 +27969,7 @@ unsorted:
   - python311-hcloud 
   - python311-hdf5storage 
   - python311-healpy 
+  - python311-healpy-devel 
   - python311-helpdev 
   - python311-hepunits 
   - python311-hetzner 
@@ -31384,6 +31390,7 @@ unsorted:
   - python39-hcloud 
   - python39-hdf5storage 
   - python39-healpy 
+  - python39-healpy-devel 
   - python39-helpdev 
   - python39-hepunits 
   - python39-hetzner 
@@ -46582,7 +46589,6 @@ unsorted:
   - zim 
   - zim-lang 
   - zimg-devel 
-  - zinc 
   - zinnia 
   - zinnia-devel 
   - zinnia-tomoe 
