@@ -72,6 +72,7 @@ BuildRequires:  libxslt
 BuildRequires:  mozilla-nss-tools
 BuildRequires:  openssl
 BuildRequires:  perl
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-coverage
 BuildRequires:  python3-devel >= 3.6
 BuildRequires:  python3-flake8
@@ -174,6 +175,12 @@ done
 
 for f in %{buildroot}%{_datarootdir}/crypto-policies/DEFAULT/* ; do
     ln -sf %{_datarootdir}/crypto-policies/DEFAULT/$(basename $f) %{buildroot}%{_sysconfdir}/crypto-policies/back-ends/$(basename $f .txt).config
+done
+
+# Fix shebang in scripts
+for f in %{buildroot}%{_datadir}/crypto-policies/python/*
+do
+  [ -f $f ] && sed -i "1s@#!.*python.*@#!$(realpath %__python3)@" $f
 done
 
 %py3_compile %{buildroot}%{_datadir}/crypto-policies/python
