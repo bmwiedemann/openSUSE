@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct  2 04:58:40 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead.
+  * _service change tar and recompress from buildtime to manual
+  * _service obs_scm param revision use git tag
+  * _service obs_scm param versionformat use @PARENT_TAG@
+  * _service set_version move earlier in service ordering
+  * Update to BuildRequires: golang(API) >= 1.18 matching go.mod
+  * Drop BuildRequires: fdupes and usage during install step. Go
+    application packages have a small number of installed files and
+    this hasn't been an issue following the transition from GOPATH
+    (where sources were installed) to Go modules where only
+    binaries and supporting files e.g. doc, license are installed.
+  * Use %%name macro where applicable to normalize common lines
+    across Go app packages. Also makes renaming binary easier when
+    required to handle package name conflict.
+
+-------------------------------------------------------------------
+Tue Aug 29 09:11:54 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Initial package version version 0.2
+
+-------------------------------------------------------------------
 Wed May 11 16:07:19 UTC 2022 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - seidl is a CLI tool to query Public Cloud Information Tracker

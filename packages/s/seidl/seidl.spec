@@ -1,7 +1,7 @@
 #
 # spec file for package seidl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,18 @@
 
 Name:           seidl
 Summary:        Complementary light pint client
-Url:            https://github.com/grisu48/seidl
-Version:        0.1
+URL:            https://github.com/grisu48/seidl
+Version:        0.2
 Release:        0
 License:        MIT
 Group:          Metapackages
-Source:         seidl-%{version}.tar.gz
-BuildRequires:  fdupes
-BuildRequires:  go >= 1.14
+Source:         %{name}-%{version}.tar.gz
+BuildRequires:  golang(API) >= 1.18
 
 %description
 seidl is a lightweight pint query utility designed for easy usage. It displays the current SUSE publiccloud images according to customizable filter rules.
 
 In aims at complementing the public-cloud-info-client by the feature to display all current not-deleted and not-deprecated images in a nice table on the console.
-
 
 %prep
 %autosetup -D
@@ -40,13 +38,11 @@ In aims at complementing the public-cloud-info-client by the feature to display 
 make seidl
 
 %install
-install -D -m 0755 seidl "%{buildroot}/%{_bindir}/seidl"
-
-%fdupes %{buildroot}
+install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
 
 %files
 %doc README.md
 %license LICENSE
-%{_bindir}/seidl
+%{_bindir}/%{name}
 
 %changelog

@@ -7,4 +7,16 @@
     <comment>New package seidl is a CLI tool to query pint.suse.com Public Cloud Information Tracker</comment>
     <requestid>976445</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>82b4b909b462f85fa873956e261680d8</srcmd5>
+    <version>0.2</version>
+    <time>1696760302</time>
+    <user>anag+factory</user>
+    <comment>- Packaging improvements:
+  * _service obs_scm param revision use git tag
+  * _service obs_scm param versionformat use @PARENT_TAG@
+  * _service set_version move earlier in service ordering
+- Restore original initial changelog entry per declined Factory SR. (forwarded request 1116097 from jfkw)</comment>
+    <requestid>1116098</requestid>
+  </revision>
 </revisionlist>
