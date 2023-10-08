@@ -26,4 +26,16 @@
   for (NV CUDA and AMD HSA).</comment>
     <requestid>1112901</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>db8f53041ee283989299bebfff7d7087</srcmd5>
+    <version>17.0.2</version>
+    <time>1696760244</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 17.0.2.
+  * This release contains bug-fixes for the LLVM 17.0.0 release.
+    This release is API and ABI compatible with 17.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+</comment>
+    <requestid>1116228</requestid>
+  </revision>
 </revisionlist>

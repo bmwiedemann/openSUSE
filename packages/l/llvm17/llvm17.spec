@@ -16,7 +16,7 @@
 #
 
 
-%global _relver 17.0.1
+%global _relver 17.0.2
 %global _version %_relver%{?_rc:rc%_rc}
 %global _tagver %_relver%{?_rc:-rc%_rc}
 %global _sonum  17
@@ -24,7 +24,7 @@
 %global _soname %{_sonum}%{?_sosuffix}
 %global _itsme17 1
 # Integer version used by update-alternatives
-%global _uaver  1701
+%global _uaver  1702
 %global _soclang 13
 %global _socxx  1
 
@@ -352,9 +352,7 @@ Source7:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%
 Source8:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/lld-%{_version}.src.tar.xz
 Source9:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/lldb-%{_version}.src.tar.xz
 Source10:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/polly-%{_version}.src.tar.xz
-# Currently not available from GitHub, so built manually from the git repository:
-# cd runtimes; git archive --prefix=runtimes-%{_version}.src/ llvmorg-%{_tagver} . | xz -T0 >../runtimes-%{_version}.src.tar.xz
-Source11:       runtimes-%{_version}.src.tar.xz
+Source11:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/runtimes-%{_version}.src.tar.xz
 # We shouldn't actually use this, but it's hard to untangle from the build.
 Source12:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/third-party-%{_version}.src.tar.xz
 Source13:       https://github.com/llvm/llvm-project/raw/llvmorg-%{_tagver}/libunwind/include/mach-o/compact_unwind_encoding.h
@@ -370,6 +368,7 @@ Source37:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%
 Source38:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/lld-%{_version}.src.tar.xz.sig
 Source39:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/lldb-%{_version}.src.tar.xz.sig
 Source40:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/polly-%{_version}.src.tar.xz.sig
+Source41:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/runtimes-%{_version}.src.tar.xz.sig
 Source42:       https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/third-party-%{_version}.src.tar.xz.sig
 # Docs are created manually, see below
 Source50:       llvm-docs-%{_version}.src.tar.xz
