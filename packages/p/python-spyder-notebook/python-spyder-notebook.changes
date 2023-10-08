@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Wed Sep 27 09:34:02 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix tests: Use xvfb and missing test notebook
+
+-------------------------------------------------------------------
+Sat Aug 26 15:51:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Specfile for v0.5.1
+- Reintroducing: The old version has been removed from openSUSE
+  years ago, but this one is recent and works with the new
+  notebook 7
