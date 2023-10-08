@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:43:27 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde59, rebased upstream:
+  * Client: Avoid locking resizing in QWaylandShmBackingStore
+  * Client: Remove some surface commits
+  * tests: Fix tst_xdgshell::minMaxSize()
+  * Client: Commit the initial surface state explicitly
+  * Remove unused variables
+  * QtWaylandCompositor: includemocs
+  * QtWaylandClient: includemocs
+  * QtWaylandEglClientHwIntegrationPrivate: includemocs
+  * QtWaylandTextureSharing: includemocs
+  * QWaylandXdgShellIntegrationPlugin: includemocs
+  * QtWlShellIntegrationPrivate: includemocs
+  * Add missing QT_{BEGIN,END}_NAMESPACE
+
+-------------------------------------------------------------------
+Thu Sep 28 12:11:23 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.10+kde58:
+  * Client: Fix the mouse being stuck in pressed state after DnD
+  * client: Fix infinite recursion with text-input-v2
+  * Client: Fix buffer damage
+  * Replace scale with devicePixelRatio for non-integer scaling
+  * Convert cursor bitmap to supported format
+  * client: Fix crash on dnd updates after client facing drag ends
+  * Destroy frame queue before display
+
+-------------------------------------------------------------------
 Tue Jun 13 12:59:48 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.10+kde51, rebased upstream:
