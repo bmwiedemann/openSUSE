@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:35:32 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde0, rebased upstream:
+  * Blacklist 1 tests in tst_dynamicnodecreation on ubuntu-20.04
+  * Start using a dedicated QThreadPool again instead of a global one
+  * RenderViewBuilder: use QAspectManager::idealThreadCount
+  * Qt3DQuick: includemocs
+  * Fix compile warnings
+  * Qt3DExtras: includemocs
+  * Qt3D Tests: includemocs
+  * Qt3DRender: includemocs
+  * FilterKey: fix ambiguous relational operators in C++20
+  * Fix various [=] lambda captures to capture [this] instead
+  * Qt3DCore: includemocs
+  * Qtquick3danimationplugin: includemocs
+  * Qtquick3dlogicplugin: includemocs
+  * Qtquick3drenderplugin: includemocs
+  * Qtquick3dinputplugin: includemocs
+  * Qt3DQuickInput: includemocs
+  * QtAssimpSceneImportPlugin: includemocs
+  * QtDefaultGeometryLoaderPlugin: includemocs
+  * Qtqtquick3dcoreplugin: includemocs
+  * Qtqtquickscene3dplugin: includemocs
+  * Qt3DQuickAnimation: includemocs
+  * Qt3DInput: includemocs
+  * Qt3DQuickExtras: includemocs
+  * QtGLTFSceneImportPlugin: includemocs
+  * Qt3DAnimation: includemocs
+  * QtGLTFGeometryLoaderPlugin: includemocs
+  * Qt3DLogic: includemocs
+  * Qtquick3dextrasplugin: includemocs
+  * Qt3DQuickScene2D: includemocs
+  * Qt3DQuickRender: includemocs
+  * Qtqtquickscene2dplugin: includemocs
+  * QViewport documentation: fix wrong property type for gamma property
+  * CalcBoundingVolumeJob: don't rely on QChangeArbiter for extent changes
+  * Restore PLY support to Assimp
+
+-------------------------------------------------------------------
 Tue Jun 13 12:58:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.10+kde0, rebased upstream:

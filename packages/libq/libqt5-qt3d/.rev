@@ -366,4 +366,12 @@
     <comment>Qt 5.15.10, fixed libqt5-qtscript (forwarded request 1092905 from favogt)</comment>
     <requestid>1092925</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>2b3f6f441b925e08f0481a181a82cb77</srcmd5>
+    <version>5.15.11+kde0</version>
+    <time>1696760288</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.11. Not fully built yet, qtlocation needed a fix. (forwarded request 1116057 from favogt)</comment>
+    <requestid>1116103</requestid>
+  </revision>
 </revisionlist>
