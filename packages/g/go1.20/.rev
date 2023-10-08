@@ -208,4 +208,18 @@
   * Reformat adjacent commment in spec file (forwarded request 1109618 from jfkw)</comment>
     <requestid>1109621</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>567db8247f6e4836ef5b0e1f452f8cca</srcmd5>
+    <version>1.20.9</version>
+    <time>1696760175</time>
+    <user>anag+factory</user>
+    <comment>- go1.20.9 (released 2023-10-05) includes one security fixes to the
+  cmd/go package, as well as bug fixes to the go command and the
+  linker.
+  Refs boo#1206346 go1.20 release tracking
+  CVE-2023-39323
+  * go#63213 go#63211 boo#1215985 security: fix CVE-2023-39323 cmd/go: line directives allows arbitrary execution during build
+  * go#62597 cmd/link: issues with Apple's new linker in Xcode 15 beta (forwarded request 1115931 from jfkw)</comment>
+    <requestid>1115933</requestid>
+  </revision>
 </revisionlist>
