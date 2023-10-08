@@ -202,9 +202,8 @@ options="-Doptimize='%{optflags} -Wall -pipe'"
 # -mieee needed for bad alpha gcc optimization
 options="-Doptimize='%{optflags} -Wall -pipe -mieee'"
 %endif
-%ifarch ppc ppc64
+# Use 64-bit integers everywhere
 options="$options -Duse64bitint"
-%endif
 # this needs an installed perl, sorry
 archname=%(perl -V:archname | sed "s!.*='!!;s!'.*!!")
 test -n "$archname"

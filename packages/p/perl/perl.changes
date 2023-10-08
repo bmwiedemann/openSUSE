@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 21 10:51:15 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
+
+- Use 64-bit integers on all platforms
+
+-------------------------------------------------------------------
 Wed Jul 19 14:34:43 CEST 2023 - mls@suse.de
 
 - Update to perl 5.38.0

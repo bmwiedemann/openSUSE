@@ -1103,4 +1103,12 @@ I hope I got it right now. It export both 5.34.0 and 5.34.1 COMPAT. That should 
     <comment>- Update to perl 5.38.0</comment>
     <requestid>1101547</requestid>
   </revision>
+  <revision rev="131" vrev="2">
+    <srcmd5>1c32bb5058400c819dfb73fb1b79f514</srcmd5>
+    <version>5.38.0</version>
+    <time>1696760261</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115872</requestid>
+  </revision>
 </revisionlist>
