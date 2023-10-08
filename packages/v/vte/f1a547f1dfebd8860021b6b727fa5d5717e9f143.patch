@@ -1,0 +1,27 @@
+From f1a547f1dfebd8860021b6b727fa5d5717e9f143 Mon Sep 17 00:00:00 2001
+From: JCWasmx86 <JCWasmx86@t-online.de>
+Date: Wed, 20 Sep 2023 21:28:10 +0200
+Subject: [PATCH] widget: VteTerminalSpawnAsyncCallback's error is nullable
+
+Fixes: https://gitlab.gnome.org/GNOME/vte/-/issues/2647
+(cherry picked from commit 6552c7d9f866d13d3308dc5bc91d360f5a63ae3b)
+---
+ src/vtegtk.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/vtegtk.cc b/src/vtegtk.cc
+index 7257b0e3..0f4641dc 100644
+--- a/src/vtegtk.cc
++++ b/src/vtegtk.cc
+@@ -3929,7 +3929,7 @@ spawn_async_cb(GObject *source,
+  * VteTerminalSpawnAsyncCallback:
+  * @terminal: the #VteTerminal
+  * @pid: a #GPid
+- * @error: a #GError, or %NULL
++ * @error: (nullable): a #GError, or %NULL
+  * @user_data: user data that was passed to vte_terminal_spawn_async
+  *
+  * Callback for vte_terminal_spawn_async().
+-- 
+GitLab
+
