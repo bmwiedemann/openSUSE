@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  4 11:07:28 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add f1a547f1dfebd8860021b6b727fa5d5717e9f143.patch: widget:
+  VteTerminalSpawnAsyncCallback's error is nullable. Fixes:
+  https://gitlab.gnome.org/GNOME/vte/-/issues/2647
+
+-------------------------------------------------------------------
 Sun Sep 17 18:15:24 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 0.74.0:

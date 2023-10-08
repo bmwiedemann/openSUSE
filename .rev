@@ -1175,4 +1175,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1111862</requestid>
   </revision>
+  <revision rev="149" vrev="2">
+    <srcmd5>dc05a2d866857cb96968904ec6d7b869</srcmd5>
+    <version>0.74.0</version>
+    <time>1696760166</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115911</requestid>
+  </revision>
 </revisionlist>
