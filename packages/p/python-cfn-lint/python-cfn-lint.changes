@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct  6 07:05:59 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.80.4
+  * Update CloudFormation specs to `142.0.0` (#2889)
+  * Update rule (E2520) to allow for empty lists (#2891)
+- from version 0.80.3
+  * Update CloudFormation specs to `141.0.0` (#2879)
+  * Update rule (E2532) to include `CausePath` and `ErrorPath`
+    key types to `Fail` state (#2884)
+  * Update rule (E2520) to better match exclusive properties (#2886)
+- from version 0.80.2
+  * Revert change #2878 (#2882)
+- from version 0.80.1
+  * Update CloudFormation specs to `140.0.0` (#2870)
+  * Add `OriginAccessControlId` to `OnlyOne` (#2878)
+  * Allow `jsonschema` to be from v3.0.0 to v5 (#2838)
+- from version 0.79.11
+  * Update (E3031) so all regex checks are run (#2873)
+  * Update (E2520) to better skip properties we don't care about (#2875)
+- from version 0.79.10
+  * Update CloudFormation specs to `139.0.0` (#2865)
+  * Force regex to be at least 2022 for typing parameter (#2867)
+
+-------------------------------------------------------------------
 Thu Sep  7 13:22:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.79.9:

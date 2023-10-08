@@ -274,4 +274,12 @@
   * Add allowed values for AWS::Lambda::EventSourceMapping (pull</comment>
     <requestid>1109560</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>779fa3e9f265eb139f9abd0fb871808b</srcmd5>
+    <version>0.80.4</version>
+    <time>1696760277</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116044</requestid>
+  </revision>
 </revisionlist>
