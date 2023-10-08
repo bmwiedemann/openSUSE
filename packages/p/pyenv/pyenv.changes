@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct  6 07:42:24 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.29
+
+- Update to 2.3.29
+  - Add CPython 3.11.6 by @thecesrom in #2806
+  - Add GraalPy 23.1.0 definition using the faster Oracle GraalVM distribution by @eregon in #2812
+  - Install ncurses from Homebrew, if available by @aphedges in #2813
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.28...v2.3.29
+
+-------------------------------------------------------------------
+Thu Oct  5 06:02:24 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.28
+
+- Update to 2.3.28:
+  - Add CPython 3.12.0 by @edgarrmondragon in #2804
+  - Prioritize 'zlib from xcode sdk' flag correctly by @native-api in #2791
+  - Prefer OpenSSL 3 in Homebrew in 3.13-dev by @edgarrmondragon in #2793
+  - Add CPython 3.12.0rc3 by @saaketp in #2795
+  - Add graalpy-23.1.0 and split between graalpy and graalpy-community by @msimacek in #2796
+  - Update the OpenSSL dependency for Python 2.7.18 by @lpapp-foundry in #2797
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.27...v2.3.28
+
+-------------------------------------------------------------------
 Mon Sep 18 11:10:33 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.27
 
 - Update to 2.3.27:
