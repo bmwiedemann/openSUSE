@@ -53,4 +53,28 @@
     <comment>- Adjust license to cover also redistributed vendor/github.com/* files (forwarded request 1107982 from lkocman)</comment>
     <requestid>1107983</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3e4607fb726308e2393c2c76b180950a</srcmd5>
+    <version>0.6.1</version>
+    <time>1696760281</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.6.1:
+  * The globs feature underwent a major rewrite and is now almost finalized
+  * UTF-16 files are automatically detected and supported #1525
+  * Grid diagrams can now have simple connections between top-level cells #1586
+  * Globs are lazily-evaluated #1552
+  * Latex blocks includes Mathjax's ASM extension #1544
+  * font-color works on Markdown #1546
+  * font-color works on arrowheads #1582
+  * CLI failure message includes input path #1617
+  * d2 fmt formats all files passed as arguments rather than just the first non-formatted (thank you @maxbrunet) #1523
+  * Fixes Markdown cropping last element in mixed-element blocks (e.g. em and strong) #1543
+  * Adds compiler error for non-blockstring empty labels #1590
+  * Prevents multiple constant nears overlapping in some cases #1591
+  * Fixes crash from empty nested grid #1594
+  * d2fmt with variable substitution mid-string is formatted correctly #1611
+  * Fixes certain shape IDs not working with dagre #1610
+  * Fixes font-size adjustments missing from rendered code shape #1614 (forwarded request 1116078 from jfkw)</comment>
+    <requestid>1116079</requestid>
+  </revision>
 </revisionlist>

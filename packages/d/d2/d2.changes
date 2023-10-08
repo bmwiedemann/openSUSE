@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct  6 14:30:23 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.6.1:
+  * The globs feature underwent a major rewrite and is now almost finalized
+  * UTF-16 files are automatically detected and supported #1525
+  * Grid diagrams can now have simple connections between top-level cells #1586
+  * Globs are lazily-evaluated #1552
+  * Latex blocks includes Mathjax's ASM extension #1544
+  * font-color works on Markdown #1546
+  * font-color works on arrowheads #1582
+  * CLI failure message includes input path #1617
+  * d2 fmt formats all files passed as arguments rather than just the first non-formatted (thank you @maxbrunet) #1523
+  * Fixes Markdown cropping last element in mixed-element blocks (e.g. em and strong) #1543
+  * Adds compiler error for non-blockstring empty labels #1590
+  * Prevents multiple constant nears overlapping in some cases #1591
+  * Fixes crash from empty nested grid #1594
+  * d2fmt with variable substitution mid-string is formatted correctly #1611
+  * Fixes certain shape IDs not working with dagre #1610
+  * Fixes font-size adjustments missing from rendered code shape #1614
+
+-------------------------------------------------------------------
 Tue Aug 29 16:22:59 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Adjust license to cover also redistributed vendor/github.com/* files 
