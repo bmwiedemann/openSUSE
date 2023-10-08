@@ -30,11 +30,18 @@ Requires:       python3-base
 BuildArch:      noarch
 
 %description
-A Python script that converts fonts to TrueType format. It uses
-the fontforge python bindings to read/process and write any font
-format. Also, as part of the conversion process, the script
-tries to fix inconsistencies and do necessary changes to the font
-to honor the TTF format specs.
+This is a Python script that converts fonts to TrueType/OpenType
+format. It uses the FontForge Python bindings to read/process and
+write any font format. Also, as part of the conversion process, the
+script tries to fix inconsistencies and do necessary changes to the
+font to honor the TTF/OTF format specs.
+
+Though TrueType is often used synonymously with outline fonts, it
+supports embedded bitmaps. ttf-converter leaves the glyph kind
+(outline/bitmapped) unchanged.
+
+For converting a font to have scalable outline glyphs, see vfontas
+instead.
 
 %prep
 %setup -q
