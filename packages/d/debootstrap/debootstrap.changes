@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct  7 02:51:56 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.0.132:
+  * improve various tests
+
+- update to 1.0.131:
+  * Reinstate setup_merged_usr
+
+- update to 1.0.130:
+  * add --preserve-env option
+  * add Trisquel distribution
+  * add Pardus distribution
+  * fix debootstrap --second-stage on native runs
+
+-------------------------------------------------------------------
 Thu Jul 27 03:10:03 UTC 2023 - Richard Rahl <rrahl0@proton.me>
 
 - update to 1.0.128+nmu5:

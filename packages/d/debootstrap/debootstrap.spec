@@ -18,12 +18,12 @@
 
 
 Name:           debootstrap
-Version:        1.0.128
+Version:        1.0.132
 Release:        0
 Summary:        Bootstrap a basic Debian system
 License:        MIT
 URL:            https://salsa.debian.org/installer-team/debootstrap
-Source:         %{url}/-/archive/%{version}+nmu5/%{name}-%{version}+nmu5.tar.bz2
+Source:         %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Patch0:         %{name}-norootforbuild.patch
 Requires:       binutils
 Requires:       wget
@@ -38,7 +38,7 @@ unpacking them into a directory which can eventually be chrooted
 into.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}+nmu5
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 # Nothing to build.
