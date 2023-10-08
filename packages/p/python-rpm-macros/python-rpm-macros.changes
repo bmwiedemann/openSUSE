@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 05 15:53:33 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 20231005.bf2d3ab:
+  * Fix shebang also in sbin with macro _fix_shebang
+
+-------------------------------------------------------------------
 Fri Jun  9 07:32:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 20230609.6fe8111:

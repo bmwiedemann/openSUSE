@@ -599,4 +599,14 @@ prerequisite for new python submission</comment>
     <comment>- Update to version 20230304.050c1a4 (bsc#1209881, bsc#1209353):</comment>
     <requestid>1093381</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>87a7e51e23740c5f5a3b2d1b86ca80a7</srcmd5>
+    <version>20231005.bf2d3ab</version>
+    <time>1696760264</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20231005.bf2d3ab:
+  * Fix shebang also in sbin with macro _fix_shebang
+</comment>
+    <requestid>1115894</requestid>
+  </revision>
 </revisionlist>
