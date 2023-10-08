@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct  6 21:24:34 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 5.73:
+  * dino mode added, mostly built from xdino and skewb mode.
+  * fiberlamp mode fixed for multiscreen.
+  * boxed mode report that it may be trapped in an infinite loop, I could
+    not reproduce but added a hack so this will not happen.
+- 5.72 changelog:
+  * Update for OpenVMS for x86_64, small change to xshm.h and new make.com
+    to work with clang and xmlock/xawlock thanks to Jouk Jansen. I hear
+    its now possible to get a virtual OpenVMS on your Linux machine.
+  * Update for xscreensaver-6.06 port to use grabclient instead of
+    grabscreen.
+  * configure now configures xmlock for Athena if you do not want Motif.
+    Should work with most popular versions of Athena. You may want
+    to change the name from xmlock to xawlock if you are using Athena.
+    xawlock directory removed and was not meant to be distributed.
+
+-------------------------------------------------------------------
 Thu Jun 29 16:42:38 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 5.71:
