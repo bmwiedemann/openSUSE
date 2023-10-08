@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct  5 20:28:19 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21.2 (released 2023-10-05) includes one security fixes to the
+  cmd/go package, as well as bug fixes to the compiler, the go
+  command, the linker, the runtime, and the runtime/metrics
+  package.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2023-39323
+  * go#63214 go#63211 boo#1215985 security: fix CVE-2023-39323 cmd/go: line directives allows arbitrary execution during build
+  * go#62464 runtime: "traceback did not unwind completely"
+  * go#62478 runtime/metrics: /gc/scan* metrics return zero
+  * go#62505 plugin: variable not initialized properly
+  * go#62506 cmd/compile: internal compiler error: InvertFlags should never make it to codegen v100 = InvertFlags v123
+  * go#62509 runtime: scheduler change causes Delve's function call injection to fail intermittently
+  * go#62537 runtime: "fatal: morestack on g0" with PGO enabled on arm64
+  * go#62598 cmd/link: issues with Apple's new linker in Xcode 15 beta
+  * go#62668 cmd/compile: slow to compile 17,000 line switch statement?
+  * go#62711 cmd/go: TestScript/gotoolchain_path fails if golang.org/dl/go1.21.1 is installed in the user's $PATH
+
+-------------------------------------------------------------------
 Wed Sep  6 15:08:50 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.21.1 (released 2023-09-06) includes four security fixes to

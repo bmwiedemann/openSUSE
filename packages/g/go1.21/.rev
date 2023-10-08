@@ -78,4 +78,27 @@
   * Reformat adjacent commment in spec file (forwarded request 1109619 from jfkw)</comment>
     <requestid>1109622</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8a92d7c4e2a348bdbadfe8dc88cbf98e</srcmd5>
+    <version>1.21.2</version>
+    <time>1696760177</time>
+    <user>anag+factory</user>
+    <comment>- go1.21.2 (released 2023-10-05) includes one security fixes to the
+  cmd/go package, as well as bug fixes to the compiler, the go
+  command, the linker, the runtime, and the runtime/metrics
+  package.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2023-39323
+  * go#63214 go#63211 boo#1215985 security: fix CVE-2023-39323 cmd/go: line directives allows arbitrary execution during build
+  * go#62464 runtime: &quot;traceback did not unwind completely&quot;
+  * go#62478 runtime/metrics: /gc/scan* metrics return zero
+  * go#62505 plugin: variable not initialized properly
+  * go#62506 cmd/compile: internal compiler error: InvertFlags should never make it to codegen v100 = InvertFlags v123
+  * go#62509 runtime: scheduler change causes Delve's function call injection to fail intermittently
+  * go#62537 runtime: &quot;fatal: morestack on g0&quot; with PGO enabled on arm64
+  * go#62598 cmd/link: issues with Apple's new linker in Xcode 15 beta
+  * go#62668 cmd/compile: slow to compile 17,000 line switch statement?
+  * go#62711 cmd/go: TestScript/gotoolchain_path fails if golang.org/dl/go1.21.1 is installed in the user's $PATH (forwarded request 1115932 from jfkw)</comment>
+    <requestid>1115934</requestid>
+  </revision>
 </revisionlist>
