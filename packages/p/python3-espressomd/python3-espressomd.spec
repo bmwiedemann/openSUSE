@@ -18,20 +18,7 @@
 
 
 # Build with OpenMPI
-%if 0%{?sle_version} == 0
 %define mpiver  openmpi4
-%else
-%if 0%{?sle_version} <= 120300
-%define mpiver  openmpi
-%else
-  %if 0%{?sle_version} <= 150000
-  %define mpiver  openmpi2
-  %else
-  %define mpiver  openmpi3
-  %endif
-%endif
-%endif
-
 %define pkgname espresso
 %define modname %{pkgname}md
 Name:           python3-%{modname}
@@ -39,7 +26,6 @@ Version:        4.2.1
 Release:        0
 Summary:        Parallel simulation software for soft matter research
 License:        GPL-3.0-or-later
-Group:          Productivity/Scientific/Chemistry
 URL:            http://espressomd.org
 Source:         https://github.com/%{modname}/%{pkgname}/releases/download/%{version}/%{pkgname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM setuptools.patch gh#espressomd/espresso#4709
@@ -58,22 +44,18 @@ BuildRequires:  gcc-c++
 BuildRequires:  %{mpiver}-devel
 BuildRequires:  chrpath
 BuildRequires:  gsl-devel
-BuildRequires:  python3-Cython
-BuildRequires:  python3-devel
-BuildRequires:  python3-numpy-devel
-BuildRequires:  python3-scipy
-BuildRequires:  python3-setuptools
-%if 0%{?suse_version} > 1325
 BuildRequires:  hdf5-%{mpiver}-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_mpi-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
+BuildRequires:  python3-Cython < 3
+BuildRequires:  python3-devel
 BuildRequires:  python3-h5py
+BuildRequires:  python3-numpy-devel
+BuildRequires:  python3-scipy
+BuildRequires:  python3-setuptools
 BuildRequires:  zlib-devel
-%else
-BuildRequires:  boost-devel
-%endif
 Provides:       libEspresso4 = %{version}-%{release}
 Obsoletes:      libEspresso4 < 4.1
 Requires:       python3-h5py
@@ -91,9 +73,10 @@ systems, for example DNA and lipid membranes.
 
 %prep
 %autosetup -p1 -n %{pkgname}
-
 # Fix shebang line for pypresso
 sed -i -E '1s@^#!/usr/bin/env[[:blank:]]+sh@#!/bin/sh@' src/python/pypresso.cmakein
+# skip mpiio test - it fails if inwoked with cmake, direct run with python3 -m unittest pass
+sed -i '/mpiio\.py/d' testsuite/python/CMakeLists.txt
 
 %build
 source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
