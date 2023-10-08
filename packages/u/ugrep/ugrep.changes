@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct  8 05:47:14 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.3.0:
+  * Redesigned TUI with a new split screen window pane to preview
+    matching files
+  * fix --zmax=n for n>1 that had a low chance to hang as
+    discovered recently (about once in a few thousand runs) when
+    searching (deeply) nested zip or tar archives
+  * fix compressed file search of files that are exactly one byte
+    long, instead of rejecting those files as being empty
+
+-------------------------------------------------------------------
 Sat Sep 23 07:06:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 4.2.0:
