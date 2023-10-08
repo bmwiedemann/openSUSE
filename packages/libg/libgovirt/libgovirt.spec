@@ -1,7 +1,7 @@
 #
 # spec file for package libgovirt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/GNOME/libgovirt
 Source0:        https://download.gnome.org/sources/libgovirt/0.3/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM bae26c0033d649722b5a3fc48df3adf2172490f1.patch -- Suppress error 'cast increases required alignment of target type'
+Patch0:         https://gitlab.gnome.org/GNOME/libgovirt/-/commit/bae26c0033d649722b5a3fc48df3adf2172490f1.patch
 
 BuildRequires:  gobject-introspection-devel >= 1.30.0
 BuildRequires:  intltool

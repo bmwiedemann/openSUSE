@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  6 07:39:04 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add bae26c0033d649722b5a3fc48df3adf2172490f1.patch: Suppress
+  error 'cast increases required alignment of target type'.
+
+-------------------------------------------------------------------
 Sat Aug 20 08:55:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.3.9:

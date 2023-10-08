@@ -1,0 +1,28 @@
+From bae26c0033d649722b5a3fc48df3adf2172490f1 Mon Sep 17 00:00:00 2001
+From: Sprite <SpriteOvO@gmail.com>
+Date: Tue, 6 Sep 2022 18:17:35 +0800
+Subject: [PATCH] Suppress error 'cast increases required alignment of target
+ type'
+
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index d5c3627..43139af 100644
+--- a/meson.build
++++ b/meson.build
+@@ -61,9 +61,9 @@ govirt_global_cflags = ['-std=c99',
+                         '-Wextra',
+                         '-Werror',
+                         '-Wcast-align',
++                        '-Wno-error=cast-align',
+                         '-Wmissing-declarations',
+                         '-Wpointer-arith',
+-                        '-Wcast-align',
+                         '-Wwrite-strings',
+                         '-Winit-self',
+                         '-Wreturn-type',
+-- 
+GitLab
+
