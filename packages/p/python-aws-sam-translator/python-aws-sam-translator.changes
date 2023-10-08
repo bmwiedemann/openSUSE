@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Oct  6 08:16:45 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.76.0
+  * chore: Update integration test file to use nodejs18 by @GavinZZ in #3332
+  * [fix] Auth Override not working with DefinitionBody fix by @paulhcsun in #3328
+  * fix: Kafka Auth Mechanism "SERVER_ROOT_CA_CERTIFICATE" and
+    other Auth can't be used together by @ConnorRobertson in #3341
+  * chore(schema): update by @github-actions in #3343
+  * chore(schema): update by @github-actions in #3344
+  * Release 1.76.0 (to main) by @GavinZZ in #3359
+- from version 1.75.0
+  * chore: fix authorizers.get() dip by @aaythapa in #3285
+  * chore: change api key resource's value property by @aaythapa in #3286
+  * fix: fix integ test by @aaythapa in #3292
+  * chore(schema): update by @github-actions in #3291
+  * chore: add support for pydantic 2.x by @yan12125 in #3282
+  * Merge main to develop by @ssenchenko in #3296
+  * fix: Add setup and teardown markers to make companion stack by @gracelu0 in #3301
+  * chore(schema): update by @github-actions in #3298
+  * [fix]: Add RuleName to EventBridgeRuleEventProperties by @paulhcsun in #3304
+  * chore: Upgrade ruff/black/mypy and fix violations by @aahung in #3300
+  * Revert Validator Removal by @awood45 in #3307
+  * feat: Add TimeoutInMillis Property to API Event Source by @gracelu0 in #3310
+  * chore(schema): update by @github-actions in #3312
+  * chore(schema): update by @github-actions in #3314
+  * fix: Support both 'VPCEndpointIds' and 'VpcEndpointIds' by @GavinZZ in #3315
+  * fix: Fix availability dip in PropagateTags property by @GavinZZ in #3316
+  * chore: Remove Validation on DeletionPolicy and UpdateReplacePolicy by @GavinZZ in #3317
+  * chore: Update docs by @ssenchenko in #3319
+  * chore: Update Lambda node runtime envs in integ tests by @GavinZZ in #3320
+  * chore: Update docs (#3322) by @andy2mrqz in #3323
+  * chore(schema): update by @github-actions in #3324
+  * fix: Revert lambda nodejs18.x upgrade by @GavinZZ in #3326
+  * chore: remove pdb in integration test by @xazhao in #3327
+  * chore: Make a function to eventbus connect test non-blocking by @xazhao in #3330
+  * Merge main to develop by @xazhao in #3331
+  * chore(schema): update by @github-actions in #3336
+  * fix: Append CodeSha256 Value to Description by @GavinZZ in #3337
+  * Adding InputTransformer Property by @ConnorRobertson in #3338
+  * Release 1.75.0 (to main) by @ssenchenko in #3346
+
+-------------------------------------------------------------------
 Thu Sep  7 11:31:24 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.74.0
