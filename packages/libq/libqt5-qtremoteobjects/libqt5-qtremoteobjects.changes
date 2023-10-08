@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:42:24 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde0, rebased upstream:
+  * tst_restart: add -nocrashhandler option for ServerRestartFatal mode
+  * tst_restart: increase waiting timeout in test
+
+-------------------------------------------------------------------
 Tue Jun 13 12:59:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.10+kde0, rebased upstream:
