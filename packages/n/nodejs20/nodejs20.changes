@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  5 13:45:41 UTC 2023 - Adam Majer <adam.majer@suse.de> - 20.8.0
+
+- Update to 20.8.0:
+  * Stream performance improvements
+  * Rework of memory management in vm APIs with the importModuleDynamically
+    option
+  * test_runner:
+    + accept testOnly in run
+    + add junit reporter
+
+- fix_ci_tests.patch: refreshed
+
+-------------------------------------------------------------------
 Tue Sep 19 14:40:13 UTC 2023 - Adam Majer <adam.majer@suse.de> - 20.7.0
 
 - Update to 20.7.0:

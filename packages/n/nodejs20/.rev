@@ -177,4 +177,19 @@ versioned.patch: refreshed</comment>
   * f0ff63fbc32ea55f3d92c5c89fdb91ec47786859.patch: removed, upstreamed</comment>
     <requestid>1112341</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8426547b4f1ce09302286e6da1d4571d</srcmd5>
+    <version>20.8.0</version>
+    <time>1696760232</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20.8.0:
+  * Stream performance improvements
+  * Rework of memory management in vm APIs with the importModuleDynamically
+    option
+  * test_runner:
+    + accept testOnly in run
+    + add junit reporter
+- fix_ci_tests.patch: refreshed</comment>
+    <requestid>1116076</requestid>
+  </revision>
 </revisionlist>
