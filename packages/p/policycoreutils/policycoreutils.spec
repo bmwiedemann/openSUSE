@@ -35,13 +35,12 @@ Source3:        https://github.com/SELinuxProject/selinux/releases/download/%{ve
 Source4:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-python-%{version}.tar.gz.asc
 Source5:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/semodule-utils-%{version}.tar.gz
 Source6:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/semodule-utils-%{version}.tar.gz.asc
-Source7:        system-config-selinux.png
-Source8:        system-config-selinux.desktop
-Source9:        system-config-selinux.pam
-Source10:       system-config-selinux.console
-Source11:       selinux-polgengui.desktop
-Source12:       selinux-polgengui.console
 Source13:       newrole.pam
+Source14:       https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-gui-%{version}.tar.gz
+Source15:       https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-gui-%{version}.tar.gz.asc
+Source16:       https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-dbus-%{version}.tar.gz
+Source17:       https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-dbus-%{version}.tar.gz.asc
+Source18:       policycoreutils-rpmlintrc
 Patch0:         make_targets.patch
 Patch2:         get_os_version.patch
 Patch3:         run_init.pamd.patch
@@ -132,15 +131,6 @@ Conflicts:      %{name}-python <= 2.6
 %description devel
 The policycoreutils-devel package contains the management tools use to develop policy in an SELinux environment.
 
-%package sandbox
-Summary:        SELinux sandbox utilities
-Group:          Productivity/Security
-Requires:       python3-%{name} = %{version}
-Requires:       xorg-x11-server-extra
-
-%description sandbox
-The sandbox package contains the scripts to create graphical sandboxes.
-
 %package newrole
 Summary:        The newrole application for RBAC/MLS
 Group:          Productivity/Security
@@ -154,23 +144,35 @@ Requires(post): permissions
 RBAC/MLS policy machines require newrole as a way of changing the role
 or level of a logged-in user.
 
-%if 0%{?suse_version} < 1500
 %package gui
 Summary:        SELinux configuration GUI
 Group:          Productivity/Security
+Requires:       %{name}-dbus = %{version}
 Requires:       python
-Requires:       python-gnome
 Requires:       python-gtk
 Requires:       python3-%{name} = %{version}
+Requires:       python3-gobject
 Requires:       selinux-policy
 Requires:       setools-console
+BuildArch:      noarch
 
 %description gui
 system-config-selinux is a utility for managing the SELinux environment.
-%endif
+
+%package dbus
+Summary:        SELinux policy core DBUS api
+Group:          Productivity/Security
+Requires:       polkit
+Requires:       python3-%{name} = %{version}
+Requires:       python3-gobject
+BuildArch:      noarch
+
+%description dbus
+The policycoreutils-dbus package contains the management DBUS API use to manage
+an SELinux environment.
 
 %prep
-%setup -q -a3 -a5
+%setup -q -a3 -a5 -a14 -a16
 setools_python_pwd="$PWD/selinux-python-%{version}"
 semodule_utils_pwd="$PWD/semodule-utils-%{version}"
 %patch0 -p1
@@ -196,7 +198,6 @@ mkdir -p %{buildroot}/sbin
 %endif
 mkdir -p %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_mandir}/man8
-mkdir -p %{buildroot}%{_sysconfdir}/security/console.apps
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_pam_vendordir}
 %else
@@ -213,17 +214,24 @@ mv %{buildroot}%{_sysconfdir}/pam.d/run_init %{buildroot}%{_pam_vendordir}/run_i
 cp -f %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/newrole
 %endif
 
-%if 0%{?suse_version} < 1500
-install -m 644 %{SOURCE12} %{buildroot}%{_sysconfdir}/security/console.apps/selinux-polgengui
-install -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/security/console.apps/system-config-selinux
+# Dbus
+(cd selinux-dbus-%{version} && make DESTDIR=%{buildroot} install)
+# Move dbus configuration file to /usr/share
+mkdir -p %{buildroot}%{_datadir}/dbus-1/system.d
+mv %{buildroot}%{_sysconfdir}/dbus-1/system.d/org.selinux.conf %{buildroot}%{_datadir}/dbus-1/system.d/org.selinux.conf
+
+# GUI apps
+(cd selinux-gui-%{version} && make DESTDIR=%{buildroot} install)
+%if 0%{?suse_version} > 1500
+install -m 644 %{SOURCE13} %{buildroot}%{_pam_vendordir}/selinux-polgengui
+install -m 644 %{SOURCE13} %{buildroot}%{_pam_vendordir}/system-config-selinux
+%else
 install -m 644 %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/selinux-polgengui
 install -m 644 %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/system-config-selinux
-install -D -m 644 %{SOURCE12} %{buildroot}%{_datadir}/pixmaps/system-config-selinux.png
-ln -sf consolehelper %{buildroot}%{_bindir}/system-config-selinux
-ln -sf consolehelper %{buildroot}%{_bindir}/selinux-polgengui
+%endif
 %suse_update_desktop_file -i system-config-selinux System Security Settings
 %suse_update_desktop_file -i selinux-polgengui System Security Settings
-%endif
+%suse_update_desktop_file -i sepolicy System Security Settings
 
 # Add compatibility symlinks from /usr/sbin to /sbin on Leap
 %if 0%{?suse_version} <= 1500
@@ -239,6 +247,7 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/sepolgen
 (cd selinux-python-%{version}/po && make DESTDIR=%{buildroot} install)
 %find_lang %{name}
 %find_lang selinux-python
+%find_lang selinux-gui
 %fdupes -s %{buildroot}%{_datadir}
 
 %if 0%{?suse_version} > 1500
@@ -417,16 +426,12 @@ done
 %config(noreplace) %{_sysconfdir}/pam.d/newrole
 %endif
 
-%if 0%{?suse_version} < 1500
-%files gui
+%files gui -f selinux-gui.lang
 %{_bindir}/system-config-selinux
 %{_bindir}/selinux-polgengui
 %{_datadir}/applications/system-config-selinux.desktop
-%{_datadir}/system-config-selinux/system-config-selinux.desktop
 %{_datadir}/applications/selinux-polgengui.desktop
 %{_datadir}/applications/sepolicy.desktop
-%{_datadir}/system-config-selinux/selinux-polgengui.desktop
-%{_datadir}/system-config-selinux/sepolicy.desktop
 %{_datadir}/icons/hicolor/24x24/apps/system-config-selinux.png
 %{_datadir}/icons/hicolor/16x16/apps/sepolicy.png
 %{_datadir}/icons/hicolor/22x22/apps/sepolicy.png
@@ -435,20 +440,28 @@ done
 %{_datadir}/icons/hicolor/48x48/apps/sepolicy.png
 %{_datadir}/pixmaps/sepolicy.png
 %{_datadir}/pixmaps/system-config-selinux.png
-%{_datadir}/polkit-1/actions/org.selinux.config.policy
-%{_datadir}/polkit-1/actions/org.selinux.policy
 %dir %{_datadir}/system-config-selinux
 %{_datadir}/system-config-selinux/system-config-selinux.png
-%{_datadir}/system-config-selinux/*.py*
-%{_datadir}/system-config-selinux/*.glade
+%{_datadir}/system-config-selinux/*Page.py
+%{_datadir}/system-config-selinux/system-config-selinux.py
+%{_datadir}/system-config-selinux/*.ui
 %{_mandir}/man8/selinux-polgengui.8%{?ext_man}
+%{_mandir}/ru/man8/selinux-polgengui.8%{?ext_man}
 %{_mandir}/man8/system-config-selinux.8%{?ext_man}
-%config(noreplace) %{_sysconfdir}/dbus-1/system.d/org.selinux.conf
+%{_mandir}/ru/man8/system-config-selinux.8%{?ext_man}
+%if 0%{?suse_version} > 1500
+%{_pam_vendordir}/system-config-selinux
+%{_pam_vendordir}/selinux-polgengui
+%else
 %config(noreplace) %{_sysconfdir}/pam.d/system-config-selinux
 %config(noreplace) %{_sysconfdir}/pam.d/selinux-polgengui
-%dir %{_sysconfdir}/security/console.apps
-%config(noreplace) %{_sysconfdir}/security/console.apps/selinux-polgengui
-%config(noreplace) %{_sysconfdir}/security/console.apps/system-config-selinux
 %endif
+
+%files dbus
+%{_datadir}/dbus-1/system.d/org.selinux.conf
+%{_datadir}/dbus-1/system-services/org.selinux.service
+%{_datadir}/polkit-1/actions/org.selinux.policy
+%{_datadir}/polkit-1/actions/org.selinux.config.policy
+%{_datadir}/system-config-selinux/selinux_server.py
 
 %changelog

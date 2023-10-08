@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct  6 08:59:35 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Move dbus configuration file to /usr/share instead of /etc
+
+-------------------------------------------------------------------
+Fri Jul 21 09:19:46 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Add policycoreutils-rpmlintrc to suppress spurious rpmlint warnings
+
+-------------------------------------------------------------------
+Tue Jul 18 16:29:01 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Fix newrole debuginfo broken by mistaken 'noarch'
+
+-------------------------------------------------------------------
+Mon Jul 10 16:19:34 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Add GUI and DBUS subpackages
+  * Remove files now provided in upstream tarballs:
+    - Drop system-config-selinux.png
+    - Drop system-config-selinux.desktop
+    - Drop system-config-selinux.pam
+    - Drop system-config-selinux.console
+    - Drop selinux-polgengui.desktop
+    - Drop selinux-polgengui.console
+- Refactor spec file
+  * Remove empty sandbox package definition
+
+-------------------------------------------------------------------
 Thu Jun 29 13:20:42 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Only recommend policycoreutils-devel. The requires causes build issues

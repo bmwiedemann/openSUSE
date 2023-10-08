@@ -563,4 +563,25 @@ sepolgen: Add back attributes flag to fix exception crash from Dan Walsh.
 - Required fixed python3-selinux, not version dependend sub-packages</comment>
     <requestid>1096746</requestid>
   </revision>
+  <revision rev="70" vrev="5">
+    <srcmd5>ccb82992b957ea2fcc602d666a7cc38e</srcmd5>
+    <version>3.5</version>
+    <time>1696760201</time>
+    <user>anag+factory</user>
+    <comment>- Move dbus configuration file to /usr/share instead of /etc
+- Add policycoreutils-rpmlintrc to suppress spurious rpmlint warnings
+- Fix newrole debuginfo broken by mistaken 'noarch'
+- Add GUI and DBUS subpackages
+  * Remove files now provided in upstream tarballs:
+    - Drop system-config-selinux.png
+    - Drop system-config-selinux.desktop
+    - Drop system-config-selinux.pam
+    - Drop system-config-selinux.console
+    - Drop selinux-polgengui.desktop
+    - Drop selinux-polgengui.console
+- Refactor spec file
+  * Remove empty sandbox package definition
+</comment>
+    <requestid>1116005</requestid>
+  </revision>
 </revisionlist>
