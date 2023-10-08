@@ -288,4 +288,13 @@
     <comment></comment>
     <requestid>1112252</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>439fc4ad7d9d8447e1eb570e34cfc820</srcmd5>
+    <version>1.7.0</version>
+    <time>1696760325</time>
+    <user>anag+factory</user>
+    <comment>- Remove superflous BR pytest plugins: randomly rerunfailures
+</comment>
+    <requestid>1116198</requestid>
+  </revision>
 </revisionlist>

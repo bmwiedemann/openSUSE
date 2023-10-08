@@ -55,8 +55,6 @@ BuildRequires:  %{python_module hatch = %{version}}
 # Due to Patch1, gh#pypa/hatch#828
 BuildRequires:  %{python_module hatchling >= 1.17.1}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest-randomly}
-BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module trustme}

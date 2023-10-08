@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct  7 11:16:12 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove superflous BR pytest plugins: randomly rerunfailures
+
+-------------------------------------------------------------------
 Tue Sep 19 11:01:55 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add CI.patch to fix tests
