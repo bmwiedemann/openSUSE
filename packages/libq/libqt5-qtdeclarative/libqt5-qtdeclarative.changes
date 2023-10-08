@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:38:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde30, rebased upstream:
+  * Flickable: prevent fixup() from being called while dragging
+  * Adjust baselineOffset correctly when fontSizeMode == HorizontalFit
+  * QQmlVMEMetaObjectEndpoint: ensure property cache before accessing it
+  * Text: Re-layout the text when a alignment is set and the height grows
+  * Blacklist 1 tests in tst_qquickflickable on macos
+  * Fix fractional scaling of text in Qt Quick
+  * qqmlprivate.h: make static constexpr members c++11 compliant
+  * V4: Account for the guard pages when allocating stack space
+  * Blacklist 1 tests in tst_QQuickLoader on ubuntu-20.04
+  * Flickable: let changing contentItem pos also affect the drag starting pos
+  * Blacklist 1 tests in tst_QParallelAnimationGroupJob on macos
+  * StackLayout: Do not set size of children to (-1, -1)
+  * V4: Mark InternalClass parents when running GC
+  * A11Y: Send Scrolling Events when Flickable moves
+  * doc: Add missing PointerHandler.CanTakeOverFromItems enum value
+  * Qml: Don't crash on nested group properties with aliases
+  * QV4::CompiledData: fix GCC 12 -Werror=uninitialized errors
+  * QQuickText/Edit: fix C++20 -Wdeprecated-enum-enum-conversion warnings
+  * Android: Fix crash on tap handler with a S-Pen
+  * masm: fix -Wdeprecated-enum-enum-conversion
+  * Add listing of the components and scripts that belongs to the qml module
+  * QML: Port QV4::CompiledData::RegExp to new special integer bitfield
+  * QML: Port QV4::CompiledData::JSClassMember to new special integer bitfield
+  * QML: Port QV4::CompiledData::Object to new special integer bitfield
+  * QML: Port icutils::Node to new special integer bitfield
+  * QML: Port QV4::CompiledData::Lookup to new special integer bitfield
+  * QML: Port QV4::CompiledData::Binding to new special integer bitfield
+  * QML: Port QV4::CompiledData::Property to new special integer bitfield
+  * QML: Port QV4::CompiledData::Alias to new special integer bitfield
+  * QML: Port QV4::CompiledData::ParameterType to new special integer bitfield
+  * QML: Port QV4::CompiledData::Location to new special integer bitfield
+  * Fix Qt build with Python being in path with spaces
+  * Quick test lib: Account for DPR when grabbing sub-image
+  * qqw: Invalidate and reinitialize the scenegraph correctly
+  * Fix rendernode example wrt stacking
+  * Stop using the same buffer for vertex and index data
+  * Fix race condition on QQmlEnginePrivate::qml_debugging_enabled
+  * qqmlimport.cpp: remove unused qreadwritelock.h
+  * QQmlDebug: reliably print the debugger warning
+  * QQmlListCompositor: suppress GCC 12 -Warray-bounds warnings
+  * Doc: QQuickTextInput: Mark all readonly properties as such
+  * MouseArea: don't override preventStealing on mouse release
+  * MultiPointTouchArea: remap touchpoint positions when filtering
+- Commits dropped by the rebase:
+  * Revert "Fix missing glyphs when using NativeRendering"
+  * Fix missing glyphs when using NativeRendering
+
+-------------------------------------------------------------------
+Thu Sep 28 12:04:50 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.10+kde31:
+  * QML: Make notify list thread safe
+  * QtQml: Clean up QQmlData ctor
+  * QRecyclePool: fix potential UB
+  * QQmlJs::MemoryPool: fix potential UB (pointer overflow)
+  * JIT: Add missing {STORE|LOAD}_ACC() to CreateCallContext
+- Drop patches, now upstream:
+  * 0001-JIT-Add-missing-STORE-LOAD-_ACC-to-CreateCallContext.patch
+
+-------------------------------------------------------------------
 Tue Jun 13 12:58:39 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.10+kde26, rebased upstream:
