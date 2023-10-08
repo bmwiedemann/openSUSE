@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:36:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde6, rebased upstream:
+  * Fix bluetooth service discovery not finishing on Android
+  * Add a timeout guard for Android BT device discovery not starting
+  * Repair tst_QBluetoothDeviceDiscoveryAgent unit test on Android
+
+-------------------------------------------------------------------
+Thu Sep 28 11:49:49 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.10+kde6:
+  * Fix translation context of QBluetoothUuid::WeightScaleFeature
+  * QBluetoothUuid: remove default case labels and fix the fallout
+
+-------------------------------------------------------------------
 Tue Jun 13 12:58:33 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.10+kde4, rebased upstream:
