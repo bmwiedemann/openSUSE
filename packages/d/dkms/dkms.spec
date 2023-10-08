@@ -24,14 +24,13 @@ License:        GPL-2.0-only
 Group:          System/Kernel
 URL:            https://github.com/dell/dkms
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        dkms.service
-Source2:        dkms.systemd
 Source3:        dkms.default
 Source100:      %{name}.rpmlintrc
 # PATCH-FIX-OPENSUSE fix-kernel-postinst_d.patch boo#1194723
 Patch1:         fix-kernel-postinst_d.patch
 # PATCH-FIX-OPENSUSE fix-weak-modules_dkms_in.patch boo#1194723
 Patch2:         fix-weak-modules_dkms_in.patch
+BuildRequires:  make
 BuildRequires:  pkgconfig(systemd)
 Requires:       bash > 1.99
 Requires:       cpio
@@ -47,6 +46,7 @@ Requires:       modutils
 Requires:       sed
 Requires:       tar
 Requires:       zstd
+Recommends:     openssl
 BuildArch:      noarch
 %systemd_requires
 
@@ -78,16 +78,17 @@ mv %{buildroot}%{_sysconfdir}/kernel/install.d/%{name} \
    %{buildroot}%{_sysconfdir}/kernel/install.d/40-%{name}.install
 
 # systemd
-mkdir -p %{buildroot}%{_unitdir}
-install -p -m 644 %{SOURCE1} %{buildroot}%{_unitdir}
-install -p -m 755 %{SOURCE2} %{buildroot}%{_unitdir}
-mkdir -p "%{buildroot}%{_sysconfdir}/default"
-install -m 644 %{SOURCE3} "%{buildroot}%{_sysconfdir}/default/dkms"
+install -p -m 644 -D dkms.service %{buildroot}%{_unitdir}/dkms.service
+
+install -m 644 -D %{SOURCE3} %{buildroot}%{_sysconfdir}/default/dkms
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcdkms
 
 sed -i \
     -e 's:# tmp_location="/tmp":tmp_location="%{_localstatedir}/tmp/dkms":' \
     %{buildroot}%{_sysconfdir}/dkms/framework.conf
+sed -i \
+    -e 's/# modprobe_on_install="true"/modprobe_on_install="true"/g' \
+    %{buildroot}%{_sysconfdir}/%{name}/framework.conf
 
 # Install /usr/lib/tmpfiles.d/dkms.conf
 mkdir -p %{buildroot}%{_tmpfilesdir}
@@ -126,14 +127,13 @@ exit 0
 %{_libexecdir}/%{name}
 %{_tmpfilesdir}/dkms.conf
 %{_mandir}/man8/dkms.8%{ext_man}
-# these dirs are for plugins - owned by other packages
 %{_sysconfdir}/kernel/postinst.d/%{name}
 %{_sysconfdir}/kernel/prerm.d/%{name}
 %{_sysconfdir}/kernel/install.d/40-%{name}.install
 %{_datadir}/bash-completion/completions/%{name}
 %{_unitdir}/dkms.service
-%{_unitdir}/dkms.systemd
 %config %{_sysconfdir}/default/dkms
+# these dirs are for plugins - owned by other packages
 %dir %{_sysconfdir}/kernel
 %dir %{_sysconfdir}/kernel/postinst.d
 %dir %{_sysconfdir}/kernel/install.d
