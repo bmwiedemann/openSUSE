@@ -7,4 +7,31 @@
     <comment>As used by Glib for defining the default terminal application, of great use in the non-Gnome desktops.</comment>
     <requestid>1101538</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d1c543c4c3971ea8e4fdbd661cc34af0</srcmd5>
+    <version>20231003+git.e5c20d0</version>
+    <time>1696760326</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20231003+git.e5c20d0:
+  * test/tests.bats: Add a TODO for additional tests
+  * Add myself as a contributor
+  * xdg-terminal-exec: Remove now unused code
+  * xdg-terminal-exec: Move entry ID loops out to main
+  * xdg-terminal-exec: Use globals set by `find*entry`
+  * xdg-terminal-exec: Parse config file using `case`
+  * xdg-terminal-exec: Check entries using `case`
+  * xdg-terminal-exec: Parse entry file using `case`
+  * xdg-terminal-exec: set `errexit` and `nounset`
+  * README: Small fixes and changes
+  * default debug value (fixes #24)
+  * xdg-terminal-exec: Remove empty variable assignments
+  * xdg-terminal-exec: Normalise printing
+  * xdg-terminal-exec: Normalise string quotes
+  * xdg-terminal-exec: Indent here documents
+  * tests: Make `tests.bats` executable
+  * xdg-terminal-exec: run `shfmt`
+  * xdg-terminal-exec: don't use `find -printf`
+</comment>
+    <requestid>1116205</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct 07 12:58:52 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 20231003+git.e5c20d0:
+  * test/tests.bats: Add a TODO for additional tests
+  * Add myself as a contributor
+  * xdg-terminal-exec: Remove now unused code
+  * xdg-terminal-exec: Move entry ID loops out to main
+  * xdg-terminal-exec: Use globals set by `find*entry`
+  * xdg-terminal-exec: Parse config file using `case`
+  * xdg-terminal-exec: Check entries using `case`
+  * xdg-terminal-exec: Parse entry file using `case`
+  * xdg-terminal-exec: set `errexit` and `nounset`
+  * README: Small fixes and changes
+  * default debug value (fixes #24)
+  * xdg-terminal-exec: Remove empty variable assignments
+  * xdg-terminal-exec: Normalise printing
+  * xdg-terminal-exec: Normalise string quotes
+  * xdg-terminal-exec: Indent here documents
+  * tests: Make `tests.bats` executable
+  * xdg-terminal-exec: run `shfmt`
+  * xdg-terminal-exec: don't use `find -printf`
+
+-------------------------------------------------------------------
 Mon Jul 31 12:33:33 UTC 2023 - mcepl@suse.com
 
 - Update to version 20230731+git.6426085:
