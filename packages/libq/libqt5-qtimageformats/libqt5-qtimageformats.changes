@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:40:42 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde12, rebased upstream:
+  * Add finding from oss-fuzz to tst_qicns
+
+-------------------------------------------------------------------
+Thu Sep 28 12:07:03 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.10+kde18:
+  * Update bundled libtiff to version 4.6.0
+  * Update bundled libtiff to version 4.5.1
+  * Update bundled libtiff to version 4.5.0
+  * Fix bundled libtiff compilation lzw warning and reading failure
+  * Update bundled libtiff to version 4.4.0
+  * Update bundled libwebp to version 1.3.2
+  * Update bundled libwebp to version 1.3.1
+  * Update bundled libwebp to version 1.3.0
+  * Update bundled libwebp to version 1.2.4
+
+-------------------------------------------------------------------
 Tue Jun 13 12:58:53 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.10+kde9, rebased upstream:
