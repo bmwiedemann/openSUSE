@@ -22,11 +22,11 @@
 %define qt5_snapshot 1
 %define libname libQt5Positioning5
 %define base_name libqt5
-%define real_version 5.15.10
-%define so_version 5.15.10
+%define real_version 5.15.11
+%define so_version 5.15.11
 %define tar_version qtlocation-everywhere-src-%{version}
 Name:           libqt5-qtlocation
-Version:        5.15.10+kde4
+Version:        5.15.11+kde4
 Release:        0
 Summary:        Qt 5 Location Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -34,6 +34,8 @@ Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
+# https://invent.kde.org/qt/qt/qtlocation/-/merge_requests/4
+Patch1:         0001-Fix-build-of-Qt.labs.location-QML-plugin.patch
 BuildRequires:  fdupes
 BuildRequires:  libicu-devel
 BuildRequires:  libqt5-qtbase-private-headers-devel >= %{real_version}

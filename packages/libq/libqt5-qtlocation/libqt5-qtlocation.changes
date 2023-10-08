@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:40:54 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde4, rebased upstream:
+  * Revert "Make location-labs-plugin depend on features.opengl"
+  * Add check to getSatInfoFromNmea to avoid undefined behavior
+  * Fix undefined behavior in qlocationutils_readGsa()
+  * Use std::remove_if + QVector::erase to remove child pipes
+  * PositionSource: do not query lastKnownPosition if the source is inactive
+  * Android: fix crash on exit when QGeoAreaMonitorPolling is used
+- Add patch to fix build of the Qt.labs.location QML plugin:
+  * 0001-Fix-build-of-Qt.labs.location-QML-plugin.patch
+
+-------------------------------------------------------------------
+Thu Sep 28 12:07:59 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.10+kde5:
+  * Update mapbox-gl-native
+
+-------------------------------------------------------------------
 Tue Jun 13 12:58:56 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.10+kde4, rebased upstream:

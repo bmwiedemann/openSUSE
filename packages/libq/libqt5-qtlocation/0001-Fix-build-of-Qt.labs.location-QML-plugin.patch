@@ -1,0 +1,26 @@
+From 48a17e88fc1df5b6ae82a9787466226c830bcbf2 Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Thu, 17 Mar 2022 18:40:27 +0100
+Subject: [PATCH] Fix build of Qt.labs.location QML plugin
+
+Should be conditional on "features.opengl", not on "config.opengl"
+---
+ src/location/configure.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/location/configure.json b/src/location/configure.json
+index 6d01a9a3..d1e623a1 100644
+--- a/src/location/configure.json
++++ b/src/location/configure.json
+@@ -9,7 +9,7 @@
+             "label": "Qt.labs.location experimental QML plugin",
+             "purpose": "Provides experimental QtLocation QML types",
+             "section": "Location",
+-            "condition": "config.opengl",
++            "condition": "features.opengl",
+             "output": [ "privateFeature" ]
+         },
+         "geoservices_osm": {
+-- 
+2.42.0
+
