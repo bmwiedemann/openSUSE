@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Fri Oct  6 21:59:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Enable the experimental native painting feature to improve
+  remote desktop performances (boo#1214915)
+  exporting QT_XCB_NATIVE_PAINTING is required to use the feature.
+
+-------------------------------------------------------------------
+Fri Oct  6 06:35:37 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde134, rebased upstream:
+  * Revert "Windows QPA: Add support to UiaRaiseNotificationEvent()"
+  * FileChooser portal: Make sure filter.name is not empty
+  * QPersistentModelIndex: fix UB (op< on unrelated pointers)
+  * Avoid crash when keysymToQtKey(keysym, Qt::ControlModifier) is called
+  * a11y atspi: translate coords for GetOffsetAtPoint the right way
+  * a11y atspi: Take dialog into account as top-level window
+  * a11y atspi: Fix incorrect use of x instead of y position
+  * macOS: Handle asynchronous deminiaturizing of windows
+  * QTranslator: generalize a UNIX-only path
+  * iOS, input panel: be more careful before enabling QIOSKeyboardListener
+  * Android: Fix flickering on window resize and show keyboard
+  * Android A11Y: Check for active surface before calling into native code
+  * xcb: Delete touch points without target windows
+  * Blacklist 1 tests in tst_QDBusConnection on ubuntu-20.04
+  * Fix CMake builds without ANDROID_SDK
+  * Blacklist 2 tests in tst_Http2 on ubuntu-20.04
+  * Blacklist 1 tests in tst_QSqlQuery on macos
+  * Defer creating the special shaders in the texture blitter
+  * tst_QSslSocket::serverCipherPreferencies - fix for OpenSSL v3
+  * QTemporaryFile: document rename() differences from QFile
+  * Doc: 3rd party: Fix reference to FreeType LICENSE.txt
+  * Update bundled libjpeg-turbo to version 2.1.4
+  * tst_QSsSocket: fix verifyClientCertificate with OpenSSL 3
+  * tst_QSslSocket: regenerate certificate used for setLocalCertificateChain
+  * tst_QSslSocket::protocolServerSide - make it work with OpenSSL v3
+  * tst_QSslSocket::oldErrorsOnSocketReuse - make it work with OpenSSL v3
+  * Update zconf.h prefixes to match zlib v1.2.12 update
+  * xcb: fix D&D in same xembed client
+  * xcb: use global coordinates for position of D&D for xembed client
+  * Doc: Update QMetaType::metaObject() descriptions
+  * BLACKLIST: tst_QGlyphRun::mixedScripts for Ubuntu 22.04
+  * BLACKLIST tst_qfont for Ubuntu 22.04
+  * BLACKLIST tst_QMenuBar::check_menuPosition for Ubuntu 22.04
+  * tst_QDtls::verifyClientCertficiate - update certs for OpenSSL v3
+  * QSslCertificate::toText(): add a file to compare against
+  * Fix the spelling of the word "combination"
+  * tst_QSslCertificate::pkcs12 - skip the test if OpenSSL version >= 3
+  * Android A11Y: Fix TalkBack scrolling behavior
+  * Android A11Y: Notify android about scroll events
+  * QCocoaDrag: don't add pasteboard items with non-absolute URLs
+  * QDirPrivate: pass input QList by cref
+  * tst_qbytearray: remove qCompress_data for QT_NO_COMPRESS
+  * QDeviceDiscoveryUDev: use NSDMI
+  * QAuthenticator: Fix crash when using NTLM / Negotiate
+  * Provide a native interface instance in minimal platform plugin
+  * Android: document the supported clipboard mimetypes
+  * Windows: Account for not finding child windows when calling ChildWindowFromPointEx
+  * iOS: Send touch events asynchronously to avoid deadlocking UIKit event loop
+  * Disable bitcode for iOS
+  * macOS: Ignore deprecation for ReleaseIconRef
+  * BLACKLIST tst_QApplication::sendEventsOnProcessEvents for Ubuntu 22.04
+  * Convert Latin1 to UTF-16 before passing to ICU API
+  * Doc: Remove repetition of word in text
+  * eglfs: Fix screen cloning when atomic is enabled
+  * Fix printing of dpr>1 images on Windows
+  * QHttp: Fix handling of redirect loaded from cache
+  * Doc: Fix return type of QLEInteger/QBEInteger post-in/decrement ops
+  * qmake: Fix installation of separate debug info for plugins
+  * iOS: ensure we close inputpanel after clearing focusobject
+  * Convert Latin1 to UTF-16 before passing to ICU API
+  * qputenv: defend against non-NUL-terminated QByteArray values
+  * QFontSubset: remove unused glyphName() overload
+  * Statically assert that the __mips_dsp code is only active on 32-bit
+  * QGtk3Theme: Ensure gtk uses the same windowing system as Qt
+  * tst_QFocusFrame: fix -Wparantheses
+  * Sync Vulkan device features between QVulkanWindow and QRhi
+  * SQLite: Update SQLite to v3.39.2
+  * Update freetype to 2.12.1
+  * corelib: Fix typos in documentation
+  * QAtomicInteger docs: mention bool and char8_t as 8-bit types
+  * qgraphicsitem_cast: replace 0 with nullptr
+  * Doc: Hide weak overload template magic from documentation
+  * Revert "QDateTime: fix adjusted datetime handling"
+  * Fix select handles disappears issues
+  * tst_QSslKey: prepare for the migration to OpenSSL v3
+  * tst_qnetworkreply: replace server.pem/key pair
+  * Disable unit testing setting up QTcpServer on special Apple interfaces
+  * qmake/msbuild: Turn off "use full paths in diagnostics" by default
+  * qmake/msbuild: Support all /DEBUG:xxx linker options
+  * qmake/msbuild: Support all /LTCG:xxx options
+  * Android A11Y: Add content change type to content change event
+  * Enabler for fractional scaling of text in Qt Quick
+  * macOS: Override logical DPI to 72
+  * Add QDom internalSubset implementation
+  * Fix tst_AndroidAssets, broken by recent changes on assets load speed
+  * Android: Improve loading speed of individual assets
+  * Darwin: Replace deprecated symbol kIOMasterPortDefault with equivalent
+  * macOS: Remove code for handling logical DPI changes
+  * Fix an incorrect invocation of llvm-readobj
+  * macOS: Ignore deprecation for kOnSystemDisk icon domain
+  * Copy only files that belongs to QML module
+  * Android: fix wrong position of cursor handle and editpopup menu in split screen
+  * Doc: Document QML_IMPORTS_PATH and QMLPATHS
+  * Add the missing RCC_DIR to '.qrc' paths when generating deployment settings
+  * Android: Fix the offset of the EditPopupMenu
+  * xcb: update xkb_state mask as much as possible
+  * QDom: Stop treating non-BMP characters as invalid
+  * Android 13: Fix warnings on starting an application
+  * qxkbcommon: Map Super/Hyper to Meta early enough to have an effect
+  * macOS: Ignore update requests for offline displays
+  * macOS: Avoid recursively updating screens when window moves screen
+  * qmake/MinGW: Install separate debug info of DLLs next to the DLL
+  * QMainWindow: fix restoreState() for toolbars
+  * Make two QDT benchmarks data-driven and add more rows
+  * Fix doc and example of QLoggingCategory::installCategory()
+  * qmake: Document Xcode behavior when bundling translation files
+  * Android: Fix missing import
+  * QByteArray: more GCC 12 -Werror=array-bound whack-a-mole
+  * CMake: Fix android sdk version propagation
+  * Restore C++20-deprecated mixed-enum bitwise operators
+  * Android: Fix ANR when QtService and QtActivity load in same process
+  * Fix restart QtActivity
+  * QArrayData::data(): do type-punning via quintptr, not char *
+  * QIOSTextResponder: recreate responder upon reset
+  * QSslSocket: make it work with OpenSSL v3
+  * QFileSystemModelPrivate: de-inline ctor and dtor
+  * Network: update Public Suffix List
+  * macOS: Ensure proper quoting when calling otool in objc_namespace script
+  * QKeySequence: Fix the one-off error in the mac glyph array size
+- Commits dropped by the rebase:
+  * Apply CVE-2022-27404-27405-27406-qtbase-5.15.diff
+  * QArrayData: fix UB via reinterpret_cast (crash with FORTIFY_SOURCE=3)
+  * Adapt for q_EVP_PKEY_base_id → q_EVP_PKEY_get_base_id rename in OpenSSL 3
+  * Don't use a deprecated function if built/linked with OpenSSL v3
+
+-------------------------------------------------------------------
+Thu Sep 28 11:49:39 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.10+kde159:
+  * Fix CVE-2023-43114
+  * QMimeDatabase: fix detection of pattern conflict in different prefixes
+  * Fix highdpi conversion of QTabletEvent coordinates on xcb
+  * widget: set WA_X11NetWmWindowType* after xcb window was created
+  * Fix crash when setting override cursor on multiple clients
+  * QAccessibleWidget: Remove pointless ZWSP in warning message
+  * Android A11Y: Fix deadlock in QtAndroidAccessibility::runInObjectContext()
+  * Correctly parse non BMP char refs in the sax parser
+  * Clear the _X version of alongside the enum deprecator
+  * Fix UB (signed char passed to <cctype> function)
+  * Qt3DRender: includemocs
+  * Fix capitalization error in auto-generated qdbusmacros.h include
+  * QColorDialog: Ignore mouse move events when no mouse button is pressed
+  * QHostInfo: fix remaining slotObj leaks
+  * QXmlStreamReader: Raise error on unexpected tokens
+  * QTextLayout: Reconsider cursor drawing on TextObject
+  * Ensure consistent cursor width under fractional scaling
+  * Fix QTextEdit cursor rectangle vertical positioning
+  * Return 0 in QWindow::winId in case of failed platform window creation
+  * Doc: note QWindow::winId() will cause platform window creation
+  * QSslDiffieHellmanParameters: fix mem-leak
+  * QHostInfo: fix leaking slot object
+  * Make sure we don't count down past 0 QT_FATAL_CRITICALS
+  * QLogging: DRY isFatal(QtMsgType)
+  * tst_QXmlStream: remove unneeded _ba UDLs
+  * Fix typo in QXmlStreamReader error message
+  * QXmlStreamReader: make fastScanName() indicate parsing status to callers
+  * QXmlStreamReader: change fastScanName() to take a Value*
+  * Fix Croatia's currency
+  * SSL: upgrade the default DH parameters
+
+-------------------------------------------------------------------
 Thu Sep 28 09:45:53 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - switch icu-devel requires to pkgconfig to allow switching libicu
