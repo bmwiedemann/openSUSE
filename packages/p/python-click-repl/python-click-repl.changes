@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct  7 18:03:57 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 0.3.0:
+  * Drop Python 2 support, remove six.
+  * Uses PromptSession() class from prompt_toolkit instead of prompt()
+    function.
+  * Added filter for hidden commands and options.
+  * Added click's autocompletion support.
+  * Added tab-completion for Path and BOOL type arguments.
+  * Added 'expand environmental variables in path' feature.
+  * Delegate command dispatching to the actual group command.
+  * Updated completer class and tests based on new fix.
+  * Python 3.11 support.
+- Remove python-click-repl-remove-six.patch, as it is now obsolete.
+- Remove dendency on python-six.
+- Add build-time dependency on pytest-cov.
+
+-------------------------------------------------------------------
 Sun Jun 11 13:46:17 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
