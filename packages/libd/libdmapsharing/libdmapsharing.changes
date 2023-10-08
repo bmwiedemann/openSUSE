@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  4 10:01:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.9.13:
+  + doc/Makefile.am: add human-written XML files to EXTRA_DIST
+  + Fix Vala tests
+  + Use g-ir-scanner output as input to vapigen
+  + configure.ac: Don't force CFLAGS=-O2
+  + Make use of pedansee-conf-gobject
+
+-------------------------------------------------------------------
 Tue May  9 12:19:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.9.12:
