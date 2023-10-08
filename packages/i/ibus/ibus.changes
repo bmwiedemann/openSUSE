@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  4 07:08:11 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- macros.ibus:
+  * set %ibus_table_index_post() to %nil. it'll trigger ibus-table-createdb
+     to create_indexes() for the existing db. but according to upstream, 
+     create_indexes() is now a dummy function, and it didn't bring
+     any performance improvements before. and on rpmlint side,
+     it will modify the final filelist.
+     
+-------------------------------------------------------------------
 Fri Mar 31 14:15:38 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix key typing order
