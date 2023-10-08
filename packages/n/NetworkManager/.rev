@@ -2234,4 +2234,12 @@ New stable release</comment>
 - Rebase patches with quilt.</comment>
     <requestid>1103419</requestid>
   </revision>
+  <revision rev="261" vrev="1">
+    <srcmd5>28d5d9c3933d46bf76c550eb629f8a59</srcmd5>
+    <version>1.44.2</version>
+    <time>1696760162</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115910</requestid>
+  </revision>
 </revisionlist>

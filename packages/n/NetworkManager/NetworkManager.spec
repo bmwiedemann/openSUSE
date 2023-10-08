@@ -64,13 +64,13 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.44.0
+Version:        1.44.2
 Release:        0
 Summary:        Standard Linux network configuration tool suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://networkmanager.dev/
-Source0:        https://download.gnome.org/sources/NetworkManager/1.44/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf

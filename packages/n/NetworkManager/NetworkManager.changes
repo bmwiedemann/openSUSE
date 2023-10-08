@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct  3 19:21:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.44.2:
+  + Better log IPv4 Address Conflict Detection (ACD) conflicts
+  + Remove the upper limit of 65535 for PIDs read from the PID file
+  + Allow missing default gateway with oFono
+  + Honor the CLICOLOR_FORCE environment variable
+  + Fix generating connection with IPv6 method disabled vs ignored
+  + Fix possible segmentation fault when doing a checkpoint
+    rollback
+  + Documentation improvements
+- Switch to source services, use explicit released tag.
+
+-------------------------------------------------------------------
 Wed Aug  9 15:58:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.44.0:
