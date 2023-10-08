@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct  7 05:26:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.4:
+  * Added support for overriding text to be copied for code blocks
+  * Fixed broken layout in some browsers at breakpoints when using
+    zoom
+  * Fixed #6132
+    <https://github.com/squidfunk/mkdocs-material/issues/6132>:
+    Incomplete search highlighting for code blocks in titles
+
+-------------------------------------------------------------------
 Mon Oct  2 10:43:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.4.3:
