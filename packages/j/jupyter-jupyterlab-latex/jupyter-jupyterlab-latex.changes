@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct  7 12:08:23 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.0
+  * Update to Jupyterlab 4 and Lumino 2 (#211)
+- Update to 3.2.0
+  * Last release to support JupyterLab 3
+  * Requires JupyterLab 3.6+
+  * Bump several JS packages
+  * Update dependencies and fix deprecation issues
+- Install from github sources, 3.1+ is not on PyPI
+  * gh#jupyterlab/jupyterlab-latex#218
+
+-------------------------------------------------------------------
 Wed Mar 22 11:31:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update Build Requirements (avoid have choice jupyterlab)
