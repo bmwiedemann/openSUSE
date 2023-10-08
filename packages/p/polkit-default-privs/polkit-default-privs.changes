@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 06 09:48:30 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 1550+20231006.28f05f1:
+  * Whitelist policycoreutils-dbus actions (bsc#1213435)
+
+-------------------------------------------------------------------
 Wed Sep 20 12:26:03 UTC 2023 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20230920.74aeded:
