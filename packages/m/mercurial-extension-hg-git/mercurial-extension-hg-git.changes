@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct  7 22:17:42 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Add BuildRequires that makes /usr/bin/ssh available in tests.
+
+-------------------------------------------------------------------
 Fri Aug 25 22:02:17 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Make tests actually run by adding "BuildRequires: python3-dulwich".

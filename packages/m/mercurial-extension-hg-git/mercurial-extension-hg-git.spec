@@ -37,6 +37,7 @@ Patch0:         fix_mercurial_6.5_compatibility.patch
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  mercurial
+BuildRequires:  openssh-clients
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-dulwich >= 0.19.3
