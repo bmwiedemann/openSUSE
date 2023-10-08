@@ -36,14 +36,12 @@
 %endif
 %if 0%{?suse_version} >= 1599
 %bcond_without system_harfbuzz
-%bcond_without system_freetype
 %bcond_without arm_bti
 %bcond_without system_icu
 %bcond_without ffmpeg_51
 %bcond_without qt6
 %else
 %bcond_with system_harfbuzz
-%bcond_with system_freetype
 %bcond_with arm_bti
 %bcond_with system_icu
 %bcond_with ffmpeg_51
@@ -68,6 +66,7 @@
 %bcond_without lto
 %bcond_without pipewire
 %bcond_without system_ffmpeg
+%bcond_with system_freetype
 %bcond_without system_zlib
 %bcond_with system_vpx
 # FFmpeg version
@@ -85,7 +84,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        117.0.5938.149
+Version:        118.0.5993.54
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -143,6 +142,7 @@ Patch238:       chromium-117-blink-BUILD-mnemonic.patch
 Patch239:       chromium-117-includes.patch
 Patch240:       chromium-117-string-convert.patch
 Patch241:       chromium-117-lp155-typename.patch
+Patch242:       chromium-118-includes.patch
 BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
 BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  SDL-devel

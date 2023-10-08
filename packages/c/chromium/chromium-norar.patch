@@ -1,7 +1,7 @@
-Index: chromium-117.0.5938.22/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
+Index: chromium-118.0.5993.18/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
 ===================================================================
---- chromium-117.0.5938.22.orig/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
-+++ chromium-117.0.5938.22/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
+--- chromium-118.0.5993.18.orig/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
++++ chromium-118.0.5993.18/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
 @@ -77,8 +77,6 @@ void FileAnalyzer::Start(const base::Fil
  
    if (inspection_type == DownloadFileType::ZIP) {
@@ -11,10 +11,10 @@ Index: chromium-117.0.5938.22/chrome/browser/safe_browsing/download_protection/f
  #if BUILDFLAG(IS_MAC)
    } else if (inspection_type == DownloadFileType::DMG) {
      StartExtractDmgFeatures();
-Index: chromium-117.0.5938.22/chrome/utility/safe_browsing/archive_analyzer.cc
+Index: chromium-118.0.5993.18/chrome/utility/safe_browsing/archive_analyzer.cc
 ===================================================================
---- chromium-117.0.5938.22.orig/chrome/utility/safe_browsing/archive_analyzer.cc
-+++ chromium-117.0.5938.22/chrome/utility/safe_browsing/archive_analyzer.cc
+--- chromium-118.0.5993.18.orig/chrome/utility/safe_browsing/archive_analyzer.cc
++++ chromium-118.0.5993.18/chrome/utility/safe_browsing/archive_analyzer.cc
 @@ -8,7 +8,6 @@
  #include "build/build_config.h"
  #include "build/buildflag.h"
@@ -34,10 +34,10 @@ Index: chromium-117.0.5938.22/chrome/utility/safe_browsing/archive_analyzer.cc
      return std::make_unique<ZipAnalyzer>();
    } else if (file_type == DownloadFileType::SEVEN_ZIP) {
      return std::make_unique<SevenZipAnalyzer>();
-Index: chromium-117.0.5938.22/chrome/common/safe_browsing/BUILD.gn
+Index: chromium-118.0.5993.18/chrome/common/safe_browsing/BUILD.gn
 ===================================================================
---- chromium-117.0.5938.22.orig/chrome/common/safe_browsing/BUILD.gn
-+++ chromium-117.0.5938.22/chrome/common/safe_browsing/BUILD.gn
+--- chromium-118.0.5993.18.orig/chrome/common/safe_browsing/BUILD.gn
++++ chromium-118.0.5993.18/chrome/common/safe_browsing/BUILD.gn
 @@ -137,7 +137,6 @@ source_set("safe_browsing") {
        "//components/safe_browsing/content/common:file_type_policies",
        "//components/safe_browsing/core/common",
@@ -46,20 +46,20 @@ Index: chromium-117.0.5938.22/chrome/common/safe_browsing/BUILD.gn
      ]
  
      public_deps = [
-Index: chromium-117.0.5938.22/chrome/services/file_util/safe_archive_analyzer.cc
+Index: chromium-118.0.5993.18/chrome/services/file_util/safe_archive_analyzer.cc
 ===================================================================
---- chromium-117.0.5938.22.orig/chrome/services/file_util/safe_archive_analyzer.cc
-+++ chromium-117.0.5938.22/chrome/services/file_util/safe_archive_analyzer.cc
-@@ -73,6 +73,7 @@ void SafeArchiveAnalyzer::AnalyzeRarFile
-     base::File rar_file,
+--- chromium-118.0.5993.18.orig/chrome/services/file_util/safe_archive_analyzer.cc
++++ chromium-118.0.5993.18/chrome/services/file_util/safe_archive_analyzer.cc
+@@ -74,6 +74,7 @@ void SafeArchiveAnalyzer::AnalyzeRarFile
+     const absl::optional<std::string>& password,
      mojo::PendingRemote<chrome::mojom::TemporaryFileGetter> temp_file_getter,
      AnalyzeRarFileCallback callback) {
 +#if 0
    DCHECK(rar_file.IsValid());
    temp_file_getter_.Bind(std::move(temp_file_getter));
    callback_ = std::move(callback);
-@@ -91,6 +92,9 @@ void SafeArchiveAnalyzer::AnalyzeRarFile
-                         /*password=*/absl::nullopt,
+@@ -90,6 +91,9 @@ void SafeArchiveAnalyzer::AnalyzeRarFile
+                         /*password=*/password,
                          std::move(analysis_finished_callback),
                          std::move(temp_file_getter_callback), &results_);
 +#else
@@ -68,10 +68,10 @@ Index: chromium-117.0.5938.22/chrome/services/file_util/safe_archive_analyzer.cc
  }
  
  void SafeArchiveAnalyzer::AnalyzeSevenZipFile(
-Index: chromium-117.0.5938.22/chrome/services/file_util/safe_archive_analyzer.h
+Index: chromium-118.0.5993.18/chrome/services/file_util/safe_archive_analyzer.h
 ===================================================================
---- chromium-117.0.5938.22.orig/chrome/services/file_util/safe_archive_analyzer.h
-+++ chromium-117.0.5938.22/chrome/services/file_util/safe_archive_analyzer.h
+--- chromium-118.0.5993.18.orig/chrome/services/file_util/safe_archive_analyzer.h
++++ chromium-118.0.5993.18/chrome/services/file_util/safe_archive_analyzer.h
 @@ -7,7 +7,6 @@
  
  #include "chrome/common/safe_browsing/archive_analyzer_results.h"
@@ -80,7 +80,7 @@ Index: chromium-117.0.5938.22/chrome/services/file_util/safe_archive_analyzer.h
  #include "chrome/utility/safe_browsing/seven_zip_analyzer.h"
  #include "chrome/utility/safe_browsing/zip_analyzer.h"
  #include "mojo/public/cpp/bindings/remote.h"
-@@ -65,7 +64,6 @@ class SafeArchiveAnalyzer : public chrom
+@@ -66,7 +65,6 @@ class SafeArchiveAnalyzer : public chrom
    void Timeout();
  
    safe_browsing::ZipAnalyzer zip_analyzer_;
@@ -88,10 +88,10 @@ Index: chromium-117.0.5938.22/chrome/services/file_util/safe_archive_analyzer.h
    safe_browsing::SevenZipAnalyzer seven_zip_analyzer_;
  #if BUILDFLAG(IS_MAC)
    safe_browsing::dmg::DMGAnalyzer dmg_analyzer_;
-Index: chromium-117.0.5938.22/chrome/utility/safe_browsing/BUILD.gn
+Index: chromium-118.0.5993.18/chrome/utility/safe_browsing/BUILD.gn
 ===================================================================
---- chromium-117.0.5938.22.orig/chrome/utility/safe_browsing/BUILD.gn
-+++ chromium-117.0.5938.22/chrome/utility/safe_browsing/BUILD.gn
+--- chromium-118.0.5993.18.orig/chrome/utility/safe_browsing/BUILD.gn
++++ chromium-118.0.5993.18/chrome/utility/safe_browsing/BUILD.gn
 @@ -31,8 +31,6 @@ source_set("safe_browsing") {
      sources = [
        "archive_analyzer.cc",

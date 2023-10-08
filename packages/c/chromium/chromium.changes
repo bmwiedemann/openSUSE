@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct  7 15:32:52 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 118.0.5993.54
+- add patches:
+  * chromium-118-includes.patch
+
+-------------------------------------------------------------------
 Wed Oct  4 05:22:08 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 117.0.5938.149:
