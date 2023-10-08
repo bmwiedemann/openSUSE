@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct 07 01:19:51 UTC 2023 - william.brown@suse.com
+
+- Update to version 20231007:
+  * Assigned RUSTSEC-2023-0066 to pleaser (#1799)
+  * Document the privilege-escalation vulnerability in pleaser. (#1798)
+  * Update webpki RUSTSEC-2023-0052 advisory. (#1797)
+  * Assigned RUSTSEC-2023-0065 to tungstenite (#1796)
+  * Create advisory for tungstenite DoS (#1795)
+  * Add patch version (#1794)
+  * Update info about CVE-2023-5129 (#1793)
+  * Bump rustsec-admin to 0.8.8 (#1791)
+  * Assigned RUSTSEC-2023-0064 to gix-transport (#1790)
+  * Add notice to gix-transport crate (#1789)
+
+-------------------------------------------------------------------
 Thu Aug 17 23:38:35 UTC 2023 - william.brown@suse.com
 
 - Update to version 20230818:
