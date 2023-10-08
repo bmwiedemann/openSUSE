@@ -379,4 +379,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>- Fix broken QML dependency</comment>
     <requestid>1098336</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>0e9faa596559c7e1d9dca092dade992f</srcmd5>
+    <version>5.15.11+kde0</version>
+    <time>1696760207</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.11. Not fully built yet, qtlocation needed a fix. (forwarded request 1116057 from favogt)</comment>
+    <requestid>1116110</requestid>
+  </revision>
 </revisionlist>

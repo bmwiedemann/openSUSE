@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:40:37 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde0, rebased upstream:
+  * No code changes
+
+-------------------------------------------------------------------
 Wed Jul 12 08:45:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Fix broken QML dependency
