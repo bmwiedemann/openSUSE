@@ -2569,4 +2569,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   versions (forwarded request 1114077 from msmeissn)</comment>
     <requestid>1114081</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>9a8661b1515de3cb2cfd4eb48911909e</srcmd5>
+    <version>5.15.11+kde134</version>
+    <time>1696760205</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.11. Not fully built yet, qtlocation needed a fix. (forwarded request 1116057 from favogt)</comment>
+    <requestid>1116104</requestid>
+  </revision>
 </revisionlist>

@@ -29,15 +29,15 @@
 %bcond_without harfbuzz
 
 Name:           libqt5-qtbase
-Version:        5.15.10+kde129
+Version:        5.15.11+kde134
 Release:        0
 Summary:        C++ Program Library, Core Components
 License:        LGPL-3.0-only or GPL-3.0-with-Qt-Company-Qt-exception-1.1
 Group:          System/Libraries
 Url:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.10
-%define so_version 5.15.10
+%define real_version 5.15.11
+%define so_version 5.15.11
 %define tar_version qtbase-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
 # to get mtime of file:
@@ -898,6 +898,7 @@ sed -i -e 's|^\(QMAKE_STRIP.*=\).*$|\1|g' mkspecs/common/linux.conf
 	-plugin-sql-psql -I/usr/include/pgsql/ -I/usr/include/pgsql/server \
 	-plugin-sql-odbc \
 	-plugin-sql-mysql -I/usr/include/mysql/ \
+	-xcb-native-painting \
 	-no-feature-relocatable \
 	QMAKE_CFLAGS+="$CFLAGS" \
 	QMAKE_CXXFLAGS+="$CXXFLAGS"
