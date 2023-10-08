@@ -177,4 +177,13 @@
 </comment>
     <requestid>1113306</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>37b087a9261e614ec5240230a34abdab</srcmd5>
+    <version>5.11.2</version>
+    <time>1696760244</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.11.2
+- Multiple typing upgrades and fix releases since 5.10.0</comment>
+    <requestid>1116213</requestid>
+  </revision>
 </revisionlist>

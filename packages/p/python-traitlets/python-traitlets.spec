@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-traitlets
-Version:        5.10.0
+Version:        5.11.2
 Release:        0
 Summary:        Traitlets Python configuration system
 License:        BSD-3-Clause
