@@ -99,4 +99,14 @@
 - Name field shouldn't contain a macro</comment>
     <requestid>1109518</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>01de087f22e5f4a2fb40945a1b127f0d</srcmd5>
+    <version>3.9.0</version>
+    <time>1696760238</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.9.0:
+  - Encode title and attributes of HTML tables
+</comment>
+    <requestid>1116202</requestid>
+  </revision>
 </revisionlist>

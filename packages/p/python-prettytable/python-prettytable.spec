@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-prettytable
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        Library for displaying tabular data in formatted fashion
 License:        BSD-2-Clause
@@ -38,9 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 Requires:       python-wcwidth
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib-metadata
-%endif
+Requires:       (python-importlib-metadata if python-base < 3.8)
 Provides:       python-PrettyTable = %{version}-%{release}
 Obsoletes:      python-PrettyTable < %{version}-%{release}
 %python_subpackages
@@ -53,7 +51,8 @@ printed, independent alignment of columns (left or right justified or
 centred) and printing of "sub-tables" by specifying a row range.
 
 %prep
-%setup -q -n prettytable-%{version}
+%autosetup -p1 -n prettytable-%{version}
+
 sed -i '1 {/env python/d}' src/prettytable/prettytable.py
 
 %build
