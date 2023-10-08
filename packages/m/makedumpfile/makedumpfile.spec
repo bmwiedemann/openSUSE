@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} && 0%{?suse_version} <= 1500
+%define build_eppic 1
+%else
 %define build_eppic 0
+%endif
 
 %if 0%{!?have_snappy:1}
 %if 0%{?suse_version} >= 1310
@@ -53,6 +57,8 @@ Source99:       %{name}-rpmlintrc
 Patch0:         %{name}-override-libtinfo.patch
 Patch1:         %{name}-ppc64-VA-range-SUSE.patch
 Patch2:         %{name}-PN_XNUM.patch
+Patch3:         Support-struct-module_memory-on-Linux-6.4-and-.patch
+Patch4:         ppc64-do-page-traversal-if-vmemmap_list-not-po.patch
 BuildRequires:  libbz2-devel
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
@@ -114,7 +120,7 @@ install -m 0644 -t %{buildroot}%{_datadir}/%{name}-%{version}/eppic_scripts/ epp
 %else
 # filesystem before SLE12 SP3 lacks /usr/share/licenses
 %if 0%(test ! -d %{_defaultlicensedir} && echo 1)
-%define _defaultlicensedir %_defaultdocdir
+%define _defaultlicensedir %{_defaultdocdir}
 %endif
 %endif
 # End of compatibility cruft

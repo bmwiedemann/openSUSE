@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  6 08:29:14 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Add Support-struct-module_memory-on-Linux-6.4-and-.patch (jsc#PED-4593)
+- Add ppc64-do-page-traversal-if-vmemmap_list-not-po.patch (bsc#1215364)
+- Re-enable eppic on systems with old enough libeppic
+
+-------------------------------------------------------------------
 Tue Apr 25 10:42:06 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - update to 1.7.3:

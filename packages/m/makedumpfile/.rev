@@ -1164,4 +1164,12 @@ See README.static for an explanation why static linking is preferred for some li
 </comment>
     <requestid>1083540</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>b844313f2b36b82cf85bb023e69ea6f3</srcmd5>
+    <version>1.7.3</version>
+    <time>1696760200</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115998</requestid>
+  </revision>
 </revisionlist>

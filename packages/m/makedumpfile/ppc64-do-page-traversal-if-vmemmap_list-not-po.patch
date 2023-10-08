@@ -1,0 +1,242 @@
+From a34f017965583e89c4cb0b00117c200a6c191e54 Mon Sep 17 00:00:00 2001
+From: Aditya Gupta <adityag@linux.ibm.com>
+Date: Thu, 14 Sep 2023 14:52:23 +0530
+Subject: [PATCH] [PATCH] ppc64: do page traversal if vmemmap_list not
+ populated
+
+Currently 'makedumpfile' fails to collect vmcore on upstream kernel,
+with the errors:
+
+    readpage_elf: Attempt to read non-existent page at 0x4000000000000000.
+    readmem: type_addr: 0, addr:0, size:8
+    get_vmemmap_list_info: Can't get vmemmap region addresses
+    get_machdep_info_ppc64: Can't get vmemmap list info.
+
+This occurs since makedumpfile depends on 'vmemmap_list' for translating
+vmemmap addresses. But with below commit in Linux 6.6-rc1, vmemmap_list
+can be empty, in case of Radix MMU on PowerPC64.
+
+    368a0590d954: (powerpc/book3s64/vmemmap: switch radix to use a
+    different vmemmap handling function)
+
+In case vmemmap_list is empty, then it's head is NULL, which causes
+makedumpfile to fail with above error.
+
+Since with above commit, 'vmemmap_list' is not populated (when MMU is
+Radix MMU), kernel populates corresponding page table entries in kernel
+page table. Hence, instead of depending on 'vmemmap_list' for address
+translation for vmemmap addresses, do a kernel pagetable walk.
+
+And since the pte can also be introduced at higher levels in the page
+table, such as at PMD level, add hugepage support, by checking for
+PAGE_PTE flag.
+
+Reported-by: Sachin Sant <sachinp@linux.ibm.com>
+Tested-by: Sachin Sant <sachinp@linux.ibm.com>
+Signed-off-by: Aditya Gupta <adityag@linux.ibm.com>
+---
+ arch/ppc64.c   | 111 ++++++++++++++++++++++++++++++++++---------------
+ makedumpfile.h |   6 +++
+ 2 files changed, 84 insertions(+), 33 deletions(-)
+
+diff --git a/arch/ppc64.c b/arch/ppc64.c
+index 5e70acb51aba..96c357cb0335 100644
+--- a/arch/ppc64.c
++++ b/arch/ppc64.c
+@@ -196,6 +196,10 @@ ppc64_vmemmap_init(void)
+ 	int psize, shift;
+ 	ulong head;
+ 
++	/* initialise vmemmap_list in case SYMBOL(vmemmap_list) is not found */
++	info->vmemmap_list = NULL;
++	info->vmemmap_cnt = 0;
++
+ 	if ((SYMBOL(vmemmap_list) == NOT_FOUND_SYMBOL)
+ 	    || (SYMBOL(mmu_psize_defs) == NOT_FOUND_SYMBOL)
+ 	    || (SYMBOL(mmu_vmemmap_psize) == NOT_FOUND_SYMBOL)
+@@ -216,15 +220,24 @@ ppc64_vmemmap_init(void)
+ 		return FALSE;
+ 	info->vmemmap_psize = 1 << shift;
+ 
+-	if (!readmem(VADDR, SYMBOL(vmemmap_list), &head, sizeof(unsigned long)))
+-		return FALSE;
+-
+ 	/*
+-	 * Get vmemmap list count and populate vmemmap regions info
+-	 */
+-	info->vmemmap_cnt = get_vmemmap_list_info(head);
+-	if (info->vmemmap_cnt == 0)
+-		return FALSE;
++	 * vmemmap_list symbol can be missing or set to 0 in the kernel.
++	 * This would imply vmemmap region is mapped in the kernel pagetable.
++	 *
++	 * So, read vmemmap_list anyway, and use 'vmemmap_list' if it's not empty
++	 * (head != NULL), or we will do a kernel pagetable walk for vmemmap address
++	 * translation later
++	 **/
++	readmem(VADDR, SYMBOL(vmemmap_list), &head, sizeof(unsigned long));
++
++	if (head) {
++		/*
++		 * Get vmemmap list count and populate vmemmap regions info
++		 */
++		info->vmemmap_cnt = get_vmemmap_list_info(head);
++		if (info->vmemmap_cnt == 0)
++			return FALSE;
++	}
+ 
+ 	info->flag_vmemmap = TRUE;
+ 	return TRUE;
+@@ -347,29 +360,6 @@ ppc64_vmalloc_init(void)
+ 	return TRUE;
+ }
+ 
+-/*
+- *  If the vmemmap address translation information is stored in the kernel,
+- *  make the translation.
+- */
+-static unsigned long long
+-ppc64_vmemmap_to_phys(unsigned long vaddr)
+-{
+-	int	i;
+-	ulong	offset;
+-	unsigned long long paddr = NOT_PADDR;
+-
+-	for (i = 0; i < info->vmemmap_cnt; i++) {
+-		if ((vaddr >= info->vmemmap_list[i].virt) && (vaddr <
+-		    (info->vmemmap_list[i].virt + info->vmemmap_psize))) {
+-			offset = vaddr - info->vmemmap_list[i].virt;
+-			paddr = info->vmemmap_list[i].phys + offset;
+-			break;
+-		}
+-	}
+-
+-	return paddr;
+-}
+-
+ static unsigned long long
+ ppc64_vtop_level4(unsigned long vaddr)
+ {
+@@ -379,6 +369,8 @@ ppc64_vtop_level4(unsigned long vaddr)
+ 	unsigned long long pgd_pte, pud_pte;
+ 	unsigned long long pmd_pte, pte;
+ 	unsigned long long paddr = NOT_PADDR;
++	uint is_hugepage = 0;
++	uint pdshift;
+ 	uint swap = 0;
+ 
+ 	if (info->page_buf == NULL) {
+@@ -413,6 +405,13 @@ ppc64_vtop_level4(unsigned long vaddr)
+ 	if (!pgd_pte)
+ 		return NOT_PADDR;
+ 
++	if (IS_HUGEPAGE(pgd_pte)) {
++		is_hugepage = 1;
++		pte = pgd_pte;
++		pdshift = info->l4_shift;
++		goto out;
++	}
++
+ 	/*
+ 	 * Sometimes we don't have level3 pagetable entries
+ 	 */
+@@ -426,6 +425,13 @@ ppc64_vtop_level4(unsigned long vaddr)
+ 		pud_pte = swap64(ULONG((info->page_buf + PAGEOFFSET(page_upper))), swap);
+ 		if (!pud_pte)
+ 			return NOT_PADDR;
++
++		if (IS_HUGEPAGE(pud_pte)) {
++			is_hugepage = 1;
++			pte = pud_pte;
++			pdshift = info->l3_shift;
++			goto out;
++		}
+ 	} else {
+ 		pud_pte = pgd_pte;
+ 	}
+@@ -440,6 +446,13 @@ ppc64_vtop_level4(unsigned long vaddr)
+ 	if (!(pmd_pte))
+ 		return NOT_PADDR;
+ 
++	if (IS_HUGEPAGE(pmd_pte)) {
++		is_hugepage = 1;
++		pte = pmd_pte;
++		pdshift = info->l2_shift;
++		goto out;
++	}
++
+ 	pmd_pte = pmd_page_vaddr_l4(pmd_pte);
+ 	page_table = (ulong *)(pmd_pte)
+ 			+ (BTOP(vaddr) & (info->ptrs_per_l1 - 1));
+@@ -456,8 +469,40 @@ ppc64_vtop_level4(unsigned long vaddr)
+ 	if (!pte)
+ 		return NOT_PADDR;
+ 
+-	paddr = PAGEBASE(PTOB((pte & info->pte_rpn_mask) >> info->pte_rpn_shift))
++out:
++	if (is_hugepage) {
++		paddr = PAGEBASE(PTOB((pte & info->pte_rpn_mask) >> info->pte_rpn_shift))
++			+ (vaddr & ((1UL << pdshift) - 1));
++	} else {
++		paddr = PAGEBASE(PTOB((pte & info->pte_rpn_mask) >> info->pte_rpn_shift))
+ 			+ PAGEOFFSET(vaddr);
++	}
++
++	return paddr;
++}
++
++/*
++ *  If the vmemmap address translation information is stored in the kernel,
++ *  make the translation.
++ */
++static unsigned long long
++ppc64_vmemmap_to_phys(unsigned long vaddr)
++{
++	int	i;
++	ulong	offset;
++	unsigned long long paddr = NOT_PADDR;
++
++	if (!info->vmemmap_list)
++		return ppc64_vtop_level4(vaddr);
++
++	for (i = 0; i < info->vmemmap_cnt; i++) {
++		if ((vaddr >= info->vmemmap_list[i].virt) && (vaddr <
++		    (info->vmemmap_list[i].virt + info->vmemmap_psize))) {
++			offset = vaddr - info->vmemmap_list[i].virt;
++			paddr = info->vmemmap_list[i].phys + offset;
++			break;
++		}
++	}
+ 
+ 	return paddr;
+ }
+@@ -567,8 +612,8 @@ get_machdep_info_ppc64(void)
+ 		return FALSE;
+ 	}
+ 
++	info->vmemmap_start = VMEMMAP_REGION_ID << REGION_SHIFT;
+ 	if (SYMBOL(vmemmap_list) != NOT_FOUND_SYMBOL) {
+-		info->vmemmap_start = VMEMMAP_REGION_ID << REGION_SHIFT;
+ 		info->vmemmap_end = info->vmemmap_start;
+ 		if (ppc64_vmemmap_init() == FALSE) {
+ 			ERRMSG("Can't get vmemmap list info.\n");
+diff --git a/makedumpfile.h b/makedumpfile.h
+index 85e5a4932983..056aee191519 100644
+--- a/makedumpfile.h
++++ b/makedumpfile.h
+@@ -678,6 +678,12 @@ unsigned long get_kvbase_arm64(void);
+ #define REGION_SHIFT            (60UL)
+ #define VMEMMAP_REGION_ID       (0xfUL)
+ 
++/*
++ * If PAGE_PTE is set, then it's a leaf PTE for hugepage
++ */
++#define PAGE_PTE (1UL << 62)
++#define IS_HUGEPAGE(pte) (!!((pte) & PAGE_PTE))
++
+ /* 4-level page table support */
+ 
+ /* 4K pagesize */
+-- 
+2.42.0
+
