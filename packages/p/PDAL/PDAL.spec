@@ -1,7 +1,7 @@
 #
 # spec file for package PDAL
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Friedmann Bruno, Ioda-Net Sàrl, Charmoille, Switzerland.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,11 +17,11 @@
 #
 
 
-%define soname 13
-%define sovers 13.0.0
+%define soname 15
+%define sovers 15.6.0
 %define lname   pdal
 Name:           PDAL
-Version:        2.3.0
+Version:        2.5.6
 Release:        0
 Summary:        Point Data Abstraction Library (GDAL for point cloud data)
 # The code is licensed BSD except for:
@@ -37,9 +37,6 @@ Source1:        https://github.com/PDAL/PDAL/releases/download/%{version}/%{name
 # Unbundle some bundled libraries inspired by Fedora work at
 # https://src.fedoraproject.org/rpms/PDAL/blob/rawhide/f/PDAL_unbundle.patch
 Patch0:         PDAL_unbundle.patch
-# Upstream : fix 32bits tests
-Patch1:         https://github.com/PDAL/PDAL/commit/d11e0e20.patch
-# Source2:      https://www.pdal.io/PDAL.pdf
 BuildRequires:  bash-completion
 BuildRequires:  cairo-devel
 BuildRequires:  cmake >= 2.8
@@ -168,7 +165,7 @@ PDAL algorithms.
 %prep
 %autosetup -p1 -n %{name}-%{version}-src
 # Remove some bundled libraries	to use system
-rm -rf vendor/{eigen,gtest,pdalboost}
+rm -rf vendor/{eigen,gtest}
 # Fix all wrong shebang and move to python3 only
 find . -type f -iname "*.py" -exec sed -i 's,^#!%{_bindir}/env python$,#!%{_bindir}/python3,' {} +
 

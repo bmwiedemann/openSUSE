@@ -36,4 +36,27 @@
 </comment>
     <requestid>944872</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>65bfe22133703e6279bfe3783947e873</srcmd5>
+    <version>2.5.6</version>
+    <time>1696760270</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.5.6, complete description:
+  * https://github.com/PDAL/PDAL/releases/tag/2.5.6
+  * https://github.com/PDAL/PDAL/releases/tag/2.5.5
+  * https://github.com/PDAL/PDAL/releases/tag/2.5.4
+  * https://github.com/PDAL/PDAL/releases/tag/2.5.3
+  * https://github.com/PDAL/PDAL/releases/tag/2.5.2
+  * https://github.com/PDAL/PDAL/releases/tag/2.5.1
+  * https://github.com/PDAL/PDAL/releases/tag/2.5.0
+  * https://github.com/PDAL/PDAL/releases/tag/2.4.3
+  * https://github.com/PDAL/PDAL/releases/tag/2.4.2
+  * https://github.com/PDAL/PDAL/releases/tag/2.4.1
+  * https://github.com/PDAL/PDAL/releases/tag/2.4.0
+- Drop upstream patch:
+  * d11e0e20.patch
+- Refresh PDAL_unbundle.patch
+</comment>
+    <requestid>1115866</requestid>
+  </revision>
 </revisionlist>
