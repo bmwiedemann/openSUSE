@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:42:09 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde0, rebased upstream:
+  * Blacklist Tests_StackLayout::test_addAndRemoveItems
+  * Blacklist Windows on Tests_StackLayout::test_addAndRemoveItems
+  * Blacklist 1 tests in qtquickcontrols on macos
+  * Blacklist 1 tests in qtquickcontrols on ubuntu-20.04
+
+-------------------------------------------------------------------
 Tue Jun 13 12:59:13 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.10+kde0, rebased upstream:
