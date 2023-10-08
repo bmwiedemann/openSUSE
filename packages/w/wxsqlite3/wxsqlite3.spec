@@ -19,8 +19,15 @@
 %define wx_version_pkgname %(wx-config --version | sed 's@^\\([^\\.]\\+\\.[^\\.]\\+\\)\\(.*\\)@\\1@;s@\\.@_@')
 %define wx_version_soname  %(wx-config --version | sed 's@^\\([^\\.]\\+\\.[^\\.]\\+\\)\\(.*\\)@\\1@')
 %define sover 0
+%if 0%{?suse_version} > 1315
+BuildRequires:  wxWidgets-devel >= 3
+%else
+%define _use_internal_dependency_generator 0
+%define __find_requires %{wx_requires}
+BuildRequires:  wxWidgets-3_0-devel
+%endif
 Name:           wxsqlite3
-Version:        4.9.1
+Version:        4.9.6
 Release:        0
 Summary:        C++ wrapper around SQLite 3.x
 License:        SUSE-wxWidgets-3.1
@@ -30,13 +37,6 @@ BuildRequires:  autoconf >= 2.69
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-%if 0%{suse_version} > 1315
-BuildRequires:  wxWidgets-devel >= 3
-%else
-BuildRequires:  wxWidgets-3_0-devel
-%define _use_internal_dependency_generator 0
-%define __find_requires %wx_requires
-%endif
 
 %description
 wxSQLite3 is a C++ wrapper around the public domain SQLite 3.x database
@@ -73,7 +73,7 @@ autoreconf -fi
 %configure \
 	--enable-shared \
 	--disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -88,6 +88,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libwxcode_gtk2u_wxsqlite3-%{wx_version_soname}.so.%{sover}*
 
 %files devel
+%license LICENCE.txt
 %dir %{_includedir}/wx
 %{_includedir}/wx/wxsqlite3.h
 %{_includedir}/wx/wxsqlite3_version.h

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  6 21:42:16 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.9.6
+  * Upgrade to SQLite3 Multiple Ciphers version 1.7.0 (based on SQLite 3.43.1)
+  * Enhance method wxSQLite3Database::Open allowing to set the VFS to be used
+  * Add method wxSQLite3Database::IsInterrupted
+
+-------------------------------------------------------------------
 Thu Feb  9 15:54:57 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 4.9.1:
