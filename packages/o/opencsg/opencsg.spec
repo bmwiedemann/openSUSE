@@ -1,7 +1,7 @@
 #
 # spec file for package opencsg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           opencsg
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Constructive Solid Geometry rendering library
 License:        GPL-2.0-or-later
@@ -27,9 +27,9 @@ Source:         https://www.opencsg.org/OpenCSG-%{version}.tar.gz
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
-%if 0%{?fedora_version} || 0%{?suse_version} >= 1310
 BuildRequires:  libXmu-devel
-%endif
+BuildRequires:  libqt5-qtbase-common-devel
+BuildRequires:  libqt5-qtbase-devel
 
 %description
 OpenCSG is a library that does image-based Constructive Solid
@@ -45,6 +45,13 @@ Geometry rendering using OpenGL. CSG denotes an approach to model 3D
 shapes by applying operations such as union, intersection or
 subtraction to so-called primtives, the latter of which are solid
 (i.e. have a clearly defined interior and exterior).
+
+%package doc
+Summary:        Documents package for opencsg
+BuildArch:      noarch
+
+%description doc
+This package contains the documentation for opencsg.
 
 %package devel
 Summary:        Development files for opencsg, a CSG rendering library
@@ -70,6 +77,7 @@ rm -rf glew
 cd src
 # rpath is evil
 sed -i 's@-Wl,-rpath,\.\./lib@@' Makefile
+%qmake5
 %make_build
 
 %install
@@ -82,11 +90,14 @@ mv lib %{buildroot}%{_libdir}
 
 %files -n libopencsg1
 %license copying.txt doc/license/gpl-3.0.txt doc/license/gpl-2.0.txt
-%doc changelog.txt doc/*
+%doc changelog.txt
 %{_libdir}/libopencsg.so.1*
 
 %files devel
 %{_includedir}/*
 %{_libdir}/libopencsg.so
+
+%files doc
+%doc doc/*
 
 %changelog
