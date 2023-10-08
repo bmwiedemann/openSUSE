@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct 07 05:26:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.32.0:
+  * Release v1.32.0 (#6593)
+  * Updated API to inherit updated multi-arch validator that scans
+    for node affinity. (#6592)
+  * Add missing "controller-tools" update instructions to the
+    v1.25.0 migration guide (#6525) (#6526)
+  * helm-operator: reduce cache memory footprint (#6377)
+  * (refactor): switch the ansible plugin to use
+    github.com/operator-framework/ansible-operator-plugins, remove
+    ansible code (#6583)
+  * Bump docker/setup-buildx-action from 2 to 3 (#6568)
+  * Allow users to add annotation to set configure rollback (#6546)
+
+-------------------------------------------------------------------
 Thu Sep 14 06:13:02 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package operator-sdk: SDK for building Kubernetes

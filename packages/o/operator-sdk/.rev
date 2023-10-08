@@ -7,4 +7,12 @@
     <comment>new package operator-sdk: SDK for building Kubernetes applications. Provides high level APIs, useful abstractions, and project scaffolding</comment>
     <requestid>1112323</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ea52e80414526f51275afd2d736ad420</srcmd5>
+    <version>1.32.0</version>
+    <time>1696760311</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116165</requestid>
+  </revision>
 </revisionlist>

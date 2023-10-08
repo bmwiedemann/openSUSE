@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           operator-sdk
-Version:        1.31.0
+Version:        1.32.0
 Release:        0
 Summary:        CLI for installing the Operator Lifecycle Manager
 License:        Apache-2.0
@@ -38,7 +38,6 @@ The Operator SDK is a framework that uses the controller-runtime library to make
 * High level APIs and abstractions to write the operational logic more intuitively
 * Tools for scaffolding and code generation to bootstrap a new project fast
 * Extensions to cover common Operator use cases
-
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
@@ -72,8 +71,7 @@ BuildArch:      noarch
 zsh command line completion support for %{name}.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 export K8S_VERSION=$(awk '/^export K8S_VERSION/ {print $4}' Makefile)
