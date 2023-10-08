@@ -17,7 +17,7 @@
 
 
 Name:           python-jupyter-ydoc
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Document structures for collaborative editing using Ypy
 License:        BSD-3-Clause

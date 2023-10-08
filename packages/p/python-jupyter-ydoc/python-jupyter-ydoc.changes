@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct  7 13:45:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.1
+  * Fix joining of source when source is an array of strings #186
+    (@jtpio)
+
+-------------------------------------------------------------------
 Sun Sep 24 18:39:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.0

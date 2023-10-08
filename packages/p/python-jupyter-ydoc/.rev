@@ -69,4 +69,14 @@
   * Create awareness interface #171 (@hbcarlos) (forwarded request 1113298 from bnavigator)</comment>
     <requestid>1113299</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0db5246108b86a3aa202258a71a3de81</srcmd5>
+    <version>1.1.1</version>
+    <time>1696760344</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.1.1
+  * Fix joining of source when source is an array of strings #186
+    (@jtpio)</comment>
+    <requestid>1116214</requestid>
+  </revision>
 </revisionlist>
