@@ -2291,4 +2291,15 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1112844</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>b27e4687524b7c7b2340303274ba8c27</srcmd5>
+    <version>17.0.2</version>
+    <time>1696760250</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 17.0.2.
+  * This release contains bug-fixes for the LLVM 17.0.0 release.
+    This release is API and ABI compatible with 17.0.0.
+</comment>
+    <requestid>1116229</requestid>
+  </revision>
 </revisionlist>
