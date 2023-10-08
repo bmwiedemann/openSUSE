@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:41:49 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde1, rebased upstream:
+  * Apply texture parameters for fbo textures
+
+-------------------------------------------------------------------
 Tue Jun 13 12:59:10 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.10+kde1, rebased upstream:
