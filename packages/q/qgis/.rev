@@ -396,4 +396,13 @@
     <comment></comment>
     <requestid>1112051</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>e33a0222cdf937358c7c50f1a17344d9</srcmd5>
+    <version>3.32.3</version>
+    <time>1696760265</time>
+    <user>anag+factory</user>
+    <comment>- update to bugfix release 3.32.3
+</comment>
+    <requestid>1115841</requestid>
+  </revision>
 </revisionlist>
