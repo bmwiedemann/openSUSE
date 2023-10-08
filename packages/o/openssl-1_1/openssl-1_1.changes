@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  4 07:15:29 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Displays "fips" in the version string (bsc#1215215)
+  * Add openssl-1_1-fips-bsc1215215_fips_in_version_string.patch
+
+-------------------------------------------------------------------
 Tue Sep 12 05:09:28 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 1.1.1w:

@@ -175,7 +175,8 @@ Patch105:       openssl-1_1-ossl-sli-008-pbkdf2-salt_pass_iteration.patch
 Patch106:       openssl-s_client-check-ocsp-status.patch
 # PATCH-FIX-SUSE bsc#1213517 Dont pass zero length input to EVP_Cipher
 Patch107:       openssl-dont-pass-zero-length-input-to-EVP_Cipher.patch
-
+#PATCH-FIX-SUSE bsc#1215215 FIPS: Add "fips" to version string
+Patch108:       openssl-1_1-fips-bsc1215215_fips_in_version_string.patch
 BuildRequires:  jitterentropy-devel >= 3.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
