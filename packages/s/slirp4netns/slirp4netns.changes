@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  2 08:28:59 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.2.2
+  * Enabled reproducible builds (#324, #325, #326)
+
+-------------------------------------------------------------------
 Mon Aug 21 06:34:19 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Update to version 1.2.1:
