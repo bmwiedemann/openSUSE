@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           osv-scanner
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Vulnerability scanner written in Go
 License:        Apache-2.0
@@ -40,8 +40,7 @@ OSV-Scanner provides an officially supported frontend to the OSV database that c
 The above all results in fewer, more actionable vulnerability notifications, which reduces the time needed to resolve them.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Oct 06 13:11:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.4.1:
+  * Allow release scanning to upload SARIF file.  (#573)
+  * Fix goreleaser and update changelog (#572)
+  * 1.4.1 release and changelog (#571)
+  * SARIF with fixed version (#559)
+  * chore(deps): update dependency jekyll-feed to v0.17.0 (#568)
+  * chore(deps): update github/codeql-action action to v2.21.9
+    (#567)
+  * chore(deps): update golang:alpine docker digest to 4bc6541
+    (#566)
+  * chore(deps): update alpine:3.18 docker digest to eece025 (#565)
+  * ci: don't fetch the whole repository history when its not
+    needed (#562)
+  * ci: ensure that `actions/checkout` is pinned (#563)
+  * Block release on vuln scan (#561)
+  * ci: use `.go-version` file (#564)
+  * ci: run tests on macos and in parallel when releasing (#560)
+  * test: use `cmp.Diff` for comparing output (#558)
+  * Add new ecosystems, and a slice containing all of them. (#557)
+  * test: compare expected with actual rather than the other way
+    around (#556)
+  * chore: move scripts into the `scripts` directory (#555)
+  * ci: combine lint and test workflows (#554)
+  * test: add cases for extra coverage (#524)
+  * chore(deps): update dependency jekyll-feed to v0.17.0 (#544)
+  * chore(deps): lock file maintenance (#545)
+  * chore(deps): update workflows (#538)
+  * Add custom scan arguments (#552)
+  * SARIF output fixes. (#547)
+  * Minor readme update (#546)
+  * Action docs (#541)
+  * Update SARIF format (#534)
+  * Fix action naming and scheduled scan parameters (#543)
+  * chore(deps): update workflows (major) (#540)
+  * Attempt at multiline action (#542)
+  * fix(deps): update osv-scanner minor (#539)
+  * Update experimental.md (#536)
+
+-------------------------------------------------------------------
 Thu Sep 14 05:01:43 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.4.0:
