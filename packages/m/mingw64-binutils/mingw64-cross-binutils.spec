@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-cross-binutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source:         http://ftp.gnu.org/gnu/binutils/binutils-%{version}.tar.xz
 Patch0:         0001-PR29362-some-binutils-memory-leaks.patch
 Patch1:         0001-Fix-bug-not-showing-correct-path-with-objdump-WL-wit.patch
 Patch2:         0001-dllwrap-windres-and-dlltools-use-mktemp-which-should.patch
+Patch3:         reproducible.patch
 #!BuildIgnore:  post-build-checks
 #!BuildIgnore:  mingw64-cross-binutils-utils
 #!BuildIgnore:  mingw64-cross-pkgconf-utils
