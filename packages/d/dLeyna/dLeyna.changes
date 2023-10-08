@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  4 16:59:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Remove executable bit from download_sync_controller.py. Fix
+  rpmlint warning.
+
+-------------------------------------------------------------------
 Fri Sep 29 21:12:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.8.3:

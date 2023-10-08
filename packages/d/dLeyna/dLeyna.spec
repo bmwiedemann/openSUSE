@@ -85,6 +85,8 @@ management and an IPC abstraction API.
 
 %install
 %meson_install
+# Remove executable bit
+chmod -x %{buildroot}%{python_sitelib}/dLeyna/download_sync_controller.py
 
 %ldconfig_scriptlets
 
