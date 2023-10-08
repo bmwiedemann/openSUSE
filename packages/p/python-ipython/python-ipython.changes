@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct  7 12:57:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.16.1
+  * Small double release of IPython (with the 8.12.3 release notes
+    just below). Mostly bug fixes and cleanups, and type
+    annotations. Of interest for users:
+  * #14153 Fix a bug of the new iPdb chained traceback where some
+    Exception would not have any traceback. (see upstream fix in
+    CPython for more details).
+  * #14168 Fix case with spurious message about event loops when
+    using matplotlib.
+- Remove skip_python312 (see changelog for 8.15)
+
+-------------------------------------------------------------------
 Sat Sep 23 17:00:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.15.0

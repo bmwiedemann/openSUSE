@@ -1393,4 +1393,21 @@
   * Allow IPdb/Pdb to move between chained exceptions</comment>
     <requestid>1113222</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>64247617f7673b73b8bc0022cf09bf19</srcmd5>
+    <version>8.16.1</version>
+    <time>1696760239</time>
+    <user>anag+factory</user>
+    <comment>- Update to 8.16.1
+  * Small double release of IPython (with the 8.12.3 release notes
+    just below). Mostly bug fixes and cleanups, and type
+    annotations. Of interest for users:
+  * #14153 Fix a bug of the new iPdb chained traceback where some
+    Exception would not have any traceback. (see upstream fix in
+    CPython for more details).
+  * #14168 Fix case with spurious message about event loops when
+    using matplotlib.
+- Remove skip_python312 (see changelog for 8.15)</comment>
+    <requestid>1116206</requestid>
+  </revision>
 </revisionlist>
