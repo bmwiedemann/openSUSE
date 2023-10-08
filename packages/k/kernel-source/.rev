@@ -6402,4 +6402,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.5.4 &amp; SCSI/ATA=m &amp; other fixes</comment>
     <requestid>1112479</requestid>
   </revision>
+  <revision rev="706" vrev="1">
+    <srcmd5>eece04fb3f4a8d43b3341e5e95d691b3</srcmd5>
+    <version>6.5.6</version>
+    <time>1696760253</time>
+    <user>anag+factory</user>
+    <comment>6.5.6 &amp; 6.5.5 &amp; CVE &amp; other fixes</comment>
+    <requestid>1116033</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.5
-%define patchversion 6.5.4
+%define patchversion 6.5.6
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -112,9 +112,9 @@ Name:           kernel-default
 Summary:        The Standard Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.5.4
+Version:        6.5.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gfdd7e9e
+Release:        <RELEASE>.gc97c2df
 %else
 Release:        0
 %endif
@@ -137,6 +137,7 @@ BuildRequires:  gcc-devel
 BuildRequires:  hmaccalc
 BuildRequires:  libopenssl-devel
 BuildRequires:  modutils
+BuildRequires:  python3-base
 # Used to sign the kernel in the buildservice
 BuildRequires:  openssl
 BuildRequires:  pesign-obs-integration
@@ -157,131 +158,6 @@ BuildRequires:  u-boot-tools
 # Remove some packages that are installed automatically by the build system,
 # but are not needed to build the kernel
 #!BuildIgnore: autoconf automake gettext-runtime libtool cvs gettext-tools udev insserv
-# Force bzip2 instead of lzma compression to
-# 1) allow install on older dist versions, and
-# 2) decrease build times (bsc#962356 boo#1175882)
-%define _binary_payload w9.bzdio
-# Do not recompute the build-id of vmlinux in find-debuginfo.sh (bsc#964063)
-%undefine _unique_build_ids
-%define _no_recompute_build_ids 1
-# prevent usr/lib/debug/boot/vmlinux-4.12.14-11.10-default-4.12.14-11.10.ppc64le.debug
-%undefine _unique_debug_names
-
-%if "%{compress_modules}" == "zstd"
-BuildRequires:  zstd
-# Make sure kmod supports zstd compressed modules
-Requires(post): kmod-zstd
-%endif
-Provides:       %name = %version-%source_rel
-# bnc#901925
-Provides:       %name-%version-%source_rel
-Provides:       %{name}_%_target_cpu = %version-%source_rel
-Provides:       kernel-base = %version-%source_rel
-Provides:       multiversion(kernel)
-# In SLE11, kernel-$flavor complemented kernel-$flavor-base. With SLE12,
-# kernel-$flavor itself contains all the needed files and kernel-$flavor-base
-# is a subset that can replace kernel-$flavor in some scenarios. We need to
-# obsolete the -base subpackage from SLE11, so that the base files are not
-# owned by multiple packages now. The dependency is not correct wrt openSUSE
-# 11.2 - 11.4, but we primarily care about the supported upgrade path.
-Obsoletes:      %name-base < 3.1
-%if ("%build_flavor" != "kvmsmall") && ("%build_flavor" != "azure")
-Recommends: kernel-firmware
-%endif
-# The following is copied to the -base subpackage as well
-# BEGIN COMMON DEPS
-Requires(pre):  suse-kernel-rpm-scriptlets
-Requires(post): suse-kernel-rpm-scriptlets
-Requires:       suse-kernel-rpm-scriptlets
-Requires(preun): suse-kernel-rpm-scriptlets
-Requires(postun): suse-kernel-rpm-scriptlets
-Requires(pre):  coreutils awk
-# For /usr/lib/module-init-tools/weak-modules2
-Requires(post): suse-module-tools
-# For depmod (modutils is a dependency provided by both module-init-tools and
-# kmod-compat)
-Requires(post): modutils
-# This Requires is wrong, because the post/postun scripts have a
-# test -x update-bootloader, having perl-Bootloader is not a hard requirement.
-# But, there is no way to tell rpm or yast to schedule the installation
-# of perl-Bootloader before kernel-binary.rpm if both are in the list of
-# packages to install/update. Likewise, this is true for dracut.
-# Need a perl-Bootloader with /usr/lib/bootloader/bootloader_entry
-Requires(post): perl-Bootloader >= 0.4.15
-Requires(post): dracut
-# Install the package providing /etc/SuSE-release early enough, so that
-# the grub entry has correct title (bnc#757565)
-Requires(post): distribution-release
-
-%if 0%{?usrmerged}
-# make sure we have a post-usrmerge system
-Conflicts:      filesystem < 16
-%endif
-
-Obsoletes:      microcode_ctl < 1.18
-
-%{lua:	fd, err = io.open(rpm.expand('%_sourcedir') .. '/kernel-binary-conflicts')
-	if not fd then io.stderr:write(err) end
-	unpack = table.unpack or unpack
-	for l in fd:lines() do
-		if #l > 0 and l:sub(1,1) ~= '#' then
-			words = {} ; for w in l:gmatch("([^%s]+)%s*") do table.insert(words, w) end
-			package, version = unpack(words)
-			print('Conflicts: ' .. package .. ' < '.. version .. '\n')
-		end
-	end
-	fd:close()
-}
-
-%ifarch %ix86
-Conflicts:      libc.so.6()(64bit)
-%endif
-Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-fdd7e9edb7bbf73427e31f87b6664e6d82269d7e
-Provides:       kernel-srchash-fdd7e9edb7bbf73427e31f87b6664e6d82269d7e
-# END COMMON DEPS
-Provides:       %name-srchash-fdd7e9edb7bbf73427e31f87b6664e6d82269d7e
-%ifarch %ix86
-Provides:       kernel-trace = 3.13
-Obsoletes:      kernel-trace <= 3.13
-%endif
-%ifarch s390x
-Provides:       kernel-trace = 3.13
-Obsoletes:      kernel-trace <= 3.13
-%endif
-%ifarch x86_64
-Provides:       kernel-trace = 3.13
-Obsoletes:      kernel-trace <= 3.13
-Provides:       kernel-bigsmp = 3.1
-Obsoletes:      kernel-bigsmp <= 3.1
-Provides:       kernel-desktop = 4.3
-Obsoletes:      kernel-desktop <= 4.3
-Provides:       kernel-xen = 4.4
-Obsoletes:      kernel-xen <= 4.4
-Provides:       kernel-ec2 = 4.4
-Obsoletes:      kernel-ec2 <= 4.4
-%endif
-%ifarch %ix86
-Provides:       kernel-trace-base = 3.13
-Obsoletes:      kernel-trace-base <= 3.13
-%endif
-%ifarch s390x
-Provides:       kernel-trace-base = 3.13
-Obsoletes:      kernel-trace-base <= 3.13
-%endif
-%ifarch x86_64
-Provides:       kernel-trace-base = 3.13
-Obsoletes:      kernel-trace-base <= 3.13
-Provides:       kernel-bigsmp-base = 3.1
-Obsoletes:      kernel-bigsmp-base <= 3.1
-Provides:       kernel-desktop-base = 4.3
-Obsoletes:      kernel-desktop-base <= 4.3
-Provides:       kernel-xen-base = 4.4
-Obsoletes:      kernel-xen-base <= 4.4
-Provides:       kernel-ec2-base = 4.4
-Obsoletes:      kernel-ec2-base <= 4.4
-%endif
-%obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
@@ -421,18 +297,146 @@ NoSource:       113
 NoSource:       114
 NoSource:       120
 NoSource:       121
-
 ExclusiveArch:  aarch64 armv6hl armv7hl %ix86 ppc64le riscv64 s390x x86_64
-%define kmp_target_cpu %_target_cpu
 %ifarch %ix86
 # Only i386/default supports i586, mark other flavors' packages as i686
 %if ! %build_default
 BuildArch:      i686
+%endif
+%endif
+
+# Force bzip2 instead of lzma compression to
+# 1) allow install on older dist versions, and
+# 2) decrease build times (bsc#962356 boo#1175882)
+%define _binary_payload w9.bzdio
+# Do not recompute the build-id of vmlinux in find-debuginfo.sh (bsc#964063)
+%undefine _unique_build_ids
+%define _no_recompute_build_ids 1
+# prevent usr/lib/debug/boot/vmlinux-4.12.14-11.10-default-4.12.14-11.10.ppc64le.debug
+%undefine _unique_debug_names
+
+%if "%{compress_modules}" == "zstd"
+BuildRequires:  zstd
+# Make sure kmod supports zstd compressed modules
+Requires(post): kmod-zstd
+%endif
+Provides:       %name = %version-%source_rel
+# bnc#901925
+Provides:       %name-%version-%source_rel
+Provides:       %{name}_%_target_cpu = %version-%source_rel
+Provides:       kernel-base = %version-%source_rel
+Provides:       multiversion(kernel)
+# In SLE11, kernel-$flavor complemented kernel-$flavor-base. With SLE12,
+# kernel-$flavor itself contains all the needed files and kernel-$flavor-base
+# is a subset that can replace kernel-$flavor in some scenarios. We need to
+# obsolete the -base subpackage from SLE11, so that the base files are not
+# owned by multiple packages now. The dependency is not correct wrt openSUSE
+# 11.2 - 11.4, but we primarily care about the supported upgrade path.
+Obsoletes:      %name-base < 3.1
+%if ("%build_flavor" != "kvmsmall") && ("%build_flavor" != "azure")
+Recommends: kernel-firmware
+%endif
+# The following is copied to the -base subpackage as well
+# BEGIN COMMON DEPS
+Requires(pre):  suse-kernel-rpm-scriptlets
+Requires(post): suse-kernel-rpm-scriptlets
+Requires:       suse-kernel-rpm-scriptlets
+Requires(preun): suse-kernel-rpm-scriptlets
+Requires(postun): suse-kernel-rpm-scriptlets
+Requires(pre):  coreutils awk
+# For /usr/lib/module-init-tools/weak-modules2
+Requires(post): suse-module-tools
+# For depmod (modutils is a dependency provided by both module-init-tools and
+# kmod-compat)
+Requires(post): modutils
+# This Requires is wrong, because the post/postun scripts have a
+# test -x update-bootloader, having perl-Bootloader is not a hard requirement.
+# But, there is no way to tell rpm or yast to schedule the installation
+# of perl-Bootloader before kernel-binary.rpm if both are in the list of
+# packages to install/update. Likewise, this is true for dracut.
+# Need a perl-Bootloader with /usr/lib/bootloader/bootloader_entry
+Requires(post): perl-Bootloader >= 0.4.15
+Requires(post): dracut
+# Install the package providing /etc/SuSE-release early enough, so that
+# the grub entry has correct title (bnc#757565)
+Requires(post): distribution-release
+
+%if 0%{?usrmerged}
+# make sure we have a post-usrmerge system
+Conflicts:      filesystem < 16
+%endif
+
+Obsoletes:      microcode_ctl < 1.18
+
+%{lua:	fd, err = io.open(rpm.expand('%_sourcedir') .. '/kernel-binary-conflicts')
+	if not fd then io.stderr:write(err) end
+	unpack = table.unpack or unpack
+	for l in fd:lines() do
+		if #l > 0 and l:sub(1,1) ~= '#' then
+			words = {} ; for w in l:gmatch("([^%s]+)%s*") do table.insert(words, w) end
+			package, version = unpack(words)
+			print('Conflicts: ' .. package .. ' < '.. version .. '\n')
+		end
+	end
+	fd:close()
+}
+
+%ifarch %ix86
+Conflicts:      libc.so.6()(64bit)
+%endif
+Provides:       kernel = %version-%source_rel
+Provides:       kernel-%build_flavor-base-srchash-c97c2df132a23866617068875dec1651d86b8572
+Provides:       kernel-srchash-c97c2df132a23866617068875dec1651d86b8572
+# END COMMON DEPS
+Provides:       %name-srchash-c97c2df132a23866617068875dec1651d86b8572
+%ifarch %ix86
+Provides:       kernel-trace = 3.13
+Obsoletes:      kernel-trace <= 3.13
+%endif
+%ifarch s390x
+Provides:       kernel-trace = 3.13
+Obsoletes:      kernel-trace <= 3.13
+%endif
+%ifarch x86_64
+Provides:       kernel-trace = 3.13
+Obsoletes:      kernel-trace <= 3.13
+Provides:       kernel-bigsmp = 3.1
+Obsoletes:      kernel-bigsmp <= 3.1
+Provides:       kernel-desktop = 4.3
+Obsoletes:      kernel-desktop <= 4.3
+Provides:       kernel-xen = 4.4
+Obsoletes:      kernel-xen <= 4.4
+Provides:       kernel-ec2 = 4.4
+Obsoletes:      kernel-ec2 <= 4.4
+%endif
+%ifarch %ix86
+Provides:       kernel-trace-base = 3.13
+Obsoletes:      kernel-trace-base <= 3.13
+%endif
+%ifarch s390x
+Provides:       kernel-trace-base = 3.13
+Obsoletes:      kernel-trace-base <= 3.13
+%endif
+%ifarch x86_64
+Provides:       kernel-trace-base = 3.13
+Obsoletes:      kernel-trace-base <= 3.13
+Provides:       kernel-bigsmp-base = 3.1
+Obsoletes:      kernel-bigsmp-base <= 3.1
+Provides:       kernel-desktop-base = 4.3
+Obsoletes:      kernel-desktop-base <= 4.3
+Provides:       kernel-xen-base = 4.4
+Obsoletes:      kernel-xen-base <= 4.4
+Provides:       kernel-ec2-base = 4.4
+Obsoletes:      kernel-ec2-base <= 4.4
+%endif
+%obsolete_rebuilds %name
+
+%define kmp_target_cpu %_target_cpu
+%ifarch %ix86
 # KMPs are always built as i586, because rpm does not allow to build
 # subpackages for different architectures. Therefore, we change the
 # /usr/src/linux-obj/<arch> symlink to i586.
 %define kmp_target_cpu i586
-%endif
 %endif
 
 %if %build_default
@@ -1338,8 +1342,8 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-fdd7e9edb7bbf73427e31f87b6664e6d82269d7e
-Provides:       kernel-srchash-fdd7e9edb7bbf73427e31f87b6664e6d82269d7e
+Provides:       kernel-%build_flavor-base-srchash-c97c2df132a23866617068875dec1651d86b8572
+Provides:       kernel-srchash-c97c2df132a23866617068875dec1651d86b8572
 
 %ifarch %ix86
 Provides:       kernel-trace-base = 3.13
