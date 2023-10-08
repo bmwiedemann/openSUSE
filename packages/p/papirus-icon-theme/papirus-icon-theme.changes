@@ -1,4 +1,141 @@
 -------------------------------------------------------------------
+Sat Oct  7 06:33:37 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 20230901: 
+  Added icons
+
+  * ALT Media Writer by @Arbars in #3463
+  * Btrfs Assistant by @morganist in #3509
+  * CBOR serialized content .cbor by @sennoth in #3460
+  * CoffeeScript file .coffee by @sennoth in #3460
+  * CoffeeScript object notation file .cson by @sennoth in #3460
+  * disk-quota (tray icons) #3363 by @SmartFinn
+  * Doom Runner #3522 by @morganist in #3527
+  * Emerald Theme Manager by @SmartFinn
+  * Fall Guys #2358 #2359 by @morganist in #3539
+  * folder-docker #3203 by @SmartFinn
+  * folder-notes #3296 by @SmartFinn
+  * folder-obsidian #3512 by @VPS07 in #3537
+  * folder-systemd by @igor-dyatlov
+  * Gradience #3275 by @morganist in #3531
+  * Haansoft Hangul document *.hwp by @mjkim0727 in #3535
+  * Index (Plasma Mobile) #2007 by @morganist #3528
+  * Inkscape: icon for Shape Builder Tool #3488 by @hervyqa in
+    #3511
+  * Julia file .julia #3409 by @SmartFinn
+  * Kalk (Plasma Mobile) #2007 by @morganist #3528
+  * Kamoso by @morganist in #3515
+  * Kclock (Plasma Mobile) #2007 by @morganist #3528
+  * KDE ISO Image Writer (FlatHub) #2007 by @morganist in #3506
+  * KJots by @mjkim0727 in #3541
+  * KopiaUI #2007 #3359 by @SmartFinn
+  * KRecorder (Plasma Mobile) by @mjkim0727 in #3534
+  * Lagrange by @morganist in #3523
+  * Merkuro Calendar by @mjkim0727 in #3540
+  * Merkuro Contact by @mjkim0727 in #3540
+  * Merkuro Mail by @mjkim0727 in #3540
+  * Microsoft 365 (Webapps) by @mjkim0727 in #3534
+  * Mullvad Browser #2007 #3407 by @SmartFinn
+  * Nvtop #3510 by @morganist in #3513
+  * OpenMW Content Editor (Flathub) by @morganist in #3525
+  * OpenSUSE Welcome by @SmartFinn
+  * Organic Maps #2007 by @morganist in #3508
+  * QMLKonsole (Plasma Mobile) #2007 by @morganist #3528
+  * Recipes file for Just command runner .justfile by @sennoth
+    in #3460
+  * Roblox App (Vinegar) #2007 by @badlydrawnface in #3530
+  * Roblox Studio (Vinegar) #2007 by @badlydrawnface in #3530
+  * Screenshooter icon in GNOME status menu by @SmartFinn
+  * Shredder Duplicate Finder (rmlint) by @SmartFinn
+  * Simply Linux distro icon by @Arbars in #3463
+  * Sonic Robo Blast 2 Kart (AUR) by @badlydrawnface in #3530
+  * StarDict by @Arbars in #3463
+  * start-here-kde by @mjkim0727 in #3534
+  * Stylus CSS preprocessor .styl by @sennoth in #3460
+  * SuperSlicer #3480 by @morganist in #3524
+  * Test speakers window icons (GNOME 44) #3532 by @SmartFinn
+  * Vinegar (Flathub) #2007 #3530 by @SmartFinn
+  * Vlang source file .v by @sennoth in #3460
+  * VueJS single file component .vue by @sennoth in #3460
+  * WebAssembly file .wasm by @sennoth in #3460
+  * YaST Alternatives by @SmartFinn
+  * YaST AppArmor by @morganist in #3526
+  * YaST Auth Client by @morganist in #3526
+  * YaST Relocation Server by @SmartFinn
+  * YaST Services Manager by @morganist in #3526
+  * YaST Systemd Journal by @morganist in #3526
+  * YaST VPN by @morganist in #3526
+
+  Updated icons
+
+  * Document file icon #3375 by @SmartFinn
+  * Document Graphics file icon #3375 by @SmartFinn
+  * Filelight #3451 by @SmartFinn
+  * KDE Partition Manager #3451 by @morganist in #3505
+  * KDE Wallet by @morganist in #3538
+  * LibreOffice Base #3375 by @mjkim0727 in #3533
+  * LibreOffice Calc #3375 by @mjkim0727 in #3533
+  * LibreOffice Chart #3375 by @mjkim0727 in #3533
+  * LibreOffice Draw #3375 by @mjkim0727 in #3533
+  * LibreOffice Impress #3375 by @mjkim0727 in #3533
+  * LibreOffice Main #3375 by @mjkim0727 in #3533
+  * LibreOffice Math #3375 by @mjkim0727 in #3533
+  * LibreOffice Writer #3375 by @mjkim0727 in #3533
+  * package-available #3434 by @SmartFinn
+  * Sweeper #3543 by @SmartFinn
+  * System Software Update by @SmartFinn
+  * YaST Firewall by @morganist in #3526
+  * YaST Install VM by @SmartFinn
+
+  Changes and fixes
+
+  * Fixed icon name for YaST Online Update by @SmartFinn
+    in #3526
+  * Fixed white gaps in CMakeSetup icons
+  * Remap gnome-disks, palimpsest to org.gnome.DiskUtility
+    #3504
+
+  Others
+
+  * Updated installation instruction for Debian 12+
+
+
+- changes from 20230801
+  Added icons
+
+  * Age of Empires II by @gitadum in #3447
+  * Alligator #2007 by @morganist in #3496
+  * Ardour 7 by @hervyqa in #3483
+  * Arianna #2007 #3429 by @morganist in #3499
+  * cinnamon-settings-gestures by @kabishchev in #3450
+  * gtkcord4 (Flathub) #2007 by @badlydrawnface in #3475
+  * Helix #3428 by @hervyqa in #3470
+  * IPlan #3455 by @azadaquib in #3474
+  * Legacy Launcher (FlatHub) #2007 by @morganist in #3500
+  * Media Downloader #3380 by @hervyqa in #3473
+  * OpenJDK 20 by @saikat0511 in #3445
+  * OpenTTD (JGR Patch Pack) #3503
+  * Phasmophobia #3457 by @azadaquib in #3466
+  * Protontricks (Flathub) #2007 by @badlydrawnface in #3475
+  * ProtonUp-Qt (Nixpkg) by @hervyqa in #3471
+  * Qt Visual Graph Editor #3414 by @hervyqa in #3469
+  * Rosalie's Mupen GUI (RMG) by @badlydrawnface in #3472
+  * Slimbook Battery #3459 by @azadaquib in #3468
+  * Solstice WebApp icons by @dominichayesferen in #3490
+  * text-javascript by @DevBlooming in #3458
+  * Tokodon #2007 by @morganist in #3495
+  * USBImager #3415 by @hervyqa in #3486
+  * Yandex Browser (Flathub) #2007 by @badlydrawnface in #3475
+
+  Updated icons
+
+  * GNOME Firmware #2392 by @morganist in #3502
+  * Heroic Games Launcher #3479 by @morganist in #3497
+  * Julia #3341 by @morganist in #3498
+  * Obsidian by @VPS07 in #3444
+  * Thunderbird #3439 by @morganist in #3501
+
+-------------------------------------------------------------------
 Sun Jul 16 10:54:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 20230601:
