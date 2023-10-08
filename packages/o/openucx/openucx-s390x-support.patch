@@ -1,4 +1,4 @@
-commit 909e453ce7ee166c98274096720a6c9345fdc3ae
+commit 328a69d07b618e0aa83fe2351e8d7ca4fc1b2f00
 Author: Nicolas Morey <nmorey@suse.com>
 Date:   Mon Feb 13 17:04:14 2023 +0100
 
@@ -7,7 +7,7 @@ Date:   Mon Feb 13 17:04:14 2023 +0100
     Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 diff --git config/m4/ucm.m4 config/m4/ucm.m4
-index abf02c06f430..84aa3e214d5a 100644
+index e5e66266d695..ef7e4ede93ce 100644
 --- config/m4/ucm.m4
 +++ config/m4/ucm.m4
 @@ -80,9 +80,20 @@ AC_CHECK_DECLS([SYS_ipc],
@@ -33,10 +33,10 @@ index abf02c06f430..84aa3e214d5a 100644
  AS_IF([test "x$bistro_hooks_happy" = "xyes"],
        [AC_DEFINE([UCM_BISTRO_HOOKS], [1], [Enable BISTRO hooks])],
 diff --git src/tools/info/sys_info.c src/tools/info/sys_info.c
-index f41155ca3d9d..edeaaf5df529 100644
+index e5aff871d491..2b7c54319f53 100644
 --- src/tools/info/sys_info.c
 +++ src/tools/info/sys_info.c
-@@ -46,7 +46,8 @@ static const char* cpu_vendor_names[] = {
+@@ -47,7 +47,8 @@ static const char* cpu_vendor_names[] = {
      [UCS_CPU_VENDOR_GENERIC_ARM]      = "Generic ARM",
      [UCS_CPU_VENDOR_GENERIC_PPC]      = "Generic PPC",
      [UCS_CPU_VENDOR_FUJITSU_ARM]      = "Fujitsu ARM",
@@ -98,7 +98,7 @@ index 000000000000..c0f427f4984a
 +
 +#endif
 diff --git src/ucs/Makefile.am src/ucs/Makefile.am
-index 9e0bd2ffb1cc..97021c205d5c 100644
+index c7696d56f25d..c63b32bad844 100644
 --- src/ucs/Makefile.am
 +++ src/ucs/Makefile.am
 @@ -22,6 +22,7 @@ libucs_la_LIBADD   = $(LIBM) $(top_builddir)/src/ucm/libucm.la $(BFD_LIBS)
@@ -159,10 +159,10 @@ index e89a37d0b673..dd2b9d5b6bcb 100644
  #  error "Unsupported architecture"
  #endif
 diff --git src/ucs/arch/cpu.c src/ucs/arch/cpu.c
-index ac8e268a1502..16c308bae94c 100644
+index ece8f7fb82dd..b35b10ad090a 100644
 --- src/ucs/arch/cpu.c
 +++ src/ucs/arch/cpu.c
-@@ -61,6 +61,10 @@ const ucs_cpu_builtin_memcpy_t ucs_cpu_builtin_memcpy[UCS_CPU_VENDOR_LAST] = {
+@@ -63,6 +63,10 @@ const ucs_cpu_builtin_memcpy_t ucs_cpu_builtin_memcpy[UCS_CPU_VENDOR_LAST] = {
          .min = UCS_MEMUNITS_INF,
          .max = UCS_MEMUNITS_INF
      },
@@ -173,19 +173,19 @@ index ac8e268a1502..16c308bae94c 100644
      [UCS_CPU_VENDOR_FUJITSU_ARM] = {
          .min = UCS_MEMUNITS_INF,
          .max = UCS_MEMUNITS_INF
-@@ -77,6 +81,7 @@ const size_t ucs_cpu_est_bcopy_bw[UCS_CPU_VENDOR_LAST] = {
-     [UCS_CPU_VENDOR_AMD]         = 5008 * UCS_MBYTE,
-     [UCS_CPU_VENDOR_GENERIC_ARM] = 5800 * UCS_MBYTE,
-     [UCS_CPU_VENDOR_GENERIC_PPC] = 5800 * UCS_MBYTE,
-+    [UCS_CPU_VENDOR_GENERIC_IBM] = 5800 * UCS_MBYTE,
-     [UCS_CPU_VENDOR_FUJITSU_ARM] = 12000 * UCS_MBYTE,
-     [UCS_CPU_VENDOR_ZHAOXIN]     = 5800 * UCS_MBYTE
- };
+@@ -78,6 +82,7 @@ const size_t ucs_cpu_est_bcopy_bw[UCS_CPU_VENDOR_LAST] = {
+     [UCS_CPU_VENDOR_INTEL]       = UCS_CPU_EST_BCOPY_BW_DEFAULT,
+     [UCS_CPU_VENDOR_AMD]         = UCS_CPU_EST_BCOPY_BW_AMD,
+     [UCS_CPU_VENDOR_GENERIC_ARM] = UCS_CPU_EST_BCOPY_BW_DEFAULT,
++    [UCS_CPU_VENDOR_GENERIC_IBM] = UCS_CPU_EST_BCOPY_BW_DEFAULT,
+     [UCS_CPU_VENDOR_GENERIC_PPC] = UCS_CPU_EST_BCOPY_BW_DEFAULT,
+     [UCS_CPU_VENDOR_FUJITSU_ARM] = UCS_CPU_EST_BCOPY_BW_FUJITSU_ARM,
+     [UCS_CPU_VENDOR_ZHAOXIN]     = UCS_CPU_EST_BCOPY_BW_DEFAULT
 diff --git src/ucs/arch/cpu.h src/ucs/arch/cpu.h
-index a59561c041fa..dc95f3f56231 100644
+index eb557d385670..cfd297e24558 100644
 --- src/ucs/arch/cpu.h
 +++ src/ucs/arch/cpu.h
-@@ -63,6 +63,7 @@ typedef enum ucs_cpu_vendor {
+@@ -64,6 +64,7 @@ typedef enum ucs_cpu_vendor {
      UCS_CPU_VENDOR_AMD,
      UCS_CPU_VENDOR_GENERIC_ARM,
      UCS_CPU_VENDOR_GENERIC_PPC,
@@ -193,7 +193,7 @@ index a59561c041fa..dc95f3f56231 100644
      UCS_CPU_VENDOR_FUJITSU_ARM,
      UCS_CPU_VENDOR_ZHAOXIN,
      UCS_CPU_VENDOR_LAST
-@@ -98,6 +99,8 @@ typedef struct ucs_cpu_builtin_memcpy {
+@@ -99,6 +100,8 @@ typedef struct ucs_cpu_builtin_memcpy {
  #  include "ppc64/cpu.h"
  #elif defined(__aarch64__)
  #  include "aarch64/cpu.h"
@@ -410,10 +410,10 @@ index 000000000000..225e4e5e896a
 +#endif
 +
 diff --git src/ucs/sys/sys.c src/ucs/sys/sys.c
-index 57160c061986..be6b20812c39 100644
+index 58e67835c4d0..308f03606d5b 100644
 --- src/ucs/sys/sys.c
 +++ src/ucs/sys/sys.c
-@@ -1256,8 +1256,19 @@ void *ucs_sys_realloc(void *old_ptr, size_t old_length, size_t new_length)
+@@ -1258,8 +1258,19 @@ void *ucs_sys_realloc(void *old_ptr, size_t old_length, size_t new_length)
      if (old_ptr == NULL) {
          /* Note: Must pass the 0 offset as "long", otherwise it will be
           * partially undefined when converted to syscall arguments */
