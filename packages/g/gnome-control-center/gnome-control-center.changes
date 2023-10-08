@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 03 14:03:43 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 45.0+34:
+  + network: fix editing connections without a device (boo#1215651)
+  + mouse: Fix linked style of primary mouse button in RTL
+  + privacy: Fix crash in the firmware security page
+  + data:
+    - Fix label string
+    - Add missing wireguard-peer.ui to POTFILES.in
+    - Mark translatable strings yes
+  + info-overview: Add more types of processor support
+  + Updated translations.
+- Switch to git checkout from stable branch, use explicit commit.
+
+-------------------------------------------------------------------
 Fri Sep 22 03:30:16 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gnome-control-center-add-user-button.patch:
