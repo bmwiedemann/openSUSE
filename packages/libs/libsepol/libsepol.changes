@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 23 16:06:02 UTC 2023 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO now (boo#1138813).
+
+-------------------------------------------------------------------
 Fri Feb 24 07:50:14 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.5

@@ -92,7 +92,7 @@ policies.
 %setup -q
 
 %build
-%define _lto_cflags %{nil}
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags} -fcommon"
 make %{?_smp_mflags}
 

@@ -420,4 +420,13 @@
     <comment>SELinux 3.5 toolchain</comment>
     <requestid>1068398</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>cc73da228feab631c4b1993c64ab2d1a</srcmd5>
+    <version>3.5</version>
+    <time>1696760258</time>
+    <user>anag+factory</user>
+    <comment>- Enable LTO now (boo#1138813).
+</comment>
+    <requestid>1115852</requestid>
+  </revision>
 </revisionlist>
