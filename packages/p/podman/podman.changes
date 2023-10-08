@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 06 05:50:25 UTC 2023 - danish.prakash@suse.com
+
+- podman-docker: Provides docker to avoid conflicts
+  when using podman with docker-compose (bsc#1215926)
+- Update to version 4.7.1:
+  * New version: v4.7.1
+  * Update RELEASE_NOTES.md for v4.7.1
+  * compat API: speed up network list
+  * inspect: ignore ENOENT during device lookup
+  * test/system: --env-file test fixes
+  * Revert "feat(env): support multiline in env-file"
+  * Revert "docs(env-file): improve document description"
+  * Revert "fix(env): parsing --env incorrect in cli"
+  * [CI:DOCS] update swagger version on docs.podman.io
+  * Fix locale issues with WSL version detection
+  * switch version to 4.7.1-dev
+
+-------------------------------------------------------------------
 Fri Sep 29 03:21:32 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Build against latest stable Go version (bsc#1215807)

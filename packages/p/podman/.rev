@@ -983,4 +983,13 @@ Bugfixes
     <comment>Build against latest stable Go version (bsc#1215807) (forwarded request 1114211 from danishprakash)</comment>
     <requestid>1114246</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>619df63761fa6774d189b920064f8afc</srcmd5>
+    <version>4.7.1</version>
+    <time>1696760179</time>
+    <user>anag+factory</user>
+    <comment>podman-docker: Provides docker to avoid conflicts (bsc#1215926)
+Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
+    <requestid>1115970</requestid>
+  </revision>
 </revisionlist>

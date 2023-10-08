@@ -18,7 +18,7 @@
 %{!?_user_tmpfilesdir: %global _user_tmpfilesdir %{_datadir}/user-tmpfiles.d}
 %define project        github.com/containers/podman
 Name:           podman
-Version:        4.7.0
+Version:        4.7.1
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -101,6 +101,7 @@ Conflicts:      docker-ce
 Conflicts:      docker-ee
 Conflicts:      docker-latest
 Conflicts:      moby-engine
+Provides:       docker
 
 %description docker
 This package installs a script named docker that emulates the Docker CLI by
