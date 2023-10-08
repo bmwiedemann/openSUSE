@@ -393,4 +393,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.10, fixed libqt5-qtscript (forwarded request 1092905 from favogt)</comment>
     <requestid>1092951</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>916f4778864bc481b545767c60c5370b</srcmd5>
+    <version>5.15.11+kde0</version>
+    <time>1696760301</time>
+    <user>anag+factory</user>
+    <comment>Qt 5.15.11. Not fully built yet, qtlocation needed a fix. (forwarded request 1116057 from favogt)</comment>
+    <requestid>1116129</requestid>
+  </revision>
 </revisionlist>
