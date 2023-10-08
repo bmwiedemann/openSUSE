@@ -1,7 +1,7 @@
 #
 # spec file for package jupyter-jupyterlab-latex
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,31 @@
 
 %define pythons python3
 Name:           jupyter-jupyterlab-latex
-Version:        3.1.0
+Version:        4.0.0
 Release:        0
 Summary:        Jupyter Notebook server extension which acts as an endpoint for LaTeX
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyterlab/jupyterlab-latex
-Source:         https://files.pythonhosted.org/packages/py3/j/jupyterlab_latex/jupyterlab_latex-%{version}-py3-none-any.whl
+# >= 3.1 not on PyPI gh#jupyterlab/jupyterlab-latex#218
+#Source:         https://files.pythonhosted.org/packages/py3/j/jupyterlab_latex/jupyterlab_latex-%%{version}-py3-none-any.whl
+Source0:        https://github.com/jupyterlab/jupyterlab-latex/archive/refs/tags/v%{version}.tar.gz#/jupyterlab_latex-%{version}-gh.tar.gz
+# Generate on a networked machine with `pip wheel -v .` inside the extracted github archive (needs npm)
+Source1:        jupyterlab_latex-%{version}-py3-none-any.whl
 Source99:       jupyter-jupyterlab-latex-rpmlintrc
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 BuildRequires:  jupyter-rpm-macros
-BuildRequires:  python3-base >= 3.6
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base >= 3.8
 BuildRequires:  python3-pip
-Requires:       jupyter-notebook
+BuildRequires:  python3-wheel
+BuildRequires:  texlive-latex-bin
+BuildRequires:  (python3-jupyter-packaging >= 0.12 with python3-jupyter-packaging < 2)
+BuildRequires:  (python3-jupyter-server >= 2 with python3-jupyter-server < 3)
+BuildRequires:  (python3-jupyterlab >= 4 with python3-jupyterlab < 5)
 Requires:       texlive-latex-bin
+Requires:       (python3-jupyterlab >= 4 with python3-jupyterlab < 5)
+Requires:       (python3-jupyter-server >= 2 with python3-jupyter-server < 3)
 Provides:       python3-jupyter_jupyterlab_latex = %{version}-%{release}
 Obsoletes:      python3-jupyter_jupyterlab_latex < %{version}-%{release}
 Provides:       python3-jupyterlab-latex = %{version}-%{release}
@@ -45,18 +55,22 @@ An extension for JupyterLab which allows for live-editing of LaTeX documents.
 %setup -q -c -T
 
 %build
-# Not Needed
+# needs to be built on networked machine, see comment for Source1 above
 
 %install
-cp -a %{SOURCE0} .
-%pyproject_install
+%pyproject_install %{SOURCE1}
 
 %{jupyter_move_config}
 %fdupes %{buildroot}%{_jupyter_prefix}
 %fdupes %{buildroot}%{python3_sitelib}
 
-#%%check
-# no python tests
+%check
+export JUPYTER_PATH=%{buildroot}%{_jupyter_prefix}
+export JUPYTER_CONFIG_DIR=%{buildroot}%{_jupyter_confdir}
+export PYTHONPATH=%{buildroot}%{python3_sitelib}
+jupyter server extension list 2>&1 | grep -ie "jupyterlab_latex.*OK"
+jupyter labextension list 2>&1 | grep -ie "@jupyterlab/latex.*OK"
+python3 -c 'import jupyterlab_latex'
 
 %files
 %license %{python3_sitelib}/jupyterlab_latex-*.dist-info/LICENSE

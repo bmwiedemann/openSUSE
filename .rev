@@ -60,4 +60,21 @@
 </comment>
     <requestid>1073769</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>61fc0dbd5c7f76588f441f44e0a13939</srcmd5>
+    <version>4.0.0</version>
+    <time>1696760327</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.0
+  * Update to Jupyterlab 4 and Lumino 2 (#211)
+- Update to 3.2.0
+  * Last release to support JupyterLab 3
+  * Requires JupyterLab 3.6+
+  * Bump several JS packages
+  * Update dependencies and fix deprecation issues
+- Install from github sources, 3.1+ is not on PyPI
+  * gh#jupyterlab/jupyterlab-latex#218
+</comment>
+    <requestid>1116207</requestid>
+  </revision>
 </revisionlist>
