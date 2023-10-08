@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 06 12:11:12 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.4.0+git20231006.4b34bab:
+  * Whitelist dbus service and configuration for policycoreutils-dbus (bsc#1213435)
+  * polkit-rules-whitelist: add fudo rules (bsc#1215948)
+
+-------------------------------------------------------------------
 Wed Sep 27 10:26:53 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 2.4.0+git20230927.bf3988d:
