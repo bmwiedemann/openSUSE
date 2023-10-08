@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  3 07:09:54 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 0.9.5:
+  * Compiler warnings and log messages for the domain not found were fixed.
+
+-------------------------------------------------------------------
 Wed Jan  4 13:48:42 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - update to 0.9.5:
