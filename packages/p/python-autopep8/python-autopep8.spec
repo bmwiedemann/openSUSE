@@ -17,15 +17,13 @@
 
 
 Name:           python-autopep8
-Version:        2.0.2
+Version:        2.0.4
 Release:        0
 Summary:        Automatic generated to pep8 checked code
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hhatto/autopep8
 Source:         https://files.pythonhosted.org/packages/source/a/autopep8/autopep8-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/hhatto/autopep8/pull/699 Try to fix an AttributeError related to pycodestyle 2.11.0
-Patch0:         pycodestyle211.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle >= 2.8}

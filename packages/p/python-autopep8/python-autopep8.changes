@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Oct  7 17:32:16 UTC 2023 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 2.0.4:
+  * Changes from 2.0.4:
+    Paugier fix pycodestyle missing whitespace.
+    Try to fix an AttributeError related to pycodestyle 2.11.0.
+  * Changes from 2.0.3:
+    Add pre-commit configurations.
+    Version dependent operator whitespace function.
+    Update MANIFEST.in.
+- Remove pycodestyle211.patch, as it was merged upstream.
+
+-------------------------------------------------------------------
 Fri Aug 25 11:29:01 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add pycodestyle211.patch to fix tests
