@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  4 23:01:54 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Define ext_man="%{?ext_man}%{!?ext_man:.gz}" shell variable in
+  the install directive, and replace "%{?ext_man}" with
+  "${ext_man:-}" to fix groff-gf.7.gz file ending up uncompressed
+  (despite the name) due to the use of %{?ext_man} in the mv/ln
+  TARGET parameter used for the preparation of Alternatives. Also
+  define a simple shell contruct which identifies whether the
+  manpage file is compressed. If not, it unsets the $ext_man
+  variable, then ajdusting the mv/ln calls. That's all necessary
+  because even though ext_man macro is defined, it doesn't mean the
+  file has the extension (which dependes whether the build script
+  compresses it).
+
+-------------------------------------------------------------------
 Fri Sep  8 19:42:28 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Refresh bash-scripts.patch

@@ -193,10 +193,17 @@ rm -f %{buildroot}%{_mandir}/man1/troff.1*
 # Prepare alternatives
 find %{buildroot}%{_mandir}
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-mv -v %{buildroot}%{_mandir}/man7/roff.7* \
-    %{buildroot}%{_mandir}/man7/roff-gf.7%{?ext_man}
-ln -s -f %{_sysconfdir}/alternatives/roff.7%{?ext_man} \
-    %{buildroot}%{_mandir}/man7/roff.7%{?ext_man}
+
+## This construct should help identify whether the manpage is compressed,
+## and the mv/ln TARGET parameter should be adjusted accordingly.
+ext_man="%{?ext_man}%{!?ext_man:.gz}"
+manfile="$(find %{buildroot}%{_mandir}/man7/ -type f -name "roff.7${ext_man}")"
+test -z "${manfile}" && unset ext_man
+
+mv -v "%{buildroot}%{_mandir}/man7/roff.7${ext_man:-}" \
+    "%{buildroot}%{_mandir}/man7/roff-gf.7${ext_man:-}"
+ln -s -f "%{_sysconfdir}/alternatives/roff.7${ext_man:-}" \
+    "%{buildroot}%{_mandir}/man7/roff.7${ext_man:-}"
 # full_build
 %else
 # fix permission for devps/generate/afmname
