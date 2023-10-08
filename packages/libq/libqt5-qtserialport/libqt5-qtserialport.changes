@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:42:53 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde0, rebased upstream:
+  * Update LGPL license header
+  * Windows: guard against closing the connection while processing incoming data
+  * Windows: fix soft memory leak in synchronous mode
+  * Revert "QSerialPort: Port to alertable I/O functions on Windows"
+  * Revert "Emit _q_notify only if there's no notification pending"
+  * Revert "Revert "Emit _q_notify only if there's no notification pending""
+  * Revert "Avoid possible symbol clashes on static builds on Windows"
+
+-------------------------------------------------------------------
 Tue Jun 13 12:59:31 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.10+kde0, rebased upstream:
