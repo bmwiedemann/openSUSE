@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  3 13:02:03 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Updated to version 4.10.3
+  * Fix crash on external link opening. (Linux only)
+
+-------------------------------------------------------------------
+Sun Oct  1 16:29:29 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update tg_owt-master.zip to commit 592b14d13bf9103226e90a83571e24c49f6bfdcd
+
+-------------------------------------------------------------------
 Fri Sep 29 17:04:58 UTC 2023 - Dmitry Roshchin <dmitry_r@opensuse.org>
 
 - Updated to version 4.10.2
