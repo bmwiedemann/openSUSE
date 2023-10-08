@@ -7,10 +7,10 @@ system paths in the .spec file.
 
 ---
 
-Index: jupyter_core-5.1.1/jupyter_core/paths.py
+Index: jupyter_core-5.3.2/jupyter_core/paths.py
 ===================================================================
---- jupyter_core-5.1.1.orig/jupyter_core/paths.py
-+++ jupyter_core-5.1.1/jupyter_core/paths.py
+--- jupyter_core-5.3.2.orig/jupyter_core/paths.py
++++ jupyter_core-5.3.2/jupyter_core/paths.py
 @@ -219,10 +219,7 @@ else:
          else:  # PROGRAMDATA is not defined by default on XP.
              SYSTEM_JUPYTER_PATH = [os.path.join(sys.prefix, "share", "jupyter")]
@@ -19,11 +19,26 @@ Index: jupyter_core-5.1.1/jupyter_core/paths.py
 -            "/usr/local/share/jupyter",
 -            "/usr/share/jupyter",
 -        ]
-+        SYSTEM_JUPYTER_PATH = [ @_datadir_jupyter_@ ]
++        SYSTEM_JUPYTER_PATH = [ "@_datadir_jupyter_@" ]
  
  ENV_JUPYTER_PATH: List[str] = [os.path.join(sys.prefix, "share", "jupyter")]
  
-@@ -301,10 +298,7 @@ else:
+@@ -243,10 +240,10 @@ def jupyter_path(*subdirs: str) -> List[
+ 
+     Examples:
+ 
+-    >>> jupyter_path()
+-    ['~/.local/jupyter', '/usr/local/share/jupyter']
+-    >>> jupyter_path('kernels')
+-    ['~/.local/jupyter/kernels', '/usr/local/share/jupyter/kernels']
++    >>> jupyter_path()  # doctest: +SKIP
++    ['~/.local/share/jupyter', '@_datadir_jupyter_@']
++    >>> jupyter_path('kernels')  # doctest: +SKIP
++    ['~/.local/share/jupyter/kernels', '@_datadir_jupyter_@/kernels']
+     """
+ 
+     paths: List[str] = []
+@@ -298,10 +295,7 @@ else:  # noqa: PLR5501
          else:  # PROGRAMDATA is not defined by default on XP.
              SYSTEM_CONFIG_PATH = []
      else:
@@ -31,7 +46,7 @@ Index: jupyter_core-5.1.1/jupyter_core/paths.py
 -            "/usr/local/etc/jupyter",
 -            "/etc/jupyter",
 -        ]
-+        SYSTEM_CONFIG_PATH = [ @_distconfdir_jupyter_@ ]
++        SYSTEM_CONFIG_PATH = [ "@_distconfdir_jupyter_@" ]
  ENV_CONFIG_PATH: List[str] = [os.path.join(sys.prefix, "etc", "jupyter")]
  
  

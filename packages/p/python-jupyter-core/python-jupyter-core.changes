@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  7 13:07:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.3.2
+  * Fix event loop handling #362 (@blink1073)
+
+-------------------------------------------------------------------
 Sat Jul  1 16:37:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.3.1

@@ -221,4 +221,13 @@ Update to 4.6.1</comment>
   * Better handling of config migration #356 (@smartass101)</comment>
     <requestid>1096306</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a8fa3863476f6a70afdccf4701855b73</srcmd5>
+    <version>5.3.2</version>
+    <time>1696760343</time>
+    <user>anag+factory</user>
+    <comment>- Update to 5.3.2
+  * Fix event loop handling #362 (@blink1073)</comment>
+    <requestid>1116211</requestid>
+  </revision>
 </revisionlist>

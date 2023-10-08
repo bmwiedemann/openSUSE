@@ -32,7 +32,7 @@
 %endif
 
 Name:           python-jupyter-core%{psuffix}
-Version:        5.3.1
+Version:        5.3.2
 Release:        0
 Summary:        Base package on which Jupyter projects rely
 License:        BSD-3-Clause
@@ -84,9 +84,9 @@ as a dependency by packages that require it.
 %prep
 %autosetup -p1 -n jupyter_core-%{version}
 # Set the appropriate hardcoded paths dynamically
-sed -i "s|@_datadir_jupyter_@|\"%{_datadir}/jupyter\"|" jupyter_core/paths.py
-sed -i "s|@_distconfdir_jupyter_@|\"%{_distconfdir}/jupyter\"|" jupyter_core/paths.py
-sed -i "/addopts/ s/--color=yes//" pyproject.toml
+sed -i "s|@_datadir_jupyter_@|%{_datadir}/jupyter|" jupyter_core/paths.py
+sed -i "s|@_distconfdir_jupyter_@|%{_distconfdir}/jupyter|" jupyter_core/paths.py
+sed -i "/addopts/,/]/ s/--color=yes//" pyproject.toml
 
 %if !%{with test}
 %build
