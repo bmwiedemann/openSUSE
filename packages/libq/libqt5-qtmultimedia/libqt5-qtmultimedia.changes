@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:41:22 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde2, rebased upstream:
+  * QAudioHelpers: fix C++20 -Werror,-Wdeprecated-enum-float-conversion
+  * Android: Align emit sequence
+  * QNX: fix KHR image handling
+  * Fix compile error on videonode plugin
+
+-------------------------------------------------------------------
 Tue Jun 13 12:59:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.10+kde3, rebased upstream:
