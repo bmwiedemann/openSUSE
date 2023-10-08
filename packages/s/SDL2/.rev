@@ -460,4 +460,12 @@
     <comment>- Update to release 2.28.4</comment>
     <requestid>1114646</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>807b66a0259890624af97ab8c51edaf1</srcmd5>
+    <version>2.28.4</version>
+    <time>1696760237</time>
+    <user>anag+factory</user>
+    <comment>- Enable direct PipeWire support</comment>
+    <requestid>1116147</requestid>
+  </revision>
 </revisionlist>

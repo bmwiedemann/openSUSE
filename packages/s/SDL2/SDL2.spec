@@ -51,6 +51,7 @@ BuildRequires:  pkgconfig(ice)
 # KMS/DRM driver needs libdrm and libgbm
 BuildRequires:  pkgconfig(gbm) >= 11.1.0
 BuildRequires:  pkgconfig(libdrm) >= 2.4.82
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.20
 BuildRequires:  pkgconfig(libpulse-simple) >= 0.9
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(samplerate)
