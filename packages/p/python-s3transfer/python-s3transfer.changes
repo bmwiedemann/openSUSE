@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  6 09:23:20 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.7.0
+  * feature:``SSE-C``: Pass SSECustomer* arguments to
+    CompleteMultipartUpload for upload operations
+
+-------------------------------------------------------------------
 Fri Sep  1 15:11:54 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.6.2
