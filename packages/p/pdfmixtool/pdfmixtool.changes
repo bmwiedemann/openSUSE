@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  7 07:24:02 UTC 2023 - munix9@googlemail.com
+
+- Add patch fix-missing-definitions.patch: Add missing definitions
+  MAGICKCORE_HDRI_ENABLE/MAGICKCORE_QUANTUM_DEPTH for Factory/TW.
+
+-------------------------------------------------------------------
 Wed Mar  1 13:42:10 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - stop_using_obsolete_standards.patch: stop clamping to obsolete

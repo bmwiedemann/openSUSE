@@ -25,6 +25,8 @@ Group:          Productivity/Publishing/PDF
 URL:            https://gitlab.com/scarpetta/pdfmixtool/
 Source0:        https://gitlab.com/scarpetta/pdfmixtool/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 Patch1:         stop_using_obsolete_standards.patch
+# PATCH-FIX-OPENSUSE fix-missing-definitions.patch munix9@googlemail.com -- Add missing definitions for Factory/TW
+Patch2:         fix-missing-definitions.patch
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
