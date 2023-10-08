@@ -1805,4 +1805,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>add CVE/boo references for the last release</comment>
     <requestid>1108108</requestid>
   </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>862bc8fb607266ecc75b41a44a6f4c2e</srcmd5>
+    <version>4.0.10</version>
+    <time>1696760172</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1115917</requestid>
+  </revision>
 </revisionlist>

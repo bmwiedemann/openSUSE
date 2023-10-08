@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  5 16:51:21 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Wireshark 4.0.10:
+  * CVE-2023-5371: RTPS dissector memory leak (wnpa-sec-2023-27, boo#1215959)
+  * Fix a number of bugs in protocol parsers, including:
+  * RTP/RFC 4571: Wrong desegmentation/reassembly in RTP over TCP packets
+  * Incorrect bit values and namings in BSS Configuration Report TLV
+  * Wireshark 4.0.9 contained a bug affecting other platforms
+
+-------------------------------------------------------------------
 Wed Aug 23 20:53:58 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.0.8:
