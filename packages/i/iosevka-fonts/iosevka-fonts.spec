@@ -20,7 +20,7 @@
 typeface family, designed for writing code, using in terminals, and\
 preparing technical documents.
 Name:           iosevka-fonts
-Version:        26.1.0
+Version:        27.1.0
 Release:        0
 Summary:        Slender typeface for source code
 License:        OFL-1.1
@@ -50,8 +50,9 @@ Source20:       https://github.com/be5invis/Iosevka/releases/download/v%{version
 Source21:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss16-%{version}.zip
 Source22:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss17-%{version}.zip
 Source23:       https://github.com/be5invis/Iosevka/releases/download/v%{version}/super-ttc-iosevka-ss18-%{version}.zip
-Source100:      https://raw.githubusercontent.com/be5invis/Iosevka/v%{version}/LICENSE.md
-Source101:      https://raw.githubusercontent.com/be5invis/Iosevka/v%{version}/README.md
+Source100:      https://github.com/be5invis/Iosevka/raw/v%{version}/LICENSE.md
+Source101:      https://github.com/be5invis/Iosevka/raw/v%{version}/README.md
+Source102:      https://github.com/be5invis/Iosevka/raw/v%{version}/CHANGELOG.md
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 Recommends:     iosevka-aile-fonts
@@ -308,7 +309,7 @@ This package contains the Iosevka SS18 typeface (monospace, Input Mono style).
 for s in %{_sourcedir}/super-ttc-iosevka*%{version}.zip; do
 	unzip -qq $s '*.ttc'
 done
-cp %{SOURCE100} %{SOURCE101} .
+cp %{SOURCE100} %{SOURCE101} %{SOURCE102} .
 
 %build
 
@@ -351,146 +352,146 @@ done
 %reconfigure_fonts_scriptlets -n iosevka-ss18-fonts
 
 %files
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/Iosevka.ttc
 
 %files -n iosevka-slab-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSlab.ttc
 
 %files -n iosevka-curly-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaCurly.ttc
 
 %files -n iosevka-curly-slab-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaCurlySlab.ttc
 
 %files -n iosevka-aile-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaAile.ttc
 
 %files -n iosevka-etoile-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaEtoile.ttc
 
 %files -n iosevka-ss01-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS01.ttc
 
 %files -n iosevka-ss02-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS02.ttc
 
 %files -n iosevka-ss03-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS03.ttc
 
 %files -n iosevka-ss04-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS04.ttc
 
 %files -n iosevka-ss05-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS05.ttc
 
 %files -n iosevka-ss06-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS06.ttc
 
 %files -n iosevka-ss07-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS07.ttc
 
 %files -n iosevka-ss08-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS08.ttc
 
 %files -n iosevka-ss09-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS09.ttc
 
 %files -n iosevka-ss10-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS10.ttc
 
 %files -n iosevka-ss11-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS11.ttc
 
 %files -n iosevka-ss12-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS12.ttc
 
 %files -n iosevka-ss13-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS13.ttc
 
 %files -n iosevka-ss14-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS14.ttc
 
 %files -n iosevka-ss15-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS15.ttc
 
 %files -n iosevka-ss16-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS16.ttc
 
 %files -n iosevka-ss17-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS17.ttc
 
 %files -n iosevka-ss18-fonts
-%doc README.md
 %license LICENSE.md
+%doc {README,CHANGELOG}.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/IosevkaSS18.ttc
 
