@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:42:49 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.11+kde0, rebased upstream:
+  * Make pduFromStream work on big endian (again)
+  * Modbus: extend documentation
+
+-------------------------------------------------------------------
 Tue Jun 13 12:59:29 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.10+kde0, rebased upstream:
