@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Oct  6 10:21:34 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to version 1.5.4
+  * Version 1.5.4 (8 January 2023)
+    + add new methods to access maps for datasets, renderers and
+      axes in plots (#201);
+    + add option to truncate item labels and compute contrast
+      colors (PR #225)
+    + add new annotations (PR #226)
+    + add new panel for background rendering of charts (PR #233)
+    + fix tick label font for LogAxis with number format override
+      (#98);
+    + added valueVisible flag to MeterPlot (#231);
+    + added get/setWebFillAlpha() methods to SpiderWebPlot (#279)
+    + add argument checks for annotations (#223);
+    + removed JFreeChartResources.java file (#239)
+  * Version 1.5.3 (21 February 2021)
+    + add new FlowPlot class for drawing Sankey charts;
+    + throw exception in DefaultPieDataset for invalid index
+      (#212);
+    + fix isJFreeSVGAvailable() method (bug #207);
+    + replaced some usages of ObjectUtils with the JDK Objects
+      class;
+    + remove unused URLUtilities class;
+    + removed @since 1.0.x Javadoc tags since these do not provide
+      useful information anymore.
+  * Version 1.5.2 (31 December 2020)
+    + observe series visibility flag in ClusteredXYBarRenderer
+      (#89);
+    + apply rendering hints to overlays (#187);
+    + don't draw disabled outlines on crosshair labels (#189);
+    + observe axis visibility flag in PeriodAxis (#198);
+    + ensure label offsets are used in CrosshairOverlay (#190);
+    + remove alpha channel from copy-to-clipboard (#182);
+    + set flag in XML parser to avoid XML eXternal Entity injection
+      (XXE) (#130);
+    + update French translations (#186);
+    + fix "Save_as" entries in localisation files (#184);
+    + add flags for visibility of outliers in BoxAndWhiskerRenderer
+      (#79);
+    + deprecated PiePlot3D and related methods, for 3D pie charts,
+      use Orson Charts (https://github.com/jfree/orson-charts).
+  * Version 1.5.1 (29 October 2020)
+    + add DeviationStepRenderer (PR #173)
+    + modify buffer in ChartPanel to handle high DPI displays (bug
+      #170);
+    + fix for exception on extreme zoom on NumberAxis (bug #64);
+    + fix for LayeredBarRenderer (bug #169);
+    + add Catalan translations (PR #117);
+    + add automatic module name org.jfree.jfreechart;
+    + migrate to JUnit 5;
+    + raise minimum requirement to Java 8 or later.
+  * Version 1.5.0
+- Use source tarball from GitHub.
+- Remove patch:
+  * build_swt_encoding_fix.patch
+    + Not needed anymore
+- Remove obsolete stuff from the spec file
+- Update package description
+
+-------------------------------------------------------------------
 Sat Sep  9 14:27:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp

@@ -17,17 +17,15 @@
 
 
 Name:           jfreechart
-Version:        1.0.19
+Version:        1.5.4
 Release:        0
 Summary:        Java chart library
 License:        LGPL-2.1-or-later
-URL:            http://www.jfree.org/jfreechart/
-Source0:        http://download.sourceforge.net/sourceforge/jfreechart/%{name}-%{version}.zip
-Patch0:         build_swt_encoding_fix.patch
+URL:            https://www.jfree.org/%{name}/
+Source0:        https://github.com/jfree/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  unzip
 BuildRequires:  mvn(javax.servlet:javax.servlet-api) >= 2.5
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.jfree:jcommon) >= 1.0.23
@@ -35,8 +33,9 @@ BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
 %description
-JFreeChart is a free 100% Java chart library that makes it easy for
-developers to display professional quality charts in their applications.
+JFreeChart is a comprehensive free chart library for the Java™ platform that
+can be used on the client-side (JavaFX and Swing) or the server side, with
+export to multiple formats including SVG, PNG and PDF.
 
 %package javadoc
 Summary:        Javadocs for %{name}
@@ -48,9 +47,6 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
-# Erase prebuilt files
-find \( -name '*.jar' -o -name '*.class' \) -exec rm -f '{}' \;
-%patch0 -p2
 
 MVN_BUNDLE_PLUGIN_EXTRA_XML="<extensions>true</extensions>
         <configuration>
@@ -70,8 +66,6 @@ MVN_BUNDLE_PLUGIN_EXTRA_XML="<extensions>true</extensions>
 %pom_remove_plugin :maven-gpg-plugin
 %pom_remove_plugin :nexus-staging-maven-plugin
 %pom_remove_plugin :cobertura-maven-plugin
-%pom_remove_plugin :maven-site-plugin
-%pom_remove_plugin :animal-sniffer-maven-plugin
 %pom_remove_plugin :maven-jxr-plugin
 %pom_remove_plugin :maven-javadoc-plugin
 %pom_change_dep javax.servlet:servlet-api: javax.servlet:javax.servlet-api:
@@ -81,7 +75,7 @@ MVN_BUNDLE_PLUGIN_EXTRA_XML="<extensions>true</extensions>
 # as an OSGi bundle.
 %pom_xpath_set "pom:packaging" "bundle"
 
-rm -rf source/org/jfree/chart/fx
+%{mvn_file} : %{name}
 
 %build
 %{mvn_build} -f  -- \
@@ -96,8 +90,10 @@ rm -rf source/org/jfree/chart/fx
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%doc ChangeLog NEWS README.txt
+%license licence-LGPL.txt
+%doc README.md
 
 %files javadoc -f .mfiles-javadoc
+%license licence-LGPL.txt
 
 %changelog
