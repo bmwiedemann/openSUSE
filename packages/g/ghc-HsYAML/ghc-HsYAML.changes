@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 29 11:59:37 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update HsYAML to version 0.2.1.2.
+  ### 0.2.1.2
+
+  _2023-09-29_
+
+  * Add `default-extensions: TypeOperators` to silence warning under GHC ≥ 9.4.
+  * Support latest versions of dependencies.
+  * Tested with GHC 7.10 - 9.8.0
+
+-------------------------------------------------------------------
 Thu Sep 14 07:42:47 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update HsYAML to version 0.2.1.1 revision 6.
