@@ -3,6 +3,9 @@ Wed Sep  6 07:09:33 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 4.8.0
 - Changes of 4.8.0
+  * Security fix
+    + Avoid override target symlink by standard file in
+      AbstractUnArchiver (bsc#1215973, CVE-2023-37460)
   * New features and improvements
     + Add tzst alias for tar.zst archiver/unarchived (#274)
   * Bug Fixes

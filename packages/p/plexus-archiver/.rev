@@ -32,4 +32,12 @@
     <comment>4.8.0</comment>
     <requestid>1109291</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a36e34c5ca2239e9bf3ccf8306922e80</srcmd5>
+    <version>4.8.0</version>
+    <time>1696760279</time>
+    <user>anag+factory</user>
+    <comment>Clarify CVE and bsc#</comment>
+    <requestid>1116073</requestid>
+  </revision>
 </revisionlist>
