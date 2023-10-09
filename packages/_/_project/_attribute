@@ -167,7 +167,7 @@ source_projects_expand = devel:languages:haskell
 allowed-scm-submission-sources = devel:Factory:git-workflow:staging
 
 # devel projects are auto-maintained by devel flags of all existing packages. If a new devel project is to be introduced, it needs to be white listed until the first package entered
-devel-whitelist = hardware:RC-Model devel:microos:aeon devel:microos:aeon:images
+devel-whitelist = systemsmanagement:opentofu
  
 # packagelist generator related configuration
 pkglistgen-archs = x86_64

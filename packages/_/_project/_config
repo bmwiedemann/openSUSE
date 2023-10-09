@@ -2980,6 +2980,7 @@ BuildFlags: onlybuild:rubygem-ronn
 BuildFlags: onlybuild:rust
 BuildFlags: onlybuild:rust-bindgen
 BuildFlags: onlybuild:rust1.72
+BuildFlags: onlybuild:rust1.73
 BuildFlags: onlybuild:samba
 BuildFlags: onlybuild:sane-backends
 BuildFlags: onlybuild:sbc
