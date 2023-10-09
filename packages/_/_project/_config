@@ -1808,6 +1808,7 @@ BuildFlags: onlybuild:duktape
 BuildFlags: onlybuild:dummy-release
 BuildFlags: onlybuild:dwz
 BuildFlags: onlybuild:dxvk
+BuildFlags: onlybuild:eglexternalplatform
 BuildFlags: onlybuild:e2fsprogs
 BuildFlags: onlybuild:ebtables
 BuildFlags: onlybuild:ed
@@ -2152,6 +2153,7 @@ BuildFlags: onlybuild:libnl3
 BuildFlags: onlybuild:libnotify
 BuildFlags: onlybuild:libnscd
 BuildFlags: onlybuild:libnss_usrfiles
+BuildFlags: onlybuild:libnvidia-egl-wayland
 BuildFlags: onlybuild:libogg
 BuildFlags: onlybuild:libopenmpt
 BuildFlags: onlybuild:libpaper
