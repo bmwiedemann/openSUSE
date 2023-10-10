@@ -67,6 +67,7 @@ sed -i.old '1{/#!.*/d}' b4/*.py
 
 %install
 %python_install
+%python_expand %{$python_fix_shebang}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
