@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:01:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1.0:
+  * Considerable performance improvements in linear symbol detection (up to 2x speedup in select use cases of ReadBarcodes)
+  * QRCode: major improvement in detection of high version symbols (see e.g. here)
+  * DMDetector: reduce runtime overhead of c++-20 builds 
+  * Refactor Python wrapper so the sdist includes the core library code 
+  * wasm wrapper: add function to reader to scan multiple barcode 
+  * Added a C wrapper
+  * Python: improve error reporting
+  * DMDetector: fix potential dead-lock
+  * DMDecoder: support 144x144 symbols in legacy and compliant variants
+- Remove the %check section since we are not building the tests.
+
+-------------------------------------------------------------------
 Wed Aug  9 15:07:38 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Restore support for building on SLE12

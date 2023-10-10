@@ -18,7 +18,7 @@
 
 %define sover 3
 Name:           zxing-cpp
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Library for processing 1D and 2D barcodes
 License:        Apache-2.0 AND Zlib AND LGPL-2.1-with-Qt-Company-Qt-exception-1.1
@@ -29,6 +29,10 @@ Source99:       baselibs.conf
 Patch1:         cmake.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} > 1500
+# build the C wrapper only in TW. This package is too old on Leap <= 15.5
+BuildRequires:  stb-devel
+%endif
 %if 0%{?suse_version} < 1500
 BuildRequires:  gcc7
 BuildRequires:  gcc7-c++
@@ -79,21 +83,15 @@ export CXXFLAGS="-std=c++17"
 # Examples require QT5-base/multimedia, but doing so creates a cycle
 # Blackbox tests require fmt
 %cmake \
-    -DBUILD_EXAMPLES=OFF \
-%if 0%{?suse_version} < 1550
-    -DBUILD_BLACKBOX_TESTS=OFF
+    -DCMAKE_CXX_EXTENSIONS=ON \
+%if 0%{?suse_version} > 1500
+    -DBUILD_C_API=ON \
 %endif
-
+    -DBUILD_EXAMPLES=OFF
 %cmake_build
 
 %install
 %cmake_install
-
-%check
-%if 0%{?sle_version}
-export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
-%endif
-%ctest
 
 %post -n libZXing%{sover} -p /sbin/ldconfig
 %postun -n libZXing%{sover} -p /sbin/ldconfig
