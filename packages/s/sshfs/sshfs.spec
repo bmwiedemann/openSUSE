@@ -17,7 +17,7 @@
 
 
 Name:           sshfs
-Version:        3.7.4
+Version:        3.7.4a
 Release:        0
 Summary:        Filesystem client based on SSH file transfer protocol
 License:        GPL-2.0-or-later

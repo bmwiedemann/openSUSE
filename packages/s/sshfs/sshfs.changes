@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  9 20:24:31 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.7.4a:
+  - Reverting PR #1 from user-reported bug bsc#1215574.
+
+-------------------------------------------------------------------
 Thu Sep 14 08:01:32 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.7.4:
