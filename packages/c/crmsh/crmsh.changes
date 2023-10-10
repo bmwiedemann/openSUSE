@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 10 02:01:00 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0+20231010.247218bf:
+  * Fix: report: Pick up tarball suffix dynamically (bsc#1215438)
+
+-------------------------------------------------------------------
+Sun Oct 08 08:36:39 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.6.0+20231008.7a0df6c5:
+  * Fix: report: Pick 'gzip' as the first compress prog for cross-platform compatibility(bsc#1215438)
+  * Fix: constants: Add several resource meta attributes (bsc#1215319)
+  * refactor: move get_stdout and get_stdout_stderr to crmsh.sh.ShellUtils
+  * refactor: remame SshShell to SSHShell refactor: remame AutoShell to ClusterShell refactor: rename get_stdout_stderr* to get_rc_stdout_stderr* refactor: rename get_raw_stdout_stderr* to get_rc_stdout_stderr_rc* refactor: rename *_no_input to *_without_input add doc strings
+  * Dev: spec: Remove %generate_buildrequires to prevent OBS build failures on SLE15SP5 and Leap15.5
+  * Dev: behave: adjust functional tests for previous changes
+  * Fix: unittest: fix several test cases for bootstarp.adjust_properties
+  * Dev: unittest: adjust unit tests for previous changes
+  * Dev: unittest: create unit tests for sh.py and service_manager.py
+  * Dev: refactor shell calling routines
+  * Dev: workflows: Enable delivery and submit CD stages for branch crmsh-4.6
+
+-------------------------------------------------------------------
 Thu Sep 28 03:29:51 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230928.7e006329:

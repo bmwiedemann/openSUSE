@@ -36,7 +36,7 @@ Name:           crmsh
 Summary:        High Availability cluster command-line interface
 License:        GPL-2.0-or-later
 Group:          %{pkg_group}
-Version:        4.5.0+20230928.7e006329
+Version:        4.6.0+20231010.247218bf
 Release:        0
 URL:            http://crmsh.github.io
 Source0:        %{name}-%{version}.tar.bz2
@@ -165,7 +165,6 @@ sed -i -e '/data_files/d' setup.py
 %if 0%{?suse_version}
 %python3_pyproject_wheel
 %else
-%generate_buildrequires
 %pyproject_buildrequires -t
 %pyproject_wheel
 %endif
