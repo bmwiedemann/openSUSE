@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct  5 14:13:03 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 27.1.2
+  - Chore: Update `@nextcloud/dialogs` to 4.2.1 (server#40557)
+  - Let `occ trashbin:restore` restore also from groupfolders and add filters (server#40581)
+  - Ocm services (server#40586)
+  - Revert change that made `OC.Util.humanFileSize` return decimal sizes instead of binary (server#40605)
+  - Store size in int|float for 32bit support (server#40623)
+  - Fix(dav): expand recurrences when searching (server#40631)
+  - Fix jsunit tests (server#40638)
+  - Use proper app id in Version.vue (server#40640)
+  - Fix: encode uri for trashbin delete (server#40642)
+  - Fix ocm-provider rewrite rules (server#40778)
+  - Fix(db): also chunk MariaDB deletes (activity#1312)
+  - Re-enabled cypress tests (activity#1336)
+  - Run npm audit fix (activity#1339)
+  - Return if user is empty (firstrunwizard#953)
+  - Chore(deps): Bump howler from 2.2.3 to 2.2.4 (notifications#1672)
+  - Bump cypress to v13 (photos#2057)
+  - Fix(security): Bump semver (suspicious_login#815)
+  - Fix(deps): update nextcloud abandoned (text#4756)
+  - Bugfix/duplicated load of yjs (text#4807)
+  - Feat: hide workspace if no readme.md (text#4811)
+
+-------------------------------------------------------------------
 Sun Sep 24 09:00:49 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 27.1.1

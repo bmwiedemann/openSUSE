@@ -21,9 +21,6 @@ Alias /nextcloud "@DATAPATH@/"
   Require all denied
 </Directory>
 
-Redirect 301 /ocm-provider/ /nextcloud/ocm-provider/
-Redirect 301 /ocs-provider/ /nextcloud/ocs-provider/
-
 <IfModule mod_rewrite.c>
   RewriteEngine on
   RewriteRule ^/\.well-known/host-meta /nextcloud/public.php?service=host-meta [QSA,L]
