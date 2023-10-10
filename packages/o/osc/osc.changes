@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:12:00 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.4.1
+  - Configuration:
+    - Always display apiurl when asking for credentials
+    - Ask for new credentials when user is missing from an apiurl section in the config file
+  - Library:
+    - Fix testing revision for being empty
+    - Fix core.change_request_state_template() to always return a string
+  - Tests:
+    - Replace 'git init -b' with 'git init' and 'git checkout -b'
+  - Spec:
+    - Run fdupes after install
+    - List the python sitelib paths explicitly
+    - Mark csh completion files as configs
+    - Own zsh completion dirs to mute rpmlint errors
+    - Move bash completion from /etc to /usr/share
+
+-------------------------------------------------------------------
+Wed Oct  4 10:01:35 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.4.0
+  - Command-line:
+    - Add rootless build support to 'build' command for 'kvm' and 'podman' vm types
+    - Print a hint to clean the build root after a failed build
+    - Avoid adding a newline to prompt in 'wipe' command
+    - Fix 'build' command to pass '--vm-type' option to the underlying build tool
+    - Add '--just-print-buildroot' option to print build root path and exit to 'build' command
+    - Add support for keep_packages_locked on request revoke
+    - Import zsh completition made by Holger Macht and improve it
+    - Use XDG locations in completion
+    - Fix 'search' command to resolve '-B .' to the current project
+    - Add '-M/--multibuild-package' option to 'checkconstraints' command
+    - Allow constraints file with remote request in 'checkconstraints' command
+    - Unify how the 'commit' and 'build' commands work with '--noservice' option
+    - Fix 'request show' command to print superseded_by information
+    - Fix 'service' command to support already documented 'r' abbreviation for 'run'
+  - Configuration:
+    - Implement 'exclude_files' and 'include_files' config options that allow skipping files in the 'checkout' command
+    - Fix api_host_options for custom CAs (cafile and capath options work again)
+    - Switch 'osc.conf.config' from dict to Options class with type checking
+    - Rename conf.Options.build_type to vm_type to be consistent with obs build and osc --vm-type option
+    - Update list of supported vm_type values in conf.Options.vm_type
+    - Remove any duplicated code loading configuration from ENV
+  - Library:
+    - Add 'osc.util.models' module implementing an alternative pydantic-like data validation
+    - Add 'osc.util.xdg' module for handling XDG paths
+    - Fix handling empty vm_type in Store.last_buildroot
+  - Spec:
+    - Install zsh completion
+    - Build and install oscrc man page
+
+-------------------------------------------------------------------
 Mon Aug 28 11:38:33 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.3.1
@@ -436,7 +489,7 @@ Tue Jul 26 19:37:46 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
   - revert "interpretation of string literals in messages" that broke unicode handling
   - fix product build rpm caching
   - enable md5 revisions in osc log
-  - parseRevisionOption(): raise an exception on invalid revisions 
+  - parseRevisionOption(): raise an exception on invalid revisions
 
 -------------------------------------------------------------------
 Fri Jun 24 13:33:36 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
@@ -447,7 +500,7 @@ Fri Jun 24 13:33:36 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
   - don't traceback on invalid credentials manager
   - improve README, rename it to README.md
   - declare OscHTTPSignatureAuthHandler as a new-style class
-  - remove illegal character in comment 
+  - remove illegal character in comment
 
 -------------------------------------------------------------------
 Thu Jun  2 12:31:16 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
@@ -509,7 +562,7 @@ Tue Apr 26 07:53:48 UTC 2022 - Marco Strigl <marco.strigl@suse.com>
     is issued on project level or in multibuild case
 
 - spec file:
-  * recommed python-keyring-keyutils for new kernel keyring backend 
+  * recommed python-keyring-keyutils for new kernel keyring backend
 
 -------------------------------------------------------------------
 Mon Feb 28 17:34:00 UTC 2022 - Daniel Mach <daniel.mach@suse.com>
@@ -559,7 +612,6 @@ Thu Dec  2 08:18:20 UTC 2021 - Marco Strigl <marco.strigl@suse.com>
   * avoid sending entire projects on "osc mr"
   * fix hdmrd5 check of local cached files
   * improve logic for conffile mode handling
- 
 
 -------------------------------------------------------------------
 Wed Jul 21 08:51:23 UTC 2021 - Marcus Hüwe <suse-tux@gmx.de>
@@ -630,13 +682,13 @@ Wed Jan 27 13:31:51 UTC 2021 - Marcus Hüwe <suse-tux@gmx.de>
 Tue Nov 10 13:42:55 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
 
 - 0.171.1
-  * maintainer search: lookup via package name by default and binary as fallback 
-  * fix crash on console resize when downloading files during build 
-  * add proper repourls to osc reporuls 
-  * new command osc releaserequest: This command is used to transfer sources and  
-    binaries without rebuilding them. 
-    It requires defined release targets set to trigger="manual". 
-  * some improvements on output of help and error messages 
+  * maintainer search: lookup via package name by default and binary as fallback
+  * fix crash on console resize when downloading files during build
+  * add proper repourls to osc reporuls
+  * new command osc releaserequest: This command is used to transfer sources and
+    binaries without rebuilding them.
+    It requires defined release targets set to trigger="manual".
+  * some improvements on output of help and error messages
 
 -------------------------------------------------------------------
 Thu Jul  9 08:06:35 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
@@ -669,19 +721,19 @@ Thu Jul  9 08:06:35 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
 -------------------------------------------------------------------
 Thu Jul  2 12:46:33 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
-- Really fix path for fish completion file to 
+- Really fix path for fish completion file to
   /usr/share/fish/vendor_completions.d and fix its permissions.
 
 -------------------------------------------------------------------
 Fri May 29 18:40:18 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
 
 - 0.169.1
-  * add --ccache option to osc getbinaries 
+  * add --ccache option to osc getbinaries
 
 -------------------------------------------------------------------
 Wed May 27 12:54:14 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
 
-- 0.169.0  
+- 0.169.0
    * improve speed and usability of osc bash completion
    * switch packagequery.py to return only bytes
    * improved some error messages
@@ -690,7 +742,7 @@ Wed May 27 12:54:14 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
    * support for osc build --shell-cmd
    * Fix kiwi build with --prefer-pkgs
    * add pkg-ccache support for osc build
-   * fix security issue (bsc#1122675, CVE-2019-3681) do not allow '/' in filename 
+   * fix security issue (bsc#1122675, CVE-2019-3681) do not allow '/' in filename
 
 -------------------------------------------------------------------
 Fri Mar 13 06:49:27 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
@@ -714,7 +766,7 @@ Mon Mar  9 08:14:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 Thu Mar  5 08:30:46 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
 
 - Spec:
-    * fix destination of fish completion file to /usr/share/fish/vendor_completions.d 
+    * fix destination of fish completion file to /usr/share/fish/vendor_completions.d
 
 -------------------------------------------------------------------
 Wed Mar  4 09:27:41 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
@@ -757,7 +809,7 @@ Tue Jan  7 10:54:25 UTC 2020 - Marco Strigl <marco.strigl@suse.com>
 
 - 0.167.2
   * fix regression in osc chroot
-  * fix broken importsrcpkg 
+  * fix broken importsrcpkg
 
 -------------------------------------------------------------------
 Tue Dec 10 12:44:18 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
@@ -789,9 +841,9 @@ Thu Dec  5 09:47:54 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
 - added Conflicts: build < 20191205. The new osc shell/chroot features might
   not work with older build scripts
 - removed version dpendency for Recommends: build. Does not work anyway.
-- added 0%{?centos_version} >= 800 to some %if statemets to enable build of 
+- added 0%{?centos_version} >= 800 to some %if statemets to enable build of
   python3 version on CentOS 8 and higer
-  
+
 
 -------------------------------------------------------------------
 Wed Nov 13 12:05:26 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
@@ -807,7 +859,7 @@ Wed Nov 13 12:05:26 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
     (boo#1155953)
   * fix output for missing pubkey when using http_debug=1 on
     osc build
-  * fix crash of osc linkpac when there is already a _link 
+  * fix crash of osc linkpac when there is already a _link
 
 -------------------------------------------------------------------
 Tue Oct 29 10:18:24 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
@@ -816,7 +868,7 @@ Tue Oct 29 10:18:24 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
   * emergency fix for credentials handling:
       - in case of an old passx entry in oscrc
         osc did not work at all. Now we check in
-        the compat code if we have an passx entry. 
+        the compat code if we have an passx entry.
 
 -------------------------------------------------------------------
 Thu Oct 24 10:05:06 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
@@ -841,7 +893,7 @@ Thu Oct 24 10:05:06 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
   * new option --incoming for osc rq and osc review to only show only
     incoming reqeusts for a project.
 - new Recommends for xdg-utils. osc-browse uses xdg-open to open
-  the url to the project/package in an internet browser 
+  the url to the project/package in an internet browser
 
 -------------------------------------------------------------------
 Mon Aug  5 06:51:32 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
@@ -851,7 +903,7 @@ Mon Aug  5 06:51:32 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
    * fix RPMError fallback
    * fix local caching for all package formats
    * fix appname for trusted cert store
-   * osc -h does not break anymore when using plugins 
+   * osc -h does not break anymore when using plugins
 
 -------------------------------------------------------------------
 Wed Jul 24 13:18:01 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
@@ -861,7 +913,7 @@ Wed Jul 24 13:18:01 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
       This will fix all decoding issues with osc diff, osc ci and osc rq -d
     * fix osc ls -lb handling empty size and mtime
     * removed decoding on osc api command.
-    * fixed broken TLS certificate handling (boo#1142518, CVE-2019-3685) 
+    * fixed broken TLS certificate handling (boo#1142518, CVE-2019-3685)
 
 -------------------------------------------------------------------
 Mon Jul  8 11:11:58 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
@@ -874,9 +926,9 @@ Mon Jul  8 11:11:58 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
     * some spelling fixes
     * properly parse the error message on osc meta -e
     * osc maintainer -s now works with python3
-    * simplified and fixed osc meta -e (boo#1138977) 
+    * simplified and fixed osc meta -e (boo#1138977)
     * osc lbl now works with non utf8 encoding (boo#1129889)
-    * add simpleimage as local build type 
+    * add simpleimage as local build type
 
 -------------------------------------------------------------------
 Tue May 21 09:10:33 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
@@ -896,11 +948,11 @@ Mon May 20 06:39:33 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
     * osc add <dir> in compressed mode now works with python3
     * osc getbinaries now prints the output instead of
       using the quiet mode as a default
- 
+
 -------------------------------------------------------------------
 Wed Apr 24 11:20:12 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
 
-- osc-0.165.0.tar.gz now contains the correct version (tag 0.165.0) 
+- osc-0.165.0.tar.gz now contains the correct version (tag 0.165.0)
 
 -------------------------------------------------------------------
 Wed Apr 24 09:55:14 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
@@ -918,7 +970,7 @@ Thu Apr 18 12:45:04 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
     * removed following patches (now upstream):
         001_helper.patch
         002_man_page_building.patch
-        003_setup.patch 
+        003_setup.patch
         004_babysitter.patch
         005_oscssl.patch
         006_build.patch
@@ -935,14 +987,14 @@ Thu Apr 18 12:45:04 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
 -------------------------------------------------------------------
 Tue Apr  9 15:04:19 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
 
-- moved Recommends for diffstat to suse specific section. 
+- moved Recommends for diffstat to suse specific section.
 
 -------------------------------------------------------------------
 Tue Apr  9 13:32:17 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
 
 - added Buildrequires and Requires for python-chardet
     * needed for determining the encoding of objects (Requires)
-    * needed also for testing in %check section (BuildRequires) 
+    * needed also for testing in %check section (BuildRequires)
 
 -------------------------------------------------------------------
 Sun Apr  7 19:49:25 UTC 2019 - Marco Strigl <marco.strigl@suse.com>
@@ -998,27 +1050,27 @@ Tue Feb 12 14:21:39 UTC 2019 - marco.strigl@suse.com
 - rewrite 009_fetch.patch
     some versions of python do not support rb'some_text'
 - overwrite python_sitelib on Tumbleweed and SLE >= 15
-- swich to python3-rpm on Tumbleweed and SLE >= 15. Otherwise 
+- swich to python3-rpm on Tumbleweed and SLE >= 15. Otherwise
   python2 will be installed
 
 -------------------------------------------------------------------
 Tue Feb 12 13:49:32 UTC 2019 - marco.strigl@suse.com
 
-- use python3 on Tumbleweed and SLE >= 15 
+- use python3 on Tumbleweed and SLE >= 15
 
 -------------------------------------------------------------------
 Tue Feb 12 13:12:17 UTC 2019 - marco.strigl@suse.com
 
 - cpio download of needed packages during build is not
-  possible, because cpio.py has now a bytes only api and 
-  the decoding needs to be done in the fetch module instead. 
-    added: 009_fetch.patch 
+  possible, because cpio.py has now a bytes only api and
+  the decoding needs to be done in the fetch module instead.
+    added: 009_fetch.patch
 
 -------------------------------------------------------------------
 Tue Feb 12 10:46:11 UTC 2019 - marco.strigl@suse.com
 
-- added patches to support python3 until the PR are merged 
-  upstream (bsc#1125243): 
+- added patches to support python3 until the PR are merged
+  upstream (bsc#1125243):
     - 001_helper.patch
     - 002_man_page_building.patch
     - 003_setup.patch
@@ -1036,7 +1088,7 @@ Tue Feb 12 08:14:30 UTC 2019 - marco.strigl@suse.com
   - rewrite packagequery to support python3
   - rewrite oscerr module to support python3
   - rewrite archqeury and debquery to support python3
-  - Export vc env vars when running a source service 
+  - Export vc env vars when running a source service
 
 -------------------------------------------------------------------
 Wed Jan 16 13:11:41 UTC 2019 - marco.strigl@suse.com
@@ -1064,7 +1116,7 @@ Wed Jan  9 12:44:29 UTC 2019 - marco.strigl@suse.com
   - run release job immediately (osc release --no-delay)
   - build results on project level can now be watched (osc prjresults --watch)
 - removed python-urlgrabber requieres. (Not used with 0.164.0)
-- added recommends for python[2]-progressbar  
+- added recommends for python[2]-progressbar
 
 -------------------------------------------------------------------
 Mon Aug 20 11:24:25 UTC 2018 - Adrian Schröter <adrian@suse.de>
@@ -1084,10 +1136,10 @@ Mon Aug 20 11:24:25 UTC 2018 - Adrian Schröter <adrian@suse.de>
 -------------------------------------------------------------------
 Fri Jun 29 07:23:57 UTC 2018 - marco.strigl@suse.com
 
-- add Requires: python2 for Tumbleweed. 
+- add Requires: python2 for Tumbleweed.
   Otherwise just python-base is installed which does not contain ssl.py
   [bnc#1097996]
-- removed duplicate entry in appimage.yml to prevent double builds 
+- removed duplicate entry in appimage.yml to prevent double builds
 
 -------------------------------------------------------------------
 Tue Dec  5 13:41:04 UTC 2017 - marco.strigl@suse.com
@@ -1106,7 +1158,7 @@ Tue Nov 28 14:14:22 UTC 2017 - adrian@suse.de
 Thu Oct 26 12:41:25 UTC 2017 - marco.strigl@suse.com
 
 - 0.161.1
-  - Fix python 2.6 SyntaxError (multiple context expressions) 
+  - Fix python 2.6 SyntaxError (multiple context expressions)
 
 -------------------------------------------------------------------
 Thu Oct 26 11:39:49 UTC 2017 - marco.strigl@suse.com
@@ -1124,7 +1176,7 @@ Thu Oct 26 11:39:49 UTC 2017 - marco.strigl@suse.com
 Wed Oct  4 08:56:38 UTC 2017 - marco.strigl@suse.com
 
 - add Recommends: ca-certificates to enable TLS verification
-  without manually installing them. [bnc#1061500] 
+  without manually installing them. [bnc#1061500]
 
 -------------------------------------------------------------------
 Fri Sep 22 07:07:33 UTC 2017 - adrian@suse.de
@@ -1174,7 +1226,7 @@ Tue May  9 07:51:06 UTC 2017 - marco.strigl@suse.com
   - fix github issue #236 (--no-cleanup not working)
   - fix wipebinaries to prevent wiping of complete repository
   - add '--build-opt' to osc build command
-  - fix requests codebase to fit old obs versions 
+  - fix requests codebase to fit old obs versions
 
 -------------------------------------------------------------------
 Tue Mar 21 12:51:00 UTC 2017 - marco.strigl@suse.com
@@ -1183,13 +1235,13 @@ Tue Mar 21 12:51:00 UTC 2017 - marco.strigl@suse.com
   - add compat code for older apis that do not support multibuild
   - fix ssl.connection instantiation in case of old M2Crypto
   - highly experimental support for appimage
-  - fix local service run for non-existent (server-side) package 
+  - fix local service run for non-existent (server-side) package
 
 -------------------------------------------------------------------
 Wed Mar  8 12:14:32 UTC 2017 - marco.strigl@suse.com
 
 - 0.157.1
-  - fix local build of kiwi images using obsrepositories:// 
+  - fix local build of kiwi images using obsrepositories://
 
 -------------------------------------------------------------------
 Wed Mar  8 08:57:31 UTC 2017 - marco.strigl@suse.com
@@ -1304,7 +1356,7 @@ Mon Apr 20 07:18:40 UTC 2015 - bwiedemann@suse.com
 -------------------------------------------------------------------
 Thu Mar 26 13:52:34 UTC 2015 - adrian@suse.de
 
-- 0.151.2 
+- 0.151.2
   - improved error loging
 
 -------------------------------------------------------------------
@@ -1445,7 +1497,7 @@ Fri Jan 24 09:38:32 UTC 2014 - adrian@suse.de
     - plugin loading
     - bugowner handling
     - download of server side generated source "up -S"
-    - wipebinaries command 
+    - wipebinaries command
 
 -------------------------------------------------------------------
 Tue Dec 31 19:24:43 UTC 2013 - andreas.stieger@gmx.de
@@ -1810,7 +1862,7 @@ Mon Dec  6 20:33:16 UTC 2010 - suse-tux@gmx.de
                instance to enter a passwd)
   - added template support for a submitrequest accept/decline message
   - lots of internal rewrites (new working copy handling etc.)
-  - support added for osc search 'perl(Foo::Bar)' 
+  - support added for osc search 'perl(Foo::Bar)'
   - New "service" command to run source services locally or trigger a re-run on the server.
   - setlinkrev is setting now the revision to xsrcmd5 by default to avoid later breakage on indirect links by default.
 #
@@ -1838,7 +1890,7 @@ Mon Aug 30 17:40:37 UTC 2010 - suse-tux@gmx.de
 Fri Aug 27 15:23:54 UTC 2010 - suse-tux@gmx.de
 
 - recommend build >= 2010.05.04
-- update to 0.129 
+- update to 0.129
   - "dists" command to show the configured default base repos from the server.
   - "review list" command to list open review requests
   - "review add" command to add another reviewer for a request (either user or group)
@@ -1882,7 +1934,7 @@ Wed Jun  9 10:55:52 UTC 2010 - adrian@suse.de
   - --csv/--format options for results command - using format user can explicitly specify what he wants print
   - osc branch reads project/package in package directory
   - fix creation of package link, when target project has the package via linked project
-  - add "osc rq approvenew $PROJECT" command to show and accept all request in new state. 
+  - add "osc rq approvenew $PROJECT" command to show and accept all request in new state.
     This makes sense esp. for projects which work with default reviewers before.
   - support external source validator scripts before commiting
   - support request creation with multiple actions
@@ -1939,7 +1991,7 @@ Wed Apr  7 13:55:54 UTC 2010 - suse-tux@gmx.de
 -------------------------------------------------------------------
 Sun Mar 21 22:03:07 UTC 2010 - suse-tux@gmx.de
 
-- fixed rpmlint warning 
+- fixed rpmlint warning
 
 -------------------------------------------------------------------
 Sun Mar 21 21:49:19 UTC 2010 - suse-tux@gmx.de
@@ -2301,7 +2353,7 @@ Thu Jan 22 17:35:38 CET 2009 - poeml@suse.de
   - don't use a hardcoded path for the rpm binary otherwise it fails on
     distributions like debian
   - osc meta: be more verbose in case of failure (bnc#459292)
-  - osc mkpac: add info how to enable the package tracking feature (bnc#459288) 
+  - osc mkpac: add info how to enable the package tracking feature (bnc#459288)
 
 -------------------------------------------------------------------
 Fri Dec 12 11:26:56 CET 2008 - poeml@suse.de
@@ -2405,7 +2457,7 @@ Fri Jul 11 12:43:00 CEST 2008 - poeml@suse.de
 
 - update to r4428 (version 0.106):
   - osc rdiff / osc submitreq show: diff the _expanded_ sources [bnc#408267]
-  - osc submitreq list: show author's name 
+  - osc submitreq list: show author's name
   - osc submitreq: shortcut alias 'sr' added
 
 -------------------------------------------------------------------
@@ -2473,7 +2525,7 @@ Tue Jun  3 17:15:26 CEST 2008 - poeml@suse.de
 
 - update to r4089 (version 0.102)
   - osc branch: Show the actually created branch project name, not
-    a guessed one.  Add --nodevelproject. 
+    a guessed one.  Add --nodevelproject.
   - osc submitreq: look up the develproject of the target, and if
     there is one, don't create the request, unless forced with
     --nodevelproject.
@@ -2557,15 +2609,15 @@ Tue Apr  1 09:43:12 CEST 2008 - poeml@suse.de
     and built locally.
     Missing: commit support.
     Newly introduced options are:
-    * osc checkout: --expand-link 
-    * osc update: --expand-link and --unexpand-link 
+    * osc checkout: --expand-link
+    * osc update: --expand-link and --unexpand-link
   - osc build: add --debuginfo switch (Thanks, Juergen!) [bnc#368524]
   - osc req: add option -a / --add-header to inject arbitrary
     request headers
   - osc addremove (and others): ignore _all_ dot files (the
     buildservice doesn't handle them) [bnc#370476]
   - copypac: do a server-side copy (via a single api call) when
-    used with -s / --server-side. 
+    used with -s / --server-side.
   - prjresults: csv export uses ';' as default (Pavol)
   - osc update/checkout: enable to use md5sum as revision id
   - osc info: make it show info about expanded and non-expanded links
@@ -2596,7 +2648,7 @@ Tue Apr  1 09:43:12 CEST 2008 - poeml@suse.de
     The behaviour for a list is unchanged for the reason of backward
     compatibility.
   - add Linkinfo class to osc.core
-  - Package class: 
+  - Package class:
     - add linkinfo when reading in package data via update_datastructs()
     - add islink() and isexpanded() methods
   - added 3 new methods:
@@ -2810,7 +2862,7 @@ Thu Jul 19 14:28:51 CEST 2007 - poeml@suse.de
 Wed Jul 18 15:21:48 CEST 2007 - poeml@suse.de
 
 - update to r1861:
-  - commit (using the currently documented way): 
+  - commit (using the currently documented way):
     - do DELETEs _before_ generating an "upload" revision with
       PUTs. The DELETEs would be invalidated by the commit.
     - switch to new commit mode also if the -F switch is used
@@ -2973,7 +3025,7 @@ Sat May 12 23:25:15 CEST 2007 - poeml@suse.de
 
 - update to r1655:
   - build: fix bug introduced with r1652: for the buildinfo, POST
-    the specfile's content, not its name... 
+    the specfile's content, not its name...
 
 -------------------------------------------------------------------
 Thu May 10 16:33:57 CEST 2007 - poeml@suse.de
@@ -2999,7 +3051,7 @@ Sat May  5 00:02:55 CEST 2007 - poeml@suse.de
   - version 0.96
   - following suggestions by Christian Boltz and Michal Marek, osc
     now memorizes where a working copy was checked out from, saving
-    the api server url to .osc/_apiurl. 
+    the api server url to .osc/_apiurl.
   - implement 'info' subcommand
   - buildhistory works again
   - copypac: implement package copy from one buildservice instance to another
@@ -3054,7 +3106,7 @@ Fri Apr 20 02:09:11 CEST 2007 - poeml@suse.de
   - rewrite the HTTP handling
     - adding http_GET/POST/PUT/DELETE() functions, which dispatch to
       http_request(), and use them everywhere
-    - removing othermethods.py 
+    - removing othermethods.py
     - keeping urlopen(), in case it is used from externally, but have it print out
       a "depracated" message
     - finally, implementing a global HTTP debug mode
@@ -3068,7 +3120,7 @@ Fri Mar 30 00:25:24 CEST 2007 - poeml@suse.de
 
 - update to r1551:
 - update: when updating multiple packages, print each package name
-- build: 
+- build:
   - use <bdep> preinstall attribute instead of obsolete <pdep> element
   - use <bdep> runscripts attribute and hand it over to build in the buildinfo
 - results: quote parameter in the new URL
@@ -3129,7 +3181,7 @@ Fri Oct 13 08:37:38 CEST 2006 - poeml@suse.de
 -------------------------------------------------------------------
 Thu Oct 12 15:35:53 CEST 2006 - poeml@suse.de
 
-- update to 0.9 (r761): 
+- update to 0.9 (r761):
 - "iChain-ready" (works with API server now using iChain
   authentication)
 - add runtime check for build.rpm version, so the rpm package
@@ -3328,4 +3380,3 @@ Fri May 12 00:00:00 CEST 2006 - poeml@suse.de
 Wed May 10 00:00:00 CEST 2006 - poeml@suse.de
 
 - created package (version 0.2)
-
