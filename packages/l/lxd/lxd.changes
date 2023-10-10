@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct  5 01:18:44 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- update to 5.18. Full changelog at
+  https://discourse.ubuntu.com/t/lxd-5-17-has-been-released/38061
+  https://discourse.ubuntu.com/t/lxd-5-18-has-been-released/38769
+
+  Highlights 5.18:
+  + Receive OVN logs into LXD and Loki
+
+  Highlights 5.17:
+  + ZFS 2.2 delegation support
+  + Add remote copy support for custom volume snapshots
+  + Allow recovery of empty storage pools
+
+-------------------------------------------------------------------
 Sat Aug 19 05:15:39 UTC 2023 - Richard Rahl <rrahl0@proton.me>
 
 - remove the last bit of the old repo
