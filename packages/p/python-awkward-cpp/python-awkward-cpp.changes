@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  5 11:30:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 24:
+  * CMakeLists for include as a thirdparty in projects
+  * Change Document::ParseStream() to use stack allocator for
+    Reader
+
+-------------------------------------------------------------------
 Sun Sep 17 15:14:47 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 23:

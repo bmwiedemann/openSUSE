@@ -181,4 +181,15 @@
     <comment></comment>
     <requestid>1112027</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>59cbc291c82ba8c1528381b61f142d24</srcmd5>
+    <version>24</version>
+    <time>1696964350</time>
+    <user>anag+factory</user>
+    <comment>- update to 24:
+  * CMakeLists for include as a thirdparty in projects
+  * Change Document::ParseStream() to use stack allocator for
+    Reader</comment>
+    <requestid>1116396</requestid>
+  </revision>
 </revisionlist>
