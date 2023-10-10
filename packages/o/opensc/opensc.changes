@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Oct  6 06:49:24 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security Fix: [CVE-2023-40661, bsc#1215761]
+  * opensc: multiple memory issues with pkcs15-init (enrollment tool)
+  * Add patches:
+    - opensc-CVE-2023-40661-1of12.patch
+    - opensc-CVE-2023-40661-2of12.patch
+    - opensc-CVE-2023-40661-3of12.patch
+    - opensc-CVE-2023-40661-4of12.patch
+    - opensc-CVE-2023-40661-5of12.patch
+    - opensc-CVE-2023-40661-6of12.patch
+    - opensc-CVE-2023-40661-7of12.patch
+    - opensc-CVE-2023-40661-8of12.patch
+    - opensc-CVE-2023-40661-9of12.patch
+    - opensc-CVE-2023-40661-10of12.patch
+    - opensc-CVE-2023-40661-11of12.patch
+    - opensc-CVE-2023-40661-12of12.patch
+
+-------------------------------------------------------------------
+Thu Oct  5 13:45:16 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security Fix: [CVE-2023-4535, bsc#1215763]
+  * Add patches:
+    - opensc-CVE-2023-4535.patch
+    - opensc-NULL_pointer_fix.patch
+
+-------------------------------------------------------------------
+Wed Oct  4 13:26:11 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security Fix: [CVE-2023-40660, bsc#1215762]
+  * opensc: PIN bypass when card tracks its own login state
+  * Add patches:
+    - opensc-CVE-2023-40660-1of2.patch
+    - opensc-CVE-2023-40660-2of2.patch
+
+-------------------------------------------------------------------
 Thu Jun  1 12:55:19 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Security Fix: [CVE-2023-2977, bsc#1211894]

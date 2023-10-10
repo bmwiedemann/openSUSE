@@ -1,0 +1,26 @@
+From 41d61da8481582e12710b5858f8b635e0a71ab5e Mon Sep 17 00:00:00 2001
+From: Jakub Jelen <jjelen@redhat.com>
+Date: Wed, 20 Sep 2023 10:13:57 +0200
+Subject: [PATCH] oberthur: Avoid buffer overflow
+
+Thanks oss-fuzz
+
+https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=60650
+---
+ src/pkcs15init/pkcs15-oberthur.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/pkcs15init/pkcs15-oberthur.c b/src/pkcs15init/pkcs15-oberthur.c
+index ad2cabd530..c441ab1e76 100644
+--- a/src/pkcs15init/pkcs15-oberthur.c
++++ b/src/pkcs15init/pkcs15-oberthur.c
+@@ -715,6 +715,9 @@ cosm_create_key(struct sc_profile *profile, struct sc_pkcs15_card *p15card,
+ 	if (object->type != SC_PKCS15_TYPE_PRKEY_RSA)
+ 		LOG_TEST_RET(ctx, SC_ERROR_NOT_SUPPORTED, "Create key failed: RSA only supported");
+ 
++	if (key_info->path.len < 2)
++		LOG_TEST_RET(ctx, SC_ERROR_OBJECT_NOT_VALID, "The path needs to be at least to bytes long");
++
+ 	sc_log(ctx,  "create private key ID:%s",  sc_pkcs15_print_id(&key_info->id));
+ 	/* Here, the path of private key file should be defined.
+ 	 * Nevertheless, we need to instantiate private key to get the ACLs. */

@@ -33,6 +33,25 @@ Source3:        opensc.module
 Patch0:         opensc-gcc11.patch
 # PATCH-FIX-UPSTREAM: bsc#1211894, CVE-2023-2977 out of bounds read in pkcs15 cardos_have_verifyrc_package()
 Patch1:         opensc-CVE-2023-2977.patch
+# PATCH-FIX-UPSTREAM: bsc#1215762 CVE-2023-40660: PIN bypass when card tracks its own login state
+Patch2:         opensc-CVE-2023-40660-1of2.patch
+Patch3:         opensc-CVE-2023-40660-2of2.patch
+# PATCH-FIX-UPSTREAM: bsc#1215763 CVE-2023-4535: out-of-bounds read in MyEID driver handling encryption using symmetric keys
+Patch4:         opensc-NULL_pointer_fix.patch
+Patch5:         opensc-CVE-2023-4535.patch
+# PATCH-FIX-UPSTREAM: bsc#1215761 CVE-2023-40661: multiple memory issues with pkcs15-init (enrollment tool)
+Patch6:         opensc-CVE-2023-40661-1of12.patch
+Patch7:         opensc-CVE-2023-40661-2of12.patch
+Patch8:         opensc-CVE-2023-40661-3of12.patch
+Patch9:         opensc-CVE-2023-40661-4of12.patch
+Patch10:        opensc-CVE-2023-40661-5of12.patch
+Patch11:        opensc-CVE-2023-40661-6of12.patch
+Patch12:        opensc-CVE-2023-40661-7of12.patch
+Patch13:        opensc-CVE-2023-40661-8of12.patch
+Patch14:        opensc-CVE-2023-40661-9of12.patch
+Patch15:        opensc-CVE-2023-40661-10of12.patch
+Patch16:        opensc-CVE-2023-40661-11of12.patch
+Patch17:        opensc-CVE-2023-40661-12of12.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig

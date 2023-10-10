@@ -1,0 +1,25 @@
+From df5a176bfdf8c52ba89c7fef1f82f6f3b9312bc1 Mon Sep 17 00:00:00 2001
+From: Veronika Hanulikova <xhanulik@fi.muni.cz>
+Date: Fri, 10 Feb 2023 11:47:34 +0100
+Subject: [PATCH] Check array bounds
+
+Thanks OSS-Fuzz
+https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=54312
+---
+ src/libopensc/muscle.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/libopensc/muscle.c b/src/libopensc/muscle.c
+index 61a4ec24d8..9d01e0c113 100644
+--- a/src/libopensc/muscle.c
++++ b/src/libopensc/muscle.c
+@@ -181,6 +181,9 @@ int msc_partial_update_object(sc_card_t *card, msc_id objectId, int offset, cons
+ 	sc_apdu_t apdu;
+ 	int r;
+ 
++	if (dataLength + 9 > MSC_MAX_APDU)
++		return SC_ERROR_INVALID_ARGUMENTS;
++
+ 	sc_format_apdu(card, &apdu, SC_APDU_CASE_3_SHORT, 0x54, 0x00, 0x00);
+ 	apdu.lc = dataLength + 9;
+ 	if (card->ctx->debug >= 2)
