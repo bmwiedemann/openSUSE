@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Sep  2 10:04:21 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- updated to version 1.29.0
+
+  ## 1.29.0 (2023-06-01)
+
+  * [#262](https://github.com/rubocop/rubocop-ast/pull/267): Introduce RuboCop::Ast::MethodDispatchNode#selector. ([@gsamokovarov][])
+
+  ## 1.28.1 (2023-05-01)
+
+  ### Bug fixes
+
+  * [#262](https://github.com/rubocop/rubocop-ast/pull/262): Fix an error when parsing non UTF-8 frozen string. ([@koic][])
+
+  ## 1.28.0 (2023-03-24)
+
+  ### New features
+
+  * [#259](https://github.com/rubocop/rubocop-ast/pull/259): Add `forwarded_kwrestarg` node to `AST::Builder`. ([@koic][])
+
+  ## 1.27.0 (2023-02-27)
+
+  ### New features
+
+  * [#229](https://github.com/rubocop/rubocop-ast/pull/229): Add `source_range` method to `NodePattern`. ([@koic][])
+
+  ## 1.26.0 (2023-02-11)
+
+  ### New features
+
+  * [#255](https://github.com/rubocop/rubocop-ast/pull/255): Make `Node#class_constructor?` aware of Ruby 3.2's `Data.define`. ([@koic][])
+  * [#255](https://github.com/rubocop/rubocop-ast/pull/255): Make `Node#class_construcor?` aware of Ruby 2.7's numbered parameters. ([@koic][])
+
+  ## 1.25.0 (2023-02-11)
+
+  ### New features
+
+  * [#256](https://github.com/rubocop-hq/rubocop-ast/pull/256): Support `Parser::Ruby33` for Ruby 3.3 parser (experimental). ([@koic][])
+
+-------------------------------------------------------------------
 Wed Dec  7 11:33:32 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.24.0
