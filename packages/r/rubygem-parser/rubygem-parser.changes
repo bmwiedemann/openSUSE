@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Sep  2 10:16:32 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- updated to version 3.2.2.3
+
+   v3.2.2.3 (2023-06-08)
+   ---------------------
+
+   API modifications:
+   * Add Racc to runtime dependencies (#929) (Koichi ITO)
+
+   v3.2.2.2 (2023-06-08)
+   ---------------------
+
+   API modifications:
+   * bump racc to 1.7.0 (#928) (Ilya Bylich)
+
+   v3.2.2.0 (2023-04-01)
+   ---------------------
+
+   API modifications:
+   * Bump maintenance branches to 3.2.2, 3.1.4, 3.0.6, and 2.7.8 (#920) (Koichi ITO)
+
+   v3.2.1.1 (2023-03-08)
+   ---------------------
+
+   API modifications:
+   * bump racc to 1.6.2 (#916) (Ilya Bylich)
+   * backport tests for mixed usage of anonymous kwarg/kwrestarg and forwarded-arguments (#915) (Ilya Bylich)
+   * add tests for kwopt+kwrest arguments and forwarded_kwrestarg. (#913) (Ilya Bylich)
+
+   Bugs fixed:
+   * builders/default: allow forwarded_kwrestarg with additional kwargs (#912) (Owen Stephens)
+
+   v3.2.1.0 (2023-02-09)
+   ---------------------
+
+   API modifications:
+   * Bump maintenance branches to 3.2.1 (#908) (Koichi ITO)
+   * lexer.rl: extract strings lexing to lexer-strings.rl (#905) (Ilya Bylich)
+
+   Features implemented:
+   * Ruby 3.3 support (#904) (Ole Friis Østergaard)
+
+   v3.2.0.0 (2023-01-03)
+   ---------------------
+
+   API modifications:
+   * lexer.rl: extract `extend_string_escaped` to a separate method (#893) (Ilya Bylich)
+   * bump Racc to 1.6.1 (#890) (Koichi ITO)
+
+   Features implemented:
+   * lexer.rl: use Ragel -F0 on non-CRuby (#894) (Benoit Daloze)
+   * ruby32.y: Allow optional newlines before closing parenthesis (#892) (Koichi ITO)
+
+   Bugs fixed:
+   * ruby32.y: fix a parse error when using forwarded argument with restarg (#889) (Koichi ITO)
+
+-------------------------------------------------------------------
 Wed Dec  7 11:29:05 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.1.3.0
