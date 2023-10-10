@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  9 20:09:43 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Adjust luajit-lua-versioned.patch to have correct LUA_LJDIR
+  (bsc#1215592).
+
+-------------------------------------------------------------------
 Wed Sep 06 21:51:55 UTC 2023 - mcepl@cepl.eu
 
 - Update to version 5.1.2.1.0+git.1693350652.41fb94d:

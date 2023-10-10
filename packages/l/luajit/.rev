@@ -231,4 +231,14 @@
   * Update documentation for switch to rolling releases.</comment>
     <requestid>1109627</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9029ac716108c384671287f8f78cf32c</srcmd5>
+    <version>5.1.2.1.0+git.1693350652.41fb94d</version>
+    <time>1696963926</time>
+    <user>anag+factory</user>
+    <comment>- Adjust luajit-lua-versioned.patch to have correct LUA_LJDIR
+  (bsc#1215592).
+</comment>
+    <requestid>1116533</requestid>
+  </revision>
 </revisionlist>
