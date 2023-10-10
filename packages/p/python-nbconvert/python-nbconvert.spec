@@ -30,9 +30,9 @@
 %bcond_with libalternatives
 %endif
 # X.X.0 gets abbreviated by pythondistdeps
-%define shortversion 7.8
+%define shortversion 7.9.2
 Name:           python-nbconvert%{psuffix}
-Version:        7.8.0
+Version:        7.9.2
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT
@@ -128,7 +128,7 @@ for f in nbconvert/nbconvertapp.py nbconvert/filters/filter_links.py; do
   sed -i -e '/^#!\//, 1d' $f
   chmod -x $f
 done
-sed -i '/addopts/ s/--color=yes//' pyproject.toml
+sed -i '/addopts/,/\]/ s/"--color=yes",//' pyproject.toml
 
 %build
 %if ! %{with test}
@@ -150,9 +150,11 @@ export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 # requires modules not installed: https://github.com/jupyter/nbconvert/issues/1846
 donttest="test_convert_full_qualified_name or test_post_processor"
-%{python_expand # installed package in :test flavor
+# mv the source out of PYTHONPATH
+mv nbconvert nbconvert.moved
+%{python_expand #
 $python -m ipykernel.kernelspec --user
-pytest-%{$python_bin_suffix} -v -m 'not network' -k "not ($donttest)" --pyargs nbconvert
+pytest-%{$python_bin_suffix} -v -m 'not network' -k "not ($donttest)"
 }
 %endif
 

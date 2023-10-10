@@ -359,4 +359,19 @@
 </comment>
     <requestid>1113304</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6825a3bb957ee02b8576cfae8793ae43</srcmd5>
+    <version>7.9.2</version>
+    <time>1696964422</time>
+    <user>anag+factory</user>
+    <comment>- Update to 7.9.2
+  * Restore ResourcesDict to the public API #2055 (@blink1073)
+- Release 7.9.1
+  * Include tests in sdist #2053 (@blink1073)
+- Release 7.9.0
+  * Update to mermaidjs 10.5.0 #2051 (@bollwyvl)
+  * Update typing for traitlets 5.11 #2050 (@blink1073)
+  * Fixup typings #2048 (@blink1073)</comment>
+    <requestid>1116519</requestid>
+  </revision>
 </revisionlist>

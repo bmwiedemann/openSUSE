@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct  9 18:11:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.9.2
+  * Restore ResourcesDict to the public API #2055 (@blink1073)
+- Release 7.9.1
+  * Include tests in sdist #2053 (@blink1073)
+- Release 7.9.0
+  * Update to mermaidjs 10.5.0 #2051 (@bollwyvl)
+  * Update typing for traitlets 5.11 #2050 (@blink1073)
+  * Fixup typings #2048 (@blink1073)
+
+-------------------------------------------------------------------
 Sun Sep 24 18:09:21 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.8.0
