@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct  9 14:14:36 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Use unupdated vendored crates for now.
+  * This is to stop OBS Notifications about build failures.
+  * Once openssl crate is updated from possibly a new release, I will
+    re-enable update of vendored crates
+- Use cargo-vendor-filterer to lessen vendored crates
+
+-------------------------------------------------------------------
+Sun Sep 17 04:14:54 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Declare higher build disk size requirement
+
+-------------------------------------------------------------------
+Thu Sep  7 07:42:24 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Enable update of vendored dependencies.
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
 Tue Aug 29 04:49:29 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Revert update of vendored deps.

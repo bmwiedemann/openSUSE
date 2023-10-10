@@ -642,4 +642,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1108980</requestid>
   </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>60c482fecd0dd0ed55dbf96ee46b28bb</srcmd5>
+    <version>20230712.072601.f4abf8fd</version>
+    <time>1696964410</time>
+    <user>anag+factory</user>
+    <comment>- Use unupdated vendored crates for now.
+  * This is to stop OBS Notifications about build failures.
+  * Once openssl crate is updated from possibly a new release, I will
+    re-enable update of vendored crates
+- Use cargo-vendor-filterer to lessen vendored crates
+- Declare higher build disk size requirement
+- Enable update of vendored dependencies.
+- Update vendored dependencies.
+</comment>
+    <requestid>1116499</requestid>
+  </revision>
 </revisionlist>
