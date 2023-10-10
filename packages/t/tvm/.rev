@@ -183,4 +183,18 @@
 </comment>
     <requestid>1071184</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>262861f0404987ddc356af2e7627bf10</srcmd5>
+    <version>0.13.0</version>
+    <time>1696964487</time>
+    <user>anag+factory</user>
+    <comment>- Do not package %{$python_sitearch}/tvm/{src,include,3rdparty}
+- Update to 0.13.0: 
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.12.0
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.13.0
+- Removed tvm-do-not-force-synr-version.patch
+- Added: CYTHON-Make-cython-compatible-with-3.0-15469.patch
+</comment>
+    <requestid>1116685</requestid>
+  </revision>
 </revisionlist>

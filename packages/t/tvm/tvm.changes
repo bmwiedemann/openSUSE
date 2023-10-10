@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 10 11:35:45 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not package %{$python_sitearch}/tvm/{src,include,3rdparty}
+
+-------------------------------------------------------------------
+Tue Oct 10 09:37:11 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- Update to 0.13.0: 
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.12.0
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.13.0
+- Removed tvm-do-not-force-synr-version.patch
+- Added: CYTHON-Make-cython-compatible-with-3.0-15469.patch
+
+-------------------------------------------------------------------
 Mon Mar 13 16:14:30 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Increase disk size requirements

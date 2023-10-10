@@ -35,7 +35,7 @@
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
 Name:           tvm
-Version:        0.11.0
+Version:        0.13.0
 Release:        0
 Summary:        An end-to-end Deep Learning Compiler Stack
 License:        Apache-2.0
@@ -47,8 +47,8 @@ Patch1:         lib-finder-python-cmake.patch
 Patch2:         tvm-fix-openblas.patch
 # PATCH-FIX-OPENSUSE tvm-disable-vulkan-test-check.patch -- Cannot test in OBS despite enabled in library
 Patch3:         tvm-disable-vulkan-test-check.patch
-# PATCH-FIX-OPENSUSE tvm-do-not-force-synr-version.patch -- boo#1197347
-Patch4:         tvm-do-not-force-synr-version.patch
+# PATCH-FIX-UPSTREAM CYTHON-Make-cython-compatible-with-3.0-15469.patch
+Patch4:         CYTHON-Make-cython-compatible-with-3.0-15469.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module cloudpickle}
@@ -211,6 +211,8 @@ pushd python
 popd
 # Remove /usr/tvm/*.so
 rm -rf %{buildroot}%{_prefix}/tvm
+# Remove src,include,3rdparty dirs
+%python_expand rm -rf %{buildroot}/%{$python_sitearch}/tvm/{src,include,3rdparty}/
 # Remove .cpp file
 %python_expand rm %{buildroot}/%{$python_sitearch}/tvm/_ffi/_cython/core.cpp
 # tvmc shebang should be default python, not highest available version
