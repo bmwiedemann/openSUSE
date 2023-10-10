@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Oct 10 05:24:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.5:
+  This tag contains a snapshot of the ansible-documentation
+  stable-2.15 branch at the time of the ansible-core 2.15.5
+  release.
+  * better description of 'short' (#528) (#533)
+  * Fix typo (#454) (#517)
+  * Add preferred terms list to style guide (#386) (#516)
+  * Update automationhub.rst #477 (#485) (#492)
+  * pr_labeler: change link to the DAWGs meeting agenda (#497)
+    (#504)
+  * Bump antsibull-docs to 2.5.0 (#467) (#480)
+  * Bump docs build requirements for stable-2.15. (#448)
+  * Update 'For instance' to 'For example' (#472) (#475)
+  * Prepare Galaxy guides for GalaxyNG (#388) (#474)
+  * [stable-2.15] ci: refresh dev dependencies (#447)
+  * Add label to 'collections:' keyword. (#434) (#435)
+  * Backport/2.15/425 - Change banner for Contributor summit (#430)
+  * Update developing_collections_creating.rst (#414) (#416)
+  * Removing [] from --tags and --skip-tags (#406) (#421)
+  * readthedocs stable-2.15 (#413)
+  * added example using the variables (#393) (#394)
+  * ci: refresh dev dependencies (#402) (#407)
+  * build(deps): bump actions/checkout from 3 to 4 (#372) (#405)
+  * Add Ansible community 8.4.0 porting guide (#384) (#385)
+
+-------------------------------------------------------------------
 Tue Sep 12 10:42:27 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.15.4:
