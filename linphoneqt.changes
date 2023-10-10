@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct  5 06:40:30 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.2 (fix boo#1213754):
+  * VFS Encryption.
+  * File viewer in chats (Image/Animated Image/Video/Texts/Pdf) with the option to export the file for VFS mode.
+  * Accept/decline CLI commands.
+  * Colored Emojis with its own font family.
+  * Option to set RLS URI in settings.
+  * Option to display only usernames when showing SIP addresses.
+  * Option to change the max results of the Magic Search bar.
+  * OAuth2 connection to retrieve remote provisioning (Experimental and not usable without configuration).
+  * Create an account with a manual validation (external captcha as of 5.1.0).
+  * Add/View contact from a message.
+  * Mute option for each chatrooms.
+  * New Chat Layout.
+  * Display last seen for contacts.
+  * New language support: Czech
+  * An option to set dial prefix and its use on numbers.
+  * Fetch remote provisioning from URI handler and with confirmation.
+  * Emojis picker.
+  * Text edit in chat can now understand rich texts.
+  * Create thumbnails into memory instead of disk.
+  * Display video thumbnails.
+  * Crop thumbnail and pictures if distored.
+  * Enable registration from accounts list.
+  * Update SDK to 5.2.95
+
+-------------------------------------------------------------------
 Fri May 19 21:11:29 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.16
 
 - Update to version 5.0.16:
