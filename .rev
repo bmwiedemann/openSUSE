@@ -703,4 +703,12 @@
     <comment>bugfix release</comment>
     <requestid>1109471</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>e3c108486c9845bc307b305669110e45</srcmd5>
+    <version>6.0.36</version>
+    <time>1696964313</time>
+    <user>anag+factory</user>
+    <comment>bugfix release</comment>
+    <requestid>1116283</requestid>
+  </revision>
 </revisionlist>
