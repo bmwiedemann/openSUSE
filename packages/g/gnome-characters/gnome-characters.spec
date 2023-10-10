@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
 # Ensure default sections are filled with content
 Recommends:     google-noto-coloremoji-fonts
+Requires:       /usr/bin/gjs-console
 
 %description
 A simple utility application to find and insert unusual characters.
