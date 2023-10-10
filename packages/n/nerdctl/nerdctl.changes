@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 10 06:16:47 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Bump go version to 1.21 (bsc#1215611)
+
+-------------------------------------------------------------------
 Wed Sep 27 06:21:54 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.6.0:
