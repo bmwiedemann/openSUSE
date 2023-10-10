@@ -151,6 +151,8 @@ Patch909:       s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl
 Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
 Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
 #
+Patch912:       s390-tools-sles15sp6-zkey-Support-EP11-AES-keys-with-prepended-header-to-.patch
+#
 Patch999:       s390-tools-ALP-zdev-live.patch
 #
 

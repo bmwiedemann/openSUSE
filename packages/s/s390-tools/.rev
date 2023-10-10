@@ -759,4 +759,12 @@
 - The patches were updated by quilt</comment>
     <requestid>1107201</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>80d3edf7254619522268ae6ad47f27a9</srcmd5>
+    <version>2.29.0</version>
+    <time>1696964450</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116618</requestid>
+  </revision>
 </revisionlist>

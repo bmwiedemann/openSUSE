@@ -1,15 +1,12 @@
 <services>
-  <service name="cargo_vendor" mode="disabled">
+  <service name="cargo_vendor" mode="manual">
      <param name="srctar">s390-tools-2.29.0.tar.gz</param>
      <param name="compression">zst</param>
+     <param name="cargotoml">s390-tools/rust/pv/Cargo.toml</param>
+     <param name="cargotoml">s390-tools/rust/pv/openssl_extentions/Cargo.toml</param>
+     <param name="cargotoml">s390-tools/rust/utils/Cargo.toml</param>
+     <param name="cargotoml">s390-tools/rust/pvsecret/Cargo.toml</param>
      <param name="update">true</param>
-     <param name="cargotoml">../../vendor</param>
-     <param name="cargotoml">/rust/pvsecret/Cargo.toml</param>
-     <param name="cargotoml">/rust/pv/Cargo.toml</param>
-     <param name="cargotoml">/rust/pv/openssl_extentions/Cargo.toml</param>
-     <param name="cargotoml">/rust/utils/Cargo.toml</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srctar">s390-tools-2.29.0.tar.gz</param>
-  </service>
+  <service name="cargo_audit" mode="manual" />
 </services>
