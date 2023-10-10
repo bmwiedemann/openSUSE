@@ -1,0 +1,11 @@
+<package name="lager" project="openSUSE:Factory">
+  <title>C++ library to assist value-oriented design</title>
+  <description>lager is a C++ library to assist value-oriented design by implementing the
+unidirectional data-flow architecture. It is heavily inspired by Elm and Redux,
+and enables composable designs by promoting the use of simple value types and
+testable application logic via pure functions.
+
+</description>
+  <devel project="KDE:Extra" package="lager"/>
+  <url>https://sinusoid.es/lager/</url>
+</package>
