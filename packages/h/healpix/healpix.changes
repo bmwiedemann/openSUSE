@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct  9 14:34:29 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Recompress to xz during buildtime to reduce src.rpm size.
+
+-------------------------------------------------------------------
+Wed Oct  4 23:33:05 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.82:
+  * C: Corrected documentation of pix2vec routines.
+  * C++: Cfitsio 4.1.0 (March 2022) and higher now properly
+    supported.
+  * Fortran 90: Bug corrections in input_map and
+    read_fits_partial.
+- Switch to obs_scm instead of tar_scm service; only recompress to
+  tar at buildtime.
+
+-------------------------------------------------------------------
 Mon Jul 11 23:49:03 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.81:
