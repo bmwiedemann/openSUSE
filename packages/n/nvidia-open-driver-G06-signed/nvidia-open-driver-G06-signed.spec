@@ -52,11 +52,12 @@ Source10:       pci_ids-unsupported
 Source11:       pesign-copy-sources
 Source12:       pesign-spec-macros
 Source13:       generati-pci-table.sh
-Source14:       _constraints
+Source14:       group-source-files.pl
 Patch0:         0001-Don-t-override-INSTALL_MOD_DIR.patch
 Patch2:         persistent-nvidia-id-string.patch
 Patch3:         pci-table.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  kernel-source
 BuildRequires:  kernel-syms
@@ -75,6 +76,14 @@ ExclusiveArch:  x86_64 aarch64
 %endif
 %(sed -e '/^%%post\>/ r %_sourcedir/kmp-post.sh' -e '/^%%postun\>/ r %_sourcedir/kmp-postun.sh' %kmp_template_name >%_builddir/nvidia-kmp-template)
 %kernel_module_package -n %{name} -t %_builddir/nvidia-kmp-template -f %_sourcedir/kmp-filelist -p %_sourcedir/preamble
+%{expand:%(
+      for f in %{flavors_to_build}; do \
+	  echo "%package -n %{name}-${f}-devel"; \
+	  echo "Summary:      Devel Package to %name"; \
+	  echo "%description -n %{name}-${f}-devel"; \
+	  echo "Provide build requiresments to build against %{name}"; \
+	  echo "%files -n %{name}-${f}-devel -f files-${f}"; \
+      done)}
 
 %if ! 0%{hardcode_pci_list}
 ## create hardware supplements for manual builds
@@ -122,6 +131,8 @@ export CFLAGS="-Wall -mno-outline-atomics"
 %endif
 # kernel was compiled using a different compiler
 export CC=gcc
+# no longer needed and never worked anyway (it was only a stub) [boo#1211892]
+export NV_EXCLUDE_KERNEL_MODULES=nvidia-peermem
 for flavor in %{flavors_to_build}; do
         rm -rf obj/$flavor
         cp -r source obj/$flavor
@@ -189,6 +200,13 @@ EOF
 %endif
 omit_drivers+=" nvidia nvidia-drm nvidia-modeset nvidia-uvm "
 EOF
+done
+for flavor in %{flavors_to_build}; do
+    mkdir -p %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor}
+    cp -r source/kernel-open/* %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor}
+    echo %dir %{_prefix}/src/kernel-modules > files-${flavor}
+    perl %{S:14} -L %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor} | sed -e "s@%{buildroot}@@" >> files-${flavor}
+    %fdupes -s %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor}
 done
 
 %changelog

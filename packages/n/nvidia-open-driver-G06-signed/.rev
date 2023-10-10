@@ -168,4 +168,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1116509</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>322c97a2905038cb7f890ef162917ab3</srcmd5>
+    <version>535.113.01</version>
+    <time>1697061393</time>
+    <user>anag+factory</user>
+    <comment>- Add a devel package so other modules can be built against this
+  one. [jira#PED-4964]
+
+- disabled build of nvidia-peermem module; it's no longer needed
+  and never worked anyway (it was only a stub) [boo#1211892]</comment>
+    <requestid>1116994</requestid>
+  </revision>
 </revisionlist>
