@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct  4 11:22:19 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to 16.00.0000:
+  * Use autoconf to check for stdbool.h.
+
+- Update to 13.02.0000:
+  * Fix a bug of CC_send_query_append() when the
+    ignore_roundtrip_time flag is onRemove a mylog() call which is
+    a dupilicate of the preceding MYLOG() macro call.
+  * Remove REFCUR_SUPPORT, add FetchRefcursors setting.
+  * Support fetching results from multiple refcursors.
+  * Named parameter binding support
+  * Use ODBC 3 column names for the result set of catalog
+    functions.
+
+-------------------------------------------------------------------
 Wed Jun 30 20:48:14 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.01.0000:

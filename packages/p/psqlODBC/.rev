@@ -309,4 +309,22 @@
     the programs try to link libraries specified by LIBS variable</comment>
     <requestid>903302</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d7678a96f0dd90609c955e6a0a0d8e4e</srcmd5>
+    <version>16.00.0000</version>
+    <time>1696964357</time>
+    <user>anag+factory</user>
+    <comment>- Update to 16.00.0000:
+  * Use autoconf to check for stdbool.h.
+- Update to 13.02.0000:
+  * Fix a bug of CC_send_query_append() when the
+    ignore_roundtrip_time flag is onRemove a mylog() call which is
+    a dupilicate of the preceding MYLOG() macro call.
+  * Remove REFCUR_SUPPORT, add FetchRefcursors setting.
+  * Support fetching results from multiple refcursors.
+  * Named parameter binding support
+  * Use ODBC 3 column names for the result set of catalog
+    functions.</comment>
+    <requestid>1116398</requestid>
+  </revision>
 </revisionlist>

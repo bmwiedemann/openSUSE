@@ -1,7 +1,7 @@
 #
 # spec file for package psqlODBC
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         tarname psqlodbc
 Name:           psqlODBC
-Version:        13.01.0000
+Version:        16.00.0000
 Release:        0
 Summary:        ODBC Driver for PostgreSQL
 License:        LGPL-2.1-or-later
