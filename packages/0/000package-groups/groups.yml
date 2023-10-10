@@ -37,6 +37,7 @@ common_locks:
   - libLLVM14: [locked]
   - libLLVM15: [locked]
   - libLLVM16: [locked]
+  - clang17: [locked]
   - gnome-backgrounds: [locked]
   - gcc12: [locked]
   # our default is grub2 - which uses suse-module-rpm-scriptlets
