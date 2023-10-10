@@ -1,0 +1,107 @@
+diff --git a/Makefile.am b/Makefile.am
+index e44070c..fd0a2eb 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -238,10 +238,10 @@ export NETX_PKGS = javax.jnlp net.sourceforge.nanoxml net.sourceforge.jnlp \
+ 	net.sourceforge.jnlp.controlpanel net.sourceforge.jnlp.event \
+ 	net.sourceforge.jnlp.runtime net.sourceforge.jnlp.security \
+ 	net.sourceforge.jnlp.security.viewer net.sourceforge.jnlp.services \
+-	net.sourceforge.jnlp.tools net.sourceforge.jnlp.util \
+-	sun.applet
++	net.sourceforge.jnlp.tools net.sourceforge.jnlp.util
+ 
+ if ENABLE_PLUGINJAR
++export NETX_PKGS = ${NETX_PKGS} sun.applet
+ export ICEDTEAPLUGIN_TARGET = stamps/liveconnect-dist.stamp
+ export PLUGIN_DIR=$(TOP_BUILD_DIR)/plugin/icedteanp
+ export PLUGIN_SRCDIR=$(TOP_SRC_DIR)/plugin/icedteanp
+@@ -956,11 +956,18 @@ stamps/netx-dist.stamp: stamps/netx.stamp $(TOP_BUILD_DIR)/netx.manifest stamps/
+ 	(cd $(NETX_DIR) ; \
+ 	 mkdir -p lib ; \
+ 	 $(SYSTEM_JDK_DIR)/bin/jar cfm lib/classes.jar \
+-	  $(TOP_BUILD_DIR)/netx.manifest javax/jnlp net sun; \
++	  $(TOP_BUILD_DIR)/netx.manifest javax/jnlp net; \
+ 	 cp -pPR $(SRC_DIR_LINK) $(NETX_SRCDIR) src; \
+ 	 find src -type f -exec chmod 640 '{}' ';' -o -type d -exec chmod 750 '{}' ';'; \
+ 	 cd src ; \
+-	 $(ZIP) -qr $(NETX_DIR)/lib/src.zip javax net sun)
++	 $(ZIP) -qr $(NETX_DIR)/lib/src.zip javax net)
++if ENABLE_PLUGINJAR
++	(cd $(NETX_DIR) ; \
++	 $(SYSTEM_JDK_DIR)/bin/jar uf lib/classes.jar sun \
++	  $(TOP_BUILD_DIR)/netx.manifest javax/jnlp net; \
++	 cd src ; \
++     $(ZIP) -qr $(NETX_DIR)/lib/src.zip sun)
++endif    
+ 	mkdir -p stamps
+ 	touch $@
+ 
+diff --git a/configure.ac b/configure.ac
+index b6710ed..c6daab2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -186,9 +186,11 @@ if test "x$build_windows" = xyes ; then
+ fi
+ IT_CHECK_FOR_CLASS(COM_SUN_JNDI_TOOLKIT_URL_URLUTIL, [com.sun.jndi.toolkit.url.UrlUtil], [some.pkg], [$JAVA_NAMING])
+ IT_CHECK_FOR_CLASS(SUN_NET_WWW_PROTOCOL_HTTP_HANDLER, [sun.net.www.protocol.http.Handler], [some.pkg], [$JAVA_BASE])
+-IT_CHECK_FOR_CLASS(SUN_APPLET_APPLETIMAGEREF, [sun.applet.AppletImageRef], [sun.applet], [$JAVA_DESKTOP])
++if test "$enable_pluginjar" = yes ; then
++  IT_CHECK_FOR_CLASS(SUN_APPLET_APPLETIMAGEREF, [sun.applet.AppletImageRef], [sun.applet], [$JAVA_DESKTOP])
++  IT_CHECK_FOR_SUN_APPLET_ACCESSIBILITY
++fi
+ 
+-IT_CHECK_FOR_SUN_APPLET_ACCESSIBILITY
+ IT_CHECK_GLIB_VERSION
+ IT_CHECK_XULRUNNER_MIMEDESCRIPTION_CONSTCHAR
+ IT_CHECK_XULRUNNER_REQUIRES_C11
+diff --git a/netx/net/sourceforge/jnlp/runtime/JNLPSecurityManager.java b/netx/net/sourceforge/jnlp/runtime/JNLPSecurityManager.java
+index 6196a9e..fab17a8 100644
+--- a/netx/net/sourceforge/jnlp/runtime/JNLPSecurityManager.java
++++ b/netx/net/sourceforge/jnlp/runtime/JNLPSecurityManager.java
+@@ -18,6 +18,7 @@ package net.sourceforge.jnlp.runtime;
+ 
+ import static net.sourceforge.jnlp.runtime.Translator.R;
+ 
++import java.awt.AWTPermission;
+ import java.awt.Window;
+ import java.net.SocketPermission;
+ import java.security.AccessControlException;
+@@ -343,7 +344,6 @@ class JNLPSecurityManager extends SecurityManager {
+      * warning banner, and adds the window to the list of windows to
+      * be disposed when the calling application exits.
+      */
+-    @Override
+     public boolean checkTopLevelWindow(Object window) {
+         ApplicationInstance app = getApplication();
+ 
+@@ -362,7 +362,12 @@ class JNLPSecurityManager extends SecurityManager {
+         // todo: set awt.appletWarning to custom message
+         // todo: logo on with glass pane on JFrame/JWindow?
+ 
+-        return super.checkTopLevelWindow(window);
++        try {
++            checkPermission(new AWTPermission("showWindowWithoutWarningBanner"));
++            return true;
++        } catch (Exception se) {
++            return false;
++        }
+     }
+ 
+     /**
+@@ -432,7 +437,6 @@ class JNLPSecurityManager extends SecurityManager {
+      * @exception  SecurityException  if the caller does not have
+      *             permission to accesss the AWT event queue.
+      */
+-    @Override
+     public void checkAwtEventQueueAccess() {
+         /*
+          * this is the templace of the code that should allow applets access to
+@@ -446,7 +450,7 @@ class JNLPSecurityManager extends SecurityManager {
+         // If we're about to allow access to the main EventQueue,
+         // and anything untrusted is on the class context stack,
+         // disallow access.
+-        super.checkAwtEventQueueAccess();
++        checkPermission(new AWTPermission("accessEventQueue"));
+         // }
+     }
+ 

@@ -1,5 +1,5 @@
 <package name="icedtea-web" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="Java:Factory" package="icedtea-web"/>
+  <devel project="Java:packages" package="icedtea-web"/>
 </package>

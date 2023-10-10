@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct  9 15:40:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * more-java-versions.patch
+    + Allow building with all java versions >= 8 that have the
+      Pack200 class
+
+-------------------------------------------------------------------
+Mon Oct  9 10:51:55 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Fetch sources using source service
+
+-------------------------------------------------------------------
 Tue Mar 29 09:24:07 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop Requires(post)/(postun) gconf2, no longer needed. The

@@ -1,7 +1,7 @@
 #
 # spec file for package icedtea-web
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,6 @@
 %define binsuffix      .itweb
 # Alternatives priority
 %define priority 18000
-%bcond_without docs
-%bcond_with plugin
 Name:           icedtea-web
 Version:        1.8.8
 Release:        0
@@ -31,8 +29,9 @@ Summary:        Java Web Start implementation
 License:        GPL-2.0-only WITH Classpath-exception-2.0
 Group:          Development/Languages/Java
 URL:            https://github.com/AdoptOpenJDK/IcedTea-Web
-Source0:        https://github.com/AdoptOpenJDK/IcedTea-Web/archive/icedtea-web-%{version}.tar.gz#/IcedTea-Web-icedtea-web-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Patch0:         icedtea-web-suse-desktop-files.patch
+Patch1:         more-java-versions.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -48,9 +47,9 @@ BuildRequires:  procps
 BuildRequires:  rhino
 BuildRequires:  tagsoup
 BuildRequires:  zip
-BuildConflicts: java >= 11
-BuildConflicts: java-devel >= 11
-BuildConflicts: java-headless >= 11
+BuildConflicts: java >= 14
+BuildConflicts: java-devel >= 14
+BuildConflicts: java-headless >= 14
 Requires:       java >= 1.8
 Requires:       rhino
 Requires:       tagsoup
@@ -67,18 +66,12 @@ Provides:       java-1_7_0-openjdk-plugin = %{version}-%{release}
 Provides:       java-1_8_0-openjdk-plugin = %{version}-%{release}
 Provides:       java-1_9_0-openjdk-plugin = %{version}-%{release}
 Provides:       java-plugin = 1.8.0
-%if %{with plugin}
-BuildRequires:  gcc-c++
-BuildRequires:  glib2-devel
-BuildRequires:  npapi-sdk
-%endif
 
 %description
 The IcedTea-Web project provides a Free Software web browser plugin running
 applets written in the Java programming language and an implementation of Java
 Web Start, originally based on the NetX project.
 
-%if %{with docs}
 %package javadoc
 Summary:        Java Web Start and plugin implementation (API documentation)
 Group:          Documentation/Other
@@ -91,15 +84,14 @@ Web Start, originally based on the NetX project.
 This package contains API documentation for the %{name} Java Web Start
 and plugin implementation.
 
-%endif
-
 %prep
-%setup -q -n IcedTea-Web-icedtea-web-%{version}
+%setup -q
 %patch0 -p1
+%patch1 -p1
 
-%if %{with docs}
+rm -rf netx/net/sourceforge/jnlp/NetxPanel.java netx/sun
+
 rm -f netx/net/sourceforge/jnlp/util/WindowsDesktopEntry.java
-%endif
 
 %build
 autoreconf -fiv
@@ -108,19 +100,11 @@ export bashcompdir=%{_datadir}/bash-completion/completions
     --with-jdk-home=%{javadir} \
     --with-jre-home=%{jredir} \
     --docdir=%{_javadocdir}/%{name} \
-%if %{with plugin}
-    --enable-native-plugin \
-    --libdir=%{_libdir}/%{name} \
-%else
     --disable-native-plugin \
-%endif
+    --disable-pluginjar \
     --enable-shell-launchers \
 	--with-itw-libs=BUNDLED \
-%if %{with docs}
     --enable-docs \
-%else
-    --disable-docs \
-%endif
     --with-modularjdk-file=%{_datadir}/%{name} \
     --program-suffix=%{binsuffix} \
     --with-pkgversion=suse-%{release}-%{_arch}
@@ -153,25 +137,12 @@ done
 
 rm -rf %{buildroot}%{_mandir}/*/man1
 
-%post
-%if %{with plugin}
-update-alternatives \
-  --install %{_libdir}/browser-plugins/libjavaplugin.so %{javaplugin} \
-  %{_libdir}/%{name}/IcedTeaPlugin.so %{priority} \
-  --slave %{_bindir}/javaws javaws %{_bindir}/javaws%{binsuffix}.sh \
-  --slave %{_mandir}/man1/javaws.1.gz javaws.1.gz %{_mandir}/man1/javaws%{binsuffix}.1.gz
-%endif
-
 %posttrans
 update-desktop-database &> /dev/null || :
 exit 0
 
 %postun
 update-desktop-database &> /dev/null || :
-%if %{with plugin}
-  update-alternatives --remove %{javaplugin} \
-    %{_libdir}/IcedTeaPlugin.so
-%endif
 exit 0
 
 %files
@@ -194,13 +165,10 @@ exit 0
 %{_libdir}/%{name}/IcedTeaPlugin.so
 %endif
 
-%if %{with docs}
 %files javadoc
 %license COPYING
 %doc NEWS README
 %dir %{_javadocdir}/%{name}
 %{_javadocdir}/%{name}/*
-
-%endif
 
 %changelog
