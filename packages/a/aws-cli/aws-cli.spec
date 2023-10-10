@@ -17,7 +17,7 @@
 
 
 Name:           aws-cli
-Version:        1.29.36
+Version:        1.29.61
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0
@@ -35,15 +35,15 @@ BuildRequires:  python3-setuptools
 Requires:       python3
 Requires:       python3-PyYAML <= 6.1
 Requires:       python3-PyYAML >= 3.10
-Requires:       python3-botocore >= 1.31.36
+Requires:       python3-botocore >= 1.31.61
 Requires:       python3-colorama <= 0.5.0
 Requires:       python3-colorama >= 0.2.5
 Requires:       python3-docutils < 0.20
 Requires:       python3-docutils >= 0.10
 Requires:       python3-rsa < 5.0.0
 Requires:       python3-rsa >= 3.1.2
-Requires:       python3-s3transfer < 0.7.0
-Requires:       python3-s3transfer >= 0.6.0
+Requires:       python3-s3transfer < 0.8.0
+Requires:       python3-s3transfer >= 0.7.0
 Requires:       python3-six
 %else
 BuildRequires:  bash-completion
@@ -52,14 +52,14 @@ BuildRequires:  python-setuptools
 Requires:       python
 Requires:       python-PyYAML <= 6.1
 Requires:       python-PyYAML >= 3.10
-Requires:       python-botocore >= 1.31.36
+Requires:       python-botocore >= 1.31.61
 Requires:       python-colorama <= 0.5.0
 Requires:       python-colorama >= 0.2.5
 Requires:       python-docutils >= 0.10
 Requires:       python-rsa <= 4.5.0
 Requires:       python-rsa >= 3.1.2
-Requires:       python-s3transfer < 0.7.0
-Requires:       python-s3transfer >= 0.6.0
+Requires:       python-s3transfer < 0.8.0
+Requires:       python-s3transfer >= 0.7.0
 Requires:       python-six
 %endif
 
