@@ -18,7 +18,7 @@
 
 %define _name   linphone
 Name:           linphoneqt
-Version:        5.0.16
+Version:        5.1.2
 Release:        0
 Summary:        Qt interface for Linphone
 License:        GPL-3.0-or-later
@@ -57,6 +57,7 @@ BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.12
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
@@ -113,23 +114,15 @@ echo '#define LINPHONE_QT_GIT_VERSION "${PROJECT_VERSION}"' >> linphone-app/src/
 echo "project(linphoneqt VERSION %{version})" > linphone-app/linphoneqt_version.cmake
 
 %build
-if [[ %version = 5.0.[0-9]* ]]; then
-    sed -i '/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/include/@%{buildroot}%{_includedir}/@;/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/@%{buildroot}%{_libdir}/@' linphone-app/CMakeLists.txt
-    sed -i '/\/ui/s@${qml_dir}@${CMAKE_CURRENT_SOURCE_DIR}/../&@' linphone-app/cmake_builder/linphone_package/CMakeLists.txt
-%if 0%{?suse_version}
-    mkdir -p build/linphone-sdk/desktop/share/{,sounds}/linphone
-%else
-    mkdir -p redhat-linux-build/linphone-sdk/desktop/share/{,sounds}/linphone
-%endif
-fi
+sed -i '/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/include/@%{buildroot}%{_includedir}/@;/^add_custom_command/s@${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/@%{buildroot}%{_libdir}/@' linphone-app/CMakeLists.txt
+sed -i '/\/ui/s@${qml_dir}@${CMAKE_CURRENT_SOURCE_DIR}/../&@' linphone-app/cmake_builder/linphone_package/CMakeLists.txt
+mkdir -p build/linphone-sdk/desktop/share/{,sounds}/linphone
 %cmake \
   -DCMAKE_CXX_FLAGS="%{optflags} -fpic -ffat-lto-objects -fpermissive" \
   -DCMAKE_BUILD_TYPE=Release \
   -DLINPHONE_OUTPUT_DIR="$PWD" \
-  -DCMAKE_INSTALL_PREFIX=/usr \
-  -DENABLE_UPDATE_CHECK=OFF \
-  -DENABLE_STRICT=OFF       \
-  -DENABLE_STATIC=OFF
+  -DENABLE_QT_KEYCHAIN=OFF \
+  -DENABLE_UPDATE_CHECK=OFF
 %cmake_build
 
 %install
