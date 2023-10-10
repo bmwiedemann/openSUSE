@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Oct 08 17:59:10 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1696682209.cdbccdf:
+  * Revert "Utilize possibly cached asset in svirt backend"
+  * t: Fix lost statement coverage in backend::ipmi::dell_sleep
+  * Fix os-autoinst_dev build on current Tumbleweed
+  * Improve error message about JSON encoding
+  * Remove wrong condition for `unxz` call on svirt host
+
+-------------------------------------------------------------------
 Wed Oct 04 13:53:24 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1696427596.90f0576:
