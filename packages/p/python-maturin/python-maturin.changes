@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Oct  9 18:34:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.3.0
+  * Refactor Cargo sdist generator to avoid rewriting local
+    dependencies in gh#PyO3/maturin#1741
+  * Added --pip-path argument to develop command in
+    gh#PyO3/maturin#1753
+  * Ignore sdist output files when building sdist in
+    gh#PyO3/maturin#1756
+  * Use python.exe by default in build command on Windows in
+    gh#PyO3/maturin#1757
+  * Don't require uniffi-bindgen to be installed for uniffi
+    bindings in gh#PyO3/maturin#1762
+  * Fix platform tag for graalpy in gh#PyO3/maturin#1773
+  * Always set minor version to 0 when major version >= 11 for
+    macOS in gh#PyO3/maturin#1778
+  * Warning about incorrect maturin version pyproject.toml
+    [build-system] requires in gh#PyO3/maturin#1793
+- Release 1.2.3 - 2023-08-17
+  * Fix sdist build failure with workspace path dependencies by
+    HerringtonDarkholme in gh#PyO3/maturin#1739
+- Release 1.2.2 - 2023-08-14
+  * Fix non interactive mode check when username/password was
+    supplied from cli in gh#PyO3/maturin#1737
+- Release 1.2.1 - 2023-08-14
+  * Add non-interactive mode to upload command in
+    gh#PyO3/maturin#1722
+  * Fix link-native-libraries check for emscripten target in
+    gh#PyO3/maturin#1724
+  * Add support for ALL_PROXY to upload command in
+    gh#PyO3/maturin#1727
+  * Handle renamed Rust dependency in sdist in gh#PyO3/maturin#1728
+  * Fix invalid TOML when rewriting workspace inherited
+    dependencies in gh#PyO3/maturin#1733
+- Release 1.2.0 - 2023-08-06
+  * Add basic support for implicit namespaces gh#PyO3/maturin#1645
+  * Add Linux mips64 and mips architecture support in
+    gh#PyO3/maturin#1712
+  * Add x86_64h-apple-darwin target support in gh#PyO3/maturin#1717
+
+-------------------------------------------------------------------
 Sun Jun 11 03:35:53 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to v1.1.0:
