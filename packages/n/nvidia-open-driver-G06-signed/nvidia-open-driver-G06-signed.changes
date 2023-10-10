@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  2 15:21:44 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- preamble: added conflict to nvidia-gfxG05-kmp to prevent users
+  from accidently installing conflicting proprietary kernelspace
+  drivers from CUDA repository
+
+-------------------------------------------------------------------
 Fri Sep 22 09:42:10 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 535.113.01 
