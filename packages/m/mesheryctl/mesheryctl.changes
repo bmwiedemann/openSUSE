@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Oct 10 15:42:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.156:
+  * General
+    - Revert commits added by mistake @MUzairS15 (#9068)
+  * Meshery UI
+    - [UI] Added helm connection Wizard @Yashsharma1911 (#8965)
+    - Bulk Operations and Metadata Renderers @aabidsofi19 (#9018)
+  * Documentation
+    - [README.md] bold styling not applied to text @xiangpingjiang
+      (#9054)
+    - added links in MeshMap Documentation @ATREAY (#9059)
+
+-------------------------------------------------------------------
+Tue Oct 10 14:23:43 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.6.155:
+  * Meshery CLI
+    - tests for mesheryctl system package @Philip-21 (#8585)
+    - [FIXED] mesheryctl error code conflicts solved @zakisk
+      (#9014)
+  * Meshery UI
+    - fix lint error issue @sudhanshutech (#9056)
+    - fixed the filter-dropdown component @captain-Akshay (#9021)
+    - [UI] rename MeshModel Summary to Registry in Settings
+      @Adaminite (#9046)
+    - [UI] Add Menu colors to theme @aabidsofi19 (#9041)
+    - Fix Hover @ptdatta (#8989)
+    - Bump zod and next in /provider-ui @dependabot (#9037)
+    - Bump postcss and next in /provider-ui @dependabot (#9038)
+    - Fix ui issues @sudhanshutech (#9024)
+    - Bump postcss from 8.4.21 to 8.4.31 in /ui @dependabot (#9035)
+    - [UI] Fix darkmode issue in extentions @aabidsofi19 (#9025)
+    - fix: Swap Table and Grid icons on Activity Toolbar
+      @akhilender-bongirwar (#9028)
+  * Maintenance
+    - tests for mesheryctl system package @Philip-21 (#8585)
+    - Bump zod and next in /provider-ui @dependabot (#9037)
+    - Bump postcss and next in /provider-ui @dependabot (#9038)
+    - Bump postcss from 8.4.21 to 8.4.31 in /ui @dependabot (#9035)
+  * Documentation
+    - Update Artifacts sub-section in documentation @ValGrace
+      (#8997)
+    - Deleted Duplicate line in Docs #9017 @aadityadike (#9047)
+
+-------------------------------------------------------------------
 Thu Oct  5 05:48:55 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.6.154:
