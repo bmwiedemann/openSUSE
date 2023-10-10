@@ -1,9 +1,9 @@
-Index: network-manager-applet-1.30.0/nm-applet.desktop.in
+Index: network-manager-applet-1.34.0/nm-applet.desktop.in
 ===================================================================
---- network-manager-applet-1.30.0.orig/nm-applet.desktop.in
-+++ network-manager-applet-1.30.0/nm-applet.desktop.in
+--- network-manager-applet-1.34.0.orig/nm-applet.desktop.in
++++ network-manager-applet-1.34.0/nm-applet.desktop.in
 @@ -2,9 +2,12 @@
- Name=Network
+ Name=NetworkManager Applet
  Comment=Manage your network connections
  Icon=nm-device-wireless
 -Exec=nm-applet

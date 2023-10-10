@@ -409,4 +409,35 @@
     <comment></comment>
     <requestid>1079950</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>6f81ac5bf5d50d682315279bebd48e4a</srcmd5>
+    <version>1.34.0</version>
+    <time>1696964435</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.34.0:
+  + Fix crash when importing WireGuard connections.
+  + Fix ineffective &quot;Don't show message again&quot; button in
+    notifications.
+  + Drop build dependency on gudev.
+  + Add setting to suppress broadband unlock prompt.
+  + Replace occurrences of &quot;master&quot;, &quot;slave&quot; and &quot;blacklist&quot;.
+  + Updated translations.
+- Drop long disabled polkit-devel BuildRequires, patch it was
+  needed for is dropped.
+- Drop pkgconfig(gudev-1.0) BuildRequires: No longer needed
+  following upstream changes.
+- Rebase feature-app-indicator-desktop-file.patch with quilt.
+- Pass sysconfdir=%{_distconfdir} to meson setup, move to UsrEtc.
+- Pass b_lto=true to meson setup, use link time optimization.
+- Add fdupes BuildRequires and macro, remove duplicate files.
+- Move translations to NetworkManager-connection-editor-lang,
+  replace the NetworkManager-connection-editor Recommends with a
+  hard Requires. Also add Obsoletes and Provides to ease updates.
+  The reason for moving the translations are as follows: One can
+  install NetworkManager-connection-editor without needing
+  NetworkManager-applet, so in order to make the translations for
+  NetworkManager-connection-editor installable without pulling the
+  dependencies of NetworkManager-applet. (forwarded request 1115690 from iznogood)</comment>
+    <requestid>1116594</requestid>
+  </revision>
 </revisionlist>
