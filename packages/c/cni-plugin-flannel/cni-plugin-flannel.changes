@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 08 13:01:54 UTC 2023 - egotthold@suse.com
+
+- Update to version 1.2.0:
+  * Fixed release artifacts path
+  * FIx bug in actions/download-artifact@v3
+  * Update go.mod
+  * Use writeAndSyncFile instead of just write
+  * Update ginkgo to v2
+  * Upgrade go version to 1.20.5
+  * Fix some errors thrown by lint tool
+  * Updated Docker registry
+  * only include the binary file for one architecture in the release archive
+  * update of GH workflows
+  * Make sure the CNI delete function does not fail when the json config is wrong
+  * Allow multiple flannel networks and upgrade to Go 1.19.2
+  * upgrade cni and plugins deps
+
+-------------------------------------------------------------------
 Tue Apr  5 08:56:04 UTC 2022 - Enno Gotthold <egotthold@suse.com>
 
 - Change package name to cni-plugin-flannel from flannel-cni-plugin

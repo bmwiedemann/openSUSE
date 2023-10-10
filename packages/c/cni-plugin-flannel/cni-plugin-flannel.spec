@@ -1,7 +1,7 @@
 #
-# spec file for package flannel-cni-plugin
+# spec file for package cni-plugin-flannel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,18 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define cni_dir %{_libexecdir}/cni
 
 Name:           cni-plugin-flannel
-Version:        1.0.1
+Version:        1.2.0
 Release:        0
-Summary:        A CNI network plugin that is powered by flannel 
+Summary:        A CNI network plugin that is powered by flannel
 License:        Apache-2.0
 URL:            https://github.com/flannel-io/cni-plugin
 Source0:        cni-plugin-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.16
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.16
 Requires:       flannel
 
 %description
