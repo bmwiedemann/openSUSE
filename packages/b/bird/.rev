@@ -137,4 +137,12 @@
 - Add -fcommon to allow building against GCC10</comment>
     <requestid>1114256</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ca7a146451ed4b2269f38502a7ae7a89</srcmd5>
+    <version>2.14</version>
+    <time>1696964385</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116433</requestid>
+  </revision>
 </revisionlist>

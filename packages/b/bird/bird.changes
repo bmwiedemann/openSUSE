@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct  8 21:51:23 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14
+  * MPLS subsystem
+  * L3VPN: BGP/MPLS VPNs (RFC 4364)
+  * BGP: Access to unknown route attributes
+  * RAdv: Custom options
+  * Babel: RTT metric extension
+  * BMP: Refactored route monitoring
+  * BMP: Multiple instances of BMP protocol
+  * BMP: Both pre-policy and post-policy monitoring
+  * Experimental route aggregation
+  * Filter: Method framework
+  * Filter: Functions have return type statements
+  * Filter: New bytestring data type
+  * Kernel: Option to learn kernel routes
+  * Many bugfixes and improvements 
+
+-------------------------------------------------------------------
 Wed Sep 27 14:17:55 UTC 2023 - Libor Pechacek <lpechacek@gmx.com>
 
 - add 'shadow' to Requires(pre)
