@@ -361,8 +361,10 @@ install -d %{buildroot}%{_libdir}/kismet/
 install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alertsyslog.so
 %fdupes -s %{buildroot}%{_datadir}/kismet
 
-%pre -f %{name}.pre
+%pre
 %service_add_pre %{name}.service
+
+%pre common -f %{name}.pre
 
 %preun
 %service_del_preun %{name}.service

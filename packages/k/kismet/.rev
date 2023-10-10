@@ -604,4 +604,12 @@ better packaging for distros, and various other quirks.
     <comment></comment>
     <requestid>1104173</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>e63726c4ef0fede51255937f70c9a1e4</srcmd5>
+    <version>2023_07_R1</version>
+    <time>1696964359</time>
+    <user>anag+factory</user>
+    <comment>- add the sysuser pre section to %package common.</comment>
+    <requestid>1116402</requestid>
+  </revision>
 </revisionlist>

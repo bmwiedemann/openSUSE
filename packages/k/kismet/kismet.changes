@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  9 08:23:13 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- add the sysuser pre section to %package common.
+
+-------------------------------------------------------------------
 Thu Jul 27 13:32:07 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2023-07-R1
