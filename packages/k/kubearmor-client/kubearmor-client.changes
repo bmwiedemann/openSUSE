@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct 11 12:27:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- upstream fixed the missing third digit in the version, code stays
+  the same (tag 0.14 has the same code as 0.14.1)
+
+-------------------------------------------------------------------
+Tue Oct 10 14:14:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14:
+  * feat(ns): update default namespace to "kubearmor" (#361)
+  * feat: Add support for k0s
+  * feat: Enhanced handling of policy addition and deletion events
+  * Add license scan report and status
+  * handling comments and empty objects in policy
+  * migrate Userhome func to common
+  * refractoring recommend cli
+
+-------------------------------------------------------------------
 Mon Oct  9 07:26:00 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package kubearmor-client: CLI for the Kubernetes KubeArmor
