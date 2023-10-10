@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct  9 16:30:14 UTC 2023 - guiv42 <guiv42@tuta.io>
+
+- Add complementary information to previous changelog
+- Deleted patches
+  * tuxguitar-startscript-itext.patch
+  * tuxguitar-additional-arch.patch
+  * no-fluidsynth.patch
+- Added new patch, required by release 1.6.0
+  * desktop.patch
+
+-------------------------------------------------------------------
+Sat Oct  7 20:14:13 UTC 2023 - guiv42 <guiv42@tuta.io>
+
+- Update to new upstream release 1.6.0
+  * switch to https://github.com/helge17/tuxguitar
+    as source repo, since historical repo is orphaned
+  * only x86_64 arch is supported by source repo
+
+-------------------------------------------------------------------
 Thu Oct 13 11:21:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Force building with java 11 on ix86 in order to avoid random

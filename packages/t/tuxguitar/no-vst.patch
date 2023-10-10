@@ -1,48 +1,26 @@
---- tuxguitar-1.5.4-src/build-scripts/tuxguitar-linux-x86_64/pom.xml	2020-05-12 19:46:43.000000000 +0200
-+++ tuxguitar-1.5.4-src/build-scripts/tuxguitar-linux-x86_64/pom.xml	2020-07-07 12:02:17.178253095 +0200
-@@ -372,7 +372,7 @@
+--- tuxguitar-1.6.0-src/build-scripts/tuxguitar-linux-swt-x86_64/pom.xml	2023-09-25 22:58:41.952618096 +0200
++++ tuxguitar-1.6.0-src/build-scripts/tuxguitar-linux-swt-x86_64/pom.xml	2023-09-25 22:58:41.952618096 +0200
+@@ -380,7 +380,7 @@
  				<module>../native-modules/tuxguitar-jack-linux-x86_64</module>
- 				<module>../native-modules/tuxguitar-oss-linux-x86_64</module>
  				<module>../native-modules/tuxguitar-fluidsynth-linux-x86_64</module>
--				<module>../native-modules/tuxguitar-synth-vst-remote-linux-x86_64</module>
-+				<!-- <module>../native-modules/tuxguitar-synth-vst-remote-linux-x86_64</module> -->
- 			</modules>
- 			
- 			<build>
-@@ -400,10 +400,10 @@
- 										<copy todir="${project.build.directory}/${project.finalName}/">
- 											<fileset dir="../native-modules/tuxguitar-fluidsynth-linux-x86_64/target/build" />
- 										</copy>
--										<copy todir="${project.build.directory}/${project.finalName}/">
-+										<!-- <copy todir="${project.build.directory}/${project.finalName}/">
- 											<fileset dir="../native-modules/tuxguitar-synth-vst-remote-linux-x86_64/target/build" />
- 										</copy>
--										<chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="775" />
-+										<chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="775" /> -->
- 										
- 										<chmod file="${project.build.directory}/${project.finalName}/lib/*.so" perm="775" />
- 										<!-- /PLUGINS FILES -->
---- tuxguitar-1.5.4-src/build-scripts/tuxguitar-linux-x86/pom.xml	2020-05-12 19:46:43.000000000 +0200
-+++ tuxguitar-1.5.4-src/build-scripts/tuxguitar-linux-x86/pom.xml	2020-07-07 12:02:17.178253095 +0200
-@@ -372,7 +372,7 @@
- 				<module>../native-modules/tuxguitar-jack-linux-x86</module>
- 				<module>../native-modules/tuxguitar-oss-linux-x86</module>
- 				<module>../native-modules/tuxguitar-fluidsynth-linux-x86</module>
--				<module>../native-modules/tuxguitar-synth-vst-remote-linux-x86</module>
-+				<!-- <module>../native-modules/tuxguitar-synth-vst-remote-linux-x86</module> -->
+ 				<module>../native-modules/tuxguitar-synth-lv2-linux-x86_64</module>
+-				<module>../native-modules/tuxguitar-synth-vst-linux-x86_64</module>
++			<!-- <module>../native-modules/tuxguitar-synth-vst-linux-x86_64</module> -->
  			</modules>
  
  			<build>
-@@ -400,10 +400,10 @@
+@@ -408,11 +408,13 @@
  										<copy todir="${project.build.directory}/${project.finalName}/">
- 											<fileset dir="../native-modules/tuxguitar-fluidsynth-linux-x86/target/build" />
+ 											<fileset dir="../native-modules/tuxguitar-synth-lv2-linux-x86_64/target/build" />
  										</copy>
--										<copy todir="${project.build.directory}/${project.finalName}/">
-+										<!-- <copy todir="${project.build.directory}/${project.finalName}/">
- 											<fileset dir="../native-modules/tuxguitar-synth-vst-remote-linux-x86/target/build" />
++										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-vst-linux-x86_64/target/build" />
  										</copy>
--										<chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="775" />
-+										<chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="775" /> -->
- 										
- 										<chmod file="${project.build.directory}/${project.finalName}/lib/*.so" perm="775" />
++										-->
+ 										<chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" />
+-										<chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="755" />
++										<!-- <chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="755" /> -->
  										<!-- /PLUGINS FILES -->
+ 									</target>
+ 								</configuration>

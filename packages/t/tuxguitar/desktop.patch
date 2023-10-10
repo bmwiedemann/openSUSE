@@ -1,0 +1,10 @@
+--- /build-scripts/common-resources/common-linux/share/applications/tuxguitar.desktop	2023-09-28 18:49:24.877329003 +0200
++++ /build-scripts/common-resources/common-linux/share/applications/tuxguitar.desktop	2023-09-28 18:49:24.877329003 +0200
+@@ -10,6 +10,6 @@ Type=Application
+ MimeType=audio/x-tuxguitar;audio/x-gtp;audio/x-ptb
+ Categories=AudioVideo;Audio
+ Exec=tuxguitar %F
+-Icon=/opt/tuxguitar/share/skins/Oxygen/icon.png
++Icon=tuxguitar
+ Terminal=false
+ StartupNotify=false

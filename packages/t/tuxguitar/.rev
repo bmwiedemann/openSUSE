@@ -73,4 +73,12 @@
     <comment>Fix i386 build breakages by requiring java 11</comment>
     <requestid>1010952</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>46e6d1ccafebcad1b1f479872b39b43c</srcmd5>
+    <version>1.6.0</version>
+    <time>1696964420</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116518</requestid>
+  </revision>
 </revisionlist>
