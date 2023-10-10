@@ -42,7 +42,6 @@
 # % define build_static_devel 1
 
 %define pname openmpi
-%define vers 3.1.6
 %define _vers 3_1_6
 %define m_f_ver 3
 %bcond_with ringdisabled
@@ -162,7 +161,7 @@ ExclusiveArch:  do_not_build
 #############################################################################
 
 Name:           %{package_name}%{?testsuite:-testsuite}
-Version:        %{vers}
+Version:        3.1.6
 Release:        0
 Summary:        An implementation of MPI/SHMEM
 License:        BSD-3-Clause
@@ -433,6 +432,10 @@ This RPM contains the configuration files for OpenMPI runtime (Version 3).
 %{hpc_master_package -a devel-static}
 %endif # ?with_hpc
 %endif # !testsuite
+
+%if "%(echo %version | tr '.' '_')" != "%_vers"
+%{error: Fix _vers variable to match package version!}
+%endif
 
 #############################################################################
 #
