@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@
 # Base package name
 %define pname imb
 %define PNAME IMB
-%define ver 2021.3
 %define _ver 2021_3
 
 %if 0%{?sle_version} >= 150200
@@ -405,7 +404,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           %{package_name}
-Version:        %{ver}
+Version:        2021.3
 Release:        0
 Summary:        Intel MPI Benchmarks (IMB)
 License:        BSD-3-Clause
@@ -416,7 +415,7 @@ Source0:        https://github.com/intel/mpi-benchmarks/archive/IMB-v%{version}.
 BuildRequires:  %{flavor}-devel
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-Obsoletes:      imb
+Obsoletes:      imb < %{version}
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
@@ -430,6 +429,10 @@ measurements for point-to-point and global communication operations for
 a range of message sizes.
 
 %{?with_hpc:%{hpc_master_package -L}}
+
+%if "%(echo %version | tr '.' '_')" != "%_ver"
+%{error: Fix _ver variable to match package version!}
+%endif
 
 %prep
 %setup -n mpi-benchmarks-IMB-v%{version}

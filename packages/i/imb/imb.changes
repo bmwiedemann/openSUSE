@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 10 09:39:24 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop %ver macro so that the Version tag can be parsed more easily
+
+-------------------------------------------------------------------
 Thu Sep 15 09:21:10 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 2021.3:
