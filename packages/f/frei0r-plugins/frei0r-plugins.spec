@@ -17,24 +17,20 @@
 
 
 Name:           frei0r-plugins
-Version:        1.8.0
+Version:        2.3.1
 Release:        0
 Summary:        Collection of video sources and filters plugins
 # Upstream says 2.0+ but quite few of their plugins are GPL-3.0+
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://frei0r.dyne.org/
-Source0:        https://files.dyne.org/frei0r/releases/frei0r-plugins-%{version}.tar.gz
+Source0:        https://github.com/dyne/frei0r/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.0.0
 BuildRequires:  pkgconfig(gavl) >= 0.2.3
-%if 0%{suse_version} == 1500 && 0%{?sle_version} < 150400
-BuildRequires:  pkgconfig(opencv)
-%else
 BuildRequires:  pkgconfig(opencv4)
-%endif
 
 %description
 This package provides a collection of video sources and filters plugins,
@@ -61,7 +57,7 @@ parameters. The intent is to solve the recurring reimplementation or
 adaptation issue of standard effects.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n frei0r-%{version}
 
 %build
 %cmake
@@ -71,14 +67,14 @@ adaptation issue of standard effects.
 %cmake_install
 
 %files
-%license COPYING.txt
-%doc AUTHORS.txt ChangeLog.txt README.txt
+%license COPYING
+%doc AUTHORS README.md
 %{_libdir}/frei0r-1/
 %exclude %{_libdir}/frei0r-1/facebl0r.so
 %exclude %{_libdir}/frei0r-1/facedetect.so
 
 %files opencv
-%license COPYING.txt
+%license COPYING
 %dir %{_libdir}/frei0r-1
 %{_libdir}/frei0r-1/facebl0r.so
 %{_libdir}/frei0r-1/facedetect.so

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct  9 11:28:41 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.3.1 (boo#1216050)
+  Check https://github.com/dyne/frei0r/releases for the full
+  list of changes. Changes since 2.3.0:
+  * New kaleid0sc0pe filter
+  * Prevent compiler warnings in select0r
+  * Do not check for NULL before calling free()
+  * Fix some broken links and typos in README.md
+  * Minor fixes to water filter
+
+-------------------------------------------------------------------
 Mon Sep 26 07:31:09 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use opencv 4 for building frei0r-plugins when possible.
