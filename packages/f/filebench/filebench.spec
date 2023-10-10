@@ -20,7 +20,7 @@ Name:           filebench
 Version:        1.4.9.1+git.20200220
 Release:        0
 Summary:        File system and storage benchmark
-License:        CDDL-1.0
+License:        CDDL-1.0 and GPL-3.0-or-later+
 URL:            https://github.com/filebench/filebench/wiki
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}.1

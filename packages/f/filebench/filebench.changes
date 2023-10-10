@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 12 11:58:10 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Correction of license based on legaldb review
+  Add GPL-3.0-or-later+ for createdelete-swing.f
+
+-------------------------------------------------------------------
 Thu Jun 22 15:10:30 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.4.9.1+git.20200220:
