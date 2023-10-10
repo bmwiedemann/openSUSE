@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct  8 01:12:07 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.5:
+  - feat: add recursive argument to expected_from_buffers
+    (gh#scikit-hep/awkward#2724).
+  - feat: infer unknown lengths from context in from_buffers
+    (gh#scikit-hep/awkward#2732).
+  - fix: don't use np.asarray on Index or Content objects
+    (gh#scikit-hep/awkward#2740).
+  - fix: swap names for __dlpack__ (gh#scikit-hep/awkward#2741).
+  - fix: __array__ accepts positional arguments
+    (gh#scikit-hep/awkward#2744).
+
+-------------------------------------------------------------------
 Sun Sep 17 15:20:45 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.4.2:
