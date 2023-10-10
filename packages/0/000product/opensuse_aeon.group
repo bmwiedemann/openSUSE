@@ -483,13 +483,14 @@
     <package name="iso_ent" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="jack-dbus" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="java-11-openjdk" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="java-11-openjdk-headless" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="java-11-openjdk" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
+    <package name="java-11-openjdk-headless" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="java-21-openjdk" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="java-21-openjdk-headless" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="javapackages-filesystem" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="javapackages-tools" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="jmdict" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="jq" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="json-glib-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="kbd" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="kbd-legacy" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -996,6 +997,7 @@
     <package name="libjemalloc2" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libjitterentropy3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libjpeg8" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libjq1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libjson-c5" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libjson-glib-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libjxl0_8" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
@@ -1093,6 +1095,7 @@
     <package name="libnvme1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libodfgen-0_1-1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libogg0" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="libonig5" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libopenal1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="libopencc1_1" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="libopenconnect5" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1488,8 +1491,8 @@
     <package name="ntfsprogs" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="open-lldp" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="openSUSE-build-key" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
-    <package name="openSUSE-release" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
-    <package name="openSUSE-release-appliance" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="openSUSE-release" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
+    <package name="openSUSE-release-appliance" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="opencc-data" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="openconnect" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1695,6 +1698,9 @@
     <package name="samba-python3" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="sazanami-fonts" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="sbc" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
+    <package name="sdbootutil" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="sdbootutil-rpm-scriptlets" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
+    <package name="sdbootutil-snapper" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="seahorse-daemon" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="seahorse-nautilus-lang" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="sed" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
@@ -1747,6 +1753,7 @@
     <package name="system-user-srvGeoClue" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="system-user-tftp" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
+    <package name="systemd-boot" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="systemd-coredump" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:patterns-aeon-base -->
     <package name="systemd-default-settings" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->
     <package name="systemd-default-settings-branding-SLE" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:Aeon-release -->

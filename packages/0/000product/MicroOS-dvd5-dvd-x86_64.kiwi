@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20231008" schemaversion="4.1">
+<image name="OBS__MicroOS___20231010" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20231008</productvar>
+      <productvar name="VERSION">20231010</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20231008,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20231010,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20231008/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20231010/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -676,6 +676,7 @@
       <repopackage name="javapackages-filesystem"/>
       <repopackage name="javapackages-tools"/>
       <repopackage name="jmdict"/>
+      <repopackage name="jq"/>
       <repopackage name="json-glib-lang"/>
       <repopackage name="kaccounts-integration"/>
       <repopackage name="kaccounts-integration-lang"/>
@@ -1263,6 +1264,7 @@
       <repopackage name="libjemalloc2"/>
       <repopackage name="libjitterentropy3"/>
       <repopackage name="libjpeg8"/>
+      <repopackage name="libjq1"/>
       <repopackage name="libjson-c5"/>
       <repopackage name="libjson-glib-1_0-0"/>
       <repopackage name="libjxl0_8"/>
@@ -1503,6 +1505,7 @@
       <repopackage name="libobjc4"/>
       <repopackage name="libodfgen-0_1-1"/>
       <repopackage name="libogg0"/>
+      <repopackage name="libonig5"/>
       <repopackage name="libopenal1"/>
       <repopackage name="libopenblas_pthreads0"/>
       <repopackage name="libopencc1_1"/>
@@ -2577,6 +2580,9 @@
       <repopackage name="sbc"/>
       <repopackage name="scout"/>
       <repopackage name="screen"/>
+      <repopackage name="sdbootutil"/>
+      <repopackage name="sdbootutil-rpm-scriptlets"/>
+      <repopackage name="sdbootutil-snapper"/>
       <repopackage name="sddm"/>
       <repopackage name="sddm-branding-openSUSE"/>
       <repopackage name="sddm-greeter-qt5"/>
@@ -2670,6 +2676,7 @@
       <repopackage name="system-user-tftp"/>
       <repopackage name="system-user-tss"/>
       <repopackage name="systemd"/>
+      <repopackage name="systemd-boot"/>
       <repopackage name="systemd-coredump"/>
       <repopackage name="systemd-default-settings"/>
       <repopackage name="systemd-default-settings-branding-openSUSE"/>
