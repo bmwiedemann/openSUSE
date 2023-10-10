@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 10 09:43:22 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop %vers macro so that the Version tag can be parsed more easily
+
+-------------------------------------------------------------------
 Mon Aug  7 17:02:04 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop support for TrueScale (bsc#1212146)
