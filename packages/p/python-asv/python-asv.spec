@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asv
 Version:        0.6.1
 Release:        0
@@ -26,18 +25,22 @@ Group:          Development/Languages/Python
 URL:            https://github.com/airspeed-velocity/asv
 Source:         https://files.pythonhosted.org/packages/source/a/asv/asv-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-six >= 1.4
+Requires:       python-json5
+Requires:       python-tabulate
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Suggests:       python-python-hglib >= 1.5
 # SECTION test requirements
+BuildRequires:  %{python_module json5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six >= 1.4}
+BuildRequires:  %{python_module tabulate}
 BuildRequires:  git
 # /SECTION
 %python_subpackages
@@ -52,16 +55,18 @@ interactive web frontend that requires only a basic static webserver
 to host.
 
 %prep
-%setup -q -n asv-%{version}
+%autosetup -n asv-%{version}
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/asv
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_expand rm -r %{buildroot}%{$python_sitearch}/{benchmarks,test}
+%python_expand rm %{buildroot}%{$python_sitearch}/asv/_rangemedian.cpp
 
 %check
 #MVY: there are so MANY tests failing inside OBS - like test_continuous calling pip and building bad command line
@@ -78,6 +83,7 @@ exit 0
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
 %python_alternative %{_bindir}/asv
-%{python_sitearch}/*
+%{python_sitearch}/asv/
+%{python_sitearch}/asv-*info
 
 %changelog
