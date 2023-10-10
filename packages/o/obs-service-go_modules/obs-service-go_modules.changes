@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct  9 04:19:30 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Use BuildRequires: golang(API) >= 1.21 instead of go >= 1.21
+  * The recommended Go toolchain dependency expression is
+    BuildRequires: golang(API) >= 1.x or optionally the metapackage
+    BuildRequires: go
+  * The go metapackage points to a single go version that
+    increments at a date TBD after each go1.x major release. The
+    expression golang(API) is available immediately upon each go1.x
+    major release and is stable for expressing the minimum version
+    or a temporarily pinned version.
+  * Refs boo#1214933
+  * Refs https://github.com/openSUSE/obs-service-go_modules/issues/33
+
+-------------------------------------------------------------------
+Sat Oct  7 05:19:34 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- Require go1.21 to make sure it works with go.mod files that
+  contain a three-digit-version (e.g. 1.21.1). Fixes boo#1214933
+  and https://github.com/openSUSE/obs-service-go_modules/issues/33
+
+-------------------------------------------------------------------
 Mon Apr 03 13:55:49 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.6.3:

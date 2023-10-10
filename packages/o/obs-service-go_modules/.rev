@@ -101,4 +101,23 @@
   * Fix flake8 CI action YAML indent plugins: under with: key</comment>
     <requestid>1077010</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>61186c14ff0b51beb93d390416a3d86f</srcmd5>
+    <version>0.6.3</version>
+    <time>1696964352</time>
+    <user>anag+factory</user>
+    <comment>- Require go1.21 to make sure it works with go.mod files that contain a three-digit-version (e.g. 1.21.1)
+- Use BuildRequires: golang(API) &gt;= 1.21 instead of go &gt;= 1.21
+  * The recommended Go toolchain dependency expression is
+    BuildRequires: golang(API) &gt;= 1.x or optionally the metapackage
+    BuildRequires: go
+  * The go metapackage points to a single go version that
+    increments at a date TBD after each go1.x major release. The
+    expression golang(API) is available immediately upon each go1.x
+    major release and is stable for expressing the minimum version
+    or a temporarily pinned version.
+  * Refs boo#1214933
+  * Refs https://github.com/openSUSE/obs-service-go_modules/issues/33 (forwarded request 1116356 from jfkw) (forwarded request 1116358 from jfkw)</comment>
+    <requestid>1116359</requestid>
+  </revision>
 </revisionlist>
