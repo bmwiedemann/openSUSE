@@ -18,7 +18,7 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.12.5+git0.a8471d8
+Version:        3.12.7+git0.d1eb70b
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause
@@ -121,7 +121,7 @@ sed -i "s|dependency('stb')|declare_dependency(include_directories: include_dire
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
-%{_libdir}/libVkLayer_FROG_gamescope_wsi.so
+%{_libdir}/libVkLayer_FROG_gamescope_wsi_%{_arch}.so
 %dir %{_datadir}/vulkan/implicit_layer.d/
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.%{_arch}.json
 

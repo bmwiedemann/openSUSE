@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct 09 12:23:30 UTC 2023 - antonio.teixeira@suse.com
+
+- Update to version 3.12.7+git0.d1eb70b:
+  * steamcompmgr: Overwrite SDL_VIDEODRIVER before nested app launch
+  * main: Make not having presentation time not fatal
+  * main: Default back to SDL_VIDEODRIVER x11 if not exposing wayland
+  * wlserver: Enable xwayland force_xrandr_emulation option
+  * wlserver: Handle pending surfaces in set_wl_id when we already have an existing surface
+  * wlserver: Add feature bit for pixel filter
+  * rendervulkan: Add PIXEL filter (band-limited pixel filter)
+  * rendervulkan: Emulate bilinear sampling when we need to do custom degammas
+  * wlserver: Fix rare crash on shutdown
+  * sdlwindow: Fix crash on shutdown with session
+- Add arch suffix to VkLayer filename as per recent changes.
+
+-------------------------------------------------------------------
 Wed Sep 13 19:01:13 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Tumbleweed now has a pkgconfig file for stb
