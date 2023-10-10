@@ -170,6 +170,7 @@ unsorted:
   - NetworkManager-strongswan-gnome 
   - NetworkManager-strongswan-lang 
   - NsCDE 
+  - NumCpp-devel 
   - OOKiedokie 
   - OpenBoard 
   - OpenCSD 
@@ -1901,9 +1902,6 @@ unsorted:
   - cargo-c 
   - cargo-packaging 
   - cargo-vendor-filterer 
-  - cargo1.66 
-  - cargo1.67 
-  - cargo1.68 
   - cargo1.69 
   - cargo1.70 
   - cargo1.71 
@@ -3347,6 +3345,7 @@ unsorted:
   - dynare 
   - dynare-doc-html 
   - dynare-doc-pdf 
+  - dysk 
   - dzen2 
   - e-antic-devel 
   - e16 
@@ -7992,7 +7991,6 @@ unsorted:
   - icewm-theme-yast-installation 
   - icewm-themes 
   - icinga-l10n 
-  - icinga-php-common 
   - icinga-php-library 
   - icinga-php-thirdparty 
   - icinga2 
@@ -8081,6 +8079,7 @@ unsorted:
   - imlib2 
   - imlib2-devel 
   - imlib2-filters 
+  - immer-devel 
   - imobiledevice-tools 
   - import-properties-plugin 
   - impressive 
@@ -8695,6 +8694,7 @@ unsorted:
   - joe 
   - jogl2 
   - john 
+  - joker 
   - jomolhari-fonts 
   - jondo 
   - jondofox 
@@ -8709,7 +8709,6 @@ unsorted:
   - jpcre2-devel 
   - jpegoptim 
   - jpnevulator 
-  - jq 
   - jrnl 
   - jrosetta 
   - jrtplib-devel 
@@ -9416,7 +9415,15 @@ unsorted:
   - ktuberling-lang 
   - kturtle 
   - kturtle-lang 
+  - kube-linter 
+  - kube-linter-bash-completion 
+  - kube-linter-fish-completion 
+  - kube-linter-zsh-completion 
   - kube-no-trouble 
+  - kubearmor-client 
+  - kubearmor-client-bash-completion 
+  - kubearmor-client-fish-completion 
+  - kubearmor-client-zsh-completion 
   - kubeaudit 
   - kubeaudit-bash-completion 
   - kubeaudit-fish-completion 
@@ -9664,6 +9671,7 @@ unsorted:
   - ladspa-vlevel 
   - ladspa-vocoder 
   - ladspa-zam-plugins 
+  - lager-devel 
   - lagrange 
   - lal-devel 
   - lalapps 
@@ -12856,7 +12864,6 @@ unsorted:
   - libjpgalleg44-devel 
   - libjpgalleg4_4 
   - libjq-devel 
-  - libjq1 
   - libjrtp3_11_1 
   - libjson-c-devel 
   - libjson-c-doc 
@@ -16714,6 +16721,7 @@ unsorted:
   - lunar-date-doc 
   - lutris 
   - luvcview 
+  - lux 
   - lv2 
   - lv2-airwindows 
   - lv2-devel 
@@ -19615,6 +19623,7 @@ unsorted:
   - opensuse-welcome-lang 
   - opentest4j 
   - opentest4j-javadoc 
+  - opentofu 
   - opentoonz 
   - opentracing-cpp-devel 
   - opentracing-cpp-source 
@@ -21811,6 +21820,7 @@ unsorted:
   - pix-devel 
   - pix-lang 
   - pixd 
+  - pixelorama 
   - pixmap 
   - pixz 
   - pkTriggerCord 
@@ -24767,6 +24777,7 @@ unsorted:
   - python310-keyring-pass 
   - python310-keyrings.alt 
   - python310-khal 
+  - python310-khard 
   - python310-kismet-rest 
   - python310-kismetdb 
   - python310-kiss-headers 
@@ -26652,6 +26663,7 @@ unsorted:
   - python311-Morfessor 
   - python311-MouseInfo 
   - python311-MulticoreTSNE 
+  - python311-Nuitka 
   - python311-OSMPythonTools 
   - python311-OWSLib 
   - python311-PGet 
@@ -28187,6 +28199,7 @@ unsorted:
   - python311-keyring-pass 
   - python311-keyrings.alt 
   - python311-khal 
+  - python311-khard 
   - python311-kismet-rest 
   - python311-kismetdb 
   - python311-kiss-headers 
@@ -31627,6 +31640,7 @@ unsorted:
   - python39-keyring-pass 
   - python39-keyrings.alt 
   - python39-khal 
+  - python39-khard 
   - python39-kismet-rest 
   - python39-kismetdb 
   - python39-kiss-headers 
@@ -34514,9 +34528,6 @@ unsorted:
   - rust 
   - rust-bindgen 
   - rust-cbindgen 
-  - rust1.66 
-  - rust1.67 
-  - rust1.68 
   - rust1.69 
   - rust1.70 
   - rust1.71 
@@ -34610,8 +34621,6 @@ unsorted:
   - sbd 
   - sbd-devel 
   - sbiload 
-  - sbinary 
-  - sbinary-javadoc 
   - sbl-orca 
   - sblim-cim-client2 
   - sblim-cim-client2-javadoc 
@@ -34631,11 +34640,6 @@ unsorted:
   - sblim-tools-libra-devel 
   - sblim-wbemcli 
   - sbsigntools 
-  - sbt 
-  - sbt-bootstrap 
-  - sbt-launcher 
-  - sbt-launcher-interface 
-  - sbt-launcher-javadoc 
   - sc 
   - sc-controller 
   - sc-im 
@@ -34768,9 +34772,6 @@ unsorted:
   - scummvm-tools 
   - sd 
   - sd-mux-ctrl 
-  - sdbootutil 
-  - sdbootutil-rpm-scriptlets 
-  - sdbootutil-snapper 
   - sdbus-cpp-devel 
   - sdbus-cpp-devel-doc 
   - sdbus-cpp-xml2cpp 
@@ -34823,7 +34824,6 @@ unsorted:
   - serd-devel 
   - serdi 
   - serialdv-devel 
-  - serialization 
   - sersniff 
   - servletapi4 
   - servletapi4-javadoc 
@@ -35532,7 +35532,6 @@ unsorted:
   - system-user-prometheus 
   - system-user-uuidd 
   - system-user-velociraptor 
-  - systemd-boot 
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
@@ -45765,6 +45764,7 @@ unsorted:
   - waylock 
   - waynergy 
   - waynergy-kde 
+  - waypipe 
   - wayshot 
   - wayvnc 
   - wbg 
@@ -46642,6 +46642,7 @@ unsorted:
   - zsh-sh 
   - zstd-gzip 
   - zsync 
+  - zug-devel 
   - zutils 
   - zutty 
   - zvbi 
