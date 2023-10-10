@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 04 10:16:48 UTC 2023 - miika.alikirri@suse.com
+
+- Update to version 0.1.0~git0.8c6c01a:
+  * Automatically update UI when user gets admin access
+  * Updated minimum cockpit version in spec file
+  * Updated the version to 0.1.0 so it's closer to semver
+
+-------------------------------------------------------------------
 Wed Aug 09 09:00:05 UTC 2023 - miika.alikirri@suse.com
 
 - Update to version 0.0.9~git0.81662cf:

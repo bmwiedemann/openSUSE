@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-tukit
-Version:        0.0.9~git0.81662cf
+Version:        0.1.0~git0.8c6c01a
 Release:        0%{?dist}
 Summary:        Cockpit module for Transactional Update
 License:        LGPL-2.1-or-later
@@ -31,7 +31,7 @@ Source12:       node_modules.sums
 Patch0:         load-css-overrides.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
-BuildRequires:  cockpit-devel >= 251
+BuildRequires:  cockpit-devel >= 293
 BuildRequires:  local-npm-registry
 BuildRequires:  make
 BuildRequires:  nodejs-devel

@@ -68,4 +68,17 @@
     <comment></comment>
     <requestid>1103103</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3df73cf0d3de0ed05b05f9a9f308e3bd</srcmd5>
+    <version>0.1.0~git0.8c6c01a</version>
+    <time>1696964439</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1115574 from malikirri
+
+- Update to version 0.1.0~git0.8c6c01a:
+  * Automatically update UI when user gets admin access
+  * Updated minimum cockpit version in spec file
+  * Updated the version to 0.1.0 so it's closer to semver</comment>
+    <requestid>1116602</requestid>
+  </revision>
 </revisionlist>
