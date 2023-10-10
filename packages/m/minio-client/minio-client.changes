@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 08 16:04:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20231004T065256Z:
+  * Add support for resource metrics (#4689)
+  * scanner: Limit the active disks if no enough term space (#4705)
+  * Fix mirror stats with --quiet flag (#4703)
+  * add 'mc admin trace' filtering based on request queries (#4704)
+
+-------------------------------------------------------------------
 Mon Oct 02 05:29:51 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230929T164122Z:
