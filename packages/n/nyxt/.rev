@@ -70,4 +70,12 @@ These issues are now fixed with a patch, hence this new submission.</comment>
     <comment>Update to version 3.8.0</comment>
     <requestid>1113616</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>04ee36b3a8129be5e400eeca8f41134d</srcmd5>
+    <version>3.9.0</version>
+    <time>1696964473</time>
+    <user>anag+factory</user>
+    <comment>Update to version 3.9.0</comment>
+    <requestid>1116676</requestid>
+  </revision>
 </revisionlist>

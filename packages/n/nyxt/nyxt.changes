@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 10 08:13:17 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 3.9.0:
+  * Features
+    - Complete refactor of the Common Settings Menu.
+    - Refactor the theme API to allow for more nuanced themes and richer interfaces
+  * Bug fixes
+    - Fix the functionality of the download cancellation button
+    - Fix duplicated suggestions when issuing command describe-slot (f1 s)
+    - Fix accepted values of external-editor-program
+
+-------------------------------------------------------------------
 Mon Sep 25 16:04:34 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 3.8.0:
