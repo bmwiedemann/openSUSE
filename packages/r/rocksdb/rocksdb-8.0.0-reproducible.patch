@@ -1,7 +1,7 @@
-Index: rocksdb-8.5.3/Makefile
+Index: rocksdb-8.6.7/Makefile
 ===================================================================
---- rocksdb-8.5.3.orig/Makefile
-+++ rocksdb-8.5.3/Makefile
+--- rocksdb-8.6.7.orig/Makefile
++++ rocksdb-8.6.7/Makefile
 @@ -787,9 +787,12 @@ ROCKSDB_PATCH = $(shell grep -E "ROCKSDB
  # the file needs to already exist or else the build will fail
  ifndef NO_UPDATE_BUILD_VERSION

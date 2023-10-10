@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Oct  9 13:51:07 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 8.6.7
+  * Fixed a bug where compaction read under non direct IO still falls back to RocksDB internal prefetching after file system's prefetching returns non-OK status other than Status::NotSupported()
+  * For non direct IO, eliminate the file system prefetching attempt for compaction read when Options::compaction_readahead_size is 0
+
+- update to 8.6.6
+  * Fix a bug with atomic_flush=true that can cause DB to stuck after a flush fails 
+  * Fix a bug where RocksDB (with atomic_flush=false) can delete output SST files of pending flushes when a previous concurrent flush fails
+  * When the compressed secondary cache capacity is reduced to 0, it should be completely disabled. Before this fix, inserts and lookups would still go to the backing LRUCache
+
+- update to 8.6.5
+  * Fixed a bug where rocksdb.file.read.verify.file.checksums.micros is not populated.
+
+- update to 8.6.4
+  * Public API change: Add a column family option default_temperature that is used for file reading accounting purpose, such as io statistics, for files that don't have an explicitly set temperature.
+
+- update to 8.6.3
+  * Fix a bug where if there is an error reading from offset 0 of a file from L1+ and that the file is not the first file in the sorted run, data can be lost in compaction and read/scan can return incorrect results.
+  * Fix a bug where iterator may return incorrect result for DeleteRange() users if there was an error reading from a file.
+
+- update to 8.6.2
+ * Fix for async_io where during seek, when reading a block for seeking a target key in a file without any readahead, the iterator aligned the read on a page boundary and reading more than necessary. This increased the storage read bandwidth usage.
+
+- update to 8.6.1
+  * Options::compaction_readahead_size 's default value is changed from 0 to 2MB.
+  * Compaction read performance will regress when Options::compaction_readahead_size is explicitly set to 0
+
+- update to 8.6.0
+  * Added enhanced data integrity checking on SST files with new format_version=6. 
+  * Add a new feature to trim readahead_size during scans upto upper_bound when iterate_upper_bound is specified. 
+  * RocksDB will compare the number of input keys to the number of keys processed after each compaction. 
+  * Add a CF option bottommost_file_compaction_delay to allow specifying the delay of bottommost level single-file compactions.
+  * Add support to allow enabling / disabling user-defined timestamps feature for an existing column family in combination with the in-Memtable only feature.
+  * Implement a new admission policy for the compressed secondary cache that admits blocks evicted from the primary cache with the hit bit set. 
+  * Add a column family option memtable_max_range_deletions that limits the number of range deletions in a memtable.
+  * Add PutEntity API in sst_file_writer
+  * Add timeout in microsecond option to WaitForCompactOptions 
+  * New statistics rocksdb.file.read.{get|multiget|db.iterator|verify.checksum|verify.file.checksums}.micros measure read time of block-based SST tables or blob files during db open, Get(), MultiGet(), using db iterator, VerifyFileChecksums() and VerifyChecksum(). They require stats level greater than StatsLevel::kExceptDetailedTimers.
+  * Add close_db option to WaitForCompactOptions to call Close() after waiting is done.
+  * Add a new compression option CompressionOptions::checksum for enabling ZSTD's checksum feature to detect corruption during decompression.
+  * Mark Options::access_hint_on_compaction_start related APIs as deprecated. 
+  * Statistics rocksdb.sst.read.micros now includes time spent on multi read and async read into the file
+  * For Universal Compaction users, periodic compaction (option periodic_compaction_seconds) will be set to 30 days by default if block based table is used.
+  * Fix a bug in FileTTLBooster that can cause users with a large number of levels (more than 65) to see errors like "runtime error: shift exponent .. is too large.." 
+
+
+-------------------------------------------------------------------
 Wed Sep 27 16:56:46 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 8.5.4:
