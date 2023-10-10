@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Oct  9 15:34:02 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.7.1:
+  *  new   : split dialog: add a confirm dialog before delete all
+     split lines
+  *  new   : dateentry only rely on token and date order
+     detection, glib failover
+  *  change: split dialog: add info+tooltip icon next to the
+     amount input
+  *  change: split dialog: amount input is named according
+     transaction type
+  *  bugfix: dateentry d, dm, md was sometimes wrong
+  *  bugfix: dateentry 2 year digits fix with 40/60 windowing
+  *  bugfix: lp#2037597 top 10 Spending Category chart legend
+     labels sometimes ellipsized
+  *  bugfix: lp#2037468 "All Transactions" CSV export no longer
+     includes account
+  *  bugfix: lp#2037132 cannot create assignments from a
+     transaction with empty memo
+  *  bugfix: lp#2036703 budget report shows wrong Spent and
+     Budget totals
+  *  bugfix: lp#2036290 migrate libsoup-2.4 to libsoup-3.0
+  *  bugfix: lp#2036270 no message when split limit is reached
+  *  bugfix: lp#2036228 forecast only limited to time span set in
+     preferences
+  *  bugfix: lp#2036097 budget report date range from/to does not
+     localized month name
+  *  bugfix: lp#2035401 Main panel size not retained; account
+     info concealed on start
+  *  bugfix: lp#2035129 incorrect values in "tooltip" message
+     for forcast view (subcategory)
+  *  bugfix: lp#2034764 statistics Report Total Row not
+     reflecting displayed amounts
+  *  bugfix: lp#2034647 trend time Report Title does not match
+     Interval
+  *  bugfix: lp#2034618	statistics report sometimes crashes with
+     half year interval 
+  *  wish  : lp#2038601 "Schedule" and "Template" linked
+     togglebuttons are not mutually exclusive (don't act like
+     switchers)
+  *  wish  : lp#2034625	statistics Reportsorting by expense or
+     income when using the Time Mode
+- Changed BuildRequires from libsoup-2.4 to libsoup-3.0
+
+-------------------------------------------------------------------
 Thu Sep  7 16:23:23 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.7:

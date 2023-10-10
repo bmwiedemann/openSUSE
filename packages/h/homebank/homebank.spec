@@ -17,7 +17,7 @@
 
 
 Name:           homebank
-Version:        5.7
+Version:        5.7.1
 Release:        0
 Summary:        Application to manage personal accounts
 License:        GPL-2.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.8
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.65
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0
 
 %description
 HomeBank is an application to manage personal accounts at home. The main
