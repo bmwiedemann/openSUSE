@@ -2,7 +2,7 @@
 # spec file for package gpp
 #
 # Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, 2020 Tristan Miller <psychonaut@nothingisreal.com>
+# Copyright (c) 2017-2023 Tristan Miller <psychonaut@nothingisreal.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           gpp
-Version:        2.27
+Version:        2.28
 Release:        0
 Summary:        Generic Preprocessor
 License:        LGPL-3.0+
