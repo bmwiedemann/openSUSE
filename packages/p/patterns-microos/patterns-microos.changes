@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct  6 08:38:24 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add RPMs for systemd-boot to DVD
+
+-------------------------------------------------------------------
+Thu Oct  5 11:14:36 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Only pull in health-checker if grub2 is installed, in other cases
+  it won't really work: With sd-boot, the default btrfs subvol is not
+  used, so rollbacks have no effect.
+
+-------------------------------------------------------------------
 Sun Sep 17 03:09:18 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add ksshaskpass5 (boo#1215407) 

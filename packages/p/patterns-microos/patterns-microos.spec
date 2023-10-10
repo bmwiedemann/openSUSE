@@ -98,10 +98,10 @@ Requires:       MicroOS-release
 Requires:       dosfstools
 Requires:       glibc-locale-base
 Suggests:       busybox-gzip
-Requires:       health-checker
-Requires:       health-checker-plugins-MicroOS
 Requires:       iputils
 Requires:       issue-generator
+Requires:       (health-checker if grub2)
+Requires:       (health-checker-plugins-MicroOS if health-checker)
 %ifnarch %{arm}
 Requires:       kdump
 %endif
@@ -704,7 +704,11 @@ Requires:       open-vm-tools
 Requires:       pam_pwquality
 Requires:       policycoreutils-python-utils
 Requires:       qemu-guest-agent
+Requires:       sdbootutil
+Requires:       sdbootutil-rpm-scriptlets
+Requires:       sdbootutil-snapper
 Requires:       spice-vdagent
+Requires:       systemd-boot
 Requires:       tftpboot-installation-openSUSE-MicroOS-%{_target_cpu}
 Requires:       wpa_supplicant
 Requires:       xfsprogs
