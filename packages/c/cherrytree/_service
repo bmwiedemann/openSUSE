@@ -3,11 +3,11 @@
     <param name="url">https://github.com/giuspen/cherrytree.git</param>
     <param name="scm">git</param>
     <param name="submodules">enable</param>
-    <param name="revision">9b242c4271a334c58d329ec07e420fdeca3ec518</param>
+    <param name="revision">babe7abb22d4794b6f6c2f932100375fe6ccd193</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">cherrytree</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-    <param name="versionrewrite-pattern">(.*)\+0</param>
+    <param name="versionrewrite-pattern">[^0-9](.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
   <service mode="buildtime" name="tar" />
