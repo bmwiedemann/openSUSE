@@ -82,7 +82,6 @@
       <repopackage name="cross-s390-gcc47-icecream-backend" onlyarch="skipit"/>
       <repopackage name="cross-s390x-gcc47-icecream-backend" onlyarch="skipit"/>
       <repopackage name="cross-x86_64-gcc47-icecream-backend" onlyarch="skipit"/>
-      <repopackage name="curl-mini" onlyarch="skipit"/>
       <repopackage name="dbench-ctcs2-glue" onlyarch="skipit"/>
       <repopackage name="desktop-data-SLED" onlyarch="skipit"/>
       <repopackage name="desktop-data-SLED-extra-gnome" onlyarch="skipit"/>
@@ -246,8 +245,6 @@
       <repopackage name="kiwi-profiled-livecd-x11" onlyarch="skipit"/>
       <repopackage name="kiwi-profiled-livecd-x11-iso" onlyarch="skipit"/>
       <repopackage name="kiwi-promo-dvd-parts" onlyarch="skipit"/>
-      <repopackage name="krb5-mini" onlyarch="skipit"/>
-      <repopackage name="krb5-mini-devel" onlyarch="skipit"/>
       <repopackage name="libada41" onlyarch="skipit"/>
       <repopackage name="libada43" onlyarch="skipit"/>
       <repopackage name="libada45" onlyarch="skipit"/>
@@ -259,8 +256,6 @@
       <repopackage name="libcdio-mini-utils" onlyarch="skipit"/>
       <repopackage name="libcdio_cdda0-mini" onlyarch="skipit"/>
       <repopackage name="libcdio_paranoia0-mini" onlyarch="skipit"/>
-      <repopackage name="libcurl-mini-devel" onlyarch="skipit"/>
-      <repopackage name="libcurl4-mini" onlyarch="skipit"/>
       <repopackage name="libffi4-gcc47" onlyarch="skipit"/>
       <repopackage name="libffi4-gcc47-32bit" onlyarch="skipit"/>
       <repopackage name="libffi41" onlyarch="skipit"/>
