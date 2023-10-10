@@ -20,18 +20,16 @@
 %define _firmwaredir /lib/firmware
 %endif
 
-%define sofversion  2.2.6
-%define tplgversion 2.2.6
-
 Name:           sof-firmware
 Summary:        Firmware data files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2.2.6
+Version:        2023.09
 Release:        0
 URL:            https://www.sofproject.org/
 BuildRequires:  fdupes
-Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{sofversion}/sof-bin-v%{sofversion}.tar.gz
+Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{version}/sof-bin-%{version}.tar.gz
+Patch1:         install-use-cp.patch
 BuildArch:      noarch
 # Merrifield
 Supplements:    modalias(pci:v00008086d0000119Asv*sd*bc*sc*i*)
@@ -89,17 +87,39 @@ Conflicts:      filesystem < 84
 Firmware data files for Sound Open Firmware (SOF) drivers.
 
 %prep
-%setup -q -n sof-bin-v%{sofversion}
+%setup -q -n sof-bin-%{version}
+%patch1 -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_firmwaredir}/intel
-# due to the upgrade problem, we can't make sof-v* -> sof symlink
-cp -a sof-v%{sofversion} %{buildroot}%{_firmwaredir}/intel/sof
-cp -a sof-tplg-v%{tplgversion} %{buildroot}%{_firmwaredir}/intel/
-ln -s sof-tplg-v%{tplgversion} %{buildroot}%{_firmwaredir}/intel/sof-tplg
+mkdir -p %{buildroot}%{_bindir}
+FW_DEST=%{buildroot}%{_firmwaredir}/intel \
+TOOLS_DEST=%{buildroot}%{_bindir} \
+./install.sh
+rm -rf %{buildroot}%{_bindir}
 %fdupes -s %{buildroot}
+
+# workaround for changing symlinked directory
+%pre
+if [ -L %{_firmwaredir}/intel/sof-tplg ]; then
+  f=$(readlink -f %{_firmwaredir}/intel/sof-tplg)
+  case $f in
+    %{_firmwaredir}/intel/*)
+      rm -rf $f
+      rm -f %{_firmwaredir}/intel/sof-tplg;;
+  esac
+fi
+
+%post
+%{?regenerate_initrd_post}
+
+%postun
+%{?regenerate_initrd_post}
+
+%posttrans
+%{?regenerate_initrd_posttrans}
 
 %files
 %license LICENCE.* Notice.NXP

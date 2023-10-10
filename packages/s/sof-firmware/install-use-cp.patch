@@ -1,0 +1,17 @@
+---
+ install.sh |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/install.sh
++++ b/install.sh
+@@ -60,8 +60,8 @@ main()
+     fi
+ 
+     # Trailing slash in srcdir/ ~= srcdir/*
+-    rsync -a "${path}"/sof*"$optversuffix" "${FW_DEST}"/
+-    rsync -a "${path}"/tools"$optversuffix"/ "${TOOLS_DEST}"/
++    cp -a "${path}"/sof*"$optversuffix" "${FW_DEST}"/
++    cp -a "${path}"/tools"$optversuffix"/ "${TOOLS_DEST}"/
+ }
+ 
+ die()

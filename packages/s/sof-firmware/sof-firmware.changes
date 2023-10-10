@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  9 12:18:07 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 2023.09 (jsc#PED-6123,jsc#PED-6114,jsc#PED-6104,
+  jsc#PED-6067,jsc#PED-6045,jsc#PED-6036):
+  it's a combined tarball with different version to support multiple
+  platforms including Metor Lake
+- Use cp instead of rsync for installation:
+  install-use-cp.patch
+
+-------------------------------------------------------------------
 Tue Jul 18 14:44:31 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 2.2.6:
