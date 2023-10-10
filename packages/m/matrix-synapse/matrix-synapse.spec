@@ -28,6 +28,7 @@
 %global bcrypt_version                4.0.1
 %global bleach_version                5.0.1
 %global canonicaljson_version         2.0.0
+# TODO: 41.0.4
 %global cryptography_version          41.0.3
 %global immutabledict_version         3.0.0
 %global idna_version                  3.4
@@ -36,9 +37,10 @@
 %global jsonschema_version            4.18.6
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
+# TODO: 1.0.7
 %global msgpack_version               1.0.5
 %global netaddr_version               0.8.0
-# TODO: 8.13.19
+# TODO: 8.13.22
 %global phonenumbers_version          8.13.18
 # TODO: 0.17.1
 %global prometheus_client_version     0.17.0
@@ -57,12 +59,13 @@
 %global unpaddedbase64_version        2.1.0
 %global matrix_synapse_ldap3_version  0.2.2
 %global packaging_version             23.1
+# TODO: 2.9.8
 %global psycopg2_version              2.9.7
 # TODO             7.3.1
 %global pysaml2_version               7.2.1
 %global Authlib_version               1.2.1
 %global lxml_version                  4.9.3
-%global sentry_sdk_version            1.30.0
+%global sentry_sdk_version            1.31.0
 %global PyJWT_version                 2.4.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
@@ -107,7 +110,7 @@
 %global treq_version                  15.1
 %global unpaddedbase64_version        2.1.0
 %global matrix_synapse_ldap3_version  0.2.1
-%global packaging_version             16.1
+%global packaging_version             20.0
 %global psycopg2_version              2.8
 %global pysaml2_version               4.5.0
 %global Authlib_version               0.15.1
@@ -154,7 +157,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.93.0
+Version:        1.94.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Oct 10 13:20:04 UTC 2023 - Marcus 'darix' Rückert <mrueckert@suse.de>
+
+- Update to 1.94.0
+  - Features
+    - Render plain, CSS, CSV, JSON and common image formats in the
+      browser (inline) when requested through the /download
+      endpoint. (#15988)
+    - Add experimental support for MSC4028 to push all encrypted
+      events to clients. (#16361)
+    - Minor performance improvement when sending presence to
+      federated servers. (#16385)
+    - Minor performance improvement by caching server ACL checking.
+      (#16360)
+  - Improved Documentation
+    - Add developer documentation concerning gradual schema
+      migrations with column alterations. (#15691)
+    - Improve documentation of the user directory search algorithm.
+      (#16320)
+    - Fix rendering of user admin API documentation around
+      deactivation. This was broken in Synapse 1.91.0. (#16355)
+    - Update documentation around message retention policies.
+      (#16382)
+    - Add note to federation_domain_whitelist config option to
+      clarify its usage. (#16416)
+    - Improve legacy release notes. (#16418)
+  - Deprecations and Removals
+    - Remove Python version from /_synapse/admin/v1/server_version.
+      (#16380)
+  - Internal Changes
+    - Avoid running CI steps when the files they check have not
+      been changed. (#14745, #16387)
+    - Improve type hints. (#14911, #16350, #16356, #16395)
+    - Added support for pydantic v2 in addition to pydantic v1.
+      Contributed by Maxwell G (@gotmax23). (#16332)
+    - Get CI to check PRs have been signed-off. (#16348)
+    - Add missing licence header. (#16359)
+    - Improve type hints, and bump types-psycopg2 from 2.9.21.11 to
+      2.9.21.14. (#16381)
+    - Improve comments in StateGroupBackgroundUpdateStore. (#16383)
+    - Update maturin configuration. (#16394)
+    - Downgrade replication stream time out error log lines to
+      warning. (#16401)
+
+-------------------------------------------------------------------
 Tue Sep 26 17:35:26 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.93.0

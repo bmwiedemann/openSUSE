@@ -798,4 +798,12 @@ mostly-working synapse than nothing at all) and the package has been update to
   See the advisories for more details. If you have any questions, email security@matrix.org.</comment>
     <requestid>1113708</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>36550f1494c5183103ad2938809c1323</srcmd5>
+    <version>1.94.0</version>
+    <time>1696964478</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.94.0 (forwarded request 1116682 from darix)</comment>
+    <requestid>1116700</requestid>
+  </revision>
 </revisionlist>
