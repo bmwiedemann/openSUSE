@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Oct 10 08:44:06 UTC 2023 - davejplater@gmail.com
+
+- Disable troublesome liblo
+- Update to version 2.5.7:
+  * Fix auto-upload of release artifacts
+  * Bump version to 2.5.7
+  * Fix typo leading to missing LV2 files
+  * Import minor fixes from main branch
+  * Fix a comment
+  * Allow configuration of Carla client name when headless
+  * Remove useless linker flag
+  * Fix some wine bridge details
+
+-------------------------------------------------------------------
+Sun Aug 20 10:42:38 UTC 2023 - ecsos@opensuse.org
+
+- Update to version 2.5.6:
+  * Fixup CI not building on release
+  * Fix carla-vst GUI for macOS retina displays
+  * Fix crash with jack under ARM
+  * Auto-scale carla-vst plugin GUI
+  * Bump version to 2.5.6
+  * Set error message when trying to start JACK driver without JACK
+  * Skip special treatment for ladish
+  * Fix a compiler warning
+  * Fix carla-lv2 pre-run with 0 frames
+  * Fix compatibility of plugin discovery with 2.6.x tools
+  * Fix exported symbols
+- Disable vst for Tumbleweed also because of build error.
+
+-------------------------------------------------------------------
+Sun Aug 20 10:41:25 UTC 2023 - ecsos@opensuse.org
+
+- Update to version 2.5.5:
+  * Fix leak during discovery
+  * yml is weird...
+  * Fix release CI artifacts
+  * Try resource dir as library path first
+  * Fix conflict with other tools using Carla
+  * Fix release CI details
+  * Skip LTO in release builds
+  * Fix release CI
+  * Add release CI file in this repo
+  * Allow to skip MIDI ports in patchbay plugin, in use for OBS
+  * Link resources for internal plugin
+  * bridge: ignore SIGTERM signal when running as child client
+  * Implement getPluginCategoryFromString
+  * Add getBinaryTypeAsString utility function
+  * Switch from USE_QT macro to CARLA_UTILS_USE_QT
+  * install util headers during "make install"
+  * Fix macOS build
+  * Fix manual include of CarlaBridgeDefines.hpp
+  * Fix build
+  * Fix manual inclusion of CarlaMacUtils.cpp
+  * Make bridge and mac utils public, add to utils lib
+  * Mark CarlaMutex and CarlaString as public, needed for msvc
+  * Fix a compiler warning
+  * Fix showing engine device settings
+  * Fix build
+  * CI: Ignore pyqt5 for macOS tests
+  * Fix windows build, typo
+  * Update CI workflows following main branch
+  * Bump version to 2.5.5
+  * Add bridge opcode for reloading plugin info
+  * bridge: change custom data "big size" to 4096, bump api version
+  * minor bridge spec comments
+  * dont return nullptr on some functions, for -Wformat-overflow
+  * lv2: handle invalid empty paths the same way as lilv
+  * Log ScopedActionLock action names
+  * set some runtime script interpreters to /bin/sh
+  * Allow usage of CARLA_DISCOVERY_PATH env var for cached types
+  * Reduce starting pipe message to debug
+  * Import discovery fixes from main branch, allow IPC
+  * set NOMINMAX for utils windows include
+  * Cleanup ringbuffer code
+  * bridge utils: do not use sprintf
+  * Remove use of REAL_BUILD macro
+  * Adjustments as needed for Carla as OBS plugin
+  * fix carla build on m1 (#1757)
+  * Use _WIN32 instead of __WIN32__ for internal lilv
+  * Use -fno-strict-aliasing for sord source builds
+
+-------------------------------------------------------------------
 Tue Apr  4 17:41:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.5.4

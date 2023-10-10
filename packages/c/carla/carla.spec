@@ -17,11 +17,11 @@
 
 
 %if 0%{?suse_version} >= 1550
-%bcond_without liblo
-%bcond_without vst
+%bcond_with liblo
+%bcond_with vst
 %else
 %if 0%{?sle_version} >= 150500
-%bcond_without liblo
+%bcond_with liblo
 %bcond_with vst
 %else
 %bcond_with vst
@@ -36,7 +36,7 @@ Name:           carla
 #NOTE: to update this package please change these two version fields in "_service" <param name="revision">v2.1.1</param>
 # to the version that you want and execute "osc service runall"
 # It will even fill in the .changes file. Please don't touch the Version: in the spec file, it will be filled automaticaly.
-Version:        2.5.4
+Version:        2.5.7
 Release:        0
 Summary:        An audio plugin host
 License:        BSD-2-Clause AND GPL-2.0-or-later AND BSD-3-Clause
