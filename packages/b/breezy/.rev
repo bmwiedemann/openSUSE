@@ -122,4 +122,17 @@ This requires https://build.opensuse.org/request/show/790036 to build (already a
 </comment>
     <requestid>1091294</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4f9d60693936a6d1e88fe066c64289b3</srcmd5>
+    <version>3.3.4</version>
+    <time>1696964456</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.4:
+  - Improve handling of lp: URLs when lp: insteadOf is set in gitconfig.
+  - Allow setting _ConnectRequestor.selector.  
+  - Fix brz-email bug on Python 3. 
+  - Fix compatibility with newer versions of dulwich.
+</comment>
+    <requestid>1116637</requestid>
+  </revision>
 </revisionlist>

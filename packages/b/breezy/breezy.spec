@@ -19,7 +19,7 @@
 %define rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           breezy
-Version:        3.3.3
+Version:        3.3.4
 Release:        0
 Summary:        Distributed version control system with multi-format support
 License:        GPL-2.0-or-later
@@ -52,6 +52,7 @@ Requires:       python3-fastimport >= 0.9.8
 Requires:       python3-merge3
 Requires:       python3-patiencediff
 Requires:       python3-urllib3
+Requires:       python3-urllib3 >= 1.24.1
 Suggests:       python3-launchpadlib >= 1.6.3
 Provides:       bzr = %{version}
 Obsoletes:      bzr < %{version}

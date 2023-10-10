@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 10 07:37:39 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.3.4:
+  - Improve handling of lp: URLs when lp: insteadOf is set in gitconfig.
+  - Allow setting _ConnectRequestor.selector.  
+  - Fix brz-email bug on Python 3. 
+  - Fix compatibility with newer versions of dulwich.
+
+-------------------------------------------------------------------
 Wed Jun  7 16:00:14 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.3.3:
