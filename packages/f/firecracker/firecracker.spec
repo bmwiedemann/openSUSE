@@ -20,7 +20,7 @@
 %define cargo_home cargo-home
 
 Name:           firecracker
-Version:        1.3.2
+Version:        1.4.1
 Release:        0
 Summary:        Virtual Machine Monitor for creating microVMs
 License:        Apache-2.0
@@ -33,6 +33,7 @@ Source2:        cargo_config
 
 BuildRequires:  cargo
 BuildRequires:  clang
+BuildRequires:  cmake
 BuildRequires:  rust >= 1.66.0
 ExclusiveArch:  x86_64 aarch64
 
