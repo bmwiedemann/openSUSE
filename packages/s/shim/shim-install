@@ -419,8 +419,19 @@ if [ x$GRUB_ENABLE_CRYPTODISK = xy ]; then
   done
 fi
 
+hints="`"${grub_probe}" --target=hints_string "${grub_cfg_dirname}" 2> /dev/null`"
+
+if [ "x$hints" != x ]; then
+  echo "if [ x\$feature_platform_search_hint = xy ]; then"
+  echo "  search --no-floppy --fs-uuid --set=root ${hints} ${cfg_fs_uuid}"
+  echo "else"
+  echo "  search --no-floppy --fs-uuid --set=root ${cfg_fs_uuid}"
+  echo "fi"
+else
+  echo "search --no-floppy --fs-uuid --set=root ${cfg_fs_uuid}"
+fi
+
 cat <<EOF
-search --fs-uuid --set=root ${cfg_fs_uuid}
 set prefix=(\${root})`${grub_mkrelpath} ${grub_cfg_dirname}`
 source "\${prefix}/${grub_cfg_basename}"
 EOF

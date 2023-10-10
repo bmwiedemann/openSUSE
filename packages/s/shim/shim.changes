@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct  5 13:19:48 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- Don't require grub so shim can still be used with systemd-boot
+
+-------------------------------------------------------------------
+Wed Sep 20 04:33:59 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Update shim-install to fix boot failure of ext4 root file system
+  on RAID10 (bsc#1205855)
+   226c94ca5cfca  Use hint in looking for root if possible
+
+-------------------------------------------------------------------
+Tue Sep 19 08:36:17 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Adopt the macros from fde-tpm-helper-macros to update the
+  signature in the sealed key after a bootloader upgrade
+
+-------------------------------------------------------------------
 Mon May 15 03:28:47 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update shim-install to amend full disk encryption support

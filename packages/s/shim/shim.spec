@@ -83,6 +83,7 @@ BuildRequires:  openssl >= 0.9.8
 BuildRequires:  pesign
 BuildRequires:  pesign-obs-integration
 %if 0%{?suse_version} > 1320
+BuildRequires:  fde-tpm-helper-rpm-macros
 BuildRequires:  update-bootloader-rpm-macros
 %endif
 %if 0%{?update_bootloader_requires:1}
@@ -90,9 +91,13 @@ BuildRequires:  update-bootloader-rpm-macros
 %else
 Requires:       perl-Bootloader
 %endif
+%if 0%{?fde_tpm_update_requires:1}
+%fde_tpm_update_requires
+%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# For shim-install script
-Requires:       grub2-%{grubplatform}
+# For shim-install script grub is needed but we also want to use
+# shim for systemd-boot where shim-install is not actually used.
+# Requires:       grub2-%{grubplatform}
 Requires:       mokutil
 ExclusiveArch:  x86_64 aarch64
 
@@ -286,6 +291,10 @@ cp -r source/* %{buildroot}/usr/src/debug/%{name}-%{version}
 %{?buildroot:%__rm -rf "%{buildroot}"}
 
 %post
+%if 0%{?fde_tpm_update_post:1}
+%fde_tpm_update_post shim
+%endif
+
 %if 0%{?update_bootloader_check_type_reinit_post:1}
 %update_bootloader_check_type_reinit_post grub2-efi
 %else
@@ -316,6 +325,7 @@ fi
 %if %{defined update_bootloader_posttrans}
 %posttrans
 %{?update_bootloader_posttrans}
+%{?fde_tpm_update_posttrans}
 %endif
 
 %files

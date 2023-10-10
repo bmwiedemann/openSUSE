@@ -1405,4 +1405,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment></comment>
     <requestid>1089032</requestid>
   </revision>
+  <revision rev="114" vrev="8">
+    <srcmd5>1677cc12282a991bce2e54d67048902e</srcmd5>
+    <version>15.7</version>
+    <time>1696963933</time>
+    <user>anag+factory</user>
+    <comment>- Don't require grub so shim can still be used with systemd-boot (forwarded request 1115842 from lnussel)</comment>
+    <requestid>1116629</requestid>
+  </revision>
 </revisionlist>
