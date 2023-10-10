@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  3 07:16:39 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to DeaDBeeF-Player git version 1.16
+  * onPlayerSetPropertyHandler: return TRUE when ignoring playback
+    configs 
+    gh#DeaDBeeF-Player/deadbeef-mpris2-plugin#4
+  * Update to newest artwork plugin
+    gh#DeaDBeeF-Player/deadbeef-mpris2-plugin#1
+  
+-------------------------------------------------------------------
 Mon Jul  4 12:06:14 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Sync ExcludeArch %ix86 with libdispatch: libdispatch is not being

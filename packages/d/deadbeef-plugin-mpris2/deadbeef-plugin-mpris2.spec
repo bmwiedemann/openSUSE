@@ -1,7 +1,7 @@
 #
 # spec file for package deadbeef-plugin-mpris2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,13 @@
 
 %define _name   deadbeef-mpris2-plugin
 Name:           deadbeef-plugin-mpris2
-Version:        1.14
+Version:        1.16
 Release:        0
 Summary:        MPRISv2 plugin for the DeaDBeeF music player
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-URL:            https://github.com/Serranya/deadbeef-mpris2-plugin
-Source:         %{url}/releases/download/v%{version}/%{_name}-%{version}.tar.xz
+URL:            https://github.com/DeaDBeeF-Player/deadbeef-mpris2-plugin
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  automake
 BuildRequires:  deadbeef-devel >= 0.6.2
@@ -46,7 +46,7 @@ This plugin aims to implement the MPRISv2 D-Bus interface for
 DeaDBeeF for instance to integrate DeaDBeeF into Sound Menu.
 
 %prep
-%setup -q -n deadbeef-%{version}
+%setup -q -n %{_name}-%{version}
 
 %build
 autoreconf -fi
