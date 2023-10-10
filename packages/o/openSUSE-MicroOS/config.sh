@@ -108,21 +108,6 @@ if [ "$(findmnt -snT / -o SOURCE)" != "$(findmnt -snT /var -o SOURCE)" ]; then
 fi
 EOF
 
-# ONIE additions
-if [[ "$kiwi_profiles" == *"onie"* ]]; then
-	systemctl enable onie-adjust-boottype
-	# For testing:
-	echo root:linux | chpasswd
-	systemctl enable salt-minion
-
-	cat >>/etc/fstab.script <<"EOF"
-# Grow the root filesystem. / is mounted read-only, so use /var instead.
-gawk -i inplace '$2 == "/var" { $4 = $4",x-growpart.grow,x-systemd.growfs" } { print $0 }' /etc/fstab
-# Remove the entry for the EFI partition
-gawk -i inplace '$2 != "/boot/efi"' /etc/fstab
-EOF
-fi
-
 cat >>/etc/fstab.script <<"EOF"
 # Relabel /etc. While kiwi already relabelled it earlier, there are some files created later (boo#1210604).
 # The "gawk -i inplace" above also removes the label on /etc/fstab.
@@ -157,8 +142,8 @@ serialconsole='console=ttyS0,115200'
 [[ "$kiwi_profiles" == *"RaspberryPi2" ]] && serialconsole='console=ttyAMA0,115200'
 [[ "$kiwi_profiles" == *"Rock64" ]] && serialconsole='console=ttyS2,1500000'
 
-grub_cmdline=('quiet' 'systemd.show_status=yes' "${serialconsole}" 'console=tty0')
-rpm -q wicked && grub_cmdline+=('net.ifnames=0')
+cmdline=('quiet' 'systemd.show_status=yes' "${serialconsole}" 'console=tty0')
+rpm -q wicked && cmdline+=('net.ifnames=0')
 
 ignition_platform='metal'
 case "${kiwi_profiles}" in
@@ -168,8 +153,8 @@ case "${kiwi_profiles}" in
 	*OpenStack*) ignition_platform='openstack' ;;
 	*VirtualBox*) ignition_platform='virtualbox' ;;
 	*HyperV*) ignition_platform='metal'
-	          grub_cmdline+=('rootdelay=300') ;;
-	*Pine64*|*RaspberryPi*|*Rock64*|*Vagrant*|*onie*) ignition_platform='metal' ;;
+		  cmdline+=('rootdelay=300') ;;
+	*Pine64*|*RaspberryPi*|*Rock64*|*Vagrant*) ignition_platform='metal' ;;
 	# Use autodetection on selfinstall. The first boot doesn't use the grub
 	# cmdline anyway, it's started with kexec using kiwi's builtin default.
 	*SelfInstall*) ignition_platform='' ;;
@@ -179,19 +164,14 @@ case "${kiwi_profiles}" in
 esac
 
 if [ -n "${ignition_platform}" ]; then
-	grub_cmdline+=("ignition.platform.id=${ignition_platform}")
+	cmdline+=("ignition.platform.id=${ignition_platform}")
 fi
-
-sed -i "s#^GRUB_CMDLINE_LINUX_DEFAULT=.*\$#GRUB_CMDLINE_LINUX_DEFAULT=\"${grub_cmdline[*]}\"#" /etc/default/grub
 
 #======================================
 # If SELinux is installed, configure it like transactional-update setup-selinux
 #--------------------------------------
 if [[ -e /etc/selinux/config ]]; then
-	# Check if we don't have selinux already enabled.
-	grep ^GRUB_CMDLINE_LINUX_DEFAULT /etc/default/grub | grep -q security=selinux || \
-	    sed -i -e 's|\(^GRUB_CMDLINE_LINUX_DEFAULT=.*\)"|\1 security=selinux selinux=1"|g' "/etc/default/grub"
-
+	cmdline+=("security=selinux selinux=1")
 	# Adjust selinux config
 	sed -i -e 's|^SELINUX=.*|SELINUX=enforcing|g' \
 	    -e 's|^SELINUXTYPE=.*|SELINUXTYPE=targeted|g' \
@@ -199,6 +179,12 @@ if [[ -e /etc/selinux/config ]]; then
 
 	# Move an /.autorelabel file from initial installation to writeable location
 	test -f /.autorelabel && mv /.autorelabel /etc/selinux/.autorelabel
+fi
+
+if [ -e /etc/default/grub ]; then
+	sed -i "s#^GRUB_CMDLINE_LINUX_DEFAULT=.*\$#GRUB_CMDLINE_LINUX_DEFAULT=\"${cmdline[*]}\"#" /etc/default/grub
+else
+	echo "${cmdline[*]}" > /etc/kernel/cmdline
 fi
 
 #======================================
@@ -267,4 +253,16 @@ ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr+kz4TjGYe7
 EOF
         chmod 0600 /home/vagrant/.ssh/authorized_keys
         chown -R vagrant /home/vagrant
+fi
+
+if rpm -q sdbootutil; then
+	for d in /usr/lib/modules/*; do
+		test -d "$d" || continue
+		depmod -a "${d##*/}"
+	done
+	ENTRY_TOKEN=$(. /usr/lib/os-release; echo $ID)
+	mkdir -p /etc/kernel
+	echo "$ENTRY_TOKEN" > /etc/kernel/entry-token
+	# FIXME: kiwi needs /boot/efi to exist before syncing the disk image
+	mkdir -p /boot/efi
 fi

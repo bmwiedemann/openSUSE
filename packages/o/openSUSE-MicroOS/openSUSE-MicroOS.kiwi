@@ -11,6 +11,7 @@
         <!-- Flavors -->
         <profile name="ContainerHost" description="MicroOS with container runtime (podman)"/>
         <!-- Platforms -->
+        <profile name="kvm-and-xen-sdboot" description="kvm-and-xen with systemd-boot" arch="x86_64,aarch64"/>
         <profile name="kvm-and-xen" description="kvm-and-xen" arch="x86_64,aarch64"/>
         <profile name="VMware" description="VMware for x86_64" arch="x86_64"/>
         <profile name="MS-HyperV" description="Hyper-V" arch="x86_64,aarch64"/>
@@ -23,7 +24,6 @@
         <profile name="Rock64" description="Rock64" arch="aarch64"/>
         <profile name="Vagrant" description="Vagrant for x86_64" arch="x86_64,aarch64"/>
         <profile name="SelfInstall" description="Self Installing Image" arch="x86_64,aarch64"/>
-        <profile name="onie" description="ONIE Installer Image" arch="x86_64"/>
         <!-- Images (flavor + platform) -->
         <profile name="ContainerHost-kvm-and-xen" description="MicroOS with Podman for KVM and HVM Xen" arch="x86_64,aarch64">
             <requires profile="kvm-and-xen"/>
@@ -62,6 +62,38 @@
             <requires profile="ContainerHost"/>
         </profile>
     </profiles>
+    <preferences profiles="kvm-and-xen-sdboot">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="vmx"
+            filesystem="btrfs"
+            format="qcow2"
+            firmware="uefi"
+            bootpartition="false"
+            initrd_system="none"
+            efipartsize="500"
+            bootkernel="custom"
+            editbootinstall="editbootinstall_mbr.sh"
+            devicepersistency="by-uuid"
+            btrfs_root_is_snapshot="true"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="true"
+        >
+            <bootloader name="custom"/>
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <size unit="G">20</size>
+        </type>
+    </preferences>
     <preferences profiles="kvm-and-xen" arch="x86_64">
         <version>16.0.0</version>
         <packagemanager>zypper</packagemanager>
@@ -125,37 +157,6 @@
                 <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <size unit="G">20</size>
-        </type>
-    </preferences>
-    <preferences profiles="onie">
-        <version>16.0.0</version>
-        <packagemanager>zypper</packagemanager>
-        <bootloader-theme>openSUSE</bootloader-theme>
-        <rpm-excludedocs>true</rpm-excludedocs>
-        <locale>en_US</locale>
-        <type
-            image="vmx"
-            filesystem="btrfs"
-            format="qcow2"
-            firmware="uefi"
-            bootpartition="false"
-            devicepersistency="by-uuid"
-            btrfs_root_is_snapshot="true"
-            btrfs_root_is_readonly_snapshot="true"
-            btrfs_quota_groups="true"
-        >
-            <bootloader name="grub2" console="serial" serial_line="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1" />
-            <systemdisk>
-                <volume name="home"/>
-                <volume name="root"/>
-                <volume name="opt"/>
-                <volume name="srv"/>
-                <volume name="var" copy_on_write="false"/>
-                <volume name="boot/grub2/i386-pc"/>
-                <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
-                <volume name="boot/writable"/>
-                <volume name="usr/local"/>
-            </systemdisk>
         </type>
     </preferences>
     <preferences profiles="VMware">
@@ -638,7 +639,6 @@
     </repository>
     <packages type="image">
         <package name="live-add-yast-repos"/>
-        <package name="patterns-base-bootloader"/>
         <!-- Apparently zypper (?) doesn't like having multiple patterns with the same name,
              so avoid using namedCollection at least for basesystem -->
         <package name="patterns-microos-basesystem"/>
@@ -652,11 +652,21 @@
     </packages>
     <packages type="image" profiles="SelfInstall,kvm-and-xen,VMware,MS-HyperV,VirtualBox,Pine64,RaspberryPi,RaspberryPi2,Rock64,Vagrant,DigitalOcean-Cloud">
         <!-- Needed for initial configuration, except on OpenStack-Cloud, where cloud-init is used -->
-        <!-- On ONIE, the installer does the partitioning and salt is used for configuration -->
         <package name="ignition-dracut"/>
         <package name="combustion &gt;= 1.2"/> <!-- New firstboot mechanism -->
         <package name="jeos-firstboot"/>
         <package name="growpart-generator"/>
+        <package name="patterns-base-bootloader"/>
+    </packages>
+    <packages type="image" profiles="kvm-and-xen-sdboot">
+        <package name="combustion"/>
+        <package name="jeos-firstboot"/>
+        <package name="growpart-generator"/>
+        <package name="sdbootutil-snapper"/>
+        <package name="sdbootutil-rpm-scriptlets"/>
+        <package name="shim"/>
+        <package name="efibootmgr"/>
+        <package name="uefi_mbr" arch="x86_64"/>
     </packages>
     <packages type="image" profiles="Pine64,RaspberryPi,RaspberryPi2,Rock64">
         <package name="patterns-microos-hardware"/>
@@ -677,6 +687,7 @@
     </packages>
     <packages type="image" profiles="OpenStack-Cloud">
         <package name="patterns-microos-cloud"/>
+        <package name="patterns-base-bootloader"/>
     </packages>
     <packages type="image" profiles="VirtualBox">
         <package name="virtualbox-guest-tools"/>
@@ -720,12 +731,6 @@
     <packages type="image" profiles="Vagrant">
         <!-- vagrant-libvirt uses nfs for synced folders -->
         <package name="nfs-client"/>
-    </packages>
-    <packages type="image" profiles="onie">
-        <package name="patterns-microos-hardware"/>
-        <package name="kernel-firmware-all"/> <!-- Fix choice between kernel-firmware and kernel-firmware-all -->
-        <package name="salt-minion"/>
-        <archive name="onie.tar.gz"/>
     </packages>
     <packages type="image" profiles="SelfInstall">
         <package name="patterns-microos-hardware"/>

@@ -1,8 +1,7 @@
 <multibuild>
-        <!-- Special case: Pi2, VBox and onie only get plain MicroOS -->
+        <!-- Special case: Pi2, VBox only get plain MicroOS -->
         <flavor>RaspberryPi2</flavor>
         <flavor>VirtualBox</flavor>
-        <flavor>onie</flavor>
         <!--
                 for a in kvm-and-xen VMware MS-HyperV OpenStack-Cloud Pine64 Rock64 RaspberryPi Vagrant hardware; do
                         for f in "" "ContainerHost-"; do
@@ -29,4 +28,5 @@
         <flavor>SelfInstall</flavor>
         <flavor>ContainerHost-SelfInstall</flavor>
         <flavor>DigitalOcean-Cloud</flavor>
+        <flavor>kvm-and-xen-sdboot</flavor>
 </multibuild>
