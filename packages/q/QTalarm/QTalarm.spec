@@ -18,7 +18,7 @@
 
 %define  _name  qtalarm
 Name:           QTalarm
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        A handy alarm clock Program written in QT
 License:        GPL-3.0-only

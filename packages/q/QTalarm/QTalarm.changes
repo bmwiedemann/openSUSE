@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct  8 11:02:25 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.1
+  * Fixed a race condition in the math based snooze alarm.
+
+-------------------------------------------------------------------
 Mon Sep 11 20:44:11 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.0
