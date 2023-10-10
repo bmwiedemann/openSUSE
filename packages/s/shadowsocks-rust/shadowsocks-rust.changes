@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 25 14:02:49 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.16.2
+  * Fix bugs
+- Update vendor, fix boo#1215658 CVE-2023-42811
+
+-------------------------------------------------------------------
 Wed Jun 21 17:34:03 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Update constraints for riscv64
