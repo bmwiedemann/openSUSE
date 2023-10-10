@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Oct 08 16:00:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.10:
+  * Prepare for v0.15.10 release
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    b3c6e53
+  * chore(deps): update golang docker tag to v1.21.2
+  * sysdump: Detect features from cilium-config ConfigMap
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    e2eb1d5
+  * chore(deps): update docker.io/library/golang:1.21.2-alpine3.18
+    docker digest to a76f153
+  * renovate: update Go image version used to build releases
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    a2251c1
+  * chore(deps): update docker.io/library/golang docker tag to
+    v1.21.2
+  * connectivity test: Fix detectFeatures() logic
+  * chore(deps): update docker.io/library/golang:1.21.1-alpine3.18
+    docker digest to 1c9cc94
+  * fix(deps): update all go dependencies main
+  * chore(deps): update dependency go to v1.21.2
+  * helm-upgrade-clustermesh: Free up some disk space
+  * chore(deps): update nick-invision/retry action to v2.9.0
+  * clustermesh: Make cilium symlink install idempotent
+
+-------------------------------------------------------------------
 Thu Oct 05 04:36:35 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.9:
