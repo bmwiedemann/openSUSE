@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-django-silk
-Version:        5.0.3
+Version:        5.0.4
 Release:        0
 Summary:        Profiling for the Django Framework
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 3.2
 Requires:       python-Jinja2 >= 2.8
 Requires:       python-Pillow >= 3.2
-Requires:       python-Pygments >= 2.0
+Requires:       python-Pygments >= 2.16.1
 Requires:       python-autopep8 >= 1.2.1
 Requires:       python-gprof2dot >= 2017.09.19
 Requires:       python-python-dateutil >= 2.4
