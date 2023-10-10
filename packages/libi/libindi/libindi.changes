@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct  4 05:54:47 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.4:
+  * Fix bug in relative positioning of Lacerta MFOC
+  * Fix setFormat typos, add isEmpty method
+  * Use ZSTD compression for XISF images when available
+  * Preliminary support for Planewave
+  * Bug fix making both focusers visible
+  * focuser crash fixed+some properties added
+  * OnStep work
+  * Openastrotech work
+
+-------------------------------------------------------------------
+Fri Sep 29 05:53:26 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Force usage of GCC>=12 on Leap.
+
+-------------------------------------------------------------------
 Tue Aug  1 06:30:49 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.0.3:

@@ -15,11 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1590
+%global force_gcc_version 12
+%endif
 
 %define so_ver 2
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           libindi
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -28,14 +31,10 @@ URL:            https://www.indilib.org/
 Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/indi-%{version}.tar.gz
 Source1:        libindi-rpmlintrc
 BuildRequires:  cmake
-%if 0%{?suse_version} < 1590
-BuildRequires:  gcc10-c++
-%else
-BuildRequires:  gcc-c++
-%endif
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
-%if 0%{?suse_version} > 1590
+%if 0%{?sle_version} > 150500 || 0%{?suse_version} > 1600
 BuildRequires:  cfitsio-devel
 %else
 BuildRequires:  libcfitsio-devel
@@ -161,10 +160,8 @@ export CXXFLAGS="$CFLAGS"
     -DINDI_BUILD_QT5_CLIENT=ON \
     -DINDI_BUILD_WEBSOCKET=ON \
     -DINDI_BUILD_XISF=ON \
-%if 0%{?suse_version} < 1590
-    -DCMAKE_CXX_COMPILER=%{_bindir}/g++-10 \
-%else
-    -DCMAKE_CXX_COMPILER=%{_bindir}/g++ \
+%if 0%{?force_gcc_version}
+    -DCMAKE_CXX_COMPILER=%{_bindir}/g++-%{?force_gcc_version} \
 %endif
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
 %cmake_build
