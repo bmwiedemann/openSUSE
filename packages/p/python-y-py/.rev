@@ -19,4 +19,12 @@
   * to_json compatibility with Python json by @Waidhoferj in #102 (forwarded request 1092704 from bnavigator)</comment>
     <requestid>1092705</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>30be017040ef6b3a3522b7614b05c037</srcmd5>
+    <version>0.6.2</version>
+    <time>1696963930</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116537</requestid>
+  </revision>
 </revisionlist>

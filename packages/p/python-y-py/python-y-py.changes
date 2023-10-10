@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  9 18:26:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.2
+  * Add package version by @davidbrochart in #125
+  * Preliminary Array Insertion by @Waidhoferj in #130
+  * Fix example by @davidbrochart in #135
+  * Update pyo3 to 0.19.2 and add Python 3.12 support by
+    @frenzymadness in #138
+  * Remove drop reference by @davidbrochart in #140
+
+-------------------------------------------------------------------
 Sun Jun 11 20:28:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.1
