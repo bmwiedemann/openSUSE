@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Sun Dec 18 21:32:07 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.18.0:
+  - Move project home on GitHub from @scheibler to @lucc
+  - Catch exceptions when loading the config (#294)
+  - Split $EDITOR env variable on spaces (#314)
+  - Add special phone number field query
+  - Add-email command improved: Attach email address to an
+    existing contact
+  - Add-email command: new option --skip-already-added
+  - Add partial support for KIND: search query, display in
+    details and listing (#309)
+  - Add show_kinds config option (#309)
+  - Add nix flake
+  - Remove support for python 3.6
+  - Remove deprecated subcommands "export" and "source"
+  - Switch from Travis to GitHub CI
+- Enable tests
+- Add basic documentation files
+
+-------------------------------------------------------------------
+Sun Dec 18 21:18:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Adaptation to the current standards.
+
+-------------------------------------------------------------------
+Thu Feb 25 19:43:28 UTC 2021 - Guillaume Levasseur <phenyl@posteo.net>
+- Version 0.17.0
