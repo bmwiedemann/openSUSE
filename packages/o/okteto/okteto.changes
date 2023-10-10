@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Oct 10 13:55:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.21.0:
+  * Jlopezbarb/kubetoken update (#3998) (#4006)
+  * Panic secret not valid (#3982)
+  * New option `--reuse-params` at `okteto pipeline deploy` (#3985)
+  * fix: kubeconfig duplicate log (#3981)
+  * fix: high resources panic (#3984)
+  * fix panic deploying dependencies in vanilla (#3995)
+  * link kubetoken docs when using static tokens (#3943)
+  * Uncomment defer delete namespace (#3975)
+  * feat: add pipeline list cmd (#3971)
+  * [golangci-lint] Enable lint unused unparam (#3976)
+  * feat: add remote field in okteto manifest (#3853)
+  * build(deps): Bump docker/setup-buildx-action from 2 to 3
+    (#3978)
+  * build(deps): Bump docker/setup-qemu-action from 2 to 3 (#3979)
+  * Fix preview list output (#3970)
+  * [golangci-lint] enable govet ineffassign staticcheck (#3972)
+  * feat: add support for labels when deploying a pipeline (#3964)
+  * Generic invalid license error (#3977)
+  * build(deps): Bump actions/checkout from 3 to 4 (#3962)
+  * chore: update syncthing to 1.24.0 (#3969)
+  * chore: remove PR annotations (#3974)
+  * expand branch value if comes from variable (#3956)
+  * [golangci-lint] Enable gosimple (#3966)
+  * [golangci-lint] Enable errcheck (#3965)
+  * Basic golangci lint (#3961)
+  * chore: update codecov (#3960)
+  * build(deps): Bump
+    CircleCI-Public/trigger-circleci-pipeline-action (#3868)
+  * docs: update PR template (#3957)
+
+-------------------------------------------------------------------
 Tue Sep 12 08:04:11 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.20.0:
