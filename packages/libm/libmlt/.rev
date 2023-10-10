@@ -817,4 +817,12 @@ Only build sdl2 module.
 - Update to 7.18.0</comment>
     <requestid>1114798</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>11a6c385137ec489083d3ff4521bb4d2</srcmd5>
+    <version>7.20.0</version>
+    <time>1696964399</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116483</requestid>
+  </revision>
 </revisionlist>

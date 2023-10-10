@@ -18,20 +18,20 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.18.0
+%define lversion 7.20.0
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.18.0
+%define lversion_pp 7.20.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
 %bcond_without Qt6
-# FIXME: for some reason the build fails in multimedia:libs but nowhere else due to rtaudio issues
-#
-%bcond_without rtaudio
+# FIXME: the build fails due to incompatible rtaudio abi
+#        see https://github.com/mltframework/mlt/issues/930
+%bcond_with rtaudio
 Name:           %{libname}
-Version:        7.18.0
+Version:        7.20.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
@@ -51,6 +51,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  cmake(Qt5Core) >= 5.10
 BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
@@ -58,8 +59,15 @@ BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6SvgWidgets)
 BuildRequires:  cmake(Qt6Xml)
+%else
+BuildRequires:  cmake(Qt5Core) >= 5.10
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 %endif
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fftw3)
@@ -301,12 +309,12 @@ popd
 
 %if %{with Qt6}
 %files -n %{libname}%{sover}-module-qt6
+%dir %{_datadir}/%{_name}-%{sover}
+%{_datadir}/%{_name}-%{sover}/glaxnimate-qt6/
+%{_datadir}/%{_name}-%{sover}/qt6/
 %dir %{_libdir}/%{_name}-%{sover}
 %{_libdir}/%{_name}-%{sover}/libmltglaxnimate-qt6.so
 %{_libdir}/%{_name}-%{sover}/libmltqt6.so
-%dir %{_datadir}/%{_name}-%{sover}/
-%{_datadir}/%{_name}-%{sover}/glaxnimate-qt6/
-%{_datadir}/%{_name}-%{sover}/qt6/
 %endif
 
 %files -n %{libname}%{sover}-data
