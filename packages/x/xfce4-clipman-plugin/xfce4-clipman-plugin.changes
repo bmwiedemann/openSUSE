@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Sep 29 15:40:20 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.6.5
+  * wayland: Hide skip-action-on-key-down setting
+  * wayland: Hide persistent-primary-clipboard setting
+  * Add set-text action to plugin app to allow D-Bus calls
+  * Add Wayland impl for clipboard-manager
+  * Make clipboard manager an interface and add X11 impl
+  * Rename x11-clipboard-manager to clipboard-manager
+  * Move paste_on_activate() to common
+  * Make X11 dependencies optional and guard X11 code paths
+  * cleanup: Remove unused project files
+  * cleanup: Remove useless variable assignment
+  * tests: Add missing include
+  * history-dialog: Fix memory leak
+  * ui: Mark 2 strings translatable
+  * history-dialog: Keep paste-on-activate in sync with the settings (V2)
+  * settings: Fix tooltip text
+  * status-icon: Enable tooltip
+  * status-icon: Add missing sanity check
+  * popup-clipman: Replace deprecated gdk_keyboard_grab()
+  * Replace deprecated gtk_menu_popup() when possible
+  * collector: Do not restore default clipboard if not really empty
+  * menu: Fix translated string
+  * Update URLs
+  * Translation Updates
+- Add xfce4-clipman-plugin-relax-x11-version.patch
+
+-------------------------------------------------------------------
 Tue Aug 15 07:49:40 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 1.6.4

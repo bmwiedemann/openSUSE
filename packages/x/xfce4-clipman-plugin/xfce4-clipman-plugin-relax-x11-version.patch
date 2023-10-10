@@ -1,0 +1,75 @@
+diff -rup a/configure.ac b/configure.ac
+--- a/configure.ac	2023-09-29 13:06:56.000000000 +0200
++++ b/configure.ac	2023-09-29 19:40:08.099277983 +0200
+@@ -28,7 +28,7 @@ m4_define([libxfce4ui_min_version], [4.1
+ m4_define([libxfce4util_min_version], [4.14.0])
+ m4_define([libxfce4panel_min_version], [4.14.0])
+ m4_define([xfconf_minimum_version], [4.14.0])
+-m4_define([libx11_min_version], [1.6.7])
++m4_define([libx11_min_version], [1.6.5])
+ m4_define([libxproto_min_version], [7.0.0])
+ m4_define([libxtst_min_version], [1.0.0])
+ m4_define([wayland_min_version], [1.15.0])
+diff -rup a/configure b/configure
+--- a/configure	2023-09-29 13:07:37.000000000 +0200
++++ b/configure	2023-09-29 19:40:33.085933469 +0200
+@@ -16089,7 +16089,7 @@ fi
+ 
+ 
+   if test x"$xdt_cv_LIBX11_check" = x"yes"; then
+-    if $PKG_CONFIG --exists "x11 >= 1.6.7" >/dev/null 2>&1; then
++    if $PKG_CONFIG --exists "x11 >= 1.6.5" >/dev/null 2>&1; then
+ 
+ 
+   # minimum supported version of pkg-config
+@@ -16240,9 +16240,9 @@ fi
+ 
+ 
+ 
+-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for x11 >= 1.6.7" >&5
+-printf %s "checking for x11 >= 1.6.7... " >&6; }
+-  if $PKG_CONFIG "--atleast-version=1.6.7" "x11" >/dev/null 2>&1; then
++  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for x11 >= 1.6.5" >&5
++printf %s "checking for x11 >= 1.6.5... " >&6; }
++  if $PKG_CONFIG "--atleast-version=1.6.5" "x11" >/dev/null 2>&1; then
+     LIBX11_VERSION=`$PKG_CONFIG --modversion "x11"`
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_VERSION" >&5
+ printf "%s\n" "$LIBX11_VERSION" >&6; }
+@@ -16259,7 +16259,7 @@ printf %s "checking LIBX11_LIBS... " >&6
+     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_LIBS" >&5
+ printf "%s\n" "$LIBX11_LIBS" >&6; }
+ 
+-    LIBX11_REQUIRED_VERSION=1.6.7
++    LIBX11_REQUIRED_VERSION=1.6.5
+ 
+ 
+ 
+@@ -16288,7 +16288,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+ 
+       echo "*** The required package x11 was found on your system,"
+       echo "*** but the installed version ($xdt_cv_version) is too old."
+-      echo "*** Please upgrade x11 to atleast version 1.6.7, or adjust"
++      echo "*** Please upgrade x11 to atleast version 1.6.5, or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
+       echo "*** the new version of the package in a nonstandard prefix so"
+       echo "*** pkg-config is able to find it."
+@@ -16300,7 +16300,7 @@ printf "%s\n" "not found" >&6; }
+ 
+ 
+       echo "*** The required package x11 was not found on your system."
+-      echo "*** Please install x11 (atleast version 1.6.7) or adjust"
++      echo "*** Please install x11 (atleast version 1.6.5) or adjust"
+       echo "*** the PKG_CONFIG_PATH environment variable if you"
+       echo "*** installed the package in a nonstandard prefix so that"
+       echo "*** pkg-config is able to find it."
+@@ -16309,8 +16309,8 @@ printf "%s\n" "not found" >&6; }
+   fi
+ 
+     else
+-      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for optional package x11 >= 1.6.7" >&5
+-printf %s "checking for optional package x11 >= 1.6.7... " >&6; }
++      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for optional package x11 >= 1.6.5" >&5
++printf %s "checking for optional package x11 >= 1.6.5... " >&6; }
+       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: not found" >&5
+ printf "%s\n" "not found" >&6; }
+     fi

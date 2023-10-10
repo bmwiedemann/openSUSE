@@ -20,13 +20,15 @@
 %define plugin clipman
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.6.4
+Version:        1.6.5
 Release:        0
 Summary:        Clipboard Manager Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-clipman-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.6/%{name}-%{version}.tar.bz2
+# PATCH-FIX-OPENSUSE xfce4-clipman-plugin-relax-x11-version.patch lower required X11 version to allow building for Leap which only has 1.6.5, which is enough, though
+Patch0:         xfce4-clipman-plugin-relax-x11-version.patch
 BuildRequires:  appstream-glib
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -36,11 +38,12 @@ BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.22.29
 BuildRequires:  pkgconfig(gio-2.0) >= 2.60.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.60.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.29
-BuildRequires:  pkgconfig(libqrencode)
+BuildRequires:  pkgconfig(libqrencode) >= 3.3.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.14.0
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.14.0
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xproto) >= 7.0.0
 BuildRequires:  pkgconfig(xtst) >= 1.0.0
 %if %{with git}
