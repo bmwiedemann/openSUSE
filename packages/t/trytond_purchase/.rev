@@ -233,4 +233,12 @@
     <comment>bugfix</comment>
     <requestid>1088641</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e1a5fb61210b398abd13deff77eeb098</srcmd5>
+    <version>6.0.12</version>
+    <time>1696964315</time>
+    <user>anag+factory</user>
+    <comment>bugfix release</comment>
+    <requestid>1116285</requestid>
+  </revision>
 </revisionlist>
