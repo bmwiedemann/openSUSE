@@ -1,0 +1,5 @@
+<package name="kubearmor-client" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic" package="kubearmor-client"/>
+</package>
