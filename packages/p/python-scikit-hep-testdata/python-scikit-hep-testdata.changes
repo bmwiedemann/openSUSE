@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct  8 00:58:33 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.33:
+  * Add nano_dy.root file from uproot issue 121
+    [gh#scikit-help/scikit-hep-testdata#130].
+
+-------------------------------------------------------------------
 Mon Jul  3 09:45:35 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.4.31:
