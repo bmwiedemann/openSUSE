@@ -21,13 +21,13 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-ml
-Version:        1.10.1
+Version:        1.11.0
 Release:        0
 Summary:        Microsoft Azure Machine Learning Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-ml/azure-ai-ml-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-ml/azure-ai-ml-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module PyYAML >= 5.1.0}
@@ -55,7 +55,6 @@ BuildRequires:  %{python_module tqdm < 5.0.0}
 BuildRequires:  %{python_module typing-extensions >= 4.0.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-PyJWT < 3.0.0
 Requires:       python-PyYAML >= 5.1.0
 Requires:       python-applicationinsights <= 0.11.10
