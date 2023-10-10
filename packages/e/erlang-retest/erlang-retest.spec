@@ -28,6 +28,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        retest-%{version}.tar.bz2
 Requires:       erlang >= R13B01
 BuildRequires:  erlang-rebar
+BuildRequires:  strip-nondeterminism
 
 %description
 Erlang retest library.
@@ -49,6 +50,7 @@ epmd -kill
 
 %install
 install -Dm755 retest %{buildroot}%{_bindir}/retest
+strip-nondeterminism -t zip %{buildroot}%{_bindir}/retest # drop zip timestamps for reproducible builds
 for dir in include ebin src ; do
   install -d %{buildroot}%{erlang_libdir}/retest-%{mod_ver}/${dir}
   cp -r ${dir}/* %{buildroot}%{erlang_libdir}/retest-%{mod_ver}/${dir}/
