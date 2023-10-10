@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,6 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname mpiP
-%define vers 3.5
 %define _vers 3_5
 
 %if 0%{?sle_version} >= 150200
@@ -259,7 +258,7 @@ Name:           %{?hpc_package_name:%{hpc_package_name %_vers}}%{!?hpc_package_n
 Summary:        A profiling library for MPI applications
 License:        BSD-3-Clause
 Group:          Development/Tools/Debuggers
-Version:        %vers
+Version:        3.5
 Release:        0
 URL:            https://github.com/LLNL/mpiP
 Source0:        https://github.com/LLNL/mpiP/releases/download/%{version}/mpip-%{version}.tgz#/%{pname}-%{version}.tgz
@@ -319,6 +318,10 @@ mpiP is a profiling library for MPI applications.
 This contains the documentation.
 
 %{hpc_master_package doc}
+
+%if "%(echo %version | tr '.' '_')" != "%_vers"
+%{error: Fix _vers variable to match package version!}
+%endif
 
 %prep
 %setup -q -n %{pname}-%{version}

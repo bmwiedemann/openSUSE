@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 10 09:40:37 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop %vers macro so that the Version tag can be parsed more easily
+
+-------------------------------------------------------------------
 Mon Oct 24 06:45:37 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use Python 3 instead of Python 2 to build.
