@@ -18,7 +18,7 @@
 
 %define alt_name XaoS
 Name:           xaos
-Version:        4.3
+Version:        4.3.1
 Release:        0
 Summary:        Powerful fractal generator
 License:        GPL-2.0-or-later
