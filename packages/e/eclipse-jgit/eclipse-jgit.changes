@@ -1,9 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 10 15:09:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jgit-CVE-2023-4759.patch
+    + backport of upstream fix for bsc#1215298 (CVE-2023-4759),
+      arbitrary file overwrite
+
+-------------------------------------------------------------------
 Fri Oct  6 11:04:41 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Removed patch:
   * 0001-Ensure-the-correct-classpath-is-set-for-the-jgit-com.patch
     + no need to patch the jgit.sh launcher that we do not use
+
+-------------------------------------------------------------------
+Fri Oct  6 11:00:40 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Craft the jgit script from the real Main class of the jar file
+  instead of using some superfluous jar launcher.
+  Fixes bsc#1209646
 
 -------------------------------------------------------------------
 Wed May 31 19:51:51 UTC 2023 - Fridrich Strba <fstrba@suse.com>
@@ -19,6 +34,13 @@ Fri May  5 08:24:40 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
   Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Mon Mar 27 08:18:14 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Require xz-java because the jgit script that we install is
+  expecting it to be present when composing the classpath
+  (bsc#1209646)
 
 -------------------------------------------------------------------
 Wed Nov 16 11:24:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>

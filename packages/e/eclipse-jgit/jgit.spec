@@ -36,6 +36,7 @@ Patch2:         jgit-shade.patch
 Patch3:         jgit-5.11.0-java8.patch
 Patch4:         jgit-apache-sshd-2.7.0.patch
 Patch5:         jgit-jsch.patch
+Patch6:         jgit-CVE-2023-4759.patch
 # For main build
 BuildRequires:  ant
 BuildRequires:  fdupes
@@ -104,6 +105,7 @@ Group:          Documentation/HTML
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 # Disable multithreaded build
 rm .mvn/maven.config
@@ -160,7 +162,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # Binary
-%jpackage_script org.eclipse.jgit.pgm.Main "" "" javaewah:jzlib:jsch:jgit/org.eclipse.jgit:slf4j/api:slf4j/simple:args4j:commons-compress:httpcomponents/httpcore:httpcomponents/httpclient:commons-logging:commons-codec:eddsa:apache-sshd/sshd-osgi:apache-sshd/sshd-sftp %{name}
+%jpackage_script org.eclipse.jgit.pgm.Main "" "" javaewah:jzlib:jsch:jgit:slf4j/api:slf4j/simple:args4j:commons-compress:httpcomponents/httpcore:httpcomponents/httpclient:commons-logging:commons-codec:eddsa:apache-sshd/sshd-osgi:apache-sshd/sshd-sftp %{name}
 
 # Ant task configuration
 install -dm 755 %{buildroot}%{_sysconfdir}/ant.d

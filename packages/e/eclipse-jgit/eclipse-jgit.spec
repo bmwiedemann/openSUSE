@@ -36,6 +36,7 @@ Patch2:         jgit-shade.patch
 Patch3:         jgit-5.11.0-java8.patch
 Patch4:         jgit-apache-sshd-2.7.0.patch
 Patch5:         jgit-jsch.patch
+Patch6:         jgit-CVE-2023-4759.patch
 # For main build
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
@@ -95,6 +96,7 @@ A pure Java implementation of the Git version control system.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 # Disable multithreaded build
 rm .mvn/maven.config

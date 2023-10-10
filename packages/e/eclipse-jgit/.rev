@@ -103,4 +103,12 @@
     <comment>bsc#1209646</comment>
     <requestid>1116023</requestid>
   </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>8de2c5c25875e36cd8bbf27ad6f23fe9</srcmd5>
+    <version>5.11.0</version>
+    <time>1696964492</time>
+    <user>anag+factory</user>
+    <comment>bsc#1215298</comment>
+    <requestid>1116733</requestid>
+  </revision>
 </revisionlist>
