@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Mon Oct  9 13:34:01 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.0:
+  * feat: add zingmp3 extractor #1280
+  * Add goreleaser action #1281
+
+-------------------------------------------------------------------
+Sun Sep 24 07:34:13 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of lux 0.20.0 for openSUSE
