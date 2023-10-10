@@ -36,61 +36,27 @@
 # Keep this in sync with the multi-python build set!
 %if 0%{suse_version} < 1550
 
-%if "%{flavor}" == "clang-test-py2"
-%bcond_without  test_clang
-%bcond_with     test_gcc
-%define pythons python2
-%endif
-%if "%{flavor}" == "clang-test-py36"
-%bcond_without  test_clang
-%bcond_with     test_gcc
-%define pythons python3
-%endif
-%if "%{flavor}" == "clang-test-py38"
-ExclusiveArch:  do-not-build
-%endif
 %if "%{flavor}" == "clang-test-py39"
 ExclusiveArch:  do-not-build
 %endif
 %if "%{flavor}" == "clang-test-py310"
 ExclusiveArch:  do-not-build
 %endif
-%if "%{flavor}" == "gcc-test-py2"
-%bcond_with     test_clang
-%bcond_without  test_gcc
-%define pythons python2
-%endif
-%if "%{flavor}" == "gcc-test-py36"
-%bcond_with     test_clang
-%bcond_without  test_gcc
-%define pythons python3
-%endif
-%if "%{flavor}" == "gcc-test-py38"
+%if "%{flavor}" == "clang-test-py311"
 ExclusiveArch:  do-not-build
 %endif
 %if "%{flavor}" == "gcc-test-py39"
 ExclusiveArch:  do-not-build
 %endif
 %if "%{flavor}" == "gcc-test-py310"
+ExclusiveArch:  do-not-build
+%endif
+%if "%{flavor}" == "gcc-test-py311"
 ExclusiveArch:  do-not-build
 %endif
 
 %else
 
-%if "%{flavor}" == "clang-test-py2"
-ExclusiveArch:  do-not-build
-%endif
-%if "%{flavor}" == "clang-test-py36"
-ExclusiveArch:  do-not-build
-%bcond_without  test_clang
-%bcond_with     test_gcc
-%define pythons python36
-%endif
-%if "%{flavor}" == "clang-test-py38"
-%bcond_without  test_clang
-%bcond_with     test_gcc
-%define pythons python38
-%endif
 %if "%{flavor}" == "clang-test-py39"
 %bcond_without  test_clang
 %bcond_with     test_gcc
@@ -101,19 +67,10 @@ ExclusiveArch:  do-not-build
 %bcond_with     test_gcc
 %define pythons python310
 %endif
-%if "%{flavor}" == "gcc-test-py2"
-ExclusiveArch:  do-not-build
-%endif
-%if "%{flavor}" == "gcc-test-py36"
-ExclusiveArch:  do-not-build
-%bcond_with     test_clang
-%bcond_without  test_gcc
-%define pythons python36
-%endif
-%if "%{flavor}" == "gcc-test-py38"
-%bcond_with     test_clang
-%bcond_without  test_gcc
-%define pythons python38
+%if "%{flavor}" == "clang-test-py311"
+%bcond_without  test_clang
+%bcond_with     test_gcc
+%define pythons python311
 %endif
 %if "%{flavor}" == "gcc-test-py39"
 %bcond_with     test_clang
@@ -125,13 +82,16 @@ ExclusiveArch:  do-not-build
 %bcond_without  test_gcc
 %define pythons python310
 %endif
+%if "%{flavor}" == "gcc-test-py311"
+%bcond_with     test_clang
+%bcond_without  test_gcc
+%define pythons python311
+%endif
 
 %endif
 
-%define skip_python311 1
-# For Python 3.11 support status see https://github.com/Nuitka/Nuitka/issues/1856
 Name:           python-Nuitka%{?psuffix}
-Version:        1.4.5
+Version:        1.8.4
 Release:        0
 Summary:        Python compiler with full language support and CPython compatibility
 License:        Apache-2.0
@@ -142,6 +102,7 @@ Source1:        nuitka-rpmlintrc
 # PATCH-FIX-UPSTREAM no-binary-distribution.patch gh#Nuitka/Nuitka#1702 mcepl@suse.com
 # Do not pretend this is binary distribution
 Patch0:         no-binary-distribution.patch
+BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -155,6 +116,8 @@ Requires:       python-PyYAML
 Requires:       python-appdirs
 Requires:       python-atomicwrites
 Requires:       python-devel
+Requires:       python-ordered-set
+Requires:       python-zstandard
 Requires:       scons
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -162,7 +125,6 @@ Recommends:     ccache
 Recommends:     chrpath
 Recommends:     clang
 Recommends:     patchelf
-Recommends:     python-ordered-set
 Recommends:     python-tqdm
 Recommends:     strace
 Suggests:       execstack
@@ -180,7 +142,6 @@ BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module atomicwrites}
 BuildRequires:  %{python_module glfw}
 BuildRequires:  %{python_module glob2}
@@ -241,34 +202,8 @@ used in the same way as pure Python objects.
 %autosetup -p1 -n Nuitka-%{version}
 
 # De-vendor
-rm -r nuitka/build/inline_copy/appdirs/
-rm -r nuitka/build/inline_copy/atomicwrites/
-rm -r nuitka/build/inline_copy/jinja2/
-rm -r nuitka/build/inline_copy/jinja2_35/
-rm -r nuitka/build/inline_copy/markupsafe/  # dep of Jinja2
-rm -r nuitka/build/inline_copy/yaml
-rm -r nuitka/build/inline_copy/yaml_27/
-rm -r nuitka/build/inline_copy/yaml_35/
-
-# SCons has copies here that are automatically excluded, but remove them to be sure
-rm -r nuitka/build/inline_copy/lib/scons*/
-rm nuitka/build/inline_copy/bin/scons.py
-
-# De-vendor optional dependencies
-rm -r nuitka/build/inline_copy/tqdm/
+# rest is controled by env var
 rm -r nuitka/build/inline_copy/zstd/  # 'Onefile' feature
-
-rm -r nuitka/build/inline_copy/glob2/  # Only needed for Python <3.5
-
-# Ensure there are no other inline copies
-rm -r nuitka/build/inline_copy/clcache/  # Only needed for Windows
-rm -r nuitka/build/inline_copy/colorama/  # Only needed for Windows
-rm -r nuitka/build/inline_copy/pkg_resources/  # For ancient Pythons
-
-rmdir nuitka/build/inline_copy/bin/
-rmdir nuitka/build/inline_copy/lib/
-
-rmdir nuitka/build/inline_copy/ || (ls nuitka/build/inline_copy/ && exit 1)
 
 sed -i '1{/^#!/d}' nuitka/tools/testing/*/__main__.py nuitka/tools/general/dll_report/__main__.py
 
@@ -286,6 +221,7 @@ rm tests/standalone/TkInterUsing.py
 find nuitka -name __init__.py -exec touch -m -r nuitka/__init__.py {} ';'
 
 %build
+export NUITKA_NO_INLINE_COPY=1
 %pyproject_wheel
 
 %if ! %{with test_gcc} && ! %{with test_clang}
@@ -327,12 +263,7 @@ export TK_LIBRARY=%{_libdir}/tcl/tk8.6
 
 # scons is primary python3 only, but used in the tests it needs to find the modules in its "own" flavor. Luckily it is pure...
 mkdir my-scons
-%if 0%{?sle_version} == 150100
-# Leap 15.1 placed scons here
-cp -rp %{_libexecdir}/scons-*/ my-scons/
-%else
 cp -r %{python3_sitelib}/SCons my-scons/
-%endif
 
 export PYTHONPATH=$PYTHONPATH:$PWD/my-scons/
 
