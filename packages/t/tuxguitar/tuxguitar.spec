@@ -16,30 +16,62 @@
 #
 
 
+%ifarch x86_64
+%global bit x86_64
+%endif
+%ifarch armv7hl
+%global bit armv7hl
+%endif
+%ifarch armv6hl
+%global bit armv6hl
+%endif
+%ifarch ppc64
+%global bit ppc64
+%endif
+%ifarch ppc64le
+%global bit ppc64le
+%endif
+%ifarch riscv64
+%global bit riscv64
+%endif
+%ifarch s390x
+%global bit s390x
+%endif
+%ifarch aarch64
+%global bit aarch64
+%endif
+%ifarch %{ix86}
+%global bit x86
+%endif
 Name:           tuxguitar
 Version:        1.6.0
-Release:        0.1
+Release:        0
 Summary:        A multitrack tablature editor and player written in Java-SWT
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/helge17/tuxguitar
 Source0:        https://github.com/helge17/tuxguitar/archive/refs/tags/%{version}.tar.gz
-Patch0:         tuxguitar-default-soundfont.patch
-Patch1:         no-vst.patch
-Patch2:         tuxguitar-startscript.patch
-Patch3:         desktop.patch
-
-ExclusiveArch:  x86_64
-
+Patch0:         0001-tuxguitar-aarch64.patch
+Patch1:         0002-tuxguitar-armv6hl.patch
+Patch2:         0003-tuxguitar-armv7hl.patch
+Patch3:         0004-tuxguitar-ppc64.patch
+Patch4:         0005-tuxguitar-ppc64le.patch
+Patch5:         0006-tuxguitar-riscv64.patch
+Patch6:         0007-tuxguitar-s390x.patch
+Patch7:         0008-tuxguitar-x86.patch
+Patch10:        0009-no-vst.patch
+Patch11:        0010-no-lv2.patch
+Patch12:        0011-no-fluidsynth.patch
+Patch20:        0012-default-soundfont.patch
+Patch21:        0013-startscript.patch
+Patch22:        0014-desktop.patch
+BuildRequires:  alsa-devel
 BuildRequires:  fdupes
-BuildRequires:  fluidsynth-devel
 BuildRequires:  gcc-c++
 BuildRequires:  jack-audio-connection-kit-devel
 BuildRequires:  libQt5Core-devel
 BuildRequires:  libQt5Widgets-devel
-BuildRequires:  liblilv-0-devel
 BuildRequires:  maven-local
-BuildRequires:  suil-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  mvn(com.itextpdf:itextpdf)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
@@ -50,6 +82,13 @@ Requires:       eclipse-swt >= 4.13
 Recommends:     snd_sf2
 Recommends:     timidity
 Suggests:       fluid-soundfont-gm
+%if 0%{?suse_version} >= 1500
+BuildRequires:  fluidsynth-devel
+BuildRequires:  liblilv-0-devel
+%endif
+%if 0%{?suse_version} > 1500
+BuildRequires:  suil-devel
+%endif
 
 %description
 TuxGuitar is a guitar tablature editor with player support through midi. It can
@@ -59,12 +98,21 @@ hammer-on/pull-off effects, support for tuplets, time signature management,
 tempo management, gp3/gp4/gp5/gpx import and export.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 find . -name "*.exe" -print -delete
 find . -name "*.dll" -print -delete
 find . -name "*.sf2" -print -delete
 find . -name "*.jar" -print -delete
 find . -name "*.so" -print -delete
+
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
 
 # In source archive, all modules have an attribute "VERSION" set to "SNAPSHOT"
 # this attribute is set during build/delivery
@@ -73,25 +121,32 @@ find . -name "*.so" -print -delete
 find . \( -name "*.xml" -or -name "*.gradle"  -or -name "*.properties" -or -name control -or -name Info.plist \) -and -type f -exec sed -i "s/SNAPSHOT/%{version}/" '{}' \;
 sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME = (TGApplication.NAME + \" %{version}\");/" TuxGuitar/src/org/herac/tuxguitar/app/view/dialog/about/TGAboutDialog.java
 
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch10 -p1
+%if 0%{?suse_version} <= 1500
+%patch11 -p1
+%endif
+%if 0%{?suse_version} < 1500
+%patch12 -p1
+%endif
+
+%patch20 -p1
+%patch21 -p1
+%patch22 -p1
 
 %pom_xpath_remove "pom:profile[pom:id[text()='platform-windows-swt-all']]"
 %pom_xpath_remove "pom:profile[pom:id[text()='platform-macos-swt-cocoa-64']]"
 %pom_xpath_remove "pom:profile[pom:id[text()='platform-freebsd-swt-x86_64']]"
 %pom_xpath_set -r pom:org.eclipse.swt.artifactId org.eclipse.swt
-%pom_xpath_set -r pom:org.eclipse.swt.artifactId org.eclipse.swt build-scripts/%{name}-linux-swt-%{_arch}
-%pom_xpath_remove "pom:artifactItem[pom:destFileName[text()='swt.jar']]" build-scripts/%{name}-linux-swt-%{_arch}
+%pom_xpath_set -r pom:org.eclipse.swt.artifactId org.eclipse.swt build-scripts/%{name}-linux-swt-%{bit}
+%pom_xpath_remove "pom:artifactItem[pom:destFileName[text()='swt.jar']]" build-scripts/%{name}-linux-swt-%{bit}
 %pom_remove_dep :org.eclipse.swt.gtk.linux.x86_64
 %pom_remove_dep :org.eclipse.swt.win32.win32.x86_64
 %pom_remove_dep :org.eclipse.swt.cocoa.macosx.x86_64
-%pom_xpath_inject pom:modules "<module>../../TuxGuitar-viewer</module>" build-scripts/%{name}-linux-swt-%{_arch}
+%pom_xpath_inject pom:modules "<module>../../TuxGuitar-viewer</module>" build-scripts/%{name}-linux-swt-%{bit}
 
 %build
 %{mvn_build} -j -f -- \
-    -e -f build-scripts/%{name}-linux-swt-%{_arch}/pom.xml \
+    -e -f build-scripts/%{name}-linux-swt-%{bit}/pom.xml \
     -Dproject.build.sourceEncoding=UTF-8 -Dnative-modules=true
 
 %install
@@ -116,7 +171,7 @@ cp -a build-scripts/common-resources/common-linux/share/mime/packages/tuxguitar.
 # data files
 mkdir -p %{buildroot}/%{_datadir}/%{name}
 cp -a TuxGuitar/share/* %{buildroot}/%{_datadir}/%{name}
-cp -a build-scripts/%{name}-linux-swt-%{_arch}/target/%{name}-%{version}-linux-swt-%{_arch}/dist/* %{buildroot}/%{_datadir}/%{name}
+cp -a build-scripts/%{name}-linux-swt-%{bit}/target/%{name}-%{version}-linux-swt-%{bit}/dist/* %{buildroot}/%{_datadir}/%{name}
 
 # desktop files
 install -dm 755 %{buildroot}/%{_datadir}/applications
@@ -133,9 +188,13 @@ cp -a build-scripts/common-resources/common-linux/share/man/man1/%{name}.1 %{bui
 %fdupes -s %{buildroot}
 
 ln -sf %{_jnidir}/%{name}/%{name}-alsa.jar %{buildroot}%{_javadir}/%{name}/
-ln -sf %{_jnidir}/%{name}/%{name}-fluidsynth.jar %{buildroot}%{_javadir}/%{name}/
 ln -sf %{_jnidir}/%{name}/%{name}-jack.jar %{buildroot}%{_javadir}/%{name}/
+%if 0%{?suse_version} >= 1500
+ln -sf %{_jnidir}/%{name}/%{name}-fluidsynth.jar %{buildroot}%{_javadir}/%{name}/
+%endif
+%if 0%{?suse_version} > 1500
 ln -sf %{_jnidir}/%{name}/%{name}-synth-lv2.jar %{buildroot}%{_javadir}/%{name}/
+%endif
 
 %files -f .mfiles
 %license LICENSE
@@ -148,8 +207,12 @@ ln -sf %{_jnidir}/%{name}/%{name}-synth-lv2.jar %{buildroot}%{_javadir}/%{name}/
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_javadir}/%{name}/tuxguitar-alsa.jar
-%{_javadir}/%{name}/tuxguitar-fluidsynth.jar
 %{_javadir}/%{name}/tuxguitar-jack.jar
+%if 0%{?suse_version} >= 1500
+%{_javadir}/%{name}/tuxguitar-fluidsynth.jar
+%endif
+%if 0%{?suse_version} > 1500
 %{_javadir}/%{name}/tuxguitar-synth-lv2.jar
+%endif
 
 %changelog

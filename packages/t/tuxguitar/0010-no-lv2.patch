@@ -1,0 +1,308 @@
+From b022f57ba358b064b4ecb5f735386f4b61ca4a4e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Tue, 10 Oct 2023 10:46:30 +0200
+Subject: [PATCH 10/14] no lv2
+
+---
+ build-scripts/tuxguitar-linux-swt-aarch64/pom.xml | 6 ++++--
+ build-scripts/tuxguitar-linux-swt-armv6hl/pom.xml | 6 ++++--
+ build-scripts/tuxguitar-linux-swt-armv7hl/pom.xml | 6 ++++--
+ build-scripts/tuxguitar-linux-swt-ppc64/pom.xml   | 6 ++++--
+ build-scripts/tuxguitar-linux-swt-ppc64le/pom.xml | 6 ++++--
+ build-scripts/tuxguitar-linux-swt-riscv64/pom.xml | 6 ++++--
+ build-scripts/tuxguitar-linux-swt-s390x/pom.xml   | 6 ++++--
+ build-scripts/tuxguitar-linux-swt-x86/pom.xml     | 6 ++++--
+ build-scripts/tuxguitar-linux-swt-x86_64/pom.xml  | 6 ++++--
+ 9 files changed, 36 insertions(+), 18 deletions(-)
+
+diff --git a/build-scripts/tuxguitar-linux-swt-aarch64/pom.xml b/build-scripts/tuxguitar-linux-swt-aarch64/pom.xml
+index f810cb65..e4f7d88f 100644
+--- a/build-scripts/tuxguitar-linux-swt-aarch64/pom.xml
++++ b/build-scripts/tuxguitar-linux-swt-aarch64/pom.xml
+@@ -379,7 +379,7 @@
+ 				<module>../native-modules/tuxguitar-alsa-linux-aarch64</module>
+ 				<module>../native-modules/tuxguitar-jack-linux-aarch64</module>
+ 				<module>../native-modules/tuxguitar-fluidsynth-linux-aarch64</module>
+-				<module>../native-modules/tuxguitar-synth-lv2-linux-aarch64</module>
++			<!-- <module>../native-modules/tuxguitar-synth-lv2-linux-aarch64</module> -->
+ 			<!-- <module>../native-modules/tuxguitar-synth-vst-linux-aarch64</module> -->
+ 			</modules>
+ 
+@@ -405,15 +405,17 @@
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-fluidsynth-linux-aarch64/target/build" />
+ 										</copy>
++										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-lv2-linux-aarch64/target/build" />
+ 										</copy>
++										-->
+ 										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-vst-linux-aarch64/target/build" />
+ 										</copy>
+ 										-->
+-										<chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" />
++										<!-- <chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" /> -->
+ 										<!-- <chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="755" /> -->
+ 										<!-- /PLUGINS FILES -->
+ 									</target>
+diff --git a/build-scripts/tuxguitar-linux-swt-armv6hl/pom.xml b/build-scripts/tuxguitar-linux-swt-armv6hl/pom.xml
+index 0229ad63..1bddd42b 100644
+--- a/build-scripts/tuxguitar-linux-swt-armv6hl/pom.xml
++++ b/build-scripts/tuxguitar-linux-swt-armv6hl/pom.xml
+@@ -379,7 +379,7 @@
+ 				<module>../native-modules/tuxguitar-alsa-linux-armv6hl</module>
+ 				<module>../native-modules/tuxguitar-jack-linux-armv6hl</module>
+ 				<module>../native-modules/tuxguitar-fluidsynth-linux-armv6hl</module>
+-				<module>../native-modules/tuxguitar-synth-lv2-linux-armv6hl</module>
++			<!-- <module>../native-modules/tuxguitar-synth-lv2-linux-armv6hl</module> -->
+ 			<!-- <module>../native-modules/tuxguitar-synth-vst-linux-armv6hl</module> -->
+ 			</modules>
+ 
+@@ -405,15 +405,17 @@
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-fluidsynth-linux-armv6hl/target/build" />
+ 										</copy>
++										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-lv2-linux-armv6hl/target/build" />
+ 										</copy>
++										-->
+ 										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-vst-linux-armv6hl/target/build" />
+ 										</copy>
+ 										-->
+-										<chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" />
++										<!-- <chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" /> -->
+ 										<!-- <chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="755" /> -->
+ 										<!-- /PLUGINS FILES -->
+ 									</target>
+diff --git a/build-scripts/tuxguitar-linux-swt-armv7hl/pom.xml b/build-scripts/tuxguitar-linux-swt-armv7hl/pom.xml
+index 4eaf6bfd..26026fad 100644
+--- a/build-scripts/tuxguitar-linux-swt-armv7hl/pom.xml
++++ b/build-scripts/tuxguitar-linux-swt-armv7hl/pom.xml
+@@ -379,7 +379,7 @@
+ 				<module>../native-modules/tuxguitar-alsa-linux-armv7hl</module>
+ 				<module>../native-modules/tuxguitar-jack-linux-armv7hl</module>
+ 				<module>../native-modules/tuxguitar-fluidsynth-linux-armv7hl</module>
+-				<module>../native-modules/tuxguitar-synth-lv2-linux-armv7hl</module>
++			<!-- <module>../native-modules/tuxguitar-synth-lv2-linux-armv7hl</module> -->
+ 			<!-- <module>../native-modules/tuxguitar-synth-vst-linux-armv7hl</module> -->
+ 			</modules>
+ 
+@@ -405,15 +405,17 @@
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-fluidsynth-linux-armv7hl/target/build" />
+ 										</copy>
++										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-lv2-linux-armv7hl/target/build" />
+ 										</copy>
++										-->
+ 										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-vst-linux-armv7hl/target/build" />
+ 										</copy>
+ 										-->
+-										<chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" />
++										<!-- <chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" /> -->
+ 										<!-- <chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="755" /> -->
+ 										<!-- /PLUGINS FILES -->
+ 									</target>
+diff --git a/build-scripts/tuxguitar-linux-swt-ppc64/pom.xml b/build-scripts/tuxguitar-linux-swt-ppc64/pom.xml
+index aca3b926..cbb5ea63 100644
+--- a/build-scripts/tuxguitar-linux-swt-ppc64/pom.xml
++++ b/build-scripts/tuxguitar-linux-swt-ppc64/pom.xml
+@@ -379,7 +379,7 @@
+ 				<module>../native-modules/tuxguitar-alsa-linux-ppc64</module>
+ 				<module>../native-modules/tuxguitar-jack-linux-ppc64</module>
+ 				<module>../native-modules/tuxguitar-fluidsynth-linux-ppc64</module>
+-				<module>../native-modules/tuxguitar-synth-lv2-linux-ppc64</module>
++			<!-- <module>../native-modules/tuxguitar-synth-lv2-linux-ppc64</module> -->
+ 			<!-- <module>../native-modules/tuxguitar-synth-vst-linux-ppc64</module> -->
+ 			</modules>
+ 
+@@ -405,15 +405,17 @@
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-fluidsynth-linux-ppc64/target/build" />
+ 										</copy>
++										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-lv2-linux-ppc64/target/build" />
+ 										</copy>
++										-->
+ 										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-vst-linux-ppc64/target/build" />
+ 										</copy>
+ 										-->
+-										<chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" />
++										<!-- <chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" /> -->
+ 										<!-- <chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="755" /> -->
+ 										<!-- /PLUGINS FILES -->
+ 									</target>
+diff --git a/build-scripts/tuxguitar-linux-swt-ppc64le/pom.xml b/build-scripts/tuxguitar-linux-swt-ppc64le/pom.xml
+index f59d508d..2cc85acf 100644
+--- a/build-scripts/tuxguitar-linux-swt-ppc64le/pom.xml
++++ b/build-scripts/tuxguitar-linux-swt-ppc64le/pom.xml
+@@ -379,7 +379,7 @@
+ 				<module>../native-modules/tuxguitar-alsa-linux-ppc64le</module>
+ 				<module>../native-modules/tuxguitar-jack-linux-ppc64le</module>
+ 				<module>../native-modules/tuxguitar-fluidsynth-linux-ppc64le</module>
+-				<module>../native-modules/tuxguitar-synth-lv2-linux-ppc64le</module>
++			<!-- <module>../native-modules/tuxguitar-synth-lv2-linux-ppc64le</module> -->
+ 			<!-- <module>../native-modules/tuxguitar-synth-vst-linux-ppc64le</module> -->
+ 			</modules>
+ 
+@@ -405,15 +405,17 @@
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-fluidsynth-linux-ppc64le/target/build" />
+ 										</copy>
++										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-lv2-linux-ppc64le/target/build" />
+ 										</copy>
++										-->
+ 										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-vst-linux-ppc64le/target/build" />
+ 										</copy>
+ 										-->
+-										<chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" />
++										<!-- <chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" /> -->
+ 										<!-- <chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="755" /> -->
+ 										<!-- /PLUGINS FILES -->
+ 									</target>
+diff --git a/build-scripts/tuxguitar-linux-swt-riscv64/pom.xml b/build-scripts/tuxguitar-linux-swt-riscv64/pom.xml
+index 59b96cf6..d8510154 100644
+--- a/build-scripts/tuxguitar-linux-swt-riscv64/pom.xml
++++ b/build-scripts/tuxguitar-linux-swt-riscv64/pom.xml
+@@ -379,7 +379,7 @@
+ 				<module>../native-modules/tuxguitar-alsa-linux-riscv64</module>
+ 				<module>../native-modules/tuxguitar-jack-linux-riscv64</module>
+ 				<module>../native-modules/tuxguitar-fluidsynth-linux-riscv64</module>
+-				<module>../native-modules/tuxguitar-synth-lv2-linux-riscv64</module>
++			<!-- <module>../native-modules/tuxguitar-synth-lv2-linux-riscv64</module> -->
+ 			<!-- <module>../native-modules/tuxguitar-synth-vst-linux-riscv64</module> -->
+ 			</modules>
+ 
+@@ -405,15 +405,17 @@
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-fluidsynth-linux-riscv64/target/build" />
+ 										</copy>
++										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-lv2-linux-riscv64/target/build" />
+ 										</copy>
++										-->
+ 										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-vst-linux-riscv64/target/build" />
+ 										</copy>
+ 										-->
+-										<chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" />
++										<!-- <chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" /> -->
+ 										<!-- <chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="755" /> -->
+ 										<!-- /PLUGINS FILES -->
+ 									</target>
+diff --git a/build-scripts/tuxguitar-linux-swt-s390x/pom.xml b/build-scripts/tuxguitar-linux-swt-s390x/pom.xml
+index 9dcb1617..f128f5c2 100644
+--- a/build-scripts/tuxguitar-linux-swt-s390x/pom.xml
++++ b/build-scripts/tuxguitar-linux-swt-s390x/pom.xml
+@@ -379,7 +379,7 @@
+ 				<module>../native-modules/tuxguitar-alsa-linux-s390x</module>
+ 				<module>../native-modules/tuxguitar-jack-linux-s390x</module>
+ 				<module>../native-modules/tuxguitar-fluidsynth-linux-s390x</module>
+-				<module>../native-modules/tuxguitar-synth-lv2-linux-s390x</module>
++			<!-- <module>../native-modules/tuxguitar-synth-lv2-linux-s390x</module> -->
+ 			<!-- <module>../native-modules/tuxguitar-synth-vst-linux-s390x</module> -->
+ 			</modules>
+ 
+@@ -405,15 +405,17 @@
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-fluidsynth-linux-s390x/target/build" />
+ 										</copy>
++										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-lv2-linux-s390x/target/build" />
+ 										</copy>
++										-->
+ 										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-vst-linux-s390x/target/build" />
+ 										</copy>
+ 										-->
+-										<chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" />
++										<!-- <chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" /> -->
+ 										<!-- <chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="755" /> -->
+ 										<!-- /PLUGINS FILES -->
+ 									</target>
+diff --git a/build-scripts/tuxguitar-linux-swt-x86/pom.xml b/build-scripts/tuxguitar-linux-swt-x86/pom.xml
+index 1c9aeb04..3a6a32fe 100644
+--- a/build-scripts/tuxguitar-linux-swt-x86/pom.xml
++++ b/build-scripts/tuxguitar-linux-swt-x86/pom.xml
+@@ -379,7 +379,7 @@
+ 				<module>../native-modules/tuxguitar-alsa-linux-x86</module>
+ 				<module>../native-modules/tuxguitar-jack-linux-x86</module>
+ 				<module>../native-modules/tuxguitar-fluidsynth-linux-x86</module>
+-				<module>../native-modules/tuxguitar-synth-lv2-linux-x86</module>
++			<!-- <module>../native-modules/tuxguitar-synth-lv2-linux-x86</module> -->
+ 			<!-- <module>../native-modules/tuxguitar-synth-vst-linux-x86</module> -->
+ 			</modules>
+ 
+@@ -405,15 +405,17 @@
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-fluidsynth-linux-x86/target/build" />
+ 										</copy>
++										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-lv2-linux-x86/target/build" />
+ 										</copy>
++										-->
+ 										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-vst-linux-x86/target/build" />
+ 										</copy>
+ 										-->
+-										<chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" />
++										<!-- <chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" /> -->
+ 										<!-- <chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="755" /> -->
+ 										<!-- /PLUGINS FILES -->
+ 									</target>
+diff --git a/build-scripts/tuxguitar-linux-swt-x86_64/pom.xml b/build-scripts/tuxguitar-linux-swt-x86_64/pom.xml
+index 30440890..27226202 100644
+--- a/build-scripts/tuxguitar-linux-swt-x86_64/pom.xml
++++ b/build-scripts/tuxguitar-linux-swt-x86_64/pom.xml
+@@ -379,7 +379,7 @@
+ 				<module>../native-modules/tuxguitar-alsa-linux-x86_64</module>
+ 				<module>../native-modules/tuxguitar-jack-linux-x86_64</module>
+ 				<module>../native-modules/tuxguitar-fluidsynth-linux-x86_64</module>
+-				<module>../native-modules/tuxguitar-synth-lv2-linux-x86_64</module>
++			<!-- <module>../native-modules/tuxguitar-synth-lv2-linux-x86_64</module> -->
+ 			<!-- <module>../native-modules/tuxguitar-synth-vst-linux-x86_64</module> -->
+ 			</modules>
+ 
+@@ -405,15 +405,17 @@
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-fluidsynth-linux-x86_64/target/build" />
+ 										</copy>
++										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-lv2-linux-x86_64/target/build" />
+ 										</copy>
++										-->
+ 										<!--
+ 										<copy todir="${project.build.directory}/${project.finalName}/">
+ 											<fileset dir="../native-modules/tuxguitar-synth-vst-linux-x86_64/target/build" />
+ 										</copy>
+ 										-->
+-										<chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" />
++										<!-- <chmod file="${project.build.directory}/${project.finalName}/lv2-client/*.bin" perm="755" /> -->
+ 										<!-- <chmod file="${project.build.directory}/${project.finalName}/vst-client/*.bin" perm="755" /> -->
+ 										<!-- /PLUGINS FILES -->
+ 									</target>
+-- 
+2.42.0
+

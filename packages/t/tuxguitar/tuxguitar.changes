@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Oct 11 05:17:42 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Allow building on all supported architectures and distributions
+- Added patches:
+  * 0001-tuxguitar-aarch64.patch
+    + allow building native parts of tuxguitar for aarch64
+  * 0002-tuxguitar-armv6hl.patch
+    + allow building native parts of tuxguitar for armv6hl
+  * 0003-tuxguitar-armv7hl.patch
+    + allow building native parts of tuxguitar for armv7hl
+  * 0004-tuxguitar-ppc64.patch
+    + allow building native parts of tuxguitar for ppc64
+  * 0005-tuxguitar-ppc64le.patch
+    + allow building native parts of tuxguitar for pcc64le
+  * 0006-tuxguitar-riscv64.patch
+    + allow building native parts of tuxguitar for riscv64
+  * 0007-tuxguitar-s390x.patch
+    + allow building native parts of tuxguitar for s390x
+  * 0008-tuxguitar-x86.patch
+    + allow building native parts of tuxguitar for 32-bit intel
+      platform
+  * 0010-no-lv2.patch
+    + disable lv2 synthesizer on platforms that lack the
+      dependencies
+  * 0011-no-fluidsynth.patch
+    + disable fluidsynth synthesizer on platforms that lack the
+      dependency
+- Modified patches:
+  * no-vst.patch -> 0009-no-vst.patch
+    + extend to all ported architectures and manage with git to make
+      rediffs easier for newer versions
+  * desktop.patch -> 0014-desktop.patch
+  * tuxguitar-default-soundfont.patch -> 0012-default-soundfont.patch
+  * tuxguitar-startscript.patch -> 0013-startscript.patch
+    + manage with git to make rediffs easier for newer versions
+
+-------------------------------------------------------------------
 Mon Oct  9 16:30:14 UTC 2023 - guiv42 <guiv42@tuta.io>
 
 - Add complementary information to previous changelog

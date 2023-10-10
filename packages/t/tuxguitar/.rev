@@ -81,4 +81,12 @@
     <comment></comment>
     <requestid>1116518</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f9a63421e0aad047c3b9a532197deb10</srcmd5>
+    <version>1.6.0</version>
+    <time>1697061279</time>
+    <user>anag+factory</user>
+    <comment>allow buiding on all supported architectures</comment>
+    <requestid>1116776</requestid>
+  </revision>
 </revisionlist>

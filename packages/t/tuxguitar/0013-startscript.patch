@@ -1,5 +1,16 @@
---- tuxguitar-1.6.0-src/build-scripts/common-resources/common-linux/tuxguitar.sh
-+++ tuxguitar-1.6.0-src/build-scripts/common-resources/common-linux/tuxguitar.sh
+From b135bbd92d7753b2ac94634c6248efe1cfd376e1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Tue, 10 Oct 2023 13:06:25 +0200
+Subject: [PATCH 13/14] startscript
+
+---
+ .../common-linux/tuxguitar.sh                 | 61 ++++++++++++++++---
+ 1 file changed, 54 insertions(+), 7 deletions(-)
+
+diff --git a/build-scripts/common-resources/common-linux/tuxguitar.sh b/build-scripts/common-resources/common-linux/tuxguitar.sh
+index a213786a..348848bb 100755
+--- a/build-scripts/common-resources/common-linux/tuxguitar.sh
++++ b/build-scripts/common-resources/common-linux/tuxguitar.sh
 @@ -1,20 +1,67 @@
  #!/bin/sh
 -##SCRIPT DIR
@@ -75,3 +86,6 @@
  ##LAUNCH
 -${JAVA} ${VM_ARGS} -cp :${CLASSPATH} -Dtuxguitar.home.path="${TG_DIR}" -Dtuxguitar.share.path="share/" -Djava.library.path="${LD_LIBRARY_PATH}" ${MAINCLASS} "$@"
 +${JAVA} ${VM_ARGS} -cp :${CLASSPATH} -Dtuxguitar.share.path="${SHAREPATH}/" -Djava.library.path="${LD_LIBRARY_PATH}" ${MAINCLASS} "$@"
+-- 
+2.42.0
+
