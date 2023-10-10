@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep  2 10:10:03 UTC 2023 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- updated to version 2.4.2
+
+  ## 2.4.2
+
+  More performance improvements:
+
+  - Optimize lookup of first 4096 codepoints
+  - Avoid overwrite lookup if no overwrites are set
+
+  ## 2.4.1
+
+  - Improve general performance!
+  - Further improve performance for ASCII strings
+
+  ## 2.4.0
+  - Improve performance for ASCII-only strings, by @fatkodima
+  - Require Ruby 2.4
+
+-------------------------------------------------------------------
 Mon Oct 10 13:25:42 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.3.0
