@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 24 18:18:21 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.4.4
+  * Improve compatibility with PyQt6/PySide6.
+
+-------------------------------------------------------------------
 Fri Jun  2 12:07:34 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.4.3

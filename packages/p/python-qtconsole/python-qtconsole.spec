@@ -22,7 +22,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-qtconsole
-Version:        5.4.3
+Version:        5.4.4
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
@@ -44,7 +44,7 @@ BuildRequires:  update-desktop-files
 # QtPy does note require or depend on one of the frameworks itself
 Requires:       (python-qt5 or python-pyside2 or python-PyQt6 or python-pyside6)
 Requires:       python-Pygments
-Requires:       python-QtPy >= 2.0.1
+Requires:       python-QtPy >= 2.4.0
 Requires:       python-ipykernel >= 4.1
 Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 4.1
@@ -70,7 +70,7 @@ Requires(postun):update-alternatives
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module QtPy >= 2.0.1}
+BuildRequires:  %{python_module QtPy >= 2.4.0}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel >= 4.1}
 BuildRequires:  %{python_module ipython_genutils}

@@ -258,4 +258,16 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
   * Add missing closed method to QtInProcessChannel. (forwarded request 1090490 from bnavigator)</comment>
     <requestid>1090491</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c44c38e41bda7db292b582e27d171325</srcmd5>
+    <version>5.4.4</version>
+    <time>1696964419</time>
+    <user>anag+factory</user>
+    <comment>late submit
+
+- Update to 5.4.4
+  * Improve compatibility with PyQt6/PySide6.
+</comment>
+    <requestid>1116516</requestid>
+  </revision>
 </revisionlist>
