@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Oct  9 05:34:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package kube-linter: static analysis tool that checks
+  Kubernetes YAML files and Helm charts
