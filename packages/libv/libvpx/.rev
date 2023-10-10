@@ -524,4 +524,12 @@
   added CVE-2023-5217.patch</comment>
     <requestid>1114051</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>cd97fcad5ae5d646793ad93f6da4ca59</srcmd5>
+    <version>1.13.1</version>
+    <time>1696963923</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116504</requestid>
+  </revision>
 </revisionlist>

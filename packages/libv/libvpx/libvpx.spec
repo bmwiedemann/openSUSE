@@ -18,7 +18,7 @@
 
 %define         sover 8
 Name:           libvpx
-Version:        1.13.0
+Version:        1.13.1
 Release:        0
 Summary:        VP8/VP9 codec library
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -26,8 +26,6 @@ Group:          Productivity/Multimedia/Other
 URL:            https://www.webmproject.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1000:     baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch1:         CVE-2023-5217.patch
 Patch2:         libvpx-configure-add-arch.patch
 # only needed for test suite
 BuildRequires:  gcc-c++
