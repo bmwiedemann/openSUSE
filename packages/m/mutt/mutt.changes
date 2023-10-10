@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  9 07:41:57 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Require a smtp daemon at build and runtime to work around
+  missing system /var/mail/ directory (boo#1216035)
+
+-------------------------------------------------------------------
 Wed Sep 27 13:42:36 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Submit latest mutt 2.2.12 to SLE-15-SP6 for jira#PED-5580

@@ -79,8 +79,10 @@ BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+BuildRequires:  smtp_daemon
 %endif
 Requires:       glibc-locale
+Requires:       smtp_daemon
 Requires(post): %{_bindir}/cat
 Requires(post): %{_bindir}/mkdir
 Requires(postun):%{_bindir}/rm

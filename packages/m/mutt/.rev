@@ -1440,4 +1440,13 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     - CVE-2023-4875.patch (bsc#1215191 for CVE-2023-4875)</comment>
     <requestid>1114300</requestid>
   </revision>
+  <revision rev="116" vrev="3">
+    <srcmd5>9aab8a5dba89a7f103d631d1304ca3ba</srcmd5>
+    <version>2.2.12</version>
+    <time>1696964354</time>
+    <user>anag+factory</user>
+    <comment>- Require a smtp daemon at build and runtime to work around
+  missing system /var/mail/ directory (boo#1216035)</comment>
+    <requestid>1116386</requestid>
+  </revision>
 </revisionlist>
