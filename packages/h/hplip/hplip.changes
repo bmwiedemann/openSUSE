@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Oct  9 17:56:07 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to hplip 3.23.8
+- Support for new printers:
+  * HP Color LaserJet Pro MFP 4301fdne
+  * HP Color LaserJet Pro MFP 4301fdwe
+  * HP Color LaserJet Pro MFP 4301cdwe
+  * HP Color LaserJet Pro MFP 4301cfdne
+  * HP Color LaserJet Pro MFP 4301cfdwe
+  * HP Color LaserJet Pro MFP 4302dwe
+  * HP Color LaserJet Pro MFP 4302fdne
+  * HP Color LaserJet Pro MFP 4302fdwe
+  * HP Color LaserJet Pro MFP 4302cdwe
+  * HP Color LaserJet Pro MFP 4302fdn
+  * HP Color LaserJet Pro MFP 4302fdw
+  * HP Color LaserJet Pro MFP 4303dw
+  * HP Color LaserJet Pro MFP 4303fdn
+  * HP Color LaserJet Pro MFP 4303fdw
+  * HP Color LaserJet Pro MFP 4303cdw
+  * HP Color LaserJet Pro MFP 4303cfdn
+  * HP Color LaserJet Pro MFP 4303cfdw
+  * HP Color LaserJet Pro 4201dne
+  * HP Color LaserJet Pro 4201dwe
+  * HP Color LaserJet Pro 4201cdne
+  * HP Color LaserJet Pro 4201cdwe
+  * HP Color LaserJet Pro 4202dne
+  * HP Color LaserJet Pro 4202dwe
+  * HP Color LaserJet Pro 4202dn
+  * HP Color LaserJet Pro 4202dw
+  * HP Color LaserJet Pro 4203dn
+  * HP Color LaserJet Pro 4203dw
+  * HP Color LaserJet Pro 4203cdn
+  * HP Color LaserJet Pro 4203cdw
+  * HP DeskJet 2800 All-in-One Printer series
+  * HP DeskJet 2800e All-in-One Printer series
+  * HP DeskJet Ink Advantage 2800 All-in-One Printer series
+  * HP DeskJet 4200 All-in-One Printer series
+  * HP DeskJet 4200e All-in-One Printer series
+  * HP DeskJet Ink Advantage 4200 All-in-One Printer series
+  * HP DeskJet Ink Advantage Ultra 4900 All-in-One Printer series
+
+-------------------------------------------------------------------
 Fri Sep 15 16:09:11 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to hplip 3.23.5
