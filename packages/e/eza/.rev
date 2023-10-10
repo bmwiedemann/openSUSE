@@ -105,4 +105,18 @@
     <comment></comment>
     <requestid>1114898</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4e0031ad9066e3824f38e444905f4279</srcmd5>
+    <version>0.14.1~0</version>
+    <time>1696964317</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.1:
+  * Replace left-over exa in fish completion
+  * Diabling static linked binaries due to segfault
+  * Make os error 13 fail loud
+  * Adjust change width calculations for hyperlink and classify
+  * Root group not painted as expected when eza used by root
+  * Add basic nushell completion file</comment>
+    <requestid>1116297</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  8 10:41:21 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.1:
+  * Replace left-over exa in fish completion
+  * Diabling static linked binaries due to segfault
+  * Make os error 13 fail loud
+  * Adjust change width calculations for hyperlink and classify
+  * Root group not painted as expected when eza used by root
+  * Add basic nushell completion file
+
+-------------------------------------------------------------------
 Mon Oct  2 13:28:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.14.0:
