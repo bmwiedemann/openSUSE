@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 10 05:53:25 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.3:
+  * 3.3: https://github.com/oneapi-src/oneDNN/releases/tag/v3.3
+  * 3.2: https://github.com/oneapi-src/oneDNN/releases/tag/v3.2
+  * 3.1: https://github.com/oneapi-src/oneDNN/releases/tag/v3.1
+- Drop upstreamed onednn-fix-gcc13.patch
+
+-------------------------------------------------------------------
 Tue Mar 21 10:27:40 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 3.0.1:

@@ -32,14 +32,12 @@
 
 %define libname libdnnl3
 Name:           onednn
-Version:        3.0.1
+Version:        3.3
 Release:        0
 Summary:        Intel Math Kernel Library for Deep Neural Networks
 License:        Apache-2.0
 URL:            https://01.org/onednn
 Source0:        https://github.com/oneapi-src/oneDNN/archive/v%{version}/oneDNN-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - https://github.com/oneapi-src/oneDNN/issues/1600
-Patch1:         onednn-fix-gcc13.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -133,6 +131,7 @@ to implement deep neural networks (DNN) with C and C++ interfaces.
 %endif
   -DDNNL_INSTALL_MODE=DEFAULT \
   -DDNNL_BUILD_TESTS=ON \
+  -DONEDNN_BUILD_GRAPH=OFF \
   -DDNNL_WERROR=OFF
 %cmake_build
 %cmake_build doc_doxygen
