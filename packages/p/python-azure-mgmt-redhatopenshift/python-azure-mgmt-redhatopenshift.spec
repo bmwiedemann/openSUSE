@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-redhatopenshift
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Microsoft Azure Red Hat Openshift Management Client Library
 License:        MIT
