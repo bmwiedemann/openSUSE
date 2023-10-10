@@ -186,4 +186,50 @@
 - Require go 1.20 (forwarded request 1104395 from ph03nix)</comment>
     <requestid>1104424</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9e0f245ff4dbd66251b8311b3b804bf9</srcmd5>
+    <version>2.18.0</version>
+    <time>1696964394</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.18.0:
+  * Update the action to use gosec version v2.18.0 (#1029)
+  * Use a step ID in github release action to get the digest of the image (#1028)
+  * Update to go version 1.21.2 and 1.20.9 (#1027)
+  * chore(deps): update all dependencies (#1026)
+  * Enable gochecknoinits; fix lint issues; use consts for some vars (#1022)
+  * Fix typos in struct fields, comments, and docs (#1023)
+  * chore(deps): update all dependencies
+  * Fix lint warning
+  * Add a new rule which detects when a file is created with os.Create but the configured permissions are less than 0666
+  * Fix lint warnings
+  * Update ginkgo to latest version
+  * Redesign and reimplement the slice out of bounds check using SSA code representation
+  * docs: add reMarkable to users list
+  * chore(deps): update all dependencies
+  * Drop support for go 1.19.x since go team doesn't ship anymore security fixes for it
+  * Update to latest go version
+  * chore(deps): update all dependencies (#1011)
+  * Fix hardcoded_credentials rule to only match on more specific patterns (#1009)
+  * chore(deps): update all dependencies (#1008)
+  * Exclude maps from slince bounce check rule (#1006)
+  * Ignore struct pointers in G601 (#1003)
+  * Update gosec image version to 2.17.0 in the Github action (#1002)
+- Packaging improvements:
+  * Use BuildRequires: golang(API) &gt;= 1.20 instead of go &gt;= 1.20.
+    The go metapackage points to a single go version that
+    increments at a date TBD after each go1.x major release. The
+    expression golang(API) is available immediately upon each go1.x
+    major release and is stable for expressing the minimum version
+    or a temporarily pinned version.
+  * Summary and Description clarify the purpose of this CLI tool
+  * Use Group: Development/Languages/Go instead of Other
+  * Drop BuildRequires: golang-packaging. The recommended Go
+    toolchain dependency is BuildRequires: golang(API) &gt;= 1.x or
+    optionally the metapackage BuildRequires: go
+  * Drop Requires: golang-packaging. The original macros for file
+    movements into GOPATH are obsolete with Go modules. Macro
+    go_nostrip is no longer needed with current binutils and Go.
+  * Remove %%{go_nostrip} macro which is no longer recommended (forwarded request 1116472 from jfkw)</comment>
+    <requestid>1116475</requestid>
+  </revision>
 </revisionlist>

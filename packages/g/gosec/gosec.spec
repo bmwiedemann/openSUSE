@@ -1,7 +1,7 @@
 #
 # spec file for package gosec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           gosec
-Version:        2.17.0
+Version:        2.18.0
 Release:        0
-Summary:        Golang security checker
+Summary:        CLI tool to scan the Go AST and SSA code representations for security problems
 License:        Apache-2.0
-Group:          Development/Languages/Other
+Group:          Development/Languages/Go
 URL:            https://github.com/securego/gosec
 Source:         gosec-%{version}.tar.xz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.20
-BuildRequires:  golang-packaging
-%{go_nostrip}
+BuildRequires:  golang(API) >= 1.20
 
 %description
-Inspects source code for security problems by scanning the go abstract syntax tree.
+CLI tool to inspect Go source code for security problems by scanning the
+abstract syntax tree (AST) and static single-assignment (SSA) code
+representations.
 
 %prep
 %autosetup -D -a 1
