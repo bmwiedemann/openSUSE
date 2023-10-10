@@ -17,23 +17,23 @@
 
 
 Name:           python-cmyt
-Version:        1.4.0
+Version:        2.0.0
 Release:        0
 Summary:        A collection of Matplotlib colormaps from the yt project
 License:        BSD-3-Clause
-URL:            https://github.com/yt-project/cmyt           
+URL:            https://github.com/yt-project/cmyt
 Source:         https://files.pythonhosted.org/packages/source/c/cmyt/cmyt-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module colorspacious}
-BuildRequires:  %{python_module pytest-mpl}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
-Requires:       python-numpy
-Requires:       python-matplotlib
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-mpl}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-matplotlib
+Requires:       python-numpy
 BuildArch:      noarch
 %python_subpackages
 

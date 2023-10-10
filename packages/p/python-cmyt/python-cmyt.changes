@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  9 06:01:30 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.0.0
+ * rename private module to clarify that it's not part of public API
+ * cycle out deprecated function from private module
+
+-------------------------------------------------------------------
 Tue Oct  3 14:27:55 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - initial package 
