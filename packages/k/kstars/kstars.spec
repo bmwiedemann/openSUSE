@@ -16,11 +16,15 @@
 #
 
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1590
+%global force_gcc_version 12
+%endif
+
 # Internal QML import
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
 %bcond_without released
 Name:           kstars
-Version:        3.6.6
+Version:        3.6.7
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -35,14 +39,10 @@ Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 %endif
-%if 0%{?suse_version} < 1590
-BuildRequires:  gcc11-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  Mesa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 BuildRequires:  libXISF-devel
 BuildRequires:  libnova-devel
 BuildRequires:  pkgconfig
@@ -104,9 +104,9 @@ rm -r po/fr/docs
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-%if 0%{?suse_version} < 1590
-export CC=gcc-11
-export CXX=g++-11
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
 %endif
 %cmake_kf5 -d build
 %cmake_build

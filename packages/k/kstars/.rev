@@ -1182,4 +1182,12 @@
     <comment>See changelog</comment>
     <requestid>1101913</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>1b882b5d439af1e575cb8554c872519f</srcmd5>
+    <version>3.6.7</version>
+    <time>1696964418</time>
+    <user>anag+factory</user>
+    <comment>Update to 3.6.7</comment>
+    <requestid>1116514</requestid>
+  </revision>
 </revisionlist>
