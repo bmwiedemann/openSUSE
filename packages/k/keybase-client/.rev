@@ -243,4 +243,12 @@
   bsc#1213928. This is done via the new update-image-tiff.patch.</comment>
     <requestid>1102488</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a46c5b6b6ffce932c9c331858005fee3</srcmd5>
+    <version>6.2.3</version>
+    <time>1696964426</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116527</requestid>
+  </revision>
 </revisionlist>

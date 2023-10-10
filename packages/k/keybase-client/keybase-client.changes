@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  5 16:47:29 UTC 2023 - Matthias Bach <marix@marix.org> - 6.2.3
+
+- Update to version 6.2.3
+  * Fix incomplete locking in config file handling.
+
+-------------------------------------------------------------------
 Sat Aug  5 15:29:46 UTC 2023 - Matthias Bach <marix@marix.org> - 6.2.2
 
 - Update the Image dependency to address CVE-2023-29408 /
