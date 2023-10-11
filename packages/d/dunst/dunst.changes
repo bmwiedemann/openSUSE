@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 11 08:19:34 UTC 2023 - Tomas Cech <sleep_walker@opensuse.org>
+
+- update to 1.9.2:
+  * Fixed various documentation issues
+  * Fixed high cpu when `show_age_treshold` = -1
+  * High cpu usage in some situation, often correlated with being idle
+
+-------------------------------------------------------------------
 Tue Mar 28 12:58:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.1:

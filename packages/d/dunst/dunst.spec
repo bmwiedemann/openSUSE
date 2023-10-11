@@ -18,7 +18,7 @@
 
 %{!?_userunitdir:%define _userunitdir %{_prefix}/lib/systemd/user}
 Name:           dunst
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        A customizable notification daemon
 License:        BSD-3-Clause
