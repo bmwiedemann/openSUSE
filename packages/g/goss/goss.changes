@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:17:10 UTC 2023 - Jochen Breuer <brejoc@gmail.com> - 0.4.2
+
+- Update to version 0.4.2 with updated dependencies in vendor file
+  * Please check out v4 migration guide:
+    https://github.com/goss-org/goss/blob/master/docs/v4_migration.md
+  * Added ctx object to all system struct's constructors by @aelsabbahy in gh#837
+  * Changed: Reworded syntax error messages to be clearer by @aelsabbahy in gh#838
+  * Fix json by @aelsabbahy in gh#841
+  * Command empty strings by @aelsabbahy in gh#839
+  * Added: goss-darwin-arm64 binary to release by @aelsabbahy in gh#835
+  * Goss v0.4.X introduces some major enhancements to the matching logic allowing far more flexibility for asserts.
+  * For example, can assert that the output of echo "3" is less than 5.
+  * Added: transforms support (closes gh#538)
+    * Allows comparison of string to int, ex: ensuring a systctl output below/above a specific number (closes gh#220)
+    * Allows JSON parsing/validation support (closes gh#578)
+    * Allows comparing command output to a string, this will display the failed output on failure (closes gh#483)
+    * -o include_raw will show the non-transformed value
+  * Added: Some new matchers
+    * equal matcher added to do strict type comparison (e.x. string to string)
+    * contain-substring
+    * have-patterns - This mimics the existing default behavior of file contents and command output
+    * contain-elements - checks that an array value matches a set of matchers
+  * Added: runlevels support for service
+  * Added: option to sort output (closes gh#416)
+  * Added: All resources now support key override (closes gh#518, closes gh#742)
+  * Added: Use exit code 78 if test file is unparseable (closes gh#317)
+  * Changed: removed alpha from non-linux binary names
+  * Changed: StartTime is no longer calculated from goss start. Calculated from first test start, this allows accurate reporting when showing a cached result
+  * Changed: Completely re-worked matchers and shared output logic
+  * Changed: Cache test results in serve instead of output (closes gh#612)
+  * Added: Significantly improved test coverage of matcher, output code
+  * Changed: Doc to reference cat -E /proc/<PID>/comm to avoid whitespace issues (closes gh#762)
+  * Changed: Removed file.Size from autoadd (closes gh#262)
+  * Added: matcher.as-reader this allows the matcher string to behave as an io.Reader output. Can be useful for testing
+  * Removed: json_online output format, use: goss v -f json -o oneline
+  * Added: windows and darwin alpha binaries back in the release (gh#829)
+  * Added: string diff support (gh#827)
+  * Added: mount vfs-opts support (gh#826)
+
+-------------------------------------------------------------------
 Tue Jun 27 13:01:37 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com> - 0.3.23
 
 - Update to version 0.3.23 with updated dependencies in vendor file

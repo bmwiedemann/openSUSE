@@ -22,7 +22,7 @@
 %define dcgoss_name dcgoss
 
 Name:           goss
-Version:        0.3.23
+Version:        0.4.2
 Release:        0
 Summary:        Quick and Easy server testing/validation
 License:        Apache-2.0
