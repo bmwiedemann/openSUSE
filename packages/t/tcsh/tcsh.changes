@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  9 08:08:30 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add some fixes from
+  https://github.com/tcsh-org/tcsh/blob/master/complete.tcsh
+  to our complete.tcsh (boo#1215817) 
+
+-------------------------------------------------------------------
 Mon Jul 24 08:12:01 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Extend tcsh-6.24.10-history-merge.dif

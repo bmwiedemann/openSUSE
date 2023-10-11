@@ -170,8 +170,9 @@ endif
     complete ping	p/1/\$hosts/
     complete traceroute	p/1/\$hosts/
 
-    complete {talk,ntalk,phone,otalk,ytalk}	p/1/'`users | tr " " "\012" | uniq`'/ \
-		n/*/\`who\ \|\ grep\ \$:1\ \|\ awk\ \'\{\ print\ \$2\ \}\'\`/
+    complete {talk,ntalk,phone,otalk,ytalk} \
+	p/1/'`users | tr " " "\012" | uniq`'/ \
+	n/*/\`who\ \|\ grep\ \$:1\ \|\ awk\ \'\{\ print\ \$2\ \}\'\`/
 
     complete ftp	c/-/"(d i g n v)"/ n/-/\$hosts/ p/1/\$hosts/ n/*/n/
     complete ncftp	c/-/"(a I N)"/     n/-/\$hosts/ p/1/\$hosts/ n/*/n/
@@ -241,6 +242,8 @@ endif
 			delta diffs edit enter fix get help info \
 			print prs prt rmdel sccsdiff tell unedit \
 			unget val what)"/
+    complete setenv	'p/1/e/' 'c/*:/f/'
+	                
 
     # Complete for MH tools already skipped
     if ( $?SKIP_MH ) goto skip_mh
@@ -883,13 +886,13 @@ endif
 
     complete cat	c/--/"(number-nonblank number squeeze-blank show-all \
 			show-nonprinting show-ends show-tabs help version)"/ \
-			c/-/"(b e n s t u v A E T -)"/ n/*/f/
+			c/-/"(A b E e n s T t u v -)"/ n/*/f/
     complete mv		c/--/"(backup force interactive update verbose suffix \
 			version-control help version)"/ \
-			c/-/"(b f i u v S V -)"/ \
+			c/-/"(b f i S u V v -)"/ \
 			n/{-S,--suffix}/x:'<suffix>'/ \
 			n/{-V,--version-control}/"(t numbered nil existing \
-			never simple)"/ n/-/f/ N/-/d/ p/3-/d/ n/*/f/
+			never simple)"/ n/-/f/ N/-/d/ p/1/f/ p/2/d/ n/*/f/
     complete cp		c/--/"(archive backup no-dereference force \
 			interactive link preserve parents sparse recursive \
 			symbolic-link suffix update verbose version-control \
@@ -897,14 +900,14 @@ endif
 			c/-/"(a b d f i l P p R r S s u V v x -)"/ \
 			n/-*r/d/ n/{-S,--suffix}/x:'<suffix>'/ \
 			n/{-V,--version-control}/"(t numbered nil existing \
-			never simple)"/ n/-/f/ N/-/d/ p/3-/d/ n/*/f/
+                            never simple)"/ n/-/f/ N/-/d/ p/1/f/ p/2/d/ n/*/f/
     complete ln		c/--/"(backup directory force no-dereference \
 			interactive symbolic suffix verbose version-control \
 			help version)"/ \
 			c/-/"(b d F f i n S s V v -)"/ \
 			n/{-S,--suffix}/x:'<suffix>'/ \
 			n/{-V,--version-control}/"(t numbered nil existing \
-			never simple)"/ n/-/f/ N/-/x:'<link_name>'/ \
+			never simple)"/ n/-*/f/ N/-*/x:'<link_name>'/ \
 			p/1/f/ p/2/x:'<link_name>'/
     complete touch	c/--/"(date reference time help version)"/ \
 			c/-/"(a c d f m r t -)"/ \
@@ -916,7 +919,8 @@ endif
 			n/{-m,--mode}/x:'<mode>'/ n/*/d/
     complete rmdir	c/--/"(ignore-fail-on-non-empty parents verbose help \
 			version)"/ c/-/"(p -)"/ n/*/d/
-
+    complete env	'c/*=/f/' 'p/1/e/=/' 'p/2/c/'
+ 
     complete tar	c/-[Acru]*/"(b B C f F g G h i l L M N o P \
 			R S T v V w W X z Z j I)"/ \
 			c/-[dtx]*/"( B C f F g G i k K m M O p P \
