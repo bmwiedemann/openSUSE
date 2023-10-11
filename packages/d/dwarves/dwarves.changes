@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  9 09:05:08 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix have_libbpf conditional (jsc#PED-4593 bsc#1216042).
+
+-------------------------------------------------------------------
 Sat Apr  8 21:25:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.25
