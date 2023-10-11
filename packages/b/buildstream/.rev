@@ -218,4 +218,41 @@
     <comment></comment>
     <requestid>1067348</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>846d420075e82901de04cc0af03949b7</srcmd5>
+    <version>2.1.0</version>
+    <time>1697061260</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1113282 from iznogood
+
+- Update to version 2.1.0:
+  + Support new architecture name &quot;la64v100&quot;
+  + Fix race condition when downloading sources
+  + Properly handle partial download errors
+  + Fix regressed ETag handling to prevent redundant file downloads
+  + Fix parsing remotes specified on the command line
+  + Fix bug when tracking ref-less sources (like local sources)
+    when using project.refs
+  + Follow semantic versioning more strictly
+  + New `bst build --retry-failed` feature
+  + Fix parsing override-project-caches configuration
+  + Fix crashes when instructed to only download from mirrors, and
+    some sources have no mirrors defined
+  + Drop unnecessary dependency on dateutil
+  + Fix severe hangs when can occur when running out of disk
+    space specifically when attempting to open and write to a new
+    log file
+- Update to version 2.0.0:
+  + Please see the include NEWS file for all the changes during
+    development.
+- Add python3-Cython BuildRequires: New dependency.
+- Drop the 's:pytest-runner::' setup.py sed call, merged upstream.
+- Drop noarch BuildArch: Package is no longer noarch.
+- Add missing Requires: python3-Jinja2, python3-pluginbase,
+  python3-protobuf, python3-ruamel.yaml.clib, python3-setuptools
+  and python3-ujson
+- Add disabled python3-pyroaring Requires: Needed, but not yet
+  available in openSUSE. (forwarded request 1115708 from luc14n0)</comment>
+    <requestid>1116595</requestid>
+  </revision>
 </revisionlist>
