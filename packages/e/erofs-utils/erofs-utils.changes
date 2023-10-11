@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct 11 12:00:38 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.7:
+  * support arbitrary valid block sizes in addition to page size
+  * (mkfs.erofs) arrange on-disk meta with Breadth-First Traversal
+    instead
+  * support long xattr name prefixes
+  * support UUID functionality without libuuid
+  * (mkfs.erofs, experimental) add DEFLATE algorithm support
+  * (mkfs.erofs, experimental) support building images directly
+    from tarballs
+  * (dump.erofs) print more superblock fields
+  * (mkfs.erofs, experimental) introduce preliminary rebuild mode
+  * various bugfixes and cleanups (CVE-2023-33551, CVE-2023-33552)
+- Switch service to mode=manual, as 'disabled' is deprecated.
+
+-------------------------------------------------------------------
 Mon Apr 17 13:44:38 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to release 1.6
