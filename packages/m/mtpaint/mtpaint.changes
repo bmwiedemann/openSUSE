@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 11 12:52:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace freetype-devel BuildRequires with freetype2: this is
+  actually what is needed, but as fontconfig happened to pull it in
+  already, things happened to work. Freetype 1 is not needed here.
+
+-------------------------------------------------------------------
 Wed May  5 15:43:22 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 3.50
