@@ -118,7 +118,8 @@ Recommends:     pattern() = x11_yast
 # Official upstream
 #
 # bijiben == gnome-notes
-Recommends:     bijiben
+# Disable (temp?) gnome-notes while we wait for upstream to fix the now 6 months old bug with it crashing in its search-provider
+#Recommends:     bijiben
 # no longer need to hard require cheese for g-c-c user panel
 Recommends:     cheese
 Recommends:     dconf-editor
@@ -663,7 +664,8 @@ Requires:       pattern() = gnome_basis
 # Official upstream
 #
 # bijiben == gnome-notes
-Recommends:     bijiben
+# Disable (temp?) gnome-notes while we wait for upstream to fix the now 6 months old bug with it crashing in its search-provider
+#Recommends:     bijiben
 Recommends:     baobab
 Recommends:     cheese
 Recommends:     file-roller
