@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Markdown
-Version:        3.4.4
+Version:        3.5
 Release:        0
 Summary:        Python implementation of Markdown
 License:        BSD-3-Clause
@@ -27,7 +27,7 @@ URL:            https://python-markdown.github.io/
 Source:         https://files.pythonhosted.org/packages/source/M/Markdown/Markdown-%{version}.tar.gz
 Patch0:         markdown-3.0-python37.patch
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module importlib-metadata >= 4.4 if %python-base < 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
