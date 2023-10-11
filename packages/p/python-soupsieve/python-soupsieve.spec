@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,14 +24,12 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-soupsieve%{psuffix}
-Version:        2.4.1
+Version:        2.5
 Release:        0
 Summary:        A modern CSS selector implementation for BeautifulSoup
 License:        MIT
-Group:          Development/Libraries/Python
 URL:            https://github.com/facelessuser/soupsieve
 Source:         https://files.pythonhosted.org/packages/source/s/soupsieve/soupsieve-%{version}.tar.gz
 BuildRequires:  %{python_module hatchling}
