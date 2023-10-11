@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 11 13:07:07 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace freetype-devel BuildRequires with freetype2: this is
+  actually what is needed, but as fontconfig happened to pull it in
+  already, things happened to work. Freetype 1 is not needed here.
+
+-------------------------------------------------------------------
 Sun May  1 08:52:41 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add the monthly poppler compatibility fixes. Replace

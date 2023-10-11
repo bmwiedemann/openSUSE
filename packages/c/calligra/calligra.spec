@@ -1,7 +1,7 @@
 #
 # spec file for package calligra
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ Patch4:         poppler-22.04_2.patch
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  freetype-devel
+BuildRequires:  freetype2-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_system-devel

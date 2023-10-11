@@ -702,4 +702,12 @@ It will replace Koffice in O:F</comment>
   * poppler-22.04_2.patch</comment>
     <requestid>974171</requestid>
   </revision>
+  <revision rev="84" vrev="8">
+    <srcmd5>499c431c7661fdc8c88d2c12689077ac</srcmd5>
+    <version>3.2.1</version>
+    <time>1697061410</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117026</requestid>
+  </revision>
 </revisionlist>
