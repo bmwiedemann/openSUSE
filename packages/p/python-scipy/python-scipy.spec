@@ -126,7 +126,7 @@ BuildRequires:  %{python_module threadpoolctl}
 %endif
 %if %{without hpc}
 BuildRequires:  %{python_module numpy-devel >= 1.18.5}
-%if 0%{?sle_version} && 0%{?sle_version} <= 150500
+%if 0%{?sle_version} && 0%{?sle_version} <= 150600
 # The default gcc on SLE15 is gcc7 we need something newer
 BuildRequires:  gcc10-c++
 BuildRequires:  gcc10-fortran
@@ -182,7 +182,7 @@ sed -i "s/option('lapack', type: 'string', value: 'openblas'/option('lapack', ty
 
 %if !%{with test}
 %build
-%if 0%{?sle_version} && 0%{?sle_version} <= 150500
+%if 0%{?sle_version} && 0%{?sle_version} <= 150600
 # We need gcc >= 8 for SLE15
 export CC=gcc-10
 export CXX=g++-10

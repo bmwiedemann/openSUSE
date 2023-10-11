@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  9 06:52:54 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Let it build for Leap 15.6 also.
+
+-------------------------------------------------------------------
 Thu Jul 27 13:31:24 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream intc.patch to fix gh#scipy/scipy#18603
