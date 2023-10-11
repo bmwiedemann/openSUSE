@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Oct 13 05:01:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.71.0:
+  * chore(deps): bump golang.org/x/net from 0.16.0 to 0.17.0
+    (#1554)
+  * feat: disable CPE-based matching for GHSA ecosystems by default
+    (#1412)
+  * chore(deps): bump github.com/google/go-cmp from 0.5.9 to 0.6.0
+    (#1552)
+
+-------------------------------------------------------------------
+Wed Oct 11 04:28:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.70.0:
+  * chore(deps): update Syft to v0.93.0 (#1550)
+  * chore(deps): bump gorm.io/gorm from 1.25.4 to 1.25.5 (#1547)
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 0.8.0
+    to 0.9.0 (#1548)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.7.2 to
+    1.7.3 (#1549)
+  * chore(deps): bump ossf/scorecard-action from 2.2.0 to 2.3.0
+    (#1544)
+  * fix: empty descriptor name and version (#1542)
+  * chore: removes unnecessary conditional (#1539)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.4.10
+    to 0.4.11 (#1533)
+
+-------------------------------------------------------------------
 Sat Oct 07 05:34:32 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.69.1:

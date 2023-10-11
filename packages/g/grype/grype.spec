@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           grype
-Version:        0.69.1
+Version:        0.71.0
 Release:        0
 Summary:        A vulnerability scanner for container images and filesystems
 License:        Apache-2.0
@@ -32,8 +32,7 @@ BuildRequires:  go >= 1.18
 A vulnerability scanner for container images and filesystems. Easily install the binary to try it out. Works with Syft, the powerful SBOM (software bill of materials) tool for container images and filesystems.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
