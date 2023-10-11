@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  3 18:26:05 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update splitmix to version 0.1.0.5.
+  Upstream has not updated the file "Changelog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:24 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
