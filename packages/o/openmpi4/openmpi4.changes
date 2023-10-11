@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 10 09:44:40 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop %vers macro so that the Version tag can be parsed more easily
+
+-------------------------------------------------------------------
 Mon Oct  2 07:35:01 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to 4.1.6:
