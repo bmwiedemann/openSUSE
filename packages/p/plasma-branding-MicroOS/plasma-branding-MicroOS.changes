@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Oct  8 21:58:15 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added, for contextual menus in dolphin with the ark flatpak
+  * ark-addtoservicemenu.desktop
+  * ark-servicemenu.desktop 
+- 20231008
+
+-------------------------------------------------------------------
 Fri May 19 15:18:45 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add Ark to default flatpak installation script (boo#1211555)

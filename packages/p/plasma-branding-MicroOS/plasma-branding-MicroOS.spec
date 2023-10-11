@@ -25,6 +25,8 @@ Source1:        flathub.flatpakrepo
 Source2:        mod-firstboot.desktop
 Source3:        mod-firstboot
 Source4:        50-desktop.conf
+Source5:        ark-addtoservicemenu.desktop
+Source6:        ark-servicemenu.desktop
 BuildArch:      noarch
 BuildRequires:  flatpak
 BuildRequires:  transactional-update
@@ -35,7 +37,7 @@ Requires:       libqt5-qdbus
 Requires:       sound-theme-freedesktop
 Requires:       transactional-update
 Conflicts:      gnome-branding-MicroOS
-Version:        20230519
+Version:        20231008
 Release:        0
 
 %description
@@ -48,6 +50,8 @@ cp -a %{SOURCE1} flathub.flatpakrepo
 cp -a %{SOURCE2} mod-firstboot.desktop
 cp -a %{SOURCE3} mod-firstboot
 cp -a %{SOURCE4} 50-desktop.conf
+cp -a %{SOURCE5} ark-addtoservicemenu.desktop
+cp -a %{SOURCE6} ark-servicemenu.desktop
 
 %build
 
@@ -60,6 +64,9 @@ install -d %{buildroot}%{_bindir}
 install -m0755 mod-firstboot %{buildroot}%{_bindir}/mod-firstboot
 install -d %{buildroot}%{_prefix}%{_sysconfdir}/transactional-update.conf.d
 install -m644 50-desktop.conf %{buildroot}%{_prefix}%{_sysconfdir}/transactional-update.conf.d/50-desktop.conf
+install -d %{buildroot}%{_sysconfdir}/skel/.local/share/kio/servicemenus
+install -m0644 ark-addtoservicemenu.desktop %{buildroot}%{_sysconfdir}/skel/.local/share/kio/servicemenus/ark-addtoservicemenu.desktop
+install -m0644 ark-servicemenu.desktop %{buildroot}%{_sysconfdir}/skel/.local/share/kio/servicemenus/ark-servicemenu.desktop
 
 %post
 
@@ -75,5 +82,10 @@ install -m644 50-desktop.conf %{buildroot}%{_prefix}%{_sysconfdir}/transactional
 %{_bindir}/mod-firstboot
 %dir %{_prefix}%{_sysconfdir}/transactional-update.conf.d
 %{_prefix}%{_sysconfdir}/transactional-update.conf.d/50-desktop.conf
+%dir %{_sysconfdir}/skel/.local
+%dir %{_sysconfdir}/skel/.local/share
+%dir %{_sysconfdir}/skel/.local/share/kio
+%dir %{_sysconfdir}/skel/.local/share/kio/servicemenus
+%config %{_sysconfdir}/skel/.local/share/kio/servicemenus/*.desktop
 
 %changelog
