@@ -1,7 +1,42 @@
 -------------------------------------------------------------------
+Wed Oct 11 11:53:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.6:
+  + The upgrade procedure docs as published with borg 1.2.5 did not
+    work, if the repository had archives resulting from a borg
+    rename or borg recreate operation.
+  + The updated docs now use
+    BORG_WORKAROUNDS=ignore_invalid_archive_tam at some places to
+    avoid that issue.
+- Changes from version 1.2.5:
+  + Fixes:
+    - Security: fix pre-1.2.5 archives spoofing vulnerability
+      (CVE-2023-36811, boo#1214809).
+    - rename/recreate: correctly update resulting archive’s TAM.
+    - create: do not try to read parent dir of recursion root.
+    - extract: fix false warning about pattern never matching.
+    - diff: remove surrogates before output,
+    - compact: clear empty directories at end of compact process.
+    - create --files-cache=size: fix crash,
+    - keyfiles: improve key sanity check.
+    - only warn about “invalid” chunker params.
+    - ProgressIndicatorPercent: fix space computation for wide
+      chars.
+    - improve argparse validator error messages.
+  + New features:
+    -  mount: make up volname if not given (macOS), #7690. macFUSE
+       supports a volname mount option to give what finder displays
+       on the desktop / in the directory view. if the user did not
+       specify it, we make something up, because otherwise it would
+       be “macFUSE Volume 0 (Python)” and hide the mountpoint
+       directory name.
+    - BORG_WORKAROUNDS=authenticated_no_key to extract from
+      authenticated repos without key.
+
+-------------------------------------------------------------------
 Sat Mar 25 14:29:45 UTC 2023 - Andreas Prittwitz <m4ng4n@gmx.de>
 
-- change requirement: python3-Cython >= 0.29.33 
+- change requirement: python3-Cython >= 0.29.33
 
 -------------------------------------------------------------------
 Fri Mar 24 15:32:58 UTC 2023 - Andreas Prittwitz <m4ng4n@gmx.de>
