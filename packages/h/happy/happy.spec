@@ -52,7 +52,6 @@ to the 'yacc' tool for C.
 
 %prep
 %autosetup
-find . -type f -exec chmod -x {} +
 
 %build
 %define cabal_configure_options -f-bootstrap
