@@ -17,7 +17,7 @@
 
 
 Name:           borgmatic
-Version:        1.8.0
+Version:        1.8.2
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
@@ -61,7 +61,7 @@ BuildRequires:  python3-toml
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       borgbackup
-Requires:       python3-colorama
+Requires:       python3-colorama > 0.3.9
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-requests
 Requires:       python3-ruamel.yaml < 0.18.0
