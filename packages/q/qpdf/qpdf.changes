@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 10 08:49:22 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- version update to 11.6.2:
+  * Bug fix: when piping stream data, don't call finish on failure
+    if the failure was caused by a previous call to finish.
+
+-------------------------------------------------------------------
 Mon Oct  2 08:48:05 UTC 2023 - pgajdos@suse.com
 
 - version update to 11.6.1
