@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 13 09:58:43 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1697137041.0b9e261:
+  * Update all container references to current Leap 15.5
+  * Dependency cron 2023-10-11
+  * Apply memory limit for openqa-worker services
+
+-------------------------------------------------------------------
+Tue Oct 10 08:48:42 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1696927712.9de9760:
+  * ci: Use PERL_TEST_WARNINGS_ONLY_REPORT_WARNINGS
+  * spec: Use PERL_TEST_WARNINGS_ONLY_REPORT_WARNINGS
+
+-------------------------------------------------------------------
 Fri Oct 06 09:58:40 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1696521554.d04a2c8:
