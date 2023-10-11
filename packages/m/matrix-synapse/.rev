@@ -806,4 +806,17 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>- Update to 1.94.0 (forwarded request 1116682 from darix)</comment>
     <requestid>1116700</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>e63919d7f5b309e4b65147a86327892b</srcmd5>
+    <version>1.94.0</version>
+    <time>1697061373</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.94.0 (boo#1216126 CVE-2023-45129)
+  GHSA-5chr-wjw5-3gq4 / CVE-2023-45129 — Moderate Severity
+  A malicious server ACL event can impact performance temporarily
+  or permanently leading to a persistent denial of service.
+  Homeservers running on a closed federation (which presumably do
+  not need to use server ACLs) are not affected.</comment>
+    <requestid>1116889</requestid>
+  </revision>
 </revisionlist>
