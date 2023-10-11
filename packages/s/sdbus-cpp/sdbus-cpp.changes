@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+* Wed Oct 11 12:08:24 UTC 2023 - Luca Boccassi <bluca@debian.org>
+
+- Update to new version 1.4.0:
+  - Implement API for convenient asynchronous property get/set on the client-side
+  - Add support for FreeBSD systems (including support for basu implementation of sd-bus on non-systemd machines)
+  - Add support for direct, peer-to-peer connections
+  - Add option to create IConnection directly from an underlying sd_bus instance
+  - Some additional CMake-related and code bug fixes
+
+-------------------------------------------------------------------
 * Sat Aug 26 21:28:47 UTC 2023 - Luca Boccassi <bluca@debian.org>
 
 - Update to new version 1.3.0:
