@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 11 12:40:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- trim paths in the binary
+- run tests
+
+-------------------------------------------------------------------
 Tue Sep 26 11:56:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.35.2 (bsc#1215808):
