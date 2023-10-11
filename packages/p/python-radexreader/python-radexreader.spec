@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-radexreader
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Reader for the RADEX RD1212 and ONE Geiger counters
 License:        GPL-2.0-or-later
