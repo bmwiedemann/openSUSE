@@ -17,7 +17,7 @@
 
 
 Name:           desktop-file-utils
-Version:        0.26
+Version:        0.27
 Release:        0
 Summary:        Utilities for Manipulating Desktop Files
 License:        GPL-2.0-or-later
@@ -31,9 +31,6 @@ Source3:        install_man.py
 Patch0:         desktop-file-utils-suse-keys.patch
 # PATCH-FIX-OPENSUSE install_man_desktop-file-edit_as_symlink.patch -- With Source3 makes manual page "desktop-file-edit.1" a symlink instead of a copy.
 Patch1:         install_man_desktop-file-edit_as_symlink.patch
-# PATCH-FIX-UPSTREAM -- SingleMainWindow is present in xdg-specs 1.5 and can be used by both GNOME and KDE
-Patch2:         0001-validate-support-SingleMainWindow-key-from-1.5.patch
-Patch3:         0002-validate-Support-version-1.5.patch
 BuildRequires:  glib2-devel
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
