@@ -2986,6 +2986,7 @@ BuildFlags: onlybuild:rust1.73
 BuildFlags: onlybuild:samba
 BuildFlags: onlybuild:sane-backends
 BuildFlags: onlybuild:sbc
+BuildFlags: onlybuild:stb
 BuildFlags: onlybuild:schroedinger
 BuildFlags: onlybuild:scons
 BuildFlags: onlybuild:screen
