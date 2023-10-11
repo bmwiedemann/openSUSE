@@ -244,4 +244,12 @@
   * skel: print out CNI versions supported in help text.</comment>
     <requestid>1057017</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>2f7877d974ac4e17d77ef611d670faf0</srcmd5>
+    <version>1.1.2</version>
+    <time>1697061224</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116455</requestid>
+  </revision>
 </revisionlist>
