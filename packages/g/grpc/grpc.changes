@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct  8 00:05:42 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.59.1:
+  * C++: Fix MakeCordFromSlice memory bug (gh#grpc/grpc#34552).
+
+-------------------------------------------------------------------
 Sat Sep 30 22:13:53 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.59.0:
