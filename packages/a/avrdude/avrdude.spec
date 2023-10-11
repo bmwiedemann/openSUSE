@@ -24,7 +24,7 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 Name:           avrdude
-Version:        7.1
+Version:        7.2
 Release:        0
 Summary:        Upload tool for AVR microcontrollers
 License:        GPL-2.0-or-later
