@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.13.1.1
+Version:        2.13.2.0
 Release:        0
 Summary:        Backend for the persistent library using sqlite3
 License:        MIT
