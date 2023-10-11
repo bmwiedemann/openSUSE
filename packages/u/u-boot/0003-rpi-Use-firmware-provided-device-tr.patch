@@ -1,4 +1,4 @@
-From 7967ecdf06e39feacc79a5b7b6feadd840a284b7 Mon Sep 17 00:00:00 2001
+From 4559c9605a9bdf4988d90f4f948fad70b93f5244 Mon Sep 17 00:00:00 2001
 From: Guillaume Gardet <guillaume.gardet@arm.com>
 Date: Fri, 18 Sep 2020 15:27:37 +0200
 Subject: [PATCH] rpi: Use firmware provided device tree
@@ -28,7 +28,7 @@ Signed-off-by: Guillaume Gardet <guillaume.gardet@free.fr>
  5 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/configs/rpi_0_w_defconfig b/configs/rpi_0_w_defconfig
-index 5da334a8bc..c423afdff0 100644
+index ab6e6bcf29..a141bc4438 100644
 --- a/configs/rpi_0_w_defconfig
 +++ b/configs/rpi_0_w_defconfig
 @@ -24,7 +24,7 @@ CONFIG_CMD_GPIO=y
@@ -41,7 +41,7 @@ index 5da334a8bc..c423afdff0 100644
  CONFIG_SYS_RELOC_GD_ENV_ADDR=y
  CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
 diff --git a/configs/rpi_2_defconfig b/configs/rpi_2_defconfig
-index 9908621607..50ddf25774 100644
+index 0dea092f24..46bdbfb532 100644
 --- a/configs/rpi_2_defconfig
 +++ b/configs/rpi_2_defconfig
 @@ -25,7 +25,7 @@ CONFIG_CMD_GPIO=y
@@ -54,7 +54,7 @@ index 9908621607..50ddf25774 100644
  CONFIG_SYS_RELOC_GD_ENV_ADDR=y
  CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
 diff --git a/configs/rpi_3_32b_defconfig b/configs/rpi_3_32b_defconfig
-index 80885aa948..d4d1d6db5c 100644
+index 0ccc93d572..4c912b28f6 100644
 --- a/configs/rpi_3_32b_defconfig
 +++ b/configs/rpi_3_32b_defconfig
 @@ -24,7 +24,7 @@ CONFIG_CMD_GPIO=y
@@ -67,7 +67,7 @@ index 80885aa948..d4d1d6db5c 100644
  CONFIG_SYS_RELOC_GD_ENV_ADDR=y
  CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
 diff --git a/configs/rpi_3_defconfig b/configs/rpi_3_defconfig
-index bb6fe12806..d27054a6f8 100644
+index 84b61f862a..210ec94974 100644
 --- a/configs/rpi_3_defconfig
 +++ b/configs/rpi_3_defconfig
 @@ -23,7 +23,7 @@ CONFIG_CMD_GPIO=y
@@ -80,7 +80,7 @@ index bb6fe12806..d27054a6f8 100644
  CONFIG_SYS_RELOC_GD_ENV_ADDR=y
  CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
 diff --git a/configs/rpi_defconfig b/configs/rpi_defconfig
-index 550b8dcb95..4c4a55c71e 100644
+index d049d0fb5c..adf46bec3d 100644
 --- a/configs/rpi_defconfig
 +++ b/configs/rpi_defconfig
 @@ -24,7 +24,7 @@ CONFIG_CMD_GPIO=y

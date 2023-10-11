@@ -1,4 +1,4 @@
-From e55bae4e1b8e54efd77ba5b055b45f5135752eb6 Mon Sep 17 00:00:00 2001
+From 4c25eafaf0247cbe380594e6d4fa892ffd73ce09 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Sun, 3 Jul 2022 18:25:39 +0200
 Subject: [PATCH] cmd: boot: add brom cmd to reboot to FEL mode
@@ -36,10 +36,10 @@ index b08f202374..36e7697b1c 100644
 +
  #endif /* _SUNXI_CPU_H */
 diff --git a/arch/arm/mach-sunxi/Kconfig b/arch/arm/mach-sunxi/Kconfig
-index 6dcbb096f7..b6669cbaa0 100644
+index e20c3a3ee9..43a4575049 100644
 --- a/arch/arm/mach-sunxi/Kconfig
 +++ b/arch/arm/mach-sunxi/Kconfig
-@@ -1068,6 +1068,22 @@ source "board/sunxi/Kconfig"
+@@ -1073,6 +1073,22 @@ source "board/sunxi/Kconfig"
  
  endif
  
@@ -63,7 +63,7 @@ index 6dcbb096f7..b6669cbaa0 100644
  	bool "Enable DIPs detection for CHIP board"
  	select SUPPORT_EXTENSION_SCAN
 diff --git a/arch/arm/mach-sunxi/board.c b/arch/arm/mach-sunxi/board.c
-index 391a65a549..eebdebf41f 100644
+index 78597ad932..71844952d8 100644
 --- a/arch/arm/mach-sunxi/board.c
 +++ b/arch/arm/mach-sunxi/board.c
 @@ -300,7 +300,30 @@ uint32_t sunxi_get_boot_device(void)

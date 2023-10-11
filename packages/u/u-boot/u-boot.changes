@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 10 09:51:42 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix update_git.sh
+- Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2023.10
+  * Patches added:
+    0017-rpi-fix-boot-on-RPi4-after-commit-c.patch - boo#1216036
+
+-------------------------------------------------------------------
 Wed Oct  4 15:57:05 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Add microchipmpfsicicle flavor

@@ -1,4 +1,4 @@
-From b13a81120f4df7bd98c48702769cd1ad8ce22670 Mon Sep 17 00:00:00 2001
+From bfeb7f5da76408d16d8b8c10d033044181c0b0f5 Mon Sep 17 00:00:00 2001
 From: Matthias Brugger <mbrugger@suse.com>
 Date: Wed, 29 Jan 2020 09:56:06 +0100
 Subject: [PATCH] configs: Re-sync with CONFIG_DISTRO_DEFAULTS
@@ -18,10 +18,10 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  5 files changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/configs/sandbox64_defconfig b/configs/sandbox64_defconfig
-index 98b3e0cda4..fd885377ff 100644
+index 138a99b37f..82c85f4e77 100644
 --- a/configs/sandbox64_defconfig
 +++ b/configs/sandbox64_defconfig
-@@ -87,7 +87,6 @@ CONFIG_CMD_REGULATOR=y
+@@ -88,7 +88,6 @@ CONFIG_CMD_REGULATOR=y
  CONFIG_CMD_AES=y
  CONFIG_CMD_TPM=y
  CONFIG_CMD_TPM_TEST=y
@@ -30,10 +30,10 @@ index 98b3e0cda4..fd885377ff 100644
  CONFIG_CMD_CRAMFS=y
  CONFIG_CMD_EXT4_WRITE=y
 diff --git a/configs/sandbox_defconfig b/configs/sandbox_defconfig
-index 1ec44d5b33..87b216ed0d 100644
+index 62bc182ca1..841e0c07ff 100644
 --- a/configs/sandbox_defconfig
 +++ b/configs/sandbox_defconfig
-@@ -121,7 +121,6 @@ CONFIG_CMD_REGULATOR=y
+@@ -122,7 +122,6 @@ CONFIG_CMD_REGULATOR=y
  CONFIG_CMD_AES=y
  CONFIG_CMD_TPM=y
  CONFIG_CMD_TPM_TEST=y
