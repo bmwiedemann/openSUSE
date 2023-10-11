@@ -52,6 +52,8 @@ BuildRequires:  pkgconfig(qmi-glib) >= 1.32.0
 BuildRequires:  pkgconfig(qrtr-glib)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
+# Needed for tests
+BuildRequires:  /usr/bin/dbus-daemon
 Requires:       hicolor-icon-theme
 Recommends:     libmbim
 Recommends:     usb_modeswitch
