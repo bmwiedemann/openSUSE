@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Oct 11 14:12:41 UTC 2023 - pcervinka@suse.com
+
+- Replace disabled mode in service file by manual mode 
+- Update to version 0+20231006.1aeff01:
+  * nbd/004: avoid left connection
+  * Change the default RDMA driver from rdma_rxe to siw
+  * srp/015: Remove this test
+  * tests/srp/rc: Reduce the number of channels
+  * tests/srp/rc: Rework use_blk_mq()
+  * tests/nvme/031: fix connecting faiure
+  * block/002,scsi/007,zbd/003: remove options for shellcheck SC2119
+  * nvme: introduce nvmet_target_{setup/cleanup} common code
+  * nvme/{033,034,035,036,37}: drop port handle between passthru target setup and cleanup
+  * nvme/{033,034,035,036}: use default subsysnqn variable directly
+  * Revert "Do not suppress any shellcheck warnings"
+  * nvme: remove "udevadm settle" after _nvme_connect_subsys
+  * nvme/rc: fix nvme device readiness check after _nvme_connect_subsys
+  * nvme: Add explicitly host to allow_host list
+  * nvme/rc: Add helper for adding/removing to allow list
+  * nvme: Use def_subsys_uuid variable
+  * nvme/rc: Add common def_subsys_uuid define
+  * nvme: Use def_file_path variable instead local variable
+  * nvme/rc: Add common file_path name define
+  * nvme/{041,042,043,044,045,048}: Remove local variable hostnqn and hostid
+  * nvme: Use def_subsysnqn variable instead local variable
+  * nvme/rc: Add common subsystem nqn define
+  * nvme/043: Use hostnqn to generate DHCAP key
+  * nvme: Reorganize test preamble code section
+  * nvme/{003,004,005,013,046,049}: Group all variables declarations
+  * block/004: reset zones of TEST_DEV before fio operation
+  * README: clarify motivations to add new test cases
+  * CONTRIBUTING, README: recommend patch post for contributions
+  * README: describe what './new' script documents
+  * new: don't mandate double square brackets
+  * src/Makefile: fix static linking of miniublk
+  * common/scsi_debug: Use _unload_module() instead of modprobe -r
+  * _unload_module(): Report the failure reason once
+  * block/005: require queue/scheduler sysfs attribute
+  * block/004, zbd/{005,006}: call _test_dev_set_scheduler
+  * common/rc: introduce _require_test_dev_sysfs
+  * common/{rc,dm}: introduce functions to set scheduler of dm destinations
+  * common/dm: add script file for device-mapper functions
+  * check, common/rc: save sysfs attribute path
+  * common/ublk: avoid modprobe failure for built-in ublk_drv
+  * nvme/{041,042,043,044,045,048}: Use default hostnqn and hostid
+  * nvme/rc: Avoid triggering host nvme-cli autoconnect
+  * nvme/048: Check for queue count check directly
+  * nvme/043: use a valid hostkey
+  * zbd/009: skip have_good_mkfs_btrfs when mkfs.btrfs not avaiable
+  * nvme/rc: specify hostnqn and hostid to nvme discover and connect
+
+-------------------------------------------------------------------
 Tue Jun 27 10:17:27 UTC 2023 - petr@cervinka.net
 
 - Update to version 0+20230615.154e652:

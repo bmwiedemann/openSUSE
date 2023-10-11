@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <services>
-  <service mode="disabled" name="tar_scm">
+  <service mode="manual" name="tar_scm">
     <param name="url">https://github.com/osandov/blktests.git</param>
     <param name="scm">git</param>
-    <param name="revision">154e652</param>
+    <param name="revision">1aeff01</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">blktests</param>
     <param name="versionformat">0+%cd.%h</param>
     <param name="exclude">*gitignore</param>
   </service>
-  <service mode="disabled" name="recompress">
+  <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
 </services>
 
