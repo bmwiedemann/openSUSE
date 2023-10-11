@@ -1333,4 +1333,12 @@
     <comment>New stable release (forwarded request 1111540 from iznogood)</comment>
     <requestid>1111583</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>f8c232318f3bece122860929ee7f7084</srcmd5>
+    <version>45.1</version>
+    <time>1697061230</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1116037 from iznogood)</comment>
+    <requestid>1116596</requestid>
+  </revision>
 </revisionlist>

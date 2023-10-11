@@ -17,7 +17,7 @@
 
 
 Name:           orca
-Version:        45.0
+Version:        45.1
 Release:        0
 Summary:        Screen reader for GNOME
 License:        LGPL-2.1-or-later
