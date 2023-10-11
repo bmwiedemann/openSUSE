@@ -1,6 +1,7 @@
 #
 # spec file for package rioterm
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2023 Nicolas Lorin <androw95220@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,15 +29,15 @@ Source2:        cargo_config
 Requires:       rioterm-terminfo
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
-BuildRequires:  freetype-devel
+BuildRequires:  freetype2-devel
 BuildRequires:  libxcb-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  make
+BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python311
-BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(fontconfig)
 
 %description
 A hardware-accelerated GPU terminal emulator powered by WebGPU, focusing to run in desktops and browsers.
