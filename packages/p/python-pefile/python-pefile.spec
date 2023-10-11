@@ -25,11 +25,11 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/erocarrera/pefile
 Source:         https://files.pythonhosted.org/packages/source/p/pefile/pefile-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -47,14 +47,14 @@ standard use. To the best of my knowledge most of the abuse is handled
 gracefully.
 
 %prep
-%setup -q -n pefile-%{version}
+%autosetup -p1 -n pefile-%{version}
 sed -i -e '/^#!\//, 1d' pefile.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Tests not in sdist and have good reason to at time of writing:
@@ -66,6 +66,10 @@ sed -i -e '/^#!\//, 1d' pefile.py
 %files %{python_files}
 %doc README
 %license LICENSE
-%{python_sitelib}/*
+%pycache_only %{python_sitelib}/__pycache__/pe*.pyc
+%{python_sitelib}/ordlookup
+%{python_sitelib}/pefile.py
+%{python_sitelib}/peutils.py
+%{python_sitelib}/pefile-%{version}*-info
 
 %changelog
