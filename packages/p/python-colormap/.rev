@@ -48,4 +48,16 @@
     <comment></comment>
     <requestid>998564</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>df32899629283704fffe743c8a790581</srcmd5>
+    <version>1.0.6</version>
+    <time>1697061342</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.0.6:
+  * Add Python 3.11, drop Python 3.7
+  * Fix _get_value function and add corresponding test
+
+  * synchronize README with doc and online image</comment>
+    <requestid>1116831</requestid>
+  </revision>
 </revisionlist>
