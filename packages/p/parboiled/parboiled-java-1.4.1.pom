@@ -2,11 +2,11 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.parboiled</groupId>
-    <artifactId>parboiled-scala_2.10</artifactId>
-    <packaging>bundle</packaging>
+    <artifactId>parboiled-java</artifactId>
+    <packaging>jar</packaging>
     <description>Elegant parsing in Java and Scala - lightweight, easy-to-use, powerful</description>
     <url>http://parboiled.org</url>
-    <version>1.1.6</version>
+    <version>1.4.1</version>
     <licenses>
         <license>
             <name>Apache 2</name>
@@ -14,7 +14,7 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-    <name>parboiled-scala</name>
+    <name>parboiled-java</name>
     <inceptionYear>2009</inceptionYear>
     <organization>
         <name>org.parboiled</name>
@@ -34,24 +34,39 @@
         <dependency>
             <groupId>org.parboiled</groupId>
             <artifactId>parboiled-core</artifactId>
-            <version>1.1.6</version>
+            <version>1.4.1</version>
         </dependency>
         <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>2.10.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>5.14.1</version>
+            <groupId>org.scalatestplus</groupId>
+            <artifactId>testng-7-5_2.13</artifactId>
+            <version>3.2.11.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_2.10</artifactId>
-            <version>1.9.1</version>
+            <artifactId>scalatest_2.13</artifactId>
+            <version>3.2.11</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm-tree</artifactId>
+            <version>9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm-analysis</artifactId>
+            <version>9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm-util</artifactId>
+            <version>9.2</version>
         </dependency>
     </dependencies>
 </project>

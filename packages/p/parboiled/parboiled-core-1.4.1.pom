@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.parboiled</groupId>
     <artifactId>parboiled-core</artifactId>
-    <packaging>bundle</packaging>
+    <packaging>jar</packaging>
     <description>Elegant parsing in Java and Scala - lightweight, easy-to-use, powerful</description>
     <url>http://parboiled.org</url>
-    <version>1.1.6</version>
+    <version>1.4.1</version>
     <licenses>
         <license>
             <name>Apache 2</name>
@@ -32,15 +32,15 @@
     </developers>
     <dependencies>
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>5.14.1</version>
+            <groupId>org.scalatestplus</groupId>
+            <artifactId>testng-7-5_2.13</artifactId>
+            <version>3.2.11.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_2.9.3</artifactId>
-            <version>1.9.1</version>
+            <artifactId>scalatest_2.13</artifactId>
+            <version>3.2.11</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

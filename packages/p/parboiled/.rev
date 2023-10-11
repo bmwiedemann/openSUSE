@@ -39,4 +39,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963289</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d3f842cf80f7bb0a0b0f2b7d9dbd2362</srcmd5>
+    <version>1.4.1</version>
+    <time>1697061339</time>
+    <user>anag+factory</user>
+    <comment>1.4.1 + remove *-scala subpackage not needed by anybody</comment>
+    <requestid>1116885</requestid>
+  </revision>
 </revisionlist>
