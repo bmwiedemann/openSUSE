@@ -972,4 +972,12 @@
     <comment>ADd refs for Leap 15.4 bugs (forwarded request 1113520 from mgorse)</comment>
     <requestid>1113644</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>3358890b2e1e193a8feb73c785cb6c82</srcmd5>
+    <version>3.12.4</version>
+    <time>1697061404</time>
+    <user>anag+factory</user>
+    <comment>New upstream release (forwarded request 1116723 from iznogood)</comment>
+    <requestid>1117002</requestid>
+  </revision>
 </revisionlist>
