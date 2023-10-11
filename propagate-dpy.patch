@@ -1,8 +1,8 @@
-Index: libva-2.18.0/va/va.c
+Index: libva-2.20.0/va/va.c
 ===================================================================
---- libva-2.18.0.orig/va/va.c
-+++ libva-2.18.0/va/va.c
-@@ -417,6 +417,11 @@ static char *va_getDriverPath(const char
+--- libva-2.20.0.orig/va/va.c
++++ libva-2.20.0/va/va.c
+@@ -373,6 +373,11 @@ static char *va_getDriverPath(const char
  static VAStatus va_openDriver(VADisplay dpy, char *driver_name)
  {
      VADriverContextP ctx = CTX(dpy);

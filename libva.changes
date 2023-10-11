@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Oct  9 11:02:53 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.20.0:
+  * av1: Revise offsets comments for av1 encode
+  * drm:
+    - Limit the array size to avoid out of range
+    - Remove no longer used helpers
+  * jpeg: add support for crop and partial decode
+  * trace:
+    - Add trace for vaExportSurfaceHandle
+    - Unlock mutex before return
+    - Fix minor issue about printf data type and value range
+  * va/backend:
+    - Annotate vafool as deprecated
+    - Document the vaGetDriver* APIs
+  * va/x11/va_fglrx: Remove some dead code
+  * va/x11/va_nvctrl: Remove some dead code
+  * va:
+    - Add new VADecodeErrorType to indicate the reset happended in
+      the driver
+    - Add vendor string on va_TraceInitialize
+    - Added Q416 fourcc (three-plane 16-bit YUV 4:4:4)
+    - Drop no longer applicable vaGetDriverNames check
+    - Fix:don't leak driver names, when override is set
+    - Fix:set driver number to be zero if vaGetDriverNames failed
+    - Optimize code of getting driver name for all protocols/os
+      (wayland,x11,drm,win32,android)
+    - Remove legacy code paths
+    - Remove unreachable "DRIVER BUG"
+  * win32:
+    - Only print win32 driver messages in DEBUG builds
+    - Remove duplicate adapter_luid entry
+  * x11/dri2: limit the array handling to avoid out of range access
+  * x11:
+    - Allow disabling DRI3 via LIBVA_DRI3_DISABLE env var
+    - Implement vaGetDriverNames
+    - Remove legacy code paths
+- Refresh propagate-dpy.patch with quilt.
+
+-------------------------------------------------------------------
 Fri Jul 21 06:44:01 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.19.0:
