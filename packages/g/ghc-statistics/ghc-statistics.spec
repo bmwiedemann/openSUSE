@@ -125,7 +125,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-find . -type f -exec chmod -x {} +
 
 %build
 %ghc_lib_build
