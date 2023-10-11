@@ -1,7 +1,7 @@
 #
 # spec file for package libcue
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libcue
 %define lname	libcue2
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        CUE sheet parsing library
 License:        GPL-2.0-only
@@ -26,7 +26,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/lipnitsk/libcue
 
 Source:         https://github.com/lipnitsk/libcue/archive/v%version.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
@@ -61,7 +60,7 @@ files.
 
 %build
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
