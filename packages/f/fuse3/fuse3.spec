@@ -17,7 +17,7 @@
 
 
 Name:           fuse3
-Version:        3.16.1
+Version:        3.16.2
 Release:        0
 Summary:        Reference implementation of the "Filesystem in Userspace"
 License:        BSD-2-Clause AND GPL-2.0-only AND LGPL-2.1-only
