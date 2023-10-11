@@ -310,4 +310,12 @@ herbstluftwm.x86_64: E: summary-not-capitalized (Badness: 63) C a manual tiling 
   * Fix bug in ipc protocol for big-endian systems</comment>
     <requestid>991943</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>9834a40a5f94fa0d98cf380c51ef14a6</srcmd5>
+    <version>0.9.5</version>
+    <time>1697061416</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117019</requestid>
+  </revision>
 </revisionlist>

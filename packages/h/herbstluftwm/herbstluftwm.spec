@@ -1,7 +1,7 @@
 #
 # spec file for package herbstluftwm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source1:        https://herbstluftwm.org/tarballs/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.desktop
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.1
-BuildRequires:  freetype-devel
+BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  ncurses-utils
 BuildRequires:  pkgconfig
