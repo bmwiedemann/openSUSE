@@ -22,7 +22,7 @@
 %define with_265color_terminfo_files 1
 %endif
 Name:           rxvt-unicode
-Version:        9.30
+Version:        9.31
 Release:        0
 #
 Summary:        Rxvt X Terminal with Unicode Support
@@ -42,6 +42,7 @@ Patch3:         rxvt-unicode-0001-Prefer-XDG_RUNTIME_DIR-over-the-HOME.patch
 Patch4:         rxvt-unicode-hardening.patch
 Patch5:         rxvt-unicode-secondarywheel.patch
 Patch7:         handle-new-tic-and-dont-install-terminfo.patch
+Patch8:         dont-set-empty-local.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
@@ -53,6 +54,7 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(libptytty)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xt)
@@ -162,6 +164,7 @@ rm -f %{buildroot}/%{_terminfo}/r/%{name}
 %{_libdir}/urxvt/perl/example-refresh-hooks
 %{_libdir}/urxvt/perl/selection
 %{_libdir}/urxvt/perl/block-graphics-to-ascii
+%{_libdir}/urxvt/perl/clickthrough
 %{_libdir}/urxvt/perl/matcher
 %{_libdir}/urxvt/perl/option-popup
 %{_libdir}/urxvt/perl/searchable-scrollback
