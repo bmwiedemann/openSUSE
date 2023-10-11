@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 10 02:42:31 UTC 2023 - ming li <mli@suse.com>
+
+- Update to version 2.7.1:
+  * Fix build with GCC 13
+- The fix-missing-include.patch was removed from the package. 
+
+-------------------------------------------------------------------
 Fri May 26 12:15:41 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.7.0:
