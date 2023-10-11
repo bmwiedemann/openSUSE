@@ -23,12 +23,16 @@
 %bcond_without xsimd
 %endif
 %endif
+# Default python version is too old in Leap 15
+%if 0%{?suse_version} > 1500
+%bcond_without python
+%endif
 # SR#1043861 for 15.5
 %if 0%{?suse_version} > 1500 || (0%{?is_opensuse} && 0%{?sle_version} > 150400)
 %bcond_without libjxl
 %endif
 Name:           krita
-Version:        5.1.5
+Version:        5.2.0
 Release:        0
 Summary:        Digital Painting Application
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
@@ -38,15 +42,11 @@ Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version
 Source1:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz.sig
 Source2:        krita.keyring
 %endif
-# Exiv 0.28 build fixes
-Patch0:         0001-Fix-build-with-exiv2-0.28.patch
-Patch1:         0001-KisExiv2IoDevice-fix-types-on-32-bit-host-with-exiv2.patch
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-devel
 BuildRequires:  giflib-devel
 BuildRequires:  gsl-devel
-BuildRequires:  kseexpr-devel
 %if 0%{?suse_version} > 1500
 BuildRequires:  libboost_system-devel
 %else
@@ -65,37 +65,45 @@ BuildRequires:  libtiff-devel
 BuildRequires:  openjpeg2-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
+%if %{with python}
 BuildRequires:  python3-devel
 BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-sip-devel
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
-BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(Immer)
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5KDcraw)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  cmake(Lager)
+BuildRequires:  cmake(Mlt7)
 BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core) >= 5.9
+BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickWidgets)
+BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(QuaZip-Qt5)
+BuildRequires:  cmake(Zug)
+BuildRequires:  cmake(kseexpr)
+BuildRequires:  cmake(sdl2)
 %if %{with xsimd}
 BuildRequires:  cmake(xsimd)
 %endif
@@ -103,11 +111,19 @@ BuildRequires:  pkgconfig(OpenColorIO)
 %if %{with libjxl}
 BuildRequires:  pkgconfig(libjxl)
 %endif
+BuildRequires:  pkgconfig(fontconfig) >= 2.13.1
+BuildRequires:  pkgconfig(freetype2) >= 2.10.0
+BuildRequires:  pkgconfig(fribidi) >= 1.0.6
+BuildRequires:  pkgconfig(harfbuzz) >= 4.0
 BuildRequires:  pkgconfig(libmypaint)
+BuildRequires:  pkgconfig(libunibreak)
 BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(xcb-xinput)
 BuildRequires:  pkgconfig(xcb-atom)
 BuildRequires:  pkgconfig(xi) >= 1.4.99.1
+%if %{with python}
 Recommends:     python3-qt5
+%endif
 Obsoletes:      calligra-krita < %{version}
 Provides:       calligra-krita = %{version}
 Recommends:     krita-plugin-gmic
@@ -143,11 +159,12 @@ Development headers and libraries for Krita.
 
 chmod -x %{buildroot}%{_kf5_applicationsdir}/*.desktop
 
+%if %{with python}
 # remove shebang to avoid rpmlint warning, that file is not supposed to be run directly anyway
 sed -i "/#!\/usr\/bin\/env/d" %{buildroot}%{_kf5_libdir}/krita-python-libs/krita/sceditor/highlighter.py
+%endif
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING*
@@ -160,7 +177,9 @@ sed -i "/#!\/usr\/bin\/env/d" %{buildroot}%{_kf5_libdir}/krita-python-libs/krita
 %{_kf5_appstreamdir}/
 %{_kf5_libdir}/libkrita*.so.*
 %{_kf5_libdir}/kritaplugins/
+%if %{with python}
 %{_kf5_libdir}/krita-python-libs/
+%endif
 %{_kf5_qmldir}
 %{_kf5_sharedir}/kritaplugins/
 %{_kf5_sharedir}/color/

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 10 12:36:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.2.0
+  * https://krita.org/en/krita-5-2-release-notes/
+- Drop patches, merged upstream:
+  * 0001-Fix-build-with-exiv2-0.28.patch
+  * 0001-KisExiv2IoDevice-fix-types-on-32-bit-host-with-exiv2.patch
+
+-------------------------------------------------------------------
 Tue Jul  4 07:14:23 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add patches:
