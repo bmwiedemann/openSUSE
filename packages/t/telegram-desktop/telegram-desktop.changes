@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 11 13:11:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop freetype-devel BuildRequires: there is already
+  pkgconfig(freetype2) and it seems unlikely that both versions are
+  being used.
+
+-------------------------------------------------------------------
 Tue Oct  3 13:02:03 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Updated to version 4.10.3

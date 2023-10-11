@@ -69,7 +69,6 @@ BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  enchant-devel
 BuildRequires:  ffmpeg-devel
-BuildRequires:  freetype-devel
 %if %{with compiler_upgrade}
 BuildRequires:  gcc10
 BuildRequires:  gcc10-c++

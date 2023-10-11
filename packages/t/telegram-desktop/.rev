@@ -1076,4 +1076,14 @@
     <comment></comment>
     <requestid>1116203</requestid>
   </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>9d26f600575242730b09c42cf694089f</srcmd5>
+    <version>4.10.3</version>
+    <time>1697061420</time>
+    <user>anag+factory</user>
+    <comment>- Drop freetype-devel BuildRequires: there is already
+  pkgconfig(freetype2) and it seems unlikely that both versions are
+  being used. (forwarded request 1117008 from dimstar)</comment>
+    <requestid>1117034</requestid>
+  </revision>
 </revisionlist>
