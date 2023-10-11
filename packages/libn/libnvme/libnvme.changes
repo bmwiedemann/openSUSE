@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 12 16:50:55 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Add missing jsc# tracking references to changelog
+
+-------------------------------------------------------------------
+Mon Oct  9 10:00:13 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Use glob for python3-libnvme file listening. Workaround pycache_only
+  problems for SLE/Leap builds.
+- Drop usused libuuid dependency
+
+-------------------------------------------------------------------
 Wed Oct  4 14:31:09 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Enable tests during build
@@ -14,7 +26,7 @@ Wed Oct  4 10:32:55 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 -------------------------------------------------------------------
 Fri Sep 29 11:42:15 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
-- Update to version 1.6:
+- Update to version 1.6: (jsc#PED-3610 jsc#PED-4879 jsc#PED-5061)
   * docs: Fix Read-the-Docs configuration (deprecated config param)
   * mi-mctp: Fix free() in error path of mi_open_mctp
   * types: Use NVME_SET for status type mask to get status value
@@ -61,18 +73,19 @@ Fri Sep 29 11:42:15 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * fabrics: Read the supported options lazy
   * test: add discovery log page tests
   * test: add infra for mocking passthru ioctls
-  * tree: fix segfault in nvme_scan_subsystem()
-  * src/nvme/tree.c: make __nvme_scan_subsystem() returning bool
+  * tree: fix segfault in nvme_scan_subsystem() (bsc#1213993)
+  * src/nvme/tree.c: make __nvme_scan_subsystem() returning bool (bsc#1213993)
   * doc: fix minor mistake in README.md about dependencies
-  * nvme-tree: avoid warning in 'list-subsys'
-  * tree: Add getter for subsystem iopolicy
+  * nvme-tree: avoid warning in 'list-subsys' (bsc#1212598)
+  * tree: Add getter for subsystem iopolicy (bsc#1124564)
   * fabrics: Consider also all hosts settings for context match
-  * tree: Scan all subsystems
+  * tree: Scan all subsystems (bsc#1212598)
   * doc: Fixing compile instruction in README
   * mi: allow non-4-byte-aligned responses
   * mi-mctp: use a linear response buffer
   * mi: implement length and offset alignment checks in admin_xfer()
   * tree: Don't open nvme devices until it's absolutely required
+    (bsc#1213527 bsc#1213686)
   * tree: missing closedir() causes fd leak for "/sys/bus/pci/slots"
   * mi: don't return from mi_mctp_submit with a tag held
   * util: Provide empty nvme_ipaddrs_eq for static builds
@@ -92,8 +105,8 @@ Fri Sep 29 11:42:15 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * util: rename ipaddrs_eq() to nvme_ipaddrs_eq() and make public.
   * util: Add ipaddrs_eq() to check whether two IP addresses are equal
   * test: Add unit test for ctrl lookups
-  * ioctl: fix RAE bit on last Get Log Page command
-  * fabrics: check genctr after getting discovery entries
+  * ioctl: fix RAE bit on last Get Log Page command (bsc#1213618)
+  * fabrics: check genctr after getting discovery entries (bsc#1213618)
   * fabrics: handle /dev/nvme-fabrics read failure
   * fabrics: fix potential invalid memory access in __nvmf_supported_option()
   * Python: Fix crash during garbage collection
@@ -120,7 +133,7 @@ Fri Sep 29 11:42:15 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * build: Update wrap mode defaults
   * build: Disable fallback on default
   * tree: Fix offset argument check in nvme_bytes_to_lba
-  * nbft: add NBFT v1.0 table support
+  * nbft: add NBFT v1.0 table support (jsc#PED-1449)
   * types: Add IO command set specific field on nsmgmt
   * fabrics: Do not pass unsupported options to kernel
   * types: Add ns-mgmt host software specified fields
@@ -135,7 +148,7 @@ Thu Jul 27 13:10:34 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 -------------------------------------------------------------------
 Fri Mar 31 15:38:35 UTC 2023 - Daniel Wagnrer <daniel.wagner@suse.com>
 
-- Update to version 1.4:
+- Update to version 1.4: (jsc#PED-553 jsc#PED-3884)
   * fabrics: Filter out invalid UUIDs from DMI
   * fabrics: Add define for DMI sysinfo
   * Print out correct TREQ strings for discovery
@@ -165,6 +178,16 @@ Fri Mar 31 15:38:35 UTC 2023 - Daniel Wagnrer <daniel.wagner@suse.com>
   * ioctl: Set file descriptor in nvme_get_log_page()
   * fix endians
   * fabrics: Do not ignore one char whitespace when string sanitizing
+- Enabled unit test on s390x again (bsc#1207687, bsc#1207686)
+- Fix invalid string lenght calculcation for UUID (bsc#1209906)
+- Fix segmentation fault during garbage collection (bsc#1209905)
+- Always sanitize traddr and trsvcid entries (bsc#1207435)
+- Allow tracking unique discover controllers (bsc#1186689)
+
+-------------------------------------------------------------------
+Mon Jan 30 14:46:55 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- temporarily disable unit tests on s390x (bsc#1207687, bsc#1207686)
 
 -------------------------------------------------------------------
 Mon Jan 30 13:51:19 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
@@ -258,6 +281,11 @@ Tue Aug  2 18:55:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * mi-mctp: Add timeout support to MCTP transport
   * mi: Add maximum More Processing Required limit API
   * mi: Add endpoint get/set timeout API
+  * tree: Factor lookup code for controller (bsc#1199503)
+  * fabrics: Consider config from file when adding new controller (bsc#1199503)
+  * fabrics: Lower log level in __nvmf_add_ctrl (bsc#1199994 bsc#1199503)
+  * fabrics: Remove double connection error logging (bsc#1199994 bsc#1199503)
+  * Fixes for controller authentication (bsc#1201501 bsc#1201700 bsc#1201701 bsc#1201717)
 
 -------------------------------------------------------------------
 Thu Jul 14 14:00:41 UTC 2022 - daniel.wagner@suse.com
