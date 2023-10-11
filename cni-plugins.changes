@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  9 09:40:50 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Bump BuildRequired golang version to >= 1.21, fixes bsc#1216006
+
+-------------------------------------------------------------------
 Wed Sep 06 06:16:36 UTC 2023 - danish.prakash@suse.com
 
 - Update to version v1.3.0:
