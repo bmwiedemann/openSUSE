@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.46
+Version:        0.47.1
 Release:        0
 Summary:        A Minimalistic Text Based Status Bar
 License:        BSD-3-Clause
@@ -68,8 +68,6 @@ BuildRequires:  ghc-http-conduit-devel
 BuildRequires:  ghc-http-conduit-prof
 BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-http-types-prof
-BuildRequires:  ghc-libmpd-devel
-BuildRequires:  ghc-libmpd-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-netlink-devel
