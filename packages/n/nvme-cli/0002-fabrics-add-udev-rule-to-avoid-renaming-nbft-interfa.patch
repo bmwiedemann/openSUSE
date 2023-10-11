@@ -1,0 +1,49 @@
+From 39f94260eaf7e0604772e6cabf1c04ec0f03201a Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 23 May 2023 14:19:14 +0200
+Subject: [PATCH 2/2] fabrics: add udev rule to avoid renaming nbft interfaces
+
+In the initramfs, the interface naming is taken care of by dracut.
+But there are various network-interface-naming policies in place which
+may attempt to rename the interface, causing confusion and possibly
+wrong interface parameters.
+
+Add an udev rule that avoids renaming any network interface that
+has been assigned a name nbft$N, which is by convention the naming
+scheme that is used for NBFT device in the initramfs.
+
+Note: The simpler 'NAME:="%k"' directive doesn't work because udev rejects
+it ('Ignoring NAME="%k", as it will take no effect.'). The ":=" syntax makes
+sure the interface isn't renamed any more by later rules. "INTERFACE" is set
+by the kernel in the "add" uevent for a network interface.
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ meson.build                                                 | 1 +
+ nvmf-autoconnect/udev-rules/65-persistent-net-nbft.rules.in | 2 ++
+ 2 files changed, 3 insertions(+)
+ create mode 100644 nvmf-autoconnect/udev-rules/65-persistent-net-nbft.rules.in
+
+diff --git a/meson.build b/meson.build
+index de595c82c064..80695e01b906 100644
+--- a/meson.build
++++ b/meson.build
+@@ -238,6 +238,7 @@ endforeach
+ udev_files = [
+   '70-nvmf-autoconnect.rules',
+   '71-nvmf-iopolicy-netapp.rules',
++  '65-persistent-net-nbft.rules',
+ ]
+ 
+ foreach file : udev_files
+diff --git a/nvmf-autoconnect/udev-rules/65-persistent-net-nbft.rules.in b/nvmf-autoconnect/udev-rules/65-persistent-net-nbft.rules.in
+new file mode 100644
+index 000000000000..344942bca0c0
+--- /dev/null
++++ b/nvmf-autoconnect/udev-rules/65-persistent-net-nbft.rules.in
+@@ -0,0 +1,2 @@
++# Avoid renaming nbft$X interfaces
++SUBSYSTEM=="net", ACTION!="remove", ENV{INTERFACE}=="nbft*", NAME:="%E{INTERFACE}"
+-- 
+2.42.0
+
