@@ -1,17 +1,17 @@
-From b135bbd92d7753b2ac94634c6248efe1cfd376e1 Mon Sep 17 00:00:00 2001
+From 4fb1777834e863a14cfb8ca1ab08c8d4a8a1651c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
 Date: Tue, 10 Oct 2023 13:06:25 +0200
 Subject: [PATCH 13/14] startscript
 
 ---
- .../common-linux/tuxguitar.sh                 | 61 ++++++++++++++++---
- 1 file changed, 54 insertions(+), 7 deletions(-)
+ .../common-linux/tuxguitar.sh                 | 148 +++++++++++++++++-
+ 1 file changed, 141 insertions(+), 7 deletions(-)
 
 diff --git a/build-scripts/common-resources/common-linux/tuxguitar.sh b/build-scripts/common-resources/common-linux/tuxguitar.sh
-index a213786a..348848bb 100755
+index a213786a..62a895d1 100755
 --- a/build-scripts/common-resources/common-linux/tuxguitar.sh
 +++ b/build-scripts/common-resources/common-linux/tuxguitar.sh
-@@ -1,20 +1,67 @@
+@@ -1,20 +1,154 @@
  #!/bin/sh
 -##SCRIPT DIR
 -TG_DIR=`dirname $(realpath "$0")`
@@ -61,12 +61,99 @@ index a213786a..348848bb 100755
  JAVA=`which java`
  ##LIBRARY_PATH
 -LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${TG_DIR}/lib/
-+LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib64/tuxguitar
++LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:@LIBDIR@/tuxguitar
  ##CLASSPATH
 -CLASSPATH=${CLASSPATH}:${TG_DIR}/lib/*
 -CLASSPATH=${CLASSPATH}:${TG_DIR}/share/
 -CLASSPATH=${CLASSPATH}:${TG_DIR}/dist/
-+CLASSPATH=/usr/share/java/tuxguitar/tuxguitar.jar:/usr/share/java/tuxguitar/*:
++PACKAGE=${PACKAGE:=tuxguitar}
++PACKAGE_HOME=${PACKAGE_HOME:=/usr/share/java/${PACKAGE}/}
++t="${PACKAGE_HOME}/${PACKAGE}.jar"
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-alsa.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-ascii.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-awt-graphics.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-browser-ftp.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-community.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-compat.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-converter.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-debug-helper.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-editor-utils.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-fluidsynth.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-gervill.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-gm-settings.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-gm-utils.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-gpx.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-gtp.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-gtp-ui.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-image.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-jack.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-jack-ui.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-jsa.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-lib.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-lilypond.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-lilypond-ui.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-midi.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-midi-ui.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-musicxml.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-pdf.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-pdf-ui.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-ptb.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-svg.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-synth.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-synth-export.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-synth-gervill.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-synth-lv2.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-synth-vst.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-tef.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-tray.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-tuner.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-ui-toolkit.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-ui-toolkit-swt.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/${PACKAGE}-viewer.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
++t=${PACKAGE_HOME}/gervill.jar
++[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
 +t=$(itext_pdf_guess_)
 +[ -r "$t" ] && CLASSPATH=${CLASSPATH}:$t
 +t=$(itext_xmlworker_guess_)

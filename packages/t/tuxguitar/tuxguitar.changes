@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 12 06:49:30 UTC 2023 - Fridrich Štrba <fstrba@suse.com>
+
+- Added patch:
+  * tuxguitar-CVE-2020-13940.patch
+    + fix bsc#1173633 (CVE-2020-14940): improper configuration of
+      XML parsers might lead to XXE while loading GP6 (.gpx) and
+      GP7 (.gp) tablature files
+
+-------------------------------------------------------------------
+Thu Oct 12 05:21:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Package also a sample tuxguitar.tg file
+- Modified patch:
+  * 0013-startscript.patch
+    + compose the CLASSPATH jar by jar, since wildcards are not
+      working for CLASSPATH variable
+
+-------------------------------------------------------------------
 Wed Oct 11 05:17:42 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Allow building on all supported architectures and distributions
