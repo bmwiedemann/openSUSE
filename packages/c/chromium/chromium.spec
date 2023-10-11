@@ -36,16 +36,20 @@
 %endif
 %if 0%{?suse_version} >= 1599
 %bcond_without system_harfbuzz
+%bcond_without system_freetype
 %bcond_without arm_bti
 %bcond_without system_icu
 %bcond_without ffmpeg_51
 %bcond_without qt6
+%bcond_without system_zstd
 %else
 %bcond_with system_harfbuzz
+%bcond_with system_freetype
 %bcond_with arm_bti
 %bcond_with system_icu
 %bcond_with ffmpeg_51
 %bcond_with qt6
+%bcond_with system_zstd
 %endif
 # LLVM version
 %define llvm_version 15
@@ -66,7 +70,6 @@
 %bcond_without lto
 %bcond_without pipewire
 %bcond_without system_ffmpeg
-%bcond_with system_freetype
 %bcond_without system_zlib
 %bcond_with system_vpx
 # FFmpeg version
@@ -84,7 +87,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        118.0.5993.54
+Version:        118.0.5993.70
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -143,6 +146,8 @@ Patch239:       chromium-117-includes.patch
 Patch240:       chromium-117-string-convert.patch
 Patch241:       chromium-117-lp155-typename.patch
 Patch242:       chromium-118-includes.patch
+Patch243:       chromium-118-system-freetype.patch
+Patch244:       chromium-117-system-zstd.patch
 BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
 BuildRequires:  (python3-importlib-metadata if python3-base < 3.8)
 BuildRequires:  SDL-devel
@@ -332,6 +337,9 @@ BuildRequires:  pkgconfig(re2) >= 11
 %endif
 %if %{with system_webp}
 BuildRequires:  pkgconfig(libwebp) >= 0.4.0
+%endif
+%if %{with system_zstd}
+BuildRequires:  pkgconfig(libzstd) = 1.5.5
 %endif
 %if %{with clang}
 %if 0%{?suse_version} < 1550
@@ -635,7 +643,6 @@ keeplibs=(
     third_party/xcbproto
     third_party/xnnpack
     third_party/zlib/google
-    third_party/zstd
     third_party/zxcvbn-cpp
     url/third_party/mozilla
     v8/src/third_party/siphash
@@ -685,6 +692,9 @@ keeplibs+=( third_party/re2 )
 %endif
 %if !%{with system_webp}
 keeplibs+=( third_party/libwebp )
+%endif
+%if !%{with system_zstd}
+keeplibs+=( third_party/zstd )
 %endif
 build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 
@@ -802,6 +812,9 @@ gn_system_libraries+=( re2 )
 %endif
 %if %{with system_webp}
 gn_system_libraries+=( libwebp )
+%endif
+%if %{with system_zstd}
+gn_system_libraries+=( zstd )
 %endif
 build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries[@]}
 
