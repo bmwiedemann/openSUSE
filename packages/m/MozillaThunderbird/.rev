@@ -5037,4 +5037,14 @@ I cannot test locally unfortunately.
 - Add mozilla-bmo1846703.patch</comment>
     <requestid>1114452</requestid>
   </revision>
+  <revision rev="320" vrev="1">
+    <srcmd5>ffcbae11915ab16ae2abeaff4b77a1c9</srcmd5>
+    <version>115.3.2</version>
+    <time>1697061285</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 115.3.2
+  Bugfix release
+  https://www.thunderbird.net/en-US/thunderbird/115.3.2/releasenotes</comment>
+    <requestid>1116802</requestid>
+  </revision>
 </revisionlist>
