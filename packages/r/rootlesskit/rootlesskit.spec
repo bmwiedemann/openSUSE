@@ -31,7 +31,7 @@ License:        Apache-2.0
 URL:            https://github.com/rootless-containers/rootlesskit
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.21
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
