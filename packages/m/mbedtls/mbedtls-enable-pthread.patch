@@ -1,7 +1,8 @@
-diff -purN a/include/mbedtls/mbedtls_config.h b/include/mbedtls/mbedtls_config.h
---- a/include/mbedtls/mbedtls_config.h	2023-03-27 19:05:28.000000000 +0200
-+++ b/include/mbedtls/mbedtls_config.h	2023-05-29 19:15:39.917530360 +0200
-@@ -1917,7 +1917,7 @@
+Index: mbedtls-3.5.0/include/mbedtls/mbedtls_config.h
+===================================================================
+--- mbedtls-3.5.0.orig/include/mbedtls/mbedtls_config.h
++++ mbedtls-3.5.0/include/mbedtls/mbedtls_config.h
+@@ -2085,7 +2085,7 @@
   *
   * Uncomment this to enable pthread mutexes.
   */
@@ -10,9 +11,9 @@ diff -purN a/include/mbedtls/mbedtls_config.h b/include/mbedtls/mbedtls_config.h
  
  /**
   * \def MBEDTLS_USE_PSA_CRYPTO
-@@ -3312,7 +3312,7 @@
+@@ -3522,7 +3522,7 @@
   *
-  * Enable this layer to allow use of mutexes within mbed TLS
+  * Enable this layer to allow use of mutexes within Mbed TLS
   */
 -//#define MBEDTLS_THREADING_C
 +#define MBEDTLS_THREADING_C

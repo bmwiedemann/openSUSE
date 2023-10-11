@@ -16,15 +16,16 @@
 #
 
 
-%define lib_tls    libmbedtls19
-%define lib_crypto libmbedcrypto14
-%define lib_x509   libmbedx509-5
+%define lib_tls     libmbedtls20
+%define lib_crypto  libmbedcrypto15
+%define lib_x509    libmbedx509-6
+%define lib_everest libeverest
+%define lib_p256m   libp256m
 Name:           mbedtls
-Version:        3.4.1
+Version:        3.5.0
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0
-Group:          Development/Libraries/C and C++
 URL:            https://tls.mbed.org
 Source:         %{name}-%{version}.tar.gz
 Source99:       baselibs.conf
@@ -45,7 +46,6 @@ exchanges.
 
 %package -n %{lib_tls}
 Summary:        Transport Layer Security protocol suite
-Group:          System/Libraries
 
 %description -n %{lib_tls}
 mbedtls implements the SSL 3.0, TLS 1.0, 1.1 and 1.2 protocols. It
@@ -58,7 +58,6 @@ exchanges.
 
 %package -n %{lib_crypto}
 Summary:        Cryptographic base library for mbedtls
-Group:          System/Libraries
 
 %description -n %{lib_crypto}
 This subpackage of mbedtls contains a library that exposes
@@ -67,19 +66,31 @@ AES, MD5, SHA, Elliptic Curves, BigNum, PKCS, ASN.1, BASE64.
 
 %package -n %{lib_x509}
 Summary:        Library to work with X.509 certificates
-Group:          System/Libraries
 
 %description -n %{lib_x509}
 This subpackage of mbedtls contains a library that can read, verify
 and write X.509 certificates, read/write Certificate Signing Requests
 and read Certificate Revocation Lists.
 
+%package -n %{lib_everest}
+Summary:        Library libeverest
+
+%description -n %{lib_everest}
+This subpackage of mbedtls contains libeverest
+
+%package -n %{lib_p256m}
+Summary:        Library libp256m
+
+%description -n %{lib_p256m}
+This subpackage of mbedtls contains libp256m
+
 %package devel
 Summary:        Development files for mbedtls, a SSL/TLS library
-Group:          Development/Libraries/C and C++
 Requires:       %{lib_crypto} = %{version}
 Requires:       %{lib_tls} = %{version}
 Requires:       %{lib_x509} = %{version}
+Requires:       %{lib_everest} = %{version}
+Requires:       %{lib_p256m} = %{version}
 
 %description devel
 This subpackage contains the development files for mbedtls,
@@ -111,22 +122,31 @@ pushd build
 LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
  %{_bindir}/ctest --output-on-failure --force-new-ctest-process
 
-%post -n %{lib_tls}      -p /sbin/ldconfig
-%post -n %{lib_crypto}   -p /sbin/ldconfig
-%post -n %{lib_x509}     -p /sbin/ldconfig
-%postun -n %{lib_tls}    -p /sbin/ldconfig
-%postun -n %{lib_crypto} -p /sbin/ldconfig
-%postun -n %{lib_x509}   -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lib_tls}
+%ldconfig_scriptlets -n %{lib_crypto}
+%ldconfig_scriptlets -n %{lib_x509}
+%ldconfig_scriptlets -n %{lib_everest}
+%ldconfig_scriptlets -n %{lib_p256m}
 
 %files devel
 %license LICENSE
 %doc ChangeLog README.md
 %dir %{_includedir}/mbedtls
 %dir %{_includedir}/psa
+%dir %{_includedir}/everest
+%dir %{_includedir}/everest/kremlin
+%dir %{_includedir}/everest/kremlin/internal
+%dir %{_includedir}/everest/kremlib
+%dir %{_includedir}/everest/vs2013
 %dir %{_libdir}/cmake/MbedTLS
 %{_libdir}/cmake/MbedTLS/*
 %{_includedir}/mbedtls/*.h
 %{_includedir}/psa/*.h
+%{_includedir}/everest/*.h
+%{_includedir}/everest/kremlin/*.h
+%{_includedir}/everest/kremlin/internal/*.h
+%{_includedir}/everest/kremlib/*.h
+%{_includedir}/everest/vs2013/*.h
 %{_libdir}/libmbedtls.so
 %{_libdir}/libmbedcrypto.so
 %{_libdir}/libmbedx509.so
@@ -142,5 +162,13 @@ LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
 %files -n %{lib_x509}
 %license LICENSE
 %{_libdir}/libmbedx509.so.*
+
+%files -n %{lib_everest}
+%license LICENSE
+%{_libdir}/libeverest.so
+
+%files -n %{lib_p256m}
+%license LICENSE
+%{_libdir}/libp256m.so
 
 %changelog

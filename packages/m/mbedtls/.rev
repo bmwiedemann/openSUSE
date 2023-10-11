@@ -415,4 +415,41 @@
     <comment></comment>
     <requestid>1102828</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>65f8e20b1dabb466c3541d126c829677</srcmd5>
+    <version>3.5.0</version>
+    <time>1697061377</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.5.0 (resolves bsc#1216078 CVE-2023-45199 and bsc#1216076 CVE-2023-43615):
+  * Updated BRANCHES.MD
+  * Re-assemble changelog to add missing item, plus a couple of typo fixes.
+  * Bump library so-crypto, so-x509, so-tls versions.
+  * Ignore tests of built-in interfaces for driver-only testing parity
+  * Renaming all MBEDTLS_HAVE for curves to MBEDTLS_ECP_HAVE
+  * Auto-generated files for v3.5.0
+  * ChangeLog: Set release date
+  * Prepare ChangeLog for 3.5.0 release
+  * Bump version to 3.5.0
+  * check-generated-files: Added psa_crypto_driver_wrappers_no_static.c file
+  * Changelog: Added entry for psa_crypto_driver_wrappers rename
+  * Remove leftover local debug line
+  * ChangeLog: Added .txt extension to log entries.
+  * Avoid compiler warning about size comparison
+  * Improve some debug messages and error codes
+  * In TLS 1.2, only servers are affected
+  * Changelog entry for xxdh_psa_peerkey size validation
+  * Improve robustness of ECDH public key length validation
+  * Fix buffer overflow in TLS 1.2 ClientKeyExchange parsing
+  * Fix buffer overflow in TLS 1.3 ECDH public key parsing
+  * Add custom config logic to 3rdparty modules
+  * CMake: fix build with 3rdparty module enabled through a custom config
+  * Changelog entry for #7298
+  * Fix ChangeLog entry for FFDH in PSA
+  * Undo not-needed change
+  * Remove redundant code
+  * Assume get_num_ops cannot fail
+  * Always call get_num_ops
+  * Add MBEDTLS_TARGET_PREFIX to 3rdparty CMake</comment>
+    <requestid>1116911</requestid>
+  </revision>
 </revisionlist>
