@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  9 06:57:30 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 4.3.0
+ * Added Mask, the inverse of a Projection.
+ * Require Python 3.8 or later.
+
+-------------------------------------------------------------------
 Sun May 14 18:30:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.0:

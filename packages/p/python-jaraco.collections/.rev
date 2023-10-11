@@ -111,4 +111,12 @@
     Improves efficiency and fixes ``RecursionError`` on PyPy (#12).</comment>
     <requestid>1087121</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a1c39cfff27c4fe4061ffb92b833b0e2</srcmd5>
+    <version>4.3.0</version>
+    <time>1697061216</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116435</requestid>
+  </revision>
 </revisionlist>
