@@ -17,7 +17,7 @@
 
 
 Name:           libva-utils
-Version:        2.19.0
+Version:        2.20.0
 Release:        0
 Summary:        A collection of utilities and examples to exercise VA-API
 License:        EPL-1.0 AND MIT
