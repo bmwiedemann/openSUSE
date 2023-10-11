@@ -154,4 +154,35 @@
     <comment></comment>
     <requestid>1090906</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>88087ceb84394a382bf6fa1483c73202</srcmd5>
+    <version>0.29.4</version>
+    <time>1697061341</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.29.4:
+  * Test coverage reported as &lt;100% when argcomplete is installed
+  * Technical releases for packaging purposes.  No changes in
+    functionality.
+  * Backwards incompatible changes:
+  * Wrapped exceptions now cause ``dispatching.dispatch()`` to
+    raise ``SystemExit(1)`` instead of returning without error.
+    For most users, this means failed commands will now exit
+    with a failure status instead of a success.
+  * Renamed arguments in `add_commands()` (#165):
+    * `namespace` → `group_name`
+    * `namespace_kwargs` → `group_kwargs`
+  * The old names are deprecated and will be removed in v.0.30.
+  * Can control exit status (see Backwards Incompatible Changes
+    above) when raising ``CommandError`` using the ``code``
+    keyword arg.
+  * Bugs fixed:
+  * Positional arguments should not lead to removal of short
+    form of keyword arguments.
+  * Other changes:
+  * Avoid depending on iocapture by using pytest's built-in
+    feature
+
+- Update to verios 0.23.0</comment>
+    <requestid>1116830</requestid>
+  </revision>
 </revisionlist>

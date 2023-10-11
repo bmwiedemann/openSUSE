@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-argh
-Version:        0.28.1
+Version:        0.29.4
 Release:        0
 Summary:        An argparse wrapper
 License:        LGPL-3.0-or-later
