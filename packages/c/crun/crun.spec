@@ -15,17 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%ifarch x86_64 aarch64
 %define with_wasmedge 1
+%else
+%define with_wasmedge 0
+%endif
 
 Name:           crun
-Version:        1.9
+Version:        1.9.2
 Release:        0
 Summary:        OCI runtime written in C
 License:        GPL-2.0-or-later
 URL:            https://github.com/containers/crun
-Source0:        https://github.com/containers/crun/releases/download/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://github.com/containers/crun/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+Source0:        %{URL}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{URL}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        crun.keyring
 # We always run autogen.sh
 BuildRequires:  autoconf
@@ -76,7 +79,7 @@ export WASMEDGE="--with-wasmedge"
 # - it would be nice to enable the test-suite, but seems to behave (and fail!)
 #   differently when run inside of an OBS worker, with respect to when it's
 #   run manually on the host... Need to investigate more.
-#%check
+%dnl %check
 #make test-suite.log
 
 %install
@@ -86,6 +89,10 @@ rm -rf %{buildroot}/%{_libdir}/lib*
 # allow easy krun usage with podman
 ln -s %{_bindir}/crun %{buildroot}%{_bindir}/krun
 %endif
+%if %with_wasmedge
+# platform 'wasi/wasm' requires crun-wasm
+ln -s %{_bindir}/crun %{buildroot}%{_bindir}/crun-wasm
+%endif
 
 %files
 %license COPYING
@@ -94,6 +101,9 @@ ln -s %{_bindir}/crun %{buildroot}%{_bindir}/krun
 %{_bindir}/%{name}
 %ifarch x86_64 aarch64
 %{_bindir}/krun
+%endif
+%if %with_wasmedge
+%{_bindir}/crun-wasm
 %endif
 %{_mandir}/man1/*
 
