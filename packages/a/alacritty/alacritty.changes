@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 11 12:22:28 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace freetype-devel BuildRequires with freetype2: this is
+  actually what is needed, but as fontconfig happened to pull it in
+  already, things happened to work. Freetype 1 is not needed here.
+
+-------------------------------------------------------------------
+Mon Oct  9 14:39:22 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Reduced vendored size using cargo-vendor-filterer
+  * vendor.tar.xz was 28MB.. now it is 8.2MB
+- Update _service file
+  * replace mode "disabled" to "manual" since "disabled" is deprecated.
+
+-------------------------------------------------------------------
 Tue Oct  3 19:47:31 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 0.12.3:
