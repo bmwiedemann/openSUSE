@@ -40,9 +40,9 @@ URL:            https://github.com/executablebooks/sphinx-tabs
 # Use the github tag instead of the pythonhosted.org to get the tests folder
 Source:         https://github.com/executablebooks/sphinx-tabs/archive/refs/tags/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/executablebooks/sphinx-tabs/commit/f60a10e13b3a6a8d1d27f285d9942b57ab07d0a8 Make the tests pass with Sphinx 7.1
-Patch:          sphinx71.patch
+Patch1:          sphinx71.patch
 # PATCH-FIX-UPSTREAM https://github.com/executablebooks/sphinx-tabs/pull/179 Fix tests for Sphinx 7.2
-Patch:          sphinx72.patch
+Patch2:          sphinx72.patch
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module docutils}
