@@ -27,12 +27,14 @@
     <param name="revision">962acb0</param>
     -->
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
-    <!--  These need changed dependent on tags
-          at github.com/Xpra-org/xpra ; Currently
-          tag=v4.4 but setup.py returns 5.0 as a
-          result of ./xpra/__init__.py
-    -->
     <!--
+      These need changed dependent on tags
+      at github.com/Xpra-org/xpra ; Currently
+      tag=v4.4 but setup.py returns 5.0 as a
+      result of:
+        grep __version__ xpra/xpra/__init__.py
+    -->
+    <!-- DEFAULT PATTERN
     <param name="versionrewrite-pattern">v(.*)</param>
     -->
     <param name="versionrewrite-pattern">v4.4</param>
