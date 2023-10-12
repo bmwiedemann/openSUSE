@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ksudoku
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Program to generate and solve Sudoku puzzles in 2D or 3D
 License:        GPL-2.0-or-later
