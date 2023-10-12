@@ -47,4 +47,12 @@
     <comment>KDE release gear 23.08.1 (forwarded request 1110807 from krop)</comment>
     <requestid>1111218</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>103f8508ea043169a64edb993e149f8e</srcmd5>
+    <version>23.08.2</version>
+    <time>1697146997</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.2 (forwarded request 1116778 from krop)</comment>
+    <requestid>1117341</requestid>
+  </revision>
 </revisionlist>
