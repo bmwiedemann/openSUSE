@@ -20,7 +20,7 @@
 %define libkdev_major 512
 %bcond_without released
 Name:           kdevelop5
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later
