@@ -450,4 +450,53 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.15.3 for more details.</comment>
     <requestid>1102747</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d5c131ec4184d4e014df620c8ab54f37</srcmd5>
+    <version>1.16.1</version>
+    <time>1697146856</time>
+    <user>anag+factory</user>
+    <comment>- Update to v1.16.1:
+  * Fixed rendering cells underneath erased sixels.
+  * Fixed being unable to start on kernel versions before 6.3.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.16.1 for more details.
+
+- Update to v1.16.0:
+  * foot.ini options:
+    * Mouse wheel scroll can now be bound to actions, as BTN_BACK for
+      scrolling up and BTN_FORWARD for scrolling down.
+    * Added mouse-bindings.scrollback-up-mouse and
+      mouse-bindings.scrollback-down-mouse options to scroll contents.
+      Default to BTN_BACK and BTN_FORWARD.
+    * Changed default mouse-bindings.select-row from BTN_LEFT-3
+      (triple left click) to BTN_LEFT-4 (quadruple left click).
+    * Added mouse-bindings.select-quote option to select an entire quote and
+      copy it. Defaults to BTN_LEFT-3 (triple left click).
+    * Added many search-bindings.extend-* options to extend the selection
+      of a search match.
+    * Added many search-bindings.scrollback-* options to scroll the contents
+      in search mode.
+    * Added bell.visual option to control if the BEL character will cause
+      the window to flash. Defaults to &quot;no&quot;.
+    * Added colors.flash and colors.flash-alpha options to set the color of
+      the window when it flashes.
+  * Added support for grapheme cluster processing support to be
+    queried and modified by applications that support it.
+  * Changed URL mode to not strip file:// prefix from local file URIs.
+  * Changed rendering to have lower latency in many cases, especially on
+    high DPI monitors.
+  * Fixed wrong baseline offset for some fonts.
+  * Fixed foot-server systemd units to only start after the wayland session
+    is fully initialized.
+  * Fixed URL mode to work with URLs containing double-width characters and
+    grapheme clusters.
+  * Fixed margins to become non-transparent in full-screen mode, for
+    compliance with the current Wayland protocol specification.
+  * Fixed command-line configuration overrides to take effect even if
+    the foot.ini does not exist or cannot be parsed.
+  * Fixed some crashes related to fractional scaling, XDG activation and
+    search mode.
+  * Added new theme - panda.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.16.0 for more details.</comment>
+    <requestid>1117490</requestid>
+  </revision>
 </revisionlist>

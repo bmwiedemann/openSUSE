@@ -17,7 +17,7 @@
 
 
 Name:           foot
-Version:        1.15.3
+Version:        1.16.1
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(tic)
 BuildRequires:  pkgconfig(tllist) >= 1.1.0
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
-BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.32
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(xkbcommon) >= 1.0.0
 
