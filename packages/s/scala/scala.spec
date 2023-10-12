@@ -22,67 +22,79 @@
 %else
 %bcond_with bootstrap
 %endif
-%global fullversion %{version}
-%global release_repository http://nexus.scala-tools.org/content/repositories/releases
-%global snapshot_repository http://nexus.scala-tools.org/content/repositories/snapshots
-%global jansi_jar %{_jnidir}/jansi/jansi.jar
-%global jline2_jar %{_javadir}/jline/jline.jar
-%global scaladir %{_datadir}/scala
 %global base_name scala
-%define __requires_exclude .*org\.apache\.ant.*
-Version:        2.10.7
-#!BcntSyncTag: scala
+%global asmver 9.5.0
+%global asmrel 1
+# Version of jquery bundled in scaladoc
+%global jqueryver 3.7.0
+# Version of jline to use
+%global jlinever 3.22.0
+%global scaladir %{_datadir}/scala
+# Used to generate OSGi data
+%global date    20230901
+%global seqnum  134811
+%global commit  80514f73a6c7db32df9887d9a5ca9ae921e25118
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+%global osgiver %{version}.v%{date}-%{seqnum}-VFINAL-%{shortcommit}
+%global majver  %(cut -d. -f1-2 <<< %{version})
+Version:        2.13.12
 Release:        0
-Summary:        A hybrid functional/object-oriented language for the JVM
-License:        BSD-3-Clause AND CC0-1.0 AND SUSE-Public-Domain
+Summary:        Hybrid functional/object-oriented language for the JVM
+# The project as a whole is Apache-2.0.
+# The bundled ASM is BSD-3-Clause.
+# The bundled jquery is MIT.
+License:        Apache-2.0 AND BSD-3-Clause AND MIT
 Group:          Development/Libraries/Java
 URL:            https://www.scala-lang.org/
-Source0:        %{base_name}-%{version}.tar.xz
-Source1:        scala-library-2.10.0-bnd.properties
-# git log --pretty=format:"%H%n%ci" v%{version} | head -n 2 | sed -e 's/\-//g' -e 's/\s\+.*//g'
-Source3:        scala.gitinfo
-Source23:       scala-mime-info.xml
-Source24:       scala.ant.d
-# Change the default classpath (SCALA_HOME)
-Patch1:         scala-2.10.0-tooltemplate.patch
-# Use system jline2 instead of bundled jline2
-Patch2:         scala-2.10.3-use_system_jline.patch
-# change org.scala-lang jline in org.sonatype.jline jline
-Patch3:         scala-2.10.3-compiler-pom.patch
-# Patch Swing module for JDK 1.7
-Patch4:         scala-2.10.2-java7.patch
-# fix incompatibilities with JLine 2.7
-Patch6:         scala-2.10-jline.patch
-Patch8:         scala-2.10.4-build_xml.patch
-# Stop scaladoc from trying to bundle non-existent resources that were
-# removed due to being in object form only, whithout sources
-Patch9:         scala-2.10.6-scaladoc-resources.patch
-Patch10:        scala-2.10.7-source8.patch
-Patch11:        scala-2.10.7-lines.patch
-Patch12:        scala-2.10.7-java8compat.patch
-Patch13:        scala-2.10.7-jdk15.patch
-BuildRequires:  ant
-BuildRequires:  ant-contrib
-BuildRequires:  ant-junit
+# Source code
+Source0:        https://github.com/scala/scala/archive/v%{version}/%{base_name}-%{version}.tar.gz
+# Scala-modified version of objectweb-asm
+Source2:        https://github.com/scala/scala-asm/archive/v%{asmver}-scala-%{asmrel}.tar.gz
+# POMs from maven central
+Source3:        https://repo1.maven.org/maven2/org/scala-lang/scala-library/%{version}/scala-library-%{version}.pom
+Source4:        https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/%{version}/scala-reflect-%{version}.pom
+Source5:        https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/%{version}/scala-compiler-%{version}.pom
+Source6:        https://repo1.maven.org/maven2/org/scala-lang/scalap/%{version}/scalap-%{version}.pom
+# Bundled version of jquery for scaladoc
+Source7:        https://code.jquery.com/jquery-%{jqueryver}.min.js
+Source8:        https://code.jquery.com/jquery-%{jqueryver}.slim.min.js
+# OSGi properties for the reflect jar
+Source9:        scala-reflect-bnd.properties
+# OSGi properties for the library jar
+Source10:       scala-library-bnd.properties
+# OSGi properties for the compiler jar
+Source11:       scala-compiler-bnd.properties
+# Properties file for scala-compiler
+Source12:       compiler.properties
+# Properties file for scala-asm
+Source13:       asm.properties
+# Properties file for scala-buildcharacter
+Source14:       buildcharacter.properties
+# MIME information
+Source15:       scala.keys
+Source16:       scala.mime
+Source17:       scala-mime-info.xml
+# Use the javapackages way of finding the JVM to invoke
+Patch0:         %{base_name}-tooltemplate.patch
+# Unbundle fonts from scaladoc
+Patch1:         %{base_name}-unbundle-fonts.patch
 BuildRequires:  aqute-bnd
-BuildRequires:  graphviz
-BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  jline >= 2.10
-BuildRequires:  junit
-Requires:       jansi
-Requires:       java-headless >= 1.8
-# Require full javapackages-tools since scripts use
-# /usr/share/java-utils/java-functions
+BuildRequires:  xmvn-install
+BuildRequires:  xmvn-resolve
+BuildRequires:  mvn(io.github.java-diff-utils:java-diff-utils)
+BuildRequires:  mvn(junit:junit)
+BuildRequires:  mvn(net.java.dev.jna:jna)
+BuildRequires:  mvn(org.jline:jline-builtins)
+BuildRequires:  mvn(org.jline:jline-terminal-jna)
+BuildRequires:  mvn(org.openjdk.jol:jol-core)
 Requires:       javapackages-tools
-Requires:       jline >= 2.10
-%if %{with bootstrap}
-Source100:      scala-compiler.jar
-Source101:      scala-library.jar
-Source102:      scala-reflect.jar
-%endif
+Obsoletes:      %{base_name}-swing < 2.13.4
+BuildArch:      noarch
 %if %{with bootstrap}
 Name:           %{base_name}-bootstrap
+# Binary form, used to bootstrap
+Source1:        https://downloads.lightbend.com/scala/%{version}/%{base_name}-%{version}.tgz
 %else
 Name:           %{base_name}
 BuildRequires:  %{base_name}-bootstrap >= %{version}
@@ -92,203 +104,309 @@ Obsoletes:      %{base_name}-bootstrap
 
 %description
 Scala is a general purpose programming language designed to express
-common programming patterns in a concise and type-safe way. It
-integrates features of object-oriented and functional languages. It
-is also interoperable with Java.
+common programming patterns in a concise, elegant, and type-safe way.
+It smoothly integrates features of object-oriented and functional
+languages.  It is also fully interoperable with Java.
 
 %if %{without bootstrap}
-%package apidoc
+%package        apidoc
 Summary:        Documentation for the Scala programming language
 Group:          Documentation/HTML
-Obsoletes:      %{base_name}-bootstrap-apidoc
-BuildArch:      noarch
+Recommends:     font(lato)
+Recommends:     font(opensans)
+Recommends:     font(sourcecodepro)
 
-%description apidoc
-Scala is a general purpose programming language for the JVM that blends
-object-oriented and functional programming. This package provides
-reference and API documentation for the Scala programming language.
+%description    apidoc
+This package provides reference and API documentation for the Scala
+programming language.
 %endif
-
-%package swing
-Summary:        The swing library for the Scala programming languages
-Group:          Development/Libraries/Java
-Requires:       %{name} = %{version}-%{release}
-Requires:       java >= 1.8
-BuildArch:      noarch
-%if %{without bootstrap}
-Obsoletes:      %{base_name}-bootstrap-swing
-%endif
-
-%description swing
-This package contains the swing library for the Scala programming languages.
-This library is required to develop GUI-related applications in Scala.
-The release provided by this package is not the original version from upstream
-because this version is not compatible with JDK 1.7.
-
-%package -n ant-%{name}
-Summary:        Development files for Scala
-Group:          Development/Libraries/Java
-Requires:       ant
-Requires:       scala = %{version}-%{release}
-BuildArch:      noarch
-%if %{without bootstrap}
-Obsoletes:      ant-%{base_name}-bootstrap
-%endif
-
-%description -n ant-%{name}
-Scala is a general purpose programming language for the JVM that blends
-object-oriented and functional programming. This package enables support for
-the Scala ant tasks.
 
 %prep
-%setup -q -n %{base_name}-%{version}
-%patch1 -p1 -b .tool
-%patch2 -p1 -b .sysjline
-%patch3 -p1 -b .compiler-pom
-%patch4 -p1 -b .jdk7
-%patch6 -p1 -b .rvk
-%patch8 -p1 -b .bld
-%patch9 -p1 -b .scaladoc
-%patch10 -p1 -b .source6
-%patch11 -p1 -b .jdk11
-%patch12 -p1 -b .java8compat
-%patch13 -p1 -b .jdk15
-
-echo "starr.version=2.10.4\nstarr.use.released=0" > starr.number
-
-rm -f src/compiler/scala/tools/ant/Pack200Task.scala
-
-pushd src
-rm -rf jline
-popd
-
-sed -i '/is not supported by/d' build.xml
-sed -i '/exec.*pull-binary-libs.sh/d' build.xml
+%autosetup -n %{base_name}-%{version} -p1
 
 %if %{with bootstrap}
-%global do_bootstrap -DdoBootstrapBuild=yes
-%global docs_target %{nil}
-%else
-%global do_bootstrap %{nil}
-%global docs_target docs
+%setup -q -n %{base_name}-%{version} -T -D -a 1
 %endif
+%setup -q -n %{base_name}-%{version} -T -D -a 2
 
-pushd lib
-%if %{without bootstrap}
-    rm -rf scala-compiler.jar
-    ln -s $(find-jar scala/scala-compiler) scala-compiler.jar
-    rm -rf scala-library.jar
-    ln -s $(find-jar scala/scala-library) scala-library.jar
-    rm -rf scala-reflect.jar
-    ln -s $(find-jar scala/scala-reflect) scala-reflect.jar
-%else
-    cp %{SOURCE100} scala-compiler.jar
-   cp %{SOURCE101} scala-library.jar
-   cp %{SOURCE102} scala-reflect.jar
-%endif
-  pushd ant
-    rm -rf ant.jar
-    rm -rf ant-contrib.jar
-    ln -s $(build-classpath ant.jar) ant.jar
-    ln -s $(build-classpath ant/ant-contrib) ant-contrib.jar
-  popd
-popd
+fixtimestamp() {
+  touch -r $1.orig $1
+  rm -f $1.orig
+}
 
-sed -i -e 's!@JLINE@!%{jline2_jar}!g' build.xml
+# Unbundle fonts
+# The CSS uses local() references, so these should not be needed anyway.
+rm src/scaladoc/scala/tools/nsc/doc/html/resource/lib/{lato,MaterialIcons,open-sans,source-code-pro}*
 
-echo echo $(head -n 1 %{SOURCE3}) > tools/get-scala-commit-sha
-echo echo $(tail -n 1 %{SOURCE3}) > tools/get-scala-commit-date
-chmod 755 tools/get-scala-*
+# Fetch upstream's POMs
+cp -p %{SOURCE3} src/library/pom.xml
+cp -p %{SOURCE4} src/reflect/pom.xml
+cp -p %{SOURCE5} src/compiler/pom.xml
+cp -p %{SOURCE6} src/scalap/pom.xml
+
+# Fedora has a split jline3, so split up the dependency
+%pom_change_dep org.jline:jline org.jline:jline-terminal-jna src/compiler
+%pom_add_dep org.jline:jline-reader:%{jlinever} src/compiler
+%pom_add_dep org.jline:jline-style:%{jlinever} src/compiler
+%pom_add_dep org.jline:jline-builtins:%{jlinever} src/compiler
 
 %build
+export LC_ALL=C.UTF-8
 
-export ANT_OPTS="-Xms2048m -Xmx2048m %{do_bootstrap}"
+%if %{with bootstrap}
+PATH=$PATH:$PWD/%{base_name}-%{version}/bin
+COMPJAR=$PWD/%{base_name}-%{version}/lib/scala-compiler.jar
+%else
+COMPJAR=%{_javadir}/scala/scala-compiler.jar
+%endif
 
-# Add the -verbose flag to scalac on zero architectures. The build
-# is slow, OBS thinks it is stuck and kills it before it has chance
-# to finish
-%{ant} \
-   build %{docs_target} || exit 1
-pushd build/pack/lib
-mv scala-library.jar scala-library.jar.no
-bnd wrap --properties %{SOURCE1} --output scala-library.jar \
-    --version "%{version}" scala-library.jar.no
-popd
+JLINE_JARS=$(build-classpath jna jline3/jline-terminal jline3/jline-terminal-jna \
+    jline3/jline-reader jline3/jline-style jline3/jline-builtins)
+JAVAC_FLAGS="-g -parameters -source 8 -target 8"
+SCALAC_FLAGS="-g:vars -release 8 -J-Xmx512M -J-Xms32M"
+SCALADOC_FLAGS='-J-Xmx512M -J-Xms32M -doc-footer epfl -diagrams -implicits -groups -doc-version %{version} -doc-source-url https://github.com/scala/scala/blob/v%{version}/src/€{FILE_PATH_EXT}#L€{FILE_LINE}'
+DIFFUTILS_JAR=$(build-classpath java-diff-utils)
+
+mkdir -p target/{compiler,library,manual,reflect,scalap,tastytest,testkit}
+mkdir -p target/html/{compiler,library,reflect}
+
+# Build the bundled objectweb-asm
+cd scala-asm-%{asmver}-scala-%{asmrel}
+javac $JAVAC_FLAGS -d ../target/compiler $(find src -name \*.java)
+cd -
+
+# Build the library
+cd src
+javac $JAVAC_FLAGS -d ../target/library -cp $(build-classpath junit) \
+    $(find library -name \*.java)
+scalac $SCALAC_FLAGS -d ../target/library -classpath ../target/library \
+    $(find library -name \*.scala | sort)
+%if %{without bootstrap}
+scaladoc $SCALADOC_FLAGS -doc-title 'Scala Standard Library' \
+    -sourcepath $PWD/library -doc-no-compile $PWD/library-aux \
+    -skip-packages scala.concurrent.impl \
+    -doc-root-content $PWD/library/rootdoc.txt \
+    $(find library -name \*.scala | sort)
+mv scala ../target/html/library
+%endif
+
+# Build the reflection library
+javac $JAVAC_FLAGS -d ../target/reflect $(find reflect -name \*.java)
+scalac $SCALAC_FLAGS -d ../target/reflect -classpath ../target/reflect \
+    $(find reflect -name \*.scala | sort)
+%if %{without bootstrap}
+scaladoc $SCALADOC_FLAGS -doc-title 'Scala Reflection Library' \
+    -sourcepath $PWD/reflect \
+    -skip-packages scala.reflect.macros.internal:scala.reflect.internal:scala.reflect.io \
+    $(find reflect -name \*.scala | sort)
+mv scala ../target/html/reflect
+%endif
+
+# Build the compiler
+javac $JAVAC_FLAGS -d ../target/compiler -cp $COMPJAR \
+    $(find compiler -name \*.java)
+scalac $SCALAC_FLAGS -d ../target/compiler \
+    -classpath ../target/compiler:$DIFFUTILS_JAR \
+    -feature $(find compiler -name \*.scala)
+
+# Build the interactive compiler
+scalac $SCALAC_FLAGS -d ../target/compiler -classpath ../target/compiler \
+    -feature $(find interactive -name \*.scala)
+
+# Build the REPL
+scalac $SCALAC_FLAGS -d ../target/compiler -classpath ../target/reflect \
+    -feature $(find repl -name \*.scala)
+
+# Build the REPL frontend
+javac $JAVAC_FLAGS -d ../target/compiler $(find repl-frontend -name \*.java)
+scalac $SCALAC_FLAGS -d ../target/compiler \
+    -classpath ../target/compiler:$JLINE_JARS \
+    -feature $(find repl-frontend -name \*.scala)
+%if %{without bootstrap}
+scaladoc $SCALADOC_FLAGS -doc-title 'Scala Compiler' \
+    -sourcepath $PWD/compiler:$PWD/interactive:$PWD/repl:$PWD/repl-frontend \
+    -doc-root-content $PWD/compiler/rootdoc.txt \
+    -classpath $PWD/../target/library:$PWD/../target/reflect:$JLINE_JARS:$DIFFUTILS_JAR \
+    $(find compiler -name \*.scala) $(find interactive -name \*.scala) \
+    $(find repl -name \*.scala) $(find repl-frontend -name \*.scala)
+mv scala ../target/html/compiler
+%endif
+
+# Build the documentation generator
+# The order of the source files matters!
+scalac $SCALAC_FLAGS -d ../target/compiler \
+    -feature $(find scaladoc -name \*.scala | sort)
+
+# Build the bytecode parser
+scalac $SCALAC_FLAGS -d ../target/scalap $(find scalap -name \*.scala)
+
+# Build the testing tool
+javac $JAVAC_FLAGS -d ../target/testkit \
+    -cp ../target/library:$(build-classpath junit) \
+    $(find testkit -name \*.java)
+scalac $SCALAC_FLAGS -d ../target/testkit \
+    -classpath ../target/testkit:$(build-classpath junit) -feature \
+    $(find testkit -name \*.scala)
+
+# TODO: build the parser testing tool.  This cannot be done without some sbt
+# classes.  If we have sbt, then we don't need to build manually anyway.
+
+# Build the integration tests
+scalac $SCALAC_FLAGS -d ../target/tastytest -classpath $DIFFUTILS_JAR \
+    $(find tastytest -name \*.scala)
+
+# Build the man page builder
+scalac $SCALAC_FLAGS -d ../target/manual -classpath ../target/library \
+    $(find manual -name \*.scala)
+cd -
+
+# Copy source files into target before constructing jars
+for dir in reflect library compiler scalap; do
+  cp -p LICENSE NOTICE target/$dir
+done
+cp -p src/library/rootdoc.txt target/library
+cp -p src/compiler/rootdoc.txt target/compiler
+cp -a src/compiler/templates target/compiler
+mkdir -p target/compiler/scala/tools/nsc/doc/html/resource/lib/
+cp -p src/scaladoc/scala/tools/nsc/doc/html/resource/lib/* target/compiler/scala/tools/nsc/doc/html/resource/lib/
+cp -p src/scalap/decoder.properties target/scalap
+
+# Build the compiler jar
+cd target
+mkdir -p compiler/META-INF/services
+cat > compiler/META-INF/services/javax.script.ScriptEngineFactory << EOF
+scala.tools.nsc.interpreter.shell.Scripted\$Factory
+EOF
+propdate=$(date -u -d %{date})
+jnaver=$(rpm -q --qf="%{VERSION}" jna)
+cp -p %{SOURCE7} compiler/jquery.min.js
+cp -p %{SOURCE8} compiler/jquery.slim.min.js
+sed -e "s/@@DATE@@/$propdate/;s/@@VER@@/%{version}/;s/@@OSGI@@/%{osgiver}/" \
+  %{SOURCE12} > compiler/compiler.properties
+cp -p compiler/compiler.properties compiler/interactive.properties
+cp -p compiler/compiler.properties compiler/repl.properties
+cp -p compiler/compiler.properties compiler/replFrontend.properties
+cp -p compiler/compiler.properties compiler/scaladoc.properties
+sed -e "s/@@DATE@@/$propdate/;s/@@VER@@/%{version}/;s/@@MAJVER@@/%{majver}/" \
+  -e "s/@@ASMVER@@/%{asmver}/;s/@@ASMREL@@/%{asmrel}/" \
+  %{SOURCE13} > compiler/scala-asm.properties
+sed -e "s/@@DATE@@/$propdate/;s/@@VER@@/%{version}/;s/@@OSGI@@/%{osgiver}/" \
+  -e "s/@@ASMVER@@/%{asmver}/;s/@@ASMREL@@/%{asmrel}/" \
+  -e "s/@@JLINEVER@@/%{jlinever}/;s/@@JNAVER@@/$jnaver/" \
+  %{SOURCE14} > compiler/scala-buildcharacter.properties
+jar cf scala-compiler.jar.no -C compiler .
+bnd wrap --properties %{SOURCE11} --output scala-compiler.jar \
+    --version "%{osgiver}" scala-compiler.jar.no
+
+# Build the reflect jar
+cp -p compiler/compiler.properties reflect/reflect.properties
+jar cf scala-reflect.jar.no -C reflect .
+bnd wrap --properties %{SOURCE9} --output scala-reflect.jar \
+    --version "%{osgiver}" scala-reflect.jar.no
+
+# Build the library jar
+cp -p compiler/compiler.properties library/library.properties
+jar cf scala-library.jar.no -C library .
+bnd wrap --properties %{SOURCE10} --output scala-library.jar \
+    --version "%{osgiver}" scala-library.jar.no
+
+# Build the decoder jar
+cp -p compiler/compiler.properties scalap/scalap.properties
+jar cf scalap-%{version}.jar -C scalap .
+cd -
+
+# Build the man pages
+mkdir -p html man/man1
+cd src
+scala -classpath ../target/manual:../target/scala-library.jar scala.tools.docutil.ManMaker 'fsc, scala, scalac, scaladoc, scalap' ../html ../man
+cd -
+
+%{mvn_file} ":{*}" %{base_name}/@1
+# Prepare to install
+%{mvn_artifact} src/library/pom.xml target/scala-library.jar
+%{mvn_artifact} src/reflect/pom.xml target/scala-reflect.jar
+%{mvn_artifact} src/compiler/pom.xml target/scala-compiler.jar
+%{mvn_artifact} src/scalap/pom.xml target/scalap-%{version}.jar
 
 %install
+%mvn_install
 
-install -d %{buildroot}%{_bindir}
-for prog in scaladoc fsc scala scalac scalap; do
-        install -p -m 755 build/pack/bin/$prog %{buildroot}%{_bindir}
-done
+# Create the binary scripts
+mkdir -p %{buildroot}%{_bindir}
+CLASSPATH=$(build-classpath jna jline3/jline-terminal \
+            jline3/jline-terminal-jna jline3/jline-reader jline3/jline-style \
+            jline3/jline-builtins)\
+:%{_javadir}/scala/scala-library.jar\
+:%{_javadir}/scala/scala-reflect.jar\
+:%{_javadir}/scala/scala-compiler.jar
+JAVAFLAGS="-Xmx256M -Xms32M"
 
-install -dm 0755 %{buildroot}%{scaladir}/lib
-install -dm 0755 %{buildroot}%{_javadir}/%{base_name}
-install -dm 0755 %{buildroot}%{_mavenpomdir}
+sed -e "s,@classpath@,$CLASSPATH," \
+    -e "s,@javaflags@,$JAVAFLAGS," \
+    -e "s,@properties@ ,," \
+    -e "s,@class@,scala.tools.nsc.fsc.CompileClient," \
+    -e "s,@toolflags@ ,," \
+    -e "s,@@,@,g" \
+    src/compiler/templates/tool-unix.tmpl > %{buildroot}%{_bindir}/fsc
 
-# XXX: add scala-partest when it works again
-for libname in scala-compiler \
-    scala-library \
-    scala-reflect \
-    scalap \
-    scala-swing ; do
-        sed -i "s|@VERSION@|%{fullversion}|" src/build/maven/$libname-pom.xml
-        sed -i "s|@RELEASE_REPOSITORY@|%{release_repository}|" src/build/maven/$libname-pom.xml
-        sed -i "s|@SNAPSHOT_REPOSITORY@|%{snapshot_repository}|" src/build/maven/$libname-pom.xml
-        install -pm 0644 build/pack/lib/$libname.jar %{buildroot}%{_javadir}/%{base_name}/$libname.jar
-        ln -sf $(abs2rel %{_javadir}/%{base_name}/$libname.jar %{scaladir}/lib) %{buildroot}%{scaladir}/lib
-        # climbing-nemesis uses the old JPP naming convention
-        install -pm 0644 src/build/maven/$libname-pom.xml %{buildroot}%{_mavenpomdir}/JPP.%{base_name}-$libname.pom
-        if [ $libname == scala-swing ]; then
-          %add_maven_depmap JPP.%{base_name}-$libname.pom %{base_name}/$libname.jar -f swing
-        else
-          %add_maven_depmap JPP.%{base_name}-$libname.pom %{base_name}/$libname.jar
-        fi
-done
-ln -s $(abs2rel %{jline2_jar} %{scaladir}/lib) %{buildroot}%{scaladir}/lib
-ln -s $(abs2rel %{jansi_jar} %{scaladir}/lib) %{buildroot}%{scaladir}/lib
+sed -e "s,@classpath@,$CLASSPATH," \
+    -e "s,@javaflags@,$JAVAFLAGS," \
+    -e "s,@properties@ ,," \
+    -e "s,@class@,scala.tools.nsc.MainGenericRunner," \
+    -e "s,@toolflags@ ,," \
+    -e "s,@@,@,g" \
+    src/compiler/templates/tool-unix.tmpl > %{buildroot}%{_bindir}/scala
 
-%if %{without bootstrap}
-install -d %{buildroot}%{_sysconfdir}/ant.d
-install -p -m 644 %{SOURCE24} %{buildroot}%{_sysconfdir}/ant.d/scala
-%endif
+sed -e "s,@classpath@,$CLASSPATH," \
+    -e "s,@javaflags@,$JAVAFLAGS," \
+    -e "s,@properties@ ,," \
+    -e "s,@class@,scala.tools.nsc.Main," \
+    -e "s,@toolflags@ ,," \
+    -e "s,@@,@,g" \
+    src/compiler/templates/tool-unix.tmpl > %{buildroot}%{_bindir}/scalac
+
+sed -e "s,@classpath@,$CLASSPATH," \
+    -e "s,@javaflags@,$JAVAFLAGS," \
+    -e "s,@properties@ ,," \
+    -e "s,@class@,scala.tools.nsc.ScalaDoc," \
+    -e "s,@toolflags@ ,," \
+    -e "s,@@,@,g" \
+    src/compiler/templates/tool-unix.tmpl > %{buildroot}%{_bindir}/scaladoc
+
+sed -e "s,@classpath@,$CLASSPATH:$(build-classpath scala/scalap)," \
+    -e "s,@javaflags@,$JAVAFLAGS," \
+    -e "s,@properties@ ,," \
+    -e "s,@class@,scala.tools.scalap.Main," \
+    -e "s,@toolflags@ ,," \
+    -e "s,@@,@,g" \
+    src/compiler/templates/tool-unix.tmpl > %{buildroot}%{_bindir}/scalap
+
+chmod 0755 %{buildroot}%{_bindir}/{fsc,scala*}
+
+# Install the MIME info
+#install -d %{buildroot}%{_datadir}/mime-info
+#install -p -m 644 %{SOURCE15} %{SOURCE16} %{buildroot}%{_datadir}/mime-info/
 
 install -d %{buildroot}%{_datadir}/mime/packages/
-install -p -m 644 %{SOURCE23} %{buildroot}%{_datadir}/mime/packages/
+install -p -m 644 %{SOURCE17} %{buildroot}%{_datadir}/mime/packages/
 
-sed -i -e 's,@JAVADIR@,%{_javadir},g' -e 's,@DATADIR@,%{_datadir},g' %{buildroot}%{_bindir}/*
-
-%if %{without bootstrap}
+# Install the man pages
 install -d %{buildroot}%{_mandir}/man1
-install -p -m 644 build/scaladoc/manual/man/man1/* %{buildroot}%{_mandir}/man1
-%endif
+install -p -m 644 man/man1/* %{buildroot}%{_mandir}/man1
 
 %files -f .mfiles
-%{_bindir}/*
-%dir %{_datadir}/%{base_name}
-%dir %{_datadir}/%{base_name}/lib
-%{_datadir}/%{base_name}/lib/*.jar
-%exclude %{_datadir}/%{base_name}/lib/scala-swing.jar
-%{_datadir}/mime/packages/*
-%license docs/LICENSE
-%if %{without bootstrap}
-%{_mandir}/man1/*
-%endif
-
-%files swing -f .mfiles-swing
-%license docs/LICENSE
-%{_datadir}/%{base_name}/lib/scala-swing.jar
+%{_bindir}/fsc
+%{_bindir}/scala*
+#{_datadir}/mime-info/scala.*
+%{_datadir}/mime/packages/scala-mime-info.xml
+%{_mandir}/man1/fsc.1%{?ext_man}
+%{_mandir}/man1/scala*
+%license LICENSE NOTICE doc/LICENSE.md doc/License.rtf
 
 %if %{without bootstrap}
-%files -n ant-%{name}
-# Following is plain config because the ant task classpath could change from
-# release to release
-%config %{_sysconfdir}/ant.d/*
-%license docs/LICENSE
-
 %files apidoc
-%doc build/scaladoc/library/*
-%license docs/LICENSE
+%doc target/html/*
+%license LICENSE NOTICE doc/LICENSE.md doc/License.rtf
 %endif
 
 %changelog

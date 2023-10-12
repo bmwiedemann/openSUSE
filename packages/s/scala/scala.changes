@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Oct 12 12:06:07 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.13.12
+  * 2.13 improves Scala in the following areas:
+    + Collections: Standard library collections have been overhauled
+      for simplicity, performance, and safety. This is the
+      centerpiece of the release.
+    + Standard library: Future is faster and more robust. Elsewhere,
+      useful classes and methods have been added.
+    + Language: Literal types, partial unification, by-name
+      implicits, more.
+    + Compiler: 5-10% faster, deterministic output, improved
+      optimizer.
+- Removed patches:
+  * scala-2.10-jline.patch
+  * scala-2.10.0-tooltemplate.patch
+  * scala-2.10.2-java7.patch
+  * scala-2.10.3-compiler-pom.patch
+  * scala-2.10.3-use_system_jline.patch
+  * scala-2.10.4-build_xml.patch
+  * scala-2.10.6-scaladoc-resources.patch
+  * scala-2.10.7-java8compat.patch
+  * scala-2.10.7-jdk15.patch
+  * scala-2.10.7-lines.patch
+  * scala-2.10.7-source8.patch
+    + not needed with this version
+- Added patches:
+  * scala-tooltemplate.patch
+    + use the javapackages way of finding the JVM to invoke
+  * scala-unbundle-fonts.patch
+    + unbundle fonts from scaladoc
+
+
+-------------------------------------------------------------------
 Fri Sep 29 06:45:12 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Allow building with jdk >= 9 too
