@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Oct 12 05:31:27 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.34.0:
+  * Update README to point download link to 0.34.0
+  * Update docs for release 0.34.0
+  * Update the helm reference
+  * Update helm chart to 4.0.32 to use gitops 0.34.0
+  * Update javascript library version to 0.34.0
+  * Fixes staging-docs (#4070)
+  * override default tabs min width at media query
+  * Move header creation outside yaml view to allow for custom text
+    (#4069)
+  * Add document on anonymous access. (#4034)
+  * Verified sources update to not display status "Pending" for
+    objects where verification has not been set (#4067)
+  * Added weave gitops enterprise monitoring user documentation
+    (#4061)
+  * Fix hr related message appearing on ks (#4066)
+  * docs: Bump dex chart version
+  * upgrades postcss to fix
+    https://www.npmjs.com/advisories/1094239                     │
+  * ci: Removed disabled workflow
+  * ci: Drop workflow permissions
+  * UI - update tabs view (#3989)
+  * ci: Drop workflow permissions
+  * ci: Pin peter-evans/repository-dispatch
+  * ci: Pin fluxcd/flux2/action
+  * ci: Pin mikepenz/release-changelog-builder-action
+  * ci: Pin docker/metadata-action
+  * ci: Pin docker/login-action
+  * ci: Pin docker/setup-qemu-action
+  * ci: Pin docker/build-push-action
+  * ci: Pin goreleaser/goreleaser-action
+  * ci: Pin docker/setup-buildx-action
+  * ci: Pin peter-evans/create-pull-request
+  * Standardize the column names on Events tabs (#4055)
+  * docs: Code review changes
+  * Update CONTRIBUTING.md
+  * ci: Run CodeQL analysis as part of CI
+  * Fix JSX/SVG warnings in DeliveryIcon
+  * ci: Remove sed command for non-existent file
+  * ci: Avoid script injection by introducing an intermediate
+    environment variable
+  * fix: Update golang.org/x/net to address GO-2023-1988
+  * ci: Pin actions/cache
+  * ci: Pin aws-actions/configure-aws-credentials
+  * ci: Pin actions/download-artifact
+  * ci: Pin actions/github-script
+  * ci: Pin actions/upload-artifact
+  * ci: Pin google-github-actions/setup-gcloud
+  * ci: Pin google-github-actions/upload-cloud-storage
+  * ci: Pin google-github-actions/auth
+  * ci: Pin actions/setup-node
+  * ci: Bump github/codeql-action/upload-sarif version to v2.21.7
+  * ci: Pin actions/setup-go
+  * ci: Pin actions/checkout
+
+-------------------------------------------------------------------
 Thu Sep 28 04:51:24 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.33.0:
