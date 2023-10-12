@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 12 10:27:14 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.12.0
+  * Add a little bit of typing to google.api_core.retry (#453)
+  * Add grpc Compression argument to channels and methods (#451)
+  * Fix a typo in google/api_core/page_iterator.py (#511)
+
+-------------------------------------------------------------------
 Sun Jul  2 12:27:35 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
