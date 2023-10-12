@@ -1,0 +1,5 @@
+<package name="zk-spaced" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="utilities" package="zk-spaced"/>
+</package>
