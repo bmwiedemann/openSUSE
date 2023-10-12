@@ -78,6 +78,7 @@ basic features of Exiv2 available to GNOME applications.
 Summary:        A GObject-based Exiv2 wrapper
 Group:          Development/Libraries/Python
 Requires:       python3-gobject
+BuildArch:      noarch
 
 %description -n python3-gexiv2
 gexiv2 is a GObject-based wrapper around the Exiv2 library. It makes the
