@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 10 19:27:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 20231010.0a1f0d9:
+  * Revert "Compile and fix_shebang in %python_install macros"
+  * gh#openSUSE/python-rpm-macros#163
+
+-------------------------------------------------------------------
+Tue Oct 10 10:38:31 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 20231010.a32e110:
+  * Compile and fix_shebang in %python_install macros
+
+-------------------------------------------------------------------
 Thu Oct 05 15:53:33 UTC 2023 - mcepl@cepl.eu
 
 - Update to version 20231005.bf2d3ab:
