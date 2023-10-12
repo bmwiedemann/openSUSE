@@ -563,4 +563,36 @@
   * Enable Playwright trace #15087 (@jtpio)</comment>
     <requestid>1113181</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2d046c5127aa3c1ec24719038600ed64</srcmd5>
+    <version>4.0.7</version>
+    <time>1697146857</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.0.7
+  ## Enhancements made
+  * Add the standard SQL mimetype #15180 (@brichet)
+  ## Bugs fixed
+  * Restore horizontal scrolling of outputs for Firefox #15171
+    (@fcollonval)
+  * Fix text wrapping in the search box #15080 (@eliaslma)
+  * Fix completer documentation panel hiding and animation #15238
+    (@krassowski)
+  * Fix clicking in the TOC does not scroll #15184 (@parmentelat)
+  * Hide completer when changing notebook tabs #14534
+    (@nishikantparmariam)
+  * Backport of MathJax double init/font URL fix and binder/log
+    updates #15231 (@bollwyvl)
+  * Restore syntax highlighting for mimetypes with more than one
+    identifier #15175 (@jans-code)
+  * Fix completer width inflation and jitter #15132 (@krassowski)
+  * Fix Show Keyboard Shortcuts command #15170 (@jtpio)
+  * Blur footer for any key that triggers a 'select above', not
+    just ArrowUp #14796 (@smacke)
+  * Fix background-color in &lt;select&gt; elements in dark theme #15098
+    (@Rmarieta)
+  * Fix selection in active line #15129 (@krassowski)
+  * Remove unusedDocuments, fix culling of foreign documents #15105
+    (@krassowski)</comment>
+    <requestid>1117066</requestid>
+  </revision>
 </revisionlist>
