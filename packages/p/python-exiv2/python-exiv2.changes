@@ -1,9 +1,43 @@
 -------------------------------------------------------------------
+Wed Oct 11 15:14:43 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- fix files section 
+
+-------------------------------------------------------------------
+Wed Oct 11 09:53:14 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.14.1:
+  - Added enums for XmpStruct and XmpArrayType
+  - Added method for copy-free access to XmpTextValue raw data.
+  - Fix occasional segfault with Image.io() of in-memory image
+    data.
+  - Add data() method to access Exiv2::StringValueBase raw bytes.
+  - Enable video support in binary wheels.
+  - Automatically cast Exiv2::Value return values to correct
+    type.
+  - Exiv2::byte* return values are converted to a simple buffer
+    object.
+  - Deprecated some superseded features. Use 'python -Wd' when
+    testing.
+  - Exiv2's Date & Time structs can be used from Python.
+  - Removed Value.downCast methods deprecated in v0.7.0.
+  - Reduced probability of segfaults by keeping references to
+    other objects.
+  - Fix iterator bug introduced in v0.10.0. (Issue #7.)
+- Remove now superfluous py3exiv2-link-boost.patch
+
+-------------------------------------------------------------------
+Thu Oct  5 11:22:05 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.12.0
+  -  Fix bug #2027823 (Compilation errors with exiv2-0.28)
+- Remove the exiv2_0-28-0.patch patch again.
+
+-------------------------------------------------------------------
 Thu Aug 10 21:33:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.12.3:
   - upstream doesn't release proper changelog
-- Remove the exiv2_0-28-0.patch patch again.
 
 -------------------------------------------------------------------
 Fri Aug  4 23:06:13 UTC 2023 - Matej Cepl <mcepl@suse.com>
