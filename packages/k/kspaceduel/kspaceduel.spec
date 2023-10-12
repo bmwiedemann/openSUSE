@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kspaceduel
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Space Arcade game
 License:        GPL-2.0-or-later
