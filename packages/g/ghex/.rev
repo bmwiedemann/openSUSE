@@ -551,4 +551,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment>Pushing GNOME 45.rc packages (forwarded request 1109787 from iznogood)</comment>
     <requestid>1110533</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>fdd2181ec14ab356979e7f4ceab0f893</srcmd5>
+    <version>45.0</version>
+    <time>1697146739</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1117052 from iznogood)</comment>
+    <requestid>1117452</requestid>
+  </revision>
 </revisionlist>
