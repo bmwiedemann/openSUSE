@@ -101,4 +101,16 @@
   * go#62711 cmd/go: TestScript/gotoolchain_path fails if golang.org/dl/go1.21.1 is installed in the user's $PATH (forwarded request 1115932 from jfkw)</comment>
     <requestid>1115934</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>85685a3d803e7c7a4a612dac9bfa439d</srcmd5>
+    <version>1.21.3</version>
+    <time>1697146744</time>
+    <user>anag+factory</user>
+    <comment>- go1.21.3 (released 2023-10-10) includes a security fix to the
+  net/http package.
+  Refs boo#1212475 go1.21 release tracking
+  CVE-2023-39325 CVE-2023-44487
+  * go#63427 go#63417 boo#1216109 security: fix CVE-2023-39325 CVE-2023-44487 net/http: rapid stream resets can cause excessive work (forwarded request 1116741 from jfkw)</comment>
+    <requestid>1116743</requestid>
+  </revision>
 </revisionlist>
