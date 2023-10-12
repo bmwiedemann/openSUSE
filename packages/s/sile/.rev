@@ -163,4 +163,21 @@
   - utilities: Use real semver parser for deprecation warnings</comment>
     <requestid>1105339</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bf1e3b7577e1c5dc06d8771d42a311e7</srcmd5>
+    <version>0.14.12</version>
+    <time>1697146855</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.12
+ * Features
+  - i18n: Add Portuguese localizations for bibtex package
+  - utilities: Add utility function for console messages without trace info
+ * Bug Fixes
+  - build: Make sure vendored luarocks isn't a phony target that runs repeatedly
+  - core: Allocate exactly what we use, not a guess with an extra just in case
+  - core: Correct usage of HarfBuzz when passing a filtered list of shapers
+  - core: Fixup class loader so cache is all Lua module specs
+  - packages: Don't warn on TOC content change if not actually used</comment>
+    <requestid>1117057</requestid>
+  </revision>
 </revisionlist>
