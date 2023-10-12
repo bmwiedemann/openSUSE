@@ -1860,4 +1860,13 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1111871</requestid>
   </revision>
+  <revision rev="212" vrev="2">
+    <srcmd5>7f8629c09a472aaa4bcc7a1a804ac99b</srcmd5>
+    <version>45.0</version>
+    <time>1697146730</time>
+    <user>anag+factory</user>
+    <comment>- Drop mutter-crash-meta_context_terminate.patch: Closed upstream
+  via https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2609 (forwarded request 1116538 from iznogood)</comment>
+    <requestid>1117447</requestid>
+  </revision>
 </revisionlist>
