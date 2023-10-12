@@ -16,13 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-smart-open
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        Python utils for streaming large files
 License:        MIT
-Group:          Development/Languages/Python
+URL:            https://github.com/RaRe-Technologies/smart_open
 Source:         https://github.com/RaRe-Technologies/smart_open/archive/refs/tags/v%{version}.tar.gz#/smart_open-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -33,7 +32,11 @@ Requires:       python-azure-storage-blob
 Requires:       python-boto3
 Requires:       python-google-cloud-storage
 Requires:       python-requests
+Suggests:       python-paramiko
 BuildArch:      noarch
+# see https://github.com/RaRe-Technologies/smart_open/issues/784
+BuildRequires:  %{python_module urllib3 < 2}
+Requires:       python-urllib3 < 2
 # SECTION test requirements
 BuildRequires:  %{python_module azure-common}
 BuildRequires:  %{python_module azure-core}
@@ -43,6 +46,7 @@ BuildRequires:  %{python_module google-cloud-storage}
 BuildRequires:  %{python_module moto >= 1.3.4}
 BuildRequires:  %{python_module moto-server}
 BuildRequires:  %{python_module paramiko}
+BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module responses}

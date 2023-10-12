@@ -17,4 +17,12 @@ optional dep of https://build.opensuse.org/package/show/devel:languages:python/p
     <comment></comment>
     <requestid>1058330</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>587cb4192783d93cc5b42c69c6c304eb</srcmd5>
+    <version>6.4.0</version>
+    <time>1697147066</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117462</requestid>
+  </revision>
 </revisionlist>
