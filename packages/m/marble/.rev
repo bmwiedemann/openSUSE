@@ -1361,4 +1361,12 @@ touch version is still build but no desktop file installed. (forwarded request 2
     <comment>- Adapt to gpsd packaging changes (boo#1215444)</comment>
     <requestid>1112057</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>477d311285ef56db7850e66588d4f7cf</srcmd5>
+    <version>23.08.2</version>
+    <time>1697147026</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.2 (forwarded request 1116778 from krop)</comment>
+    <requestid>1117407</requestid>
+  </revision>
 </revisionlist>
