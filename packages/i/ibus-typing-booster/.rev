@@ -1177,4 +1177,17 @@ Tue Jan  10 15:30:05 UTC 2017 - maiku.fabian@gmail.com
     <comment></comment>
     <requestid>1114772</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>2fa953607c297e279ec3269aeb3eee29</srcmd5>
+    <version>2.24.2</version>
+    <time>1697146915</time>
+    <user>anag+factory</user>
+    <comment>- fix factory build:
+  * ibus-typing-booster-libX11-1.8.7.patch
+  * libX11-data dropped some compose sequences in en_US locale
+    due to xkeyboard-config changes in version 1.8.7 (commit af2b6dfa)
+  * so some itb tests are not valid any more.
+</comment>
+    <requestid>1117179</requestid>
+  </revision>
 </revisionlist>
