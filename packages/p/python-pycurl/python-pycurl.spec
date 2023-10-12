@@ -120,7 +120,14 @@ if ! pkg-config --variable=supported_protocols libcurl|grep -qw HTTP3; then
     test_flags="$test_flags or http_version_3"
 fi
 # test_getinfo are failing with new bottle
-%pytest_arch -s -k "not ($test_flags or test_getinfo)"
+dont_test="or test_getinfo "
+# test_multi_socket_select fails with new curl gh#pycurl/pycurl#819
+dont_test+="or test_multi_socket_select "
+# test_multi_socket_action gh#pycurl/pycurl#729
+dont_test+="or test_multi_socket_action "
+# test_request_with_verifypeer for gh#pycurl/pycurl#822
+dont_test+="or test_request_with_verifypeer "
+%pytest_arch -s -k "not ($test_flags $dont_test)"
 rm -rf %{buildroot}%{_prefix}/lib/debug %{buildroot}%{_libdir}/python*
 # test
 %endif
@@ -129,7 +136,9 @@ rm -rf %{buildroot}%{_prefix}/lib/debug %{buildroot}%{_libdir}/python*
 %files %{python_files}
 %license COPYING-LGPL COPYING-MIT
 %doc AUTHORS ChangeLog README.rst
-%{python_sitearch}/*
+%{python_sitearch}/curl
+%{python_sitearch}/pycurl*.so
+%{python_sitearch}/pycurl-%{version}*-info
 
 %if 0%{?suse_version} > 1500
 %files -n %{name}-doc

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 12 14:09:12 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Skip test_multi_socket_select (gh#pycurl/pycurl#819),
+  test_multi_socket_action (gh#pycurl/pycurl#729), and
+  test_request_with_verifypeer (gh#pycurl/pycurl#822).
+
+-------------------------------------------------------------------
 Sun Apr 23 23:18:42 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Switch documentation to be within the main package.
