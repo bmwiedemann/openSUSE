@@ -1,0 +1,241 @@
+From 69790a375a38aca33a81c9b88aece9a0efd79726 Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <asarai@suse.de>
+Date: Wed, 11 Oct 2023 21:19:12 +1100
+Subject: [PATCH 5/5] SLE12: revert "apparmor: remove version-conditionals from
+ template"
+
+This reverts the following commits:
+
+ * 7008a514493a ("profiles/apparmor: remove version-conditional constraints (< 2.8.96)")
+ * 2e19a4d56bf2 ("contrib/apparmor: remove version-conditionals (< 2.9) from template")
+ * d169a5730649 ("contrib/apparmor: remove remaining version-conditionals (< 2.9) from template")
+ * ecaab085db4b ("profiles/apparmor: remove use of aaparser.GetVersion()")
+ * e3e715666f95 ("pkg/aaparser: deprecate GetVersion, as it's no longer used")
+
+These version conditionals are still required on SLE 12, where our
+apparmor_parser version is quite old.
+
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ contrib/apparmor/main.go      | 16 ++++++++++++++--
+ contrib/apparmor/template.go  | 16 ++++++++++++++++
+ pkg/aaparser/aaparser.go      |  2 --
+ profiles/apparmor/apparmor.go | 14 ++++++++++++--
+ profiles/apparmor/template.go |  4 ++++
+ 5 files changed, 46 insertions(+), 6 deletions(-)
+
+diff --git a/contrib/apparmor/main.go b/contrib/apparmor/main.go
+index d67890d265de..f4a2978b86cb 100644
+--- a/contrib/apparmor/main.go
++++ b/contrib/apparmor/main.go
+@@ -6,9 +6,13 @@ import (
+ 	"os"
+ 	"path"
+ 	"text/template"
++
++	"github.com/docker/docker/pkg/aaparser"
+ )
+ 
+-type profileData struct{}
++type profileData struct {
++	Version int
++}
+ 
+ func main() {
+ 	if len(os.Args) < 2 {
+@@ -18,6 +22,15 @@ func main() {
+ 	// parse the arg
+ 	apparmorProfilePath := os.Args[1]
+ 
++	version, err := aaparser.GetVersion()
++	if err != nil {
++		log.Fatal(err)
++	}
++	data := profileData{
++		Version: version,
++	}
++	fmt.Printf("apparmor_parser is of version %+v\n", data)
++
+ 	// parse the template
+ 	compiled, err := template.New("apparmor_profile").Parse(dockerProfileTemplate)
+ 	if err != nil {
+@@ -35,7 +48,6 @@ func main() {
+ 	}
+ 	defer f.Close()
+ 
+-	data := profileData{}
+ 	if err := compiled.Execute(f, data); err != nil {
+ 		log.Fatalf("executing template failed: %v", err)
+ 	}
+diff --git a/contrib/apparmor/template.go b/contrib/apparmor/template.go
+index 58afcbe845ee..e6d0b6d37c58 100644
+--- a/contrib/apparmor/template.go
++++ b/contrib/apparmor/template.go
+@@ -20,9 +20,11 @@ profile /usr/bin/docker (attach_disconnected, complain) {
+ 
+   umount,
+   pivot_root,
++{{if ge .Version 209000}}
+   signal (receive) peer=@{profile_name},
+   signal (receive) peer=unconfined,
+   signal (send),
++{{end}}
+   network,
+   capability,
+   owner /** rw,
+@@ -45,10 +47,12 @@ profile /usr/bin/docker (attach_disconnected, complain) {
+   /etc/ld.so.cache r,
+   /etc/passwd r,
+ 
++{{if ge .Version 209000}}
+   ptrace peer=@{profile_name},
+   ptrace (read) peer=docker-default,
+   deny ptrace (trace) peer=docker-default,
+   deny ptrace peer=/usr/bin/docker///bin/ps,
++{{end}}
+ 
+   /usr/lib/** rm,
+   /lib/** rm,
+@@ -69,9 +73,11 @@ profile /usr/bin/docker (attach_disconnected, complain) {
+   /sbin/zfs rCx,
+   /sbin/apparmor_parser rCx,
+ 
++{{if ge .Version 209000}}
+   # Transitions
+   change_profile -> docker-*,
+   change_profile -> unconfined,
++{{end}}
+ 
+   profile /bin/cat (complain) {
+     /etc/ld.so.cache r,
+@@ -93,8 +99,10 @@ profile /usr/bin/docker (attach_disconnected, complain) {
+     /dev/null rw,
+     /bin/ps mr,
+ 
++{{if ge .Version 209000}}
+     # We don't need ptrace so we'll deny and ignore the error.
+     deny ptrace (read, trace),
++{{end}}
+ 
+     # Quiet dac_override denials
+     deny capability dac_override,
+@@ -112,11 +120,15 @@ profile /usr/bin/docker (attach_disconnected, complain) {
+     /proc/tty/drivers r,
+   }
+   profile /sbin/iptables (complain) {
++{{if ge .Version 209000}}
+     signal (receive) peer=/usr/bin/docker,
++{{end}}
+     capability net_admin,
+   }
+   profile /sbin/auplink flags=(attach_disconnected, complain) {
++{{if ge .Version 209000}}
+     signal (receive) peer=/usr/bin/docker,
++{{end}}
+     capability sys_admin,
+     capability dac_override,
+ 
+@@ -135,7 +147,9 @@ profile /usr/bin/docker (attach_disconnected, complain) {
+     /proc/[0-9]*/mounts rw,
+   }
+   profile /sbin/modprobe /bin/kmod (complain) {
++{{if ge .Version 209000}}
+     signal (receive) peer=/usr/bin/docker,
++{{end}}
+     capability sys_module,
+     /etc/ld.so.cache r,
+     /lib/** rm,
+@@ -149,7 +163,9 @@ profile /usr/bin/docker (attach_disconnected, complain) {
+   }
+   # xz works via pipes, so we do not need access to the filesystem.
+   profile /usr/bin/xz (complain) {
++{{if ge .Version 209000}}
+     signal (receive) peer=/usr/bin/docker,
++{{end}}
+     /etc/ld.so.cache r,
+     /lib/** rm,
+     /usr/bin/xz rm,
+diff --git a/pkg/aaparser/aaparser.go b/pkg/aaparser/aaparser.go
+index 3d7c2c5a97b3..2b5a2605f9c1 100644
+--- a/pkg/aaparser/aaparser.go
++++ b/pkg/aaparser/aaparser.go
+@@ -13,8 +13,6 @@ const (
+ )
+ 
+ // GetVersion returns the major and minor version of apparmor_parser.
+-//
+-// Deprecated: no longer used, and will be removed in the next release.
+ func GetVersion() (int, error) {
+ 	output, err := cmd("", "--version")
+ 	if err != nil {
+diff --git a/profiles/apparmor/apparmor.go b/profiles/apparmor/apparmor.go
+index d0f236160506..b3566b2f7354 100644
+--- a/profiles/apparmor/apparmor.go
++++ b/profiles/apparmor/apparmor.go
+@@ -14,8 +14,10 @@ import (
+ 	"github.com/docker/docker/pkg/aaparser"
+ )
+ 
+-// profileDirectory is the file store for apparmor profiles and macros.
+-const profileDirectory = "/etc/apparmor.d"
++var (
++	// profileDirectory is the file store for apparmor profiles and macros.
++	profileDirectory = "/etc/apparmor.d"
++)
+ 
+ // profileData holds information about the given profile for generation.
+ type profileData struct {
+@@ -27,6 +29,8 @@ type profileData struct {
+ 	Imports []string
+ 	// InnerImports defines the apparmor functions to import in the profile.
+ 	InnerImports []string
++	// Version is the {major, minor, patch} version of apparmor_parser as a single number.
++	Version int
+ }
+ 
+ // generateDefault creates an apparmor profile from ProfileData.
+@@ -46,6 +50,12 @@ func (p *profileData) generateDefault(out io.Writer) error {
+ 		p.InnerImports = append(p.InnerImports, "#include <abstractions/base>")
+ 	}
+ 
++	ver, err := aaparser.GetVersion()
++	if err != nil {
++		return err
++	}
++	p.Version = ver
++
+ 	return compiled.Execute(out, p)
+ }
+ 
+diff --git a/profiles/apparmor/template.go b/profiles/apparmor/template.go
+index 5dcf35bf45c7..ed5892a7f6bd 100644
+--- a/profiles/apparmor/template.go
++++ b/profiles/apparmor/template.go
+@@ -24,12 +24,14 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
+   capability,
+   file,
+   umount,
++{{if ge .Version 208096}}
+   # Host (privileged) processes may send signals to container processes.
+   signal (receive) peer=unconfined,
+   # dockerd may send signals to container processes (for "docker kill").
+   signal (receive) peer={{.DaemonProfile}},
+   # Container processes may send signals amongst themselves.
+   signal (send,receive) peer={{.Name}},
++{{end}}
+ 
+   deny @{PROC}/* w,   # deny write for all files directly in /proc (not in a subdir)
+   # deny write to files not in /proc/<number>/** or /proc/sys/**
+@@ -49,7 +51,9 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
+   deny /sys/firmware/** rwklx,
+   deny /sys/kernel/security/** rwklx,
+ 
++{{if ge .Version 208095}}
+   # suppress ptrace denials when using 'docker ps' or using 'ps' inside a container
+   ptrace (trace,read,tracedby,readby) peer={{.Name}},
++{{end}}
+ }
+ `
+-- 
+2.42.0
+

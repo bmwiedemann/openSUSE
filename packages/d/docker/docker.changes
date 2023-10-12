@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 11 10:32:43 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Add a patch to fix apparmor on SLE-12, reverting the upstream removal of
+  version-specific templating for the default apparmor profile. bsc#1213500
+  + 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+
+-------------------------------------------------------------------
 Thu Sep 14 01:46:30 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 24.0.6-ce. See upstream changelong online at
