@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 11 09:22:52 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Make rpmlint shebang replacement independent on the shebang in the
+  rpmlint script.
+
+-------------------------------------------------------------------
 Mon Jul 17 07:56:32 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Add BuildRequires on python-packaging to fix build.

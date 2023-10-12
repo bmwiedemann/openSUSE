@@ -130,7 +130,8 @@ done
 popd
 find %{buildroot}/opt/testing/ -name __pycache__  -exec rm -rf {} +
 # We need to force the shebang to be under /opt/testing
-sed -e 's,/usr,/opt/testing,' %{_bindir}/rpmlint > %{buildroot}/opt/testing/bin/rpmlint.real
+sed -e '1s,#!.*python.*,#!/opt/testing/bin/python3,' %{_bindir}/rpmlint > %{buildroot}/opt/testing/bin/rpmlint.real
+
 chmod a+x %{buildroot}/opt/testing/bin/rpmlint.real
 rm -rf %{buildroot}/{usr,etc}
 install -m 755 -D %{SOURCE2} %{buildroot}/opt/testing/bin/rpmlint
