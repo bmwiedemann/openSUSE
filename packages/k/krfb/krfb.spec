@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           krfb
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
