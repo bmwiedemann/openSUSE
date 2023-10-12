@@ -1,7 +1,7 @@
 #
 # spec file for package uim
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -149,6 +149,7 @@ popd
 # GNU Emacs:
 install -m 644 $RPM_SOURCE_DIR/suse-start-uim.el %{buildroot}%{_datadir}/emacs/site-lisp/
 pushd %{buildroot}%{_datadir}/emacs/site-lisp/uim-el
+    sed -i 's/set-face-underline-p/set-face-underline/g' ./uim-var.el
     for i in $(find . -name "*.el")
     do
         emacs -no-site-file -q -batch -eval '(setq load-path (cons "." load-path))' -f batch-byte-compile $i

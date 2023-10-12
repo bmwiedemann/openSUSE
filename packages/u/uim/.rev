@@ -438,4 +438,12 @@ remove Provides: locale(*:ja) to slim down</comment>
     <comment></comment>
     <requestid>993849</requestid>
   </revision>
+  <revision rev="56" vrev="10">
+    <srcmd5>4b243f4995a6bb705574971422f1b6f9</srcmd5>
+    <version>1.8.8</version>
+    <time>1697146914</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1114546</requestid>
+  </revision>
 </revisionlist>

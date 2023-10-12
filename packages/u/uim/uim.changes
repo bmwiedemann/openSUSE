@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 21 19:10:28 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- set-face-underline-p is an alias to set-face-underline
+  and was deprecated since emacs 24.3
+
+-------------------------------------------------------------------
 Mon Aug  8 15:36:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop canna support: canna has not been maintained for a long time
