@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 11 18:00:46 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 0.14.12
+ * Features
+  - i18n: Add Portuguese localizations for bibtex package
+  - utilities: Add utility function for console messages without trace info
+ * Bug Fixes
+  - build: Make sure vendored luarocks isn't a phony target that runs repeatedly
+  - core: Allocate exactly what we use, not a guess with an extra just in case
+  - core: Correct usage of HarfBuzz when passing a filtered list of shapers
+  - core: Fixup class loader so cache is all Lua module specs
+  - packages: Don't warn on TOC content change if not actually used
+
+-------------------------------------------------------------------
 Wed Aug 23 04:04:28 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 0.14.11
