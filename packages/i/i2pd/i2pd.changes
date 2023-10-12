@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 27 03:06:29 UTC 2023 - ming li <mli@suse.com>
+
+- update to 2.49.0:
+  * Handle SOCK5 authorization with empty user/password and send correct version in response
+  * Improve NTCP2 transport session logging
+  * Allow 0 hops in explicitPeers
+  * Don't allow incoming transport sessions from routers with incorrect timestamp
+  * Fixed sending keepalive for sessions with introducers
+  * Always select router with ipv4 for tunnel endpoint
+  * Fixed crash if deleted BOB destination was shared between few BOB sessions
+  * Memory pool for router profiles
+  * Removed AVX code
+  * Exclude SSU1 introducers from SSU2 addresses
+  * Don't create paired inbound tunnel if length is different
+  * Fixed padding length for SSU2 path response
+  * Don't publish introducers with zero tag
+  * Consider all addresses non-published for U and H routers even if they have host/port
+  * Don't pick completely unreachable routers for tunnels
+  * Separate network and testing status
+
+-------------------------------------------------------------------
 Mon Jun 12 16:59:00 UTC 2023 - R4SAS <r4sas@i2pd.xyz>
 
 - update to 2.48.0:
