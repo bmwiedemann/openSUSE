@@ -1849,4 +1849,18 @@ Now one could consider building emacs with gsettings support (both debian and fe
   correctly on 64bit systems</comment>
     <requestid>1114250</requestid>
   </revision>
+  <revision rev="178" vrev="5">
+    <srcmd5>020f7b15c2d748292ed26515733cb367</srcmd5>
+    <version>29.1</version>
+    <time>1697146746</time>
+    <user>anag+factory</user>
+    <comment>- For the at-spi bus the package at-spi2-core is required 
+- Move eln prune code from ~/.gnu-emacs to site-start
+
+- Avoid warnings about eln files as well as prune older eln files 
+
+- Add packaging macros for Emacs packages
+- Add site-lisp directory for dynamic modules</comment>
+    <requestid>1116811</requestid>
+  </revision>
 </revisionlist>

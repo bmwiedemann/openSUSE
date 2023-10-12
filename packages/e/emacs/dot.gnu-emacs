@@ -543,5 +543,6 @@
 ;; Use minibuffer for aking GPG passphrase
 ;;(setq epa-pinentry-mode 'loopback)
 ;;(pinentry-start)
+;;
 ;;;;;;;;;;
 ;; the end

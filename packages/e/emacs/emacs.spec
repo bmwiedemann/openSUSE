@@ -127,6 +127,7 @@ BuildRequires:  libacl-devel
 %if %{with nativecomp}
 BuildRequires:  libgccjit-devel
 %endif
+BuildRequires:  pkgconfig(atspi-2)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(json)
 BuildRequires:  pkgconfig(lcms2)
@@ -183,6 +184,8 @@ Source7:        %{name}.keyring
 %if %{without tex4pdf}
 Source8:        emacs-%{version}-pdf.tar.xz
 %endif
+Source9:        macros.emacs
+%{load:%{SOURCE9}}
 Patch0:         emacs-29.1.dif
 # Currently disabled
 Patch2:         emacs-24.4-glibc.patch
@@ -233,7 +236,7 @@ This package requires emacs-x11 and/or emacs-nox to have the GNU Emacs editor it
 Requires(post): fileutils
 Requires:       emacs = %{version}-%{release}
 %if %{with nativecomp}
-Requires:       emacs-eln = %{version}
+Requires:       emacs-eln = %{version}-%{release}
 %endif
 Provides:       emacs_program = %{version}-%{release}
 Summary:        GNU Emacs-nox: An Emacs Binary without X Window System Support
@@ -250,9 +253,10 @@ Love it or leave it.
 Requires(post): fileutils
 Requires:       emacs = %{version}-%{release}
 %if %{with nativecomp}
-Requires:       emacs-eln = %{version}
+Requires:       emacs-eln = %{version}-%{release}
 %endif
 Provides:       emacs_program = %{version}-%{release}
+Requires:       at-spi2-core
 Requires:       gnu-unifont-bitmap-fonts
 Requires:       ifnteuro
 Requires:       xorg-x11-fonts
@@ -644,6 +648,13 @@ install -m 0644 %{S:3} %{buildroot}/etc/skel/.gnu-emacs
 mkdir -p %{buildroot}%{_datadir}/emacs/site-lisp/site-start.d
 tar cf - site-lisp/ | tar xvvf - -C %{buildroot}%{_datadir}/emacs/
 chmod -R a+r %{buildroot}%{_datadir}/emacs/site-lisp/
+
+install -dm755 %{buildroot}/%{_emacs_sitestartdir}/
+cat << EOF > %{buildroot}/%{_emacs_sitestartdir}/archsitedir.el
+;; Add load-path for dynamic modules
+(add-to-list 'load-path "%{_emacs_archsitelispdir}")
+EOF
+
 popd
 (cd %{buildroot}
  find usr/share/emacs/site-lisp/ -type f	\
@@ -753,6 +764,8 @@ done
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -sf %{_sysconfdir}/alternatives/ctags		%{buildroot}%{_bindir}/ctags
 ln -sf %{_sysconfdir}/alternatives/ctags.1%{ext_man}	%{buildroot}%{_mandir}/man1/ctags.1%{ext_man}
+
+install -Dm644 %{SOURCE9} %{buildroot}%{_rpmmacrodir}/macros.emacs
 
 %if %{with nativecomp}
 touch eln.list
@@ -5091,6 +5104,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/xt-mouse.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/xwidget.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/yank-media.el%{ext_el}
+%{_rpmmacrodir}/macros.emacs
 
 %files -n etags
 %defattr(-,root,root)
