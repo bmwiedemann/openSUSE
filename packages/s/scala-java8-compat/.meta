@@ -1,0 +1,5 @@
+<package name="scala-java8-compat" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="scala-java8-compat"/>
+</package>
