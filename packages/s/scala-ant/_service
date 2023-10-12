@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/cigaly/scala-ant.git</param>
+		<param name="revision">8137805062b98a7c201392542f4e29cefac03103</param>
+		<param name="versionformat">2.13.1</param>
+        <param name="exclude">*gradle*</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
