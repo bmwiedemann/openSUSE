@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:26:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * Add more sanity checks for transfers
+  * More reasonable clang-tidy settings
+  * Fix several word wrap issues for health certificate details
+  * Ensure DB ticket reference is upper-cased
+  * Disable Poppler Qt bindings
+  * Fix Flatpak build after PIM switched master to Qt6
+  * Use stable branch for Qt5 PIM libraries
+  * Require POST_NOTIFICATION permission for Android SDK 33
+
+-------------------------------------------------------------------
 Tue Sep 12 11:55:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1
