@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:26:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * snapcraft: fix analitza source.
+  * snapcraft: Initial commit snapcraft files
+  * [maxima] clear the variables created in TestMaxima::testVariableModel()
+
+-------------------------------------------------------------------
 Tue Sep 12 11:55:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1
