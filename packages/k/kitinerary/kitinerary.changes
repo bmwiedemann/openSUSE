@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:27:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * Fix several copy/paste errors in SortUtil::hasStart/EndTime()
+  * Add bookingkit PDF extractor script
+  * Handle departure/arrival/duration triples in generic extraction as well
+  * Update clang-tidy settings to something more reasonable
+  * Make the Amadeus PDF timestamp workaround a bit less specific
+  * Correctly compare times with and without timezones when merging
+  * Fix parsing newer UK railway PDF tickets
+  * Deal with an alternative way to mark non-reservation RSP-6 tickets
+  * Fix parsing GWR iCal attachments for multi-leg train trips
+  * Manually merge international Renfe results
+  * Unify reservation/ticket number extraction for Renfe/Ouigo ES barcodes
+  * Move Renfe barcode documentation to the wiki
+  * Add a workaround for fixing broken UIC 918.3 payloads in Renfe tickets
+  * Sanity-check the RCT2 traveler name
+  * Handle one more data format in RCT2 tickets
+  * Try barcode decoding both on transformed and untranformed source images
+  * Remove some excessive debug output
+  * Extract un-styled Pretix PDF tickets
+  * Extract multi-leg Renfe tickets correctly
+  * Make train number matching slightly less strict
+  * Merge the two ÖBB UIC 918.3 extractor scripts
+  * Extract multi-leg ÖBB PDF tickets
+  * Fix online import of unidirectional SNCF bookings (kde#474197)
+
+-------------------------------------------------------------------
 Tue Sep 12 11:56:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1
