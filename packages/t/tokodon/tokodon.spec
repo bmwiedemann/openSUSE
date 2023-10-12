@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           tokodon
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Mastodon client by KDE
 License:        GPL-3.0-only
@@ -37,7 +37,7 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5KirigamiAddons) >= 0.10
+BuildRequires:  cmake(KF5KirigamiAddons) >= 0.11
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5QQC2DesktopStyle)
 BuildRequires:  cmake(KF5WindowSystem) >= 5.91
