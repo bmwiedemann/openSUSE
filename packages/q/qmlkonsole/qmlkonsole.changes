@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:28:27 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * use RELEASE_SERVICE_VERSION instead of hardcoded PROJECT_VERSION
+
+-------------------------------------------------------------------
 Tue Sep 12 11:56:54 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1
