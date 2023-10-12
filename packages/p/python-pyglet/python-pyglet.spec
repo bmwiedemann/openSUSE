@@ -50,7 +50,6 @@ Requires:       python-Pillow
 Requires:       python-pypng
 Recommends:     alsa-lib
 Recommends:     fontconfig
-Recommends:     freetype
 Recommends:     libGLU1
 Recommends:     libopenal0
 BuildArch:      noarch
@@ -63,7 +62,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  Mesa-dri
 BuildRequires:  alsa-lib
 BuildRequires:  fontconfig
-BuildRequires:  freetype
+BuildRequires:  freetype2-devel
 BuildRequires:  gnu-free-fonts
 BuildRequires:  libopenal0
 BuildRequires:  xorg-x11-server
