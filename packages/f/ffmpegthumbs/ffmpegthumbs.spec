@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ffmpegthumbs
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        FFmpeg-based thumbnail creator for video files
 License:        LGPL-2.0-or-later
@@ -29,9 +29,7 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  xz
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(Qt5Gui)
