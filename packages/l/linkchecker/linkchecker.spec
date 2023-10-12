@@ -1,7 +1,7 @@
 #
 # spec file for package linkchecker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,23 +19,29 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define pythons python3
 Name:           linkchecker
-Version:        10.1.0
+Version:        10.3.0
 Release:        0
 Summary:        Tool to check websites and HTML documents for broken links
 License:        GPL-2.0-or-later
 URL:            https://github.com/linkchecker/linkchecker
-Source:         https://files.pythonhosted.org/packages/source/L/LinkChecker/LinkChecker-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
+Source:         linkchecker-%{version}.tar.gz
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  git
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module beautifulsoup4 >= 4.8.1}
 BuildRequires:  %{python_module dnspython >= 2.0}
 BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pyftpdlib}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyxdg}
-BuildRequires:  %{python_module requests >= 2.4}
+BuildRequires:  %{python_module requests >= 2.20}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
@@ -67,15 +73,14 @@ Features are:
 * a (Fast)CGI web interface (requires HTTP server)
 
 %prep
-%setup -q -n LinkChecker-%{version}
-# Avoid dependency on python-miniboa
-rm tests/checker/test_telnet.py
+%setup -q
 
 %build
-%python_build
+cp -r %{_sourcedir}/%{name}-%{version}/.git %{_builddir}/%{name}-%{version}/
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/linkchecker
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -84,6 +89,7 @@ mv %{buildroot}%{_datadir}/%{name}/examples ./
 
 install -d -m 0755 %{buildroot}%{_datadir}/pixmaps
 install -D -m 644 doc/src/images/logo128x128.png %{buildroot}%{_datadir}/pixmaps/linkchecker128x128.png
+install -D -m 644 linkcheck/data/linkcheckerrc %{buildroot}%{_datadir}/linkchecker/linkcheckerrc
 
 %check
 export LANG=en_US.UTF-8
@@ -97,13 +103,11 @@ export LANG=en_US.UTF-8
 %python_uninstall_alternative linkchecker
 
 %files %{python_files}
-%doc README.rst examples doc/upgrading.txt doc/changelog.txt
+%doc README.rst doc/upgrading.txt doc/changelog.txt
 %license COPYING
 %python_alternative %{_bindir}/linkchecker
 %{python_sitelib}/linkcheck/
-%{python_sitelib}/_LinkChecker_configdata.py
 %{python_sitelib}/LinkChecker-*/
-%pycache_only %{python_sitelib}/__pycache__/
 %{_datadir}/pixmaps/linkchecker128x128.png
 %dir %{_datadir}/linkchecker
 %{_datadir}/linkchecker/linkcheckerrc
