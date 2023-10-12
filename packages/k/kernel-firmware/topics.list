@@ -73,6 +73,7 @@ mga:		platform
 r128:		platform
 radeon:		radeon		radeon amdgpu
 amdgpu:		amdgpu
+amd_pmf:	platform
 s2255drv:	platform
 rtl8192e:	realtek		r8192e_pci
 lgs8gxx:	media

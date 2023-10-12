@@ -41,17 +41,10 @@ make_dirs () {
     fi
 }
 
-copy_link () {
+add_file () {
     local f="$1"
-    local lf="$2"
-    local src="${f%/*}"
-    if [ "$src" = "$f" ]; then
-	src="$lf"
-    else
-	src="$src/$lf"
-    fi
     make_dirs "$f"
-    if [ -d "$dest/$src" ]; then
+    if [ -f "$dest/$f" ]; then
 	echo "\"$fwdir/$f\"" >> files-$topic
     else
 	echo "\"$fwdir/$f$cext\"" >> files-$topic
@@ -89,13 +82,12 @@ while read l; do
 		echo "ERROR: no topic found for $l"
 		exit 1
 	    fi
-	    f=$(echo "$l" | sed -e's/^File: *//' -e's/"//g' -e's/\\//g')
+	    f=$(echo "$l" | sed -e's/^File: *//' -e's/^RawFile: *//' -e's/"//g' -e's/\\//g')
 	    case "$f" in
-		*/README)
+		*/README*)
 		    continue;;
 	    esac
-	    make_dirs "$f"
-	    echo "\"$fwdir/$f$cext\"" >> files-$topic
+	    add_file "$f"
 	    ;;
 	Link:*)
 	    test "$topic" = "SKIP" && continue
@@ -104,8 +96,7 @@ while read l; do
 		exit 1
 	    fi
 	    f=$(echo "$l" | sed -e's/^Link: *//' -e's/ *->.*$//' -es'/\\//g')
-	    d=$(echo "$l" | sed -e's/^.*-> *//' -e's/\\//g')
-	    copy_link "$f" "$d"
+	    add_file "$f"
 	    ;;
     esac
 done

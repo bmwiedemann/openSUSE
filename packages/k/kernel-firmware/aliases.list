@@ -24,6 +24,9 @@ advansys: pci:v000010CDd00002500sv*sd*bc*sc*i*
 advansys: pci:v000010CDd00002700sv*sd*bc*sc*i*
 ambassador: pci:v000010B6d00001001sv*sd*bc*sc*i*
 ambassador: pci:v000010B6d00001002sv*sd*bc*sc*i*
+amd_pmf: acpi*:AMDI0100%3A*
+amd_pmf: acpi*:AMDI0102%3A*
+amd_pmf: acpi*:AMDI0103%3A*
 amdgpu: pci:v00001002d*sv*sd*bc03sc00i00*
 amdgpu: pci:v00001002d*sv*sd*bc03sc80i00*
 amdgpu: pci:v00001002d*sv*sd*bc12sc00i00*
@@ -3523,6 +3526,7 @@ r8152: usb:v17EFp721Ed*dc*dsc*dp*icFFisc*ip*in*
 r8152: usb:v17EFpA387d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v17EFpA387d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v17EFpA387d*dc*dsc*dp*icFFisc*ip*in*
+r8152: usb:v2001pB301d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v2357p0601d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v2357p0601d*dc*dsc*dp*ic02isc06ip00in*
 r8152: usb:v2357p0601d*dc*dsc*dp*icFFisc*ip*in*

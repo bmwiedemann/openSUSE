@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Thu Oct 12 09:53:05 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Add Provides to sub-packages from kernel-firmware (bsc#1214789);
+  this will work around the potential conflicts of compressed vs
+  uncompressed installations
+
+-------------------------------------------------------------------
+Mon Oct 09 07:10:37 UTC 2023 - tiwai@suse.com
+
+- Update to version 20231006 (git commit 389575a8a177) (jsc#PED-6130, jsc#PED-6081):
+  * WHENCE: add symlink for BananaPi M64
+  * linux-firmware: Add firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth 9560
+  * linux-firmware: Update firmware file for Intel Bluetooth 9260
+  * Build debian and fedora images
+  * Add new Makefile target to build a deb and rpm package
+  * i915: Update MTL DMC to v2.17
+  * iwlwifi: add FWs for new GL and MA device types with multiple RF modules
+  * amd_pmf: Add initial PMF TA for Smart PC Solution Builder
+  * linux-firmware: Update FW files for MRVL PCIE 8997 chipsets
+  * rtl_bt: Update RTL8851B BT USB firmware to 0x048A_D230
+  * iwlwifi: add new FWs from core81-65 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core81-65 release
+- Drop fdupes to avoid missing files for split packages (bsc#1215464)
+- Add conflicts to each split subpk against uncompressed raw package;
+  the contents may conflict and the compressed files won't be effective
+  unless the raw files get removed
+- Update aliases
+
+-------------------------------------------------------------------
+Fri Sep 22 12:53:05 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230918 (commit f48da6da5507):
+  * Run merge request pipelines for pre-commit.
+  * linux-firmware: amd-ucode: Add note on fam19h warnings
+  * i915: update MTL HuC to version 8.5.4
+  * amdgpu: update DMCUB to 0.0.183.0 for various AMDGPU ASICs
+
+-------------------------------------------------------------------
+Thu Sep 14 12:44:20 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230907 (git commit c801b3b807d2):
+  * Turn off textwidth check
+  * linux-firmware: add link to sc8280xp audioreach firmware
+  * qcom: sm8250: add RB5 sensors DSP firmware
+  * qcom: Update vpu-1.0 firmware
+  * qcom: sm8250: update DSP firmware
+  * qcom: add firmware for the onboard WiFi on qcm2290 / qrb4210
+  * qcom: add venus firmware files for v6.0
+  * qcom: add firmware for QRB4210 platforms
+  * qcom: add firmware for QCM2290 platforms
+  * qcom: add GPU firmware for QCM2290 / QRB2210
+  * ath10k/WCN3990: move wlanmdsp to qcom/sdm845
+  * WHENCE: Don't compress qcom json files
+  * WHENCE: amd-ucode: Use new RawFile keyword
+  * check_whence: Recognize RawFile keyword
+  * Only run ci-fairy on merge requests
+  * Capture artifacts from `make dist` to save at release time.
+  * Add new toplevel 'make dist' target.
+  * Create symlinks for all firmware that is duplicate using rdfind
+  * QCA: Update Bluetooth WCN685x 2.1 firmware to 2.1.0-00605
+  * Add shellcheck pre-commit target
+  * Fix carl9170fw shell scripts for shellcheck errors
+  * Add a rule for automatic tagging releases by pipeline schedule
+  * Add gitlab ci for calling pre-commit and ci-fairy
+  * Add Dockerfile used to build CI image
+  * Rewrite README in markdown
+  * Wire up pre-commit to `make check`
+  * Add pre-commit hooks and codespell template
+  * check_whence: reformat using python black
+- Drop obsoleted amd-ucode-rawfile.patch
+- Fix make-files.sh to handle RawFile tag correctly
+- Update aliases from 6.6-rc1
+
+-------------------------------------------------------------------
 Tue Aug 29 15:09:31 UTC 2023 - tiwai@suse.com
 
 - Update to version 20230829 (git commit 49f9e3479fb5):
@@ -279,6 +359,13 @@ Mon Apr 17 08:13:49 UTC 2023 - tiwai@suse.com
   * amdgpu: Update DCN 3.1.4 firmware
   * amdgpu: Add GC 11.0.4 firmware
   * rtw88: 8822c: Update normal firmware to v9.9.15
+
+-------------------------------------------------------------------
+Fri Mar 24 16:08:17 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Revive the old iwlwifi-*-71 ucode for compatibility with
+  SLE15-SP4 kernel (bsc#1209681):
+  WHENCE updated by iwlwifi-WHENCE-fix.patch
 
 -------------------------------------------------------------------
 Fri Mar 24 08:22:16 UTC 2023 - tiwai@suse.com
