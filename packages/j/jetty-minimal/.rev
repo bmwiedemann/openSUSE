@@ -151,4 +151,12 @@
     <comment>Reproducible builds improvement</comment>
     <requestid>1109972</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>26b31a337d7a4f4c0eb601ed21895980</srcmd5>
+    <version>9.4.53</version>
+    <time>1697147078</time>
+    <user>anag+factory</user>
+    <comment>Misc. security fixes</comment>
+    <requestid>1117494</requestid>
+  </revision>
 </revisionlist>

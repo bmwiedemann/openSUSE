@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct 12 15:51:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 9.4.53.v20231009
+  * Fixes of 9.4.53.v20231009
+    + CVE-2023-44487, bsc#1216169
+    + CVE-2023-36478, bsc#1216162
+    + #10679 - backport HTTP/2 rate control from Jetty 10.0.x
+    + #10573 - backport hpack improvements from Jetty 10.0.x
+    + #10546 - backport jetty-http Huffman encoders/decoders from
+      Jetty 10.0.x
+  * Fixes of 9.4.52.v20230823
+    + #10352 - Jetty accepts "+" prefixed value in Content-Length
+      (CVE-2023-40167, bsc#1215417)
+    + #10337 - SizeLimitHandler does not enforce 0 responseLimit
+    + #10169 - make sure that a ServiceLoader is retrieved before
+      iterating 
+    + #10066 - Allow SAXParserFactory or SAXParser to be configured
+      in Jetty's XmlParser class - Allows for GHSA-58qw-p7qm-5rvh
+      workaround
+    + #9887 - Deprecate CGI Servlet (CVE-2023-36479, bsc#1215415)
+    + #9716 - Deprecate PushSessionCacheFilter
+    + #9660 - OpenId Revoked authentication allows one request
+      (CVE-2023-41900, bsc#1215416)
+    + #9476 - onCompleteFailure called multiple times
+
+-------------------------------------------------------------------
 Sat Sep  9 14:24:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp

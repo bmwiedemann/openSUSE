@@ -18,10 +18,10 @@
 
 
 %global base_name jetty
-%global addver  .v20230217
+%global addver  .v20231009
 %define src_name %{base_name}.project-%{base_name}-%{version}%{addver}
 Name:           %{base_name}-unixsocket
-Version:        9.4.51
+Version:        9.4.53
 Release:        0
 Summary:        The unixsocket modules for Jetty
 License:        Apache-2.0 OR EPL-1.0
