@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:27:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * ensure we don't crash if no item is selected (kde#475379)
+  * Fix prettier.resolveConfig.sync is not a function (kde#474722)
+  * Explicitly call QCoreApplication::exit()
+
+-------------------------------------------------------------------
 Tue Sep 12 11:55:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1
