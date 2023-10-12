@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 12 08:16:55 UTC 2023 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gnome-control-center-network-fix-nmce-popup.patch:
+  network-connection-editor: Close the editor when nm-connection-editor
+  exits(bsc#1208193 glgo#GNOME/gnome-control-center!1956).
+
+-------------------------------------------------------------------
 Tue Oct 03 14:03:43 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 45.0+34:

@@ -1977,4 +1977,14 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1115913</requestid>
   </revision>
+  <revision rev="233" vrev="2">
+    <srcmd5>b0799b41f3a79cf8df9a40ee02f42294</srcmd5>
+    <version>45.0+34</version>
+    <time>1697146736</time>
+    <user>anag+factory</user>
+    <comment>- Add gnome-control-center-network-fix-nmce-popup.patch:
+  network-connection-editor: Close the editor when nm-connection-editor
+  exits(bsc#1208193 glgo#GNOME/gnome-control-center!1956). (forwarded request 1117143 from JonathanKang)</comment>
+    <requestid>1117449</requestid>
+  </revision>
 </revisionlist>
