@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct 11 19:32:29 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.17.2
+  * New: FORCE_QT6 and FORCE_QT5 CMake options to force Qt version.
+- Update to version 2.17.1
+  * New: 
+    + Delete key clears the waterfall.
+    + I/Q tool can save recordings in SigMF format.
+    + Holding Ctrl speeds up mouse wheel zoom.
+  * Improved: Reduced CPU utilization of waterfall display.
+
+-------------------------------------------------------------------
 Mon Oct  2 16:44:52 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
-- Update to version 2.16
+- Update to version 2.17
   * New:
     + plot mode, which displays average of FFT bins.
     + "Fill" plot mode, which displays both maximum & average of
