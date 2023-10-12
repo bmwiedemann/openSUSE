@@ -6,7 +6,7 @@ rootuuid=$(findmnt / -n --output uuid)
 sed -i -e "s,\$, root=UUID=$rootuuid rootflags=subvol=@/.snapshots/1/snapshot," /etc/kernel/cmdline
 arch="$(uname -m)"
 case "$arch" in
-	aarch64) arch=arm64 ;;
+	aarch64) arch=aa64 ;;
 	x86_64) arch=x64 ;;
 	*) echo "Unknown arch $arch"; exit 1 ;;
 esac
