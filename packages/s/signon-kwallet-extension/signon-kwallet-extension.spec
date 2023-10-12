@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           signon-kwallet-extension
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        KWallet integration for signon framework
 License:        GPL-2.0-or-later
