@@ -24,9 +24,25 @@ setup_timezone() {
     fi
 }
 
-provision() {
-    IFS=: read -r domain_name password function_level rfc2307 <<<"$1"
+set_rpc_ports() {
+    IFS=: read -r rpc_ports <<<"$1"
 
+    RANGE_CMD="from samba.param import LoadParm
+lp = LoadParm()
+lp.load('${CONFIG_FILE}')
+lp.set('rpc server dynamic port range', '${rpc_ports}')
+lp.dump(False, '${CONFIG_FILE}')
+    "
+    python3 -c "$RANGE_CMD"
+    testparm -s
+}
+
+provision() {
+    IFS=: read -r domain_name password rpc_ports function_level rfc2307 <<<"$1"
+
+    if [ -z "$rpc_ports" ]; then
+        rpc_ports="5001-5021"
+    fi
     if [ -z "$function_level" ]; then
         function_level=2008_R2
     fi
@@ -40,12 +56,16 @@ provision() {
     rm $CONFIG_FILE
     nb_name=${domain_name%%.*}
     samba-tool domain provision --domain="$nb_name" --realm="$domain_name" --adminpass="$password" --host-name="$HOSTNAME" --function-level="$function_level" $rfc2307
+    set_rpc_ports "$rpc_ports"
     echo "DONE"
 }
 
 domain_join() {
-    IFS=: read -r domain_name type admin password <<<"$1"
+    IFS=: read -r domain_name type admin password rpc_ports <<<"$1"
 
+    if [ -z "$rpc_ports" ]; then
+        rpc_ports="5001-5021"
+    fi
     if [ "$type" != "DC" ] && [ "$type" != "RODC" ]; then
         echo "Invalid domain role '$type'."
         exit 1
@@ -55,6 +75,7 @@ domain_join() {
     init_krb5_conf
     rm $CONFIG_FILE
     samba-tool domain join "$domain_name" $type -U "$admin" --password="$password"
+    set_rpc_ports "$rpc_ports"
     echo "DONE"
 }
 
@@ -78,16 +99,18 @@ The container will be configured as a samba addc and requires:
  * Either a domain to join, or name to be promoted as.
 
 Options:
- -d <domain_name:type:admin:password>
+ -d <domain_name:type:admin:password>[:rpc_ports]
     Configure an Active Directory domain controller in an existing domain.
      * domain_name      Required, domain name of the new/joining domain
      * type             Required, DC or RODC
      * admin            Required, the domain Administrator
      * password         Required, the Administrator password
- -p <domain_name:password>[:function_level:rfc2307]
+     * rpc_ports        Optional, maps to smb.conf 'rpc server dynamic port range'
+ -p <domain_name:password>[:rpc_ports:function_level:rfc2307]
     Provision a new Active Directory domain.
      * domain_name      Required, domain name of the new/joining domain
      * password         Required, the Administrator password
+     * rpc_ports        Optional, maps to smb.conf 'rpc server dynamic port range'
      * function_level   Optional, [2000|2003|2008|2008_R2] Domain and forest function level, default is 2008_R2
      * rfc2307          Optional, [yes|no] Use AD to store posix attributes (default = no)
  -h
