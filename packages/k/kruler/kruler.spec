@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kruler
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Screen Ruler
 License:        GPL-2.0-or-later
