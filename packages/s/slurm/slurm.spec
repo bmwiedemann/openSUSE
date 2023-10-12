@@ -18,7 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 39
-%define ver 23.02.5
+%define ver 23.02.6
 %define _ver _23_02
 #%%define rc_v 0rc1
 %define dl_ver %{ver}
@@ -146,7 +146,6 @@ Source21:       README_Testsuite.md
 Patch0:         Remove-rpath-from-build.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
 Patch10:        Fix-test-21.41.patch
-Patch12:        Fix-test-32.8.patch
 Patch14:        Keep-logs-of-skipped-test-when-running-test-cases-sequentially.patch
 Patch15:        Fix-test7.2-to-find-libpmix-under-lib64-as-well.patch
 
@@ -597,7 +596,6 @@ Do not run test suite and file bug reports for each failed test!
 %patch0 -p1
 %patch2 -p1
 %patch10 -p1
-%patch12 -p1
 %patch14 -p1
 %patch15 -p1
 
