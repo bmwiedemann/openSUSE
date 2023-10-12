@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           arianna
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Ebook reader and library management app
 License:        GPL-3.0-only
