@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 12 13:26:22 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 6.4.0
+- force require urllib3 < 2 because of https://github.com/RaRe-Technologies/smart_open/issues/784
+ * Ignore S3 seeks to the current position (PR #782, @beck3905
+ * Set binary mode prior to FTP write ()PR #781, @beck3905)
+ * Improve S3 URI Parsing for URIs with "@", "/", and ":" (PR #776, @rileypeterson)
+ * Add python 3.11 to setup.py (PR #775, @tooptoop4)
+ * Fix retrieving empty but existing object from S3 (PR #771, @Darkheir)
+ * Avoid overfilling buffer when reading from Azure (PR #767, @ronreiter)
+ * Add required import for example to work (PR #756, @jensenbox)
+
+-------------------------------------------------------------------
 Fri Jan  6 18:27:53 UTC 2023 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 6.3.0 
