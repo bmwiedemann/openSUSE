@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 11 14:56:42 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * reproducible-timestamps.patch
+    + use SOURCE_DATE_EPOCH for timestamp in html files
+
+-------------------------------------------------------------------
 Mon Oct  9 15:40:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

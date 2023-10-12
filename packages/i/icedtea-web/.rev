@@ -278,4 +278,12 @@
     <comment>Allow building with Java &lt;= 11</comment>
     <requestid>1116672</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>36a9c834a345ac3489f0e3f68cda98b0</srcmd5>
+    <version>1.8.8</version>
+    <time>1697146852</time>
+    <user>anag+factory</user>
+    <comment>reproducible-timestamps</comment>
+    <requestid>1117051</requestid>
+  </revision>
 </revisionlist>
