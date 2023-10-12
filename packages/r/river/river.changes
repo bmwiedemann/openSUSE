@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  5 08:45:27 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Remove dbus-run-session in the script. Portals can still work without it.
+
+-------------------------------------------------------------------
+Thu Oct  5 01:47:08 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
+
+- Edit river-portals.conf
+  * default to wlr -> fallback to gtk
+- Always use dbus-run-session now since this is required to start portals
+
+-------------------------------------------------------------------
 Mon Sep 25 03:10:09 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - XDP 0.18.0 requires desktop and other environments to have their own portals.conf
