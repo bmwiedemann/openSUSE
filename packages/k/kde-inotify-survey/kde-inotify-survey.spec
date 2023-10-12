@@ -19,7 +19,7 @@
 %bcond_without released
 %define kf5_version 5.105.0
 Name:           kde-inotify-survey
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Monitor inotify limits and inform the user when they are reached
 License:        GPL-2.0-or-later
