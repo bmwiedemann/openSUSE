@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 12 13:28:47 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Also only require sdboot* on architectures where systemd-boot
+  exists.
+
+-------------------------------------------------------------------
 Wed Oct 11 09:30:30 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only require systemd-boot on architectures where it exists

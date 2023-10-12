@@ -704,13 +704,13 @@ Requires:       open-vm-tools
 Requires:       pam_pwquality
 Requires:       policycoreutils-python-utils
 Requires:       qemu-guest-agent
+%ifarch %{ix86} x86_64 aarch64
 Requires:       sdbootutil
 Requires:       sdbootutil-rpm-scriptlets
 Requires:       sdbootutil-snapper
-Requires:       spice-vdagent
-%ifarch %{ix86} x86_64 aarch64
 Requires:       systemd-boot
 %endif
+Requires:       spice-vdagent
 Requires:       tftpboot-installation-openSUSE-MicroOS-%{_target_cpu}
 Requires:       wpa_supplicant
 Requires:       xfsprogs
