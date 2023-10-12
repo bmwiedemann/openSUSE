@@ -17,7 +17,7 @@
 
 
 Name:           xscreensaver
-Version:        6.07
+Version:        6.08
 Release:        0
 Summary:        A screen saver and locker for the X Window System
 License:        BSD-3-Clause AND GPL-2.0-or-later
