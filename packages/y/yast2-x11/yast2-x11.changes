@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct 10 11:09:32 UTC 2023 - Martin Vidner <mvidner@suse.com>
+
+- xkbctrl: use also kbd-model-map.xkb-generated (bsc#1211104)
+- 5.0.1
+
+-------------------------------------------------------------------
+Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
+
+- 5.0.0 (#bsc1185510)
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)

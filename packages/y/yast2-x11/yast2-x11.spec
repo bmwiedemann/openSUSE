@@ -17,7 +17,7 @@
 
 
 Name:           yast2-x11
-Version:        4.6.0
+Version:        5.0.1
 Release:        0
 Summary:        YaST2 - X11 support
 License:        GPL-2.0-only
