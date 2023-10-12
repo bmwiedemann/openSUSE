@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           juk
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Jukebox
 License:        GPL-2.0-or-later
