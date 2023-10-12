@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kalarm
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Personal Alarm Scheduler
 License:        GPL-2.0-only
@@ -28,6 +28,7 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+BuildRequires:  breeze5-icons
 BuildRequires:  extra-cmake-modules
 BuildRequires:  polkit-default-privs
 BuildRequires:  update-desktop-files
@@ -109,14 +110,8 @@ Personal alarm message, command and email scheduler by KDE.
 %{_kf5_debugdir}/kalarm.categories
 %{_kf5_debugdir}/kalarm.renamecategories
 %{_kf5_iconsdir}/hicolor/*/apps/kalarm.png
-%dir %{_kf5_iconsdir}/breeze/
-%dir %{_kf5_iconsdir}/breeze-dark/
-%dir %{_kf5_iconsdir}/breeze/16x16
-%dir %{_kf5_iconsdir}/breeze-dark/16x16
-%dir %{_kf5_iconsdir}/breeze/22x22
-%dir %{_kf5_iconsdir}/breeze-dark/22x22
-%{_kf5_iconsdir}/breeze/*/actions/
-%{_kf5_iconsdir}/breeze-dark/*/actions/
+%{_kf5_iconsdir}/breeze/actions/*/show-today.svg
+%{_kf5_iconsdir}/breeze-dark/actions/*/show-today.svg
 %{_kf5_kxmlguidir}/kalarm/
 %{_kf5_libdir}/libkalarmcalendar.so.*
 %{_kf5_libdir}/libkalarmplugin.so.*
