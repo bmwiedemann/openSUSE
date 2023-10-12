@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 11 12:38:02 UTC 2023 - Thomas Blume <thomas.blume@suse.com>
+
+-  update to 1.3.4 (bsc#1199467)
+   * binddynport.c honor ip_local_reserved_ports
+   * gss-api: expose gss major/minor error in authgss_refresh()
+   * rpcb_clnt.c: Eliminate double frees in delete_cache()
+   * rpcb_clnt.c: memory leak in destroy_addr
+   * portmapper: allow TCP-only portmapper
+   * getnetconfigent: avoid potential DoS issue by removing unnecessary sleep
+   * clnt_raw.c: fix a possible null pointer dereference
+   * bindresvport.c: fix a potential resource leakage
+
+-------------------------------------------------------------------
 Fri Aug 19 15:27:29 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.3 (bsc#1201680, CVE-2021-46828):
