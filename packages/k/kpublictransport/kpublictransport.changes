@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:27:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * test: querytest: Fixup au_navitia locations
+  * networks: au_navitia: Use stop_point instead of stop_area
+  * networks: au_navitia: Expand to all of Australia
+  * networks: au_navitia: Fixup latitude and longitude
+  * Fix typo in onboard API header installation
+
+-------------------------------------------------------------------
 Tue Sep 12 11:56:23 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1
