@@ -1,0 +1,9 @@
+<package name="juniversalchardet" project="openSUSE:Factory">
+  <title>Encoding detector library</title>
+  <description>JUNIVERSALCHARDET is a Java port of 'universalchardet', that is the encoding
+detector library of Mozilla.
+
+</description>
+  <devel project="Java:packages" package="juniversalchardet"/>
+  <url>https://code.google.com/archive/p/juniversalchardet/</url>
+</package>
