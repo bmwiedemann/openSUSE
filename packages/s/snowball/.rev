@@ -7,4 +7,25 @@
     <comment>New dependency to geary</comment>
     <requestid>892248</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4ed3f7d75200cfcc1fd07e99c56b4035</srcmd5>
+    <version>2.2.0</version>
+    <time>1697146738</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.2.0:
+  + New code generator: Ada generator.
+  + Javascript: Fix generated code to use integer division rather
+    than floating point division.
+  + Python:
+    - Python 2 is no longer actively supported.
+    - Fix code generated for division.  Previously the Python code
+      we generated used integer division but rounded negative
+      fractions towards negative infinity rather than zero under
+      Python 2, and under Python 3 used floating point division.
+  + For more information, see shipped NEWS file.
+- Rebase build-options.diff and shared-library.diff.
+- Bump libstemmer.so.0d to libstemmer.so.1d: we have no guarantee
+  that upstreams static-only-library maintains any kind of ABI. (forwarded request 1117030 from dimstar)</comment>
+    <requestid>1117451</requestid>
+  </revision>
 </revisionlist>

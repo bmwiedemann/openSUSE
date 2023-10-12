@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 10 08:53:44 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.2.0:
+  + New code generator: Ada generator.
+  + Javascript: Fix generated code to use integer division rather
+    than floating point division.
+  + Python:
+    - Python 2 is no longer actively supported.
+    - Fix code generated for division.  Previously the Python code
+      we generated used integer division but rounded negative
+      fractions towards negative infinity rather than zero under
+      Python 2, and under Python 3 used floating point division.
+  + For more information, see shipped NEWS file.
+- Rebase build-options.diff and shared-library.diff.
+- Bump libstemmer.so.0d to libstemmer.so.1d: we have no guarantee
+  that upstreams static-only-library maintains any kind of ABI.
+
+-------------------------------------------------------------------
 Tue May 11 13:32:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Initial package, version 2.1.0, based on work by darix and dabian
