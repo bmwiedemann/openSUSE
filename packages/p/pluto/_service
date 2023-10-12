@@ -3,7 +3,7 @@
     <param name="url">https://github.com/FairwindsOps/pluto</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v5.18.4</param>
+    <param name="revision">v5.18.5</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

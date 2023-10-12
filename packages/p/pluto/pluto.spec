@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           pluto
-Version:        5.18.4
+Version:        5.18.5
 Release:        0
 Summary:        A cli tool to help discover deprecated apiVersions in Kubernetes
 License:        Apache-2.0
@@ -59,8 +59,7 @@ BuildArch:      noarch
 Fish command line completion support for %{name}.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 go build \
