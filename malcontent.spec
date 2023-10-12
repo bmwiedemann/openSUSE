@@ -1,7 +1,7 @@
 #
 # spec file for package malcontent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,14 @@
 
 
 Name:           malcontent
-Version:        0.10.4
+Version:        0.11.1
 Release:        0
 Summary:        Parental control system
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://gitlab.freedesktop.org/pwithnall/malcontent
 Source:         https://tecnocode.co.uk/downloads/%{name}-%{version}.tar.xz
+
+BuildRequires:  desktop-file-utils
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pam-devel
@@ -34,7 +36,8 @@ BuildRequires:  pkgconfig(flatpak)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.54.2
 BuildRequires:  pkgconfig(glib-testing-0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(polkit-gobject-1)
 
 %description
@@ -61,18 +64,18 @@ Libmalcontent implements parental controls support which can be
 used by applications to filter or limit the access of child
 accounts to inappropriate content.
 
-%package -n libmalcontent-ui-0-0
+%package -n libmalcontent-ui-1-1
 Summary:        Malcontent UI library
 
-%description -n libmalcontent-ui-0-0
+%description -n libmalcontent-ui-1-1
 Libmalcontent implements parental controls support which can be
 used by applications to filter or limit the access of child
 accounts to inappropriate content.
 
-%package -n typelib-1_0-MalcontentUi-0
+%package -n typelib-1_0-MalcontentUi-1
 Summary:        Introspection bindings for the malcontent UI library
 
-%description -n typelib-1_0-MalcontentUi-0
+%description -n typelib-1_0-MalcontentUi-1
 Libmalcontent implements parental controls support which can be
 used by applications to filter or limit the access of child
 accounts to inappropriate content.
@@ -80,9 +83,9 @@ accounts to inappropriate content.
 %package devel
 Summary:        Devel package
 Requires:       libmalcontent-0-0 = %{version}
-Requires:       libmalcontent-ui-0-0 = %{version}
+Requires:       libmalcontent-ui-1-1 = %{version}
 Requires:       typelib-1_0-Malcontent-0 = %{version}
-Requires:       typelib-1_0-MalcontentUi-0 = %{version}
+Requires:       typelib-1_0-MalcontentUi-1 = %{version}
 
 %description devel
 Libmalcontent implements parental controls support which can be
@@ -113,10 +116,8 @@ sed -i 's|env python3|python3|' malcontent-client/malcontent-client.py
 mv %{buildroot}%{_datadir}/polkit-1/rules.d/com.endlessm.ParentalControls.rules .
 %find_lang %{name}
 
-%post  -n libmalcontent-0-0 -p /sbin/ldconfig
-%postun  -n libmalcontent-0-0 -p /sbin/ldconfig
-%post  -n libmalcontent-ui-0-0 -p /sbin/ldconfig
-%postun  -n libmalcontent-ui-0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libmalcontent-0-0
+%ldconfig_scriptlets  -n libmalcontent-ui-1-1
 
 %files
 %license COPYING
@@ -140,21 +141,21 @@ mv %{buildroot}%{_datadir}/polkit-1/rules.d/com.endlessm.ParentalControls.rules 
 %files -n typelib-1_0-Malcontent-0
 %{_libdir}/girepository-1.0/Malcontent-0.typelib
 
-%files -n libmalcontent-ui-0-0
-%{_libdir}/libmalcontent-ui-0.so.*
+%files -n libmalcontent-ui-1-1
+%{_libdir}/libmalcontent-ui-1.so.*
 
-%files -n typelib-1_0-MalcontentUi-0
-%{_libdir}/girepository-1.0/MalcontentUi-0.typelib
+%files -n typelib-1_0-MalcontentUi-1
+%{_libdir}/girepository-1.0/MalcontentUi-1.typelib
 
 %files devel
 %{_includedir}/%{name}-0/
-%{_includedir}/%{name}-ui-0/
+%{_includedir}/%{name}-ui-1/
 %{_libdir}/libmalcontent-0.so
-%{_libdir}/libmalcontent-ui-0.so
+%{_libdir}/libmalcontent-ui-1.so
 %{_libdir}/pkgconfig/malcontent-0.pc
-%{_libdir}/pkgconfig/malcontent-ui-0.pc
+%{_libdir}/pkgconfig/malcontent-ui-1.pc
 %{_datadir}/gir-1.0/Malcontent-0.gir
-%{_datadir}/gir-1.0/MalcontentUi-0.gir
+%{_datadir}/gir-1.0/MalcontentUi-1.gir
 
 %files control
 %{_bindir}/malcontent-control
