@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 12 14:32:59 UTC 2023 - dmueller@suse.com
+
+- Update to version 3.13.1:
+  * Fixing precedence issue with the import of values.
+  * Add missing with clause to release gh action
+  * FIX Default ServiceAccount yaml
+  * fix(registry): unswallow error
+  * remove useless print during prepareUpgrade
+  * fix(registry): address anonymous pull issue
+  * Fix missing run statement on release action
+  * Write latest version to get.helm.sh bucket
+  * chore(deps): bump oras.land/oras-go from 1.2.3 to 1.2.4
+  * Increased release information key name max length.
+  * chore(deps): bump golang.org/x/text from 0.11.0 to 0.13.0
+
+-------------------------------------------------------------------
 Thu Sep 28 04:47:57 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.13.0 (bsc#1215588):
