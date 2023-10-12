@@ -108,4 +108,13 @@ IMO the Conflicts tag is unavoidable, hence adding.
     <comment>- update to 4.35.2 (bsc#1215808):</comment>
     <requestid>1114399</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>d1ec9e1962082223a59a56208347fcb9</srcmd5>
+    <version>4.35.2</version>
+    <time>1697061400</time>
+    <user>anag+factory</user>
+    <comment>- trim paths in the binary
+- run tests</comment>
+    <requestid>1116989</requestid>
+  </revision>
 </revisionlist>

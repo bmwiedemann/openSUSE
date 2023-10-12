@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 10 13:44:16 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Once more on the breach! Update to 0.5.4 (see changes below).
+
+-------------------------------------------------------------------
+Wed May 17 14:37:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- go back to 0.5.3 
+
+-------------------------------------------------------------------
+Sun May 14 12:52:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.4:
+  * Support TryStar from python 3.11
+  * Support match statement from python 3.10 
+
+-------------------------------------------------------------------
 Fri Apr 21 12:25:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

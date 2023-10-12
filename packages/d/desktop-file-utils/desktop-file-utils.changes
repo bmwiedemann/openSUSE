@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct  6 20:46:05 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 0.27:
+  * common 
+    + Remove Autotools support.
+    + Minor updates to project documentation.
+    + Add pledge(2) support to remaining utilities
+    + Add --version support to utilities.
+  * desktop-file-validate
+    + Support desktop spec version 1.5.
+    + Add LXQt to categories.
+    + Use DDE category for Deepin desktop.
+    + Add Endless to list of desktop IDs.
+    + Fix field code escaping in messages.
+  * desktop-entry-mode.el
+    + Highlight action groups when ID includes hyphens.
+- Drop patches (upstreamed):
+  * 0001-validate-support-SingleMainWindow-key-from-1.5.patch
+  * 0002-validate-Support-version-1.5.patch
+- Refresh desktop-file-utils-suse-keys.patch
+
+-------------------------------------------------------------------
 Thu Apr 20 09:04:41 UTC 2023 - Guido Berhoerster <guido+opensuse@berhoerster.name>
 
 - suse-update-mime-defaults:

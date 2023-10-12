@@ -1,7 +1,7 @@
-Index: borgmatic-1.7.10/tests/integration/test_execute.py
+Index: borgmatic-1.8.2/tests/integration/test_execute.py
 ===================================================================
---- borgmatic-1.7.10.orig/tests/integration/test_execute.py
-+++ borgmatic-1.7.10/tests/integration/test_execute.py
+--- borgmatic-1.8.2.orig/tests/integration/test_execute.py
++++ borgmatic-1.8.2/tests/integration/test_execute.py
 @@ -132,6 +132,7 @@ def test_log_outputs_skips_error_output_
      assert not error.value.output
  

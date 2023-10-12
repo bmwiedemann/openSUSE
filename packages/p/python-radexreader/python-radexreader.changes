@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 10 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (1.2.3)
+  * fix read with RADEX ONE v1
+  * compatibility without notice for Python 3.12
+
+-------------------------------------------------------------------
 Fri Jun 16 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
 
 - Package spec update
@@ -6,20 +13,20 @@ Fri Jun 16 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
 -------------------------------------------------------------------
 Thu Jun  6 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
 
-- New upstream version (1.2.2)
+- New upstream release (1.2.2)
   * fix detection of RADEX ONE v1 (ABBA/A011)
   * fix measure value (hexa:8 useless)
 
 -------------------------------------------------------------------
 Thu Sep  9 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
 
-- New upstream version (1.2.1)
+- New upstream release (1.2.1)
   * fix auto import of radexreader.py
 
 -------------------------------------------------------------------
 Wed May  5 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
 
-- New upstream version (1.2.0)
+- New upstream release (1.2.0)
   * add support for Radex ONE Geiger counter
   * fix a start crash with Radex RD1212 v1
 

@@ -26,13 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-apipkg%{psuffix}
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        Namespace control and lazy-import mechanism
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/apipkg/
-Source:         https://files.pythonhosted.org/packages/source/a/apipkg/apipkg-%{version}.tar.gz
+Source:         https://github.com/pytest-dev/apipkg/archive/refs/tags/v%{version}.tar.gz#/apipkg-%{version}-gh.tar.gz
 %if %{with test}
 BuildRequires:  %{python_module apipkg = %{version}}
 BuildRequires:  %{python_module pytest}

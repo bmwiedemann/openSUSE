@@ -6,6 +6,7 @@ Fri Sep 29 18:10:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
     IndexedDB API.
   + Fix the build with GBM disabled.
   + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2023-41993.
 
 -------------------------------------------------------------------
 Thu Sep 28 08:47:58 UTC 2023 - Marcus Meissner <meissner@suse.com>
@@ -23,6 +24,7 @@ Fri Sep 15 19:04:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + Add API to set the percentage of volume space that can be used
     for data storage.
   + GBM is no longer required for WebGL implementation.
+  + Security fixes: CVE-2023-39928, CVE-2023-41074.
 
 -------------------------------------------------------------------
 Mon Sep 11 15:02:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -148,7 +150,8 @@ Wed Aug  2 18:25:12 UTC 2023 - Michael Gorse <mgorse@suse.com>
   + Fix several crashes and rendering issues.
   + Security fixes: CVE-2023-38133, CVE-2023-38572, CVE-2023-38592,
     CVE-2023-38594, CVE-2023-38595, CVE-2023-38597, CVE-2023-38599,
-    CVE-2023-38600, CVE-2023-38611, CVE-2023-40397.
+    CVE-2023-38600, CVE-2023-38611, CVE-2023-40397, CVE-2023-39434,
+    CVE-2023-40451.
 
 -------------------------------------------------------------------
 Fri Jul 21 20:49:06 UTC 2023 - Michael Gorse <mgorse@suse.com>
@@ -268,7 +271,7 @@ Fri Mar 17 19:06:13 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix large memory allocation when uploading content.
 - Add regression-fix.patch: [GLib] Broke
   WebKitUserContentManager::script-message-received
-  + Security fixes: CVE-2023-32393, CVE-2023-32435.
+  + Security fixes: CVE-2023-32393, CVE-2023-32435, CVE-2023-35074.
 
 -------------------------------------------------------------------
 Wed Mar  8 16:18:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>

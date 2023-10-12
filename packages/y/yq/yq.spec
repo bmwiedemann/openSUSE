@@ -74,7 +74,10 @@ Fish command line completion support for %{name}.
 %setup -qa1
 
 %build
-go build -buildmode=pie -mod=vendor -o bin/%{name}
+go build -trimpath -buildmode=pie -mod=vendor -o bin/%{name}
+
+%check
+go test ./...
 
 %install
 install -D -m 0755 ./bin/%{name} "%{buildroot}/%{_bindir}/%{name}"

@@ -289,4 +289,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1114984 from glaubitz)</comment>
     <requestid>1115597</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d6c77c374881d2ddeac9e8864894cc6c</srcmd5>
+    <version>12.18.3</version>
+    <time>1697061385</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 12.18.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1116859 from glaubitz)</comment>
+    <requestid>1116920</requestid>
+  </revision>
 </revisionlist>

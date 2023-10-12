@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Oct 10 20:18:54 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 118.0.5993.70 (boo#1216111)
+  * CVE-2023-5218: Use after free in Site Isolation
+  * CVE-2023-5487: Inappropriate implementation in Fullscreen
+  * CVE-2023-5484: Inappropriate implementation in Navigation
+  * CVE-2023-5475: Inappropriate implementation in DevTools
+  * CVE-2023-5483: Inappropriate implementation in Intents
+  * CVE-2023-5481: Inappropriate implementation in Downloads
+  * CVE-2023-5476: Use after free in Blink History
+  * CVE-2023-5474: Heap buffer overflow in PDF
+  * CVE-2023-5479: Inappropriate implementation in Extensions API
+  * CVE-2023-5485: Inappropriate implementation in Autofill
+  * CVE-2023-5478: Inappropriate implementation in Autofill
+  * CVE-2023-5477: Inappropriate implementation in Installer
+  * CVE-2023-5486: Inappropriate implementation in Input
+  * CVE-2023-5473: Use after free in Cast
+- Build with system freetype (again), and zstd
+- add patches:
+  * chromium-118-system-freetype.patch
+  * chromium-117-system-zstd.patch
+
+-------------------------------------------------------------------
 Sat Oct  7 15:32:52 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 118.0.5993.54

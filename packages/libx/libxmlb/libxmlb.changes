@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 10 08:03:30 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- baselibs.conf: don't build libxmlb2-32bit; baselibs.conf was
+  added for the x86-64-v3 flavor; the -32bit was an unintended side
+  effect.
+
+-------------------------------------------------------------------
+Tue Oct  3 22:31:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.3.14
+  * Fix comparing indexed text with integer values
+- Enable libstemmer-devel BuildRequires and pass stemmer=true to
+  meson setup, libstemmer now available in Tumbleweed.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Fri Aug 18 17:20:43 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to 0.3.13:

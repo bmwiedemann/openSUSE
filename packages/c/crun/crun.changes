@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct 11 11:29:21 UTC 2023 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Add crun-wasm symlink for platform 'wasi/wasm'
+
+-------------------------------------------------------------------
 Wed Sep 13 06:04:30 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Update to 1.9:

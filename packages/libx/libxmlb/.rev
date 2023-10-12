@@ -140,4 +140,12 @@ Needed for future versions of fwupd</comment>
     <comment></comment>
     <requestid>1104782</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bbec675fe583d32ef2ecacc02e2d288e</srcmd5>
+    <version>0.3.14</version>
+    <time>1697061236</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116625</requestid>
+  </revision>
 </revisionlist>

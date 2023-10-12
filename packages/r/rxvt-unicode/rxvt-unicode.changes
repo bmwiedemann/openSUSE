@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Oct 11 09:27:29 UTC 2023 - Marcus 'darix' Rückert <mrueckert@suse.de>
+
+- Update to version 9.31: (CVE-2022-4170 boo#1206069)
+  - implement a fix for CVE-2022-4170 (reported and analyzed by
+    David Leadbeater). While present in version 9.30, it should not
+    be exploitable. It is exploitable in versions 9.25 and 9.26, at
+    least, and allows anybody controlling output to the terminal to
+    execute arbitrary code in the urxvt process.
+  - the background extension no longer requires off focus fading
+    support to be compiled in.
+  - the confirm-paste extension now offers a choice betwene pasting
+    the original or a sanitized version, and also frees up memory
+    used to store the paste text immediately.
+  - fix compiling without frills.
+  - fix rewrapMode: never.
+  - fix regression that caused urxvt to no longer emit responses to
+    OSC color queries other than OSC 4 ones.
+  - fix regression that caused urxvt to no longer process OSC 705.
+  - restore CENTURY to be 1900 to "improve" year parsing in urclock
+    (or at least go back to the old interpretation) (based on an
+    analysis by Tommy Pettersson).
+  - exec_async (used e.g. by the matcher extension to spawn
+    processes) now sets the URXVT_EXT_WINDOWID variable to the
+    window id of the terminal.
+  - implement -fps option/refreshRate resource to change the
+    default 60 Hz maximum refresh limiter. I always wanted an fps
+    option, but had to wait for a user requesting it.
+  - new clickthrough extension.
+  - perl now also requires Xext.
+  - X region and shape extension functionality has been exposed to
+    perl extensions.
+  - RENDER extension no longer depends on ENABLE_XIM_ONTHESPOT.
+
+-------------------------------------------------------------------
 Fri Jan 28 11:41:08 CET 2022 - tiwai@suse.de
 
 - Update to version 9.30:

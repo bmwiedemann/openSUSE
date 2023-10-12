@@ -343,4 +343,12 @@
     <comment></comment>
     <requestid>1083291</requestid>
   </revision>
+  <revision rev="38" vrev="17">
+    <srcmd5>88d47762dea93e4e68c09c56921748bb</srcmd5>
+    <version>20201210</version>
+    <time>1697061231</time>
+    <user>anag+factory</user>
+    <comment>No longer install bijiben (gnome-notes) by default. (forwarded request 1116094 from iznogood)</comment>
+    <requestid>1116598</requestid>
+  </revision>
 </revisionlist>

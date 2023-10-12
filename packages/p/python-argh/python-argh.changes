@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Oct 11 08:41:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.29.4:
+  * Test coverage reported as <100% when argcomplete is installed
+  * Technical releases for packaging purposes.  No changes in
+    functionality.
+  * Backwards incompatible changes:
+  * Wrapped exceptions now cause ``dispatching.dispatch()`` to
+    raise ``SystemExit(1)`` instead of returning without error.
+    For most users, this means failed commands will now exit
+    with a failure status instead of a success.
+  * Renamed arguments in `add_commands()` (#165):
+    * `namespace` → `group_name`
+    * `namespace_kwargs` → `group_kwargs`
+  * The old names are deprecated and will be removed in v.0.30.
+  * Can control exit status (see Backwards Incompatible Changes
+    above) when raising ``CommandError`` using the ``code``
+    keyword arg.
+  * Bugs fixed:
+  * Positional arguments should not lead to removal of short
+    form of keyword arguments.
+  * Other changes:
+  * Avoid depending on iocapture by using pytest's built-in
+    feature
+
+-------------------------------------------------------------------
 Fri Jun  2 07:12:44 UTC 2023 - pgajdos@suse.com
 
 - version update to 0.28.1
@@ -130,7 +156,7 @@ Wed Sep 25 17:18:00 UTC 2013 - p.drouand@gmail.com
 -------------------------------------------------------------------
 Thu Mar  7 20:43:50 UTC 2013 - darin@darins.net
 
-- Update to verios 0.23.0 
+- Update to verios 0.23.0
   + Upstream provides no changelog
 
 -------------------------------------------------------------------

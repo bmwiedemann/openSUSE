@@ -29,7 +29,7 @@ Source3:        README.suse-maint
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  freetype-devel
+BuildRequires:  freetype2-devel
 BuildRequires:  libxcb-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  pkgconfig

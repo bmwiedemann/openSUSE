@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 11 08:05:24 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.23.4:
+  * Fix bug causing a crash when cleaning up Android draw device upon destroy.
+  * Fix bug where bitmaps were reused after being recycled in Android.
+  * Add fixed padding to ink annotation to avoid unselectable bboxes for tiny strokes.
+  * Add API for checking if an annotation has a Rect property.
+  * Fix bug where cycles in structure trees caused eternal loops.
+  * Fix bug where colorspaces were not retained for in-linee images during filtering.
+  * Change default to use CropBox rather than MediaBox.
+
+-------------------------------------------------------------------
 Wed Sep 20 05:56:12 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.23.3:

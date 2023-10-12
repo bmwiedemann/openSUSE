@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  6 19:06:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable (temp?) gnome-notes while we wait for upstream to fix the
+  now 6 months old bug with it crashing in its search-provider. See
+  https://gitlab.gnome.org/GNOME/gnome-notes/-/issues/196 and
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1210322
+
+-------------------------------------------------------------------
 Tue Apr 25 10:41:41 UTC 2023 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
 
 - Delete archived applications (gnome-dictionary)

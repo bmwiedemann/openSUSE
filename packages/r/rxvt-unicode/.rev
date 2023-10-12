@@ -365,4 +365,12 @@ adds .desktop files</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1007701</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>0e840c3f58a28919e0397103b5cf4870</srcmd5>
+    <version>9.31</version>
+    <time>1697061368</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 9.31: (CVE-2022-4170 boo#1206069)</comment>
+    <requestid>1116880</requestid>
+  </revision>
 </revisionlist>

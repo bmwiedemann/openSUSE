@@ -1,7 +1,7 @@
 #
 # spec file for package python-colormap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-colormap
-Version:        1.0.4
+Version:        1.0.6
 Release:        0
 Summary:        Utilities to manipulate matplotlib colormaps and color codecs
 License:        BSD-3-Clause

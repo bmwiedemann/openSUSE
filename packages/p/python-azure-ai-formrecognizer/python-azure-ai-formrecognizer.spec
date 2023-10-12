@@ -21,19 +21,18 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-formrecognizer
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        Microsoft Azure Form Recognizer Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-formrecognizer/azure-ai-formrecognizer-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-ai-formrecognizer/azure-ai-formrecognizer-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-ai-nspkg >= 1.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-ai-nspkg >= 1.0.0
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1

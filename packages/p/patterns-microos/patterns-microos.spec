@@ -708,7 +708,9 @@ Requires:       sdbootutil
 Requires:       sdbootutil-rpm-scriptlets
 Requires:       sdbootutil-snapper
 Requires:       spice-vdagent
+%ifarch %{ix86} x86_64 aarch64
 Requires:       systemd-boot
+%endif
 Requires:       tftpboot-installation-openSUSE-MicroOS-%{_target_cpu}
 Requires:       wpa_supplicant
 Requires:       xfsprogs
@@ -729,7 +731,9 @@ Additional packages on a openSUSE MicroOS DVD.
 Summary:        Alternative Packages only for the DVD of openSUSE MicroOS
 Group:          Metapackages
 Provides:       pattern-category() = MicroOS
+%ifnarch s390 s390x
 Requires:       kernel-default-base
+%endif
 Provides:       pattern() = microos_alt_onlyDVD
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9901

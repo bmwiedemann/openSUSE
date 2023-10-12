@@ -16,8 +16,8 @@
 #
 
 
-%if 0%{?suse_version} >= 1590
-# have libbpf >= 1.0.1
+%if (0%{?sle_version} && 0%{?sle_version} >= 150600) || (0%{?suse_version} && 0%{?suse_version} > 1500)
+# have libbpf >= 1.0.1 and linux-glibc-devel >= 5.16
 %define have_libbpf 1
 %endif
 %if (0%{?sle_version} && 0%{?sle_version} <= 150300) || (0%{?suse_version} && 0%{?suse_version} < 1500)

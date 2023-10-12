@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct 11 06:55:36 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.7.7:
+  * Add X-Purism-FormFactor option to .desktop file.
+  * Update default station list.
+  * Updated translations: Finnish, Polish, Portuguese (Brazil).
+
+-------------------------------------------------------------------
 Wed Sep 20 07:04:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop no longer needed pkgconfig(amtk-5) BuildRequires. It was

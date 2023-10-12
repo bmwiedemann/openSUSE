@@ -36,7 +36,7 @@ Patch0:         0001-fix-upstream-CVE-2021-38561.patch
 BuildRequires:  golang-packaging
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang(API) >= 1.21
 Requires(post): %fillup_prereq
 Recommends:     cni-plugins
 %{?systemd_requires}

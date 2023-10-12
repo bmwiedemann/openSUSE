@@ -22,7 +22,7 @@
 %define cmake_build make -O VERBOSE=1 %{?_smp_mflags}
 %endif
 Name:           c-ares
-Version:        1.19.1
+Version:        1.20.1
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
@@ -67,7 +67,7 @@ by Greg Hudson at MIT.
 This package provides the shared libraries for c-ares.
 
 %package devel
-Summary:        Development files for %{name}
+Summary:        Development files for c-ares
 Requires:       %{libname} = %{version}
 Requires:       glibc-devel
 Provides:       libcares-devel = %{version}
@@ -108,10 +108,8 @@ LD_LIBRARY_PATH=.%_libdir:./%_lib ./bin/arestest
 
 %files utils
 %license LICENSE.md
-%{_bindir}/acountry
 %{_bindir}/adig
 %{_bindir}/ahost
-%{_mandir}/man1/acountry.1%{?ext_man}
 %{_mandir}/man1/adig.1%{?ext_man}
 %{_mandir}/man1/ahost.1%{?ext_man}
 

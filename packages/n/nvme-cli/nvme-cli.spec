@@ -26,6 +26,9 @@ License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://github.com/linux-nvme/nvme-cli/
 Source0:        nvme-cli-%{version}.tar.gz
+Source1:        nvme-cli-rpmlintrc
+Patch001:       0001-fabrics-autoconnect-add-service-unit-for-connecting-.patch
+Patch002:       0002-fabrics-add-udev-rule-to-avoid-renaming-nbft-interfa.patch
 # downstream patches
 Patch100:       0100-harden_nvmf-connect@.service.patch
 BuildRequires:  asciidoc
@@ -34,13 +37,15 @@ BuildRequires:  gcc-c++
 BuildRequires:  libhugetlbfs-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libnvme-devel
-BuildRequires:  libuuid-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(libudev)
+# nvme-cli API for NBFT support.
+Provides:       nvmeof-boot-support = 0.1
 
 %systemd_ordering
 
@@ -85,6 +90,7 @@ Optional dependency offering zsh completion for NVM Express user space tools
 %autosetup -p1
 
 %build
+export KBUILD_BUILD_TIMESTAMP=@${SOURCE_DATE_EPOCH:-$(date +%s)}
 %meson \
     -Dudevrulesdir=%{_udevrulesdir} \
     -Ddracutrulesdir=%{_sysconfdir}/dracut/dracut.conf.d \
@@ -114,9 +120,11 @@ mkdir -p %{buildroot}%{_sbindir}
 pushd %{buildroot}%{_sbindir}
 ln -s service rcnvmefc-boot-connections
 ln -s service rcnvmf-autoconnect
+ln -s service rcnvmf-connect
+ln -s service rcnvmf-connect-nbft
 popd
 
-%define services nvmefc-boot-connections.service nvmf-connect.target nvmf-autoconnect.service
+%define services nvmefc-boot-connections.service nvmf-autoconnect.service nvmf-connect.target nvmf-connect-nbft.service
 
 %pre
 %service_add_pre %{services} nvmf-connect@.service
@@ -153,13 +161,17 @@ fi
 %{_sbindir}/nvme
 %{_sbindir}/rcnvmefc-boot-connections
 %{_sbindir}/rcnvmf-autoconnect
+%{_sbindir}/rcnvmf-connect
+%{_sbindir}/rcnvmf-connect-nbft
 %{_mandir}/man1/nvme*.1*%{?ext_man}
+%{_udevrulesdir}/65-persistent-net-nbft.rules
 %{_udevrulesdir}/70-nvmf-autoconnect.rules
 %{_udevrulesdir}/71-nvmf-iopolicy-netapp.rules
-%{_unitdir}/nvmf-autoconnect.service
 %{_unitdir}/nvmefc-boot-connections.service
-%{_unitdir}/nvmf-connect@.service
+%{_unitdir}/nvmf-autoconnect.service
+%{_unitdir}/nvmf-connect-nbft.service
 %{_unitdir}/nvmf-connect.target
+%{_unitdir}/nvmf-connect@.service
 %dir %{_sysconfdir}/nvme/
 %ghost %{_sysconfdir}/nvme/hostnqn
 %ghost %{_sysconfdir}/nvme/hostid

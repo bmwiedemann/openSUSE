@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 30 12:15:50 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update foldable1-classes-compat to version 0.1 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Aug  7 12:03:23 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update foldable1-classes-compat to version 0.1 revision 3.

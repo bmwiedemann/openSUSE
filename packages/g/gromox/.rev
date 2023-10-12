@@ -135,4 +135,12 @@
     <comment>- Update to release 2.13</comment>
     <requestid>1113238</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>50f7af48b2f26b19bb5cdc0a0a3e8b4d</srcmd5>
+    <version>2.14</version>
+    <time>1697061391</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1116969</requestid>
+  </revision>
 </revisionlist>

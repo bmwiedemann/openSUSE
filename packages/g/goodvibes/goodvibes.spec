@@ -17,7 +17,7 @@
 
 
 Name:           goodvibes
-Version:        0.7.6
+Version:        0.7.7
 Release:        0
 Summary:        A lightweight radio player
 License:        GPL-3.0-only
@@ -32,14 +32,14 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= 1.4.4
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(keybinder-3.0)
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.42
+BuildRequires:  pkgconfig(libsoup-2.4) >= 2.74
 Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-base
 Recommends:     gstreamer-plugins-good

@@ -1,4 +1,2892 @@
 -------------------------------------------------------------------
+Wed Oct 11 09:49:51 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.5.0 (resolves bsc#1216078 CVE-2023-45199 and bsc#1216076 CVE-2023-43615):
+  * Updated BRANCHES.MD
+  * Re-assemble changelog to add missing item, plus a couple of typo fixes.
+  * Bump library so-crypto, so-x509, so-tls versions.
+  * Ignore tests of built-in interfaces for driver-only testing parity
+  * Renaming all MBEDTLS_HAVE for curves to MBEDTLS_ECP_HAVE
+  * Auto-generated files for v3.5.0
+  * ChangeLog: Set release date
+  * Prepare ChangeLog for 3.5.0 release
+  * Bump version to 3.5.0
+  * check-generated-files: Added psa_crypto_driver_wrappers_no_static.c file
+  * Changelog: Added entry for psa_crypto_driver_wrappers rename
+  * Remove leftover local debug line
+  * ChangeLog: Added .txt extension to log entries.
+  * Avoid compiler warning about size comparison
+  * Improve some debug messages and error codes
+  * In TLS 1.2, only servers are affected
+  * Changelog entry for xxdh_psa_peerkey size validation
+  * Improve robustness of ECDH public key length validation
+  * Fix buffer overflow in TLS 1.2 ClientKeyExchange parsing
+  * Fix buffer overflow in TLS 1.3 ECDH public key parsing
+  * Add custom config logic to 3rdparty modules
+  * CMake: fix build with 3rdparty module enabled through a custom config
+  * Changelog entry for #7298
+  * Fix ChangeLog entry for FFDH in PSA
+  * Undo not-needed change
+  * Remove redundant code
+  * Assume get_num_ops cannot fail
+  * Always call get_num_ops
+  * Add MBEDTLS_TARGET_PREFIX to 3rdparty CMake
+  * Fix return type
+  * Fix IAR statement is unreachable warning
+  * Fix IAR control bypasses initialisation warning
+  * Fix error handling in psa_driver_wrapper_xxx_hash_get_num_ops
+  * Fix IAR pointless integer comparison
+  * Fix IAR control bypasses initialisation warning
+  * Fix IAR change of sign warning
+  * Remove components that partially accelerate ECC keys
+  * Update list of ECC key types in user-config-for-test.h
+  * Remove spurious comments
+  * Remove generated files in all cmake_as_x tests
+  * Fix lowercase comment start
+  * Formatting fixes
+  * Minor clarifications.
+  * Test only what's support with partial curves accel
+  * Add check for unsupported partial curves acceleration
+  * Add check for unsupported partial key type acceleration
+  * Fix typo: weiErstrass
+  * Use lowercase for local variables
+  * Adjust handling of special case for DERIVE
+  * Rename macros for consistency
+  * Update docs/driver-only-builds.md
+  * Improve documentation about driver-only p256-m.
+  * Remove now-redundant tests
+  * Auto-enable ACCEL macros for p256-m driver
+  * Update list of p256-m entry points
+  * Don't extend support for deprecated functions
+  * Update ChangeLog for ECC.BN EPIC
+  * Ensure tests will fail if CMake generation fails
+  * Update padding const-time fix changelog
+  * Put crypto_spe.h on the include search path where needed
+  * Document that MBEDTLS_PSA_CRYPTO_SPM needs crypto_spe.h
+  * Fix include path to psa/crypto_spe.h
+  * Add CMake include path for generated header
+  * Add ChangeLog entry for change in driver config API
+  * Document limitation on "mixed" builds
+  * Re-add python install of requirements to Travis CI.
+  * Add build with only some ECC key types accelerated
+  * Add build with some curves accelerated but not all
+  * Fix a typo in psa-crypto-implementation-structure.md
+  * Change the documenti about psa_crypto_driver_wrappers.c{h}
+  * No need to include the 3rd party entry point head file
+  * Change the description of auto-generated driver dispatch files
+  * Remove useless spaces in Makefile
+  * Remove useless empty line
+  * Remove the UN_USED_DISABLE attribute
+  * Change to os.path functions base on comment
+  * Move the dependency adjacent to the generated file
+  * Change include guards of psa_crypto_driver_wrappers_no_static.h
+  * Change comments to psa_crypto_driver_wrappers.h
+  * Change the extension type of the file psa_crypto_driver_wrapper
+  * Automaticly generate psa_crypto_driver_wrappers_no_static.c
+  * Dont't generate object file for file only include static functions
+  * Revert 3rd party p-256 entry file
+  * Revert the Makefile to remove the dependency of generate_files
+  * Move functions out of the static file
+  * Change code style
+  * Disable unused warning on visual studio and generate files before lib
+  * Enable build of non-static psa wrapper functions
+  * Move function psa_driver_wrapper_export_public_key out of auto-generated
+  * Remove static inline functions declare and make it only in c file
+  * Ensure build of P256 pass
+  * Surpress the unsed function warnings
+  * Remove useless declaration
+  * Define the psa wrapper functions as static inline
+  * Fix propagation of return value from parse_attribute_value_hex_der_encoded
+  * parse_attribute_value_hex_der_encoded: clean up length validation
+  * parse_attribute_value_hex_der_encoded test case fixups
+  * Add may-fail mode to mbedtls_x509_string_to_names output tests
+  * Fix integer overflow with an input buffer larger than INT_MAX
+  * Fix indentation
+  * Rewrite parse_attribute_value_hex_der_encoded()
+  * More test cases for parse_attribute_value_der_encoded
+  * Use modern test macros for ease of debugging
+  * Rename new header file
+  * Declare P-256 as accelerated in p256-m test
+  * Fix another rebasing mistake
+  * Fix rebasing mistake
+  * Be more subtle about key_type -> alg interaction
+  * Special-case KEYPAIR_DERIVE (no driver support yet)
+  * Fix dependencies of built-in ECC keypair types
+  * Fix deterministic ECDSA built-in dependencies
+  * Use consistent ordering for built-in activation
+  * Declare curves as accelerated in all.sh when needed
+  * Fix logic of ECC built-in activation again
+  * Remove components that are no longer needed
+  * Remove useless instances of MBEDTLS_SOME_BUILTIN_EC
+  * Implement new strategy for ECC accel/built-in
+  * Group all ECC-related things in legacy_from_psa.h
+  * Improve PSA config adjustment relate to keypair types
+  * Remove unnecessary block
+  * psa_crypto: fix guards in mbedtls_ecc_group_to_psa()
+  * adjust_legacy_from_psa: undef SOME_BUILTIN_EC when builtin curves are used
+  * config_psa: resolve symbol redefinition issue
+  * test: fix comment
+  * check_config: remove unnecessary check about builtin curve usage
+  * test_suite_psa_crypto: fix curve dependency in test
+  * Renaming all MBEDTLS_HAVE for curves to MBEDTLS_ECP_HAVE
+  * test: fix comments and functions' naming
+  * ssl: don't require MBEDTLS_ECP_DP with TLS1.3
+  * config_psa: moving PSA_WANT auto-enabling code
+  * config_psa: fix comment
+  * test: fix remaining disparities and remove debug leftovers
+  * test: fix test accelerating all curves keeping only 1 builtin
+  * lib/test: use new internal helpers in library's code and tests
+  * build_info: add helpers to signal some support for a specific curve
+  * check_config: include also ECJPAKE_C as usage for builtin curves
+  * tls/oid: add PSA_WANT_ECC_xxx guards together with existing MBEDTLS_ECP_DP_xxx
+  * test: fix test which are using accelerated ECC/DH keys
+  * check_config: request at least 1 builtin EC alg if there is at least 1 builtin curve
+  * config_psa: include builtin algs if there is at least 1 builtin curve
+  * config_psa: check curves' support before EC ALGs
+  * config_psa: add internal helper to signal that some curve is builtin
+  * config_psa: ensure PSA_WANT_ECC is enabled for each MBEDTLS_ECP_DP
+  * check_config: fix comment
+  * check_config: perform checks only when config_psa.h is evaluated
+  * check_config: skip check on SECP224K1 because the PSA is never enabled
+  * check_config: verify that each ECP_DP has the corresponding PSA_WANT_ECC
+  * x509_crt: Removed unused intsafe.h
+  * x509_crt: Removed length_as_int intermediate variable
+  * x509_crt: Adjusted the len of lpMultiByteStr arg in WideCharToMultiByte
+  * x509_crt: Set WideCharToMultiByte to use -1 for length.
+  * vs2013 templates: Set bcrypt to be the sole dependency.
+  * x509_crt: Removed checks for windows versions < WINXP
+  * entropy_poll: Removed checks for windows versions < WINXP
+  * ChangeLog: Adjusted the updated_windows_apis log
+  * pkey-random: Removed setting mbedtls_target in libs
+  * entropy_poll: Updated documentation for entropy_poll loop.
+  * program-random: Updated Cmake libs variable
+  * pkey Cmakelists: Updated the set libs to be consistent with others.
+  * entropy_poll.c: Added looping logic to `mbedtls_platform_entropy_poll()`.
+  *  ChangeLog.d: Added mininum required Windows version.
+  * Removed unsupported Visual Studio related code in entropy_poll.c and x509_crt.c.
+  * ChangeLog.d: Reworded updated_windows_apis.txt.
+  * Changelog: Removed entry from root file
+  * entropy_poll/x509_crt: Added MBEDTLS_POP_TARGET_PRAGMA define guards.
+  * library Makefile: Moved -lbcrypt to LOCAL_LDFLAGS
+  * fuzzer Makefile: Added -lbcrypt linkage
+  * Code style fixes
+  * programs: Cleaned up bcrypt linking refererences.
+  * Fix Visual Studio Release|x64 builds
+  * Fix coding style of length_as_int var in x509_crt.c
+  * Remove redundant Visual Studio 6 data files
+  * Add clarifying comment on use of MultiByteToWideChar() and CP_ACP
+  * Fix the tests build with mingw for the new Win32 APIs
+  * Fix formatting and detail of comments in PR #730
+  * Fix for building programs with mingw
+  * Correct check for WIN32 in cmake files for programs
+  * Update ChangeLog for PR #730 for Win32 API fixes
+  * Fix the build for mingw and CMake + VStudio
+  * Replace Windows APIs that are banned in Windows Store apps
+  * Set explicit version for the typing packages
+  * Fix SHA-3 dependencies in test_suite_md
+  * Type fixes and wording improvements
+  * Fix SHA-3 in accel tests that need it
+  * Fix dependencies for SHA-3 MD dispatch tests
+  * Document driver-only hashes
+  * Add SHA-3 support to libtestdriver1
+  * Remove all travis builds except for coverity_scan
+  * Remove invalid comment from mbedtls_cipher_set_padding_mode()
+  * Remove PK options
+  * Set MBEDTLS_MD_C
+  * Update changelog text
+  * Fix test error
+  * Add comment
+  * fix cast warning
+  * Use mbedtls_ct_error_if
+  * Add mbedtls_ct_error_if, with tests
+  * Remove tests for mbedtls_ct_int_if
+  * Remove mbedtls_ct_int_if
+  * Remove use of mbedtls_ct_int_if
+  * Improve implementation of mbedtls_ct_int_if
+  * Update library to use mbedtls_ct_int_if
+  * Improve testing for mbedtls_ct_int_if
+  * Generalise mbedtls_ct_error_if to mbedtls_ct_int_if
+  * Remove unused variable and unreachable return from mbedtls_pk_write_key_der()
+  * Fix compiler cast warning
+  * Add correct dependencies for AES-192/256 cipher tests
+  * Improve pkparse test dependencies and changelog
+  * Add more tests to check setting padding mode
+  * Add tests for mbedtls_ct_error_if
+  * Fix MSVC error C4703 about possibly uninitialized variable in pkwrite.c
+  * Use mbedtls_ct_error for CT error selection
+  * Add mbedtls_ct_error_if
+  * Reduce size of mbedtls_asn1_get_len
+  * Re-order mbedtls_ccm_context
+  * Changelog for padding CT fixes
+  * Fix code style in pkparse tests
+  * Add PKCS5/12 dependecies to pkparse tests
+  * Add a note about the code size benefits
+  * Rename option where concatenated with -D
+  * Add cast for MSVC
+  * Add test pkparse test dependencies
+  * Add a note about p256m near the option to enable secp256r1
+  * Move MBEDTLS_PSA_P256M_DRIVER_ENABLED to keep alphabetical order
+  * Give a production-sounding name to the p256m option
+  * Add changelog entry for switching pkparse to new pbe functions
+  * Add tests to test pkcs8 parsing of encrypted keys
+  * Fix codestyle issues in pkcs12.h & pkparse.c
+  * Switch pkparse to use new mbedtls_pkcs12_pbe_ext function
+  * Switch pkparse to use new mbedtls_pkcs5_pbes2_ext function
+  * Reinstate more robust return value handling
+  * rename dont_ignore to in_padding
+  * Move declaration for robustness against future edits
+  * Use more meaningful variable name in mbedtls_rsa_rsaes_oaep_decrypt
+  * Correct use of mbedtls_ct_mpi_uint_if_else_0
+  * Fix typo in variable declaration
+  * Work around a race condition in parallel builds
+  * Simplify unnecessarily complex error code handling
+  * Fix documentation of error codes
+  * Improve comments on key formats
+  * Improve return code
+  * Use properly typed versions of mbedtls_ct_xxx_if
+  * Add mbedtls_ct_bool_if and mbedtls_ct_bool_if_else_0
+  * Fix MSVC type complaint
+  * Fix error in handling of return value from mbedtls_nist_kw_unwrap
+  * code style
+  * Fix error in handling of return value from mbedtls_nist_kw_unwrap
+  * Simplify add_zeros_padding
+  * Use CT interface in get_zeros_padding
+  * Rename mbedtls_ct_bool_xor to mbedtls_ct_bool_ne
+  * Use CT interface in get_one_and_zeros_padding
+  * use CT interface in add_zeros_and_len_padding()
+  * Use CT interface in get_pkcs_padding
+  * Use const-time interface throughout mbedtls_rsa_rsaes_oaep_decrypt
+  * Make TEST_CALLOC_NONNULL more robust
+  * Simplify mbedtls_ct_memcmp_partial test
+  * Add docs for mbedtls_ct_memcmp_partial test
+  * Use exact bounds for allocations in mbedtls_ct_memcmp_partial test
+  * Introduce TEST_CALLOC_NONNULL
+  * Remove expected param from mbedtls_ct_memcmp_partial test
+  * Make padlen check const-time
+  * Simplify mbedtls_ct_memcmp_partial
+  * Add correct dependency to DES3 test
+  * Use mbedtls_ct_memcmp in mbedtls_rsa_rsaes_oaep_decrypt
+  * Improve const-timeness of mbedtls_nist_kw_unwrap
+  * Add tests for mbedtls_ct_memcmp_partial
+  * Add mbedtls_ct_memcmp_partial
+  * Eliminate duplicate ct memcmp
+  * mbedtls_ssl_decrypt_buf(): fix buffer overread with stream cipher
+  * Test mbedtls_ssl_decrypt_buf(): stream cipher, negative cases
+  * Adjust cipher tests to new requirement of specifying padding mode
+  * Refactoring: create mbedtls_test_ssl_prepare_record_mac()
+  * Add missing cleanup
+  * Refactoring: prepare to create mbedtls_test_ssl_prepare_record_mac()
+  * Move testing of mbedtls_ssl_decrypt_buf to a new test suite
+  * Add clarifying comment
+  * Fix preset shared between 1.2 and 1.3
+  * Improve a comment
+  * Remove extra copies of a block of comment/define
+  * Fix some issues in comments
+  * Fix issue #8215 : add missing requires documentation in mbedtls_config.h
+  * code style
+  * Fix poorly named function
+  * Remove unneeded setting of ret from ssl programs
+  * Adding changelog for log level message fix
+  * Reduce line size in new pkcs function changelog
+  * code style
+  * Fix some clang-18 warnings
+  * Move MBEDTLS_SSL_MAX_EARLY_DATA_SIZE to the correct section
+  * MBEDTLS_SSL_MAX_EARLY_DATA_SIZE: default value should be commented out in config
+  * cipher_wrap: remove 192- and 256-bit for AES_ONLY_128_BIT_KEY_LENGTH
+  * Fixes log level for got supported group message
+  * Improve statement in driver-only-builds.md
+  * Add a changelog entry for p256-m
+  * Reflect the fact p256-m has been integrated into Mbed TLS
+  * Modify changelog entry to add pkcs12 pbe functions
+  * Update p256-m to state that it's ready for production
+  * Improve use of ct interface in mbedtls_ssl_decrypt_buf
+  * More spelling corrections
+  * Update spelling "mbed TLS" to "Mbed TLS"
+  * Allow "Mbed TLS" as the project name in Doxygen
+  * Remove double blank line in x509_create.c
+  * Remove magic number in x509.c
+  * Update CMake minimum version(s) to match main CMakeLists.txt
+  * Add changelog entry for checking set_padding() before cipher_finish()
+  * Use the correct variable when tracking padding length
+  * Return back to modifying input parameters in pkcs12_parse_pbe_params
+  * Check set_padding has been called in mbedtls_cipher_finish
+  * Avoid implementation defined behaviour
+  * Prevent potential use of uninitialised data in pkcs7 tests
+  * Fix test under memsan
+  * Test INT_MAX rather than UINT_MAX
+  * Update comment, and replace bit-twiddling with #error
+  * code style
+  * Use macros for sizes in p256-m driver
+  * Add comment to p256-m driver JSON file
+  * Update list of ignored tests
+  * Move common things to common function
+  * Fix INVALID vs NOT_SUPPORTED issue in test suite
+  * Improve error codes in p256-m driver
+  * Disable ECP_C in component with p256-m driver
+  * Add JSON file for p256-m driver
+  * Add export_public_key entry point to p256-m driver
+  * Add import_key entry point to p256-m driver
+  * Add key management utilities to p256-m
+  * Ensure mbedtls_ct_memcpy behaves correctly with 16-bit int
+  * Add single-bit difference tests
+  * Fix type error
+  * Fix type-conversion error
+  * Eliminate duplicate of mbedtls_asn1_find_named_data
+  * Tidy up mbedtls_asn1_write_len
+  * Refactor out some common code
+  * code style
+  * Reduce code size in mbedtls_asn1_write_len
+  * Ensure all md_<hash>_finish functions perform zeroization
+  * Remove always-false null pointer check in sha3.c that Coverity complains about
+  * Reinforce warning about a significant comment
+  * Move comment to its intended location
+  * Fix `prepare_release.sh -u` with CMakeLists.txt
+  * Mark y as modified in x86 asm for mbedtls_ct_uint_lt
+  * Eliminate a redundant not from x86 asm
+  * Make variable name consistent in x86_64 asm
+  * Better register allocation for x86_64 asm
+  * Remove not-needed mov in x86_64 asm
+  * Add new mbedtls_pkcs12_pbe_ext function to replace old function
+  * In releases, turn off GEN_FILES in Makefile and CMakeLists.txt
+  * Prepare to generalize the script to do more than .gitignore
+  * Allow turning off re-generation of files with make
+  * Fix code style
+  * Fix bug with checking max dn length with hexpairs
+  * Move conditionals to keep doxygen with function
+  * Add missing hyphen
+  * Improve changelog
+  * wip
+  * Add reference to x86 asm
+  * Changelog
+  * Fix generate_query_config.pl usage
+  * Fix query_config.c generation with CMake build system
+  * Add correct dependencies to pkcs12 tests
+  * Fix identation error in pkcs12 tests
+  * Fix incorrect test dependencies in pkwrite tests
+  * Change pkcs12 test comparison macro to the new macro
+  * Modernize documentation of MBEDTLS_PLATFORM_ZEROIZE_ALT
+  * Change pkcs12 test allocation macros to the new macros
+  * PSA config: Add comment about HKDF
+  * pkwrite: Fix defined but not used warning
+  * Use the zeroize function from Mbed TLS
+  * Improve sanity checking of MBEDTLS_HAVE_INTxx
+  * Update bignum_core.c
+  * Comment out default definition
+  * Fix unused variable in some TLS 1.3 builds
+  * Fix some TLS 1.3 settings that were required in mbedtls_config.h
+  * TLS 1.3 support is mostly complete
+  * Fix boolean options in the wrong section
+  * Simplify fixes for unreachable code
+  * Fix warnings about unreachable code
+  * Improve pkcs12 pbe tests
+  * Introduce MBEDTLS_IGNORE_UNREACHABLE_BEGIN
+  * Improve & test legacy mbedtls_pkcs12_pbe * Prevent pkcs12_pbe encryption when PKCS7 padding has been   disabled since this not part of the specs. * Allow decryption when PKCS7 padding is disabled for legacy   reasons, However, invalid padding is not checked. * Document new behaviour, known limitations and possible   security concerns. * Add tests to check these scenarios. Test data has been   generated by the below code using OpenSSL as a reference:
+  * Set input cost as 1 for psa_key_exercise test
+  * Rename parse_binary_string function
+  * Split build_info.h: create and populate mbedtls/config_adjust_ssl.h
+  * Split build_info.h: create mbedtls/config_adjust_x509.h
+  * Split build_info.h: create and populate mbedtls/config_adjust_legacy_crypto.h
+  * Split config_psa.h: create and populate mbedtls/config_adjust_legacy_from_psa.h
+  * Split config_psa.h: create and populate mbedtls/config_adjust_psa_from_legacy.h
+  * Split config_psa.h: create and populate mbedtls/config_adjust_psa_superset_legacy.h
+  * Split config_psa.h: create and populate psa/crypto_adjust_auto_enabled.h
+  * Split config_psa.h: create and populate psa/crypto_adjust_config_synonyms.h
+  * Don't include configuration adjustment headers
+  * all.sh: fix comments
+  * Add round trip tests for x509 RDNs
+  * Add asn1 get tag and len to x509 create config
+  * Add asn1 write tag and len to x509 use c config
+  * driver-only-builds.md: fix text
+  * Use quotes include of psa_util_internal.h
+  * config-wrapper-zeroize-memset.h should be user-config-zeroize-memset.h and not include mbedtls_config.h
+  * Move the description of MBEDTLS_TEST_DEFINES_ZEROIZE to before its use
+  * Move zeroize-as-memset into a config file under tests/
+  * Add a build to all.sh to check mbedtls_platform_zeroize() calls
+  * Fix incorrect use of mbedtls_platform_zeroize() in tests
+  * Add the ability to verify mbedtls_platform_zeroize() calls with -Wsizeof-pointer-memaccess
+  * Update guard for ecp
+  * Add Everest to threat model
+  * Add Changelog entry
+  * Fix typo in pkcs5.c
+  * Avoid error from old gcc version
+  * Code style
+  * Fix gcc compile warnings
+  * Add more protection to mbedtls_platform_zeroize
+  * Define all PSA_xxx macros to 1 rather than have them empty, for consistency
+  * Covert PSA guards to MBEDTLS
+  * Use MBEDTLS_MD_LIGHT instead of MBEDTLS_MD_C
+  * Simplify camellia error conversion macros
+  * Add missing error conversion case
+  * Remove not-needed #include
+  * Explain the story about cryptography version requirements
+  * Call mbedtls_platform_zeroize via mbedtls_sha3_free
+  * Ensure mbedtls_sha3_finish zeroizes the context
+  * Regenerate coverity scan token
+  * Fix code style
+  * Fix unsafe behaviour in MBEDTLS_ASN1_IS_STRING_TAG
+  * Refactor parse_attribute_value_string
+  * Make hexpair_to_int take a char pointer
+  * Reword and reformat comments
+  * Add blank lines after variable declarations
+  * Fix unnecessary header prefixes in tests
+  * Fix mbedtls_pkcs5_pbes test function failure
+  * check_test_cases: add a comment to explain idx in walk_compat_sh
+  * Use '--target' instead of shortened '-t'
+  * Disable pylint error for non-uppercase names
+  * Fix use of mbedtls_psa_safer_memcmp in test code
+  * Add missing import in test_psa_compliance.py
+  * Fix pylint errors
+  * Move -B switch into a single argument
+  * Improve mbedtls_pkcs5_pbes2_ext changelog description
+  * Improve mbedtls_pkcs5_pbes2_ext function test data
+  * Fully replace mbedtls_psa_safer_memcmp
+  * Appease pylint by renaming variables
+  * Test PSA compliance: Build only the crypto target
+  * Tidy up reference to Mbed TLS in help message
+  * Disable p256-m asm on aarch64
+  * Disable pylint error in CMake command
+  * Remove or qualify references to Mbed TLS
+  * Rename 'mbedtls_dir' -> 'root_dir'
+  * Correctly detect presence of the built library
+  * Use repo detection functions at start of all.sh
+  * Separate directory discernment into 2 functions
+  * Improve directory coverage in PSA repo detection
+  * Typo fix
+  * Fix typo in doxygen for mbedtls_ct_memcpy_offset
+  * Improve docs in mbedtls_mpi_lt_mpi_ct
+  * Improve docs re duplicate declarations
+  * Whitespace - tidy up asm and make it more consistent
+  * Add x86 const-time assembly
+  * Add x86-64 const-time assembly
+  * improve various issues
+  * Rename is_psa_crypto -> in_psa_crypto_repo
+  * Rename psa_crypto_lib_filename to just crypto_lib_filename
+  * Parameterize out of source build directory
+  * Invert logic for repo detection in all.sh
+  * Tweak test_psa_compliance pylint annotations
+  * Support psa-crypto repo in psa_storage.py
+  * Modify test_psa_compliance.py for psa-crypto repo
+  * Modify build_tree.py for the PSA Crypto repo
+  * Make all.sh PSA-crypto-friendly
+  * Correct analyze_outcomes identation
+  * Announce that #7420 is fixed
+  * Add Changelog entry for DN changes
+  * Remove trailing whitespace in data file.
+  * Add test for rejecting empty AttributeValue
+  * Refactor previous fix
+  * Add guard for empty AttributeValue
+  * replace target arch macros in padlock
+  * replace aesni target detection macros
+  * replace arm64 macro and aesce enable flag
+  * Add target platform detection macros
+  * Fix code style
+  * Refactor reading AttributeValue in dn gets
+  * Prevent output of escaped null characters dn gets
+  * Rename parse_attribute_value_ber_encoded
+  * Add return for buffer too small when reading OIDs
+  * Remove questionable use of macro.
+  * Add corruption detected return when writing asn1
+  * Revert "Install cryptography only on linux platform"
+  * Remove IAR warning fixes to 2.28 from changelog
+  * Reword IAR changelog for fixing compiler warnings
+  * Correct analyze_outcomes.py identation
+  * Remove magic number for null tag
+  * Remove x509_oid_from_numericoid
+  * Add catch for alloc error x509_oid_from_numericoid
+  * Use mbedtls_calloc instead of calloc
+  * Fix oid memory leak
+  * Reject null bytes in DER encoded values in DNs
+  * Fix code style
+  * Make MBEDTLS_ASN1_IS_STRING_TAG to take signed int
+  * Amend test in test_suite_x509write
+  * Reject escaped null hexpairs in DNs
+  * Add malformatted DER test for string_to_names
+  * Alter MBEDTLS_ASN1_IS_STRING_TAG macro
+  * Remove redundant tests in test_suite_x509write
+  * Add test for non ascii x509 subject name
+  * Remove duplicate test in test_suite_x509write
+  * Accept short name/ber encoded data in DNs
+  * Change error from unknown oid to invalid name
+  * Add more comprehensive string to name tests
+  * Add test reject null characters in string to names
+  * Accept any valid oid in string_to_names
+  * Write numeric oid directly to buffer
+  * Remove duplicate '+' in comparison string
+  * Reword test in test_suite_x509write
+  * Refactor dn_gets use library function to write tag
+  * Fix style on left shift operations
+  * Use MBEDTLS_X509_MAX_DN_NAME_SIZE for buffer size
+  * Format preprocessor conditionals
+  * Rename in_tag to in_attr_type
+  * Fix code style in mbedtls_x509_string_to_names
+  * Fix Windows x64 build errors with type conversions
+  * Fix memory leak in alternative code route
+  * FIx memory leak in x509_attr_descr_from_numericoid;
+  * Move declaration of variables in dn_gets to top
+  * Alter conditions on hexstring output dn_gets
+  * Update x509 test for numericoid/hexstring output
+  * Fix code style on x509.c and x509_create.c
+  * Refactor AttributeType in mbedtls_x509_dn_gets
+  * Add preprocessor config guards
+  * Parse DER tag mbedtls_x509_string_to_names
+  * Add mbedtls_x509_dn_gets hexstring output
+  * Add more tests for RFC 4514
+  * Implement parse_attribute_value_ber_encoded
+  * Refactor mbedtls_x509_string_to_names
+  * Add x509 tests for upper and lowercase hexpairs
+  * Rewrite nibble_to_hex_digit for readability
+  * Rename x509_int_to_hexdigit to nibble_to_hex_digit
+  * Add and update tests for x509write and x509parse
+  * Escape hexpairs characters RFC 4514
+  * Escape special characters RFC 4514
+  * Fix off-by-one error
+  * Tidy up allow list definition
+  * Make non-executed tests that are not in the allow list an error
+  * Fix type annotation
+  * Remove dead code
+  * New test suite for the low-level hash interface
+  * Fix missing operand modifier
+  * Fixup incorrectly-formatted ChangeLog entry
+  * Move PSA information and dependency automation into their own module
+  * Avoid signed right shift UB
+  * Restore a comment and fix it
+  * Don't try to include mbedtls/config_*.h
+  * Remove obsolete header inclusions
+  * Fix condition to include MBEDTLS_PSA_CRYPTO_USER_CONFIG_FILE
+  * Move the inclusion of the PSA config file(s) into build_info.h
+  * Remove spurious extern "C"
+  * Simplify aarch64 asm for mbedtls_ct_uint_lt
+  * Move non-function-specific macro outside of function definition
+  * ssl_ciphersuites: fix typo
+  * Fix PBKDF2 with empty salt segment on platforms where malloc(0)=NULL
+  * Rename mbedtls_aesce_has_support macro to satisfy case rules
+  * Use -1 as uninitialised marker
+  * Make mbedtls_aesce_has_support more efficient
+  * Add ChangeLog entry for otherName SAN fixes
+  * Fix incorrect detection of HardwareModuleName
+  * Fix: Set type_id in x509_get_other_name()
+  * Add tests in derive_key for pbkdf2
+  * Add tests in derive_key_type for pbkdf2
+  * Add tests in derive_key_export for pbkdf2
+  * Add tests for derive_key_exercise for pbkdf2
+  * Move parse_binary_string function to psa_crypto_helpers Add test code for pbkdf2 in psa_exercise_key
+  * revert padlock from aesni module
+  * improve readability of error message
+  * Add missing check
+  * Modify test description
+  * Add tests with higher input costs for pbkdf2
+  * Add changelog entry for new mbedtls_pkcs5_pbe2_ext function
+  * Remove the workaround for psa_key_agreement_internal
+  * Improve mbedtls_pkcs5_pbes2_ext function signature comments
+  * Remove new bignum when not needed
+  * Fix unused parameters warnings when MBEDTLS_CIPHER_PADDING_PKCS7 is disabled
+  * Fix heap overflow issue in pkcs5_pbes2 testing functions
+  * Add new mbedtls_pkcs5_pbe2_ext function
+  * Fix formatting in changelog
+  * Add newline at end of changelog
+  * driver-only-builds: update EC and FFDH sections
+  * replace padlock_c with padlock_have_code
+  * improve readability
+  * Fix style
+  * Change document to match real status
+  * Add ChangeLog entry
+  * remove return-type when runtime detection enabled without plain c
+  * remove aesni + padlock - plain c tests
+  * add hardware only check for padlock
+  * Add via padlock detection macro
+  * Change the order of runtime detection
+  * exclude arm64ec mode for aesni
+  * Reduce code size in ccm
+  * Adjust struct layout for small size win
+  * add ifdefs to reduce size of mbedtls_to_psa_error
+  * add #ifdefs to reduce switch size
+  * Adjust layout of some stucts
+  * Reduce code-size to access key slots init flag
+  * Eliminate redundant version of mbedtls_ct_memcmp
+  * Use MBEDTLS_GET_UINT16_BE in mbedtls_ecp_tls_read_group_id
+  * Remove unnecessary const type qualifiers in casts
+  * Use asm instead of __asm in constant_time.c
+  * Fix error strings without quotes
+  * BUILD: Update For IAR support
+  * disable aesni for componets without cpu modifiers
+  * fix msvc build fail on i386 target
+  * Add compiler cflags error message
+  * fix build fail for via padlock test
+  * Add aesni test for i386
+  * enable runtime detection when padlock enabled and plain c disabled
+  * fix `-Werror=return-type` when runtime detection enabled and plain c disabled
+  * code_size_compare: handle deleted files and new files properly
+  * Restore aesni for i386
+  * Code styling
+  * Modify derive output test cases and add actual output
+  * analyze_outcomes: add case for "ECC+FFDH w/o BN"
+  * test: add accelerated and reference test for ECC+FFDH without BN
+  * Remove unnecessary include from constant_time.c
+  * Add EdDSA and XTS to the allow list
+  * Add a flag for requiring full coverage in coverage tests
+  * Add allow list for non-executed test cases
+  * Make naming more consistent
+  * Fix Changelog
+  * Changelog
+  * Fix compile fail for empty enum in cipher_wrap
+  * code_size_compare: add old text and data section in CSV output
+  * code_size_compare: add `+` in front of positive values
+  * code_size_compare: right-align numbers in the comparison result
+  * logging_util: support to tweak loglevel directed to stderr/stdout
+  * Fix logical dead code found by Coverity
+  * Add changelog
+  * Fix potential corruption of IV for AES CBC
+  * Fix incorrect size used for zeroization of buffer
+  * Fix resource leak in test failure case
+  * Add changelog entry
+  * Undo a change
+  * Perf improvement in memcpy_if
+  * Test CT asm under valgrind
+  * Fix unified asm syntax issue
+  * Add aarch32 const-time asm
+  * Add aarch64 const-time asm
+  * ssl-opt: remove redundant requirement for RSA_C
+  * test: use ASAN flags for testing the accelerated TFM configuration
+  * analyze_outcome: add new check for parity for TFM configuration
+  * test: update components' descriptions
+  * test: improve accelerated TFM configuration test and add reference
+  * p256m: minor fixes to the driver interface
+  * test: add component testing TFM configuration and P256M driver
+  * pk: return PK_USE_PSA_EC_DATA to pk.h
+  * analyze_outcomes: skip tests that depend on BIGNUM_C
+  * ssl-opt: add RSA_C requirement when RSA encryption is used in certificate
+  * ssl_tls13: fix guard for FFDH function
+  * test: enable TLS, key exchances and ssl-opt teting in ecc_no_bignum()
+  * Add gnu check for aseni assembly code
+  * mbedtls_mpi_exp_mod: remove spurious copy of the output variable
+  * pk: fix some comments
+  * Fix some renames that were missed
+  * test: solve test disparities for x509[parse/write] suites
+  * check_config: remove unnecessary BIGNUM_C requirements
+  * test: enable X509 testing in ecc_no_bignum component
+  * Fix mbedtls_ct_size_if_else_0 docs
+  * Improve docs
+  * Document and test mbedtls_ct_size_if_else_0
+  * Fix comment typo
+  * Rename ...if0 to ...else_0
+  * Rename uint->bool operators to reflect input types
+  * Reduce the size of the small primes table used by primality testing
+  * Remove redundant test component
+  * improve aesni check for x86_64
+  * pkwrite: fix internal buffer size in pk_write_ec_pubkey()
+  * improve check config option for i386
+  * pk: return PK_USE_PSA_EC_DATA to pk.h
+  * test: use unset-all option in config.py to optimize test code
+  * test: remove redundant code setting MBEDTLS_PSA_CRYPTO_CONFIG
+  * pk: move PK_HAVE_ECC_KEYS to build_info.h
+  * Remove asm check for aarch64 aesce
+  * pkwrite: add new internal symbol to properly size DER buffer
+  * pkparse: remove unnecessary header
+  * test: minor optimizations to ecc_no_bignum components
+  * test: remove BIGNUM dependencies from pk[parse/write] suites
+  * analyze_outcomes: skip tests that unavoidably depend on bignum
+  * test: disable BIGNUM support on the test ecc_no_bignum component
+  * test: disable FFDH support on the test ecc_no_bignum component
+  * test: disable RSA support on the test ecc_no_bignum component
+  * test: adding new components for testing and driver coverage analysis without BN
+  * debug: remove redundant variable assignments
+  * code style
+  * Reduce code size for exp_mod_get_window_size
+  * Remove redundant code in mbedtls_mpi_cmp_abs
+  * Use __builtin_ctz to count trailing zeros
+  * Generate smaller code for picking a sign value
+  * Fix copypasta
+  * Minor readability improvement
+  * More unsigned literal in size macros
+  * Add changelog
+  * replace strings command with grep
+  * Fix doc
+  * Remove "export_key" from transparent driver json
+  * Adjust presence of warning/link.
+  * improve test
+  * improve error message and config check for padlock
+  * test_suite_ecp: Moved curve bitlenth check after quasi reduction.
+  * test_suite_ecp: Fixed curve bit-length.
+  * Improve doc on special use of A in ecp group structure
+  * Added a note about new primitives for secure destruction
+  * Elaborate on psa_destroy_key requirements
+  * Update w.r.t. test macro name changes from #6253
+  * Add link to examples in relevant places
+  * Fix error in the guide to drivers
+  * remove unnecessary definition
+  * Add negative test for aesni only
+  * Remove trailing whitespace
+  * Put both gitignore modifications in one script
+  * Update links to Rijndael paper and NIST SP 800-90 DRBGs
+  * Remove unnecessary name check tag
+  * improve platform relative check
+  * remove padlock only mode
+  * fix unreachable code warnings
+  * Add aesce test string filter
+  * Add via padlock build test
+  * Add aesce build  test
+  * Improve mbedtls_pkcs5_pbes2 function signature comments
+  * Remove trailing whitespace
+  * Add aesni only test
+  * Add MBEDTLS_AES_USE_HADWARE_ONLY for test_aesni
+  * Run aes tests only for test_aesni
+  * Remove test_aes_*
+  * ssl-opt: don't assume TLS 1.3 usage for external tool that don't have support
+  * tls: fix guards for ECDSA support
+  * tls: add new symbol for generic TLS 1.2 and 1.3 support
+  * Change tests to work on different MBEDTLS_RSA_GEN_KEY_MIN_BITS configs
+  * psa_is_key_slot_occupied: change to using the key identifier
+  * Clarify changelog not needed for compiler warnings
+  * Remove test vector
+  * De-duplicate ecp.c
+  * improve document about hardware only
+  * Improve error message and documents
+  * Mention the crash risk without runtime detection
+  * Fix code-style  too-long line fail
+  * move accelerator checks to `aes.c`
+  * add changelog entry
+  * fix various issues
+  * Rename plain c option and update comments
+  * fix wrong checks
+  * Rename HAS_NO_PLAIN_C to DONT_USE_SOFTWARE_CRYPTO
+  * Update comments
+  * Add check for no aes implementation provided
+  * Rename plain c disable option
+  * Add std output information for AESCE in gcm
+  * Add accelerator only tests.
+  * Add option to disable built-in aes implementation.
+  * Fix missing check in mbedtls_ecp_read_key
+  * Move variant test to ecp_curves
+  * test: add new components for testing without ECDHE-ECDSA and TLS13
+  * crypto_config_profile_medium: add comment for new KEY_PAIR symbols
+  * tls: replace ECDSA_C and PK_CAN_ECDSA_SOME with key exchange related ones
+  * ssl_ciphersuites: adding new internal helper symbols
+  * Rename ADD_SUB_DEFAULT to ADD_SUB_DATA
+  * Use ADD_SUB_DEFAULT as test input for bignum tests
+  * Add default test cases for add/subtract in bignum
+  * Fix a few unchecked value issue
+  * Fix comment typo
+  * Tidy-up: move GCC warning fix to constant_time_impl.h
+  * Improve variable name in mbedtls_mpi_lt_mpi_ct
+  * Use mbedtls_zeroize_and_free() in psa_remove_key_data_from_memory()
+  * Sort full config exceptions in config.py
+  * Improve wording of MBEDTLS_ECP_WITH_MPI_UINT doc
+  * Update default variable values for compilers
+  * Fix test dependency
+  * Revert to not enabling asm under Memsan
+  * Revert "Move constant_flow.h into the main library"
+  * Revert "Fix doxygen error"
+  * Fix full config in config.py
+  * Add PSA_HAVE_SOFT_PBKDF2 to crypto_driver_context_key_derivation
+  * test: use only rev-parse for getting the current branch
+  * test: add GIT alternative commands for older GIT versions
+  * Fix doxygen error
+  * Move constant_flow.h into the main library
+  * Revert to old design for mbedtls_ct_memmove_left
+  * Make const-time test not depend on internal knowledge of mbedtls_ct_condition_t
+  * Improve docs for mbedtls_ct_memcmp
+  * Remove GCC redundant-decls workaround for mbedtls_ct_memcmp
+  * Fix docs grammar
+  * Clarify docs for mbedtls_ct_memcpy_if
+  * Improve docs for mbedtls_ct_compiler_opaque
+  * Improve comments in mbedtls_mpi_lt_mpi_ct
+  * Clarify comments in mbedtls_ct_memcpy_if
+  * Improve docs for mbedtls_mpi_core_cond_assign
+  * Move MBEDTLS_ECP_WITH_MPI_UINT to mbedtls_config.h
+  * crypto_sizes: use PSA_WANT_ALG for MAX signatures and key agreement sizes
+  * test: properly size output buffer in key_agreement_fail()
+  * Revert "crypto_sizes: check also if DH is enabled for PSA_SIGNATURE_MAX_SIZE"
+  * Use config.py in all new bignum tests
+  * Fix new bignum tests
+  * Fix fast quasi-reduction modulo value of p192K1 in comments
+  * ecp_mod_p448 has been moved to ecp_mod_p_generic_raw, remove here
+  * Fix the type cast(size_t to unsigned short) warning
+  * Free P and N of the group cause they are dynamic allocated
+  * Declare mbedtls_ecp_fix_negative() always static to fix check_name failures
+  * Use new ECP_LIGHT symbol in ecp_curves.c
+  * Fix use of sizeof without brackets in ecp_curves.c
+  * Make ecp_mode_xxx functions depend on the new macro
+  * Revert ecp_curves.c to commit 449bd83 to save code size
+  * code style
+  * Fix asm Memsan workaround
+  * fix check for no-longer-used macro
+  * Use variables for selecting compilers
+  * Fix error in test vectors
+  * Use compgen to gather components in all.sh
+  * code style
+  * Enable testing of asm under Memsan
+  * Remove test_clang_opt check
+  * test: check exported length against proper MAX_SIZE
+  * Improve mbedtls_ct_memmove_left w.r.t. const-flow tests
+  * tls: fix definition of symbol KEY_EXCHANGE_SOME_XXDH_PSA_ANY
+  * Fix false-positive non-const-time errors in test
+  * crypto_sizes: check also if DH is enabled for PSA_SIGNATURE_MAX_SIZE
+  * debug: improve debug_print_psa_ec() as not to depend on bignum
+  * debug: use proper guard for PK_DEBUG_MPI items
+  * code_size_compare: add option '--show-all'
+  * code_size_compare: use '.md' suffix if '--markdown' enabled
+  * code_size_compare: track removed object as well
+  * Fix dependencies for pbkdf2 cmac
+  * Add ifdef for hmac and cmac set password
+  * crypto_sizes: change initial MAX_SIZE value to 1
+  * crypto_sizes: fix typo
+  * whitespace fix
+  * pylint tidy-up
+  * Make code_style.py -s default to -s=development
+  * Make code_style.py -s more precise
+  * crypto_sizes: size PSA max symbols according to actual support
+  * Add test cases for 16 byte and empty password
+  * Add issue link instead of issue number
+  * Add ifdef for hmac and cmac specific functions
+  * Replace AES_CMAC_128_PRF_OUTPUT_SIZE with PSA_MAC_LENGTH()
+  * Define PSA_ALG_IS_PBKDF2
+  * Replace MBEDTLS_PSA_BUILTIN_PBKDF2_XXX with PSA_HAVE_SOFT_PBKDF2
+  * Add PSA_HAVE_SOFT_PBKDF2
+  * Change config_psa.h PBKDF2_CMAC dependencies
+  * Add OID tests for HMAC-xxx
+  * Improve naming of mimimum RSA key size generation configurations
+  * Add OID for HMAC-RIPEMD160
+  * Add OIDs for HMAC-SHA3
+  * Fix pre-existing missing closing #endif comment
+  * Fix missing opening brace in comments
+  * Fix code style
+  * MBEDTLS_PSA_CRYPTO_CONFIG is ready for production
+  * Replace TEST_ASSERT("message" == 0) with TEST_FAIL
+  * code style
+  * Strengthen psa_mac_verify testing
+  * Use psa_mac_compare in tests; add some HMAC edge-cases
+  * Adapt tests to work on all possible minimum RSA key sizes
+  * Add a minimum rsa key size config to psa config
+  * Enforce minimum key size when generating RSA key size
+  * Fix overly specific description in public doc
+  * rsa_signature: Use heap memory to allocate DER encoded RSA private key
+  * crypto_legacy: fix initial comment
+  * generate_psa_tests: remove checks for DH's LEGACY symbols
+  * changelog: fix errors/typos
+  * ChangeLog: improving descriptions of KEY_PAIR changes
+  * test: accelerate all KEY_PAIR symbols in accel FFDH component
+  * psa: replace DH_KEY_PAIR_LEGACY with new symbols
+  * code_size_compare: change format for comparison result
+  * code_size_compare: remove column of percentage for code size change
+  * PSA_CRYPTO_DRIVER_TEST_ALL is incompatible with MBEDTLS_PSA_CRYPTO_CONFIG
+  * Add PSA HMAC MD5 test
+  * Add HMAC tests for other digest algorithms
+  * Add HMAC test-cases for SHA3
+  * Don't call psa_crypto_init with uninitialized local contexts (entropy)
+  * Fix warnings from clang-16
+  * Update test scripts to use latest/earliest compilers
+  * Add 32bit test component for ecp with new bignum interface
+  * Update CONTRIBUTING.md
+  * Have a single source of truth for licensing information
+  * Clarify in README.md that 'the project' is Mbed TLS
+  * code_size_compare: detect architecture of x86_32 properly
+  * code_size_compare: make sure _remove_worktree executed
+  * code_size_compare: check --record-dir properly
+  * Fix KeyType.can_do() for DH+FFDH
+  * Fix dependencies for DH (and RSA) key pairs
+  * Shorten DH_FAMILY just like ECC_FAMILY
+  * Enable DH in generate_psa_tests.py
+  * code_size_compare: remove unnecessary -r in cp command
+  * code_size_compare: simplify some code for python dictionary
+  * logging_util: rename argument
+  * code_size_compare: use `current` as default new Git revision
+  * code_size_compare: left align file names in markdown table
+  * code_size_compare: print prompt message under correct condition
+  * code_size_compare: set log level as ERROR in option --stdout
+  * code_size_compare: direct error message by logger.error
+  * Add PSA SHA3 tests for hash_verify and multipart
+  * Protect macro parameter expansion with parentheses
+  * Use a macro for mbedtls_mpi_zeroize_and_free()
+  * Remove remaining redundant casts
+  * Remove redundant casts
+  * test: remove GENPRIME dependency when RSA_KEY_PAIR_GENERATE
+  * psa_crypto_rsa: fix guards for importing the key
+  * tls12: check buffer size before memcpy-ing data into it
+  * tls: use TLS 1.3 guards in ssl_tls13 modules
+  * tls: fix a comment a rename a variable/symbol
+  * debug: keep ECDH_C guard for debug printf accessing ecdh_context's items
+  * tls: use TLS 1.2 macros in ssl_tls12_server.c
+  * code_size_compare: add comments to make code more readable
+  * code_size_compare: round percentage to an integer value
+  * Fix CI errors related pkcs5_pbe changes
+  * code_size_compare: print 'None' if comparing size for a new file
+  * code_size_compare: add extra indication if print to sys.stdout
+  * code_size_compare: simplify how to generate file name of code size
+  * code_size_compare: simplify CodeSizeGeneratorWithSize
+  * code_size_compare: make CodeSizeBuildInfo more flexible
+  * code_size_compare: replace SimpleNameSpace to a clearer data struct
+  * code_size_compare: clean up comments
+  * code_size_compare: clean up code to make it more readable
+  * code_size_compare: add logging module and tweak prompt message
+  * Fix server1.crt.der in makefile
+  * code_size_compare: add option --stdout to show result in sys.stdout
+  * code_size_compare: add --markdown to show result in a markdown table
+  * code_size_compare: generate text,data as comparison result
+  * code_size_compare: support to measure code size with multiple tools
+  * code_size_compare: introduce SimpleNamespace to store info
+  * code_size_compare: simplify methods in CodeSizeComparison
+  * code_size_compare: add CodeSizeCalculator to calculate code size
+  * code_size_compare: add a base class as CodeSizeGenerator
+  * code_size_compare: add a parser to generate code size with size tool
+  * Remove trailing backslash
+  * Simplify the logic in a test
+  * Fix some dependencies on symmetric crypto in some TLS 1.3 tests
+  * Fix PBKDF2 with empty salt on platforms where malloc(0)=NULL
+  * Make sure that size constants are unsigned
+  * Correct some msg messages in full config
+  * Simplify msg messages in full config
+  * When subtracting classic symbols from full, turn off PSA_CRYPTO_CONFIG
+  * Enable MBEDTLS_PSA_CRYPTO_CONFIG in "config.py full"
+  * Make malloc-0-null a user config file
+  * Fix inconsistencies in no-chachapoly test
+  * Fix typo in function name
+  * Remove comments that duplicate the 'msg' call just below
+  * Remove duplicated component
+  * For tests, rename TEST_BUFFERS_EQUAL() to TEST_MEMORY_COMPARE()
+  * Rename the length argument to TEST_CALLOC() to be the more accurate item_count
+  * For tests, rename TEST_CALLOC_OR_FAIL() to just TEST_CALLOC()
+  * Align ECP_MPI_INIT with mbedtls_mpi struct order in ecp_new.c
+  * Rework the clone of ecp_curves.c
+  * Enable build of ecp_curves_new.c
+  * Clone the ecp_curve.c file as ecp_curve_new.c
+  * For tests, rename ASSERT_ALLOC_WEAK() to TEST_CALLOC_OR_SKIP()
+  * Fix copypasta in function documentation
+  * For tests, rename ASSERT_ALLOC() to TEST_CALLOC_OR_FAIL()
+  * For tests, rename ASSERT_COMPARE() to TEST_BUFFERS_EQUAL()
+  * all.sh: Use consistently CONFIG_TEST_DRIVER_H
+  * all.sh: Use consistently CRYPTO_CONFIG_H
+  * all.sh: Use consistently CONFIG_H
+  * Fix PSA crypto configuration file name
+  * Robustness fix to MBEDTLS_LIKELY
+  * Improve & test legacy mbedtls_pkcs5_pbe2
+  * Use defined macros for MBEDTLS_MPI_UINT_MAX
+  * Internal function mbedtls_mpi_zeroize() can be mbedtls_mpi_zeroize_and_free()
+  * Better wording around passing NULL to mbedtls_zeroize_and_free()
+  * Use correct asm keyword for IAR compilers
+  * Explain why we check 65535 (not USHORT_MAX)
+  * Align ECP_MPI_INIT parameter order with mbedtls_mpi struct order
+  * Rename ASSERT_FALSE to TEST_FAIL
+  * Add ASSERT_FALSE macro for tests
+  * Misc wording fixes and improvements
+  * Fix IAR trying to use memset_s in platform_util
+  * Add cast in test macros.h
+  * Add cast in psa_crypto
+  * Move declarations in psa_crypto to top
+  * Make consistent suffix MBEDTLS_MPI_UINT_MAX
+  * Change MBEDTLS_MPI_UINT_MAX suffix
+  * Remove trailing whitespace bignum_core
+  * Provide and use internal function mbedtls_zeroize_and_free()
+  * Add enum type casts in lmots.c and lms.c
+  * Add enum casts in ssl_helpers.c
+  * Add type casts in rsa.c
+  * Add type casts in psa_exercise_key
+  * Add type casts in ssl library
+  * Refactor preprocessing for arm none
+  * Move declarations to top in ssl_helpers.c
+  * Move declaration in ecp_mod_koblitz to top
+  * Move declarations in mbedtls_mpi_add_abs to top
+  * Add change log and non-regression test
+  * Align guards of Windows specific configuration checks
+  * tests: Fix header inclusion
+  * Add dependency of builtin CCM* on builtin cipher
+  * Fix order of steps in DTLS server example program
+  * Remove tautology in mbedtls_mpi_core_clz
+  * Add macros for mpi uint max sizes
+  * Ensure constant values not known to compiler
+  * Fix gcc warnings when -Wredundant-decls set
+  * Fix comment
+  * Update test function dependencies
+  * Fix ecp variant check
+  * Improve the documentation of MBEDTLS_PLATFORM_MEMORY
+  * Reduce size of static data in gcm
+  * Don't force the _WIN32_WINT version
+  * Don't force the default windows version down
+  * Don't use FindFirstFileW() before Windows XP
+  * doxygen: \p commands misuse - review comments
+  * doxygen: fix parameter name typos and misused \p commands
+  * doxygen: fix misused \p commands in rsa.h
+  * doxygen: fix parameter name typos and misused \p commands
+  * Fix documentation - parameter name mistakes
+  * doxygen: remove unnecessary description
+  * Replace cpu modifier flags
+  * Update compiler versions requirement
+  * Add error message for old armclang
+  * update document and error message
+  * Add guards for arm_neon.h
+  * Add armclang version requirement for sha512
+  * fix armclang build fail for sha512.
+  * fix armclang compile fail
+  * fix compile fail for armclang
+  * Updated changelog
+  * Re-order mbedtls_mpi to save a few extra bytes with clang
+  * Use designated initializers for mbedtls_mpi
+  * psa: fix missed LEGACY symbols caused by the rebase
+  * config_psa: enable KEY_PAIR_GENERATE only when GENPRIME is defined
+  * Fix MBEDTLS_BSWAP32 on armcc 5
+  * psa: remove redundant GENPRIME when RSA_KEY_PAIR_GENERATE is defined
+  * config_psa: enable KEY_PAIR_[IMPORT/EXPORT] as soon as BASIC is enabled
+  * config_psa: enable GENPRIME when BUILTIN_KEY_TYPE_RSA_KEY_PAIR_GENERATE
+  * generate_psa_tests: fix automatically generated tests for RSA
+  * test: replace RSA_KEY_PAIR_LEGACY with proper symbols
+  * library: replace MBEDTLS_PSA_BUILTIN_KEY_TYPE_RSA_KEY_PAIR_LEGACY
+  * library: replace PSA_WANT_KEY_TYPE_RSA_KEY_PAIR_LEGACY symbols with proper ones
+  * Remove getter functions of PAKE if no PAKE algorithms are required
+  * test: set MBEDTLS_ECP_DP dependency also for Montgomery curves
+  * test: add more tests for Montgomery's invalid masks
+  * test: verify that Montgomery keys can be fixed on parsing
+  * ecp: rearrange code in ecp_read_key()
+  * test: replace ECP_DP_CURVE25519_ENABLED with PSA_WANT_ECC_MONTGOMERY_255
+  * test: add proper key requirements in X25519 key parsing tests
+  * pkparse: always check all private keys on import
+  * pkparse: parse also Weierstrass private keys using ecp_read_key()
+  * analyze_outcomes: do not skip test about wrong Montgomery private key
+  * pkparse: use ecp_read_key() for parsing private key of Montgomery curves
+  * test: test of Montgomery keys with uncorrect bits whenever PK_HAVE_ECC_KEYS
+  * Improve wording & fix a typo
+  * Fix inaccurate information about FFDH
+  * Adapt names (curves -> groups) in a separately added test case
+  * tls: use already existing symbols to size the buffer for XXDḦ peer key
+  * Add a missing guard in cert_req.c
+  * Add missing resource deallocation in tests
+  * ssl_test_lib: fix rebase error
+  * ssl_test_lib: fix variable naming for curve group
+  * tls: replace numeric values with proper TLS IANA symbols
+  * ssl_test_lib: simplify function which prints supported curves
+  * ssl_test_lib: manage FFDH keys the same way as ECC ones
+  * debug: replace occurence of ECP_LIGHT with PK_HAVE_ECC_KEYS
+  * tls: replace occurencies of ECP_LIGHT with PK_HAVE_ECC_KEYS
+  * programs: add helper functions for supported EC curves
+  * test: fix message's text
+  * test: enabled ssl-opt testing in no_ecp_at_all components
+  * tls: replace ECP_LIGHT occurrencies with PK_HAVE_ECC_KEYS
+  * test: re-enable TLS and key exchanges in no_ecp_at_all component
+  * Add changelog entries
+  * Add test for cache timeout getter
+  * Add test for endpoint getter
+  * Add test for hostname getter
+  * Make endpoint getter parameter a pointer to const
+  * Add getter access to endpoint field in mbedtls_ssl_config
+  * Add getter access to hostname field in mbedtls_ssl_context
+  * ssl_cache: Add getter access to timeout field
+  * build_info: replace PK_CAN_ECDH with CAN_ECDH and fix comments
+  * tls: fix guards for legacy ECDH contexts
+  * ssl_misc: fix guards for PSA data used in XXDH key exchanges
+  * ssl: keep all helper definitions in ssl_ciphersuites.h
+  * ssl: improve/fix definitions for internal helpers
+  * pk: do not duplicate internal symbols for ECDH/ECDSA capabilities
+  * ssl: update new symbols to include also FFDH
+  * debug: replace ECDH_C symbol with key exchange one
+  * tls: replace PK_CAN_ECDH guards with new helpers
+  * tls: replace ECDH_C guards with new helpers
+  * ssl: add new helpers for TLS 1.2/1.3 ECDH(E) key exchanges
+  * Add Changelog for driver-only ECC so far
+  * Add ChangeLog entry for PK_OPAQUE extensions
+  * Add documentation on driver-only ECC
+  * Add docs/driver-only-builds.md
+  * Add change log
+  * tls13: server: Fix spurious HRR
+  * Changelog entry
+  * Unify csr and crt san writing functions
+  * Test x509 csr SAN DN and RFC822 generation
+  * Update comment
+  * Add ChangeLog entry for CMake config defines
+  * Support more SAN subtypes in cert_req.c
+  * Add support for x509 SAN RCF822 and DirectoryName for csr generation
+  * Fix code style
+  * Update file permissions
+  * Add script to manage gitignore anchors
+  * Add gitignore anchors to denote generated files
+  * Add dependency MBEDTLS_ECP_NIST_OPTIM for ECP test
+  * tests/test_suite_pem: Augment DES test cases with AES: PEM
+  * Link to the guide for writing a driver
+  * Use minimal include in test_suite_random
+  * Make the PSA-mbedtls RNG API public
+  * Fix missing includes
+  * Rationalize includes in psa_util
+  * Remove unnecessary (and harmful) include
+  * Move error functions to internal header
+  * Move ECC and FFDH macros to internal header
+  * Remove unused function from psa_util.h
+  * Use consistent guards for deprecated feature
+  * Remove unused function in cipher.c
+  * Make cipher functions static in cipher.c
+  * Create psa_util_internal.h
+  * Adapt function name: mbedtls_ssl_tls13_generate_and_write_dh_key_exchange
+  * parse_groups: curve -> group adaptations
+  * Provide additional comments for claryfication
+  * AES: fix mismatch comment in #endif
+  * Remove value assignment for enum entries
+  * Test OID lookup for every hash algorithm
+  * Use only `MBEDTLS_ECP_WITH_MPI_UINT` to switch between the ecp variants
+  * Add indent
+  * Add missed intermediate file
+  * Remove workaround code
+  * fix python lint fails
+  * Add commands for `test_certs.h`
+  * Add test_certs.h generate script
+  * Move certs/keys data to seperate file
+  * Fix test dependency
+  * Fix free before pointers initialised
+  * Add tests for MBEDTLS_MD_SHA3_xxx_VIA_PSA
+  * Support MBEDTLS_MD_SHA3_xxx_VIA_PSA
+  * fix missing include
+  * Improve testing of md/PSA alg identifier macro conversions
+  * Add OID tests for SHA-3
+  * Add SHA-3 cases in mbedtls_md_type_from_psa_alg, mbedtls_md_psa_alg_from_type
+  * Add OID definitions for SHA3
+  * Add a new test component to test the new bignum interface with `TEST_HOOKS`
+  * Fix comment
+  * Used preferred macro definition check
+  * Use emptiness-checks rather than DEFINED checks
+  * Use CONFIG_H variable rather than config file name
+  * all.sh component to test cmake custom config file
+  * Pass config file options to mbedtls_test(_helpers)
+  * Pass MBEDTLS_CONFIG_FILE defines through cmake
+  * Add msan and asan env variables to .travis.yml
+  * Disable msan errors on null allocation in all.sh
+  * Improve doxygen formatting
+  * Improve comments
+  * Fix formatting of explanatory commented code
+  * Cleanup the code
+  * Improve comment formatting
+  * Rename variables to more descriptive names
+  * Fix function name after rebase
+  * Adapt names: dh -> xxdh
+  * Adapt names (curves -> groups)
+  * Adapt functions names for ffdh
+  * Adapt handshake fields to ffdh
+  * Use valid size of peerkey buffer (EC vs FF)
+  * Minor adaptations after ffdh was enabled for tls1.3
+  * aesce: use correct target attribute when building with clang
+  * Add ffdh accel vs reference check to analyze_outcomes.py
+  * Enable TLS1.3 in FFDH alg build with drivers and add reference config(without drivers)
+  * tls: client: Improve writing of supported_groups ext
+  * Add changelog entry
+  * Add max iterations test case for cmac
+  * Add test case for zero input cost
+  * Add test cases for key and plain inputs
+  * FIx name of macro
+  * Define PSA_ALG_WANT_PBKDF2_AES_CMAC_PRF_128 and fix config
+  * Add test cases for output validation of pbkdf2 cmac
+  * Add test cases for input validation of pbkdf2 cmac
+  * Change mac_size parameter in driver_mac_compute to output length
+  * Add pbkdf2 cmac to key derivation output_bytes
+  * Add input password function for pbkdf2 cmac
+  * Add pbkdf2_cmac to key derivation setup
+  * Add AES_CMAC_PRF_128 output size macro
+  * Add builtin pbkdf2 cmac guard for all the pbkdf2 functions
+  * Define struct for pbkdf2_cmac
+  * Add define for builtin pbkdf2_cmac
+  * Rename some local variables
+  * Fix the command for server9-sha*.crt
+  * Add target for parse_input/cert_example_multi_nocn.crt
+  * Fix typo and long line format
+  * Update crl-rsa-pss-*.pem manually
+  * upgrade server9-bad-saltlen.crt
+  * Update server9*.crt
+  * Add server9-bad-{mgfhash,saltlen}.crt
+  * Add rules to generate server9*.crt
+  * Update server1-nospace.crt
+  * Update v1 crt files
+  * Update cert_example_multi_nocn.crt
+  * Add rules to generate cert_example_multi_nocn.crt
+  * Update server5.[e]ku-*.crt
+  * Add rules to generate server5.[e]ku-*.crt
+  * cert_write: Support write any for extended key usage
+  * Update server2.ku-*.crt
+  * Add rules to generate server2.ku-*.crt
+  * Add rule for server2-badsign.crt
+  * Update test-ca2.ku-*.crt
+  * Fix the rule for server5-ss-forgeca.crt
+  * Add the rule and update server6-ss-child.crt
+  * Update server5-selfsigned.crt
+  * code_size_compare.py: add comment for sys_arch
+  * code_size_compare.py: run make clean before build libraries
+  * tls13: fix guards for PSA error translating function
+  * Officially require Python 3.8
+  * Correct Python requirements in releases
+  * Add a dummy usage of a pointer in tests
+  * Enable certain documented defines only when generating doxygen
+  * pk: ignore opaque EC keys in pk_setup when they are not supported
+  * pk_wrap: fix: always clear buffer holding private key in eckey_check_pair_psa
+  * Add comments and remove unneeded defines
+  * pk_wrap: do not support opaque EC keys when !PK_HAVE_ECC_KEYS
+  * Change spaces to a tab in a makefile recipe
+  * Add check for the ecp module variants
+  * Enable testing the cloned ecp module
+  * Enable build of the new ecp_new.c file
+  * Clone the ecp.c file as ecp_new.c
+  * generate_psa_tests: fix docstring for tweak_key_pair_dependency function
+  * config_psa: enabled EC key derivation support when ECP_C is enabled
+  * generate_psa_tests: optimize code for key pair dependencies generation
+  * test: replace all KEY_TYPE_ECC_KEY_PAIR with proper symbols
+  * lib/test: replace BASIC_IMPORT_EXPORT internal symbol with BASIC,IMPORT,EXPORT
+  * psa: fix guards for EC key derivation
+  * test: use proper key pair symbols in accelerated list for EC curve test
+  * generate_psa_tests: minor fixes
+  * psa: fix wrong naming for ECC derive symbols in code
+  * configs: adapt to new symbols
+  * generate_psa_tests: improve script to handle all generated files
+  * psa: replace remaining ECC_KEY_PAIR_LEGACY symbols with proper ones
+  * generate_psa_tests: remove GENPRIME from dependencies of RSA key pair
+  * generate_psa_tests: improve code for key pairs dependency generation
+  * generate_psa_tests: fix comments
+  * test: reset proper guards for ECJPAKE tests
+  * psa_crypto_ecp: fix wrong comment in #endif
+  * test: rename function testing EC key generation in driver_wrappers
+  * psa: fix guards for EC key derivation
+  * test: remove useless accelerator intialization + minor restyling
+  * test: use better naming for new components
+  * library/test: replace LEGACY symbol with BASIC_IMPORT_EXPORT
+  * config_psa: introduce new internal KEY_PAIR symbol for BASIC+IMPORT+EXPORT
+  * test: properly handle new KEY_PAIR_yyy symbols in PSA generated test
+  * test: replace ECC_KEY_PAIR_LEGACY with GENERATE
+  * library: replace ECC_KEY_PAIR_LEGACY with GENERATE
+  * test: replace ECC_KEY_PAIR_LEGACY with DERIVE
+  * library: replace ECC_KEY_PAIR_LEGACY with DERIVE
+  * test: add new component to test with all KEY_PAIRs enabled but one
+  * Reduce the size of mbedtls_mpi
+  * fix fragile way to refer to server1.req.sha256
+  * Remove options not known to older gcc
+  * pk_wrap: use PK_HAVE_ECC_KEYS as guard for ecdsa_opaque_check_pair_wrap
+  * pk_wrap: guard all ECDSA function with MBEDTLS_PK_HAVE_ECC_KEYS
+  * pk_wrap: minor fixes for guards
+  * pk_wrap: always fill all the fields of the pk_info structures
+  * pk: uniform naming of functions and structures in pk/pk_wrap
+  * pk_wrap: share code for selecting the psa_alg in ECDSA sign
+  * pk_wrap: minor reorganization for opaque keys
+  * pk_wrap: add missing labels to #else and #endif
+  * pk_wrap: optimize eckey_check_pair()
+  * pk_wrap: name all the fields of the pk_info structs
+  * pk_wrap: add support for ECDSA verify for opaque keys
+  * pk_wrap: optimize code for ECDSA verify
+  * pk_wrap: optimize code for ECDSA sign
+  * Change build target as Cortex-A32 not supported on CI
+  * Nicer formatting
+  * Improve #endif comments
+  * Improve #endif comments
+  * Correct #endif comments
+  * Split armcc tests to separate component
+  * Correct comments on #endif's
+  * Add comment
+  * Test combinations of macros for aes.o
+  * Make parse_input targets depend on files in parse_input if possible
+  * Fix malformed directoryName extensions
+  * fix the command of server5-sha%.crt
+  * fix wrong dependency file path
+  * Revert "Extend TF-M build test to test all shipped configs"
+  * Extend TF-M build test to test all shipped configs
+  * Fix unused function warning in x509.c
+  * Change ffdh testing strategy
+  * fix trailing whitespace
+  * Changelog
+  * Add TF-M build test to all.sh
+  * Actually run MD<->PSA test, and fix it
+  * Fix description of functions
+  * test_suite_ecp: Changed to BITS_TO_LIMBS(224) * 2 in `ecp_mod_p_generic_raw`.
+  * code style
+  * Fix comment
+  * More dependency fixes
+  * Fix unused variable
+  * Fix unused variable if MBEDTLS_AES_SETKEY_ENC_ALT and MBEDTLS_AES_DECRYPT_ALT set
+  * Fix unused fn when MBEDTLS_AES_SETKEY_DEC_ALT and MBEDTLS_AES_SETKEY_ENC_ALT set
+  * Fix unused function when MBEDTLS_AES_SETKEY_ENC_ALT set
+  * ecp.py: Extended EcpP224K1Raw tests for 32/64 bit architectures.
+  * bignum_common.py: Added `bits_to_limbs` method.
+  * test_suite_ecp: Updated ecp_mod_p_generic_raw to use the `BITS_TO_LIMBS` macro.
+  * Add ChangeLog entry for string_to_names() fix
+  * Add regression testcase for string_to_names()
+  * Return an error when no name is parsed
+  * Docs improvement
+  * Disable asan errors on null allocation in all.sh
+  * Move the overallocation test to test suites
+  * Add an mbedtls_calloc(SIZE_MAX/2, SIZE_MAX/2) test
+  * Add a description of how mbedtls_calloc is determined
+  * Add a calloc selftest for more than a page
+  * Documentation and cosmetic fixes
+  * Move the calloc buffer initialization test to selftest.c
+  * Extend mbedtls_calloc and mbedtls_free documentation
+  * Add a test for calloc zeroization
+  * Document mbedtls_calloc zeroization
+  * ecp_curves: Adjusted expected_width inputs to use `BITS_TO_LIMBS` macro.
+  * Move clarification to a separate note
+  * aes.c: use uint8_t for local x, y, z in aes_gen_tables to save RAM
+  * aes.c: use uint8_t for array of pow and log to save RAM
+  * Replace unnecessary '>=' with '=='
+  * Add PSA_JPAKE_FINISHED to EXPECTED_{IN,OUT}PUTS()
+  * Short too long lines
+  * remove parse input only files from `all_final`
+  * Replace MBEDTLS_ECDH_C dependency in ssl-opt tests
+  * fix wrong dependency file path
+  * Change path for the files only exits in parse_input
+  * Add explanatory comment
+  * copy command for parse_input/* when it exists in data_files
+  * Fix clang warning from -Wasm-operand-widths
+  * add test case for zero input cost
+  * Add test and test case for input cost greater than vendor maximum
+  * test_suite_ecp.data: Added test cases for modulo-1 in coordinate representation.
+  * bignum_mod_raw: Updated documentation for mpi_mod_raw_mul
+  * Fix incorrectly named macro
+  * Fix PSA_HMAC_MAX_HASH_BLOCK_SIZE and PSA_HASH_MAX_SIZE definitions
+  * Adapt guards in ssl_write_client_hello_body
+  * Add ssl-opt functions to check openssl with ffdh support and openssl ephemeral key exchange
+  * Update guards for supported groups
+  * test: solve disparities in driver coverage analysis for no_ecp_at_all()
+  * x509: update ECP_LIGHT dependencies to PK_HAVE_ECC_KEYS
+  * test: enable X509 testing in no_ecp_at_all() components
+  * Fix test dependencies
+  * Fix test dependencies
+  * code style
+  * Use more standard PSA macro names
+  * bignum_mod_raw: Fixed a documentation typo.
+  * test_suite_ecp.data: Limb aligned inputs
+  * Add PSA SHA-3 tests
+  * Add support for SHA-3 in PSA
+  * Handle deleted files correctly
+  * bignum_mod_raw: Adjusted OPT_RED limb size requirements for mod_raw_mul().
+  * ecp_curves: Added dataset for SECP224K1 Coordinate Modulus.
+  * ecp_curves: Fixed modp pointers on `mbedtls_ecp_modulus_setup`.
+  * Fix empty union when TLS is disabled
+  * Allow second run for ffdhe8192 ssl-opt tests
+  * aesce: do not specify an arch version when enabling crypto instructions
+  * Drop not-used items from the base look-up table
+  * Improve docs
+  * More struct re-ordering
+  * Adjust stuct order for better packing / smaller accessor code size
+  * Add casts for enums in cipher.c
+  * Fix direct use of cipher_info->type
+  * Fix direct reference to cipher_info->key_bitlen
+  * Fix some compiler type warnings
+  * Fix accidental mis-named field
+  * Dependency fixes
+  * Fix use of enum in a bitfield
+  * Use fewer bits for block_size
+  * code style
+  * Use look-up table for base
+  * Use fewer bits for iv_size
+  * Don't directly access iv_size
+  * Use fewer bits for key_bitlen
+  * Don't directly access key_bitlen
+  * Re-order mbedtls_cipher_info_t
+  * Use bit-fields
+  * Unify ssl_calc_finished_tls_sha{256,384}
+  * Unify ssl_calc_verify_sha{256,384}
+  * Reword the description of mbedtls_net_free()
+  * Fix extra character in debug string
+  * Change types in mbedtls_cipher_info_t
+  * Improve documentation in bn_mul.h
+  * Add --since option to check files modified since a given commit
+  * Clean up subprocess invocation in get_src_files
+  * Simplify directory name comparison in tests
+  * bignum_mod_raw: Updated documentation for mbedtls_mpi_mod_raw_mul
+  * test_suite_ecp: Extended `ecp_mul_inv` tests for optimised reduction.
+  * ecp_mod_raw: Enabled fast reduction.
+  * Refactor injecting errors in the second round
+  * Explain the sequence of mbedtls_psa_pake_ calls
+  * Test extra inputs and outputs at the end of J-PAKE
+  * Add testing for extra calls during a round
+  * Remove unnecessary checks in psa_jpake_prologue()
+  * Remove comment explaining the state machine
+  * Simplify logic of driver step conversion
+  * Tweak wording for clarity
+  * Remove unnecessary initialization of state
+  * Use memset for initialization
+  * Add "completed" clarification to struct comments
+  * Remove redundant structures from previous design
+  * Rename struct member mode to io_mode
+  * Rename function_mode to io_mode
+  * Properly namespace enum values within PSA_JPAKE_
+  * Change J-PAKE internal state machine
+  * bignum_mod: Added a typedef for OPT_RED function pointer.
+  * tls: always zeroize buffer on exit
+  * tls: keep buffer declaration in a single line
+  * Work around updating pointers from ILP32
+  * code style
+  * Remove redundant checks in constant_time.c
+  * Fix pointer constraint in bn_mul.h
+  * code style
+  * Improve changelog
+  * Use UINTPTR_MAX not SIZE_MAX
+  * Be strict about pointer size in mbedtls_get_unaligned_volatile_uint32
+  * Changelog
+  * Omit block_size when MD_C is not enabled
+  * test: remove duplicate PK_HAVE_ECC_KEYS dependency in pkparse suite
+  * Separate ILP32 and normal-aarch64 code paths
+  * Remove useless extern declarations and includes
+  * Docs improvement
+  * Fix for arm64_32 (aka ILP32) on Clang (attempt 2)
+  * Fix for arm64_32 (aka ILP32) on Clang
+  * Fix 32 bit unreachable code build failure
+  * Fix very high stack usage in SSL debug code
+  * Add a do-while loop around macros
+  * Pacify clang15 warnings about empty /retval
+  * Use DER format for x509 SAN tests
+  * MD: isolate strings to separate table
+  * test: ignore compressed points' tests when checking coverage without ECP at all
+  * pkwrite: fix wrong guard position for pk_get_opaque_ec_family()
+  * pk/psa: use PSA guard for mbedtls_ecc_group_to_psa() and mbedtls_ecc_group_of_psa()
+  * psa: move mbedtls_ecc_group_to_psa() from inline function to standard one
+  * build_info: do not enable ECP_LIGHT when PSA_WANT_ALG_ECDSA
+  * pk: remove useless internal function
+  * test: replace occurencies of ECP_LIGHT with PK_HAVE_ECC_KEYS
+  * library: replace occurencies of ECP_LIGHT with PK_HAVE_ECC_KEYS
+  * pk: add new symbol to state that PK has support for EC keys
+  * test: re-enable PK and RSA in component without ECP/ECP_LIGHT
+  * x509parse tests: Replace TEST_ASSERT with TEST_EQUAL
+  * Fix tests?
+  * Simplify aesni support test
+  * Fixed AlgorithmIdentifier parameters when used with ECDSA signature algorithm in x509 certificate
+  * Clarify support_test_aesni
+  * mbedtls_config: improved description of PK_PARSE_EC_COMPRESSED
+  * build_info: improved description of ECP_LIGHT auto-enabling symbols
+  * Improve logic for checking for presence of AESNI code
+  * Improve logic for checking for presence of AESNI code
+  * test: remove leftover paragraph in test_psa_crypto_config_accel_ecc_ecp_light_only
+  * Fix typo
+  * Fix test error
+  * fix CI failure
+  * Fix typo
+  * code style
+  * Address test review comments
+  * Remove not-needed compiler flags
+  * Add test for plain C path
+  * Simplify aesni test
+  * Improve changelog
+  * Only force O2 when hw acceleration available
+  * build_info: auto enable PK_PARSE_EC_COMPRESSED when PK_PARSE_C && ECP_C
+  * test: update depends.py with new dependencies
+  * test: fix bug for test without bugnum
+  * build_info: complete list of symbols that auto-enable ECP_LIGHT
+  * mbedtls_config: add new MBEDTLS_PK_PARSE_EC_COMPRESSED symbol
+  * pk: let PK_PARSE_EC_EXTENDED auto-enable ECP_LIGHT
+  * test: remove leftover from past PR development
+  * test: renaming component testing accelerated EC
+  * Only enable gcc -Os fix if we have AES hw support
+  * Improve comment
+  * Use valid guard for filling group list with EC groups
+  * Respect -Os for everything except XTS
+  * ecp_curves: Updated the optimised reduction function pointer.
+  * bignum_mod: Updated documentation.
+  * test_suite_ecp: Added `MBEDTLS_ECP_NIST_OPTIM` define guards.
+  * test_suite_ecp: Updated `ecp_mod_p_generic_raw` for optimised reduction.
+  * ecp_curves: Updated `mbedtls_ecp_modulus_setup` to use optimised reduction.
+  * ecp_curves: Updated input argument for `mbedtls_ecp_modulus_setup`.
+  * bignum_mod: Updated `optred_modulus_setup` to use function input.
+  * bignum_mod: Added `mbedtls_mpi_opt_red_struct` structure.
+  * bignum_mod: Fixed code-style
+  * bignum_mod: Added static `standard_modulus_setup()`.
+  * bignum_mod: Refactored `mbedtls_mpi_mod_modulus_setup()`
+  * test_suite_bignum: Removed `test_read_modulus()`.
+  * binum_mod: Added `mbedtls_mpi_mod_optred_modulus_setup()`.
+  * Don't use inet_pton() before Windows Vista
+  * Don't force the default windows version down
+  * Don't call wincrypt on builds older than Windows XP
+  * Allow all.sh to override intrinsics vs asm selection
+  * Test asm and intrinsics from all.sh
+  * tls: never destroy a priavte key that is not owned/created by TLS module
+  * config_psa: replace USE symbols with BASIC one for all KEY_PAIRs
+  * test: run all the test suite in the temporary component and grep outcome file
+  * test: add a temporary test for checking conversion for new symbols
+  * config_psa: only KEY_PAIR_USE includes PUBLIC_KEY
+  * config_psa: always enable PUBLIC_KEY when any KEY_PAIR is enabled
+  * test_driver_extension: manage public and private keys the same way
+  * config_psa: fix logic for updating legacy symbols
+  * config_psa: ECP_C do not enable ECC_KEY_PAIR_DERIVE
+  * crypto_config_test_driver_extension: remove leftover comment
+  * psa: move PSA_WANT checks to check_crypto_config
+  * config_psa: avoid repetitions when including MBEDTLS symbols
+  * changelog: added entries for explaining changes of this PR
+  * crypto: move legacy symbols support to a dedicated header file
+  * config_psa: add missing BUILTIN symbols when ECP_C is defined
+  * config_psa: fix comment for LEGACY symbols
+  * config_psa: remove support for PSA_WANT_KEY_TYPE_DH_KEY_PAIR_DERIVE
+  * config_psa: remove GENPRIME from enabled symbols of PSA_WANT_KEY_TYPE_RSA_KEY_PAIR_USE
+  * config_psa: remove leftover comment on ECC derivation
+  * psa: fixing psa_crypto_generate_key.generated
+  * test: fix python script for PSA test generation
+  * tests: replace deprecated symbols with temporary _LEGACY ones
+  * library: replace deprecated symbols with temporary _LEGACY ones
+  * config_psa: replace legacy symbols with new ones
+  * psa: add support for legacy symbols
+  * crypto_config: introducing new definitions for PSA_WANT KEY_PAIRs
+  * tls: optimize code in ssl_get_ecdh_params_from_cert()
+  * Rename MBEDTLS_OPTIMIZE_ALWAYS
+  * Improve readability of unrolled AESCE code
+  * Rename _USE to _BASIC
+  * code style
+  * Update changelog
+  * Use MBEDTLS_OPTIMIZE_ALWAYS for gcm
+  * Use MBEDTLS_OPTIMIZE_ALWAYS for ccm
+  * Use MBEDTLS_OPTIMIZE_ALWAYS in aesce
+  * use MBEDTLS_OPTIMIZE_ALWAYS in AES-XTS
+  * Use mbedtls_xor_no_simd from cmac and cbc
+  * Add a non-NEON variant of mbedtls_xor
+  * Introduce MBEDTLS_OPTIMIZE_ALWAYS
+  * Introduce MBEDTLS_COMPILER_IS_GCC
+  * Move mbedtls_ecp_modulus_type out of the public headers
+  * Add cleanup for intermediate buffer
+  * Split out mbedtls_ecp_mod_p448_raw()
+  * Unroll aesce_decrypt_block
+  * Unroll aesce_encrypt_block
+  * Add missing ECDH dependencies in ssl-opt tests
+  * Fix selection of default FFDH group
+  * Adapt remaining guards to FFDH
+  * Properly disable ECDH in only (psk) ephemeral ffdh key exchange components
+  * Rename NUL to null in x509 IP parsing description
+  * Reword changelog entry
+  * Add copyright (as agreed with Manuel)
+  * Fix unintentional config reduction in prev commit
+  * add return statement
+  * mbedtls_config.h: add description for CTR_DRBG about AES-128 only
+  * code style
+  * fix check-names failure
+  * Limit number ffdh test cases (ffdhe2048, ffdhe8192)
+  * Optimise final 2 rounds
+  * Do not use NEON for AES-CBC on aarch64
+  * Revert "improve cbc encrypt perf"
+  * Replace sizeof(mbedtls_mpi_uint) with ciL define
+  * Shorten encoding of version features
+  * Changelog entry for the MBEDTLS_CIPHER_BLKSIZE_MAX deprecation
+  * Officially deprecate MBEDTLS_CIPHER_BLKSIZE_MAX
+  * Rename MBEDTLS_CIPHER_BLKSIZE_MAX internally
+  * Replacement for MBEDTLS_CIPHER_BLKSIZE_MAX
+  * Explicitly document that Camellia and ARIA aren't supported
+  * Add not-supported test case for ARIA and for other Camellia key sizes
+  * Test consistency of cipher max-size macros
+  * Use predefined serial numer in certificates
+  * Remove PSA_TO_MD_ERR from ssl_tls.c
+  * Use output block as U_accumulator
+  * Update PSA_WANT spec for new KEY_PAIR scheme
+  * Disable MBEDTLS_DHM_C in component_test_tls13_only_psk
+  * all.sh: use clang for one test of AES_ONLY_128_BIT_KEY_LENGTH
+  * Add FFDH tests to ssl-opt
+  * pake: fixed warning for casting between different types
+  * Fix coding style issue
+  * More about whether to have the driver key id in the transaction list
+  * Discuss the cost of a get_key_attributes entry point
+  * Move corner test case into python framework
+  * Three round solution
+  * Add ffdh support yo generate_tls13_compat_tests.py
+  * Code cleanup #2
+  * Add missing guards in tls 1.3
+  * Move an include
+  * Fix wrong array size calculation in error translation code
+  * Move the ARRAY_LENGTH definition to common.h
+  * Add missing ifdefs
+  * Optimize error translation code size
+  * Fix ecp test
+  * Build the docs in realfull config
+  * Add test components: only PSK ephemeral ffdh, only ephemeral ffdh key exchange
+  * Code cleanup
+  * Fix special-case with all curves except one.
+  * Docs update
+  * Code style
+  * Make mbedtls_ct_zero non-static
+  * Add crypt_and_hash decrypt issue to Changelog
+  * Remove references to non-existing options
+  * Make -SE_C part of adjust_config
+  * Group both configuration steps
+  * Replace function calls in crypt_and_hash program with locals
+  * Re-enable MBEDTLS_DHM_C in tls13_only_psk, tls13_only_psk_ephemeral, tls13_only_psk_all
+  * Improve phrasing
+  * Changelog for SHA-384 max block size bug
+  * Fix typo in MBEDTLS_MD_CAN macros
+  * Use a single fast-path in mbedtls_xor, gains around 1% in benchmarks
+  * Code style
+  * Update Changelog
+  * Fix AES-XTS perf regression
+  * Fix error: comparison of integers of different signs: 'SOCKET' and 'int'
+  * x509_parse_time() perf
+  * Reuse time when verifying certificate chain
+  * mbedtls_x509_time_gmtime() read struct directly
+  * mbedtls_x509_time_gmtime() to fill struct w/ time
+  * mbedtls_x509_time_cmp() perf
+  * mbedtls_x509_time_cmp() compare mbedtls_x509_time
+  * Fix crypt_and_hash decrypt issue when used with stream cipher
+  * Remove unnecessary cast
+  * Remove the all.sh test for this, since armclang on CI is too old
+  * Fix armc5-bin-dir and armc6-bin-dir options to all.sh
+  * Merge the two ARM Compiler 6 - Target ARMv8.2-A - AArch64 builds
+  * Add an all.sh build test that catches the unterminated pragmas
+  * Fix "unterminated '#pragma clang attribute push'" in sha256/sha512.c
+  * Strengthen fall-back for mbedtls_ct_compiler_opaque
+  * Replace use of MBEDTLS_SHA3_C with MBEDTLS_MD_CAN_SHA3_xxx
+  * Fix definition of MBEDTLS_MD_MAX_SIZE and MBEDTLS_MD_MAX_BLOCK_SIZE
+  * Fix failing Ci
+  * Fix test dependencies
+  * Edit changelog
+  * Remove negative tests for input validation
+  * Use size of buffer for mac_size
+  * Use multipart mac operation for adding salt and counter
+  * Make MD<->PSA translation static inline
+  * Remove guarantee about converting NONE
+  * Simplify implementation of MD<->PSA translation
+  * Replace loop zeroise with memset
+  * Fix missing call to mbedtls_ssl_md_alg_from_hash()
+  * Change values of md_type enum
+  * Add comments to 448 optimised reduction
+  * Add corner case for p448 (A0+A1= full 1 of 448 bits)
+  * Restore accidentally removed comment
+  * Replace MBEDTLS_MD_CAN_SHA3 with MBEDTLS_MD_CAN_SHA3_xxx
+  * Fix error status for PSA RSA-OAEP unknown hash
+  * Change contract of MD<->PSA conversion
+  * Add size measurements per library
+  * Use helper_libtestdriver1_adjust_config more
+  * Fix some typos
+  * Fix for big-endian architectures
+  * Unify ABSORB and ABSORB8 to fix compile error
+  * Fix test dependency
+  * Correct minor merge mistakes
+  * Add HMAC DRBG SHA-3 tests
+  * Tidy-up
+  * Remove NULL checks
+  * Remove reference to SHAKE
+  * Use MBEDTLS_PRIVATE
+  * Spell as SHA-3 not SHA3
+  * Add tests for invalid paramters
+  * Tidy-up definition of mbedtls_sha3_context
+  * move mbedtls_sha3_family_functions out of public interface
+  * Use faster type for state index
+  * remove not-needed fields from SHA-3 context
+  * Consume input in 8-byte chunks
+  * Avoid possible NEON alignment issue
+  * Revert not-useful changes to AES-CBC decrypt
+  * improve cbc encrypt perf
+  * Extend NEON use to 32-bit Arm
+  * Add tests for xor over large blocks
+  * Add clangd compilation databases to gitignore
+  * Add a guard for IP parsing in cert_req app
+  * Fix param documentation for mbedtls_x509_crt_parse_cn_inet_pton
+  * Remove references to x509_invasive.h
+  * Use better IP parsing in x509 programs
+  * Remove redundant test and add tests: keyid only (without issuer)
+  * Adapt test (use path instead of bytes) after rebase
+  * Fix code style
+  * Further test improvements
+  * Fix after rebase (remove redundant variables in tests)
+  * Add more test cases
+  * Use RSA keys in generated certificates
+  * Add test for invalid KeyIdentifier tag length + adapt error code
+  * Use TEST_EQUAL instead of TEST_ASSERT in tests
+  * Test optional fields in authorityKeyId
+  * Check values in tests
+  * Use generated certs in DER format in tests
+  * Provide makefile rules to generate cerst for authorityKeyId, subjectKeyId tests
+  * Fix fall through warning
+  * ssl_client2, ssl_server2: code optimization + guards adaptation
+  * mbedtls_psa_ffdh_export_public_key: allow bigger output buffer
+  * Further code optimizations
+  * Adapt function names
+  * Combine mbedtls_ssl_tls13_generate_and_write_ecdh/ffdh_key_exchange functions
+  * Adapt guards, dependencies + optimizations
+  * Move FFDH helper functions and macros to more suitable locations
+  * Adapt guards for FFDH
+  * Replace deprecated functions
+  * Fix test configs
+  * Add changelog entry (FFDH in TLS 1.3)
+  * Compile out length check to silent the compiler warning
+  * ssl-opt.sh: Add FFDH tests
+  * Add FFDH support in client2, server2 applications
+  * Add support for FFDH in TLS 1.3
+  * Add FFDH definitions and translation functions
+  * ssl_write_supported_groups_ext(): add support for ffdh keys
+  * Add the DHE groups to the default list of supported groups
+  * Use safe snprintf
+  * Add test for invalid IP length (+use der format in tests)
+  * Fix parsing of SAN IP (use mbedtls_snprintf, validate buffer length)
+  * Add separate case for ip address
+  * Add test to parse ipV4 and ipV6 addresses
+  * Add support for parsing SAN IP address
+  * Fix code style
+  * Add changelog entry
+  * Add negative cases for pbkdf2 output
+  * Add RFC tests for pbkdf2 output
+  * Change derive_input test cases for implemented output_bytes
+  * Add cost and password steps to derive_output_test function
+  * Add pbkdf2 function to key_derivation_output_bytes
+  * Add pbkdf2_generate_block function
+  * Add additional members to pbkdf2 struct
+  * Update FFDH component
+  * Add documentation about libtestdriver1 usage
+  * all.sh: make libtestdriver1 components more uniform
+  * all.sh: add helper_libtestdriver1_make_main()
+  * all.sh: add helper_libtestdriver1_make_drivers()
+  * all.sh: add helper_libtestdriver1_adjust_config
+  * Add static check for macros that should be in sync
+  * Add comment on macros that should be kept in sync
+  * Remove mbedtls_psa_translate_md().
+  * Keep MD and PSA max size in sync
+  * Use PSA-neutral function for availability check
+  * Fix guard for PSA->MD error conversion
+  * Fix duplicated definition of a function
+  * Use function instead of macro for error conversion
+  * Add total when printing sizes in all.sh
+  * Add missing include
+  * Use general framework for PSA status conversion
+  * Formally deprecate mbedtls_psa_translate_md()
+  * Use actual function instead of static inline
+  * Remove hash_info.[ch]
+  * Use MD<->PSA functions from MD light
+  * Add MD <-> PSA translation functions to MD light
+  * Remove unused function
+  * Replace hash_info macro with MD macro
+  * Replace hash_info_get_type with MD function
+  * Add convenience inline function to md.h
+  * Restore rsa_single_san_uri.crt.der
+  * Mark all_intermediate as .SECONDARY
+  * Remove redundant PHONY targets
+  * Fix long line format
+  * server5-der*.crt: Simplify the size calculation
+  * Update cert macros in tests/src/certs.c
+  * Update crl-ec-sha*.pem, crl.pem, crl_cat_*.pem
+  * Add rules to generate crl_cat*
+  * Update server10*.crt
+  * Update server8*.crt
+  * Update server7*.crt
+  * Update pkcs7 files
+  * Extend the validity period of pkcs7-rsa-sha*.crt to 10 years
+  * Update test-int-ca*.crt
+  * Add rules to generate test-int-ca{2,3}.crt
+  * Update test-ca2_cat-*.crt and test-ca_cat*.crt
+  * Update server6.crt
+  * Update test-ca[1|2].crt[.der]
+  * Clarify when key derivation entry points are mandatory/permitted
+  * Copyediting
+  * Generate PEM pub key directly from DER prv key
+  * pk_internal: minor rearrangement in mbedtls_pk_get_group_id()
+  * test: add key pair check verification for opaque EC keys
+  * pk: allow key pair checking for opaque keys
+  * pk_wrap: add support for key pair check for EC opaque keys
+  * code_size_compare.py: change prompt message in code size measurement
+  * code_size_compare: clarify input and return types
+  * code_size_compare.py: integrate code with CodeSizeBase
+  * code_size_compare.py: add a CodeSizeBase class
+  * Comment tidy-up
+  * Rename MULADDC_PRESERVE_R1 etc to MULADDC_PRESERVE_SCRATCH etc
+  * Improve docs & check for non-gcc compilers
+  * Improve changelog
+  * Add armclang -O0 build test
+  * Add build tests for Thumb and Thumb2 with clang
+  * Do not use assembly on Thumb 1 / clang
+  * Rework the description of key derivation output/verify key
+  * Note that we may want to rename derive_key
+  * Probably resolve concern about the input size for derive_key
+  * Minor copyediting
+  * Fix bug in calculation of maximum possible bytes
+  * Allow subidentifiers of size UINT_MAX
+  * Fix spelling in Changelog
+  * Remove unnecessary addition to buffer size estimation
+  * Modify tests in response to review comments.
+  * Refactor code in cert_write.c
+  * Fix overflow checks in x509write_crt
+  * Change the name of the temporary san variable
+  * Update the descriptions of SANs
+  * code_size_compare.py: fix make command logic in default config
+  * Reword description and change NUL to null
+  * Rename minimum_mem to resized_mem
+  * Rearrange declarations for readability
+  * Change behaviour away from NUL-terminated strings
+  * Cosmetic fixes to doxygen comment
+  * Remove certain null pointer checks when only MD_LIGHT enabled
+  * Add docs for mbedtls_ecp_mod_p448()
+  * pk: minor code fixes
+  * pk: fix guard position
+  * test: remove debug echo in component
+  * pk: optimized/reshape code for writing private key PEM
+  * pk: optimized/reshape code for writing private key DER
+  * pk: extend pk_write_ec_private to support opaque keys
+  * pk: optimize/reshape public key writing
+  * pk: uniformmize public key writing functions
+  * pk: add internal helpers for opaque keys
+  * psa_util: add support for rfc8410's OIDs
+  * pk_internal: add support for opaque keys for getting EC curve ID
+  * test: optimizing test_suite_pkwrite code
+  * Hoist variable declarations to before goto
+  * Refactor while loop for simplicity
+  * Improve line spacing after variable declarations
+  * Reword function description slightly
+  * Reword ChangeLog entry for consistency
+  * Revert setting optimization flag(use O2)
+  * Adapt guards for psa_is_dh_key_size_valid
+  * Change input cost type to uint64_t and fix max iteration test case
+  * code_size_compare.py: classify arguments in parser
+  * code_size_compare.py: add prompt for unsupported arch and config
+  * Fix invalid commands for ec_x{25519,448}_{prv,pub}.{der,pem}
+  * Change coding style to fix multi lines into one line
+  * Key agreement needs an attribute structure for our key
+  * Note possible issue with derive_key: who should choose the input length?
+  * State explicitly that cooked key derivation uses the export format
+  * Clarify sequencing of long inputs
+  * Rationale on key derivation inputs and buffer ownership
+  * Key derivation dispatch doesn't depend on the key type
+  * Copyediting
+  * Finish test strategy
+  * Modify tests to suit new behaviour
+  * Add driver support for DH import key and export public key
+  * Revert "Handle simple copy import/export before driver dispatch"
+  * Update server5[-der*|-sha*].crt
+  * Add rules to generate test-ca2_cat-*.crt
+  * Add rules to generate server10*.crt
+  * Add rules to generate server8*.crt
+  * Add rules to generate server7*.crt
+  * Add rules to generate server6.crt
+  * Add rules to generate server5-sha*.crt
+  * Add server5-der*crt generate command
+  * Add rules to generate server5[-badsign].crt
+  * Update server3.crt and server4.crt
+  * Add rules to generate server4.crt
+  * Add rules to generate server3.crt
+  * Fix wrong target names in the Makefile in tests/data_files
+  * Mark all_intermediate as intermediate files
+  * change path of mbedtls_x509_crl_parse input data
+  * change path of mbedtls_x509_csr_parse_file input data
+  * change path of mbedtls_x509_csr_info input data
+  * change path of x509_parse_san input data
+  * change path of x509parse_crt_file input data
+  * change path of x509_cert_info input data
+  * change path of mbedtls_x509_crl_info input data
+  * code_size_compare.py: add armv8-m option for arch
+  * Add test code for big endian write/read
+  * Add intermediate variable to represent the bytes of big num
+  * code_size_compare.py: change default path of armclang
+  * Create bugfix_iar_typo.txt
+  * Fix typo in cmake file for IAR
+  * code style
+  * Move base64 test interfaces into base64_internal.h
+  * Remove references to rsa.h and ssl_misc.h from constant_time.c
+  * Fix RSA perf regression
+  * Document and test that memcpy_if may have src == dest
+  * Fix non-opaque use of mbedtls_ct_condition_t
+  * Improve tests for mbedtls_ct_uchar_in_range_if
+  * Whitespace etc
+  * Improve use of compiler_opaque
+  * Make memmove_left more efficient
+  * Rename mbedtls_ct_uint_if_new to mbedtls_ct_uint_if
+  * Remove old interface
+  * Use new CT interface in  mbedtls_ct_memcpy_offset
+  * Use new CT interface in mbedtls_mpi_safe_cond_swap
+  * Use new CT interface in mbedtls_mpi_core_random
+  * Use new CT interface in mbedtls_mpi_core_add_if
+  * Use new CT interface in mbedtls_mpi_core_lt_ct
+  * Remove not-needed mbedtls_ct_mpi_uint_cond_assign
+  * Update mbedtls_mpi_core_uint_le_mpi to new CT interface
+  * Update mpi_select to use new CT interface
+  * Update mbedtls_mpi_lt_mpi_ct to new interface
+  * Update mbedtls_mpi_safe_cond_(assign|swap) part 2
+  * Update mbedtls_mpi_safe_cond_(assign|swap) to use new CT interface
+  * Use new CT interface in ssl_msg.c
+  * Add impl of mbedtls_ct_memcpy_if
+  * Use new CT interface in ssl_tls12_server.c
+  * Use new CT interface in rsa.c
+  * Use new interface in mbedtls_ct_memmove_left
+  * Remove old interface for mem_move_to_left
+  * Add impl of mbedtls_ct_zeroize_if
+  * Remove not-needed compiler_opaque in ct_if
+  * Improve const-timeness of mbedtls_ct_bool_lt
+  * Introduce new CT interface (retain old interface)
+  * tests
+  * Move some bignum functions out of constant_time module
+  * Move mbedtls_ct_rsaes_pkcs1_v15_unpadding into rsa.c
+  * Expose mbedtls_ct_size_gt and mbedtls_ct_mem_move_to_left in ct interface
+  * Move mbedtls_ct_hmac into ssl_msg.c
+  * Evolve mbedtls_ct_uchar_in_range_if interface
+  * Move mbedtls_ct_base64_(enc|dec)_char into base64.c
+  * Improve ISA detection
+  * Fix output width of mbedtls_ecp_mod_p448() to 448 bits
+  * Simplify ifdefs
+  * Restrict use of r7 in Thumb 1 code
+  * Don't use r7 in generic codepath
+  * Update Changelog
+  * Revert to detecting __GNUCC__ instead of armclang
+  * code_size_compare.py: add missing aes.o in code size comparison
+  * code_size_compare.py: add suffix to code size report
+  * code_size_compare.py: clean up worktree in errors of subprocess
+  * code_size_compare.py: support measurement of tfm-medium
+  * code_size_compare.py: add --arch and detection of host arch
+  * pkwrite: remove unnecessary code duplication
+  * Improve comments
+  * Move const result to the first parameter
+  * Update comments about how to generate mod_read_write data
+  * Add test data for function ecp_mod_random
+  * Add test function ecp_mod_random
+  * Add test data for ecp mod read write
+  * Add mod test functions for unit read write
+  * Give options clearer names
+  * Minor tidy-up
+  * Write up the transaction/recovery processess
+  * Add test case for PSA_VENDOR_PBKDF2_MAX_ITERATIONS
+  * Tidy-up macros and fix guards around option B
+  * Gate all arm asm on Armv6 or better architecture
+  * Change output length parameter in pbkdf2_hmac_set_password
+  * Restructure set salt function
+  * Correct comment header block
+  * First draft at fixing the choice of asm
+  * ecp_curves: Adjusted the expected limb size for `ecp_mod_p255()`.
+  * pkparse: avoid creating extra copy of the private key
+  * tls: use pk_get_group_id() instead of directly accessing PK's structure
+  * Fix Changelog formatting
+  * pk: minor code fixes/enhancements
+  * pk: fix key properties when importing private key
+  * Add build test for armclang / Cortex-M0 / -Os
+  * Add Changelog
+  * Disable bignum assembly for certain Arm M-class CPUs
+  * Fix code style and initialize status
+  * Design document for storage resilience
+  * Add tests with direct and key output
+  * Add HMAC specific function for setting password
+  * Add PSA_ALG_PBKDF2_HMAC_GET_HASH macro
+  * Restructure pbkdf2_set_salt function
+  * Define PSA_VENDOR_PBKDF2_MAX_ITERATIONS
+  * Change pbkdf2 password to array
+  * Use functions in alignment.h to get value
+  * Change assert to equal base one comments
+  * Fix missed renames from N to X
+  * pk: improve description for the new priv_id field
+  * ecp_curves: Adjusted input checking for `ecp_mod_p255`.
+  * test: add exception in analyze_outcomes.py and fix test for montgomery curves
+  * pk: fix eckey_check_pair_psa
+  * test_suite_pkparse: fix failure
+  * test: minor enhancement for using the new private key format
+  * tls/x509: minor enhancement for using the new private key format
+  * pk: improve sign, check_pair and wrap_as_opaque functions with new format
+  * pk: manage parse and write for the new format
+  * pk: manage allocate and free space when working with PSA private key
+  * pk: change location of Montgomery helpers
+  * pk: move PSA error translation macros to internal header
+  * ecp_curves: Extended documentation for CURVE25519.
+  * ecp_curves: Added documentation for mbedtls_ecp_mod_p255_raw
+  * ecp_curves: Reintroduced input checking for
+  * ecp_curves: Switched to dynamic memory for
+  * ecp_curves: Minor refactoring of `mbedtls_ecp_mod_p255_raw()`
+  * ecp.py: Fixed types for `arguments()` overrides.
+  * ecp.py: Added tests for `mbedtls_ecp_mod_p255_raw`
+  * Modify TFM files to allow them to build on baremetal with Mbed TLS and fix code style. Also change the include path of crypto_spe.h in crypto_platform.h to allow the former file to be included in library-only builds.
+  * Bring over both necessary medium config files (regular and PSA style) from TFM.
+  * Fix xor fail for large block size
+  * Add test data "modulus-1" and "modulus-2" for every curve
+  * Fix AES-CBC for in-place operation
+  * ecp_curves: Refactored `mbedtls_ecp_mod_p255`.
+  * fix: correct calling to time function in tls13 client&server
+  * Add missing AES_C dependency in x509 tests
+  * Changelog update
+  * Make AES-CBC more efficient
+  * Add NEON to mbedtls_xor
+  * pk: fix a return value and a typo in comment
+  * pk: add checks for the returned ECC family
+  * Fix wrong makefile target
+  * Remove extraneous check in for loop condition
+  * Update comments how to generate the randoms to make it reproducible
+  * Prefer intrinsics over asm for AES-NI
+  * build_info.h: rewrite comment
+  * Fix the comments of sum in ecp function
+  * mbedtls/platform.h: Avoid potential macro redefinition warnings.
+  * pk: fixing and improving comments
+  * XOR perf improvements
+  * Generate test data with special seed 2,3,4
+  * Fix the limb mismatch issue on 32-bit platform
+  * Compare the libs of two input value and add comments
+  * Remove useless parameters for ecp_mod_add_sub
+  * Refine code to align with the styles of ecp_mod_mul_inv
+  * Add test data for ecp_add_sub
+  * Add add_sub test data for named moduli curves
+  * Add add_sub test cases for named moduli curves
+  * Remove DIY SIZE_MAX definitions
+  * Both compare the least significant limb 1 and the left limbs 0
+  * Remove useless parameter iret for ecp mul_inv cases
+  * Check for overflows when writing x509 SANs
+  * Enable escaping ';' in cert_write.c SANs
+  * Add missing RFC822_NAME case to SAN setting
+  * Remove unnecessary zeroization
+  * Return an error on an unsupported SubjectAltName
+  * Fix a code style issue
+  * Fix temporary IP parsing error
+  * Update ip_string_to_bytes to cert_req version
+  * Fix subjectAltName test prerequisites
+  * Add missing memory deallocation
+  * Fix a copy-paste typo
+  * Add braces to a switch case
+  * Add documentation and a changelog entry
+  * Add a test for SubjectAltName writing to a certificate
+  * pk: minor fixes (guards and a wrong assignment)
+  * Add input parameter length check for the Koblitz reduction
+  * Add a possibility to write subject alt names in a certificate
+  * Add a certificate exercising all supported SAN types
+  * Move mbedtls_x509_san_list to x509.h
+  * Add documentation
+  * tests: fixes for using the new public key raw format
+  * test_suite_debug: fix USE_PSA_INIT/DONE guards in a test
+  * tls12: use the the raw format for the public key when USE_PSA is enabled
+  * debug: add support for printing the new EC raw format
+  * pkwrap: update ECDSA verify and EC pair check to use the new public key
+  * pk: update pkparse and pkwrite to use the new public key storing solution
+  * pk: adding a new field to store the public key in raw format
+  * Convert comments over to X rather than N
+  * pk: fix typos in description of mbedtls_pk_ec_[ro/rw]
+  * build_info.h: rewrite comment for inclusion of config_psa.h
+  * Compare final result with ASSERT_COMPARE
+  * Check all of the limbs of result
+  * Re-order the variable orders and rename them
+  * Refine error check for mbedtls_ecp_modulus_setup
+  * Remove the useless modulus validaty
+  * Remove modulus double free
+  * Add back 255 bit test data for SECP224K1 test cases
+  * Add comments to the data file for the cureve secp224k1
+  * Revert to 224bit random data no need leading bit "1"
+  * Increase bit size to 225 for SECP224K1 test cases
+  * Add comments about how the mod_inv data is generated
+  * Update ecp mul_inv test cases
+  * Change coding styles of white space
+  * Tidy up ecp mul_inv_test code
+  * Add ecp test cases for mont mul and inv after named moduli setup
+  * Add ecp test function for mont mul and inv
+  * Use valid MD5 dependency for test
+  * build_info.h: change location of including config_psa.h
+  * Use const where appropriate
+  * Group memory allocations earlier
+  * Convert over to using X, X_limbs
+  * Convert curve 448 to use ecp core functions
+  * bignum: Updated documentation for `mbedtls_mpi_shift_l()`
+  * bignum: Updated `mbedtls_mpi_shift_l` to use the core method.
+  * Make use of MBEDTLS_STATIC_ASSERT
+  * Document minimum size for DEBUG_BUF_SIZE
+  * simplify code
+  * code style
+  * make code readable and change var name
+  * send debug msg if contains '\n'
+  * Update library/debug.c
+  * Fix: no newline when debug msg over DEBUG_BUF_SIZE
+  * Fix comment
+  * Add `_raw` function to P256K1
+  * Add `_raw` function to P224K1
+  * Add `_raw` function to P192K1
+  * bignum_core.py: Simplified result calculation for `BignumCoreShiftL`
+  * Fix compilation errors(unused variables, guards)
+  * Fix copypasta
+  * mbedtls_x509_crt_free: release authorityCertIssuer sequence
+  * Add test to cover memory leak in authorityCertIssuer case
+  * Fix comment
+  * pk: fix: explicilty set const in casted value in mbedtls_pk_ec_ro
+  * pk: fix build issues
+  * pk: align library and tests code to the new internal functions
+  * pk: make mbedtls_pk_ec internal when !ECP_C
+  * Minor adjustments after review.
+  * Replace references to Mbed Crypto with Mbed TLS through-out documentation and comments.
+  * Replace references to Mbed Crypto with Mbed TLS through-out documentation and comments.
+  * Ignore *.o everywhere
+  * Only include psa_pake_setup() and friends if some PAKE algorithms are required
+  * Fuzz programs: print an error if loading the reproducer fails
+  * Add test cases to test overflow in the Kobltz reduction
+  * Update comments
+  * Add another round in the Koblitz reduction
+  * all.sh: test AES built-in implementation in AES-128-bit key only
+  * Set LANGUAGES explicitly in CMakeLists.txt project()
+  * Add changelog entry (FFDH driver dispatch)
+  * nist_kw.c: remove non-128-bit data if aes_128bit_only enabled
+  * Handle simple copy import/export before driver dispatch
+  * Fix peer vs our key missmatch in ffdh key agreement transparent driver
+  * Adapt guards in ffdh driver
+  * Adapt test driver configuration for FFDH
+  * Add FFDH support for transparent drivers(generate, export public key)
+  * gcm.c: do not set length for some arrays in selftest
+  * gcm selftest: remove non-128-bit data if aes_128bit_only enabled
+  * cmac selftest: add macro for non-128-bit data/test
+  * aes selftest: determine selftest loop limit in runtime
+  * bignum_common.py: Addressed minor typos
+  * Add test component for accelerated FFDH
+  * Work around Readthedocs command parsing bug
+  * aes selftest: remove non-128-bit data if aes_128bit_only enabled
+  * Add partial support for URI SubjectAltNames
+  * ChangeLog: remove issue number as this is a new feature
+  * mbedtls_config.h: remove empty * line before closing */ line
+  * mbedtls_config.h: rewrite comment for AES_ONLY_128_BIT_KEY_LENGTH
+  * rewrite ChangeLog
+  * aes.h: rewrite comment for aes round key buf
+  * generate_psa_tests.py: fix typo
+  * cert_audit: Fix DER files missed from parsing
+  * cert_audit: Remove merge_auditdata
+  * cert_audit: Use dictionary to store parsed AuditData
+  * cert_audit: Output format improvement
+  * cert_audit: Calculate identifier for X.509 objects
+  * cert_audit: Fix bug in check_cryptography_version
+  * cert_audit: Sort the outputs by not_valid_after date
+  * cert_audit: Merge audit_data for identical X.509 objects
+  * cert_audit: Support parsing file with multiple PEMs
+  * Reword the API token explanation in redirects.yaml
+  * Use if statement for post_build control flow
+  * Fix demo scripts for out-of-tree builds
+  * Fix coding style.
+  * Install cryptography only on linux platform
+  * Clean up commented code
+  * Limit max input cost to 32bit
+  * Enable empty salt as input for pbkdf2
+  * Remove redundant code in key_derivation_abort()
+  * Code optimization
+  * Use int instead uint in test function arguments
+  * Fix parsing of KeyIdentifier (tag length error case) + test
+  * aesce.c: add macro of MBEDTLS_AES_ONLY_128_BIT_KEY_LENGTH
+  * Correct comment about mbedtls error codes
+  * fix wrong target detection
+  * Fix input parameter alignment in P256K1 test cases
+  * Determine special cases in-place in the common Koblitz function
+  * mbedtls_psa_export_ffdh_public_key: return fixed key size
+  * pk: improve description for the next opaque ID field
+  * pkwrite: removing unused/duplicated variables
+  * Remove `delay milliseconds` test
+  * pk: use better naming for the new key ID field
+  * pk: fix library code for using the new opaque key solution
+  * pk: store opaque key ID directly in the pk_context structure
+  * add ChangeLog entry
+  * all.sh: add test for AES-128bit only without MBEDTLS_CTR_DRBG_C
+  * Auto-enable CTR_DRBG_USE_128_BIT_KEY with AES_ONLY_128_BIT_KEY_LENGTH
+  * aes.h: add comment for round key buffer in aes context
+  * Fix code style
+  * mbedtls_config.h: paraphrase code size saving in comment
+  * mbedtls_psa_ffdh_generate_key: optimize code and return fixed key size
+  * mbedtls_config.h: fix issue in grammar
+  * generate_psa_tests.py: add extra dependencies based on key bit
+  * Add AES 128-bit key dependency in test_suite_ssl.data
+  * Add AES 128-bit key dependency in test_suite_psa_crypto.data
+  * Add AES 128-bit key dependency for tests data
+  * all.sh: add test for AES_ONLY_128_BIT_KEY_LENGTH
+  * Add checks if MBEDTLS_AES_ONLY_128_BIT_KEY_LENGTH enabled
+  * AES: adjust AES RAM usage according to config options
+  * AES: skip 192bit and 256bit key in selftest if 128bit_only enabled
+  * AES: add macro of MBEDTLS_AES_ONLY_128_BIT_KEY_LENGTH
+  * Minor cosmetic changes
+  * Update broken link to doxygen homepage
+  * Remove most of the doxygen mainpage
+  * bignum_core: Removed input checking for `mbedtls_mpi_core_shift_l`
+  * Update PR template
+  * Silence bad "maybe unitialized" warning for ec_grp_id
+  * Fix unsued variable in mbedtls_pk_write_pubkey_der in certain configurations
+  * Only use mbedtls_ecc_group_of_psa if defined(MBEDTLS_ECP_LIGHT)
+  * Fix bug in mbedtls_pk_wrap_as_opaque
+  * Add pkwrite tests for X25519/X448 DER
+  * Add derive public test for X25519/X448
+  * Refactor EC SPKI serialization
+  * Add comment about version 1 PKCS8 keys not containing a public key
+  * Read and write X25519 and X448 private keys
+  * Add FFDH alg to test driver extensions
+  * Fix failing CI
+  * Enable FFDH through PSA if it's enabled in the legacy interface
+  * Use TEST_EQUAL instead of TEST_ASSERT
+  * Fix cross-platform compilation issue
+  * Fix parsing of authorityCertSerialNumber (use valid tags)
+  * mbedtls_pem_write_buffer: Correctly report needed buffer size for all possible line lengths and counts
+  * Remove unrequired limb size calculation
+  * Correct max canonical multiplication result
+  * Fix pastapasta
+  * typo
+  * Document a known issue with testing of mbedtls_x509_crt_parse_path
+  * Improve testing of mbedtls_x509_crt_parse_file
+  * Make output_byte return not_supported for pbkdf2
+  * Explicitly exit IPv4 parsing on a fatal error
+  * Add test cases for pbkdf2 input functions
+  * Add pbkdf2 to psa_key_derivation_abort
+  * Enable can_output_key with PSA_KEY_DERIVATION_INPUT_PASSWORD
+  * Add pbkdf2 input functions to psa_key_derivation_input_internal
+  * Add input password function for pbkdf2
+  * add input salt function for pbkdf2
+  * Add input cost function for pbkdf2
+  * Add pbkdf2_hmac to is_kdf_alg_supported()
+  * Add pbkdf2 to ATLEAST_ONE_BUILTIN_KDF definition
+  * Add pbkdf2 to key_derivation context struct
+  * Add pbkdf2 struct to crypto_builtin_key_derivation.h
+  * Add psa_pbkdf2_key_derivation_state_t
+  * Add builtin PBKDF2_HMAC definition in config_psa.h
+  * Enable PSA_WANT_ALG_PBKDF2_HMAC in crypto_config.h
+  * Use mbedtls_ct_uint_if() rather than mbedtls_ct_cond_select_sign()
+  * Halve size of mbedtls_error_pair_t
+  * Add post-build step to update redirects
+  * Add readthedocs-cli to requirements.in
+  * test: check for exact length of returned pub key
+  * test: optimize code for pk_write_public_from_private()
+  * test: use better naming for the newly introduced test function
+  * pk: fix position for mbedtls_platform_zeroize
+  * test: fix makefile for ec_pub.[der/pem] generation
+  * test: fix wrong private key file
+  * test: add test function for public key derivation starting from private one
+  * pk: fix: clear buffer holding raw EC private key on exit
+  * test: align ec_pub public keyfile with its ec_prv.sec1 counterpart
+  * Add test for parse_binary_string
+  * Disallow leading zeroes when parsing IPv4 addresses
+  * MBEDTLS_PSA_INJECT_ENTROPY: ignore seed file
+  * MBEDTLS_PSA_INJECT_ENTROPY: check the seed file UID
+  * MBEDTLS_PSA_INJECT_ENTROPY: check the lifecycle of the seed file
+  * Modernize remove_seed_file()
+  * Test MBEDTLS_PSA_INJECT_ENTROPY
+  * MBEDTLS_PSA_INJECT_ENTROPY: Skip incompatible tests
+  * MBEDTLS_PSA_INJECT_ENTROPY: Make sure the seed file exist when running tests
+  * Tests: provide necessary functions for MBEDTLS_PSA_INJECT_ENTROPY
+  * Fix a build error when MBEDTLS_PSA_INJECT_ENTROPY is enabled
+  * Regroup component that had gotten separated from its close siblings
+  * Change from Mbed TLS 3.3.0 to 3.4.0 in driver documentation.
+  * Minor changes to documentation and code comments for clarity
+  * Add support for building p256-m alongside Mbed TLS with CMake. Also check if p256-m is enabled in the config before including the contents of p256-m.c
+  * Migrate p256-m_driver_entrypoints.[hc] to new code style
+  * Minor formatting change to driver wrapper jinja template
+  * Add warnings to documentation stating that p256-m code may be out of date with upstream, plus other minor grammatical fixes.
+  * Use psa_generate_random() instead of mbedtls_ctr_dbrg
+  * Add 3rdparty license information to the README
+  * Add SPDX license identifiers to driver entry point files
+  * Add README and license from the p256-m repo
+  * Remove rand() from p256_generate_random() and move to an implementation based on mbedtls_ctr_drbg
+  * Add README in p256-m/
+  * Remove unnecessary no-check-names comments
+  * Add information for driver points where auto-generation is implemented
+  * Add example for integrating a driver alongside Mbed TLS for entrypoints where auto-generation of driver wrappers is not implemented yet. Using p256-m as the example driver/software accelerator.
+  * Rename p256m to p256 for uniform function/macro prefixes
+  * Start the driver example write-up (p256-m integration)
+  * Add step-by-step guide for writing and integrating drivers for entry points where auto-generation is not implemented
+  * Integrate p256-m as an example driver alongside Mbed TLS and write documentation for the example.
+  * mbedtls_psa_ffdh_set_prime_generator: use switch instead if-else
+  * Fix definition of PSA_RAW_KEY_AGREEMENT_OUTPUT_MAX_SIZE (ECC vs FFDH max)
+  * Update config files to make PSA FFDH undependent on MBEDTLS_DHM_C
+  * Add guards for psa_is_dh_key_size_valid
+  * test: use define for initializing ssl_message_queue struct
+  * Fix naming: FFDH key -> DH key and fix guard in psa_validate_key_type_and_size_for_key_generation
+  * test: fix USE_PSA_INIT position in test_suite_ssl
+  * change binary_string_parser for big-endian input
+  * Update tests/suites/test_suite_psa_crypto.function
+  * change binary_string_parser for big-endian input
+  * Don't explicitly inline mbedtls_mpi_core_clz
+  * Add tests with INPUT_INTEGER as key_type_arg
+  * Use key_type_arg for determining input method
+  * Remove unrelated comment
+  * mbedtls_test_psa_exported_key_sanity_check: check for length equality for DH keys
+  * Fix FFDH tests dependencies
+  * Use import_with_data for testing FFDH invalid key length
+  * Add function to validate dh key size
+  * Use PSA_MAX_OF_THREE in PSA_EXPORT_KEY_PAIR_MAX_SIZE
+  * mbedtls_psa_ffdh_generate_key: Fix random number generation
+  * Optimize code (if-else format, action on error)
+  * mbedtls_psa_ffdh_set_prime_generator: check if key size is equal and use sizeof
+  * Adjust ChangeLog
+  * Add Curve 448 tests
+  * Enable curve 448 to be tested
+  * Make mbedtls_ecdsa_can_do definition unconditional
+  * Bug Fix: mbedtls_ecdsa_verify_restartable fails with ECDSA_SIGN_ALT
+  * Fix VS2022 build error
+  * Adjust code style for pointer types and casts
+  * typo
+  * Add test cases with a question mark
+  * Fix wrong comment
+  * Explain the format argument expected by the test functions
+  * Fix typos in test descriptions
+  * Test the line number returned by parse_test_data
+  * Remove string hack for mbedtls_mpi_mod_int testing
+  * Allow more signed integer types in test function arguments
+  * Support larger integer test arguments: C part
+  * parse_function_arguments: stricter type parsing
+  * Support (void) as an argument list of a test function
+  * parse_function_arguments: extract per-argument function
+  * parse_function_arguments: make local_vars a list
+  * Support different types in the parameter store
+  * Simplify parsing of integers in .datax files
+  * Exercise string parsing in the test framework
+  * Simplify string escapes
+  * Factor get_function_info out of gen_from_test_data
+  * Add line number to a few error messages
+  * printf testing: exercise integer parsing in the test framework
+  * Remove stdint.h substitute for older MSVC
+  * Remove declarations of the nonstandard function strcasecmp
+  * Stop supporting non-canonical case in mpi_write_string test data
+  * bignum_core.py: Add "BignumCoreShiftL()"
+  * Allocate the right amount of memory
+  * Remove unused macro
+  * Ignore carry since it can not be generated
+  * Fix value in comment
+  * Ensure input parameter size for Koblitz reduction
+  * Use core API in `ecp_mod_koblitz()`
+  * Add ChangeLog entry for string-to-OID parsing
+  * Limit OIDs to 128 components
+  * fix clang test fail
+  * Fix typos, comments, style, optimize macros
+  * Provide PSA_WANT_KEY_TYPE_FFDH_PUBLIC_KEY configuration
+  * psa_export_public_key_internal: add missing check for FFDH key type
+  * Move check of the key type to mbedtls_psa_key_agreement_ffdh
+  * Add psa_crypto_ffdh to build
+  * test driver: add support for FFDH key agreement
+  * Move FFDH layer to separate file
+  * Add sanity check for FFDH key excercise
+  * Remove redundant test case (PSA_ALG_FFDH key agreement is now supported)
+  * Add FFDH key agreement tests
+  * Add FFDH key generation tests
+  * Add import/export FFDH key tests
+  * Adapt import/export test for FFDH
+  * Adapt size macros for FFDH
+  * Add key generation for FFDH keys
+  * Add key agreement for FFDH keys
+  * Add import/export of FFDH keys
+  * Adapt config files for FFDH
+  * authorityCertIssuer and authorityCertSerialNumber MUST both be present or absent
+  * Add compiler version checks.
+  * Improve minimum compiler versions document
+  * README: add section about drivers
+  * Remove undesirable test
+  * Remove unnecessary if to save 16 bytes
+  * Use ASSERT_COMPARE for comapring buffers
+  * test_suite_ecp: Refactored `ecp_mod_p256k1` to alignt with `ecp_mod_p192k1`
+  * ecp_curves: Renamed `ecp_mod_p256k1` -> `mbedtls_ecp_mod_p256k1`
+  * ecp_curves: Added unit-tests for `secp256k1`
+  * Optimize code (pake role type, freeing buffers)
+  * bignum_core_test_suite: Added `mpi_core_shift_l()`
+  * bignum_core: Aligned `xxx_core_shift_l` to `xxx_core_shift_r`
+  * bignum_core: Extracted mbedtls_mpi_shift_l from prototype
+  * Add undfined role for ec j-pake
+  * cert_audit: Reword the options and their descriptions
+  * cert_audit: Check the version of cryptography
+  * Add msvc version document
+  * fix wrong compiler checks
+  * Revert increase of MEMORY_HEAP_SIZE in ssl_client2
+  * Fix documentation
+  * test: update guards also for pkwrite and pkparse
+  * test: fix max value in test_mx32
+  * test: minor fix for non-initialized variable
+  * doc: update use-psa-crypto.md
+  * test: proper positioning of USE_PSA_INIT + added missing exit labels
+  * doc: update USE_PSA_CRYPTO description
+  * test: fix USE_PSA_INIT/DONE for SSL test suite
+  * test: fix USE_PSA_INIT/DONE for x509 test suite
+  * test: fix USE_PSA_INIT/DONE for PK test suite
+  * improve syms.sh script for external dependencies analysis
+  * test_suite_pkwrite: replace memcpy with memmove
+  * fix typos
+  * Use do-while(0) format in macros
+  * Fix code-style
+  * fix new line difference in Windows
+  * Add guards for mbedtls_psa_crypto_free()
+  * Init PSA in fuzz programs
+  * Add changelog entry (PSA initialization in sample programs)
+  * cert_audit: Clarify the abstraction of Auditor
+  * cert_audit: Add simple parser of suite data file
+  * Use loop for two passes in the reduction
+  * Document undefined case. Clarify test code.
+  * Add link to review guideline fro contributors
+  * cert_audit: Improve the method to find tests folder
+  * cert_audit: Add data-files and suite-data-files options
+  * cert_audit: Enable logging module
+  * Remove test-case for all-zero
+  * Further size optimisation
+  * pk: pass pk_context pointer to wrappers intead of void one
+  * Change clock source to boottime on linux.
+  * Remove unnecessary check
+  * fix msvc fail on embed assembly code
+  * fix msvc type cast fail.
+  * Add msvc build for aesce module
+  * fix grammar issues
+  * Fix tests
+  * Change to using an alloc-realloc strategy
+  * Size/perf optimisation for mbedtls_mpi_core_clz
+  * Fix code style
+  * Fix hex_string converter
+  * Fix input_integer testing
+  * Init PSA in pkey programs
+  * Free psa crypto at the end of programs when initialized
+  * cert_audit: Reuse generate_test_code.FileWrapper
+  * New implementation for generate_test_code.FileWrapper
+  * Improve comments about the time_delay test.
+  * Remove trailing whitespace from ecdsa.c
+  * Split a complex condition into separate ones
+  * test_suite_ecp: Refactored `ecp_mod_p224k1` to alignt with `ecp_mod_p192k1`
+  * ecp_curves: Introduced `mbedtls_ecp_mod_p224k1()`
+  * ecp_curves: Added unit-tests for `secp224k1`
+  * Add an IPv4 mapped IPv6 test
+  * Refactor IPv6 parsing
+  * test: properly check written PEM buffer len
+  * test: fix extension in DER test files
+  * Further refactor IPv4 parsing
+  * test: fix dependencies in DER and PEM tests
+  * test: specify input file type through enum
+  * Add warning to reserve the reason
+  * test: add Makefile target for the generated DER files
+  * Update comments and remove delay seconds test
+  * cert_audit: Code refinement
+  * test: use proper macros for checks
+  * cert_audit: Improve documentation
+  * remove time delay tests
+  * Update gen_prvkey_mx paras to align with comments and c code
+  * test: add DER file format for pkwrite tests
+  * test: add support for DER format in pkwrite tests
+  * test: memory footprint optimization for pkwrite tests
+  * Fix code style
+  * Fix test case dependency
+  * Add claryfication for PSA_PAKE_INPUT/OUTPUT_MAX_SIZE macros
+  * test: remove useless ECP_LIGHT guard in psa_exercise_key
+  * test: add coverage's analysis framework for accel EC algs w/o ECP
+  * Remove print from mini_client
+  * Move psa_crypto_init() after other init calls
+  * fix comments issues
+  * ecdsa: fix `-missing-prototypes` warning when `MBEDTLS_ECDSA_SIGN_ALT` is defined - In `mbedtls/v3.4.0`, ECDSA restartable sign and verify functions (`ecdsa.c`) were made public. - But the `mbedtls_ecdsa_sign_det_restartable` function prototype was declared in the file `ecdsa.h`,   only when `MBEDTLS_ECDSA_SIGN_ALT` is not defined.
+  * cert_app: init entropy unconditionally
+  * Init PSA in ssl and x509 programs
+  * Fix so that PSA_WANT_ALG_DETERMINISTIC_ECDSA implies PSA_HAVE_FULL_ECDSA.
+  * Code style
+  * Ensure variables initialised
+  * More fixes for big-endian
+  * Rename a variable in ipv4 and ipv6 parsing
+  * Refactor ipv6 parsing
+  * Rename ipv6 parsing variables, introduce one new one
+  * Introduce a test for a sw implementation of inet_pton
+  * Introduce an additional test for IPV4 parsing
+  * Replace old macro in test_suite_x509parse
+  * Improve x509_inet_pton_ipv4 readability
+  * Tidy-up
+  * Fix compile error
+  * Tidy-up
+  * Test fixes for big-endian
+  * Remove unneeded limb variables
+  * Add checks to guarantee positive input parameters
+  * Add dependency for P192K1 tests
+  * Fix function declaration
+  * Use macro guard for function declaration
+  * Add generated tests for ecp_mod_p192k1
+  * Add a testable function for ecp_mod_p192k1
+  * cert_audit: Output line/argument number for *.data files
+  * cert_audit: Make FILE as positional argument
+  * Fix derive_ecjpake_to_pms dependency to PSA_WANT_ALG_TLS12_ECJPAKE_TO_PMS.
+  * test_suite_ecp: Removed `MBEDTLS_ECP_DP_SECP_GENERIC_ENABLED` dependency.
+  * Update links in ecp.c
+  * Update SEC1 link in ecdsa.c
+  * Update SEC1 link in ecdh.c
+  * Updating makefile to document key generation
+  * Fix PSA AEAD ChaCha20 test dependency.
+  * test: resolve remaining disparities in test_suite_ssl
+  * Handle endianness in x509_inet_pton_ipv6()
+  * use MBEDTLS_PK_CAN_ECDSA_SOME
+  * use MBEDTLS_HAS_ALG_SHA_256_VIA_MD_OR_PSA_BASED_ON_USE_PSA
+  * Add mbedtls_x509_crt_parse_cn_inet_pton() tests
+  * add IP SAN tests changes per mbedTLS standards
+  * x509 crt verify local implementation to parse IP
+  * x509 crt verify SAN iPAddress
+  * test: revert undesired debug change in ssl-opt
+  * remove KEY_TYPE_ECC_PUBLIC_KEY unnecessary requirement
+  * test: include also test_suite_ecp for the coverage analysis
+  * solve disparities for ECP_LIGHT between ref/accel
+  * psa: fix ECP guards for key derivation
+  * pk_wrap: fix guards in eckey_check_pair to only include 1 option at build time
+  * build_info: fixed comment
+  * test: fix remaining failures in test due to the ECP_LIGHT symbol
+  * test: let test_psa_crypto_config_accel_all_ec_algs_use_psa use ECP_LIGHT
+  * library: add remaining changes for the new ECP_LIGHT symbol
+  * pk: adapt to new ECP_LIGHT symbol
+  * ecp: introduce new ECP_LIGHT symbol
+  * BRANCHES.md: improve wording
+  * remove PSA_HAVE_FULL_JPAKE symbol
+  * remove PSA_HAVE_FULL_ECDSA symbol
+  * remove PSA_HAVE_FULL_ECDH symbol
+  * cert_audit: Disable pylint error for importing cryptography
+  * test: fix guards position in test_suite_pk
+  * test: fix error handling in the new pk_genkey_ec() function
+  * test: use proper macros for PSA init/done
+  * ecp: revert changes to ECP module and related tests/programs
+  * gen_key: limit EC key generation to when USE_PSA is disabled
+  * pk: add alternate function for keypair generation using PSA
+  * cert_audit: Fill validity dates in AuditData constructor
+  * workaround the assert fail with tollerance
+  * cert_audit: Introduce not-[before|after] option
+  * try to reproduce random assert fail
+  * ssh_cache: Add back description of other errors for cache getter
+  * updating test-ca.key to use AES instead of DES
+  * Fix the wrong debug _message function to _ret
+  * Update the todo comment of record size limits
+  * Update group ext debug message in ssl_tls13_server.c
+  * Wrap lines in library/ssl_tls13_client.c
+  * Wrap lines which exceed 80 chars in ssl_tls13_server.c
+  * Wrap lines which exceed 80 chars in ssl_tls13_client.c
+  * Wrap lines which exceed 80 chars in ssl_tls13_generic.c
+  * Improve code styles(line numbers) for tls13_key.c
+  * Update SEC1 link in ecp.c
+  * ssl_cache: Error renaming and document improvement
+  * Fix unused variable warning
+  * cert_audit: Parse more information from test suite data file
+  * pkparse: fix return value
+  * pk: fix return codes' precedence and code style
+  * Change the format of md.h include comments
+  * pk_wrap: simplify prototype of eckey_check_pair_psa()
+  * pkparse: fix guards position
+  * test: use proper macros for PSA init/done
+  * pkparse: use proper sizing for buffer
+  * pkparse: add new function for deriving public key from private using PSA
+  * pk_wrap: minor code optimizations
+  * ecp.py: Set test-dependencies as attributes.
+  * test_suite_ecp: Updated dependency macros for ecp_raw_generic.
+  * test_suite_ecp: Introduced `ecp_mod_p_generic_raw`
+  * Test key_derivation_input_integer function
+  * Add key_derivation_input_integer function
+  * Remove unnecessary include
+  * tests: ssl: Restore !MBEDTLS_SSL_PROTO_TLS1_3 dependency
+  * tls13: srv: Fix comment
+  * tls12: srv: Use sizeof() instead of constant
+  * Add downgrade protection mechanism
+  * Use specific pointer to loop over proposed cipher suites
+  * ssl-opt.sh: Improve description of server negotiation tests
+  * Improve and align variable names for supported versions data
+  * Check for TLS 1.3 version first
+  * Fix, improve and add comments
+  * Update TLS 1.3 documentation and add change log
+  * ssl-opt.sh: Add version selection by the server tests
+  * ssl-opt.sh: Remove some unnecessary forcing of TLS 1.3
+  * tls: srv: Set hybrid TLS 1.2/1.3 as default configuration
+  * tests: ssl: Extend move to handshake state tests
+  * tls: srv: Allow server hybrid TLS 1.2 and 1.3 configuration
+  * tls: Add logic in handshake step to enable server version negotiation
+  * tls: Initialize SSL context tls_version in mbedtls_ssl_setup()
+  * tls13: srv: Add detection to negotiate TLS 1.2
+  * tls13: srv: Parse supported versions extension early
+  * tls13: srv: Postpone cipher suite selection
+  * tls13: srv: Postpone legacy session id copy
+  * tls13: srv: Postpone client random copy
+  * tls13: srv: Move TLS version setting
+  * tls13: Add function to search for a supported_versions extension
+  * ssl-opt.sh: Force TLS 1.2 on TLS 1.2 specific tests
+  * ssl-opt.sh: Force TLS 1.2 version
+  * ssl-opt.sh: Extend scope of some tests to TLS 1.3
+  * ssl-opt.sh: Remove unnecessary explicit MBEDTLS_SSL_PROTO_TLS1_2 dep
+  * ssl-opt.sh: Remove unnecessary TLS 1.3 forcing on client side
+  * ssl-opt.sh: Remove dummy TLS 1.3 kex modes tests
+  * tests: ssl: Add some missing dependencies
+  * tests: ssl: Move min/max TLS version setting to endpoint init
+  * Add a changelog entry
+  * cert_audit: Support audit on test suite data files
+  * cert_audit: Initial script for auditing expiry date
+  * Add a justification for early md.h include in programs
+  * Revert to using MBEDTLS_SHA_1_C when mbedtls_sha1 is called directly
+  * Remove duplicated md.h includes
+  * bignum: Removed merge scaffolding.
+  * Fix code style
+  * Remove redundant memory relase for authorityCertIssuer
+  * Release memory for subject alt name in test
+  * Use MBEDTLS_MD_CAN_SHA1 macro as test dependency
+  * Fix after rebase
+  * Remove redundant test cases
+  * Adapt test for authority_key_id (parsing subject alt name)
+  * Fix parsing of authorityCertIssuer
+  * Add indication of extension error while parsing authority/subject key id
+  * x509_get_authority_key_id: add length check + test
+  * Fix tests dependencies
+  * Use MBEDTLS_ERROR_ADD() and tag macros
+  * Remove parsing of rfc822Name
+  * Remove duplicated function
+  * Remove generation of authorityKeyId_subjectKeyId.crt from makefile
+  * Rename back mbedtls_x509_parse_general_name->mbedtls_x509_parse_subject_alt_name
+  * Fix Subject Key Identifier, Authority Key Identifier entries in oid_x509_ext
+  * Adapt mbedtls_x509_crt_free after rebase
+  * Adding some comments for easier understand
+  * Removing obsolete test after merging and correcting missing macro
+  * Renaming x509_get_subject_alt_name to x509_get_general_names and mbedtls_x509_parse_subject_alt_name to mbedtls_x509_parse_general_name so they can be used not only to collect subject alt name, but the V3 authority cert issuer that is also GeneralName type. Also updated the x509_get_general_names function to be able to parse rfc822Names
+  * - Removing obsolete test files (DER strings are used instead of them to minimize resource usage) - Renaming test functions to match the naming conventions
+  * Correcting tests: - Wrong condition was checked (ref_ret != 0 instead of ref_ret == 0) - tags were not checked (nor lengths) - Using ASSERT_COMPARE where possible
+  * Correting findings: Using DER format instead of PEM while testing to minimize the resource usage. Comparation of byte arrays in test are now done via the dedicated ASSERT_COMPARE test macro for better understanding
+  * Correcting documentation issues: - Changelog entry is Feature instead of API Change - Correcting whitespaces around braces - Also adding defensive mechanism to x509_get_subject_key_id   to avoid malfunction in case of trailing garbage
+  * x509parse tests used only last 16 bits of the return values. They are updated to check the whole 32 bit value
+  * Replacing hard-coded literals with macros of the library in the new x509parse tests
+  * Adding openssl configuration file and command to Makefile to be able to reproduce the certificate for testing Authority and Subject Key Id fields Increasing heap memory size of SSL_Client2 and SSL_Server2, because the original value is not enough to handle some certificates. The AuthorityKeyId and SubjectKeyId are also parsed now increasing the size of some certificates
+  * Extracting SubjectKeyId and AuthorityKeyId in case of x509 V3 extensions. Updating mbedtls_x509_crt_free function to also free the new dynamic elements (issuer field of AuthorityKeyId). A few tests are also added which test the feature with a correct certificate and multiple ones with erroneous ASN1 tags.
+  * Add missing md.h includes
+  * ecp: revert changes to ECP module and test suite
+  * pk_wrap: fix sizing for private key buffer
+  * Fix memory allocations in pkcs7_verify test
+  * Fix documentation
+  * Multplication is simmetric so only generate unique combinations
+  * fixed guard position for doxygen
+  * pk: add an alternative function for checking private/public key pairs
+  * Fix code style issues
+  * adding missing newline at the end of changelog file
+  * Update BRANCHES.md
+  * add Changelog
+  * test: disable all RSA algs and fix tests
+  * Whitespace fix
+  * Test that setting reset actually does something
+  * Fix cast alignment warning in timing.c
+  * Fix documentation
+  * Add generated test for core_mul
+  * Fix 0 limb size for value 0
+  * Add unit tests for mbedtls_mpi_core_mul()
+  * Tidy up, remove MPI_CORE(), apply the naming convention, and use the new mbedtls_mpi_core_mul()
+  * Extract MPI_CORE(mul) from the prototype
+  * all.sh: Fix test component name
+  * Fix documentation
+  * psa: Introduce PSA crypto core common symbols
+  * Pacify doxygen.sh
+  * psa: Introduce psa/build_info.h
+  * psa: Remove MBEDTLS_PSA_CRYPTO_DRIVERS configuration option
+  * psa: include: Move key derivation builtin and driver contexts
+  * psa: include: Move some Mbed TLS headers
+  * psa: Remove unnecessary headers
+  * Clarify LTS lifetime
+  * Fix a typo
+  * Fix dependency check for TLS 1.3 ECDH
+  * Remove unnecessary tabs
+  * Clarify SAN structure memory management
+  * Fix rfc822name test arguments
+  * Add missing information about supported subjectAltName types
+  * Add missing deallocation of subject alt name
+  * Move an x509 malformation test
+  * Add changelog entry for directoryname SAN
+  * Add a test for a malformed directoryname sequence
+  * Switch from PEM to DER format for new x509 directoryname test
+  * Adjust error reporting in x509 SAN parsing
+  * Introduce a test for a malformed directoryname SAN
+  * Introduce proper memory management for SANs
+  * Add the original certificate to be malformed for x509 tests
+  * Add support for directoryName subjectAltName
+  * test: remove old component errouneously reintroduced during rebase
+  * Update documented dependencies on ECC algs
+  * Use proper log function
+  * Fix function description
+  * test: fix/improve comments in all.sh
+  * Minor improvements
+  * Update documentation to mention ECC drivers
+  * test: fix text output
+  * test: minor refactoring
+  * test: improve comments and code in newly added helper function
+  * check_config: add helper symbol for SECP256R1
+  * test: add a companion test for another curve (x25519) and fix issues
+  * test: use full config as test starting point and solve issues
+  * test: use BUILTIN symbols in as weierstrass key derivation guard
+  * test: disable proper key exchanges while testing accel EC algs
+  * test: minor fixes to all.sh
+  * psa: use only PSA_WANT symbols for PSA_VENDOR_ECC_MAX_CURVE_BITS
+  * test: add legacy dependency for weierstrass key derivation
+  * psa: set PSA_VENDOR_ECC_MAX_CURVE_BITS based on both SW and accelerated support
+  * test: add specific test with only accel EC curves and algs
+  * Remove obsolete ecp_fix_negative function
+  * tls12_client: remove unnecessary parentheses
+  * test: fix wrong accelerated SHA1 symbol
+  * test: simplify comment in test_psa_crypto_config_accel_all_ec_algs_use_psa()
+  * test: removing test with all accel EC algs without USE_PSA
+  * test: moving accel ECJPAKE test close to accel ECDH and ECDSA ones
+  * ssl: remove useless guard
+  * test: improve comment in the added test
+  * test: remove unused tasks in analyze_outcomes.py
+  * test: fix erroneous changes in all.sh
+  * psa_crypto: fix guard for mbedtls_ecc_group_of_psa()
+  * test: fix comments in test_psa_crypto_config_accel_ecc()
+  * test: remove previous tests for accelerated ECDSA/ECDH/ECJPAKE coverage analysis
+  * ssl_tls: fix guard symbols for EC accelerated tests
+  * test: add a test with all EC based algs accelerated
+  * Add _build/ and api/ to gitignore
+  * Fix comments
+  * Typo: reorder testing classes
+  * Add test cases for P256 fast reduction testing
+  * Add test cases for P384 fast reduction testing
+  * Typo: reformat numbers
+  * Clean the breathe-apidoc files with make clean
+  * Add test cases for P521 fast reduction testing
+  * Add test cases for P224 fast reduction testing
+  * Add test cases for P192 fast reduction testing
+  * Add a second round of carry reduction for P192 fast reduction
+  * Fix conflict between restricted and development
+  * Revert "Add generated files"
+  * ecp_mod_p224_raw: Added `MBEDTLS_ECP_DP_SECP224R1_ENABLED` as a dependency
+  * Revert "Add exemption for make.bat in checks for tabs"
+  * Remove make.bat for documentation
+  * Improve docs Makefile to do full build
+  * Prevent mpi_mod_write from corrupting the input
+  * ssl_cache: Add descriptions of returns of cache accessors
+  * tests/.gitignore: ignore *.o under tests/src/test_helpers
+  * Fix a typo
+  * Mention EC J-PAKE opaque passwords.
+  * Try again to clarify USE_PSA_CRYPTO
+  * Fix documented dependencies on TLS 1.2
+  * Add a ChangeLog entry for driver-only hashes
+  * Use PSA Crypto: try clarifying what it means
+  * Update psa-limitations.md
+  * Update psa-migration/strategy.md
+  * Fix typos
+  * Fix depends.py failure with correct TLS 1.2 deps
+  * Disable built-in SHA-256 in accel_hash too
+  * Fix and simplify TLS hash dependency declarations
+  * Use helper macros for hashes in check_config.h
+  * Fix failures in test_suite_random
+  * Manually fix two remaining instances of old macros
+  * Fix instances of old feature macros being used
+  * Fix entropy-related feature macros
+  * Force SHA-256 for entropy in libtestdriver1
+  * Test entropy.c with driver-only hashes
+  * Fix driver_wrappers test
+  * Use MD-light in entropy.c
+  * test: improve analyze_outcomes.py script
+  * Fix signed/unsigned comparison (windows compilation failure)
+  * Add change log entry (j-pake user/peer accept any values)
+  * Extend j-pake input getters tests for user and peer
+  * Remove driver_pake_get_role function
+  * Adapt pake tests
+  * Adapt J-PAKE built-in impl to use user/peer
+  * ecp_curves: Updated ecp_mod_p384_raw documentation
+  * ssl_tls: fix guard in ssl_misc.h
+  * ssl_cache: Return standard mbedtls error code
+  * Update documentation of psa_pake_input
+  * Add tests case for step with different buffer size
+  * psa_pake_input: validate buffer size using PSA_PAKE_INPUT_SIZE
+  * Improve function return value description
+  * Improve positioning of GENERATE_XML option
+  * Remove Exhale from requirements and regenerate
+  * ecp_curves: Re-introduced `mbedtls_ecp_fix_negative()`
+  * changelog: fix description for ECDH changes
+  * ssl_tls13: use PSA_WANT_ALG_ECDH as symbol for marking ECDH capability
+  * added changelog for accelerated ECDH changes
+  * ssl_tls: fix proper guards for accelerated ECDH
+  * ssl_tls13: fix guards for accel ECDH
+  * accelerated ecdh: re-enable TLS 1.3 key exchanges and fix guards in check_config
+  * fix typo
+  * ecdh: simplify guards for the newly created PSA_HAVE_FULL_ECDH symbol
+  * test_suite_ssl: remove redundant dependencies when the key exchange is specified
+  * ecdhe: solve disparities in accelerated ECDHE vs reference
+  * ecdhe: fix guards for accelerated ECDHE key exchanges
+  * test: enable ECDHE key exchanges for driver coverage tests
+  * EC-JPAKE: remove limitation for user/peer (alow any value)
+  * EcpP384R1Raw: Added test case for 2nd round of carry reduction.
+  * ecp_curves: Minor rework for p384
+  * ecp test generator: Added EcpPp384R1Raw().
+  * test_suite_ecp: Added ecp_mod_p384_raw() test case.
+  * Remove now-spurious dependencies
+  * Enable ECDSA-det in driver-only hashes component
+  * Enable HMAC-DRBG in driver-only hashes component
+  * Enable PKCS7 in driver-only hashes component
+  * Enable HKDF in driver-only hashes test
+  * ecp_curves: Ported prototypes
+  * Fix typos & improve wording in comments
+  * MD: use MD_CAN in test suite and check for parity
+  * Remove legacy_or_psa.h
+  * SSL: fix test failures
+  * SSL: use MD_CAN macros
+  * X.509: fix test failures
+  * X.509: use MD_CAN macros
+  * PK: fix test failures
+  * PK: use MD_CAN macros
+  * OID + misc crypto: use MD_CAN and fix failures
+  * test_suite_psa_crypto: use PSA_WANT
+  * PKCS5: use MD_CAN macros
+  * PKCS5: always use MD
+  * RSA: use MD_CAN macros
+  * RSA: always use MD light
+  * PEM: use MD_CAN macros
+  * PEM: always use MD light
+  * PKCS12: use MD_CAN macros
+  * PKCS12: always use MD light
+  * ECJPAKE: use MD_CAN macros
+  * ECJPAKE: always use MD light
+  * Make MD_PSA_INIT/DONE available to all suites
+  * PSA hash algs must be a superset of built-ins
+  * MD no longer depends on a built-in hash
+  * test_suite_ssl: remove redundant ECDH dependencies when the key exchange is specified
+  * ssl-opt: remove leftover debug commands and fix comment
+  * ecdh: solve disparities in accelerated ECDH vs reference
+  * ssl_tls: fix guards for accelerated ECDH
+  * ssl-opt: solve errors in ECDH reference tests
+  * test: enable ECDH key exchanges for driver coverage tests
+  * Add exemption for make.bat in checks for tabs
+  * Ignore mbedtls macros causing warnings
+  * Add configuration for Read The Docs
+  * Add initial API doc configuration
+  * Tell Doxygen to generate XML
+  * Add space to appease doxygen bug
+  * ssl_helpers.c: add mbedtls_test prefix for tweak_tls13_certificate*
+  * ssl_helpers.c: add mbedtls_test_ssl prefix for *_exchange_data
+  * ssl_helpers.c: add mbedtls_test prefix for mbedtls_mock_socket_init
+  * ssl_helpers.c: change prefix and move *queue_peek_info to static
+  * ssl_helpers.c: change prefix and move *certificate_free to static
+  * ssl_helpers.c: move some internal functions to static
+  * ssl_cache: Improve some comments
+  * ssl_helpers.c: move #define Directive to header file
+  * ssl_helpers.c: unify code format between source file and header file
+  * fix win32 ms time fail
+  * Adjust time delay tests to fix fails
+  * change the clock source to MONOTONIC
+  * remove extra spaces
+  * fix random fails
+  * Fix llvm error: variables may be used uninitialized
+  * Add time test with delay
+  * Update changelog
+  * compat.sh: return $? in option --list-test-case to handle error case
+  * check_test_cases.py: do not redirect stderr to stdout
+  * check_test_cases.py: use check_output to capture error and return
+  * Fix md test with sha3.
+  * Add tests for time rountine
+  * Add change log entry for `mbedtls_ms_time`
+  * check_test_cases.py: simplify how to store test case description
+  * compat.sh: uniform TITLE format for --list-test-case and run_client
+  * compat.sh: fix uncompatiable name of peers in --list-test-case
+  * ssl-opt.sh: support to parse --outcome-file
+  * test-framework.md: document compat.sh
+  * compat.sh: add support to record outcome of test cases
+  * compat.sh: call record_fail if test case fails
+  * compat.sh: uniform test description
+  * check_test_cases.py: support checking test coverage in compat.sh
+  * compat.sh: add --list-test-case
+  * Change free'd to freed for consistency
+  * Correct INT_MAX overflow check to UINT_MAX
+  * Revert minimal integer requests
+  * Return seconds when clock_gettime error
+  * Improve documents about ms_time
+  * Add negative test cases for OID parsing
+  * Clarify structure of parsing with comments:
+  * Remove superfluous sizeof(unsigned char)
+  * Fixup: Correct signedness of val local variable
+  * Use return for errors only in oid_parse_number()
+  * Improve header docs and rename parameter
+  * Correct error in processing of second component
+  * Change some error codes to be more accurate
+  * Add tests for OID parsing from string
+  * Add function to parse an OID from a string
+  * Improve readability
+  * Put *MS_TIME* into together.
+  * Improve code style
+  * Add check, if the algorithm supports psa_sign_hash() before running the test.
+  * Correct style.
+  * SHA3 cannot be tested alone, as ENTROPY_C needs also SHA256 enabled.
+  * Style.
+  * Bad merge. These tests are not used.
+  * Add std PRI macro for printing milliseconds
+  * fix comments issues
+  * Change type of mbedtls_ms_time_t
+  * Add more comment for mbedtls_ms_time
+  * Implement ms time with GetSystemTimeAsFile time.
+  * Pass attributes alongside key buffer
+  * Fix math character used in text mode
+  * Fix entry point name
+  * Key derivation: improve overview of the problem space
+  * Add milliseconds time function
+  * Add million seconds time type.
+  * Remove useless debug log of pk type from test cases
+  * typo
+  * Update library/sha3.c
+  * Add const to move variables to .rodata section
+  * Update mps_common.h
+  * Fix naming confusion with opaque key derivation
+  * New function psa_crypto_driver_key_derivation_get_input_type
+  * Add guide to implementing new cryptographic mechanisms
+  * List all markdown files in makefile
+  * Be more consistent with raw/cooked key derivation terminology
+  * Fix typos and copypasta
+  * Fix internal links
+  * Fix dependency of HMAC-SHA384 tests.
+  * Add sha3 streaming and reuse tests.
+  * Add self tests (taken from #1549).
+  * Fix travis build.
+  * Adding tests for MD SHA3 (taken from #1549).
+  * Fix when reusing the same context for another operation.
+  * Added SHA3 to benchmark.
+  * Added SHA3 to MD.
+  * olen parameter shall contain the length of the buffer.
+  * Remove sha3_alt.h
+  * Fix when no SHA3 family is found.
+  * olen = 0 is not allowed for SHA-3.
+  * SHA-3 does not use SHA3_ALT anymore.
+  * Aligning spaces
+  * Add test vectors (from NIST) for SHA-3.
+  * Add SHA-3 module.
+  * Use QueryPerformanceCounter as fallback timer on non-x86 mingw
+  * Clarify backward compatibility requirement
+  * Write up requirements
+  * Updated slot->attr and slot->key access
+  * Rename a function parameter to avoid confusion
+  * Draft specification for key derivation
+  * PSA thread safety analysis
+
+-------------------------------------------------------------------
 Mon Aug 07 12:37:11 UTC 2023 - info@paolostivanin.com
 
 - Update to version 3.4.1:

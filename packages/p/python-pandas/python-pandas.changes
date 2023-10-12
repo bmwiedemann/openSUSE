@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Oct  7 20:22:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.1.1
+  ## Fixed regressions
+  * Fixed regression in concat() when DataFrame ‘s have two
+    different extension dtypes (GH 54848)
+  * Fixed regression in merge() when merging over a PyArrow string
+    index (GH 54894)
+  * Fixed regression in read_csv() when usecols is given and dtypes
+    is a dict for engine="python" (GH 54868)
+  * Fixed regression in read_csv() when delim_whitespace is True
+    (GH 54918, GH 54931)
+  * Fixed regression in GroupBy.get_group() raising for axis=1 (GH
+    54858)
+  * Fixed regression in DataFrame.__setitem__() raising
+    AssertionError when setting a Series with a partial MultiIndex
+    (GH 54875)
+  * Fixed regression in DataFrame.filter() not respecting the order
+    of elements for filter (GH 54980)
+  * Fixed regression in DataFrame.to_sql() not roundtripping
+    datetime columns correctly for sqlite (GH 54877)
+  * Fixed regression in DataFrameGroupBy.agg() when aggregating a
+    DataFrame with duplicate column names using a dictionary (GH
+    55006)
+  * Fixed regression in MultiIndex.append() raising when appending
+    overlapping IntervalIndex levels (GH 54934)
+  * Fixed regression in Series.drop_duplicates() for PyArrow
+    strings (GH 54904)
+  * Fixed regression in Series.interpolate() raising when
+    fill_value was given (GH 54920)
+  * Fixed regression in Series.value_counts() raising for numeric
+    data if bins was specified (GH 54857)
+  * Fixed regression in comparison operations for PyArrow backed
+    columns not propagating exceptions correctly (GH 54944)
+  * Fixed regression when comparing a Series with datetime64 dtype
+    with None (GH 54870)
+  ## Bug fixes
+  * Fixed bug for ArrowDtype raising NotImplementedError for
+    fixed-size list (GH 55000)
+  * Fixed bug in DataFrame.stack() with future_stack=True and
+    columns a non-MultiIndex consisting of tuples (GH 54948)
+  * Fixed bug in Series.dt.tz() with ArrowDtype where a string was
+    returned instead of a tzinfo object (GH 55003)
+  * Fixed bug in Series.pct_change() and DataFrame.pct_change()
+    showing unnecessary FutureWarning (GH 54981)
+  ## Other
+  * Reverted the deprecation that disallowed Series.apply()
+    returning a DataFrame when the passed-in callable returns a
+    Series object (GH 52116)
+- Drop pandas-pr55073-pyarrow13.patch merged upstream
+
+-------------------------------------------------------------------
 Sun Sep 10 13:10:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Fix test failures with pyarrow 13

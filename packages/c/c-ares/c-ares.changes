@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct 10 09:31:38 UTC 2023 - Adam Majer <adam.majer@suse.de> - 1.20.1
+
+- Update to version 1.20.1
+  * Remove bin/acountry from built tools as nerd.dk is gone
+  * Default per-query timeout has been reduced to 2s with a 3x retry count
+  * rand: add support for getrandom()
+
+  Bug fixes:
+  * TCP back to back queries were broken
+  * Ensure queries for ares_getaddrinfo() are not requeued during
+    destruction
+  * ares_getaddrinfo() should not retry other address classes if
+    one address class has already been returned
+  * Avoid production ill-formed result when qualifying a name
+    with the root domain
+  * Fix missing prefix for CMake generated libcares.pc
+  * DNS server ports can now be read from system configuration
+    instead of defaulting to port 53, aka openBSD resolv.conf format
+  * Replace usages of sprintf with snprintf
+
+-------------------------------------------------------------------
 Mon May 22 13:56:59 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Update to version 1.19.1

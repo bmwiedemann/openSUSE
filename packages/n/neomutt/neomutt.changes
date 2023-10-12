@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Oct 10 16:42:29 UTC 2023 - Victorhck <victorhck@opensuse.org>
+
+- Update to version 20231006:
+  - Features
+    * color: allow ‘alert’, ‘bright’, ‘light’ prefix for colorNNN
+    * color: refactor parsing code
+    * imap: truncate large UIDVALIDITYs to support non-conforming IMAP servers
+    * hcache: shrink Email and Body caches
+    * prompt: treat complete-query as complete where it makes sense
+    * help: add message flags to help screen
+    * help: add alternating colors
+    * mailboxes: add -label, -notify and -poll options
+    * add help to questions
+    * color_directcolor: Also set the default/initial value on startup
+  - Bug Fixes
+    * maildir: fix sync when a deleted file disappears
+    * gnutls: fix “certificate saved” message
+    * imap: truncate large UIDVALIDITYs to support non-conforming servers
+    * maildir: fix fix error with <sync-mailbox> on mbsync
+    * address: parse comments after address
+    * bind: fix truncated binding strings
+    * fix ‘from’ address when real name isn’t set
+    * Fix crash on <next-thread> when the <limit>ed view is empty
+    * browser: fix autocompletion
+    * pager: fix search crash
+    * help: fix search highlight
+    * force mail check on current mailbox after <shell-escape>
+    * openssl: continue if a signal interrupts an SSL read/write
+ - Changed Config
+    * Rename $imap_keepalive to $imap_keep_alive
+    * Change defaults to use %<...> conditional syntax $attach_format, $index_format, $mailbox_folder_format, $status_format, $ts_icon_format, $ts_status_format
+    * Add browser_sort_dirs_first to always list directories first
+ - Code
+    * imap: factor out tagged emails
+    * address: use struct Buffer instead of plain char pointers
+    * drop notifications relay
+    * move $delete_untag out of the backend
+    * respect --[disable-]fmemopen in tests
+    * hcache: optimize storage requirements, reduce config
+    * logging: catch format string errors
+    * colour: refactor colour parsing
+    * refactoring, cleanup
+    * fixed coverity defects
+    * convert many functions to use a Buffer
+
+-------------------------------------------------------------------
 Mon May 29 15:18:29 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 20230517:

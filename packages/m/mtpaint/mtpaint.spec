@@ -1,7 +1,7 @@
 #
 # spec file for package mtpaint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -33,17 +33,17 @@ Patch1:         mtpaint-3.50-strip.patch
 # PATCH-FIX-UPSTREAM https://github.com/wjaguar/mtPaint/issues/60 -- fix gcc version parsing
 Patch2:         mtpaint-3.50-fix-gcc-version-parsing.patch
 BuildRequires:  desktop-file-utils
-BuildRequires:  freetype-devel
+BuildRequires:  freetype2-devel
 BuildRequires:  giflib-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
+BuildRequires:  unzip
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp)
-BuildRequires:  unzip
 Requires:       ImageMagick
 Recommends:     %{name}-lang
 Recommends:     exif

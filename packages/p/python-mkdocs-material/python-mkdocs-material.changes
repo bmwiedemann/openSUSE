@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct 10 13:58:39 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.4.5:
+  * Fixed sidebar auto-positioning (9.4.2 regression)
+  * Fixed #6166: Improve group plugin compatibility with
+    Python < 3.10
+  * Fixed #6157: Hiding tags does not work (9.4.3 regression)
+
+-------------------------------------------------------------------
 Sat Oct  7 05:26:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.4.4:

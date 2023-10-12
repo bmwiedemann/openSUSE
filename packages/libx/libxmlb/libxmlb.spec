@@ -19,7 +19,7 @@
 
 %define sover 2
 Name:           libxmlb
-Version:        0.3.13
+Version:        0.3.14
 Release:        0
 Summary:        Library for querying compressed XML metadata
 License:        LGPL-2.1-or-later
@@ -27,9 +27,8 @@ Group:          Development/Libraries/Other
 URL:            https://github.com/hughsie/libxmlb
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source9:        baselibs.conf
-# Enable when/if libstemmer becomes available in openSUSE (+ in meson call)
-#BuildRequires:  libstemmer-devel
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  libstemmer-devel
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.45.8
@@ -93,7 +92,7 @@ Files for development with %{name}.
 	-Dgtkdoc=true \
 	-Dintrospection=true \
 	-Dtests=true \
-#	-Dstemmer=true \
+	-Dstemmer=true \
 	%{nil}
 %meson_build
 
@@ -103,8 +102,7 @@ Files for development with %{name}.
 %install
 %meson_install
 
-%post -n %{name}%{sover} -p /sbin/ldconfig
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
 
 %files -n %{name}%{sover}
 %license LICENSE

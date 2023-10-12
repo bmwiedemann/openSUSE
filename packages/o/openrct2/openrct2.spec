@@ -22,9 +22,13 @@
 %endif
 %define title_version 0.4.0
 %define title_version_url %{title_version}
-%define objects_version 1.3.7
+%define objects_version 1.3.11
+%define openmusic_version 1.3.0
+%define opensound_version 1.0.3
+%define openrct2_version 0.4.5
+
 Name:           openrct2
-Version:        0.4.3
+Version:        %{openrct2_version}
 Release:        0
 Summary:        An open source re-implementation of Roller Coaster Tycoon 2
 License:        GPL-3.0-only
@@ -33,10 +37,10 @@ URL:            https://openrct2.io/
 Source0:        https://github.com/OpenRCT2/OpenRCT2/archive/v%{version}/OpenRCT2-%{version}.tar.gz
 Source1:        https://github.com/OpenRCT2/title-sequences/archive/v%{title_version_url}/title-sequences-%{title_version_url}.tar.gz
 Source2:        https://github.com/OpenRCT2/objects/archive/v%{objects_version}.tar.gz#/objects-%{objects_version}.tar.gz
+Source3:        https://github.com/OpenRCT2/Openmusic/releases/download/v%{openmusic_version}/openmusic.zip#/openmusic-%{openmusic_version}.zip
+Source4:        https://github.com/OpenRCT2/OpenSoundEffects/releases/download/v%{opensound_version}/opensound.zip#/opensound-%{opensound_version}.zip
 #PATCH-FIX-UPSTREAM Included in next release: https://github.com/OpenRCT2/OpenRCT2/pull/19519
-Patch1:         0001-GCC-13-fixes-19519.patch
-# PATCH-FIX-UPSTREAM 19283.patch - fix memleak and Replace deprecated functions in zip
-Patch2:         https://patch-diff.githubusercontent.com/raw/OpenRCT2/OpenRCT2/pull/19283.patch
+Source5:        https://raw.githubusercontent.com/OpenRCT2/OpenMusic/master/COPYING
 BuildRequires:  cmake >= 3.9
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -60,6 +64,9 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(zlib)
+Recommends:     %{name}-openmusic
+Recommends:     %{name}-opensound
+Recommends:     %{name}-titlesequences
 Recommends:     (kdialog or zenity)
 ExcludeArch:    s390x
 
@@ -71,9 +78,11 @@ where the game_path = "" setting has to be set to a directory
 into which the original game has been installed to.
 
 %package titlesequences
+Version:        %{title_version}
 Summary:        Titlesequences for openRCT2
+License:        CC-BY-4.0
 Group:          Amusements/Games/Strategy/Other
-Requires:       %{name} = %{version}
+Requires:       openrct2 = %{openrct2_version}
 BuildArch:      noarch
 
 %description titlesequences
@@ -81,10 +90,33 @@ This package contains tilesequences like the original ones
 used in RollerCoaster Tycoon 1 and 2.
 When using RCT1 sequences, the original RCT1 files have to be installed.
 
+%package openmusic
+Version:        %{openmusic_version}
+Summary:        Open soundtracks for openRCT2
+License:        CC-BY-4.0
+Group:          Amusements/Games/Strategy/Other
+Requires:       openrct2 = %{openrct2_version}
+BuildArch:      noarch
+
+%description openmusic
+High quality soundtrack as replacement for, and addition to RollerCoaster Tycoon 2's
+soundtrack.
+
+%package opensound
+Version:        %{opensound_version}
+Summary:        Open soundeffects for openRCT2
+License:        CC-BY-SA-4.0
+Group:          Amusements/Games/Strategy/Other
+Requires:       openrct2 = %{openrct2_version}
+BuildArch:      noarch
+
+%description opensound
+Open source sound effects for OpenRCT2
+
 %prep
 # Autosetup doesn't work here:
 # https://github.com/rpm-software-management/rpm/issues/1204
-%setup -q -n OpenRCT2-%{version} -a 1 -a 2
+%setup -q -n OpenRCT2-%{openrct2_version} -a 1 -a 2
 %autopatch -p1
 
 # Remove build time references so build-compare can do its work
@@ -113,6 +145,13 @@ pushd title-sequences-%{title_version_url}/title
 popd
 
 %install
+
+install -dm755 %{buildroot}%{_datadir}/%{name}/
+
+# Move preloaded openmusic and opensound in place so cmake will pick it up
+cp %{_sourcedir}/openmusic-%{openmusic_version}.zip %{buildroot}%{_datadir}/%{name}/openmusic.zip
+cp %{_sourcedir}/opensound-%{opensound_version}.zip %{buildroot}%{_datadir}/%{name}/opensound.zip
+
 %cmake_install
 
 mkdir -p '%{buildroot}%{_datadir}/%{name}/sequence'
@@ -122,6 +161,8 @@ mkdir -p '%{buildroot}%{_datadir}/%{name}/object'
 cp -vR objects-%{objects_version}/objects/* '%{buildroot}%{_datadir}/%{name}/object'
 
 find '%{buildroot}%{_datadir}/%{name}' -type f -exec chmod 644 \{\} \;
+
+cp %{SOURCE5} .
 
 # We do that in the correct docdir in the files section.
 rm -rf %{buildroot}%{_datadir}/doc
@@ -138,6 +179,10 @@ rm -rf %{buildroot}%{_datadir}/doc
 %{_mandir}/man6/openrct2-cli.6%{?ext_man}
 %{_datadir}/openrct2/
 %exclude %{_datadir}/openrct2/sequence/rct*
+%exclude %{_datadir}/%{name}/openmusic.zip.zipversion
+%exclude %{_datadir}/%{name}/assetpack/openrct2.music.alternative.parkap
+%exclude %{_datadir}/%{name}/opensound.zip.zipversion
+%exclude %{_datadir}/%{name}/assetpack/openrct2.sound.parkap
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/applications/*.desktop
 %dir %{_datadir}/metainfo/
@@ -145,7 +190,17 @@ rm -rf %{buildroot}%{_datadir}/doc
 %{_datadir}/mime/packages/openrct2.xml
 
 %files titlesequences
-%license licence.txt
+%license title-sequences-%{title_version_url}/LICENSE
 %{_datadir}/openrct2/sequence/rct*
+
+%files openmusic
+%license title-sequences-%{title_version_url}/LICENSE
+%{_datadir}/%{name}/openmusic.zip.zipversion
+%{_datadir}/%{name}/assetpack/openrct2.music.alternative.parkap
+
+%files opensound
+%license  COPYING
+%{_datadir}/%{name}/opensound.zip.zipversion
+%{_datadir}/%{name}/assetpack/openrct2.sound.parkap
 
 %changelog

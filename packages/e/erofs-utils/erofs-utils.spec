@@ -17,22 +17,22 @@
 
 
 Name:           erofs-utils
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Utilities for the Extendable Read-Only Filesystem (EROFS)
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs-utils.git/
-
 Source:         %name-%version.tar.xz
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  automake
+BuildRequires:  liblz4-devel >= 1.9
 BuildRequires:  libtool
+BuildRequires:  libuuid-devel
 BuildRequires:  pkg-config
 BuildRequires:  xz
+BuildRequires:  pkgconfig(zlib)
 Supplements:    filesystem(erofs)
-BuildRequires:  liblz4-devel >= 1.9
-BuildRequires:  libuuid-devel
 
 %description
 mkfs.erofs is a user-space tool to create erofs filesystem images. It

@@ -247,4 +247,27 @@ https://c-ares.haxx.se/changelog.html#1_17_2</comment>
   * Sync ax_cxx_compile_stdcxx_11.m4 with upstream to fix uclibc support</comment>
     <requestid>1088407</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>47844ad5eeede8372eee473a933e0872</srcmd5>
+    <version>1.20.1</version>
+    <time>1697061239</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.20.1
+  * Remove bin/acountry from built tools as nerd.dk is gone
+  * Default per-query timeout has been reduced to 2s with a 3x retry count
+  * rand: add support for getrandom()
+  Bug fixes:
+  * TCP back to back queries were broken
+  * Ensure queries for ares_getaddrinfo() are not requeued during
+    destruction
+  * ares_getaddrinfo() should not retry other address classes if
+    one address class has already been returned
+  * Avoid production ill-formed result when qualifying a name
+    with the root domain
+  * Fix missing prefix for CMake generated libcares.pc
+  * DNS server ports can now be read from system configuration
+    instead of defaulting to port 53, aka openBSD resolv.conf format
+  * Replace usages of sprintf with snprintf</comment>
+    <requestid>1116650</requestid>
+  </revision>
 </revisionlist>

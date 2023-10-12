@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  4 08:35:18 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete code to remove +x permission from data files.
+
+-------------------------------------------------------------------
 Thu Sep 21 18:43:54 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update statistics to version 0.16.2.1.

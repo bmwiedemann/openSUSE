@@ -1054,4 +1054,14 @@
     able to merge currently history with history file (bsc#1213484)</comment>
     <requestid>1100325</requestid>
   </revision>
+  <revision rev="95" vrev="4">
+    <srcmd5>4c5f01f665bff060a549c502865ffbf2</srcmd5>
+    <version>6.24.10</version>
+    <time>1697061213</time>
+    <user>anag+factory</user>
+    <comment>- Add some fixes from
+  https://github.com/tcsh-org/tcsh/blob/master/complete.tcsh
+  to our complete.tcsh (boo#1215817)</comment>
+    <requestid>1116393</requestid>
+  </revision>
 </revisionlist>

@@ -1,9 +1,110 @@
 -------------------------------------------------------------------
+Tue Oct 10 06:46:08 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Install the internal executables in the /usr/libexec dir instead
+  of /usr/lib64. These files are keyboxd, scdaemon, gpg-auth
+  gpg-check-pattern, gpg-pair-tool, gpg-preset-passphrase,
+  gpg-protect-tool, gpg-wks-client, dirmngr_ldap and tpm2daemon.
+
+-------------------------------------------------------------------
+Mon Oct  9 12:33:12 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Provide the systemd-user files since they have been removed
+  upstream since version 2.4.1. [bsc#1201564]
+  * Add gpg2-systemd-user.tar.xz
+
+-------------------------------------------------------------------
 Thu Sep 21 07:36:32 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Install the systemd user units in the _userunitdir [bsc#1201564]
   * Note that, there is no activation by default.
   * Rework excludes in the spec's files section.
+
+-------------------------------------------------------------------
+Thu Aug  3 16:24:19 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Revert back to use the IBM TPM Software stack.
+
+-------------------------------------------------------------------
+Wed Jul  5 09:10:55 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.4.3:
+  * gpg: Set default expiration date to 3 years. [T2701]
+  * gpg: Add --list-filter properties "key_expires" and
+    "key_expires_d". [T6529]
+  * gpg: Emit status line and proper diagnostics for write errors. [T6528]
+  * gpg: Make progress work for large files on Windows. [T6534]
+  * gpg: New option --no-compress as alias for -z0.
+  * gpgsm: Print PROGRESS status lines. Add new --input-size-hint. [T6534]
+  * gpgsm: Support SENDCERT_SKI for --call-dirmngr. [rG701a8b30f0]
+  * gpgsm: Major rewrite of the PKCS#12 parser. [T6536]
+  * gpgtar: New option --no-compress.
+  * dirmngr: Extend the AD_QUERY command. [rG207c99567c]
+  * dirmngr: Disable the HTTP redirect rewriting. [T6477]
+  * dirmngr: New option --compatibility-flags. [rGbf04b07327]
+  * dirmngr: New option --ignore-crl-extensions. [T6545]
+  * wkd: Use export-clean for gpg-wks-client's --mirror and --create
+    commands. [rG2c7f7a5a27]
+  * wkd: Make --add-revocs the default in gpg-wks-client. New option
+    --no-add-revocs. [rG10c937ee68]
+  * scd: Make signing work for Nexus cards. [rGb83d86b988]
+  * scd: Fix authentication with Administration Key for PIV. [rG25b59cf6ce]
+
+-------------------------------------------------------------------
+Tue May 30 19:37:39 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.4.2:
+  * gpg: Print a warning if no more encryption subkeys are left over
+    after changing the expiration date.  [rGef2c3d50fa]
+  * gpg: Fix searching for the ADSK key when adding an ADSK.  [T6504]
+  * gpgsm: Speed up key listings on Windows.  [rG08ff55bd44]
+  * gpgsm: Reduce the number of "failed to open policy file"
+    diagnostics.  [rG68613a6a9d]
+  * agent: Make updating of private key files more robust and track
+    display S/N.  [T6135]
+  * keyboxd: Avoid longish delays on Windows when listing keys.
+    [rG6944aefa3c]
+  * gpgtar: Emit extra status lines to help GPGME.  [T6497]
+  * w32: Avoid using the VirtualStore.  [T6403]
+  * Rebase gnupg-add_legacy_FIPS_mode_option.patch
+
+-------------------------------------------------------------------
+Fri Apr 28 11:58:06 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.4.1:
+  * If the ~/.gnupg directory does not exist, the keyboxd is now
+    automagically enabled. [rGd9e7488b17]
+  * gpg: New option --add-desig-revoker. [rG3d094e2bcf]
+  * gpg: New option --assert-signer. [rGc9e95b8dee]
+  * gpg: New command --quick-add-adsk and other ADSK features.
+    [T6395, https://gnupg.org/blog/20230321-adsk.html]
+  * gpg: New list-option "show-unusable-sigs". Also show "[self-signature]"
+    instead of the user-id in key signature listings. [rG103acfe9ca]
+  * gpg: For symmetric encryption the default S2K hash is now SHA256. [T6367]
+  * gpg: Detect already compressed data also when using a pipe. Also
+    detect JPEG and PNG file formats. [T6332]
+  * gpg: New subcommand "openpgp" for --card-edit. [T6462]
+  * gpgsm: Verification of detached signatures does now strip trailing
+    zeroes from the input if --assume-binary is used. [rG2a13f7f9dc]
+  * gpgsm: Non-armored detached signature are now created without
+    using indefinite form length octets. This improves compatibility
+    with some PDF signature verification software. [rG8996b0b655]
+  * gpgtar: Emit progress status lines in create mode. [T6363]
+  * dirmngr: The LDAP modifyTimestamp is now returned by some
+    keyserver commands. [rG56d309133f]
+  * ssh: Allow specification of the order keys are presented to ssh.
+    See the man page entry for --enable-ssh-support. [T5996, T6212]
+  * gpg: Make list-options "show-sig-subpackets" work again.
+    Fixes regression in 2.4.0. [rG5a223303d7]
+  * gpg: Fix the keytocard command for Yubikeys. [T6378]
+  * gpg: Do not continue an export after a cancel for the primary key. [T6093]
+  * gpg: Replace the --override-compliance-check hack by a real fix. [T5655]
+  * gpgtar: Fix decryption with input taken from stdin. [T6355]
+  * Rebase patches:
+    - gnupg-revert-rfc4880bis.patch
+    - gnupg-add_legacy_FIPS_mode_option.patch
+  * Remove patch fixed upstream:
+    - gnupg-tests-Fix-tests-gpgme-for-in-source-tree-builds.patch
 
 -------------------------------------------------------------------
 Fri Mar 10 09:03:00 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
@@ -22,6 +123,13 @@ Fri Mar 10 08:42:02 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Allow 8192 bit RSA keys in keygen UI when large_rsa is set
   * Add gnupg-allow-large-rsa.patch
+
+-------------------------------------------------------------------
+Tue Feb  7 08:58:03 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix the regression test suite fails with the IBM TPM Software
+  stack. Builds fine using the Intel TPM; use the swtpm and
+  tpm2-0-tss-devel packages instead of ibmswtpm2 and ibmtss-devel.
 
 -------------------------------------------------------------------
 Wed Jan 11 11:15:54 UTC 2023 - Pedro Monreal <pmonreal@suse.com>

@@ -29,7 +29,7 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.15
+BuildRequires:  golang(API) >= 1.21
 Requires:       cni
 Requires(post): %fillup_prereq
 %{?systemd_requires}

@@ -57,4 +57,18 @@
     <comment></comment>
     <requestid>1081908</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>05c91aafde701e5bbaa1ced716294224</srcmd5>
+    <version>0.5.4</version>
+    <time>1697061254</time>
+    <user>anag+factory</user>
+    <comment>- Once more on the breach! Update to 0.5.4 (see changes below).
+
+- go back to 0.5.3 
+
+- update to 0.5.4:
+  * Support TryStar from python 3.11
+  * Support match statement from python 3.10</comment>
+    <requestid>1116718</requestid>
+  </revision>
 </revisionlist>

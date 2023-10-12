@@ -107,4 +107,18 @@
     <comment></comment>
     <requestid>1082448</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5a74c4104b12021506fb4a8a63512092</srcmd5>
+    <version>3.0.2</version>
+    <time>1697061220</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.2:
+  * Fix import path to make it vendoring-friendly
+  * remove py reference from tests
+- switch to gh tarball to get tests again
+
+- refresh pytest4.patch for pytest5
+- Converted to single-spec</comment>
+    <requestid>1116439</requestid>
+  </revision>
 </revisionlist>

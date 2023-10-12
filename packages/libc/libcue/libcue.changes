@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct 11 02:33:47 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.0
+  * EOF check [CVE-2023-43641]
+- Drop 0001-Check-that-the-array-index-isn-t-negative.-This-fixe.patch
+
+-------------------------------------------------------------------
+Tue Oct 10 05:42:26 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add 0001-Check-that-the-array-index-isn-t-negative.-This-fixe.patch
+  [CVE-2023-43641]
+
+-------------------------------------------------------------------
 Sun Sep  1 06:33:50 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.2.1

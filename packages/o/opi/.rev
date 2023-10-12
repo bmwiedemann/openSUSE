@@ -509,4 +509,19 @@
 - Update repo URL for MEGASync</comment>
     <requestid>1113461</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>6450d06aeab5c1c8dbc594f862d7fcce</srcmd5>
+    <version>3.6.0</version>
+    <time>1697061375</time>
+    <user>anag+factory</user>
+    <comment>- Version 3.6.0
+- Increase timeouts in testsuite and improve output
+- test: remove yandex-disk from multi-install test
+- Run testsuite for (fake) MicroOS
+- Fix repo URL generation for MicroOS and Leap Micro (fixes #158)
+- Add multi package option
+- Add ocenaudio audio editor (fixes #155)
+- Ignore gpg check for unsigned pkgs (or pkgs without published key)</comment>
+    <requestid>1116886</requestid>
+  </revision>
 </revisionlist>

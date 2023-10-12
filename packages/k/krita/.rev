@@ -737,4 +737,12 @@
     <comment>Exiv 0.28 fixes</comment>
     <requestid>1096687</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>cbfc321ad9cd2ff7300d1f17cc7e3f7f</srcmd5>
+    <version>5.2.0</version>
+    <time>1697061263</time>
+    <user>anag+factory</user>
+    <comment>Update to 5.2.0</comment>
+    <requestid>1116710</requestid>
+  </revision>
 </revisionlist>

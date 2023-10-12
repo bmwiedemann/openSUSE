@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 08 05:36:05 UTC 2023 - andreas.stieger@gmx.de
+
+- Update to version 20230930:
+  * util: gTLD data autopull updates for 2023-09-30T15:11:25 UTC
+  * Update .fr list, move some subspaces to PRIVATE section listing of smallregistry.net
+  * Remove k12.de.us
+  * Add wix.run
+
+-------------------------------------------------------------------
 Tue Aug 29 09:47:52 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20230826:

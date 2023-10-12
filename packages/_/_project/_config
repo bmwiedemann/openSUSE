@@ -3011,6 +3011,7 @@ BuildFlags: onlybuild:signify
 BuildFlags: onlybuild:slang
 BuildFlags: onlybuild:snappy
 BuildFlags: onlybuild:snobol4
+BuildFlags: onlybuild:snowball
 BuildFlags: onlybuild:socat
 BuildFlags: onlybuild:sord
 BuildFlags: onlybuild:soundtouch

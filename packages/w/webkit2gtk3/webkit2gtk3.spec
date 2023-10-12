@@ -428,6 +428,7 @@ A small test browswer from webkit, useful for testing features.
 
 
 # Expand %%lang_package to Obsoletes its older-name counterpart
+
 %package -n WebKitGTK-%{_apiver}-lang
 Summary:        Translations for package %{name}
 Group:          System/Localization

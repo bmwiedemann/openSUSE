@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Aug 31 18:22:10 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to 0.4.5
+  * Feature: gh#OpenRCT2/OpenRCT2#18713 Block brakes have speed control and brakes slower than adjacent block brakes copy block brake speed when block brake open.
+  * Feature: gh#OpenRCT2/OpenRCT2#19276 Add Powered Lifthill to Giga Coaster.
+  * Feature: gh#OpenRCT2/OpenRCT2#19305 Add new Reversed Trains ride setting to run trains backwards, granting a bonus to ride ratings.
+  * Feature: gh#OpenRCT2/OpenRCT2#19305 [Plugin] Add “Car.isReversed” to allow individual ride vehicles to run backwards.
+  * Feature: gh#OpenRCT2/OpenRCT2#19446 Add new color options to color dropdown.
+  * Feature: gh#OpenRCT2/OpenRCT2#19547 Add large sloped turns to hybrid coaster and single rail coaster.
+  * Feature: gh#OpenRCT2/OpenRCT2#19930 Add plugin APIs for research.
+  * Feature: gh#OpenRCT2/OpenMusic#25 Added Prehistoric ride music style.
+  * Feature: gh#OpenRCT2/OpenMusic#26 Fairground Organ style 2 with new recordings from Herman's 35er Voigt (Previously known as Bressingham Voigt).
+  * Feature: gh#OpenRCT2/OpenMusic#28 Add Ragtime style 2 ride music.
+  * Improved: gh#OpenRCT2/OpenRCT2#17739 Raise water and land height limits to 254 units/182m/600ft.
+  * Improved: gh#OpenRCT2/OpenRCT2#18490 Reduce guests walking through trains on level crossing next to station.
+  * Improved: gh#OpenRCT2/OpenRCT2#18996 When marketing campaigns are disabled, disable the Marketing tab in the Finances window.
+  * Improved: gh#OpenRCT2/OpenRCT2#19764 Miscellaneous scenery tab now grouped next to the all-scenery tab.
+  * Improved: gh#OpenRCT2/OpenRCT2#19830 “Highlight path issues” will now hide wall elements.
+  * Improved: gh#OpenRCT2/OpenRCT2#19905 Add prompt before resetting shortcut keys.
+  * Improved: gh#OpenRCT2/OpenRCT2#19952 Add colour preset to Spiral Slide using the new colour options.
+  * Improved: gh#OpenRCT2/OpenRCT2#19953 Add keyboard shortcut to Keyboard Shortcuts window.
+  * Improved: gh#OpenRCT2/OpenRCT2#20055 Performance improvement for the software renderer.
+  * Change: gh#OpenRCT2/OpenSFX#17 Update Hybrid RC lifthill loop.
+  * Fix: gh#OpenRCT2/OpenRCT2#12598 Number of holes is not set correctly when saving track designs.
+  * Fix: gh#OpenRCT2/OpenRCT2#13130 Android always defaulting to UK locale for language, currency and temperature.
+  * Fix: gh#OpenRCT2/OpenRCT2#13397 Ride simulation causes strange station behaviour and makes the ride unusable in some cases.
+  * Fix: gh#OpenRCT2/OpenRCT2#16791 Rotodrop top piece replicates when walls are placed around it and clearance checks are disabled (original bug).
+  * Fix: gh#OpenRCT2/OpenRCT2#18583 Land dropdown is incorrect if there are surface entry index holes.
+  * Fix: gh#OpenRCT2/OpenRCT2#18895 Responding mechanic blocked at level crossing.
+  * Fix: gh#OpenRCT2/OpenRCT2#19231 Crash due to null pointer to previously deleted banner in tile copy/paste functionality.
+  * Fix: gh#OpenRCT2/OpenRCT2#19296 Crash due to a race condition for parallel object loading.
+  * Fix: gh#OpenRCT2/OpenRCT2#19733 Favorite ride of X guests integer overflow.
+  * Fix: gh#OpenRCT2/OpenRCT2#19756 Crash with title sequences containing no commands.
+  * Fix: gh#OpenRCT2/OpenRCT2#19767 No message when path is not connected to ride exit and is therefore unreachable for mechanics.
+  * Fix: gh#OpenRCT2/OpenRCT2#19800 Crash when displaying station stats with more than 62 stations.
+  * Fix: gh#OpenRCT2/OpenRCT2#19801 The in-game load/save window cannot be resized anymore.
+  * Fix: gh#OpenRCT2/OpenRCT2#19854 Looping Coaster trains clipping through steep quarter turns down.
+  * Fix: gh#OpenRCT2/OpenRCT2#19858 Issue drawing simulate flag icon on alternate colour palettes.
+  * Fix: gh#OpenRCT2/OpenRCT2#19901 Random shop colours never assigning last colour.
+  * Fix: gh#OpenRCT2/OpenRCT2#19911 Guests stuck at certain railway crossings.
+  * Fix: gh#OpenRCT2/OpenRCT2#19924 Destructible cheat does not allow partial ride modification.
+  * Fix: gh#OpenRCT2/OpenRCT2#19950 Mine train block brake supports drawn incorrectly.
+  * Fix: gh#OpenRCT2/OpenRCT2#19955 Mine Train Roller Coaster has incorrect supports on the sloped left small turn (original bug).
+  * Fix: gh#OpenRCT2/OpenRCT2#19987 [Plugin] ‘SetCheatAction’ has wrong ID in plugin API.
+  * Fix: gh#OpenRCT2/OpenRCT2#20016 The group box for small scenery details in the Tile Inspector window has unused empty space.
+  * Fix: gh#OpenRCT2/OpenRCT2#20018 Shops not calculating up-keep cost.
+  * Fix: gh#OpenRCT2/OpenRCT2#20033 Asset packs cannot reference game data.
+  * Fix: gh#OpenRCT2/OpenRCT2#20104 [Plugin] Some network APIs use player index and group index.
+  * Fix: gh#OpenRCT2/OpenRCT2#20099 Some scrollbar is glitched or have incorrect size when open window for the first time
+  * Fix: gh#OpenRCT2/OpenRCT2#20134 Grass length being updated for tiles in the void, causing unneccesary drawing operations.
+- Update dependencies
+  * objects 1.3.11
+  (sync with upstream CMakeLists.txt of 0.4.5)
+- New dependencies
+  * openmusic 1.3.0
+  * opensound 1.0.3
+- Drop in upstream included patches
+  * 0001-GCC-13-fixes-19519.patch
+  * 19283.patch
+- Specificy the correct license of titlesequences
+
+-------------------------------------------------------------------
 Thu Aug 10 10:16:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 19283.patch: Fix build with new zip where zip_replace is

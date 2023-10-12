@@ -32,7 +32,6 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  keyutils-devel
 BuildRequires:  libjson-c-devel
-BuildRequires:  libuuid-devel
 BuildRequires:  meson
 BuildRequires:  openssl-devel
 BuildRequires:  python3-devel
@@ -79,7 +78,11 @@ Python binding part.
 
 %build
 export KBUILD_BUILD_TIMESTAMP=@${SOURCE_DATE_EPOCH:-$(date +%s)}
-%meson -Ddocs=man %{?_with_docs_build:-Ddocs-build=true} -Dversion-tag=%{version} -Dlibdbus=enabled
+%meson \
+    -Ddocs=man \
+    %{?_with_docs_build:-Ddocs-build=true} \
+    -Dversion-tag=%{version} \
+    -Dlibdbus=enabled
 %meson_build
 
 %if %{with check}
@@ -115,10 +118,6 @@ export KBUILD_BUILD_TIMESTAMP=@${SOURCE_DATE_EPOCH:-$(date +%s)}
 %{_libdir}/%{name}-mi.so.%{sover}*
 
 %files -n python3-libnvme
-%dir %{python3_sitearch}/libnvme
-%{python3_sitearch}/libnvme/*.so
-%{python3_sitearch}/libnvme/__init__.py
-%{python3_sitearch}/libnvme/nvme.py
-%pycache_only %{python3_sitearch}/libnvme/__pycache__
+%{python3_sitearch}/*
 
 %changelog

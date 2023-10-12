@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  9 14:17:21 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Use fixed timestamps for documentation allowing reproducable builds
+- Announce nvmeof-boot-support support via Provides
+- Filter rpmlint warnings for systemd-service-without-service_ macros
+- Add missing service files for NBFT feature
+  * add 0001-fabrics-autoconnect-add-service-unit-for-connecting-.patch
+  * add 0002-fabrics-add-udev-rule-to-avoid-renaming-nbft-interfa.patch
+
+-------------------------------------------------------------------
 Wed Oct  4 15:11:19 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Enable test during build
@@ -9,7 +19,7 @@ Wed Oct  4 15:11:19 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 -------------------------------------------------------------------
 Fri Sep 29 11:49:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
-- Update to version 2.6:
+- Update to version 2.6 (jsc#PED-3610 jsc#PED-4879 jsc#PED-5061):
   * nvme: allocate payload buffer in create-ns command
   * nvme-print-stdout: Add CAP.CPS and CAP.NSSS human readable outputs
   * nvme: Add output-format default option instead of argconfig json option
@@ -55,19 +65,19 @@ Fri Sep 29 11:49:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * plugins/zns: Fix offset in report zones
   * nvme-rpmb: Fix nvme_show_id_ctrl_rpmbs() definition error
   * fabrics: Use corresponding hostid when hostnqn is generated
-  * json: fix seg. fault converting NULL to JSON string
+  * json: fix seg. fault converting NULL to JSON string (bsc#1213762)
   * nvme-cli: fix extended metadata size calculation
-  * nvme-print: Show subsystem iopolicy
-  * nvme-print-stdout: Do not show non reachable ns in namespace topology
+  * nvme-print: Show subsystem iopolicy (bsc#1124564)
+  * nvme-print-stdout: Do not show non reachable ns in namespace topology (bsc#1212598)
   * nvme-print: Fix show-topolocy for ctrls
   * doc: Fix typo in documentation
   * nvme-print-stdout: fix storage tag size label
-  * nvme-print-stdout: List only ctrls which are part of ns
-  * nvme-print-stdout: Support subsys reachable from several hosts
-  * ccan: Add htable, strset and dependencies
-  * ccan: Remove unused documentation
+  * nvme-print-stdout: List only ctrls which are part of ns (bsc#1212598)
+  * nvme-print-stdout: Support subsys reachable from several hosts (bsc#1212598)
+  * ccan: Add htable, strset and dependencies (bsc#1212598)
+  * ccan: Remove unused documentation (bsc#1212598)
   * nvme-print: Split max power flags
-  * nvme-print: fix counter while looping through uuid_list
+  * nvme-print: fix counter while looping through uuid_list (bsc#1212598)
   * fabrics: only look for matching ctrl on same host
   * README: Correct hugetlbfs spelling error
   * util: Delete unused CFG_BOOL argconfig type as duplicated with CFG_FLAG
@@ -217,14 +227,13 @@ Fri Sep 29 11:49:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * nvme: Use stdout for passthru and submit_io commands success messages
   * nvme: Fix passthru command function indentation errors
   * nvme: Add support for NVMe-MI receive command
-  * fabrics: fix fc config JSON file handling
-- Refresh 0100-harden_nvmf-connect@.service.patch
+  * fabrics: fix fc config JSON file handling (bsc#1210089)
+ Refresh 0100-harden_nvmf-connect@.service.patch
 - Fix install path for nvme-regress script
-
 -------------------------------------------------------------------
 Fri Mar 31 15:44:20 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
-- Update to version 2.4:
+- Update to version 2.4 (jsc#PED-553 jsc#PED-3884):
   * plugins/ocp: Add SMART cloud log to solidigm plugin
   * nvme-print: Unify number base format for nsid
   * nvme-(discover,connect,connect-all): enable options '--keyring' and '--tls_key'
@@ -243,14 +252,14 @@ Fri Mar 31 15:44:20 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * plugins/inspur: Cast vendor specific smart log value
   * nvme: Use correct ABORT type for self abort test
   * plugins/solidigm: Do not overwrite previously initialized variable
-  * nvme-print: sanitize supported-log-pages output
+  * nvme-print: sanitize supported-log-pages output (bsc#1209550)
   * nvme: Enforce length to a multiple of 4 in get_log_page
-  * nvme: fix block count and data size logic
+  * nvme: fix block count and data size logic (bsc#1209564)
   * util: Introduce argconfig simple helper to check seen condition
   * plugins/ocp: Add set feature EOL/PLP failure mode no-uuid option
   * plugins/ocp: Refactor to clear feature identifier C1h and C3h
   * plugins/ocp: Add support for clear PCIe correctable error counters feature
-  * nvme-doc: update man page for supported-log-pages
+  * nvme-doc: update man page for supported-log-pages (bsc#1209550)
   * plugins/ocp: OCP 2.0 field updates for SMART cloud log
   * nvme: Fix parameter limit range
   * fdp: Fix wrong Reclaim Unit Handle Status size
@@ -259,7 +268,7 @@ Fri Mar 31 15:44:20 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * nvme: Fix invalid memory access in show_registers
   * util: Add argconfig seen flag parameter to check if feature NSID set
   * nvme-print: fix segfault in supported-log-pages json output
-  * fabrics: Fix ordering for auto connect services
+  * fabrics: Fix ordering for auto connect services (bsc#1208075)
   * nvme.c: Check Firmware Update Granularity in fwdl
   * log: high latency timestamp issue
   * nvme: Align get feature data buffer length by page size to allocate
@@ -298,6 +307,10 @@ Fri Mar 31 15:44:20 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * nvme: Support effects-log for fabrics ctrl
   * plugins/solidigm: Add uuid index resolution
   * plugins/ocp: Use network byte order for OCP UUID value
+  * json_discovery_log: avoid buffer overrun (bsc#1207435)
+  * Fix connect nbft regressions (bsc#1209905)
+  * Fix auto connect conditions (bsc#1210105)
+  * Fix auto boot for NBFT connections (bsc#1211647)
 
 -------------------------------------------------------------------
 Mon Jan 30 13:55:50 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
@@ -325,7 +338,7 @@ Wed Nov 02 17:10:58 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
   * build: Remove unused uuid.wrap file
   * build: Remove unusned uuid.h include
   * completions: Add show-topology tab completion
-  * fabrics: Honor JSON config file in connect-all command
+  * fabrics: Honor JSON config file in connect-all command (bsc#1199504)
   * fabrics: Trigger auto connect if config.json exists
   * fabrics: fix 'persistent' handling during connect-all with JSON file
   * fabrics: nvme config --modify depends on -n and -t argument
@@ -390,7 +403,7 @@ Wed Nov 02 17:10:58 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
   * tree: Combine NVMe file descriptor into struct nvme_dev
   * tree: Move global device info to a single struct
   * tree: fail on non-negative return values from parse_and_open
-  * udev: Add HOST_IFACE to udev rule
+  * udev: Add HOST_IFACE to udev rule (bsc#1208001)
   * util/json.h: Add json_object_get_uint64 fallback implementation
   * util/json: Add 128 bit JSON helpers
   * util/types: Add 128 bit conversion helpers
@@ -442,11 +455,14 @@ Mon Aug 01 13:17:48 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version v2.1:
   * nvme: Do not print error message in collect_effects_log helper
-  * fabrics: Remove dhchap-ctrl-secret from discover/connect-all
+  * fabrics: Remove dhchap-ctrl-secret from discover/connect-all (bsc#1201701)
   * nvme-print: sanitize the get-feature async event config output
   * nvme: Set default rae value for nvme_get_nsid_log users
   * fabrics: Avoid nvme_scan_ctrl when disconnecting
   * print: Fix nvme_id_uuid_list
+  * fabrics: Already connected uses a different error code (bsc#1199994)
+  * fabrics: skip connect if the transport types don't match (bsc#1199949 bsc#1199994)
+  * nvme-print: Show ANA state only for one namespace (bsc#1200044 bsc#1199956 bsc#1199990)
 
 -------------------------------------------------------------------
 Thu Jul 14 14:37:05 UTC 2022 - Daniel Wagner <daniel.wagner@suse.com>

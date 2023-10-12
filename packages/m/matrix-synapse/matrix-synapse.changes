@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
 Tue Oct 10 13:20:04 UTC 2023 - Marcus 'darix' Rückert <mrueckert@suse.de>
 
-- Update to 1.94.0
+- Update to 1.94.0 (boo#1216126 CVE-2023-45129)
+  GHSA-5chr-wjw5-3gq4 / CVE-2023-45129 — Moderate Severity
+
+  A malicious server ACL event can impact performance temporarily
+  or permanently leading to a persistent denial of service.
+
+  Homeservers running on a closed federation (which presumably do
+  not need to use server ACLs) are not affected.
+
   - Features
     - Render plain, CSS, CSV, JSON and common image formats in the
       browser (inline) when requested through the /download

@@ -60,6 +60,7 @@ Patch1:         0001-control.h-Fix-ump-header-file-detection.patch
 Patch2:         0002-global.h-move-__STRING-macro-outside-PIC-ifdef-block.patch
 Patch3:         0003-pcm-Fix-segfault-with-32bit-libs.patch
 Patch4:         0004-reshuffle-included-files-to-include-config.h-as-firs.patch
+Patch5:         0005-seq-Fix-typos-in-symbol-version-definitions.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -152,6 +153,7 @@ This package contains the library for ALSA topology support.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 %patch101 -p1
 
 %build

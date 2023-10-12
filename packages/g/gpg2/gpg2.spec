@@ -17,7 +17,7 @@
 
 
 Name:           gpg2
-Version:        2.4.0
+Version:        2.4.3
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -28,6 +28,7 @@ Source2:        https://gnupg.org/ftp/gcrypt/gnupg/gnupg-%{version}.tar.bz2.sig
 # https://www.gnupg.org/signature_key.html
 Source3:        https://gnupg.org/signature_key.asc#/%{name}.keyring
 Source4:        scdaemon.udev
+Source5:        gpg2-systemd-user.tar.xz
 Source99:       %{name}.changes
 Patch1:         gnupg-gpg-agent-ulimit.patch
 Patch2:         gnupg-2.0.9-langinfo.patch
@@ -43,8 +44,6 @@ Patch10:        gnupg-allow-import-of-previously-known-keys-even-without-UIDs.pa
 Patch11:        gnupg-allow-large-rsa.patch
 #PATCH-FIX-SUSE Revert the rfc4880bis features default of key generation
 Patch12:        gnupg-revert-rfc4880bis.patch
-#PATCH-FIX-UPSTREAM Fix tests/gpgme for in-source-tree builds
-Patch13:        gnupg-tests-Fix-tests-gpgme-for-in-source-tree-builds.patch
 BuildRequires:  expect
 BuildRequires:  fdupes
 BuildRequires:  ibmswtpm2
@@ -66,6 +65,7 @@ BuildRequires:  pkgconfig(zlib)
 # runtime dependency to support devel repository users - boo#955982
 Requires:       libassuan0 >= 2.5.0
 Requires:       libgcrypt20 >= 1.9.1
+Requires:       libgpg-error >= 1.46
 Requires:       libksba >= 1.3.4
 Requires:       pinentry
 Recommends:     dirmngr = %{version}
@@ -105,7 +105,7 @@ keytotpm command will not function unless this package is installed.
 %lang_package
 
 %prep
-%autosetup -p1 -n gnupg-%{version}
+%autosetup -p1 -a5 -n gnupg-%{version}
 
 # In order to compensate for gnupg-add_legacy_FIPS_mode_option.patch
 # to not have man pages and info files have the build date (boo#1047218)
@@ -114,19 +114,10 @@ touch -d 2018-05-04 doc/gpg.texi
 %build
 date=$(date -u +%%Y-%%m-%%dT%%H:%%M+0000 -r %{SOURCE99})
 %configure \
-    --libexecdir=%{_libdir} \
     --docdir=%{_docdir}/%{name} \
-    --with-agent-pgm=%{_bindir}/gpg-agent \
-    --with-pinentry-pgm=%{_bindir}/pinentry \
-    --with-dirmngr-pgm=%{_bindir}/dirmngr \
-    --with-scdaemon-pgm=%{_bindir}/scdaemon \
-    --with-tpm2daemon-pgm=%{_bindir}/tpm2daemon \
-    --enable-ldap \
-    --enable-gpgsm=yes \
-    --enable-gpgtar \
+    --disable-rpath \
     --enable-g13 \
     --enable-large-secmem \
-    --enable-wks-tools \
     --with-gnu-ld \
     --with-default-trust-store-file=%{_sysconfdir}/ssl/ca-bundle.pem \
     --enable-build-timestamp=$date \
@@ -137,6 +128,7 @@ date=$(date -u +%%Y-%%m-%%dT%%H:%%M+0000 -r %{SOURCE99})
 %install
 %make_install
 mkdir -p %{buildroot}%{_sysconfdir}/gnupg/
+
 # install gpgconf.conf bnc#391347
 install -m 644 doc/examples/gpgconf.conf %{buildroot}%{_sysconfdir}/gnupg
 # delete to prevent fdupes from creating cross-partition hardlink
@@ -151,31 +143,20 @@ ln -sf gpgv2 %{buildroot}%{_bindir}/gpgv
 ln -sf gpg2.1 %{buildroot}%{_mandir}/man1/gpg.1
 ln -sf gpgv2.1 %{buildroot}%{_mandir}/man1/gpgv.1
 
-# fix rpmlint invalid-lc-messages-dir:
-rm -rf %{buildroot}/%{_datadir}/locale/en@{bold,}quot
-
-# install scdaemon to %%{_bindir} (bnc#863645)
-mv %{buildroot}%{_libdir}/scdaemon %{buildroot}%{_bindir}
-mv %{buildroot}%{_libdir}/dirmngr_ldap %{buildroot}%{_bindir}
-
-# install tpm2daemon
-mv %{buildroot}%{_libdir}/tpm2daemon %{buildroot}%{_bindir}
-
 # install udev rules for scdaemon
 install -Dm 0644 %{SOURCE4} %{buildroot}%{_udevrulesdir}/60-scdaemon.rules
 
-# Move the systemd user units to appropriate directory
+# Move the systemd user units to the appropriate directory
 install -d -m 755 %{buildroot}%{_userunitdir}
-mv %{buildroot}%{_docdir}/%{name}/examples/systemd-user/*.s* %{buildroot}%{_userunitdir}
+cp systemd-user/gpg-agent*.s* %{buildroot}%{_userunitdir}
+cp systemd-user/dirmngr.s* %{buildroot}%{_userunitdir}
+cp systemd-user/README.systemd %{buildroot}%{_docdir}/gpg2/
 
 %find_lang gnupg2
 %fdupes -s %{buildroot}
 
 %check
-# Run only localy, fails in OBS
-%if ! 0%{?qemu_user_space_build}
-%make_build -j1 check || :
-%endif
+%make_build check || :
 
 %post
 %udev_rules_update
@@ -184,13 +165,12 @@ mv %{buildroot}%{_docdir}/%{name}/examples/systemd-user/*.s* %{buildroot}%{_user
 
 %files
 %license COPYING*
-%doc AUTHORS ChangeLog NEWS THANKS TODO doc/FAQ README
+%doc AUTHORS NEWS THANKS TODO ChangeLog
 %{_infodir}/gnupg*
 %{_mandir}/*/[agsw]*%{ext_man}
 %doc %{_docdir}/%{name}
-%{_bindir}/[gksw]*
-%{_libdir}/g*
-%{_libdir}/k*
+%{_bindir}/[gkw]*
+%{_libexecdir}/[gks]*
 %{_sbindir}/addgnupghome
 %{_sbindir}/applygnupgdefaults
 %{_sbindir}/g13-syshelp
@@ -204,10 +184,11 @@ mv %{buildroot}%{_docdir}/%{name}/examples/systemd-user/*.s* %{buildroot}%{_user
 %license COPYING*
 %{_mandir}/*/dirmngr*%{ext_man}
 %{_bindir}/dirmngr*
+%{_libexecdir}/dirmngr_ldap
 %{_userunitdir}/dirmngr.*
 
 %files tpm
 %license COPYING*
-%{_bindir}/tpm2daemon*
+%{_libexecdir}/tpm2daemon*
 
 %changelog

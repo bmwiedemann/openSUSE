@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 10 06:38:35 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Fix symbol version:
+  0005-seq-Fix-typos-in-symbol-version-definitions.patch
+
+-------------------------------------------------------------------
 Mon Sep 18 12:18:55 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - More upstream fix for incosistent compile conditions:
@@ -15,7 +21,7 @@ Sat Sep  9 15:49:43 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 -------------------------------------------------------------------
 Mon Sep  4 12:33:29 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
-- Update to version 1.2.10:
+- Update to version 1.2.10 (jsc#PED-6566):
   * MIDI 2.0 feature support
   * build fixes for various platforms
   * various documentation fixes
@@ -46,7 +52,7 @@ Mon May  8 08:42:43 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 -------------------------------------------------------------------
 Tue Oct 25 07:19:06 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
-- Update to version 1.2.8:
+- Update to version 1.2.8 (jsc#PED-850):
   add FreeBSD/NetBD/OpenBSD build support, fixes in control namehint,
   various PCM plugins and UCM.  For details, see:
     https://www.alsa-project.org/wiki/Changes_v1.2.7.2_v1.2.8

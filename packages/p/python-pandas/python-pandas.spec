@@ -53,7 +53,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-pandas%{psuffix}
 # Set version through _service
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -62,26 +62,28 @@ URL:            https://pandas.pydata.org/
 # SourceRepository: https://github.com/pandas-dev/pandas
 # Must be created by cloning through `osc service runall`: gh#pandas-dev/pandas#54903, gh#pandas-dev/pandas#54907
 Source0:        pandas-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pandas-pr55073-pyarrow13.patch gh#pandas-dev/pandas#55073 gh#pandas-dev/pandas#55048
-Patch0:         https://github.com/pandas-dev/pandas/pull/55073.patch#/pandas-pr55073-pyarrow13.patch
 BuildRequires:  %{python_module Cython >= 0.29.33 with %python-Cython < 3}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module meson-python >= 0.13.1}
-BuildRequires:  %{python_module numpy-devel >= 1.22.4}
+BuildRequires:  %{python_module numpy-devel >= 1.23.2 if %python-base < 3.12 else %python-numpy-devel >= 1.26}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module versioneer-toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
-BuildRequires:  meson >= 1.0.1
+BuildRequires:  meson >= 1.2.1
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.8.2
 Requires:       python-pytz >= 2020.1
 Requires:       timezone >= 2022a
 Obsoletes:      python-pandas-doc < %{version}
 Provides:       python-pandas-doc = %{version}
-Requires:       python-numpy >= 1.22.4
+%if 0%{python_version_nodots} < 312
+Requires:       python-numpy >= 1.23.2
+%else
+Requires:       python-numpy >= 1.26
+%endif
 # SECTION extras
 Recommends:     python-pandas-performance
 Suggests:       python-pandas-all
@@ -423,7 +425,6 @@ sed -i "s|'python', 'generate_version.py',|'${firstpython3}', 'generate_version.
 # don't require the PyPI data only tzdata package, we use the timezone RPM package
 sed -i '/dependencies = \[/,/\]/ {/tzdata.*>=/d}' pyproject.toml
 %endif
-%patch0 -p1
 
 %build
 %if !%{with test}

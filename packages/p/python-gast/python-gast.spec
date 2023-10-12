@@ -17,16 +17,16 @@
 
 
 %define srcname gast
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-gast
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        Python AST that abstracts the underlying Python version
 License:        BSD-3-Clause
 URL:            https://github.com/serge-sans-paille/gast/
 Source:         https://github.com/serge-sans-paille/gast/archive/%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module astunparse}
@@ -42,20 +42,21 @@ GAST provides a compatibility layer between the AST of various Python versions,
 as produced by ``ast.parse`` from the standard ``ast`` module.
 
 %prep
-%setup -q -n gast-%{version}
+%autosetup -p1 -n gast-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pyunittest discover -v tests
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/gast
+%{python_sitelib}/gast-%{version}*-info
 %doc README.rst
 %license LICENSE
 

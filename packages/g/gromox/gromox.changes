@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  4 10:37:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.14
+  * alias_resolve: support for nested mlist expansion
+  * alias_resolve: support for Global Contact Objects
+  * delivery: SIGHUP triggers a reload of (more) plugins now
+  * gromox-mbop: add emptyfld options -a, -M
+  * oxdisco, oab: avoid emitting extraneous NUL byte at end of
+    XML document
+  * imap: do not emit continuation request on LITERAL+
+
+-------------------------------------------------------------------
 Sat Sep 23 20:54:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.13

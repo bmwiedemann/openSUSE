@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  6 17:30:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add explicit /usr/bin/dbus-daemon BuildRequires: Needed for
+  tests.
+
+-------------------------------------------------------------------
 Sat Apr  8 20:18:39 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.20.6:

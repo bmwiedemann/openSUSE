@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  9 09:40:04 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Bump BuildRequired golang version to >= 1.21, fixes bsc#1216006
+
+-------------------------------------------------------------------
 Fri Dec 30 11:08:28 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - added patch 0001-fix-upstream-CVE-2021-38561.patch for [bsc#1206711]

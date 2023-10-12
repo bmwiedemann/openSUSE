@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  6 17:44:18 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 20230802.1:
+  * Add StdcppWaiter to the end of the list of waiter
+    implementations
+
+-------------------------------------------------------------------
 Thu Sep  7 06:49:51 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - update to 20230802.0

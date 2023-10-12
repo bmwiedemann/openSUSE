@@ -106,4 +106,12 @@
   * Support new executable_regexp and sha1 profile attributes</comment>
     <requestid>1089183</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5aea9d5bd20fc4d129a1d84246b2ec2f</srcmd5>
+    <version>2.7.1</version>
+    <time>1697061367</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116874</requestid>
+  </revision>
 </revisionlist>

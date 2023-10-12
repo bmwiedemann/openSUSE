@@ -928,4 +928,14 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
     current qemu build]</comment>
     <requestid>1092876</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>cbc681a945b103e93b515f2392296e61</srcmd5>
+    <version>2.40</version>
+    <time>1697061215</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.40
+  * mostly updated translation
+  * a few bugfixes</comment>
+    <requestid>1116422</requestid>
+  </revision>
 </revisionlist>

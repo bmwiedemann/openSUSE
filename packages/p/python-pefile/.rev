@@ -72,4 +72,13 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092237</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>d1ca7d5acfb14e041b86d77c250a43a6</srcmd5>
+    <version>2023.2.7</version>
+    <time>1697061206</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file
+</comment>
+    <requestid>1116245</requestid>
+  </revision>
 </revisionlist>

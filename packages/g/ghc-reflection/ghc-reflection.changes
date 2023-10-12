@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 30 12:49:12 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update reflection to version 2.1.7 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+- Drop obsolete code to remove +x permission from data files.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:02 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

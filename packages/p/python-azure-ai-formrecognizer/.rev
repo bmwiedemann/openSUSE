@@ -99,4 +99,17 @@
     CHANGELOG.md file provided with this package (forwarded request 1103841 from glaubitz)</comment>
     <requestid>1103876</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>50b05d09c7149a8da2efca762cc5fecd</srcmd5>
+    <version>3.3.1</version>
+    <time>1697061344</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 3.3.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove unzip package from BuildRequires
+- Switch source archive format to TAR.GZ (forwarded request 1116826 from glaubitz)</comment>
+    <requestid>1116837</requestid>
+  </revision>
 </revisionlist>

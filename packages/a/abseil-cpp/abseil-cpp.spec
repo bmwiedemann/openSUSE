@@ -18,7 +18,7 @@
 
 %define lname	libabsl2308_0_0
 Name:           abseil-cpp
-Version:        20230802.0
+Version:        20230802.1
 Release:        0
 Summary:        C++11 libraries which augment the C++ stdlib
 License:        Apache-2.0

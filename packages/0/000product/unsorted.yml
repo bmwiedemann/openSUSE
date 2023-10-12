@@ -1350,6 +1350,8 @@ unsorted:
   - biboumi 
   - bibtool 
   - bibview 
+  - bijiben 
+  - bijiben-lang 
   - bin86 
   - bind-modules-bdbhpt 
   - bind-modules-generic 
@@ -6810,6 +6812,7 @@ unsorted:
   - gnome-shell-extension-pop-shell 
   - gnome-shell-extension-terminus 
   - gnome-shell-extension-user-theme 
+  - gnome-shell-search-provider-bijiben 
   - gnome-shell-search-provider-boxes 
   - gnome-shell-search-provider-eolie 
   - gnome-shell-search-provider-epiphany 
@@ -8470,10 +8473,6 @@ unsorted:
   - javassist-javadoc 
   - javassist-manual 
   - javazic 
-  - jawn-ast 
-  - jawn-json4s 
-  - jawn-parser 
-  - jawn-util 
   - jaxb-api 
   - jaxb-api-javadoc 
   - jaxen 
@@ -11773,6 +11772,8 @@ unsorted:
   - libevent-2_1-7-32bit 
   - libevent-devel 
   - libevent-devel-static 
+  - libeverest 
+  - libeverest-x86-64-v3 
   - libevt-devel 
   - libevt-tools 
   - libevt1 
@@ -13229,18 +13230,18 @@ unsorted:
   - libmbd-mvapich2-devel 
   - libmbd-openmpi4 
   - libmbd-openmpi4-devel 
-  - libmbedcrypto14 
-  - libmbedcrypto14-x86-64-v3 
+  - libmbedcrypto15 
+  - libmbedcrypto15-x86-64-v3 
   - libmbedcrypto7 
   - libmbedcrypto7-x86-64-v3 
   - libmbedtls14 
   - libmbedtls14-x86-64-v3 
-  - libmbedtls19 
-  - libmbedtls19-x86-64-v3 
+  - libmbedtls20 
+  - libmbedtls20-x86-64-v3 
   - libmbedx509-1 
   - libmbedx509-1-x86-64-v3 
-  - libmbedx509-5 
-  - libmbedx509-5-x86-64-v3 
+  - libmbedx509-6 
+  - libmbedx509-6-x86-64-v3 
   - libmbim-devel 
   - libmbus 
   - libmbus-devel 
@@ -13940,6 +13941,8 @@ unsorted:
   - libowncloudsync-devel 
   - libowncloudsync0 
   - libp11-devel 
+  - libp256m 
+  - libp256m-x86-64-v3 
   - libp8-platform2 
   - libpackagekit-glib2-devel 
   - libpackagekitqt6-1 
@@ -15103,7 +15106,6 @@ unsorted:
   - libstdc++6-pp-gcc12 
   - libstdc++6-pp-gcc12-32bit 
   - libstellarsolver2 
-  - libstemmer0d 
   - libstfl-devel 
   - libstfl0 
   - libstilview-devel 
@@ -16043,7 +16045,6 @@ unsorted:
   - libxml2-devel-32bit 
   - libxml2-doc 
   - libxmlb-devel 
-  - libxmlb2-32bit 
   - libxmlb2-x86-64-v3 
   - libxmlbird1 
   - libxmlrpc++8 
@@ -18882,6 +18883,7 @@ unsorted:
   - nut-doc-images 
   - nut-drivers-net 
   - nvdock 
+  - nvidia-open-driver-G06-signed-default-devel 
   - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-texture-tools 
   - nvimpager 
@@ -19580,6 +19582,8 @@ unsorted:
   - openpgm-devel 
   - openqa-mon 
   - openrct2 
+  - openrct2-openmusic 
+  - openrct2-opensound 
   - openrct2-titlesequences 
   - openregex 
   - openregex-javadoc 
@@ -19924,7 +19928,6 @@ unsorted:
   - par 
   - par2cmdline 
   - par_text 
-  - paradise 
   - paranamer 
   - paranamer-ant 
   - paranamer-generator 
@@ -19938,8 +19941,6 @@ unsorted:
   - paraviewdata 
   - parboiled 
   - parboiled-javadoc 
-  - parboiled-scala 
-  - parboiled-scala-javadoc 
   - parcellite 
   - pari-devel 
   - pari-doc 
@@ -22853,7 +22854,6 @@ unsorted:
   - python3-gi-docgen 
   - python3-glanceclient 
   - python3-gluster 
-  - python3-gmconfig 
   - python3-gmsh 
   - python3-gnucash 
   - python3-gom 
@@ -25335,8 +25335,6 @@ unsorted:
   - python310-poetry-core 
   - python310-poetry-plugin-export 
   - python310-polib 
-  - python310-pomegranate 
-  - python310-pomegranate-devel 
   - python310-pony 
   - python310-pooch 
   - python310-pook 
@@ -28730,8 +28728,6 @@ unsorted:
   - python311-poetry-core 
   - python311-poetry-plugin-export 
   - python311-polib 
-  - python311-pomegranate 
-  - python311-pomegranate-devel 
   - python311-pony 
   - python311-pooch 
   - python311-pook 
@@ -32196,8 +32192,6 @@ unsorted:
   - python39-poetry-core 
   - python39-poetry-plugin-export 
   - python39-polib 
-  - python39-pomegranate 
-  - python39-pomegranate-devel 
   - python39-pony 
   - python39-pooch 
   - python39-pook 
@@ -34051,7 +34045,6 @@ unsorted:
   - quantum-espresso-openmpi2 
   - quantum-espresso-openmpi3 
   - quantum-espresso-openmpi4 
-  - quasiquotes 
   - quassel-base 
   - quassel-client 
   - quassel-client-qt5 
@@ -34658,7 +34651,6 @@ unsorted:
   - scala-apidoc 
   - scala-bootstrap 
   - scala-bootstrap-swing 
-  - scala-pickling 
   - scala-stm 
   - scala-stm-javadoc 
   - scala-swing 

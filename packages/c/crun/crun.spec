@@ -86,6 +86,10 @@ rm -rf %{buildroot}/%{_libdir}/lib*
 # allow easy krun usage with podman
 ln -s %{_bindir}/crun %{buildroot}%{_bindir}/krun
 %endif
+%if %with_wasmedge
+# platform 'wasi/wasm' requires crun-wasm
+ln -s %{_bindir}/crun %{buildroot}%{_bindir}/crun-wasm
+%endif
 
 %files
 %license COPYING
@@ -94,6 +98,9 @@ ln -s %{_bindir}/crun %{buildroot}%{_bindir}/krun
 %{_bindir}/%{name}
 %ifarch x86_64 aarch64
 %{_bindir}/krun
+%endif
+%if %with_wasmedge
+%{_bindir}/crun-wasm
 %endif
 %{_mandir}/man1/*
 
