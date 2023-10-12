@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 12 10:17:23 UTC 2023 - pgajdos@suse.com
+
+- changed comment in sig file
+- modified sources
+  % libev-4.33.tar.gz.sig
+
+-------------------------------------------------------------------
 Tue Oct  3 13:50:30 UTC 2023 - pgajdos@suse.com
 
 - run signify only on Factory
