@@ -735,4 +735,12 @@
     <comment>- Fix runtime dependencies (boo#1212455, boo#1215517)</comment>
     <requestid>1112942</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>71769caadc0889f0e57af57a1b2fe2bc</srcmd5>
+    <version>23.08.2</version>
+    <time>1697146786</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.2 (forwarded request 1116778 from krop)</comment>
+    <requestid>1117233</requestid>
+  </revision>
 </revisionlist>
