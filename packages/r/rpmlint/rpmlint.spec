@@ -23,7 +23,7 @@
 %define name_suffix -%{flavor}
 %endif
 Name:           rpmlint%{name_suffix}
-Version:        2.4.0+git20231006.4b34bab
+Version:        2.4.0+git20231010.276506d
 Release:        0
 Summary:        RPM file correctness checker
 License:        GPL-2.0-or-later
@@ -32,7 +32,9 @@ Source0:        rpmlint-%{version}.tar.xz
 Patch0:         disable-flake-and-cov.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildArch:      noarch
 %if "%{flavor}" == "test"
 BuildRequires:  appstream-glib
@@ -92,7 +94,7 @@ source packages can be checked.
 
 %build
 %if "%{flavor}" != "strict"
-%python3_build
+%python3_pyproject_wheel
 %endif
 
 %install
@@ -102,7 +104,7 @@ install -m644 configs/openSUSE/scoring-strict.override.toml %{buildroot}%{_sysco
 %endif
 
 %if "%{flavor}" == ""
-%python3_install
+%python3_pyproject_install
 fdupes %{buildroot}%{python3_sitelib}
 install -m644 configs/openSUSE/* %{buildroot}%{_sysconfdir}/xdg/rpmlint
 rm %{buildroot}%{_sysconfdir}/xdg/rpmlint/scoring-strict.override.toml
