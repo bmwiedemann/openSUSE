@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Mar 21 12:18:00 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java source and target levels 8
+
+-------------------------------------------------------------------
+Tue Jul 27 19:00:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not use xmvn-install and xmvn-resolve, since this package
+  does not need them at all because its pom file is very simple
+
+-------------------------------------------------------------------
+Fri Jun 11 08:49:03 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial commit with v1.0.3
