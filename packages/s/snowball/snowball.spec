@@ -1,7 +1,7 @@
 #
 # spec file for package snowball
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define library_name libstemmer0d
+%define library_name libstemmer1d
 
 Name:           snowball
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Snowball compiler and stemming algorithms
 License:        BSD-3-Clause
