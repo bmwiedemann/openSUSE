@@ -17,16 +17,13 @@
 
 
 Name:           python-exiv2
-Version:        0.12.3
+Version:        0.14.1
 Release:        0
 Summary:        Python3 bindings for the exiv2 library
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://launchpad.net/py3exiv2
-#
-Source0:        https://files.pythonhosted.org/packages/source/p/py3exiv2/py3exiv2-%{version}.tar.gz
-#
-Patch0:         py3exiv2-link-boost.patch
+Source:         https://github.com/jim-easterbrook/python-exiv2/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -48,7 +45,7 @@ libexiv2. Using python’s built-in data types and standard modules, it provides
 easy manipulation of image metadata.
 
 %prep
-%autosetup -p1 -n py3exiv2-%{version}
+%autosetup -p1
 
 %build
 %python_build
@@ -58,8 +55,7 @@ easy manipulation of image metadata.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
-%{python_sitearch}/libexiv2python.*.so
-%{python_sitearch}/pyexiv2
-%{python_sitearch}/py3exiv2-%{version}*-info
+%{python_sitearch}/exiv2
+%{python_sitearch}/exiv2-%{version}*-info
 
 %changelog
