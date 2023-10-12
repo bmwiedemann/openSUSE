@@ -936,4 +936,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE release gear 23.08.1 (forwarded request 1110807 from krop)</comment>
     <requestid>1111081</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>9ea618704877c0d902e78a92acdd8db6</srcmd5>
+    <version>23.08.2</version>
+    <time>1697146778</time>
+    <user>anag+factory</user>
+    <comment>KDE release gear 23.08.2 (forwarded request 1116778 from krop)</comment>
+    <requestid>1117204</requestid>
+  </revision>
 </revisionlist>
