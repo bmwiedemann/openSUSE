@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:27:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * Fix Edit Alarm dialog More/Less Options button being wrongly labelled "Defaults"
+  * Fix 'show today' button not showing in date picker when using Breeze
+  * Replace deprecated methods
+  * When alarm is deferred, ensure it's deleted from archive calendar
+
+-------------------------------------------------------------------
 Tue Sep 12 11:55:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1
