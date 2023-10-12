@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 12 09:13:39 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop unused pkgconfig(libepc-ui-1.0) BuildRequires.
+
+-------------------------------------------------------------------
 Mon Dec  5 08:33:33 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.4:
