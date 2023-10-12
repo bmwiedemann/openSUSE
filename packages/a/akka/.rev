@@ -63,4 +63,12 @@
     <comment>netty3 does not have compat version any more</comment>
     <requestid>975892</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>860b87dc9deef247868bce112d3fc628</srcmd5>
+    <version>2.8.5</version>
+    <time>1697147057</time>
+    <user>anag+factory</user>
+    <comment>Upgrading the scala stack</comment>
+    <requestid>1117472</requestid>
+  </revision>
 </revisionlist>
