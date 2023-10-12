@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Oct  5 08:54:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.9.2:
+  * revert #1358: auto_mkdir in open() (#1365)
+  * code style updates (#1373, 1372, 1371, 1370, 1369, 1364)
+  * update CI setup (#1386)
+- 2023.9.1
+  * #1353, save file cache metadata in JSON
+  * #1352, remove some unnecessary list iterations
+  * #1361, re-allow None for default port for SMB
+  * #1360, initialising GUI widget FS with kwargs
+  * #1358, pass auto_mkdir vi url_to_fs again
+  * #1354, auto delete temp cache directory
+- 2023.9.0
+  * #1346, add ocilake protocol
+  * #1345, implement async-sync and async-async generic cp and
+    rsync
+  * #1344, add lakefs protocol
+  * #1337 add goatcounter to docs
+  * #1323, 1328, add xethub protocol
+  * #1320, in HTTP, check content-encoding when getting length
+  * #1303, add on_error in walk
+  * #1302, add dirfs attribute to mappers
+  * #1293, configure port for smb
+  * #1349, don't reorder paths in bulk ops if source and dest are
+    both lists
+  * #1333, allow mode="x" in get_fs_token_paths
+  * #1324, allow generic to work with complex URLs
+  * #1316, exclude bytes-cache kwargs in url_to_fs
+  * #1314, remote utcnow/utcfromtimestamp
+  * #1311, dirFS's protocol
+  * #1305, use get_file rather than get in file caching
+  * #1295, allow bz2 to be optional
+  * #1340, 1339, 1329 more bulk ops testing
+  * #1326, 1296 separate out classes in file caching for future
+    enhancements
+
+-------------------------------------------------------------------
 Wed Jul  5 08:46:23 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2023.6.0
@@ -126,7 +164,7 @@ Sat Nov 19 14:48:38 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Fri Oct 28 17:10:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 2022.10.0 
+- Update to 2022.10.0
   Enhancements
   * referenceFS consolidates reads in the same remote file (#1063)
   * localfs: add link/symlink/islink (#1059)
@@ -198,7 +236,7 @@ Wed Sep 28 19:37:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   Other
   * Show erroring path in FileNotFounds (#989)
   * Reference file info without searching directory tree (#985)
-  * Truncate for local files (#975) 
+  * Truncate for local files (#975)
 
 -------------------------------------------------------------------
 Wed Jun 29 09:00:23 UTC 2022 - Ben Greiner <code@bnavigator.de>
@@ -504,9 +542,9 @@ Mon Dec 28 15:19:45 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   * Use extras_require in setup.py for optional dependencies
   * Replacing md5 with sha256 for hash (CVE req)
   * Test against Python 3.8, drop 3.5 testing
-  * add az alias for abfs 
+  * add az alias for abfs
 - Get source tarball from PyPI instead of GitHub
-- BuildRequires and Suggests extra stuff and test it, where 
+- BuildRequires and Suggests extra stuff and test it, where
   possible
 
 -------------------------------------------------------------------
@@ -598,7 +636,7 @@ Mon Sep  7 13:23:31 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 Wed Jun 24 03:58:37 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.7.4:
-  * No upstream changelog. 
+  * No upstream changelog.
 - Add numpy to BuildRequires.
 
 -------------------------------------------------------------------
