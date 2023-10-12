@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:26:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * snapcraft: try stage for data files.
+  * snapcraft: use override-prime to manipulate data files into the correct location.
+  * snapcraft: fix organize yaml for data.
+  * snapcraft: Fix path to where data is installed. Fix qqc env.
+  * snapcraft: fix artikulate-data plugin.
+  * snapcraft: Initial add snapcraft file
+
+-------------------------------------------------------------------
 Tue Sep 12 11:55:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1
