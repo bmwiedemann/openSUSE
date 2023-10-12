@@ -16,20 +16,20 @@
 #
 
 
-%global scala_short_version 2.10
+%global scala_short_version 2.13
 Name:           scala-stm
-Version:        0.7
+Version:        0.11.1
 Release:        0
 Summary:        Software Transactional Memory for Scala
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
-URL:            https://nbronson.github.io/scala-stm/
-Source0:        https://github.com/nbronson/scala-stm/archive/release-%{version}.tar.gz
+URL:            https://github.com/scala-stm/scala-stm
+Source0:        %{name}-%{version}.tar.xz
 Source1:        https://repo1.maven.org/maven2/org/%{name}/%{name}_%{scala_short_version}/%{version}/%{name}_%{scala_short_version}-%{version}.pom
 BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
-BuildRequires:  scala
+BuildRequires:  scala >= %{scala_short_version}
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildArch:      noarch
@@ -54,36 +54,35 @@ Group:          Development/Libraries/Java
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q -n %{name}-release-%{version}
-# Cleanup
-find -name '*.class' -print -delete
-find -name '*.jar' -print -delete
-# sb7_java-v1.2.tgz http://lpd.epfl.ch/gramoli/doc/sw/sb7_java-v1.2.tgz
-rm -r lib/*
-
-# get rid of sbt plugins
-rm project/plugins.sbt
-
-# delete tests due to missing deps
-rm -rf src/test
-rm -rf dep-tests
+%setup -q -n %{name}-%{version}
 
 %{mvn_file} org.%{name}:%{name}_%{scala_short_version} %{name}
 
 %build
 mkdir -p target/classes
-scalac -nobootcp -d target/classes $(find src/main -name \*.scala | xargs)
+scalac -nobootcp -d target/classes -release:8  \
+    $(find jvm/src/main/scala -name \*.scala && \
+      find jvm/src/main/scala-2.13+ -name \*.scala && \
+      find jvm/src/main/scala-2.14- -name \*.scala && \
+      find shared/src/main/scala -name \*.scala && \
+      find shared/src/main/scala-2.13+ -name \*.scala | xargs)
 jar -cf target/%{name}_%{scala_short_version}-%{version}.jar -C target/classes .
 mkdir -p target/apidoc
-scaladoc -nobootcp -d target/apidoc $(find src/main -name \*.scala | xargs)
+scaladoc -nobootcp -d target/apidoc -release:8 \
+    $(find jvm/src/main/scala -name \*.scala && \
+      find jvm/src/main/scala-2.13+ -name \*.scala && \
+      find jvm/src/main/scala-2.14- -name \*.scala && \
+      find shared/src/main/scala -name \*.scala && \
+      find shared/src/main/scala-2.13+ -name \*.scala | xargs)
 
 %install
+# target/scala-2.10/scala-stm_2.10-0.7.jar
 %{mvn_artifact} %{SOURCE1} target/%{name}_%{scala_short_version}-%{version}.jar
 %mvn_install -J target/apidoc/
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
-%doc README RELEASE-NOTES.txt
+%doc README.md RELEASE-NOTES.txt
 %license LICENSE.txt
 
 %files javadoc -f .mfiles-javadoc

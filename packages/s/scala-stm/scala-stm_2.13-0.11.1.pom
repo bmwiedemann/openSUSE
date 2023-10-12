@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.scala-stm</groupId>
+    <artifactId>scala-stm_2.13</artifactId>
+    <packaging>jar</packaging>
+    <description>A library for Software Transactional Memory in Scala</description>
+    <url>https://nbronson.github.com/scala-stm/</url>
+    <version>0.11.1</version>
+    <licenses>
+        <license>
+            <name>BSD 3-Clause &quot;New&quot; or &quot;Revised&quot; License</name>
+            <url>https://spdx.org/licenses/BSD-3-Clause</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <name>scala-stm</name>
+    <organization>
+        <name>org.scala-stm</name>
+        <url>https://nbronson.github.com/scala-stm/</url>
+    </organization>
+    <scm>
+        <url>https://github.com/scala-stm/scala-stm</url>
+        <connection>scm:git@github.com:scala-stm/scala-stm.git</connection>
+    </scm>
+    <developers>
+        <developer>
+            <id>nbronson</id>
+            <name>Nathan Bronson</name>
+            <url>https://github.com/nbronson</url>
+            <email>ngbronson@gmail.com</email>
+        </developer>
+        <developer>
+            <id>sciss</id>
+            <name>Hanns Holger Rutz</name>
+            <url>https://www.sciss.de</url>
+            <email>contact@sciss.de</email>
+        </developer>
+    </developers>
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.13.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_2.13</artifactId>
+            <version>3.2.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.scalatestplus</groupId>
+            <artifactId>junit-4-13_2.13</artifactId>
+            <version>3.2.7.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

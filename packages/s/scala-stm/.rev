@@ -23,4 +23,12 @@
     <comment>Remove dependency on sbt and build with simple scalac/scaladoc</comment>
     <requestid>1114968</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>27e25c2fe3c5c3795de9cfee0d1e6782</srcmd5>
+    <version>0.11.1</version>
+    <time>1697147056</time>
+    <user>anag+factory</user>
+    <comment>Upgrading the scala stack</comment>
+    <requestid>1117470</requestid>
+  </revision>
 </revisionlist>
