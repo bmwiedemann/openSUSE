@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Oct 12 05:28:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.8:
+  * Add v0.8.8 release notes (#5875)
+  * feat: show graphql schema errors in context (#5874)
+  * docs: update zenith build from source instructions (#5873)
+  * chore: link zenith labs docs in zenith readme (#5868)
+  * chore(deps): bump github.com/prometheus/procfs from 0.11.0 to
+    0.12.0 (#5845)
+  * docs: add concurrency guide to cookbook (#5833)
+  * Zenith xrc2: revenge of the function (#5757)
+  * fix: fix process hang when run with dagger run (#5712)
+  * docs: Updates Zenith guide (#5855)
+  * docs: Updates WithDirectory explanations (#5831)
+  * docs: Adds Zenith guide (#5853)
+  * docs: Moved token instructions (#5830)
+  * docs: Improves dependency caching recipes (#5814)
+  * docs: Improves explanation of caching and cache volumes (#5832)
+  * chore: Apache 2.0 license note (#5835)
+  * Improve schema (re)generation (#5826)
+  * install.sh uses CloudFront CDN for CLI installs (#5829)
+  * create argo-workflows guide (#5693)
+  * chore: add engine logs for failed queries (#5827)
+  * docs: fix indentation in GitHub Actions example (#5822)
+  * docs: improve cookbook to share client session and modules with
+    classes (#5810)
+  * Fix typo in docker-engine-host JavaScript snippt=et (#5819)
+  * docs: Adds Kubernetes guide (#5816)
+  * engine: cache: fallback to local cache if remote cache returns
+    an error (#5815)
+  * Attempt to start engine container before return (#5811)
+  * Fix helm chart publish (#5813)
+  * Update BuildKit dependency to use upstream Wait (#5808)
+  * Fix TestHTTP that relied on the existence of TESTING.md (#5812)
+  * chore: remove refs to deprecated io/ioutil (#5801)
+  * chore: update README and CONTRIBUTING guides (#5806)
+  * docs: Adds Dagger CLI step to quickstart (#5807)
+  * Dagger Engine Helm chart (#5505)
+  * docs: Adds Dagger Cloud docs (#5802)
+  * Improve releasing during v0.8.7 (#5800)
+
+-------------------------------------------------------------------
 Tue Sep 19 04:55:19 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.8.7:
