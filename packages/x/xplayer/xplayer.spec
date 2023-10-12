@@ -62,7 +62,6 @@ BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10.0
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(iso-codes)
-BuildRequires:  pkgconfig(libepc-ui-1.0) > 0.4.0
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.1.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 2.90.3
