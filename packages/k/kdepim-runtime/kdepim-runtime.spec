@@ -19,7 +19,7 @@
 %define kf5_version 5.105.0
 %bcond_without released
 Name:           kdepim-runtime
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -29,10 +29,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Revert-Revert-Use-config-plugin-instead-of-out-of-pr.patch
-Patch1:         0002-Revert-Revert-Fix-race-condition-when-building.patch
-Patch2:         0003-Actually-start-job-to-read-secret-key.patch
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  hicolor-icon-theme

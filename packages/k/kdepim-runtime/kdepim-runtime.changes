@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:27:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * Fix reading DAV provider properties
+  * Fix kpimtextedit dependency
+  * Actually start job to read secret key (kde#470820)
+  * Revert "Revert "Fix race condition when building""
+  * Revert "Revert "Use config plugin instead of out of process config dialog""
+  * Fix signal/slot
+- Drop patches, merged upstream:
+  * 0001-Revert-Revert-Use-config-plugin-instead-of-out-of-pr.patch
+  * 0002-Revert-Revert-Fix-race-condition-when-building.patch
+  * 0003-Actually-start-job-to-read-secret-key.patch
+
+-------------------------------------------------------------------
 Tue Sep 26 11:43:01 UTC 2023 - Bob Haley <fawz@use.startmail.com>
 
 - Add libetebase-devel to BuildRequires to enable the etesync resource for
