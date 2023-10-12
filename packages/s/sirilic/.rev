@@ -7,4 +7,19 @@
     <comment>This package complements siril.</comment>
     <requestid>1109262</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e7fc96c741720febdf3d7ded832cda46</srcmd5>
+    <version>1.15.8</version>
+    <time>1697146863</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.15.8:
+  * fix &quot;platesolving&quot;
+  * fix &quot;weighing&quot; only for light
+  * check if Siril path is a file and file access is &quot;x&quot;
+  * fix coords format (Simbad) (Sometimes, the format is not degre minute second)
+  * fix project history
+- Remove useless checks.
+</comment>
+    <requestid>1117111</requestid>
+  </revision>
 </revisionlist>

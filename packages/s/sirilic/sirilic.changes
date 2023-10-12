@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct  9 14:32:28 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.15.8:
+  * fix "platesolving"
+  * fix "weighing" only for light
+  * check if Siril path is a file and file access is "x"
+  * fix coords format (Simbad) (Sometimes, the format is not degre minute second)
+  * fix project history
+
+-------------------------------------------------------------------
+Thu Oct  5 15:12:47 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Remove useless checks.
+
+-------------------------------------------------------------------
 Wed Sep  6 11:56:23 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.15.7:
