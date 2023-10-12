@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kdf
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Disk Usage Viewer
 License:        GPL-2.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Notifications)
