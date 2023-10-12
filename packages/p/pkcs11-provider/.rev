@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1d9fbbf2be2aa4eb668b12a0dd442bd</srcmd5>
+    <version>0.2</version>
+    <time>1697147086</time>
+    <user>anag+factory</user>
+    <comment>Package new OpenSSL 3 Provider for PKCS11. Already available in Fedora, queued for Debian/Ubuntu.
+
+Removed .la archive as requested.</comment>
+    <requestid>1117501</requestid>
+  </revision>
+</revisionlist>
