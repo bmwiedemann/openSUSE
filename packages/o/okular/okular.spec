@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           okular
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
