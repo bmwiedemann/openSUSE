@@ -222,4 +222,16 @@
   * go#62597 cmd/link: issues with Apple's new linker in Xcode 15 beta (forwarded request 1115931 from jfkw)</comment>
     <requestid>1115933</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e1c5d89fc43f232ca1301a7b22ce1a96</srcmd5>
+    <version>1.20.10</version>
+    <time>1697146742</time>
+    <user>anag+factory</user>
+    <comment>- go1.20.10 (released 2023-10-10) includes a security fix to the
+  net/http package.
+  Refs boo#1206346 go1.20 release tracking
+  CVE-2023-39325 CVE-2023-44487
+  * go#63426 go#63417 boo#1216109 security: fix CVE-2023-39325 CVE-2023-44487 net/http: rapid stream resets can cause excessive work (forwarded request 1116740 from jfkw)</comment>
+    <requestid>1116742</requestid>
+  </revision>
 </revisionlist>
