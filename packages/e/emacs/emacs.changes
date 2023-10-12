@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct 10 11:36:25 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- For the at-spi bus the package at-spi2-core is required 
+- Move eln prune code from ~/.gnu-emacs to site-start
+
+-------------------------------------------------------------------
+Mon Oct  9 08:41:27 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid warnings about eln files as well as prune older eln files 
+
+-------------------------------------------------------------------
+Fri Oct  6 22:37:59 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Add packaging macros for Emacs packages
+- Add site-lisp directory for dynamic modules
+
+-------------------------------------------------------------------
 Thu Sep 28 11:53:14 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - For GNUS: Use message-user-fqdn instead of gnus-local-organization
