@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 12 11:29:04 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 0.11.1
+  * Changes
+    + add Dotty support
+    + fix potential issue in RetrySet
+    + add Scala 2.13 support (includes using new Collections API,
+      changing all occurrences of deprecated ClassManifest for
+      ClassTag)
+    + disable "multi-barrier deadlock cycle" test (uses
+      CommitBarrier)
+    + fix initialisation bug in RetrySetBuilder (InitialCap was
+      zero)
+    + correctness fix for TArray[Long] and AtomicArray.ofLong.
+    + small improvement to TxnLocal interface.
+    + add 2.12 build and remove 2.10 build.
+    + add deprecated message about incomplete deadlock detection
+      for CommitBarrier.
+
+-------------------------------------------------------------------
 Tue Oct  3 09:31:36 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove dependency on sbt and allow building with java 9+

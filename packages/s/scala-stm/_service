@@ -1,0 +1,18 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/scala-stm/scala-stm.git</param>
+<!--	<param name="revision">v0.11.0</param>
+		<param name="match-tag">v*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">v(.*)</param> -->
+        <param name="revision">c4a2c40611e77dc295728ca76ac53e56f2726ddc</param>
+        <param name="versionformat">0.11.1</param>
+        <param name="exclude">**/*.jar</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>
