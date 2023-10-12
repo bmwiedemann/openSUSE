@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:27:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * thumbnail Jpegcreator: skip exif thumbnail when too small (kde#466658)
+
+-------------------------------------------------------------------
 Tue Sep 12 11:55:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1
