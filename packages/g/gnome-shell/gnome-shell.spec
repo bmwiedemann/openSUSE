@@ -65,6 +65,8 @@ Patch1010:      gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
 Patch1011:      gnome-shell-disable-offline-update-dialog.patch
 # PATCH-FEATURE-SLE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog
 Patch1012:      gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
+# PATCH-FIX-SLE gnome-shell-add-linkoption-dl.patch -- Need explicit -ldl build option with older gcc on SLE 15
+Patch1013:      gnome-shell-add-linkoption-dl.patch
 
 # needed for directory ownership
 BuildRequires:  asciidoc
@@ -199,6 +201,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch1011 -p1
 %endif
 %patch1012 -p1
+%patch1013 -p1
 %endif
 
 cp %{SOURCE2} data/theme/

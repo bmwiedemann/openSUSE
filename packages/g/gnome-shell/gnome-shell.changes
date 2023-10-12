@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 12 03:16:50 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
+
+- Add gnome-shell-add-linkoption-dl.patch on SLE and Leap: the -ldl
+  option to build gnome-shell main programme is needed because an
+  upstream fix. This option needs explicitly given on current SLE
+  build environment. See:
+  https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/65cde18786e2bea8ffe33317b86182207e419240
+
+-------------------------------------------------------------------
 Sat Sep 16 22:16:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 45.0:
