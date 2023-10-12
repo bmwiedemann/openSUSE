@@ -1,0 +1,204 @@
+From 5c585eb8ce8d91a64430ecc88f7c78d6a7b2e907 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Sat, 30 Sep 2023 14:29:38 +0200
+Subject: [PATCH] no-pack200
+
+---
+ src/main/resources/scala/tools/ant/antlib.xml |   2 -
+ .../scala/scala/tools/ant/Pack200Task.scala   | 173 ------------------
+ 2 files changed, 175 deletions(-)
+ delete mode 100644 src/main/scala/scala/tools/ant/Pack200Task.scala
+
+diff --git a/src/main/resources/scala/tools/ant/antlib.xml b/src/main/resources/scala/tools/ant/antlib.xml
+index 7885534..e3c3e37 100644
+--- a/src/main/resources/scala/tools/ant/antlib.xml
++++ b/src/main/resources/scala/tools/ant/antlib.xml
+@@ -11,6 +11,4 @@
+              classname="scala.tools.ant.Scaladoc"/>
+     <taskdef name="scalatool"
+              classname="scala.tools.ant.ScalaTool"/>
+-    <taskdef name="pack200"
+-             classname="scala.tools.ant.Pack200Task"/>
+ </antlib>
+diff --git a/src/main/scala/scala/tools/ant/Pack200Task.scala b/src/main/scala/scala/tools/ant/Pack200Task.scala
+deleted file mode 100644
+index fa41bc1..0000000
+--- a/src/main/scala/scala/tools/ant/Pack200Task.scala
++++ /dev/null
+@@ -1,173 +0,0 @@
+-/*
+- * Scala (https://www.scala-lang.org)
+- *
+- * Copyright EPFL and Lightbend, Inc.
+- *
+- * Licensed under Apache License 2.0
+- * (http://www.apache.org/licenses/LICENSE-2.0).
+- *
+- * See the NOTICE file distributed with this work for
+- * additional information regarding copyright ownership.
+- */
+-
+-package scala.tools.ant
+-
+-import java.io.{BufferedOutputStream, File, FileOutputStream}
+-import java.util.jar.{JarFile, JarOutputStream, Pack200}
+-import java.util.jar.Pack200.Packer._
+-
+-/** An [[http://ant.apache.org Ant]] task that applies the pack200 encoding
+- *  to a JAR file.
+- *
+- *  - `destdir` (mandatory),
+- *  - `dir` (defaults to project's basedir),
+- *  - `effort` (default 9),
+- *  - `keepFileOrder` (default `'''false'''`),
+- *  - `keepModificationTime` (default `'''false'''`),
+- *  - `repack` (default false),
+- *  - `segmentLimit` (default `-1` for no limit),
+- *  - `suffix` (default ".pack")
+- *
+- * @author  James Matlik
+- */
+-class Pack200Task extends ScalaMatchingTask {
+-
+-/*============================================================================*\
+-**                             Ant user-properties                            **
+-\*============================================================================*/
+-
+-  var destdir: Option[File] = None
+-  var srcdir: Option[File] = None
+-
+-  var effort = 9
+-  var keepFileOrder = false
+-  var keepModificationTime = false
+-  var repack = false
+-  var segmentLimit: Int = -1
+-
+-  var packFileSuffix = ".pack"
+-
+-
+-/*============================================================================*\
+-**                             Properties setters                             **
+-\*============================================================================*/
+-
+-  def setDir(dir: File): Unit = {
+-    if (dir.exists && dir.isDirectory) srcdir = Some(dir)
+-    else buildError("Please specify a valid directory with Jar files for packing.")
+-  }
+-
+-  /** A level from 0 (none) to 9 (max) of effort for applying Pack200 */
+-  def setEffort(x: Int): Unit = {
+-    if (effort < 10 && effort > -1) effort = x
+-    else buildError("The effort level must be a value from 0 to 9")
+-  }
+-
+-  /** Set the flag to specify if file reordering should be performed. Reordering
+-    * is used to remove empty packages and improve pack200 optimization.
+-    * @param x
+-    *         `'''true'''` to retain file ordering.
+-    *         `'''false'''` to optimize directory structure (DEFAULT).  */
+-  def setKeepFileOrder(x: Boolean): Unit = { keepFileOrder = x }
+-
+-  /** If false, a single modification time is used for all contained files */
+-  def setKeepModificationTime(x: Boolean): Unit = { keepModificationTime = x }
+-
+-  /** A flag that tells the task to pack and then unpack the source JAR file
+-    * into another JAR file.  This resulting JAR file can then be signed,
+-    * packed again, compressed and distributed for securely distributed code.
+-    */
+-  def setRepack(r: Boolean): Unit = { repack = r }
+-
+-
+-  def setSegmentLimit(size: Int): Unit = { segmentLimit = size }
+-
+-  /** Set the output directory */
+-  def setDestdir(file: File): Unit = {
+-    if (file != null && file.exists && file.isDirectory) destdir = Some(file)
+-    else buildError("The destination directory is invalid: " + file.getAbsolutePath)
+-  }
+-
+-  def setSuffix(s: String): Unit = { packFileSuffix = s }
+-
+-/*============================================================================*\
+-**                             Properties getters                             **
+-\*============================================================================*/
+-
+-  /** Gets the list of individual JAR files for processing.
+-    * @return The list of JAR files */
+-  private def getFileList: List[File] = {
+-    var files: List[File] = Nil
+-    val fs = getImplicitFileSet
+-    val ds = fs.getDirectoryScanner(getProject)
+-    val dir = fs.getDir(getProject)
+-    for (filename <- ds.getIncludedFiles
+-         if filename.toLowerCase.endsWith(".jar")) {
+-      val file = new File(dir, filename)
+-      if(!files.exists(file.equals(_))) files = file :: files
+-    }
+-    files.reverse
+-  }
+-
+-/*============================================================================*\
+-**                       Compilation and support methods                      **
+-\*============================================================================*/
+-
+-  private def makeJarOutputStream(file: File) =
+-    new JarOutputStream(makeOutputStream(file))
+-
+-  private def makeOutputStream(file: File) =
+-    new BufferedOutputStream(new FileOutputStream(file))
+-
+-/*============================================================================*\
+-**                           The big execute method                           **
+-\*============================================================================*/
+-
+-  /** Performs the tool creation. */
+-  override def execute(): Unit = {
+-    // Audits
+-    val packDir = destdir.getOrElse(buildError("No output directory specified"))
+-
+-    // Setup the inherited fileset for further processing
+-    fileset.setDir(srcdir.getOrElse(getProject.getBaseDir))
+-
+-    val files = getFileList
+-    if (files.isEmpty) buildError("No JAR files were selected for packing.")
+-
+-    // Setup the packer
+-    val packer = Pack200.newPacker
+-    val p = packer.properties
+-    p.put(EFFORT, effort.toString)
+-    p.put(SEGMENT_LIMIT, segmentLimit.toString)
+-    p.put(KEEP_FILE_ORDER, if(keepFileOrder) TRUE else FALSE)
+-    p.put(MODIFICATION_TIME, if(keepModificationTime) LATEST else KEEP)
+-
+-    for (file <- files) {
+-      if (repack) {
+-        val repackedFile = new File(packDir, file.getName)
+-        if (file.lastModified > repackedFile.lastModified) {
+-          println("Repacking " + file.toString + " to " + repackedFile.toString)
+-          val tmpFile = new File(packDir, file.getName + ".tmp")
+-          val os = makeOutputStream(tmpFile)
+-          packer.pack(new JarFile(file), os)
+-          os.close()
+-          val jos = makeJarOutputStream(repackedFile)
+-          Pack200.newUnpacker.unpack(tmpFile, jos)
+-          jos.close()
+-          tmpFile.delete()
+-        }
+-      }
+-      else {
+-        val packFile: File = {
+-          val name = file.getName.substring(0, file.getName.lastIndexOf("."))
+-          new File(packDir, name + packFileSuffix)
+-        }
+-        if(file.lastModified > packFile.lastModified) {
+-          println("Packing " + file.toString + " to " + packFile.toString)
+-          val os = makeOutputStream(packFile)
+-          packer.pack(new JarFile(file), os)
+-        }
+-      }
+-    }
+-  }
+-}
+-- 
+2.42.0
+
