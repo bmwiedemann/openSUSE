@@ -1,0 +1,29 @@
+## Path: Network/DNS/Name Server
+## Description: Names server settings
+## Type: string
+## Default: "-mtu"
+## ServiceRestart: pdnsd
+#
+# Additional arguments when starting the pdns daemon
+#
+#   -mxx  sets the query method pdnsd uses. Possible values for xx are:
+#
+#         uo - pdnsd will use UDP only. This is the fastest method, and should
+#               be supported by all name servers on the Internet.
+#
+#         to - pdnsd will use TCP only. TCP queries usually take more time than
+#               UDP queries, but are more secure against certain attacks, where
+#               an attacker tries to guess your query id and to send forged
+#               answers. TCP queries are not supported by some name servers.
+#
+#         tu - pdnsd will try to use TCP, and will fall back to UDP if its
+#               connection is refused or times out.
+#
+#         ut - pdnsd will try to use UDP, and will repeat the query using TCP
+#               if the UDP reply was truncated (i.e. the tc bit is set).
+#               This is the behaviour recommended by the DNS standards.
+#
+# the default of "-mtu" causes pdnsd to do tcp first, then udp.
+#
+PDNSD_ARGS="-mtu"
+

@@ -1,7 +1,7 @@
 #
 # spec file for package pdnsd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,18 @@
 #
 
 
+%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir /var/adm/fillup-templates
+%endif
+%endif
+
 Name:           pdnsd
+
+%define _cache_dir  %{_localstatedir}/cache/%{name}
+%define _cache_file %{_cache_dir}/%{name}.cache
+
 Version:        1.2.9a
 Release:        0
 Summary:        A caching DNS proxy for small networks or dialin accounts
@@ -24,17 +35,25 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/DNS/Servers
 URL:            http://members.home.nl/p.a.rombouts/pdnsd.html
 
-Source0:        http://members.home.nl/p.a.rombouts/pdnsd/releases/pdnsd-%{version}-par.tar.gz
-Source1:        pdnsd.service
+#Source0:        http://members.home.nl/p.a.rombouts/%{name}/releases/%{name}-%{version}-par.tar.gz
+Source0:        %{name}-%{version}-par.tar.gz
+Source1:        %{name}.sysconfig
+%if 0%{?suse_version} == 1315 && !0%{?is_opensuse}
+Source2:        %{name}.service.sle12
+%else
+Source2:        %{name}.service
+%endif
 # PATCH-FIX-OPENSUSE -- fix UDP response packet for large responses being incorrectly truncated -- seife@novell.slipkontur.de
-Patch1:         pdnsd-fix-udppacketsize.diff
+Patch1:         %{name}-fix-udppacketsize.diff
 # borrowed from debian's 1.2.9a-par-3 release
-Patch2:         pdnsd-06_reproducible_build.patch
+Patch2:         %{name}-06_reproducible_build.patch
 # PATCH-FIX-OPENSUSE -- compile fix with newer glibc(?)/kernel-headers(?) where ordering matters -- seife+obs@b1-systems.com
-Patch3:         pdnsd-net_if_h-vs-linux_if_h.patch
-Recommends:     %{name}-doc
-BuildRequires:  systemd-rpm-macros
+Patch3:         %{name}-net_if_h-vs-linux_if_h.patch
+# PATCH-FIX-OPENSUSE -- cleanup default config
+Patch100:       %{name}_conf.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  systemd-rpm-macros
+Recommends:     %{name}-doc
 %{?systemd_ordering}
 
 %description
@@ -48,59 +67,66 @@ For a description of the changes see http://www.phys.uu.nl/~rombouts/pdnsd.html
 and the file README.par in %{_docdir}/%{name}-doc.
 
 %package doc
-Summary:        Docs for %{name}
+Summary:        Docs for pdnsd 
 Group:          Productivity/Networking/DNS/Servers
-%if 0%{?suse_version} >= 1140
 BuildArch:      noarch
-%endif
 Requires:       %{name}
 
 %description doc
-This package provides various text files for %{name}.
+This package provides various text files for pdnsd
 
 %prep
 %setup -q
-%autopatch -p1
+%autopatch -p0
 
 %build
-%configure --with-cachedir="%{_localstatedir}/cache/%{name}" \
-	--enable-specbuild \
-	--with-query-method=udptcp \
-	--enable-ipv6 \
-	--with-par-queries=3
+%configure \
+  --enable-ipv6 \
+  --enable-specbuild \
+  --with-cachedir="%{_cache_dir}" \
+  --with-default-id=pdns \
+  --with-query-method=udptcp \
+  --with-par-queries=3
 
 make %{?_smp_mflags}
 
 %install
 %make_install
-mkdir -p %{buildroot}%{_sysconfdir}/init.d
-mkdir -p %{buildroot}/%{_unitdir}
-cp -a %{SOURCE1} %{buildroot}/%{_unitdir}/
-cp %{buildroot}%{_sysconfdir}/%{name}.conf.sample %{buildroot}%{_sysconfdir}/%{name}.conf
+install -D -m 0644 %{S:1} %{buildroot}%{_fillupdir}/sysconfig.%{name}
+cp -a %{buildroot}%{_sysconfdir}/%{name}.conf.sample %{buildroot}%{_sysconfdir}/%{name}.conf
+install -D -m 0644 %{S:2} %{buildroot}%{_unitdir}/%{name}.service
+sed -i -e "s|@cache_file@|%{_cache_file}|" \
+ -e "s/@user@/pdns/" -e "s/@group@/pdns/" %{buildroot}%{_unitdir}/%{name}.service
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %pre
-getent group pdns >/dev/null || /usr/sbin/groupadd -r pdns
-%service_add_pre pdnsd.service
-
-%post
-%service_add_post pdnsd.service
+# add group
+%{_sbindir}/groupadd -r pdns 2>/dev/null || :
+# add user
+%{_sbindir}/useradd -c "DNS proxy account" -d %{_cache_dir} -G pdns -g pdns \
+  -r -s /sbin/nologin pdns 2>/dev/null || :
+%service_add_pre %{name}.service
 
 %preun
-%service_del_preun pdnsd.service
+%service_del_preun %{name}.service
+
+%post
+%service_add_post %{name}.service
+%{fillup_only -n pdnsd}
 
 %postun
-%service_del_postun pdnsd.service
+%service_del_postun %{name}.service
 
 %files
 %defattr(-,root,root)
-%config(noreplace) %{_sysconfdir}/pdnsd.conf
-%{_sysconfdir}/pdnsd.conf.sample
+%config(noreplace) %attr(0640,root,pdns) %{_sysconfdir}/%{name}.conf
+%{_sysconfdir}/%{name}.conf.sample
 %{_sbindir}/*%{name}*
 %{_mandir}/man*/%{name}*
-%config(noreplace) %attr(-,pdns,pdns) %ghost  %{_localstatedir}/cache/%{name}/%{name}.cache
-%dir %{_localstatedir}/cache/%{name}
-%{_unitdir}/*.service
+%dir %attr(0750,pdns,pdns) %{_cache_dir}
+%ghost %attr(-,pdns,pdns) %{_cache_file}
+%{_unitdir}/%{name}.service
+%{_fillupdir}/sysconfig.%{name}
 
 %files doc
 %defattr(-,root,root)

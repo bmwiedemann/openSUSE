@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct 11 14:34:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer reference the full URL to the tarball: the website no
+  longer exists (pdnsd 1.2.9a was released in March 2012).
+
+-------------------------------------------------------------------
+Thu Sep 15 14:54:23 UTC 2022 - chris@computersalat.de
+
+- rework patches to be p0
+- add pdnsd_conf.patch
+  * mainly just beautification for better readability
+- add pdnsd.sysconfig file
+  * ability to pass ARGS
+- service files
+  * update pdnsd.service
+  * add pdnsd.service.sle12
+- add user/group pdns
+
+-------------------------------------------------------------------
 Mon Oct 18 14:16:09 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:

@@ -1,5 +1,5 @@
 [Unit]
-Description=Caching DNS proxy
+Description=Caching DNS proxy (pdns)
 Documentation=man:pdnsd(8)
 After=network.target
 
@@ -18,7 +18,9 @@ ProtectControlGroups=true
 RestrictRealtime=true
 # end of automatic additions 
 Type=simple
-ExecStart=/usr/sbin/pdnsd
+EnvironmentFile=/etc/sysconfig/pdnsd
+ExecStartPre=/usr/bin/install -m0644 -o @user@ -g @group@ /dev/null @cache_file@
+ExecStart=/usr/sbin/pdnsd $PDNSD_ARGS
 
 [Install]
 WantedBy=multi-user.target

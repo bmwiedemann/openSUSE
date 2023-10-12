@@ -9,10 +9,10 @@ but fails definitely when regular records already exceed it.
 Fix by always checking for space in the packet before actually adding any
 record, be it regular or additional.
 
-Index: b/src/dns_answer.c
+Index: src/dns_answer.c
 ===================================================================
---- a/src/dns_answer.c
-+++ b/src/dns_answer.c
+--- src/dns_answer.c.orig
++++ src/dns_answer.c
 @@ -392,10 +392,12 @@ static int add_rr(dns_msg_t **ans, size_
  		rdlen=dlen;
  		*sz+=dlen;
