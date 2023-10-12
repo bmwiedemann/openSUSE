@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Wed Sep 13 12:30:05 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v4.12
+  * Changes and new Features
+    + Fizzy apply in #125
+    + Fix a typo in ComputeDifference.java in #140
+    + Fix for #141 in #144
+    + Update version in gradle example of README in #145
+
+-------------------------------------------------------------------
+Wed Sep 13 06:15:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Sat Apr 30 02:52:57 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v4.11
