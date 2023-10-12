@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 11 15:12:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 1.7.0:
+  * meson.build: error out on unsupported OSes
+  * Update bin/symbols-check.py from mesa/mesa@9d42e31b
+  * EGL/libeglcurrent: fix crash on library unload
+  * HGL: add Haiku libGL.so implementation based on EGL
+  * symbols-check: Add Haiku platform symbols
+  * tests/egl: Fix LIBRARY_PATH on Haiku
+
+-------------------------------------------------------------------
 Wed Dec  7 16:32:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package libglvnd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 Name:           libglvnd
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        The GL Vendor-Neutral Dispatch library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/NVIDIA/libglvnd
-Source:         https://github.com/NVIDIA/libglvnd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        libglvnd.rpmlintrc
 Patch1:         disable-glx-tests.patch
