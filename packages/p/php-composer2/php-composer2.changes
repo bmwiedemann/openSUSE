@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct 12 13:47:04 UTC 2023 - Ish Sookun <ish@hacklog.in>
+
+- version update to 2.6.5
+  * 2.6.5 2023-10-06 
+    - Fixed error when vendor dir contains broken symlinks (#11670)
+    - Fixed composer.lock missing from Composer's zip archives (#11674)
+    - Fixed AutoloadGenerator::dump() non-BC signature change in 2.6.4 (cb363b0)
+
+
+-------------------------------------------------------------------
 Mon Oct  2 09:40:31 UTC 2023 - pgajdos@suse.com
 
 - version update to 2.6.4

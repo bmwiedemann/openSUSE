@@ -289,4 +289,12 @@
     - Added --dry-run to dump-autoload command to allow running --strict-psr checks without modifying (forwarded request 1114790 from pgajdos)</comment>
     <requestid>1114950</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>741e627e4211ba541550be85c5b85797</srcmd5>
+    <version>2.6.5</version>
+    <time>1697147074</time>
+    <user>anag+factory</user>
+    <comment>Updates php-composer to version 2.6.5. (forwarded request 1117487 from Ishwon)</comment>
+    <requestid>1117489</requestid>
+  </revision>
 </revisionlist>
