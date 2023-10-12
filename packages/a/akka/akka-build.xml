@@ -11,28 +11,11 @@
   <property name="actor.build.dir"          value="${actor.dir}/build/classes"/>
   <property name="actor.resources.dir"      value="${actor.dir}/src/main/resources"/>
 
-  <property name="agent.dir"                value="${basedir}/${name}-agent"/>
-  <property name="agent.src.dir"            value="${agent.dir}/src/main"/>
-  <property name="agent.build.dir"          value="${agent.dir}/build/classes"/>
-  <property name="agent.resources.dir"      value="${agent.dir}/src/main/resources"/>
-
   <property name="cluster.dir"              value="${basedir}/${name}-cluster"/>
   <property name="cluster.src.dir"          value="${cluster.dir}/src/main"/>
   <property name="cluster.build.dir"        value="${cluster.dir}/build/classes"/>
   <property name="cluster.resources.dir"    value="${cluster.dir}/src/main/resources"/>
   <property name="cluster.protobuf.dir"     value="${cluster.src.dir}/protobuf"/>
-
-  <property name="dataflow.dir"             value="${basedir}/${name}-dataflow"/>
-  <property name="dataflow.src.dir"         value="${dataflow.dir}/src/main"/>
-  <property name="dataflow.build.dir"       value="${dataflow.dir}/build/classes"/>
-
-  <property name="kernel.dir"               value="${basedir}/${name}-kernel"/>
-  <property name="kernel.src.dir"           value="${kernel.dir}/src/main"/>
-  <property name="kernel.build.dir"         value="${kernel.dir}/build/classes"/>
-
-  <property name="osgi.dir"                 value="${basedir}/${name}-osgi"/>
-  <property name="osgi.src.dir"             value="${osgi.dir}/src/main"/>
-  <property name="osgi.build.dir"           value="${osgi.dir}/build/classes"/>
 
   <property name="remote.dir"               value="${basedir}/${name}-remote"/>
   <property name="remote.src.dir"           value="${remote.dir}/src/main"/>
@@ -45,14 +28,8 @@
   <property name="slf4j.build.dir"          value="${slf4j.dir}/build/classes"/>
   <property name="slf4j.resources.dir"      value="${slf4j.dir}/src/main/resources"/>
 
-  <property name="transactor.dir"           value="${basedir}/${name}-transactor"/>
-  <property name="transactor.src.dir"       value="${transactor.dir}/src/main"/>
-  <property name="transactor.build.dir"     value="${transactor.dir}/build/classes"/>
-  <property name="transactor.resources.dir" value="${transactor.dir}/src/main/resources"/>
-  
   <path id="scala.classpath">
-    <fileset dir="/usr/share/java" includes="scala/scala-compiler.jar"/>
-    <fileset dir="/usr/share/java" includes="scala/scala-library.jar"/>
+    <fileset dir="/usr/share/java" includes="scala/*.jar"/>
   </path>
 
   <path id="actor.classpath">

@@ -3,8 +3,10 @@
   <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/akka/akka.git</param>
-    <param name="revision">v2.3.16</param>
-    <param name="versionformat">2.3.16</param>
+    <param name="revision">v2.8.5</param>
+    <param name="match-tag">v*</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
     <param name="exclude">akka-camel</param>
     <param name="exclude">akka-contrib</param>
     <param name="exclude">akka-durable-mailboxes</param>

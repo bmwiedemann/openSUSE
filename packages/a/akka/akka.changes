@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Oct 12 11:47:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.8.5
+  * Changes of 2.8.5
+    + backport: clear inflight DNS requests on failure to allow
+      retries (#32110)
+    + fix: DownSelfQuarantinedByRemote should not be triggered by
+      harmless quarantine, #31095 (backport)
+  * Changes of 2.8.4
+    + feat: event writer
+    + fix: discard ReceiveTimeout when timeout message is null
+    + Add javadsl for Effect.delete() in durable state #32027
+    + perf: streamline recursion in mapAsyncPartitioned #32031
+    + Add short-circuit support in retry pattern #32035
+    + test: harden PersistentActorRecoveryTimeoutSpec, #31624
+  * Changes of 2.8.3
+    + Update Scala to 2.12.18 & 2.13.11
+    + feat: Include exception type in StatusReply toString when not
+      text
+    + str Add Flow contramap
+    + fix: Better exception string in StatusReply
+    + fix: AllocationStrategy in ShardedDaemonProcess
+    + feat: Collocating shards with consistent hashing
+    + perf: Scalable slice queries for many consumers
+    + fix: Try to limit spin loop in TLSActor #29922
+    + test: harden EventsBySliceFirehoseSpec, #31979
+    + feat: Placeholder event representation for filtered journal
+      events
+    + feat: Query traits for using snapshots as starting point
+  * Changes of 2.8.2
+    + feat: Make it possible to define appVersion later
+    + feat: More Serializer constructor alternatives
+  * Changes of 2.8.1
+    + feat: Make it possible to include tags in event envelope
+    + feat: Typed envelope version of the eventsByPersistenceId
+      queries
+    + feat: Tagger that can look at state for event sourced
+      behaviour
+    + str Add onErrorComplete operator
+    + fix: starting Sharding with separate Coordinator role, #31637
+    + fix: Eager init of DistributedData extension from
+      ExternalShardAllocationStrategy
+    + fix: Refactor concurrency in AsyncDnsResolver
+    + Various and sundry async-dns improvements
+    + str Add startAfterNrOfConsumers to BroadcastHub
+    + str Implement Source.never as a dedicated GraphStage
+  * New features of 2.8.0
+    + Expiry of CRDT entries, #27683
+    + Wildcard subscription of ddata changes
+    + Add color to LogCapturing #31689
+    + feat: Throttle keep alive messages of ShardedDaemonProcess
+    + feat: API for dynamic scaling of Sharded daemon process
+      instances
+    + feat: More fine grained control of stream error logging
+    + mapAsyncPartitioned stream operator
+    + Auto-select SRV lookup for the name lookup if entry looks
+      like a srv name
+- Removed patches:
+  * akka-2.3.0-typesafe-config-1.3.0.patch
+  * akka-2.3.16-typesafe-config-1.4.1.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Sat Apr 30 16:08:34 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against io.netty:netty, since the compat versions do not
@@ -13,7 +76,7 @@ Fri Apr 29 14:39:47 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Thu Apr 28 07:27:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- use https url 
+- use https url
 
 -------------------------------------------------------------------
 Mon Mar 21 14:37:53 UTC 2022 - Fridrich Strba <fstrba@suse.com>

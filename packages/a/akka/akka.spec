@@ -1,7 +1,7 @@
 #
 # spec file for package akka
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %global namedreltag %{nil}
 %global namedversion %{version}%{?namedreltag}
-%global scala_short_version 2.10
+%global scala_short_version 2.13
 Name:           akka
-Version:        2.3.16
+Version:        2.8.5
 Release:        0
 Summary:        Scalable real-time transaction processing
 License:        Apache-2.0
@@ -31,20 +31,13 @@ Source1:        akka-build.xml
 # Build only these sub-modules, cause: unavailable build deps
 # TODO  akka-camel akka-contrib akka-durable-mailboxes akka-persistence akka-samples akka-zeromq
 Source2:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-actor_%{scala_short_version}/%{namedversion}/akka-actor_%{scala_short_version}-%{namedversion}.pom
-Source3:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-agent_%{scala_short_version}/%{namedversion}/akka-agent_%{scala_short_version}-%{namedversion}.pom
-Source4:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-cluster_%{scala_short_version}/%{namedversion}/akka-cluster_%{scala_short_version}-%{namedversion}.pom
-Source5:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-dataflow_%{scala_short_version}/%{namedversion}/akka-dataflow_%{scala_short_version}-%{namedversion}.pom
-Source6:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-kernel_%{scala_short_version}/%{namedversion}/akka-kernel_%{scala_short_version}-%{namedversion}.pom
-Source7:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-osgi_%{scala_short_version}/%{namedversion}/akka-osgi_%{scala_short_version}-%{namedversion}.pom
-Source8:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-remote_%{scala_short_version}/%{namedversion}/akka-remote_%{scala_short_version}-%{namedversion}.pom
-Source9:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-slf4j_%{scala_short_version}/%{namedversion}/akka-slf4j_%{scala_short_version}-%{namedversion}.pom
-Source10:       https://repo1.maven.org/maven2/com/typesafe/akka/akka-transactor_%{scala_short_version}/%{namedversion}/akka-transactor_%{scala_short_version}-%{namedversion}.pom
-Patch1:         akka-2.3.0-typesafe-config-1.3.0.patch
-Patch2:         akka-2.3.16-typesafe-config-1.4.1.patch
+Source3:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-cluster_%{scala_short_version}/%{namedversion}/akka-cluster_%{scala_short_version}-%{namedversion}.pom
+Source4:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-remote_%{scala_short_version}/%{namedversion}/akka-remote_%{scala_short_version}-%{namedversion}.pom
+Source5:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-slf4j_%{scala_short_version}/%{namedversion}/akka-slf4j_%{scala_short_version}-%{namedversion}.pom
 BuildRequires:  ant
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
+BuildRequires:  scala-ant
 BuildRequires:  mvn(com.google.protobuf:protobuf-java)
 # typesafe-config
 BuildRequires:  mvn(com.typesafe:config)
@@ -53,11 +46,12 @@ BuildRequires:  mvn(org.osgi:osgi.cmpn)
 BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.scala-lang:scala-compiler)
 BuildRequires:  mvn(org.scala-lang:scala-library)
-BuildRequires:  mvn(org.scala-stm:scala-stm_2.10)
+BuildRequires:  mvn(org.scala-stm:scala-stm_%{scala_short_version})
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.uncommons.maths:uncommons-maths)
 # requires for akka-remote
-BuildRequires:  protobuf-devel
+BuildRequires:  protobuf-devel scala-java8-compat
+BuildRequires:  sbt-boilerplate
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 Requires:       java-headless >= 1.8
@@ -80,45 +74,47 @@ This package contains javadoc for %{name}.
 cp -p %{SOURCE1} build.xml
 sed -i "s|@VERSION@|%{namedversion}|" build.xml
 
-%if %{?pkg_vcmp:%pkg_vcmp typesafe-config >= 1.3}%{!?pkg_vcmp:0}
-%patch1 -p1
-%endif
-%if %{?pkg_vcmp:%pkg_vcmp typesafe-config >= 1.4}%{!?pkg_vcmp:0}
-%patch2 -p1
-%endif
-
-# handle compatibility netty jar
-sed -i -e "s|netty[.]jar|$(basename %{_javadir}/netty3.jar)|" build.xml
-
-# use osgi 7.x apis
-cp -p %{SOURCE7} osgi-pom.xml
-%pom_change_dep :org.osgi.core :osgi.core osgi-pom.xml
-%pom_change_dep :org.osgi.compendium :osgi.cmpn osgi-pom.xml
+rm -rf */src/main/scala-3 */src/main/scala-2.12
 
 # spurious-executable-perm
 chmod 644 LICENSE
 
 %build
 
-%{ant} dist doc
+pushd akka-actor
+mkdir -p src/main/gen-scala
+for i in $(find src/main/boilerplate -name \*.scala.template); do
+   sbt-boilerplate $i >src/main/gen-scala/$(basename $i .template);
+done
+cat <<EOF >src/main/gen-scala/Version.scala
+package akka
 
-%{mvn_artifact} %{SOURCE2} target/%{name}-actor.jar
-%{mvn_artifact} %{SOURCE3} target/%{name}-agent.jar
-%{mvn_artifact} %{SOURCE4} target/%{name}-cluster.jar
-%{mvn_artifact} %{SOURCE5} target/%{name}-dataflow.jar
-%{mvn_artifact} %{SOURCE6} target/%{name}-kernel.jar
-%{mvn_artifact} osgi-pom.xml target/%{name}-osgi.jar
-%{mvn_artifact} %{SOURCE8} target/%{name}-remote.jar
-%{mvn_artifact} %{SOURCE9} target/%{name}-slf4j.jar
-%{mvn_artifact} %{SOURCE10} target/%{name}-transactor.jar
+object Version {
+  val current: String = "%{vesion}"
+}
+EOF
+echo "akka.version = \"%{version}\"" >src/main/resources/version.conf
+
+mkdir -p target/classes
+scalac -nobootcp -d target/classes -cp $(build-classpath scala typesafe-config) -target:8 \
+    $(find src/main -name \*.scala -o -name \*.java | xargs)
+javac -d target/classes -cp $(build-classpath scala typesafe-config):target/classes \
+    -source 8 -target 8 -encoding utf-8 \
+    $(find src/main -name \*.java | xargs)
+jar -cf target/%{name}-actor.jar -C target/classes . -C src/main/resources .
+mkdir -p target/apidocs
+scaladoc -nobootcp -d target/apidocs -cp $(build-classpath scala typesafe-config) -target:8 \
+    $(find src/main -name \*.scala -o -name \*.java | xargs)
+popd
+
+%{mvn_artifact} %{SOURCE2} akka-actor/target/%{name}-actor.jar
 
 %install
-%mvn_install -J target/apidocs/
-cp -rp target/apidocs/* %{buildroot}%{_javadocdir}/%{name}
+%mvn_install -J akka-actor/target/apidocs
 
 %files -f .mfiles
 %license LICENSE
-%doc CONTRIBUTING.md README.textile
+%doc CONTRIBUTING.md README.md
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE
