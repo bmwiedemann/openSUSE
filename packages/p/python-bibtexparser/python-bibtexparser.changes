@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  5 09:21:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * Set `align_values` to an int or bool to fix min alignment in
+    writing
+  * Fix some docstrings
+  * `customization.getnames`: respect protected names
+  * No dict caching in bibdatabase. This makes
+    the library slightly slower in some cases, but fixes
+    previously wrong caching.
+
+-------------------------------------------------------------------
 Fri Sep  1 02:52:53 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.4.0:
