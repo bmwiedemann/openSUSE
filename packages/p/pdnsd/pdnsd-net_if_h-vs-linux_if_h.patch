@@ -19,10 +19,10 @@ after linux/if.h. linux/if.h has provisions for net/if.h being included first.
 So the fix is to include net/if.h explicitly before the others, to work around
 the issue and fix the build.
 
-Index: b/src/icmp.c
+Index: src/icmp.c
 ===================================================================
---- a/src/icmp.c
-+++ b/src/icmp.c
+--- src/icmp.c.orig
++++ src/icmp.c
 @@ -39,6 +39,7 @@
  #include <string.h>
  #include "ipvers.h"
