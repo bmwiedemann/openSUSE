@@ -38,7 +38,8 @@ EXPOSE 464/tcp
 EXPOSE 636/tcp
 EXPOSE 3268/tcp
 EXPOSE 3269/tcp
-EXPOSE 49152-65535/tcp
+# Ports 49152-65535/tcp are required, but podman can't parse a port range in the Dockerfile
+EXPOSE 49152/tcp
 
 # The container must be run with `--cap-add SYS_ADMIN` otherwise acls will fail
 

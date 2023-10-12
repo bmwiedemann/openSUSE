@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 05 12:13:30 UTC 2023 - kukuk@suse.com
+
+- Update to version 1696506425.096c371:
+  * Permit specifying a port range
+  * Podman fails to parse port ranges in a Dockerfile
+
+-------------------------------------------------------------------
 Tue Jan 10 20:53:28 UTC 2023 - dmulder@suse.com
 
 - Initial version
