@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:28:20 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * Fix more issue with wrong date due to timezone
+  * Fix shifting of date by one day/month (kde#473866)
+  * Fix displaying of Basic HourlyView
+  * DateUtils: Trim userProvidedYear to remove whitespace before parsing
+  * Fix invalid parent collection error
+  * fix triggering mailto: and tel: actions twice
+  * fixes bug in photoEditor.qml
+  * Fix crash when running merkuro with other locales (kde#474191)
+  * Fix adding new contact (kde#474380)
+
+-------------------------------------------------------------------
 Tue Sep 12 11:56:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1
