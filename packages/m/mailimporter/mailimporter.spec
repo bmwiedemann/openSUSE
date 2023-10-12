@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           mailimporter
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Mail import functionality for KDE PIM applications
 License:        GPL-2.0-or-later
