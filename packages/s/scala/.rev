@@ -87,4 +87,12 @@
     <comment>Allow buiding with jdk &gt; 1.8.0</comment>
     <requestid>1114251</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>81606a2da11f9507d22d109c1e2a8d71</srcmd5>
+    <version>2.13.12</version>
+    <time>1697147059</time>
+    <user>anag+factory</user>
+    <comment>Upgrading the scala stack</comment>
+    <requestid>1117473</requestid>
+  </revision>
 </revisionlist>
