@@ -2,8 +2,10 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/dmlc/xgboost.git</param>
-		<param name="revision">v0.90</param>
-		<param name="versionformat">0.90</param>
+		<param name="revision">v2.0.0</param>
+		<param name="match-tag">v*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">v(.*)</param>
 		<param name="filename">xgboost</param>
 	</service>
 	<service name="recompress" mode="disabled">

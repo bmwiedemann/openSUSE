@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct 12 11:38:22 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.0.0
+  * Changes:
+    + Stop using Rabit in prediction (#9054)
+    + Set feature_names and feature_types in jvm-packages.
+      This is to prepare support for categorical features (#9364)
+    + Scala 2.13 support. (#9099)
+    + Change training stage from ResultStage to ShuffleMapStage
+      (#9423)
+    + Automatically set the max/min direction for the best score
+      during early stopping. (#9404)
+    + Revised support for flink (#9046)
+  * Breaking changes:
+    + Scala-based tracker is removed. (#9078, #9045)
+    + Change DeviceQuantileDmatrix into QuantileDMatrix (#8461)
+- Added patches:
+  * no-hadoop.patch
+    + revert commit bringing in apache-hadoop dependency, since
+      we don't have that one
+  * xgboost-2.0.0-cmake.patch
+    + allow building with cmake versions we have in SLE-15 and
+      SLE-12-SP5
+  * xgboost-2.0.0-python34.patch
+    + allow running scripts with python 3.4 by removing the f""
+      that is 3.6+ feature
+
+-------------------------------------------------------------------
 Mon Oct  2 16:25:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build using ant to avoid dependency on scala-maven-plugin

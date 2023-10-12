@@ -16,11 +16,12 @@
 #
 
 
-%global scala_short_version 2.10
-%global scala_version %{scala_short_version}.7
+%global scala_short_version 2.13
+%global scala_version %{scala_short_version}.12
+%global groupId ml.dmlc
 %global artifactId xgboost4j
 Name:           xgboost
-Version:        0.90
+Version:        2.0.0
 Release:        0
 Summary:        Gradient Boosting (GBDT, GBRT or GBM) Library
 License:        Apache-2.0
@@ -28,19 +29,28 @@ URL:            https://github.com/dmlc/%{name}
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{artifactId}-build.xml
 Patch0:         xgboost-fix-big-endian.patch
+Patch1:         no-hadoop.patch
+Patch2:         xgboost-2.0.0-python34.patch
+Patch3:         xgboost-2.0.0-cmake.patch
 BuildRequires:  akka
 BuildRequires:  ant
-BuildRequires:  ant-scala
 BuildRequires:  apache-commons-logging
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  javapackages-local >= 6
+BuildRequires:  javapackages-local
 BuildRequires:  kryo
 BuildRequires:  objenesis
 BuildRequires:  python3
 BuildRequires:  scala
+BuildRequires:  scala-ant
 BuildRequires:  typesafe-config
+BuildRequires:  xmvn-install
+BuildRequires:  xmvn-resolve
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc8-c++ >= 8.1
+%else
+BuildRequires:  gcc-c++
+%endif
 
 %description
 Scalable, Portable and Distributed Gradient Boosting (GBDT, GBRT or
@@ -60,14 +70,25 @@ cp %{SOURCE1} jvm-packages/%{artifactId}/build.xml
 %ifarch s390x ppc64
 %patch0
 %endif
-pushd jvm-packages
-%pom_xpath_set pom:project/pom:properties/pom:scala.version %{scala_version}
-%pom_xpath_set pom:project/pom:properties/pom:scala.binary.version %{scala_short_version}
-popd
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%pom_xpath_set pom:project/pom:properties/pom:scala.version %{scala_version} jvm-packages
+%pom_xpath_set pom:project/pom:properties/pom:scala.binary.version %{scala_short_version} jvm-packages
+%pom_remove_dep ":scala-collection-compat_\${scala.binary.version}" jvm-packages/%{artifactId}
+
+%{mvn_alias} :{*}_{*} :@1
+%{mvn_package} :xgboost-jvm __noinstall
 
 %build
 pushd jvm-packages
+%if 0%{?suse_version} <= 1500
+export CC=gcc-8
+export CXX=g++-8
+%endif
+%ifarch x86_64 aarch64
 python3 create_jni.py
+%endif
 popd
 pushd jvm-packages/%{artifactId}
 mkdir -p lib
@@ -76,20 +97,18 @@ build-jar-repository -s lib akka kryo commons-logging scala typesafe-config obje
 popd
 
 %install
-pushd jvm-packages/%{artifactId}
 install -dm 0755 %{buildroot}%{_jnidir}/%{name}
-install -pm 0644 target/%{artifactId}-%{version}.jar %{buildroot}%{_jnidir}/%{name}/%{artifactId}.jar
+install -pm 0644 jvm-packages/%{artifactId}/target/%{artifactId}-%{version}.jar %{buildroot}%{_jnidir}/%{name}/%{artifactId}_%{scala_short_version}.jar
 
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
-%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifactId}.pom
-%add_maven_depmap %{name}/%{artifactId}.pom %{name}/%{artifactId}.jar
+%{mvn_install_pom} jvm-packages/%{artifactId}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{artifactId}_%{scala_short_version}.pom
+%add_maven_depmap %{name}/%{artifactId}_%{scala_short_version}.pom %{name}/%{artifactId}_%{scala_short_version}.jar -a %{groupId}:%{artifactId}
 
 install -dm 0755 %{buildroot}%{_javadocdir}
-cp -r target/site/apidocs %{buildroot}%{_javadocdir}/%{name}
+cp -r jvm-packages/%{artifactId}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
-popd
 
-%files -f jvm-packages/%{artifactId}/.mfiles
+%files -f .mfiles
 %license LICENSE
 
 %files javadoc
