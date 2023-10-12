@@ -21,7 +21,7 @@
 %define libname libKPim5AkonadiSearch5
 %bcond_without released
 Name:           akonadi-search
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Framework for searching and managing PIM metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -97,6 +97,7 @@ Development files for the AkonadiSearch library.
 %dir %{_kf5_sharedir}/akonadi/agents
 %dir %{_kf5_plugindir}/pim5
 %{_kf5_bindir}/akonadi_indexing_agent
+%{_kf5_bindir}/akonadi_html_to_text
 %{_kf5_debugdir}/akonadi-search.categories
 %{_kf5_debugdir}/akonadi-search.renamecategories
 %{_kf5_plugindir}/pim5/akonadi/
