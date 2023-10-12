@@ -193,4 +193,13 @@
   https://github.com/timescale/timescaledb/releases/tag/2.12.0</comment>
     <requestid>1113709</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>23dacfd28174674f4cd84c626a78b3f6</srcmd5>
+    <version>2.12.1</version>
+    <time>1697146911</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.12.1
+- clean up trailing whitespaces in the changes file</comment>
+    <requestid>1117169</requestid>
+  </revision>
 </revisionlist>
