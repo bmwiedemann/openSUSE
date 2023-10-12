@@ -121,4 +121,12 @@
     <comment>fix build with gcc 7 and debuginfo package (forwarded request 501307 from seife)</comment>
     <requestid>501310</requestid>
   </revision>
+  <revision rev="19" vrev="62">
+    <srcmd5>fc365417585b3f9884d7068fbafaf400</srcmd5>
+    <version>0.1</version>
+    <time>1697147072</time>
+    <user>anag+factory</user>
+    <comment>modernize spec file, so that it builds with current rpm</comment>
+    <requestid>1117491</requestid>
+  </revision>
 </revisionlist>

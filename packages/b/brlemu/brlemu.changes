@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 12 15:51:44 UTC 2023 - seife+obs@b1-systems.com
+
+- fix patch application with newer rpm
+- use %license instead of %doc for COPYING file
+- fix invalid URL
+
+-------------------------------------------------------------------
 Tue Jun  6 07:53:03 UTC 2017 - seife+obs@b1-systems.com
 
 - add brlemu-0.1-gcc7.diff to fix build with gcc 7
