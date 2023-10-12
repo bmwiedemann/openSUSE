@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1590
+%global force_gcc_version 12
+%endif
+
 %define sover 0
 Name:           libXISF
 Version:        0.2.9
@@ -27,17 +31,13 @@ Source:         https://gitea.nouspiro.space/nou/libXISF/archive/v%{version}.tar
 # PATCH-FIX-UPSTREAM
 Patch0:         fix-pkgconfig.patch
 BuildRequires:  cmake
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 BuildRequires:  liblz4-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  pkg-config
 BuildRequires:  pugixml-devel
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(Qt5Core) >= 5.14.0
-%if 0%{?suse_version} < 1590
-BuildRequires:  gcc10-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 
 %description
 C++ library that can read and write XISF files produced by PixInsight.
@@ -60,10 +60,8 @@ This package contains all the needed development files to use %{name}.
 
 %build
 %cmake \
-%if 0%{?suse_version} < 1590
-    -DCMAKE_CXX_COMPILER=%{_bindir}/g++-10 \
-%else
-    -DCMAKE_CXX_COMPILER=%{_bindir}/g++ \
+%if 0%{?force_gcc_version}
+    -DCMAKE_CXX_COMPILER=%{_bindir}/g++-%{?force_gcc_version} \
 %endif
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DCMAKE_BUILD_TYPE=release \
