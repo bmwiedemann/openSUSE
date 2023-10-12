@@ -1,7 +1,7 @@
 #
 # spec file for package python-onnx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 # Tumbleweed does not have a python36-numpy anymore: NEP 29 dropped Python 3.6 for NumPy 1.20
-%define skip_python36 1
 Name:           python-onnx
-Version:        1.12.0
+Version:        1.14.1
 Release:        0
 Summary:        Open Neural Network eXchange
 License:        MIT
 URL:            https://onnx.ai/
 Source0:        https://github.com/onnx/onnx/archive/v%{version}.tar.gz#/onnx-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module protobuf}
 BuildRequires:  %{python_module pybind11-devel}
 BuildRequires:  %{python_module pybind11}
@@ -43,7 +42,6 @@ BuildRequires:  protobuf21-devel
 BuildRequires:  python-rpm-macros
 Requires:       libonnx == %version
 Requires:       libonnx_proto == %version
-Requires:       libonnxifi_dummy == %version
 Requires:       python-numpy
 Requires:       python-protobuf
 Requires:       python-typing_extensions >= 3.6.2.1
@@ -63,17 +61,9 @@ community of partners.
 Summary:        Header files of onnx
 Requires:       libonnx == %version
 Requires:       libonnx_proto == %version
-Requires:       libonnxifi_dummy == %version
 
 %description  -n onnx-devel
 Header files of ONNX.
-
-%package -n libonnxifi_dummy
-Summary:        Library for ONNX Interface for Framework Integration
-
-%description  -n  libonnxifi_dummy
-This package exists to create libonnx_proto, so you do no want
-to install this package.
 
 %package -n libonnx
 Summary:        Shared library for onnx
@@ -153,7 +143,8 @@ donttest="   test_bvlc_alexnet_cpu \
           or test_vgg19_cpu \
           or test_inception_v2_cpu \
           or test_zfnet512_cpu \
-          or test_resnet50_cpu"
+          or test_resnet50_cpu \
+          or reference_evaluator_backend_test"
 # do not run in parallel yet - https://github.com/onnx/onnx/issues/3946#issuecomment-1015634235
 %pytest_arch -n 1 -k "not ($donttest)" -ra
 popd
@@ -183,11 +174,6 @@ popd
 
 %files -n onnx-backend-test
 %{_includedir}/onnx/backend
-
-%files -n libonnxifi_dummy
-%{_libdir}/libonnxifi*.so
-%{_libdir}/libonnxifi_loader.*
-/usr/lib/libonnxifi.so
 
 %files -n libonnx
 %{_libdir}/libonnx.so
