@@ -1,4 +1,196 @@
 -------------------------------------------------------------------
+Thu Oct 05 17:12:07 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 6.0+git20231005.a3c265d6:
+  * use the program wrapper to name the process and window
+  * remove unused screen, always 0 with Gtk 3
+  * Cython 3.0.3
+  * #3964 oops: forgot to add the configure scripts
+  * #3964 run configure sub-windows as dialogs
+  * destroying windows causes crashes on MS Windows
+  * #3964 preparatory refactoring for new 'configure' GUIs
+  * stricter types
+  * match renaming
+  * #3810 swap host and guest
+  * move qrcode dialog with the other gtk dialogs
+  * #4021 expose scaled size so clients can upscale
+  * cosmetic: missing closing bracket in debug
+  * fix crashes on MS Windows
+  * damn: git reset un-added this file
+  * misspelt package name
+  * #3810 add virtio-ivshmem documentation
+  * typo
+  * fix all dbus builds by using autotools
+  * wheel is available in appstream
+  * use the default location
+  * move opengl example code
+  * remove global include dir
+  * missed during gobject bindings refactoring
+  * simplify
+  * whitespace
+  * #3978 cythonized versions can't be executed as files
+  * generate the gui versions of the exec tools
+  * git reset un-added the files...
+  * fix deprecation warning
+  * Cython can't handle the metaclass as a type?
+  * #3945 build more packages for non-default python
+  * remove outdated email address
+  * build pyopengl for non-default python
+  * find calling module on longer Cython call stack
+  * clients can send us plain strings
+  * qrcode: gracefully fail during menu creation
+  * missing subcommand in usage text
+  * fix relative paths, disable button if script not found
+  * force Gtk v3
+  * watcher pid must be an int, specify Gtk version and initialize display source
+  * don't expose numpy types
+  * can't add tuple to a list
+  * fix refactoring: video_helper renamed
+  * max_display_no is an int
+  * #3978 explicitly include modules that py2exe can't detect in cythonized modules
+  * remove TLS / SSL versions (deprecated)
+  * remove prefix, fix u2f tool path
+  * remove prefix and match move
+  * #3978 cythonize gl gtk3 module
+  * fix gl gtk3 module path
+  * remove debug
+  * remove nasty_rgb_via_png_paint
+  * #3978 Cythonized version uses stricter type checks
+  * #3978 include xpra.client.gtk3 explicitly
+  * #3978 more cleanups and refactoring
+  * #3978 cythonized version is more strict
+  * update packaging to match refactoring
+  * #3978 more refactoring
+  * move all dialogs and examples to gtk_common
+  * correct type hint for exit code
+  * #3978 profile must be a string
+  * #4017 fix MacOS arm64 download links
+  * #3978 cythonize more and automatically
+  * frominfo can also be a tuple
+  * remove redundant gst prefix
+  * include renamed splash screen
+  * needed to force it because of gitignore
+  * split util functions
+  * doh: options do still have the '_auth' suffix
+  * rename auth modules, window source
+  * simplify: rename
+  * move mdns bits where they belong
+  * remove redundant suffix
+  * remove redundant 'mixin' prefix for features
+  * simplify filenames
+  * remove redundant suffix
+  * remove redundant prefix
+  * make colorstreamhandler optional
+  * ignore warnings when setting window opacity
+  * silence gi import warnings
+  * #4014 forward port of b9d8fc7de69e8675a9ac50fe534fd9f1a2d34d60
+  * #2177 silence more Gtk warnings
+  * ExitValue is an int or ExitCode
+  * always clean the signal watcher pipes
+  * use 'exec' debug logger for the signal watcher
+  * use the correct python command to execute signal watcher
+  * don't shadow the 'label' function name
+  * #2177 silence more Gtk warnings
+  * #3978 client properties must be a dict
+  * #2177 silence Gtk set_image related warnings
+  * silence warnings #2177
+  * use correct type
+  * Reverse the aspect ratio (height, width) in webcam-start message
+  * we need a version, assume 0.x
+  * #3978 Cythonize a lot more
+  * #3978 stronger type hints
+  * #3978 do_legacy_bool_parse requires a str
+  * #3978 Cython can raise a ValueError here
+  * #3978 exit code is an int
+  * #3978 function signature requires a dict
+  * bell name should always be a string
+  * accept_client_ssh_agent requires a string
+  * don't try to cythonize more using an old Cython
+  * use plain dict for info data
+  * exclude more modules with older Cython
+  * doh: special case for typedict, don't fall through
+  * #3978 fix top client, skip util with older versions
+  * remove redundant prefix
+  * typedict is a dict, but Cython is more strict
+  * #3978 workaround for older versions of Cython
+  * #3978 some files require Cython v3
+  * ExitCode is a valid return value
+  * updict has been removed
+  * return a dict instance not a typedict
+  * avoid cythonization errors
+  * bah, ExitCode is an int..
+  * 'file_transfer' would be hard to cythonize
+  * remove more redundant prefixes
+  * remove redundant hints
+  * pointer.relative was already available in v3
+  * #3978 even more modules can be cythonized
+  * minor type fixes
+  * function must return a tuple of strings
+  * message must be a string
+  * Revert "latest VirtualBox driver does work, at last"
+  * better debug logging
+  * remove legacy flat dictionaries
+  * headers is not a dict
+  * add server script test
+  * remove redundant prefix
+  * socket_filename must be a str
+  * exit the splash screen on read errors
+  * avoid uinput warning when it should not be used
+  * less certainty in the warnings
+  * one wayland capture warning is enough
+  * with Python3 we can write memoryviews directly
+  * add env option to force wrap mode
+  * always read using memoryview
+  * oops: always update start offset
+  * simplify: add group to caps
+  * use the same prefix for all attributes
+  * all servers support notifications-close
+  * shortcut out if bind=none
+  * allow builds without the nvidia codecs
+  * fps should be an integer
+  * function has been removed
+  * prefer native trays to Gtk.StatusIcon
+  * remove VirtualBox gl check
+  * avoid None value errors
+  * socket_info is not always a string, can be a tuple
+  * remove special legacy flag for 'scroll' encoding
+  * silence missing plugins warnings
+  * capture and silence WGL mesa warnings
+  * cosmetic
+  * move docstring where it is needed
+  * #3978 need to ignore more generated files
+  * delete_tray_window no longer needs to return a value
+  * update type hint to match new function purpose
+  * simplify
+  * #3978 cythonize more
+  * NotifyIcon's main requires argv
+  * use an int for sequence numbers
+  * use a stronger type
+  * more readable error
+  * #3978 simplify and allow cythonization
+  * fps is an int
+  * dpi must be an int
+  * oops: wrong attribute was set
+  * file missed during refactoring
+  * fixup cee8bc78c3b6d2e5d79227da452eef9b3cc2adaf
+  * Revert "always build with setuptools"
+  * move server components in a sub-module
+  * always build with setuptools
+  * #2998 move avif to codecs-extras
+  * don't rebuild just because setup.py was updated
+  * #3381 to exe or not to exe, sometimes
+  * #4009 catch invalid display names earlier
+  * #4006 MacOS menu code is instantiated before the client
+  * remove 'Intel' from greylist
+  * latest VirtualBox driver does work, at last
+  * #4005 v5 servers still check for this feature
+  * bump release no to test updated dependencies
+  * hard dependency on the python version
+  * remove last link to the old mailing list
+  * remove links to the old mailing list
+  * better test for gnome and variants
+
+-------------------------------------------------------------------
 Wed Sep 13 12:25:45 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 6.0+git20230913.0f036f0b:
