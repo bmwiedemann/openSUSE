@@ -22,13 +22,14 @@
 %bcond_with     remmina_kwallet
 %endif
 Name:           remmina
-Version:        1.4.32
+Version:        1.4.33
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://www.remmina.org/
-Source0:        https://gitlab.com/Remmina/Remmina/-/archive/v%{version}/Remmina-v%{version}.tar.bz2
+# Note the (new) . infront of version....
+Source0:        https://gitlab.com/Remmina/Remmina/-/archive/v.%{version}/Remmina-v.%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  cups-devel
 BuildRequires:  ed
@@ -186,7 +187,7 @@ This package provides a Remmina plugin for the GNOME keyring password manager.
 %lang_package
 
 %prep
-%setup -q -n Remmina-v%{version}
+%setup -q -n Remmina-v.%{version}
 %autopatch -p1
 sed -e 's|%{_bindir}/env bash|%{_bindir}/sh|' -i data/desktop/remmina-file-wrapper.in
 

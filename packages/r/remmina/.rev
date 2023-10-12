@@ -789,4 +789,15 @@
 </comment>
     <requestid>1111734</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>65add65dfeb09eedd877c91549a85cbc</srcmd5>
+    <version>1.4.33</version>
+    <time>1697147087</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.4.33:
+  * Add shortcut for 'send clipboard as keystrokes'
+  * Make keeping window open on session disconnect configurable
+  * Fix crash cause by using freed memory (forwarded request 1117514 from iznogood)</comment>
+    <requestid>1117520</requestid>
+  </revision>
 </revisionlist>

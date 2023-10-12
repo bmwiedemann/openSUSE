@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 12 17:03:07 UTC 2023 - Bjørn <bjorn.lie@gmail.com>
+
+- Update to version 1.4.33:
+  * Add shortcut for 'send clipboard as keystrokes'
+  * Make keeping window open on session disconnect configurable
+  * Fix crash cause by using freed memory
+
+-------------------------------------------------------------------
 Sun Sep 17 08:14:03 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to remmina version 1.4.32:
