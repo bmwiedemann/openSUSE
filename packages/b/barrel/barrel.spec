@@ -17,7 +17,7 @@
 
 
 Name:           barrel
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        Tool for storage management
 License:        GPL-2.0-only

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 11 14:29:09 CEST 2023 - aschnell@suse.com
+
+- support RAID level LINEAR
+- version 0.2.4
+
+-------------------------------------------------------------------
 Fri Oct 06 12:38:56 CEST 2023 - aschnell@suse.com
 
 - allow to use a key file when creating an encryption device
