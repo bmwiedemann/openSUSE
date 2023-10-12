@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kreversi
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Reversi board game
 License:        GPL-2.0-or-later
@@ -40,7 +40,9 @@ BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KDEGames)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5WidgetsAddons)
