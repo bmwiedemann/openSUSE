@@ -1,0 +1,12 @@
+Index: gnome-shell-45.0/src/meson.build
+===================================================================
+--- gnome-shell-45.0.orig/src/meson.build
++++ gnome-shell-45.0/src/meson.build
+@@ -250,6 +250,7 @@ executable('gnome-shell', 'main.c',
+   include_directories: [conf_inc, st_inc, include_directories('tray')],
+   build_rpath: mutter_typelibdir,
+   install_rpath: install_rpath,
++  link_args: ['-ldl'],
+   install: true
+ )
+ 
