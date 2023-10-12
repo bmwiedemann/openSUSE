@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct 11 08:57:44 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use %pyproject_wheel to build the package
+
+-------------------------------------------------------------------
+Tue Oct 10 11:54:23 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 2.4.0+git20231010.276506d:
+  * dbus-services: adjust to etc -> usr move in thermald (bsc#1215873)
+  * dbus-services: remove obsolete entry for sysprof
+  * Use "int" as defaultdict factory instead of lambda
+  * test: Replace bin in test_zypp_syntax
+
+-------------------------------------------------------------------
 Fri Oct 06 12:11:12 UTC 2023 - filippo.bonazzi@suse.com
 
 - Update to version 2.4.0+git20231006.4b34bab:
