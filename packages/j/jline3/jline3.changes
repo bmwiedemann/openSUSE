@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Thu Jun  8 10:52:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build also the org.jline:jline artifact
+
+-------------------------------------------------------------------
+Mon Jun  5 19:22:22 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v3.22.0
