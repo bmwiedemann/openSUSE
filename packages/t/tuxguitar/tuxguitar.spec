@@ -65,6 +65,7 @@ Patch12:        0011-no-fluidsynth.patch
 Patch20:        0012-default-soundfont.patch
 Patch21:        0013-startscript.patch
 Patch22:        0014-desktop.patch
+Patch30:        tuxguitar-CVE-2020-13940.patch
 BuildRequires:  alsa-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -133,6 +134,8 @@ sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME 
 %patch21 -p1
 %patch22 -p1
 
+%patch30 -p1
+
 %pom_xpath_remove "pom:profile[pom:id[text()='platform-windows-swt-all']]"
 %pom_xpath_remove "pom:profile[pom:id[text()='platform-macos-swt-cocoa-64']]"
 %pom_xpath_remove "pom:profile[pom:id[text()='platform-freebsd-swt-x86_64']]"
@@ -158,7 +161,7 @@ cp -a build-scripts/native-modules/*/target/build/lib/*.so %{buildroot}%{_libdir
 
 # Launch script
 mkdir -p %{buildroot}/%{_bindir}
-cp -a build-scripts/common-resources/common-linux/tuxguitar.sh %{buildroot}/%{_bindir}/%{name}
+cat build-scripts/common-resources/common-linux/tuxguitar.sh | sed 's#@LIBDIR@#%{_libdir}#g' > %{buildroot}/%{_bindir}/%{name}
 
 # Fix permissions
 chmod 755 %{buildroot}/%{_bindir}/%{name}
@@ -171,6 +174,7 @@ cp -a build-scripts/common-resources/common-linux/share/mime/packages/tuxguitar.
 # data files
 mkdir -p %{buildroot}/%{_datadir}/%{name}
 cp -a TuxGuitar/share/* %{buildroot}/%{_datadir}/%{name}
+cp -a misc/tuxguitar.tg %{buildroot}/%{_datadir}/%{name}
 cp -a build-scripts/%{name}-linux-swt-%{bit}/target/%{name}-%{version}-linux-swt-%{bit}/dist/* %{buildroot}/%{_datadir}/%{name}
 
 # desktop files

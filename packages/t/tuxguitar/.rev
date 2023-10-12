@@ -89,4 +89,12 @@
     <comment>allow buiding on all supported architectures</comment>
     <requestid>1116776</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>b2f56a8ab891a30f88e4abd732e44d5c</srcmd5>
+    <version>1.6.0</version>
+    <time>1697146906</time>
+    <user>anag+factory</user>
+    <comment>bsc#1173633 (CVE-2020-14940)</comment>
+    <requestid>1117171</requestid>
+  </revision>
 </revisionlist>
