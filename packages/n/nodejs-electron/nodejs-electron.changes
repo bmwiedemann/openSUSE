@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 12 17:04:40 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 25.9.1
+  * Fixed an issue where calling loadURL during some webContents url loading events could crash.
+  * Fixed deprecated gpu-process-crashed / renderer-process-crashed events being emitted twice and with incorrect arguments.
+- Desktop integration cleanup:
+  * edit .desktop file to not show Electron in start menu as it is useless when run by itself
+  * drop electron-logo-symbolic.svg and instead use upstream supplied icon
+  * do not install icon twice (icon.patch)
+  * do not create /{etc,usr/share}/webapps directories which do not belong here
+  * do not recommend noto-coloremoji-fonts, if an app needs it it should pull it by itself.
+
+-------------------------------------------------------------------
 Thu Oct  5 09:13:46 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 25.9.0
