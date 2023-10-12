@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Oct 12 08:23:20 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- update to 23.02.6 to fix (CVE-2023-41914)
+  * Removed Fix-test-32.8.patch as fixed upstream
+  * Bug Fixes:
+    + Fix `CpusPerTres=` not upgreadable with scontrol update
+    + Fix unintentional gres removal when validating the gres job state.
+    + Fix `--without-hpe-slingshot` configure option.
+    + Fix cgroup v2 memory calculations when transparent huge pages are used.
+    + Fix parsing of `sgather --timeout` option.
+    + Fix regression from 22.05.0 that caused `srun --cpu-bind "=verbose"`
+      and `"=v"` options give different CPU bind masks.
+    + Fix "_find_node_record: lookup failure for node" error message appearing
+      for all dynamic nodes during reconfigure.
+    + Avoid segfault if loading serializer plugin fails.
+    + `slurmrestd` - Correct OpenAPI format for `GET /slurm/v0.0.39/licenses`.
+    + `slurmrestd` - Correct OpenAPI format for
+      `GET /slurm/v0.0.39/job/{job_id}`.
+    + `slurmrestd` - Change format to multiple fields in
+     'GET /slurmdb/v0.0.39/assocations` and `GET /slurmdb/v0.0.39/qos` to
+      handle infinite and unset states.
+    + When a node fails in a job with `--no-kill`, preserve the extern step on the
+      remaining nodes to avoid breaking features that rely on the extern step
+      such as `pam_slurm_adopt`, `x11`, and `job_container/tmpfs`.
+    + `auth/jwt` - Ignore `x5c` field in JWKS files.
+    + `auth/jwt` - Treat 'alg' field as optional in JWKS files.
+    + Allow job_desc.selinux_context to be read from the job_submit.lua script.
+    + Skip check in slurmstepd that causes a large number of errors in the
+      munge log: "Unauthorized credential for client UID=0 GID=0".
+      This error will still appear on `slurmd`/`slurmctld`/`slurmdbd` start up
+      and is not a cause for concern.
+    + `slurmctld` - Allow startup with zero partitions.
+    + Fix some mig profile names in slurm not matching nvidia mig profiles.
+    + Prevent `slurmscriptd` processing delays from blocking other threads in
+      `slurmctld` while trying to launch `{Prolog|Epilog}Slurmctld`.
+    + Fix sacct printing ReqMem field when memory doesn't exist in requested
+      TRES.
+    + Fix how heterogenous steps in an allocation with `CR_PACK_NODE` or
+      `-mpack` are created.
+    + Fix `slurmctld` crash from race condition within `job_submit_throttle`
+      plugin.
+    + Fix `--with-systemdsystemunitdir` when requesting a default location.
+    + Fix not being able to cancel an array task by the jobid (i.e. not
+      `<jobid>_<taskid>`) through scancel, job launch failure or prolog
+      failure.
+    + Fix cancelling the whole array job when the array task is the meta job
+      and it fails job or prolog launch and is not requeable. Cancel only the
+      specific task instead.
+    + Fix regression in 21.08.2 where MailProg did not run for `mail-type=end`
+      for jobs with non+zero exit codes.
+    + Fix incorrect setting of memory.swap.max in cgroup/v2.
+    + Fix `jobacctgather/cgroup` collection of disk/io, gpumem, gpuutil TRES
+      values.
+    + Fix -d singleton for heterogeneous jobs.
+    + Downgrade info logs about a job meeting a "maximum node limit" in the
+      select plugin to `DebugFlags=SelectType`. These info logs could spam the
+      slurmctld log file under certain circumstances.
+    + `prep/script` - Fix `[Srun|Task]<Prolog|Epilog>` missing
+      `SLURM_JOB_NODELIST`.
+    + gres - Rebuild GRES core bitmap for nodes at startup. This fixes error:
+      "Core bitmaps size mismatch on node [HOSTNAME]", which causes jobs to
+      enter state "Requested node configuration is not available".
+    + `slurmctd` - Allow startup with zero nodes.
+    + Fix filesystem handling race conditions that could lead to an attacker
+      taking control of an arbitrary file, or removing entire directories'
+      contents. CVE-2023-41914.
+
+-------------------------------------------------------------------
 Mon Sep 18 05:23:19 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Updated to version 23.02.5 with the following changes:

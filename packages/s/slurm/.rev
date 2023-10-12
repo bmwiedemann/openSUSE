@@ -1302,4 +1302,41 @@
       interactive mode.</comment>
     <requestid>1111943</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>19a9f057571b284b27cfd0ad405e9608</srcmd5>
+    <version>23.02.6</version>
+    <time>1697146902</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.02.6 to fix (CVE-2023-41914)
+  * Removed Fix-test-32.8.patch as fixed upstream
+  * Bug Fixes:
+    + Fix `CpusPerTres=` not upgreadable with scontrol update
+    + Fix unintentional gres removal when validating the gres job state.
+    + Fix `--without-hpe-slingshot` configure option.
+    + Fix cgroup v2 memory calculations when transparent huge pages are used.
+    + Fix parsing of `sgather --timeout` option.
+    + Fix regression from 22.05.0 that caused `srun --cpu-bind &quot;=verbose&quot;`
+      and `&quot;=v&quot;` options give different CPU bind masks.
+    + Fix &quot;_find_node_record: lookup failure for node&quot; error message appearing
+      for all dynamic nodes during reconfigure.
+    + Avoid segfault if loading serializer plugin fails.
+    + `slurmrestd` - Correct OpenAPI format for `GET /slurm/v0.0.39/licenses`.
+    + `slurmrestd` - Correct OpenAPI format for
+      `GET /slurm/v0.0.39/job/{job_id}`.
+    + `slurmrestd` - Change format to multiple fields in
+     'GET /slurmdb/v0.0.39/assocations` and `GET /slurmdb/v0.0.39/qos` to
+      handle infinite and unset states.
+    + When a node fails in a job with `--no-kill`, preserve the extern step on the
+      remaining nodes to avoid breaking features that rely on the extern step
+      such as `pam_slurm_adopt`, `x11`, and `job_container/tmpfs`.
+    + `auth/jwt` - Ignore `x5c` field in JWKS files.
+    + `auth/jwt` - Treat 'alg' field as optional in JWKS files.
+    + Allow job_desc.selinux_context to be read from the job_submit.lua script.
+    + Skip check in slurmstepd that causes a large number of errors in the
+      munge log: &quot;Unauthorized credential for client UID=0 GID=0&quot;.
+      This error will still appear on `slurmd`/`slurmctld`/`slurmdbd` start up
+      and is not a cause for concern.
+    + `slurmctld` - Allow startup with zero partitions.</comment>
+    <requestid>1117163</requestid>
+  </revision>
 </revisionlist>
