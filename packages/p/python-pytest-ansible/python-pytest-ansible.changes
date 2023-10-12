@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 12 05:36:05 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.1:
+  * Bugfixes
+    - Enable CSpell check (#188) @cristianonicolai
+    - Move coverage to `pyproject.toml` (#179) @Ruchip16
+    - Add Python 3.12 to test matrix (#185) @cristianonicolai
+    - Remove Flake8 and revisit initial config for Ruff (#186)
+      @cristianonicolai
+
+-------------------------------------------------------------------
 Thu Sep 14 04:55:23 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.1.0:
