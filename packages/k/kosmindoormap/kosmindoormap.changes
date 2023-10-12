@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:27:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * Render waterfalls, public book cases and co-working spaces
+  * Match not found tag keys against the KeyNotSet operator
+  * Improve rendering of some tourist attractions
+  * Handle another Wikepedia link tagging variant
+  * Render showers as well
+
+-------------------------------------------------------------------
 Tue Sep 12 11:56:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1
