@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed Oct 11 09:34:17 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.14.1
+  * Bug fixes
+    - Fix shape data propagation function to handle missing optional parameters #5219
+    - Fix a couple of shape inference issues #5223
+    - Extend function type inference to handle missing optional parameters #5169
+    - Fix check_tensor to work with large models on Windows #5227
+    - Fix check_tensor to work with large models on UNIX #5286
+- Changes from 1.14.0
+  * Opset 19 is released
+  * New operators
+    - DeformConv added in #4783
+  * Operator extensions
+    - Equal - Support for string data type added in #4828
+    - AveragePool - New attribute dilations #4790
+    - Pad - Added new wrap to the mode attribute to support circular padding #4793
+    - Resize - Added half_pixel_symmetric to the coordinate_transformation_mode attribute #4862
+  * IR updates (bump to 9)
+    - Support attributes with default values: #4911
+    - Added 4 new 8-bit floating point data types: #4805
+  * Backend tests
+    - Replaced real models with light models in backend tests. #4861 #4960
+  * Support Protobuf v21
+    - Now ONNX supports Protobuf v21: #4956
+  * Deprecation notice
+    - Python 3.7 support will be deprecated due to EOL in next release: #5191
+    - onnx-weekly package will be deprecated in TestPyPI. 
+      Please use them from PyPI instead: #4930
+    - Properties in FormalParameter will be deprecated in future release.
+      Please use newer properties name: #5074
+    - Variables from mapping.py will be deprecated and become private implementation details.
+      Please use public functions to get corresponding types from helper.py instead: #4554
+- Changes from 1.13.1
+  * Bug fixes
+    - Add missing f-string for DeprecatedWarningDict in mapping.py #4707
+    - Fix types deprecated in numpy==1.24 #4721
+    - Update URL for real models from ONNX Runtime #4865
+    - Fix attribute substitution within subgraphs during function type/shape inference #4792
+    - Handle variants of constant op in shape inference #4824
+    - Fix parser bug in handling non-tensor types #4863
+    - Fix function shape inference bug #4880
+  * Announcement
+    - Deprecate real model tests from onnx repo in next ONNX release #4885
+    - Move onnx-weekly package from TestPyPI to PyPI and stop
+      uploading onnx-weekly to TestPyPI after next ONNX release #4930
+- Changes from 1.13.0
+  * New operators
+    - Col2Im added in #3948
+    - BitwiseNot added in #4497
+    - BitwiseAnd, BitwiseOr and BitwiseXor added in #4496
+  * Operator extensions
+    - Resize - New attributes: antialias, axes and keep_aspect_ratio_policy, allow for both scales and sizes to be provided when one of them is an empty constant #4126, #4388
+    - Pad - New attribute axes #4190
+    - OptionalHasElement - New input types handling #4326
+    - OptionalHasElement and OptionalGetElement - Accept tensor and sequence types #4421
+    - ScatterElement and ScatterND - Add max and min as supported reduction attributes #4411
+    - Split - Add support for uneven tensor splitting and a new num_outputs attribute #4481
+    - LpPool - New attributes: ceil_mode and dilations #4534
+  * Function updates
+    - CenterCropPad added in #4190
+    - mish added in #4350
+    - GroupNormalization added in #4621
+  * Reference Python runtime
+    - Reference Python runtime dependent on only Python and numpy has been added. #4483
+  * Python 3.11 support
+    - ONNX 1.13.0 supports Python 3.11. #4490
+  * Apple Silicon support
+    - Support for M1/M2 ARM processors has been added. #4642
+  * More
+    ONNX 1.13.0 also comes with numerous:
+    - bugfixes
+    - infrastructure improvements
+    - CI improvements
+    - documentation updates
+    - security updates
+    For full details see 
+    https://github.com/onnx/onnx/wiki/Logistics-for-ONNX-Release-1.13.0
+  * Deprecation notice
+    - TENSOR_TYPE_TO_STORAGE_TENSOR_TYPE has been deprecated #4270
+    - ONNXIFI: ONNX Interface for Framework Integration has been deprecated #4431
+
+-------------------------------------------------------------------
+Thu Sep 21 17:18:56 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Jul 21 13:09:06 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Use older protobuf (protobuf21) to fix build
