@@ -31,4 +31,12 @@
     <comment>Build with ant to avoid dependency on scala-maven-plugin</comment>
     <requestid>1114849</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>93be167b8407abf6f7548fda58be6170</srcmd5>
+    <version>2.0.0</version>
+    <time>1697147056</time>
+    <user>anag+factory</user>
+    <comment>Upgrading the scala stack</comment>
+    <requestid>1117471</requestid>
+  </revision>
 </revisionlist>
