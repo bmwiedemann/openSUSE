@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 12 11:25:00 UTC 2023 - Lukas Müller <lukas@localhost>
+
+- Update to version 20231012.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20231012
+  * Bump up OpenSSL 3.1.3 by @hsbt in #2257
+  * Bump mislav/bump-homebrew-formula-action from 2 to 3 by @dependabot in #2259
+  * Bump redhat-plumbers-in-action/differential-shellcheck from 4 to 5 by @dependabot in #2265
+  * Set default MAKE=make on FreeBSD by @Freaky in #2263
+  * Pass ruby configuration flags on the command line by @mislav in #2267
+  * Enable shellcheck parsing of ruby-build source by @mislav in #2268
+  * Use builds from ruby/truffleruby-dev-builder for truffleruby-dev on macos-arm64 by @eregon in #2269
+
+-------------------------------------------------------------------
 Tue Sep 19 13:34:25 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20230919.
