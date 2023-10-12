@@ -21,7 +21,7 @@
 %endif
 %bcond_without released
 Name:           kpat
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later
@@ -62,6 +62,7 @@ BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 Requires:       kdegames-carddecks-default
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
