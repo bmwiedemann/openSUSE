@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           weave-gitops
-Version:        0.33.0
+Version:        0.34.0
 Release:        0
 Summary:        Weave Gitops CLI
 License:        MPL-2.0
