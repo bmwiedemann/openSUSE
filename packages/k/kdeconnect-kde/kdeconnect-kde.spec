@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kdeconnect-kde
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -123,11 +123,6 @@ install -D -m 0644 %{SOURCE100} \
 
 %suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect.app.desktop Network RemoteAccess
 %suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect.nonplasma.desktop Network RemoteAccess
-%suse_update_desktop_file %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect_open.desktop Network RemoteAccess
-
-# Applications behave unexpectedly if application/octet-stream has a handler,
-# remove it for now (kde#472697).
-rm %{buildroot}%{_kf5_applicationsdir}/org.kde.kdeconnect_open.desktop
 
 %pre
 # migrate old kdeconnect-kde service
