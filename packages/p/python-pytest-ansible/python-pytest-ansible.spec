@@ -38,21 +38,21 @@
 %endif
 
 Name:           python-pytest-ansible
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        Plugin for pytest to simplify calling ansible modules from tests or fixtures
 License:        MIT
 URL:            https://github.com/ansible-community/pytest-ansible
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-ansible/pytest-ansible-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 63.0.0}
 BuildRequires:  %{python_module setuptools_scm >= 7.0.5}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  ansible-core >= 2.15.0
-BuildRequires:  molecule >= 6.0.0
 BuildRequires:  %{python_module pytest >= 6}
+BuildRequires:  molecule >= 6.0.0
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-pytest >= 6
