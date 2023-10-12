@@ -18,10 +18,10 @@
 
 
 %global base_name jetty
-%global addver  .v20230217
+%global addver  .v20231009
 %define src_name %{base_name}.project-%{base_name}-%{version}%{addver}
 Name:           %{base_name}-minimal
-Version:        9.4.51
+Version:        9.4.53
 Release:        0
 Summary:        Java Webserver and Servlet Container
 License:        Apache-2.0 OR EPL-1.0
@@ -43,15 +43,16 @@ BuildRequires:  mvn(org.apache.tomcat:tomcat-jasper)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.eclipse.jetty.orbit:javax.mail.glassfish)
 BuildRequires:  mvn(org.eclipse.jetty.toolchain:jetty-schemas)
+BuildRequires:  mvn(org.jboss.logging:jboss-logging)
 BuildRequires:  mvn(org.ow2.asm:asm)
 BuildRequires:  mvn(org.ow2.asm:asm-commons)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
+BuildArch:      noarch
 %ifarch %{ix86}
 BuildConflicts: java >= 12
 BuildConflicts: java-devel >= 12
 BuildConflicts: java-headless >= 12
 %endif
-BuildArch:      noarch
 
 %description
 
