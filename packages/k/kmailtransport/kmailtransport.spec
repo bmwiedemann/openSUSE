@@ -19,7 +19,7 @@
 %define kf5_version 5.105.0
 %bcond_without released
 Name:           kmailtransport
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        KDE PIM Libraries: Mailtransport layer
 License:        LGPL-2.1-or-later
