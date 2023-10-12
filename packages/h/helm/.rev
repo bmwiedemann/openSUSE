@@ -583,4 +583,23 @@ See changelog in:
 - Make use of %license macro</comment>
     <requestid>1115550</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>8ace1347a7138860f3f849d3dcae743e</srcmd5>
+    <version>3.13.1</version>
+    <time>1697147069</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.13.1:
+  * Fixing precedence issue with the import of values.
+  * Add missing with clause to release gh action
+  * FIX Default ServiceAccount yaml
+  * fix(registry): unswallow error
+  * remove useless print during prepareUpgrade
+  * fix(registry): address anonymous pull issue
+  * Fix missing run statement on release action
+  * Write latest version to get.helm.sh bucket
+  * chore(deps): bump oras.land/oras-go from 1.2.3 to 1.2.4
+  * Increased release information key name max length.
+  * chore(deps): bump golang.org/x/text from 0.11.0 to 0.13.0</comment>
+    <requestid>1117486</requestid>
+  </revision>
 </revisionlist>
