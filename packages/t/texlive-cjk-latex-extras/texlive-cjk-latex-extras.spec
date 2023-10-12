@@ -1,7 +1,7 @@
 #
 # spec file for package texlive-cjk-latex-extras
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 Name:           texlive-cjk-latex-extras
-BuildRequires:  freetype-tools
 BuildRequires:  texlive
 %if 0%{?suse_version} < 1300
 BuildRequires:  texlive-bin
@@ -26,7 +25,8 @@ PreReq:         /bin/mkdir
 PreReq:         /bin/rm
 PreReq:         /usr/bin/touch
 PreReq:         /usr/bin/updmap
-Requires:       freetype-tools
+BuildRequires:  texlive-ttfutils-bin
+Requires:       /usr/bin/ttf2tfm
 Requires:       texlive-cjk
 Requires:       texlive-latex
 Obsoletes:      cjk-latex
@@ -70,6 +70,8 @@ URL:            http://cjk.ffii.org/
 Source0:        texlive-cjk-latex-extras-%{version}.tar.bz2
 #PATCH-FIX-OPENSUSE texlive-cjk-latex-extras-bsc1159111-avoid-usage-safe-rm.patch bsc#1159111 qzhao@suse.com -- replace safe-rm to avoid security risks.
 Patch0:         texlive-cjk-latex-extras-bsc1159111-avoid-usage-safe-rm.patch
+# PATCH-FIX-OPENSUSE texlive-no-freetype.patch -- do not rely on freetype1; the needed tools have moved out of there in 2012 already
+Patch1:         texlive-no-freetype.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Extra fonts and scripts for CJK LaTeX
@@ -83,6 +85,7 @@ automatically generate fonts and setup files to use with CJK LaTeX.
 %prep
 %setup0
 %patch0 -p1
+%patch1 -p1
 mv README.SuSE README.SUSE
 find . -name CVS -type d | xargs rm -rf
 

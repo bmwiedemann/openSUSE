@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct 11 12:48:52 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not rely on deprecated freetype1:
+  + Add texlive-no-freetype.patch: change cjk-latex-config to
+    verify the presence of /usr/bin/ttf2tfm instead of the
+    freetype-tools package. ttf2tfm has ot actually been part of
+    freetype-tools since Feb 2012 anymore.
+  + Drop freetype-tools BuildRequires and Requires and add
+    texlive-ttfutils-bin BuildRequires, resp. /usr/bin/ttf2tfm
+    requires.
+
+-------------------------------------------------------------------
 Wed Oct 19 06:41:44 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Add texlive-cjk-latex-extras-bsc1159111-avoid-usage-safe-rm.patch
