@@ -265,4 +265,12 @@
 * Remove unneeded futures module from {Build,}Requires.</comment>
     <requestid>1107855</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>18d1acebabcbf6f795e0350e1552f05d</srcmd5>
+    <version>2.0.9</version>
+    <time>1697146903</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117152</requestid>
+  </revision>
 </revisionlist>

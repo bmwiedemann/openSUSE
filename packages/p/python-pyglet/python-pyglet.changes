@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 11 15:08:53 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace freetype buildRequires with freetype2-devel: freetype is
+  deprecated. The python code loads a libfreetype.so, which
+  actually never existed in freetype 1. The tests passed so far as
+  libfreetype6 has been pulled in indirectly by python-Pillow.
+- Drop the freetype recommends, as it is never used and the
+  library in question is pulled in via existing deps.
+
+-------------------------------------------------------------------
 Tue Aug 29 06:52:57 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.0.9:
