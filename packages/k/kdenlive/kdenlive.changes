@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:27:18 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * Fix Fit Zoom (kde#472754)
+  * Fix cannot move clip to 0 in some cases. Fixes #1759
+  * Fix erratic behavior when requesting to add same track transitions (mixes) to several clips. Fixes #1761
+  * Redirect Settings > Configure Kdenlive > Help to the online documentation
+  * Fix multiple audio streams broken by MLT's new astream property (kde#474895)
+  * Fix dialogs not correctly deleted, e.g. add track dialog, causing crash on exit
+  * Ensure clips with audio (for exemple playlists) don't block audio when inserted on video track
+  * ensure translations cannot mess with file extensions
+  * Fix another case blocking separate track move
+  * Fix grabbed clips cannot be moved on upper track in some cases
+  * Fix move clip part of a group on another track not always working
+  * Fix playlist count not correctly updated, allowing to delete last sequence (kde#474988)
+  * Fix motion-tracker Nano file name and links to the documentation
+  * Stop installing kdenliveui.rc also as separate file, next to Qt resource
+  * Fix tests and possible corruption in recent mix fix
+  * Correctly highlight newly dropped files in library
+  * Fix threading issue crashing in resource widget. Fixes #1612
+  * Fix freeze on adding mix Related to #1751
+  * Make Lift work as expected by most users (kde#447948,kde#436762)
+  * Fix load task discarding kdenlive settings (caused timeline clips to miss the "proxy" icon
+  * Fix multiple issues with Lift/Gamma/Gain undo (kde#472865, kde#462406)
+  * Fix freeze / crash on project opening
+  * Optimize RAM usage by not storing producers on which we did a get_frame operation. Slows down thumbnail creation but saves some RAM.
+  * Fix guide multi-export adding an extra dot to the filename
+  * COrrectly update effect stack when switching timeline tab
+
+-------------------------------------------------------------------
 Tue Sep 12 11:55:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1

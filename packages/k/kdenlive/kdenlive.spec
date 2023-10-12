@@ -19,7 +19,7 @@
 %define mlt_version 7.14.0
 %bcond_without released
 Name:           kdenlive
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -130,7 +130,6 @@ rm -r %{buildroot}%{_datadir}/doc/Kdenlive
 %{_kf5_configkcfgdir}/kdenlivesettings.kcfg
 %{_kf5_debugdir}/kdenlive.categories
 %{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_kxmlguidir}/kdenlive/
 %{_kf5_mandir}/man1/kdenlive*
 %dir %{_kf5_plugindir}/designer
 %dir %{_kf5_plugindir}/kf5/
