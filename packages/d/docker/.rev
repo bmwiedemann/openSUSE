@@ -1335,4 +1335,12 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
   individually. Users should probably just ignore this unit file. bsc#1210141</comment>
     <requestid>1111025</requestid>
   </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>76397a2f7d7a5181435d5cd0ad78b460</srcmd5>
+    <version>24.0.6_ce</version>
+    <time>1697146754</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1116896</requestid>
+  </revision>
 </revisionlist>

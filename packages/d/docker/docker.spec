@@ -67,7 +67,9 @@ Patch101:       0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
 # UPSTREAM: Revert of upstream patch to keep SLE-12 build working.
 Patch200:       0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/pull/41954>.
-Patch300:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+Patch201:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+# UPSTREAM: Revert of upstream patches to make apparmor work on SLE 12.
+Patch202:       0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
 # UPSTREAM: Backport of <https://github.com/docker/cli/pull/4228>.
 Patch900:       cli-0001-docs-include-required-tools-in-source-tree.patch
 BuildRequires:  audit
@@ -215,7 +217,9 @@ cp %{SOURCE130} .
 %patch200 -p1
 %endif
 # bsc#1099277
-%patch300 -p1
+%patch201 -p1
+# Solves apparmor issues on SLE-12, but okay for newer SLE versions too.
+%patch202 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE160} %{name} %{name}.conf
