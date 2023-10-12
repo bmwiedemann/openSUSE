@@ -39,6 +39,19 @@ Source8:        ql2600_fw.bin
 Source9:        ql2700_fw.bin
 Source10:       ql8300_fw.bin
 Source99:       kernel-firmware-rpmlintrc
+# for compatibility with SLE15-SP4 kernel (bsc#1209681)
+Source200:      iwlwifi-cc-a0-71.ucode
+Source201:      iwlwifi-Qu-b0-hr-b0-71.ucode
+Source202:      iwlwifi-Qu-b0-jf-b0-71.ucode
+Source203:      iwlwifi-Qu-c0-hr-b0-71.ucode
+Source204:      iwlwifi-Qu-c0-jf-b0-71.ucode
+Source205:      iwlwifi-QuZ-a0-hr-b0-71.ucode
+Source206:      iwlwifi-QuZ-a0-jf-b0-71.ucode
+Source207:      iwlwifi-so-a0-gf4-a0-71.ucode
+Source208:      iwlwifi-so-a0-gf-a0-71.ucode
+Source209:      iwlwifi-so-a0-hr-b0-71.ucode
+Source210:      iwlwifi-so-a0-jf-b0-71.ucode
+Source211:      iwlwifi-ty-a0-gf-a0-71.ucode
 # install / build infrastructure
 Source1001:     make-files.sh
 Source1002:     list-license.sh
@@ -59,8 +72,8 @@ Source1100:     qcom-post
 Source1101:     uncompressed-post
 # workarounds
 Patch1:         copy-file-ignore-README.patch
-Patch2:         amd-ucode-rawfile.patch
-BuildRequires:  fdupes
+# for compatibility with SLE15-SP4 kernel (bsc#1209681)
+Patch200:       iwlwifi-WHENCE-fix.patch
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
@@ -73,6 +86,10 @@ BuildArch:      noarch
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
+%endif
+%if "%{flavor}" == "uncompressed"
+Provides:       kernel-firmware-uncompressed = %{version}
+@@SUBPKGPROVS@@
 %endif
 
 %description
@@ -123,10 +140,26 @@ all files that have been provided by kernel-firmware package.
 %prep
 %setup -q -n kernel-firmware-%{version}
 %patch1 -p1
-%patch2 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
+
+%if 0%{?suse_version} < 1599
+# revive old iwlwifi firmware for compatibility (bsc#1209681)
+%patch200 -p1
+cp %{SOURCE200} .
+cp %{SOURCE201} .
+cp %{SOURCE202} .
+cp %{SOURCE203} .
+cp %{SOURCE204} .
+cp %{SOURCE205} .
+cp %{SOURCE206} .
+cp %{SOURCE207} .
+cp %{SOURCE208} .
+cp %{SOURCE209} .
+cp %{SOURCE210} .
+cp %{SOURCE211} .
+%endif
 
 %build
 # nothing to do
@@ -140,7 +173,6 @@ sh ./copy-firmware.sh -v --xz %{buildroot}%{_firmwaredir}
 sh %{_sourcedir}/make-files.sh -v %{_sourcedir}/topics.list %{buildroot} %{_firmwaredir} < WHENCE
 sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %endif
-%fdupes -s %{buildroot}
 
 %if "%{flavor}" == "uncompressed"
 @@POST@@
@@ -153,7 +185,7 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 
 %if "%{flavor}" == "uncompressed"
 %files
-%doc WHENCE README
+%doc WHENCE README.md
 %license GPL-2 GPL-3 LICEN[CS]E.*
 %{_firmwaredir}
 %exclude %{_firmwaredir}/amd-ucode
@@ -161,7 +193,7 @@ sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 
 %else
 %files all
-%doc WHENCE README
+%doc WHENCE README.md
 
 %files -n ucode-amd
 %doc amd-ucode/README

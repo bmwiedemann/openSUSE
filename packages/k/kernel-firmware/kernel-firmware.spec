@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20230829
+%define version_unconverted 20231006
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20230829
+Version:        20231006
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -39,6 +39,19 @@ Source8:        ql2600_fw.bin
 Source9:        ql2700_fw.bin
 Source10:       ql8300_fw.bin
 Source99:       kernel-firmware-rpmlintrc
+# for compatibility with SLE15-SP4 kernel (bsc#1209681)
+Source200:      iwlwifi-cc-a0-71.ucode
+Source201:      iwlwifi-Qu-b0-hr-b0-71.ucode
+Source202:      iwlwifi-Qu-b0-jf-b0-71.ucode
+Source203:      iwlwifi-Qu-c0-hr-b0-71.ucode
+Source204:      iwlwifi-Qu-c0-jf-b0-71.ucode
+Source205:      iwlwifi-QuZ-a0-hr-b0-71.ucode
+Source206:      iwlwifi-QuZ-a0-jf-b0-71.ucode
+Source207:      iwlwifi-so-a0-gf4-a0-71.ucode
+Source208:      iwlwifi-so-a0-gf-a0-71.ucode
+Source209:      iwlwifi-so-a0-hr-b0-71.ucode
+Source210:      iwlwifi-so-a0-jf-b0-71.ucode
+Source211:      iwlwifi-ty-a0-gf-a0-71.ucode
 # install / build infrastructure
 Source1001:     make-files.sh
 Source1002:     list-license.sh
@@ -59,8 +72,8 @@ Source1100:     qcom-post
 Source1101:     uncompressed-post
 # workarounds
 Patch1:         copy-file-ignore-README.patch
-Patch2:         amd-ucode-rawfile.patch
-BuildRequires:  fdupes
+# for compatibility with SLE15-SP4 kernel (bsc#1209681)
+Patch200:       iwlwifi-WHENCE-fix.patch
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
@@ -99,6 +112,41 @@ Obsoletes:      qlogic-firmware < %{version}
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
+%endif
+%if "%{flavor}" == "uncompressed"
+Provides:       %{name}-amdgpu = %{version}
+Provides:       %{name}-ath10k = %{version}
+Provides:       %{name}-ath11k = %{version}
+Provides:       %{name}-atheros = %{version}
+Provides:       %{name}-bluetooth = %{version}
+Provides:       %{name}-bnx2 = %{version}
+Provides:       %{name}-brcm = %{version}
+Provides:       %{name}-chelsio = %{version}
+Provides:       %{name}-dpaa2 = %{version}
+Provides:       %{name}-i915 = %{version}
+Provides:       %{name}-intel = %{version}
+Provides:       %{name}-iwlwifi = %{version}
+Provides:       %{name}-liquidio = %{version}
+Provides:       %{name}-marvell = %{version}
+Provides:       %{name}-media = %{version}
+Provides:       %{name}-mediatek = %{version}
+Provides:       %{name}-mellanox = %{version}
+Provides:       %{name}-mwifiex = %{version}
+Provides:       %{name}-network = %{version}
+Provides:       %{name}-nfp = %{version}
+Provides:       %{name}-nvidia = %{version}
+Provides:       %{name}-platform = %{version}
+Provides:       %{name}-prestera = %{version}
+Provides:       %{name}-qcom = %{version}
+Provides:       %{name}-qlogic = %{version}
+Provides:       %{name}-radeon = %{version}
+Provides:       %{name}-realtek = %{version}
+Provides:       %{name}-serial = %{version}
+Provides:       %{name}-sound = %{version}
+Provides:       %{name}-ti = %{version}
+Provides:       %{name}-ueagle = %{version}
+Provides:       %{name}-usb-network = %{version}
+Provides:       kernel-firmware-uncompressed = %{version}
 %endif
 
 %description
@@ -182,6 +230,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -505,6 +555,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -535,6 +587,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -554,6 +608,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -759,6 +815,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -813,6 +871,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -864,6 +924,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -944,6 +1006,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -1335,6 +1399,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -1351,6 +1417,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -1740,6 +1808,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -1774,6 +1844,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -2720,6 +2792,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -2739,6 +2813,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -2781,6 +2857,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -2972,6 +3050,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -3073,6 +3153,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -3093,6 +3175,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -3140,6 +3224,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -3367,6 +3453,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -3395,6 +3483,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -3515,10 +3605,15 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
 %endif
+Supplements:    modalias(acpi*:AMDI0100%3A*)
+Supplements:    modalias(acpi*:AMDI0102%3A*)
+Supplements:    modalias(acpi*:AMDI0103%3A*)
 Supplements:    modalias(acpi*:AMDI0C00%3A*)
 Supplements:    modalias(eisa:sABP7401*)
 Supplements:    modalias(eisa:sABP7501*)
@@ -4025,6 +4120,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -4041,6 +4138,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -4237,6 +4336,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -4313,6 +4414,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -5186,6 +5289,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -5849,6 +5954,7 @@ Supplements:    modalias(usb:v2001p3C21d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p3C22d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p3C23d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2001p3C25d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v2001pB301d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019p1201d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2019p1201d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2019p4901d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5949,6 +6055,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -6123,6 +6231,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -6194,6 +6304,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -6212,6 +6324,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -6262,6 +6376,8 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun):/usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+Conflicts:      kernel-firmware < %{version}
+Conflicts:      kernel-firmware-uncompressed
 %if 0%{?suse_version} >= 1550
 # make sure we have post-usrmerge filesystem package on TW
 Conflicts:      filesystem < 84
@@ -6389,10 +6505,26 @@ various USB WiFi / Ethernet drivers.
 %prep
 %setup -q -n kernel-firmware-%{version}
 %patch1 -p1
-%patch2 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
+
+%if 0%{?suse_version} < 1599
+# revive old iwlwifi firmware for compatibility (bsc#1209681)
+%patch200 -p1
+cp %{SOURCE200} .
+cp %{SOURCE201} .
+cp %{SOURCE202} .
+cp %{SOURCE203} .
+cp %{SOURCE204} .
+cp %{SOURCE205} .
+cp %{SOURCE206} .
+cp %{SOURCE207} .
+cp %{SOURCE208} .
+cp %{SOURCE209} .
+cp %{SOURCE210} .
+cp %{SOURCE211} .
+%endif
 
 %build
 # nothing to do
@@ -6406,7 +6538,6 @@ sh ./copy-firmware.sh -v --xz %{buildroot}%{_firmwaredir}
 sh %{_sourcedir}/make-files.sh -v %{_sourcedir}/topics.list %{buildroot} %{_firmwaredir} < WHENCE
 sh %{_sourcedir}/list-license.sh < %{_sourcedir}/licenses.list
 %endif
-%fdupes -s %{buildroot}
 
 %if "%{flavor}" == "uncompressed"
 %pre
@@ -6766,7 +6897,7 @@ fi
 
 %if "%{flavor}" == "uncompressed"
 %files
-%doc WHENCE README
+%doc WHENCE README.md
 %license GPL-2 GPL-3 LICEN[CS]E.*
 %{_firmwaredir}
 %exclude %{_firmwaredir}/amd-ucode
@@ -6775,7 +6906,7 @@ fi
 %else
 
 %files all
-%doc WHENCE README
+%doc WHENCE README.md
 
 %files -n ucode-amd
 %doc amd-ucode/README

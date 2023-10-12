@@ -18,6 +18,8 @@ define_subpackage () {
     echo "Requires(postun):/usr/bin/mkdir /usr/bin/touch"
     echo "Requires(post): dracut >= 049"
     echo "Conflicts:      kernel < 5.3"
+    echo "Conflicts:      kernel-firmware-uncompressed"
+    echo "Conflicts:      kernel-firmware < %{version}"
     echo "%if 0%{?suse_version} >= 1550"
     echo "# make sure we have post-usrmerge filesystem package on TW"
     echo "Conflicts:      filesystem < 84"
@@ -60,6 +62,12 @@ sed -e"s/@@VERSION@@/$version/g" | while read line; do
     if [ "$line" = "@@SUBPKGLIST@@" ]; then
 	for t in $topics; do
 	    echo "Requires:       %{name}-$t = %{version}"
+	done
+	continue
+    fi
+    if [ "$line" = "@@SUBPKGPROVS@@" ]; then
+	for t in $topics; do
+	    echo "Provides:       %{name}-$t = %{version}"
 	done
 	continue
     fi
