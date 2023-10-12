@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 13 15:47:25 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.40.3:
+  * feat: Add env config var as an alternative to scriptEnv
+  * feat: Warn when overriding CHEZMOI_ env vars
+  * feat: Set CHEZMOI_ and scriptEnv env vars for all invoked commands
+
+-------------------------------------------------------------------
+Wed Oct 11 15:00:08 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.40.2:
+  * upstream version bump
+- Update to version 2.40.1:
+  * feat: Add Path Separator and Path List Separator to provided template values.
+  * feat: Ignore AppleDouble files in externals
+  * feat: find[One]Executable in user-supplied paths
+  * fix: Only invoke diff pager if command modifies filesystem
+  * fix: Don't use replace-executable for WinGet installations
+  * fix: Add chattr +remove support for files
+
+-------------------------------------------------------------------
 Tue Sep 19 15:57:02 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.40.0:
