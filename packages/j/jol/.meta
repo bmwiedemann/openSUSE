@@ -1,0 +1,5 @@
+<package name="jol" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="jol"/>
+</package>
