@@ -197,7 +197,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        25.9.0
+Version:        25.9.1
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -207,7 +207,6 @@ Source0:        %{mod_name}-%{version}.tar.zst
 Source1:        create_tarball.sh
 Source10:       electron-launcher.sh
 Source11:       electron.desktop
-Source12:       electron-logo-symbolic.svg
 # Shim generators for unbundling libraries
 Source50:       flatbuffers.gn
 Source51:       libsecret.gn
@@ -258,6 +257,7 @@ Patch76:        disable-devtools-tests.patch
 Patch77:        angle_link_glx.patch
 Patch78:        rdynamic.patch
 Patch79:        v8-hide-private-symbols.patch
+Patch80:        icon.patch
 
 # PATCHES to use system libs
 Patch1000:      do-not-build-libvulkan.so.patch
@@ -383,6 +383,7 @@ BuildRequires:  HdrHistogram_c-devel
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  hwdata
+BuildRequires:  ImageMagick
 %if 0%{?fedora}
 BuildRequires:  libatomic
 %endif
@@ -614,7 +615,6 @@ BuildRequires:  pkgconfig(libspa-0.2)
 
 Requires:       hicolor-icon-theme
 Requires:       google-roboto-fonts
-Recommends:     noto-coloremoji-fonts
 
 # This required library is dlopened
 %if %{without link_vulkan}
@@ -730,6 +730,16 @@ sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
 
 
 %build
+pushd electron/shell/browser/resources/win
+[ $(identify electron.ico | wc -l) = 4 ] #Sanity check
+convert electron.ico -strip extracted.png
+identify extracted-0.png | grep -F 16x16
+identify extracted-1.png | grep -F 32x32
+identify extracted-2.png | grep -F 48x48
+identify extracted-3.png | grep -F 256x256
+popd
+
+
 # GN sets lto on its own and we need just ldflag options, not cflags
 %define _lto_cflags %{nil}
 
@@ -1310,8 +1320,13 @@ install -d -m 0755 %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/
 
 install -pm 0755 %{SOURCE10} %{buildroot}%{_bindir}/%{mod_name}
 sed -i 's[XXXLIBDIRXXX[%{_libdir}[g' %{buildroot}%{_bindir}/%{mod_name}
-install -pm 0644 electron/default_app/icon.png %{buildroot}%{_datadir}/pixmaps/%{mod_name}.png
-install -pm 0644 %{SOURCE12} %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/electron-symbolic.svg
+install -pvDm644 electron/default_app/icon.png %{buildroot}%{_datadir}/icons/hicolor/1024x1024/%{mod_name}.png
+
+install -pvDm644 electron/shell/browser/resources/win/extracted-0.png %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/%{mod_name}.png
+install -pvDm644 electron/shell/browser/resources/win/extracted-1.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/%{mod_name}.png
+install -pvDm644 electron/shell/browser/resources/win/extracted-2.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/%{mod_name}.png
+install -pvDm644 electron/shell/browser/resources/win/extracted-3.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{mod_name}.png
+
 
 desktop-file-install --dir %{buildroot}%{_datadir}/applications/ %{SOURCE11}
 
@@ -1359,15 +1374,14 @@ ln -srv third_party -t out/Release
 %files
 %license electron/LICENSE out/Release/LICENSES.chromium.html
 %{_bindir}/electron
-%{_datadir}/pixmaps/electron.png
-%{_datadir}/icons/hicolor/symbolic/apps/electron-symbolic.svg
 %{_datadir}/applications/electron.desktop
-
+%{_datadir}/icons/hicolor/16x16/apps/electron.png
+%{_datadir}/icons/hicolor/32x32/apps/electron.png
+%{_datadir}/icons/hicolor/48x48/apps/electron.png
+%{_datadir}/icons/hicolor/256x256/apps/electron.png
+%{_datadir}/icons/hicolor/1024x1024
 
 %{_libdir}/electron/
-
-%dir %{_sysconfdir}/webapps
-%dir %{_datadir}/webapps
 
 %files devel
 %{_includedir}/electron
