@@ -74,7 +74,7 @@
 @@ -83,63 +47,25 @@
      "css-loader": "6.8.1",
      "del": "6.1.1",
-     "electron": "24.8.3",
+     "electron": "26.3.0",
 -    "electron-builder": "^23.6.0",
      "electron-log": "4.4.8",
 -    "electron-reload": "2.0.0-alpha.1",
