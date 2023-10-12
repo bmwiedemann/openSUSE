@@ -17,7 +17,7 @@
 
 
 Name:           python-bibtexparser
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Bibtex parser for python
 License:        BSD-3-Clause OR LGPL-3.0-only
