@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 11 03:59:43 UTC 2023 - ming li <mli@suse.com>
+
+- update to 2.4:
+  * CMake: runtime destination corrected (bin, not lib)
+  * CMake: removed option PORTABLE and compiler flag -march (unavailable on some architectures)
+
+-------------------------------------------------------------------
 Mon May 29 19:26:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3:
