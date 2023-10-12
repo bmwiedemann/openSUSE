@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct 12 05:30:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.19.3:
+  * Automator: update istio/client-go@release-1.19 dependency in
+    istio/istio@release-1.19 (#47293)
+  * Update golang.org/x/net and grpc-go (#47287)
+  * Automator: update common-files@release-1.19 in
+    istio/istio@release-1.19 (#47291)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47289)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47271)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47243)
+  * Automator: update ztunnel@release-1.19 in
+    istio/istio@release-1.19 (#47240)
+  * Automator: update istio/client-go@release-1.19 dependency in
+    istio/istio@release-1.19 (#47232)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47233)
+  * Automator: update common-files@release-1.19 in
+    istio/istio@release-1.19 (#47231)
+  * Automator: update proxy@release-1.19 in
+    istio/istio@release-1.19 (#47186)
+- skipping non-existent release 1.19.2
+
+-------------------------------------------------------------------
 Wed Oct 04 09:40:21 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.19.1:
