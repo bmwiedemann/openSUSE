@@ -32,6 +32,7 @@ URL:            https://github.com/AdoptOpenJDK/IcedTea-Web
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         icedtea-web-suse-desktop-files.patch
 Patch1:         more-java-versions.patch
+Patch2:         reproducible-timestamps.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -88,6 +89,7 @@ and plugin implementation.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 rm -rf netx/net/sourceforge/jnlp/NetxPanel.java netx/sun
 
