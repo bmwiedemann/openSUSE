@@ -1,4 +1,162 @@
 -------------------------------------------------------------------
+Thu Oct 12 06:03:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.4.3:
+  * Release 13.4.3 (#33291)
+  * Add param `extraContainers` to `teleport-cluster` and
+    `teleport-kube-agent` (#32953) (#33300)
+  * Update e (#33281)
+  * Backport changes to Restrict Access to Privileged Accounts
+    topic (#33255)
+  * [v13] [buddy] docs: minor typos and improvements in the
+    description of the Teleport Proxy Service (#33183)
+  * Add server troubleshooting to left nav (#33222)
+  * [v13] utils.RecursiveChown: Fix for Privilege Escalation due to
+    following symlinks (#33247)
+  * Reword Troubleshooting section in Connect docs (#33202)
+  * fix watcher setup in oidc test (#33259)
+  * [v13] docs: Add Docker to partials and update the discord
+    access request plugin (#33168)
+  * [v13] docs: role definition update and update networking info
+    (#33225)
+  * Disable golangci-lint action cache (#30780) (#33240)
+  * [v13] chore: Bump Go to v1.20.10 (#33230)
+  * Fixes emitting wrong events for ec2 discover flow (#33186)
+  * [v13] [docs] Attempt to clarify ElastiCache/MemoryDB auth
+    methods (#33216)
+  * [v13] docs: Caveat for token permissions not scoped to any
+    resource context (#33165)
+  * [v13] Fix `tsh kube credentials` when root cluster roles don't
+    allow Kube access (#33211)
+  * Fix Kubernetes agent updater helm chart reference to bool
+    (#33213)
+  * Yarn replacement version bumps (#32982) (#33024)
+  * Fix --debug flag in Connect & enable devtools in debug mode
+    (#33204)
+  * [v13] Split RDS Proxy guides per protocol (#33146)
+  * Web: Add EC2 name when listing instances in Discover flow
+    (#33178)
+  * [v13] Add support for gap prop to Button (#33199)
+  * [v13] fix leaf SSH sessions not getting recorded (#33104)
+  * [v13] OneOff Script: use ent build if cluster is Enterprise
+    (#33147)
+  * Fix self-signed cert validity on macOS systems (#33157)
+  * Add initial command to session trackers (#32947) (#33113)
+  * [v13] docs: update fips docker address and internal listing
+    (#33088)
+  * [v13] docs: include info for accessing database audit activity
+    (#33094)
+  * [v13] Web: add link to CloudShell on EICE/EC2 Discover flow
+    (#33078)
+  * Fix some Rust lint warnings caught by Clippy 1.73.0 (#33097)
+  * Update e (#33105)
+  * Add promoted access list title to teleterm access request
+    (#32718)
+  * docs: title zypper enterprise linux install tab (#33075)
+  * Add the Access List review backend. (#33069)
+  * [v13] Add cost optimized pagination search for athena (#33006)
+  * Update cloud docs to 13.4.2 (#33072)
+  * [v13] Access request promotion (#33029)
+  * [v13] Update e ref. (#33067)
+  * Downgrade Electron to 25.9.0 (#33059)
+  * Allow breaker tripped error to be configurable (#32869)
+    (#33037)
+  * [v13] chore: Bump Go to v1.20.9 (#33047)
+  * Correct typo in Makefile. (#33052)
+  * [v13] chore: Move golangci-lint and buf to GHA, bump versions
+    (#33038)
+  * Add in audit review recurrence presets. (#32961)
+  * [v13] Track user connections across clusters (#32996)
+  * Web: Create (re-use) step navigator for general use (#32939)
+    (#32985)
+  * Web: fix passing in color into wrong field (#32992)
+  * Web build: fix circular dep warnings (#32976)
+  * [v13] `removeSecure()` should close the file before removing it
+    on Windows (#32964)
+  * update cloud docs to 13.4.0 (#32950)
+  * Bump zod from 3.21.2 to 3.22.3 (#32955)
+  * Update error message on GitHub OSS (#32915)
+  * Update e (#32935)
+  * [v13] Fix: Add access list field to web usercontext ACL
+    (#32917)
+  * [v13] docs: Draft of troubleshooting topics for Server Access
+    (#32875)
+  * [v13] Replace Access Plane with Access Platform (#32879)
+  * Change Open source and OSS to Teleport Community Edition
+    (#32884)
+  * Bump webpki from 0.22.1 to 0.22.2 (#32883) (#32906)
+  * MenuIcon: Support arbitrary icon through Icon prop (#32891)
+  * Pin Teleport Terraform Provider to Teleport major version
+    (#32897)
+  * re-add agentless node manual installation docs (#32813)
+  * Add the internal access list review resource. (#32864)
+  * [v13] docs: update tctl tsh version location in prereqs
+    (#32859)
+  * [v13] docs: remove old versions ref (#32866)
+  * Cut CI unit test runtime in half (#32851)
+  * Use Proxy gRPC API when creating tracing client (#32664)
+  * [v13] [docs] DB access troubleshoot sts:AssumeRole not
+    authorized (#32660)
+  * Use a context with a different scope for diagnostic trace
+    upload (#32837)
+  * Add connection information to multiplexer logs so it's easier
+    to investigate (#32739)
+  * add usage events for eice discover (#32617) (#32816)
+  * [v13] Check to make sure defaultAllowRules matches preset
+    roles. (#32794)
+  * Improve RDS MySQL IAM auth error message (#32802)
+  * [v13] Improve explanation of `TBOT_GITLAB_JWT` config in GitLab
+    guide (#32796)
+  * [v13] Update Okta SDK to v2.20.0 (#32782)
+  * add eice discover flow (#32202) (#32766)
+  * [auto] docs: Update version to v13.4.1 (#32606)
+  * allow teleport to start when some etcd nodes are unreachable
+    (#32778)
+  * conditionally show assist popover (#32267) (#32764)
+  * [v13] fix: Fix panic on `tsh device enroll --current-device`
+    (#32757)
+  * Web: Add disabled state to RadioGroup and add new icon (#32762)
+  * move aws region selector to shared and add types and endpoints
+    (#32096) (#32754)
+  * [v13] fix: Let users without a useable device issue register
+    challenges (#32668)
+  * bump e-ref (#32759)
+  * Fix the in-product link to trusted cluster docs (#32750)
+  * [v13] Leverage marketing params on Discover (#31648) (#32514)
+  * Web: Extract re-usable parts and add new icons (#32529)
+    (#32716)
+  * Remove reference to use a load balancer (#32693)
+  * [v13] Add Access Review gRPC service methods and messages.
+    (#32548)
+  * docs: helm updates (#32732)
+  * docs: update Teleport Team prereqs (#32700)
+  * Properly apply `client_idle_timeout` to database access
+    sessions (#32485) (#32725)
+  * Add textTransform override for resource launch buttons (#32686)
+  * Add alignSelf to Button (#32641)
+  * Update e (#32723)
+  * Fix label name mismatch (#32570)
+  * [v13] Fixed issue where prerelease container image tags can
+    overwrite production container image tags (#32703)
+  * [v13] docs: remove multi level claim reference (#32674)
+  * Fix usage of ClusterName from config when starting Auth server
+    (#32683)
+  * Drain unused SSH channels (#32677)
+  * [v13] Connect: Add --debug flag, don't pass --insecure flag in
+    dev mode by default (#32656)
+  * Fix overflow in dropdown menu (#32646)
+  * Add PROXY header getter to the grpc proxy client (#32178)
+  * Move `lib/utils/prompt` to `api/utils/prompt` (#32334) (#32577)
+  * [v13] Fix `TestEC2Hostname` (#32665)
+  * Bump graphql from 16.6.0 to 16.8.1 (#32636)
+  * Fix enterprise version check (#32554) (#32633)
+  * Fix Access List Members cache and eventing. (#32651)
+  * Update the supported versions table for v14 (#32584)
+  * Simplify LockTarget.IsEmpty implementation (#32608)
+  * Fix install-linux.mdx (#32587)
+- skip non-existent release 13.4.2
+
+-------------------------------------------------------------------
 Wed Sep 27 04:37:00 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.4.1:
