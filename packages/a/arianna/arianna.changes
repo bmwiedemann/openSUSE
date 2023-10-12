@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 10 18:26:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.08.2/
+- Changes since 23.08.1:
+  * snapcraft: Add dbus slot.
+  * Add ecm package as it requires newer than content pack provides.
+  * Add snapcraft file to resue
+  * snapcraft: add snapcraft files
+
+-------------------------------------------------------------------
 Tue Sep 12 11:55:15 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.08.1
