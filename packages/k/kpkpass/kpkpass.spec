@@ -19,7 +19,7 @@
 %bcond_without released
 %define libname libKPim5PkPass5
 Name:           kpkpass
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        Library to parse Passbook files
 License:        LGPL-2.1-or-later
