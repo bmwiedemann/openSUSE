@@ -25,27 +25,51 @@ Group:          System/X11/Utilities
 URL:            https://mike-fabian.github.io/ibus-typing-booster/
 Source0:        https://github.com/mike-fabian/ibus-typing-booster/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://releases.pagure.org/inscript2/inscript2-20210820.tar.gz
+Patch0:         %{name}-libX11-1.8.7.patch
+BuildRequires:  AppStream
+BuildRequires:  appstream-glib
 BuildRequires:  dbus-1-x11
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+BuildRequires:  glib2
+BuildRequires:  glibc-locale
+BuildRequires:  gtk3
 BuildRequires:  ibus-devel
+BuildRequires:  m17n-db
+# for the unit tests
+BuildRequires:  m17n-lib
 BuildRequires:  python3
 BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
-BuildRequires:  update-desktop-files
-# for the unit tests
-BuildRequires:  m17n-lib
-BuildRequires:  AppStream
-BuildRequires:  appstream-glib
-BuildRequires:  glib2
-BuildRequires:  glibc-locale
-BuildRequires:  gtk3
-BuildRequires:  m17n-db
-BuildRequires:  python3-pyenchant
-BuildRequires:  xvfb-run
 # Because of “from packing import version”:
 BuildRequires:  python3-packaging
+BuildRequires:  python3-pyenchant
+BuildRequires:  update-desktop-files
+BuildRequires:  xvfb-run
+Requires:       dbus-1-python3
+# Workaround bug with python3-enchant: https://bugzilla.opensuse.org/show_bug.cgi?id=1141993
+Requires:       enchant-1-backend
+#
+Requires:       ibus >= 1.5.3
+Requires:       m17n-lib
+Requires:       python3 >= 3.3
+Requires:       python3-distro
+# Because of “from packing import version”:
+Requires:       python3-packaging
+Requires:       python3-pyenchant
+Requires:       python3-pyxdg
+Recommends:     gdouros-symbola-fonts
+# Recommend reasonably good fonts which have most of the emoji:
+Recommends:     noto-coloremoji-fonts
+# For speech recognition:
+Recommends:     python3-PyAudio
+# To make the setup tool look nicer and the search for dictionaries and imes better:
+Recommends:     python3-langtable
+# Better regexpressions (optional):
+Recommends:     python3-regex
+# To play a sound on error:
+Recommends:     python3-simpleaudio
 %if 0%{?sle_version} >= 120200
 BuildRequires:  python3-pyxdg
 %endif
@@ -64,29 +88,6 @@ BuildRequires:  myspell-es_ES
 BuildRequires:  myspell-fr_FR
 BuildRequires:  myspell-it_IT
 %endif
-#
-Requires:       ibus >= 1.5.3
-Requires:       dbus-1-python3
-Requires:       m17n-lib
-Requires:       python3 >= 3.3
-Requires:       python3-distro
-Requires:       python3-pyenchant
-# Because of “from packing import version”:
-Requires:       python3-packaging
-# Workaround bug with python3-enchant: https://bugzilla.opensuse.org/show_bug.cgi?id=1141993
-Requires:       enchant-1-backend
-Requires:       python3-pyxdg
-# Recommend reasonably good fonts which have most of the emoji:
-Recommends:     noto-coloremoji-fonts
-Recommends:     gdouros-symbola-fonts
-# For speech recognition:
-Recommends:     python3-PyAudio
-# To play a sound on error:
-Recommends:     python3-simpleaudio
-# To make the setup tool look nicer and the search for dictionaries and imes better:
-Recommends:     python3-langtable
-# Better regexpressions (optional):
-Recommends:     python3-regex
 
 %description
 Ibus-typing-booster is a context sensitive completion
@@ -98,11 +99,12 @@ input method to speedup typing.
 ##extract inscript2 maps
 tar xzf %{SOURCE1}
 %endif
+%patch0 -p1
 
 %build
 export PYTHON=%{_bindir}/python3
 %configure --disable-static --libexecdir=%{_libdir}/ibus
-make %{?_smp_mflags}
+%make_build
 
 %install
 export PYTHON=%{_bindir}/python3
@@ -133,7 +135,7 @@ export M17NDIR=%{buildroot}%{_datadir}/m17n/
 desktop-file-validate \
     %{buildroot}%{_datadir}/applications/ibus-setup-typing-booster.desktop
 desktop-file-validate \
-    $RPM_BUILD_ROOT%{_datadir}/applications/emoji-picker.desktop
+    %{buildroot}%{_datadir}/applications/emoji-picker.desktop
 pushd engine
     # run doctests
     # hunspell_suggest.py test currently doesn't work on SuSE because
@@ -200,7 +202,8 @@ fi
   %{_bindir}/ibus write-cache --system &>/dev/null || :
 
 %files -f %{name}.lang
-%doc AUTHORS COPYING README README.html README.md
+%license COPYING
+%doc AUTHORS README README.html README.md
 %{_bindir}/emoji-picker
 %{_datadir}/%{name}
 %dir %{_datadir}/metainfo

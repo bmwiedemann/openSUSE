@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  8 16:26:56 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- fix factory build:
+  * ibus-typing-booster-libX11-1.8.7.patch
+  * libX11-data dropped some compose sequences in en_US locale
+    due to xkeyboard-config changes in version 1.8.7 (commit af2b6dfa)
+  * so some itb tests are not valid any more.
+
+-------------------------------------------------------------------
 Mon Oct 02 09:13:14 UTC 2023 - maiku.fabian@gmail.com
 
 - Update to 2.24.2
