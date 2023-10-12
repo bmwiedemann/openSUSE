@@ -19,7 +19,7 @@
 %define kf5_version 5.105.0
 %bcond_without released
 Name:           akregator
-Version:        23.08.1
+Version:        23.08.2
 Release:        0
 Summary:        RSS Feed Reader
 License:        GPL-2.0-or-later
