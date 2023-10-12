@@ -371,4 +371,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1116488</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>1c2678c33afd7436de7e907c66fb4af5</srcmd5>
+    <version>1.57.0</version>
+    <time>1697146898</time>
+    <user>anag+factory</user>
+    <comment>Updated rubocop to version 1.57.0
+Dependency update required for rubocop update:
+  * parser to 3.2.2.4 (forwarded request 1117064 from NickLion)</comment>
+    <requestid>1117131</requestid>
+  </revision>
 </revisionlist>
