@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Oct 11 06:33:28 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.4.0:
+  * Security fixes:
+    - SOCKS5 heap buffer overflow [bsc#1215888, CVE-2023-38545]
+    - cookie injection with none file [bsc#1215889, CVE-2023-38546]
+  * Changes:
+    - curl: add support for the IPFS protocols via HTTP gateway
+    - curl_multi_get_handles: get easy handles from a multi handle
+    - mingw: delete support for legacy mingw.org toolchain
+  * Bugfixes:
+    - base64: also build for curl
+    - cf-socket: simulate slow/blocked receives in debug
+    - configure: check for the capath by default
+    - connect: expire the timeout when trying next
+    - connect: only start the happy eyeballs timer when needed
+    - cookie: do not store the expire or max-age strings
+    - cookie: remove unnecessary struct fields
+    - cookie: set ->running in cookie_init even if data is NULL
+    - create-dirs.d: clarify it also uses --output-dirs
+    - http2: refused stream handling for retry
+    - http: h1/h2 proxy unification
+    - http: use per-request counter to check too large headers
+    - idn: if idn2_check_version returns NULL, return error
+    - lib: enable hmac for digest as well
+    - lib: let the max filesize option stop too big transfers too
+    - lib: move handling of 'data->req.writer_stack' into Curl_client_write()
+    - lib: provide and use Curl_hexencode
+    - lib: use wrapper for curl_mime_data fseek callback
+    - libssh2: fix error message on failed pubkey-from-file
+    - libssh: cap SFTP packet size sent
+    - MQTT: improve receive of ACKs
+    - multi: do CURLM_CALL_MULTI_PERFORM at two more places
+    - multi: round the timeout up to prevent early wakeups
+    - openssl: improve ssl shutdown handling
+    - openssl: use X509_ALGOR_get0 instead of reaching into X509_ALGOR
+    - pytest: exclude test_03_goaway in CI runs due to timing dependency
+    - quic: set ciphers/curves the same way regular TLS does
+    - quiche: fix build error with --with-ca-fallback
+    - socks: return error if hostname too long for remote resolve
+    - tftpd: always use curl's own tftp.h
+    - tool_getparam: accept variable expansion on file names too
+    - upload-file.d: describe the file name slash/backslash handling
+    - url: fall back to http/https proxy env-variable if ws/wss not set
+    - url: fix netrc info message
+    - wolfssh: do cleanup in Curl_ssh_cleanup
+    - wolfssl: allow capath with CURLOPT_CAINFO_BLOB
+    - wolfssl: if CURLOPT_CAINFO_BLOB is set, ignore the CA files
+    - wolfssl: ignore errors in CA path
+  * Rebase libcurl-ocloexec.patch
+
+-------------------------------------------------------------------
 Wed Sep 13 06:45:33 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.3.0: [bsc#1215026, CVE-2023-38039]
