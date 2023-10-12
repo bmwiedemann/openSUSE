@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Oct  8 12:30:10 UTC 2023 - Enno Gotthold <egotthold@suse.com>
+
+- Update to v10.3.0
+  - https://github.com/linkchecker/linkchecker/releases/tag/v10.2.0
+  - https://github.com/linkchecker/linkchecker/releases/tag/v10.2.1
+  - https://github.com/linkchecker/linkchecker/releases/tag/v10.3.0
+- Updates in 10.3.0 (released 18.09.2023):
+  - TextLogger message wrapping is configurable using wraplength
+  - HTTP redirect causes a warning, http-redirected
+  - Ignored warning messages are logged as information
+  - Support for checking NNTP and Telnet links is removed
+  - -p/--password was being ignored
+  - FTP checker was raising a TypeError
+  - FTP checker was ignoring maxfilesizedownload
+  - Documentation updates
+- Updates in 10.2.0 (released 21.11.2022)
+  - ignoreerrors setting to disregard errors for URLs after checking
+  - AnchorCheck plugin has partial support for checking local files
+  - Binary translation catalogs are produced using polib during distribution
+    package building and are now included in sdist packages
+  - gemini, tg (Telegram) and whatsapp added to the list of ignored schemes
+  - Warning url-rate-limited renamed to http-rate-limited
+  - maxrequestspersecond can be less than 1
+  - maxrequestspersecond greater than 10 is used unchanged if the HTTP server
+    returns a LinkChecker response header
+  - When a sitemap is discovered from a robots.txt file, the robots.txt is logged
+    as the sitemap parent URL
+  - Checking directories containing Unicode filenames
+  - Parsing srcset attributes with multiple image candidates
+  - resultcachesize setting was being ignored
+  - sitemap output when using multiple threads
+  - AnchorCheck plugin is re-enabled
+
+-------------------------------------------------------------------
 Sat Nov  5 13:49:53 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Activate test suite
