@@ -18,7 +18,7 @@
 #
 
 Name:       bitwarden
-Version:    2023.9.0
+Version:    2023.9.2
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -297,6 +297,10 @@ cd %{buildroot}%{_libdir}/%{name}
 find . -name '*.node' -print0 | xargs -0 -t -IXXX sh -c '! ldd -d -r XXX | \
 grep    '\''^undefined symbol'\'' | \
 grep -v '\''^undefined symbol: napi_'\'' '
+
+# Check that all native modules are loadable.
+find . -name '*.node' -print0 | xargs -0 -t -IXXX env ELECTRON_RUN_AS_NODE=1 %{_libdir}/electron/electron -e 'require("XXX")'
+
 
 
 
