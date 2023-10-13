@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 13 14:20:20 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@uncomfyhalomacro.pl>
+
+- Update to version 0.4.0:
+  * Add dependencies to readme
+  * [RFC] Filetype detection without extension
+  * Added support for XDG_CONFIG_HOME
+  * Support for symlinks
+  * Clear wallpaper from monitor before destroying ouput
+  * Reset hasATarget when issuing wallpaper command
+
+-------------------------------------------------------------------
 Thu Jun  1 23:37:22 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Move make protocols to build section.
