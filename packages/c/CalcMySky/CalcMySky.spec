@@ -16,8 +16,12 @@
 #
 
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1590
+%global force_gcc_version 12
+%endif
+
 %define sover 15
-%if 0%{?suse_version} > 1550
+%if 0%{?suse_version} > 1690
 %define qtver 6
 %else
 %define qtver 5
@@ -30,13 +34,8 @@ Summary:        Software package that simulates scattering of light by the atmos
 License:        GPL-3.0-or-later
 URL:            https://github.com/10110111/CalcMySky
 Source:         https://github.com/10110111/CalcMySky/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-%if 0%{?suse_version} < 1590
-BuildRequires:  gcc11-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 BuildRequires:  libeigen3-devel >= 3.4.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glm)
@@ -87,7 +86,9 @@ export LDFLAGS="$LDFLAGS -pie"
   -DQT_VERSION=6 \
 %else
   -DQT_VERSION=5 \
-  -DCMAKE_CXX_COMPILER=%{_bindir}/g++-11 \
+%endif
+%if 0%{?force_gcc_version}
+    -DCMAKE_CXX_COMPILER=%{_bindir}/g++-%{?force_gcc_version} \
 %endif
   -DCMAKE_CXX_STANDARD=17
 %cmake_build
