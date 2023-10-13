@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep 25 13:52:53 UTC 2023 - trenn@suse.de
+
+- jsc#PED-5716 Enable support for Thermal Controls on platform
+- Move of dbus config files from /etc to /usr/share
+- Fix wrongly written library name
+A fix_qcustomplot_name.patch
+- Make use of _service (git scm) service file:
+A    _service
+A    _servicedata
+A    thermal_daemon-2.5.4.0.git+63b290f.obscpio
+A    thermal_daemon.obsinfo
+- Update to version 2.5.4.0.git+63b290f:
+  * Release 2.5.4
+  * Change the sorting order when min_max_valid
+  * Process case when target matches after init
+  * Remove memset for pid_param_t to 0
+  * Remove check for new_passive < critical
+  * domain_name not set and used in thd_cdev_rapl
+  * build warning, ret is assigned for sysfs write
+  * Remove duplicate type_type == HOT comparison
+
+-------------------------------------------------------------------
 Wed Jul 12 13:48:25 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 2.5.3:

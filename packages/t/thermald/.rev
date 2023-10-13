@@ -148,4 +148,35 @@ A fix_long_int_i586_issue.patch
     <comment></comment>
     <requestid>1098373</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d591554025b2b4f524fef4faf8351aa1</srcmd5>
+    <version>2.5.4.0.git+63b290f</version>
+    <time>1697231701</time>
+    <user>anag+factory</user>
+    <comment>Dbus API config file move from /etc to /usr/etc
+needs security review from:
+bsc#1215873
+and rpmlint adoptions from
+Submitrequest #1116871
+which is currently in staging area.
+- jsc#PED-5716 Enable support for Thermal Controls on platform
+- Move of dbus config files from /etc to /usr/share
+- Fix wrongly written library name
+A fix_qcustomplot_name.patch
+- Make use of _service (git scm) service file:
+A    _service
+A    _servicedata
+A    thermal_daemon-2.5.4.0.git+63b290f.obscpio
+A    thermal_daemon.obsinfo
+- Update to version 2.5.4.0.git+63b290f:
+  * Release 2.5.4
+  * Change the sorting order when min_max_valid
+  * Process case when target matches after init
+  * Remove memset for pid_param_t to 0
+  * Remove check for new_passive &lt; critical
+  * domain_name not set and used in thd_cdev_rapl
+  * build warning, ret is assigned for sysfs write
+  * Remove duplicate type_type == HOT comparison</comment>
+    <requestid>1117522</requestid>
+  </revision>
 </revisionlist>

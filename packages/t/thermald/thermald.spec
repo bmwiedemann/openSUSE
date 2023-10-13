@@ -21,19 +21,20 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           thermald
-Version:        2.5.3
+Version:        2.5.4.0.git+63b290f
 Release:        0
 Summary:        The Linux Thermal Daemon program from 01.org
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://01.org/linux-thermal-daemon
-Source0:        https://github.com/intel/thermal_daemon/archive/v%{version}/thermal_daemon-%{version}.tar.gz
+Source0:        thermal_daemon-%{version}.tar.xz
 Source1:        %{name}.conf
 Source2:        %{name}-group.conf
 Source3:        sysconfig.%{name}
 Source10:       thermal-monitor.desktop
 Source11:       thermal-monitor.png
 Patch0:         fix-systemd-service.patch
+Patch1:         fix_qcustomplot_name.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -124,9 +125,9 @@ install -D -m 0644 -t %{buildroot}%{_datadir}/pixmaps/ %{SOURCE11}
 %doc README.txt data/thermal-conf.xml
 %doc test/thermald_optimization_with_dptfxtract
 %dir %{_datadir}/dbus-1/system-services
-%dir %{_sysconfdir}/dbus-1/system.d
+%dir %{_datadir}/dbus-1/system.d
 %dir %{_sysconfdir}/thermald
-%config(noreplace) %{_sysconfdir}/dbus-1/system.d/org.freedesktop.thermald.conf
+%config(noreplace) %{_datadir}/dbus-1/system.d/org.freedesktop.thermald.conf
 %config(noreplace) %{_sysconfdir}/thermald/thermal-cpu-cdev-order.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.thermald.service
 %{_fillupdir}/sysconfig.%{name}
