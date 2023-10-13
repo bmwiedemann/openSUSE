@@ -85,4 +85,16 @@
 - liboqs is now liboqs.so.3. (forwarded request 1092832 from msmeissn)</comment>
     <requestid>1092834</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dea316e409a45f1d177d67f4886e764d</srcmd5>
+    <version>0.9.0</version>
+    <time>1697231724</time>
+    <user>anag+factory</user>
+    <comment>- updated to 0.9.0
+  This release features an update to the Classic McEliece KEM, bringing it
+  in line with NIST Round 4. It also adds or updates ARM implementations
+  for Kyber,   Dilithium, and Falcon.
+- major library version 4 (forwarded request 1117608 from msmeissn)</comment>
+    <requestid>1117610</requestid>
+  </revision>
 </revisionlist>
