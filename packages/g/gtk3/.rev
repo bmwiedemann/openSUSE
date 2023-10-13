@@ -1680,4 +1680,12 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
   on build conditions (%[%{with FOO} ? &quot;true&quot; : &quot;false&quot;]) (forwarded request 1110637 from dimstar)</comment>
     <requestid>1110895</requestid>
   </revision>
+  <revision rev="189" vrev="4">
+    <srcmd5>81e37da54f15fce34d3dea9d276b2ac6</srcmd5>
+    <version>3.24.38</version>
+    <time>1697231624</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117125</requestid>
+  </revision>
 </revisionlist>
