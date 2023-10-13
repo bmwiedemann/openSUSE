@@ -47,4 +47,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1100611</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>95b9f17538bbcabff92894af15632ab6</srcmd5>
+    <version>1.4.1</version>
+    <time>1697231745</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-memfd-noexec-seal.patch
+  * newer kernels introduced MFD_NOEXEC_SEAL. Linux kernels older than
+    6.3 will crash fnott because they will reject memfd_create() calls that set it.
+    This patch fixes it by testing first if it works with the new MFD_NOEXEC_SEAL
+    and then retry without it.
+</comment>
+    <requestid>1117676</requestid>
+  </revision>
 </revisionlist>
