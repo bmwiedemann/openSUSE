@@ -32,6 +32,8 @@ Source2:        conky.conf.SUSE
 Source3:        README.SUSE
 Patch1:         conky-1.10.1-avoid-git.patch
 Patch2:         conky.timestamp.patch
+# PATCH-FIX-UPSTREAM bmwiedemann https://github.com/brndnmtthws/conky/pull/1619
+Patch3:         reproducible.patch
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook2x
