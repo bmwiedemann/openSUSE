@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 12 16:50:55 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Add missing jsc# tracking references to changelog
+
+-------------------------------------------------------------------
 Mon Oct  9 10:00:13 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Use glob for python3-libnvme file listening. Workaround pycache_only
@@ -128,7 +133,7 @@ Fri Sep 29 11:42:15 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * build: Update wrap mode defaults
   * build: Disable fallback on default
   * tree: Fix offset argument check in nvme_bytes_to_lba
-  * nbft: add NBFT v1.0 table support
+  * nbft: add NBFT v1.0 table support (jsc#PED-1449)
   * types: Add IO command set specific field on nsmgmt
   * fabrics: Do not pass unsupported options to kernel
   * types: Add ns-mgmt host software specified fields
@@ -143,7 +148,7 @@ Thu Jul 27 13:10:34 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 -------------------------------------------------------------------
 Fri Mar 31 15:38:35 UTC 2023 - Daniel Wagnrer <daniel.wagner@suse.com>
 
-- Update to version 1.4:
+- Update to version 1.4: (jsc#PED-553 jsc#PED-3884)
   * fabrics: Filter out invalid UUIDs from DMI
   * fabrics: Add define for DMI sysinfo
   * Print out correct TREQ strings for discovery
