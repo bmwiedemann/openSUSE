@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 13 00:17:48 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add fix-RSA_sign-call.patch
+  * Fix bsc#1216117
+  * Fix call of RSA sign on big endian systems, patch origin:
+    https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1012506
+
+-------------------------------------------------------------------
 Mon Oct 18 14:50:48 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service (bsc#1181400). Added patch:
