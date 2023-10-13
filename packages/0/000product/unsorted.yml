@@ -636,7 +636,6 @@ unsorted:
   - ant-junit5 
   - ant-manual 
   - ant-proguard 
-  - ant-scala 
   - ant-scripts 
   - ant-swing 
   - ant-testutil 
@@ -8444,6 +8443,8 @@ unsorted:
   - java-cup 
   - java-cup-bootstrap 
   - java-cup-manual 
+  - java-diff-utils 
+  - java-diff-utils-javadoc 
   - java-jwt 
   - java-jwt-javadoc 
   - java-libkolabxml1 
@@ -8654,6 +8655,18 @@ unsorted:
   - jline-javadoc 
   - jline1 
   - jline1-javadoc 
+  - jline3 
+  - jline3-builtins 
+  - jline3-console 
+  - jline3-javadoc 
+  - jline3-parent 
+  - jline3-reader 
+  - jline3-remote-ssh 
+  - jline3-remote-telnet 
+  - jline3-style 
+  - jline3-terminal 
+  - jline3-terminal-jansi 
+  - jline3-terminal-jna 
   - jmdns 
   - jmdns-javadoc 
   - jmock 
@@ -8694,6 +8707,9 @@ unsorted:
   - jogl2 
   - john 
   - joker 
+  - jol-cli 
+  - jol-core 
+  - jol-javadoc 
   - jomolhari-fonts 
   - jondo 
   - jondofox 
@@ -8727,13 +8743,6 @@ unsorted:
   - jshon 
   - json-glib-devel 
   - json-table 
-  - json4s-ast 
-  - json4s-core 
-  - json4s-ext 
-  - json4s-jackson 
-  - json4s-native 
-  - json4s-scalap 
-  - json4s-xml 
   - jsoncpp-devel 
   - jsonp 
   - jsonp-javadoc 
@@ -8763,6 +8772,8 @@ unsorted:
   - junit5-bom 
   - junit5-guide 
   - junit5-javadoc 
+  - juniversalchardet 
+  - juniversalchardet-javadoc 
   - jupyter-anywidget 
   - jupyter-bqplot-jupyterlab 
   - jupyter-bqplot-notebook 
@@ -13712,7 +13723,6 @@ unsorted:
   - libomp17-devel 
   - libonnx 
   - libonnx_proto 
-  - libonnxifi_dummy 
   - liboop-devel 
   - liboop4 
   - libopae-c2 
@@ -21826,6 +21836,7 @@ unsorted:
   - pixz 
   - pkTriggerCord 
   - pkcs11-helper-devel 
+  - pkcs11-provider 
   - pkgdiff 
   - plank 
   - plank-devel 
@@ -25152,6 +25163,7 @@ unsorted:
   - python310-oletools 
   - python310-olm 
   - python310-omemo-dr 
+  - python310-omni-camera 
   - python310-onigurumacffi 
   - python310-onnx 
   - python310-onnxconverter-common 
@@ -28552,6 +28564,7 @@ unsorted:
   - python311-oletools 
   - python311-olm 
   - python311-omemo-dr 
+  - python311-omni-camera 
   - python311-onigurumacffi 
   - python311-onnx 
   - python311-onnxconverter-common 
@@ -32009,6 +32022,7 @@ unsorted:
   - python39-oletools 
   - python39-olm 
   - python39-omemo-dr 
+  - python39-omni-camera 
   - python39-onigurumacffi 
   - python39-onnx 
   - python39-onnxconverter-common 
@@ -34633,6 +34647,8 @@ unsorted:
   - sblim-tools-libra-devel 
   - sblim-wbemcli 
   - sbsigntools 
+  - sbt-boilerplate 
+  - sbt-boilerplate-javadoc 
   - sc 
   - sc-controller 
   - sc-im 
@@ -34648,12 +34664,15 @@ unsorted:
   - sca-patterns-suma 
   - sca-server-report 
   - scala 
+  - scala-ant 
   - scala-apidoc 
   - scala-bootstrap 
-  - scala-bootstrap-swing 
+  - scala-java8-compat 
+  - scala-java8-compat-javadoc 
+  - scala-parser-combinators 
+  - scala-parser-combinators-javadoc 
   - scala-stm 
   - scala-stm-javadoc 
-  - scala-swing 
   - scalapack-mvapich2-test 
   - scalapack-openmpi1-test 
   - scalapack-openmpi2-test 
@@ -45112,7 +45131,7 @@ unsorted:
   - typelib-1_0-LightDM-1 
   - typelib-1_0-LunarCalendar-3_0 
   - typelib-1_0-LunarDate-3_0 
-  - typelib-1_0-MalcontentUi-0 
+  - typelib-1_0-MalcontentUi-1 
   - typelib-1_0-Manette-0_2-0 
   - typelib-1_0-MateDesktop-2_0 
   - typelib-1_0-MateMenu-2_0 
@@ -46599,6 +46618,7 @@ unsorted:
   - zita-resampler-devel 
   - zita-resampler-tools 
   - zk 
+  - zk-spaced 
   - zlib-devel 
   - zlib-devel-32bit 
   - zlib-devel-static 
