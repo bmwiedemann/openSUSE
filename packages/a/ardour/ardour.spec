@@ -16,9 +16,9 @@
 #
 
 
-%define dirbase ardour7
+%define dirbase ardour8
 Name:           ardour
-Version:        7.5.0
+Version:        8.0.0
 Release:        0
 Summary:        Multichannel Digital Audio Workstation
 # Legal: Ardour is a mix of GPL-2.0-or-later, [L]GPL-3.0-or-later and a couple copyleft
@@ -136,10 +136,9 @@ modern digital mixers.
 
 %prep
 %autosetup -p1 -n Ardour-%{version}
-# delete not needed files
-find . -name ".gitignore" -exec rm {} \;
-chmod -x ./doc/*.svg
-chmod -x ./doc/*.txt
+
+chmod -x doc/canvas.svg
+chmod -x doc/mainpage.txt
 # don't use python2
 find . -name wscript -o -name waf -o -name '*.py' \
   | xargs sed -i -e '1{s|^#!.*python$|#!/usr/bin/python3|}'
@@ -158,15 +157,14 @@ sed -i 's#/usr/local/lib/vst:/usr/lib/vst#/usr/local/lib64/vst:/usr/local/lib/vs
    --configdir=%{_sysconfdir} \
    --docdir=%{_docdir} \
    --docs \
-   --nls \
    --internal-shared-libs \
    --with-backends=jack,alsa,dummy,pulseaudio \
    --lv2dir=%{_libdir}/%{dirbase}/LV2 \
-   --lxvst \
    --freedesktop \
    --noconfirm \
    --no-phone-home \
    --optimize
+
 ./waf i18n
 ./waf %{?_smp_mflags}
 
@@ -174,18 +172,18 @@ sed -i 's#/usr/local/lib/vst:/usr/lib/vst#/usr/local/lib64/vst:/usr/local/lib/vs
 ./waf --destdir=%{buildroot} install -v
 
 # upstream installs in wrong places
-install -D -m 644 -t %{buildroot}%{_datadir}/metainfo %{buildroot}%{_datadir}/appdata/ardour7.appdata.xml
+install -D -m 644 -t %{buildroot}%{_datadir}/metainfo %{buildroot}%{_datadir}/appdata/ardour8.appdata.xml
 rm -r %{buildroot}%{_datadir}/appdata
 
-%suse_update_desktop_file -i ardour7 AudioVideo Recorder
-%find_lang ardour7
-%find_lang gtk2_ardour7
+%suse_update_desktop_file -i ardour8 AudioVideo Recorder
+%find_lang ardour8
+%find_lang gtk2_ardour8
 %find_lang gtkmm2ext3
 
 # remove dupes
 %fdupes -s %{buildroot}%{_datadir}
 
-%files -f ardour7.lang -f gtk2_ardour7.lang -f gtkmm2ext3.lang
+%files -f ardour8.lang -f gtk2_ardour8.lang -f gtkmm2ext3.lang
 %license COPYING
 %doc doc README
 %dir %{_sysconfdir}/%{dirbase}
@@ -199,7 +197,7 @@ rm -r %{buildroot}%{_datadir}/appdata
 %{_datadir}/%{dirbase}/
 %{_datadir}/applications/%{dirbase}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{dirbase}.png
-%{_datadir}/metainfo/ardour7.appdata.xml
+%{_datadir}/metainfo/ardour8.appdata.xml
 %{_datadir}/mime/packages/ardour.xml
 %{_libdir}/%{dirbase}/
 %exclude %{_datadir}/%{dirbase}/templates/.stub

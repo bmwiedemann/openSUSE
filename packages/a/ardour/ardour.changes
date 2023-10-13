@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Oct 12 10:19:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 8.0.0. See https://ardour.org/whatsnew.html
+  QoL changes:
+  * "Quick groups" - most mix-related controls now operate on
+    all the selected tracks & busses
+  * Manage sections of a song with arrangement markers. Define
+    your verses, chorus, and bridge. Then rearrange or copy
+    them as you wish.
+  * Create persistent region groups in the editor window, to
+    make multi-region editing easier.
+  * Edit velocity easily on a dedicated automation lane whether
+    it's a single note or a chord.
+  * Draw automation freely for any controller or press Control
+    (Command) key to enable line-drawing mode. You can also
+    combine free and line segments as you draw just by pressing
+    and releasing the Ctrl/Cmd key.
+  * Fit the tempo map to a human performance, with a new dedicated
+    tool.
+  * If (e.g. drum) note names are available for a plugin instrument
+    or external device (via a MIDNAM file), see those names in the
+    all-new MIDI track header.
+  * Use Novation Launchpad Pro in DAW/Session mode (along with
+    the standalone Sequencer, Note and Chord modes).
+  * Create new interesting progressions with arpeggiator plugins.
+  New features:
+  * Lollipops for MIDI Velocity
+  * Improvements to arrangement sections
+  * New MIDI Track Piano Roll Header
+  * Launchpad Pro support
+  * More flexibility to track and bus groups
+  * Region Grouping
+  * Freehand automation drawing
+  * MIDI Arpeggiator Plugins
+
+-------------------------------------------------------------------
 Wed Jul 12 11:13:01 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 7.5.0. See https://ardour.org/whatsnew.html
