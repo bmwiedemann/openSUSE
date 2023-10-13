@@ -491,4 +491,12 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
   Kubernetes packages</comment>
     <requestid>1111024</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>95007326a8300e27e1a7cf4f0acf1f77</srcmd5>
+    <version>1.7.7</version>
+    <time>1697231633</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117567</requestid>
+  </revision>
 </revisionlist>

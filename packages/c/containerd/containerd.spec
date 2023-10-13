@@ -23,14 +23,14 @@
 %endif
 
 # MANUAL: Update the git_version.
-%define git_version 091922f03c2762540fd057fba91260237ff86acb
-%define git_short   091922f03c27
+%define git_version 8c087663b0233f6e6e2f4515cee61d49f14746a8
+%define git_short   8c087663b023
 
 %global provider_prefix github.com/containerd/containerd
 %global import_path %{provider_prefix}
 
 Name:           containerd
-Version:        1.7.6
+Version:        1.7.7
 Release:        0
 Summary:        Standalone OCI Container Daemon
 License:        Apache-2.0
@@ -39,6 +39,8 @@ URL:            https://containerd.tools
 Source:         %{name}-%{version}_%{git_short}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source2:        %{name}.service
+# UPSTREAM: Revert <https://github.com/containerd/containerd/pull/7933> to fix build on SLE-12.
+Patch1:         0001-BUILD-SLE12-revert-btrfs-depend-on-kernel-UAPI-inste.patch
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
 BuildRequires:  go >= 1.19
@@ -94,6 +96,9 @@ reference the following Go import paths: github.com/containerd/containerd
 
 %prep
 %setup -q -n %{name}-%{version}_%{git_short}
+%if 0%{?sle_version} == 120000
+%patch1 -p1
+%endif
 
 %build
 %goprep %{import_path}
