@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{?suse_version} && 0%{?suse_version} < 1590
+%global force_gcc_version 12
+%endif
+
 Name:           ART
 Version:        1.20.2
 Release:        0
@@ -26,11 +30,7 @@ Source:         https://bitbucket.org/agriggio/art/downloads/%{name}-%{version}.
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-%if 0%{?suse_version} < 1590
-BuildRequires:  gcc11-c++
-%else
-BuildRequires:  gcc-c++
-%endif
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 BuildRequires:  glibmm2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
@@ -90,10 +90,8 @@ export CC=gcc
 export CXX=gcc
 
 %cmake \
-%if 0%{?suse_version} < 1590
-    -DCMAKE_CXX_COMPILER=%{_bindir}/g++-11 \
-%else
-    -DCMAKE_CXX_COMPILER=%{_bindir}/g++ \
+%if 0%{?force_gcc_version}
+    -DCMAKE_CXX_COMPILER=%{_bindir}/g++-%{?force_gcc_version} \
 %endif
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
