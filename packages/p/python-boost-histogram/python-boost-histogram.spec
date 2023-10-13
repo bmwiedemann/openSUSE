@@ -23,7 +23,7 @@
 %define skip_python2 1
 %define modname boost_histogram
 Name:           python-boost-histogram
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        The Boost::Histogram Python wrapper
 License:        BSD-3-Clause
