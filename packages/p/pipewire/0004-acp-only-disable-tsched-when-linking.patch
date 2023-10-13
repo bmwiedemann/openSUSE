@@ -1,0 +1,47 @@
+From 2278dd1460e37fd011ca9b1101de478092fd1d74 Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Mon, 9 Oct 2023 12:28:10 +0200
+Subject: [PATCH] acp: only disable tsched when linking
+
+Disable timer based scheduling only if we are going to link the devices
+together.
+
+See #3556
+---
+ spa/plugins/alsa/acp/acp.c  | 2 ++
+ spa/plugins/alsa/alsa-pcm.c | 1 -
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/spa/plugins/alsa/acp/acp.c b/spa/plugins/alsa/acp/acp.c
+index e2e0b3eb5..98f6326d1 100644
+--- a/spa/plugins/alsa/acp/acp.c
++++ b/spa/plugins/alsa/acp/acp.c
+@@ -437,11 +437,13 @@ static int add_pro_profile(pa_card *impl, uint32_t index)
+ 			pa_proplist_setf(m->output_proplist, "node.group", "pro-audio-%u", index);
+ 			pa_proplist_setf(m->output_proplist, "node.link-group", "pro-audio-%u", index);
+ 			pa_proplist_setf(m->output_proplist, "api.alsa.auto-link", "true");
++			pa_proplist_setf(m->output_proplist, "api.alsa.disable-tsched", "true");
+ 		}
+ 		PA_IDXSET_FOREACH(m, ap->input_mappings, idx) {
+ 			pa_proplist_setf(m->input_proplist, "node.group", "pro-audio-%u", index);
+ 			pa_proplist_setf(m->input_proplist, "node.link-group", "pro-audio-%u", index);
+ 			pa_proplist_setf(m->input_proplist, "api.alsa.auto-link", "true");
++			pa_proplist_setf(m->input_proplist, "api.alsa.disable-tsched", "true");
+ 		}
+ 	}
+ 	return 0;
+diff --git a/spa/plugins/alsa/alsa-pcm.c b/spa/plugins/alsa/alsa-pcm.c
+index 87dba34b0..ffcf4d5d0 100644
+--- a/spa/plugins/alsa/alsa-pcm.c
++++ b/spa/plugins/alsa/alsa-pcm.c
+@@ -514,7 +514,6 @@ int spa_alsa_init(struct state *state, const struct spa_dict *info)
+ 
+ 	state->multi_rate = true;
+ 	state->htimestamp = false;
+-	state->disable_tsched = state->is_pro;
+ 	for (i = 0; info && i < info->n_items; i++) {
+ 		const char *k = info->items[i].key;
+ 		const char *s = info->items[i].value;
+-- 
+GitLab
+

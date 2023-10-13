@@ -23,7 +23,7 @@
 %define spa_ver_str 0_2
 %define libpipewire libpipewire-%{apiver_str}-0
 
-%if %{pkg_vcmp pkgconfig(vulkan) >= 1.1}
+%if %{pkg_vcmp pkgconfig(vulkan) >= 1.3}
 %define with_vulkan 1
 %else
 %define with_vulkan 0
@@ -60,7 +60,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.80
+Version:        0.3.81
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -70,6 +70,16 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
+# PATCH-FIX-UPSTREAM 0001-alsa-add-api.alsa.auto-link-option.patch
+Patch1:         0001-alsa-add-api.alsa.auto-link-option.patch
+# PATCH-FIX-UPSTREAM 0002-acp-fix-compilation.patch
+Patch2:         0002-acp-fix-compilation.patch
+# PATCH-FIX-UPSTREAM 0003-acp-only-join-and-link-when-1-capture-and-1-playback.patch
+Patch3:         0003-acp-only-join-and-link-when-1-capture-and-1-playback.patch
+# PATCH-FIX-UPSTREAM 0004-acp-only-disable-tsched-when-linking.patch
+Patch4:         0004-acp-only-disable-tsched-when-linking.patch
+# PATCH-FIX-UPSTREAM 0001-alsa-dont-check-early-wakeup-when-PCM-stopped.patch
+Patch5:         0001-alsa-dont-check-early-wakeup-when-PCM-stopped.patch
 
 BuildRequires:  docutils
 BuildRequires:  doxygen
@@ -383,6 +393,11 @@ JACK libraries.
 sed -ie "s/version : '0.3.72'/version : '%{version}'/" %{P:0}
 %patch0 -p1
 %endif
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
