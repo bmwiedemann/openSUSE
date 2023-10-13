@@ -1,7 +1,7 @@
 #
 # spec file for package goobox
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Grabbers
 URL:            https://www.gnome.org
 Source0:        https://download.gnome.org/sources/goobox/3.6/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM goobox-Make_pages_pass_yelp_check_validate.patch -- help: Make pages pass yelp-check validate
+Patch0:         goobox-Make_pages_pass_yelp_check_validate.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
