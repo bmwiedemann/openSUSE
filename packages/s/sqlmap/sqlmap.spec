@@ -17,7 +17,7 @@
 
 
 Name:           sqlmap
-Version:        1.7.9
+Version:        1.7.10
 Release:        0
 Summary:        Automatic SQL injection and database takeover tool
 License:        GPL-2.0-or-later
@@ -41,8 +41,7 @@ file system, and executing commands on the operating system via out-of-band
 connections.
 
 %prep
-%setup -q -n sqlmap-%{version}
-%patch0 -p1
+%autosetup -p1 -n sqlmap-%{version}
 find extra lib plugins tamper thirdparty -iname "*.py" -exec sed -i '1{/^#!/ d}' {} \;
 find extra lib plugins tamper thirdparty -iname "*.pl" -exec sed -i '1{/^#!/ d}' {} \;
 mv extra/icmpsh/icmpsh-m.c extra/icmpsh/icmpsh-m.c.txt
