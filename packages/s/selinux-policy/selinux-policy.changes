@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 12 07:59:22 UTC 2023 - cathy.hu@suse.com
+
+- Update to version 20231012:
+  * Allow sssd_t watch permission to net_conf_t dirs (bsc#1216052)
+  * Revert fix for bsc#1205770 since it causes a regression for bsc#1214887
+
+-------------------------------------------------------------------
 Wed Oct  4 14:40:03 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Use /var/adm/update-scripts in macros.selinux-policy. The rpm state
