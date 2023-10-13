@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.5.3
-%define short_version 6.5
+%define real_version 6.6.0
+%define short_version 6.6
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.5.3
+Version:        6.6.0
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
@@ -52,6 +52,7 @@ BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGLWidgets) = %{real_version}
 BuildRequires:  cmake(Qt6ShaderTools) = %{real_version}
 BuildRequires:  cmake(Qt6Sql) = %{real_version}
+BuildRequires:  cmake(Qt6Svg) = %{real_version}
 BuildRequires:  cmake(Qt6Test) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 %if "%{qt6_flavor}" == "docs"
@@ -89,6 +90,7 @@ This package contains documentation for qt6-declarative in QCH format.
 %package devel
 Summary:        Qt 6 Declarative meta package
 Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6QmlCompiler) = %{real_version}
 Requires:       cmake(Qt6QmlCore) = %{real_version}
 Requires:       cmake(Qt6QmlLocalStorage) = %{real_version}
 Requires:       cmake(Qt6QmlModels) = %{real_version}
@@ -111,6 +113,7 @@ This meta-package requires all the qt6-declarative development packages.
 %package private-devel
 Summary:        Qt 6 Declarative unstable ABI meta package
 Requires:       qt6-qml-private-devel = %{version}
+Requires:       qt6-qmlcompiler-private-devel = %{version}
 Requires:       qt6-qmlcore-private-devel = %{version}
 Requires:       qt6-qmllocalstorage-private-devel = %{version}
 Requires:       qt6-qmlmodels-private-devel = %{version}
@@ -348,6 +351,34 @@ Requires:       cmake(Qt6Qml) = %{real_version}
 
 %description -n qt6-qml-private-devel
 This package provides private headers of libQt6Qml that do not have any
+ABI or API guarantees.
+
+%package -n libQt6QmlCompiler6
+Summary:        Qt6 QmlCompiler library
+License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
+
+%description -n libQt6QmlCompiler6
+The Qt 6 QmlCompiler library.
+This library does not have any ABI or API guarantees.
+
+%package -n qt6-qmlcompiler-devel
+Summary:        Qt 6 QmlCompiler library - Development files
+Requires:       libQt6QmlCompiler6 = %{version}
+Requires:       qt6-qml-private-devel = %{version}
+%requires_eq    qt6-core-private-devel
+# The qmlcompiler library became a shared library (again) in 6.4.0
+Provides:       qt6-qmlcompiler-devel-static = 6.4.0
+Obsoletes:      qt6-qmlcompiler-devel-static < 6.4.0
+
+%description -n qt6-qmlcompiler-devel
+Development files for the Qt 6 QmlCore library.
+
+%package -n qt6-qmlcompiler-private-devel
+Summary:        Non-ABI stable API for the Qt 6 QmlCompiler library
+Requires:       qt6-qmlcompiler-devel = %{version}
+
+%description -n qt6-qmlcompiler-private-devel
+This package provides private headers of libQt6QmlCompiler that do not have any
 ABI or API guarantees.
 
 %package -n libQt6QmlCore6
@@ -767,27 +798,6 @@ ABI or API guarantees.
 
 ### Private only libraries ###
 
-%package -n libQt6QmlCompiler6
-Summary:        Qt6 QmlCompiler library
-License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
-
-%description -n libQt6QmlCompiler6
-The Qt 6 QmlCompiler library.
-This library does not have any ABI or API guarantees.
-
-%package -n qt6-qmlcompiler-private-devel
-Summary:        Qt 6 QmlCompiler library - Development files
-Requires:       libQt6QmlCompiler6 = %{version}
-Requires:       qt6-qml-private-devel = %{version}
-%requires_eq    qt6-core-private-devel
-# The qmlcompiler library became a shared library (again) in 6.4.0
-Provides:       qt6-qmlcompiler-devel-static = 6.4.0
-Obsoletes:      qt6-qmlcompiler-devel-static < 6.4.0
-
-%description -n qt6-qmlcompiler-private-devel
-Development files for the Qt 6 QmlCompiler library.
-This library does not have any ABI or API guarantees.
-
 %package -n libQt6QuickEffects6
 Summary:        Qt 6 QuickEffects library
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
@@ -888,7 +898,6 @@ This library does not have any ABI or API guarantees.
 Summary:        Qt6 QmlDom static library
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 Requires:       qt6-qml-private-devel = %{version}
-Requires:       cmake(Qt6QmlCompilerPrivate) = %{real_version}
 # Renamed in 6.2.0
 Provides:       qt6-qmldom-private-devel = 6.2.0
 Obsoletes:      qt6-qmldom-private-devel < 6.2.0
@@ -898,6 +907,23 @@ The Qt6 QmlDom static library.
 The goal of the Dom library is to provide a nicer to use basis for the
 Qml Code model, to be used by the various QML tools, the designer and
 the new compiler.
+
+%package -n qt6-qmlls-devel-static
+Summary:        Qt6 QmlLS static library
+Requires:       qt6-qml-private-devel = %{version}
+Requires:       qt6-languageserver-private-devel = %{version}
+Requires:       cmake(Qt6QmlDomPrivate) = %{real_version}
+Requires:       cmake(Qt6QmlToolingSettingsPrivate) = %{real_version}
+
+%description -n qt6-qmlls-devel-static
+The Qt6 QmlLS static library.
+
+%package -n qt6-qmltoolingsettings-devel-static
+Summary:        Qt6 QmlToolingSettings static library
+Requires:       qt6-core-private-devel = %{version}
+
+%description -n qt6-qmltoolingsettings-devel-static
+The Qt6 QmlToolingSettings static library.
 
 %package -n qt6-qmltyperegistrar-devel-static
 Summary:        Qt6 QmlTypeRegistrar static library
@@ -986,6 +1012,7 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %ldconfig_scriptlets -n libQt6QuickDialogs2-6
 %ldconfig_scriptlets -n libQt6QuickDialogs2QuickImpl6
 %ldconfig_scriptlets -n libQt6QuickDialogs2Utils6
+%ldconfig_scriptlets -n libQt6QuickEffects6
 %ldconfig_scriptlets -n libQt6QuickLayouts6
 %ldconfig_scriptlets -n libQt6QuickParticles6
 %ldconfig_scriptlets -n libQt6QuickShapes6
@@ -1186,6 +1213,24 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %files -n qt6-qml-private-devel
 %{_qt6_includedir}/QtQml/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_qml_private.pri
+
+%files -n libQt6QmlCompiler6
+%{_qt6_libdir}/libQt6QmlCompiler.so.*
+
+%files -n qt6-qmlcompiler-devel
+%{_qt6_cmakedir}/Qt6QmlCompiler/
+%{_qt6_descriptionsdir}/QmlCompiler.json
+%{_qt6_includedir}/QtQmlCompiler/
+%{_qt6_libdir}/libQt6QmlCompiler.prl
+%{_qt6_libdir}/libQt6QmlCompiler.so
+%{_qt6_metatypesdir}/qt6qmlcompiler_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_qmlcompiler.pri
+%{_qt6_pkgconfigdir}/Qt6QmlCompiler.pc
+%exclude %{_qt6_includedir}/QtQmlCompiler/%{real_version}
+
+%files -n qt6-qmlcompiler-private-devel
+%{_qt6_includedir}/QtQmlCompiler/%{real_version}/
+%{_qt6_mkspecsdir}/modules/qt_lib_qmlcompiler_private.pri
 
 %files -n libQt6QmlCore6
 %{_qt6_libdir}/libQt6QmlCore.so.*
@@ -1461,18 +1506,6 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 
 ### Private only libraries ###
 
-%files -n libQt6QmlCompiler6
-%{_qt6_libdir}/libQt6QmlCompiler.so.*
-
-%files -n qt6-qmlcompiler-private-devel
-%{_qt6_cmakedir}/Qt6QmlCompilerPrivate/
-%{_qt6_descriptionsdir}/QmlCompilerPrivate.json
-%{_qt6_includedir}/QtQmlCompiler/
-%{_qt6_libdir}/libQt6QmlCompiler.prl
-%{_qt6_libdir}/libQt6QmlCompiler.so
-%{_qt6_metatypesdir}/qt6qmlcompilerprivate_*_metatypes.json
-%{_qt6_mkspecsdir}/modules/qt_lib_qmlcompiler_private.pri
-
 %files -n libQt6QuickEffects6
 %{_qt6_libdir}/libQt6QuickEffects.so.*
 
@@ -1537,6 +1570,24 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qmlintegration_private.pri
 %{_qt6_libdir}/libQt6QmlDom.prl
 %{_qt6_metatypesdir}/qt6qmldomprivate_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_qmldom_private.pri
+
+%files -n qt6-qmlls-devel-static
+%{_qt6_cmakedir}/Qt6QmlLSPrivate/
+%{_qt6_descriptionsdir}/QmlLSPrivate.json
+%{_qt6_includedir}/QtQmlLS/
+%{_qt6_libdir}/libQt6QmlLS.a
+%{_qt6_libdir}/libQt6QmlLS.prl
+%{_qt6_metatypesdir}/qt6qmllsprivate_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_qmlls_private.pri
+
+%files -n qt6-qmltoolingsettings-devel-static
+%{_qt6_cmakedir}/Qt6QmlToolingSettingsPrivate/
+%{_qt6_descriptionsdir}/QmlToolingSettingsPrivate.json
+%{_qt6_includedir}/QtQmlToolingSettings/
+%{_qt6_libdir}/libQt6QmlToolingSettings.a
+%{_qt6_libdir}/libQt6QmlToolingSettings.prl
+%{_qt6_metatypesdir}/qt6qmltoolingsettingsprivate_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_qmltoolingsettings_private.pri
 
 %files -n qt6-qmltyperegistrar-devel-static
 %{_qt6_cmakedir}/Qt6QmlTypeRegistrarPrivate/
