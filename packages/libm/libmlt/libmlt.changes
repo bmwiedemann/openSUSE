@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 13 07:44:39 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Reenable rtaudio fixed with: 0001-fix-930-support-RtAudio-6.patch
+
+-------------------------------------------------------------------
 Mon Oct  9 12:41:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add missing QtNetwork BuildRequires

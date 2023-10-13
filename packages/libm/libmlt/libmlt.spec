@@ -27,9 +27,7 @@
 %define lversion_pp 7.20.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
 %bcond_without Qt6
-# FIXME: the build fails due to incompatible rtaudio abi
-#        see https://github.com/mltframework/mlt/issues/930
-%bcond_with rtaudio
+%bcond_without rtaudio
 Name:           %{libname}
 Version:        7.20.0
 Release:        0
@@ -38,6 +36,8 @@ License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.mltframework.org
 Source0:        https://github.com/mltframework/mlt/releases/download/v%{version}/mlt-%{version}.tar.gz
+#  see https://github.com/mltframework/mlt/issues/930
+Patch0:         0001-fix-930-support-RtAudio-6.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
