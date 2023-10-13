@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.5.3
-%define short_version 6.5
+%define real_version 6.6.0
+%define short_version 6.6
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -33,9 +33,11 @@
 %bcond_without system_harfbuzz
 # The ICU version is also too old incrementExact() appeared in ICU 71
 %bcond_without system_icu
+# and so is tiff...
+%bcond_without system_tiff
 %endif
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.5.3
+Version:        6.6.0
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -90,6 +92,7 @@ BuildRequires:  cmake(Qt6QuickControls2) = %{real_version}
 BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
 BuildRequires:  cmake(Qt6QuickWidgets) = %{real_version}
 BuildRequires:  cmake(Qt6WebChannel) = %{real_version}
+BuildRequires:  cmake(Qt6WebChannelQuick) = %{real_version}
 BuildRequires:  cmake(Qt6WebSockets) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 BuildRequires:  cmake(Qt6WidgetsTools) = %{real_version}
@@ -119,12 +122,18 @@ BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libpulse) >= 0.9.10
+%if %{with system_tiff}
+BuildRequires:  pkgconfig(libtiff-4) >= 4.2.0
+%endif
+BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(nss) >= 3.26
 BuildRequires:  pkgconfig(opus) >= 1.3.1
+BuildRequires:  pkgconfig(poppler-cpp)
 # Build fails with newer re2 versions (https://bugreports.qt.io/browse/QTBUG-115931)
+# NOTE still fais with 6.6.0-rc
 BuildRequires:  pkgconfig(re2) <= 10.0.0
 BuildRequires:  pkgconfig(vpx) >= 1.10.0
 BuildRequires:  pkgconfig(x11)
@@ -143,6 +152,8 @@ BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(minizip)
+# Picked from chromium.spec
+BuildRequires:  (python3 >= 3.7 or python3-dataclasses)
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
