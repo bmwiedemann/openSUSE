@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.5.3
-%define short_version 6.5
+%define real_version 6.6.0
+%define short_version 6.6
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.5.3
+Version:        6.6.0
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -46,6 +46,7 @@ Patch101:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
 %if 0%{?suse_version} == 1500
 Patch102:       0001-Require-GCC-12.patch
 %endif
+Patch103:       0001-Don-t-strip-binaries-when-building-with-qmake.patch
 ##
 BuildRequires:  cmake >= 3.18.3
 BuildRequires:  cups-devel
@@ -853,6 +854,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_bindir}/qdbusxml2cpp6
 %{_bindir}/qmake6
 %{_bindir}/qt-cmake6
+%{_bindir}/qt-cmake-create6
 %{_bindir}/qt-configure-module6
 %{_bindir}/qtpaths6
 %{_qt6_bindir}/androiddeployqt
@@ -861,6 +863,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_bindir}/qdbusxml2cpp
 %{_qt6_bindir}/qmake
 %{_qt6_bindir}/qt-cmake
+%{_qt6_bindir}/qt-cmake-create
 %{_qt6_bindir}/qt-configure-module
 %{_qt6_bindir}/qtpaths
 %{_qt6_cmakedir}/Qt6/

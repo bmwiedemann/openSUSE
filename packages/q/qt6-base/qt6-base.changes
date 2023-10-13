@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 10 09:39:48 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * https://www.qt.io/blog/qt-6.6-released
+
+-------------------------------------------------------------------
+Wed Oct  4 07:25:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix creation of -debuginfo packages for qmake builds:
+  * 0001-Don-t-strip-binaries-when-building-with-qmake.patch
+
+-------------------------------------------------------------------
 Thu Sep 28 07:34:06 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.3

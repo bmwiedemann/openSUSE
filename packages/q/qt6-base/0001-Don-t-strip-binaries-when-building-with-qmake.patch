@@ -1,0 +1,39 @@
+From e43300d226ca98dbda1b1b69c3a1aaf8543f0a16 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Wed, 4 Oct 2023 09:24:42 +0200
+Subject: [PATCH] Don't strip binaries when building with qmake
+
+Change-Id: I134f83b0a4fb1636d15f527585f8e9c9892f9057
+---
+ mkspecs/common/gcc-base.conf | 2 ++
+ mkspecs/common/linux.conf    | 4 ++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/mkspecs/common/gcc-base.conf b/mkspecs/common/gcc-base.conf
+index ae58326289..3a686cf18c 100644
+--- a/mkspecs/common/gcc-base.conf
++++ b/mkspecs/common/gcc-base.conf
+@@ -31,6 +31,8 @@
+ # you can use the manual test in tests/manual/mkspecs.
+ #
+ 
++CONFIG += nostrip
++
+ QMAKE_CFLAGS_OPTIMIZE      = -O2
+ QMAKE_CFLAGS_OPTIMIZE_FULL = -O3
+ QMAKE_CFLAGS_OPTIMIZE_DEBUG = -Og
+diff --git a/mkspecs/common/linux.conf b/mkspecs/common/linux.conf
+index 544cc22715..b809cffeeb 100644
+--- a/mkspecs/common/linux.conf
++++ b/mkspecs/common/linux.conf
+@@ -48,5 +48,5 @@ QMAKE_OBJCOPY           = objcopy
+ QMAKE_NM                = nm -P
+ QMAKE_RANLIB            =
+ 
+-QMAKE_STRIP             = strip
+-QMAKE_STRIPFLAGS_LIB   += --strip-unneeded
++QMAKE_STRIP             =
++QMAKE_STRIPFLAGS_LIB   +=
+-- 
+2.42.0
+
