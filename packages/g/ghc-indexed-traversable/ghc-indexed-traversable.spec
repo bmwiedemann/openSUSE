@@ -19,7 +19,7 @@
 %global pkg_name indexed-traversable
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.2.1
+Version:        0.1.3
 Release:        0
 Summary:        FunctorWithIndex, FoldableWithIndex, TraversableWithIndex
 License:        BSD-2-Clause
@@ -32,6 +32,8 @@ BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-foldable1-classes-compat-devel
+BuildRequires:  ghc-foldable1-classes-compat-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
