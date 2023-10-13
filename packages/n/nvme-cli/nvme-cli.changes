@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct 12 17:05:14 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Add missing jsc# and bsc# tracking entries in change log.
+
+-------------------------------------------------------------------
 Mon Oct  9 14:17:21 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Use fixed timestamps for documentation allowing reproducable builds
@@ -11,7 +16,7 @@ Mon Oct  9 14:17:21 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 -------------------------------------------------------------------
 Wed Oct  4 15:11:19 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
-- Enable test during build
+- Enable test during build (bsc#1207686)
 - Drop minimum version meson dependency
 - Add asciidoc dependency
 - Build documentation when requested
@@ -201,7 +206,7 @@ Fri Sep 29 11:49:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * fabrics: Return errno value as negative
   * fabrics: Fix linux kernel check patch errors and warnings
   * nbft: add the nbft show plugin
-  * nbft: added NBFT v1.0 table support
+  * nbft: added NBFT v1.0 table support (jsc#PED-1449)
   * nbft: make lookup_ctrl function public
   * nvme: Fix indentation errors around nvme show error API
   * nvme: Check validate output format err value instead of flags
@@ -230,6 +235,7 @@ Fri Sep 29 11:49:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
   * fabrics: fix fc config JSON file handling (bsc#1210089)
  Refresh 0100-harden_nvmf-connect@.service.patch
 - Fix install path for nvme-regress script
+
 -------------------------------------------------------------------
 Fri Mar 31 15:44:20 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
