@@ -41,26 +41,23 @@ BuildRequires:  python-rpm-macros
 Requires:       ca-certificates-mozilla
 Requires:       python-certifi
 Requires:       python-cryptography >= 1.9
-Requires:       python-idna >= 2.0.0
-Requires:       python-pyOpenSSL >= 17.1.0
+Requires:       python-idna >= 3.4
+Requires:       python-pyOpenSSL >= 23.2.0
 Recommends:     python-Brotli >= 1.0.9
-Recommends:     python-PySocks >= 1.5.6
+Recommends:     python-PySocks >= 1.7.1
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Brotli >= 1.0.9}
-BuildRequires:  %{python_module PySocks >= 1.5.6}
+BuildRequires:  %{python_module PySocks >= 1.7.1}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module cryptography >= 1.9}
-BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module idna >= 2.0.0}
+BuildRequires:  %{python_module idna >= 3.4}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pytest-freezegun}
-BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module tornado >= 6}
-BuildRequires:  %{python_module trustme >= 0.5.3}
+BuildRequires:  %{python_module pytest >= 7.4.0}
+BuildRequires:  %{python_module pytest-timeout >= 2.1.0}
+BuildRequires:  %{python_module tornado >= 6.2}
+BuildRequires:  %{python_module trustme >= 0.9.0}
 BuildRequires:  %{python_module urllib3 >= %{version}}
 BuildRequires:  timezone
 %else
