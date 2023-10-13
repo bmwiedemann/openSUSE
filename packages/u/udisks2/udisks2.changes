@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 11 15:37:37 UTC 2023 - Thomas Blume <thomas.blume@suse.com>
+
+- fix mount failure on ntfs formatted usb disks (bsc#1216055)
+  * add:
+    0001-doc-Clarify-the-Filesystem.Size-property-presence.patch
+    0001-tests-Mark-UDF-fstab-filesystem-tests-as-unstable.patch
+    0001-udiskslinuxfilesystem-Refactor-internal-whitelists.patch
+    0001-tests-Add-offline-and-online-filesystem-grow-tests.patch
+    0001-udiskslinuxfilesystem-Force-native-tools-for-mounted.patch
+
+-------------------------------------------------------------------
 Tue Aug 29 20:28:56 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Add Obsoletes tags for libudisks2-0_bcache and libudisks2-0_zram

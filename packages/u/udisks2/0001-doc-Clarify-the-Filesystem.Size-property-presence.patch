@@ -1,0 +1,35 @@
+From fee9a3a50c3d4f687ed0c310096b1cd0e21f8923 Mon Sep 17 00:00:00 2001
+From: Tomas Bzatek <tbzatek@redhat.com>
+Date: Tue, 22 Aug 2023 14:33:07 +0200
+Subject: [PATCH] doc: Clarify the Filesystem.Size property presence
+
+We've done many tweaks and introduced limits to some
+filesystem types, let's document that.
+---
+ data/org.freedesktop.UDisks2.xml | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/data/org.freedesktop.UDisks2.xml b/data/org.freedesktop.UDisks2.xml
+index bfa6e660..53194c70 100644
+--- a/data/org.freedesktop.UDisks2.xml
++++ b/data/org.freedesktop.UDisks2.xml
+@@ -2715,11 +2715,12 @@
+     </method>
+ 
+     <!-- Size: The size of the filesystem.  This is the amount of
+-         bytes used on the block device.  If this is smaller than
+-         org.freedesktop.Udisks2.Block.Size, then the filesystem can
+-         be made larger with Resize.
++         bytes used on the block device representing an outer filesystem
++         boundary. If this is smaller than org.freedesktop.Udisks2.Block.Size,
++         then the filesystem can be made larger with Resize.
+ 
+-         If the size is unknown, the property is zero.
++         If the size is unknown, the property is zero. Currently limited
++         to xfs and ext filesystems only.
+ 
+          Please note that reading value of this property typically causes
+          some I/O to read the filesystem superblock. Unlike the rest
+-- 
+2.42.0
+
