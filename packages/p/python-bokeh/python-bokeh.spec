@@ -29,7 +29,7 @@
 %bcond_with testexamples
 
 Name:           python-bokeh%{psuffix}
-Version:        3.2.2
+Version:        3.3.0
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
