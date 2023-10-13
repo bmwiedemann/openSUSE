@@ -1,7 +1,7 @@
-Index: intltool-update.in
+Index: intltool-0.51.0/intltool-update.in
 ===================================================================
---- intltool-update.in.orig
-+++ intltool-update.in
+--- intltool-0.51.0.orig/intltool-update.in
++++ intltool-0.51.0/intltool-update.in
 @@ -1062,13 +1062,13 @@ sub SubstituteVariable
  	}
      }
