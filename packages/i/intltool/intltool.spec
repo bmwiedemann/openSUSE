@@ -1,7 +1,7 @@
 #
 # spec file for package intltool
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -30,9 +30,9 @@ Patch0:         intltool-perl-5.22.patch
 Patch1:         fixrace.patch
 # PATCH-FIX-UPSTREAM intltool-no-guess-builddir.patch lp#1117944 -- Fix out of tree builds with automake 1.15
 Patch2:         intltool-no-guess-builddir.patch
-BuildRequires:  perl-XML-Parser
+BuildRequires:  perl(XML::Parser)
 Requires:       gettext-tools
-Requires:       perl-XML-Parser
+Requires:       perl(XML::Parser)
 Provides:       xml-i18n-tools
 Obsoletes:      xml-i18n-tools
 BuildArch:      noarch
@@ -44,17 +44,14 @@ more) can be extracted into PO files. After translation, the new
 information is written back into the XML files.
 
 %prep
-%setup -q
-%patch0
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
