@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 13 01:58:25 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.4.0:
+  * `overflow=False` is now supported for `IntCategory` and
+    `StrCategory` [gh#scikit-hep/boost-histogram#883].
+  * Updated Boost to 1.82. The upper limit on Regular axes without
+    overflow is now inclusive like NumPy
+    [gh#scikit-hep/boost-histogram#802].
+  * Produce more detailed error messages on C++ errors
+    [gh#scikit-hep/boost-histogram#848].
+  * Include `-latomic` on `armv7l`
+    [gh#scikit-hep/boost-histogram#823].
+
+-------------------------------------------------------------------
 Wed Jan  4 15:13:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v1.3.2:
