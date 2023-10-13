@@ -1,0 +1,12 @@
+diff -Nru pycomposefile-0.0.30.orig/setup.py pycomposefile-0.0.30/setup.py
+--- pycomposefile-0.0.30.orig/setup.py	2023-01-17 17:59:29.000000000 +0100
++++ pycomposefile-0.0.30/setup.py	2023-10-04 15:16:46.064028015 +0200
+@@ -3,7 +3,7 @@
+ 
+ long_desc = open("README.md").read()
+ required = ['pyyaml']  # Comma seperated dependent libraries name
+-version = os.environ.get("BUILD_TAG", "0.0.1a1").lstrip("v")
++version = os.environ.get("BUILD_TAG", "0.0.30").lstrip("v")
+ 
+ setuptools.setup(
+     name="pycomposefile",
