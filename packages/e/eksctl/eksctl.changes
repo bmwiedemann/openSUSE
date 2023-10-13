@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 13 08:30:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.162.0:
+  * Add release notes for 0.162
+  * Fix ELB cleanup failure due to resource name end with a hyphen
+    (#7029)
+  * Set AWS credential expiry window to 30 minutes (#7116)
+  * Fix coredns 1.28 asset
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Fri Oct 06 13:17:03 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.161.0:
