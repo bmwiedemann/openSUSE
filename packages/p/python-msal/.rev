@@ -204,4 +204,28 @@
 - Override upstream version with 1.24.0~b1 (forwarded request 1103883 from glaubitz)</comment>
     <requestid>1103887</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ed41168641f1591b1506da5d24f40907</srcmd5>
+    <version>1.24.1</version>
+    <time>1697231641</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.24.1
+  + Includes minor adjustments on handling acquire_token_interactive().
+    The scope of the issue being addressed was limited to a short-lived
+    sign-in attempt. The potential misuse vector complexity was high,
+    therefore it is unlikely to be reproduced in standard usage scenarios;
+    however, out of abundance of caution, this fix is shipped to align
+    ourselves with Microsoft's policy of secure-by-default.
+- from version 1.24.0
+  + Enhancement: There may be a new msal_telemetry key available in MSAL's
+    acquire token response, currently observed when broker is enabled. Its
+    content and format are opaque to caller. This telemetry blob allows
+    participating apps to collect them via telemetry, and it may help
+    future troubleshooting. (#575)
+  + Enhancement: A new enable_pii_log parameter is added into ClientApplication
+    constructor. When enabled, the broker component may include PII (Personal
+    Identifiable Information) in logs. This may help troubleshooting. (#568, #590)
+- Remove temporary version override (forwarded request 1116418 from glaubitz)</comment>
+    <requestid>1116468</requestid>
+  </revision>
 </revisionlist>
