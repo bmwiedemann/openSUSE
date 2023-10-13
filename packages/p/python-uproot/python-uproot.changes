@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Oct 13 00:34:49 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.13:
+  * feat: add TLeafC - string - writing support
+    [gh#scikit-hep/uproot#940].
+  * feat: adding a very basic FSSpecSource
+    [gh#scikit-hep/uproot#967].
+  * fix: inverted axes for variances of 2D weighted histograms
+    when transformed to hist [gh#scikit-hep/uproot#965].
+  * fix: pull out .data from NumpyArray
+    [gh#scikit-hep/uproot#985].
+- Delete a test file that causes import errors because python-hist
+  is not packaged for the distro.
+
+-------------------------------------------------------------------
+Sun Oct  8 01:05:02 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.12:
+  * fix: changelog script ignores releases past 5.0.0rc2
+    [gh#scikit-hep/uproot#935].
+  * fix: clamp start and stop [gh#scikit-hep/uproot#941].
+  * fix: get package import messages up-to-date
+    [gh#scikit-hep/uproot#947].
+  * fix: tests were failing because dask_awkward.lib.testutils
+    needs pyarrow [gh#scikit-hep/uproot#957].
+  * fix: add minimimal emscripten support via non-HTTP sources
+    [gh#scikit-hep/uproot#956].
+  * fix: remove pyarrow import as a dependence coming from
+    dask-awkward in tests [gh#scikit-hep/uproot#961].
+
+-------------------------------------------------------------------
 Sun Sep 17 16:00:00 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.0.11:

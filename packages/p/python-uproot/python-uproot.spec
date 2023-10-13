@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %global modname uproot
 Name:           python-uproot
-Version:        5.0.11
+Version:        5.0.13
 Release:        0
 Summary:        ROOT I/O in pure Python and Numpy
 License:        BSD-3-Clause
@@ -80,6 +80,8 @@ arrays.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# test_0965-inverted-axes-variances-hist-888 missing hist package and causes import errors
+rm tests/test_0965-inverted-axes-variances-hist-888.py
 if [ $(getconf LONG_BIT) -eq 32 ]; then
 # pandas tests assume 64bit types
 skiptests32=("-k" "not (test_jagged_pandas or test_pandas_vector_TLorentzVector or test_iterate_pandas_2 or test_function_iterate_pandas_2 or test_0430)")
