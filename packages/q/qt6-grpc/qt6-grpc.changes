@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 10 09:39:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.0
+  * https://www.qt.io/blog/qt-6.6-released
+
+-------------------------------------------------------------------
+Wed Oct  4 12:25:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Drop patches, merged upstream:
+  * 0001-Fix-include-of-std-set.patch
+  * 0003-Add-missing-memory-include.patch
+
+-------------------------------------------------------------------
 Thu Sep 28 07:34:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.3
