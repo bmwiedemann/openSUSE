@@ -231,4 +231,12 @@
   * added support for cython 3.x</comment>
     <requestid>1113880</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>426e87a51b7cce6dee7ad059c75ce15a</srcmd5>
+    <version>64</version>
+    <time>1697231751</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117690</requestid>
+  </revision>
 </revisionlist>

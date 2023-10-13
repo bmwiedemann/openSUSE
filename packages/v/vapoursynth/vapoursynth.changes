@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 12 07:48:58 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on Leap 15.x
+- Add patch to revert for Leap 15.x only:
+  * ac62a4d2a54bacccd09b97453bffe759c01f18ef.patch
+
+-------------------------------------------------------------------
 Wed Sep 27 12:50:11 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 64:
