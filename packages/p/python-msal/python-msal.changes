@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct  9 09:52:17 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.24.1
+  + Includes minor adjustments on handling acquire_token_interactive().
+    The scope of the issue being addressed was limited to a short-lived
+    sign-in attempt. The potential misuse vector complexity was high,
+    therefore it is unlikely to be reproduced in standard usage scenarios;
+    however, out of abundance of caution, this fix is shipped to align
+    ourselves with Microsoft's policy of secure-by-default.
+- from version 1.24.0
+  + Enhancement: There may be a new msal_telemetry key available in MSAL's
+    acquire token response, currently observed when broker is enabled. Its
+    content and format are opaque to caller. This telemetry blob allows
+    participating apps to collect them via telemetry, and it may help
+    future troubleshooting. (#575)
+  + Enhancement: A new enable_pii_log parameter is added into ClientApplication
+    constructor. When enabled, the broker component may include PII (Personal
+    Identifiable Information) in logs. This may help troubleshooting. (#568, #590)
+- Remove temporary version override
+
+-------------------------------------------------------------------
+Wed Oct  4 10:11:52 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.24.0b2
+  + Experimental: Building on top of 1.24.0b1 and includes
+    some adjustment on handling acquire_token_interactive().
+
+-------------------------------------------------------------------
 Mon Aug 14 13:29:06 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.24.0b1
