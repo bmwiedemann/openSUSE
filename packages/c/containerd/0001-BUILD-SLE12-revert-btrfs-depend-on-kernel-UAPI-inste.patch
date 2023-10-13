@@ -1,0 +1,3148 @@
+From 1aa8ce47108233b40930e34f79f11233e5aef958 Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <cyphar@cyphar.com>
+Date: Fri, 13 Oct 2023 16:31:30 +1100
+Subject: [PATCH] BUILD: SLE12: revert "btrfs: depend on kernel UAPI instead of
+ libbtrfs"
+
+This is a partial revert of commit 52f82acb7b39 ("btrfs: depend on
+kernel UAPI instead of libbtrfs"), namely switching from
+github.com/containers/btrfs/v2 to v1.
+
+On SLE 12, our UAPI headers are too old, resulting in us being unable to
+build the btrfs driver with the new headers. This patch is only needed
+for SLE-12.
+
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ go.mod                                        |   2 +-
+ go.sum                                        |   3 +-
+ snapshots/btrfs/btrfs.go                      |   2 +-
+ .../containerd/btrfs/{v2 => }/.gitignore      |   0
+ .../containerd/btrfs/{v2 => }/LICENSE         |   0
+ .../containerd/btrfs/{v2 => }/Makefile        |   0
+ .../containerd/btrfs/{v2 => }/README.md       |  15 -
+ .../containerd/btrfs/{v2 => }/btrfs.c         |  12 +-
+ .../containerd/btrfs/{v2 => }/btrfs.go        |  47 +--
+ .../containerd/btrfs/{v2 => }/btrfs.h         |  22 +-
+ .../containerd/btrfs/{v2 => }/doc.go          |   0
+ .../containerd/btrfs/{v2 => }/helpers.go      |  29 +-
+ .../containerd/btrfs/{v2 => }/info.go         |   0
+ .../containerd/btrfs/{v2 => }/ioctl.go        |   0
+ vendor/golang.org/x/sys/cpu/asm_aix_ppc64.s   |  18 --
+ vendor/golang.org/x/sys/cpu/byteorder.go      |  66 ----
+ vendor/golang.org/x/sys/cpu/cpu.go            | 287 ------------------
+ vendor/golang.org/x/sys/cpu/cpu_aix.go        |  34 ---
+ vendor/golang.org/x/sys/cpu/cpu_arm.go        |  73 -----
+ vendor/golang.org/x/sys/cpu/cpu_arm64.go      | 172 -----------
+ vendor/golang.org/x/sys/cpu/cpu_arm64.s       |  32 --
+ vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go   |  12 -
+ vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go   |  22 --
+ vendor/golang.org/x/sys/cpu/cpu_gc_x86.go     |  17 --
+ .../golang.org/x/sys/cpu/cpu_gccgo_arm64.go   |  12 -
+ .../golang.org/x/sys/cpu/cpu_gccgo_s390x.go   |  23 --
+ vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.c   |  39 ---
+ vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go  |  33 --
+ vendor/golang.org/x/sys/cpu/cpu_linux.go      |  16 -
+ vendor/golang.org/x/sys/cpu/cpu_linux_arm.go  |  39 ---
+ .../golang.org/x/sys/cpu/cpu_linux_arm64.go   | 111 -------
+ .../golang.org/x/sys/cpu/cpu_linux_mips64x.go |  24 --
+ .../golang.org/x/sys/cpu/cpu_linux_noinit.go  |  10 -
+ .../golang.org/x/sys/cpu/cpu_linux_ppc64x.go  |  32 --
+ .../golang.org/x/sys/cpu/cpu_linux_s390x.go   |  40 ---
+ vendor/golang.org/x/sys/cpu/cpu_loong64.go    |  13 -
+ vendor/golang.org/x/sys/cpu/cpu_mips64x.go    |  16 -
+ vendor/golang.org/x/sys/cpu/cpu_mipsx.go      |  12 -
+ .../golang.org/x/sys/cpu/cpu_netbsd_arm64.go  | 173 -----------
+ .../golang.org/x/sys/cpu/cpu_openbsd_arm64.go |  65 ----
+ .../golang.org/x/sys/cpu/cpu_openbsd_arm64.s  |  11 -
+ vendor/golang.org/x/sys/cpu/cpu_other_arm.go  |  10 -
+ .../golang.org/x/sys/cpu/cpu_other_arm64.go   |  10 -
+ .../golang.org/x/sys/cpu/cpu_other_mips64x.go |  13 -
+ .../golang.org/x/sys/cpu/cpu_other_ppc64x.go  |  15 -
+ .../golang.org/x/sys/cpu/cpu_other_riscv64.go |  12 -
+ vendor/golang.org/x/sys/cpu/cpu_ppc64x.go     |  17 --
+ vendor/golang.org/x/sys/cpu/cpu_riscv64.go    |  12 -
+ vendor/golang.org/x/sys/cpu/cpu_s390x.go      | 172 -----------
+ vendor/golang.org/x/sys/cpu/cpu_s390x.s       |  58 ----
+ vendor/golang.org/x/sys/cpu/cpu_wasm.go       |  18 --
+ vendor/golang.org/x/sys/cpu/cpu_x86.go        | 145 ---------
+ vendor/golang.org/x/sys/cpu/cpu_x86.s         |  28 --
+ vendor/golang.org/x/sys/cpu/cpu_zos.go        |  10 -
+ vendor/golang.org/x/sys/cpu/cpu_zos_s390x.go  |  25 --
+ vendor/golang.org/x/sys/cpu/endian_big.go     |  11 -
+ vendor/golang.org/x/sys/cpu/endian_little.go  |  11 -
+ vendor/golang.org/x/sys/cpu/hwcap_linux.go    |  71 -----
+ vendor/golang.org/x/sys/cpu/parse.go          |  43 ---
+ .../x/sys/cpu/proc_cpuinfo_linux.go           |  54 ----
+ vendor/golang.org/x/sys/cpu/runtime_auxv.go   |  16 -
+ .../x/sys/cpu/runtime_auxv_go121.go           |  19 --
+ .../golang.org/x/sys/cpu/syscall_aix_gccgo.go |  27 --
+ .../x/sys/cpu/syscall_aix_ppc64_gc.go         |  36 ---
+ vendor/modules.txt                            |   7 +-
+ 65 files changed, 54 insertions(+), 2320 deletions(-)
+ rename vendor/github.com/containerd/btrfs/{v2 => }/.gitignore (100%)
+ rename vendor/github.com/containerd/btrfs/{v2 => }/LICENSE (100%)
+ rename vendor/github.com/containerd/btrfs/{v2 => }/Makefile (100%)
+ rename vendor/github.com/containerd/btrfs/{v2 => }/README.md (81%)
+ rename vendor/github.com/containerd/btrfs/{v2 => }/btrfs.c (82%)
+ rename vendor/github.com/containerd/btrfs/{v2 => }/btrfs.go (88%)
+ rename vendor/github.com/containerd/btrfs/{v2 => }/btrfs.h (71%)
+ rename vendor/github.com/containerd/btrfs/{v2 => }/doc.go (100%)
+ rename vendor/github.com/containerd/btrfs/{v2 => }/helpers.go (76%)
+ rename vendor/github.com/containerd/btrfs/{v2 => }/info.go (100%)
+ rename vendor/github.com/containerd/btrfs/{v2 => }/ioctl.go (100%)
+ delete mode 100644 vendor/golang.org/x/sys/cpu/asm_aix_ppc64.s
+ delete mode 100644 vendor/golang.org/x/sys/cpu/byteorder.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_aix.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_arm.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_arm64.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_arm64.s
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_gc_x86.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_gccgo_arm64.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_gccgo_s390x.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.c
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_linux.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_linux_arm.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_linux_arm64.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_linux_mips64x.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_linux_noinit.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_linux_ppc64x.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_linux_s390x.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_loong64.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_mips64x.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_mipsx.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_netbsd_arm64.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_openbsd_arm64.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_openbsd_arm64.s
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_other_arm.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_other_arm64.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_other_mips64x.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_other_ppc64x.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_other_riscv64.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_ppc64x.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_riscv64.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_s390x.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_s390x.s
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_wasm.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_x86.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_x86.s
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_zos.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/cpu_zos_s390x.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/endian_big.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/endian_little.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/hwcap_linux.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/parse.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/proc_cpuinfo_linux.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/runtime_auxv.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/runtime_auxv_go121.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/syscall_aix_gccgo.go
+ delete mode 100644 vendor/golang.org/x/sys/cpu/syscall_aix_ppc64_gc.go
+
+diff --git a/go.mod b/go.mod
+index ce0aa0c50543..6f5efd048f3a 100644
+--- a/go.mod
++++ b/go.mod
+@@ -9,7 +9,7 @@ require (
+ 	github.com/Microsoft/hcsshim v0.11.1
+ 	github.com/container-orchestrated-devices/container-device-interface v0.5.4
+ 	github.com/containerd/aufs v1.0.0
+-	github.com/containerd/btrfs/v2 v2.0.0
++	github.com/containerd/btrfs v1.0.0
+ 	github.com/containerd/cgroups/v3 v3.0.2
+ 	github.com/containerd/console v1.0.3
+ 	github.com/containerd/continuity v0.4.2
+diff --git a/go.sum b/go.sum
+index 2f50e5e54df7..51ac40303347 100644
+--- a/go.sum
++++ b/go.sum
+@@ -186,9 +186,8 @@ github.com/containerd/aufs v1.0.0 h1:2oeJiwX5HstO7shSrPZjrohJZLzK36wvpdmzDRkL/LY
+ github.com/containerd/aufs v1.0.0/go.mod h1:kL5kd6KM5TzQjR79jljyi4olc1Vrx6XBlcyj3gNv2PU=
+ github.com/containerd/btrfs v0.0.0-20201111183144-404b9149801e/go.mod h1:jg2QkJcsabfHugurUvvPhS3E08Oxiuh5W/g1ybB4e0E=
+ github.com/containerd/btrfs v0.0.0-20210316141732-918d888fb676/go.mod h1:zMcX3qkXTAi9GI50+0HOeuV8LU2ryCE/V2vG/ZBiTss=
++github.com/containerd/btrfs v1.0.0 h1:osn1exbzdub9L5SouXO5swW4ea/xVdJZ3wokxN5GrnA=
+ github.com/containerd/btrfs v1.0.0/go.mod h1:zMcX3qkXTAi9GI50+0HOeuV8LU2ryCE/V2vG/ZBiTss=
+-github.com/containerd/btrfs/v2 v2.0.0 h1:FN4wsx7KQrYoLXN7uLP0vBV4oVWHOIKDRQ1G2Z0oL5M=
+-github.com/containerd/btrfs/v2 v2.0.0/go.mod h1:swkD/7j9HApWpzl8OHfrHNxppPd9l44DFZdF94BUj9k=
+ github.com/containerd/cgroups v0.0.0-20190717030353-c4b9ac5c7601/go.mod h1:X9rLEHIqSf/wfK8NsPqxJmeZgW4pcfzdXITDrUSJ6uI=
+ github.com/containerd/cgroups v0.0.0-20190919134610-bf292b21730f/go.mod h1:OApqhQ4XNSNC13gXIwDjhOQxjWa/NxkwZXJ1EvqT0ko=
+ github.com/containerd/cgroups v0.0.0-20200531161412-0dbf7f05ba59/go.mod h1:pA0z1pT8KYB3TCXK/ocprsh7MAkoW8bZVzPdih9snmM=
+diff --git a/snapshots/btrfs/btrfs.go b/snapshots/btrfs/btrfs.go
+index a6a41e68e3cd..5cef986b5e7b 100644
+--- a/snapshots/btrfs/btrfs.go
++++ b/snapshots/btrfs/btrfs.go
+@@ -25,7 +25,7 @@ import (
+ 	"path/filepath"
+ 	"strings"
+ 
+-	"github.com/containerd/btrfs/v2"
++	"github.com/containerd/btrfs"
+ 	"github.com/containerd/continuity/fs"
+ 
+ 	"github.com/containerd/containerd/log"
+diff --git a/vendor/github.com/containerd/btrfs/v2/.gitignore b/vendor/github.com/containerd/btrfs/.gitignore
+similarity index 100%
+rename from vendor/github.com/containerd/btrfs/v2/.gitignore
+rename to vendor/github.com/containerd/btrfs/.gitignore
+diff --git a/vendor/github.com/containerd/btrfs/v2/LICENSE b/vendor/github.com/containerd/btrfs/LICENSE
+similarity index 100%
+rename from vendor/github.com/containerd/btrfs/v2/LICENSE
+rename to vendor/github.com/containerd/btrfs/LICENSE
+diff --git a/vendor/github.com/containerd/btrfs/v2/Makefile b/vendor/github.com/containerd/btrfs/Makefile
+similarity index 100%
+rename from vendor/github.com/containerd/btrfs/v2/Makefile
+rename to vendor/github.com/containerd/btrfs/Makefile
+diff --git a/vendor/github.com/containerd/btrfs/v2/README.md b/vendor/github.com/containerd/btrfs/README.md
+similarity index 81%
+rename from vendor/github.com/containerd/btrfs/v2/README.md
+rename to vendor/github.com/containerd/btrfs/README.md
+index abdac2ad1baa..505f39b12156 100644
+--- a/vendor/github.com/containerd/btrfs/v2/README.md
++++ b/vendor/github.com/containerd/btrfs/README.md
+@@ -11,21 +11,6 @@ Native Go bindings for btrfs.
+ These are in the early stages. We will try to maintain stability, but please
+ vendor if you are relying on these directly.
+ 
+-# Dependencies
+-
+-## v2.x
+-
+-Headers from kernel 4.12 or newer.
+-The package name is `linux-libc-dev` on Debian/Ubuntu, `kernel-headers` on Fedora and RHEL-like distros.
+-
+-The headers are only required on compilation time, not on run time.
+-
+-## v1.x
+-
+-libbtrfs headers.
+-The package name is `libbtrfs-dev` on Debian/Ubuntu, `btrfs-progs-devel` on Fedora and CentOS 7.
+-The package is not available for Rocky Linux and AlmaLinux.
+-
+ # Contribute
+ 
+ This package may not cover all the use cases for btrfs. If something you need
+diff --git a/vendor/github.com/containerd/btrfs/v2/btrfs.c b/vendor/github.com/containerd/btrfs/btrfs.c
+similarity index 82%
+rename from vendor/github.com/containerd/btrfs/v2/btrfs.c
+rename to vendor/github.com/containerd/btrfs/btrfs.c
+index fe7607c58b3b..f0da012f080e 100644
+--- a/vendor/github.com/containerd/btrfs/v2/btrfs.c
++++ b/vendor/github.com/containerd/btrfs/btrfs.c
+@@ -14,16 +14,20 @@
+    limitations under the License.
+ */
+ 
+-#include <string.h>
++#include <stddef.h>
++#include <linux/magic.h>
++#include <btrfs/ioctl.h>
++#include <btrfs/ctree.h>
++
+ #include "btrfs.h"
+ 
+ void unpack_root_item(struct gosafe_btrfs_root_item* dst, struct btrfs_root_item* src) {
+ 	memcpy(dst->uuid, src->uuid, BTRFS_UUID_SIZE);
+ 	memcpy(dst->parent_uuid, src->parent_uuid, BTRFS_UUID_SIZE);
+ 	memcpy(dst->received_uuid, src->received_uuid, BTRFS_UUID_SIZE);
+-	dst->generation = src->generation;
+-	dst->otransid = src->otransid;
+-	dst->flags = src->flags;
++	dst->gen = btrfs_root_generation(src);
++	dst->ogen = btrfs_root_otransid(src);
++	dst->flags = btrfs_root_flags(src);
+ }
+ 
+ /* unpack_root_ref(struct gosafe_btrfs_root_ref* dst, struct btrfs_root_ref* src) { */
+diff --git a/vendor/github.com/containerd/btrfs/v2/btrfs.go b/vendor/github.com/containerd/btrfs/btrfs.go
+similarity index 88%
+rename from vendor/github.com/containerd/btrfs/v2/btrfs.go
+rename to vendor/github.com/containerd/btrfs/btrfs.go
+index 471dd3464c51..f9c30b3dd517 100644
+--- a/vendor/github.com/containerd/btrfs/v2/btrfs.go
++++ b/vendor/github.com/containerd/btrfs/btrfs.go
+@@ -17,7 +17,8 @@
+ package btrfs
+ 
+ /*
+-#include <linux/magic.h>
++#include <stddef.h>
++#include <btrfs/ioctl.h>
+ #include "btrfs.h"
+ 
+ static char* get_name_btrfs_ioctl_vol_args_v2(struct btrfs_ioctl_vol_args_v2* btrfs_struct) {
+@@ -27,13 +28,13 @@ static char* get_name_btrfs_ioctl_vol_args_v2(struct btrfs_ioctl_vol_args_v2* bt
+ import "C"
+ 
+ import (
+-	"errors"
+-	"fmt"
+ 	"os"
+ 	"path/filepath"
+ 	"sort"
+ 	"syscall"
+ 	"unsafe"
++
++	"github.com/pkg/errors"
+ )
+ 
+ // maxByteSliceSize is the smallest size that Go supports on various platforms.
+@@ -98,7 +99,7 @@ func SubvolInfo(path string) (info Info, err error) {
+ 		return *info, nil
+ 	}
+ 
+-	return info, fmt.Errorf("%q not found", path)
++	return info, errors.Errorf("%q not found", path)
+ }
+ 
+ func subvolMap(path string) (map[uint64]*Info, error) {
+@@ -153,13 +154,13 @@ func subvolMap(path string) (map[uint64]*Info, error) {
+ 				// get an entry of the objectid, with name, but the parent is
+ 				// the offset.
+ 
+-				nname := le16ToNative(rr.name_len)
++				nname := C.btrfs_stack_root_ref_name_len(&rr)
+ 				name := string(buf[C.sizeof_struct_btrfs_root_ref : C.sizeof_struct_btrfs_root_ref+uintptr(nname)])
+ 
+ 				info.ID = uint64(sh.objectid)
+ 				info.ParentID = uint64(sh.offset)
+ 				info.Name = name
+-				info.DirID = le64ToNative(rr.dirid)
++				info.DirID = uint64(C.btrfs_stack_root_ref_dirid(&rr))
+ 
+ 				subvolsByID[uint64(sh.objectid)] = info
+ 			} else if sh._type == C.BTRFS_ROOT_ITEM_KEY &&
+@@ -184,8 +185,8 @@ func subvolMap(path string) (map[uint64]*Info, error) {
+ 				info.ParentUUID = uuidString(&gri.parent_uuid)
+ 				info.ReceivedUUID = uuidString(&gri.received_uuid)
+ 
+-				info.Generation = le64ToNative(gri.generation)
+-				info.OriginalGeneration = le64ToNative(gri.otransid)
++				info.Generation = uint64(gri.gen)
++				info.OriginalGeneration = uint64(gri.ogen)
+ 
+ 				subvolsByID[uint64(sh.objectid)] = info
+ 			}
+@@ -272,13 +273,13 @@ func SubvolCreate(path string) error {
+ 	args.fd = C.__s64(fp.Fd())
+ 
+ 	if len(name) > C.BTRFS_PATH_NAME_MAX {
+-		return fmt.Errorf("%q too long for subvolume", name)
++		return errors.Errorf("%q too long for subvolume", name)
+ 	}
+ 	nameptr := (*[maxByteSliceSize]byte)(unsafe.Pointer(&args.name[0]))[:C.BTRFS_PATH_NAME_MAX:C.BTRFS_PATH_NAME_MAX]
+ 	copy(nameptr[:C.BTRFS_PATH_NAME_MAX], []byte(name))
+ 
+ 	if err := ioctl(fp.Fd(), C.BTRFS_IOC_SUBVOL_CREATE, uintptr(unsafe.Pointer(&args))); err != nil {
+-		return fmt.Errorf("btrfs subvolume create failed: %w", err)
++		return errors.Wrap(err, "btrfs subvolume create failed")
+ 	}
+ 
+ 	return nil
+@@ -291,13 +292,13 @@ func SubvolSnapshot(dst, src string, readonly bool) error {
+ 
+ 	dstfp, err := openSubvolDir(dstdir)
+ 	if err != nil {
+-		return fmt.Errorf("opening snapshot destination subvolume failed: %w", err)
++		return errors.Wrapf(err, "opening snapshot destination subvolume failed")
+ 	}
+ 	defer dstfp.Close()
+ 
+ 	srcfp, err := openSubvolDir(src)
+ 	if err != nil {
+-		return fmt.Errorf("opening snapshot source subvolume failed: %w", err)
++		return errors.Wrapf(err, "opening snapshot source subvolume failed")
+ 	}
+ 	defer srcfp.Close()
+ 
+@@ -307,7 +308,7 @@ func SubvolSnapshot(dst, src string, readonly bool) error {
+ 	name := C.get_name_btrfs_ioctl_vol_args_v2(&args)
+ 
+ 	if len(dstname) > C.BTRFS_SUBVOL_NAME_MAX {
+-		return fmt.Errorf("%q too long for subvolume", dstname)
++		return errors.Errorf("%q too long for subvolume", dstname)
+ 	}
+ 
+ 	nameptr := (*[maxByteSliceSize]byte)(unsafe.Pointer(name))[:C.BTRFS_SUBVOL_NAME_MAX:C.BTRFS_SUBVOL_NAME_MAX]
+@@ -318,7 +319,7 @@ func SubvolSnapshot(dst, src string, readonly bool) error {
+ 	}
+ 
+ 	if err := ioctl(dstfp.Fd(), C.BTRFS_IOC_SNAP_CREATE_V2, uintptr(unsafe.Pointer(&args))); err != nil {
+-		return fmt.Errorf("snapshot create failed: %w", err)
++		return errors.Wrapf(err, "snapshot create failed")
+ 	}
+ 
+ 	return nil
+@@ -329,7 +330,7 @@ func SubvolDelete(path string) error {
+ 	dir, name := filepath.Split(path)
+ 	fp, err := openSubvolDir(dir)
+ 	if err != nil {
+-		return fmt.Errorf("failed opening %v: %w", path, err)
++		return errors.Wrapf(err, "failed opening %v", path)
+ 	}
+ 	defer fp.Close()
+ 
+@@ -340,7 +341,7 @@ func SubvolDelete(path string) error {
+ 				return nil
+ 			}
+ 
+-			return fmt.Errorf("failed walking subvolume %v: %w", p, err)
++			return errors.Wrapf(err, "failed walking subvolume %v", p)
+ 		}
+ 
+ 		if !fi.IsDir() {
+@@ -356,7 +357,7 @@ func SubvolDelete(path string) error {
+ 		}
+ 
+ 		if err := SubvolDelete(p); err != nil {
+-			return fmt.Errorf("recursive delete of %v failed: %w", p, err)
++			return errors.Wrapf(err, "recursive delete of %v failed", p)
+ 		}
+ 
+ 		return filepath.SkipDir // children get walked by call above.
+@@ -366,14 +367,14 @@ func SubvolDelete(path string) error {
+ 
+ 	var args C.struct_btrfs_ioctl_vol_args
+ 	if len(name) > C.BTRFS_SUBVOL_NAME_MAX {
+-		return fmt.Errorf("%q too long for subvolume", name)
++		return errors.Errorf("%q too long for subvolume", name)
+ 	}
+ 
+ 	nameptr := (*[maxByteSliceSize]byte)(unsafe.Pointer(&args.name[0]))[:C.BTRFS_SUBVOL_NAME_MAX:C.BTRFS_SUBVOL_NAME_MAX]
+ 	copy(nameptr[:C.BTRFS_SUBVOL_NAME_MAX], []byte(name))
+ 
+ 	if err := ioctl(fp.Fd(), C.BTRFS_IOC_SNAP_DESTROY, uintptr(unsafe.Pointer(&args))); err != nil {
+-		return fmt.Errorf("failed removing subvolume %v: %w", path, err)
++		return errors.Wrapf(err, "failed removing subvolume %v", path)
+ 	}
+ 
+ 	return nil
+@@ -382,7 +383,7 @@ func SubvolDelete(path string) error {
+ func openSubvolDir(path string) (*os.File, error) {
+ 	fp, err := os.Open(path)
+ 	if err != nil {
+-		return nil, fmt.Errorf("opening %v as subvolume failed: %w", path, err)
++		return nil, errors.Wrapf(err, "opening %v as subvolume failed", path)
+ 	}
+ 
+ 	return fp, nil
+@@ -390,7 +391,7 @@ func openSubvolDir(path string) (*os.File, error) {
+ 
+ func isStatfsSubvol(statfs *syscall.Statfs_t) error {
+ 	if int64(statfs.Type) != int64(C.BTRFS_SUPER_MAGIC) {
+-		return fmt.Errorf("not a btrfs filesystem")
++		return errors.Errorf("not a btrfs filesystem")
+ 	}
+ 
+ 	return nil
+@@ -398,13 +399,13 @@ func isStatfsSubvol(statfs *syscall.Statfs_t) error {
+ 
+ func isFileInfoSubvol(fi os.FileInfo) error {
+ 	if !fi.IsDir() {
+-		return errors.New("must be a directory")
++		errors.Errorf("must be a directory")
+ 	}
+ 
+ 	stat := fi.Sys().(*syscall.Stat_t)
+ 
+ 	if stat.Ino != C.BTRFS_FIRST_FREE_OBJECTID {
+-		return fmt.Errorf("incorrect inode type")
++		return errors.Errorf("incorrect inode type")
+ 	}
+ 
+ 	return nil
+diff --git a/vendor/github.com/containerd/btrfs/v2/btrfs.h b/vendor/github.com/containerd/btrfs/btrfs.h
+similarity index 71%
+rename from vendor/github.com/containerd/btrfs/v2/btrfs.h
+rename to vendor/github.com/containerd/btrfs/btrfs.h
+index bbf0d7ac67b1..1ec451ed1b36 100644
+--- a/vendor/github.com/containerd/btrfs/v2/btrfs.h
++++ b/vendor/github.com/containerd/btrfs/btrfs.h
+@@ -14,25 +14,23 @@
+    limitations under the License.
+ */
+ 
+-#include <linux/version.h>
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(4,12,0)
+-#error "Headers from kernel >= 4.12 are required on compilation time (not on run time)"
+-#endif
+-#include <linux/btrfs.h>
+-#include <linux/btrfs_tree.h>
++#include <stddef.h>
++#include <linux/magic.h>
++#include <btrfs/ioctl.h>
++#include <btrfs/ctree.h>
+ 
+ // unfortunately, we need to define "alignment safe" C structs to populate for
+ // packed structs that aren't handled by cgo. Fields will be added here, as
+ // needed.
+ 
+ struct gosafe_btrfs_root_item {
+-	__u8 uuid[BTRFS_UUID_SIZE];
+-	__u8 parent_uuid[BTRFS_UUID_SIZE];
+-	__u8 received_uuid[BTRFS_UUID_SIZE];
++	u8 uuid[BTRFS_UUID_SIZE];
++	u8 parent_uuid[BTRFS_UUID_SIZE];
++	u8 received_uuid[BTRFS_UUID_SIZE];
+ 
+-	__le64 generation;
+-	__le64 otransid;
+-	__le64 flags;
++	u64 gen;
++	u64 ogen;
++	u64 flags;
+ };
+ 
+ void unpack_root_item(struct gosafe_btrfs_root_item* dst, struct btrfs_root_item* src);
+diff --git a/vendor/github.com/containerd/btrfs/v2/doc.go b/vendor/github.com/containerd/btrfs/doc.go
+similarity index 100%
+rename from vendor/github.com/containerd/btrfs/v2/doc.go
+rename to vendor/github.com/containerd/btrfs/doc.go
+diff --git a/vendor/github.com/containerd/btrfs/v2/helpers.go b/vendor/github.com/containerd/btrfs/helpers.go
+similarity index 76%
+rename from vendor/github.com/containerd/btrfs/v2/helpers.go
+rename to vendor/github.com/containerd/btrfs/helpers.go
+index e4c4894bc1a0..475f1c60f6a6 100644
+--- a/vendor/github.com/containerd/btrfs/v2/helpers.go
++++ b/vendor/github.com/containerd/btrfs/helpers.go
+@@ -17,20 +17,21 @@
+ package btrfs
+ 
+ /*
+-#include "btrfs.h"
++#include <stddef.h>
++#include <btrfs/ioctl.h>
++#include <btrfs/ctree.h>
+ */
+ import "C"
+ 
+ import (
+ 	"bufio"
+ 	"bytes"
+-	"encoding/binary"
+ 	"fmt"
+ 	"os"
+ 	"strings"
+ 	"unsafe"
+ 
+-	"golang.org/x/sys/cpu"
++	"github.com/pkg/errors"
+ )
+ 
+ func subvolID(fd uintptr) (uint64, error) {
+@@ -49,7 +50,7 @@ var (
+ 	zeros     = zeroArray[:]
+ )
+ 
+-func uuidString(uuid *[C.BTRFS_UUID_SIZE]C.__u8) string {
++func uuidString(uuid *[C.BTRFS_UUID_SIZE]C.u8) string {
+ 	b := (*[maxByteSliceSize]byte)(unsafe.Pointer(uuid))[:C.BTRFS_UUID_SIZE]
+ 
+ 	if bytes.Equal(b, zeros) {
+@@ -59,24 +60,6 @@ func uuidString(uuid *[C.BTRFS_UUID_SIZE]C.__u8) string {
+ 	return fmt.Sprintf("%x-%x-%x-%x-%x", b[:4], b[4:4+2], b[6:6+2], b[8:8+2], b[10:16])
+ }
+ 
+-func le16ToNative(le16 C.__le16) uint16 {
+-	if cpu.IsBigEndian {
+-		b := make([]byte, 2)
+-		binary.LittleEndian.PutUint16(b, uint16(le16))
+-		return binary.BigEndian.Uint16(b)
+-	}
+-	return uint16(le16)
+-}
+-
+-func le64ToNative(le64 C.__le64) uint64 {
+-	if cpu.IsBigEndian {
+-		b := make([]byte, 8)
+-		binary.LittleEndian.PutUint64(b, uint64(le64))
+-		return binary.BigEndian.Uint64(b)
+-	}
+-	return uint64(le64)
+-}
+-
+ func findMountPoint(path string) (string, error) {
+ 	fp, err := os.Open("/proc/self/mounts")
+ 	if err != nil {
+@@ -112,7 +95,7 @@ func findMountPoint(path string) (string, error) {
+ 	}
+ 
+ 	if mount == "" {
+-		return "", fmt.Errorf("mount point of %v not found", path)
++		return "", errors.Errorf("mount point of %v not found", path)
+ 	}
+ 
+ 	return mount, nil
+diff --git a/vendor/github.com/containerd/btrfs/v2/info.go b/vendor/github.com/containerd/btrfs/info.go
+similarity index 100%
+rename from vendor/github.com/containerd/btrfs/v2/info.go
+rename to vendor/github.com/containerd/btrfs/info.go
+diff --git a/vendor/github.com/containerd/btrfs/v2/ioctl.go b/vendor/github.com/containerd/btrfs/ioctl.go
+similarity index 100%
+rename from vendor/github.com/containerd/btrfs/v2/ioctl.go
+rename to vendor/github.com/containerd/btrfs/ioctl.go
+diff --git a/vendor/golang.org/x/sys/cpu/asm_aix_ppc64.s b/vendor/golang.org/x/sys/cpu/asm_aix_ppc64.s
+deleted file mode 100644
+index db9171c2e491..000000000000
+--- a/vendor/golang.org/x/sys/cpu/asm_aix_ppc64.s
++++ /dev/null
+@@ -1,18 +0,0 @@
+-// Copyright 2018 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build gc
+-// +build gc
+-
+-#include "textflag.h"
+-
+-//
+-// System calls for ppc64, AIX are implemented in runtime/syscall_aix.go
+-//
+-
+-TEXT ·syscall6(SB),NOSPLIT,$0-88
+-	JMP	syscall·syscall6(SB)
+-
+-TEXT ·rawSyscall6(SB),NOSPLIT,$0-88
+-	JMP	syscall·rawSyscall6(SB)
+diff --git a/vendor/golang.org/x/sys/cpu/byteorder.go b/vendor/golang.org/x/sys/cpu/byteorder.go
+deleted file mode 100644
+index 271055be0b1e..000000000000
+--- a/vendor/golang.org/x/sys/cpu/byteorder.go
++++ /dev/null
+@@ -1,66 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-import (
+-	"runtime"
+-)
+-
+-// byteOrder is a subset of encoding/binary.ByteOrder.
+-type byteOrder interface {
+-	Uint32([]byte) uint32
+-	Uint64([]byte) uint64
+-}
+-
+-type littleEndian struct{}
+-type bigEndian struct{}
+-
+-func (littleEndian) Uint32(b []byte) uint32 {
+-	_ = b[3] // bounds check hint to compiler; see golang.org/issue/14808
+-	return uint32(b[0]) | uint32(b[1])<<8 | uint32(b[2])<<16 | uint32(b[3])<<24
+-}
+-
+-func (littleEndian) Uint64(b []byte) uint64 {
+-	_ = b[7] // bounds check hint to compiler; see golang.org/issue/14808
+-	return uint64(b[0]) | uint64(b[1])<<8 | uint64(b[2])<<16 | uint64(b[3])<<24 |
+-		uint64(b[4])<<32 | uint64(b[5])<<40 | uint64(b[6])<<48 | uint64(b[7])<<56
+-}
+-
+-func (bigEndian) Uint32(b []byte) uint32 {
+-	_ = b[3] // bounds check hint to compiler; see golang.org/issue/14808
+-	return uint32(b[3]) | uint32(b[2])<<8 | uint32(b[1])<<16 | uint32(b[0])<<24
+-}
+-
+-func (bigEndian) Uint64(b []byte) uint64 {
+-	_ = b[7] // bounds check hint to compiler; see golang.org/issue/14808
+-	return uint64(b[7]) | uint64(b[6])<<8 | uint64(b[5])<<16 | uint64(b[4])<<24 |
+-		uint64(b[3])<<32 | uint64(b[2])<<40 | uint64(b[1])<<48 | uint64(b[0])<<56
+-}
+-
+-// hostByteOrder returns littleEndian on little-endian machines and
+-// bigEndian on big-endian machines.
+-func hostByteOrder() byteOrder {
+-	switch runtime.GOARCH {
+-	case "386", "amd64", "amd64p32",
+-		"alpha",
+-		"arm", "arm64",
+-		"loong64",
+-		"mipsle", "mips64le", "mips64p32le",
+-		"nios2",
+-		"ppc64le",
+-		"riscv", "riscv64",
+-		"sh":
+-		return littleEndian{}
+-	case "armbe", "arm64be",
+-		"m68k",
+-		"mips", "mips64", "mips64p32",
+-		"ppc", "ppc64",
+-		"s390", "s390x",
+-		"shbe",
+-		"sparc", "sparc64":
+-		return bigEndian{}
+-	}
+-	panic("unknown architecture")
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu.go b/vendor/golang.org/x/sys/cpu/cpu.go
+deleted file mode 100644
+index 83f112c4c808..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu.go
++++ /dev/null
+@@ -1,287 +0,0 @@
+-// Copyright 2018 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-// Package cpu implements processor feature detection for
+-// various CPU architectures.
+-package cpu
+-
+-import (
+-	"os"
+-	"strings"
+-)
+-
+-// Initialized reports whether the CPU features were initialized.
+-//
+-// For some GOOS/GOARCH combinations initialization of the CPU features depends
+-// on reading an operating specific file, e.g. /proc/self/auxv on linux/arm
+-// Initialized will report false if reading the file fails.
+-var Initialized bool
+-
+-// CacheLinePad is used to pad structs to avoid false sharing.
+-type CacheLinePad struct{ _ [cacheLineSize]byte }
+-
+-// X86 contains the supported CPU features of the
+-// current X86/AMD64 platform. If the current platform
+-// is not X86/AMD64 then all feature flags are false.
+-//
+-// X86 is padded to avoid false sharing. Further the HasAVX
+-// and HasAVX2 are only set if the OS supports XMM and YMM
+-// registers in addition to the CPUID feature bit being set.
+-var X86 struct {
+-	_                   CacheLinePad
+-	HasAES              bool // AES hardware implementation (AES NI)
+-	HasADX              bool // Multi-precision add-carry instruction extensions
+-	HasAVX              bool // Advanced vector extension
+-	HasAVX2             bool // Advanced vector extension 2
+-	HasAVX512           bool // Advanced vector extension 512
+-	HasAVX512F          bool // Advanced vector extension 512 Foundation Instructions
+-	HasAVX512CD         bool // Advanced vector extension 512 Conflict Detection Instructions
+-	HasAVX512ER         bool // Advanced vector extension 512 Exponential and Reciprocal Instructions
+-	HasAVX512PF         bool // Advanced vector extension 512 Prefetch Instructions Instructions
+-	HasAVX512VL         bool // Advanced vector extension 512 Vector Length Extensions
+-	HasAVX512BW         bool // Advanced vector extension 512 Byte and Word Instructions
+-	HasAVX512DQ         bool // Advanced vector extension 512 Doubleword and Quadword Instructions
+-	HasAVX512IFMA       bool // Advanced vector extension 512 Integer Fused Multiply Add
+-	HasAVX512VBMI       bool // Advanced vector extension 512 Vector Byte Manipulation Instructions
+-	HasAVX5124VNNIW     bool // Advanced vector extension 512 Vector Neural Network Instructions Word variable precision
+-	HasAVX5124FMAPS     bool // Advanced vector extension 512 Fused Multiply Accumulation Packed Single precision
+-	HasAVX512VPOPCNTDQ  bool // Advanced vector extension 512 Double and quad word population count instructions
+-	HasAVX512VPCLMULQDQ bool // Advanced vector extension 512 Vector carry-less multiply operations
+-	HasAVX512VNNI       bool // Advanced vector extension 512 Vector Neural Network Instructions
+-	HasAVX512GFNI       bool // Advanced vector extension 512 Galois field New Instructions
+-	HasAVX512VAES       bool // Advanced vector extension 512 Vector AES instructions
+-	HasAVX512VBMI2      bool // Advanced vector extension 512 Vector Byte Manipulation Instructions 2
+-	HasAVX512BITALG     bool // Advanced vector extension 512 Bit Algorithms
+-	HasAVX512BF16       bool // Advanced vector extension 512 BFloat16 Instructions
+-	HasBMI1             bool // Bit manipulation instruction set 1
+-	HasBMI2             bool // Bit manipulation instruction set 2
+-	HasCX16             bool // Compare and exchange 16 Bytes
+-	HasERMS             bool // Enhanced REP for MOVSB and STOSB
+-	HasFMA              bool // Fused-multiply-add instructions
+-	HasOSXSAVE          bool // OS supports XSAVE/XRESTOR for saving/restoring XMM registers.
+-	HasPCLMULQDQ        bool // PCLMULQDQ instruction - most often used for AES-GCM
+-	HasPOPCNT           bool // Hamming weight instruction POPCNT.
+-	HasRDRAND           bool // RDRAND instruction (on-chip random number generator)
+-	HasRDSEED           bool // RDSEED instruction (on-chip random number generator)
+-	HasSSE2             bool // Streaming SIMD extension 2 (always available on amd64)
+-	HasSSE3             bool // Streaming SIMD extension 3
+-	HasSSSE3            bool // Supplemental streaming SIMD extension 3
+-	HasSSE41            bool // Streaming SIMD extension 4 and 4.1
+-	HasSSE42            bool // Streaming SIMD extension 4 and 4.2
+-	_                   CacheLinePad
+-}
+-
+-// ARM64 contains the supported CPU features of the
+-// current ARMv8(aarch64) platform. If the current platform
+-// is not arm64 then all feature flags are false.
+-var ARM64 struct {
+-	_           CacheLinePad
+-	HasFP       bool // Floating-point instruction set (always available)
+-	HasASIMD    bool // Advanced SIMD (always available)
+-	HasEVTSTRM  bool // Event stream support
+-	HasAES      bool // AES hardware implementation
+-	HasPMULL    bool // Polynomial multiplication instruction set
+-	HasSHA1     bool // SHA1 hardware implementation
+-	HasSHA2     bool // SHA2 hardware implementation
+-	HasCRC32    bool // CRC32 hardware implementation
+-	HasATOMICS  bool // Atomic memory operation instruction set
+-	HasFPHP     bool // Half precision floating-point instruction set
+-	HasASIMDHP  bool // Advanced SIMD half precision instruction set
+-	HasCPUID    bool // CPUID identification scheme registers
+-	HasASIMDRDM bool // Rounding double multiply add/subtract instruction set
+-	HasJSCVT    bool // Javascript conversion from floating-point to integer
+-	HasFCMA     bool // Floating-point multiplication and addition of complex numbers
+-	HasLRCPC    bool // Release Consistent processor consistent support
+-	HasDCPOP    bool // Persistent memory support
+-	HasSHA3     bool // SHA3 hardware implementation
+-	HasSM3      bool // SM3 hardware implementation
+-	HasSM4      bool // SM4 hardware implementation
+-	HasASIMDDP  bool // Advanced SIMD double precision instruction set
+-	HasSHA512   bool // SHA512 hardware implementation
+-	HasSVE      bool // Scalable Vector Extensions
+-	HasASIMDFHM bool // Advanced SIMD multiplication FP16 to FP32
+-	_           CacheLinePad
+-}
+-
+-// ARM contains the supported CPU features of the current ARM (32-bit) platform.
+-// All feature flags are false if:
+-//  1. the current platform is not arm, or
+-//  2. the current operating system is not Linux.
+-var ARM struct {
+-	_           CacheLinePad
+-	HasSWP      bool // SWP instruction support
+-	HasHALF     bool // Half-word load and store support
+-	HasTHUMB    bool // ARM Thumb instruction set
+-	Has26BIT    bool // Address space limited to 26-bits
+-	HasFASTMUL  bool // 32-bit operand, 64-bit result multiplication support
+-	HasFPA      bool // Floating point arithmetic support
+-	HasVFP      bool // Vector floating point support
+-	HasEDSP     bool // DSP Extensions support
+-	HasJAVA     bool // Java instruction set
+-	HasIWMMXT   bool // Intel Wireless MMX technology support
+-	HasCRUNCH   bool // MaverickCrunch context switching and handling
+-	HasTHUMBEE  bool // Thumb EE instruction set
+-	HasNEON     bool // NEON instruction set
+-	HasVFPv3    bool // Vector floating point version 3 support
+-	HasVFPv3D16 bool // Vector floating point version 3 D8-D15
+-	HasTLS      bool // Thread local storage support
+-	HasVFPv4    bool // Vector floating point version 4 support
+-	HasIDIVA    bool // Integer divide instruction support in ARM mode
+-	HasIDIVT    bool // Integer divide instruction support in Thumb mode
+-	HasVFPD32   bool // Vector floating point version 3 D15-D31
+-	HasLPAE     bool // Large Physical Address Extensions
+-	HasEVTSTRM  bool // Event stream support
+-	HasAES      bool // AES hardware implementation
+-	HasPMULL    bool // Polynomial multiplication instruction set
+-	HasSHA1     bool // SHA1 hardware implementation
+-	HasSHA2     bool // SHA2 hardware implementation
+-	HasCRC32    bool // CRC32 hardware implementation
+-	_           CacheLinePad
+-}
+-
+-// MIPS64X contains the supported CPU features of the current mips64/mips64le
+-// platforms. If the current platform is not mips64/mips64le or the current
+-// operating system is not Linux then all feature flags are false.
+-var MIPS64X struct {
+-	_      CacheLinePad
+-	HasMSA bool // MIPS SIMD architecture
+-	_      CacheLinePad
+-}
+-
+-// PPC64 contains the supported CPU features of the current ppc64/ppc64le platforms.
+-// If the current platform is not ppc64/ppc64le then all feature flags are false.
+-//
+-// For ppc64/ppc64le, it is safe to check only for ISA level starting on ISA v3.00,
+-// since there are no optional categories. There are some exceptions that also
+-// require kernel support to work (DARN, SCV), so there are feature bits for
+-// those as well. The struct is padded to avoid false sharing.
+-var PPC64 struct {
+-	_        CacheLinePad
+-	HasDARN  bool // Hardware random number generator (requires kernel enablement)
+-	HasSCV   bool // Syscall vectored (requires kernel enablement)
+-	IsPOWER8 bool // ISA v2.07 (POWER8)
+-	IsPOWER9 bool // ISA v3.00 (POWER9), implies IsPOWER8
+-	_        CacheLinePad
+-}
+-
+-// S390X contains the supported CPU features of the current IBM Z
+-// (s390x) platform. If the current platform is not IBM Z then all
+-// feature flags are false.
+-//
+-// S390X is padded to avoid false sharing. Further HasVX is only set
+-// if the OS supports vector registers in addition to the STFLE
+-// feature bit being set.
+-var S390X struct {
+-	_         CacheLinePad
+-	HasZARCH  bool // z/Architecture mode is active [mandatory]
+-	HasSTFLE  bool // store facility list extended
+-	HasLDISP  bool // long (20-bit) displacements
+-	HasEIMM   bool // 32-bit immediates
+-	HasDFP    bool // decimal floating point
+-	HasETF3EH bool // ETF-3 enhanced
+-	HasMSA    bool // message security assist (CPACF)
+-	HasAES    bool // KM-AES{128,192,256} functions
+-	HasAESCBC bool // KMC-AES{128,192,256} functions
+-	HasAESCTR bool // KMCTR-AES{128,192,256} functions
+-	HasAESGCM bool // KMA-GCM-AES{128,192,256} functions
+-	HasGHASH  bool // KIMD-GHASH function
+-	HasSHA1   bool // K{I,L}MD-SHA-1 functions
+-	HasSHA256 bool // K{I,L}MD-SHA-256 functions
+-	HasSHA512 bool // K{I,L}MD-SHA-512 functions
+-	HasSHA3   bool // K{I,L}MD-SHA3-{224,256,384,512} and K{I,L}MD-SHAKE-{128,256} functions
+-	HasVX     bool // vector facility
+-	HasVXE    bool // vector-enhancements facility 1
+-	_         CacheLinePad
+-}
+-
+-func init() {
+-	archInit()
+-	initOptions()
+-	processOptions()
+-}
+-
+-// options contains the cpu debug options that can be used in GODEBUG.
+-// Options are arch dependent and are added by the arch specific initOptions functions.
+-// Features that are mandatory for the specific GOARCH should have the Required field set
+-// (e.g. SSE2 on amd64).
+-var options []option
+-
+-// Option names should be lower case. e.g. avx instead of AVX.
+-type option struct {
+-	Name      string
+-	Feature   *bool
+-	Specified bool // whether feature value was specified in GODEBUG
+-	Enable    bool // whether feature should be enabled
+-	Required  bool // whether feature is mandatory and can not be disabled
+-}
+-
+-func processOptions() {
+-	env := os.Getenv("GODEBUG")
+-field:
+-	for env != "" {
+-		field := ""
+-		i := strings.IndexByte(env, ',')
+-		if i < 0 {
+-			field, env = env, ""
+-		} else {
+-			field, env = env[:i], env[i+1:]
+-		}
+-		if len(field) < 4 || field[:4] != "cpu." {
+-			continue
+-		}
+-		i = strings.IndexByte(field, '=')
+-		if i < 0 {
+-			print("GODEBUG sys/cpu: no value specified for \"", field, "\"\n")
+-			continue
+-		}
+-		key, value := field[4:i], field[i+1:] // e.g. "SSE2", "on"
+-
+-		var enable bool
+-		switch value {
+-		case "on":
+-			enable = true
+-		case "off":
+-			enable = false
+-		default:
+-			print("GODEBUG sys/cpu: value \"", value, "\" not supported for cpu option \"", key, "\"\n")
+-			continue field
+-		}
+-
+-		if key == "all" {
+-			for i := range options {
+-				options[i].Specified = true
+-				options[i].Enable = enable || options[i].Required
+-			}
+-			continue field
+-		}
+-
+-		for i := range options {
+-			if options[i].Name == key {
+-				options[i].Specified = true
+-				options[i].Enable = enable
+-				continue field
+-			}
+-		}
+-
+-		print("GODEBUG sys/cpu: unknown cpu feature \"", key, "\"\n")
+-	}
+-
+-	for _, o := range options {
+-		if !o.Specified {
+-			continue
+-		}
+-
+-		if o.Enable && !*o.Feature {
+-			print("GODEBUG sys/cpu: can not enable \"", o.Name, "\", missing CPU support\n")
+-			continue
+-		}
+-
+-		if !o.Enable && o.Required {
+-			print("GODEBUG sys/cpu: can not disable \"", o.Name, "\", required CPU feature\n")
+-			continue
+-		}
+-
+-		*o.Feature = o.Enable
+-	}
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_aix.go b/vendor/golang.org/x/sys/cpu/cpu_aix.go
+deleted file mode 100644
+index 8aaeef545a76..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_aix.go
++++ /dev/null
+@@ -1,34 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build aix
+-// +build aix
+-
+-package cpu
+-
+-const (
+-	// getsystemcfg constants
+-	_SC_IMPL     = 2
+-	_IMPL_POWER8 = 0x10000
+-	_IMPL_POWER9 = 0x20000
+-)
+-
+-func archInit() {
+-	impl := getsystemcfg(_SC_IMPL)
+-	if impl&_IMPL_POWER8 != 0 {
+-		PPC64.IsPOWER8 = true
+-	}
+-	if impl&_IMPL_POWER9 != 0 {
+-		PPC64.IsPOWER8 = true
+-		PPC64.IsPOWER9 = true
+-	}
+-
+-	Initialized = true
+-}
+-
+-func getsystemcfg(label int) (n uint64) {
+-	r0, _ := callgetsystemcfg(label)
+-	n = uint64(r0)
+-	return
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_arm.go b/vendor/golang.org/x/sys/cpu/cpu_arm.go
+deleted file mode 100644
+index 301b752e9c53..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_arm.go
++++ /dev/null
+@@ -1,73 +0,0 @@
+-// Copyright 2018 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-const cacheLineSize = 32
+-
+-// HWCAP/HWCAP2 bits.
+-// These are specific to Linux.
+-const (
+-	hwcap_SWP       = 1 << 0
+-	hwcap_HALF      = 1 << 1
+-	hwcap_THUMB     = 1 << 2
+-	hwcap_26BIT     = 1 << 3
+-	hwcap_FAST_MULT = 1 << 4
+-	hwcap_FPA       = 1 << 5
+-	hwcap_VFP       = 1 << 6
+-	hwcap_EDSP      = 1 << 7
+-	hwcap_JAVA      = 1 << 8
+-	hwcap_IWMMXT    = 1 << 9
+-	hwcap_CRUNCH    = 1 << 10
+-	hwcap_THUMBEE   = 1 << 11
+-	hwcap_NEON      = 1 << 12
+-	hwcap_VFPv3     = 1 << 13
+-	hwcap_VFPv3D16  = 1 << 14
+-	hwcap_TLS       = 1 << 15
+-	hwcap_VFPv4     = 1 << 16
+-	hwcap_IDIVA     = 1 << 17
+-	hwcap_IDIVT     = 1 << 18
+-	hwcap_VFPD32    = 1 << 19
+-	hwcap_LPAE      = 1 << 20
+-	hwcap_EVTSTRM   = 1 << 21
+-
+-	hwcap2_AES   = 1 << 0
+-	hwcap2_PMULL = 1 << 1
+-	hwcap2_SHA1  = 1 << 2
+-	hwcap2_SHA2  = 1 << 3
+-	hwcap2_CRC32 = 1 << 4
+-)
+-
+-func initOptions() {
+-	options = []option{
+-		{Name: "pmull", Feature: &ARM.HasPMULL},
+-		{Name: "sha1", Feature: &ARM.HasSHA1},
+-		{Name: "sha2", Feature: &ARM.HasSHA2},
+-		{Name: "swp", Feature: &ARM.HasSWP},
+-		{Name: "thumb", Feature: &ARM.HasTHUMB},
+-		{Name: "thumbee", Feature: &ARM.HasTHUMBEE},
+-		{Name: "tls", Feature: &ARM.HasTLS},
+-		{Name: "vfp", Feature: &ARM.HasVFP},
+-		{Name: "vfpd32", Feature: &ARM.HasVFPD32},
+-		{Name: "vfpv3", Feature: &ARM.HasVFPv3},
+-		{Name: "vfpv3d16", Feature: &ARM.HasVFPv3D16},
+-		{Name: "vfpv4", Feature: &ARM.HasVFPv4},
+-		{Name: "half", Feature: &ARM.HasHALF},
+-		{Name: "26bit", Feature: &ARM.Has26BIT},
+-		{Name: "fastmul", Feature: &ARM.HasFASTMUL},
+-		{Name: "fpa", Feature: &ARM.HasFPA},
+-		{Name: "edsp", Feature: &ARM.HasEDSP},
+-		{Name: "java", Feature: &ARM.HasJAVA},
+-		{Name: "iwmmxt", Feature: &ARM.HasIWMMXT},
+-		{Name: "crunch", Feature: &ARM.HasCRUNCH},
+-		{Name: "neon", Feature: &ARM.HasNEON},
+-		{Name: "idivt", Feature: &ARM.HasIDIVT},
+-		{Name: "idiva", Feature: &ARM.HasIDIVA},
+-		{Name: "lpae", Feature: &ARM.HasLPAE},
+-		{Name: "evtstrm", Feature: &ARM.HasEVTSTRM},
+-		{Name: "aes", Feature: &ARM.HasAES},
+-		{Name: "crc32", Feature: &ARM.HasCRC32},
+-	}
+-
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_arm64.go b/vendor/golang.org/x/sys/cpu/cpu_arm64.go
+deleted file mode 100644
+index f3eb993bf24b..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_arm64.go
++++ /dev/null
+@@ -1,172 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-import "runtime"
+-
+-// cacheLineSize is used to prevent false sharing of cache lines.
+-// We choose 128 because Apple Silicon, a.k.a. M1, has 128-byte cache line size.
+-// It doesn't cost much and is much more future-proof.
+-const cacheLineSize = 128
+-
+-func initOptions() {
+-	options = []option{
+-		{Name: "fp", Feature: &ARM64.HasFP},
+-		{Name: "asimd", Feature: &ARM64.HasASIMD},
+-		{Name: "evstrm", Feature: &ARM64.HasEVTSTRM},
+-		{Name: "aes", Feature: &ARM64.HasAES},
+-		{Name: "fphp", Feature: &ARM64.HasFPHP},
+-		{Name: "jscvt", Feature: &ARM64.HasJSCVT},
+-		{Name: "lrcpc", Feature: &ARM64.HasLRCPC},
+-		{Name: "pmull", Feature: &ARM64.HasPMULL},
+-		{Name: "sha1", Feature: &ARM64.HasSHA1},
+-		{Name: "sha2", Feature: &ARM64.HasSHA2},
+-		{Name: "sha3", Feature: &ARM64.HasSHA3},
+-		{Name: "sha512", Feature: &ARM64.HasSHA512},
+-		{Name: "sm3", Feature: &ARM64.HasSM3},
+-		{Name: "sm4", Feature: &ARM64.HasSM4},
+-		{Name: "sve", Feature: &ARM64.HasSVE},
+-		{Name: "crc32", Feature: &ARM64.HasCRC32},
+-		{Name: "atomics", Feature: &ARM64.HasATOMICS},
+-		{Name: "asimdhp", Feature: &ARM64.HasASIMDHP},
+-		{Name: "cpuid", Feature: &ARM64.HasCPUID},
+-		{Name: "asimrdm", Feature: &ARM64.HasASIMDRDM},
+-		{Name: "fcma", Feature: &ARM64.HasFCMA},
+-		{Name: "dcpop", Feature: &ARM64.HasDCPOP},
+-		{Name: "asimddp", Feature: &ARM64.HasASIMDDP},
+-		{Name: "asimdfhm", Feature: &ARM64.HasASIMDFHM},
+-	}
+-}
+-
+-func archInit() {
+-	switch runtime.GOOS {
+-	case "freebsd":
+-		readARM64Registers()
+-	case "linux", "netbsd", "openbsd":
+-		doinit()
+-	default:
+-		// Many platforms don't seem to allow reading these registers.
+-		setMinimalFeatures()
+-	}
+-}
+-
+-// setMinimalFeatures fakes the minimal ARM64 features expected by
+-// TestARM64minimalFeatures.
+-func setMinimalFeatures() {
+-	ARM64.HasASIMD = true
+-	ARM64.HasFP = true
+-}
+-
+-func readARM64Registers() {
+-	Initialized = true
+-
+-	parseARM64SystemRegisters(getisar0(), getisar1(), getpfr0())
+-}
+-
+-func parseARM64SystemRegisters(isar0, isar1, pfr0 uint64) {
+-	// ID_AA64ISAR0_EL1
+-	switch extractBits(isar0, 4, 7) {
+-	case 1:
+-		ARM64.HasAES = true
+-	case 2:
+-		ARM64.HasAES = true
+-		ARM64.HasPMULL = true
+-	}
+-
+-	switch extractBits(isar0, 8, 11) {
+-	case 1:
+-		ARM64.HasSHA1 = true
+-	}
+-
+-	switch extractBits(isar0, 12, 15) {
+-	case 1:
+-		ARM64.HasSHA2 = true
+-	case 2:
+-		ARM64.HasSHA2 = true
+-		ARM64.HasSHA512 = true
+-	}
+-
+-	switch extractBits(isar0, 16, 19) {
+-	case 1:
+-		ARM64.HasCRC32 = true
+-	}
+-
+-	switch extractBits(isar0, 20, 23) {
+-	case 2:
+-		ARM64.HasATOMICS = true
+-	}
+-
+-	switch extractBits(isar0, 28, 31) {
+-	case 1:
+-		ARM64.HasASIMDRDM = true
+-	}
+-
+-	switch extractBits(isar0, 32, 35) {
+-	case 1:
+-		ARM64.HasSHA3 = true
+-	}
+-
+-	switch extractBits(isar0, 36, 39) {
+-	case 1:
+-		ARM64.HasSM3 = true
+-	}
+-
+-	switch extractBits(isar0, 40, 43) {
+-	case 1:
+-		ARM64.HasSM4 = true
+-	}
+-
+-	switch extractBits(isar0, 44, 47) {
+-	case 1:
+-		ARM64.HasASIMDDP = true
+-	}
+-
+-	// ID_AA64ISAR1_EL1
+-	switch extractBits(isar1, 0, 3) {
+-	case 1:
+-		ARM64.HasDCPOP = true
+-	}
+-
+-	switch extractBits(isar1, 12, 15) {
+-	case 1:
+-		ARM64.HasJSCVT = true
+-	}
+-
+-	switch extractBits(isar1, 16, 19) {
+-	case 1:
+-		ARM64.HasFCMA = true
+-	}
+-
+-	switch extractBits(isar1, 20, 23) {
+-	case 1:
+-		ARM64.HasLRCPC = true
+-	}
+-
+-	// ID_AA64PFR0_EL1
+-	switch extractBits(pfr0, 16, 19) {
+-	case 0:
+-		ARM64.HasFP = true
+-	case 1:
+-		ARM64.HasFP = true
+-		ARM64.HasFPHP = true
+-	}
+-
+-	switch extractBits(pfr0, 20, 23) {
+-	case 0:
+-		ARM64.HasASIMD = true
+-	case 1:
+-		ARM64.HasASIMD = true
+-		ARM64.HasASIMDHP = true
+-	}
+-
+-	switch extractBits(pfr0, 32, 35) {
+-	case 1:
+-		ARM64.HasSVE = true
+-	}
+-}
+-
+-func extractBits(data uint64, start, end uint) uint {
+-	return (uint)(data>>start) & ((1 << (end - start + 1)) - 1)
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_arm64.s b/vendor/golang.org/x/sys/cpu/cpu_arm64.s
+deleted file mode 100644
+index c61f95a05a73..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_arm64.s
++++ /dev/null
+@@ -1,32 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build gc
+-// +build gc
+-
+-#include "textflag.h"
+-
+-// func getisar0() uint64
+-TEXT ·getisar0(SB),NOSPLIT,$0-8
+-	// get Instruction Set Attributes 0 into x0
+-	// mrs x0, ID_AA64ISAR0_EL1 = d5380600
+-	WORD	$0xd5380600
+-	MOVD	R0, ret+0(FP)
+-	RET
+-
+-// func getisar1() uint64
+-TEXT ·getisar1(SB),NOSPLIT,$0-8
+-	// get Instruction Set Attributes 1 into x0
+-	// mrs x0, ID_AA64ISAR1_EL1 = d5380620
+-	WORD	$0xd5380620
+-	MOVD	R0, ret+0(FP)
+-	RET
+-
+-// func getpfr0() uint64
+-TEXT ·getpfr0(SB),NOSPLIT,$0-8
+-	// get Processor Feature Register 0 into x0
+-	// mrs x0, ID_AA64PFR0_EL1 = d5380400
+-	WORD	$0xd5380400
+-	MOVD	R0, ret+0(FP)
+-	RET
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go b/vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go
+deleted file mode 100644
+index ccf542a73da8..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go
++++ /dev/null
+@@ -1,12 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build gc
+-// +build gc
+-
+-package cpu
+-
+-func getisar0() uint64
+-func getisar1() uint64
+-func getpfr0() uint64
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go b/vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go
+deleted file mode 100644
+index 0af2f248412d..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go
++++ /dev/null
+@@ -1,22 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build gc
+-// +build gc
+-
+-package cpu
+-
+-// haveAsmFunctions reports whether the other functions in this file can
+-// be safely called.
+-func haveAsmFunctions() bool { return true }
+-
+-// The following feature detection functions are defined in cpu_s390x.s.
+-// They are likely to be expensive to call so the results should be cached.
+-func stfle() facilityList
+-func kmQuery() queryResult
+-func kmcQuery() queryResult
+-func kmctrQuery() queryResult
+-func kmaQuery() queryResult
+-func kimdQuery() queryResult
+-func klmdQuery() queryResult
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_gc_x86.go b/vendor/golang.org/x/sys/cpu/cpu_gc_x86.go
+deleted file mode 100644
+index fa7cdb9bcd5f..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_gc_x86.go
++++ /dev/null
+@@ -1,17 +0,0 @@
+-// Copyright 2018 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build (386 || amd64 || amd64p32) && gc
+-// +build 386 amd64 amd64p32
+-// +build gc
+-
+-package cpu
+-
+-// cpuid is implemented in cpu_x86.s for gc compiler
+-// and in cpu_gccgo.c for gccgo.
+-func cpuid(eaxArg, ecxArg uint32) (eax, ebx, ecx, edx uint32)
+-
+-// xgetbv with ecx = 0 is implemented in cpu_x86.s for gc compiler
+-// and in cpu_gccgo.c for gccgo.
+-func xgetbv() (eax, edx uint32)
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_gccgo_arm64.go b/vendor/golang.org/x/sys/cpu/cpu_gccgo_arm64.go
+deleted file mode 100644
+index 2aff31891162..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_gccgo_arm64.go
++++ /dev/null
+@@ -1,12 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build gccgo
+-// +build gccgo
+-
+-package cpu
+-
+-func getisar0() uint64 { return 0 }
+-func getisar1() uint64 { return 0 }
+-func getpfr0() uint64  { return 0 }
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_gccgo_s390x.go b/vendor/golang.org/x/sys/cpu/cpu_gccgo_s390x.go
+deleted file mode 100644
+index 4bfbda61993d..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_gccgo_s390x.go
++++ /dev/null
+@@ -1,23 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build gccgo
+-// +build gccgo
+-
+-package cpu
+-
+-// haveAsmFunctions reports whether the other functions in this file can
+-// be safely called.
+-func haveAsmFunctions() bool { return false }
+-
+-// TODO(mundaym): the following feature detection functions are currently
+-// stubs. See https://golang.org/cl/162887 for how to fix this.
+-// They are likely to be expensive to call so the results should be cached.
+-func stfle() facilityList     { panic("not implemented for gccgo") }
+-func kmQuery() queryResult    { panic("not implemented for gccgo") }
+-func kmcQuery() queryResult   { panic("not implemented for gccgo") }
+-func kmctrQuery() queryResult { panic("not implemented for gccgo") }
+-func kmaQuery() queryResult   { panic("not implemented for gccgo") }
+-func kimdQuery() queryResult  { panic("not implemented for gccgo") }
+-func klmdQuery() queryResult  { panic("not implemented for gccgo") }
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.c b/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.c
+deleted file mode 100644
+index 6cc73109f595..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.c
++++ /dev/null
+@@ -1,39 +0,0 @@
+-// Copyright 2018 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build (386 || amd64 || amd64p32) && gccgo
+-// +build 386 amd64 amd64p32
+-// +build gccgo
+-
+-#include <cpuid.h>
+-#include <stdint.h>
+-#include <x86intrin.h>
+-
+-// Need to wrap __get_cpuid_count because it's declared as static.
+-int
+-gccgoGetCpuidCount(uint32_t leaf, uint32_t subleaf,
+-                   uint32_t *eax, uint32_t *ebx,
+-                   uint32_t *ecx, uint32_t *edx)
+-{
+-	return __get_cpuid_count(leaf, subleaf, eax, ebx, ecx, edx);
+-}
+-
+-#pragma GCC diagnostic ignored "-Wunknown-pragmas"
+-#pragma GCC push_options
+-#pragma GCC target("xsave")
+-#pragma clang attribute push (__attribute__((target("xsave"))), apply_to=function)
+-
+-// xgetbv reads the contents of an XCR (Extended Control Register)
+-// specified in the ECX register into registers EDX:EAX.
+-// Currently, the only supported value for XCR is 0.
+-void
+-gccgoXgetbv(uint32_t *eax, uint32_t *edx)
+-{
+-	uint64_t v = _xgetbv(0);
+-	*eax = v & 0xffffffff;
+-	*edx = v >> 32;
+-}
+-
+-#pragma clang attribute pop
+-#pragma GCC pop_options
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go b/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go
+deleted file mode 100644
+index 863d415ab498..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go
++++ /dev/null
+@@ -1,33 +0,0 @@
+-// Copyright 2018 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build (386 || amd64 || amd64p32) && gccgo
+-// +build 386 amd64 amd64p32
+-// +build gccgo
+-
+-package cpu
+-
+-//extern gccgoGetCpuidCount
+-func gccgoGetCpuidCount(eaxArg, ecxArg uint32, eax, ebx, ecx, edx *uint32)
+-
+-func cpuid(eaxArg, ecxArg uint32) (eax, ebx, ecx, edx uint32) {
+-	var a, b, c, d uint32
+-	gccgoGetCpuidCount(eaxArg, ecxArg, &a, &b, &c, &d)
+-	return a, b, c, d
+-}
+-
+-//extern gccgoXgetbv
+-func gccgoXgetbv(eax, edx *uint32)
+-
+-func xgetbv() (eax, edx uint32) {
+-	var a, d uint32
+-	gccgoXgetbv(&a, &d)
+-	return a, d
+-}
+-
+-// gccgo doesn't build on Darwin, per:
+-// https://github.com/Homebrew/homebrew-core/blob/HEAD/Formula/gcc.rb#L76
+-func darwinSupportsAVX512() bool {
+-	return false
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux.go b/vendor/golang.org/x/sys/cpu/cpu_linux.go
+deleted file mode 100644
+index 159a686f6f7a..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_linux.go
++++ /dev/null
+@@ -1,16 +0,0 @@
+-// Copyright 2018 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build !386 && !amd64 && !amd64p32 && !arm64
+-// +build !386,!amd64,!amd64p32,!arm64
+-
+-package cpu
+-
+-func archInit() {
+-	if err := readHWCAP(); err != nil {
+-		return
+-	}
+-	doinit()
+-	Initialized = true
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux_arm.go b/vendor/golang.org/x/sys/cpu/cpu_linux_arm.go
+deleted file mode 100644
+index 2057006dce4c..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_linux_arm.go
++++ /dev/null
+@@ -1,39 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-func doinit() {
+-	ARM.HasSWP = isSet(hwCap, hwcap_SWP)
+-	ARM.HasHALF = isSet(hwCap, hwcap_HALF)
+-	ARM.HasTHUMB = isSet(hwCap, hwcap_THUMB)
+-	ARM.Has26BIT = isSet(hwCap, hwcap_26BIT)
+-	ARM.HasFASTMUL = isSet(hwCap, hwcap_FAST_MULT)
+-	ARM.HasFPA = isSet(hwCap, hwcap_FPA)
+-	ARM.HasVFP = isSet(hwCap, hwcap_VFP)
+-	ARM.HasEDSP = isSet(hwCap, hwcap_EDSP)
+-	ARM.HasJAVA = isSet(hwCap, hwcap_JAVA)
+-	ARM.HasIWMMXT = isSet(hwCap, hwcap_IWMMXT)
+-	ARM.HasCRUNCH = isSet(hwCap, hwcap_CRUNCH)
+-	ARM.HasTHUMBEE = isSet(hwCap, hwcap_THUMBEE)
+-	ARM.HasNEON = isSet(hwCap, hwcap_NEON)
+-	ARM.HasVFPv3 = isSet(hwCap, hwcap_VFPv3)
+-	ARM.HasVFPv3D16 = isSet(hwCap, hwcap_VFPv3D16)
+-	ARM.HasTLS = isSet(hwCap, hwcap_TLS)
+-	ARM.HasVFPv4 = isSet(hwCap, hwcap_VFPv4)
+-	ARM.HasIDIVA = isSet(hwCap, hwcap_IDIVA)
+-	ARM.HasIDIVT = isSet(hwCap, hwcap_IDIVT)
+-	ARM.HasVFPD32 = isSet(hwCap, hwcap_VFPD32)
+-	ARM.HasLPAE = isSet(hwCap, hwcap_LPAE)
+-	ARM.HasEVTSTRM = isSet(hwCap, hwcap_EVTSTRM)
+-	ARM.HasAES = isSet(hwCap2, hwcap2_AES)
+-	ARM.HasPMULL = isSet(hwCap2, hwcap2_PMULL)
+-	ARM.HasSHA1 = isSet(hwCap2, hwcap2_SHA1)
+-	ARM.HasSHA2 = isSet(hwCap2, hwcap2_SHA2)
+-	ARM.HasCRC32 = isSet(hwCap2, hwcap2_CRC32)
+-}
+-
+-func isSet(hwc uint, value uint) bool {
+-	return hwc&value != 0
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux_arm64.go b/vendor/golang.org/x/sys/cpu/cpu_linux_arm64.go
+deleted file mode 100644
+index a968b80fa6ab..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_linux_arm64.go
++++ /dev/null
+@@ -1,111 +0,0 @@
+-// Copyright 2018 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-import (
+-	"strings"
+-	"syscall"
+-)
+-
+-// HWCAP/HWCAP2 bits. These are exposed by Linux.
+-const (
+-	hwcap_FP       = 1 << 0
+-	hwcap_ASIMD    = 1 << 1
+-	hwcap_EVTSTRM  = 1 << 2
+-	hwcap_AES      = 1 << 3
+-	hwcap_PMULL    = 1 << 4
+-	hwcap_SHA1     = 1 << 5
+-	hwcap_SHA2     = 1 << 6
+-	hwcap_CRC32    = 1 << 7
+-	hwcap_ATOMICS  = 1 << 8
+-	hwcap_FPHP     = 1 << 9
+-	hwcap_ASIMDHP  = 1 << 10
+-	hwcap_CPUID    = 1 << 11
+-	hwcap_ASIMDRDM = 1 << 12
+-	hwcap_JSCVT    = 1 << 13
+-	hwcap_FCMA     = 1 << 14
+-	hwcap_LRCPC    = 1 << 15
+-	hwcap_DCPOP    = 1 << 16
+-	hwcap_SHA3     = 1 << 17
+-	hwcap_SM3      = 1 << 18
+-	hwcap_SM4      = 1 << 19
+-	hwcap_ASIMDDP  = 1 << 20
+-	hwcap_SHA512   = 1 << 21
+-	hwcap_SVE      = 1 << 22
+-	hwcap_ASIMDFHM = 1 << 23
+-)
+-
+-// linuxKernelCanEmulateCPUID reports whether we're running
+-// on Linux 4.11+. Ideally we'd like to ask the question about
+-// whether the current kernel contains
+-// https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=77c97b4ee21290f5f083173d957843b615abbff2
+-// but the version number will have to do.
+-func linuxKernelCanEmulateCPUID() bool {
+-	var un syscall.Utsname
+-	syscall.Uname(&un)
+-	var sb strings.Builder
+-	for _, b := range un.Release[:] {
+-		if b == 0 {
+-			break
+-		}
+-		sb.WriteByte(byte(b))
+-	}
+-	major, minor, _, ok := parseRelease(sb.String())
+-	return ok && (major > 4 || major == 4 && minor >= 11)
+-}
+-
+-func doinit() {
+-	if err := readHWCAP(); err != nil {
+-		// We failed to read /proc/self/auxv. This can happen if the binary has
+-		// been given extra capabilities(7) with /bin/setcap.
+-		//
+-		// When this happens, we have two options. If the Linux kernel is new
+-		// enough (4.11+), we can read the arm64 registers directly which'll
+-		// trap into the kernel and then return back to userspace.
+-		//
+-		// But on older kernels, such as Linux 4.4.180 as used on many Synology
+-		// devices, calling readARM64Registers (specifically getisar0) will
+-		// cause a SIGILL and we'll die. So for older kernels, parse /proc/cpuinfo
+-		// instead.
+-		//
+-		// See golang/go#57336.
+-		if linuxKernelCanEmulateCPUID() {
+-			readARM64Registers()
+-		} else {
+-			readLinuxProcCPUInfo()
+-		}
+-		return
+-	}
+-
+-	// HWCAP feature bits
+-	ARM64.HasFP = isSet(hwCap, hwcap_FP)
+-	ARM64.HasASIMD = isSet(hwCap, hwcap_ASIMD)
+-	ARM64.HasEVTSTRM = isSet(hwCap, hwcap_EVTSTRM)
+-	ARM64.HasAES = isSet(hwCap, hwcap_AES)
+-	ARM64.HasPMULL = isSet(hwCap, hwcap_PMULL)
+-	ARM64.HasSHA1 = isSet(hwCap, hwcap_SHA1)
+-	ARM64.HasSHA2 = isSet(hwCap, hwcap_SHA2)
+-	ARM64.HasCRC32 = isSet(hwCap, hwcap_CRC32)
+-	ARM64.HasATOMICS = isSet(hwCap, hwcap_ATOMICS)
+-	ARM64.HasFPHP = isSet(hwCap, hwcap_FPHP)
+-	ARM64.HasASIMDHP = isSet(hwCap, hwcap_ASIMDHP)
+-	ARM64.HasCPUID = isSet(hwCap, hwcap_CPUID)
+-	ARM64.HasASIMDRDM = isSet(hwCap, hwcap_ASIMDRDM)
+-	ARM64.HasJSCVT = isSet(hwCap, hwcap_JSCVT)
+-	ARM64.HasFCMA = isSet(hwCap, hwcap_FCMA)
+-	ARM64.HasLRCPC = isSet(hwCap, hwcap_LRCPC)
+-	ARM64.HasDCPOP = isSet(hwCap, hwcap_DCPOP)
+-	ARM64.HasSHA3 = isSet(hwCap, hwcap_SHA3)
+-	ARM64.HasSM3 = isSet(hwCap, hwcap_SM3)
+-	ARM64.HasSM4 = isSet(hwCap, hwcap_SM4)
+-	ARM64.HasASIMDDP = isSet(hwCap, hwcap_ASIMDDP)
+-	ARM64.HasSHA512 = isSet(hwCap, hwcap_SHA512)
+-	ARM64.HasSVE = isSet(hwCap, hwcap_SVE)
+-	ARM64.HasASIMDFHM = isSet(hwCap, hwcap_ASIMDFHM)
+-}
+-
+-func isSet(hwc uint, value uint) bool {
+-	return hwc&value != 0
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux_mips64x.go b/vendor/golang.org/x/sys/cpu/cpu_linux_mips64x.go
+deleted file mode 100644
+index 6000db4cdd1b..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_linux_mips64x.go
++++ /dev/null
+@@ -1,24 +0,0 @@
+-// Copyright 2020 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build linux && (mips64 || mips64le)
+-// +build linux
+-// +build mips64 mips64le
+-
+-package cpu
+-
+-// HWCAP bits. These are exposed by the Linux kernel 5.4.
+-const (
+-	// CPU features
+-	hwcap_MIPS_MSA = 1 << 1
+-)
+-
+-func doinit() {
+-	// HWCAP feature bits
+-	MIPS64X.HasMSA = isSet(hwCap, hwcap_MIPS_MSA)
+-}
+-
+-func isSet(hwc uint, value uint) bool {
+-	return hwc&value != 0
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux_noinit.go b/vendor/golang.org/x/sys/cpu/cpu_linux_noinit.go
+deleted file mode 100644
+index f4992b1a5938..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_linux_noinit.go
++++ /dev/null
+@@ -1,10 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build linux && !arm && !arm64 && !mips64 && !mips64le && !ppc64 && !ppc64le && !s390x
+-// +build linux,!arm,!arm64,!mips64,!mips64le,!ppc64,!ppc64le,!s390x
+-
+-package cpu
+-
+-func doinit() {}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux_ppc64x.go b/vendor/golang.org/x/sys/cpu/cpu_linux_ppc64x.go
+deleted file mode 100644
+index 021356d6deb0..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_linux_ppc64x.go
++++ /dev/null
+@@ -1,32 +0,0 @@
+-// Copyright 2018 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build linux && (ppc64 || ppc64le)
+-// +build linux
+-// +build ppc64 ppc64le
+-
+-package cpu
+-
+-// HWCAP/HWCAP2 bits. These are exposed by the kernel.
+-const (
+-	// ISA Level
+-	_PPC_FEATURE2_ARCH_2_07 = 0x80000000
+-	_PPC_FEATURE2_ARCH_3_00 = 0x00800000
+-
+-	// CPU features
+-	_PPC_FEATURE2_DARN = 0x00200000
+-	_PPC_FEATURE2_SCV  = 0x00100000
+-)
+-
+-func doinit() {
+-	// HWCAP2 feature bits
+-	PPC64.IsPOWER8 = isSet(hwCap2, _PPC_FEATURE2_ARCH_2_07)
+-	PPC64.IsPOWER9 = isSet(hwCap2, _PPC_FEATURE2_ARCH_3_00)
+-	PPC64.HasDARN = isSet(hwCap2, _PPC_FEATURE2_DARN)
+-	PPC64.HasSCV = isSet(hwCap2, _PPC_FEATURE2_SCV)
+-}
+-
+-func isSet(hwc uint, value uint) bool {
+-	return hwc&value != 0
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_linux_s390x.go b/vendor/golang.org/x/sys/cpu/cpu_linux_s390x.go
+deleted file mode 100644
+index 1517ac61d31b..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_linux_s390x.go
++++ /dev/null
+@@ -1,40 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-const (
+-	// bit mask values from /usr/include/bits/hwcap.h
+-	hwcap_ZARCH  = 2
+-	hwcap_STFLE  = 4
+-	hwcap_MSA    = 8
+-	hwcap_LDISP  = 16
+-	hwcap_EIMM   = 32
+-	hwcap_DFP    = 64
+-	hwcap_ETF3EH = 256
+-	hwcap_VX     = 2048
+-	hwcap_VXE    = 8192
+-)
+-
+-func initS390Xbase() {
+-	// test HWCAP bit vector
+-	has := func(featureMask uint) bool {
+-		return hwCap&featureMask == featureMask
+-	}
+-
+-	// mandatory
+-	S390X.HasZARCH = has(hwcap_ZARCH)
+-
+-	// optional
+-	S390X.HasSTFLE = has(hwcap_STFLE)
+-	S390X.HasLDISP = has(hwcap_LDISP)
+-	S390X.HasEIMM = has(hwcap_EIMM)
+-	S390X.HasETF3EH = has(hwcap_ETF3EH)
+-	S390X.HasDFP = has(hwcap_DFP)
+-	S390X.HasMSA = has(hwcap_MSA)
+-	S390X.HasVX = has(hwcap_VX)
+-	if S390X.HasVX {
+-		S390X.HasVXE = has(hwcap_VXE)
+-	}
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_loong64.go b/vendor/golang.org/x/sys/cpu/cpu_loong64.go
+deleted file mode 100644
+index 0f57b05bdbe5..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_loong64.go
++++ /dev/null
+@@ -1,13 +0,0 @@
+-// Copyright 2022 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build loong64
+-// +build loong64
+-
+-package cpu
+-
+-const cacheLineSize = 64
+-
+-func initOptions() {
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_mips64x.go b/vendor/golang.org/x/sys/cpu/cpu_mips64x.go
+deleted file mode 100644
+index f4063c66423b..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_mips64x.go
++++ /dev/null
+@@ -1,16 +0,0 @@
+-// Copyright 2018 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build mips64 || mips64le
+-// +build mips64 mips64le
+-
+-package cpu
+-
+-const cacheLineSize = 32
+-
+-func initOptions() {
+-	options = []option{
+-		{Name: "msa", Feature: &MIPS64X.HasMSA},
+-	}
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_mipsx.go b/vendor/golang.org/x/sys/cpu/cpu_mipsx.go
+deleted file mode 100644
+index 07c4e36d8f55..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_mipsx.go
++++ /dev/null
+@@ -1,12 +0,0 @@
+-// Copyright 2018 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build mips || mipsle
+-// +build mips mipsle
+-
+-package cpu
+-
+-const cacheLineSize = 32
+-
+-func initOptions() {}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_netbsd_arm64.go b/vendor/golang.org/x/sys/cpu/cpu_netbsd_arm64.go
+deleted file mode 100644
+index ebfb3fc8e76d..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_netbsd_arm64.go
++++ /dev/null
+@@ -1,173 +0,0 @@
+-// Copyright 2020 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-import (
+-	"syscall"
+-	"unsafe"
+-)
+-
+-// Minimal copy of functionality from x/sys/unix so the cpu package can call
+-// sysctl without depending on x/sys/unix.
+-
+-const (
+-	_CTL_QUERY = -2
+-
+-	_SYSCTL_VERS_1 = 0x1000000
+-)
+-
+-var _zero uintptr
+-
+-func sysctl(mib []int32, old *byte, oldlen *uintptr, new *byte, newlen uintptr) (err error) {
+-	var _p0 unsafe.Pointer
+-	if len(mib) > 0 {
+-		_p0 = unsafe.Pointer(&mib[0])
+-	} else {
+-		_p0 = unsafe.Pointer(&_zero)
+-	}
+-	_, _, errno := syscall.Syscall6(
+-		syscall.SYS___SYSCTL,
+-		uintptr(_p0),
+-		uintptr(len(mib)),
+-		uintptr(unsafe.Pointer(old)),
+-		uintptr(unsafe.Pointer(oldlen)),
+-		uintptr(unsafe.Pointer(new)),
+-		uintptr(newlen))
+-	if errno != 0 {
+-		return errno
+-	}
+-	return nil
+-}
+-
+-type sysctlNode struct {
+-	Flags          uint32
+-	Num            int32
+-	Name           [32]int8
+-	Ver            uint32
+-	__rsvd         uint32
+-	Un             [16]byte
+-	_sysctl_size   [8]byte
+-	_sysctl_func   [8]byte
+-	_sysctl_parent [8]byte
+-	_sysctl_desc   [8]byte
+-}
+-
+-func sysctlNodes(mib []int32) ([]sysctlNode, error) {
+-	var olen uintptr
+-
+-	// Get a list of all sysctl nodes below the given MIB by performing
+-	// a sysctl for the given MIB with CTL_QUERY appended.
+-	mib = append(mib, _CTL_QUERY)
+-	qnode := sysctlNode{Flags: _SYSCTL_VERS_1}
+-	qp := (*byte)(unsafe.Pointer(&qnode))
+-	sz := unsafe.Sizeof(qnode)
+-	if err := sysctl(mib, nil, &olen, qp, sz); err != nil {
+-		return nil, err
+-	}
+-
+-	// Now that we know the size, get the actual nodes.
+-	nodes := make([]sysctlNode, olen/sz)
+-	np := (*byte)(unsafe.Pointer(&nodes[0]))
+-	if err := sysctl(mib, np, &olen, qp, sz); err != nil {
+-		return nil, err
+-	}
+-
+-	return nodes, nil
+-}
+-
+-func nametomib(name string) ([]int32, error) {
+-	// Split name into components.
+-	var parts []string
+-	last := 0
+-	for i := 0; i < len(name); i++ {
+-		if name[i] == '.' {
+-			parts = append(parts, name[last:i])
+-			last = i + 1
+-		}
+-	}
+-	parts = append(parts, name[last:])
+-
+-	mib := []int32{}
+-	// Discover the nodes and construct the MIB OID.
+-	for partno, part := range parts {
+-		nodes, err := sysctlNodes(mib)
+-		if err != nil {
+-			return nil, err
+-		}
+-		for _, node := range nodes {
+-			n := make([]byte, 0)
+-			for i := range node.Name {
+-				if node.Name[i] != 0 {
+-					n = append(n, byte(node.Name[i]))
+-				}
+-			}
+-			if string(n) == part {
+-				mib = append(mib, int32(node.Num))
+-				break
+-			}
+-		}
+-		if len(mib) != partno+1 {
+-			return nil, err
+-		}
+-	}
+-
+-	return mib, nil
+-}
+-
+-// aarch64SysctlCPUID is struct aarch64_sysctl_cpu_id from NetBSD's <aarch64/armreg.h>
+-type aarch64SysctlCPUID struct {
+-	midr      uint64 /* Main ID Register */
+-	revidr    uint64 /* Revision ID Register */
+-	mpidr     uint64 /* Multiprocessor Affinity Register */
+-	aa64dfr0  uint64 /* A64 Debug Feature Register 0 */
+-	aa64dfr1  uint64 /* A64 Debug Feature Register 1 */
+-	aa64isar0 uint64 /* A64 Instruction Set Attribute Register 0 */
+-	aa64isar1 uint64 /* A64 Instruction Set Attribute Register 1 */
+-	aa64mmfr0 uint64 /* A64 Memory Model Feature Register 0 */
+-	aa64mmfr1 uint64 /* A64 Memory Model Feature Register 1 */
+-	aa64mmfr2 uint64 /* A64 Memory Model Feature Register 2 */
+-	aa64pfr0  uint64 /* A64 Processor Feature Register 0 */
+-	aa64pfr1  uint64 /* A64 Processor Feature Register 1 */
+-	aa64zfr0  uint64 /* A64 SVE Feature ID Register 0 */
+-	mvfr0     uint32 /* Media and VFP Feature Register 0 */
+-	mvfr1     uint32 /* Media and VFP Feature Register 1 */
+-	mvfr2     uint32 /* Media and VFP Feature Register 2 */
+-	pad       uint32
+-	clidr     uint64 /* Cache Level ID Register */
+-	ctr       uint64 /* Cache Type Register */
+-}
+-
+-func sysctlCPUID(name string) (*aarch64SysctlCPUID, error) {
+-	mib, err := nametomib(name)
+-	if err != nil {
+-		return nil, err
+-	}
+-
+-	out := aarch64SysctlCPUID{}
+-	n := unsafe.Sizeof(out)
+-	_, _, errno := syscall.Syscall6(
+-		syscall.SYS___SYSCTL,
+-		uintptr(unsafe.Pointer(&mib[0])),
+-		uintptr(len(mib)),
+-		uintptr(unsafe.Pointer(&out)),
+-		uintptr(unsafe.Pointer(&n)),
+-		uintptr(0),
+-		uintptr(0))
+-	if errno != 0 {
+-		return nil, errno
+-	}
+-	return &out, nil
+-}
+-
+-func doinit() {
+-	cpuid, err := sysctlCPUID("machdep.cpu0.cpu_id")
+-	if err != nil {
+-		setMinimalFeatures()
+-		return
+-	}
+-	parseARM64SystemRegisters(cpuid.aa64isar0, cpuid.aa64isar1, cpuid.aa64pfr0)
+-
+-	Initialized = true
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_openbsd_arm64.go b/vendor/golang.org/x/sys/cpu/cpu_openbsd_arm64.go
+deleted file mode 100644
+index 85b64d5ccb73..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_openbsd_arm64.go
++++ /dev/null
+@@ -1,65 +0,0 @@
+-// Copyright 2022 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-import (
+-	"syscall"
+-	"unsafe"
+-)
+-
+-// Minimal copy of functionality from x/sys/unix so the cpu package can call
+-// sysctl without depending on x/sys/unix.
+-
+-const (
+-	// From OpenBSD's sys/sysctl.h.
+-	_CTL_MACHDEP = 7
+-
+-	// From OpenBSD's machine/cpu.h.
+-	_CPU_ID_AA64ISAR0 = 2
+-	_CPU_ID_AA64ISAR1 = 3
+-)
+-
+-// Implemented in the runtime package (runtime/sys_openbsd3.go)
+-func syscall_syscall6(fn, a1, a2, a3, a4, a5, a6 uintptr) (r1, r2 uintptr, err syscall.Errno)
+-
+-//go:linkname syscall_syscall6 syscall.syscall6
+-
+-func sysctl(mib []uint32, old *byte, oldlen *uintptr, new *byte, newlen uintptr) (err error) {
+-	_, _, errno := syscall_syscall6(libc_sysctl_trampoline_addr, uintptr(unsafe.Pointer(&mib[0])), uintptr(len(mib)), uintptr(unsafe.Pointer(old)), uintptr(unsafe.Pointer(oldlen)), uintptr(unsafe.Pointer(new)), uintptr(newlen))
+-	if errno != 0 {
+-		return errno
+-	}
+-	return nil
+-}
+-
+-var libc_sysctl_trampoline_addr uintptr
+-
+-//go:cgo_import_dynamic libc_sysctl sysctl "libc.so"
+-
+-func sysctlUint64(mib []uint32) (uint64, bool) {
+-	var out uint64
+-	nout := unsafe.Sizeof(out)
+-	if err := sysctl(mib, (*byte)(unsafe.Pointer(&out)), &nout, nil, 0); err != nil {
+-		return 0, false
+-	}
+-	return out, true
+-}
+-
+-func doinit() {
+-	setMinimalFeatures()
+-
+-	// Get ID_AA64ISAR0 and ID_AA64ISAR1 from sysctl.
+-	isar0, ok := sysctlUint64([]uint32{_CTL_MACHDEP, _CPU_ID_AA64ISAR0})
+-	if !ok {
+-		return
+-	}
+-	isar1, ok := sysctlUint64([]uint32{_CTL_MACHDEP, _CPU_ID_AA64ISAR1})
+-	if !ok {
+-		return
+-	}
+-	parseARM64SystemRegisters(isar0, isar1, 0)
+-
+-	Initialized = true
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_openbsd_arm64.s b/vendor/golang.org/x/sys/cpu/cpu_openbsd_arm64.s
+deleted file mode 100644
+index 054ba05d607b..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_openbsd_arm64.s
++++ /dev/null
+@@ -1,11 +0,0 @@
+-// Copyright 2022 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-#include "textflag.h"
+-
+-TEXT libc_sysctl_trampoline<>(SB),NOSPLIT,$0-0
+-	JMP	libc_sysctl(SB)
+-
+-GLOBL	·libc_sysctl_trampoline_addr(SB), RODATA, $8
+-DATA	·libc_sysctl_trampoline_addr(SB)/8, $libc_sysctl_trampoline<>(SB)
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_other_arm.go b/vendor/golang.org/x/sys/cpu/cpu_other_arm.go
+deleted file mode 100644
+index d7b4fb4ccc24..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_other_arm.go
++++ /dev/null
+@@ -1,10 +0,0 @@
+-// Copyright 2020 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build !linux && arm
+-// +build !linux,arm
+-
+-package cpu
+-
+-func archInit() {}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_other_arm64.go b/vendor/golang.org/x/sys/cpu/cpu_other_arm64.go
+deleted file mode 100644
+index f3cde129b634..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_other_arm64.go
++++ /dev/null
+@@ -1,10 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build !linux && !netbsd && !openbsd && arm64
+-// +build !linux,!netbsd,!openbsd,arm64
+-
+-package cpu
+-
+-func doinit() {}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_other_mips64x.go b/vendor/golang.org/x/sys/cpu/cpu_other_mips64x.go
+deleted file mode 100644
+index 0dafe9644a5a..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_other_mips64x.go
++++ /dev/null
+@@ -1,13 +0,0 @@
+-// Copyright 2020 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build !linux && (mips64 || mips64le)
+-// +build !linux
+-// +build mips64 mips64le
+-
+-package cpu
+-
+-func archInit() {
+-	Initialized = true
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_other_ppc64x.go b/vendor/golang.org/x/sys/cpu/cpu_other_ppc64x.go
+deleted file mode 100644
+index 060d46b6eacc..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_other_ppc64x.go
++++ /dev/null
+@@ -1,15 +0,0 @@
+-// Copyright 2022 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build !aix && !linux && (ppc64 || ppc64le)
+-// +build !aix
+-// +build !linux
+-// +build ppc64 ppc64le
+-
+-package cpu
+-
+-func archInit() {
+-	PPC64.IsPOWER8 = true
+-	Initialized = true
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_other_riscv64.go b/vendor/golang.org/x/sys/cpu/cpu_other_riscv64.go
+deleted file mode 100644
+index dd10eb79feef..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_other_riscv64.go
++++ /dev/null
+@@ -1,12 +0,0 @@
+-// Copyright 2022 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build !linux && riscv64
+-// +build !linux,riscv64
+-
+-package cpu
+-
+-func archInit() {
+-	Initialized = true
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_ppc64x.go b/vendor/golang.org/x/sys/cpu/cpu_ppc64x.go
+deleted file mode 100644
+index 4e8acd16583d..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_ppc64x.go
++++ /dev/null
+@@ -1,17 +0,0 @@
+-// Copyright 2020 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build ppc64 || ppc64le
+-// +build ppc64 ppc64le
+-
+-package cpu
+-
+-const cacheLineSize = 128
+-
+-func initOptions() {
+-	options = []option{
+-		{Name: "darn", Feature: &PPC64.HasDARN},
+-		{Name: "scv", Feature: &PPC64.HasSCV},
+-	}
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_riscv64.go b/vendor/golang.org/x/sys/cpu/cpu_riscv64.go
+deleted file mode 100644
+index bd6c128af9b9..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_riscv64.go
++++ /dev/null
+@@ -1,12 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build riscv64
+-// +build riscv64
+-
+-package cpu
+-
+-const cacheLineSize = 32
+-
+-func initOptions() {}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_s390x.go b/vendor/golang.org/x/sys/cpu/cpu_s390x.go
+deleted file mode 100644
+index 5881b8833f5a..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_s390x.go
++++ /dev/null
+@@ -1,172 +0,0 @@
+-// Copyright 2020 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-const cacheLineSize = 256
+-
+-func initOptions() {
+-	options = []option{
+-		{Name: "zarch", Feature: &S390X.HasZARCH, Required: true},
+-		{Name: "stfle", Feature: &S390X.HasSTFLE, Required: true},
+-		{Name: "ldisp", Feature: &S390X.HasLDISP, Required: true},
+-		{Name: "eimm", Feature: &S390X.HasEIMM, Required: true},
+-		{Name: "dfp", Feature: &S390X.HasDFP},
+-		{Name: "etf3eh", Feature: &S390X.HasETF3EH},
+-		{Name: "msa", Feature: &S390X.HasMSA},
+-		{Name: "aes", Feature: &S390X.HasAES},
+-		{Name: "aescbc", Feature: &S390X.HasAESCBC},
+-		{Name: "aesctr", Feature: &S390X.HasAESCTR},
+-		{Name: "aesgcm", Feature: &S390X.HasAESGCM},
+-		{Name: "ghash", Feature: &S390X.HasGHASH},
+-		{Name: "sha1", Feature: &S390X.HasSHA1},
+-		{Name: "sha256", Feature: &S390X.HasSHA256},
+-		{Name: "sha3", Feature: &S390X.HasSHA3},
+-		{Name: "sha512", Feature: &S390X.HasSHA512},
+-		{Name: "vx", Feature: &S390X.HasVX},
+-		{Name: "vxe", Feature: &S390X.HasVXE},
+-	}
+-}
+-
+-// bitIsSet reports whether the bit at index is set. The bit index
+-// is in big endian order, so bit index 0 is the leftmost bit.
+-func bitIsSet(bits []uint64, index uint) bool {
+-	return bits[index/64]&((1<<63)>>(index%64)) != 0
+-}
+-
+-// facility is a bit index for the named facility.
+-type facility uint8
+-
+-const (
+-	// mandatory facilities
+-	zarch  facility = 1  // z architecture mode is active
+-	stflef facility = 7  // store-facility-list-extended
+-	ldisp  facility = 18 // long-displacement
+-	eimm   facility = 21 // extended-immediate
+-
+-	// miscellaneous facilities
+-	dfp    facility = 42 // decimal-floating-point
+-	etf3eh facility = 30 // extended-translation 3 enhancement
+-
+-	// cryptography facilities
+-	msa  facility = 17  // message-security-assist
+-	msa3 facility = 76  // message-security-assist extension 3
+-	msa4 facility = 77  // message-security-assist extension 4
+-	msa5 facility = 57  // message-security-assist extension 5
+-	msa8 facility = 146 // message-security-assist extension 8
+-	msa9 facility = 155 // message-security-assist extension 9
+-
+-	// vector facilities
+-	vx   facility = 129 // vector facility
+-	vxe  facility = 135 // vector-enhancements 1
+-	vxe2 facility = 148 // vector-enhancements 2
+-)
+-
+-// facilityList contains the result of an STFLE call.
+-// Bits are numbered in big endian order so the
+-// leftmost bit (the MSB) is at index 0.
+-type facilityList struct {
+-	bits [4]uint64
+-}
+-
+-// Has reports whether the given facilities are present.
+-func (s *facilityList) Has(fs ...facility) bool {
+-	if len(fs) == 0 {
+-		panic("no facility bits provided")
+-	}
+-	for _, f := range fs {
+-		if !bitIsSet(s.bits[:], uint(f)) {
+-			return false
+-		}
+-	}
+-	return true
+-}
+-
+-// function is the code for the named cryptographic function.
+-type function uint8
+-
+-const (
+-	// KM{,A,C,CTR} function codes
+-	aes128 function = 18 // AES-128
+-	aes192 function = 19 // AES-192
+-	aes256 function = 20 // AES-256
+-
+-	// K{I,L}MD function codes
+-	sha1     function = 1  // SHA-1
+-	sha256   function = 2  // SHA-256
+-	sha512   function = 3  // SHA-512
+-	sha3_224 function = 32 // SHA3-224
+-	sha3_256 function = 33 // SHA3-256
+-	sha3_384 function = 34 // SHA3-384
+-	sha3_512 function = 35 // SHA3-512
+-	shake128 function = 36 // SHAKE-128
+-	shake256 function = 37 // SHAKE-256
+-
+-	// KLMD function codes
+-	ghash function = 65 // GHASH
+-)
+-
+-// queryResult contains the result of a Query function
+-// call. Bits are numbered in big endian order so the
+-// leftmost bit (the MSB) is at index 0.
+-type queryResult struct {
+-	bits [2]uint64
+-}
+-
+-// Has reports whether the given functions are present.
+-func (q *queryResult) Has(fns ...function) bool {
+-	if len(fns) == 0 {
+-		panic("no function codes provided")
+-	}
+-	for _, f := range fns {
+-		if !bitIsSet(q.bits[:], uint(f)) {
+-			return false
+-		}
+-	}
+-	return true
+-}
+-
+-func doinit() {
+-	initS390Xbase()
+-
+-	// We need implementations of stfle, km and so on
+-	// to detect cryptographic features.
+-	if !haveAsmFunctions() {
+-		return
+-	}
+-
+-	// optional cryptographic functions
+-	if S390X.HasMSA {
+-		aes := []function{aes128, aes192, aes256}
+-
+-		// cipher message
+-		km, kmc := kmQuery(), kmcQuery()
+-		S390X.HasAES = km.Has(aes...)
+-		S390X.HasAESCBC = kmc.Has(aes...)
+-		if S390X.HasSTFLE {
+-			facilities := stfle()
+-			if facilities.Has(msa4) {
+-				kmctr := kmctrQuery()
+-				S390X.HasAESCTR = kmctr.Has(aes...)
+-			}
+-			if facilities.Has(msa8) {
+-				kma := kmaQuery()
+-				S390X.HasAESGCM = kma.Has(aes...)
+-			}
+-		}
+-
+-		// compute message digest
+-		kimd := kimdQuery() // intermediate (no padding)
+-		klmd := klmdQuery() // last (padding)
+-		S390X.HasSHA1 = kimd.Has(sha1) && klmd.Has(sha1)
+-		S390X.HasSHA256 = kimd.Has(sha256) && klmd.Has(sha256)
+-		S390X.HasSHA512 = kimd.Has(sha512) && klmd.Has(sha512)
+-		S390X.HasGHASH = kimd.Has(ghash) // KLMD-GHASH does not exist
+-		sha3 := []function{
+-			sha3_224, sha3_256, sha3_384, sha3_512,
+-			shake128, shake256,
+-		}
+-		S390X.HasSHA3 = kimd.Has(sha3...) && klmd.Has(sha3...)
+-	}
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_s390x.s b/vendor/golang.org/x/sys/cpu/cpu_s390x.s
+deleted file mode 100644
+index 96f81e209717..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_s390x.s
++++ /dev/null
+@@ -1,58 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build gc
+-// +build gc
+-
+-#include "textflag.h"
+-
+-// func stfle() facilityList
+-TEXT ·stfle(SB), NOSPLIT|NOFRAME, $0-32
+-	MOVD $ret+0(FP), R1
+-	MOVD $3, R0          // last doubleword index to store
+-	XC   $32, (R1), (R1) // clear 4 doublewords (32 bytes)
+-	WORD $0xb2b01000     // store facility list extended (STFLE)
+-	RET
+-
+-// func kmQuery() queryResult
+-TEXT ·kmQuery(SB), NOSPLIT|NOFRAME, $0-16
+-	MOVD $0, R0         // set function code to 0 (KM-Query)
+-	MOVD $ret+0(FP), R1 // address of 16-byte return value
+-	WORD $0xB92E0024    // cipher message (KM)
+-	RET
+-
+-// func kmcQuery() queryResult
+-TEXT ·kmcQuery(SB), NOSPLIT|NOFRAME, $0-16
+-	MOVD $0, R0         // set function code to 0 (KMC-Query)
+-	MOVD $ret+0(FP), R1 // address of 16-byte return value
+-	WORD $0xB92F0024    // cipher message with chaining (KMC)
+-	RET
+-
+-// func kmctrQuery() queryResult
+-TEXT ·kmctrQuery(SB), NOSPLIT|NOFRAME, $0-16
+-	MOVD $0, R0         // set function code to 0 (KMCTR-Query)
+-	MOVD $ret+0(FP), R1 // address of 16-byte return value
+-	WORD $0xB92D4024    // cipher message with counter (KMCTR)
+-	RET
+-
+-// func kmaQuery() queryResult
+-TEXT ·kmaQuery(SB), NOSPLIT|NOFRAME, $0-16
+-	MOVD $0, R0         // set function code to 0 (KMA-Query)
+-	MOVD $ret+0(FP), R1 // address of 16-byte return value
+-	WORD $0xb9296024    // cipher message with authentication (KMA)
+-	RET
+-
+-// func kimdQuery() queryResult
+-TEXT ·kimdQuery(SB), NOSPLIT|NOFRAME, $0-16
+-	MOVD $0, R0         // set function code to 0 (KIMD-Query)
+-	MOVD $ret+0(FP), R1 // address of 16-byte return value
+-	WORD $0xB93E0024    // compute intermediate message digest (KIMD)
+-	RET
+-
+-// func klmdQuery() queryResult
+-TEXT ·klmdQuery(SB), NOSPLIT|NOFRAME, $0-16
+-	MOVD $0, R0         // set function code to 0 (KLMD-Query)
+-	MOVD $ret+0(FP), R1 // address of 16-byte return value
+-	WORD $0xB93F0024    // compute last message digest (KLMD)
+-	RET
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_wasm.go b/vendor/golang.org/x/sys/cpu/cpu_wasm.go
+deleted file mode 100644
+index 7747d888a692..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_wasm.go
++++ /dev/null
+@@ -1,18 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build wasm
+-// +build wasm
+-
+-package cpu
+-
+-// We're compiling the cpu package for an unknown (software-abstracted) CPU.
+-// Make CacheLinePad an empty struct and hope that the usual struct alignment
+-// rules are good enough.
+-
+-const cacheLineSize = 0
+-
+-func initOptions() {}
+-
+-func archInit() {}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_x86.go b/vendor/golang.org/x/sys/cpu/cpu_x86.go
+deleted file mode 100644
+index f5aacfc825d5..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_x86.go
++++ /dev/null
+@@ -1,145 +0,0 @@
+-// Copyright 2018 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build 386 || amd64 || amd64p32
+-// +build 386 amd64 amd64p32
+-
+-package cpu
+-
+-import "runtime"
+-
+-const cacheLineSize = 64
+-
+-func initOptions() {
+-	options = []option{
+-		{Name: "adx", Feature: &X86.HasADX},
+-		{Name: "aes", Feature: &X86.HasAES},
+-		{Name: "avx", Feature: &X86.HasAVX},
+-		{Name: "avx2", Feature: &X86.HasAVX2},
+-		{Name: "avx512", Feature: &X86.HasAVX512},
+-		{Name: "avx512f", Feature: &X86.HasAVX512F},
+-		{Name: "avx512cd", Feature: &X86.HasAVX512CD},
+-		{Name: "avx512er", Feature: &X86.HasAVX512ER},
+-		{Name: "avx512pf", Feature: &X86.HasAVX512PF},
+-		{Name: "avx512vl", Feature: &X86.HasAVX512VL},
+-		{Name: "avx512bw", Feature: &X86.HasAVX512BW},
+-		{Name: "avx512dq", Feature: &X86.HasAVX512DQ},
+-		{Name: "avx512ifma", Feature: &X86.HasAVX512IFMA},
+-		{Name: "avx512vbmi", Feature: &X86.HasAVX512VBMI},
+-		{Name: "avx512vnniw", Feature: &X86.HasAVX5124VNNIW},
+-		{Name: "avx5124fmaps", Feature: &X86.HasAVX5124FMAPS},
+-		{Name: "avx512vpopcntdq", Feature: &X86.HasAVX512VPOPCNTDQ},
+-		{Name: "avx512vpclmulqdq", Feature: &X86.HasAVX512VPCLMULQDQ},
+-		{Name: "avx512vnni", Feature: &X86.HasAVX512VNNI},
+-		{Name: "avx512gfni", Feature: &X86.HasAVX512GFNI},
+-		{Name: "avx512vaes", Feature: &X86.HasAVX512VAES},
+-		{Name: "avx512vbmi2", Feature: &X86.HasAVX512VBMI2},
+-		{Name: "avx512bitalg", Feature: &X86.HasAVX512BITALG},
+-		{Name: "avx512bf16", Feature: &X86.HasAVX512BF16},
+-		{Name: "bmi1", Feature: &X86.HasBMI1},
+-		{Name: "bmi2", Feature: &X86.HasBMI2},
+-		{Name: "cx16", Feature: &X86.HasCX16},
+-		{Name: "erms", Feature: &X86.HasERMS},
+-		{Name: "fma", Feature: &X86.HasFMA},
+-		{Name: "osxsave", Feature: &X86.HasOSXSAVE},
+-		{Name: "pclmulqdq", Feature: &X86.HasPCLMULQDQ},
+-		{Name: "popcnt", Feature: &X86.HasPOPCNT},
+-		{Name: "rdrand", Feature: &X86.HasRDRAND},
+-		{Name: "rdseed", Feature: &X86.HasRDSEED},
+-		{Name: "sse3", Feature: &X86.HasSSE3},
+-		{Name: "sse41", Feature: &X86.HasSSE41},
+-		{Name: "sse42", Feature: &X86.HasSSE42},
+-		{Name: "ssse3", Feature: &X86.HasSSSE3},
+-
+-		// These capabilities should always be enabled on amd64:
+-		{Name: "sse2", Feature: &X86.HasSSE2, Required: runtime.GOARCH == "amd64"},
+-	}
+-}
+-
+-func archInit() {
+-
+-	Initialized = true
+-
+-	maxID, _, _, _ := cpuid(0, 0)
+-
+-	if maxID < 1 {
+-		return
+-	}
+-
+-	_, _, ecx1, edx1 := cpuid(1, 0)
+-	X86.HasSSE2 = isSet(26, edx1)
+-
+-	X86.HasSSE3 = isSet(0, ecx1)
+-	X86.HasPCLMULQDQ = isSet(1, ecx1)
+-	X86.HasSSSE3 = isSet(9, ecx1)
+-	X86.HasFMA = isSet(12, ecx1)
+-	X86.HasCX16 = isSet(13, ecx1)
+-	X86.HasSSE41 = isSet(19, ecx1)
+-	X86.HasSSE42 = isSet(20, ecx1)
+-	X86.HasPOPCNT = isSet(23, ecx1)
+-	X86.HasAES = isSet(25, ecx1)
+-	X86.HasOSXSAVE = isSet(27, ecx1)
+-	X86.HasRDRAND = isSet(30, ecx1)
+-
+-	var osSupportsAVX, osSupportsAVX512 bool
+-	// For XGETBV, OSXSAVE bit is required and sufficient.
+-	if X86.HasOSXSAVE {
+-		eax, _ := xgetbv()
+-		// Check if XMM and YMM registers have OS support.
+-		osSupportsAVX = isSet(1, eax) && isSet(2, eax)
+-
+-		if runtime.GOOS == "darwin" {
+-			// Darwin doesn't save/restore AVX-512 mask registers correctly across signal handlers.
+-			// Since users can't rely on mask register contents, let's not advertise AVX-512 support.
+-			// See issue 49233.
+-			osSupportsAVX512 = false
+-		} else {
+-			// Check if OPMASK and ZMM registers have OS support.
+-			osSupportsAVX512 = osSupportsAVX && isSet(5, eax) && isSet(6, eax) && isSet(7, eax)
+-		}
+-	}
+-
+-	X86.HasAVX = isSet(28, ecx1) && osSupportsAVX
+-
+-	if maxID < 7 {
+-		return
+-	}
+-
+-	_, ebx7, ecx7, edx7 := cpuid(7, 0)
+-	X86.HasBMI1 = isSet(3, ebx7)
+-	X86.HasAVX2 = isSet(5, ebx7) && osSupportsAVX
+-	X86.HasBMI2 = isSet(8, ebx7)
+-	X86.HasERMS = isSet(9, ebx7)
+-	X86.HasRDSEED = isSet(18, ebx7)
+-	X86.HasADX = isSet(19, ebx7)
+-
+-	X86.HasAVX512 = isSet(16, ebx7) && osSupportsAVX512 // Because avx-512 foundation is the core required extension
+-	if X86.HasAVX512 {
+-		X86.HasAVX512F = true
+-		X86.HasAVX512CD = isSet(28, ebx7)
+-		X86.HasAVX512ER = isSet(27, ebx7)
+-		X86.HasAVX512PF = isSet(26, ebx7)
+-		X86.HasAVX512VL = isSet(31, ebx7)
+-		X86.HasAVX512BW = isSet(30, ebx7)
+-		X86.HasAVX512DQ = isSet(17, ebx7)
+-		X86.HasAVX512IFMA = isSet(21, ebx7)
+-		X86.HasAVX512VBMI = isSet(1, ecx7)
+-		X86.HasAVX5124VNNIW = isSet(2, edx7)
+-		X86.HasAVX5124FMAPS = isSet(3, edx7)
+-		X86.HasAVX512VPOPCNTDQ = isSet(14, ecx7)
+-		X86.HasAVX512VPCLMULQDQ = isSet(10, ecx7)
+-		X86.HasAVX512VNNI = isSet(11, ecx7)
+-		X86.HasAVX512GFNI = isSet(8, ecx7)
+-		X86.HasAVX512VAES = isSet(9, ecx7)
+-		X86.HasAVX512VBMI2 = isSet(6, ecx7)
+-		X86.HasAVX512BITALG = isSet(12, ecx7)
+-
+-		eax71, _, _, _ := cpuid(7, 1)
+-		X86.HasAVX512BF16 = isSet(5, eax71)
+-	}
+-}
+-
+-func isSet(bitpos uint, value uint32) bool {
+-	return value&(1<<bitpos) != 0
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_x86.s b/vendor/golang.org/x/sys/cpu/cpu_x86.s
+deleted file mode 100644
+index 39acab2ff5c2..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_x86.s
++++ /dev/null
+@@ -1,28 +0,0 @@
+-// Copyright 2018 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build (386 || amd64 || amd64p32) && gc
+-// +build 386 amd64 amd64p32
+-// +build gc
+-
+-#include "textflag.h"
+-
+-// func cpuid(eaxArg, ecxArg uint32) (eax, ebx, ecx, edx uint32)
+-TEXT ·cpuid(SB), NOSPLIT, $0-24
+-	MOVL eaxArg+0(FP), AX
+-	MOVL ecxArg+4(FP), CX
+-	CPUID
+-	MOVL AX, eax+8(FP)
+-	MOVL BX, ebx+12(FP)
+-	MOVL CX, ecx+16(FP)
+-	MOVL DX, edx+20(FP)
+-	RET
+-
+-// func xgetbv() (eax, edx uint32)
+-TEXT ·xgetbv(SB),NOSPLIT,$0-8
+-	MOVL $0, CX
+-	XGETBV
+-	MOVL AX, eax+0(FP)
+-	MOVL DX, edx+4(FP)
+-	RET
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_zos.go b/vendor/golang.org/x/sys/cpu/cpu_zos.go
+deleted file mode 100644
+index 5f54683a22e3..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_zos.go
++++ /dev/null
+@@ -1,10 +0,0 @@
+-// Copyright 2020 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-func archInit() {
+-	doinit()
+-	Initialized = true
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/cpu_zos_s390x.go b/vendor/golang.org/x/sys/cpu/cpu_zos_s390x.go
+deleted file mode 100644
+index ccb1b708aba9..000000000000
+--- a/vendor/golang.org/x/sys/cpu/cpu_zos_s390x.go
++++ /dev/null
+@@ -1,25 +0,0 @@
+-// Copyright 2020 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-func initS390Xbase() {
+-	// get the facilities list
+-	facilities := stfle()
+-
+-	// mandatory
+-	S390X.HasZARCH = facilities.Has(zarch)
+-	S390X.HasSTFLE = facilities.Has(stflef)
+-	S390X.HasLDISP = facilities.Has(ldisp)
+-	S390X.HasEIMM = facilities.Has(eimm)
+-
+-	// optional
+-	S390X.HasETF3EH = facilities.Has(etf3eh)
+-	S390X.HasDFP = facilities.Has(dfp)
+-	S390X.HasMSA = facilities.Has(msa)
+-	S390X.HasVX = facilities.Has(vx)
+-	if S390X.HasVX {
+-		S390X.HasVXE = facilities.Has(vxe)
+-	}
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/endian_big.go b/vendor/golang.org/x/sys/cpu/endian_big.go
+deleted file mode 100644
+index 93ce03a34605..000000000000
+--- a/vendor/golang.org/x/sys/cpu/endian_big.go
++++ /dev/null
+@@ -1,11 +0,0 @@
+-// Copyright 2023 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build armbe || arm64be || m68k || mips || mips64 || mips64p32 || ppc || ppc64 || s390 || s390x || shbe || sparc || sparc64
+-// +build armbe arm64be m68k mips mips64 mips64p32 ppc ppc64 s390 s390x shbe sparc sparc64
+-
+-package cpu
+-
+-// IsBigEndian records whether the GOARCH's byte order is big endian.
+-const IsBigEndian = true
+diff --git a/vendor/golang.org/x/sys/cpu/endian_little.go b/vendor/golang.org/x/sys/cpu/endian_little.go
+deleted file mode 100644
+index 55db853efbec..000000000000
+--- a/vendor/golang.org/x/sys/cpu/endian_little.go
++++ /dev/null
+@@ -1,11 +0,0 @@
+-// Copyright 2023 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build 386 || amd64 || amd64p32 || alpha || arm || arm64 || loong64 || mipsle || mips64le || mips64p32le || nios2 || ppc64le || riscv || riscv64 || sh || wasm
+-// +build 386 amd64 amd64p32 alpha arm arm64 loong64 mipsle mips64le mips64p32le nios2 ppc64le riscv riscv64 sh wasm
+-
+-package cpu
+-
+-// IsBigEndian records whether the GOARCH's byte order is big endian.
+-const IsBigEndian = false
+diff --git a/vendor/golang.org/x/sys/cpu/hwcap_linux.go b/vendor/golang.org/x/sys/cpu/hwcap_linux.go
+deleted file mode 100644
+index 1d9d91f3ed81..000000000000
+--- a/vendor/golang.org/x/sys/cpu/hwcap_linux.go
++++ /dev/null
+@@ -1,71 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-import (
+-	"io/ioutil"
+-)
+-
+-const (
+-	_AT_HWCAP  = 16
+-	_AT_HWCAP2 = 26
+-
+-	procAuxv = "/proc/self/auxv"
+-
+-	uintSize = int(32 << (^uint(0) >> 63))
+-)
+-
+-// For those platforms don't have a 'cpuid' equivalent we use HWCAP/HWCAP2
+-// These are initialized in cpu_$GOARCH.go
+-// and should not be changed after they are initialized.
+-var hwCap uint
+-var hwCap2 uint
+-
+-func readHWCAP() error {
+-	// For Go 1.21+, get auxv from the Go runtime.
+-	if a := getAuxv(); len(a) > 0 {
+-		for len(a) >= 2 {
+-			tag, val := a[0], uint(a[1])
+-			a = a[2:]
+-			switch tag {
+-			case _AT_HWCAP:
+-				hwCap = val
+-			case _AT_HWCAP2:
+-				hwCap2 = val
+-			}
+-		}
+-		return nil
+-	}
+-
+-	buf, err := ioutil.ReadFile(procAuxv)
+-	if err != nil {
+-		// e.g. on android /proc/self/auxv is not accessible, so silently
+-		// ignore the error and leave Initialized = false. On some
+-		// architectures (e.g. arm64) doinit() implements a fallback
+-		// readout and will set Initialized = true again.
+-		return err
+-	}
+-	bo := hostByteOrder()
+-	for len(buf) >= 2*(uintSize/8) {
+-		var tag, val uint
+-		switch uintSize {
+-		case 32:
+-			tag = uint(bo.Uint32(buf[0:]))
+-			val = uint(bo.Uint32(buf[4:]))
+-			buf = buf[8:]
+-		case 64:
+-			tag = uint(bo.Uint64(buf[0:]))
+-			val = uint(bo.Uint64(buf[8:]))
+-			buf = buf[16:]
+-		}
+-		switch tag {
+-		case _AT_HWCAP:
+-			hwCap = val
+-		case _AT_HWCAP2:
+-			hwCap2 = val
+-		}
+-	}
+-	return nil
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/parse.go b/vendor/golang.org/x/sys/cpu/parse.go
+deleted file mode 100644
+index 762b63d6882c..000000000000
+--- a/vendor/golang.org/x/sys/cpu/parse.go
++++ /dev/null
+@@ -1,43 +0,0 @@
+-// Copyright 2022 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-import "strconv"
+-
+-// parseRelease parses a dot-separated version number. It follows the semver
+-// syntax, but allows the minor and patch versions to be elided.
+-//
+-// This is a copy of the Go runtime's parseRelease from
+-// https://golang.org/cl/209597.
+-func parseRelease(rel string) (major, minor, patch int, ok bool) {
+-	// Strip anything after a dash or plus.
+-	for i := 0; i < len(rel); i++ {
+-		if rel[i] == '-' || rel[i] == '+' {
+-			rel = rel[:i]
+-			break
+-		}
+-	}
+-
+-	next := func() (int, bool) {
+-		for i := 0; i < len(rel); i++ {
+-			if rel[i] == '.' {
+-				ver, err := strconv.Atoi(rel[:i])
+-				rel = rel[i+1:]
+-				return ver, err == nil
+-			}
+-		}
+-		ver, err := strconv.Atoi(rel)
+-		rel = ""
+-		return ver, err == nil
+-	}
+-	if major, ok = next(); !ok || rel == "" {
+-		return
+-	}
+-	if minor, ok = next(); !ok || rel == "" {
+-		return
+-	}
+-	patch, ok = next()
+-	return
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/proc_cpuinfo_linux.go b/vendor/golang.org/x/sys/cpu/proc_cpuinfo_linux.go
+deleted file mode 100644
+index d87bd6b3eb05..000000000000
+--- a/vendor/golang.org/x/sys/cpu/proc_cpuinfo_linux.go
++++ /dev/null
+@@ -1,54 +0,0 @@
+-// Copyright 2022 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build linux && arm64
+-// +build linux,arm64
+-
+-package cpu
+-
+-import (
+-	"errors"
+-	"io"
+-	"os"
+-	"strings"
+-)
+-
+-func readLinuxProcCPUInfo() error {
+-	f, err := os.Open("/proc/cpuinfo")
+-	if err != nil {
+-		return err
+-	}
+-	defer f.Close()
+-
+-	var buf [1 << 10]byte // enough for first CPU
+-	n, err := io.ReadFull(f, buf[:])
+-	if err != nil && err != io.ErrUnexpectedEOF {
+-		return err
+-	}
+-	in := string(buf[:n])
+-	const features = "\nFeatures	: "
+-	i := strings.Index(in, features)
+-	if i == -1 {
+-		return errors.New("no CPU features found")
+-	}
+-	in = in[i+len(features):]
+-	if i := strings.Index(in, "\n"); i != -1 {
+-		in = in[:i]
+-	}
+-	m := map[string]*bool{}
+-
+-	initOptions() // need it early here; it's harmless to call twice
+-	for _, o := range options {
+-		m[o.Name] = o.Feature
+-	}
+-	// The EVTSTRM field has alias "evstrm" in Go, but Linux calls it "evtstrm".
+-	m["evtstrm"] = &ARM64.HasEVTSTRM
+-
+-	for _, f := range strings.Fields(in) {
+-		if p, ok := m[f]; ok {
+-			*p = true
+-		}
+-	}
+-	return nil
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/runtime_auxv.go b/vendor/golang.org/x/sys/cpu/runtime_auxv.go
+deleted file mode 100644
+index 5f92ac9a2e2b..000000000000
+--- a/vendor/golang.org/x/sys/cpu/runtime_auxv.go
++++ /dev/null
+@@ -1,16 +0,0 @@
+-// Copyright 2023 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-package cpu
+-
+-// getAuxvFn is non-nil on Go 1.21+ (via runtime_auxv_go121.go init)
+-// on platforms that use auxv.
+-var getAuxvFn func() []uintptr
+-
+-func getAuxv() []uintptr {
+-	if getAuxvFn == nil {
+-		return nil
+-	}
+-	return getAuxvFn()
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/runtime_auxv_go121.go b/vendor/golang.org/x/sys/cpu/runtime_auxv_go121.go
+deleted file mode 100644
+index b975ea2a04ef..000000000000
+--- a/vendor/golang.org/x/sys/cpu/runtime_auxv_go121.go
++++ /dev/null
+@@ -1,19 +0,0 @@
+-// Copyright 2023 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build go1.21
+-// +build go1.21
+-
+-package cpu
+-
+-import (
+-	_ "unsafe" // for linkname
+-)
+-
+-//go:linkname runtime_getAuxv runtime.getAuxv
+-func runtime_getAuxv() []uintptr
+-
+-func init() {
+-	getAuxvFn = runtime_getAuxv
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/syscall_aix_gccgo.go b/vendor/golang.org/x/sys/cpu/syscall_aix_gccgo.go
+deleted file mode 100644
+index 96134157a10d..000000000000
+--- a/vendor/golang.org/x/sys/cpu/syscall_aix_gccgo.go
++++ /dev/null
+@@ -1,27 +0,0 @@
+-// Copyright 2020 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-// Recreate a getsystemcfg syscall handler instead of
+-// using the one provided by x/sys/unix to avoid having
+-// the dependency between them. (See golang.org/issue/32102)
+-// Moreover, this file will be used during the building of
+-// gccgo's libgo and thus must not used a CGo method.
+-
+-//go:build aix && gccgo
+-// +build aix,gccgo
+-
+-package cpu
+-
+-import (
+-	"syscall"
+-)
+-
+-//extern getsystemcfg
+-func gccgoGetsystemcfg(label uint32) (r uint64)
+-
+-func callgetsystemcfg(label int) (r1 uintptr, e1 syscall.Errno) {
+-	r1 = uintptr(gccgoGetsystemcfg(uint32(label)))
+-	e1 = syscall.GetErrno()
+-	return
+-}
+diff --git a/vendor/golang.org/x/sys/cpu/syscall_aix_ppc64_gc.go b/vendor/golang.org/x/sys/cpu/syscall_aix_ppc64_gc.go
+deleted file mode 100644
+index 904be42ffdce..000000000000
+--- a/vendor/golang.org/x/sys/cpu/syscall_aix_ppc64_gc.go
++++ /dev/null
+@@ -1,36 +0,0 @@
+-// Copyright 2019 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-// Minimal copy of x/sys/unix so the cpu package can make a
+-// system call on AIX without depending on x/sys/unix.
+-// (See golang.org/issue/32102)
+-
+-//go:build aix && ppc64 && gc
+-// +build aix,ppc64,gc
+-
+-package cpu
+-
+-import (
+-	"syscall"
+-	"unsafe"
+-)
+-
+-//go:cgo_import_dynamic libc_getsystemcfg getsystemcfg "libc.a/shr_64.o"
+-
+-//go:linkname libc_getsystemcfg libc_getsystemcfg
+-
+-type syscallFunc uintptr
+-
+-var libc_getsystemcfg syscallFunc
+-
+-type errno = syscall.Errno
+-
+-// Implemented in runtime/syscall_aix.go.
+-func rawSyscall6(trap, nargs, a1, a2, a3, a4, a5, a6 uintptr) (r1, r2 uintptr, err errno)
+-func syscall6(trap, nargs, a1, a2, a3, a4, a5, a6 uintptr) (r1, r2 uintptr, err errno)
+-
+-func callgetsystemcfg(label int) (r1 uintptr, e1 errno) {
+-	r1, _, e1 = syscall6(uintptr(unsafe.Pointer(&libc_getsystemcfg)), 1, uintptr(label), 0, 0, 0, 0, 0)
+-	return
+-}
+diff --git a/vendor/modules.txt b/vendor/modules.txt
+index a5e53860c22c..d5e56db76a48 100644
+--- a/vendor/modules.txt
++++ b/vendor/modules.txt
+@@ -88,9 +88,9 @@ github.com/container-orchestrated-devices/container-device-interface/specs-go
+ ## explicit; go 1.13
+ github.com/containerd/aufs
+ github.com/containerd/aufs/plugin
+-# github.com/containerd/btrfs/v2 v2.0.0
+-## explicit; go 1.19
+-github.com/containerd/btrfs/v2
++# github.com/containerd/btrfs v1.0.0
++## explicit; go 1.15
++github.com/containerd/btrfs
+ # github.com/containerd/cgroups v1.1.0
+ ## explicit; go 1.17
+ github.com/containerd/cgroups/stats/v1
+@@ -530,7 +530,6 @@ golang.org/x/sync/errgroup
+ golang.org/x/sync/semaphore
+ # golang.org/x/sys v0.10.0
+ ## explicit; go 1.17
+-golang.org/x/sys/cpu
+ golang.org/x/sys/execabs
+ golang.org/x/sys/internal/unsafeheader
+ golang.org/x/sys/plan9
+-- 
+2.42.0
+
