@@ -5,6 +5,7 @@
     <param name="url">https://github.com/openSUSE/microos-tools.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
+    <param name="extract">microos-tools.spec</param>
   </service>
   <service name="set_version" mode="disabled"/>
   <service name="tar" mode="buildtime"/>
