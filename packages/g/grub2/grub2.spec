@@ -22,7 +22,7 @@
 %if %{defined sbat_distro}
 # SBAT metadata
 %define sbat_generation 1
-%define sbat_generation_grub 3
+%define sbat_generation_grub 4
 %else
 %{error please define sbat_distro, sbat_distro_summary and sbat_distro_url}
 %endif
@@ -381,6 +381,12 @@ Patch188:       0004-diskfilter-look-up-cryptodisk-devices-first.patch
 Patch189:       grub2-mkconfig-riscv64.patch
 Patch190:       arm64-Use-proper-memory-type-for-kernel-allocation.patch
 Patch191:       0001-fs-btrfs-Zero-file-data-not-backed-by-extents.patch
+Patch192:       0001-fs-ntfs-Fix-an-OOB-write-when-parsing-the-ATTRIBUTE_.patch
+Patch193:       0002-fs-ntfs-Fix-an-OOB-read-when-reading-data-from-the-r.patch
+Patch194:       0003-fs-ntfs-Fix-an-OOB-read-when-parsing-directory-entri.patch
+Patch195:       0004-fs-ntfs-Fix-an-OOB-read-when-parsing-bitmaps-for-ind.patch
+Patch196:       0005-fs-ntfs-Fix-an-OOB-read-when-parsing-a-volume-label.patch
+Patch197:       0006-fs-ntfs-Make-code-more-readable.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
