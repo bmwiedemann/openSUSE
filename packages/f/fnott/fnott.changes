@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 13 13:12:31 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@uncomfyhalomacro.pl>
+
+- Add 0001-memfd-noexec-seal.patch
+  * newer kernels introduced MFD_NOEXEC_SEAL. Linux kernels older than
+    6.3 will crash fnott because they will reject memfd_create() calls that set it.
+    This patch fixes it by testing first if it works with the new MFD_NOEXEC_SEAL
+    and then retry without it.
+
+-------------------------------------------------------------------
 Tue Jul 18 08:27:09 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Remove the following patches as they are already part of the new release

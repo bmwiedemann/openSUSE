@@ -24,6 +24,7 @@ License:        MIT
 Group:          System/GUI/Other
 URL:            https://codeberg.org/dnkl/fnott
 Source0:        https://codeberg.org/dnkl/fnott/archive/%{version}.tar.gz
+Patch1:         https://codeberg.org/dnkl/fnott/commit/bc80e607b14e4c25639d9414e646bbaa7d534adc.patch#/0001-memfd-noexec-seal.patch
 BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  python3
