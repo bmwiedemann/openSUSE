@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.5.3
-%define short_version 6.5
+%define real_version 6.6.0
+%define short_version 6.6
 %define tar_name qtwebchannel-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-webchannel%{?pkg_suffix}
-Version:        6.5.3
+Version:        6.6.0
 Release:        0
 Summary:        Qt 6 WebChannel library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -87,6 +87,28 @@ Requires:       cmake(Qt6WebChannel) = %{real_version}
 This package provides private headers of libQt6WebChannel that do not have any
 ABI or API guarantees.
 
+%package -n libQt6WebChannelQuick6
+Summary:        Qt 6 WebChannelQuick library
+
+%description -n libQt6WebChannelQuick6
+The Qt 6 WebChannelQuick library.
+
+%package -n qt6-webchannelquick-devel
+Summary:        Qt 6 WebChannelQuick library - Development files
+Requires:       libQt6WebChannelQuick6 = %{version}
+Requires:       qt6-webchannel-private-devel = %{version}
+
+%description -n qt6-webchannelquick-devel
+Development files for the Qt 6 WebChannelQuick library
+
+%package -n qt6-webchannelquick-private-devel
+Summary:        Non-ABI stable API for the Qt 6 WebChannelQuick library
+Requires:       cmake(Qt6WebChannelQuick) = %{real_version}
+
+%description -n qt6-webchannelquick-private-devel
+This package provides private headers of libQt6WebChannelQuick that do not have any
+ABI or API guarantees.
+
 %{qt6_examples_package}
 
 %endif
@@ -110,6 +132,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %fdupes %{buildroot}
 
 %ldconfig_scriptlets -n libQt6WebChannel6
+%ldconfig_scriptlets -n libQt6WebChannelQuick6
 
 %files imports
 %{_qt6_qmldir}/QtWebChannel/
@@ -133,6 +156,25 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %files private-devel
 %{_qt6_includedir}/QtWebChannel/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_webchannel_private.pri
+
+%files -n libQt6WebChannelQuick6
+%license LICENSES/*
+%{_qt6_libdir}/libQt6WebChannelQuick.so.*
+
+%files -n qt6-webchannelquick-devel
+%{_qt6_cmakedir}/Qt6WebChannelQuick/
+%{_qt6_descriptionsdir}/WebChannelQuick.json
+%{_qt6_includedir}/QtWebChannelQuick/
+%{_qt6_libdir}/libQt6WebChannelQuick.prl
+%{_qt6_libdir}/libQt6WebChannelQuick.so
+%{_qt6_metatypesdir}/qt6webchannelquick_*_metatypes.json
+%{_qt6_mkspecsdir}/modules/qt_lib_webchannelquick.pri
+%{_qt6_pkgconfigdir}/Qt6WebChannelQuick.pc
+%exclude %{_qt6_includedir}/QtWebChannelQuick/%{real_version}/
+
+%files -n qt6-webchannelquick-private-devel
+%{_qt6_includedir}/QtWebChannelQuick/%{real_version}/
+%{_qt6_mkspecsdir}/modules/qt_lib_webchannelquick_private.pri
 
 %endif
 
