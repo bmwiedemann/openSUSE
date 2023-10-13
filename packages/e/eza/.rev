@@ -119,4 +119,19 @@
   * Add basic nushell completion file</comment>
     <requestid>1116297</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3442a026219ef75a30d46335837944e1</srcmd5>
+    <version>0.14.2~0</version>
+    <time>1697231715</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.14.2:
+  * Comment out redundant static musl build
+  * Refactor sed command to build manpages
+  * Update additional completions for help, almost-all, dereference
+  * Fix zsh completions
+  * Add missing options to man page and CLI --help info
+  * Add missing nu shell completions
+  * Adding the EZA_OVERRIDE_GIT env var</comment>
+    <requestid>1117588</requestid>
+  </revision>
 </revisionlist>
