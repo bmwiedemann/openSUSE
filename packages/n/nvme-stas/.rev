@@ -147,4 +147,12 @@
   * Bug fixes and optimizations</comment>
     <requestid>1112898</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>2c7ad552bbf8d4201ad2c1cc84d8306b</srcmd5>
+    <version>2.3</version>
+    <time>1697231732</time>
+    <user>anag+factory</user>
+    <comment>- Actually update the code from 2.3-rc4 to 2.3</comment>
+    <requestid>1116491</requestid>
+  </revision>
 </revisionlist>
