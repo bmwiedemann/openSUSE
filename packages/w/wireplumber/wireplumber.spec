@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.4.14
+Version:        0.4.15
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -132,6 +132,16 @@ external tools for managing PipeWire.
 This package provides the GObject Introspection bindings for
 the wireplumber shared library.
 
+%package zsh-completion
+Summary:        Wireplumber zsh completion
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (wireplumber and zsh)
+
+%description zsh-completion
+Optional dependency offering zsh completion for various wpctl parameters.
+
 %prep
 %autosetup -p1
 
@@ -240,5 +250,10 @@ fi
 %files -n %{libwireplumber}
 %{_libdir}/libwireplumber-%{apiver}.so.%{sover}
 %{_libdir}/libwireplumber-%{apiver}.so.%{sover}.*
+
+%files zsh-completion
+%dir %{_datarootdir}/zsh
+%dir %{_datarootdir}/zsh/site-functions/
+%{_datarootdir}/zsh/site-functions/_wpctl
 
 %changelog
