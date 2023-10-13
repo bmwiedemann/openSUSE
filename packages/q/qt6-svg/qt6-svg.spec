@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.5.3
-%define short_version 6.5
+%define real_version 6.6.0
+%define short_version 6.6
 %define tar_name qtsvg-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-svg%{?pkg_suffix}
-Version:        6.5.3
+Version:        6.6.0
 Release:        0
 Summary:        Classes for rendering and displaying SVG drawings
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -88,8 +88,6 @@ Requires:       cmake(Qt6SvgWidgets) = %{real_version}
 %description private-devel
 This package provides private headers of libQt6Svg that do not have any
 ABI or API guarantees.
-
-%{qt6_examples_package}
 
 %endif
 
