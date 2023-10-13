@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 13 14:04:07 UTC 2023 - msuchanek@suse.com
+
+- Update to version 1.0.0~rc2+git1.1f96bad:
+  * guest/read: return early if next esd cannot be parsed
+  * guest: Remove x509 SHA GUID functions and macros
+  * guest/generate: change --append option to be a boolean based on presence
+  * guest/read: allow paths with or without a trailing slash
+  * Makefile: Fix installation after source reorganization
+- Remove upstreamed secvarctl-install.patch
+
+-------------------------------------------------------------------
 Mon Oct 02 13:56:10 UTC 2023 - msuchanek@suse.com
 
 - Update to version 1.0.0~rc1+git0.a180a56:
