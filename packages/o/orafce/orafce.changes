@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 13 07:52:00 UTC 2023 - emiliano.langella@suse.com
+
+- Update to version 4.7.0+git1.fca4108:
+  * changes related to msvc 2019 build
+  * remainder function should be marked STRICT (#225)
+
+-------------------------------------------------------------------
+Thu Sep 28 21:00:25 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg 16
+
+-------------------------------------------------------------------
 Mon Sep 25 07:51:11 UTC 2023 - emiliano.langella@suse.com
 
 - Update to version 4.6.1+git0.8785767:
