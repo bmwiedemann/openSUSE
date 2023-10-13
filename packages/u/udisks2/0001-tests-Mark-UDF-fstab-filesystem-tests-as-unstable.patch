@@ -1,0 +1,38 @@
+From bb45fda15f2a5c2063d76db4d2a6dcafaffa9ad1 Mon Sep 17 00:00:00 2001
+From: Tomas Bzatek <tbzatek@redhat.com>
+Date: Tue, 22 Aug 2023 14:31:50 +0200
+Subject: [PATCH] tests: Mark UDF fstab filesystem tests as unstable
+
+Protective part table involved, duplicate identifiers leading
+to random match each time. Until we have a proper fix, just
+mark them as unstable.
+---
+ src/tests/dbus-tests/test_80_filesystem.py | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/src/tests/dbus-tests/test_80_filesystem.py b/src/tests/dbus-tests/test_80_filesystem.py
+index 87d63922..18c8011d 100644
+--- a/src/tests/dbus-tests/test_80_filesystem.py
++++ b/src/tests/dbus-tests/test_80_filesystem.py
+@@ -1758,6 +1758,18 @@ class UDFTestCase(UdisksFSTestCase):
+     def _gen_uuid(self):
+         return str.format("%016x" % random.randint(0, 0xffffffffffffffff))
+ 
++    @udiskstestcase.tag_test(udiskstestcase.TestTags.UNSTABLE)
++    def test_mount_fstab_complex_label(self):
++        super(UDFTestCase, self).test_mount_fstab_complex_label()
++
++    @udiskstestcase.tag_test(udiskstestcase.TestTags.UNSTABLE)
++    def test_mount_fstab_complex_label2(self):
++        super(UDFTestCase, self).test_mount_fstab_complex_label2()
++
++    @udiskstestcase.tag_test(udiskstestcase.TestTags.UNSTABLE)
++    def test_mount_fstab_complex_label_bad(self):
++        super(UDFTestCase, self).test_mount_fstab_complex_label_bad()
++
+ 
+ class FailsystemTestCase(UdisksFSTestCase):
+     # test that not supported operations fail 'nicely'
+-- 
+2.42.0
+
