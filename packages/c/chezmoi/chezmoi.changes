@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 13 15:47:25 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.40.3:
+  * feat: Add env config var as an alternative to scriptEnv
+  * feat: Warn when overriding CHEZMOI_ env vars
+  * feat: Set CHEZMOI_ and scriptEnv env vars for all invoked commands
+
+-------------------------------------------------------------------
 Wed Oct 11 15:00:08 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.40.2:
