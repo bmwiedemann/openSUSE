@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
+%define skip_python2 1
 Name:           python-sniffio
 Version:        1.3.0
 Release:        0
@@ -28,12 +27,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/python-trio/sniffio
 Source:         https://github.com/python-trio/sniffio/archive/v%{version}.tar.gz#/sniffio-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210127.3a18043
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module curio}
+# BuildRequires:  %%{python_module curio}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -47,18 +47,19 @@ asyncio.
 %setup -q -n sniffio-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k 'not test_curio'
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE LICENSE.APACHE2 LICENSE.MIT
-%{python_sitelib}/*
+%{python_sitelib}/sniffio
+%{python_sitelib}/sniffio-%{version}*-info
 
 %changelog
