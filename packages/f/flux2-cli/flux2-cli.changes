@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 13 05:02:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.1.2:
+  * Print artifact source and revision only when available
+  * Upgrade github.com/fluxcd/pkg/oci
+  * fix: only wait for changeset if the result is not empty
+  * Update go-git-providers to v0.19.1
+  * build(deps): bump golang.org/x/net from 0.15.0 to 0.17.0
+  * Update toolkit components
+
+-------------------------------------------------------------------
 Tue Sep 19 14:33:11 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.1.1:
