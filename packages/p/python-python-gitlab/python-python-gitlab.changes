@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Oct 12 19:28:30 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
+Thu Oct 12 18:22:00 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 3.15.0
+- force urllib3 < 2 for testsuite
+ * Add support for select="package_file" in package upload (3a49f09)
+ * api: Add support for events scope parameter (348f56e
+ * Usernames support for MR approvals ()a2b8c8c)
+ * Remove exclusive EE about issue links (e0f6f18)
+ * projects: Allow importing additional items from GitHub (ce84f2e)
+ * objects: Support fetching PATs via id or self endpoint (19b38bd)
+ * Add resource_weight_event for ProjectIssue (6e5ef55)
+ * backends: Use PEP544 protocols for structural subtyping (#2442) (4afeaff)
+ * client: Add http_patch method (#2471) (f711d9e)
+ * cli: Add setting of allow_force_push for protected branch (929e07d)
+ * cli: Warn user when no fields are displayed (8bf53c8)
+ * client: Properly parse content-type when charset is present (76063c3)
+ * Support int for parent_id in import_group (90f96ac)
+ * cli: Add ability to escape at-prefixed parameter (#2513) (4f7c784)
+ * cli: Display items when iterator is returned (33a04e7)
+ * objects: Fix typo in pipeline schedules (3057f45)
+ * advanced: Clarify netrc, proxy behavior with requests (1da7c53)
+ * Fix update badge behaviour (3d7ca1c)
+ * advanced: Fix typo in Gitlab examples (1992790)
+ * group: Add support for group restore API (9322db6)
+ * client: Automatically retry on HTTP 409 Resource lock (dced76a)
+ * api: Add support for bulk imports API (043de2d)
+ * api: Add support for resource groups (5f8b8f5)
+ * api: Support listing pipelines triggered by pipeline schedules (865fa41)
+ * Allow filtering pipelines by source (b6c0872)
+ * client: Bootstrap the http backends concept (#2391) (91a665f)
+ * Add resource iteration events (see https://docs.gitlab.com/ee/api/resource_iteration_events.html)
+ * Allow passing kwargs to Gitlab class when instantiating with from_config (#2392) (e88d34e)
+ * Add keep_base_url when getting configuration from file (50a0301)
+ * client: Regression - do not automatically get_next if page=# and (585e3a8)
+ * Change return value to "None" in case getattr returns None to prevent error (3f86d36)
+ * deps: Bump requests-toolbelt to fix deprecation warning (faf842e)
+ * Use the ProjectIterationManager within the Project object (44f05dc)
+ * api: Make description optional for releases (5579750)
+ * faq: Describe and group common errors (4c9a072)
+
+-------------------------------------------------------------------
 Mon Dec 12 17:06:05 UTC 2022 - pgajdos@suse.com
 
 - six is not required

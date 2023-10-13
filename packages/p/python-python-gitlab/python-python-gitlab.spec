@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-gitlab
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-python-gitlab
-Version:        3.12.0
+Version:        3.15.0
 Release:        0
 Summary:        Python module for interacting with the GitLab API
 License:        LGPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/python-gitlab/python-gitlab
 Source:         https://files.pythonhosted.org/packages/source/p/python-gitlab/python-gitlab-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -34,6 +31,8 @@ Requires:       python-argcomplete >= 1.10.0
 Requires:       python-requests >= 2.22.0
 Requires:       python-requests-toolbelt >= 0.9.1
 Requires:       python-setuptools
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module httmock}
@@ -41,9 +40,9 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.22.0}
 BuildRequires:  %{python_module requests-toolbelt >= 0.9.1}
 BuildRequires:  %{python_module responses}
+# force urllib3 < 2, for tests to passs
+BuildRequires:  %{python_module urllib3 < 2}
 # /SECTION
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -80,6 +79,7 @@ touch $HOME/.python-gitlab.cfg
 %doc AUTHORS CHANGELOG.md README.rst
 %license COPYING
 %python_alternative %{_bindir}/gitlab
-%{python_sitelib}/*
+%{python_sitelib}/gitlab
+%{python_sitelib}/python_gitlab-%{version}*-info
 
 %changelog
