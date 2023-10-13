@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  4 14:31:20 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update indexed-traversable-instances to version 0.1.1.2 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:16 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

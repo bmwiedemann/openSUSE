@@ -1,7 +1,7 @@
 cabal-version:      1.12
 name:               indexed-traversable-instances
 version:            0.1.1.2
-x-revision:         1
+x-revision:         2
 build-type:         Simple
 license:            BSD2
 license-file:       LICENSE
@@ -33,9 +33,10 @@ tested-with:
    || ==8.8.4
    || ==8.10.7
    || ==9.0.2
-   || ==9.2.7
-   || ==9.4.4
-   || ==9.6.1
+   || ==9.2.8
+   || ==9.4.7
+   || ==9.6.3
+   || ==9.8.1
 
 source-repository head
   type:     git
@@ -47,7 +48,7 @@ library
   ghc-options:      -Wall
   hs-source-dirs:   src
   build-depends:
-      base                  >=4.5      && <4.19
+      base                  >=4.5      && <4.20
     , indexed-traversable   >=0.1      && <0.2
     , OneTuple              >=0.3      && <0.5
     , tagged                >=0.8.6    && <0.9
