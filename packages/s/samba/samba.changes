@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct 10 15:12:38 UTC 2023 - Noel Power <nopower@suse.com>
+
+- CVE-2023-4091: samba: Client can truncate file with read-only
+  permissions; (bsc#1215904); (bso#15439).
+- CVE-2023-42669: samba: rpcecho, enabled and running in AD DC,
+  allows blocking sleep on request; (bso#1215905); (bso#15474).
+- CVE-2023-42670: samba:  The procedure number is out of range
+  when starting Active Directory Users and Computers;
+  (bsc#1215906); (bso#15473).
+- CVE-2023-3961: samba: Unsanitized client pipe name passed to
+  local_np_connect(); (bsc#1215907); (bso#15422).
+- CVE-2023-4154: samba: dirsync allows SYSTEM access with only
+  "GUID_DRS_GET_CHANGES" right, not "GUID_DRS_GET_ALL_CHANGES;
+  (bsc#1215908); (bso#15424).
+
+-------------------------------------------------------------------
 Tue Sep 26 08:36:43 UTC 2023 - Noel Power <nopower@suse.com>
 
 - Update to 4.19.0
