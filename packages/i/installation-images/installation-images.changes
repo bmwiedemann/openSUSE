@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Thu Oct 12 17:06:25 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#665
+- add kernel modules needed for MediaTek boards 'mt8195-demo' and
+  'genio-1200-evk' (bsc#1215995)
+- 17.97
+
+--------------------------------------------------------------------
 Mon Sep 25 07:31:40 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#663
