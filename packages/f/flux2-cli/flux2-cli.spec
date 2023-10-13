@@ -20,8 +20,17 @@
 
 %define repo_name flux2
 
+# check these versions on updates
+# see flux2/manifests/bases/*/kustomization.yaml
+%define helm_controller_version             v0.36.2
+%define image_automation_controller_version v0.36.1
+%define image_reflector_controller_version  v0.30.0
+%define kustomize_controller_version        v1.1.1
+%define notification_controller_version     v1.1.0
+%define source_controller_version           v1.1.2
+
 Name:           flux2-cli
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        CLI for Flux2CD
 License:        Apache-2.0
@@ -88,38 +97,37 @@ BuildArch:      noarch
 Fish command line completion support for %{name}.
 
 %prep
-%setup -q -n %{repo_name}-%{version}
-%setup -q -n %{repo_name}-%{version} -T -D -a 1
+%autosetup -p 1 -a 1 -n %{repo_name}-%{version}
 
 %build
 cp %{SOURCE11} ./manifests/bases/helm-controller/
 cp %{SOURCE12} ./manifests/bases/helm-controller/
-sed -i 's_https://github.com/fluxcd/helm-controller/releases/download/v0.36.1/__g' manifests/bases/helm-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/helm-controller/releases/download/%{helm_controller_version}/__g' manifests/bases/helm-controller/kustomization.yaml
 cat manifests/bases/helm-controller/kustomization.yaml
 
 cp %{SOURCE13} ./manifests/bases/image-automation-controller/
 cp %{SOURCE14} ./manifests/bases/image-automation-controller/
-sed -i 's_https://github.com/fluxcd/image-automation-controller/releases/download/v0.36.1/__g' manifests/bases/image-automation-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/image-automation-controller/releases/download/%{image_automation_controller_version}/__g' manifests/bases/image-automation-controller/kustomization.yaml
 cat manifests/bases/image-automation-controller/kustomization.yaml
 
 cp %{SOURCE15} ./manifests/bases/image-reflector-controller/
 cp %{SOURCE16} ./manifests/bases/image-reflector-controller/
-sed -i 's_https://github.com/fluxcd/image-reflector-controller/releases/download/v0.30.0/__g' manifests/bases/image-reflector-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/image-reflector-controller/releases/download/%{image_reflector_controller_version}/__g' manifests/bases/image-reflector-controller/kustomization.yaml
 cat manifests/bases/image-reflector-controller/kustomization.yaml
 
 cp %{SOURCE17} ./manifests/bases/kustomize-controller/
 cp %{SOURCE18} ./manifests/bases/kustomize-controller/
-sed -i 's_https://github.com/fluxcd/kustomize-controller/releases/download/v1.1.0/__g' manifests/bases/kustomize-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/kustomize-controller/releases/download/%{kustomize_controller_version}/__g' manifests/bases/kustomize-controller/kustomization.yaml
 cat manifests/bases/kustomize-controller/kustomization.yaml
 
 cp %{SOURCE19} ./manifests/bases/notification-controller/
 cp %{SOURCE20} ./manifests/bases/notification-controller/
-sed -i 's_https://github.com/fluxcd/notification-controller/releases/download/v1.1.0/__g' manifests/bases/notification-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/notification-controller/releases/download/%{notification_controller_version}/__g' manifests/bases/notification-controller/kustomization.yaml
 cat manifests/bases/notification-controller/kustomization.yaml
 
 cp %{SOURCE21} ./manifests/bases/source-controller/
 cp %{SOURCE22} ./manifests/bases/source-controller/
-sed -i 's_https://github.com/fluxcd/source-controller/releases/download/v1.1.1/__g' manifests/bases/source-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/source-controller/releases/download/%{source_controller_version}/__g' manifests/bases/source-controller/kustomization.yaml
 cat manifests/bases/source-controller/kustomization.yaml
 
 ./manifests/scripts/bundle.sh
