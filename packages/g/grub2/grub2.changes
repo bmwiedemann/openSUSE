@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  6 05:06:59 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix CVE-2023-4692 (bsc#1215935)
+- Fix CVE-2023-4693 (bsc#1215936)
+  * 0001-fs-ntfs-Fix-an-OOB-write-when-parsing-the-ATTRIBUTE_.patch
+  * 0002-fs-ntfs-Fix-an-OOB-read-when-reading-data-from-the-r.patch
+  * 0003-fs-ntfs-Fix-an-OOB-read-when-parsing-directory-entri.patch
+  * 0004-fs-ntfs-Fix-an-OOB-read-when-parsing-bitmaps-for-ind.patch
+  * 0005-fs-ntfs-Fix-an-OOB-read-when-parsing-a-volume-label.patch
+  * 0006-fs-ntfs-Make-code-more-readable.patch
+- Bump upstream SBAT generation to 4
+
+-------------------------------------------------------------------
 Thu Oct  5 09:49:54 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix reading files from btrfs with "implicit" holes:
