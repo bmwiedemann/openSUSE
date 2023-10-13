@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 12 19:06:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace lsb-release with distribution-release BuildRequires:
+  aisleriot meson setup uses /etc/os-release to determine
+  distribution.
+
+-------------------------------------------------------------------
 Mon Sep 25 11:58:52 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.22.30:
