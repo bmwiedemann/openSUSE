@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 13 12:06:04 UTC 2023 - Marcus 'darix' Rückert <mrueckert@suse.de>
+
+- added dont-set-empty-local.patch: (boo#1214136)
+  inspired by https://github.com/exg/rxvt-unicode/commit/16634bc8dd5fc4af62faf899687dfa8f27768d15
+
+-------------------------------------------------------------------
 Wed Oct 11 09:27:29 UTC 2023 - Marcus 'darix' Rückert <mrueckert@suse.de>
 
 - Update to version 9.31: (CVE-2022-4170 boo#1206069)

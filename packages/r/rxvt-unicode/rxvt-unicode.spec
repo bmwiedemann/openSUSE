@@ -42,6 +42,7 @@ Patch3:         rxvt-unicode-0001-Prefer-XDG_RUNTIME_DIR-over-the-HOME.patch
 Patch4:         rxvt-unicode-hardening.patch
 Patch5:         rxvt-unicode-secondarywheel.patch
 Patch7:         handle-new-tic-and-dont-install-terminfo.patch
+Patch8:         dont-set-empty-local.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
