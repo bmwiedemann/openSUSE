@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.5.3
-%define short_version 6.5
+%define real_version 6.6.0
+%define short_version 6.6
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.5.3
+Version:        6.6.0
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # TODO Check if it's still valid
@@ -73,6 +73,7 @@ BuildRequires:  cmake(Qt6QuickWidgets) = %{real_version}
 BuildRequires:  cmake(Qt6Sql) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 BuildRequires:  cmake(Qt6Xml) = %{real_version}
+BuildRequires:  pkgconfig(libzstd) >= 1.3
 # These packages are required to generate documentation for the Qt packages
 Requires:       qt6-tools-helpgenerators
 Requires:       qt6-tools-qdoc
@@ -292,6 +293,13 @@ rm %{buildroot}%{_qt6_cmakedir}/Qt6Designer/*Plugin{Config,Targets}*.cmake
 
 # Unused file. There are no private headers for this library
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_linguist_private.pri
+
+# This doesn't look useful
+rm -r %{buildroot}%{_qt6_includedir}/QtQDocCatch*
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6QDocCatch*
+rm %{buildroot}%{_qt6_pkgconfigdir}/Qt6QDocCatch*.pc
+rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qdoccatch*.pri
+rm %{buildroot}%{_qt6_descriptionsdir}/QDocCatch*.json
 
 # Desktop files for applications
 %suse_update_desktop_file -i org.qt.assistant6
