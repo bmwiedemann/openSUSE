@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct 12 08:02:18 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.9.2:
+
+  * cgroup: reset the inherited cpu affinity after moving to cgroup. Old kernels
+    do that automatically, but new kernels remember the affinity that was set
+    before the cgroup move, so we need to reset it in order to honor the cpuset
+    configuration.
+
+- New upstream release 1.9.1:
+
+  * utils: ignore ENOTSUP when chmod a symlink. It fixes a problem on Linux 6.6
+    that always refuses chmod on a symlink.
+  * build: fix build on CentOS 7
+  * linux: add new fallback when mount fails with EBUSY, so that there is not an
+    additional tmpfs mount if not needed.
+  * utils: improve error message when a directory cannot be created as a
+    component of the path is already existing as a non directory.
+
+- Only build with wasmedge on x86_64 & aarch64
+
+-------------------------------------------------------------------
 Wed Oct 11 11:29:21 UTC 2023 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Add crun-wasm symlink for platform 'wasi/wasm'
