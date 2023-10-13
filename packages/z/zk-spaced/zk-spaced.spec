@@ -28,7 +28,6 @@ Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  rust+cargo
 BuildRequires:  zstd
-Supplements:    (%{name} and zk)
 Requires:       zk
 
 %description

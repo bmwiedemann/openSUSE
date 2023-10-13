@@ -7,4 +7,13 @@
     <comment>I want to add zk-spaced in openSUSE:Factory</comment>
     <requestid>1117089</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>869a53fc6772865922d1deda6ecd8c62</srcmd5>
+    <version>1.0.0</version>
+    <time>1697231706</time>
+    <user>anag+factory</user>
+    <comment>- Remove supplements.
+</comment>
+    <requestid>1117555</requestid>
+  </revision>
 </revisionlist>
