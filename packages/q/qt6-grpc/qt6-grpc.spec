@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.5.3
-%define short_version 6.5
+%define real_version 6.6.0
+%define short_version 6.6
 %define short_name qtgrpc
 %define tar_name qtgrpc-everywhere-src
 %define tar_suffix %{nil}
@@ -28,15 +28,12 @@
 %endif
 #
 Name:           qt6-grpc%{?pkg_suffix}
-Version:        6.5.3
+Version:        6.6.0
 Release:        0
 Summary:        gRPC and Protobuf generator and bindings for Qt framework
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-include-of-std-set.patch
-Patch1:         0003-Add-missing-memory-include.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
@@ -152,25 +149,55 @@ ABI or API guarantees.
 %files -n libQt6Protobuf6
 %license LICENSES/*
 %{_qt6_libdir}/libQt6Protobuf.so.*
+%{_qt6_libdir}/libQt6ProtobufQtCoreTypes.so.*
+%{_qt6_libdir}/libQt6ProtobufQtGuiTypes.so.*
+%{_qt6_libdir}/libQt6ProtobufWellKnownTypes.so.*
 
 %files -n qt6-protobuf-devel
 %{_qt6_cmakedir}/Qt6/FindWrapProtobuf.cmake
 %{_qt6_cmakedir}/Qt6/FindWrapProtoc.cmake
 %{_qt6_cmakedir}/Qt6Protobuf/
+%{_qt6_cmakedir}/Qt6ProtobufQtCoreTypes/
+%{_qt6_cmakedir}/Qt6ProtobufQtGuiTypes/
+%{_qt6_cmakedir}/Qt6ProtobufWellKnownTypes/
 %{_qt6_cmakedir}/Qt6ProtobufTools/
 %{_qt6_descriptionsdir}/Protobuf.json
+%{_qt6_descriptionsdir}/ProtobufQtCoreTypes.json
+%{_qt6_descriptionsdir}/ProtobufQtGuiTypes.json
+%{_qt6_descriptionsdir}/ProtobufWellKnownTypes.json
 %{_qt6_includedir}/QtProtobuf/
+%{_qt6_includedir}/QtProtobufQtCoreTypes/
+%{_qt6_includedir}/QtProtobufQtGuiTypes/
+%{_qt6_includedir}/QtProtobufWellKnownTypes/
 %{_qt6_libdir}/libQt6Protobuf.prl
 %{_qt6_libdir}/libQt6Protobuf.so
+%{_qt6_libdir}/libQt6ProtobufQtCoreTypes.prl
+%{_qt6_libdir}/libQt6ProtobufQtCoreTypes.so
+%{_qt6_libdir}/libQt6ProtobufQtGuiTypes.prl
+%{_qt6_libdir}/libQt6ProtobufQtGuiTypes.so
+%{_qt6_libdir}/libQt6ProtobufWellKnownTypes.prl
+%{_qt6_libdir}/libQt6ProtobufWellKnownTypes.so
 %{_qt6_libexecdir}/qtprotobufgen
 %{_qt6_metatypesdir}/qt6protobuf_*_metatypes.json
+%{_qt6_metatypesdir}/qt6protobufqtcoretypes_*_metatypes.json
+%{_qt6_metatypesdir}/qt6protobufqtguitypes_*_metatypes.json
+%{_qt6_metatypesdir}/qt6protobufwellknowntypes_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_protobuf.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_protobufqtcoretypes.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_protobufqtguitypes.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_protobufwellknowntypes.pri
 %{_qt6_pkgconfigdir}/Qt6Protobuf.pc
+%{_qt6_pkgconfigdir}/Qt6ProtobufQtCoreTypes.pc
+%{_qt6_pkgconfigdir}/Qt6ProtobufQtGuiTypes.pc
+%{_qt6_pkgconfigdir}/Qt6ProtobufWellKnownTypes.pc
 %exclude %{_qt6_includedir}/QtProtobuf/%{real_version}
 
 %files -n qt6-protobuf-private-devel
-%{_qt6_includedir}/QtProtobuf/%{real_version}
+%{_qt6_includedir}/QtProtobuf/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_protobuf_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_protobufqtcoretypes_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_protobufqtguitypes_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_protobufwellknowntypes_private.pri
 
 %endif
 
