@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  6 07:23:30 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use better macro for selecting a newer GCC on Leap.
+
+-------------------------------------------------------------------
 Wed Jun 28 06:45:20 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.3.1:
