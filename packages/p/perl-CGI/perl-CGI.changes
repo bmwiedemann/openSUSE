@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  3 03:06:06 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.59
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.59 2023-10-02
+      [ FIX ]
+      -  Bring VERSION values inline
+  4.58 2023-10-02
+      [ FIX ]
+      -  Update cookie expires date format (GH #258 , thanks to robbiebow)
+
+-------------------------------------------------------------------
 Wed May  3 03:06:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.57
