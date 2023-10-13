@@ -48,6 +48,9 @@ Patch102:       libgcrypt-FIPS-SLI-hash-mac.patch
 Patch103:       libgcrypt-jitterentropy-3.4.0.patch
 #PATCH-FIX-SUSE bsc#1202117 FIPS: Get most of the entropy from rndjent_poll
 Patch104:       libgcrypt-FIPS-rndjent_poll.patch
+# POWER patches [jsc#PED-5088] POWER performance enhancements for cryptography
+Patch200:       libgcrypt-Chacha20-poly1305-Optimized-chacha20-poly1305.patch
+Patch201:       libgcrypt-ppc-enable-P10-assembly-with-ENABLE_FORCE_SOF.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  libgpg-error-devel >= 1.27
 BuildRequires:  libtool

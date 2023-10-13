@@ -1,0 +1,76 @@
+commit 2c5e5ab6843d747c4b877d2c6f47226f61e9ff14
+Author: Jussi Kivilinna <jussi.kivilinna@iki.fi>
+Date:   Sun Jun 12 21:51:34 2022 +0300
+
+    ppc enable P10 assembly with ENABLE_FORCE_SOFT_HWFEATURES on arch 3.00
+    
+    * cipher/chacha20.c (chacha20_do_setkey) [USE_PPC_VEC]: Enable
+    P10 assembly for HWF_PPC_ARCH_3_00 if ENABLE_FORCE_SOFT_HWFEATURES is
+    defined.
+    * cipher/poly1305.c (poly1305_init) [POLY1305_USE_PPC_VEC]: Likewise.
+    * cipher/rijndael.c (do_setkey) [USE_PPC_CRYPTO_WITH_PPC9LE]: Likewise.
+    ---
+    
+    This change allows testing P10 implementations with P9 and with QEMU-PPC.
+    
+    GnuPG-bug-id: 6006
+    Signed-off-by: Jussi Kivilinna <jussi.kivilinna@iki.fi>
+
+Index: libgcrypt-1.10.2/cipher/chacha20.c
+===================================================================
+--- libgcrypt-1.10.2.orig/cipher/chacha20.c
++++ libgcrypt-1.10.2/cipher/chacha20.c
+@@ -484,6 +484,11 @@ chacha20_do_setkey (CHACHA20_context_t *
+   ctx->use_ppc = (features & HWF_PPC_ARCH_2_07) != 0;
+ # ifndef WORDS_BIGENDIAN
+   ctx->use_p10 = (features & HWF_PPC_ARCH_3_10) != 0;
++#  ifdef ENABLE_FORCE_SOFT_HWFEATURES
++  /* HWF_PPC_ARCH_3_10 above is used as soft HW-feature indicator for P10.
++   * Actual implementation works with HWF_PPC_ARCH_3_00 also. */
++  ctx->use_p10 |= (features & HWF_PPC_ARCH_3_00) != 0;
++#  endif
+ # endif
+ #endif
+ #ifdef USE_S390X_VX
+Index: libgcrypt-1.10.2/cipher/poly1305.c
+===================================================================
+--- libgcrypt-1.10.2.orig/cipher/poly1305.c
++++ libgcrypt-1.10.2/cipher/poly1305.c
+@@ -90,11 +90,19 @@ static void poly1305_init (poly1305_cont
+ 			   const byte key[POLY1305_KEYLEN])
+ {
+   POLY1305_STATE *st = &ctx->state;
++  unsigned int features = _gcry_get_hw_features ();
+ 
+ #ifdef POLY1305_USE_PPC_VEC
+-  ctx->use_p10 = (_gcry_get_hw_features () & HWF_PPC_ARCH_3_10) != 0;
++  ctx->use_p10 = (features & HWF_PPC_ARCH_3_10) != 0;
++# ifdef ENABLE_FORCE_SOFT_HWFEATURES
++  /* HWF_PPC_ARCH_3_10 above is used as soft HW-feature indicator for P10.
++   * Actual implementation works with HWF_PPC_ARCH_3_00 also. */
++  ctx->use_p10 |= (features & HWF_PPC_ARCH_3_00) != 0;
++# endif
+ #endif
+ 
++  (void)features;
++
+   ctx->leftover = 0;
+ 
+   st->h[0] = 0;
+Index: libgcrypt-1.10.2/cipher/rijndael.c
+===================================================================
+--- libgcrypt-1.10.2.orig/cipher/rijndael.c
++++ libgcrypt-1.10.2/cipher/rijndael.c
+@@ -605,6 +605,12 @@ do_setkey (RIJNDAEL_context *ctx, const
+       bulk_ops->xts_crypt = _gcry_aes_ppc9le_xts_crypt;
+       if (hwfeatures & HWF_PPC_ARCH_3_10)  /* for P10 */
+         bulk_ops->gcm_crypt = _gcry_aes_p10le_gcm_crypt;
++# ifdef ENABLE_FORCE_SOFT_HWFEATURES
++      /* HWF_PPC_ARCH_3_10 above is used as soft HW-feature indicator for P10.
++       * Actual implementation works with HWF_PPC_ARCH_3_00 also. */
++      if (hwfeatures & HWF_PPC_ARCH_3_00)
++        bulk_ops->gcm_crypt = _gcry_aes_p10le_gcm_crypt;
++# endif
+     }
+ #endif
+ #ifdef USE_PPC_CRYPTO

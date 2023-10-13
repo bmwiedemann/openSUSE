@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct  3 12:58:41 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- POWER: performance enhancements for cryptography [jsc#PED-5088]
+  * Optimize Chacha20 and Poly1305 for PPC P10 LE: [T6006]
+    - Chacha20/poly1305: Optimized chacha20/poly1305 for
+      P10 operation [rC88fe7ac33eb4]
+    - ppc: enable P10 assembly with ENABLE_FORCE_SOFT_HWFEATURES
+      on arch-3.00 [rC2c5e5ab6843d]
+  * Add patches:
+    - libgcrypt-Chacha20-poly1305-Optimized-chacha20-poly1305.patch
+    - libgcrypt-ppc-enable-P10-assembly-with-ENABLE_FORCE_SOF.patch
+
+-------------------------------------------------------------------
 Mon May 22 11:32:53 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Merge the libgcrypt20-hmac package into the library and
