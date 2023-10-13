@@ -158,7 +158,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.19.0+git.306.19d2e214c58
+Version:        4.19.1+git.312.c912b3d2ef6
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -1147,7 +1147,6 @@ exit 0
 %{_libdir}/samba/rpcd_fsrvp
 %{_libdir}/samba/rpcd_lsad
 %{_libdir}/samba/rpcd_mdssvc
-%{_libdir}/samba/rpcd_rpcecho
 %{_libdir}/samba/rpcd_spoolss
 %{_libdir}/samba/rpcd_winreg
 %{_libdir}/samba/samba-bgqd
