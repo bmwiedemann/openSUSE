@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 13 07:31:49 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.9.0
+
+  This release features an update to the Classic McEliece KEM, bringing it
+  in line with NIST Round 4. It also adds or updates ARM implementations
+  for Kyber,   Dilithium, and Falcon.
+
+- major library version 4
+
+-------------------------------------------------------------------
 Thu Jun  8 07:14:12 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.8.0
