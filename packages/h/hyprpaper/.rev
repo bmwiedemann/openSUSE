@@ -7,4 +7,19 @@
     <comment>I want to add hyprpaper to openSUSE:Factory</comment>
     <requestid>1090460</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bf65ddeba2d0ec5096f02af053989a42</srcmd5>
+    <version>0.4.0</version>
+    <time>1697231746</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.4.0:
+  * Add dependencies to readme
+  * [RFC] Filetype detection without extension
+  * Added support for XDG_CONFIG_HOME
+  * Support for symlinks
+  * Clear wallpaper from monitor before destroying ouput
+  * Reset hasATarget when issuing wallpaper command
+</comment>
+    <requestid>1117681</requestid>
+  </revision>
 </revisionlist>
