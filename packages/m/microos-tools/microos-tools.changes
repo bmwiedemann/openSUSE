@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 12 12:11:04 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 2.21+git5:
+  * 98selinux-microos: Set mount propagation properly
+  * 98selinux-microos: Convert tabs to spaces
+  * 98selinux-microos: Don't include setenforce unnecessarily
+  * Add spec file
+  * systemd-proxy-env: fix typos in setup-systemd-proxy-env
+- Use the .spec file from the repo
+
+-------------------------------------------------------------------
 Thu Apr 20 11:42:22 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Switch to obs_scm
