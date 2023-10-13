@@ -21,7 +21,7 @@
 %global enginesdir %(pkg-config --variable=enginesdir libcrypto)
 
 Name:           openssl-ibmca
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        The IBMCA OpenSSL dynamic engine
 License:        Apache-2.0
@@ -30,15 +30,12 @@ URL:            https://github.com/opencryptoki/openssl-ibmca
 Source:         https://github.com/opencryptoki/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        engine_section.txt
 ###
-Patch001:       openssl-ibmca-engine-noregister.patch
-###
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libica >= 4.0.0
 BuildRequires:  libica-devel >= 4.0.0
 BuildRequires:  libica-tools >= 4.0.0
 BuildRequires:  libtool
-Requires:       libica >= 4.0.0
+Requires:       libica4 >= 4
 %if %{openssl3}
 BuildRequires:  openssl-devel > 3.0.0
 Requires:       openssl > 3.0.0
