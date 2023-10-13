@@ -18,12 +18,13 @@
 
 %define cpan_name CGI
 Name:           perl-CGI
-Version:        4.57
+Version:        4.590.0
 Release:        0
+%define cpan_version 4.59
 License:        Artistic-2.0
 Summary:        Handle Common Gateway Interface requests and responses
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEEJO/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEEJO/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -37,6 +38,17 @@ BuildRequires:  perl(parent) >= 0.225
 Requires:       perl(File::Temp) >= 0.17
 Requires:       perl(HTML::Entities) >= 3.69
 Requires:       perl(parent) >= 0.225
+Provides:       perl(CGI)
+Provides:       perl(CGI::Carp) = 4.590.0
+Provides:       perl(CGI::Cookie)
+Provides:       perl(CGI::File::Temp) = 4.590.0
+Provides:       perl(CGI::HTML::Functions)
+Provides:       perl(CGI::MultipartBuffer)
+Provides:       perl(CGI::Pretty) = 4.590.0
+Provides:       perl(CGI::Push)
+Provides:       perl(CGI::Util) = 4.590.0
+Provides:       perl(Fh) = 4.590.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -54,7 +66,7 @@ CGI.pm was included in the perl distribution from perl v5.4 to v5.20,
 however is has now been removed from the perl core...
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
