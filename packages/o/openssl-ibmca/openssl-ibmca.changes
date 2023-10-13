@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 13 10:39:42 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Removed an obsolete patch (implemented in the version 2.4.1)
+  * openssl-ibmca-engine-noregister.patch
+
+-------------------------------------------------------------------
+Fri Oct  6 06:35:00 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 2.4.1 (jsc#PED-5422) 
+  * Provider: Change the default log directory to /tmp
+  * Bug fixes
+
+-------------------------------------------------------------------
+Mon May 22 07:20:32 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated the .spec file, amended to use libica4 instead of libica
+  * Requires:  libica4 >= 4
+
+-------------------------------------------------------------------
 Tue May  2 07:49:24 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Updated the .spec file
