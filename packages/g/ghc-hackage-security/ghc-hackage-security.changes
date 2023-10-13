@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  4 17:11:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hackage-security to version 0.6.2.3 revision 7.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Sep 12 12:53:00 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update hackage-security to version 0.6.2.3 revision 6.
