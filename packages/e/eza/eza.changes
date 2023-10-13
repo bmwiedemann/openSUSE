@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 13 07:25:31 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.2:
+  * Comment out redundant static musl build
+  * Refactor sed command to build manpages
+  * Update additional completions for help, almost-all, dereference
+  * Fix zsh completions
+  * Add missing options to man page and CLI --help info
+  * Add missing nu shell completions
+  * Adding the EZA_OVERRIDE_GIT env var
+
+-------------------------------------------------------------------
 Sun Oct  8 10:41:21 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.1:
