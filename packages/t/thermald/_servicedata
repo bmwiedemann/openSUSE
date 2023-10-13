@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/intel/thermal_daemon.git</param>
+              <param name="changesrevision">63b290f20da115f62f5bbd39a28fa5afe0f6efc2</param></service></servicedata>

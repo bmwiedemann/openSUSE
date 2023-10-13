@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/intel/thermal_daemon.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="revision">master</param>
+    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.git+%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
