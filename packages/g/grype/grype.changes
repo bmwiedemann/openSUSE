@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 13 05:01:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.71.0:
+  * chore(deps): bump golang.org/x/net from 0.16.0 to 0.17.0
+    (#1554)
+  * feat: disable CPE-based matching for GHSA ecosystems by default
+    (#1412)
+  * chore(deps): bump github.com/google/go-cmp from 0.5.9 to 0.6.0
+    (#1552)
+
+-------------------------------------------------------------------
 Wed Oct 11 04:28:01 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.70.0:
