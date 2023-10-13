@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.52.0
+Version:        2.53.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -108,12 +108,12 @@ Requires:       python3-azure-mgmt-marketplaceordering >= 1.1.0
 Requires:       python3-azure-mgmt-media >= 9.0
 Requires:       python3-azure-mgmt-monitor >= 5.0.0
 Requires:       python3-azure-mgmt-msi >= 7.0.0
-Requires:       python3-azure-mgmt-netapp >= 10.0.0
+Requires:       python3-azure-mgmt-netapp >= 10.1.0
 Requires:       python3-azure-mgmt-policyinsights >= 1.1.0b4
 Requires:       python3-azure-mgmt-privatedns >= 1.0.0
 Requires:       python3-azure-mgmt-rdbms >= 10.2.0b10
-Requires:       python3-azure-mgmt-recoveryservices >= 2.4.0
-Requires:       python3-azure-mgmt-recoveryservicesbackup >= 6.0.0
+Requires:       python3-azure-mgmt-recoveryservices >= 2.5.0
+Requires:       python3-azure-mgmt-recoveryservicesbackup >= 7.0.0
 Requires:       python3-azure-mgmt-redhatopenshift >= 1.3.0
 Requires:       python3-azure-mgmt-redis >= 14.1.0
 Requires:       python3-azure-mgmt-reservations >= 2.0.0
@@ -143,6 +143,7 @@ Requires:       python3-distro
 Requires:       python3-javaproperties >= 0.5.1
 Requires:       python3-jsondiff >= 2.0.0
 Requires:       python3-packaging >= 20.9
+Requires:       python3-pycomposefile >= 0.0.29
 Requires:       python3-pydocumentdb >= 2.0.1
 Requires:       python3-pygments >= 2.4
 Requires:       python3-scp >= 0.13.2
