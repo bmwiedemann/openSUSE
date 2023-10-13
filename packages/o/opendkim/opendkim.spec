@@ -46,15 +46,17 @@ Source2:        %{name}.keyring
 Source3:        opendkim.service
 Source4:        opendkim.tmpfiles.d
 Source5:        opendkim.init
-# PATCH-FIX-UPSTREAM fix compiler warnings
+# PATCH-FIX-UPSTREAM opendkim-2.9.2_compiler_warnings.patch -- fix compiler warnings
 Patch0:         opendkim-2.9.2_compiler_warnings.patch
 # PATCH-FIX-OPENSUSE set default values in installed configuration file
 Patch1:         %{name}-default_config.patch
-# PATCH-FIX-UPSTREAM LIBOPENDKIM: Confirm that the value of "d=" is properly formed.
+# PATCH-FIX-UPSTREAM cve-2020-12272.patch -- LIBOPENDKIM: Confirm that the value of "d=" is properly formed.
 Patch2:         cve-2020-12272.patch
-# PATCH-FIX-UPSTREAM  Plug memory leak in Unbound callback function https://github.com/trusteddomainproject/OpenDKIM/pull/57/commits/0010ca7150b09c3c259c17bdd9431a8bfe39e299
+# PATCH-FIX-UPSTREAM unbound-fix.patch -- Plug memory leak in Unbound callback function https://github.com/trusteddomainproject/OpenDKIM/pull/57/commits/0010ca7150b09c3c259c17bdd9431a8bfe39e299
 Patch3:         unbound-fix.patch
 Patch4:         harden_opendkim.service.patch
+# PATCH-FIX-UPSTREAM fix-RSA_sign-call.patch -- Fix RSA sign call on big endian systems ref: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1012506
+Patch5:         fix-RSA_sign-call.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl-devel
@@ -218,6 +220,7 @@ This package holds the development files.
 %patch2 -p1
 %patch3 -p0
 %patch4 -p1
+%patch5 -p1
 
 %build
 autoreconf -iv
