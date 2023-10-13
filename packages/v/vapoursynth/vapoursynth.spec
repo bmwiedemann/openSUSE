@@ -27,6 +27,8 @@ Source0:        https://github.com/vapoursynth/vapoursynth/archive/R%{version}.t
 # PATCH-FIX-OPENSUSE vapoursynth-version.patch -- makes sure that we have
 # some sort of version for othervise unversioned .so files
 Patch0:         vapoursynth-version.patch
+# Patch to revert for Leap 15.x builds
+Patch1:         ac62a4d2a54bacccd09b97453bffe759c01f18ef.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -50,8 +52,9 @@ Obsoletes:      plugin-subtext
 Obsoletes:      plugin-vinverse
 Obsoletes:      plugin-vivtc
 %if 0%{?suse_version} <= 1500
-BuildRequires:  gcc11-PIE
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc12
+BuildRequires:  gcc12-PIE
+BuildRequires:  gcc12-c++
 BuildRequires:  python3-Cython
 %else
 BuildRequires:  gcc-c++
@@ -107,14 +110,21 @@ VapourSynth.
 %prep
 %setup -q -n %{name}-R%{version}
 %patch0 -p1
+%if 0%{?suse_version} <= 1500
+%patch1 -p1 -R
+%endif
 
 %build
 %if 0%{?suse_version} <= 1500
-export CC="gcc-11"
-export CXX="g++-11"
+export CC="gcc-12"
+export CXX="g++-12"
 %endif
 
 autoreconf -fiv
+%if 0%{?suse_version} <= 1500
+# Woraround for old autoconf
+sed -z -i "s|PACKAGE_URL='http://www.vapoursynth.com/\n'|PACKAGE_URL='http://www.vapoursynth.com/'|" configure
+%endif
 %configure \
   --disable-static
 %make_build
