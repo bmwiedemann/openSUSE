@@ -1,7 +1,7 @@
 cabal-version:      1.12
 name:               generically
 version:            0.1.1
-x-revision:         1
+x-revision:         2
 synopsis:           Generically newtype to use with DerivingVia
 description:
   This is a compatibility package as @Generically@ and @Generically1@ newtypes
@@ -24,9 +24,10 @@ tested-with:
    || ==8.8.4
    || ==8.10.7
    || ==9.0.2
-   || ==9.2.7
-   || ==9.4.4
-   || ==9.6.1
+   || ==9.2.8
+   || ==9.4.7
+   || ==9.6.3
+   || ==9.8.1
 
 source-repository head
   type:     git
@@ -34,7 +35,7 @@ source-repository head
 
 library
   default-language: Haskell2010
-  build-depends:    base >=4.9 && <4.19
+  build-depends:    base >=4.9 && <4.20
   if impl(ghc >= 9.4) && !impl(ghc >= 9.6)
     build-depends:  base-orphans >=0.8.8 && <0.10
   hs-source-dirs:   src
