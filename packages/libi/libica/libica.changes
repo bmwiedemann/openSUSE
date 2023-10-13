@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  6 07:08:03 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 4.2.3 (jsc#PED-5446) 
+  * Add OPENSSL_init_crypto in libica constructor
+  * Remove deprecated ioctl Z90STAT_STATUS_MASK
+  * Bug fixes
+
+-------------------------------------------------------------------
 Tue May 23 14:16:42 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade to version 4.2.2 (jsc#PED-3277, jsc#PED-3276)

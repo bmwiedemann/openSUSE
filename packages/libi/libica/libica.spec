@@ -22,7 +22,7 @@
 %endif
 
 Name:           libica
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        Library interface for the IBM Cryptographic Accelerator device driver
 License:        CPL-1.0
@@ -42,6 +42,7 @@ BuildRequires:  automake
 BuildRequires:  fipscheck
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
+BuildRequires:  openssl
 BuildRequires:  openssl-devel
 Requires(post): %fillup_prereq
 ExclusiveArch:  s390 s390x
