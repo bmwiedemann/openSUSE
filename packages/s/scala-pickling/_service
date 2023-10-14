@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">git@github.com:scala/pickling.git</param>
+		<param name="revision">00d403e3256ea9f6df8ac804e89db1f94e1e14fe</param>
+		<param name="versionformat">0.10.1</param>
+		<param name="filename">scala-pickling</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+</services>
