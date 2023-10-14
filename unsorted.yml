@@ -4211,9 +4211,6 @@ unsorted:
   - freetds-devel 
   - freetds-doc 
   - freetds-tools 
-  - freetype 
-  - freetype-devel 
-  - freetype-tools 
   - freetype2-devel 
   - freetype2-devel-32bit 
   - freetype2-profile-tti35 
@@ -10403,6 +10400,7 @@ unsorted:
   - libQt6UiTools6 
   - libQt6VirtualKeyboard6 
   - libQt6WebChannel6 
+  - libQt6WebChannelQuick6 
   - libQt6WebEngineCore6 
   - libQt6WebEngineQuick6 
   - libQt6WebEngineWidgets6 
@@ -11750,9 +11748,6 @@ unsorted:
   - libenet7 
   - libeot-devel 
   - libeot-tools 
-  - libepc-1_0-3 
-  - libepc-devel 
-  - libepc-lang 
   - libepoxy-devel 
   - libepoxy0-32bit 
   - libeppic-devel 
@@ -13845,7 +13840,7 @@ unsorted:
   - libopusenc0 
   - libopusfile0 
   - liboqs-devel 
-  - liboqs3 
+  - liboqs4 
   - liborc-0_4-0-32bit 
   - liborcania2_3 
   - liborcus-devel 
@@ -15435,7 +15430,6 @@ unsorted:
   - libtss2-tcti-swtpm0-32bit 
   - libtss2-tctildr0-32bit 
   - libtstl1 
-  - libttf2 
   - libttsmimic0 
   - libtty-devel 
   - libtty1 
@@ -22243,6 +22237,7 @@ unsorted:
   - postgresql16-docs 
   - postgresql16-llvmjit 
   - postgresql16-llvmjit-devel 
+  - postgresql16-orafce 
   - postgresql16-plperl 
   - postgresql16-plpython 
   - postgresql16-pltcl 
@@ -25465,6 +25460,7 @@ unsorted:
   - python310-pyclipper 
   - python310-pycocotools 
   - python310-pycodestyle 
+  - python310-pycomposefile 
   - python310-pycountry 
   - python310-pycparser 
   - python310-pycryptodome 
@@ -28849,6 +28845,7 @@ unsorted:
   - python311-pyclipper 
   - python311-pycocotools 
   - python311-pycodestyle 
+  - python311-pycomposefile 
   - python311-pycountry 
   - python311-pycryptodomex 
   - python311-pyct 
@@ -32324,6 +32321,7 @@ unsorted:
   - python39-pyclipper 
   - python39-pycocotools 
   - python39-pycodestyle 
+  - python39-pycomposefile 
   - python39-pycountry 
   - python39-pycparser 
   - python39-pycryptodome 
@@ -33803,6 +33801,7 @@ unsorted:
   - qt6-protobuf-private-devel 
   - qt6-qml-devel 
   - qt6-qml-private-devel 
+  - qt6-qmlcompiler-devel 
   - qt6-qmlcompiler-private-devel 
   - qt6-qmlcore-devel 
   - qt6-qmlcore-private-devel 
@@ -33810,8 +33809,10 @@ unsorted:
   - qt6-qmldom-devel-static 
   - qt6-qmllocalstorage-devel 
   - qt6-qmllocalstorage-private-devel 
+  - qt6-qmlls-devel-static 
   - qt6-qmlmodels-devel 
   - qt6-qmlmodels-private-devel 
+  - qt6-qmltoolingsettings-devel-static 
   - qt6-qmltyperegistrar-devel-static 
   - qt6-qmlworkerscript-devel 
   - qt6-qmlworkerscript-private-devel 
@@ -33952,7 +33953,6 @@ unsorted:
   - qt6-svg-devel 
   - qt6-svg-docs-html 
   - qt6-svg-docs-qch 
-  - qt6-svg-examples 
   - qt6-svg-private-devel 
   - qt6-test-devel 
   - qt6-test-private-devel 
@@ -33999,6 +33999,8 @@ unsorted:
   - qt6-webchannel-examples 
   - qt6-webchannel-imports 
   - qt6-webchannel-private-devel 
+  - qt6-webchannelquick-devel 
+  - qt6-webchannelquick-private-devel 
   - qt6-webengine 
   - qt6-webengine-docs-html 
   - qt6-webengine-docs-qch 
@@ -45882,6 +45884,7 @@ unsorted:
   - wire 
   - wireguard-tools 
   - wireplumber-devel 
+  - wireplumber-zsh-completion 
   - wireshark 
   - wireshark-devel 
   - wireshark-plugin-libvirt 
