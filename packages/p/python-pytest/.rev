@@ -1266,4 +1266,12 @@
   * New pytester fixture, which is identical to testdir but its methods</comment>
     <requestid>1112015</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>8b425fe717a1896ad168878d6ef1fb22</srcmd5>
+    <version>7.4.2</version>
+    <time>1697390754</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1117662</requestid>
+  </revision>
 </revisionlist>
