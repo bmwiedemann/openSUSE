@@ -1205,4 +1205,37 @@ FIXES (LSP):
 </comment>
     <requestid>1109538</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>dac74a400c3f10aead5b1ceaf7db2c41</srcmd5>
+    <version>0.9.4</version>
+    <time>1697390854</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.9.4:
+  This is a maintenance release, focusing on bug fixes.
+  - build: Fix exporting symbols on macOS Sonoma
+  - api: Handle NUL in nvim_err_write() and nvim_out_write()
+  - autocmd: Api functions accepting garbage after event name
+  - clang: Null pointer dereference in parse_msgpack
+  - clipboard: Don't pass --foreground to wl-copy
+  - exception: Remember whether message is multiline
+  - float: Update position of anchored windows first
+  - float: Fix some other crashes with :unhide or :all
+  - lua: Not using global value in vim.opt_global
+  - lua: Show error message when failing to set variable
+  - mouse: Click on 'statuscolumn' with 'rightleft'
+  - path: Accept special characters on Windows
+  - provider: Fix python3 provider cannot detect python3.12
+  - provider/pythonx: Import the correct module
+  - rpc: Fix race condition
+  - runtime: Add commentstring for D ftplugin
+  - statuscolumn: Update number hl for each screen line
+  - terminal: Check terminal size at end of screen update
+  - treesitter: Remove more double recursion
+  - ui: &quot;resize -1&quot; with cmdheight=0
+  - unhide: Close floating windows first
+  - unittests: Ignore __s128 and __u128 types in ffi
+  - tutor: Clarify the meaning of ✗ and ✓
+</comment>
+    <requestid>1117794</requestid>
+  </revision>
 </revisionlist>
