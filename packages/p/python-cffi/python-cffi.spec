@@ -16,22 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-cffi
-Version:        1.15.1
+Version:        1.16.0
 Release:        0
 Summary:        Foreign Function Interface for Python calling C code
 License:        MIT
 URL:            https://cffi.readthedocs.org
 Source0:        https://files.pythonhosted.org/packages/source/c/cffi/cffi-%{version}.tar.gz
 Source1:        python-cffi-rpmlintrc
-Patch1:         https://foss.heptapod.net/pypy/cffi/-/commit/8a3c2c816d789639b49d3ae867213393ed7abdff.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycparser}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module py}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -49,18 +48,20 @@ is to provide a convenient and reliable way of calling C code from Python.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch -W ignore::UserWarning c/ testing/
+%pytest_arch -W ignore::UserWarning src/c/ testing/
 
 %files %{python_files}
 %license LICENSE
 %doc README.md doc/source/*.rst doc/misc/*.rst
-%{python_sitearch}/*
+%{python_sitearch}/cffi
+%{python_sitearch}/_cffi_backend.*.so
+%{python_sitearch}/cffi-%{version}*-info
 
 %changelog

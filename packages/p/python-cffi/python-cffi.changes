@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct  6 16:25:24 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Upgrade to 1.16.0:
+  - Add support for Python 3.12. With the removal of distutils
+    from Python 3.12, projects using CFFI features that depend on
+    distutils at runtime must add a dependency on setuptools to
+    function under Python 3.12+. CFFI does not declare a runtime
+    setuptools requirement to avoid an unnecessary dependency for
+    projects that do not require it.
+  - Drop support for end-of-life Python versions (2.7, 3.6, 3.7).
+  - Move project source under src/; a more standard layout that
+    also enables CI to more easily catch packaging errors.
+  - Move project home to python-cffi/cffi on GitHub.
+  - Add support for PEP517 builds; setuptools is now a required
+    build dependency.
+  - Declare python_requires metadata for Python 3.8+. This allows
+    unsupported Pythons to continue using previously released
+    sdists and wheels.
+  - Add missing calls to PyObject_GC_UnTrack to avoid
+    ResourceWarning 15c4b71
+- Remove upstreamed patch
+  8a3c2c816d789639b49d3ae867213393ed7abdff.patch
+
+-------------------------------------------------------------------
+Fri Oct  6 07:10:11 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file
+
+-------------------------------------------------------------------
 Fri Apr 21 12:23:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
