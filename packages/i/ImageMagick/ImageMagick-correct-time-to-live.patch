@@ -1,0 +1,24 @@
+diff --git a/MagickCore/timer.c b/MagickCore/timer.c
+index 5a6576e67a..d33f2d374a 100644
+--- a/MagickCore/timer.c
++++ b/MagickCore/timer.c
+@@ -367,7 +367,8 @@ MagickExport time_t GetMagickTime(void)
+           time_t
+             epoch;
+ 
+-          epoch=(time_t) StringToDouble(source_date_epoch,(char **) NULL);
++          epoch=(time_t) CastDoubleToLong(StringToDouble(source_date_epoch,
++            (char **) NULL));
+           if ((epoch > 0) && (epoch <= time((time_t *) NULL)))
+             constant_magick_time=epoch;
+         }
+@@ -409,7 +410,7 @@ MagickPrivate MagickOffsetType GetMagickTTL(void)
+       magick_epoch=time((time_t *) NULL);
+     }
+   return((MagickOffsetType) GetMagickResourceLimit(TimeResource)-
+-    (GetMagickTime()-magick_epoch));
++    (time((time_t *) NULL)-magick_epoch));
+ }
+ 
+ /*
+

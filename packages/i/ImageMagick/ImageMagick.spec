@@ -56,6 +56,8 @@ Patch4:         ImageMagick-filter.t-disable-Contrast.patch
 #%%ifarch s390x
 Patch5:         ImageMagick-s390x-disable-tests.patch
 #%%endif
+# https://github.com/ImageMagick/ImageMagick/commit/3c727503c6ae449160dc92cf6222ebe28ef8fb52
+Patch6:         ImageMagick-correct-time-to-live.patch
 BuildRequires:  chrpath
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
@@ -355,6 +357,7 @@ policy plus disable few other coders for reading and/or writing.
 %ifarch s390x
 %patch5 -p1
 %endif
+%patch6 -p1
 
 %build
 # bsc#1088463
